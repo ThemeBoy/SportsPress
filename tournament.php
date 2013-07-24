@@ -9,7 +9,7 @@ function sp_tournament_cpt_init() {
 		'public' => true,
 		'hierarchical' => true,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'comments', 'page-attributes' ),
-		'rewrite' => array( 'slug' => 'tournament' ),
+		'rewrite' => array( 'slug' => 'tournament' )
 	);
 	register_post_type( 'sp_tournament', $args );
 }
@@ -21,7 +21,7 @@ function sp_tournament_edit_columns( $columns ) {
 		'title' => __( 'Title' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
 		'sp_event' => __( 'Events', 'sportspress' ),
-		'sp_sponsor' => __( 'Sponsor', 'sportspress' ),
+		'sp_sponsor' => __( 'Sponsor', 'sportspress' )
 	);
 	return $columns;
 }

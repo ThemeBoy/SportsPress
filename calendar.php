@@ -9,7 +9,7 @@ function sp_calendar_cpt_init() {
 		'public' => true,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
-		'rewrite' => array( 'slug' => 'calendar' ),
+		'rewrite' => array( 'slug' => 'calendar' )
 	);
 	register_post_type( 'sp_calendar', $args );
 }
@@ -20,8 +20,8 @@ function sp_calendar_edit_columns( $columns ) {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Title' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_league' => __( 'League', 'sportspress' ),
-		'sp_season' => __( 'Season', 'sportspress' ),
+		'sp_league' => __( 'Leagues', 'sportspress' ),
+		'sp_season' => __( 'Seasons', 'sportspress' )
 	);
 	return $columns;
 }

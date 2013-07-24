@@ -9,7 +9,7 @@ function sp_staff_cpt_init() {
 		'public' => true,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
-		'rewrite' => array( 'slug' => 'staff' ),
+		'rewrite' => array( 'slug' => 'staff' )
 	);
 	register_post_type( 'sp_staff', $args );
 }
@@ -18,12 +18,11 @@ add_action( 'init', 'sp_staff_cpt_init' );
 function sp_staff_edit_columns( $columns ) {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'sp_icon' => '&nbsp;',
 		'title' => __( 'Name', 'sportspress' ),
-		'sp_team' => __( 'Team', 'sportspress' ),
-		'sp_position' => __( 'Position', 'sportspress' ),
-		'sp_league' => __( 'League', 'sportspress' ),
-		'sp_season' => __( 'Season', 'sportspress' ),
+		'sp_team' => __( 'Teams', 'sportspress' ),
+		'sp_position' => __( 'Positions', 'sportspress' ),
+		'sp_league' => __( 'Leagues', 'sportspress' ),
+		'sp_season' => __( 'Seasons', 'sportspress' )
 	);
 	return $columns;
 }
@@ -33,9 +32,6 @@ function sp_staff_custom_columns( $column ) {
 	global $post, $post_id, $typenow;
 	if ( $typenow == 'sp_staff' ):
 		switch ($column):
-			case 'sp_icon':
-				if ( has_post_thumbnail() ) the_post_thumbnail( 'sp_icon' );
-				break;
 			case 'sp_position':
 				if ( get_the_terms ( $post_id, 'sp_position' ) )
 					the_terms( $post_id, 'sp_position' );

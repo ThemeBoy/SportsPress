@@ -10,7 +10,7 @@ function sp_team_cpt_init() {
 		'hierarchical' => true,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
 		'register_meta_box_cb' => 'sp_team_meta_init',
-		'rewrite' => array( 'slug' => 'team' ),
+		'rewrite' => array( 'slug' => 'team' )
 	);
 	register_post_type( 'sp_team', $args );
 }
@@ -39,8 +39,6 @@ add_filter( 'gettext', 'sp_team_text_replace', 20, 3 );
 function sp_team_meta_init() {
 	remove_meta_box( 'postimagediv', 'sp_team', 'side' );
 	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'high' );
-	remove_meta_box( 'pageparentdiv', 'sp_team', 'side' );
-	add_meta_box( 'pageparentdiv', __( 'Team', 'sportspress' ), 'page_attributes_meta_box', 'sp_team', 'side', 'high' );
 }
 
 function sp_team_edit_columns($columns) {
@@ -48,9 +46,9 @@ function sp_team_edit_columns($columns) {
 		'cb' => '<input type="checkbox" />',
 		'sp_icon' => '&nbsp;',
 		'title' => __( 'Team', 'sportspress' ),
-		'sp_league' => __( 'League', 'sportspress' ),
-		'sp_season' => __( 'Season', 'sportspress' ),
-		'sp_sponsor' => __( 'Sponsor', 'sportspress' ),
+		'sp_league' => __( 'Leagues', 'sportspress' ),
+		'sp_season' => __( 'Seasons', 'sportspress' ),
+		'sp_sponsor' => __( 'Sponsors', 'sportspress' )
 	);
 	return $columns;
 }

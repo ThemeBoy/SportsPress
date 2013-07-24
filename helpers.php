@@ -83,4 +83,15 @@ if ( ! function_exists( 'sp_team_logo' ) ) {
 		endif;
 	}
 }
+
+if ( ! function_exists( 'sp_get_teams' ) ) {
+	function sp_get_teams( $post_id = null ) {
+		$teams = get_post_meta( $post_id, 'sp_teams', true );
+		if ( isset( $teams ) && $teams )
+			$teams = (array)unserialize( $teams );
+		else
+			$teams = array();
+		return $teams;
+	}
+}
 ?>

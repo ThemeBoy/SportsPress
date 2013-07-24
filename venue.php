@@ -9,7 +9,7 @@ function sp_venue_cpt_init() {
 		'public' => true,
 		'hierarchical' => true,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
-		'rewrite' => array( 'slug' => 'venue' ),
+		'rewrite' => array( 'slug' => 'venue' )
 	);
 	register_post_type( 'sp_venue', $args );
 }
@@ -20,7 +20,7 @@ function sp_venue_edit_columns( $columns ) {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Venue', 'sportspress' ),
 		'sp_address' => __( 'Address', 'sportspress' ),
-		'sp_sponsor' => __( 'Sponsor', 'sportspress' ),
+		'sp_sponsor' => __( 'Sponsors', 'sportspress' )
 	);
 	return $columns;
 }
