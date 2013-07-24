@@ -35,10 +35,13 @@ function sp_tournament_custom_columns( $column ) {
 				echo 'TEAMS';
 				break;
 			case 'sp_event':
-				the_terms( $post_id, 'sp_event' );
+				echo 'EVENTS';
 				break;
 			case 'sp_sponsor':
-				the_terms( $post_id, 'sp_sponsor' );
+				if ( get_the_terms ( $post_id, 'sp_sponsor' ) )
+					the_terms( $post_id, 'sp_sponsor' );
+				else
+					echo '—';
 				break;
 		endswitch;
 	endif;

@@ -35,10 +35,16 @@ function sp_table_custom_columns( $column ) {
 				echo 'TEAMS';
 				break;
 			case 'sp_league':
-				the_terms( $post_id, 'sp_league' );
+				if ( get_the_terms ( $post_id, 'sp_league' ) )
+					the_terms( $post_id, 'sp_league' );
+				else
+					echo '—';
 				break;
 			case 'sp_season':
-				the_terms( $post_id, 'sp_season' );
+				if ( get_the_terms ( $post_id, 'sp_season' ) )
+					the_terms( $post_id, 'sp_season' );
+				else
+					echo '—';
 				break;
 		endswitch;
 	endif;

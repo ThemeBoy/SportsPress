@@ -31,7 +31,10 @@ function sp_venue_custom_columns( $column, $post_id ) {
 	if ( $typenow == 'sp_venue' ):
 		switch ( $column ):
 			case 'sp_sponsor':
-				the_terms( $post_id, 'sp_sponsor' );
+				if ( get_the_terms ( $post_id, 'sp_sponsor' ) )
+					the_terms( $post_id, 'sp_sponsor' );
+				else
+					echo '—';
 				break;
 			case 'sp_address':
 				echo get_post_meta( $post_id, 'sp_address', true );

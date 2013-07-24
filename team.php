@@ -9,6 +9,7 @@ function sp_team_cpt_init() {
 		'public' => true,
 		'hierarchical' => true,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
+		'register_meta_box_cb' => 'sp_team_meta_init',
 		'rewrite' => array( 'slug' => 'team' ),
 	);
 	register_post_type( 'sp_team', $args );
@@ -19,8 +20,14 @@ function sp_team_text_replace( $input, $text, $domain ) {
 	global $post;
 	if ( is_admin() && get_post_type( $post ) == 'sp_team' )
 		switch ( $text ):
-			case 'Featured Image':
-				return __( 'Logo', 'themeboy' );
+			case 'Set featured image':
+				return sprintf( __( 'Add %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
+	    		break;
+			case 'Set Featured Image':
+				return sprintf( __( 'Add %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
+	    		break;
+			case 'Remove featured image':
+				return sprintf( __( 'Remove %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
 	    		break;
 			default:
 				return $input;
@@ -28,6 +35,13 @@ function sp_team_text_replace( $input, $text, $domain ) {
 	return $input;
 }
 add_filter( 'gettext', 'sp_team_text_replace', 20, 3 );
+
+function sp_team_meta_init() {
+	remove_meta_box( 'postimagediv', 'sp_team', 'side' );
+	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'high' );
+	remove_meta_box( 'pageparentdiv', 'sp_team', 'side' );
+	add_meta_box( 'pageparentdiv', __( 'Team', 'sportspress' ), 'page_attributes_meta_box', 'sp_team', 'side', 'high' );
+}
 
 function sp_team_edit_columns($columns) {
 	$columns = array(
@@ -47,7 +61,7 @@ function sp_team_custom_columns( $column ) {
 	if ( $typenow == 'sp_team' ):
 		switch ( $column ):
 			case 'sp_icon':
-				sp_team_logo( $post_id );
+				the_post_thumbnail( 'sp_icon' );
 				break;
 			case 'sp_league':
 				if ( get_the_terms ( $post_id, 'sp_league' ) )
