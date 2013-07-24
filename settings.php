@@ -3,7 +3,7 @@ function sp_settings_menu() {
 	add_submenu_page(
 		'options-general.php',
 		__( 'SportsPress', 'sportspress' ),
-		__( 'Sportspress', 'sportspress' ),
+		__( 'SportsPress', 'sportspress' ),
 		'manage_options',
 		'sp_settings',
 		'sp_settings_page'
@@ -12,6 +12,8 @@ function sp_settings_menu() {
 add_action('admin_menu', 'sp_settings_menu');
 
 function sp_settings_page() {
+     echo '<input type="text" id="datepicker" name="example[datepicker]" value="" class="sp_datepicker" />';
+     /*
 	if ( true | ! current_user_can( 'manage_options' ) ) wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	$hidden_field_name = 'tb_submit_hidden';
 ?>
@@ -110,4 +112,4 @@ function sp_settings_page() {
 		<?php submit_button( null, 'primary', 'save-sportspress-options' ); ?>
 	</form>
 </div>
-<?php } ?>
+<?php */ } ?>

@@ -64,22 +64,23 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 			print( '</select>' );
 		}
 	}
-	if ( ! function_exists( 'sp_team_logo' ) ) {
-		function sp_team_logo( $post_id = null ) {
-			if ( ! isset( $post_id ) )
-				global $post_id;
-			if ( has_post_thumbnail( $post_id ) ):
-				the_post_thumbnail( 'sp_icon' );
-			else:
-				$parents = get_post_ancestors( $post_id );
-				foreach ( $parents as $parent ) {
-					if( has_post_thumbnail( $parent ) ) {
-						echo get_the_post_thumbnail( $parent, 'sp_icon');
-						break;
-					}
+}
+
+if ( ! function_exists( 'sp_team_logo' ) ) {
+	function sp_team_logo( $post_id = null ) {
+		if ( ! isset( $post_id ) )
+			global $post_id;
+		if ( has_post_thumbnail( $post_id ) ):
+			the_post_thumbnail( 'sp_icon' );
+		else:
+			$parents = get_post_ancestors( $post_id );
+			foreach ( $parents as $parent ) {
+				if( has_post_thumbnail( $parent ) ) {
+					echo get_the_post_thumbnail( $parent, 'sp_icon');
+					break;
 				}
-			endif;
-		}
+			}
+		endif;
 	}
 }
 ?>

@@ -84,7 +84,14 @@
 	background-position: -209px -1px;
 }
 
-#sp_articlediv .wp-editor-container{
+#poststuff #sp_kickoffdiv .inside {
+	margin: 0;
+	padding: 0;
+}
+#sp_kickoffdiv #timestampdiv p {
+	display: none;
+}
+#sp_articlediv .wp-editor-container {
 	background-color:#fff;
 }
 .widefat th.column-sp_icon,

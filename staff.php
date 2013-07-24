@@ -37,13 +37,22 @@ function sp_staff_custom_columns( $column ) {
 				if ( has_post_thumbnail() ) the_post_thumbnail( 'sp_icon' );
 				break;
 			case 'sp_position':
-				the_terms( $post_id, 'sp_position' );
+				if ( get_the_terms ( $post_id, 'sp_position' ) )
+					the_terms( $post_id, 'sp_position' );
+				else
+					echo '—';
 				break;
 			case 'sp_league':
-				the_terms( $post_id, 'sp_league' );
+				if ( get_the_terms ( $post_id, 'sp_league' ) )
+					the_terms( $post_id, 'sp_league' );
+				else
+					echo '—';
 				break;
 			case 'sp_season':
-				the_terms( $post_id, 'sp_season' );
+				if ( get_the_terms ( $post_id, 'sp_season' ) )
+					the_terms( $post_id, 'sp_season' );
+				else
+					echo '—';
 				break;
 		endswitch;
 	endif;

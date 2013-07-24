@@ -10,7 +10,7 @@ function sp_event_cpt_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'comments', 'page-attributes' ),
 		'register_meta_box_cb' => 'sp_event_meta_init',
-		'rewrite' => array( 'slug' => 'event' ),
+		'rewrite' => array( 'slug' => 'event' )
 	);
 	register_post_type( 'sp_event', $args );
 }
@@ -30,13 +30,13 @@ function sp_event_text_replace( $input, $text, $domain ) {
 	if ( is_admin() && get_post_type( $post ) == 'sp_event' )
 		switch ( $text ):
 			case 'Scheduled for: <b>%1$s</b>':
-				return __( 'Kick-off: <b>%1$s</b>', 'sportspress' );
+				return __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>';
 	    		break;
 			case 'Published on: <b>%1$s</b>':
-				return __( 'Kick-off: <b>%1$s</b>', 'sportspress' );
+				return __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>';
 	        	break;
 			case 'Publish <b>immediately</b>':
-				return __( 'Kick-off: <b>%1$s</b>', 'sportspress' );
+				return __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>';
 	        	break;
 			default:
 				return $input;
@@ -46,22 +46,10 @@ function sp_event_text_replace( $input, $text, $domain ) {
 add_filter( 'gettext', 'sp_event_text_replace', 20, 3 );
 
 function sp_event_meta_init() {
-	add_meta_box(
-		'sp_teamdiv',
-		__( 'Teams', 'sportspress' ),
-		'sp_event_team_meta',
-		'sp_event',
-		'normal',
-		'high'
-	);
-	add_meta_box(
-		'sp_articlediv',
-		__( 'Article', 'sportspress' ),
-		'sp_event_article_meta',
-		'sp_event',
-		'normal',
-		'high'
-	);
+	remove_meta_box( 'submitdiv', 'sp_event', 'side' );
+	add_meta_box( 'submitdiv', __( 'Kick-off', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
+	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_event_team_meta', 'sp_event', 'normal', 'high' );
+	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sp_event_article_meta', 'sp_event', 'normal', 'high' );
 }
 
 function sp_event_team_meta( $post, $metabox ) {
@@ -73,8 +61,8 @@ function sp_event_team_meta( $post, $metabox ) {
 			'name' => 'sportspress[sp_team_' . $i . ']',
 			'selected' => get_post_meta( $post_id, 'sp_team_' . $i, true ),
 		);
-		echo '<label for="sp_team_' . $i . '">' . __( 'Team', 'sportspress' ) . ' ' . $i . ':</label>' . PHP_EOL;
 		wp_dropdown_pages( $args );
+		echo '<div class="clear"></div>' . PHP_EOL;
 		/*
 		$players = unserialize( get_post_meta( $post_id, 'sp_players', true ) );
 		?>
@@ -220,8 +208,7 @@ function sp_event_edit_columns( $columns ) {
 		'sp_league' => __( 'League', 'sportspress' ),
 		'sp_season' => __( 'Season', 'sportspress' ),
 		'sp_sponsor' => __( 'Sponsor', 'sportspress' ),
-		'sp_kickoff' => __( 'Kick-off', 'sportspress' ),
-		'date' => __( 'Date' ),
+		'sp_kickoff' => __( 'Kick-off', 'sportspress' )
 	);
 	return $columns;
 }
@@ -235,47 +222,44 @@ function sp_event_custom_columns( $column, $post_id ) {
 				$limit = get_option( 'sp_event_team_count' );
 				for ( $i = 1; $i <= $limit; $i++ ):
 					$team = get_post_meta( $post_id, 'sp_team_' . $i, true );
+					$parents = get_post_ancestors( $team );
+					foreach ( $parents as $parent ) {
+						edit_post_link( get_the_title( $parent ), '', ' — ', $parent );
+					}
 					edit_post_link( get_the_title( $team ), '', '<br />', $team );
 				endfor;
 				break;
 			case 'sp_league':
-				the_terms( $post_id, 'sp_league' );
+				if ( get_the_terms ( $post_id, 'sp_league' ) )
+					the_terms( $post_id, 'sp_league' );
+				else
+					echo '—';
 				break;
 			case 'sp_season':
-				the_terms( $post_id, 'sp_season' );
+				if ( get_the_terms ( $post_id, 'sp_season' ) )
+					the_terms( $post_id, 'sp_season' );
+				else
+					echo '—';
 				break;
 			case 'sp_sponsor':
-				the_terms( $post_id, 'sp_sponsor' );
+				if ( get_the_terms ( $post_id, 'sp_sponsor' ) )
+					the_terms( $post_id, 'sp_sponsor' );
+				else
+					echo '—';
 				break;
 			case 'sp_kickoff':
-				echo get_the_time ( get_option ( 'time_format' ) );
-				break;
-			case 'date':
-				echo get_the_date ( get_option ( 'date_format' ) );
+				echo get_the_date ( get_option ( 'date_format' ) ) . '<br />' . get_the_time ( get_option ( 'time_format' ) );
 				break;
 		endswitch;
 	endif;
 }
 add_action( 'manage_posts_custom_column', 'sp_event_custom_columns', 10, 2 );
 
-/*
 function sp_event_edit_sortable_columns( $columns ) {
-	$columns['sp_team'] = 'sp_team';
+	$columns['sp_kickoff'] = 'sp_kickoff';
 	return $columns;
 }
 add_filter( 'manage_edit-sp_event_sortable_columns', 'sp_event_edit_sortable_columns' );
-
-function sp_event_column_sorting( $vars ) {
-  if( isset( $vars['orderby'] ) && 'sp_team' == $vars['orderby'] ){
-    $vars = array_merge( $vars, array(
-      'meta_key' => 'sp_team_1',
-      'orderby'  => 'meta_value'
-    ) );
-  }
-  return $vars;
-}
-add_filter('requests', 'sp_event_column_sorting');
-*/
 
 function sp_event_request_filter_dropdowns() {
 	global $typenow, $wp_query;
