@@ -91,7 +91,8 @@
 #sp_kickoffdiv #timestampdiv p {
 	display: none;
 }
-#sp_articlediv .wp-editor-container {
+#sp_articlediv .wp-editor-container,
+#sp_profilediv .wp-editor-container {
 	background-color:#fff;
 }
 .widefat th.column-sp_icon,

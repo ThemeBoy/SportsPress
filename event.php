@@ -187,27 +187,14 @@ function sp_event_article_meta( $post, $metabox ) {
 	wp_editor( $post->post_content, 'content' );
 }
 
-function sp_event_save() {
-	global $post, $post_id, $typenow;
-	if ( $typenow  == 'sp_event' && isset( $_POST ) ) {
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
-		if ( ! isset( $_POST['sp_event_team_nonce'] ) || ! wp_verify_nonce( $_POST['sp_event_team_nonce'], plugin_basename( __FILE__ ) ) ) return $post_id;
-		$sportspress = (array)$_POST['sportspress'];
-		foreach ( $sportspress as $key => $value ):
-			update_post_meta( $post_id, $key, $value );
-		endforeach;
-	}
-}
-add_action( 'save_post', 'sp_event_save' );
-
 function sp_event_edit_columns( $columns ) {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Event', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_league' => __( 'League', 'sportspress' ),
-		'sp_season' => __( 'Season', 'sportspress' ),
-		'sp_sponsor' => __( 'Sponsor', 'sportspress' ),
+		'sp_league' => __( 'Leagues', 'sportspress' ),
+		'sp_season' => __( 'Seasons', 'sportspress' ),
+		'sp_sponsor' => __( 'Sponsors', 'sportspress' ),
 		'sp_kickoff' => __( 'Kick-off', 'sportspress' )
 	);
 	return $columns;
@@ -223,9 +210,9 @@ function sp_event_custom_columns( $column, $post_id ) {
 				for ( $i = 1; $i <= $limit; $i++ ):
 					$team = get_post_meta( $post_id, 'sp_team_' . $i, true );
 					$parents = get_post_ancestors( $team );
-					foreach ( $parents as $parent ) {
+					foreach ( $parents as $parent ):
 						edit_post_link( get_the_title( $parent ), '', ' — ', $parent );
-					}
+					endforeach;
 					edit_post_link( get_the_title( $team ), '', '<br />', $team );
 				endfor;
 				break;
