@@ -180,7 +180,7 @@ function sp_event_team_meta( $post, $metabox ) {
 		<?php
 		*/
 	endfor;
-	echo '<input type="hidden" name="sp_event_team_nonce" id="sp_event_team_nonce" value="' . wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
+	sp_nonce();
 }
 
 function sp_event_article_meta( $post, $metabox ) {

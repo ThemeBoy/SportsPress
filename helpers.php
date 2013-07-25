@@ -94,4 +94,54 @@ if ( ! function_exists( 'sp_get_teams' ) ) {
 		return $teams;
 	}
 }
+
+if ( ! function_exists( 'sp_team_checklist' ) ) {
+	function sp_team_checklist( $post_id = null ) {
+		if ( ! isset( $post_id ) )
+			global $post_id;
+		$selected = sp_get_teams( $post_id );
+		$teams = get_pages( array( 'post_type' => 'sp_team') );
+		foreach ( $teams as $team ):
+			?>
+			<li>
+				<label class="selectit">
+					<input type="checkbox" value="<?php echo $team->ID; ?>" name="sportspress[sp_teams][]"<?php if ( in_array( $team->ID, $selected ) ) echo ' checked="checked"'; ?>>
+					<?php
+					if ( $team->post_parent ):
+						$parents = get_post_ancestors( $team );
+						echo str_repeat( '— ', sizeof( $parents ) );
+					endif;
+					echo $team->post_title;
+					?>
+				</label>
+			</li>
+			<?php
+		endforeach;
+	}
+}
+
+if ( ! function_exists( 'sp_team_select_html' ) ) {
+	function sp_team_select_html( $post_id = null ) {
+		if ( ! isset( $post_id ) )
+			global $post_id;
+		?>
+		<ul id="sp_team-tabs" class="wp-tab-bar">
+			<li class="tabs wp-tab-active"><?php _e( 'Teams', 'sportspress' ); ?></li>
+		</ul>
+		<div id="sp_team-all" class="wp-tab-panel">
+			<input type="hidden" value="0" name="sportspress[sp_teams]" />
+			<ul class="categorychecklist form-no-clear">
+				<?php sp_team_checklist( $post_id ); ?>
+			</ul>
+		</div>
+		<div id="sp_team-adder">
+			<h4>
+				<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=sp_team' ); ?>" target="_blank">
+					+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), __( 'Team', 'sportspress' ) ); ?>
+				</a>
+			</h4>
+		</div>
+		<?php
+	}
+}
 ?>
