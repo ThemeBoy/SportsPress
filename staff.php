@@ -38,8 +38,8 @@ function sp_staff_edit_columns( $columns ) {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Name', 'sportspress' ),
-		'sp_team' => __( 'Teams', 'sportspress' ),
 		'sp_position' => __( 'Positions', 'sportspress' ),
+		'sp_team' => __( 'Teams', 'sportspress' ),
 		'sp_league' => __( 'Leagues', 'sportspress' ),
 		'sp_season' => __( 'Seasons', 'sportspress' )
 	);
@@ -56,6 +56,9 @@ function sp_staff_custom_columns( $column ) {
 					the_terms( $post_id, 'sp_position' );
 				else
 					echo '—';
+				break;
+			case 'sp_team':
+				sp_unserialized_posts( $post_id, 'sp_teams', '', '<br />' );
 				break;
 			case 'sp_league':
 				if ( get_the_terms ( $post_id, 'sp_league' ) )

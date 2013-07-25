@@ -59,17 +59,7 @@ function sp_player_custom_columns( $column, $post_id ) {
 					echo '—';
 				break;
 			case 'sp_team':
-				$teams = sp_get_teams( $post_id );
-				foreach ( $teams as $team ):
-					$parents = get_post_ancestors( $team );
-					$parents = array_combine( array_keys( $parents ), array_reverse( array_values( $parents ) ) );
-					foreach ( $parents as $parent ):
-						if ( !in_array( $parent, $teams ) )
-							edit_post_link( get_the_title( $parent ), '', ' ', $parent );
-						echo '— ';
-					endforeach;
-					edit_post_link( get_the_title( $team ), '', '<br />', $team );
-				endforeach;
+				sp_unserialized_posts( $post_id, 'sp_teams', '', '<br />' );
 				break;
 			case 'sp_league':
 				if ( get_the_terms ( $post_id, 'sp_league' ) )
