@@ -65,14 +65,13 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 		}
 	}
 }
-if ( ! function_exists( 'sp_unserialized_posts' ) ) {
-	function sp_unserialized_posts( $post_id = null, $meta = 'posts', $before = '', $sep = ',', $after = '' ) {
+if ( ! function_exists( 'sp_the_posts' ) ) {
+	function sp_the_posts( $post_id = null, $meta = 'post', $before = '', $sep = ',', $after = '' ) {
 		echo $before;
 		if ( ! isset( $post_id ) )
 			global $post_id;
-		$posts = get_post_meta( $post_id, $meta, true );
+		$posts = get_post_meta( $post_id, $meta, false );
 		if ( isset( $posts ) && $posts ):
-			$posts = (array)unserialize( $posts );
 			foreach ( $posts as $post ):
 				$parents = get_post_ancestors( $post );
 				$parents = array_combine( array_keys( $parents ), array_reverse( array_values( $parents ) ) );
