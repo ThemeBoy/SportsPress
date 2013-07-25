@@ -1,4 +1,3 @@
-#adminmenu #toplevel_page_sp_settings div.wp-menu-image,
 #adminmenu #menu-posts-sp_team div.wp-menu-image,
 #adminmenu #menu-posts-sp_event div.wp-menu-image,
 #adminmenu #menu-posts-sp_player div.wp-menu-image,
@@ -10,15 +9,9 @@
 #adminmenu #menu-posts-sp_venue div.wp-menu-image {
 	background-image: url(images/menu.png);
 	background-repeat: no-repeat;
-}
-#adminmenu #toplevel_page_sp_settings div.wp-menu-image {
 	background-position: 1px -33px;
 }
-#adminmenu #toplevel_page_sp_settings:hover div.wp-menu-image,
-#adminmenu #toplevel_page_sp_settings.wp-has-current-submenu div.wp-menu-image,
-#adminmenu #toplevel_page_sp_settings.current div.wp-menu-image {
-	background-position: 1px -1px;
-}
+/*
 #adminmenu #menu-posts-sp_team div.wp-menu-image {
 	background-position: 1px -97px;
 }
@@ -26,6 +19,15 @@
 #adminmenu #menu-posts-sp_team.wp-has-current-submenu div.wp-menu-image,
 #adminmenu #menu-posts-sp_team.current div.wp-menu-image {
 	background-position: 1px -65px;
+}
+*/
+#adminmenu #menu-posts-sp_team div.wp-menu-image {
+	background-position: 1px -33px;
+}
+#adminmenu #menu-posts-sp_team:hover div.wp-menu-image,
+#adminmenu #menu-posts-sp_team.wp-has-current-submenu div.wp-menu-image,
+#adminmenu #menu-posts-sp_team.current div.wp-menu-image {
+	background-position: 1px -1px;
 }
 #adminmenu #menu-posts-sp_event div.wp-menu-image {
 	background-position: -29px -33px;

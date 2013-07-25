@@ -10,13 +10,18 @@ function sp_after_theme_setup() {
 }
 add_action( 'after_theme_setup', 'sp_after_theme_setup' );
 
-function sp_save_post() {
-	global $post, $post_id, $typenow;
+function sp_nonce() {
+	echo '<input type="hidden" name="sportspress_nonce" id="sportspress_nonce" value="' . wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
+}
+
+function sp_save_post( $post_id ) {
+	global $post, $typenow;
 	if ( isset( $_POST['sportspress'] ) ):
 		$sportspress = (array)$_POST['sportspress'];
 		if ( isset( $_POST ) && !empty( $sportspress ) ):
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
-	//		if ( ! isset( $_POST['sp_event_team_nonce'] ) || ! wp_verify_nonce( $_POST['sp_event_team_nonce'], plugin_basename( __FILE__ ) ) ) return $post_id;
+		    if ( !current_user_can( 'edit_post', $post_id ) ) return $post_id;
+			if ( !isset( $_POST['sportspress_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_nonce'], plugin_basename( __FILE__ ) ) ) return $post_id;
 			foreach ( $sportspress as $key => $value ):
 				if ( is_array( $value ) )
 					$value = serialize( $value );
