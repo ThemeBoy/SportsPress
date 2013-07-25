@@ -65,6 +65,32 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 		}
 	}
 }
+if ( ! function_exists( 'sp_unserialized_posts' ) ) {
+	function sp_unserialized_posts( $post_id = null, $meta = 'posts', $before = '', $sep = ',', $after = '' ) {
+		echo $before;
+		if ( ! isset( $post_id ) )
+			global $post_id;
+		$posts = get_post_meta( $post_id, $meta, true );
+		if ( isset( $posts ) && $posts ):
+			$posts = (array)unserialize( $posts );
+			foreach ( $posts as $post ):
+				$parents = get_post_ancestors( $post );
+				$parents = array_combine( array_keys( $parents ), array_reverse( array_values( $parents ) ) );
+				foreach ( $parents as $parent ):
+					if ( !in_array( $parent, $posts ) )
+						edit_post_link( get_the_title( $parent ), '', ' ', $parent );
+					echo '— ';
+				endforeach;
+				edit_post_link( get_the_title( $post ), '', '', $post );
+				if ( $post != end( $posts ) )
+					echo $sep;
+			endforeach;
+		else:
+			echo '—';
+		endif;
+		echo $after;
+	}
+}
 
 if ( ! function_exists( 'sp_team_logo' ) ) {
 	function sp_team_logo( $post_id = null ) {
