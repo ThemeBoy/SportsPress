@@ -26,7 +26,7 @@ function sp_staff_meta_init() {
 }
 function sp_staff_team_meta( $post, $metabox ) {
 	global $post_id;
-	sp_team_select_html( $post_id );
+	sp_post_checklist( $post_id, 'sp_team', true );
 	sp_nonce();
 }
 
@@ -46,36 +46,6 @@ function sp_staff_edit_columns( $columns ) {
 	return $columns;
 }
 add_filter( 'manage_edit-sp_staff_columns', 'sp_staff_edit_columns' );
-
-function sp_staff_custom_columns( $column, $post_id ) {
-	global $post, $typenow;
-	if ( $typenow == 'sp_staff' ):
-		switch ($column):
-			case 'sp_position':
-				if ( get_the_terms ( $post_id, 'sp_position' ) )
-					the_terms( $post_id, 'sp_position' );
-				else
-					echo '—';
-				break;
-			case 'sp_team':
-				sp_the_posts( $post_id, 'sp_team', '', '<br />' );
-				break;
-			case 'sp_league':
-				if ( get_the_terms ( $post_id, 'sp_league' ) )
-					the_terms( $post_id, 'sp_league' );
-				else
-					echo '—';
-				break;
-			case 'sp_season':
-				if ( get_the_terms ( $post_id, 'sp_season' ) )
-					the_terms( $post_id, 'sp_season' );
-				else
-					echo '—';
-				break;
-		endswitch;
-	endif;
-}
-add_action( 'manage_posts_custom_column', 'sp_staff_custom_columns', 10, 2 );
 
 function sp_staff_request_filter_dropdowns() {
 	global $typenow, $wp_query;

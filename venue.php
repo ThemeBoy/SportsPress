@@ -26,24 +26,6 @@ function sp_venue_edit_columns( $columns ) {
 }
 add_filter( 'manage_edit-sp_venue_columns', 'sp_venue_edit_columns' );
 
-function sp_venue_custom_columns( $column, $post_id ) {
-	global $typenow;
-	if ( $typenow == 'sp_venue' ):
-		switch ( $column ):
-			case 'sp_sponsor':
-				if ( get_the_terms ( $post_id, 'sp_sponsor' ) )
-					the_terms( $post_id, 'sp_sponsor' );
-				else
-					echo '—';
-				break;
-			case 'sp_address':
-				echo get_post_meta( $post_id, 'sp_address', true );
-				break;
-		endswitch;
-	endif;
-}
-add_action( 'manage_posts_custom_column', 'sp_venue_custom_columns', 10, 2 );
-
 function sp_venue_request_filter_dropdowns() {
 	global $typenow, $wp_query;
 	if ( $typenow == 'sp_venue' ) {

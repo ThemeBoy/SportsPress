@@ -182,39 +182,6 @@ function sp_event_edit_columns( $columns ) {
 }
 add_filter( 'manage_edit-sp_event_columns', 'sp_event_edit_columns' );
 
-function sp_event_custom_columns( $column, $post_id ) {
-	global $typenow;
-	if ( $typenow == 'sp_event' ):
-		switch ( $column ):
-			case 'sp_team':
-				sp_the_posts( $post_id, 'sp_team', '', '<br />' );
-				break;
-			case 'sp_league':
-				if ( get_the_terms ( $post_id, 'sp_league' ) )
-					the_terms( $post_id, 'sp_league' );
-				else
-					echo '—';
-				break;
-			case 'sp_season':
-				if ( get_the_terms ( $post_id, 'sp_season' ) )
-					the_terms( $post_id, 'sp_season' );
-				else
-					echo '—';
-				break;
-			case 'sp_sponsor':
-				if ( get_the_terms ( $post_id, 'sp_sponsor' ) )
-					the_terms( $post_id, 'sp_sponsor' );
-				else
-					echo '—';
-				break;
-			case 'sp_kickoff':
-				echo get_the_date ( get_option ( 'date_format' ) ) . '<br />' . get_the_time ( get_option ( 'time_format' ) );
-				break;
-		endswitch;
-	endif;
-}
-add_action( 'manage_posts_custom_column', 'sp_event_custom_columns', 10, 2 );
-
 function sp_event_edit_sortable_columns( $columns ) {
 	$columns['sp_kickoff'] = 'sp_kickoff';
 	return $columns;
