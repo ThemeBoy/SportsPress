@@ -25,26 +25,6 @@ function sp_event_display_scheduled( $posts ) {
 }
 add_filter( 'the_posts', 'sp_event_display_scheduled' );
 
-function sp_event_text_replace( $input, $text, $domain ) {
-	global $post;
-	if ( is_admin() && get_post_type( $post ) == 'sp_event' )
-		switch ( $text ):
-			case 'Scheduled for: <b>%1$s</b>':
-				return __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>';
-	    		break;
-			case 'Published on: <b>%1$s</b>':
-				return __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>';
-	        	break;
-			case 'Publish <b>immediately</b>':
-				return __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>';
-	        	break;
-			default:
-				return $input;
-		endswitch;
-	return $input;
-}
-add_filter( 'gettext', 'sp_event_text_replace', 20, 3 );
-
 function sp_event_meta_init() {
 	remove_meta_box( 'submitdiv', 'sp_event', 'side' );
 	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
