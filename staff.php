@@ -8,12 +8,31 @@ function sp_staff_cpt_init() {
 		'labels' => $labels,
 		'public' => true,
 		'hierarchical' => false,
-		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
+		'supports' => array( 'title', 'author', 'thumbnail', 'page-attributes' ),
+		'register_meta_box_cb' => 'sp_staff_meta_init',
 		'rewrite' => array( 'slug' => 'staff' )
 	);
 	register_post_type( 'sp_staff', $args );
 }
 add_action( 'init', 'sp_staff_cpt_init' );
+
+function sp_staff_meta_init() {
+	remove_meta_box( 'submitdiv', 'sp_staff', 'side' );
+	add_meta_box( 'submitdiv', __( 'Publish', 'sportspress' ), 'post_submit_meta_box', 'sp_staff', 'side', 'high' );
+	remove_meta_box( 'postimagediv', 'sp_staff', 'side' );
+	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_staff', 'side', 'high' );
+	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_staff_team_meta', 'sp_staff', 'side', 'high' );
+	add_meta_box( 'sp_profilediv', __( 'Profile', 'sportspress' ), 'sp_staff_profile_meta', 'sp_staff', 'normal', 'high' );
+}
+function sp_staff_team_meta( $post, $metabox ) {
+	global $post_id;
+	sp_team_select_html( $post_id );
+	sp_nonce();
+}
+
+function sp_staff_profile_meta( $post, $metabox ) {
+	wp_editor( $post->post_content, 'content' );
+}
 
 function sp_staff_edit_columns( $columns ) {
 	$columns = array(
