@@ -21,11 +21,11 @@ if ( !function_exists( 'add_action' ) ) {
 define( 'SPORTSPRESS_VERSION', '0.1' );
 define( 'SPORTSPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
+// Globals
+include dirname( __FILE__ ) . '/globals.php' ;
+
 // Helpers
 require_once dirname( __FILE__ ) . '/helpers.php';
-
-// Defaults
-include dirname( __FILE__ ) . '/defaults.php' ;
 
 // Settings
 include dirname( __FILE__ ) . '/settings.php' ;

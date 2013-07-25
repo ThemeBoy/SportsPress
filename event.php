@@ -47,7 +47,7 @@ add_filter( 'gettext', 'sp_event_text_replace', 20, 3 );
 
 function sp_event_meta_init() {
 	remove_meta_box( 'submitdiv', 'sp_event', 'side' );
-	add_meta_box( 'submitdiv', __( 'Kick-off', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
+	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_event_team_meta', 'sp_event', 'normal', 'high' );
 	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sp_event_article_meta', 'sp_event', 'normal', 'high' );
 }
