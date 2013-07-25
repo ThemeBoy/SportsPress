@@ -65,13 +65,14 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 		}
 	}
 }
+
 if ( ! function_exists( 'sp_the_posts' ) ) {
-	function sp_the_posts( $post_id = null, $meta = 'post', $before = '', $sep = ',', $after = '' ) {
+	function sp_the_posts( $post_id = null, $meta = 'post', $before = '', $sep = ', ', $after = '' ) {
 		echo $before;
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		$posts = get_post_meta( $post_id, $meta, false );
-		if ( isset( $posts ) && $posts ):
+		if ( isset( $posts ) && $posts && is_array( $posts ) ):
 			foreach ( $posts as $post ):
 				$parents = get_post_ancestors( $post );
 				$parents = array_combine( array_keys( $parents ), array_reverse( array_values( $parents ) ) );
@@ -84,8 +85,6 @@ if ( ! function_exists( 'sp_the_posts' ) ) {
 				if ( $post != end( $posts ) )
 					echo $sep;
 			endforeach;
-		else:
-			echo '—';
 		endif;
 		echo $after;
 	}
@@ -109,47 +108,44 @@ if ( ! function_exists( 'sp_team_logo' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_team_checklist' ) ) {
-	function sp_team_checklist( $post_id = null ) {
+if ( ! function_exists( 'sp_post_checklist' ) ) {
+	function sp_post_checklist( $post_id = null, $meta = 'post', $add_new_item = true ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
-		$selected = (array)get_post_meta( $post_id, 'sp_team', false );
-		$teams = get_pages( array( 'post_type' => 'sp_team') );
-		foreach ( $teams as $team ):
-			$parents = get_post_ancestors( $team );
-			?>
-			<li>
-				<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
-				<label class="selectit">
-					<input type="checkbox" value="<?php echo $team->ID; ?>" name="sportspress[sp_team][]"<?php if ( in_array( $team->ID, $selected ) ) echo ' checked="checked"'; ?>>
-					<?php echo $team->post_title; ?>
-				</label>
-				<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
-			</li>
-			<?php
-		endforeach;
-	}
-}
-
-if ( ! function_exists( 'sp_team_select_html' ) ) {
-	function sp_team_select_html( $post_id = null ) {
-		if ( ! isset( $post_id ) )
-			global $post_id;
+		$obj = get_post_type_object( $meta );
 		?>
-		<div id="posttype-sp_team" class="posttypediv">
-			<div id="sp_team-all" class="wp-tab-panel">
-				<input type="hidden" value="0" name="sportspress[sp_team]" />
+		<div id="posttype-<?php echo $meta; ?>" class="posttypediv">
+			<div id="<?php echo $meta; ?>-all" class="wp-tab-panel">
+				<input type="hidden" value="0" name="sportspress[<?php echo $meta; ?>]" />
 				<ul class="categorychecklist form-no-clear">
-					<?php sp_team_checklist( $post_id ); ?>
+					<?php
+					$selected = (array)get_post_meta( $post_id, $meta, false );
+					$teams = get_pages( array( 'post_type' => $meta) );
+					foreach ( $teams as $team ):
+						$parents = get_post_ancestors( $team );
+						?>
+						<li>
+							<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
+							<label class="selectit">
+								<input type="checkbox" value="<?php echo $team->ID; ?>" name="sportspress[<?php echo $meta; ?>][]"<?php if ( in_array( $team->ID, $selected ) ) echo ' checked="checked"'; ?>>
+								<?php echo $team->post_title; ?>
+							</label>
+							<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
+						</li>
+						<?php
+					endforeach;
+					?>
 				</ul>
 			</div>
-			<div id="sp_team-adder">
-				<h4>
-					<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=sp_team' ); ?>" target="_blank">
-						+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), __( 'Team', 'sportspress' ) ); ?>
-					</a>
-				</h4>
-			</div>
+			<?php if ( $add_new_item ): ?>
+				<div id="<?php echo $meta; ?>-adder">
+					<h4>
+						<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=' . $meta ); ?>" target="_blank">
+							+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), $obj->labels->singular_name ); ?>
+						</a>
+					</h4>
+				</div>
+			<?php endif; ?>
 		</div>
 		<?php
 	}

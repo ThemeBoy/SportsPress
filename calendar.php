@@ -27,30 +27,6 @@ function sp_calendar_edit_columns( $columns ) {
 }
 add_filter( 'manage_edit-sp_calendar_columns', 'sp_calendar_edit_columns' );
 
-function sp_calendar_custom_columns( $column ) {
-	global $post, $post_id, $typenow;
-	if ( $typenow == 'sp_calendar' ):
-		switch ($column):
-			case 'sp_team':
-				echo 'TEAMS';
-				break;
-			case 'sp_league':
-				if ( get_the_terms ( $post_id, 'sp_league' ) )
-					the_terms( $post_id, 'sp_league' );
-				else
-					echo '—';
-				break;
-			case 'sp_season':
-				if ( get_the_terms ( $post_id, 'sp_season' ) )
-					the_terms( $post_id, 'sp_season' );
-				else
-					echo '—';
-				break;
-		endswitch;
-	endif;
-}
-add_action( 'manage_posts_custom_column', 'sp_calendar_custom_columns' );
-
 function sp_calendar_request_filter_dropdowns() {
 	global $typenow, $wp_query;
 	if ( $typenow == 'sp_calendar' ) {

@@ -36,36 +36,6 @@ function sp_team_edit_columns($columns) {
 }
 add_filter( 'manage_edit-sp_team_columns', 'sp_team_edit_columns' );
 
-function sp_team_custom_columns( $column ) {
-	global $post, $post_id, $typenow;
-	if ( $typenow == 'sp_team' ):
-		switch ( $column ):
-			case 'sp_icon':
-				the_post_thumbnail( 'sp_icon' );
-				break;
-			case 'sp_league':
-				if ( get_the_terms ( $post_id, 'sp_league' ) )
-					the_terms( $post_id, 'sp_league' );
-				else
-					echo '—';
-				break;
-			case 'sp_season':
-				if ( get_the_terms ( $post_id, 'sp_season' ) )
-					the_terms( $post_id, 'sp_season' );
-				else
-					echo '—';
-				break;
-			case 'sp_sponsor':
-				if ( get_the_terms ( $post_id, 'sp_sponsor' ) )
-					the_terms( $post_id, 'sp_sponsor' );
-				else
-					echo '—';
-				break;
-		endswitch;
-	endif;
-}
-add_action( 'manage_pages_custom_column', 'sp_team_custom_columns' );
-
 function sp_team_request_filter_dropdowns() {
 	global $typenow, $wp_query;
 	if ( $typenow == 'sp_team' ) {
