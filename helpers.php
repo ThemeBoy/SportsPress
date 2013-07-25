@@ -113,7 +113,7 @@ if ( ! function_exists( 'sp_team_checklist' ) ) {
 	function sp_team_checklist( $post_id = null ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
-		$selected = get_post_meta( $post_id, 'sp_team', false );
+		$selected = (array)get_post_meta( $post_id, 'sp_team', false );
 		$teams = get_pages( array( 'post_type' => 'sp_team') );
 		foreach ( $teams as $team ):
 			$parents = get_post_ancestors( $team );
