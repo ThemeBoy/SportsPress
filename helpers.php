@@ -12,7 +12,7 @@ if ( ! function_exists( 'sp_get_cpt_labels' ) ) {
 			'search_items' => sprintf( __( 'Search %s', 'sportspress' ), $name ),
 			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), $name ),
 			'not_found_in_trash' => sprintf( __( 'No %s found in trash', 'sportspress' ), $name ),
-			'parent_item_colon' => sprintf( __( 'Parent %s:', 'sportspress' ), $singular_name ),
+			'parent_item_colon' => sprintf( __( 'Parent %s:', 'sportspress' ), $singular_name )
 		);
 		return $labels;
 	}
@@ -32,7 +32,7 @@ if ( ! function_exists( 'sp_get_tax_labels' ) ) {
 			'parent_item' => sprintf( __( 'Parent %s', 'sportspress' ), __( $singular_name, 'sportspress' ) ),
 			'parent_item_colon' => sprintf( __( 'Parent %s:', 'sportspress' ), __( $singular_name, 'sportspress' ) ),
 			'search_items' =>  sprintf( __( 'Search %s', 'sportspress' ), __( $name, 'sportspress' ) ),
-			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), __( $name, 'sportspress' ) ),
+			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), __( $name, 'sportspress' ) )
 		);
 		return $labels;
 	}
@@ -125,9 +125,6 @@ if ( ! function_exists( 'sp_team_select_html' ) ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		?>
-		<ul id="sp_team-tabs" class="wp-tab-bar">
-			<li class="tabs wp-tab-active"><?php _e( 'Teams', 'sportspress' ); ?></li>
-		</ul>
 		<div id="sp_team-all" class="wp-tab-panel">
 			<input type="hidden" value="0" name="sportspress[sp_teams]" />
 			<ul class="categorychecklist form-no-clear">

@@ -17,7 +17,9 @@ function sp_player_cpt_init() {
 add_action( 'init', 'sp_player_cpt_init' );
 
 function sp_player_meta_init() {
-	add_meta_box( 'sp_playerdiv', __( 'Player', 'sportspress' ), 'sp_player_basic_meta', 'sp_player', 'side', 'high' );
+	remove_meta_box( 'postimagediv', 'sp_player', 'side' );
+	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_player', 'side', 'high' );
+	add_meta_box( 'sp_playerdiv', __( 'Teams', 'sportspress' ), 'sp_player_basic_meta', 'sp_player', 'side', 'high' );
 	add_meta_box( 'sp_profilediv', __( 'Profile', 'sportspress' ), 'sp_player_profile_meta', 'sp_player', 'normal', 'high' );
 }
 function sp_player_basic_meta( $post, $metabox ) {

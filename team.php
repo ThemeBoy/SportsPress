@@ -16,27 +16,9 @@ function sp_team_cpt_init() {
 }
 add_action( 'init', 'sp_team_cpt_init' );
 
-function sp_team_text_replace( $input, $text, $domain ) {
-	global $post;
-	if ( is_admin() && get_post_type( $post ) == 'sp_team' )
-		switch ( $text ):
-			case 'Set featured image':
-				return sprintf( __( 'Add %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
-	    		break;
-			case 'Set Featured Image':
-				return sprintf( __( 'Add %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
-	    		break;
-			case 'Remove featured image':
-				return sprintf( __( 'Remove %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
-	    		break;
-			default:
-				return $input;
-		endswitch;
-	return $input;
-}
-add_filter( 'gettext', 'sp_team_text_replace', 20, 3 );
-
 function sp_team_meta_init() {
+	remove_meta_box( 'submitdiv', 'sp_team', 'side' );
+	add_meta_box( 'submitdiv', __( 'Publish', 'sportspress' ), 'post_submit_meta_box', 'sp_team', 'side', 'high' );
 	remove_meta_box( 'postimagediv', 'sp_team', 'side' );
 	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'high' );
 }
