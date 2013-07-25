@@ -110,36 +110,22 @@ if ( ! function_exists( 'sp_team_logo' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_get_teams' ) ) {
-	function sp_get_teams( $post_id = null ) {
-		$teams = get_post_meta( $post_id, 'sp_teams', true );
-		if ( isset( $teams ) && $teams )
-			$teams = (array)unserialize( $teams );
-		else
-			$teams = array();
-		return $teams;
-	}
-}
-
 if ( ! function_exists( 'sp_team_checklist' ) ) {
 	function sp_team_checklist( $post_id = null ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
-		$selected = sp_get_teams( $post_id );
+		$selected = get_post_meta( $post_id, 'sp_team', false );
 		$teams = get_pages( array( 'post_type' => 'sp_team') );
 		foreach ( $teams as $team ):
+			$parents = get_post_ancestors( $team );
 			?>
 			<li>
+				<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 				<label class="selectit">
-					<input type="checkbox" value="<?php echo $team->ID; ?>" name="sportspress[sp_teams][]"<?php if ( in_array( $team->ID, $selected ) ) echo ' checked="checked"'; ?>>
-					<?php
-					if ( $team->post_parent ):
-						$parents = get_post_ancestors( $team );
-						echo str_repeat( '— ', sizeof( $parents ) );
-					endif;
-					echo $team->post_title;
-					?>
+					<input type="checkbox" value="<?php echo $team->ID; ?>" name="sportspress[sp_team][]"<?php if ( in_array( $team->ID, $selected ) ) echo ' checked="checked"'; ?>>
+					<?php echo $team->post_title; ?>
 				</label>
+				<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
 			</li>
 			<?php
 		endforeach;
@@ -151,18 +137,20 @@ if ( ! function_exists( 'sp_team_select_html' ) ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		?>
-		<div id="sp_team-all" class="wp-tab-panel">
-			<input type="hidden" value="0" name="sportspress[sp_teams]" />
-			<ul class="categorychecklist form-no-clear">
-				<?php sp_team_checklist( $post_id ); ?>
-			</ul>
-		</div>
-		<div id="sp_team-adder">
-			<h4>
-				<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=sp_team' ); ?>" target="_blank">
-					+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), __( 'Team', 'sportspress' ) ); ?>
-				</a>
-			</h4>
+		<div id="posttype-sp_team" class="posttypediv">
+			<div id="sp_team-all" class="wp-tab-panel">
+				<input type="hidden" value="0" name="sportspress[sp_team]" />
+				<ul class="categorychecklist form-no-clear">
+					<?php sp_team_checklist( $post_id ); ?>
+				</ul>
+			</div>
+			<div id="sp_team-adder">
+				<h4>
+					<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=sp_team' ); ?>" target="_blank">
+						+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), __( 'Team', 'sportspress' ) ); ?>
+					</a>
+				</h4>
+			</div>
 		</div>
 		<?php
 	}
