@@ -18,7 +18,7 @@ add_action( 'init', 'sp_team_cpt_init' );
 
 function sp_team_meta_init() {
 	remove_meta_box( 'submitdiv', 'sp_team', 'side' );
-	add_meta_box( 'submitdiv', __( 'Publish', 'sportspress' ), 'post_submit_meta_box', 'sp_team', 'side', 'high' );
+	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_team', 'side', 'high' );
 	remove_meta_box( 'postimagediv', 'sp_team', 'side' );
 	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'high' );
 }

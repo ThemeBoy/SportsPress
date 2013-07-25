@@ -18,11 +18,11 @@ add_action( 'init', 'sp_player_cpt_init' );
 
 function sp_player_meta_init() {
 	remove_meta_box( 'submitdiv', 'sp_player', 'side' );
-	add_meta_box( 'submitdiv', __( 'Publish', 'sportspress' ), 'post_submit_meta_box', 'sp_player', 'side', 'high' );
+	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_player', 'side', 'high' );
 	remove_meta_box( 'postimagediv', 'sp_player', 'side' );
 	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_player', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_player_team_meta', 'sp_player', 'side', 'high' );
-	add_meta_box( 'sp_profilediv', __( 'Profile', 'sportspress' ), 'sp_player_profile_meta', 'sp_player', 'normal', 'high' );
+	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sp_player_profile_meta', 'sp_player', 'normal', 'high' );
 }
 function sp_player_team_meta( $post ) {
 	sp_post_checklist( $post->ID, 'sp_team', true );
