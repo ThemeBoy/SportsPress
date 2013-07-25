@@ -35,11 +35,12 @@ function sp_event_meta_init() {
 function sp_event_team_meta( $post, $metabox ) {
 	global $post_id;
 	$limit = get_option( 'sp_event_team_count' );
-	for ( $i = 1; $i <= $limit; $i++ ):
+	for ( $i = 0; $i < $limit; $i++ ):
+		$selected = array_pad( array_slice( (array)get_post_meta( $post_id, 'sp_team', false ), 0, $limit ), $limit, 0);
 		$args = array(
 			'post_type' => 'sp_team',
-			'name' => 'sportspress[sp_team_' . $i . ']',
-			'selected' => get_post_meta( $post_id, 'sp_team_' . $i, true ),
+			'name' => 'sportspress[sp_team][]',
+			'selected' => $selected[ $i ]
 		);
 		wp_dropdown_pages( $args );
 		echo '<div class="clear"></div>' . PHP_EOL;
@@ -186,15 +187,7 @@ function sp_event_custom_columns( $column, $post_id ) {
 	if ( $typenow == 'sp_event' ):
 		switch ( $column ):
 			case 'sp_team':
-				$limit = get_option( 'sp_event_team_count' );
-				for ( $i = 1; $i <= $limit; $i++ ):
-					$team = get_post_meta( $post_id, 'sp_team_' . $i, true );
-					$parents = get_post_ancestors( $team );
-					foreach ( $parents as $parent ):
-						edit_post_link( get_the_title( $parent ), '', ' — ', $parent );
-					endforeach;
-					edit_post_link( get_the_title( $team ), '', '<br />', $team );
-				endfor;
+				sp_the_posts( $post_id, 'sp_team', '', '<br />' );
 				break;
 			case 'sp_league':
 				if ( get_the_terms ( $post_id, 'sp_league' ) )

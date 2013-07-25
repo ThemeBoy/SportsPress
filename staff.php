@@ -47,8 +47,8 @@ function sp_staff_edit_columns( $columns ) {
 }
 add_filter( 'manage_edit-sp_staff_columns', 'sp_staff_edit_columns' );
 
-function sp_staff_custom_columns( $column ) {
-	global $post, $post_id, $typenow;
+function sp_staff_custom_columns( $column, $post_id ) {
+	global $post, $typenow;
 	if ( $typenow == 'sp_staff' ):
 		switch ($column):
 			case 'sp_position':
@@ -58,7 +58,7 @@ function sp_staff_custom_columns( $column ) {
 					echo '—';
 				break;
 			case 'sp_team':
-				sp_unserialized_posts( $post_id, 'sp_teams', '', '<br />' );
+				sp_the_posts( $post_id, 'sp_team', '', '<br />' );
 				break;
 			case 'sp_league':
 				if ( get_the_terms ( $post_id, 'sp_league' ) )
@@ -75,7 +75,7 @@ function sp_staff_custom_columns( $column ) {
 		endswitch;
 	endif;
 }
-add_action( 'manage_posts_custom_column', 'sp_staff_custom_columns' );
+add_action( 'manage_posts_custom_column', 'sp_staff_custom_columns', 10, 2 );
 
 function sp_staff_request_filter_dropdowns() {
 	global $typenow, $wp_query;
