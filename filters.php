@@ -23,10 +23,10 @@ function sp_gettext( $translated_text, $untranslated_text, $domain ) {
 add_filter( 'gettext', 'sp_gettext', 20, 3 );
 
 function sp_admin_post_thumbnail_html( $translated_text, $post_id ) {
-	global $sportspress_texts;
+	global $sportspress_thumbnail_texts;
 	$typenow = get_post_type( $post_id );
-	if ( is_admin() && array_key_exists( $typenow, $sportspress_texts ) ):
-		foreach ( $sportspress_texts[ $typenow ] as $key => $value ):
+	if ( is_admin() && array_key_exists( $typenow, $sportspress_thumbnail_texts ) ):
+		foreach ( $sportspress_thumbnail_texts[ $typenow ] as $key => $value ):
 			$translated_text = str_replace( __( $key ), $value, $translated_text );
 		endforeach;
 	endif;

@@ -38,6 +38,21 @@ $sportspress_texts = array(
 	)
 );
 
+$sportspress_thumbnail_texts = array(
+	'sp_team' => array(
+		'Set featured image' => sprintf( __( 'Add %s', 'sportspress' ), __( 'Logo', 'sportspress' ) ),
+		'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Logo', 'sportspress' ) )
+	),
+	'sp_player' => array(
+		'Set featured image' => sprintf( __( 'Add %s', 'sportspress' ), __( 'Photo', 'sportspress' ) ),
+		'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) )
+	),
+	'sp_staff' => array(
+		'Set featured image' => sprintf( __( 'Add %s', 'sportspress' ), __( 'Photo', 'sportspress' ) ),
+		'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) )
+	)
+);
+
 foreach( $sportspress_options as $optiongroupkey => $optiongroup ) {
 	foreach( $optiongroup as $key => $value ) {
 		if ( get_option( $key ) === false )
