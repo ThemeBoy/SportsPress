@@ -23,9 +23,14 @@ function sp_save_post( $post_id ) {
 		    if ( !current_user_can( 'edit_post', $post_id ) ) return $post_id;
 			if ( !isset( $_POST['sportspress_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_nonce'], plugin_basename( __FILE__ ) ) ) return $post_id;
 			foreach ( $sportspress as $key => $value ):
-				if ( is_array( $value ) )
-					$value = serialize( $value );
-				update_post_meta( $post_id, $key, $value );
+				delete_post_meta( $post_id, $key );
+				if ( is_array( $value ) ):
+					foreach ( $value as $single_value ):
+						add_post_meta( $post_id, $key, $single_value, false );
+					endforeach;
+				else:
+					update_post_meta( $post_id, $key, $value );
+				endif;
 			endforeach;
 		endif;
 	endif;
