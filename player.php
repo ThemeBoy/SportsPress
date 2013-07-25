@@ -59,7 +59,7 @@ function sp_player_custom_columns( $column, $post_id ) {
 					echo '—';
 				break;
 			case 'sp_team':
-				sp_unserialized_posts( $post_id, 'sp_teams', '', '<br />' );
+				sp_the_posts( $post_id, 'sp_team', '', '<br />' );
 				break;
 			case 'sp_league':
 				if ( get_the_terms ( $post_id, 'sp_league' ) )
