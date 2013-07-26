@@ -20,8 +20,7 @@ function sp_calendar_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Title' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_league' => __( 'Leagues', 'sportspress' ),
-		'sp_season' => __( 'Seasons', 'sportspress' )
+		'sp_league' => __( 'Leagues', 'sportspress' )
 	);
 	return $columns;
 }

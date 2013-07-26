@@ -41,7 +41,6 @@ require_once dirname( __FILE__ ) . '/tournament.php';
 
 // Taxonomies
 require_once dirname( __FILE__ ) . '/league.php';
-require_once dirname( __FILE__ ) . '/season.php';
 require_once dirname( __FILE__ ) . '/venue.php';
 require_once dirname( __FILE__ ) . '/position.php';
 require_once dirname( __FILE__ ) . '/sponsor.php';

@@ -27,9 +27,6 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_league':
 			echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '—';
 			break;
-		case 'sp_season':
-			echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '—';
-			break;
 		case 'sp_sponsor':
 			echo get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : '—';
 			break;
@@ -72,16 +69,6 @@ function sp_restrict_manage_posts() {
 			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
 			'taxonomy' => 'sp_league',
 			'name' => 'sp_league',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
-	endif;
-	if ( in_array( $typenow, array( 'sp_team', 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_calendar' ) ) ):
-		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
-		$args = array(
-			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
-			'taxonomy' => 'sp_season',
-			'name' => 'sp_season',
 			'selected' => $selected
 		);
 		sp_dropdown_taxonomies( $args );

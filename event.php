@@ -43,6 +43,7 @@ function sp_event_team_meta( $post ) {
 		);
 		wp_dropdown_pages( $args );
 	endfor;
+	sp_post_checklist( $post->ID, 'sp_player', true );
 	sp_nonce();
 }
 
@@ -56,7 +57,6 @@ function sp_event_edit_columns() {
 		'title' => __( 'Event', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
 		'sp_league' => __( 'Leagues', 'sportspress' ),
-		'sp_season' => __( 'Seasons', 'sportspress' ),
 		'sp_sponsor' => __( 'Sponsors', 'sportspress' ),
 		'sp_kickoff' => __( 'Kick-off', 'sportspress' )
 	);

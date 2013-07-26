@@ -2,8 +2,8 @@
 function sp_settings_menu() {
 	add_submenu_page(
 		'options-general.php',
-		__( 'SportsPress', 'sportspress' ),
-		__( 'SportsPress', 'sportspress' ),
+		'SportsPress',
+		'SportsPress',
 		'manage_options',
 		'sp_settings',
 		'sp_settings_page'
