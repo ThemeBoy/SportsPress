@@ -12,7 +12,7 @@ if ( ! function_exists( 'sp_get_cpt_labels' ) ) {
 			'search_items' => sprintf( __( 'Search %s', 'sportspress' ), $name ),
 			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), $name ),
 			'not_found_in_trash' => sprintf( __( 'No %s found in trash', 'sportspress' ), $name ),
-			'parent_item_colon' => sprintf( __( 'Parent %s:', 'sportspress' ), $singular_name )
+			'parent_item_colon' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ) . ':'
 		);
 		return $labels;
 	}
@@ -21,18 +21,18 @@ if ( ! function_exists( 'sp_get_cpt_labels' ) ) {
 if ( ! function_exists( 'sp_get_tax_labels' ) ) {
 	function sp_get_tax_labels( $name, $singular_name ) {
 		$labels = array(
-			'name' => __( $name, 'sportspress' ),
-			'singular_name' => __( $singular_name, 'sportspress' ),
-			'all_items' => sprintf( __( 'All %s', 'sportspress' ), __( $name, 'sportspress' ) ),
-			'edit_item' => sprintf( __( 'Edit %s', 'sportspress' ), __( $singular_name, 'sportspress' ) ),
-			'view_item' => sprintf( __( 'View %s', 'sportspress' ), __( $singular_name, 'sportspress' ) ),
-			'update_item' => sprintf( __( 'Update %s', 'sportspress' ), __( $singular_name, 'sportspress' ) ),
-			'add_new_item' => sprintf( __( 'Add New %s', 'sportspress' ), __( $singular_name, 'sportspress' ) ),
-			'new_item_name' => __( $singular_name, 'sportspress' ),
-			'parent_item' => sprintf( __( 'Parent %s', 'sportspress' ), __( $singular_name, 'sportspress' ) ),
-			'parent_item_colon' => sprintf( __( 'Parent %s:', 'sportspress' ), __( $singular_name, 'sportspress' ) ),
-			'search_items' =>  sprintf( __( 'Search %s', 'sportspress' ), __( $name, 'sportspress' ) ),
-			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), __( $name, 'sportspress' ) )
+			'name' => $name,
+			'singular_name' => $singular_name,
+			'all_items' => sprintf( __( 'All %s', 'sportspress' ), $name ),
+			'edit_item' => sprintf( __( 'Edit %s', 'sportspress' ), $singular_name ),
+			'view_item' => sprintf( __( 'View %s', 'sportspress' ), $singular_name ),
+			'update_item' => sprintf( __( 'Update %s', 'sportspress' ), $singular_name ),
+			'add_new_item' => sprintf( __( 'Add New %s', 'sportspress' ), $singular_name ),
+			'new_item_name' => sprintf( __( 'New %s Name', 'sportspress' ), $singular_name ),
+			'parent_item' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ),
+			'parent_item_colon' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ) . ':',
+			'search_items' =>  sprintf( __( 'Search %s', 'sportspress' ), $name ),
+			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), $name )
 		);
 		return $labels;
 	}
