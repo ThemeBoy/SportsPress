@@ -112,47 +112,45 @@ if ( ! function_exists( 'sp_team_logo' ) ) {
 }
 
 if ( ! function_exists( 'sp_post_checklist' ) ) {
-	function sp_post_checklist( $post_id = null, $meta = 'post', $add_new_item = true ) {
+	function sp_post_checklist( $post_id = null, $meta = 'post', $add_new_item = true, $display = 'block' ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		$obj = get_post_type_object( $meta );
 		?>
-		<div id="posttype-<?php echo $meta; ?>" class="posttypediv">
-			<div id="<?php echo $meta; ?>-all" class="wp-tab-panel">
-				<input type="hidden" value="0" name="sportspress[<?php echo $meta; ?>]" />
-				<ul class="categorychecklist form-no-clear">
-					<?php
-					$selected = (array)get_post_meta( $post_id, $meta, false );
-					$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
-					if ( empty( $posts ) )
-						$posts = get_posts( array( 'post_type' => $meta, 'numberposts' => 0 ) );
-					foreach ( $posts as $post ):
-						$parents = get_post_ancestors( $post );
-						?>
-						<li>
-							<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
-							<label class="selectit">
-								<input type="checkbox" value="<?php echo $post->ID; ?>" name="sportspress[<?php echo $meta; ?>][]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
-								<?php echo $post->post_title; ?>
-							</label>
-							<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
-						</li>
-						<?php
-					endforeach;
+		<div id="<?php echo $meta; ?>-all" class="wp-tab-panel" style="display: <?php echo $display; ?>;">
+			<input type="hidden" value="0" name="sportspress[<?php echo $meta; ?>]" />
+			<ul class="categorychecklist form-no-clear">
+				<?php
+				$selected = (array)get_post_meta( $post_id, $meta, false );
+				$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
+				if ( empty( $posts ) )
+					$posts = get_posts( array( 'post_type' => $meta, 'numberposts' => 0 ) );
+				foreach ( $posts as $post ):
+					$parents = get_post_ancestors( $post );
 					?>
-				</ul>
-			</div>
-			<?php if ( $add_new_item ): ?>
-				<div id="<?php echo $meta; ?>-adder">
-					<h4>
-						<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=' . $meta ); ?>" target="_blank">
-							+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), $obj->labels->singular_name ); ?>
-						</a>
-					</h4>
-				</div>
-			<?php endif; ?>
+					<li>
+						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
+						<label class="selectit">
+							<input type="checkbox" value="<?php echo $post->ID; ?>" name="sportspress[<?php echo $meta; ?>][]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
+							<?php echo $post->post_title; ?>
+						</label>
+						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
+					</li>
+					<?php
+				endforeach;
+				?>
+			</ul>
 		</div>
+		<?php if ( $add_new_item ): ?>
+			<div id="<?php echo $meta; ?>-adder">
+				<h4>
+					<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=' . $meta ); ?>" target="_blank">
+						+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), $obj->labels->singular_name ); ?>
+					</a>
+				</h4>
+			</div>
 		<?php
+		endif;
 	}
 }
 ?>
