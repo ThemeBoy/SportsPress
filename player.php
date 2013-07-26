@@ -24,6 +24,7 @@ function sp_player_meta_init() {
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_player_team_meta', 'sp_player', 'side', 'high' );
 	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sp_player_profile_meta', 'sp_player', 'normal', 'high' );
 }
+
 function sp_player_team_meta( $post ) {
 	sp_post_checklist( $post->ID, 'sp_team', true );
 	sp_nonce();
@@ -40,7 +41,6 @@ function sp_player_edit_columns() {
 		'sp_position' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
 		'sp_league' => __( 'Leagues', 'sportspress' ),
-		'sp_season' => __( 'Seasons', 'sportspress' ),
 		'sp_sponsor' => __( 'Sponsors', 'sportspress' )
 	);
 	return $columns;

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-24 00:16+1000\n"
-"PO-Revision-Date: 2013-07-24 02:54+1000\n"
+"POT-Creation-Date: 2013-07-27 00:38+1000\n"
+"PO-Revision-Date: 2013-07-27 00:43+1000\n"
 "Last-Translator: ThemeBoy <translate@themeboy.com>\n"
 "Language-Team: ThemeBoy <translate@themeboy.com>\n"
 "Language: ja\n"
@@ -16,6 +16,32 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
+#: ../actions.php:49 ../actions.php:59 ../actions.php:69 ../actions.php:79
+#: ../helpers.php:7 ../helpers.php:26
+#, php-format
+msgid "All %s"
+msgstr "すべての%s"
+
+#: ../actions.php:49 ../calendar.php:22 ../event.php:31 ../event.php:58
+#: ../player.php:24 ../player.php:42 ../staff.php:24 ../staff.php:41
+#: ../table.php:22 ../team.php:3 ../tournament.php:22
+msgid "Teams"
+msgstr "チーム"
+
+#: ../actions.php:59 ../player.php:41 ../position.php:3 ../staff.php:40
+msgid "Positions"
+msgstr "ポジション"
+
+#: ../actions.php:69 ../calendar.php:23 ../event.php:59 ../league.php:3
+#: ../player.php:43 ../staff.php:42 ../table.php:23 ../team.php:31
+msgid "Leagues"
+msgstr "リーグ"
+
+#: ../actions.php:79 ../event.php:60 ../player.php:44 ../sponsor.php:3
+#: ../team.php:32 ../venue.php:23
+msgid "Sponsors"
+msgstr "スポンサー"
+
 #: ../calendar.php:3
 msgid "Calendars"
 msgstr "カレンダー"
@@ -24,82 +50,69 @@ msgstr "カレンダー"
 msgid "Calendar"
 msgstr "カレンダー"
 
-#: ../calendar.php:21 ../table.php:21
+#: ../calendar.php:21 ../table.php:21 ../tournament.php:21
 msgid "Title"
 msgstr "タイトル"
 
-#: ../calendar.php:22 ../event.php:83 ../table.php:22 ../team.php:3
-msgid "Teams"
-msgstr "チーム"
-
-#: ../calendar.php:23 ../event.php:84 ../league.php:4 ../player.php:24
-#: ../staff.php:24 ../table.php:23 ../team.php:42
-msgid "League"
-msgstr "リーグ"
-
-#: ../calendar.php:24 ../event.php:85 ../player.php:25 ../season.php:4
-#: ../staff.php:25 ../table.php:24 ../team.php:43
-msgid "Season"
-msgstr "シーズン"
-
-#: ../calendar.php:56 ../calendar.php:67 ../event.php:129 ../event.php:140
-#: ../event.php:151 ../helpers.php:7 ../helpers.php:26 ../player.php:61
-#: ../player.php:72 ../player.php:83 ../player.php:94 ../staff.php:57
-#: ../staff.php:68 ../staff.php:79 ../table.php:56 ../table.php:67
-#: ../team.php:76 ../team.php:87 ../team.php:98
-#, php-format
-msgid "All %s"
-msgstr "すべての%s"
-
-#: ../calendar.php:56 ../event.php:129 ../league.php:3 ../player.php:72
-#: ../staff.php:68 ../table.php:56 ../team.php:76
-msgid "Leagues"
-msgstr "リーグ"
-
-#: ../calendar.php:67 ../event.php:140 ../player.php:83 ../season.php:3
-#: ../staff.php:79 ../table.php:67 ../team.php:87
-msgid "Seasons"
-msgstr "シーズン"
-
-#: ../event.php:3
+#: ../event.php:3 ../tournament.php:23
 msgid "Events"
 msgstr "試合"
 
-#: ../event.php:4 ../event.php:82
+#: ../event.php:4 ../event.php:30 ../event.php:57
 msgid "Event"
 msgstr "試合"
 
-#: ../event.php:33 ../event.php:36 ../event.php:39
-#, php-format
-msgid "Kick-off: <b>%1$s</b>"
-msgstr "キックオフ: <b>%1$s</b>"
-
-#: ../event.php:52 ../player.php:23 ../staff.php:22 ../team.php:4
-#: ../team.php:41
-msgid "Team"
-msgstr "チーム"
-
-#: ../event.php:62
+#: ../event.php:32
 msgid "Article"
 msgstr "記事"
 
-#: ../event.php:86 ../player.php:26 ../sponsor.php:4 ../team.php:44
-msgid "Sponsor"
-msgstr "スポンサー"
-
-#: ../event.php:87
+#: ../event.php:61 ../globals.php:17 ../globals.php:18 ../globals.php:19
 msgid "Kick-off"
 msgstr "キックオフ"
 
-#: ../event.php:88
-msgid "Date"
-msgstr "日付"
+#: ../globals.php:10 ../globals.php:13 ../team.php:4 ../team.php:30
+msgid "Team"
+msgstr "チーム"
 
-#: ../event.php:151 ../player.php:94 ../sponsor.php:3 ../team.php:98
-msgid "Sponsors"
-msgstr "スポンサー"
+#: ../globals.php:11 ../globals.php:12 ../globals.php:23 ../globals.php:24
+#: ../globals.php:32 ../globals.php:33 ../globals.php:43 ../globals.php:47
+#: ../globals.php:51
+#, php-format
+msgid "Add %s"
+msgstr "新規%sを追加"
 
-#: ../helpers.php:8 ../helpers.php:30 ../team.php:26 ../team.php:29
+#: ../globals.php:11 ../globals.php:12 ../globals.php:14 ../globals.php:43
+#: ../globals.php:44 ../team.php:23
+msgid "Logo"
+msgstr "ロゴ"
+
+#: ../globals.php:13 ../helpers.php:15 ../helpers.php:32 ../helpers.php:33
+#, php-format
+msgid "Parent %s"
+msgstr "親%s"
+
+#: ../globals.php:14 ../globals.php:25 ../globals.php:34 ../globals.php:44
+#: ../globals.php:48 ../globals.php:52
+#, php-format
+msgid "Remove %s"
+msgstr "%sを削除"
+
+#: ../globals.php:22 ../globals.php:31 ../player.php:40 ../staff.php:39
+msgid "Name"
+msgstr "名前"
+
+#: ../globals.php:23 ../globals.php:24 ../globals.php:25 ../globals.php:32
+#: ../globals.php:33 ../globals.php:34 ../globals.php:47 ../globals.php:48
+#: ../globals.php:51 ../globals.php:52 ../player.php:23 ../staff.php:23
+msgid "Photo"
+msgstr "写真"
+
+#: ../globals.php:26 ../globals.php:27 ../globals.php:28 ../globals.php:35
+#: ../globals.php:36 ../globals.php:37
+msgid "Joined"
+msgstr "入団日"
+
+#: ../helpers.php:8 ../helpers.php:30 ../helpers.php:149
 #, php-format
 msgid "Add New %s"
 msgstr "新規%sを追加"
@@ -134,20 +147,19 @@ msgstr "%sは見つかりませんでした"
 msgid "No %s found in trash"
 msgstr "ゴミ箱内に%sは見つかりませんでした。"
 
-#: ../helpers.php:15 ../helpers.php:33
-#, php-format
-msgid "Parent %s:"
-msgstr "親%s:"
-
 #: ../helpers.php:29
 #, php-format
 msgid "Update %s"
 msgstr "%sを更新"
 
-#: ../helpers.php:32
+#: ../helpers.php:31
 #, php-format
-msgid "Parent %s"
-msgstr "親%s"
+msgid "New %s Name"
+msgstr "新規%s名"
+
+#: ../league.php:4
+msgid "League"
+msgstr "リーグ"
 
 #: ../player.php:3
 msgid "Players"
@@ -157,17 +169,25 @@ msgstr "選手"
 msgid "Player"
 msgstr "選手"
 
-#: ../player.php:21 ../staff.php:21
-msgid "Name"
-msgstr "名前"
+#: ../player.php:21 ../staff.php:21 ../team.php:21
+msgid "Publish"
+msgstr "公開"
 
-#: ../player.php:22 ../position.php:4 ../staff.php:23
+#: ../player.php:25 ../staff.php:25
+msgid "Profile"
+msgstr "プロフィール"
+
+#: ../position.php:4
 msgid "Position"
 msgstr "ポジション"
 
-#: ../player.php:61 ../position.php:3 ../staff.php:57
-msgid "Positions"
-msgstr "ポジション"
+#: ../settings.php:5 ../settings.php:6
+msgid "SportsPress"
+msgstr "SportsPress"
+
+#: ../sponsor.php:4 ../tournament.php:24
+msgid "Sponsor"
+msgstr "スポンサー"
 
 #: ../staff.php:3 ../staff.php:4
 msgid "Staff"
@@ -181,10 +201,6 @@ msgstr "順位表"
 msgid "Table"
 msgstr "順位表"
 
-#: ../team.php:23 ../team.php:26 ../team.php:29
-msgid "Logo"
-msgstr "ロゴ"
-
 #: ../tournament.php:3
 msgid "Tournaments"
 msgstr "大会"
@@ -197,9 +213,10 @@ msgstr "大会"
 msgid "Venues"
 msgstr "会場"
 
-#: ../venue.php:4
+#: ../venue.php:4 ../venue.php:21
 msgid "Venue"
 msgstr "会場"
 
-#~ msgid "League Table"
-#~ msgstr "順位表"
+#: ../venue.php:22
+msgid "Address"
+msgstr "住所"

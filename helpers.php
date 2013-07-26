@@ -123,15 +123,17 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 				<ul class="categorychecklist form-no-clear">
 					<?php
 					$selected = (array)get_post_meta( $post_id, $meta, false );
-					$teams = get_pages( array( 'post_type' => $meta) );
-					foreach ( $teams as $team ):
-						$parents = get_post_ancestors( $team );
+					$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
+					if ( empty( $posts ) )
+						$posts = get_posts( array( 'post_type' => $meta, 'numberposts' => 0 ) );
+					foreach ( $posts as $post ):
+						$parents = get_post_ancestors( $post );
 						?>
 						<li>
 							<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 							<label class="selectit">
-								<input type="checkbox" value="<?php echo $team->ID; ?>" name="sportspress[<?php echo $meta; ?>][]"<?php if ( in_array( $team->ID, $selected ) ) echo ' checked="checked"'; ?>>
-								<?php echo $team->post_title; ?>
+								<input type="checkbox" value="<?php echo $post->ID; ?>" name="sportspress[<?php echo $meta; ?>][]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
+								<?php echo $post->post_title; ?>
 							</label>
 							<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
 						</li>

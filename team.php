@@ -29,7 +29,6 @@ function sp_team_edit_columns() {
 		'sp_icon' => '&nbsp;',
 		'title' => __( 'Team', 'sportspress' ),
 		'sp_league' => __( 'Leagues', 'sportspress' ),
-		'sp_season' => __( 'Seasons', 'sportspress' ),
 		'sp_sponsor' => __( 'Sponsors', 'sportspress' )
 	);
 	return $columns;

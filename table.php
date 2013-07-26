@@ -21,7 +21,6 @@ function sp_table_edit_columns() {
 		'title' => __( 'Title' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
 		'sp_league' => __( 'Leagues', 'sportspress' ),
-		'sp_season' => __( 'Seasons', 'sportspress' )
 	);
 	return $columns;
 }
