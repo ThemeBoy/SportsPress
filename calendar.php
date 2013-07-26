@@ -15,7 +15,7 @@ function sp_calendar_cpt_init() {
 }
 add_action( 'init', 'sp_calendar_cpt_init' );
 
-function sp_calendar_edit_columns( $columns ) {
+function sp_calendar_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Title' ),
@@ -26,34 +26,4 @@ function sp_calendar_edit_columns( $columns ) {
 	return $columns;
 }
 add_filter( 'manage_edit-sp_calendar_columns', 'sp_calendar_edit_columns' );
-
-function sp_calendar_request_filter_dropdowns() {
-	global $typenow, $wp_query;
-	if ( $typenow == 'sp_calendar' ) {
-
-		// Leagues
-		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
-		$args = array(
-			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
-			'taxonomy' => 'sp_league',
-			'name' => 'sp_league',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
-		echo PHP_EOL;
-
-		// Seasons
-		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
-		$args = array(
-			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
-			'taxonomy' => 'sp_season',
-			'name' => 'sp_season',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
-		echo PHP_EOL;
-		
-	}
-}
-add_action( 'restrict_manage_posts', 'sp_calendar_request_filter_dropdowns' );
 ?>

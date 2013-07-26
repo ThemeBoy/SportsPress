@@ -15,7 +15,7 @@ function sp_venue_cpt_init() {
 }
 add_action( 'init', 'sp_venue_cpt_init' );
 
-function sp_venue_edit_columns( $columns ) {
+function sp_venue_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Venue', 'sportspress' ),
@@ -25,22 +25,4 @@ function sp_venue_edit_columns( $columns ) {
 	return $columns;
 }
 add_filter( 'manage_edit-sp_venue_columns', 'sp_venue_edit_columns' );
-
-function sp_venue_request_filter_dropdowns() {
-	global $typenow, $wp_query;
-	if ( $typenow == 'sp_venue' ) {
-
-		// Sponsors
-		$selected = isset( $_REQUEST['sp_sponsor'] ) ? $_REQUEST['sp_sponsor'] : null;
-		$args = array(
-			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Sponsors', 'sportspress' ) ),
-			'taxonomy' => 'sp_sponsor',
-			'name' => 'sp_sponsor',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
-
-	}
-}
-add_action( 'restrict_manage_posts', 'sp_venue_request_filter_dropdowns' );
 ?>

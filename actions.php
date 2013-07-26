@@ -16,25 +16,28 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			the_post_thumbnail( 'sp_icon' );
 			break;
 		case 'sp_position':
-			get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : print '—';
+			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '—';
 			break;
 		case 'sp_team':
-			get_post_meta ( $post_id, 'sp_team' ) ? sp_the_posts( $post_id, 'sp_team', '', '<br />' ) : print '—';
+			echo get_post_meta ( $post_id, 'sp_team' ) ? sp_the_posts( $post_id, 'sp_team', '', '<br />' ) : '—';
+			break;
+		case 'sp_event':
+			echo get_post_meta ( $post_id, 'sp_event' ) ? sizeof( get_post_meta ( $post_id, 'sp_event' ) ) : '—';
 			break;
 		case 'sp_league':
-			get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : print '—';
+			echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '—';
 			break;
 		case 'sp_season':
-			get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : print '—';
+			echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '—';
 			break;
 		case 'sp_sponsor':
-			get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : print '—';
+			echo get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : '—';
 			break;
 		case 'sp_kickoff':
 			echo get_the_date ( get_option ( 'date_format' ) ) . '<br />' . get_the_time ( get_option ( 'time_format' ) );
 			break;
 		case 'sp_address':
-			echo get_post_meta( $post_id, 'sp_address', true );
+			echo get_post_meta( $post_id, 'sp_address', true ) ? get_post_meta( $post_id, 'sp_address', true ) : '—';
 			break;
 	endswitch;
 }
@@ -43,63 +46,56 @@ add_action( 'manage_pages_custom_column', 'sp_manage_posts_custom_column', 10, 2
 
 function sp_restrict_manage_posts() {
 	global $typenow, $wp_query;
-	switch ( $typenow ):
-		case 'sp_player':
-
-			// Teams
-			$selected = isset( $_REQUEST['sp_team'] ) ? $_REQUEST['sp_team'] : null;
-			$args = array(
-				'show_option_none' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
-				'post_type' => 'sp_team',
-				'name' => 'sp_team',
-				'selected' => $selected
-			);
-			wp_dropdown_pages( $args );
-
-			// Positions
-			$selected = isset( $_REQUEST['sp_position'] ) ? $_REQUEST['sp_position'] : null;
-			$args = array(
-				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Positions', 'sportspress' ) ),
-				'taxonomy' => 'sp_position',
-				'name' => 'sp_position',
-				'selected' => $selected
-			);
-			sp_dropdown_taxonomies( $args );
-			echo PHP_EOL;
-
-			// Leagues
-			$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
-			$args = array(
-				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
-				'taxonomy' => 'sp_league',
-				'name' => 'sp_league',
-				'selected' => $selected
-			);
-			sp_dropdown_taxonomies( $args );
-			echo PHP_EOL;
-
-			// Seasons
-			$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
-			$args = array(
-				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
-				'taxonomy' => 'sp_season',
-				'name' => 'sp_season',
-				'selected' => $selected
-			);
-			sp_dropdown_taxonomies( $args );
-			echo PHP_EOL;
-
-			// Sponsors
-			$selected = isset( $_REQUEST['sp_sponsor'] ) ? $_REQUEST['sp_sponsor'] : null;
-			$args = array(
-				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Sponsors', 'sportspress' ) ),
-				'taxonomy' => 'sp_sponsor',
-				'name' => 'sp_sponsor',
-				'selected' => $selected
-			);
-			sp_dropdown_taxonomies( $args );
-
-	endswitch;
+	if ( in_array( $typenow, array( 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_calendar', 'sp_tournament' ) ) ):
+		$selected = isset( $_REQUEST['sp_team'] ) ? $_REQUEST['sp_team'] : null;
+		$args = array(
+			'show_option_none' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
+			'post_type' => 'sp_team',
+			'name' => 'sp_team',
+			'selected' => $selected
+		);
+		wp_dropdown_pages( $args );
+	endif;
+	if ( in_array( $typenow, array( 'sp_player', 'sp_staff' ) ) ):
+		$selected = isset( $_REQUEST['sp_position'] ) ? $_REQUEST['sp_position'] : null;
+		$args = array(
+			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Positions', 'sportspress' ) ),
+			'taxonomy' => 'sp_position',
+			'name' => 'sp_position',
+			'selected' => $selected
+		);
+		sp_dropdown_taxonomies( $args );
+	endif;
+	if ( in_array( $typenow, array( 'sp_team', 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_calendar' ) ) ):
+		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
+		$args = array(
+			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
+			'taxonomy' => 'sp_league',
+			'name' => 'sp_league',
+			'selected' => $selected
+		);
+		sp_dropdown_taxonomies( $args );
+	endif;
+	if ( in_array( $typenow, array( 'sp_team', 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_calendar' ) ) ):
+		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
+		$args = array(
+			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
+			'taxonomy' => 'sp_season',
+			'name' => 'sp_season',
+			'selected' => $selected
+		);
+		sp_dropdown_taxonomies( $args );
+	endif;
+	if ( in_array( $typenow, array( 'sp_team', 'sp_event', 'sp_player', 'sp_tournament', 'sp_venue' ) ) ):
+		$selected = isset( $_REQUEST['sp_sponsor'] ) ? $_REQUEST['sp_sponsor'] : null;
+		$args = array(
+			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Sponsors', 'sportspress' ) ),
+			'taxonomy' => 'sp_sponsor',
+			'name' => 'sp_sponsor',
+			'selected' => $selected
+		);
+		sp_dropdown_taxonomies( $args );
+	endif;
 }
 add_action( 'restrict_manage_posts', 'sp_restrict_manage_posts' );
 
