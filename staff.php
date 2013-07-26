@@ -24,17 +24,16 @@ function sp_staff_meta_init() {
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_staff_team_meta', 'sp_staff', 'side', 'high' );
 	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sp_staff_profile_meta', 'sp_staff', 'normal', 'high' );
 }
-function sp_staff_team_meta( $post, $metabox ) {
-	global $post_id;
-	sp_post_checklist( $post_id, 'sp_team', true );
+function sp_staff_team_meta( $post ) {
+	sp_post_checklist( $post->ID, 'sp_team', true );
 	sp_nonce();
 }
 
-function sp_staff_profile_meta( $post, $metabox ) {
+function sp_staff_profile_meta( $post ) {
 	wp_editor( $post->post_content, 'content' );
 }
 
-function sp_staff_edit_columns( $columns ) {
+function sp_staff_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Name', 'sportspress' ),
@@ -46,45 +45,4 @@ function sp_staff_edit_columns( $columns ) {
 	return $columns;
 }
 add_filter( 'manage_edit-sp_staff_columns', 'sp_staff_edit_columns' );
-
-function sp_staff_request_filter_dropdowns() {
-	global $typenow, $wp_query;
-	if ( $typenow == 'sp_staff' ) {
-
-		// Positions
-		$selected = isset( $_REQUEST['sp_position'] ) ? $_REQUEST['sp_position'] : null;
-		$args = array(
-			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Positions', 'sportspress' ) ),
-			'taxonomy' => 'sp_position',
-			'name' => 'sp_position',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
-		echo PHP_EOL;
-
-		// Leagues
-		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
-		$args = array(
-			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
-			'taxonomy' => 'sp_league',
-			'name' => 'sp_league',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
-		echo PHP_EOL;
-
-		// Seasons
-		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
-		$args = array(
-			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
-			'taxonomy' => 'sp_season',
-			'name' => 'sp_season',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
-		echo PHP_EOL;
-		
-	}
-}
-add_action( 'restrict_manage_posts', 'sp_staff_request_filter_dropdowns' );
 ?>
