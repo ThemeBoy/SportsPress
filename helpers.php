@@ -117,7 +117,7 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 			global $post_id;
 		$obj = get_post_type_object( $meta );
 		?>
-		<div id="<?php echo $meta; ?>-all" class="wp-tab-panel" style="display: <?php echo $display; ?>;">
+		<div id="<?php echo $meta; ?>-all" class="wp-tab-panel sp-tab-panel" style="display: <?php echo $display; ?>;">
 			<input type="hidden" value="0" name="sportspress[<?php echo $meta; ?>]" />
 			<ul class="categorychecklist form-no-clear">
 				<?php
