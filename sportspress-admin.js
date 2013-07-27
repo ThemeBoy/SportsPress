@@ -6,7 +6,13 @@ jQuery(document).ready(function($){
 	});
 	// Filter tabs
 	$('.sp-tab-panel').siblings('.sp-tab-select').find('select').change(function() {
-		$(this).closest('.sp-tab-select').siblings('.sp-tab-panel').find('.sp-post').hide().filter('.sp-filter-'+$(this).val()).show();
+		$val = $(this).val();
+		$(this).closest('.sp-tab-select').siblings('.sp-tab-panel').find('.sp-post').hide(0, function() {
+			$(this).find('input').prop('disabled', true);
+			$(this).filter('.sp-filter-'+$val).show(0, function() {
+				$(this).find('input').prop('disabled', false);
+			});
+		});
 		return;
 	});
 	// Activate tab filters
