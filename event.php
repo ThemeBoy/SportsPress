@@ -46,7 +46,7 @@ function sp_event_team_meta( $post ) {
 					'post_type' => 'sp_team',
 					'name' => 'sportspress[sp_team][]',
 					'class' => 'sportspress-pages',
-					'show_option_none' => __( 'None' ),
+					'show_option_none' => sprintf( __( 'Select %s' ), 'Team' ),
 					'option_none_value' => 0,
 					'selected' => $teams[ $i ]
 				);
