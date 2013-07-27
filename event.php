@@ -40,7 +40,7 @@ function sp_event_team_meta( $post ) {
 	for ( $i = 0; $i < $limit; $i++ ):
 		?>
 		<div>
-			<p class="sp-tab-select">
+			<p class="sp-tab-select sp-title-generator">
 				<?php
 				$args = array(
 					'post_type' => 'sp_team',
