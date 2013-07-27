@@ -68,7 +68,6 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 
 if ( ! function_exists( 'sp_the_posts' ) ) {
 	function sp_the_posts( $post_id = null, $meta = 'post', $before = '', $sep = ', ', $after = '', $delimiter = '— ' ) {
-		echo $before;
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		$posts = get_post_meta( $post_id, $meta, false );
@@ -76,6 +75,12 @@ if ( ! function_exists( 'sp_the_posts' ) ) {
 		$count = count( $posts );
 		if ( isset( $posts ) && $posts && is_array( $posts ) ):
 			foreach ( $posts as $post ):
+				if ( !empty( $before ) ):
+					if ( is_array( $before ) && array_key_exists( $i, $before ) )
+						echo $before[ $i ] . ' ';
+					else
+						echo $before;
+				endif;
 				$parents = get_post_ancestors( $post );
 				$parents = array_combine( array_keys( $parents ), array_reverse( array_values( $parents ) ) );
 				foreach ( $parents as $parent ):
@@ -84,12 +89,16 @@ if ( ! function_exists( 'sp_the_posts' ) ) {
 					echo $delimiter;
 				endforeach;
 				edit_post_link( get_the_title( $post ), '', '', $post );
-				if ( ++$i !== $count ) {
+				if ( !empty( $after ) ):
+					if ( is_array( $after ) && array_key_exists( $i, $after ) )
+						echo ' ' . $after[ $i ];
+					else
+						echo $after;
+				endif;
+				if ( ++$i !== $count )
 					echo $sep;
-				  }
 			endforeach;
 		endif;
-		echo $after;
 	}
 }
 

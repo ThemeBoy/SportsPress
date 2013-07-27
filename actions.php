@@ -19,7 +19,7 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '—';
 			break;
 		case 'sp_team':
-			echo get_post_meta ( $post_id, 'sp_team' ) ? sp_the_posts( $post_id, 'sp_team', '', '<br />' ) : '—';
+			echo get_post_meta ( $post_id, 'sp_team' ) ? sp_the_posts( $post_id, 'sp_team', '', '<br />', get_post_meta( $post_id, 'sp_score', false ) ) : '—';
 			break;
 		case 'sp_event':
 			echo get_post_meta ( $post_id, 'sp_event' ) ? sizeof( get_post_meta ( $post_id, 'sp_event' ) ) : '—';
