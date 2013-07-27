@@ -14,6 +14,7 @@ $sportspress_texts = array(
 		'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Logo', 'sportspress' ) )
 	),
 	'sp_event' => array(
+		'Enter title here' => '',
 		'Scheduled for: <b>%1$s</b>' => __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>',
 		'Published on: <b>%1$s</b>' => __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>',
 		'Publish <b>immediately</b>' => __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>'

@@ -12,7 +12,15 @@ function sp_settings_menu() {
 add_action('admin_menu', 'sp_settings_menu');
 
 function sp_settings_page() {
-     echo '<input type="text" id="datepicker" name="example[datepicker]" value="" class="sp_datepicker" />';
+	?>
+	<div class="wrap">
+		<h2 class="nav-tab-wrapper">
+			<?php _e( 'SportsPress Settings', 'sportspress' ); ?>
+			<a href="#" class="nav-tab nav-tab-active">Tab 1</a>
+			<a href="#" class="nav-tab">Tab 2</a>
+		</h2>
+	</div>
+	<?php
      /*
 	if ( true | ! current_user_can( 'manage_options' ) ) wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	$hidden_field_name = 'tb_submit_hidden';
