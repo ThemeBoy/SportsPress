@@ -103,6 +103,12 @@
 	text-align: center;
 }
 
+td.sp_team .sp_before,
+td.sp_team .sp_after {
+	color: #999;
+	font-weight: normal;
+}
+
 /* admin skin */
 /*
 #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, #adminmenu li.current a.menu-top, .folded #adminmenu li.wp-has-current-submenu, .folded #adminmenu li.current.menu-top, #adminmenu li.wp-has-current-submenu .wp-menu-arrow, #adminmenu li.current .wp-menu-arrow, #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
