@@ -70,28 +70,29 @@ if ( ! function_exists( 'sp_the_posts' ) ) {
 	function sp_the_posts( $post_id = null, $meta = 'post', $before = '', $sep = ', ', $after = '', $delimiter = '— ' ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
-		$posts = get_post_meta( $post_id, $meta, false );
+		$ids = get_post_meta( $post_id, $meta, false );
 		$i = 0;
-		$count = count( $posts );
-		if ( isset( $posts ) && $posts && is_array( $posts ) ):
-			foreach ( $posts as $post ):
+		$count = count( $ids );
+		if ( isset( $ids ) && $ids && is_array( $ids ) ):
+			foreach ( $ids as $id ):
+				if ( !$id ) continue;
 				if ( !empty( $before ) ):
 					if ( is_array( $before ) && array_key_exists( $i, $before ) )
-						echo $before[ $i ] . ' ';
+						echo '<span class="sp_before">(' . $before[ $i ] . ')</span> ';
 					else
 						echo $before;
 				endif;
-				$parents = get_post_ancestors( $post );
+				$parents = get_post_ancestors( $id );
 				$parents = array_combine( array_keys( $parents ), array_reverse( array_values( $parents ) ) );
 				foreach ( $parents as $parent ):
-					if ( !in_array( $parent, $posts ) )
+					if ( !in_array( $parent, $ids ) )
 						edit_post_link( get_the_title( $parent ), '', ' ', $parent );
 					echo $delimiter;
 				endforeach;
-				edit_post_link( get_the_title( $post ), '', '', $post );
+				edit_post_link( get_the_title( $id ), '', '', $id );
 				if ( !empty( $after ) ):
 					if ( is_array( $after ) && array_key_exists( $i, $after ) )
-						echo ' ' . $after[ $i ];
+						echo ' <span class="sp_after">(' . $after[ $i ] . ')</span>';
 					else
 						echo $after;
 				endif;
