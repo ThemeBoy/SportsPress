@@ -36,6 +36,7 @@ function sp_event_team_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0);
 	$scores = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_score', false ), 0, $limit ), $limit, 0);
+	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
 	for ( $i = 0; $i < $limit; $i++ ):
 		?>
 		<div>
@@ -58,8 +59,8 @@ function sp_event_team_meta( $post ) {
 				<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
 			</ul>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_player', false, 'block', 'sp_team' );
-			sp_post_checklist( $post->ID, 'sp_staff', $i == $limit - 1, 'none', 'sp_team' );
+			sp_post_checklist( $post->ID, 'sp_player', false, 'block', 'sp_team', $i );
+			sp_post_checklist( $post->ID, 'sp_staff', $i == $limit - 1, 'none', 'sp_team', $i );
 			?>
 		</div>
 		<?php
