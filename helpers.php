@@ -102,24 +102,6 @@ if ( ! function_exists( 'sp_the_posts' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_team_logo' ) ) {
-	function sp_team_logo( $post_id = null ) {
-		if ( ! isset( $post_id ) )
-			global $post_id;
-		if ( has_post_thumbnail( $post_id ) ):
-			the_post_thumbnail( 'sp_icon' );
-		else:
-			$parents = get_post_ancestors( $post_id );
-			foreach ( $parents as $parent ) {
-				if( has_post_thumbnail( $parent ) ) {
-					echo get_the_post_thumbnail( $parent, 'sp_icon');
-					break;
-				}
-			}
-		endif;
-	}
-}
-
 if ( ! function_exists( 'sp_post_checklist' ) ) {
 	function sp_post_checklist( $post_id = null, $meta = 'post', $add_new_item = true, $display = 'block', $data = null, $index = null ) {
 		if ( ! isset( $post_id ) )
