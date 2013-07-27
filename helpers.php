@@ -112,12 +112,12 @@ if ( ! function_exists( 'sp_team_logo' ) ) {
 }
 
 if ( ! function_exists( 'sp_post_checklist' ) ) {
-	function sp_post_checklist( $post_id = null, $meta = 'post', $add_new_item = true, $display = 'block' ) {
+	function sp_post_checklist( $post_id = null, $meta = 'post', $add_new_item = true, $display = 'block', $data = null ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		$obj = get_post_type_object( $meta );
 		?>
-		<div id="<?php echo $meta; ?>-all" class="wp-tab-panel sp-tab-panel" style="display: <?php echo $display; ?>;">
+		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel" style="display: <?php echo $display; ?>;">
 			<input type="hidden" value="0" name="sportspress[<?php echo $meta; ?>]" />
 			<ul class="categorychecklist form-no-clear">
 				<?php
@@ -127,8 +127,17 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 					$posts = get_posts( array( 'post_type' => $meta, 'numberposts' => 0 ) );
 				foreach ( $posts as $post ):
 					$parents = get_post_ancestors( $post );
+					if ( $data )
+						$data_values = (array)get_post_meta( $post->ID, $data, false )
 					?>
-					<li>
+					<li class="sp-post<?php
+						if ( $data ):
+							echo ' sp-filter-0';
+							foreach ( $data_values as $data_value ):
+								echo ' sp-filter-' . $data_value;
+							endforeach;
+						endif;
+					?>">
 						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
 							<input type="checkbox" value="<?php echo $post->ID; ?>" name="sportspress[<?php echo $meta; ?>][]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
