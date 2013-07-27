@@ -101,8 +101,9 @@ function sp_save_post( $post_id ) {
 			foreach ( $sportspress as $key => $value ):
 				delete_post_meta( $post_id, $key );
 				if ( is_array( $value ) ):
-					foreach ( $value as $single_value ):
-						add_post_meta( $post_id, $key, $single_value, false );
+					$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $value ) );
+					foreach ( $values as $value ):
+						add_post_meta( $post_id, $key, $value, false );
 					endforeach;
 				else:
 					update_post_meta( $post_id, $key, $value );

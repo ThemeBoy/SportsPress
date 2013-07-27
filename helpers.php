@@ -112,16 +112,27 @@ if ( ! function_exists( 'sp_team_logo' ) ) {
 }
 
 if ( ! function_exists( 'sp_post_checklist' ) ) {
-	function sp_post_checklist( $post_id = null, $meta = 'post', $add_new_item = true, $display = 'block', $data = null ) {
+	function sp_post_checklist( $post_id = null, $meta = 'post', $add_new_item = true, $display = 'block', $data = null, $index = null ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		$obj = get_post_type_object( $meta );
 		?>
 		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel" style="display: <?php echo $display; ?>;">
-			<input type="hidden" value="0" name="sportspress[<?php echo $meta; ?>]" />
+			<input type="hidden" value="0" name="sportspress[<?php echo $meta; ?>]<?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<?php
 				$selected = (array)get_post_meta( $post_id, $meta, false );
+				if ( isset( $index ) ):
+					$keys = array_keys( $selected, 0 );
+					if ( array_key_exists( $index, $keys ) ):
+						$offset = $keys[ $index ];
+						$end = sizeof( $selected );
+						if ( array_key_exists( $index + 1, $keys ) )
+							$end = $keys[ $index + 1 ];
+						$length = $end - $offset;
+						$selected = array_slice( $selected, $offset, $length );
+					endif;
+				endif;
 				$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
 				if ( empty( $posts ) )
 					$posts = get_posts( array( 'post_type' => $meta, 'numberposts' => 0 ) );
@@ -140,7 +151,7 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 					?>">
 						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
-							<input type="checkbox" value="<?php echo $post->ID; ?>" name="sportspress[<?php echo $meta; ?>][]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
+							<input type="checkbox" value="<?php echo $post->ID; ?>" name="sportspress[<?php echo $meta; ?>]<?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
 							<?php echo $post->post_title; ?>
 						</label>
 						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
