@@ -39,25 +39,27 @@ function sp_event_team_meta( $post ) {
 	for ( $i = 0; $i < $limit; $i++ ):
 		?>
 		<div>
-			<p>
+			<p class="sp-tab-select">
 				<?php
 				$args = array(
 					'post_type' => 'sp_team',
 					'name' => 'sportspress[sp_team][]',
 					'class' => 'sportspress-pages',
+					'show_option_none' => __( 'None' ),
+					'option_none_value' => 0,
 					'selected' => $teams[ $i ]
 				);
 				wp_dropdown_pages( $args );
 				?>
 				<input name="sportspress[sp_score][]" type="text" placeholder="<?php _e( 'Score', 'sportspress' ); ?>" size="4" value="<?php echo $scores[ $i ]; ?>" />
 			</p>
-			<ul id="sportspress-tabs" class="wp-tab-bar">
+			<ul id="sp_team-tabs" class="wp-tab-bar sp-tab-bar">
 				<li class="wp-tab-active"><a href="#sp_player-all"><?php _e( 'Players', 'sportspress' ); ?></a></li>
 				<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
 			</ul>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_player', false );
-			sp_post_checklist( $post->ID, 'sp_staff', $i == $limit - 1, 'none' );
+			sp_post_checklist( $post->ID, 'sp_player', false, 'block', 'sp_team' );
+			sp_post_checklist( $post->ID, 'sp_staff', $i == $limit - 1, 'none', 'sp_team' );
 			?>
 		</div>
 		<?php
