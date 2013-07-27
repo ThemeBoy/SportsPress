@@ -11,6 +11,7 @@ function sp_after_theme_setup() {
 add_action( 'after_theme_setup', 'sp_after_theme_setup' );
 
 function sp_manage_posts_custom_column( $column, $post_id ) {
+	global $post;
 	switch ( $column ):
 		case 'sp_icon':
 			the_post_thumbnail( 'sp_icon' );
@@ -31,7 +32,7 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			echo get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : '—';
 			break;
 		case 'sp_kickoff':
-			echo get_the_date ( get_option ( 'date_format' ) ) . '<br />' . get_the_time ( get_option ( 'time_format' ) );
+			echo ( $post->post_status == 'future' ? __( 'Scheduled' ) : __( 'Played', 'sportspress' ) ) . '<br />' . date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) );
 			break;
 		case 'sp_address':
 			echo get_post_meta( $post_id, 'sp_address', true ) ? get_post_meta( $post_id, 'sp_address', true ) : '—';
