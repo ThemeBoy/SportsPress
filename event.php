@@ -30,12 +30,12 @@ function sp_event_meta_init() {
 	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_event_team_meta', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sp_event_article_meta', 'sp_event', 'normal', 'high' );
+	add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_event_stats_meta', 'sp_event', 'normal', 'high' );
 }
 
 function sp_event_team_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0);
-	$scores = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_score', false ), 0, $limit ), $limit, 0);
 	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
 	for ( $i = 0; $i < $limit; $i++ ):
 		?>
@@ -52,7 +52,6 @@ function sp_event_team_meta( $post ) {
 				);
 				wp_dropdown_pages( $args );
 				?>
-				<input name="sportspress[sp_score][]" type="text" placeholder="<?php _e( 'Score', 'sportspress' ); ?>" size="4" value="<?php echo $scores[ $i ]; ?>" />
 			</p>
 			<ul id="sp_team-tabs" class="wp-tab-bar sp-tab-bar">
 				<li class="wp-tab-active"><a href="#sp_player-all"><?php _e( 'Players', 'sportspress' ); ?></a></li>
@@ -71,6 +70,23 @@ function sp_event_team_meta( $post ) {
 
 function sp_event_article_meta( $post ) {
 	wp_editor( $post->post_content, 'content' );
+}
+
+function sp_event_stats_meta( $post ) {
+	$limit = get_option( 'sp_event_team_count' );
+	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0);
+	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
+	for ( $i = 0; $i < $limit; $i++ ):
+		?>
+		<div>
+			<p>
+				<strong><?php echo $teams[ $i ] ? get_the_title( $teams[ $i ] ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong>
+			</p>
+			<?php sp_post_table( $post->ID, 'sp_player', 'block', 'sp_team', $i ); ?>
+		</div>
+		<?php
+	endfor;
+	sp_post_adder( 'sp_player' );
 }
 
 function sp_event_edit_columns() {

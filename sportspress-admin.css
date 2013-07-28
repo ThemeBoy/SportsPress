@@ -97,6 +97,17 @@
 #sp_profilediv .wp-editor-container {
 	background-color:#fff;
 }
+#sp_statsdiv .widefat td {
+	padding: 4px 7px;
+	line-height: 2;
+}
+#sp_statsdiv .widefat td:first-child {
+	white-space: nowrap;
+}
+#sp_statsdiv .widefat input[type="text"],
+#sp_statsdiv .widefat input[type="number"] {
+	width: 100%;
+}
 .widefat th.column-sp_icon,
 .widefat td.column-sp_icon {
 	width: 32px;
