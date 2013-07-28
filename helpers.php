@@ -187,12 +187,15 @@ if ( ! function_exists( 'sp_post_table' ) ) {
 						$ids = array_slice( $ids, $offset, $length );
 					endif;
 				endif;
+				$i = 0;
 				foreach ( $ids as $id ):
 					if ( !$id ) continue;
 					if ( $data )
 						$data_values = (array)get_post_meta( $id, $data, false )
 					?>
 					<tr class="sp-post<?php
+						if ( $i % 2 == 0 )
+							echo ' alternate';
 						if ( $data ):
 							echo ' sp-filter-0';
 							foreach ( $data_values as $data_value ):
@@ -200,20 +203,20 @@ if ( ! function_exists( 'sp_post_table' ) ) {
 							endforeach;
 						endif;
 					?>">
-						<td>
-							<label class="selectit">
-								<?php echo get_the_title( $id ); ?>
-							</label>
-						</td>
+						<td><?php echo get_the_title( $id ); ?></td>
 						<td><input type="number" value="1" /></td>
 						<td><input type="number" value="2" /></td>
 						<td><input type="number" value="3" /></td>
 						<td><input type="number" value="4" /></td>
 					</tr>
 					<?php
+					$i++;
 				endforeach;
 				?>
-				<tr>
+				<tr<?php
+						if ( $i % 2 == 0 )
+							echo ' class="alternate"';
+					?>>
 					<td><strong>Total</strong></td>
 					<td><input type="number" value="1" /></td>
 					<td><input type="number" value="2" /></td>
