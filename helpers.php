@@ -157,6 +157,75 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 	}
 }
 
+if ( ! function_exists( 'sp_post_table' ) ) {
+	function sp_post_table( $post_id = null, $meta = 'post', $display = 'block', $data = null, $index = null ) {
+		if ( ! isset( $post_id ) )
+			global $post_id;
+		$obj = get_post_type_object( $meta );
+		?>
+		<table class="widefat">
+			<thead>
+				<tr>
+					<th>Player</th>
+					<th>Goals</th>
+					<th>Assists</th>
+					<th>Yellow Cards</th>
+					<th>Red Cards</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$ids = (array)get_post_meta( $post_id, $meta, false );
+				if ( isset( $index ) ):
+					$keys = array_keys( $ids, 0 );
+					if ( array_key_exists( $index, $keys ) ):
+						$offset = $keys[ $index ];
+						$end = sizeof( $ids );
+						if ( array_key_exists( $index + 1, $keys ) )
+							$end = $keys[ $index + 1 ];
+						$length = $end - $offset;
+						$ids = array_slice( $ids, $offset, $length );
+					endif;
+				endif;
+				foreach ( $ids as $id ):
+					if ( !$id ) continue;
+					if ( $data )
+						$data_values = (array)get_post_meta( $id, $data, false )
+					?>
+					<tr class="sp-post<?php
+						if ( $data ):
+							echo ' sp-filter-0';
+							foreach ( $data_values as $data_value ):
+								echo ' sp-filter-' . $data_value;
+							endforeach;
+						endif;
+					?>">
+						<td>
+							<label class="selectit">
+								<?php echo get_the_title( $id ); ?>
+							</label>
+						</td>
+						<td><input type="number" value="1" /></td>
+						<td><input type="number" value="2" /></td>
+						<td><input type="number" value="3" /></td>
+						<td><input type="number" value="4" /></td>
+					</tr>
+					<?php
+				endforeach;
+				?>
+				<tr>
+					<td><strong>Total</strong></td>
+					<td><input type="number" value="1" /></td>
+					<td><input type="number" value="2" /></td>
+					<td><input type="number" value="3" /></td>
+					<td><input type="number" value="4" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<?php
+	}
+}
+
 if ( ! function_exists( 'sp_post_adder' ) ) {
 	function sp_post_adder( $meta = 'post' ) {
 		$obj = get_post_type_object( $meta );
