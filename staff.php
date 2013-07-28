@@ -25,7 +25,8 @@ function sp_staff_meta_init() {
 	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sp_staff_profile_meta', 'sp_staff', 'normal', 'high' );
 }
 function sp_staff_team_meta( $post ) {
-	sp_post_checklist( $post->ID, 'sp_team', true );
+	sp_post_checklist( $post->ID, 'sp_team' );
+	sp_post_adder( 'sp_team' );
 	sp_nonce();
 }
 

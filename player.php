@@ -26,7 +26,8 @@ function sp_player_meta_init() {
 }
 
 function sp_player_team_meta( $post ) {
-	sp_post_checklist( $post->ID, 'sp_team', true );
+	sp_post_checklist( $post->ID, 'sp_team' );
+	sp_post_adder( 'sp_team' );
 	sp_nonce();
 }
 

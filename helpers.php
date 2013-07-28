@@ -104,7 +104,7 @@ if ( ! function_exists( 'sp_the_posts' ) ) {
 }
 
 if ( ! function_exists( 'sp_post_checklist' ) ) {
-	function sp_post_checklist( $post_id = null, $meta = 'post', $add_new_item = true, $display = 'block', $data = null, $index = null ) {
+	function sp_post_checklist( $post_id = null, $meta = 'post', $display = 'block', $data = null, $index = null ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		$obj = get_post_type_object( $meta );
@@ -153,16 +153,22 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 				?>
 			</ul>
 		</div>
-		<?php if ( $add_new_item ): ?>
-			<div id="<?php echo $meta; ?>-adder">
-				<h4>
-					<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=' . $meta ); ?>" target="_blank">
-						+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), $obj->labels->singular_name ); ?>
-					</a>
-				</h4>
-			</div>
 		<?php
-		endif;
+	}
+}
+
+if ( ! function_exists( 'sp_post_adder' ) ) {
+	function sp_post_adder( $meta = 'post' ) {
+		$obj = get_post_type_object( $meta );
+		?>
+		<div id="<?php echo $meta; ?>-adder">
+			<h4>
+				<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=' . $meta ); ?>" target="_blank">
+					+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), $obj->labels->singular_name ); ?>
+				</a>
+			</h4>
+		</div>
+		<?php
 	}
 }
 ?>

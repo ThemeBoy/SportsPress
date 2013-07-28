@@ -28,7 +28,7 @@ add_filter( 'the_posts', 'sp_event_display_scheduled' );
 function sp_event_meta_init() {
 	remove_meta_box( 'submitdiv', 'sp_event', 'side' );
 	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
-	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_event_team_meta', 'sp_event', 'normal', 'high' );
+	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_event_team_meta', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sp_event_article_meta', 'sp_event', 'normal', 'high' );
 }
 
@@ -59,12 +59,13 @@ function sp_event_team_meta( $post ) {
 				<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
 			</ul>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_player', false, 'block', 'sp_team', $i );
-			sp_post_checklist( $post->ID, 'sp_staff', $i == $limit - 1, 'none', 'sp_team', $i );
+			sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_team', $i );
+			sp_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_team', $i );
 			?>
 		</div>
 		<?php
 	endfor;
+	sp_post_adder( 'sp_team' );
 	sp_nonce();
 }
 
