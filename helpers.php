@@ -177,18 +177,16 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 }
 
 if ( ! function_exists( 'sp_data_table' ) ) {
-	function sp_data_table( $data = array(), $index = 0 ) {
+	function sp_data_table( $data = array(), $index = 0, $columns = array( 'Name' ) ) {
 		if ( !is_array( $data ) )
 			$data = array();
 		?>
 		<table class="widefat">
 			<thead>
 				<tr>
-					<th>Player</th>
-					<th>Goals</th>
-					<th>Assists</th>
-					<th>Yellow Cards</th>
-					<th>Red Cards</th>
+					<?php foreach ( $columns as $column ): ?>
+						<th><?php echo $column; ?></th>
+					<?php endforeach; ?>
 				</tr>
 			</thead>
 			<tbody>
@@ -202,13 +200,13 @@ if ( ! function_exists( 'sp_data_table' ) ) {
 							echo ' alternate';
 					?>">
 						<td><?php echo get_the_title( $key ); ?></td>
-						<?php for ( $j = 0; $j < 4; $j ++ ):
+						<?php for ( $j = 0; $j < sizeof( $columns ) - 1; $j ++ ):
 							if ( array_key_exists( $j, $values ) )
 								$value = (int)$values[ $j ];
 							else
 								$value = 0;
 							?>
-							<td><input type="number" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>" /></td>
+							<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>" /></td>
 						<?php endfor; ?>
 					</tr>
 					<?php
@@ -221,13 +219,13 @@ if ( ! function_exists( 'sp_data_table' ) ) {
 							echo ' class="alternate"';
 					?>>
 					<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
-					<?php for ( $j = 0; $j < 4; $j ++ ):
+					<?php for ( $j = 0; $j < sizeof( $columns ) - 1; $j ++ ):
 							if ( array_key_exists( $j, $values ) )
 								$value = (int)$values[ $j ];
 							else
 								$value = 0;
 						?>
-						<td><input type="number" name="sportspress[sp_stats][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" /></td>
+						<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" /></td>
 					<?php endfor; ?>
 				</tr>
 			</tbody>

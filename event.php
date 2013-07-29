@@ -84,7 +84,6 @@ function sp_event_stats_meta( $post ) {
 			</p>
 			<?php
 				$ids = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
-				$size = sizeof( $ids );
 				if ( array_key_exists( $value, $stats ) )
 					$team_stats = (array)$stats[ $value ];
 				$data = array();
@@ -94,7 +93,7 @@ function sp_event_stats_meta( $post ) {
 					else
 						$data[ $id ] = array();
 				endforeach;
-				sp_data_table( $data, $value );
+				sp_data_table( $data, $value, array( 'Player', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) );
 			?>
 		</div>
 		<?php
