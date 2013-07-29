@@ -181,7 +181,7 @@ if ( ! function_exists( 'sp_data_table' ) ) {
 		if ( !is_array( $data ) )
 			$data = array();
 		?>
-		<table class="widefat">
+		<table class="widefat sp-stats-table">
 			<thead>
 				<tr>
 					<?php foreach ( $columns as $column ): ?>

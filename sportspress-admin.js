@@ -20,6 +20,11 @@ jQuery(document).ready(function($){
 	// Activate tab filters
 	$('.sp-tab-panel').siblings('.sp-tab-select').find('select').change();
 
+	// Stats table checkboxes
+	$('.sp-stats-table tr input[type=checkbox]').change(function() {
+		$(this).closest('tr').find('input[type=text], input[type=number]').prop('readonly', $(this).prop('checked'));
+	})
+
 	// Change title
 	$('.sp-title-generator select').change(function() {
 		title = $('.sp-title-generator select[value!=0]').map(function(){
