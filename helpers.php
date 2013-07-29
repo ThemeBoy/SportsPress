@@ -1,4 +1,22 @@
 <?php
+if ( ! function_exists( 'sp_array_depth' ) ) {
+	function sp_array_depth( $array ) {
+	    $max_depth = 1;
+	    if ( is_array( $array ) ):
+		    foreach ( $array as $value ):
+		        if ( is_array( $value ) ):
+		            $depth = sp_array_depth( $value ) + 1;
+		            if ( $depth > $max_depth )
+		                $max_depth = $depth;
+		        endif;
+		    endforeach;
+	    	return $max_depth;
+		else:
+			return 0;
+		endif;
+	}
+}
+
 if ( ! function_exists( 'sp_get_cpt_labels' ) ) {
 	function sp_get_cpt_labels( $name, $singular_name ) {
 		$labels = array(
@@ -103,41 +121,42 @@ if ( ! function_exists( 'sp_the_posts' ) ) {
 	}
 }
 
+function sp_array_between ( $array = array(), $delimiter = 0, $index = 0 ) {
+	$keys = array_keys( $array, $delimiter );
+	if ( array_key_exists( $index, $keys ) ):
+		$offset = $keys[ $index ];
+		$end = sizeof( $array );
+		if ( array_key_exists( $index + 1, $keys ) )
+			$end = $keys[ $index + 1 ];
+		$length = $end - $offset;
+		$array = array_slice( $array, $offset, $length );
+	endif;
+	return $array;
+}
+
 if ( ! function_exists( 'sp_post_checklist' ) ) {
-	function sp_post_checklist( $post_id = null, $meta = 'post', $display = 'block', $data = null, $index = null ) {
+	function sp_post_checklist( $post_id = null, $meta = 'post', $display = 'block', $filter = null, $index = null ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
-		$obj = get_post_type_object( $meta );
 		?>
 		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel" style="display: <?php echo $display; ?>;">
 			<input type="hidden" value="0" name="sportspress[<?php echo $meta; ?>]<?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<?php
-				$selected = (array)get_post_meta( $post_id, $meta, false );
-				if ( isset( $index ) ):
-					$keys = array_keys( $selected, 0 );
-					if ( array_key_exists( $index, $keys ) ):
-						$offset = $keys[ $index ];
-						$end = sizeof( $selected );
-						if ( array_key_exists( $index + 1, $keys ) )
-							$end = $keys[ $index + 1 ];
-						$length = $end - $offset;
-						$selected = array_slice( $selected, $offset, $length );
-					endif;
-				endif;
+				$selected = sp_array_between( (array)get_post_meta( $post_id, $meta, false ), 0, $index );
 				$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
 				if ( empty( $posts ) )
 					$posts = get_posts( array( 'post_type' => $meta, 'numberposts' => 0 ) );
 				foreach ( $posts as $post ):
 					$parents = get_post_ancestors( $post );
-					if ( $data )
-						$data_values = (array)get_post_meta( $post->ID, $data, false )
+					if ( $filter )
+						$filter_values = (array)get_post_meta( $post->ID, $filter, false )
 					?>
 					<li class="sp-post<?php
-						if ( $data ):
+						if ( $filter ):
 							echo ' sp-filter-0';
-							foreach ( $data_values as $data_value ):
-								echo ' sp-filter-' . $data_value;
+							foreach ( $filter_values as $filter_value ):
+								echo ' sp-filter-' . $filter_value;
 							endforeach;
 						endif;
 					?>">
@@ -157,11 +176,10 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_post_table' ) ) {
-	function sp_post_table( $post_id = null, $meta = 'post', $display = 'block', $data = null, $index = null ) {
-		if ( ! isset( $post_id ) )
-			global $post_id;
-		$obj = get_post_type_object( $meta );
+if ( ! function_exists( 'sp_data_table' ) ) {
+	function sp_data_table( $data = array(), $index = 0 ) {
+		if ( !is_array( $data ) )
+			$data = array();
 		?>
 		<table class="widefat">
 			<thead>
@@ -175,53 +193,42 @@ if ( ! function_exists( 'sp_post_table' ) ) {
 			</thead>
 			<tbody>
 				<?php
-				$ids = (array)get_post_meta( $post_id, $meta, false );
-				if ( isset( $index ) ):
-					$keys = array_keys( $ids, 0 );
-					if ( array_key_exists( $index, $keys ) ):
-						$offset = $keys[ $index ];
-						$end = sizeof( $ids );
-						if ( array_key_exists( $index + 1, $keys ) )
-							$end = $keys[ $index + 1 ];
-						$length = $end - $offset;
-						$ids = array_slice( $ids, $offset, $length );
-					endif;
-				endif;
 				$i = 0;
-				foreach ( $ids as $id ):
-					if ( !$id ) continue;
-					if ( $data )
-						$data_values = (array)get_post_meta( $id, $data, false )
+				foreach ( $data as $key => $values ):
+					if ( !$key ) continue;
 					?>
 					<tr class="sp-post<?php
 						if ( $i % 2 == 0 )
 							echo ' alternate';
-						if ( $data ):
-							echo ' sp-filter-0';
-							foreach ( $data_values as $data_value ):
-								echo ' sp-filter-' . $data_value;
-							endforeach;
-						endif;
 					?>">
-						<td><?php echo get_the_title( $id ); ?></td>
-						<td><input type="number" value="1" /></td>
-						<td><input type="number" value="2" /></td>
-						<td><input type="number" value="3" /></td>
-						<td><input type="number" value="4" /></td>
+						<td><?php echo get_the_title( $key ); ?></td>
+						<?php for ( $j = 0; $j < 4; $j ++ ):
+							if ( array_key_exists( $j, $values ) )
+								$value = (int)$values[ $j ];
+							else
+								$value = 0;
+							?>
+							<td><input type="number" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>" /></td>
+						<?php endfor; ?>
 					</tr>
 					<?php
 					$i++;
 				endforeach;
 				?>
 				<tr<?php
+						$values = $data[0];
 						if ( $i % 2 == 0 )
 							echo ' class="alternate"';
 					?>>
-					<td><strong>Total</strong></td>
-					<td><input type="number" value="1" /></td>
-					<td><input type="number" value="2" /></td>
-					<td><input type="number" value="3" /></td>
-					<td><input type="number" value="4" /></td>
+					<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
+					<?php for ( $j = 0; $j < 4; $j ++ ):
+							if ( array_key_exists( $j, $values ) )
+								$value = (int)$values[ $j ];
+							else
+								$value = 0;
+						?>
+						<td><input type="number" name="sportspress[sp_stats][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" /></td>
+					<?php endfor; ?>
 				</tr>
 			</tbody>
 		</table>
