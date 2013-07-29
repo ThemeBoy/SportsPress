@@ -22,6 +22,7 @@ function sp_player_meta_init() {
 	remove_meta_box( 'postimagediv', 'sp_player', 'side' );
 	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_player', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_player_team_meta', 'sp_player', 'side', 'high' );
+	add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_player_stats_meta', 'sp_player', 'normal', 'high' );
 	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sp_player_profile_meta', 'sp_player', 'normal', 'high' );
 }
 
@@ -29,6 +30,20 @@ function sp_player_team_meta( $post ) {
 	sp_post_checklist( $post->ID, 'sp_team' );
 	sp_post_adder( 'sp_team' );
 	sp_nonce();
+}
+
+function sp_player_stats_meta( $post ) {
+	$ids = (array)get_post_meta( $post->ID, 'sp_team', false );
+	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
+	$stats = $stats[0];
+	$data = array();
+	foreach ( $ids as $id ):
+		if ( is_array( $stats ) && array_key_exists( $id, $stats ) )
+			$data[ $id ] = $stats[ $id ];
+		else
+			$data[ $id ] = array();
+	endforeach;
+	sp_data_table( $data, 0, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), false );
 }
 
 function sp_player_profile_meta( $post ) {

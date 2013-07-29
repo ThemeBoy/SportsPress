@@ -46,7 +46,7 @@ function sp_table_stats_meta( $post ) {
 	$stats = $stats[0];
 	$data = array();
 	foreach ( $ids as $id ):
-		if ( array_key_exists( $id, $stats ) )
+		if ( is_array( $stats ) && array_key_exists( $id, $stats ) )
 			$data[ $id ] = $stats[ $id ];
 		else
 			$data[ $id ] = array();
