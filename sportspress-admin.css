@@ -4,7 +4,6 @@
 #adminmenu #menu-posts-sp_staff div.wp-menu-image,
 #adminmenu #menu-posts-sp_sponsor div.wp-menu-image,
 #adminmenu #menu-posts-sp_table div.wp-menu-image,
-#adminmenu #menu-posts-sp_calendar div.wp-menu-image,
 #adminmenu #menu-posts-sp_tournament div.wp-menu-image,
 #adminmenu #menu-posts-sp_venue div.wp-menu-image {
 	background-image: url(images/menu.png);
@@ -61,12 +60,12 @@
 #adminmenu #menu-posts-sp_table.current div.wp-menu-image {
 	background-position: -119px -1px;
 }
-#adminmenu #menu-posts-sp_calendar div.wp-menu-image {
+#adminmenu #menu-posts-sp_list div.wp-menu-image {
 	background-position: -149px -33px;
 }
-#adminmenu #menu-posts-sp_calendar:hover div.wp-menu-image,
-#adminmenu #menu-posts-sp_calendar.wp-has-current-submenu div.wp-menu-image,
-#adminmenu #menu-posts-sp_calendar.current div.wp-menu-image {
+#adminmenu #menu-posts-sp_list:hover div.wp-menu-image,
+#adminmenu #menu-posts-sp_list.wp-has-current-submenu div.wp-menu-image,
+#adminmenu #menu-posts-sp_list.current div.wp-menu-image {
 	background-position: -149px -1px;
 }
 #adminmenu #menu-posts-sp_tournament div.wp-menu-image {
