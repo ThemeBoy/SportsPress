@@ -1,7 +1,7 @@
 <?php
 function sp_table_cpt_init() {
-	$name = __( 'Tables', 'sportspress' );
-	$singular_name = __( 'Table', 'sportspress' );
+	$name = __( 'League Tables', 'sportspress' );
+	$singular_name = __( 'League Table', 'sportspress' );
 	$labels = sp_get_cpt_labels( $name, $singular_name );
 	$args = array(
 		'label' => $name,
@@ -31,7 +31,7 @@ function sp_table_meta_init() {
 	remove_meta_box( 'submitdiv', 'sp_table', 'side' );
 	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_table', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_table_team_meta', 'sp_table', 'side', 'high' );
-	add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_table_stats_meta', 'sp_table', 'normal', 'high' );
+	add_meta_box( 'sp_statsdiv', __( 'League Table', 'sportspress' ), 'sp_table_stats_meta', 'sp_table', 'normal', 'high' );
 }
 
 function sp_table_team_meta( $post ) {

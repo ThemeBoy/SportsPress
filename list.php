@@ -1,7 +1,7 @@
 <?php
-function sp_calendar_cpt_init() {
-	$name = __( 'Calendars', 'sportspress' );
-	$singular_name = __( 'Calendar', 'sportspress' );
+function sp_list_cpt_init() {
+	$name = __( 'Player Lists', 'sportspress' );
+	$singular_name = __( 'Player List', 'sportspress' );
 	$labels = sp_get_cpt_labels( $name, $singular_name );
 	$args = array(
 		'label' => $name,
@@ -9,13 +9,13 @@ function sp_calendar_cpt_init() {
 		'public' => true,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
-		'rewrite' => array( 'slug' => 'calendar' )
+		'rewrite' => array( 'slug' => 'list' )
 	);
-	register_post_type( 'sp_calendar', $args );
+	register_post_type( 'sp_list', $args );
 }
-add_action( 'init', 'sp_calendar_cpt_init' );
+add_action( 'init', 'sp_list_cpt_init' );
 
-function sp_calendar_edit_columns() {
+function sp_list_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Title' ),
@@ -24,5 +24,5 @@ function sp_calendar_edit_columns() {
 	);
 	return $columns;
 }
-add_filter( 'manage_edit-sp_calendar_columns', 'sp_calendar_edit_columns' );
+add_filter( 'manage_edit-sp_list_columns', 'sp_list_edit_columns' );
 ?>

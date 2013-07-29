@@ -36,7 +36,7 @@ require_once dirname( __FILE__ ) . '/event.php';
 require_once dirname( __FILE__ ) . '/player.php';
 require_once dirname( __FILE__ ) . '/staff.php';
 require_once dirname( __FILE__ ) . '/table.php';
-require_once dirname( __FILE__ ) . '/calendar.php';
+require_once dirname( __FILE__ ) . '/list.php';
 require_once dirname( __FILE__ ) . '/tournament.php';
 
 // Taxonomies

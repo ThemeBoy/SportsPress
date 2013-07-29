@@ -45,7 +45,7 @@ add_action( 'manage_pages_custom_column', 'sp_manage_posts_custom_column', 10, 2
 
 function sp_restrict_manage_posts() {
 	global $typenow, $wp_query;
-	if ( in_array( $typenow, array( 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_calendar', 'sp_tournament' ) ) ):
+	if ( in_array( $typenow, array( 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_list', 'sp_tournament' ) ) ):
 		$selected = isset( $_REQUEST['sp_team'] ) ? $_REQUEST['sp_team'] : null;
 		$args = array(
 			'show_option_none' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
@@ -65,7 +65,7 @@ function sp_restrict_manage_posts() {
 		);
 		sp_dropdown_taxonomies( $args );
 	endif;
-	if ( in_array( $typenow, array( 'sp_team', 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_calendar' ) ) ):
+	if ( in_array( $typenow, array( 'sp_team', 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_list' ) ) ):
 		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 		$args = array(
 			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
