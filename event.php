@@ -35,7 +35,7 @@ function sp_event_meta_init() {
 
 function sp_event_team_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
-	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0);
+	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
 	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
 	for ( $i = 0; $i < $limit; $i++ ):
 		?>
@@ -74,18 +74,31 @@ function sp_event_article_meta( $post ) {
 
 function sp_event_stats_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
-	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0);
-	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
-	for ( $i = 0; $i < $limit; $i++ ):
+	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
+	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
+	foreach ( $teams as $key => $value ):
 		?>
 		<div>
 			<p>
-				<strong><?php echo $teams[ $i ] ? get_the_title( $teams[ $i ] ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong>
+				<strong><?php echo $value ? get_the_title( $value ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong>
 			</p>
-			<?php sp_post_table( $post->ID, 'sp_player', 'block', 'sp_team', $i ); ?>
+			<?php
+				$ids = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
+				$size = sizeof( $ids );
+				if ( array_key_exists( $value, $stats ) )
+					$team_stats = (array)$stats[ $value ];
+				$data = array();
+				foreach ( $ids as $id ):
+					if ( array_key_exists( $id, $team_stats ) )
+						$data[ $id ] = $team_stats[ $id ];
+					else
+						$data[ $id ] = array();
+				endforeach;
+				sp_data_table( $data, $value );
+			?>
 		</div>
 		<?php
-	endfor;
+	endforeach;
 	sp_post_adder( 'sp_player' );
 }
 
