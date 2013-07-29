@@ -51,7 +51,6 @@ function sp_table_stats_meta( $post ) {
 		else
 			$data[ $id ] = array();
 	endforeach;
-	sp_data_table( $data, 0, array( 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ) );
-	sp_post_adder( 'sp_team' );
+	sp_data_table( $data, 0, array( 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false );
 }
 ?>
