@@ -3,7 +3,7 @@ function sp_position_tax_init() {
 	$name = __( 'Positions', 'sportspress' );
 	$singular_name = __( 'Position', 'sportspress' );
 	$object_type = array( 'sp_player', 'sp_staff' );
-	$labels = sp_get_tax_labels( $name, $singular_name );
+	$labels = sp_tax_labels( $name, $singular_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,

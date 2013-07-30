@@ -2,7 +2,7 @@
 function sp_player_cpt_init() {
 	$name = __( 'Players', 'sportspress' );
 	$singular_name = __( 'Player', 'sportspress' );
-	$labels = sp_get_cpt_labels( $name, $singular_name );
+	$labels = sp_cpt_labels( $name, $singular_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -41,12 +41,8 @@ function sp_player_stats_meta( $post ) {
 		$data = sp_array_combine( $teams, sp_array_value( $stats, $league->term_id, array() ) );
 		?>
 		<div>
-			<p>
-				<strong><?php echo $league->name; ?></strong>
-			</p>
-			<?php
-				sp_data_table( $data, $league->term_id, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) );
-			?>
+			<p><strong><?php echo $league->name; ?></strong></p>
+			<?php sp_data_table( $data, $league->term_id, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) ); ?>
 		</div>
 		<?php
 	endforeach;

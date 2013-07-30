@@ -2,7 +2,7 @@
 function sp_list_cpt_init() {
 	$name = __( 'Player Lists', 'sportspress' );
 	$singular_name = __( 'Player List', 'sportspress' );
-	$labels = sp_get_cpt_labels( $name, $singular_name );
+	$labels = sp_cpt_labels( $name, $singular_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
