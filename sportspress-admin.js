@@ -32,4 +32,5 @@ jQuery(document).ready(function($){
 		}).get().join(' vs ');
 		$('input[name=post_title]').val(title);
 	});
+
 });

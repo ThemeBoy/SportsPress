@@ -93,7 +93,7 @@ function sp_event_stats_meta( $post ) {
 					else
 						$data[ $id ] = array();
 				endforeach;
-				sp_data_table( $data, $value, array( 'Player', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) );
+				sp_data_table( $data, $value, array( 'Player', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, false );
 			?>
 		</div>
 		<?php
