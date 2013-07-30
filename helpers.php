@@ -46,7 +46,7 @@ if ( !function_exists( 'sp_array_combine' ) ) {
 	function sp_array_combine( $keys = array(), $values = array() ) {
 		$output = array();
 		foreach ( $keys as $key ):
-			if ( array_key_exists( $key, $values ) )
+			if ( is_array( $values ) && array_key_exists( $key, $values ) )
 				$output[ $key ] = $values[ $key ];
 			else
 				$output[ $key ] = array();
@@ -127,9 +127,11 @@ if ( !function_exists( 'sp_the_posts' ) ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		$ids = get_post_meta( $post_id, $meta, false );
+		if ( ( $key = array_search( 0, $ids ) ) !== false )
+		    unset( $ids[ $key ] );
 		$i = 0;
 		$count = count( $ids );
-		if ( isset( $ids ) && $ids && is_array( $ids ) ):
+		if ( isset( $ids ) && $ids && is_array( $ids ) && !empty( $ids ) ):
 			foreach ( $ids as $id ):
 				if ( !$id ) continue;
 				if ( !empty( $before ) ):
@@ -145,7 +147,10 @@ if ( !function_exists( 'sp_the_posts' ) ) {
 						edit_post_link( get_the_title( $parent ), '', '', $parent );
 					echo $delimiter;
 				endforeach;
-				edit_post_link( get_the_title( $id ), '', '', $id );
+				$title = get_the_title( $id );
+				if ( empty( $title ) )
+					$title = __( '(no title)' );
+				edit_post_link( $title, '', '', $id );
 				if ( !empty( $after ) ):
 					if ( is_array( $after ) && array_key_exists( $i, $after ) )
 						echo ' - ' . $after[ $i ];
@@ -188,7 +193,12 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
 							<input type="checkbox" value="<?php echo $post->ID; ?>" name="sportspress[<?php echo $meta; ?>]<?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
-							<?php echo $post->post_title; ?>
+							<?php
+							$title = $post->post_title;
+							if ( empty( $title ) )
+								$title = __( '(no title)' );
+							echo $title;
+							?>
 						</label>
 						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
 					</li>
@@ -202,7 +212,8 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 }
 
 if ( !function_exists( 'sp_data_table' ) ) {
-	function sp_data_table( $data = array(), $index = 0, $columns = array( 'Name' ), $total = true, $auto = true ) {
+	function sp_data_table( $data = array(), $index = 0, $columns = array( 'Name' ), $total = true, $auto = true, $rowtype = 'post' ) {
+		global $pagenow;
 		if ( !is_array( $data ) )
 			$data = array();
 		?>
@@ -222,20 +233,32 @@ if ( !function_exists( 'sp_data_table' ) ) {
 				$i = 0;
 				foreach ( $data as $key => $values ):
 					if ( !$key ) continue;
-					$is_auto = array_key_exists( 'auto', $values ) ? (int)$values[ 'auto' ] : 0;
+					$is_auto = array_key_exists( 'auto', $values ) ? (int)$values[ 'auto' ] : $pagenow == 'post-new.php';
 					?>
-					<tr class="sp-post<?php
-						if ( $i % 2 == 0 )
-							echo ' alternate';
-					?>">
-						<td><?php echo get_the_title( $key ); ?></td>
+					<tr class="sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+						<td>
+							<?php
+							switch( $rowtype ):
+								case 'post':
+									$title = get_the_title( $key );
+									break;
+								default:
+									$term = get_term( $key, $rowtype );
+									$title = $term->name;;
+									break;
+							endswitch;
+							if ( empty( $title ) )
+								$title = __( '(no title)' );
+							echo $title;
+							?>
+						</td>
 						<?php for ( $j = 0; $j < sizeof( $columns ) - 1; $j ++ ):
 							if ( array_key_exists( $j, $values ) )
 								$value = (int)$values[ $j ];
 							else
 								$value = 0;
 							?>
-							<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>"<?php if ( $is_auto ) echo ' readonly="readonly"'; ?> /></td>
+							<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>" /></td>
 						<?php endfor; ?>
 						<?php if ( $auto ): ?>
 							<td><input type="checkbox" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][auto]" value="1"<?php if ( $is_auto ) echo ' checked="checked"'; ?> /></td>
@@ -247,7 +270,7 @@ if ( !function_exists( 'sp_data_table' ) ) {
 				if ( $total ):
 					$values = array_key_exists( 0, $data ) ? $data[0] : array();
 					if ( $auto )
-						$is_auto = array_key_exists( 'auto', $values ) ? (int)$values[ 'auto' ] : 0;
+						$is_auto = array_key_exists( 'auto', $values ) ? (int)$values[ 'auto' ] : $pagenow == 'post-new.php';
 					else
 						$is_auto = $i;
 					?>
@@ -262,7 +285,7 @@ if ( !function_exists( 'sp_data_table' ) ) {
 								else
 									$value = 0;
 							?>
-							<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>"<?php if ( $is_auto ) echo ' readonly="readonly"'; ?> /></td>
+							<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" /></td>
 						<?php endfor; ?>
 						<?php if ( $auto ): ?>
 							<td><input type="checkbox" name="sportspress[sp_stats][<?php echo $index; ?>][0][auto]" value="1"<?php if ( $is_auto ) echo ' checked="checked"'; ?> /></td>
