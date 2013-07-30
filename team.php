@@ -21,6 +21,7 @@ function sp_team_meta_init() {
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_team', 'side', 'high' );
 	remove_meta_box( 'postimagediv', 'sp_team', 'side' );
 	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'high' );
+	add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_team_stats_meta', 'sp_team', 'normal', 'high' );
 }
 
 function sp_team_edit_columns() {
@@ -34,4 +35,21 @@ function sp_team_edit_columns() {
 	return $columns;
 }
 add_filter( 'manage_edit-sp_team_columns', 'sp_team_edit_columns' );
+
+function sp_team_stats_meta( $post ) {
+	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
+	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
+
+	$keys = array( 0 );
+	foreach ( $leagues as $key => $value ):
+		if ( is_object( $value ) && property_exists( $value, 'term_id' ) )
+			$keys[] = $value->term_id;
+	endforeach;
+
+	$data = sp_array_combine( $keys, sp_array_value( $stats, 0, array() ) );
+	?>
+	<?php sp_data_table( $data, 0, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, true, 'sp_league' );
+
+	sp_nonce();
+}
 ?>

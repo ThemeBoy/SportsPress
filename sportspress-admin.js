@@ -33,6 +33,9 @@ jQuery(document).ready(function($){
 		}
 	})
 
+	// Activate checkboxes
+	$('.sp-data-table tr input[type=checkbox]').change();
+
 	// Change title
 	$('.sp-title-generator select').change(function() {
 		title = $('.sp-title-generator select[value!=0]').map(function(){

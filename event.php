@@ -76,6 +76,8 @@ function sp_event_stats_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
+
+	// Teams
 	foreach ( $teams as $key => $value ):
 		$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
 		$data = sp_array_combine( $players, sp_array_value( $stats, $value, array() ) );
@@ -86,7 +88,7 @@ function sp_event_stats_meta( $post ) {
 		</div>
 		<?php
 	endforeach;
-	sp_post_adder( 'sp_player' );
+
 }
 
 function sp_event_edit_columns() {
