@@ -1,11 +1,11 @@
 <?php
-if ( ! function_exists( 'sp_array_depth' ) ) {
-	function sp_array_depth( $array ) {
+if ( !function_exists( 'sp_get_array_depth' ) ) {
+	function sp_get_array_depth( $array ) {
 	    $max_depth = 1;
 	    if ( is_array( $array ) ):
 		    foreach ( $array as $value ):
 		        if ( is_array( $value ) ):
-		            $depth = sp_array_depth( $value ) + 1;
+		            $depth = sp_get_array_depth( $value ) + 1;
 		            if ( $depth > $max_depth )
 		                $max_depth = $depth;
 		        endif;
@@ -17,7 +17,45 @@ if ( ! function_exists( 'sp_array_depth' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_get_cpt_labels' ) ) {
+if ( !function_exists( 'sp_array_between' ) ) {
+	function sp_array_between ( $array = array(), $delimiter = 0, $index = 0 ) {
+		$keys = array_keys( $array, $delimiter );
+		if ( array_key_exists( $index, $keys ) ):
+			$offset = $keys[ $index ];
+			$end = sizeof( $array );
+			if ( array_key_exists( $index + 1, $keys ) )
+				$end = $keys[ $index + 1 ];
+			$length = $end - $offset;
+			$array = array_slice( $array, $offset, $length );
+		endif;
+		return $array;
+	}
+}
+
+if ( !function_exists( 'sp_array_value' ) ) {
+	function sp_array_value( $arr = array(), $key = 0, $default = null ) {
+		if ( array_key_exists( $key, $arr ) )
+			$subset = $arr[ $key ];
+		else
+			$subset = $default;
+		return $subset;
+	}
+}
+
+if ( !function_exists( 'sp_array_combine' ) ) {
+	function sp_array_combine( $keys = array(), $values = array() ) {
+		$output = array();
+		foreach ( $keys as $key ):
+			if ( array_key_exists( $key, $values ) )
+				$output[ $key ] = $values[ $key ];
+			else
+				$output[ $key ] = array();
+		endforeach;
+		return $output;
+	}
+}
+
+if ( !function_exists( 'sp_get_cpt_labels' ) ) {
 	function sp_get_cpt_labels( $name, $singular_name ) {
 		$labels = array(
 			'name' => $name,
@@ -36,7 +74,7 @@ if ( ! function_exists( 'sp_get_cpt_labels' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_get_tax_labels' ) ) {
+if ( !function_exists( 'sp_get_tax_labels' ) ) {
 	function sp_get_tax_labels( $name, $singular_name ) {
 		$labels = array(
 			'name' => $name,
@@ -56,7 +94,7 @@ if ( ! function_exists( 'sp_get_tax_labels' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
+if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 	function sp_dropdown_taxonomies( $args = array() ) {
 		$defaults = array(
 			'show_option_all' => false,
@@ -84,7 +122,7 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_the_posts' ) ) {
+if ( !function_exists( 'sp_the_posts' ) ) {
 	function sp_the_posts( $post_id = null, $meta = 'post', $before = '', $sep = ', ', $after = '', $delimiter = ' - ' ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
@@ -121,20 +159,7 @@ if ( ! function_exists( 'sp_the_posts' ) ) {
 	}
 }
 
-function sp_array_between ( $array = array(), $delimiter = 0, $index = 0 ) {
-	$keys = array_keys( $array, $delimiter );
-	if ( array_key_exists( $index, $keys ) ):
-		$offset = $keys[ $index ];
-		$end = sizeof( $array );
-		if ( array_key_exists( $index + 1, $keys ) )
-			$end = $keys[ $index + 1 ];
-		$length = $end - $offset;
-		$array = array_slice( $array, $offset, $length );
-	endif;
-	return $array;
-}
-
-if ( ! function_exists( 'sp_post_checklist' ) ) {
+if ( !function_exists( 'sp_post_checklist' ) ) {
 	function sp_post_checklist( $post_id = null, $meta = 'post', $display = 'block', $filter = null, $index = null ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
@@ -176,7 +201,7 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_data_table' ) ) {
+if ( !function_exists( 'sp_data_table' ) ) {
 	function sp_data_table( $data = array(), $index = 0, $columns = array( 'Name' ), $total = true, $auto = true ) {
 		if ( !is_array( $data ) )
 			$data = array();
@@ -250,7 +275,7 @@ if ( ! function_exists( 'sp_data_table' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_post_adder' ) ) {
+if ( !function_exists( 'sp_post_adder' ) ) {
 	function sp_post_adder( $meta = 'post' ) {
 		$obj = get_post_type_object( $meta );
 		?>

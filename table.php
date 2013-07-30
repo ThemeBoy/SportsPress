@@ -41,16 +41,9 @@ function sp_table_team_meta( $post ) {
 }
 
 function sp_table_stats_meta( $post ) {
-	$ids = (array)get_post_meta( $post->ID, 'sp_team', false );
+	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
-	$stats = $stats[0];
-	$data = array();
-	foreach ( $ids as $id ):
-		if ( is_array( $stats ) && array_key_exists( $id, $stats ) )
-			$data[ $id ] = $stats[ $id ];
-		else
-			$data[ $id ] = array();
-	endforeach;
+	$data = sp_array_combine( $teams, sp_array_value( $stats, 0, array() ) );
 	sp_data_table( $data, 0, array( 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false );
 }
 ?>

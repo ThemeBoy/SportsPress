@@ -103,7 +103,7 @@ function sp_save_post( $post_id ) {
 			foreach ( $sportspress as $key => $value ):
 				delete_post_meta( $post_id, $key );
 				if ( is_array( $value ) ):
-					if ( sp_array_depth( $value ) >= 3 ):
+					if ( sp_get_array_depth( $value ) >= 3 ):
 						add_post_meta( $post_id, $key, $value, false );
 					else:
 						$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $value ) );
