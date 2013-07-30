@@ -21,7 +21,7 @@ jQuery(document).ready(function($){
 	$('.sp-tab-panel').siblings('.sp-tab-select').find('select').change();
 
 	// Stats table checkboxes
-	$('.sp-stats-table tr input[type=checkbox]').change(function() {
+	$('.sp-data-table tr input[type=checkbox]').change(function() {
 		$(this).closest('tr').find('input[type=text], input[type=number]').prop('readonly', $(this).prop('checked'));
 	})
 
