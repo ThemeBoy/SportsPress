@@ -177,7 +177,7 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 }
 
 if ( ! function_exists( 'sp_data_table' ) ) {
-	function sp_data_table( $data = array(), $index = 0, $columns = array( 'Name' ), $total = true ) {
+	function sp_data_table( $data = array(), $index = 0, $columns = array( 'Name' ), $total = true, $auto = true ) {
 		if ( !is_array( $data ) )
 			$data = array();
 		?>
@@ -187,7 +187,9 @@ if ( ! function_exists( 'sp_data_table' ) ) {
 					<?php foreach ( $columns as $column ): ?>
 						<th><?php echo $column; ?></th>
 					<?php endforeach; ?>
-					<th><?php _e( 'Auto', 'sportspress' ); ?></th>
+					<?php if ( $auto ): ?>
+						<th><?php _e( 'Auto', 'sportspress' ); ?></th>
+					<?php endif; ?>
 				</tr>
 			</thead>
 			<tbody>
@@ -195,10 +197,7 @@ if ( ! function_exists( 'sp_data_table' ) ) {
 				$i = 0;
 				foreach ( $data as $key => $values ):
 					if ( !$key ) continue;
-					if ( array_key_exists( 'auto', $values ) )
-						$auto = (int)$values[ 'auto' ];
-					else
-						$auto = 0;
+					$is_auto = array_key_exists( 'auto', $values ) ? (int)$values[ 'auto' ] : 0;
 					?>
 					<tr class="sp-post<?php
 						if ( $i % 2 == 0 )
@@ -211,16 +210,21 @@ if ( ! function_exists( 'sp_data_table' ) ) {
 							else
 								$value = 0;
 							?>
-							<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>"<?php if ( $auto ) echo ' readonly="readonly"'; ?> /></td>
+							<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>"<?php if ( $is_auto ) echo ' readonly="readonly"'; ?> /></td>
 						<?php endfor; ?>
-						<td><input type="checkbox" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][auto]" value="1"<?php if ( $auto ) echo ' checked="checked"'; ?> /></td>
+						<?php if ( $auto ): ?>
+							<td><input type="checkbox" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][auto]" value="1"<?php if ( $is_auto ) echo ' checked="checked"'; ?> /></td>
+						<?php endif; ?>
 					</tr>
 					<?php
 					$i++;
 				endforeach;
 				if ( $total ):
 					$values = array_key_exists( 0, $data ) ? $data[0] : array();
-					$auto = array_key_exists( 'auto', $values ) ? (int)$values[ 'auto' ] : 0;
+					if ( $auto )
+						$is_auto = array_key_exists( 'auto', $values ) ? (int)$values[ 'auto' ] : 0;
+					else
+						$is_auto = $i;
 					?>
 					<tr<?php
 						if ( $i % 2 == 0 )
@@ -233,9 +237,11 @@ if ( ! function_exists( 'sp_data_table' ) ) {
 								else
 									$value = 0;
 							?>
-							<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>"<?php if ( $auto ) echo ' readonly="readonly"'; ?> /></td>
+							<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>"<?php if ( $is_auto ) echo ' readonly="readonly"'; ?> /></td>
 						<?php endfor; ?>
-						<td><input type="checkbox" name="sportspress[sp_stats][<?php echo $index; ?>][0][auto]" value="1"<?php if ( $auto ) echo ' checked="checked"'; ?> /></td>
+						<?php if ( $auto ): ?>
+							<td><input type="checkbox" name="sportspress[sp_stats][<?php echo $index; ?>][0][auto]" value="1"<?php if ( $is_auto ) echo ' checked="checked"'; ?> /></td>
+						<?php endif; ?>
 					</tr>
 				<?php endif; ?>
 			</tbody>
