@@ -55,8 +55,8 @@ if ( !function_exists( 'sp_array_combine' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_get_cpt_labels' ) ) {
-	function sp_get_cpt_labels( $name, $singular_name ) {
+if ( !function_exists( 'sp_cpt_labels' ) ) {
+	function sp_cpt_labels( $name, $singular_name ) {
 		$labels = array(
 			'name' => $name,
 			'singular_name' => $singular_name,
@@ -74,8 +74,8 @@ if ( !function_exists( 'sp_get_cpt_labels' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_get_tax_labels' ) ) {
-	function sp_get_tax_labels( $name, $singular_name ) {
+if ( !function_exists( 'sp_tax_labels' ) ) {
+	function sp_tax_labels( $name, $singular_name ) {
 		$labels = array(
 			'name' => $name,
 			'singular_name' => $singular_name,

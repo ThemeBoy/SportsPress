@@ -2,7 +2,7 @@
 function sp_table_cpt_init() {
 	$name = __( 'League Tables', 'sportspress' );
 	$singular_name = __( 'League Table', 'sportspress' );
-	$labels = sp_get_cpt_labels( $name, $singular_name );
+	$labels = sp_cpt_labels( $name, $singular_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,

@@ -2,7 +2,7 @@
 function sp_event_cpt_init() {
 	$name = __( 'Events', 'sportspress' );
 	$singular_name = __( 'Event', 'sportspress' );
-	$labels = sp_get_cpt_labels( $name, $singular_name );
+	$labels = sp_cpt_labels( $name, $singular_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -81,9 +81,7 @@ function sp_event_stats_meta( $post ) {
 		$data = sp_array_combine( $players, sp_array_value( $stats, $value, array() ) );
 		?>
 		<div>
-			<p>
-				<strong><?php echo $value ? get_the_title( $value ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong>
-			</p>
+			<p><strong><?php echo $value ? get_the_title( $value ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong></p>
 			<?php sp_data_table( $data, $value, array( 'Player', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, false ); ?>
 		</div>
 		<?php
