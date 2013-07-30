@@ -77,24 +77,14 @@ function sp_event_stats_meta( $post ) {
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
 	foreach ( $teams as $key => $value ):
+		$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
+		$data = sp_array_combine( $players, sp_array_value( $stats, $value, array() ) );
 		?>
 		<div>
 			<p>
 				<strong><?php echo $value ? get_the_title( $value ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong>
 			</p>
-			<?php
-				$ids = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
-				if ( array_key_exists( $value, $stats ) )
-					$team_stats = (array)$stats[ $value ];
-				$data = array();
-				foreach ( $ids as $id ):
-					if ( array_key_exists( $id, $team_stats ) )
-						$data[ $id ] = $team_stats[ $id ];
-					else
-						$data[ $id ] = array();
-				endforeach;
-				sp_data_table( $data, $value, array( 'Player', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, false );
-			?>
+			<?php sp_data_table( $data, $value, array( 'Player', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, false ); ?>
 		</div>
 		<?php
 	endforeach;

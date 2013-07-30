@@ -33,17 +33,23 @@ function sp_player_team_meta( $post ) {
 }
 
 function sp_player_stats_meta( $post ) {
-	$ids = (array)get_post_meta( $post->ID, 'sp_team', false );
+	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
+	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
-	$stats = $stats[0];
-	$data = array();
-	foreach ( $ids as $id ):
-		if ( is_array( $stats ) && array_key_exists( $id, $stats ) )
-			$data[ $id ] = $stats[ $id ];
-		else
-			$data[ $id ] = array();
+	foreach ( $leagues as $league ):
+		if ( !$league ) continue;
+		$data = sp_array_combine( $teams, sp_array_value( $stats, $league->term_id, array() ) );
+		?>
+		<div>
+			<p>
+				<strong><?php echo $league->name; ?></strong>
+			</p>
+			<?php
+				sp_data_table( $data, $league->term_id, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) );
+			?>
+		</div>
+		<?php
 	endforeach;
-	sp_data_table( $data, 0, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) );
 }
 
 function sp_player_profile_meta( $post ) {
