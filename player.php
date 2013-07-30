@@ -43,7 +43,7 @@ function sp_player_stats_meta( $post ) {
 		else
 			$data[ $id ] = array();
 	endforeach;
-	sp_data_table( $data, 0, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), false );
+	sp_data_table( $data, 0, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) );
 }
 
 function sp_player_profile_meta( $post ) {
