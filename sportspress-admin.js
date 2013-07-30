@@ -20,9 +20,17 @@ jQuery(document).ready(function($){
 	// Activate tab filters
 	$('.sp-tab-panel').siblings('.sp-tab-select').find('select').change();
 
-	// Stats table checkboxes
+	// Data table checkboxes
 	$('.sp-data-table tr input[type=checkbox]').change(function() {
 		$(this).closest('tr').find('input[type=text], input[type=number]').prop('readonly', $(this).prop('checked'));
+	})
+
+	// Uncheck auto to edit
+	$('.sp-data-table tr input[type=text], .sp-data-table tr input[type=text]').click(function() {
+		$el = $(this).closest('tr').find('input[type=checkbox]');
+		if($el.size()) {
+			$el.prop('checked', false).change();
+		}
 	})
 
 	// Change title
