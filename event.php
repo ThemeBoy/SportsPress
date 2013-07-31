@@ -84,7 +84,7 @@ function sp_event_stats_meta( $post ) {
 		?>
 		<div>
 			<p><strong><?php echo $value ? get_the_title( $value ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong></p>
-			<?php sp_data_table( $data, $value, array( 'Player', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, false ); ?>
+			<?php sp_stats_table( $data, array(), $value, array( 'Player', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, false ); ?>
 		</div>
 		<?php
 	endforeach;

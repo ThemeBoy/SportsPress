@@ -41,7 +41,7 @@ function sp_player_stats_meta( $post ) {
 	$data = sp_array_combine( $teams, sp_array_value( $stats, 0, array() ) );
 	?>
 	<p><strong><?php _e( 'Overall', 'sportspress' ); ?></strong></p>
-	<?php sp_data_table( $data, 0, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) ); ?>
+	<?php sp_stats_table( $data, array(), 0, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) ); ?>
 	<?php
 
 	// Leagues
@@ -50,7 +50,7 @@ function sp_player_stats_meta( $post ) {
 		$data = sp_array_combine( $teams, sp_array_value( $stats, $league->term_id, array() ) );
 		?>
 		<p><strong><?php echo $league->name; ?></strong></p>
-		<?php sp_data_table( $data, $league->term_id, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) ); ?>
+		<?php sp_stats_table( $data, array(), $league->term_id, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) ); ?>
 		<?php
 	endforeach;
 

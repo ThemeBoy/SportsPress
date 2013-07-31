@@ -34,7 +34,7 @@ if ( !function_exists( 'sp_array_between' ) ) {
 
 if ( !function_exists( 'sp_array_value' ) ) {
 	function sp_array_value( $arr = array(), $key = 0, $default = null ) {
-		if ( array_key_exists( $key, $arr ) )
+		if ( is_array( $arr ) && array_key_exists( $key, $arr ) )
 			$subset = $arr[ $key ];
 		else
 			$subset = $default;
@@ -211,11 +211,20 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_data_table' ) ) {
-	function sp_data_table( $data = array(), $index = 0, $columns = array( 'Name' ), $total = true, $auto = true, $rowtype = 'post' ) {
+if ( !function_exists( 'sp_get_stats' ) ) {
+	function sp_get_stats( $post_id, $set_id = 0, $subset_id = 0, $slug = 'sp_stats' ) {
+		if ( isset( $post_id ) )
+			return sp_array_value( sp_array_value( (array)get_post_meta( $post_id, $slug, true ), $set_id, array() ), $subset_id, array() );
+		else
+			return array();
+	}
+}
+
+if ( !function_exists( 'sp_stats_table' ) ) {
+	function sp_stats_table( $stats = array(), $placeholders = array(), $index = 0, $columns = array( 'Name' ), $total = true, $auto = true, $rowtype = 'post', $slug = 'sp_stats' ) {
 		global $pagenow;
-		if ( !is_array( $data ) )
-			$data = array();
+		if ( !is_array( $stats ) )
+			$stats = array();
 		?>
 		<table class="widefat sp-data-table">
 			<thead>
@@ -231,7 +240,7 @@ if ( !function_exists( 'sp_data_table' ) ) {
 			<tbody>
 				<?php
 				$i = 0;
-				foreach ( $data as $key => $values ):
+				foreach ( $stats as $key => $values ):
 					if ( !$key ) continue;
 					$is_auto = array_key_exists( 'auto', $values ) ? (int)$values[ 'auto' ] : $pagenow == 'post-new.php';
 					?>
@@ -253,22 +262,20 @@ if ( !function_exists( 'sp_data_table' ) ) {
 							?>
 						</td>
 						<?php for ( $j = 0; $j < sizeof( $columns ) - 1; $j ++ ):
-							if ( array_key_exists( $j, $values ) )
-								$value = (int)$values[ $j ];
-							else
-								$value = 0;
+							$value = (int)sp_array_value( $values, $j, 0 );
+							$placeholder = (int)sp_array_value( sp_array_value( $placeholders, $key, 0), $j, 0 );
 							?>
-							<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>" /></td>
+							<td><input type="text" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /><?php echo $placeholder; ?></td>
 						<?php endfor; ?>
 						<?php if ( $auto ): ?>
-							<td><input type="checkbox" name="sportspress[sp_stats][<?php echo $index; ?>][<?php echo $key; ?>][auto]" value="1"<?php if ( $is_auto ) echo ' checked="checked"'; ?> /></td>
+							<td><input type="checkbox" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][<?php echo $key; ?>][auto]" value="1"<?php if ( $is_auto ) echo ' checked="checked"'; ?> /></td>
 						<?php endif; ?>
 					</tr>
 					<?php
 					$i++;
 				endforeach;
 				if ( $total ):
-					$values = array_key_exists( 0, $data ) ? $data[0] : array();
+					$values = array_key_exists( 0, $stats ) ? $stats[0] : array();
 					if ( $auto )
 						$is_auto = array_key_exists( 'auto', $values ) ? (int)$values[ 'auto' ] : $pagenow == 'post-new.php';
 					else
@@ -285,10 +292,10 @@ if ( !function_exists( 'sp_data_table' ) ) {
 								else
 									$value = 0;
 							?>
-							<td><input type="text" name="sportspress[sp_stats][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" /></td>
+							<td><input type="text" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" /></td>
 						<?php endfor; ?>
 						<?php if ( $auto ): ?>
-							<td><input type="checkbox" name="sportspress[sp_stats][<?php echo $index; ?>][0][auto]" value="1"<?php if ( $is_auto ) echo ' checked="checked"'; ?> /></td>
+							<td><input type="checkbox" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][0][auto]" value="1"<?php if ( $is_auto ) echo ' checked="checked"'; ?> /></td>
 						<?php endif; ?>
 					</tr>
 				<?php endif; ?>

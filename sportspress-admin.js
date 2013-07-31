@@ -22,7 +22,13 @@ jQuery(document).ready(function($){
 
 	// Data table checkboxes
 	$('.sp-data-table tr input[type=checkbox]').change(function() {
-		$(this).closest('tr').find('input[type=text], input[type=number]').prop('readonly', $(this).prop('checked'));
+		$el = $(this).closest('tr').find('input[type=text], input[type=number]');
+		$el.prop('readonly', $(this).prop('checked'));
+		if($(this).prop('checked')) {
+			$el.each(function() {
+				$(this).val($(this).attr('placeholder'));
+			});
+		}
 	})
 
 	// Uncheck auto to edit
