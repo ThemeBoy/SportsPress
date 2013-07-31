@@ -35,29 +35,38 @@ function sp_table_meta_init() {
 }
 
 function sp_table_team_meta( $post ) {
-	sp_post_checklist( $post->ID, 'sp_team' );
-	sp_post_adder( 'sp_team' );
+	$league = get_post_meta( $post->ID, 'sp_league', true );
+	?>
+	<div>
+		<p class="sp-tab-select sp-title-generator">
+			<?php
+			$args = array(
+				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
+				'taxonomy' => 'sp_league',
+				'name' => 'sportspress[sp_league]',
+				'selected' => $league
+			);
+			sp_dropdown_taxonomies( $args );
+			?>
+		</p>
+		<?php
+		sp_post_checklist( $post->ID, 'sp_team', 'block', 'sp_league' );
+		sp_post_adder( 'sp_team' );
+		?>
+	</div>
+	<?php
 	sp_nonce();
 }
 
 function sp_table_stats_meta( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
-	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
-	foreach ( $leagues as $league ):
-		if ( is_object( $league ) && property_exists( $league, 'term_id' ) )
-			$index = $league->term_id;
-		else
-			$index = 0;
-
-		$data = sp_array_combine( $teams, sp_array_value( $stats, $index, array() ) );
-
-		$placeholders = array();
-		foreach ( $teams as $team ):
-			$placeholders[ $team ] = sp_get_stats( $team, 0, $index );
-		endforeach;
-
-		sp_stats_table( $data, $placeholders, $index, array( 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false );
+	$league = (int)get_post_meta( $post->ID, 'sp_league', true );
+	$data = sp_array_combine( $teams, sp_array_value( $stats, $league, array() ) );
+	$placeholders = array();
+	foreach ( $teams as $team ):
+		$placeholders[ $team ] = sp_get_stats( $team, 0, $league );
 	endforeach;
+	sp_stats_table( $data, $placeholders, $league, array( 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false );
 }
 ?>

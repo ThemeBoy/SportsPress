@@ -36,6 +36,9 @@ $sportspress_texts = array(
 		'Scheduled for: <b>%1$s</b>' => __( 'Joined', 'sportspress' ) . ': <b>%1$s</b>',
 		'Published on: <b>%1$s</b>' => __( 'Joined', 'sportspress' ) . ': <b>%1$s</b>',
 		'Publish <b>immediately</b>' => __( 'Joined', 'sportspress' ) . ': <b>%1$s</b>'
+	),
+	'sp_table' => array(
+		'Enter title here' => ''
 	)
 );
 

@@ -48,7 +48,7 @@ function sp_team_stats_meta( $post ) {
 
 	$data = sp_array_combine( $keys, sp_array_value( $stats, 0, array() ) );
 	?>
-	<?php sp_stats_table( $data, array(), 0, array( 'League', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), true, true, 'sp_league' );
+	<?php sp_stats_table( $data, array(), 0, array( 'League', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), true, 'sp_league' );
 
 	sp_nonce();
 }
