@@ -280,9 +280,8 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 						<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
 						<?php for ( $j = 0; $j < sizeof( $columns ) - 1; $j ++ ):
 							$value = sp_array_value( $values, $j, '' );
-							$placeholder = 0;
 							?>
-							<td><input type="text" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+							<td><input type="text" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" /></td>
 						<?php endfor; ?>
 					</tr>
 				<?php endif; ?>
