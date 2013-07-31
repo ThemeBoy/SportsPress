@@ -43,7 +43,21 @@ function sp_table_team_meta( $post ) {
 function sp_table_stats_meta( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
-	$data = sp_array_combine( $teams, sp_array_value( $stats, 0, array() ) );
-	sp_data_table( $data, 0, array( 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false );
+	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
+	foreach ( $leagues as $league ):
+		if ( is_object( $league ) && property_exists( $league, 'term_id' ) )
+			$index = $league->term_id;
+		else
+			$index = 0;
+
+		$data = sp_array_combine( $teams, sp_array_value( $stats, $index, array() ) );
+
+		$placeholders = array();
+		foreach ( $teams as $team ):
+			$placeholders[ $team ] = sp_get_stats( $team, 0, $index );
+		endforeach;
+
+		sp_stats_table( $data, $placeholders, $index, array( 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false );
+	endforeach;
 }
 ?>
