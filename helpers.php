@@ -115,7 +115,7 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 				printf( '<option value="-1">%s</option>', $args['show_option_none'] );
 			}
 			foreach ( $terms as $term ) {
-				printf( '<option value="%s" %s>%s</option>', $term->slug, selected( true, $args['selected'] == $term->slug ), $term->name );
+				printf( '<option value="%s" %s>%s</option>', $term->term_id, selected( true, $args['selected'] == $term->term_id, false ), $term->name );
 			}
 			print( '</select>' );
 		}
@@ -179,8 +179,14 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 					$posts = get_posts( array( 'post_type' => $meta, 'numberposts' => 0 ) );
 				foreach ( $posts as $post ):
 					$parents = get_post_ancestors( $post );
-					if ( $filter )
-						$filter_values = (array)get_post_meta( $post->ID, $filter, false )
+					if ( $filter ):
+						$filter_values = (array)get_post_meta( $post->ID, $filter, false );
+						$terms = (array)get_the_terms( $post->ID, 'sp_league' );
+						foreach ( $terms as $term ):
+							if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
+								$filter_values[] = $term->term_id;
+						endforeach;
+					endif;
 					?>
 					<li class="sp-post<?php
 						if ( $filter ):
@@ -221,20 +227,17 @@ if ( !function_exists( 'sp_get_stats' ) ) {
 }
 
 if ( !function_exists( 'sp_stats_table' ) ) {
-	function sp_stats_table( $stats = array(), $placeholders = array(), $index = 0, $columns = array( 'Name' ), $total = true, $auto = true, $rowtype = 'post', $slug = 'sp_stats' ) {
+	function sp_stats_table( $stats = array(), $placeholders = array(), $index = 0, $columns = array( 'Name' ), $total = true, $rowtype = 'post', $slug = 'sp_stats' ) {
 		global $pagenow;
 		if ( !is_array( $stats ) )
 			$stats = array();
 		?>
-		<table class="widefat sp-data-table">
+		<table class="widefat sp-stats-table">
 			<thead>
 				<tr>
 					<?php foreach ( $columns as $column ): ?>
 						<th><?php echo $column; ?></th>
 					<?php endforeach; ?>
-					<?php if ( $auto ): ?>
-						<th><?php _e( 'Auto', 'sportspress' ); ?></th>
-					<?php endif; ?>
 				</tr>
 			</thead>
 			<tbody>
@@ -242,9 +245,8 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 				$i = 0;
 				foreach ( $stats as $key => $values ):
 					if ( !$key ) continue;
-					$is_auto = array_key_exists( 'auto', $values ) ? (int)$values[ 'auto' ] : $pagenow == 'post-new.php';
 					?>
-					<tr class="sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 						<td>
 							<?php
 							switch( $rowtype ):
@@ -262,41 +264,26 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 							?>
 						</td>
 						<?php for ( $j = 0; $j < sizeof( $columns ) - 1; $j ++ ):
-							$value = (int)sp_array_value( $values, $j, 0 );
+							$value = sp_array_value( $values, $j, '' );
 							$placeholder = (int)sp_array_value( sp_array_value( $placeholders, $key, 0), $j, 0 );
 							?>
-							<td><input type="text" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /><?php echo $placeholder; ?></td>
+							<td><input type="text" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
 						<?php endfor; ?>
-						<?php if ( $auto ): ?>
-							<td><input type="checkbox" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][<?php echo $key; ?>][auto]" value="1"<?php if ( $is_auto ) echo ' checked="checked"'; ?> /></td>
-						<?php endif; ?>
 					</tr>
 					<?php
 					$i++;
 				endforeach;
 				if ( $total ):
 					$values = array_key_exists( 0, $stats ) ? $stats[0] : array();
-					if ( $auto )
-						$is_auto = array_key_exists( 'auto', $values ) ? (int)$values[ 'auto' ] : $pagenow == 'post-new.php';
-					else
-						$is_auto = $i;
 					?>
-					<tr<?php
-						if ( $i % 2 == 0 )
-							echo ' class="alternate"';
-					?>>
+					<tr class="sp-row sp-total<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 						<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
 						<?php for ( $j = 0; $j < sizeof( $columns ) - 1; $j ++ ):
-								if ( array_key_exists( $j, $values ) )
-									$value = (int)$values[ $j ];
-								else
-									$value = 0;
+							$value = sp_array_value( $values, $j, '' );
+							$placeholder = 0;
 							?>
-							<td><input type="text" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" /></td>
+							<td><input type="text" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
 						<?php endfor; ?>
-						<?php if ( $auto ): ?>
-							<td><input type="checkbox" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][0][auto]" value="1"<?php if ( $is_auto ) echo ' checked="checked"'; ?> /></td>
-						<?php endif; ?>
 					</tr>
 				<?php endif; ?>
 			</tbody>
