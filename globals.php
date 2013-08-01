@@ -1,10 +1,4 @@
 <?php
-$sportspress_options = array(
-	'settings' => array(
-		'sp_event_team_count' => 2,
-	)
-);
-
 $sportspress_texts = array(
 	'sp_team' => array(
 		'Enter title here' => __( 'Team', 'sportspress' ),
@@ -54,6 +48,12 @@ $sportspress_thumbnail_texts = array(
 	'sp_staff' => array(
 		'Set featured image' => sprintf( __( 'Add %s', 'sportspress' ), __( 'Photo', 'sportspress' ) ),
 		'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) )
+	)
+);
+
+$sportspress_options = array(
+	'settings' => array(
+		'sp_event_team_count' => 2,
 	)
 );
 
