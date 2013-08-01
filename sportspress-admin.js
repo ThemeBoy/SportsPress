@@ -40,10 +40,11 @@ jQuery(document).ready(function($){
 			var sum = 0;
 			$self.find('.sp-post').each(function() {
 				$el = $($(this).find('input')[i]);
-				if($el.val() != '')
+				if($el.val() != '') {
 					if($.isNumeric($el.val())) sum += parseInt($el.val(), 10);
-				else
+				} else {
 					sum += parseInt($el.attr('placeholder'), 10);
+				}
 			});
 			$(this).attr('placeholder', sum);
 		});

@@ -232,6 +232,34 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_stats_row' ) ) {
+	function sp_get_stats_row( $args ) {
+		extract( $args );
+		$args = array(
+			'post_type' => $post_type,
+			'posts_per_page' => -1,
+			'meta_query' => array(
+				array(
+					'key' => $meta_key,
+					'value' => $meta_value,
+				)
+			)
+		);
+		if ( isset( $terms ) ):
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => $taxonomy,
+					'terms' => $terms
+				)
+			);
+		endif;
+		$posts = (array)get_posts( $args );
+		$row = array();
+		$row[] = sizeof( $posts );
+		return $row;
+	}
+}
+
 if ( !function_exists( 'sp_get_stats' ) ) {
 	function sp_get_stats( $post_id, $set_id = 0, $subset_id = 0, $slug = 'sp_stats' ) {
 		if ( isset( $post_id ) && $post_id ):
@@ -260,6 +288,32 @@ if ( !function_exists( 'sp_get_stats' ) ) {
 							$value += $row[ $key ];
 						endforeach;
 						$subset[ $key ] = $value;
+					endforeach;
+
+				else:
+
+					// Get current post type
+					$post_type = get_post_type( $post_id );
+
+					// Get fallback values
+					switch ( $post_type ):
+						case 'sp_team':
+							// Get all events attended in that league
+							$args = array(
+								'post_type' => 'sp_event',
+								'meta_key' => 'sp_team',
+								'meta_value' => $post_id,
+								'taxonomy' => 'sp_league',
+								'terms' => $subset_id
+							);
+							$fallback = sp_get_stats_row( $args );
+							break;
+					endswitch;
+
+					// Add values from fallback where missing
+					foreach( $subset as $key => $value ):
+						if ( $value != '' ) continue;
+						$subset[ $key ] = sp_array_value( $fallback, $key, 0 );
 					endforeach;
 
 				endif;
