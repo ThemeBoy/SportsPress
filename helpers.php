@@ -170,7 +170,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 			global $post_id;
 		?>
 		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel" style="display: <?php echo $display; ?>;">
-			<input type="hidden" value="0" name="sportspress[<?php echo $meta; ?>]<?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
+			<input type="hidden" value="0" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<?php
 				$selected = sp_array_between( (array)get_post_meta( $post_id, $meta, false ), 0, $index );
@@ -198,7 +198,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 					?>">
 						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
-							<input type="checkbox" value="<?php echo $post->ID; ?>" name="sportspress[<?php echo $meta; ?>]<?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
+							<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
 							<?php
 							$title = $post->post_title;
 							if ( empty( $title ) )
@@ -267,7 +267,7 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 							$value = sp_array_value( $values, $j, '' );
 							$placeholder = (int)sp_array_value( sp_array_value( $placeholders, $key, 0), $j, 0 );
 							?>
-							<td><input type="text" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+							<td><input type="text" name="<?php echo $slug; ?>[<?php echo $index; ?>][<?php echo $key; ?>][]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
 						<?php endfor; ?>
 					</tr>
 					<?php
@@ -281,7 +281,7 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 						<?php for ( $j = 0; $j < sizeof( $columns ) - 1; $j ++ ):
 							$value = sp_array_value( $values, $j, '' );
 							?>
-							<td><input type="text" name="sportspress[<?php echo $slug; ?>][<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" /></td>
+							<td><input type="text" name="<?php echo $slug; ?>[<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" /></td>
 						<?php endfor; ?>
 					</tr>
 				<?php endif; ?>
@@ -303,6 +303,16 @@ if ( !function_exists( 'sp_post_adder' ) ) {
 			</h4>
 		</div>
 		<?php
+	}
+}
+
+if ( !function_exists( 'sp_update_post_meta_recursive' ) ) {
+	function sp_update_post_meta_recursive( $post_id, $name, $array ) {
+		delete_post_meta( $post_id, $name );
+		$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $array ) );
+		foreach ( $values as $value ):
+			add_post_meta( $post_id, $name, $value, false );
+		endforeach;
 	}
 }
 ?>

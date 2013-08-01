@@ -94,29 +94,50 @@ function sp_nonce() {
 
 function sp_save_post( $post_id ) {
 	global $post, $typenow;
-	if ( isset( $_POST['sportspress'] ) ):
-		$sportspress = (array)$_POST['sportspress'];
-		if ( isset( $_POST ) && !empty( $sportspress ) ):
-			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
-		    if ( !current_user_can( 'edit_post', $post_id ) ) return $post_id;
-			if ( !isset( $_POST['sportspress_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_nonce'], plugin_basename( __FILE__ ) ) ) return $post_id;
-			foreach ( $sportspress as $key => $value ):
-				delete_post_meta( $post_id, $key );
-				if ( is_array( $value ) ):
-					if ( sp_get_array_depth( $value ) >= 3 ):
-						add_post_meta( $post_id, $key, $value, false );
-					else:
-						$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $value ) );
-						foreach ( $values as $value ):
-							add_post_meta( $post_id, $key, $value, false );
-						endforeach;
-					endif;
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
+    if ( !current_user_can( 'edit_post', $post_id ) ) return $post_id;
+	if ( !isset( $_POST['sportspress_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_nonce'], plugin_basename( __FILE__ ) ) ) return $post_id;
+	switch ( $_POST['post_type'] ):
+		case ( 'sp_team' ):
+			update_post_meta( $post_id, 'sp_stats', $_POST['sp_stats'] );
+			break;
+		case ( 'sp_event' ):
+			update_post_meta( $post_id, 'sp_stats', $_POST['sp_stats'] );
+			sp_update_post_meta_recursive( $post_id, 'sp_team', $_POST['sp_team'] );
+			sp_update_post_meta_recursive( $post_id, 'sp_player', $_POST['sp_player'] );
+			break;
+		case ( 'sp_player' ):
+			update_post_meta( $post_id, 'sp_stats', $_POST['sp_stats'] );
+			sp_update_post_meta_recursive( $post_id, 'sp_team', $_POST['sp_team'] );
+			break;
+		case ( 'sp_staff' ):
+			sp_update_post_meta_recursive( $post_id, 'sp_team', $_POST['sp_team'] );
+			break;
+		case ( 'sp_table' ):
+			update_post_meta( $post_id, 'sp_stats', $_POST['sp_stats'] );
+			sp_update_post_meta_recursive( $post_id, 'sp_team', $_POST['sp_team'] );
+			break;
+	endswitch;
+
+	/*
+
+		foreach ( $sportspress as $key => $value ):
+			delete_post_meta( $post_id, $key );
+			if ( is_array( $value ) ):
+				if ( sp_get_array_depth( $value ) >= 3 ):
+					add_post_meta( $post_id, $key, $value, false );
 				else:
-					update_post_meta( $post_id, $key, $value );
+					$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $value ) );
+					foreach ( $values as $value ):
+						add_post_meta( $post_id, $key, $value, false );
+					endforeach;
 				endif;
-			endforeach;
-		endif;
-	endif;
+			else:
+				update_post_meta( $post_id, $key, $value );
+			endif;
+		endforeach;
+
+	*/
 }
 add_action( 'save_post', 'sp_save_post' );
 ?>
