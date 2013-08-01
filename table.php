@@ -38,7 +38,7 @@ function sp_table_team_meta( $post ) {
 	$league = get_post_meta( $post->ID, 'sp_league', true );
 	?>
 	<div>
-		<p class="sp-tab-select sp-title-generator">
+		<p class="sp-tab-select">
 			<?php
 			$args = array(
 				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
