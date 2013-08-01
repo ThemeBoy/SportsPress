@@ -94,6 +94,21 @@ if ( !function_exists( 'sp_tax_labels' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_the_term_id' ) ) {
+	function sp_get_the_term_id( $post_id, $taxonomy, $index ) {
+		$terms = get_the_terms( $post_id, $taxonomy );
+		if ( is_array( $terms ) && array_key_exists( $index, $terms ) ):
+			$term = $terms[0];
+			if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
+				return $term->term_id;
+			else
+				return 0;
+		else:
+			return 0;
+		endif;
+	}
+}
+
 if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 	function sp_dropdown_taxonomies( $args = array() ) {
 		$defaults = array(

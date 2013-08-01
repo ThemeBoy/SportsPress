@@ -115,6 +115,7 @@ function sp_save_post( $post_id ) {
 			break;
 		case ( 'sp_table' ):
 			update_post_meta( $post_id, 'sp_stats', $_POST['sp_stats'] );
+			wp_set_post_terms( $post_id, $_POST['sp_league'], 'sp_league' );
 			sp_update_post_meta_recursive( $post_id, 'sp_team', $_POST['sp_team'] );
 			break;
 	endswitch;

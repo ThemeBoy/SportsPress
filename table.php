@@ -35,7 +35,7 @@ function sp_table_meta_init() {
 }
 
 function sp_table_team_meta( $post ) {
-	$league = get_post_meta( $post->ID, 'sp_league', true );
+	$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
 	?>
 	<div>
 		<p class="sp-tab-select">
@@ -44,7 +44,7 @@ function sp_table_team_meta( $post ) {
 				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
 				'taxonomy' => 'sp_league',
 				'name' => 'sp_league',
-				'selected' => $league
+				'selected' => $league_id
 			);
 			sp_dropdown_taxonomies( $args );
 			?>
@@ -61,12 +61,12 @@ function sp_table_team_meta( $post ) {
 function sp_table_stats_meta( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
-	$league = (int)get_post_meta( $post->ID, 'sp_league', true );
-	$data = sp_array_combine( $teams, sp_array_value( $stats, $league, array() ) );
+	$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
+	$data = sp_array_combine( $teams, sp_array_value( $stats, $league_id, array() ) );
 	$placeholders = array();
 	foreach ( $teams as $team ):
-		$placeholders[ $team ] = sp_get_stats( $team, 0, $league );
+		$placeholders[ $team ] = sp_get_stats( $team, 0, $league_id );
 	endforeach;
-	sp_stats_table( $data, $placeholders, $league, array( 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false );
+	sp_stats_table( $data, $placeholders, $league_id, array( 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false );
 }
 ?>
