@@ -44,7 +44,7 @@ function sp_event_team_meta( $post ) {
 				<?php
 				$args = array(
 					'post_type' => 'sp_team',
-					'name' => 'sportspress[sp_team][]',
+					'name' => 'sp_team[]',
 					'class' => 'sportspress-pages',
 					'show_option_none' => sprintf( __( 'Select %s' ), 'Team' ),
 					'option_none_value' => 0,

@@ -43,7 +43,7 @@ function sp_table_team_meta( $post ) {
 			$args = array(
 				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
 				'taxonomy' => 'sp_league',
-				'name' => 'sportspress[sp_league]',
+				'name' => 'sp_league',
 				'selected' => $league
 			);
 			sp_dropdown_taxonomies( $args );
