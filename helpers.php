@@ -234,10 +234,41 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 
 if ( !function_exists( 'sp_get_stats' ) ) {
 	function sp_get_stats( $post_id, $set_id = 0, $subset_id = 0, $slug = 'sp_stats' ) {
-		if ( isset( $post_id ) )
-			return sp_array_value( sp_array_value( (array)get_post_meta( $post_id, $slug, true ), $set_id, array() ), $subset_id, array() );
-		else
+		if ( isset( $post_id ) && $post_id ):
+			$stats = (array)get_post_meta( $post_id, $slug, true );
+			$set = sp_array_value( $stats, $set_id, array() );
+			$subset = sp_array_value( $set, $subset_id, array() );
+
+			// If empty columns exist in subset
+			if ( in_array( '', $subset ) ):
+
+				// If subset is total row
+				if ( $subset_id == 0 ):
+
+					// Get fallback if empty columns exist in row
+					foreach ( $set as $index => $row ):
+						if ( !$index ) continue;
+						if ( in_array( '', $row ) ):
+							echo 'shit!';
+						endif;
+					endforeach;
+
+					// Add values from each row where missing in total
+					foreach( $subset as $key => $value ):
+						if ( $value != '' ) continue;
+						foreach ( $set as $row ):
+							$value += $row[ $key ];
+						endforeach;
+						$subset[ $key ] = $value;
+					endforeach;
+
+				endif;
+
+			endif;
+			return $subset;
+		else:
 			return array();
+		endif;
 	}
 }
 
