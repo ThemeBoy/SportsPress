@@ -167,10 +167,13 @@ if ( !function_exists( 'sp_the_posts' ) ) {
 					$title = __( '(no title)' );
 				edit_post_link( $title, '', '', $id );
 				if ( !empty( $after ) ):
-					if ( is_array( $after ) && array_key_exists( $i, $after ) )
-						echo ' - ' . $after[ $i ];
-					else
+					if ( is_array( $after ) ):
+						if ( array_key_exists( $i, $after ) && $after[ $i ] != '' ):
+							echo ' - ' . $after[ $i ];
+						endif;
+					else:
 						echo $after;
+					endif;
 				endif;
 				if ( ++$i !== $count )
 					echo $sep;
@@ -233,29 +236,37 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 }
 
 if ( !function_exists( 'sp_get_stats_row' ) ) {
-	function sp_get_stats_row( $args ) {
-		extract( $args );
-		$args = array(
-			'post_type' => $post_type,
-			'posts_per_page' => -1,
-			'meta_query' => array(
-				array(
-					'key' => $meta_key,
-					'value' => $meta_value,
-				)
-			)
+	function sp_get_stats_row( $args = array() ) {
+		$args = array_merge(
+			array(
+				'posts_per_page' => -1
+			),
+			(array)$args
 		);
-		if ( isset( $terms ) ):
-			$args['tax_query'] = array(
-				array(
-					'taxonomy' => $taxonomy,
-					'terms' => $terms
-				)
-			);
-		endif;
 		$posts = (array)get_posts( $args );
-		$row = array();
-		$row[] = sizeof( $posts );
+		foreach( $posts as $post ):
+			$post->sp_stats = get_post_meta( $post->ID, 'sp_stats', true );
+		endforeach;
+		$row = array(
+			sizeof( $posts ),
+			sizeof(
+				array_filter(
+					$posts,
+					function( $var ) {
+				echo '<pre>';
+				print_r( $var->sp_stats );
+				echo '</pre>';
+						return true;
+					}
+				)
+			),
+			99,
+			99,
+			93,
+			99,
+			99,
+			99
+		);
 		return $row;
 	}
 }
@@ -268,7 +279,7 @@ if ( !function_exists( 'sp_get_stats' ) ) {
 			$subset = sp_array_value( $set, $subset_id, array() );
 
 			// If empty columns exist in subset
-			if ( in_array( '', $subset ) ):
+			if ( empty( $subset ) || in_array( '', $subset ) ):
 
 				// If subset is total row
 				if ( $subset_id == 0 ):
@@ -297,8 +308,9 @@ if ( !function_exists( 'sp_get_stats' ) ) {
 
 					// Get fallback values
 					switch ( $post_type ):
+
+						// Teams: all events attended in the league
 						case 'sp_team':
-							// Get all events attended in that league
 							$args = array(
 								'post_type' => 'sp_event',
 								'meta_key' => 'sp_team',
@@ -308,13 +320,11 @@ if ( !function_exists( 'sp_get_stats' ) ) {
 							);
 							$fallback = sp_get_stats_row( $args );
 							break;
+
 					endswitch;
 
-					// Add values from fallback where missing
-					foreach( $subset as $key => $value ):
-						if ( $value != '' ) continue;
-						$subset[ $key ] = sp_array_value( $fallback, $key, 0 );
-					endforeach;
+					// Merge fallback values with current subset
+					$subset = array_merge( $fallback, $subset );
 
 				endif;
 
@@ -406,12 +416,20 @@ if ( !function_exists( 'sp_post_adder' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_update_post_meta' ) ) {
+	function sp_update_post_meta( $post_id, $meta_key, $meta_value, $default = null ) {
+		if ( !isset( $meta_value ) && isset( $default ) )
+			$meta_value = $default;
+		add_post_meta( $post_id, $meta_key, $meta_value, true );
+	}
+}
+
 if ( !function_exists( 'sp_update_post_meta_recursive' ) ) {
-	function sp_update_post_meta_recursive( $post_id, $name, $array ) {
-		delete_post_meta( $post_id, $name );
-		$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $array ) );
+	function sp_update_post_meta_recursive( $post_id, $meta_key, $meta_value ) {
+		delete_post_meta( $post_id, $meta_key );
+		$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $meta_value ) );
 		foreach ( $values as $value ):
-			add_post_meta( $post_id, $name, $value, false );
+			add_post_meta( $post_id, $meta_key, $value, false );
 		endforeach;
 	}
 }
