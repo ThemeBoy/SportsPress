@@ -20,8 +20,8 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '—';
 			break;
 		case 'sp_team':
-			$score = get_post_meta( $post_id, 'sp_score', false );
-			echo get_post_meta ( $post_id, 'sp_team' ) ? sp_the_posts( $post_id, 'sp_team', '', '<br />', $score, ( empty( $score ) ? ' — ' : ' ' ) ) : '—';
+			$result = get_post_meta( $post_id, 'sp_result', false );
+			echo get_post_meta ( $post_id, 'sp_team' ) ? sp_the_posts( $post_id, 'sp_team', '', '<br />', $result, ( empty( $result ) ? ' — ' : ' ' ) ) : '—';
 			break;
 		case 'sp_event':
 			echo get_post_meta ( $post_id, 'sp_event' ) ? sizeof( get_post_meta ( $post_id, 'sp_event' ) ) : '—';
@@ -99,24 +99,46 @@ function sp_save_post( $post_id ) {
 	if ( !isset( $_POST['sportspress_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_nonce'], plugin_basename( __FILE__ ) ) ) return $post_id;
 	switch ( $_POST['post_type'] ):
 		case ( 'sp_team' ):
-			update_post_meta( $post_id, 'sp_stats', $_POST['sp_stats'] );
+			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
 			break;
 		case ( 'sp_event' ):
-			update_post_meta( $post_id, 'sp_stats', $_POST['sp_stats'] );
-			sp_update_post_meta_recursive( $post_id, 'sp_team', $_POST['sp_team'] );
-			sp_update_post_meta_recursive( $post_id, 'sp_player', $_POST['sp_player'] );
+			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
+			delete_post_meta( $post_id, 'sp_result');
+			$stats = (array)sp_array_value( $_POST, 'sp_stats', array() );
+			foreach ( $stats as $table ) {
+
+					// Add values from each row where total is blank
+					$total = sp_array_value( sp_array_value( $table, 0, null ), 0, null );
+					if ( $total == null ):
+						$values = array();
+						foreach ( $table as $row ):
+							$value = sp_array_value( $row, 0, null );
+							if ( is_numeric( $value ) ):
+								$values[] = $value;
+							endif;
+						endforeach;
+						if ( sizeof( $values ) ):
+							$total = array_sum( $values );
+						endif;
+					endif;
+
+				// Save first column of total row as result
+				add_post_meta( $post_id, 'sp_result', $total );
+			}
+			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+			sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
 			break;
 		case ( 'sp_player' ):
-			update_post_meta( $post_id, 'sp_stats', $_POST['sp_stats'] );
-			sp_update_post_meta_recursive( $post_id, 'sp_team', $_POST['sp_team'] );
+			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
+			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 			break;
 		case ( 'sp_staff' ):
-			sp_update_post_meta_recursive( $post_id, 'sp_team', $_POST['sp_team'] );
+			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 			break;
 		case ( 'sp_table' ):
-			update_post_meta( $post_id, 'sp_stats', $_POST['sp_stats'] );
-			wp_set_post_terms( $post_id, $_POST['sp_league'], 'sp_league' );
-			sp_update_post_meta_recursive( $post_id, 'sp_team', $_POST['sp_team'] );
+			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
+			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
+			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 			break;
 	endswitch;
 

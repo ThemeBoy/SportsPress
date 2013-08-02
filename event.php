@@ -76,6 +76,8 @@ function sp_event_stats_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
+	$result = (array)get_post_meta( $post->ID, 'sp_result', false );
+	print_r( $result );
 
 	// Teams
 	foreach ( $teams as $key => $value ):
