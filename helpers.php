@@ -239,13 +239,16 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 	function sp_get_stats_row( $args = array() ) {
 		$args = array_merge(
 			array(
+				'meta_value' => 0,
 				'posts_per_page' => -1
 			),
 			(array)$args
 		);
 		$posts = (array)get_posts( $args );
 		foreach( $posts as $post ):
-			$post->sp_stats = get_post_meta( $post->ID, 'sp_stats', true );
+			$post->sp_team = get_post_meta( $post->ID, 'sp_team', false );
+			$post->sp_team_index = array_search( $args['meta_value'], $post->sp_team );
+			$post->sp_result = get_post_meta( $post->ID, 'sp_result', false );
 		endforeach;
 		$row = array(
 			sizeof( $posts ),
@@ -253,10 +256,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 				array_filter(
 					$posts,
 					function( $var ) {
-				echo '<pre>';
-				print_r( $var->sp_stats );
-				echo '</pre>';
-						return true;
+						return max( $var->sp_result ) == $var->sp_result[ $var->sp_team_index ];
 					}
 				)
 			),
