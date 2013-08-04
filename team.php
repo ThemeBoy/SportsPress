@@ -63,7 +63,7 @@ function sp_team_stats_meta( $post ) {
 		$placeholders[ $league_id ] = sp_get_stats_row( $args );
 	endforeach;
 
-	sp_stats_table( $data, $placeholders, 0, array( 'League', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), true, 'sp_league' );
+	sp_stats_table( $data, $placeholders, 0, array( 'League', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false, 'sp_league' );
 	sp_nonce();
 }
 ?>

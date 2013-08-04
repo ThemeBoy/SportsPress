@@ -384,14 +384,14 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 					$i++;
 				endforeach;
 				if ( $total ):
-					$values = array_key_exists( 0, $stats ) ? $stats[0] : array();
+					$values = sp_array_value( $stats, 0, array() );
 					?>
 					<tr class="sp-row sp-total<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 						<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
 						<?php for ( $j = 0; $j < sizeof( $columns ) - 1; $j ++ ):
 							$value = sp_array_value( $values, $j, '' );
 							?>
-							<td><input type="text" name="<?php echo $slug; ?>[<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" /></td>
+							<td><input type="text" name="<?php echo $slug; ?>[<?php echo $index; ?>][0][]" value="<?php echo $value; ?>" placeholder="0" /></td>
 						<?php endfor; ?>
 					</tr>
 				<?php endif; ?>
