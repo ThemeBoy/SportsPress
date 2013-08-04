@@ -236,7 +236,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 }
 
 if ( !function_exists( 'sp_get_stats_row' ) ) {
-	function sp_get_stats_row( $args = array() ) {
+	function sp_get_stats_row( $post_type = 'post', $args = array() ) {
 		$args = array_merge(
 			array(
 				'meta_value' => 0,
@@ -250,23 +250,31 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 			$post->sp_team_index = array_search( $args['meta_value'], $post->sp_team );
 			$post->sp_result = get_post_meta( $post->ID, 'sp_result', false );
 		endforeach;
-		$row = array(
-			sizeof( $posts ),
-			sizeof(
-				array_filter(
-					$posts,
-					function( $var ) {
-						return max( $var->sp_result ) == $var->sp_result[ $var->sp_team_index ];
-					}
-				)
-			),
-			99,
-			99,
-			93,
-			99,
-			99,
-			99
-		);
+
+		switch ($post_type):
+			case 'sp_team':
+				$row = array(
+					sizeof( $posts ),
+					sizeof(
+						array_filter(
+							$posts,
+							function( $var ) {
+								return max( $var->sp_result ) == $var->sp_result[ $var->sp_team_index ];
+							}
+						)
+					),
+					99,
+					99,
+					93,
+					99,
+					99,
+					99
+				);
+				break;
+			default:
+				$row = array();
+				break;
+		endswitch;
 		return $row;
 	}
 }

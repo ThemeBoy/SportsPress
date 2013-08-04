@@ -63,10 +63,25 @@ function sp_table_stats_meta( $post ) {
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
 	$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
 	$data = sp_array_combine( $teams, sp_array_value( $stats, $league_id, array() ) );
+
+	// Generate array of placeholder values for each team
 	$placeholders = array();
 	foreach ( $teams as $team ):
-		$placeholders[ $team ] = sp_get_stats( $team, 0, $league_id );
+		$args = array(
+			'post_type' => 'sp_event',
+			'meta_key' => 'sp_team',
+			'meta_value' => $team,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'sp_league',
+					'field' => 'id',
+					'terms' => $league_id
+				)
+			)
+		);
+		$placeholders[ $team ] = sp_get_stats_row( 'sp_team', $args );
 	endforeach;
+
 	sp_stats_table( $data, $placeholders, $league_id, array( 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false );
 }
 ?>

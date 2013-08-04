@@ -65,7 +65,7 @@ function sp_team_stats_meta( $post ) {
 				)
 			)
 		);
-		$placeholders[ $league_id ] = sp_get_stats_row( $args );
+		$placeholders[ $league_id ] = sp_get_stats_row( 'sp_team', $args );
 	endforeach;
 
 	sp_stats_table( $data, $placeholders, 0, array( 'League', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false, 'sp_league' );
