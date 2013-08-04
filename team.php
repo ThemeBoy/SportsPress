@@ -57,8 +57,13 @@ function sp_team_stats_meta( $post ) {
 			'post_type' => 'sp_event',
 			'meta_key' => 'sp_team',
 			'meta_value' => $post->ID,
-			'taxonomy' => 'sp_league',
-			'terms' => $league_id
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'sp_league',
+					'field' => 'id',
+					'terms' => $league_id
+				)
+			)
 		);
 		$placeholders[ $league_id ] = sp_get_stats_row( $args );
 	endforeach;
