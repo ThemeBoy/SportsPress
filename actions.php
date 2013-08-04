@@ -106,23 +106,7 @@ function sp_save_post( $post_id ) {
 			delete_post_meta( $post_id, 'sp_result');
 			$stats = (array)sp_array_value( $_POST, 'sp_stats', array() );
 			foreach ( $stats as $table ) {
-
-					// Add values from each row where total is blank
-					$total = sp_array_value( sp_array_value( $table, 0, null ), 0, null );
-					if ( $total == null ):
-						$values = array();
-						foreach ( $table as $row ):
-							$value = sp_array_value( $row, 0, null );
-							if ( is_numeric( $value ) ):
-								$values[] = $value;
-							endif;
-						endforeach;
-						if ( sizeof( $values ) ):
-							$total = array_sum( $values );
-						endif;
-					endif;
-
-				// Save first column of total row as result
+				$total = sp_array_value( sp_array_value( $table, 0, null ), 0, null );
 				add_post_meta( $post_id, 'sp_result', $total );
 			}
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );

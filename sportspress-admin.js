@@ -34,28 +34,23 @@ jQuery(document).ready(function($){
 	});
 
 	// Total stats calculator
-	$('.sp-stats-table').on('updateTotals', function() {
-		$self = $(this);
-		$self.find('.sp-total input').each(function(i) {
-			var sum = 0;
-			$self.find('.sp-post').each(function() {
-				$el = $($(this).find('input')[i]);
-				if($el.val() != '') {
-					if($.isNumeric($el.val())) sum += parseInt($el.val(), 10);
-				} else {
-					sum += parseInt($el.attr('placeholder'), 10);
-				}
-			});
-			$(this).attr('placeholder', sum);
+	$('.sp-stats-table .sp-total input').on('updateTotal', function() {
+		index = $(this).parent().index();
+		var sum = 0;
+		$(this).closest('.sp-stats-table').find('.sp-post').each(function() {
+			val = $(this).find('td').eq(index).find('input').val();
+			if($.isNumeric(val)) {
+				sum += parseInt(val, 10);
+			}
 		});
+		$(this).val(sum);
 	});
 
 	// Activate total stats calculator
-	$('.sp-stats-table .sp-post input').on('keyup', function() {
-		$(this).closest('.sp-stats-table').trigger('updateTotals');
-	});
-
-	// Trigger total stats calculator
-	$('.sp-stats-table').trigger('updateTotals');
+	if($('.sp-stats-table .sp-total').size()) {
+		$('.sp-stats-table .sp-post td input').on('keyup', function() {
+			$(this).closest('.sp-stats-table').find('.sp-total td').eq($(this).parent().index()).find('input').trigger('updateTotal');
+		});
+	}
 
 });
