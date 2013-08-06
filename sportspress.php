@@ -21,6 +21,9 @@ if ( !function_exists( 'add_action' ) ) {
 define( 'SPORTSPRESS_VERSION', '0.1' );
 define( 'SPORTSPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
+// Libraries
+include dirname( __FILE__ ) . '/lib/classes/eos.class.php' ;
+
 // Globals
 include dirname( __FILE__ ) . '/globals.php' ;
 
