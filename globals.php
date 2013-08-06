@@ -62,15 +62,15 @@ $sportspress_options = array(
 									A: $against
 									GD: $for-$against
 									PTS: 3$wins+$ties',
-		'sp_event_stats_columns' =>	'Goals: $statsa
-									Assists: $statsb
-									Yellow Cards: $statsc
-									Red Cards: $statsd',
+		'sp_event_stats_columns' =>	'Goals: $goals
+									Assists: $assists
+									Yellow Cards: $yellowcards
+									Red Cards: $redcards',
 		'sp_player_stats_columns' =>	'Attendances: $played
-										Goals: $statsa
-										Assists: $statsb
-										Yellow Cards: $statsc
-										Red Cards: $statsd',
+										Goals: $goals
+										Assists: $assists
+										Yellow Cards: $yellowcards
+										Red Cards: $redcards'
 	)
 );
 

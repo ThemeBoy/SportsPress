@@ -293,7 +293,10 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 				// Create array of event stats columns
 				$columns = sp_get_eos_array( get_option( 'sp_event_stats_columns' ) );
 				foreach ( $columns as $key => $value ):
-					$vars[ 'stats' . sp_num_to_letter( $key ) ] = 0;
+					$row = explode( ':', $value );
+					$var_name = strtolower( preg_replace( '~[^\p{L}]++~u', '', end( $row ) ) );
+					$vars[ $var_name ] = 0;
+					$stats_keys[ $key ] = $var_name;
 				endforeach;
 
 				// Populate columns with player stats from events
@@ -304,7 +307,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 						$player_id = sp_array_value( $args['meta_query'][0], 'value', 0 );
 						if ( !array_key_exists( $player_id, $stat ) ) continue;
 						foreach ( $stat[ $player_id ] as $key => $value ):
-							$vars[ 'stats' . sp_num_to_letter( $key ) ] += $value;
+							$vars[ $stats_keys[ $key ] ] += $value;
 						endforeach;
 					endforeach;
 				endforeach;
