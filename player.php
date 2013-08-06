@@ -37,20 +37,79 @@ function sp_player_stats_meta( $post ) {
 	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
 
-	// Overall
-	$data = sp_array_combine( $teams, sp_array_value( $stats, 0, array() ) );
+	// Generate array of all league ids
+	$league_ids = array( 0 );
+	foreach ( $leagues as $key => $value ):
+		if ( is_object( $value ) && property_exists( $value, 'term_id' ) )
+			$league_ids[] = $value->term_id;
+	endforeach;
+
+	// Get all teams populated with overall stats where availabled
+	$data = sp_array_combine( $league_ids, sp_array_value( $stats, 0, array() ) );
+
+	// Generate array of placeholder values for each league
+	$placeholders = array();
+	foreach ( $league_ids as $league_id ):
+		$args = array(
+			'post_type' => 'sp_event',
+			'meta_query' => array(
+				array(
+					'key' => 'sp_player',
+					'value' => $post->ID
+				)
+			)
+		);
+		if ( $league_id ):
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => 'sp_league',
+					'field' => 'id',
+					'terms' => $league_id
+				)
+			);
+		endif;
+		$placeholders[ $league_id ] = sp_get_stats_row( 'sp_player', $args );
+	endforeach;
 	?>
 	<p><strong><?php _e( 'Overall', 'sportspress' ); ?></strong></p>
-	<?php sp_stats_table( $data, array(), 0, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) ); ?>
+	<?php sp_stats_table( $data, $placeholders, 0, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, 'sp_league' ); ?>
 	<?php
 
 	// Leagues
-	foreach ( $leagues as $league ):
-		if ( !$league ) continue;
-		$data = sp_array_combine( $teams, sp_array_value( $stats, $league->term_id, array() ) );
+	foreach ( $teams as $team ):
+		if ( !$team ) continue;
+
+		// Get all leagues populated with stats where availabled
+		$data = sp_array_combine( $league_ids, sp_array_value( $stats, $team, array() ) );
+
+		// Generate array of placeholder values for each league
+		$placeholders = array();
+		foreach ( $league_ids as $league_id ):
+			$args = array(
+				'post_type' => 'sp_event',
+				'meta_query' => array(
+					array(
+						'key' => 'sp_player',
+						'value' => $post->ID
+					),
+					array(
+						'key' => 'sp_team',
+						'value' => $team
+					)
+				),
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'sp_league',
+						'field' => 'id',
+						'terms' => $league_id
+					)
+				)
+			);
+			$placeholders[ $league_id ] = sp_get_stats_row( 'sp_player', $args );
+		endforeach;
 		?>
-		<p><strong><?php echo $league->name; ?></strong></p>
-		<?php sp_stats_table( $data, array(), $league->term_id, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ) ); ?>
+		<p><strong><?php echo get_the_title( $team ); ?></strong></p>
+		<?php sp_stats_table( $data, $placeholders, $team, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, 'sp_league' ); ?>
 		<?php
 	endforeach;
 

@@ -55,6 +55,15 @@ if ( !function_exists( 'sp_array_combine' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_num_to_letter' ) ) {
+	function sp_num_to_letter( $num, $uppercase = false ) {
+		$num -= 0;
+		$letter = 	chr( ( $num % 26 ) + 97 );
+		$letter .= 	( floor( $num / 26 ) > 0 ) ? str_repeat( $letter, floor( $num / 26 ) ) : '';
+		return 		( $uppercase ? strtoupper( $letter ) : $letter );
+	}
+}
+
 if ( !function_exists( 'sp_cpt_labels' ) ) {
 	function sp_cpt_labels( $name, $singular_name ) {
 		$labels = array(
@@ -247,63 +256,77 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 	function sp_get_stats_row( $post_type = 'post', $args = array() ) {
 		$args = array_merge(
 			array(
-				'meta_value' => 0,
 				'posts_per_page' => -1
 			),
 			(array)$args
 		);
 		$posts = (array)get_posts( $args );
-		foreach( $posts as $post ):
-			$post->sp_team = get_post_meta( $post->ID, 'sp_team', false );
-			$post->sp_team_index = array_search( $args['meta_value'], $post->sp_team );
-			$post->sp_result = get_post_meta( $post->ID, 'sp_result', false );
-		endforeach;
 
-		// Load Equation Operating System
+		// Equation Operating System
 		$eos = new eqEOS();
 
-		// Define variables to use in EOS
 		$vars = array();
-
-		$vars['played'] = sizeof( $posts );
-
-		$vars['wins'] = sizeof( array_filter( $posts, function( $post ) {
-			return array_count_values( $post->sp_result ) > 1 && max( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ];
-		} ) );
-
-		$vars['ties'] = sizeof( array_filter( $posts, function( $post ) {
-			return array_count_values( $post->sp_result ) == 1;
-		} ) );
-
-		$vars['losses'] = sizeof( array_filter( $posts, function( $post ) {
-			return array_count_values( $post->sp_result ) > 1 && min( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ];
-		} ) );
-
-		$vars['for'] = 0;
-		foreach( $posts as $post ):
-			$vars['for'] += $post->sp_result[ $post->sp_team_index ];
-		endforeach;
-
-		$vars['against'] = 0;
-		foreach( $posts as $post ):
-			$result = $post->sp_result;
-			unset( $result[ $post->sp_team_index ] );
-			$vars['against'] += array_sum( $result );
-		endforeach;
-
 		switch ($post_type):
 			case 'sp_team':
+
+				// Add object properties needed for retreiving event stats
+				foreach( $posts as $post ):
+					$post->sp_team = get_post_meta( $post->ID, 'sp_team', false );
+					$post->sp_team_index = array_search( $args['meta_value'], $post->sp_team );
+					$post->sp_result = get_post_meta( $post->ID, 'sp_result', false );
+				endforeach;
+
+				// Get team stats from all attended events
+				$vars['played'] = sizeof( $posts );
+				$vars['wins'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) > 1 && max( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ];	} ) );
+				$vars['ties'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) == 1; } ) );
+				$vars['losses'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) > 1 && min( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ]; } ) );
+				$vars['for'] = 0; foreach( $posts as $post ): $vars['for'] += $post->sp_result[ $post->sp_team_index ]; endforeach;
+				$vars['against'] = 0; foreach( $posts as $post ): $result = $post->sp_result; unset( $result[ $post->sp_team_index ] ); $vars['against'] += array_sum( $result ); endforeach;
+				
+				// Get EOS array
 				$rows = sp_get_eos_array( get_option( 'sp_team_stats_columns' ) );
 				break;
+
+			case 'sp_player':
+
+				// Create array of event stats columns
+				$columns = sp_get_eos_array( get_option( 'sp_event_stats_columns' ) );
+				foreach ( $columns as $key => $value ):
+					$vars[ 'stats' . sp_num_to_letter( $key ) ] = 0;
+				endforeach;
+
+				// Populate columns with player stats from events
+				foreach ( $posts as $post ):
+					$team_stats = get_post_meta( $post->ID, 'sp_stats', true );
+					foreach ( $team_stats as $team_id => $stat ):
+						if ( array_key_exists( 1, $args['meta_query'] ) && $team_id != sp_array_value( $args['meta_query'][1], 'value', 0 ) ) continue;
+						$player_id = sp_array_value( $args['meta_query'][0], 'value', 0 );
+						if ( !array_key_exists( $player_id, $stat ) ) continue;
+						foreach ( $stat[ $player_id ] as $key => $value ):
+							$vars[ 'stats' . sp_num_to_letter( $key ) ] += $value;
+						endforeach;
+					endforeach;
+				endforeach;
+
+				// Add played event count to vars
+				$vars['played'] = sizeof( $posts );
+
+				// Get EOS array
+				$rows = sp_get_eos_array( get_option( 'sp_player_stats_columns' ) );
+				break;
+
 			default:
+
 				$rows = array();
 				break;
+
 		endswitch;
 
 		$output = array();
 		foreach ( $rows as $key => $value ):
 			$row = explode( ':', $value );
-			$output[] = $eos->solveIF( sp_array_value( $row, 1, 'played'), $vars );
+			$output[] = $eos->solveIF( sp_array_value( $row, 1, '$played'), $vars );
 		endforeach;
 
 		return $output;
@@ -348,11 +371,23 @@ if ( !function_exists( 'sp_get_stats' ) ) {
 					// Get fallback values
 					switch ( $post_type ):
 
-						// Teams: all events attended in the league
+						// Team: all events attended in the league
 						case 'sp_team':
 							$args = array(
 								'post_type' => 'sp_event',
 								'meta_key' => 'sp_team',
+								'meta_value' => $post_id,
+								'taxonomy' => 'sp_league',
+								'terms' => $subset_id
+							);
+							$fallback = sp_get_stats_row( $args );
+							break;
+
+						// Player: all events attended in the league
+						case 'sp_player':
+							$args = array(
+								'post_type' => 'sp_event',
+								'meta_key' => 'sp_player',
 								'meta_value' => $post_id,
 								'taxonomy' => 'sp_league',
 								'terms' => $subset_id
@@ -404,7 +439,7 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 									break;
 								default:
 									$term = get_term( $key, $rowtype );
-									$title = $term->name;;
+									$title = $term->name;
 									break;
 							endswitch;
 							if ( empty( $title ) )
