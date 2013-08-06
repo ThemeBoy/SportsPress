@@ -235,6 +235,14 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_eos_array' ) ) {
+	function sp_get_eos_array( $raw ) {
+		$raw = str_replace( array( "\r\n", ' ' ), array( "\n", '' ), $raw );
+		$output = explode( "\n", $raw );
+		return $output;
+	}
+}
+
 if ( !function_exists( 'sp_get_stats_row' ) ) {
 	function sp_get_stats_row( $post_type = 'post', $args = array() ) {
 		$args = array_merge(
@@ -251,31 +259,54 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 			$post->sp_result = get_post_meta( $post->ID, 'sp_result', false );
 		endforeach;
 
+		// Load Equation Operating System
+		$eos = new eqEOS();
+
+		// Define variables to use in EOS
+		$vars = array();
+
+		$vars['played'] = sizeof( $posts );
+
+		$vars['wins'] = sizeof( array_filter( $posts, function( $post ) {
+			return array_count_values( $post->sp_result ) > 1 && max( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ];
+		} ) );
+
+		$vars['ties'] = sizeof( array_filter( $posts, function( $post ) {
+			return array_count_values( $post->sp_result ) == 1;
+		} ) );
+
+		$vars['losses'] = sizeof( array_filter( $posts, function( $post ) {
+			return array_count_values( $post->sp_result ) > 1 && min( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ];
+		} ) );
+
+		$vars['for'] = 0;
+		foreach( $posts as $post ):
+			$vars['for'] += $post->sp_result[ $post->sp_team_index ];
+		endforeach;
+
+		$vars['against'] = 0;
+		foreach( $posts as $post ):
+			$result = $post->sp_result;
+			unset( $result[ $post->sp_team_index ] );
+			$vars['against'] += array_sum( $result );
+		endforeach;
+
 		switch ($post_type):
 			case 'sp_team':
-				$row = array(
-					sizeof( $posts ),
-					sizeof(
-						array_filter(
-							$posts,
-							function( $var ) {
-								return max( $var->sp_result ) == $var->sp_result[ $var->sp_team_index ];
-							}
-						)
-					),
-					99,
-					99,
-					93,
-					99,
-					99,
-					99
-				);
+				$rows = sp_get_eos_array( get_option( 'sp_team_stats_columns' ) );
 				break;
 			default:
-				$row = array();
+				$rows = array();
 				break;
 		endswitch;
-		return $row;
+
+		$output = array();
+		foreach ( $rows as $key => $value ):
+			$row = explode( ':', $value );
+			$output[] = $eos->solveIF( sp_array_value( $row, 1, 'played'), $vars );
+		endforeach;
+
+		return $output;
 	}
 }
 
