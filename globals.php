@@ -55,19 +55,28 @@ $sportspress_options = array(
 	'settings' => array(
 		'sp_event_team_count' => 2,
 		'sp_team_stats_columns' =>	'P: $played
-								W: $wins
-								D: $ties
-								L: $losses
-								F: $for
-								A: $against
-								GD: $for-$against
-								PTS: 3$wins+$ties'
+									W: $wins
+									D: $ties
+									L: $losses
+									F: $for
+									A: $against
+									GD: $for-$against
+									PTS: 3$wins+$ties',
+		'sp_event_stats_columns' =>	'Goals: $statsa
+									Assists: $statsb
+									Yellow Cards: $statsc
+									Red Cards: $statsd',
+		'sp_player_stats_columns' =>	'Attendances: $played
+										Goals: $statsa
+										Assists: $statsb
+										Yellow Cards: $statsc
+										Red Cards: $statsd',
 	)
 );
 
 foreach( $sportspress_options as $optiongroupkey => $optiongroup ) {
 	foreach( $optiongroup as $key => $value ) {
-		if ( get_option( $key ) === false )
+		//if ( get_option( $key ) === false )
 			update_option( $key, $value );
 	}
 }
