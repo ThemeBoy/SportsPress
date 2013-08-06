@@ -54,6 +54,14 @@ $sportspress_thumbnail_texts = array(
 $sportspress_options = array(
 	'settings' => array(
 		'sp_event_team_count' => 2,
+		'sp_team_stats_columns' =>	'P: $played
+								W: $wins
+								D: $ties
+								L: $losses
+								F: $for
+								A: $against
+								GD: $for-$against
+								PTS: 3$wins+$ties'
 	)
 );
 
