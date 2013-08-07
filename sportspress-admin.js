@@ -39,6 +39,9 @@ jQuery(document).ready(function($){
 		var sum = 0;
 		$(this).closest('.sp-stats-table').find('.sp-post').each(function() {
 			val = $(this).find('td').eq(index).find('input').val();
+			if(val == '') {
+				val = $(this).find('td').eq(index).find('input').attr('placeholder');
+			}
 			if($.isNumeric(val)) {
 				sum += parseInt(val, 10);
 			}
