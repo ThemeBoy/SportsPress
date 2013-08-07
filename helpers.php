@@ -307,6 +307,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 						$player_id = sp_array_value( $args['meta_query'][0], 'value', 0 );
 						if ( !array_key_exists( $player_id, $stat ) ) continue;
 						foreach ( $stat[ $player_id ] as $key => $value ):
+							if ( !array_key_exists( $key, $stats_keys ) || !array_key_exists( $stats_keys[ $key ], $vars ) ) continue;
 							$vars[ $stats_keys[ $key ] ] += $value;
 						endforeach;
 					endforeach;
@@ -474,6 +475,19 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 				<?php endif; ?>
 			</tbody>
 		</table>
+		<?php
+	}
+}
+
+if ( !function_exists( 'sp_team_stats_sport_choice' ) ) {
+	function sp_team_stats_sport_choice( $selected = null ) {
+		global $sportspress_sports;
+		?>
+			<select id="sp_team_stats_sport" name="sp_team_stats_sport">
+				<?php foreach ( $sportspress_sports as $key => $value ): ?>
+					<option value="<?php echo $key; ?>" data-sp-preset="<?php echo sp_array_value( $value, 'team' ); ?>"<?php if ( $selected == $key ) echo ' selected="selected"'; ?>><?php echo sp_array_value( $value, 'name' ); ?></option>
+				<?php endforeach; ?>
+			</select>
 		<?php
 	}
 }

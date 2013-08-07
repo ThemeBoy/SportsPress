@@ -98,6 +98,7 @@
 }
 #sp_statsdiv .widefat input[type="text"],
 #sp_statsdiv .widefat input[type="number"] {
+	min-width: 14px;
 	width: 100%;
 }
 .widefat th.column-sp_icon,

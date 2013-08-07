@@ -5,119 +5,75 @@ function sp_settings_menu() {
 		__( 'SportsPress', 'sportspress' ),
 		__( 'SportsPress', 'sportspress' ),
 		'manage_options',
-		'sp_settings',
-		'sp_settings_page'
+		'sportspress',
+		'sportspress_settings_page'
 	);
 }
 add_action('admin_menu', 'sp_settings_menu');
 
-function sp_settings_page() {
+function sportspress_settings_add_js() {
+?>
+<script type="text/javascript">
+//<![CDATA[
+	jQuery(document).ready(function($){
+		$("input[name='date_format']").click(function(){
+			if ( "date_format_custom_radio" != $(this).attr("id") )
+				$("input[name='date_format_custom']").val( $(this).val() ).siblings('.example').text( $(this).siblings('span').text() );
+		});
+		$("input[name='date_format_custom']").focus(function(){
+			$("#date_format_custom_radio").attr("checked", "checked");
+		});
+
+		$("input[name='time_format']").click(function(){
+			if ( "time_format_custom_radio" != $(this).attr("id") )
+				$("input[name='time_format_custom']").val( $(this).val() ).siblings('.example').text( $(this).siblings('span').text() );
+		});
+		$("input[name='time_format_custom']").focus(function(){
+			$("#time_format_custom_radio").attr("checked", "checked");
+		});
+		$("input[name='date_format_custom'], input[name='time_format_custom']").change( function() {
+			var format = $(this);
+			format.siblings('.spinner').css('display', 'inline-block'); // show(); can't be used here
+			$.post(ajaxurl, {
+					action: 'date_format_custom' == format.attr('name') ? 'date_format' : 'time_format',
+					date : format.val()
+				}, function(d) { format.siblings('.spinner').hide(); format.siblings('.example').text(d); } );
+		});
+	});
+//]]>
+</script>
+<?php
+}
+add_action('admin_head', 'sportspress_settings_add_js');
+
+function sportspress_settings_page() {
 	?>
 	<div class="wrap">
+		<div id="icon-options-general" class="icon32"><br></div>
 		<h2 class="nav-tab-wrapper">
 			<?php _e( 'SportsPress Settings', 'sportspress' ); ?>
 			<a href="#" class="nav-tab nav-tab-active">Tab 1</a>
 			<a href="#" class="nav-tab">Tab 2</a>
 		</h2>
-	</div>
 	<?php
-     /*
-	if ( true | ! current_user_can( 'manage_options' ) ) wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-	$hidden_field_name = 'tb_submit_hidden';
+	if ( ! current_user_can( 'manage_options' ) ) wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 ?>
-<div class="wrap">
-	<div id="icon-options-general" class="icon32"><br></div>
-	<h2><?php _e('General Settings', 'sportspress'); ?></h2>
-	<?php
-		if( isset( $_POST[ $hidden_field_name ] ) && $_POST[ $hidden_field_name ] == 'Y' ) {
-			global $tb_option_fields;
-			foreach( $tb_option_fields['settings'] as $option_field => $value ) {
-				$new_value = isset( $_POST[$option_field] ) ? $_POST[$option_field] : null;
-				update_option( $option_field, stripslashes( $new_value ) );
-			}
-	?>
-	<div id="message" class="updated"><p><strong><?php _e( 'Settings saved.' ); ?></strong></p></div>
-	<?php
-		}
-	?>
-	<form name="sportspress_form" method="post" action="">
-		<table class="form-table">
-			<tbody>
-				<tr valign="top">
-					<th scope="row"><?php _e( 'Home Team', 'sportspress' ); ?></th>
-					<td>
-						<?php $option_slug = 'tb_default_club'; ?>
-						<?php
-						tb_dropdown_posts( array(
-							'post_type' => 'tb_club',
-							'limit' => -1,
-							'show_option_none' => __( 'None' ),
-							'selected' => get_option( $option_slug ),
-							'name' => $option_slug,
-							'id' => $option_slug
-						) );
-						?>
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="tb_region_code"><?php _e( 'Country', 'sportspress' ); ?></label></th>
-					<td>
-						<?php
-							global $tb_countries_of_the_world;
-							asort( $tb_countries_of_the_world );
-							echo form_dropdown( 'tb_region_code', $tb_countries_of_the_world, get_option( 'tb_region_code' ) );
-						?>
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><?php _e( 'Header' ); ?></th>
-					<td>
-						<?php $option_slug = 'tb_header_sponsor'; ?>
-						<label for="<?php echo $option_slug; ?>"><?php _e( 'Sponsor', 'sportspress' ); ?> 1:</label>						
-						<?php
-						tb_dropdown_posts( array(
-							'post_type' => 'tb_sponsor',
-							'limit' => -1,
-							'show_option_none' => __( 'None' ),
-							'selected' => get_option( $option_slug ),
-							'name' => $option_slug,
-							'id' => $option_slug
-						) );
-						?><br />
-						<?php $option_slug = 'tb_header_sponsor_2'; ?>
-						<label for="<?php echo $option_slug; ?>"><?php _e( 'Sponsor', 'sportspress' ); ?> 2:</label>						
-						<?php
-						tb_dropdown_posts( array(
-							'post_type' => 'tb_sponsor',
-							'limit' => -1,
-							'show_option_none' => __( 'None' ),
-							'selected' => get_option( $option_slug ),
-							'name' => $option_slug,
-							'id' => $option_slug
-						) );
-						?>
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><?php _e( 'Footer' ); ?></th>
-					<td>
-						<?php $option_slug = 'tb_footer_show_sponsors'; ?>
-						<input name="<?php echo $option_slug; ?>" type="checkbox" id="<?php echo $option_slug; ?>" value="1"<?php if( get_option( $option_slug ) ) echo ' checked' ?> />
-						<label for="<?php echo $option_slug; ?>"><?php _e( 'Sponsors', 'sportspress' ); ?></label>
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><?php _e( 'Layout' ); ?></th>
-					<td>
-						<?php $option_slug = 'tb_responsive'; ?>
-						<input name="<?php echo $option_slug; ?>" type="checkbox" id="<?php echo $option_slug; ?>" value="1"<?php if( get_option( $option_slug ) ) echo ' checked' ?> />
-						<label for="<?php echo $option_slug; ?>"><?php _e( 'Responsive', 'sportspress' ); ?></label>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
+
+<form method="post" action="options.php">
+<input type="hidden" name="option_page" value="general"><input type="hidden" name="action" value="update"><input type="hidden" id="_wpnonce" name="_wpnonce" value="e1cad3625d"><input type="hidden" name="_wp_http_referer" value="/sportspress/wp-admin/options-general.php">
+<table class="form-table">
+<tbody><tr valign="top">
+<th scope="row"><label for="sp_team_stats_columns">Team Statistics</label></th>
+<td>
+	<p><?php sp_team_stats_sport_choice(); ?></p>
+	<p>
+		<textarea name="sp_team_stats_columns" rows="10" cols="50" id="sp_team_stats_columns" class="large-text code"><?php form_option('sp_team_stats_columns'); ?></textarea>
+	</p>
+</td>
+</tr>
+</tbody></table>
+
 		<?php submit_button( null, 'primary', 'save-sportspress-options' ); ?>
 	</form>
 </div>
-<?php */ } ?>
+<?php } ?>
