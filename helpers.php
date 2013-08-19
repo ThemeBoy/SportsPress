@@ -253,7 +253,7 @@ if ( !function_exists( 'sp_get_eos_array' ) ) {
 }
 
 if ( !function_exists( 'sp_get_stats_row' ) ) {
-	function sp_get_stats_row( $post_type = 'post', $args = array() ) {
+	function sp_get_stats_row( $post_type = 'post', $args = array(), $static = false ) {
 		$args = array_merge(
 			array(
 				'posts_per_page' => -1
@@ -266,13 +266,15 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 		$eos = new eqEOS();
 
 		$vars = array();
+
+		// Get dynamic stats
 		switch ($post_type):
 			case 'sp_team':
 
 				// Add object properties needed for retreiving event stats
 				foreach( $posts as $post ):
 					$post->sp_team = get_post_meta( $post->ID, 'sp_team', false );
-					$post->sp_team_index = array_search( $args['meta_value'], $post->sp_team );
+					$post->sp_team_index = array_search( $args['meta_query'][0]['value'], $post->sp_team );
 					$post->sp_result = get_post_meta( $post->ID, 'sp_result', false );
 				endforeach;
 
@@ -327,11 +329,33 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 
 		endswitch;
 
-		$output = array();
+		// Get dynamic stats
+		$dynamic = array();
 		foreach ( $rows as $key => $value ):
 			$row = explode( ':', $value );
-			$output[] = $eos->solveIF( sp_array_value( $row, 1, '$played'), $vars );
+			$dynamic[] = $eos->solveIF( sp_array_value( $row, 1, '$played'), $vars );
 		endforeach;
+
+		if ( $static ):
+
+			// Get static stats
+			$static = (array)get_post_meta( $args['meta_query'][0]['value'], 'sp_stats', true );
+			$table = sp_array_value( $static, 0, array() );
+			if ( array_key_exists( 'tax_query',  $args ) )
+				$row_id = $args['tax_query'][0]['terms'];
+			else
+				$row_id = 0;
+			$static = sp_array_value( $table, $row_id, array() );
+
+			// Combine static and dynamic stats
+			$output = array_filter( $static ) + $dynamic;
+			ksort( $output );
+
+		else:
+
+			$output = $dynamic;
+		
+		endif;
 
 		return $output;
 	}

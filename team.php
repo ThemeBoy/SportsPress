@@ -47,7 +47,7 @@ function sp_team_stats_meta( $post ) {
 			$league_ids[] = $value->term_id;
 	endforeach;
 
-	// Get all leagues populated with stats where availabled
+	// Get all leagues populated with stats where available
 	$data = sp_array_combine( $league_ids, sp_array_value( $stats, 0, array() ) );
 
 	// Generate array of placeholder values for each league
@@ -55,8 +55,12 @@ function sp_team_stats_meta( $post ) {
 	foreach ( $league_ids as $league_id ):
 		$args = array(
 			'post_type' => 'sp_event',
-			'meta_key' => 'sp_team',
-			'meta_value' => $post->ID,
+			'meta_query' => array(
+				array(
+					'key' => 'sp_team',
+					'value' => $post->ID
+				)
+			),
 			'tax_query' => array(
 				array(
 					'taxonomy' => 'sp_league',

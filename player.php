@@ -72,7 +72,7 @@ function sp_player_stats_meta( $post ) {
 	endforeach;
 	?>
 	<p><strong><?php _e( 'Overall', 'sportspress' ); ?></strong></p>
-	<?php sp_stats_table( $data, $placeholders, 0, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, 'sp_league' ); ?>
+	<?php sp_stats_table( $data, $placeholders, 0, array( 'League', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, 'sp_league' ); ?>
 	<?php
 
 	// Leagues
@@ -109,7 +109,7 @@ function sp_player_stats_meta( $post ) {
 		endforeach;
 		?>
 		<p><strong><?php echo get_the_title( $team ); ?></strong></p>
-		<?php sp_stats_table( $data, $placeholders, $team, array( 'Team', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, 'sp_league' ); ?>
+		<?php sp_stats_table( $data, $placeholders, $team, array( 'League', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, 'sp_league' ); ?>
 		<?php
 	endforeach;
 

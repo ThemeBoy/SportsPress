@@ -69,8 +69,12 @@ function sp_table_stats_meta( $post ) {
 	foreach ( $teams as $team ):
 		$args = array(
 			'post_type' => 'sp_event',
-			'meta_key' => 'sp_team',
-			'meta_value' => $team,
+			'meta_query' => array(
+				array(
+					'key' => 'sp_team',
+					'value' => $team
+				)
+			),
 			'tax_query' => array(
 				array(
 					'taxonomy' => 'sp_league',
@@ -79,7 +83,7 @@ function sp_table_stats_meta( $post ) {
 				)
 			)
 		);
-		$placeholders[ $team ] = sp_get_stats_row( 'sp_team', $args );
+		$placeholders[ $team ] = sp_get_stats_row( 'sp_team', $args, true );
 	endforeach;
 
 	sp_stats_table( $data, $placeholders, $league_id, array( 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false );
