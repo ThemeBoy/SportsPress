@@ -2,7 +2,8 @@
 function sp_venue_cpt_init() {
 	$name = __( 'Venues', 'sportspress' );
 	$singular_name = __( 'Venue', 'sportspress' );
-	$labels = sp_cpt_labels( $name, $singular_name );
+	$lowercase_name = __( 'venues', 'sportspress' );
+	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,

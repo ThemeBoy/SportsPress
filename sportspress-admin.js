@@ -9,9 +9,16 @@ jQuery(document).ready(function($){
 	// Tab filter
 	$('.sp-tab-panel').siblings('.sp-tab-select').find('select').change(function() {
 		var val = $(this).val();
+		var filter = '.sp-filter-'+val;
+		var $filters = $(this).closest('.sp-tab-select').siblings('.sp-tab-select');
+		if($filters.length) {
+			$filters.each(function() {
+				filter += '.sp-filter-'+$(this).find('select').val();
+			});
+		}
 		$(this).closest('.sp-tab-select').siblings('.sp-tab-panel').find('.sp-post').hide(0, function() {
 			$(this).find('input').prop('disabled', true);
-			$(this).filter('.sp-filter-'+val).show(0, function() {
+			$(this).filter(filter).show(0, function() {
 				$(this).find('input').prop('disabled', false);
 			});
 		});

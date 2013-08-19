@@ -65,7 +65,8 @@ if ( !function_exists( 'sp_num_to_letter' ) ) {
 }
 
 if ( !function_exists( 'sp_cpt_labels' ) ) {
-	function sp_cpt_labels( $name, $singular_name ) {
+	function sp_cpt_labels( $name, $singular_name, $lowercase_name = null ) {
+		if ( !$lowercase_name ) $lowercase_name = $name;
 		$labels = array(
 			'name' => $name,
 			'singular_name' => $singular_name,
@@ -75,8 +76,8 @@ if ( !function_exists( 'sp_cpt_labels' ) ) {
 			'new_item' => sprintf( __( 'New %s', 'sportspress' ), $singular_name ),
 			'view_item' => sprintf( __( 'View %s', 'sportspress' ), $singular_name ),
 			'search_items' => sprintf( __( 'Search %s', 'sportspress' ), $name ),
-			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), $name ),
-			'not_found_in_trash' => sprintf( __( 'No %s found in trash', 'sportspress' ), $name ),
+			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), $lowercase_name ),
+			'not_found_in_trash' => sprintf( __( 'No %s found in trash', 'sportspress' ), $lowercase_name ),
 			'parent_item_colon' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ) . ':'
 		);
 		return $labels;
@@ -84,7 +85,8 @@ if ( !function_exists( 'sp_cpt_labels' ) ) {
 }
 
 if ( !function_exists( 'sp_tax_labels' ) ) {
-	function sp_tax_labels( $name, $singular_name ) {
+	function sp_tax_labels( $name, $singular_name, $lowercase_name = null ) {
+		if ( !$lowercase_name ) $lowercase_name = $name;
 		$labels = array(
 			'name' => $name,
 			'singular_name' => $singular_name,
@@ -97,7 +99,7 @@ if ( !function_exists( 'sp_tax_labels' ) ) {
 			'parent_item' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ),
 			'parent_item_colon' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ) . ':',
 			'search_items' =>  sprintf( __( 'Search %s', 'sportspress' ), $name ),
-			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), $name )
+			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), $lowercase_name )
 		);
 		return $labels;
 	}
@@ -125,7 +127,7 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 			'show_option_none' => false,
 			'taxonomy' => null,
 			'name' => null,
-			'selected' => null,
+			'selected' => null
 		);
 		$args = array_merge( $defaults, $args ); 
 		$terms = get_terms( $args['taxonomy'] );
@@ -354,7 +356,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 		else:
 
 			$output = $dynamic;
-		
+
 		endif;
 
 		return $output;
