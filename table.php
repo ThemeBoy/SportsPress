@@ -2,7 +2,8 @@
 function sp_table_cpt_init() {
 	$name = __( 'League Tables', 'sportspress' );
 	$singular_name = __( 'League Table', 'sportspress' );
-	$labels = sp_cpt_labels( $name, $singular_name );
+	$lowercase_name = __( 'league tables', 'sportspress' );
+	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -28,8 +29,6 @@ function sp_table_edit_columns() {
 add_filter( 'manage_edit-sp_table_columns', 'sp_table_edit_columns' );
 
 function sp_table_meta_init() {
-	remove_meta_box( 'submitdiv', 'sp_table', 'side' );
-	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_table', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_table_team_meta', 'sp_table', 'side', 'high' );
 	add_meta_box( 'sp_statsdiv', __( 'League Table', 'sportspress' ), 'sp_table_stats_meta', 'sp_table', 'normal', 'high' );
 }

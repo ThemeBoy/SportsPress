@@ -2,7 +2,8 @@
 function sp_team_cpt_init() {
 	$name = __( 'Teams', 'sportspress' );
 	$singular_name = __( 'Team', 'sportspress' );
-	$labels = sp_cpt_labels( $name, $singular_name );
+	$lowercase_name = __( 'teams', 'sportspress' );
+	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
