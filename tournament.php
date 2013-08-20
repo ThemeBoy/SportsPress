@@ -22,7 +22,7 @@ function sp_tournament_edit_columns() {
 		'title' => __( 'Title' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
 		'sp_event' => __( 'Events', 'sportspress' ),
-		'sp_sponsor' => __( 'Sponsor', 'sportspress' )
+		'sp_sponsor' => __( 'Sponsors', 'sportspress' )
 	);
 	return $columns;
 }
