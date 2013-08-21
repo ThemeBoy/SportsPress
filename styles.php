@@ -7,12 +7,11 @@ function sp_enqueue_styles() {
 }
 //add_action( 'wp_print_styles', 'sp_enqueue_styles' );
 
-function sp_admin_styles_init() {
-//	wp_enqueue_style( 'thickbox' );
+function sp_admin_styles() {
 	wp_register_style( 'sportspress-admin.css', SPORTSPRESS_PLUGIN_URL . 'sportspress-admin.css', array(), '1.0' );
 	wp_enqueue_style( 'sportspress-admin.css');
 }
-add_action( 'admin_init', 'sp_admin_styles_init' );
+add_action( 'admin_init', 'sp_admin_styles' );
 
 function sp_adminbar_enqueue_styles() {
 	wp_register_style( 'adminbar-stylesheet',  get_template_directory_uri() . '/css/adminbar.css' );

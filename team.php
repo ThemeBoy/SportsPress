@@ -73,7 +73,14 @@ function sp_team_stats_meta( $post ) {
 		$placeholders[ $league_id ] = sp_get_stats_row( 'sp_team', $args );
 	endforeach;
 
-	sp_stats_table( $data, $placeholders, 0, array( 'League', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts' ), false, 'sp_league' );
+	// Get column names from settings
+	$stats_settings = get_option( 'sportspress_stats' );
+	$columns = sp_get_eos_keys( $stats_settings['team'] );
+
+	// Add first column label
+	array_unshift( $columns, __( 'League', 'sportspress' ) );
+
+	sp_stats_table( $data, $placeholders, 0, $columns, false, 'sp_league' );
 	sp_nonce();
 }
 ?>

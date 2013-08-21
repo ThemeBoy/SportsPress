@@ -38,6 +38,13 @@ function sp_player_stats_meta( $post ) {
 	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
 
+	// Get column names from settings
+	$stats_settings = get_option( 'sportspress_stats' );
+	$columns = sp_get_eos_keys( $stats_settings['player'] );
+
+	// Add first column label
+	array_unshift( $columns, __( 'League', 'sportspress' ) );
+
 	// Generate array of all league ids
 	$league_ids = array( 0 );
 	foreach ( $leagues as $key => $value ):
@@ -73,8 +80,9 @@ function sp_player_stats_meta( $post ) {
 	endforeach;
 	?>
 	<p><strong><?php _e( 'Overall', 'sportspress' ); ?></strong></p>
-	<?php sp_stats_table( $data, $placeholders, 0, array( 'League', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, 'sp_league' ); ?>
 	<?php
+
+	sp_stats_table( $data, $placeholders, 0, $columns, true, 'sp_league' );
 
 	// Leagues
 	foreach ( $teams as $team ):
@@ -110,7 +118,11 @@ function sp_player_stats_meta( $post ) {
 		endforeach;
 		?>
 		<p><strong><?php echo get_the_title( $team ); ?></strong></p>
-		<?php sp_stats_table( $data, $placeholders, $team, array( 'League', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), true, 'sp_league' ); ?>
+		<?php
+
+		sp_stats_table( $data, $placeholders, $team, $columns, true, 'sp_league' );
+
+		?>
 		<?php
 	endforeach;
 
