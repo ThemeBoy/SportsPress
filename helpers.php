@@ -254,6 +254,18 @@ if ( !function_exists( 'sp_get_eos_array' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_eos_keys' ) ) {
+	function sp_get_eos_keys( $raw ) {
+		$raw = str_replace( array( "\r\n", ' :' ), array( "\n", ':' ), $raw );
+		$arr = explode( "\n", $raw );
+		$output = array();
+		foreach ( $arr as $value ):
+			$output[] = substr( $value, 0, strpos( $value, ':') );
+		endforeach;
+		return $output;
+	}
+}
+
 if ( !function_exists( 'sp_get_stats_row' ) ) {
 	function sp_get_stats_row( $post_type = 'post', $args = array(), $static = false ) {
 		$args = array_merge(
@@ -268,6 +280,8 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 		$eos = new eqEOS();
 
 		$vars = array();
+
+		$stats_settings = get_option( 'sportspress_stats' );
 
 		// Get dynamic stats
 		switch ($post_type):
@@ -289,7 +303,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 				$vars['against'] = 0; foreach( $posts as $post ): $result = $post->sp_result; unset( $result[ $post->sp_team_index ] ); $vars['against'] += array_sum( $result ); endforeach;
 				
 				// Get EOS array
-				$rows = sp_get_eos_array( get_option( 'sp_team_stats_columns' ) );
+				$rows = sp_get_eos_array( $stats_settings['team'] );
 				break;
 
 			case 'sp_player':
@@ -335,7 +349,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 		$dynamic = array();
 		foreach ( $rows as $key => $value ):
 			$row = explode( ':', $value );
-			$dynamic[] = $eos->solveIF( sp_array_value( $row, 1, '$played'), $vars );
+			$dynamic[ $key ] = $eos->solveIF( sp_array_value( $row, 1, '$played'), $vars );
 		endforeach;
 
 		if ( $static ):
@@ -364,10 +378,10 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 }
 
 if ( !function_exists( 'sp_stats_table' ) ) {
-	function sp_stats_table( $stats = array(), $placeholders = array(), $index = 0, $columns = array( 'Name' ), $total = true, $rowtype = 'post', $slug = 'sp_stats' ) {
+	function sp_stats_table( $stats = array(), $placeholders = array(), $index = 0, $columns = array(), $total = true, $rowtype = 'post', $slug = 'sp_stats' ) {
 		global $pagenow;
 		if ( !is_array( $stats ) )
-			$stats = array();
+			$stats = array( __( 'Name', 'sportspress' ) );
 		?>
 		<table class="widefat sp-stats-table">
 			<thead>
@@ -428,6 +442,7 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 	}
 }
 
+/*
 if ( !function_exists( 'sp_team_stats_sport_choice' ) ) {
 	function sp_team_stats_sport_choice( $selected = null ) {
 		global $sportspress_sports;
@@ -440,6 +455,7 @@ if ( !function_exists( 'sp_team_stats_sport_choice' ) ) {
 		<?php
 	}
 }
+*/
 
 if ( !function_exists( 'sp_post_adder' ) ) {
 	function sp_post_adder( $meta = 'post' ) {
@@ -471,6 +487,27 @@ if ( !function_exists( 'sp_update_post_meta_recursive' ) ) {
 		foreach ( $values as $value ):
 			add_post_meta( $post_id, $meta_key, $value, false );
 		endforeach;
+	}
+}
+
+if ( !function_exists( 'sportspress_render_option_field' ) ) {
+	function sportspress_render_option_field( $group, $name, $type = 'text' ) {
+
+		$options = get_option( $group );
+		$value = '';
+		if ( is_array( $options ) && array_key_exists( $name, $options ) ):
+			$value = $options[ $name ];
+		endif;
+
+		switch ( $type ):
+			case 'textarea':
+				echo '<textarea id="' . $group . '" name="' . $group . '[' . $name . ']" rows="10" cols="50">' . $value . '</textarea>';
+				break;
+			default:
+				echo '<input type="text" id="' . $name . '" name="' . $group . '[' . $name . ']" value="' . $value . '" />';
+				break;
+		endswitch;
+
 	}
 }
 ?>
