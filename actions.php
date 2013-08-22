@@ -105,16 +105,33 @@ function sp_save_post( $post_id ) {
 			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
 			break;
 		case ( 'sp_event' ):
-			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
+
+			// Get results
+			$results = (array)sp_array_value( $_POST, 'sp_results', array() );
+
+			// Update results
+			update_post_meta( $post_id, 'sp_results', $results );
+
+			// Delete result values
 			delete_post_meta( $post_id, 'sp_result');
-			$stats = (array)sp_array_value( $_POST, 'sp_stats', array() );
-			foreach ( $stats as $table ) {
-				$total = sp_array_value( sp_array_value( $table, 0, null ), 0, null );
-				add_post_meta( $post_id, 'sp_result', $total );
-			}
+
+			// Add result values for each team (first column of results table)
+			$teams = (array)sp_array_value( $results, 0, null );
+			foreach ( $teams as $team ):
+				add_post_meta( $post_id, 'sp_result', sp_array_value( $team, 0, null ) );
+			endforeach;
+
+			// Update stats
+			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
+
+			// Update team array
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+
+			// Update player array
 			sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
+
 			break;
+
 		case ( 'sp_player' ):
 			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );

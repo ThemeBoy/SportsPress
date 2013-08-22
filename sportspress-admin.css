@@ -98,7 +98,9 @@
 	white-space: nowrap;
 }
 #sp_statsdiv .widefat input[type="text"],
-#sp_statsdiv .widefat input[type="number"] {
+#sp_statsdiv .widefat input[type="number"],
+#sp_resultsdiv .widefat input[type="text"],
+#sp_resultsdiv .widefat input[type="number"] {
 	min-width: 14px;
 	width: 100%;
 }
