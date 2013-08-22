@@ -4,6 +4,7 @@
 #adminmenu #menu-posts-sp_staff div.wp-menu-image,
 #adminmenu #menu-posts-sp_sponsor div.wp-menu-image,
 #adminmenu #menu-posts-sp_table div.wp-menu-image,
+#adminmenu #menu-posts-sp_list div.wp-menu-image,
 #adminmenu #menu-posts-sp_tournament div.wp-menu-image,
 #adminmenu #menu-posts-sp_venue div.wp-menu-image {
 	background-image: url(images/menu.png);
