@@ -100,6 +100,13 @@ function sp_list_stats_meta( $post ) {
 		$placeholders[ $player ] = sp_get_stats_row( 'sp_player', $args, true );
 	endforeach;
 
-	sp_stats_table( $data, $placeholders, $league_id, array( 'Player', 'Played', 'Goals', 'Assists', 'Yellow Cards', 'Red Cards' ), false );
+	// Get column names from settings
+	$stats_settings = get_option( 'sportspress_stats' );
+	$columns = sp_get_eos_keys( $stats_settings['player'] );
+
+	// Add first column label
+	array_unshift( $columns, __( 'Player', 'sportspress' ) );
+
+	sp_stats_table( $data, $placeholders, $league_id, $columns, false );
 }
 ?>
