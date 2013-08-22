@@ -1,73 +1,8 @@
 <?php
-/*
-function sportspress_admin_menu() {
-	add_options_page(
-		__( 'SportsPress', 'sportspress' ),
-		__( 'SportsPress', 'sportspress' ),
-		'manage_options',
-		'sportspress',
-		'sportspress_settings_page'
-	);
-}
-add_action('admin_menu', 'sportspress_admin_menu');
-
-function sportspress_register_settings() {
-	register_setting( 'sportspress_stats', 'sportspress_team_stats' ); 
-} 
-add_action( 'admin_init', 'sportspress_register_settings' );
-
-function sportspress_settings_add_js() {
-?>
-<script type="text/javascript">
-	jQuery(document).ready(function($){
-	});
-</script>
-<?php
-}
-add_action('admin_head', 'sportspress_settings_add_js');
-
-function sportspress_settings_page() {
-	?><?php settings_fields( 'sportspress_stats' ) ?>test
-	<div class="wrap">
-		<div id="icon-options-general" class="icon32"><br></div>
-		<h2 class="nav-tab-wrapper">
-			<?php _e( 'SportsPress', 'sportspress' ); ?>
-			<a href="#" class="nav-tab"><?php _e( 'General', 'sportspress' ); ?></a>
-			<a href="#" class="nav-tab nav-tab-active"><?php _e( 'Statistics', 'sportspress' ); ?></a>
-		</h2>
-	<?php
-	if ( ! current_user_can( 'manage_options' ) ) wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-	?>
-		<form method="post" action="options.php">
-			<input type="hidden" name="option_page" value="general"><input type="hidden" name="action" value="update"><input type="hidden" id="_wpnonce" name="_wpnonce" value="e1cad3625d"><input type="hidden" name="_wp_http_referer" value="/sportspress/wp-admin/options-general.php">
-			<table class="form-table">
-				<tbody>
-					<tr valign="top">
-						<th scope="row">
-							<label for="sp_team_stats_columns"><?php _e( 'Team', 'sportspress' ); ?></label>
-						</th>
-						<td>
-							<p>
-								<textarea name="sp_team_stats_columns" rows="10" cols="50" id="sp_team_stats_columns" class="large-text code"><?php form_option('sp_team_stats_columns'); ?></textarea>
-							</p>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<?php submit_button( null, 'primary', 'save-sportspress-options' ); ?>
-		</form>
-	</div>
-<?php } */ ?>
-<?php
-
-/**
- * This function introduces the theme options into the 'Appearance' menu and into a top-level 
- * __( 'SportsPress', 'sportspress' ) menu.
- */
 function sportspress_admin_menu() {
 
 	add_options_page(
-		__( 'SportsPress', 'sportspress' ),
+		__( 'SportsPress Settings', 'sportspress' ),
 		__( 'SportsPress', 'sportspress' ),
 		'manage_options',
 		'sportspress',
@@ -82,7 +17,7 @@ function sportspress_settings( $tab = '' ) {
 	<div class="wrap">
 	
 		<div id="icon-themes" class="icon32"></div>
-		<h2><?php _e( 'SportsPress', 'sportspress' ); ?></h2>
+		<h2><?php _e( 'SportsPress Settings', 'sportspress' ); ?></h2>
 		<?php settings_errors(); ?>
 		
 		<?php
@@ -262,56 +197,42 @@ function sportspress_intialize_stats() {
 	} // end if
 	
 	add_settings_section(
-		'sportspress_team_stats',			// ID used to identify this section and with which to register options
-		__( 'Teams', 'sportspress' ),		// Title to be displayed on the administration page
-		'',	// Callback used to render the description of the section
-		'sportspress_stats'		// Page on which to add this section of options
-	);
-	
-	add_settings_section(
-		'sportspress_event_stats',			// ID used to identify this section and with which to register options
-		__( 'Events', 'sportspress' ),		// Title to be displayed on the administration page
-		'',	// Callback used to render the description of the section
-		'sportspress_stats'		// Page on which to add this section of options
-	);
-	
-	add_settings_section(
-		'sportspress_player_stats',			// ID used to identify this section and with which to register options
-		__( 'Players', 'sportspress' ),		// Title to be displayed on the administration page
+		'sportspress_stats',			// ID used to identify this section and with which to register options
+		'',		// Title to be displayed on the administration page
 		'',	// Callback used to render the description of the section
 		'sportspress_stats'		// Page on which to add this section of options
 	);
 	
 	add_settings_field(	
 		'team',						
-		__( 'Statistics',	'sportspress' ),
+		__( 'Teams',	'sportspress' ),
 		'sportspress_team_stats_callback',	
 		'sportspress_stats',	
-		'sportspress_team_stats'			
+		'sportspress_stats'			
 	);
 	
 	add_settings_field(	
-		'event_team',			
-		__( 'Teams', 'sportspress' ),			
-		'sportspress_event_team_stats_callback',	
+		'event',			
+		__( 'Events', 'sportspress' ),			
+		'sportspress_event_stats_callback',	
 		'sportspress_stats',	
-		'sportspress_event_stats'			
+		'sportspress_stats'			
 	);
 
 	add_settings_field(	
-		'event_player',	
+		'player',	
 		__( 'Players',	'sportspress' ),						
-		'sportspress_event_player_stats_callback',	
+		'sportspress_player_stats_callback',	
 		'sportspress_stats',	
-		'sportspress_event_stats'			
+		'sportspress_stats'			
 	);
 
 	add_settings_field(	
-		'player',
-		__( 'Statistics', 'sportspress' ),						
-		'sportspress_player_stats_callback',
+		'staff',
+		__( 'Staff', 'sportspress' ),						
+		'sportspress_staff_stats_callback',
 		'sportspress_stats',
-		'sportspress_player_stats'
+		'sportspress_stats'
 	);
 	
 	register_setting(
@@ -443,16 +364,16 @@ function sportspress_team_stats_callback() {
 	sportspress_render_option_field( 'sportspress_stats', 'team', 'textarea' );
 }
 
-function sportspress_event_team_stats_callback() {
-	sportspress_render_option_field( 'sportspress_stats', 'event_team', 'textarea' );
-}
-
-function sportspress_event_player_stats_callback() {
-	sportspress_render_option_field( 'sportspress_stats', 'event_player', 'textarea' );
+function sportspress_event_stats_callback() {
+	sportspress_render_option_field( 'sportspress_stats', 'event', 'textarea' );
 }
 
 function sportspress_player_stats_callback() {
 	sportspress_render_option_field( 'sportspress_stats', 'player', 'textarea' );
+}
+
+function sportspress_staff_stats_callback() {
+	sportspress_render_option_field( 'sportspress_stats', 'staff', 'textarea' );
 }
 
 function sportspress_input_element_callback() {
