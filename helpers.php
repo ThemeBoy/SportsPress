@@ -311,12 +311,22 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 					endforeach;
 				endforeach;
 
-				// Get team stats from all attended events
+				// All events attended by the team
 				$vars['appearances'] = sizeof( $posts );
-				$vars['greater'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) > 1 && max( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ];	} ) );
-				$vars['equal'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) == 1; } ) );
-				$vars['less'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) > 1 && min( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ]; } ) );
+
+				// Events with a aesult value greater than at least one competitor
+				$vars['greater'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) > 1 && max( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ] && min( $post->sp_result ) < $post->sp_result[ $post->sp_team_index ]; } ) );
+
+				// Events with a aesult value equal to all competitors
+				$vars['equal'] = sizeof( array_filter( $posts, function( $post ) { return max( $post->sp_result ) == min( $post->sp_result ); } ) );
+
+				// Events with a aesult value less than at least one competitor
+				$vars['less'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) > 1 && min( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ] && max( $post->sp_result ) > $post->sp_result[ $post->sp_team_index ]; } ) );
+
+				// Sum of the team's result values
 				$vars['for'] = 0; foreach( $posts as $post ): $vars['for'] += $post->sp_result[ $post->sp_team_index ]; endforeach;
+
+				// Sum of opposing result values
 				$vars['against'] = 0; foreach( $posts as $post ): $result = $post->sp_result; unset( $result[ $post->sp_team_index ] ); $vars['against'] += array_sum( $result ); endforeach;
 
 				// Get EOS array
