@@ -246,8 +246,8 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_get_eos_array' ) ) {
-	function sp_get_eos_array( $raw ) {
+if ( !function_exists( 'sp_get_eos_rows' ) ) {
+	function sp_get_eos_rows( $raw ) {
 		$raw = str_replace( array( "\r\n", ' ' ), array( "\n", '' ), $raw );
 		$output = explode( "\n", $raw );
 		return $output;
@@ -288,7 +288,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 			case 'sp_team':
 
 				// Get stats settings columns
-				$columns = sp_get_eos_array( $stats_settings['event'] );
+				$columns = sp_get_eos_rows( $stats_settings['event'] );
 
 				// Setup variables
 				$results = array();
@@ -299,16 +299,20 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 					$vars[ $var_name ] = 0;
 				endforeach;
 
-				// Add object properties needed for retreiving event stats
 				foreach( $posts as $post ):
+					
+					// Add object properties needed for retreiving event stats
 					$post->sp_team = get_post_meta( $post->ID, 'sp_team', false );
 					$post->sp_team_index = array_search( $args['meta_query'][0]['value'], $post->sp_team );
 					$post->sp_result = get_post_meta( $post->ID, 'sp_result', false );
 					$post->sp_results = sp_array_value( sp_array_value( sp_array_value( get_post_meta( $post->ID, 'sp_results', false ), 0, array() ), 0, array() ), $args['meta_query'][0]['value'], array() );
+					
+					// Add event stats to vars as sum
 					foreach( $results as $key => $value ):
 						if ( !array_key_exists( $value, $vars ) ) $vars[ $value ] = 0;
 						$vars[ $value ] += sp_array_value( $post->sp_results, $key, 0 );
 					endforeach;
+
 				endforeach;
 
 				// All events attended by the team
@@ -330,7 +334,8 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 				$vars['against'] = 0; foreach( $posts as $post ): $result = $post->sp_result; unset( $result[ $post->sp_team_index ] ); $vars['against'] += array_sum( $result ); endforeach;
 
 				// Get EOS array
-				$rows = sp_get_eos_array( $stats_settings['team'] );
+				$rows = sp_get_eos_rows( $stats_settings['team'] );
+
 				break;
 
 			case 'sp_player':
@@ -345,7 +350,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 				endforeach;
 
 				// Create array of event stats columns
-				$columns = sp_get_eos_array( get_option( 'sp_event_stats_columns' ) );
+				$columns = sp_get_eos_rows( get_option( 'sp_event_stats_columns' ) );
 				foreach ( $columns as $key => $value ):
 					$row = explode( ':', $value );
 					$var_name = strtolower( preg_replace( '~[^\p{L}]++~u', '', end( $row ) ) );
@@ -371,7 +376,8 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 				$vars['appearances'] = sizeof( $posts );
 
 				// Get EOS array
-				$rows = sp_get_eos_array( get_option( 'sp_player_stats_columns' ) );
+				$rows = sp_get_eos_rows( get_option( 'sp_player_stats_columns' ) );
+
 				break;
 
 			default:
