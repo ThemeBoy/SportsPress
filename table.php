@@ -9,7 +9,7 @@ function sp_table_cpt_init() {
 		'labels' => $labels,
 		'public' => true,
 		'hierarchical' => false,
-		'supports' => array( 'title', 'author', 'thumbnail', 'page-attributes' ),
+		'supports' => array( 'title', 'author' ),
 		'register_meta_box_cb' => 'sp_table_meta_init',
 		'rewrite' => array( 'slug' => 'table' )
 	);
