@@ -80,8 +80,7 @@ function sportspress_default_stats() {
 	$defaults = array(
 		'team'		=>	'',
 		'event'	=>	'',
-		'player'		=>	'',
-		'staff'		=>	'Staff settings',
+		'player'		=>	''
 	);
 	
 	return apply_filters( 'sportspress_default_stats', $defaults );
@@ -96,7 +95,7 @@ function sportspress_default_display_options() {
 	$defaults = array(
 		'show_header'		=>	'',
 		'show_content'		=>	'',
-		'show_footer'		=>	'',
+		'show_footer'		=>	''
 	);
 	
 	return apply_filters( 'sportspress_default_display_options', $defaults );
@@ -370,10 +369,6 @@ function sportspress_event_stats_callback() {
 
 function sportspress_player_stats_callback() {
 	sportspress_render_option_field( 'sportspress_stats', 'player', 'textarea' );
-}
-
-function sportspress_staff_stats_callback() {
-	sportspress_render_option_field( 'sportspress_stats', 'staff', 'textarea' );
 }
 
 function sportspress_input_element_callback() {
