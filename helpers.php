@@ -295,7 +295,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 				endforeach;
 
 				// Get team stats from all attended events
-				$vars['played'] = sizeof( $posts );
+				$vars['appearances'] = sizeof( $posts );
 				$vars['wins'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) > 1 && max( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ];	} ) );
 				$vars['ties'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) == 1; } ) );
 				$vars['losses'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) > 1 && min( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ]; } ) );
@@ -331,8 +331,8 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 					endforeach;
 				endforeach;
 
-				// Add played event count to vars
-				$vars['played'] = sizeof( $posts );
+				// Add appearances event count to vars
+				$vars['appearances'] = sizeof( $posts );
 
 				// Get EOS array
 				$rows = sp_get_eos_array( get_option( 'sp_player_stats_columns' ) );
@@ -349,7 +349,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 		$dynamic = array();
 		foreach ( $rows as $key => $value ):
 			$row = explode( ':', $value );
-			$dynamic[ $key ] = $eos->solveIF( sp_array_value( $row, 1, '$played'), $vars );
+			$dynamic[ $key ] = $eos->solveIF( sp_array_value( $row, 1, '$appearances'), $vars );
 		endforeach;
 
 		if ( $static ):
