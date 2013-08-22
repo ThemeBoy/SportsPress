@@ -9,7 +9,7 @@ function sp_player_cpt_init() {
 		'labels' => $labels,
 		'public' => true,
 		'hierarchical' => false,
-		'supports' => array( 'title', 'author', 'thumbnail', 'page-attributes' ),
+		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sp_player_meta_init',
 		'rewrite' => array( 'slug' => 'player' )
 	);

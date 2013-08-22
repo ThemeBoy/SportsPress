@@ -175,7 +175,7 @@ if ( !function_exists( 'sp_the_posts' ) ) {
 				endforeach;
 				$title = get_the_title( $id );
 				if ( empty( $title ) )
-					$title = __( '(no title)' );
+					$title = __( '(no title)', 'sportspress' );
 				edit_post_link( $title, '', '', $id );
 				if ( !empty( $after ) ):
 					if ( is_array( $after ) ):

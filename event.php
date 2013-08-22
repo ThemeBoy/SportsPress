@@ -9,7 +9,7 @@ function sp_event_cpt_init() {
 		'labels' => $labels,
 		'public' => true,
 		'hierarchical' => false,
-		'supports' => array( 'title', 'author', 'comments', 'page-attributes' ),
+		'supports' => array( 'title', 'author', 'comments' ),
 		'register_meta_box_cb' => 'sp_event_meta_init',
 		'rewrite' => array( 'slug' => 'event' )
 	);

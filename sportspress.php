@@ -40,11 +40,9 @@ require_once dirname( __FILE__ ) . '/player.php';
 require_once dirname( __FILE__ ) . '/staff.php';
 require_once dirname( __FILE__ ) . '/table.php';
 require_once dirname( __FILE__ ) . '/list.php';
-require_once dirname( __FILE__ ) . '/tournament.php';
 
 // Taxonomies
 require_once dirname( __FILE__ ) . '/league.php';
-require_once dirname( __FILE__ ) . '/venue.php';
 require_once dirname( __FILE__ ) . '/position.php';
 require_once dirname( __FILE__ ) . '/sponsor.php';
 

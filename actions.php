@@ -78,7 +78,7 @@ function sp_restrict_manage_posts() {
 		);
 		sp_dropdown_taxonomies( $args );
 	endif;
-	if ( in_array( $typenow, array( 'sp_team', 'sp_event', 'sp_player', 'sp_tournament', 'sp_venue' ) ) ):
+	if ( in_array( $typenow, array( 'sp_team', 'sp_event', 'sp_player' ) ) ):
 		$selected = isset( $_REQUEST['sp_sponsor'] ) ? $_REQUEST['sp_sponsor'] : null;
 		$args = array(
 			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Sponsors', 'sportspress' ) ),
