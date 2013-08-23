@@ -6,7 +6,7 @@
 Plugin Name: SportsPress
 Plugin URI: http://sportspress.com/sportspress
 Description: Currently in development.
-Version: 0.1
+Version: 1.0
 Author: ThemeBoy
 Author URI: http://sportspress.com
 License: GPL2
@@ -18,7 +18,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-define( 'SPORTSPRESS_VERSION', '0.1' );
+define( 'SPORTSPRESS_VERSION', '1.0' );
 define( 'SPORTSPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 // Libraries

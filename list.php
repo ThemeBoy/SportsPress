@@ -3,7 +3,7 @@ function sp_list_cpt_init() {
 	$name = __( 'Player Lists', 'sportspress' );
 	$singular_name = __( 'Player List', 'sportspress' );
 	$lowercase_name = __( 'player lists', 'sportspress' );
-	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name );
+	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name, true );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -11,7 +11,8 @@ function sp_list_cpt_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author' ),
 		'register_meta_box_cb' => 'sp_list_meta_init',
-		'rewrite' => array( 'slug' => 'list' )
+		'rewrite' => array( 'slug' => 'list' ),
+		'show_in_menu' => 'edit.php?post_type=sp_player'
 	);
 	register_post_type( 'sp_list', $args );
 }
