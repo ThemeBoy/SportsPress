@@ -65,12 +65,12 @@ if ( !function_exists( 'sp_num_to_letter' ) ) {
 }
 
 if ( !function_exists( 'sp_cpt_labels' ) ) {
-	function sp_cpt_labels( $name, $singular_name, $lowercase_name = null ) {
+	function sp_cpt_labels( $name, $singular_name, $lowercase_name = null, $is_submenu = false ) {
 		if ( !$lowercase_name ) $lowercase_name = $name;
 		$labels = array(
 			'name' => $name,
 			'singular_name' => $singular_name,
-			'all_items' => sprintf( __( 'All %s', 'sportspress' ), $name ),
+			'all_items' => $is_submenu ? $name : sprintf( __( 'All %s', 'sportspress' ), $name ),
 			'add_new_item' => sprintf( __( 'Add New %s', 'sportspress' ), $singular_name ),
 			'edit_item' => sprintf( __( 'Edit %s', 'sportspress' ), $singular_name ),
 			'new_item' => sprintf( __( 'New %s', 'sportspress' ), $singular_name ),
@@ -543,7 +543,10 @@ if ( !function_exists( 'sportspress_render_option_field' ) ) {
 
 		switch ( $type ):
 			case 'textarea':
-				echo '<textarea id="' . $group . '" name="' . $group . '[' . $name . ']" rows="10" cols="50">' . $value . '</textarea>';
+				echo '<textarea id="' . $name . '" name="' . $group . '[' . $name . ']" rows="10" cols="50">' . $value . '</textarea>';
+				break;
+			case 'checkbox':
+				echo '<input type="checkbox" id="' . $name . '" name="' . $group . '[' . $name . ']" value="1" ' . checked( 1, isset( $value ) ? $value : 0, false ) . '/>'; 
 				break;
 			default:
 				echo '<input type="text" id="' . $name . '" name="' . $group . '[' . $name . ']" value="' . $value . '" />';
