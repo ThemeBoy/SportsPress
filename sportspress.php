@@ -4,12 +4,12 @@
  */
 /*
 Plugin Name: SportsPress
-Plugin URI: http://sportspress.com/sportspress
-Description: Currently in development.
+Plugin URI: http://themeboy.com/sportspress
+Description: Manage your club and its players, staff, events, league tables, and player lists.
 Version: 1.0
 Author: ThemeBoy
-Author URI: http://sportspress.com
-License: GPL2
+Author URI: http://themeboy.com
+License: GPLv3
 */
 
 // Make sure we don't expose any info if called directly

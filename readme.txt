@@ -11,5 +11,5 @@ SportsPress is a powerful, flexible sports management plugin that helps you broa
 
 == Changelog ==
 
-= 1.0 - 29/09/2013 =
+= 1.0 - 23/09/2013 =
 * Initial Release. Game on!
