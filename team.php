@@ -30,30 +30,29 @@ function sp_team_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'sp_icon' => '&nbsp;',
 		'title' => __( 'Team', 'sportspress' ),
-		'sp_league' => __( 'Leagues', 'sportspress' ),
-		'sp_sponsor' => __( 'Sponsors', 'sportspress' )
+		'sp_division' => __( 'Divisions', 'sportspress' )
 	);
 	return $columns;
 }
 add_filter( 'manage_edit-sp_team_columns', 'sp_team_edit_columns' );
 
 function sp_team_stats_meta( $post ) {
-	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
+	$divisions = (array)get_the_terms( $post->ID, 'sp_division' );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
 
-	// Generate array of all league ids
-	$league_ids = array( 0 );
-	foreach ( $leagues as $key => $value ):
+	// Generate array of all division ids
+	$division_ids = array( 0 );
+	foreach ( $divisions as $key => $value ):
 		if ( is_object( $value ) && property_exists( $value, 'term_id' ) )
-			$league_ids[] = $value->term_id;
+			$division_ids[] = $value->term_id;
 	endforeach;
 
-	// Get all leagues populated with stats where available
-	$data = sp_array_combine( $league_ids, sp_array_value( $stats, 0, array() ) );
+	// Get all divisions populated with stats where available
+	$data = sp_array_combine( $division_ids, sp_array_value( $stats, 0, array() ) );
 
-	// Generate array of placeholder values for each league
+	// Generate array of placeholder values for each division
 	$placeholders = array();
-	foreach ( $league_ids as $league_id ):
+	foreach ( $division_ids as $division_id ):
 		$args = array(
 			'post_type' => 'sp_event',
 			'meta_query' => array(
@@ -64,13 +63,13 @@ function sp_team_stats_meta( $post ) {
 			),
 			'tax_query' => array(
 				array(
-					'taxonomy' => 'sp_league',
+					'taxonomy' => 'sp_division',
 					'field' => 'id',
-					'terms' => $league_id
+					'terms' => $division_id
 				)
 			)
 		);
-		$placeholders[ $league_id ] = sp_get_stats_row( 'sp_team', $args );
+		$placeholders[ $division_id ] = sp_get_stats_row( 'sp_team', $args );
 	endforeach;
 
 	// Get column names from settings
@@ -78,9 +77,9 @@ function sp_team_stats_meta( $post ) {
 	$columns = sp_get_eos_keys( $stats_settings['team'] );
 
 	// Add first column label
-	array_unshift( $columns, __( 'League', 'sportspress' ) );
+	array_unshift( $columns, __( 'Division', 'sportspress' ) );
 
-	sp_stats_table( $data, $placeholders, 0, $columns, false, 'sp_league' );
+	sp_stats_table( $data, $placeholders, 0, $columns, false, 'sp_division' );
 	sp_nonce();
 }
 ?>

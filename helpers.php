@@ -210,7 +210,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 					$parents = get_post_ancestors( $post );
 					if ( $filter ):
 						$filter_values = (array)get_post_meta( $post->ID, $filter, false );
-						$terms = (array)get_the_terms( $post->ID, 'sp_league' );
+						$terms = (array)get_the_terms( $post->ID, 'sp_division' );
 						foreach ( $terms as $term ):
 							if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
 								$filter_values[] = $term->term_id;

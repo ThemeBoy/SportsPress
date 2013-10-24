@@ -23,7 +23,7 @@ function sp_table_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Title' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_league' => __( 'Leagues', 'sportspress' ),
+		'sp_division' => __( 'Divisions', 'sportspress' ),
 	);
 	return $columns;
 }
@@ -35,22 +35,22 @@ function sp_table_meta_init() {
 }
 
 function sp_table_team_meta( $post ) {
-	$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
+	$division_id = sp_get_the_term_id( $post->ID, 'sp_division', 0 );
 	?>
 	<div>
 		<p class="sp-tab-select">
 			<?php
 			$args = array(
-				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
-				'taxonomy' => 'sp_league',
-				'name' => 'sp_league',
-				'selected' => $league_id
+				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Divisions', 'sportspress' ) ),
+				'taxonomy' => 'sp_division',
+				'name' => 'sp_division',
+				'selected' => $division_id
 			);
 			sp_dropdown_taxonomies( $args );
 			?>
 		</p>
 		<?php
-		sp_post_checklist( $post->ID, 'sp_team', 'block', 'sp_league' );
+		sp_post_checklist( $post->ID, 'sp_team', 'block', 'sp_division' );
 		sp_post_adder( 'sp_team' );
 		?>
 	</div>
@@ -61,8 +61,8 @@ function sp_table_team_meta( $post ) {
 function sp_table_stats_meta( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
-	$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
-	$data = sp_array_combine( $teams, sp_array_value( $stats, $league_id, array() ) );
+	$division_id = sp_get_the_term_id( $post->ID, 'sp_division', 0 );
+	$data = sp_array_combine( $teams, sp_array_value( $stats, $division_id, array() ) );
 
 	// Generate array of placeholder values for each team
 	$placeholders = array();
@@ -77,9 +77,9 @@ function sp_table_stats_meta( $post ) {
 			),
 			'tax_query' => array(
 				array(
-					'taxonomy' => 'sp_league',
+					'taxonomy' => 'sp_division',
 					'field' => 'id',
-					'terms' => $league_id
+					'terms' => $division_id
 				)
 			)
 		);
@@ -93,6 +93,6 @@ function sp_table_stats_meta( $post ) {
 	// Add first column label
 	array_unshift( $columns, __( 'Team', 'sportspress' ) );
 
-	sp_stats_table( $data, $placeholders, $league_id, $columns, false );
+	sp_stats_table( $data, $placeholders, $division_id, $columns, false );
 }
 ?>
