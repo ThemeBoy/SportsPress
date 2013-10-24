@@ -42,9 +42,8 @@ require_once dirname( __FILE__ ) . '/table.php';
 require_once dirname( __FILE__ ) . '/list.php';
 
 // Taxonomies
-require_once dirname( __FILE__ ) . '/league.php';
+require_once dirname( __FILE__ ) . '/division.php';
 require_once dirname( __FILE__ ) . '/position.php';
-require_once dirname( __FILE__ ) . '/sponsor.php';
 
 // Styles
 include_once dirname( __FILE__ ) . '/styles.php' ;

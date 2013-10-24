@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-23 19:38+1000\n"
-"PO-Revision-Date: 2013-08-23 19:38+1000\n"
+"POT-Creation-Date: 2013-08-25 13:40+1000\n"
+"PO-Revision-Date: 2013-08-25 13:41+1000\n"
 "Last-Translator: ThemeBoy <translate@themeboy.com>\n"
 "Language-Team: ThemeBoy <translate@themeboy.com>\n"
 "Language: ja\n"
@@ -28,9 +28,8 @@ msgstr "試合終了"
 msgid "M j, Y @ G:i"
 msgstr "Y年n月j日 @ G:i"
 
-#: ../actions.php:54 ../actions.php:64 ../actions.php:74 ../actions.php:84
-#: ../helpers.php:73 ../helpers.php:93 ../list.php:46 ../list.php:57
-#: ../table.php:44
+#: ../actions.php:54 ../actions.php:64 ../actions.php:74 ../helpers.php:73
+#: ../helpers.php:93 ../list.php:46 ../list.php:57 ../table.php:44
 #, php-format
 msgid "All %s"
 msgstr "すべての%s"
@@ -46,16 +45,19 @@ msgstr "チーム"
 msgid "Positions"
 msgstr "ポジション"
 
-#: ../actions.php:74 ../event.php:134 ../league.php:3 ../list.php:27
+#: ../actions.php:74 ../division.php:3 ../event.php:134 ../list.php:27
 #: ../list.php:46 ../player.php:141 ../staff.php:44 ../table.php:26
 #: ../table.php:44 ../team.php:33
-msgid "Leagues"
-msgstr "リーグ"
+msgid "Divisions"
+msgstr "リーグレベル"
 
-#: ../actions.php:84 ../event.php:135 ../player.php:142 ../sponsor.php:3
-#: ../team.php:34
-msgid "Sponsors"
-msgstr "スポンサー"
+#: ../division.php:4 ../player.php:46 ../team.php:80
+msgid "Division"
+msgstr "リーグレベル"
+
+#: ../division.php:5
+msgid "divisions"
+msgstr "リーグレベル"
 
 #: ../event.php:3 ../settings.php:86
 msgid "Events"
@@ -104,7 +106,7 @@ msgstr "チーム"
 msgid "Player"
 msgstr "選手"
 
-#: ../event.php:136 ../globals.php:12 ../globals.php:13 ../globals.php:14
+#: ../event.php:135 ../globals.php:12 ../globals.php:13 ../globals.php:14
 msgid "Kick-off"
 msgstr "キックオフ"
 
@@ -199,14 +201,6 @@ msgstr "(タイトルなし)"
 #: ../helpers.php:473
 msgid "Total"
 msgstr "合計"
-
-#: ../league.php:4 ../player.php:46 ../team.php:81
-msgid "League"
-msgstr "リーグ"
-
-#: ../league.php:5
-msgid "leagues"
-msgstr "リーグ"
 
 #: ../list.php:3
 msgid "Player Lists"
@@ -312,6 +306,10 @@ msgstr "警告"
 msgid "Red Cards"
 msgstr "退場"
 
+#: ../sponsor.php:3
+msgid "Sponsors"
+msgstr "スポンサー"
+
 #: ../sponsor.php:4
 msgid "Sponsor"
 msgstr "スポンサー"
@@ -339,3 +337,12 @@ msgstr "順位表"
 #: ../team.php:5
 msgid "teams"
 msgstr "チーム"
+
+#~ msgid "Leagues"
+#~ msgstr "リーグ"
+
+#~ msgid "League"
+#~ msgstr "リーグ"
+
+#~ msgid "leagues"
+#~ msgstr "リーグ"

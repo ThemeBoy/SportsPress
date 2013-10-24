@@ -1,6 +1,6 @@
 === SportsPress - flexible sports management ===
 Contributors: themeboy
-Tags: sports, sports journalism, teams, team management, fixtures, results, standings, league table, leagues, reporting, themeboy, wordpress sports, configurable, variable, widgets
+Tags: sports, sports journalism, teams, team management, fixtures, results, standings, league tables, divisions, reporting, themeboy, wordpress sports, configurable, variable, widgets
 Requires at least: 3.5
 Tested up to: 3.6
 Stable tag: 1.0
