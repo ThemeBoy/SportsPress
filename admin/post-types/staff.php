@@ -12,7 +12,7 @@ function sp_staff_cpt_init() {
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sp_staff_meta_init',
 		'rewrite' => array( 'slug' => 'staff' ),
-		'menu_position' => 46
+		'menu_position' => 45
 	);
 	register_post_type( 'sp_staff', $args );
 }

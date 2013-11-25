@@ -12,8 +12,9 @@ function sp_event_cpt_init() {
 		'supports' => array( 'title', 'author', 'comments' ),
 		'register_meta_box_cb' => 'sp_event_meta_init',
 		'rewrite' => array( 'slug' => 'event' ),
-		'menu_position' => 44
+		'menu_position' => 42
 	);
+	$args['labels']['menu_name'] = __( 'SportsPress', 'sportspress' );
 	register_post_type( 'sp_event', $args );
 }
 add_action( 'init', 'sp_event_cpt_init' );
@@ -31,9 +32,9 @@ function sp_event_meta_init() {
 	remove_meta_box( 'submitdiv', 'sp_event', 'side' );
 	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_event_team_meta', 'sp_event', 'side', 'high' );
-	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sp_event_article_meta', 'sp_event', 'normal', 'high' );
-	add_meta_box( 'sp_resultsdiv', __( 'Results', 'sportspress' ), 'sp_event_results_meta', 'sp_event', 'normal', 'high' );
 	add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_event_stats_meta', 'sp_event', 'normal', 'high' );
+	add_meta_box( 'sp_resultsdiv', __( 'Results', 'sportspress' ), 'sp_event_results_meta', 'sp_event', 'normal', 'high' );
+	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sp_event_article_meta', 'sp_event', 'normal', 'high' );
 }
 
 function sp_event_team_meta( $post ) {

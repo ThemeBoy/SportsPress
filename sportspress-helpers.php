@@ -70,7 +70,7 @@ if ( !function_exists( 'sp_cpt_labels' ) ) {
 		$labels = array(
 			'name' => $name,
 			'singular_name' => $singular_name,
-			'all_items' => $is_submenu ? $name : sprintf( __( 'All %s', 'sportspress' ), $name ),
+			'all_items' => $name,
 			'add_new_item' => sprintf( __( 'Add New %s', 'sportspress' ), $singular_name ),
 			'edit_item' => sprintf( __( 'Edit %s', 'sportspress' ), $singular_name ),
 			'new_item' => sprintf( __( 'New %s', 'sportspress' ), $singular_name ),
@@ -141,7 +141,7 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 				printf( '<option value="-1">%s</option>', $args['show_option_none'] );
 			}
 			foreach ( $terms as $term ) {
-				printf( '<option value="%s" %s>%s</option>', $term->term_id, selected( true, $args['selected'] == $term->term_id, false ), $term->name );
+				printf( '<option value="%s" %s>%s</option>', $term->slug, selected( true, $args['selected'] == $term->slug, false ), $term->name );
 			}
 			print( '</select>' );
 		}
@@ -190,6 +190,17 @@ if ( !function_exists( 'sp_the_posts' ) ) {
 					echo $sep;
 			endforeach;
 		endif;
+	}
+}
+
+if ( !function_exists( 'sp_the_plain_terms' ) ) {
+	function sp_the_plain_terms( $id, $taxonomy ) {
+		$terms = get_the_terms( $id, $taxonomy );
+		$arr = array();
+		foreach( $terms as $term ):
+			$arr[] = $term->name;
+		endforeach;
+		echo implode( ', ', $arr );
 	}
 }
 
@@ -249,7 +260,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 if ( !function_exists( 'sp_get_eos_rows' ) ) {
 	function sp_get_eos_rows( $raw ) {
 		$raw = str_replace( array( "\r\n", ' ' ), array( "\n", '' ), $raw );
-		$output = explode( "\r\n", $raw );
+		$output = explode( "\n", $raw );
 		return $output;
 	}
 }
@@ -257,7 +268,7 @@ if ( !function_exists( 'sp_get_eos_rows' ) ) {
 if ( !function_exists( 'sp_get_eos_keys' ) ) {
 	function sp_get_eos_keys( $raw ) {
 		$raw = str_replace( array( "\r\n", ' :' ), array( "\n", ':' ), $raw );
-		$arr = explode( "\r\n", $raw );
+		$arr = explode( "\n", $raw );
 		$output = array();
 		foreach ( $arr as $value ):
 			$output[] = substr( $value, 0, strpos( $value, ':') );
@@ -288,7 +299,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 			case 'sp_team':
 
 				// Get stats settings columns
-				$columns = sp_get_eos_rows( $stats_settings['event'] );
+				$columns = sp_get_eos_rows( get_option( 'sp_event_stats_columns' ) );
 
 				// Setup variables
 				$results = array();
@@ -334,14 +345,14 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 				$vars['against'] = 0; foreach( $posts as $post ): $result = $post->sp_result; unset( $result[ $post->sp_team_index ] ); $vars['against'] += array_sum( $result ); endforeach;
 
 				// Get EOS array
-				$rows = sp_get_eos_rows( $stats_settings['team'] );
+				$rows = sp_get_eos_rows( get_option( 'sp_team_stats_columns' ) );
 
 				break;
 
 			case 'sp_player':
 
 				// Get stats settings keys
-				$keys = sp_get_eos_keys( $stats_settings['player'] );
+				$keys = sp_get_eos_keys( get_option( 'sp_player_stats_columns' ) );
 
 				// Add object properties needed for retreiving event stats
 				foreach( $posts as $post ):
@@ -547,6 +558,16 @@ if ( !function_exists( 'sportspress_render_option_field' ) ) {
 				break;
 			case 'checkbox':
 				echo '<input type="checkbox" id="' . $name . '" name="' . $group . '[' . $name . ']" value="1" ' . checked( 1, isset( $value ) ? $value : 0, false ) . '/>'; 
+				break;
+			case 'sport':
+				$terms = get_terms( 'sp_sport' );
+				if ( $terms ) {
+					printf( '<select id="%s" name="%s[%s]">', $name, $group, $name );
+					foreach ( $terms as $term ) {
+						printf( '<option value="%s" %s>%s</option>', $term->slug, selected( true, $value == $term->slug, false ), $term->name );
+					}
+					print( '</select>' );
+				}
 				break;
 			default:
 				echo '<input type="text" id="' . $name . '" name="' . $group . '[' . $name . ']" value="' . $value . '" />';
