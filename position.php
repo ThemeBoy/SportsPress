@@ -1,5 +1,5 @@
 <?php
-function sp_position_tax_init() {
+function sp_pos_tax_init() {
 	$name = __( 'Positions', 'sportspress' );
 	$singular_name = __( 'Position', 'sportspress' );
 	$lowercase_name = __( 'position', 'sportspress' );
@@ -12,7 +12,7 @@ function sp_position_tax_init() {
 		'hierarchical' => true,
 		'rewrite' => array( 'slug' => 'position' ),
 	);
-	register_taxonomy( 'sp_position', $object_type, $args );
+	register_taxonomy( 'sp_pos', $object_type, $args );
 }
-add_action( 'init', 'sp_position_tax_init' );
+add_action( 'init', 'sp_pos_tax_init' );
 ?>

@@ -11,7 +11,8 @@ function sp_player_cpt_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sp_player_meta_init',
-		'rewrite' => array( 'slug' => 'player' )
+		'rewrite' => array( 'slug' => 'player' ),
+		'menu_position' => 45
 	);
 	register_post_type( 'sp_player', $args );
 }
@@ -35,7 +36,7 @@ function sp_player_team_meta( $post ) {
 
 function sp_player_stats_meta( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
-	$divisions = (array)get_the_terms( $post->ID, 'sp_division' );
+	$divisions = (array)get_the_terms( $post->ID, 'sp_div' );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
 
 	// Get column names from settings
@@ -70,7 +71,7 @@ function sp_player_stats_meta( $post ) {
 		if ( $division_id ):
 			$args['tax_query'] = array(
 				array(
-					'taxonomy' => 'sp_division',
+					'taxonomy' => 'sp_div',
 					'field' => 'id',
 					'terms' => $division_id
 				)
@@ -82,7 +83,7 @@ function sp_player_stats_meta( $post ) {
 	<p><strong><?php _e( 'Overall', 'sportspress' ); ?></strong></p>
 	<?php
 
-	sp_stats_table( $data, $placeholders, 0, $columns, true, 'sp_division' );
+	sp_stats_table( $data, $placeholders, 0, $columns, true, 'sp_div' );
 
 	// Divisions
 	foreach ( $teams as $team ):
@@ -108,7 +109,7 @@ function sp_player_stats_meta( $post ) {
 				),
 				'tax_query' => array(
 					array(
-						'taxonomy' => 'sp_division',
+						'taxonomy' => 'sp_div',
 						'field' => 'id',
 						'terms' => $division_id
 					)
@@ -120,7 +121,7 @@ function sp_player_stats_meta( $post ) {
 		<p><strong><?php echo get_the_title( $team ); ?></strong></p>
 		<?php
 
-		sp_stats_table( $data, $placeholders, $team, $columns, true, 'sp_division' );
+		sp_stats_table( $data, $placeholders, $team, $columns, true, 'sp_div' );
 
 		?>
 		<?php
@@ -136,9 +137,9 @@ function sp_player_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Name', 'sportspress' ),
-		'sp_position' => __( 'Positions', 'sportspress' ),
+		'sp_pos' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_division' => __( 'Divisions', 'sportspress' )
+		'sp_div' => __( 'Divisions', 'sportspress' )
 	);
 	return $columns;
 }

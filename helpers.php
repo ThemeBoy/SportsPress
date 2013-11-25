@@ -210,7 +210,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 					$parents = get_post_ancestors( $post );
 					if ( $filter ):
 						$filter_values = (array)get_post_meta( $post->ID, $filter, false );
-						$terms = (array)get_the_terms( $post->ID, 'sp_division' );
+						$terms = (array)get_the_terms( $post->ID, 'sp_div' );
 						foreach ( $terms as $term ):
 							if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
 								$filter_values[] = $term->term_id;
@@ -249,7 +249,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 if ( !function_exists( 'sp_get_eos_rows' ) ) {
 	function sp_get_eos_rows( $raw ) {
 		$raw = str_replace( array( "\r\n", ' ' ), array( "\n", '' ), $raw );
-		$output = explode( "\n", $raw );
+		$output = explode( "\r\n", $raw );
 		return $output;
 	}
 }
@@ -257,7 +257,7 @@ if ( !function_exists( 'sp_get_eos_rows' ) ) {
 if ( !function_exists( 'sp_get_eos_keys' ) ) {
 	function sp_get_eos_keys( $raw ) {
 		$raw = str_replace( array( "\r\n", ' :' ), array( "\n", ':' ), $raw );
-		$arr = explode( "\n", $raw );
+		$arr = explode( "\r\n", $raw );
 		$output = array();
 		foreach ( $arr as $value ):
 			$output[] = substr( $value, 0, strpos( $value, ':') );

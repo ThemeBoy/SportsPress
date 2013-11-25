@@ -104,8 +104,8 @@
 	min-width: 14px;
 	width: 100%;
 }
-.widefat th.column-sp_icon,
-.widefat td.column-sp_icon {
+.widefat th.column-sp_logo,
+.widefat td.column-sp_logo {
 	width: 32px;
 	text-align: center;
 }

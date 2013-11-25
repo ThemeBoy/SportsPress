@@ -11,7 +11,8 @@ function sp_staff_cpt_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sp_staff_meta_init',
-		'rewrite' => array( 'slug' => 'staff' )
+		'rewrite' => array( 'slug' => 'staff' ),
+		'menu_position' => 46
 	);
 	register_post_type( 'sp_staff', $args );
 }
@@ -39,9 +40,9 @@ function sp_staff_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Name', 'sportspress' ),
-		'sp_position' => __( 'Positions', 'sportspress' ),
+		'sp_pos' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_division' => __( 'Divisions', 'sportspress' ),
+		'sp_div' => __( 'Divisions', 'sportspress' ),
 	);
 	return $columns;
 }

@@ -23,7 +23,7 @@ function sp_table_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Title' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_division' => __( 'Divisions', 'sportspress' ),
+		'sp_div' => __( 'Divisions', 'sportspress' ),
 	);
 	return $columns;
 }
@@ -35,22 +35,22 @@ function sp_table_meta_init() {
 }
 
 function sp_table_team_meta( $post ) {
-	$division_id = sp_get_the_term_id( $post->ID, 'sp_division', 0 );
+	$division_id = sp_get_the_term_id( $post->ID, 'sp_div', 0 );
 	?>
 	<div>
 		<p class="sp-tab-select">
 			<?php
 			$args = array(
 				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Divisions', 'sportspress' ) ),
-				'taxonomy' => 'sp_division',
-				'name' => 'sp_division',
+				'taxonomy' => 'sp_div',
+				'name' => 'sp_div',
 				'selected' => $division_id
 			);
 			sp_dropdown_taxonomies( $args );
 			?>
 		</p>
 		<?php
-		sp_post_checklist( $post->ID, 'sp_team', 'block', 'sp_division' );
+		sp_post_checklist( $post->ID, 'sp_team', 'block', 'sp_div' );
 		sp_post_adder( 'sp_team' );
 		?>
 	</div>
@@ -61,7 +61,7 @@ function sp_table_team_meta( $post ) {
 function sp_table_stats_meta( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
-	$division_id = sp_get_the_term_id( $post->ID, 'sp_division', 0 );
+	$division_id = sp_get_the_term_id( $post->ID, 'sp_div', 0 );
 	$data = sp_array_combine( $teams, sp_array_value( $stats, $division_id, array() ) );
 
 	// Generate array of placeholder values for each team
@@ -77,7 +77,7 @@ function sp_table_stats_meta( $post ) {
 			),
 			'tax_query' => array(
 				array(
-					'taxonomy' => 'sp_division',
+					'taxonomy' => 'sp_div',
 					'field' => 'id',
 					'terms' => $division_id
 				)

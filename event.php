@@ -11,7 +11,8 @@ function sp_event_cpt_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'comments' ),
 		'register_meta_box_cb' => 'sp_event_meta_init',
-		'rewrite' => array( 'slug' => 'event' )
+		'rewrite' => array( 'slug' => 'event' ),
+		'menu_position' => 44
 	);
 	register_post_type( 'sp_event', $args );
 }
@@ -131,7 +132,7 @@ function sp_event_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Event', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_division' => __( 'Divisions', 'sportspress' ),
+		'sp_div' => __( 'Divisions', 'sportspress' ),
 		'sp_kickoff' => __( 'Kick-off', 'sportspress' )
 	);
 	return $columns;
