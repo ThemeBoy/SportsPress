@@ -1,5 +1,5 @@
 <?php
-function sp_div_tax_init() {
+function sp_div_term_init() {
 	$name = __( 'Divisions', 'sportspress' );
 	$singular_name = __( 'Division', 'sportspress' );
 	$lowercase_name = __( 'divisions', 'sportspress' );
@@ -14,5 +14,5 @@ function sp_div_tax_init() {
 	);
 	register_taxonomy( 'sp_div', $object_type, $args );
 }
-add_action( 'init', 'sp_div_tax_init' );
+add_action( 'init', 'sp_div_term_init' );
 ?>

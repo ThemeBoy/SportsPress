@@ -1,9 +1,10 @@
 <?php
 function sportspress_admin_menu() {
 
-	add_options_page(
+	add_submenu_page(
+		'edit.php?post_type=sp_event',
 		__( 'SportsPress Settings', 'sportspress' ),
-		__( 'SportsPress', 'sportspress' ),
+		__( 'Settings', 'sportspress' ),
 		'manage_options',
 		'sportspress',
 		'sportspress_settings'
@@ -74,6 +75,15 @@ function sportspress_intialize_stats() {
 	);
 	
 	add_settings_field(	
+		'sport',						
+		__( 'Sport', 'sportspress' ),
+		'sportspress_sport_callback',	
+		'sportspress_stats',	
+		'sportspress_stats'			
+	);
+	
+	/*
+	add_settings_field(	
 		'team',						
 		__( 'Teams',	'sportspress' ),
 		'sportspress_team_stats_callback',	
@@ -96,6 +106,7 @@ function sportspress_intialize_stats() {
 		'sportspress_stats',	
 		'sportspress_stats'			
 	);
+	*/
 	
 	register_setting(
 		'sportspress_stats',
@@ -104,6 +115,10 @@ function sportspress_intialize_stats() {
 	
 }
 add_action( 'admin_init', 'sportspress_intialize_stats' );
+
+function sportspress_sport_callback() {
+	sportspress_render_option_field( 'sportspress_stats', 'sport', 'sport' );
+}
 
 function sportspress_team_stats_callback() {
 	sportspress_render_option_field( 'sportspress_stats', 'team', 'textarea' );

@@ -63,4 +63,13 @@ jQuery(document).ready(function($){
 		});
 	}
 
+	// Equation selector
+	$('.sp-equation-selector select').change(function() {
+		if($(this).val() != '') {
+			$(this).before($(this).clone().val($(this).val())).val('').siblings().change(function() {
+				if($(this).val() == '') $(this).remove();
+			}).find('option:first').text($(this).attr('data-remove-text'));
+		}
+	});
+
 });

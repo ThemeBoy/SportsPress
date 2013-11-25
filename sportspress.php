@@ -25,34 +25,48 @@ define( 'SPORTSPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 include dirname( __FILE__ ) . '/lib/classes/eos.class.php' ;
 
 // Globals
-include dirname( __FILE__ ) . '/globals.php' ;
+include dirname( __FILE__ ) . '/sportspress-globals.php' ;
 
 // Helpers
-require_once dirname( __FILE__ ) . '/helpers.php';
+require_once dirname( __FILE__ ) . '/sportspress-helpers.php';
 
 // Settings
-include dirname( __FILE__ ) . '/settings.php' ;
+include dirname( __FILE__ ) . '/sportspress-settings.php' ;
 
 // Custom Post Types
-require_once dirname( __FILE__ ) . '/team.php';
-require_once dirname( __FILE__ ) . '/event.php';
-require_once dirname( __FILE__ ) . '/player.php';
-require_once dirname( __FILE__ ) . '/staff.php';
-require_once dirname( __FILE__ ) . '/table.php';
-require_once dirname( __FILE__ ) . '/list.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/event.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/team.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/stat.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/table.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/player.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/metric.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/list.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
 
-// Taxonomies
-require_once dirname( __FILE__ ) . '/division.php';
-require_once dirname( __FILE__ ) . '/position.php';
+// Terms
+require_once dirname( __FILE__ ) . '/admin/terms/div.php';
+require_once dirname( __FILE__ ) . '/admin/terms/pos.php';
+require_once dirname( __FILE__ ) . '/admin/terms/sport.php';
 
-// Styles
-include_once dirname( __FILE__ ) . '/styles.php' ;
-
-// Scripts
-include_once dirname( __FILE__ ) . '/scripts.php' ;
+// Shortcodes
+// require_once dirname( __FILE__ ) . '/classes/shortcodes/table.php';
 
 // Hooks, Actions, and Filters
-require_once dirname( __FILE__ ) . '/hooks.php';
-require_once dirname( __FILE__ ) . '/actions.php';
-require_once dirname( __FILE__ ) . '/filters.php';
+require_once dirname( __FILE__ ) . '/sportspress-hooks.php';
+require_once dirname( __FILE__ ) . '/sportspress-actions.php';
+require_once dirname( __FILE__ ) . '/sportspress-filters.php';
+
+// Admin Styles
+function sp_admin_styles() {
+	wp_register_style( 'sportspress-admin', SPORTSPRESS_PLUGIN_URL . 'assets/css/admin.css', array(), '1.0' );
+	wp_enqueue_style( 'sportspress-admin');
+}
+add_action( 'admin_init', 'sp_admin_styles' );
+
+// Admin Scripts
+function sp_admin_enqueue_scripts() {
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'sportspress-admin', SPORTSPRESS_PLUGIN_URL .'/assets/js/admin.js', array( 'jquery' ), time(), true );
+}
+add_action( 'admin_enqueue_scripts', 'sp_admin_enqueue_scripts' );
 ?>

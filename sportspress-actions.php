@@ -31,6 +31,9 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			$result = get_post_meta( $post_id, 'sp_result', false );
 			echo get_post_meta ( $post_id, 'sp_team' ) ? sp_the_posts( $post_id, 'sp_team', '', '<br />', $result, ( empty( $result ) ? ' — ' : ' ' ) ) : '—';
 			break;
+		case 'sp_sport':
+			echo get_the_terms ( $post_id, 'sp_sport' ) ? preg_replace('#<a.*?>.*?</a>#i', '', sp_the_plain_terms( $post_id, 'sp_sport' ) ) : '—';
+			break;
 		case 'sp_player':
 			echo sp_the_posts( $post_id, 'sp_player' );
 			break;
@@ -64,7 +67,7 @@ function sp_restrict_manage_posts() {
 			'name' => 'sp_team',
 			'selected' => $selected
 		);
-		wp_dropdown_pages( $args );
+		// wp_dropdown_pages( $args );
 	endif;
 	if ( in_array( $typenow, array( 'sp_player', 'sp_staff' ) ) ):
 		$selected = isset( $_REQUEST['sp_pos'] ) ? $_REQUEST['sp_pos'] : null;
@@ -82,6 +85,16 @@ function sp_restrict_manage_posts() {
 			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Divisions', 'sportspress' ) ),
 			'taxonomy' => 'sp_div',
 			'name' => 'sp_div',
+			'selected' => $selected
+		);
+		sp_dropdown_taxonomies( $args );
+	endif;
+	if ( in_array( $typenow, array( 'sp_stat', 'sp_metric' ) ) ):
+		$selected = isset( $_REQUEST['sp_sport'] ) ? $_REQUEST['sp_sport'] : null;
+		$args = array(
+			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Sports', 'sportspress' ) ),
+			'taxonomy' => 'sp_sport',
+			'name' => 'sp_sport',
 			'selected' => $selected
 		);
 		sp_dropdown_taxonomies( $args );
@@ -149,26 +162,6 @@ function sp_save_post( $post_id ) {
 			sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
 			break;
 	endswitch;
-
-	/*
-
-		foreach ( $sportspress as $key => $value ):
-			delete_post_meta( $post_id, $key );
-			if ( is_array( $value ) ):
-				if ( sp_get_array_depth( $value ) >= 3 ):
-					add_post_meta( $post_id, $key, $value, false );
-				else:
-					$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $value ) );
-					foreach ( $values as $value ):
-						add_post_meta( $post_id, $key, $value, false );
-					endforeach;
-				endif;
-			else:
-				update_post_meta( $post_id, $key, $value );
-			endif;
-		endforeach;
-
-	*/
 }
 add_action( 'save_post', 'sp_save_post' );
 ?>

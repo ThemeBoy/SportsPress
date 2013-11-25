@@ -33,4 +33,13 @@ function sp_admin_post_thumbnail_html( $translated_text, $post_id ) {
 	return $translated_text;
 }
 add_filter( 'admin_post_thumbnail_html', 'sp_admin_post_thumbnail_html', 10, 2 );
+
+function sportspress_the_content( $content ) {
+    if ( is_singular( 'sp_team' ) && in_the_loop() ) {
+        // change stuff
+        $content .= '<p>' . do_shortcode('[sp_table]') . '</p>';
+    }
+    return $content;
+}
+add_filter('the_content', 'sportspress_the_content');
 ?>
