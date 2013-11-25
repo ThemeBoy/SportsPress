@@ -34,6 +34,9 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_sport':
 			echo get_the_terms ( $post_id, 'sp_sport' ) ? preg_replace('#<a.*?>.*?</a>#i', '', sp_the_plain_terms( $post_id, 'sp_sport' ) ) : '—';
 			break;
+		case 'sp_equation':
+			echo get_post_meta ( $post_id, 'sp_equation', true );
+			break;
 		case 'sp_player':
 			echo sp_the_posts( $post_id, 'sp_player' );
 			break;
@@ -140,6 +143,13 @@ function sp_save_post( $post_id ) {
 
 			// Update player array
 			sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
+
+			break;
+
+		case ( 'sp_stat' ):
+
+			// Update equation as string
+			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
 
 			break;
 
