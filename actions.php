@@ -10,14 +10,22 @@ function sp_after_theme_setup() {
 }
 add_action( 'after_theme_setup', 'sp_after_theme_setup' );
 
+function sp_admin_menu_separator() {
+	if ( ! current_user_can( 'manage_options' ) )
+		return;
+	global $menu;
+	$menu[41] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
+}
+add_action( 'admin_menu', 'sp_admin_menu_separator' );
+
 function sp_manage_posts_custom_column( $column, $post_id ) {
 	global $post;
 	switch ( $column ):
-		case 'sp_icon':
+		case 'sp_logo':
 			edit_post_link( get_the_post_thumbnail( $post_id, 'sp_icon' ), '', '', $post_id );
 			break;
-		case 'sp_position':
-			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '—';
+		case 'sp_pos':
+			echo get_the_terms ( $post_id, 'sp_pos' ) ? the_terms( $post_id, 'sp_pos' ) : '—';
 			break;
 		case 'sp_team':
 			$result = get_post_meta( $post_id, 'sp_result', false );
@@ -29,8 +37,8 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_event':
 			echo get_post_meta ( $post_id, 'sp_event' ) ? sizeof( get_post_meta ( $post_id, 'sp_event' ) ) : '—';
 			break;
-		case 'sp_division':
-			echo get_the_terms ( $post_id, 'sp_division' ) ? the_terms( $post_id, 'sp_division' ) : '—';
+		case 'sp_div':
+			echo get_the_terms ( $post_id, 'sp_div' ) ? the_terms( $post_id, 'sp_div' ) : '—';
 			break;
 		case 'sp_sponsor':
 			echo get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : '—';
@@ -59,21 +67,21 @@ function sp_restrict_manage_posts() {
 		wp_dropdown_pages( $args );
 	endif;
 	if ( in_array( $typenow, array( 'sp_player', 'sp_staff' ) ) ):
-		$selected = isset( $_REQUEST['sp_position'] ) ? $_REQUEST['sp_position'] : null;
+		$selected = isset( $_REQUEST['sp_pos'] ) ? $_REQUEST['sp_pos'] : null;
 		$args = array(
 			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Positions', 'sportspress' ) ),
-			'taxonomy' => 'sp_position',
-			'name' => 'sp_position',
+			'taxonomy' => 'sp_pos',
+			'name' => 'sp_pos',
 			'selected' => $selected
 		);
 		sp_dropdown_taxonomies( $args );
 	endif;
 	if ( in_array( $typenow, array( 'sp_team', 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_list' ) ) ):
-		$selected = isset( $_REQUEST['sp_division'] ) ? $_REQUEST['sp_division'] : null;
+		$selected = isset( $_REQUEST['sp_div'] ) ? $_REQUEST['sp_div'] : null;
 		$args = array(
 			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Divisions', 'sportspress' ) ),
-			'taxonomy' => 'sp_division',
-			'name' => 'sp_division',
+			'taxonomy' => 'sp_div',
+			'name' => 'sp_div',
 			'selected' => $selected
 		);
 		sp_dropdown_taxonomies( $args );
@@ -131,13 +139,13 @@ function sp_save_post( $post_id ) {
 			break;
 		case ( 'sp_table' ):
 			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
-			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_division', 0 ), 'sp_division' );
+			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_div', 0 ), 'sp_div' );
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 			break;
 		case ( 'sp_list' ):
 			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
 			update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
-			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_division', 0 ), 'sp_division' );
+			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_div', 0 ), 'sp_div' );
 			sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
 			break;
 	endswitch;

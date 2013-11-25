@@ -1,5 +1,5 @@
 <?php
-function sp_division_tax_init() {
+function sp_div_tax_init() {
 	$name = __( 'Divisions', 'sportspress' );
 	$singular_name = __( 'Division', 'sportspress' );
 	$lowercase_name = __( 'divisions', 'sportspress' );
@@ -12,7 +12,7 @@ function sp_division_tax_init() {
 		'hierarchical' => true,
 		'rewrite' => array( 'slug' => 'division' ),
 	);
-	register_taxonomy( 'sp_division', $object_type, $args );
+	register_taxonomy( 'sp_div', $object_type, $args );
 }
-add_action( 'init', 'sp_division_tax_init' );
+add_action( 'init', 'sp_div_tax_init' );
 ?>

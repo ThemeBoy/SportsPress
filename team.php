@@ -11,7 +11,8 @@ function sp_team_cpt_init() {
 		'hierarchical' => true,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
 		'register_meta_box_cb' => 'sp_team_meta_init',
-		'rewrite' => array( 'slug' => 'team' )
+		'rewrite' => array( 'slug' => 'team' ),
+		'menu_position' => 43
 	);
 	register_post_type( 'sp_team', $args );
 }
@@ -28,16 +29,16 @@ function sp_team_meta_init() {
 function sp_team_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'sp_icon' => '&nbsp;',
+		'sp_logo' => '&nbsp;',
 		'title' => __( 'Team', 'sportspress' ),
-		'sp_division' => __( 'Divisions', 'sportspress' )
+		'sp_div' => __( 'Divisions', 'sportspress' )
 	);
 	return $columns;
 }
 add_filter( 'manage_edit-sp_team_columns', 'sp_team_edit_columns' );
 
 function sp_team_stats_meta( $post ) {
-	$divisions = (array)get_the_terms( $post->ID, 'sp_division' );
+	$divisions = (array)get_the_terms( $post->ID, 'sp_div' );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
 
 	// Generate array of all division ids
@@ -63,7 +64,7 @@ function sp_team_stats_meta( $post ) {
 			),
 			'tax_query' => array(
 				array(
-					'taxonomy' => 'sp_division',
+					'taxonomy' => 'sp_div',
 					'field' => 'id',
 					'terms' => $division_id
 				)
@@ -79,7 +80,7 @@ function sp_team_stats_meta( $post ) {
 	// Add first column label
 	array_unshift( $columns, __( 'Division', 'sportspress' ) );
 
-	sp_stats_table( $data, $placeholders, 0, $columns, false, 'sp_division' );
+	sp_stats_table( $data, $placeholders, 0, $columns, false, 'sp_div' );
 	sp_nonce();
 }
 ?>
