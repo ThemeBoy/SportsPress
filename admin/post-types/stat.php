@@ -7,7 +7,8 @@ function sp_stat_cpt_init() {
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
-		'public' => true,
+		'public' => false,
+		'show_ui' => true,
 		'show_in_nav_menus' => false,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
@@ -23,7 +24,7 @@ function sp_stat_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
-		'sp_sport' => __( 'Sport', 'sportspress' ),
+		'sp_sport' => __( 'Sports', 'sportspress' ),
 		'sp_equation' => __( 'Equation', 'sportspress' ),
 	);
 	return $columns;
@@ -41,7 +42,7 @@ function sp_stat_equation_meta( $post ) {
 		<p class="sp-equation-selector">
 			<?php
 			foreach ( $equation as $piece ):
-				sp_get_equation_selector( 'stat', $piece );
+				sp_get_equation_selector( $post->ID, 'stat', $piece );
 			endforeach;
 			?>
 		</p>

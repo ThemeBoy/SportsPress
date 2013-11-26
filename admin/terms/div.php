@@ -10,7 +10,7 @@ function sp_div_term_init() {
 		'labels' => $labels,
 		'public' => true,
 		'hierarchical' => true,
-		'rewrite' => array( 'slug' => 'division' ),
+		'rewrite' => array( 'slug' => 'division' )
 	);
 	register_taxonomy( 'sp_div', $object_type, $args );
 }

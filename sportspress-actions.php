@@ -10,13 +10,28 @@ function sp_after_theme_setup() {
 }
 add_action( 'after_theme_setup', 'sp_after_theme_setup' );
 
-function sp_admin_menu_separator() {
+function sp_admin_menu() {
 	if ( ! current_user_can( 'manage_options' ) )
 		return;
-	global $menu;
+	
+	global $menu, $submenu;
+
+	// Add separator
 	$menu[41] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
+
+    // Remove "Add Event" link under Events
+    unset( $submenu['edit.php?post_type=sp_event'][10] );
+
+    // Remove "Divisions" link under Events
+    unset( $submenu['edit.php?post_type=sp_event'][15] );
+
+    // Remove "Divisions" link under Players
+    unset( $submenu['edit.php?post_type=sp_player'][15] );
+
+    // Remove "Divisions" link under Staff
+    unset( $submenu['edit.php?post_type=sp_staff'][15] );
 }
-add_action( 'admin_menu', 'sp_admin_menu_separator' );
+add_action( 'admin_menu', 'sp_admin_menu' );
 
 function sp_manage_posts_custom_column( $column, $post_id ) {
 	global $post;

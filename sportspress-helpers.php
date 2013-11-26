@@ -55,13 +55,11 @@ if ( !function_exists( 'sp_array_combine' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_num_to_letter' ) ) {
-	function sp_num_to_letter( $num, $uppercase = false ) {
-		$num -= 0;
-		$letter = 	chr( ( $num % 26 ) + 97 );
-		$letter .= 	( floor( $num / 26 ) > 0 ) ? str_repeat( $letter, floor( $num / 26 ) ) : '';
-		return 		( $uppercase ? strtoupper( $letter ) : $letter );
-	}
+if ( !function_exists( 'sp_numbers_to_words' ) ) {
+	function sp_numbers_to_words( $str ) {
+	    $output = str_replace( array( '1st', '2nd', '3rd', '5th', '8th', '9th', '10', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ), array( 'first', 'second', 'third', 'fifth', 'eight', 'ninth', 'ten', 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine' ), $str );
+	    return $output;
+    }
 }
 
 if ( !function_exists( 'sp_cpt_labels' ) ) {
@@ -71,6 +69,7 @@ if ( !function_exists( 'sp_cpt_labels' ) ) {
 			'name' => $name,
 			'singular_name' => $singular_name,
 			'all_items' => $name,
+			'add_new' => sprintf( __( 'Add %s', 'sportspress' ), $singular_name ),
 			'add_new_item' => sprintf( __( 'Add New %s', 'sportspress' ), $singular_name ),
 			'edit_item' => sprintf( __( 'Edit %s', 'sportspress' ), $singular_name ),
 			'new_item' => sprintf( __( 'New %s', 'sportspress' ), $singular_name ),
@@ -257,9 +256,62 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_equation_optgroup_array' ) ) {
+	function sp_get_equation_optgroup_array( $postid, $type = null, $variations = null, $defaults = null ) {
+		$arr = array();
+
+		// Get stats within the sports that the current stat is in ### TODO: should be for sport selected
+		$args = array(
+			'post_type' => $type,
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'exclude' => $postid
+		);
+		$sports = get_the_terms( $postid, 'sp_sport' );
+		if ( ! empty( $sports ) ):
+			$terms = array();
+			foreach ( $sports as $sport ):
+				$terms[] = $sport->slug;
+			endforeach;
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => 'sp_sport',
+					'field' => 'slug',
+					'terms' => $terms
+				)
+			);
+		endif;
+		$vars = get_posts( $args );
+
+		// Add extra vars to the array
+		if ( isset( $defaults ) && is_array( $defaults ) ):
+			foreach ( $defaults as $key => $value ):
+				$arr[ $key ] = $value;
+			endforeach;
+		endif;
+
+		// Add vars to the array
+		if ( isset( $variations ) && is_array( $variations ) ):
+			foreach ( $vars as $var ):
+				foreach ( $variations as $key => $value ):
+					$arr[ $var->post_name . '_' . $key ] = $var->post_title . ' ' . $value;
+				endforeach;
+			endforeach;
+		else:
+			foreach ( $vars as $var ):
+				$arr[ $var->post_name ] = $var->post_title;
+			endforeach;
+		endif;
+
+		return (array) $arr;
+	}
+}
 
 if ( !function_exists( 'sp_get_equation_selector' ) ) {
-	function sp_get_equation_selector( $type = null, $selected = null ) {
+	function sp_get_equation_selector( $postid, $type = null, $selected = null ) {
+
+		if ( ! isset( $postid ) )
+			return;
 
 		// Initialize options array
 		$options = array();
@@ -268,57 +320,27 @@ if ( !function_exists( 'sp_get_equation_selector' ) ) {
 
 		if ( $type == 'stat' ):
 
-			// Create array of events ## TODO: should be a custom post under events called outcomes
-			$events = array( 'wins' => __( 'Wins', 'sportspress' ), 'draws' => __( 'Draws', 'sportspress' ), 'ties' => __( 'Ties', 'sportspres' ), 'losses' => __( 'Losses', 'sportspress' ) );
+			// Add events to options
+			$options[ __( 'Results', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_result', array( 'for' => '&rarr;', 'against' => '&larr;' ) );
 
 			// Add events to options
-			$options[ __( 'Events', 'sportspress' ) ] = (array) $events;
-
-			$vars = array();
-
-			// Get stats within the sports that the current stat is in ### TODO: should be for sport selected
-			$args = array(
-				'post_type' => 'sp_stat',
-				'numberposts' => -1,
-				'posts_per_page' => -1,
-				'exclude' => $post->ID
-			);
-			$sports = get_the_terms( $post->ID, 'sp_sport' );
-			if ( ! empty( $sports ) ):
-				$terms = array();
-				foreach ( $sports as $sport ):
-					$terms[] = $sport->slug;
-				endforeach;
-				$args['tax_query'] = array(
-					array(
-						'taxonomy' => 'sp_sport',
-						'field' => 'slug',
-						'terms' => $terms
-					)
-				);
-			endif;
-			$stats = get_posts( $args );
-
-			// Add vars to the array
-			foreach ( $stats as $stat ):
-				$vars[ $stat->post_name ] = $stat->post_title;
-			endforeach;
+			$options[ __( 'Outcomes', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_outcome', array( '' => '', 'max' => '&uarr;', 'min' => '&darr;' ), array( 'played' => __( 'Played', 'sportspress' ) ) );
 
 			// Add stats to options
-			$options[ __( 'Statistics', 'sportspress' ) ] = (array) $vars;
+			$options[ __( 'Statistics', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_stat' );
 
 		elseif ( $type == 'metric' ):
 
 			$vars = array();
 
-			// Get metrics within the sports that the current metric is in ### TODO: should be for sport selected
+			// Get metrics within the sports that the current metric is in
 			$args = array(
 				'post_type' => 'sp_metric',
 				'numberposts' => -1,
 				'posts_per_page' => -1,
-				'exclude' => $post->ID
+				'exclude' => $postid
 			);
-			$sports = get_the_terms( $post->ID, 'sp_sport' );
+			$sports = get_the_terms( $postid, 'sp_sport' );
 			if ( ! empty( $sports ) ):
 				$terms = array();
 				foreach ( $sports as $sport ):
@@ -362,7 +384,7 @@ if ( !function_exists( 'sp_get_equation_selector' ) ) {
 
 		?>
 			<select name="sp_equation[]" data-remove-text="<?php _e( 'Remove', 'sportspress' ); ?>">
-				<option value=""><?php _e( 'Select', 'sportspress' ); ?></option>
+				<option value="">(<?php _e( 'Select', 'sportspress' ); ?>)</option>
 				<?php
 
 				foreach ( $options as $label => $option ):

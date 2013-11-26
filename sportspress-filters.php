@@ -42,4 +42,26 @@ function sportspress_the_content( $content ) {
     return $content;
 }
 add_filter('the_content', 'sportspress_the_content');
+
+function sp_sanitize_title( $title ) {
+	
+	if ( in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_stat', 'sp_metric' ) ) ):
+
+		// Get post title
+		$title = $_POST['post_title'];
+
+		// String to lowercase
+		$title = strtolower( $title );
+
+		// Replace all numbers with words
+		$title = sp_numbers_to_words( $title );
+
+		// Remove all other non-alphabet characters
+		$title = preg_replace( "/[^a-z]/", '', $title );
+
+	endif;
+
+	return $title;
+}
+add_filter( 'sanitize_title', 'sp_sanitize_title' );
 ?>
