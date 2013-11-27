@@ -72,8 +72,30 @@ function sp_event_team_meta( $post ) {
 	sp_nonce();
 }
 
-function sp_event_article_meta( $post ) {
-	wp_editor( $post->post_content, 'content' );
+function sp_event_stats_meta( $post ) {
+	$limit = get_option( 'sp_event_team_count' );
+	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
+	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
+
+	// Get columns from result variables
+	$columns = sp_get_var_columns( 'sp_metric', true );
+
+	// Teams
+	foreach ( $teams as $key => $team_id ):
+
+		// Get results for players in the team
+		$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
+		$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
+
+		?>
+		<div>
+			<p><strong><?php echo $team_id ? get_the_title( $team_id ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong></p>
+			<?php sp_event_players_table( $columns, $data, $team_id ); ?>
+		</div>
+		<?php
+
+	endforeach;
+
 }
 
 function sp_event_results_meta( $post ) {
@@ -81,48 +103,21 @@ function sp_event_results_meta( $post ) {
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
 	$results = (array)get_post_meta( $post->ID, 'sp_results', true );
 
+	// Get columns from result variables
+	$columns = sp_get_var_columns( 'sp_result' );
+
 	// Get results for all teams
 	$data = sp_array_combine( $teams, $results );
 
-	// Get column names from settings
-	$stats_settings = get_option( 'sportspress_stats' );
-
-	$columns = sp_get_var_columns( 'sp_result', $post->ID );
 	?>
 	<div>
-		<?php sp_results_table( $columns, $data, array() ); ?>
+		<?php sp_event_results_table( $columns, $data ); ?>
 	</div>
 	<?php
 }
 
-function sp_event_stats_meta( $post ) {
-	$limit = get_option( 'sp_event_team_count' );
-	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
-	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
-
-	// Get column names from settings
-	$stats_settings = get_option( 'sportspress_stats' );
-	$columns = sp_get_eos_keys( $stats_settings['player'] );
-
-	// Add first column label
-	array_unshift( $columns, __( 'Player', 'sportspress' ) );
-
-	// Teams
-	foreach ( $teams as $key => $value ):
-
-		// Get results for players in the team
-		$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
-		$data = sp_array_combine( $players, sp_array_value( $stats, $value, array() ) );
-
-		?>
-		<div>
-			<p><strong><?php echo $value ? get_the_title( $value ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong></p>
-			<?php sp_stats_table( $data, array(), $value, $columns, true ); ?>
-		</div>
-		<?php
-
-	endforeach;
-
+function sp_event_article_meta( $post ) {
+	wp_editor( $post->post_content, 'content' );
 }
 
 function sp_event_edit_columns() {
