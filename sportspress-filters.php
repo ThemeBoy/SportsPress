@@ -59,9 +59,24 @@ function sp_sanitize_title( $title ) {
 		// Remove all other non-alphabet characters
 		$title = preg_replace( "/[^a-z]/", '', $title );
 
+		// Convert post ID to words if title is empty
+		if ( $title == '' ) $title = sp_numbers_to_words( $_POST['ID'] );
+
 	endif;
 
 	return $title;
 }
 add_filter( 'sanitize_title', 'sp_sanitize_title' );
+
+function sp_pre_get_posts( $wp_query ) {
+	if ( is_admin() ):
+		$post_type = $wp_query->query['post_type'];
+
+		if ( in_array( $post_type, array( 'sp_result', 'sp_outcome', 'sp_stat', 'sp_metric' ) ) ):
+			$wp_query->set( 'orderby', 'menu_order' );
+			$wp_query->set( 'order', 'ASC' );
+		endif;
+	endif;
+}
+add_filter('pre_get_posts', 'sp_pre_get_posts');
 ?>

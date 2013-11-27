@@ -48,7 +48,6 @@ require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
 // Terms
 require_once dirname( __FILE__ ) . '/admin/terms/div.php';
 require_once dirname( __FILE__ ) . '/admin/terms/pos.php';
-require_once dirname( __FILE__ ) . '/admin/terms/sport.php';
 
 // Shortcodes
 // require_once dirname( __FILE__ ) . '/classes/shortcodes/table.php';

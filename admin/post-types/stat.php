@@ -24,7 +24,6 @@ function sp_stat_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
-		'sp_sport' => __( 'Sports', 'sportspress' ),
 		'sp_equation' => __( 'Equation', 'sportspress' ),
 	);
 	return $columns;
@@ -42,7 +41,7 @@ function sp_stat_equation_meta( $post ) {
 		<p class="sp-equation-selector">
 			<?php
 			foreach ( $equation as $piece ):
-				sp_get_equation_selector( $post->ID, 'stat', $piece );
+				sp_get_equation_selector( $post->ID, $piece, array( 'event', 'result', 'outcome' ) );
 			endforeach;
 			?>
 		</p>
