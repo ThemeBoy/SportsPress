@@ -83,15 +83,48 @@ function sp_table_stats_meta( $post ) {
 				)
 			)
 		);
-		$placeholders[ $team ] = sp_get_stats_row( 'sp_team', $args, true );
+		$placeholders[ $team ] = sp_get_stats_row( $team, 'sp_team', $args, true );
 	endforeach;
 
-	// Get column names from settings
-	$stats_settings = get_option( 'sportspress_stats' );
-	$columns = sp_get_eos_keys( $stats_settings['team'] );
+	$type = 'sp_stat';
+	$args = array(
+		'post_type' => $type,
+		'numberposts' => -1,
+		'posts_per_page' => -1,
+		'orderby' => 'menu_order',
+		'order' => 'ASC',
+		'exclude' => $postid
+	);
+	$vars = get_posts( $args );
+
+	$columns = array();
+	foreach ( $vars as $var ):
+		$columns[ $var->post_name ] = $var->post_title;
+	endforeach;
 
 	// Add first column label
 	array_unshift( $columns, __( 'Team', 'sportspress' ) );
+
+
+	echo '$placeholders';
+	echo '<pre>';
+	print_r( $placeholders );
+	echo '</pre>';
+
+	echo '$data';
+	echo '<pre>';
+	print_r( $data );
+	echo '</pre>';
+
+	echo '$division_id';
+	echo '<pre>';
+	print_r( $division_id );
+	echo '</pre>';
+
+	echo '$columns';
+	echo '<pre>';
+	print_r( $columns );
+	echo '</pre>';
 
 	sp_stats_table( $data, $placeholders, $division_id, $columns, false );
 }
