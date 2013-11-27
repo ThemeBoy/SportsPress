@@ -47,7 +47,11 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			echo get_post_meta ( $post_id, 'sp_team' ) ? sp_the_posts( $post_id, 'sp_team', '', '<br />', $result, ( empty( $result ) ? ' — ' : ' ' ) ) : '—';
 			break;
 		case 'sp_equation':
-			echo get_post_meta ( $post_id, 'sp_equation', true );
+			echo str_replace(
+				array( '+', '-', '*', '/', '==', '!=', '<', '<=', '>', '>=' ),
+				array( '&plus;', '&minus;', '&times;', '&divide', '=', '&ne;', '&lt;', '&le;', '&gt;', '&ge;' ),
+				get_post_meta ( $post_id, 'sp_equation', true )
+			);
 			break;
 		case 'sp_player':
 			echo sp_the_posts( $post_id, 'sp_player' );
