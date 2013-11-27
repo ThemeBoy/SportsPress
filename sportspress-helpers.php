@@ -140,7 +140,7 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 				printf( '<option value="-1">%s</option>', $args['show_option_none'] );
 			}
 			foreach ( $terms as $term ) {
-				printf( '<option value="%s" %s>%s</option>', $term->slug, selected( true, $args['selected'] == $term->slug, false ), $term->name );
+				printf( '<option value="%s" %s>%s</option>', $term->term_id, selected( true, $args['selected'] == $term->term_id, false ), $term->name );
 			}
 			print( '</select>' );
 		}
@@ -281,14 +281,14 @@ if ( !function_exists( 'sp_get_equation_optgroup_array' ) ) {
 		// Add vars to the array
 		if ( isset( $variations ) && is_array( $variations ) ):
 			foreach ( $vars as $var ):
-				if ( $plain ) $arr[ $var->post_name ] = $var->post_title;
+				if ( $plain ) $arr[ '$' . $var->post_name ] = $var->post_title;
 				foreach ( $variations as $key => $value ):
-					$arr[ $var->post_name . '_' . $key ] = $var->post_title . ' ' . $value;
+					$arr[ '$' . $var->post_name . '_' . $key ] = $var->post_title . ' ' . $value;
 				endforeach;
 			endforeach;
 		else:
 			foreach ( $vars as $var ):
-				$arr[ $var->post_name ] = $var->post_title;
+				'$' . $arr[ $var->post_name ] = $var->post_title;
 			endforeach;
 		endif;
 
@@ -309,7 +309,7 @@ if ( !function_exists( 'sp_get_equation_selector' ) ) {
 		foreach ( $groups as $group ):
 			switch ( $group ):
 				case 'event':
-					$options[ __( 'Events', 'sportspress' ) ] = array( 'events_scheduled' => __( 'Scheduled', 'sportspress' ), 'events_attended' => __( 'Attended', 'sportspress' ), 'events_played' => __( 'Played', 'sportspress' ) );
+					$options[ __( 'Events', 'sportspress' ) ] = array( '$events_attended' => __( 'Attended', 'sportspress' ), '$events_played' => __( 'Played', 'sportspress' ) );
 					break;
 				case 'result':
 					$options[ __( 'Results', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_result', array( 'for' => '&rarr;', 'against' => '&larr;' ), null, false );
@@ -384,7 +384,7 @@ if ( !function_exists( 'sp_get_eos_keys' ) ) {
 }
 
 if ( !function_exists( 'sp_get_stats_row' ) ) {
-	function sp_get_stats_row( $post_type = 'post', $args = array(), $static = false ) {
+	function sp_get_stats_row( $post_id, $post_type = 'post', $args = array(), $static = false ) {
 		$args = array_merge(
 			array(
 				'posts_per_page' => -1
@@ -401,57 +401,90 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 		$stats_settings = get_option( 'sportspress_stats' );
 
 		// Get dynamic stats
-		switch ($post_type):
+		switch ( $post_type ):
 			case 'sp_team':
 
-				// Get stats settings columns
-				$columns = sp_get_eos_rows( get_option( 'sp_event_stats_columns' ) );
+				// All events attended by the team
+				$vars['events_attended'] = $vars['events_played'] = sizeof( $posts );
 
-				// Setup variables
-				$results = array();
-				foreach ( $columns as $key => $value ):
-					$column = explode( ':', $value );
-					$var_name = preg_replace("/[^A-Za-z0-9 ]/", '', sp_array_value( $column, 1 ) );
-					$results[] = $var_name;
-					$vars[ $var_name ] = 0;
+				// Get result variables
+				$args = array(
+					'post_type' => 'sp_result',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'orderby' => 'menu_order',
+					'order' => 'ASC'
+				);
+				$results = (array)get_posts( $args );
+
+				// Get outcome variables
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'orderby' => 'menu_order',
+					'order' => 'ASC'
+				);
+				$outcomes = (array)get_posts( $args );
+
+				// Initialize outcome variables
+				foreach( $outcomes as $outcome ):
+					$vars[ $outcome->post_name ] = 0;
+					$vars[ $outcome->post_name . '_max' ] = 0;
+					$vars[ $outcome->post_name . '_min' ] = 0;
 				endforeach;
 
-				foreach( $posts as $post ):
-					
-					// Add object properties needed for retreiving event stats
-					$post->sp_team = get_post_meta( $post->ID, 'sp_team', false );
-					$post->sp_team_index = array_search( $args['meta_query'][0]['value'], $post->sp_team );
-					$post->sp_result = get_post_meta( $post->ID, 'sp_result', false );
-					$post->sp_results = sp_array_value( sp_array_value( sp_array_value( get_post_meta( $post->ID, 'sp_results', false ), 0, array() ), 0, array() ), $args['meta_query'][0]['value'], array() );
-					
-					// Add event stats to vars as sum
-					foreach( $results as $key => $value ):
-						if ( !array_key_exists( $value, $vars ) ) $vars[ $value ] = 0;
-						$vars[ $value ] += sp_array_value( $post->sp_results, $key, 0 );
+				// Populate each result variable
+				foreach( $results as $result ):
+
+					// Initialize and add for element to array
+					if ( ! array_key_exists( $result->post_name, $vars . '_for' ) ):
+						$vars[ $result->post_name . '_for' ] = 0;
+					endif;
+
+					// Initialize and add against element to array
+					if ( ! array_key_exists( $result->post_name, $vars . '_against' ) ):
+						$vars[ $result->post_name . '_against' ] = 0;
+					endif;
+
+					foreach( $posts as $event ):
+						
+						// Get match statistics
+						$stats = get_post_meta( $event->ID, 'sp_stats', true );
+
+						// Get value for the team in this match
+						$value = (double) sp_array_value( $stats[ $post_id ][0], $result->post_name, 0 );
+
+						// Add value for
+						$vars[ $result->post_name . '_for' ] += $value;
+
+						// Add values against
+						foreach ( $stats as $team_post_id => $stat_array ):
+							if ( $team_post_id != $post_id ):
+								$vars[ $result->post_name . '_against' ] += sp_array_value( $stat_array[0], $result->post_name, 0 );
+							endif;
+						endforeach;
+
+						// Calculate outcome
+						// TODO
+
+						// Check if max or min, and replace if it is
+//						if ( $value > $vars[ $result->post_name . '_max' ] ) $vars[ $result->post_name . '_max' ] = $value;
+//						elseif ( $value < $vars[ $result->post_name . '_min' ] ) $vars[ $result->post_name . '_min' ] = $value;
+
 					endforeach;
 
 				endforeach;
 
-				// All events attended by the team
-				$vars['appearances'] = sizeof( $posts );
-
-				// Events with a aesult value greater than at least one competitor
-				$vars['greater'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) > 1 && max( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ] && min( $post->sp_result ) < $post->sp_result[ $post->sp_team_index ]; } ) );
-
-				// Events with a aesult value equal to all competitors
-				$vars['equal'] = sizeof( array_filter( $posts, function( $post ) { return max( $post->sp_result ) == min( $post->sp_result ); } ) );
-
-				// Events with a aesult value less than at least one competitor
-				$vars['less'] = sizeof( array_filter( $posts, function( $post ) { return array_count_values( $post->sp_result ) > 1 && min( $post->sp_result ) == $post->sp_result[ $post->sp_team_index ] && max( $post->sp_result ) > $post->sp_result[ $post->sp_team_index ]; } ) );
-
-				// Sum of the team's result values
-				$vars['for'] = 0; foreach( $posts as $post ): $vars['for'] += $post->sp_result[ $post->sp_team_index ]; endforeach;
-
-				// Sum of opposing result values
-				$vars['against'] = 0; foreach( $posts as $post ): $result = $post->sp_result; unset( $result[ $post->sp_team_index ] ); $vars['against'] += array_sum( $result ); endforeach;
-
-				// Get EOS array
-				$rows = sp_get_eos_rows( get_option( 'sp_team_stats_columns' ) );
+				// Get stats columns
+				$args = array(
+					'post_type' => 'sp_stat',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'orderby' => 'menu_order',
+					'order' => 'ASC'
+				);
+				$columns = (array)get_posts( $args );
 
 				break;
 
@@ -499,19 +532,23 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 
 			default:
 
-				$rows = array();
+				$columns = array();
 				break;
 
 		endswitch;
 
 		// Get dynamic stats
 		$dynamic = array();
-		foreach ( $rows as $key => $value ):
-			$row = explode( ':', $value );
-			$dynamic[ $key ] = $eos->solveIF( sp_array_value( $row, 1, '$appearances'), $vars );
+		foreach ( $columns as $column ):
+			$equation = get_post_meta( $column->ID, 'sp_equation', true );
+			//$dynamic[ $column->post_name ] = $eos->solveIF( $equation, $vars );
 		endforeach;
 
-		if ( $static ):
+		echo '<pre>';
+		print_r( $vars );
+		echo '</pre>';
+
+		if ( $static || true ):
 
 			// Get static stats
 			$static = (array)get_post_meta( $args['meta_query'][0]['value'], 'sp_stats', true );
