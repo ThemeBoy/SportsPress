@@ -383,6 +383,28 @@ if ( !function_exists( 'sp_get_eos_keys' ) ) {
 	}
 }
 
+
+if ( !function_exists( 'sp_get_var_columns' ) ) {
+	function sp_get_var_columns( $post_type, $exclude ) {
+		$args = array(
+			'post_type' => $post_type,
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'exclude' => $exclude
+		);
+		$vars = get_posts( $args );
+
+		$output = array();
+		foreach ( $vars as $var ):
+			$output[ $var->post_name ] = $var->post_title;
+		endforeach;
+
+		return $output;
+	}
+}
+
 if ( !function_exists( 'sp_get_stats_row' ) ) {
 	function sp_get_stats_row( $post_id, $post_type = 'post', $args = array(), $static = false ) {
 		$args = array_merge(
@@ -415,7 +437,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 					'orderby' => 'menu_order',
 					'order' => 'ASC'
 				);
-				$results = (array)get_posts( $args );
+				$result_vars = (array)get_posts( $args );
 
 				// Get outcome variables
 				$args = array(
@@ -425,26 +447,26 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 					'orderby' => 'menu_order',
 					'order' => 'ASC'
 				);
-				$outcomes = (array)get_posts( $args );
+				$outcome_vars = (array)get_posts( $args );
 
 				// Initialize outcome variables
-				foreach( $outcomes as $outcome ):
-					$vars[ $outcome->post_name ] = 0;
-					$vars[ $outcome->post_name . '_max' ] = 0;
-					$vars[ $outcome->post_name . '_min' ] = 0;
+				foreach( $outcome_vars as $outcome_var ):
+					$vars[ $outcome_var->post_name ] = 0;
+					$vars[ $outcome_var->post_name . '_max' ] = 0;
+					$vars[ $outcome_var->post_name . '_min' ] = 0;
 				endforeach;
 
 				// Populate each result variable
-				foreach( $results as $result ):
+				foreach( $result_vars as $result_var ):
 
 					// Initialize and add for element to array
-					if ( ! array_key_exists( $result->post_name, $vars . '_for' ) ):
-						$vars[ $result->post_name . '_for' ] = 0;
+					if ( ! array_key_exists( $result_var->post_name, $vars . '_for' ) ):
+						$vars[ $result_var->post_name . '_for' ] = 0;
 					endif;
 
 					// Initialize and add against element to array
-					if ( ! array_key_exists( $result->post_name, $vars . '_against' ) ):
-						$vars[ $result->post_name . '_against' ] = 0;
+					if ( ! array_key_exists( $result_var->post_name, $vars . '_against' ) ):
+						$vars[ $result_var->post_name . '_against' ] = 0;
 					endif;
 
 					foreach( $posts as $event ):
@@ -453,15 +475,15 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 						$stats = get_post_meta( $event->ID, 'sp_stats', true );
 
 						// Get value for the team in this match
-						$value = (double) sp_array_value( $stats[ $post_id ][0], $result->post_name, 0 );
+						$value = (double) sp_array_value( $stats[ $post_id ][0], $result_var->post_name, 0 );
 
 						// Add value for
-						$vars[ $result->post_name . '_for' ] += $value;
+						$vars[ $result_var->post_name . '_for' ] += $value;
 
 						// Add values against
 						foreach ( $stats as $team_post_id => $stat_array ):
 							if ( $team_post_id != $post_id ):
-								$vars[ $result->post_name . '_against' ] += sp_array_value( $stat_array[0], $result->post_name, 0 );
+								$vars[ $result_var->post_name . '_against' ] += sp_array_value( $stat_array[0], $result_var->post_name, 0 );
 							endif;
 						endforeach;
 
@@ -632,6 +654,95 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 						<?php endfor; ?>
 					</tr>
 				<?php endif; ?>
+			</tbody>
+		</table>
+		<?php
+	}
+}
+
+if ( !function_exists( 'sp_results_table' ) ) {
+	function sp_results_table( $columns = array(), $data = array(), $placeholders = array() ) {
+		?>
+		<table class="widefat sp-stats-table">
+			<thead>
+				<tr>
+					<th><?php _e( 'Team', 'sportspress' ); ?></th>
+					<?php foreach ( $columns as $label ): ?>
+						<th><?php echo $label; ?></th>
+					<?php endforeach; ?>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$i = 0;
+				foreach ( $data as $team_id => $team_results ):
+					if ( !$team_id ) continue;
+					?>
+					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+						<td>
+							<?php echo get_the_title( $team_id ); ?>
+						</td>
+						<?php foreach( $columns as $column => $label ):
+							$value = sp_array_value( $team_results, $column, '' );
+							$placeholder = (int)sp_array_value( sp_array_value( $placeholders, $team_id, 0), $column, 0 );
+							?>
+							<td><input type="text" name="sp_results[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+						<?php endforeach; ?>
+					</tr>
+					<?php
+					$i++;
+				endforeach;
+				?>
+			</tbody>
+		</table>
+		<?php
+	}
+}
+
+if ( !function_exists( 'sp_players_table' ) ) {
+	function sp_players_table( $columns = array(), $data = array(), $placeholders = array() ) {
+		?>
+		<table class="widefat sp-stats-table">
+			<thead>
+				<tr>
+					<th><?php _e( 'Team', 'sportspress' ); ?></th>
+					<?php foreach ( $columns as $label ): ?>
+						<th><?php echo $label; ?></th>
+					<?php endforeach; ?>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$i = 0;
+				foreach ( $data as $team_id => $team_results ):
+					if ( !$team_id ) continue;
+					?>
+					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+						<td>
+							<?php echo get_the_title( $team_id ); ?>
+						</td>
+						<?php foreach( $columns as $column => $label ):
+							$value = sp_array_value( $team_results, $column, '' );
+							$placeholder = (int)sp_array_value( sp_array_value( $placeholders, $team_id, 0), $column, 0 );
+							?>
+							<td><input type="text" name="sp_results[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+						<?php endforeach; ?>
+					</tr>
+					<?php
+					$i++;
+				endforeach;
+				$total_results = sp_array_value( $data, 0, array() );
+				?>
+				<tr class="sp-row sp-total<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+					<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
+					<?php foreach( $columns as $column => $label ):
+						$team_id = 0;
+						$value = sp_array_value( $team_results, $column, '' );
+						$placeholder = (int)sp_array_value( sp_array_value( $placeholders, $team_id, 0), $column, 0 );
+						?>
+						<td><input type="text" name="sp_results[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+					<?php endforeach; ?>
+				</tr>
 			</tbody>
 		</table>
 		<?php

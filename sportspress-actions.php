@@ -132,15 +132,6 @@ function sp_save_post( $post_id ) {
 			// Update results
 			update_post_meta( $post_id, 'sp_results', $results );
 
-			// Delete result values
-			delete_post_meta( $post_id, 'sp_result');
-
-			// Add result values for each team (first column of results table)
-			$teams = (array)sp_array_value( $results, 0, null );
-			foreach ( $teams as $team ):
-				add_post_meta( $post_id, 'sp_result', sp_array_value( $team, 0, null ) );
-			endforeach;
-
 			// Update stats
 			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
 

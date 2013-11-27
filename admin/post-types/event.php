@@ -82,18 +82,15 @@ function sp_event_results_meta( $post ) {
 	$results = (array)get_post_meta( $post->ID, 'sp_results', true );
 
 	// Get results for all teams
-	$data = sp_array_combine( $teams, sp_array_value( $results, 0, array() ) );
+	$data = sp_array_combine( $teams, $results );
 
 	// Get column names from settings
 	$stats_settings = get_option( 'sportspress_stats' );
-	$columns = sp_get_eos_keys( $stats_settings['event'] );
 
-	// Add first column label
-	array_unshift( $columns, __( 'Team', 'sportspress' ) );
-
+	$columns = sp_get_var_columns( 'sp_result', $post->ID );
 	?>
 	<div>
-		<?php sp_stats_table( $data, array(), 0, $columns, false, 'post', 'sp_results' ); ?>
+		<?php sp_results_table( $columns, $data, array() ); ?>
 	</div>
 	<?php
 }
