@@ -257,7 +257,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 }
 
 if ( !function_exists( 'sp_get_equation_optgroup_array' ) ) {
-	function sp_get_equation_optgroup_array( $postid, $type = null, $variations = null, $defaults = null ) {
+	function sp_get_equation_optgroup_array( $postid, $type = null, $variations = null, $defaults = null, $plain = true ) {
 		$arr = array();
 
 		// Get stats within the sports that the current stat is in ### TODO: should be for sport selected
@@ -265,22 +265,10 @@ if ( !function_exists( 'sp_get_equation_optgroup_array' ) ) {
 			'post_type' => $type,
 			'numberposts' => -1,
 			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
 			'exclude' => $postid
 		);
-		$sports = get_the_terms( $postid, 'sp_sport' );
-		if ( ! empty( $sports ) ):
-			$terms = array();
-			foreach ( $sports as $sport ):
-				$terms[] = $sport->slug;
-			endforeach;
-			$args['tax_query'] = array(
-				array(
-					'taxonomy' => 'sp_sport',
-					'field' => 'slug',
-					'terms' => $terms
-				)
-			);
-		endif;
 		$vars = get_posts( $args );
 
 		// Add extra vars to the array
@@ -293,6 +281,7 @@ if ( !function_exists( 'sp_get_equation_optgroup_array' ) ) {
 		// Add vars to the array
 		if ( isset( $variations ) && is_array( $variations ) ):
 			foreach ( $vars as $var ):
+				if ( $plain ) $arr[ $var->post_name ] = $var->post_title;
 				foreach ( $variations as $key => $value ):
 					$arr[ $var->post_name . '_' . $key ] = $var->post_title . ' ' . $value;
 				endforeach;
@@ -308,7 +297,7 @@ if ( !function_exists( 'sp_get_equation_optgroup_array' ) ) {
 }
 
 if ( !function_exists( 'sp_get_equation_selector' ) ) {
-	function sp_get_equation_selector( $postid, $type = null, $selected = null ) {
+	function sp_get_equation_selector( $postid, $selected = null, $groups = array() ) {
 
 		if ( ! isset( $postid ) )
 			return;
@@ -316,66 +305,37 @@ if ( !function_exists( 'sp_get_equation_selector' ) ) {
 		// Initialize options array
 		$options = array();
 
-		// Create array of variables
-
-		if ( $type == 'stat' ):
-
-			// Add events to options
-			$options[ __( 'Results', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_result', array( 'for' => '&rarr;', 'against' => '&larr;' ) );
-
-			// Add events to options
-			$options[ __( 'Outcomes', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_outcome', array( '' => '', 'max' => '&uarr;', 'min' => '&darr;' ), array( 'played' => __( 'Played', 'sportspress' ) ) );
-
-			// Add stats to options
-			$options[ __( 'Statistics', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_stat' );
-
-		elseif ( $type == 'metric' ):
-
-			$vars = array();
-
-			// Get metrics within the sports that the current metric is in
-			$args = array(
-				'post_type' => 'sp_metric',
-				'numberposts' => -1,
-				'posts_per_page' => -1,
-				'exclude' => $postid
-			);
-			$sports = get_the_terms( $postid, 'sp_sport' );
-			if ( ! empty( $sports ) ):
-				$terms = array();
-				foreach ( $sports as $sport ):
-					$terms[] = $sport->slug;
-				endforeach;
-				$args['tax_query'] = array(
-					array(
-						'taxonomy' => 'sp_sport',
-						'field' => 'slug',
-						'terms' => $terms
-					)
-				);
-			endif;
-			$metrics = get_posts( $args );
-
-			// Add vars to the array
-			foreach ( $metrics as $metric ):
-				$vars[ $metric->post_name ] = $metric->post_title;
-			endforeach;
-
-			// Add metrics to options
-			$options[ __( 'Metrics', 'sportspress' ) ] = (array) $vars;
-
-		endif;
+		// Add groups to options
+		foreach ( $groups as $group ):
+			switch ( $group ):
+				case 'event':
+					$options[ __( 'Events', 'sportspress' ) ] = array( 'events_scheduled' => __( 'Scheduled', 'sportspress' ), 'events_attended' => __( 'Attended', 'sportspress' ), 'events_played' => __( 'Played', 'sportspress' ) );
+					break;
+				case 'result':
+					$options[ __( 'Results', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_result', array( 'for' => '&rarr;', 'against' => '&larr;' ), null, false );
+					break;
+				case 'outcome':
+					$options[ __( 'Outcomes', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_outcome', array( 'max' => '&uarr;', 'min' => '&darr;' ) );
+					break;
+				case 'stat':
+					$options[ __( 'Statistics', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_stat' );
+					break;
+				case 'metric':
+					$options[ __( 'Metrics', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_metric' );
+					break;
+			endswitch;
+		endforeach;
 
 		// Create array of operators
-		$operators = array( '+' => '&plus;', '-' => '&minus;', '*' => '&times;', '/' => '&divide;', '(' => '(', ')' => ')' );
+		$operators = array( '+' => '&plus;', '-' => '&minus;', '*' => '&times;', '/' => '&divide;', '==' => '=', '!=' => '&ne;', '<' => '<', '<=' => '&le;', '>' => '>', '>=' => '&ge;', '(' => '(', ')' => ')' );
 
 		// Add operators to options
-		$options[ __( 'Operators', 'sportspress' ) ] = (array) $operators;
+		$options[ __( 'Operators', 'sportspress' ) ] = $operators;
 
 		// Create array of constants
 		$max = 10;
 		$constants = array();
-		for ( $i = 1; $i < $max; $i ++ ):
+		for ( $i = 1; $i <= $max; $i ++ ):
 			$constants[$i] = $i;
 		endfor;
 
@@ -704,16 +664,6 @@ if ( !function_exists( 'sportspress_render_option_field' ) ) {
 				break;
 			case 'checkbox':
 				echo '<input type="checkbox" id="' . $name . '" name="' . $group . '[' . $name . ']" value="1" ' . checked( 1, isset( $value ) ? $value : 0, false ) . '/>'; 
-				break;
-			case 'sport':
-				$terms = get_terms( 'sp_sport' );
-				if ( $terms ) {
-					printf( '<select id="%s" name="%s[%s]">', $name, $group, $name );
-					foreach ( $terms as $term ) {
-						printf( '<option value="%s" %s>%s</option>', $term->slug, selected( true, $value == $term->slug, false ), $term->name );
-					}
-					print( '</select>' );
-				}
 				break;
 			default:
 				echo '<input type="text" id="' . $name . '" name="' . $group . '[' . $name . ']" value="' . $value . '" />';

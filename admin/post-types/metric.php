@@ -23,7 +23,6 @@ function sp_metric_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
-		'sp_sport' => __( 'Sports', 'sportspress' ),
 		'sp_equation' => __( 'Equation', 'sportspress' ),
 	);
 	return $columns;
@@ -31,5 +30,22 @@ function sp_metric_edit_columns() {
 add_filter( 'manage_edit-sp_metric_columns', 'sp_metric_edit_columns' );
 
 function sp_metric_meta_init() {
+	add_meta_box( 'sp_equationdiv', __( 'Equation', 'sportspress' ), 'sp_metric_equation_meta', 'sp_metric', 'normal', 'high' );
+}
+
+function sp_metric_equation_meta( $post ) {
+	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
+	?>
+	<div>
+		<p class="sp-equation-selector">
+			<?php
+			foreach ( $equation as $piece ):
+				sp_get_equation_selector( $post->ID, $piece, array( 'event' ) );
+			endforeach;
+			?>
+		</p>
+	</div>
+	<?php
+	sp_nonce();
 }
 ?>

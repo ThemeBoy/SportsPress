@@ -46,9 +46,6 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			$result = get_post_meta( $post_id, 'sp_result', false );
 			echo get_post_meta ( $post_id, 'sp_team' ) ? sp_the_posts( $post_id, 'sp_team', '', '<br />', $result, ( empty( $result ) ? ' — ' : ' ' ) ) : '—';
 			break;
-		case 'sp_sport':
-			echo get_the_terms ( $post_id, 'sp_sport' ) ? preg_replace('#<a.*?>.*?</a>#i', '', sp_the_plain_terms( $post_id, 'sp_sport' ) ) : '—';
-			break;
 		case 'sp_equation':
 			echo get_post_meta ( $post_id, 'sp_equation', true );
 			break;
@@ -107,16 +104,6 @@ function sp_restrict_manage_posts() {
 		);
 		sp_dropdown_taxonomies( $args );
 	endif;
-	if ( in_array( $typenow, array( 'sp_stat', 'sp_metric' ) ) ):
-		$selected = isset( $_REQUEST['sp_sport'] ) ? $_REQUEST['sp_sport'] : null;
-		$args = array(
-			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Sports', 'sportspress' ) ),
-			'taxonomy' => 'sp_sport',
-			'name' => 'sp_sport',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
-	endif;
 }
 add_action( 'restrict_manage_posts', 'sp_restrict_manage_posts' );
 
@@ -161,7 +148,28 @@ function sp_save_post( $post_id ) {
 
 			break;
 
+		case ( 'sp_result' ):
+
+			// Update equation as string
+			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
+
+			break;
+
+		case ( 'sp_outcome' ):
+
+			// Update equation as string
+			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
+
+			break;
+
 		case ( 'sp_stat' ):
+
+			// Update equation as string
+			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
+
+			break;
+
+		case ( 'sp_metric' ):
 
 			// Update equation as string
 			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );

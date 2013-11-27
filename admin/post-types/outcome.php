@@ -23,13 +23,29 @@ function sp_outcome_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
-		'sp_sport' => __( 'Sports', 'sportspress' ),
-		'sp_equation' => __( 'Conditions', 'sportspress' ),
+		'sp_equation' => __( 'Equation', 'sportspress' ),
 	);
 	return $columns;
 }
 add_filter( 'manage_edit-sp_outcome_columns', 'sp_outcome_edit_columns' );
 
 function sp_outcome_meta_init() {
+	add_meta_box( 'sp_equationdiv', __( 'Equation', 'sportspress' ), 'sp_outcome_equation_meta', 'sp_outcome', 'normal', 'high' );
+}
+
+function sp_outcome_equation_meta( $post ) {
+	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
+	?>
+	<div>
+		<p class="sp-equation-selector">
+			<?php
+			foreach ( $equation as $piece ):
+				sp_get_equation_selector( $post->ID, $piece, array( 'result' ) );
+			endforeach;
+			?>
+		</p>
+	</div>
+	<?php
+	sp_nonce();
 }
 ?>
