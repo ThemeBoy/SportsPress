@@ -41,7 +41,7 @@ function sp_stat_equation_meta( $post ) {
 		<p class="sp-equation-selector">
 			<?php
 			foreach ( $equation as $piece ):
-				sp_get_equation_selector( $post->ID, $piece, array( 'event', 'result', 'outcome' ) );
+				sp_get_equation_selector( $post->ID, $piece, array( 'team_event', 'result', 'outcome' ) );
 			endforeach;
 			?>
 		</p>

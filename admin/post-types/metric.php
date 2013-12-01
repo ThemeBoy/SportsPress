@@ -40,7 +40,7 @@ function sp_metric_equation_meta( $post ) {
 		<p class="sp-equation-selector">
 			<?php
 			foreach ( $equation as $piece ):
-				sp_get_equation_selector( $post->ID, $piece, array( 'event' ) );
+				sp_get_equation_selector( $post->ID, $piece, array( 'player_event' ) );
 			endforeach;
 			?>
 		</p>

@@ -53,10 +53,10 @@ function sp_player_stats_meta( $post ) {
 	endforeach;
 
 	// Generate array of all division ids
-	$div_id = array();
+	$div_ids = array();
 	foreach ( $divisions as $key => $value ):
 		if ( is_object( $value ) && property_exists( $value, 'term_id' ) )
-			$div_id[] = $value->term_id;
+			$div_ids[] = $value->term_id;
 	endforeach;
 
 	// Loop through statistics for each team
@@ -64,12 +64,12 @@ function sp_player_stats_meta( $post ) {
 		if ( !$team_id ) continue;
 
 		// Get all divisions populated with stats where available
-		$data[ $team_id ] = sp_array_combine( $div_id, $stats[ $team_id ] );
+		$data[ $team_id ] = sp_array_combine( $div_ids, $stats[ $team_id ] );
 
 		// Get equations from statistics variables
 		$equations = sp_get_var_equations( 'sp_metric' );
 
-		foreach ( $div_id as $div_id ):
+		foreach ( $div_ids as $div_id ):
 			$args = array(
 				'post_type' => 'sp_event',
 				'numberposts' => -1,

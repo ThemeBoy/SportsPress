@@ -59,73 +59,95 @@ function sp_table_team_meta( $post ) {
 }
 
 function sp_table_stats_meta( $post ) {
-	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
-	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
-	$division_id = sp_get_the_term_id( $post->ID, 'sp_div', 0 );
-	$data = sp_array_combine( $teams, sp_array_value( $stats, $division_id, array() ) );
+	$div_id = sp_get_the_term_id( $post->ID, 'sp_div', 0 );
+	$team_ids = (array)get_post_meta( $post->ID, 'sp_team', false );
+	$stats = (array)get_post_meta( $post->ID, 'sp_teams', true );
 
-	// Generate array of placeholder values for each team
-	$placeholders = array();
-	foreach ( $teams as $team ):
-		$args = array(
-			'post_type' => 'sp_event',
-			'meta_query' => array(
-				array(
-					'key' => 'sp_team',
-					'value' => $team
-				)
-			),
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'sp_div',
-					'field' => 'id',
-					'terms' => $division_id
-				)
-			)
-		);
-		$placeholders[ $team ] = sp_get_stats_row( $team, 'sp_team', $args, true );
+	// Equation Operating System
+	$eos = new eqEOS();
+
+	// Get labels from result variables
+	$result_labels = (array)sp_get_var_labels( 'sp_result' );
+
+	// Get labels from outcome variables
+	$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
+
+	// Get all divisions populated with stats where available
+	$data = sp_array_combine( $team_ids, $stats );
+
+	// Get equations from statistics variables
+	$equations = sp_get_var_equations( 'sp_stat' );
+
+	// Create entry for each team in totals
+	$totals = array();
+	foreach ( $team_ids as $team_id ):
+		$totals[ $team_id ] = array( 'eventsplayed' => 0 );
+
+		foreach ( $result_labels as $key => $value ):
+			$totals[ $team_id ][ $key . 'for' ] = 0;
+			$totals[ $team_id ][ $key . 'against' ] = 0;
+		endforeach;
+
+		foreach ( $outcome_labels as $key => $value ):
+			$totals[ $team_id ][ $key ] = 0;
+		endforeach;
 	endforeach;
 
-	$type = 'sp_stat';
 	$args = array(
-		'post_type' => $type,
+		'post_type' => 'sp_event',
 		'numberposts' => -1,
 		'posts_per_page' => -1,
-		'orderby' => 'menu_order',
-		'order' => 'ASC',
-		'exclude' => $postid
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'sp_div',
+				'field' => 'id',
+				'terms' => $div_id
+			)
+		)
 	);
-	$vars = get_posts( $args );
+	$events = get_posts( $args );
 
-	$columns = array();
-	foreach ( $vars as $var ):
-		$columns[ $var->post_name ] = $var->post_title;
+	// Event loop
+	foreach( $events as $event ):
+
+		$results = (array)get_post_meta( $event->ID, 'sp_results', true );
+
+		foreach ( $results as $team_id => $team_result ):
+
+			// Increment events played
+			$totals[ $team_id ]['eventsplayed']++;
+
+			foreach ( $team_result as $key => $value ):
+
+				if ( $key == 'outcome' ):
+					if ( array_key_exists( $value, $totals[ $team_id ] ) ):
+						$totals[ $team_id ][ $value ]++;
+					endif;
+				else:
+					if ( array_key_exists( $key . 'for', $totals[ $team_id ] ) ):
+						$totals[ $team_id ][ $key . 'for' ] += $value;
+					endif;
+				endif;
+
+			endforeach;
+
+		endforeach;
+
 	endforeach;
 
-	// Add first column label
-	array_unshift( $columns, __( 'Team', 'sportspress' ) );
+	// Generate placeholder values for each team
+	$placeholders = array();
+	foreach ( $team_ids as $team_id ):
+		$placeholders[ $team_id ] = array();
+		foreach ( $equations as $key => $value ):
+			$placeholders[ $team_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), $totals[ $team_id ] );
+		endforeach;
+	endforeach;
 
+	// Get columns from statistics variables
+	$columns = sp_get_var_labels( 'sp_stat' );
 
-	echo '$placeholders';
-	echo '<pre>';
-	print_r( $placeholders );
-	echo '</pre>';
-
-	echo '$data';
-	echo '<pre>';
-	print_r( $data );
-	echo '</pre>';
-
-	echo '$division_id';
-	echo '<pre>';
-	print_r( $division_id );
-	echo '</pre>';
-
-	echo '$columns';
-	echo '<pre>';
-	print_r( $columns );
-	echo '</pre>';
-
-	sp_stats_table( $data, $placeholders, $division_id, $columns, false );
+	sp_league_table( $columns, $data, $placeholders );
+	sp_nonce();
 }
 ?>
