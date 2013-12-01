@@ -334,7 +334,7 @@ if ( !function_exists( 'sp_get_equation_optgroup_array' ) ) {
 			foreach ( $vars as $var ):
 				if ( $totals ) $arr[ '$' . $var->post_name ] = $var->post_title;
 				foreach ( $variations as $key => $value ):
-					$arr[ '$' . $var->post_name . '_' . $key ] = $var->post_title . ' ' . $value;
+					$arr[ '$' . $var->post_name . $key ] = $var->post_title . ' ' . $value;
 				endforeach;
 			endforeach;
 		else:
@@ -360,7 +360,7 @@ if ( !function_exists( 'sp_get_equation_selector' ) ) {
 		foreach ( $groups as $group ):
 			switch ( $group ):
 				case 'event':
-					$options[ __( 'Events', 'sportspress' ) ] = array( '$events_attended' => __( 'Attended', 'sportspress' ), '$events_played' => __( 'Played', 'sportspress' ) );
+					$options[ __( 'Events', 'sportspress' ) ] = array( '$eventsattended' => __( 'Attended', 'sportspress' ), '$eventsplayed' => __( 'Played', 'sportspress' ) );
 					break;
 				case 'result':
 					$options[ __( 'Results', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_result', array( 'for' => '&rarr;', 'against' => '&larr;' ), null, false );
@@ -435,8 +435,8 @@ if ( !function_exists( 'sp_get_eos_keys' ) ) {
 }
 
 
-if ( !function_exists( 'sp_get_var_columns' ) ) {
-	function sp_get_var_columns( $post_type, $indies = false ) {
+if ( !function_exists( 'sp_get_var_labels' ) ) {
+	function sp_get_var_labels( $post_type, $independent = false ) {
 		$args = array(
 			'post_type' => $post_type,
 			'numberposts' => -1,
@@ -444,7 +444,7 @@ if ( !function_exists( 'sp_get_var_columns' ) ) {
 			'orderby' => 'menu_order',
 			'order' => 'ASC'
 		);
-		if ( $indies ):
+		if ( $independent ):
 			$args['meta_query'] = array(
 				array(
 					'key' => 'sp_equation',
@@ -458,6 +458,28 @@ if ( !function_exists( 'sp_get_var_columns' ) ) {
 		$output = array();
 		foreach ( $vars as $var ):
 			$output[ $var->post_name ] = $var->post_title;
+		endforeach;
+
+		return $output;
+	}
+}
+
+if ( !function_exists( 'sp_get_var_equations' ) ) {
+	function sp_get_var_equations( $post_type ) {
+		$args = array(
+			'post_type' => $post_type,
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC'
+		);
+
+		$vars = get_posts( $args );
+
+		$output = array();
+		foreach ( $vars as $var ):
+			$equation = get_post_meta( $var->ID, 'sp_equation', true );
+			$output[ $var->post_name ] = $equation;
 		endforeach;
 
 		return $output;
@@ -486,7 +508,7 @@ if ( !function_exists( 'sp_get_stats_row' ) ) {
 			case 'sp_team':
 
 				// All events attended by the team
-				$vars['events_attended'] = $vars['events_played'] = sizeof( $posts );
+				$vars['eventsattended'] = $vars['eventsplayed'] = sizeof( $posts );
 
 				// Get result variables
 				$args = array(
@@ -713,6 +735,46 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 						<?php endfor; ?>
 					</tr>
 				<?php endif; ?>
+			</tbody>
+		</table>
+		<?php
+	}
+}
+
+if ( !function_exists( 'sp_team_stats_table' ) ) {
+	function sp_team_stats_table( $columns = array(), $data = array(), $placeholders = array() ) {
+		?>
+		<table class="widefat sp-stats-table">
+			<thead>
+				<tr>
+					<th><?php _e( 'Division', 'sportspress' ); ?></th>
+					<?php foreach ( $columns as $label ): ?>
+						<th><?php echo $label; ?></th>
+					<?php endforeach; ?>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$i = 0;
+				foreach ( $data as $div_id => $div_stats ):
+					if ( !$div_id ) continue;
+					$div = get_term( $div_id, 'sp_div' );
+					?>
+					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+						<td>
+							<?php echo $div->name; ?>
+						</td>
+						<?php foreach( $columns as $column => $label ):
+							$value = sp_array_value( $div_stats, $column, '' );
+							$placeholder = sp_array_value( sp_array_value( $placeholders, $div_id, array() ), $column, 0 );
+							?>
+							<td><input type="text" name="sp_stats[<?php echo $div_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+						<?php endforeach; ?>
+					</tr>
+					<?php
+					$i++;
+				endforeach;
+				?>
 			</tbody>
 		</table>
 		<?php

@@ -122,8 +122,12 @@ function sp_save_post( $post_id ) {
 	if ( !isset( $_POST['sportspress_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_nonce'], plugin_basename( __FILE__ ) ) ) return $post_id;
 	switch ( $_POST['post_type'] ):
 		case ( 'sp_team' ):
+
+			// Update stats
 			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
+			
 			break;
+
 		case ( 'sp_event' ):
 
 			// Get results
