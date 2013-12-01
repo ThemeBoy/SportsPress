@@ -41,10 +41,10 @@ jQuery(document).ready(function($){
 	});
 
 	// Total stats calculator
-	$('.sp-stats-table .sp-total input').on('updateTotal', function() {
+	$('.sp-data-table .sp-total input').on('updateTotal', function() {
 		index = $(this).parent().index();
 		var sum = 0;
-		$(this).closest('.sp-stats-table').find('.sp-post').each(function() {
+		$(this).closest('.sp-data-table').find('.sp-post').each(function() {
 			val = $(this).find('td').eq(index).find('input').val();
 			if(val == '') {
 				val = $(this).find('td').eq(index).find('input').attr('placeholder');
@@ -57,9 +57,9 @@ jQuery(document).ready(function($){
 	});
 
 	// Activate total stats calculator
-	if($('.sp-stats-table .sp-total').size()) {
-		$('.sp-stats-table .sp-post td input').on('keyup', function() {
-			$(this).closest('.sp-stats-table').find('.sp-total td').eq($(this).parent().index()).find('input').trigger('updateTotal');
+	if($('.sp-data-table .sp-total').size()) {
+		$('.sp-data-table .sp-post td input').on('keyup', function() {
+			$(this).closest('.sp-data-table').find('.sp-total td').eq($(this).parent().index()).find('input').trigger('updateTotal');
 		});
 	}
 

@@ -75,7 +75,7 @@ function sp_event_teams_meta( $post ) {
 function sp_event_players_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
-	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
+	$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
 
 	// Get columns from result variables
 	$columns = sp_get_var_labels( 'sp_metric', true );

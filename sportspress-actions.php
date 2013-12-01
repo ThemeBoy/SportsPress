@@ -125,7 +125,7 @@ function sp_save_post( $post_id ) {
 
 			// Update stats
 			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
-			
+
 			break;
 
 		case ( 'sp_event' ):
@@ -136,8 +136,8 @@ function sp_save_post( $post_id ) {
 			// Update results
 			update_post_meta( $post_id, 'sp_results', $results );
 
-			// Update stats
-			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
+			// Update player metrics
+			update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array() ) );
 
 			// Update team array
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
@@ -176,9 +176,15 @@ function sp_save_post( $post_id ) {
 			break;
 
 		case ( 'sp_player' ):
-			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
+
+			// Update player metrics
+			update_post_meta( $post_id, 'sp_metrics', sp_array_value( $_POST, 'sp_metrics', array() ) );
+
+			// Update team array
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+
 			break;
+			
 		case ( 'sp_staff' ):
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 			break;

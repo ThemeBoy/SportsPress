@@ -682,7 +682,7 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 		if ( !is_array( $stats ) )
 			$stats = array( __( 'Name', 'sportspress' ) );
 		?>
-		<table class="widefat sp-stats-table">
+		<table class="widefat sp-data-table">
 			<thead>
 				<tr>
 					<?php foreach ( $columns as $column ): ?>
@@ -744,7 +744,7 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 if ( !function_exists( 'sp_team_stats_table' ) ) {
 	function sp_team_stats_table( $columns = array(), $data = array(), $placeholders = array() ) {
 		?>
-		<table class="widefat sp-stats-table">
+		<table class="widefat sp-data-table">
 			<thead>
 				<tr>
 					<th><?php _e( 'Division', 'sportspress' ); ?></th>
@@ -781,10 +781,52 @@ if ( !function_exists( 'sp_team_stats_table' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_player_metrics_table' ) ) {
+	function sp_player_metrics_table( $columns = array(), $data = array(), $placeholders = array() ) {
+		?>
+		<table class="widefat sp-data-table">
+			<thead>
+				<tr>
+					<th><?php _e( 'Division', 'sportspress' ); ?></th>
+					<?php foreach ( $columns as $label ): ?>
+						<th><?php echo $label; ?></th>
+					<?php endforeach; ?>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$i = 0;
+				foreach ( $data as $team_id => $team_stats ):
+					foreach ( $team_stats as $div_id => $div_stats ):
+						if ( !$div_id ) continue;
+						$div = get_term( $div_id, 'sp_div' );
+						?>
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+							<td>
+								<?php echo $div->name; ?>
+							</td>
+							<?php foreach( $columns as $column => $label ):
+								$value = sp_array_value( $div_stats, $column, '' );
+								$placeholder = sp_array_value( sp_array_value( sp_array_value( $placeholders, $team_id, array() ), $div_id, array() ), $column, 0 );
+								?>
+								<td><input type="text" name="sp_metrics[<?php echo $team_id; ?>][<?php echo $div_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+							<?php endforeach; ?>
+						</tr>
+						<?php
+						$i++;
+					endforeach;
+				endforeach;
+				?>
+			</tbody>
+		</table>
+		<?php
+	}
+}
+
 if ( !function_exists( 'sp_event_results_table' ) ) {
 	function sp_event_results_table( $columns = array(), $data = array() ) {
 		?>
-		<table class="widefat sp-stats-table">
+		<table class="widefat sp-data-table">
 			<thead>
 				<tr>
 					<th><?php _e( 'Team', 'sportspress' ); ?></th>
@@ -838,7 +880,7 @@ if ( !function_exists( 'sp_event_results_table' ) ) {
 if ( !function_exists( 'sp_event_players_table' ) ) {
 	function sp_event_players_table( $columns = array(), $data = array(), $team_id ) {
 		?>
-		<table class="widefat sp-stats-table">
+		<table class="widefat sp-data-table">
 			<thead>
 				<tr>
 					<th><?php _e( 'Player', 'sportspress' ); ?></th>
@@ -860,7 +902,7 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 						<?php foreach( $columns as $column => $label ):
 							$value = sp_array_value( $player_metrics, $column, '' );							
 							?>
-							<td><input type="text" name="sp_stats[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
+							<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
 						<?php endforeach; ?>
 					</tr>
 					<?php
@@ -874,7 +916,7 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 						$player_metrics = $data[0];
 						$value = sp_array_value( $player_metrics, $column, '' );
 						?>
-						<td><input type="text" name="sp_stats[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
+						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
 					<?php endforeach; ?>
 				</tr>
 			</tbody>
@@ -886,7 +928,7 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 if ( !function_exists( 'sp_someother_table' ) ) {
 	function sp_someother_table( $columns = array(), $data = array(), $placeholders = array(), $team_id ) {
 		?>
-		<table class="widefat sp-stats-table">
+		<table class="widefat sp-data-table">
 			<thead>
 				<tr>
 					<th><?php _e( 'Player', 'sportspress' ); ?></th>

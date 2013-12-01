@@ -90,16 +90,16 @@
 #sp_profilediv .wp-editor-container {
 	background-color:#fff;
 }
-.sp-stats-table td {
+.sp-data-table td {
 	padding: 4px 7px;
 	line-height: 2;
 }
-.sp-stats-table td:first-child {
+.sp-data-table td:first-child {
 	white-space: nowrap;
 }
-.sp-stats-table input[type="text"],
-.sp-stats-table input[type="number"],
-.sp-stats-table select {
+.sp-data-table input[type="text"],
+.sp-data-table input[type="number"],
+.sp-data-table select {
 	min-width: 14px;
 	width: 100%;
 }
