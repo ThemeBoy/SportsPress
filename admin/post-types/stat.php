@@ -14,7 +14,7 @@ function sp_stat_cpt_init() {
 		'supports' => array( 'title', 'page-attributes' ),
 		'register_meta_box_cb' => 'sp_stat_meta_init',
 		'rewrite' => array( 'slug' => 'stat' ),
-		'show_in_menu' => 'edit.php?post_type=sp_team'
+		'show_in_menu' => 'edit.php?post_type=sp_event'
 	);
 	register_post_type( 'sp_stat', $args );
 }

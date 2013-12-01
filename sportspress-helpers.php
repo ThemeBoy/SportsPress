@@ -63,7 +63,7 @@ if ( !function_exists( 'sp_numbers_to_words' ) ) {
 }
 
 if ( !function_exists( 'sp_cpt_labels' ) ) {
-	function sp_cpt_labels( $name, $singular_name, $lowercase_name = null, $is_submenu = false ) {
+	function sp_cpt_labels( $name, $singular_name, $lowercase_name = null ) {
 		if ( !$lowercase_name ) $lowercase_name = $name;
 		$labels = array(
 			'name' => $name,
@@ -141,6 +141,57 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 			}
 			foreach ( $terms as $term ) {
 				printf( '<option value="%s" %s>%s</option>', $term->term_id, selected( true, $args['selected'] == $term->term_id, false ), $term->name );
+			}
+			print( '</select>' );
+		}
+	}
+}
+
+if ( !function_exists( 'sp_dropdown_pages' ) ) {
+
+
+/*
+	<select name="sp_results[60][outcome]" id="sp_results[60][outcome]">
+	<option value="0">Select Outcome</option>
+	<option class="level-0" value="138">W</option>
+	<option class="level-0" value="139" selected="selected">L</option>
+	<option class="level-0" value="141">D</option>
+</select>
+*/
+	function sp_dropdown_pages( $args = array() ) {
+		$defaults = array(
+			'show_option_all' => false,
+			'show_option_none' => false,
+			'name' => 'page_id',
+			'selected' => null,
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'child_of' => 0,
+			'sort_order' => 'ASC',
+		    'sort_column'  => 'post_title',
+		    'hierarchical' => 1,
+		    'exclude'      => null,
+		    'include'      => null,
+		    'meta_key'     => null,
+		    'meta_value'   => null,
+		    'authors'      => null,
+		    'exclude_tree' => null,
+		    'post_type' => 'page'
+		);
+		$args = array_merge( $defaults, $args );
+		$name = $args['name'];
+		unset( $args['name'] );
+		$posts = get_posts( $args );
+		if ( $posts ) {
+			printf( '<select name="%s" class="postform">', $name );
+			if ( $args['show_option_all'] ) {
+				printf( '<option value="0">%s</option>', $args['show_option_all'] );
+			}
+			if ( $args['show_option_none'] ) {
+				printf( '<option value="-1">%s</option>', $args['show_option_none'] );
+			}
+			foreach ( $posts as $post ) {
+				printf( '<option value="%s" %s>%s</option>', $post->post_name, selected( true, $args['selected'] == $post->post_name, false ), $post->post_title );
 			}
 			print( '</select>' );
 		}
@@ -678,6 +729,7 @@ if ( !function_exists( 'sp_event_results_table' ) ) {
 					<?php foreach ( $columns as $label ): ?>
 						<th><?php echo $label; ?></th>
 					<?php endforeach; ?>
+					<th><?php _e( 'Outcome', 'sportspress' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -695,6 +747,21 @@ if ( !function_exists( 'sp_event_results_table' ) ) {
 							?>
 							<td><input type="text" name="sp_results[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" /></td>
 						<?php endforeach; ?>
+						<td>
+							<?php
+							$value = sp_array_value( $team_results, 'outcome', '' );
+							$args = array(
+								'post_type' => 'sp_outcome',
+								'name' => 'sp_results[' . $team_id . '][outcome]',
+								'show_option_none' => __( '-- Not set --', 'sportspress' ),
+								'option_none_value' => 0,
+							    'sort_order'   => 'ASC',
+							    'sort_column'  => 'menu_order',
+								'selected' => $value
+							);
+							sp_dropdown_pages( $args );
+							?>
+						</td>
 					</tr>
 					<?php
 					$i++;
@@ -803,21 +870,6 @@ if ( !function_exists( 'sp_someother_table' ) ) {
 		<?php
 	}
 }
-
-/*
-if ( !function_exists( 'sp_team_stats_sport_choice' ) ) {
-	function sp_team_stats_sport_choice( $selected = null ) {
-		global $sportspress_sports;
-		?>
-			<select id="sp_team_stats_sport" name="sp_team_stats_sport">
-				<?php foreach ( $sportspress_sports as $key => $value ): ?>
-					<option value="<?php echo $key; ?>" data-sp-preset="<?php echo sp_array_value( $value, 'team' ); ?>"<?php if ( $selected == $key ) echo ' selected="selected"'; ?>><?php echo sp_array_value( $value, 'name' ); ?></option>
-				<?php endforeach; ?>
-			</select>
-		<?php
-	}
-}
-*/
 
 if ( !function_exists( 'sp_post_adder' ) ) {
 	function sp_post_adder( $meta = 'post' ) {
