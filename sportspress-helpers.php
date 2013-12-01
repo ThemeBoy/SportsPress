@@ -359,8 +359,11 @@ if ( !function_exists( 'sp_get_equation_selector' ) ) {
 		// Add groups to options
 		foreach ( $groups as $group ):
 			switch ( $group ):
-				case 'event':
+				case 'player_event':
 					$options[ __( 'Events', 'sportspress' ) ] = array( '$eventsattended' => __( 'Attended', 'sportspress' ), '$eventsplayed' => __( 'Played', 'sportspress' ) );
+					break;
+				case 'team_event':
+					$options[ __( 'Events', 'sportspress' ) ] = array( '$eventsplayed' => __( 'Played', 'sportspress' ) );
 					break;
 				case 'result':
 					$options[ __( 'Results', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_result', array( 'for' => '&rarr;', 'against' => '&larr;' ), null, false );
@@ -735,6 +738,46 @@ if ( !function_exists( 'sp_stats_table' ) ) {
 						<?php endfor; ?>
 					</tr>
 				<?php endif; ?>
+			</tbody>
+		</table>
+		<?php
+	}
+}
+
+if ( !function_exists( 'sp_league_table' ) ) {
+	function sp_league_table( $columns = array(), $data = array(), $placeholders = array() ) {
+		?>
+		<table class="widefat sp-data-table">
+			<thead>
+				<tr>
+					<th><?php _e( 'Team', 'sportspress' ); ?></th>
+					<?php foreach ( $columns as $label ): ?>
+						<th><?php echo $label; ?></th>
+					<?php endforeach; ?>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$i = 0;
+				foreach ( $data as $team_id => $team_stats ):
+					if ( !$team_id ) continue;
+					$div = get_term( $team_id, 'sp_div' );
+					?>
+					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+						<td>
+							<?php echo get_the_title( $team_id ); ?>
+						</td>
+						<?php foreach( $columns as $column => $label ):
+							$value = sp_array_value( $team_stats, $column, '' );
+							$placeholder = sp_array_value( sp_array_value( $placeholders, $team_id, array() ), $column, 0 );
+							?>
+							<td><input type="text" name="sp_teams[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+						<?php endforeach; ?>
+					</tr>
+					<?php
+					$i++;
+				endforeach;
+				?>
 			</tbody>
 		</table>
 		<?php
