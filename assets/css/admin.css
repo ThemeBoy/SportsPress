@@ -90,17 +90,16 @@
 #sp_profilediv .wp-editor-container {
 	background-color:#fff;
 }
-#sp_statsdiv .widefat td {
+.sp-stats-table td {
 	padding: 4px 7px;
 	line-height: 2;
 }
-#sp_statsdiv .widefat td:first-child {
+.sp-stats-table td:first-child {
 	white-space: nowrap;
 }
-#sp_statsdiv .widefat input[type="text"],
-#sp_statsdiv .widefat input[type="number"],
-#sp_resultsdiv .widefat input[type="text"],
-#sp_resultsdiv .widefat input[type="number"] {
+.sp-stats-table input[type="text"],
+.sp-stats-table input[type="number"],
+.sp-stats-table select {
 	min-width: 14px;
 	width: 100%;
 }

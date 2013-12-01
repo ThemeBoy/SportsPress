@@ -31,13 +31,13 @@ add_filter( 'the_posts', 'sp_event_display_scheduled' );
 function sp_event_meta_init() {
 	remove_meta_box( 'submitdiv', 'sp_event', 'side' );
 	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
-	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_event_team_meta', 'sp_event', 'side', 'high' );
-	add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_event_stats_meta', 'sp_event', 'normal', 'high' );
+	add_meta_box( 'sp_teamsdiv', __( 'Teams', 'sportspress' ), 'sp_event_teams_meta', 'sp_event', 'side', 'high' );
+	add_meta_box( 'sp_playersdiv', __( 'Players', 'sportspress' ), 'sp_event_players_meta', 'sp_event', 'normal', 'high' );
 	add_meta_box( 'sp_resultsdiv', __( 'Results', 'sportspress' ), 'sp_event_results_meta', 'sp_event', 'normal', 'high' );
 	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sp_event_article_meta', 'sp_event', 'normal', 'high' );
 }
 
-function sp_event_team_meta( $post ) {
+function sp_event_teams_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
 	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
@@ -72,13 +72,13 @@ function sp_event_team_meta( $post ) {
 	sp_nonce();
 }
 
-function sp_event_stats_meta( $post ) {
+function sp_event_players_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
 	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
 
 	// Get columns from result variables
-	$columns = sp_get_var_columns( 'sp_metric', true );
+	$columns = sp_get_var_labels( 'sp_metric', true );
 
 	// Teams
 	foreach ( $teams as $key => $team_id ):
@@ -104,7 +104,7 @@ function sp_event_results_meta( $post ) {
 	$results = (array)get_post_meta( $post->ID, 'sp_results', true );
 
 	// Get columns from result variables
-	$columns = sp_get_var_columns( 'sp_result' );
+	$columns = sp_get_var_labels( 'sp_result' );
 
 	// Get results for all teams
 	$data = sp_array_combine( $teams, $results );
