@@ -75,45 +75,67 @@ function sp_event_team_meta( $post ) {
 function sp_event_players_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
-	$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
-
-	// Get columns from result variables
-	$columns = sp_get_var_labels( 'sp_metric', true );
 
 	// Teams
-	foreach ( $teams as $key => $team_id ):
-
-		// Get results for players in the team
-		$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
-		$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
+	if ( $teams == array_pad( array_slice( array(), 0, $limit ), $limit, 0 ) ):
 
 		?>
-		<div>
-			<p><strong><?php echo $team_id ? get_the_title( $team_id ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong></p>
-			<?php sp_event_players_table( $columns, $data, $team_id ); ?>
-		</div>
+		<p><strong><?php echo $team_id ? get_the_title( $team_id ) : sprintf( __( 'Select %s' ), 'Teams' ); ?></strong></p>
 		<?php
 
-	endforeach;
+	else:
+
+		$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
+
+		// Get columns from result variables
+		$columns = sp_get_var_labels( 'sp_metric', true );
+
+		foreach ( $teams as $key => $team_id ):
+
+			// Get results for players in the team
+			$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
+			$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
+
+			?>
+			<div>
+				<p><strong><?php echo $team_id ? get_the_title( $team_id ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong></p>
+				<?php if ( $team_id ) sp_event_players_table( $columns, $data, $team_id ); ?>
+			</div>
+			<?php
+
+		endforeach;
+	endif;
 
 }
 
 function sp_event_results_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
-	$results = (array)get_post_meta( $post->ID, 'sp_results', true );
+	
+	// Teams
+	if ( $teams == array_pad( array_slice( array(), 0, $limit ), $limit, 0 ) ):
 
-	// Get columns from result variables
-	$columns = sp_get_var_labels( 'sp_result' );
+		?>
+		<p><strong><?php echo $team_id ? get_the_title( $team_id ) : sprintf( __( 'Select %s' ), 'Teams' ); ?></strong></p>
+		<?php
 
-	// Get results for all teams
-	$data = sp_array_combine( $teams, $results );
+	else:
 
-	?>
-	<div>
-		<?php sp_event_results_table( $columns, $data ); ?>
-	</div>
-	<?php
+		$results = (array)get_post_meta( $post->ID, 'sp_results', true );
+
+		// Get columns from result variables
+		$columns = sp_get_var_labels( 'sp_result' );
+
+		// Get results for all teams
+		$data = sp_array_combine( $teams, $results );
+
+		?>
+		<div>
+			<?php sp_event_results_table( $columns, $data ); ?>
+		</div>
+		<?php
+
+	endif;
 }
 
 function sp_event_article_meta( $post ) {

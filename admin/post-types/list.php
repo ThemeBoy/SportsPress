@@ -73,41 +73,104 @@ function sp_list_player_meta( $post ) {
 }
 
 function sp_list_stats_meta( $post ) {
-	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
-	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
-	$division_id = sp_get_the_term_id( $post->ID, 'sp_div', 0 );
+	$div_id = sp_get_the_term_id( $post->ID, 'sp_div', 0 );
 	$team_id = get_post_meta( $post->ID, 'sp_team', true );
-	$data = sp_array_combine( $players, sp_array_value( $stats, $division_id, array() ) );
+	$player_ids = (array)get_post_meta( $post->ID, 'sp_player', false );
+	$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
 
-	// Generate array of placeholder values for each player
-	$placeholders = array();
-	foreach ( $players as $player ):
-		$args = array(
-			'post_type' => 'sp_event',
-			'meta_query' => array(
-				array(
-					'key' => 'sp_player',
-					'value' => $player
-				)
-			),
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'sp_div',
-					'field' => 'id',
-					'terms' => $division_id
-				)
-			)
-		);
-		$placeholders[ $player ] = sp_get_stats_row( 'sp_player', $args, true );
+	// Equation Operating System
+	$eos = new eqEOS();
+
+	// Get labels from result variables
+	$metric_labels = (array)sp_get_var_labels( 'sp_metric' );
+
+	// Get all divisions populated with stats where available
+	$data = sp_array_combine( $player_ids, $stats );
+
+	// Get equations from statistics variables
+	$equations = sp_get_var_equations( 'sp_metric' );
+
+	// Create entry for each player in totals
+	$totals = array();
+	foreach ( $player_ids as $player_id ):
+		if ( ! $player_id )
+			continue;
+		$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0 );
+
+		foreach ( $metric_labels as $key => $value ):
+			$totals[ $player_id ][ $key ] = 0;
+		endforeach;
 	endforeach;
 
-	// Get column names from settings
-	$stats_settings = get_option( 'sportspress_stats' );
-	$columns = sp_get_eos_keys( $stats_settings['player'] );
+	$args = array(
+		'post_type' => 'sp_event',
+		'numberposts' => -1,
+		'posts_per_page' => -1,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'sp_div',
+				'field' => 'id',
+				'terms' => $div_id
+			)
+		),
+		'meta_query' => array(
+			array(
+				'key' => 'sp_team',
+				'value' => $team_id,
+			)
+		)
+	);
+	$events = get_posts( $args );
 
-	// Add first column label
-	array_unshift( $columns, __( 'Player', 'sportspress' ) );
+	// Event loop
+	foreach( $events as $event ):
 
-	sp_stats_table( $data, $placeholders, $division_id, $columns, false );
+		$teams = (array)get_post_meta( $event->ID, 'sp_players', true );
+
+		if ( ! array_key_exists( $team_id, $teams ) )
+			continue;
+
+		$players = sp_array_value( $teams, $team_id, array() );
+
+		foreach ( $players as $player_id => $player_metrics ):
+
+			// Increment events played
+			$totals[ $player_id ]['eventsplayed']++;
+
+			foreach ( $player_metrics as $key => $value ):
+
+				if ( array_key_exists( $key, $totals[ $player_id ] ) ):
+					$totals[ $player_id ][ $key ] += $value;
+				endif;
+
+			endforeach;
+
+		endforeach;
+
+	endforeach;
+
+	// Generate placeholder values for each team
+	$placeholders = array();
+	foreach ( $player_ids as $player_id ):
+		$placeholders[ $player_id ] = array();
+		foreach ( $equations as $key => $value ):
+
+			if ( empty( $value ) ):
+
+				// Reflect totals
+				$placeholders[ $player_id ][ $key ] = sp_array_value( sp_array_value( $totals, $player_id, array() ), $key, 0 );
+
+			else:
+
+				// Calculate value
+				$placeholders[ $player_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), sp_array_value( $totals, $player_id, array() ) );
+
+			endif;
+
+		endforeach;
+	endforeach;
+
+	sp_player_table( $metric_labels, $data, $placeholders );
+	sp_nonce();
 }
 ?>

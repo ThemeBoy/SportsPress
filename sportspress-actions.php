@@ -184,17 +184,17 @@ function sp_save_post( $post_id ) {
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 
 			break;
-			
+
 		case ( 'sp_staff' ):
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 			break;
 		case ( 'sp_table' ):
-			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
+			update_post_meta( $post_id, 'sp_teams', sp_array_value( $_POST, 'sp_teams', array() ) );
 			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_div', 0 ), 'sp_div' );
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 			break;
 		case ( 'sp_list' ):
-			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
+			update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array() ) );
 			update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_div', 0 ), 'sp_div' );
 			sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );

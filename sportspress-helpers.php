@@ -784,6 +784,46 @@ if ( !function_exists( 'sp_league_table' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_player_table' ) ) {
+	function sp_player_table( $columns = array(), $data = array(), $placeholders = array() ) {
+		?>
+		<table class="widefat sp-data-table">
+			<thead>
+				<tr>
+					<th><?php _e( 'Player', 'sportspress' ); ?></th>
+					<?php foreach ( $columns as $label ): ?>
+						<th><?php echo $label; ?></th>
+					<?php endforeach; ?>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$i = 0;
+				foreach ( $data as $player_id => $player_stats ):
+					if ( !$player_id ) continue;
+					$div = get_term( $player_id, 'sp_div' );
+					?>
+					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+						<td>
+							<?php echo get_the_title( $player_id ); ?>
+						</td>
+						<?php foreach( $columns as $column => $label ):
+							$value = sp_array_value( $player_stats, $column, '' );
+							$placeholder = sp_array_value( sp_array_value( $placeholders, $player_id, array() ), $column, 0 );
+							?>
+							<td><input type="text" name="sp_players[<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+						<?php endforeach; ?>
+					</tr>
+					<?php
+					$i++;
+				endforeach;
+				?>
+			</tbody>
+		</table>
+		<?php
+	}
+}
+
 if ( !function_exists( 'sp_team_stats_table' ) ) {
 	function sp_team_stats_table( $columns = array(), $data = array(), $placeholders = array() ) {
 		?>
@@ -799,24 +839,32 @@ if ( !function_exists( 'sp_team_stats_table' ) ) {
 			<tbody>
 				<?php
 				$i = 0;
-				foreach ( $data as $div_id => $div_stats ):
-					if ( !$div_id ) continue;
-					$div = get_term( $div_id, 'sp_div' );
+				if ( empty( $data ) ):
 					?>
-					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-						<td>
-							<?php echo $div->name; ?>
-						</td>
-						<?php foreach( $columns as $column => $label ):
-							$value = sp_array_value( $div_stats, $column, '' );
-							$placeholder = sp_array_value( sp_array_value( $placeholders, $div_id, array() ), $column, 0 );
-							?>
-							<td><input type="text" name="sp_stats[<?php echo $div_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
-						<?php endforeach; ?>
-					</tr>
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+							<td><strong><?php printf( __( 'Select %s', 'sportspress' ), __( 'Division', 'sportspress' ) ); ?></strong></td>
+						</tr>
 					<?php
-					$i++;
-				endforeach;
+				else:
+					foreach ( $data as $div_id => $div_stats ):
+						if ( !$div_id ) continue;
+						$div = get_term( $div_id, 'sp_div' );
+						?>
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+							<td>
+								<?php echo $div->name; ?>
+							</td>
+							<?php foreach( $columns as $column => $label ):
+								$value = sp_array_value( $div_stats, $column, '' );
+								$placeholder = sp_array_value( sp_array_value( $placeholders, $div_id, array() ), $column, 0 );
+								?>
+								<td><input type="text" name="sp_stats[<?php echo $div_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+							<?php endforeach; ?>
+						</tr>
+						<?php
+						$i++;
+					endforeach;
+				endif;
 				?>
 			</tbody>
 		</table>
@@ -840,6 +888,12 @@ if ( !function_exists( 'sp_player_metrics_table' ) ) {
 				<?php
 				$i = 0;
 				foreach ( $data as $team_id => $team_stats ):
+					if ( empty( $team_stats ) ):
+						?>
+							<td><strong><?php printf( __( 'Select %s', 'sportspress' ), __( 'Team', 'sportspress' ) ); ?></strong></td>
+						<?php
+						continue;
+					endif;
 					foreach ( $team_stats as $div_id => $div_stats ):
 						if ( !$div_id ) continue;
 						$div = get_term( $div_id, 'sp_div' );
@@ -960,56 +1014,6 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 						$value = sp_array_value( $player_metrics, $column, '' );
 						?>
 						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
-					<?php endforeach; ?>
-				</tr>
-			</tbody>
-		</table>
-		<?php
-	}
-}
-
-if ( !function_exists( 'sp_someother_table' ) ) {
-	function sp_someother_table( $columns = array(), $data = array(), $placeholders = array(), $team_id ) {
-		?>
-		<table class="widefat sp-data-table">
-			<thead>
-				<tr>
-					<th><?php _e( 'Player', 'sportspress' ); ?></th>
-					<?php foreach ( $columns as $label ): ?>
-						<th><?php echo $label; ?></th>
-					<?php endforeach; ?>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-				$i = 0;
-				foreach ( $data as $player_id => $player_metrics ):
-					if ( !$player_id ) continue;
-					?>
-					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-						<td>
-							<?php echo get_the_title( $player_id ); ?>
-						</td>
-						<?php foreach( $columns as $column => $label ):
-							$value = sp_array_value( $player_metrics, $column, '' );
-							$placeholder = (int)sp_array_value( sp_array_value( $placeholders, $player_id, 0), $column, 0 );
-							?>
-							<td><input type="text" name="sp_stats[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
-						<?php endforeach; ?>
-					</tr>
-					<?php
-					$i++;
-				endforeach;
-				$total_results = sp_array_value( $data, 0, array() );
-				?>
-				<tr class="sp-row sp-total<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-					<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
-					<?php foreach( $columns as $column => $label ):
-						$player_id = 0;
-						$value = sp_array_value( $player_metrics, $column, '' );
-						$placeholder = (int)sp_array_value( sp_array_value( $placeholders, $player_id, 0), $column, 0 );
-						?>
-						<td><input type="text" name="sp_stats[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
 					<?php endforeach; ?>
 				</tr>
 			</tbody>

@@ -59,6 +59,13 @@ function sp_player_stats_meta( $post ) {
 			$div_ids[] = $value->term_id;
 	endforeach;
 
+	if ( empty( $team_ids ) || $team_ids == array(0) ):
+		?>
+		<p><strong><?php printf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ); ?></strong></p>
+		<?php
+		return;
+	endif;
+
 	// Loop through statistics for each team
 	foreach ( $team_ids as $team_id ):
 		if ( !$team_id ) continue;
