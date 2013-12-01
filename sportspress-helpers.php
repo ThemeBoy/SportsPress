@@ -308,7 +308,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 }
 
 if ( !function_exists( 'sp_get_equation_optgroup_array' ) ) {
-	function sp_get_equation_optgroup_array( $postid, $type = null, $variations = null, $defaults = null, $plain = true ) {
+	function sp_get_equation_optgroup_array( $postid, $type = null, $variations = null, $defaults = null, $totals = true ) {
 		$arr = array();
 
 		// Get stats within the sports that the current stat is in ### TODO: should be for sport selected
@@ -332,7 +332,7 @@ if ( !function_exists( 'sp_get_equation_optgroup_array' ) ) {
 		// Add vars to the array
 		if ( isset( $variations ) && is_array( $variations ) ):
 			foreach ( $vars as $var ):
-				if ( $plain ) $arr[ '$' . $var->post_name ] = $var->post_title;
+				if ( $totals ) $arr[ '$' . $var->post_name ] = $var->post_title;
 				foreach ( $variations as $key => $value ):
 					$arr[ '$' . $var->post_name . '_' . $key ] = $var->post_title . ' ' . $value;
 				endforeach;
@@ -378,7 +378,7 @@ if ( !function_exists( 'sp_get_equation_selector' ) ) {
 		endforeach;
 
 		// Create array of operators
-		$operators = array( '+' => '&plus;', '-' => '&minus;', '*' => '&times;', '/' => '&divide;', '==' => '=', '!=' => '&ne;', '<' => '<', '<=' => '&le;', '>' => '>', '>=' => '&ge;', '(' => '(', ')' => ')' );
+		$operators = array( '+' => '&plus;', '-' => '&minus;', '*' => '&times;', '/' => '&divide;', '(' => '(', ')' => ')' );
 
 		// Add operators to options
 		$options[ __( 'Operators', 'sportspress' ) ] = $operators;
