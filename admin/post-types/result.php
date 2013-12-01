@@ -7,7 +7,7 @@ function sp_result_cpt_init() {
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
-		'public' => true,
+		'public' => false,
 		'show_ui' => true,
 		'show_in_nav_menus' => false,
 		'hierarchical' => false,

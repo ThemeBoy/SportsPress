@@ -45,7 +45,7 @@ add_filter('the_content', 'sportspress_the_content');
 
 function sp_sanitize_title( $title ) {
 	
-	if ( in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_stat', 'sp_metric' ) ) ):
+	if ( isset( $_POST ) && in_array( 'post_type', $_POST ) && in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_stat', 'sp_metric' ) ) ):
 
 		// Get post title
 		$title = $_POST['post_title'];

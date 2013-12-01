@@ -13,7 +13,7 @@ function sp_metric_cpt_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
 		'register_meta_box_cb' => 'sp_metric_meta_init',
-		'show_in_menu' => 'edit.php?post_type=sp_player'
+		'show_in_menu' => 'edit.php?post_type=sp_event'
 	);
 	register_post_type( 'sp_metric', $args );
 }
