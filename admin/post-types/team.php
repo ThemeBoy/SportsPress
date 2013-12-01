@@ -50,9 +50,6 @@ function sp_team_stats_meta( $post ) {
 	// Get labels from outcome variables
 	$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
 
-	// Merge result and outcome variable labels
-	$labels = array_merge( $result_labels, $outcome_labels );
-
 	$totals = array( 'eventsplayed' => 0 );
 	$placeholders = array();
 
@@ -99,8 +96,8 @@ function sp_team_stats_meta( $post ) {
 		);
 		$events = get_posts( $args );
 		foreach( $events as $event ):
-			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			$totals['eventsplayed']++;
+			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			foreach ( $results as $team_id => $team_result ):
 				foreach ( $team_result as $key => $value ):
 					if ( $team_id == $post->ID ):
@@ -124,13 +121,15 @@ function sp_team_stats_meta( $post ) {
 			endforeach;
 		endforeach;
 
+		// Total events attended is same as played for teams
+		$totals['eventsattended'] = $totals['eventsplayed'];
+
 		// Generate array of placeholder values for each division
 		$placeholders[ $div_id ] = array();
 		foreach ( $equations as $key => $value ):
 			$placeholders[ $div_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), $totals );
 		endforeach;
 
-		//$placeholders[ $division_id ] = sp_get_stats_row( 'sp_team', $args );
 	endforeach;
 
 	// Get columns from statistics variables
