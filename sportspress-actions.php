@@ -48,8 +48,8 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			break;
 		case 'sp_equation':
 			echo str_replace(
-				array( '+', '-', '*', '/', '==', '!=', '<', '<=', '>', '>=' ),
-				array( '&plus;', '&minus;', '&times;', '&divide', '=', '&ne;', '&lt;', '&le;', '&gt;', '&ge;' ),
+				array( '$', '+', '-', '*', '/' ),
+				array( '', '&plus;', '&minus;', '&times;', '&divide' ),
 				get_post_meta ( $post_id, 'sp_equation', true )
 			);
 			break;
