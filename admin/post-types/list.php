@@ -104,7 +104,7 @@ function sp_list_stats_meta( $post ) {
 			$totals[ $player_id ][ $key ] = 0;
 		endforeach;
 
-		// Get statis metrics
+		// Get static metrics
 		$static = get_post_meta( $player_id, 'sp_metrics', true );
 
 		// Create placeholders entry for the player
@@ -165,6 +165,9 @@ function sp_list_stats_meta( $post ) {
 
 	// Generate placeholder values for each team
 	foreach ( $player_ids as $player_id ):
+		if ( ! $player_id )
+			continue;
+
 		foreach ( $equations as $key => $value ):
 			if ( sp_array_value( $placeholders[ $player_id ], $key, '' ) == '' ):
 
