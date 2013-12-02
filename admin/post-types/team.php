@@ -50,18 +50,6 @@ function sp_team_stats_meta( $post ) {
 	// Get labels from outcome variables
 	$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
 
-	$totals = array( 'eventsplayed' => 0 );
-	$placeholders = array();
-
-	foreach ( $result_labels as $key => $value ):
-		$totals[ $key . 'for' ] = 0;
-		$totals[ $key . 'against' ] = 0;
-	endforeach;
-
-	foreach ( $outcome_labels as $key => $value ):
-		$totals[ $key ] = 0;
-	endforeach;
-
 	// Generate array of all division ids
 	$div_ids = array();
 	foreach ( $divisions as $key => $value ):
@@ -75,7 +63,22 @@ function sp_team_stats_meta( $post ) {
 	// Get equations from statistics variables
 	$equations = sp_get_var_equations( 'sp_stat' );
 
+	// Initialize placeholders array
+	$placeholders = array();
+
 	foreach ( $div_ids as $div_id ):
+
+		$totals = array( 'eventsplayed' => 0 );
+
+		foreach ( $result_labels as $key => $value ):
+			$totals[ $key . 'for' ] = 0;
+			$totals[ $key . 'against' ] = 0;
+		endforeach;
+
+		foreach ( $outcome_labels as $key => $value ):
+			$totals[ $key ] = 0;
+		endforeach;
+
 		$args = array(
 			'post_type' => 'sp_event',
 			'numberposts' => -1,
@@ -95,6 +98,7 @@ function sp_team_stats_meta( $post ) {
 			)
 		);
 		$events = get_posts( $args );
+
 		foreach( $events as $event ):
 			$totals['eventsplayed']++;
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );

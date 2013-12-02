@@ -12,7 +12,7 @@ function sp_table_cpt_init() {
 		'supports' => array( 'title', 'author' ),
 		'register_meta_box_cb' => 'sp_table_meta_init',
 		'rewrite' => array( 'slug' => 'table' ),
-		'show_in_menu' => 'edit.php?post_type=sp_team'
+		'show_in_menu' => 'edit.php?post_type=sp_event'
 	);
 	register_post_type( 'sp_table', $args );
 }
@@ -80,6 +80,8 @@ function sp_table_stats_meta( $post ) {
 
 	// Create entry for each team in totals
 	$totals = array();
+	$placeholders = array();
+
 	foreach ( $team_ids as $team_id ):
 		$totals[ $team_id ] = array( 'eventsplayed' => 0 );
 
@@ -91,6 +93,17 @@ function sp_table_stats_meta( $post ) {
 		foreach ( $outcome_labels as $key => $value ):
 			$totals[ $team_id ][ $key ] = 0;
 		endforeach;
+
+		$static = get_post_meta( $team_id, 'sp_stats', true );
+
+		// Create placeholders entry for the team
+		$placeholders[ $team_id ] = array();
+
+		// Add static stats to placeholders
+		if ( array_key_exists( $div_id, $static ) ):
+			$placeholders[ $team_id ] = $static[ $div_id ];
+		endif;
+
 	endforeach;
 
 	$args = array(
@@ -135,12 +148,12 @@ function sp_table_stats_meta( $post ) {
 
 	endforeach;
 
-	// Generate placeholder values for each team
-	$placeholders = array();
+	// Fill in empty placeholder values for each team
 	foreach ( $team_ids as $team_id ):
-		$placeholders[ $team_id ] = array();
 		foreach ( $equations as $key => $value ):
-			$placeholders[ $team_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), $totals[ $team_id ] );
+			if ( sp_array_value( $placeholders[ $team_id ], $key, '' ) == '' ):
+				$placeholders[ $team_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), $totals[ $team_id ] );
+			endif;
 		endforeach;
 	endforeach;
 
