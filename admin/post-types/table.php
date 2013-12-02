@@ -61,7 +61,7 @@ function sp_table_team_meta( $post ) {
 function sp_table_stats_meta( $post ) {
 	$div_id = sp_get_the_term_id( $post->ID, 'sp_div', 0 );
 	$team_ids = (array)get_post_meta( $post->ID, 'sp_team', false );
-	$stats = (array)get_post_meta( $post->ID, 'sp_teams', true );
+	$table_stats = (array)get_post_meta( $post->ID, 'sp_teams', true );
 
 	// Equation Operating System
 	$eos = new eqEOS();
@@ -73,10 +73,7 @@ function sp_table_stats_meta( $post ) {
 	$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
 
 	// Get all divisions populated with stats where available
-	$data = sp_array_combine( $team_ids, $stats );
-
-	// Get equations from statistics variables
-	$equations = sp_get_var_equations( 'sp_stat' );
+	$tempdata = sp_array_combine( $team_ids, $table_stats );
 
 	// Create entry for each team in totals
 	$totals = array();
@@ -152,20 +149,84 @@ function sp_table_stats_meta( $post ) {
 
 	endforeach;
 
+	$args = array(
+		'post_type' => 'sp_stat',
+		'numberposts' => -1,
+		'posts_per_page' => -1,
+  		'orderby' => 'menu_order',
+  		'order' => 'ASC'
+	);
+	$stats = get_posts( $args );
+
+	$columns = array();
+	$priorities = array();
+
+	foreach ( $stats as $stat ):
+
+		// Get post meta
+		$meta = get_post_meta( $stat->ID );
+
+		// Add equation to object
+		$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
+
+		// Add column name to columns
+		$columns[ $stat->post_name ] = $stat->post_title;
+
+		// Add order to priorities if priority is set and does not exist in array already
+		$priority = sp_array_value( sp_array_value( $meta, 'sp_priority', array() ), 0, 0 );
+		if ( $priority && ! array_key_exists( $priorities, $priority ) ):
+			$priorities[ $priority ] = array(
+				'column' => $stat->post_name,
+				'order' => sp_array_value( sp_array_value( $meta, 'sp_order', array() ), 0, 'DESC' )
+			);
+		endif;
+
+	endforeach;
+
+	// Sort priorities in descending order
+	ksort( $priorities );
+
 	// Fill in empty placeholder values for each team
 	foreach ( $team_ids as $team_id ):
 		if ( ! $team_id )
 			continue;
-		
-		foreach ( $equations as $key => $value ):
-			if ( sp_array_value( $placeholders[ $team_id ], $key, '' ) == '' ):
-				$placeholders[ $team_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), $totals[ $team_id ] );
+
+		foreach ( $stats as $stat ):
+			if ( sp_array_value( $placeholders[ $team_id ], $stat->post_name, '' ) == '' ):
+				$placeholders[ $team_id ][ $stat->post_name ] = $eos->solveIF( str_replace( ' ', '', $stat->equation ), $totals[ $team_id ] );
 			endif;
 		endforeach;
 	endforeach;
 
-	// Get columns from statistics variables
-	$columns = sp_get_var_labels( 'sp_stat' );
+	// Merge the data and placeholders arrays
+	$merged = array();
+	foreach( $tempdata as $team_id => $team_data ):
+		foreach( $team_data as $key => $value ):
+			if ( $value != '' ):
+				$merged[ $team_id ][ $key ] = $value;
+			elseif ( array_key_exists( $team_id, $placeholders ) && array_key_exists( $key, $placeholders[ $team_id ] ) ):
+				$merged[ $team_id ][ $key ] = $placeholders[ $team_id ][ $key ];
+			else:
+			endif;
+		endforeach;
+	endforeach;
+
+	uasort( $merged, function( $a, $b ) use ( $priorities ) {
+		foreach( $priorities as $priority ):
+			if ( sp_array_value( $a, $priority['column'], 0 ) != sp_array_value( $b, $priority['column'], 0 ) ):
+				$output = sp_array_value( $a, $priority['column'], 0 ) - sp_array_value( $b, $priority['column'], 0 );
+				if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
+				return $output;
+			endif;
+		endforeach;
+		return 0;
+	});
+
+	// Rearrange data array to reflect statistics
+	$data = array();
+	foreach( $merged as $key => $value ):
+		$data[ $key ] = $tempdata[ $key ];
+	endforeach;
 
 	sp_league_table( $columns, $data, $placeholders );
 	sp_nonce();

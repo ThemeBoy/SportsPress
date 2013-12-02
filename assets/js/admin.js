@@ -73,6 +73,15 @@ jQuery(document).ready(function($){
 		}
 	});
 
+	// Equation selector
+	$('.sp-order-selector select:first').change(function() {
+		if($(this).val() == '0') {
+			$(this).siblings().prop( 'disabled', true );
+		} else {
+			$(this).siblings().prop( 'disabled', false )
+		}
+	});
+
 	// Trigger equation selector
 	$('.sp-equation-selector select:last').change().siblings().change();
 
