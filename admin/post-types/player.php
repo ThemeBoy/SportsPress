@@ -45,13 +45,6 @@ function sp_player_stats_meta( $post ) {
 	// Get labels from metric variables
 	$metric_labels = (array)sp_get_var_labels( 'sp_metric' );
 
-	$totals = array( 'eventsattended' => 0, 'eventsplayed' => 0 );
-	$placeholders = array();
-
-	foreach ( $metric_labels as $key => $value ):
-		$totals[ $key ] = 0;
-	endforeach;
-
 	// Generate array of all division ids
 	$div_ids = array();
 	foreach ( $divisions as $key => $value ):
@@ -66,6 +59,9 @@ function sp_player_stats_meta( $post ) {
 		return;
 	endif;
 
+	// Initialize placeholders array
+	$placeholders = array();
+
 	// Loop through statistics for each team
 	foreach ( $team_ids as $team_id ):
 		if ( !$team_id ) continue;
@@ -77,6 +73,13 @@ function sp_player_stats_meta( $post ) {
 		$equations = sp_get_var_equations( 'sp_metric' );
 
 		foreach ( $div_ids as $div_id ):
+
+			$totals = array( 'eventsattended' => 0, 'eventsplayed' => 0 );
+
+			foreach ( $metric_labels as $key => $value ):
+				$totals[ $key ] = 0;
+			endforeach;
+		
 			$args = array(
 				'post_type' => 'sp_event',
 				'numberposts' => -1,
