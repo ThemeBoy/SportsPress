@@ -53,6 +53,18 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 				get_post_meta ( $post_id, 'sp_equation', true )
 			);
 			break;
+		case 'sp_order':
+			$priority = get_post_meta ( $post_id, 'sp_priority', true );
+			if ( $priority ):
+				echo $priority . ' ' . str_replace(
+					array( 'DESC', 'ASC' ),
+					array( '&darr;', '&uarr;' ),
+					get_post_meta ( $post_id, 'sp_order', true )
+				);
+			else:
+				echo '—';
+			endif;
+			break;
 		case 'sp_player':
 			echo sp_the_posts( $post_id, 'sp_player' );
 			break;
@@ -165,6 +177,12 @@ function sp_save_post( $post_id ) {
 
 			// Update equation as string
 			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
+
+			// Update sort order as string
+			update_post_meta( $post_id, 'sp_priority', sp_array_value( $_POST, 'sp_priority', '0' ) );
+
+			// Update sort order as string
+			update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', 'DESC' ) );
 
 			break;
 

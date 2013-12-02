@@ -27,8 +27,8 @@ include dirname( __FILE__ ) . '/lib/classes/eos.class.php' ;
 // Globals
 include dirname( __FILE__ ) . '/sportspress-globals.php' ;
 
-// Helpers
-require_once dirname( __FILE__ ) . '/sportspress-helpers.php';
+// Functions
+require_once dirname( __FILE__ ) . '/sportspress-functions.php';
 
 // Settings
 include dirname( __FILE__ ) . '/sportspress-settings.php' ;
