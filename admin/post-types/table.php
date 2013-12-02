@@ -83,6 +83,9 @@ function sp_table_stats_meta( $post ) {
 	$placeholders = array();
 
 	foreach ( $team_ids as $team_id ):
+		if ( ! $team_id )
+			continue;
+
 		$totals[ $team_id ] = array( 'eventsplayed' => 0 );
 
 		foreach ( $result_labels as $key => $value ):
@@ -94,6 +97,7 @@ function sp_table_stats_meta( $post ) {
 			$totals[ $team_id ][ $key ] = 0;
 		endforeach;
 
+		// Get statis stats
 		$static = get_post_meta( $team_id, 'sp_stats', true );
 
 		// Create placeholders entry for the team

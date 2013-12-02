@@ -92,14 +92,28 @@ function sp_list_stats_meta( $post ) {
 
 	// Create entry for each player in totals
 	$totals = array();
+	$placeholders = array();
+
 	foreach ( $player_ids as $player_id ):
 		if ( ! $player_id )
 			continue;
+
 		$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0 );
 
 		foreach ( $metric_labels as $key => $value ):
 			$totals[ $player_id ][ $key ] = 0;
 		endforeach;
+
+		// Get statis metrics
+		$static = get_post_meta( $player_id, 'sp_metrics', true );
+
+		// Create placeholders entry for the player
+		$placeholders[ $player_id ] = array();
+
+		// Add static metrics to placeholders
+		if ( array_key_exists( $team_id, $static ) && array_key_exists( $div_id, $static[ $team_id ] ) ):
+			$placeholders[ $player_id ] = $static[ $team_id ][ $div_id ];
+		endif;
 	endforeach;
 
 	$args = array(
@@ -150,20 +164,21 @@ function sp_list_stats_meta( $post ) {
 	endforeach;
 
 	// Generate placeholder values for each team
-	$placeholders = array();
 	foreach ( $player_ids as $player_id ):
-		$placeholders[ $player_id ] = array();
 		foreach ( $equations as $key => $value ):
+			if ( sp_array_value( $placeholders[ $player_id ], $key, '' ) == '' ):
 
-			if ( empty( $value ) ):
+				if ( empty( $value ) ):
 
-				// Reflect totals
-				$placeholders[ $player_id ][ $key ] = sp_array_value( sp_array_value( $totals, $player_id, array() ), $key, 0 );
+					// Reflect totals
+					$placeholders[ $player_id ][ $key ] = sp_array_value( sp_array_value( $totals, $player_id, array() ), $key, 0 );
 
-			else:
+				else:
 
-				// Calculate value
-				$placeholders[ $player_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), sp_array_value( $totals, $player_id, array() ) );
+					// Calculate value
+					$placeholders[ $player_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), sp_array_value( $totals, $player_id, array() ) );
+
+				endif;
 
 			endif;
 
