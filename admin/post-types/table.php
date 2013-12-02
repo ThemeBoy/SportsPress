@@ -154,6 +154,9 @@ function sp_table_stats_meta( $post ) {
 
 	// Fill in empty placeholder values for each team
 	foreach ( $team_ids as $team_id ):
+		if ( ! $team_id )
+			continue;
+		
 		foreach ( $equations as $key => $value ):
 			if ( sp_array_value( $placeholders[ $team_id ], $key, '' ) == '' ):
 				$placeholders[ $team_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), $totals[ $team_id ] );
