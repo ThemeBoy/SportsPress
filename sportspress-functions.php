@@ -774,4 +774,237 @@ if ( !function_exists( 'sportspress_render_option_field' ) ) {
 
 	}
 }
+
+if ( !function_exists( 'sp_get_table' ) ) {
+	function sp_get_table( $post_id, $breakdown = false ) {
+		$div_id = sp_get_the_term_id( $post_id, 'sp_div', 0 );
+		$team_ids = (array)get_post_meta( $post_id, 'sp_team', false );
+		$table_stats = (array)get_post_meta( $post_id, 'sp_teams', true );
+
+		// Equation Operating System
+		$eos = new eqEOS();
+
+		// Get labels from result variables
+		$result_labels = (array)sp_get_var_labels( 'sp_result' );
+
+		// Get labels from outcome variables
+		$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
+
+		// Get all divisions populated with stats where available
+		$tempdata = sp_array_combine( $team_ids, $table_stats );
+
+		// Create entry for each team in totals
+		$totals = array();
+		$placeholders = array();
+
+		foreach ( $team_ids as $team_id ):
+			if ( ! $team_id )
+				continue;
+
+			$totals[ $team_id ] = array( 'eventsplayed' => 0 );
+
+			foreach ( $result_labels as $key => $value ):
+				$totals[ $team_id ][ $key . 'for' ] = 0;
+				$totals[ $team_id ][ $key . 'against' ] = 0;
+			endforeach;
+
+			foreach ( $outcome_labels as $key => $value ):
+				$totals[ $team_id ][ $key ] = 0;
+			endforeach;
+
+			// Get statis stats
+			$static = get_post_meta( $team_id, 'sp_stats', true );
+
+			// Create placeholders entry for the team
+			$placeholders[ $team_id ] = array();
+
+			// Add static stats to placeholders
+			if ( array_key_exists( $div_id, $static ) ):
+				$placeholders[ $team_id ] = $static[ $div_id ];
+			endif;
+
+		endforeach;
+
+		$args = array(
+			'post_type' => 'sp_event',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'sp_div',
+					'field' => 'id',
+					'terms' => $div_id
+				)
+			)
+		);
+		$events = get_posts( $args );
+
+		// Event loop
+		foreach( $events as $event ):
+
+			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
+
+			foreach ( $results as $team_id => $team_result ):
+
+				// Increment events played
+				$totals[ $team_id ]['eventsplayed']++;
+
+				foreach ( $team_result as $key => $value ):
+
+					if ( $key == 'outcome' ):
+						if ( array_key_exists( $value, $totals[ $team_id ] ) ):
+							$totals[ $team_id ][ $value ]++;
+						endif;
+					else:
+						if ( array_key_exists( $key . 'for', $totals[ $team_id ] ) ):
+							$totals[ $team_id ][ $key . 'for' ] += $value;
+						endif;
+					endif;
+
+				endforeach;
+
+			endforeach;
+
+		endforeach;
+
+		$args = array(
+			'post_type' => 'sp_stat',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+	  		'orderby' => 'menu_order',
+	  		'order' => 'ASC'
+		);
+		$stats = get_posts( $args );
+
+		$columns = array();
+		$priorities = array();
+
+		foreach ( $stats as $stat ):
+
+			// Get post meta
+			$meta = get_post_meta( $stat->ID );
+
+			// Add equation to object
+			$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
+
+			// Add column name to columns
+			$columns[ $stat->post_name ] = $stat->post_title;
+
+			// Add order to priorities if priority is set and does not exist in array already
+			$priority = sp_array_value( sp_array_value( $meta, 'sp_priority', array() ), 0, 0 );
+			if ( $priority && ! array_key_exists( $priorities, $priority ) ):
+				$priorities[ $priority ] = array(
+					'column' => $stat->post_name,
+					'order' => sp_array_value( sp_array_value( $meta, 'sp_order', array() ), 0, 'DESC' )
+				);
+			endif;
+
+		endforeach;
+
+		// Sort priorities in descending order
+		ksort( $priorities );
+
+		// Fill in empty placeholder values for each team
+		foreach ( $team_ids as $team_id ):
+			if ( ! $team_id )
+				continue;
+
+			foreach ( $stats as $stat ):
+				if ( sp_array_value( $placeholders[ $team_id ], $stat->post_name, '' ) == '' ):
+					$placeholders[ $team_id ][ $stat->post_name ] = $eos->solveIF( str_replace( ' ', '', $stat->equation ), $totals[ $team_id ] );
+				endif;
+			endforeach;
+		endforeach;
+
+		// Merge the data and placeholders arrays
+		$merged = array();
+		foreach( $tempdata as $team_id => $team_data ):
+			$merged[ $team_id ] = array( 'name' => get_the_title( $team_id ) );
+			foreach( $team_data as $key => $value ):
+				if ( $value != '' ):
+					$merged[ $team_id ][ $key ] = $value;
+				elseif ( array_key_exists( $team_id, $placeholders ) && array_key_exists( $key, $placeholders[ $team_id ] ) ):
+					$merged[ $team_id ][ $key ] = $placeholders[ $team_id ][ $key ];
+				else:
+				endif;
+			endforeach;
+		endforeach;
+
+		uasort( $merged, function( $a, $b ) use ( $priorities ) {
+
+			// Loop through priorities
+			foreach( $priorities as $priority ):
+
+				// Proceed if columns are not equal
+				if ( sp_array_value( $a, $priority['column'], 0 ) != sp_array_value( $b, $priority['column'], 0 ) ):
+
+					// Compare column values
+					$output = sp_array_value( $a, $priority['column'], 0 ) - sp_array_value( $b, $priority['column'], 0 );
+
+					// Flip value if descending order
+					if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
+
+					return $output;
+
+				endif;
+
+			endforeach;
+
+			// Default sort by alphabetical
+			return strcmp( sp_array_value( $a, 'name', '' ), sp_array_value( $b, 'name', '' ) );
+		});
+
+		// Rearrange data array to reflect statistics
+		$data = array();
+		foreach( $merged as $key => $value ):
+			$data[ $key ] = $tempdata[ $key ];
+		endforeach;
+
+		if ( $breakdown ):
+			return array( $columns, $data, $placeholders, $merged );
+		else:
+			array_unshift( $columns, __( 'Team', 'sportspress' ) );
+			$merged[0] = $columns;
+			return $merged;
+		endif;
+	}
+}
+
+if ( !function_exists( 'sp_get_table_html' ) ) {
+	function sp_get_table_html( $id ) {
+
+		$data = sp_get_table( $id );
+
+		$output = '<table class="sp-league-table">' . '<thead>' . '<tr>';
+
+		// The first row should be column labels
+		$labels = $data[0];
+
+		// Remove the first row to leave us with the actual data
+		unset( $data[0] );
+
+		foreach( $labels as $label ):
+			$output .= '<th>' . $label . '</th>';
+		endforeach;
+
+		$output .= '</tr>' . '</th>' . '</thead>' . '<tbody>';
+
+		foreach( $data as $team_id => $row ):
+
+			$output .= '<tr>';
+
+			foreach( $row as $value ):
+				$output .= '<td>' . $value . '</td>';
+			endforeach;
+
+			$output .= '</tr>';
+
+		endforeach;
+
+		$output .= '</tbody>' . '</table>';
+
+		return $output;
+
+	}
+}
 ?>
