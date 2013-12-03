@@ -54,8 +54,6 @@ function sp_list_player_meta( $post ) {
 		<p class="sp-tab-select">
 			<?php
 			$args = array(
-				'show_option_none' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
-				'option_none_value' => '0',
 				'post_type' => 'sp_team',
 				'name' => 'sp_team',
 				'selected' => $team_id
