@@ -918,15 +918,21 @@ if ( !function_exists( 'sp_get_table' ) ) {
 
 		// Merge the data and placeholders arrays
 		$merged = array();
-		foreach( $tempdata as $team_id => $team_data ):
+
+		foreach( $placeholders as $team_id => $team_data ):
+
+			// Add team name to row
 			$merged[ $team_id ] = array( 'name' => get_the_title( $team_id ) );
+
 			foreach( $team_data as $key => $value ):
-				if ( $value != '' ):
-					$merged[ $team_id ][ $key ] = $value;
-				elseif ( array_key_exists( $team_id, $placeholders ) && array_key_exists( $key, $placeholders[ $team_id ] ) ):
-					$merged[ $team_id ][ $key ] = $placeholders[ $team_id ][ $key ];
+
+				// Use static data if key exists and value is not empty, else use placeholder
+				if ( array_key_exists( $team_id, $tempdata ) && array_key_exists( $key, $tempdata[ $team_id ] ) && $tempdata[ $team_id ][ $key ] != '' ):
+					$merged[ $team_id ][ $key ] = $tempdata[ $team_id ][ $key ];
 				else:
+					$merged[ $team_id ][ $key ] = $value;
 				endif;
+
 			endforeach;
 		endforeach;
 
@@ -970,12 +976,197 @@ if ( !function_exists( 'sp_get_table' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_list' ) ) {
+	function sp_get_list( $post_id, $breakdown = false ) {
+		$div_id = sp_get_the_term_id( $post_id, 'sp_div', 0 );
+		$team_id = get_post_meta( $post_id, 'sp_team', true );
+		$player_ids = (array)get_post_meta( $post_id, 'sp_player', false );
+		$stats = (array)get_post_meta( $post_id, 'sp_players', true );
+
+		// Equation Operating System
+		$eos = new eqEOS();
+
+		// Get labels from result variables
+		$metric_labels = (array)sp_get_var_labels( 'sp_metric' );
+
+		// Get all divisions populated with stats where available
+		$data = sp_array_combine( $player_ids, $stats );
+
+		// Get equations from statistics variables
+		$equations = sp_get_var_equations( 'sp_metric' );
+
+		// Create entry for each player in totals
+		$totals = array();
+		$placeholders = array();
+
+		foreach ( $player_ids as $player_id ):
+			if ( ! $player_id )
+				continue;
+
+			$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0 );
+
+			foreach ( $metric_labels as $key => $value ):
+				$totals[ $player_id ][ $key ] = 0;
+			endforeach;
+
+			// Get static metrics
+			$static = get_post_meta( $player_id, 'sp_metrics', true );
+
+			// Create placeholders entry for the player
+			$placeholders[ $player_id ] = array();
+
+			// Add static metrics to placeholders
+			if ( array_key_exists( $team_id, $static ) && array_key_exists( $div_id, $static[ $team_id ] ) ):
+				$placeholders[ $player_id ] = $static[ $team_id ][ $div_id ];
+			endif;
+		endforeach;
+
+		$args = array(
+			'post_type' => 'sp_event',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'sp_div',
+					'field' => 'id',
+					'terms' => $div_id
+				)
+			),
+			'meta_query' => array(
+				array(
+					'key' => 'sp_team',
+					'value' => $team_id,
+				)
+			)
+		);
+		$events = get_posts( $args );
+
+		// Event loop
+		foreach( $events as $event ):
+
+			$teams = (array)get_post_meta( $event->ID, 'sp_players', true );
+
+			if ( ! array_key_exists( $team_id, $teams ) )
+				continue;
+
+			$players = sp_array_value( $teams, $team_id, array() );
+
+			foreach ( $players as $player_id => $player_metrics ):
+
+				// Increment events played
+				$totals[ $player_id ]['eventsplayed']++;
+
+				foreach ( $player_metrics as $key => $value ):
+
+					if ( array_key_exists( $key, $totals[ $player_id ] ) ):
+						$totals[ $player_id ][ $key ] += $value;
+					endif;
+
+				endforeach;
+
+			endforeach;
+
+		endforeach;
+
+		// Generate placeholder values for each team
+		foreach ( $player_ids as $player_id ):
+			if ( ! $player_id )
+				continue;
+
+			foreach ( $equations as $key => $value ):
+				if ( sp_array_value( $placeholders[ $player_id ], $key, '' ) == '' ):
+
+					if ( empty( $value ) ):
+
+						// Reflect totals
+						$placeholders[ $player_id ][ $key ] = sp_array_value( sp_array_value( $totals, $player_id, array() ), $key, 0 );
+
+					else:
+
+						// Calculate value
+						$placeholders[ $player_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), sp_array_value( $totals, $player_id, array() ) );
+
+					endif;
+
+				endif;
+
+			endforeach;
+		endforeach;
+
+		// Merge the data and placeholders arrays
+		$merged = array();
+
+		foreach( $placeholders as $player_id => $player_data ):
+
+			// Add team name to row
+			$merged[ $player_id ] = array( 'name' => get_the_title( $player_id ) );
+
+			foreach( $player_data as $key => $value ):
+
+				// Use static data if key exists and value is not empty, else use placeholder
+				if ( array_key_exists( $player_id, $tempdata ) && array_key_exists( $key, $tempdata[ $player_id ] ) && $tempdata[ $player_id ][ $key ] != '' ):
+					$merged[ $player_id ][ $key ] = $tempdata[ $player_id ][ $key ];
+				else:
+					$merged[ $player_id ][ $key ] = $value;
+				endif;
+
+			endforeach;
+		endforeach;
+
+		if ( $breakdown ):
+			return array( $metric_labels, $data, $placeholders, $merged );
+		else:
+			array_unshift( $metric_labels, __( 'Player', 'sportspress' ) );
+			$merged[0] = $metric_labels;
+			return $merged;
+		endif;
+	}
+}
+
 if ( !function_exists( 'sp_get_table_html' ) ) {
 	function sp_get_table_html( $id ) {
 
 		$data = sp_get_table( $id );
 
 		$output = '<table class="sp-league-table">' . '<thead>' . '<tr>';
+
+		// The first row should be column labels
+		$labels = $data[0];
+
+		// Remove the first row to leave us with the actual data
+		unset( $data[0] );
+
+		foreach( $labels as $label ):
+			$output .= '<th>' . $label . '</th>';
+		endforeach;
+
+		$output .= '</tr>' . '</th>' . '</thead>' . '<tbody>';
+
+		foreach( $data as $team_id => $row ):
+
+			$output .= '<tr>';
+
+			foreach( $row as $value ):
+				$output .= '<td>' . $value . '</td>';
+			endforeach;
+
+			$output .= '</tr>';
+
+		endforeach;
+
+		$output .= '</tbody>' . '</table>';
+
+		return $output;
+
+	}
+}
+
+if ( !function_exists( 'sp_get_list_html' ) ) {
+	function sp_get_list_html( $id ) {
+
+		$data = sp_get_list( $id );
+
+		$output = '<table class="sp-player-list">' . '<thead>' . '<tr>';
 
 		// The first row should be column labels
 		$labels = $data[0];
