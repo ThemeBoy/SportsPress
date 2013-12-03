@@ -35,10 +35,16 @@ function sp_admin_post_thumbnail_html( $translated_text, $post_id ) {
 add_filter( 'admin_post_thumbnail_html', 'sp_admin_post_thumbnail_html', 10, 2 );
 
 function sportspress_the_content( $content ) {
-    if ( is_singular( 'sp_team' ) && in_the_loop() ) {
-        // change stuff
-        $content .= '<p>' . do_shortcode('[sp_table]') . '</p>';
-    }
+    if ( is_singular( 'sp_team' ) && in_the_loop() ):
+    
+    elseif ( is_singular( 'sp_table' ) && in_the_loop() ):
+
+    	global $post;
+
+        // Display league table
+        $content .= '<p>' . sp_get_table_html( $post->ID  ) . '</p>';
+
+    endif;
     return $content;
 }
 add_filter('the_content', 'sportspress_the_content');
