@@ -987,7 +987,7 @@ if ( !function_exists( 'sp_get_list' ) ) {
 		$eos = new eqEOS();
 
 		// Get labels from result variables
-		$metric_labels = (array)sp_get_var_labels( 'sp_metric' );
+		$columns = (array)sp_get_var_labels( 'sp_metric' );
 
 		// Get all divisions populated with stats where available
 		$data = sp_array_combine( $player_ids, $stats );
@@ -1005,7 +1005,7 @@ if ( !function_exists( 'sp_get_list' ) ) {
 
 			$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0 );
 
-			foreach ( $metric_labels as $key => $value ):
+			foreach ( $columns as $key => $value ):
 				$totals[ $player_id ][ $key ] = 0;
 			endforeach;
 
@@ -1104,8 +1104,8 @@ if ( !function_exists( 'sp_get_list' ) ) {
 			foreach( $player_data as $key => $value ):
 
 				// Use static data if key exists and value is not empty, else use placeholder
-				if ( array_key_exists( $player_id, $tempdata ) && array_key_exists( $key, $tempdata[ $player_id ] ) && $tempdata[ $player_id ][ $key ] != '' ):
-					$merged[ $player_id ][ $key ] = $tempdata[ $player_id ][ $key ];
+				if ( array_key_exists( $player_id, $data ) && array_key_exists( $key, $data[ $player_id ] ) && $data[ $player_id ][ $key ] != '' ):
+					$merged[ $player_id ][ $key ] = $data[ $player_id ][ $key ];
 				else:
 					$merged[ $player_id ][ $key ] = $value;
 				endif;
@@ -1114,10 +1114,10 @@ if ( !function_exists( 'sp_get_list' ) ) {
 		endforeach;
 
 		if ( $breakdown ):
-			return array( $metric_labels, $data, $placeholders, $merged );
+			return array( $columns, $data, $placeholders, $merged );
 		else:
-			array_unshift( $metric_labels, __( 'Player', 'sportspress' ) );
-			$merged[0] = $metric_labels;
+			array_unshift( $columns, __( 'Player', 'sportspress' ) );
+			$merged[0] = $columns;
 			return $merged;
 		endif;
 	}
