@@ -52,7 +52,9 @@ function sp_player_stats_meta( $post ) {
 			$div_ids[] = $value->term_id;
 	endforeach;
 
-	if ( empty( $team_ids ) || $team_ids == array(0) ):
+	unset( $team_ids[0] );
+
+	if ( empty( $team_ids ) ):
 		?>
 		<p><strong><?php printf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ); ?></strong></p>
 		<?php
@@ -62,9 +64,12 @@ function sp_player_stats_meta( $post ) {
 	// Initialize placeholders array
 	$placeholders = array();
 
+	$team_num = sizeof( $team_ids );
+
 	// Loop through statistics for each team
 	foreach ( $team_ids as $team_id ):
-		if ( !$team_id ) continue;
+
+		$data = array();
 
 		// Get all divisions populated with stats where available
 		$data[ $team_id ] = sp_array_combine( $div_ids, $stats[ $team_id ] );
@@ -144,9 +149,11 @@ function sp_player_stats_meta( $post ) {
 		// Get columns from statistics variables
 		$columns = sp_get_var_labels( 'sp_metric' );
 
-		?>
-		<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-		<?php
+		if ( $team_num > 1 ):
+			?>
+			<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
+			<?php
+		endif;
 
 		sp_player_metrics_table( $columns, $data, $placeholders );
 
