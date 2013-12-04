@@ -911,7 +911,7 @@ if ( !function_exists( 'sp_get_table' ) ) {
 
 			foreach ( $stats as $stat ):
 				if ( sp_array_value( $placeholders[ $team_id ], $stat->post_name, '' ) == '' ):
-					$placeholders[ $team_id ][ $stat->post_name ] = $eos->solveIF( str_replace( ' ', '', $stat->equation ), $totals[ $team_id ] );
+					$placeholders[ $team_id ][ $stat->post_name ] = $eos->solveIF( str_replace( ' ', '', $stat->equation ), sp_array_value( $totals, $team_id, array() ) );
 				endif;
 			endforeach;
 		endforeach;
@@ -990,7 +990,7 @@ if ( !function_exists( 'sp_get_list' ) ) {
 		$columns = (array)sp_get_var_labels( 'sp_metric' );
 
 		// Get all divisions populated with stats where available
-		$data = sp_array_combine( $player_ids, $stats );
+		$tempdata = sp_array_combine( $player_ids, $stats );
 
 		// Get equations from statistics variables
 		$equations = sp_get_var_equations( 'sp_metric' );
@@ -1068,28 +1068,64 @@ if ( !function_exists( 'sp_get_list' ) ) {
 
 		endforeach;
 
-		// Generate placeholder values for each team
+		$args = array(
+			'post_type' => 'sp_metric',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+	  		'orderby' => 'menu_order',
+	  		'order' => 'ASC'
+		);
+		$metrics = get_posts( $args );
+
+		$columns = array();
+		$priorities = array();
+
+		foreach ( $metrics as $metric ):
+
+			// Get post meta
+			$meta = get_post_meta( $metric->ID );
+
+			// Add equation to object
+			$metric->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
+
+			// Add column name to columns
+			$columns[ $metric->post_name ] = $metric->post_title;
+
+			// Add order to priorities if priority is set and does not exist in array already
+			$priority = sp_array_value( sp_array_value( $meta, 'sp_priority', array() ), 0, 0 );
+			if ( $priority && ! array_key_exists( $priorities, $priority ) ):
+				$priorities[ $priority ] = array(
+					'column' => $metric->post_name,
+					'order' => sp_array_value( sp_array_value( $meta, 'sp_order', array() ), 0, 'DESC' )
+				);
+			endif;
+
+		endforeach;
+
+		// Sort priorities in descending order
+		ksort( $priorities );
+
+		// Fill in empty placeholder values for each player
 		foreach ( $player_ids as $player_id ):
+
 			if ( ! $player_id )
 				continue;
 
-			foreach ( $equations as $key => $value ):
-				if ( sp_array_value( $placeholders[ $player_id ], $key, '' ) == '' ):
+			foreach ( $metrics as $metric ):
+				if ( sp_array_value( $placeholders[ $player_id ], $metric->post_name, '' ) == '' ):
 
-					if ( empty( $value ) ):
+					if ( empty( $metric->equation ) ):
 
 						// Reflect totals
-						$placeholders[ $player_id ][ $key ] = sp_array_value( sp_array_value( $totals, $player_id, array() ), $key, 0 );
+						$placeholders[ $player_id ][ $metric->post_name ] = sp_array_value( sp_array_value( $totals, $player_id, array() ), $key, 0 );
 
 					else:
 
 						// Calculate value
-						$placeholders[ $player_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), sp_array_value( $totals, $player_id, array() ) );
+						$placeholders[ $player_id ][ $metric->post_name ] = $eos->solveIF( str_replace( ' ', '', $metric->equation ), sp_array_value( $totals, $player_id, array() ) );
 
 					endif;
-
 				endif;
-
 			endforeach;
 		endforeach;
 
@@ -1104,13 +1140,43 @@ if ( !function_exists( 'sp_get_list' ) ) {
 			foreach( $player_data as $key => $value ):
 
 				// Use static data if key exists and value is not empty, else use placeholder
-				if ( array_key_exists( $player_id, $data ) && array_key_exists( $key, $data[ $player_id ] ) && $data[ $player_id ][ $key ] != '' ):
-					$merged[ $player_id ][ $key ] = $data[ $player_id ][ $key ];
+				if ( array_key_exists( $player_id, $tempdata ) && array_key_exists( $key, $tempdata[ $player_id ] ) && $tempdata[ $player_id ][ $key ] != '' ):
+					$merged[ $player_id ][ $key ] = $tempdata[ $player_id ][ $key ];
 				else:
 					$merged[ $player_id ][ $key ] = $value;
 				endif;
 
 			endforeach;
+		endforeach;
+
+		uasort( $merged, function( $a, $b ) use ( $priorities ) {
+
+			// Loop through priorities
+			foreach( $priorities as $priority ):
+
+				// Proceed if columns are not equal
+				if ( sp_array_value( $a, $priority['column'], 0 ) != sp_array_value( $b, $priority['column'], 0 ) ):
+
+					// Compare column values
+					$output = sp_array_value( $a, $priority['column'], 0 ) - sp_array_value( $b, $priority['column'], 0 );
+
+					// Flip value if descending order
+					if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
+
+					return $output;
+
+				endif;
+
+			endforeach;
+
+			// Default sort by alphabetical
+			return strcmp( sp_array_value( $a, 'name', '' ), sp_array_value( $b, 'name', '' ) );
+		});
+
+		// Rearrange data array to reflect statistics
+		$data = array();
+		foreach( $merged as $key => $value ):
+			$data[ $key ] = $tempdata[ $key ];
 		endforeach;
 
 		if ( $breakdown ):
