@@ -43,7 +43,7 @@ function sp_list_player_meta( $post ) {
 		<p class="sp-tab-select">
 			<?php
 			$args = array(
-				'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Divisions', 'sportspress' ) ),
+				'show_option_none' =>  sprintf( __( 'Select %s', 'sportspress' ), __( 'Division', 'sportspress' ) ),
 				'taxonomy' => 'sp_div',
 				'name' => 'sp_div',
 				'selected' => $division_id
