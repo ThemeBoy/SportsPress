@@ -52,6 +52,9 @@ require_once dirname( __FILE__ ) . '/admin/terms/pos.php';
 // Shortcodes
 // require_once dirname( __FILE__ ) . '/classes/shortcodes/table.php';
 
+// Defaults
+include dirname( __FILE__ ) . '/sportspress-defaults.php';
+
 // Hooks, Actions, and Filters
 require_once dirname( __FILE__ ) . '/sportspress-hooks.php';
 require_once dirname( __FILE__ ) . '/sportspress-actions.php';
