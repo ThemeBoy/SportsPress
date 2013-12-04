@@ -28,10 +28,10 @@ if ( !function_exists( 'sp_install_defaults' ) ) {
 
 				// Metrics
 				array( 'post_title' => 'Appearances', 'post_name' => 'appearances', 'post_status' => 'publish', 'post_type' => 'sp_metric', 'meta' => array( 'sp_equation' => '$eventsplayed' ) ),
-				array( 'post_title' => 'Goals', 'post_name' => 'goals', 'post_status' => 'publish', 'post_type' => 'sp_metric' ),
-				array( 'post_title' => 'Assists', 'post_name' => 'assists', 'post_status' => 'publish', 'post_type' => 'sp_metric' ),
-				array( 'post_title' => 'Yellow Cards', 'post_name' => 'yellowcards', 'post_status' => 'publish', 'post_type' => 'sp_metric' ),
-				array( 'post_title' => 'Red Cards', 'post_name' => 'redcards', 'post_status' => 'publish', 'post_type' => 'sp_metric' )
+				array( 'post_title' => 'Goals', 'post_name' => 'goals', 'post_status' => 'publish', 'post_type' => 'sp_metric', 'meta' => array( 'sp_equation' => '' ) ),
+				array( 'post_title' => 'Assists', 'post_name' => 'assists', 'post_status' => 'publish', 'post_type' => 'sp_metric', 'meta' => array( 'sp_equation' => '' ) ),
+				array( 'post_title' => 'Yellow Cards', 'post_name' => 'yellowcards', 'post_status' => 'publish', 'post_type' => 'sp_metric', 'meta' => array( 'sp_equation' => '' ) ),
+				array( 'post_title' => 'Red Cards', 'post_name' => 'redcards', 'post_status' => 'publish', 'post_type' => 'sp_metric', 'meta' => array( 'sp_equation' => '' ) )
 			);
 
 			$i = 1;
