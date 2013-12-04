@@ -98,8 +98,7 @@
 	white-space: nowrap;
 }
 .sp-data-table input[type="text"],
-.sp-data-table input[type="number"],
-.sp-data-table select {
+.sp-data-table input[type="number"] {
 	min-width: 14px;
 	width: 100%;
 }

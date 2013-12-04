@@ -51,7 +51,6 @@ function sp_event_team_meta( $post ) {
 					'name' => 'sp_team[]',
 					'class' => 'sportspress-pages',
 					'show_option_none' => sprintf( __( 'Select %s' ), 'Team' ),
-					'option_none_value' => 0,
 					'selected' => $teams[ $i ]
 				);
 				wp_dropdown_pages( $args );
