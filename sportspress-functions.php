@@ -1212,8 +1212,17 @@ if ( !function_exists( 'sp_get_table_html' ) ) {
 
 			$output .= '<tr>';
 
-			foreach( $row as $value ):
-				$output .= '<td>' . $value . '</td>';
+			foreach( $row as $key => $value ):
+				$output .= '<td>';
+					if ( $key == 'name' ):
+						$permalink = get_post_permalink( $team_id );
+						$output .= '<a href="' . $permalink . '">';
+					endif;
+				$output .= $value;
+					if ( $key == 'name' ):
+						$output .= '</a>';
+					endif;
+				$output .= '</td>';
 			endforeach;
 
 			$output .= '</tr>';
