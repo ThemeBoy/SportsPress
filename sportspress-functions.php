@@ -1255,12 +1255,21 @@ if ( !function_exists( 'sp_get_list_html' ) ) {
 
 		$output .= '</tr>' . '</th>' . '</thead>' . '<tbody>';
 
-		foreach( $data as $team_id => $row ):
+		foreach( $data as $player_id => $row ):
 
 			$output .= '<tr>';
 
-			foreach( $row as $value ):
-				$output .= '<td>' . $value . '</td>';
+			foreach( $row as $key => $value ):
+				$output .= '<td>';
+					if ( $key == 'name' ):
+						$permalink = get_post_permalink( $player_id );
+						$output .= '<a href="' . $permalink . '">';
+					endif;
+				$output .= $value;
+					if ( $key == 'name' ):
+						$output .= '</a>';
+					endif;
+				$output .= '</td>';
 			endforeach;
 
 			$output .= '</tr>';
