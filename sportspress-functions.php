@@ -1208,6 +1208,8 @@ if ( !function_exists( 'sp_get_table_html' ) ) {
 
 		$output .= '</tr>' . '</th>' . '</thead>' . '<tbody>';
 
+		$i = 1;
+
 		foreach( $data as $team_id => $row ):
 
 			$output .= '<tr>';
@@ -1216,6 +1218,11 @@ if ( !function_exists( 'sp_get_table_html' ) ) {
 				$output .= '<td>';
 					if ( $key == 'name' ):
 						$permalink = get_post_permalink( $team_id );
+						$thumbnail = get_the_post_thumbnail( $team_id, 'sp_icon' );
+						$output .= $i . ' ';
+						if ( $thumbnail ):
+							$output .= '<a href="' . $permalink . '">' . $thumbnail . '</a> ';
+						endif;
 						$output .= '<a href="' . $permalink . '">';
 					endif;
 				$output .= $value;
@@ -1226,6 +1233,8 @@ if ( !function_exists( 'sp_get_table_html' ) ) {
 			endforeach;
 
 			$output .= '</tr>';
+
+			$i++;
 
 		endforeach;
 
