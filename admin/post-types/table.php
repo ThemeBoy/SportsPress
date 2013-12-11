@@ -29,12 +29,17 @@ function sp_table_edit_columns() {
 }
 add_filter( 'manage_edit-sp_table_columns', 'sp_table_edit_columns' );
 
-function sp_table_meta_init() {
+function sp_table_meta_init( $post ) {
+	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
+
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_table_team_meta', 'sp_table', 'side', 'high' );
-	add_meta_box( 'sp_statsdiv', __( 'League Table', 'sportspress' ), 'sp_table_stats_meta', 'sp_table', 'normal', 'high' );
+
+	if ( $teams && $teams != array(0) ):
+		add_meta_box( 'sp_statsdiv', __( 'League Table', 'sportspress' ), 'sp_table_stats_meta', 'sp_table', 'normal', 'high' );
+	endif;
 }
 
-function sp_table_team_meta( $post ) {
+function sp_table_team_meta( $post, $test ) {
 	$division_id = sp_get_the_term_id( $post->ID, 'sp_div', 0 );
 	?>
 	<div>
