@@ -18,12 +18,17 @@ function sp_team_cpt_init() {
 }
 add_action( 'init', 'sp_team_cpt_init' );
 
-function sp_team_meta_init() {
+function sp_team_meta_init( $post ) {
+	$divisions = (array)get_the_terms( $post->ID, 'sp_div' );
+
 	remove_meta_box( 'submitdiv', 'sp_team', 'side' );
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_team', 'side', 'high' );
 	remove_meta_box( 'postimagediv', 'sp_team', 'side' );
 	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'high' );
-	add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_team_stats_meta', 'sp_team', 'normal', 'high' );
+
+	if ( $divisions && $divisions != array(0) ):
+		add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_team_stats_meta', 'sp_team', 'normal', 'high' );
+	endif;
 }
 
 function sp_team_edit_columns() {

@@ -18,13 +18,20 @@ function sp_player_cpt_init() {
 }
 add_action( 'init', 'sp_player_cpt_init' );
 
-function sp_player_meta_init() {
+function sp_player_meta_init( $post ) {
+	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
+	$divisions = (array)get_the_terms( $post->ID, 'sp_div' );
+
 	remove_meta_box( 'submitdiv', 'sp_player', 'side' );
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_player', 'side', 'high' );
 	remove_meta_box( 'postimagediv', 'sp_player', 'side' );
 	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_player', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_player_team_meta', 'sp_player', 'side', 'high' );
-	add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_player_stats_meta', 'sp_player', 'normal', 'high' );
+
+	if ( $teams && $teams != array(0) && $divisions && $divisions != array(0) ):
+		add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_player_stats_meta', 'sp_player', 'normal', 'high' );
+	endif;
+
 	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sp_player_profile_meta', 'sp_player', 'normal', 'high' );
 }
 

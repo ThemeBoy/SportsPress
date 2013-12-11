@@ -30,9 +30,14 @@ function sp_list_edit_columns() {
 }
 add_filter( 'manage_edit-sp_list_columns', 'sp_list_edit_columns' );
 
-function sp_list_meta_init() {
+function sp_list_meta_init( $post ) {
+	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
+
 	add_meta_box( 'sp_playerdiv', __( 'Players', 'sportspress' ), 'sp_list_player_meta', 'sp_list', 'side', 'high' );
-	add_meta_box( 'sp_statsdiv', __( 'Player List', 'sportspress' ), 'sp_list_stats_meta', 'sp_list', 'normal', 'high' );
+
+	if ( $players && $players != array(0) ):
+		add_meta_box( 'sp_statsdiv', __( 'Player List', 'sportspress' ), 'sp_list_stats_meta', 'sp_list', 'normal', 'high' );
+	endif;
 }
 
 function sp_list_player_meta( $post ) {

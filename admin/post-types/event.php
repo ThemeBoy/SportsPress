@@ -28,12 +28,17 @@ function sp_event_display_scheduled( $posts ) {
 }
 add_filter( 'the_posts', 'sp_event_display_scheduled' );
 
-function sp_event_meta_init() {
+function sp_event_meta_init( $post ) {
+	$limit = get_option( 'sp_event_team_count' );
+	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
+
 	remove_meta_box( 'submitdiv', 'sp_event', 'side' );
 	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_event_team_meta', 'sp_event', 'side', 'high' );
-	add_meta_box( 'sp_playersdiv', __( 'Players', 'sportspress' ), 'sp_event_players_meta', 'sp_event', 'normal', 'high' );
-	add_meta_box( 'sp_resultsdiv', __( 'Results', 'sportspress' ), 'sp_event_results_meta', 'sp_event', 'normal', 'high' );
+	if ( $teams != array_pad( array_slice( array(), 0, $limit ), $limit, 0 ) ):
+		add_meta_box( 'sp_playersdiv', __( 'Players', 'sportspress' ), 'sp_event_players_meta', 'sp_event', 'normal', 'high' );
+		add_meta_box( 'sp_resultsdiv', __( 'Results', 'sportspress' ), 'sp_event_results_meta', 'sp_event', 'normal', 'high' );
+	endif;
 	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sp_event_article_meta', 'sp_event', 'normal', 'high' );
 }
 
@@ -75,35 +80,26 @@ function sp_event_players_meta( $post ) {
 	$limit = get_option( 'sp_event_team_count' );
 	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
 
-	// Teams
-	if ( $teams == array_pad( array_slice( array(), 0, $limit ), $limit, 0 ) ):
+	$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
+
+	// Get columns from result variables
+	$columns = sp_get_var_labels( 'sp_metric', true );
+
+	foreach ( $teams as $key => $team_id ):
+		if ( ! $team_id ) continue;
+
+		// Get results for players in the team
+		$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
+		$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
 
 		?>
-		<p><strong><?php echo $team_id ? get_the_title( $team_id ) : sprintf( __( 'Select %s' ), 'Teams' ); ?></strong></p>
+		<div>
+			<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
+			<?php sp_event_players_table( $columns, $data, $team_id ); ?>
+		</div>
 		<?php
 
-	else:
-
-		$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
-
-		// Get columns from result variables
-		$columns = sp_get_var_labels( 'sp_metric', true );
-
-		foreach ( $teams as $key => $team_id ):
-
-			// Get results for players in the team
-			$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
-			$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
-
-			?>
-			<div>
-				<p><strong><?php echo $team_id ? get_the_title( $team_id ) : sprintf( __( 'Select %s' ), 'Team' ); ?></strong></p>
-				<?php if ( $team_id ) sp_event_players_table( $columns, $data, $team_id ); ?>
-			</div>
-			<?php
-
-		endforeach;
-	endif;
+	endforeach;
 
 }
 
