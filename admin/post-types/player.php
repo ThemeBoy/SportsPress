@@ -20,7 +20,7 @@ add_action( 'init', 'sp_player_cpt_init' );
 
 function sp_player_meta_init( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
-	$divisions = (array)get_the_terms( $post->ID, 'sp_div' );
+	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
 
 	remove_meta_box( 'submitdiv', 'sp_player', 'side' );
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_player', 'side', 'high' );
@@ -28,7 +28,7 @@ function sp_player_meta_init( $post ) {
 	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_player', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_player_team_meta', 'sp_player', 'side', 'high' );
 
-	if ( $teams && $teams != array(0) && $divisions && $divisions != array(0) ):
+	if ( $teams && $teams != array(0) && $leagues && $leagues != array(0) ):
 		add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_player_stats_meta', 'sp_player', 'normal', 'high' );
 	endif;
 
@@ -43,7 +43,7 @@ function sp_player_team_meta( $post ) {
 
 function sp_player_stats_meta( $post ) {
 	$team_ids = (array)get_post_meta( $post->ID, 'sp_team', false );
-	$divisions = (array)get_the_terms( $post->ID, 'sp_div' );
+	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
 	$stats = (array)get_post_meta( $post->ID, 'sp_metrics', true );
 
 	// Equation Operating System
@@ -52,9 +52,9 @@ function sp_player_stats_meta( $post ) {
 	// Get labels from metric variables
 	$metric_labels = (array)sp_get_var_labels( 'sp_metric' );
 
-	// Generate array of all division ids
+	// Generate array of all league ids
 	$div_ids = array();
-	foreach ( $divisions as $key => $value ):
+	foreach ( $leagues as $key => $value ):
 		if ( is_object( $value ) && property_exists( $value, 'term_id' ) )
 			$div_ids[] = $value->term_id;
 	endforeach;
@@ -78,7 +78,7 @@ function sp_player_stats_meta( $post ) {
 
 		$data = array();
 
-		// Get all divisions populated with stats where available
+		// Get all leagues populated with stats where available
 		$data[ $team_id ] = sp_array_combine( $div_ids, $stats[ $team_id ] );
 
 		// Get equations from statistics variables
@@ -109,7 +109,7 @@ function sp_player_stats_meta( $post ) {
 				),
 				'tax_query' => array(
 					array(
-						'taxonomy' => 'sp_div',
+						'taxonomy' => 'sp_league',
 						'field' => 'id',
 						'terms' => $div_id
 					)
@@ -133,7 +133,7 @@ function sp_player_stats_meta( $post ) {
 				endif;
 			endforeach;
 
-			// Generate array of placeholder values for each division
+			// Generate array of placeholder values for each league
 			$placeholders[ $team_id ][ $div_id ] = array();
 			foreach ( $equations as $key => $value ):
 
@@ -175,9 +175,9 @@ function sp_player_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Name', 'sportspress' ),
-		'sp_pos' => __( 'Positions', 'sportspress' ),
+		'sp_position' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_div' => __( 'Divisions', 'sportspress' )
+		'sp_league' => __( 'Leagues', 'sportspress' )
 	);
 	return $columns;
 }

@@ -40,9 +40,9 @@ function sp_staff_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Name', 'sportspress' ),
-		'sp_pos' => __( 'Positions', 'sportspress' ),
+		'sp_position' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_div' => __( 'Divisions', 'sportspress' ),
+		'sp_league' => __( 'Leagues', 'sportspress' ),
 	);
 	return $columns;
 }

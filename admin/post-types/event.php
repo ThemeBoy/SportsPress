@@ -142,7 +142,7 @@ function sp_event_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Event', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_div' => __( 'Divisions', 'sportspress' ),
+		'sp_league' => __( 'Leagues', 'sportspress' ),
 		'sp_kickoff' => __( 'Kick-off', 'sportspress' )
 	);
 	return $columns;

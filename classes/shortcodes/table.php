@@ -7,7 +7,7 @@ function sp_table_shortcode( $atts, $content = null, $code = "" ) {
 		'div' => 0
 	), $atts ) );
 
-	// Get all teams in the division
+	// Get all teams in the league
 	$args = array(
 		'post_type' => 'sp_team',
 		'numberposts' => -1,
@@ -16,7 +16,7 @@ function sp_table_shortcode( $atts, $content = null, $code = "" ) {
 	);
 	if ( $div ) {
 		$args['tax_query'][] = array(
-			'taxonomy' => 'sp_div',
+			'taxonomy' => 'sp_league',
 			'terms' => $div,
 			'field' => 'term_id'
 		);
