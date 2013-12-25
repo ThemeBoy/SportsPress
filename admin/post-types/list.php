@@ -24,7 +24,7 @@ function sp_list_edit_columns() {
 		'title' => __( 'Title' ),
 		'sp_player' => __( 'Players', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_div' => __( 'Divisions', 'sportspress' )
+		'sp_league' => __( 'Leagues', 'sportspress' )
 	);
 	return $columns;
 }
@@ -41,17 +41,17 @@ function sp_list_meta_init( $post ) {
 }
 
 function sp_list_player_meta( $post ) {
-	$division_id = sp_get_the_term_id( $post->ID, 'sp_div', 0 );
+	$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
 	$team_id = get_post_meta( $post->ID, 'sp_team', true );
 	?>
 	<div>
 		<p class="sp-tab-select">
 			<?php
 			$args = array(
-				'show_option_none' =>  sprintf( __( 'Select %s', 'sportspress' ), __( 'Division', 'sportspress' ) ),
-				'taxonomy' => 'sp_div',
-				'name' => 'sp_div',
-				'selected' => $division_id
+				'show_option_none' =>  sprintf( __( 'Select %s', 'sportspress' ), __( 'League', 'sportspress' ) ),
+				'taxonomy' => 'sp_league',
+				'name' => 'sp_league',
+				'selected' => $league_id
 			);
 			sp_dropdown_taxonomies( $args );
 			?>

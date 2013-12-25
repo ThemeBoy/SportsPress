@@ -1,5 +1,5 @@
 <?php
-function sp_pos_term_init() {
+function sp_position_term_init() {
 	$name = __( 'Positions', 'sportspress' );
 	$singular_name = __( 'Position', 'sportspress' );
 	$lowercase_name = __( 'position', 'sportspress' );
@@ -12,9 +12,9 @@ function sp_pos_term_init() {
 		'hierarchical' => true,
 		'rewrite' => array( 'slug' => 'position' )
 	);
-	register_taxonomy( 'sp_pos', $object_type, $args );
-	register_taxonomy_for_object_type( 'sp_pos', 'sp_player' );
-	register_taxonomy_for_object_type( 'sp_pos', 'sp_staff' );
+	register_taxonomy( 'sp_position', $object_type, $args );
+	register_taxonomy_for_object_type( 'sp_position', 'sp_player' );
+	register_taxonomy_for_object_type( 'sp_position', 'sp_staff' );
 }
-add_action( 'init', 'sp_pos_term_init' );
+add_action( 'init', 'sp_position_term_init' );
 ?>
