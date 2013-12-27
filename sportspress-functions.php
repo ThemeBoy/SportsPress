@@ -344,10 +344,10 @@ if ( !function_exists( 'sp_get_equation_selector' ) ) {
 					$options[ __( 'Outcomes', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_outcome', array( 'max' => '&uarr;', 'min' => '&darr;' ) );
 					break;
 				case 'column':
-					$options[ __( 'Statistics', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_column' );
+					$options[ __( 'Columns', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_column' );
 					break;
-				case 'metric':
-					$options[ __( 'Metrics', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_metric' );
+				case 'statistic':
+					$options[ __( 'Statistics', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_statistic' );
 					break;
 			endswitch;
 		endforeach;
@@ -568,8 +568,8 @@ if ( !function_exists( 'sp_team_columns_table' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_player_metrics_table' ) ) {
-	function sp_player_metrics_table( $columns = array(), $data = array(), $placeholders = array() ) {
+if ( !function_exists( 'sp_player_statistics_table' ) ) {
+	function sp_player_statistics_table( $columns = array(), $data = array(), $placeholders = array() ) {
 		?>
 		<table class="widefat sp-data-table">
 			<thead>
@@ -602,7 +602,7 @@ if ( !function_exists( 'sp_player_metrics_table' ) ) {
 								$value = sp_array_value( $div_stats, $column, '' );
 								$placeholder = sp_array_value( sp_array_value( sp_array_value( $placeholders, $team_id, array() ), $div_id, array() ), $column, 0 );
 								?>
-								<td><input type="text" name="sp_metrics[<?php echo $team_id; ?>][<?php echo $div_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+								<td><input type="text" name="sp_statistics[<?php echo $team_id; ?>][<?php echo $div_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
 							<?php endforeach; ?>
 						</tr>
 						<?php
@@ -685,7 +685,7 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 			<tbody>
 				<?php
 				$i = 0;
-				foreach ( $data as $player_id => $player_metrics ):
+				foreach ( $data as $player_id => $player_statistics ):
 					if ( !$player_id ) continue;
 					?>
 					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
@@ -693,7 +693,7 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 							<?php echo get_the_title( $player_id ); ?>
 						</td>
 						<?php foreach( $columns as $column => $label ):
-							$value = sp_array_value( $player_metrics, $column, '' );							
+							$value = sp_array_value( $player_statistics, $column, '' );							
 							?>
 							<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
 						<?php endforeach; ?>
@@ -706,8 +706,8 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 					<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
 					<?php foreach( $columns as $column => $label ):
 						$player_id = 0;
-						$player_metrics = $data[0];
-						$value = sp_array_value( $player_metrics, $column, '' );
+						$player_statistics = $data[0];
+						$value = sp_array_value( $player_statistics, $column, '' );
 						?>
 						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
 					<?php endforeach; ?>
@@ -812,7 +812,7 @@ if ( !function_exists( 'sp_get_table' ) ) {
 				$totals[ $team_id ][ $key ] = 0;
 			endforeach;
 
-			// Get statis stats
+			// Get static stats
 			$static = get_post_meta( $team_id, 'sp_columns', true );
 
 			// Create placeholders entry for the team
@@ -987,13 +987,13 @@ if ( !function_exists( 'sp_get_list' ) ) {
 		$eos = new eqEOS();
 
 		// Get labels from result variables
-		$columns = (array)sp_get_var_labels( 'sp_metric' );
+		$columns = (array)sp_get_var_labels( 'sp_statistic' );
 
 		// Get all leagues populated with stats where available
 		$tempdata = sp_array_combine( $player_ids, $stats );
 
 		// Get equations from statistics variables
-		$equations = sp_get_var_equations( 'sp_metric' );
+		$equations = sp_get_var_equations( 'sp_statistic' );
 
 		// Create entry for each player in totals
 		$totals = array();
@@ -1009,13 +1009,13 @@ if ( !function_exists( 'sp_get_list' ) ) {
 				$totals[ $player_id ][ $key ] = 0;
 			endforeach;
 
-			// Get static metrics
-			$static = get_post_meta( $player_id, 'sp_metrics', true );
+			// Get static statistics
+			$static = get_post_meta( $player_id, 'sp_statistics', true );
 
 			// Create placeholders entry for the player
 			$placeholders[ $player_id ] = array();
 
-			// Add static metrics to placeholders
+			// Add static statistics to placeholders
 			if ( array_key_exists( $team_id, $static ) && array_key_exists( $div_id, $static[ $team_id ] ) ):
 				$placeholders[ $player_id ] = $static[ $team_id ][ $div_id ];
 			endif;
@@ -1051,12 +1051,12 @@ if ( !function_exists( 'sp_get_list' ) ) {
 
 			$players = sp_array_value( $teams, $team_id, array() );
 
-			foreach ( $players as $player_id => $player_metrics ):
+			foreach ( $players as $player_id => $player_statistics ):
 
 				// Increment events played
 				$totals[ $player_id ]['eventsplayed']++;
 
-				foreach ( $player_metrics as $key => $value ):
+				foreach ( $player_statistics as $key => $value ):
 
 					if ( array_key_exists( $key, $totals[ $player_id ] ) ):
 						$totals[ $player_id ][ $key ] += $value;
@@ -1069,33 +1069,33 @@ if ( !function_exists( 'sp_get_list' ) ) {
 		endforeach;
 
 		$args = array(
-			'post_type' => 'sp_metric',
+			'post_type' => 'sp_statistic',
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 	  		'orderby' => 'menu_order',
 	  		'order' => 'ASC'
 		);
-		$metrics = get_posts( $args );
+		$statistics = get_posts( $args );
 
 		$columns = array();
 		$priorities = array();
 
-		foreach ( $metrics as $metric ):
+		foreach ( $statistics as $statistic ):
 
 			// Get post meta
-			$meta = get_post_meta( $metric->ID );
+			$meta = get_post_meta( $statistic->ID );
 
 			// Add equation to object
-			$metric->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
+			$statistic->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
 
 			// Add column name to columns
-			$columns[ $metric->post_name ] = $metric->post_title;
+			$columns[ $statistic->post_name ] = $statistic->post_title;
 
 			// Add order to priorities if priority is set and does not exist in array already
 			$priority = sp_array_value( sp_array_value( $meta, 'sp_priority', array() ), 0, 0 );
 			if ( $priority && ! array_key_exists( $priorities, $priority ) ):
 				$priorities[ $priority ] = array(
-					'column' => $metric->post_name,
+					'column' => $statistic->post_name,
 					'order' => sp_array_value( sp_array_value( $meta, 'sp_order', array() ), 0, 'DESC' )
 				);
 			endif;
@@ -1111,18 +1111,18 @@ if ( !function_exists( 'sp_get_list' ) ) {
 			if ( ! $player_id )
 				continue;
 
-			foreach ( $metrics as $metric ):
-				if ( sp_array_value( $placeholders[ $player_id ], $metric->post_name, '' ) == '' ):
+			foreach ( $statistics as $statistic ):
+				if ( sp_array_value( $placeholders[ $player_id ], $statistic->post_name, '' ) == '' ):
 
-					if ( empty( $metric->equation ) ):
+					if ( empty( $statistic->equation ) ):
 
 						// Reflect totals
-						$placeholders[ $player_id ][ $metric->post_name ] = sp_array_value( sp_array_value( $totals, $player_id, array() ), $key, 0 );
+						$placeholders[ $player_id ][ $statistic->post_name ] = sp_array_value( sp_array_value( $totals, $player_id, array() ), $key, 0 );
 
 					else:
 
 						// Calculate value
-						$placeholders[ $player_id ][ $metric->post_name ] = $eos->solveIF( str_replace( ' ', '', $metric->equation ), sp_array_value( $totals, $player_id, array() ) );
+						$placeholders[ $player_id ][ $statistic->post_name ] = $eos->solveIF( str_replace( ' ', '', $statistic->equation ), sp_array_value( $totals, $player_id, array() ) );
 
 					endif;
 				endif;

@@ -44,13 +44,13 @@ function sp_player_team_meta( $post ) {
 function sp_player_stats_meta( $post ) {
 	$team_ids = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
-	$stats = (array)get_post_meta( $post->ID, 'sp_metrics', true );
+	$stats = (array)get_post_meta( $post->ID, 'sp_statistics', true );
 
 	// Equation Operating System
 	$eos = new eqEOS();
 
-	// Get labels from metric variables
-	$metric_labels = (array)sp_get_var_labels( 'sp_metric' );
+	// Get labels from statistic variables
+	$statistic_labels = (array)sp_get_var_labels( 'sp_statistic' );
 
 	// Generate array of all league ids
 	$div_ids = array();
@@ -82,13 +82,13 @@ function sp_player_stats_meta( $post ) {
 		$data[ $team_id ] = sp_array_combine( $div_ids, $stats[ $team_id ] );
 
 		// Get equations from statistics variables
-		$equations = sp_get_var_equations( 'sp_metric' );
+		$equations = sp_get_var_equations( 'sp_statistic' );
 
 		foreach ( $div_ids as $div_id ):
 
 			$totals = array( 'eventsattended' => 0, 'eventsplayed' => 0 );
 
-			foreach ( $metric_labels as $key => $value ):
+			foreach ( $statistic_labels as $key => $value ):
 				$totals[ $key ] = 0;
 			endforeach;
 		
@@ -119,12 +119,12 @@ function sp_player_stats_meta( $post ) {
 			foreach( $events as $event ):
 				$totals['eventsattended']++;
 				$totals['eventsplayed']++; // TODO: create tab for substitutes in sidebar
-				$team_metrics = (array)get_post_meta( $event->ID, 'sp_players', true );
-				if ( array_key_exists( $team_id, $team_metrics ) ):
-					$players = sp_array_value( $team_metrics, $team_id, array() );
+				$team_statistics = (array)get_post_meta( $event->ID, 'sp_players', true );
+				if ( array_key_exists( $team_id, $team_statistics ) ):
+					$players = sp_array_value( $team_statistics, $team_id, array() );
 					if ( array_key_exists( $post->ID, $players ) ):
-						$player_metrics = sp_array_value( $players, $post->ID, array() );
-						foreach ( $player_metrics as $key => $value ):
+						$player_statistics = sp_array_value( $players, $post->ID, array() );
+						foreach ( $player_statistics as $key => $value ):
 							if ( array_key_exists( $key, $totals ) ):
 								$totals[ $key ] += $value;
 							endif;
@@ -154,7 +154,7 @@ function sp_player_stats_meta( $post ) {
 		endforeach;
 
 		// Get columns from statistics variables
-		$columns = sp_get_var_labels( 'sp_metric' );
+		$columns = sp_get_var_labels( 'sp_statistic' );
 
 		if ( $team_num > 1 ):
 			?>
@@ -162,7 +162,7 @@ function sp_player_stats_meta( $post ) {
 			<?php
 		endif;
 
-		sp_player_metrics_table( $columns, $data, $placeholders );
+		sp_player_statistics_table( $columns, $data, $placeholders );
 
 	endforeach;
 }
