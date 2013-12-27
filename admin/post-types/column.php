@@ -1,8 +1,8 @@
 <?php
-function sp_stat_cpt_init() {
-	$name = __( 'Statistics', 'sportspress' );
-	$singular_name = __( 'Statistic', 'sportspress' );
-	$lowercase_name = __( 'statistics', 'sportspress' );
+function sp_column_cpt_init() {
+	$name = __( 'Table Columns', 'sportspress' );
+	$singular_name = __( 'Table Column', 'sportspress' );
+	$lowercase_name = __( 'table columns', 'sportspress' );
 	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name, true );
 	$args = array(
 		'label' => $name,
@@ -12,15 +12,14 @@ function sp_stat_cpt_init() {
 		'show_in_nav_menus' => false,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
-		'register_meta_box_cb' => 'sp_stat_meta_init',
-		'rewrite' => array( 'slug' => 'stat' ),
+		'register_meta_box_cb' => 'sp_column_meta_init',
 		'show_in_menu' => 'edit.php?post_type=sp_event'
 	);
-	register_post_type( 'sp_stat', $args );
+	register_post_type( 'sp_column', $args );
 }
-add_action( 'init', 'sp_stat_cpt_init' );
+add_action( 'init', 'sp_column_cpt_init' );
 
-function sp_stat_edit_columns() {
+function sp_column_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
@@ -29,13 +28,13 @@ function sp_stat_edit_columns() {
 	);
 	return $columns;
 }
-add_filter( 'manage_edit-sp_stat_columns', 'sp_stat_edit_columns' );
+add_filter( 'manage_edit-sp_column_columns', 'sp_column_edit_columns' );
 
-function sp_stat_meta_init() {
-	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sp_stat_details_meta', 'sp_stat', 'normal', 'high' );
+function sp_column_meta_init() {
+	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sp_column_details_meta', 'sp_column', 'normal', 'high' );
 }
 
-function sp_stat_details_meta( $post ) {
+function sp_column_details_meta( $post ) {
 	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
 	$order = get_post_meta( $post->ID, 'sp_order', true );
 	$priority = get_post_meta( $post->ID, 'sp_priority', true );

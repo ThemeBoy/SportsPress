@@ -136,7 +136,7 @@ function sp_save_post( $post_id ) {
 		case ( 'sp_team' ):
 
 			// Update stats
-			update_post_meta( $post_id, 'sp_stats', sp_array_value( $_POST, 'sp_stats', array() ) );
+			update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 
 			break;
 
@@ -173,7 +173,7 @@ function sp_save_post( $post_id ) {
 
 			break;
 
-		case ( 'sp_stat' ):
+		case ( 'sp_column' ):
 
 			// Update equation as string
 			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
