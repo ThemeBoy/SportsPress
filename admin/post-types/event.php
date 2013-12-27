@@ -83,7 +83,7 @@ function sp_event_players_meta( $post ) {
 	$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
 
 	// Get columns from result variables
-	$columns = sp_get_var_labels( 'sp_metric', true );
+	$columns = sp_get_var_labels( 'sp_statistic', true );
 
 	foreach ( $teams as $key => $team_id ):
 		if ( ! $team_id ) continue;

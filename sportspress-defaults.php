@@ -16,7 +16,7 @@ if ( !function_exists( 'sp_install_defaults' ) ) {
 				array( 'post_title' => 'Draw', 'post_name' => 'draw', 'post_status' => 'publish', 'post_type' => 'sp_outcome' ),
 				array( 'post_title' => 'Loss', 'post_name' => 'loss', 'post_status' => 'publish', 'post_type' => 'sp_outcome' ),
 
-				// Statistics
+				// Columns
 				array( 'post_title' => 'P', 'post_name' => 'p', 'post_status' => 'publish', 'post_type' => 'sp_column', 'meta' => array( 'sp_equation' => '$eventsplayed' ) ),
 				array( 'post_title' => 'W', 'post_name' => 'w', 'post_status' => 'publish', 'post_type' => 'sp_column', 'meta' => array( 'sp_equation' => '$win' ) ),
 				array( 'post_title' => 'D', 'post_name' => 'd', 'post_status' => 'publish', 'post_type' => 'sp_column', 'meta' => array( 'sp_equation' => '$draw' ) ),
@@ -26,12 +26,12 @@ if ( !function_exists( 'sp_install_defaults' ) ) {
 				array( 'post_title' => 'GD', 'post_name' => 'gd', 'post_status' => 'publish', 'post_type' => 'sp_column', 'meta' => array( 'sp_equation' => '$goalsfor - $goalsagainst', 'sp_priority' => '2', 'sp_order' => 'DESC' ) ),
 				array( 'post_title' => 'PTS', 'post_name' => 'pts', 'post_status' => 'publish', 'post_type' => 'sp_column', 'meta' => array( 'sp_equation' => '$win x 3 + $draw', 'sp_priority' => '1', 'sp_order' => 'DESC' ) ),
 
-				// Metrics
-				array( 'post_title' => 'Appearances', 'post_name' => 'appearances', 'post_status' => 'publish', 'post_type' => 'sp_metric', 'meta' => array( 'sp_equation' => '$eventsplayed' ) ),
-				array( 'post_title' => 'Goals', 'post_name' => 'goals', 'post_status' => 'publish', 'post_type' => 'sp_metric', 'meta' => array( 'sp_equation' => '' ) ),
-				array( 'post_title' => 'Assists', 'post_name' => 'assists', 'post_status' => 'publish', 'post_type' => 'sp_metric', 'meta' => array( 'sp_equation' => '' ) ),
-				array( 'post_title' => 'Yellow Cards', 'post_name' => 'yellowcards', 'post_status' => 'publish', 'post_type' => 'sp_metric', 'meta' => array( 'sp_equation' => '' ) ),
-				array( 'post_title' => 'Red Cards', 'post_name' => 'redcards', 'post_status' => 'publish', 'post_type' => 'sp_metric', 'meta' => array( 'sp_equation' => '' ) )
+				// Statistics
+				array( 'post_title' => 'Appearances', 'post_name' => 'appearances', 'post_status' => 'publish', 'post_type' => 'sp_statistic', 'meta' => array( 'sp_equation' => '$eventsplayed' ) ),
+				array( 'post_title' => 'Goals', 'post_name' => 'goals', 'post_status' => 'publish', 'post_type' => 'sp_statistic', 'meta' => array( 'sp_equation' => '' ) ),
+				array( 'post_title' => 'Assists', 'post_name' => 'assists', 'post_status' => 'publish', 'post_type' => 'sp_statistic', 'meta' => array( 'sp_equation' => '' ) ),
+				array( 'post_title' => 'Yellow Cards', 'post_name' => 'yellowcards', 'post_status' => 'publish', 'post_type' => 'sp_statistic', 'meta' => array( 'sp_equation' => '' ) ),
+				array( 'post_title' => 'Red Cards', 'post_name' => 'redcards', 'post_status' => 'publish', 'post_type' => 'sp_statistic', 'meta' => array( 'sp_equation' => '' ) )
 			);
 
 			$i = 1;
