@@ -13,7 +13,8 @@ function sp_column_cpt_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
 		'register_meta_box_cb' => 'sp_column_meta_init',
-		'show_in_menu' => 'edit.php?post_type=sp_event'
+		'show_in_menu' => 'edit.php?post_type=sp_event',
+		'capability_type' => 'sp_config'
 	);
 	register_post_type( 'sp_column', $args );
 }

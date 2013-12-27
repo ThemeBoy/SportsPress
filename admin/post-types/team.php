@@ -11,8 +11,8 @@ function sp_team_cpt_init() {
 		'hierarchical' => true,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
 		'register_meta_box_cb' => 'sp_team_meta_init',
-		'rewrite' => array( 'slug' => 'team' ),
-		'menu_position' => 43
+		'rewrite' => array( 'slug' => get_option( 'sp_team_slug', 'team' ) ),
+		'capability_type' => 'sp_team'
 	);
 	register_post_type( 'sp_team', $args );
 }

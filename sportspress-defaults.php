@@ -1,8 +1,118 @@
 <?php
-if ( !function_exists( 'sp_install_defaults' ) ) {
-	function sp_install_defaults() {
+if ( !function_exists( 'sportspress_install' ) ) {
+	function sportspress_install() {
 	    $installed = get_option( 'sportspress_installed', false );
 		if ( ! $installed ):
+
+		    $role = get_role( 'administrator' );
+
+		    // Events
+		    $role->add_cap( 'edit_sp_events' );
+		    $role->add_cap( 'edit_others_sp_events' );
+		    $role->add_cap( 'delete_sp_events' );
+		    $role->add_cap( 'publish_sp_events' );
+		    $role->add_cap( 'read_sp_events' );
+		    $role->add_cap( 'read_private_sp_events' );
+
+		    // Teams
+		    $role->add_cap( 'edit_sp_staff' );
+		    $role->add_cap( 'edit_others_sp_staff' );
+		    $role->add_cap( 'delete_sp_staff' );
+		    $role->add_cap( 'publish_sp_staff' );
+		    $role->add_cap( 'read_sp_staff' );
+		    $role->add_cap( 'read_private_sp_staff' );
+
+		    // League Tables
+		    $role->add_cap( 'edit_sp_tables' );
+		    $role->add_cap( 'edit_others_sp_tables' );
+		    $role->add_cap( 'delete_sp_tables' );
+		    $role->add_cap( 'publish_sp_tables' );
+		    $role->add_cap( 'read_sp_tables' );
+		    $role->add_cap( 'read_private_sp_tables' );
+
+		    // Players
+		    $role->add_cap( 'edit_sp_players' );
+		    $role->add_cap( 'edit_others_sp_players' );
+		    $role->add_cap( 'delete_sp_players' );
+		    $role->add_cap( 'publish_sp_players' );
+		    $role->add_cap( 'read_sp_players' );
+		    $role->add_cap( 'read_private_sp_players' );
+
+		    // Player Lists
+		    $role->add_cap( 'edit_sp_lists' );
+		    $role->add_cap( 'edit_others_sp_lists' );
+		    $role->add_cap( 'delete_sp_lists' );
+		    $role->add_cap( 'publish_sp_lists' );
+		    $role->add_cap( 'read_sp_lists' );
+		    $role->add_cap( 'read_private_sp_lists' );
+
+		    // Staff
+		    $role->add_cap( 'edit_sp_staff' );
+		    $role->add_cap( 'edit_others_sp_staff' );
+		    $role->add_cap( 'delete_sp_staff' );
+		    $role->add_cap( 'publish_sp_staff' );
+		    $role->add_cap( 'read_sp_staff' );
+		    $role->add_cap( 'read_private_sp_staff' );
+
+		    // Settings
+		    $role->add_cap( 'edit_sp_settings' );
+		    $role->add_cap( 'edit_others_sp_settings' );
+		    $role->add_cap( 'delete_sp_settings' );
+		    $role->add_cap( 'publish_sp_settings' );
+		    $role->add_cap( 'read_sp_settings' );
+		    $role->add_cap( 'read_private_sp_settings' );
+
+		    // Team Manager
+			remove_role( 'sp_team_manager' );
+			add_role(
+			    'sp_team_manager',
+			    __( 'Team Manager', 'sportspress' ),
+			    array(
+			        'read' => true,
+			        'edit_posts' => true,
+			        'delete_posts' => true,
+			        'read_sp_players' => true,
+			        'edit_sp_players' => true,
+			        'edit_others_sp_players' => true,
+			        'delete_sp_players' => true,
+			        'publish_sp_players' => true,
+			        'read_sp_staff' => true,
+			        'edit_sp_staff' => true,
+			        'edit_others_sp_staff' => true,
+			        'delete_sp_staff' => true,
+			        'publish_sp_staff' => true
+			    )
+			);
+
+			// Staff
+			remove_role( 'sp_staff' );
+			add_role(
+			    'sp_staff',
+			    __( 'Staff', 'sportspress' ),
+			    array(
+			        'read' => true,
+			        'edit_posts' => true,
+			        'delete_posts' => true,
+			        'read_sp_staff' => true,
+			        'edit_sp_staff' => true,
+			        'delete_sp_staff' => true
+			    )
+			);
+
+			// Player
+			remove_role( 'sp_player' );
+			add_role(
+			    'sp_player',
+			    __( 'Player', 'sportspress' ),
+			    array(
+			        'read' => true,
+			        'edit_posts' => true,
+			        'delete_posts' => true,
+			        'read_sp_players' => true,
+			        'edit_sp_players' => true,
+			        'delete_sp_players' => true
+			    )
+			);
 
 			$pages = array(
 
@@ -50,7 +160,8 @@ if ( !function_exists( 'sp_install_defaults' ) ) {
 
 			update_option( 'sportspress_installed', 1 );
 		endif;
+
     }
 }
-sp_install_defaults();
+sportspress_install();
 ?>

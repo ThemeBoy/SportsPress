@@ -12,7 +12,8 @@ function sp_table_cpt_init() {
 		'supports' => array( 'title', 'author', 'excerpt' ),
 		'register_meta_box_cb' => 'sp_table_meta_init',
 		'rewrite' => array( 'slug' => 'table' ),
-		'show_in_menu' => 'edit.php?post_type=sp_team'
+		'show_in_menu' => 'edit.php?post_type=sp_team',
+		'capability_type' => 'sp_table'
 	);
 	register_post_type( 'sp_table', $args );
 }
