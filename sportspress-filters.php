@@ -59,7 +59,7 @@ add_filter('the_content', 'sportspress_the_content');
 
 function sp_sanitize_title( $title ) {
 	
-	if ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_stat', 'sp_metric' ) ) ):
+	if ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_metric' ) ) ):
 
 		// Get post title
 		$title = $_POST['post_title'];
@@ -86,7 +86,7 @@ function sp_pre_get_posts( $wp_query ) {
 	if ( is_admin() ):
 		$post_type = $wp_query->query['post_type'];
 
-		if ( in_array( $post_type, array( 'sp_result', 'sp_outcome', 'sp_stat', 'sp_metric' ) ) ):
+		if ( in_array( $post_type, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_metric' ) ) ):
 			$wp_query->set( 'orderby', 'menu_order' );
 			$wp_query->set( 'order', 'ASC' );
 		endif;

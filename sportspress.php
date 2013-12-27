@@ -37,7 +37,7 @@ include dirname( __FILE__ ) . '/sportspress-settings.php' ;
 require_once dirname( __FILE__ ) . '/admin/post-types/event.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/result.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/outcome.php';
-require_once dirname( __FILE__ ) . '/admin/post-types/stat.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/column.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/metric.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/team.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/table.php';

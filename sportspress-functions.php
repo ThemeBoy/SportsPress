@@ -283,7 +283,7 @@ if ( !function_exists( 'sp_get_equation_optgroup_array' ) ) {
 	function sp_get_equation_optgroup_array( $postid, $type = null, $variations = null, $defaults = null, $totals = true ) {
 		$arr = array();
 
-		// Get stats within the sports that the current stat is in ### TODO: should be for sport selected
+		// Get posts
 		$args = array(
 			'post_type' => $type,
 			'numberposts' => -1,
@@ -343,8 +343,8 @@ if ( !function_exists( 'sp_get_equation_selector' ) ) {
 				case 'outcome':
 					$options[ __( 'Outcomes', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_outcome', array( 'max' => '&uarr;', 'min' => '&darr;' ) );
 					break;
-				case 'stat':
-					$options[ __( 'Statistics', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_stat' );
+				case 'column':
+					$options[ __( 'Statistics', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_column' );
 					break;
 				case 'metric':
 					$options[ __( 'Metrics', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_metric' );
@@ -520,8 +520,8 @@ if ( !function_exists( 'sp_player_table' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_team_stats_table' ) ) {
-	function sp_team_stats_table( $columns = array(), $data = array(), $placeholders = array() ) {
+if ( !function_exists( 'sp_team_columns_table' ) ) {
+	function sp_team_columns_table( $columns = array(), $data = array(), $placeholders = array() ) {
 		?>
 		<table class="widefat sp-data-table">
 			<thead>
@@ -554,7 +554,7 @@ if ( !function_exists( 'sp_team_stats_table' ) ) {
 								$value = sp_array_value( $div_stats, $column, '' );
 								$placeholder = sp_array_value( sp_array_value( $placeholders, $div_id, array() ), $column, 0 );
 								?>
-								<td><input type="text" name="sp_stats[<?php echo $div_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+								<td><input type="text" name="sp_columns[<?php echo $div_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
 							<?php endforeach; ?>
 						</tr>
 						<?php
@@ -813,7 +813,7 @@ if ( !function_exists( 'sp_get_table' ) ) {
 			endforeach;
 
 			// Get statis stats
-			$static = get_post_meta( $team_id, 'sp_stats', true );
+			$static = get_post_meta( $team_id, 'sp_columns', true );
 
 			// Create placeholders entry for the team
 			$placeholders[ $team_id ] = array();
@@ -868,7 +868,7 @@ if ( !function_exists( 'sp_get_table' ) ) {
 		endforeach;
 
 		$args = array(
-			'post_type' => 'sp_stat',
+			'post_type' => 'sp_column',
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 	  		'orderby' => 'menu_order',

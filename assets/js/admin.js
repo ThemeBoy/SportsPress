@@ -86,6 +86,6 @@ jQuery(document).ready(function($){
 	$('.sp-equation-selector select:last').change().siblings().change();
 
 	// Remove slug editor in quick edit for slug-sensitive post types
-	$('.inline-edit-sp_result, .inline-edit-sp_outcome, .inline-edit-sp_stat, .inline-edit-sp_metric').find('input[name=post_name]').closest('label').remove();
+	$('.inline-edit-sp_result, .inline-edit-sp_outcome, .inline-edit-sp_column, .inline-edit-sp_metric').find('input[name=post_name]').closest('label').remove();
 
 });

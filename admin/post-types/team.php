@@ -27,7 +27,7 @@ function sp_team_meta_init( $post ) {
 	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'high' );
 
 	if ( $leagues && $leagues != array(0) ):
-		add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_team_stats_meta', 'sp_team', 'normal', 'high' );
+		add_meta_box( 'sp_columnssdiv', __( 'Table Columns', 'sportspress' ), 'sp_team_columns_meta', 'sp_team', 'normal', 'high' );
 	endif;
 }
 
@@ -42,9 +42,9 @@ function sp_team_edit_columns() {
 }
 add_filter( 'manage_edit-sp_team_columns', 'sp_team_edit_columns' );
 
-function sp_team_stats_meta( $post ) {
+function sp_team_columns_meta( $post ) {
 	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
-	$stats = (array)get_post_meta( $post->ID, 'sp_stats', true );
+	$columns = (array)get_post_meta( $post->ID, 'sp_columns', true );
 
 	// Equation Operating System
 	$eos = new eqEOS();
@@ -62,11 +62,11 @@ function sp_team_stats_meta( $post ) {
 			$div_ids[] = $value->term_id;
 	endforeach;
 
-	// Get all leagues populated with stats where available
-	$data = sp_array_combine( $div_ids, $stats );
+	// Get all leagues populated with columns where available
+	$data = sp_array_combine( $div_ids, $columns );
 
-	// Get equations from statistics variables
-	$equations = sp_get_var_equations( 'sp_stat' );
+	// Get equations from column variables
+	$equations = sp_get_var_equations( 'sp_column' );
 
 	// Initialize placeholders array
 	$placeholders = array();
@@ -139,9 +139,9 @@ function sp_team_stats_meta( $post ) {
 	endforeach;
 
 	// Get columns from statistics variables
-	$columns = sp_get_var_labels( 'sp_stat' );
+	$columns = sp_get_var_labels( 'sp_column' );
 
-	sp_team_stats_table( $columns, $data, $placeholders );
+	sp_team_columns_table( $columns, $data, $placeholders );
 	sp_nonce();
 }
 ?>

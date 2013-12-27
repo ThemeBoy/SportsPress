@@ -35,7 +35,7 @@ function sp_table_meta_init( $post ) {
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_table_team_meta', 'sp_table', 'side', 'high' );
 
 	if ( $teams && $teams != array(0) ):
-		add_meta_box( 'sp_statsdiv', __( 'League Table', 'sportspress' ), 'sp_table_stats_meta', 'sp_table', 'normal', 'high' );
+		add_meta_box( 'sp_columnsdiv', __( 'League Table', 'sportspress' ), 'sp_table_columns_meta', 'sp_table', 'normal', 'high' );
 	endif;
 }
 
@@ -63,7 +63,7 @@ function sp_table_team_meta( $post, $test ) {
 	sp_nonce();
 }
 
-function sp_table_stats_meta( $post ) {
+function sp_table_columns_meta( $post ) {
 
 	list( $columns, $data, $placeholders, $merged ) = sp_get_table( $post->ID, true );
 
