@@ -1,10 +1,9 @@
 <?php
 function sportspress_admin_menu() {
 
-	add_submenu_page(
-		'edit.php?post_type=sp_event',
+	add_options_page(
 		__( 'SportsPress Settings', 'sportspress' ),
-		__( 'Settings', 'sportspress' ),
+		__( 'SportsPress', 'sportspress' ),
 		'manage_options',
 		'sportspress',
 		'sportspress_settings'

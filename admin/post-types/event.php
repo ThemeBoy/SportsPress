@@ -11,10 +11,9 @@ function sp_event_cpt_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'comments' ),
 		'register_meta_box_cb' => 'sp_event_meta_init',
-		'rewrite' => array( 'slug' => 'event' ),
-		'menu_position' => 42
+		'rewrite' => array( 'slug' => get_option( 'sp_event_slug', 'event' ) ),
+		'capability_type' => 'sp_event'
 	);
-	$args['labels']['menu_name'] = __( 'SportsPress', 'sportspress' );
 	register_post_type( 'sp_event', $args );
 }
 add_action( 'init', 'sp_event_cpt_init' );

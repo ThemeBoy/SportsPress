@@ -15,13 +15,7 @@ function sp_admin_menu() {
 		return;
 	
 	global $menu, $submenu;
-
-	// Add separator
-	$menu[41] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
-
-    // Remove "Add Event" link under Events
-    unset( $submenu['edit.php?post_type=sp_event'][10] );
-
+	
     // Remove "Leagues" link under Events
     unset( $submenu['edit.php?post_type=sp_event'][15] );
 

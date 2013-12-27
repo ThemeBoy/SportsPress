@@ -12,7 +12,8 @@ function sp_list_cpt_init() {
 		'supports' => array( 'title', 'author' ),
 		'register_meta_box_cb' => 'sp_list_meta_init',
 		'rewrite' => array( 'slug' => 'list' ),
-		'show_in_menu' => 'edit.php?post_type=sp_player'
+		'show_in_menu' => 'edit.php?post_type=sp_player',
+		'capability_type' => 'sp_list'
 	);
 	register_post_type( 'sp_list', $args );
 }

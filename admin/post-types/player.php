@@ -11,8 +11,8 @@ function sp_player_cpt_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sp_player_meta_init',
-		'rewrite' => array( 'slug' => 'player' ),
-		'menu_position' => 44
+		'rewrite' => array( 'slug' => get_option( 'sp_player_slug', 'player' ) ),
+		'capability_type' => 'sp_player'
 	);
 	register_post_type( 'sp_player', $args );
 }

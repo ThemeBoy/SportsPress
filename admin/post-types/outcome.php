@@ -12,7 +12,8 @@ function sp_outcome_cpt_init() {
 		'show_in_nav_menus' => false,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
-		'show_in_menu' => 'edit.php?post_type=sp_event'
+		'show_in_menu' => 'edit.php?post_type=sp_event',
+		'capability_type' => 'sp_config'
 	);
 	register_post_type( 'sp_outcome', $args );
 }
