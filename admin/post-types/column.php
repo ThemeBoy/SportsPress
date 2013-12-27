@@ -8,8 +8,6 @@ function sp_column_cpt_init() {
 		'label' => $name,
 		'labels' => $labels,
 		'public' => false,
-		'show_ui' => true,
-		'show_in_nav_menus' => false,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
 		'register_meta_box_cb' => 'sp_column_meta_init',

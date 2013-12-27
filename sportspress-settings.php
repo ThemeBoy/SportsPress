@@ -16,14 +16,13 @@ function sportspress_settings() {
 ?>
 	<div class="wrap">
 	
-		<div id="icon-themes" class="icon32"></div>
+		<div id="icon-options-general" class="icon32"></div>
 		<h2><?php _e( 'SportsPress Settings', 'sportspress' ); ?></h2>
-		<?php settings_errors(); ?>
 
 		<form method="post" action="options.php">
 			<?php
-			settings_fields( 'sportspress_stats' );
-			do_settings_sections( 'sportspress_stats' );
+			settings_fields( 'sportspress' );
+			do_settings_sections( 'sportspress' );
 			submit_button();
 			?>
 		</form>
@@ -32,91 +31,82 @@ function sportspress_settings() {
 <?php
 }
 
-function sportspress_default_stats() {
+function sportspress_validate( $input ) {
 	
-	$defaults = array(
+	$original = get_option( 'sportspress' );
 
-		'team'		=>	__( 'P', 'sportspress' ) . ': $appearances' . "\r\n" .
-						__( 'W', 'sportspress' ) . ': $greater' . "\r\n" .
-						__( 'D', 'sportspress' ) . ': $equal' . "\r\n" .
-						__( 'L', 'sportspress' ) . ': $less' . "\r\n" .
-						__( 'F', 'sportspress' ) . ': $for' . "\r\n" .
-						__( 'A', 'sportspress' ) . ': $against' . "\r\n" .
-						__( 'GD', 'sportspress' ) . ': $for - $against' . "\r\n" .
-						__( 'PTS', 'sportspress' ) . ': 3 * $greater + $equal',
+	if ( sp_array_value( $original, 'sport', null ) != sp_array_value( $input, 'sport', null ) ):
 
-		'event'		=>	__( 'Goals', 'sportspress' ) . ': $goals' . "\r\n" .
-						__( '1st Half', 'sportspress' ) . ': $firsthalf' . "\r\n" .
-						__( '2nd Half', 'sportspress' ) . ': $secondhalf',
+		global $sportspress_sports;
 
-		'player'	=>	__( 'Goals', 'sportspress' ) . ': $goals' . "\r\n" .
-						__( 'Assists', 'sportspress' ) . ': $assists' . "\r\n" .
-						__( 'Yellow Cards', 'sportspress' ) . ': $yellowcards' . "\r\n" .
-						__( 'Red Cards', 'sportspress' ) . ': $redcards'
+		$post_groups = sp_array_value( sp_array_value( $sportspress_sports, sp_array_value( $input, 'sport', null ), array() ), 'posts', array() );
 
-	);
-	
-	return apply_filters( 'sportspress_default_stats', $defaults );
-	
+		foreach( $post_groups as $post_type => $posts ):
+
+			// Delete posts
+			$old_posts = get_posts( array( 'post_type' => $post_type, 'numberposts' => -1, 'posts_per_page' => -1 ) );
+			foreach( $old_posts as $post ):
+				wp_delete_post( $post->ID, true);
+			endforeach;
+
+				// Add posts
+			foreach( $posts as $index => $post ):
+				$post['post_type'] = $post_type;
+				if ( ! get_page_by_path( $post['post_name'], OBJECT, $post['post_type'] ) ):
+					$post['menu_order'] = $index;
+					$post['post_status'] = 'publish';
+					$id = wp_insert_post( $post );
+					if ( array_key_exists( 'meta', $post ) ):
+						foreach ( $post['meta'] as $key => $value ):
+							update_post_meta( $id, $key, $value );
+						endforeach;
+					endif;
+				endif;
+			endforeach;
+
+		endforeach;
+
+	endif;
+
+	return $input;
 }
 
-function sportspress_intialize_stats() {
-
-	if( false == get_option( 'sportspress_stats' ) ) {	
-		add_option( 'sportspress_stats', apply_filters( 'sportspress_default_stats', sportspress_default_stats() ) );
-	}
+function sportspress_register_settings() {
+	
+	register_setting(
+		'sportspress',
+		'sportspress',
+		'sportspress_validate'
+	);
 	
 	add_settings_section(
-		'sportspress_stats',
+		'general',
 		'',
 		'',
-		'sportspress_stats'
+		'sportspress'
 	);
 	
 	add_settings_field(	
 		'sport',						
 		__( 'Sport', 'sportspress' ),
 		'sportspress_sport_callback',	
-		'sportspress_stats',	
-		'sportspress_stats'			
-	);
-	
-	/*
-	add_settings_field(	
-		'team',						
-		__( 'Teams',	'sportspress' ),
-		'sportspress_team_stats_callback',	
-		'sportspress_stats',	
-		'sportspress_stats'			
-	);
-	
-	add_settings_field(	
-		'event',			
-		__( 'Events', 'sportspress' ),			
-		'sportspress_event_stats_callback',	
-		'sportspress_stats',	
-		'sportspress_stats'			
-	);
-
-	add_settings_field(	
-		'player',	
-		__( 'Players',	'sportspress' ),						
-		'sportspress_player_stats_callback',	
-		'sportspress_stats',	
-		'sportspress_stats'			
-	);
-	*/
-	
-	register_setting(
-		'sportspress_stats',
-		'sportspress_stats'
+		'sportspress',
+		'general'
 	);
 	
 }
-add_action( 'admin_init', 'sportspress_intialize_stats' );
+add_action( 'admin_init', 'sportspress_register_settings' );
 
 function sportspress_sport_callback() {
-	sportspress_render_option_field( 'sportspress_stats', 'sport', 'sport' );
+	global $sportspress_sports;
+	$options = get_option( 'sportspress' );
+	?>
+	<select id="sportspress_sport" name="sportspress[sport]">
+		<?php foreach( $sportspress_sports as $slug => $sport ): ?>
+			<option value="<?php echo $slug; ?>" <?php selected( $options['sport'], $slug ); ?>><?php echo $sport['name']; ?></option>
+		<?php endforeach; ?>
+	</select>
+	<?
 }
 
 function sportspress_team_stats_callback() {

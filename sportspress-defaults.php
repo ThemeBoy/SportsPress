@@ -7,6 +7,7 @@ if ( !function_exists( 'sportspress_install' ) ) {
 		    $role = get_role( 'administrator' );
 
 		    // Events
+		    $role->add_cap( 'edit_sp_event' );
 		    $role->add_cap( 'edit_sp_events' );
 		    $role->add_cap( 'edit_others_sp_events' );
 		    $role->add_cap( 'delete_sp_events' );
@@ -15,14 +16,16 @@ if ( !function_exists( 'sportspress_install' ) ) {
 		    $role->add_cap( 'read_private_sp_events' );
 
 		    // Teams
-		    $role->add_cap( 'edit_sp_staff' );
-		    $role->add_cap( 'edit_others_sp_staff' );
-		    $role->add_cap( 'delete_sp_staff' );
-		    $role->add_cap( 'publish_sp_staff' );
-		    $role->add_cap( 'read_sp_staff' );
-		    $role->add_cap( 'read_private_sp_staff' );
+		    $role->add_cap( 'edit_sp_team' );
+		    $role->add_cap( 'edit_sp_teams' );
+		    $role->add_cap( 'edit_others_sp_teams' );
+		    $role->add_cap( 'delete_sp_teams' );
+		    $role->add_cap( 'publish_sp_teams' );
+		    $role->add_cap( 'read_sp_teams' );
+		    $role->add_cap( 'read_private_sp_teams' );
 
 		    // League Tables
+		    $role->add_cap( 'edit_sp_table' );
 		    $role->add_cap( 'edit_sp_tables' );
 		    $role->add_cap( 'edit_others_sp_tables' );
 		    $role->add_cap( 'delete_sp_tables' );
@@ -31,6 +34,7 @@ if ( !function_exists( 'sportspress_install' ) ) {
 		    $role->add_cap( 'read_private_sp_tables' );
 
 		    // Players
+		    $role->add_cap( 'edit_sp_player' );
 		    $role->add_cap( 'edit_sp_players' );
 		    $role->add_cap( 'edit_others_sp_players' );
 		    $role->add_cap( 'delete_sp_players' );
@@ -39,6 +43,7 @@ if ( !function_exists( 'sportspress_install' ) ) {
 		    $role->add_cap( 'read_private_sp_players' );
 
 		    // Player Lists
+		    $role->add_cap( 'edit_sp_list' );
 		    $role->add_cap( 'edit_sp_lists' );
 		    $role->add_cap( 'edit_others_sp_lists' );
 		    $role->add_cap( 'delete_sp_lists' );
@@ -48,19 +53,21 @@ if ( !function_exists( 'sportspress_install' ) ) {
 
 		    // Staff
 		    $role->add_cap( 'edit_sp_staff' );
-		    $role->add_cap( 'edit_others_sp_staff' );
-		    $role->add_cap( 'delete_sp_staff' );
-		    $role->add_cap( 'publish_sp_staff' );
-		    $role->add_cap( 'read_sp_staff' );
-		    $role->add_cap( 'read_private_sp_staff' );
+		    $role->add_cap( 'edit_sp_staffs' );
+		    $role->add_cap( 'edit_others_sp_staffs' );
+		    $role->add_cap( 'delete_sp_staffs' );
+		    $role->add_cap( 'publish_sp_staffs' );
+		    $role->add_cap( 'read_sp_staffs' );
+		    $role->add_cap( 'read_private_sp_staffs' );
 
 		    // Settings
-		    $role->add_cap( 'edit_sp_settings' );
-		    $role->add_cap( 'edit_others_sp_settings' );
-		    $role->add_cap( 'delete_sp_settings' );
-		    $role->add_cap( 'publish_sp_settings' );
-		    $role->add_cap( 'read_sp_settings' );
-		    $role->add_cap( 'read_private_sp_settings' );
+		    $role->add_cap( 'edit_sp_config' );
+		    $role->add_cap( 'edit_sp_configs' );
+		    $role->add_cap( 'edit_others_sp_configs' );
+		    $role->add_cap( 'delete_sp_configs' );
+		    $role->add_cap( 'publish_sp_configs' );
+		    $role->add_cap( 'read_sp_configs' );
+		    $role->add_cap( 'read_private_sp_configs' );
 
 		    // Team Manager
 			remove_role( 'sp_team_manager' );
@@ -134,7 +141,7 @@ if ( !function_exists( 'sportspress_install' ) ) {
 				array( 'post_title' => 'F', 'post_name' => 'f', 'post_status' => 'publish', 'post_type' => 'sp_column', 'meta' => array( 'sp_equation' => '$goalsfor', 'sp_priority' => '3', 'sp_order' => 'DESC' ) ),
 				array( 'post_title' => 'A', 'post_name' => 'a', 'post_status' => 'publish', 'post_type' => 'sp_column', 'meta' => array( 'sp_equation' => '$goalsagainst' ) ),
 				array( 'post_title' => 'GD', 'post_name' => 'gd', 'post_status' => 'publish', 'post_type' => 'sp_column', 'meta' => array( 'sp_equation' => '$goalsfor - $goalsagainst', 'sp_priority' => '2', 'sp_order' => 'DESC' ) ),
-				array( 'post_title' => 'PTS', 'post_name' => 'pts', 'post_status' => 'publish', 'post_type' => 'sp_column', 'meta' => array( 'sp_equation' => '$win x 3 + $draw', 'sp_priority' => '1', 'sp_order' => 'DESC' ) ),
+				array( 'post_title' => 'PTS', 'post_name' => 'pts', 'post_status' => 'publish', 'post_type' => 'sp_column', 'meta' => array( 'sp_equation' => '$win * 3 + $draw', 'sp_priority' => '1', 'sp_order' => 'DESC' ) ),
 
 				// Statistics
 				array( 'post_title' => 'Appearances', 'post_name' => 'appearances', 'post_status' => 'publish', 'post_type' => 'sp_statistic', 'meta' => array( 'sp_equation' => '$eventsplayed' ) ),

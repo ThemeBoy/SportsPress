@@ -1,6 +1,7 @@
 <?php
 // Flush rewrite rules on activation to make sure permalinks work properly
 function sp_rewrite_flush() {
+    sp_config_cpt_init();
     sp_event_cpt_init();
     sp_team_cpt_init();
     sp_table_cpt_init();
