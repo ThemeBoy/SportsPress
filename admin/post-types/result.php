@@ -8,8 +8,6 @@ function sp_result_cpt_init() {
 		'label' => $name,
 		'labels' => $labels,
 		'public' => false,
-		'show_ui' => true,
-		'show_in_nav_menus' => false,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
 		'show_in_menu' => 'edit.php?post_type=sp_event',

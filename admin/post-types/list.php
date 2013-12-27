@@ -52,7 +52,8 @@ function sp_list_player_meta( $post ) {
 				'show_option_none' =>  sprintf( __( 'Select %s', 'sportspress' ), __( 'League', 'sportspress' ) ),
 				'taxonomy' => 'sp_league',
 				'name' => 'sp_league',
-				'selected' => $league_id
+				'selected' => $league_id,
+				'value' => 'term_id'
 			);
 			sp_dropdown_taxonomies( $args );
 			?>

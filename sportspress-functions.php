@@ -108,7 +108,8 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 			'show_option_none' => false,
 			'taxonomy' => null,
 			'name' => null,
-			'selected' => null
+			'selected' => null,
+			'value' => 'slug'
 		);
 		$args = array_merge( $defaults, $args ); 
 		$terms = get_terms( $args['taxonomy'] );
@@ -122,7 +123,10 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 				printf( '<option value="-1">%s</option>', $args['show_option_none'] );
 			}
 			foreach ( $terms as $term ) {
-				printf( '<option value="%s" %s>%s</option>', $term->term_id, selected( true, $args['selected'] == $term->term_id, false ), $term->name );
+				if ( $args['value'] == 'term_id' )
+					printf( '<option value="%s" %s>%s</option>', $term->term_id, selected( true, $args['selected'] == $term->term_id, false ), $term->name );
+				else
+					printf( '<option value="%s" %s>%s</option>', $term->slug, selected( true, $args['selected'] == $term->slug, false ), $term->name );
 			}
 			print( '</select>' );
 		}

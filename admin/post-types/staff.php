@@ -12,7 +12,7 @@ function sp_staff_cpt_init() {
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sp_staff_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_staff_slug', 'staff' ) ),
-		'capability_type' => array( 'sp_staff', 'sp_staff' )
+		'capability_type' => 'sp_staff'
 	);
 	register_post_type( 'sp_staff', $args );
 }

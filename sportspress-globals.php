@@ -1,4 +1,21 @@
 <?php
+$sportspress_sports = array();
+include_once dirname( __FILE__ ) . '/presets/football.php';
+include_once dirname( __FILE__ ) . '/presets/footy.php';
+include_once dirname( __FILE__ ) . '/presets/baseball.php';
+include_once dirname( __FILE__ ) . '/presets/basketball.php';
+include_once dirname( __FILE__ ) . '/presets/gaming.php';
+include_once dirname( __FILE__ ) . '/presets/cricket.php';
+include_once dirname( __FILE__ ) . '/presets/golf.php';
+include_once dirname( __FILE__ ) . '/presets/handball.php';
+include_once dirname( __FILE__ ) . '/presets/hockey.php';
+include_once dirname( __FILE__ ) . '/presets/racing.php';
+include_once dirname( __FILE__ ) . '/presets/rugby.php';
+include_once dirname( __FILE__ ) . '/presets/soccer.php';
+include_once dirname( __FILE__ ) . '/presets/swimming.php';
+include_once dirname( __FILE__ ) . '/presets/tennis.php';
+include_once dirname( __FILE__ ) . '/presets/volleyball.php';
+
 $sportspress_texts = array(
 	'sp_team' => array(
 		'Enter title here' => __( 'Team', 'sportspress' ),
@@ -50,20 +67,4 @@ $sportspress_thumbnail_texts = array(
 		'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) )
 	)
 );
-
-$sportspress_options = array(
-	'settings' => array(
-		'sp_event_team_count' => 2,
-		'sp_team_stats_columns' => '',
-		'sp_event_stats_columns' => '',
-		'sp_player_stats_columns' => ''
-	)
-);
-
-foreach( $sportspress_options as $optiongroupkey => $optiongroup ) {
-	foreach( $optiongroup as $key => $value ) {
-		//if ( get_option( $key ) === false )
-			update_option( $key, $value );
-	}
-}
 ?>

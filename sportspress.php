@@ -22,7 +22,7 @@ define( 'SPORTSPRESS_VERSION', '0.1' );
 define( 'SPORTSPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 // Libraries
-include dirname( __FILE__ ) . '/lib/classes/eos.class.php' ;
+include dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
 
 // Globals
 include dirname( __FILE__ ) . '/sportspress-globals.php' ;
@@ -34,6 +34,7 @@ require_once dirname( __FILE__ ) . '/sportspress-functions.php';
 include dirname( __FILE__ ) . '/sportspress-settings.php' ;
 
 // Custom Post Types
+require_once dirname( __FILE__ ) . '/admin/post-types/separator.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/event.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/result.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/outcome.php';
@@ -48,9 +49,6 @@ require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
 // Terms
 require_once dirname( __FILE__ ) . '/admin/terms/league.php';
 require_once dirname( __FILE__ ) . '/admin/terms/position.php';
-
-// Shortcodes
-// require_once dirname( __FILE__ ) . '/classes/shortcodes/table.php';
 
 // Defaults
 include dirname( __FILE__ ) . '/sportspress-defaults.php';

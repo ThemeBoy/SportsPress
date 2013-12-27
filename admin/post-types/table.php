@@ -13,7 +13,7 @@ function sp_table_cpt_init() {
 		'register_meta_box_cb' => 'sp_table_meta_init',
 		'rewrite' => array( 'slug' => 'table' ),
 		'show_in_menu' => 'edit.php?post_type=sp_team',
-		'capability_type' => 'sp_table'
+//		'capability_type' => 'sp_table'
 	);
 	register_post_type( 'sp_table', $args );
 }
@@ -50,7 +50,8 @@ function sp_table_team_meta( $post, $test ) {
 				'show_option_none' =>  sprintf( __( 'Select %s', 'sportspress' ), __( 'League', 'sportspress' ) ),
 				'taxonomy' => 'sp_league',
 				'name' => 'sp_league',
-				'selected' => $league_id
+				'selected' => $league_id,
+				'value' => 'term_id'
 			);
 			sp_dropdown_taxonomies( $args );
 			?>
