@@ -1,5 +1,6 @@
 <?php
 $sportspress_sports = array();
+include_once dirname( __FILE__ ) . '/presets/soccer.php';
 include_once dirname( __FILE__ ) . '/presets/football.php';
 include_once dirname( __FILE__ ) . '/presets/footy.php';
 include_once dirname( __FILE__ ) . '/presets/baseball.php';
@@ -11,7 +12,6 @@ include_once dirname( __FILE__ ) . '/presets/handball.php';
 include_once dirname( __FILE__ ) . '/presets/hockey.php';
 include_once dirname( __FILE__ ) . '/presets/racing.php';
 include_once dirname( __FILE__ ) . '/presets/rugby.php';
-include_once dirname( __FILE__ ) . '/presets/soccer.php';
 include_once dirname( __FILE__ ) . '/presets/swimming.php';
 include_once dirname( __FILE__ ) . '/presets/tennis.php';
 include_once dirname( __FILE__ ) . '/presets/volleyball.php';
