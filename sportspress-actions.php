@@ -55,11 +55,16 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			echo get_post_meta ( $post_id, 'sp_team' ) ? sp_the_posts( $post_id, 'sp_team', '', '<br />', $result, ( empty( $result ) ? ' — ' : ' ' ) ) : '—';
 			break;
 		case 'sp_equation':
-			echo str_replace(
-				array( '$', '+', '-', '*', '/' ),
-				array( '', '&plus;', '&minus;', '&times;', '&divide' ),
-				get_post_meta ( $post_id, 'sp_equation', true )
-			);
+			$equation = get_post_meta ( $post_id, 'sp_equation', true );
+			if ( $equation ):
+				echo str_replace(
+					array( '$', '+', '-', '*', '/' ),
+					array( '', '&plus;', '&minus;', '&times;', '&divide' ),
+					$equation
+				);
+			else:
+				echo '—';
+			endif;
 			break;
 		case 'sp_order':
 			$priority = get_post_meta ( $post_id, 'sp_priority', true );

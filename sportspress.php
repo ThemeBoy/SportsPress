@@ -31,7 +31,7 @@ include dirname( __FILE__ ) . '/sportspress-globals.php' ;
 require_once dirname( __FILE__ ) . '/sportspress-functions.php';
 
 // Settings
-include dirname( __FILE__ ) . '/sportspress-settings.php' ;
+include dirname( __FILE__ ) . '/admin/options/options.php' ;
 
 // Custom Post Types
 require_once dirname( __FILE__ ) . '/admin/post-types/separator.php';

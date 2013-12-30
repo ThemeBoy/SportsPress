@@ -2,7 +2,7 @@
 function sportspress_admin_menu() {
 
 	add_options_page(
-		__( 'SportsPress Settings', 'sportspress' ),
+		__( 'SportsPress', 'sportspress' ),
 		__( 'SportsPress', 'sportspress' ),
 		'manage_options',
 		'sportspress',
@@ -13,17 +13,26 @@ function sportspress_admin_menu() {
 add_action( 'admin_menu', 'sportspress_admin_menu' );
 
 function sportspress_settings() {
+
+	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'general';
+
 ?>
 	<div class="wrap">
-	
-		<div id="icon-options-general" class="icon32"></div>
-		<h2><?php _e( 'SportsPress Settings', 'sportspress' ); ?></h2>
+
+		<h2 class="nav-tab-wrapper">
+			<a href="?page=sportspress" class="nav-tab<?php echo $active_tab == 'general' ? ' nav-tab-active' : ''; ?>"><?php _e( 'SportsPress', 'sportspress' ); ?></a>
+			<a href="?page=sportspress&tab=config" class="nav-tab<?php echo $active_tab == 'config' ? ' nav-tab-active' : ''; ?>"><?php _e( 'Configure', 'sportspress' ); ?></a>
+		</h2>
 
 		<form method="post" action="options.php">
 			<?php
-			settings_fields( 'sportspress' );
-			do_settings_sections( 'sportspress' );
-			submit_button();
+				switch ( $active_tab ):
+					case 'config':
+						include 'config.php';
+						break;
+					default:
+						include 'general.php';
+				endswitch;
 			?>
 		</form>
 		
@@ -74,7 +83,7 @@ function sportspress_validate( $input ) {
 function sportspress_register_settings() {
 	
 	register_setting(
-		'sportspress',
+		'sportspress_general',
 		'sportspress',
 		'sportspress_validate'
 	);
@@ -83,14 +92,14 @@ function sportspress_register_settings() {
 		'general',
 		'',
 		'',
-		'sportspress'
+		'sportspress_general'
 	);
 	
 	add_settings_field(	
-		'sport',						
+		'sport',
 		__( 'Sport', 'sportspress' ),
 		'sportspress_sport_callback',	
-		'sportspress',
+		'sportspress_general',
 		'general'
 	);
 	
