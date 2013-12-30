@@ -50,8 +50,8 @@ require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
 require_once dirname( __FILE__ ) . '/admin/terms/league.php';
 require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 
-// Defaults
-include dirname( __FILE__ ) . '/sportspress-defaults.php';
+// Install
+include dirname( __FILE__ ) . '/install.php';
 
 // Hooks, Actions, and Filters
 require_once dirname( __FILE__ ) . '/sportspress-hooks.php';

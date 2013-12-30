@@ -8,10 +8,11 @@ function sp_statistic_cpt_init() {
 		'label' => $name,
 		'labels' => $labels,
 		'public' => false,
+		'show_ui' => true,
+		'show_in_menu' => false,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
 		'register_meta_box_cb' => 'sp_statistic_meta_init',
-		'show_in_menu' => 'edit.php?post_type=sp_event',
 		'capability_type' => 'sp_config'
 	);
 	register_post_type( 'sp_statistic', $args );
