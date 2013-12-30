@@ -69,7 +69,7 @@ jQuery(document).ready(function($){
 			if($(this).val() == '') $(this).remove();
 		}).find('option:first').text($(this).attr('data-remove-text'));
 		if($(this).val() != '') {
-			$(this).before($(this).clone().val($(this).val())).val('');
+			$(this).before($(this).clone().val($(this).val())).val('').change();
 		}
 	});
 
