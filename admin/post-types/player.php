@@ -12,6 +12,7 @@ function sp_player_cpt_init() {
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sp_player_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_player_slug', 'player' ) ),
+		'menu_icon' => 'dashicons-groups',
 		'capability_type' => 'sp_player'
 	);
 	register_post_type( 'sp_player', $args );
