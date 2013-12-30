@@ -10,7 +10,7 @@ if ( !function_exists( 'sportspress_install' ) ) {
 		    $role->add_cap( 'edit_sp_event' );
 		    $role->add_cap( 'edit_sp_events' );
 		    $role->add_cap( 'edit_others_sp_events' );
-		    $role->add_cap( 'delete_sp_events' );
+		    $role->add_cap( 'delete_sp_event' );
 		    $role->add_cap( 'publish_sp_events' );
 		    $role->add_cap( 'read_sp_events' );
 		    $role->add_cap( 'read_private_sp_events' );
@@ -19,7 +19,7 @@ if ( !function_exists( 'sportspress_install' ) ) {
 		    $role->add_cap( 'edit_sp_team' );
 		    $role->add_cap( 'edit_sp_teams' );
 		    $role->add_cap( 'edit_others_sp_teams' );
-		    $role->add_cap( 'delete_sp_teams' );
+		    $role->add_cap( 'delete_sp_team' );
 		    $role->add_cap( 'publish_sp_teams' );
 		    $role->add_cap( 'read_sp_teams' );
 		    $role->add_cap( 'read_private_sp_teams' );
@@ -28,7 +28,7 @@ if ( !function_exists( 'sportspress_install' ) ) {
 		    $role->add_cap( 'edit_sp_table' );
 		    $role->add_cap( 'edit_sp_tables' );
 		    $role->add_cap( 'edit_others_sp_tables' );
-		    $role->add_cap( 'delete_sp_tables' );
+		    $role->add_cap( 'delete_sp_table' );
 		    $role->add_cap( 'publish_sp_tables' );
 		    $role->add_cap( 'read_sp_tables' );
 		    $role->add_cap( 'read_private_sp_tables' );
@@ -37,7 +37,7 @@ if ( !function_exists( 'sportspress_install' ) ) {
 		    $role->add_cap( 'edit_sp_player' );
 		    $role->add_cap( 'edit_sp_players' );
 		    $role->add_cap( 'edit_others_sp_players' );
-		    $role->add_cap( 'delete_sp_players' );
+		    $role->add_cap( 'delete_sp_player' );
 		    $role->add_cap( 'publish_sp_players' );
 		    $role->add_cap( 'read_sp_players' );
 		    $role->add_cap( 'read_private_sp_players' );
@@ -46,7 +46,7 @@ if ( !function_exists( 'sportspress_install' ) ) {
 		    $role->add_cap( 'edit_sp_list' );
 		    $role->add_cap( 'edit_sp_lists' );
 		    $role->add_cap( 'edit_others_sp_lists' );
-		    $role->add_cap( 'delete_sp_lists' );
+		    $role->add_cap( 'delete_sp_list' );
 		    $role->add_cap( 'publish_sp_lists' );
 		    $role->add_cap( 'read_sp_lists' );
 		    $role->add_cap( 'read_private_sp_lists' );
@@ -55,19 +55,24 @@ if ( !function_exists( 'sportspress_install' ) ) {
 		    $role->add_cap( 'edit_sp_staff' );
 		    $role->add_cap( 'edit_sp_staffs' );
 		    $role->add_cap( 'edit_others_sp_staffs' );
-		    $role->add_cap( 'delete_sp_staffs' );
+		    $role->add_cap( 'delete_sp_staff' );
 		    $role->add_cap( 'publish_sp_staffs' );
 		    $role->add_cap( 'read_sp_staffs' );
 		    $role->add_cap( 'read_private_sp_staffs' );
 
 		    // Settings
-		    $role->add_cap( 'edit_sp_config' );
-		    $role->add_cap( 'edit_sp_configs' );
-		    $role->add_cap( 'edit_others_sp_configs' );
-		    $role->add_cap( 'delete_sp_configs' );
-		    $role->add_cap( 'publish_sp_configs' );
 		    $role->add_cap( 'read_sp_configs' );
 		    $role->add_cap( 'read_private_sp_configs' );
+		    $role->add_cap( 'edit_sp_config' );
+		    $role->add_cap( 'edit_sp_configs' );
+		    $role->add_cap( 'edit_published_sp_configs' );
+		    $role->add_cap( 'edit_private_sp_configs' );
+		    $role->add_cap( 'edit_others_sp_configs' );
+		    $role->add_cap( 'delete_sp_config' );
+		    $role->add_cap( 'delete_published_sp_configs' );
+		    $role->add_cap( 'delete_private_sp_configs' );
+		    $role->add_cap( 'delete_others_sp_configs' );
+		    $role->add_cap( 'publish_sp_configs' );
 
 		    // Team Manager
 			remove_role( 'sp_team_manager' );
@@ -81,13 +86,13 @@ if ( !function_exists( 'sportspress_install' ) ) {
 			        'read_sp_players' => true,
 			        'edit_sp_players' => true,
 			        'edit_others_sp_players' => true,
-			        'delete_sp_players' => true,
+			        'delete_sp_player' => true,
 			        'publish_sp_players' => true,
-			        'read_sp_staff' => true,
-			        'edit_sp_staff' => true,
-			        'edit_others_sp_staff' => true,
+			        'read_sp_staffs' => true,
+			        'edit_sp_staffs' => true,
+			        'edit_others_sp_staffs' => true,
 			        'delete_sp_staff' => true,
-			        'publish_sp_staff' => true
+			        'publish_sp_staffs' => true
 			    )
 			);
 
@@ -100,8 +105,8 @@ if ( !function_exists( 'sportspress_install' ) ) {
 			        'read' => true,
 			        'edit_posts' => true,
 			        'delete_posts' => true,
-			        'read_sp_staff' => true,
-			        'edit_sp_staff' => true,
+			        'read_sp_staffs' => true,
+			        'edit_sp_staffs' => true,
 			        'delete_sp_staff' => true
 			    )
 			);
@@ -117,7 +122,7 @@ if ( !function_exists( 'sportspress_install' ) ) {
 			        'delete_posts' => true,
 			        'read_sp_players' => true,
 			        'edit_sp_players' => true,
-			        'delete_sp_players' => true
+			        'delete_sp_player' => true
 			    )
 			);
 
@@ -170,5 +175,5 @@ if ( !function_exists( 'sportspress_install' ) ) {
 
     }
 }
-sportspress_install();
+add_action( 'admin_init', 'sportspress_install', 1 );
 ?>
