@@ -12,6 +12,7 @@ function sp_event_cpt_init() {
 		'supports' => array( 'title', 'author', 'comments' ),
 		'register_meta_box_cb' => 'sp_event_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_event_slug', 'event' ) ),
+		'menu_icon' => 'dashicons-calendar',
 		'capability_type' => 'sp_event'
 	);
 	register_post_type( 'sp_event', $args );

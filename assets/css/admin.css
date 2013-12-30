@@ -8,6 +8,7 @@
 #adminmenu #menu-posts-sp_tournament div.wp-menu-image,
 #adminmenu #menu-posts-sp_venue div.wp-menu-image {
 	background-image: url(../images/menu.png);
+	background-image: none;
 	background-repeat: no-repeat;
 	background-position: 1px -33px;
 }
