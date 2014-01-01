@@ -779,14 +779,40 @@ if ( !function_exists( 'sportspress_render_option_field' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_solve' ) ) {
+	function sp_solve( $equation, $vars ) {
+
+		// Clearance to begin calculating remains true if all equation variables are in vars
+		$clearance = true;
+
+		// Check if each variable part is in vars
+		$parts = explode( ' ', $equation );
+		foreach( $parts as $key => $value ):
+			if ( substr( $value, 0, 1 ) == '$' ):
+				if ( ! array_key_exists( preg_replace( "/[^a-z]/", '', $value ), $vars ) )
+					$clearance = false;
+			endif;
+		endforeach;
+
+		if ( $clearance ):
+			// Equation Operating System
+			$eos = new eqEOS();
+
+			// Solve using EOS
+			return $eos->solveIF( str_replace( ' ', '', $equation ), $vars );
+		else:
+			return 0;
+		endif;
+
+	}
+
+}
+
 if ( !function_exists( 'sp_get_table' ) ) {
 	function sp_get_table( $post_id, $breakdown = false ) {
 		$div_id = sp_get_the_term_id( $post_id, 'sp_league', 0 );
 		$team_ids = (array)get_post_meta( $post_id, 'sp_team', false );
 		$table_stats = (array)get_post_meta( $post_id, 'sp_teams', true );
-
-		// Equation Operating System
-		$eos = new eqEOS();
 
 		// Get labels from result variables
 		$result_labels = (array)sp_get_var_labels( 'sp_result' );
@@ -915,7 +941,11 @@ if ( !function_exists( 'sp_get_table' ) ) {
 
 			foreach ( $stats as $stat ):
 				if ( sp_array_value( $placeholders[ $team_id ], $stat->post_name, '' ) == '' ):
-					$placeholders[ $team_id ][ $stat->post_name ] = $eos->solveIF( str_replace( ' ', '', $stat->equation ), sp_array_value( $totals, $team_id, array() ) );
+					if ( sizeof( $events ) > 0 ):
+						$placeholders[ $team_id ][ $stat->post_name ] = sp_solve( $stat->equation, sp_array_value( $totals, $team_id, array() ) );
+					else:
+						$placeholders[ $team_id ][ $stat->post_name ] = 0;
+					endif;
 				endif;
 			endforeach;
 		endforeach;
@@ -1126,8 +1156,11 @@ if ( !function_exists( 'sp_get_list' ) ) {
 					else:
 
 						// Calculate value
-						$placeholders[ $player_id ][ $statistic->post_name ] = $eos->solveIF( str_replace( ' ', '', $statistic->equation ), sp_array_value( $totals, $player_id, array() ) );
-
+						if ( sizeof( $events ) > 0 ):
+							$placeholders[ $player_id ][ $statistic->post_name ] = sp_solve( $statistic->equation, sp_array_value( $totals, $player_id, array() ) );
+						else:
+							$placeholders[ $player_id ][ $statistic->post_name ] = 0;
+						endif;
 					endif;
 				endif;
 			endforeach;

@@ -134,7 +134,11 @@ function sp_team_columns_meta( $post ) {
 		// Generate array of placeholder values for each league
 		$placeholders[ $div_id ] = array();
 		foreach ( $equations as $key => $value ):
-			$placeholders[ $div_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), $totals );
+			if ( sizeof( $events ) > 0 ):
+				$placeholders[ $div_id ][ $key ] = sp_solve( $value, $totals );
+			else:
+				$placeholders[ $div_id ][ $key ] = 0;
+			endif;
 		endforeach;
 
 	endforeach;
