@@ -146,7 +146,11 @@ function sp_player_stats_meta( $post ) {
 				else:
 
 					// Calculate value
-					$placeholders[ $team_id ][ $div_id ][ $key ] = $eos->solveIF( str_replace( ' ', '', $value ), $totals );
+					if ( sizeof( $events ) > 0 ):
+						$placeholders[ $team_id ][ $div_id ][ $key ] = sp_solve( $value, $totals );
+					else:
+						$placeholders[ $team_id ][ $div_id ][ $key ] = 0;
+					endif;
 
 				endif;
 

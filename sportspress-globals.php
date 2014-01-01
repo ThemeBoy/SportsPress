@@ -67,4 +67,6 @@ $sportspress_thumbnail_texts = array(
 		'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) )
 	)
 );
+
+add_option( 'sp_event_team_count', 2 ); // TODO: dynamic team appending
 ?>
