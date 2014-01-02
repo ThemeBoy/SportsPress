@@ -170,6 +170,9 @@ function sp_save_post( $post_id ) {
 			// Update player array
 			sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
 
+			// Update staff array
+			sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
+
 			break;
 
 		case ( 'sp_result' ):
