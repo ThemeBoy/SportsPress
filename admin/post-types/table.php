@@ -47,7 +47,6 @@ function sp_table_team_meta( $post, $test ) {
 		<p class="sp-tab-select">
 			<?php
 			$args = array(
-				'show_option_none' =>  sprintf( __( 'Select %s', 'sportspress' ), __( 'League', 'sportspress' ) ),
 				'taxonomy' => 'sp_league',
 				'name' => 'sp_league',
 				'selected' => $league_id,
