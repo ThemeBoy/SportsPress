@@ -27,18 +27,19 @@ jQuery(document).ready(function($){
 	// Trigger tab filter
 	$('.sp-tab-panel').siblings('.sp-tab-select').find('select').change();
 
-	// Title changer
-	$('input[name=post_title]').on('updateTitle', function() {
-		title = $('.sp-title-generator select[value!=0]').map(function(){
-			return $(this).find(':selected').html().replace(/&[^;]+;/g, '');
-		}).get().join(' vs ');
-		$(this).val(title);
+	// Self-cloning
+	$('.sp-clone:last').find('select').change(function() {
+		$(this).closest('.sp-clone').siblings().find('select').change(function() {
+			if($(this).val() == '0') $(this).closest('.sp-clone').remove();
+		}).find('option:first').text($(this).closest('.sp-clone').attr('data-remove-text'));
+		if($(this).val() != '0') {
+			$original = $(this).closest('.sp-clone');
+			$original.before($original.clone().find('select').attr('name', $original.attr('data-clone-name') + '[]').val($(this).val()).closest('.sp-clone')).attr('data-clone-num', parseInt($original.attr('data-clone-num')) + 1).find('select').val('0').change();
+		}
 	});
 
-	// Activate title changer
-	$('.sp-title-generator select').change(function() {
-		$('input[name=post_title]').trigger('updateTitle');
-	});
+	// Activate self-cloning
+	$('.sp-clone:last').find('select').change();
 
 	// Total stats calculator
 	$('.sp-data-table .sp-total input').on('updateTotal', function() {
