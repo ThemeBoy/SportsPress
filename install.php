@@ -176,4 +176,30 @@ if ( !function_exists( 'sportspress_install' ) ) {
     }
 }
 add_action( 'admin_init', 'sportspress_install', 1 );
+
+// Flush rewrite rules on activation
+function sp_rewrite_flush() {
+    sp_event_cpt_init();
+    sp_result_cpt_init();
+    sp_outcome_cpt_init();
+    sp_column_cpt_init();
+    sp_statistic_cpt_init();
+    sp_team_cpt_init();
+    sp_table_cpt_init();
+    sp_player_cpt_init();
+    sp_list_cpt_init();
+    sp_staff_cpt_init();
+    flush_rewrite_rules();
+}
+register_activation_hook( __FILE__, 'sp_rewrite_flush' );
+
+function sp_admin_head_edit() {
+	global $typenow;
+
+	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic' ) ) ):
+		sp_highlight_admin_menu();
+	endif;
+}
+add_action( 'admin_head-edit.php', 'sp_admin_head_edit', 10, 2 );
+add_action( 'admin_head-post.php', 'sp_admin_head_edit', 10, 2 );
 ?>

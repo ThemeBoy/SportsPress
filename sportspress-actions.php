@@ -78,6 +78,14 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 				echo '—';
 			endif;
 			break;
+		case 'sp_abbreviation':
+			$abbreviation = get_post_meta ( $post_id, 'sp_abbreviation', true );
+			if ( $abbreviation ):
+				echo $abbreviation;
+			else:
+				echo get_the_title( $post_id );
+			endif;
+			break;
 		case 'sp_player':
 			echo sp_the_posts( $post_id, 'sp_player' );
 			break;
@@ -101,7 +109,13 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 add_action( 'manage_posts_custom_column', 'sp_manage_posts_custom_column', 10, 2 );
 add_action( 'manage_pages_custom_column', 'sp_manage_posts_custom_column', 10, 2 );
 
+function sp_manage_posts_columns() {
+	sp_highlight_admin_menu();
+}
+add_action( 'manage_posts_columns', 'sp_manage_posts_columns' );
+
 function sp_restrict_manage_posts() {
+	sp_highlight_admin_menu();
 	global $typenow, $wp_query;
 	if ( in_array( $typenow, array( 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_list', 'sp_tournament' ) ) ):
 		$selected = isset( $_REQUEST['sp_team'] ) ? $_REQUEST['sp_team'] : null;
@@ -184,8 +198,8 @@ function sp_save_post( $post_id ) {
 
 		case ( 'sp_outcome' ):
 
-			// Update equation as string
-			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
+			// Update abbreviation as string
+			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
 
 			break;
 
