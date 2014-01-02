@@ -29,13 +29,12 @@ function sp_event_display_scheduled( $posts ) {
 add_filter( 'the_posts', 'sp_event_display_scheduled' );
 
 function sp_event_meta_init( $post ) {
-	$limit = get_option( 'sp_event_team_count' );
-	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
+	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 
 	remove_meta_box( 'submitdiv', 'sp_event', 'side' );
 	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_event_team_meta', 'sp_event', 'side', 'high' );
-	if ( $teams != array_pad( array_slice( array(), 0, $limit ), $limit, 0 ) ):
+	if ( sizeof( $teams ) > 0 ):
 		add_meta_box( 'sp_playersdiv', __( 'Players', 'sportspress' ), 'sp_event_players_meta', 'sp_event', 'normal', 'high' );
 		add_meta_box( 'sp_resultsdiv', __( 'Results', 'sportspress' ), 'sp_event_results_meta', 'sp_event', 'normal', 'high' );
 	endif;
@@ -43,20 +42,20 @@ function sp_event_meta_init( $post ) {
 }
 
 function sp_event_team_meta( $post ) {
-	$limit = get_option( 'sp_event_team_count' );
-	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
+	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
-	for ( $i = 0; $i < $limit; $i++ ):
-		?>
-		<div>
+	foreach ( $teams as $key => $value ):
+	?>
+		<div class="sp-clone">
 			<p class="sp-tab-select sp-title-generator">
 				<?php
 				$args = array(
 					'post_type' => 'sp_team',
 					'name' => 'sp_team[]',
 					'class' => 'sportspress-pages',
-					'show_option_none' => sprintf( __( 'Select %s' ), 'Team' ),
-					'selected' => $teams[ $i ]
+					'show_option_none' => sprintf( __( 'Remove', 'sportspress' ), 'Team' ),
+					'option_none_value' => '0',
+					'selected' => $value
 				);
 				wp_dropdown_pages( $args );
 				?>
@@ -66,20 +65,32 @@ function sp_event_team_meta( $post ) {
 				<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
 			</ul>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_team', $i );
-			sp_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_team', $i );
+			sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_team', $key );
+			sp_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_team', $key );
 			?>
 		</div>
-		<?php
-	endfor;
+	<?php endforeach; ?>
+	<div class="sp-clone" data-remove-text="<?php _e( 'Remove', 'sportspress' ); ?>" data-clone-name="sp_team">
+		<p class="sp-tab-select sp-title-generator">
+			<?php
+			$args = array(
+				'post_type' => 'sp_team',
+				'name' => 'sp_team_selector',
+				'class' => 'sportspress-pages',
+				'show_option_none' => sprintf( __( 'Select %s', 'sportspress' ), 'Team' ),
+				'option_none_value' => '0'
+			);
+			wp_dropdown_pages( $args );
+			?>
+		</p>
+	</div>
+	<?php
 	sp_post_adder( 'sp_team' );
 	sp_nonce();
 }
 
 function sp_event_players_meta( $post ) {
-	$limit = get_option( 'sp_event_team_count' );
-	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
-
+	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
 
 	// Get columns from result variables
@@ -104,33 +115,21 @@ function sp_event_players_meta( $post ) {
 }
 
 function sp_event_results_meta( $post ) {
-	$limit = get_option( 'sp_event_team_count' );
-	$teams = array_pad( array_slice( (array)get_post_meta( $post->ID, 'sp_team', false ), 0, $limit ), $limit, 0 );
-	
-	// Teams
-	if ( $teams == array_pad( array_slice( array(), 0, $limit ), $limit, 0 ) ):
+	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 
-		?>
-		<p><strong><?php echo $team_id ? get_the_title( $team_id ) : sprintf( __( 'Select %s' ), 'Teams' ); ?></strong></p>
-		<?php
+	$results = (array)get_post_meta( $post->ID, 'sp_results', true );
 
-	else:
+	// Get columns from result variables
+	$columns = sp_get_var_labels( 'sp_result' );
 
-		$results = (array)get_post_meta( $post->ID, 'sp_results', true );
+	// Get results for all teams
+	$data = sp_array_combine( $teams, $results );
 
-		// Get columns from result variables
-		$columns = sp_get_var_labels( 'sp_result' );
-
-		// Get results for all teams
-		$data = sp_array_combine( $teams, $results );
-
-		?>
-		<div>
-			<?php sp_event_results_table( $columns, $data ); ?>
-		</div>
-		<?php
-
-	endif;
+	?>
+	<div>
+		<?php sp_event_results_table( $columns, $data ); ?>
+	</div>
+	<?php
 }
 
 function sp_event_article_meta( $post ) {

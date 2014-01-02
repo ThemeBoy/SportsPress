@@ -25,7 +25,7 @@ $sportspress_texts = array(
 		'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Logo', 'sportspress' ) )
 	),
 	'sp_event' => array(
-		'Enter title here' => '',
+		'Enter title here' => __( '(no title)', 'sportspress' ),
 		'Scheduled for: <b>%1$s</b>' => __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>',
 		'Published on: <b>%1$s</b>' => __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>',
 		'Publish <b>immediately</b>' => __( 'Kick-off', 'sportspress' ) . ': <b>%1$s</b>'
@@ -67,6 +67,4 @@ $sportspress_thumbnail_texts = array(
 		'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) )
 	)
 );
-
-add_option( 'sp_event_team_count', 2 ); // TODO: dynamic team appending
 ?>

@@ -74,13 +74,45 @@ function sp_sanitize_title( $title ) {
 		$title = preg_replace( "/[^a-z]/", '', $title );
 
 		// Convert post ID to words if title is empty
-		if ( $title == '' ) $title = sp_numbers_to_words( $_POST['ID'] );
+		if ( $title == '' ):
+
+			$title = sp_numbers_to_words( $_POST['ID'] );
+
+		endif;
+
+	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && $_POST['post_type'] == 'sp_event' ):
+
+		// Auto slug generation
+		if ( $_POST['post_title'] == '' && ( $_POST['post_name'] == '' || is_int( $_POST['post_name'] ) ) ):
+
+			$title = '';
+
+		endif;
 
 	endif;
 
 	return $title;
 }
 add_filter( 'sanitize_title', 'sp_sanitize_title' );
+
+function sp_insert_post_data( $data, $postarr ) {
+  
+	if( $data['post_type'] == 'sp_event' && $data['post_title'] == '' ):
+
+			$teams = (array)$postarr['sp_team'];
+
+			$team_names = array();
+			foreach( $teams as $team ):
+				$team_names[] = get_the_title( $team );
+			endforeach;
+
+			$data['post_title'] = implode( ' ' . __( 'vs', 'sportspress' ) . ' ', $team_names );
+
+	endif;
+
+	return $data;
+}
+add_filter( 'wp_insert_post_data' , 'sp_insert_post_data' , '99', 2 );
 
 function sp_pre_get_posts( $wp_query ) {
 	if ( is_admin() ):
