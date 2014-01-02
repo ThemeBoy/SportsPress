@@ -175,7 +175,7 @@ if ( !function_exists( 'sp_dropdown_pages' ) ) {
 }
 
 if ( !function_exists( 'sp_the_posts' ) ) {
-	function sp_the_posts( $post_id = null, $meta = 'post', $before = '', $sep = ', ', $after = '', $delimiter = ' - ' ) {
+	function sp_the_posts( $post_id = null, $meta = 'post' ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		$ids = get_post_meta( $post_id, $meta, false );
@@ -186,34 +186,19 @@ if ( !function_exists( 'sp_the_posts' ) ) {
 		if ( isset( $ids ) && $ids && is_array( $ids ) && !empty( $ids ) ):
 			foreach ( $ids as $id ):
 				if ( !$id ) continue;
-				if ( !empty( $before ) ):
-					if ( is_array( $before ) && array_key_exists( $i, $before ) )
-						echo $before[ $i ] . ' - ';
-					else
-						echo $before;
-				endif;
 				$parents = get_post_ancestors( $id );
 				$parents = array_combine( array_keys( $parents ), array_reverse( array_values( $parents ) ) );
 				foreach ( $parents as $parent ):
 					if ( !in_array( $parent, $ids ) )
 						edit_post_link( get_the_title( $parent ), '', '', $parent );
-					echo $delimiter;
+					echo ' - ';
 				endforeach;
 				$title = get_the_title( $id );
 				if ( empty( $title ) )
 					$title = __( '(no title)', 'sportspress' );
 				edit_post_link( $title, '', '', $id );
-				if ( !empty( $after ) ):
-					if ( is_array( $after ) ):
-						if ( array_key_exists( $i, $after ) && $after[ $i ] != '' ):
-							echo ' - ' . $after[ $i ];
-						endif;
-					else:
-						echo $after;
-					endif;
-				endif;
 				if ( ++$i !== $count )
-					echo $sep;
+					echo ', ';
 			endforeach;
 		endif;
 	}

@@ -23,7 +23,8 @@ function sp_outcome_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
-		'sp_abbreviation' => __( 'Abbreviation', 'sportspress' )
+		'sp_abbreviation' => __( 'Abbreviation', 'sportspress' ),
+		'sp_key' => __( 'Key', 'sportspress' )
 	);
 	return $columns;
 }
