@@ -132,17 +132,28 @@
 		<tr>
 			<th><?php _e( 'Label', 'sportspress' ); ?></th>
 			<th><?php _e( 'Key', 'sportspress' ); ?></th>
+			<th><?php _e( 'Abbreviation', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
 	<?php $i = 0; foreach ( $data as $row ): ?>
 		<tr<?php if ( $i % 2 ) echo ' class="alternate"'; ?>>
 			<td class="row-title"><?php echo $row->post_title; ?></td>
 			<td><?php echo $row->post_name; ?></td>
+			<td>
+				<?php
+					$abbreviation = get_post_meta ( $row->ID, 'sp_abbreviation', true );
+					if ( $abbreviation ):
+						echo $abbreviation;
+					else:
+						echo $row->post_title;
+					endif;
+				?>
+			</td>
 		</tr>
 	<?php $i++; endforeach; ?>
 	<tfoot>
 		<tr>
-			<th colspan="2"><a href="<?php echo admin_url( 'edit.php?post_type=sp_result' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Results', 'sportspress' ) ); ?></a></th>
+			<th colspan="3"><a href="<?php echo admin_url( 'edit.php?post_type=sp_result' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Results', 'sportspress' ) ); ?></a></th>
 		</tr>
 	</tfoot>
 </table>
@@ -163,17 +174,28 @@
 		<tr>
 			<th><?php _e( 'Label', 'sportspress' ); ?></th>
 			<th><?php _e( 'Key', 'sportspress' ); ?></th>
+			<th><?php _e( 'Abbreviation', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
 	<?php $i = 0; foreach ( $data as $row ): ?>
 		<tr<?php if ( $i % 2 ) echo ' class="alternate"'; ?>>
 			<td class="row-title"><?php echo $row->post_title; ?></td>
 			<td><?php echo $row->post_name; ?></td>
+			<td>
+				<?php
+					$abbreviation = get_post_meta ( $row->ID, 'sp_abbreviation', true );
+					if ( $abbreviation ):
+						echo $abbreviation;
+					else:
+						echo $row->post_title;
+					endif;
+				?>
+			</td>
 		</tr>
 	<?php $i++; endforeach; ?>
 	<tfoot>
 		<tr>
-			<th colspan="2"><a href="<?php echo admin_url( 'edit.php?post_type=sp_outcome' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Outcomes', 'sportspress' ) ); ?></a></th>
+			<th colspan="3"><a href="<?php echo admin_url( 'edit.php?post_type=sp_outcome' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Outcomes', 'sportspress' ) ); ?></a></th>
 		</tr>
 	</tfoot>
 </table>

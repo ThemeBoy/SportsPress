@@ -207,8 +207,8 @@ function sp_save_post( $post_id ) {
 
 		case ( 'sp_result' ):
 
-			// Update equation as string
-			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
+			// Update abbreviation as string
+			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
 
 			break;
 
@@ -230,12 +230,18 @@ function sp_save_post( $post_id ) {
 			// Update sort order as string
 			update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', 'DESC' ) );
 
+			// Update abbreviation as string
+			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
+
 			break;
 
 		case ( 'sp_statistic' ):
 
 			// Update equation as string
 			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
+
+			// Update abbreviation as string
+			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
 
 			break;
 

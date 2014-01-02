@@ -24,7 +24,8 @@ function sp_statistic_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
 		'sp_equation' => __( 'Equation', 'sportspress' ),
-		'sp_key' => __( 'Key', 'sportspress' )
+		'sp_key' => __( 'Key', 'sportspress' ),
+		'sp_abbreviation' => __( 'Abbreviation', 'sportspress' )
 	);
 	return $columns;
 }
@@ -36,16 +37,19 @@ function sp_statistic_meta_init() {
 
 function sp_statistic_equation_meta( $post ) {
 	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
+	$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
 	?>
-	<div>
-		<p class="sp-equation-selector">
-			<?php
-			foreach ( $equation as $piece ):
-				sp_get_equation_selector( $post->ID, $piece, array( 'player_event' ) );
-			endforeach;
-			?>
-		</p>
-	</div>
+	<p class="sp-equation-selector">
+		<?php
+		foreach ( $equation as $piece ):
+			sp_get_equation_selector( $post->ID, $piece, array( 'player_event' ) );
+		endforeach;
+		?>
+	</p>
+	<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
+	<p>
+		<input name="sp_abbreviation" type="text" size="4" id="sp_abbreviation" value="<?php echo $abbreviation; ?>">
+	</p>
 	<?php
 	sp_nonce();
 }
