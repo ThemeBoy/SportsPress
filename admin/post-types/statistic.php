@@ -24,6 +24,7 @@ function sp_statistic_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
 		'sp_equation' => __( 'Equation', 'sportspress' ),
+		'sp_key' => __( 'Key', 'sportspress' )
 	);
 	return $columns;
 }

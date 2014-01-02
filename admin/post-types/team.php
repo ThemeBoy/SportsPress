@@ -106,13 +106,13 @@ function sp_team_columns_meta( $post ) {
 		$events = get_posts( $args );
 
 		foreach( $events as $event ):
-			$totals['eventsplayed']++;
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			foreach ( $results as $team_id => $team_result ):
 				foreach ( $team_result as $key => $value ):
 					if ( $team_id == $post->ID ):
 						if ( $key == 'outcome' ):
 							if ( array_key_exists( $value, $totals ) ):
+								$totals['eventsplayed']++;
 								$totals[ $value ]++;
 							endif;
 						else:

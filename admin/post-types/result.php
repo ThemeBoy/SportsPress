@@ -21,7 +21,8 @@ add_action( 'init', 'sp_result_cpt_init' );
 function sp_result_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'title' => __( 'Label', 'sportspress' )
+		'title' => __( 'Label', 'sportspress' ),
+		'sp_key' => __( 'Key', 'sportspress' )
 	);
 	return $columns;
 }

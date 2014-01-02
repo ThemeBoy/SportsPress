@@ -51,8 +51,21 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '—';
 			break;
 		case 'sp_team':
-			$result = get_post_meta( $post_id, 'sp_result', false );
-			echo get_post_meta ( $post_id, 'sp_team' ) ? sp_the_posts( $post_id, 'sp_team', '', '<br />', $result, ( empty( $result ) ? ' — ' : ' ' ) ) : '—';
+			$results = get_post_meta( $post_id, 'sp_results', true );
+			$teams = get_post_meta ( $post_id, 'sp_team', false );
+			foreach( $teams as $team_id ):
+				$team = get_post( $team_id );
+				$outcome_slug = sp_array_value( sp_array_value( $results, $team_id, null ), 'outcome', null );
+
+				$args=array(
+					'name' => $outcome_slug,
+					'post_type' => 'sp_outcome',
+					'post_status' => 'publish',
+					'posts_per_page' => 1
+				);
+				$outcomes = get_posts( $args );
+				echo $team->post_title . ( $outcomes ? ' — ' . $outcomes[0]->post_title : '' ) . '<br>';
+			endforeach;
 			break;
 		case 'sp_equation':
 			$equation = get_post_meta ( $post_id, 'sp_equation', true );
@@ -85,6 +98,9 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			else:
 				echo get_the_title( $post_id );
 			endif;
+			break;
+		case 'sp_key':
+			echo $post->post_name;
 			break;
 		case 'sp_player':
 			echo sp_the_posts( $post_id, 'sp_player' );

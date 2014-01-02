@@ -24,7 +24,8 @@ function sp_column_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
 		'sp_equation' => __( 'Equation', 'sportspress' ),
-		'sp_order' => __( 'Sort Order', 'sportspress' )
+		'sp_order' => __( 'Sort Order', 'sportspress' ),
+		'sp_key' => __( 'Key', 'sportspress' )
 	);
 	return $columns;
 }
