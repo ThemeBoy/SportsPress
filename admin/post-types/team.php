@@ -74,7 +74,7 @@ function sp_team_columns_meta( $post ) {
 
 	foreach ( $div_ids as $div_id ):
 
-		$totals = array( 'eventsplayed' => 0 );
+		$totals = array( 'eventsplayed' => 0, 'streak' => 0 );
 
 		foreach ( $result_labels as $key => $value ):
 			$totals[ $key . 'for' ] = 0;
@@ -89,6 +89,7 @@ function sp_team_columns_meta( $post ) {
 			'post_type' => 'sp_event',
 			'numberposts' => -1,
 			'posts_per_page' => -1,
+			'order' => 'ASC',
 			'meta_query' => array(
 				array(
 					'key' => 'sp_team',
@@ -105,6 +106,9 @@ function sp_team_columns_meta( $post ) {
 		);
 		$events = get_posts( $args );
 
+		// Initialize streaks counter
+		$streak = array( 'name' => '', 'count' => 0 );
+
 		foreach( $events as $event ):
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			foreach ( $results as $team_id => $team_result ):
@@ -114,6 +118,14 @@ function sp_team_columns_meta( $post ) {
 							if ( array_key_exists( $value, $totals ) ):
 								$totals['eventsplayed']++;
 								$totals[ $value ]++;
+							endif;
+							if ( $value && $value != '-1' ):
+								if ( $streak['name'] == $value ):
+									$streak['count'] ++;
+								else:
+									$streak['name'] = $value;
+									$streak['count'] = 1;
+								endif;
 							endif;
 						else:
 							if ( array_key_exists( $key . 'for', $totals ) ):
@@ -130,6 +142,21 @@ function sp_team_columns_meta( $post ) {
 				endforeach;
 			endforeach;
 		endforeach;
+
+		// Compile streaks counter and add to totals
+		$args=array(
+			'name' => $streak['name'],
+			'post_type' => 'sp_outcome',
+			'post_status' => 'publish',
+			'posts_per_page' => 1
+		);
+		$outcomes = get_posts( $args );
+
+		if ( $outcomes ):
+			$outcome = $outcomes[0];
+			$abbreviation = get_post_meta( $outcome->ID, 'sp_abbreviation', true );
+			$totals['streak'] = ( $abbreviation ? $abbreviation : $outcome->post_title ) . $streak['count'];
+		endif;
 
 		// Generate array of placeholder values for each league
 		$placeholders[ $div_id ] = array();

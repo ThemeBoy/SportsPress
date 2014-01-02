@@ -25,7 +25,8 @@ function sp_column_edit_columns() {
 		'title' => __( 'Label', 'sportspress' ),
 		'sp_equation' => __( 'Equation', 'sportspress' ),
 		'sp_order' => __( 'Sort Order', 'sportspress' ),
-		'sp_key' => __( 'Key', 'sportspress' )
+		'sp_key' => __( 'Key', 'sportspress' ),
+		'sp_abbreviation' => __( 'Abbreviation', 'sportspress' )
 	);
 	return $columns;
 }
@@ -39,6 +40,7 @@ function sp_column_details_meta( $post ) {
 	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
 	$order = get_post_meta( $post->ID, 'sp_order', true );
 	$priority = get_post_meta( $post->ID, 'sp_priority', true );
+	$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
 	?>
 	<p><strong><?php _e( 'Equation', 'sportspress' ); ?></strong></p>
 	<p class="sp-equation-selector">
@@ -66,6 +68,10 @@ function sp_column_details_meta( $post ) {
 			endforeach;
 			?>
 		</select>
+	</p>
+	<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
+	<p>
+		<input name="sp_abbreviation" type="text" size="4" id="sp_abbreviation" value="<?php echo $abbreviation; ?>">
 	</p>
 	<?php
 	sp_nonce();

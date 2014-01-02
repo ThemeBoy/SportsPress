@@ -331,6 +331,7 @@ if ( !function_exists( 'sp_get_equation_selector' ) ) {
 					break;
 				case 'outcome':
 					$options[ __( 'Outcomes', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_outcome', array( 'max' => '&uarr;', 'min' => '&darr;' ) );
+					$options[ __( 'Outcomes', 'sportspress' ) ]['$streak'] = __( 'Streak', 'sportspress' );
 					break;
 				case 'column':
 					$options[ __( 'Columns', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_column' );
@@ -767,6 +768,10 @@ if ( !function_exists( 'sportspress_render_option_field' ) ) {
 if ( !function_exists( 'sp_solve' ) ) {
 	function sp_solve( $equation, $vars ) {
 
+		// Return direct value if streak
+		if ( str_replace( ' ', '', $equation ) == '$streak' )
+			return sp_array_value( $vars, 'streak', 0 );
+
 		// Clearance to begin calculating remains true if all equation variables are in vars
 		$clearance = true;
 
@@ -784,7 +789,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 			$eos = new eqEOS();
 
 			// Solve using EOS
-			return $eos->solveIF( str_replace( ' ', '', $equation ), $vars );
+			return round( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), 3 ); // TODO: add precision setting to each column with default set to 3
 		else:
 			return 0;
 		endif;
@@ -812,11 +817,16 @@ if ( !function_exists( 'sp_get_table' ) ) {
 		$totals = array();
 		$placeholders = array();
 
+		// Initialize streaks counter
+		$streaks = array();
+
 		foreach ( $team_ids as $team_id ):
 			if ( ! $team_id )
 				continue;
 
-			$totals[ $team_id ] = array( 'eventsplayed' => 0 );
+			$streaks[ $team_id ] = array( 'name' => '', 'count' => 0 );
+
+			$totals[ $team_id ] = array( 'eventsplayed' => 0, 'streak' => 0 );
 
 			foreach ( $result_labels as $key => $value ):
 				$totals[ $team_id ][ $key . 'for' ] = 0;
@@ -844,6 +854,7 @@ if ( !function_exists( 'sp_get_table' ) ) {
 			'post_type' => 'sp_event',
 			'numberposts' => -1,
 			'posts_per_page' => -1,
+			'order' => 'ASC',
 			'tax_query' => array(
 				array(
 					'taxonomy' => 'sp_league',
@@ -855,20 +866,26 @@ if ( !function_exists( 'sp_get_table' ) ) {
 		$events = get_posts( $args );
 
 		// Event loop
-		foreach( $events as $event ):
+		foreach ( $events as $event ):
 
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 
 			foreach ( $results as $team_id => $team_result ):
 
-				// Increment events played
-				$totals[ $team_id ]['eventsplayed']++;
-
 				foreach ( $team_result as $key => $value ):
 
 					if ( $key == 'outcome' ):
 						if ( array_key_exists( $value, $totals[ $team_id ] ) ):
+							$totals[ $team_id ]['eventsplayed']++;
 							$totals[ $team_id ][ $value ]++;
+						endif;
+						if ( $value && $value != '-1' ):
+							if ( $streaks[ $team_id ]['name'] == $value ):
+								$streaks[ $team_id ]['count'] ++;
+							else:
+								$streaks[ $team_id ]['name'] = $value;
+								$streaks[ $team_id ]['count'] = 1;
+							endif;
 						endif;
 					else:
 						if ( array_key_exists( $key . 'for', $totals[ $team_id ] ) ):
@@ -880,6 +897,23 @@ if ( !function_exists( 'sp_get_table' ) ) {
 
 			endforeach;
 
+		endforeach;
+
+		foreach ( $streaks as $team_id => $streak ):
+		// Compile streaks counter and add to totals
+			$args=array(
+				'name' => $streak['name'],
+				'post_type' => 'sp_outcome',
+				'post_status' => 'publish',
+				'posts_per_page' => 1
+			);
+			$outcomes = get_posts( $args );
+
+			if ( $outcomes ):
+				$outcome = $outcomes[0];
+				$abbreviation = get_post_meta( $outcome->ID, 'sp_abbreviation', true );
+				$totals[ $team_id ]['streak'] = ( $abbreviation ? $abbreviation : $outcome->post_title ) . $streak['count'];
+			endif;
 		endforeach;
 
 		$args = array(

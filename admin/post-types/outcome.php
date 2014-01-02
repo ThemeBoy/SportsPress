@@ -23,8 +23,8 @@ function sp_outcome_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
-		'sp_abbreviation' => __( 'Abbreviation', 'sportspress' ),
-		'sp_key' => __( 'Key', 'sportspress' )
+		'sp_key' => __( 'Key', 'sportspress' ),
+		'sp_abbreviation' => __( 'Abbreviation', 'sportspress' )
 	);
 	return $columns;
 }
@@ -39,7 +39,7 @@ function sp_outcome_details_meta( $post ) {
 	?>
 	<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 	<p>
-		<input name="sp_abbreviation" type="text" size="4" id="sp_abbreviation" value="<?php echo $abbreviation; ?>" placeholder="<?php echo get_the_title( $post->ID ); ?>">
+		<input name="sp_abbreviation" type="text" size="4" id="sp_abbreviation" value="<?php echo $abbreviation; ?>">
 	</p>
 	<?php
 	sp_nonce();
