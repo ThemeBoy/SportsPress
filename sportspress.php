@@ -53,9 +53,10 @@ require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 // Install
 include dirname( __FILE__ ) . '/install.php';
 
-// Hooks, Actions, and Filters
-require_once dirname( __FILE__ ) . '/sportspress-hooks.php';
+// Actions
 require_once dirname( __FILE__ ) . '/sportspress-actions.php';
+
+// Filters
 require_once dirname( __FILE__ ) . '/sportspress-filters.php';
 
 // Admin Styles

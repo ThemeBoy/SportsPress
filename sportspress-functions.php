@@ -463,7 +463,7 @@ if ( !function_exists( 'sp_league_table' ) ) {
 					if ( !$team_id ) continue;
 					$div = get_term( $team_id, 'sp_league' );
 					?>
-					<tr class="sp-row sp-post<?php if ( $i % 2 ) echo ' alternate'; ?>">
+					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 						<td>
 							<?php echo get_the_title( $team_id ); ?>
 						</td>
@@ -503,7 +503,7 @@ if ( !function_exists( 'sp_player_table' ) ) {
 					if ( !$player_id ) continue;
 					$div = get_term( $player_id, 'sp_league' );
 					?>
-					<tr class="sp-row sp-post<?php if ( $i % 2 ) echo ' alternate'; ?>">
+					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 						<td>
 							<?php echo get_the_title( $player_id ); ?>
 						</td>
@@ -541,7 +541,7 @@ if ( !function_exists( 'sp_team_columns_table' ) ) {
 				$i = 0;
 				if ( empty( $data ) ):
 					?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 ) echo ' alternate'; ?>">
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td><strong><?php printf( __( 'Select %s', 'sportspress' ), __( 'League', 'sportspress' ) ); ?></strong></td>
 						</tr>
 					<?php
@@ -550,7 +550,7 @@ if ( !function_exists( 'sp_team_columns_table' ) ) {
 						if ( !$div_id ) continue;
 						$div = get_term( $div_id, 'sp_league' );
 						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 ) echo ' alternate'; ?>">
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
 								<?php echo $div->name; ?>
 							</td>
@@ -598,7 +598,7 @@ if ( !function_exists( 'sp_player_statistics_table' ) ) {
 						if ( !$div_id ) continue;
 						$div = get_term( $div_id, 'sp_league' );
 						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 ) echo ' alternate'; ?>">
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
 								<?php echo $div->name; ?>
 							</td>
@@ -639,7 +639,7 @@ if ( !function_exists( 'sp_event_results_table' ) ) {
 				foreach ( $data as $team_id => $team_results ):
 					if ( !$team_id ) continue;
 					?>
-					<tr class="sp-row sp-post<?php if ( $i % 2 ) echo ' alternate'; ?>">
+					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 						<td>
 							<?php echo get_the_title( $team_id ); ?>
 						</td>
@@ -692,7 +692,7 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 				foreach ( $data as $player_id => $player_statistics ):
 					if ( !$player_id ) continue;
 					?>
-					<tr class="sp-row sp-post<?php if ( $i % 2 ) echo ' alternate'; ?>">
+					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 						<td>
 							<?php echo get_the_title( $player_id ); ?>
 						</td>
@@ -706,7 +706,7 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 					$i++;
 				endforeach;
 				?>
-				<tr class="sp-row sp-total<?php if ( $i % 2 ) echo ' alternate'; ?>">
+				<tr class="sp-row sp-total<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 					<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
 					<?php foreach( $columns as $column => $label ):
 						$player_id = 0;
@@ -1326,6 +1326,15 @@ if ( !function_exists( 'sp_get_list_html' ) ) {
 
 		return $output;
 
+	}
+}
+
+
+if ( !function_exists( 'sp_highlight_admin_menu' ) ) {
+	function sp_highlight_admin_menu() {
+		global $parent_file, $submenu_file;
+		$parent_file = 'options-general.php';
+		$submenu_file = 'sportspress';
 	}
 }
 ?>
