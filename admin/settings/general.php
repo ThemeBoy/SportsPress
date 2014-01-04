@@ -1,3 +1,4 @@
+<h3 class="title"><?php _e( 'General Settings', 'sportspress' ); ?></h3>
 <?php
 
 	settings_fields( 'sportspress_general' );

@@ -51,7 +51,7 @@ require_once dirname( __FILE__ ) . '/admin/terms/season.php';
 require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 
 // Presets
-include dirname( __FILE__ ) . '/presets/presets.php' ;
+include dirname( __FILE__ ) . '/admin/presets/presets.php' ;
 
 // Install
 include dirname( __FILE__ ) . '/install.php';

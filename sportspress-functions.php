@@ -388,19 +388,17 @@ if ( !function_exists( 'sp_get_var_labels' ) ) {
 			'orderby' => 'menu_order',
 			'order' => 'ASC'
 		);
-		if ( $independent ):
-			$args['meta_query'] = array(
-				array(
-					'key' => 'sp_equation',
-					'value'=>''
-				)
-			);
-		endif;
 
 		$vars = get_posts( $args );
 
 		$output = array();
 		foreach ( $vars as $var ):
+			if ( $independent ):
+				$equation = get_post_meta( $var->ID, 'sp_equation', true );
+				if ( $equation && $equation != '' ):
+					continue;
+				endif;
+			endif;
 			$output[ $var->post_name ] = $var->post_title;
 		endforeach;
 
@@ -761,6 +759,30 @@ if ( !function_exists( 'sportspress_render_option_field' ) ) {
 				echo '<input type="text" id="' . $name . '" name="' . $group . '[' . $name . ']" value="' . $value . '" />';
 				break;
 		endswitch;
+
+	}
+}
+
+if ( !function_exists( 'sp_get_eos_safe_slug' ) ) {
+	function sp_get_eos_safe_slug( $title, $post_id = 'var' ) {
+
+		// String to lowercase
+		$title = strtolower( $title );
+
+		// Replace all numbers with words
+		$title = sp_numbers_to_words( $title );
+
+		// Remove all other non-alphabet characters
+		$title = preg_replace( "/[^a-z]/", '', $title );
+
+		// Convert post ID to words if title is empty
+		if ( $title == '' ):
+
+			$title = sp_numbers_to_words( $post_id );
+
+		endif;
+
+		return $title;
 
 	}
 }
