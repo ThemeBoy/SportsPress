@@ -32,7 +32,8 @@ $sportspress_texts = array(
 		'Publish <b>immediately</b>' => __( 'Joined', 'sportspress' ) . ': <b>%1$s</b>'
 	),
 	'sp_table' => array(
-		'Enter title here' => ''
+		'Enter title here' => '',
+		'Post updated. <a href=\"%s\">View post</a>' => 'test'
 	)
 );
 

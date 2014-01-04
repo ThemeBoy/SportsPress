@@ -21,7 +21,7 @@ add_action( 'init', 'sp_player_cpt_init' );
 
 function sp_player_meta_init( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
-	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
+	$leagues = (array)get_the_terms( $post->ID, 'sp_season' );
 
 	remove_meta_box( 'submitdiv', 'sp_player', 'side' );
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_player', 'side', 'high' );
@@ -44,7 +44,7 @@ function sp_player_team_meta( $post ) {
 
 function sp_player_stats_meta( $post ) {
 	$team_ids = (array)get_post_meta( $post->ID, 'sp_team', false );
-	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
+	$leagues = (array)get_the_terms( $post->ID, 'sp_season' );
 	$stats = (array)get_post_meta( $post->ID, 'sp_statistics', true );
 
 	// Equation Operating System
@@ -110,7 +110,7 @@ function sp_player_stats_meta( $post ) {
 				),
 				'tax_query' => array(
 					array(
-						'taxonomy' => 'sp_league',
+						'taxonomy' => 'sp_season',
 						'field' => 'id',
 						'terms' => $div_id
 					)
@@ -182,7 +182,7 @@ function sp_player_edit_columns() {
 		'title' => __( 'Name', 'sportspress' ),
 		'sp_position' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_league' => __( 'Leagues', 'sportspress' )
+		'sp_season' => __( 'Seasons', 'sportspress' )
 	);
 	return $columns;
 }

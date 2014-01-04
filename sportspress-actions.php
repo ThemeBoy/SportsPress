@@ -30,13 +30,13 @@ function sp_admin_menu( $position ) {
     // Remove "Add Configuration" link under SportsPress
     unset( $submenu['edit.php?post_type=sp_config'][10] );
 
-    // Remove "Leagues" link under Events
+    // Remove "Seasons" link under Events
     unset( $submenu['edit.php?post_type=sp_event'][15] );
 
-    // Remove "Leagues" link under Players
+    // Remove "Seasons" link under Players
     unset( $submenu['edit.php?post_type=sp_player'][15] );
 
-    // Remove "Leagues" link under Staff
+    // Remove "Seasons" link under Staff
     unset( $submenu['edit.php?post_type=sp_staff'][15] );
 }
 add_action( 'admin_menu', 'sp_admin_menu' );
@@ -108,8 +108,8 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_event':
 			echo get_post_meta ( $post_id, 'sp_event' ) ? sizeof( get_post_meta ( $post_id, 'sp_event' ) ) : '—';
 			break;
-		case 'sp_league':
-			echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '—';
+		case 'sp_season':
+			echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '—';
 			break;
 		case 'sp_sponsor':
 			echo get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : '—';
@@ -154,11 +154,11 @@ function sp_restrict_manage_posts() {
 		sp_dropdown_taxonomies( $args );
 	endif;
 	if ( in_array( $typenow, array( 'sp_team', 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_list' ) ) ):
-		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
+		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
 		$args = array(
-			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
-			'taxonomy' => 'sp_league',
-			'name' => 'sp_league',
+			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
+			'taxonomy' => 'sp_season',
+			'name' => 'sp_season',
 			'selected' => $selected
 		);
 		sp_dropdown_taxonomies( $args );
@@ -219,6 +219,13 @@ function sp_save_post( $post_id ) {
 
 			break;
 
+		case ( 'sp_result' ):
+
+			// Update abbreviation as string
+			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
+
+			break;
+
 		case ( 'sp_column' ):
 
 			// Update equation as string
@@ -233,6 +240,9 @@ function sp_save_post( $post_id ) {
 			// Update abbreviation as string
 			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
 
+			// Update precision as integer
+			update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
+
 			break;
 
 		case ( 'sp_statistic' ):
@@ -242,6 +252,9 @@ function sp_save_post( $post_id ) {
 
 			// Update abbreviation as string
 			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
+
+			// Update precision as integer
+			update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
 
 			break;
 
@@ -256,19 +269,41 @@ function sp_save_post( $post_id ) {
 			break;
 
 		case ( 'sp_staff' ):
+
+			// Update team array
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+
 			break;
+
 		case ( 'sp_table' ):
+
+			// Update teams array
 			update_post_meta( $post_id, 'sp_teams', sp_array_value( $_POST, 'sp_teams', array() ) );
-			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
+
+			// Update season taxonomy
+			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
+
+			// Update team array
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+
 			break;
+
 		case ( 'sp_list' ):
+
+			// Update players array
 			update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array() ) );
+
+			// Update team array
 			update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
-			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
+
+			// Update season taxonomy
+			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
+
+			//Update player array
 			sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
+
 			break;
+
 	endswitch;
 }
 add_action( 'save_post', 'sp_save_post' );

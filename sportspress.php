@@ -47,7 +47,7 @@ require_once dirname( __FILE__ ) . '/admin/post-types/list.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
 
 // Terms
-require_once dirname( __FILE__ ) . '/admin/terms/league.php';
+require_once dirname( __FILE__ ) . '/admin/terms/season.php';
 require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 
 // Presets

@@ -24,7 +24,7 @@ function sp_table_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Title' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_league' => __( 'Leagues', 'sportspress' ),
+		'sp_season' => __( 'Seasons', 'sportspress' ),
 	);
 	return $columns;
 }
@@ -41,14 +41,14 @@ function sp_table_meta_init( $post ) {
 }
 
 function sp_table_team_meta( $post, $test ) {
-	$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
+	$league_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 	?>
 	<div>
 		<p class="sp-tab-select">
 			<?php
 			$args = array(
-				'taxonomy' => 'sp_league',
-				'name' => 'sp_league',
+				'taxonomy' => 'sp_season',
+				'name' => 'sp_season',
 				'selected' => $league_id,
 				'value' => 'term_id'
 			);
@@ -56,7 +56,7 @@ function sp_table_team_meta( $post, $test ) {
 			?>
 		</p>
 		<?php
-		sp_post_checklist( $post->ID, 'sp_team', 'block', 'sp_league' );
+		sp_post_checklist( $post->ID, 'sp_team', 'block', 'sp_season' );
 		sp_post_adder( 'sp_team' );
 		?>
 	</div>

@@ -37,7 +37,13 @@ function sp_statistic_meta_init() {
 
 function sp_statistic_equation_meta( $post ) {
 	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
+	$order = get_post_meta( $post->ID, 'sp_order', true );
+	$priority = get_post_meta( $post->ID, 'sp_priority', true );
+	$precision = get_post_meta( $post->ID, 'sp_precision', true );
 	$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
+	
+	// Defaults
+	if ( $precision == '' ) $precision = 1;
 	?>
 	<p class="sp-equation-selector">
 		<?php
@@ -45,6 +51,28 @@ function sp_statistic_equation_meta( $post ) {
 			sp_get_equation_selector( $post->ID, $piece, array( 'player_event' ) );
 		endforeach;
 		?>
+	</p>
+	<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
+	<p class="sp-order-selector">
+		<select name="sp_priority">
+			<?php
+			$options = array( '0' => __( 'Disable', 'sportspress' ), '1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10',  );
+			foreach ( $options as $key => $value ):
+				printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $priority, false ), $value );
+			endforeach;
+			?>
+		</select>
+		<select name="sp_order"<?php if ( ! $priority ): ?> disabled="disabled;"<?php endif; ?>>
+			<?php
+			$options = array( 'DESC' => __( 'Descending', 'sportspress' ), 'ASC' => __( 'Ascending', 'sportspress' ) );
+			foreach ( $options as $key => $value ):
+				printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $order, false ), $value );
+			endforeach;
+			?>
+		</select>
+	<p><strong><?php _e( 'Precision', 'sportspress' ); ?></strong></p>
+	<p>
+		<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>">
 	</p>
 	<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 	<p>

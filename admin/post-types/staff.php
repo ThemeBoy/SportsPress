@@ -43,7 +43,7 @@ function sp_staff_edit_columns() {
 		'title' => __( 'Name', 'sportspress' ),
 		'sp_position' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_league' => __( 'Leagues', 'sportspress' ),
+		'sp_season' => __( 'Seasons', 'sportspress' ),
 	);
 	return $columns;
 }
