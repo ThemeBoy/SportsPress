@@ -121,6 +121,9 @@ function sp_pre_get_posts( $wp_query ) {
 		if ( in_array( $post_type, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic' ) ) ):
 			$wp_query->set( 'orderby', 'menu_order' );
 			$wp_query->set( 'order', 'ASC' );
+		elseif ( $post_type == 'sp_event' ):
+			$wp_query->set( 'orderby', 'post_date' );
+			$wp_query->set( 'order', 'ASC' );
 		endif;
 	endif;
 }

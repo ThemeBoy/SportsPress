@@ -31,7 +31,7 @@ include dirname( __FILE__ ) . '/sportspress-globals.php' ;
 require_once dirname( __FILE__ ) . '/sportspress-functions.php';
 
 // Settings
-include dirname( __FILE__ ) . '/admin/options/options.php' ;
+include dirname( __FILE__ ) . '/admin/settings/settings.php' ;
 
 // Custom Post Types
 require_once dirname( __FILE__ ) . '/admin/post-types/separator.php';
@@ -49,6 +49,9 @@ require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
 // Terms
 require_once dirname( __FILE__ ) . '/admin/terms/league.php';
 require_once dirname( __FILE__ ) . '/admin/terms/position.php';
+
+// Presets
+include dirname( __FILE__ ) . '/presets/presets.php' ;
 
 // Install
 include dirname( __FILE__ ) . '/install.php';
