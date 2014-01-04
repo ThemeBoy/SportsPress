@@ -61,24 +61,7 @@ function sp_sanitize_title( $title ) {
 	
 	if ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic' ) ) ):
 
-		// Get post title
-		$title = $_POST['post_title'];
-
-		// String to lowercase
-		$title = strtolower( $title );
-
-		// Replace all numbers with words
-		$title = sp_numbers_to_words( $title );
-
-		// Remove all other non-alphabet characters
-		$title = preg_replace( "/[^a-z]/", '', $title );
-
-		// Convert post ID to words if title is empty
-		if ( $title == '' ):
-
-			$title = sp_numbers_to_words( $_POST['ID'] );
-
-		endif;
+		$title = sp_get_eos_safe_slug( $_POST['post_title'], $_POST['ID'] );
 
 	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && $_POST['post_type'] == 'sp_event' ):
 
