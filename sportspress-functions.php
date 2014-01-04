@@ -1348,7 +1348,6 @@ if ( !function_exists( 'sp_get_list_html' ) ) {
 	}
 }
 
-
 if ( !function_exists( 'sp_highlight_admin_menu' ) ) {
 	function sp_highlight_admin_menu() {
 		global $parent_file, $submenu_file;

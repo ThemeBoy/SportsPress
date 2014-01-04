@@ -15,6 +15,7 @@
 			<th><?php _e( 'Label', 'sportspress' ); ?></th>
 			<th><?php _e( 'Equation', 'sportspress' ); ?></th>
 			<th><?php _e( 'Sort Order', 'sportspress' ); ?></th>
+			<th><?php _e( 'Abbreviation', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
 	<?php $i = 0; foreach ( $data as $row ): ?>
@@ -48,11 +49,21 @@
 					endif;
 				?>
 			</td>
+			<td>
+				<?php
+					$abbreviation = get_post_meta ( $row->ID, 'sp_abbreviation', true );
+					if ( $abbreviation ):
+						echo $abbreviation;
+					else:
+						echo $row->post_title;
+					endif;
+				?>
+			</td>
 		</tr>
 	<?php $i++; endforeach; ?>
 	<tfoot>
 		<tr>
-			<th colspan="3"><a href="<?php echo admin_url( 'edit.php?post_type=sp_column' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Table Columns', 'sportspress' ) ); ?></a></th>
+			<th colspan="4"><a href="<?php echo admin_url( 'edit.php?post_type=sp_column' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Table Columns', 'sportspress' ) ); ?></a></th>
 		</tr>
 	</tfoot>
 </table>
@@ -74,6 +85,7 @@
 			<th><?php _e( 'Label', 'sportspress' ); ?></th>
 			<th><?php _e( 'Equation', 'sportspress' ); ?></th>
 			<th><?php _e( 'Sort Order', 'sportspress' ); ?></th>
+			<th><?php _e( 'Abbreviation', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
 	<?php $i = 0; foreach ( $data as $row ): ?>
@@ -107,11 +119,21 @@
 					endif;
 				?>
 			</td>
+			<td>
+				<?php
+					$abbreviation = get_post_meta ( $row->ID, 'sp_abbreviation', true );
+					if ( $abbreviation ):
+						echo $abbreviation;
+					else:
+						echo $row->post_title;
+					endif;
+				?>
+			</td>
 		</tr>
 	<?php $i++; endforeach; ?>
 	<tfoot>
 		<tr>
-			<th colspan="3"><a href="<?php echo admin_url( 'edit.php?post_type=sp_column' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Statistics', 'sportspress' ) ); ?></a></th>
+			<th colspan="4"><a href="<?php echo admin_url( 'edit.php?post_type=sp_statistic' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Statistics', 'sportspress' ) ); ?></a></th>
 		</tr>
 	</tfoot>
 </table>

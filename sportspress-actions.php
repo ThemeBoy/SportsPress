@@ -133,7 +133,7 @@ add_action( 'manage_posts_columns', 'sp_manage_posts_columns' );
 function sp_restrict_manage_posts() {
 	sp_highlight_admin_menu();
 	global $typenow, $wp_query;
-	if ( in_array( $typenow, array( 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_list', 'sp_tournament' ) ) ):
+	if ( in_array( $typenow, array( 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_list' ) ) ):
 		$selected = isset( $_REQUEST['sp_team'] ) ? $_REQUEST['sp_team'] : null;
 		$args = array(
 			'show_option_none' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
@@ -143,7 +143,7 @@ function sp_restrict_manage_posts() {
 		);
 		// wp_dropdown_pages( $args );
 	endif;
-	if ( in_array( $typenow, array( 'sp_player', 'sp_staff' ) ) ):
+	if ( in_array( $typenow, array( 'sp_player' ) ) ):
 		$selected = isset( $_REQUEST['sp_position'] ) ? $_REQUEST['sp_position'] : null;
 		$args = array(
 			'show_option_all' =>  sprintf( __( 'All %s', 'sportspress' ), __( 'Positions', 'sportspress' ) ),
