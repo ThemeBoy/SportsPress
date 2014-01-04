@@ -232,7 +232,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 					$parents = get_post_ancestors( $post );
 					if ( $filter ):
 						$filter_values = (array)get_post_meta( $post->ID, $filter, false );
-						$terms = (array)get_the_terms( $post->ID, 'sp_league' );
+						$terms = (array)get_the_terms( $post->ID, 'sp_season' );
 						foreach ( $terms as $term ):
 							if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
 								$filter_values[] = $term->term_id;
@@ -447,7 +447,7 @@ if ( !function_exists( 'sp_league_table' ) ) {
 				$i = 0;
 				foreach ( $data as $team_id => $team_stats ):
 					if ( !$team_id ) continue;
-					$div = get_term( $team_id, 'sp_league' );
+					$div = get_term( $team_id, 'sp_season' );
 					?>
 					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 						<td>
@@ -487,7 +487,7 @@ if ( !function_exists( 'sp_player_table' ) ) {
 				$i = 0;
 				foreach ( $data as $player_id => $player_stats ):
 					if ( !$player_id ) continue;
-					$div = get_term( $player_id, 'sp_league' );
+					$div = get_term( $player_id, 'sp_season' );
 					?>
 					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 						<td>
@@ -516,7 +516,7 @@ if ( !function_exists( 'sp_team_columns_table' ) ) {
 		<table class="widefat sp-data-table">
 			<thead>
 				<tr>
-					<th><?php _e( 'League', 'sportspress' ); ?></th>
+					<th><?php _e( 'Season', 'sportspress' ); ?></th>
 					<?php foreach ( $columns as $label ): ?>
 						<th><?php echo $label; ?></th>
 					<?php endforeach; ?>
@@ -528,13 +528,13 @@ if ( !function_exists( 'sp_team_columns_table' ) ) {
 				if ( empty( $data ) ):
 					?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-							<td><strong><?php printf( __( 'Select %s', 'sportspress' ), __( 'League', 'sportspress' ) ); ?></strong></td>
+							<td><strong><?php printf( __( 'Select %s', 'sportspress' ), __( 'Season', 'sportspress' ) ); ?></strong></td>
 						</tr>
 					<?php
 				else:
 					foreach ( $data as $div_id => $div_stats ):
 						if ( !$div_id ) continue;
-						$div = get_term( $div_id, 'sp_league' );
+						$div = get_term( $div_id, 'sp_season' );
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
@@ -564,7 +564,7 @@ if ( !function_exists( 'sp_player_statistics_table' ) ) {
 		<table class="widefat sp-data-table">
 			<thead>
 				<tr>
-					<th><?php _e( 'League', 'sportspress' ); ?></th>
+					<th><?php _e( 'Season', 'sportspress' ); ?></th>
 					<?php foreach ( $columns as $label ): ?>
 						<th><?php echo $label; ?></th>
 					<?php endforeach; ?>
@@ -582,7 +582,7 @@ if ( !function_exists( 'sp_player_statistics_table' ) ) {
 					endif;
 					foreach ( $team_stats as $div_id => $div_stats ):
 						if ( !$div_id ) continue;
-						$div = get_term( $div_id, 'sp_league' );
+						$div = get_term( $div_id, 'sp_season' );
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
@@ -800,7 +800,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 
 if ( !function_exists( 'sp_get_table' ) ) {
 	function sp_get_table( $post_id, $breakdown = false ) {
-		$div_id = sp_get_the_term_id( $post_id, 'sp_league', 0 );
+		$div_id = sp_get_the_term_id( $post_id, 'sp_season', 0 );
 		$team_ids = (array)get_post_meta( $post_id, 'sp_team', false );
 		$table_stats = (array)get_post_meta( $post_id, 'sp_teams', true );
 
@@ -857,7 +857,7 @@ if ( !function_exists( 'sp_get_table' ) ) {
 			'order' => 'ASC',
 			'tax_query' => array(
 				array(
-					'taxonomy' => 'sp_league',
+					'taxonomy' => 'sp_season',
 					'field' => 'id',
 					'terms' => $div_id
 				)
@@ -1031,7 +1031,7 @@ if ( !function_exists( 'sp_get_table' ) ) {
 
 if ( !function_exists( 'sp_get_list' ) ) {
 	function sp_get_list( $post_id, $breakdown = false ) {
-		$div_id = sp_get_the_term_id( $post_id, 'sp_league', 0 );
+		$div_id = sp_get_the_term_id( $post_id, 'sp_season', 0 );
 		$team_id = get_post_meta( $post_id, 'sp_team', true );
 		$player_ids = (array)get_post_meta( $post_id, 'sp_player', false );
 		$stats = (array)get_post_meta( $post_id, 'sp_players', true );
@@ -1080,7 +1080,7 @@ if ( !function_exists( 'sp_get_list' ) ) {
 			'posts_per_page' => -1,
 			'tax_query' => array(
 				array(
-					'taxonomy' => 'sp_league',
+					'taxonomy' => 'sp_season',
 					'field' => 'id',
 					'terms' => $div_id
 				)

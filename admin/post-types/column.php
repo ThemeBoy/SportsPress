@@ -39,7 +39,11 @@ function sp_column_details_meta( $post ) {
 	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
 	$order = get_post_meta( $post->ID, 'sp_order', true );
 	$priority = get_post_meta( $post->ID, 'sp_priority', true );
+	$precision = get_post_meta( $post->ID, 'sp_precision', true );
 	$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
+
+	// Defaults
+	if ( $precision == '' ) $precision = 1;
 	?>
 	<p><strong><?php _e( 'Equation', 'sportspress' ); ?></strong></p>
 	<p class="sp-equation-selector">
@@ -67,6 +71,10 @@ function sp_column_details_meta( $post ) {
 			endforeach;
 			?>
 		</select>
+	</p>
+	<p><strong><?php _e( 'Precision', 'sportspress' ); ?></strong></p>
+	<p>
+		<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>">
 	</p>
 	<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 	<p>

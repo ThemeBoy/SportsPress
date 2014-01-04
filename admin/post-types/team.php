@@ -20,7 +20,7 @@ function sp_team_cpt_init() {
 add_action( 'init', 'sp_team_cpt_init' );
 
 function sp_team_meta_init( $post ) {
-	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
+	$leagues = (array)get_the_terms( $post->ID, 'sp_season' );
 
 	remove_meta_box( 'submitdiv', 'sp_team', 'side' );
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_team', 'side', 'high' );
@@ -37,14 +37,14 @@ function sp_team_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'sp_logo' => '&nbsp;',
 		'title' => __( 'Team', 'sportspress' ),
-		'sp_league' => __( 'Leagues', 'sportspress' )
+		'sp_season' => __( 'Seasons', 'sportspress' )
 	);
 	return $columns;
 }
 add_filter( 'manage_edit-sp_team_columns', 'sp_team_edit_columns' );
 
 function sp_team_columns_meta( $post ) {
-	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
+	$leagues = (array)get_the_terms( $post->ID, 'sp_season' );
 	$columns = (array)get_post_meta( $post->ID, 'sp_columns', true );
 
 	// Equation Operating System
@@ -98,7 +98,7 @@ function sp_team_columns_meta( $post ) {
 			),
 			'tax_query' => array(
 				array(
-					'taxonomy' => 'sp_league',
+					'taxonomy' => 'sp_season',
 					'field' => 'id',
 					'terms' => $div_id
 				)
