@@ -42,9 +42,9 @@ function sportspress_settings() {
 
 function sportspress_validate( $input ) {
 	
-	$original = get_option( 'sportspress' );
+	$options = get_option( 'sportspress' );
 
-	if ( sp_array_value( $original, 'sport', null ) != sp_array_value( $input, 'sport', null ) ):
+	if ( sp_array_value( $options, 'sport', null ) != sp_array_value( $input, 'sport', null ) ):
 
 		global $sportspress_sports;
 
@@ -58,11 +58,12 @@ function sportspress_validate( $input ) {
 				wp_delete_post( $post->ID, true);
 			endforeach;
 
-				// Add posts
+			// Add posts
 			foreach( $posts as $index => $post ):
 				$post['post_type'] = $post_type;
+				$post['post_name'] = sp_get_eos_safe_slug( $post['post_title'], $index );
 				if ( ! get_page_by_path( $post['post_name'], OBJECT, $post['post_type'] ) ):
-					$post['menu_order'] = $index;
+					$post['menu_order'] = $index * 2 + 2;
 					$post['post_status'] = 'publish';
 					$id = wp_insert_post( $post );
 					if ( array_key_exists( 'meta', $post ) ):
