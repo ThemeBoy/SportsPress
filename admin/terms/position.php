@@ -3,7 +3,7 @@ function sp_position_term_init() {
 	$name = __( 'Positions', 'sportspress' );
 	$singular_name = __( 'Position', 'sportspress' );
 	$lowercase_name = __( 'position', 'sportspress' );
-	$object_type = array( 'sp_player', 'sp_staff' );
+	$object_type = array( 'sp_player' );
 	$labels = sp_tax_labels( $name, $singular_name, $lowercase_name );
 	$args = array(
 		'label' => $name,
@@ -14,7 +14,6 @@ function sp_position_term_init() {
 	);
 	register_taxonomy( 'sp_position', $object_type, $args );
 	register_taxonomy_for_object_type( 'sp_position', 'sp_player' );
-	register_taxonomy_for_object_type( 'sp_position', 'sp_staff' );
 }
 add_action( 'init', 'sp_position_term_init' );
 ?>

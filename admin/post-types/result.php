@@ -24,7 +24,7 @@ function sp_result_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
 		'sp_key' => __( 'Key', 'sportspress' ),
-		'sp_abbreviation' => __( 'Abbreviation', 'sportspress' )
+		'sp_format' => __( 'Format', 'sportspress' ),
 	);
 	return $columns;
 }
@@ -35,11 +35,21 @@ function sp_result_meta_init() {
 }
 
 function sp_result_details_meta( $post ) {
-	$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
+	global $sportspress_config_formats;
 	?>
-	<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
+	<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
 	<p>
-		<input name="sp_abbreviation" type="text" size="4" id="sp_abbreviation" value="<?php echo $abbreviation; ?>">
+		<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
+	</p>
+	<p><strong><?php _e( 'Format', 'sportspress' ); ?></strong></p>
+	<p class="sp-format-selector">
+		<select name="sp_format">
+			<?php
+			foreach ( $sportspress_config_formats as $key => $value ):
+				printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $priority, false ), $value );
+			endforeach;
+			?>
+		</select>
 	</p>
 	<?php
 	sp_nonce();

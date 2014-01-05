@@ -101,6 +101,59 @@ if ( !function_exists( 'sp_get_the_term_id' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_post_format' ) ) {
+	function sp_get_post_format( $post_id ) {
+		$format = get_post_meta ( $post_id, 'sp_format', true );
+		if ( $format ):
+			global $sportspress_config_formats;
+			return sp_array_value( $sportspress_config_formats, $format, '—' );
+		else:
+			return '—';
+		endif;
+	}
+}
+
+if ( !function_exists( 'sp_get_post_precision' ) ) {
+	function sp_get_post_precision( $post_id ) {
+		$precision = get_post_meta ( $post_id, 'sp_precision', true );
+		if ( $precision ):
+			return $precision;
+		else:
+			return '1';
+		endif;
+	}
+}
+
+if ( !function_exists( 'sp_get_post_equation' ) ) {
+	function sp_get_post_equation( $post_id ) {
+		$equation = get_post_meta ( $post_id, 'sp_equation', true );
+		if ( $equation ):
+			return str_replace(
+				array( '$', '+', '-', '*', '/' ),
+				array( '', '&plus;', '&minus;', '&times;', '&divide' ),
+				$equation
+			);
+		else:
+			return '—';
+		endif;
+	}
+}
+
+if ( !function_exists( 'sp_get_post_order' ) ) {
+	function sp_get_post_order( $post_id ) {
+		$priority = get_post_meta ( $post_id, 'sp_priority', true );
+		if ( $priority ):
+			return $priority . ' ' . str_replace(
+				array( 'DESC', 'ASC' ),
+				array( '&darr;', '&uarr;' ),
+				get_post_meta ( $post_id, 'sp_order', true )
+			);
+		else:
+			return '—';
+		endif;
+	}
+}
+
 if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 	function sp_dropdown_taxonomies( $args = array() ) {
 		$defaults = array(
@@ -933,8 +986,7 @@ if ( !function_exists( 'sp_get_table' ) ) {
 
 			if ( $outcomes ):
 				$outcome = $outcomes[0];
-				$abbreviation = get_post_meta( $outcome->ID, 'sp_abbreviation', true );
-				$totals[ $team_id ]['streak'] = ( $abbreviation ? $abbreviation : $outcome->post_title ) . $streak['count'];
+				$totals[ $team_id ]['streak'] = $outcome->post_title . $streak['count'];
 			endif;
 		endforeach;
 

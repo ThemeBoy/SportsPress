@@ -23,9 +23,11 @@ function sp_column_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
+		'sp_key' => __( 'Key', 'sportspress' ),
+		'sp_format' => __( 'Format', 'sportspress' ),
+		'sp_precision' => __( 'Precision', 'sportspress' ),
 		'sp_equation' => __( 'Equation', 'sportspress' ),
 		'sp_order' => __( 'Sort Order', 'sportspress' ),
-		'sp_abbreviation' => __( 'Abbreviation', 'sportspress' )
 	);
 	return $columns;
 }
@@ -36,15 +38,34 @@ function sp_column_meta_init() {
 }
 
 function sp_column_details_meta( $post ) {
+	global $sportspress_config_formats;
+
 	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
 	$order = get_post_meta( $post->ID, 'sp_order', true );
 	$priority = get_post_meta( $post->ID, 'sp_priority', true );
 	$precision = get_post_meta( $post->ID, 'sp_precision', true );
-	$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
 
 	// Defaults
 	if ( $precision == '' ) $precision = 1;
 	?>
+	<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
+	<p>
+		<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
+	</p>
+	<p><strong><?php _e( 'Format', 'sportspress' ); ?></strong></p>
+	<p class="sp-format-selector">
+		<select name="sp_format">
+			<?php
+			foreach ( $sportspress_config_formats as $key => $value ):
+				printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $priority, false ), $value );
+			endforeach;
+			?>
+		</select>
+	</p>
+	<p><strong><?php _e( 'Precision', 'sportspress' ); ?></strong></p>
+	<p class="sp-precision-selector">
+		<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>" placeholder="1">
+	</p>
 	<p><strong><?php _e( 'Equation', 'sportspress' ); ?></strong></p>
 	<p class="sp-equation-selector">
 		<?php
@@ -63,7 +84,7 @@ function sp_column_details_meta( $post ) {
 			endforeach;
 			?>
 		</select>
-		<select name="sp_order"<?php if ( ! $priority ): ?> disabled="disabled;"<?php endif; ?>>
+		<select name="sp_order">
 			<?php
 			$options = array( 'DESC' => __( 'Descending', 'sportspress' ), 'ASC' => __( 'Ascending', 'sportspress' ) );
 			foreach ( $options as $key => $value ):
@@ -71,14 +92,6 @@ function sp_column_details_meta( $post ) {
 			endforeach;
 			?>
 		</select>
-	</p>
-	<p><strong><?php _e( 'Precision', 'sportspress' ); ?></strong></p>
-	<p>
-		<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>">
-	</p>
-	<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
-	<p>
-		<input name="sp_abbreviation" type="text" size="4" id="sp_abbreviation" value="<?php echo $abbreviation; ?>">
 	</p>
 	<?php
 	sp_nonce();

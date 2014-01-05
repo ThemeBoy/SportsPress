@@ -23,28 +23,50 @@ function sp_statistic_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
+		'sp_key' => __( 'Key', 'sportspress' ),
+		'sp_format' => __( 'Format', 'sportspress' ),
+		'sp_precision' => __( 'Precision', 'sportspress' ),
 		'sp_equation' => __( 'Equation', 'sportspress' ),
 		'sp_order' => __( 'Sort Order', 'sportspress' ),
-		'sp_abbreviation' => __( 'Abbreviation', 'sportspress' )
 	);
 	return $columns;
 }
 add_filter( 'manage_edit-sp_statistic_columns', 'sp_statistic_edit_columns' );
 
 function sp_statistic_meta_init() {
-	add_meta_box( 'sp_equationdiv', __( 'Equation', 'sportspress' ), 'sp_statistic_equation_meta', 'sp_statistic', 'normal', 'high' );
+	add_meta_box( 'sp_equationdiv', __( 'Details', 'sportspress' ), 'sp_statistic_equation_meta', 'sp_statistic', 'normal', 'high' );
 }
 
 function sp_statistic_equation_meta( $post ) {
+	global $sportspress_config_formats;
+
 	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
 	$order = get_post_meta( $post->ID, 'sp_order', true );
 	$priority = get_post_meta( $post->ID, 'sp_priority', true );
 	$precision = get_post_meta( $post->ID, 'sp_precision', true );
-	$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
 	
 	// Defaults
 	if ( $precision == '' ) $precision = 1;
 	?>
+	<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
+	<p>
+		<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
+	</p>
+	<p><strong><?php _e( 'Format', 'sportspress' ); ?></strong></p>
+	<p class="sp-format-selector">
+		<select name="sp_format">
+			<?php
+			foreach ( $sportspress_config_formats as $key => $value ):
+				printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $priority, false ), $value );
+			endforeach;
+			?>
+		</select>
+	</p>
+	<p><strong><?php _e( 'Precision', 'sportspress' ); ?></strong></p>
+	<p class="sp-precision-selector">
+		<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>" placeholder="1">
+	</p>
+	<p><strong><?php _e( 'Equation', 'sportspress' ); ?></strong></p>
 	<p class="sp-equation-selector">
 		<?php
 		foreach ( $equation as $piece ):
@@ -70,13 +92,6 @@ function sp_statistic_equation_meta( $post ) {
 			endforeach;
 			?>
 		</select>
-	<p><strong><?php _e( 'Precision', 'sportspress' ); ?></strong></p>
-	<p>
-		<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>">
-	</p>
-	<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
-	<p>
-		<input name="sp_abbreviation" type="text" size="4" id="sp_abbreviation" value="<?php echo $abbreviation; ?>">
 	</p>
 	<?php
 	sp_nonce();

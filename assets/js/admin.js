@@ -1,5 +1,13 @@
 jQuery(document).ready(function($){
 
+	// Auto key placeholder
+	$('#poststuff #title').on('keyup', function() {
+		$('#sp_key').attr('placeholder', $(this).val().replace(/[^a-z]/gi,'').toLowerCase());
+	});
+
+	// Activate auto key placeholder
+	$('#poststuff #title').keyup();
+
 	// Tab switcher
 	$('.sp-tab-panel').siblings('.sp-tab-bar').find('a').click(function() {
 		$(this).closest('li').removeClass('wp-tab').addClass('wp-tab-active').siblings().removeClass('wp-tab-active').addClass('wp-tab').closest('.wp-tab-bar').siblings($(this).attr('href')).show().siblings('.wp-tab-panel').hide();
@@ -74,7 +82,10 @@ jQuery(document).ready(function($){
 		}
 	});
 
-	// Equation selector
+	// Trigger equation selector
+	$('.sp-equation-selector select:last').change().siblings().change();
+
+	// Order selector
 	$('.sp-order-selector select:first').change(function() {
 		if($(this).val() == '0') {
 			$(this).siblings().prop( 'disabled', true );
@@ -83,8 +94,32 @@ jQuery(document).ready(function($){
 		}
 	});
 
-	// Trigger equation selector
-	$('.sp-equation-selector select:last').change().siblings().change();
+	// Trigger order selector
+	$('.sp-order-selector select:first').change();
+
+	// Format selector
+	$('.sp-format-selector select:first').change(function() {
+
+		$precisionselector = $('.sp-precision-selector input:first');
+		$equationselector = $('.sp-equation-selector select');
+
+		// Precision settings
+		if($(this).val() == 'decimal' || $(this).val() == 'time') {
+			$precisionselector.prop( 'disabled', false );
+		} else {
+			$precisionselector.prop( 'disabled', true )
+		}
+
+		// Equation settings
+		if($(this).val() == 'custom') {
+			$equationselector.prop( 'disabled', true );
+		} else {
+			$equationselector.prop( 'disabled', false )
+		}
+	});
+
+	// Trigger format selector
+	$('.sp-format-selector select:first').change();
 
 	// Remove slug editor in quick edit for slug-sensitive post types
 	$('.inline-edit-sp_result, .inline-edit-sp_outcome, .inline-edit-sp_column, .inline-edit-sp_statistic').find('input[name=post_name]').closest('label').remove();

@@ -7,116 +7,158 @@ $sportspress_sports['soccer'] = array(
 		// Table Columns
 		'sp_column' => array(
 			array(
-				'post_title' => __( 'Games Played', 'sportspress' ),
+				'post_title' => 'P',
+				'post_name'  => 'p',
 				'meta'       => array(
 					'sp_equation'     => '$eventsplayed',
-					'sp_abbreviation' => __( 'GP', 'sportspress' )
-				)
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
 			),
 			array(
-				'post_title' => __( 'Wins', 'sportspress' ),
+				'post_title' => 'W',
+				'post_name'  => 'w',
 				'meta'       => array(
-					'sp_equation'     => '$win',
-					'sp_abbreviation' => __( 'W', 'sportspress' )
-				)
+					'sp_equation'     => '$w',
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
 			),
 			array(
-				'post_title' => __( 'Draws', 'sportspress' ),
+				'post_title' => 'D',
+				'post_name'  => 'd',
 				'meta'       => array(
-					'sp_equation'     => '$draw',
-					'sp_abbreviation' => __( 'D', 'sportspress' )
-				)
+					'sp_equation'     => '$d',
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
 			),
 			array(
-				'post_title' => __( 'Losses', 'sportspress' ),
+				'post_title' => 'L',
+				'post_name'  => 'l',
 				'meta'       => array(
-					'sp_equation'     => '$loss',
-					'sp_abbreviation' => __( 'L', 'sportspress' )
-				)
+					'sp_equation'     => '$l',
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
 			),
 			array(
-				'post_title' => __( 'Goals For', 'sportspress' ),
+				'post_title' => 'F',
+				'post_name'  => 'f',
 				'meta'       => array(
 					'sp_equation'     => '$goalsfor',
 					'sp_priority'     => '3',
 					'sp_order'        => 'DESC',
-					'sp_abbreviation' => __( 'GF', 'sportspress' )
-				)
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
 			),
 			array(
-				'post_title' => __( 'Goals Against', 'sportspress' ),
+				'post_title' => 'A',
+				'post_name'  => 'a',
 				'meta'       => array(
 					'sp_equation'     => '$goalsagainst',
-					'sp_abbreviation' => __( 'GA', 'sportspress' )
-				)
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
 			),
 			array(
-				'post_title' => __( 'Goal Difference', 'sportspress' ),
+				'post_title' => 'GD',
+				'post_name'  => 'gd',
 				'meta'       => array(
 					'sp_equation'     => '$goalsfor - $goalsagainst',
 					'sp_priority'     => '2',
 					'sp_order'        => 'DESC',
-					'sp_abbreviation' => __( 'GD', 'sportspress' )
-				)
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
 			),
 			array(
-				'post_title' => __( 'Points', 'sportspress' ),
+				'post_title' => 'Pts',
+				'post_name'  => 'pts',
 				'meta'       => array(
-					'sp_equation'     => '$win * 3 + $draw',
+					'sp_equation'     => '$w * 3 + $d',
 					'sp_priority'     => '1',
 					'sp_order'        => 'DESC',
-					'sp_abbreviation' => __( 'Pts', 'sportspress' )
-				)
-			)
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
+			),
 		),
 		// Statistics
 		'sp_statistic' => array(
 			array(
 				'post_title' => __( 'Appearances', 'sportspress' ),
+				'post_name'  => 'appearances',
 				'meta'       => array(
-					'sp_equation'     => '$eventsplayed'
-				)
+					'sp_equation'     => '$eventsplayed',
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
 			),
 			array(
 				'post_title' => __( 'Goals', 'sportspress' ),
+				'post_name'  => 'goals',
 				'meta'       => array(
+					'sp_equation'     => '',
 					'sp_priority'     => '1',
-					'sp_order'        => 'DESC'
-				)
+					'sp_order'        => 'DESC',
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
 			),
 			array(
-				'post_title' => __( 'Assists', 'sportspress' )
+				'post_title' => __( 'Assists', 'sportspress' ),
+				'post_name'  => 'assists',
+				'meta'       => array(
+					'sp_equation'     => '',
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
 			),
 			array(
-				'post_title' => __( 'Yellow Cards', 'sportspress' )
+				'post_title' => __( 'Yellow Cards', 'sportspress' ),
+				'post_name'  => 'yellowcards',
+				'meta'       => array(
+					'sp_equation'     => '',
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
 			),
 			array(
-				'post_title' => __( 'Red Cards', 'sportspress' )
-			)
+				'post_title' => __( 'Red Cards', 'sportspress' ),
+				'post_name'  => 'redcards',
+				'meta'       => array(
+					'sp_equation'     => '',
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
+			),
 		),
 		// Results
 		'sp_result' => array(
 			array(
-				'post_title' => __( 'Goals', 'sportspress' )
+				'post_title' => __( 'Goals', 'sportspress' ),
+				'post_name'  => 'goals',
+				'meta'       => array(
+					'sp_format'       => 'integer',
+				),
 			),
-			array(
-				'post_title' => __( '1st Half', 'sportspress' )
-			),
-			array(
-				'post_title' => __( '2nd Half', 'sportspress' )
-			)
 		),
 		// Outcomes
 		'sp_outcome' => array(
 			array(
-				'post_title' => __( 'Win', 'sportspress' )
+				'post_title' => 'W',
+				'post_name'  => 'w',
 			),
 			array(
-				'post_title' => __( 'Draw', 'sportspress' )
+				'post_title' => 'D',
+				'post_name'  => 'd',
 			),
 			array(
-				'post_title' => __( 'Loss', 'sportspress' )
-			)
-		)
-	)
+				'post_title' => 'L',
+				'post_name'  => 'l',
+			),
+		),
+	),
 );

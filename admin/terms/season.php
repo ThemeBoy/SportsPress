@@ -13,6 +13,10 @@ function sp_season_term_init() {
 		'rewrite' => array( 'slug' => 'league' )
 	);
 	register_taxonomy( 'sp_season', $object_type, $args );
+	register_taxonomy_for_object_type( 'sp_season', 'sp_team' );
+	register_taxonomy_for_object_type( 'sp_season', 'sp_event' );
+	register_taxonomy_for_object_type( 'sp_season', 'sp_player' );
+	register_taxonomy_for_object_type( 'sp_season', 'sp_staff' );
 }
 add_action( 'init', 'sp_season_term_init' );
 ?>

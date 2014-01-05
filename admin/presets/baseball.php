@@ -7,181 +7,159 @@ $sportspress_sports['baseball'] = array(
 		// Columns
 		'sp_column' => array(
 			array(
-				'post_title' => __( 'Wins', 'sportspress' ),
+				'post_title' => 'W',
+				'post_name' => 'w',
 				'meta'       => array(
-					'sp_equation'     => '$win',
-					'sp_abbreviation' => __( 'W', 'sportspress' ),
+					'sp_equation'     => '$w',
 					'sp_priority'     => 1,
-					'sp_order'        => 'DESC'
-				)
+					'sp_order'        => 'DESC',
+				),
 			),
 			array(
-				'post_title' => __( 'Losses', 'sportspress' ),
+				'post_title' => 'L',
+				'post_name' => 'l',
 				'meta'       => array(
-					'sp_equation'     => '$loss',
-					'sp_abbreviation' => __( 'L', 'sportspress' ),
+					'sp_equation'     => '$l',
 					'sp_priority'     => 2,
-					'sp_order'        => 'ASC'
-				)
+					'sp_order'        => 'ASC',
+				),
 			),
 			array(
-				'post_title' => __( 'Win Percentage', 'sportspress' ),
+				'post_title' => 'Pct',
+				'post_name' => 'pct',
 				'meta'       => array(
-					'sp_equation'     => '$win / $eventsplayed',
-					'sp_abbreviation' => __( 'Pct', 'sportspress' )
-				)
+					'sp_equation'     => '$w / $eventsplayed',
+				),
 			),
 			array(
-				'post_title' => __( 'Games Back', 'sportspress' ),
+				'post_title' => 'GB',
+				'post_name' => 'gb',
 				'meta'       => array(
-					'sp_equation'     => '( $winmax + $loss - $win - $lossmax ) / 2',
-					'sp_abbreviation' => __( 'GB', 'sportspress' )
-				)
+					'sp_equation'     => '( $wmax + $l - $w - $lmax ) / 2',
+				),
 			),
 			array(
-				'post_title' => __( 'Runs Scored', 'sportspress' ),
+				'post_title' => 'RS',
+				'post_name' => 'rs',
 				'meta'       => array(
 					'sp_equation'     => '$rfor',
-					'sp_abbreviation' => __( 'RS', 'sportspress' ),
 					'sp_priority'     => 3,
-					'sp_order'        => 'DESC'
-				)
+					'sp_order'        => 'DESC',
+				),
 			),
 			array(
-				'post_title' => __( 'Runs Against', 'sportspress' ),
+				'post_title' => 'RA',
+				'post_name' => 'ra',
 				'meta'       => array(
 					'sp_equation'     => '$ragainst',
-					'sp_abbreviation' => __( 'RA', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( 'Streak', 'sportspress' ),
+				'post_title' => 'Strk',
+				'post_name' => 'strk',
 				'meta'       => array(
 					'sp_equation'     => '$streak',
-					'sp_abbreviation' => __( 'Strk', 'sportspress' )
-				)
-			)
+				),
+			),
 		),
 		// Statistics
 		'sp_statistic' => array(
-			array(
-				'post_title' => __( 'Appearances', 'sportspress' ),
-				'meta'       => array(
-					'sp_equation' => '$eventsplayed'
-				)
-			),
-			array(
-				'post_title' => __( 'Goals', 'sportspress' ),
-				'meta'       => array( 'sp_equation' => '' )
-			),
-			array(
-				'post_title' => __( 'Assists', 'sportspress' ),
-				'meta'       => array( 'sp_equation' => '' )
-			),
-			array(
-				'post_title' => __( 'Yellow Cards', 'sportspress' ),
-				'meta'       => array( 'sp_equation' => '' )
-			),
-			array(
-				'post_title' => __( 'Red Cards', 'sportspress' ),
-				'meta'       => array( 'sp_equation' => '' )
-			)
 		),
 		// Results
 		'sp_result' => array(
 			array(
-				'post_title' => __( '1st Inning', 'sportspress' ),
+				'post_title' => '1',
+				'post_name' => 'first',
 				'meta'       => array(
-					'sp_abbreviation' => __( '1', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( '2nd Inning', 'sportspress' ),
+				'post_title' => '2',
+				'post_name' => 'second',
 				'meta'       => array(
-					'sp_abbreviation' => __( '2', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( '3rd Inning', 'sportspress' ),
+				'post_title' => '3',
+				'post_name' => 'third',
 				'meta'       => array(
-					'sp_abbreviation' => __( '3', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( '4th Inning', 'sportspress' ),
+				'post_title' => '4',
+				'post_name' => 'fourth',
 				'meta'       => array(
-					'sp_abbreviation' => __( '4', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( '5th Inning', 'sportspress' ),
+				'post_title' => '5',
+				'post_name' => 'fifth',
 				'meta'       => array(
-					'sp_abbreviation' => __( '5', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( '6th Inning', 'sportspress' ),
+				'post_title' => '6',
+				'post_name' => 'sixth',
 				'meta'       => array(
-					'sp_abbreviation' => __( '6', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( '7th Inning', 'sportspress' ),
+				'post_title' => '7',
+				'post_name' => 'seventh',
 				'meta'       => array(
-					'sp_abbreviation' => __( '7', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( '8th Inning', 'sportspress' ),
+				'post_title' => '8',
+				'post_name' => 'eighth',
 				'meta'       => array(
-					'sp_abbreviation' => __( '8', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( '9th Inning', 'sportspress' ),
+				'post_title' => '9',
+				'post_name' => 'ninth',
 				'meta'       => array(
-					'sp_abbreviation' => __( '9', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( 'Extra Innings', 'sportspress' ),
+				'post_title' => '&nbsp;',
+				'post_name' => 'extra',
 				'meta'       => array(
-					'sp_abbreviation' => __( '&nbsp;', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( 'Runs', 'sportspress' ),
+				'post_title' => 'R',
+				'post_name' => 'r',
 				'meta'       => array(
-					'sp_abbreviation' => __( 'R', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( 'Hits', 'sportspress' ),
+				'post_title' => 'H',
+				'post_name' => 'h',
 				'meta'       => array(
-					'sp_abbreviation' => __( 'H', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( 'Errors', 'sportspress' ),
+				'post_title' => 'E',
+				'post_name' => 'e',
 				'meta'       => array(
-					'sp_abbreviation' => __( 'E', 'sportspress' )
-				)
-			)
+				),
+			),
 		),
 		// Outcomes
 		'sp_outcome' => array(
 			array(
-				'post_title' => __( 'Win', 'sportspress' ),
+				'post_title' => 'W',
+				'post_name' => 'w',
 				'meta'       => array(
-					'sp_abbreviation' => __( 'W', 'sportspress' )
-				)
+				),
 			),
 			array(
-				'post_title' => __( 'Loss', 'sportspress' ),
+				'post_title' => 'L',
+				'post_name' => 'l',
 				'meta'       => array(
-					'sp_abbreviation' => __( 'L', 'sportspress' )
-				)
-			)
-		)
-	)
+				),
+			),
+		),
+	),
 );
