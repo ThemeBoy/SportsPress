@@ -61,7 +61,11 @@ function sp_sanitize_title( $title ) {
 	
 	if ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic' ) ) ):
 
-		$title = sp_get_eos_safe_slug( $_POST['post_title'], $_POST['ID'] );
+		$key = $_POST['sp_key'];
+
+		if ( ! $key ) $key = $_POST['post_title'];
+
+		$title = sp_get_eos_safe_slug( $key, $_POST['ID'] );
 
 	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && $_POST['post_type'] == 'sp_event' ):
 

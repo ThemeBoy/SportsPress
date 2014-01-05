@@ -154,8 +154,7 @@ function sp_team_columns_meta( $post ) {
 
 		if ( $outcomes ):
 			$outcome = $outcomes[0];
-			$abbreviation = get_post_meta( $outcome->ID, 'sp_abbreviation', true );
-			$totals['streak'] = ( $abbreviation ? $abbreviation : $outcome->post_title ) . $streak['count'];
+			$totals['streak'] = $outcome->post_title . $streak['count'];
 		endif;
 
 		// Generate array of placeholder values for each league

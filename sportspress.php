@@ -20,6 +20,7 @@ if ( !function_exists( 'add_action' ) ) {
 
 define( 'SPORTSPRESS_VERSION', '0.1' );
 define( 'SPORTSPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'SPORTSPRESS_PLUGIN_DIRNAME', dirname( __FILE__ ) );
 
 // Libraries
 include dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
@@ -51,7 +52,21 @@ require_once dirname( __FILE__ ) . '/admin/terms/season.php';
 require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 
 // Presets
-include dirname( __FILE__ ) . '/admin/presets/presets.php' ;
+include_once dirname( __FILE__ ) . '/admin/presets/soccer.php';
+include_once dirname( __FILE__ ) . '/admin/presets/football.php';
+include_once dirname( __FILE__ ) . '/admin/presets/footy.php';
+include_once dirname( __FILE__ ) . '/admin/presets/baseball.php';
+include_once dirname( __FILE__ ) . '/admin/presets/basketball.php';
+include_once dirname( __FILE__ ) . '/admin/presets/gaming.php';
+include_once dirname( __FILE__ ) . '/admin/presets/cricket.php';
+include_once dirname( __FILE__ ) . '/admin/presets/golf.php';
+include_once dirname( __FILE__ ) . '/admin/presets/handball.php';
+include_once dirname( __FILE__ ) . '/admin/presets/hockey.php';
+include_once dirname( __FILE__ ) . '/admin/presets/racing.php';
+include_once dirname( __FILE__ ) . '/admin/presets/rugby.php';
+include_once dirname( __FILE__ ) . '/admin/presets/swimming.php';
+include_once dirname( __FILE__ ) . '/admin/presets/tennis.php';
+include_once dirname( __FILE__ ) . '/admin/presets/volleyball.php';
 
 // Install
 include dirname( __FILE__ ) . '/install.php';

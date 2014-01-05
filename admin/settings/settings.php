@@ -44,39 +44,72 @@ function sportspress_validate( $input ) {
 	
 	$options = get_option( 'sportspress' );
 
-	if ( sp_array_value( $options, 'sport', null ) != sp_array_value( $input, 'sport', null ) ):
+	// Do nothing if sport is the same as currently selected
+	if ( sp_array_value( $options, 'sport', null ) == sp_array_value( $input, 'sport', null ) )
 
-		global $sportspress_sports;
+		return $input;
 
-		$post_groups = sp_array_value( sp_array_value( $sportspress_sports, sp_array_value( $input, 'sport', null ), array() ), 'posts', array() );
+	// Get sports presets
+	global $sportspress_sports;
 
-		foreach( $post_groups as $post_type => $posts ):
+	// Get array of post types to insert
+	$post_groups = sp_array_value( sp_array_value( $sportspress_sports, sp_array_value( $input, 'sport', null ), array() ), 'posts', array() );
 
-			// Delete posts
-			$old_posts = get_posts( array( 'post_type' => $post_type, 'numberposts' => -1, 'posts_per_page' => -1 ) );
-			foreach( $old_posts as $post ):
-				wp_delete_post( $post->ID, true);
-			endforeach;
+	// Loop through each post type
+	foreach( $post_groups as $post_type => $posts ):
 
-			// Add posts
-			foreach( $posts as $index => $post ):
+		$args = array(
+			'post_type' => $post_type,
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'meta_query' => array(
+				array(
+					'key' => 'sp_preset',
+					'value' => 1
+				)
+			)
+		);
+
+		// Delete posts
+		$old_posts = get_posts( $args );
+
+		foreach( $old_posts as $post ):
+			wp_delete_post( $post->ID, true);
+		endforeach;
+
+		// Add posts
+		foreach( $posts as $index => $post ):
+
+			// Make sure post doesn't overlap
+			if ( ! get_page_by_path( $post['post_name'], OBJECT, $post_type ) ):
+
+				// Set post type
 				$post['post_type'] = $post_type;
-				$post['post_name'] = sp_get_eos_safe_slug( $post['post_title'], $index );
-				if ( ! get_page_by_path( $post['post_name'], OBJECT, $post['post_type'] ) ):
-					$post['menu_order'] = $index * 2 + 2;
-					$post['post_status'] = 'publish';
-					$id = wp_insert_post( $post );
-					if ( array_key_exists( 'meta', $post ) ):
-						foreach ( $post['meta'] as $key => $value ):
-							update_post_meta( $id, $key, $value );
-						endforeach;
-					endif;
+
+				// Increment menu order by 2 and publish post
+				$post['menu_order'] = $index * 2 + 2;
+				$post['post_status'] = 'publish';
+				$id = wp_insert_post( $post );
+
+				// Flag as preset
+				update_post_meta( $id, 'sp_preset', 1 );
+
+				// Update meta
+				if ( array_key_exists( 'meta', $post ) ):
+
+					foreach ( $post['meta'] as $key => $value ):
+
+						update_post_meta( $id, $key, $value );
+
+					endforeach;
+
 				endif;
-			endforeach;
+
+			endif;
 
 		endforeach;
 
-	endif;
+	endforeach;
 
 	return $input;
 }

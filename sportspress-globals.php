@@ -1,4 +1,8 @@
 <?php
+
+// Sports array to be populated with presets
+$sportspress_sports = array();
+
 $sportspress_texts = array(
 	'sp_team' => array(
 		'Enter title here' => __( 'Team', 'sportspress' ),
@@ -50,5 +54,12 @@ $sportspress_thumbnail_texts = array(
 		'Set featured image' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Photo', 'sportspress' ) ),
 		'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) )
 	)
+);
+
+$sportspress_config_formats = array(
+	'integer' => __( 'Integer', 'sportspress' ),
+	'decimal' => __( 'Decimal', 'sportspress' ),
+	'time' => __( 'Time', 'sportspress' ),
+	'custom' => __( 'Custom Field', 'sportspress' ),
 );
 ?>

@@ -68,39 +68,19 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			endforeach;
 			break;
 		case 'sp_equation':
-			$equation = get_post_meta ( $post_id, 'sp_equation', true );
-			if ( $equation ):
-				echo str_replace(
-					array( '$', '+', '-', '*', '/' ),
-					array( '', '&plus;', '&minus;', '&times;', '&divide' ),
-					$equation
-				);
-			else:
-				echo '—';
-			endif;
+			echo sp_get_post_equation( $post_id );
 			break;
 		case 'sp_order':
-			$priority = get_post_meta ( $post_id, 'sp_priority', true );
-			if ( $priority ):
-				echo $priority . ' ' . str_replace(
-					array( 'DESC', 'ASC' ),
-					array( '&darr;', '&uarr;' ),
-					get_post_meta ( $post_id, 'sp_order', true )
-				);
-			else:
-				echo '—';
-			endif;
-			break;
-		case 'sp_abbreviation':
-			$abbreviation = get_post_meta ( $post_id, 'sp_abbreviation', true );
-			if ( $abbreviation ):
-				echo $abbreviation;
-			else:
-				echo get_the_title( $post_id );
-			endif;
+			echo sp_get_post_order( $post_id );
 			break;
 		case 'sp_key':
 			echo $post->post_name;
+			break;
+		case 'sp_format':
+			echo sp_get_post_format( $post_id );
+			break;
+		case 'sp_precision':
+			echo sp_get_post_precision( $post_id );
 			break;
 		case 'sp_player':
 			echo sp_the_posts( $post_id, 'sp_player' );
@@ -205,28 +185,13 @@ function sp_save_post( $post_id ) {
 
 			break;
 
-		case ( 'sp_result' ):
-
-			// Update abbreviation as string
-			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
-
-			break;
-
-		case ( 'sp_outcome' ):
-
-			// Update abbreviation as string
-			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
-
-			break;
-
-		case ( 'sp_result' ):
-
-			// Update abbreviation as string
-			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
-
-			break;
-
 		case ( 'sp_column' ):
+
+			// Update format as string
+			update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'integer' ) );
+
+			// Update precision as integer
+			update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
 
 			// Update equation as string
 			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
@@ -237,24 +202,31 @@ function sp_save_post( $post_id ) {
 			// Update sort order as string
 			update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', 'DESC' ) );
 
-			// Update abbreviation as string
-			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
-
-			// Update precision as integer
-			update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
-
 			break;
 
 		case ( 'sp_statistic' ):
 
-			// Update equation as string
-			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
-
-			// Update abbreviation as string
-			update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', '' ) );
+			// Update format as string
+			update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'integer' ) );
 
 			// Update precision as integer
 			update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
+
+			// Update equation as string
+			update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
+			
+			// Update sort order as string
+			update_post_meta( $post_id, 'sp_priority', sp_array_value( $_POST, 'sp_priority', '0' ) );
+
+			// Update sort order as string
+			update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', 'DESC' ) );
+
+			break;
+
+		case ( 'sp_result' ):
+
+			// Update format as string
+			update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'integer' ) );
 
 			break;
 
