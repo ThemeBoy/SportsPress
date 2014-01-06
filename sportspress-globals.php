@@ -1,5 +1,4 @@
 <?php
-
 // Sports array to be populated with presets
 $sportspress_sports = array();
 

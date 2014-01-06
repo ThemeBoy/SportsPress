@@ -126,11 +126,20 @@ $sportspress_sports['soccer'] = array(
 				),
 			),
 			array(
-				'post_title' => __( 'Red Cards', 'sportspress' ),
-				'post_name'  => 'redcards',
+				'post_title' => __( 'Height', 'sportspress' ),
+				'post_name'  => 'height',
 				'meta'       => array(
 					'sp_equation'     => '',
-					'sp_format'       => 'integer',
+					'sp_format'       => 'custom',
+					'sp_precision'    => 1,
+				),
+			),
+			array(
+				'post_title' => __( 'Weight', 'sportspress' ),
+				'post_name'  => 'weight',
+				'meta'       => array(
+					'sp_equation'     => '',
+					'sp_format'       => 'custom',
 					'sp_precision'    => 1,
 				),
 			),

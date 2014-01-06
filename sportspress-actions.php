@@ -235,6 +235,12 @@ function sp_save_post( $post_id ) {
 			// Update team array
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 
+			// Update player number
+			update_post_meta( $post_id, 'sp_number', sp_array_value( $_POST, 'sp_number', '' ) );
+
+			// Update player details array
+			update_post_meta( $post_id, 'sp_details', sp_array_value( $_POST, 'sp_details', array() ) );
+
 			break;
 
 		case ( 'sp_staff' ):
