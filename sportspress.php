@@ -20,16 +20,16 @@ if ( !function_exists( 'add_action' ) ) {
 
 define( 'SPORTSPRESS_VERSION', '0.1' );
 define( 'SPORTSPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'SPORTSPRESS_PLUGIN_DIRNAME', dirname( __FILE__ ) );
+define( 'SPORTSPRESS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 // Libraries
 include dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
 
-// Globals
-include dirname( __FILE__ ) . '/sportspress-globals.php' ;
+// Internationalization
+include dirname( __FILE__ ) . '/i18n/strings.php';
 
 // Functions
-require_once dirname( __FILE__ ) . '/sportspress-functions.php';
+require_once dirname( __FILE__ ) . '/functions.php';
 
 // Settings
 include dirname( __FILE__ ) . '/admin/settings/settings.php' ;
@@ -72,10 +72,22 @@ include_once dirname( __FILE__ ) . '/admin/presets/volleyball.php';
 include dirname( __FILE__ ) . '/install.php';
 
 // Actions
-require_once dirname( __FILE__ ) . '/sportspress-actions.php';
+require_once dirname( __FILE__ ) . '/admin/actions/plugins-loaded.php';
+require_once dirname( __FILE__ ) . '/admin/actions/post-thumbnail-html.php';
+require_once dirname( __FILE__ ) . '/admin/actions/after-theme-setup.php';
+require_once dirname( __FILE__ ) . '/admin/actions/admin-menu.php';
+require_once dirname( __FILE__ ) . '/admin/actions/manage-posts-custom-column.php';
+require_once dirname( __FILE__ ) . '/admin/actions/manage-posts-columns.php';
+require_once dirname( __FILE__ ) . '/admin/actions/restrict-manage-posts.php';
+require_once dirname( __FILE__ ) . '/admin/actions/save-post.php';
 
 // Filters
-require_once dirname( __FILE__ ) . '/sportspress-filters.php';
+require_once dirname( __FILE__ ) . '/admin/filters/gettext.php';
+require_once dirname( __FILE__ ) . '/admin/filters/admin-post-thumbnail-html.php';
+require_once dirname( __FILE__ ) . '/admin/filters/the-content.php';
+require_once dirname( __FILE__ ) . '/admin/filters/sanitize-title.php';
+require_once dirname( __FILE__ ) . '/admin/filters/wp-insert-post-data.php';
+require_once dirname( __FILE__ ) . '/admin/filters/pre-get-posts.php';
 
 // Admin Styles
 function sp_admin_styles() {

@@ -35,7 +35,7 @@ function sp_result_meta_init() {
 }
 
 function sp_result_details_meta( $post ) {
-	global $sportspress_config_formats;
+	$formats = sp_get_config_formats();
 	?>
 	<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
 	<p>
@@ -45,7 +45,7 @@ function sp_result_details_meta( $post ) {
 	<p class="sp-format-selector">
 		<select name="sp_format">
 			<?php
-			foreach ( $sportspress_config_formats as $key => $value ):
+			foreach ( $formats as $key => $value ):
 				printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $priority, false ), $value );
 			endforeach;
 			?>

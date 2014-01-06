@@ -13,7 +13,7 @@ function sp_player_cpt_init() {
 		'register_meta_box_cb' => 'sp_player_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_player_slug', 'player' ) ),
 		'menu_icon' => 'dashicons-groups',
-		'capability_type' => 'sp_player'
+		'capability_type' => 'sp_player',
 	);
 	register_post_type( 'sp_player', $args );
 }
@@ -25,7 +25,7 @@ function sp_player_edit_columns() {
 		'title' => __( 'Name', 'sportspress' ),
 		'sp_position' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_season' => __( 'Seasons', 'sportspress' )
+		'sp_season' => __( 'Seasons', 'sportspress' ),
 	);
 	return $columns;
 }
