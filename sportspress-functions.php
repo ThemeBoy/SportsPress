@@ -1430,22 +1430,15 @@ if ( !function_exists( 'sp_get_table_html' ) ) {
 
 			$output .= '<tr>';
 
-			foreach( $row as $key => $value ):
-				$output .= '<td>';
-					if ( $key == 'name' ):
-						$permalink = get_post_permalink( $team_id );
-						$thumbnail = get_the_post_thumbnail( $team_id, 'sp_icon' );
-						$output .= $i . ' ';
-						if ( $thumbnail ):
-							$output .= '<a href="' . $permalink . '">' . $thumbnail . '</a> ';
-						endif;
-						$output .= '<a href="' . $permalink . '">';
-					endif;
-				$output .= $value;
-					if ( $key == 'name' ):
-						$output .= '</a>';
-					endif;
-				$output .= '</td>';
+			// Thumbnail and name as link
+			$permalink = get_post_permalink( $team_id );
+			$thumbnail = get_the_post_thumbnail( $team_id, 'sp_icon' );
+			$output .= '<td>' . $i . '. ' . ( $thumbnail ? $thumbnail . ' ' : '' ) . '<a href="' . $permalink . '">' . sp_array_value( $row, 'name', '&nbsp;' ) . '</a></td>';
+
+			foreach( $labels as $key => $value ):
+				if ( $key == 'name' )
+					continue;
+				$output .= '<td>' . sp_array_value( $row, $key, '—' ) . '</td>';
 			endforeach;
 
 			$output .= '</tr>';
@@ -1484,17 +1477,15 @@ if ( !function_exists( 'sp_get_list_html' ) ) {
 
 			$output .= '<tr>';
 
-			foreach( $row as $key => $value ):
-				$output .= '<td>';
-					if ( $key == 'name' ):
-						$permalink = get_post_permalink( $player_id );
-						$output .= '<a href="' . $permalink . '">';
-					endif;
-				$output .= $value;
-					if ( $key == 'name' ):
-						$output .= '</a>';
-					endif;
-				$output .= '</td>';
+			// Name as link
+			$permalink = get_post_permalink( $player_id );
+			$number = get_post_meta( $player_id, 'sp_number', true );
+			$output .= '<td>' . ( $number ? $number . '. ' : '' ) . '<a href="' . $permalink . '">' . sp_array_value( $row, 'name', '&nbsp;' ) . '</a></td>';
+
+			foreach( $labels as $key => $value ):
+				if ( $key == 'name' )
+					continue;
+				$output .= '<td>' . sp_array_value( $row, $key, '—' ) . '</td>';
 			endforeach;
 
 			$output .= '</tr>';
