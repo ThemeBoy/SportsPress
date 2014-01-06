@@ -716,6 +716,53 @@ if ( !function_exists( 'sp_event_results_table' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_event_player_status_selector' ) ) {
+	function sp_event_player_status_selector( $team_id, $player_id, $value ) {
+
+		if ( ! $team_id || ! $player_id )
+			return '—';
+
+		$options = array(
+			'lineup' => __( 'Starting Lineup', 'sportspress' ),
+			'sub' => __( 'Substitute', 'sportspress' ),
+		);
+
+		$output = '<select name="sp_players[' . $team_id . '][' . $player_id . '][status]">';
+
+		foreach( $options as $key => $name ):
+			$output .= '<option value="' . $key . '"' . ( $key == $value ? ' selected' : '' ) . '>' . $name . '</option>';
+		endforeach;
+
+		$output .= '</select>';
+
+		return $output;
+
+	}
+}
+
+if ( !function_exists( 'sp_event_player_sub_selector' ) ) {
+	function sp_event_player_sub_selector( $team_id, $player_id, $value, $data = array() ) {
+
+		if ( ! $team_id || ! $player_id )
+			return '—';
+
+		$output = '<select name="sp_players[' . $team_id . '][' . $player_id . '][sub]" style="display: none;">';
+
+		$output .= '<option value="0">' . __( 'None', 'sportspress' ) . '</option>';
+
+		// Add players as selectable options
+		foreach( $data as $id => $statistics ):
+			if ( ! $id || $id == $player_id ) continue;
+			$output .= '<option value="' . $id . '"' . ( $id == $value ? ' selected' : '' ) . '>' . get_the_title( $id ) . '</option>';
+		endforeach;
+
+		$output .= '</select>';
+
+		return $output;
+
+	}
+}
+
 if ( !function_exists( 'sp_event_players_table' ) ) {
 	function sp_event_players_table( $columns = array(), $data = array(), $team_id ) {
 		?>
@@ -726,6 +773,7 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 					<?php foreach ( $columns as $label ): ?>
 						<th><?php echo $label; ?></th>
 					<?php endforeach; ?>
+					<th><?php _e( 'Status', 'sportspress' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -739,10 +787,16 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 							<?php echo get_the_title( $player_id ); ?>
 						</td>
 						<?php foreach( $columns as $column => $label ):
-							$value = sp_array_value( $player_statistics, $column, '' );							
+							$value = sp_array_value( $player_statistics, $column, '' );
 							?>
-							<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
+							<td>
+								<input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" />
+							</td>
 						<?php endforeach; ?>
+						<td class="sp-status-selector">
+							<?php echo sp_event_player_status_selector( $team_id, $player_id, sp_array_value( $player_statistics, 'status', null ) ); ?>
+							<?php echo sp_event_player_sub_selector( $team_id, $player_id, sp_array_value( $player_statistics, 'sub', null ), $data ); ?>
+						</td>
 					</tr>
 					<?php
 					$i++;
@@ -757,6 +811,7 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 						?>
 						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
 					<?php endforeach; ?>
+					<td>&nbsp;</td>
 				</tr>
 			</tbody>
 		</table>
