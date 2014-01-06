@@ -444,7 +444,14 @@ if ( !function_exists( 'sp_get_var_labels' ) ) {
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'menu_order',
-			'order' => 'ASC'
+			'order' => 'ASC',
+			'meta_query' => array(
+				array(
+					'key' => 'sp_format',
+					'value' => 'custom',
+					'compare' => '!=',
+				),
+			),
 		);
 
 		$vars = get_posts( $args );
@@ -1260,7 +1267,14 @@ if ( !function_exists( 'sp_get_list' ) ) {
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 	  		'orderby' => 'menu_order',
-	  		'order' => 'ASC'
+	  		'order' => 'ASC',
+			'meta_query' => array(
+				array(
+					'key' => 'sp_format',
+					'value' => 'custom',
+					'compare' => '!=',
+				),
+			),
 		);
 		$statistics = get_posts( $args );
 
@@ -1280,7 +1294,7 @@ if ( !function_exists( 'sp_get_list' ) ) {
 
 			// Add order to priorities if priority is set and does not exist in array already
 			$priority = sp_array_value( sp_array_value( $meta, 'sp_priority', array() ), 0, 0 );
-			if ( $priority && ! array_key_exists( $priorities, $priority ) ):
+			if ( $priority && ! array_key_exists( $priority, $priorities ) ):
 				$priorities[ $priority ] = array(
 					'column' => $statistic->post_name,
 					'order' => sp_array_value( sp_array_value( $meta, 'sp_order', array() ), 0, 'DESC' )

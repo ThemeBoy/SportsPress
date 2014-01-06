@@ -19,6 +19,18 @@ function sp_player_cpt_init() {
 }
 add_action( 'init', 'sp_player_cpt_init' );
 
+function sp_player_edit_columns() {
+	$columns = array(
+		'cb' => '<input type="checkbox" />',
+		'title' => __( 'Name', 'sportspress' ),
+		'sp_position' => __( 'Positions', 'sportspress' ),
+		'sp_team' => __( 'Teams', 'sportspress' ),
+		'sp_season' => __( 'Seasons', 'sportspress' )
+	);
+	return $columns;
+}
+add_filter( 'manage_edit-sp_player_columns', 'sp_player_edit_columns' );
+
 function sp_player_meta_init( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$leagues = (array)get_the_terms( $post->ID, 'sp_season' );
@@ -33,13 +45,14 @@ function sp_player_meta_init( $post ) {
 		add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_player_stats_meta', 'sp_player', 'normal', 'high' );
 	endif;
 
+	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sp_player_details_meta', 'sp_player', 'normal', 'high' );
 	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sp_player_profile_meta', 'sp_player', 'normal', 'high' );
+
 }
 
 function sp_player_team_meta( $post ) {
 	sp_post_checklist( $post->ID, 'sp_team' );
 	sp_post_adder( 'sp_team' );
-	sp_nonce();
 }
 
 function sp_player_stats_meta( $post ) {
@@ -176,15 +189,43 @@ function sp_player_profile_meta( $post ) {
 	wp_editor( $post->post_content, 'content' );
 }
 
-function sp_player_edit_columns() {
-	$columns = array(
-		'cb' => '<input type="checkbox" />',
-		'title' => __( 'Name', 'sportspress' ),
-		'sp_position' => __( 'Positions', 'sportspress' ),
-		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_season' => __( 'Seasons', 'sportspress' )
+function sp_player_details_meta( $post ) {
+
+	$number = get_post_meta( $post->ID, 'sp_number', true );
+	$details = get_post_meta( $post->ID, 'sp_details', true );
+
+	?>
+	<p><strong><?php _e( 'Player Number', 'sportspress' ); ?></strong></p>
+	<p>
+		<input name="sp_number" type="text" size="4" id="sp_number" value="<?php echo $number; ?>">
+	</p>
+	<?php
+
+	$args = array(
+		'post_type' => 'sp_statistic',
+		'numberposts' => -1,
+		'posts_per_page' => -1,
+		'orderby' => 'menu_order',
+		'order' => 'ASC',
+		'meta_query' => array(
+			array(
+				'key' => 'sp_format',
+				'value' => 'custom',
+			),
+		),
 	);
-	return $columns;
+
+	$vars = get_posts( $args );
+
+	$custom = array();
+	foreach ( $vars as $var ):
+	?>
+		<p><strong><?php echo $var->post_title; ?></strong></p>
+		<p>
+			<input name="sp_details[<?php echo $var->post_name; ?>]" type="text" value="<?php echo sp_array_value( $details, $var->post_name, ''); ?>">
+		</p>
+	<?php
+	endforeach;
+	sp_nonce();
 }
-add_filter( 'manage_edit-sp_player_columns', 'sp_player_edit_columns' );
 ?>
