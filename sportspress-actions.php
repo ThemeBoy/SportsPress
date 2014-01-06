@@ -51,21 +51,29 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '—';
 			break;
 		case 'sp_team':
-			$results = get_post_meta( $post_id, 'sp_results', true );
+			$post_type = get_post_type( $post );
 			$teams = get_post_meta ( $post_id, 'sp_team', false );
-			foreach( $teams as $team_id ):
-				$team = get_post( $team_id );
-				$outcome_slug = sp_array_value( sp_array_value( $results, $team_id, null ), 'outcome', null );
+			if ( $post_type == 'sp_event' ):
+				$results = get_post_meta( $post_id, 'sp_results', true );
+				foreach( $teams as $team_id ):
+					$team = get_post( $team_id );
+					$outcome_slug = sp_array_value( sp_array_value( $results, $team_id, null ), 'outcome', null );
 
-				$args=array(
-					'name' => $outcome_slug,
-					'post_type' => 'sp_outcome',
-					'post_status' => 'publish',
-					'posts_per_page' => 1
-				);
-				$outcomes = get_posts( $args );
-				echo $team->post_title . ( $outcomes ? ' — ' . $outcomes[0]->post_title : '' ) . '<br>';
-			endforeach;
+					$args=array(
+						'name' => $outcome_slug,
+						'post_type' => 'sp_outcome',
+						'post_status' => 'publish',
+						'posts_per_page' => 1
+					);
+					$outcomes = get_posts( $args );
+					echo $team->post_title . ( $outcomes ? ' — ' . $outcomes[0]->post_title : '' ) . '<br>';
+				endforeach;
+			else:
+				foreach( $teams as $team_id ):
+					$team = get_post( $team_id );
+					echo $team->post_title . '<br>';
+				endforeach;
+			endif;
 			break;
 		case 'sp_equation':
 			echo sp_get_post_equation( $post_id );
