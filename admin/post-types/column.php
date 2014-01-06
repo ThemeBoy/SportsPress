@@ -25,7 +25,6 @@ function sp_column_edit_columns() {
 		'title' => __( 'Label', 'sportspress' ),
 		'sp_key' => __( 'Key', 'sportspress' ),
 		'sp_format' => __( 'Format', 'sportspress' ),
-		'sp_precision' => __( 'Precision', 'sportspress' ),
 		'sp_equation' => __( 'Equation', 'sportspress' ),
 		'sp_order' => __( 'Sort Order', 'sportspress' ),
 	);
