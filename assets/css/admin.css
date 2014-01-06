@@ -12,16 +12,6 @@
 	background-repeat: no-repeat;
 	background-position: 1px -33px;
 }
-/*
-#adminmenu #menu-posts-sp_team div.wp-menu-image {
-	background-position: 1px -97px;
-}
-#adminmenu #menu-posts-sp_team:hover div.wp-menu-image,
-#adminmenu #menu-posts-sp_team.wp-has-current-submenu div.wp-menu-image,
-#adminmenu #menu-posts-sp_team.current div.wp-menu-image {
-	background-position: 1px -65px;
-}
-*/
 #adminmenu #menu-posts-sp_team div.wp-menu-image {
 	background-position: 1px -33px;
 }
@@ -114,12 +104,3 @@
 	width: 32px;
 	text-align: center;
 }
-
-/* admin skin */
-/*
-#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, #adminmenu li.current a.menu-top, .folded #adminmenu li.wp-has-current-submenu, .folded #adminmenu li.current.menu-top, #adminmenu li.wp-has-current-submenu .wp-menu-arrow, #adminmenu li.current .wp-menu-arrow, #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
-#adminmenu li.wp-has-current-submenu .wp-menu-arrow div, #adminmenu li.current .wp-menu-arrow div {
-	background: #0082c2 !important;
-	border-color: #0082c2 !important;
-}
-*/
