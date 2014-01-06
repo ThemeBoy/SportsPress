@@ -93,7 +93,7 @@ function sp_player_stats_meta( $post ) {
 		$data = array();
 
 		// Get all leagues populated with stats where available
-		$data[ $team_id ] = sp_array_combine( $div_ids, $stats[ $team_id ] );
+		$data[ $team_id ] = sp_array_combine( $div_ids, sp_array_value( $stats, $team_id, array() ) );
 
 		// Get equations from statistics variables
 		$equations = sp_get_var_equations( 'sp_statistic' );

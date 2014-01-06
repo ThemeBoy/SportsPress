@@ -285,7 +285,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 				$selected = sp_array_between( (array)get_post_meta( $post_id, $meta, false ), 0, $index );
 				$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
 				if ( empty( $posts ) )
-					$posts = get_posts( array( 'post_type' => $meta, 'numberposts' => 0 ) );
+					$posts = get_posts( array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1 ) );
 				foreach ( $posts as $post ):
 					$parents = get_post_ancestors( $post );
 					if ( $filter ):
@@ -813,7 +813,7 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 					<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
 					<?php foreach( $columns as $column => $label ):
 						$player_id = 0;
-						$player_statistics = $data[0];
+						$player_statistics = sp_array_value( $data, 0, array() );
 						$value = sp_array_value( $player_statistics, $column, '' );
 						?>
 						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
