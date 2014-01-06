@@ -83,6 +83,9 @@ function sportspress_validate( $input ) {
 			// Make sure post doesn't overlap
 			if ( ! get_page_by_path( $post['post_name'], OBJECT, $post_type ) ):
 
+				// Translate post title
+				$post['post_title'] = __( $post['post_title'], 'sportspress' );
+
 				// Set post type
 				$post['post_type'] = $post_type;
 
@@ -146,7 +149,7 @@ function sportspress_sport_callback() {
 	?>
 	<select id="sportspress_sport" name="sportspress[sport]">
 		<?php foreach( $sportspress_sports as $slug => $sport ): ?>
-			<option value="<?php echo $slug; ?>" <?php selected( $options['sport'], $slug ); ?>><?php echo $sport['name']; ?></option>
+			<option value="<?php echo $slug; ?>" <?php selected( $options['sport'], $slug ); ?>><?php _e( $sport['name'], 'sportspress' ); ?></option>
 		<?php endforeach; ?>
 	</select>
 	<?

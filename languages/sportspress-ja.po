@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-05 20:10+1000\n"
-"PO-Revision-Date: 2014-01-05 20:12+1000\n"
+"POT-Creation-Date: 2014-01-06 17:03+1000\n"
+"PO-Revision-Date: 2014-01-06 17:03+1000\n"
 "Last-Translator: Takumi <takumi@themeboy.com>\n"
 "Language-Team: ThemeBoy <translate@themeboy.com>\n"
 "Language: ja\n"
@@ -25,47 +25,47 @@ msgstr "チームマネージャー"
 msgid "Staff"
 msgstr "スタッフ"
 
-#: ../install.php:118 ../sportspress-functions.php:530
-#: ../sportspress-functions.php:720 ../sportspress-functions.php:1315
+#: ../install.php:118 ../sportspress-functions.php:542
+#: ../sportspress-functions.php:779 ../sportspress-functions.php:1389
 #: ../admin/post-types/player.php:4
 msgid "Player"
 msgstr "選手"
 
-#: ../sportspress-actions.php:98
+#: ../sportspress-actions.php:103
 msgid "Scheduled"
 msgstr "予約済み"
 
-#: ../sportspress-actions.php:98 ../sportspress-functions.php:377
-#: ../sportspress-functions.php:380
+#: ../sportspress-actions.php:103 ../sportspress-functions.php:382
+#: ../sportspress-functions.php:385
 msgid "Played"
 msgstr "試合終了"
 
-#: ../sportspress-actions.php:98
+#: ../sportspress-actions.php:103
 msgid "M j, Y @ G:i"
 msgstr "Y年n月j日 @ G:i"
 
-#: ../sportspress-actions.php:119 ../sportspress-actions.php:129
-#: ../sportspress-actions.php:139 ../sportspress-functions.php:74
+#: ../sportspress-actions.php:124 ../sportspress-actions.php:134
+#: ../sportspress-actions.php:144 ../sportspress-functions.php:74
 #, php-format
 msgid "All %s"
 msgstr "すべての%s"
 
-#: ../sportspress-actions.php:119 ../admin/post-types/event.php:36
+#: ../sportspress-actions.php:124 ../admin/post-types/event.php:36
 #: ../admin/post-types/event.php:143 ../admin/post-types/list.php:27
-#: ../admin/post-types/player.php:30 ../admin/post-types/player.php:67
-#: ../admin/post-types/player.php:184 ../admin/post-types/staff.php:27
+#: ../admin/post-types/player.php:27 ../admin/post-types/player.php:42
+#: ../admin/post-types/player.php:80 ../admin/post-types/staff.php:27
 #: ../admin/post-types/staff.php:45 ../admin/post-types/table.php:26
 #: ../admin/post-types/table.php:36 ../admin/post-types/team.php:3
 msgid "Teams"
 msgstr "チーム"
 
-#: ../sportspress-actions.php:129 ../admin/post-types/player.php:183
+#: ../sportspress-actions.php:134 ../admin/post-types/player.php:26
 #: ../admin/post-types/staff.php:44 ../admin/terms/position.php:3
 msgid "Positions"
 msgstr "ポジション"
 
-#: ../sportspress-actions.php:139 ../admin/post-types/event.php:144
-#: ../admin/post-types/list.php:28 ../admin/post-types/player.php:185
+#: ../sportspress-actions.php:144 ../admin/post-types/event.php:144
+#: ../admin/post-types/list.php:28 ../admin/post-types/player.php:28
 #: ../admin/post-types/staff.php:46 ../admin/post-types/table.php:27
 #: ../admin/post-types/team.php:40 ../admin/terms/season.php:3
 msgid "Seasons"
@@ -81,14 +81,14 @@ msgid "Add %s"
 msgstr "新規%sを追加"
 
 #: ../sportspress-functions.php:55 ../sportspress-functions.php:78
-#: ../sportspress-functions.php:769
+#: ../sportspress-functions.php:836
 #, php-format
 msgid "Add New %s"
 msgstr "新規%sを追加"
 
 #: ../sportspress-functions.php:56 ../sportspress-functions.php:75
-#: ../admin/settings/config.php:35 ../admin/settings/config.php:74
-#: ../admin/settings/config.php:107 ../admin/settings/config.php:138
+#: ../admin/settings/config.php:33 ../admin/settings/config.php:70
+#: ../admin/settings/config.php:107 ../admin/settings/config.php:144
 #, php-format
 msgid "Edit %s"
 msgstr "%sを編集"
@@ -119,7 +119,7 @@ msgid "No %s found in trash"
 msgstr "ゴミ箱内に%sは見つかりませんでした。"
 
 #: ../sportspress-functions.php:62 ../sportspress-functions.php:80
-#: ../sportspress-functions.php:81 ../sportspress-globals.php:7
+#: ../sportspress-functions.php:81
 #, php-format
 msgid "Parent %s"
 msgstr "親%s"
@@ -134,153 +134,239 @@ msgstr "%sを更新"
 msgid "New %s Name"
 msgstr "新規%s名"
 
-#: ../sportspress-functions.php:251 ../sportspress-functions.php:309
-#: ../sportspress-globals.php:11
+#: ../sportspress-functions.php:256 ../sportspress-functions.php:314
 msgid "(no title)"
 msgstr "(タイトルなし)"
 
-#: ../sportspress-functions.php:377 ../sportspress-functions.php:380
-#: ../admin/post-types/event.php:3 ../admin/presets/golf.php:13
+#: ../sportspress-functions.php:382 ../sportspress-functions.php:385
+#: ../admin/post-types/event.php:3
 msgid "Events"
 msgstr "試合"
 
-#: ../sportspress-functions.php:377
+#: ../sportspress-functions.php:382
 msgid "Attended"
 msgstr "出場"
 
-#: ../sportspress-functions.php:383 ../admin/post-types/event.php:39
-#: ../admin/post-types/result.php:3 ../admin/settings/config.php:89
+#: ../sportspress-functions.php:388 ../admin/post-types/event.php:39
+#: ../admin/post-types/result.php:3 ../admin/settings/config.php:85
 #: ../admin/settings/config.php:107
 msgid "Results"
 msgstr "結果"
 
-#: ../sportspress-functions.php:386 ../sportspress-functions.php:387
+#: ../sportspress-functions.php:391 ../sportspress-functions.php:392
 #: ../admin/post-types/outcome.php:3 ../admin/settings/config.php:122
-#: ../admin/settings/config.php:138
+#: ../admin/settings/config.php:144
 msgid "Outcomes"
 msgstr "勝敗"
 
-#: ../sportspress-functions.php:387
+#: ../sportspress-functions.php:392
 msgid "Streak"
 msgstr "連勝敗"
 
-#: ../sportspress-functions.php:390
+#: ../sportspress-functions.php:395
 msgid "Columns"
 msgstr "列"
 
-#: ../sportspress-functions.php:393 ../admin/post-types/player.php:33
-#: ../admin/post-types/statistic.php:3 ../admin/settings/config.php:50
-#: ../admin/settings/config.php:74
+#: ../sportspress-functions.php:398 ../admin/post-types/player.php:45
+#: ../admin/post-types/statistic.php:3 ../admin/settings/config.php:48
+#: ../admin/settings/config.php:70
 msgid "Statistics"
 msgstr "成績表"
 
-#: ../sportspress-functions.php:402
+#: ../sportspress-functions.php:407
 msgid "Operators"
 msgstr "演算子"
 
-#: ../sportspress-functions.php:412
+#: ../sportspress-functions.php:417
 msgid "Constants"
 msgstr "定数"
 
-#: ../sportspress-functions.php:415 ../admin/post-types/event.php:56
+#: ../sportspress-functions.php:420 ../admin/post-types/event.php:56
 #: ../admin/post-types/event.php:73
 msgid "Remove"
 msgstr "削除"
 
-#: ../sportspress-functions.php:416 ../admin/post-types/event.php:80
+#: ../sportspress-functions.php:421 ../admin/post-types/event.php:80
 msgid "Select"
 msgstr "選択"
 
-#: ../sportspress-functions.php:490 ../sportspress-functions.php:630
-#: ../sportspress-functions.php:666 ../sportspress-functions.php:1099
-#: ../sportspress-globals.php:4 ../sportspress-globals.php:7
+#: ../sportspress-functions.php:502 ../sportspress-functions.php:642
+#: ../sportspress-functions.php:678 ../sportspress-functions.php:1166
 #: ../admin/post-types/team.php:4 ../admin/post-types/team.php:39
 msgid "Team"
 msgstr "チーム"
 
-#: ../sportspress-functions.php:570 ../sportspress-functions.php:582
-#: ../sportspress-functions.php:618 ../admin/terms/season.php:4
+#: ../sportspress-functions.php:582 ../sportspress-functions.php:594
+#: ../sportspress-functions.php:630 ../admin/terms/season.php:4
 msgid "Season"
 msgstr "シーズン"
 
-#: ../sportspress-functions.php:582 ../sportspress-functions.php:630
-#: ../sportspress-globals.php:5 ../sportspress-globals.php:6
-#: ../sportspress-globals.php:18 ../sportspress-globals.php:19
-#: ../sportspress-globals.php:27 ../sportspress-globals.php:28
-#: ../sportspress-globals.php:42 ../sportspress-globals.php:46
-#: ../sportspress-globals.php:50 ../admin/post-types/player.php:67
+#: ../sportspress-functions.php:594 ../sportspress-functions.php:642
+#: ../admin/post-types/player.php:80
 #, php-format
 msgid "Select %s"
 msgstr "%sを選択"
 
-#: ../sportspress-functions.php:670 ../admin/post-types/outcome.php:4
+#: ../sportspress-functions.php:682 ../admin/post-types/outcome.php:4
 msgid "Outcome"
 msgstr "勝敗"
 
-#: ../sportspress-functions.php:694
+#: ../sportspress-functions.php:706
 msgid "-- Not set --"
 msgstr "-- 未設定 --"
 
-#: ../sportspress-functions.php:747 ../admin/presets/golf.php:27
+#: ../sportspress-functions.php:733
+msgid "Starting Lineup"
+msgstr "スターティングメンバー"
+
+#: ../sportspress-functions.php:734
+msgid "Substitute"
+msgstr "補欠"
+
+#: ../sportspress-functions.php:758
+msgid "None"
+msgstr "なし"
+
+#: ../sportspress-functions.php:783
+msgid "Status"
+msgstr "ステータス"
+
+#: ../sportspress-functions.php:813
 msgid "Total"
 msgstr "合計"
 
-#: ../sportspress-globals.php:5 ../sportspress-globals.php:6
-#: ../sportspress-globals.php:8 ../sportspress-globals.php:42
-#: ../sportspress-globals.php:43 ../admin/post-types/team.php:28
-msgid "Logo"
-msgstr "ロゴ"
+#: ../sportspress-globals.php:6
+msgid "Association Football (Soccer)"
+msgstr "サッカー"
 
-#: ../sportspress-globals.php:8 ../sportspress-globals.php:20
-#: ../sportspress-globals.php:29 ../sportspress-globals.php:43
-#: ../sportspress-globals.php:47 ../sportspress-globals.php:51
+#: ../sportspress-globals.php:7
+msgid "American Football"
+msgstr "アメリカンフットボール"
+
+#: ../sportspress-globals.php:8
+msgid "Australian Rules Football"
+msgstr "オージーフットボール"
+
+#: ../sportspress-globals.php:9
+msgid "Baseball"
+msgstr "野球"
+
+#: ../sportspress-globals.php:10
+msgid "Basketball"
+msgstr "バスケットボール"
+
+#: ../sportspress-globals.php:11
+msgid "Competitive Gaming"
+msgstr "ゲーミング"
+
+#: ../sportspress-globals.php:12
+msgid "Cricket"
+msgstr "クリケット"
+
+#: ../sportspress-globals.php:13
+msgid "Golf"
+msgstr "ゴルフ"
+
+#: ../sportspress-globals.php:14
+msgid "Handball"
+msgstr "ハンドボール"
+
+#: ../sportspress-globals.php:15
+msgid "Hockey"
+msgstr "ホッケー"
+
+#: ../sportspress-globals.php:16
+msgid "Racing"
+msgstr "レーシング"
+
+#: ../sportspress-globals.php:17
+msgid "Rugby"
+msgstr "ラグビー"
+
+#: ../sportspress-globals.php:18
+msgid "Swimming"
+msgstr "水泳"
+
+#: ../sportspress-globals.php:19
+msgid "Tennis"
+msgstr "テニス"
+
+#: ../sportspress-globals.php:20
+msgid "Volleyball"
+msgstr "バレーボール"
+
+#: ../sportspress-globals.php:23
+msgid "Appearances"
+msgstr "出場"
+
+#: ../sportspress-globals.php:24
+msgid "Goals"
+msgstr "得点"
+
+#: ../sportspress-globals.php:25
+msgid "Assists"
+msgstr "アシスト"
+
+#: ../sportspress-globals.php:26
+msgid "Yellow Cards"
+msgstr "警告"
+
+#: ../sportspress-globals.php:27
+msgid "Red Cards"
+msgstr "退場"
+
+#: ../sportspress-globals.php:28
+msgid "Height"
+msgstr "身長"
+
+#: ../sportspress-globals.php:29
+msgid "Weight"
+msgstr "体重"
+
+#: ../sportspress-globals.php:32
+msgid "Select Logo"
+msgstr "ロゴを選択"
+
+#: ../sportspress-globals.php:33
+msgid "Remove Logo"
+msgstr "ロゴを削除"
+
+#: ../sportspress-globals.php:34
 #, php-format
-msgid "Remove %s"
-msgstr "%sを削除"
+msgid "Kick-off: <b>%1$s</b>"
+msgstr "キックオフ: <b>%1$s</b>"
 
-#: ../sportspress-globals.php:12 ../sportspress-globals.php:13
-#: ../sportspress-globals.php:14 ../admin/post-types/event.php:145
-msgid "Kick-off"
-msgstr "キックオフ"
+#: ../sportspress-globals.php:35
+#, php-format
+msgid "Joined: <b>%1$s</b>"
+msgstr "入団日: <b>%1$s</b>"
 
-#: ../sportspress-globals.php:17 ../sportspress-globals.php:26
-#: ../admin/post-types/player.php:182 ../admin/post-types/staff.php:43
-msgid "Name"
-msgstr "名前"
+#: ../sportspress-globals.php:36
+msgid "Select Photo"
+msgstr "写真を選択"
 
-#: ../sportspress-globals.php:18 ../sportspress-globals.php:19
-#: ../sportspress-globals.php:20 ../sportspress-globals.php:27
-#: ../sportspress-globals.php:28 ../sportspress-globals.php:29
-#: ../sportspress-globals.php:46 ../sportspress-globals.php:47
-#: ../sportspress-globals.php:50 ../sportspress-globals.php:51
-#: ../admin/post-types/player.php:29 ../admin/post-types/staff.php:26
-msgid "Photo"
-msgstr "写真"
+#: ../sportspress-globals.php:37
+msgid "Remove Photo"
+msgstr "写真を削除"
 
-#: ../sportspress-globals.php:21 ../sportspress-globals.php:22
-#: ../sportspress-globals.php:23 ../sportspress-globals.php:30
-#: ../sportspress-globals.php:31 ../sportspress-globals.php:32
-msgid "Joined"
-msgstr "入団日"
-
-#: ../sportspress-globals.php:56
+#: ../sportspress-globals.php:40
 msgid "Integer"
 msgstr "整数"
 
-#: ../sportspress-globals.php:57
+#: ../sportspress-globals.php:41
 msgid "Decimal"
 msgstr "少数"
 
-#: ../sportspress-globals.php:58
+#: ../sportspress-globals.php:42
 msgid "Time"
 msgstr "時間"
 
-#: ../sportspress-globals.php:59
+#: ../sportspress-globals.php:43
 msgid "Custom Field"
 msgstr "カスタムフィールド"
 
 #: ../admin/post-types/column.php:3 ../admin/post-types/team.php:31
-#: ../admin/settings/config.php:11 ../admin/settings/config.php:35
+#: ../admin/settings/config.php:11 ../admin/settings/config.php:33
 msgid "Table Columns"
 msgstr "順位表列"
 
@@ -294,60 +380,61 @@ msgstr "順位表列"
 
 #: ../admin/post-types/column.php:25 ../admin/post-types/outcome.php:25
 #: ../admin/post-types/result.php:25 ../admin/post-types/statistic.php:25
-#: ../admin/settings/config.php:15 ../admin/settings/config.php:54
-#: ../admin/settings/config.php:93 ../admin/settings/config.php:126
+#: ../admin/settings/config.php:15 ../admin/settings/config.php:52
+#: ../admin/settings/config.php:89 ../admin/settings/config.php:126
 msgid "Label"
 msgstr "ラベル"
 
-#: ../admin/post-types/column.php:26 ../admin/post-types/column.php:51
+#: ../admin/post-types/column.php:26 ../admin/post-types/column.php:50
 #: ../admin/post-types/outcome.php:26 ../admin/post-types/outcome.php:38
 #: ../admin/post-types/result.php:26 ../admin/post-types/result.php:40
-#: ../admin/post-types/statistic.php:26 ../admin/post-types/statistic.php:51
-#: ../admin/settings/config.php:16 ../admin/settings/config.php:55
-#: ../admin/settings/config.php:94 ../admin/settings/config.php:127
+#: ../admin/post-types/statistic.php:26 ../admin/post-types/statistic.php:50
+#: ../admin/settings/config.php:16 ../admin/settings/config.php:53
+#: ../admin/settings/config.php:90 ../admin/settings/config.php:127
 msgid "Key"
 msgstr "キー"
 
-#: ../admin/post-types/column.php:27 ../admin/post-types/column.php:55
+#: ../admin/post-types/column.php:27 ../admin/post-types/column.php:54
 #: ../admin/post-types/result.php:27 ../admin/post-types/result.php:44
-#: ../admin/post-types/statistic.php:27 ../admin/post-types/statistic.php:55
-#: ../admin/settings/config.php:17 ../admin/settings/config.php:56
-#: ../admin/settings/config.php:95
+#: ../admin/post-types/statistic.php:27 ../admin/post-types/statistic.php:54
+#: ../admin/settings/config.php:17 ../admin/settings/config.php:54
+#: ../admin/settings/config.php:91 ../admin/settings/config.php:128
 msgid "Format"
 msgstr "フォーマット"
 
-#: ../admin/post-types/column.php:28 ../admin/post-types/column.php:65
-#: ../admin/post-types/statistic.php:28 ../admin/post-types/statistic.php:65
-#: ../admin/settings/config.php:18 ../admin/settings/config.php:57
-msgid "Precision"
-msgstr "浮動小数点数"
-
-#: ../admin/post-types/column.php:29 ../admin/post-types/column.php:69
-#: ../admin/post-types/statistic.php:29 ../admin/post-types/statistic.php:69
-#: ../admin/settings/config.php:19 ../admin/settings/config.php:58
+#: ../admin/post-types/column.php:28 ../admin/post-types/column.php:68
+#: ../admin/post-types/statistic.php:28 ../admin/post-types/statistic.php:68
+#: ../admin/settings/config.php:18 ../admin/settings/config.php:55
+#: ../admin/settings/config.php:92 ../admin/settings/config.php:129
 msgid "Equation"
 msgstr "方程式"
 
-#: ../admin/post-types/column.php:30 ../admin/post-types/column.php:77
-#: ../admin/post-types/statistic.php:30 ../admin/post-types/statistic.php:77
-#: ../admin/settings/config.php:20 ../admin/settings/config.php:59
+#: ../admin/post-types/column.php:29 ../admin/post-types/column.php:76
+#: ../admin/post-types/statistic.php:29 ../admin/post-types/statistic.php:76
+#: ../admin/settings/config.php:19 ../admin/settings/config.php:56
+#: ../admin/settings/config.php:93 ../admin/settings/config.php:130
 msgid "Sort Order"
 msgstr "ソート順"
 
-#: ../admin/post-types/column.php:37 ../admin/post-types/outcome.php:33
-#: ../admin/post-types/result.php:34 ../admin/post-types/statistic.php:37
+#: ../admin/post-types/column.php:36 ../admin/post-types/outcome.php:33
+#: ../admin/post-types/player.php:48 ../admin/post-types/result.php:34
+#: ../admin/post-types/statistic.php:36
 msgid "Details"
 msgstr "詳細"
 
-#: ../admin/post-types/column.php:81 ../admin/post-types/statistic.php:81
+#: ../admin/post-types/column.php:64 ../admin/post-types/statistic.php:64
+msgid "Precision"
+msgstr "浮動小数点数"
+
+#: ../admin/post-types/column.php:80 ../admin/post-types/statistic.php:80
 msgid "Disable"
 msgstr "無効化"
 
-#: ../admin/post-types/column.php:89 ../admin/post-types/statistic.php:89
+#: ../admin/post-types/column.php:88 ../admin/post-types/statistic.php:88
 msgid "Descending"
 msgstr "降順"
 
-#: ../admin/post-types/column.php:89 ../admin/post-types/statistic.php:89
+#: ../admin/post-types/column.php:88 ../admin/post-types/statistic.php:88
 msgid "Ascending"
 msgstr "昇順"
 
@@ -369,6 +456,10 @@ msgstr "選手"
 #: ../admin/post-types/event.php:41
 msgid "Article"
 msgstr "戦評"
+
+#: ../admin/post-types/event.php:145
+msgid "Kick-off"
+msgstr "キックオフ"
 
 #: ../admin/post-types/list.php:3
 msgid "Player Lists"
@@ -394,14 +485,26 @@ msgstr "勝敗"
 msgid "players"
 msgstr "選手"
 
-#: ../admin/post-types/player.php:27 ../admin/post-types/staff.php:24
+#: ../admin/post-types/player.php:25 ../admin/post-types/staff.php:43
+msgid "Name"
+msgstr "名前"
+
+#: ../admin/post-types/player.php:39 ../admin/post-types/staff.php:24
 #: ../admin/post-types/team.php:26
 msgid "Publish"
 msgstr "公開"
 
-#: ../admin/post-types/player.php:36 ../admin/post-types/staff.php:28
+#: ../admin/post-types/player.php:41 ../admin/post-types/staff.php:26
+msgid "Photo"
+msgstr "写真"
+
+#: ../admin/post-types/player.php:49 ../admin/post-types/staff.php:28
 msgid "Profile"
 msgstr "プロフィール"
+
+#: ../admin/post-types/player.php:198
+msgid "Player Number"
+msgstr "背番号"
 
 #: ../admin/post-types/result.php:4
 msgid "Result"
@@ -439,73 +542,9 @@ msgstr "順位表"
 msgid "teams"
 msgstr "チーム"
 
-#: ../admin/presets/baseball.php:5
-msgid "Baseball"
-msgstr "野球"
-
-#: ../admin/presets/basketball.php:5
-msgid "Basketball"
-msgstr "バスケットボール"
-
-#: ../admin/presets/cricket.php:5
-msgid "Cricket"
-msgstr "クリケット"
-
-#: ../admin/presets/football.php:5
-msgid "American Football"
-msgstr "アメリカンフットボール"
-
-#: ../admin/presets/footy.php:5
-msgid "Australian Rules Football"
-msgstr "オージーフットボール"
-
-#: ../admin/presets/gaming.php:5
-msgid "Competitive Gaming"
-msgstr "ゲーミング"
-
-#: ../admin/presets/golf.php:5
-msgid "Golf"
-msgstr "ゴルフ"
-
-#: ../admin/presets/hockey.php:5
-msgid "Hockey"
-msgstr "ホッケー"
-
-#: ../admin/presets/presets.php:20
-msgid "Custom"
-msgstr "カスタム"
-
-#: ../admin/presets/racing.php:5
-msgid "Racing"
-msgstr "レーシング"
-
-#: ../admin/presets/rugby.php:5
-msgid "Rugby"
-msgstr "ラグビー"
-
-#: ../admin/presets/soccer.php:5
-msgid "Association Football (Soccer)"
-msgstr "サッカー"
-
-#: ../admin/presets/soccer.php:91
-msgid "Appearances"
-msgstr "出場"
-
-#: ../admin/presets/soccer.php:100 ../admin/presets/soccer.php:141
-msgid "Goals"
-msgstr "得点"
-
-#: ../admin/presets/soccer.php:111
-msgid "Assists"
-msgstr "アシスト"
-
-#: ../admin/presets/soccer.php:120
-msgid "Yellow Cards"
-msgstr "警告"
-
-#: ../admin/presets/soccer.php:129
-msgid "Red Cards"
-msgstr "退場"
+#: ../admin/post-types/team.php:28
+msgid "Logo"
+msgstr "ロゴ"
 
 #: ../admin/settings/general.php:1
 msgid "General Settings"
@@ -520,7 +559,7 @@ msgstr "SportsPress"
 msgid "Configure"
 msgstr "設定"
 
-#: ../admin/settings/settings.php:134
+#: ../admin/settings/settings.php:137
 msgid "Sport"
 msgstr "スポーツ"
 
@@ -536,153 +575,5 @@ msgstr "ポジション"
 msgid "season"
 msgstr "シーズン"
 
-#~ msgid "W"
-#~ msgstr "W"
-
-#~ msgid "L"
-#~ msgstr "L"
-
-#~ msgid "Abbreviation"
-#~ msgstr "略語"
-
-#~ msgid "Wins"
-#~ msgstr "勝"
-
-#~ msgid "Losses"
-#~ msgstr "敗"
-
-#~ msgid "Win Percentage"
-#~ msgstr "勝率"
-
-#~ msgid "1st Inning"
-#~ msgstr "1回"
-
-#~ msgid "2nd Inning"
-#~ msgstr "2回"
-
-#~ msgid "3rd Inning"
-#~ msgstr "3回"
-
-#~ msgid "4th Inning"
-#~ msgstr "4回"
-
-#~ msgid "5th Inning"
-#~ msgstr "5回"
-
-#~ msgid "6th Inning"
-#~ msgstr "6回"
-
-#~ msgid "7th Inning"
-#~ msgstr "7回"
-
-#~ msgid "8th Inning"
-#~ msgstr "8回"
-
-#~ msgid "9th Inning"
-#~ msgstr "9回"
-
-#~ msgid "Extra Innings"
-#~ msgstr "延長"
-
-#~ msgid "Runs"
-#~ msgstr "ラン"
-
-#~ msgid "Hits"
-#~ msgstr "ヒット"
-
-#~ msgid "Errors"
-#~ msgstr "エラー"
-
-#~ msgid "Win"
-#~ msgstr "勝"
-
-#~ msgid "Loss"
-#~ msgstr "敗"
-
-#~ msgid "Overtime"
-#~ msgstr "延長"
-
-#~ msgid "Pct"
-#~ msgstr "勝率"
-
-#~ msgid "PF"
-#~ msgstr "PF"
-
-#~ msgid "PA"
-#~ msgstr "PA"
-
-#, fuzzy
-#~ msgid "Goals For"
-#~ msgstr "ゴール"
-
-#~ msgid "1st Half"
-#~ msgstr "前半"
-
-#~ msgid "2nd Half"
-#~ msgstr "後半"
-
-#~ msgid "RA"
-#~ msgstr "RA"
-
-#~ msgid "P"
-#~ msgstr "P"
-
-#~ msgid "D"
-#~ msgstr "D"
-
-#~ msgid "F"
-#~ msgstr "F"
-
-#~ msgid "A"
-#~ msgstr "A"
-
-#~ msgid "XP"
-#~ msgstr "XP"
-
-#~ msgid "GP"
-#~ msgstr "GP"
-
-#~ msgid "GF"
-#~ msgstr "GF"
-
-#~ msgid "GA"
-#~ msgstr "GA"
-
-#~ msgid "GD"
-#~ msgstr "GD"
-
-#~ msgid "Divisions"
-#~ msgstr "リーグレベル"
-
-#~ msgid "Division"
-#~ msgstr "リーグレベル"
-
-#~ msgid "divisions"
-#~ msgstr "リーグレベル"
-
-#~ msgid "Overall"
-#~ msgstr "全般"
-
-#~ msgid "SportsPress Settings"
-#~ msgstr "SportsPress 設定"
-
-#~ msgid "PTS"
-#~ msgstr "PTS"
-
-#~ msgid "Sponsors"
-#~ msgstr "スポンサー"
-
-#~ msgid "Sponsor"
-#~ msgstr "スポンサー"
-
-#~ msgid "sponsors"
-#~ msgstr "スポンサー"
-
-#~ msgid "Leagues"
-#~ msgstr "リーグ"
-
-#~ msgid "League"
-#~ msgstr "リーグ"
-
-#~ msgid "leagues"
-#~ msgstr "リーグ"
+#~ msgid "Joined"
+#~ msgstr "入団日"

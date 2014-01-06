@@ -2,7 +2,7 @@
 global $sportspress_sports;
 
 $sportspress_sports['golf'] = array(
-	'name' => __( 'Golf', 'sportspress' ),
+	'name' => 'Golf',
 	'posts' => array(
 		// Table Columns
 		'sp_column' => array(
@@ -10,7 +10,7 @@ $sportspress_sports['golf'] = array(
 		// Statistics
 		'sp_statistic' => array(
 			array(
-				'post_title' => __( 'Events', 'sportspress' ),
+				'post_title' => 'Events',
 				'post_name' => 'events',
 				'meta'       => array(
 					'sp_equation'     => '$eventsplayed',
@@ -24,7 +24,7 @@ $sportspress_sports['golf'] = array(
 				),
 			),
 			array(
-				'post_title' => __( 'Total', 'sportspress' ),
+				'post_title' => 'Total',
 				'post_name' => 'total',
 				'meta'       => array(
 					'sp_equation'     => '$ptsfor',
