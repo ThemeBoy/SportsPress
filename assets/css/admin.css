@@ -103,6 +103,10 @@
 	min-width: 14px;
 	width: 100%;
 }
+.sp-config-table th,
+.sp-config-table td {
+	width: 20%;
+}
 .widefat th.column-sp_logo,
 .widefat td.column-sp_logo {
 	width: 32px;

@@ -79,9 +79,6 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_format':
 			echo sp_get_post_format( $post_id );
 			break;
-		case 'sp_precision':
-			echo sp_get_post_precision( $post_id );
-			break;
 		case 'sp_player':
 			echo sp_the_posts( $post_id, 'sp_player' );
 			break;

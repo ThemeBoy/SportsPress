@@ -106,7 +106,12 @@ if ( !function_exists( 'sp_get_post_format' ) ) {
 		$format = get_post_meta ( $post_id, 'sp_format', true );
 		if ( $format ):
 			global $sportspress_config_formats;
-			return sp_array_value( $sportspress_config_formats, $format, '—' );
+			$format_str = sp_array_value( $sportspress_config_formats, $format, '—' );
+			if ( in_array( $format, array( 'decimal', 'time' ) ) ):
+				return $format_str . ' (' . sp_get_post_precision( $post_id ) . ')';
+			else:
+				return $format_str;
+			endif;
 		else:
 			return '—';
 		endif;
