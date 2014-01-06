@@ -1082,7 +1082,7 @@ if ( !function_exists( 'sp_get_table' ) ) {
 
 			// Add order to priorities if priority is set and does not exist in array already
 			$priority = sp_array_value( sp_array_value( $meta, 'sp_priority', array() ), 0, 0 );
-			if ( $priority && ! array_key_exists( $priorities, $priority ) ):
+			if ( $priority && ! array_key_exists( $priority, $priorities ) ):
 				$priorities[ $priority ] = array(
 					'column' => $stat->post_name,
 					'order' => sp_array_value( sp_array_value( $meta, 'sp_order', array() ), 0, 'DESC' )
