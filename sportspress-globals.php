@@ -44,56 +44,56 @@ __( 'Custom Field', 'sportspress' );
 
 $sportspress_texts = array(
 	'sp_team' => array(
-		'Enter title here' => 'Team', 'sportspress',
-		'Set featured image' => 'Select Logo', 'sportspress',
-		'Set Featured Image' => 'Select Logo', 'sportspress',
-		'Remove featured image' => 'Remove Logo', 'sportspress',
+		'Enter title here' => 'Team',
+		'Set featured image' => 'Select Logo',
+		'Set Featured Image' => 'Select Logo',
+		'Remove featured image' => 'Remove Logo',
 	),
 	'sp_event' => array(
-		'Enter title here' => '(no title)', 'sportspress',
-		'Scheduled for: <b>%1$s</b>' => 'Kick-off: <b>%1$s</b>', 'sportspress',
-		'Published on: <b>%1$s</b>' => 'Kick-off: <b>%1$s</b>', 'sportspress',
-		'Publish <b>immediately</b>' => 'Kick-off: <b>%1$s</b>', 'sportspress',
+		'Enter title here' => '(no title)',
+		'Scheduled for: <b>%1$s</b>' => 'Kick-off: <b>%1$s</b>',
+		'Published on: <b>%1$s</b>' => 'Kick-off: <b>%1$s</b>',
+		'Publish <b>immediately</b>' => 'Kick-off: <b>%1$s</b>',
 	),
 	'sp_player' => array(
-		'Enter title here' => 'Name', 'sportspress',
-		'Set featured image' => 'Select Photo', 'sportspress',
-		'Set Featured Image' => 'Select Photo', 'sportspress',
-		'Remove featured image' => 'Remove Photo', 'sportspress',
-		'Scheduled for: <b>%1$s</b>' => 'Joined: <b>%1$s</b>', 'sportspress',
-		'Published on: <b>%1$s</b>' => 'Joined: <b>%1$s</b>', 'sportspress',
-		'Publish <b>immediately</b>' => 'Joined: <b>%1$s</b>', 'sportspress',
+		'Enter title here' => 'Name',
+		'Set featured image' => 'Select Photo',
+		'Set Featured Image' => 'Select Photo',
+		'Remove featured image' => 'Remove Photo',
+		'Scheduled for: <b>%1$s</b>' => 'Joined: <b>%1$s</b>',
+		'Published on: <b>%1$s</b>' => 'Joined: <b>%1$s</b>',
+		'Publish <b>immediately</b>' => 'Joined: <b>%1$s</b>',
 	),
 	'sp_staff' => array(
-		'Enter title here' => 'Name', 'sportspress',
-		'Set featured image' => 'Select Photo', 'sportspress',
-		'Set Featured Image' => 'Select Photo', 'sportspress',
-		'Remove featured image' => 'Remove Photo', 'sportspress',
-		'Scheduled for: <b>%1$s</b>' => 'Joined: <b>%1$s</b>', 'sportspress',
-		'Published on: <b>%1$s</b>' => 'Joined: <b>%1$s</b>', 'sportspress',
-		'Publish <b>immediately</b>' => 'Joined: <b>%1$s</b>', 'sportspress',
+		'Enter title here' => 'Name',
+		'Set featured image' => 'Select Photo',
+		'Set Featured Image' => 'Select Photo',
+		'Remove featured image' => 'Remove Photo',
+		'Scheduled for: <b>%1$s</b>' => 'Joined: <b>%1$s</b>',
+		'Published on: <b>%1$s</b>' => 'Joined: <b>%1$s</b>',
+		'Publish <b>immediately</b>' => 'Joined: <b>%1$s</b>',
 	),
 );
 
 $sportspress_thumbnail_texts = array(
 	'sp_team' => array(
-		'Set featured image' => 'Select Logo', 'sportspress',
-		'Remove featured image' => 'Remove Logo', 'sportspress',
+		'Set featured image' => 'Select Logo',
+		'Remove featured image' => 'Remove Logo',
 	),
 	'sp_player' => array(
-		'Set featured image' => 'Select Photo', 'sportspress',
-		'Remove featured image' => 'Remove Photo', 'sportspress',
+		'Set featured image' => 'Select Photo',
+		'Remove featured image' => 'Remove Photo',
 	),
 	'sp_staff' => array(
-		'Set featured image' => 'Select Photo', 'sportspress',
-		'Remove featured image' => 'Remove Photo', 'sportspress',
+		'Set featured image' => 'Select Photo',
+		'Remove featured image' => 'Remove Photo',
 	),
 );
 
 $sportspress_config_formats = array(
-	'integer' => 'Integer', 'sportspress',
-	'decimal' => 'Decimal', 'sportspress',
-	'time' => 'Time', 'sportspress',
-	'custom' => 'Custom Field', 'sportspress',
+	'integer' => 'Integer',
+	'decimal' => 'Decimal',
+	'time' => 'Time',
+	'custom' => 'Custom Field',
 );
 ?>
