@@ -1,4 +1,10 @@
 <?php
+if ( !function_exists( 'sp_nonce' ) ) {
+	function sp_nonce() {
+		echo '<input type="hidden" name="sportspress_nonce" id="sportspress_nonce" value="' . wp_create_nonce( SPORTSPRESS_PLUGIN_BASENAME ) . '" />';
+	}
+}
+
 if ( !function_exists( 'sp_array_between' ) ) {
 	function sp_array_between ( $array = array(), $delimiter = 0, $index = 0 ) {
 		$keys = array_keys( $array, $delimiter );
@@ -105,8 +111,8 @@ if ( !function_exists( 'sp_get_post_format' ) ) {
 	function sp_get_post_format( $post_id ) {
 		$format = get_post_meta ( $post_id, 'sp_format', true );
 		if ( $format ):
-			global $sportspress_config_formats;
-			$format_str = __( sp_array_value( $sportspress_config_formats, $format, '—' ), 'sportspress' );
+			$formats = sp_get_config_formats();
+			$format_str = sp_array_value( $formats, $format, '—' );
 			if ( in_array( $format, array( 'decimal', 'time' ) ) ):
 				return $format_str . ' (' . sp_get_post_precision( $post_id ) . ')';
 			else:
@@ -156,6 +162,18 @@ if ( !function_exists( 'sp_get_post_order' ) ) {
 		else:
 			return '—';
 		endif;
+	}
+}
+
+if ( !function_exists( 'sp_get_config_formats' ) ) {
+	function sp_get_config_formats() {
+		$arr = array(
+			'integer' => __( 'Integer', 'sportspress' ),
+			'decimal' => __( 'Decimal', 'sportspress' ),
+			'time' => __( 'Time', 'sportspress' ),
+			'custom' => __( 'Custom Field', 'sportspress' ),
+		);
+		return $arr;
 	}
 }
 
@@ -770,7 +788,8 @@ if ( !function_exists( 'sp_event_player_sub_selector' ) ) {
 		// Add players as selectable options
 		foreach( $data as $id => $statistics ):
 			if ( ! $id || $id == $player_id ) continue;
-			$output .= '<option value="' . $id . '"' . ( $id == $value ? ' selected' : '' ) . '>' . get_the_title( $id ) . '</option>';
+			$number = get_post_meta( $id, 'sp_number', true );
+			$output .= '<option value="' . $id . '"' . ( $id == $value ? ' selected' : '' ) . '>' . ( $number ? $number . '. ' : '' ) . get_the_title( $id ) . '</option>';
 		endforeach;
 
 		$output .= '</select>';
@@ -799,10 +818,11 @@ if ( !function_exists( 'sp_event_players_table' ) ) {
 					$i = 0;
 					foreach ( $data as $player_id => $player_statistics ):
 						if ( !$player_id ) continue;
+						$number = get_post_meta( $player_id, 'sp_number', true );
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
-								<?php echo get_the_title( $player_id ); ?>
+								<?php echo ( $number ? $number . '. ' : '' ) . get_the_title( $player_id ); ?>
 							</td>
 							<?php foreach( $columns as $column => $label ):
 								$value = sp_array_value( $player_statistics, $column, '' );

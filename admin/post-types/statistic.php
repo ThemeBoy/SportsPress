@@ -37,7 +37,7 @@ function sp_statistic_meta_init() {
 }
 
 function sp_statistic_equation_meta( $post ) {
-	global $sportspress_config_formats;
+	$formats = sp_get_config_formats();
 
 	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
 	$order = get_post_meta( $post->ID, 'sp_order', true );
@@ -55,7 +55,7 @@ function sp_statistic_equation_meta( $post ) {
 	<p class="sp-format-selector">
 		<select name="sp_format">
 			<?php
-			foreach ( $sportspress_config_formats as $key => $value ):
+			foreach ( $formats as $key => $value ):
 				printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $priority, false ), $value );
 			endforeach;
 			?>
