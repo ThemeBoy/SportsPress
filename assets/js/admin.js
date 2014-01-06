@@ -116,10 +116,28 @@ jQuery(document).ready(function($){
 		} else {
 			$equationselector.prop( 'disabled', false )
 		}
+
 	});
 
 	// Trigger format selector
 	$('.sp-format-selector select:first').change();
+
+	// Status selector
+	$('.sp-status-selector select:first-child').change(function() {
+
+		$subselector = $(this).siblings();
+
+		// Sub settings
+		if($(this).val() == 'sub') {
+			$subselector.show();
+		} else {
+			$subselector.hide();
+		}
+
+	});
+
+	// Trigger status selector
+	$('.sp-status-selector select:first-child').change();
 
 	// Remove slug editor in quick edit for slug-sensitive post types
 	$('.inline-edit-sp_result, .inline-edit-sp_outcome, .inline-edit-sp_column, .inline-edit-sp_statistic').find('input[name=post_name]').closest('label').remove();
