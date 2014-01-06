@@ -2,7 +2,7 @@
 global $sportspress_sports;
 
 $sportspress_sports['soccer'] = array(
-	'name' => __( 'Association Football (Soccer)', 'sportspress' ),
+	'name' => 'Association Football (Soccer)',
 	'posts' => array(
 		// Table Columns
 		'sp_column' => array(
@@ -88,7 +88,7 @@ $sportspress_sports['soccer'] = array(
 		// Statistics
 		'sp_statistic' => array(
 			array(
-				'post_title' => __( 'Appearances', 'sportspress' ),
+				'post_title' => 'Appearances',
 				'post_name'  => 'appearances',
 				'meta'       => array(
 					'sp_equation'     => '$eventsplayed',
@@ -97,7 +97,7 @@ $sportspress_sports['soccer'] = array(
 				),
 			),
 			array(
-				'post_title' => __( 'Goals', 'sportspress' ),
+				'post_title' => 'Goals',
 				'post_name'  => 'goals',
 				'meta'       => array(
 					'sp_equation'     => '',
@@ -108,7 +108,7 @@ $sportspress_sports['soccer'] = array(
 				),
 			),
 			array(
-				'post_title' => __( 'Assists', 'sportspress' ),
+				'post_title' => 'Assists',
 				'post_name'  => 'assists',
 				'meta'       => array(
 					'sp_equation'     => '',
@@ -117,7 +117,7 @@ $sportspress_sports['soccer'] = array(
 				),
 			),
 			array(
-				'post_title' => __( 'Yellow Cards', 'sportspress' ),
+				'post_title' => 'Yellow Cards',
 				'post_name'  => 'yellowcards',
 				'meta'       => array(
 					'sp_equation'     => '',
@@ -126,7 +126,16 @@ $sportspress_sports['soccer'] = array(
 				),
 			),
 			array(
-				'post_title' => __( 'Height', 'sportspress' ),
+				'post_title' => 'Red Cards',
+				'post_name'  => 'redcards',
+				'meta'       => array(
+					'sp_equation'     => '',
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
+			),
+			array(
+				'post_title' => 'Height',
 				'post_name'  => 'height',
 				'meta'       => array(
 					'sp_equation'     => '',
@@ -135,7 +144,7 @@ $sportspress_sports['soccer'] = array(
 				),
 			),
 			array(
-				'post_title' => __( 'Weight', 'sportspress' ),
+				'post_title' => 'Weight',
 				'post_name'  => 'weight',
 				'meta'       => array(
 					'sp_equation'     => '',
@@ -147,7 +156,7 @@ $sportspress_sports['soccer'] = array(
 		// Results
 		'sp_result' => array(
 			array(
-				'post_title' => __( 'Goals', 'sportspress' ),
+				'post_title' => 'Goals',
 				'post_name'  => 'goals',
 				'meta'       => array(
 					'sp_format'       => 'integer',

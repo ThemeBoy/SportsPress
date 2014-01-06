@@ -16,7 +16,7 @@ add_filter( 'post_thumbnail_html', 'sp_post_thumbnail_html', 10, 5 );
 function sp_gettext( $translated_text, $untranslated_text, $domain ) {
 	global $typenow, $sportspress_texts;
 	if ( is_admin() && array_key_exists( $typenow, $sportspress_texts ) && array_key_exists( $untranslated_text, $sportspress_texts[ $typenow ] ) )
-		return $sportspress_texts[ $typenow ][ $untranslated_text ];
+		return __( $sportspress_texts[ $typenow ][ $untranslated_text ], 'sportspress' );
 	else
 		return $translated_text;
 }
@@ -27,7 +27,7 @@ function sp_admin_post_thumbnail_html( $translated_text, $post_id ) {
 	$typenow = get_post_type( $post_id );
 	if ( is_admin() && array_key_exists( $typenow, $sportspress_thumbnail_texts ) ):
 		foreach ( $sportspress_thumbnail_texts[ $typenow ] as $key => $value ):
-			$translated_text = str_replace( __( $key ), $value, $translated_text );
+			$translated_text = str_replace( __( $key ), __( $value, 'sportspress' ), $translated_text );
 		endforeach;
 	endif;
 	return $translated_text;
