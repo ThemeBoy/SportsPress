@@ -1,5 +1,5 @@
 <?php
-function sp_sanitize_title( $title ) {
+function sportspress_sanitize_title( $title ) {
 	
 	if ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic' ) ) ):
 
@@ -7,7 +7,7 @@ function sp_sanitize_title( $title ) {
 
 		if ( ! $key ) $key = $_POST['post_title'];
 
-		$title = sp_get_eos_safe_slug( $key, sp_array_value( $_POST, 'ID', 'var' ) );
+		$title = sportspress_get_eos_safe_slug( $key, sportspress_array_value( $_POST, 'ID', 'var' ) );
 
 	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && $_POST['post_type'] == 'sp_event' ):
 
@@ -22,4 +22,4 @@ function sp_sanitize_title( $title ) {
 
 	return $title;
 }
-add_filter( 'sanitize_title', 'sp_sanitize_title' );
+add_filter( 'sanitize_title', 'sportspress_sanitize_title' );

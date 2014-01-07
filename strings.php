@@ -1,5 +1,5 @@
 <?php
-// Localize sport names
+// Sport names
 __( 'Association Football (Soccer)', 'sportspress' );
 __( 'American Football', 'sportspress' );
 __( 'Australian Rules Football', 'sportspress' );
@@ -16,7 +16,7 @@ __( 'Swimming', 'sportspress' );
 __( 'Tennis', 'sportspress' );
 __( 'Volleyball', 'sportspress' );
 
-// Localize post titles
+// Post titles
 __( 'Appearances', 'sportspress' );
 __( 'Goals', 'sportspress' );
 __( 'Assists', 'sportspress' );
@@ -25,7 +25,7 @@ __( 'Red Cards', 'sportspress' );
 __( 'Height', 'sportspress' );
 __( 'Weight', 'sportspress' );
 
-// Localize post context texts
+// Post context texts
 __( 'Select Logo', 'sportspress' );
 __( 'Remove Logo', 'sportspress' );
 __( 'Kick-off: <b>%1$s</b>', 'sportspress' );
@@ -33,7 +33,7 @@ __( 'Joined: <b>%1$s</b>', 'sportspress' );
 __( 'Select Photo', 'sportspress' );
 __( 'Remove Photo', 'sportspress' );
 
-// Localize configuration formats
+// Configuration formats
 __( 'Integer', 'sportspress' );
 __( 'Decimal', 'sportspress' );
 __( 'Time', 'sportspress' );

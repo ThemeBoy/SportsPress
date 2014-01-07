@@ -1,5 +1,5 @@
 <?php
-function sp_pre_get_posts( $wp_query ) {
+function sportspress_pre_get_posts( $wp_query ) {
 	if ( is_admin() ):
 		$post_type = $wp_query->query['post_type'];
 
@@ -12,4 +12,4 @@ function sp_pre_get_posts( $wp_query ) {
 		endif;
 	endif;
 }
-add_filter('pre_get_posts', 'sp_pre_get_posts');
+add_filter('pre_get_posts', 'sportspress_pre_get_posts');

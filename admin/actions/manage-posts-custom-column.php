@@ -1,5 +1,5 @@
 <?php
-function sp_manage_posts_custom_column( $column, $post_id ) {
+function sportspress_manage_posts_custom_column( $column, $post_id ) {
 	global $post;
 	switch ( $column ):
 		case 'sp_logo':
@@ -16,7 +16,7 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 				foreach( $teams as $team_id ):
 					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
-					$outcome_slug = sp_array_value( sp_array_value( $results, $team_id, null ), 'outcome', null );
+					$outcome_slug = sportspress_array_value( sportspress_array_value( $results, $team_id, null ), 'outcome', null );
 
 					$args=array(
 						'name' => $outcome_slug,
@@ -32,7 +32,7 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 				foreach( $teams as $team_id ):
 					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
-					$outcome_slug = sp_array_value( sp_array_value( $results, $team_id, null ), 'outcome', null );
+					$outcome_slug = sportspress_array_value( sportspress_array_value( $results, $team_id, null ), 'outcome', null );
 
 					$args=array(
 						'name' => $outcome_slug,
@@ -51,19 +51,19 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			endif;
 			break;
 		case 'sp_equation':
-			echo sp_get_post_equation( $post_id );
+			echo sportspress_get_post_equation( $post_id );
 			break;
 		case 'sp_order':
-			echo sp_get_post_order( $post_id );
+			echo sportspress_get_post_order( $post_id );
 			break;
 		case 'sp_key':
 			echo $post->post_name;
 			break;
 		case 'sp_format':
-			echo sp_get_post_format( $post_id );
+			echo sportspress_get_post_format( $post_id );
 			break;
 		case 'sp_player':
-			echo sp_the_posts( $post_id, 'sp_player' );
+			echo sportspress_the_posts( $post_id, 'sp_player' );
 			break;
 		case 'sp_event':
 			echo get_post_meta ( $post_id, 'sp_event' ) ? sizeof( get_post_meta ( $post_id, 'sp_event' ) ) : '—';
@@ -82,5 +82,5 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			break;
 	endswitch;
 }
-add_action( 'manage_posts_custom_column', 'sp_manage_posts_custom_column', 10, 2 );
-add_action( 'manage_pages_custom_column', 'sp_manage_posts_custom_column', 10, 2 );
+add_action( 'manage_posts_custom_column', 'sportspress_manage_posts_custom_column', 10, 2 );
+add_action( 'manage_pages_custom_column', 'sportspress_manage_posts_custom_column', 10, 2 );

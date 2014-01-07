@@ -1,5 +1,5 @@
 <?php
-function sp_gettext( $translated_text, $untranslated_text, $domain ) {
+function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 	global $typenow;
 
 	$texts = array(
@@ -40,4 +40,4 @@ function sp_gettext( $translated_text, $untranslated_text, $domain ) {
 	else
 		return $translated_text;
 }
-add_filter( 'gettext', 'sp_gettext', 20, 3 );
+add_filter( 'gettext', 'sportspress_gettext', 20, 3 );

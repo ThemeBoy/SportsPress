@@ -1,6 +1,6 @@
 <?php
-function sp_restrict_manage_posts() {
-	sp_highlight_admin_menu();
+function sportspress_restrict_manage_posts() {
+	sportspress_highlight_admin_menu();
 	global $typenow, $wp_query;
 	if ( in_array( $typenow, array( 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_list' ) ) ):
 		$selected = isset( $_REQUEST['sp_team'] ) ? $_REQUEST['sp_team'] : null;
@@ -20,7 +20,7 @@ function sp_restrict_manage_posts() {
 			'name' => 'sp_position',
 			'selected' => $selected
 		);
-		sp_dropdown_taxonomies( $args );
+		sportspress_dropdown_taxonomies( $args );
 	endif;
 	if ( in_array( $typenow, array( 'sp_team', 'sp_event', 'sp_player', 'sp_staff', 'sp_table', 'sp_list' ) ) ):
 		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
@@ -30,7 +30,7 @@ function sp_restrict_manage_posts() {
 			'name' => 'sp_season',
 			'selected' => $selected
 		);
-		sp_dropdown_taxonomies( $args );
+		sportspress_dropdown_taxonomies( $args );
 	endif;
 }
-add_action( 'restrict_manage_posts', 'sp_restrict_manage_posts' );
+add_action( 'restrict_manage_posts', 'sportspress_restrict_manage_posts' );

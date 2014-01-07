@@ -1,6 +1,6 @@
 <?php
-function sp_plugins_loaded() {
-    load_plugin_textdomain ( 'sportspress', false, dirname( SPORTSPRESS_PLUGIN_BASENAME ) . '/i18n/languages/' );
+function sportspress_plugins_loaded() {
+    load_plugin_textdomain ( 'sportspress', false, dirname( SPORTSPRESS_PLUGIN_BASENAME ) . '/languages/' );
 	add_image_size( 'sp_icon',  32, 32, false );
 }
-add_action( 'plugins_loaded', 'sp_plugins_loaded' );
+add_action( 'plugins_loaded', 'sportspress_plugins_loaded' );

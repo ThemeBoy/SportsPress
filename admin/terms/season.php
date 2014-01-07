@@ -1,10 +1,10 @@
 <?php
-function sp_season_term_init() {
+function sportspress_season_term_init() {
 	$name = __( 'Seasons', 'sportspress' );
 	$singular_name = __( 'Season', 'sportspress' );
 	$lowercase_name = __( 'season', 'sportspress' );
 	$object_type = array( 'sp_team', 'sp_event', 'sp_player', 'sp_staff' );
-	$labels = sp_tax_labels( $name, $singular_name, $lowercase_name );
+	$labels = sportspress_get_term_labels( $name, $singular_name, $lowercase_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -18,4 +18,4 @@ function sp_season_term_init() {
 	register_taxonomy_for_object_type( 'sp_season', 'sp_player' );
 	register_taxonomy_for_object_type( 'sp_season', 'sp_staff' );
 }
-add_action( 'init', 'sp_season_term_init' );
+add_action( 'init', 'sportspress_season_term_init' );

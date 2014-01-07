@@ -1,9 +1,9 @@
 <?php
-function sp_statistic_cpt_init() {
+function sportspress_statistic_post_init() {
 	$name = __( 'Statistics', 'sportspress' );
 	$singular_name = __( 'Statistic', 'sportspress' );
 	$lowercase_name = __( 'statistics', 'sportspress' );
-	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name, true );
+	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name, true );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -17,7 +17,7 @@ function sp_statistic_cpt_init() {
 	);
 	register_post_type( 'sp_statistic', $args );
 }
-add_action( 'init', 'sp_statistic_cpt_init' );
+add_action( 'init', 'sportspress_statistic_post_init' );
 
 function sp_statistic_edit_columns() {
 	$columns = array(
@@ -37,7 +37,7 @@ function sp_statistic_meta_init() {
 }
 
 function sp_statistic_equation_meta( $post ) {
-	$formats = sp_get_config_formats();
+	$formats = sportspress_get_config_formats();
 
 	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
 	$order = get_post_meta( $post->ID, 'sp_order', true );
@@ -69,7 +69,7 @@ function sp_statistic_equation_meta( $post ) {
 	<p class="sp-equation-selector">
 		<?php
 		foreach ( $equation as $piece ):
-			sp_get_equation_selector( $post->ID, $piece, array( 'player_event' ) );
+			sportspress_get_equation_selector( $post->ID, $piece, array( 'player_event' ) );
 		endforeach;
 		?>
 	</p>
@@ -93,5 +93,5 @@ function sp_statistic_equation_meta( $post ) {
 		</select>
 	</p>
 	<?php
-	sp_nonce();
+	sportspress_nonce();
 }

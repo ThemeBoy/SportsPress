@@ -1,9 +1,9 @@
 <?php
-function sp_outcome_cpt_init() {
+function sportspress_outcome_post_init() {
 	$name = __( 'Outcomes', 'sportspress' );
 	$singular_name = __( 'Outcome', 'sportspress' );
 	$lowercase_name = __( 'outcome', 'sportspress' );
-	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name, true );
+	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name, true );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -17,7 +17,7 @@ function sp_outcome_cpt_init() {
 	);
 	register_post_type( 'sp_outcome', $args );
 }
-add_action( 'init', 'sp_outcome_cpt_init' );
+add_action( 'init', 'sportspress_outcome_post_init' );
 
 function sp_outcome_edit_columns() {
 	$columns = array(
@@ -40,5 +40,5 @@ function sp_outcome_details_meta( $post ) {
 		<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
 	</p>
 	<?php
-	sp_nonce();
+	sportspress_nonce();
 }

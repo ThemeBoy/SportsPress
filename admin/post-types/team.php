@@ -1,9 +1,9 @@
 <?php
-function sp_team_cpt_init() {
+function sportspress_team_post_init() {
 	$name = __( 'Teams', 'sportspress' );
 	$singular_name = __( 'Team', 'sportspress' );
 	$lowercase_name = __( 'teams', 'sportspress' );
-	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name );
+	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -17,7 +17,7 @@ function sp_team_cpt_init() {
 	);
 	register_post_type( 'sp_team', $args );
 }
-add_action( 'init', 'sp_team_cpt_init' );
+add_action( 'init', 'sportspress_team_post_init' );
 
 function sp_team_meta_init( $post ) {
 	$leagues = (array)get_the_terms( $post->ID, 'sp_season' );
@@ -51,10 +51,10 @@ function sp_team_columns_meta( $post ) {
 	$eos = new eqEOS();
 
 	// Get labels from result variables
-	$result_labels = (array)sp_get_var_labels( 'sp_result' );
+	$result_labels = (array)sportspress_get_var_labels( 'sp_result' );
 
 	// Get labels from outcome variables
-	$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
+	$outcome_labels = (array)sportspress_get_var_labels( 'sp_outcome' );
 
 	// Generate array of all league ids
 	$div_ids = array();
@@ -64,10 +64,10 @@ function sp_team_columns_meta( $post ) {
 	endforeach;
 
 	// Get all leagues populated with columns where available
-	$data = sp_array_combine( $div_ids, $columns );
+	$data = sportspress_array_combine( $div_ids, $columns );
 
 	// Get equations from column variables
-	$equations = sp_get_var_equations( 'sp_column' );
+	$equations = sportspress_get_var_equations( 'sp_column' );
 
 	// Initialize placeholders array
 	$placeholders = array();
@@ -161,7 +161,7 @@ function sp_team_columns_meta( $post ) {
 		$placeholders[ $div_id ] = array();
 		foreach ( $equations as $key => $value ):
 			if ( $totals['eventsplayed'] > 0 ):
-				$placeholders[ $div_id ][ $key ] = sp_solve( $value, $totals );
+				$placeholders[ $div_id ][ $key ] = sportspress_solve( $value, $totals );
 			else:
 				$placeholders[ $div_id ][ $key ] = 0;
 			endif;
@@ -170,8 +170,8 @@ function sp_team_columns_meta( $post ) {
 	endforeach;
 
 	// Get columns from statistics variables
-	$columns = sp_get_var_labels( 'sp_column' );
+	$columns = sportspress_get_var_labels( 'sp_column' );
 
-	sp_team_columns_table( $columns, $data, $placeholders );
-	sp_nonce();
+	sportspress_edit_team_columns_table( $columns, $data, $placeholders );
+	sportspress_nonce();
 }

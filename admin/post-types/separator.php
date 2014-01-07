@@ -1,5 +1,5 @@
 <?php
-function sp_separator_cpt_init() {
+function sportspress_separator_post_init() {
 	$args = array(
 		'public' => false,
 		'show_ui' => true,
@@ -7,4 +7,4 @@ function sp_separator_cpt_init() {
 	);
 	register_post_type( 'sp_separator', $args );
 }
-add_action( 'init', 'sp_separator_cpt_init' );
+add_action( 'init', 'sportspress_separator_post_init' );
