@@ -11,10 +11,10 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_team':
 			$post_type = get_post_type( $post );
 			$teams = get_post_meta ( $post_id, 'sp_team', false );
-			unset( $teams[0] );
 			if ( $post_type == 'sp_event' ):
 				$results = get_post_meta( $post_id, 'sp_results', true );
 				foreach( $teams as $team_id ):
+					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
 					$outcome_slug = sp_array_value( sp_array_value( $results, $team_id, null ), 'outcome', null );
 
@@ -30,6 +30,7 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 			elseif ( $post_type == 'sp_player' ):
 				$results = get_post_meta( $post_id, 'sp_results', true );
 				foreach( $teams as $team_id ):
+					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
 					$outcome_slug = sp_array_value( sp_array_value( $results, $team_id, null ), 'outcome', null );
 
