@@ -9,7 +9,7 @@
 	$data = get_posts( $args );
 ?>
 <h3 class="title"><?php _e( 'Table Columns', 'sportspress' ); ?></h3>
-<table class="widefat sp-config-table">
+<table class="widefat sp-admin-config-table">
 	<thead>
 		<tr>
 			<th><?php _e( 'Label', 'sportspress' ); ?></th>
@@ -46,7 +46,7 @@
 	$data = get_posts( $args );
 ?>
 <h3 class="title"><?php _e( 'Statistics', 'sportspress' ); ?></h3>
-<table class="widefat sp-config-table">
+<table class="widefat sp-admin-config-table">
 	<thead>
 		<tr>
 			<th><?php _e( 'Label', 'sportspress' ); ?></th>
@@ -83,7 +83,7 @@
 	$data = get_posts( $args );
 ?>
 <h3 class="title"><?php _e( 'Results', 'sportspress' ); ?></h3>
-<table class="widefat sp-config-table">
+<table class="widefat sp-admin-config-table">
 	<thead>
 		<tr>
 			<th><?php _e( 'Label', 'sportspress' ); ?></th>
@@ -120,7 +120,7 @@
 	$data = get_posts( $args );
 ?>
 <h3 class="title"><?php _e( 'Outcomes', 'sportspress' ); ?></h3>
-<table class="widefat sp-config-table">
+<table class="widefat sp-admin-config-table">
 	<thead>
 		<tr>
 			<th><?php _e( 'Label', 'sportspress' ); ?></th>

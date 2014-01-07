@@ -10,7 +10,7 @@ function sportspress_player_post_init() {
 		'public' => true,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'thumbnail' ),
-		'register_meta_box_cb' => 'sp_player_meta_init',
+		'register_meta_box_cb' => 'sportspress_player_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_player_slug', 'player' ) ),
 		'menu_icon' => 'dashicons-groups',
 		'capability_type' => 'sp_player',
@@ -19,7 +19,7 @@ function sportspress_player_post_init() {
 }
 add_action( 'init', 'sportspress_player_post_init' );
 
-function sp_player_edit_columns() {
+function sportspress_player_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Name', 'sportspress' ),
@@ -29,35 +29,35 @@ function sp_player_edit_columns() {
 	);
 	return $columns;
 }
-add_filter( 'manage_edit-sp_player_columns', 'sp_player_edit_columns' );
+add_filter( 'manage_edit-sp_player_columns', 'sportspress_player_edit_columns' );
 
-function sp_player_meta_init( $post ) {
+function sportspress_player_meta_init( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
-	$leagues = (array)get_the_terms( $post->ID, 'sp_season' );
+	$seasons = (array)get_the_terms( $post->ID, 'sp_season' );
 
 	remove_meta_box( 'submitdiv', 'sp_player', 'side' );
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_player', 'side', 'high' );
 	remove_meta_box( 'postimagediv', 'sp_player', 'side' );
 	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_player', 'side', 'high' );
-	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_player_team_meta', 'sp_player', 'side', 'high' );
+	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_player_team_meta', 'sp_player', 'side', 'high' );
 
-	if ( $teams && $teams != array(0) && $leagues && $leagues != array(0) ):
-		add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sp_player_stats_meta', 'sp_player', 'normal', 'high' );
+	if ( $teams && $teams != array(0) && $seasons && is_array( $seasons ) && is_object( $seasons[0] ) ):
+		add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sportspress_player_stats_meta', 'sp_player', 'normal', 'high' );
 	endif;
 
-	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sp_player_details_meta', 'sp_player', 'normal', 'high' );
-	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sp_player_profile_meta', 'sp_player', 'normal', 'high' );
+	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_player_details_meta', 'sp_player', 'normal', 'high' );
+	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sportspress_player_profile_meta', 'sp_player', 'normal', 'high' );
 
 }
 
-function sp_player_team_meta( $post ) {
+function sportspress_player_team_meta( $post ) {
 	sportspress_post_checklist( $post->ID, 'sp_team' );
 	sportspress_post_adder( 'sp_team' );
 }
 
-function sp_player_stats_meta( $post ) {
+function sportspress_player_stats_meta( $post ) {
 	$team_ids = (array)get_post_meta( $post->ID, 'sp_team', false );
-	$leagues = (array)get_the_terms( $post->ID, 'sp_season' );
+	$seasons = (array)get_the_terms( $post->ID, 'sp_season' );
 	$stats = (array)get_post_meta( $post->ID, 'sp_statistics', true );
 
 	// Equation Operating System
@@ -68,7 +68,7 @@ function sp_player_stats_meta( $post ) {
 
 	// Generate array of all league ids
 	$div_ids = array();
-	foreach ( $leagues as $key => $value ):
+	foreach ( $seasons as $key => $value ):
 		if ( is_object( $value ) && property_exists( $value, 'term_id' ) )
 			$div_ids[] = $value->term_id;
 	endforeach;
@@ -92,7 +92,7 @@ function sp_player_stats_meta( $post ) {
 
 		$data = array();
 
-		// Get all leagues populated with stats where available
+		// Get all seasons populated with stats where available
 		$data[ $team_id ] = sportspress_array_combine( $div_ids, sportspress_array_value( $stats, $team_id, array() ) );
 
 		// Get equations from statistics variables
@@ -185,11 +185,11 @@ function sp_player_stats_meta( $post ) {
 	endforeach;
 }
 
-function sp_player_profile_meta( $post ) {
+function sportspress_player_profile_meta( $post ) {
 	wp_editor( $post->post_content, 'content' );
 }
 
-function sp_player_details_meta( $post ) {
+function sportspress_player_details_meta( $post ) {
 
 	$number = get_post_meta( $post->ID, 'sp_number', true );
 	$details = get_post_meta( $post->ID, 'sp_details', true );

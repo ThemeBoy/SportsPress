@@ -29,7 +29,7 @@ include dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
 include dirname( __FILE__ ) . '/strings.php';
 
 // Functions
-require_once dirname( __FILE__ ) . '/helpers.php';
+require_once dirname( __FILE__ ) . '/admin-functions.php';
 require_once dirname( __FILE__ ) . '/functions.php';
 
 // Settings
@@ -72,6 +72,9 @@ include_once dirname( __FILE__ ) . '/admin/presets/volleyball.php';
 // Typical request actions
 require_once dirname( __FILE__ ) . '/admin/actions/plugins-loaded.php';
 require_once dirname( __FILE__ ) . '/admin/actions/after-setup-theme.php';
+require_once dirname( __FILE__ ) . '/admin/actions/wp-enqueue-scripts.php';
+
+// Admin request actions
 require_once dirname( __FILE__ ) . '/admin/actions/admin-menu.php';
 require_once dirname( __FILE__ ) . '/admin/actions/admin-init.php';
 require_once dirname( __FILE__ ) . '/admin/actions/admin-enqueue-scripts.php';

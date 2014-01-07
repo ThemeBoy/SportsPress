@@ -4,7 +4,7 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 
 		$data = sportspress_get_table( $id );
 
-		$output = '<table class="sp-league-table">' . '<thead>' . '<tr>';
+		$output = '<table class="sp-league-table sp-data-table">' . '<thead>' . '<tr>';
 
 		// The first row should be column labels
 		$labels = $data[0];
@@ -53,7 +53,7 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 
 		$data = sportspress_get_list( $id );
 
-		$output = '<table class="sp-player-list">' . '<thead>' . '<tr>';
+		$output = '<table class="sp-player-list sp-data-table">' . '<thead>' . '<tr>';
 
 		// The first row should be column labels
 		$labels = $data[0];
