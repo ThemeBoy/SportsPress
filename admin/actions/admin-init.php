@@ -131,10 +131,6 @@ function sportspress_admin_init() {
 		update_option( 'sportspress_installed', 1 );
 
 	endif;
-
-	// Load admin styles
-	wp_register_style( 'sportspress-admin', SPORTSPRESS_PLUGIN_URL . 'assets/css/admin.css', array(), '1.0' );
-	wp_enqueue_style( 'sportspress-admin');
 	
 	// Add settings sections
 	register_setting(

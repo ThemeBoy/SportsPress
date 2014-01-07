@@ -1,6 +1,6 @@
 SportsPress
 
-Copyright 2014 by the contributors
+Copyright 2014 by ThemeBoy
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,13 +19,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 This program incorporates work covered by the following copyright and
 permission notices:
 
-  Jon Lawrence
-
-  Equation Operating System is released under the GPL
+  Wherever third party code has been used, credit has been given in the code's
+  comments.
 
 and
 
-  ThemeBoy
+  SportsPress
+
+  Copyright 2013-2014 by ThemeBoy
 
   SportsPress is released under the GPL
 

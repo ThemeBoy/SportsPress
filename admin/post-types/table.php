@@ -10,7 +10,7 @@ function sportspress_table_post_init() {
 		'public' => true,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'excerpt' ),
-		'register_meta_box_cb' => 'sp_table_meta_init',
+		'register_meta_box_cb' => 'sportspress_table_meta_init',
 		'rewrite' => array( 'slug' => 'table' ),
 		'show_in_menu' => 'edit.php?post_type=sp_team',
 //		'capability_type' => 'sp_table'
@@ -19,7 +19,7 @@ function sportspress_table_post_init() {
 }
 add_action( 'init', 'sportspress_table_post_init' );
 
-function sp_table_edit_columns() {
+function sportspress_table_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Title' ),
@@ -28,19 +28,19 @@ function sp_table_edit_columns() {
 	);
 	return $columns;
 }
-add_filter( 'manage_edit-sp_table_columns', 'sp_table_edit_columns' );
+add_filter( 'manage_edit-sp_table_columns', 'sportspress_table_edit_columns' );
 
-function sp_table_meta_init( $post ) {
+function sportspress_table_meta_init( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 
-	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sp_table_team_meta', 'sp_table', 'side', 'high' );
+	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_table_team_meta', 'sp_table', 'side', 'high' );
 
 	if ( $teams && $teams != array(0) ):
-		add_meta_box( 'sp_columnsdiv', __( 'League Table', 'sportspress' ), 'sp_table_columns_meta', 'sp_table', 'normal', 'high' );
+		add_meta_box( 'sp_columnsdiv', __( 'League Table', 'sportspress' ), 'sportspress_table_columns_meta', 'sp_table', 'normal', 'high' );
 	endif;
 }
 
-function sp_table_team_meta( $post, $test ) {
+function sportspress_table_team_meta( $post, $test ) {
 	$league_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
 	?>
 	<div>
@@ -64,7 +64,7 @@ function sp_table_team_meta( $post, $test ) {
 	sportspress_nonce();
 }
 
-function sp_table_columns_meta( $post ) {
+function sportspress_table_columns_meta( $post ) {
 
 	list( $columns, $data, $placeholders, $merged ) = sportspress_get_table( $post->ID, true );
 

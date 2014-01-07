@@ -12,14 +12,14 @@ function sportspress_column_post_init() {
 		'show_in_menu' => false,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
-		'register_meta_box_cb' => 'sp_column_meta_init',
+		'register_meta_box_cb' => 'sportspress_column_meta_init',
 		'capability_type' => 'sp_config'
 	);
 	register_post_type( 'sp_column', $args );
 }
 add_action( 'init', 'sportspress_column_post_init' );
 
-function sp_column_edit_columns() {
+function sportspress_column_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
@@ -30,13 +30,13 @@ function sp_column_edit_columns() {
 	);
 	return $columns;
 }
-add_filter( 'manage_edit-sp_column_columns', 'sp_column_edit_columns' );
+add_filter( 'manage_edit-sp_column_columns', 'sportspress_column_edit_columns' );
 
-function sp_column_meta_init() {
-	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sp_column_details_meta', 'sp_column', 'normal', 'high' );
+function sportspress_column_meta_init() {
+	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_column_details_meta', 'sp_column', 'normal', 'high' );
 }
 
-function sp_column_details_meta( $post ) {
+function sportspress_column_details_meta( $post ) {
 	$formats = sportspress_get_config_formats();
 
 	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
