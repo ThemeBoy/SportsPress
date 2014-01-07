@@ -54,4 +54,3 @@ function sp_result_details_meta( $post ) {
 	<?php
 	sp_nonce();
 }
-?>

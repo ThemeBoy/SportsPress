@@ -72,4 +72,3 @@ function sp_table_columns_meta( $post ) {
 
 	sp_nonce();
 }
-?>

@@ -17,4 +17,3 @@ function sp_insert_post_data( $data, $postarr ) {
 	return $data;
 }
 add_filter( 'wp_insert_post_data' , 'sp_insert_post_data' , '99', 2 );
-?>

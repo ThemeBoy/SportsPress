@@ -13,4 +13,3 @@ function sp_pre_get_posts( $wp_query ) {
 	endif;
 }
 add_filter('pre_get_posts', 'sp_pre_get_posts');
-?>

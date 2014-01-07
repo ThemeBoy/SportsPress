@@ -8,4 +8,3 @@ function sp_separator_cpt_init() {
 	register_post_type( 'sp_separator', $args );
 }
 add_action( 'init', 'sp_separator_cpt_init' );
-?>

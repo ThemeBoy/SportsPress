@@ -83,4 +83,3 @@ function sp_list_stats_meta( $post ) {
 	sp_player_table( $columns, $data, $placeholders );
 	sp_nonce();
 }
-?>

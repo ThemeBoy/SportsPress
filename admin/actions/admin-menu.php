@@ -29,4 +29,3 @@ function sp_admin_menu( $position ) {
     unset( $submenu['edit.php?post_type=sp_staff'][15] );
 }
 add_action( 'admin_menu', 'sp_admin_menu' );
-?>

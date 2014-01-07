@@ -12,4 +12,3 @@ function sp_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $at
     return $html;
 }
 add_filter( 'post_thumbnail_html', 'sp_post_thumbnail_html', 10, 5 );
-?>

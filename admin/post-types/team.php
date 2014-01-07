@@ -175,4 +175,3 @@ function sp_team_columns_meta( $post ) {
 	sp_team_columns_table( $columns, $data, $placeholders );
 	sp_nonce();
 }
-?>

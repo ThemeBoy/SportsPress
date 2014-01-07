@@ -166,5 +166,3 @@ function sportspress_event_stats_callback() {
 function sportspress_player_stats_callback() {
 	sportspress_render_option_field( 'sportspress_stats', 'player', 'textarea' );
 }
-
-?>

@@ -23,4 +23,3 @@ function sp_sanitize_title( $title ) {
 	return $title;
 }
 add_filter( 'sanitize_title', 'sp_sanitize_title' );
-?>

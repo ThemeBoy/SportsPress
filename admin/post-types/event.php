@@ -153,4 +153,3 @@ function sp_event_edit_sortable_columns( $columns ) {
 	return $columns;
 }
 add_filter( 'manage_edit-sp_event_sortable_columns', 'sp_event_edit_sortable_columns' );
-?>

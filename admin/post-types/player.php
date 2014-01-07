@@ -228,4 +228,3 @@ function sp_player_details_meta( $post ) {
 	endforeach;
 	sp_nonce();
 }
-?>
