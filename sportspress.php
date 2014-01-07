@@ -77,7 +77,6 @@ require_once dirname( __FILE__ ) . '/admin/actions/post-thumbnail-html.php';
 require_once dirname( __FILE__ ) . '/admin/actions/after-theme-setup.php';
 require_once dirname( __FILE__ ) . '/admin/actions/admin-menu.php';
 require_once dirname( __FILE__ ) . '/admin/actions/manage-posts-custom-column.php';
-require_once dirname( __FILE__ ) . '/admin/actions/manage-posts-columns.php';
 require_once dirname( __FILE__ ) . '/admin/actions/restrict-manage-posts.php';
 require_once dirname( __FILE__ ) . '/admin/actions/save-post.php';
 
