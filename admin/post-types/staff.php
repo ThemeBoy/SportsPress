@@ -1,9 +1,9 @@
 <?php
-function sp_staff_cpt_init() {
+function sportspress_staff_post_init() {
 	$name = __( 'Staff', 'sportspress' );
 	$singular_name = __( 'Staff', 'sportspress' );
 	$lowercase_name = __( 'staff', 'sportspress' );
-	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name );
+	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -17,7 +17,7 @@ function sp_staff_cpt_init() {
 	);
 	register_post_type( 'sp_staff', $args );
 }
-add_action( 'init', 'sp_staff_cpt_init' );
+add_action( 'init', 'sportspress_staff_post_init' );
 
 function sp_staff_meta_init() {
 	remove_meta_box( 'submitdiv', 'sp_staff', 'side' );
@@ -28,9 +28,9 @@ function sp_staff_meta_init() {
 	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sp_staff_profile_meta', 'sp_staff', 'normal', 'high' );
 }
 function sp_staff_team_meta( $post ) {
-	sp_post_checklist( $post->ID, 'sp_team' );
-	sp_post_adder( 'sp_team' );
-	sp_nonce();
+	sportspress_post_checklist( $post->ID, 'sp_team' );
+	sportspress_post_adder( 'sp_team' );
+	sportspress_nonce();
 }
 
 function sp_staff_profile_meta( $post ) {

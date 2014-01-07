@@ -1,9 +1,9 @@
 <?php
-function sp_event_cpt_init() {
+function sportspress_event_post_init() {
 	$name = __( 'Events', 'sportspress' );
 	$singular_name = __( 'Event', 'sportspress' );
 	$lowercase_name = __( 'events', 'sportspress' );
-	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name );
+	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -17,7 +17,7 @@ function sp_event_cpt_init() {
 	);
 	register_post_type( 'sp_event', $args );
 }
-add_action( 'init', 'sp_event_cpt_init' );
+add_action( 'init', 'sportspress_event_post_init' );
 
 function sp_event_display_scheduled( $posts ) {
 	global $wp_query, $wpdb;
@@ -65,8 +65,8 @@ function sp_event_team_meta( $post ) {
 				<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
 			</ul>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_team', $key );
-			sp_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_team', $key );
+			sportspress_post_checklist( $post->ID, 'sp_player', 'block', 'sp_team', $key );
+			sportspress_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_team', $key );
 			?>
 		</div>
 	<?php endforeach; ?>
@@ -85,8 +85,8 @@ function sp_event_team_meta( $post ) {
 		</p>
 	</div>
 	<?php
-	sp_post_adder( 'sp_team' );
-	sp_nonce();
+	sportspress_post_adder( 'sp_team' );
+	sportspress_nonce();
 }
 
 function sp_event_players_meta( $post ) {
@@ -94,19 +94,19 @@ function sp_event_players_meta( $post ) {
 	$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
 
 	// Get columns from result variables
-	$columns = sp_get_var_labels( 'sp_statistic', true );
+	$columns = sportspress_get_var_labels( 'sp_statistic', true );
 
 	foreach ( $teams as $key => $team_id ):
 		if ( ! $team_id ) continue;
 
 		// Get results for players in the team
-		$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
-		$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
+		$players = sportspress_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
+		$data = sportspress_array_combine( $players, sportspress_array_value( $stats, $team_id, array() ) );
 
 		?>
 		<div>
 			<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-			<?php sp_event_players_table( $columns, $data, $team_id ); ?>
+			<?php sportspress_event_players_table( $columns, $data, $team_id ); ?>
 		</div>
 		<?php
 
@@ -120,14 +120,14 @@ function sp_event_results_meta( $post ) {
 	$results = (array)get_post_meta( $post->ID, 'sp_results', true );
 
 	// Get columns from result variables
-	$columns = sp_get_var_labels( 'sp_result' );
+	$columns = sportspress_get_var_labels( 'sp_result' );
 
 	// Get results for all teams
-	$data = sp_array_combine( $teams, $results );
+	$data = sportspress_array_combine( $teams, $results );
 
 	?>
 	<div>
-		<?php sp_event_results_table( $columns, $data ); ?>
+		<?php sportspress_edit_event_results_table( $columns, $data ); ?>
 	</div>
 	<?php
 }

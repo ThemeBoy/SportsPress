@@ -1,17 +1,4 @@
 <?php
-function sportspress_admin_menu() {
-
-	add_options_page(
-		__( 'SportsPress', 'sportspress' ),
-		__( 'SportsPress', 'sportspress' ),
-		'manage_options',
-		'sportspress',
-		'sportspress_settings'
-	);
-
-}
-add_action( 'admin_menu', 'sportspress_admin_menu' );
-
 function sportspress_settings() {
 
 	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'general';
@@ -45,7 +32,7 @@ function sportspress_validate( $input ) {
 	$options = get_option( 'sportspress' );
 
 	// Do nothing if sport is the same as currently selected
-	if ( sp_array_value( $options, 'sport', null ) == sp_array_value( $input, 'sport', null ) )
+	if ( sportspress_array_value( $options, 'sport', null ) == sportspress_array_value( $input, 'sport', null ) )
 
 		return $input;
 
@@ -53,7 +40,7 @@ function sportspress_validate( $input ) {
 	global $sportspress_sports;
 
 	// Get array of post types to insert
-	$post_groups = sp_array_value( sp_array_value( $sportspress_sports, sp_array_value( $input, 'sport', null ), array() ), 'posts', array() );
+	$post_groups = sportspress_array_value( sportspress_array_value( $sportspress_sports, sportspress_array_value( $input, 'sport', null ), array() ), 'posts', array() );
 
 	// Loop through each post type
 	foreach( $post_groups as $post_type => $posts ):
@@ -116,32 +103,6 @@ function sportspress_validate( $input ) {
 
 	return $input;
 }
-
-function sportspress_register_settings() {
-	
-	register_setting(
-		'sportspress_general',
-		'sportspress',
-		'sportspress_validate'
-	);
-	
-	add_settings_section(
-		'general',
-		'',
-		'',
-		'sportspress_general'
-	);
-	
-	add_settings_field(	
-		'sport',
-		__( 'Sport', 'sportspress' ),
-		'sportspress_sport_callback',	
-		'sportspress_general',
-		'general'
-	);
-	
-}
-add_action( 'admin_init', 'sportspress_register_settings' );
 
 function sportspress_sport_callback() {
 	global $sportspress_sports;

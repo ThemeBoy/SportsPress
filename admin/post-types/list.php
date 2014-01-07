@@ -1,9 +1,9 @@
 <?php
-function sp_list_cpt_init() {
+function sportspress_list_post_init() {
 	$name = __( 'Player Lists', 'sportspress' );
 	$singular_name = __( 'Player List', 'sportspress' );
 	$lowercase_name = __( 'player lists', 'sportspress' );
-	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name, true );
+	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name, true );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -17,7 +17,7 @@ function sp_list_cpt_init() {
 	);
 	register_post_type( 'sp_list', $args );
 }
-add_action( 'init', 'sp_list_cpt_init' );
+add_action( 'init', 'sportspress_list_post_init' );
 
 function sp_list_edit_columns() {
 	$columns = array(
@@ -42,7 +42,7 @@ function sp_list_meta_init( $post ) {
 }
 
 function sp_list_player_meta( $post ) {
-	$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
+	$season_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
 	$team_id = get_post_meta( $post->ID, 'sp_team', true );
 	?>
 	<div>
@@ -54,7 +54,7 @@ function sp_list_player_meta( $post ) {
 				'selected' => $season_id,
 				'value' => 'term_id'
 			);
-			sp_dropdown_taxonomies( $args );
+			sportspress_dropdown_taxonomies( $args );
 			?>
 		</p>
 		<p class="sp-tab-select">
@@ -68,18 +68,18 @@ function sp_list_player_meta( $post ) {
 			?>
 		</p>
 		<?php
-		sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_team' );
-		sp_post_adder( 'sp_player' );
+		sportspress_post_checklist( $post->ID, 'sp_player', 'block', 'sp_team' );
+		sportspress_post_adder( 'sp_player' );
 		?>
 	</div>
 	<?php
-	sp_nonce();
+	sportspress_nonce();
 }
 
 function sp_list_stats_meta( $post ) {
 
-	list( $columns, $data, $placeholders, $merged ) = sp_get_list( $post->ID, true );
+	list( $columns, $data, $placeholders, $merged ) = sportspress_get_list( $post->ID, true );
 
-	sp_player_table( $columns, $data, $placeholders );
-	sp_nonce();
+	sportspress_edit_player_table( $columns, $data, $placeholders );
+	sportspress_nonce();
 }

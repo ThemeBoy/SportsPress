@@ -1,5 +1,5 @@
 <?php
-function sp_admin_post_thumbnail_html( $translated_text, $post_id ) {
+function sportspress_admin_post_thumbnail_html( $translated_text, $post_id ) {
 	$texts = array(
 		'sp_team' => array(
 			'Set featured image' => 'Select Logo',
@@ -23,4 +23,4 @@ function sp_admin_post_thumbnail_html( $translated_text, $post_id ) {
 	endif;
 	return $translated_text;
 }
-add_filter( 'admin_post_thumbnail_html', 'sp_admin_post_thumbnail_html', 10, 2 );
+add_filter( 'admin_post_thumbnail_html', 'sportspress_admin_post_thumbnail_html', 10, 2 );

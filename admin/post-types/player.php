@@ -1,9 +1,9 @@
 <?php
-function sp_player_cpt_init() {
+function sportspress_player_post_init() {
 	$name = __( 'Players', 'sportspress' );
 	$singular_name = __( 'Player', 'sportspress' );
 	$lowercase_name = __( 'players', 'sportspress' );
-	$labels = sp_cpt_labels( $name, $singular_name, $lowercase_name );
+	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
@@ -17,7 +17,7 @@ function sp_player_cpt_init() {
 	);
 	register_post_type( 'sp_player', $args );
 }
-add_action( 'init', 'sp_player_cpt_init' );
+add_action( 'init', 'sportspress_player_post_init' );
 
 function sp_player_edit_columns() {
 	$columns = array(
@@ -51,8 +51,8 @@ function sp_player_meta_init( $post ) {
 }
 
 function sp_player_team_meta( $post ) {
-	sp_post_checklist( $post->ID, 'sp_team' );
-	sp_post_adder( 'sp_team' );
+	sportspress_post_checklist( $post->ID, 'sp_team' );
+	sportspress_post_adder( 'sp_team' );
 }
 
 function sp_player_stats_meta( $post ) {
@@ -64,7 +64,7 @@ function sp_player_stats_meta( $post ) {
 	$eos = new eqEOS();
 
 	// Get labels from statistic variables
-	$statistic_labels = (array)sp_get_var_labels( 'sp_statistic' );
+	$statistic_labels = (array)sportspress_get_var_labels( 'sp_statistic' );
 
 	// Generate array of all league ids
 	$div_ids = array();
@@ -93,10 +93,10 @@ function sp_player_stats_meta( $post ) {
 		$data = array();
 
 		// Get all leagues populated with stats where available
-		$data[ $team_id ] = sp_array_combine( $div_ids, sp_array_value( $stats, $team_id, array() ) );
+		$data[ $team_id ] = sportspress_array_combine( $div_ids, sportspress_array_value( $stats, $team_id, array() ) );
 
 		// Get equations from statistics variables
-		$equations = sp_get_var_equations( 'sp_statistic' );
+		$equations = sportspress_get_var_equations( 'sp_statistic' );
 
 		foreach ( $div_ids as $div_id ):
 
@@ -135,9 +135,9 @@ function sp_player_stats_meta( $post ) {
 				$totals['eventsplayed']++; // TODO: create tab for substitutes in sidebar
 				$team_statistics = (array)get_post_meta( $event->ID, 'sp_players', true );
 				if ( array_key_exists( $team_id, $team_statistics ) ):
-					$players = sp_array_value( $team_statistics, $team_id, array() );
+					$players = sportspress_array_value( $team_statistics, $team_id, array() );
 					if ( array_key_exists( $post->ID, $players ) ):
-						$player_statistics = sp_array_value( $players, $post->ID, array() );
+						$player_statistics = sportspress_array_value( $players, $post->ID, array() );
 						foreach ( $player_statistics as $key => $value ):
 							if ( array_key_exists( $key, $totals ) ):
 								$totals[ $key ] += $value;
@@ -154,13 +154,13 @@ function sp_player_stats_meta( $post ) {
 				if ( empty( $value ) ):
 
 					// Reflect totals
-					$placeholders[ $team_id ][ $div_id ][ $key ] = sp_array_value( $totals, $key, 0 );
+					$placeholders[ $team_id ][ $div_id ][ $key ] = sportspress_array_value( $totals, $key, 0 );
 
 				else:
 
 					// Calculate value
 					if ( sizeof( $events ) > 0 ):
-						$placeholders[ $team_id ][ $div_id ][ $key ] = sp_solve( $value, $totals );
+						$placeholders[ $team_id ][ $div_id ][ $key ] = sportspress_solve( $value, $totals );
 					else:
 						$placeholders[ $team_id ][ $div_id ][ $key ] = 0;
 					endif;
@@ -172,7 +172,7 @@ function sp_player_stats_meta( $post ) {
 		endforeach;
 
 		// Get columns from statistics variables
-		$columns = sp_get_var_labels( 'sp_statistic' );
+		$columns = sportspress_get_var_labels( 'sp_statistic' );
 
 		if ( $team_num > 1 ):
 			?>
@@ -180,7 +180,7 @@ function sp_player_stats_meta( $post ) {
 			<?php
 		endif;
 
-		sp_player_statistics_table( $columns, $data, $placeholders );
+		sportspress_edit_player_statistics_table( $columns, $data, $placeholders );
 
 	endforeach;
 }
@@ -222,9 +222,9 @@ function sp_player_details_meta( $post ) {
 	?>
 		<p><strong><?php echo $var->post_title; ?></strong></p>
 		<p>
-			<input name="sp_details[<?php echo $var->post_name; ?>]" type="text" value="<?php echo sp_array_value( $details, $var->post_name, ''); ?>">
+			<input name="sp_details[<?php echo $var->post_name; ?>]" type="text" value="<?php echo sportspress_array_value( $details, $var->post_name, ''); ?>">
 		</p>
 	<?php
 	endforeach;
-	sp_nonce();
+	sportspress_nonce();
 }

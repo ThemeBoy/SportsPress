@@ -23,9 +23,9 @@
 		<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 			<td class="row-title"><?php echo $row->post_title; ?></td>
 			<td><?php echo $row->post_name; ?></td>
-			<td><?php echo sp_get_post_format( $row->ID ); ?></td>
-			<td><?php echo sp_get_post_equation( $row->ID ); ?></td>
-			<td><?php echo sp_get_post_order( $row->ID ); ?></td>
+			<td><?php echo sportspress_get_post_format( $row->ID ); ?></td>
+			<td><?php echo sportspress_get_post_equation( $row->ID ); ?></td>
+			<td><?php echo sportspress_get_post_order( $row->ID ); ?></td>
 		</tr>
 	<?php $i++; endforeach; ?>
 	<tfoot>
@@ -60,9 +60,9 @@
 		<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 			<td class="row-title"><?php echo $row->post_title; ?></td>
 			<td><?php echo $row->post_name; ?></td>
-			<td><?php echo sp_get_post_format( $row->ID ); ?></td>
-			<td><?php echo sp_get_post_equation( $row->ID ); ?></td>
-			<td><?php echo sp_get_post_order( $row->ID ); ?></td>
+			<td><?php echo sportspress_get_post_format( $row->ID ); ?></td>
+			<td><?php echo sportspress_get_post_equation( $row->ID ); ?></td>
+			<td><?php echo sportspress_get_post_order( $row->ID ); ?></td>
 		</tr>
 	<?php $i++; endforeach; ?>
 	<tfoot>
@@ -97,7 +97,7 @@
 		<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 			<td class="row-title"><?php echo $row->post_title; ?></td>
 			<td><?php echo $row->post_name; ?></td>
-			<td><?php echo sp_get_post_format( $row->ID ); ?></td>
+			<td><?php echo sportspress_get_post_format( $row->ID ); ?></td>
 			<td>—</td>
 			<td>—</td>
 		</tr>

@@ -1,5 +1,13 @@
 <?php
-function sp_admin_menu( $position ) {
+function sportspress_admin_menu( $position ) {
+	add_options_page(
+		__( 'SportsPress', 'sportspress' ),
+		__( 'SportsPress', 'sportspress' ),
+		'manage_options',
+		'sportspress',
+		'sportspress_settings'
+	);
+
 	if ( ! current_user_can( 'manage_options' ) )
 		return;
 	
@@ -28,4 +36,4 @@ function sp_admin_menu( $position ) {
     // Remove "Seasons" link under Staff
     unset( $submenu['edit.php?post_type=sp_staff'][15] );
 }
-add_action( 'admin_menu', 'sp_admin_menu' );
+add_action( 'admin_menu', 'sportspress_admin_menu' );

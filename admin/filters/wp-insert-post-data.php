@@ -1,5 +1,5 @@
 <?php
-function sp_insert_post_data( $data, $postarr ) {
+function sportspress_insert_post_data( $data, $postarr ) {
   
 	if( $data['post_type'] == 'sp_event' && $data['post_title'] == '' ):
 
@@ -16,4 +16,4 @@ function sp_insert_post_data( $data, $postarr ) {
 
 	return $data;
 }
-add_filter( 'wp_insert_post_data' , 'sp_insert_post_data' , '99', 2 );
+add_filter( 'wp_insert_post_data' , 'sportspress_insert_post_data' , '99', 2 );
