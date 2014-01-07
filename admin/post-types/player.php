@@ -42,10 +42,10 @@ function sportspress_player_meta_init( $post ) {
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_player_team_meta', 'sp_player', 'side', 'high' );
 
 	if ( $teams && $teams != array(0) && $seasons && is_array( $seasons ) && is_object( $seasons[0] ) ):
-		add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sportspress_player_stats_meta', 'sp_player', 'normal', 'high' );
+		add_meta_box( 'sp_statsdiv', __( 'Player Statistics', 'sportspress' ), 'sportspress_player_stats_meta', 'sp_player', 'normal', 'high' );
 	endif;
 
-	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_player_details_meta', 'sp_player', 'normal', 'high' );
+	add_meta_box( 'sp_metricsdiv', __( 'Player Metrics', 'sportspress' ), 'sportspress_player_metrics_meta', 'sp_player', 'normal', 'high' );
 	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sportspress_player_profile_meta', 'sp_player', 'normal', 'high' );
 
 }
@@ -189,10 +189,10 @@ function sportspress_player_profile_meta( $post ) {
 	wp_editor( $post->post_content, 'content' );
 }
 
-function sportspress_player_details_meta( $post ) {
+function sportspress_player_metrics_meta( $post ) {
 
 	$number = get_post_meta( $post->ID, 'sp_number', true );
-	$details = get_post_meta( $post->ID, 'sp_details', true );
+	$details = get_post_meta( $post->ID, 'sp_metrics', true );
 
 	?>
 	<p><strong><?php _e( 'Player Number', 'sportspress' ); ?></strong></p>
@@ -202,17 +202,11 @@ function sportspress_player_details_meta( $post ) {
 	<?php
 
 	$args = array(
-		'post_type' => 'sp_statistic',
+		'post_type' => 'sp_metric',
 		'numberposts' => -1,
 		'posts_per_page' => -1,
 		'orderby' => 'menu_order',
 		'order' => 'ASC',
-		'meta_query' => array(
-			array(
-				'key' => 'sp_format',
-				'value' => 'custom',
-			),
-		),
 	);
 
 	$vars = get_posts( $args );
@@ -222,7 +216,7 @@ function sportspress_player_details_meta( $post ) {
 	?>
 		<p><strong><?php echo $var->post_title; ?></strong></p>
 		<p>
-			<input name="sp_details[<?php echo $var->post_name; ?>]" type="text" value="<?php echo sportspress_array_value( $details, $var->post_name, ''); ?>">
+			<input name="sp_metrics[<?php echo $var->post_name; ?>]" type="text" value="<?php echo sportspress_array_value( $details, $var->post_name, ''); ?>">
 		</p>
 	<?php
 	endforeach;

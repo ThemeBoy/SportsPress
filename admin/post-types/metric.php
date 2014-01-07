@@ -1,8 +1,8 @@
 <?php
-function sportspress_statistic_post_init() {
-	$name = __( 'Player Statistics', 'sportspress' );
-	$singular_name = __( 'Player Statistic', 'sportspress' );
-	$lowercase_name = __( 'player statistics', 'sportspress' );
+function sportspress_metric_post_init() {
+	$name = __( 'Player Metrics', 'sportspress' );
+	$singular_name = __( 'Player Metric', 'sportspress' );
+	$lowercase_name = __( 'player metrics', 'sportspress' );
 	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name, true );
 	$args = array(
 		'label' => $name,
@@ -12,14 +12,14 @@ function sportspress_statistic_post_init() {
 		'show_in_menu' => false,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
-		'register_meta_box_cb' => 'sportspress_statistic_meta_init',
+		'register_meta_box_cb' => 'sportspress_metric_meta_init',
 		'capability_type' => 'sp_config'
 	);
-	register_post_type( 'sp_statistic', $args );
+	register_post_type( 'sp_metric', $args );
 }
-add_action( 'init', 'sportspress_statistic_post_init' );
+add_action( 'init', 'sportspress_metric_post_init' );
 
-function sportspress_statistic_edit_columns() {
+function sportspress_metric_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
@@ -30,13 +30,13 @@ function sportspress_statistic_edit_columns() {
 	);
 	return $columns;
 }
-add_filter( 'manage_edit-sp_statistic_columns', 'sportspress_statistic_edit_columns' );
+add_filter( 'manage_edit-sp_metric_columns', 'sportspress_metric_edit_columns' );
 
-function sportspress_statistic_meta_init() {
-	add_meta_box( 'sp_equationdiv', __( 'Details', 'sportspress' ), 'sportspress_statistic_equation_meta', 'sp_statistic', 'normal', 'high' );
+function sportspress_metric_meta_init() {
+	add_meta_box( 'sp_equationdiv', __( 'Details', 'sportspress' ), 'sportspress_metric_equation_meta', 'sp_metric', 'normal', 'high' );
 }
 
-function sportspress_statistic_equation_meta( $post ) {
+function sportspress_metric_equation_meta( $post ) {
 	$formats = sportspress_get_config_formats();
 
 	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );

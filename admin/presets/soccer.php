@@ -85,17 +85,8 @@ $sportspress_sports['soccer'] = array(
 				),
 			),
 		),
-		// Statistics
+		// Player Statistics
 		'sp_statistic' => array(
-			array(
-				'post_title' => 'Appearances',
-				'post_name'  => 'appearances',
-				'meta'       => array(
-					'sp_equation'     => '$eventsplayed',
-					'sp_format'       => 'integer',
-					'sp_precision'    => 1,
-				),
-			),
 			array(
 				'post_title' => 'Goals',
 				'post_name'  => 'goals',
@@ -134,12 +125,24 @@ $sportspress_sports['soccer'] = array(
 					'sp_precision'    => 1,
 				),
 			),
+		),
+		// Player Metrics
+		'sp_metric' => array(
+			array(
+				'post_title' => 'Appearances',
+				'post_name'  => 'appearances',
+				'meta'       => array(
+					'sp_equation'     => '$eventsplayed',
+					'sp_format'       => 'integer',
+					'sp_precision'    => 1,
+				),
+			),
 			array(
 				'post_title' => 'Height',
 				'post_name'  => 'height',
 				'meta'       => array(
 					'sp_equation'     => '',
-					'sp_format'       => 'custom',
+					'sp_format'       => 'integer',
 					'sp_precision'    => 1,
 				),
 			),
@@ -148,7 +151,7 @@ $sportspress_sports['soccer'] = array(
 				'post_name'  => 'weight',
 				'meta'       => array(
 					'sp_equation'     => '',
-					'sp_format'       => 'custom',
+					'sp_format'       => 'integer',
 					'sp_precision'    => 1,
 				),
 			),

@@ -141,7 +141,7 @@ if ( !function_exists( 'sportspress_get_post_equation' ) ) {
 		if ( $equation ):
 			return str_replace(
 				array( '$', '+', '-', '*', '/' ),
-				array( '', '&plus;', '&minus;', '&times;', '&divide' ),
+				array( '&Sigma; ', '&plus;', '&minus;', '&times;', '&divide' ),
 				$equation
 			);
 		else:
@@ -402,7 +402,7 @@ if ( !function_exists( 'sportspress_get_equation_selector' ) ) {
 					$options[ __( 'Columns', 'sportspress' ) ] = sportspress_get_equation_optgroup_array( $postid, 'sp_column' );
 					break;
 				case 'statistic':
-					$options[ __( 'Statistics', 'sportspress' ) ] = sportspress_get_equation_optgroup_array( $postid, 'sp_statistic' );
+					$options[ __( 'Player Statistics', 'sportspress' ) ] = sportspress_get_equation_optgroup_array( $postid, 'sp_statistic' );
 					break;
 			endswitch;
 		endforeach;
@@ -445,32 +445,19 @@ if ( !function_exists( 'sportspress_get_equation_selector' ) ) {
 }
 
 if ( !function_exists( 'sportspress_get_var_labels' ) ) {
-	function sportspress_get_var_labels( $post_type, $independent = false ) {
+	function sportspress_get_var_labels( $post_type ) {
 		$args = array(
 			'post_type' => $post_type,
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
-			'meta_query' => array(
-				array(
-					'key' => 'sp_format',
-					'value' => 'custom',
-					'compare' => '!=',
-				),
-			),
 		);
 
 		$vars = get_posts( $args );
 
 		$output = array();
 		foreach ( $vars as $var ):
-			if ( $independent ):
-				$equation = get_post_meta( $var->ID, 'sp_equation', true );
-				if ( $equation && $equation != '' ):
-					continue;
-				endif;
-			endif;
 			$output[ $var->post_name ] = $var->post_title;
 		endforeach;
 
@@ -1003,13 +990,8 @@ if ( !function_exists( 'sportspress_get_table' ) ) {
 			// Get static stats
 			$static = get_post_meta( $team_id, 'sp_columns', true );
 
-			// Create placeholders entry for the team
-			$placeholders[ $team_id ] = array();
-
 			// Add static stats to placeholders
-			if ( array_key_exists( $div_id, $static ) ):
-				$placeholders[ $team_id ] = $static[ $div_id ];
-			endif;
+			$placeholders[ $team_id ] = sportspress_array_value( $static, $div_id, array() );
 
 		endforeach;
 
@@ -1289,13 +1271,6 @@ if ( !function_exists( 'sportspress_get_list' ) ) {
 			'posts_per_page' => -1,
 	  		'orderby' => 'menu_order',
 	  		'order' => 'ASC',
-			'meta_query' => array(
-				array(
-					'key' => 'sp_format',
-					'value' => 'custom',
-					'compare' => '!=',
-				),
-			),
 		);
 		$statistics = get_posts( $args );
 

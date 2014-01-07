@@ -18,14 +18,19 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 					$team = get_post( $team_id );
 					$outcome_slug = sportspress_array_value( sportspress_array_value( $results, $team_id, null ), 'outcome', null );
 
-					$args=array(
-						'name' => $outcome_slug,
-						'post_type' => 'sp_outcome',
-						'post_status' => 'publish',
-						'posts_per_page' => 1
-					);
-					$outcomes = get_posts( $args );
-					echo $team->post_title . ( $outcomes ? ' — ' . $outcomes[0]->post_title : '' ) . '<br>';
+					if ( $outcome_slug && $outcome_slug != '-1' ):
+						$args=array(
+							'name' => $outcome_slug,
+							'post_type' => 'sp_outcome',
+							'post_status' => 'publish',
+							'posts_per_page' => 1
+						);
+						$outcomes = get_posts( $args );
+
+						echo $team->post_title . ( $outcomes ? ' — ' . $outcomes[0]->post_title : '' ) . '<br>';
+					else:
+						echo $team->post_title . '<br>';
+					endif;
 				endforeach;
 			elseif ( $post_type == 'sp_player' ):
 				$results = get_post_meta( $post_id, 'sp_results', true );
@@ -33,15 +38,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
 					$outcome_slug = sportspress_array_value( sportspress_array_value( $results, $team_id, null ), 'outcome', null );
-
-					$args=array(
-						'name' => $outcome_slug,
-						'post_type' => 'sp_outcome',
-						'post_status' => 'publish',
-						'posts_per_page' => 1
-					);
-					$outcomes = get_posts( $args );
-					echo $team->post_title . ( $outcomes ? ' — ' . $outcomes[0]->post_title : '' ) . '<br>';
+					echo $team->post_title . '<br>';
 				endforeach;
 			else:
 				foreach( $teams as $team_id ):
