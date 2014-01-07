@@ -21,4 +21,3 @@ function sportspress_the_content( $content ) {
     return $content;
 }
 add_filter('the_content', 'sportspress_the_content');
-?>

@@ -95,4 +95,3 @@ function sp_statistic_equation_meta( $post ) {
 	<?php
 	sp_nonce();
 }
-?>

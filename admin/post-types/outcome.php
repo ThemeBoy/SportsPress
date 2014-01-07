@@ -42,4 +42,3 @@ function sp_outcome_details_meta( $post ) {
 	<?php
 	sp_nonce();
 }
-?>

@@ -4,4 +4,3 @@ function sp_plugins_loaded() {
 	add_image_size( 'sp_icon',  32, 32, false );
 }
 add_action( 'plugins_loaded', 'sp_plugins_loaded' );
-?>

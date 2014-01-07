@@ -38,4 +38,3 @@ __( 'Integer', 'sportspress' );
 __( 'Decimal', 'sportspress' );
 __( 'Time', 'sportspress' );
 __( 'Custom Field', 'sportspress' );
-?>

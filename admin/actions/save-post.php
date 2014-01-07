@@ -134,4 +134,3 @@ function sp_save_post( $post_id ) {
 	endswitch;
 }
 add_action( 'save_post', 'sp_save_post' );
-?>

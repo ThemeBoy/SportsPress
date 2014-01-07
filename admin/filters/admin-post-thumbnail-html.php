@@ -24,4 +24,3 @@ function sp_admin_post_thumbnail_html( $translated_text, $post_id ) {
 	return $translated_text;
 }
 add_filter( 'admin_post_thumbnail_html', 'sp_admin_post_thumbnail_html', 10, 2 );
-?>

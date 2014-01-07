@@ -48,4 +48,3 @@ function sp_staff_edit_columns() {
 	return $columns;
 }
 add_filter( 'manage_edit-sp_staff_columns', 'sp_staff_edit_columns' );
-?>

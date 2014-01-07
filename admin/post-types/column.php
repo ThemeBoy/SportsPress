@@ -95,4 +95,3 @@ function sp_column_details_meta( $post ) {
 	<?php
 	sp_nonce();
 }
-?>

@@ -19,4 +19,3 @@ function sp_season_term_init() {
 	register_taxonomy_for_object_type( 'sp_season', 'sp_staff' );
 }
 add_action( 'init', 'sp_season_term_init' );
-?>

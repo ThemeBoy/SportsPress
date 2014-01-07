@@ -16,4 +16,3 @@ function sp_position_term_init() {
 	register_taxonomy_for_object_type( 'sp_position', 'sp_player' );
 }
 add_action( 'init', 'sp_position_term_init' );
-?>

@@ -34,4 +34,3 @@ function sp_restrict_manage_posts() {
 	endif;
 }
 add_action( 'restrict_manage_posts', 'sp_restrict_manage_posts' );
-?>

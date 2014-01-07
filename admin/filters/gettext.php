@@ -41,4 +41,3 @@ function sp_gettext( $translated_text, $untranslated_text, $domain ) {
 		return $translated_text;
 }
 add_filter( 'gettext', 'sp_gettext', 20, 3 );
-?>

@@ -83,4 +83,3 @@ function sp_manage_posts_custom_column( $column, $post_id ) {
 }
 add_action( 'manage_posts_custom_column', 'sp_manage_posts_custom_column', 10, 2 );
 add_action( 'manage_pages_custom_column', 'sp_manage_posts_custom_column', 10, 2 );
-?>

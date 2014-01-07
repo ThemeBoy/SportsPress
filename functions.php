@@ -1526,4 +1526,3 @@ if ( !function_exists( 'sp_highlight_admin_menu' ) ) {
 		$submenu_file = 'sportspress';
 	}
 }
-?>

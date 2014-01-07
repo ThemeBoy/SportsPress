@@ -158,4 +158,3 @@ function sp_admin_head_edit() {
 }
 add_action( 'admin_head-edit.php', 'sp_admin_head_edit', 10, 2 );
 add_action( 'admin_head-post.php', 'sp_admin_head_edit', 10, 2 );
-?>
