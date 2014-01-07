@@ -94,7 +94,7 @@ function sportspress_event_players_meta( $post ) {
 	$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
 
 	// Get columns from result variables
-	$columns = sportspress_get_var_labels( 'sp_statistic', true );
+	$columns = sportspress_get_var_labels( 'sp_statistic' );
 
 	foreach ( $teams as $key => $team_id ):
 		if ( ! $team_id ) continue;

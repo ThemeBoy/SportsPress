@@ -60,9 +60,6 @@ function sportspress_save_post( $post_id ) {
 
 			// Update precision as integer
 			update_post_meta( $post_id, 'sp_precision', (int) sportspress_array_value( $_POST, 'sp_precision', 1 ) );
-
-			// Update equation as string
-			update_post_meta( $post_id, 'sp_equation', implode( ' ', sportspress_array_value( $_POST, 'sp_equation', array() ) ) );
 			
 			// Update sort order as string
 			update_post_meta( $post_id, 'sp_priority', sportspress_array_value( $_POST, 'sp_priority', '0' ) );
@@ -90,8 +87,8 @@ function sportspress_save_post( $post_id ) {
 			// Update player number
 			update_post_meta( $post_id, 'sp_number', sportspress_array_value( $_POST, 'sp_number', '' ) );
 
-			// Update player details array
-			update_post_meta( $post_id, 'sp_details', sportspress_array_value( $_POST, 'sp_details', array() ) );
+			// Update player metrics array
+			update_post_meta( $post_id, 'sp_metrics', sportspress_array_value( $_POST, 'sp_metrics', array() ) );
 
 			break;
 

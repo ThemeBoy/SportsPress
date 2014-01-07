@@ -37,11 +37,12 @@ include dirname( __FILE__ ) . '/admin/settings/settings.php' ;
 
 // Custom post types
 require_once dirname( __FILE__ ) . '/admin/post-types/separator.php';
-require_once dirname( __FILE__ ) . '/admin/post-types/event.php';
-require_once dirname( __FILE__ ) . '/admin/post-types/result.php';
-require_once dirname( __FILE__ ) . '/admin/post-types/outcome.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/column.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/statistic.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/metric.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/result.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/outcome.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/event.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/team.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/table.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/player.php';

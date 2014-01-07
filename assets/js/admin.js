@@ -114,7 +114,7 @@ jQuery(document).ready(function($){
 		if($(this).val() == 'custom') {
 			$equationselector.prop( 'disabled', true );
 		} else {
-			$equationselector.prop( 'disabled', false )
+			$equationselector.prop( 'disabled', false );
 		}
 
 	});
