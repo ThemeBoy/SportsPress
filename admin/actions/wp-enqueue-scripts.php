@@ -3,8 +3,6 @@ function sportspress_enqueue_scripts() {
 	// Styles
 	wp_register_style( 'sportspress', SPORTSPRESS_PLUGIN_URL . 'assets/css/sportspress.css', array(), time() );
 	wp_enqueue_style( 'sportspress');
-	wp_register_style( 'jquery-datatables', SPORTSPRESS_PLUGIN_URL . 'assets/css/jquery.dataTables.css', array(), '1.9.4' );
-	wp_enqueue_style( 'jquery-datatables');
 
 	// Scripts
 	wp_enqueue_script( 'jquery' );
