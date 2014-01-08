@@ -72,7 +72,16 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			echo get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : '—';
 			break;
 		case 'sp_kickoff':
-			echo ( $post->post_status == 'future' ? __( 'Scheduled' ) : __( 'Played', 'sportspress' ) ) . '<br />' . date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) );
+			if ( $post->post_status == 'future' ):
+				_e( 'Scheduled', 'sportspress' );
+			elseif( $post->post_status == 'publish' ):
+				_e( 'Played', 'sportspress' );
+			elseif( $post->post_status == 'draft' ):
+				_e( 'Draft', 'sportspress' );
+			else:
+				_e( 'Pending Review', 'sportspress' );
+			endif;
+			echo '<br />' . date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) );
 			break;
 		case 'sp_address':
 			echo get_post_meta( $post_id, 'sp_address', true ) ? get_post_meta( $post_id, 'sp_address', true ) : '—';

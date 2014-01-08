@@ -14,6 +14,10 @@ table.widefat.sp-data-table input[type="number"] {
 	min-width: 14px;
 	width: 100%;
 }
+table.widefat.sp-data-table input.name {
+	min-width: 0;
+	width: auto;
+}
 .sp-admin-config-table th,
 .sp-admin-config-table td {
 	width: 20%;

@@ -11,7 +11,7 @@ function sportspress_player_post_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sportspress_player_meta_init',
-		'rewrite' => array( 'slug' => get_option( 'sp_player_slug', 'player' ) ),
+		'rewrite' => array( 'slug' => get_option( 'sp_player_slug', 'players' ) ),
 		'menu_icon' => 'dashicons-groups',
 		'capability_type' => 'sp_player',
 	);

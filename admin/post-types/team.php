@@ -11,7 +11,7 @@ function sportspress_team_post_init() {
 		'hierarchical' => true,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
 		'register_meta_box_cb' => 'sportspress_team_meta_init',
-		'rewrite' => array( 'slug' => get_option( 'sp_team_slug', 'team' ) ),
+		'rewrite' => array( 'slug' => get_option( 'sp_team_slug', 'teams' ) ),
 		'menu_icon' => 'dashicons-shield-alt',
 		'capability_type' => 'sp_team'
 	);

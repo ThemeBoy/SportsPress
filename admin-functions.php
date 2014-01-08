@@ -509,7 +509,7 @@ if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
-								<?php echo get_the_title( $team_id ); ?>
+								<input type="text" name="sp_teams[<?php echo $team_id; ?>][name]" class="name" value="<?php echo sportspress_array_value( $team_stats, 'name', '' ); ?>" placeholder="<?php echo get_the_title( $team_id ); ?>">
 							</td>
 							<?php foreach( $columns as $column => $label ):
 								$value = sportspress_array_value( $team_stats, $column, '' );
@@ -948,8 +948,8 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 
 }
 
-if ( !function_exists( 'sportspress_get_table' ) ) {
-	function sportspress_get_table( $post_id, $breakdown = false ) {
+if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
+	function sportspress_get_league_table_data( $post_id, $breakdown = false ) {
 		$div_id = sportspress_get_the_term_id( $post_id, 'sp_season', 0 );
 		$team_ids = (array)get_post_meta( $post_id, 'sp_team', false );
 		$table_stats = (array)get_post_meta( $post_id, 'sp_teams', true );
@@ -1017,10 +1017,13 @@ if ( !function_exists( 'sportspress_get_table' ) ) {
 
 			foreach ( $results as $team_id => $team_result ):
 
+				if ( ! in_array( $team_id, $team_ids ) )
+					continue;
+
 				foreach ( $team_result as $key => $value ):
 
 					if ( $key == 'outcome' ):
-						if ( array_key_exists( $value, $totals[ $team_id ] ) ):
+						if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $value, $totals[ $team_id ] ) ):
 							$totals[ $team_id ]['eventsplayed']++;
 							$totals[ $team_id ][ $value ]++;
 						endif;
@@ -1033,7 +1036,7 @@ if ( !function_exists( 'sportspress_get_table' ) ) {
 							endif;
 						endif;
 					else:
-						if ( array_key_exists( $key . 'for', $totals[ $team_id ] ) ):
+						if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $key . 'for', $totals[ $team_id ] ) ):
 							$totals[ $team_id ][ $key . 'for' ] += $value;
 						endif;
 					endif;
@@ -1119,7 +1122,9 @@ if ( !function_exists( 'sportspress_get_table' ) ) {
 		foreach( $placeholders as $team_id => $team_data ):
 
 			// Add team name to row
-			$merged[ $team_id ] = array( 'name' => get_the_title( $team_id ) );
+			$merged[ $team_id ] = array();
+
+			$team_data['name'] = get_the_title( $team_id );
 
 			foreach( $team_data as $key => $value ):
 
@@ -1173,8 +1178,8 @@ if ( !function_exists( 'sportspress_get_table' ) ) {
 	}
 }
 
-if ( !function_exists( 'sportspress_get_list' ) ) {
-	function sportspress_get_list( $post_id, $breakdown = false ) {
+if ( !function_exists( 'sportspress_get_player_list_data' ) ) {
+	function sportspress_get_player_list_data( $post_id, $breakdown = false ) {
 		$div_id = sportspress_get_the_term_id( $post_id, 'sp_season', 0 );
 		$team_id = get_post_meta( $post_id, 'sp_team', true );
 		$player_ids = (array)get_post_meta( $post_id, 'sp_player', false );
@@ -1250,6 +1255,9 @@ if ( !function_exists( 'sportspress_get_list' ) ) {
 
 			foreach ( $players as $player_id => $player_statistics ):
 
+				if ( ! $player_id || ! in_array( $player_id, $player_ids ) )
+					continue;
+
 				// Increment events played
 				$totals[ $player_id ]['eventsplayed']++;
 
@@ -1311,20 +1319,9 @@ if ( !function_exists( 'sportspress_get_list' ) ) {
 			foreach ( $statistics as $statistic ):
 				if ( sportspress_array_value( $placeholders[ $player_id ], $statistic->post_name, '' ) == '' ):
 
-					if ( empty( $statistic->equation ) ):
+					// Reflect totals
+					$placeholders[ $player_id ][ $statistic->post_name ] = sportspress_array_value( sportspress_array_value( $totals, $player_id, array() ), $statistic->post_name, 0 );
 
-						// Reflect totals
-						$placeholders[ $player_id ][ $statistic->post_name ] = sportspress_array_value( sportspress_array_value( $totals, $player_id, array() ), $key, 0 );
-
-					else:
-
-						// Calculate value
-						if ( sizeof( $events ) > 0 ):
-							$placeholders[ $player_id ][ $statistic->post_name ] = sportspress_solve( $statistic->equation, sportspress_array_value( $totals, $player_id, array() ) );
-						else:
-							$placeholders[ $player_id ][ $statistic->post_name ] = 0;
-						endif;
-					endif;
 				endif;
 			endforeach;
 		endforeach;
@@ -1334,7 +1331,7 @@ if ( !function_exists( 'sportspress_get_list' ) ) {
 
 		foreach( $placeholders as $player_id => $player_data ):
 
-			// Add team name to row
+			// Add player name to row
 			$merged[ $player_id ] = array( 'name' => get_the_title( $player_id ) );
 
 			foreach( $player_data as $key => $value ):
