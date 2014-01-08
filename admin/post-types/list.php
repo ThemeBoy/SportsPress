@@ -11,8 +11,9 @@ function sportspress_list_post_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author' ),
 		'register_meta_box_cb' => 'sportspress_list_meta_init',
-		'rewrite' => array( 'slug' => 'list' ),
+		'rewrite' => array( 'slug' => get_option( 'sp_list_slug', 'lists' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_player',
+		'show_in_admin_bar' => true,
 		'capability_type' => 'sp_list'
 	);
 	register_post_type( 'sp_list', $args );
@@ -78,7 +79,7 @@ function sportspress_list_player_meta( $post ) {
 
 function sportspress_list_stats_meta( $post ) {
 
-	list( $columns, $data, $placeholders, $merged ) = sportspress_get_list( $post->ID, true );
+	list( $columns, $data, $placeholders, $merged ) = sportspress_get_player_list_data( $post->ID, true );
 
 	sportspress_edit_player_table( $columns, $data, $placeholders );
 	sportspress_nonce();

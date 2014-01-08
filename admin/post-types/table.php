@@ -11,8 +11,9 @@ function sportspress_table_post_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'excerpt' ),
 		'register_meta_box_cb' => 'sportspress_table_meta_init',
-		'rewrite' => array( 'slug' => 'table' ),
+		'rewrite' => array( 'slug' => get_option( 'sp_table_slug', 'tables' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_team',
+		'show_in_admin_bar' => true,
 //		'capability_type' => 'sp_table'
 	);
 	register_post_type( 'sp_table', $args );
@@ -66,7 +67,7 @@ function sportspress_table_team_meta( $post, $test ) {
 
 function sportspress_table_columns_meta( $post ) {
 
-	list( $columns, $data, $placeholders, $merged ) = sportspress_get_table( $post->ID, true );
+	list( $columns, $data, $placeholders, $merged ) = sportspress_get_league_table_data( $post->ID, true );
 
 	sportspress_edit_league_table( $columns, $data, $placeholders );
 

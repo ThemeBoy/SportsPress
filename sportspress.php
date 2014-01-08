@@ -21,6 +21,7 @@ if ( !function_exists( 'add_action' ) ) {
 define( 'SPORTSPRESS_VERSION', '0.1.3' );
 define( 'SPORTSPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SPORTSPRESS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+define( 'SPORTSPRESS_PLUGIN_FILE', __FILE__ );
 
 // Libraries
 include dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
@@ -71,44 +72,31 @@ include_once dirname( __FILE__ ) . '/admin/presets/tennis.php';
 include_once dirname( __FILE__ ) . '/admin/presets/volleyball.php';
 
 // Typical request actions
-require_once dirname( __FILE__ ) . '/admin/actions/plugins-loaded.php';
-require_once dirname( __FILE__ ) . '/admin/actions/after-setup-theme.php';
-require_once dirname( __FILE__ ) . '/admin/actions/wp-enqueue-scripts.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/plugins-loaded.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/after-setup-theme.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/wp-enqueue-scripts.php';
 
 // Admin request actions
-require_once dirname( __FILE__ ) . '/admin/actions/admin-menu.php';
-require_once dirname( __FILE__ ) . '/admin/actions/admin-init.php';
-require_once dirname( __FILE__ ) . '/admin/actions/admin-enqueue-scripts.php';
-require_once dirname( __FILE__ ) . '/admin/actions/admin-head.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/admin-menu.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/admin-init.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/admin-enqueue-scripts.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/admin-head.php';
 
 // Administrative actions
-require_once dirname( __FILE__ ) . '/admin/actions/manage-posts-custom-column.php';
-require_once dirname( __FILE__ ) . '/admin/actions/post-thumbnail-html.php';
-require_once dirname( __FILE__ ) . '/admin/actions/restrict-manage-posts.php';
-require_once dirname( __FILE__ ) . '/admin/actions/save-post.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/manage-posts-custom-column.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/post-thumbnail-html.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/restrict-manage-posts.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/save-post.php';
 
 // Filters
-require_once dirname( __FILE__ ) . '/admin/filters/admin-post-thumbnail-html.php';
-require_once dirname( __FILE__ ) . '/admin/filters/gettext.php';
-require_once dirname( __FILE__ ) . '/admin/filters/pre-get-posts.php';
-require_once dirname( __FILE__ ) . '/admin/filters/sanitize-title.php';
-require_once dirname( __FILE__ ) . '/admin/filters/the-content.php';
-require_once dirname( __FILE__ ) . '/admin/filters/wp-insert-post-data.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/admin-post-thumbnail-html.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/gettext.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/pre-get-posts.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/sanitize-title.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/the-content.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/wp-insert-post-data.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/plugin-action-links.php';
 
-// Flush rewrite rules on activation
-function sportspress_rewrite_flush() {
-    sportspress_event_post_init();
-    sportspress_result_post_init();
-    sportspress_outcome_post_init();
-    sportspress_column_post_init();
-    sportspress_statistic_post_init();
-    sportspress_team_post_init();
-    sportspress_table_post_init();
-    sportspress_player_post_init();
-    sportspress_list_post_init();
-    sportspress_staff_post_init();
-    sportspress_position_term_init();
-    sportspress_season_term_init();
-    flush_rewrite_rules();
-}
-register_activation_hook( __FILE__, 'sportspress_rewrite_flush' );
+// Register activation hook
+require_once dirname( __FILE__ ) . '/admin/hooks/register-activation-hook.php';
+

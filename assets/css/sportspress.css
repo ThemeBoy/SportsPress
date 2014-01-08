@@ -1,12 +1,27 @@
 /* SportsPress */
 
 /* Data Tables */
-.sp-data-table thead .sorting {
+.sp-data-table thead .sorting,
+.sp-data-table thead .sorting_asc,
+.sp-data-table thead .sorting_desc {
 	cursor: pointer;
+}
+.sp-data-table .sorting:after,
+.sp-data-table .sorting_asc:after,
+.sp-data-table .sorting_desc:after {
+	font-family: 'Courier New', Courier, monospace;
+}
+.sp-data-table .sorting:after {
+	content: ' \A0';
 }
 .sp-data-table .sorting_asc:after {
 	content: ' \25B2';
 }
 .sp-data-table .sorting_desc:after {
 	content: ' \25BC';
+}
+.sp-data-table .column-name .logo {
+	vertical-align: middle;
+	height: 2em;
+	width: auto;
 }

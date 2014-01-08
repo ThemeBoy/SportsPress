@@ -11,7 +11,7 @@ function sportspress_event_post_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'comments' ),
 		'register_meta_box_cb' => 'sportspress_event_meta_init',
-		'rewrite' => array( 'slug' => get_option( 'sp_event_slug', 'event' ) ),
+		'rewrite' => array( 'slug' => get_option( 'sp_event_slug', 'events' ) ),
 		'menu_icon' => 'dashicons-calendar',
 		'capability_type' => 'sp_event'
 	);

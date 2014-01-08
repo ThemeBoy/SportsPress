@@ -20,4 +20,5 @@ function sportspress_the_content( $content ) {
 
     return $content;
 }
-add_filter('the_content', 'sportspress_the_content');
+add_filter( 'the_content', 'sportspress_the_content' );
+add_filter( 'get_the_content', 'sportspress_the_content' );
