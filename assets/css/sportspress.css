@@ -1,1 +1,12 @@
 /* SportsPress */
+
+/* Data Tables */
+.sp-data-table thead .sorting {
+	cursor: pointer;
+}
+.sp-data-table .sorting_asc:after {
+	content: ' \25B2';
+}
+.sp-data-table .sorting_desc:after {
+	content: ' \25BC';
+}

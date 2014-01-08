@@ -7,14 +7,14 @@ function sportspress_the_content( $content ) {
     	global $post;
 
         // Display league table
-        $content .= '<p>' . sportspress_league_table( $post->ID  ) . '</p>';
+        $content .= sportspress_league_table( $post->ID  );
     
     elseif ( is_singular( 'sp_list' ) && in_the_loop() ):
 
     	global $post;
 
         // Display player list
-        $content .= '<p>' . sportspress_player_list( $post->ID  ) . '</p>';
+        $content .= sportspress_player_list( $post->ID  );
 
     endif;
 

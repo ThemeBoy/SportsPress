@@ -12,8 +12,8 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 		// Remove the first row to leave us with the actual data
 		unset( $data[0] );
 
-		foreach( $labels as $label ):
-			$output .= '<th>' . $label . '</th>';
+		foreach( $labels as $key => $label ):
+			$output .= '<th class="column-' . ( $key ? $key : 'name' ) . '">' . $label . '</th>';
 		endforeach;
 
 		$output .= '</tr>' . '</th>' . '</thead>' . '<tbody>';
@@ -27,12 +27,13 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 			// Thumbnail and name as link
 			$permalink = get_post_permalink( $team_id );
 			$thumbnail = get_the_post_thumbnail( $team_id, 'sp_icon' );
-			$output .= '<td>' . $i . '. ' . ( $thumbnail ? $thumbnail . ' ' : '' ) . '<a href="' . $permalink . '">' . sportspress_array_value( $row, 'name', '&nbsp;' ) . '</a></td>';
+			$name = sportspress_array_value( $row, 'name', '&nbsp;' );
+			$output .= '<td class="column-name">' . $i . '. ' . ( $thumbnail ? $thumbnail . ' ' : '' ) . '<a href="' . $permalink . '">' . $name . '</a></td>';
 
 			foreach( $labels as $key => $value ):
 				if ( $key == 'name' )
 					continue;
-				$output .= '<td>' . sportspress_array_value( $row, $key, '—' ) . '</td>';
+				$output .= '<td class="column-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
 			endforeach;
 
 			$output .= '</tr>';
