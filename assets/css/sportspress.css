@@ -3,7 +3,9 @@
 /* Data Tables */
 .sp-data-table thead .sorting,
 .sp-data-table thead .sorting_asc,
-.sp-data-table thead .sorting_desc {
+.sp-data-table thead .sorting_desc,
+.sp-data-table thead .sorting_asc_disabled,
+.sp-data-table thead .sorting_desc_disabled {
 	cursor: pointer;
 }
 .sp-data-table .sorting:after,
@@ -20,6 +22,12 @@
 }
 .sp-data-table .sorting_desc:after {
 	content: "\f140";
+}
+.sp-data-table .column-number.sorting_asc {
+	cursor: default;
+}
+.sp-data-table .column-number:after {
+	content: "";
 }
 .sp-data-table .column-name .logo {
 	vertical-align: middle;
