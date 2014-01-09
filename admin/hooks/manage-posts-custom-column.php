@@ -42,6 +42,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 				endforeach;
 			else:
 				foreach( $teams as $team_id ):
+					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
 					echo $team->post_title . '<br>';
 				endforeach;
