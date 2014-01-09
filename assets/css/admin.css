@@ -27,3 +27,11 @@ table.widefat td.column-sp_logo {
 	width: 32px;
 	text-align: center;
 }
+
+#sp_venue-adder h4,
+#sp_team-adder h4,
+#sp_season-adder h4,
+#sp_player-adder h4,
+#sp_position-adder h4 {
+	margin: 10px 0;
+}

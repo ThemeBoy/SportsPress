@@ -11,7 +11,10 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_team':
 			$post_type = get_post_type( $post );
 			$teams = get_post_meta ( $post_id, 'sp_team', false );
-			if ( $post_type == 'sp_event' ):
+			if ( empty( $teams ) ):
+				echo '—';
+				break;
+			elseif ( $post_type == 'sp_event' ):
 				$results = get_post_meta( $post_id, 'sp_results', true );
 				foreach( $teams as $team_id ):
 					if ( ! $team_id ) continue;
@@ -68,6 +71,9 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			break;
 		case 'sp_season':
 			echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '—';
+			break;
+		case 'sp_venue':
+			echo get_the_terms ( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '—';
 			break;
 		case 'sp_sponsor':
 			echo get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : '—';

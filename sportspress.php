@@ -44,6 +44,7 @@ require_once dirname( __FILE__ ) . '/admin/post-types/metric.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/result.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/outcome.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/event.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/calendar.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/team.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/table.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/player.php';
@@ -52,6 +53,7 @@ require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
 
 // Terms
 require_once dirname( __FILE__ ) . '/admin/terms/season.php';
+require_once dirname( __FILE__ ) . '/admin/terms/venue.php';
 require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 
 // Presets
@@ -78,7 +80,6 @@ require_once dirname( __FILE__ ) . '/admin/hooks/wp-enqueue-scripts.php';
 
 // Admin request actions
 require_once dirname( __FILE__ ) . '/admin/hooks/admin-menu.php';
-require_once dirname( __FILE__ ) . '/admin/hooks/admin-init.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/admin-enqueue-scripts.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/admin-head.php';
 

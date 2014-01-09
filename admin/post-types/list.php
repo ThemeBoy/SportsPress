@@ -35,6 +35,7 @@ add_filter( 'manage_edit-sp_list_columns', 'sportspress_list_edit_columns' );
 function sportspress_list_meta_init( $post ) {
 	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
 
+	remove_meta_box( 'sp_seasondiv', 'sp_list', 'side' );
 	add_meta_box( 'sp_playerdiv', __( 'Players', 'sportspress' ), 'sportspress_list_player_meta', 'sp_list', 'side', 'high' );
 
 	if ( $players && $players != array(0) ):
@@ -47,6 +48,7 @@ function sportspress_list_player_meta( $post ) {
 	$team_id = get_post_meta( $post->ID, 'sp_team', true );
 	?>
 	<div>
+		<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
 		<p class="sp-tab-select">
 			<?php
 			$args = array(
@@ -58,6 +60,7 @@ function sportspress_list_player_meta( $post ) {
 			sportspress_dropdown_taxonomies( $args );
 			?>
 		</p>
+		<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
 		<p class="sp-tab-select">
 			<?php
 			$args = array(
@@ -68,6 +71,7 @@ function sportspress_list_player_meta( $post ) {
 			wp_dropdown_pages( $args );
 			?>
 		</p>
+		<p><strong><?php _e( 'Players', 'sportspress' ); ?></strong></p>
 		<?php
 		sportspress_post_checklist( $post->ID, 'sp_player', 'block', 'sp_team' );
 		sportspress_post_adder( 'sp_player' );

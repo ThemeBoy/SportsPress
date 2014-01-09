@@ -34,6 +34,7 @@ add_filter( 'manage_edit-sp_table_columns', 'sportspress_table_edit_columns' );
 function sportspress_table_meta_init( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 
+	remove_meta_box( 'sp_seasondiv', 'sp_table', 'side' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_table_team_meta', 'sp_table', 'side', 'high' );
 
 	if ( $teams && $teams != array(0) ):
