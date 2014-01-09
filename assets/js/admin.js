@@ -1,62 +1,62 @@
 jQuery(document).ready(function($){
 
 	// Auto key placeholder
-	$('#poststuff #title').on('keyup', function() {
-		$('#sp_key').attr('placeholder', $(this).val().replace(/[^a-z]/gi,'').toLowerCase());
+	$("#poststuff #title").on("keyup", function() {
+		$("#sp_key").attr("placeholder", $(this).val().replace(/[^a-z]/gi,"").toLowerCase());
 	});
 
 	// Activate auto key placeholder
-	$('#poststuff #title').keyup();
+	$("#poststuff #title").keyup();
 
 	// Tab switcher
-	$('.sp-tab-panel').siblings('.sp-tab-bar').find('a').click(function() {
-		$(this).closest('li').removeClass('wp-tab').addClass('wp-tab-active').siblings().removeClass('wp-tab-active').addClass('wp-tab').closest('.wp-tab-bar').siblings($(this).attr('href')).show().siblings('.wp-tab-panel').hide();
+	$(".sp-tab-panel").siblings(".sp-tab-bar").find("a").click(function() {
+		$(this).closest("li").removeClass("wp-tab").addClass("wp-tab-active").siblings().removeClass("wp-tab-active").addClass("wp-tab").closest(".wp-tab-bar").siblings($(this).attr("href")).show().siblings(".wp-tab-panel").hide();
 		return false;
 	});
 
 	// Tab filter
-	$('.sp-tab-panel').siblings('.sp-tab-select').find('select').change(function() {
+	$(".sp-tab-panel").siblings(".sp-tab-select").find("select").change(function() {
 		var val = $(this).val();
-		var filter = '.sp-filter-'+val;
-		var $filters = $(this).closest('.sp-tab-select').siblings('.sp-tab-select');
+		var filter = ".sp-filter-"+val;
+		var $filters = $(this).closest(".sp-tab-select").siblings(".sp-tab-select");
 		if($filters.length) {
 			$filters.each(function() {
-				filter += '.sp-filter-'+$(this).find('select').val();
+				filter += ".sp-filter-"+$(this).find("select").val();
 			});
 		}
-		$(this).closest('.sp-tab-select').siblings('.sp-tab-panel').find('.sp-post').hide(0, function() {
-			$(this).find('input').prop('disabled', true);
+		$(this).closest(".sp-tab-select").siblings(".sp-tab-panel").find(".sp-post").hide(0, function() {
+			$(this).find("input").prop("disabled", true);
 			$(this).filter(filter).show(0, function() {
-				$(this).find('input').prop('disabled', false);
+				$(this).find("input").prop("disabled", false);
 			});
 		});
 	});
 
 	// Trigger tab filter
-	$('.sp-tab-panel').siblings('.sp-tab-select').find('select').change();
+	$(".sp-tab-panel").siblings(".sp-tab-select").find("select").change();
 
 	// Self-cloning
-	$('.sp-clone:last').find('select').change(function() {
-		$(this).closest('.sp-clone').siblings().find('select').change(function() {
-			if($(this).val() == '0') $(this).closest('.sp-clone').remove();
-		}).find('option:first').text($(this).closest('.sp-clone').attr('data-remove-text'));
-		if($(this).val() != '0') {
-			$original = $(this).closest('.sp-clone');
-			$original.before($original.clone().find('select').attr('name', $original.attr('data-clone-name') + '[]').val($(this).val()).closest('.sp-clone')).attr('data-clone-num', parseInt($original.attr('data-clone-num')) + 1).find('select').val('0').change();
+	$(".sp-clone:last").find("select").change(function() {
+		$(this).closest(".sp-clone").siblings().find("select").change(function() {
+			if($(this).val() == "0") $(this).closest(".sp-clone").remove();
+		}).find("option:first").text($(this).closest(".sp-clone").attr("data-remove-text"));
+		if($(this).val() != "0") {
+			$original = $(this).closest(".sp-clone");
+			$original.before($original.clone().find("select").attr("name", $original.attr("data-clone-name") + "[]").val($(this).val()).closest(".sp-clone")).attr("data-clone-num", parseInt($original.attr("data-clone-num")) + 1).find("select").val("0").change();
 		}
 	});
 
 	// Activate self-cloning
-	$('.sp-clone:last').find('select').change();
+	$(".sp-clone:last").find("select").change();
 
 	// Total stats calculator
-	$('.sp-data-table .sp-total input').on('updateTotal', function() {
+	$(".sp-data-table .sp-total input").on("updateTotal", function() {
 		index = $(this).parent().index();
 		var sum = 0;
-		$(this).closest('.sp-data-table').find('.sp-post').each(function() {
-			val = $(this).find('td').eq(index).find('input').val();
-			if(val == '') {
-				val = $(this).find('td').eq(index).find('input').attr('placeholder');
+		$(this).closest(".sp-data-table").find(".sp-post").each(function() {
+			val = $(this).find("td").eq(index).find("input").val();
+			if(val == "") {
+				val = $(this).find("td").eq(index).find("input").attr("placeholder");
 			}
 			if($.isNumeric(val)) {
 				sum += parseInt(val, 10);
@@ -66,69 +66,69 @@ jQuery(document).ready(function($){
 	});
 
 	// Activate total stats calculator
-	if($('.sp-data-table .sp-total').size()) {
-		$('.sp-data-table .sp-post td input').on('keyup', function() {
-			$(this).closest('.sp-data-table').find('.sp-total td').eq($(this).parent().index()).find('input').trigger('updateTotal');
+	if($(".sp-data-table .sp-total").size()) {
+		$(".sp-data-table .sp-post td input").on("keyup", function() {
+			$(this).closest(".sp-data-table").find(".sp-total td").eq($(this).parent().index()).find("input").trigger("updateTotal");
 		});
 	}
 
 	// Equation selector
-	$('.sp-equation-selector select:last').change(function() {
+	$(".sp-equation-selector select:last").change(function() {
 		$(this).siblings().change(function() {
-			if($(this).val() == '') $(this).remove();
-		}).find('option:first').text($(this).attr('data-remove-text'));
-		if($(this).val() != '') {
-			$(this).before($(this).clone().val($(this).val())).val('').change();
+			if($(this).val() == "") $(this).remove();
+		}).find("option:first").text($(this).attr("data-remove-text"));
+		if($(this).val() != "") {
+			$(this).before($(this).clone().val($(this).val())).val("").change();
 		}
 	});
 
 	// Trigger equation selector
-	$('.sp-equation-selector select:last').change().siblings().change();
+	$(".sp-equation-selector select:last").change().siblings().change();
 
 	// Order selector
-	$('.sp-order-selector select:first').change(function() {
-		if($(this).val() == '0') {
-			$(this).siblings().prop( 'disabled', true );
+	$(".sp-order-selector select:first").change(function() {
+		if($(this).val() == "0") {
+			$(this).siblings().prop( "disabled", true );
 		} else {
-			$(this).siblings().prop( 'disabled', false )
+			$(this).siblings().prop( "disabled", false )
 		}
 	});
 
 	// Trigger order selector
-	$('.sp-order-selector select:first').change();
+	$(".sp-order-selector select:first").change();
 
 	// Format selector
-	$('.sp-format-selector select:first').change(function() {
+	$(".sp-format-selector select:first").change(function() {
 
-		$precisionselector = $('.sp-precision-selector input:first');
-		$equationselector = $('.sp-equation-selector select');
+		$precisionselector = $(".sp-precision-selector input:first");
+		$equationselector = $(".sp-equation-selector select");
 
 		// Precision settings
-		if($(this).val() == 'decimal' || $(this).val() == 'time') {
-			$precisionselector.prop( 'disabled', false );
+		if($(this).val() == "decimal" || $(this).val() == "time") {
+			$precisionselector.prop( "disabled", false );
 		} else {
-			$precisionselector.prop( 'disabled', true )
+			$precisionselector.prop( "disabled", true )
 		}
 
 		// Equation settings
-		if($(this).val() == 'custom') {
-			$equationselector.prop( 'disabled', true );
+		if($(this).val() == "custom") {
+			$equationselector.prop( "disabled", true );
 		} else {
-			$equationselector.prop( 'disabled', false );
+			$equationselector.prop( "disabled", false );
 		}
 
 	});
 
 	// Trigger format selector
-	$('.sp-format-selector select:first').change();
+	$(".sp-format-selector select:first").change();
 
 	// Status selector
-	$('.sp-status-selector select:first-child').change(function() {
+	$(".sp-status-selector select:first-child").change(function() {
 
 		$subselector = $(this).siblings();
 
 		// Sub settings
-		if($(this).val() == 'sub') {
+		if($(this).val() == "sub") {
 			$subselector.show();
 		} else {
 			$subselector.hide();
@@ -137,9 +137,29 @@ jQuery(document).ready(function($){
 	});
 
 	// Trigger status selector
-	$('.sp-status-selector select:first-child').change();
+	$(".sp-status-selector select:first-child").change();
 
 	// Remove slug editor in quick edit for slug-sensitive post types
-	$('.inline-edit-sp_result, .inline-edit-sp_outcome, .inline-edit-sp_column, .inline-edit-sp_statistic').find('input[name=post_name]').closest('label').remove();
+	$(".inline-edit-sp_result, .inline-edit-sp_outcome, .inline-edit-sp_column, .inline-edit-sp_statistic").find("input[name=post_name]").closest("label").remove();
+
+	// Prevent address input from submitting form
+	$(".sp-address").keypress(function(event) {
+		return event.keyCode != 13;
+	});
+
+	// Location picker
+	$(".sp-location-picker").locationpicker({
+		location: {
+			latitude: Number($(".sp-latitude").val()),
+			longitude: Number($(".sp-longitude").val())
+		},
+		radius: 0,
+		inputBinding: {
+	        latitudeInput: $(".sp-latitude"),
+	        longitudeInput: $(".sp-longitude"),
+	        locationNameInput: $(".sp-address")
+	    },
+	    enableAutocomplete: true
+	});
 
 });
