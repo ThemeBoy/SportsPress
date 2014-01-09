@@ -9,16 +9,17 @@
 .sp-data-table .sorting:after,
 .sp-data-table .sorting_asc:after,
 .sp-data-table .sorting_desc:after {
-	font-family: 'Courier New', Courier, monospace;
+	font-family: dashicons;
 }
 .sp-data-table .sorting:after {
-	content: ' \A0';
+	content: "\f156";
+	color: transparent;
 }
 .sp-data-table .sorting_asc:after {
-	content: ' \25B2';
+	content: "\f142";
 }
 .sp-data-table .sorting_desc:after {
-	content: ' \25BC';
+	content: "\f140";
 }
 .sp-data-table .column-name .logo {
 	vertical-align: middle;
