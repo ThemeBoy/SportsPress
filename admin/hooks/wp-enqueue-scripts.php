@@ -1,7 +1,7 @@
 <?php
 function sportspress_enqueue_scripts() {
 	// Styles
-	wp_register_style( 'sportspress', SPORTSPRESS_PLUGIN_URL . 'assets/css/sportspress.css', array(), time() );
+	wp_register_style( 'sportspress', SPORTSPRESS_PLUGIN_URL . 'assets/css/sportspress.css', array( 'dashicons' ), time() );
 	wp_enqueue_style( 'sportspress');
 
 	// Scripts
