@@ -3,7 +3,7 @@ function sportspress_insert_post_data( $data, $postarr ) {
   
 	if( $data['post_type'] == 'sp_event' && $data['post_title'] == '' ):
 
-			$teams = (array)$postarr['sp_team'];
+			$teams = sportspress_array_value( $postarr, 'sp_team', array() );
 
 			$team_names = array();
 			foreach( $teams as $team ):
