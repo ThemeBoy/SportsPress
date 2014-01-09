@@ -142,6 +142,7 @@ function sportspress_event_edit_columns() {
 		'title' => __( 'Event', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
 		'sp_season' => __( 'Seasons', 'sportspress' ),
+		'sp_venue' => __( 'Venues', 'sportspress' ),
 		'sp_kickoff' => __( 'Kick-off', 'sportspress' )
 	);
 	return $columns;

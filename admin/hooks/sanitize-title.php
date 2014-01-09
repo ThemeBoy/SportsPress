@@ -1,7 +1,11 @@
 <?php
 function sportspress_sanitize_title( $title ) {
+
+	if ( isset( $_POST ) && array_key_exists( 'taxonomy', $_POST ) ):
+
+		return $title;
 	
-	if ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic' ) ) ):
+	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic' ) ) ):
 
 		$key = $_POST['sp_key'];
 
@@ -22,4 +26,4 @@ function sportspress_sanitize_title( $title ) {
 
 	return $title;
 }
-add_filter( 'sanitize_title', 'sportspress_sanitize_title' );
+//add_filter( 'sanitize_title', 'sportspress_sanitize_title' );
