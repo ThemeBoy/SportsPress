@@ -11,7 +11,7 @@ table.widefat.sp-data-table td:first-child {
 }
 table.widefat.sp-data-table input[type="text"],
 table.widefat.sp-data-table input[type="number"] {
-	min-width: 14px;
+	min-width: 1.25em;
 	width: 100%;
 }
 table.widefat.sp-data-table input.name {
@@ -34,4 +34,20 @@ table.widefat td.column-sp_logo {
 #sp_player-adder h4,
 #sp_position-adder h4 {
 	margin: 10px 0;
+}
+
+.form-field .sp-location-picker {
+	width: 95%;
+	height: 320px;
+}
+
+@media only screen and (max-width: 768px) {
+
+	.form-field .sp-location-picker {
+		width: 99%;
+	}
+	.form-field td .sp-location-picker {
+		width: 100%;
+	}
+
 }

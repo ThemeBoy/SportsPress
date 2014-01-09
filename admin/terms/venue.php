@@ -24,7 +24,20 @@ function sportspress_venue_edit_form_fields( $term ) {
 	<tr class="form-field">
 		<th scope="row" valign="top"><label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label></th>
 		<td>
-			<input type="text" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo esc_attr( $term_meta['sp_address'] ) ? esc_attr( $term_meta['sp_address'] ) : ''; ?>">
+			<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo esc_attr( $term_meta['sp_address'] ) ? esc_attr( $term_meta['sp_address'] ) : ''; ?>">
+			<p><div class="sp-location-picker"></div></p>
+		</td>
+	</tr>
+	<tr class="form-field">
+		<th scope="row" valign="top"><label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label></th>
+		<td>
+			<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo esc_attr( $term_meta['sp_latitude'] ) ? esc_attr( $term_meta['sp_latitude'] ) : ''; ?>">
+		</td>
+	</tr>
+	<tr class="form-field">
+		<th scope="row" valign="top"><label for="term_meta[sp_longitude]"><?php _e( 'Longitude', 'sportspress' ); ?></label></th>
+		<td>
+			<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo esc_attr( $term_meta['sp_longitude'] ) ? esc_attr( $term_meta['sp_longitude'] ) : ''; ?>">
 		</td>
 	</tr>
 <?php
@@ -33,10 +46,15 @@ add_action( 'sp_venue_edit_form_fields', 'sportspress_venue_edit_form_fields', 1
 
 	function sportspress_venue_add_form_fields() {
 	?>
+
 	<div class="form-field">
 		<label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label>
-		<input type="text" name="term_meta[sp_address]" id="term_meta[sp_address]" value="">
+		<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="">
+		<input type="hidden" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="40.7324319">
+		<input type="hidden" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="-73.82480799999996">
+		<p><div class="sp-location-picker"></div></p>
 	</div>
+		
 <?php
 }
 add_action( 'sp_venue_add_form_fields', 'sportspress_venue_add_form_fields', 10, 2 );
