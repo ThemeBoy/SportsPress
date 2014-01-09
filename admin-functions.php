@@ -263,12 +263,16 @@ if ( !function_exists( 'sportspress_the_posts' ) ) {
 			foreach ( $ids as $id ):
 				if ( !$id ) continue;
 				$parents = get_post_ancestors( $id );
-				$parents = array_combine( array_keys( $parents ), array_reverse( array_values( $parents ) ) );
-				foreach ( $parents as $parent ):
-					if ( !in_array( $parent, $ids ) )
-						edit_post_link( get_the_title( $parent ), '', '', $parent );
-					echo ' - ';
-				endforeach;
+				$keys = array_keys( $parents );
+				$values = array_reverse( array_values( $parents ) );
+				if ( ! empty( $keys ) && ! empty( $values ) ):
+					$parents = array_combine( $keys, $values );
+					foreach ( $parents as $parent ):
+						if ( !in_array( $parent, $ids ) )
+							edit_post_link( get_the_title( $parent ), '', '', $parent );
+						echo ' - ';
+					endforeach;
+				endif;
 				$title = get_the_title( $id );
 				if ( empty( $title ) )
 					$title = __( '(no title)', 'sportspress' );
