@@ -97,7 +97,6 @@ require_once dirname( __FILE__ ) . '/admin/hooks/sanitize-title.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/the-content.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/wp-insert-post-data.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/plugin-action-links.php';
-require_once dirname( __FILE__ ) . '/admin/hooks/image-size-names-choose.php';
 
 // Register activation hook
 require_once dirname( __FILE__ ) . '/admin/hooks/register-activation-hook.php';
