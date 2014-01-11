@@ -1,9 +1,12 @@
 <?php
 function sportspress_separator_post_init() {
 	$args = array(
+		'label' => '',
 		'public' => false,
 		'show_ui' => true,
 		'show_in_nav_menus' => false,
+		'show_in_admin_bar' => false,
+		'capability_type' => 'sp_private'
 	);
 	register_post_type( 'sp_separator', $args );
 }
