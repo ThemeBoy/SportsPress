@@ -32,6 +32,12 @@ function sportspress_save_post( $post_id ) {
 			// Update staff array
 			sportspress_update_post_meta_recursive( $post_id, 'sp_staff', sportspress_array_value( $_POST, 'sp_staff', array() ) );
 
+			// Update season taxonomy
+			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
+
+			// Update venue taxonomy
+			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_venue', 0 ), 'sp_venue' );
+
 			break;
 
 		case ( 'sp_column' ):

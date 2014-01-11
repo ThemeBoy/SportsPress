@@ -24,16 +24,11 @@ function sportspress_admin_menu( $position ) {
 		$menu[ $position ] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
 	endif;
 
-    // Remove "Add Configuration" link under SportsPress
-    unset( $submenu['edit.php?post_type=sp_config'][10] );
-
-    // Remove "Seasons" link under Events
-    unset( $submenu['edit.php?post_type=sp_event'][15] );
-
-    // Remove "Seasons" link under Players
+    // Remove "Seasons" link from Players submenu
     unset( $submenu['edit.php?post_type=sp_player'][15] );
 
-    // Remove "Seasons" link under Staff
+    // Remove "Seasons" link from Staff submenu
     unset( $submenu['edit.php?post_type=sp_staff'][15] );
+
 }
 add_action( 'admin_menu', 'sportspress_admin_menu' );
