@@ -32,13 +32,49 @@ function sportspress_event_meta_init( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 
 	remove_meta_box( 'submitdiv', 'sp_event', 'side' );
+	remove_meta_box( 'sp_venuediv', 'sp_event', 'side' );
+	
 	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
+	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_event_details_meta', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_event_team_meta', 'sp_event', 'side', 'high' );
 	if ( sizeof( $teams ) > 0 ):
 		add_meta_box( 'sp_playersdiv', __( 'Players', 'sportspress' ), 'sportspress_event_players_meta', 'sp_event', 'normal', 'high' );
 		add_meta_box( 'sp_resultsdiv', __( 'Results', 'sportspress' ), 'sportspress_event_results_meta', 'sp_event', 'normal', 'high' );
 	endif;
 	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sportspress_event_article_meta', 'sp_event', 'normal', 'high' );
+}
+
+function sportspress_event_details_meta( $post ) {
+	$season_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
+	$venue_id = sportspress_get_the_term_id( $post->ID, 'sp_venue', 0 );
+	?>
+	<div>
+		<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
+		<p class="sp-tab-select" data-sp-target="sp_teamdiv">
+			<?php
+			$args = array(
+				'taxonomy' => 'sp_season',
+				'name' => 'sp_season',
+				'selected' => $season_id,
+				'value' => 'term_id',
+			);
+			sportspress_dropdown_taxonomies( $args );
+			?>
+		</p>
+		<p><strong><?php _e( 'Venue', 'sportspress' ); ?></strong></p>
+		<p>
+			<?php
+			$args = array(
+				'taxonomy' => 'sp_venue',
+				'name' => 'sp_venue',
+				'selected' => $venue_id,
+				'value' => 'term_id',
+			);
+			sportspress_dropdown_taxonomies( $args );
+			?>
+		</p>
+	</div>
+	<?php
 }
 
 function sportspress_event_team_meta( $post ) {
