@@ -26,4 +26,4 @@ function sportspress_sanitize_title( $title ) {
 
 	return $title;
 }
-//add_filter( 'sanitize_title', 'sportspress_sanitize_title' );
+add_filter( 'sanitize_title', 'sportspress_sanitize_title' );
