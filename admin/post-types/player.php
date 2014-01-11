@@ -9,7 +9,7 @@ function sportspress_player_post_init() {
 		'labels' => $labels,
 		'public' => true,
 		'hierarchical' => false,
-		'supports' => array( 'title', 'author', 'thumbnail' ),
+		'supports' => array( 'title', 'author', 'thumbnail', 'page-attributes' ),
 		'register_meta_box_cb' => 'sportspress_player_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_player_slug', 'players' ) ),
 		'menu_icon' => 'dashicons-groups',
