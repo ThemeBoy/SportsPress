@@ -3,7 +3,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 	global $post;
 	switch ( $column ):
 		case 'sp_logo':
-			edit_post_link( get_the_post_thumbnail( $post_id, 'sp_icon' ), '', '', $post_id );
+			edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-icon' ), '', '', $post_id );
 			break;
 		case 'sp_position':
 			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '—';
