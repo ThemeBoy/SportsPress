@@ -185,10 +185,11 @@ if ( !function_exists( 'sportspress_dropdown_taxonomies' ) ) {
 			'taxonomy' => null,
 			'name' => null,
 			'selected' => null,
-			'value' => 'slug'
+			'hide_empty' => false,
+			'value' => 'slug',
 		);
 		$args = array_merge( $defaults, $args ); 
-		$terms = get_terms( $args['taxonomy'] );
+		$terms = get_terms( $args['taxonomy'], $args );
 		$name = ( $args['name'] ) ? $args['name'] : $args['taxonomy'];
 		if ( $terms ) {
 			printf( '<select name="%s" class="postform">', $name );
