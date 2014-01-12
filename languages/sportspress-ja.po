@@ -318,7 +318,7 @@ msgstr "ロゴを削除"
 
 #: ../strings.php:31
 #, php-format
-msgid "Kick-off: <b>%1$s</b>"
+msgid "Date/Time: <b>%1$s</b>"
 msgstr "キックオフ: <b>%1$s</b>"
 
 #: ../strings.php:32
@@ -540,7 +540,7 @@ msgid "Venues"
 msgstr ""
 
 #: ../admin/post-types/event.php:182
-msgid "Kick-off"
+msgid "Date/Time"
 msgstr "キックオフ"
 
 #: ../admin/post-types/list.php:3

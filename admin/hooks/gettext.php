@@ -11,9 +11,9 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 		),
 		'sp_event' => array(
 			'Enter title here' => '(no title)',
-			'Scheduled for: <b>%1$s</b>' => 'Kick-off: <b>%1$s</b>',
-			'Published on: <b>%1$s</b>' => 'Kick-off: <b>%1$s</b>',
-			'Publish <b>immediately</b>' => 'Kick-off: <b>%1$s</b>',
+			'Scheduled for: <b>%1$s</b>' => 'Date/Time: <b>%1$s</b>',
+			'Published on: <b>%1$s</b>' => 'Date/Time: <b>%1$s</b>',
+			'Publish <b>immediately</b>' => 'Date/Time: <b>%1$s</b>',
 		),
 		'sp_player' => array(
 			'Enter title here' => 'Name',
