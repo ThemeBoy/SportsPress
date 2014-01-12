@@ -402,6 +402,7 @@ if ( !function_exists( 'sportspress_get_equation_selector' ) ) {
 				case 'outcome':
 					$options[ __( 'Outcomes', 'sportspress' ) ] = sportspress_get_equation_optgroup_array( $postid, 'sp_outcome', array( 'max' => '&uarr;', 'min' => '&darr;' ) );
 					$options[ __( 'Outcomes', 'sportspress' ) ]['$streak'] = __( 'Streak', 'sportspress' );
+					$options[ __( 'Outcomes', 'sportspress' ) ]['$last10'] = __( 'Last 10', 'sportspress' );
 					break;
 				case 'column':
 					$options[ __( 'Columns', 'sportspress' ) ] = sportspress_get_equation_optgroup_array( $postid, 'sp_column' );
@@ -923,9 +924,28 @@ if ( !function_exists( 'sportspress_get_eos_safe_slug' ) ) {
 if ( !function_exists( 'sportspress_solve' ) ) {
 	function sportspress_solve( $equation, $vars ) {
 
-		// Return direct value if streak
-		if ( str_replace( ' ', '', $equation ) == '$streak' )
+		if ( str_replace( ' ', '', $equation ) == '$streak' ):
+
+			// Return direct value
 			return sportspress_array_value( $vars, 'streak', 0 );
+
+		elseif ( str_replace( ' ', '', $equation ) == '$last10' ):
+
+			// Return imploded string
+			$last10 = sportspress_array_value( $vars, 'last10', array( 0 ) );
+			if ( array_sum( $last10 ) > 0 ):
+				return implode( '-', $last10 );
+			else:
+				return '—';
+			endif;
+
+		else:
+
+			// Remove unnecessary variables from vars before calculating
+			unset( $vars['streak'] );
+			unset( $vars['last10'] );
+
+		endif;
 
 		// Clearance to begin calculating remains true if all equation variables are in vars
 		$clearance = true;
@@ -975,12 +995,25 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 		// Initialize streaks counter
 		$streaks = array();
 
+		// Initialize last 10s counter
+		$last10s = array();
+
 		foreach ( $team_ids as $team_id ):
 			if ( ! $team_id )
 				continue;
 
-			$streaks[ $team_id ] = array( 'name' => '', 'count' => 0 );
+			// Initialize team streaks counter
+			$streaks[ $team_id ] = array( 'name' => '', 'count' => 0, 'fire' => 1 );
 
+			// Initialize team last 10 counter
+			$last10s[ $team_id ] = array();
+
+			// Add outcome types to team last 10 counter
+			foreach( $outcome_labels as $key => $value ):
+				$last10s[ $team_id ][ $key ] = 0;
+			endforeach;
+
+			// Initialize team totals
 			$totals[ $team_id ] = array( 'eventsplayed' => 0, 'streak' => 0 );
 
 			foreach ( $result_labels as $key => $value ):
@@ -1028,18 +1061,30 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 				foreach ( $team_result as $key => $value ):
 
 					if ( $key == 'outcome' ):
+
+						// Increment events played and outcome count
 						if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $value, $totals[ $team_id ] ) ):
 							$totals[ $team_id ]['eventsplayed']++;
 							$totals[ $team_id ][ $value ]++;
 						endif;
+
 						if ( $value && $value != '-1' ):
-							if ( $streaks[ $team_id ]['name'] == $value ):
+
+							// Add to streak counter
+							if ( $streaks[ $team_id ]['fire'] && ( $streaks[ $team_id ]['name'] == '' || $streaks[ $team_id ]['name'] == $value ) ):
+								$streaks[ $team_id ]['name'] = $value;
 								$streaks[ $team_id ]['count'] ++;
 							else:
-								$streaks[ $team_id ]['name'] = $value;
-								$streaks[ $team_id ]['count'] = 1;
+								$streaks[ $team_id ]['fire'] = 0;
 							endif;
+
+							// Add to last 10 counter if sum is less than 10
+							if ( array_key_exists( $team_id, $last10s ) && array_key_exists( $value, $last10s[ $team_id ] ) && array_sum( $last10s[ $team_id ] ) < 10 ):
+								$last10s[ $team_id ][ $value ] ++;
+							endif;
+
 						endif;
+
 					else:
 						if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $key . 'for', $totals[ $team_id ] ) ):
 							$totals[ $team_id ][ $key . 'for' ] += $value;
@@ -1053,19 +1098,30 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 		endforeach;
 
 		foreach ( $streaks as $team_id => $streak ):
-		// Compile streaks counter and add to totals
-			$args=array(
-				'name' => $streak['name'],
-				'post_type' => 'sp_outcome',
-				'post_status' => 'publish',
-				'posts_per_page' => 1
-			);
-			$outcomes = get_posts( $args );
+			// Compile streaks counter and add to totals
+			if ( $streak['name'] ):
+				$args = array(
+					'name' => $streak['name'],
+					'post_type' => 'sp_outcome',
+					'post_status' => 'publish',
+					'posts_per_page' => 1
+				);
+				$outcomes = get_posts( $args );
 
-			if ( $outcomes ):
-				$outcome = $outcomes[0];
-				$totals[ $team_id ]['streak'] = $outcome->post_title . $streak['count'];
+				if ( $outcomes ):
+					$outcome = $outcomes[0];
+					$totals[ $team_id ]['streak'] = $outcome->post_title . $streak['count'];
+				else:
+					$totals[ $team_id ]['streak'] = '—';
+				endif;
+			else:
+				$totals[ $team_id ]['streak'] = '—';
 			endif;
+		endforeach;
+
+		foreach ( $last10s as $team_id => $last10 ):
+			// Add last 10 to totals
+			$totals[ $team_id ]['last10'] = $last10;
 		endforeach;
 
 		$args = array(
