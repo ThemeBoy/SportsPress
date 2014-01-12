@@ -28,7 +28,7 @@ __( 'Weight', 'sportspress' );
 // Post context texts
 __( 'Select Logo', 'sportspress' );
 __( 'Remove Logo', 'sportspress' );
-__( 'Kick-off: <b>%1$s</b>', 'sportspress' );
+__( 'Date/Time: <b>%1$s</b>', 'sportspress' );
 __( 'Joined: <b>%1$s</b>', 'sportspress' );
 __( 'Select Photo', 'sportspress' );
 __( 'Remove Photo', 'sportspress' );
