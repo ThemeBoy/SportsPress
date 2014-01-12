@@ -74,7 +74,7 @@ function sportspress_team_columns_meta( $post ) {
 
 	foreach ( $div_ids as $div_id ):
 
-		$totals = array( 'eventsplayed' => 0, 'streak' => 0 );
+		$totals = array( 'eventsplayed' => 0, 'streak' => 0, 'last10' => null );
 
 		foreach ( $result_labels as $key => $value ):
 			$totals[ $key . 'for' ] = 0;
@@ -85,6 +85,18 @@ function sportspress_team_columns_meta( $post ) {
 			$totals[ $key ] = 0;
 		endforeach;
 
+		// Initialize streaks counter
+		$streak = array( 'name' => '', 'count' => 0, 'fire' => 1 );
+
+		// Initialize last 10 counter
+		$last10 = array();
+
+		// Add outcome types to last 10 counter
+		foreach( $outcome_labels as $key => $value ):
+			$last10[ $key ] = 0;
+		endforeach;
+
+		// Get all events involving the team in current season
 		$args = array(
 			'post_type' => 'sp_event',
 			'numberposts' => -1,
@@ -106,27 +118,36 @@ function sportspress_team_columns_meta( $post ) {
 		);
 		$events = get_posts( $args );
 
-		// Initialize streaks counter
-		$streak = array( 'name' => '', 'count' => 0 );
-
 		foreach( $events as $event ):
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			foreach ( $results as $team_id => $team_result ):
 				foreach ( $team_result as $key => $value ):
 					if ( $team_id == $post->ID ):
 						if ( $key == 'outcome' ):
+
+							// Increment events played and outcome count
 							if ( array_key_exists( $value, $totals ) ):
 								$totals['eventsplayed']++;
 								$totals[ $value ]++;
 							endif;
+
 							if ( $value && $value != '-1' ):
-								if ( $streak['name'] == $value ):
+
+								// Add to streak counter
+								if ( $streak['fire'] && ( $streak['name'] == '' || $streak['name'] == $value ) ):
+									$streak['name'] = $value;
 									$streak['count'] ++;
 								else:
-									$streak['name'] = $value;
-									$streak['count'] = 1;
+									$streak['fire'] = 0;
 								endif;
+
+								// Add to last 10 counter if sum is less than 10
+								if ( array_key_exists( $value, $last10 ) && array_sum( $last10 ) < 10 ):
+									$last10[ $value ] ++;
+								endif;
+
 							endif;
+
 						else:
 							if ( array_key_exists( $key . 'for', $totals ) ):
 								$totals[ $key . 'for' ] += $value;
@@ -156,6 +177,9 @@ function sportspress_team_columns_meta( $post ) {
 			$outcome = $outcomes[0];
 			$totals['streak'] = $outcome->post_title . $streak['count'];
 		endif;
+
+		// Add last 10 to totals
+		$totals['last10'] = $last10;
 
 		// Generate array of placeholder values for each league
 		$placeholders[ $div_id ] = array();
