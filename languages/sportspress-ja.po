@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: SportsPress 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-12 04:43+1000\n"
-"PO-Revision-Date: 2014-01-12 04:44+1000\n"
-"Last-Translator: Takumi <takumi@themeboy.com>\n"
+"PO-Revision-Date: 2014-01-13 01:59+1000\n"
+"Last-Translator: ThemeBoy <translate@themeboy.com>\n"
 "Language-Team: ThemeBoy <translate@themeboy.com>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -218,7 +218,7 @@ msgstr "合計"
 
 #: ../functions.php:15 ../functions.php:69
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: ../strings.php:3
 msgid "Association Football (Soccer)"
