@@ -81,6 +81,7 @@ require_once dirname( __FILE__ ) . '/admin/hooks/wp-enqueue-scripts.php';
 // Admin request actions
 require_once dirname( __FILE__ ) . '/admin/hooks/admin-menu.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/admin-enqueue-scripts.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/admin-print-styles.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/admin-head.php';
 
 // Administrative actions
