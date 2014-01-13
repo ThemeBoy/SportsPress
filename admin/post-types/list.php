@@ -85,6 +85,6 @@ function sportspress_list_stats_meta( $post ) {
 
 	list( $columns, $data, $placeholders, $merged ) = sportspress_get_player_list_data( $post->ID, true );
 
-	sportspress_edit_player_table( $columns, $data, $placeholders );
+	sportspress_edit_player_list_table( $columns, $data, $placeholders );
 	sportspress_nonce();
 }
