@@ -2,42 +2,89 @@
 function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 	global $typenow;
 
-	$texts = array(
-		'sp_team' => array(
-			'Enter title here' => 'Team',
-			'Set featured image' => 'Select Logo',
-			'Set Featured Image' => 'Select Logo',
-			'Remove featured image' => 'Remove Logo',
-		),
-		'sp_event' => array(
-			'Enter title here' => '(no title)',
-			'Scheduled for: <b>%1$s</b>' => 'Date/Time: <b>%1$s</b>',
-			'Published on: <b>%1$s</b>' => 'Date/Time: <b>%1$s</b>',
-			'Publish <b>immediately</b>' => 'Date/Time: <b>%1$s</b>',
-		),
-		'sp_player' => array(
-			'Enter title here' => 'Name',
-			'Set featured image' => 'Select Photo',
-			'Set Featured Image' => 'Select Photo',
-			'Remove featured image' => 'Remove Photo',
-			'Scheduled for: <b>%1$s</b>' => 'Joined: <b>%1$s</b>',
-			'Published on: <b>%1$s</b>' => 'Joined: <b>%1$s</b>',
-			'Publish <b>immediately</b>' => 'Joined: <b>%1$s</b>',
-		),
-		'sp_staff' => array(
-			'Enter title here' => 'Name',
-			'Set featured image' => 'Select Photo',
-			'Set Featured Image' => 'Select Photo',
-			'Remove featured image' => 'Remove Photo',
-			'Scheduled for: <b>%1$s</b>' => 'Joined: <b>%1$s</b>',
-			'Published on: <b>%1$s</b>' => 'Joined: <b>%1$s</b>',
-			'Publish <b>immediately</b>' => 'Joined: <b>%1$s</b>',
-		),
-	);
+	if ( is_admin() ):
 
-	if ( is_admin() && array_key_exists( $typenow, $texts ) && array_key_exists( $untranslated_text, $texts[ $typenow ] ) )
-		return __( $texts[ $typenow ][ $untranslated_text ], 'sportspress' );
-	else
-		return $translated_text;
+		switch ( $typenow ):
+		case 'sp_team':
+			switch ( $untranslated_text ):
+			case 'Enter title here':
+				$translated_text = __( 'Team', 'sportspress' );
+				break;
+			case 'Set featured image':
+				$translated_text = sprintf( __( 'Select %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
+				break;
+			case 'Set Featured Image':
+				$translated_text = sprintf( __( 'Select %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
+				break;
+			case 'Remove featured image':
+				$translated_text = sprintf( __( 'Remove %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
+				break;
+			endswitch;
+		case 'sp_event':
+			switch ( $untranslated_text ):
+			case 'Enter title here':
+				$translated_text = __( '(no title)', 'sportspress' );
+				break;
+			case 'Scheduled for: <b>%1$s</b>':
+				$translated_text = __( 'Date/Time: <b>%1$s</b>', 'sportspress' );
+				break;
+			case 'Published on: <b>%1$s</b>':
+				$translated_text = __( 'Date/Time: <b>%1$s</b>', 'sportspress' );
+				break;
+			case 'Publish <b>immediately</b>':
+				$translated_text = __( 'Date/Time: <b>%1$s</b>', 'sportspress' );
+				break;
+			endswitch;
+		case 'sp_player':
+			switch ( $untranslated_text ):
+			case 'Enter title here':
+				$translated_text = __( 'Name', 'sportspress' );
+				break;
+			case 'Set featured image':
+				$translated_text = sprintf( __( 'Select %s', 'sportspress' ), __( 'Photo', 'sportspress' ) );
+				break;
+			case 'Set Featured Image':
+				$translated_text = sprintf( __( 'Select %s', 'sportspress' ), __( 'Photo', 'sportspress' ) );
+				break;
+			case 'Remove featured image':
+				$translated_text = sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) );
+				break;
+			case 'Scheduled for: <b>%1$s</b>':
+				$translated_text = __( 'Joined: <b>%1$s</b>', 'sportspress' );
+				break;
+			case 'Published on: <b>%1$s</b>':
+				$translated_text = __( 'Joined: <b>%1$s</b>', 'sportspress' );
+				break;
+			case 'Publish <b>immediately</b>':
+				$translated_text = __( 'Joined: <b>%1$s</b>', 'sportspress' );
+				break;
+			endswitch;
+		case 'sp_staff':
+			switch ( $untranslated_text ):
+			case 'Enter title here':
+				$translated_text = __( 'Name', 'sportspress' );
+				break;
+			case 'Set featured image':
+				$translated_text = sprintf( __( 'Select %s', 'sportspress' ), __( 'Photo', 'sportspress' ) );
+				break;
+			case 'Set Featured Image':
+				$translated_text = sprintf( __( 'Select %s', 'sportspress' ), __( 'Photo', 'sportspress' ) );
+				break;
+			case 'Remove featured image':
+				$translated_text = sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) );
+				break;
+			case 'Scheduled for: <b>%1$s</b>':
+				$translated_text = __( 'Joined: <b>%1$s</b>', 'sportspress' );
+				break;
+			case 'Published on: <b>%1$s</b>':
+				$translated_text = __( 'Joined: <b>%1$s</b>', 'sportspress' );
+				break;
+			case 'Publish <b>immediately</b>':
+				$translated_text = __( 'Joined: <b>%1$s</b>', 'sportspress' );
+				break;
+			endswitch;
+		endswitch;
+	endif;
+	return $translated_text;
 }
 add_filter( 'gettext', 'sportspress_gettext', 20, 3 );

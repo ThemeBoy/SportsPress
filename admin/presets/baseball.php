@@ -2,7 +2,7 @@
 global $sportspress_sports;
 
 $sportspress_sports['baseball'] = array(
-	'name' => 'Baseball',
+	'name' => __( 'Baseball', 'sportspress' ),
 	'posts' => array(
 		// Columns
 		'sp_column' => array(
