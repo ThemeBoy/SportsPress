@@ -5,8 +5,8 @@ function sportspress_admin_notices_styles() {
 
 	if ( $screen->id != 'settings_page_sportspress' ):
 
-		if ( isset( $_GET['sportspress_installed'] ) ):
-			update_option( 'sportspress_installed', $_GET['sportspress_installed'] );
+		if ( isset( $_REQUEST['sportspress_installed'] ) ):
+			update_option( 'sportspress_installed', $_REQUEST['sportspress_installed'] );
 		endif;
 
 		if ( ! get_option( 'sportspress_installed' ) ):
