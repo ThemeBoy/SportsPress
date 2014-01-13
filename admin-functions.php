@@ -726,7 +726,7 @@ if ( !function_exists( 'sportspress_edit_event_results_table' ) ) {
 }
 
 if ( !function_exists( 'sportspress_event_player_status_selector' ) ) {
-	function sportspress_event_player_status_selector( $team_id, $player_id, $value ) {
+	function sportspress_event_player_status_selector( $team_id, $player_id, $value = null ) {
 
 		if ( ! $team_id || ! $player_id )
 			return '—';
@@ -829,6 +829,27 @@ if ( !function_exists( 'sportspress_event_players_table' ) ) {
 			</table>
 		</div>
 		<?php
+	}
+}
+
+if ( !function_exists( 'sportspress_player_nationality_selector' ) ) {
+	function sportspress_player_nationality_selector( $value = null ) {
+
+		$options = array(
+			'lineup' => __( 'Starting Lineup', 'sportspress' ),
+			'sub' => __( 'Substitute', 'sportspress' ),
+		);
+
+		$output = '<select name="sp_players[' . $team_id . '][' . $player_id . '][status]">';
+
+		foreach( $options as $key => $name ):
+			$output .= '<option value="' . $key . '"' . ( $key == $value ? ' selected' : '' ) . '>' . $name . '</option>';
+		endforeach;
+
+		$output .= '</select>';
+
+		return $output;
+
 	}
 }
 
@@ -1436,6 +1457,27 @@ if ( !function_exists( 'sportspress_get_player_list_data' ) ) {
 			$merged[0] = $labels;
 			return $merged;
 		endif;
+	}
+}
+
+if ( !function_exists( 'sportspress_get_player_metrics_data' ) ) {
+	function sportspress_get_player_metrics_data( $post_id ) {
+
+		$metrics = (array)get_post_meta( $post_id, 'sp_metrics', true );
+
+		// Get labels from metric variables
+		$metric_labels = (array)sportspress_get_var_labels( 'sp_metric' );
+
+		$data = array();
+
+		foreach( $metric_labels as $key => $value ):
+
+			$data[ $value ] = sportspress_array_value( $metrics, $key, '&nbsp;' );
+
+		endforeach;
+
+		return $data;
+		
 	}
 }
 

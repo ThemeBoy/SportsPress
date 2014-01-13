@@ -22,7 +22,7 @@ function sportspress_the_content( $content ) {
         global $post;
 
         // Display player list
-        $content = sportspress_player_statistics( $post->ID ) . $content;
+        $content = sportspress_player_metrics( $post->ID ) . sportspress_player_statistics( $post->ID ) . $content;
 
     endif;
 

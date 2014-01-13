@@ -38,7 +38,7 @@ function sportspress_sport_callback() {
 	?>
 	<select id="sportspress_sport" name="sportspress[sport]">
 		<?php foreach( $sportspress_sports as $slug => $sport ): ?>
-			<option value="<?php echo $slug; ?>" <?php selected( $options['sport'], $slug ); ?>><?php _e( $sport['name'], 'sportspress' ); ?></option>
+			<option value="<?php echo $slug; ?>" <?php selected( $options['sport'], $slug ); ?>><?php echo $sport['name']; ?></option>
 		<?php endforeach; ?>
 	</select>
 	<?php

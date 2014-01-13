@@ -93,6 +93,9 @@ function sportspress_save_post( $post_id ) {
 			// Update player number
 			update_post_meta( $post_id, 'sp_number', sportspress_array_value( $_POST, 'sp_number', '' ) );
 
+			// Update nationality
+			update_post_meta( $post_id, 'sp_nationality', sportspress_array_value( $_POST, 'sp_nationality', '' ) );
+
 			// Update player metrics array
 			update_post_meta( $post_id, 'sp_metrics', sportspress_array_value( $_POST, 'sp_metrics', array() ) );
 
