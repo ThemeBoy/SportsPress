@@ -14,10 +14,10 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 
 		$output .= '<th class="column-number">' . __( '#', 'sportspress' ) . '</th>';
 		foreach( $labels as $key => $label ):
-			$output .= '<th class="column-' . ( $key ? $key : 'name' ) . '">' . $label . '</th>';
+			$output .= '<th class="column-' . $key . '">' . $label . '</th>';
 		endforeach;
 
-		$output .= '</tr>' . '</th>' . '</thead>' . '<tbody>';
+		$output .= '</tr>' . '</thead>' . '<tbody>';
 
 		$i = 1;
 
@@ -68,10 +68,10 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 
 		$output .= '<th class="column-number">' . __( '#', 'sportspress' ) . '</th>';
 		foreach( $labels as $key => $label ):
-			$output .= '<th class="column-' . ( $key ? $key : 'name' ) . '">' . $label . '</th>';
+			$output .= '<th class="column-' . $key . '">' . $label . '</th>';
 		endforeach;
 
-		$output .= '</tr>' . '</th>' . '</thead>' . '<tbody>';
+		$output .= '</tr>' . '</thead>' . '<tbody>';
 
 		$i = 1;
 
@@ -99,6 +99,57 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 		endforeach;
 
 		$output .= '</tbody>' . '</table>';
+
+		return $output;
+
+	}
+}
+
+if ( !function_exists( 'sportspress_player_statistics' ) ) {
+	function sportspress_player_statistics( $id ) {
+
+		$team_ids = (array)get_post_meta( $id, 'sp_team', false );
+
+		// First one is empty
+		unset( $team_ids[0] );
+
+		// Loop through statistics for each team
+		foreach ( $team_ids as $team_id ):
+
+			$data = sportspress_get_player_statistics_data( $id, $team_id );
+
+			// The first row should be column labels
+			$labels = $data[0];
+
+			// Remove the first row to leave us with the actual data
+			unset( $data[0] );
+
+			$output = '<table class="sp-player-statistics sp-data-table">' . '<thead>' . '<tr>';
+
+			foreach( $labels as $key => $label ):
+				$output .= '<th class="column-' . $key . '">' . $label . '</th>';
+			endforeach;
+
+			$output .= '</tr>' . '</thead>' . '<tbody>';
+
+			$i = 1;
+
+			foreach( $data as $season_id => $row ):
+
+				$output .= '<tr>';
+
+				foreach( $labels as $key => $value ):
+					$output .= '<td class="column-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
+				endforeach;
+
+				$output .= '</tr>';
+
+			endforeach;
+
+			$output .= '</tbody>' . '</table>';
+
+
+		endforeach;
 
 		return $output;
 
