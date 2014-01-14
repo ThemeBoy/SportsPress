@@ -25,8 +25,9 @@ function sportspress_list_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Title' ),
 		'sp_player' => __( 'Players', 'sportspress' ),
-		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_season' => __( 'Seasons', 'sportspress' )
+		'sp_league' => __( 'League', 'sportspress' ),
+		'sp_season' => __( 'Season', 'sportspress' ),
+		'sp_team' => __( 'Team', 'sportspress' ),
 	);
 	return $columns;
 }
@@ -44,10 +45,23 @@ function sportspress_list_meta_init( $post ) {
 }
 
 function sportspress_list_player_meta( $post ) {
+	$league_id = sportspress_get_the_term_id( $post->ID, 'sp_league', 0 );
 	$season_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
 	$team_id = get_post_meta( $post->ID, 'sp_team', true );
 	?>
 	<div>
+		<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
+		<p>
+			<?php
+			$args = array(
+				'taxonomy' => 'sp_league',
+				'name' => 'sp_league',
+				'selected' => $league_id,
+				'value' => 'term_id'
+			);
+			sportspress_dropdown_taxonomies( $args );
+			?>
+		</p>
 		<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
 		<p class="sp-tab-select">
 			<?php
