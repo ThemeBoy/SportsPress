@@ -9,7 +9,7 @@ function sportspress_table_post_init() {
 		'labels' => $labels,
 		'public' => true,
 		'hierarchical' => false,
-		'supports' => array( 'title', 'author', 'excerpt' ),
+		'supports' => array( 'title', 'author', 'thumbnail', 'excerpt' ),
 		'register_meta_box_cb' => 'sportspress_table_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_table_slug', 'tables' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_team',
