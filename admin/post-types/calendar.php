@@ -9,7 +9,7 @@ function sportspress_calendar_post_init() {
 		'labels' => $labels,
 		'public' => true,
 		'hierarchical' => false,
-		'supports' => array( 'title', 'author', 'excerpt' ),
+		'supports' => array( 'title', 'author', 'thumbnail', 'excerpt' ),
 		'register_meta_box_cb' => 'sportspress_calendar_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_calendar_slug', 'calendars' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_event',
@@ -32,44 +32,18 @@ function sportspress_calendar_edit_columns() {
 add_filter( 'manage_edit-sp_calendar_columns', 'sportspress_calendar_edit_columns' );
 
 function sportspress_calendar_meta_init( $post ) {
-	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
+	$seasons = get_the_terms( $post->ID, 'sp_season' );
+	$venues = get_the_terms( $post->ID, 'sp_venue' );
 
-	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_calendar_team_meta', 'sp_calendar', 'side', 'high' );
-
-	if ( $teams && $teams != array(0) ):
-		add_meta_box( 'sp_columnsdiv', __( 'League Table', 'sportspress' ), 'sportspress_calendar_columns_meta', 'sp_calendar', 'normal', 'high' );
-	endif;
+	add_meta_box( 'sp_eventsdiv', __( 'Events', 'sportspress' ), 'sportspress_calendar_events_meta', 'sp_calendar', 'normal', 'high' );
 }
 
-function sportspress_calendar_team_meta( $post, $test ) {
-	$league_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
-	?>
-	<div>
-		<p class="sp-tab-select">
-			<?php
-			$args = array(
-				'taxonomy' => 'sp_season',
-				'name' => 'sp_season',
-				'selected' => $league_id,
-				'value' => 'term_id'
-			);
-			sportspress_dropdown_taxonomies( $args );
-			?>
-		</p>
-		<?php
-		sportspress_post_checklist( $post->ID, 'sp_team', 'block', 'sp_season' );
-		sportspress_post_adder( 'sp_team' );
-		?>
-	</div>
-	<?php
-	sportspress_nonce();
-}
+function sportspress_calendar_events_meta( $post ) {
+	$seasons = get_the_terms( $post->ID, 'sp_season' );
 
-function sportspress_calendar_columns_meta( $post ) {
+	$data = sportspress_get_calendar_data( $post->ID, true );
 
-//	list( $columns, $data, $placeholders, $merged ) = sportspress_get_league_calendar_data( $post->ID, true );
-
-//	sportspress_edit_league_calendar( $columns, $data, $placeholders );
+	sportspress_edit_calendar_table( $data );
 
 	sportspress_nonce();
 }
