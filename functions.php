@@ -1,4 +1,153 @@
 <?php
+if ( !function_exists( 'sportspress_event_details' ) ) {
+	function sportspress_event_details( $id ) {
+
+		$teams = (array)get_post_meta( $id, 'sp_team', false );
+		$staff = (array)get_post_meta( $id, 'sp_staff', false );
+		$stats = (array)get_post_meta( $id, 'sp_players', true );
+		$results = sportspress_array_combine( $teams, (array)get_post_meta( $id, 'sp_results', true ) );
+		$statistic_labels = sportspress_get_var_labels( 'sp_statistic' );
+		$result_labels = sportspress_get_var_labels( 'sp_result' );
+
+		$output = '';
+
+		foreach( $teams as $key => $team_id ):
+			if ( ! $team_id ) continue;
+
+			// Get results for players in the team
+			$players = sportspress_array_between( (array)get_post_meta( $id, 'sp_player', false ), 0, $key );
+			$data = sportspress_array_combine( $players, sportspress_array_value( $stats, $team_id, array() ) );
+
+			$output .= '<h3>' . get_the_title( $team_id ) . '</h3>';
+
+			$output .= '<table class="sp-event-statistics sp-data-table">' . '<thead>' . '<tr>';
+
+			$output .= '<th class="column-number">' . __( '#', 'sportspress' ) . '</th>';
+			$output .= '<th class="column-number">' . __( 'Player', 'sportspress' ) . '</th>';
+
+			foreach( $statistic_labels as $key => $label ):
+				$output .= '<th class="column-' . $key . '">' . $label . '</th>';
+			endforeach;
+
+			$output .= '</tr>' . '</thead>' . '<tbody>';
+
+			$i = 0;
+
+			foreach( $data as $player_id => $row ):
+
+				if ( ! $player_id )
+					continue;
+
+				$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
+
+				$number = get_post_meta( $player_id, 'sp_number', true );
+
+				// Player number
+				$output .= '<td class="column-number">' . $number . '</td>';
+
+				// Name as link
+				$permalink = get_post_permalink( $player_id );
+				$name = get_the_title( $player_id );
+				$output .= '<td class="column-name">' . '<a href="' . $permalink . '">' . $name . '</a></td>';
+
+				foreach( $statistic_labels as $key => $label ):
+					if ( $key == 'name' )
+						continue;
+					if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
+						$value = $row[ $key ];
+					else:
+						$value = 0;
+					endif;
+					$output .= '<td class="column-' . $key . '">' . $value . '</td>';
+				endforeach;
+
+				$output .= '</tr>';
+
+				$i++;
+
+			endforeach;
+
+			$output .= '</tbody>';
+
+			if ( array_key_exists( 0, $data ) ):
+
+				$output .= '</tfoot><tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
+
+				$number = get_post_meta( $player_id, 'sp_number', true );
+
+				// Player number
+				$output .= '<th class="column-number">&nbsp;</th>';
+				$output .= '<th class="column-name">' . __( 'Total', 'sportspress' ) . '</th>';
+
+				$row = $data[0];
+
+				foreach( $statistic_labels as $key => $label ):
+					if ( $key == 'name' ):
+						continue;
+					endif;
+					$output .= '<th class="column-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</th>';
+				endforeach;
+
+				$output .= '</tr></tfoot>';
+
+			endif;
+
+			$output .= '</table>';
+
+		endforeach;
+
+		// Initialize and check
+		$table_rows = '';
+
+		$i = 0;
+
+		foreach( $results as $team_id => $result ):
+			if ( sportspress_array_value( $result, 'outcome', '-1' ) != '-1' ):
+
+				unset( $result['outcome'] );
+
+				$table_rows .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
+
+				$table_rows .= '<td class="column_name">' . get_the_title( $team_id ) . '</td>';
+
+				foreach( $result_labels as $key => $label ):
+					if ( $key == 'name' )
+						continue;
+					if ( array_key_exists( $key, $result ) && $result[ $key ] != '' ):
+						$value = $result[ $key ];
+					else:
+						$value = '—';
+					endif;
+					$table_rows .= '<td class="column-' . $key . '">' . $value . '</td>';
+				endforeach;
+
+				$table_rows .= '</tr>';
+
+				$i++;
+
+			endif;
+		endforeach;
+
+		if ( ! empty( $table_rows ) ):
+
+			$output .= '<h3>' . __( 'Results', 'sportspress' ) . '</h3>';
+
+			$output .= '<table class="sp-event-results sp-data-table"><thead>';
+			$output .= '<th class="column-name">' . __( 'Team', 'sportspress' ) . '</th>';
+			foreach( $result_labels as $key => $label ):
+				$output .= '<th class="column-' . $key . '">' . $label . '</th>';
+			endforeach;
+			$output .= '</tr>' . '</thead>' . '<tbody>';
+			$output .= $table_rows;
+			$output .= '</tbody></table>';
+
+		endif;
+
+		return $output;
+
+	}
+}
+
 if ( !function_exists( 'sportspress_league_table' ) ) {
 	function sportspress_league_table( $id ) {
 
@@ -23,7 +172,7 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 
 		foreach( $data as $team_id => $row ):
 
-			$output .= '<tr class="' . ( $i % 2 == 1 ? 'odd' : 'even' ) . '">';
+			$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 			// Position as number
 			$output .= '<td class="column-number">' . $i . '</td>';
@@ -47,6 +196,62 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 		endforeach;
 
 		$output .= '</tbody>' . '</table>';
+
+		return $output;
+
+	}
+}
+
+
+if ( !function_exists( 'sportspress_team_columns' ) ) {
+	function sportspress_team_columns( $id ) {
+
+		$leagues = get_the_terms( $id, 'sp_league' );
+
+		$output = '';
+
+		// Loop through data for each league
+		foreach ( $leagues as $league ):
+
+			if ( sizeof( $leagues ) > 1 )
+				$output .= '<h4 class="sp-team-league-name">' . $league->name . '</h4>';
+
+			$data = sportspress_get_team_columns_data( $id, $league->term_id );
+
+			// The first row should be column labels
+			$labels = $data[0];
+
+			// Remove the first row to leave us with the actual data
+			unset( $data[0] );
+
+			$output .= '<table class="sp-team-columns sp-data-table">' . '<thead>' . '<tr>';
+
+			foreach( $labels as $key => $label ):
+				$output .= '<th class="column-' . $key . '">' . $label . '</th>';
+			endforeach;
+
+			$output .= '</tr>' . '</thead>' . '<tbody>';
+
+			$i = 0;
+
+			foreach( $data as $season_id => $row ):
+
+				$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
+
+				foreach( $labels as $key => $value ):
+					$output .= '<td class="column-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
+				endforeach;
+
+				$output .= '</tr>';
+
+				$i++;
+
+			endforeach;
+
+			$output .= '</tbody>' . '</table>';
+
+
+		endforeach;
 
 		return $output;
 
@@ -77,7 +282,7 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 
 		foreach( $data as $player_id => $row ):
 
-			$output .= '<tr class="' . ( $i % 2 == 1 ? 'odd' : 'even' ) . '">';
+			$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 			// Player number
 			$number = get_post_meta( $player_id, 'sp_number', true );
@@ -131,7 +336,7 @@ if ( !function_exists( 'sportspress_player_metrics' ) ) {
 
 		foreach( $data as $label => $value ):
 
-			$output .= '<tr class="' . ( $i % 2 == 1 ? 'odd' : 'even' ) . '"><th>' . $label . '</th><td>' . $value . '</td></tr>';
+			$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '"><th>' . $label . '</th><td>' . $value . '</td></tr>';
 
 			$i++;
 
@@ -148,20 +353,17 @@ if ( !function_exists( 'sportspress_player_metrics' ) ) {
 if ( !function_exists( 'sportspress_player_statistics' ) ) {
 	function sportspress_player_statistics( $id ) {
 
-		$team_ids = (array)get_post_meta( $id, 'sp_team', false );
-
-		// First one is empty
-		unset( $team_ids[0] );
+		$leagues = get_the_terms( $id, 'sp_league' );
 
 		$output = '';
 
-		// Loop through statistics for each team
-		foreach ( $team_ids as $team_id ):
+		// Loop through statistics for each league
+		foreach ( $leagues as $league ):
 
-			if ( sizeof( $team_ids ) > 1 )
-				$output .= '<h4 class="sp-player-team-name">' . get_the_title( $team_id ) . '</h4>';
+			if ( sizeof( $leagues ) > 1 )
+				$output .= '<h4 class="sp-player-league-name">' . $league->name . '</h4>';
 
-			$data = sportspress_get_player_statistics_data( $id, $team_id );
+			$data = sportspress_get_player_statistics_data( $id, $league->term_id );
 
 			// The first row should be column labels
 			$labels = $data[0];
@@ -181,7 +383,7 @@ if ( !function_exists( 'sportspress_player_statistics' ) ) {
 
 			foreach( $data as $season_id => $row ):
 
-				$output .= '<tr class="' . ( $i % 2 == 1 ? 'odd' : 'even' ) . '">';
+				$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 				foreach( $labels as $key => $value ):
 					$output .= '<td class="column-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';

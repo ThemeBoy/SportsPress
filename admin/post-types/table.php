@@ -24,8 +24,9 @@ function sportspress_table_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Title' ),
+		'sp_league' => __( 'League', 'sportspress' ),
+		'sp_season' => __( 'Season', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_season' => __( 'Seasons', 'sportspress' ),
 	);
 	return $columns;
 }
@@ -43,20 +44,35 @@ function sportspress_table_meta_init( $post ) {
 }
 
 function sportspress_table_team_meta( $post, $test ) {
-	$league_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
+	$league_id = sportspress_get_the_term_id( $post->ID, 'sp_league', 0 );
+	$season_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
 	?>
 	<div>
-		<p class="sp-tab-select">
+		<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
+		<p>
 			<?php
 			$args = array(
-				'taxonomy' => 'sp_season',
-				'name' => 'sp_season',
+				'taxonomy' => 'sp_league',
+				'name' => 'sp_league',
 				'selected' => $league_id,
 				'value' => 'term_id'
 			);
 			sportspress_dropdown_taxonomies( $args );
 			?>
 		</p>
+		<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
+		<p class="sp-tab-select">
+			<?php
+			$args = array(
+				'taxonomy' => 'sp_season',
+				'name' => 'sp_season',
+				'selected' => $season_id,
+				'value' => 'term_id'
+			);
+			sportspress_dropdown_taxonomies( $args );
+			?>
+		</p>
+		<p><strong><?php _e( 'Teams', 'sportspress' ); ?></strong></p>
 		<?php
 		sportspress_post_checklist( $post->ID, 'sp_team', 'block', 'sp_season' );
 		sportspress_post_adder( 'sp_team' );

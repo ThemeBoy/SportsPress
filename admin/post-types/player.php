@@ -25,6 +25,7 @@ function sportspress_player_edit_columns() {
 		'title' => __( 'Name', 'sportspress' ),
 		'sp_position' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
+		'sp_league' => __( 'Leagues', 'sportspress' ),
 		'sp_season' => __( 'Seasons', 'sportspress' ),
 	);
 	return $columns;
@@ -32,11 +33,8 @@ function sportspress_player_edit_columns() {
 add_filter( 'manage_edit-sp_player_columns', 'sportspress_player_edit_columns' );
 
 function sportspress_player_meta_init( $post ) {
-	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
+	$leagues = get_the_terms( $post->ID, 'sp_league' );
 	$seasons = (array)get_the_terms( $post->ID, 'sp_season' );
-
-	// First one is empty
-	unset( $teams[0] );
 
 	remove_meta_box( 'submitdiv', 'sp_player', 'side' );
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_player', 'side', 'high' );
@@ -45,7 +43,7 @@ function sportspress_player_meta_init( $post ) {
 	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_player_details_meta', 'sp_player', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_player_team_meta', 'sp_player', 'side', 'high' );
 
-	if ( $teams && ! empty( $teams ) && $seasons && is_array( $seasons ) && is_object( $seasons[0] ) ):
+	if ( $leagues && ! empty( $leagues ) && $seasons && is_array( $seasons ) && is_object( $seasons[0] ) ):
 		add_meta_box( 'sp_statsdiv', __( 'Player Statistics', 'sportspress' ), 'sportspress_player_stats_meta', 'sp_player', 'normal', 'high' );
 	endif;
 
@@ -98,28 +96,22 @@ function sportspress_player_team_meta( $post ) {
 }
 
 function sportspress_player_stats_meta( $post ) {
-	$team_ids = (array)get_post_meta( $post->ID, 'sp_team', false );
+	$leagues = get_the_terms( $post->ID, 'sp_league' );
 
-	// First one is empty
-	unset( $team_ids[0] );
+	$league_num = sizeof( $leagues );
 
-	// Initialize placeholders array
-	$placeholders = array();
-
-	$team_num = sizeof( $team_ids );
-
-	// Loop through statistics for each team
-	foreach ( $team_ids as $team_id ):
+	// Loop through statistics for each league
+	foreach ( $leagues as $league ):
 		
-		if ( $team_num > 1 ):
+		if ( $league_num > 1 ):
 			?>
-			<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
+			<p><strong><?php echo $league->name; ?></strong></p>
 			<?php
 		endif;
 
-		list( $columns, $data, $placeholders, $merged ) = sportspress_get_player_statistics_data( $post->ID, $team_id, true );
+		list( $columns, $data, $placeholders, $merged ) = sportspress_get_player_statistics_data( $post->ID, $league->term_id, true );
 
-		sportspress_edit_player_statistics_table( $team_id, $columns, $data, $placeholders );
+		sportspress_edit_player_statistics_table( $league->term_id, $columns, $data, $placeholders );
 
 	endforeach;
 }

@@ -24,11 +24,17 @@ function sportspress_admin_menu( $position ) {
 		$menu[ $position ] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
 	endif;
 
-    // Remove "Seasons" link from Players submenu
+    // Remove "Leagues" link from Players submenu
     unset( $submenu['edit.php?post_type=sp_player'][15] );
 
-    // Remove "Seasons" link from Staff submenu
+    // Remove "Seasons" link from Players submenu
+    unset( $submenu['edit.php?post_type=sp_player'][16] );
+
+    // Remove "Leagues" link from Staff submenu
     unset( $submenu['edit.php?post_type=sp_staff'][15] );
+
+    // Remove "Seasons" link from Staff submenu
+    unset( $submenu['edit.php?post_type=sp_staff'][16] );
 
 }
 add_action( 'admin_menu', 'sportspress_admin_menu' );

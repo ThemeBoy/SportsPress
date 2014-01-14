@@ -69,6 +69,9 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_event':
 			echo get_post_meta ( $post_id, 'sp_event' ) ? sizeof( get_post_meta ( $post_id, 'sp_event' ) ) : '—';
 			break;
+		case 'sp_league':
+			echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '—';
+			break;
 		case 'sp_season':
 			echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '—';
 			break;

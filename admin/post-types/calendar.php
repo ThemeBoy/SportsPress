@@ -24,8 +24,9 @@ function sportspress_calendar_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Title' ),
-		'sp_team' => __( 'Teams', 'sportspress' ),
+		'sp_league' => __( 'Leagues', 'sportspress' ),
 		'sp_season' => __( 'Seasons', 'sportspress' ),
+		'sp_venue' => __( 'Venues', 'sportspress' ),
 	);
 	return $columns;
 }

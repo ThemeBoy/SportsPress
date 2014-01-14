@@ -45,18 +45,33 @@ function sportspress_event_meta_init( $post ) {
 }
 
 function sportspress_event_details_meta( $post ) {
+	$league_id = sportspress_get_the_term_id( $post->ID, 'sp_league', 0 );
 	$season_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
 	$venue_id = sportspress_get_the_term_id( $post->ID, 'sp_venue', 0 );
 	?>
 	<div>
+		<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
+		<p>
+			<?php
+			$args = array(
+				'taxonomy' => 'sp_league',
+				'name' => 'sp_league',
+				'selected' => $league_id,
+				'value' => 'term_id',
+				'show_option_none' => __( '-- Not set --', 'sportspress' ),
+			);
+			sportspress_dropdown_taxonomies( $args );
+			?>
+		</p>
 		<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
-		<p class="sp-tab-select" data-sp-target="sp_teamdiv">
+		<p>
 			<?php
 			$args = array(
 				'taxonomy' => 'sp_season',
 				'name' => 'sp_season',
 				'selected' => $season_id,
 				'value' => 'term_id',
+				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
 			sportspress_dropdown_taxonomies( $args );
 			?>
@@ -69,6 +84,7 @@ function sportspress_event_details_meta( $post ) {
 				'name' => 'sp_venue',
 				'selected' => $venue_id,
 				'value' => 'term_id',
+				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
 			sportspress_dropdown_taxonomies( $args );
 			?>
@@ -79,7 +95,6 @@ function sportspress_event_details_meta( $post ) {
 
 function sportspress_event_team_meta( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
-	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
 	foreach ( $teams as $key => $value ):
 	?>
 		<div class="sp-clone">
@@ -177,8 +192,9 @@ function sportspress_event_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Event', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_season' => __( 'Seasons', 'sportspress' ),
-		'sp_venue' => __( 'Venues', 'sportspress' ),
+		'sp_league' => __( 'League', 'sportspress' ),
+		'sp_season' => __( 'Season', 'sportspress' ),
+		'sp_venue' => __( 'Venue', 'sportspress' ),
 		'sp_kickoff' => __( 'Date/Time', 'sportspress' )
 	);
 	return $columns;
