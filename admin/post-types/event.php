@@ -9,7 +9,7 @@ function sportspress_event_post_init() {
 		'labels' => $labels,
 		'public' => true,
 		'hierarchical' => false,
-		'supports' => array( 'title', 'author', 'comments' ),
+		'supports' => array( 'title', 'author', 'thumbnail', 'comments' ),
 		'register_meta_box_cb' => 'sportspress_event_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_event_slug', 'events' ) ),
 		'menu_icon' => 'dashicons-calendar',
