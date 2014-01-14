@@ -63,8 +63,8 @@ if ( !function_exists( 'sportspress_get_post_labels' ) ) {
 			'new_item' => sprintf( __( 'New %s', 'sportspress' ), $singular_name ),
 			'view_item' => sprintf( __( 'View %s', 'sportspress' ), $singular_name ),
 			'search_items' => sprintf( __( 'Search %s', 'sportspress' ), $name ),
-			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), $lowercase_name ),
-			'not_found_in_trash' => sprintf( __( 'No %s found in trash', 'sportspress' ), $lowercase_name ),
+			'not_found' => sprintf( __( 'No %s found.', 'sportspress' ), $lowercase_name ),
+			'not_found_in_trash' => sprintf( __( 'No %s found in trash.', 'sportspress' ), $lowercase_name ),
 			'parent_item_colon' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ) . ':'
 		);
 		return $labels;
@@ -86,7 +86,7 @@ if ( !function_exists( 'sportspress_get_term_labels' ) ) {
 			'parent_item' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ),
 			'parent_item_colon' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ) . ':',
 			'search_items' =>  sprintf( __( 'Search %s', 'sportspress' ), $name ),
-			'not_found' => sprintf( __( 'No %s found', 'sportspress' ), $lowercase_name )
+			'not_found' => sprintf( __( 'No %s found.', 'sportspress' ), $lowercase_name )
 		);
 		return $labels;
 	}
@@ -490,6 +490,49 @@ if ( !function_exists( 'sportspress_get_var_equations' ) ) {
 		endforeach;
 
 		return $output;
+	}
+}
+
+if ( !function_exists( 'sportspress_edit_calendar_table' ) ) {
+	function sportspress_edit_calendar_table( $data = array() ) {
+		if ( empty( $data ) ):
+			printf( __( 'No %s found.', 'sportspress' ), __( 'events', 'sportspress' ) );
+			return false;
+		endif;
+		?>
+		<div class="sp-data-table-container">
+			<table class="widefat sp-data-table">
+				<thead>
+					<tr>
+						<th><?php _e( 'Event', 'sportspress' ); ?></th>
+						<th><?php _e( 'Date', 'sportspress' ); ?></th>
+						<th><?php _e( 'Time', 'sportspress' ); ?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					$i = 0;
+					foreach ( $data as $event ):
+						?>
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+							<td>
+								<?php echo $event->post_title; ?>
+							</td>
+							<td>
+								<?php echo mysql2date( get_option('date_format'), $event->post_date ); ?>
+							</td>
+							<td>
+								<?php echo mysql2date( get_option('time_format'), $event->post_date ); ?>
+							</td>
+						</tr>
+						<?php
+						$i++;
+					endforeach;
+					?>
+				</tbody>
+			</table>
+		</div>
+		<?php
 	}
 }
 
@@ -984,6 +1027,50 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 
 	}
 
+}
+
+if ( !function_exists( 'sportspress_get_calendar_data' ) ) {
+	function sportspress_get_calendar_data( $post_id ) {
+		$seasons = get_the_terms( $post_id, 'sp_season' );
+		$venues = get_the_terms( $post_id, 'sp_venue' );
+
+		if ( ! $seasons || ! $venues )
+			return array();
+
+		$season_ids = array();
+		foreach( $seasons as $season ):
+			$season_ids[] = $season->term_id;
+		endforeach;
+
+		$venue_ids = array();
+		foreach( $venues as $venue ):
+			$venue_ids[] = $venue->term_id;
+		endforeach;
+
+		$args = array(
+			'post_type' => 'sp_event',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'orderby' => 'post_date',
+			'order' => 'ASC',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'sp_season',
+					'field' => 'id',
+					'terms' => $season_ids
+				),
+				array(
+					'taxonomy' => 'sp_venue',
+					'field' => 'id',
+					'terms' => $venue_ids
+				),
+			),
+		);
+		$events = get_posts( $args );
+
+		return $events;
+
+	}
 }
 
 if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
