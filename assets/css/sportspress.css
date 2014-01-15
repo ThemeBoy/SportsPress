@@ -34,3 +34,8 @@
 	height: 2em;
 	width: auto;
 }
+
+/* Google Maps */
+.sp-google-map {
+	height: 320px;
+}

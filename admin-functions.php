@@ -526,10 +526,10 @@ if ( !function_exists( 'sportspress_edit_calendar_table' ) ) {
 								<?php echo $event->post_title; ?>
 							</td>
 							<td>
-								<?php echo mysql2date( get_option('date_format'), $event->post_date ); ?>
+								<?php echo get_the_time( get_option('date_format'), $event->ID ); ?>
 							</td>
 							<td>
-								<?php echo mysql2date( get_option('time_format'), $event->post_date ); ?>
+								<?php echo get_the_time( get_option('time_format'), $event->ID ); ?>
 							</td>
 						</tr>
 						<?php
@@ -834,13 +834,14 @@ if ( !function_exists( 'sportspress_event_player_sub_selector' ) ) {
 	}
 }
 
-if ( !function_exists( 'sportspress_event_players_table' ) ) {
-	function sportspress_event_players_table( $columns = array(), $data = array(), $team_id ) {
+if ( !function_exists( 'sportspress_edit_event_players_table' ) ) {
+	function sportspress_edit_event_players_table( $columns = array(), $data = array(), $team_id ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
 				<thead>
 					<tr>
+						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $label ): ?>
 							<th><?php echo $label; ?></th>
@@ -856,9 +857,8 @@ if ( !function_exists( 'sportspress_event_players_table' ) ) {
 						$number = get_post_meta( $player_id, 'sp_number', true );
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-							<td>
-								<?php echo ( $number ? $number . '. ' : '' ) . get_the_title( $player_id ); ?>
-							</td>
+							<td><?php echo ( $number ? $number : '&nbsp;' ); ?></td>
+							<td><?php echo get_the_title( $player_id ); ?></td>
 							<?php foreach( $columns as $column => $label ):
 								$value = sportspress_array_value( $player_statistics, $column, '' );
 								?>

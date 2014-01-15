@@ -38,8 +38,8 @@ function sportspress_event_meta_init( $post ) {
 	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_event_details_meta', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_event_team_meta', 'sp_event', 'side', 'high' );
 	if ( sizeof( $teams ) > 0 ):
-		add_meta_box( 'sp_playersdiv', __( 'Players', 'sportspress' ), 'sportspress_event_players_meta', 'sp_event', 'normal', 'high' );
 		add_meta_box( 'sp_resultsdiv', __( 'Results', 'sportspress' ), 'sportspress_event_results_meta', 'sp_event', 'normal', 'high' );
+		add_meta_box( 'sp_playersdiv', __( 'Players', 'sportspress' ), 'sportspress_event_players_meta', 'sp_event', 'normal', 'high' );
 	endif;
 	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sportspress_event_article_meta', 'sp_event', 'normal', 'high' );
 }
@@ -157,7 +157,7 @@ function sportspress_event_players_meta( $post ) {
 		?>
 		<div>
 			<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-			<?php sportspress_event_players_table( $columns, $data, $team_id ); ?>
+			<?php sportspress_edit_event_players_table( $columns, $data, $team_id ); ?>
 		</div>
 		<?php
 
