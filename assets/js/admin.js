@@ -72,6 +72,27 @@ jQuery(document).ready(function($){
 		});
 	}
 
+	// Select all checkboxes
+	$(".sp-data-table thead .sp-select-all").change(function() {
+		$table = $(this).closest(".sp-data-table");
+		$table.find("tbody input[type=checkbox]").prop("checked", $(this).prop("checked"));
+	});
+
+	// Check if all checkboxes are checked already
+	$(".sp-data-table").on("checkCheck", function() {
+		$(this).each(function() {
+			$(this).find("thead .sp-select-all").prop("checked", $(this).find("tbody input[type=checkbox]:checked").length == $(this).find("tbody input[type=checkbox]").length);
+		});
+	});
+
+	// Activate check check when a checkbox is checked
+	$(".sp-data-table tbody input[type=checkbox]").change(function() {
+		$(this).closest(".sp-data-table").trigger("checkCheck");
+	});
+
+	// Trigger check check
+	$(".sp-data-table").trigger("checkCheck");
+
 	// Equation selector
 	$(".sp-equation-selector select:last").change(function() {
 		$(this).siblings().change(function() {

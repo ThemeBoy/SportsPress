@@ -213,10 +213,13 @@ if ( !function_exists( 'sportspress_team_columns' ) ) {
 		// Loop through data for each league
 		foreach ( $leagues as $league ):
 
+			$data = sportspress_get_team_columns_data( $id, $league->term_id );
+
+			if ( sizeof( $data ) <= 1 )
+				continue;
+
 			if ( sizeof( $leagues ) > 1 )
 				$output .= '<h4 class="sp-team-league-name">' . $league->name . '</h4>';
-
-			$data = sportspress_get_team_columns_data( $id, $league->term_id );
 
 			// The first row should be column labels
 			$labels = $data[0];
