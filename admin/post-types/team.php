@@ -52,6 +52,8 @@ function sportspress_team_columns_meta( $post ) {
 
 	// Loop through statistics for each league
 	foreach ( $leagues as $league ):
+
+		$league_id = $league->term_id;
 		
 		if ( $league_num > 1 ):
 			?>
@@ -59,9 +61,9 @@ function sportspress_team_columns_meta( $post ) {
 			<?php
 		endif;
 
-		list( $columns, $data, $placeholders, $merged ) = sportspress_get_team_columns_data( $post->ID, $league->term_id, true );
+		list( $columns, $data, $data, $leagues_seasons ) = sportspress_get_team_columns_data( $post->ID, $league_id, true );
 
-		sportspress_edit_team_columns_table( $columns, $data, $placeholders );
+		sportspress_edit_team_columns_table( $league_id, $columns, $data, $leagues_seasons );
 
 	endforeach;
 

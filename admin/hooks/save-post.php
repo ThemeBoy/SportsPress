@@ -7,8 +7,8 @@ function sportspress_save_post( $post_id ) {
 	switch ( $_POST['post_type'] ):
 		case ( 'sp_team' ):
 
-			// Update columns
-			update_post_meta( $post_id, 'sp_columns', sportspress_array_value( $_POST, 'sp_columns', array() ) );
+			// Update leagues seasons to show
+			update_post_meta( $post_id, 'sp_leagues_seasons', sportspress_array_value( $_POST, 'sp_leagues_seasons', array() ) );
 
 			break;
 
@@ -86,9 +86,6 @@ function sportspress_save_post( $post_id ) {
 			break;
 
 		case ( 'sp_player' ):
-
-			// Update player statistics
-			update_post_meta( $post_id, 'sp_statistics', sportspress_array_value( $_POST, 'sp_statistics', array() ) );
 
 			// Update team array
 			sportspress_update_post_meta_recursive( $post_id, 'sp_team', sportspress_array_value( $_POST, 'sp_team', array() ) );

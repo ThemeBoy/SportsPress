@@ -628,12 +628,13 @@ if ( !function_exists( 'sportspress_edit_player_list_table' ) ) {
 }
 
 if ( !function_exists( 'sportspress_edit_team_columns_table' ) ) {
-	function sportspress_edit_team_columns_table( $columns = array(), $data = array(), $placeholders = array() ) {
+	function sportspress_edit_team_columns_table( $league_id, $columns = array(), $data = array(), $seasons = array() ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
 				<thead>
 					<tr>
+						<th class="check-column"><input class="sp-select-all" type="checkbox"></th>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $label ): ?>
 							<th><?php echo $label; ?></th>
@@ -643,32 +644,26 @@ if ( !function_exists( 'sportspress_edit_team_columns_table' ) ) {
 				<tbody>
 					<?php
 					$i = 0;
-					if ( empty( $data ) ):
+					foreach ( $data as $div_id => $div_stats ):
+						if ( !$div_id ) continue;
+						$div = get_term( $div_id, 'sp_season' );
 						?>
-							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-								<td><strong><?php printf( __( 'Select %s', 'sportspress' ), __( 'Season', 'sportspress' ) ); ?></strong></td>
-							</tr>
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+							<td>
+								<input type="checkbox" name="sp_leagues_seasons[<?php echo $league_id; ?>][<?php echo $div_id; ?>]" id="sp_leagues_seasons_<?php echo $league_id; ?>_<?php echo $div_id; ?>" value="1" <?php checked( sportspress_array_value( $seasons, $div_id, 0 ), 1 ); ?>>
+							</td>
+							<td>
+								<label for="sp_leagues_seasons_<?php echo $league_id; ?>_<?php echo $div_id; ?>"><?php echo $div->name; ?></label>
+							</td>
+							<?php foreach( $columns as $column => $label ):
+								$value = sportspress_array_value( sportspress_array_value( $data, $div_id, array() ), $column, 0 );
+								?>
+								<td><?php echo $value; ?></td>
+							<?php endforeach; ?>
+						</tr>
 						<?php
-					else:
-						foreach ( $data as $div_id => $div_stats ):
-							if ( !$div_id ) continue;
-							$div = get_term( $div_id, 'sp_season' );
-							?>
-							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-								<td>
-									<?php echo $div->name; ?>
-								</td>
-								<?php foreach( $columns as $column => $label ):
-									$value = sportspress_array_value( $div_stats, $column, '' );
-									$placeholder = sportspress_array_value( sportspress_array_value( $placeholders, $div_id, array() ), $column, 0 );
-									?>
-									<td><input type="text" name="sp_columns[<?php echo $div_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
-								<?php endforeach; ?>
-							</tr>
-							<?php
-							$i++;
-						endforeach;
-					endif;
+						$i++;
+					endforeach;
 					?>
 				</tbody>
 			</table>
@@ -1114,9 +1109,7 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 
 		$seasons = (array)get_the_terms( $post_id, 'sp_season' );
 		$columns = (array)get_post_meta( $post_id, 'sp_columns', true );
-
-		// Equation Operating System
-		$eos = new eqEOS();
+		$leagues_seasons = sportspress_array_value( (array)get_post_meta( $post_id, 'sp_leagues_seasons', true ), $league_id, array() );
 
 		// Get labels from result variables
 		$result_labels = (array)sportspress_get_var_labels( 'sp_result' );
@@ -1135,7 +1128,7 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 		endforeach;
 
 		// Get all leagues populated with columns where available
-		$data = sportspress_array_combine( $div_ids, $columns );
+		$data = $div_ids;
 
 		// Get equations from column variables
 		$equations = sportspress_get_var_equations( 'sp_column' );
@@ -1278,9 +1271,7 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 
 		foreach( $placeholders as $season_id => $season_data ):
 
-			$include = sportspress_array_value( sportspress_array_value( $data, $season_id, array() ), 'include', 0 );
-
-			if ( ! $include && false ) #todo
+			if ( ! sportspress_array_value( $leagues_seasons, $season_id, 0 ) )
 				continue;
 
 			$season_name = sportspress_array_value( $season_names, $season_id, '&nbsp;' );
@@ -1304,7 +1295,7 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 		endforeach;
 
 		if ( $breakdown ):
-			return array( $columns, $data, $placeholders, $merged );
+			return array( $columns, $placeholders, $merged, $leagues_seasons );
 		else:
 			$labels = array_merge( array( 'name' => __( 'Season', 'sportspress' ) ), $columns );
 			$merged[0] = $labels;
@@ -1595,9 +1586,6 @@ if ( !function_exists( 'sportspress_get_player_list_data' ) ) {
 		$team_id = get_post_meta( $post_id, 'sp_team', true );
 		$player_ids = (array)get_post_meta( $post_id, 'sp_player', false );
 		$stats = (array)get_post_meta( $post_id, 'sp_players', true );
-
-		// Equation Operating System
-		$eos = new eqEOS();
 
 		// Get labels from result variables
 		$columns = (array)sportspress_get_var_labels( 'sp_statistic' );
