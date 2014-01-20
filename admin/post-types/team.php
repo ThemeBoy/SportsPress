@@ -26,7 +26,7 @@ function sportspress_team_meta_init( $post ) {
 	remove_meta_box( 'submitdiv', 'sp_team', 'side' );
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_team', 'side', 'high' );
 	remove_meta_box( 'postimagediv', 'sp_team', 'side' );
-	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'high' );
+	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'low' );
 
 	if ( $leagues && $seasons ):
 		add_meta_box( 'sp_columnssdiv', __( 'Table Columns', 'sportspress' ), 'sportspress_team_columns_meta', 'sp_team', 'normal', 'high' );
@@ -36,7 +36,7 @@ function sportspress_team_meta_init( $post ) {
 function sportspress_team_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'sp_logo' => '&nbsp;',
+		'sp_icon' => '&nbsp;',
 		'title' => __( 'Team', 'sportspress' ),
 		'sp_league' => __( 'Leagues', 'sportspress' ),
 		'sp_season' => __( 'Seasons', 'sportspress' ),

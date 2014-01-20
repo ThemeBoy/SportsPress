@@ -5,7 +5,7 @@ function sportspress_sanitize_title( $title ) {
 
 		return $title;
 	
-	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic' ) ) ):
+	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic', 'sp_metric' ) ) ):
 
 		$key = $_POST['sp_key'];
 

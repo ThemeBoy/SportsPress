@@ -82,6 +82,25 @@ function sportspress_save_post( $post_id ) {
 
 			break;
 
+		case ( 'sp_metric' ):
+
+			// Update format as string
+			update_post_meta( $post_id, 'sp_format', sportspress_array_value( $_POST, 'sp_format', 'integer' ) );
+
+			// Update precision as integer
+			update_post_meta( $post_id, 'sp_precision', (int) sportspress_array_value( $_POST, 'sp_precision', 1 ) );
+
+			// Update equation as string
+			update_post_meta( $post_id, 'sp_equation', implode( ' ', sportspress_array_value( $_POST, 'sp_equation', array() ) ) );
+			
+			// Update sort order as string
+			update_post_meta( $post_id, 'sp_priority', sportspress_array_value( $_POST, 'sp_priority', '0' ) );
+
+			// Update sort order as string
+			update_post_meta( $post_id, 'sp_order', sportspress_array_value( $_POST, 'sp_order', 'DESC' ) );
+
+			break;
+
 		case ( 'sp_result' ):
 
 			// Update format as string
@@ -99,6 +118,9 @@ function sportspress_save_post( $post_id ) {
 
 			// Update player number
 			update_post_meta( $post_id, 'sp_number', sportspress_array_value( $_POST, 'sp_number', '' ) );
+
+			// Update current team
+			update_post_meta( $post_id, 'sp_current_team', sportspress_array_value( $_POST, 'sp_current_team', '' ) );
 
 			// Update nationality
 			update_post_meta( $post_id, 'sp_nationality', sportspress_array_value( $_POST, 'sp_nationality', '' ) );

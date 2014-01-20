@@ -23,6 +23,9 @@ function sportspress_admin_menu( $position ) {
 	if ( $position ):
 		$menu[ $position ] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
 	endif;
+	
+    // Remove "Positions" link from Media submenu
+	unset( $submenu['upload.php'][17] );
 
     // Remove "Leagues" link from Players submenu
     unset( $submenu['edit.php?post_type=sp_player'][15] );
