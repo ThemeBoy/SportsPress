@@ -16,20 +16,23 @@
 .sp-data-table .sorting:after {
 	content: "\f156";
 	color: transparent;
+	position: absolute;
 }
 .sp-data-table .sorting_asc:after {
 	content: "\f142";
+	position: absolute;
 }
 .sp-data-table .sorting_desc:after {
 	content: "\f140";
+	position: absolute;
 }
-.sp-data-table .column-number.sorting_asc {
+.sp-data-table .data-number.sorting_asc {
 	cursor: default;
 }
-.sp-data-table .column-number:after {
+.sp-data-table .data-number:after {
 	content: "";
 }
-.sp-data-table .column-name .logo {
+.sp-data-table .data-name .logo {
 	vertical-align: middle;
 	height: 2em;
 	width: auto;
