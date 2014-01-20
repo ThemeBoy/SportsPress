@@ -10,6 +10,10 @@ function sportspress_save_post( $post_id ) {
 			// Update leagues seasons to show
 			update_post_meta( $post_id, 'sp_leagues_seasons', sportspress_array_value( $_POST, 'sp_leagues_seasons', array() ) );
 
+			// Update player statistics array
+			if ( current_user_can( 'edit_sp_tables' ) )
+				update_post_meta( $post_id, 'sp_columns', sportspress_array_value( $_POST, 'sp_columns', array() ) );
+
 			break;
 
 		case ( 'sp_event' ):
@@ -88,7 +92,7 @@ function sportspress_save_post( $post_id ) {
 		case ( 'sp_player' ):
 
 			// Update seasons teams to show
-			update_post_meta( $post_id, 'sp_seasons_teams', sportspress_array_value( $_POST, 'sp_seasons_teams', array() ) );
+			update_post_meta( $post_id, 'sp_leagues', sportspress_array_value( $_POST, 'sp_leagues', array() ) );
 
 			// Update team array
 			sportspress_update_post_meta_recursive( $post_id, 'sp_team', sportspress_array_value( $_POST, 'sp_team', array() ) );
@@ -101,6 +105,10 @@ function sportspress_save_post( $post_id ) {
 
 			// Update player metrics array
 			update_post_meta( $post_id, 'sp_metrics', sportspress_array_value( $_POST, 'sp_metrics', array() ) );
+
+			// Update player statistics array
+			if ( current_user_can( 'edit_sp_teams' ) )
+				update_post_meta( $post_id, 'sp_statistics', sportspress_array_value( $_POST, 'sp_statistics', array() ) );
 
 			break;
 
