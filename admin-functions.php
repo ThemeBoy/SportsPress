@@ -437,7 +437,7 @@ if ( !function_exists( 'sportspress_get_equation_selector' ) ) {
 		$options[ __( 'Constants', 'sportspress' ) ] = (array) $constants;
 
 		?>
-			<select name="sp_equation[]" data-remove-text="<?php _e( 'Remove', 'sportspress' ); ?>">
+			<select name="sp_equation[]">
 				<option value="">(<?php _e( 'Select', 'sportspress' ); ?>)</option>
 				<?php
 

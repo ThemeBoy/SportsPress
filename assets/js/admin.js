@@ -39,7 +39,7 @@ jQuery(document).ready(function($){
 	$(".sp-clone:last").find("select").change(function() {
 		$(this).closest(".sp-clone").siblings().find("select").change(function() {
 			if($(this).val() == "0") $(this).closest(".sp-clone").remove();
-		}).find("option:first").text($(this).closest(".sp-clone").attr("data-remove-text"));
+		}).find("option:first").text(localized_strings.remove_text);
 		if($(this).val() != "0") {
 			$original = $(this).closest(".sp-clone");
 			$original.before($original.clone().find("select").attr("name", $original.attr("data-clone-name") + "[]").val($(this).val()).closest(".sp-clone")).attr("data-clone-num", parseInt($original.attr("data-clone-num")) + 1).find("select").val("0").change();
@@ -97,7 +97,7 @@ jQuery(document).ready(function($){
 	$(".sp-equation-selector select:last").change(function() {
 		$(this).siblings().change(function() {
 			if($(this).val() == "") $(this).remove();
-		}).find("option:first").text($(this).attr("data-remove-text"));
+		}).find("option:first").text(localized_strings.remove_text);
 		if($(this).val() != "") {
 			$(this).before($(this).clone().val($(this).val())).val("").change();
 		}

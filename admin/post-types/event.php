@@ -121,7 +121,7 @@ function sportspress_event_team_meta( $post ) {
 			?>
 		</div>
 	<?php endforeach; ?>
-	<div class="sp-clone" data-remove-text="<?php _e( 'Remove', 'sportspress' ); ?>" data-clone-name="sp_team">
+	<div class="sp-clone" data-clone-name="sp_team">
 		<p class="sp-tab-select sp-title-generator">
 			<?php
 			$args = array(
