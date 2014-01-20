@@ -37,7 +37,7 @@ function sportspress_the_content( $content ) {
 
         global $post;
 
-        sportspress_league_table( $post->ID );
+        $table = sportspress_league_table( $post->ID );
 
         $content = $table . $content;
     

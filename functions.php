@@ -71,7 +71,7 @@ if ( !function_exists( 'sportspress_event_results' ) ) {
 					else:
 						$value = '—';
 					endif;
-					$table_rows .= '<td class="column-' . $key . '">' . $value . '</td>';
+					$table_rows .= '<td class="data-' . $key . '">' . $value . '</td>';
 				endforeach;
 
 				$table_rows .= '</tr>';
@@ -86,9 +86,9 @@ if ( !function_exists( 'sportspress_event_results' ) ) {
 			$output .= '<h3>' . __( 'Results', 'sportspress' ) . '</h3>';
 
 			$output .= '<table class="sp-event-results sp-data-table"><thead>';
-			$output .= '<th class="column-name">' . __( 'Team', 'sportspress' ) . '</th>';
+			$output .= '<th class="data-name">' . __( 'Team', 'sportspress' ) . '</th>';
 			foreach( $result_labels as $key => $label ):
-				$output .= '<th class="column-' . $key . '">' . $label . '</th>';
+				$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 			endforeach;
 			$output .= '</tr>' . '</thead>' . '<tbody>';
 			$output .= $table_rows;
@@ -122,11 +122,11 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 
 			$output .= '<table class="sp-event-statistics sp-data-table">' . '<thead>' . '<tr>';
 
-			$output .= '<th class="column-number">#</th>';
-			$output .= '<th class="column-number">' . __( 'Player', 'sportspress' ) . '</th>';
+			$output .= '<th class="data-number">#</th>';
+			$output .= '<th class="data-number">' . __( 'Player', 'sportspress' ) . '</th>';
 
 			foreach( $statistic_labels as $key => $label ):
-				$output .= '<th class="column-' . $key . '">' . $label . '</th>';
+				$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 			endforeach;
 
 			$output .= '</tr>' . '</thead>' . '<tbody>';
@@ -143,12 +143,12 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 				$number = get_post_meta( $player_id, 'sp_number', true );
 
 				// Player number
-				$output .= '<td class="column-number">' . $number . '</td>';
+				$output .= '<td class="data-number">' . $number . '</td>';
 
 				// Name as link
 				$permalink = get_post_permalink( $player_id );
 				$name = get_the_title( $player_id );
-				$output .= '<td class="column-name">' . '<a href="' . $permalink . '">' . $name . '</a></td>';
+				$output .= '<td class="data-name">' . '<a href="' . $permalink . '">' . $name . '</a></td>';
 
 				foreach( $statistic_labels as $key => $label ):
 					if ( $key == 'name' )
@@ -158,7 +158,7 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 					else:
 						$value = 0;
 					endif;
-					$output .= '<td class="column-' . $key . '">' . $value . '</td>';
+					$output .= '<td class="data-' . $key . '">' . $value . '</td>';
 				endforeach;
 
 				$output .= '</tr>';
@@ -176,8 +176,8 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 				$number = get_post_meta( $player_id, 'sp_number', true );
 
 				// Player number
-				$output .= '<td class="column-number">&nbsp;</td>';
-				$output .= '<td class="column-name">' . __( 'Total', 'sportspress' ) . '</td>';
+				$output .= '<td class="data-number">&nbsp;</td>';
+				$output .= '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
 
 				$row = $data[0];
 
@@ -185,7 +185,7 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 					if ( $key == 'name' ):
 						continue;
 					endif;
-					$output .= '<td class="column-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
+					$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
 				endforeach;
 
 				$output .= '</tr></tfoot>';
@@ -257,9 +257,9 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 		// Remove the first row to leave us with the actual data
 		unset( $data[0] );
 
-		$output .= '<th class="column-number">#</th>';
+		$output .= '<th class="data-number">#</th>';
 		foreach( $labels as $key => $label ):
-			$output .= '<th class="column-' . $key . '">' . $label . '</th>';
+			$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 		endforeach;
 
 		$output .= '</tr>' . '</thead>' . '<tbody>';
@@ -271,18 +271,18 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 			$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 			// Position as number
-			$output .= '<td class="column-number">' . $i . '</td>';
+			$output .= '<td class="data-number">' . $i . '</td>';
 
 			// Thumbnail and name as link
 			$permalink = get_post_permalink( $team_id );
 			$thumbnail = get_the_post_thumbnail( $team_id, 'thumbnail', array( 'class' => 'logo' ) );
 			$name = sportspress_array_value( $row, 'name', sportspress_array_value( $row, 'name', '&nbsp;' ) );
-			$output .= '<td class="column-name">' . ( $thumbnail ? $thumbnail . ' ' : '' ) . '<a href="' . $permalink . '">' . $name . '</a></td>';
+			$output .= '<td class="data-name">' . ( $thumbnail ? $thumbnail . ' ' : '' ) . '<a href="' . $permalink . '">' . $name . '</a></td>';
 
 			foreach( $labels as $key => $value ):
 				if ( $key == 'name' )
 					continue;
-				$output .= '<td class="column-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
+				$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
 			endforeach;
 
 			$output .= '</tr>';
@@ -326,7 +326,7 @@ if ( !function_exists( 'sportspress_team_columns' ) ) {
 			$output .= '<table class="sp-team-columns sp-data-table">' . '<thead>' . '<tr>';
 
 			foreach( $labels as $key => $label ):
-				$output .= '<th class="column-' . $key . '">' . $label . '</th>';
+				$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 			endforeach;
 
 			$output .= '</tr>' . '</thead>' . '<tbody>';
@@ -338,7 +338,7 @@ if ( !function_exists( 'sportspress_team_columns' ) ) {
 				$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 				foreach( $labels as $key => $value ):
-					$output .= '<td class="column-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
+					$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
 				endforeach;
 
 				$output .= '</tr>';
@@ -370,9 +370,9 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 		// Remove the first row to leave us with the actual data
 		unset( $data[0] );
 
-		$output .= '<th class="column-number">#</th>';
+		$output .= '<th class="data-number">#</th>';
 		foreach( $labels as $key => $label ):
-			$output .= '<th class="column-' . $key . '">' . $label . '</th>';
+			$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 		endforeach;
 
 		$output .= '</tr>' . '</thead>' . '<tbody>';
@@ -385,17 +385,17 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 
 			// Player number
 			$number = get_post_meta( $player_id, 'sp_number', true );
-			$output .= '<td class="column-number">' . ( $number ? $number : '&nbsp;' ) . '</td>';
+			$output .= '<td class="data-number">' . ( $number ? $number : '&nbsp;' ) . '</td>';
 
 			// Name as link
 			$permalink = get_post_permalink( $player_id );
 			$name = sportspress_array_value( $row, 'name', sportspress_array_value( $row, 'name', '&nbsp;' ) );
-			$output .= '<td class="column-name">' . '<a href="' . $permalink . '">' . $name . '</a></td>';
+			$output .= '<td class="data-name">' . '<a href="' . $permalink . '">' . $name . '</a></td>';
 
 			foreach( $labels as $key => $value ):
 				if ( $key == 'name' )
 					continue;
-				$output .= '<td class="column-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
+				$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
 			endforeach;
 
 			$output .= '</tr>';
@@ -473,7 +473,7 @@ if ( !function_exists( 'sportspress_player_statistics' ) ) {
 			$output .= '<table class="sp-player-statistics sp-data-table">' . '<thead>' . '<tr>';
 
 			foreach( $labels as $key => $label ):
-				$output .= '<th class="column-' . $key . '">' . $label . '</th>';
+				$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 			endforeach;
 
 			$output .= '</tr>' . '</thead>' . '<tbody>';
@@ -485,7 +485,7 @@ if ( !function_exists( 'sportspress_player_statistics' ) ) {
 				$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 				foreach( $labels as $key => $value ):
-					$output .= '<td class="column-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
+					$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
 				endforeach;
 
 				$output .= '</tr>';

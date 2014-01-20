@@ -20,15 +20,15 @@ function sportspress_team_post_init() {
 add_action( 'init', 'sportspress_team_post_init' );
 
 function sportspress_team_meta_init( $post ) {
-	$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
-	$seasons = (array)get_the_terms( $post->ID, 'sp_season' );
+	$leagues = get_the_terms( $post->ID, 'sp_league' );
+	$seasons = get_the_terms( $post->ID, 'sp_season' );
 
 	remove_meta_box( 'submitdiv', 'sp_team', 'side' );
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_team', 'side', 'high' );
 	remove_meta_box( 'postimagediv', 'sp_team', 'side' );
 	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'high' );
 
-	if ( $leagues && $leagues != array(0) && $seasons && $seasons != array(0) ):
+	if ( $leagues && $seasons ):
 		add_meta_box( 'sp_columnssdiv', __( 'Table Columns', 'sportspress' ), 'sportspress_team_columns_meta', 'sp_team', 'normal', 'high' );
 	endif;
 }
@@ -61,9 +61,9 @@ function sportspress_team_columns_meta( $post ) {
 			<?php
 		endif;
 
-		list( $columns, $data, $leagues_seasons ) = sportspress_get_team_columns_data( $post->ID, $league_id, true );
+		list( $columns, $data, $placeholders, $merged, $leagues_seasons ) = sportspress_get_team_columns_data( $post->ID, $league_id, true );
 
-		sportspress_edit_team_columns_table( $league_id, $columns, $data, $leagues_seasons );
+		sportspress_edit_team_columns_table( $league_id, $columns, $data, $placeholders, $merged, $leagues_seasons, ! current_user_can( 'edit_sp_tables' ) );
 
 	endforeach;
 

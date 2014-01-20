@@ -109,9 +109,9 @@ function sportspress_player_stats_meta( $post ) {
 			<?php
 		endif;
 
-		list( $columns, $data, $seasons_teams ) = sportspress_get_player_statistics_data( $post->ID, $league->term_id, true );
+		list( $columns, $data, $placeholders, $merged, $seasons_teams ) = sportspress_get_player_statistics_data( $post->ID, $league->term_id, true );
 
-		sportspress_edit_player_statistics_table( $league->term_id, $columns, $data, $seasons_teams );
+		sportspress_edit_player_statistics_table( $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_teams' ) );
 
 	endforeach;
 }
