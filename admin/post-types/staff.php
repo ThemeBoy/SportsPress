@@ -23,7 +23,7 @@ function sportspress_staff_meta_init() {
 	remove_meta_box( 'submitdiv', 'sp_staff', 'side' );
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_staff', 'side', 'high' );
 	remove_meta_box( 'postimagediv', 'sp_staff', 'side' );
-	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_staff', 'side', 'high' );
+	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_staff', 'side', 'low' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_staff_team_meta', 'sp_staff', 'side', 'high' );
 	add_meta_box( 'sp_profilediv', __( 'Profile' ), 'sportspress_staff_profile_meta', 'sp_staff', 'normal', 'high' );
 }
@@ -40,6 +40,7 @@ function sportspress_staff_profile_meta( $post ) {
 function sportspress_staff_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
+		'sp_icon' => '&nbsp;',
 		'title' => __( 'Name', 'sportspress' ),
 		'sp_position' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),

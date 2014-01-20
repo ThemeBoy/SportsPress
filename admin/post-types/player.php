@@ -22,6 +22,7 @@ add_action( 'init', 'sportspress_player_post_init' );
 function sportspress_player_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
+		'sp_icon' => '&nbsp;',
 		'title' => __( 'Name', 'sportspress' ),
 		'sp_position' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
@@ -39,7 +40,7 @@ function sportspress_player_meta_init( $post ) {
 	remove_meta_box( 'submitdiv', 'sp_player', 'side' );
 	add_meta_box( 'submitdiv', __( 'Publish' ), 'post_submit_meta_box', 'sp_player', 'side', 'high' );
 	remove_meta_box( 'postimagediv', 'sp_player', 'side' );
-	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_player', 'side', 'high' );
+	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_player', 'side', 'low' );
 	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_player_details_meta', 'sp_player', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_player_team_meta', 'sp_player', 'side', 'high' );
 
@@ -64,6 +65,8 @@ function sportspress_player_details_meta( $post ) {
 
 	$number = get_post_meta( $post->ID, 'sp_number', true );
 	$nationality = get_post_meta( $post->ID, 'sp_nationality', true );
+	$teams = array_filter( get_post_meta( $post->ID, 'sp_team', false ) );
+	$current_team = get_post_meta( $post->ID, 'sp_current_team', true );
 	?>
 		<p>
 			<strong><?php _e( 'Number', 'sportspress' ); ?></strong>
@@ -87,6 +90,20 @@ function sportspress_player_details_meta( $post ) {
 				<?php endforeach; ?>
 			</select>
 		</p>
+		<?php if ( $teams ): ?>
+		<p>
+			<strong><?php _e( 'Current Team', 'sportspress' ); ?></strong>
+		</p>
+		<p>
+			<select id="sp_current_team" name="sp_current_team">
+				<?php foreach ( $teams as $team ): ?>
+					<option value="<?php echo $team; ?>" <?php selected ( $current_team, $team ); ?>>
+						<?php echo get_the_title( $team ); ?>
+					</option>
+				<?php endforeach; ?>
+			</select>
+		</p>
+		<?php endif; ?>
 	<?php
 }
 
