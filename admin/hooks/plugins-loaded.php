@@ -15,24 +15,24 @@ function sportspress_plugins_loaded() {
     // Add image sizes
 	if ( function_exists( 'add_image_size' ) ) {
 
-		// Header (1680 width minus 15 for scrollbar)
-		add_image_size( 'sportspress-header', 1665, 705, true );
+		// Header
+		add_image_size( 'sportspress-header', 1600, 700, true );
 
-		// Standard (4:3)
-		add_image_size( 'sportspress-standard', 800, 600, true );
-		add_image_size( 'sportspress-standard-thumbnail', 400, 300, true );
+		// Standard (3:2)
+		add_image_size( 'sportspress-standard', 637, 425, true );
+		add_image_size( 'sportspress-standard-thumbnail', 303, 202, true );
 
 		// Wide (16:9)
-		add_image_size( 'sportspress-wide', 800, 450, true );
-		add_image_size( 'sportspress-wide-thumbnail', 400, 225, true );
+		add_image_size( 'sportspress-wide', 637, 358, true );
+		add_image_size( 'sportspress-wide-thumbnail', 303, 170, true );
 
 		// Square (1:1)
-		add_image_size( 'sportspress-square', 612, 612, true );
-		add_image_size( 'sportspress-square-thumbnail', 200, 200, true );
+		add_image_size( 'sportspress-square', 637, 637, true );
+		add_image_size( 'sportspress-square-thumbnail', 303, 303, true );
 
 		// Fit (Proportional)
-		add_image_size( 'sportspress-fit',  300, 300, false );
-		add_image_size( 'sportspress-fit-thumbnail',  150, 150, false );
+		add_image_size( 'sportspress-fit',  637, 637, false );
+		add_image_size( 'sportspress-fit-thumbnail',  303, 303, false );
 
 		// Icon (Proportional)
 		add_image_size( 'sportspress-icon',  32, 32, false );
