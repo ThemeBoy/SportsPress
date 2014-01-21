@@ -112,14 +112,14 @@ if ( !function_exists( 'sportspress_get_post_format' ) ) {
 		$format = get_post_meta ( $post_id, 'sp_format', true );
 		if ( $format ):
 			$formats = sportspress_get_config_formats();
-			$format_str = sportspress_array_value( $formats, $format, '—' );
+			$format_str = sportspress_array_value( $formats, $format, '&mdash;' );
 			if ( in_array( $format, array( 'decimal', 'time' ) ) ):
 				return $format_str . ' (' . sportspress_get_post_precision( $post_id ) . ')';
 			else:
 				return $format_str;
 			endif;
 		else:
-			return '—';
+			return '&mdash;';
 		endif;
 	}
 }
@@ -145,7 +145,7 @@ if ( !function_exists( 'sportspress_get_post_equation' ) ) {
 				$equation
 			);
 		else:
-			return '—';
+			return '&mdash;';
 		endif;
 	}
 }
@@ -160,7 +160,7 @@ if ( !function_exists( 'sportspress_get_post_order' ) ) {
 				get_post_meta ( $post_id, 'sp_order', true )
 			);
 		else:
-			return '—';
+			return '&mdash;';
 		endif;
 	}
 }
@@ -330,7 +330,7 @@ if ( !function_exists( 'sportspress_post_checklist' ) ) {
 							<?php
 							$title = $post->post_title;
 							if ( empty( $title ) )
-								$title = __( '(no title)' );
+								$title = __( '(no title)', 'sportspress' );
 							echo $title;
 							?>
 						</label>
@@ -809,7 +809,7 @@ if ( !function_exists( 'sportspress_event_player_status_selector' ) ) {
 	function sportspress_event_player_status_selector( $team_id, $player_id, $value = null ) {
 
 		if ( ! $team_id || ! $player_id )
-			return '—';
+			return '&mdash;';
 
 		$options = array(
 			'lineup' => __( 'Starting Lineup', 'sportspress' ),
@@ -833,7 +833,7 @@ if ( !function_exists( 'sportspress_event_player_sub_selector' ) ) {
 	function sportspress_event_player_sub_selector( $team_id, $player_id, $value, $data = array() ) {
 
 		if ( ! $team_id || ! $player_id )
-			return '—';
+			return '&mdash;';
 
 		$output = '<select name="sp_players[' . $team_id . '][' . $player_id . '][sub]" style="display: none;">';
 
@@ -1030,7 +1030,7 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 			if ( array_sum( $last10 ) > 0 ):
 				return implode( '-', $last10 );
 			else:
-				return '—';
+				return '&mdash;';
 			endif;
 
 		else:
@@ -1479,10 +1479,10 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 					$outcome = $outcomes[0];
 					$totals[ $team_id ]['streak'] = $outcome->post_title . $streak['count'];
 				else:
-					$totals[ $team_id ]['streak'] = '—';
+					$totals[ $team_id ]['streak'] = '&mdash;';
 				endif;
 			else:
-				$totals[ $team_id ]['streak'] = '—';
+				$totals[ $team_id ]['streak'] = '&mdash;';
 			endif;
 		endforeach;
 

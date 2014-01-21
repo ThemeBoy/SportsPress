@@ -33,7 +33,7 @@ if ( !function_exists( 'sportspress_event_results' ) ) {
 					if ( array_key_exists( $key, $result ) && $result[ $key ] != '' ):
 						$value = $result[ $key ];
 					else:
-						$value = '—';
+						$value = '&mdash;';
 					endif;
 					$table_rows .= '<td class="data-' . $key . '">' . $value . '</td>';
 				endforeach;

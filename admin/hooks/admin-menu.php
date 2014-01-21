@@ -1,12 +1,5 @@
 <?php
 function sportspress_admin_menu( $position ) {
-	add_options_page(
-		__( 'SportsPress', 'sportspress' ),
-		__( 'SportsPress', 'sportspress' ),
-		'manage_options',
-		'sportspress',
-		'sportspress_settings'
-	);
 
 	if ( ! current_user_can( 'manage_options' ) )
 		return;
@@ -23,7 +16,7 @@ function sportspress_admin_menu( $position ) {
 	if ( $position ):
 		$menu[ $position ] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
 	endif;
-	
+
     // Remove "Positions" link from Media submenu
 	unset( $submenu['upload.php'][17] );
 

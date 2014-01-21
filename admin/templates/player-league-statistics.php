@@ -31,7 +31,7 @@ if ( !function_exists( 'sportspress_player_league_statistics' ) ) {
 			$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 			foreach( $labels as $key => $value ):
-				$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
+				$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '&mdash;' ) . '</td>';
 			endforeach;
 
 			$output .= '</tr>';

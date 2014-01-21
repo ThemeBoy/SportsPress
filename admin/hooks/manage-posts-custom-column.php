@@ -6,7 +6,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-icon' ), '', '', $post_id );
 			break;
 		case 'sp_position':
-			echo get_the_terms( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '—';
+			echo get_the_terms( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '&mdash;';
 			break;
 		case 'sp_positions':
 			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : sprintf( __( 'All %s', 'sportspress' ), __( 'positions', 'sportspress' ) );
@@ -15,7 +15,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			$post_type = get_post_type( $post );
 			$teams = get_post_meta ( $post_id, 'sp_team', false );
 			if ( empty( $teams ) ):
-				echo '—';
+				echo '&mdash;';
 				break;
 			elseif ( $post_type == 'sp_event' ):
 				$results = get_post_meta( $post_id, 'sp_results', true );
@@ -33,7 +33,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 						);
 						$outcomes = get_posts( $args );
 
-						echo $team->post_title . ( $outcomes ? ' — ' . $outcomes[0]->post_title : '' ) . '<br>';
+						echo $team->post_title . ( $outcomes ? ' &mdash; ' . $outcomes[0]->post_title : '' ) . '<br>';
 					else:
 						echo $team->post_title . '<br>';
 					endif;
@@ -70,19 +70,19 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			echo sportspress_the_posts( $post_id, 'sp_player' );
 			break;
 		case 'sp_event':
-			echo get_post_meta ( $post_id, 'sp_event' ) ? sizeof( get_post_meta ( $post_id, 'sp_event' ) ) : '—';
+			echo get_post_meta ( $post_id, 'sp_event' ) ? sizeof( get_post_meta ( $post_id, 'sp_event' ) ) : '&mdash;';
 			break;
 		case 'sp_league':
-			echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '—';
+			echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
 			break;
 		case 'sp_season':
-			echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '—';
+			echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
 			break;
 		case 'sp_venue':
-			echo get_the_terms ( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '—';
+			echo get_the_terms ( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
 			break;
 		case 'sp_sponsor':
-			echo get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : '—';
+			echo get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : '&mdash;';
 			break;
 		case 'sp_kickoff':
 			if ( $post->post_status == 'future' ):
@@ -94,10 +94,10 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			else:
 				_e( 'Pending Review', 'sportspress' );
 			endif;
-			echo '<br />' . date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) );
+			echo '<br />' . date_i18n( __( 'M j, Y @ G:i', 'sportspress' ), strtotime( $post->post_date ) );
 			break;
 		case 'sp_address':
-			echo get_post_meta( $post_id, 'sp_address', true ) ? get_post_meta( $post_id, 'sp_address', true ) : '—';
+			echo get_post_meta( $post_id, 'sp_address', true ) ? get_post_meta( $post_id, 'sp_address', true ) : '&mdash;';
 			break;
 	endswitch;
 }
