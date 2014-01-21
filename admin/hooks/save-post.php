@@ -48,15 +48,12 @@ function sportspress_save_post( $post_id ) {
 			break;
 
 		case ( 'sp_column' ):
-
-			// Update format as string
-			update_post_meta( $post_id, 'sp_format', sportspress_array_value( $_POST, 'sp_format', 'integer' ) );
-
-			// Update precision as integer
-			update_post_meta( $post_id, 'sp_precision', (int) sportspress_array_value( $_POST, 'sp_precision', 1 ) );
-
+		
 			// Update equation as string
 			update_post_meta( $post_id, 'sp_equation', implode( ' ', sportspress_array_value( $_POST, 'sp_equation', array() ) ) );
+		
+			// Update precision as integer
+			update_post_meta( $post_id, 'sp_precision', (int) sportspress_array_value( $_POST, 'sp_precision', 1 ) );
 
 			// Update sort order as string
 			update_post_meta( $post_id, 'sp_priority', sportspress_array_value( $_POST, 'sp_priority', '0' ) );
@@ -68,43 +65,8 @@ function sportspress_save_post( $post_id ) {
 
 		case ( 'sp_statistic' ):
 
-			// Update format as string
-			update_post_meta( $post_id, 'sp_format', sportspress_array_value( $_POST, 'sp_format', 'integer' ) );
-
-			// Update precision as integer
-			update_post_meta( $post_id, 'sp_precision', (int) sportspress_array_value( $_POST, 'sp_precision', 1 ) );
-			
-			// Update sort order as string
-			update_post_meta( $post_id, 'sp_priority', sportspress_array_value( $_POST, 'sp_priority', '0' ) );
-
-			// Update sort order as string
-			update_post_meta( $post_id, 'sp_order', sportspress_array_value( $_POST, 'sp_order', 'DESC' ) );
-
-			break;
-
-		case ( 'sp_metric' ):
-
-			// Update format as string
-			update_post_meta( $post_id, 'sp_format', sportspress_array_value( $_POST, 'sp_format', 'integer' ) );
-
-			// Update precision as integer
-			update_post_meta( $post_id, 'sp_precision', (int) sportspress_array_value( $_POST, 'sp_precision', 1 ) );
-
 			// Update equation as string
 			update_post_meta( $post_id, 'sp_equation', implode( ' ', sportspress_array_value( $_POST, 'sp_equation', array() ) ) );
-			
-			// Update sort order as string
-			update_post_meta( $post_id, 'sp_priority', sportspress_array_value( $_POST, 'sp_priority', '0' ) );
-
-			// Update sort order as string
-			update_post_meta( $post_id, 'sp_order', sportspress_array_value( $_POST, 'sp_order', 'DESC' ) );
-
-			break;
-
-		case ( 'sp_result' ):
-
-			// Update format as string
-			update_post_meta( $post_id, 'sp_format', sportspress_array_value( $_POST, 'sp_format', 'integer' ) );
 
 			break;
 

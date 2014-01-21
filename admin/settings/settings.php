@@ -9,18 +9,21 @@ function sportspress_settings() {
 		<h2 class="nav-tab-wrapper">
 			<a href="?page=sportspress" class="nav-tab<?php echo $active_tab == 'general' ? ' nav-tab-active' : ''; ?>"><?php _e( 'SportsPress', 'sportspress' ); ?></a>
 			<a href="?page=sportspress&tab=events" class="nav-tab<?php echo $active_tab == 'events' ? ' nav-tab-active' : ''; ?>"><?php _e( 'Events', 'sportspress' ); ?></a>
-			<a href="?page=sportspress&tab=teams" class="nav-tab<?php echo $active_tab == 'teams' ? ' nav-tab-active' : ''; ?>"><?php _e( 'Teams', 'sportspress' ); ?></a>
+			<a href="?page=sportspress&tab=tables" class="nav-tab<?php echo $active_tab == 'tables' ? ' nav-tab-active' : ''; ?>"><?php _e( 'League Tables', 'sportspress' ); ?></a>
 			<a href="?page=sportspress&tab=players" class="nav-tab<?php echo $active_tab == 'players' ? ' nav-tab-active' : ''; ?>"><?php _e( 'Players', 'sportspress' ); ?></a>
-			<a href="?page=sportspress&tab=staff" class="nav-tab<?php echo $active_tab == 'staff' ? ' nav-tab-active' : ''; ?>"><?php _e( 'Staff', 'sportspress' ); ?></a>
-			<a href="?page=sportspress&tab=config" class="nav-tab<?php echo $active_tab == 'config' ? ' nav-tab-active' : ''; ?>"><?php _e( 'Configure', 'sportspress' ); ?></a>
-			<a href="?page=sportspress&tab=advanced" class="nav-tab<?php echo $active_tab == 'advanced' ? ' nav-tab-active' : ''; ?>"><?php _e( 'Advanced', 'sportspress' ); ?></a>
 		</h2>
 
 		<form method="post" action="options.php">
 			<?php
 				switch ( $active_tab ):
-					case 'config':
-						include 'config.php';
+					case 'events':
+						include 'events.php';
+						break;
+					case 'tables':
+						include 'tables.php';
+						break;
+					case 'players':
+						include 'players.php';
 						break;
 					default:
 						include 'general.php';

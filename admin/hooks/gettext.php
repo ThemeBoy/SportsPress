@@ -23,7 +23,7 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 		case 'sp_event':
 			switch ( $untranslated_text ):
 			case 'Enter title here':
-				$translated_text = __( '(no title)', 'sportspress' );
+				$translated_text = __( '(auto)', 'sportspress' );
 				break;
 			case 'Scheduled for: <b>%1$s</b>':
 				$translated_text = __( 'Date/Time: <b>%1$s</b>', 'sportspress' );

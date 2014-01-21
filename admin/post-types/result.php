@@ -24,7 +24,6 @@ function sportspress_result_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
 		'sp_key' => __( 'Key', 'sportspress' ),
-		'sp_format' => __( 'Format', 'sportspress' ),
 	);
 	return $columns;
 }
@@ -40,16 +39,6 @@ function sportspress_result_details_meta( $post ) {
 	<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
 	<p>
 		<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
-	</p>
-	<p><strong><?php _e( 'Format', 'sportspress' ); ?></strong></p>
-	<p class="sp-format-selector">
-		<select name="sp_format">
-			<?php
-			foreach ( $formats as $key => $value ):
-				printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $priority, false ), $value );
-			endforeach;
-			?>
-		</select>
 	</p>
 	<?php
 	sportspress_nonce();

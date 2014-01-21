@@ -6,7 +6,10 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-icon' ), '', '', $post_id );
 			break;
 		case 'sp_position':
-			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '—';
+			echo get_the_terms( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '—';
+			break;
+		case 'sp_positions':
+			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : sprintf( __( 'All %s', 'sportspress' ), __( 'positions', 'sportspress' ) );
 			break;
 		case 'sp_team':
 			$post_type = get_post_type( $post );
@@ -60,8 +63,8 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_key':
 			echo $post->post_name;
 			break;
-		case 'sp_format':
-			echo sportspress_get_post_format( $post_id );
+		case 'sp_precision':
+			echo sportspress_get_post_precision( $post_id );
 			break;
 		case 'sp_player':
 			echo sportspress_the_posts( $post_id, 'sp_player' );
