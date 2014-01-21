@@ -29,7 +29,7 @@ function sportspress_team_meta_init( $post ) {
 	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'low' );
 
 	if ( $leagues && $seasons ):
-		add_meta_box( 'sp_columnssdiv', __( 'Table Columns', 'sportspress' ), 'sportspress_team_columns_meta', 'sp_team', 'normal', 'high' );
+		add_meta_box( 'sp_columnssdiv', __( 'Columns', 'sportspress' ), 'sportspress_team_columns_meta', 'sp_team', 'normal', 'high' );
 	endif;
 }
 

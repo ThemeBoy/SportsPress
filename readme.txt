@@ -12,7 +12,15 @@ SportsPress is a flexible sports management plugin that adds team management fun
 == Changelog ==
 
 = 0.1.3 =
-* Feature - Lots of features. To be updated.
+* Fix - Style conflict with Foundation framework in table columns.
+* Feature - HTML output added to custom post types with data table sorting.
+* Feature - Enable metrics and statistics per player position.
+* Feature - Save team played per season per league in player edit screen.
+* Feature - Give teams the option to show and hide past seasons.
+* Feature - Venues, Seasons, and Leagues added as taxonomies.
+* Feature - Add L10 counter to report last 10 outcomes.
+* Feature - Add STRK counter to report current outcome streak.
+* Localization - Add country names in Czech, German, Spanish, French, Italian, Japanese, Polish, Russian, and Slovak.
 
 = 0.1.2 =
 * Tweak - Use custom post types for metrics and statistics configuration.

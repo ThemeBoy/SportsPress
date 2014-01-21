@@ -2,7 +2,7 @@
 function sportspress_admin_head() {
 	global $typenow;
 
-	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic' ) ) ):
+	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic', 'sp_metric' ) ) ):
 		sportspress_highlight_admin_menu();
 	endif;
 }

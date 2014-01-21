@@ -32,8 +32,21 @@ include_once dirname( __FILE__ ) . '/admin/globals/countries.php';
 include_once dirname( __FILE__ ) . '/admin/globals/sports.php';
 
 // Functions
-require_once dirname( __FILE__ ) . '/admin-functions.php';
 require_once dirname( __FILE__ ) . '/functions.php';
+
+// Templates
+require_once dirname( __FILE__ ) . '/admin/templates/event-details.php';
+require_once dirname( __FILE__ ) . '/admin/templates/event-players.php';
+require_once dirname( __FILE__ ) . '/admin/templates/event-results.php';
+require_once dirname( __FILE__ ) . '/admin/templates/event-staff.php';
+require_once dirname( __FILE__ ) . '/admin/templates/event-venue.php';
+require_once dirname( __FILE__ ) . '/admin/templates/events-calendar.php';
+require_once dirname( __FILE__ ) . '/admin/templates/league-table.php';
+require_once dirname( __FILE__ ) . '/admin/templates/player-league-statistics.php';
+require_once dirname( __FILE__ ) . '/admin/templates/player-list.php';
+require_once dirname( __FILE__ ) . '/admin/templates/player-metrics.php';
+require_once dirname( __FILE__ ) . '/admin/templates/player-statistics.php';
+require_once dirname( __FILE__ ) . '/admin/templates/team-columns.php';
 
 // Settings
 include dirname( __FILE__ ) . '/admin/settings/settings.php' ;
@@ -84,6 +97,7 @@ require_once dirname( __FILE__ ) . '/admin/hooks/sanitize-title.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/the-content.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/wp-insert-post-data.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/plugin-action-links.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/post-updated-messages.php';
 
 // Register activation hook
 require_once dirname( __FILE__ ) . '/admin/hooks/register-activation-hook.php';
