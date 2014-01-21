@@ -14,7 +14,7 @@ function sportspress_table_post_init() {
 		'rewrite' => array( 'slug' => get_option( 'sp_table_slug', 'tables' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_team',
 		'show_in_admin_bar' => true,
-//		'capability_type' => 'sp_table'
+		'capability_type' => 'sp_table'
 	);
 	register_post_type( 'sp_table', $args );
 }
