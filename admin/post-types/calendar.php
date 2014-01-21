@@ -23,7 +23,7 @@ add_action( 'init', 'sportspress_calendar_post_init' );
 function sportspress_calendar_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'title' => __( 'Title' ),
+		'title' => __( 'Title', 'sportspress' ),
 		'sp_league' => __( 'Leagues', 'sportspress' ),
 		'sp_season' => __( 'Seasons', 'sportspress' ),
 		'sp_venue' => __( 'Venues', 'sportspress' ),

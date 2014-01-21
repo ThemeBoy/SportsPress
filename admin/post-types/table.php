@@ -23,7 +23,7 @@ add_action( 'init', 'sportspress_table_post_init' );
 function sportspress_table_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'title' => __( 'Title' ),
+		'title' => __( 'Title', 'sportspress' ),
 		'sp_league' => __( 'League', 'sportspress' ),
 		'sp_season' => __( 'Season', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),

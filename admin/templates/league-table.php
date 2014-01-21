@@ -55,7 +55,7 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 			foreach( $labels as $key => $value ):
 				if ( $key == 'name' )
 					continue;
-				$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '—' ) . '</td>';
+				$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '&mdash;' ) . '</td>';
 			endforeach;
 
 			$output .= '</tr>';

@@ -341,8 +341,6 @@ class eqEOS {
 
 		//remove all white-space
 		preg_replace("/\s/", "", $infix);
-		if(DEBUG)
-			$hand=fopen("eq.txt","a");
 
 		//Find all the variables that were passed and replaces them
 		while((preg_match('/(.){0,1}[&$]([a-zA-Z]+)(.){0,1}/', $infix, $match)) != 0) {
@@ -352,8 +350,6 @@ class eqEOS {
 				$match[3] = "";
 			}
 
-			if(DEBUG)
-				fwrite($hand, "{$match[1]} || {$match[3]}\n");
 			// Ensure that the variable has an operator or something of that sort in front and back - if it doesn't, add an implied '*'
 			if((!in_array($match[1], array_merge($this->ST, $this->ST1, $this->ST2, $this->SEP['open'])) && $match[1] != "") || is_numeric($match[1])) //$this->SEP['close'] removed
 				$front = "*";
@@ -375,9 +371,6 @@ class eqEOS {
 				$infix = str_replace($match[0], $match[1] . $front. $vArray[$match[2]]. $back . $match[3], $infix);
 			}
 		}
-
-		if(DEBUG)
-			fwrite($hand, "$infix\n");
 
 		// Finds all the 'functions' within the equation and calculates them 
 		// NOTE - when using function, only 1 set of paranthesis will be found, instead use brackets for sets within functions!! 
@@ -422,8 +415,6 @@ class eqEOS {
 			}
 			$infix = str_replace($match[0], $ans, $infix);
 		}
-		if(DEBUG)
-			fclose($hand);
 		return $this->solvePF($this->in2post($infix));
 
 
@@ -500,19 +491,10 @@ class eqGraph extends eqEOS {
 		
 		$xScale = $this->width/($xHigh-$xLow);
 		$counter = 0;
-		if(DEBUG) {
-			$hand=fopen("eqgraph.txt","w");
-			fwrite($hand, "$eq\n");
-		}
 		for($i=$xLow;$i<=$xHigh;$i+=$xStep) {
 			$tester = sprintf("%10.3f",$i);
 			if($tester == "-0.000") $i = 0;
 			$y = $this->solveIF($eq, $i);
-			//eval('$y='. str_replace('&x', $i, $eq).";"); /* used to debug my eqEOS class results */
-			if(DEBUG) {
-				$tmp1 = sprintf("y(%5.3f) = %10.3f\n", $i, $y);
-				fwrite($hand, $tmp1);
-			}
 
 			// If developer asked us to find the upper and lower bounds for y... 
 			if($yGuess==true) {
@@ -522,8 +504,6 @@ class eqGraph extends eqEOS {
 			$xVars[$counter] = $y;
 			$counter++;			
 		}
-		if(DEBUG)
-			fclose($hand);
 		// add 0.01 to each side so that if y is from 1 to 5, the lines at 1 and 5 are seen 
 		$yLow-=0.01;$yHigh+=0.01;
 

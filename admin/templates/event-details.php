@@ -15,10 +15,10 @@ if ( !function_exists( 'sportspress_event_details' ) ) {
 		$data = array( __( 'Date', 'sportspress' ) => $date, __( 'Time', 'sportspress' ) => $time );
 
 		if ( $leagues )
-			$data[ __( 'League', 'sportspress' ) ] = sportspress_array_value( $leagues, 0, '—' )->name;
+			$data[ __( 'League', 'sportspress' ) ] = sportspress_array_value( $leagues, 0, '&mdash;' )->name;
 
 		if ( $seasons )
-			$data[ __( 'Season', 'sportspress' ) ] = sportspress_array_value( $seasons, 0, '—' )->name;
+			$data[ __( 'Season', 'sportspress' ) ] = sportspress_array_value( $seasons, 0, '&mdash;' )->name;
 
 
 		$output = '<h3>' . __( 'Details', 'sportspress' ) . '</h3>';

@@ -41,24 +41,6 @@ table.widefat td.column-sp_icon {
 	height: 320px;
 }
 
-#adminmenu #menu-posts-sp_event .wp-menu-name:after,
-#adminmenu #menu-posts-sp_team .wp-menu-name:after,
-#adminmenu #menu-posts-sp_staff .wp-menu-name:after {
-	content: ' \03b2';
-	display: inline-block;
-	margin: 1px 0 0 6px;
-	vertical-align: top;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	z-index: 26;
-	background-color: #0074a2;
-	color: #fff;
-	width: 17px;
-	text-align: center;
-	font-size: 12px;
-	font-weight: normal;
-	line-height: 17px;
-}
 
 @media only screen and (max-width: 768px) {
 

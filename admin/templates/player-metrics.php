@@ -17,7 +17,7 @@ if ( !function_exists( 'sportspress_player_metrics' ) ) {
 
 		$common = array(
 			__( 'Number', 'sportspress' ) => $number,
-			__( 'Nationality', 'sportspress' ) => $flag_image . ' ' . sportspress_array_value( $sportspress_countries, $nationality, '—' ),
+			__( 'Nationality', 'sportspress' ) => $flag_image . ' ' . sportspress_array_value( $sportspress_countries, $nationality, '&mdash;' ),
 		);
 
 		$data = array_merge( $common, $metrics );

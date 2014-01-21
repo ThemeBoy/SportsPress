@@ -20,7 +20,7 @@ function sportspress_post_updated_messages( $messages ) {
 		$messages['post'][6] = sprintf(	__( '%s published.', 'sportspress' ), $obj->labels->singular_name ) .
 			' <a href="' . esc_url( get_permalink($post->ID) ) . '">' . $obj->labels->view_item . '</a>';
 
-		$messages['post'][7] = sprintf(	__( '%s saved.'), $obj->labels->singular_name );
+		$messages['post'][7] = sprintf(	__( '%s saved.', 'sportspress' ), $obj->labels->singular_name );
 
 		$messages['post'][8] = sprintf(	__( '%s submitted.', 'sportspress' ), $obj->labels->singular_name ) .
 			' <a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink($post->ID) ) ) . '">' .
@@ -28,7 +28,7 @@ function sportspress_post_updated_messages( $messages ) {
 
 		$messages['post'][9] = sprintf(
 			__( '%s scheduled for: <strong>%s</strong>.', 'sportspress' ),
-			date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post->ID) ) ) .
+			date_i18n( __( 'M j, Y @ G:i', 'sportspress' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post->ID) ) ) .
 			' <a target="_blank" href="' . esc_url( get_permalink($post->ID) ) . '">' .
 			sprintf( __( 'Preview %s', 'sportspress' ), $obj->labels->singular_name ) . '</a>';
 
