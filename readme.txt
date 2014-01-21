@@ -3,13 +3,21 @@ Contributors: themeboy
 Tags: sports, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 0.1.3
+Stable tag: 0.1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-SportsPress is a flexible sports management plugin that adds team management functionality to WordPress. Currently in alpha for theme development and testing purposes.
+SportsPress is a flexible sports management plugin that adds team management functionality to WordPress. Currently in beta for internal testing.
 
 == Changelog ==
+
+= 0.1.5 =
+* Tweak - Remove flag images to lighten download size.
+
+= 0.1.4 =
+* Fix - All Plugin-Check warnings.
+* Tweak - Split templates into files in subdirectory.
+* Tweak - Simplify gettext filters.
 
 = 0.1.3 =
 * Fix - Style conflict with Foundation framework in table columns.
