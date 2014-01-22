@@ -8,6 +8,7 @@ function sportspress_table_post_init() {
 		'label' => $name,
 		'labels' => $labels,
 		'public' => true,
+		'has_archive' => false,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'thumbnail', 'excerpt' ),
 		'register_meta_box_cb' => 'sportspress_table_meta_init',

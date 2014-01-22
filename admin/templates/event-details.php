@@ -12,12 +12,15 @@ if ( !function_exists( 'sportspress_event_details' ) ) {
 
 		$data = array( __( 'Date', 'sportspress' ) => $date, __( 'Time', 'sportspress' ) => $time );
 
-		if ( $leagues )
-			$data[ __( 'League', 'sportspress' ) ] = sportspress_array_value( $leagues, 0, '&mdash;' )->name;
+		if ( $leagues ):
+			$league = array_pop( $leagues );
+			$data[ __( 'League', 'sportspress' ) ] = $league->name;
+		endif;
 
-		if ( $seasons )
-			$data[ __( 'Season', 'sportspress' ) ] = sportspress_array_value( $seasons, 0, '&mdash;' )->name;
-
+		if ( $seasons ):
+			$season = array_pop( $seasons );
+			$data[ __( 'Season', 'sportspress' ) ] = $season->name;
+		endif;
 
 		$output = '<h3>' . __( 'Details', 'sportspress' ) . '</h3>';
 

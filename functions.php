@@ -1071,8 +1071,22 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 		endif;
 
 	}
-
 }
+
+
+if ( !function_exists( 'sportspress_event_players_lineup_filter' ) ) {
+	function sportspress_event_players_lineup_filter( $arr ) {
+		return sportspress_array_value( $arr, 'status', 'lineup' ) == 'lineup';
+	}
+}
+
+
+if ( !function_exists( 'sportspress_event_players_sub_filter' ) ) {
+	function sportspress_event_players_sub_filter( $arr ) {
+		return sportspress_array_value( $arr, 'status', 'lineup' ) == 'sub';
+	}
+}
+
 
 if ( !function_exists( 'sportspress_get_calendar_data' ) ) {
 	function sportspress_get_calendar_data( $post_id ) {

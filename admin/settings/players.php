@@ -35,8 +35,8 @@ $args = array(
 	'post_type' => 'sp_statistic',
 	'numberposts' => -1,
 	'posts_per_page' => -1,
-		'orderby' => 'menu_order',
-		'order' => 'ASC'
+	'orderby' => 'menu_order',
+	'order' => 'ASC'
 );
 $data = get_posts( $args );
 ?>
