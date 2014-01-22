@@ -2,10 +2,8 @@
 if ( !function_exists( 'sportspress_events_calendar' ) ) {
 	function sportspress_events_calendar( $id = null ) {
 
-		if ( ! $id ):
-			global $post;
-			$id = $post->ID;
-		endif;
+		if ( ! $id )
+			$id = get_the_ID();
 	
 		global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
 		$initial = false;

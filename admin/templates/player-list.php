@@ -2,10 +2,8 @@
 if ( !function_exists( 'sportspress_player_list' ) ) {
 	function sportspress_player_list( $id = null ) {
 
-		if ( ! $id ):
-			global $post;
-			$id = $post->ID;
-		endif;
+		if ( ! $id )
+			$id = get_the_ID();
 
 		$data = sportspress_get_player_list_data( $id );
 

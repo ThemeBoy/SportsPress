@@ -2,6 +2,9 @@
 if ( !function_exists( 'sportspress_event_venue' ) ) {
 	function sportspress_event_venue( $id ) {
 
+		if ( ! $id )
+			$id = get_the_ID();
+
 		$venues = get_the_terms( $id, 'sp_venue' );
 
 		$output = '';

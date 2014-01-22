@@ -2,10 +2,8 @@
 if ( !function_exists( 'sportspress_league_table' ) ) {
 	function sportspress_league_table( $id = null, $args = '' ) {
 
-		if ( ! $id ):
-			global $post;
-			$id = $post->ID;
-		endif;
+		if ( ! $id )
+			$id = get_the_ID();
 
 		$defaults = array(
 			'number_label' => __( 'Pos', 'sportspress' ),
@@ -26,8 +24,8 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 
 		$title = sizeof( $terms ) ? implode( ' &mdash; ', $terms ) : get_the_title( $id );
 
-		$output = '<table class="sp-league-table sp-data-table">' .
-		'<caption>' . $title . '</caption>' . '<thead>' . '<tr>';
+		$output = '<h4 class="sp-table-caption">' . $title . '</h4>' .
+			'<table class="sp-league-table sp-data-table">' . '<thead>' . '<tr>';
 
 		$data = sportspress_get_league_table_data( $id );
 

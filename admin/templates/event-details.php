@@ -2,10 +2,8 @@
 if ( !function_exists( 'sportspress_event_details' ) ) {
 	function sportspress_event_details( $id = null ) {
 
-		if ( ! $id ):
-			global $post;
-			$id = $post->ID;
-		endif;
+		if ( ! $id )
+			$id = get_the_ID();
 
 		$date = get_the_time( get_option('date_format'), $id );
 		$time = get_the_time( get_option('time_format'), $id );

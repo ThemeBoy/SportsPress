@@ -2,10 +2,8 @@
 if ( !function_exists( 'sportspress_player_metrics' ) ) {
 	function sportspress_player_metrics( $id = null ) {
 
-		if ( ! $id ):
-			global $post;
-			$id = $post->ID;
-		endif;
+		if ( ! $id )
+			$id = get_the_ID();
 
 		global $sportspress_countries;
 
