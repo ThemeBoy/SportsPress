@@ -9,8 +9,9 @@ function sportspress_position_term_init() {
 		'label' => $name,
 		'labels' => $labels,
 		'public' => true,
+		'has_archive' => false,
 		'hierarchical' => true,
-		'rewrite' => array( 'slug' => 'position' )
+		'rewrite' => array( 'slug' => 'position' ),
 	);
 	register_taxonomy( 'sp_position', $object_type, $args );
 	register_taxonomy_for_object_type( 'sp_position', 'sp_player' );
