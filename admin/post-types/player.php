@@ -44,12 +44,12 @@ function sportspress_player_meta_init( $post ) {
 	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_player', 'side', 'low' );
 	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_player_details_meta', 'sp_player', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_player_team_meta', 'sp_player', 'side', 'high' );
+	add_meta_box( 'sp_metricsdiv', __( 'Metrics', 'sportspress' ), 'sportspress_player_metrics_meta', 'sp_player', 'normal', 'high' );
 
 	if ( $leagues && ! empty( $leagues ) && $seasons && is_array( $seasons ) && is_object( $seasons[0] ) ):
 		add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sportspress_player_stats_meta', 'sp_player', 'normal', 'high' );
 	endif;
 
-	add_meta_box( 'sp_metricsdiv', __( 'Metrics', 'sportspress' ), 'sportspress_player_metrics_meta', 'sp_player', 'normal', 'high' );
 	add_meta_box( 'sp_profilediv', __( 'Profile', 'sportspress' ), 'sportspress_player_profile_meta', 'sp_player', 'normal', 'high' );
 }
 
