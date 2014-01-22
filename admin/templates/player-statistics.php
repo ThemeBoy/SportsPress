@@ -2,10 +2,8 @@
 if ( !function_exists( 'sportspress_player_statistics' ) ) {
 	function sportspress_player_statistics( $id = null ) {
 
-		if ( ! $id ):
-			global $post;
-			$id = $post->ID;
-		endif;
+		if ( ! $id )
+			$id = get_the_ID();
 
 		$leagues = get_the_terms( $id, 'sp_league' );
 

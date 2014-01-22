@@ -2,10 +2,8 @@
 if ( !function_exists( 'sportspress_event_players' ) ) {
 	function sportspress_event_players( $id = null ) {
 
-		if ( ! $id ):
-			global $post;
-			$id = $post->ID;
-		endif;
+		if ( ! $id )
+			$id = get_the_ID();
 
 		$teams = (array)get_post_meta( $id, 'sp_team', false );
 		$staff = (array)get_post_meta( $id, 'sp_staff', false );

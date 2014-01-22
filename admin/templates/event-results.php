@@ -2,10 +2,8 @@
 if ( !function_exists( 'sportspress_event_results' ) ) {
 	function sportspress_event_results( $id = null ) {
 
-		if ( ! $id ):
-			global $post;
-			$id = $post->ID;
-		endif;
+		if ( ! $id )
+			$id = get_the_ID();
 
 		$teams = (array)get_post_meta( $id, 'sp_team', false );
 		$results = sportspress_array_combine( $teams, (array)get_post_meta( $id, 'sp_results', true ) );
