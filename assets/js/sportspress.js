@@ -13,10 +13,7 @@
 	        "sSortAscending": "",
 	        "sSortDescending": ""
 	      }
-	    },
-		"aoColumnDefs": [
-			{ "asSorting": [ "asc" ], "aTargets": [ 0 ] },
-		]
+	    }
 	});
 
 	// Player List Sorting

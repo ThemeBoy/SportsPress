@@ -196,7 +196,8 @@ function sportspress_event_edit_columns() {
 		'sp_league' => __( 'League', 'sportspress' ),
 		'sp_season' => __( 'Season', 'sportspress' ),
 		'sp_venue' => __( 'Venue', 'sportspress' ),
-		'sp_kickoff' => __( 'Date/Time', 'sportspress' )
+		'sp_kickoff' => __( 'Date/Time', 'sportspress' ),
+		'sp_views' => __( 'Views', 'sportspress' ),
 	);
 	return $columns;
 }

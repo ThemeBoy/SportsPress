@@ -27,6 +27,7 @@ function sportspress_calendar_edit_columns() {
 		'sp_league' => __( 'Leagues', 'sportspress' ),
 		'sp_season' => __( 'Seasons', 'sportspress' ),
 		'sp_venue' => __( 'Venues', 'sportspress' ),
+		'sp_views' => __( 'Views', 'sportspress' ),
 	);
 	return $columns;
 }

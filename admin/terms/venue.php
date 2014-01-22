@@ -3,7 +3,7 @@ function sportspress_venue_term_init() {
 	$name = __( 'Venues', 'sportspress' );
 	$singular_name = __( 'Venue', 'sportspress' );
 	$lowercase_name = __( 'venue', 'sportspress' );
-	$object_type = array( 'sp_event', 'sp_calendar' );
+	$object_type = array( 'sp_event', 'sp_calendar', 'attachment' );
 	$labels = sportspress_get_term_labels( $name, $singular_name, $lowercase_name );
 	$args = array(
 		'label' => $name,
@@ -15,6 +15,7 @@ function sportspress_venue_term_init() {
 	register_taxonomy( 'sp_venue', $object_type, $args );
 	register_taxonomy_for_object_type( 'sp_venue', 'sp_event' );
 	register_taxonomy_for_object_type( 'sp_venue', 'sp_calendar' );
+	register_taxonomy_for_object_type( 'sp_venue', 'attachment' );
 }
 add_action( 'init', 'sportspress_venue_term_init' );
 
