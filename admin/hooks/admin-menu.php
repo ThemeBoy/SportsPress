@@ -17,21 +17,45 @@ function sportspress_admin_menu( $position ) {
 		$menu[ $position ] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
 	endif;
 
-    // Remove "Venues" and "Positions" link from Media submenu
-	unset( $submenu['upload.php'][17] );
-	unset( $submenu['upload.php'][18] );
+    // Remove "Venues" and "Positions" links from Media submenu
+	$submenu['upload.php'] = array_filter( $submenu['upload.php'], 'sportspress_admin_menu_remove_venues' );
+	$submenu['upload.php'] = array_filter( $submenu['upload.php'], 'sportspress_admin_menu_remove_positions' );
 
-    // Remove "Leagues" link from Players submenu
-    unset( $submenu['edit.php?post_type=sp_player'][15] );
+    // Remove "Leagues" and "Seasons" links from Events submenu
+	$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], 'sportspress_admin_menu_remove_leagues' );
+	$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], 'sportspress_admin_menu_remove_seasons' );
 
-    // Remove "Seasons" link from Players submenu
-    unset( $submenu['edit.php?post_type=sp_player'][16] );
+    // Remove "Leagues" and "Seasons" links from Players submenu
+	$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], 'sportspress_admin_menu_remove_leagues' );
+	$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], 'sportspress_admin_menu_remove_seasons' );
 
-    // Remove "Leagues" link from Staff submenu
-    unset( $submenu['edit.php?post_type=sp_staff'][15] );
-
-    // Remove "Seasons" link from Staff submenu
-    unset( $submenu['edit.php?post_type=sp_staff'][16] );
+    // Remove "Leagues" and "Seasons" links from Staff submenu
+	$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], 'sportspress_admin_menu_remove_leagues' );
+	$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], 'sportspress_admin_menu_remove_seasons' );
 
 }
 add_action( 'admin_menu', 'sportspress_admin_menu' );
+
+if ( ! function_exists( 'sportspress_admin_menu_remove_leagues' ) ) {
+	function sportspress_admin_menu_remove_leagues( $arr = array() ) {
+		return $arr[0] != __( 'Leagues', 'sportspress' );
+	}
+}
+
+if ( ! function_exists( 'sportspress_admin_menu_remove_positions' ) ) {
+	function sportspress_admin_menu_remove_positions( $arr = array() ) {
+		return $arr[0] != __( 'Positions', 'sportspress' );
+	}
+}
+
+if ( ! function_exists( 'sportspress_admin_menu_remove_seasons' ) ) {
+	function sportspress_admin_menu_remove_seasons( $arr = array() ) {
+		return $arr[0] != __( 'Seasons', 'sportspress' );
+	}
+}
+
+if ( ! function_exists( 'sportspress_admin_menu_remove_venues' ) ) {
+	function sportspress_admin_menu_remove_venues( $arr = array() ) {
+		return $arr[0] != __( 'Venues', 'sportspress' );
+	}
+}
