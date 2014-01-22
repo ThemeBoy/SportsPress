@@ -1970,13 +1970,14 @@ if ( !function_exists( 'sportspress_get_player_statistics_data' ) ) {
 				continue;
 
 			$team_name = get_the_title( $team_id );
+			$team_permalink = get_permalink( $team_id );
 
 			$season_name = sportspress_array_value( $season_names, $season_id, '&nbsp;' );
 
 			// Add season name to row
 			$merged[ $season_id ] = array(
 				'name' => $season_name,
-				'team' => $team_name
+				'team' => '<a href="' . $team_permalink . '">' . $team_name . '</a>'
 			);
 
 			foreach( $season_data as $key => $value ):
