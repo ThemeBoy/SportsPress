@@ -9,8 +9,9 @@ function sportspress_venue_term_init() {
 		'label' => $name,
 		'labels' => $labels,
 		'public' => true,
+		'has_archive' => false,
 		'hierarchical' => true,
-		'rewrite' => array( 'slug' => 'venue' )
+		'rewrite' => array( 'slug' => 'venue' ),
 	);
 	register_taxonomy( 'sp_venue', $object_type, $args );
 	register_taxonomy_for_object_type( 'sp_venue', 'sp_event' );
