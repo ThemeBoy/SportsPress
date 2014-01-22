@@ -22,39 +22,39 @@ add_filter( 'the_content', 'sportspress_the_content' );
 add_filter( 'get_the_content', 'sportspress_the_content' );
 
 function sportspress_default_event_content( $content ) {
-    $details = sportspress_event_details( get_the_ID() );
-    $results = sportspress_event_results( get_the_ID() );
-    $players = sportspress_event_players( get_the_ID() );
-    $staff = sportspress_event_staff( get_the_ID() );
+    $details = sportspress_event_details();
+    $results = sportspress_event_results();
+    $players = sportspress_event_players();
+    $staff = sportspress_event_staff();
     if ( ! empty( $results ) )
         return $results . $details . $players . $staff . $content;
-    $venue = sportspress_event_venue( get_the_ID() );
+    $venue = sportspress_event_venue();
     return $details . $venue . $players . $staff . $content;
 }
 add_filter( 'sportspress_event_content', 'sportspress_default_event_content' );
 
 function sportspress_default_calendar_content( $content ) {
-        $calendar = sportspress_events_calendar( get_the_ID() );
+        $calendar = sportspress_events_calendar();
         return $calendar . $content;
 }
 add_filter( 'sportspress_calendar_content', 'sportspress_default_calendar_content' );
 
 function sportspress_default_team_content( $content ) {
-    $columns = sportspress_team_columns( get_the_ID() );
-    return $columns . $content;
+    $columns = sportspress_team_columns();
+    return $content . $columns;
 }
 add_filter( 'sportspress_team_content', 'sportspress_default_team_content' );
 
 function sportspress_default_table_content( $content ) {
-    $table = sportspress_league_table( get_the_ID() );
-    $excerpt = has_excerpt() ? '<p>' . nl2br( get_the_excerpt() ) . '</p>' : '';
+    $table = sportspress_league_table();
+    $excerpt = has_excerpt() ? wpautop( get_the_excerpt() ) : '';
     return $table . $content . $excerpt;
 }
 add_filter( 'sportspress_table_content', 'sportspress_default_table_content' );
 
 function sportspress_default_player_content( $content ) {
-    $metrics = sportspress_player_metrics( get_the_ID() );
-    $statistics = sportspress_player_statistics( get_the_ID() );
+    $metrics = sportspress_player_metrics();
+    $statistics = sportspress_player_statistics();
     return $metrics . $statistics . $content;
 }
 add_filter( 'sportspress_player_content', 'sportspress_default_player_content' );
