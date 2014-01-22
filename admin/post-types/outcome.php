@@ -10,6 +10,7 @@ function sportspress_outcome_post_init() {
 		'public' => false,
 		'show_ui' => true,
 		'show_in_menu' => false,
+		'has_archive' => false,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
 		'register_meta_box_cb' => 'sportspress_outcome_meta_init',

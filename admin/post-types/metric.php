@@ -10,6 +10,7 @@ function sportspress_metric_post_init() {
 		'public' => false,
 		'show_ui' => true,
 		'show_in_menu' => false,
+		'has_archive' => false,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'page-attributes' ),
 		'capability_type' => 'sp_config'

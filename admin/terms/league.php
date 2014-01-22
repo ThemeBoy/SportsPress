@@ -9,7 +9,8 @@ function sportspress_league_term_init() {
 		'label' => $name,
 		'labels' => $labels,
 		'public' => true,
-		'has_archive' => false,
+		'show_in_nav_menus' => false,
+		'show_tagcloud' => false,
 		'hierarchical' => true,
 		'rewrite' => array( 'slug' => 'league' ),
 	);
