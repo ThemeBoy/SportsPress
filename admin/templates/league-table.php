@@ -9,16 +9,27 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 
 		$defaults = array(
 			'number_label' => __( 'Pos', 'sportspress' ),
-			'thumbnails' => 1,
+			'thumbnails' => 0,
 			'thumbnail_size' => 'thumbnail'
 		);
 
 		$r = wp_parse_args( $args, $defaults );
 
-		$data = sportspress_get_league_table_data( $id );
+		$leagues = get_the_terms( $id, 'sp_league' );
+		$seasons = get_the_terms( $id, 'sp_season' );
+
+		$terms = array();
+		if ( isset( $leagues[0] ) )
+			$terms[] = $leagues[0]->name;
+		if ( isset( $seasons[0] ) )
+			$terms[] = $seasons[0]->name;
+
+		$title = sizeof( $terms ) ? implode( ' &mdash; ', $terms ) : get_the_title( $id );
 
 		$output = '<table class="sp-league-table sp-data-table">' .
-		'<caption>' . get_the_title( $id ) . '</caption>' . '<thead>' . '<tr>';
+		'<caption>' . $title . '</caption>' . '<thead>' . '<tr>';
+
+		$data = sportspress_get_league_table_data( $id );
 
 		// The first row should be column labels
 		$labels = $data[0];

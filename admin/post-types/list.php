@@ -28,6 +28,7 @@ function sportspress_list_edit_columns() {
 		'sp_league' => __( 'League', 'sportspress' ),
 		'sp_season' => __( 'Season', 'sportspress' ),
 		'sp_team' => __( 'Team', 'sportspress' ),
+		'sp_views' => __( 'Views', 'sportspress' ),
 	);
 	return $columns;
 }

@@ -13,11 +13,9 @@ if ( !function_exists( 'sportspress_player_metrics' ) ) {
 		$nationality = get_post_meta( $id, 'sp_nationality', true );
 		$metrics = sportspress_get_player_metrics_data( $id );
 
-		$flag_image = '<img src="' . SPORTSPRESS_PLUGIN_URL . 'assets/images/flags/' . strtolower( $nationality ) . '.png" class="sp-flag">';
-
 		$common = array(
 			__( 'Number', 'sportspress' ) => $number,
-			__( 'Nationality', 'sportspress' ) => $flag_image . ' ' . sportspress_array_value( $sportspress_countries, $nationality, '&mdash;' ),
+			__( 'Nationality', 'sportspress' ) => sportspress_array_value( $sportspress_countries, $nationality, '&mdash;' ),
 		);
 
 		$data = array_merge( $common, $metrics );

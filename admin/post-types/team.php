@@ -40,6 +40,7 @@ function sportspress_team_edit_columns() {
 		'title' => __( 'Team', 'sportspress' ),
 		'sp_league' => __( 'Leagues', 'sportspress' ),
 		'sp_season' => __( 'Seasons', 'sportspress' ),
+		'sp_views' => __( 'Views', 'sportspress' ),
 	);
 	return $columns;
 }
