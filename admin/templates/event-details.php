@@ -24,7 +24,8 @@ if ( !function_exists( 'sportspress_event_details' ) ) {
 
 		$output = '<h3>' . __( 'Details', 'sportspress' ) . '</h3>';
 
-		$output .= '<table class="sp-event-details sp-data-table"><tbody>';
+		$output .= '<div class="sp-table-wrapper">' .
+			'<table class="sp-event-details sp-data-table sp-responsive-table"><tbody>';
 		
 		$i = 0;
 
@@ -39,7 +40,7 @@ if ( !function_exists( 'sportspress_event_details' ) ) {
 
 		endforeach;
 
-		$output .= '</tbody></table>';
+		$output .= '</tbody></table></div>';
 
 		return apply_filters( 'sportspress_event_details',  $output );
 

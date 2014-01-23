@@ -1,9 +1,10 @@
 === SportsPress ===
 Contributors: themeboy
 Tags: sports, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 0.1.10
+Stable tag: 0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,17 +13,17 @@ SportsPress is a flexible sports management plugin that adds team management fun
 == Installation ==
 
 = Minimum Requirements =
-* WordPress 3.5 or greater
+* WordPress 3.5 or greater (WordPress 3.8 recommended)
 * PHP version 5.2.4 or greater
 * MySQL version 5.0 or greater
 
-= Automatic installation =
+= Automatic Installation =
 
 Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t even need to leave your web browser. To do an automatic install of SportsPress, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
 
 In the search field type “SportsPress” and click Search Plugins. Once you’ve found our sports plugin you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking Install Now. After clicking that link you will be asked if you’re sure you want to install the plugin. Click yes and WordPress will automatically complete the installation.
 
-= Manual installation =
+= Manual Installation =
 
 The manual installation method involves downloading our sports plugin and uploading it to your webserver via your favorite FTP application.
 

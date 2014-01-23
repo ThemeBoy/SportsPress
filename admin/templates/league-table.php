@@ -25,7 +25,8 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 		$title = sizeof( $terms ) ? implode( ' &mdash; ', $terms ) : get_the_title( $id );
 
 		$output = '<h4 class="sp-table-caption">' . $title . '</h4>' .
-			'<table class="sp-league-table sp-data-table">' . '<thead>' . '<tr>';
+			'<div class="sp-table-wrapper">' .
+			'<table class="sp-league-table sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
 
 		$data = sportspress_get_league_table_data( $id );
 
@@ -73,7 +74,7 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 
 		endforeach;
 
-		$output .= '</tbody>' . '</table>';
+		$output .= '</tbody>' . '</table>' . '</div>';
 
 		return apply_filters( 'sportspress_league_table',  $output );
 

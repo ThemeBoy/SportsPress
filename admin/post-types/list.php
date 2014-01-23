@@ -39,6 +39,7 @@ function sportspress_list_meta_init( $post ) {
 	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
 
 	remove_meta_box( 'sp_seasondiv', 'sp_list', 'side' );
+	remove_meta_box( 'sp_leaguediv', 'sp_list', 'side' );
 	add_meta_box( 'sp_playerdiv', __( 'Players', 'sportspress' ), 'sportspress_list_player_meta', 'sp_list', 'side', 'high' );
 
 	if ( $players && $players != array(0) ):
