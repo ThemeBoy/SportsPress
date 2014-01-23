@@ -47,14 +47,15 @@ if ( !function_exists( 'sportspress_event_results' ) ) {
 
 			$output .= '<h3>' . __( 'Results', 'sportspress' ) . '</h3>';
 
-			$output .= '<table class="sp-event-results sp-data-table"><thead>';
-			$output .= '<th class="data-name">' . __( 'Team', 'sportspress' ) . '</th>';
+			$output .= '<div class="sp-table-wrapper">' .
+				'<table class="sp-event-results sp-data-table sp-responsive-table"><thead>' .
+				'<th class="data-name">' . __( 'Team', 'sportspress' ) . '</th>';
 			foreach( $result_labels as $key => $label ):
 				$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 			endforeach;
 			$output .= '</tr>' . '</thead>' . '<tbody>';
 			$output .= $table_rows;
-			$output .= '</tbody></table>';
+			$output .= '</tbody>' . '</table>' . '</div>';
 
 		endif;
 

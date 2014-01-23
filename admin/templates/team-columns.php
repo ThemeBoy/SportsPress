@@ -27,7 +27,8 @@ if ( !function_exists( 'sportspress_team_columns' ) ) {
 			unset( $data[0] );
 
 			$output .= '<h4 class="sp-table-caption">' . $league->name . '</h4>' .
-				'<table class="sp-team-columns sp-data-table">' . '<thead>' . '<tr>';
+				'<div class="sp-table-wrapper">' .
+				'<table class="sp-team-columns sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
 
 			foreach( $labels as $key => $label ):
 				$output .= '<th class="data-' . $key . '">' . $label . '</th>';
@@ -51,7 +52,7 @@ if ( !function_exists( 'sportspress_team_columns' ) ) {
 
 			endforeach;
 
-			$output .= '</tbody>' . '</table>';
+			$output .= '</tbody>' . '</table>' . '</div>';
 
 
 		endforeach;

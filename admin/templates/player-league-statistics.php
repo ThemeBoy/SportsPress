@@ -21,7 +21,8 @@ if ( !function_exists( 'sportspress_player_league_statistics' ) ) {
 			return false;
 
 		$output = '<h4 class="sp-table-caption">' . $league->name . '</h4>' .
-		'<table class="sp-player-statistics sp-data-table">' . '<thead>' . '<tr>';
+			'<div class="sp-table-wrapper">' .
+			'<table class="sp-player-statistics sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
 
 		foreach( $labels as $key => $label ):
 			$output .= '<th class="data-' . $key . '">' . $label . '</th>';
@@ -45,7 +46,7 @@ if ( !function_exists( 'sportspress_player_league_statistics' ) ) {
 
 		endforeach;
 
-		$output .= '</tbody>' . '</table>';
+		$output .= '</tbody>' . '</table>' . '</div>';
 
 		return apply_filters( 'sportspress_player_league_statistics',  $output );
 		

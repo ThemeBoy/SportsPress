@@ -18,20 +18,28 @@ function sportspress_admin_menu( $position ) {
 	endif;
 
     // Remove "Venues" and "Positions" links from Media submenu
-	$submenu['upload.php'] = array_filter( $submenu['upload.php'], 'sportspress_admin_menu_remove_venues' );
-	$submenu['upload.php'] = array_filter( $submenu['upload.php'], 'sportspress_admin_menu_remove_positions' );
+	if ( isset( $submenu['upload.php'] ) ):
+		$submenu['upload.php'] = array_filter( $submenu['upload.php'], 'sportspress_admin_menu_remove_venues' );
+		$submenu['upload.php'] = array_filter( $submenu['upload.php'], 'sportspress_admin_menu_remove_positions' );
+	endif;
 
     // Remove "Leagues" and "Seasons" links from Events submenu
-	$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], 'sportspress_admin_menu_remove_leagues' );
-	$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], 'sportspress_admin_menu_remove_seasons' );
+	if ( isset( $submenu['edit.php?post_type=sp_event'] ) ):
+		$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], 'sportspress_admin_menu_remove_leagues' );
+		$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], 'sportspress_admin_menu_remove_seasons' );
+	endif;
 
     // Remove "Leagues" and "Seasons" links from Players submenu
-	$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], 'sportspress_admin_menu_remove_leagues' );
-	$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], 'sportspress_admin_menu_remove_seasons' );
+	if ( isset( $submenu['edit.php?post_type=sp_player'] ) ):
+		$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], 'sportspress_admin_menu_remove_leagues' );
+		$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], 'sportspress_admin_menu_remove_seasons' );
+	endif;
 
     // Remove "Leagues" and "Seasons" links from Staff submenu
-	$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], 'sportspress_admin_menu_remove_leagues' );
-	$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], 'sportspress_admin_menu_remove_seasons' );
+	if ( isset( $submenu['edit.php?post_type=sp_staff'] ) ):
+		$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], 'sportspress_admin_menu_remove_leagues' );
+		$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], 'sportspress_admin_menu_remove_seasons' );
+	endif;
 
 }
 add_action( 'admin_menu', 'sportspress_admin_menu' );

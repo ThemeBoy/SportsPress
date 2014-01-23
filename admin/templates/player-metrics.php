@@ -18,7 +18,8 @@ if ( !function_exists( 'sportspress_player_metrics' ) ) {
 
 		$data = array_merge( $common, $metrics );
 
-		$output = '<table class="sp-player-metrics sp-data-table">' . '<tbody>';
+		$output = '<div class="sp-table-wrapper">' .
+			'<table class="sp-player-metrics sp-data-table sp-responsive-table">' . '<tbody>';
 
 		$i = 0;
 
@@ -30,7 +31,7 @@ if ( !function_exists( 'sportspress_player_metrics' ) ) {
 
 		endforeach;
 
-		$output .= '</tbody>' . '</table>';
+		$output .= '</tbody>' . '</table>' . '</div>';
 
 		return apply_filters( 'sportspress_player_metrics',  $output );
 
