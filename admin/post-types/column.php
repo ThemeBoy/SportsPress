@@ -54,7 +54,7 @@ function sportspress_column_details_meta( $post ) {
 	<p class="sp-equation-selector">
 		<?php
 		foreach ( $equation as $piece ):
-			sportspress_get_equation_selector( $post->ID, $piece, array( 'team_event', 'result', 'outcome' ) );
+			sportspress_equation_selector( $post->ID, $piece, array( 'team_event', 'result', 'outcome' ) );
 		endforeach;
 		?>
 	</p>

@@ -25,7 +25,7 @@ function sportspress_statistic_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'Label', 'sportspress' ),
 		'sp_positions' => __( 'Positions', 'sportspress' ),
-		'sp_equation' => __( 'Equation', 'sportspress' ),
+		'sp_calculate' => __( 'Calculate', 'sportspress' ),
 	);
 	return $columns;
 }
@@ -36,15 +36,11 @@ function sportspress_statistic_meta_init() {
 }
 
 function sportspress_statistic_equation_meta( $post ) {
-	$equation = explode( ' ', get_post_meta( $post->ID, 'sp_equation', true ) );
+	$calculate = get_post_meta( $post->ID, 'sp_calculate', true );
 	?>
-	<p><strong><?php _e( 'Equation', 'sportspress' ); ?></strong></p>
-	<p class="sp-equation-selector">
-		<?php
-		foreach ( $equation as $piece ):
-			sportspress_get_equation_selector( $post->ID, $piece, array( 'player_event' ) );
-		endforeach;
-		?>
+	<p><strong><?php _e( 'Calculate', 'sportspress' ); ?></strong></p>
+	<p class="sp-calculate-selector">
+		<?php sportspress_calculate_selector( $post->ID, $calculate ); ?>
 	</p>
 	<?php
 	sportspress_nonce();
