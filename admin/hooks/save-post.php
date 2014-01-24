@@ -47,7 +47,24 @@ function sportspress_save_post( $post_id ) {
 
 			break;
 
+		case ( 'sp_result' ):
+
+			// Delete posts with duplicate key
+			sportspress_delete_duplicate_post( $_POST );
+
+			break;
+
+		case ( 'sp_outcome' ):
+
+			// Delete posts with duplicate key
+			sportspress_delete_duplicate_post( $_POST );
+
+			break;
+
 		case ( 'sp_column' ):
+
+			// Delete posts with duplicate key
+			sportspress_delete_duplicate_post( $_POST );
 		
 			// Update equation as string
 			update_post_meta( $post_id, 'sp_equation', implode( ' ', sportspress_array_value( $_POST, 'sp_equation', array() ) ) );
@@ -65,8 +82,11 @@ function sportspress_save_post( $post_id ) {
 
 		case ( 'sp_statistic' ):
 
-			// Update equation as string
-			update_post_meta( $post_id, 'sp_equation', implode( ' ', sportspress_array_value( $_POST, 'sp_equation', array() ) ) );
+			// Delete posts with duplicate key
+			sportspress_delete_duplicate_post( $_POST );
+
+			// Update calculation method as string
+			update_post_meta( $post_id, 'sp_calculate', sportspress_array_value( $_POST, 'sp_calculate', 'DESC' ) );
 
 			break;
 

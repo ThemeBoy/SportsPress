@@ -75,6 +75,9 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_precision':
 			echo sportspress_get_post_precision( $post_id );
 			break;
+		case 'sp_calculate':
+			echo sportspress_get_post_calculate( $post_id );
+			break;
 		case 'sp_player':
 			echo sportspress_the_posts( $post_id, 'sp_player' );
 			break;
