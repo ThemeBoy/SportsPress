@@ -17,6 +17,7 @@ function sportspress_default_event_content( $content ) {
         $venue = sportspress_event_venue();
         $content = $details . $venue . $players . $staff . $content;
     endif;
+    return $content;
 }
 add_filter( 'the_content', 'sportspress_default_event_content' );
 
@@ -49,7 +50,7 @@ function sportspress_default_table_content( $content ) {
 add_filter( 'the_content', 'sportspress_default_table_content' );
 
 function sportspress_default_player_content( $content ) {
-    if ( is_singular( 'sp_list' ) && in_the_loop() ):
+    if ( is_singular( 'sp_player' ) && in_the_loop() ):
         $metrics = sportspress_player_metrics();
         $statistics = sportspress_player_statistics();
         $content = $metrics . $statistics . $content;
@@ -59,7 +60,7 @@ function sportspress_default_player_content( $content ) {
 add_filter( 'the_content', 'sportspress_default_player_content' );
 
 function sportspress_default_list_content( $content ) {
-    if ( is_singular( 'sp_player' ) && in_the_loop() ):
+    if ( is_singular( 'sp_list' ) && in_the_loop() ):
         $list = sportspress_player_list( get_the_ID() );
         $content = $list . $content;
     endif;
