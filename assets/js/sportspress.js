@@ -11,7 +11,25 @@ function viewport() {
 
 	// Data tables
 	if (viewport().width > 640) {
-		$(".sp-data-table").dataTable({
+		$(".sp-league-table, .sp-event-statistics, .sp-player-list").dataTable({
+			"aaSorting": [],
+			"bAutoWidth": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bPaginate": false,
+			"bSort": true,
+		    "oLanguage": {
+		      "oAria": {
+		        "sSortAscending": "",
+		        "sSortDescending": ""
+		      }
+		    },
+		    "aoColumnDefs": [
+		      { "sType": "numeric", "aTargets": [ 0 ] },
+		    ]
+		});
+
+		$(".sp-player-statistics").dataTable({
 			"aaSorting": [],
 			"bAutoWidth": false,
 			"bFilter": false,
