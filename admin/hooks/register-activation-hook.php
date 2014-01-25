@@ -77,11 +77,12 @@ function sportspress_activation_hook() {
     );
 
     // Flush rewrite rules
-    sportspress_event_post_init();
     sportspress_result_post_init();
     sportspress_outcome_post_init();
     sportspress_column_post_init();
     sportspress_statistic_post_init();
+    sportspress_event_post_init();
+    sportspress_calendar_post_init();
     sportspress_team_post_init();
     sportspress_table_post_init();
     sportspress_player_post_init();
@@ -89,6 +90,7 @@ function sportspress_activation_hook() {
     sportspress_staff_post_init();
     sportspress_position_term_init();
     sportspress_season_term_init();
+    sportspress_league_term_init();
     flush_rewrite_rules();
 }
 register_activation_hook( SPORTSPRESS_PLUGIN_FILE, 'sportspress_activation_hook' );

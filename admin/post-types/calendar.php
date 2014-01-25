@@ -28,6 +28,7 @@ function sportspress_calendar_edit_columns() {
 		'sp_league' => __( 'Leagues', 'sportspress' ),
 		'sp_season' => __( 'Seasons', 'sportspress' ),
 		'sp_venue' => __( 'Venues', 'sportspress' ),
+		'sp_events' => __( 'Events', 'sportspress' ),
 		'sp_views' => __( 'Views', 'sportspress' ),
 	);
 	return $columns;
@@ -44,7 +45,7 @@ function sportspress_calendar_meta_init( $post ) {
 function sportspress_calendar_events_meta( $post ) {
 	$seasons = get_the_terms( $post->ID, 'sp_season' );
 
-	$data = sportspress_get_calendar_data( $post->ID, true );
+	$data = sportspress_get_calendar_data( $post->ID );
 
 	sportspress_edit_calendar_table( $data );
 
