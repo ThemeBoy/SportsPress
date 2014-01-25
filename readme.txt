@@ -72,6 +72,15 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 
 == Changelog ==
 
+= 0.2 =
+* Feature - Add option to select whether statistics are calculated as a sum or average.
+* Feature - Enable pageview tracking for posts and custom post types.
+* Feature - Responsive datatables.
+* Fix - Add site admin capabilities for multisite.
+* Fix - Force numerical sorting of number column.
+* Tweak - Enable SportsPress content functions to be called without explicit ID.
+* Tweak - Remove redundant admin menu links via filter.
+
 = 0.1.10 =
 * Documentation - Add Installation, FAQ and Screenshots to assets.
 

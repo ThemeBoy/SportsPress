@@ -107,28 +107,32 @@ if ( !function_exists( 'sportspress_get_the_term_id' ) ) {
 	}
 }
 
-function sportspress_get_post_views( $post_id ) {
-    $count_key = 'sp_views';
-    $count = get_post_meta( $post_id, $count_key, true );
-    if ( $count == '' ):
-        delete_post_meta( $post_id, $count_key );
-        add_post_meta( $post_id, $count_key, '0' );
-        return sprintf( _n( '1 View', '%1$s Views', '0', 'sportspress' ), '0' );
-    endif;
-    return sprintf( _n( '1 View', '%1$s Views', $count, 'sportspress' ), $count );
+if ( !function_exists( 'sportspress_get_post_views' ) ) {
+	function sportspress_get_post_views( $post_id ) {
+	    $count_key = 'sp_views';
+	    $count = get_post_meta( $post_id, $count_key, true );
+	    if ( $count == '' ):
+	        delete_post_meta( $post_id, $count_key );
+	        add_post_meta( $post_id, $count_key, '0' );
+	        return sprintf( _n( '1 View', '%1$s Views', '0', 'sportspress' ), '0' );
+	    endif;
+	    return sprintf( _n( '1 View', '%1$s Views', $count, 'sportspress' ), $count );
+	}
 }
 
-function sportspress_set_post_views( $post_id ) {
-    $count_key = 'sp_views';
-    $count = get_post_meta( $post_id, $count_key, true );
-    if ( $count == '' ):
-        $count = 0;
-        delete_post_meta( $post_id, $count_key );
-        add_post_meta( $post_id, $count_key, '0' );
-    else:
-        $count++;
-        update_post_meta( $post_id, $count_key, $count );
-    endif;
+if ( !function_exists( 'sportspress_set_post_views' ) ) {
+	function sportspress_set_post_views( $post_id ) {
+	    $count_key = 'sp_views';
+	    $count = get_post_meta( $post_id, $count_key, true );
+	    if ( $count == '' ):
+	        $count = 0;
+	        delete_post_meta( $post_id, $count_key );
+	        add_post_meta( $post_id, $count_key, '0' );
+	    else:
+	        $count++;
+	        update_post_meta( $post_id, $count_key, $count );
+	    endif;
+	}
 }
 
 if ( !function_exists( 'sportspress_get_post_precision' ) ) {

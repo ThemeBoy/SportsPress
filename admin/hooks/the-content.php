@@ -1,6 +1,7 @@
 <?php
 function sportspress_the_content( $content ) {
-    sportspress_set_post_views( get_the_ID() );
+    if ( is_single() || is_page() )
+        sportspress_set_post_views( get_the_ID() );
     return $content;
 }
 add_filter( 'the_content', 'sportspress_the_content' );
