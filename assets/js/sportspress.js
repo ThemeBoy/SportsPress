@@ -9,7 +9,8 @@ function viewport() {
 
 (function($) {
 
-	// Data tables
+	/* Data Tables */
+
 	if (viewport().width > 640) {
 		$(".sp-league-table, .sp-event-statistics, .sp-player-list").dataTable({
 			"aaSorting": [],
@@ -45,7 +46,16 @@ function viewport() {
 		});
 	}
 
-	// Responsive tables
+
+	/*
+	 * Responsive Tables
+	 *
+	 * Based on responsive-tables.js by ZURB
+	 *
+	 * Credit:      ZURB
+	 * Original:    https://github.com/zurb/responsive-tables
+	 */
+
 	var switched = false;
 	var updateTables = function() {
 	if ((viewport().width <= 640) && !switched ){
@@ -111,7 +121,9 @@ function viewport() {
 	});
 	}
 
-	// Google Maps
+
+	/* Google Maps */
+
 	function initialize_google_maps() {
 		$maps = $('.sp-google-map');
 		$maps.each(function() {

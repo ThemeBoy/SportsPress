@@ -4,6 +4,7 @@ function sportspress_manage_posts_columns( $defaults ){
     return $defaults;
 }
 add_filter( 'manage_posts_columns', 'sportspress_manage_posts_columns' );
+add_filter( 'manage_page_posts_columns', 'sportspress_manage_posts_columns' );
 
 function sportspress_manage_posts_custom_column( $column, $post_id ) {
 	global $post;
