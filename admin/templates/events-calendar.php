@@ -162,7 +162,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 				$calendar_output .= '<td>';
 
 			if ( in_array($day, $daywithpost) ) // any posts today?
-					$calendar_output .= '<a href="' . add_query_arg( array( 'yr' => $thisyear, 'mo' => $thismonth, 'day' => $day ), get_post_type_archive_link( 'sp_event' ) ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) . "\">$day</a>";
+					$calendar_output .= '<a href="' . add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) . "\">$day</a>";
 			else
 				$calendar_output .= $day;
 			$calendar_output .= '</td>';
