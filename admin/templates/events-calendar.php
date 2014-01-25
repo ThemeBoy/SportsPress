@@ -5,7 +5,8 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		if ( ! $id )
 			$id = get_the_ID();
 	
-		global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
+		global $wpdb, $m, $wp_locale, $posts;
+
 		$initial = false;
 		$echo = 1;
 
@@ -15,6 +16,10 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 
 		// week_begins = 0 stands for Sunday
 		$week_begins = intval(get_option('start_of_week'));
+
+		// Get year and month from query vars
+		$year = isset( $_GET['sp_year'] ) ? $_GET['sp_year'] : 0;
+		$monthnum =  isset( $_GET['sp_month'] ) ? $_GET['sp_month'] : 0;
 
 		// Let's figure out when we are
 		if ( !empty($monthnum) && !empty($year) ) {
@@ -43,20 +48,20 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		$previous = $wpdb->get_row("SELECT MONTH(post_date) AS month, YEAR(post_date) AS year
 			FROM $wpdb->posts
 			WHERE post_date < '$thisyear-$thismonth-01'
-			AND post_type = 'sp_event' AND post_status = 'publish'
+			AND post_type = 'sp_event' AND ( post_status = 'publish' OR post_status = 'future' )
 				ORDER BY post_date DESC
 				LIMIT 1");
 		$next = $wpdb->get_row("SELECT MONTH(post_date) AS month, YEAR(post_date) AS year
 			FROM $wpdb->posts
 			WHERE post_date > '$thisyear-$thismonth-{$last_day} 23:59:59'
-			AND post_type = 'sp_event' AND post_status = 'publish'
+			AND post_type = 'sp_event' AND ( post_status = 'publish' OR post_status = 'future' )
 				ORDER BY post_date ASC
 				LIMIT 1");
 
 		/* translators: Calendar caption: 1: month name, 2: 4-digit year */
 		$calendar_caption = _x('%1$s %2$s', 'calendar caption', 'sportspress');
-		$calendar_output = '<table id="wp-calendar">
-		<caption>' . sprintf($calendar_caption, $wp_locale->get_month($thismonth), date('Y', $unixmonth)) . '</caption>
+		$calendar_output = '<h4 class="sp-table-caption">' . sprintf($calendar_caption, $wp_locale->get_month($thismonth), date('Y', $unixmonth)) . '</h4>
+		<table id="wp-calendar">
 		<thead>
 		<tr>';
 
@@ -80,7 +85,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		<tr>';
 
 		if ( $previous ) {
-			$calendar_output .= "\n\t\t".'<td colspan="3" id="prev"><a href="' . get_month_link($previous->year, $previous->month) . '" title="' . esc_attr( sprintf(__('View posts for %1$s %2$s', 'sportspress'), $wp_locale->get_month($previous->month), date('Y', mktime(0, 0 , 0, $previous->month, 1, $previous->year)))) . '">&laquo; ' . $wp_locale->get_month_abbrev($wp_locale->get_month($previous->month)) . '</a></td>';
+			$calendar_output .= "\n\t\t".'<td colspan="3" id="prev"><a href="' . add_query_arg( array( 'sp_year' => $previous->year, 'sp_month' => $previous->month ), get_permalink() ) . '" title="' . esc_attr( sprintf(__('View events for %1$s %2$s', 'sportspress'), $wp_locale->get_month($previous->month), date('Y', mktime(0, 0 , 0, $previous->month, 1, $previous->year)))) . '">&laquo; ' . $wp_locale->get_month_abbrev($wp_locale->get_month($previous->month)) . '</a></td>';
 		} else {
 			$calendar_output .= "\n\t\t".'<td colspan="3" id="prev" class="pad">&nbsp;</td>';
 		}
@@ -88,7 +93,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		$calendar_output .= "\n\t\t".'<td class="pad">&nbsp;</td>';
 
 		if ( $next ) {
-			$calendar_output .= "\n\t\t".'<td colspan="3" id="next"><a href="' . get_month_link($next->year, $next->month) . '" title="' . esc_attr( sprintf(__('View posts for %1$s %2$s', 'sportspress'), $wp_locale->get_month($next->month), date('Y', mktime(0, 0 , 0, $next->month, 1, $next->year))) ) . '">' . $wp_locale->get_month_abbrev($wp_locale->get_month($next->month)) . ' &raquo;</a></td>';
+			$calendar_output .= "\n\t\t".'<td colspan="3" id="next"><a href="' . add_query_arg( array( 'sp_year' => $next->year, 'sp_month' => $next->month ), get_permalink() ) . '" title="' . esc_attr( sprintf(__('View events for %1$s %2$s', 'sportspress'), $wp_locale->get_month($next->month), date('Y', mktime(0, 0 , 0, $next->month, 1, $next->year))) ) . '">' . $wp_locale->get_month_abbrev($wp_locale->get_month($next->month)) . ' &raquo;</a></td>';
 		} else {
 			$calendar_output .= "\n\t\t".'<td colspan="3" id="next" class="pad">&nbsp;</td>';
 		}
@@ -103,7 +108,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		// Get days with posts
 		$dayswithposts = $wpdb->get_results("SELECT DISTINCT DAYOFMONTH(post_date)
 			FROM $wpdb->posts WHERE post_date >= '{$thisyear}-{$thismonth}-01 00:00:00'
-			AND post_type = 'sp_event' AND post_status = 'publish'
+			AND post_type = 'sp_event' AND ( post_status = 'publish' OR post_status = 'future' )
 			AND post_date <= '{$thisyear}-{$thismonth}-{$last_day} 23:59:59'", ARRAY_N);
 		if ( $dayswithposts ) {
 			foreach ( (array) $dayswithposts as $daywith ) {
@@ -123,7 +128,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 			."FROM $wpdb->posts "
 			."WHERE post_date >= '{$thisyear}-{$thismonth}-01 00:00:00' "
 			."AND post_date <= '{$thisyear}-{$thismonth}-{$last_day} 23:59:59' "
-			."AND post_type = 'sp_event' AND post_status = 'publish'"
+			."AND post_type = 'sp_event' AND ( post_status = 'publish' OR post_status = 'future' )"
 		);
 		if ( $ak_post_titles ) {
 			foreach ( (array) $ak_post_titles as $ak_post_title ) {
@@ -157,7 +162,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 				$calendar_output .= '<td>';
 
 			if ( in_array($day, $daywithpost) ) // any posts today?
-					$calendar_output .= '<a href="' . get_day_link( $thisyear, $thismonth, $day ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) . "\">$day</a>";
+					$calendar_output .= '<a href="' . add_query_arg( array( 'yr' => $thisyear, 'mo' => $thismonth, 'day' => $day ), get_post_type_archive_link( 'sp_event' ) ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) . "\">$day</a>";
 			else
 				$calendar_output .= $day;
 			$calendar_output .= '</td>';

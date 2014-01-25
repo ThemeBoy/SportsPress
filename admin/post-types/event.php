@@ -198,7 +198,7 @@ function sportspress_event_edit_columns() {
 		'sp_league' => __( 'League', 'sportspress' ),
 		'sp_season' => __( 'Season', 'sportspress' ),
 		'sp_venue' => __( 'Venue', 'sportspress' ),
-		'sp_kickoff' => __( 'Date/Time', 'sportspress' ),
+		'sp_datetime' => __( 'Date/Time', 'sportspress' ),
 		'sp_views' => __( 'Views', 'sportspress' ),
 	);
 	return $columns;
@@ -206,7 +206,7 @@ function sportspress_event_edit_columns() {
 add_filter( 'manage_edit-sp_event_columns', 'sportspress_event_edit_columns' );
 
 function sportspress_event_edit_sortable_columns( $columns ) {
-	$columns['sp_kickoff'] = 'sp_kickoff';
+	$columns['sp_datetime'] = 'sp_datetime';
 	return $columns;
 }
 add_filter( 'manage_edit-sp_event_sortable_columns', 'sportspress_event_edit_sortable_columns' );
