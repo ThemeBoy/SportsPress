@@ -106,13 +106,13 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		<tr>';
 
 		// Get days with posts
-		$dayswithposts = $wpdb->get_results("SELECT DISTINCT DAYOFMONTH(post_date)
+		$dayswithposts = $wpdb->get_results("SELECT DAYOFMONTH(post_date), ID
 			FROM $wpdb->posts WHERE post_date >= '{$thisyear}-{$thismonth}-01 00:00:00'
 			AND post_type = 'sp_event' AND ( post_status = 'publish' OR post_status = 'future' )
 			AND post_date <= '{$thisyear}-{$thismonth}-{$last_day} 23:59:59'", ARRAY_N);
 		if ( $dayswithposts ) {
 			foreach ( (array) $dayswithposts as $daywith ) {
-				$daywithpost[] = $daywith[0];
+				$daywithpost[ $daywith[0] ][] = $daywith[1];
 			}
 		} else {
 			$daywithpost = array();
@@ -161,8 +161,8 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 			else
 				$calendar_output .= '<td>';
 
-			if ( in_array($day, $daywithpost) ) // any posts today?
-					$calendar_output .= '<a href="' . add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) . "\">$day</a>";
+			if ( array_key_exists($day, $daywithpost) ) // any posts today?
+				$calendar_output .= '<a href="' . ( sizeof( $daywithpost[ $day ] ) > 1 ? add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) : get_permalink( $daywithpost[ $day ][0] ) ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) . "\">$day</a>";
 			else
 				$calendar_output .= $day;
 			$calendar_output .= '</td>';
