@@ -1,18 +1,18 @@
 <?php
 function sportspress_admin_init() {
     $post_types = array(
-        'sp_events',
-        'sp_calendars',
-        'sp_teams',
-        'sp_tables',
-        'sp_players',
-        'sp_lists',
-        'sp_staffs',
-        'sp_configs',
+        'sp_event',
+        'sp_team',
+        'sp_table',
+        'sp_player',
+        'sp_list',
+        'sp_staff',
+        'sp_config',
     );
 
     $caps = array(
         'publish',
+        'read',
         'delete',
         'delete_others',
         'delete_private',
@@ -28,8 +28,9 @@ function sportspress_admin_init() {
     $administrator = get_role( 'administrator' );
 
     foreach( $post_types as $post_type ):
+        $administrator->add_cap( 'edit_' . $post_type );
         foreach ( $caps as $cap ):
-            $administrator->add_cap( $cap . '_' . $post_type );
+            $administrator->add_cap( $cap . '_' . $post_type . 's' );
         endforeach;
     endforeach;
 }
