@@ -1,14 +1,8 @@
 <?php
 if ( !function_exists( 'sportspress_events_calendar' ) ) {
-	function sportspress_events_calendar( $id = null ) {
-
-		if ( ! $id )
-			$id = get_the_ID();
+	function sportspress_events_calendar( $initial = true ) {
 	
 		global $wpdb, $m, $wp_locale, $posts;
-
-		$initial = false;
-		$echo = 1;
 
 		// Quick check. If we have no posts at all, abort!
 		if ( !$posts )
@@ -60,8 +54,9 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 
 		/* translators: Calendar caption: 1: month name, 2: 4-digit year */
 		$calendar_caption = _x('%1$s %2$s', 'calendar caption', 'sportspress');
-		$calendar_output = '<h4 class="sp-table-caption">' . sprintf($calendar_caption, $wp_locale->get_month($thismonth), date('Y', $unixmonth)) . '</h4>
+		$calendar_output = '
 		<table id="wp-calendar">
+		<caption>' . sprintf($calendar_caption, $wp_locale->get_month($thismonth), date('Y', $unixmonth)) . '</caption>
 		<thead>
 		<tr>';
 

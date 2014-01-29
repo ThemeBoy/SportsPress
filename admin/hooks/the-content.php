@@ -22,15 +22,6 @@ function sportspress_default_event_content( $content ) {
 }
 add_filter( 'the_content', 'sportspress_default_event_content' );
 
-function sportspress_default_calendar_content( $content ) {
-    if ( is_singular( 'sp_calendar' ) && in_the_loop() ):
-        $calendar = sportspress_events_calendar();
-        $content = $calendar . $content;
-    endif;
-    return $content;
-}
-add_filter( 'the_content', 'sportspress_default_calendar_content' );
-
 function sportspress_default_team_content( $content ) {
     if ( is_singular( 'sp_team' ) && in_the_loop() ):
         $columns = sportspress_team_columns();

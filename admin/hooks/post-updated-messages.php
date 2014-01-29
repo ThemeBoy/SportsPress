@@ -9,7 +9,7 @@ function sportspress_post_updated_messages( $messages ) {
 			' <a href="' . esc_url( admin_url( 'edit.php?post_type=' . $typenow ) ) . '">' .
 			sprintf( __( 'Edit %s', 'sportspress' ), $obj->labels->name ) . '</a>';
 
-	elseif ( in_array( $typenow, array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) ) ):
+	elseif ( in_array( $typenow, array( 'sp_event', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) ) ):
 		$obj = get_post_type_object( $typenow );
 
 		$messages['post'][1] = sprintf(	__( '%s updated.', 'sportspress' ),	$obj->labels->singular_name ) .
