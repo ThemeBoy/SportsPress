@@ -14,7 +14,7 @@ $data = get_posts( $args );
 		<tr>
 			<th><?php _e( 'Label', 'sportspress' ); ?></th>
 			<th><?php _e( 'Positions', 'sportspress' ); ?></th>
-			<td>&nbsp;</td>
+			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<?php $i = 0; foreach ( $data as $row ): ?>
