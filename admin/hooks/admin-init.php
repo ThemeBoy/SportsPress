@@ -11,24 +11,26 @@ function sportspress_admin_init() {
     );
 
     $caps = array(
-        'publish',
         'read',
-        'delete',
-        'delete_others',
-        'delete_private',
-        'delete_published',
+        'read_private',
         'edit',
         'edit_others',
         'edit_private',
         'edit_published',
-        'read_private',
+        'publish',
+        'delete',
+        'delete_others',
+        'delete_private',
+        'delete_published',
     );
 
     // Site Admin
     $administrator = get_role( 'administrator' );
 
     foreach( $post_types as $post_type ):
+        $administrator->add_cap( 'read_' . $post_type );
         $administrator->add_cap( 'edit_' . $post_type );
+        $administrator->add_cap( 'delete_' . $post_type );
         foreach ( $caps as $cap ):
             $administrator->add_cap( $cap . '_' . $post_type . 's' );
         endforeach;

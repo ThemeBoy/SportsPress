@@ -122,6 +122,9 @@ if ( !function_exists( 'sportspress_get_post_views' ) ) {
 
 if ( !function_exists( 'sportspress_set_post_views' ) ) {
 	function sportspress_set_post_views( $post_id ) {
+		if ( is_preview() )
+			return;
+		
 	    $count_key = 'sp_views';
 	    $count = get_post_meta( $post_id, $count_key, true );
 	    if ( $count == '' ):
@@ -766,7 +769,11 @@ if ( !function_exists( 'sportspress_edit_team_columns_table' ) ) {
 }
 
 if ( !function_exists( 'sportspress_edit_player_statistics_table' ) ) {
-	function sportspress_edit_player_statistics_table( $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons_teams = array(), $readonly = true ) {
+	function sportspress_edit_player_statistics_table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons_teams = array(), $readonly = true ) {
+		if ( ! $id )
+			$id = get_the_ID();
+
+		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
@@ -796,11 +803,12 @@ if ( !function_exists( 'sportspress_edit_player_statistics_table' ) ) {
 								$args = array(
 									'post_type' => 'sp_team',
 									'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
-									'show_option_none' => __( '-- Select --', 'sportspress' ),
+									'show_option_none' => __( '-- Not Set --', 'sportspress' ),
 								    'sort_order'   => 'ASC',
 								    'sort_column'  => 'menu_order',
 									'selected' => $value,
 									'values' => 'ID',
+									'include' => $teams,
 									'tax_query' => array(
 										'relation' => 'AND',
 										array(
@@ -1373,7 +1381,7 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 			$outcomes = get_posts( $args );
 
 			if ( $outcomes ):
-				$outcome = $outcomes[0];
+				$outcome = reset( $outcomes );
 				$totals['streak'] = $outcome->post_title . $streak['count'];
 			endif;
 
@@ -1583,7 +1591,7 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 				$outcomes = get_posts( $args );
 
 				if ( $outcomes ):
-					$outcome = $outcomes[0];
+					$outcome = reset( $outcomes );
 					$totals[ $team_id ]['streak'] = $outcome->post_title . $streak['count'];
 				else:
 					$totals[ $team_id ]['streak'] = '&mdash;';

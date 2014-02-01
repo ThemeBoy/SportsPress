@@ -17,10 +17,14 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 		$seasons = get_the_terms( $id, 'sp_season' );
 
 		$terms = array();
-		if ( isset( $leagues[0] ) )
-			$terms[] = $leagues[0]->name;
-		if ( isset( $seasons[0] ) )
-			$terms[] = $seasons[0]->name;
+		if ( sizeof( $leagues ) ):
+			$league = reset( $leagues );
+			$terms[] = $league->name;
+		endif;
+		if ( sizeof( $seasons ) ):
+			$season = reset( $seasons );
+			$terms[] = $season->name;
+		endif;
 
 		$title = sizeof( $terms ) ? implode( ' &mdash; ', $terms ) : get_the_title( $id );
 

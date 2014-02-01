@@ -4,7 +4,7 @@ Tags: sports, sports journalism, teams, team management, fixtures, results, stan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 0.2
+Stable tag: 0.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -71,6 +71,11 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 4. SportsPress Settings panel.
 
 == Changelog ==
+
+= 0.2.1 =
+* Feature - Events Calendar widget added.
+* Fix - Player settings table markup fixed.
+* Tweak - Refine custom post type capabilities for user roles.
 
 = 0.2 =
 * Feature - Add option to select whether statistics are calculated as a sum or average.
