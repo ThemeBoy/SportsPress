@@ -73,9 +73,9 @@ require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 
 // Widgets
 require_once dirname( __FILE__ ) . '/admin/widgets/calendar.php';
+require_once dirname( __FILE__ ) . '/admin/widgets/table.php';
 
 // Typical request actions
-require_once dirname( __FILE__ ) . '/admin/hooks/widgets-init.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/plugins-loaded.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/after-setup-theme.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/wp-enqueue-scripts.php';
@@ -98,6 +98,7 @@ require_once dirname( __FILE__ ) . '/admin/hooks/save-post.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/admin-post-thumbnail-html.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/gettext.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/pre-get-posts.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/the-posts.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/sanitize-title.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/the-content.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/wp-insert-post-data.php';
