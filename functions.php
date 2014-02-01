@@ -302,8 +302,8 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 	}
 }
 
-if ( !function_exists( 'sportspress_the_posts' ) ) {
-	function sportspress_the_posts( $post_id = null, $meta = 'post' ) {
+if ( !function_exists( 'sportspress_posts' ) ) {
+	function sportspress_posts( $post_id = null, $meta = 'post' ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		$ids = get_post_meta( $post_id, $meta, false );
