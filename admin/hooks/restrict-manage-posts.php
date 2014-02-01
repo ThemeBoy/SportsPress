@@ -32,5 +32,16 @@ function sportspress_restrict_manage_posts() {
 		);
 		sportspress_dropdown_taxonomies( $args );
 	endif;
+	if ( in_array( $typenow, array( 'sp_event', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) ) ):
+		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
+		$args = array(
+			'post_type' => 'sp_team',
+			'name' => 'team',
+			'show_option_all' => sprintf( __( 'All %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
+			'selected' => $selected,
+			'values' => 'ID',
+		);
+		sportspress_dropdown_pages( $args );
+	endif;
 }
 add_action( 'restrict_manage_posts', 'sportspress_restrict_manage_posts' );

@@ -49,6 +49,7 @@
 		width: 50%;
 		overflow: hidden;
 		overflow-x: scroll;
+		box-shadow: 0 0 1em rgba(0,0,0,0.5);
 	}
 	.sp-pinned-table table {
 		border-right: none;

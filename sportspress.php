@@ -6,7 +6,7 @@
 Plugin Name: SportsPress
 Plugin URI: http://themeboy.com/sportspress
 Description: Manage your club and its players, staff, events, league tables, and player lists.
-Version: 0.2
+Version: 0.2.1
 Author: ThemeBoy
 Author URI: http://themeboy.com/
 License: GPLv3
@@ -91,6 +91,7 @@ require_once dirname( __FILE__ ) . '/admin/hooks/admin-head.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/manage-posts-columns.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/post-thumbnail-html.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/restrict-manage-posts.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/parse-query.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/save-post.php';
 
 // Filters
