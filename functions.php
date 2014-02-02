@@ -230,13 +230,16 @@ if ( !function_exists( 'sportspress_dropdown_taxonomies' ) ) {
 			'name' => null,
 			'selected' => null,
 			'hide_empty' => false,
-			'value' => 'slug',
+			'values' => 'slug',
+		    'class' => null,
 		);
 		$args = array_merge( $defaults, $args ); 
 		$terms = get_terms( $args['taxonomy'], $args );
 		$name = ( $args['name'] ) ? $args['name'] : $args['taxonomy'];
+		$class = $args['class'];
+		unset( $args['class'] );
 		if ( $terms ) {
-			printf( '<select name="%s" class="postform">', $name );
+			printf( '<select name="%1$s" class="postform %2$s">', $name, $class );
 			if ( $args['show_option_all'] ) {
 				printf( '<option value="0">%s</option>', $args['show_option_all'] );
 			}
@@ -244,7 +247,7 @@ if ( !function_exists( 'sportspress_dropdown_taxonomies' ) ) {
 				printf( '<option value="-1">%s</option>', $args['show_option_none'] );
 			}
 			foreach ( $terms as $term ) {
-				if ( $args['value'] == 'term_id' )
+				if ( $args['values'] == 'term_id' )
 					printf( '<option value="%s" %s>%s</option>', $term->term_id, selected( true, $args['selected'] == $term->term_id, false ), $term->name );
 				else
 					printf( '<option value="%s" %s>%s</option>', $term->slug, selected( true, $args['selected'] == $term->slug, false ), $term->name );
@@ -259,6 +262,8 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 		$defaults = array(
 			'show_option_all' => false,
 			'show_option_none' => false,
+			'option_all_value' => 0,
+			'option_none_value' => -1,
 			'name' => 'page_id',
 			'selected' => null,
 			'numberposts' => -1,
@@ -275,20 +280,23 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 		    'exclude_tree' => null,
 		    'post_type' => 'page',
 		    'values' => 'post_name',
+		    'class' => null,
 		);
 		$args = array_merge( $defaults, $args );
 		$name = $args['name'];
 		unset( $args['name'] );
 		$values = $args['values'];
 		unset( $args['values'] );
+		$class = $args['class'];
+		unset( $args['class'] );
 		$posts = get_posts( $args );
-		if ( $posts ) {
-			printf( '<select name="%s" class="postform">', $name );
+		if ( $posts ):
+			printf( '<select name="%1$s" class="postform %2$s">', $name, $class );
 			if ( $args['show_option_all'] ) {
-				printf( '<option value="0">%s</option>', $args['show_option_all'] );
+				printf( '<option value="%1$s">%2$s</option>', $args['option_all_value'], $args['show_option_all'] );
 			}
 			if ( $args['show_option_none'] ) {
-				printf( '<option value="-1">%s</option>', $args['show_option_none'] );
+				printf( '<option value="%1$s">%2$s</option>', $args['option_none_value'], $args['show_option_none'] );
 			}
 			foreach ( $posts as $post ) {
 				if ( $values == 'ID' ):
@@ -298,7 +306,10 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 				endif;
 			}
 			print( '</select>' );
-		}
+			return true;
+		else:
+			return false;
+		endif;
 	}
 }
 
@@ -882,7 +893,7 @@ if ( !function_exists( 'sportspress_edit_event_results_table' ) ) {
 									'post_type' => 'sp_outcome',
 									'name' => 'sp_results[' . $team_id . '][outcome]',
 									'show_option_none' => __( '-- Not set --', 'sportspress' ),
-									'option_none_value' => 0,
+									'option_none_value' => '',
 								    'sort_order'   => 'ASC',
 								    'sort_column'  => 'menu_order',
 									'selected' => $value

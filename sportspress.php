@@ -6,7 +6,7 @@
 Plugin Name: SportsPress
 Plugin URI: http://themeboy.com/sportspress
 Description: Manage your club and its players, staff, events, league tables, and player lists.
-Version: 0.2.1
+Version: 0.2.2
 Author: ThemeBoy
 Author URI: http://themeboy.com/
 License: GPLv3
@@ -18,7 +18,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-define( 'SPORTSPRESS_VERSION', '0.2' );
+define( 'SPORTSPRESS_VERSION', '0.2.2' );
 define( 'SPORTSPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SPORTSPRESS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'SPORTSPRESS_PLUGIN_FILE', __FILE__ );
@@ -40,6 +40,7 @@ require_once dirname( __FILE__ ) . '/admin/templates/event-players.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-results.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-staff.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-venue.php';
+require_once dirname( __FILE__ ) . '/admin/templates/events.php';
 require_once dirname( __FILE__ ) . '/admin/templates/events-calendar.php';
 require_once dirname( __FILE__ ) . '/admin/templates/league-table.php';
 require_once dirname( __FILE__ ) . '/admin/templates/player-league-statistics.php';
@@ -72,6 +73,7 @@ require_once dirname( __FILE__ ) . '/admin/terms/venue.php';
 require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 
 // Widgets
+require_once dirname( __FILE__ ) . '/admin/widgets/events.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/calendar.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/table.php';
 
