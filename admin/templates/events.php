@@ -13,8 +13,9 @@ if ( !function_exists( 'sportspress_events' ) ) {
 			$options['posts_per_page'] = $args['number'];
 		endif;
 
-		if ( isset( $args['status'] ) && $args['status'] == 'any' || $args['status'] == 'scheduled' ):
-			$options['post_status'] = array( 'publish', 'future' );
+		if ( isset( $args['status'] ) && $args['status'] == 'future' ):
+			$options['post_status'] = array( 'future' );
+			$options['order'] = 'ASC';
 		endif;
 
 		if ( isset( $args['league'] ) ):

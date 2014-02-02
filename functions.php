@@ -262,6 +262,7 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 		$defaults = array(
 			'show_option_all' => false,
 			'show_option_none' => false,
+			'show_dates' => false,
 			'option_all_value' => 0,
 			'option_none_value' => -1,
 			'name' => 'page_id',
@@ -270,15 +271,16 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 			'posts_per_page' => -1,
 			'child_of' => 0,
 			'sort_order' => 'ASC',
-		    'sort_column'  => 'post_title',
+		    'sort_column' => 'post_title',
 		    'hierarchical' => 1,
-		    'exclude'      => null,
-		    'include'      => null,
-		    'meta_key'     => null,
-		    'meta_value'   => null,
-		    'authors'      => null,
+		    'exclude' => null,
+		    'include' => null,
+		    'meta_key' => null,
+		    'meta_value' => null,
+		    'authors' => null,
 		    'exclude_tree' => null,
 		    'post_type' => 'page',
+			'post_status' => 'publish',
 		    'values' => 'post_name',
 		    'class' => null,
 		);
@@ -292,19 +294,21 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 		$posts = get_posts( $args );
 		if ( $posts ):
 			printf( '<select name="%1$s" class="postform %2$s">', $name, $class );
-			if ( $args['show_option_all'] ) {
+			if ( $args['show_option_all'] ):
 				printf( '<option value="%1$s">%2$s</option>', $args['option_all_value'], $args['show_option_all'] );
-			}
-			if ( $args['show_option_none'] ) {
+			endif;
+			if ( $args['show_option_none'] ):
 				printf( '<option value="%1$s">%2$s</option>', $args['option_none_value'], $args['show_option_none'] );
-			}
-			foreach ( $posts as $post ) {
+			endif;
+			foreach ( $posts as $post ):
+				setup_postdata( $post );
 				if ( $values == 'ID' ):
-					printf( '<option value="%s" %s>%s</option>', $post->ID, selected( true, $args['selected'] == $post->ID, false ), $post->post_title );
+					printf( '<option value="%s" %s>%s</option>', $post->ID, selected( true, $args['selected'] == $post->ID, false ), $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
 				else:
 					printf( '<option value="%s" %s>%s</option>', $post->post_name, selected( true, $args['selected'] == $post->post_name, false ), $post->post_title );
 				endif;
-			}
+			endforeach;
+			wp_reset_postdata();
 			print( '</select>' );
 			return true;
 		else:

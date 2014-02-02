@@ -1,22 +1,21 @@
 <?php
-class SportsPress_Widget_Events extends WP_Widget {
+class SportsPress_Widget_Future_Events extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'widget_recent_entries widget_sp_events', 'description' => __( 'SportsPress widget.', 'sportspress' ) );
-		parent::__construct('sp_events', __( 'Events', 'sportspress' ), $widget_ops);
+		$widget_ops = array('classname' => 'widget_recent_entries widget_sp_future_events', 'description' => __( 'SportsPress widget.', 'sportspress' ) );
+		parent::__construct('sp_future_events', __( 'Future Events', 'sportspress' ), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {
 		extract($args);
-		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
-		$status = empty($instance['status']) ? null : $instance['status'];
+		$title = apply_filters('widget_title', empty($instance['title']) ? __( 'Future Events' ) : $instance['title'], $instance, $this->id_base);
 		$league = empty($instance['league']) ? null : $instance['league'];
 		$season = empty($instance['season']) ? null : $instance['season'];
 		$venue = empty($instance['venue']) ? null : $instance['venue'];
 		$team = empty($instance['team']) ? null : $instance['team'];
 		$number = empty($instance['number']) ? get_option( 'posts_per_page' ) : $instance['number'];
 		$args = array(
-			'status' => $status,
+			'status' => 'future',
 			'league' => $league,
 			'season' => $season,
 			'venue' => $venue,
@@ -26,7 +25,7 @@ class SportsPress_Widget_Events extends WP_Widget {
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		echo '<div id="sp_events_wrap">';
+		echo '<div id="sp_future_events_wrap">';
 		echo sportspress_events( $args );
 		echo '</div>';
 		echo $after_widget;
@@ -35,7 +34,6 @@ class SportsPress_Widget_Events extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['status'] = strip_tags($new_instance['status']);
 		$instance['league'] = intval($new_instance['league']);
 		$instance['season'] = intval($new_instance['season']);
 		$instance['venue'] = intval($new_instance['venue']);
@@ -46,9 +44,8 @@ class SportsPress_Widget_Events extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'status' => '', 'league' => '', 'season' => '', 'venue' => '', 'team' => '', 'number' => 3 ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'league' => '', 'season' => '', 'venue' => '', 'team' => '', 'number' => 3 ) );
 		$title = strip_tags($instance['title']);
-		$status = strip_tags($instance['status']);
 		$league = intval($instance['league']);
 		$season = intval($instance['season']);
 		$venue = intval($instance['venue']);
@@ -57,20 +54,6 @@ class SportsPress_Widget_Events extends WP_Widget {
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
-
-		<p><label for="<?php echo $this->get_field_id('status'); ?>"><?php _e( 'Status:', 'sportspress' ); ?></label>
-		<?php
-		$options = array(
-			'any' => __( 'Any', 'sportspress' ),
-			'played' => __( 'Played', 'sportspress' ),
-			'scheduled' => __( 'Scheduled', 'sportspress' ),
-		);
-		?>
-		<select id="<?php echo $this->get_field_id('status'); ?>" name="<?php echo $this->get_field_name('status'); ?>" class="widefat">
-		<?php foreach( $options as $key => $name ): ?>
-			<option value="<?php echo $key; ?>" <?php selected ( $key, $status ); ?>><?php echo $name; ?></option>
-		<?php endforeach; ?>
-		</select>
 
 		<p><label for="<?php echo $this->get_field_id('league'); ?>"><?php _e( 'League:', 'sportspress' ); ?></label>
 		<?php
@@ -142,4 +125,4 @@ class SportsPress_Widget_Events extends WP_Widget {
 <?php
 	}
 }
-add_action( 'widgets_init', create_function( '', 'return register_widget( "SportsPress_Widget_Events" );' ) );
+add_action( 'widgets_init', create_function( '', 'return register_widget( "SportsPress_Widget_Future_Events" );' ) );

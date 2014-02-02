@@ -1,9 +1,9 @@
 <?php
-class SportsPress_Widget_Calendar extends WP_Widget {
+class SportsPress_Widget_Events_Calendar extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'widget_calendar widget_sp_calendar', 'description' => __( 'SportsPress widget.', 'sportspress' ) );
-		parent::__construct('sp_calendar', __( 'Events Calendar', 'sportspress' ), $widget_ops);
+		$widget_ops = array('classname' => 'widget_calendar widget_sp_events_calendar', 'description' => __( 'SportsPress widget.', 'sportspress' ) );
+		parent::__construct('sp_events_calendar', __( 'Events Calendar', 'sportspress' ), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {
@@ -34,4 +34,4 @@ class SportsPress_Widget_Calendar extends WP_Widget {
 <?php
 	}
 }
-add_action( 'widgets_init', create_function( '', 'return register_widget( "SportsPress_Widget_Calendar" );' ) );
+add_action( 'widgets_init', create_function( '', 'return register_widget( "SportsPress_Widget_Events_Calendar" );' ) );
