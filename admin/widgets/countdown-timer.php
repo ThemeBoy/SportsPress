@@ -27,19 +27,11 @@ class SP_Widget_Countdown_Timer extends WP_Widget {
 				endforeach;
 			endif;
 
-			$venues = get_the_terms( $post->ID, 'sp_venue' );
-			if ( $venues ):
-				foreach( $venues as $venue ):
-					$term = get_term( $venue->term_id, 'sp_venue' );
-					echo '<h5 class="event-venue"><div class="dashicons dashicons-location"></div> ' . $term->name . '</h5>';
-				endforeach;
-			endif;
-
 			$now = new DateTime( date("Y-m-d H:i:s") );
 			$date = new DateTime( $post->post_date );
 			$interval = $date->diff( $now );
 
-			echo '<h3 class="countdown-timer sp-countdown-timer clearfix"><time datetime="' . $post->post_date . '">' .
+			echo '<h3 class="countdown-timer sp-countdown-timer"><time datetime="' . $post->post_date . '">' .
 				'<span class="d">' . $interval->d . ' <small>' . __( 'Days', 'sportspress' ) . '</small></span> ' .
 				'<span class="h">' . $interval->h . ' <small>' . __( 'Hours', 'sportspress' ) . '</small></span> ' .
 				'<span class="m">' . $interval->m . ' <small>' . __( 'Mins', 'sportspress' ) . '</small></span> ' .
