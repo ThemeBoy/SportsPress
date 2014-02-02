@@ -17,19 +17,23 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 		$seasons = get_the_terms( $id, 'sp_season' );
 
 		$terms = array();
-		if ( sizeof( $leagues ) ):
+		if ( $leagues ):
 			$league = reset( $leagues );
 			$terms[] = $league->name;
 		endif;
-		if ( sizeof( $seasons ) ):
+		if ( $seasons ):
 			$season = reset( $seasons );
 			$terms[] = $season->name;
 		endif;
 
 		$title = sizeof( $terms ) ? implode( ' &mdash; ', $terms ) : get_the_title( $id );
 
-		$output = '<h4 class="sp-table-caption">' . $title . '</h4>' .
-			'<div class="sp-table-wrapper">' .
+		if ( ! is_singular( 'sp_table' ) )
+			$output = '<h4 class="sp-table-caption"><a href="' . get_permalink( $id ) . '">' . $title . '</a></h4>';
+		else
+			$output = '<h4 class="sp-table-caption">' . $title . '</h4>';
+		
+		$output .= '<div class="sp-table-wrapper">' .
 			'<table class="sp-league-table sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
 
 		$data = sportspress_get_league_table_data( $id );

@@ -60,7 +60,7 @@ function sportspress_event_details_meta( $post ) {
 				'taxonomy' => 'sp_league',
 				'name' => 'sp_league',
 				'selected' => $league_id,
-				'value' => 'term_id',
+				'values' => 'term_id',
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
 			sportspress_dropdown_taxonomies( $args );
@@ -73,7 +73,7 @@ function sportspress_event_details_meta( $post ) {
 				'taxonomy' => 'sp_season',
 				'name' => 'sp_season',
 				'selected' => $season_id,
-				'value' => 'term_id',
+				'values' => 'term_id',
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
 			sportspress_dropdown_taxonomies( $args );
@@ -86,7 +86,7 @@ function sportspress_event_details_meta( $post ) {
 				'taxonomy' => 'sp_venue',
 				'name' => 'sp_venue',
 				'selected' => $venue_id,
-				'value' => 'term_id',
+				'values' => 'term_id',
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
 			sportspress_dropdown_taxonomies( $args );

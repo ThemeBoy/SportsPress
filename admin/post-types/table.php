@@ -38,6 +38,7 @@ function sportspress_table_meta_init( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 
 	remove_meta_box( 'sp_seasondiv', 'sp_table', 'side' );
+	remove_meta_box( 'sp_leaguediv', 'sp_table', 'side' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_table_team_meta', 'sp_table', 'side', 'high' );
 
 	if ( $teams && $teams != array(0) ):
@@ -57,7 +58,7 @@ function sportspress_table_team_meta( $post, $test ) {
 				'taxonomy' => 'sp_league',
 				'name' => 'sp_league',
 				'selected' => $league_id,
-				'value' => 'term_id'
+				'values' => 'term_id'
 			);
 			sportspress_dropdown_taxonomies( $args );
 			?>
@@ -69,7 +70,7 @@ function sportspress_table_team_meta( $post, $test ) {
 				'taxonomy' => 'sp_season',
 				'name' => 'sp_season',
 				'selected' => $season_id,
-				'value' => 'term_id'
+				'values' => 'term_id'
 			);
 			sportspress_dropdown_taxonomies( $args );
 			?>

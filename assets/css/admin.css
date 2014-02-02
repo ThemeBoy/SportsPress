@@ -1,5 +1,21 @@
 /* SportsPress admin styles */
 
+.widget[id*="sp_events-"] .widget-title h4:before,
+.widget[id*="sp_calendar-"] .widget-title h4:before,
+.widget[id*="sp_table-"] .widget-title h4:before {
+	font-family: 'themeboy';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "\e600";
+	margin-right: 0.5em;
+}
+
 .postbox .inside .sp-data-table-container {
 	overflow: auto;
 }

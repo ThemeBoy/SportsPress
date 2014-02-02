@@ -80,7 +80,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		<tr>';
 
 		if ( $previous ) {
-			$calendar_output .= "\n\t\t".'<td colspan="3" id="prev"><a href="' . add_query_arg( array( 'sp_year' => $previous->year, 'sp_month' => $previous->month ) ) . '" title="' . esc_attr( sprintf(__('%1$s %2$s', 'calendar caption', 'sportspress'), $wp_locale->get_month($previous->month), date('Y', mktime(0, 0 , 0, $previous->month, 1, $previous->year)))) . '">&laquo; ' . $wp_locale->get_month_abbrev($wp_locale->get_month($previous->month)) . '</a></td>';
+			$calendar_output .= "\n\t\t".'<td colspan="3" id="prev"><a data-tooltip data-options="disable_for_touch:true" class="has-tooltip tip-right" href="' . add_query_arg( array( 'sp_year' => $previous->year, 'sp_month' => $previous->month ) ) . '" title="' . esc_attr( sprintf(__('%1$s %2$s', 'calendar caption', 'sportspress'), $wp_locale->get_month($previous->month), date('Y', mktime(0, 0 , 0, $previous->month, 1, $previous->year)))) . '">&laquo; ' . $wp_locale->get_month_abbrev($wp_locale->get_month($previous->month)) . '</a></td>';
 		} else {
 			$calendar_output .= "\n\t\t".'<td colspan="3" id="prev" class="pad">&nbsp;</td>';
 		}
@@ -88,7 +88,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		$calendar_output .= "\n\t\t".'<td class="pad">&nbsp;</td>';
 
 		if ( $next ) {
-			$calendar_output .= "\n\t\t".'<td colspan="3" id="next"><a href="' . add_query_arg( array( 'sp_year' => $next->year, 'sp_month' => $next->month ) ) . '" title="' . esc_attr( sprintf(__('%1$s %2$s', 'calendar caption', 'sportspress'), $wp_locale->get_month($next->month), date('Y', mktime(0, 0 , 0, $next->month, 1, $next->year))) ) . '">' . $wp_locale->get_month_abbrev($wp_locale->get_month($next->month)) . ' &raquo;</a></td>';
+			$calendar_output .= "\n\t\t".'<td colspan="3" id="next"><a data-tooltip data-options="disable_for_touch:true" class="has-tooltip tip-left" href="' . add_query_arg( array( 'sp_year' => $next->year, 'sp_month' => $next->month ) ) . '" title="' . esc_attr( sprintf(__('%1$s %2$s', 'calendar caption', 'sportspress'), $wp_locale->get_month($next->month), date('Y', mktime(0, 0 , 0, $next->month, 1, $next->year))) ) . '">' . $wp_locale->get_month_abbrev($wp_locale->get_month($next->month)) . ' &raquo;</a></td>';
 		} else {
 			$calendar_output .= "\n\t\t".'<td colspan="3" id="next" class="pad">&nbsp;</td>';
 		}
@@ -157,7 +157,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 				$calendar_output .= '<td>';
 
 			if ( array_key_exists($day, $daywithpost) ) // any posts today?
-				$calendar_output .= '<a href="' . ( sizeof( $daywithpost[ $day ] ) > 1 ? add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) : get_permalink( $daywithpost[ $day ][0] ) ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) . "\">$day</a>";
+				$calendar_output .= '<a data-tooltip data-options="disable_for_touch:true" class="has-tip" href="' . ( sizeof( $daywithpost[ $day ] ) > 1 ? add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) . '" title="' . sprintf( '%s Events', ( sizeof( $daywithpost[ $day ] ) ) ) : get_permalink( $daywithpost[ $day ][0] ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) ) . "\">$day</a>";
 			else
 				$calendar_output .= $day;
 			$calendar_output .= '</td>';

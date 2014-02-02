@@ -3,7 +3,7 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_league_table widget_sp_league_table', 'description' => __( 'SportsPress widget.', 'sportspress' ) );
-		parent::__construct('sp_table', __( 'League Table', 'sportspress', 'sportspress' ), $widget_ops);
+		parent::__construct('sp_table', __( 'League Table', 'sportspress' ), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {
@@ -35,17 +35,19 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
-		<p>
+		<p><label for="<?php echo $this->get_field_id('id'); ?>"><?php _e( 'League Table:', 'sportspress' ); ?></label>
 		<?php
 		$args = array(
 			'post_type' => 'sp_table',
 			'name' => $this->get_field_name('id'),
 			'id' => $this->get_field_id('id'),
-			'show_option_none' => __( '-- Select --', 'sportspress' ),
 			'selected' => $id,
 			'values' => 'ID',
+			'class' => 'widefat',
 		);
-		sportspress_dropdown_pages( $args );
+		if ( ! sportspress_dropdown_pages( $args ) ):
+			sportspress_post_adder( 'sp_table' );
+		endif;
 		?>
 		</p>
 <?php
