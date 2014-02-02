@@ -24,12 +24,12 @@ define( 'SPORTSPRESS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'SPORTSPRESS_PLUGIN_FILE', __FILE__ );
 
 // Libraries
-include dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
+require_once dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
 
 // Globals
-include_once dirname( __FILE__ ) . '/admin/globals/continents.php';
-include_once dirname( __FILE__ ) . '/admin/globals/countries.php';
-include_once dirname( __FILE__ ) . '/admin/globals/sports.php';
+require_once dirname( __FILE__ ) . '/admin/globals/continents.php';
+require_once dirname( __FILE__ ) . '/admin/globals/countries.php';
+require_once dirname( __FILE__ ) . '/admin/globals/sports.php';
 
 // Functions
 require_once dirname( __FILE__ ) . '/functions.php';
@@ -50,7 +50,7 @@ require_once dirname( __FILE__ ) . '/admin/templates/player-statistics.php';
 require_once dirname( __FILE__ ) . '/admin/templates/team-columns.php';
 
 // Settings
-include dirname( __FILE__ ) . '/admin/settings/settings.php' ;
+require_once dirname( __FILE__ ) . '/admin/settings/settings.php' ;
 
 // Custom post types
 require_once dirname( __FILE__ ) . '/admin/post-types/separator.php';
@@ -73,9 +73,11 @@ require_once dirname( __FILE__ ) . '/admin/terms/venue.php';
 require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 
 // Widgets
-require_once dirname( __FILE__ ) . '/admin/widgets/events.php';
-require_once dirname( __FILE__ ) . '/admin/widgets/calendar.php';
-require_once dirname( __FILE__ ) . '/admin/widgets/table.php';
+require_once dirname( __FILE__ ) . '/admin/widgets/recent-events.php';
+require_once dirname( __FILE__ ) . '/admin/widgets/future-events.php';
+require_once dirname( __FILE__ ) . '/admin/widgets/countdown-timer.php';
+require_once dirname( __FILE__ ) . '/admin/widgets/events-calendar.php';
+require_once dirname( __FILE__ ) . '/admin/widgets/league-table.php';
 
 // Typical request actions
 require_once dirname( __FILE__ ) . '/admin/hooks/plugins-loaded.php';

@@ -1,8 +1,10 @@
 /* SportsPress admin styles */
 
-.widget[id*="sp_events-"] .widget-title h4:before,
-.widget[id*="sp_calendar-"] .widget-title h4:before,
-.widget[id*="sp_table-"] .widget-title h4:before {
+.widget[id*="sp_recent_events-"] .widget-title h4:before,
+.widget[id*="sp_future_events-"] .widget-title h4:before,
+.widget[id*="sp_countdown_timer-"] .widget-title h4:before,
+.widget[id*="sp_events_calendar-"] .widget-title h4:before,
+.widget[id*="sp_league_table-"] .widget-title h4:before {
 	font-family: 'themeboy';
 	speak: none;
 	font-style: normal;
@@ -14,6 +16,7 @@
 	-moz-osx-font-smoothing: grayscale;
 	content: "\e600";
 	margin-right: 0.5em;
+	text-shadow: 0 0 0 #00c7ff;
 }
 
 .postbox .inside .sp-data-table-container {
