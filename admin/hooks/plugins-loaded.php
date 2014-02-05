@@ -15,14 +15,12 @@ function sportspress_plugins_loaded() {
     // Add image sizes
 	if ( function_exists( 'add_image_size' ) ) {
 
-		// Header
-		add_image_size( 'sportspress-header', 1600, 700, true );
-
 		// Standard (3:2)
 		add_image_size( 'sportspress-standard', 637, 425, true );
 		add_image_size( 'sportspress-standard-thumbnail', 303, 202, true );
 
 		// Wide (16:9)
+		add_image_size( 'sportspress-wide-header', 1600, 900, true );
 		add_image_size( 'sportspress-wide', 637, 358, true );
 		add_image_size( 'sportspress-wide-thumbnail', 303, 170, true );
 
@@ -33,9 +31,7 @@ function sportspress_plugins_loaded() {
 		// Fit (Proportional)
 		add_image_size( 'sportspress-fit',  637, 637, false );
 		add_image_size( 'sportspress-fit-thumbnail',  303, 303, false );
-
-		// Icon (Proportional)
-		add_image_size( 'sportspress-icon',  32, 32, false );
+		add_image_size( 'sportspress-fit-icon',  32, 32, false );
 
 	}
 

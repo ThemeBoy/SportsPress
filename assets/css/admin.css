@@ -2,7 +2,7 @@
 
 .widget[id*="sp_recent_events-"] .widget-title h4:before,
 .widget[id*="sp_future_events-"] .widget-title h4:before,
-.widget[id*="sp_countdown_timer-"] .widget-title h4:before,
+.widget[id*="sp_countdown-"] .widget-title h4:before,
 .widget[id*="sp_events_calendar-"] .widget-title h4:before,
 .widget[id*="sp_league_table-"] .widget-title h4:before {
 	font-family: 'themeboy';
@@ -22,25 +22,59 @@
 .postbox .inside .sp-data-table-container {
 	overflow: auto;
 }
+
+.wp-media-buttons .button.sp-insert {
+	padding-left: 5px;
+}
+
+.wp-media-buttons .sp-insert span.sp-buttons-icon {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	vertical-align: text-top;
+	margin: 0 2px;
+}
+
+.wp-media-buttons .sp-insert span.sp-buttons-icon:before {
+	font: 400 18px/1 dashicons;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #888;
+}
+
+.wp-media-buttons .sp-insert span.sp-map-buttons-icon:before {
+	content: '\f231';
+}
+
+.wp-media-buttons .sp-insert span.sp-table-buttons-icon:before {
+	content: '\f185';
+}
+
 table.widefat.sp-data-table td {
 	line-height: 2;
 }
+
 table.widefat.sp-data-table td:first-child {
 	white-space: nowrap;
 }
+
 table.widefat.sp-data-table input[type="text"],
 table.widefat.sp-data-table input[type="number"] {
 	min-width: 1.25em;
 	width: 100%;
 }
+
 table.widefat.sp-data-table input.name {
 	min-width: 0;
 	width: auto;
 }
+
 .sp-admin-config-table th,
 .sp-admin-config-table td {
 	width: 20%;
 }
+
 table.widefat th.column-sp_icon,
 table.widefat td.column-sp_icon {
 	width: 32px;
