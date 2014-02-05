@@ -72,6 +72,12 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 
 == Changelog ==
 
+= 0.2.2 =
+* Feature - League Table widget added.
+* Feature - Events widget added.
+* Feature - Countdown widget added.
+* Fix - Syntax error fixed for PHP version 5.2 and below.
+
 = 0.2.1 =
 * Feature - Events Calendar widget added.
 * Fix - Player settings table markup fixed.

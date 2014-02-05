@@ -1,20 +1,17 @@
 <?php
 function sportspress_admin_menu( $position ) {
 
-	if ( ! current_user_can( 'manage_options' ) )
-		return;
-	
 	global $menu, $submenu;
 
 	// Find where our placeholder is in the menu
-	foreach( $menu as $key => $data ) {
+	foreach( $menu as $key => $data ):
 		if ( is_array( $data ) && array_key_exists( 2, $data ) && $data[2] == 'edit.php?post_type=sp_separator' )
-			$position = $key;
-	}
+			$seperator_position = $key;
+	endforeach;
 
 	// Swap our placeholder post type with a menu separator
-	if ( $position ):
-		$menu[ $position ] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
+	if ( $seperator_position ):
+		$menu[ $seperator_position ] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
 	endif;
 
     // Remove "Venues" and "Positions" links from Media submenu

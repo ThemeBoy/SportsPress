@@ -35,6 +35,7 @@ require_once dirname( __FILE__ ) . '/admin/globals/sports.php';
 require_once dirname( __FILE__ ) . '/functions.php';
 
 // Templates
+require_once dirname( __FILE__ ) . '/admin/templates/countdown.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-details.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-players.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-results.php';
@@ -75,7 +76,7 @@ require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 // Widgets
 require_once dirname( __FILE__ ) . '/admin/widgets/recent-events.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/future-events.php';
-require_once dirname( __FILE__ ) . '/admin/widgets/countdown-timer.php';
+require_once dirname( __FILE__ ) . '/admin/widgets/countdown.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/events-calendar.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/league-table.php';
 
@@ -96,6 +97,7 @@ require_once dirname( __FILE__ ) . '/admin/hooks/manage-posts-columns.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/post-thumbnail-html.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/restrict-manage-posts.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/parse-query.php';
+//require_once dirname( __FILE__ ) . '/admin/hooks/media-buttons.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/save-post.php';
 
 // Filters
