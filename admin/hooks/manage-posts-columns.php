@@ -19,7 +19,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			echo get_the_terms( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '&mdash;';
 			break;
 		case 'sp_positions':
-			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : sprintf( __( 'All %s', 'sportspress' ), __( 'positions', 'sportspress' ) );
+			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '&mdash;';
 			break;
 		case 'sp_team':
 			$post_type = get_post_type( $post );
