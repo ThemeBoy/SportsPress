@@ -2,12 +2,20 @@
 global $sportspress_sports;
 
 $sportspress_sports['soccer'] = array(
-	'name' => __( 'Association Football (Soccer)', 'sportspress' ),
+	'name' => __( 'Soccer (Association Football)', 'sportspress' ),
 	'posts' => array(
 		// Results
 		'sp_result' => array(
 			array(
-				'post_title' => __( 'Goals', 'sportspress' ),
+				'post_title' => '1st Half',
+				'post_name'  => 'firsthalf',
+			),
+			array(
+				'post_title' => '2nd Half',
+				'post_name'  => 'secondhalf',
+			),
+			array(
+				'post_title' => 'Goals',
 				'post_name'  => 'goals',
 			),
 		),
@@ -102,39 +110,39 @@ $sportspress_sports['soccer'] = array(
 		// Player Metrics
 		'sp_metric' => array(
 			array(
-				'post_title' => __( 'Height', 'sportspress' ),
+				'post_title' => 'Height',
 				'post_name'  => 'height',
 			),
 			array(
-				'post_title' => __( 'Weight', 'sportspress' ),
+				'post_title' => 'Weight',
 				'post_name'  => 'weight',
 			),
 		),
 		// Player Statistics
 		'sp_statistic' => array(
 			array(
-				'post_title' => __( 'Goals', 'sportspress' ),
+				'post_title' => 'Goals',
 				'post_name'  => 'goals',
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
 				),
 			),
 			array(
-				'post_title' => __( 'Assists', 'sportspress' ),
+				'post_title' => 'Assists',
 				'post_name'  => 'assists',
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
 				),
 			),
 			array(
-				'post_title' => __( 'Yellow Cards', 'sportspress' ),
+				'post_title' => 'Yellow Cards',
 				'post_name'  => 'yellowcards',
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
 				),
 			),
 			array(
-				'post_title' => __( 'Red Cards', 'sportspress' ),
+				'post_title' => 'Red Cards',
 				'post_name'  => 'redcards',
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
