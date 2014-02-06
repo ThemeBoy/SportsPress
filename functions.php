@@ -112,11 +112,14 @@ if ( !function_exists( 'sportspress_get_post_views' ) ) {
 	    $count_key = 'sp_views';
 	    $count = get_post_meta( $post_id, $count_key, true );
 	    if ( $count == '' ):
+	    	$count = 0;
 	        delete_post_meta( $post_id, $count_key );
 	        add_post_meta( $post_id, $count_key, '0' );
-	        return sprintf( _n( '1 View', '%1$s Views', '0', 'sportspress' ), '0' );
 	    endif;
-	    return sprintf( _n( '1 View', '%1$s Views', $count, 'sportspress' ), $count );
+	    if ( isset( $views ) && $views == 1 )
+	    	return __( '1 View', 'sportspress' );
+	    else
+	    	return sprintf( __( '%s Views', 'sportspress' ), $count );
 	}
 }
 
@@ -2011,11 +2014,47 @@ if ( !function_exists( 'sportspress_get_player_statistics_data' ) ) {
 	function sportspress_get_player_statistics_data( $post_id, $league_id, $admin = false ) {
 
 		$seasons = (array)get_the_terms( $post_id, 'sp_season' );
+		$positions = get_the_terms( $post_id, 'sp_position' );
 		$stats = (array)get_post_meta( $post_id, 'sp_statistics', true );
 		$seasons_teams = sportspress_array_value( (array)get_post_meta( $post_id, 'sp_leagues', true ), $league_id, array() );
 
-		// Get labels from statistic variables
-		$statistic_labels = (array)sportspress_get_var_labels( 'sp_statistic' );
+		$args = array(
+			'post_type' => 'sp_statistic',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		if ( $positions ):
+			$position_ids = array();
+			foreach( $positions as $position ):
+				$position_ids[] = $position->term_id;
+			endforeach;
+			$args['tax_query'] = array(
+				'relation' => 'OR',
+				array(
+					'taxonomy' => 'sp_position',
+					'field' => 'id',
+					'terms' => $position_ids,
+				),
+				array(
+					'taxonomy' => 'sp_position',
+					'field' => 'id',
+					'operator' => 'NOT SET',
+				),
+			);
+		endif;
+
+		$statistics = get_posts( $args );
+
+		$statistic_labels = array();
+		$equations = array( 'eventsplayed' => 'sum' );
+		foreach ( $statistics as $statistic ):
+			$statistic_labels[ $statistic->post_name ] = $statistic->post_title;
+			$equations[ $statistic->post_name ] = get_post_meta( $statistic->ID, 'sp_calculate', true );
+		endforeach;
+		$columns = array_merge( array( 'eventsplayed' => __( 'Played', 'sportspress' ) ), $statistic_labels );
 
 		// Generate array of all season ids and season names
 		$div_ids = array();
@@ -2031,11 +2070,6 @@ if ( !function_exists( 'sportspress_get_player_statistics_data' ) ) {
 
 		// Get all seasons populated with stats where available
 		$tempdata = sportspress_array_combine( $div_ids, sportspress_array_value( $stats, $league_id, array() ) );
-
-		// Get equations from statistics variables
-		$equations = sportspress_get_var_calculates( 'sp_statistic' );
-
-		$equations['eventsplayed'] = 'sum';
 
 		foreach ( $div_ids as $div_id ):
 
@@ -2119,12 +2153,6 @@ if ( !function_exists( 'sportspress_get_player_statistics_data' ) ) {
 			endforeach;
 
 		endforeach;
-
-		// Get columns from statistics variables
-		$columns = array_merge(
-			array( 'eventsplayed' => __( 'Played', 'sportspress' ) ),
-			sportspress_get_var_labels( 'sp_statistic' )
-		);
 
 		// Merge the data and placeholders arrays
 		$merged = array();

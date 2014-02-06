@@ -7,11 +7,11 @@ $sportspress_sports['rugby'] = array(
 		// Results
 		'sp_result' => array(
 			array(
-				'post_title' => __( 'Points', 'sportspress' ),
+				'post_title' => 'Points',
 				'post_name'  => 'points',
 			),
 			array(
-				'post_title' => __( 'Bonus', 'sportspress' ),
+				'post_title' => 'Bonus',
 				'post_name'  => 'bonus',
 			),
 		),
@@ -110,46 +110,46 @@ $sportspress_sports['rugby'] = array(
 		// Player Metrics
 		'sp_metric' => array(
 			array(
-				'post_title' => __( 'Height', 'sportspress' ),
+				'post_title' => 'Height',
 				'post_name'  => 'height',
 			),
 			array(
-				'post_title' => __( 'Weight', 'sportspress' ),
+				'post_title' => 'Weight',
 				'post_name'  => 'weight',
 			),
 		),
 		// Player Statistics
 		'sp_statistic' => array(
 			array(
-				'post_title' => __( 'Points', 'sportspress' ),
+				'post_title' => 'Points',
 				'post_name'  => 'points',
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
 				),
 			),
 			array(
-				'post_title' => __( 'Tries', 'sportspress' ),
+				'post_title' => 'Tries',
 				'post_name'  => 'tries',
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
 				),
 			),
 			array(
-				'post_title' => __( 'Conversions', 'sportspress' ),
+				'post_title' => 'Conversions',
 				'post_name'  => 'conversions',
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
 				),
 			),
 			array(
-				'post_title' => __( 'Penalty Goals', 'sportspress' ),
+				'post_title' => 'Penalty Goals',
 				'post_name'  => 'penaltygoals',
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
 				),
 			),
 			array(
-				'post_title' => __( 'Drop Goals', 'sportspress' ),
+				'post_title' => 'Drop Goals',
 				'post_name'  => 'dropgoals',
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
