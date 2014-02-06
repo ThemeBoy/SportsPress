@@ -29,12 +29,28 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 				break;
 			elseif ( $post_type == 'sp_event' ):
 				$results = get_post_meta( $post_id, 'sp_results', true );
+				$options = get_option( 'sportspress' );
+				$main_result = sportspress_array_value( $options, 'main_result', null );
 				foreach( $teams as $team_id ):
 					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
-					$outcome_slug = sportspress_array_value( sportspress_array_value( $results, $team_id, null ), 'outcome', null );
 
 					echo $team->post_title;
+
+					$team_results = sportspress_array_value( $results, $team_id, null );
+
+					if ( $main_result ):
+						$team_result = sportspress_array_value( $team_results, $main_result, null );
+					else:
+						end( $team_results );
+						$team_result = prev( $team_results );
+					endif;
+
+					if ( $team_result != null ):
+						echo ' &mdash; ' . $team_result;
+					endif;
+
+					$outcome_slug = sportspress_array_value( $team_results, 'outcome', null );
 					if ( $outcome_slug && $outcome_slug != '-1' ):
 						$args=array(
 							'name' => $outcome_slug,
@@ -46,9 +62,10 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 
 						if ( sizeof( $outcomes ) ):
 							$outcome = reset( $outcomes );
-							echo ' &mdash; ' . $outcome->post_title;
+							echo ' (' . $outcome->post_title . ')';
 						endif;
 					endif;
+
 					echo '<br>';
 				endforeach;
 			elseif ( $post_type == 'sp_player' ):

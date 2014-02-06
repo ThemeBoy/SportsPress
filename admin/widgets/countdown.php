@@ -40,7 +40,7 @@ class SP_Widget_Countdown extends WP_Widget {
 			'name' => $this->get_field_name('id'),
 			'id' => $this->get_field_id('id'),
 			'selected' => $id,
-			'show_option_all' => '(' . __( 'Next Event', 'premier' ) . ')',
+			'show_option_all' => __( '(Auto)', 'sportspress' ),
 			'values' => 'ID',
 			'class' => 'widefat',
 			'show_dates' => true,

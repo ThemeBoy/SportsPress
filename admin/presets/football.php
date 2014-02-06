@@ -21,6 +21,13 @@ $sportspress_sports['football'] = array(
 				),
 			),
 			array(
+				'post_title' => 'T',
+				'post_name' => 't',
+				'meta'       => array(
+					'sp_equation'     => '$t',
+				),
+			),
+			array(
 				'post_title' => 'Pct',
 				'post_name' => 'pct',
 				'meta'       => array(
@@ -31,26 +38,123 @@ $sportspress_sports['football'] = array(
 				'post_title' => 'PF',
 				'post_name' => 'pf',
 				'meta'       => array(
-					'sp_equation'     => '$ptsfor',
+					'sp_equation'     => '$pointsfor',
 				),
 			),
 			array(
 				'post_title' => 'PA',
 				'post_name' => 'pa',
 				'meta'       => array(
-					'sp_equation'     => '$ptsagainst',
+					'sp_equation'     => '$pointsagainst',
 				),
 			),
 			array(
-				'post_title' => 'Str',
+				'post_title' => 'Net Pts',
+				'post_name' => 'netpts',
+				'meta'       => array(
+					'sp_equation'     => '$pointsfor - $pointsagainst',
+				),
+			),
+			array(
+				'post_title' => 'TD',
+				'post_name' => 'td',
+				'meta'       => array(
+					'sp_equation'     => '$touchdown',
+				),
+			),
+			array(
+				'post_title' => 'Strk',
 				'post_name' => 'strk',
 				'meta'       => array(
 					'sp_equation'     => '$streak',
 				),
 			),
+			array(
+				'post_title' => 'Last 5',
+				'post_name' => 'last5',
+				'meta'       => array(
+					'sp_equation'     => '$last5',
+				),
+			),
 		),
 		// Statistics
 		'sp_statistic' => array(
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp', // QB
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
+			array(
+				'post_title' => 'Comp',
+				'post_name' => 'comp',
+			),
 		),
 		// Results
 		'sp_result' => array(

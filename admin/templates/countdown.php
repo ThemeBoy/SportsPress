@@ -37,13 +37,13 @@ if ( !function_exists( 'sportspress_countdown' ) ) {
 
 			$now = new DateTime( current_time( 'mysql', 0 ) );
 			$date = new DateTime( $post->post_date );
-			$interval = $date->diff( $now );
+			$interval = date_diff( $now, $date );
 
 			$output .= '<h3 class="countdown sp-countdown"><time datetime="' . $post->post_date . '" data-countdown="' . str_replace( '-', '/', $post->post_date ) . '">' .
-				'<span>' . sprintf( '%02s', $interval->d ) . ' <small>' . __( 'days', 'sportspress' ) . '</small></span> ' .
-				'<span>' . sprintf( '%02s', $interval->h ) . ' <small>' . __( 'hours', 'sportspress' ) . '</small></span> ' .
-				'<span>' . sprintf( '%02s', $interval->i ) . ' <small>' . __( 'mins', 'sportspress' ) . '</small></span> ' .
-				'<span>' . sprintf( '%02s', $interval->s ) . ' <small>' . __( 'secs', 'sportspress' ) . '</small></span>' .
+				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->d ) ) . ' <small>' . __( 'days', 'sportspress' ) . '</small></span> ' .
+				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->h ) ) . ' <small>' . __( 'hours', 'sportspress' ) . '</small></span> ' .
+				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->i ) ) . ' <small>' . __( 'mins', 'sportspress' ) . '</small></span> ' .
+				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->s ) ) . ' <small>' . __( 'secs', 'sportspress' ) . '</small></span>' .
 			'</time></h3>';
 
 			$output .= '</div>';

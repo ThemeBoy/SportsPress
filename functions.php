@@ -491,6 +491,7 @@ if ( !function_exists( 'sportspress_equation_selector' ) ) {
 				case 'outcome':
 					$options[ __( 'Outcomes', 'sportspress' ) ] = sportspress_get_equation_optgroup_array( $postid, 'sp_outcome', array( 'max' => '&uarr;', 'min' => '&darr;' ) );
 					$options[ __( 'Outcomes', 'sportspress' ) ]['$streak'] = __( 'Streak', 'sportspress' );
+					$options[ __( 'Outcomes', 'sportspress' ) ]['$last5'] = __( 'Last 5', 'sportspress' );
 					$options[ __( 'Outcomes', 'sportspress' ) ]['$last10'] = __( 'Last 10', 'sportspress' );
 					break;
 				case 'column':
@@ -1151,6 +1152,16 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 			// Return direct value
 			return sportspress_array_value( $vars, 'streak', 0 );
 
+		elseif ( str_replace( ' ', '', $equation ) == '$last5' ):
+
+			// Return imploded string
+			$last5 = sportspress_array_value( $vars, 'last5', array( 0 ) );
+			if ( array_sum( $last5 ) > 0 ):
+				return implode( '-', $last5 );
+			else:
+				return '&mdash;';
+			endif;
+
 		elseif ( str_replace( ' ', '', $equation ) == '$last10' ):
 
 			// Return imploded string
@@ -1306,7 +1317,7 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 
 		foreach ( $div_ids as $div_id ):
 
-			$totals = array( 'eventsplayed' => 0, 'streak' => 0, 'last10' => null );
+			$totals = array( 'eventsplayed' => 0, 'streak' => 0, 'last5' => null, 'last10' => null );
 
 			foreach ( $result_labels as $key => $value ):
 				$totals[ $key . 'for' ] = 0;
@@ -1320,11 +1331,13 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 			// Initialize streaks counter
 			$streak = array( 'name' => '', 'count' => 0, 'fire' => 1 );
 
-			// Initialize last 10 counter
+			// Initialize last counters
+			$last5 = array();
 			$last10 = array();
 
-			// Add outcome types to last 10 counter
+			// Add outcome types to last counters
 			foreach( $outcome_labels as $key => $value ):
+				$last5[ $key ] = 0;
 				$last10[ $key ] = 0;
 			endforeach;
 
@@ -1379,6 +1392,11 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 										$streak['fire'] = 0;
 									endif;
 
+									// Add to last 5 counter if sum is less than 5
+									if ( array_key_exists( $value, $last5 ) && array_sum( $last5 ) < 5 ):
+										$last5[ $value ] ++;
+									endif;
+
 									// Add to last 10 counter if sum is less than 10
 									if ( array_key_exists( $value, $last10 ) && array_sum( $last10 ) < 10 ):
 										$last10[ $value ] ++;
@@ -1416,7 +1434,8 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 				$totals['streak'] = $outcome->post_title . $streak['count'];
 			endif;
 
-			// Add last 10 to totals
+			// Add last counters to totals
+			$totals['last5'] = $last5;
 			$totals['last10'] = $last10;
 
 			// Generate array of placeholder values for each league
@@ -1497,7 +1516,8 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 		// Initialize streaks counter
 		$streaks = array();
 
-		// Initialize last 10s counter
+		// Initialize last counters
+		$last5s = array();
 		$last10s = array();
 
 		foreach ( $team_ids as $team_id ):
@@ -1507,11 +1527,13 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 			// Initialize team streaks counter
 			$streaks[ $team_id ] = array( 'name' => '', 'count' => 0, 'fire' => 1 );
 
-			// Initialize team last 10 counter
+			// Initialize team last counters
+			$last5s[ $team_id ] = array();
 			$last10s[ $team_id ] = array();
 
-			// Add outcome types to team last 10 counter
+			// Add outcome types to team last counters
 			foreach( $outcome_labels as $key => $value ):
+				$last5s[ $team_id ][ $key ] = 0;
 				$last10s[ $team_id ][ $key ] = 0;
 			endforeach;
 
@@ -1586,6 +1608,11 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 								$streaks[ $team_id ]['fire'] = 0;
 							endif;
 
+							// Add to last 5 counter if sum is less than 5
+							if ( array_key_exists( $team_id, $last5s ) && array_key_exists( $value, $last5s[ $team_id ] ) && array_sum( $last5s[ $team_id ] ) < 5 ):
+								$last5s[ $team_id ][ $value ] ++;
+							endif;
+
 							// Add to last 10 counter if sum is less than 10
 							if ( array_key_exists( $team_id, $last10s ) && array_key_exists( $value, $last10s[ $team_id ] ) && array_sum( $last10s[ $team_id ] ) < 10 ):
 								$last10s[ $team_id ][ $value ] ++;
@@ -1630,6 +1657,11 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 			else:
 				$totals[ $team_id ]['streak'] = '&mdash;';
 			endif;
+		endforeach;
+
+		foreach ( $last5s as $team_id => $last5 ):
+			// Add last 5 to totals
+			$totals[ $team_id ]['last5'] = $last5;
 		endforeach;
 
 		foreach ( $last10s as $team_id => $last10 ):
