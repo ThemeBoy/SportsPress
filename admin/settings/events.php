@@ -1,4 +1,9 @@
+<h3 class="title"><?php _e( 'Event Settings', 'sportspress' ); ?></h3>
 <?php
+settings_fields( 'sportspress_events' );
+do_settings_sections( 'sportspress_events' );
+submit_button();
+
 $args = array(
 	'post_type' => 'sp_result',
 	'numberposts' => -1,

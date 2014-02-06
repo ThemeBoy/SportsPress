@@ -38,13 +38,29 @@ function sportspress_settings() {
 function sportspress_sport_callback() {
 	global $sportspress_sports;
 	$options = get_option( 'sportspress' );
+
+	$selected = sportspress_array_value( $options, 'sport', null );
 	?>
 	<select id="sportspress_sport" name="sportspress[sport]">
 		<?php foreach( $sportspress_sports as $slug => $sport ): ?>
-			<option value="<?php echo $slug; ?>" <?php selected( $options['sport'], $slug ); ?>><?php echo $sport['name']; ?></option>
+			<option value="<?php echo $slug; ?>" <?php selected( $selected, $slug ); ?>><?php echo $sport['name']; ?></option>
 		<?php endforeach; ?>
 	</select>
 	<?php
+}
+
+function sportspress_result_callback() {
+	$options = get_option( 'sportspress' );
+
+	$selected = sportspress_array_value( $options, 'main_result', null );
+	$args = array(
+		'post_type' => 'sp_result',
+		'name' => 'sportspress[main_result]',
+		'show_option_all' => __( '(Auto)', 'sportspress' ),
+		'selected' => $selected,
+		'values' => 'slug',
+	);
+	sportspress_dropdown_pages( $args );
 }
 
 function sportspress_team_stats_callback() {
@@ -88,8 +104,7 @@ function sportspress_settings_init() {
 	// Event Settings
 	register_setting(
 		'sportspress_events',
-		'sportspress',
-		'sportspress_validate'
+		'sportspress'
 	);
 	
 	add_settings_section(
@@ -100,9 +115,9 @@ function sportspress_settings_init() {
 	);
 	
 	add_settings_field(	
-		'sport',
-		__( 'Sport', 'sportspress' ),
-		'sportspress_sport_callback',	
+		'result',
+		__( 'Main Result', 'sportspress' ),
+		'sportspress_result_callback',	
 		'sportspress_events',
 		'events'
 	);
