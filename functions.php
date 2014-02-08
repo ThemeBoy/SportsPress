@@ -1150,12 +1150,12 @@ if ( !function_exists( 'sportspress_get_eos_safe_slug' ) ) {
 if ( !function_exists( 'sportspress_solve' ) ) {
 	function sportspress_solve( $equation, $vars ) {
 
-		if ( str_replace( ' ', '', $equation ) == '$streak' ):
+		if ( strpos( $equation, '$streak' ) !== false ):
 
 			// Return direct value
 			return sportspress_array_value( $vars, 'streak', 0 );
 
-		elseif ( str_replace( ' ', '', $equation ) == '$last5' ):
+		elseif ( strpos( $equation, '$last5' ) !== false ):
 
 			// Return imploded string
 			$last5 = sportspress_array_value( $vars, 'last5', array( 0 ) );
@@ -1165,7 +1165,7 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 				return '&mdash;';
 			endif;
 
-		elseif ( str_replace( ' ', '', $equation ) == '$last10' ):
+		elseif ( strpos( $equation, '$last10' ) !== false ):
 
 			// Return imploded string
 			$last10 = sportspress_array_value( $vars, 'last10', array( 0 ) );
@@ -1179,9 +1179,13 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 
 			// Remove unnecessary variables from vars before calculating
 			unset( $vars['streak'] );
+			unset( $vars['last5'] );
 			unset( $vars['last10'] );
 
 		endif;
+
+		if ( sportspress_array_value( $vars, 'eventsplayed', 0 ) <= 0 )
+			return '&mdash;';
 
 		// Clearance to begin calculating remains true if all equation variables are in vars
 		$clearance = true;
@@ -1444,11 +1448,7 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 			// Generate array of placeholder values for each league
 			$placeholders[ $div_id ] = array();
 			foreach ( $equations as $key => $value ):
-				if ( $totals['eventsplayed'] > 0 ):
-					$placeholders[ $div_id ][ $key ] = sportspress_solve( $value, $totals );
-				else:
-					$placeholders[ $div_id ][ $key ] = 0;
-				endif;
+				$placeholders[ $div_id ][ $key ] = sportspress_solve( $value, $totals );
 			endforeach;
 
 		endforeach;
@@ -1717,11 +1717,7 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 
 			foreach ( $stats as $stat ):
 				if ( sportspress_array_value( $placeholders[ $team_id ], $stat->post_name, '' ) == '' ):
-					if ( sizeof( $events ) > 0 ):
-						$placeholders[ $team_id ][ $stat->post_name ] = sportspress_solve( $stat->equation, sportspress_array_value( $totals, $team_id, array() ) );
-					else:
-						$placeholders[ $team_id ][ $stat->post_name ] = 0;
-					endif;
+					$placeholders[ $team_id ][ $stat->post_name ] = sportspress_solve( $stat->equation, sportspress_array_value( $totals, $team_id, array() ) );
 				endif;
 			endforeach;
 		endforeach;
