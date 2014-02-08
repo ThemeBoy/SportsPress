@@ -131,7 +131,7 @@ function sportspress_event_team_meta( $post ) {
 				'post_type' => 'sp_team',
 				'name' => 'sp_team_selector',
 				'class' => 'sportspress-pages',
-				'show_option_none' => '(' . sprintf( __( 'Select', 'sportspress' ) . ')', 'Team' ),
+				'show_option_none' => __( '&mdash; Select &mdash;', 'sportspress' ),
 				'option_none_value' => '0'
 			);
 			wp_dropdown_pages( $args );
