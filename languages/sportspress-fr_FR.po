@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-08 22:56+1000\n"
-"PO-Revision-Date: 2014-02-08 23:05+1000\n"
+"POT-Creation-Date: 2014-02-08 23:42+1000\n"
+"PO-Revision-Date: 2014-02-08 23:42+1000\n"
 "Last-Translator: ThemeBoy <translate@themeboy.com>\n"
 "Language-Team: ThemeBoy <translate@themeboy.com>\n"
 "Language: fr_FR\n"
@@ -20,11 +20,9 @@ msgstr ""
 "X-Poedit-Bookmarks: -1,75,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../functions.php:56 ../admin/hooks/media-buttons.php:7
-#: ../admin/hooks/media-buttons.php:8
-#, php-format
-msgid "Add %s"
-msgstr "Ajouter une %s"
+#: ../functions.php:56
+msgid "Add New"
+msgstr "Ajouter"
 
 #: ../functions.php:57 ../functions.php:80 ../functions.php:1071
 #: ../functions.php:1072
@@ -362,6 +360,11 @@ msgstr "Horodatage: <b>%1$s</b>"
 msgid "Views"
 msgstr "Vues"
 
+#: ../admin/hooks/media-buttons.php:7 ../admin/hooks/media-buttons.php:8
+#, php-format
+msgid "Add %s"
+msgstr "Ajouter une %s"
+
 #: ../admin/hooks/media-buttons.php:7
 msgid "Map"
 msgstr "Carte"
@@ -438,7 +441,7 @@ msgstr "Personnel"
 #: ../admin/widgets/future-events.php:113
 #: ../admin/widgets/recent-events.php:113
 msgid "Teams"
-msgstr "Équipes."
+msgstr "Équipes"
 
 #: ../admin/hooks/wp-enqueue-scripts.php:14
 #: ../admin/templates/countdown.php:43
