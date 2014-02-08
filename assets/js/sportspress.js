@@ -145,6 +145,7 @@ function viewport() {
 			longitude = $self.attr('data-longitude');
 			var ll = new google.maps.LatLng(latitude,longitude);
 			var mapOptions = {
+				scrollwheel: false,
 				zoom: 16,
 				center: ll
 			};

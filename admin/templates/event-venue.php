@@ -1,6 +1,6 @@
 <?php
 if ( !function_exists( 'sportspress_event_venue' ) ) {
-	function sportspress_event_venue( $id ) {
+	function sportspress_event_venue( $id = null ) {
 
 		if ( ! $id )
 			$id = get_the_ID();
@@ -21,8 +21,10 @@ if ( !function_exists( 'sportspress_event_venue' ) ) {
 			$latitude = sportspress_array_value( $term_meta, 'sp_latitude', 0 );
 			$longitude = sportspress_array_value( $term_meta, 'sp_longitude', 0 );
 		
-			$output .= '<h3>' . $venue->name . '</h3>';
-			$output .= '<div class="sp-google-map" data-address="' . $address . '" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '"></div>';
+			$output .= '<h3>' . __( 'Venue', 'sportspress' ) . '</h3>';
+			$output .= '<p>' . $venue->name . '<br><small>' . $address . '</small></p>';
+			if ( $latitude != null && $longitude != null )
+				$output .= '<div class="sp-google-map" data-address="' . $address . '" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '"></div>';
 
 		endforeach;
 

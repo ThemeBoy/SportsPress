@@ -13,7 +13,7 @@ function sportspress_default_event_content( $content ) {
         $results = sportspress_event_results();
         $players = sportspress_event_players();
         $staff = sportspress_event_staff();
-        if ( ! empty( $results ) )
+        if ( is_array( $results ) && array_filter( $results, 'array_filter' ) )
             return $results . $details . $players . $staff . $content;
         $venue = sportspress_event_venue();
         $content = $details . $venue . $players . $staff . $content;
@@ -59,3 +59,19 @@ function sportspress_default_list_content( $content ) {
     return $content;
 }
 add_filter( 'the_content', 'sportspress_default_list_content' );
+
+
+/* 
+    if ( ! $slug )
+        return;
+
+    $venue = get_term_by( 'slug', $slug, 'sp_venue' );
+    $t_id = $venue->term_id;
+    $venue_meta = get_option( "taxonomy_$t_id" );
+    $address = sportspress_array_value( $venue_meta, 'sp_address', null );
+    $latitude = sportspress_array_value( $venue_meta, 'sp_latitude', null );
+    $longitude = sportspress_array_value( $venue_meta, 'sp_longitude', null );
+
+    if ( $latitude != null && $longitude != null )
+        echo '<div class="sp-google-map" data-address="' . $address . '" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '"></div>';
+        */
