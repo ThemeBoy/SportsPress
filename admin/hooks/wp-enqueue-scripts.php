@@ -11,6 +11,6 @@ function sportspress_enqueue_scripts() {
 	wp_enqueue_script( 'sportspress', SPORTSPRESS_PLUGIN_URL .'assets/js/sportspress.js', array( 'jquery' ), time(), true );
 
 	// Localize scripts.
-	wp_localize_script( 'sportspress', 'localized_strings', array( 'days' => __( 'days', 'sportspress' ), 'hours' => __( 'hours', 'sportspress' ), 'mins' => __( 'mins', 'sportspress' ), 'secs' => __( 'secs', 'sportspress' ) ) );
+	wp_localize_script( 'sportspress', 'localized_strings', array( 'days' => __( 'days', 'sportspress' ), 'hrs' => __( 'hrs', 'sportspress' ), 'mins' => __( 'mins', 'sportspress' ), 'secs' => __( 'secs', 'sportspress' ) ) );
 }
 add_action( 'wp_enqueue_scripts', 'sportspress_enqueue_scripts' );

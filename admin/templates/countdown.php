@@ -41,7 +41,7 @@ if ( !function_exists( 'sportspress_countdown' ) ) {
 
 			$output .= '<h3 class="countdown sp-countdown"><time datetime="' . $post->post_date . '" data-countdown="' . str_replace( '-', '/', $post->post_date ) . '">' .
 				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->d ) ) . ' <small>' . __( 'days', 'sportspress' ) . '</small></span> ' .
-				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->h ) ) . ' <small>' . __( 'hours', 'sportspress' ) . '</small></span> ' .
+				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->h ) ) . ' <small>' . __( 'hrs', 'sportspress' ) . '</small></span> ' .
 				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->i ) ) . ' <small>' . __( 'mins', 'sportspress' ) . '</small></span> ' .
 				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->s ) ) . ' <small>' . __( 'secs', 'sportspress' ) . '</small></span>' .
 			'</time></h3>';

@@ -15,7 +15,7 @@ function viewport() {
 		var $this = $(this), finalDate = $(this).data('countdown');
 		$this.countdown(finalDate, function(event) {
 			$this.html(event.strftime("<span>%D <small>" + localized_strings.days + "</small></span> "
-			+ "<span>%H <small>" + localized_strings.hours + "</small></span> "
+			+ "<span>%H <small>" + localized_strings.hrs + "</small></span> "
 			+ "<span>%M <small>" + localized_strings.mins + "</small></span> "
 			+ "<span>%S <small>" + localized_strings.secs + "</small></span>" ));
 		});
