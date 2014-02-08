@@ -22,11 +22,7 @@ if ( !function_exists( 'sportspress_array_between' ) ) {
 
 if ( !function_exists( 'sportspress_array_value' ) ) {
 	function sportspress_array_value( $arr = array(), $key = 0, $default = null ) {
-		if ( is_array( $arr ) && array_key_exists( $key, $arr ) )
-			$subset = $arr[ $key ];
-		else
-			$subset = $default;
-		return $subset;
+		return ( isset( $arr[ $key ] ) ? $arr[ $key ] : $default );
 	}
 }
 
@@ -2037,16 +2033,10 @@ if ( !function_exists( 'sportspress_get_player_statistics_data' ) ) {
 				$position_ids[] = $position->term_id;
 			endforeach;
 			$args['tax_query'] = array(
-				'relation' => 'OR',
 				array(
 					'taxonomy' => 'sp_position',
 					'field' => 'id',
 					'terms' => $position_ids,
-				),
-				array(
-					'taxonomy' => 'sp_position',
-					'field' => 'id',
-					'operator' => 'NOT SET',
 				),
 			);
 		endif;
