@@ -138,6 +138,7 @@ function sportspress_player_stats_meta( $post ) {
 
 function sportspress_player_metrics_meta( $post ) {
 	$metrics = get_post_meta( $post->ID, 'sp_metrics', true );
+	$positions = get_the_terms( $post->ID, 'sp_position' );
 
 	?>
 	<div class="sp-data-table-container">
@@ -158,6 +159,20 @@ function sportspress_player_metrics_meta( $post ) {
 					'orderby' => 'menu_order',
 					'order' => 'ASC',
 				);
+
+				if ( $positions ):
+					$position_ids = array();
+					foreach( $positions as $position ):
+						$position_ids[] = $position->term_id;
+					endforeach;
+					$args['tax_query'] = array(
+						array(
+							'taxonomy' => 'sp_position',
+							'field' => 'id',
+							'terms' => $position_ids,
+						),
+					);
+				endif;
 
 				$vars = get_posts( $args );
 
