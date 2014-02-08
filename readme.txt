@@ -74,6 +74,9 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 
 = 0.2.4 =
 * Feature - Display venue map on event page and venue archive.
+* Tweak - Sort sports presets alphabetically by localized name.
+* Fix - Add checks to prevent league table dividing by zero when no events have been played.
+* Fix - Flush rewrite rules for taxonomies on activation.
 
 = 0.2.3 =
 * Feature - Enable selecting main event result.
