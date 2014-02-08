@@ -3,7 +3,6 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 	global $typenow;
 
 	if ( is_admin() ):
-
 		if ( 'sp_team' == $typenow ):
 			switch ( $untranslated_text ):
 			case 'Enter title here':
@@ -43,6 +42,14 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 				$translated_text = __( 'Date/Time: <b>%1$s</b>', 'sportspress' );
 				break;
 			endswitch;
+		endif;
+	else:
+    	if ( $untranslated_text == 'Archives' && is_tax( 'sp_venue' ) ):
+    		$slug = get_query_var( 'sp_venue' );
+		    if ( $slug ):
+			    $venue = get_term_by( 'slug', $slug, 'sp_venue' );
+				$translated_text = $venue->name;
+			endif;
 		endif;
 	endif;
 	

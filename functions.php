@@ -1766,30 +1766,39 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 	}
 }
 
-function sportspress_sort_table_teams ( $a, $b ) {
+if ( !function_exists( 'sportspress_sort_sports' ) ) {
+	function sportspress_sort_sports ( $a, $b ) {
 
-	global $sportspress_column_priorities;
+		return strcmp( sportspress_array_value( $a, 'name', '' ), sportspress_array_value( $b, 'name', '' ) );
+	}
+}
 
-	// Loop through priorities
-	foreach( $sportspress_column_priorities as $priority ):
+if ( !function_exists( 'sportspress_sort_table_teams' ) ) {
+	function sportspress_sort_table_teams ( $a, $b ) {
 
-		// Proceed if columns are not equal
-		if ( sportspress_array_value( $a, $priority['column'], 0 ) != sportspress_array_value( $b, $priority['column'], 0 ) ):
+		global $sportspress_column_priorities;
 
-			// Compare column values
-			$output = sportspress_array_value( $a, $priority['column'], 0 ) - sportspress_array_value( $b, $priority['column'], 0 );
+		// Loop through priorities
+		foreach( $sportspress_column_priorities as $priority ):
 
-			// Flip value if descending order
-			if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
+			// Proceed if columns are not equal
+			if ( sportspress_array_value( $a, $priority['column'], 0 ) != sportspress_array_value( $b, $priority['column'], 0 ) ):
 
-			return $output;
+				// Compare column values
+				$output = sportspress_array_value( $a, $priority['column'], 0 ) - sportspress_array_value( $b, $priority['column'], 0 );
 
-		endif;
+				// Flip value if descending order
+				if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
 
-	endforeach;
+				return $output;
 
-	// Default sort by alphabetical
-	return strcmp( sportspress_array_value( $a, 'name', '' ), sportspress_array_value( $b, 'name', '' ) );
+			endif;
+
+		endforeach;
+
+		// Default sort by alphabetical
+		return strcmp( sportspress_array_value( $a, 'name', '' ), sportspress_array_value( $b, 'name', '' ) );
+	}
 }
 
 if ( !function_exists( 'sportspress_get_player_list_data' ) ) {

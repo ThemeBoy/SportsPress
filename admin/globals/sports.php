@@ -18,6 +18,6 @@ function sportspress_define_sports_global() {
 	include_once dirname( SPORTSPRESS_PLUGIN_FILE ) . '/admin/presets/tennis.php';
 	include_once dirname( SPORTSPRESS_PLUGIN_FILE ) . '/admin/presets/volleyball.php';
 
-	asort( $sportspress_sports );
+	uasort( $sportspress_sports, 'sportspress_sort_sports' );
 }
 add_action( 'init', 'sportspress_define_sports_global' );
