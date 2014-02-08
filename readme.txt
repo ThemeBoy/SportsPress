@@ -4,7 +4,7 @@ Tags: sports, sports journalism, teams, team management, fixtures, results, stan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 0.2.4
+Stable tag: 0.2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -71,6 +71,9 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 4. SportsPress Settings panel.
 
 == Changelog ==
+
+= 0.2.5 =
+* Fix - Update deprecated function to prevent error in Player Lists.
 
 = 0.2.4 =
 * Feature - Display venue map on event page and venue archive.

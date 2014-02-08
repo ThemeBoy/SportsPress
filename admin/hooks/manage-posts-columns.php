@@ -100,7 +100,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			echo sportspress_get_post_calculate( $post_id );
 			break;
 		case 'sp_player':
-			echo sportspress_the_posts( $post_id, 'sp_player' );
+			echo sportspress_posts( $post_id, 'sp_player' );
 			break;
 		case 'sp_event':
 			echo get_post_meta ( $post_id, 'sp_event' ) ? sizeof( get_post_meta ( $post_id, 'sp_event' ) ) : '&mdash;';
