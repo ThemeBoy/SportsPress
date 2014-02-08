@@ -53,7 +53,7 @@ if ( !function_exists( 'sportspress_get_post_labels' ) ) {
 			'name' => $name,
 			'singular_name' => $singular_name,
 			'all_items' => $name,
-			'add_new' => sprintf( __( 'Add %s', 'sportspress' ), $singular_name ),
+			'add_new' => sprintf( __( 'Add New', 'sportspress' ), $singular_name ),
 			'add_new_item' => sprintf( __( 'Add New %s', 'sportspress' ), $singular_name ),
 			'edit_item' => sprintf( __( 'Edit %s', 'sportspress' ), $singular_name ),
 			'new_item' => sprintf( __( 'New %s', 'sportspress' ), $singular_name ),
@@ -1149,7 +1149,7 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 		if ( strpos( $equation, '$streak' ) !== false ):
 
 			// Return direct value
-			return sportspress_array_value( $vars, 'streak', 0 );
+			return sportspress_array_value( $vars, 'streak', '-' );
 
 		elseif ( strpos( $equation, '$last5' ) !== false ):
 
@@ -1158,7 +1158,7 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 			if ( array_sum( $last5 ) > 0 ):
 				return implode( '-', $last5 );
 			else:
-				return '&mdash;';
+				return '-';
 			endif;
 
 		elseif ( strpos( $equation, '$last10' ) !== false ):
@@ -1168,20 +1168,18 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 			if ( array_sum( $last10 ) > 0 ):
 				return implode( '-', $last10 );
 			else:
-				return '&mdash;';
+				return '-';
 			endif;
-
-		else:
-
-			// Remove unnecessary variables from vars before calculating
-			unset( $vars['streak'] );
-			unset( $vars['last5'] );
-			unset( $vars['last10'] );
 
 		endif;
 
+		// Remove unnecessary variables from vars before calculating
+		unset( $vars['streak'] );
+		unset( $vars['last5'] );
+		unset( $vars['last10'] );
+
 		if ( sportspress_array_value( $vars, 'eventsplayed', 0 ) <= 0 )
-			return '&mdash;';
+			return '-';
 
 		// Clearance to begin calculating remains true if all equation variables are in vars
 		$clearance = true;
@@ -1651,10 +1649,10 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 					$outcome = reset( $outcomes );
 					$totals[ $team_id ]['streak'] = $outcome->post_title . $streak['count'];
 				else:
-					$totals[ $team_id ]['streak'] = '&mdash;';
+					$totals[ $team_id ]['streak'] = null;
 				endif;
 			else:
-				$totals[ $team_id ]['streak'] = '&mdash;';
+				$totals[ $team_id ]['streak'] = null;
 			endif;
 		endforeach;
 
