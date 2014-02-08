@@ -3,16 +3,37 @@ global $sportspress_sports;
 
 $sportspress_sports['soccer'] = array(
 	'name' => __( 'Soccer (Association Football)', 'sportspress' ),
+	'terms' => array(
+		// Positions
+		'sp_position' => array(
+			array(
+				'name' => 'Goalkeeper',
+				'slug' => 'goalkeeper',
+			),
+			array(
+				'name' => 'Defender',
+				'slug' => 'defender',
+			),
+			array(
+				'name' => 'Midfielder',
+				'slug' => 'midfielder',
+			),
+			array(
+				'name' => 'Forward',
+				'slug' => 'forward',
+			),
+		),
+	),
 	'posts' => array(
 		// Results
 		'sp_result' => array(
 			array(
-				'post_title' => '1st Half',
-				'post_name'  => 'firsthalf',
+				'post_title' => '1',
+				'post_name'  => 'one',
 			),
 			array(
-				'post_title' => '2nd Half',
-				'post_name'  => 'secondhalf',
+				'post_title' => '2',
+				'post_name'  => 'two',
 			),
 			array(
 				'post_title' => 'Goals',
@@ -126,12 +147,28 @@ $sportspress_sports['soccer'] = array(
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
 				),
+				'tax_input' => array(
+					'sp_position' => array(
+						'goalkeeper',
+						'defender',
+						'midfielder',
+						'striker',
+					),
+				),
 			),
 			array(
 				'post_title' => 'Assists',
 				'post_name'  => 'assists',
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
+				),
+				'tax_input' => array(
+					'sp_position' => array(
+						'goalkeeper',
+						'defender',
+						'midfielder',
+						'striker',
+					),
 				),
 			),
 			array(
@@ -140,12 +177,28 @@ $sportspress_sports['soccer'] = array(
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
 				),
+				'tax_input' => array(
+					'sp_position' => array(
+						'goalkeeper',
+						'defender',
+						'midfielder',
+						'striker',
+					),
+				),
 			),
 			array(
 				'post_title' => 'Red Cards',
 				'post_name'  => 'redcards',
 				'meta'       => array(
 					'sp_calculate'     => 'sum',
+				),
+				'tax_input' => array(
+					'sp_position' => array(
+						'goalkeeper',
+						'defender',
+						'midfielder',
+						'striker',
+					),
 				),
 			),
 		),
