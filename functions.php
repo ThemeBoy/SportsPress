@@ -113,9 +113,9 @@ if ( !function_exists( 'sportspress_get_post_views' ) ) {
 	        add_post_meta( $post_id, $count_key, '0' );
 	    endif;
 	    if ( isset( $views ) && $views == 1 )
-	    	return __( '1 View', 'sportspress' );
+	    	return __( '1 view', 'sportspress' );
 	    else
-	    	return sprintf( __( '%s Views', 'sportspress' ), $count );
+	    	return sprintf( __( '%s views', 'sportspress' ), $count );
 	}
 }
 
@@ -520,7 +520,7 @@ if ( !function_exists( 'sportspress_equation_selector' ) ) {
 
 		?>
 			<select name="sp_equation[]">
-				<option value="">(<?php _e( 'Select', 'sportspress' ); ?>)</option>
+				<option value="">(<?php _e( '&mdash; Select &mdash;', 'sportspress' ); ?>)</option>
 				<?php
 
 				foreach ( $options as $label => $option ):
@@ -834,7 +834,7 @@ if ( !function_exists( 'sportspress_edit_player_statistics_table' ) ) {
 								$args = array(
 									'post_type' => 'sp_team',
 									'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
-									'show_option_none' => __( '-- Not Set --', 'sportspress' ),
+									'show_option_none' => __( '-- Not set --', 'sportspress' ),
 								    'sort_order'   => 'ASC',
 								    'sort_column'  => 'menu_order',
 									'selected' => $value,
