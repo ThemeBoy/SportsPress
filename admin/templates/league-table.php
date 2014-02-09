@@ -58,7 +58,7 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 			$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 			// Position as number
-			$output .= '<td class="data-number">' . $i . '</td>';
+			$output .= '<td class="data-number">' . ( $i + 1 ) . '</td>';
 
 			// Thumbnail and name as link
 			$permalink = get_post_permalink( $team_id );
