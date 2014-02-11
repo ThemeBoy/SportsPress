@@ -1,0 +1,971 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SportsPress 0.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-10 13:19+1000\n"
+"PO-Revision-Date: 2014-02-12 04:31+1000\n"
+"Last-Translator: ThemeBoy <translate@themeboy.com>\n"
+"Language-Team: ThemeBoy <translate@themeboy.com>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Bookmarks: -1,75,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../functions.php:56
+msgid "Add New"
+msgstr "Neu hinzufügen"
+
+#: ../functions.php:57 ../functions.php:80 ../functions.php:1071
+#: ../functions.php:1072
+#, php-format
+msgid "Add New %s"
+msgstr "Neu hinzufügen %s"
+
+#: ../functions.php:58 ../functions.php:77
+#: ../admin/hooks/post-updated-messages.php:10 ../admin/settings/events.php:32
+#: ../admin/settings/events.php:63 ../admin/settings/players.php:29
+#: ../admin/settings/players.php:61 ../admin/settings/tables.php:33
+#, php-format
+msgid "Edit %s"
+msgstr "Bearbeiten %s"
+
+#: ../functions.php:59
+#, php-format
+msgid "New %s"
+msgstr "Neuer %s"
+
+#: ../functions.php:60 ../functions.php:78
+#, php-format
+msgid "View %s"
+msgstr "Ansehen %s"
+
+#: ../functions.php:61 ../functions.php:84
+#, php-format
+msgid "Search %s"
+msgstr "Suchen %s"
+
+#: ../functions.php:62 ../functions.php:85 ../functions.php:626
+#, php-format
+msgid "No %s found."
+msgstr "Keine %s gefunden."
+
+#: ../functions.php:63
+#, php-format
+msgid "No %s found in trash."
+msgstr "Keine %s im Papierkorb gefunden."
+
+#: ../functions.php:64 ../functions.php:82 ../functions.php:83
+#, php-format
+msgid "Parent %s"
+msgstr "Übergeordnete %s"
+
+#: ../functions.php:76 ../admin/hooks/restrict-manage-posts.php:8
+#: ../admin/hooks/restrict-manage-posts.php:18
+#: ../admin/hooks/restrict-manage-posts.php:28
+#: ../admin/hooks/restrict-manage-posts.php:40
+#: ../admin/widgets/future-events.php:65 ../admin/widgets/future-events.php:81
+#: ../admin/widgets/future-events.php:97
+#: ../admin/widgets/future-events.php:113
+#: ../admin/widgets/recent-events.php:65 ../admin/widgets/recent-events.php:81
+#: ../admin/widgets/recent-events.php:97
+#: ../admin/widgets/recent-events.php:113
+#, php-format
+msgid "All %s"
+msgstr "Alle %s"
+
+#: ../functions.php:79
+#, php-format
+msgid "Update %s"
+msgstr "Aktualisieren %s"
+
+#: ../functions.php:81
+#, php-format
+msgid "New %s Name"
+msgstr "Neuer %s Name"
+
+#: ../functions.php:116
+msgid "1 view"
+msgstr "1 Anzeigen"
+
+#: ../functions.php:118
+#, php-format
+msgid "%s views"
+msgstr "%s Ansichten"
+
+#: ../functions.php:143
+msgid "Scheduled"
+msgstr "Geplant"
+
+#: ../functions.php:145 ../functions.php:482 ../functions.php:485
+#: ../functions.php:1899 ../functions.php:2050 ../functions.php:2187
+msgid "Played"
+msgstr "Gespielt"
+
+#: ../functions.php:147
+msgid "Draft"
+msgstr "Entwurf"
+
+#: ../functions.php:149
+msgid "Pending Review"
+msgstr "Ausstehender Review"
+
+#: ../functions.php:151 ../admin/hooks/post-updated-messages.php:31
+msgid "M j, Y @ G:i"
+msgstr "d. F Y H:i"
+
+#: ../functions.php:172 ../functions.php:176 ../functions.php:416
+msgid "Sum"
+msgstr "Summe"
+
+#: ../functions.php:172 ../functions.php:417
+msgid "Average"
+msgstr "Durchschnitt"
+
+#: ../functions.php:214
+msgid "Integer"
+msgstr "Ganzezahl"
+
+#: ../functions.php:215
+msgid "Decimal"
+msgstr "Dezimal"
+
+#: ../functions.php:216 ../functions.php:636
+#: ../admin/templates/event-details.php:13
+msgid "Time"
+msgstr "Zeit"
+
+#: ../functions.php:217
+msgid "Custom Field"
+msgstr "Benutzerdefiniertefeld"
+
+#: ../functions.php:344 ../functions.php:398
+msgid "(no title)"
+msgstr "(kein Titel)"
+
+#: ../functions.php:482 ../functions.php:485 ../admin/post-types/event.php:3
+#: ../admin/settings/settings.php:11
+msgid "Events"
+msgstr "Ereignisse"
+
+#: ../functions.php:482
+msgid "Attended"
+msgstr "Teilnehmen"
+
+#: ../functions.php:488 ../admin/post-types/event.php:44
+#: ../admin/post-types/result.php:3 ../admin/settings/events.php:16
+#: ../admin/settings/events.php:32 ../admin/templates/event-results.php:48
+msgid "Results"
+msgstr "Resultat"
+
+#: ../functions.php:491 ../functions.php:492 ../functions.php:493
+#: ../functions.php:494 ../admin/post-types/outcome.php:3
+#: ../admin/settings/events.php:47 ../admin/settings/events.php:63
+msgid "Outcomes"
+msgstr "Ergebnisse"
+
+#: ../functions.php:492
+msgid "Streak"
+msgstr "Streifen"
+
+#: ../functions.php:493
+msgid "Last 5"
+msgstr "Letzte 5"
+
+#: ../functions.php:494
+msgid "Last 10"
+msgstr "Letzte 10"
+
+#: ../functions.php:497 ../admin/post-types/column.php:3
+#: ../admin/post-types/team.php:33 ../admin/settings/tables.php:11
+#: ../admin/settings/tables.php:33
+msgid "Columns"
+msgstr "Spalten"
+
+#: ../functions.php:500
+msgid "Player Statistics"
+msgstr "Spieler Statistiken"
+
+#: ../functions.php:509
+msgid "Operators"
+msgstr "Operator"
+
+#: ../functions.php:519
+msgid "Constants"
+msgstr "Konstanten"
+
+#: ../functions.php:523 ../admin/post-types/event.php:134
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; Auswählen &mdash;"
+
+#: ../functions.php:626 ../admin/post-types/event.php:5
+#: ../admin/widgets/future-events.php:123
+#: ../admin/widgets/recent-events.php:123
+msgid "events"
+msgstr "Ereignisse"
+
+#: ../functions.php:634 ../admin/post-types/event.php:4
+#: ../admin/post-types/event.php:40 ../admin/post-types/event.php:196
+msgid "Event"
+msgstr "Veranstaltung"
+
+#: ../functions.php:635 ../admin/templates/event-details.php:13
+msgid "Date"
+msgstr "Datum"
+
+#: ../functions.php:673 ../functions.php:814 ../functions.php:887
+#: ../functions.php:1071 ../functions.php:1752 ../functions.php:2187
+#: ../admin/hooks/gettext.php:9 ../admin/post-types/list.php:31
+#: ../admin/post-types/list.php:82 ../admin/post-types/team.php:4
+#: ../admin/post-types/team.php:41 ../admin/templates/event-results.php:52
+msgid "Team"
+msgstr "Mannschaft"
+
+#: ../functions.php:716 ../functions.php:992 ../functions.php:1984
+#: ../admin/hooks/register-activation-hook.php:147
+#: ../admin/post-types/player.php:4 ../admin/templates/event-players.php:28
+msgid "Player"
+msgstr "Spieler"
+
+#: ../functions.php:761 ../functions.php:813 ../functions.php:1484
+#: ../functions.php:2187 ../admin/post-types/event.php:69
+#: ../admin/post-types/event.php:199 ../admin/post-types/list.php:30
+#: ../admin/post-types/list.php:70 ../admin/post-types/table.php:29
+#: ../admin/post-types/table.php:68 ../admin/templates/event-details.php:22
+#: ../admin/terms/season.php:4
+msgid "Season"
+msgstr "Saison"
+
+#: ../functions.php:837 ../functions.php:915 ../admin/post-types/event.php:64
+#: ../admin/post-types/event.php:77 ../admin/post-types/event.php:90
+#: ../admin/post-types/player.php:85
+msgid "-- Not set --"
+msgstr "-- Leer --"
+
+#: ../functions.php:891 ../admin/post-types/outcome.php:4
+msgid "Outcome"
+msgstr "Ergebnis"
+
+#: ../functions.php:943 ../functions.php:1048
+msgid "Starting Lineup"
+msgstr "Startaufstellung"
+
+#: ../functions.php:944 ../functions.php:1049
+msgid "Substitute"
+msgstr "Ersatz"
+
+#: ../functions.php:968
+msgid "None"
+msgstr "Keine"
+
+#: ../functions.php:996
+msgid "Status"
+msgstr "Status:"
+
+#: ../functions.php:1027 ../admin/templates/event-players.php:82
+msgid "Total"
+msgstr "Summe"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:20
+#: ../admin/post-types/event.php:110
+msgid "Remove"
+msgstr "Entfernen"
+
+#: ../admin/hooks/admin-menu.php:46 ../admin/post-types/player.php:30
+#: ../admin/post-types/staff.php:48 ../admin/post-types/team.php:42
+#: ../admin/terms/league.php:3 ../admin/widgets/future-events.php:65
+#: ../admin/widgets/recent-events.php:65
+msgid "Leagues"
+msgstr "Ligen"
+
+#: ../admin/hooks/admin-menu.php:52
+#: ../admin/hooks/restrict-manage-posts.php:18
+#: ../admin/post-types/metric.php:26 ../admin/post-types/player.php:28
+#: ../admin/post-types/staff.php:46 ../admin/post-types/statistic.php:27
+#: ../admin/settings/players.php:16 ../admin/settings/players.php:48
+#: ../admin/terms/position.php:3
+msgid "Positions"
+msgstr "Positionen"
+
+#: ../admin/hooks/admin-menu.php:58
+#: ../admin/hooks/restrict-manage-posts.php:28
+#: ../admin/post-types/player.php:31 ../admin/post-types/staff.php:49
+#: ../admin/post-types/team.php:43 ../admin/terms/season.php:3
+#: ../admin/widgets/future-events.php:81 ../admin/widgets/recent-events.php:81
+msgid "Seasons"
+msgstr "Jahreszeiten"
+
+#: ../admin/hooks/admin-menu.php:64 ../admin/terms/venue.php:3
+#: ../admin/widgets/future-events.php:97 ../admin/widgets/recent-events.php:97
+msgid "Venues"
+msgstr "Veranstaltungsorte"
+
+#: ../admin/hooks/admin-post-thumbnail-html.php:5
+#: ../admin/hooks/admin-post-thumbnail-html.php:6
+#: ../admin/hooks/admin-post-thumbnail-html.php:9
+#: ../admin/hooks/admin-post-thumbnail-html.php:10
+#: ../admin/hooks/admin-post-thumbnail-html.php:13
+#: ../admin/hooks/admin-post-thumbnail-html.php:14
+#: ../admin/hooks/gettext.php:12 ../admin/hooks/gettext.php:15
+#: ../admin/hooks/gettext.php:27 ../admin/hooks/gettext.php:30
+#, php-format
+msgid "Select %s"
+msgstr "Auswählen %s"
+
+#: ../admin/hooks/admin-post-thumbnail-html.php:5
+#: ../admin/hooks/admin-post-thumbnail-html.php:6
+#: ../admin/hooks/gettext.php:12 ../admin/hooks/gettext.php:15
+#: ../admin/hooks/gettext.php:18 ../admin/post-types/team.php:30
+msgid "Logo"
+msgstr "Logo"
+
+#: ../admin/hooks/admin-post-thumbnail-html.php:9
+#: ../admin/hooks/admin-post-thumbnail-html.php:10
+#: ../admin/hooks/admin-post-thumbnail-html.php:13
+#: ../admin/hooks/admin-post-thumbnail-html.php:14
+#: ../admin/hooks/gettext.php:27 ../admin/hooks/gettext.php:30
+#: ../admin/hooks/gettext.php:33 ../admin/post-types/player.php:45
+#: ../admin/post-types/staff.php:27
+msgid "Photo"
+msgstr "Foto"
+
+#: ../admin/hooks/gettext.php:18 ../admin/hooks/gettext.php:33
+#, php-format
+msgid "Remove %s"
+msgstr "%s entfernen"
+
+#: ../admin/hooks/gettext.php:24 ../admin/post-types/player.php:27
+#: ../admin/post-types/staff.php:45
+msgid "Name"
+msgstr "Name"
+
+#: ../admin/hooks/gettext.php:36 ../admin/hooks/gettext.php:39
+#: ../admin/hooks/gettext.php:42
+#, php-format
+msgid "Date/Time: <b>%1$s</b>"
+msgstr "Datum/Zeit: <b>%1$s</b>"
+
+#: ../admin/hooks/manage-posts-columns.php:3 ../admin/post-types/event.php:202
+#: ../admin/post-types/list.php:32 ../admin/post-types/player.php:32
+#: ../admin/post-types/staff.php:50 ../admin/post-types/table.php:31
+#: ../admin/post-types/team.php:44
+msgid "Views"
+msgstr "Ansichten"
+
+#: ../admin/hooks/media-buttons.php:7 ../admin/hooks/media-buttons.php:8
+#, php-format
+msgid "Add %s"
+msgstr "%s hinzufügen"
+
+#: ../admin/hooks/media-buttons.php:7
+msgid "Map"
+msgstr "Karte"
+
+#: ../admin/hooks/media-buttons.php:8 ../admin/post-types/table.php:4
+#: ../admin/post-types/table.php:45 ../admin/widgets/league-table.php:6
+msgid "League Table"
+msgstr "Liga Tabelle"
+
+#: ../admin/hooks/plugin-action-links.php:3
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: ../admin/hooks/post-updated-messages.php:8
+#: ../admin/hooks/post-updated-messages.php:15
+#: ../admin/hooks/post-updated-messages.php:18
+#, php-format
+msgid "%s updated."
+msgstr "%s aktualisiert."
+
+#: ../admin/hooks/post-updated-messages.php:20
+#, php-format
+msgid "%s published."
+msgstr "%s veröffentlicht. "
+
+#: ../admin/hooks/post-updated-messages.php:23
+#, php-format
+msgid "%s saved."
+msgstr "%s gespeichert."
+
+#: ../admin/hooks/post-updated-messages.php:25
+#, php-format
+msgid "%s submitted."
+msgstr "%s übermittelt."
+
+#: ../admin/hooks/post-updated-messages.php:27
+#: ../admin/hooks/post-updated-messages.php:33
+#: ../admin/hooks/post-updated-messages.php:37
+#, php-format
+msgid "Preview %s"
+msgstr "Vorschau %s"
+
+#: ../admin/hooks/post-updated-messages.php:30
+#, php-format
+msgid "%s scheduled for: <strong>%s</strong>."
+msgstr "%s geplant für: <strong>%s</strong>."
+
+#: ../admin/hooks/post-updated-messages.php:35
+#, php-format
+msgid "%s draft updated."
+msgstr "Der %s entwurf wurde aktualisiert."
+
+#: ../admin/hooks/register-activation-hook.php:8
+msgid "League Manager"
+msgstr "Liga Manger"
+
+#: ../admin/hooks/register-activation-hook.php:84
+msgid "Team Manager"
+msgstr "Mannschaft-Betriebsleiter"
+
+#: ../admin/hooks/register-activation-hook.php:129
+#: ../admin/post-types/event.php:119 ../admin/post-types/staff.php:3
+#: ../admin/post-types/staff.php:4
+msgid "Staff"
+msgstr "Personal"
+
+#: ../admin/hooks/restrict-manage-posts.php:8
+#: ../admin/hooks/restrict-manage-posts.php:40
+#: ../admin/post-types/event.php:42 ../admin/post-types/event.php:197
+#: ../admin/post-types/player.php:29 ../admin/post-types/player.php:47
+#: ../admin/post-types/staff.php:28 ../admin/post-types/staff.php:47
+#: ../admin/post-types/table.php:30 ../admin/post-types/table.php:42
+#: ../admin/post-types/table.php:80 ../admin/post-types/team.php:3
+#: ../admin/widgets/future-events.php:113
+#: ../admin/widgets/recent-events.php:113
+msgid "Teams"
+msgstr "Mannschaften"
+
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:43
+msgid "days"
+msgstr "Tage"
+
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:44
+msgid "hrs"
+msgstr "Stunden"
+
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:45
+msgid "mins"
+msgstr "Protokoll"
+
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:46
+msgid "secs"
+msgstr "Sekunden"
+
+#: ../admin/hooks/wp-insert-post-data.php:13
+msgid "vs"
+msgstr "vs"
+
+#: ../admin/includes/notice-install.php:5
+msgid "<strong>Welcome to SportsPress</strong> &#8211; Get Started"
+msgstr "<strong>Willkommen bei SportsPress</strong> &#8211; Erste Schritte"
+
+#: ../admin/includes/notice-install.php:7
+msgid "Go to SportsPress Settings"
+msgstr "Gehe zum SportsPress Einstellungen"
+
+#: ../admin/includes/notice-install.php:8
+msgid "Skip setup"
+msgstr "Setup berspringen"
+
+#: ../admin/includes/notice-theme-support.php:6
+msgid ""
+"<strong>Your theme does not declare SportsPress support</strong> &#8211; if "
+"you encounter layout issues please read our integration guide or choose a "
+"SportsPress theme :)"
+msgstr ""
+"<strong>Ihr Theme wird nicht von Sportpress unterstützt.</strong>&#8211;  "
+"Wenn Sie Probleme mit dem Layout haben, lesen Sie bitte unsere Integrations "
+"Anleitung oder wählen Sie ein Sportpress Theme :)"
+
+#: ../admin/includes/notice-theme-support.php:8
+msgid "Theme Integration Guide"
+msgstr "Theme Integration Leitfaden"
+
+#: ../admin/includes/notice-theme-support.php:9
+msgid "Hide this notice"
+msgstr "Verstecken Sie diese Mitteilung"
+
+#: ../admin/post-types/column.php:4
+msgid "Column"
+msgstr "Spalte"
+
+#: ../admin/post-types/column.php:5
+msgid "columns"
+msgstr "Spalten"
+
+#: ../admin/post-types/column.php:26 ../admin/post-types/metric.php:25
+#: ../admin/post-types/outcome.php:26 ../admin/post-types/result.php:26
+#: ../admin/post-types/statistic.php:26 ../admin/settings/events.php:20
+#: ../admin/settings/events.php:51 ../admin/settings/players.php:15
+#: ../admin/settings/players.php:47 ../admin/settings/tables.php:15
+msgid "Label"
+msgstr "Etikett"
+
+#: ../admin/post-types/column.php:27 ../admin/post-types/column.php:49
+#: ../admin/post-types/outcome.php:27 ../admin/post-types/outcome.php:39
+#: ../admin/post-types/result.php:27 ../admin/post-types/result.php:40
+#: ../admin/settings/events.php:21 ../admin/settings/events.php:52
+#: ../admin/settings/tables.php:16
+msgid "Key"
+msgstr "Schlüssel"
+
+#: ../admin/post-types/column.php:28 ../admin/post-types/column.php:53
+#: ../admin/settings/tables.php:17
+msgid "Equation"
+msgstr "Gleichung"
+
+#: ../admin/post-types/column.php:29 ../admin/post-types/column.php:61
+#: ../admin/settings/tables.php:18
+msgid "Precision"
+msgstr "Präzision"
+
+#: ../admin/post-types/column.php:30 ../admin/post-types/column.php:65
+#: ../admin/settings/tables.php:19
+msgid "Sort Order"
+msgstr "Sortierung"
+
+#: ../admin/post-types/column.php:37 ../admin/post-types/event.php:41
+#: ../admin/post-types/list.php:49 ../admin/post-types/outcome.php:34
+#: ../admin/post-types/player.php:46 ../admin/post-types/result.php:34
+#: ../admin/post-types/statistic.php:35 ../admin/post-types/table.php:48
+#: ../admin/templates/event-details.php:25
+msgid "Details"
+msgstr "Details"
+
+#: ../admin/post-types/column.php:69
+msgid "Disable"
+msgstr "Deaktivieren"
+
+#: ../admin/post-types/column.php:77
+msgid "Descending"
+msgstr "Absteigend"
+
+#: ../admin/post-types/column.php:77
+msgid "Ascending"
+msgstr "Aufsteigend"
+
+#: ../admin/post-types/event.php:45 ../admin/post-types/event.php:118
+#: ../admin/post-types/list.php:28 ../admin/post-types/list.php:43
+#: ../admin/post-types/list.php:93 ../admin/post-types/player.php:3
+#: ../admin/settings/settings.php:13
+msgid "Players"
+msgstr "Spieler"
+
+#: ../admin/post-types/event.php:47
+msgid "Article"
+msgstr "Artikel"
+
+#: ../admin/post-types/event.php:56 ../admin/post-types/event.php:198
+#: ../admin/post-types/list.php:29 ../admin/post-types/list.php:58
+#: ../admin/post-types/table.php:28 ../admin/post-types/table.php:56
+#: ../admin/templates/event-details.php:17 ../admin/terms/league.php:4
+msgid "League"
+msgstr "Liga"
+
+#: ../admin/post-types/event.php:82 ../admin/post-types/event.php:200
+#: ../admin/templates/event-venue.php:24 ../admin/terms/venue.php:4
+msgid "Venue"
+msgstr "Austragungsort"
+
+#: ../admin/post-types/event.php:201
+msgid "Date/Time"
+msgstr "Datum/Zeit"
+
+#: ../admin/post-types/list.php:3
+msgid "Player Lists"
+msgstr "Spieler liste"
+
+#: ../admin/post-types/list.php:4 ../admin/post-types/list.php:46
+msgid "Player List"
+msgstr "Spielerliste"
+
+#: ../admin/post-types/list.php:5
+msgid "player lists"
+msgstr "Spielerlisten "
+
+#: ../admin/post-types/list.php:27 ../admin/post-types/table.php:27
+msgid "Title"
+msgstr "Titel"
+
+#: ../admin/post-types/metric.php:3 ../admin/post-types/player.php:48
+#: ../admin/settings/players.php:11 ../admin/settings/players.php:29
+msgid "Metrics"
+msgstr "Metrik"
+
+#: ../admin/post-types/metric.php:4 ../admin/post-types/player.php:148
+msgid "Metric"
+msgstr "Metrisch"
+
+#: ../admin/post-types/metric.php:5
+msgid "metrics"
+msgstr "Metrik"
+
+#: ../admin/post-types/outcome.php:5
+msgid "outcome"
+msgstr "Ergebnis"
+
+#: ../admin/post-types/player.php:5
+msgid "players"
+msgstr "Spieler"
+
+#: ../admin/post-types/player.php:43 ../admin/post-types/staff.php:25
+#: ../admin/post-types/team.php:28
+msgid "Publish"
+msgstr "Veröffentlichen"
+
+#: ../admin/post-types/player.php:51 ../admin/post-types/statistic.php:3
+#: ../admin/settings/players.php:43 ../admin/settings/players.php:61
+msgid "Statistics"
+msgstr "Statistiken"
+
+#: ../admin/post-types/player.php:54 ../admin/post-types/staff.php:29
+msgid "Profile"
+msgstr "Profil"
+
+#: ../admin/post-types/player.php:74 ../admin/templates/player-metrics.php:15
+msgid "Number"
+msgstr "Anzahl"
+
+#: ../admin/post-types/player.php:80 ../admin/templates/player-metrics.php:16
+msgid "Nationality"
+msgstr "Staatsangehörigkeit"
+
+#: ../admin/post-types/player.php:98
+msgid "Current Team"
+msgstr "Aktuelles Team"
+
+#: ../admin/post-types/player.php:149
+msgid "Value"
+msgstr "Wert"
+
+#: ../admin/post-types/result.php:4
+msgid "Result"
+msgstr "Resultat"
+
+#: ../admin/post-types/result.php:5
+msgid "result"
+msgstr "Resultat"
+
+#: ../admin/post-types/staff.php:5
+msgid "staff"
+msgstr "Personal"
+
+#: ../admin/post-types/statistic.php:4
+msgid "Statistic"
+msgstr "statistisch"
+
+#: ../admin/post-types/statistic.php:5
+msgid "statistics"
+msgstr "Statistiken"
+
+#: ../admin/post-types/statistic.php:28 ../admin/post-types/statistic.php:41
+#: ../admin/settings/players.php:49
+msgid "Calculate"
+msgstr "berechnen"
+
+#: ../admin/post-types/table.php:3 ../admin/settings/settings.php:12
+msgid "League Tables"
+msgstr "Liga Tabellen"
+
+#: ../admin/post-types/table.php:5
+msgid "league tables"
+msgstr "Liga Tabellen"
+
+#: ../admin/post-types/team.php:5
+msgid "teams"
+msgstr "Mannschaften"
+
+#: ../admin/presets/baseball.php:5
+msgid "Baseball"
+msgstr "Baseball"
+
+#: ../admin/presets/basketball.php:5
+msgid "Basketball"
+msgstr "Basketball"
+
+#: ../admin/presets/cricket.php:5
+msgid "Cricket"
+msgstr "Kricket"
+
+#: ../admin/presets/football.php:5
+msgid "American Football"
+msgstr "American Football"
+
+#: ../admin/presets/footy.php:5
+msgid "Australian Rules Football"
+msgstr "Australian Rules Football"
+
+#: ../admin/presets/gaming.php:5
+msgid "Competitive Gaming"
+msgstr "Competitive Gaming"
+
+#: ../admin/presets/golf.php:5
+msgid "Golf"
+msgstr "Golf"
+
+#: ../admin/presets/hockey.php:5
+msgid "Hockey"
+msgstr "Hockey"
+
+#: ../admin/presets/racing.php:5
+msgid "Racing"
+msgstr "Rennsport"
+
+#: ../admin/presets/rugby.php:5
+msgid "Rugby"
+msgstr "Rugby"
+
+#: ../admin/presets/soccer.php:5
+msgid "Soccer (Association Football)"
+msgstr "Fußball"
+
+#: ../admin/settings/events.php:1
+msgid "Event Settings"
+msgstr "Einstellungen Veranstaltungen"
+
+#: ../admin/settings/general.php:1
+msgid "General Settings"
+msgstr "Allgemeinen Einstellungen"
+
+#: ../admin/settings/settings.php:10 ../admin/settings/settings.php:236
+#: ../admin/settings/settings.php:237
+msgid "SportsPress"
+msgstr "SportsPress"
+
+#: ../admin/settings/settings.php:59 ../admin/widgets/countdown.php:43
+msgid "(Auto)"
+msgstr "(Automatisch)"
+
+#: ../admin/settings/settings.php:98
+msgid "Sport"
+msgstr "Sport"
+
+#: ../admin/settings/settings.php:119
+msgid "Main Result"
+msgstr "Haupt Ergebnis"
+
+#. translators: Calendar caption: 1: month name, 2: 4-digit year
+#: ../admin/templates/events-calendar.php:56
+#: ../admin/templates/events-calendar.php:83
+#: ../admin/templates/events-calendar.php:91
+#, php-format
+msgctxt "calendar caption"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: ../admin/templates/league-table.php:9
+msgid "Pos"
+msgstr "Pos"
+
+#: ../admin/terms/league.php:5
+msgid "league"
+msgstr "Liga"
+
+#: ../admin/terms/position.php:4
+msgid "Position"
+msgstr "Position"
+
+#: ../admin/terms/position.php:5
+msgid "position"
+msgstr "Position"
+
+#: ../admin/terms/season.php:5
+msgid "season"
+msgstr "Saison"
+
+#: ../admin/terms/venue.php:5
+msgid "venue"
+msgstr "Austragungsort"
+
+#: ../admin/terms/venue.php:27 ../admin/terms/venue.php:74
+msgid "Address"
+msgstr "Adresse"
+
+#: ../admin/terms/venue.php:34
+msgid "Latitude"
+msgstr "Breite"
+
+#: ../admin/terms/venue.php:40
+msgid "Longitude"
+msgstr "Länge"
+
+#: ../admin/widgets/countdown.php:5 ../admin/widgets/events-calendar.php:5
+#: ../admin/widgets/future-events.php:5 ../admin/widgets/league-table.php:5
+#: ../admin/widgets/recent-events.php:5
+msgid "SportsPress widget."
+msgstr "SportsPress Widget."
+
+#: ../admin/widgets/countdown.php:6 ../admin/widgets/countdown.php:11
+msgid "Countdown"
+msgstr "Countdown"
+
+#: ../admin/widgets/countdown.php:33 ../admin/widgets/events-calendar.php:32
+#: ../admin/widgets/future-events.php:55 ../admin/widgets/league-table.php:38
+#: ../admin/widgets/recent-events.php:55
+msgid "Title:"
+msgstr "Titel:"
+
+#: ../admin/widgets/countdown.php:36
+msgid "Event:"
+msgstr "Veranstaltung:"
+
+#: ../admin/widgets/events-calendar.php:6
+msgid "Events Calendar"
+msgstr "Veranstaltungskalender"
+
+#: ../admin/widgets/future-events.php:6 ../admin/widgets/future-events.php:11
+msgid "Future Events"
+msgstr "Zukünftige Veranstaltungen"
+
+#: ../admin/widgets/future-events.php:58 ../admin/widgets/recent-events.php:58
+msgid "League:"
+msgstr "Liga:"
+
+#: ../admin/widgets/future-events.php:74 ../admin/widgets/recent-events.php:74
+msgid "Season:"
+msgstr "Saison:"
+
+#: ../admin/widgets/future-events.php:90 ../admin/widgets/recent-events.php:90
+msgid "Venue:"
+msgstr "Austragungsort:"
+
+#: ../admin/widgets/future-events.php:106
+#: ../admin/widgets/recent-events.php:106
+msgid "Team:"
+msgstr "Mannschaft:"
+
+#: ../admin/widgets/future-events.php:123
+#: ../admin/widgets/recent-events.php:123
+#, php-format
+msgid "Number of %s to show:"
+msgstr "Anzahl der %s zu zeigen:"
+
+#: ../admin/widgets/league-table.php:41
+msgid "League Table:"
+msgstr "Liga Tabelle:"
+
+#: ../admin/widgets/league-table.php:58
+msgid "Columns:"
+msgstr "Spalten:"
+
+#: ../admin/widgets/recent-events.php:6 ../admin/widgets/recent-events.php:11
+msgid "Recent Events"
+msgstr "Vergangene Veranstaltungen"
+
+#~ msgid "%1$s %2$s"
+#~ msgstr "%1$s %2$s"
+
+#~ msgid "Select"
+#~ msgstr "Sélectionner"
+
+#~ msgid "-- Not Set --"
+#~ msgstr "-- Pas réglé --"
+
+#~ msgid "1 View"
+#~ msgstr "1 vue"
+
+#~ msgid "positions"
+#~ msgstr "ポジション"
+
+#~ msgid "Points"
+#~ msgstr "点数"
+
+#~ msgid "Bonus"
+#~ msgstr "ボーナス"
+
+#~ msgid "Height"
+#~ msgstr "身長"
+
+#~ msgid "Weight"
+#~ msgstr "体重"
+
+#, fuzzy
+#~ msgid "Conversions"
+#~ msgstr "ポジション"
+
+#, fuzzy
+#~ msgid "Drop Goals"
+#~ msgstr "得点"
+
+#~ msgid "Goals"
+#~ msgstr "得点"
+
+#~ msgid "Assists"
+#~ msgstr "アシスト"
+
+#~ msgid "Yellow Cards"
+#~ msgstr "警告"
+
+#~ msgid "Red Cards"
+#~ msgstr "退場"
+
+#~ msgid "#"
+#~ msgstr "#"
+
+#~ msgid "Handball"
+#~ msgstr "ハンドボール"
+
+#~ msgid "Swimming"
+#~ msgstr "水泳"
+
+#~ msgid "Tennis"
+#~ msgstr "テニス"
+
+#~ msgid "Volleyball"
+#~ msgstr "バレーボール"
+
+#~ msgid "Appearances"
+#~ msgstr "出場"
+
+#~ msgid "Select Logo"
+#~ msgstr "ロゴを選択"
+
+#~ msgid "Remove Logo"
+#~ msgstr "ロゴを削除"
+
+#~ msgid "Joined: <b>%1$s</b>"
+#~ msgstr "入団日: <b>%1$s</b>"
+
+#~ msgid "Select Photo"
+#~ msgstr "写真を選択"
+
+#~ msgid "Remove Photo"
+#~ msgstr "写真を削除"
+
+#~ msgid "Table Columns"
+#~ msgstr "順位表列"
+
+#~ msgid "Table Column"
+#~ msgstr "順位表列"
+
+#~ msgid "table columns"
+#~ msgstr "順位表列"
+
+#~ msgid "Format"
+#~ msgstr "フォーマット"
+
+#, fuzzy
+#~ msgid "Player Statistic"
+#~ msgstr "選手名鑑"
+
+#, fuzzy
+#~ msgid "player statistics"
+#~ msgstr "選手名鑑"
+
+#~ msgid "Configure"
+#~ msgstr "設定"
+
+#~ msgid "Joined"
+#~ msgstr "入団日"
