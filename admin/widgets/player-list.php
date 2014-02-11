@@ -1,0 +1,112 @@
+<?php
+class SportsPress_Widget_Player_list extends WP_Widget {
+
+	function __construct() {
+		$widget_ops = array('classname' => 'widget_player_list widget_sp_player_list', 'description' => __( 'SportsPress widget.', 'sportspress' ) );
+		parent::__construct('sp_player_list', __( 'Player List', 'sportspress' ), $widget_ops);
+	}
+
+	function widget( $args, $instance ) {
+		extract($args);
+		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
+		$id = empty($instance['id']) ? null : $instance['id'];
+		$statistics = $instance['statistics'];
+		$orderby = empty($instance['orderby']) ? 'number' : $instance['orderby'];
+		$order = empty($instance['order']) ? 'ASC' : $instance['order'];
+		echo $before_widget;
+		if ( $title )
+			echo $before_title . $title . $after_title;
+		echo '<div id="sp_player_list_wrap">';
+		echo sportspress_player_list( $id, array( 'statistics' => $statistics, 'orderby' => $orderby , 'order' => $order ) );
+		echo '</div>';
+		echo $after_widget;
+	}
+
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['id'] = intval($new_instance['id']);
+		$instance['statistics'] = (array)$new_instance['statistics'];
+		$instance['orderby'] = strip_tags($new_instance['orderby']);
+		$instance['order'] = strip_tags($new_instance['order']);
+
+		return $instance;
+	}
+
+	function form( $instance ) {
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'statistics' => null, 'orderby' => 'number', 'order' => 'ASC' ) );
+		$title = strip_tags($instance['title']);
+		$id = intval($instance['id']);
+		$statistics = $instance['statistics'];
+		$orderby = strip_tags($instance['orderby']);
+		$order = strip_tags($instance['order']);
+?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('id'); ?>"><?php _e( 'Player List:', 'sportspress' ); ?></label>
+		<?php
+		$args = array(
+			'post_type' => 'sp_list',
+			'name' => $this->get_field_name('id'),
+			'id' => $this->get_field_id('id'),
+			'selected' => $id,
+			'values' => 'ID',
+			'class' => 'widefat',
+		);
+		if ( ! sportspress_dropdown_pages( $args ) ):
+			sportspress_post_adder( 'sp_list' );
+		endif;
+		?>
+		</p>
+
+		<p class="sp-prefs">
+			<?php _e( 'Statistics:', 'sportspress' ); ?><br>
+			<?php 
+			$args = array(
+				'post_type' => 'sp_statistic',
+				'numberposts' => -1,
+				'posts_per_page' => -1,
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
+			);
+			$the_statistics = get_posts( $args );
+
+			$field_name = $this->get_field_name('statistics') . '[]';
+			$field_id = $this->get_field_id('statistics');
+			?>
+			<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . 'eventsplayed'; ?>" value="<?php echo 'eventsplayed'; ?>" <?php if ( is_array( $statistics) && in_array( 'eventsplayed', $statistics ) ): ?>checked="checked"<?php endif; ?>><?php _e( 'Played', 'sportspress' ); ?></label>
+			<?php foreach ( $the_statistics as $column ): ?>
+				<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . $column->post_name; ?>" value="<?php echo $column->post_name; ?>" <?php if ( $statistics === null || in_array( $column->post_name, $statistics ) ): ?>checked="checked"<?php endif; ?>><?php echo $column->post_title; ?></label>
+			<?php endforeach; ?>
+		</p>
+
+		<p><label for="<?php echo $this->get_field_id('orderby'); ?>"><?php _e( 'Sort by:', 'sportspress' ); ?></label>
+		<?php
+		$args = array(
+			'post_type' => 'sp_statistic',
+			'show_option_all' => __( 'Number', 'sportspress' ),
+			'option_all_value' => 'number',
+			'show_option_none' => __( 'Played', 'sportspress' ),
+			'option_none_value' => 'eventsplayed',
+			'name' => $this->get_field_name('orderby'),
+			'id' => $this->get_field_id('orderby'),
+			'selected' => $orderby,
+			'values' => 'slug',
+			'class' => 'widefat',
+		);
+		if ( ! sportspress_dropdown_pages( $args ) ):
+			sportspress_post_adder( 'sp_list' );
+		endif;
+		?>
+		</p>
+
+		<p><label for="<?php echo $this->get_field_id('order'); ?>"><?php _e( 'Sort Order:', 'sportspress' ); ?></label>
+		<select name="<?php echo $this->get_field_name('order'); ?>" id="<?php echo $this->get_field_id('order'); ?>" class="widefat">
+			<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
+			<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
+		</select></p>
+<?php
+	}
+}
+add_action( 'widgets_init', create_function( '', 'return register_widget( "SportsPress_Widget_Player_list" );' ) );

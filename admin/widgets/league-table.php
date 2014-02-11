@@ -10,11 +10,12 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$id = empty($instance['id']) ? null : $instance['id'];
+		$columns = $instance['columns'];
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
 		echo '<div id="sp_league_table_wrap">';
-		echo sportspress_league_table( $id );
+		echo sportspress_league_table( $id, array( 'columns' => $columns ) );
 		echo '</div>';
 		echo $after_widget;
 	}
@@ -23,14 +24,16 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['id'] = intval($new_instance['id']);
+		$instance['columns'] = (array)$new_instance['columns'];
 
 		return $instance;
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '' ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'columns' => null ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
+		$columns = $instance['columns'];
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
@@ -49,6 +52,26 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 			sportspress_post_adder( 'sp_table' );
 		endif;
 		?>
+		</p>
+
+		<p class="sp-prefs">
+			<?php _e( 'Columns:', 'sportspress' ); ?><br>
+			<?php 
+			$args = array(
+				'post_type' => 'sp_column',
+				'numberposts' => -1,
+				'posts_per_page' => -1,
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
+			);
+			$the_columns = get_posts( $args );
+
+			$field_name = $this->get_field_name('columns') . '[]';
+			$field_id = $this->get_field_id('columns');
+			?>
+			<?php foreach ( $the_columns as $column ): ?>
+				<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . $column->post_name; ?>" value="<?php echo $column->post_name; ?>" <?php if ( $columns === null || in_array( $column->post_name, $columns ) ): ?>checked="checked"<?php endif; ?>><?php echo $column->post_title; ?></label>
+			<?php endforeach; ?>
 		</p>
 <?php
 	}

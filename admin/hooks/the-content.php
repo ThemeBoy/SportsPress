@@ -33,9 +33,24 @@ add_filter( 'the_content', 'sportspress_default_team_content' );
 
 function sportspress_default_table_content( $content ) {
     if ( is_singular( 'sp_table' ) && in_the_loop() ):
+        $id = get_the_ID();
+        $leagues = get_the_terms( $id, 'sp_league' );
+        $seasons = get_the_terms( $id, 'sp_season' );
+        $terms = array();
+        if ( $leagues ):
+            $league = reset( $leagues );
+            $terms[] = $league->name;
+        endif;
+        if ( $seasons ):
+            $season = reset( $seasons );
+            $terms[] = $season->name;
+        endif;
+        $title = '';
+        if ( sizeof( $terms ) )
+            $title = '<h4 class="sp-table-caption">' . implode( ' &mdash; ', $terms ) . '</h4>';
         $table = sportspress_league_table();
         $excerpt = has_excerpt() ? wpautop( get_the_excerpt() ) : '';
-        $content = $table . $content . $excerpt;
+        $content = $title . $table . $content . $excerpt;
     endif;
     return $content;
 }

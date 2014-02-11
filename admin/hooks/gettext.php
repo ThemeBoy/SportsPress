@@ -21,7 +21,7 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 		elseif ( in_array( $typenow, array( 'sp_event', 'sp_player', 'sp_staff' ) ) ):
 			switch ( $untranslated_text ):
 			case 'Enter title here':
-				$translated_text = __( 'Name', 'sportspress' );
+				$translated_text = __( '(Auto)', 'sportspress' );
 				break;
 			case 'Set featured image':
 				$translated_text = sprintf( __( 'Select %s', 'sportspress' ), __( 'Photo', 'sportspress' ) );
