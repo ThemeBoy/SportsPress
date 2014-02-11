@@ -20,8 +20,10 @@ League table columns, player statistics, and match results can be customized to 
 
 = Available Languages =
 * English
+* German
 * Spanish
 * French
+* Italian
 * Japanese
 
 [Let us know](http://wordpress.org/support/plugin/sportspress) if you come across any missing or inaccurate translations in your language.
@@ -88,6 +90,12 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 5. League Table widget.
 
 == Changelog ==
+
+= 0.2.8 =
+* Feature - Add player list widget.
+* Localization - Add German translations.
+* Localization - Add Spanish translations.
+* Localization - Add Italian translations.
 
 = 0.2.7 =
 * Feature - Select columns to display in league table widget.
