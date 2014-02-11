@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-08 23:42+1000\n"
-"PO-Revision-Date: 2014-02-08 23:42+1000\n"
+"POT-Creation-Date: 2014-02-10 13:10+1000\n"
+"PO-Revision-Date: 2014-02-10 13:10+1000\n"
 "Last-Translator: ThemeBoy <translate@themeboy.com>\n"
 "Language-Team: ThemeBoy <translate@themeboy.com>\n"
 "Language: fr_FR\n"
@@ -106,7 +106,7 @@ msgid "Scheduled"
 msgstr "Planifié"
 
 #: ../functions.php:145 ../functions.php:482 ../functions.php:485
-#: ../functions.php:1901 ../functions.php:2052 ../functions.php:2189
+#: ../functions.php:1899 ../functions.php:2050 ../functions.php:2187
 msgid "Played"
 msgstr "Joué"
 
@@ -222,21 +222,21 @@ msgid "Date"
 msgstr "Date"
 
 #: ../functions.php:673 ../functions.php:814 ../functions.php:887
-#: ../functions.php:1071 ../functions.php:1754 ../functions.php:2189
+#: ../functions.php:1071 ../functions.php:1752 ../functions.php:2187
 #: ../admin/hooks/gettext.php:9 ../admin/post-types/list.php:31
 #: ../admin/post-types/list.php:82 ../admin/post-types/team.php:4
 #: ../admin/post-types/team.php:41 ../admin/templates/event-results.php:52
 msgid "Team"
 msgstr "Équipe"
 
-#: ../functions.php:716 ../functions.php:992 ../functions.php:1986
+#: ../functions.php:716 ../functions.php:992 ../functions.php:1984
 #: ../admin/hooks/register-activation-hook.php:147
 #: ../admin/post-types/player.php:4 ../admin/templates/event-players.php:28
 msgid "Player"
 msgstr "Joueur"
 
-#: ../functions.php:761 ../functions.php:813 ../functions.php:1486
-#: ../functions.php:2189 ../admin/post-types/event.php:69
+#: ../functions.php:761 ../functions.php:813 ../functions.php:1484
+#: ../functions.php:2187 ../admin/post-types/event.php:69
 #: ../admin/post-types/event.php:199 ../admin/post-types/list.php:30
 #: ../admin/post-types/list.php:70 ../admin/post-types/table.php:29
 #: ../admin/post-types/table.php:68 ../admin/templates/event-details.php:22
@@ -274,7 +274,7 @@ msgstr "État"
 msgid "Total"
 msgstr "Total"
 
-#: ../admin/hooks/admin-enqueue-scripts.php:19
+#: ../admin/hooks/admin-enqueue-scripts.php:20
 #: ../admin/post-types/event.php:110
 msgid "Remove"
 msgstr "Supprimer"
@@ -812,7 +812,7 @@ msgid "Countdown"
 msgstr "Rebours"
 
 #: ../admin/widgets/countdown.php:33 ../admin/widgets/events-calendar.php:32
-#: ../admin/widgets/future-events.php:55 ../admin/widgets/league-table.php:35
+#: ../admin/widgets/future-events.php:55 ../admin/widgets/league-table.php:38
 #: ../admin/widgets/recent-events.php:55
 msgid "Title:"
 msgstr "Titre&nbsp;:"
@@ -852,9 +852,13 @@ msgstr "Équipe&nbsp;:"
 msgid "Number of %s to show:"
 msgstr "Nombre de %s à afficher&nbsp;:"
 
-#: ../admin/widgets/league-table.php:38
+#: ../admin/widgets/league-table.php:41
 msgid "League Table:"
 msgstr "Classement&nbsp;:"
+
+#: ../admin/widgets/league-table.php:58
+msgid "Columns:"
+msgstr "Colonnes&nbsp;:"
 
 #: ../admin/widgets/recent-events.php:6 ../admin/widgets/recent-events.php:11
 msgid "Recent Events"
