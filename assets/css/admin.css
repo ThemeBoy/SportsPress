@@ -4,6 +4,7 @@
 .widget[id*="sp_future_events-"] .widget-title h4:before,
 .widget[id*="sp_countdown-"] .widget-title h4:before,
 .widget[id*="sp_events_calendar-"] .widget-title h4:before,
+.widget[id*="sp_player_list-"] .widget-title h4:before,
 .widget[id*="sp_league_table-"] .widget-title h4:before {
 	font-family: 'themeboy';
 	speak: none;
@@ -94,6 +95,31 @@ table.widefat td.column-sp_icon {
 	height: 320px;
 }
 
+.sp-prefs .button {
+	margin: 0 3px 4px 0;
+	padding: 0 7px 1px 5px;
+}
+
+.sp-prefs .button input[type=checkbox] {
+	background: transparent;
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.sp-prefs .button input[type=checkbox]:not(:checked):before {
+	float: left;
+	display: inline-block;
+	vertical-align: middle;
+	width: 16px;
+	font: 400 21px/1 dashicons;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: '\f335';
+	margin: -3px 0 0 -4px;
+	color: #a00;
+}
 
 @media only screen and (max-width: 768px) {
 

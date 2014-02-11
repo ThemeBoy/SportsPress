@@ -265,6 +265,7 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 			'option_all_value' => 0,
 			'option_none_value' => -1,
 			'name' => 'page_id',
+			'id' => 'page_id',
 			'selected' => null,
 			'numberposts' => -1,
 			'posts_per_page' => -1,
@@ -286,25 +287,27 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 		$args = array_merge( $defaults, $args );
 		$name = $args['name'];
 		unset( $args['name'] );
+		$id = $args['id'];
+		unset( $args['id'] );
 		$values = $args['values'];
 		unset( $args['values'] );
 		$class = $args['class'];
 		unset( $args['class'] );
 		$posts = get_posts( $args );
 		if ( $posts ):
-			printf( '<select name="%1$s" class="postform %2$s">', $name, $class );
+			printf( '<select name="%s" id="%s" class="postform %s">', $name, $id, $class );
 			if ( $args['show_option_all'] ):
-				printf( '<option value="%1$s">%2$s</option>', $args['option_all_value'], $args['show_option_all'] );
+				printf( '<option value="%s" %s>%s</option>', $args['option_all_value'], selected( $args['selected'], $args['option_all_value'], false ), $args['show_option_all'] );
 			endif;
 			if ( $args['show_option_none'] ):
-				printf( '<option value="%1$s">%2$s</option>', $args['option_none_value'], $args['show_option_none'] );
+				printf( '<option value="%s" %s>%s</option>', $args['option_none_value'], selected( $args['selected'], $args['option_none_value'], false ), $args['show_option_none'] );
 			endif;
 			foreach ( $posts as $post ):
 				setup_postdata( $post );
 				if ( $values == 'ID' ):
-					printf( '<option value="%s" %s>%s</option>', $post->ID, selected( true, $args['selected'] == $post->ID, false ), $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
+					printf( '<option value="%s" %s>%s</option>', $post->ID, selected( $args['selected'], $post->ID, false ), $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
 				else:
-					printf( '<option value="%s" %s>%s</option>', $post->post_name, selected( true, $args['selected'] == $post->post_name, false ), $post->post_title );
+					printf( '<option value="%s" %s>%s</option>', $post->post_name, selected( $args['selected'], $post->post_name, false ), $post->post_title );
 				endif;
 			endforeach;
 			wp_reset_postdata();
@@ -1985,6 +1988,34 @@ if ( !function_exists( 'sportspress_get_player_list_data' ) ) {
 			$merged[0] = $labels;
 			return $merged;
 		endif;
+	}
+}
+
+if ( !function_exists( 'sportspress_sort_list_players' ) ) {
+	function sportspress_sort_list_players ( $a, $b ) {
+
+		global $sportspress_statistic_priorities;
+
+		// Loop through priorities
+		foreach( $sportspress_statistic_priorities as $priority ):
+
+			// Proceed if columns are not equal
+			if ( sportspress_array_value( $a, $priority['statistic'], 0 ) != sportspress_array_value( $b, $priority['statistic'], 0 ) ):
+
+				// Compare statistic values
+				$output = sportspress_array_value( $a, $priority['statistic'], 0 ) - sportspress_array_value( $b, $priority['statistic'], 0 );
+
+				// Flip value if descending order
+				if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
+
+				return $output;
+
+			endif;
+
+		endforeach;
+
+		// Default sort by number
+		return strcmp( sportspress_array_value( $a, 'number', '' ), sportspress_array_value( $b, 'number', '' ) );
 	}
 }
 

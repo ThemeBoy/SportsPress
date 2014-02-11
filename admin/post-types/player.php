@@ -81,8 +81,8 @@ function sportspress_player_details_meta( $post ) {
 		</p>
 		<p>
 			<select id="sp_nationality" name="sp_nationality">
+				<option value=""><?php _e( '-- Not set --', 'sportspress' ); ?></option>
 				<?php foreach ( $continents as $continent => $countries ): ?>
-					<option value=""><?php _e( '-- Not set --', 'sportspress' ); ?></option>
 					<optgroup label="<?php echo $continent; ?>">
 						<?php foreach ( $countries as $code => $country ): ?>
 							<option value="<?php echo $code; ?>" <?php selected ( $nationality, $code ); ?>>
