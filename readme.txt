@@ -31,7 +31,7 @@ League table columns, player statistics, and match results can be customized to 
 == Installation ==
 
 = Minimum Requirements =
-* WordPress 3.5 or greater (WordPress 3.8 recommended)
+* WordPress 3.8 or greater
 * PHP version 5.2.4 or greater
 * MySQL version 5.0 or greater
 
