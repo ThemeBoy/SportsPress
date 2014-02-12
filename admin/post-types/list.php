@@ -62,7 +62,7 @@ function sportspress_list_player_meta( $post ) {
 				'taxonomy' => 'sp_league',
 				'name' => 'sp_league',
 				'selected' => $league_id,
-				'values' => 'term_id'
+				'values' => 'term_id',
 			);
 			sportspress_dropdown_taxonomies( $args );
 			?>
@@ -74,7 +74,7 @@ function sportspress_list_player_meta( $post ) {
 				'taxonomy' => 'sp_season',
 				'name' => 'sp_season',
 				'selected' => $season_id,
-				'values' => 'term_id'
+				'values' => 'term_id',
 			);
 			sportspress_dropdown_taxonomies( $args );
 			?>
@@ -85,9 +85,11 @@ function sportspress_list_player_meta( $post ) {
 			$args = array(
 				'post_type' => 'sp_team',
 				'name' => 'sp_team',
-				'selected' => $team_id
+				'show_option_all' => sprintf( __( 'All %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
+				'selected' => $team_id,
+				'values' => 'ID',
 			);
-			wp_dropdown_pages( $args );
+			sportspress_dropdown_pages( $args );
 			?>
 		</p>
 		<p><strong><?php _e( 'Players', 'sportspress' ); ?></strong></p>

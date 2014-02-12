@@ -386,7 +386,6 @@ if ( !function_exists( 'sportspress_post_checklist' ) ) {
 					?>
 					<li class="sp-post<?php
 						if ( $filter ):
-							echo ' sp-filter-0';
 							foreach ( $filter_values as $filter_value ):
 								echo ' sp-filter-' . $filter_value;
 							endforeach;
@@ -1849,15 +1848,26 @@ if ( !function_exists( 'sportspress_get_player_list_data' ) ) {
 					'taxonomy' => 'sp_season',
 					'field' => 'id',
 					'terms' => $div_id
-				)
+				),
 			),
 			'meta_query' => array(
+				'relation' => 'AND',
+				array(
+					'key' => 'sp_team',
+					'compare' => 'EXISTS',
+				),
+			),
+		);
+
+		if ( $team_id ):
+			$args['meta_query'] = array(
 				array(
 					'key' => 'sp_team',
 					'value' => $team_id,
-				)
-			)
-		);
+				),
+			);
+		endif;
+
 		$events = get_posts( $args );
 
 		// Event loop
@@ -1865,28 +1875,56 @@ if ( !function_exists( 'sportspress_get_player_list_data' ) ) {
 
 			$teams = (array)get_post_meta( $event->ID, 'sp_players', true );
 
-			if ( ! array_key_exists( $team_id, $teams ) )
-				continue;
+			if ( $team_id ):
 
-			$players = sportspress_array_value( $teams, $team_id, array() );
-
-			foreach ( $players as $player_id => $player_statistics ):
-
-				if ( ! $player_id || ! in_array( $player_id, $player_ids ) )
+				if ( ! array_key_exists( $team_id, $teams ) )
 					continue;
 
-				// Increment events played
-				$totals[ $player_id ]['eventsplayed']++;
+				$players = sportspress_array_value( $teams, $team_id, array() );
 
-				foreach ( $player_statistics as $key => $value ):
+				foreach ( $players as $player_id => $player_statistics ):
 
-					if ( array_key_exists( $key, $totals[ $player_id ] ) ):
-						$totals[ $player_id ][ $key ] += $value;
-					endif;
+					if ( ! $player_id || ! in_array( $player_id, $player_ids ) )
+						continue;
+
+					// Increment events played
+					$totals[ $player_id ]['eventsplayed']++;
+
+					foreach ( $player_statistics as $key => $value ):
+
+						if ( array_key_exists( $key, $totals[ $player_id ] ) ):
+							$totals[ $player_id ][ $key ] += $value;
+						endif;
+
+					endforeach;
 
 				endforeach;
 
-			endforeach;
+			else:
+
+				foreach ( $teams as $players ):
+
+					foreach ( $players as $player_id => $player_statistics ):
+
+						if ( ! $player_id || ! in_array( $player_id, $player_ids ) )
+							continue;
+
+						// Increment events played
+						$totals[ $player_id ]['eventsplayed']++;
+
+						foreach ( $player_statistics as $key => $value ):
+
+							if ( array_key_exists( $key, $totals[ $player_id ] ) ):
+								$totals[ $player_id ][ $key ] += $value;
+							endif;
+
+						endforeach;
+
+					endforeach;
+
+				endforeach;
+
+			endif;
 
 		endforeach;
 
