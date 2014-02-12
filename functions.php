@@ -1783,7 +1783,7 @@ if ( !function_exists( 'sportspress_sort_table_teams' ) ) {
 				// Flip value if descending order
 				if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
 
-				return $output;
+				return ( $output > 0 );
 
 			endif;
 
@@ -2008,7 +2008,7 @@ if ( !function_exists( 'sportspress_sort_list_players' ) ) {
 				// Flip value if descending order
 				if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
 
-				return $output;
+				return ( $output > 0 );
 
 			endif;
 
