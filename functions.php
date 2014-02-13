@@ -288,29 +288,37 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 		    'class' => null,
 		);
 		$args = array_merge( $defaults, $args );
+
 		$name = $args['name'];
 		unset( $args['name'] );
+
 		$id = $args['id'];
 		unset( $args['id'] );
+
 		$values = $args['values'];
 		unset( $args['values'] );
+
 		$class = $args['class'];
 		unset( $args['class'] );
+
+		$selected = $args['selected'];
+		unset( $args['selected'] );
+		
 		$posts = get_posts( $args );
 		if ( $posts ):
 			printf( '<select name="%s" id="%s" class="postform %s">', $name, $id, $class );
 			if ( $args['show_option_all'] ):
-				printf( '<option value="%s" %s>%s</option>', $args['option_all_value'], selected( $args['selected'], $args['option_all_value'], false ), $args['show_option_all'] );
+				printf( '<option value="%s" %s>%s</option>', $args['option_all_value'], selected( $selected, $args['option_all_value'], false ), $args['show_option_all'] );
 			endif;
 			if ( $args['show_option_none'] ):
-				printf( '<option value="%s" %s>%s</option>', $args['option_none_value'], selected( $args['selected'], $args['option_none_value'], false ), $args['show_option_none'] );
+				printf( '<option value="%s" %s>%s</option>', $args['option_none_value'], selected( $selected, $args['option_none_value'], false ), $args['show_option_none'] );
 			endif;
 			foreach ( $posts as $post ):
 				setup_postdata( $post );
 				if ( $values == 'ID' ):
-					printf( '<option value="%s" %s>%s</option>', $post->ID, selected( $args['selected'], $post->ID, false ), $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
+					printf( '<option value="%s" %s>%s</option>', $post->ID, selected( $selected, $post->ID, false ), $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
 				else:
-					printf( '<option value="%s" %s>%s</option>', $post->post_name, selected( $args['selected'], $post->post_name, false ), $post->post_title );
+					printf( '<option value="%s" %s>%s</option>', $post->post_name, selected( $selected, $post->post_name, false ), $post->post_title );
 				endif;
 			endforeach;
 			wp_reset_postdata();
