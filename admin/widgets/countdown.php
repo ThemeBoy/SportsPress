@@ -8,9 +8,8 @@ class SP_Widget_Countdown extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract($args);
-		$title = apply_filters('widget_title', empty($instance['title']) ? __( 'Countdown', 'sportspress' ) : $instance['title'], $instance, $this->id_base);
+		$title = apply_filters('widget_title', empty($instance['title']) ? null : $instance['title'], $instance, $this->id_base);
 		echo $before_widget;
-		$id = empty($instance['id']) ? null : $instance['id'];
 		if ( $title )
 			echo $before_title . $title . $after_title;
 		echo sportspress_countdown( $instance );
@@ -20,26 +19,28 @@ class SP_Widget_Countdown extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['id'] = intval($new_instance['id']);
+		$instance['event'] = intval($new_instance['event']);
+		$instance['show_league'] = intval($new_instance['show_league']);
 
 		return $instance;
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '' ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'event' => '', 'show_league' => 0 ) );
 		$title = strip_tags($instance['title']);
-		$id = intval($instance['id']);
+		$event = intval($instance['event']);
+		$show_league = intval($instance['show_league']);
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('id'); ?>"><?php _e( 'Event:', 'sportspress' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id('event'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?></label>
 		<?php
 		$args = array(
 			'post_type' => 'sp_event',
-			'name' => $this->get_field_name('id'),
-			'id' => $this->get_field_id('id'),
-			'selected' => $id,
+			'name' => $this->get_field_name('event'),
+			'id' => $this->get_field_id('event'),
+			'selected' => $event,
 			'show_option_all' => __( '(Auto)', 'sportspress' ),
 			'values' => 'ID',
 			'class' => 'widefat',
@@ -51,6 +52,9 @@ class SP_Widget_Countdown extends WP_Widget {
 		endif;
 		?>
 		</p>
+
+		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_league'); ?>" name="<?php echo $this->get_field_name('show_league'); ?>" value="1" <?php checked( $show_league, 1 ); ?>>
+		<label for="<?php echo $this->get_field_id('show_league'); ?>"><?php printf( __( 'Display %s', 'sportspress' ), __( 'League', 'sportspress' ) ); ?></label></p>
 <?php
 	}
 }
