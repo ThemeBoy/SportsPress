@@ -2073,6 +2073,10 @@ if ( !function_exists( 'sportspress_get_player_metrics_data' ) ) {
 
 		foreach( $metric_labels as $key => $value ):
 
+			$metric = sportspress_array_value( $metrics, $key, null );
+			if ( $metric == null )
+				continue;
+
 			$data[ $value ] = sportspress_array_value( $metrics, $key, '&nbsp;' );
 
 		endforeach;
