@@ -37,11 +37,11 @@ function sportspress_restrict_manage_posts() {
 		$args = array(
 			'post_type' => 'sp_team',
 			'name' => 'team',
-			'show_option_all' => sprintf( __( 'All %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
+			'show_option_none' => sprintf( __( 'All %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
 			'selected' => $selected,
 			'values' => 'ID',
 		);
-		sportspress_dropdown_pages( $args );
+		wp_dropdown_pages( $args );
 	endif;
 }
 add_action( 'restrict_manage_posts', 'sportspress_restrict_manage_posts' );

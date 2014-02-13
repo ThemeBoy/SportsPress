@@ -62,7 +62,9 @@ function sportspress_table_team_meta( $post, $test ) {
 				'selected' => $league_id,
 				'values' => 'term_id'
 			);
-			sportspress_dropdown_taxonomies( $args );
+			if ( ! sportspress_dropdown_taxonomies( $args ) ):
+				sportspress_taxonomy_adder( 'sp_league', 'sp_team' );
+			endif;
 			?>
 		</p>
 		<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
@@ -74,7 +76,9 @@ function sportspress_table_team_meta( $post, $test ) {
 				'selected' => $season_id,
 				'values' => 'term_id'
 			);
-			sportspress_dropdown_taxonomies( $args );
+			if ( ! sportspress_dropdown_taxonomies( $args ) ):
+				sportspress_taxonomy_adder( 'sp_season', 'sp_team' );
+			endif;
 			?>
 		</p>
 		<p><strong><?php _e( 'Teams', 'sportspress' ); ?></strong></p>
