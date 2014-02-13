@@ -4,7 +4,7 @@ Tags: sports, sports journalism, teams, team management, fixtures, results, stan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 0.2.9
+Stable tag: 0.2.10
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -88,8 +88,17 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 3. Players admin.
 4. SportsPress Settings panel.
 5. League Table widget.
+6. Player List widget.
+7. Events Calendar widget.
+8. Countdown widget.
 
 == Changelog ==
+
+= 0.2.10 =
+* Fix - Team filtering in events, tables, players, and lists.
+* Tweak - Display statistics for all league/season events played in player profiles and player lists.
+* Tweak - Count events as played when in starting lineup or made substitution.
+* Tweak - Display player metrics only when value is set.
 
 = 0.2.9 =
 * Feature - Ability to select players from all teams in player list.
