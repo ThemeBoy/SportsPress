@@ -17,6 +17,6 @@ function sportspress_admin_enqueue_scripts( $hook ) {
 	wp_enqueue_script( 'sportspress-admin', SPORTSPRESS_PLUGIN_URL .'assets/js/admin.js', array( 'jquery' ), time(), true );
 
 	// Localize scripts.
-	wp_localize_script( 'sportspress-admin', 'localized_strings', array( 'remove_text' => __( 'Remove', 'sportspress' ) ) );
+	wp_localize_script( 'sportspress-admin', 'localized_strings', array( 'remove_text' => __( '&mdash; Remove &mdash;', 'sportspress' ) ) );
 }
 add_action( 'admin_enqueue_scripts', 'sportspress_admin_enqueue_scripts' );

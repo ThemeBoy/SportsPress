@@ -63,7 +63,9 @@ function sportspress_event_details_meta( $post ) {
 				'values' => 'term_id',
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
-			sportspress_dropdown_taxonomies( $args );
+			if ( ! sportspress_dropdown_taxonomies( $args ) ):
+				sportspress_taxonomy_adder( 'sp_league', 'sp_team' );
+			endif;
 			?>
 		</p>
 		<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
@@ -76,7 +78,9 @@ function sportspress_event_details_meta( $post ) {
 				'values' => 'term_id',
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
-			sportspress_dropdown_taxonomies( $args );
+			if ( ! sportspress_dropdown_taxonomies( $args ) ):
+				sportspress_taxonomy_adder( 'sp_season', 'sp_team' );
+			endif;
 			?>
 		</p>
 		<p><strong><?php _e( 'Venue', 'sportspress' ); ?></strong></p>
@@ -89,7 +93,9 @@ function sportspress_event_details_meta( $post ) {
 				'values' => 'term_id',
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
-			sportspress_dropdown_taxonomies( $args );
+			if ( ! sportspress_dropdown_taxonomies( $args ) ):
+				sportspress_taxonomy_adder( 'sp_venue', 'sp_event' );
+			endif;
 			?>
 		</p>
 	</div>
@@ -131,7 +137,7 @@ function sportspress_event_team_meta( $post ) {
 				'post_type' => 'sp_team',
 				'name' => 'sp_team_selector',
 				'class' => 'sportspress-pages',
-				'show_option_none' => __( '&mdash; Select &mdash;', 'sportspress' ),
+				'show_option_none' => __( '&mdash; Add &mdash;', 'sportspress' ),
 				'option_none_value' => '0'
 			);
 			wp_dropdown_pages( $args );
@@ -139,7 +145,6 @@ function sportspress_event_team_meta( $post ) {
 		</p>
 	</div>
 	<?php
-	sportspress_post_adder( 'sp_team' );
 	sportspress_nonce();
 }
 
