@@ -237,7 +237,7 @@ if ( !function_exists( 'sportspress_dropdown_taxonomies' ) ) {
 		$name = ( $args['name'] ) ? $args['name'] : $args['taxonomy'];
 		$class = $args['class'];
 		unset( $args['class'] );
-		if ( $terms ) {
+		if ( $terms ):
 			printf( '<select name="%1$s" class="postform %2$s">', $name, $class );
 			if ( $args['show_option_all'] ) {
 				printf( '<option value="0">%s</option>', $args['show_option_all'] );
@@ -252,7 +252,10 @@ if ( !function_exists( 'sportspress_dropdown_taxonomies' ) ) {
 					printf( '<option value="%s" %s>%s</option>', $term->slug, selected( true, $args['selected'] == $term->slug, false ), $term->name );
 			}
 			print( '</select>' );
-		}
+			return true;
+		else:
+			return false;
+		endif;
 	}
 }
 
@@ -1065,12 +1068,27 @@ if ( !function_exists( 'sportspress_player_nationality_selector' ) ) {
 }
 
 if ( !function_exists( 'sportspress_post_adder' ) ) {
-	function sportspress_post_adder( $meta = 'post' ) {
-		$obj = get_post_type_object( $meta );
+	function sportspress_post_adder( $post_type = 'post' ) {
+		$obj = get_post_type_object( $post_type );
 		?>
-		<div id="<?php echo $meta; ?>-adder">
+		<div id="<?php echo $post_type; ?>-adder">
 			<h4>
-				<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=' . $meta ); ?>" target="_blank">
+				<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr( $obj->labels->singular_name ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=' . $post_type ); ?>" target="_blank">
+					+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), $obj->labels->singular_name ); ?>
+				</a>
+			</h4>
+		</div>
+		<?php
+	}
+}
+
+if ( !function_exists( 'sportspress_taxonomy_adder' ) ) {
+	function sportspress_taxonomy_adder( $taxonomy = 'category', $post_type = 'post' ) {
+		$obj = get_taxonomy( $taxonomy );
+		?>
+		<div id="<?php echo $taxonomy; ?>-adder">
+			<h4>
+				<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr( $obj->labels->singular_name ) ); ?>" href="<?php echo admin_url( 'edit-tags.php?taxonomy=' . $taxonomy . '&post_type=' . $post_type ); ?>" target="_blank">
 					+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), $obj->labels->singular_name ); ?>
 				</a>
 			</h4>
