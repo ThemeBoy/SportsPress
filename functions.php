@@ -2148,11 +2148,11 @@ if ( !function_exists( 'sportspress_get_player_statistics_data' ) ) {
 				'numberposts' => -1,
 				'posts_per_page' => -1,
 				'meta_query' => array(
-					'relation' => 'AND',
-					array(
-						'key' => 'sp_team',
-						'value' => $team_id
-					),
+//					'relation' => 'AND',
+//					array(
+//						'key' => 'sp_team',
+//						'value' => $team_id
+//					),
 					array(
 						'key' => 'sp_player',
 						'value' => $post_id
@@ -2178,17 +2178,21 @@ if ( !function_exists( 'sportspress_get_player_statistics_data' ) ) {
 				$totals['eventsattended']++;
 				$totals['eventsplayed']++;
 				$team_statistics = (array)get_post_meta( $event->ID, 'sp_players', true );
-				if ( array_key_exists( $team_id, $team_statistics ) ):
-					$players = sportspress_array_value( $team_statistics, $team_id, array() );
+
+				// Add all team statistics
+//				if ( array_key_exists( $team_id, $team_statistics ) ):
+				foreach ( $team_statistics as $players ):
+//					$players = sportspress_array_value( $team_statistics, $team_id, array() );
 					if ( array_key_exists( $post_id, $players ) ):
 						$player_statistics = sportspress_array_value( $players, $post_id, array() );
 						foreach ( $player_statistics as $key => $value ):
-							if ( array_key_exists( $key, $totals ) ):
+							array_key_exists( $key, $totals ) ):
 								$totals[ $key ] += $value;
 							endif;
 						endforeach;
 					endif;
-				endif;
+//				endif;
+				endforeach;
 			endforeach;
 
 			// Generate array of placeholder values for each league
