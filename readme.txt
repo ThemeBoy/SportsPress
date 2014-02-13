@@ -1,10 +1,10 @@
-=== SportsPress - Automated League Statistics ===
+=== SportsPress - automated league statistics ===
 Contributors: themeboy
 Tags: sports, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 0.2.8
+Stable tag: 0.2.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -90,6 +90,10 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 5. League Table widget.
 
 == Changelog ==
+
+= 0.2.9 =
+* Feature - Ability to select players from all teams in player list.
+* Fix - Decimal sorting in league tables and player lists.
 
 = 0.2.8 =
 * Feature - Add player list widget.

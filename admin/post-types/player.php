@@ -115,6 +115,73 @@ function sportspress_player_team_meta( $post ) {
 	sportspress_post_adder( 'sp_team' );
 }
 
+function sportspress_player_metrics_meta( $post ) {
+	$metrics = get_post_meta( $post->ID, 'sp_metrics', true );
+	$positions = get_the_terms( $post->ID, 'sp_position' );
+
+	$args = array(
+		'post_type' => 'sp_metric',
+		'numberposts' => -1,
+		'posts_per_page' => -1,
+		'orderby' => 'menu_order',
+		'order' => 'ASC',
+	);
+
+	if ( $positions ):
+		$position_ids = array();
+		foreach( $positions as $position ):
+			$position_ids[] = $position->term_id;
+		endforeach;
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'sp_position',
+				'field' => 'id',
+				'terms' => $position_ids,
+			),
+		);
+	endif;
+
+	$vars = get_posts( $args );
+
+	if ( $vars ):
+	?>
+	<div class="sp-data-table-container">
+		<table class="widefat sp-data-table">
+			<thead>
+				<tr>
+					<th><?php _e( 'Metric', 'sportspress' ); ?></th>
+					<th><?php _e( 'Value', 'sportspress' ); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php
+			$i = 0;
+			foreach ( $vars as $var ):
+				?>
+				<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+					<td>
+						<?php echo $var->post_title; ?>
+					</td>
+					<?php
+					$value = sportspress_array_value( $metrics, $var->post_name, '' );
+					?>
+					<td><input type="text" name="sp_metrics[<?php echo $var->post_name; ?>]" value="<?php echo $value; ?>" /></td>
+				</tr>
+				<?php
+				$i++;
+			endforeach;
+			?>
+			</tbody>
+		</table>
+	</div>
+	<?php
+	else:
+		sportspress_post_adder( 'sp_metric' );
+	endif;
+	
+	sportspress_nonce();
+}
+
 function sportspress_player_stats_meta( $post ) {
 	$leagues = get_the_terms( $post->ID, 'sp_league' );
 
@@ -134,69 +201,6 @@ function sportspress_player_stats_meta( $post ) {
 		sportspress_edit_player_statistics_table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_teams' ) );
 
 	endforeach;
-}
-
-function sportspress_player_metrics_meta( $post ) {
-	$metrics = get_post_meta( $post->ID, 'sp_metrics', true );
-	$positions = get_the_terms( $post->ID, 'sp_position' );
-
-	?>
-	<div class="sp-data-table-container">
-		<table class="widefat sp-data-table">
-			<thead>
-				<tr>
-					<th><?php _e( 'Metric', 'sportspress' ); ?></th>
-					<th><?php _e( 'Value', 'sportspress' ); ?></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-
-				$args = array(
-					'post_type' => 'sp_metric',
-					'numberposts' => -1,
-					'posts_per_page' => -1,
-					'orderby' => 'menu_order',
-					'order' => 'ASC',
-				);
-
-				if ( $positions ):
-					$position_ids = array();
-					foreach( $positions as $position ):
-						$position_ids[] = $position->term_id;
-					endforeach;
-					$args['tax_query'] = array(
-						array(
-							'taxonomy' => 'sp_position',
-							'field' => 'id',
-							'terms' => $position_ids,
-						),
-					);
-				endif;
-
-				$vars = get_posts( $args );
-
-				$i = 0;
-				foreach ( $vars as $var ):
-					?>
-					<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-						<td>
-							<?php echo $var->post_title; ?>
-						</td>
-						<?php
-						$value = sportspress_array_value( $metrics, $var->post_name, '' );
-						?>
-						<td><input type="text" name="sp_metrics[<?php echo $var->post_name; ?>]" value="<?php echo $value; ?>" /></td>
-					</tr>
-					<?php
-					$i++;
-				endforeach;
-				?>
-			</tbody>
-		</table>
-	</div>
-	<?php
-	sportspress_nonce();
 }
 
 function sportspress_player_profile_meta( $post ) {
