@@ -28,12 +28,12 @@ $sportspress_sports['soccer'] = array(
 		// Results
 		'sp_result' => array(
 			array(
-				'post_title' => '1',
-				'post_name'  => 'one',
+				'post_title' => '1st Half',
+				'post_name'  => 'firsthalf',
 			),
 			array(
-				'post_title' => '2',
-				'post_name'  => 'two',
+				'post_title' => '2nd Half',
+				'post_name'  => 'secondhalf',
 			),
 			array(
 				'post_title' => 'Goals',
