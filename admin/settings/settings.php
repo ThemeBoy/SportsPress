@@ -40,12 +40,16 @@ function sportspress_sport_callback() {
 	$options = get_option( 'sportspress' );
 
 	$selected = sportspress_array_value( $options, 'sport', null );
+	$custom_sport_name = sportspress_array_value( $options, 'custom_sport_name', null );
 	?>
 	<select id="sportspress_sport" name="sportspress[sport]">
+		<option value><?php _e( '-- Select --', 'sportspress' ); ?></option>
 		<?php foreach( $sportspress_sports as $slug => $sport ): ?>
 			<option value="<?php echo $slug; ?>" <?php selected( $selected, $slug ); ?>><?php echo $sport['name']; ?></option>
 		<?php endforeach; ?>
+		<option value="custom" <?php selected( $selected, 'custom' ); ?>><?php _e( 'Custom', 'sportspress' ); ?></option>
 	</select>
+	<input id="sportspress_custom_sport_name" name="sportspress[custom_sport_name]" type="text" placeholder="<?php _e( 'Sport', 'sportspress' ); ?>" value="<?php echo $custom_sport_name; ?>"<?php if ( $selected != 'custom' ): ?> class="hidden"<?php endif; ?>></p>
 	<?php
 }
 
@@ -167,7 +171,7 @@ function sportspress_sport_validate( $input ) {
 			'posts_per_page' => -1,
 			'meta_query' => array(
 				array(
-					'key' => 'sp_preset',
+					'key' => '_sp_preset',
 					'value' => 1
 				)
 			)
@@ -198,7 +202,7 @@ function sportspress_sport_validate( $input ) {
 				$id = wp_insert_post( $post );
 
 				// Flag as preset
-				update_post_meta( $id, 'sp_preset', 1 );
+				update_post_meta( $id, '_sp_preset', 1 );
 
 				// Update meta
 				if ( array_key_exists( 'meta', $post ) ):
