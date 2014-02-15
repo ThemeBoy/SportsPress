@@ -1,6 +1,6 @@
 <?php
 /**
- * Players importer - import players into SportsPress.
+ * Player importer - import players into SportsPress.
  *
  * @author 		ThemeBoy
  * @category 	Admin
@@ -112,43 +112,73 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				$header = fgetcsv( $handle, 0, $this->delimiter );
 
-				if ( sizeof( $header ) == 4 ):
+				if ( sizeof( $header ) == 7 ):
 
 					$loop = 0;
 
 					while ( ( $row = fgetcsv( $handle, 0, $this->delimiter ) ) !== FALSE ):
 
-						list( $name, $number, $team, $nationality ) = $row;
+						list( $number, $name, $positions, $teams, $leagues, $seasons, $nationality ) = $row;
 
 						$nationality = trim( strtoupper( $nationality ) );
 
 						if ( $nationality == '*' )
 							$nationality = '';
 
+						if ( ! $name ):
+							$this->skipped++;
+							continue;
+						endif;
+
 						$args = array( 'post_type' => 'sp_player', 'post_status' => 'publish', 'post_title' => $name );
 
 						$id = wp_insert_post( $args );
 
 						// Flag as import
-						update_post_meta( $id, 'sp_import', 1 );
+						update_post_meta( $id, '_sp_import', 1 );
 
 						// Update number
 						update_post_meta( $id, 'sp_number', $number );
 
-						// Get or insert team
-						$team_object = get_page_by_path( $team, OBJECT, 'sp_team' );
-						if ( $team_object ):
-							if ( $team_object->post_status != 'publish' ):
-								wp_update_post( array( 'ID' => $team_object->ID, 'post_status' => 'publish' ) );
-							endif;
-							$team_id = $team_object->ID;
-						else:
-							$team_id = wp_insert_post( array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => $team ) );
-						endif;
+						// Update positions
+						$positions = explode( '|', $positions );
+						wp_set_object_terms( $id, $positions, 'sp_position', false );
 
-						// Update team
-						update_post_meta( $id, 'sp_team', $team_id );
-						update_post_meta( $id, 'sp_current_team', $team_id );
+						// Update leagues
+						$leagues = explode( '|', $leagues );
+						wp_set_object_terms( $id, $leagues, 'sp_league', false );
+
+						// Update seasons
+						$seasons = explode( '|', $seasons );
+						wp_set_object_terms( $id, $seasons, 'sp_season', false );
+
+						// Update teams
+						$teams = (array)explode( '|', $teams );
+						$i = 0;
+						foreach ( $teams as $team ):
+							// Get or insert team
+							$team_object = get_page_by_path( $team, OBJECT, 'sp_team' );
+							if ( $team_object ):
+								if ( $team_object->post_status != 'publish' ):
+									wp_update_post( array( 'ID' => $team_object->ID, 'post_status' => 'publish' ) );
+								endif;
+								$team_id = $team_object->ID;
+							else:
+								$team_id = wp_insert_post( array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => $team ) );
+								wp_set_object_terms( $team_id, $leagues, 'sp_league', false );
+								wp_set_object_terms( $team_id, $seasons, 'sp_season', false );
+							endif;
+
+							// Add team to player
+							add_post_meta( $id, 'sp_team', $team_id );
+
+							// Update current team if first in array
+							if ( $i == 0 ):
+								update_post_meta( $id, 'sp_current_team', $team_id );
+							endif;
+
+							$i++;
+						endforeach;
 
 						// Update nationality
 						update_post_meta( $id, 'sp_nationality', $nationality );
@@ -231,7 +261,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		function header() {
-			echo '<h2>' . sprintf( __( 'Import %s', 'sportspress' ), __( 'Players', 'sportspress' ) ) . '</h2>';
+			echo '<div class="wrap"><h2>' . sprintf( __( 'Import %s', 'sportspress' ), __( 'Players', 'sportspress' ) ) . '</h2>';
 		}
 
 		/**
@@ -255,7 +285,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
 
-			echo '<p>' . sprintf( __( 'Players need to be defined with columns in a specific order (4 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), SPORTSPRESS_PLUGIN_URL . 'dummy-data/sample_players.csv' ) . '</p>';
+			echo '<p>' . sprintf( __( 'Players need to be defined with columns in a specific order (4 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), SPORTSPRESS_PLUGIN_URL . 'dummy-data/players-sample.csv' ) . '</p>';
 
 			$action = 'admin.php?import=sportspress_player_csv&step=1';
 
