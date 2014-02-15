@@ -94,6 +94,14 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 
 == Changelog ==
 
+= 0.3.1 =
+* Feature - Import tool added for importing teams from CSV file.
+* Tweak - Added option to select custom sport and enter sport name.
+* Tweak - Display player number under photo in admin screen.
+* Tweak - Positions, Leagues, and Seasons columns added to player import tool.
+* Tweak - Styled SportsPress setup notice.
+* Refactor - Sum changed to Total in player statistic calculation settings.
+
 = 0.3 =
 * Feature - Import tool added for importing players from CSV file.
 * Feature - Add ability to select 
