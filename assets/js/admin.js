@@ -1,5 +1,13 @@
 jQuery(document).ready(function($){
 
+	$("body.settings_page_sportspress #sportspress_sport").change(function() {
+		$target = $("#sportspress_custom_sport_name");
+		if ( $(this).val() == "custom" )
+			$target.show();
+		else
+			$target.hide();
+	});
+
 	// Auto key placeholder
 	$("#poststuff #title").on("keyup", function() {
 		$("#sp_key").attr("placeholder", $(this).val().replace(/[^a-z]/gi,"").toLowerCase());
