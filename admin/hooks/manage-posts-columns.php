@@ -69,12 +69,15 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 					echo '<br>';
 				endforeach;
 			elseif ( $post_type == 'sp_player' ):
-				$results = get_post_meta( $post_id, 'sp_results', true );
+				$current_team = get_post_meta( $post_id, 'sp_current_team', true );
 				foreach( $teams as $team_id ):
 					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
-					$outcome_slug = sportspress_array_value( sportspress_array_value( $results, $team_id, null ), 'outcome', null );
-					echo $team->post_title . '<br>';
+					echo $team->post_title;
+					if ( $team_id == $current_team ):
+						echo ' (' . __( 'Current Team', 'sportspress' ) . ')';
+					endif;
+					echo '<br>';
 				endforeach;
 			else:
 				foreach( $teams as $team_id ):
