@@ -11,6 +11,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 	switch ( $column ):
 		case 'sp_icon':
 			edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-icon' ), '', '', $post_id );
+			echo '<strong>' . get_post_meta( $post_id, 'sp_number', true ) . '</strong>';
 			break;
 		case 'sp_views':
         	echo sportspress_get_post_views( $post_id );
@@ -19,11 +20,11 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			echo get_the_terms( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '&mdash;';
 			break;
 		case 'sp_positions':
-			echo get_the_terms ( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '&mdash;';
+			echo get_the_terms( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '&mdash;';
 			break;
 		case 'sp_team':
 			$post_type = get_post_type( $post );
-			$teams = get_post_meta ( $post_id, 'sp_team', false );
+			$teams = get_post_meta( $post_id, 'sp_team', false );
 			if ( empty( $teams ) ):
 				echo '&mdash;';
 				break;
