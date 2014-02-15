@@ -168,12 +168,12 @@ if ( !function_exists( 'sportspress_get_post_calculate' ) ) {
 		$calculate = get_post_meta ( $post_id, 'sp_calculate', true );
 		if ( $calculate ):
 			return str_replace(
-				array( 'sum', 'average' ),
-				array( __( 'Sum', 'sportspress' ), __( 'Average', 'sportspress' ) ),
+				array( 'total', 'average' ),
+				array( __( 'Total', 'sportspress' ), __( 'Average', 'sportspress' ) ),
 				$calculate
 			);
 		else:
-			return __( 'Sum', 'sportspress' );
+			return __( 'Total', 'sportspress' );
 		endif;
 	}
 }
@@ -426,7 +426,7 @@ if ( !function_exists( 'sportspress_post_checklist' ) ) {
 if ( !function_exists( 'sportspress_calculate_selector' ) ) {
 	function sportspress_calculate_selector( $postid, $selected = null ) {
 		$options = array(
-			'sum' => __( 'Sum', 'sportspress' ),
+			'total' => __( 'Total', 'sportspress' ),
 			'average' => __( 'Average', 'sportspress' ),
 		);
 		?>
@@ -867,7 +867,21 @@ if ( !function_exists( 'sportspress_edit_player_statistics_table' ) ) {
 										),
 									),
 								);
-								sportspress_dropdown_pages( $args );
+								if ( ! sportspress_dropdown_pages( $args ) ):
+									$args = array(
+										'post_type' => 'sp_team',
+										'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
+										'show_option_none' => __( '-- Not set --', 'sportspress' ),
+									    'sort_order'   => 'ASC',
+									    'sort_column'  => 'menu_order',
+										'selected' => $value,
+										'values' => 'ID',
+										'include' => $teams,
+									);
+									if ( ! sportspress_dropdown_pages( $args ) ):
+										echo '&mdash;';
+									endif;
+								endif;
 								?>
 							</td>
 							<?php foreach( $columns as $column => $label ):
@@ -1997,7 +2011,7 @@ if ( !function_exists( 'sportspress_get_player_list_data' ) ) {
 				if ( sportspress_array_value( $placeholders[ $player_id ], $statistic->post_name, '' ) == '' ):
 
 					if ( $statistic->post_name == 'eventsplayed' ):
-						$calculate = 'sum';
+						$calculate = 'total';
 					else:
 						$calculate = get_post_meta( $statistic->ID, 'sp_calculate', true );
 					endif;
@@ -2145,7 +2159,7 @@ if ( !function_exists( 'sportspress_get_player_statistics_data' ) ) {
 		$statistics = get_posts( $args );
 
 		$statistic_labels = array();
-		$equations = array( 'eventsplayed' => 'sum' );
+		$equations = array( 'eventsplayed' => 'total' );
 		foreach ( $statistics as $statistic ):
 			$statistic_labels[ $statistic->post_name ] = $statistic->post_title;
 			$equations[ $statistic->post_name ] = get_post_meta( $statistic->ID, 'sp_calculate', true );

@@ -124,35 +124,35 @@ $sportspress_sports['rugby'] = array(
 				'post_title' => 'Points',
 				'post_name'  => 'points',
 				'meta'       => array(
-					'sp_calculate'     => 'sum',
+					'sp_calculate'     => 'total',
 				),
 			),
 			array(
 				'post_title' => 'Tries',
 				'post_name'  => 'tries',
 				'meta'       => array(
-					'sp_calculate'     => 'sum',
+					'sp_calculate'     => 'total',
 				),
 			),
 			array(
 				'post_title' => 'Conversions',
 				'post_name'  => 'conversions',
 				'meta'       => array(
-					'sp_calculate'     => 'sum',
+					'sp_calculate'     => 'total',
 				),
 			),
 			array(
 				'post_title' => 'Penalty Goals',
 				'post_name'  => 'penaltygoals',
 				'meta'       => array(
-					'sp_calculate'     => 'sum',
+					'sp_calculate'     => 'total',
 				),
 			),
 			array(
 				'post_title' => 'Drop Goals',
 				'post_name'  => 'dropgoals',
 				'meta'       => array(
-					'sp_calculate'     => 'sum',
+					'sp_calculate'     => 'total',
 				),
 			),
 		),
