@@ -1,5 +1,35 @@
 /* SportsPress admin styles */
 
+.sportspress-message {
+	border-left-color: #ff9900 !important;
+}
+
+.sportspress-message a.button-primary,
+.sportspress-message a.button-secondary {
+	background: #ff9900;
+	border-color: #f48600;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15);
+	color: #fff;
+	text-decoration: none;
+}
+
+.sportspress-message a.button-primary:hover,
+.sportspress-message a.button-secondary:hover {
+	background: #ff8800;
+	border-color: #f27000;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15);
+	color: #fff;
+	text-decoration: none;
+}
+
+.sportspress-message a.button-secondary {
+	-moz-opacity: 0.7;
+	opacity: 0.7;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=70);
+}
+
 .widget[id*="sp_recent_events-"] .widget-title h4:before,
 .widget[id*="sp_future_events-"] .widget-title h4:before,
 .widget[id*="sp_countdown-"] .widget-title h4:before,
@@ -80,6 +110,19 @@ table.widefat th.column-sp_icon,
 table.widefat td.column-sp_icon {
 	width: 32px;
 	text-align: center;
+}
+
+
+table.widefat th.column-sp_number,
+table.widefat td.column-sp_number {
+	width: 32px;
+}
+
+table.widefat td.column-sp_number .sp-flag {
+	height: auto;
+	width: auto;
+	max-height: 16px;
+	max-width: 20px;
 }
 
 #sp_venue-adder h4,
