@@ -133,10 +133,26 @@ $sportspress_sports['soccer'] = array(
 			array(
 				'post_title' => 'Height',
 				'post_name'  => 'height',
+				'tax_input' => array(
+					'sp_position' => array(
+						'goalkeeper',
+						'defender',
+						'midfielder',
+						'forward',
+					),
+				),
 			),
 			array(
 				'post_title' => 'Weight',
 				'post_name'  => 'weight',
+				'tax_input' => array(
+					'sp_position' => array(
+						'goalkeeper',
+						'defender',
+						'midfielder',
+						'forward',
+					),
+				),
 			),
 		),
 		// Player Statistics
@@ -145,7 +161,7 @@ $sportspress_sports['soccer'] = array(
 				'post_title' => 'Goals',
 				'post_name'  => 'goals',
 				'meta'       => array(
-					'sp_calculate'     => 'sum',
+					'sp_calculate'     => 'total',
 				),
 				'tax_input' => array(
 					'sp_position' => array(
@@ -160,7 +176,7 @@ $sportspress_sports['soccer'] = array(
 				'post_title' => 'Assists',
 				'post_name'  => 'assists',
 				'meta'       => array(
-					'sp_calculate'     => 'sum',
+					'sp_calculate'     => 'total',
 				),
 				'tax_input' => array(
 					'sp_position' => array(
@@ -175,7 +191,7 @@ $sportspress_sports['soccer'] = array(
 				'post_title' => 'Yellow Cards',
 				'post_name'  => 'yellowcards',
 				'meta'       => array(
-					'sp_calculate'     => 'sum',
+					'sp_calculate'     => 'total',
 				),
 				'tax_input' => array(
 					'sp_position' => array(
@@ -190,7 +206,7 @@ $sportspress_sports['soccer'] = array(
 				'post_title' => 'Red Cards',
 				'post_name'  => 'redcards',
 				'meta'       => array(
-					'sp_calculate'     => 'sum',
+					'sp_calculate'     => 'total',
 				),
 				'tax_input' => array(
 					'sp_position' => array(

@@ -4,7 +4,7 @@ Tags: sports, sports journalism, teams, team management, fixtures, results, stan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 0.3
+Stable tag: 0.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -96,6 +96,7 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 
 = 0.3 =
 * Feature - Import tool added for importing players from CSV file.
+* Feature - Add ability to select 
 * Tweak - Display current team indicator in players admin screen.
 
 = 0.2.10 =
