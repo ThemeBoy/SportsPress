@@ -153,6 +153,12 @@ function sportspress_save_post( $post_id ) {
 			// Update season taxonomy
 			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
 
+			// Update orderby
+			update_post_meta( $post_id, 'sp_orderby', sportspress_array_value( $_POST, 'sp_orderby', array() ) );
+
+			// Update order
+			update_post_meta( $post_id, 'sp_order', sportspress_array_value( $_POST, 'sp_order', array() ) );
+
 			//Update player array
 			sportspress_update_post_meta_recursive( $post_id, 'sp_player', sportspress_array_value( $_POST, 'sp_player', array() ) );
 
