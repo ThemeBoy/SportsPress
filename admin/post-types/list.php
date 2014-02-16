@@ -53,6 +53,8 @@ function sportspress_list_player_meta( $post ) {
 	$league_id = sportspress_get_the_term_id( $post->ID, 'sp_league', 0 );
 	$season_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
 	$team_id = get_post_meta( $post->ID, 'sp_team', true );
+	$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
+	$order = get_post_meta( $post->ID, 'sp_order', true );
 	?>
 	<div>
 		<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
@@ -97,6 +99,32 @@ function sportspress_list_player_meta( $post ) {
 				sportspress_post_adder( 'sp_team' );
 			endif;
 			?>
+		</p>
+		<p><strong><?php _e( 'Sort by:', 'sportspress' ); ?></strong></p>
+		<p>
+		<?php
+		$args = array(
+			'prepend_options' => array(
+				'number' => __( 'Number', 'sportspress' ),
+				'name' => __( 'Name', 'sportspress' ),
+				'eventsplayed' => __( 'Played', 'sportspress' )
+			),
+			'post_type' => 'sp_statistic',
+			'name' => 'sp_orderby',
+			'selected' => $orderby,
+			'values' => 'slug',
+		);
+		if ( ! sportspress_dropdown_pages( $args ) ):
+			sportspress_post_adder( 'sp_list' );
+		endif;
+		?>
+		</p>
+		<p><strong><?php _e( 'Sort Order:', 'sportspress' ); ?></strong></p>
+		<p>
+			<select name="sp_order">
+				<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
+				<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
+			</select>
 		</p>
 		<p><strong><?php _e( 'Players', 'sportspress' ); ?></strong></p>
 		<?php

@@ -20,6 +20,11 @@ jQuery(document).ready(function($){
 	// Activate auto key placeholder
 	$("#poststuff #title").keyup();
 
+	// Orderby affects order select in widget options
+	$("body.widgets-php").on("change", ".sp-select-orderby", function() {
+		$(this).closest(".widget-content").find(".sp-select-order").prop("disabled", $(this).val() == "default");
+	});
+
 	// Tab switcher
 	$(".sp-tab-panel").siblings(".sp-tab-bar").find("a").click(function() {
 		$(this).closest("li").removeClass("wp-tab").addClass("wp-tab-active").siblings().removeClass("wp-tab-active").addClass("wp-tab").closest(".wp-tab-bar").siblings($(this).attr("href")).show().siblings(".wp-tab-panel").hide();

@@ -11,7 +11,7 @@ class SportsPress_Widget_Player_list extends WP_Widget {
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$id = empty($instance['id']) ? null : $instance['id'];
 		$statistics = $instance['statistics'];
-		$orderby = empty($instance['orderby']) ? 'number' : $instance['orderby'];
+		$orderby = empty($instance['orderby']) ? 'default' : $instance['orderby'];
 		$order = empty($instance['order']) ? 'ASC' : $instance['order'];
 		echo $before_widget;
 		if ( $title )
@@ -34,7 +34,7 @@ class SportsPress_Widget_Player_list extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'statistics' => null, 'orderby' => 'number', 'order' => 'ASC' ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'statistics' => null, 'orderby' => 'default', 'order' => 'ASC' ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
 		$statistics = $instance['statistics'];
@@ -84,16 +84,18 @@ class SportsPress_Widget_Player_list extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('orderby'); ?>"><?php _e( 'Sort by:', 'sportspress' ); ?></label>
 		<?php
 		$args = array(
+			'prepend_options' => array(
+				'default' => __( 'Default', 'sportspress' ),
+				'number' => __( 'Number', 'sportspress' ),
+				'name' => __( 'Name', 'sportspress' ),
+				'eventsplayed' => __( 'Played', 'sportspress' )
+			),
 			'post_type' => 'sp_statistic',
-			'show_option_all' => __( 'Number', 'sportspress' ),
-			'option_all_value' => 'number',
-			'show_option_none' => __( 'Played', 'sportspress' ),
-			'option_none_value' => 'eventsplayed',
 			'name' => $this->get_field_name('orderby'),
 			'id' => $this->get_field_id('orderby'),
 			'selected' => $orderby,
 			'values' => 'slug',
-			'class' => 'widefat',
+			'class' => 'sp-select-orderby widefat',
 		);
 		if ( ! sportspress_dropdown_pages( $args ) ):
 			sportspress_post_adder( 'sp_list' );
@@ -102,7 +104,7 @@ class SportsPress_Widget_Player_list extends WP_Widget {
 		</p>
 
 		<p><label for="<?php echo $this->get_field_id('order'); ?>"><?php _e( 'Sort Order:', 'sportspress' ); ?></label>
-		<select name="<?php echo $this->get_field_name('order'); ?>" id="<?php echo $this->get_field_id('order'); ?>" class="widefat">
+		<select name="<?php echo $this->get_field_name('order'); ?>" id="<?php echo $this->get_field_id('order'); ?>" class="sp-select-order widefat" <?php disabled( $orderby, 'default' ); ?>>
 			<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
 			<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
 		</select></p>

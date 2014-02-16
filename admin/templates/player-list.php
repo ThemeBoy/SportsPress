@@ -7,7 +7,7 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 
 		$defaults = array(
 			'statistics' => null,
-			'orderby' => 'number',
+			'orderby' => 'default',
 			'order' => 'ASC',
 		);
 
@@ -26,7 +26,10 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 
 		$statistics = sportspress_array_value( $r, 'statistics', null );
 
-		if ( $r['orderby'] != 'number' || $r['order'] != 'ASC' ):
+		if ( $r['orderby'] == 'default' ):
+			$r['orderby'] = get_post_meta( $id, 'sp_orderby', true );
+			$r['order'] = get_post_meta( $id, 'sp_order', true );
+		else:
 			global $sportspress_statistic_priorities;
 			$sportspress_statistic_priorities = array(
 				array(
@@ -37,7 +40,7 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 			uasort( $data, 'sportspress_sort_list_players' );
 		endif;
 
-		if ( $r['orderby'] == 'number' ):
+		if ( in_array( $r['orderby'], array( 'number', 'name' ) ) ):
 			$output .= '<th class="data-number">#</th>';
 		else:
 			$output .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
