@@ -1,5 +1,6 @@
 jQuery(document).ready(function($){
 
+	// Display custom sport name field as needed
 	$("body.settings_page_sportspress #sportspress_sport").change(function() {
 		$target = $("#sportspress_custom_sport_name");
 		if ( $(this).val() == "custom" )
@@ -7,6 +8,9 @@ jQuery(document).ready(function($){
 		else
 			$target.hide();
 	});
+
+	// Chosen select
+	$(".chosen-select").chosen();
 
 	// Auto key placeholder
 	$("#poststuff #title").on("keyup", function() {

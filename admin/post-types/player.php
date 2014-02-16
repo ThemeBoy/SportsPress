@@ -80,14 +80,12 @@ function sportspress_player_details_meta( $post ) {
 			<strong><?php _e( 'Nationality', 'sportspress' ); ?></strong>
 		</p>
 		<p>
-			<select id="sp_nationality" name="sp_nationality">
+			<select id="sp_nationality" name="sp_nationality" class="chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>">
 				<option value=""><?php _e( '-- Not set --', 'sportspress' ); ?></option>
 				<?php foreach ( $continents as $continent => $countries ): ?>
 					<optgroup label="<?php echo $continent; ?>">
 						<?php foreach ( $countries as $code => $country ): ?>
-							<option value="<?php echo $code; ?>" <?php selected ( $nationality, $code ); ?>>
-								<?php echo $country; ?>
-							</option>
+							<option value="<?php echo $code; ?>" <?php selected ( $nationality, $code ); ?>><?php echo $country; ?></option>
 						<?php endforeach; ?>
 					</optgroup>
 				<?php endforeach; ?>
