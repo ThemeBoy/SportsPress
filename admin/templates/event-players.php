@@ -87,7 +87,12 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 					if ( $key == 'name' ):
 						continue;
 					endif;
-					$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '&mdash;' ) . '</td>';
+					if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
+						$value = $row[ $key ];
+					else:
+						$value = 0;
+					endif;
+					$output .= '<td class="data-' . $key . '">' . $value . '</td>';
 				endforeach;
 
 				$output .= '</tr></tfoot>';
