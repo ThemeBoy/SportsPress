@@ -13,10 +13,10 @@ License: GPLv3
 */
 
 // Make sure we don't expose any info if called directly
-if ( !function_exists( 'add_action' ) ) {
+if ( !function_exists( 'add_action' ) ):
 	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
 	exit;
-}
+endif;
 
 define( 'SPORTSPRESS_VERSION', '0.3.3' );
 define( 'SPORTSPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -24,7 +24,8 @@ define( 'SPORTSPRESS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'SPORTSPRESS_PLUGIN_FILE', __FILE__ );
 
 // Libraries
-require_once dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
+if ( ! class_exists( 'eqEOS' ) )
+	require_once dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
 
 // Globals
 require_once dirname( __FILE__ ) . '/admin/globals/continents.php';
