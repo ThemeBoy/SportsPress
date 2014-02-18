@@ -81,6 +81,9 @@ require_once dirname( __FILE__ ) . '/admin/widgets/events-calendar.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/player-list.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/league-table.php';
 
+// Tools
+require_once dirname( __FILE__ ) . '/admin/tools/importers.php';
+
 // Typical request actions
 require_once dirname( __FILE__ ) . '/admin/hooks/plugins-loaded.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/after-setup-theme.php';

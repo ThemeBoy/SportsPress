@@ -927,7 +927,7 @@ if ( !function_exists( 'sportspress_edit_player_statistics_table' ) ) {
 								$args = array(
 									'post_type' => 'sp_team',
 									'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
-									'show_option_none' => __( '-- Not set --', 'sportspress' ),
+									'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
 								    'sort_order'   => 'ASC',
 								    'sort_column'  => 'menu_order',
 									'selected' => $value,
@@ -948,19 +948,7 @@ if ( !function_exists( 'sportspress_edit_player_statistics_table' ) ) {
 									),
 								);
 								if ( ! sportspress_dropdown_pages( $args ) ):
-									$args = array(
-										'post_type' => 'sp_team',
-										'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
-										'show_option_none' => __( '-- Not set --', 'sportspress' ),
-									    'sort_order'   => 'ASC',
-									    'sort_column'  => 'menu_order',
-										'selected' => $value,
-										'values' => 'ID',
-										'include' => $teams,
-									);
-									if ( ! sportspress_dropdown_pages( $args ) ):
-										echo '&mdash;';
-									endif;
+									_e( 'No teams found.', 'sportspress' );
 								endif;
 								?>
 							</td>
