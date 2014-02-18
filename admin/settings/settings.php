@@ -7,10 +7,10 @@ function sportspress_settings() {
 	<div class="wrap">
 
 		<h2 class="nav-tab-wrapper">
-			<a href="?page=sportspress" class="nav-tab<?php echo $active_tab == 'general' ? ' nav-tab-active' : ''; ?>"><?php _e( 'SportsPress', 'sportspress' ); ?></a>
-			<a href="?page=sportspress&tab=events" class="nav-tab<?php echo $active_tab == 'events' ? ' nav-tab-active' : ''; ?>"><?php _e( 'Events', 'sportspress' ); ?></a>
-			<a href="?page=sportspress&tab=tables" class="nav-tab<?php echo $active_tab == 'tables' ? ' nav-tab-active' : ''; ?>"><?php _e( 'League Tables', 'sportspress' ); ?></a>
-			<a href="?page=sportspress&tab=players" class="nav-tab<?php echo $active_tab == 'players' ? ' nav-tab-active' : ''; ?>"><?php _e( 'Players', 'sportspress' ); ?></a>
+			<a href="<?php echo remove_query_arg( 'tab' ); ?>" class="nav-tab<?php echo $active_tab == 'general' ? ' nav-tab-active' : ''; ?>"><?php _e( 'General', 'sportspress' ); ?></a>
+			<a href="<?php echo add_query_arg( 'tab', 'events' ); ?>" class="nav-tab<?php echo $active_tab == 'events' ? ' nav-tab-active' : ''; ?>"><?php _e( 'Events', 'sportspress' ); ?></a>
+			<a href="<?php echo add_query_arg( 'tab', 'tables' ); ?>" class="nav-tab<?php echo $active_tab == 'tables' ? ' nav-tab-active' : ''; ?>"><?php _e( 'League Tables', 'sportspress' ); ?></a>
+			<a href="<?php echo add_query_arg( 'tab', 'players' ); ?>" class="nav-tab<?php echo $active_tab == 'players' ? ' nav-tab-active' : ''; ?>"><?php _e( 'Players', 'sportspress' ); ?></a>
 		</h2>
 
 		<form method="post" action="options.php">
@@ -43,13 +43,13 @@ function sportspress_sport_callback() {
 	$custom_sport_name = sportspress_array_value( $options, 'custom_sport_name', null );
 	?>
 	<select id="sportspress_sport" name="sportspress[sport]">
-		<option value><?php _e( '-- Select --', 'sportspress' ); ?></option>
+		<option value><?php _e( '&mdash; Select &mdash;', 'sportspress' ); ?></option>
 		<?php foreach( $sportspress_sports as $slug => $sport ): ?>
 			<option value="<?php echo $slug; ?>" <?php selected( $selected, $slug ); ?>><?php echo $sport['name']; ?></option>
 		<?php endforeach; ?>
 		<option value="custom" <?php selected( $selected, 'custom' ); ?>><?php _e( 'Custom', 'sportspress' ); ?></option>
 	</select>
-	<input id="sportspress_custom_sport_name" name="sportspress[custom_sport_name]" type="text" placeholder="<?php _e( 'Sport', 'sportspress' ); ?>" value="<?php echo $custom_sport_name; ?>"<?php if ( $selected != 'custom' ): ?> class="hidden"<?php endif; ?>></p>
+	<input id="sportspress_custom_sport_name" name="sportspress[custom_sport_name]" type="text" placeholder="<?php _e( 'Sport', 'sportspress' ); ?>" value="<?php echo $custom_sport_name; ?>"<?php if ( $selected != 'custom' ): ?> class="hidden"<?php endif; ?>>
 	<?php
 }
 
@@ -87,7 +87,7 @@ function sportspress_settings_init() {
 	register_setting(
 		'sportspress_general',
 		'sportspress',
-		'sportspress_sport_validate'
+		'sportspress_options_validate'
 	);
 	
 	add_settings_section(
@@ -108,7 +108,8 @@ function sportspress_settings_init() {
 	// Event Settings
 	register_setting(
 		'sportspress_events',
-		'sportspress'
+		'sportspress',
+		'sportspress_options_validate'
 	);
 	
 	add_settings_section(
@@ -129,113 +130,113 @@ function sportspress_settings_init() {
 }
 add_action( 'admin_init', 'sportspress_settings_init', 1 );
 
-function sportspress_sport_validate( $input ) {
+function sportspress_options_validate( $input ) {
 	
 	$options = get_option( 'sportspress' );
 
-	// Do nothing if sport is the same as currently selected
-	if ( sportspress_array_value( $options, 'sport', null ) == sportspress_array_value( $input, 'sport', null ) )
+	if ( isset( $input['sport'] ) && sportspress_array_value( $options, 'sport', null ) != sportspress_array_value( $input, 'sport', null ) ):
 
-		return $input;
+		// Get sports presets
+		global $sportspress_sports;
 
-	// Get sports presets
-	global $sportspress_sports;
+		// Get array of taxonomies to insert
+		$term_groups = sportspress_array_value( sportspress_array_value( $sportspress_sports, sportspress_array_value( $input, 'sport', null ), array() ), 'terms', array() );
 
-	// Get array of taxonomies to insert
-	$term_groups = sportspress_array_value( sportspress_array_value( $sportspress_sports, sportspress_array_value( $input, 'sport', null ), array() ), 'terms', array() );
+		foreach( $term_groups as $taxonomy => $terms ):
+			// Find empty terms and destroy
+			$allterms = get_terms( $taxonomy, 'hide_empty=0' );
 
-	foreach( $term_groups as $taxonomy => $terms ):
-		// Find empty terms and destroy
-		$allterms = get_terms( $taxonomy, 'hide_empty=0' );
+			foreach( $allterms as $term ):
+				if ( $term->count == 0 )
+					wp_delete_term( $term->term_id, $taxonomy );
+			endforeach;
 
-		foreach( $allterms as $term ):
-			if ( $term->count == 0 )
-				wp_delete_term( $term->term_id, $taxonomy );
+			// Insert terms
+			foreach( $terms as $term ):
+				wp_insert_term( $term['name'], $taxonomy, array( 'slug' => $term['slug'] ) );
+			endforeach;
 		endforeach;
 
-		// Insert terms
-		foreach( $terms as $term ):
-			wp_insert_term( $term['name'], $taxonomy, array( 'slug' => $term['slug'] ) );
-		endforeach;
-	endforeach;
+		// Get array of post types to insert
+		$post_groups = sportspress_array_value( sportspress_array_value( $sportspress_sports, sportspress_array_value( $input, 'sport', null ), array() ), 'posts', array() );
 
-	// Get array of post types to insert
-	$post_groups = sportspress_array_value( sportspress_array_value( $sportspress_sports, sportspress_array_value( $input, 'sport', null ), array() ), 'posts', array() );
+		// Loop through each post type
+		foreach( $post_groups as $post_type => $posts ):
 
-	// Loop through each post type
-	foreach( $post_groups as $post_type => $posts ):
-
-		$args = array(
-			'post_type' => $post_type,
-			'numberposts' => -1,
-			'posts_per_page' => -1,
-			'meta_query' => array(
-				array(
-					'key' => '_sp_preset',
-					'value' => 1
+			$args = array(
+				'post_type' => $post_type,
+				'numberposts' => -1,
+				'posts_per_page' => -1,
+				'meta_query' => array(
+					array(
+						'key' => '_sp_preset',
+						'value' => 1
+					)
 				)
-			)
-		);
+			);
 
-		// Delete posts
-		$old_posts = get_posts( $args );
+			// Delete posts
+			$old_posts = get_posts( $args );
 
-		foreach( $old_posts as $post ):
-			wp_delete_post( $post->ID, true);
-		endforeach;
+			foreach( $old_posts as $post ):
+				wp_delete_post( $post->ID, true);
+			endforeach;
 
-		// Add posts
-		foreach( $posts as $index => $post ):
+			// Add posts
+			foreach( $posts as $index => $post ):
 
-			// Make sure post doesn't overlap
-			if ( ! get_page_by_path( $post['post_name'], OBJECT, $post_type ) ):
+				// Make sure post doesn't overlap
+				if ( ! get_page_by_path( $post['post_name'], OBJECT, $post_type ) ):
 
-				// Translate post title
-				$post['post_title'] = __( $post['post_title'], 'sportspress' );
+					// Translate post title
+					$post['post_title'] = __( $post['post_title'], 'sportspress' );
 
-				// Set post type
-				$post['post_type'] = $post_type;
+					// Set post type
+					$post['post_type'] = $post_type;
 
-				// Increment menu order by 2 and publish post
-				$post['menu_order'] = $index * 2 + 2;
-				$post['post_status'] = 'publish';
-				$id = wp_insert_post( $post );
+					// Increment menu order by 2 and publish post
+					$post['menu_order'] = $index * 2 + 2;
+					$post['post_status'] = 'publish';
+					$id = wp_insert_post( $post );
 
-				// Flag as preset
-				update_post_meta( $id, '_sp_preset', 1 );
+					// Flag as preset
+					update_post_meta( $id, '_sp_preset', 1 );
 
-				// Update meta
-				if ( array_key_exists( 'meta', $post ) ):
+					// Update meta
+					if ( array_key_exists( 'meta', $post ) ):
 
-					foreach ( $post['meta'] as $key => $value ):
+						foreach ( $post['meta'] as $key => $value ):
 
-						update_post_meta( $id, $key, $value );
+							update_post_meta( $id, $key, $value );
 
-					endforeach;
+						endforeach;
+
+					endif;
+
+					// Update terms
+					if ( array_key_exists( 'tax_input', $post ) ):
+
+						foreach ( $post['tax_input'] as $taxonomy => $terms ):
+
+							wp_set_object_terms( $id, $terms, $taxonomy, false );
+
+						endforeach;
+
+					endif;
 
 				endif;
 
-				// Update terms
-				if ( array_key_exists( 'tax_input', $post ) ):
-
-					foreach ( $post['tax_input'] as $taxonomy => $terms ):
-
-						wp_set_object_terms( $id, $terms, $taxonomy, false );
-
-					endforeach;
-
-				endif;
-
-			endif;
+			endforeach;
 
 		endforeach;
 
-	endforeach;
+	endif;
 
-	return $input;
+	// Merge with existing options
+	return array_merge( $options, $input );
 }
 
-function sportspress_add_options_page() {
+function sportspress_add_menu_page() {
 	add_options_page(
 		__( 'SportsPress', 'sportspress' ),
 		__( 'SportsPress', 'sportspress' ),
@@ -244,4 +245,4 @@ function sportspress_add_options_page() {
 		'sportspress_settings'
 	);
 }
-add_action( 'admin_menu', 'sportspress_add_options_page' );
+add_action( 'admin_menu', 'sportspress_add_menu_page' );

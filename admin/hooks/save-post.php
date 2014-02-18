@@ -95,14 +95,17 @@ function sportspress_save_post( $post_id ) {
 			// Update seasons teams to show
 			update_post_meta( $post_id, 'sp_leagues', sportspress_array_value( $_POST, 'sp_leagues', array() ) );
 
+			// Update current team
+			update_post_meta( $post_id, 'sp_current_team', sportspress_array_value( $_POST, 'sp_current_team', null ) );
+
+			// Update past team array
+			sportspress_update_post_meta_recursive( $post_id, 'sp_past_team', sportspress_array_value( $_POST, 'sp_past_team', array() ) );
+
 			// Update team array
-			sportspress_update_post_meta_recursive( $post_id, 'sp_team', sportspress_array_value( $_POST, 'sp_team', array() ) );
+			sportspress_update_post_meta_recursive( $post_id, 'sp_team', array_merge( array( sportspress_array_value( $_POST, 'sp_current_team', null ) ), sportspress_array_value( $_POST, 'sp_past_team', array() ) ) );
 
 			// Update player number
 			update_post_meta( $post_id, 'sp_number', sportspress_array_value( $_POST, 'sp_number', '' ) );
-
-			// Update current team
-			update_post_meta( $post_id, 'sp_current_team', sportspress_array_value( $_POST, 'sp_current_team', '' ) );
 
 			// Update nationality
 			update_post_meta( $post_id, 'sp_nationality', sportspress_array_value( $_POST, 'sp_nationality', '' ) );

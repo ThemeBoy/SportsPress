@@ -96,7 +96,7 @@ function sportspress_player_details_meta( $post ) {
 	endif;
 	
 	$teams = get_posts( array( 'post_type' => 'sp_team', 'posts_per_page' => -1 ) );
-	$the_teams = array_filter( get_post_meta( $post->ID, 'sp_team', false ) );
+	$past_teams = array_filter( get_post_meta( $post->ID, 'sp_past_team', false ) );
 	$current_team = get_post_meta( $post->ID, 'sp_current_team', true );
 	?>
 	<p><strong><?php _e( 'Number', 'sportspress' ); ?></strong></p>
@@ -113,6 +113,51 @@ function sportspress_player_details_meta( $post ) {
 			</optgroup>
 		<?php endforeach; ?>
 	</select></p>
+
+	<p><strong><?php _e( 'Positions', 'sportspress' ); ?></strong></p>
+	<p><?php
+	$args = array(
+		'taxonomy' => 'sp_position',
+		'name' => 'tax_input[sp_position][]',
+		'selected' => $position_ids,
+		'values' => 'term_id',
+		'placeholder' => __( 'Select Positions', 'sportspress' ),
+		'class' => 'widefat',
+		'property' => 'multiple',
+		'chosen' => true,
+	);
+	sportspress_dropdown_taxonomies( $args );
+	?></p>
+
+	<p><strong><?php _e( 'Current Team', 'sportspress' ); ?></strong></p>
+	<p><?php
+	$args = array(
+		'post_type' => 'sp_team',
+		'name' => 'sp_current_team',
+		'show_option_blank' => true,
+		'selected' => $current_team,
+		'values' => 'ID',
+		'placeholder' => __( 'Select Team', 'sportspress' ),
+		'class' => 'sp-current-team widefat',
+		'chosen' => true,
+	);
+	sportspress_dropdown_pages( $args );
+	?></p>
+
+	<p><strong><?php _e( 'Past Teams', 'sportspress' ); ?></strong></p>
+	<p><?php
+	$args = array(
+		'post_type' => 'sp_team',
+		'name' => 'sp_past_team[]',
+		'selected' => $past_teams,
+		'values' => 'ID',
+		'placeholder' => __( 'Select Teams', 'sportspress' ),
+		'class' => 'sp-past-teams widefat',
+		'property' => 'multiple',
+		'chosen' => true,
+	);
+	sportspress_dropdown_pages( $args );
+	?></p>
 
 	<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
 	<p><?php
@@ -137,51 +182,6 @@ function sportspress_player_details_meta( $post ) {
 		'selected' => $season_ids,
 		'values' => 'term_id',
 		'placeholder' => __( 'Select Seasons', 'sportspress' ),
-		'class' => 'widefat',
-		'property' => 'multiple',
-		'chosen' => true,
-	);
-	sportspress_dropdown_taxonomies( $args );
-	?></p>
-
-	<p><strong><?php _e( 'Teams', 'sportspress' ); ?></strong></p>
-	<p><?php
-	$args = array(
-		'post_type' => 'sp_team',
-		'name' => 'sp_team[]',
-		'selected' => $the_teams,
-		'values' => 'ID',
-		'placeholder' => __( 'Select Teams', 'sportspress' ),
-		'class' => 'sp-team widefat',
-		'property' => 'multiple',
-		'chosen' => true,
-	);
-	sportspress_dropdown_pages( $args );
-	?></p>
-
-	<p><strong><?php _e( 'Current Team', 'sportspress' ); ?></strong></p>
-	<p><?php
-	$args = array(
-		'post_type' => 'sp_team',
-		'name' => 'sp_current_team',
-		'show_option_blank' => true,
-		'selected' => $current_team,
-		'values' => 'ID',
-		'placeholder' => __( 'Select Team', 'sportspress' ),
-		'class' => 'sp-current-team widefat',
-		'chosen' => true,
-	);
-	sportspress_dropdown_pages( $args );
-	?></p>
-
-	<p><strong><?php _e( 'Positions', 'sportspress' ); ?></strong></p>
-	<p><?php
-	$args = array(
-		'taxonomy' => 'sp_position',
-		'name' => 'tax_input[sp_position][]',
-		'selected' => $position_ids,
-		'values' => 'term_id',
-		'placeholder' => __( 'Select Positions', 'sportspress' ),
 		'class' => 'widefat',
 		'property' => 'multiple',
 		'chosen' => true,

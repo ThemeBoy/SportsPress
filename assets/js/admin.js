@@ -15,9 +15,9 @@ jQuery(document).ready(function($){
 		single_backstroke_delete: false
 	});
 
-	$('#poststuff #sp_detailsdiv .sp-current-team').on('change', function(evt, params) {
+	$('#poststuff #sp_detailsdiv .sp-current-team').on('change', function() {
 		$el = $(this).closest('#sp_detailsdiv').find('.sp-team');
-		$el.find('option[value='+$(this).val()+']').attr('selected', true);
+		$el.find('option[value='+$(this).val()+']').attr('selected', false);
 		$el.trigger('chosen:updated');
 	});
 
