@@ -1,13 +1,13 @@
 /* SportsPress admin styles */
 
 .sportspress-message {
-	border-left-color: #ff9900 !important;
+	border-left-color: #6bc2a5 !important;
 }
 
 .sportspress-message a.button-primary,
 .sportspress-message a.button-secondary {
-	background: #ff9900;
-	border-color: #f48600;
+	background: #6bc2a5;
+	border-color: #3bad87;
 	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15);
 	box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15);
 	color: #fff;
@@ -16,8 +16,8 @@
 
 .sportspress-message a.button-primary:hover,
 .sportspress-message a.button-secondary:hover {
-	background: #ff8800;
-	border-color: #f27000;
+	background: #3bad87;
+	border-color: #338a6d;
 	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15);
 	box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15);
 	color: #fff;
@@ -27,7 +27,7 @@
 .sportspress-message a.button-secondary {
 	-moz-opacity: 0.7;
 	opacity: 0.7;
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=70);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
 }
 
 .widget[id*="sp_recent_events-"] .widget-title h4:before,
@@ -162,6 +162,43 @@ table.widefat td.column-sp_number .sp-flag {
 	content: '\f335';
 	margin: -3px 0 0 -4px;
 	color: #a00;
+}
+
+.chosen-container {
+	margin: 1px;
+}
+
+.chosen-container-multi .chosen-choices {
+	background: #fff;
+	color: #333;
+	padding: 3px 0;
+	border-color: #ddd;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+	line-height: 2;
+}
+
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+	color: #a9a9a9;
+}
+
+.chosen-container-multi .chosen-choices li.search-choice {
+	color: #555;
+	border-color: #ccc;
+	background: #f7f7f7;
+	-webkit-box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+	box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+	vertical-align: top;
+}
+
+.chosen-container-multi .chosen-choices li.search-choice:hover {
+	background: #fafafa;
+	border-color: #999;
+	color: #222;
+}
+
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+	transition: none;
+	-webkit-transition: none;
 }
 
 @media only screen and (max-width: 768px) {
