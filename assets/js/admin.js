@@ -10,7 +10,16 @@ jQuery(document).ready(function($){
 	});
 
 	// Chosen select
-	$(".chosen-select").chosen();
+	$(".chosen-select").chosen({
+		allow_single_deselect: true,
+		single_backstroke_delete: false
+	});
+
+	$('#poststuff #sp_detailsdiv .sp-current-team').on('change', function(evt, params) {
+		$el = $(this).closest('#sp_detailsdiv').find('.sp-team');
+		$el.find('option[value='+$(this).val()+']').attr('selected', true);
+		$el.trigger('chosen:updated');
+	});
 
 	// Auto key placeholder
 	$("#poststuff #title").on("keyup", function() {

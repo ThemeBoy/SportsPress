@@ -227,30 +227,66 @@ if ( !function_exists( 'sportspress_dropdown_taxonomies' ) ) {
 			'show_option_none' => false,
 			'taxonomy' => null,
 			'name' => null,
+			'id' => null,
 			'selected' => null,
 			'hide_empty' => false,
 			'values' => 'slug',
 		    'class' => null,
+		    'property' => null,
+		    'placeholder' => null,
+		    'chosen' => false,
 		);
 		$args = array_merge( $defaults, $args ); 
 		$terms = get_terms( $args['taxonomy'], $args );
 		$name = ( $args['name'] ) ? $args['name'] : $args['taxonomy'];
+		$id = ( $args['id'] ) ? $args['id'] : $name;
+
+		unset( $args['name'] );
+		unset( $args['id'] );
+
 		$class = $args['class'];
 		unset( $args['class'] );
+
+		$property = $args['property'];
+		unset( $args['property'] );
+
+		$placeholder = $args['placeholder'];
+		unset( $args['placeholder'] );
+
+		$selected = $args['selected'];
+		unset( $args['selected'] );
+
+		$chosen = $args['chosen'];
+		unset( $args['chosen'] );
+
 		if ( $terms ):
-			printf( '<select name="%1$s" class="postform %2$s">', $name, $class );
-			if ( $args['show_option_all'] ) {
-				printf( '<option value="0">%s</option>', $args['show_option_all'] );
-			}
-			if ( $args['show_option_none'] ) {
-				printf( '<option value="-1">%s</option>', $args['show_option_none'] );
-			}
-			foreach ( $terms as $term ) {
-				if ( $args['values'] == 'term_id' )
-					printf( '<option value="%s" %s>%s</option>', $term->term_id, selected( true, $args['selected'] == $term->term_id, false ), $term->name );
-				else
-					printf( '<option value="%s" %s>%s</option>', $term->slug, selected( true, $args['selected'] == $term->slug, false ), $term->name );
-			}
+			printf( '<select name="%s" class="postform %s" %s>', $name, $class . ( $chosen ? ' chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' ) : '' ), ( $placeholder != null ? 'data-placeholder="' . $placeholder . '" ' : '' ) . $property );
+
+			if ( strpos( $property, 'multiple' ) === false ):
+				if ( $args['show_option_all'] ):
+					printf( '<option value="0">%s</option>', $args['show_option_all'] );
+				endif;
+				if ( $args['show_option_none'] ):
+					printf( '<option value="-1">%s</option>', $args['show_option_none'] );
+				endif;
+			endif;
+
+			foreach ( $terms as $term ):
+
+				if ( $args['values'] == 'term_id' ):
+					$this_value = $term->term_id;
+				else:
+					$this_value = $term->slug;
+				endif;
+
+				if ( strpos( $property, 'multiple' ) !== false ):
+					$selected_prop = in_array( $this_value, $selected ) ? 'selected' : '';
+				else:
+					$selected_prop = selected( $this_value, $selected, false );
+				endif;
+
+				printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, $term->name );
+			endforeach;
 			print( '</select>' );
 			return true;
 		else:
@@ -264,13 +300,14 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 		$defaults = array(
 			'prepend_options' => null,
 			'append_options' => null,
+			'show_option_blank' => false,
 			'show_option_all' => false,
 			'show_option_none' => false,
 			'show_dates' => false,
 			'option_all_value' => 0,
 			'option_none_value' => -1,
 			'name' => 'page_id',
-			'id' => 'page_id',
+			'id' => null,
 			'selected' => null,
 			'numberposts' => -1,
 			'posts_per_page' => -1,
@@ -288,13 +325,16 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 			'post_status' => 'publish',
 		    'values' => 'post_name',
 		    'class' => null,
+		    'property' => null,
+		    'placeholder' => null,
+		    'chosen' => false,
 		);
 		$args = array_merge( $defaults, $args );
 
 		$name = $args['name'];
 		unset( $args['name'] );
 
-		$id = $args['id'];
+		$id = ( $args['id'] ) ? $args['id'] : $name;
 		unset( $args['id'] );
 
 		$values = $args['values'];
@@ -303,36 +343,64 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 		$class = $args['class'];
 		unset( $args['class'] );
 
+		$property = $args['property'];
+		unset( $args['property'] );
+
+		$placeholder = $args['placeholder'];
+		unset( $args['placeholder'] );
+
 		$selected = $args['selected'];
 		unset( $args['selected'] );
+
+		$chosen = $args['chosen'];
+		unset( $args['chosen'] );
 		
 		$posts = get_posts( $args );
-		if ( $posts || $prepend || $append ):
-			printf( '<select name="%s" id="%s" class="postform %s">', $name, $id, $class );
-			if ( $args['show_option_all'] ):
-				printf( '<option value="%s" %s>%s</option>', $args['option_all_value'], selected( $selected, $args['option_all_value'], false ), $args['show_option_all'] );
+		if ( $posts || $args['prepend_options'] || $args['append_options'] ):
+			printf( '<select name="%s" id="%s" class="postform %s" %s>', $name, $id, $class . ( $chosen ? ' chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' ) : '' ), ( $placeholder != null ? 'data-placeholder="' . $placeholder . '" ' : '' ) . $property );
+
+			if ( strpos( $property, 'multiple' ) === false ):
+				if ( $args['show_option_blank'] ):
+					printf( '<option value=""></option>' );
+				endif;
+				if ( $args['show_option_all'] ):
+					printf( '<option value="%s" %s>%s</option>', $args['option_all_value'], selected( $selected, $args['option_all_value'], false ), $args['show_option_all'] );
+				endif;
+				if ( $args['show_option_none'] ):
+					printf( '<option value="%s" %s>%s</option>', $args['option_none_value'], selected( $selected, $args['option_none_value'], false ), $args['show_option_none'] );
+				endif;
+				if ( $args['prepend_options'] && is_array( $args['prepend_options'] ) ):
+					foreach( $args['prepend_options'] as $slug => $label ):
+						printf( '<option value="%s" %s>%s</option>', $slug, selected( $selected, $slug, false ), $label );
+					endforeach;
+				endif;
 			endif;
-			if ( $args['show_option_none'] ):
-				printf( '<option value="%s" %s>%s</option>', $args['option_none_value'], selected( $selected, $args['option_none_value'], false ), $args['show_option_none'] );
-			endif;
-			if ( $args['prepend_options'] && is_array( $args['prepend_options'] ) ):
-				foreach( $args['prepend_options'] as $slug => $label ):
-					printf( '<option value="%s" %s>%s</option>', $slug, selected( $selected, $slug, false ), $label );
-				endforeach;
-			endif;
+
 			foreach ( $posts as $post ):
 				setup_postdata( $post );
+
 				if ( $values == 'ID' ):
-					printf( '<option value="%s" %s>%s</option>', $post->ID, selected( $selected, $post->ID, false ), $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
+					$this_value = $post->ID;
 				else:
-					printf( '<option value="%s" %s>%s</option>', $post->post_name, selected( $selected, $post->post_name, false ), $post->post_title );
+					$this_value = $post->post_name;
 				endif;
+
+				if ( strpos( $property, 'multiple' ) !== false ):
+					$selected_prop = in_array( $this_value, $selected ) ? 'selected' : '';
+				else:
+					$selected_prop = selected( $this_value, $selected, false );
+				endif;
+
+				printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
 			endforeach;
 			wp_reset_postdata();
-			if ( $args['append_options'] && is_array( $args['append_options'] ) ):
-				foreach( $args['append_options'] as $slug => $label ):
-					printf( '<option value="%s" %s>%s</option>', $slug, selected( $selected, $slug, false ), $label );
-				endforeach;
+
+			if ( strpos( $property, 'multiple' ) === false ):
+				if ( $args['append_options'] && is_array( $args['append_options'] ) ):
+					foreach( $args['append_options'] as $slug => $label ):
+						printf( '<option value="%s" %s>%s</option>', $slug, selected( $selected, $slug, false ), $label );
+					endforeach;
+				endif;
 			endif;
 			print( '</select>' );
 			return true;

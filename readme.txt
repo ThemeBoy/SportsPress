@@ -85,10 +85,6 @@ Yes; SportsPress will work with any theme, but may require some styling to make 
 
 Bugs can be reported either in our support forum or preferably on the [SportsPress GitHub repository](https://github.com/ThemeBoy/SportsPress/issues).
 
-= SportsPress is awesome! Can I contribute? =
-
-Yes you can! Join in on our [GitHub repository](http://github.com/ThemeBoy/SportsPress/) :)
-
 = Is this plugin ready for production? =
 
 SportsPress is currently in beta and is undergoing testing. We are still actively making adjustments to the code, so we do not recommend installing it on a live server until we officially leave the beta phase.
@@ -187,15 +183,6 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 * Fix - Force numerical sorting of number column.
 * Tweak - Enable SportsPress content functions to be called without explicit ID.
 * Tweak - Remove redundant admin menu links via filter.
-
-= 0.1.10 =
-* Documentation - Add Installation, FAQ and Screenshots to assets.
-
-= 0.1.9 =
-* Fix - Calculation dependencies.
-
-= 0.1.8 =
-* Tweak - Update subversion.
 
 = 0.1.7 =
 * Feature - Enable selecting venues to use uploaded images.

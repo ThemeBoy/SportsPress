@@ -4,6 +4,7 @@ function sportspress_event_post_init() {
 	$singular_name = __( 'Event', 'sportspress' );
 	$lowercase_name = __( 'events', 'sportspress' );
 	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name );
+	//$labels['menu_name'] = __( 'SportsPress', 'sportspress' );
 	$args = array(
 		'label' => $name,
 		'labels' => $labels,
