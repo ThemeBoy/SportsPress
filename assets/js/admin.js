@@ -104,6 +104,44 @@ jQuery(document).ready(function($){
 		}
 	});
 
+	// Data table keyboard navigation
+	$(".sp-data-table tbody tr td input").keydown(function(event) {
+		if([37,38,39,40].indexOf(event.keyCode) > -1){
+			$el = $(this).closest("td");
+			var col = $el.parent().children().index($el)+1;
+			var row = $el.parent().parent().children().index($el.parent())+1;
+			if(event.keyCode == 37){
+				if ( $(this).caret().start != 0 )
+					return true;
+				col -= 1;
+			}
+			if(event.keyCode == 38){
+				row -= 1;
+			}
+			if(event.keyCode == 39){
+				if ( $(this).caret().start != $(this).val().length )
+					return true;
+				col += 1;
+			}
+			if(event.keyCode == 40){
+				row += 1;
+			}
+			$el.closest("tbody").find("tr:nth-child("+row+") td:nth-child("+col+") input").focus();
+		}
+	});
+
+	// Prevent data table from submitting form
+	$(".sp-data-table tbody tr td input").keypress(function(event) {
+		if(event.keyCode == 13){
+			event.preventDefault();
+			$el = $(this).closest("td");
+			var col = $el.parent().children().index($el)+1;
+			var row = $el.parent().parent().children().index($el.parent())+2;
+			$el.closest("tbody").find("tr:nth-child("+row+") td:nth-child("+col+") input").focus();
+			return false;
+		}
+	});
+
 	// Total stats calculator
 	$(".sp-data-table .sp-total input").on("updateTotal", function() {
 		index = $(this).parent().index();
