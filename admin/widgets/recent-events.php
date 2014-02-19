@@ -2,8 +2,8 @@
 class SportsPress_Widget_Recent_Events extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'widget_recent_entries widget_sp_recent_events', 'description' => __( 'SportsPress widget.', 'sportspress' ) );
-		parent::__construct('sp_recent_events', __( 'Recent Events', 'sportspress' ), $widget_ops);
+		$widget_ops = array('classname' => 'widget_recent_entries widget_sp_recent_events', 'description' => __( 'A list of recent events.', 'sportspress' ) );
+		parent::__construct('sp_recent_events', __( 'SportsPress Recent Events', 'sportspress' ), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {

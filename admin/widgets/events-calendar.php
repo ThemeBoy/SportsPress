@@ -2,8 +2,8 @@
 class SportsPress_Widget_Events_Calendar extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'widget_calendar widget_sp_events_calendar', 'description' => __( 'SportsPress widget.', 'sportspress' ) );
-		parent::__construct('sp_events_calendar', __( 'Events Calendar', 'sportspress' ), $widget_ops);
+		$widget_ops = array('classname' => 'widget_calendar widget_sp_events_calendar', 'description' => __( 'A calendar of events.', 'sportspress' ) );
+		parent::__construct('sp_events_calendar', __( 'SportsPress Events Calendar', 'sportspress' ), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {
