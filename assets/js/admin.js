@@ -15,12 +15,6 @@ jQuery(document).ready(function($){
 		single_backstroke_delete: false
 	});
 
-	$('#poststuff #sp_detailsdiv .sp-current-team').on('change', function() {
-		$el = $(this).closest('#sp_detailsdiv').find('.sp-team');
-		$el.find('option[value='+$(this).val()+']').attr('selected', false);
-		$el.trigger('chosen:updated');
-	});
-
 	// Auto key placeholder
 	$("#poststuff #title").on("keyup", function() {
 		$("#sp_key").attr("placeholder", $(this).val().replace(/[^a-z]/gi,"").toLowerCase());
@@ -74,6 +68,41 @@ jQuery(document).ready(function($){
 
 	// Activate self-cloning
 	$(".sp-clone:last").find("select").change();
+
+	// Name editor
+	$(".sp-data-table .sp-edit-name").click(function() {
+		$(this).closest(".sp-default-name").hide().siblings(".sp-custom-name").show().find(".sp-custom-name-input").focus();
+	});
+
+	// Name editor save
+	$(".sp-data-table .sp-custom-name .sp-save").click(function() {
+		$val = $(this).siblings(".sp-custom-name-input").val();
+		if($val == "") $val = $(this).siblings(".sp-custom-name-input").attr("placeholder");
+		$(this).closest(".sp-custom-name").hide().siblings(".sp-default-name").show().find(".sp-default-name-input").html($val);
+	});
+
+	// Name editor cancel
+	$(".sp-data-table .sp-custom-name .sp-cancel").click(function() {
+		$(this).closest(".sp-custom-name").hide().siblings(".sp-default-name").show();
+	});
+
+	// Prevent name editor input from submitting form
+	$(".sp-data-table .sp-custom-name .sp-custom-name-input").keypress(function(event) {
+		if(event.keyCode == 13){
+			event.preventDefault();
+			$(this).siblings(".sp-save").click();
+			return false;
+		}
+	});
+
+	// Cancel name editor form on escape
+	$(".sp-data-table .sp-custom-name .sp-custom-name-input").keyup(function(event) {
+		if(event.keyCode == 27){
+			event.preventDefault();
+			$(this).siblings(".sp-cancel").click();
+			return false;
+		}
+	});
 
 	// Total stats calculator
 	$(".sp-data-table .sp-total input").on("updateTotal", function() {

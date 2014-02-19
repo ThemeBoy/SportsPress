@@ -146,6 +146,28 @@ table.widefat.sp-data-table input.name {
 	width: auto;
 }
 
+table.widefat.sp-data-table a.dashicons {
+	cursor: pointer;
+	height: 27px;
+	line-height: 27px;
+}
+
+table.widefat.sp-data-table a.sp-edit-name {
+	-moz-opacity: 0;
+	opacity: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+table.widefat.sp-data-table tr:hover a.sp-edit-name {
+	-moz-opacity: 1;
+	opacity: 1;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+table.widefat.sp-data-table a.sp-cancel {
+	color: #a00;
+}
+
 .sp-admin-config-table th,
 .sp-admin-config-table td {
 	width: 20%;

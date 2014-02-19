@@ -773,12 +773,25 @@ if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 					<?php
 					$i = 0;
 					foreach ( $data as $team_id => $team_stats ):
-						if ( !$team_id ) continue;
+						if ( !$team_id )
+							continue;
+
 						$div = get_term( $team_id, 'sp_season' );
+						$default_name = sportspress_array_value( $team_stats, 'name', '' );
+						if ( $default_name == null )
+							$default_name = get_the_title( $team_id );
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
-								<input type="text" name="sp_teams[<?php echo $team_id; ?>][name]" class="name" value="<?php echo sportspress_array_value( $team_stats, 'name', '' ); ?>" placeholder="<?php echo get_the_title( $team_id ); ?>">
+								<span class="sp-default-name">
+									<span class="sp-default-name-input"><?php echo $default_name; ?></span>
+									<a class="dashicons dashicons-edit sp-edit-name"></a>
+								</span>
+								<span class="hidden sp-custom-name">
+									<input type="text" name="sp_teams[<?php echo $team_id; ?>][name]" class="name sp-custom-name-input" value="<?php echo sportspress_array_value( $team_stats, 'name', '' ); ?>" placeholder="<?php echo get_the_title( $team_id ); ?>">
+									<a class="dashicons dashicons-no-alt sp-cancel"></a>
+									<a class="dashicons dashicons-yes sp-save"></a>
+								</span>
 							</td>
 							<?php foreach( $columns as $column => $label ):
 								$value = sportspress_array_value( $team_stats, $column, '' );
