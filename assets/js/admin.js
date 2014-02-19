@@ -83,6 +83,10 @@ jQuery(document).ready(function($){
 
 	// Name editor cancel
 	$(".sp-data-table .sp-custom-name .sp-cancel").click(function() {
+		$val = $(this).closest(".sp-custom-name").siblings(".sp-default-name").find(".sp-default-name-input").html();
+		$el = $(this).siblings(".sp-custom-name-input");
+		if($val == $el.attr("placeholder")) $el.val("");
+		else $el.val($val);
 		$(this).closest(".sp-custom-name").hide().siblings(".sp-default-name").show();
 	});
 
