@@ -789,8 +789,8 @@ if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 								</span>
 								<span class="hidden sp-custom-name">
 									<input type="text" name="sp_teams[<?php echo $team_id; ?>][name]" class="name sp-custom-name-input" value="<?php echo sportspress_array_value( $team_stats, 'name', '' ); ?>" placeholder="<?php echo get_the_title( $team_id ); ?>">
-									<a class="dashicons dashicons-no-alt sp-cancel" title="<?php _e( 'Cancel', 'sportspress' ); ?>"></a>
-									<a class="dashicons dashicons-yes sp-save" title="<?php _e( 'Save', 'sportspress' ); ?>"></a>
+									<a class="button button-secondary sp-cancel"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+									<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
 								</span>
 							</td>
 							<?php foreach( $columns as $column => $label ):
