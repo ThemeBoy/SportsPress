@@ -2,8 +2,8 @@
 class SportsPress_Widget_Future_Events extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'widget_recent_entries widget_sp_future_events', 'description' => __( 'SportsPress widget.', 'sportspress' ) );
-		parent::__construct('sp_future_events', __( 'Future Events', 'sportspress' ), $widget_ops);
+		$widget_ops = array('classname' => 'widget_recent_entries widget_sp_future_events', 'description' => __( 'A list of upcoming events.', 'sportspress' ) );
+		parent::__construct('sp_future_events', __( 'SportsPress Future Events', 'sportspress' ), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {
