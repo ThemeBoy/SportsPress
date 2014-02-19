@@ -10,6 +10,7 @@ function sportspress_admin_enqueue_scripts( $hook ) {
 
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'chosen', SPORTSPRESS_PLUGIN_URL .'assets/js/chosen.jquery.min.js', array( 'jquery' ), '1.1.0', true );
+	wp_enqueue_script( 'caret', SPORTSPRESS_PLUGIN_URL .'assets/js/jquery.caret.min.js', array( 'jquery' ), '1.02', true );
 
 	if ( $hook == 'edit-tags.php' && isset( $_GET['taxonomy'] ) && $_GET['taxonomy'] == 'sp_venue' ):
 		wp_enqueue_script( 'google-maps', 'http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places' );
