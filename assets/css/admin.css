@@ -164,10 +164,6 @@ table.widefat.sp-data-table tr:hover a.sp-edit-name {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-table.widefat.sp-data-table a.sp-cancel {
-	color: #a00;
-}
-
 .sp-admin-config-table th,
 .sp-admin-config-table td {
 	width: 20%;
