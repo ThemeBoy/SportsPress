@@ -70,8 +70,8 @@ jQuery(document).ready(function($){
 	$(".sp-clone:last").find("select").change();
 
 	// Name editor
-	$(".sp-data-table .sp-edit-name").click(function() {
-		$(this).closest(".sp-default-name").hide().siblings(".sp-custom-name").show().find(".sp-custom-name-input").focus();
+	$(".sp-data-table .sp-default-name").click(function() {
+		$(this).hide().siblings(".sp-custom-name").show().find(".sp-custom-name-input").focus();
 	});
 
 	// Name editor save
