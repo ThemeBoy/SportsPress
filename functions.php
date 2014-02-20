@@ -539,7 +539,7 @@ if ( !function_exists( 'sportspress_equation_selector' ) ) {
 					$options[ __( 'Results', 'sportspress' ) ] = sportspress_get_equation_optgroup_array( $postid, 'sp_result', array( 'for' => '&rarr;', 'against' => '&larr;' ), null, false );
 					break;
 				case 'outcome':
-					$options[ __( 'Outcomes', 'sportspress' ) ] = sportspress_get_equation_optgroup_array( $postid, 'sp_outcome', array( 'max' => '&uarr;', 'min' => '&darr;' ) );
+					$options[ __( 'Outcomes', 'sportspress' ) ] = sportspress_get_equation_optgroup_array( $postid, 'sp_outcome', array() );
 					$options[ __( 'Outcomes', 'sportspress' ) ]['$streak'] = __( 'Streak', 'sportspress' );
 					$options[ __( 'Outcomes', 'sportspress' ) ]['$last5'] = __( 'Last 5', 'sportspress' );
 					$options[ __( 'Outcomes', 'sportspress' ) ]['$last10'] = __( 'Last 10', 'sportspress' );
