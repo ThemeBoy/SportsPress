@@ -109,8 +109,8 @@ jQuery(document).ready(function($){
 	});
 
 	// Data table keyboard navigation
-	$(".sp-data-table tbody tr td input").keydown(function(event) {
-		if([37,38,39,40].indexOf(event.keyCode) > -1){
+	$(".sp-data-table tbody tr td input:text").keydown(function(event) {
+		if(! $(this).parent().hasClass("chosen-search") && [37,38,39,40].indexOf(event.keyCode) > -1){
 			$el = $(this).closest("td");
 			var col = $el.parent().children().index($el)+1;
 			var row = $el.parent().parent().children().index($el.parent())+1;
@@ -130,18 +130,18 @@ jQuery(document).ready(function($){
 			if(event.keyCode == 40){
 				row += 1;
 			}
-			$el.closest("tbody").find("tr:nth-child("+row+") td:nth-child("+col+") input").focus();
+			$el.closest("tbody").find("tr:nth-child("+row+") td:nth-child("+col+") input:text").focus();
 		}
 	});
 
 	// Prevent data table from submitting form
-	$(".sp-data-table tbody tr td input").keypress(function(event) {
-		if(event.keyCode == 13){
+	$(".sp-data-table tbody tr td input:text").keypress(function(event) {
+		if(! $(this).parent().hasClass("chosen-search") && event.keyCode == 13){
 			event.preventDefault();
 			$el = $(this).closest("td");
 			var col = $el.parent().children().index($el)+1;
 			var row = $el.parent().parent().children().index($el.parent())+2;
-			$el.closest("tbody").find("tr:nth-child("+row+") td:nth-child("+col+") input").focus();
+			$el.closest("tbody").find("tr:nth-child("+row+") td:nth-child("+col+") input:text").focus();
 			return false;
 		}
 	});
@@ -159,7 +159,8 @@ jQuery(document).ready(function($){
 				sum += parseInt(val, 10);
 			}
 		});
-		$(this).val(sum);
+		if ($(this).attr("placeholder") != sum)
+			$(this).attr("placeholder", sum);
 	});
 
 	// Activate total stats calculator
