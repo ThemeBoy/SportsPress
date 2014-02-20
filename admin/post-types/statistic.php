@@ -1,11 +1,18 @@
 <?php
 function sportspress_statistic_post_init() {
-	$name = __( 'Statistics', 'sportspress' );
-	$singular_name = __( 'Statistic', 'sportspress' );
-	$lowercase_name = __( 'statistics', 'sportspress' );
-	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name, true );
+	$labels = array(
+		'name' => __( 'Statistics', 'sportspress' ),
+		'singular_name' => __( 'Statistic', 'sportspress' ),
+		'add_new_item' => __( 'Add New Statistic', 'sportspress' ),
+		'edit_item' => __( 'Edit Statistic', 'sportspress' ),
+		'new_item' => __( 'New Statistic', 'sportspress' ),
+		'view_item' => __( 'View Statistic', 'sportspress' ),
+		'search_items' => __( 'Search Statistics', 'sportspress' ),
+		'not_found' => __( 'No statistics found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No statistics found in trash.', 'sportspress' ),
+	);
 	$args = array(
-		'label' => $name,
+		'label' => __( 'Statistics', 'sportspress' ),
 		'labels' => $labels,
 		'public' => false,
 		'show_ui' => true,

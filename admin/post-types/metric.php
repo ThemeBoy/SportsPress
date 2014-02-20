@@ -1,11 +1,18 @@
 <?php
 function sportspress_metric_post_init() {
-	$name = __( 'Metrics', 'sportspress' );
-	$singular_name = __( 'Metric', 'sportspress' );
-	$lowercase_name = __( 'metrics', 'sportspress' );
-	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name, true );
+	$labels = array(
+		'name' => __( 'Metrics', 'sportspress' ),
+		'singular_name' => __( 'Metric', 'sportspress' ),
+		'add_new_item' => __( 'Add New Metric', 'sportspress' ),
+		'edit_item' => __( 'Edit Metric', 'sportspress' ),
+		'new_item' => __( 'New Metric', 'sportspress' ),
+		'view_item' => __( 'View Metric', 'sportspress' ),
+		'search_items' => __( 'Search Metrics', 'sportspress' ),
+		'not_found' => __( 'No metrics found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No metrics found in trash.', 'sportspress' ),
+	);
 	$args = array(
-		'label' => $name,
+		'label' => __( 'Metrics', 'sportspress' ),
 		'labels' => $labels,
 		'public' => false,
 		'show_ui' => true,

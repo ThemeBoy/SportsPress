@@ -211,7 +211,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * Performs post-import cleanup of files and the cache
 		 */
 		function import_end() {
-			echo '<p>' . __( 'All done!', 'sportspress' ) . ' <a href="' . admin_url('edit.php?post_type=sp_player') . '">' . sprintf( __( 'View %s', 'sportspress' ), __( 'Players', 'sportspress' ) ) . '</a>' . '</p>';
+			echo '<p>' . __( 'All done!', 'sportspress' ) . ' <a href="' . admin_url('edit.php?post_type=sp_player') . '">' . __( 'View Players', 'sportspress' ) . '</a>' . '</p>';
 
 			do_action( 'import_end' );
 		}
@@ -261,7 +261,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		function header() {
-			echo '<div class="wrap"><h2>' . sprintf( __( 'Import %s', 'sportspress' ), __( 'Players', 'sportspress' ) ) . '</h2>';
+			echo '<div class="wrap"><h2>' . __( 'Import Players', 'sportspress' ) . '</h2>';
 		}
 
 		/**

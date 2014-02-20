@@ -1,11 +1,19 @@
 <?php
 function sportspress_team_post_init() {
-	$name = __( 'Teams', 'sportspress' );
-	$singular_name = __( 'Team', 'sportspress' );
-	$lowercase_name = __( 'teams', 'sportspress' );
-	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name );
+	$labels = array(
+		'name' => __( 'Teams', 'sportspress' ),
+		'singular_name' => __( 'Team', 'sportspress' ),
+		'add_new_item' => __( 'Add New Team', 'sportspress' ),
+		'edit_item' => __( 'Edit Team', 'sportspress' ),
+		'new_item' => __( 'New Team', 'sportspress' ),
+		'view_item' => __( 'View Team', 'sportspress' ),
+		'search_items' => __( 'Search Teams', 'sportspress' ),
+		'not_found' => __( 'No teams found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No teams found in trash.', 'sportspress' ),
+		'parent_item_colon' => __( 'Parent Team:', 'sportspress' ),
+	);
 	$args = array(
-		'label' => $name,
+		'label' => __( 'Teams', 'sportspress' ),
 		'labels' => $labels,
 		'public' => true,
 		'has_archive' => false,

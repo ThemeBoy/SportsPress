@@ -9,13 +9,13 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 				$translated_text = __( 'Team', 'sportspress' );
 				break;
 			case 'Set featured image':
-				$translated_text = sprintf( __( 'Select %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
+				$translated_text = __( 'Select Logo', 'sportspress' );
 				break;
 			case 'Set Featured Image':
-				$translated_text = sprintf( __( 'Select %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
+				$translated_text = __( 'Select Logo', 'sportspress' );
 				break;
 			case 'Remove featured image':
-				$translated_text = sprintf( __( 'Remove %s', 'sportspress' ), __( 'Logo', 'sportspress' ) );
+				$translated_text = __( 'Remove Logo', 'sportspress' );
 				break;
 			endswitch;
 		elseif ( in_array( $typenow, array( 'sp_event', 'sp_player', 'sp_staff' ) ) ):
@@ -24,13 +24,13 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 				$translated_text = __( '(Auto)', 'sportspress' );
 				break;
 			case 'Set featured image':
-				$translated_text = sprintf( __( 'Select %s', 'sportspress' ), __( 'Photo', 'sportspress' ) );
+				$translated_text = __( 'Select Photo', 'sportspress' );
 				break;
 			case 'Set Featured Image':
-				$translated_text = sprintf( __( 'Select %s', 'sportspress' ), __( 'Photo', 'sportspress' ) );
+				$translated_text = __( 'Select Photo', 'sportspress' );
 				break;
 			case 'Remove featured image':
-				$translated_text = sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) );
+				$translated_text = __( 'Remove Photo', 'sportspress' );
 				break;
 			case 'Scheduled for: <b>%1$s</b>':
 				$translated_text = __( 'Date/Time: <b>%1$s</b>', 'sportspress' );

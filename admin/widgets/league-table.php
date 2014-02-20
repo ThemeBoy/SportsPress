@@ -38,7 +38,7 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('id'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'League Table', 'sportspress' ) ); ?></label>
+		<p><label for="<?php echo $this->get_field_id('id'); ?>"><?php _e( 'Select League Table:', 'sportspress' ); ?></label>
 		<?php
 		$args = array(
 			'post_type' => 'sp_table',
@@ -49,7 +49,7 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 			'class' => 'widefat',
 		);
 		if ( ! sportspress_dropdown_pages( $args ) ):
-			sportspress_post_adder( 'sp_table' );
+			sportspress_post_adder( 'sp_table', __( 'Add New League Table', 'sportspress' ) );
 		endif;
 		?>
 		</p>

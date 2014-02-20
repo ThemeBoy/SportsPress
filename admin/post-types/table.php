@@ -1,11 +1,18 @@
 <?php
 function sportspress_table_post_init() {
-	$name = __( 'League Tables', 'sportspress' );
-	$singular_name = __( 'League Table', 'sportspress' );
-	$lowercase_name = __( 'league tables', 'sportspress' );
-	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name, true );
+	$labels = array(
+		'name' => __( 'League Tables', 'sportspress' ),
+		'singular_name' => __( 'League Table', 'sportspress' ),
+		'add_new_item' => __( 'Add New League Table', 'sportspress' ),
+		'edit_item' => __( 'Edit League Table', 'sportspress' ),
+		'new_item' => __( 'New League Table', 'sportspress' ),
+		'view_item' => __( 'View League Table', 'sportspress' ),
+		'search_items' => __( 'Search League Tables', 'sportspress' ),
+		'not_found' => __( 'No league tables found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No league tables found in trash.', 'sportspress' ),
+	);
 	$args = array(
-		'label' => $name,
+		'label' => __( 'League Tables', 'sportspress' ),
 		'labels' => $labels,
 		'public' => true,
 		'has_archive' => false,
@@ -63,7 +70,7 @@ function sportspress_table_team_meta( $post, $test ) {
 				'values' => 'term_id'
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_league', 'sp_team' );
+				sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New League', 'sportspress' )  );
 			endif;
 			?>
 		</p>
@@ -77,14 +84,14 @@ function sportspress_table_team_meta( $post, $test ) {
 				'values' => 'term_id'
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_season', 'sp_team' );
+				sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New Season', 'sportspress' )  );
 			endif;
 			?>
 		</p>
 		<p><strong><?php _e( 'Teams', 'sportspress' ); ?></strong></p>
 		<?php
 		sportspress_post_checklist( $post->ID, 'sp_team', 'block', 'sp_season' );
-		sportspress_post_adder( 'sp_team' );
+		sportspress_post_adder( 'sp_team', __( 'Add New Team', 'sportspress' ) );
 		?>
 	</div>
 	<?php
