@@ -2431,9 +2431,9 @@ if ( !function_exists( 'sportspress_delete_duplicate_post' ) ) {
 }
 
 if ( !function_exists( 'sportspress_highlight_admin_menu' ) ) {
-	function sportspress_highlight_admin_menu() {
+	function sportspress_highlight_admin_menu( $p = 'options-general.php', $s = 'sportspress' ) {
 		global $parent_file, $submenu_file;
-		$parent_file = 'options-general.php';
-		$submenu_file = 'sportspress';
+		$parent_file = $p;
+		$submenu_file = $s;
 	}
 }
