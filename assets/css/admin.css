@@ -25,9 +25,6 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-sportspress:before {
-	content: "\f111";
-}
 .icon-megaphone:before {
 	content: "\f155";
 }
@@ -129,6 +126,7 @@
 
 table.widefat.sp-data-table td {
 	line-height: 2;
+	overflow: visible;
 }
 
 table.widefat.sp-data-table td:first-child {
@@ -235,6 +233,11 @@ table.widefat td.column-sp_number .sp-flag {
 	background: #f7f7f7;
 	-webkit-box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
 	box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+}
+
+.chosen-container-active .chosen-single {
+	border-color: #999;
+	background: #fff;
 }
 
 .chosen-container-active.chosen-with-drop .chosen-single {
