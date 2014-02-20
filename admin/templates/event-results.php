@@ -16,6 +16,9 @@ if ( !function_exists( 'sportspress_event_results' ) ) {
 
 		$i = 0;
 
+		if ( empty( array_filter( $results, 'array_filter' ) ) )
+			return false;
+
 		foreach( $results as $team_id => $result ):
 			if ( sportspress_array_value( $result, 'outcome', '-1' ) != '-1' ):
 
@@ -43,7 +46,11 @@ if ( !function_exists( 'sportspress_event_results' ) ) {
 			endif;
 		endforeach;
 
-		if ( ! empty( $table_rows ) ):
+		if ( empty( $table_rows ) ):
+
+			return false;
+
+		else:
 
 			$output .= '<h3>' . __( 'Results', 'sportspress' ) . '</h3>';
 
