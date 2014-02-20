@@ -43,8 +43,12 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 					if ( $main_result ):
 						$team_result = sportspress_array_value( $team_results, $main_result, null );
 					else:
-						end( $team_results );
-						$team_result = prev( $team_results );
+						if ( is_array( $team_results ) ):
+							end( $team_results );
+							$team_result = prev( $team_results );
+						else:
+							$team_result = null;
+						endif;
 					endif;
 
 					if ( $team_result != null ):
