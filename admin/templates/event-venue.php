@@ -22,7 +22,7 @@ if ( !function_exists( 'sportspress_event_venue' ) ) {
 			$longitude = sportspress_array_value( $term_meta, 'sp_longitude', 0 );
 		
 			$output .= '<h3>' . __( 'Venue', 'sportspress' ) . '</h3>';
-			$output .= '<p>' . $venue->name . '<br><small>' . $address . '</small></p>';
+			$output .= '<p><a href="' . get_term_link( $t_id, 'sp_venue' ) . '">' . $venue->name . '</a><br><small>' . $address . '</small></p>';
 			if ( $latitude != null && $longitude != null )
 				$output .= '<div class="sp-google-map" data-address="' . $address . '" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '"></div>';
 

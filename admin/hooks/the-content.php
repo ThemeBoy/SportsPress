@@ -13,10 +13,12 @@ function sportspress_default_event_content( $content ) {
         $results = sportspress_event_results();
         $players = sportspress_event_players();
         $staff = sportspress_event_staff();
-        if ( is_array( $results ) && array_filter( $results, 'array_filter' ) )
-            return $results . $details . $players . $staff . $content;
-        $venue = sportspress_event_venue();
-        $content = $details . $venue . $players . $staff . $content;
+        if ( $results ):
+            $content = $results . $details . $players . $staff . $content;
+        else:
+            $venue = sportspress_event_venue();
+            $content = $details . $venue . $players . $staff . $content;
+        endif;
     endif;
     return $content;
 }
