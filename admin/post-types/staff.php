@@ -1,11 +1,18 @@
 <?php
 function sportspress_staff_post_init() {
-	$name = __( 'Staff', 'sportspress' );
-	$singular_name = __( 'Staff', 'sportspress' );
-	$lowercase_name = __( 'staff', 'sportspress' );
-	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name );
+	$labels = array(
+		'name' => __( 'Staff', 'sportspress' ),
+		'singular_name' => __( 'Staff', 'sportspress' ),
+		'add_new_item' => __( 'Add New Staff', 'sportspress' ),
+		'edit_item' => __( 'Edit Staff', 'sportspress' ),
+		'new_item' => __( 'New Staff', 'sportspress' ),
+		'view_item' => __( 'View Staff', 'sportspress' ),
+		'search_items' => __( 'Search Staff', 'sportspress' ),
+		'not_found' => __( 'No staff found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No staff found in trash.', 'sportspress' ),
+	);
 	$args = array(
-		'label' => $name,
+		'label' => __( 'Staff', 'sportspress' ),
 		'labels' => $labels,
 		'public' => true,
 		'has_archive' => false,
@@ -30,7 +37,7 @@ function sportspress_staff_meta_init() {
 }
 function sportspress_staff_team_meta( $post ) {
 	sportspress_post_checklist( $post->ID, 'sp_team' );
-	sportspress_post_adder( 'sp_team' );
+	sportspress_post_adder( 'sp_team', __( 'Add New Team', 'sportspress' ) );
 	sportspress_nonce();
 }
 

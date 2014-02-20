@@ -29,7 +29,7 @@ $data = get_posts( $args );
 	<?php $i++; endforeach; ?>
 	<tfoot>
 		<tr>
-			<th colspan="2"><a href="<?php echo admin_url( 'edit.php?post_type=sp_result' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Results', 'sportspress' ) ); ?></a></th>
+			<th colspan="2"><a href="<?php echo admin_url( 'edit.php?post_type=sp_result' ); ?>"><?php _e( 'Edit Results', 'sportspress' ); ?></a></th>
 		</tr>
 	</tfoot>
 </table>
@@ -60,7 +60,7 @@ $data = get_posts( $args );
 	<?php $i++; endforeach; ?>
 	<tfoot>
 		<tr>
-			<th colspan="2"><a href="<?php echo admin_url( 'edit.php?post_type=sp_outcome' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Outcomes', 'sportspress' ) ); ?></a></th>
+			<th colspan="2"><a href="<?php echo admin_url( 'edit.php?post_type=sp_outcome' ); ?>"><?php _e( 'Edit Outcomes', 'sportspress' ); ?></a></th>
 		</tr>
 	</tfoot>
 </table>

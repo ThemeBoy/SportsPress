@@ -26,7 +26,7 @@ $data = get_posts( $args );
 	<?php $i++; endforeach; ?>
 	<tfoot>
 		<tr>
-			<th colspan="4"><a href="<?php echo admin_url( 'edit.php?post_type=sp_metric' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Metrics', 'sportspress' ) ); ?></a></th>
+			<th colspan="4"><a href="<?php echo admin_url( 'edit.php?post_type=sp_metric' ); ?>"><?php _e( 'Edit Metrics', 'sportspress' ); ?></a></th>
 		</tr>
 	</tfoot>
 </table>
@@ -58,7 +58,7 @@ $data = get_posts( $args );
 	<?php $i++; endforeach; ?>
 	<tfoot>
 		<tr>
-			<th colspan="4"><a href="<?php echo admin_url( 'edit.php?post_type=sp_statistic' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Statistics', 'sportspress' ) ); ?></a></th>
+			<th colspan="4"><a href="<?php echo admin_url( 'edit.php?post_type=sp_statistic' ); ?>"><?php _e( 'Edit Statistics', 'sportspress' ); ?></a></th>
 		</tr>
 	</tfoot>
 </table>

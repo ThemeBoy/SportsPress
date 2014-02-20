@@ -1,11 +1,18 @@
 <?php
 function sportspress_column_post_init() {
-	$name = __( 'Columns', 'sportspress' );
-	$singular_name = __( 'Column', 'sportspress' );
-	$lowercase_name = __( 'columns', 'sportspress' );
-	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name, true );
+	$labels = array(
+		'name' => __( 'Columns', 'sportspress' ),
+		'singular_name' => __( 'Column', 'sportspress' ),
+		'add_new_item' => __( 'Add New Column', 'sportspress' ),
+		'edit_item' => __( 'Edit Column', 'sportspress' ),
+		'new_item' => __( 'New Column', 'sportspress' ),
+		'view_item' => __( 'View Column', 'sportspress' ),
+		'search_items' => __( 'Search Columns', 'sportspress' ),
+		'not_found' => __( 'No columns found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No columns found in trash.', 'sportspress' ),
+	);
 	$args = array(
-		'label' => $name,
+		'label' => __( 'Columns', 'sportspress' ),
 		'labels' => $labels,
 		'public' => false,
 		'show_ui' => true,

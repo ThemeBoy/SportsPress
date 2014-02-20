@@ -30,7 +30,7 @@ $data = get_posts( $args );
 	<?php $i++; endforeach; ?>
 	<tfoot>
 		<tr>
-			<th colspan="5"><a href="<?php echo admin_url( 'edit.php?post_type=sp_column' ); ?>"><?php printf( __( 'Edit %s', 'sportspress' ), __( 'Columns', 'sportspress' ) ); ?></a></th>
+			<th colspan="5"><a href="<?php echo admin_url( 'edit.php?post_type=sp_column' ); ?>"><?php _e( 'Edit Columns', 'sportspress' ); ?></a></th>
 		</tr>
 	</tfoot>
 </table>

@@ -1,11 +1,18 @@
 <?php
 function sportspress_result_post_init() {
-	$name = __( 'Results', 'sportspress' );
-	$singular_name = __( 'Result', 'sportspress' );
-	$lowercase_name = __( 'result', 'sportspress' );
-	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name, true );
+	$labels = array(
+		'name' => __( 'Results', 'sportspress' ),
+		'singular_name' => __( 'Result', 'sportspress' ),
+		'add_new_item' => __( 'Add New Result', 'sportspress' ),
+		'edit_item' => __( 'Edit Result', 'sportspress' ),
+		'new_item' => __( 'New Result', 'sportspress' ),
+		'view_item' => __( 'View Result', 'sportspress' ),
+		'search_items' => __( 'Search Results', 'sportspress' ),
+		'not_found' => __( 'No results found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No results found in trash.', 'sportspress' ),
+	);
 	$args = array(
-		'label' => $name,
+		'label' => __( 'Results', 'sportspress' ),
 		'labels' => $labels,
 		'public' => false,
 		'show_ui' => true,

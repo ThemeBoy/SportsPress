@@ -62,7 +62,7 @@ class SportsPress_Widget_Future_Events extends WP_Widget {
 			'name' => $this->get_field_name('league'),
 			'id' => $this->get_field_id('league'),
 			'selected' => $league,
-			'show_option_all' => sprintf( __( 'All %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
+			'show_option_all' => __( 'All Leagues', 'sportspress' ),
 			'hide_empty' => 0, 
 			'values' => 'term_id',
 			'class' => 'widefat',
@@ -78,7 +78,7 @@ class SportsPress_Widget_Future_Events extends WP_Widget {
 			'name' => $this->get_field_name('season'),
 			'id' => $this->get_field_id('season'),
 			'selected' => $season,
-			'show_option_all' => sprintf( __( 'All %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
+			'show_option_all' => __( 'All Seasons', 'sportspress' ),
 			'hide_empty' => 0, 
 			'values' => 'term_id',
 			'class' => 'widefat',
@@ -94,7 +94,7 @@ class SportsPress_Widget_Future_Events extends WP_Widget {
 			'name' => $this->get_field_name('venue'),
 			'id' => $this->get_field_id('venue'),
 			'selected' => $venue,
-			'show_option_all' => sprintf( __( 'All %s', 'sportspress' ), __( 'Venues', 'sportspress' ) ),
+			'show_option_all' => __( 'All Venues', 'sportspress' ),
 			'hide_empty' => 0, 
 			'values' => 'term_id',
 			'class' => 'widefat',
@@ -110,17 +110,17 @@ class SportsPress_Widget_Future_Events extends WP_Widget {
 			'name' => $this->get_field_name('team'),
 			'id' => $this->get_field_id('team'),
 			'selected' => $team,
-			'show_option_all' => sprintf( __( 'All %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
+			'show_option_all' => __( 'All Teams', 'sportspress' ),
 			'values' => 'ID',
 			'class' => 'widefat',
 		);
 		if ( ! sportspress_dropdown_pages( $args ) ):
-			sportspress_post_adder( 'sp_table' );
+			sportspress_post_adder( 'sp_table', __( 'Add New League Table', 'sportspress' ) );
 		endif;
 		?>
 		</p>
 
-		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php printf( __( 'Number of %s to show:', 'sportspress' ), __( 'events', 'sportspress' ) ); ?></label>
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of events to show:', 'sportspress' ); ?></label>
 		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3"></p>
 <?php
 	}

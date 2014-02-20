@@ -1,12 +1,21 @@
 <?php
 function sportspress_season_term_init() {
-	$name = __( 'Seasons', 'sportspress' );
-	$singular_name = __( 'Season', 'sportspress' );
-	$lowercase_name = __( 'season', 'sportspress' );
-	$object_type = array( 'sp_event', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' );
-	$labels = sportspress_get_term_labels( $name, $singular_name, $lowercase_name );
+	$labels = array(
+		'name' => __( 'Seasons', 'sportspress' ),
+		'singular_name' => __( 'Season', 'sportspress' ),
+		'all_items' => __( 'All Seasons', 'sportspress' ),
+		'edit_item' => __( 'Edit Season', 'sportspress' ),
+		'view_item' => __( 'View Season', 'sportspress' ),
+		'update_item' => __( 'Update Season', 'sportspress' ),
+		'add_new_item' => __( 'Add New Season', 'sportspress' ),
+		'new_item_name' => __( 'New Season Name', 'sportspress' ),
+		'parent_item' => __( 'Parent Season', 'sportspress' ),
+		'parent_item_colon' => __( 'Parent Season:', 'sportspress' ),
+		'search_items' =>  __( 'Search Seasons', 'sportspress' ),
+		'not_found' => __( 'No seasons found.', 'sportspress' ),
+	);
 	$args = array(
-		'label' => $name,
+		'label' => __( 'Seasons', 'sportspress' ),
 		'labels' => $labels,
 		'public' => true,
 		'show_in_nav_menus' => false,
@@ -14,12 +23,10 @@ function sportspress_season_term_init() {
 		'hierarchical' => true,
 		'rewrite' => array( 'slug' => 'season' ),
 	);
-	register_taxonomy( 'sp_season', $object_type, $args );
-	register_taxonomy_for_object_type( 'sp_season', 'sp_event' );
-	register_taxonomy_for_object_type( 'sp_season', 'sp_team' );
-	register_taxonomy_for_object_type( 'sp_season', 'sp_table' );
-	register_taxonomy_for_object_type( 'sp_season', 'sp_player' );
-	register_taxonomy_for_object_type( 'sp_season', 'sp_list' );
-	register_taxonomy_for_object_type( 'sp_season', 'sp_staff' );
+	$object_types = array( 'sp_event', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' );
+	register_taxonomy( 'sp_season', $object_types, $args );
+	foreach ( $object_types as $object_type ):
+		register_taxonomy_for_object_type( 'sp_league', $object_type );
+	endforeach;
 }
 add_action( 'init', 'sportspress_season_term_init' );

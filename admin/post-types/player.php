@@ -1,11 +1,18 @@
 <?php
 function sportspress_player_post_init() {
-	$name = __( 'Players', 'sportspress' );
-	$singular_name = __( 'Player', 'sportspress' );
-	$lowercase_name = __( 'players', 'sportspress' );
-	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name );
+	$labels = array(
+		'name' => __( 'Players', 'sportspress' ),
+		'singular_name' => __( 'Player', 'sportspress' ),
+		'add_new_item' => __( 'Add New Player', 'sportspress' ),
+		'edit_item' => __( 'Edit Player', 'sportspress' ),
+		'new_item' => __( 'New Player', 'sportspress' ),
+		'view_item' => __( 'View Player', 'sportspress' ),
+		'search_items' => __( 'Search Players', 'sportspress' ),
+		'not_found' => __( 'No players found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No players found in trash.', 'sportspress' ),
+	);
 	$args = array(
-		'label' => $name,
+		'label' => __( 'Players', 'sportspress' ),
 		'labels' => $labels,
 		'public' => true,
 		'has_archive' => false,
@@ -227,7 +234,7 @@ function sportspress_player_metrics_meta( $post ) {
 		<?php
 		endforeach;
 	else:
-		sportspress_post_adder( 'sp_metric' );
+		sportspress_post_adder( 'sp_metric', __( 'Add New Metric', 'sportspress' ) );
 	endif;
 	
 	sportspress_nonce();

@@ -46,48 +46,6 @@ if ( !function_exists( 'sportspress_numbers_to_words' ) ) {
     }
 }
 
-if ( !function_exists( 'sportspress_get_post_labels' ) ) {
-	function sportspress_get_post_labels( $name, $singular_name, $lowercase_name = null ) {
-		if ( !$lowercase_name ) $lowercase_name = $name;
-		$labels = array(
-			'name' => $name,
-			'singular_name' => $singular_name,
-			'all_items' => $name,
-			'add_new' => sprintf( __( 'Add New', 'sportspress' ), $singular_name ),
-			'add_new_item' => sprintf( __( 'Add New %s', 'sportspress' ), $singular_name ),
-			'edit_item' => sprintf( __( 'Edit %s', 'sportspress' ), $singular_name ),
-			'new_item' => sprintf( __( 'New %s', 'sportspress' ), $singular_name ),
-			'view_item' => sprintf( __( 'View %s', 'sportspress' ), $singular_name ),
-			'search_items' => sprintf( __( 'Search %s', 'sportspress' ), $name ),
-			'not_found' => sprintf( __( 'No %s found.', 'sportspress' ), $lowercase_name ),
-			'not_found_in_trash' => sprintf( __( 'No %s found in trash.', 'sportspress' ), $lowercase_name ),
-			'parent_item_colon' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ) . ':'
-		);
-		return $labels;
-	}
-}
-
-if ( !function_exists( 'sportspress_get_term_labels' ) ) {
-	function sportspress_get_term_labels( $name, $singular_name, $lowercase_name = null ) {
-		if ( !$lowercase_name ) $lowercase_name = $name;
-		$labels = array(
-			'name' => $name,
-			'singular_name' => $singular_name,
-			'all_items' => sprintf( __( 'All %s', 'sportspress' ), $name ),
-			'edit_item' => sprintf( __( 'Edit %s', 'sportspress' ), $singular_name ),
-			'view_item' => sprintf( __( 'View %s', 'sportspress' ), $singular_name ),
-			'update_item' => sprintf( __( 'Update %s', 'sportspress' ), $singular_name ),
-			'add_new_item' => sprintf( __( 'Add New %s', 'sportspress' ), $singular_name ),
-			'new_item_name' => sprintf( __( 'New %s Name', 'sportspress' ), $singular_name ),
-			'parent_item' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ),
-			'parent_item_colon' => sprintf( __( 'Parent %s', 'sportspress' ), $singular_name ) . ':',
-			'search_items' =>  sprintf( __( 'Search %s', 'sportspress' ), $name ),
-			'not_found' => sprintf( __( 'No %s found.', 'sportspress' ), $lowercase_name )
-		);
-		return $labels;
-	}
-}
-
 if ( !function_exists( 'sportspress_get_the_term_id' ) ) {
 	function sportspress_get_the_term_id( $post_id, $taxonomy, $index ) {
 		$terms = get_the_terms( $post_id, $taxonomy );
@@ -716,7 +674,7 @@ if ( !function_exists( 'sportspress_get_var_calculates' ) ) {
 if ( !function_exists( 'sportspress_edit_calendar_table' ) ) {
 	function sportspress_edit_calendar_table( $data = array() ) {
 		if ( empty( $data ) ):
-			printf( __( 'No %s found.', 'sportspress' ), __( 'events', 'sportspress' ) );
+			_e( 'No Events found.', 'sportspress' );
 			return false;
 		endif;
 		?>
@@ -1171,13 +1129,15 @@ if ( !function_exists( 'sportspress_player_nationality_selector' ) ) {
 }
 
 if ( !function_exists( 'sportspress_post_adder' ) ) {
-	function sportspress_post_adder( $post_type = 'post' ) {
+	function sportspress_post_adder( $post_type = 'post', $label = null ) {
 		$obj = get_post_type_object( $post_type );
+		if ( $label == null )
+			$label = __( 'Add New', 'sportspress' );
 		?>
 		<div id="<?php echo $post_type; ?>-adder">
 			<h4>
-				<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr( $obj->labels->singular_name ) ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=' . $post_type ); ?>" target="_blank">
-					+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), $obj->labels->singular_name ); ?>
+				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=' . $post_type ); ?>" target="_blank">
+					+ <?php echo $label; ?>
 				</a>
 			</h4>
 		</div>
@@ -1186,13 +1146,15 @@ if ( !function_exists( 'sportspress_post_adder' ) ) {
 }
 
 if ( !function_exists( 'sportspress_taxonomy_adder' ) ) {
-	function sportspress_taxonomy_adder( $taxonomy = 'category', $post_type = 'post' ) {
+	function sportspress_taxonomy_adder( $taxonomy = 'category', $post_type = 'post', $label = null ) {
 		$obj = get_taxonomy( $taxonomy );
+		if ( $label == null )
+			$label = __( 'Add New', 'sportspress' );
 		?>
 		<div id="<?php echo $taxonomy; ?>-adder">
 			<h4>
-				<a title="<?php echo sprintf( esc_attr__( 'Add New %s', 'sportspress' ), esc_attr( $obj->labels->singular_name ) ); ?>" href="<?php echo admin_url( 'edit-tags.php?taxonomy=' . $taxonomy . '&post_type=' . $post_type ); ?>" target="_blank">
-					+ <?php echo sprintf( __( 'Add New %s', 'sportspress' ), $obj->labels->singular_name ); ?>
+				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( 'edit-tags.php?taxonomy=' . $taxonomy . '&post_type=' . $post_type ); ?>" target="_blank">
+					+ <?php echo $label; ?>
 				</a>
 			</h4>
 		</div>

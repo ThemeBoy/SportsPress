@@ -3,17 +3,14 @@ function sportspress_event_post_init() {
 	$labels = array(
 		'name' => __( 'Schedule', 'sportspress' ),
 		'singular_name' => __( 'Event', 'sportspress' ),
-		'menu_name' => __( 'Schedule', 'sportspress' ),
 		'all_items' => __( 'Events', 'sportspress' ),
-		'add_new' => sprintf( __( 'Add Event', 'sportspress' ), __( 'Event', 'sportspress' ) ),
-		'add_new_item' => sprintf( __( 'Add New %s', 'sportspress' ), __( 'Event', 'sportspress' ) ),
-		'edit_item' => sprintf( __( 'Edit %s', 'sportspress' ), __( 'Event', 'sportspress' ) ),
-		'new_item' => sprintf( __( 'New %s', 'sportspress' ), __( 'Event', 'sportspress' ) ),
-		'view_item' => sprintf( __( 'View %s', 'sportspress' ), __( 'Event', 'sportspress' ) ),
-		'search_items' => sprintf( __( 'Search %s', 'sportspress' ), __( 'Events', 'sportspress' ) ),
-		'not_found' => sprintf( __( 'No %s found.', 'sportspress' ), __( 'events', 'sportspress' ) ),
-		'not_found_in_trash' => sprintf( __( 'No %s found in trash.', 'sportspress' ), __( 'events', 'sportspress' ) ),
-		'parent_item_colon' => sprintf( __( 'Parent %s', 'sportspress' ), __( 'Event', 'sportspress' ) ) . ':'
+		'add_new_item' => __( 'Add New Event', 'sportspress' ),
+		'edit_item' => __( 'Edit Event', 'sportspress' ),
+		'new_item' => __( 'New Event', 'sportspress' ),
+		'view_item' => __( 'View Event', 'sportspress' ),
+		'search_items' => __( 'Search Events', 'sportspress' ),
+		'not_found' => __( 'No events found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No events found in trash.', 'sportspress' ),
 	);
 	$args = array(
 		'label' => __( 'Events', 'sportspress' ),
@@ -79,7 +76,7 @@ function sportspress_event_details_meta( $post ) {
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_league', 'sp_team' );
+				sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New League', 'sportspress' ) );
 			endif;
 			?>
 		</p>
@@ -94,7 +91,7 @@ function sportspress_event_details_meta( $post ) {
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_season', 'sp_team' );
+				sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New Season', 'sportspress' )  );
 			endif;
 			?>
 		</p>
@@ -109,7 +106,7 @@ function sportspress_event_details_meta( $post ) {
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_venue', 'sp_event' );
+				sportspress_taxonomy_adder( 'sp_venue', 'sp_event', __( 'Add New Venue', 'sportspress' )  );
 			endif;
 			?>
 		</p>
