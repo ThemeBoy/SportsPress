@@ -62,7 +62,7 @@ $sportspress_sports['soccer'] = array(
 				'post_name'  => 'p',
 				'meta'       => array(
 					'sp_equation'     => '$eventsplayed',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -70,7 +70,7 @@ $sportspress_sports['soccer'] = array(
 				'post_name'  => 'w',
 				'meta'       => array(
 					'sp_equation'     => '$w',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -78,7 +78,7 @@ $sportspress_sports['soccer'] = array(
 				'post_name'  => 'd',
 				'meta'       => array(
 					'sp_equation'     => '$d',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -86,7 +86,7 @@ $sportspress_sports['soccer'] = array(
 				'post_name'  => 'l',
 				'meta'       => array(
 					'sp_equation'     => '$l',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -94,7 +94,7 @@ $sportspress_sports['soccer'] = array(
 				'post_name'  => 'f',
 				'meta'       => array(
 					'sp_equation'     => '$goalsfor',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 					'sp_priority'     => '3',
 					'sp_order'        => 'DESC',
 				),
@@ -104,7 +104,7 @@ $sportspress_sports['soccer'] = array(
 				'post_name'  => 'a',
 				'meta'       => array(
 					'sp_equation'     => '$goalsagainst',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -112,7 +112,7 @@ $sportspress_sports['soccer'] = array(
 				'post_name'  => 'gd',
 				'meta'       => array(
 					'sp_equation'     => '$goalsfor - $goalsagainst',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 					'sp_priority'     => '2',
 					'sp_order'        => 'DESC',
 				),
@@ -122,7 +122,7 @@ $sportspress_sports['soccer'] = array(
 				'post_name'  => 'pts',
 				'meta'       => array(
 					'sp_equation'     => '$w * 3 + $d',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 					'sp_priority'     => '1',
 					'sp_order'        => 'DESC',
 				),

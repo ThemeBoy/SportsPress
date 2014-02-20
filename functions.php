@@ -566,12 +566,15 @@ if ( !function_exists( 'sportspress_equation_selector' ) ) {
 			$constants[$i] = $i;
 		endfor;
 
+		// Add 100 to constants
+		$constants[100] = 100;
+
 		// Add constants to options
 		$options[ __( 'Constants', 'sportspress' ) ] = (array) $constants;
 
 		?>
 			<select name="sp_equation[]">
-				<option value="">(<?php _e( '&mdash; Select &mdash;', 'sportspress' ); ?>)</option>
+				<option value=""><?php _e( '&mdash; Select &mdash;', 'sportspress' ); ?></option>
 				<?php
 
 				foreach ( $options as $label => $option ):
@@ -642,7 +645,13 @@ if ( !function_exists( 'sportspress_get_var_equations' ) ) {
 		$output = array();
 		foreach ( $vars as $var ):
 			$equation = get_post_meta( $var->ID, 'sp_equation', true );
-			$output[ $var->post_name ] = $equation;
+			if ( ! $equation ) $equation = 0;
+			$precision = get_post_meta( $var->ID, 'sp_precision', true );
+			if ( ! $precision ) $precision = 0;
+			$output[ $var->post_name ] = array(
+				'equation' => $equation,
+				'precision' => $precision,
+			);
 		endforeach;
 
 		return $output;
@@ -1229,7 +1238,7 @@ if ( !function_exists( 'sportspress_get_eos_safe_slug' ) ) {
 }
 
 if ( !function_exists( 'sportspress_solve' ) ) {
-	function sportspress_solve( $equation, $vars ) {
+	function sportspress_solve( $equation, $vars, $precision = 0 ) {
 
 		if ( strpos( $equation, '$streak' ) !== false ):
 
@@ -1283,7 +1292,7 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 			$eos = new eqEOS();
 
 			// Solve using EOS
-			return round( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), 3 ); // TODO: add precision setting to each column with default set to 3
+			return round( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision );
 		else:
 			return 0;
 		endif;
@@ -1527,7 +1536,7 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 			// Generate array of placeholder values for each league
 			$placeholders[ $div_id ] = array();
 			foreach ( $equations as $key => $value ):
-				$placeholders[ $div_id ][ $key ] = sportspress_solve( $value, $totals );
+				$placeholders[ $div_id ][ $key ] = sportspress_solve( $value['equation'], $totals, $value['precision'] );
 			endforeach;
 
 		endforeach;
@@ -1771,6 +1780,7 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 
 			// Add equation to object
 			$stat->equation = sportspress_array_value( sportspress_array_value( $meta, 'sp_equation', array() ), 0, 0 );
+			$stat->precision = sportspress_array_value( sportspress_array_value( $meta, 'sp_precision', array() ), 0, 0 );
 
 			// Add column name to columns
 			$columns[ $stat->post_name ] = $stat->post_title;
@@ -1796,7 +1806,7 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 
 			foreach ( $stats as $stat ):
 				if ( sportspress_array_value( $placeholders[ $team_id ], $stat->post_name, '' ) == '' ):
-					$placeholders[ $team_id ][ $stat->post_name ] = sportspress_solve( $stat->equation, sportspress_array_value( $totals, $team_id, array() ) );
+					$placeholders[ $team_id ][ $stat->post_name ] = sportspress_solve( $stat->equation, sportspress_array_value( $totals, $team_id, array() ), $stat->precision );
 				endif;
 			endforeach;
 		endforeach;

@@ -87,7 +87,7 @@ $sportspress_sports['basketball'] = array(
 				'post_title' => 'Pct',
 				'post_name' => 'pct',
 				'meta' => array(
-					'sp_equation' => '$w / $eventsplayed * 10 * 10',
+					'sp_equation' => '$w / $eventsplayed * 100',
 				),
 			),
 			array(
