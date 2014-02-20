@@ -33,7 +33,7 @@ function sportspress_column_edit_columns() {
 		'title' => __( 'Label', 'sportspress' ),
 		'sp_key' => __( 'Key', 'sportspress' ),
 		'sp_equation' => __( 'Equation', 'sportspress' ),
-		'sp_precision' => __( 'Precision', 'sportspress' ),
+		'sp_precision' => __( 'Rounding', 'sportspress' ),
 		'sp_order' => __( 'Sort Order', 'sportspress' ),
 	);
 	return $columns;
@@ -51,7 +51,7 @@ function sportspress_column_details_meta( $post ) {
 	$precision = get_post_meta( $post->ID, 'sp_precision', true );
 
 	// Defaults
-	if ( $precision == '' ) $precision = 1;
+	if ( $precision == '' ) $precision = 0;
 	?>
 	<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
 	<p>
@@ -65,9 +65,9 @@ function sportspress_column_details_meta( $post ) {
 		endforeach;
 		?>
 	</p>
-	<p><strong><?php _e( 'Precision', 'sportspress' ); ?></strong></p>
+	<p><strong><?php _e( 'Rounding', 'sportspress' ); ?></strong></p>
 	<p class="sp-precision-selector">
-		<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>" placeholder="1">
+		<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>" placeholder="0">
 	</p>
 	<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
 	<p class="sp-order-selector">

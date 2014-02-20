@@ -12,7 +12,7 @@ $sportspress_sports['baseball'] = array(
 				'meta'       => array(
 					'sp_equation'     => '$w',
 					'sp_format'       => 'integer',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 					'sp_priority'     => 1,
 					'sp_order'        => 'DESC',
 				),
@@ -23,7 +23,7 @@ $sportspress_sports['baseball'] = array(
 				'meta'       => array(
 					'sp_equation'     => '$l',
 					'sp_format'       => 'integer',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 					'sp_priority'     => 2,
 					'sp_order'        => 'ASC',
 				),
@@ -34,15 +34,6 @@ $sportspress_sports['baseball'] = array(
 				'meta'       => array(
 					'sp_equation'     => '$w / $eventsplayed',
 					'sp_format'       => 'decimal',
-					'sp_precision'    => 3,
-				),
-			),
-			array(
-				'post_title' => 'GB',
-				'post_name' => 'gb',
-				'meta'       => array(
-					'sp_equation'     => '( $wmax + $l - $w - $lmax ) / 2',
-					'sp_format'       => 'decimal',
 					'sp_precision'    => 2,
 				),
 			),
@@ -52,7 +43,7 @@ $sportspress_sports['baseball'] = array(
 				'meta'       => array(
 					'sp_equation'     => '$rfor',
 					'sp_format'       => 'integer',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 					'sp_priority'     => 3,
 					'sp_order'        => 'DESC',
 				),
@@ -63,7 +54,7 @@ $sportspress_sports['baseball'] = array(
 				'meta'       => array(
 					'sp_equation'     => '$ragainst',
 					'sp_format'       => 'integer',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -72,7 +63,7 @@ $sportspress_sports['baseball'] = array(
 				'meta'       => array(
 					'sp_equation'     => '$streak',
 					'sp_format'       => 'integer',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 		),

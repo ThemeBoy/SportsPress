@@ -37,7 +37,7 @@ $sportspress_sports['rugby'] = array(
 				'post_name'  => 'p',
 				'meta'       => array(
 					'sp_equation'     => '$eventsplayed',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -45,7 +45,7 @@ $sportspress_sports['rugby'] = array(
 				'post_name'  => 'w',
 				'meta'       => array(
 					'sp_equation'     => '$w',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -53,7 +53,7 @@ $sportspress_sports['rugby'] = array(
 				'post_name'  => 'd',
 				'meta'       => array(
 					'sp_equation'     => '$d',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -61,7 +61,7 @@ $sportspress_sports['rugby'] = array(
 				'post_name'  => 'l',
 				'meta'       => array(
 					'sp_equation'     => '$l',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -69,7 +69,7 @@ $sportspress_sports['rugby'] = array(
 				'post_name'  => 'b',
 				'meta'       => array(
 					'sp_equation'     => '$bonus',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -77,7 +77,7 @@ $sportspress_sports['rugby'] = array(
 				'post_name'  => 'f',
 				'meta'       => array(
 					'sp_equation'     => '$pointsfor',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -85,7 +85,7 @@ $sportspress_sports['rugby'] = array(
 				'post_name'  => 'a',
 				'meta'       => array(
 					'sp_equation'     => '$pointsagainst',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -93,7 +93,7 @@ $sportspress_sports['rugby'] = array(
 				'post_name'  => 'pd',
 				'meta'       => array(
 					'sp_equation'     => '$pointsfor - $pointsagainst',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 				),
 			),
 			array(
@@ -101,7 +101,7 @@ $sportspress_sports['rugby'] = array(
 				'post_name'  => 'pts',
 				'meta'       => array(
 					'sp_equation'     => '( $w + $bonus ) * 2 + $d',
-					'sp_precision'    => 1,
+					'sp_precision'    => 0,
 					'sp_priority'     => '1',
 					'sp_order'        => 'DESC',
 				),

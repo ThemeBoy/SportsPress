@@ -15,7 +15,7 @@ $data = get_posts( $args );
 			<th><?php _e( 'Label', 'sportspress' ); ?></th>
 			<th><?php _e( 'Key', 'sportspress' ); ?></th>
 			<th><?php _e( 'Equation', 'sportspress' ); ?></th>
-			<th><?php _e( 'Precision', 'sportspress' ); ?></th>
+			<th><?php _e( 'Rounding', 'sportspress' ); ?></th>
 			<th><?php _e( 'Sort Order', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
