@@ -1,12 +1,22 @@
 <?php
 function sportspress_event_post_init() {
-	$name = __( 'Events', 'sportspress' );
-	$singular_name = __( 'Event', 'sportspress' );
-	$lowercase_name = __( 'events', 'sportspress' );
-	$labels = sportspress_get_post_labels( $name, $singular_name, $lowercase_name );
-	$labels['menu_name'] = __( 'Schedule', 'sportspress' );
+	$labels = array(
+		'name' => __( 'Schedule', 'sportspress' ),
+		'singular_name' => __( 'Event', 'sportspress' ),
+		'menu_name' => __( 'Schedule', 'sportspress' ),
+		'all_items' => __( 'Events', 'sportspress' ),
+		'add_new' => sprintf( __( 'Add Event', 'sportspress' ), __( 'Event', 'sportspress' ) ),
+		'add_new_item' => sprintf( __( 'Add New %s', 'sportspress' ), __( 'Event', 'sportspress' ) ),
+		'edit_item' => sprintf( __( 'Edit %s', 'sportspress' ), __( 'Event', 'sportspress' ) ),
+		'new_item' => sprintf( __( 'New %s', 'sportspress' ), __( 'Event', 'sportspress' ) ),
+		'view_item' => sprintf( __( 'View %s', 'sportspress' ), __( 'Event', 'sportspress' ) ),
+		'search_items' => sprintf( __( 'Search %s', 'sportspress' ), __( 'Events', 'sportspress' ) ),
+		'not_found' => sprintf( __( 'No %s found.', 'sportspress' ), __( 'events', 'sportspress' ) ),
+		'not_found_in_trash' => sprintf( __( 'No %s found in trash.', 'sportspress' ), __( 'events', 'sportspress' ) ),
+		'parent_item_colon' => sprintf( __( 'Parent %s', 'sportspress' ), __( 'Event', 'sportspress' ) ) . ':'
+	);
 	$args = array(
-		'label' => $name,
+		'label' => __( 'Events', 'sportspress' ),
 		'labels' => $labels,
 		'public' => true,
 		'has_archive' => true,

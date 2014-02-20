@@ -20,7 +20,7 @@ function sportspress_admin_menu( $position ) {
 		$submenu['upload.php'] = array_filter( $submenu['upload.php'], 'sportspress_admin_menu_remove_positions' );
 	endif;
 
-    // Remove "Leagues" and "Seasons" links from Events submenu
+    // Remove "Leagues" and "Seasons" links from Schedule submenu
 	if ( isset( $submenu['edit.php?post_type=sp_event'] ) ):
 		$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], 'sportspress_admin_menu_remove_leagues' );
 		$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], 'sportspress_admin_menu_remove_seasons' );
