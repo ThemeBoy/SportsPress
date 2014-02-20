@@ -312,8 +312,8 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'child_of' => 0,
-			'sort_order' => 'ASC',
-		    'sort_column' => 'post_title',
+			'order' => 'ASC',
+		    'orderby' => 'title',
 		    'hierarchical' => 1,
 		    'exclude' => null,
 		    'include' => null,
@@ -367,7 +367,7 @@ if ( !function_exists( 'sportspress_dropdown_pages' ) ) {
 					printf( '<option value="%s" %s>%s</option>', $args['option_all_value'], selected( $selected, $args['option_all_value'], false ), $args['show_option_all'] );
 				endif;
 				if ( $args['show_option_none'] ):
-					printf( '<option value="%s" %s>%s</option>', $args['option_none_value'], selected( $selected, $args['option_none_value'], false ), $args['show_option_none'] );
+					printf( '<option value="%s" %s>%s</option>', $args['option_none_value'], selected( $selected, $args['option_none_value'], false ), ( $args['show_option_none'] === true ? '' : $args['show_option_none'] ) );
 				endif;
 				if ( $args['prepend_options'] && is_array( $args['prepend_options'] ) ):
 					foreach( $args['prepend_options'] as $slug => $label ):
@@ -760,7 +760,7 @@ if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 	function sportspress_edit_league_table( $columns = array(), $data = array(), $placeholders = array() ) {
 		?>
 		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table">
+			<table class="widefat sp-data-table sp-league-table">
 				<thead>
 					<tr>
 						<th><?php _e( 'Team', 'sportspress' ); ?></th>
@@ -1093,7 +1093,7 @@ if ( !function_exists( 'sportspress_edit_event_players_table' ) ) {
 	function sportspress_edit_event_players_table( $columns = array(), $data = array(), $team_id ) {
 		?>
 		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table">
+			<table class="widefat sp-data-table sp-statistic-table">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -1111,14 +1111,14 @@ if ( !function_exists( 'sportspress_edit_event_players_table' ) ) {
 						if ( !$player_id ) continue;
 						$number = get_post_meta( $player_id, 'sp_number', true );
 						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>" data-player="<?php echo $player_id; ?>">
 							<td><?php echo ( $number ? $number : '&nbsp;' ); ?></td>
 							<td><?php echo get_the_title( $player_id ); ?></td>
 							<?php foreach( $columns as $column => $label ):
 								$value = sportspress_array_value( $player_statistics, $column, '' );
 								?>
 								<td>
-									<input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" />
+									<input class="sp-player-<?php echo $column; ?>-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" />
 								</td>
 							<?php endforeach; ?>
 							<td class="sp-status-selector">
