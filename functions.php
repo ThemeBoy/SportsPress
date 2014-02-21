@@ -116,7 +116,7 @@ if ( !function_exists( 'sportspress_get_post_precision' ) ) {
 		if ( $precision ):
 			return $precision;
 		else:
-			return '1';
+			return 0;
 		endif;
 	}
 }
