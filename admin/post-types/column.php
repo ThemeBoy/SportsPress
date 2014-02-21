@@ -73,7 +73,11 @@ function sportspress_column_details_meta( $post ) {
 	<p class="sp-order-selector">
 		<select name="sp_priority">
 			<?php
-			$options = array( '0' => __( 'Disable', 'sportspress' ), '1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10',  );
+			$options = array( '0' => __( 'Disable', 'sportspress' ) );
+			$count = wp_count_posts( 'sp_column' );
+			for( $i = 1; $i <= $count->publish; $i++ ):
+				$options[ $i ] = $i;
+			endfor;
 			foreach ( $options as $key => $value ):
 				printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $priority, false ), $value );
 			endforeach;
