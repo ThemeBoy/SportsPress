@@ -3,14 +3,14 @@ function sportspress_team_post_init() {
 	$labels = array(
 		'name' => __( 'Teams', 'sportspress' ),
 		'singular_name' => __( 'Team', 'sportspress' ),
-		'add_new_item' => __( 'Add New Team', 'sportspress' ),
-		'edit_item' => __( 'Edit Team', 'sportspress' ),
-		'new_item' => __( 'New Team', 'sportspress' ),
-		'view_item' => __( 'View Team', 'sportspress' ),
-		'search_items' => __( 'Search Teams', 'sportspress' ),
-		'not_found' => __( 'No teams found.', 'sportspress' ),
-		'not_found_in_trash' => __( 'No teams found in trash.', 'sportspress' ),
-		'parent_item_colon' => __( 'Parent Team:', 'sportspress' ),
+		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'edit_item' => __( 'Edit', 'sportspress' ),
+		'new_item' => __( 'New', 'sportspress' ),
+		'view_item' => __( 'View', 'sportspress' ),
+		'search_items' => __( 'Search', 'sportspress' ),
+		'not_found' => __( 'No results found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
+		'parent_item_colon' => __( 'Parent:', 'sportspress' ),
 	);
 	$args = array(
 		'label' => __( 'Teams', 'sportspress' ),

@@ -79,7 +79,7 @@ Main Result is the default result that will be displayed in the admin list.
 
 Results are the values that you want to keep track of and display on your event pages. In Association Football, for example, typical results are "1st half", "2nd half", and "Goals". For Baseball, you would have 9+ "Innings", "Hits", "Runs", and "Errors".
 
-To add a new result, go to Settings > SportsPress > Results > Edit Results > Add New. Enter a name that you would like to be displayed in the column.
+To add a new result, go to Settings > SportsPress > Results > Add New. Enter a name that you would like to be displayed in the column.
 
 The "Key" is the variable name used in league table calculations and will be automatically generated when you create a new result, but you can also change this. The Order Attribute is the order that your result will be displayed among your other results.
 
@@ -87,7 +87,6 @@ The "Key" is the variable name used in league table calculations and will be aut
 
 Manage the columns you would like to calculate and display in league tables.
 
-To add a new column, League Tables > Edit Columns > Add New 
 Create a Title that you want to use as the column label, the Key will automatically be generated but you do have the option to change it here.
 
 You can define an equation for a column by selecting the options from the dropdown menu. As an example, a “Wins” column should just be “W” from the dropdown. For more complex calculations, you'll need to select multiple elements to create your equations. For example, the equation for Pts in Association Football would be W x 3 + D.
@@ -129,7 +128,7 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 
 = Is this plugin ready for production? =
 
-SportsPress is currently in beta and is undergoing testing. We are still actively making adjustments to the code, so we do not recommend installing it on a live server until we officially leave the beta phase.
+SportsPress is currently in beta and is undergoing testing. We are still actively making adjustments to the code, so we do not recommend using it until we officially leave the beta phase.
 
 == Screenshots ==
 
@@ -137,12 +136,41 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 2. Teams admin.
 3. Players admin.
 4. SportsPress Settings panel.
-5. League Table widget.
-6. Player List widget.
-7. Events Calendar widget.
-8. Countdown widget.
+5. League Table widget settings.
+6. Player List widget settings.
+7. Events Calendar widget settings.
+8. Countdown widget settings.
+9. SportsPress Status dashboard widget.
 
 == Changelog ==
+
+= 0.4 =
+* Feature - SportsPress Status dashboard widget added to display number of events and countdown in admin.
+* Feature - New dashboard menu icons.
+* Feature - More intuitive player edit screen.
+* Feature - Enable spreadsheet style keyboard navigation in admin data tables.
+* Feature - Add hover action on league table team names to edit display name.
+* Refactor - Remove min and max outcome options from column equation.
+* Refactor - Change Rounding precision to default to 0.
+* Tweak - Set player statistic totals to update placeholder instead of actual value in events.
+* Tweak - Used jQuery Chosen for inputs where useful.
+* Tweak - Prepend plugin name to widget titles.
+* Tweak - Highlight settings in admin menu when adding new config post type.
+* Tweak - Display Events as Schedule in admin sidebar menu.
+* Tweak - Update widget descriptions.
+* Tweak - Remove unused external class eqGraph.
+* Tweak - Display sort order priority options for number of columns available.
+* Fix - Apply table column rounding when precision is set.
+* Fix - Display event results on events page when available.
+* Fix - Check that event results are available before displaying a warning under certain conditions.
+* Fix - Namespace eqEOS class to avoid conflict with other plugins.
+* Localization - Use specific strings instead of dynamic ones for more accurate translations.
+* Localization - Use generic strings where appropriate.
+* Localization - Update German translation.
+* Localization - Update Spanish translation.
+* Localization - Update French translation.
+* Localization - Update Italian translation.
+* Localization - Update Japanese translation.
 
 = 0.3.3 =
 * Feature - Add default sorting options per player list.

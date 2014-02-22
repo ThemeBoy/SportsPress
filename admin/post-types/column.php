@@ -3,13 +3,13 @@ function sportspress_column_post_init() {
 	$labels = array(
 		'name' => __( 'Columns', 'sportspress' ),
 		'singular_name' => __( 'Column', 'sportspress' ),
-		'add_new_item' => __( 'Add New Column', 'sportspress' ),
-		'edit_item' => __( 'Edit Column', 'sportspress' ),
-		'new_item' => __( 'New Column', 'sportspress' ),
-		'view_item' => __( 'View Column', 'sportspress' ),
-		'search_items' => __( 'Search Columns', 'sportspress' ),
-		'not_found' => __( 'No columns found.', 'sportspress' ),
-		'not_found_in_trash' => __( 'No columns found in trash.', 'sportspress' ),
+		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'edit_item' => __( 'Edit', 'sportspress' ),
+		'new_item' => __( 'New', 'sportspress' ),
+		'view_item' => __( 'View', 'sportspress' ),
+		'search_items' => __( 'Search', 'sportspress' ),
+		'not_found' => __( 'No results found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
 	);
 	$args = array(
 		'label' => __( 'Columns', 'sportspress' ),

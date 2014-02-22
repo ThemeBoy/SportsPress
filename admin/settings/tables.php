@@ -12,13 +12,22 @@ $data = get_posts( $args );
 <table class="widefat sp-admin-config-table">
 	<thead>
 		<tr>
-			<th><?php _e( 'Label', 'sportspress' ); ?></th>
-			<th><?php _e( 'Key', 'sportspress' ); ?></th>
-			<th><?php _e( 'Equation', 'sportspress' ); ?></th>
-			<th><?php _e( 'Rounding', 'sportspress' ); ?></th>
-			<th><?php _e( 'Sort Order', 'sportspress' ); ?></th>
+			<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
+			<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
+			<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
+			<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
+			<th scope="col"><?php _e( 'Sort Order', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
+	<tfoot>
+		<tr>
+			<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
+			<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
+			<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
+			<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
+			<th scope="col"><?php _e( 'Sort Order', 'sportspress' ); ?></th>
+		</tr>
+	</tfoot>
 	<?php $i = 0; foreach ( $data as $row ): ?>
 		<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 			<td class="row-title"><?php echo $row->post_title; ?></td>
@@ -28,9 +37,11 @@ $data = get_posts( $args );
 			<td><?php echo sportspress_get_post_order( $row->ID ); ?></td>
 		</tr>
 	<?php $i++; endforeach; ?>
-	<tfoot>
-		<tr>
-			<th colspan="5"><a href="<?php echo admin_url( 'edit.php?post_type=sp_column' ); ?>"><?php _e( 'Edit Columns', 'sportspress' ); ?></a></th>
-		</tr>
-	</tfoot>
 </table>
+<div class="tablenav bottom">
+	<div class="alignleft actions">
+		<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_column' ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></a>
+		<a class="button" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_column' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
+	</div>
+	<br class="clear">
+</div>

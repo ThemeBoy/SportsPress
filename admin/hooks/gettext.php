@@ -32,15 +32,6 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 			case 'Remove featured image':
 				$translated_text = __( 'Remove Photo', 'sportspress' );
 				break;
-			case 'Scheduled for: <b>%1$s</b>':
-				$translated_text = __( 'Date/Time: <b>%1$s</b>', 'sportspress' );
-				break;
-			case 'Published on: <b>%1$s</b>':
-				$translated_text = __( 'Date/Time: <b>%1$s</b>', 'sportspress' );
-				break;
-			case 'Publish <b>immediately</b>':
-				$translated_text = __( 'Date/Time: <b>%1$s</b>', 'sportspress' );
-				break;
 			endswitch;
 		endif;
 	else:

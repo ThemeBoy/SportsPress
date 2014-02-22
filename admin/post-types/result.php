@@ -3,13 +3,13 @@ function sportspress_result_post_init() {
 	$labels = array(
 		'name' => __( 'Results', 'sportspress' ),
 		'singular_name' => __( 'Result', 'sportspress' ),
-		'add_new_item' => __( 'Add New Result', 'sportspress' ),
-		'edit_item' => __( 'Edit Result', 'sportspress' ),
-		'new_item' => __( 'New Result', 'sportspress' ),
-		'view_item' => __( 'View Result', 'sportspress' ),
-		'search_items' => __( 'Search Results', 'sportspress' ),
+		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'edit_item' => __( 'Edit', 'sportspress' ),
+		'new_item' => __( 'New', 'sportspress' ),
+		'view_item' => __( 'View', 'sportspress' ),
+		'search_items' => __( 'Search', 'sportspress' ),
 		'not_found' => __( 'No results found.', 'sportspress' ),
-		'not_found_in_trash' => __( 'No results found in trash.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
 	);
 	$args = array(
 		'label' => __( 'Results', 'sportspress' ),

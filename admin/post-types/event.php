@@ -4,13 +4,13 @@ function sportspress_event_post_init() {
 		'name' => __( 'Schedule', 'sportspress' ),
 		'singular_name' => __( 'Event', 'sportspress' ),
 		'all_items' => __( 'Events', 'sportspress' ),
-		'add_new_item' => __( 'Add New Event', 'sportspress' ),
-		'edit_item' => __( 'Edit Event', 'sportspress' ),
-		'new_item' => __( 'New Event', 'sportspress' ),
-		'view_item' => __( 'View Event', 'sportspress' ),
-		'search_items' => __( 'Search Events', 'sportspress' ),
-		'not_found' => __( 'No events found.', 'sportspress' ),
-		'not_found_in_trash' => __( 'No events found in trash.', 'sportspress' ),
+		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'edit_item' => __( 'Edit', 'sportspress' ),
+		'new_item' => __( 'New', 'sportspress' ),
+		'view_item' => __( 'View', 'sportspress' ),
+		'search_items' => __( 'Search', 'sportspress' ),
+		'not_found' => __( 'No results found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
 	);
 	$args = array(
 		'label' => __( 'Events', 'sportspress' ),
@@ -76,7 +76,7 @@ function sportspress_event_details_meta( $post ) {
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New League', 'sportspress' ) );
+				sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
 			endif;
 			?>
 		</p>
@@ -91,7 +91,7 @@ function sportspress_event_details_meta( $post ) {
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New Season', 'sportspress' )  );
+				sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
 			endif;
 			?>
 		</p>
@@ -106,7 +106,7 @@ function sportspress_event_details_meta( $post ) {
 				'show_option_none' => __( '-- Not set --', 'sportspress' ),
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_venue', 'sp_event', __( 'Add New Venue', 'sportspress' )  );
+				sportspress_taxonomy_adder( 'sp_venue', 'sp_event', __( 'Add New', 'sportspress' )  );
 			endif;
 			?>
 		</p>
