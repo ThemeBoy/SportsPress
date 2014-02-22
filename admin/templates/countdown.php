@@ -8,18 +8,10 @@ if ( !function_exists( 'sportspress_countdown' ) ) {
 		if ( $id ):
 			$post = get_post( $id );
 		else:
-			$options = array(
-				'post_type' => 'sp_event',
-				'posts_per_page' => 1,
-				'order' => 'ASC',
-				'post_status' => 'future',
-				'meta_query' => array(),
-			);
+			$args = array();
 			if ( isset( $args['team'] ) )
-				$options['meta_query'][] = array( 'key' => 'sp_team', 'value' => $args['team'] );
-
-			$posts = get_posts( $options );
-			$post = array_pop( $posts );
+				$args = array( 'key' => 'sp_team', 'value' => $args['team'] );
+			$post = sportspress_get_next_event( $args );
 		endif;
 
 		$output = '';

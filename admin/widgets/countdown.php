@@ -34,7 +34,7 @@ class SP_Widget_Countdown extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('event'); ?>"><?php _e( 'Select Event:', 'sportspress' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id('event'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?></label>
 		<?php
 		$args = array(
 			'post_type' => 'sp_event',
@@ -48,13 +48,13 @@ class SP_Widget_Countdown extends WP_Widget {
 			'post_status' => 'future',
 		);
 		if ( ! sportspress_dropdown_pages( $args ) ):
-			sportspress_post_adder( 'sp_event', __( 'Add New Event', 'sportspress' ) );
+			sportspress_post_adder( 'sp_event', __( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>
 
 		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_league'); ?>" name="<?php echo $this->get_field_name('show_league'); ?>" value="1" <?php checked( $show_league, 1 ); ?>>
-		<label for="<?php echo $this->get_field_id('show_league'); ?>"><?php _e( 'Display League', 'sportspress' ); ?></label></p>
+		<label for="<?php echo $this->get_field_id('show_league'); ?>"><?php _e( 'Display league', 'sportspress' ); ?></label></p>
 <?php
 	}
 }
