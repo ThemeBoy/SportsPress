@@ -159,8 +159,7 @@ jQuery(document).ready(function($){
 				sum += parseInt(val, 10);
 			}
 		});
-		if ($(this).attr("placeholder") != sum)
-			$(this).attr("placeholder", sum);
+		$(this).val(sum);
 	});
 
 	// Activate total stats calculator

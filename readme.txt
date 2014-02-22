@@ -152,7 +152,6 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 * Feature - Add hover action on league table team names to edit display name.
 * Refactor - Remove min and max outcome options from column equation.
 * Refactor - Change Rounding precision to default to 0.
-* Tweak - Set player statistic totals to update placeholder instead of actual value in events.
 * Tweak - Used jQuery Chosen for inputs where useful.
 * Tweak - Prepend plugin name to widget titles.
 * Tweak - Highlight settings in admin menu when adding new config post type.
