@@ -6,7 +6,7 @@ if ( !function_exists( 'sportspress_event_results' ) ) {
 			$id = get_the_ID();
 
 		$teams = (array)get_post_meta( $id, 'sp_team', false );
-		$results = sportspress_array_combine( $teams, (array)get_post_meta( $id, 'sp_results', true ) );
+		$results = array_filter( sportspress_array_combine( $teams, (array)get_post_meta( $id, 'sp_results', true ) ), 'array_filter' );
 		$result_labels = sportspress_get_var_labels( 'sp_result' );
 
 		$output = '';
@@ -16,7 +16,7 @@ if ( !function_exists( 'sportspress_event_results' ) ) {
 
 		$i = 0;
 
-		if ( empty( array_filter( $results, 'array_filter' ) ) )
+		if ( empty( $results ) )
 			return false;
 
 		foreach( $results as $team_id => $result ):
