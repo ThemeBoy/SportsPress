@@ -74,6 +74,8 @@ function sportspress_activation_hook() {
             'delete_sp_tables' => true,
             'delete_private_sp_tables' => true,
             'delete_published_sp_tables' => true,
+
+            'view_sportspress_reports' => true,
         )
     );
 

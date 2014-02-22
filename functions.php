@@ -407,9 +407,10 @@ if ( !function_exists( 'sportspress_post_checklist' ) ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		?>
-		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel" style="display: <?php echo $display; ?>;">
+		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
 			<input type="hidden" value="0" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
+				<li><label class="selectit sp-select-all-container"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
 				<?php
 				$selected = sportspress_array_between( (array)get_post_meta( $post_id, $meta, false ), 0, $index );
 				$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
@@ -680,49 +681,6 @@ if ( !function_exists( 'sportspress_get_var_calculates' ) ) {
 	}
 }
 
-if ( !function_exists( 'sportspress_edit_calendar_table' ) ) {
-	function sportspress_edit_calendar_table( $data = array() ) {
-		if ( empty( $data ) ):
-			_e( 'No Events found.', 'sportspress' );
-			return false;
-		endif;
-		?>
-		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table">
-				<thead>
-					<tr>
-						<th><?php _e( 'Event', 'sportspress' ); ?></th>
-						<th><?php _e( 'Date', 'sportspress' ); ?></th>
-						<th><?php _e( 'Time', 'sportspress' ); ?></th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-					$i = 0;
-					foreach ( $data as $event ):
-						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-							<td>
-								<?php edit_post_link( $event->post_title, null, null, $event->ID ); ?>
-							</td>
-							<td>
-								<?php echo get_the_time( get_option('date_format'), $event->ID ); ?>
-							</td>
-							<td>
-								<?php echo get_the_time( get_option('time_format'), $event->ID ); ?>
-							</td>
-						</tr>
-						<?php
-						$i++;
-					endforeach;
-					?>
-				</tbody>
-			</table>
-		</div>
-		<?php
-	}
-}
-
 if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 	function sportspress_edit_league_table( $columns = array(), $data = array(), $placeholders = array() ) {
 		?>
@@ -827,7 +785,7 @@ if ( !function_exists( 'sportspress_edit_team_columns_table' ) ) {
 	function sportspress_edit_team_columns_table( $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons = array(), $readonly = true ) {
 		?>
 		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table">
+			<table class="widefat sp-data-table sp-select-all-range">
 				<thead>
 					<tr>
 						<th class="check-column"><input class="sp-select-all" type="checkbox"></th>
@@ -928,7 +886,7 @@ if ( !function_exists( 'sportspress_edit_player_statistics_table' ) ) {
 									),
 								);
 								if ( ! sportspress_dropdown_pages( $args ) ):
-									_e( 'No teams found.', 'sportspress' );
+									_e( 'No results found.', 'sportspress' );
 								endif;
 								?>
 							</td>
@@ -1289,7 +1247,7 @@ if ( !function_exists( 'sportspress_solve' ) ) {
 
 		if ( $clearance ):
 			// Equation Operating System
-			$eos = new eqEOS();
+			$eos = new SP_eqEOS();
 
 			// Solve using EOS
 			return round( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision );
@@ -2378,6 +2336,21 @@ if ( !function_exists( 'sportspress_get_player_statistics_data' ) ) {
 			return $merged;
 		endif;
 
+	}
+}
+
+if ( !function_exists( 'sportspress_get_next_event' ) ) {
+	function sportspress_get_next_event( $args = array() ) {
+			$options = array(
+				'post_type' => 'sp_event',
+				'posts_per_page' => 1,
+				'order' => 'ASC',
+				'post_status' => 'future',
+				'meta_query' => $args,
+			);
+			$posts = get_posts( $options );
+			$post = array_pop( $posts );
+			return $post;
 	}
 }
 

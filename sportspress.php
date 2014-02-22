@@ -24,8 +24,7 @@ define( 'SPORTSPRESS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'SPORTSPRESS_PLUGIN_FILE', __FILE__ );
 
 // Libraries
-if ( ! class_exists( 'eqEOS' ) )
-	require_once dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
+require_once dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
 
 // Globals
 require_once dirname( __FILE__ ) . '/admin/globals/continents.php';
@@ -75,8 +74,6 @@ require_once dirname( __FILE__ ) . '/admin/terms/venue.php';
 require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 
 // Widgets
-require_once dirname( __FILE__ ) . '/admin/widgets/recent-events.php';
-require_once dirname( __FILE__ ) . '/admin/widgets/future-events.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/countdown.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/events-calendar.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/player-list.php';
@@ -97,6 +94,7 @@ require_once dirname( __FILE__ ) . '/admin/hooks/admin-menu.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/admin-enqueue-scripts.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/admin-print-styles.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/admin-head.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/current-screen.php';
 
 // Administrative actions
 require_once dirname( __FILE__ ) . '/admin/hooks/manage-posts-columns.php';
