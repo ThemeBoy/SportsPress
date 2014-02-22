@@ -3,13 +3,13 @@ function sportspress_player_post_init() {
 	$labels = array(
 		'name' => __( 'Players', 'sportspress' ),
 		'singular_name' => __( 'Player', 'sportspress' ),
-		'add_new_item' => __( 'Add New Player', 'sportspress' ),
-		'edit_item' => __( 'Edit Player', 'sportspress' ),
-		'new_item' => __( 'New Player', 'sportspress' ),
-		'view_item' => __( 'View Player', 'sportspress' ),
-		'search_items' => __( 'Search Players', 'sportspress' ),
-		'not_found' => __( 'No players found.', 'sportspress' ),
-		'not_found_in_trash' => __( 'No players found in trash.', 'sportspress' ),
+		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'edit_item' => __( 'Edit', 'sportspress' ),
+		'new_item' => __( 'New', 'sportspress' ),
+		'view_item' => __( 'View', 'sportspress' ),
+		'search_items' => __( 'Search', 'sportspress' ),
+		'not_found' => __( 'No results found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
 	);
 	$args = array(
 		'label' => __( 'Players', 'sportspress' ),
@@ -110,7 +110,7 @@ function sportspress_player_details_meta( $post ) {
 	<p><input type="text" size="4" id="sp_number" name="sp_number" value="<?php echo $number; ?>"></p>
 
 	<p><strong><?php _e( 'Nationality', 'sportspress' ); ?></strong></p>
-	<p><select id="sp_nationality" name="sp_nationality" data-placeholder="<?php _e( 'Select Nationality', 'sportspress' ); ?>" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>">
+	<p><select id="sp_nationality" name="sp_nationality" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>">
 		<option value=""></option>
 		<?php foreach ( $continents as $continent => $countries ): ?>
 			<optgroup label="<?php echo $continent; ?>">
@@ -128,7 +128,7 @@ function sportspress_player_details_meta( $post ) {
 		'name' => 'tax_input[sp_position][]',
 		'selected' => $position_ids,
 		'values' => 'term_id',
-		'placeholder' => __( 'Select Positions', 'sportspress' ),
+		'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Positions', 'sportspress' ) ),
 		'class' => 'widefat',
 		'property' => 'multiple',
 		'chosen' => true,
@@ -144,7 +144,7 @@ function sportspress_player_details_meta( $post ) {
 		'show_option_blank' => true,
 		'selected' => $current_team,
 		'values' => 'ID',
-		'placeholder' => __( 'Select Team', 'sportspress' ),
+		'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Team', 'sportspress' ) ),
 		'class' => 'sp-current-team widefat',
 		'chosen' => true,
 	);
@@ -158,7 +158,7 @@ function sportspress_player_details_meta( $post ) {
 		'name' => 'sp_past_team[]',
 		'selected' => $past_teams,
 		'values' => 'ID',
-		'placeholder' => __( 'Select Teams', 'sportspress' ),
+		'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
 		'class' => 'sp-past-teams widefat',
 		'property' => 'multiple',
 		'chosen' => true,
@@ -173,7 +173,7 @@ function sportspress_player_details_meta( $post ) {
 		'name' => 'tax_input[sp_league][]',
 		'selected' => $league_ids,
 		'values' => 'term_id',
-		'placeholder' => __( 'Select Leagues', 'sportspress' ),
+		'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
 		'class' => 'widefat',
 		'property' => 'multiple',
 		'chosen' => true,
@@ -188,7 +188,7 @@ function sportspress_player_details_meta( $post ) {
 		'name' => 'tax_input[sp_season][]',
 		'selected' => $season_ids,
 		'values' => 'term_id',
-		'placeholder' => __( 'Select Seasons', 'sportspress' ),
+		'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
 		'class' => 'widefat',
 		'property' => 'multiple',
 		'chosen' => true,
@@ -234,7 +234,7 @@ function sportspress_player_metrics_meta( $post ) {
 		<?php
 		endforeach;
 	else:
-		sportspress_post_adder( 'sp_metric', __( 'Add New Metric', 'sportspress' ) );
+		sportspress_post_adder( 'sp_metric', __( 'Add New', 'sportspress' ) );
 	endif;
 	
 	sportspress_nonce();

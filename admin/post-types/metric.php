@@ -3,13 +3,13 @@ function sportspress_metric_post_init() {
 	$labels = array(
 		'name' => __( 'Metrics', 'sportspress' ),
 		'singular_name' => __( 'Metric', 'sportspress' ),
-		'add_new_item' => __( 'Add New Metric', 'sportspress' ),
-		'edit_item' => __( 'Edit Metric', 'sportspress' ),
-		'new_item' => __( 'New Metric', 'sportspress' ),
-		'view_item' => __( 'View Metric', 'sportspress' ),
-		'search_items' => __( 'Search Metrics', 'sportspress' ),
-		'not_found' => __( 'No metrics found.', 'sportspress' ),
-		'not_found_in_trash' => __( 'No metrics found in trash.', 'sportspress' ),
+		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'edit_item' => __( 'Edit', 'sportspress' ),
+		'new_item' => __( 'New', 'sportspress' ),
+		'view_item' => __( 'View', 'sportspress' ),
+		'search_items' => __( 'Search', 'sportspress' ),
+		'not_found' => __( 'No results found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
 	);
 	$args = array(
 		'label' => __( 'Metrics', 'sportspress' ),

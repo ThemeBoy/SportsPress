@@ -2,16 +2,16 @@
 function sportspress_admin_post_thumbnail_html( $translated_text, $post_id ) {
 	$texts = array(
 		'sp_team' => array(
-			'Set featured image' => __( 'Select Logo', 'sportspress' ),
-			'Remove featured image' => __( 'Remove Logo', 'sportspress' ),
+			'Set featured image' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Logo', 'sportspress' ) ),
+			'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Logo', 'sportspress' ) ),
 		),
 		'sp_player' => array(
-			'Set featured image' => __( 'Select Photo', 'sportspress' ),
-			'Remove featured image' => __( 'Remove Photo', 'sportspress' ),
+			'Set featured image' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Photo', 'sportspress' ) ),
+			'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) ),
 		),
 		'sp_staff' => array(
-			'Set featured image' => __( 'Select Photo', 'sportspress' ),
-			'Remove featured image' => __( 'Remove Photo', 'sportspress' ),
+			'Set featured image' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Photo', 'sportspress' ) ),
+			'Remove featured image' => sprintf( __( 'Remove %s', 'sportspress' ), __( 'Photo', 'sportspress' ) ),
 		),
 	);
 

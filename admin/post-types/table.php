@@ -3,13 +3,13 @@ function sportspress_table_post_init() {
 	$labels = array(
 		'name' => __( 'League Tables', 'sportspress' ),
 		'singular_name' => __( 'League Table', 'sportspress' ),
-		'add_new_item' => __( 'Add New League Table', 'sportspress' ),
-		'edit_item' => __( 'Edit League Table', 'sportspress' ),
-		'new_item' => __( 'New League Table', 'sportspress' ),
-		'view_item' => __( 'View League Table', 'sportspress' ),
-		'search_items' => __( 'Search League Tables', 'sportspress' ),
-		'not_found' => __( 'No league tables found.', 'sportspress' ),
-		'not_found_in_trash' => __( 'No league tables found in trash.', 'sportspress' ),
+		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'edit_item' => __( 'Edit', 'sportspress' ),
+		'new_item' => __( 'New', 'sportspress' ),
+		'view_item' => __( 'View', 'sportspress' ),
+		'search_items' => __( 'Search', 'sportspress' ),
+		'not_found' => __( 'No results found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
 	);
 	$args = array(
 		'label' => __( 'League Tables', 'sportspress' ),
@@ -70,7 +70,7 @@ function sportspress_table_team_meta( $post, $test ) {
 				'values' => 'term_id'
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New League', 'sportspress' )  );
+				sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' )  );
 			endif;
 			?>
 		</p>
@@ -84,14 +84,14 @@ function sportspress_table_team_meta( $post, $test ) {
 				'values' => 'term_id'
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New Season', 'sportspress' )  );
+				sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
 			endif;
 			?>
 		</p>
 		<p><strong><?php _e( 'Teams', 'sportspress' ); ?></strong></p>
 		<?php
 		sportspress_post_checklist( $post->ID, 'sp_team', 'block', 'sp_season' );
-		sportspress_post_adder( 'sp_team', __( 'Add New Team', 'sportspress' ) );
+		sportspress_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
 		?>
 	</div>
 	<?php

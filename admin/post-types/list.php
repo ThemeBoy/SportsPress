@@ -3,13 +3,13 @@ function sportspress_list_post_init() {
 	$labels = array(
 		'name' => __( 'Player Lists', 'sportspress' ),
 		'singular_name' => __( 'Player List', 'sportspress' ),
-		'add_new_item' => __( 'Add New Player List', 'sportspress' ),
-		'edit_item' => __( 'Edit Player List', 'sportspress' ),
-		'new_item' => __( 'New Player List', 'sportspress' ),
-		'view_item' => __( 'View Player List', 'sportspress' ),
-		'search_items' => __( 'Search Player Lists', 'sportspress' ),
-		'not_found' => __( 'No player lists found.', 'sportspress' ),
-		'not_found_in_trash' => __( 'No player lists found in trash.', 'sportspress' ),
+		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'edit_item' => __( 'Edit', 'sportspress' ),
+		'new_item' => __( 'New', 'sportspress' ),
+		'view_item' => __( 'View', 'sportspress' ),
+		'search_items' => __( 'Search', 'sportspress' ),
+		'not_found' => __( 'No results found.', 'sportspress' ),
+		'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
 	);
 	$args = array(
 		'label' => __( 'Player Lists', 'sportspress' ),
@@ -74,7 +74,7 @@ function sportspress_list_player_meta( $post ) {
 				'values' => 'term_id',
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New League', 'sportspress' )  );
+				sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' )  );
 			endif;
 			?>
 		</p>
@@ -88,7 +88,7 @@ function sportspress_list_player_meta( $post ) {
 				'values' => 'term_id',
 			);
 			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New Season', 'sportspress' )  );
+				sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
 			endif;
 			?>
 		</p>
@@ -98,12 +98,12 @@ function sportspress_list_player_meta( $post ) {
 			$args = array(
 				'post_type' => 'sp_team',
 				'name' => 'sp_team',
-				'show_option_all' => __( 'All Teams', 'sportspress' ),
+				'show_option_all' => __( 'All', 'sportspress' ),
 				'selected' => $team_id,
 				'values' => 'ID',
 			);
 			if ( ! sportspress_dropdown_pages( $args ) ):
-				sportspress_post_adder( 'sp_team', __( 'Add New Team', 'sportspress' ) );
+				sportspress_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
 			endif;
 			?>
 		</p>
@@ -122,7 +122,7 @@ function sportspress_list_player_meta( $post ) {
 			'values' => 'slug',
 		);
 		if ( ! sportspress_dropdown_pages( $args ) ):
-			sportspress_post_adder( 'sp_list', __( 'Add New Player List', 'sportspress' ) );
+			sportspress_post_adder( 'sp_list', __( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>
@@ -136,7 +136,7 @@ function sportspress_list_player_meta( $post ) {
 		<p><strong><?php _e( 'Players', 'sportspress' ); ?></strong></p>
 		<?php
 		sportspress_post_checklist( $post->ID, 'sp_player', 'block', 'sp_team' );
-		sportspress_post_adder( 'sp_player', __( 'Add New Player', 'sportspress' ) );
+		sportspress_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
 		?>
 	</div>
 	<?php

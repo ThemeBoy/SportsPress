@@ -44,7 +44,7 @@ class SportsPress_Widget_Player_list extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('id'); ?>"><?php _e( 'Select Player List:', 'sportspress' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id('id'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Player List', 'sportspress' ) ); ?></label>
 		<?php
 		$args = array(
 			'post_type' => 'sp_list',
@@ -55,7 +55,7 @@ class SportsPress_Widget_Player_list extends WP_Widget {
 			'class' => 'widefat',
 		);
 		if ( ! sportspress_dropdown_pages( $args ) ):
-			sportspress_post_adder( 'sp_list', __( 'Add New Player List', 'sportspress' ) );
+			sportspress_post_adder( 'sp_list', __( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>
@@ -98,7 +98,7 @@ class SportsPress_Widget_Player_list extends WP_Widget {
 			'class' => 'sp-select-orderby widefat',
 		);
 		if ( ! sportspress_dropdown_pages( $args ) ):
-			sportspress_post_adder( 'sp_list', __( 'Add New Player List', 'sportspress' ) );
+			sportspress_post_adder( 'sp_list', __( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>

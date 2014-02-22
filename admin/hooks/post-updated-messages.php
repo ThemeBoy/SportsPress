@@ -9,7 +9,7 @@ function sportspress_post_updated_messages( $messages ) {
 		for ( $i = 0; $i <= 10; $i++ ):
 			$messages['post'][ $i ] = __( 'Settings saved.', 'sportspress' ) .
 				' <a href="' . esc_url( admin_url( 'edit.php?post_type=' . $typenow ) ) . '">' .
-				__( 'View all', 'sportspress' ) . '</a>';
+				__( 'View All', 'sportspress' ) . '</a>';
 		endfor;
 
 	elseif ( in_array( $typenow, array( 'sp_event', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) ) ):
