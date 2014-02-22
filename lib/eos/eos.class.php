@@ -73,7 +73,7 @@ require_once "stack.class.php";
  * @subpackage EOS
  * @version 2.0
  */
-class eqEOS {
+class SP_eqEOS {
     /**#@+
      *Private variables
      */

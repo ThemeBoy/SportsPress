@@ -35,5 +35,7 @@ function sportspress_admin_init() {
             $administrator->add_cap( $cap . '_' . $post_type . 's' );
         endforeach;
     endforeach;
+
+    $administrator->add_cap( 'view_sportspress_reports' );
 }
 add_action( 'admin_init', 'sportspress_admin_init' );

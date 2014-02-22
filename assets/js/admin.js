@@ -171,9 +171,9 @@ jQuery(document).ready(function($){
 	}
 
 	// Select all checkboxes
-	$(".sp-data-table thead .sp-select-all").change(function() {
-		$table = $(this).closest(".sp-data-table");
-		$table.find("tbody input[type=checkbox]").prop("checked", $(this).prop("checked"));
+	$(".sp-select-all").change(function() {
+		$range = $(this).closest(".sp-select-all-range");
+		$range.find("input[type=checkbox]").prop("checked", $(this).prop("checked"));
 	});
 
 	// Check if all checkboxes are checked already
@@ -264,6 +264,14 @@ jQuery(document).ready(function($){
 	// Prevent address input from submitting form
 	$(".sp-address").keypress(function(event) {
 		return event.keyCode != 13;
+	});
+
+	// Dashboard countdown
+	$("#sportspress_dashboard_status .sp_status_list li.countdown").each(function() {
+		var $this = $(this), finalDate = $(this).data('countdown');
+		$this.countdown(finalDate, function(event) {
+			$this.find('strong').html(event.strftime("%D "+localized_strings.days+" %H:%M:%S"));
+		});
 	});
 
 });
