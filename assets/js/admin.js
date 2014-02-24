@@ -176,16 +176,19 @@ jQuery(document).ready(function($){
 	});
 
 	// Check if all checkboxes are checked already
-	$(".sp-data-table").on("checkCheck", function() {
+	$(".sp-select-all-range").on("checkCheck", function() {
 		$(this).each(function() {
-			$(this).find("thead .sp-select-all").prop("checked", $(this).find("tbody input[type=checkbox]:checked").length == $(this).find("tbody input[type=checkbox]").length);
+			$(this).find(".sp-select-all").prop("checked", $(this).find("input[type=checkbox]:checked:not(.sp-select-all)").length == $(this).find("input[type=checkbox]:visible:not(.sp-select-all)").length);
 		});
 	});
 
 	// Activate check check when a checkbox is checked
-	$(".sp-data-table tbody input[type=checkbox]").change(function() {
-		$(this).closest(".sp-data-table").trigger("checkCheck");
+	$(".sp-select-all-range input[type=checkbox]:not(.sp-select-all)").change(function() {
+		$(this).closest(".sp-select-all-range").trigger("checkCheck");
 	});
+
+	// Activate check check on page load
+	$(".sp-select-all-range").trigger("checkCheck");
 
 	// Trigger check check
 	$(".sp-data-table").trigger("checkCheck");
