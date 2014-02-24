@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: SportsPress 0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-21 14:01+1000\n"
-"PO-Revision-Date: 2014-02-21 17:14+1000\n"
+"PO-Revision-Date: 2014-02-24 15:40+1000\n"
 "Last-Translator: ThemeBoy <translate@themeboy.com>\n"
 "Language-Team: ThemeBoy <translate@themeboy.com>\n"
 "Language: ja\n"
@@ -134,7 +134,7 @@ msgstr "定数"
 
 #: ../functions.php:577 ../admin/settings/settings.php:46
 msgid "&mdash; Select &mdash;"
-msgstr "&mdash; Select &mdash;"
+msgstr "&mdash; 選択 &mdash;"
 
 #: ../functions.php:690 ../functions.php:844 ../functions.php:919
 #: ../functions.php:1804 ../functions.php:2333 ../admin/hooks/gettext.php:9
