@@ -31,14 +31,19 @@ Add schedules, results, league tables, player profiles and statistics to your te
 League table columns, player statistics, and match results can be customized to fit any sport. Presets are available for some of the most popular sports including soccer, rugby, American football, Australian Rules football, baseball, basketball, cricket, and hockey.
 
 = Available Languages =
-* English
-* German
-* Spanish
-* French
-* Italian
-* Japanese
+* English (en_US)
+* German - Deutsch (de_DE)
+* Spanish - Español (es_ES)
+* French - Français (fr_FR)
+* Italian - Italiano (it_IT)
+* Japanese - 日本語 (ja)
+* Swedish - Svenska (sv_SE)
 
 [Let us know](http://wordpress.org/support/plugin/sportspress) if you come across any missing or inaccurate translations in your language.
+
+= Get involved =
+
+Developers and translators can contribute via the [SportsPress GitHub Repository](https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md).
 
 == Installation ==
 
