@@ -1,0 +1,1097 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SportsPress 0.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-21 15:18+1000\n"
+"PO-Revision-Date: 2014-02-25 23:53+0100\n"
+"Last-Translator: \n"
+"Language-Team: ThemeBoy <translate@themeboy.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Bookmarks: -1,75,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../functions.php:74
+msgid "1 view"
+msgstr "1 visning"
+
+#: ../functions.php:76
+#, php-format
+msgid "%s views"
+msgstr "%s visningar"
+
+#: ../functions.php:101
+msgid "Scheduled"
+msgstr "Schemalagt"
+
+#: ../functions.php:103 ../functions.php:533 ../functions.php:536
+#: ../functions.php:1996 ../functions.php:2198 ../functions.php:2333
+#: ../admin/post-types/list.php:117 ../admin/widgets/player-list.php:78
+#: ../admin/widgets/player-list.php:91
+msgid "Played"
+msgstr "Spelad"
+
+#: ../functions.php:105
+msgid "Draft"
+msgstr "Utkast"
+
+#: ../functions.php:107
+msgid "Pending Review"
+msgstr "VÃ¤ntar pÃ¥ granskning"
+
+#: ../functions.php:109 ../admin/hooks/post-updated-messages.php:34
+msgid "M j, Y @ G:i"
+msgstr "j M, Y @ G:i"
+
+#: ../functions.php:130 ../functions.php:134 ../functions.php:467
+#: ../functions.php:1059 ../admin/templates/event-players.php:82
+msgid "Total"
+msgstr "Summa"
+
+#: ../functions.php:130 ../functions.php:468
+msgid "Average"
+msgstr "Medel"
+
+#: ../functions.php:172
+msgid "Integer"
+msgstr "Heltal"
+
+#: ../functions.php:173
+msgid "Decimal"
+msgstr "Decimal"
+
+#: ../functions.php:174 ../admin/templates/event-details.php:13
+msgid "Time"
+msgstr "Tid"
+
+#: ../functions.php:175
+msgid "Custom Field"
+msgstr "Eget fÃ¤lt"
+
+#: ../functions.php:396 ../functions.php:449
+msgid "(no title)"
+msgstr "(ingen titel)"
+
+#: ../functions.php:533 ../functions.php:536 ../admin/post-types/event.php:6
+#: ../admin/post-types/event.php:16 ../admin/settings/settings.php:11
+msgid "Events"
+msgstr "Evenemang"
+
+#: ../functions.php:533
+msgid "Attended"
+msgstr "BesÃ¶kt"
+
+#: ../functions.php:539 ../admin/post-types/event.php:53
+#: ../admin/post-types/result.php:4 ../admin/post-types/result.php:15
+#: ../admin/settings/events.php:16 ../admin/templates/event-results.php:55
+msgid "Results"
+msgstr "Resultat"
+
+#: ../functions.php:542 ../functions.php:543 ../functions.php:544
+#: ../functions.php:545 ../admin/post-types/outcome.php:4
+#: ../admin/post-types/outcome.php:15 ../admin/settings/events.php:55
+msgid "Outcomes"
+msgstr "Utfall"
+
+#: ../functions.php:543
+msgid "Streak"
+msgstr "Svit"
+
+#: ../functions.php:544
+msgid "Last 5"
+msgstr "Sista 5"
+
+#: ../functions.php:545
+msgid "Last 10"
+msgstr "Sista 10"
+
+#: ../functions.php:548 ../admin/post-types/column.php:4
+#: ../admin/post-types/column.php:15 ../admin/post-types/team.php:41
+#: ../admin/settings/tables.php:11
+msgid "Columns"
+msgstr "Kolumner"
+
+#: ../functions.php:551
+msgid "Player Statistics"
+msgstr "Spelarstatistik"
+
+#: ../functions.php:560
+msgid "Operators"
+msgstr "OperatÃ¶rer"
+
+#: ../functions.php:573
+msgid "Constants"
+msgstr "Konstanter"
+
+#: ../functions.php:577 ../admin/settings/settings.php:46
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; VÃ¤lj &mdash;"
+
+#: ../functions.php:690 ../functions.php:844 ../functions.php:919
+#: ../functions.php:1804 ../functions.php:2333 ../admin/hooks/gettext.php:9
+#: ../admin/post-types/list.php:38 ../admin/post-types/list.php:95
+#: ../admin/post-types/player.php:147 ../admin/post-types/team.php:5
+#: ../admin/post-types/team.php:49 ../admin/templates/event-results.php:59
+msgid "Team"
+msgstr "Lag"
+
+#: ../functions.php:712 ../admin/post-types/column.php:7
+#: ../admin/post-types/event.php:8 ../admin/post-types/list.php:7
+#: ../admin/post-types/metric.php:7 ../admin/post-types/outcome.php:7
+#: ../admin/post-types/player.php:7 ../admin/post-types/result.php:7
+#: ../admin/post-types/staff.php:7 ../admin/post-types/statistic.php:7
+#: ../admin/post-types/table.php:7 ../admin/post-types/team.php:7
+#: ../admin/settings/events.php:39 ../admin/settings/events.php:78
+#: ../admin/settings/players.php:37 ../admin/settings/players.php:78
+#: ../admin/settings/tables.php:43 ../admin/terms/league.php:7
+#: ../admin/terms/position.php:7 ../admin/terms/season.php:7
+#: ../admin/terms/venue.php:7
+msgid "Edit"
+msgstr "Redigera"
+
+#: ../functions.php:716
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../functions.php:717
+msgid "Save"
+msgstr "Spara"
+
+#: ../functions.php:746 ../functions.php:1024 ../functions.php:2092
+#: ../admin/hooks/register-activation-hook.php:147
+#: ../admin/post-types/player.php:5 ../admin/templates/event-players.php:28
+msgid "Player"
+msgstr "Spelare"
+
+#: ../functions.php:791 ../functions.php:843 ../functions.php:1535
+#: ../functions.php:2333 ../admin/post-types/event.php:83
+#: ../admin/post-types/event.php:215 ../admin/post-types/list.php:37
+#: ../admin/post-types/list.php:81 ../admin/post-types/table.php:36
+#: ../admin/post-types/table.php:77 ../admin/templates/event-details.php:22
+#: ../admin/terms/season.php:5
+msgid "Season"
+msgstr "SÃ¤song"
+
+#: ../functions.php:867
+msgid "&mdash; None &mdash;"
+msgstr "&mdash; Ingen &mdash;"
+
+#: ../functions.php:888 ../admin/post-types/column.php:11
+#: ../admin/post-types/column.php:12 ../admin/post-types/event.php:12
+#: ../admin/post-types/event.php:13 ../admin/post-types/list.php:11
+#: ../admin/post-types/list.php:12 ../admin/post-types/metric.php:11
+#: ../admin/post-types/metric.php:12 ../admin/post-types/outcome.php:11
+#: ../admin/post-types/outcome.php:12 ../admin/post-types/player.php:11
+#: ../admin/post-types/player.php:12 ../admin/post-types/result.php:11
+#: ../admin/post-types/result.php:12 ../admin/post-types/staff.php:11
+#: ../admin/post-types/staff.php:12 ../admin/post-types/statistic.php:11
+#: ../admin/post-types/statistic.php:12 ../admin/post-types/table.php:11
+#: ../admin/post-types/table.php:12 ../admin/post-types/team.php:11
+#: ../admin/post-types/team.php:12 ../admin/terms/league.php:15
+#: ../admin/terms/position.php:15 ../admin/terms/season.php:15
+#: ../admin/terms/venue.php:15
+msgid "No results found."
+msgstr "Inga resultat hittades."
+
+#: ../functions.php:923 ../admin/post-types/outcome.php:5
+msgid "Outcome"
+msgstr "Utfall"
+
+#: ../functions.php:947 ../admin/post-types/event.php:76
+#: ../admin/post-types/event.php:91 ../admin/post-types/event.php:106
+msgid "-- Not set --"
+msgstr "-- Ej angiven --"
+
+#: ../functions.php:975 ../functions.php:1080
+msgid "Starting Lineup"
+msgstr "Startspelare"
+
+#: ../functions.php:976 ../functions.php:1081
+msgid "Substitute"
+msgstr "Avbytare"
+
+#: ../functions.php:1000
+msgid "None"
+msgstr "Ingen"
+
+#: ../functions.php:1028
+msgid "Status"
+msgstr "Status"
+
+#: ../functions.php:1101 ../functions.php:1118
+#: ../admin/hooks/admin-menu.php:46 ../admin/post-types/column.php:6
+#: ../admin/post-types/event.php:7 ../admin/post-types/event.php:79
+#: ../admin/post-types/event.php:94 ../admin/post-types/event.php:109
+#: ../admin/post-types/list.php:6 ../admin/post-types/list.php:77
+#: ../admin/post-types/list.php:91 ../admin/post-types/list.php:106
+#: ../admin/post-types/list.php:125 ../admin/post-types/list.php:139
+#: ../admin/post-types/metric.php:6 ../admin/post-types/outcome.php:6
+#: ../admin/post-types/player.php:6 ../admin/post-types/player.php:237
+#: ../admin/post-types/result.php:6 ../admin/post-types/staff.php:6
+#: ../admin/post-types/staff.php:40 ../admin/post-types/statistic.php:6
+#: ../admin/post-types/table.php:6 ../admin/post-types/table.php:73
+#: ../admin/post-types/table.php:87 ../admin/post-types/table.php:94
+#: ../admin/post-types/team.php:6 ../admin/settings/events.php:40
+#: ../admin/settings/events.php:79 ../admin/settings/players.php:38
+#: ../admin/settings/players.php:79 ../admin/settings/tables.php:44
+#: ../admin/terms/league.php:10 ../admin/terms/position.php:10
+#: ../admin/terms/season.php:10 ../admin/terms/venue.php:10
+#: ../admin/widgets/countdown.php:51 ../admin/widgets/league-table.php:52
+#: ../admin/widgets/player-list.php:58 ../admin/widgets/player-list.php:101
+msgid "Add New"
+msgstr "LÃ¤gg till..."
+
+#: ../admin/hooks/admin-enqueue-scripts.php:24
+msgid "&mdash; Remove &mdash;"
+msgstr "&mdash; Ta bort &mdash;"
+
+#: ../admin/hooks/admin-menu.php:52 ../admin/post-types/player.php:37
+#: ../admin/post-types/player.php:169 ../admin/post-types/player.php:176
+#: ../admin/post-types/staff.php:55 ../admin/post-types/team.php:50
+#: ../admin/terms/league.php:4 ../admin/terms/league.php:18
+msgid "Leagues"
+msgstr "Serier"
+
+#: ../admin/hooks/admin-menu.php:58 ../admin/post-types/metric.php:33
+#: ../admin/post-types/player.php:35 ../admin/post-types/player.php:124
+#: ../admin/post-types/player.php:131 ../admin/post-types/staff.php:53
+#: ../admin/post-types/statistic.php:34 ../admin/settings/players.php:16
+#: ../admin/settings/players.php:23 ../admin/settings/players.php:57
+#: ../admin/settings/players.php:64 ../admin/terms/position.php:4
+#: ../admin/terms/position.php:18
+msgid "Positions"
+msgstr "Positioner"
+
+#: ../admin/hooks/admin-menu.php:64 ../admin/post-types/player.php:38
+#: ../admin/post-types/player.php:184 ../admin/post-types/player.php:191
+#: ../admin/post-types/staff.php:56 ../admin/post-types/team.php:51
+#: ../admin/terms/season.php:4 ../admin/terms/season.php:18
+msgid "Seasons"
+msgstr "SÃ¤songer"
+
+#: ../admin/hooks/admin-menu.php:70 ../admin/terms/venue.php:4
+#: ../admin/terms/venue.php:18
+msgid "Venues"
+msgstr "Spelplatser"
+
+#: ../admin/hooks/admin-post-thumbnail-html.php:5
+#: ../admin/hooks/admin-post-thumbnail-html.php:9
+#: ../admin/hooks/admin-post-thumbnail-html.php:13
+#: ../admin/post-types/player.php:113 ../admin/post-types/player.php:131
+#: ../admin/post-types/player.php:147 ../admin/post-types/player.php:161
+#: ../admin/post-types/player.php:176 ../admin/post-types/player.php:191
+#, php-format
+msgid "Select %s"
+msgstr "VÃ¤lj %s"
+
+#: ../admin/hooks/admin-post-thumbnail-html.php:5
+#: ../admin/hooks/admin-post-thumbnail-html.php:6
+#: ../admin/post-types/team.php:38
+msgid "Logo"
+msgstr "Emblem"
+
+#: ../admin/hooks/admin-post-thumbnail-html.php:6
+#: ../admin/hooks/admin-post-thumbnail-html.php:10
+#: ../admin/hooks/admin-post-thumbnail-html.php:14
+#, php-format
+msgid "Remove %s"
+msgstr "Ta bort %s"
+
+#: ../admin/hooks/admin-post-thumbnail-html.php:9
+#: ../admin/hooks/admin-post-thumbnail-html.php:10
+#: ../admin/hooks/admin-post-thumbnail-html.php:13
+#: ../admin/hooks/admin-post-thumbnail-html.php:14
+#: ../admin/post-types/player.php:58 ../admin/post-types/staff.php:34
+msgid "Photo"
+msgstr "Foto"
+
+#: ../admin/hooks/gettext.php:12 ../admin/hooks/gettext.php:15
+msgid "Select Logo"
+msgstr "VÃ¤lj emblem"
+
+#: ../admin/hooks/gettext.php:18
+msgid "Remove Logo"
+msgstr "Ta bort emblem"
+
+#: ../admin/hooks/gettext.php:24 ../admin/settings/settings.php:63
+#: ../admin/widgets/countdown.php:44
+msgid "(Auto)"
+msgstr "(Genereras)"
+
+#: ../admin/hooks/gettext.php:27 ../admin/hooks/gettext.php:30
+msgid "Select Photo"
+msgstr "VÃ¤lj foto"
+
+#: ../admin/hooks/gettext.php:33
+msgid "Remove Photo"
+msgstr "Ta bort foto"
+
+#: ../admin/hooks/gettext.php:36 ../admin/hooks/gettext.php:39
+#: ../admin/hooks/gettext.php:42
+#, php-format
+msgid "Date/Time: <b>%1$s</b>"
+msgstr "Datum/Tid: <b>%1$s</b>"
+
+#: ../admin/hooks/manage-posts-columns.php:3 ../admin/post-types/event.php:218
+#: ../admin/post-types/list.php:39 ../admin/post-types/player.php:39
+#: ../admin/post-types/staff.php:57 ../admin/post-types/table.php:38
+#: ../admin/post-types/team.php:52
+msgid "Views"
+msgstr "Visningar"
+
+#: ../admin/hooks/manage-posts-columns.php:83
+#: ../admin/post-types/player.php:139 ../admin/templates/player-metrics.php:26
+msgid "Current Team"
+msgstr "Nuvarande lag"
+
+#: ../admin/hooks/media-buttons.php:7
+msgid "Add Map"
+msgstr "LÃ¤gg till karta"
+
+#: ../admin/hooks/media-buttons.php:8
+msgid "Add League Table"
+msgstr "LÃ¤gg till serietabell"
+
+#: ../admin/hooks/plugin-action-links.php:3
+msgid "Settings"
+msgstr "InstÃ¤llningar"
+
+#: ../admin/hooks/post-updated-messages.php:10
+msgid "Settings saved."
+msgstr "InstÃ¤llningar sparade."
+
+#: ../admin/hooks/post-updated-messages.php:12
+msgid "View All"
+msgstr "Visa alla"
+
+#: ../admin/hooks/post-updated-messages.php:18
+#: ../admin/hooks/post-updated-messages.php:21
+#: ../admin/hooks/post-updated-messages.php:26
+msgid "Changes saved."
+msgstr "Ã„ndringar sparade."
+
+#: ../admin/hooks/post-updated-messages.php:23
+#: ../admin/hooks/post-updated-messages.php:28
+#: ../admin/hooks/post-updated-messages.php:38
+msgid "Success!"
+msgstr "Lyckades!"
+
+#: ../admin/hooks/post-updated-messages.php:30
+#: ../admin/hooks/post-updated-messages.php:36
+#: ../admin/hooks/post-updated-messages.php:40
+#, php-format
+msgid "Preview %s"
+msgstr "FÃ¶rhandsgranska %s"
+
+#: ../admin/hooks/post-updated-messages.php:33
+#, php-format
+msgid "Scheduled for: <b>%1$s</b>."
+msgstr "Planerat till: <b>%1$s</b>."
+
+#: ../admin/hooks/register-activation-hook.php:8
+msgid "League Manager"
+msgstr "Serieredigerare"
+
+#: ../admin/hooks/register-activation-hook.php:84
+msgid "Team Manager"
+msgstr "Lagredigerare"
+
+#: ../admin/hooks/register-activation-hook.php:129
+#: ../admin/post-types/event.php:137 ../admin/post-types/staff.php:4
+#: ../admin/post-types/staff.php:5 ../admin/post-types/staff.php:15
+msgid "Staff"
+msgstr "Personal"
+
+#: ../admin/hooks/restrict-manage-posts.php:8
+msgid "Show all positions"
+msgstr "Visa alla positioner"
+
+#: ../admin/hooks/restrict-manage-posts.php:18
+msgid "Show all leagues"
+msgstr "Visa alla serier"
+
+#: ../admin/hooks/restrict-manage-posts.php:28
+msgid "Show all seasons"
+msgstr "Visa alla sÃ¤songer"
+
+#: ../admin/hooks/restrict-manage-posts.php:40
+msgid "Show all teams"
+msgstr "Visa alla lag"
+
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:46
+msgid "days"
+msgstr "dagar"
+
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:47
+msgid "hrs"
+msgstr "tim"
+
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:48
+msgid "mins"
+msgstr "min"
+
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:49
+msgid "secs"
+msgstr "sek"
+
+#: ../admin/hooks/wp-insert-post-data.php:13
+msgid "vs"
+msgstr "-"
+
+#: ../admin/includes/notice-install.php:5
+msgid "<strong>Welcome to SportsPress</strong> &#8211; Get Started"
+msgstr "<strong>WÃ¤lkommen till SportsPress</strong> &#8211; Kom igÃ¥ng"
+
+#: ../admin/includes/notice-install.php:7
+msgid "Go to SportsPress Settings"
+msgstr "Till Sportpress-instÃ¤llingarna"
+
+#: ../admin/includes/notice-install.php:8
+msgid "Skip setup"
+msgstr "Hoppa Ã¶ver"
+
+#: ../admin/includes/notice-theme-support.php:5
+msgid ""
+"<strong>Your theme does not declare SportsPress support</strong> &#8211; if "
+"you encounter layout issues please read our integration guide or choose a "
+"SportsPress theme :)"
+msgstr ""
+"<strong>Ditt tema stÃ¶der kanske inte SportsPress</strong> &#8211; om du "
+"stÃ¶ter pÃ¥ layout-problem, var god lÃ¤s vÃ¥r integrationsguide eller vÃ¤l ett "
+"Sportpress-tema :)"
+
+#: ../admin/includes/notice-theme-support.php:7
+msgid "Theme Integration Guide"
+msgstr "Integrationsguide fÃ¶r Teman"
+
+#: ../admin/includes/notice-theme-support.php:8
+msgid "Hide this notice"
+msgstr "GÃ¶m notis"
+
+#: ../admin/post-types/column.php:5
+msgid "Column"
+msgstr "Kolumn"
+
+#: ../admin/post-types/column.php:8 ../admin/post-types/event.php:9
+#: ../admin/post-types/list.php:8 ../admin/post-types/metric.php:8
+#: ../admin/post-types/outcome.php:8 ../admin/post-types/player.php:8
+#: ../admin/post-types/result.php:8 ../admin/post-types/staff.php:8
+#: ../admin/post-types/statistic.php:8 ../admin/post-types/table.php:8
+#: ../admin/post-types/team.php:8
+msgid "New"
+msgstr "Ny"
+
+#: ../admin/post-types/column.php:9 ../admin/post-types/event.php:10
+#: ../admin/post-types/list.php:9 ../admin/post-types/metric.php:9
+#: ../admin/post-types/outcome.php:9 ../admin/post-types/player.php:9
+#: ../admin/post-types/result.php:9 ../admin/post-types/staff.php:9
+#: ../admin/post-types/statistic.php:9 ../admin/post-types/table.php:9
+#: ../admin/post-types/team.php:9 ../admin/terms/league.php:8
+#: ../admin/terms/position.php:8 ../admin/terms/season.php:8
+#: ../admin/terms/venue.php:8
+msgid "View"
+msgstr "Visa"
+
+#: ../admin/post-types/column.php:10 ../admin/post-types/event.php:11
+#: ../admin/post-types/list.php:10 ../admin/post-types/metric.php:10
+#: ../admin/post-types/outcome.php:10 ../admin/post-types/player.php:10
+#: ../admin/post-types/result.php:10 ../admin/post-types/staff.php:10
+#: ../admin/post-types/statistic.php:10 ../admin/post-types/table.php:10
+#: ../admin/post-types/team.php:10 ../admin/terms/league.php:14
+#: ../admin/terms/position.php:14 ../admin/terms/season.php:14
+#: ../admin/terms/venue.php:14
+msgid "Search"
+msgstr "SÃ¶k"
+
+#: ../admin/post-types/column.php:33 ../admin/post-types/metric.php:32
+#: ../admin/post-types/outcome.php:33 ../admin/post-types/result.php:33
+#: ../admin/post-types/statistic.php:33 ../admin/settings/events.php:20
+#: ../admin/settings/events.php:26 ../admin/settings/events.php:59
+#: ../admin/settings/events.php:65 ../admin/settings/players.php:15
+#: ../admin/settings/players.php:22 ../admin/settings/players.php:56
+#: ../admin/settings/players.php:63 ../admin/settings/tables.php:15
+#: ../admin/settings/tables.php:24
+msgid "Label"
+msgstr "Etikett"
+
+#: ../admin/post-types/column.php:34 ../admin/post-types/column.php:56
+#: ../admin/post-types/outcome.php:34 ../admin/post-types/outcome.php:46
+#: ../admin/post-types/result.php:34 ../admin/post-types/result.php:47
+#: ../admin/settings/events.php:21 ../admin/settings/events.php:27
+#: ../admin/settings/events.php:60 ../admin/settings/events.php:66
+#: ../admin/settings/tables.php:16 ../admin/settings/tables.php:25
+msgid "Key"
+msgstr "Nyckel"
+
+#: ../admin/post-types/column.php:35 ../admin/post-types/column.php:60
+#: ../admin/settings/tables.php:17 ../admin/settings/tables.php:26
+msgid "Equation"
+msgstr "Ekvation"
+
+#: ../admin/post-types/column.php:36 ../admin/post-types/column.php:68
+#: ../admin/settings/tables.php:18 ../admin/settings/tables.php:27
+msgid "Rounding"
+msgstr "Avrundning"
+
+#: ../admin/post-types/column.php:37 ../admin/post-types/column.php:72
+#: ../admin/settings/tables.php:19 ../admin/settings/tables.php:28
+msgid "Sort Order"
+msgstr "Sorteringsordning"
+
+#: ../admin/post-types/column.php:44 ../admin/post-types/event.php:50
+#: ../admin/post-types/list.php:56 ../admin/post-types/outcome.php:41
+#: ../admin/post-types/player.php:56 ../admin/post-types/result.php:41
+#: ../admin/post-types/statistic.php:42 ../admin/post-types/table.php:55
+#: ../admin/templates/event-details.php:25
+msgid "Details"
+msgstr "Detaljer"
+
+#: ../admin/post-types/column.php:76
+msgid "Disable"
+msgstr "Inaktivera"
+
+#: ../admin/post-types/column.php:88 ../admin/post-types/list.php:133
+#: ../admin/widgets/player-list.php:109
+msgid "Descending"
+msgstr "Sjunkande"
+
+#: ../admin/post-types/column.php:88 ../admin/post-types/list.php:132
+#: ../admin/widgets/player-list.php:108
+msgid "Ascending"
+msgstr "Stigande"
+
+#: ../admin/post-types/event.php:4
+msgid "Schedule"
+msgstr "Spelschema"
+
+#: ../admin/post-types/event.php:5 ../admin/post-types/event.php:49
+#: ../admin/post-types/event.php:212 ../admin/widgets/countdown.php:37
+msgid "Event"
+msgstr "Evenemang"
+
+#: ../admin/post-types/event.php:51 ../admin/post-types/event.php:213
+#: ../admin/post-types/player.php:36 ../admin/post-types/player.php:161
+#: ../admin/post-types/staff.php:35 ../admin/post-types/staff.php:54
+#: ../admin/post-types/table.php:37 ../admin/post-types/table.php:49
+#: ../admin/post-types/table.php:91 ../admin/post-types/team.php:4
+#: ../admin/post-types/team.php:16
+msgid "Teams"
+msgstr "Lag"
+
+#: ../admin/post-types/event.php:58 ../admin/post-types/player.php:61
+#: ../admin/post-types/statistic.php:4 ../admin/post-types/statistic.php:15
+#: ../admin/settings/players.php:52
+msgid "Statistics"
+msgstr "Statistik"
+
+#: ../admin/post-types/event.php:59
+msgid "Article"
+msgstr "Artikel"
+
+#: ../admin/post-types/event.php:68 ../admin/post-types/event.php:214
+#: ../admin/post-types/list.php:36 ../admin/post-types/list.php:67
+#: ../admin/post-types/table.php:35 ../admin/post-types/table.php:63
+#: ../admin/templates/event-details.php:17 ../admin/terms/league.php:5
+msgid "League"
+msgstr "Serie"
+
+#: ../admin/post-types/event.php:98 ../admin/post-types/event.php:216
+#: ../admin/templates/event-venue.php:24 ../admin/terms/venue.php:5
+msgid "Venue"
+msgstr "Spelplats"
+
+#: ../admin/post-types/event.php:128
+msgid "Remove"
+msgstr "Ta bort"
+
+#: ../admin/post-types/event.php:136 ../admin/post-types/list.php:35
+#: ../admin/post-types/list.php:50 ../admin/post-types/list.php:136
+#: ../admin/post-types/player.php:4 ../admin/post-types/player.php:15
+#: ../admin/settings/settings.php:13
+msgid "Players"
+msgstr "Spelare"
+
+#: ../admin/post-types/event.php:152
+msgid "&mdash; Add &mdash;"
+msgstr "&mdash; LÃ¤gg till &mdash;"
+
+#: ../admin/post-types/event.php:217
+msgid "Date/Time"
+msgstr "Datum/Tid"
+
+#: ../admin/post-types/list.php:4 ../admin/post-types/list.php:15
+msgid "Player Lists"
+msgstr "Spelarlistor"
+
+#: ../admin/post-types/list.php:5 ../admin/post-types/list.php:53
+#: ../admin/widgets/player-list.php:47
+msgid "Player List"
+msgstr "Spelarlista"
+
+#: ../admin/post-types/list.php:34 ../admin/post-types/table.php:34
+msgid "Title"
+msgstr "Titel"
+
+#: ../admin/post-types/list.php:101 ../admin/terms/league.php:6
+#: ../admin/terms/position.php:6 ../admin/terms/season.php:6
+#: ../admin/terms/venue.php:6
+msgid "All"
+msgstr "Allt"
+
+#: ../admin/post-types/list.php:110 ../admin/widgets/player-list.php:84
+msgid "Sort by:"
+msgstr "Sortera efter:"
+
+#: ../admin/post-types/list.php:115 ../admin/post-types/player.php:109
+#: ../admin/templates/player-metrics.php:19
+#: ../admin/widgets/player-list.php:89
+msgid "Number"
+msgstr "Nummer"
+
+#: ../admin/post-types/list.php:116 ../admin/post-types/player.php:34
+#: ../admin/post-types/staff.php:52 ../admin/terms/league.php:11
+#: ../admin/terms/position.php:11 ../admin/terms/season.php:11
+#: ../admin/terms/venue.php:11 ../admin/widgets/player-list.php:90
+msgid "Name"
+msgstr "Namn"
+
+#: ../admin/post-types/list.php:129 ../admin/widgets/player-list.php:106
+msgid "Sort Order:"
+msgstr "Sorteringordning:"
+
+#: ../admin/post-types/metric.php:4 ../admin/post-types/metric.php:15
+#: ../admin/post-types/player.php:57 ../admin/settings/players.php:11
+msgid "Metrics"
+msgstr "Metriker"
+
+#: ../admin/post-types/metric.php:5
+msgid "Metric"
+msgstr "Metrik"
+
+#: ../admin/post-types/player.php:55 ../admin/post-types/staff.php:32
+#: ../admin/post-types/team.php:36
+msgid "Publish"
+msgstr "Publicera"
+
+#: ../admin/post-types/player.php:64 ../admin/post-types/staff.php:36
+msgid "Profile"
+msgstr "Profil"
+
+#: ../admin/post-types/player.php:112 ../admin/post-types/player.php:113
+#: ../admin/templates/player-metrics.php:21
+msgid "Nationality"
+msgstr "Nationalitet"
+
+#: ../admin/post-types/player.php:154 ../admin/templates/player-metrics.php:33
+msgid "Past Teams"
+msgstr "Tidigare lag"
+
+#: ../admin/post-types/result.php:5
+msgid "Result"
+msgstr "Resultat"
+
+#: ../admin/post-types/statistic.php:5
+msgid "Statistic"
+msgstr "Statistik"
+
+#: ../admin/post-types/statistic.php:35 ../admin/post-types/statistic.php:48
+#: ../admin/settings/players.php:58 ../admin/settings/players.php:65
+msgid "Calculate"
+msgstr "RÃ¤kna ut"
+
+#: ../admin/post-types/table.php:4 ../admin/post-types/table.php:15
+#: ../admin/settings/settings.php:12
+msgid "League Tables"
+msgstr "Serietabellen"
+
+#: ../admin/post-types/table.php:5 ../admin/post-types/table.php:52
+#: ../admin/widgets/league-table.php:41
+msgid "League Table"
+msgstr "Serietabell"
+
+#: ../admin/post-types/team.php:13 ../admin/terms/league.php:13
+#: ../admin/terms/position.php:13 ../admin/terms/season.php:13
+#: ../admin/terms/venue.php:13
+msgid "Parent:"
+msgstr "FÃ¶rÃ¤lder:"
+
+#: ../admin/settings/events.php:1
+msgid "Event Settings"
+msgstr "EvenemangsinstÃ¤llningar"
+
+#: ../admin/settings/general.php:1
+msgid "General Settings"
+msgstr "AllmÃ¤nna instÃ¤llningar"
+
+#: ../admin/settings/settings.php:10
+msgid "General"
+msgstr "Generell"
+
+#: ../admin/settings/settings.php:50
+msgid "Custom"
+msgstr "Egen"
+
+#: ../admin/settings/settings.php:52 ../admin/settings/settings.php:102
+msgid "Sport"
+msgstr "Sport"
+
+#: ../admin/settings/settings.php:124
+msgid "Main Result"
+msgstr "Huvudresultat"
+
+#: ../admin/settings/settings.php:241 ../admin/settings/settings.php:242
+msgid "SportsPress"
+msgstr "SportPress"
+
+#: ../admin/templates/event-details.php:13
+msgid "Date"
+msgstr "Datum"
+
+#. translators: Calendar caption: 1: month name, 2: 4-digit year
+#: ../admin/templates/events-calendar.php:56
+#: ../admin/templates/events-calendar.php:83
+#: ../admin/templates/events-calendar.php:91
+#, php-format
+msgctxt "calendar caption"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: ../admin/templates/league-table.php:27
+msgid "Pos"
+msgstr "Pos"
+
+#: ../admin/templates/player-list.php:46
+msgid "Rank"
+msgstr "Rank"
+
+#: ../admin/terms/league.php:9 ../admin/terms/position.php:9
+#: ../admin/terms/season.php:9 ../admin/terms/venue.php:9
+msgid "Update"
+msgstr "Uppdatera"
+
+#: ../admin/terms/league.php:12 ../admin/terms/position.php:12
+#: ../admin/terms/season.php:12 ../admin/terms/venue.php:12
+msgid "Parent"
+msgstr "FÃ¶rÃ¤lder"
+
+#: ../admin/terms/position.php:5
+msgid "Position"
+msgstr "Position"
+
+#: ../admin/terms/venue.php:38 ../admin/terms/venue.php:85
+msgid "Address"
+msgstr "Address"
+
+#: ../admin/terms/venue.php:45
+msgid "Latitude"
+msgstr "Latitud"
+
+#: ../admin/terms/venue.php:51
+msgid "Longitude"
+msgstr "Longitud"
+
+#: ../admin/tools/importers.php:37
+msgid "SportsPress Teams (CSV)"
+msgstr "SportPress Lag (CSV)"
+
+#: ../admin/tools/importers.php:37
+msgid "Import <strong>teams</strong> from a csv file."
+msgstr "Importera <strong>lag</strong> frÃ¥n en CSV-fil."
+
+#: ../admin/tools/importers.php:38
+msgid "SportsPress Players (CSV)"
+msgstr "SportPress spelare (CSV)"
+
+#: ../admin/tools/importers.php:38
+msgid "Import <strong>players</strong> from a csv file."
+msgstr "Importera <strong>spelare</strong> frÃ¥n en CSV-fil."
+
+#: ../admin/tools/player-importer.php:192
+#: ../admin/tools/player-importer.php:232
+#: ../admin/tools/player-importer.php:247 ../admin/tools/team-importer.php:151
+#: ../admin/tools/team-importer.php:191 ../admin/tools/team-importer.php:206
+msgid "Sorry, there has been an error."
+msgstr "UrsÃ¤kta, det har uppstÃ¥tt ett fel."
+
+#: ../admin/tools/player-importer.php:193 ../admin/tools/team-importer.php:152
+msgid "The CSV is invalid."
+msgstr "CSV-filen Ã¤r ogiltlig."
+
+#: ../admin/tools/player-importer.php:204
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> players and skipped <strong>"
+"%s</strong>."
+msgstr ""
+"Importeringen fÃ¤rdig - importerade  <strong>%s</strong> spelare och "
+"ignorerade <strong>%s</strong>."
+
+#: ../admin/tools/player-importer.php:214 ../admin/tools/team-importer.php:173
+msgid "All done!"
+msgstr "Allt klart!"
+
+#: ../admin/tools/player-importer.php:214
+msgid "View Players"
+msgstr "Visa spelare"
+
+#: ../admin/tools/player-importer.php:264
+msgid "Import Players"
+msgstr "Importera spelare"
+
+#: ../admin/tools/player-importer.php:286 ../admin/tools/team-importer.php:245
+msgid ""
+"Hi there! Choose a .csv file to upload, then click \"Upload file and import"
+"\"."
+msgstr ""
+"Hej! VÃ¤l en .csv-fil att ladda upp, klicka sedan pÃ¥ \"Upload file and import"
+"\"."
+
+#: ../admin/tools/player-importer.php:288
+#, php-format
+msgid ""
+"Players need to be defined with columns in a specific order (7 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+"Spelare mÃ¥ste definieras med kolumner i en sÃ¤rskild ordning (7 kolumner). <a "
+"href=\"%s\">Ladda ner exempel</a>."
+
+#: ../admin/tools/player-importer.php:296 ../admin/tools/team-importer.php:255
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr "Innan du kan ladda upp din importfil mÃ¥ste fÃ¶ljande fel Ã¥tgÃ¤rdas:"
+
+#: ../admin/tools/player-importer.php:305 ../admin/tools/team-importer.php:264
+msgid "Choose a file from your computer:"
+msgstr "VÃ¤lj en fil frÃ¥n dator:"
+
+#: ../admin/tools/player-importer.php:311 ../admin/tools/team-importer.php:270
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Maximal storlek: %s"
+
+#: ../admin/tools/player-importer.php:316 ../admin/tools/team-importer.php:275
+msgid "OR enter path to file:"
+msgstr "ELLER skriv sÃ¶kvÃ¤g till filen:"
+
+#: ../admin/tools/player-importer.php:323 ../admin/tools/team-importer.php:282
+msgid "Delimiter"
+msgstr "AvgrÃ¤nsare"
+
+#: ../admin/tools/player-importer.php:329 ../admin/tools/team-importer.php:288
+msgid "Upload file and import"
+msgstr "Ladda upp fil och importera"
+
+#: ../admin/tools/team-importer.php:163
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
+"strong>."
+msgstr ""
+"Import fÃ¤rdig - importerade <strong>%s</strong> lag och ignorerade <strong>"
+"%s</strong>."
+
+#: ../admin/tools/team-importer.php:173
+msgid "View Teams"
+msgstr "Visa lag"
+
+#: ../admin/tools/team-importer.php:223
+msgid "Import Teams"
+msgstr "Importera lag"
+
+#: ../admin/tools/team-importer.php:247
+#, php-format
+msgid ""
+"Teams need to be defined with columns in a specific order (3 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+"Spelare mÃ¥ste definieras med kolumner i en sÃ¤rskild ordning (3 kolumner). <a "
+"href=\"%s\">Ladda ner exempel</a>."
+
+#: ../admin/widgets/countdown.php:5
+msgid "A clock that counts down to an upcoming event."
+msgstr "En nedrÃ¤kning  till kommande evenemang."
+
+#: ../admin/widgets/countdown.php:6
+msgid "SportsPress Countdown"
+msgstr "SportPress nedrÃ¤kning"
+
+#: ../admin/widgets/countdown.php:34 ../admin/widgets/events-calendar.php:32
+#: ../admin/widgets/league-table.php:38 ../admin/widgets/player-list.php:44
+msgid "Title:"
+msgstr "Titel:"
+
+#: ../admin/widgets/countdown.php:37 ../admin/widgets/league-table.php:41
+#: ../admin/widgets/player-list.php:47
+#, php-format
+msgid "Select %s:"
+msgstr "VÃ¤lj %s:"
+
+#: ../admin/widgets/countdown.php:57
+msgid "Display league"
+msgstr "Visa serie"
+
+#: ../admin/widgets/events-calendar.php:5
+msgid "A calendar of events."
+msgstr "Evenemangskalender."
+
+#: ../admin/widgets/events-calendar.php:6
+msgid "SportsPress Events Calendar"
+msgstr "SportPress evenemangskalender"
+
+#: ../admin/widgets/league-table.php:5
+msgid "Display a league table."
+msgstr "Visa en serietabell"
+
+#: ../admin/widgets/league-table.php:6
+msgid "SportsPress League Table"
+msgstr "SportPress serietabell"
+
+#: ../admin/widgets/league-table.php:58
+msgid "Columns:"
+msgstr "Kolumner:"
+
+#: ../admin/widgets/player-list.php:5
+msgid "Display a list of players."
+msgstr "Visa en spelarlista"
+
+#: ../admin/widgets/player-list.php:6
+msgid "SportsPress Player List"
+msgstr "SportPress spelarlista"
+
+#: ../admin/widgets/player-list.php:64
+msgid "Statistics:"
+msgstr "Statistik:"
+
+#: ../admin/widgets/player-list.php:88
+msgid "Default"
+msgstr "Standard"
+
+#: ../presets/sports/baseball.php:5
+msgid "Baseball"
+msgstr "Baseball"
+
+#: ../presets/sports/basketball.php:5
+msgid "Basketball"
+msgstr "Basket"
+
+#: ../presets/sports/cricket.php:5
+msgid "Cricket"
+msgstr "Cricket"
+
+#: ../presets/sports/football.php:5
+msgid "American Football"
+msgstr "Amerikansk fotboll"
+
+#: ../presets/sports/footy.php:5
+msgid "Australian Rules Football"
+msgstr "Australiensisk fotboll"
+
+#: ../presets/sports/gaming.php:5
+msgid "Competitive Gaming"
+msgstr "E-sport"
+
+#: ../presets/sports/golf.php:5
+msgid "Golf"
+msgstr "Golf"
+
+#: ../presets/sports/hockey.php:5
+msgid "Hockey"
+msgstr "Ishockey"
+
+#: ../presets/sports/racing.php:5
+msgid "Racing"
+msgstr "Racing"
+
+#: ../presets/sports/rugby.php:5
+msgid "Rugby"
+msgstr "Rugby"
+
+#: ../presets/sports/soccer.php:5
+msgid "Soccer (Association Football)"
+msgstr "Fotboll"
+
+#~ msgid "%1$s %2$s"
+#~ msgstr "%1$s %2$s"
+
+#~ msgid "-- Not Set --"
+#~ msgstr "-- Pas rÃ©glÃ© --"
+
+#~ msgid "Points"
+#~ msgstr "ç‚¹æ•°"
+
+#~ msgid "Bonus"
+#~ msgstr "ãƒœãƒ¼ãƒŠã‚¹"
+
+#~ msgid "Height"
+#~ msgstr "èº«é•·"
+
+#~ msgid "Weight"
+#~ msgstr "ä½“é‡"
+
+#, fuzzy
+#~ msgid "Conversions"
+#~ msgstr "ãƒã‚¸ã‚·ãƒ§ãƒ³"
+
+#, fuzzy
+#~ msgid "Drop Goals"
+#~ msgstr "å¾—ç‚¹"
+
+#~ msgid "Goals"
+#~ msgstr "å¾—ç‚¹"
+
+#~ msgid "Assists"
+#~ msgstr "ã‚¢ã‚·ã‚¹ãƒˆ"
+
+#~ msgid "Yellow Cards"
+#~ msgstr "è­¦å‘Š"
+
+#~ msgid "Red Cards"
+#~ msgstr "é€€å ´"
+
+#~ msgid "#"
+#~ msgstr "#"
+
+#~ msgid "Handball"
+#~ msgstr "ãƒãƒ³ãƒ‰ãƒœãƒ¼ãƒ«"
+
+#~ msgid "Swimming"
+#~ msgstr "æ°´æ³³"
+
+#~ msgid "Tennis"
+#~ msgstr "ãƒ†ãƒ‹ã‚¹"
+
+#~ msgid "Volleyball"
+#~ msgstr "ãƒãƒ¬ãƒ¼ãƒœãƒ¼ãƒ«"
+
+#~ msgid "Appearances"
+#~ msgstr "å‡ºå ´"
+
+#~ msgid "table columns"
+#~ msgstr "é †ä½è¡¨åˆ—"
+
+#~ msgid "Format"
+#~ msgstr "ãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆ"
+
+#, fuzzy
+#~ msgid "player statistics"
+#~ msgstr "é¸æ‰‹åé‘‘"
+
+#~ msgid "Configure"
+#~ msgstr "è¨­å®š"
+
+#~ msgid "Joined"
+#~ msgstr "å…¥å›£æ—¥"
