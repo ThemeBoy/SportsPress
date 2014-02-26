@@ -1,5 +1,5 @@
 === SportsPress - automated league statistics ===
-Contributors: themeboy
+Contributors: ThemeBoy, aylaview, jenszackrisson
 Tags: sports, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
@@ -143,6 +143,11 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 9. SportsPress Status dashboard widget.
 
 == Changelog ==
+
+= 0.4.1 =
+* Tweak - Activate checkbox when all players are added to player list.
+* Fix - Function date_diff added for PHP < 5.3.
+* Localization - Swedish translation by jenszackrisson.
 
 = 0.4 =
 * Feature - SportsPress Status dashboard widget added to display number of events and countdown in admin.
