@@ -1,5 +1,5 @@
 === SportsPress - automated league statistics ===
-Contributors: ThemeBoy, aylaview, jenszackrisson
+Contributors: ThemeBoy
 Tags: sports, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8

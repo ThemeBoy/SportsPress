@@ -1971,7 +1971,7 @@ if ( !function_exists( 'sportspress_get_player_list_data' ) ) {
 			$placeholders[ $player_id ] = array( 'eventsplayed' => 0 );
 
 			// Add static statistics to placeholders
-			if ( array_key_exists( $league_id, $static ) && array_key_exists( $div_id, $static[ $league_id ] ) ):
+			if ( is_array( $static ) && array_key_exists( $league_id, $static ) && array_key_exists( $div_id, $static[ $league_id ] ) ):
 				$placeholders[ $player_id ] = array_merge( $placeholders[ $player_id ], $static[ $league_id ][ $div_id ] );
 			endif;
 		endforeach;
