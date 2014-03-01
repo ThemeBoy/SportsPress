@@ -24,7 +24,6 @@ define( 'SPORTSPRESS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'SPORTSPRESS_PLUGIN_FILE', __FILE__ );
 
 // Libraries
-require_once dirname( __FILE__ ) . '/lib/fallbacks/date-diff.php' ;
 require_once dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
 
 // Globals
