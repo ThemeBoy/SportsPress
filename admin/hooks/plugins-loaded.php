@@ -3,13 +3,7 @@ function sportspress_plugins_loaded() {
 
     // Load plugin textdomain
 	if ( function_exists( 'load_plugin_textdomain' ) ) {
-
-		// SportsPress
     	load_plugin_textdomain ( 'sportspress', false, dirname( SPORTSPRESS_PLUGIN_BASENAME ) . '/languages/' );
-
-    	// Countries
-    	load_plugin_textdomain ( 'countries', false, dirname( SPORTSPRESS_PLUGIN_BASENAME ) . '/languages/' );
-
     }
 	
     // Add image sizes

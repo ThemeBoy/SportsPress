@@ -1,150 +1,157 @@
+#
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: SportsPress 0.4\n"
+"Project-Id-Version: SportsPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-21 15:18+1000\n"
-"PO-Revision-Date: 2014-02-28 20:56+1000\n"
-"Last-Translator: ThemeBoy <translate@themeboy.com>\n"
-"Language-Team: ThemeBoy <translate@themeboy.com>\n"
-"Language: en_US\n"
+"POT-Creation-Date: 2014-03-02 13:27+1000\n"
+"PO-Revision-Date: 2014-03-02 15:04+1000\n"
+"Last-Translator: ThemeBoy <support@themeboy.com>\n"
+"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/"
+"sportspress/language/sv_SE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sv_SE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: -1,75,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.6.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Bookmarks: -1,75,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../functions.php:74
+#: ../functions.php:164
 msgid "1 view"
 msgstr "1 visning"
 
-#: ../functions.php:76
+#: ../functions.php:166
 #, php-format
 msgid "%s views"
 msgstr "%s visningar"
 
-#: ../functions.php:101
+#: ../functions.php:191
 msgid "Scheduled"
 msgstr "Schemalagt"
 
-#: ../functions.php:103 ../functions.php:533 ../functions.php:536
-#: ../functions.php:1996 ../functions.php:2198 ../functions.php:2333
+#: ../functions.php:193 ../functions.php:624 ../functions.php:627
+#: ../functions.php:2087 ../functions.php:2289 ../functions.php:2424
 #: ../admin/post-types/list.php:117 ../admin/widgets/player-list.php:78
 #: ../admin/widgets/player-list.php:91
 msgid "Played"
 msgstr "Spelad"
 
-#: ../functions.php:105
+#: ../functions.php:195
 msgid "Draft"
 msgstr "Utkast"
 
-#: ../functions.php:107
+#: ../functions.php:197
 msgid "Pending Review"
 msgstr "VÃ¤ntar pÃ¥ granskning"
 
-#: ../functions.php:109 ../admin/hooks/post-updated-messages.php:34
+#: ../functions.php:199 ../admin/hooks/post-updated-messages.php:34
 msgid "M j, Y @ G:i"
 msgstr "j M, Y @ G:i"
 
-#: ../functions.php:130 ../functions.php:134 ../functions.php:467
-#: ../functions.php:1059 ../admin/templates/event-players.php:82
+#: ../functions.php:220 ../functions.php:224 ../functions.php:558
+#: ../functions.php:1150 ../admin/templates/event-players.php:82
 msgid "Total"
 msgstr "Summa"
 
-#: ../functions.php:130 ../functions.php:468
+#: ../functions.php:220 ../functions.php:559
 msgid "Average"
 msgstr "Medel"
 
-#: ../functions.php:172
+#: ../functions.php:262
 msgid "Integer"
 msgstr "Heltal"
 
-#: ../functions.php:173
+#: ../functions.php:263
 msgid "Decimal"
 msgstr "Decimal"
 
-#: ../functions.php:174 ../admin/templates/event-details.php:13
+#: ../functions.php:264 ../admin/templates/event-details.php:13
 msgid "Time"
 msgstr "Tid"
 
-#: ../functions.php:175
+#: ../functions.php:265
 msgid "Custom Field"
 msgstr "Eget fÃ¤lt"
 
-#: ../functions.php:396 ../functions.php:449
+#: ../functions.php:486 ../functions.php:540
 msgid "(no title)"
 msgstr "(ingen titel)"
 
-#: ../functions.php:533 ../functions.php:536 ../admin/post-types/event.php:6
+#: ../functions.php:503
+msgid "Select All"
+msgstr ""
+
+#: ../functions.php:624 ../functions.php:627 ../admin/post-types/event.php:6
 #: ../admin/post-types/event.php:16 ../admin/settings/settings.php:11
 msgid "Events"
 msgstr "Evenemang"
 
-#: ../functions.php:533
+#: ../functions.php:624
 msgid "Attended"
 msgstr "BesÃ¶kt"
 
-#: ../functions.php:539 ../admin/post-types/event.php:53
+#: ../functions.php:630 ../admin/post-types/event.php:53
 #: ../admin/post-types/result.php:4 ../admin/post-types/result.php:15
 #: ../admin/settings/events.php:16 ../admin/templates/event-results.php:55
 msgid "Results"
 msgstr "Resultat"
 
-#: ../functions.php:542 ../functions.php:543 ../functions.php:544
-#: ../functions.php:545 ../admin/post-types/outcome.php:4
+#: ../functions.php:633 ../functions.php:634 ../functions.php:635
+#: ../functions.php:636 ../admin/post-types/outcome.php:4
 #: ../admin/post-types/outcome.php:15 ../admin/settings/events.php:55
 msgid "Outcomes"
 msgstr "Utfall"
 
-#: ../functions.php:543
+#: ../functions.php:634
 msgid "Streak"
 msgstr "Svit"
 
-#: ../functions.php:544
+#: ../functions.php:635
 msgid "Last 5"
 msgstr "Sista 5"
 
-#: ../functions.php:545
+#: ../functions.php:636
 msgid "Last 10"
 msgstr "Sista 10"
 
-#: ../functions.php:548 ../admin/post-types/column.php:4
+#: ../functions.php:639 ../admin/post-types/column.php:4
 #: ../admin/post-types/column.php:15 ../admin/post-types/team.php:41
 #: ../admin/settings/tables.php:11
 msgid "Columns"
 msgstr "Kolumner"
 
-#: ../functions.php:551
+#: ../functions.php:642
 msgid "Player Statistics"
 msgstr "Spelarstatistik"
 
-#: ../functions.php:560
+#: ../functions.php:651
 msgid "Operators"
 msgstr "OperatÃ¶rer"
 
-#: ../functions.php:573
+#: ../functions.php:664
 msgid "Constants"
 msgstr "Konstanter"
 
-#: ../functions.php:577 ../admin/settings/settings.php:46
+#: ../functions.php:668 ../admin/settings/settings.php:46
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; VÃ¤lj &mdash;"
 
-#: ../functions.php:690 ../functions.php:844 ../functions.php:919
-#: ../functions.php:1804 ../functions.php:2333 ../admin/hooks/gettext.php:9
+#: ../functions.php:781 ../functions.php:935 ../functions.php:1010
+#: ../functions.php:1895 ../functions.php:2424 ../admin/hooks/gettext.php:9
 #: ../admin/post-types/list.php:38 ../admin/post-types/list.php:95
 #: ../admin/post-types/player.php:147 ../admin/post-types/team.php:5
 #: ../admin/post-types/team.php:49 ../admin/templates/event-results.php:59
 msgid "Team"
 msgstr "Lag"
 
-#: ../functions.php:712 ../admin/post-types/column.php:7
+#: ../functions.php:803 ../admin/post-types/column.php:7
 #: ../admin/post-types/event.php:8 ../admin/post-types/list.php:7
 #: ../admin/post-types/metric.php:7 ../admin/post-types/outcome.php:7
 #: ../admin/post-types/player.php:7 ../admin/post-types/result.php:7
@@ -158,22 +165,22 @@ msgstr "Lag"
 msgid "Edit"
 msgstr "Redigera"
 
-#: ../functions.php:716
+#: ../functions.php:807
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../functions.php:717
+#: ../functions.php:808
 msgid "Save"
 msgstr "Spara"
 
-#: ../functions.php:746 ../functions.php:1024 ../functions.php:2092
-#: ../admin/hooks/register-activation-hook.php:147
+#: ../functions.php:837 ../functions.php:1115 ../functions.php:2183
+#: ../admin/hooks/register-activation-hook.php:149
 #: ../admin/post-types/player.php:5 ../admin/templates/event-players.php:28
 msgid "Player"
 msgstr "Spelare"
 
-#: ../functions.php:791 ../functions.php:843 ../functions.php:1535
-#: ../functions.php:2333 ../admin/post-types/event.php:83
+#: ../functions.php:882 ../functions.php:934 ../functions.php:1626
+#: ../functions.php:2424 ../admin/post-types/event.php:83
 #: ../admin/post-types/event.php:215 ../admin/post-types/list.php:37
 #: ../admin/post-types/list.php:81 ../admin/post-types/table.php:36
 #: ../admin/post-types/table.php:77 ../admin/templates/event-details.php:22
@@ -181,11 +188,11 @@ msgstr "Spelare"
 msgid "Season"
 msgstr "SÃ¤song"
 
-#: ../functions.php:867
+#: ../functions.php:958
 msgid "&mdash; None &mdash;"
 msgstr "&mdash; Ingen &mdash;"
 
-#: ../functions.php:888 ../admin/post-types/column.php:11
+#: ../functions.php:979 ../admin/post-types/column.php:11
 #: ../admin/post-types/column.php:12 ../admin/post-types/event.php:12
 #: ../admin/post-types/event.php:13 ../admin/post-types/list.php:11
 #: ../admin/post-types/list.php:12 ../admin/post-types/metric.php:11
@@ -202,32 +209,32 @@ msgstr "&mdash; Ingen &mdash;"
 msgid "No results found."
 msgstr "Inga resultat hittades."
 
-#: ../functions.php:923 ../admin/post-types/outcome.php:5
+#: ../functions.php:1014 ../admin/post-types/outcome.php:5
 msgid "Outcome"
 msgstr "Utfall"
 
-#: ../functions.php:947 ../admin/post-types/event.php:76
+#: ../functions.php:1038 ../admin/post-types/event.php:76
 #: ../admin/post-types/event.php:91 ../admin/post-types/event.php:106
 msgid "-- Not set --"
 msgstr "-- Ej angiven --"
 
-#: ../functions.php:975 ../functions.php:1080
+#: ../functions.php:1066 ../functions.php:1171
 msgid "Starting Lineup"
 msgstr "Startspelare"
 
-#: ../functions.php:976 ../functions.php:1081
+#: ../functions.php:1067 ../functions.php:1172
 msgid "Substitute"
 msgstr "Avbytare"
 
-#: ../functions.php:1000
+#: ../functions.php:1091
 msgid "None"
 msgstr "Ingen"
 
-#: ../functions.php:1028
+#: ../functions.php:1119
 msgid "Status"
 msgstr "Status"
 
-#: ../functions.php:1101 ../functions.php:1118
+#: ../functions.php:1192 ../functions.php:1209
 #: ../admin/hooks/admin-menu.php:46 ../admin/post-types/column.php:6
 #: ../admin/post-types/event.php:7 ../admin/post-types/event.php:79
 #: ../admin/post-types/event.php:94 ../admin/post-types/event.php:109
@@ -250,9 +257,857 @@ msgstr "Status"
 msgid "Add New"
 msgstr "LÃ¤gg till..."
 
-#: ../admin/hooks/admin-enqueue-scripts.php:24
+#: ../admin/globals/continents.php:6
+msgid "Africa"
+msgstr ""
+
+#: ../admin/globals/continents.php:7
+msgid "Asia"
+msgstr ""
+
+#: ../admin/globals/continents.php:8
+msgid "Europe"
+msgstr ""
+
+#: ../admin/globals/continents.php:9
+msgid "North America"
+msgstr ""
+
+#: ../admin/globals/continents.php:10
+msgid "Oceania"
+msgstr ""
+
+#: ../admin/globals/continents.php:11
+msgid "South America"
+msgstr ""
+
+#: ../admin/globals/countries.php:6
+msgid "Andorra"
+msgstr ""
+
+#: ../admin/globals/countries.php:7
+msgid "United Arab Emirates"
+msgstr ""
+
+#: ../admin/globals/countries.php:8
+msgid "Afghanistan"
+msgstr ""
+
+#: ../admin/globals/countries.php:9
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#: ../admin/globals/countries.php:10
+msgid "Albania"
+msgstr ""
+
+#: ../admin/globals/countries.php:11
+msgid "Armenia"
+msgstr ""
+
+#: ../admin/globals/countries.php:12
+msgid "Angola"
+msgstr ""
+
+#: ../admin/globals/countries.php:13
+msgid "Argentina"
+msgstr ""
+
+#: ../admin/globals/countries.php:14
+msgid "Austria"
+msgstr ""
+
+#: ../admin/globals/countries.php:15
+msgid "Australia"
+msgstr ""
+
+#: ../admin/globals/countries.php:16
+msgid "Azerbaijan"
+msgstr ""
+
+#: ../admin/globals/countries.php:17
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: ../admin/globals/countries.php:18
+msgid "Barbados"
+msgstr ""
+
+#: ../admin/globals/countries.php:19
+msgid "Bangladesh"
+msgstr ""
+
+#: ../admin/globals/countries.php:20
+msgid "Belgium"
+msgstr ""
+
+#: ../admin/globals/countries.php:21
+msgid "Burkina Faso"
+msgstr ""
+
+#: ../admin/globals/countries.php:22
+msgid "Bulgaria"
+msgstr ""
+
+#: ../admin/globals/countries.php:23
+msgid "Bahrain"
+msgstr ""
+
+#: ../admin/globals/countries.php:24
+msgid "Burundi"
+msgstr ""
+
+#: ../admin/globals/countries.php:25
+msgid "Benin"
+msgstr ""
+
+#: ../admin/globals/countries.php:26
+msgid "Brunei"
+msgstr ""
+
+#: ../admin/globals/countries.php:27
+msgid "Bolivia"
+msgstr ""
+
+#: ../admin/globals/countries.php:28
+msgid "Brazil"
+msgstr ""
+
+#: ../admin/globals/countries.php:29
+msgid "Bahamas"
+msgstr ""
+
+#: ../admin/globals/countries.php:30
+msgid "Bhutan"
+msgstr ""
+
+#: ../admin/globals/countries.php:31
+msgid "Botswana"
+msgstr ""
+
+#: ../admin/globals/countries.php:32
+msgid "Belarus"
+msgstr ""
+
+#: ../admin/globals/countries.php:33
+msgid "Belize"
+msgstr ""
+
+#: ../admin/globals/countries.php:34
+msgid "Canada"
+msgstr ""
+
+#: ../admin/globals/countries.php:35
+msgid "Democratic Republic of the Congo"
+msgstr ""
+
+#: ../admin/globals/countries.php:36
+msgid "Central African Republic"
+msgstr ""
+
+#: ../admin/globals/countries.php:37
+msgid "Republic of the Congo"
+msgstr ""
+
+#: ../admin/globals/countries.php:38
+msgid "Switzerland"
+msgstr ""
+
+#: ../admin/globals/countries.php:39
+msgid "Cote d'Ivoire"
+msgstr ""
+
+#: ../admin/globals/countries.php:40
+msgid "Chile"
+msgstr ""
+
+#: ../admin/globals/countries.php:41
+msgid "Cameroon"
+msgstr ""
+
+#: ../admin/globals/countries.php:42
+msgid "China"
+msgstr ""
+
+#: ../admin/globals/countries.php:43
+msgid "Colombia"
+msgstr ""
+
+#: ../admin/globals/countries.php:44
+msgid "Costa Rica"
+msgstr ""
+
+#: ../admin/globals/countries.php:45
+msgid "Cuba"
+msgstr ""
+
+#: ../admin/globals/countries.php:46
+msgid "Cape Verde"
+msgstr ""
+
+#: ../admin/globals/countries.php:47
+msgid "Cyprus"
+msgstr ""
+
+#: ../admin/globals/countries.php:48
+msgid "Czech Republic"
+msgstr ""
+
+#: ../admin/globals/countries.php:49
+msgid "Germany"
+msgstr ""
+
+#: ../admin/globals/countries.php:50
+msgid "Djibouti"
+msgstr ""
+
+#: ../admin/globals/countries.php:51
+msgid "Denmark"
+msgstr ""
+
+#: ../admin/globals/countries.php:52
+msgid "Dominica"
+msgstr ""
+
+#: ../admin/globals/countries.php:53
+msgid "Dominican Republic"
+msgstr ""
+
+#: ../admin/globals/countries.php:54
+msgid "Algeria"
+msgstr ""
+
+#: ../admin/globals/countries.php:55
+msgid "Ecuador"
+msgstr ""
+
+#: ../admin/globals/countries.php:56
+msgid "Estonia"
+msgstr ""
+
+#: ../admin/globals/countries.php:57
+msgid "Egypt"
+msgstr ""
+
+#: ../admin/globals/countries.php:58
+msgid "Western Sahara"
+msgstr ""
+
+#: ../admin/globals/countries.php:59
+msgid "England"
+msgstr ""
+
+#: ../admin/globals/countries.php:60
+msgid "Eritrea"
+msgstr ""
+
+#: ../admin/globals/countries.php:61
+msgid "Spain"
+msgstr ""
+
+#: ../admin/globals/countries.php:62
+msgid "Ethiopia"
+msgstr ""
+
+#: ../admin/globals/countries.php:63
+msgid "Finland"
+msgstr ""
+
+#: ../admin/globals/countries.php:64
+msgid "Fiji"
+msgstr ""
+
+#: ../admin/globals/countries.php:65
+msgid "Micronesia"
+msgstr ""
+
+#: ../admin/globals/countries.php:66
+msgid "France"
+msgstr ""
+
+#: ../admin/globals/countries.php:67
+msgid "Gabon"
+msgstr ""
+
+#: ../admin/globals/countries.php:68
+msgid "United Kingdom"
+msgstr ""
+
+#: ../admin/globals/countries.php:69
+msgid "Grenada"
+msgstr ""
+
+#: ../admin/globals/countries.php:70
+msgid "Georgia"
+msgstr ""
+
+#: ../admin/globals/countries.php:71
+msgid "Ghana"
+msgstr ""
+
+#: ../admin/globals/countries.php:72
+msgid "Gambia"
+msgstr ""
+
+#: ../admin/globals/countries.php:73
+msgid "Guinea"
+msgstr ""
+
+#: ../admin/globals/countries.php:74
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: ../admin/globals/countries.php:75
+msgid "Greece"
+msgstr ""
+
+#: ../admin/globals/countries.php:76
+msgid "Guatemala"
+msgstr ""
+
+#: ../admin/globals/countries.php:77
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: ../admin/globals/countries.php:78
+msgid "Guyana"
+msgstr ""
+
+#: ../admin/globals/countries.php:79
+msgid "Hong Kong"
+msgstr ""
+
+#: ../admin/globals/countries.php:80
+msgid "Honduras"
+msgstr ""
+
+#: ../admin/globals/countries.php:81
+msgid "Croatia"
+msgstr ""
+
+#: ../admin/globals/countries.php:82
+msgid "Haiti"
+msgstr ""
+
+#: ../admin/globals/countries.php:83
+msgid "Hungary"
+msgstr ""
+
+#: ../admin/globals/countries.php:84
+msgid "Indonesia"
+msgstr ""
+
+#: ../admin/globals/countries.php:85
+msgid "Ireland"
+msgstr ""
+
+#: ../admin/globals/countries.php:86
+msgid "Israel"
+msgstr ""
+
+#: ../admin/globals/countries.php:87
+msgid "India"
+msgstr ""
+
+#: ../admin/globals/countries.php:88
+msgid "Iraq"
+msgstr ""
+
+#: ../admin/globals/countries.php:89
+msgid "Iran"
+msgstr ""
+
+#: ../admin/globals/countries.php:90
+msgid "Iceland"
+msgstr ""
+
+#: ../admin/globals/countries.php:91
+msgid "Italy"
+msgstr ""
+
+#: ../admin/globals/countries.php:92
+msgid "Jamaica"
+msgstr ""
+
+#: ../admin/globals/countries.php:93
+msgid "Jordan"
+msgstr ""
+
+#: ../admin/globals/countries.php:94
+msgid "Japan"
+msgstr ""
+
+#: ../admin/globals/countries.php:95
+msgid "Kenya"
+msgstr ""
+
+#: ../admin/globals/countries.php:96
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: ../admin/globals/countries.php:97
+msgid "Cambodia"
+msgstr ""
+
+#: ../admin/globals/countries.php:98
+msgid "Kiribati"
+msgstr ""
+
+#: ../admin/globals/countries.php:99
+msgid "Comoros"
+msgstr ""
+
+#: ../admin/globals/countries.php:100
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#: ../admin/globals/countries.php:101
+msgid "North Korea"
+msgstr ""
+
+#: ../admin/globals/countries.php:102
+msgid "South Korea"
+msgstr ""
+
+#: ../admin/globals/countries.php:103
+msgid "Kuwait"
+msgstr ""
+
+#: ../admin/globals/countries.php:104
+msgid "Kazakhstan"
+msgstr ""
+
+#: ../admin/globals/countries.php:105
+msgid "Laos"
+msgstr ""
+
+#: ../admin/globals/countries.php:106
+msgid "Lebanon"
+msgstr ""
+
+#: ../admin/globals/countries.php:107
+msgid "Saint Lucia"
+msgstr ""
+
+#: ../admin/globals/countries.php:108
+msgid "Liechtenstein"
+msgstr ""
+
+#: ../admin/globals/countries.php:109
+msgid "Sri Lanka"
+msgstr ""
+
+#: ../admin/globals/countries.php:110
+msgid "Liberia"
+msgstr ""
+
+#: ../admin/globals/countries.php:111
+msgid "Lesotho"
+msgstr ""
+
+#: ../admin/globals/countries.php:112
+msgid "Lithuania"
+msgstr ""
+
+#: ../admin/globals/countries.php:113
+msgid "Luxembourg"
+msgstr ""
+
+#: ../admin/globals/countries.php:114
+msgid "Latvia"
+msgstr ""
+
+#: ../admin/globals/countries.php:115
+msgid "Libya"
+msgstr ""
+
+#: ../admin/globals/countries.php:116
+msgid "Morocco"
+msgstr ""
+
+#: ../admin/globals/countries.php:117
+msgid "Monaco"
+msgstr ""
+
+#: ../admin/globals/countries.php:118
+msgid "Moldova"
+msgstr ""
+
+#: ../admin/globals/countries.php:119
+msgid "Montenegro"
+msgstr ""
+
+#: ../admin/globals/countries.php:120
+msgid "Madagascar"
+msgstr ""
+
+#: ../admin/globals/countries.php:121
+msgid "Marshall Islands"
+msgstr ""
+
+#: ../admin/globals/countries.php:122
+msgid "Macedonia"
+msgstr ""
+
+#: ../admin/globals/countries.php:123
+msgid "Mali"
+msgstr ""
+
+#: ../admin/globals/countries.php:124
+msgid "Myanmar"
+msgstr ""
+
+#: ../admin/globals/countries.php:125
+msgid "Mongolia"
+msgstr ""
+
+#: ../admin/globals/countries.php:126
+msgid "Macau"
+msgstr ""
+
+#: ../admin/globals/countries.php:127
+msgid "Mauritania"
+msgstr ""
+
+#: ../admin/globals/countries.php:128
+msgid "Malta"
+msgstr ""
+
+#: ../admin/globals/countries.php:129
+msgid "Mauritius"
+msgstr ""
+
+#: ../admin/globals/countries.php:130
+msgid "Maldives"
+msgstr ""
+
+#: ../admin/globals/countries.php:131
+msgid "Malawi"
+msgstr ""
+
+#: ../admin/globals/countries.php:132
+msgid "Mexico"
+msgstr ""
+
+#: ../admin/globals/countries.php:133
+msgid "Malaysia"
+msgstr ""
+
+#: ../admin/globals/countries.php:134
+msgid "Mozambique"
+msgstr ""
+
+#: ../admin/globals/countries.php:135
+msgid "Namibia"
+msgstr ""
+
+#: ../admin/globals/countries.php:136
+msgid "Northern Ireland"
+msgstr ""
+
+#: ../admin/globals/countries.php:137
+msgid "Niger"
+msgstr ""
+
+#: ../admin/globals/countries.php:138
+msgid "Nigeria"
+msgstr ""
+
+#: ../admin/globals/countries.php:139
+msgid "Nicaragua"
+msgstr ""
+
+#: ../admin/globals/countries.php:140
+msgid "Netherlands"
+msgstr ""
+
+#: ../admin/globals/countries.php:141
+msgid "Norway"
+msgstr ""
+
+#: ../admin/globals/countries.php:142
+msgid "Nepal"
+msgstr ""
+
+#: ../admin/globals/countries.php:143
+msgid "Nauru"
+msgstr ""
+
+#: ../admin/globals/countries.php:144
+msgid "New Zealand"
+msgstr ""
+
+#: ../admin/globals/countries.php:145
+msgid "Oman"
+msgstr ""
+
+#: ../admin/globals/countries.php:146
+msgid "Panama"
+msgstr ""
+
+#: ../admin/globals/countries.php:147
+msgid "Peru"
+msgstr ""
+
+#: ../admin/globals/countries.php:148
+msgid "Papua New Guinea"
+msgstr ""
+
+#: ../admin/globals/countries.php:149
+msgid "Philippines"
+msgstr ""
+
+#: ../admin/globals/countries.php:150
+msgid "Pakistan"
+msgstr ""
+
+#: ../admin/globals/countries.php:151
+msgid "Poland"
+msgstr ""
+
+#: ../admin/globals/countries.php:152
+msgid "Portugal"
+msgstr ""
+
+#: ../admin/globals/countries.php:153
+msgid "Palau"
+msgstr ""
+
+#: ../admin/globals/countries.php:154
+msgid "Paraguay"
+msgstr ""
+
+#: ../admin/globals/countries.php:155
+msgid "Qatar"
+msgstr ""
+
+#: ../admin/globals/countries.php:156
+msgid "Romania"
+msgstr ""
+
+#: ../admin/globals/countries.php:157
+msgid "Serbia"
+msgstr ""
+
+#: ../admin/globals/countries.php:158
+msgid "Russia"
+msgstr ""
+
+#: ../admin/globals/countries.php:159
+msgid "Rwanda"
+msgstr ""
+
+#: ../admin/globals/countries.php:160
+msgid "Saudi Arabia"
+msgstr ""
+
+#: ../admin/globals/countries.php:161
+msgid "Solomon Islands"
+msgstr ""
+
+#: ../admin/globals/countries.php:162
+msgid "Seychelles"
+msgstr ""
+
+#: ../admin/globals/countries.php:163
+msgid "Sudan"
+msgstr ""
+
+#: ../admin/globals/countries.php:164
+msgid "Sweden"
+msgstr ""
+
+#: ../admin/globals/countries.php:165
+msgid "Scotland"
+msgstr ""
+
+#: ../admin/globals/countries.php:166
+msgid "Singapore"
+msgstr ""
+
+#: ../admin/globals/countries.php:167
+msgid "Slovenia"
+msgstr ""
+
+#: ../admin/globals/countries.php:168
+msgid "Slovakia"
+msgstr ""
+
+#: ../admin/globals/countries.php:169
+msgid "Sierra Leone"
+msgstr ""
+
+#: ../admin/globals/countries.php:170
+msgid "San Marino"
+msgstr ""
+
+#: ../admin/globals/countries.php:171
+msgid "Senegal"
+msgstr ""
+
+#: ../admin/globals/countries.php:172
+msgid "Somalia"
+msgstr ""
+
+#: ../admin/globals/countries.php:173
+msgid "Suriname"
+msgstr ""
+
+#: ../admin/globals/countries.php:174
+msgid "Sao Tome and Principe"
+msgstr ""
+
+#: ../admin/globals/countries.php:175
+msgid "El Salvador"
+msgstr ""
+
+#: ../admin/globals/countries.php:176
+msgid "Swaziland"
+msgstr ""
+
+#: ../admin/globals/countries.php:177
+msgid "Chad"
+msgstr ""
+
+#: ../admin/globals/countries.php:178
+msgid "Togo"
+msgstr ""
+
+#: ../admin/globals/countries.php:179
+msgid "Thailand"
+msgstr ""
+
+#: ../admin/globals/countries.php:180
+msgid "Tajikistan"
+msgstr ""
+
+#: ../admin/globals/countries.php:181
+msgid "East Timor"
+msgstr ""
+
+#: ../admin/globals/countries.php:182
+msgid "Turkmenistan"
+msgstr ""
+
+#: ../admin/globals/countries.php:183
+msgid "Tunisia"
+msgstr ""
+
+#: ../admin/globals/countries.php:184
+msgid "Tonga"
+msgstr ""
+
+#: ../admin/globals/countries.php:185
+msgid "Turkey"
+msgstr ""
+
+#: ../admin/globals/countries.php:186
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#: ../admin/globals/countries.php:187
+msgid "Tuvalu"
+msgstr ""
+
+#: ../admin/globals/countries.php:188
+msgid "Taiwan"
+msgstr ""
+
+#: ../admin/globals/countries.php:189
+msgid "Tanzania"
+msgstr ""
+
+#: ../admin/globals/countries.php:190
+msgid "Ukraine"
+msgstr ""
+
+#: ../admin/globals/countries.php:191
+msgid "Uganda"
+msgstr ""
+
+#: ../admin/globals/countries.php:192
+msgid "United States"
+msgstr ""
+
+#: ../admin/globals/countries.php:193
+msgid "Uruguay"
+msgstr ""
+
+#: ../admin/globals/countries.php:194
+msgid "Uzbekistan"
+msgstr ""
+
+#: ../admin/globals/countries.php:195
+msgid "Vatican City"
+msgstr ""
+
+#: ../admin/globals/countries.php:196
+msgid "Saint Vincent and the Grenadines"
+msgstr ""
+
+#: ../admin/globals/countries.php:197
+msgid "Venezuela"
+msgstr ""
+
+#: ../admin/globals/countries.php:198
+msgid "Vietnam"
+msgstr ""
+
+#: ../admin/globals/countries.php:199
+msgid "Vanuatu"
+msgstr ""
+
+#: ../admin/globals/countries.php:200
+msgid "Wales"
+msgstr ""
+
+#: ../admin/globals/countries.php:201
+msgid "Samoa"
+msgstr ""
+
+#: ../admin/globals/countries.php:202
+msgid "Yemen"
+msgstr ""
+
+#: ../admin/globals/countries.php:203
+msgid "South Africa"
+msgstr ""
+
+#: ../admin/globals/countries.php:204
+msgid "Zambia"
+msgstr ""
+
+#: ../admin/globals/countries.php:205
+msgid "Zimbabwe"
+msgstr ""
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
 msgid "&mdash; Remove &mdash;"
 msgstr "&mdash; Ta bort &mdash;"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:38 ../admin/tools/dashboard.php:54
+msgid "days"
+msgstr "dagar"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:39
+msgid "hrs"
+msgstr "tim"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:40
+msgid "mins"
+msgstr "min"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:41
+msgid "secs"
+msgstr "sek"
 
 #: ../admin/hooks/admin-menu.php:52 ../admin/post-types/player.php:37
 #: ../admin/post-types/player.php:169 ../admin/post-types/player.php:176
@@ -335,12 +1190,6 @@ msgstr "VÃ¤lj foto"
 msgid "Remove Photo"
 msgstr "Ta bort foto"
 
-#: ../admin/hooks/gettext.php:36 ../admin/hooks/gettext.php:39
-#: ../admin/hooks/gettext.php:42
-#, php-format
-msgid "Date/Time: <b>%1$s</b>"
-msgstr "Datum/Tid: <b>%1$s</b>"
-
 #: ../admin/hooks/manage-posts-columns.php:3 ../admin/post-types/event.php:218
 #: ../admin/post-types/list.php:39 ../admin/post-types/player.php:39
 #: ../admin/post-types/staff.php:57 ../admin/post-types/table.php:38
@@ -401,11 +1250,11 @@ msgstr "Planerat till: <b>%1$s</b>."
 msgid "League Manager"
 msgstr "Serieredigerare"
 
-#: ../admin/hooks/register-activation-hook.php:84
+#: ../admin/hooks/register-activation-hook.php:86
 msgid "Team Manager"
 msgstr "Lagredigerare"
 
-#: ../admin/hooks/register-activation-hook.php:129
+#: ../admin/hooks/register-activation-hook.php:131
 #: ../admin/post-types/event.php:137 ../admin/post-types/staff.php:4
 #: ../admin/post-types/staff.php:5 ../admin/post-types/staff.php:15
 msgid "Staff"
@@ -426,26 +1275,6 @@ msgstr "Visa alla sÃ¤songer"
 #: ../admin/hooks/restrict-manage-posts.php:40
 msgid "Show all teams"
 msgstr "Visa alla lag"
-
-#: ../admin/hooks/wp-enqueue-scripts.php:14
-#: ../admin/templates/countdown.php:46
-msgid "days"
-msgstr "dagar"
-
-#: ../admin/hooks/wp-enqueue-scripts.php:14
-#: ../admin/templates/countdown.php:47
-msgid "hrs"
-msgstr "tim"
-
-#: ../admin/hooks/wp-enqueue-scripts.php:14
-#: ../admin/templates/countdown.php:48
-msgid "mins"
-msgstr "min"
-
-#: ../admin/hooks/wp-enqueue-scripts.php:14
-#: ../admin/templates/countdown.php:49
-msgid "secs"
-msgstr "sek"
 
 #: ../admin/hooks/wp-insert-post-data.php:13
 msgid "vs"
@@ -803,6 +1632,29 @@ msgstr "Latitud"
 msgid "Longitude"
 msgstr "Longitud"
 
+#: ../admin/tools/dashboard.php:34
+msgid "SportsPress Status"
+msgstr ""
+
+#: ../admin/tools/dashboard.php:54
+#, php-format
+msgid "<strong>%s</strong> until next event"
+msgstr ""
+
+#: ../admin/tools/dashboard.php:61
+#, php-format
+msgid "<strong>%s event</strong> scheduled"
+msgid_plural "<strong>%s events</strong> scheduled"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../admin/tools/dashboard.php:66
+#, php-format
+msgid "<strong>%s event</strong> published"
+msgid_plural "<strong>%s events</strong> published"
+msgstr[0] ""
+msgstr[1] ""
+
 #: ../admin/tools/importers.php:37
 msgid "SportsPress Teams (CSV)"
 msgstr "SportPress Lag (CSV)"
@@ -1028,70 +1880,67 @@ msgstr "Fotboll"
 #~ msgstr "%1$s %2$s"
 
 #~ msgid "-- Not Set --"
-#~ msgstr "-- Pas rÃ©glÃ© --"
+#~ msgstr "-- Pas réglé --"
 
 #~ msgid "Points"
-#~ msgstr "ç‚¹æ•°"
+#~ msgstr "点数"
 
 #~ msgid "Bonus"
-#~ msgstr "ãƒœãƒ¼ãƒŠã‚¹"
+#~ msgstr "ボーナス"
 
 #~ msgid "Height"
-#~ msgstr "èº«é•·"
+#~ msgstr "身長"
 
 #~ msgid "Weight"
-#~ msgstr "ä½“é‡"
+#~ msgstr "体重"
 
-#, fuzzy
 #~ msgid "Conversions"
-#~ msgstr "ãƒã‚¸ã‚·ãƒ§ãƒ³"
+#~ msgstr "ポジション"
 
-#, fuzzy
 #~ msgid "Drop Goals"
-#~ msgstr "å¾—ç‚¹"
+#~ msgstr "得点"
 
 #~ msgid "Goals"
-#~ msgstr "å¾—ç‚¹"
+#~ msgstr "得点"
 
 #~ msgid "Assists"
-#~ msgstr "ã‚¢ã‚·ã‚¹ãƒˆ"
+#~ msgstr "アシスト"
 
 #~ msgid "Yellow Cards"
-#~ msgstr "è­¦å‘Š"
+#~ msgstr "警告"
 
 #~ msgid "Red Cards"
-#~ msgstr "é€€å ´"
+#~ msgstr "退場"
 
 #~ msgid "#"
 #~ msgstr "#"
 
 #~ msgid "Handball"
-#~ msgstr "ãƒãƒ³ãƒ‰ãƒœãƒ¼ãƒ«"
+#~ msgstr "ハンドボール"
 
 #~ msgid "Swimming"
-#~ msgstr "æ°´æ³³"
+#~ msgstr "水泳"
 
 #~ msgid "Tennis"
-#~ msgstr "ãƒ†ãƒ‹ã‚¹"
+#~ msgstr "テニス"
 
 #~ msgid "Volleyball"
-#~ msgstr "ãƒãƒ¬ãƒ¼ãƒœãƒ¼ãƒ«"
+#~ msgstr "バレーボール"
 
 #~ msgid "Appearances"
-#~ msgstr "å‡ºå ´"
+#~ msgstr "出場"
 
 #~ msgid "table columns"
-#~ msgstr "é †ä½è¡¨åˆ—"
+#~ msgstr "順位表列"
 
 #~ msgid "Format"
-#~ msgstr "ãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆ"
+#~ msgstr "フォーマット"
 
-#, fuzzy
 #~ msgid "player statistics"
-#~ msgstr "é¸æ‰‹åé‘‘"
+#~ msgstr "選手名鑑"
 
 #~ msgid "Configure"
-#~ msgstr "è¨­å®š"
+#~ msgstr "設定"
 
 #~ msgid "Joined"
-#~ msgstr "å…¥å›£æ—¥"
+#~ msgstr "入団日"
