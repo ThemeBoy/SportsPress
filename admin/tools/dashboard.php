@@ -70,44 +70,6 @@ class SP_Admin_Dashboard {
         <?php
     }
 
-    /**
-     * Recent reviews widget
-     */
-    public function recent_reviews() {
-        global $wpdb;
-        $comments = $wpdb->get_results( "SELECT *, SUBSTRING(comment_content,1,100) AS comment_excerpt
-        FROM $wpdb->comments
-        LEFT JOIN $wpdb->posts ON ($wpdb->comments.comment_post_ID = $wpdb->posts.ID)
-        WHERE comment_approved = '1'
-        AND comment_type = ''
-        AND post_password = ''
-        AND post_type = 'product'
-        ORDER BY comment_date_gmt DESC
-        LIMIT 8" );
-
-        if ( $comments ) {
-            echo '<ul>';
-            foreach ( $comments as $comment ) {
-
-                echo '<li>';
-
-                echo get_avatar( $comment->comment_author, '32' );
-
-                $rating = get_comment_meta( $comment->comment_ID, 'rating', true );
-
-                echo '<div class="star-rating" title="' . esc_attr( $rating ) . '">
-                    <span style="width:'. ( $rating * 20 ) . '%">' . $rating . ' ' . __( 'out of 5', 'sportspress' ) . '</span></div>';
-
-                echo '<h4 class="meta"><a href="' . get_permalink( $comment->ID ) . '#comment-' . absint( $comment->comment_ID ) .'">' . esc_html__( $comment->post_title ) . '</a> ' . __( 'reviewed by', 'sportspress' ) . ' ' . esc_html( $comment->comment_author ) .'</h4>';
-                echo '<blockquote>' . wp_kses_data( $comment->comment_excerpt ) . ' [...]</blockquote></li>';
-
-            }
-            echo '</ul>';
-        } else {
-            echo '<p>' . __( 'There are no product reviews yet.', 'sportspress' ) . '</p>';
-        }
-    }
-
 }
 
 endif;
