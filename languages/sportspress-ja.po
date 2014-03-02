@@ -1,150 +1,158 @@
+#
+# Translators:
+# ThemeBoy <support@themeboy.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: SportsPress 0.4\n"
+"Project-Id-Version: SportsPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-21 14:01+1000\n"
-"PO-Revision-Date: 2014-02-24 15:40+1000\n"
-"Last-Translator: ThemeBoy <translate@themeboy.com>\n"
-"Language-Team: ThemeBoy <translate@themeboy.com>\n"
-"Language: ja\n"
+"POT-Creation-Date: 2014-03-02 13:27+1000\n"
+"PO-Revision-Date: 2014-03-02 15:03+1000\n"
+"Last-Translator: ThemeBoy <support@themeboy.com>\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/sportspress/"
+"language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: -1,75,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.6.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-Bookmarks: -1,75,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../functions.php:74
+#: ../functions.php:164
 msgid "1 view"
 msgstr "1回"
 
-#: ../functions.php:76
+#: ../functions.php:166
 #, php-format
 msgid "%s views"
 msgstr "%s回"
 
-#: ../functions.php:101
+#: ../functions.php:191
 msgid "Scheduled"
 msgstr "予約済み"
 
-#: ../functions.php:103 ../functions.php:533 ../functions.php:536
-#: ../functions.php:1996 ../functions.php:2198 ../functions.php:2333
+#: ../functions.php:193 ../functions.php:624 ../functions.php:627
+#: ../functions.php:2087 ../functions.php:2289 ../functions.php:2424
 #: ../admin/post-types/list.php:117 ../admin/widgets/player-list.php:78
 #: ../admin/widgets/player-list.php:91
 msgid "Played"
 msgstr "試合終了"
 
-#: ../functions.php:105
+#: ../functions.php:195
 msgid "Draft"
 msgstr "下書き"
 
-#: ../functions.php:107
+#: ../functions.php:197
 msgid "Pending Review"
 msgstr "レビュー待ち"
 
-#: ../functions.php:109 ../admin/hooks/post-updated-messages.php:34
+#: ../functions.php:199 ../admin/hooks/post-updated-messages.php:34
 msgid "M j, Y @ G:i"
 msgstr "Y年n月j日 @ G:i"
 
-#: ../functions.php:130 ../functions.php:134 ../functions.php:467
-#: ../functions.php:1059 ../admin/templates/event-players.php:82
+#: ../functions.php:220 ../functions.php:224 ../functions.php:558
+#: ../functions.php:1150 ../admin/templates/event-players.php:82
 msgid "Total"
 msgstr "合計"
 
-#: ../functions.php:130 ../functions.php:468
+#: ../functions.php:220 ../functions.php:559
 msgid "Average"
 msgstr "平均"
 
-#: ../functions.php:172
+#: ../functions.php:262
 msgid "Integer"
 msgstr "整数"
 
-#: ../functions.php:173
+#: ../functions.php:263
 msgid "Decimal"
 msgstr "少数"
 
-#: ../functions.php:174 ../admin/templates/event-details.php:13
+#: ../functions.php:264 ../admin/templates/event-details.php:13
 msgid "Time"
 msgstr "時間"
 
-#: ../functions.php:175
+#: ../functions.php:265
 msgid "Custom Field"
 msgstr "カスタムフィールド"
 
-#: ../functions.php:396 ../functions.php:449
+#: ../functions.php:486 ../functions.php:540
 msgid "(no title)"
 msgstr "(タイトルなし)"
 
-#: ../functions.php:533 ../functions.php:536 ../admin/post-types/event.php:6
+#: ../functions.php:503
+msgid "Select All"
+msgstr "すべて選択"
+
+#: ../functions.php:624 ../functions.php:627 ../admin/post-types/event.php:6
 #: ../admin/post-types/event.php:16 ../admin/settings/settings.php:11
 msgid "Events"
 msgstr "試合"
 
-#: ../functions.php:533
+#: ../functions.php:624
 msgid "Attended"
 msgstr "出場"
 
-#: ../functions.php:539 ../admin/post-types/event.php:53
+#: ../functions.php:630 ../admin/post-types/event.php:53
 #: ../admin/post-types/result.php:4 ../admin/post-types/result.php:15
 #: ../admin/settings/events.php:16 ../admin/templates/event-results.php:55
 msgid "Results"
 msgstr "結果"
 
-#: ../functions.php:542 ../functions.php:543 ../functions.php:544
-#: ../functions.php:545 ../admin/post-types/outcome.php:4
+#: ../functions.php:633 ../functions.php:634 ../functions.php:635
+#: ../functions.php:636 ../admin/post-types/outcome.php:4
 #: ../admin/post-types/outcome.php:15 ../admin/settings/events.php:55
 msgid "Outcomes"
 msgstr "勝敗"
 
-#: ../functions.php:543
+#: ../functions.php:634
 msgid "Streak"
 msgstr "連勝敗"
 
-#: ../functions.php:544
+#: ../functions.php:635
 msgid "Last 5"
 msgstr "ラスト5"
 
-#: ../functions.php:545
+#: ../functions.php:636
 msgid "Last 10"
 msgstr "ラスト10"
 
-#: ../functions.php:548 ../admin/post-types/column.php:4
+#: ../functions.php:639 ../admin/post-types/column.php:4
 #: ../admin/post-types/column.php:15 ../admin/post-types/team.php:41
 #: ../admin/settings/tables.php:11
 msgid "Columns"
 msgstr "列"
 
-#: ../functions.php:551
+#: ../functions.php:642
 msgid "Player Statistics"
 msgstr "選手統計"
 
-#: ../functions.php:560
+#: ../functions.php:651
 msgid "Operators"
 msgstr "演算子"
 
-#: ../functions.php:573
+#: ../functions.php:664
 msgid "Constants"
 msgstr "定数"
 
-#: ../functions.php:577 ../admin/settings/settings.php:46
+#: ../functions.php:668 ../admin/settings/settings.php:46
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; 選択 &mdash;"
 
-#: ../functions.php:690 ../functions.php:844 ../functions.php:919
-#: ../functions.php:1804 ../functions.php:2333 ../admin/hooks/gettext.php:9
+#: ../functions.php:781 ../functions.php:935 ../functions.php:1010
+#: ../functions.php:1895 ../functions.php:2424 ../admin/hooks/gettext.php:9
 #: ../admin/post-types/list.php:38 ../admin/post-types/list.php:95
 #: ../admin/post-types/player.php:147 ../admin/post-types/team.php:5
 #: ../admin/post-types/team.php:49 ../admin/templates/event-results.php:59
 msgid "Team"
 msgstr "チーム"
 
-#: ../functions.php:712 ../admin/post-types/column.php:7
+#: ../functions.php:803 ../admin/post-types/column.php:7
 #: ../admin/post-types/event.php:8 ../admin/post-types/list.php:7
 #: ../admin/post-types/metric.php:7 ../admin/post-types/outcome.php:7
 #: ../admin/post-types/player.php:7 ../admin/post-types/result.php:7
@@ -158,22 +166,22 @@ msgstr "チーム"
 msgid "Edit"
 msgstr "編集"
 
-#: ../functions.php:716
+#: ../functions.php:807
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../functions.php:717
+#: ../functions.php:808
 msgid "Save"
 msgstr "保存"
 
-#: ../functions.php:746 ../functions.php:1024 ../functions.php:2092
-#: ../admin/hooks/register-activation-hook.php:147
+#: ../functions.php:837 ../functions.php:1115 ../functions.php:2183
+#: ../admin/hooks/register-activation-hook.php:149
 #: ../admin/post-types/player.php:5 ../admin/templates/event-players.php:28
 msgid "Player"
 msgstr "選手"
 
-#: ../functions.php:791 ../functions.php:843 ../functions.php:1535
-#: ../functions.php:2333 ../admin/post-types/event.php:83
+#: ../functions.php:882 ../functions.php:934 ../functions.php:1626
+#: ../functions.php:2424 ../admin/post-types/event.php:83
 #: ../admin/post-types/event.php:215 ../admin/post-types/list.php:37
 #: ../admin/post-types/list.php:81 ../admin/post-types/table.php:36
 #: ../admin/post-types/table.php:77 ../admin/templates/event-details.php:22
@@ -181,11 +189,11 @@ msgstr "選手"
 msgid "Season"
 msgstr "シーズン"
 
-#: ../functions.php:867
+#: ../functions.php:958
 msgid "&mdash; None &mdash;"
 msgstr "&mdash; なし &mdash;"
 
-#: ../functions.php:888 ../admin/post-types/column.php:11
+#: ../functions.php:979 ../admin/post-types/column.php:11
 #: ../admin/post-types/column.php:12 ../admin/post-types/event.php:12
 #: ../admin/post-types/event.php:13 ../admin/post-types/list.php:11
 #: ../admin/post-types/list.php:12 ../admin/post-types/metric.php:11
@@ -202,32 +210,32 @@ msgstr "&mdash; なし &mdash;"
 msgid "No results found."
 msgstr "見つかりません。"
 
-#: ../functions.php:923 ../admin/post-types/outcome.php:5
+#: ../functions.php:1014 ../admin/post-types/outcome.php:5
 msgid "Outcome"
 msgstr "勝敗"
 
-#: ../functions.php:947 ../admin/post-types/event.php:76
+#: ../functions.php:1038 ../admin/post-types/event.php:76
 #: ../admin/post-types/event.php:91 ../admin/post-types/event.php:106
 msgid "-- Not set --"
 msgstr "-- 未設定 --"
 
-#: ../functions.php:975 ../functions.php:1080
+#: ../functions.php:1066 ../functions.php:1171
 msgid "Starting Lineup"
 msgstr "スターティングメンバー"
 
-#: ../functions.php:976 ../functions.php:1081
+#: ../functions.php:1067 ../functions.php:1172
 msgid "Substitute"
 msgstr "補欠"
 
-#: ../functions.php:1000
+#: ../functions.php:1091
 msgid "None"
 msgstr "なし"
 
-#: ../functions.php:1028
+#: ../functions.php:1119
 msgid "Status"
 msgstr "ステータス"
 
-#: ../functions.php:1101 ../functions.php:1118
+#: ../functions.php:1192 ../functions.php:1209
 #: ../admin/hooks/admin-menu.php:46 ../admin/post-types/column.php:6
 #: ../admin/post-types/event.php:7 ../admin/post-types/event.php:79
 #: ../admin/post-types/event.php:94 ../admin/post-types/event.php:109
@@ -250,9 +258,857 @@ msgstr "ステータス"
 msgid "Add New"
 msgstr "新規追加"
 
-#: ../admin/hooks/admin-enqueue-scripts.php:24
+#: ../admin/globals/continents.php:6
+msgid "Africa"
+msgstr "アフリカ"
+
+#: ../admin/globals/continents.php:7
+msgid "Asia"
+msgstr "アジア"
+
+#: ../admin/globals/continents.php:8
+msgid "Europe"
+msgstr "ヨーロッパ"
+
+#: ../admin/globals/continents.php:9
+msgid "North America"
+msgstr "北アメリカ"
+
+#: ../admin/globals/continents.php:10
+msgid "Oceania"
+msgstr "オセアニア"
+
+#: ../admin/globals/continents.php:11
+msgid "South America"
+msgstr "南アメリカ"
+
+#: ../admin/globals/countries.php:6
+msgid "Andorra"
+msgstr "アンドラ"
+
+#: ../admin/globals/countries.php:7
+msgid "United Arab Emirates"
+msgstr "アラブ首長国連邦"
+
+#: ../admin/globals/countries.php:8
+msgid "Afghanistan"
+msgstr "アフガニスタン"
+
+#: ../admin/globals/countries.php:9
+msgid "Antigua and Barbuda"
+msgstr "アンティグア・バーブーダ"
+
+#: ../admin/globals/countries.php:10
+msgid "Albania"
+msgstr "アルバニア"
+
+#: ../admin/globals/countries.php:11
+msgid "Armenia"
+msgstr "アルメニア"
+
+#: ../admin/globals/countries.php:12
+msgid "Angola"
+msgstr "アンゴラ"
+
+#: ../admin/globals/countries.php:13
+msgid "Argentina"
+msgstr "アルゼンチン"
+
+#: ../admin/globals/countries.php:14
+msgid "Austria"
+msgstr "オーストリア"
+
+#: ../admin/globals/countries.php:15
+msgid "Australia"
+msgstr "オーストラリア"
+
+#: ../admin/globals/countries.php:16
+msgid "Azerbaijan"
+msgstr "アゼルバイジャン"
+
+#: ../admin/globals/countries.php:17
+msgid "Bosnia and Herzegovina"
+msgstr "ボスニア・ヘルツェゴビナ"
+
+#: ../admin/globals/countries.php:18
+msgid "Barbados"
+msgstr "バルバドス"
+
+#: ../admin/globals/countries.php:19
+msgid "Bangladesh"
+msgstr "バングラデシュ"
+
+#: ../admin/globals/countries.php:20
+msgid "Belgium"
+msgstr "ベルギー"
+
+#: ../admin/globals/countries.php:21
+msgid "Burkina Faso"
+msgstr "ブルキナファソ"
+
+#: ../admin/globals/countries.php:22
+msgid "Bulgaria"
+msgstr "ブルガリア"
+
+#: ../admin/globals/countries.php:23
+msgid "Bahrain"
+msgstr "バーレーン"
+
+#: ../admin/globals/countries.php:24
+msgid "Burundi"
+msgstr "ブルンジ"
+
+#: ../admin/globals/countries.php:25
+msgid "Benin"
+msgstr "ベナン"
+
+#: ../admin/globals/countries.php:26
+msgid "Brunei"
+msgstr "ブルネイ・ダルサラーム"
+
+#: ../admin/globals/countries.php:27
+msgid "Bolivia"
+msgstr "ボリビア多民族国"
+
+#: ../admin/globals/countries.php:28
+msgid "Brazil"
+msgstr "ブラジル"
+
+#: ../admin/globals/countries.php:29
+msgid "Bahamas"
+msgstr "バハマ"
+
+#: ../admin/globals/countries.php:30
+msgid "Bhutan"
+msgstr "ブータン"
+
+#: ../admin/globals/countries.php:31
+msgid "Botswana"
+msgstr "ボツワナ"
+
+#: ../admin/globals/countries.php:32
+msgid "Belarus"
+msgstr "ベラルーシ"
+
+#: ../admin/globals/countries.php:33
+msgid "Belize"
+msgstr "ベリーズ"
+
+#: ../admin/globals/countries.php:34
+msgid "Canada"
+msgstr "カナダ"
+
+#: ../admin/globals/countries.php:35
+msgid "Democratic Republic of the Congo"
+msgstr "コンゴ民主共和国"
+
+#: ../admin/globals/countries.php:36
+msgid "Central African Republic"
+msgstr "中央アフリカ共和国"
+
+#: ../admin/globals/countries.php:37
+msgid "Republic of the Congo"
+msgstr "コンゴ共和国"
+
+#: ../admin/globals/countries.php:38
+msgid "Switzerland"
+msgstr "スイス"
+
+#: ../admin/globals/countries.php:39
+msgid "Cote d'Ivoire"
+msgstr "コートジボワール"
+
+#: ../admin/globals/countries.php:40
+msgid "Chile"
+msgstr "チリ"
+
+#: ../admin/globals/countries.php:41
+msgid "Cameroon"
+msgstr "カメルーン"
+
+#: ../admin/globals/countries.php:42
+msgid "China"
+msgstr "中華人民共和国"
+
+#: ../admin/globals/countries.php:43
+msgid "Colombia"
+msgstr "コロンビア"
+
+#: ../admin/globals/countries.php:44
+msgid "Costa Rica"
+msgstr "コスタリカ"
+
+#: ../admin/globals/countries.php:45
+msgid "Cuba"
+msgstr "キューバ"
+
+#: ../admin/globals/countries.php:46
+msgid "Cape Verde"
+msgstr "カーボベルデ"
+
+#: ../admin/globals/countries.php:47
+msgid "Cyprus"
+msgstr "キプロス"
+
+#: ../admin/globals/countries.php:48
+msgid "Czech Republic"
+msgstr "チェコ"
+
+#: ../admin/globals/countries.php:49
+msgid "Germany"
+msgstr "ドイツ"
+
+#: ../admin/globals/countries.php:50
+msgid "Djibouti"
+msgstr "ジブチ"
+
+#: ../admin/globals/countries.php:51
+msgid "Denmark"
+msgstr "デンマーク"
+
+#: ../admin/globals/countries.php:52
+msgid "Dominica"
+msgstr "ドミニカ国"
+
+#: ../admin/globals/countries.php:53
+msgid "Dominican Republic"
+msgstr "ドミニカ共和国"
+
+#: ../admin/globals/countries.php:54
+msgid "Algeria"
+msgstr "アルジェリア"
+
+#: ../admin/globals/countries.php:55
+msgid "Ecuador"
+msgstr "エクアドル"
+
+#: ../admin/globals/countries.php:56
+msgid "Estonia"
+msgstr "エストニア"
+
+#: ../admin/globals/countries.php:57
+msgid "Egypt"
+msgstr "エジプト"
+
+#: ../admin/globals/countries.php:58
+msgid "Western Sahara"
+msgstr "西サハラ"
+
+#: ../admin/globals/countries.php:59
+msgid "England"
+msgstr "イングランド"
+
+#: ../admin/globals/countries.php:60
+msgid "Eritrea"
+msgstr "エリトリア"
+
+#: ../admin/globals/countries.php:61
+msgid "Spain"
+msgstr "スペイン"
+
+#: ../admin/globals/countries.php:62
+msgid "Ethiopia"
+msgstr "エチオピア"
+
+#: ../admin/globals/countries.php:63
+msgid "Finland"
+msgstr "フィンランド"
+
+#: ../admin/globals/countries.php:64
+msgid "Fiji"
+msgstr "フィジー"
+
+#: ../admin/globals/countries.php:65
+msgid "Micronesia"
+msgstr "ミクロネシア連邦"
+
+#: ../admin/globals/countries.php:66
+msgid "France"
+msgstr "フランス"
+
+#: ../admin/globals/countries.php:67
+msgid "Gabon"
+msgstr "ガボン"
+
+#: ../admin/globals/countries.php:68
+msgid "United Kingdom"
+msgstr "イギリス"
+
+#: ../admin/globals/countries.php:69
+msgid "Grenada"
+msgstr "グレナダ"
+
+#: ../admin/globals/countries.php:70
+msgid "Georgia"
+msgstr "グルジア"
+
+#: ../admin/globals/countries.php:71
+msgid "Ghana"
+msgstr "ガーナ"
+
+#: ../admin/globals/countries.php:72
+msgid "Gambia"
+msgstr "ガンビア"
+
+#: ../admin/globals/countries.php:73
+msgid "Guinea"
+msgstr "ギニア"
+
+#: ../admin/globals/countries.php:74
+msgid "Equatorial Guinea"
+msgstr "赤道ギニア"
+
+#: ../admin/globals/countries.php:75
+msgid "Greece"
+msgstr "ギリシャ"
+
+#: ../admin/globals/countries.php:76
+msgid "Guatemala"
+msgstr "グアテマラ"
+
+#: ../admin/globals/countries.php:77
+msgid "Guinea-Bissau"
+msgstr "ギニアビサウ"
+
+#: ../admin/globals/countries.php:78
+msgid "Guyana"
+msgstr "ガイアナ"
+
+#: ../admin/globals/countries.php:79
+msgid "Hong Kong"
+msgstr "香港"
+
+#: ../admin/globals/countries.php:80
+msgid "Honduras"
+msgstr "ホンジュラス"
+
+#: ../admin/globals/countries.php:81
+msgid "Croatia"
+msgstr "クロアチア"
+
+#: ../admin/globals/countries.php:82
+msgid "Haiti"
+msgstr "ハイチ"
+
+#: ../admin/globals/countries.php:83
+msgid "Hungary"
+msgstr "ハンガリー"
+
+#: ../admin/globals/countries.php:84
+msgid "Indonesia"
+msgstr "インドネシア"
+
+#: ../admin/globals/countries.php:85
+msgid "Ireland"
+msgstr "アイルランド"
+
+#: ../admin/globals/countries.php:86
+msgid "Israel"
+msgstr "イスラエル"
+
+#: ../admin/globals/countries.php:87
+msgid "India"
+msgstr "インド"
+
+#: ../admin/globals/countries.php:88
+msgid "Iraq"
+msgstr "イラク"
+
+#: ../admin/globals/countries.php:89
+msgid "Iran"
+msgstr "イラン・イスラム共和国"
+
+#: ../admin/globals/countries.php:90
+msgid "Iceland"
+msgstr "アイスランド"
+
+#: ../admin/globals/countries.php:91
+msgid "Italy"
+msgstr "イタリア"
+
+#: ../admin/globals/countries.php:92
+msgid "Jamaica"
+msgstr "ジャマイカ"
+
+#: ../admin/globals/countries.php:93
+msgid "Jordan"
+msgstr "ヨルダン"
+
+#: ../admin/globals/countries.php:94
+msgid "Japan"
+msgstr "日本"
+
+#: ../admin/globals/countries.php:95
+msgid "Kenya"
+msgstr "ケニア"
+
+#: ../admin/globals/countries.php:96
+msgid "Kyrgyzstan"
+msgstr "キルギス"
+
+#: ../admin/globals/countries.php:97
+msgid "Cambodia"
+msgstr "カンボジア"
+
+#: ../admin/globals/countries.php:98
+msgid "Kiribati"
+msgstr "キリバス"
+
+#: ../admin/globals/countries.php:99
+msgid "Comoros"
+msgstr "コモロ"
+
+#: ../admin/globals/countries.php:100
+msgid "Saint Kitts and Nevis"
+msgstr "セントクリストファー・ネイビス"
+
+#: ../admin/globals/countries.php:101
+msgid "North Korea"
+msgstr "朝鮮民主主義人民共和国"
+
+#: ../admin/globals/countries.php:102
+msgid "South Korea"
+msgstr "大韓民国"
+
+#: ../admin/globals/countries.php:103
+msgid "Kuwait"
+msgstr "クウェート"
+
+#: ../admin/globals/countries.php:104
+msgid "Kazakhstan"
+msgstr "カザフスタン"
+
+#: ../admin/globals/countries.php:105
+msgid "Laos"
+msgstr "ラオス人民民主共和国"
+
+#: ../admin/globals/countries.php:106
+msgid "Lebanon"
+msgstr "レバノン"
+
+#: ../admin/globals/countries.php:107
+msgid "Saint Lucia"
+msgstr "セントルシア"
+
+#: ../admin/globals/countries.php:108
+msgid "Liechtenstein"
+msgstr "リヒテンシュタイン"
+
+#: ../admin/globals/countries.php:109
+msgid "Sri Lanka"
+msgstr "スリランカ"
+
+#: ../admin/globals/countries.php:110
+msgid "Liberia"
+msgstr "リベリア"
+
+#: ../admin/globals/countries.php:111
+msgid "Lesotho"
+msgstr "レソト"
+
+#: ../admin/globals/countries.php:112
+msgid "Lithuania"
+msgstr "リトアニア"
+
+#: ../admin/globals/countries.php:113
+msgid "Luxembourg"
+msgstr "ルクセンブルク"
+
+#: ../admin/globals/countries.php:114
+msgid "Latvia"
+msgstr "ラトビア"
+
+#: ../admin/globals/countries.php:115
+msgid "Libya"
+msgstr "リビア"
+
+#: ../admin/globals/countries.php:116
+msgid "Morocco"
+msgstr "モロッコ"
+
+#: ../admin/globals/countries.php:117
+msgid "Monaco"
+msgstr "モナコ"
+
+#: ../admin/globals/countries.php:118
+msgid "Moldova"
+msgstr "モルドバ共和国"
+
+#: ../admin/globals/countries.php:119
+msgid "Montenegro"
+msgstr "モンテネグロ"
+
+#: ../admin/globals/countries.php:120
+msgid "Madagascar"
+msgstr "マダガスカル"
+
+#: ../admin/globals/countries.php:121
+msgid "Marshall Islands"
+msgstr "マーシャル諸島"
+
+#: ../admin/globals/countries.php:122
+msgid "Macedonia"
+msgstr "マケドニア旧ユーゴスラビア共和国"
+
+#: ../admin/globals/countries.php:123
+msgid "Mali"
+msgstr "マリ"
+
+#: ../admin/globals/countries.php:124
+msgid "Myanmar"
+msgstr "ミャンマー"
+
+#: ../admin/globals/countries.php:125
+msgid "Mongolia"
+msgstr "モンゴル"
+
+#: ../admin/globals/countries.php:126
+msgid "Macau"
+msgstr "マカオ"
+
+#: ../admin/globals/countries.php:127
+msgid "Mauritania"
+msgstr "モーリタニア"
+
+#: ../admin/globals/countries.php:128
+msgid "Malta"
+msgstr "マルタ"
+
+#: ../admin/globals/countries.php:129
+msgid "Mauritius"
+msgstr "モーリシャス"
+
+#: ../admin/globals/countries.php:130
+msgid "Maldives"
+msgstr "モルディブ"
+
+#: ../admin/globals/countries.php:131
+msgid "Malawi"
+msgstr "マラウイ"
+
+#: ../admin/globals/countries.php:132
+msgid "Mexico"
+msgstr "メキシコ"
+
+#: ../admin/globals/countries.php:133
+msgid "Malaysia"
+msgstr "マレーシア"
+
+#: ../admin/globals/countries.php:134
+msgid "Mozambique"
+msgstr "モザンビーク"
+
+#: ../admin/globals/countries.php:135
+msgid "Namibia"
+msgstr "ナミビア"
+
+#: ../admin/globals/countries.php:136
+msgid "Northern Ireland"
+msgstr "北アイルランド"
+
+#: ../admin/globals/countries.php:137
+msgid "Niger"
+msgstr "ニジェール"
+
+#: ../admin/globals/countries.php:138
+msgid "Nigeria"
+msgstr "ナイジェリア"
+
+#: ../admin/globals/countries.php:139
+msgid "Nicaragua"
+msgstr "ニカラグア"
+
+#: ../admin/globals/countries.php:140
+msgid "Netherlands"
+msgstr "オランダ"
+
+#: ../admin/globals/countries.php:141
+msgid "Norway"
+msgstr "ノルウェー"
+
+#: ../admin/globals/countries.php:142
+msgid "Nepal"
+msgstr "ネパール"
+
+#: ../admin/globals/countries.php:143
+msgid "Nauru"
+msgstr "ナウル"
+
+#: ../admin/globals/countries.php:144
+msgid "New Zealand"
+msgstr "ニュージーランド"
+
+#: ../admin/globals/countries.php:145
+msgid "Oman"
+msgstr "オマーン"
+
+#: ../admin/globals/countries.php:146
+msgid "Panama"
+msgstr "パナマ"
+
+#: ../admin/globals/countries.php:147
+msgid "Peru"
+msgstr "ペルー"
+
+#: ../admin/globals/countries.php:148
+msgid "Papua New Guinea"
+msgstr "パプアニューギニア"
+
+#: ../admin/globals/countries.php:149
+msgid "Philippines"
+msgstr "フィリピン"
+
+#: ../admin/globals/countries.php:150
+msgid "Pakistan"
+msgstr "パキスタン"
+
+#: ../admin/globals/countries.php:151
+msgid "Poland"
+msgstr "ポーランド"
+
+#: ../admin/globals/countries.php:152
+msgid "Portugal"
+msgstr "ポルトガル"
+
+#: ../admin/globals/countries.php:153
+msgid "Palau"
+msgstr "パラオ"
+
+#: ../admin/globals/countries.php:154
+msgid "Paraguay"
+msgstr "パラグアイ"
+
+#: ../admin/globals/countries.php:155
+msgid "Qatar"
+msgstr "カタール"
+
+#: ../admin/globals/countries.php:156
+msgid "Romania"
+msgstr "ルーマニア"
+
+#: ../admin/globals/countries.php:157
+msgid "Serbia"
+msgstr "セルビア"
+
+#: ../admin/globals/countries.php:158
+msgid "Russia"
+msgstr "ロシア連邦"
+
+#: ../admin/globals/countries.php:159
+msgid "Rwanda"
+msgstr "ルワンダ"
+
+#: ../admin/globals/countries.php:160
+msgid "Saudi Arabia"
+msgstr "サウジアラビア"
+
+#: ../admin/globals/countries.php:161
+msgid "Solomon Islands"
+msgstr "ソロモン諸島"
+
+#: ../admin/globals/countries.php:162
+msgid "Seychelles"
+msgstr "セーシェル"
+
+#: ../admin/globals/countries.php:163
+msgid "Sudan"
+msgstr "スーダン"
+
+#: ../admin/globals/countries.php:164
+msgid "Sweden"
+msgstr "スウェーデン"
+
+#: ../admin/globals/countries.php:165
+msgid "Scotland"
+msgstr "スコットランド"
+
+#: ../admin/globals/countries.php:166
+msgid "Singapore"
+msgstr "シンガポール"
+
+#: ../admin/globals/countries.php:167
+msgid "Slovenia"
+msgstr "スロベニア"
+
+#: ../admin/globals/countries.php:168
+msgid "Slovakia"
+msgstr "スロバキア"
+
+#: ../admin/globals/countries.php:169
+msgid "Sierra Leone"
+msgstr "シエラレオネ"
+
+#: ../admin/globals/countries.php:170
+msgid "San Marino"
+msgstr "サンマリノ"
+
+#: ../admin/globals/countries.php:171
+msgid "Senegal"
+msgstr "セネガル"
+
+#: ../admin/globals/countries.php:172
+msgid "Somalia"
+msgstr "ソマリア"
+
+#: ../admin/globals/countries.php:173
+msgid "Suriname"
+msgstr "スリナム"
+
+#: ../admin/globals/countries.php:174
+msgid "Sao Tome and Principe"
+msgstr "サントメ・プリンシペ"
+
+#: ../admin/globals/countries.php:175
+msgid "El Salvador"
+msgstr "エルサルバドル"
+
+#: ../admin/globals/countries.php:176
+msgid "Swaziland"
+msgstr "スワジランド"
+
+#: ../admin/globals/countries.php:177
+msgid "Chad"
+msgstr "チャド"
+
+#: ../admin/globals/countries.php:178
+msgid "Togo"
+msgstr "トーゴ"
+
+#: ../admin/globals/countries.php:179
+msgid "Thailand"
+msgstr "タイ"
+
+#: ../admin/globals/countries.php:180
+msgid "Tajikistan"
+msgstr "タジキスタン"
+
+#: ../admin/globals/countries.php:181
+msgid "East Timor"
+msgstr "東ティモール"
+
+#: ../admin/globals/countries.php:182
+msgid "Turkmenistan"
+msgstr "トルクメニスタン"
+
+#: ../admin/globals/countries.php:183
+msgid "Tunisia"
+msgstr "チュニジア"
+
+#: ../admin/globals/countries.php:184
+msgid "Tonga"
+msgstr "トンガ"
+
+#: ../admin/globals/countries.php:185
+msgid "Turkey"
+msgstr "トルコ"
+
+#: ../admin/globals/countries.php:186
+msgid "Trinidad and Tobago"
+msgstr "トリニダード・トバゴ"
+
+#: ../admin/globals/countries.php:187
+msgid "Tuvalu"
+msgstr "ツバル"
+
+#: ../admin/globals/countries.php:188
+msgid "Taiwan"
+msgstr "台湾"
+
+#: ../admin/globals/countries.php:189
+msgid "Tanzania"
+msgstr "タンザニア"
+
+#: ../admin/globals/countries.php:190
+msgid "Ukraine"
+msgstr "ウクライナ"
+
+#: ../admin/globals/countries.php:191
+msgid "Uganda"
+msgstr "ウガンダ"
+
+#: ../admin/globals/countries.php:192
+msgid "United States"
+msgstr "アメリカ合衆国"
+
+#: ../admin/globals/countries.php:193
+msgid "Uruguay"
+msgstr "ウルグアイ"
+
+#: ../admin/globals/countries.php:194
+msgid "Uzbekistan"
+msgstr "ウズベキスタン"
+
+#: ../admin/globals/countries.php:195
+msgid "Vatican City"
+msgstr "バチカン市国"
+
+#: ../admin/globals/countries.php:196
+msgid "Saint Vincent and the Grenadines"
+msgstr "セントビンセントおよびグレナディーン諸島"
+
+#: ../admin/globals/countries.php:197
+msgid "Venezuela"
+msgstr "ベネズエラ・ボリバル共和国"
+
+#: ../admin/globals/countries.php:198
+msgid "Vietnam"
+msgstr "ベトナム"
+
+#: ../admin/globals/countries.php:199
+msgid "Vanuatu"
+msgstr "バヌアツ"
+
+#: ../admin/globals/countries.php:200
+msgid "Wales"
+msgstr "ウェールズ"
+
+#: ../admin/globals/countries.php:201
+msgid "Samoa"
+msgstr "サモア"
+
+#: ../admin/globals/countries.php:202
+msgid "Yemen"
+msgstr "イエメン"
+
+#: ../admin/globals/countries.php:203
+msgid "South Africa"
+msgstr "南アフリカ"
+
+#: ../admin/globals/countries.php:204
+msgid "Zambia"
+msgstr "ザンビア"
+
+#: ../admin/globals/countries.php:205
+msgid "Zimbabwe"
+msgstr "ジンバブエ"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
 msgid "&mdash; Remove &mdash;"
 msgstr "&mdash; 削除 &mdash;"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:38 ../admin/tools/dashboard.php:54
+msgid "days"
+msgstr "日"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:39
+msgid "hrs"
+msgstr "時間"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:40
+msgid "mins"
+msgstr "分"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:41
+msgid "secs"
+msgstr "秒"
 
 #: ../admin/hooks/admin-menu.php:52 ../admin/post-types/player.php:37
 #: ../admin/post-types/player.php:169 ../admin/post-types/player.php:176
@@ -335,12 +1191,6 @@ msgstr "写真を選択"
 msgid "Remove Photo"
 msgstr "写真を削除"
 
-#: ../admin/hooks/gettext.php:36 ../admin/hooks/gettext.php:39
-#: ../admin/hooks/gettext.php:42
-#, php-format
-msgid "Date/Time: <b>%1$s</b>"
-msgstr "キックオフ: <b>%1$s</b>"
-
 #: ../admin/hooks/manage-posts-columns.php:3 ../admin/post-types/event.php:218
 #: ../admin/post-types/list.php:39 ../admin/post-types/player.php:39
 #: ../admin/post-types/staff.php:57 ../admin/post-types/table.php:38
@@ -401,11 +1251,11 @@ msgstr "<strong>%1$s</strong>に公開するよう予約しました。"
 msgid "League Manager"
 msgstr "リーグマネージャー"
 
-#: ../admin/hooks/register-activation-hook.php:84
+#: ../admin/hooks/register-activation-hook.php:86
 msgid "Team Manager"
 msgstr "チームマネージャー"
 
-#: ../admin/hooks/register-activation-hook.php:129
+#: ../admin/hooks/register-activation-hook.php:131
 #: ../admin/post-types/event.php:137 ../admin/post-types/staff.php:4
 #: ../admin/post-types/staff.php:5 ../admin/post-types/staff.php:15
 msgid "Staff"
@@ -426,26 +1276,6 @@ msgstr "すべてのシーズンを表示"
 #: ../admin/hooks/restrict-manage-posts.php:40
 msgid "Show all teams"
 msgstr "すべてのチームを表示"
-
-#: ../admin/hooks/wp-enqueue-scripts.php:14
-#: ../admin/templates/countdown.php:46
-msgid "days"
-msgstr "日"
-
-#: ../admin/hooks/wp-enqueue-scripts.php:14
-#: ../admin/templates/countdown.php:47
-msgid "hrs"
-msgstr "時間"
-
-#: ../admin/hooks/wp-enqueue-scripts.php:14
-#: ../admin/templates/countdown.php:48
-msgid "mins"
-msgstr "分"
-
-#: ../admin/hooks/wp-enqueue-scripts.php:14
-#: ../admin/templates/countdown.php:49
-msgid "secs"
-msgstr "秒"
 
 #: ../admin/hooks/wp-insert-post-data.php:13
 msgid "vs"
@@ -805,6 +1635,27 @@ msgstr "緯度"
 msgid "Longitude"
 msgstr "経度"
 
+#: ../admin/tools/dashboard.php:34
+msgid "SportsPress Status"
+msgstr "SportsPress ステータス"
+
+#: ../admin/tools/dashboard.php:54
+#, php-format
+msgid "<strong>%s</strong> until next event"
+msgstr "次のイベントまで<strong>%s</strong>"
+
+#: ../admin/tools/dashboard.php:61
+#, php-format
+msgid "<strong>%s event</strong> scheduled"
+msgid_plural "<strong>%s events</strong> scheduled"
+msgstr[0] "<strong>%sイベント</strong>予約済み"
+
+#: ../admin/tools/dashboard.php:66
+#, php-format
+msgid "<strong>%s event</strong> published"
+msgid_plural "<strong>%s events</strong> published"
+msgstr[0] "<strong>%sイベント</strong>公開済み"
+
 #: ../admin/tools/importers.php:37
 msgid "SportsPress Teams (CSV)"
 msgstr "SportsPress チーム (CSV)"
@@ -1026,617 +1877,11 @@ msgstr "ラグビー"
 msgid "Soccer (Association Football)"
 msgstr "サッカー"
 
-#, fuzzy
-#~ msgid "None."
-#~ msgstr "なし"
-
-#~ msgid "No Events found."
-#~ msgstr "イベントが見つかりませんでした"
-
-#~ msgid "No teams found."
-#~ msgstr "チームが見つかりませんでした"
-
-#, fuzzy
-#~ msgid "Select Nationality"
-#~ msgstr "国籍"
-
-#, fuzzy
-#~ msgid "Select:"
-#~ msgstr "試合記録"
-
-#~ msgid "A list of upcoming events."
-#~ msgstr "予定されているイベントのリスト"
-
-#, fuzzy
-#~ msgid "SportsPress Future Events"
-#~ msgstr "試合日程"
-
-#~ msgid "Future Events"
-#~ msgstr "試合日程"
-
-#~ msgid "League:"
-#~ msgstr "リーグ:"
-
-#~ msgid "Season:"
-#~ msgstr "シーズン:"
-
-#~ msgid "Venue:"
-#~ msgstr "会場:"
-
-#~ msgid "Team:"
-#~ msgstr "チーム:"
-
-#, fuzzy
-#~ msgid "Number of events to show:"
-#~ msgstr "表示する%sの数:"
-
-#, fuzzy
-#~ msgid "Select League Table:"
-#~ msgstr "順位表:"
-
-#, fuzzy
-#~ msgid "Select Player List:"
-#~ msgstr "選手名鑑"
-
-#~ msgid "A list of recent events."
-#~ msgstr "直近行われたイベントのリスト"
-
-#, fuzzy
-#~ msgid "SportsPress Recent Events"
-#~ msgstr "試合記録"
-
-#~ msgid "Recent Events"
-#~ msgstr "試合記録"
-
-#, fuzzy
-#~ msgid "Select Positions"
-#~ msgstr "写真を選択"
-
-#, fuzzy
-#~ msgid "Select Team"
-#~ msgstr "選択"
-
-#, fuzzy
-#~ msgid "Select Leagues"
-#~ msgstr "ロゴを選択"
-
-#, fuzzy
-#~ msgid "Select Seasons"
-#~ msgstr "%sを選択"
-
-#~ msgid "Add New Column"
-#~ msgstr "新規列を追加"
-
-#~ msgid "Edit Column"
-#~ msgstr "列を編集"
-
-#~ msgid "New Column"
-#~ msgstr "新規列"
-
-#~ msgid "View Column"
-#~ msgstr "列を表示"
-
-#~ msgid "Search Columns"
-#~ msgstr "列を検索"
-
-#~ msgid "No columns found."
-#~ msgstr "列が見つかりませんでした"
-
-#~ msgid "No columns found in trash."
-#~ msgstr "ゴミ箱内に列が見つかりませんでした。"
-
-#~ msgid "Add New Event"
-#~ msgstr "新規イベントを追加"
-
-#~ msgid "Edit Event"
-#~ msgstr "イベントを編集"
-
-#~ msgid "New Event"
-#~ msgstr "新規イベント"
-
-#~ msgid "View Event"
-#~ msgstr "イベントを表示"
-
-#~ msgid "Search Events"
-#~ msgstr "イベントを検索"
-
-#~ msgid "No events found."
-#~ msgstr "イベントが見つかりませんでした"
-
-#~ msgid "No events found in trash."
-#~ msgstr "ゴミ箱内にイベントが見つかりませんでした。"
-
-#~ msgid "Add New League"
-#~ msgstr "新規リーグを追加"
-
-#~ msgid "Add New Season"
-#~ msgstr "新規リーグを追加"
-
-#~ msgid "Add New Venue"
-#~ msgstr "新規リーグを追加"
-
-#~ msgid "Add New Player List"
-#~ msgstr "新規選手名鑑"
-
-#~ msgid "Edit Player List"
-#~ msgstr "選手名鑑を編集"
-
-#~ msgid "New Player List"
-#~ msgstr "新規選手名鑑"
-
-#~ msgid "View Player List"
-#~ msgstr "選手名鑑を表示"
-
-#~ msgid "Search Player Lists"
-#~ msgstr "選手名鑑を検索"
-
-#~ msgid "No player lists found."
-#~ msgstr "選手名鑑が見つかりませんでした。"
-
-#~ msgid "No player lists found in trash."
-#~ msgstr "ゴミ箱内に選手名鑑が見つかりませんでした。"
-
-#~ msgid "All Teams"
-#~ msgstr "チーム一覧"
-
-#~ msgid "Add New Team"
-#~ msgstr "新規チームを追加"
-
-#~ msgid "Add New Player"
-#~ msgstr "新規選手を追加"
-
-#~ msgid "Add New Metric"
-#~ msgstr "新規メトリックを追加"
-
-#~ msgid "Edit Metric"
-#~ msgstr "メトリックを編集"
-
-#~ msgid "New Metric"
-#~ msgstr "新規メトリック"
-
-#~ msgid "View Metric"
-#~ msgstr "メトリックを表示"
-
-#~ msgid "Search Metrics"
-#~ msgstr "メトリックを検索"
-
-#~ msgid "No metrics found."
-#~ msgstr "メトリックが見つかりませんでした。"
-
-#~ msgid "No metrics found in trash."
-#~ msgstr "ゴミ箱内にメトリックが見つかりませんでした。"
-
-#~ msgid "Add New Outcome"
-#~ msgstr "新規勝敗を追加"
-
-#~ msgid "Edit Outcome"
-#~ msgstr "勝敗を編集"
-
-#, fuzzy
-#~ msgid "New Outcome"
-#~ msgstr "勝敗"
-
-#, fuzzy
-#~ msgid "View Outcome"
-#~ msgstr "勝敗"
-
-#, fuzzy
-#~ msgid "Search Outcomes"
-#~ msgstr "勝敗"
-
-#, fuzzy
-#~ msgid "No outcomes found."
-#~ msgstr "%sが見つかりませんでした"
-
-#, fuzzy
-#~ msgid "No outcomes found in trash."
-#~ msgstr "ゴミ箱内に%sが見つかりませんでした。"
-
-#, fuzzy
-#~ msgid "Edit Player"
-#~ msgstr "選手"
-
-#, fuzzy
-#~ msgid "New Player"
-#~ msgstr "選手"
-
-#, fuzzy
-#~ msgid "View Player"
-#~ msgstr "選手"
-
-#, fuzzy
-#~ msgid "Search Players"
-#~ msgstr "%sを検索"
-
-#, fuzzy
-#~ msgid "No players found."
-#~ msgstr "%sが見つかりませんでした"
-
-#, fuzzy
-#~ msgid "No players found in trash."
-#~ msgstr "ゴミ箱内に%sが見つかりませんでした。"
-
-#, fuzzy
-#~ msgid "Add New Result"
-#~ msgstr "新規%sを追加"
-
-#, fuzzy
-#~ msgid "Edit Result"
-#~ msgstr "主な結果"
-
-#, fuzzy
-#~ msgid "New Result"
-#~ msgstr "結果"
-
-#, fuzzy
-#~ msgid "View Result"
-#~ msgstr "主な結果"
-
-#, fuzzy
-#~ msgid "Search Results"
-#~ msgstr "%sを検索"
-
-#, fuzzy
-#~ msgid "No results found in trash."
-#~ msgstr "ゴミ箱内に%sが見つかりませんでした。"
-
-#, fuzzy
-#~ msgid "Add New Staff"
-#~ msgstr "新規追加"
-
-#, fuzzy
-#~ msgid "Edit Staff"
-#~ msgstr "スタッフ"
-
-#, fuzzy
-#~ msgid "New Staff"
-#~ msgstr "スタッフ"
-
-#, fuzzy
-#~ msgid "View Staff"
-#~ msgstr "スタッフ"
-
-#, fuzzy
-#~ msgid "No staff found."
-#~ msgstr "%sが見つかりませんでした"
-
-#, fuzzy
-#~ msgid "No staff found in trash."
-#~ msgstr "ゴミ箱内に%sが見つかりませんでした。"
-
-#, fuzzy
-#~ msgid "Add New Statistic"
-#~ msgstr "統計"
-
-#, fuzzy
-#~ msgid "Edit Statistic"
-#~ msgstr "統計"
-
-#, fuzzy
-#~ msgid "New Statistic"
-#~ msgstr "統計"
-
-#, fuzzy
-#~ msgid "View Statistic"
-#~ msgstr "統計"
-
-#, fuzzy
-#~ msgid "Search Statistics"
-#~ msgstr "選手統計"
-
-#, fuzzy
-#~ msgid "No statistics found."
-#~ msgstr "%sが見つかりませんでした"
-
-#, fuzzy
-#~ msgid "No statistics found in trash."
-#~ msgstr "ゴミ箱内に%sが見つかりませんでした。"
-
-#, fuzzy
-#~ msgid "Add New League Table"
-#~ msgstr "順位表"
-
-#, fuzzy
-#~ msgid "Edit League Table"
-#~ msgstr "順位表"
-
-#, fuzzy
-#~ msgid "New League Table"
-#~ msgstr "順位表"
-
-#, fuzzy
-#~ msgid "View League Table"
-#~ msgstr "順位表"
-
-#, fuzzy
-#~ msgid "Search League Tables"
-#~ msgstr "順位表"
-
-#, fuzzy
-#~ msgid "No league tables found."
-#~ msgstr "順位表"
-
-#, fuzzy
-#~ msgid "No league tables found in trash."
-#~ msgstr "ゴミ箱内に%sが見つかりませんでした。"
-
-#, fuzzy
-#~ msgid "Edit Team"
-#~ msgstr "%sを編集"
-
-#, fuzzy
-#~ msgid "New Team"
-#~ msgstr "チーム"
-
-#, fuzzy
-#~ msgid "View Team"
-#~ msgstr "%sを表示"
-
-#, fuzzy
-#~ msgid "Search Teams"
-#~ msgstr "%sを検索"
-
-#, fuzzy
-#~ msgid "No teams found in trash."
-#~ msgstr "ゴミ箱内に%sが見つかりませんでした。"
-
-#, fuzzy
-#~ msgid "Edit Results"
-#~ msgstr "結果"
-
-#, fuzzy
-#~ msgid "Edit Outcomes"
-#~ msgstr "勝敗"
-
-#, fuzzy
-#~ msgid "Edit Metrics"
-#~ msgstr "メトリック"
-
-#, fuzzy
-#~ msgid "Edit Statistics"
-#~ msgstr "統計"
-
-#, fuzzy
-#~ msgid "Edit Columns"
-#~ msgstr "列"
-
-#, fuzzy
-#~ msgid "All Leagues"
-#~ msgstr "リーグ"
-
-#, fuzzy
-#~ msgid "Edit League"
-#~ msgstr "リーグ"
-
-#, fuzzy
-#~ msgid "View League"
-#~ msgstr "リーグ"
-
-#, fuzzy
-#~ msgid "Update League"
-#~ msgstr "%sを更新"
-
-#, fuzzy
-#~ msgid "New League Name"
-#~ msgstr "新規%s名"
-
-#, fuzzy
-#~ msgid "Parent League"
-#~ msgstr "親%s"
-
-#, fuzzy
-#~ msgid "Parent League:"
-#~ msgstr "リーグ:"
-
-#, fuzzy
-#~ msgid "Search Leagues"
-#~ msgstr "%sを検索"
-
-#, fuzzy
-#~ msgid "No leagues found."
-#~ msgstr "%sが見つかりませんでした"
-
-#, fuzzy
-#~ msgid "All Positions"
-#~ msgstr "ポジション"
-
-#, fuzzy
-#~ msgid "Edit Position"
-#~ msgstr "ポジション"
-
-#, fuzzy
-#~ msgid "View Position"
-#~ msgstr "ポジション"
-
-#, fuzzy
-#~ msgid "Update Position"
-#~ msgstr "ポジション"
-
-#, fuzzy
-#~ msgid "Add New Position"
-#~ msgstr "新規%sを追加"
-
-#, fuzzy
-#~ msgid "New Position Name"
-#~ msgstr "新規%s名"
-
-#, fuzzy
-#~ msgid "Parent Position"
-#~ msgstr "ポジション"
-
-#, fuzzy
-#~ msgid "Parent Position:"
-#~ msgstr "ポジション"
-
-#, fuzzy
-#~ msgid "Search Positions"
-#~ msgstr "ポジション"
-
-#, fuzzy
-#~ msgid "No positions found."
-#~ msgstr "%sが見つかりませんでした"
-
-#, fuzzy
-#~ msgid "All Seasons"
-#~ msgstr "シーズン"
-
-#, fuzzy
-#~ msgid "Edit Season"
-#~ msgstr "シーズン"
-
-#, fuzzy
-#~ msgid "View Season"
-#~ msgstr "シーズン"
-
-#, fuzzy
-#~ msgid "Update Season"
-#~ msgstr "%sを更新"
-
-#, fuzzy
-#~ msgid "New Season Name"
-#~ msgstr "新規%s名"
-
-#, fuzzy
-#~ msgid "Parent Season"
-#~ msgstr "親%s"
-
-#, fuzzy
-#~ msgid "Parent Season:"
-#~ msgstr "親%s"
-
-#, fuzzy
-#~ msgid "Search Seasons"
-#~ msgstr "%sを検索"
-
-#, fuzzy
-#~ msgid "No seasons found."
-#~ msgstr "%sが見つかりませんでした"
-
-#, fuzzy
-#~ msgid "All Venues"
-#~ msgstr "会場"
-
-#, fuzzy
-#~ msgid "Edit Venue"
-#~ msgstr "会場"
-
-#, fuzzy
-#~ msgid "View Venue"
-#~ msgstr "会場"
-
-#, fuzzy
-#~ msgid "New Venue Name"
-#~ msgstr "新規%s名"
-
-#, fuzzy
-#~ msgid "Parent Venue"
-#~ msgstr "親%s"
-
-#, fuzzy
-#~ msgid "Parent Venue:"
-#~ msgstr "親%s"
-
-#, fuzzy
-#~ msgid "Search Venues"
-#~ msgstr "%sを検索"
-
-#, fuzzy
-#~ msgid "No venues found."
-#~ msgstr "%sが見つかりませんでした"
-
-#, fuzzy
-#~ msgid "Eritrea"
-#~ msgstr "連勝敗"
-
-#, fuzzy
-#~ msgid "France"
-#~ msgstr "キャンセル"
-
-#, fuzzy
-#~ msgid "New Zealand"
-#~ msgstr "チーム"
-
-#, fuzzy
-#~ msgid "East Timor"
-#~ msgstr "チーム"
-
-#~ msgid "Precision"
-#~ msgstr "浮動小数点数"
-
-#~ msgid "Sum"
-#~ msgstr "合計"
-
-#~ msgid "events"
-#~ msgstr "試合"
-
-#~ msgid "Map"
-#~ msgstr "地図"
-
-#~ msgid "%s updated."
-#~ msgstr "%sを更新しました。"
-
-#~ msgid "%s published."
-#~ msgstr "%sを公開しました。"
-
-#~ msgid "%s submitted."
-#~ msgstr "%sを作成しました。"
-
-#~ msgid "%s draft updated."
-#~ msgstr "%sの下書きを更新しました。"
-
-#~ msgid "columns"
-#~ msgstr "列"
-
-#~ msgid "metrics"
-#~ msgstr "メトリック"
-
-#~ msgid "outcome"
-#~ msgstr "勝敗"
-
-#~ msgid "players"
-#~ msgstr "選手"
-
-#~ msgid "Value"
-#~ msgstr "値"
-
-#~ msgid "result"
-#~ msgstr "結果"
-
-#~ msgid "staff"
-#~ msgstr "スタッフ"
-
-#~ msgid "statistics"
-#~ msgstr "統計"
-
-#~ msgid "teams"
-#~ msgstr "チーム"
-
-#~ msgid "league"
-#~ msgstr "リーグ"
-
-#~ msgid "position"
-#~ msgstr "ポジション"
-
-#~ msgid "season"
-#~ msgstr "シーズン"
-
-#~ msgid "venue"
-#~ msgstr "会場"
-
-#~ msgid "Countdown"
-#~ msgstr "カウントダウン"
-
-#~ msgid "Event:"
-#~ msgstr "イベント:"
-
-#~ msgid "1 View"
-#~ msgstr "1回"
+#~ msgid "%1$s %2$s"
+#~ msgstr "%1$s %2$s"
 
 #~ msgid "-- Not Set --"
-#~ msgstr "-- 未設定 --"
-
-#~ msgid "positions"
-#~ msgstr "ポジション"
+#~ msgstr "-- Pas réglé --"
 
 #~ msgid "Points"
 #~ msgstr "点数"
@@ -1650,11 +1895,9 @@ msgstr "サッカー"
 #~ msgid "Weight"
 #~ msgstr "体重"
 
-#, fuzzy
 #~ msgid "Conversions"
 #~ msgstr "ポジション"
 
-#, fuzzy
 #~ msgid "Drop Goals"
 #~ msgstr "得点"
 
@@ -1669,9 +1912,6 @@ msgstr "サッカー"
 
 #~ msgid "Red Cards"
 #~ msgstr "退場"
-
-#~ msgid "%1$s %2$s"
-#~ msgstr "%2$s年%1$s月"
 
 #~ msgid "#"
 #~ msgstr "#"
@@ -1691,26 +1931,12 @@ msgstr "サッカー"
 #~ msgid "Appearances"
 #~ msgstr "出場"
 
-#~ msgid "Joined: <b>%1$s</b>"
-#~ msgstr "入団日: <b>%1$s</b>"
-
-#~ msgid "Table Columns"
-#~ msgstr "順位表列"
-
-#~ msgid "Table Column"
-#~ msgstr "順位表列"
-
 #~ msgid "table columns"
 #~ msgstr "順位表列"
 
 #~ msgid "Format"
 #~ msgstr "フォーマット"
 
-#, fuzzy
-#~ msgid "Player Statistic"
-#~ msgstr "選手名鑑"
-
-#, fuzzy
 #~ msgid "player statistics"
 #~ msgstr "選手名鑑"
 
