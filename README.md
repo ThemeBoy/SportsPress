@@ -1,4 +1,4 @@
-# SportsPress - automated league statistics
+# SportsPress - automated league stats
 
 Welcome to the SportsPress repository on GitHub. Here you can browse the source, look at open issues and keep track of development.
 
