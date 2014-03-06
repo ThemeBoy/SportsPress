@@ -1,8 +1,9 @@
 <?php
 function sportspress_player_post_init() {
 	$labels = array(
-		'name' => __( 'Players', 'sportspress' ),
+		'name' => __( 'Roster', 'sportspress' ),
 		'singular_name' => __( 'Player', 'sportspress' ),
+		'all_items' => __( 'Players', 'sportspress' ),
 		'add_new_item' => __( 'Add New', 'sportspress' ),
 		'edit_item' => __( 'Edit', 'sportspress' ),
 		'new_item' => __( 'New', 'sportspress' ),
