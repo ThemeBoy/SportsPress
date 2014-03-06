@@ -25,9 +25,6 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-megaphone:before {
-	content: "\f155";
-}
 .icon-calendar:before {
 	content: "\f145";
 }
@@ -37,11 +34,17 @@
 .icon-calendar:before {
 	content: "\f469";
 }
-
+.icon-tshirt:before {
+	content: "\f307";
+}
+.icon-megaphone:before {
+	content: "\f155";
+}
 
 #adminmenu #toplevel_page_sportspress .menu-icon-generic div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_event .menu-icon-sp_event div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_team .menu-icon-sp_team div.wp-menu-image:before,
+#adminmenu #menu-posts-sp_player .menu-icon-sp_player div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_sponsor .menu-icon-sp_sponsor div.wp-menu-image:before {
 	font-family: sportspress, dashicons !important;
 }
@@ -264,6 +267,11 @@ table.widefat.sp-data-table tr:hover a.sp-edit-name {
 	-moz-opacity: 1;
 	opacity: 1;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+table.widefat.sp-league-table th input[type=checkbox] {
+	margin: -4px 1px 0;
+	vertical-align: middle;
 }
 
 .sp-admin-config-table th,
