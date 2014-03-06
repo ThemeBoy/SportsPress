@@ -128,6 +128,9 @@ function sportspress_save_post( $post_id ) {
 
 		case ( 'sp_table' ):
 
+			// Update columns array
+			update_post_meta( $post_id, 'sp_columns', sportspress_array_value( $_POST, 'sp_columns', array() ) );
+
 			// Update teams array
 			update_post_meta( $post_id, 'sp_teams', sportspress_array_value( $_POST, 'sp_teams', array() ) );
 

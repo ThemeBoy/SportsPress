@@ -100,9 +100,9 @@ function sportspress_table_team_meta( $post, $test ) {
 
 function sportspress_table_columns_meta( $post ) {
 
-	list( $columns, $data, $placeholders, $merged ) = sportspress_get_league_table_data( $post->ID, true );
+	list( $columns, $usecolumns, $data, $placeholders, $merged ) = sportspress_get_league_table_data( $post->ID, true );
 
-	sportspress_edit_league_table( $columns, $data, $placeholders );
+	sportspress_edit_league_table( $columns, $usecolumns, $data, $placeholders );
 
 	sportspress_nonce();
 }

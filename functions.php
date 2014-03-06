@@ -190,7 +190,7 @@ if ( !function_exists( 'sportspress_get_post_datetime' ) ) {
 		if ( $post->post_status == 'future' ):
 			$status = __( 'Scheduled', 'sportspress' );
 		elseif( $post->post_status == 'publish' ):
-			$status = __( 'Played', 'sportspress' );
+			$status = __( 'Published', 'sportspress' );
 		elseif( $post->post_status == 'draft' ):
 			$status = __( 'Draft', 'sportspress' );
 		else:
@@ -772,15 +772,18 @@ if ( !function_exists( 'sportspress_get_var_calculates' ) ) {
 }
 
 if ( !function_exists( 'sportspress_edit_league_table' ) ) {
-	function sportspress_edit_league_table( $columns = array(), $data = array(), $placeholders = array() ) {
+	function sportspress_edit_league_table( $columns = array(), $usecolumns = array(), $data = array(), $placeholders = array() ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-league-table">
 				<thead>
 					<tr>
 						<th><?php _e( 'Team', 'sportspress' ); ?></th>
-						<?php foreach ( $columns as $label ): ?>
-							<th><?php echo $label; ?></th>
+						<?php foreach ( $columns as $key => $label ): ?>
+							<th><label for="sp_columns_<?php echo $key; ?>">
+								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! $usecolumns || empty( array_filter( $usecolumns ) ) || in_array( $key, $usecolumns ) ); ?>>
+								<?php echo $label; ?>
+							</label></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>
@@ -1638,6 +1641,7 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 		$div_id = sportspress_get_the_term_id( $post_id, 'sp_season', 0 );
 		$team_ids = (array)get_post_meta( $post_id, 'sp_team', false );
 		$table_stats = (array)get_post_meta( $post_id, 'sp_teams', true );
+		$usecolumns = get_post_meta( $post_id, 'sp_columns', true );
 
 		// Get labels from result variables
 		$result_labels = (array)sportspress_get_var_labels( 'sp_result' );
@@ -1890,8 +1894,13 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 		endforeach;
 		
 		if ( $breakdown ):
-			return array( $columns, $data, $placeholders, $merged );
+			return array( $columns, $usecolumns, $data, $placeholders, $merged );
 		else:
+			foreach( $columns as $key => $label ):
+				if ( ! in_array( $key, $usecolumns ) ):
+					unset( $columns[ $key ] );
+				endif;
+			endforeach;
 			$labels = array_merge( array( 'name' => __( 'Team', 'sportspress' ) ), $columns );
 			$merged[0] = $labels;
 			return $merged;
