@@ -3,7 +3,7 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 	global $typenow;
 
 	if ( is_admin() ):
-		if ( 'sp_team' == $typenow ):
+		if ( in_array( $typenow, array( 'sp_team', 'sp_sponsor' ) ) ):
 			switch ( $untranslated_text ):
 			case 'Enter title here':
 				$translated_text = __( 'Team', 'sportspress' );
@@ -11,17 +11,37 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 			case 'Set featured image':
 				$translated_text = __( 'Select Logo', 'sportspress' );
 				break;
+			case 'Featured Image':
+				$translated_text = __( 'Logo', 'sportspress' );
+				break;
 			case 'Set Featured Image':
 				$translated_text = __( 'Select Logo', 'sportspress' );
 				break;
 			case 'Remove featured image':
 				$translated_text = __( 'Remove Logo', 'sportspress' );
 				break;
+			case 'Author':
+				$translated_text = __( 'User', 'sportspress' );
+				break;
 			endswitch;
 		elseif ( in_array( $typenow, array( 'sp_event', 'sp_player', 'sp_staff' ) ) ):
 			switch ( $untranslated_text ):
 			case 'Enter title here':
 				$translated_text = __( '(Auto)', 'sportspress' );
+				break;
+			case 'Publish <b>immediately</b>':
+				$translated_text = __( 'Date/Time:', 'sportspress' ) . ' <b>' . __( 'Now', 'sportspress' ) . '</b>';
+				break;
+			case 'Author':
+				$translated_text = __( 'User', 'sportspress' );
+				break;
+			endswitch;
+		endif;
+		
+		if ( in_array( $typenow, array( 'sp_player', 'sp_staff' ) ) ):
+			switch ( $untranslated_text ):
+			case 'Featured Image':
+				$translated_text = __( 'Photo', 'sportspress' );
 				break;
 			case 'Set featured image':
 				$translated_text = __( 'Select Photo', 'sportspress' );

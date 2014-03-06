@@ -4,7 +4,7 @@ function sportspress_event_post_init() {
 		'name' => __( 'Schedule', 'sportspress' ),
 		'singular_name' => __( 'Event', 'sportspress' ),
 		'all_items' => __( 'Events', 'sportspress' ),
-		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'add_new_item' => __( 'Add New Event', 'sportspress' ),
 		'edit_item' => __( 'Edit', 'sportspress' ),
 		'new_item' => __( 'New', 'sportspress' ),
 		'view_item' => __( 'View', 'sportspress' ),
@@ -48,7 +48,7 @@ function sportspress_event_meta_init( $post ) {
 
 	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_event_details_meta', 'sp_event', 'side', 'high' );
-	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_event_team_meta', 'sp_event', 'side', 'high' );
+	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_event_team_meta', 'sp_event', 'side', 'default' );
 	if ( sizeof( $teams ) > 0 )
 		add_meta_box( 'sp_resultsdiv', __( 'Results', 'sportspress' ), 'sportspress_event_results_meta', 'sp_event', 'normal', 'high' );
 

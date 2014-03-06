@@ -3,7 +3,7 @@ function sportspress_column_post_init() {
 	$labels = array(
 		'name' => __( 'Columns', 'sportspress' ),
 		'singular_name' => __( 'Column', 'sportspress' ),
-		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'add_new_item' => __( 'Add New Column', 'sportspress' ),
 		'edit_item' => __( 'Edit', 'sportspress' ),
 		'new_item' => __( 'New', 'sportspress' ),
 		'view_item' => __( 'View', 'sportspress' ),

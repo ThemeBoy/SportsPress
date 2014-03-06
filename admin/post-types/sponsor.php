@@ -3,7 +3,7 @@ function sportspress_sponsor_post_init() {
 	$labels = array(
 		'name' => __( 'Sponsors', 'sportspress' ),
 		'singular_name' => __( 'Sponsor', 'sportspress' ),
-		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'add_new_item' => __( 'Add New Sponsor', 'sportspress' ),
 		'edit_item' => __( 'Edit', 'sportspress' ),
 		'new_item' => __( 'New', 'sportspress' ),
 		'view_item' => __( 'View', 'sportspress' ),
@@ -17,7 +17,7 @@ function sportspress_sponsor_post_init() {
 		'public' => true,
 		'has_archive' => false,
 		'hierarchical' => false,
-		'supports' => array( 'title', 'author', 'thumbnail' ),
+		'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sportspress_sponsor_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_sponsor_slug', 'sponsor' ) ),
 		'menu_icon' => 'dashicons-star-filled',
@@ -28,12 +28,7 @@ function sportspress_sponsor_post_init() {
 add_action( 'init', 'sportspress_sponsor_post_init' );
 
 function sportspress_sponsor_meta_init() {
-	remove_meta_box( 'submitdiv', 'sp_sponsor', 'side' );
-	add_meta_box( 'submitdiv', __( 'Publish', 'sportspress' ), 'post_submit_meta_box', 'sp_sponsor', 'side', 'high' );
-	remove_meta_box( 'postimagediv', 'sp_sponsor', 'side' );
-	add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_sponsor', 'side', 'low' );
-	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_sponsor_team_meta', 'sp_sponsor', 'side', 'high' );
-	add_meta_box( 'sp_profilediv', __( 'Profile', 'sportspress' ), 'sportspress_sponsor_profile_meta', 'sp_sponsor', 'normal', 'high' );
+	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_sponsor_team_meta', 'sp_sponsor', 'side', 'default' );
 }
 function sportspress_sponsor_team_meta( $post ) {
 	sportspress_post_checklist( $post->ID, 'sp_team' );
