@@ -42,14 +42,16 @@ function sportspress_sport_callback() {
 	$selected = sportspress_array_value( $options, 'sport', null );
 	$custom_sport_name = sportspress_array_value( $options, 'custom_sport_name', null );
 	?>
-	<select id="sportspress_sport" name="sportspress[sport]">
-		<option value><?php _e( '&mdash; Select &mdash;', 'sportspress' ); ?></option>
-		<?php foreach( $sportspress_sports as $slug => $sport ): ?>
-			<option value="<?php echo $slug; ?>" <?php selected( $selected, $slug ); ?>><?php echo $sport['name']; ?></option>
-		<?php endforeach; ?>
-		<option value="custom" <?php selected( $selected, 'custom' ); ?>><?php _e( 'Custom', 'sportspress' ); ?></option>
-	</select>
-	<input id="sportspress_custom_sport_name" name="sportspress[custom_sport_name]" type="text" placeholder="<?php _e( 'Sport', 'sportspress' ); ?>" value="<?php echo $custom_sport_name; ?>"<?php if ( $selected != 'custom' ): ?> class="hidden"<?php endif; ?>>
+	<fieldset>
+		<select id="sportspress_sport" name="sportspress[sport]">
+			<option value><?php _e( '&mdash; Select &mdash;', 'sportspress' ); ?></option>
+			<?php foreach( $sportspress_sports as $slug => $sport ): ?>
+				<option value="<?php echo $slug; ?>" <?php selected( $selected, $slug ); ?>><?php echo $sport['name']; ?></option>
+			<?php endforeach; ?>
+			<option value="custom" <?php selected( $selected, 'custom' ); ?>><?php _e( 'Custom', 'sportspress' ); ?></option>
+		</select>
+		<input id="sportspress_custom_sport_name" name="sportspress[custom_sport_name]" type="text" placeholder="<?php _e( 'Sport', 'sportspress' ); ?>" value="<?php echo $custom_sport_name; ?>"<?php if ( $selected != 'custom' ): ?> class="hidden"<?php endif; ?>>
+	</fieldset>
 	<?php
 }
 
@@ -64,7 +66,26 @@ function sportspress_result_callback() {
 		'selected' => $selected,
 		'values' => 'slug',
 	);
-	sportspress_dropdown_pages( $args );
+	?>
+	<fieldset>
+		<? sportspress_dropdown_pages( $args ); ?>
+	</fieldset>
+	<?php
+}
+
+function sportspress_team_logos_callback() {
+	$options = get_option( 'sportspress' );
+
+	$show_team_logo = sportspress_array_value( $options, 'league_table_show_team_logo', false );
+	?>
+	<fieldset>
+		<label for="sportspress_league_table_show_team_logo">
+			<input id="sportspress_league_table_show_team_logo_default" name="sportspress[league_table_show_team_logo]" type="hidden" value="0">
+			<input id="sportspress_league_table_show_team_logo" name="sportspress[league_table_show_team_logo]" type="checkbox" value="1" <?php checked( $show_team_logo ); ?>>
+			<?php _e( 'Display logos', 'sportspress' ); ?>
+		</label>
+	</fieldset>
+	<?php
 }
 
 function sportspress_team_stats_callback() {
@@ -126,13 +147,57 @@ function sportspress_settings_init() {
 		'sportspress_events',
 		'events'
 	);
+
+	// League Table Settings
+	register_setting(
+		'sportspress_tables',
+		'sportspress',
+		'sportspress_options_validate'
+	);
+	
+	add_settings_section(
+		'tables',
+		'',
+		'',
+		'sportspress_tables'
+	);
+	
+	add_settings_field(	
+		'result',
+		__( 'Teams', 'sportspress' ),
+		'sportspress_team_logos_callback',	
+		'sportspress_tables',
+		'tables'
+	);
+
+	// Player Settings
+	register_setting(
+		'sportspress_players',
+		'sportspress',
+		'sportspress_options_validate'
+	);
+	
+	add_settings_section(
+		'players',
+		'',
+		'',
+		'sportspress_players'
+	);
+	
+	add_settings_field(	
+		'result',
+		__( 'Main Result', 'sportspress' ),
+		'sportspress_result_callback',	
+		'sportspress_players',
+		'players'
+	);
 	
 }
 add_action( 'admin_init', 'sportspress_settings_init', 1 );
 
 function sportspress_options_validate( $input ) {
 	
-	$options = get_option( 'sportspress' );
+	$options = (array)get_option( 'sportspress' );
 
 	if ( isset( $input['sport'] ) && sportspress_array_value( $options, 'sport', null ) != sportspress_array_value( $input, 'sport', null ) ):
 
@@ -231,6 +296,9 @@ function sportspress_options_validate( $input ) {
 		endforeach;
 
 	endif;
+
+	if ( ! is_array( $input ) )
+		$input = array();
 
 	// Merge with existing options
 	return array_merge( $options, $input );

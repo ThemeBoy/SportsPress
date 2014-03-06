@@ -1,4 +1,9 @@
+<h3 class="title"><?php _e( 'League Table Settings', 'sportspress' ); ?></h3>
 <?php
+settings_fields( 'sportspress_tables' );
+do_settings_sections( 'sportspress_tables' );
+submit_button();
+
 $args = array(
 	'post_type' => 'sp_column',
 	'numberposts' => -1,
