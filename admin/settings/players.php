@@ -1,4 +1,9 @@
+<h3 class="title"><?php _e( 'Player Settings', 'sportspress' ); ?></h3>
 <?php
+settings_fields( 'sportspress_players' );
+do_settings_sections( 'sportspress_players' );
+submit_button();
+
 $args = array(
 	'post_type' => 'sp_metric',
 	'numberposts' => -1,

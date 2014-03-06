@@ -5,9 +5,12 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 		if ( ! $id )
 			$id = get_the_ID();
 
+		$options = get_option( 'sportspress' );
+
 		$defaults = array(
 			'columns' => null,
 			'show_full_table_link' => false,
+			'show_team_logo' => sportspress_array_value( $options, 'league_table_show_team_logo', false ),
 		);
 
 		$r = wp_parse_args( $args, $defaults );
@@ -44,7 +47,11 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 			$output .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
 
 			$name = sportspress_array_value( $row, 'name', sportspress_array_value( $row, 'name', '&nbsp;' ) );
-			$output .= '<td class="data-name"><a href="' . get_post_permalink( $team_id ) . '">' . $name . '</a></td>';
+
+			if ( $r['show_team_logo'] )
+				$name = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon' ) . ' ' . $name;
+
+			$output .= '<td class="data-name">' . $name . '</td>';
 
 			foreach( $labels as $key => $value ):
 				if ( $key == 'name' )
