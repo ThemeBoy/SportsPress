@@ -32,12 +32,6 @@ function sportspress_admin_menu( $position ) {
 		$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], 'sportspress_admin_menu_remove_seasons' );
 	endif;
 
-    // Remove "Leagues" and "Seasons" links from Staff submenu
-	if ( isset( $submenu['edit.php?post_type=sp_staff'] ) ):
-		$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], 'sportspress_admin_menu_remove_leagues' );
-		$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], 'sportspress_admin_menu_remove_seasons' );
-	endif;
-
 }
 add_action( 'admin_menu', 'sportspress_admin_menu' );
 
