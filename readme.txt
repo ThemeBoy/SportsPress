@@ -8,7 +8,7 @@ Stable tag: 0.4.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-SportsPress is a fully configurable sports plugin that seemlessly automates league, team, and player statistics. Currently in beta.
+SportsPress is a fully configurable sports plugin that seamlessly automates league, team, and player statistics. Currently in beta.
 
 == Description ==
 
@@ -38,8 +38,6 @@ League table columns, player statistics, and match results can be customized to 
 * Italian - Italiano (it_IT)
 * Japanese - 日本語 (ja)
 * Swedish - Svenska (sv_SE)
-
-[Let us know](http://wordpress.org/support/plugin/sportspress) if you come across any missing or inaccurate translations in your language.
 
 = Get involved =
 
