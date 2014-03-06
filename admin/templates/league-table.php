@@ -7,6 +7,7 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 
 		$defaults = array(
 			'columns' => null,
+			'show_full_table_link' => false,
 		);
 
 		$r = wp_parse_args( $args, $defaults );
@@ -58,7 +59,12 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 
 		endforeach;
 
-		$output .= '</tbody>' . '</table>' . '</div>';
+		$output .= '</tbody>' . '</table>';
+
+		if ( $r['show_full_table_link'] )
+			$output .= '<a class="sp-league-table-link" href="' . get_permalink( $id ) . '">' . __( 'View full table', 'sportspress' ) . '</a>';
+
+		$output .= '</div>';
 
 		return apply_filters( 'sportspress_league_table',  $output, $id );
 
