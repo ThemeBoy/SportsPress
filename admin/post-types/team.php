@@ -3,7 +3,7 @@ function sportspress_team_post_init() {
 	$labels = array(
 		'name' => __( 'Teams', 'sportspress' ),
 		'singular_name' => __( 'Team', 'sportspress' ),
-		'add_new_item' => __( 'Add New', 'sportspress' ),
+		'add_new_item' => __( 'Add New Team', 'sportspress' ),
 		'edit_item' => __( 'Edit', 'sportspress' ),
 		'new_item' => __( 'New', 'sportspress' ),
 		'view_item' => __( 'View', 'sportspress' ),
@@ -31,11 +31,6 @@ add_action( 'init', 'sportspress_team_post_init' );
 function sportspress_team_meta_init( $post ) {
 	$leagues = get_the_terms( $post->ID, 'sp_league' );
 	$seasons = get_the_terms( $post->ID, 'sp_season' );
-
-	remove_meta_box( 'submitdiv', 'sp_team', 'side' );
-	add_meta_box( 'submitdiv', __( 'Publish', 'sportspress' ), 'post_submit_meta_box', 'sp_team', 'side', 'high' );
-	remove_meta_box( 'postimagediv', 'sp_team', 'side' );
-	add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'low' );
 
 	if ( $leagues && $seasons ):
 		add_meta_box( 'sp_columnssdiv', __( 'Columns', 'sportspress' ), 'sportspress_team_columns_meta', 'sp_team', 'normal', 'high' );
