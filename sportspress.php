@@ -66,6 +66,7 @@ require_once dirname( __FILE__ ) . '/admin/post-types/table.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/player.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/list.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/sponsor.php';
 
 // Terms
 require_once dirname( __FILE__ ) . '/admin/terms/league.php';

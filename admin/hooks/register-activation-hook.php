@@ -75,6 +75,17 @@ function sportspress_activation_hook() {
             'delete_private_sp_tables' => true,
             'delete_published_sp_tables' => true,
 
+            'edit_sp_sponsor' => true,
+            'edit_sp_sponsors' => true,
+            'edit_private_sp_sponsors' => true,
+            'edit_published_sp_sponsors' => true,
+            'read_sp_sponsors' => true,
+            'read_private_sp_sponsors' => true,
+            'publish_sp_sponsors' => true,
+            'delete_sp_sponsors' => true,
+            'delete_private_sp_sponsors' => true,
+            'delete_published_sp_sponsors' => true,
+
             'view_sportspress_reports' => true,
         )
     );
