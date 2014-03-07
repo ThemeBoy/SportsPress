@@ -1,11 +1,19 @@
 <?php
 if ( !function_exists( 'sportspress_player_metrics' ) ) {
-	function sportspress_player_metrics( $id = null ) {
+	function sportspress_player_metrics( $id = null, $args = '' ) {
 
 		if ( ! $id )
 			$id = get_the_ID();
 
 		global $sportspress_countries;
+
+		$options = get_option( 'sportspress' );
+
+		$defaults = array(
+			'show_nationality_flag' => sportspress_array_value( $options, 'player_show_nationality_flag', true ),
+		);
+
+		$r = wp_parse_args( $args, $defaults );
 
 		$nationality = get_post_meta( $id, 'sp_nationality', true );
 		$current_team = get_post_meta( $id, 'sp_current_team', true );
@@ -15,7 +23,7 @@ if ( !function_exists( 'sportspress_player_metrics' ) ) {
 		$common = array();
 		if ( $nationality ):
 			$country_name = sportspress_array_value( $sportspress_countries, $nationality, null );
-			$common[ __( 'Nationality', 'sportspress' ) ] = $country_name ? '<img src="' . SPORTSPRESS_PLUGIN_URL . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' . $country_name : '&mdash;';
+			$common[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $r['show_nationality_flag'] ? '<img src="' . SPORTSPRESS_PLUGIN_URL . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 		endif;
 
 		$data = array_merge( $common, $metrics );

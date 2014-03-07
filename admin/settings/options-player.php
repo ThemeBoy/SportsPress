@@ -1,4 +1,19 @@
 <?php
+function sportspress_player_settings_nationality_callback() {
+	$options = get_option( 'sportspress' );
+
+	$show_nationality_flag = sportspress_array_value( $options, 'player_show_nationality_flag', true );
+	?>
+	<fieldset>
+		<label for="sportspress_player_show_nationality_flag">
+			<input id="sportspress_player_show_nationality_flag_default" name="sportspress[player_show_nationality_flag]" type="hidden" value="0">
+			<input id="sportspress_player_show_nationality_flag" name="sportspress[player_show_nationality_flag]" type="checkbox" value="1" <?php checked( $show_nationality_flag ); ?>>
+			<?php _e( 'Display flag', 'sportspress' ); ?>
+		</label>
+	</fieldset>
+	<?php
+}
+
 function sportspress_player_settings_metrics_callback() {
 	$args = array(
 		'post_type' => 'sp_metric',
@@ -101,6 +116,14 @@ function sportspress_player_settings_init() {
 		'',
 		'',
 		'sportspress_players'
+	);
+	
+	add_settings_field(	
+		'nationality',
+		__( 'Nationality', 'sportspress' ),
+		'sportspress_player_settings_nationality_callback',	
+		'sportspress_players',
+		'players'
 	);
 	
 	add_settings_field(	
