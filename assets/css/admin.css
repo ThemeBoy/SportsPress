@@ -258,7 +258,19 @@ table.widefat.sp-league-table th input[type=checkbox] {
 
 .sp-admin-config-table th,
 .sp-admin-config-table td {
-	width: 20%;
+	padding: 8px 10px;
+}
+
+.sp-admin-config-table th.radio,
+.sp-admin-config-table td.radio {
+	width: 1%;
+	text-align: center;
+}
+
+.sp-admin-config-table th.radio input[type=radio],
+.sp-admin-config-table td.radio input[type=radio] {
+	margin: 0;
+	vertical-align: middle;
 }
 
 table.widefat th.column-sp_icon,
