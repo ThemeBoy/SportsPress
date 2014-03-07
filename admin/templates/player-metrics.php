@@ -7,18 +7,16 @@ if ( !function_exists( 'sportspress_player_metrics' ) ) {
 
 		global $sportspress_countries;
 
-		$number = get_post_meta( $id, 'sp_number', true );
 		$nationality = get_post_meta( $id, 'sp_nationality', true );
 		$current_team = get_post_meta( $id, 'sp_current_team', true );
 		$past_teams = get_post_meta( $id, 'sp_past_team', false );
 		$metrics = sportspress_get_player_metrics_data( $id );
 
 		$common = array();
-
-		if ( $number != null )
-			$common[ __( 'Number', 'sportspress' ) ] = $number;
-		if ( $nationality )
-			$common[ __( 'Nationality', 'sportspress' ) ] = sportspress_array_value( $sportspress_countries, $nationality, '&mdash;' );
+		if ( $nationality ):
+			$country_name = sportspress_array_value( $sportspress_countries, $nationality, null );
+			$common[ __( 'Nationality', 'sportspress' ) ] = $country_name ? '<img src="' . SPORTSPRESS_PLUGIN_URL . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' . $country_name : '&mdash;';
+		endif;
 
 		$data = array_merge( $common, $metrics );
 

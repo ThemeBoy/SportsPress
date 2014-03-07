@@ -92,6 +92,7 @@ require_once dirname( __FILE__ ) . '/admin/hooks/plugins-loaded.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/after-setup-theme.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/wp-enqueue-scripts.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/loop-start.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/the-title.php';
 
 // Admin request actions
 require_once dirname( __FILE__ ) . '/admin/hooks/admin-init.php';
