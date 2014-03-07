@@ -41,21 +41,6 @@ function viewport() {
 		      { "sType": "numeric", "aTargets": [ 0 ] },
 		    ]
 		});
-
-		$(".sp-player-statistics").dataTable({
-			"aaSorting": [],
-			"bAutoWidth": false,
-			"bFilter": false,
-			"bInfo": false,
-			"bPaginate": false,
-			"bSort": true,
-		    "oLanguage": {
-		      "oAria": {
-		        "sSortAscending": "",
-		        "sSortDescending": ""
-		      }
-		    }
-		});
 	}
 
 

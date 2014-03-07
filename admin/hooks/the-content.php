@@ -62,7 +62,7 @@ function sportspress_default_player_content( $content ) {
     if ( is_singular( 'sp_player' ) && in_the_loop() ):
         $metrics = sportspress_player_metrics();
         $statistics = sportspress_player_statistics();
-        $content = $metrics . $statistics . $content;
+        $content .= $metrics . $statistics;
     endif;
     return $content;
 }
@@ -76,19 +76,3 @@ function sportspress_default_list_content( $content ) {
     return $content;
 }
 add_filter( 'the_content', 'sportspress_default_list_content' );
-
-
-/* 
-    if ( ! $slug )
-        return;
-
-    $venue = get_term_by( 'slug', $slug, 'sp_venue' );
-    $t_id = $venue->term_id;
-    $venue_meta = get_option( "taxonomy_$t_id" );
-    $address = sportspress_array_value( $venue_meta, 'sp_address', null );
-    $latitude = sportspress_array_value( $venue_meta, 'sp_latitude', null );
-    $longitude = sportspress_array_value( $venue_meta, 'sp_longitude', null );
-
-    if ( $latitude != null && $longitude != null )
-        echo '<div class="sp-google-map" data-address="' . $address . '" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '"></div>';
-        */
