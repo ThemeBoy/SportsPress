@@ -8,6 +8,7 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 		$options = get_option( 'sportspress' );
 
 		$defaults = array(
+			'number' => -1,
 			'columns' => null,
 			'show_full_table_link' => false,
 			'show_team_logo' => sportspress_array_value( $options, 'league_table_show_team_logo', false ),
@@ -38,6 +39,9 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 		$output .= '</tr>' . '</thead>' . '<tbody>';
 
 		$i = 0;
+
+		if ( is_int( $r['number'] ) && $r['number'] > 0 )
+			$data = array_slice( $data, 0, $r['number'] );
 
 		foreach( $data as $team_id => $row ):
 

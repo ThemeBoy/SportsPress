@@ -10,6 +10,7 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$id = empty($instance['id']) ? null : $instance['id'];
+		$number = empty($instance['number']) ? null : $instance['number'];
 		$columns = empty($instance['columns']) ? null : $instance['columns'];
 		$show_team_logo = empty($instance['show_team_logo']) ? false : $instance['show_team_logo'];
 		$show_full_table_link = empty($instance['show_full_table_link']) ? false : $instance['show_full_table_link'];
@@ -17,7 +18,7 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 		echo '<div id="sp_league_table_wrap">';
-		echo sportspress_league_table( $id, array( 'columns' => $columns, 'show_full_table_link' => $show_full_table_link, 'show_team_logo' => $show_team_logo ) );
+		echo sportspress_league_table( $id, array( 'number' => $number, 'columns' => $columns, 'show_full_table_link' => $show_full_table_link, 'show_team_logo' => $show_team_logo ) );
 		echo '</div>';
 		echo $after_widget;
 	}
@@ -26,6 +27,7 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['id'] = intval($new_instance['id']);
+		$instance['number'] = intval($new_instance['number']);
 		$instance['columns'] = (array)$new_instance['columns'];
 		$instance['show_team_logo'] = $new_instance['show_team_logo'];
 		$instance['show_full_table_link'] = $new_instance['show_full_table_link'];
@@ -34,9 +36,10 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'columns' => null, 'show_team_logo' => false, 'show_full_table_link' => true ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'number' => 5, 'columns' => null, 'show_team_logo' => false, 'show_full_table_link' => true ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
+		$number = intval($instance['number']);
 		$columns = $instance['columns'];
 		$show_team_logo = $instance['show_team_logo'];
 		$show_full_table_link = $instance['show_full_table_link'];
@@ -59,6 +62,9 @@ class SportsPress_Widget_League_Table extends WP_Widget {
 		endif;
 		?>
 		</p>
+
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of teams to show:', 'sportspress' ); ?></label>
+		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" size="3"></p>
 
 		<p class="sp-prefs">
 			<?php _e( 'Columns:', 'sportspress' ); ?><br>
