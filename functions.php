@@ -773,6 +773,7 @@ if ( !function_exists( 'sportspress_get_var_calculates' ) ) {
 
 if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 	function sportspress_edit_league_table( $columns = array(), $usecolumns = array(), $data = array(), $placeholders = array() ) {
+		$usecolumns = array_filter( $usecolumns );
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-league-table">
@@ -781,7 +782,7 @@ if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 						<th><?php _e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
-								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! $usecolumns || empty( array_filter( $usecolumns ) ) || in_array( $key, $usecolumns ) ); ?>>
+								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! $usecolumns || empty( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
 								<?php echo $label; ?>
 							</label></th>
 						<?php endforeach; ?>
