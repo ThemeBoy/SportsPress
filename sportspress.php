@@ -50,8 +50,12 @@ require_once dirname( __FILE__ ) . '/admin/templates/player-metrics.php';
 require_once dirname( __FILE__ ) . '/admin/templates/player-statistics.php';
 require_once dirname( __FILE__ ) . '/admin/templates/team-columns.php';
 
-// Settings
-require_once dirname( __FILE__ ) . '/admin/settings/settings.php' ;
+// Options
+require_once dirname( __FILE__ ) . '/admin/settings/settings.php';
+require_once dirname( __FILE__ ) . '/admin/settings/options-general.php';
+require_once dirname( __FILE__ ) . '/admin/settings/options-event.php';
+require_once dirname( __FILE__ ) . '/admin/settings/options-table.php';
+require_once dirname( __FILE__ ) . '/admin/settings/options-player.php';
 
 // Custom post types
 require_once dirname( __FILE__ ) . '/admin/post-types/separator.php';
