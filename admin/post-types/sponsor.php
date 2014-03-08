@@ -28,16 +28,6 @@ function sportspress_sponsor_post_init() {
 add_action( 'init', 'sportspress_sponsor_post_init' );
 
 function sportspress_sponsor_meta_init() {
-	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_sponsor_team_meta', 'sp_sponsor', 'side', 'default' );
-}
-function sportspress_sponsor_team_meta( $post ) {
-	sportspress_post_checklist( $post->ID, 'sp_team' );
-	sportspress_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
-	sportspress_nonce();
-}
-
-function sportspress_sponsor_profile_meta( $post ) {
-	wp_editor( $post->post_content, 'content' );
 }
 
 function sportspress_sponsor_edit_columns() {
@@ -45,10 +35,6 @@ function sportspress_sponsor_edit_columns() {
 		'cb' => '<input type="checkbox" />',
 		'sp_icon' => '&nbsp;',
 		'title' => __( 'Name', 'sportspress' ),
-		'sp_position' => __( 'Positions', 'sportspress' ),
-		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_league' => __( 'Leagues', 'sportspress' ),
-		'sp_season' => __( 'Seasons', 'sportspress' ),
 		'sp_views' => __( 'Views', 'sportspress' ),
 	);
 	return $columns;
