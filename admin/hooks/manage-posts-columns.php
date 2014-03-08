@@ -11,6 +11,8 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 	switch ( $column ):
 		case 'sp_icon':
 			edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-icon' ), '', '', $post_id );
+			break;
+		case 'sp_number':
 			echo '<strong>' . get_post_meta( $post_id, 'sp_number', true ) . '</strong>';
 			break;
 		case 'sp_views':

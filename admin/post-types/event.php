@@ -214,7 +214,7 @@ function sportspress_event_edit_columns() {
 		'sp_league' => __( 'League', 'sportspress' ),
 		'sp_season' => __( 'Season', 'sportspress' ),
 		'sp_venue' => __( 'Venue', 'sportspress' ),
-		'sp_datetime' => __( 'Date/Time', 'sportspress' ),
+		'sp_datetime' => '<span class="dashicons dashicons-calendar" title="' . __( 'Date/Time', 'sportspress' ) . '"></span>',
 		'sp_views' => __( 'Views', 'sportspress' ),
 	);
 	return $columns;
