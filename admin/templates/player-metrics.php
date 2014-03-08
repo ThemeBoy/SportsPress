@@ -39,20 +39,16 @@ if ( !function_exists( 'sportspress_player_metrics' ) ) {
 			$data[ __( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
 		endif;
 
-		$output = '<div class="sp-table-wrapper">' .
-			'<table class="sp-player-metrics sp-data-table sp-responsive-table">' . '<tbody>';
-
-		$i = 0;
+		$output = '<div class="sp-list-wrapper">' .
+			'<dl class="sp-player-metrics">';
 
 		foreach( $data as $label => $value ):
 
-			$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '"><th>' . $label . '</th><td>' . $value . '</td></tr>';
-
-			$i++;
+			$output .= '<dt>' . $label . '<dd>' . $value . '</dd>';
 
 		endforeach;
 
-		$output .= '</tbody>' . '</table>' . '</div>';
+		$output .= '</dl></div>';
 
 		return apply_filters( 'sportspress_player_metrics',  $output );
 
