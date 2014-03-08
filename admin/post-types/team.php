@@ -40,7 +40,7 @@ function sportspress_team_meta_init( $post ) {
 function sportspress_team_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'sp_icon' => '&nbsp;',
+		'sp_icon' => '<span class="sp-icon-shield" title="' . __( 'Logo', 'sportspress' ) . '"></span>',
 		'title' => __( 'Team', 'sportspress' ),
 		'sp_league' => __( 'Leagues', 'sportspress' ),
 		'sp_season' => __( 'Seasons', 'sportspress' ),

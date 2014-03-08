@@ -11,7 +11,7 @@
 	font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="sp-icon-"], [class*=" sp-icon-"] {
 	font-family: 'sportspress';
 	speak: none;
 	font-style: normal;
@@ -25,19 +25,19 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-calendar:before {
+.sp-icon-calendar:before {
 	content: "\f145";
 }
-.icon-shield:before {
+.sp-icon-shield:before {
 	content: "\f334";
 }
-.icon-calendar:before {
+.sp-icon-clock:before {
 	content: "\f469";
 }
-.icon-tshirt:before {
+.sp-icon-tshirt:before {
 	content: "\f307";
 }
-.icon-megaphone:before {
+.sp-icon-megaphone:before {
 	content: "\f155";
 }
 
@@ -274,7 +274,9 @@ table.widefat.sp-league-table th input[type=checkbox] {
 }
 
 table.widefat th.column-sp_icon,
-table.widefat td.column-sp_icon {
+table.widefat td.column-sp_icon,
+table.widefat th.column-sp_number,
+table.widefat td.column-sp_number {
 	width: 32px;
 	text-align: center;
 }
