@@ -12,9 +12,6 @@ function sportspress_results_callback() {
 			'order' => 'ASC'
 	);
 	$data = get_posts( $args );
-
-	$default = end( $data );
-	reset( $data );
 	?>
 	<fieldset>
 		<table class="widefat sp-admin-config-table">
@@ -28,7 +25,17 @@ function sportspress_results_callback() {
 			<tfoot>
 				<tr>
 					<th class="radio"><input type="radio" id="sportspress_main_result_0" name="sportspress[main_result]" value="0" <?php checked( $main_result, 0 ); ?>></th>
-					<th colspan="2"><label for="sportspress_main_result_0"><?php printf( __( 'Default (%s)', 'sportspress' ), $default->post_title ); ?></label></th>
+					<th colspan="2"><label for="sportspress_main_result_0">
+						<?php
+						if ( sizeof( $data ) > 0 ):
+							$default = end( $data );
+							reset( $data );
+							printf( __( 'Default (%s)', 'sportspress' ), $default->post_title );
+						else:
+							_e( 'Default', 'sportspress' );
+						endif;
+						?>
+					</label></th>
 				</tr>
 			</tfoot>
 			<?php $i = 0; foreach ( $data as $row ): ?>
