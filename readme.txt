@@ -4,7 +4,7 @@ Tags: sports, sports journalism, teams, team management, fixtures, results, stan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 0.4.1
+Stable tag: 0.4.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -144,10 +144,19 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 5. League Table widget settings.
 6. Player List widget settings.
 7. Events Calendar widget settings.
-8. Countdown widget settings.
-9. SportsPress Status dashboard widget.
+8. SportsPress Status dashboard widget.
 
 == Changelog ==
+
+= 0.4.2 =
+* Feature - Enable selecting columns to display in single league table.
+* Feature - Add options to limit rows, display logos, and display full table link.
+* Feature - Add option to display national flags in player profiles.
+* Refactor - Group Players and Staff under Roster menu group.
+* Tweak - Reorder default player profile content.
+* Tweak - Display player number before page title instead of metrics section.
+* Tweak - Display player metrics as definition list instead of table.
+* Fix - Check if static player list is array to avoid warning message.
 
 = 0.4.1 =
 * Tweak - Activate checkbox when all players are added to player list.
