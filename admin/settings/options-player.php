@@ -1,5 +1,5 @@
 <?php
-function sportspress_player_settings_nationality_callback() {
+function sportspress_player_settings_details_callback() {
 	$options = get_option( 'sportspress' );
 
 	$show_nationality_flag = sportspress_array_value( $options, 'player_show_nationality_flag', true );
@@ -8,7 +8,7 @@ function sportspress_player_settings_nationality_callback() {
 		<label for="sportspress_player_show_nationality_flag">
 			<input id="sportspress_player_show_nationality_flag_default" name="sportspress[player_show_nationality_flag]" type="hidden" value="0">
 			<input id="sportspress_player_show_nationality_flag" name="sportspress[player_show_nationality_flag]" type="checkbox" value="1" <?php checked( $show_nationality_flag ); ?>>
-			<?php _e( 'Display flag', 'sportspress' ); ?>
+			<?php _e( 'Display national flags', 'sportspress' ); ?>
 		</label>
 	</fieldset>
 	<?php
@@ -119,9 +119,9 @@ function sportspress_player_settings_init() {
 	);
 	
 	add_settings_field(	
-		'nationality',
-		__( 'Nationality', 'sportspress' ),
-		'sportspress_player_settings_nationality_callback',	
+		'details',
+		__( 'Details', 'sportspress' ),
+		'sportspress_player_settings_details_callback',	
 		'sportspress_players',
 		'players'
 	);
