@@ -80,7 +80,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 					$team = get_post( $team_id );
 					echo $team->post_title;
 					if ( $team_id == $current_team ):
-						echo ' (' . __( 'Current Team', 'sportspress' ) . ')';
+						echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
 					endif;
 					echo '<br>';
 				endforeach;
