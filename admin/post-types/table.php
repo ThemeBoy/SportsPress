@@ -47,11 +47,7 @@ function sportspress_table_meta_init( $post ) {
 	remove_meta_box( 'sp_seasondiv', 'sp_table', 'side' );
 	remove_meta_box( 'sp_leaguediv', 'sp_table', 'side' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_table_team_meta', 'sp_table', 'side', 'default' );
-
-	if ( $teams && $teams != array(0) ):
-		add_meta_box( 'sp_columnsdiv', __( 'League Table', 'sportspress' ), 'sportspress_table_columns_meta', 'sp_table', 'normal', 'high' );
-	endif;
-
+	add_meta_box( 'sp_columnsdiv', __( 'League Table', 'sportspress' ), 'sportspress_table_columns_meta', 'sp_table', 'normal', 'high' );
 	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_table_details_meta', 'sp_table', 'normal', 'high' );
 }
 
