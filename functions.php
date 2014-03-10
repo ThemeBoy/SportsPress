@@ -772,8 +772,9 @@ if ( !function_exists( 'sportspress_get_var_calculates' ) ) {
 }
 
 if ( !function_exists( 'sportspress_edit_league_table' ) ) {
-	function sportspress_edit_league_table( $columns = array(), $usecolumns = array(), $data = array(), $placeholders = array() ) {
-		$usecolumns = array_filter( $usecolumns );
+	function sportspress_edit_league_table( $columns = array(), $usecolumns = null, $data = array(), $placeholders = array() ) {
+		if ( is_array( $usecolumns ) )
+			$usecolumns = array_filter( $usecolumns );
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-league-table">
@@ -782,7 +783,7 @@ if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 						<th><?php _e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
-								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! $usecolumns || empty( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
+								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! is_array( $usecolumns) || in_array( $key, $usecolumns ) ); ?>>
 								<?php echo $label; ?>
 							</label></th>
 						<?php endforeach; ?>
@@ -790,38 +791,48 @@ if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 				</thead>
 				<tbody>
 					<?php
-					$i = 0;
-					foreach ( $data as $team_id => $team_stats ):
-						if ( !$team_id )
-							continue;
+					if ( is_array( $data ) && sizeof( $data ) > 0 ):
+						$i = 0;
+						foreach ( $data as $team_id => $team_stats ):
+							if ( !$team_id )
+								continue;
 
-						$div = get_term( $team_id, 'sp_season' );
-						$default_name = sportspress_array_value( $team_stats, 'name', '' );
-						if ( $default_name == null )
-							$default_name = get_the_title( $team_id );
-						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-							<td>
-								<span class="sp-default-name">
-									<span class="sp-default-name-input"><?php echo $default_name; ?></span>
-									<a class="dashicons dashicons-edit sp-edit-name" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>
-								</span>
-								<span class="hidden sp-custom-name">
-									<input type="text" name="sp_teams[<?php echo $team_id; ?>][name]" class="name sp-custom-name-input" value="<?php echo sportspress_array_value( $team_stats, 'name', '' ); ?>" placeholder="<?php echo get_the_title( $team_id ); ?>">
-									<a class="button button-secondary sp-cancel"><?php _e( 'Cancel', 'sportspress' ); ?></a>
-									<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
-								</span>
-							</td>
-							<?php foreach( $columns as $column => $label ):
-								$value = sportspress_array_value( $team_stats, $column, '' );
-								$placeholder = sportspress_array_value( sportspress_array_value( $placeholders, $team_id, array() ), $column, 0 );
-								?>
-								<td><input type="text" name="sp_teams[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
-							<?php endforeach; ?>
-						</tr>
-						<?php
-						$i++;
-					endforeach;
+							$div = get_term( $team_id, 'sp_season' );
+							$default_name = sportspress_array_value( $team_stats, 'name', '' );
+							if ( $default_name == null )
+								$default_name = get_the_title( $team_id );
+							?>
+							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+								<td>
+									<span class="sp-default-name">
+										<span class="sp-default-name-input"><?php echo $default_name; ?></span>
+										<a class="dashicons dashicons-edit sp-edit-name" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>
+									</span>
+									<span class="hidden sp-custom-name">
+										<input type="text" name="sp_teams[<?php echo $team_id; ?>][name]" class="name sp-custom-name-input" value="<?php echo sportspress_array_value( $team_stats, 'name', '' ); ?>" placeholder="<?php echo get_the_title( $team_id ); ?>">
+										<a class="button button-secondary sp-cancel"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+										<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
+									</span>
+								</td>
+								<?php foreach( $columns as $column => $label ):
+									$value = sportspress_array_value( $team_stats, $column, '' );
+									$placeholder = sportspress_array_value( sportspress_array_value( $placeholders, $team_id, array() ), $column, 0 );
+									?>
+									<td><input type="text" name="sp_teams[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+								<?php endforeach; ?>
+							</tr>
+							<?php
+							$i++;
+						endforeach;
+					else:
+					?>
+					<tr class="sp-row alternate">
+						<td colspan="<?php $colspan = sizeof( $columns ) + 1; echo $colspan; ?>">
+							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ); ?>
+						</td>
+					</tr>
+					<?php
+					endif;
 					?>
 				</tbody>
 			</table>
@@ -1897,7 +1908,9 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 		if ( $breakdown ):
 			return array( $columns, $usecolumns, $data, $placeholders, $merged );
 		else:
-			foreach( $columns as $key => $label ):
+			if ( ! is_array( $usecolumns ) )
+				$usecolumns = array();
+			foreach ( $columns as $key => $label ):
 				if ( ! in_array( $key, $usecolumns ) ):
 					unset( $columns[ $key ] );
 				endif;
