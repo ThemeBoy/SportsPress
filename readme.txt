@@ -4,7 +4,7 @@ Tags: sports, sports journalism, teams, team management, fixtures, results, stan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 0.4.2
+Stable tag: 0.4.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,11 +32,14 @@ League table columns, player statistics, and match results can be customized to 
 
 = Available Languages =
 * English (en_US)
+* Czech - Čeština (cs_CZ)
 * German - Deutsch (de_DE)
 * Spanish - Español (es_ES)
 * French - Français (fr_FR)
 * Italian - Italiano (it_IT)
 * Japanese - 日本語 (ja)
+* Polish - Polski (pl_PL)
+* Slovak – Slovenčina (sk_SK)
 * Swedish - Svenska (sv_SE)
 
 = Get involved =
@@ -147,6 +150,15 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 8. SportsPress Status dashboard widget.
 
 == Changelog ==
+
+= 0.4.3 =
+* Feature - Enable selecting multiple outcomes per team per event.
+* Tweak - Use icons in dashboard column labels for teams and roster.
+* Tweak - Mark current team with check icon in admin player table.
+* Fix - Check that selected columns are in array to avoid warning.
+* Localization - Add Czech translation.
+* Localization - Add Slovak translation.
+* Localization - Add Polish translation.
 
 = 0.4.2 =
 * Feature - Enable selecting columns to display in single league table.
