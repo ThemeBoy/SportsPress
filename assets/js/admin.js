@@ -12,7 +12,8 @@ jQuery(document).ready(function($){
 	// Chosen select
 	$(".chosen-select").chosen({
 		allow_single_deselect: true,
-		single_backstroke_delete: false
+		single_backstroke_delete: false,
+		placeholder_text_multiple: localized_strings.none
 	});
 
 	// Auto key placeholder

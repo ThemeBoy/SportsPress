@@ -54,23 +54,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 					endif;
 
 					if ( $team_result != null ):
-						echo ' &mdash; ' . $team_result;
-					endif;
-
-					$outcome_slug = sportspress_array_value( $team_results, 'outcome', null );
-					if ( $outcome_slug && $outcome_slug != '-1' ):
-						$args=array(
-							'name' => $outcome_slug,
-							'post_type' => 'sp_outcome',
-							'post_status' => 'publish',
-							'posts_per_page' => 1
-						);
-						$outcomes = get_posts( $args );
-
-						if ( sizeof( $outcomes ) ):
-							$outcome = reset( $outcomes );
-							echo ' (' . $outcome->post_title . ')';
-						endif;
+						echo ' <strong>' . $team_result . '</strong>';
 					endif;
 
 					echo '<br>';
