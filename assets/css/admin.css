@@ -181,10 +181,6 @@
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
 }
 
-.postbox .inside .sp-data-table-container {
-	overflow: auto;
-}
-
 .wp-media-buttons .button.sp-insert {
 	padding-left: 5px;
 }

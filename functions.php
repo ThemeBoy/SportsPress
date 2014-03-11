@@ -1046,15 +1046,20 @@ if ( !function_exists( 'sportspress_edit_event_results_table' ) ) {
 							<?php endforeach; ?>
 							<td>
 								<?php
-								$value = sportspress_array_value( $team_results, 'outcome', '' );
+								$values = sportspress_array_value( $team_results, 'outcome', '' );
+								if ( ! is_array( $values ) )
+									$values = array( $values );
+
 								$args = array(
 									'post_type' => 'sp_outcome',
-									'name' => 'sp_results[' . $team_id . '][outcome]',
-									'show_option_none' => __( '-- Not set --', 'sportspress' ),
+									'name' => 'sp_results[' . $team_id . '][outcome][]',
 									'option_none_value' => '',
 								    'sort_order'   => 'ASC',
 								    'sort_column'  => 'menu_order',
-									'selected' => $value
+									'selected' => $values,
+									'class' => 'sp-outcome',
+									'property' => 'multiple',
+									'chosen' => true,
 								);
 								sportspress_dropdown_pages( $args );
 								?>
@@ -1534,33 +1539,42 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 						if ( $team_id == $post_id ):
 							if ( $key == 'outcome' ):
 
-								// Increment events played and outcome count
-								if ( array_key_exists( $value, $totals ) ):
-									$totals['eventsplayed']++;
-									$totals[ $value ]++;
+								// Convert to array
+								if ( ! is_array( $value ) ):
+									$value = array( $value );
 								endif;
 
-								if ( $value && $value != '-1' ):
+								foreach( $value as $outcome ):
 
-									// Add to streak counter
-									if ( $streak['fire'] && ( $streak['name'] == '' || $streak['name'] == $value ) ):
-										$streak['name'] = $value;
-										$streak['count'] ++;
-									else:
-										$streak['fire'] = 0;
+									// Increment events played and outcome count
+									if ( array_key_exists( $outcome, $totals ) ):
+										$totals['eventsplayed']++;
+										$totals[ $outcome ]++;
 									endif;
 
-									// Add to last 5 counter if sum is less than 5
-									if ( array_key_exists( $value, $last5 ) && array_sum( $last5 ) < 5 ):
-										$last5[ $value ] ++;
+									if ( $outcome && $outcome != '-1' ):
+
+										// Add to streak counter
+										if ( $streak['fire'] && ( $streak['name'] == '' || $streak['name'] == $outcome ) ):
+											$streak['name'] = $outcome;
+											$streak['count'] ++;
+										else:
+											$streak['fire'] = 0;
+										endif;
+
+										// Add to last 5 counter if sum is less than 5
+										if ( array_key_exists( $outcome, $last5 ) && array_sum( $last5 ) < 5 ):
+											$last5[ $outcome ] ++;
+										endif;
+
+										// Add to last 10 counter if sum is less than 10
+										if ( array_key_exists( $outcome, $last10 ) && array_sum( $last10 ) < 10 ):
+											$last10[ $outcome ] ++;
+										endif;
+
 									endif;
 
-									// Add to last 10 counter if sum is less than 10
-									if ( array_key_exists( $value, $last10 ) && array_sum( $last10 ) < 10 ):
-										$last10[ $value ] ++;
-									endif;
-
-								endif;
+								endforeach;
 
 							else:
 								if ( array_key_exists( $key . 'for', $totals ) ):
@@ -1747,33 +1761,41 @@ if ( !function_exists( 'sportspress_get_league_table_data' ) ) {
 
 					if ( $key == 'outcome' ):
 
-						// Increment events played and outcome count
-						if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $value, $totals[ $team_id ] ) ):
-							$totals[ $team_id ]['eventsplayed']++;
-							$totals[ $team_id ][ $value ]++;
+						if ( ! is_array( $value ) ):
+							$value = array( $value );
 						endif;
 
-						if ( $value && $value != '-1' ):
+						foreach ( $value as $outcome ):
 
-							// Add to streak counter
-							if ( $streaks[ $team_id ]['fire'] && ( $streaks[ $team_id ]['name'] == '' || $streaks[ $team_id ]['name'] == $value ) ):
-								$streaks[ $team_id ]['name'] = $value;
-								$streaks[ $team_id ]['count'] ++;
-							else:
-								$streaks[ $team_id ]['fire'] = 0;
+							// Increment events played and outcome count
+							if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $outcome, $totals[ $team_id ] ) ):
+								$totals[ $team_id ]['eventsplayed']++;
+								$totals[ $team_id ][ $outcome ]++;
 							endif;
 
-							// Add to last 5 counter if sum is less than 5
-							if ( array_key_exists( $team_id, $last5s ) && array_key_exists( $value, $last5s[ $team_id ] ) && array_sum( $last5s[ $team_id ] ) < 5 ):
-								$last5s[ $team_id ][ $value ] ++;
+							if ( $outcome && $outcome != '-1' ):
+
+								// Add to streak counter
+								if ( $streaks[ $team_id ]['fire'] && ( $streaks[ $team_id ]['name'] == '' || $streaks[ $team_id ]['name'] == $outcome ) ):
+									$streaks[ $team_id ]['name'] = $outcome;
+									$streaks[ $team_id ]['count'] ++;
+								else:
+									$streaks[ $team_id ]['fire'] = 0;
+								endif;
+
+								// Add to last 5 counter if sum is less than 5
+								if ( array_key_exists( $team_id, $last5s ) && array_key_exists( $outcome, $last5s[ $team_id ] ) && array_sum( $last5s[ $team_id ] ) < 5 ):
+									$last5s[ $team_id ][ $outcome ] ++;
+								endif;
+
+								// Add to last 10 counter if sum is less than 10
+								if ( array_key_exists( $team_id, $last10s ) && array_key_exists( $outcome, $last10s[ $team_id ] ) && array_sum( $last10s[ $team_id ] ) < 10 ):
+									$last10s[ $team_id ][ $outcome ] ++;
+								endif;
+
 							endif;
 
-							// Add to last 10 counter if sum is less than 10
-							if ( array_key_exists( $team_id, $last10s ) && array_key_exists( $value, $last10s[ $team_id ] ) && array_sum( $last10s[ $team_id ] ) < 10 ):
-								$last10s[ $team_id ][ $value ] ++;
-							endif;
-
-						endif;
+						endforeach;
 
 					else:
 						if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $key . 'for', $totals[ $team_id ] ) ):
