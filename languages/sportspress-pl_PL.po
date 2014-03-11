@@ -1,0 +1,1955 @@
+# Translators:
+# Translators:
+# anope <andrzej@opejda.pl>, 2014
+# Berislav Lopac <berislav.lopac@gmail.com>, 2012
+# difreo <info@difreo.pl>, 2014
+# Karim Jaro <karimjarro@gmail.com>, 2014
+# Sasni <tadeksasnal@gmail.com>, 2014
+# vericule <fenuks@o2.pl>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: SportsPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-02 13:27+1000\n"
+"PO-Revision-Date: 2014-03-12 00:36+1000\n"
+"Last-Translator: ThemeBoy <support@themeboy.com>\n"
+"Language-Team: Polish (Poland) (http://www.transifex.com/projects/p/"
+"sportspress/language/pl_PL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl_PL\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: -1,75,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../functions.php:164
+msgid "1 view"
+msgstr "1 przeglądający"
+
+#: ../functions.php:166
+#, php-format
+msgid "%s views"
+msgstr "%s przeglądających"
+
+#: ../functions.php:191
+msgid "Scheduled"
+msgstr "Zaplanowane"
+
+#: ../functions.php:193 ../functions.php:624 ../functions.php:627
+#: ../functions.php:2087 ../functions.php:2289 ../functions.php:2424
+#: ../admin/post-types/list.php:117 ../admin/widgets/player-list.php:78
+#: ../admin/widgets/player-list.php:91
+msgid "Played"
+msgstr "Rozegrano"
+
+#: ../functions.php:195
+msgid "Draft"
+msgstr "Szkic"
+
+#: ../functions.php:197
+msgid "Pending Review"
+msgstr "Oczekuje na przegląd"
+
+#: ../functions.php:199 ../admin/hooks/post-updated-messages.php:34
+msgid "M j, Y @ G:i"
+msgstr "d.m.Y o H:i"
+
+#: ../functions.php:220 ../functions.php:224 ../functions.php:558
+#: ../functions.php:1150 ../admin/templates/event-players.php:82
+msgid "Total"
+msgstr "Razem"
+
+#: ../functions.php:220 ../functions.php:559
+msgid "Average"
+msgstr "Średnie"
+
+#: ../functions.php:262
+msgid "Integer"
+msgstr "Liczba całkowita"
+
+#: ../functions.php:263
+msgid "Decimal"
+msgstr "Liczba dziesiętna"
+
+#: ../functions.php:264 ../admin/templates/event-details.php:13
+msgid "Time"
+msgstr "Czas"
+
+#: ../functions.php:265
+msgid "Custom Field"
+msgstr "Pole własne"
+
+#: ../functions.php:486 ../functions.php:540
+msgid "(no title)"
+msgstr "(bez tytułu)"
+
+#: ../functions.php:503
+msgid "Select All"
+msgstr "Zaznacz wszystko"
+
+#: ../functions.php:624 ../functions.php:627 ../admin/post-types/event.php:6
+#: ../admin/post-types/event.php:16 ../admin/settings/settings.php:11
+msgid "Events"
+msgstr "Wydarzenia"
+
+#: ../functions.php:624
+msgid "Attended"
+msgstr "Uczęszczał"
+
+#: ../functions.php:630 ../admin/post-types/event.php:53
+#: ../admin/post-types/result.php:4 ../admin/post-types/result.php:15
+#: ../admin/settings/events.php:16 ../admin/templates/event-results.php:55
+msgid "Results"
+msgstr "Wyniki"
+
+#: ../functions.php:633 ../functions.php:634 ../functions.php:635
+#: ../functions.php:636 ../admin/post-types/outcome.php:4
+#: ../admin/post-types/outcome.php:15 ../admin/settings/events.php:55
+msgid "Outcomes"
+msgstr "Wyniki"
+
+#: ../functions.php:634
+msgid "Streak"
+msgstr "Okres"
+
+#: ../functions.php:635
+msgid "Last 5"
+msgstr "Ostatnich 5"
+
+#: ../functions.php:636
+msgid "Last 10"
+msgstr "Ostatnich 10"
+
+#: ../functions.php:639 ../admin/post-types/column.php:4
+#: ../admin/post-types/column.php:15 ../admin/post-types/team.php:41
+#: ../admin/settings/tables.php:11
+msgid "Columns"
+msgstr "Kolumny"
+
+#: ../functions.php:642
+msgid "Player Statistics"
+msgstr "Statystyki zawodników"
+
+#: ../functions.php:651
+msgid "Operators"
+msgstr "Operatorzy"
+
+#: ../functions.php:664
+msgid "Constants"
+msgstr "Stałe"
+
+#: ../functions.php:668 ../admin/settings/settings.php:46
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; Wybierz &mdash;"
+
+#: ../functions.php:781 ../functions.php:935 ../functions.php:1010
+#: ../functions.php:1895 ../functions.php:2424 ../admin/hooks/gettext.php:9
+#: ../admin/post-types/list.php:38 ../admin/post-types/list.php:95
+#: ../admin/post-types/player.php:147 ../admin/post-types/team.php:5
+#: ../admin/post-types/team.php:49 ../admin/templates/event-results.php:59
+msgid "Team"
+msgstr "Drużyna"
+
+#: ../functions.php:803 ../admin/post-types/column.php:7
+#: ../admin/post-types/event.php:8 ../admin/post-types/list.php:7
+#: ../admin/post-types/metric.php:7 ../admin/post-types/outcome.php:7
+#: ../admin/post-types/player.php:7 ../admin/post-types/result.php:7
+#: ../admin/post-types/staff.php:7 ../admin/post-types/statistic.php:7
+#: ../admin/post-types/table.php:7 ../admin/post-types/team.php:7
+#: ../admin/settings/events.php:39 ../admin/settings/events.php:78
+#: ../admin/settings/players.php:37 ../admin/settings/players.php:78
+#: ../admin/settings/tables.php:43 ../admin/terms/league.php:7
+#: ../admin/terms/position.php:7 ../admin/terms/season.php:7
+#: ../admin/terms/venue.php:7
+msgid "Edit"
+msgstr "Edycja"
+
+#: ../functions.php:807
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: ../functions.php:808
+msgid "Save"
+msgstr "Zapisz"
+
+#: ../functions.php:837 ../functions.php:1115 ../functions.php:2183
+#: ../admin/hooks/register-activation-hook.php:149
+#: ../admin/post-types/player.php:5 ../admin/templates/event-players.php:28
+msgid "Player"
+msgstr "Zawodnik"
+
+#: ../functions.php:882 ../functions.php:934 ../functions.php:1626
+#: ../functions.php:2424 ../admin/post-types/event.php:83
+#: ../admin/post-types/event.php:215 ../admin/post-types/list.php:37
+#: ../admin/post-types/list.php:81 ../admin/post-types/table.php:36
+#: ../admin/post-types/table.php:77 ../admin/templates/event-details.php:22
+#: ../admin/terms/season.php:5
+msgid "Season"
+msgstr "Sezon"
+
+#: ../functions.php:958
+msgid "&mdash; None &mdash;"
+msgstr "&mdash; Brak &mdash;"
+
+#: ../functions.php:979 ../admin/post-types/column.php:11
+#: ../admin/post-types/column.php:12 ../admin/post-types/event.php:12
+#: ../admin/post-types/event.php:13 ../admin/post-types/list.php:11
+#: ../admin/post-types/list.php:12 ../admin/post-types/metric.php:11
+#: ../admin/post-types/metric.php:12 ../admin/post-types/outcome.php:11
+#: ../admin/post-types/outcome.php:12 ../admin/post-types/player.php:11
+#: ../admin/post-types/player.php:12 ../admin/post-types/result.php:11
+#: ../admin/post-types/result.php:12 ../admin/post-types/staff.php:11
+#: ../admin/post-types/staff.php:12 ../admin/post-types/statistic.php:11
+#: ../admin/post-types/statistic.php:12 ../admin/post-types/table.php:11
+#: ../admin/post-types/table.php:12 ../admin/post-types/team.php:11
+#: ../admin/post-types/team.php:12 ../admin/terms/league.php:15
+#: ../admin/terms/position.php:15 ../admin/terms/season.php:15
+#: ../admin/terms/venue.php:15
+msgid "No results found."
+msgstr "Nie znaleziono żadnych elementów."
+
+#: ../functions.php:1014 ../admin/post-types/outcome.php:5
+msgid "Outcome"
+msgstr "Wynik"
+
+#: ../functions.php:1038 ../admin/post-types/event.php:76
+#: ../admin/post-types/event.php:91 ../admin/post-types/event.php:106
+msgid "-- Not set --"
+msgstr "-- Nieustawione --"
+
+#: ../functions.php:1066 ../functions.php:1171
+msgid "Starting Lineup"
+msgstr "Skład meczowy"
+
+#: ../functions.php:1067 ../functions.php:1172
+msgid "Substitute"
+msgstr "Zmiennik"
+
+#: ../functions.php:1091
+msgid "None"
+msgstr "Żaden"
+
+#: ../functions.php:1119
+msgid "Status"
+msgstr "Status"
+
+#: ../functions.php:1192 ../functions.php:1209
+#: ../admin/hooks/admin-menu.php:46 ../admin/post-types/column.php:6
+#: ../admin/post-types/event.php:7 ../admin/post-types/event.php:79
+#: ../admin/post-types/event.php:94 ../admin/post-types/event.php:109
+#: ../admin/post-types/list.php:6 ../admin/post-types/list.php:77
+#: ../admin/post-types/list.php:91 ../admin/post-types/list.php:106
+#: ../admin/post-types/list.php:125 ../admin/post-types/list.php:139
+#: ../admin/post-types/metric.php:6 ../admin/post-types/outcome.php:6
+#: ../admin/post-types/player.php:6 ../admin/post-types/player.php:237
+#: ../admin/post-types/result.php:6 ../admin/post-types/staff.php:6
+#: ../admin/post-types/staff.php:40 ../admin/post-types/statistic.php:6
+#: ../admin/post-types/table.php:6 ../admin/post-types/table.php:73
+#: ../admin/post-types/table.php:87 ../admin/post-types/table.php:94
+#: ../admin/post-types/team.php:6 ../admin/settings/events.php:40
+#: ../admin/settings/events.php:79 ../admin/settings/players.php:38
+#: ../admin/settings/players.php:79 ../admin/settings/tables.php:44
+#: ../admin/terms/league.php:10 ../admin/terms/position.php:10
+#: ../admin/terms/season.php:10 ../admin/terms/venue.php:10
+#: ../admin/widgets/countdown.php:51 ../admin/widgets/league-table.php:52
+#: ../admin/widgets/player-list.php:58 ../admin/widgets/player-list.php:101
+msgid "Add New"
+msgstr "Dodaj nowy"
+
+#: ../admin/globals/continents.php:6
+msgid "Africa"
+msgstr "Afryka"
+
+#: ../admin/globals/continents.php:7
+msgid "Asia"
+msgstr "Azja"
+
+#: ../admin/globals/continents.php:8
+msgid "Europe"
+msgstr "Europa"
+
+#: ../admin/globals/continents.php:9
+msgid "North America"
+msgstr "Ameryka Północna"
+
+#: ../admin/globals/continents.php:10
+msgid "Oceania"
+msgstr "Oceania"
+
+#: ../admin/globals/continents.php:11
+msgid "South America"
+msgstr "Ameryka Południowa"
+
+#: ../admin/globals/countries.php:6
+msgid "Andorra"
+msgstr "Andora"
+
+#: ../admin/globals/countries.php:7
+msgid "United Arab Emirates"
+msgstr "Zjednoczone Emiraty Arabskie"
+
+#: ../admin/globals/countries.php:8
+msgid "Afghanistan"
+msgstr "Afganistan"
+
+#: ../admin/globals/countries.php:9
+msgid "Antigua and Barbuda"
+msgstr "Antigua i Barbuda"
+
+#: ../admin/globals/countries.php:10
+msgid "Albania"
+msgstr "Albania"
+
+#: ../admin/globals/countries.php:11
+msgid "Armenia"
+msgstr "Armenia"
+
+#: ../admin/globals/countries.php:12
+msgid "Angola"
+msgstr "Angola"
+
+#: ../admin/globals/countries.php:13
+msgid "Argentina"
+msgstr "Argentyna"
+
+#: ../admin/globals/countries.php:14
+msgid "Austria"
+msgstr "Austria"
+
+#: ../admin/globals/countries.php:15
+msgid "Australia"
+msgstr "Australia"
+
+#: ../admin/globals/countries.php:16
+msgid "Azerbaijan"
+msgstr "Azerbejdżan"
+
+#: ../admin/globals/countries.php:17
+msgid "Bosnia and Herzegovina"
+msgstr "Bośnia i Hercegowina"
+
+#: ../admin/globals/countries.php:18
+msgid "Barbados"
+msgstr "Barbados"
+
+#: ../admin/globals/countries.php:19
+msgid "Bangladesh"
+msgstr "Bangladesz"
+
+#: ../admin/globals/countries.php:20
+msgid "Belgium"
+msgstr "Belgia"
+
+#: ../admin/globals/countries.php:21
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#: ../admin/globals/countries.php:22
+msgid "Bulgaria"
+msgstr "Bułgaria"
+
+#: ../admin/globals/countries.php:23
+msgid "Bahrain"
+msgstr "Bahrajn"
+
+#: ../admin/globals/countries.php:24
+msgid "Burundi"
+msgstr "Burundi"
+
+#: ../admin/globals/countries.php:25
+msgid "Benin"
+msgstr "Benin"
+
+#: ../admin/globals/countries.php:26
+msgid "Brunei"
+msgstr "Brunei"
+
+#: ../admin/globals/countries.php:27
+msgid "Bolivia"
+msgstr "Boliwia"
+
+#: ../admin/globals/countries.php:28
+msgid "Brazil"
+msgstr "Brazylia"
+
+#: ../admin/globals/countries.php:29
+msgid "Bahamas"
+msgstr "Bahamy"
+
+#: ../admin/globals/countries.php:30
+msgid "Bhutan"
+msgstr "Bhutan"
+
+#: ../admin/globals/countries.php:31
+msgid "Botswana"
+msgstr "Botswana"
+
+#: ../admin/globals/countries.php:32
+msgid "Belarus"
+msgstr "Białoruś"
+
+#: ../admin/globals/countries.php:33
+msgid "Belize"
+msgstr "Belize"
+
+#: ../admin/globals/countries.php:34
+msgid "Canada"
+msgstr "Kanada"
+
+#: ../admin/globals/countries.php:35
+msgid "Democratic Republic of the Congo"
+msgstr "Demokratyczna Republika Konga"
+
+#: ../admin/globals/countries.php:36
+msgid "Central African Republic"
+msgstr "Republika Południowej Afryki"
+
+#: ../admin/globals/countries.php:37
+msgid "Republic of the Congo"
+msgstr "Kongo"
+
+#: ../admin/globals/countries.php:38
+msgid "Switzerland"
+msgstr "Szwajcaria"
+
+#: ../admin/globals/countries.php:39
+msgid "Ivory Coast"
+msgstr "Wybrzeże Kości Słoniowej"
+
+#: ../admin/globals/countries.php:40
+msgid "Chile"
+msgstr "Chile"
+
+#: ../admin/globals/countries.php:41
+msgid "Cameroon"
+msgstr "Kamerun"
+
+#: ../admin/globals/countries.php:42
+msgid "China"
+msgstr "Chiny"
+
+#: ../admin/globals/countries.php:43
+msgid "Colombia"
+msgstr "Kolumbia"
+
+#: ../admin/globals/countries.php:44
+msgid "Costa Rica"
+msgstr "Kostaryka"
+
+#: ../admin/globals/countries.php:45
+msgid "Cuba"
+msgstr "Kuba"
+
+#: ../admin/globals/countries.php:46
+msgid "Cape Verde"
+msgstr "Republika Zielonego Przylądka"
+
+#: ../admin/globals/countries.php:47
+msgid "Cyprus"
+msgstr "Cypr"
+
+#: ../admin/globals/countries.php:48
+msgid "Czech Republic"
+msgstr "Czechy"
+
+#: ../admin/globals/countries.php:49
+msgid "Germany"
+msgstr "Niemcy"
+
+#: ../admin/globals/countries.php:50
+msgid "Djibouti"
+msgstr "Dżibuti"
+
+#: ../admin/globals/countries.php:51
+msgid "Denmark"
+msgstr "Dania"
+
+#: ../admin/globals/countries.php:52
+msgid "Dominica"
+msgstr "Dominika"
+
+#: ../admin/globals/countries.php:53
+msgid "Dominican Republic"
+msgstr "Dominikana"
+
+#: ../admin/globals/countries.php:54
+msgid "Algeria"
+msgstr "Algieria"
+
+#: ../admin/globals/countries.php:55
+msgid "Ecuador"
+msgstr "Ekwador"
+
+#: ../admin/globals/countries.php:56
+msgid "Estonia"
+msgstr "Estonia"
+
+#: ../admin/globals/countries.php:57
+msgid "Egypt"
+msgstr "Egipt"
+
+#: ../admin/globals/countries.php:58
+msgid "Western Sahara"
+msgstr "Sahara Zachodnia"
+
+#: ../admin/globals/countries.php:59
+msgid "England"
+msgstr "Anglia"
+
+#: ../admin/globals/countries.php:60
+msgid "Eritrea"
+msgstr "Erytrea"
+
+#: ../admin/globals/countries.php:61
+msgid "Spain"
+msgstr "Hiszpania"
+
+#: ../admin/globals/countries.php:62
+msgid "Ethiopia"
+msgstr "Etiopia"
+
+#: ../admin/globals/countries.php:63
+msgid "Finland"
+msgstr "Finlandia"
+
+#: ../admin/globals/countries.php:64
+msgid "Fiji"
+msgstr "Fidżi"
+
+#: ../admin/globals/countries.php:65
+msgid "Micronesia"
+msgstr "Mikronezja"
+
+#: ../admin/globals/countries.php:66
+msgid "France"
+msgstr "Francja"
+
+#: ../admin/globals/countries.php:67
+msgid "Gabon"
+msgstr "Gabon"
+
+#: ../admin/globals/countries.php:68
+msgid "United Kingdom"
+msgstr "Wielka Brytania"
+
+#: ../admin/globals/countries.php:69
+msgid "Grenada"
+msgstr "Grenada"
+
+#: ../admin/globals/countries.php:70
+msgid "Georgia"
+msgstr "Gruzja"
+
+#: ../admin/globals/countries.php:71
+msgid "Ghana"
+msgstr "Ghana"
+
+#: ../admin/globals/countries.php:72
+msgid "Gambia"
+msgstr "Gambia"
+
+#: ../admin/globals/countries.php:73
+msgid "Guinea"
+msgstr "Gwinea"
+
+#: ../admin/globals/countries.php:74
+msgid "Equatorial Guinea"
+msgstr "Gwinea Równikowa"
+
+#: ../admin/globals/countries.php:75
+msgid "Greece"
+msgstr "Grecja"
+
+#: ../admin/globals/countries.php:76
+msgid "Guatemala"
+msgstr "Gwatemala"
+
+#: ../admin/globals/countries.php:77
+msgid "Guinea-Bissau"
+msgstr "Gwinea Bissau"
+
+#: ../admin/globals/countries.php:78
+msgid "Guyana"
+msgstr "Gujana"
+
+#: ../admin/globals/countries.php:79
+msgid "Hong Kong"
+msgstr "Hongkong"
+
+#: ../admin/globals/countries.php:80
+msgid "Honduras"
+msgstr "Honduras"
+
+#: ../admin/globals/countries.php:81
+msgid "Croatia"
+msgstr "Chorwacja"
+
+#: ../admin/globals/countries.php:82
+msgid "Haiti"
+msgstr "Haiti"
+
+#: ../admin/globals/countries.php:83
+msgid "Hungary"
+msgstr "Węgry"
+
+#: ../admin/globals/countries.php:84
+msgid "Indonesia"
+msgstr "Indonezja"
+
+#: ../admin/globals/countries.php:85
+msgid "Ireland"
+msgstr "Irlandia"
+
+#: ../admin/globals/countries.php:86
+msgid "Israel"
+msgstr "Izrael"
+
+#: ../admin/globals/countries.php:87
+msgid "India"
+msgstr "Indie"
+
+#: ../admin/globals/countries.php:88
+msgid "Iraq"
+msgstr "Irak"
+
+#: ../admin/globals/countries.php:89
+msgid "Iran"
+msgstr "Iran"
+
+#: ../admin/globals/countries.php:90
+msgid "Iceland"
+msgstr "Islandia"
+
+#: ../admin/globals/countries.php:91
+msgid "Italy"
+msgstr "Włochy"
+
+#: ../admin/globals/countries.php:92
+msgid "Jamaica"
+msgstr "Jamajka"
+
+#: ../admin/globals/countries.php:93
+msgid "Jordan"
+msgstr "Jordania"
+
+#: ../admin/globals/countries.php:94
+msgid "Japan"
+msgstr "Japonia"
+
+#: ../admin/globals/countries.php:95
+msgid "Kenya"
+msgstr "Kenia"
+
+#: ../admin/globals/countries.php:96
+msgid "Kyrgyzstan"
+msgstr "Kirgistan"
+
+#: ../admin/globals/countries.php:97
+msgid "Cambodia"
+msgstr "Kambodża"
+
+#: ../admin/globals/countries.php:98
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#: ../admin/globals/countries.php:99
+msgid "Comoros"
+msgstr "Komory"
+
+#: ../admin/globals/countries.php:100
+msgid "Saint Kitts and Nevis"
+msgstr "Saint Kitts i Nevis"
+
+#: ../admin/globals/countries.php:101
+msgid "North Korea"
+msgstr "Północna Korea"
+
+#: ../admin/globals/countries.php:102
+msgid "South Korea"
+msgstr "Południowa Korea"
+
+#: ../admin/globals/countries.php:103
+msgid "Kuwait"
+msgstr "Kuwejt"
+
+#: ../admin/globals/countries.php:104
+msgid "Kazakhstan"
+msgstr "Kazachstan"
+
+#: ../admin/globals/countries.php:105
+msgid "Laos"
+msgstr "Laos"
+
+#: ../admin/globals/countries.php:106
+msgid "Lebanon"
+msgstr "Liban"
+
+#: ../admin/globals/countries.php:107
+msgid "Saint Lucia"
+msgstr "Saint Lucia"
+
+#: ../admin/globals/countries.php:108
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: ../admin/globals/countries.php:109
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+#: ../admin/globals/countries.php:110
+msgid "Liberia"
+msgstr "Liberia"
+
+#: ../admin/globals/countries.php:111
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#: ../admin/globals/countries.php:112
+msgid "Lithuania"
+msgstr "Litwa"
+
+#: ../admin/globals/countries.php:113
+msgid "Luxembourg"
+msgstr "Luksemburg"
+
+#: ../admin/globals/countries.php:114
+msgid "Latvia"
+msgstr "Łotwa"
+
+#: ../admin/globals/countries.php:115
+msgid "Libya"
+msgstr "Libia"
+
+#: ../admin/globals/countries.php:116
+msgid "Morocco"
+msgstr "Maroko"
+
+#: ../admin/globals/countries.php:117
+msgid "Monaco"
+msgstr "Monako"
+
+#: ../admin/globals/countries.php:118
+msgid "Moldova"
+msgstr "Mołdawia"
+
+#: ../admin/globals/countries.php:119
+msgid "Montenegro"
+msgstr "Czarnogóra"
+
+#: ../admin/globals/countries.php:120
+msgid "Madagascar"
+msgstr "Madagaskar"
+
+#: ../admin/globals/countries.php:121
+msgid "Marshall Islands"
+msgstr "Wyspy Marshalla"
+
+#: ../admin/globals/countries.php:122
+msgid "Macedonia"
+msgstr "Macedonia"
+
+#: ../admin/globals/countries.php:123
+msgid "Mali"
+msgstr "Mali"
+
+#: ../admin/globals/countries.php:124
+msgid "Burma"
+msgstr "Birma"
+
+#: ../admin/globals/countries.php:125
+msgid "Mongolia"
+msgstr "Mongolia"
+
+#: ../admin/globals/countries.php:126
+msgid "Macau"
+msgstr "Macau"
+
+#: ../admin/globals/countries.php:127
+msgid "Mauritania"
+msgstr "Mauretania"
+
+#: ../admin/globals/countries.php:128
+msgid "Malta"
+msgstr "Malta"
+
+#: ../admin/globals/countries.php:129
+msgid "Mauritius"
+msgstr "Mauritius"
+
+#: ../admin/globals/countries.php:130
+msgid "Maldives"
+msgstr "Malediwy"
+
+#: ../admin/globals/countries.php:131
+msgid "Malawi"
+msgstr "Malawi"
+
+#: ../admin/globals/countries.php:132
+msgid "Mexico"
+msgstr "Meksyk"
+
+#: ../admin/globals/countries.php:133
+msgid "Malaysia"
+msgstr "Malezja"
+
+#: ../admin/globals/countries.php:134
+msgid "Mozambique"
+msgstr "Mozambik"
+
+#: ../admin/globals/countries.php:135
+msgid "Namibia"
+msgstr "Namibia"
+
+#: ../admin/globals/countries.php:136
+msgid "Northern Ireland"
+msgstr "Irlandia Północna"
+
+#: ../admin/globals/countries.php:137
+msgid "Niger"
+msgstr "Niger"
+
+#: ../admin/globals/countries.php:138
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#: ../admin/globals/countries.php:139
+msgid "Nicaragua"
+msgstr "Nikaragua"
+
+#: ../admin/globals/countries.php:140
+msgid "Netherlands"
+msgstr "Holandia"
+
+#: ../admin/globals/countries.php:141
+msgid "Norway"
+msgstr "Norwegia"
+
+#: ../admin/globals/countries.php:142
+msgid "Nepal"
+msgstr "Nepal"
+
+#: ../admin/globals/countries.php:143
+msgid "Nauru"
+msgstr "Nauru"
+
+#: ../admin/globals/countries.php:144
+msgid "New Zealand"
+msgstr "Nowa Zelandia"
+
+#: ../admin/globals/countries.php:145
+msgid "Oman"
+msgstr "Oman"
+
+#: ../admin/globals/countries.php:146
+msgid "Panama"
+msgstr "Panama"
+
+#: ../admin/globals/countries.php:147
+msgid "Peru"
+msgstr "Peru"
+
+#: ../admin/globals/countries.php:148
+msgid "Papua New Guinea"
+msgstr "Papua-Nowa Gwinea"
+
+#: ../admin/globals/countries.php:149
+msgid "Philippines"
+msgstr "Filipiny"
+
+#: ../admin/globals/countries.php:150
+msgid "Pakistan"
+msgstr "Pakistan"
+
+#: ../admin/globals/countries.php:151
+msgid "Poland"
+msgstr "Polska"
+
+#: ../admin/globals/countries.php:152
+msgid "Portugal"
+msgstr "Portugalia"
+
+#: ../admin/globals/countries.php:153
+msgid "Palau"
+msgstr "Palau"
+
+#: ../admin/globals/countries.php:154
+msgid "Paraguay"
+msgstr "Paragwaj"
+
+#: ../admin/globals/countries.php:155
+msgid "Qatar"
+msgstr "Katar"
+
+#: ../admin/globals/countries.php:156
+msgid "Romania"
+msgstr "Rumunia"
+
+#: ../admin/globals/countries.php:157
+msgid "Serbia"
+msgstr "Serbia"
+
+#: ../admin/globals/countries.php:158
+msgid "Russia"
+msgstr "Rosja"
+
+#: ../admin/globals/countries.php:159
+msgid "Rwanda"
+msgstr "Rwanda"
+
+#: ../admin/globals/countries.php:160
+msgid "Saudi Arabia"
+msgstr "Arabia Saudyjska"
+
+#: ../admin/globals/countries.php:161
+msgid "Solomon Islands"
+msgstr "Wyspy Salomona"
+
+#: ../admin/globals/countries.php:162
+msgid "Seychelles"
+msgstr "Seszele"
+
+#: ../admin/globals/countries.php:163
+msgid "Sudan"
+msgstr "Sudan"
+
+#: ../admin/globals/countries.php:164
+msgid "Sweden"
+msgstr "Szwecja"
+
+#: ../admin/globals/countries.php:165
+msgid "Scotland"
+msgstr "Szkocja"
+
+#: ../admin/globals/countries.php:166
+msgid "Singapore"
+msgstr "Singapur"
+
+#: ../admin/globals/countries.php:167
+msgid "Slovenia"
+msgstr "Słowenia"
+
+#: ../admin/globals/countries.php:168
+msgid "Slovakia"
+msgstr "Słowacja"
+
+#: ../admin/globals/countries.php:169
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: ../admin/globals/countries.php:170
+msgid "San Marino"
+msgstr "San Marino"
+
+#: ../admin/globals/countries.php:171
+msgid "Senegal"
+msgstr "Senegal"
+
+#: ../admin/globals/countries.php:172
+msgid "Somalia"
+msgstr "Somalia"
+
+#: ../admin/globals/countries.php:173
+msgid "Suriname"
+msgstr "Surinam"
+
+#: ../admin/globals/countries.php:174
+msgid "Sao Tome and Principe"
+msgstr "Wyspy Świętego Tomasza i Książęca"
+
+#: ../admin/globals/countries.php:175
+msgid "El Salvador"
+msgstr "Salwador"
+
+#: ../admin/globals/countries.php:176
+msgid "Swaziland"
+msgstr "Suazi"
+
+#: ../admin/globals/countries.php:177
+msgid "Chad"
+msgstr "Czad"
+
+#: ../admin/globals/countries.php:178
+msgid "Togo"
+msgstr "Togo"
+
+#: ../admin/globals/countries.php:179
+msgid "Thailand"
+msgstr "Tajlandia"
+
+#: ../admin/globals/countries.php:180
+msgid "Tajikistan"
+msgstr "Tadżykistan"
+
+#: ../admin/globals/countries.php:181
+msgid "East Timor"
+msgstr "Timor Wschodni"
+
+#: ../admin/globals/countries.php:182
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#: ../admin/globals/countries.php:183
+msgid "Tunisia"
+msgstr "Tunezja"
+
+#: ../admin/globals/countries.php:184
+msgid "Tonga"
+msgstr "Tonga"
+
+#: ../admin/globals/countries.php:185
+msgid "Turkey"
+msgstr "Turcja"
+
+#: ../admin/globals/countries.php:186
+msgid "Trinidad and Tobago"
+msgstr "Trinidad i Tobago"
+
+#: ../admin/globals/countries.php:187
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: ../admin/globals/countries.php:188
+msgid "Taiwan"
+msgstr "Tajwan"
+
+#: ../admin/globals/countries.php:189
+msgid "Tanzania"
+msgstr "Tanzania"
+
+#: ../admin/globals/countries.php:190
+msgid "Ukraine"
+msgstr "Ukraina"
+
+#: ../admin/globals/countries.php:191
+msgid "Uganda"
+msgstr "Uganda"
+
+#: ../admin/globals/countries.php:192
+msgid "United States"
+msgstr "Stany Zjednoczone"
+
+#: ../admin/globals/countries.php:193
+msgid "Uruguay"
+msgstr "Urugwaj"
+
+#: ../admin/globals/countries.php:194
+msgid "Uzbekistan"
+msgstr "Uzbekistan"
+
+#: ../admin/globals/countries.php:195
+msgid "Vatican City"
+msgstr "Watykan"
+
+#: ../admin/globals/countries.php:196
+msgid "Saint Vincent and the Grenadines"
+msgstr "Saint Vincent i Grenadyny"
+
+#: ../admin/globals/countries.php:197
+msgid "Venezuela"
+msgstr "Wenezuela"
+
+#: ../admin/globals/countries.php:198
+msgid "Vietnam"
+msgstr "Wietnam"
+
+#: ../admin/globals/countries.php:199
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#: ../admin/globals/countries.php:200
+msgid "Wales"
+msgstr "Walia"
+
+#: ../admin/globals/countries.php:201
+msgid "Samoa"
+msgstr "Samoa"
+
+#: ../admin/globals/countries.php:202
+msgid "Yemen"
+msgstr "Jemen"
+
+#: ../admin/globals/countries.php:203
+msgid "South Africa"
+msgstr "Republika Południowej Afryki"
+
+#: ../admin/globals/countries.php:204
+msgid "Zambia"
+msgstr "Zambia"
+
+#: ../admin/globals/countries.php:205
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+msgid "&mdash; Remove &mdash;"
+msgstr "&mdash; Usuń &mdash;"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:38 ../admin/tools/dashboard.php:54
+msgid "days"
+msgstr "dni"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:39
+msgid "hrs"
+msgstr "godziny"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:40
+msgid "mins"
+msgstr "minuty"
+
+#: ../admin/hooks/admin-enqueue-scripts.php:25
+#: ../admin/hooks/wp-enqueue-scripts.php:14
+#: ../admin/templates/countdown.php:41
+msgid "secs"
+msgstr "sekundy"
+
+#: ../admin/hooks/admin-menu.php:52 ../admin/post-types/player.php:37
+#: ../admin/post-types/player.php:169 ../admin/post-types/player.php:176
+#: ../admin/post-types/staff.php:55 ../admin/post-types/team.php:50
+#: ../admin/terms/league.php:4 ../admin/terms/league.php:18
+msgid "Leagues"
+msgstr "Ligi"
+
+#: ../admin/hooks/admin-menu.php:58 ../admin/post-types/metric.php:33
+#: ../admin/post-types/player.php:35 ../admin/post-types/player.php:124
+#: ../admin/post-types/player.php:131 ../admin/post-types/staff.php:53
+#: ../admin/post-types/statistic.php:34 ../admin/settings/players.php:16
+#: ../admin/settings/players.php:23 ../admin/settings/players.php:57
+#: ../admin/settings/players.php:64 ../admin/terms/position.php:4
+#: ../admin/terms/position.php:18
+msgid "Positions"
+msgstr "Pozycje"
+
+#: ../admin/hooks/admin-menu.php:64 ../admin/post-types/player.php:38
+#: ../admin/post-types/player.php:184 ../admin/post-types/player.php:191
+#: ../admin/post-types/staff.php:56 ../admin/post-types/team.php:51
+#: ../admin/terms/season.php:4 ../admin/terms/season.php:18
+msgid "Seasons"
+msgstr "Sezony"
+
+#: ../admin/hooks/admin-menu.php:70 ../admin/terms/venue.php:4
+#: ../admin/terms/venue.php:18
+msgid "Venues"
+msgstr "Miejsca spotkań"
+
+#: ../admin/hooks/admin-post-thumbnail-html.php:5
+#: ../admin/hooks/admin-post-thumbnail-html.php:9
+#: ../admin/hooks/admin-post-thumbnail-html.php:13
+#: ../admin/post-types/player.php:113 ../admin/post-types/player.php:131
+#: ../admin/post-types/player.php:147 ../admin/post-types/player.php:161
+#: ../admin/post-types/player.php:176 ../admin/post-types/player.php:191
+#, php-format
+msgid "Select %s"
+msgstr "Wybierz %s"
+
+#: ../admin/hooks/admin-post-thumbnail-html.php:5
+#: ../admin/hooks/admin-post-thumbnail-html.php:6
+#: ../admin/post-types/team.php:38
+msgid "Logo"
+msgstr "Logo"
+
+#: ../admin/hooks/admin-post-thumbnail-html.php:6
+#: ../admin/hooks/admin-post-thumbnail-html.php:10
+#: ../admin/hooks/admin-post-thumbnail-html.php:14
+#, php-format
+msgid "Remove %s"
+msgstr "Usuń %s"
+
+#: ../admin/hooks/admin-post-thumbnail-html.php:9
+#: ../admin/hooks/admin-post-thumbnail-html.php:10
+#: ../admin/hooks/admin-post-thumbnail-html.php:13
+#: ../admin/hooks/admin-post-thumbnail-html.php:14
+#: ../admin/post-types/player.php:58 ../admin/post-types/staff.php:34
+msgid "Photo"
+msgstr "Zdjęcie"
+
+#: ../admin/hooks/gettext.php:12 ../admin/hooks/gettext.php:15
+msgid "Select Logo"
+msgstr "Zaznacz logo"
+
+#: ../admin/hooks/gettext.php:18
+msgid "Remove Logo"
+msgstr "Usuń logo"
+
+#: ../admin/hooks/gettext.php:24 ../admin/settings/settings.php:63
+#: ../admin/widgets/countdown.php:44
+msgid "(Auto)"
+msgstr "(Automatycznie)"
+
+#: ../admin/hooks/gettext.php:27 ../admin/hooks/gettext.php:30
+msgid "Select Photo"
+msgstr "Zaznacz zdjęcie"
+
+#: ../admin/hooks/gettext.php:33
+msgid "Remove Photo"
+msgstr "Usuń zdjęcie"
+
+#: ../admin/hooks/manage-posts-columns.php:3 ../admin/post-types/event.php:218
+#: ../admin/post-types/list.php:39 ../admin/post-types/player.php:39
+#: ../admin/post-types/staff.php:57 ../admin/post-types/table.php:38
+#: ../admin/post-types/team.php:52
+msgid "Views"
+msgstr "Odwiedzin"
+
+#: ../admin/hooks/manage-posts-columns.php:83
+#: ../admin/post-types/player.php:139 ../admin/templates/player-metrics.php:26
+msgid "Current Team"
+msgstr "Obecna drużyna"
+
+#: ../admin/hooks/media-buttons.php:7
+msgid "Add Map"
+msgstr "Dodaj mapę"
+
+#: ../admin/hooks/media-buttons.php:8
+msgid "Add League Table"
+msgstr "Dodaj tabelę ligową"
+
+#: ../admin/hooks/plugin-action-links.php:3
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: ../admin/hooks/post-updated-messages.php:10
+msgid "Settings saved."
+msgstr "Ustawienia zachowane."
+
+#: ../admin/hooks/post-updated-messages.php:12
+msgid "View All"
+msgstr "Zobaczy wszystko"
+
+#: ../admin/hooks/post-updated-messages.php:18
+#: ../admin/hooks/post-updated-messages.php:21
+#: ../admin/hooks/post-updated-messages.php:26
+msgid "Changes saved."
+msgstr "Zmiany zapisane."
+
+#: ../admin/hooks/post-updated-messages.php:23
+#: ../admin/hooks/post-updated-messages.php:28
+#: ../admin/hooks/post-updated-messages.php:38
+msgid "Success!"
+msgstr "Zakończono!"
+
+#: ../admin/hooks/post-updated-messages.php:30
+#: ../admin/hooks/post-updated-messages.php:36
+#: ../admin/hooks/post-updated-messages.php:40
+#, php-format
+msgid "Preview %s"
+msgstr "Zobacz %s"
+
+#: ../admin/hooks/post-updated-messages.php:33
+#, php-format
+msgid "Scheduled for: <b>%1$s</b>."
+msgstr "Planowane na: <b>%1$s</b>."
+
+#: ../admin/hooks/register-activation-hook.php:8
+msgid "League Manager"
+msgstr "Zarządzaj ligą"
+
+#: ../admin/hooks/register-activation-hook.php:86
+msgid "Team Manager"
+msgstr "Zarządzaj drużyną"
+
+#: ../admin/hooks/register-activation-hook.php:131
+#: ../admin/post-types/event.php:137 ../admin/post-types/staff.php:4
+#: ../admin/post-types/staff.php:5 ../admin/post-types/staff.php:15
+msgid "Staff"
+msgstr "Sztab szkoleniowy"
+
+#: ../admin/hooks/restrict-manage-posts.php:8
+msgid "Show all positions"
+msgstr "Pokaż wszystkie pozycje"
+
+#: ../admin/hooks/restrict-manage-posts.php:18
+msgid "Show all leagues"
+msgstr "Pokaż wszystkie ligi"
+
+#: ../admin/hooks/restrict-manage-posts.php:28
+msgid "Show all seasons"
+msgstr "Pomaż wszystkie sezony"
+
+#: ../admin/hooks/restrict-manage-posts.php:40
+msgid "Show all teams"
+msgstr "Pokaż wszystkie drużyny"
+
+#: ../admin/hooks/wp-insert-post-data.php:13
+msgid "vs"
+msgstr "-"
+
+#: ../admin/includes/notice-install.php:5
+msgid "<strong>Welcome to SportsPress</strong> &#8211; Get Started"
+msgstr "<strong>Witaj w SportsPress</strong> &#8211; Zacznij"
+
+#: ../admin/includes/notice-install.php:7
+msgid "Go to SportsPress Settings"
+msgstr "Przejdź do ustawień SportsPress"
+
+#: ../admin/includes/notice-install.php:8
+msgid "Skip setup"
+msgstr "Pomiń instalację"
+
+#: ../admin/includes/notice-theme-support.php:5
+msgid ""
+"<strong>Your theme does not declare SportsPress support</strong> &#8211; if "
+"you encounter layout issues please read our integration guide or choose a "
+"SportsPress theme :)"
+msgstr ""
+"<strong>Twój motyw nie deklarują wsparcia SportsPress</strong> &#8211; w "
+"przypadku wystąpienia problemów przeczytaj nasz przewodnik lub wybierz "
+"odpowiedni temat na SportsPress :)"
+
+#: ../admin/includes/notice-theme-support.php:7
+msgid "Theme Integration Guide"
+msgstr "Poradnik integracji motywu"
+
+#: ../admin/includes/notice-theme-support.php:8
+msgid "Hide this notice"
+msgstr "Schowaj tę wiadomość"
+
+#: ../admin/post-types/column.php:5
+msgid "Column"
+msgstr "Kolumna"
+
+#: ../admin/post-types/column.php:8 ../admin/post-types/event.php:9
+#: ../admin/post-types/list.php:8 ../admin/post-types/metric.php:8
+#: ../admin/post-types/outcome.php:8 ../admin/post-types/player.php:8
+#: ../admin/post-types/result.php:8 ../admin/post-types/staff.php:8
+#: ../admin/post-types/statistic.php:8 ../admin/post-types/table.php:8
+#: ../admin/post-types/team.php:8
+msgid "New"
+msgstr "Nowy"
+
+#: ../admin/post-types/column.php:9 ../admin/post-types/event.php:10
+#: ../admin/post-types/list.php:9 ../admin/post-types/metric.php:9
+#: ../admin/post-types/outcome.php:9 ../admin/post-types/player.php:9
+#: ../admin/post-types/result.php:9 ../admin/post-types/staff.php:9
+#: ../admin/post-types/statistic.php:9 ../admin/post-types/table.php:9
+#: ../admin/post-types/team.php:9 ../admin/terms/league.php:8
+#: ../admin/terms/position.php:8 ../admin/terms/season.php:8
+#: ../admin/terms/venue.php:8
+msgid "View"
+msgstr "Zobacz"
+
+#: ../admin/post-types/column.php:10 ../admin/post-types/event.php:11
+#: ../admin/post-types/list.php:10 ../admin/post-types/metric.php:10
+#: ../admin/post-types/outcome.php:10 ../admin/post-types/player.php:10
+#: ../admin/post-types/result.php:10 ../admin/post-types/staff.php:10
+#: ../admin/post-types/statistic.php:10 ../admin/post-types/table.php:10
+#: ../admin/post-types/team.php:10 ../admin/terms/league.php:14
+#: ../admin/terms/position.php:14 ../admin/terms/season.php:14
+#: ../admin/terms/venue.php:14
+msgid "Search"
+msgstr "Szukaj"
+
+#: ../admin/post-types/column.php:33 ../admin/post-types/metric.php:32
+#: ../admin/post-types/outcome.php:33 ../admin/post-types/result.php:33
+#: ../admin/post-types/statistic.php:33 ../admin/settings/events.php:20
+#: ../admin/settings/events.php:26 ../admin/settings/events.php:59
+#: ../admin/settings/events.php:65 ../admin/settings/players.php:15
+#: ../admin/settings/players.php:22 ../admin/settings/players.php:56
+#: ../admin/settings/players.php:63 ../admin/settings/tables.php:15
+#: ../admin/settings/tables.php:24
+msgid "Label"
+msgstr "Etykieta"
+
+#: ../admin/post-types/column.php:34 ../admin/post-types/column.php:56
+#: ../admin/post-types/outcome.php:34 ../admin/post-types/outcome.php:46
+#: ../admin/post-types/result.php:34 ../admin/post-types/result.php:47
+#: ../admin/settings/events.php:21 ../admin/settings/events.php:27
+#: ../admin/settings/events.php:60 ../admin/settings/events.php:66
+#: ../admin/settings/tables.php:16 ../admin/settings/tables.php:25
+msgid "Key"
+msgstr "Klucz"
+
+#: ../admin/post-types/column.php:35 ../admin/post-types/column.php:60
+#: ../admin/settings/tables.php:17 ../admin/settings/tables.php:26
+msgid "Equation"
+msgstr "Bilans"
+
+#: ../admin/post-types/column.php:36 ../admin/post-types/column.php:68
+#: ../admin/settings/tables.php:18 ../admin/settings/tables.php:27
+msgid "Rounding"
+msgstr "Zaokrąglanie"
+
+#: ../admin/post-types/column.php:37 ../admin/post-types/column.php:72
+#: ../admin/settings/tables.php:19 ../admin/settings/tables.php:28
+msgid "Sort Order"
+msgstr "Sortuj według"
+
+#: ../admin/post-types/column.php:44 ../admin/post-types/event.php:50
+#: ../admin/post-types/list.php:56 ../admin/post-types/outcome.php:41
+#: ../admin/post-types/player.php:56 ../admin/post-types/result.php:41
+#: ../admin/post-types/statistic.php:42 ../admin/post-types/table.php:55
+#: ../admin/templates/event-details.php:25
+msgid "Details"
+msgstr "Szczegóły"
+
+#: ../admin/post-types/column.php:76
+msgid "Disable"
+msgstr "Wyłącz"
+
+#: ../admin/post-types/column.php:88 ../admin/post-types/list.php:133
+#: ../admin/widgets/player-list.php:109
+msgid "Descending"
+msgstr "Malejąco"
+
+#: ../admin/post-types/column.php:88 ../admin/post-types/list.php:132
+#: ../admin/widgets/player-list.php:108
+msgid "Ascending"
+msgstr "Rosnąco"
+
+#: ../admin/post-types/event.php:4
+msgid "Schedule"
+msgstr "Harmonogram"
+
+#: ../admin/post-types/event.php:5 ../admin/post-types/event.php:49
+#: ../admin/post-types/event.php:212 ../admin/widgets/countdown.php:37
+msgid "Event"
+msgstr "Wydarzenie"
+
+#: ../admin/post-types/event.php:51 ../admin/post-types/event.php:213
+#: ../admin/post-types/player.php:36 ../admin/post-types/player.php:161
+#: ../admin/post-types/staff.php:35 ../admin/post-types/staff.php:54
+#: ../admin/post-types/table.php:37 ../admin/post-types/table.php:49
+#: ../admin/post-types/table.php:91 ../admin/post-types/team.php:4
+#: ../admin/post-types/team.php:16
+msgid "Teams"
+msgstr "Drużyny"
+
+#: ../admin/post-types/event.php:58 ../admin/post-types/player.php:61
+#: ../admin/post-types/statistic.php:4 ../admin/post-types/statistic.php:15
+#: ../admin/settings/players.php:52
+msgid "Statistics"
+msgstr "Statystyki"
+
+#: ../admin/post-types/event.php:59
+msgid "Article"
+msgstr "Artykuł"
+
+#: ../admin/post-types/event.php:68 ../admin/post-types/event.php:214
+#: ../admin/post-types/list.php:36 ../admin/post-types/list.php:67
+#: ../admin/post-types/table.php:35 ../admin/post-types/table.php:63
+#: ../admin/templates/event-details.php:17 ../admin/terms/league.php:5
+msgid "League"
+msgstr "Liga"
+
+#: ../admin/post-types/event.php:98 ../admin/post-types/event.php:216
+#: ../admin/templates/event-venue.php:24 ../admin/terms/venue.php:5
+msgid "Venue"
+msgstr "Miejsce spotkania"
+
+#: ../admin/post-types/event.php:128
+msgid "Remove"
+msgstr "Usuń"
+
+#: ../admin/post-types/event.php:136 ../admin/post-types/list.php:35
+#: ../admin/post-types/list.php:50 ../admin/post-types/list.php:136
+#: ../admin/post-types/player.php:4 ../admin/post-types/player.php:15
+#: ../admin/settings/settings.php:13
+msgid "Players"
+msgstr "Zawodnicy"
+
+#: ../admin/post-types/event.php:152
+msgid "&mdash; Add &mdash;"
+msgstr "&mdash; Dodaj &mdash;"
+
+#: ../admin/post-types/event.php:217
+msgid "Date/Time"
+msgstr "Data/Czas"
+
+#: ../admin/post-types/list.php:4 ../admin/post-types/list.php:15
+msgid "Player Lists"
+msgstr "Listy zawodników"
+
+#: ../admin/post-types/list.php:5 ../admin/post-types/list.php:53
+#: ../admin/widgets/player-list.php:47
+msgid "Player List"
+msgstr "Lista zawodników"
+
+#: ../admin/post-types/list.php:34 ../admin/post-types/table.php:34
+msgid "Title"
+msgstr "Tytuł"
+
+#: ../admin/post-types/list.php:101 ../admin/terms/league.php:6
+#: ../admin/terms/position.php:6 ../admin/terms/season.php:6
+#: ../admin/terms/venue.php:6
+msgid "All"
+msgstr "Wszystko"
+
+#: ../admin/post-types/list.php:110 ../admin/widgets/player-list.php:84
+msgid "Sort by:"
+msgstr "Porządkuj wg:"
+
+#: ../admin/post-types/list.php:115 ../admin/post-types/player.php:109
+#: ../admin/templates/player-metrics.php:19
+#: ../admin/widgets/player-list.php:89
+msgid "Number"
+msgstr "Numer"
+
+#: ../admin/post-types/list.php:116 ../admin/post-types/player.php:34
+#: ../admin/post-types/staff.php:52 ../admin/terms/league.php:11
+#: ../admin/terms/position.php:11 ../admin/terms/season.php:11
+#: ../admin/terms/venue.php:11 ../admin/widgets/player-list.php:90
+msgid "Name"
+msgstr "Nazwisko"
+
+#: ../admin/post-types/list.php:129 ../admin/widgets/player-list.php:106
+msgid "Sort Order:"
+msgstr "Sortuj według:"
+
+#: ../admin/post-types/metric.php:4 ../admin/post-types/metric.php:15
+#: ../admin/post-types/player.php:57 ../admin/settings/players.php:11
+msgid "Metrics"
+msgstr "Metryki"
+
+#: ../admin/post-types/metric.php:5
+msgid "Metric"
+msgstr "Metryka"
+
+#: ../admin/post-types/player.php:55 ../admin/post-types/staff.php:32
+#: ../admin/post-types/team.php:36
+msgid "Publish"
+msgstr "Opublikuj"
+
+#: ../admin/post-types/player.php:64 ../admin/post-types/staff.php:36
+msgid "Profile"
+msgstr "Profil"
+
+#: ../admin/post-types/player.php:112 ../admin/post-types/player.php:113
+#: ../admin/templates/player-metrics.php:21
+msgid "Nationality"
+msgstr "Narodowość"
+
+#: ../admin/post-types/player.php:154 ../admin/templates/player-metrics.php:33
+msgid "Past Teams"
+msgstr "Poprzednie drużyny"
+
+#: ../admin/post-types/result.php:5
+msgid "Result"
+msgstr "Wynik"
+
+#: ../admin/post-types/statistic.php:5
+msgid "Statistic"
+msgstr "Statystyka"
+
+#: ../admin/post-types/statistic.php:35 ../admin/post-types/statistic.php:48
+#: ../admin/settings/players.php:58 ../admin/settings/players.php:65
+msgid "Calculate"
+msgstr "Oblicz"
+
+#: ../admin/post-types/table.php:4 ../admin/post-types/table.php:15
+#: ../admin/settings/settings.php:12
+msgid "League Tables"
+msgstr "Tabele ligowe"
+
+#: ../admin/post-types/table.php:5 ../admin/post-types/table.php:52
+#: ../admin/widgets/league-table.php:41
+msgid "League Table"
+msgstr "Tabela ligowa"
+
+#: ../admin/post-types/team.php:13 ../admin/terms/league.php:13
+#: ../admin/terms/position.php:13 ../admin/terms/season.php:13
+#: ../admin/terms/venue.php:13
+msgid "Parent:"
+msgstr "Rodzic:"
+
+#: ../admin/settings/events.php:1
+msgid "Event Settings"
+msgstr "Ustawienia wydarzeń"
+
+#: ../admin/settings/general.php:1
+msgid "General Settings"
+msgstr "Ustawienia główne"
+
+#: ../admin/settings/settings.php:10
+msgid "General"
+msgstr "Ustawienia główne"
+
+#: ../admin/settings/settings.php:50
+msgid "Custom"
+msgstr "Dostosuj"
+
+#: ../admin/settings/settings.php:52 ../admin/settings/settings.php:102
+msgid "Sport"
+msgstr "Sport"
+
+#: ../admin/settings/settings.php:124
+msgid "Main Result"
+msgstr "Główny wynik"
+
+#: ../admin/settings/settings.php:241 ../admin/settings/settings.php:242
+msgid "SportsPress"
+msgstr "SportsPress"
+
+#: ../admin/templates/event-details.php:13
+msgid "Date"
+msgstr "Data"
+
+#. translators: Calendar caption: 1: month name, 2: 4-digit year
+#: ../admin/templates/events-calendar.php:56
+#: ../admin/templates/events-calendar.php:83
+#: ../admin/templates/events-calendar.php:91
+#, php-format
+msgctxt "calendar caption"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: ../admin/templates/league-table.php:27
+msgid "Pos"
+msgstr "Pozycja"
+
+#: ../admin/templates/player-list.php:46
+msgid "Rank"
+msgstr "Ranga"
+
+#: ../admin/terms/league.php:9 ../admin/terms/position.php:9
+#: ../admin/terms/season.php:9 ../admin/terms/venue.php:9
+msgid "Update"
+msgstr "Uaktualnij"
+
+#: ../admin/terms/league.php:12 ../admin/terms/position.php:12
+#: ../admin/terms/season.php:12 ../admin/terms/venue.php:12
+msgid "Parent"
+msgstr "Rodzic"
+
+#: ../admin/terms/position.php:5
+msgid "Position"
+msgstr "Pozycja"
+
+#: ../admin/terms/venue.php:38 ../admin/terms/venue.php:85
+msgid "Address"
+msgstr "Adres"
+
+#: ../admin/terms/venue.php:45
+msgid "Latitude"
+msgstr "Szerokość"
+
+#: ../admin/terms/venue.php:51
+msgid "Longitude"
+msgstr "Długość"
+
+#: ../admin/tools/dashboard.php:34
+msgid "SportsPress Status"
+msgstr "SportsPress - Status"
+
+#: ../admin/tools/dashboard.php:54
+#, php-format
+msgid "<strong>%s</strong> until next event"
+msgstr "<strong>%s</strong> do następnego wydarzenia"
+
+#: ../admin/tools/dashboard.php:61
+#, php-format
+msgid "<strong>%s event</strong> scheduled"
+msgid_plural "<strong>%s events</strong> scheduled"
+msgstr[0] "<strong>%s wydarzenie</strong> zaplanowane"
+msgstr[1] "<strong>%s wydarzeń</strong> zaplanowanych"
+msgstr[2] "<strong>%s wydarzeń</strong> zaplanowanych"
+
+#: ../admin/tools/dashboard.php:66
+#, php-format
+msgid "<strong>%s event</strong> published"
+msgid_plural "<strong>%s events</strong> published"
+msgstr[0] "<strong>%s wydarzenie</strong> opublikowane"
+msgstr[1] "<strong>%s wydarzeń</strong> upublikowanych"
+msgstr[2] "<strong>%s wydarzeń</strong> upublikowanych"
+
+#: ../admin/tools/importers.php:37
+msgid "SportsPress Teams (CSV)"
+msgstr "SportsPress Drużyny (CSV)"
+
+#: ../admin/tools/importers.php:37
+msgid "Import <strong>teams</strong> from a csv file."
+msgstr "Import <strong>drużyn</strong> z pliku CSV."
+
+#: ../admin/tools/importers.php:38
+msgid "SportsPress Players (CSV)"
+msgstr "SportsPress Zawodnicy (CSV)"
+
+#: ../admin/tools/importers.php:38
+msgid "Import <strong>players</strong> from a csv file."
+msgstr "Import <strong>zawodników</strong> z pliku CSV."
+
+#: ../admin/tools/player-importer.php:192
+#: ../admin/tools/player-importer.php:232
+#: ../admin/tools/player-importer.php:247 ../admin/tools/team-importer.php:151
+#: ../admin/tools/team-importer.php:191 ../admin/tools/team-importer.php:206
+msgid "Sorry, there has been an error."
+msgstr "Przepraszamy wystąpił bład."
+
+#: ../admin/tools/player-importer.php:193 ../admin/tools/team-importer.php:152
+msgid "The CSV is invalid."
+msgstr "Plik CSV jest błędny."
+
+#: ../admin/tools/player-importer.php:204
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> players and skipped <strong>"
+"%s</strong>."
+msgstr ""
+"Import zakończony - zaimportowano <strong>%s</strong> zawodników, pominięto "
+"<strong>%s</strong>."
+
+#: ../admin/tools/player-importer.php:214 ../admin/tools/team-importer.php:173
+msgid "All done!"
+msgstr "Zrobione!"
+
+#: ../admin/tools/player-importer.php:214
+msgid "View Players"
+msgstr "Zobacz zawodników"
+
+#: ../admin/tools/player-importer.php:264
+msgid "Import Players"
+msgstr "Import zawodników"
+
+#: ../admin/tools/player-importer.php:286 ../admin/tools/team-importer.php:245
+msgid ""
+"Hi there! Choose a .csv file to upload, then click \"Upload file and import"
+"\"."
+msgstr ""
+"Witaj! Wybierz plik .csv do wysłania, a następnie kliknij przycisk "
+"\"Prześlij plik i importuj\"."
+
+#: ../admin/tools/player-importer.php:288
+#, php-format
+msgid ""
+"Players need to be defined with columns in a specific order (7 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+"Gracze muszą muszą mieć okreslone kolumny w określonej kolejności (7 "
+"kolumn). <a href=\"%s\"> Kliknij tutaj, aby pobrać przykład </ a>."
+
+#: ../admin/tools/player-importer.php:296 ../admin/tools/team-importer.php:255
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr "Zanim wgrasz plik musisz naprawić następujący błąd:"
+
+#: ../admin/tools/player-importer.php:305 ../admin/tools/team-importer.php:264
+msgid "Choose a file from your computer:"
+msgstr "Wybierz plik z komputera"
+
+#: ../admin/tools/player-importer.php:311 ../admin/tools/team-importer.php:270
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Maksymalny rozmiar: %s"
+
+#: ../admin/tools/player-importer.php:316 ../admin/tools/team-importer.php:275
+msgid "OR enter path to file:"
+msgstr "LUB wpisz ścieżkę do pliku:"
+
+#: ../admin/tools/player-importer.php:323 ../admin/tools/team-importer.php:282
+msgid "Delimiter"
+msgstr "Separator"
+
+#: ../admin/tools/player-importer.php:329 ../admin/tools/team-importer.php:288
+msgid "Upload file and import"
+msgstr "Prześlij plik i importuj"
+
+#: ../admin/tools/team-importer.php:163
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
+"strong>."
+msgstr ""
+"Import zakończony - zaimportowano <strong>%s</strong> drużyn, pominięto "
+"<strong>%s</strong>."
+
+#: ../admin/tools/team-importer.php:173
+msgid "View Teams"
+msgstr "Zobacz drużyny"
+
+#: ../admin/tools/team-importer.php:223
+msgid "Import Teams"
+msgstr "Import drużyn"
+
+#: ../admin/tools/team-importer.php:247
+#, php-format
+msgid ""
+"Teams need to be defined with columns in a specific order (3 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+"Drużyny muszą muszą mieć okreslone kolumny w określonej kolejności (3 "
+"kolumny). <a href=\"%s\"> Kliknij tutaj, aby pobrać przykład </ a>."
+
+#: ../admin/widgets/countdown.php:5
+msgid "A clock that counts down to an upcoming event."
+msgstr "Zegar, który odlicza czas do nadchodzącego wydarzenia"
+
+#: ../admin/widgets/countdown.php:6
+msgid "SportsPress Countdown"
+msgstr "SportsPress Odliczanie"
+
+#: ../admin/widgets/countdown.php:34 ../admin/widgets/events-calendar.php:32
+#: ../admin/widgets/league-table.php:38 ../admin/widgets/player-list.php:44
+msgid "Title:"
+msgstr "Tytuł:"
+
+#: ../admin/widgets/countdown.php:37 ../admin/widgets/league-table.php:41
+#: ../admin/widgets/player-list.php:47
+#, php-format
+msgid "Select %s:"
+msgstr "Wybierz %s:"
+
+#: ../admin/widgets/countdown.php:57
+msgid "Display league"
+msgstr "Wyświetl ligę"
+
+#: ../admin/widgets/events-calendar.php:5
+msgid "A calendar of events."
+msgstr "Kalendarz wydarzeń."
+
+#: ../admin/widgets/events-calendar.php:6
+msgid "SportsPress Events Calendar"
+msgstr "SportsPress - Kalendarz wydarzeń"
+
+#: ../admin/widgets/league-table.php:5
+msgid "Display a league table."
+msgstr "Wyświetl ligową tabelę."
+
+#: ../admin/widgets/league-table.php:6
+msgid "SportsPress League Table"
+msgstr "SportsPress - Tabela ligowa"
+
+#: ../admin/widgets/league-table.php:58
+msgid "Columns:"
+msgstr "Kolumny:"
+
+#: ../admin/widgets/player-list.php:5
+msgid "Display a list of players."
+msgstr "Wyświetla liste zawodników."
+
+#: ../admin/widgets/player-list.php:6
+msgid "SportsPress Player List"
+msgstr "SportsPress - lista zawodników"
+
+#: ../admin/widgets/player-list.php:64
+msgid "Statistics:"
+msgstr "Statystyki:"
+
+#: ../admin/widgets/player-list.php:88
+msgid "Default"
+msgstr "Domyślny"
+
+#: ../presets/sports/baseball.php:5
+msgid "Baseball"
+msgstr "Bejsbol"
+
+#: ../presets/sports/basketball.php:5
+msgid "Basketball"
+msgstr "Koszykówka"
+
+#: ../presets/sports/cricket.php:5
+msgid "Cricket"
+msgstr "Krykiet"
+
+#: ../presets/sports/football.php:5
+msgid "American Football"
+msgstr "Amerykański Football"
+
+#: ../presets/sports/footy.php:5
+msgid "Australian Rules Football"
+msgstr "Australijski Football"
+
+#: ../presets/sports/gaming.php:5
+msgid "Competitive Gaming"
+msgstr "Rozgrywki konkurencyjne"
+
+#: ../presets/sports/golf.php:5
+msgid "Golf"
+msgstr "Golf"
+
+#: ../presets/sports/hockey.php:5
+msgid "Hockey"
+msgstr "Hokej"
+
+#: ../presets/sports/racing.php:5
+msgid "Racing"
+msgstr "Wyścigi"
+
+#: ../presets/sports/rugby.php:5
+msgid "Rugby"
+msgstr "Rugby"
+
+#: ../presets/sports/soccer.php:5
+msgid "Soccer (Association Football)"
+msgstr "Piłka nożna (Związek piłki nożnej)"
+
+#~ msgid "%1$s %2$s"
+#~ msgstr "%1$s %2$s"
+
+#~ msgid "-- Not Set --"
+#~ msgstr "-- Pas réglé --"
+
+#~ msgid "Points"
+#~ msgstr "点数"
+
+#~ msgid "Bonus"
+#~ msgstr "ボーナス"
+
+#~ msgid "Height"
+#~ msgstr "身長"
+
+#~ msgid "Weight"
+#~ msgstr "体重"
+
+#~ msgid "Conversions"
+#~ msgstr "ポジション"
+
+#~ msgid "Drop Goals"
+#~ msgstr "得点"
+
+#~ msgid "Goals"
+#~ msgstr "得点"
+
+#~ msgid "Assists"
+#~ msgstr "アシスト"
+
+#~ msgid "Yellow Cards"
+#~ msgstr "警告"
+
+#~ msgid "Red Cards"
+#~ msgstr "退場"
+
+#~ msgid "#"
+#~ msgstr "#"
+
+#~ msgid "Handball"
+#~ msgstr "ハンドボール"
+
+#~ msgid "Swimming"
+#~ msgstr "水泳"
+
+#~ msgid "Tennis"
+#~ msgstr "テニス"
+
+#~ msgid "Volleyball"
+#~ msgstr "バレーボール"
+
+#~ msgid "Appearances"
+#~ msgstr "出場"
+
+#~ msgid "table columns"
+#~ msgstr "順位表列"
+
+#~ msgid "Format"
+#~ msgstr "フォーマット"
+
+#~ msgid "player statistics"
+#~ msgstr "選手名鑑"
+
+#~ msgid "Configure"
+#~ msgstr "設定"
+
+#~ msgid "Joined"
+#~ msgstr "入団日"
