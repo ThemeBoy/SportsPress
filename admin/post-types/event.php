@@ -5,7 +5,7 @@ function sportspress_event_post_init() {
 		'singular_name' => __( 'Event', 'sportspress' ),
 		'all_items' => __( 'Events', 'sportspress' ),
 		'add_new_item' => __( 'Add New Event', 'sportspress' ),
-		'edit_item' => __( 'Edit', 'sportspress' ),
+		'edit_item' => __( 'Edit Event', 'sportspress' ),
 		'new_item' => __( 'New', 'sportspress' ),
 		'view_item' => __( 'View', 'sportspress' ),
 		'search_items' => __( 'Search', 'sportspress' ),

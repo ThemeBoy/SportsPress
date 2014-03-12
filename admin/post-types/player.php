@@ -6,7 +6,7 @@ function sportspress_player_post_init() {
 		'menu_name' => __( 'Roster', 'sportspress' ),
 		'all_items' => __( 'Players', 'sportspress' ),
 		'add_new_item' => __( 'Add New Player', 'sportspress' ),
-		'edit_item' => __( 'Edit', 'sportspress' ),
+		'edit_item' => __( 'Edit Player', 'sportspress' ),
 		'new_item' => __( 'New', 'sportspress' ),
 		'view_item' => __( 'View', 'sportspress' ),
 		'search_items' => __( 'Search', 'sportspress' ),
