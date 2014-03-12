@@ -4,7 +4,7 @@ function sportspress_result_post_init() {
 		'name' => __( 'Results', 'sportspress' ),
 		'singular_name' => __( 'Result', 'sportspress' ),
 		'add_new_item' => __( 'Add New Result', 'sportspress' ),
-		'edit_item' => __( 'Edit', 'sportspress' ),
+		'edit_item' => __( 'Edit Result', 'sportspress' ),
 		'new_item' => __( 'New', 'sportspress' ),
 		'view_item' => __( 'View', 'sportspress' ),
 		'search_items' => __( 'Search', 'sportspress' ),

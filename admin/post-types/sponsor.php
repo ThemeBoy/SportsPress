@@ -4,7 +4,7 @@ function sportspress_sponsor_post_init() {
 		'name' => __( 'Sponsors', 'sportspress' ),
 		'singular_name' => __( 'Sponsor', 'sportspress' ),
 		'add_new_item' => __( 'Add New Sponsor', 'sportspress' ),
-		'edit_item' => __( 'Edit', 'sportspress' ),
+		'edit_item' => __( 'Edit Sponsor', 'sportspress' ),
 		'new_item' => __( 'New', 'sportspress' ),
 		'view_item' => __( 'View', 'sportspress' ),
 		'search_items' => __( 'Search', 'sportspress' ),
