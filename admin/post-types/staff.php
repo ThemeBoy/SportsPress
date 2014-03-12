@@ -45,7 +45,6 @@ function sportspress_staff_profile_meta( $post ) {
 function sportspress_staff_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'sp_icon' => '<span class="dashicons dashicons-businessman" title="' . __( 'Staff', 'sportspress' ) . '"></span>',
 		'title' => __( 'Name', 'sportspress' ),
 		'sp_position' => __( 'Positions', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
