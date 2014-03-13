@@ -48,7 +48,7 @@ function sportspress_table_meta_init( $post ) {
 	remove_meta_box( 'sp_leaguediv', 'sp_table', 'side' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_table_team_meta', 'sp_table', 'side', 'default' );
 	add_meta_box( 'sp_columnsdiv', __( 'League Table', 'sportspress' ), 'sportspress_table_columns_meta', 'sp_table', 'normal', 'high' );
-	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_table_details_meta', 'sp_table', 'normal', 'high' );
+	add_meta_box( 'sp_descriptiondiv', __( 'Description', 'sportspress' ), 'sportspress_table_description_meta', 'sp_table', 'normal', 'high' );
 }
 
 function sportspress_table_team_meta( $post, $test ) {
@@ -103,6 +103,6 @@ function sportspress_table_columns_meta( $post ) {
 	sportspress_nonce();
 }
 
-function sportspress_table_details_meta( $post ) {
+function sportspress_table_description_meta( $post ) {
 	wp_editor( $post->post_content, 'content' );
 }
