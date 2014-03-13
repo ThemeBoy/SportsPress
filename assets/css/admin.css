@@ -72,47 +72,15 @@
 	content: "\f163";
 }
 
+.widefat .column-sp_team strong {
+	background: #555;
+	color: #fff;
+	padding: 0 4px;
+	border-radius: 2px;
+}
+
 .fixed .column-sp_datetime {
 	width: 10%;
-}
-
-table.wp-list-table .sp_datetime_head, table.wp-list-table .sp_team_head, table.wp-list-table .sp_player_head {
-	display: block;
-	text-indent: -9999px;
-	position: relative;
-	height: 1em;
-	width: 1em;
-	margin: 0 auto;
-}
-
-table.wp-list-table .sp_datetime_head:after, table.wp-list-table .sp_team_head:after, table.wp-list-table .sp_player_head:after {
-	font-family: sportspress, dashicons !important;
-	speak: none;
-	font-weight: 400;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-	margin: 0;
-	text-indent: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-}
-
-table.wp-list-table .sp_datetime_head:after {
-	content: "\f145";
-}
-
-table.wp-list-table .sp_team_head:after {
-	content: "\f334";
-}
-
-table.wp-list-table .sp_player_head:after {
-	content: "\f307";
 }
 
 #sportspress_dashboard_status .inside {
