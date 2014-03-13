@@ -40,13 +40,79 @@
 .sp-icon-megaphone:before {
 	content: "\f155";
 }
+.sp-icon-smile:before {
+	content: "\f328";
+}
+.sp-icon-trophy:before {
+	content: "\f313";
+}
 
 #adminmenu #toplevel_page_sportspress .menu-icon-generic div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_event .menu-icon-sp_event div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_team .menu-icon-sp_team div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_player .menu-icon-sp_player div.wp-menu-image:before,
-#adminmenu #menu-posts-sp_sponsor .menu-icon-sp_sponsor div.wp-menu-image:before {
+#adminmenu #menu-posts-sp_sponsor .menu-icon-sp_sponsor div.wp-menu-image:before,
+.post-format-icon:before {
 	font-family: sportspress, dashicons !important;
+}
+
+.post-state-format.post-format-league:before, .post-format-icon.post-format-league:before, a.post-state-format.format-league:before {
+	content: "\f227";
+}
+
+.post-state-format.post-format-tournament:before, .post-format-icon.post-format-tournament:before, a.post-state-format.format-tournament:before {
+	content: "\f313";
+}
+
+.post-state-format.post-format-friendly:before, .post-format-icon.post-format-friendly:before, a.post-state-format.format-friendly:before {
+	content: "\f328";
+}
+
+.post-state-format.post-format-list:before, .post-format-icon.post-format-list:before, a.post-state-format.format-list:before {
+	content: "\f163";
+}
+
+.fixed .column-sp_datetime {
+	width: 10%;
+}
+
+table.wp-list-table .sp_datetime_head, table.wp-list-table .sp_team_head, table.wp-list-table .sp_player_head {
+	display: block;
+	text-indent: -9999px;
+	position: relative;
+	height: 1em;
+	width: 1em;
+	margin: 0 auto;
+}
+
+table.wp-list-table .sp_datetime_head:after, table.wp-list-table .sp_team_head:after, table.wp-list-table .sp_player_head:after {
+	font-family: sportspress, dashicons !important;
+	speak: none;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	margin: 0;
+	text-indent: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+table.wp-list-table .sp_datetime_head:after {
+	content: "\f145";
+}
+
+table.wp-list-table .sp_team_head:after {
+	content: "\f334";
+}
+
+table.wp-list-table .sp_player_head:after {
+	content: "\f307";
 }
 
 #sportspress_dashboard_status .inside {
@@ -290,6 +356,10 @@ table.widefat td.column-sp_number .sp-flag {
 	max-width: 20px;
 }
 
+table.widefat td.sp-outcome .chosen-container {
+	width: 100%;
+}
+
 #sp_venue-adder h4,
 #sp_team-adder h4,
 #sp_season-adder h4,
@@ -386,6 +456,104 @@ table.widefat td.column-sp_number .sp-flag {
 	-webkit-transition: none;
 }
 
+/* TipTip */
+
+.tips {
+	cursor: help !important;
+}
+
+#tiptip_holder {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99999;
+}
+
+#tiptip_holder.tip_top {
+	padding-bottom: 5px;
+}
+
+#tiptip_holder.tip_bottom {
+	padding-top: 5px;
+}
+
+#tiptip_holder.tip_right {
+	padding-left: 5px;
+}
+
+#tiptip_holder.tip_left {
+	padding-right: 5px;
+}
+
+#tiptip_content {
+	font-size: 11px;
+	color: #fff;
+	padding: .5em;
+	background: #464646;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,.1);
+	-moz-box-shadow: 1px 1px 3px rgba(0,0,0,.1);
+	box-shadow: 1px 1px 3px rgba(0,0,0,.1);
+	text-align: center;
+}
+
+#tiptip_arrow, #tiptip_arrow_inner {
+	position: absolute;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 6px;
+	height: 0;
+	width: 0;
+}
+
+#tiptip_holder.tip_top #tiptip_arrow {
+	border-top-color: #fff;
+	border-top-color: rgba(255,255,255,0.25);
+}
+
+#tiptip_holder.tip_bottom #tiptip_arrow {
+	border-bottom-color: #fff;
+	border-bottom-color: rgba(255,255,255,0.25);
+}
+
+#tiptip_holder.tip_right #tiptip_arrow {
+	border-right-color: #fff;
+	border-right-color: rgba(255,255,255,0.25);
+}
+
+#tiptip_holder.tip_left #tiptip_arrow {
+	border-left-color: #fff;
+	border-left-color: rgba(255,255,255,0.25);
+}
+
+#tiptip_holder.tip_top #tiptip_arrow_inner {
+	margin-top: -7px;
+	margin-left: -6px;
+	border-top-color: #464646;
+}
+
+#tiptip_holder.tip_bottom #tiptip_arrow_inner {
+	margin-top: -5px;
+	margin-left: -6px;
+	border-bottom-color: #464646;
+}
+
+#tiptip_holder.tip_right #tiptip_arrow_inner {
+	margin-top: -6px;
+	margin-left: -5px;
+	border-right-color: #464646;
+}
+
+#tiptip_holder.tip_left #tiptip_arrow_inner {
+	margin-top: -6px;
+	margin-left: -7px;
+	border-left-color: #464646;
+}
+
+/* Media Queries */
 @media only screen and (max-width: 768px) {
 
 	.form-field .sp-location-picker {

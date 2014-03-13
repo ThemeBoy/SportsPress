@@ -47,6 +47,7 @@ function sportspress_event_meta_init( $post ) {
 	remove_meta_box( 'sp_seasondiv', 'sp_event', 'side' );
 
 	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
+	add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'sportspress_event_format_meta', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_event_details_meta', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_event_team_meta', 'sp_event', 'side', 'default' );
 	if ( sizeof( $teams ) > 0 )
@@ -59,42 +60,75 @@ function sportspress_event_meta_init( $post ) {
 	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sportspress_event_article_meta', 'sp_event', 'normal', 'high' );
 }
 
+function sportspress_event_format_meta( $post ) {
+	$format = get_post_meta( $post->ID, 'sp_format', true );
+	?>
+	<div id="post-formats-select">
+		<input type="radio" name="sp_format" class="post-format" id="post-format-league" value="league" <?php checked( true, ! $format || $format == 'league' ); ?>> <label for="post-format-league" class="post-format-icon post-format-league">League</label>
+		<br><input type="radio" name="sp_format" class="post-format" id="post-format-tournament" value="tournament" <?php checked( 'tournament', $format ); ?>> <label for="post-format-tournament" class="post-format-icon post-format-tournament">Tournament</label>
+		<br><input type="radio" name="sp_format" class="post-format" id="post-format-friendly" value="friendly" <?php checked( 'friendly', $format ); ?>> <label for="post-format-friendly" class="post-format-icon post-format-friendly">Friendly</label>
+		<br>
+	</div>
+	<?php
+}
+
 function sportspress_event_details_meta( $post ) {
+	$type = sportspress_get_the_term_id( $post->ID, 'sp_type', null );
 	$league_id = sportspress_get_the_term_id( $post->ID, 'sp_league', 0 );
 	$season_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
+	$tournament_id = sportspress_get_the_term_id( $post->ID, 'sp_tournament', 0 );
 	$venue_id = sportspress_get_the_term_id( $post->ID, 'sp_venue', 0 );
 	?>
 	<div>
-		<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
-		<p>
-			<?php
-			$args = array(
-				'taxonomy' => 'sp_league',
-				'name' => 'sp_league',
-				'selected' => $league_id,
-				'values' => 'term_id',
-				'show_option_none' => __( '-- Not set --', 'sportspress' ),
-			);
-			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
-			endif;
-			?>
-		</p>
-		<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
-		<p>
-			<?php
-			$args = array(
-				'taxonomy' => 'sp_season',
-				'name' => 'sp_season',
-				'selected' => $season_id,
-				'values' => 'term_id',
-				'show_option_none' => __( '-- Not set --', 'sportspress' ),
-			);
-			if ( ! sportspress_dropdown_taxonomies( $args ) ):
-				sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
-			endif;
-			?>
-		</p>
+		<fieldset class="sp-event-format-field sp-league-event-field sp-league-event-field">
+			<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$args = array(
+					'taxonomy' => 'sp_league',
+					'name' => 'sp_league',
+					'selected' => $league_id,
+					'values' => 'term_id',
+					'show_option_none' => __( '-- Not set --', 'sportspress' ),
+				);
+				if ( ! sportspress_dropdown_taxonomies( $args ) ):
+					sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
+				endif;
+				?>
+			</p>
+			<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$args = array(
+					'taxonomy' => 'sp_season',
+					'name' => 'sp_season',
+					'selected' => $season_id,
+					'values' => 'term_id',
+					'show_option_none' => __( '-- Not set --', 'sportspress' ),
+				);
+				if ( ! sportspress_dropdown_taxonomies( $args ) ):
+					sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
+				endif;
+				?>
+			</p>
+		</fieldset>
+		<fieldset class="sp-event-format-field sp-tournament-event-field">
+			<p><strong><?php _e( 'Tournament', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$args = array(
+					'taxonomy' => 'sp_tournament',
+					'name' => 'sp_tournament',
+					'selected' => $tournament_id,
+					'values' => 'term_id',
+					'show_option_none' => __( '-- Not set --', 'sportspress' ),
+				);
+				if ( ! sportspress_dropdown_taxonomies( $args ) ):
+					sportspress_taxonomy_adder( 'sp_tournament', 'sp_team', __( 'Add New', 'sportspress' ) );
+				endif;
+				?>
+			</p>
+		</fieldset>
 		<p><strong><?php _e( 'Venue', 'sportspress' ); ?></strong></p>
 		<p>
 			<?php
@@ -209,12 +243,12 @@ function sportspress_event_article_meta( $post ) {
 function sportspress_event_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
+		'sp_datetime' => '<span class="dashicons sp-icon-calendar tips" title="' . __( 'Date/Time', 'sportspress' ) . '"></span>',
 		'title' => __( 'Event', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
 		'sp_league' => __( 'League', 'sportspress' ),
 		'sp_season' => __( 'Season', 'sportspress' ),
 		'sp_venue' => __( 'Venue', 'sportspress' ),
-		'sp_datetime' => '<span class="dashicons dashicons-calendar" title="' . __( 'Date/Time', 'sportspress' ) . '"></span>',
 		'sp_views' => __( 'Views', 'sportspress' ),
 	);
 	return $columns;
@@ -225,4 +259,4 @@ function sportspress_event_edit_sortable_columns( $columns ) {
 	$columns['sp_datetime'] = 'sp_datetime';
 	return $columns;
 }
-add_filter( 'manage_edit-sp_event_sortable_columns', 'sportspress_event_edit_sortable_columns' );
+//add_filter( 'manage_edit-sp_event_sortable_columns', 'sportspress_event_edit_sortable_columns' );

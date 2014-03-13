@@ -36,11 +36,17 @@ function sportspress_save_post( $post_id ) {
 			// Update staff array
 			sportspress_update_post_meta_recursive( $post_id, 'sp_staff', sportspress_array_value( $_POST, 'sp_staff', array() ) );
 
+			// Update format
+			update_post_meta( $post_id, 'sp_format', sportspress_array_value( $_POST, 'sp_format', 'league' ) );
+
 			// Update league taxonomy
 			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
 
 			// Update season taxonomy
 			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
+
+			// Update tournament taxonomy
+			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_tournament', 0 ), 'sp_tournament' );
 
 			// Update venue taxonomy
 			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_venue', 0 ), 'sp_venue' );
@@ -152,6 +158,9 @@ function sportspress_save_post( $post_id ) {
 
 			// Update team array
 			update_post_meta( $post_id, 'sp_team', sportspress_array_value( $_POST, 'sp_team', array() ) );
+
+			// Update format
+			update_post_meta( $post_id, 'sp_format', sportspress_array_value( $_POST, 'sp_format', 'list' ) );
 
 			// Update league taxonomy
 			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );

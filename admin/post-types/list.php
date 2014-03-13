@@ -47,16 +47,28 @@ function sportspress_list_meta_init( $post ) {
 
 	remove_meta_box( 'sp_seasondiv', 'sp_list', 'side' );
 	remove_meta_box( 'sp_leaguediv', 'sp_list', 'side' );
-	add_meta_box( 'sp_playerdiv', __( 'Players', 'sportspress' ), 'sportspress_list_player_meta', 'sp_list', 'side', 'high' );
+	add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'sportspress_list_format_meta', 'sp_list', 'side', 'high' );
+	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_list_details_meta', 'sp_list', 'side', 'high' );
 
 	if ( $players && $players != array(0) ):
 		add_meta_box( 'sp_statsdiv', __( 'Player List', 'sportspress' ), 'sportspress_list_stats_meta', 'sp_list', 'normal', 'high' );
 	endif;
 
-	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_list_details_meta', 'sp_list', 'normal', 'high' );
+	add_meta_box( 'sp_descriptiondiv', __( 'Description', 'sportspress' ), 'sportspress_list_description_meta', 'sp_list', 'normal', 'high' );
 }
 
-function sportspress_list_player_meta( $post ) {
+function sportspress_list_format_meta( $post ) {
+	$format = get_post_meta( $post->ID, 'sp_format', true );
+	?>
+	<div id="post-formats-select">
+		<input type="radio" name="sp_format" class="post-format" id="post-format-list" value="list" <?php checked( true, ! $format || $format == 'list' ); ?>> <label for="post-format-list" class="post-format-icon post-format-list">List</label>
+		<br><input type="radio" name="sp_format" class="post-format" id="post-format-gallery" value="gallery" <?php checked( 'gallery', $format ); ?>> <label for="post-format-gallery" class="post-format-icon post-format-gallery">Gallery</label>
+		<br>
+	</div>
+	<?php
+}
+
+function sportspress_list_details_meta( $post ) {
 	$league_id = sportspress_get_the_term_id( $post->ID, 'sp_league', 0 );
 	$season_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
 	$team_id = get_post_meta( $post->ID, 'sp_team', true );
@@ -151,6 +163,6 @@ function sportspress_list_stats_meta( $post ) {
 	sportspress_nonce();
 }
 
-function sportspress_list_details_meta( $post ) {
+function sportspress_list_description_meta( $post ) {
 	wp_editor( $post->post_content, 'content' );
 }
