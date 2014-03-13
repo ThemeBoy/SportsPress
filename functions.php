@@ -187,16 +187,9 @@ if ( !function_exists( 'sportspress_set_post_views' ) ) {
 
 if ( !function_exists( 'sportspress_get_post_datetime' ) ) {
 	function sportspress_get_post_datetime( $post ) {
-		if ( $post->post_status == 'future' ):
-			$status = __( 'Scheduled', 'sportspress' );
-		elseif( $post->post_status == 'publish' ):
-			$status = __( 'Published', 'sportspress' );
-		elseif( $post->post_status == 'draft' ):
-			$status = __( 'Draft', 'sportspress' );
-		else:
-			$status = __( 'Pending Review', 'sportspress' );
-		endif;
-		return $status . '<br />' . date_i18n( __( 'M j, Y @ G:i', 'sportspress' ), strtotime( $post->post_date ) );
+		$date = get_post_time( 'Y/m/d', false, $post );
+		$time = get_post_time( '@ H:i', false, $post );
+		return $date . '<br>' . $time;
 	}
 }
 

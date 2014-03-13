@@ -10,6 +10,7 @@ function sportspress_admin_enqueue_scripts( $hook ) {
 
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'jquery-chosen', SPORTSPRESS_PLUGIN_URL .'assets/js/chosen.jquery.min.js', array( 'jquery' ), '1.1.0', true );
+	wp_enqueue_script( 'jquery-tiptip', SPORTSPRESS_PLUGIN_URL .'assets/js/jquery.tipTip.min.js', array( 'jquery' ), '1.3', true );
 	wp_enqueue_script( 'jquery-caret', SPORTSPRESS_PLUGIN_URL .'assets/js/jquery.caret.min.js', array( 'jquery' ), '1.02', true );
 	wp_enqueue_script( 'jquery-countdown', SPORTSPRESS_PLUGIN_URL .'assets/js/jquery.countdown.min.js', array( 'jquery' ), '2.0.2', true );
 
