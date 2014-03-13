@@ -9,6 +9,13 @@ jQuery(document).ready(function($){
 			$target.hide();
 	});
 
+	// Tiptip
+	$(".tips").tipTip({
+		delay: 200,
+		fadeIn: 100,
+		fadeOut: 100
+	});
+
 	// Chosen select
 	$(".chosen-select").chosen({
 		allow_single_deselect: true,
