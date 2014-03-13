@@ -38,8 +38,6 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
 
-					echo $team->post_title;
-
 					$team_results = sportspress_array_value( $results, $team_id, null );
 
 					if ( $main_result ):
@@ -54,8 +52,10 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 					endif;
 
 					if ( $team_result != null ):
-						echo ' <strong>' . $team_result . '</strong>';
+						echo '<strong>' . $team_result . '</strong> ';
 					endif;
+
+					echo $team->post_title;
 
 					echo '<br>';
 				endforeach;
