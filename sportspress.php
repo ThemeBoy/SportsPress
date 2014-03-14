@@ -46,6 +46,8 @@ require_once dirname( __FILE__ ) . '/admin/templates/events-calendar.php';
 require_once dirname( __FILE__ ) . '/admin/templates/league-table.php';
 require_once dirname( __FILE__ ) . '/admin/templates/player-league-statistics.php';
 require_once dirname( __FILE__ ) . '/admin/templates/player-list.php';
+require_once dirname( __FILE__ ) . '/admin/templates/player-roster.php';
+require_once dirname( __FILE__ ) . '/admin/templates/player-gallery.php';
 require_once dirname( __FILE__ ) . '/admin/templates/player-metrics.php';
 require_once dirname( __FILE__ ) . '/admin/templates/player-statistics.php';
 require_once dirname( __FILE__ ) . '/admin/templates/team-columns.php';
@@ -70,7 +72,7 @@ require_once dirname( __FILE__ ) . '/admin/post-types/table.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/player.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/list.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
-//require_once dirname( __FILE__ ) . '/admin/post-types/sponsor.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/sponsor.php';
 
 // Terms
 require_once dirname( __FILE__ ) . '/admin/terms/league.php';

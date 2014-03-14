@@ -70,7 +70,19 @@ add_filter( 'the_content', 'sportspress_default_player_content' );
 
 function sportspress_default_list_content( $content ) {
     if ( is_singular( 'sp_list' ) && in_the_loop() ):
-        $list = sportspress_player_list( get_the_ID() );
+        $id = get_the_ID();
+        $format = get_post_meta( $id, 'sp_format', true );
+        switch ( $format ):
+            case 'roster':
+                $list = sportspress_player_roster( $id );
+                break;
+            case 'gallery':
+                $list = sportspress_player_gallery( $id );
+                break;
+            default:
+                $list = sportspress_player_list( $id );
+                break;
+            endswitch;
         $content = $list . $content;
     endif;
     return $content;
