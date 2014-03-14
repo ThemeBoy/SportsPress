@@ -20,7 +20,7 @@ function sportspress_sponsor_post_init() {
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sportspress_sponsor_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_sponsor_slug', 'sponsor' ) ),
-		'menu_icon' => 'dashicons-star-filled',
+		'menu_icon' => 'dashicons-portfolio',
 		'capability_type' => 'sp_sponsor'
 	);
 	register_post_type( 'sp_sponsor', $args );
