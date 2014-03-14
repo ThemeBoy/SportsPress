@@ -1,6 +1,6 @@
 <?php
-if ( !function_exists( 'sportspress_player_list' ) ) {
-	function sportspress_player_list( $id = null, $args = '' ) {
+if ( !function_exists( 'sportspress_player_gallery' ) ) {
+	function sportspress_player_gallery( $id = null, $args = '' ) {
 
 		if ( ! $id )
 			$id = get_the_ID();
@@ -87,7 +87,7 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 
 		$output .= '</tbody>' . '</table>' . '</div>';
 
-		return apply_filters( 'sportspress_player_list',  $output );
+		return apply_filters( 'sportspress_player_gallery',  $output );
 
 	}
 }

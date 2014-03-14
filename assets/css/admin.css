@@ -74,12 +74,12 @@
 	content: "\f328";
 }
 
-.post-state-format.post-format-list:before, .post-format-icon.post-format-list:before, a.post-state-format.format-list:before {
-	content: "\f163";
+.post-state-format.post-format-roster:before, .post-format-icon.post-format-roster:before, a.post-state-format.format-roster:before {
+	content: "\f307";
 }
 
-.post-state-format.post-format-positions:before, .post-format-icon.post-format-positions:before, a.post-state-format.format-positions:before {
-	content: "\f164";
+.post-state-format.post-format-list:before, .post-format-icon.post-format-list:before, a.post-state-format.format-list:before {
+	content: "\f163";
 }
 
 .widefat .column-sp_team strong {

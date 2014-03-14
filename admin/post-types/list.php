@@ -61,9 +61,9 @@ function sportspress_list_format_meta( $post ) {
 	$format = get_post_meta( $post->ID, 'sp_format', true );
 	?>
 	<div id="post-formats-select">
-		<input type="radio" name="sp_format" class="post-format" id="post-format-list" value="list" <?php checked( true, ! $format || $format == 'list' ); ?>> <label for="post-format-list" class="post-format-icon post-format-list">List</label>
-		<br><input type="radio" name="sp_format" class="post-format" id="post-format-positions" value="positions" <?php checked( 'positions', $format ); ?>> <label for="post-format-positions" class="post-format-icon post-format-positions">Positions</label>
-		<br><input type="radio" name="sp_format" class="post-format" id="post-format-gallery" value="gallery" <?php checked( 'gallery', $format ); ?>> <label for="post-format-gallery" class="post-format-icon post-format-gallery">Gallery</label>
+		<input type="radio" name="sp_format" class="post-format" id="post-format-list" value="list" <?php checked( true, ! $format || $format == 'list' ); ?>> <label for="post-format-list" class="post-format-icon post-format-list"><?php _e( 'List', 'sportspress' ); ?></label>
+		<br><input type="radio" name="sp_format" class="post-format" id="post-format-roster" value="roster" <?php checked( 'roster', $format ); ?>> <label for="post-format-roster" class="post-format-icon post-format-roster"><?php _e( 'Roster', 'sportspress' ); ?></label>
+		<br><input type="radio" name="sp_format" class="post-format" id="post-format-gallery" value="gallery" <?php checked( 'gallery', $format ); ?>> <label for="post-format-gallery" class="post-format-icon post-format-gallery"><?php _e( 'Gallery', 'sportspress' ); ?></label>
 		<br>
 	</div>
 	<?php
