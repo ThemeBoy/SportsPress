@@ -163,6 +163,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 								$team_id = $team_object->ID;
 							else:
 								$team_id = wp_insert_post( array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => $team ) );
+								// Flag as import
+								update_post_meta( $team_id, '_sp_import', 1 );
 								wp_set_object_terms( $team_id, $leagues, 'sp_league', false );
 								wp_set_object_terms( $team_id, $seasons, 'sp_season', false );
 							endif;

@@ -104,8 +104,6 @@ if ( class_exists( 'WP_Importer' ) ) {
 				die();
 			endif;
 
-			$new_rates = array();
-
 			ini_set( 'auto_detect_line_endings', '1' );
 
 			if ( ( $handle = fopen( $file, "r" ) ) !== FALSE ):
