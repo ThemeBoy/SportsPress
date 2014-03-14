@@ -98,7 +98,7 @@ function sportspress_save_post( $post_id ) {
 
 		case ( 'sp_player' ):
 
-			// Update seasons teams to show
+			// Update teams to show
 			update_post_meta( $post_id, 'sp_leagues', sportspress_array_value( $_POST, 'sp_leagues', array() ) );
 
 			// Update current team
