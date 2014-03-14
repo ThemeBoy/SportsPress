@@ -243,7 +243,8 @@ function sportspress_event_article_meta( $post ) {
 function sportspress_event_edit_columns() {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'sp_datetime' => '<span class="dashicons sp-icon-calendar tips" title="' . __( 'Date/Time', 'sportspress' ) . '"></span>',
+		'date' => '<span class="dashicons sp-icon-calendar tips" title="' . __( 'Date', 'sportspress' ) . '"></span>',
+		'sp_time' => '<span class="dashicons sp-icon-clock tips" title="' . __( 'Time', 'sportspress' ) . '"></span>',
 		'title' => __( 'Event', 'sportspress' ),
 		'sp_team' => __( 'Teams', 'sportspress' ),
 		'sp_league' => __( 'League', 'sportspress' ),

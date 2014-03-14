@@ -111,8 +111,8 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_sponsor':
 			echo get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : '&mdash;';
 			break;
-		case 'sp_datetime':
-			echo sportspress_get_post_datetime( $post );
+		case 'sp_time':
+			echo get_post_time( 'H:i', false, $post );
 			break;
 		case 'sp_events':
 			echo sizeof( sportspress_get_calendar_data( $post_id ) );
