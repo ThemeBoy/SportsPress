@@ -62,6 +62,7 @@ function sportspress_list_format_meta( $post ) {
 	?>
 	<div id="post-formats-select">
 		<input type="radio" name="sp_format" class="post-format" id="post-format-list" value="list" <?php checked( true, ! $format || $format == 'list' ); ?>> <label for="post-format-list" class="post-format-icon post-format-list">List</label>
+		<br><input type="radio" name="sp_format" class="post-format" id="post-format-positions" value="positions" <?php checked( 'positions', $format ); ?>> <label for="post-format-positions" class="post-format-icon post-format-positions">Positions</label>
 		<br><input type="radio" name="sp_format" class="post-format" id="post-format-gallery" value="gallery" <?php checked( 'gallery', $format ); ?>> <label for="post-format-gallery" class="post-format-icon post-format-gallery">Gallery</label>
 		<br>
 	</div>
