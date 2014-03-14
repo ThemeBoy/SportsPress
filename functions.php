@@ -185,14 +185,6 @@ if ( !function_exists( 'sportspress_set_post_views' ) ) {
 	}
 }
 
-if ( !function_exists( 'sportspress_get_post_datetime' ) ) {
-	function sportspress_get_post_datetime( $post ) {
-		$date = get_post_time( 'Y/m/d', false, $post );
-		$time = get_post_time( '@ H:i', false, $post );
-		return $date . '<br>' . $time;
-	}
-}
-
 if ( !function_exists( 'sportspress_get_post_precision' ) ) {
 	function sportspress_get_post_precision( $post_id ) {
 		$precision = get_post_meta ( $post_id, 'sp_precision', true );
