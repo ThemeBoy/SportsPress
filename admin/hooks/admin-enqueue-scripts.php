@@ -1,6 +1,6 @@
 <?php
 function sportspress_admin_enqueue_scripts( $hook ) {
-	wp_enqueue_style( 'chosen', SPORTSPRESS_PLUGIN_URL . 'assets/css/chosen.css', array(), null );
+	wp_enqueue_style( 'jquery-chosen', SPORTSPRESS_PLUGIN_URL . 'assets/css/chosen.css', array(), null );
 
 	// Add ThemeBoy icon font, used in the admin stylesheet.
 	wp_enqueue_style( 'themeboy', SPORTSPRESS_PLUGIN_URL . 'assets/css/themeboy.css', array(), null );
