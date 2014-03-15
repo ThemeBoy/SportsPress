@@ -9,6 +9,17 @@ add_filter( 'manage_page_posts_columns', 'sportspress_manage_posts_columns' );
 function sportspress_manage_posts_custom_column( $column, $post_id ) {
 	global $post;
 	switch ( $column ):
+		case 'sp_format':
+			$format = get_post_meta( $post_id, 'sp_format', true );
+			switch ( $format ):
+				case 'friendly':
+					echo '<span class="dashicons sp-icon-smile tips" title="' . __( 'Friendly', 'sportspress' ) . '"></span>';
+					break;
+				default:
+					echo '<span class="dashicons sp-icon-crown tips" title="' . __( 'League', 'sportspress' ) . '"></span>';
+					break;
+			endswitch;
+			break;
 		case 'sp_icon':
 			edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-icon' ), '', '', $post_id );
 			break;
@@ -95,9 +106,6 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			break;
 		case 'sp_player':
 			echo sportspress_posts( $post_id, 'sp_player' );
-			break;
-		case 'sp_event':
-			echo get_post_meta ( $post_id, 'sp_event' ) ? sizeof( get_post_meta ( $post_id, 'sp_event' ) ) : '&mdash;';
 			break;
 		case 'sp_league':
 			echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
