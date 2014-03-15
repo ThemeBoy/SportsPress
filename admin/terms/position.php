@@ -4,7 +4,7 @@ function sportspress_position_term_init() {
 		'name' => __( 'Positions', 'sportspress' ),
 		'singular_name' => __( 'Position', 'sportspress' ),
 		'all_items' => __( 'All', 'sportspress' ),
-		'edit_item' => __( 'Edit', 'sportspress' ),
+		'edit_item' => __( 'Edit Position', 'sportspress' ),
 		'view_item' => __( 'View', 'sportspress' ),
 		'update_item' => __( 'Update', 'sportspress' ),
 		'add_new_item' => __( 'Add New', 'sportspress' ),

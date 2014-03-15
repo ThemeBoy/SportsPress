@@ -54,7 +54,6 @@
 #adminmenu #menu-posts-sp_event .menu-icon-sp_event div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_team .menu-icon-sp_team div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_player .menu-icon-sp_player div.wp-menu-image:before,
-#adminmenu #menu-posts-sp_sponsor .menu-icon-sp_sponsor div.wp-menu-image:before,
 #sp_formatdiv .post-format-icon:before {
 	font-family: sportspress, dashicons !important;
 	width: 20px;
@@ -63,11 +62,6 @@
 
 .post-state-format.post-format-league:before, .post-format-icon.post-format-league:before, a.post-state-format.format-league:before {
 	content: "\f313";
-}
-
-.post-state-format.post-format-tournament:before, .post-format-icon.post-format-tournament:before, a.post-state-format.format-tournament:before {
-	content: "\f325";
-	font-family: dashicons !important;
 }
 
 .post-state-format.post-format-friendly:before, .post-format-icon.post-format-friendly:before, a.post-state-format.format-friendly:before {

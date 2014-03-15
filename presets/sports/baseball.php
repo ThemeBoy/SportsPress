@@ -154,13 +154,13 @@ $sportspress_sports['baseball'] = array(
 		// Outcomes
 		'sp_outcome' => array(
 			array(
-				'post_title' => 'W',
+				'post_title' => 'Win',
 				'post_name' => 'w',
 				'meta'       => array(
 				),
 			),
 			array(
-				'post_title' => 'L',
+				'post_title' => 'Loss',
 				'post_name' => 'l',
 				'meta'       => array(
 				),

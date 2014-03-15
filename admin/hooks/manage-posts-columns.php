@@ -108,9 +108,6 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_venue':
 			echo get_the_terms ( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
 			break;
-		case 'sp_sponsor':
-			echo get_the_terms ( $post_id, 'sp_sponsor' ) ? the_terms( $post_id, 'sp_sponsor' ) : '&mdash;';
-			break;
 		case 'sp_time':
 			echo get_post_time( 'H:i', false, $post );
 			break;

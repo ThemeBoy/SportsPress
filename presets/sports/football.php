@@ -87,15 +87,15 @@ $sportspress_sports['football'] = array(
 		// Outcomes
 		'sp_outcome' => array(
 			array(
-				'post_title' => 'W',
+				'post_title' => 'Win',
 				'post_name'  => 'w',
 			),
 			array(
-				'post_title' => 'L',
+				'post_title' => 'Loss',
 				'post_name'  => 'l',
 			),
 			array(
-				'post_title' => 'T',
+				'post_title' => 'Tie',
 				'post_name'  => 't',
 			),
 		),

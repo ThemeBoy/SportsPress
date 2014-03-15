@@ -3,7 +3,7 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 	global $typenow;
 
 	if ( is_admin() ):
-		if ( in_array( $typenow, array( 'sp_team', 'sp_sponsor' ) ) ):
+		if ( in_array( $typenow, array( 'sp_team' ) ) ):
 			switch ( $untranslated_text ):
 			case 'Set featured image':
 				$translated_text = __( 'Select Logo', 'sportspress' );
@@ -39,14 +39,6 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 			switch ( $untranslated_text ):
 			case 'Enter title here':
 				$translated_text = __( 'Team', 'sportspress' );
-				break;
-			endswitch;
-		endif;
-
-		if ( in_array( $typenow, array( 'sp_sponsor' ) ) ):
-			switch ( $untranslated_text ):
-			case 'Enter title here':
-				$translated_text = __( 'Sponsor', 'sportspress' );
 				break;
 			endswitch;
 		endif;

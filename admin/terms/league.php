@@ -4,7 +4,7 @@ function sportspress_league_term_init() {
 		'name' => __( 'Leagues', 'sportspress' ),
 		'singular_name' => __( 'League', 'sportspress' ),
 		'all_items' => __( 'All', 'sportspress' ),
-		'edit_item' => __( 'Edit', 'sportspress' ),
+		'edit_item' => __( 'Edit League', 'sportspress' ),
 		'view_item' => __( 'View', 'sportspress' ),
 		'update_item' => __( 'Update', 'sportspress' ),
 		'add_new_item' => __( 'Add New', 'sportspress' ),

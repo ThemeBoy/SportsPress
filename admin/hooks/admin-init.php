@@ -7,7 +7,6 @@ function sportspress_admin_init() {
         'sp_player',
         'sp_list',
         'sp_staff',
-        'sp_sponsor',
         'sp_config',
     );
 
