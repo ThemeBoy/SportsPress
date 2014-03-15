@@ -28,6 +28,23 @@ function sportspress_event_post_init() {
 }
 add_action( 'init', 'sportspress_event_post_init' );
 
+function sportspress_event_edit_columns() {
+	$columns = array(
+		'cb' => '<input type="checkbox" />',
+		'sp_format' => '<span class="dashicons sp-icon-calendar tips" title="' . __( 'Format', 'sportspress' ) . '"></span>',
+		'title' => __( 'Event', 'sportspress' ),
+		'date' => __( 'Date', 'sportspress' ),
+		'sp_time' => __( 'Time', 'sportspress' ),
+		'sp_team' => __( 'Teams', 'sportspress' ),
+		'sp_league' => __( 'League', 'sportspress' ),
+		'sp_season' => __( 'Season', 'sportspress' ),
+		'sp_venue' => __( 'Venue', 'sportspress' ),
+		'sp_views' => __( 'Views', 'sportspress' ),
+	);
+	return $columns;
+}
+add_filter( 'manage_edit-sp_event_columns', 'sportspress_event_edit_columns' );
+
 function sportspress_event_display_scheduled( $posts ) {
 	global $wp_query, $wpdb;
 	if ( is_single() && $wp_query->post_count == 0 && isset( $wp_query->query_vars['sp_event'] )) {
@@ -221,25 +238,3 @@ function sportspress_event_results_meta( $post ) {
 function sportspress_event_article_meta( $post ) {
 	wp_editor( $post->post_content, 'content' );
 }
-
-function sportspress_event_edit_columns() {
-	$columns = array(
-		'cb' => '<input type="checkbox" />',
-		'date' => '<span class="dashicons sp-icon-calendar tips" title="' . __( 'Date', 'sportspress' ) . '"></span>',
-		'sp_time' => '<span class="dashicons sp-icon-clock tips" title="' . __( 'Time', 'sportspress' ) . '"></span>',
-		'title' => __( 'Event', 'sportspress' ),
-		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_league' => __( 'League', 'sportspress' ),
-		'sp_season' => __( 'Season', 'sportspress' ),
-		'sp_venue' => __( 'Venue', 'sportspress' ),
-		'sp_views' => __( 'Views', 'sportspress' ),
-	);
-	return $columns;
-}
-add_filter( 'manage_edit-sp_event_columns', 'sportspress_event_edit_columns' );
-
-function sportspress_event_edit_sortable_columns( $columns ) {
-	$columns['sp_datetime'] = 'sp_datetime';
-	return $columns;
-}
-//add_filter( 'manage_edit-sp_event_sortable_columns', 'sportspress_event_edit_sortable_columns' );

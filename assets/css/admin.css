@@ -314,6 +314,8 @@ table.widefat.sp-league-table th input[type=checkbox] {
 	vertical-align: middle;
 }
 
+table.widefat th.column-sp_format,
+table.widefat td.column-sp_format,
 table.widefat th.column-sp_icon,
 table.widefat td.column-sp_icon,
 table.widefat th.column-sp_number,
