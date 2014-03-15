@@ -72,15 +72,15 @@ $sportspress_sports['hockey'] = array(
 		// Outcomes
 		'sp_outcome' => array(
 			array(
-				'post_title' => 'W',
+				'post_title' => 'Win',
 				'post_name'  => 'w'
 			),
 			array(
-				'post_title' => 'L',
+				'post_title' => 'Loss',
 				'post_name'  => 'l'
 			),
 			array(
-				'post_title' => 'OT',
+				'post_title' => 'Overtime',
 				'post_name'  => 'ot'
 			),
 		),

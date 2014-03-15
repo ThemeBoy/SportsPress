@@ -110,9 +110,12 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				$header = fgetcsv( $handle, 0, $this->delimiter );
 
-				if ( sizeof( $header ) >= 4 ):
+				if ( sizeof( $header ) >= 3 ):
 
 					$loop = 0;
+
+					// Get event format
+					$event_format = ( empty( $_POST['sp_format'] ) ? false : $_POST['sp_format'] );
 
 					// Get league
 					$league = ( empty( $_POST['sp_league'] ) ? false : $_POST['sp_league'] );
@@ -128,7 +131,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 					while ( ( $row = fgetcsv( $handle, 0, $this->delimiter ) ) !== FALSE ):
 
-						$date = str_replace( '/', '-', $row[0] );
+						$date = str_replace( '/', '-', trim( $row[0] ) );
 						unset( $row[0] );
 
 						if ( ! empty( $date ) ):
@@ -145,10 +148,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 							endif;
 
 							// Add time to date
-							$date .= ' ' . $row[1];
+							$date .= ' ' . trim( $row[1] );
 							unset( $row[1] );
 
-							$venue = $row[2];
+							$venue = trim( $row[2] );
 							unset( $row[2] );
 
 							// Initialize arrays
@@ -161,20 +164,22 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 								$teamdata = explode( '|', $team );
 
-								$name = $teamdata[0];
+								$name = trim( $teamdata[0] );
 								unset( $teamdata[0] );
 
 								$team_results = array();
 
 								if ( sizeof( $result_labels ) > 0 ):
 									foreach( $result_labels as $key => $label ):
-										$team_results[ $key ] = array_shift( $teamdata );
+										$team_results[ $key ] = trim( array_shift( $teamdata ) );
 									endforeach;
 								endif;
 
 								$outcomes = array();
 
 								foreach ( $teamdata as $outcome ):
+
+									$outcome = trim( $outcome );
 
 									// Get or insert outcome
 									$outcome_object = get_page_by_path( $outcome, OBJECT, 'sp_outcome' );
@@ -207,6 +212,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 							// Flag as import
 							update_post_meta( $id, '_sp_import', 1 );
+
+							// Update event format
+							if ( $event_format ):
+								update_post_meta( $id, 'sp_format', $event_format );
+							endif;
 
 							// Update league
 							if ( $league ):
@@ -271,7 +281,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 									$team_name = $team_names[ $ti ];
 									$statistics = explode( '|', $player );
 
-									$name = $statistics[0];
+									$name = trim( $statistics[0] );
 									unset( $statistics[0] );
 
 									$player_statistics = array();
@@ -442,7 +452,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
 
-			echo '<p>' . sprintf( __( 'Events need to be defined with columns in a specific order (4+ columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), SPORTSPRESS_PLUGIN_URL . 'dummy-data/events-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( __( 'Events need to be defined with columns in a specific order (3+ columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), SPORTSPRESS_PLUGIN_URL . 'dummy-data/events-sample.csv' ) . '</p>';
 
 			$action = 'admin.php?import=sportspress_event_csv&step=1';
 
@@ -481,6 +491,16 @@ if ( class_exists( 'WP_Importer' ) ) {
 								<td><input type="text" name="delimiter" placeholder="," size="2" /></td>
 							</tr>
 							<tr>
+								<th><label><?php _e( 'Format', 'sportspress' ); ?></label><br/></th>
+								<td id="sp_formatdiv">
+									<div id="post-formats-select">
+										<input type="radio" name="sp_format" class="post-format" id="post-format-league" value="league" checked="checked"> <label for="post-format-league" class="post-format-icon post-format-league">League</label>
+										<br><input type="radio" name="sp_format" class="post-format" id="post-format-friendly" value="friendly"> <label for="post-format-friendly" class="post-format-icon post-format-friendly">Friendly</label>
+										<br>
+									</div>
+								</td>
+							</tr>
+							<tr>
 								<th><label><?php _e( 'League', 'sportspress' ); ?></label><br/></th>
 								<td><?php
 								$args = array(
@@ -489,7 +509,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 									'values' => 'slug',
 									'show_option_none' => __( '-- Not set --', 'sportspress' ),
 								);
-								sportspress_dropdown_taxonomies( $args );
+								if ( ! sportspress_dropdown_taxonomies( $args ) ):
+									echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
+									sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
+								endif;
 								?></td>
 							</tr>
 							<tr>
@@ -501,7 +524,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 									'values' => 'slug',
 									'show_option_none' => __( '-- Not set --', 'sportspress' ),
 								);
-								sportspress_dropdown_taxonomies( $args );
+								if ( ! sportspress_dropdown_taxonomies( $args ) ):
+									echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
+									sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' ) );
+								endif;
 								?></td>
 							</tr>
 						</tbody>

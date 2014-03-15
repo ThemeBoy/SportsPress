@@ -30,6 +30,7 @@ require_once dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
 require_once dirname( __FILE__ ) . '/admin/globals/continents.php';
 require_once dirname( __FILE__ ) . '/admin/globals/countries.php';
 require_once dirname( __FILE__ ) . '/admin/globals/sports.php';
+require_once dirname( __FILE__ ) . '/admin/globals/formats.php';
 
 // Functions
 require_once dirname( __FILE__ ) . '/functions.php';
@@ -72,7 +73,6 @@ require_once dirname( __FILE__ ) . '/admin/post-types/table.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/player.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/list.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
-require_once dirname( __FILE__ ) . '/admin/post-types/sponsor.php';
 
 // Terms
 require_once dirname( __FILE__ ) . '/admin/terms/league.php';

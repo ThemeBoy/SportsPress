@@ -45,9 +45,6 @@ function sportspress_save_post( $post_id ) {
 			// Update season taxonomy
 			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
 
-			// Update tournament taxonomy
-			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_tournament', 0 ), 'sp_tournament' );
-
 			// Update venue taxonomy
 			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_venue', 0 ), 'sp_venue' );
 

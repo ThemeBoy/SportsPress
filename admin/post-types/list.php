@@ -58,13 +58,13 @@ function sportspress_list_meta_init( $post ) {
 }
 
 function sportspress_list_format_meta( $post ) {
-	$format = get_post_meta( $post->ID, 'sp_format', true );
+	global $sportspress_formats;
+	$the_format = get_post_meta( $post->ID, 'sp_format', true );
 	?>
 	<div id="post-formats-select">
-		<input type="radio" name="sp_format" class="post-format" id="post-format-list" value="list" <?php checked( true, ! $format || $format == 'list' ); ?>> <label for="post-format-list" class="post-format-icon post-format-list"><?php _e( 'List', 'sportspress' ); ?></label>
-		<br><input type="radio" name="sp_format" class="post-format" id="post-format-roster" value="roster" <?php checked( 'roster', $format ); ?>> <label for="post-format-roster" class="post-format-icon post-format-roster"><?php _e( 'Roster', 'sportspress' ); ?></label>
-		<br><input type="radio" name="sp_format" class="post-format" id="post-format-gallery" value="gallery" <?php checked( 'gallery', $format ); ?>> <label for="post-format-gallery" class="post-format-icon post-format-gallery"><?php _e( 'Gallery', 'sportspress' ); ?></label>
-		<br>
+		<?php foreach ( $sportspress_formats['list'] as $key => $format ): ?>
+			<input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo $key; ?>" value="<?php echo $key; ?>" <?php checked( true, ( $key == 'list' && ! $the_format ) || $the_format == $key ); ?>> <label for="post-format-<?php echo $key; ?>" class="post-format-icon post-format-<?php echo $key; ?>"><?php echo $format; ?></label><br>
+		<?php endforeach; ?>
 	</div>
 	<?php
 }

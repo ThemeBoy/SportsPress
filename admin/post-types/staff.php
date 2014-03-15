@@ -21,7 +21,6 @@ function sportspress_staff_post_init() {
 		'register_meta_box_cb' => 'sportspress_staff_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sp_staff_slug', 'staff' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_player',
-		'menu_icon' => 'dashicons-businessman',
 		'capability_type' => 'sp_staff'
 	);
 	register_post_type( 'sp_staff', $args );

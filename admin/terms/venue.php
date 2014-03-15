@@ -4,7 +4,7 @@ function sportspress_venue_term_init() {
 		'name' => __( 'Venues', 'sportspress' ),
 		'singular_name' => __( 'Venue', 'sportspress' ),
 		'all_items' => __( 'All', 'sportspress' ),
-		'edit_item' => __( 'Edit', 'sportspress' ),
+		'edit_item' => __( 'Edit Venue', 'sportspress' ),
 		'view_item' => __( 'View', 'sportspress' ),
 		'update_item' => __( 'Update', 'sportspress' ),
 		'add_new_item' => __( 'Add New', 'sportspress' ),
