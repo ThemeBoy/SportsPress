@@ -45,7 +45,7 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 
 		foreach( $data as $team_id => $row ):
 
-			if ( $i >= $r['number'] ) continue;
+			if ( isset( $limit ) && $i >= $limit ) continue;
 
 			$name = sportspress_array_value( $row, 'name', null );
 			if ( ! $name ) continue;
