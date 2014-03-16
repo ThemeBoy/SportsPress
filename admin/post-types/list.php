@@ -49,11 +49,7 @@ function sportspress_list_meta_init( $post ) {
 	remove_meta_box( 'sp_leaguediv', 'sp_list', 'side' );
 	add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'sportspress_list_format_meta', 'sp_list', 'side', 'high' );
 	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_list_details_meta', 'sp_list', 'side', 'high' );
-
-	if ( $players && $players != array(0) ):
-		add_meta_box( 'sp_statsdiv', __( 'Player List', 'sportspress' ), 'sportspress_list_stats_meta', 'sp_list', 'normal', 'high' );
-	endif;
-
+	add_meta_box( 'sp_statsdiv', __( 'Player List', 'sportspress' ), 'sportspress_list_stats_meta', 'sp_list', 'normal', 'high' );
 	add_meta_box( 'sp_descriptiondiv', __( 'Description', 'sportspress' ), 'sportspress_list_description_meta', 'sp_list', 'normal', 'high' );
 }
 
@@ -158,9 +154,9 @@ function sportspress_list_details_meta( $post ) {
 
 function sportspress_list_stats_meta( $post ) {
 
-	list( $columns, $data, $placeholders, $merged ) = sportspress_get_player_list_data( $post->ID, true );
+	list( $columns, $usecolumns, $data, $placeholders, $merged ) = sportspress_get_player_list_data( $post->ID, true );
 
-	sportspress_edit_player_list_table( $columns, $data, $placeholders );
+	sportspress_edit_player_list_table( $columns, $usecolumns, $data, $placeholders );
 	sportspress_nonce();
 }
 

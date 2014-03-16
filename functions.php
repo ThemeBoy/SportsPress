@@ -828,7 +828,9 @@ if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 }
 
 if ( !function_exists( 'sportspress_edit_player_list_table' ) ) {
-	function sportspress_edit_player_list_table( $columns = array(), $data = array(), $placeholders = array() ) {
+	function sportspress_edit_player_list_table( $columns = array(), $usecolumns = null, $data = array(), $placeholders = array() ) {
+		if ( is_array( $usecolumns ) )
+			$usecolumns = array_filter( $usecolumns );
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
@@ -836,8 +838,11 @@ if ( !function_exists( 'sportspress_edit_player_list_table' ) ) {
 					<tr>
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
-						<?php foreach ( $columns as $label ): ?>
-							<th><?php echo $label; ?></th>
+						<?php foreach ( $columns as $key => $label ): ?>
+							<th><label for="sp_statistics_<?php echo $key; ?>">
+								<input type="checkbox" name="sp_statistics[]" value="<?php echo $key; ?>" id="sp_statistics_<?php echo $key; ?>" <?php checked( ! is_array( $usecolumns) || in_array( $key, $usecolumns ) ); ?>>
+								<?php echo $label; ?>
+							</label></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>
@@ -1979,6 +1984,7 @@ if ( !function_exists( 'sportspress_get_player_list_data' ) ) {
 		$stats = (array)get_post_meta( $post_id, 'sp_players', true );
 		$orderby = get_post_meta( $post_id, 'sp_orderby', true );
 		$order = get_post_meta( $post_id, 'sp_order', true );
+		$usecolumns = get_post_meta( $post_id, 'sp_statistics', true );
 
 		// Get labels from result variables
 		$columns = (array)sportspress_get_var_labels( 'sp_statistic' );
@@ -2214,8 +2220,15 @@ if ( !function_exists( 'sportspress_get_player_list_data' ) ) {
 		endforeach;
 
 		if ( $admin ):
-			return array( $columns, $data, $placeholders, $merged );
+			return array( $columns, $usecolumns, $data, $placeholders, $merged );
 		else:
+			if ( ! is_array( $usecolumns ) )
+				$usecolumns = array();
+			foreach ( $columns as $key => $label ):
+				if ( ! in_array( $key, $usecolumns ) ):
+					unset( $columns[ $key ] );
+				endif;
+			endforeach;
 			$labels = array_merge( array( 'name' => __( 'Player', 'sportspress' ) ), $columns );
 			$merged[0] = $labels;
 			return $merged;
