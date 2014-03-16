@@ -357,6 +357,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 								// Flag as import
 								update_post_meta( $player_id, '_sp_import', 1 );
 
+								// Update number
+								update_post_meta( $player_id, 'sp_number', null );
+
 							endif;
 
 							// Update league
