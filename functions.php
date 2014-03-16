@@ -1496,9 +1496,14 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 				'posts_per_page' => -1,
 				'order' => 'ASC',
 				'meta_query' => array(
+					'relation' => 'AND',
 					array(
 						'key' => 'sp_team',
 						'value' => $post_id
+					),
+					array(
+						'key' => 'sp_format',
+						'value' => 'league'
 					)
 				),
 				'tax_query' => array(
@@ -1512,7 +1517,7 @@ if ( !function_exists( 'sportspress_get_team_columns_data' ) ) {
 						'taxonomy' => 'sp_season',
 						'field' => 'id',
 						'terms' => $div_id
-					)
+					),
 				)
 			);
 			$events = get_posts( $args );
