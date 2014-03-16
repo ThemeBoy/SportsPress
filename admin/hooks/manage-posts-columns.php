@@ -49,43 +49,47 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
 
-					$team_results = sportspress_array_value( $results, $team_id, null );
+					if ( $team ):
+						$team_results = sportspress_array_value( $results, $team_id, null );
 
-					if ( $main_result ):
-						$team_result = sportspress_array_value( $team_results, $main_result, null );
-					else:
-						if ( is_array( $team_results ) ):
-							end( $team_results );
-							$team_result = prev( $team_results );
+						if ( $main_result ):
+							$team_result = sportspress_array_value( $team_results, $main_result, null );
 						else:
-							$team_result = null;
+							if ( is_array( $team_results ) ):
+								end( $team_results );
+								$team_result = prev( $team_results );
+							else:
+								$team_result = null;
+							endif;
 						endif;
+
+						if ( $team_result != null ):
+							echo '<strong>' . $team_result . '</strong> ';
+						endif;
+
+						echo $team->post_title;
+
+						echo '<br>';
 					endif;
-
-					if ( $team_result != null ):
-						echo '<strong>' . $team_result . '</strong> ';
-					endif;
-
-					echo $team->post_title;
-
-					echo '<br>';
 				endforeach;
 			elseif ( $post_type == 'sp_player' ):
 				$current_team = get_post_meta( $post_id, 'sp_current_team', true );
 				foreach( $teams as $team_id ):
 					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
-					echo $team->post_title;
-					if ( $team_id == $current_team ):
-						echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
+					if ( $team ):
+						echo $team->post_title;
+						if ( $team_id == $current_team ):
+							echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
+						endif;
+						echo '<br>';
 					endif;
-					echo '<br>';
 				endforeach;
 			else:
 				foreach( $teams as $team_id ):
 					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );
-					echo $team->post_title . '<br>';
+					if ( $team ) echo $team->post_title . '<br>';
 				endforeach;
 			endif;
 			break;
