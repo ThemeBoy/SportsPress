@@ -76,7 +76,7 @@
 	content: "\f163";
 }
 
-.widefat .column-sp_team strong {
+.fixed .column-sp_team strong {
 	background: #bbb;
 	color: #fff;
 	font-size: 11px;
@@ -90,8 +90,23 @@
 	border-radius: 2px;
 }
 
+.fixed td.column-sp_format .dashicons:before {
+	color: #bbb;
+}
+
+.fixed .column-sp_format,
+.fixed .column-sp_icon,
+.fixed .column-sp_number {
+	width: 2.3em;
+	text-align: center;
+}
+
 .fixed .column-sp_time {
 	width: 6%;
+}
+
+.fixed .column-sp_league, .fixed .column-sp_season, .fixed .column-sp_venue, .fixed .column-sp_position, .fixed .column-sp_views {
+	width: 10%;
 }
 
 #sportspress_dashboard_status .inside {
@@ -312,29 +327,6 @@ table.widefat.sp-league-table th input[type=checkbox] {
 .sp-admin-config-table td.radio input[type=radio] {
 	margin: 0;
 	vertical-align: middle;
-}
-
-table.widefat th.column-sp_format,
-table.widefat td.column-sp_format,
-table.widefat th.column-sp_icon,
-table.widefat td.column-sp_icon,
-table.widefat th.column-sp_number,
-table.widefat td.column-sp_number {
-	width: 32px;
-	text-align: center;
-}
-
-
-table.widefat th.column-sp_number,
-table.widefat td.column-sp_number {
-	width: 32px;
-}
-
-table.widefat td.column-sp_number .sp-flag {
-	height: auto;
-	width: auto;
-	max-height: 16px;
-	max-width: 20px;
 }
 
 table.widefat select.sp-outcome {

@@ -24,7 +24,10 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-icon' ), '', '', $post_id );
 			break;
 		case 'sp_number':
-			echo '<strong>' . get_post_meta( $post_id, 'sp_number', true ) . '</strong>';
+			$number = get_post_meta( $post_id, 'sp_number', true );
+			if ( $number != null ):
+				echo '<strong>' . $number . '</strong>';
+			endif;
 			break;
 		case 'sp_views':
         	echo sportspress_get_post_views( $post_id );
