@@ -150,6 +150,9 @@ function sportspress_save_post( $post_id ) {
 
 		case ( 'sp_list' ):
 
+			// Update statistics array
+			update_post_meta( $post_id, 'sp_statistics', sportspress_array_value( $_POST, 'sp_statistics', array() ) );
+
 			// Update players array
 			update_post_meta( $post_id, 'sp_players', sportspress_array_value( $_POST, 'sp_players', array() ) );
 
