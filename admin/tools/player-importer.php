@@ -155,7 +155,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						$i = 0;
 						foreach ( $teams as $team ):
 							// Get or insert team
-							$team_object = get_page_by_path( $team, OBJECT, 'sp_team' );
+							$team_object = get_page_by_title( $team, OBJECT, 'sp_team' );
 							if ( $team_object ):
 								if ( $team_object->post_status != 'publish' ):
 									wp_update_post( array( 'ID' => $team_object->ID, 'post_status' => 'publish' ) );
