@@ -118,7 +118,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 						list( $name, $leagues, $seasons ) = $row;
 
-						$team_object = get_page_by_path( $name, OBJECT, 'sp_team' );
+						$team_object = get_page_by_title( $name, OBJECT, 'sp_team' );
 
 						if ( ! $name || $team_object ):
 							$this->skipped++;
