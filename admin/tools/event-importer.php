@@ -380,8 +380,24 @@ if ( class_exists( 'WP_Importer' ) ) {
 									foreach ( $statistic_labels as $key => $label ):
 										$statistics[ $key ] = array_shift( $player );
 									endforeach;
-
 									$players[ $team_id ][ $player_id ] = $statistics;
+
+									// Get player teams
+									$player_teams = get_post_meta( $player_id, 'sp_team', false );
+									$current_team = get_post_meta( $player_id, 'sp_current_team', true );
+									$past_teams = get_post_meta( $player_id, 'sp_past_team', false );
+
+									// Add team if not exists in player
+									if ( ! in_array( $team_id, $player_teams ) ):
+										add_post_meta( $player_id, 'sp_team', $team_id );
+									endif;
+
+									// Add as past team or set current team if not set
+									if ( ! $current_team ):
+										update_post_meta( $player_id, 'sp_current_team', $team_id );
+									elseif ( $current_team != $team_id && ! in_array( $team_id, $past_teams ) ):
+										add_post_meta( $player_id, 'sp_past_team', $team_id );
+									endif;
 
 								endif;
 
