@@ -73,9 +73,6 @@ function sportspress_default_list_content( $content ) {
         $id = get_the_ID();
         $format = get_post_meta( $id, 'sp_format', true );
         switch ( $format ):
-            case 'roster':
-                $list = sportspress_player_roster( $id );
-                break;
             case 'gallery':
                 $list = sportspress_player_gallery( $id );
                 break;
