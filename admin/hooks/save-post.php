@@ -5,6 +5,7 @@ function sportspress_save_post( $post_id ) {
     if ( !current_user_can( 'edit_post', $post_id ) ) return $post_id;
 	if ( !isset( $_POST['sportspress_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_nonce'], SPORTSPRESS_PLUGIN_BASENAME ) ) return $post_id;
 	switch ( $_POST['post_type'] ):
+
 		case ( 'sp_team' ):
 
 			// Update leagues seasons to show
@@ -47,6 +48,25 @@ function sportspress_save_post( $post_id ) {
 
 			// Update venue taxonomy
 			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_venue', 0 ), 'sp_venue' );
+
+			break;
+
+		case ( 'sp_calendar' ):
+		
+			// Update format
+			update_post_meta( $post_id, 'sp_format', sportspress_array_value( $_POST, 'sp_format', 'calendar' ) );
+
+			// Update league taxonomy
+			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
+
+			// Update season taxonomy
+			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
+
+			// Update venue taxonomy
+			wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_venue', 0 ), 'sp_venue' );
+
+			// Update team
+			update_post_meta( $post_id, 'sp_team', sportspress_array_value( $_POST, 'sp_team', 0 ) );
 
 			break;
 

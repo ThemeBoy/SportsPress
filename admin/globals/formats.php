@@ -7,6 +7,9 @@ function sportspress_define_formats_global() {
 	$sportspress_formats['event']['league'] = __( 'League', 'sportspress' );
 	$sportspress_formats['event']['friendly'] = __( 'Friendly', 'sportspress' );
 
+	$sportspress_formats['calendar']['calendar'] = __( 'Calendar', 'sportspress' );
+	$sportspress_formats['calendar']['list'] = __( 'List', 'sportspress' );
+
 	$sportspress_formats['list']['list'] = __( 'List', 'sportspress' );
 	$sportspress_formats['list']['gallery'] = __( 'Gallery', 'sportspress' );
 }

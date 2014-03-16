@@ -23,7 +23,7 @@ function sportspress_venue_term_init() {
 		'hierarchical' => true,
 		'rewrite' => array( 'slug' => 'venue' ),
 	);
-	$object_types = array( 'sp_event', 'attachment' );
+	$object_types = array( 'sp_event', 'sp_calendar', 'attachment' );
 	register_taxonomy( 'sp_venue', $object_types, $args );
 	foreach ( $object_types as $object_type ):
 		register_taxonomy_for_object_type( 'sp_league', $object_type );
