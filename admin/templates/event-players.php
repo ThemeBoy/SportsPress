@@ -10,6 +10,8 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 		$stats = (array)get_post_meta( $id, 'sp_players', true );
 		$statistic_labels = sportspress_get_var_labels( 'sp_statistic' );
 
+		$totals = array();
+
 		$output = '';
 
 		foreach( $teams as $key => $team_id ):
@@ -60,6 +62,10 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 					else:
 						$value = 0;
 					endif;
+					if ( ! array_key_exists( $key, $totals ) ):
+						$totals[ $key ] = 0;
+					endif;
+					$totals[ $key ] += $value;
 					$output .= '<td class="data-' . $key . '">' . $value . '</td>';
 				endforeach;
 
@@ -90,7 +96,7 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 					if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
 						$value = $row[ $key ];
 					else:
-						$value = 0;
+						$value = sportspress_array_value( $totals, $key, 0 );
 					endif;
 					$output .= '<td class="data-' . $key . '">' . $value . '</td>';
 				endforeach;

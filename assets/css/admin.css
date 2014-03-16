@@ -337,8 +337,8 @@ table.widefat td.column-sp_number .sp-flag {
 	max-width: 20px;
 }
 
-table.widefat td.sp-outcome .chosen-container {
-	width: 100%;
+table.widefat select.sp-outcome {
+	width: 150px;
 }
 
 #sp_venue-adder h4,
