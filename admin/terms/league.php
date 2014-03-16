@@ -23,7 +23,7 @@ function sportspress_league_term_init() {
 		'hierarchical' => true,
 		'rewrite' => array( 'slug' => 'league' ),
 	);
-	$object_types = array( 'sp_event', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' );
+	$object_types = array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' );
 	register_taxonomy( 'sp_league', $object_types, $args );
 	foreach ( $object_types as $object_type ):
 		register_taxonomy_for_object_type( 'sp_league', $object_type );

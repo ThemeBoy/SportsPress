@@ -757,6 +757,69 @@ if ( !function_exists( 'sportspress_get_var_calculates' ) ) {
 	}
 }
 
+if ( !function_exists( 'sportspress_edit_calendar_table' ) ) {
+	function sportspress_edit_calendar_table( $data = array() ) {
+		?>
+		<div class="sp-data-table-container">
+			<table class="widefat sp-data-table sp-calendar-table">
+				<thead>
+					<tr>
+						<th class="column-date"><?php _e( 'Date', 'sportspress' ); ?></th>
+						<th class="column-event"><?php _e( 'Event', 'sportspress' ); ?></th>
+						<th class="column-time"><?php _e( 'Time', 'sportspress' ); ?></th>
+						<th class="column-article"><?php _e( 'Article', 'sportspress' ); ?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					if ( is_array( $data ) && sizeof( $data ) > 0 ):
+						$i = 0;
+						foreach ( $data as $event ):
+							$video = get_post_meta( $event->ID, 'sp_video', true );
+							?>
+							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+								<td><?php echo get_post_time( get_option( 'date_format' ), false, $event ); ?></td>
+								<td><?php echo $event->post_title; ?></td>
+								<td><?php echo get_post_time( get_option( 'time_format' ), false, $event ); ?></td>
+								<td>
+									<a href="<?php echo get_edit_post_link( $event->ID ); ?>#sp_articlediv">
+										<?php if ( $video ): ?>
+											<div class="dashicons dashicons-video-alt"></div>
+										<?php elseif ( has_post_thumbnail( $event->ID ) ): ?>
+											<div class="dashicons dashicons-camera"></div>
+										<?php endif; ?>
+										<?php
+										if ( $event->post_content == null ):
+											_e( 'None', 'sportspress' );
+										elseif ( $event->post_status == 'publish' ):
+											_e( 'Recap', 'sportspress' );
+										else:
+											_e( 'Preview', 'sportspress' );
+										endif;
+										?>
+									</a>
+								</td>
+							</tr>
+							<?php
+							$i++;
+						endforeach;
+					else:
+					?>
+					<tr class="sp-row alternate">
+						<td colspan="4">
+							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) ); ?>
+						</td>
+					</tr>
+					<?php
+					endif;
+					?>
+				</tbody>
+			</table>
+		</div>
+		<?php
+	}
+}
+
 if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 	function sportspress_edit_league_table( $columns = array(), $usecolumns = null, $data = array(), $placeholders = array() ) {
 		if ( is_array( $usecolumns ) )
@@ -833,7 +896,7 @@ if ( !function_exists( 'sportspress_edit_player_list_table' ) ) {
 			$usecolumns = array_filter( $usecolumns );
 		?>
 		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table">
+			<table class="widefat sp-data-table sp-player-list-table">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -1013,11 +1076,11 @@ if ( !function_exists( 'sportspress_edit_event_results_table' ) ) {
 			<table class="widefat sp-data-table">
 				<thead>
 					<tr>
-						<th><?php _e( 'Team', 'sportspress' ); ?></th>
-						<?php foreach ( $columns as $label ): ?>
-							<th><?php echo $label; ?></th>
+						<th class="column-team"><?php _e( 'Team', 'sportspress' ); ?></th>
+						<?php foreach ( $columns as $key => $label ): ?>
+							<th class="outcome-<?php echo $key; ?>"><?php echo $label; ?></th>
 						<?php endforeach; ?>
-						<th><?php _e( 'Outcome', 'sportspress' ); ?></th>
+						<th class="column-outcome"><?php _e( 'Outcome', 'sportspress' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -1379,6 +1442,7 @@ if ( !function_exists( 'sportspress_get_calendar_data' ) ) {
 		$leagues = get_the_terms( $post_id, 'sp_league' );
 		$seasons = get_the_terms( $post_id, 'sp_season' );
 		$venues = get_the_terms( $post_id, 'sp_venue' );
+		$team = get_post_meta( $post_id, 'sp_team', true );
 
 		$args = array(
 			'post_type' => 'sp_event',
@@ -1425,6 +1489,15 @@ if ( !function_exists( 'sportspress_get_calendar_data' ) ) {
 				'taxonomy' => 'sp_venue',
 				'field' => 'id',
 				'terms' => $venue_ids
+			);
+		endif;
+
+		if ( $team ):
+			$args['meta_query']	= array(
+				array(
+					'key' => 'sp_team',
+					'value' => $team,
+				),
 			);
 		endif;
 
