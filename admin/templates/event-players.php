@@ -42,6 +42,11 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 				if ( ! $player_id )
 					continue;
 
+				$name = get_the_title( $player_id );
+
+				if ( ! $name )
+					continue;
+
 				$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 				$number = get_post_meta( $player_id, 'sp_number', true );
@@ -51,7 +56,6 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 
 				// Name as link
 				$permalink = get_post_permalink( $player_id );
-				$name = get_the_title( $player_id );
 				$output .= '<td class="data-name">' . '<a href="' . $permalink . '">' . $name . '</a></td>';
 
 				foreach( $statistic_labels as $key => $label ):
