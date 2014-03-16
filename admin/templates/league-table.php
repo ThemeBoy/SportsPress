@@ -41,16 +41,19 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 		$i = 0;
 
 		if ( is_int( $r['number'] ) && $r['number'] > 0 )
-			$data = array_slice( $data, 0, $r['number'] );
+			$limit = $r['number'];
 
 		foreach( $data as $team_id => $row ):
+
+			if ( $i >= $r['number'] ) continue;
+
+			$name = sportspress_array_value( $row, 'name', null );
+			if ( ! $name ) continue;
 
 			$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 			// Rank
 			$output .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
-
-			$name = sportspress_array_value( $row, 'name', sportspress_array_value( $row, 'name', '&nbsp;' ) );
 
 			if ( $r['show_team_logo'] )
 				$name = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon' ) . ' ' . $name;

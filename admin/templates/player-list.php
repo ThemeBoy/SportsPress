@@ -56,6 +56,9 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 		$i = 0;
 
 		foreach( $data as $player_id => $row ):
+		
+			$name = sportspress_array_value( $row, 'name', null );
+			if ( ! $name ) continue;
 
 			$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
@@ -69,7 +72,6 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 
 			// Name as link
 			$permalink = get_post_permalink( $player_id );
-			$name = sportspress_array_value( $row, 'name', sportspress_array_value( $row, 'name', '&nbsp;' ) );
 			$output .= '<td class="data-name">' . '<a href="' . $permalink . '">' . $name . '</a></td>';
 
 			foreach( $labels as $key => $value ):
