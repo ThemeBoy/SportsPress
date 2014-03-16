@@ -19,7 +19,7 @@ function sportspress_list_post_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sportspress_list_meta_init',
-		'rewrite' => array( 'slug' => get_option( 'sp_list_slug', 'lists' ) ),
+		'rewrite' => array( 'slug' => get_option( 'sp_list_slug', 'list' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_player',
 		'show_in_admin_bar' => true,
 		'capability_type' => 'sp_list'
