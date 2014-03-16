@@ -167,7 +167,7 @@ jQuery(document).ready(function($){
 				sum += parseInt(val, 10);
 			}
 		});
-		$(this).val(sum);
+		$(this).attr("placeholder", sum);
 	});
 
 	// Activate total stats calculator
@@ -176,6 +176,9 @@ jQuery(document).ready(function($){
 			$(this).closest(".sp-data-table").find(".sp-total td").eq($(this).parent().index()).find("input").trigger("updateTotal");
 		});
 	}
+
+	// Trigger total stats calculator
+	$(".sp-data-table .sp-total input").trigger("updateTotal");
 
 	// Select all checkboxes
 	$(".sp-select-all").change(function() {
