@@ -485,7 +485,7 @@ if ( !function_exists( 'sportspress_post_checklist' ) ) {
 		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
 			<input type="hidden" value="0" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
-				<li><label class="selectit sp-select-all-container"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
+				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
 				<?php
 				$selected = sportspress_array_between( (array)get_post_meta( $post_id, $meta, false ), 0, $index );
 				$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
@@ -509,7 +509,7 @@ if ( !function_exists( 'sportspress_post_checklist' ) ) {
 						endforeach;
 					endif;
 					?>
-					<li class="sp-post<?php
+					<li class="sp-post sp-filter-0<?php
 						if ( $filter ):
 							foreach ( $filter_values as $filter_value ):
 								echo ' sp-filter-' . $filter_value;
@@ -531,6 +531,7 @@ if ( !function_exists( 'sportspress_post_checklist' ) ) {
 					<?php
 				endforeach;
 				?>
+				<li class="sp-not-found-container"><?php _e( 'No results found.', 'sportspress' ); ?></li>
 			</ul>
 		</div>
 		<?php

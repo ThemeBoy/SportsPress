@@ -52,12 +52,20 @@ jQuery(document).ready(function($){
 				filter += ".sp-filter-"+$(this).find("select").val();
 			});
 		}
-		$(this).closest(".sp-tab-select").siblings(".sp-tab-panel").find(".sp-post").hide(0, function() {
+		$panel = $(this).closest(".sp-tab-select").siblings(".sp-tab-panel")
+		$panel.find(".sp-post").hide(0, function() {
 			$(this).find("input").prop("disabled", true);
 			$(this).filter(filter).show(0, function() {
 				$(this).find("input").prop("disabled", false);
 			});
 		});
+		if($panel.find(".sp-post:visible").length > 0) {
+			$panel.find(".sp-select-all-container").show();
+			$panel.find(".sp-not-found-container").hide();
+		} else {
+			$panel.find(".sp-select-all-container").hide();
+			$panel.find(".sp-not-found-container").show();
+		}
 	});
 
 	// Trigger tab filter
