@@ -46,6 +46,9 @@
 .sp-icon-trophy:before {
 	content: "\f325";
 }
+.sp-icon-list:before {
+	content: "\f163"
+}
 .sp-icon-smile:before {
 	content: "\f328";
 }
@@ -54,10 +57,14 @@
 #adminmenu #menu-posts-sp_event .menu-icon-sp_event div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_team .menu-icon-sp_team div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_player .menu-icon-sp_player div.wp-menu-image:before,
-#sp_formatdiv .post-format-icon:before {
+#sp_formatdiv #post-formats-select .post-format-icon:before {
 	font-family: sportspress, dashicons !important;
 	width: 20px;
 	text-align: center;
+}
+
+.post-state-format.post-format-calendar:before, .post-format-icon.post-format-calendar:before, a.post-state-format.format-calendar:before {
+	content: "\f145";
 }
 
 .post-state-format.post-format-league:before, .post-format-icon.post-format-league:before, a.post-state-format.format-league:before {
@@ -77,7 +84,7 @@
 }
 
 .fixed .column-sp_team strong {
-	background: #bbb;
+	background: #888;
 	color: #fff;
 	font-size: 11px;
 	font-weight: 600;
@@ -88,10 +95,6 @@
 	display: inline-block;
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
-}
-
-.fixed td.column-sp_format .dashicons:before {
-	color: #bbb;
 }
 
 .fixed .column-sp_format,
@@ -107,6 +110,10 @@
 
 .fixed .column-sp_league, .fixed .column-sp_season, .fixed .column-sp_venue, .fixed .column-sp_position, .fixed .column-sp_views {
 	width: 10%;
+}
+
+.fixed td.column-sp_format .dashicons:before {
+	color: #888;
 }
 
 #sportspress_dashboard_status .inside {
@@ -269,6 +276,14 @@
 	content: '\f185';
 }
 
+table.widefat.sp-data-table th.column-outcome {
+	width: 10em;
+}
+
+table.widefat.sp-data-table th.column-event {
+	width: 40%;
+}
+
 table.widefat.sp-data-table td {
 	line-height: 2;
 	overflow: visible;
@@ -312,6 +327,10 @@ table.widefat.sp-league-table th input[type=checkbox] {
 	vertical-align: middle;
 }
 
+table.widefat select.sp-outcome {
+	width: 100%;
+}
+
 .sp-admin-config-table th,
 .sp-admin-config-table td {
 	padding: 8px 10px;
@@ -327,10 +346,6 @@ table.widefat.sp-league-table th input[type=checkbox] {
 .sp-admin-config-table td.radio input[type=radio] {
 	margin: 0;
 	vertical-align: middle;
-}
-
-table.widefat select.sp-outcome {
-	width: 150px;
 }
 
 #sp_venue-adder h4,
