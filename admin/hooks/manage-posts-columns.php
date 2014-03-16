@@ -18,9 +18,6 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 				case 'friendly':
 					echo '<span class="dashicons sp-icon-smile tips" title="' . __( 'Friendly', 'sportspress' ) . '"></span>';
 					break;
-				default:
-					echo '<span class="dashicons dashicons-editor-help tips" title="' . __( 'Not set', 'sportspress' ) . '"></span>';
-					break;
 			endswitch;
 			break;
 		case 'sp_icon':
