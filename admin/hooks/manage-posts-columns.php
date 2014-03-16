@@ -12,11 +12,14 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 		case 'sp_format':
 			$format = get_post_meta( $post_id, 'sp_format', true );
 			switch ( $format ):
+				case 'league':
+					echo '<span class="dashicons sp-icon-crown tips" title="' . __( 'League', 'sportspress' ) . '"></span>';
+					break;
 				case 'friendly':
 					echo '<span class="dashicons sp-icon-smile tips" title="' . __( 'Friendly', 'sportspress' ) . '"></span>';
 					break;
 				default:
-					echo '<span class="dashicons sp-icon-crown tips" title="' . __( 'League', 'sportspress' ) . '"></span>';
+					echo '<span class="dashicons dashicons-editor-help tips" title="' . __( 'Not set', 'sportspress' ) . '"></span>';
 					break;
 			endswitch;
 			break;
