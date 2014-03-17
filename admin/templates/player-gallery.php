@@ -6,6 +6,7 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 			$id = get_the_ID();
 
 		$defaults = array(
+			'number' => -1,
 			'orderby' => 'default',
 			'order' => 'ASC',
 			'itemtag' => 'dl',
@@ -13,6 +14,7 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 			'captiontag' => 'dd',
 			'columns' => 3,
 			'size' => 'thumbnail',
+			'show_all_players_link' => false,
 		);
 
 		$r = wp_parse_args( $args, $defaults );
@@ -59,8 +61,6 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 			uasort( $data, 'sportspress_sort_list_players' );
 		endif;
 
-		$i = 0;
-
 		$gallery_style = $gallery_div = '';
 		if ( apply_filters( 'use_default_gallery_style', true ) )
 			$gallery_style = "
@@ -86,28 +86,33 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 		$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
 		$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
 
-		foreach( $data as $id => $statistics ):
+		$i = 0;
 
-			$caption = get_the_title( $id );
+		if ( is_int( $r['number'] ) && $r['number'] > 0 )
+			$limit = $r['number'];
 
-			$thumbnail = get_the_post_thumbnail( $id, $size );
+		foreach( $data as $player_id => $statistics ):
+
+			$caption = get_the_title( $player_id );
+
+			$thumbnail = get_the_post_thumbnail( $player_id, $size );
 
 			if ( $thumbnail ):
+				if ( isset( $limit ) && $i >= $limit ) continue;
 				$output .= "<{$itemtag} class='gallery-item'>";
 				$output .= "
 					<{$icontag} class='gallery-icon portrait'>"
-						. '<a href="' . get_permalink( $id ) . '">' . $thumbnail . '</a>'
+						. '<a href="' . get_permalink( $player_id ) . '">' . $thumbnail . '</a>'
 					. "</{$icontag}>";
 				if ( $captiontag && trim($caption) ) {
-					$output .= "
+					$output .= '<a href="' . get_permalink( $player_id ) . '">' . "
 						<{$captiontag} class='wp-caption-text gallery-caption'>
 						" . wptexturize($caption) . "
-						</{$captiontag}>";
+						</{$captiontag}>" . '</a>';
 				}
 				$output .= "</{$itemtag}>";
 				if ( $columns > 0 && ++$i % $columns == 0 )
 					$output .= '<br style="clear: both" />';
-
 			endif;
 
 		endforeach;
@@ -115,6 +120,9 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 		$output .= "
 				<br style='clear: both;' />
 			</div>\n";
+
+		if ( $r['show_all_players_link'] )
+			$output .= '<a class="sp-player-list-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
 
 		return apply_filters( 'sportspress_player_gallery',  $output );
 
