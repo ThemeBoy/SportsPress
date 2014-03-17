@@ -36,6 +36,11 @@ jQuery(document).ready(function($){
 		$(this).closest(".widget-content").find(".sp-select-order").prop("disabled", $(this).val() == "default");
 	});
 
+	// Calendar affects view all link checkbox in widget options
+	$("body.widgets-php").on("change", ".sp-events-calendar-select", function() {
+		$(this).closest(".widget-content").find(".sp-events-calendar-show-all-toggle").prop("disabled", $(this).val() == 0);
+	});
+
 	// Tab switcher
 	$(".sp-tab-panel").siblings(".sp-tab-bar").find("a").click(function() {
 		$(this).closest("li").removeClass("wp-tab").addClass("wp-tab-active").siblings().removeClass("wp-tab-active").addClass("wp-tab").closest(".wp-tab-bar").siblings($(this).attr("href")).show().siblings(".wp-tab-panel").hide();

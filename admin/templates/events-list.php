@@ -2,13 +2,11 @@
 if ( !function_exists( 'sportspress_events_list' ) ) {
 	function sportspress_events_list( $id = null, $args = '' ) {
 
-		if ( ! $id )
-			$id = get_the_ID();
-
 		$options = get_option( 'sportspress' );
 		$main_result = sportspress_array_value( $options, 'main_result', null );
 
 		$defaults = array(
+			'show_all_events_link' => false,
 		);
 
 		$r = wp_parse_args( $args, $defaults );
@@ -18,18 +16,21 @@ if ( !function_exists( 'sportspress_events_list' ) ) {
 
 		list( $data, $usecolumns ) = sportspress_get_calendar_data( $id, true );
 
+		if ( isset( $r['columns'] ) )
+			$usecolumns = $r['columns'];
+
 		$output .= '<th class="column-date">' . __( 'Date', 'sportspress' ). '</th>';
 
-		if ( in_array( 'event', $usecolumns ) )
+		if ( $usecolumns == null || in_array( 'event', $usecolumns ) )
 			$output .= '<th class="column-event">' . __( 'Event', 'sportspress' ). '</th>';
 
-		if ( in_array( 'teams', $usecolumns ) )
+		if ( $usecolumns == null || in_array( 'teams', $usecolumns ) )
 			$output .= '<th class="column-teams">' . __( 'Teams', 'sportspress' ). '</th>';
 
-		if ( in_array( 'time', $usecolumns ) )
+		if ( $usecolumns == null || in_array( 'time', $usecolumns ) )
 			$output .= '<th class="column-time">' . __( 'Time', 'sportspress' ). '</th>';
 
-		if ( in_array( 'article', $usecolumns ) )
+		if ( $usecolumns == null || in_array( 'article', $usecolumns ) )
 			$output .= '<th class="column-article">' . __( 'Article', 'sportspress' ). '</th>';
 
 		$output .= '</tr>' . '</thead>' . '<tbody>';
@@ -44,10 +45,10 @@ if ( !function_exists( 'sportspress_events_list' ) ) {
 
 				$output .= '<td class="column-date">' . get_post_time( get_option( 'date_format' ), false, $event ) . '</td>';
 
-				if ( in_array( 'event', $usecolumns ) )
+				if ( $usecolumns == null || in_array( 'event', $usecolumns ) )
 					$output .= '<td class="column-event">' . $event->post_title . '</td>';
 			
-				if ( in_array( 'teams', $usecolumns ) ):
+				if ( $usecolumns == null || in_array( 'teams', $usecolumns ) ):
 					$output .= '<td class="column-teams">';
 
 						$teams = get_post_meta( $event->ID, 'sp_team', false );
@@ -84,10 +85,10 @@ if ( !function_exists( 'sportspress_events_list' ) ) {
 					$output .= '</td>';
 				endif;
 
-			if ( in_array( 'time', $usecolumns ) )
+			if ( $usecolumns == null || in_array( 'time', $usecolumns ) )
 				$output .= '<td class="column-time">' . get_post_time( get_option( 'time_format' ), false, $event ) . '</td>';
 
-			if ( in_array( 'article', $usecolumns ) ):
+			if ( $usecolumns == null || in_array( 'article', $usecolumns ) ):
 				$output .= '<td class="column-article">
 					<a href="' . get_permalink( $event->ID ) . '#sp_articlediv">';
 
@@ -113,7 +114,12 @@ if ( !function_exists( 'sportspress_events_list' ) ) {
 			$i++;
 		endforeach;
 
-		$output .= '</tbody>' . '</table>' . '</div>';
+		$output .= '</tbody>' . '</table>';
+
+		if ( $id && $r['show_all_events_link'] )
+			$output .= '<a class="sp-all-events-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
+
+		$output .= '</div>';
 
 		return apply_filters( 'sportspress_events_list',  $output );
 

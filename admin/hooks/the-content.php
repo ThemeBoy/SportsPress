@@ -41,7 +41,7 @@ function sportspress_default_calendar_content( $content ) {
                 $calendar = sportspress_events_list( $id );
                 break;
             default:
-                $calendar = sportspress_events_calendar( $id, true, false );
+                $calendar = sportspress_events_calendar( $id, false, array( 'caption_tag' => 'h4' ) );
                 break;
             endswitch;
         $content = $calendar . $content;

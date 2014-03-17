@@ -1,12 +1,19 @@
 <?php
 if ( !function_exists( 'sportspress_events_calendar' ) ) {
-	function sportspress_events_calendar( $id = null, $single = false, $initial = true ) {
+	function sportspress_events_calendar( $id = null, $initial = true, $args = array() ) {
 	
 		global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
 
 		// Quick check. If we have no posts at all, abort!
 		if ( ! $posts )
 			return;
+
+		$defaults = array(
+			'caption_tag' => 'caption',
+			'show_all_events_link' => false,
+		);
+
+		$r = wp_parse_args( $args, $defaults );
 
 		if ( $id ):
 			$events = sportspress_get_calendar_data( $id );
@@ -19,7 +26,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 			$in = '';
 		endif;
 
-		$caption_tag = ( $single ? 'h4' : 'caption' );
+		$caption_tag = $r['caption_tag'];
 
 		// week_begins = 0 stands for Sunday
 		$week_begins = intval(get_option('start_of_week'));
@@ -188,6 +195,9 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 			$calendar_output .= "\n\t\t".'<td class="pad" colspan="'. esc_attr($pad) .'">&nbsp;</td>';
 
 		$calendar_output .= "\n\t</tr>\n\t</tbody>\n\t</table>";
+
+		if ( $id && $r['show_all_events_link'] )
+			$calendar_output .= '<a class="sp-all-events-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
 
 		return apply_filters( 'sportspress_events_calendar',  $calendar_output );
 
