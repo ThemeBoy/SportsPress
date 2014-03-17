@@ -88,6 +88,8 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 						echo '<br>';
 					endif;
 				endforeach;
+			elseif ( $post_type == 'sp_table' ):
+				echo sportspress_posts( $post_id, 'sp_team' );
 			else:
 				foreach( $teams as $team_id ):
 					if ( ! $team_id ) continue;
