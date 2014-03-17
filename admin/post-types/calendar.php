@@ -143,9 +143,9 @@ function sportspress_calendar_details_meta( $post, $test ) {
 
 function sportspress_calendar_events_meta( $post ) {
 
-	$data = sportspress_get_calendar_data( $post->ID );
+	list( $data, $usecolumns ) = sportspress_get_calendar_data( $post->ID, true );
 
-	sportspress_edit_calendar_table( $data );
+	sportspress_edit_calendar_table( $data, $usecolumns );
 
 	sportspress_nonce();
 

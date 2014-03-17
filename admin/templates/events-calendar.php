@@ -1,12 +1,14 @@
 <?php
 if ( !function_exists( 'sportspress_events_calendar' ) ) {
-	function sportspress_events_calendar( $initial = true ) {
+	function sportspress_events_calendar( $id = null, $single = false, $initial = true ) {
 	
 		global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
 
 		// Quick check. If we have no posts at all, abort!
 		if ( !$posts )
 			return;
+
+		$caption_tag = ( $single ? 'h4' : 'caption' );
 
 		// week_begins = 0 stands for Sunday
 		$week_begins = intval(get_option('start_of_week'));
@@ -56,7 +58,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		$calendar_caption = _x('%1$s %2$s', 'calendar caption', 'sportspress');
 		$calendar_output = '
 		<table id="wp-calendar">
-		<caption>' . sprintf($calendar_caption, $wp_locale->get_month($thismonth), date('Y', $unixmonth)) . '</caption>
+		<' . $caption_tag . ' class="sp-table-caption">' . sprintf($calendar_caption, $wp_locale->get_month($thismonth), date('Y', $unixmonth)) . '</' . $caption_tag . '>
 		<thead>
 		<tr>';
 

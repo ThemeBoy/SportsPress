@@ -67,7 +67,7 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 						endif;
 
 						if ( $team_result != null ):
-							echo '<strong>' . $team_result . '</strong> ';
+							echo '<strong class="result">' . $team_result . '</strong> ';
 						endif;
 
 						echo $team->post_title;
