@@ -1494,12 +1494,7 @@ if ( !function_exists( 'sportspress_event_players_sub_filter' ) ) {
 
 
 if ( !function_exists( 'sportspress_get_calendar_data' ) ) {
-	function sportspress_get_calendar_data( $post_id, $admin = false ) {
-		$leagues = get_the_terms( $post_id, 'sp_league' );
-		$seasons = get_the_terms( $post_id, 'sp_season' );
-		$venues = get_the_terms( $post_id, 'sp_venue' );
-		$team = get_post_meta( $post_id, 'sp_team', true );
-		$usecolumns = get_post_meta( $post_id, 'sp_columns', true );
+	function sportspress_get_calendar_data( $post_id = null, $admin = false ) {
 
 		$args = array(
 			'post_type' => 'sp_event',
@@ -1513,49 +1508,59 @@ if ( !function_exists( 'sportspress_get_calendar_data' ) ) {
 			),
 		);
 
-		if ( $leagues ):
-			$league_ids = array();
-			foreach( $leagues as $league ):
-				$league_ids[] = $league->term_id;
-			endforeach;
-			$args['tax_query'][] = array(
-				'taxonomy' => 'sp_league',
-				'field' => 'id',
-				'terms' => $league_ids
-			);
-		endif;
+		if ( $post_id ):
+			$leagues = get_the_terms( $post_id, 'sp_league' );
+			$seasons = get_the_terms( $post_id, 'sp_season' );
+			$venues = get_the_terms( $post_id, 'sp_venue' );
+			$team = get_post_meta( $post_id, 'sp_team', true );
+			$usecolumns = get_post_meta( $post_id, 'sp_columns', true );
 
-		if ( $seasons ):
-			$season_ids = array();
-			foreach( $seasons as $season ):
-				$season_ids[] = $season->term_id;
-			endforeach;
-			$args['tax_query'][] = array(
-				'taxonomy' => 'sp_season',
-				'field' => 'id',
-				'terms' => $season_ids
-			);
-		endif;
+			if ( $leagues ):
+				$league_ids = array();
+				foreach( $leagues as $league ):
+					$league_ids[] = $league->term_id;
+				endforeach;
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_league',
+					'field' => 'id',
+					'terms' => $league_ids
+				);
+			endif;
 
-		if ( $venues ):
-			$venue_ids = array();
-			foreach( $venues as $venue ):
-				$venue_ids[] = $venue->term_id;
-			endforeach;
-			$args['tax_query'][] = array(
-				'taxonomy' => 'sp_venue',
-				'field' => 'id',
-				'terms' => $venue_ids
-			);
-		endif;
+			if ( $seasons ):
+				$season_ids = array();
+				foreach( $seasons as $season ):
+					$season_ids[] = $season->term_id;
+				endforeach;
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_season',
+					'field' => 'id',
+					'terms' => $season_ids
+				);
+			endif;
 
-		if ( $team ):
-			$args['meta_query']	= array(
-				array(
-					'key' => 'sp_team',
-					'value' => $team,
-				),
-			);
+			if ( $venues ):
+				$venue_ids = array();
+				foreach( $venues as $venue ):
+					$venue_ids[] = $venue->term_id;
+				endforeach;
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_venue',
+					'field' => 'id',
+					'terms' => $venue_ids
+				);
+			endif;
+
+			if ( $team ):
+				$args['meta_query']	= array(
+					array(
+						'key' => 'sp_team',
+						'value' => $team,
+					),
+				);
+			endif;
+		else:
+			$usecolumns = null;
 		endif;
 
 		$events = get_posts( $args );

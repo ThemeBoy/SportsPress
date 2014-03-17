@@ -85,6 +85,7 @@ require_once dirname( __FILE__ ) . '/admin/terms/position.php';
 // Widgets
 require_once dirname( __FILE__ ) . '/admin/widgets/countdown.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/events-calendar.php';
+require_once dirname( __FILE__ ) . '/admin/widgets/events-list.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/player-list.php';
 require_once dirname( __FILE__ ) . '/admin/widgets/league-table.php';
 
