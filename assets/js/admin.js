@@ -38,7 +38,11 @@ jQuery(document).ready(function($){
 
 	// Calendar affects view all link checkbox in widget options
 	$("body.widgets-php").on("change", ".sp-events-calendar-select", function() {
-		$(this).closest(".widget-content").find(".sp-events-calendar-show-all-toggle").prop("disabled", $(this).val() == 0);
+		$el = $(this).closest(".widget-content").find(".sp-events-calendar-show-all-toggle");
+		if($(this).val() == 0)
+			$el.hide();
+		else
+			$el.show();
 	});
 
 	// Tab switcher
