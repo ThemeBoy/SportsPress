@@ -70,7 +70,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		/* translators: Calendar caption: 1: month name, 2: 4-digit year */
 		$calendar_caption = _x('%1$s %2$s', 'calendar caption', 'sportspress');
 		$calendar_output = '
-		<table id="wp-calendar">
+		<table id="wp-calendar" class="sp-calendar sp-events-calendar">
 		<' . $caption_tag . ' class="sp-table-caption">' . sprintf($calendar_caption, $wp_locale->get_month($thismonth), date('Y', $unixmonth)) . '</' . $caption_tag . '>
 		<thead>
 		<tr>';

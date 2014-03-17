@@ -32,6 +32,16 @@
 	width: auto;
 }
 
+/* Events Calendar */
+.sp-events-calendar tbody td, .sp-events-calendar thead th {
+	text-align: center;
+}
+.sp-events-calendar #next {
+	text-align: right;
+}
+.sp-events-calendar #prev {
+	text-align: left;
+}
 /* Events List */
 .sp-events-list .column-article {
 	white-space: nowrap;
