@@ -73,7 +73,7 @@ class SportsPress_Widget_Events_List extends WP_Widget {
 			<?php endforeach; ?>
 		</p>
 
-		<p><input class="checkbox sp-events-calendar-show-all-toggle" type="checkbox" id="<?php echo $this->get_field_id('show_all_events_link'); ?>" name="<?php echo $this->get_field_name('show_all_events_link'); ?>" value="1" <?php checked( $show_all_events_link, 1 ); ?> <?php disabled( true, ( ! $id ) ); ?>>
+		<p class="sp-events-calendar-show-all-toggle<?php if ( ! $id ): ?> hidden<?php endif; ?>"><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_all_events_link'); ?>" name="<?php echo $this->get_field_name('show_all_events_link'); ?>" value="1" <?php checked( $show_all_events_link, 1 ); ?>>
 		<label for="<?php echo $this->get_field_id('show_all_events_link'); ?>"><?php _e( 'Display link to view all events', 'sportspress' ); ?></label></p>
 <?php
 	}
