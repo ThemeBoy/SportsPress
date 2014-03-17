@@ -467,6 +467,8 @@ if ( !function_exists( 'sportspress_posts' ) ) {
 					endforeach;
 				endif;
 				$title = get_the_title( $id );
+				if ( ! $title )
+					continue;
 				if ( empty( $title ) )
 					$title = __( '(no title)', 'sportspress' );
 				edit_post_link( $title, '', '', $id );
