@@ -197,7 +197,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		$calendar_output .= "\n\t</tr>\n\t</tbody>\n\t</table>";
 
 		if ( $id && $r['show_all_events_link'] )
-			$calendar_output .= '<a class="sp-all-events-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
+			$calendar_output .= '<a class="sp-calendar-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
 
 		return apply_filters( 'sportspress_events_calendar',  $calendar_output );
 

@@ -6,9 +6,11 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 			$id = get_the_ID();
 
 		$defaults = array(
+			'number' => -1,
 			'statistics' => null,
 			'orderby' => 'default',
 			'order' => 'ASC',
+			'show_all_players_link' => false,
 		);
 
 		$r = wp_parse_args( $args, $defaults );
@@ -55,7 +57,11 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 
 		$i = 0;
 
+		if ( is_int( $r['number'] ) && $r['number'] > 0 )
+			$limit = $r['number'];
+
 		foreach( $data as $player_id => $row ):
+			if ( isset( $limit ) && $i >= $limit ) continue;
 		
 			$name = sportspress_array_value( $row, 'name', null );
 			if ( ! $name ) continue;
@@ -88,6 +94,9 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 		endforeach;
 
 		$output .= '</tbody>' . '</table>' . '</div>';
+
+		if ( $r['show_all_players_link'] )
+			$output .= '<a class="sp-player-list-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
 
 		return apply_filters( 'sportspress_player_list',  $output );
 
