@@ -5,8 +5,19 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
 
 		// Quick check. If we have no posts at all, abort!
-		if ( !$posts )
+		if ( ! $posts )
 			return;
+
+		if ( $id ):
+			$events = sportspress_get_calendar_data( $id );
+			$event_ids = array();
+			foreach ( $events as $event ):
+				$event_ids[] = $event->ID;
+			endforeach;
+			$in = 'AND ID IN (' . implode( ', ', $event_ids ) . ')';
+		else:
+			$in = '';
+		endif;
 
 		$caption_tag = ( $single ? 'h4' : 'caption' );
 
@@ -45,12 +56,14 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 			FROM $wpdb->posts
 			WHERE post_date < '$thisyear-$thismonth-01'
 			AND post_type = 'sp_event' AND ( post_status = 'publish' OR post_status = 'future' )
+			$in
 				ORDER BY post_date DESC
 				LIMIT 1");
 		$next = $wpdb->get_row("SELECT MONTH(post_date) AS month, YEAR(post_date) AS year
 			FROM $wpdb->posts
 			WHERE post_date > '$thisyear-$thismonth-{$last_day} 23:59:59'
 			AND post_type = 'sp_event' AND ( post_status = 'publish' OR post_status = 'future' )
+			$in
 				ORDER BY post_date ASC
 				LIMIT 1");
 
@@ -106,6 +119,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		$dayswithposts = $wpdb->get_results("SELECT DAYOFMONTH(post_date), ID
 			FROM $wpdb->posts WHERE post_date >= '{$thisyear}-{$thismonth}-01 00:00:00'
 			AND post_type = 'sp_event' AND ( post_status = 'publish' OR post_status = 'future' )
+			$in
 			AND post_date <= '{$thisyear}-{$thismonth}-{$last_day} 23:59:59'", ARRAY_N);
 		if ( $dayswithposts ) {
 			foreach ( (array) $dayswithposts as $daywith ) {
@@ -125,7 +139,8 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 			."FROM $wpdb->posts "
 			."WHERE post_date >= '{$thisyear}-{$thismonth}-01 00:00:00' "
 			."AND post_date <= '{$thisyear}-{$thismonth}-{$last_day} 23:59:59' "
-			."AND post_type = 'sp_event' AND ( post_status = 'publish' OR post_status = 'future' )"
+			."AND post_type = 'sp_event' AND ( post_status = 'publish' OR post_status = 'future' ) "
+			."$in"
 		);
 		if ( $ak_post_titles ) {
 			foreach ( (array) $ak_post_titles as $ak_post_title ) {
