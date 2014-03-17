@@ -83,7 +83,12 @@
 	content: "\f163";
 }
 
-.fixed .column-sp_team strong {
+#sp_videodiv .inside > fieldset > p:last-child {
+	margin-bottom: 1px !important;
+}
+
+.fixed .column-sp_team strong.result,
+.sp-calendar-table strong.result {
 	background: #888;
 	color: #fff;
 	font-size: 11px;
@@ -280,10 +285,6 @@ table.widefat.sp-data-table th.column-outcome {
 	width: 10em;
 }
 
-table.widefat.sp-data-table th.column-event {
-	width: 40%;
-}
-
 table.widefat.sp-data-table td {
 	line-height: 2;
 	overflow: visible;
@@ -322,7 +323,7 @@ table.widefat.sp-data-table tr:hover a.sp-edit-name {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-table.widefat.sp-league-table th input[type=checkbox] {
+table.widefat.sp-data-table th:not(.check-column) input[type=checkbox] {
 	margin: -4px 1px 0;
 	vertical-align: middle;
 }

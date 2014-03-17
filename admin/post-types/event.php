@@ -67,6 +67,7 @@ function sportspress_event_meta_init( $post ) {
 	add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'sportspress_event_format_meta', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_event_details_meta', 'sp_event', 'side', 'high' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_event_team_meta', 'sp_event', 'side', 'default' );
+	add_meta_box( 'sp_videodiv', __( 'Video', 'sportspress' ), 'sportspress_event_video_meta', 'sp_event', 'side', 'low' );
 	if ( sizeof( $teams ) > 0 )
 		add_meta_box( 'sp_resultsdiv', __( 'Results', 'sportspress' ), 'sportspress_event_results_meta', 'sp_event', 'normal', 'high' );
 
@@ -191,6 +192,26 @@ function sportspress_event_team_meta( $post ) {
 	</div>
 	<?php
 	sportspress_nonce();
+}
+
+function sportspress_event_video_meta( $post ) {
+	$video = get_post_meta( $post->ID, 'sp_video', true );
+	if ( $video ):
+	?>
+	<fieldset class="sp-video-embed">
+		<?php echo apply_filters( 'the_content', '[embed width="254"]' . $video . '[/embed]' ); ?>
+		<p><a href="#" class="sp-remove-video"><?php _e( 'Remove video', 'sportspress' ); ?></a></p>
+	</fieldset>
+	<?php endif; ?>
+	<fieldset class="sp-video-field hidden">
+		<p><strong><?php _e( 'URL', 'sportspress' ); ?></strong></p>
+		<p><input class="widefat" type="text" name="sp_video" id="sp_video" value="<?php echo $video; ?>"></p>
+		<p><a href="#" class="sp-remove-video"><?php _e( 'Cancel', 'sportspress' ); ?></a></p>
+	</fieldset>
+	<fieldset class="sp-video-adder<?php if ( $video ): ?> hidden<?php endif; ?>">
+		<p><a href="#" class="sp-add-video"><?php _e( 'Add video', 'sportspress' ); ?></a></p>
+	</fieldset>
+	<?php
 }
 
 function sportspress_event_statistics_meta( $post ) {

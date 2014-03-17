@@ -212,6 +212,18 @@ jQuery(document).ready(function($){
 	// Trigger check check
 	$(".sp-data-table").trigger("checkCheck");
 
+	// Video embed
+	$(".sp-add-video").click(function() {
+		$(this).closest("fieldset").hide().siblings(".sp-video-field").show();
+		return false;
+	});
+
+	// Removing video embed
+	$(".sp-remove-video").click(function() {
+		$(this).closest("fieldset").hide().siblings(".sp-video-adder").show().siblings(".sp-video-field").find("input").val(null);
+		return false;
+	});
+
 	// Equation selector
 	$(".sp-equation-selector select:last").change(function() {
 		$(this).siblings().change(function() {

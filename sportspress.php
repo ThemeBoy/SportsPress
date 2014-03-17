@@ -44,6 +44,7 @@ require_once dirname( __FILE__ ) . '/admin/templates/event-staff.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-venue.php';
 require_once dirname( __FILE__ ) . '/admin/templates/events.php';
 require_once dirname( __FILE__ ) . '/admin/templates/events-calendar.php';
+require_once dirname( __FILE__ ) . '/admin/templates/events-list.php';
 require_once dirname( __FILE__ ) . '/admin/templates/league-table.php';
 require_once dirname( __FILE__ ) . '/admin/templates/player-league-statistics.php';
 require_once dirname( __FILE__ ) . '/admin/templates/player-list.php';
