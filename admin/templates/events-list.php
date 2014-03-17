@@ -117,7 +117,7 @@ if ( !function_exists( 'sportspress_events_list' ) ) {
 		$output .= '</tbody>' . '</table>';
 
 		if ( $id && $r['show_all_events_link'] )
-			$output .= '<a class="sp-all-events-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
+			$output .= '<a class="sp-calendar-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
 
 		$output .= '</div>';
 
