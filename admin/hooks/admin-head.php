@@ -9,6 +9,8 @@ function sportspress_admin_head() {
 		sportspress_highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_list' );
 	elseif ( $typenow == 'sp_staff' )
 		sportspress_highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_staff' );
+	elseif ( $typenow == 'sp_directory' )
+		sportspress_highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_directory' );
 }
 add_action( 'admin_head-edit.php', 'sportspress_admin_head', 10, 2 );
 add_action( 'admin_head-post.php', 'sportspress_admin_head', 10, 2 );

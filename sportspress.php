@@ -6,7 +6,7 @@
 Plugin Name: SportsPress
 Plugin URI: http://themeboy.com/sportspress
 Description: Manage your club and its players, staff, events, league tables, and player lists.
-Version: 0.4.3
+Version: 0.5
 Author: ThemeBoy
 Author URI: http://themeboy.com/
 License: GPLv3
@@ -18,7 +18,7 @@ if ( !function_exists( 'add_action' ) ):
 	exit;
 endif;
 
-define( 'SPORTSPRESS_VERSION', '0.4.3' );
+define( 'SPORTSPRESS_VERSION', '0.5' );
 define( 'SPORTSPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SPORTSPRESS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'SPORTSPRESS_PLUGIN_FILE', __FILE__ );
@@ -75,6 +75,7 @@ require_once dirname( __FILE__ ) . '/admin/post-types/table.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/player.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/list.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
+//require_once dirname( __FILE__ ) . '/admin/post-types/directory.php';
 
 // Terms
 require_once dirname( __FILE__ ) . '/admin/terms/league.php';
@@ -112,8 +113,7 @@ require_once dirname( __FILE__ ) . '/admin/hooks/current-screen.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/manage-posts-columns.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/post-thumbnail-html.php';
 require_once dirname( __FILE__ ) . '/admin/hooks/restrict-manage-posts.php';
-require_once dirname( __FILE__ ) . '/admin/hooks/parse-query.php';
-//require_once dirname( __FILE__ ) . '/admin/hooks/media-buttons.php';
+require_once dirname( __FILE__ ) . '/admin/hooks/parse-query.php';;
 require_once dirname( __FILE__ ) . '/admin/hooks/save-post.php';
 
 // Filters
