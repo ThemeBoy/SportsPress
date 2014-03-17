@@ -4,7 +4,7 @@ Tags: sports, sports journalism, teams, team management, fixtures, results, stan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 0.4.3
+Stable tag: 0.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ SportsPress is a fully configurable sports plugin that seamlessly automates leag
 
 == Description ==
 
-Add schedules, results, league tables, player profiles and statistics to your team or league site with SportsPress. It is designed to work with virtually every WordPress theme, and includes several language translations.
+Add schedules, results, league tables, player profiles and statistics to your team or league site with SportsPress. It uses core WordPress markup syntax and is designed to work with virtually every theme. Several language translations are included.
 
 = Features =
 * Team Profiles
@@ -25,6 +25,7 @@ Add schedules, results, league tables, player profiles and statistics to your te
 * Season Archives
 * Venue Information & Maps
 * Statistics & League Table Columns Configuration
+* Import Events, Teams, and Players from CSV Files
 
 = Customizable =
 
@@ -150,6 +151,25 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 8. SportsPress Status dashboard widget.
 
 == Changelog ==
+
+= 0.5 =
+* Feature - Import tool added for importing events from CSV file.
+* Feature - New post type Calendar added.
+* Feature - League and Friendly format options added to events.
+* Feature - List and Gallery format options added to player lists.
+* Feature - Calendar and List format options added to calendars.
+* Feature - Options added to turn on and off player list columns.
+* Feature - Options added to player list widget to limit rows and display link to view all players.
+* Feature - Options added to calendar widget to filter events.
+* Feature - New widget Events List added.
+* Feature - New widget Player Gallery added.
+* Refactor - Use singular slugs for secondary post types.
+* Tweak - Add tooltips to icons in admin table headings.
+* Tweak - Style event results in admin events list. 
+* Tweak - Separate event date and time in admin events list.
+* Fix - Enable custom post type sorting in admin.
+* Fix - Added check before displaying deleted posts in league tables and player lists.
+* Fix - Adjust Select All filter in player lists and league tables.
 
 = 0.4.3 =
 * Feature - Enable selecting multiple outcomes per team per event.
