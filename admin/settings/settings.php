@@ -52,7 +52,7 @@ function sportspress_options() {
 
 function sportspress_options_validate( $input ) {
 	
-	$options = (array)get_option( 'sportspress' );
+	$options = (array)get_option( 'sportspress', array() );
 
 	if ( isset( $input['sport'] ) && sportspress_array_value( $options, 'sport', null ) != sportspress_array_value( $input, 'sport', null ) ):
 

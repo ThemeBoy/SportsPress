@@ -52,4 +52,4 @@ class SportsPressGeneralSettingsPage {
 }
 
 if ( is_admin() )
-	$sportspress_event_settings_page = new SportsPressGeneralSettingsPage();
+	$sportspress_general_settings_page = new SportsPressGeneralSettingsPage();

@@ -3,6 +3,7 @@ class SportsPressTextSettingsPage {
 	public function __construct() {
 		global $sportspress_options;
 		$this->options =& $sportspress_options;
+
 		$this->strings = array(
 			array( 'league', __( 'League', 'sportspress' ) ),
 			array( 'season', __( 'Season', 'sportspress' ) ),
@@ -14,8 +15,15 @@ class SportsPressTextSettingsPage {
 			array( 'pos', __( 'Pos', 'sportspress' ) ),
 			array( 'current_team', __( 'Current Team', 'sportspress' ) ),
 		);
+		usort( $this->strings, array( $this, 'compare_label' ) );
+
 		add_action( 'admin_init', array( $this, 'page_init' ), 1 );
 	}
+
+	private function compare_label( $a, $b ) {
+		return strcmp( $a[1], $b[1] );
+	}
+
 
 	function page_init() {
 		register_setting(
@@ -25,8 +33,8 @@ class SportsPressTextSettingsPage {
 		);
 		
 		add_settings_section(
-			'string',
-			__( 'Strings', 'sportspress' ),
+			'text',
+			__( 'Text Settings', 'sportspress' ),
 			'',
 			'sportspress_text'
 		);
@@ -35,14 +43,14 @@ class SportsPressTextSettingsPage {
 			add_settings_field(	
 				$string[0],
 				$string[1],
-				array( $this, 'string_callback' ),
+				array( $this, 'text_callback' ),
 				'sportspress_text',
-				'string'
+				'text'
 			);
 		endforeach;
 	}
 
-	public function string_callback( $test ) {
+	public function text_callback( $test ) {
 		$string = array_shift( $this->strings );
 		$key = $string[0];
 		$placeholder = $string[1];

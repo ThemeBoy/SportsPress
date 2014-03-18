@@ -187,4 +187,4 @@ class SportsPressPlayerSettingsPage {
 }
 
 if ( is_admin() )
-	$sportspress_event_settings_page = new SportsPressPlayerSettingsPage();
+	$sportspress_player_settings_page = new SportsPressPlayerSettingsPage();
