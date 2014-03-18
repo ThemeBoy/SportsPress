@@ -2,6 +2,7 @@
 function sportspress_admin_init() {
     $post_types = array(
         'sp_event',
+        'sp_calendar',
         'sp_team',
         'sp_table',
         'sp_player',

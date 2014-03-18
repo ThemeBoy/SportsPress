@@ -4,7 +4,7 @@ function sportspress_define_globals() {
 	// Options
 	global $sportspress_options;
 	
-	$sportspress_options = get_option( 'sportspress' );
+	$sportspress_options = (array)get_option( 'sportspress', array() );
 
 	// Continents
 	global $sportspress_continents;
