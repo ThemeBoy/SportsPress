@@ -51,7 +51,7 @@ class SP_Admin_Dashboard {
             <?php if ( $next_event ): ?>
             <li class="countdown" data-countdown="<?php echo str_replace( '-', '/', $next_event->post_date ); ?>">
                 <a href="<?php echo get_edit_post_link( $next_event->ID ); ?>">
-                    <?php printf( __( '<strong>%s</strong> until next event', 'sportspress' ), $interval->d . ' ' . __( 'days', 'sportspress' ) . ' ' . sprintf( '%02s:%02s:%02s', $interval->h, $interval->i, $interval->s ) ); ?>
+                    <?php printf( __( '<strong>%s</strong> until next event', 'sportspress' ), $interval->days . ' ' . __( 'days', 'sportspress' ) . ' ' . sprintf( '%02s:%02s:%02s', $interval->h, $interval->i, $interval->s ) ); ?>
                     (<?php echo $next_event->post_title; ?>)
                 </a>
             </li>

@@ -5,12 +5,15 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 		if ( ! $id )
 			$id = get_the_ID();
 
+		global $sportspress_options;
+
 		$defaults = array(
 			'number' => -1,
 			'statistics' => null,
 			'orderby' => 'default',
 			'order' => 'ASC',
 			'show_all_players_link' => false,
+			'link_posts' => sportspress_array_value( $sportspress_options, 'player_list_link_posts', true ),
 		);
 
 		$r = wp_parse_args( $args, $defaults );
@@ -76,9 +79,12 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 				$output .= '<td class="data-number">' . ( $number ? $number : '&nbsp;' ) . '</td>';
 			endif;
 
-			// Name as link
-			$permalink = get_post_permalink( $player_id );
-			$output .= '<td class="data-name">' . '<a href="' . $permalink . '">' . $name . '</a></td>';
+			if ( $r['link_posts'] ):
+				$permalink = get_post_permalink( $player_id );
+				$name = '<a href="' . $permalink . '">' . $name . '</a>';
+			endif;
+
+			$output .= '<td class="data-name">' . $name . '</td>';
 
 			foreach( $labels as $key => $value ):
 				if ( $key == 'name' )
@@ -102,3 +108,17 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 
 	}
 }
+
+function sportspress_player_list_shortcode( $atts ) {
+	if ( isset( $atts['id'] ) ):
+		$id = $atts['id'];
+		unset( $atts['id'] );
+	elseif( isset( $atts[0] ) ):
+		$id = $atts[0];
+		unset( $atts[0] );
+	else:
+		$id = null;
+	endif;
+    return sportspress_player_list( $id, $atts );
+}
+add_shortcode('player-list', 'sportspress_player_list_shortcode');

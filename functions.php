@@ -800,8 +800,8 @@ if ( !function_exists( 'sportspress_edit_calendar_table' ) ) {
 				<tbody>
 					<?php
 					if ( is_array( $data ) && sizeof( $data ) > 0 ):
-						$options = get_option( 'sportspress' );
-						$main_result = sportspress_array_value( $options, 'main_result', null );
+						global $sportspress_options;
+						$main_result = sportspress_array_value( $sportspress_options, 'main_result', null );
 						$i = 0;
 						foreach ( $data as $event ):
 							$teams = get_post_meta( $event->ID, 'sp_team' );
@@ -882,6 +882,8 @@ if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 	function sportspress_edit_league_table( $columns = array(), $usecolumns = null, $data = array(), $placeholders = array() ) {
 		if ( is_array( $usecolumns ) )
 			$usecolumns = array_filter( $usecolumns );
+			global $sportspress_options;
+			$show_team_logo = sportspress_array_value( $sportspress_options, 'league_table_show_team_logo', false );
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-league-table">
@@ -911,6 +913,7 @@ if ( !function_exists( 'sportspress_edit_league_table' ) ) {
 							?>
 							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 								<td>
+									<?php if ( $show_team_logo ) echo get_the_post_thumbnail( $team_id, 'sportspress-fit-icon' ); ?>
 									<span class="sp-default-name">
 										<span class="sp-default-name-input"><?php echo $default_name; ?></span>
 										<a class="dashicons dashicons-edit sp-edit-name" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>

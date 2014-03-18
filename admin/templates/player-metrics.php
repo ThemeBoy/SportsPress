@@ -7,10 +7,10 @@ if ( !function_exists( 'sportspress_player_metrics' ) ) {
 
 		global $sportspress_countries;
 
-		$options = get_option( 'sportspress' );
+		global $sportspress_options;
 
 		$defaults = array(
-			'show_nationality_flag' => sportspress_array_value( $options, 'player_show_nationality_flag', true ),
+			'show_nationality_flag' => sportspress_array_value( $sportspress_options, 'player_show_nationality_flag', true ),
 		);
 
 		$r = wp_parse_args( $args, $defaults );

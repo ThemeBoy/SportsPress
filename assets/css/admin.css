@@ -281,6 +281,10 @@
 	content: '\f185';
 }
 
+table.widefat.sp-data-table img {
+	vertical-align: top;
+}
+
 table.widefat.sp-data-table th.column-outcome {
 	width: 10em;
 }
