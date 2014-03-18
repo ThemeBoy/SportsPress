@@ -1,7 +1,5 @@
 <?php
 class SportsPressGeneralSettingsPage {
-	private $options;
-
 	public function __construct() {
 		global $sportspress_options;
 		$this->options =& $sportspress_options;

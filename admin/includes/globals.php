@@ -6,6 +6,45 @@ function sportspress_define_globals() {
 	
 	$sportspress_options = (array)get_option( 'sportspress', array() );
 
+	// Text
+	global $sportspress_text_options;
+	
+	$sportspress_text_options = array(
+		'Calendar',
+		'Calendars',
+		'Current Team',
+		'Event',
+		'Events',
+		'Friendly',
+		'League',
+		'Leagues',
+		'League Table',
+		'League Tables',
+		'Nationality',
+		'Number',
+		'Past Teams',
+		'Played',
+		'Player',
+		'Players',
+		'Player List',
+		'Player Lists',
+		'Position',
+		'Positions',
+		'Pos',
+		'Rank',
+		'Roster',
+		'Schedule',
+		'Season',
+		'Seasons',
+		'Staff',
+		'Team',
+		'Teams',
+		'Venue',
+		'Venues',
+	);
+	
+	sort( $sportspress_text_options );
+
 	// Continents
 	global $sportspress_continents;
 
