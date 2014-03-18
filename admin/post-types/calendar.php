@@ -19,7 +19,7 @@ function sportspress_calendar_post_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sportspress_calendar_meta_init',
-		'rewrite' => array( 'slug' => get_option( 'sp_calendar_slug', 'calendar' ) ),
+		'rewrite' => array( 'slug' => get_option( 'sportspress_calendar_slug', 'calendar' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_event',
 		'show_in_admin_bar' => true,
 		'capability_type' => 'sp_calendar'

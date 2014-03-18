@@ -58,6 +58,7 @@ require_once dirname( __FILE__ ) . '/admin/settings/options-event.php';
 require_once dirname( __FILE__ ) . '/admin/settings/options-team.php';
 require_once dirname( __FILE__ ) . '/admin/settings/options-player.php';
 require_once dirname( __FILE__ ) . '/admin/settings/options-text.php';
+require_once dirname( __FILE__ ) . '/admin/settings/options-permalink.php';
 
 // Custom post types
 require_once dirname( __FILE__ ) . '/admin/post-types/separator.php';

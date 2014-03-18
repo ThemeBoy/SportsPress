@@ -21,7 +21,7 @@ function sportspress_season_term_init() {
 		'show_in_nav_menus' => false,
 		'show_tagcloud' => false,
 		'hierarchical' => true,
-		'rewrite' => array( 'slug' => 'season' ),
+		'rewrite' => array( 'slug' => get_option( 'sportspress_season_slug', 'season' ) ),
 	);
 	$object_types = array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' );
 	register_taxonomy( 'sp_season', $object_types, $args );

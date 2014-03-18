@@ -19,7 +19,7 @@ function sportspress_table_post_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sportspress_table_meta_init',
-		'rewrite' => array( 'slug' => get_option( 'sp_table_slug', 'table' ) ),
+		'rewrite' => array( 'slug' => get_option( 'sportspress_table_slug', 'table' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_team',
 		'show_in_admin_bar' => true,
 		'capability_type' => 'sp_table'
