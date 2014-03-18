@@ -89,6 +89,28 @@ if( !function_exists( 'date_diff' ) ) {
 	}
 }
 
+if ( !function_exists( 'sportspress_flush_rewrite_rules' ) ) {
+	function sportspress_flush_rewrite_rules() {
+	    // Flush rewrite rules
+	    sportspress_result_post_init();
+	    sportspress_outcome_post_init();
+	    sportspress_column_post_init();
+	    sportspress_statistic_post_init();
+	    sportspress_event_post_init();
+	    sportspress_calendar_post_init();
+	    sportspress_team_post_init();
+	    sportspress_table_post_init();
+	    sportspress_player_post_init();
+	    sportspress_list_post_init();
+	    sportspress_staff_post_init();
+	    sportspress_venue_term_init();
+	    sportspress_league_term_init();
+	    sportspress_season_term_init();
+	    sportspress_position_term_init();
+	    flush_rewrite_rules();
+	}
+}
+
 if ( !function_exists( 'sportspress_nonce' ) ) {
 	function sportspress_nonce() {
 		echo '<input type="hidden" name="sportspress_nonce" id="sportspress_nonce" value="' . wp_create_nonce( SPORTSPRESS_PLUGIN_BASENAME ) . '" />';
