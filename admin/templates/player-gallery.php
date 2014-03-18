@@ -5,6 +5,8 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 		if ( ! $id )
 			$id = get_the_ID();
 
+		global $sportspress_options;
+
 		$defaults = array(
 			'number' => -1,
 			'orderby' => 'default',
@@ -15,6 +17,7 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 			'columns' => 3,
 			'size' => 'thumbnail',
 			'show_all_players_link' => false,
+			'show_names_on_hover' => sportspress_array_value( $sportspress_options, 'player_gallery_show_names_on_hover', true ),
 		);
 
 		$r = wp_parse_args( $args, $defaults );
@@ -93,7 +96,11 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 
 		foreach( $data as $player_id => $statistics ):
 
-			$caption = get_the_title( $player_id );
+			if ( $r['show_names_on_hover'] ):
+				$caption = get_the_title( $player_id );
+			else:
+				$caption = null;
+			endif;
 
 			$thumbnail = get_the_post_thumbnail( $player_id, $size );
 
@@ -104,7 +111,7 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 					<{$icontag} class='gallery-icon portrait'>"
 						. '<a href="' . get_permalink( $player_id ) . '">' . $thumbnail . '</a>'
 					. "</{$icontag}>";
-				if ( $captiontag && trim($caption) ) {
+				if ( $captiontag && trim( $caption ) ) {
 					$output .= '<a href="' . get_permalink( $player_id ) . '">' . "
 						<{$captiontag} class='wp-caption-text gallery-caption'>
 						" . wptexturize($caption) . "
@@ -128,3 +135,17 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 
 	}
 }
+
+function sportspress_player_gallery_shortcode( $atts ) {
+	if ( isset( $atts['id'] ) ):
+		$id = $atts['id'];
+		unset( $atts['id'] );
+	elseif( isset( $atts[0] ) ):
+		$id = $atts[0];
+		unset( $atts[0] );
+	else:
+		$id = null;
+	endif;
+    return sportspress_player_gallery( $id, $atts );
+}
+add_shortcode('player-gallery', 'sportspress_player_gallery_shortcode');

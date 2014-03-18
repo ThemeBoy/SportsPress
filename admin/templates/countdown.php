@@ -1,8 +1,7 @@
 <?php
 if ( !function_exists( 'sportspress_countdown' ) ) {
-	function sportspress_countdown( $args = array() ) {
+	function sportspress_countdown( $id = null, $args = array() ) {
 
-		$id = sportspress_array_value( $args, 'event', null );
 		$show_league = sportspress_array_value( $args, 'show_league', null );
 
 		if ( $id ):
@@ -35,7 +34,7 @@ if ( !function_exists( 'sportspress_countdown' ) ) {
 			$interval = date_diff( $now, $date );
 
 			$output .= '<p class="countdown sp-countdown"><time datetime="' . $post->post_date . '" data-countdown="' . str_replace( '-', '/', $post->post_date ) . '">' .
-				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->d ) ) . ' <small>' . __( 'days', 'sportspress' ) . '</small></span> ' .
+				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->days ) ) . ' <small>' . __( 'days', 'sportspress' ) . '</small></span> ' .
 				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->h ) ) . ' <small>' . __( 'hrs', 'sportspress' ) . '</small></span> ' .
 				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->i ) ) . ' <small>' . __( 'mins', 'sportspress' ) . '</small></span> ' .
 				'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->s ) ) . ' <small>' . __( 'secs', 'sportspress' ) . '</small></span>' .
@@ -50,3 +49,17 @@ if ( !function_exists( 'sportspress_countdown' ) ) {
 
 	}
 }
+
+function sportspress_countdown_shortcode( $atts ) {
+	if ( isset( $atts['id'] ) ):
+		$id = $atts['id'];
+		unset( $atts['id'] );
+	elseif( isset( $atts[0] ) ):
+		$id = $atts[0];
+		unset( $atts[0] );
+	else:
+		$id = null;
+	endif;
+    return sportspress_countdown( $id, $atts );
+}
+add_shortcode('countdown', 'sportspress_countdown_shortcode');

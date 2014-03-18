@@ -203,3 +203,18 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 
 	}
 }
+
+function sportspress_events_calendar_shortcode( $atts ) {
+	if ( isset( $atts['id'] ) ):
+		$id = $atts['id'];
+		unset( $atts['id'] );
+	elseif( isset( $atts[0] ) ):
+		$id = $atts[0];
+		unset( $atts[0] );
+	else:
+		$id = null;
+	endif;
+	$initial = isset( $atts['initial'] ) ? $atts['initial'] : true;
+    return sportspress_events_calendar( $id, $initial, $atts );
+}
+add_shortcode('events-calendar', 'sportspress_events_calendar_shortcode');

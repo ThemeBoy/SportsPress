@@ -9,10 +9,12 @@ class SP_Widget_Countdown extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? null : $instance['title'], $instance, $this->id_base);
+		$id = empty($instance['id']) ? null : $instance['id'];
+		$show_league = empty($instance['show_league']) ? false : $instance['show_league'];
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		echo sportspress_countdown( $instance );
+		echo sportspress_countdown( $id, array( 'show_league' => $show_league ) );
 		echo $after_widget;
 	}
 
@@ -26,7 +28,7 @@ class SP_Widget_Countdown extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'event' => '', 'show_league' => 0 ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'event' => '', 'show_league' => false ) );
 		$title = strip_tags($instance['title']);
 		$event = intval($instance['event']);
 		$show_league = intval($instance['show_league']);

@@ -46,8 +46,8 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 				break;
 			elseif ( $post_type == 'sp_event' ):
 				$results = get_post_meta( $post_id, 'sp_results', true );
-				$options = get_option( 'sportspress' );
-				$main_result = sportspress_array_value( $options, 'main_result', null );
+				global $sportspress_options;
+				$main_result = sportspress_array_value( $sportspress_options, 'main_result', null );
 				foreach( $teams as $team_id ):
 					if ( ! $team_id ) continue;
 					$team = get_post( $team_id );

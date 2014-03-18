@@ -2,8 +2,8 @@
 if ( !function_exists( 'sportspress_events_list' ) ) {
 	function sportspress_events_list( $id = null, $args = '' ) {
 
-		$options = get_option( 'sportspress' );
-		$main_result = sportspress_array_value( $options, 'main_result', null );
+		global $sportspress_options;
+		$main_result = sportspress_array_value( $sportspress_options, 'main_result', null );
 
 		$defaults = array(
 			'show_all_events_link' => false,
@@ -125,3 +125,17 @@ if ( !function_exists( 'sportspress_events_list' ) ) {
 
 	}
 }
+
+function sportspress_events_list_shortcode( $atts ) {
+	if ( isset( $atts['id'] ) ):
+		$id = $atts['id'];
+		unset( $atts['id'] );
+	elseif( isset( $atts[0] ) ):
+		$id = $atts[0];
+		unset( $atts[0] );
+	else:
+		$id = null;
+	endif;
+    return sportspress_events_list( $id, $atts );
+}
+add_shortcode('events-list', 'sportspress_events_list_shortcode');

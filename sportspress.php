@@ -27,10 +27,7 @@ define( 'SPORTSPRESS_PLUGIN_FILE', __FILE__ );
 require_once dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
 
 // Globals
-require_once dirname( __FILE__ ) . '/admin/globals/continents.php';
-require_once dirname( __FILE__ ) . '/admin/globals/countries.php';
-require_once dirname( __FILE__ ) . '/admin/globals/sports.php';
-require_once dirname( __FILE__ ) . '/admin/globals/formats.php';
+require_once dirname( __FILE__ ) . '/admin/includes/globals.php';
 
 // Functions
 require_once dirname( __FILE__ ) . '/functions.php';
@@ -58,8 +55,9 @@ require_once dirname( __FILE__ ) . '/admin/templates/team-columns.php';
 require_once dirname( __FILE__ ) . '/admin/settings/settings.php';
 require_once dirname( __FILE__ ) . '/admin/settings/options-general.php';
 require_once dirname( __FILE__ ) . '/admin/settings/options-event.php';
-require_once dirname( __FILE__ ) . '/admin/settings/options-table.php';
+require_once dirname( __FILE__ ) . '/admin/settings/options-team.php';
 require_once dirname( __FILE__ ) . '/admin/settings/options-player.php';
+require_once dirname( __FILE__ ) . '/admin/settings/options-text.php';
 
 // Custom post types
 require_once dirname( __FILE__ ) . '/admin/post-types/separator.php';
