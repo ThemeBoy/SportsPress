@@ -21,7 +21,7 @@ function sportspress_position_term_init() {
 		'show_in_nav_menus' => false,
 		'show_tagcloud' => false,
 		'hierarchical' => true,
-		'rewrite' => array( 'slug' => 'position' ),
+		'rewrite' => array( 'slug' => get_option( 'sportspress_position_slug', 'position' ) ),
 	);
 	$object_types = array( 'sp_player', 'sp_statistic', 'sp_metric', 'attachment' );
 	register_taxonomy( 'sp_position', $object_types, $args );

@@ -21,7 +21,7 @@ function sportspress_league_term_init() {
 		'show_in_nav_menus' => false,
 		'show_tagcloud' => false,
 		'hierarchical' => true,
-		'rewrite' => array( 'slug' => 'league' ),
+		'rewrite' => array( 'slug' => get_option( 'sportspress_league_slug', 'league' ) ),
 	);
 	$object_types = array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' );
 	register_taxonomy( 'sp_league', $object_types, $args );

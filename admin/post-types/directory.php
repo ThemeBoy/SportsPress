@@ -19,7 +19,7 @@ function sportspress_directory_post_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sportspress_directory_meta_init',
-		'rewrite' => array( 'slug' => get_option( 'sp_directory_slug', 'list' ) ),
+		'rewrite' => array( 'slug' => get_option( 'sportspress_directory_slug', 'directory' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_player',
 		'show_in_admin_bar' => true,
 		'capability_type' => 'sp_directory'

@@ -19,7 +19,7 @@ function sportspress_staff_post_init() {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'author', 'thumbnail' ),
 		'register_meta_box_cb' => 'sportspress_staff_meta_init',
-		'rewrite' => array( 'slug' => get_option( 'sp_staff_slug', 'staff' ) ),
+		'rewrite' => array( 'slug' => get_option( 'sportspress_staff_slug', 'staff' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_player',
 		'capability_type' => 'sp_staff'
 	);

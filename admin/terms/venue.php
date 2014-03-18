@@ -21,7 +21,7 @@ function sportspress_venue_term_init() {
 		'show_in_nav_menus' => false,
 		'show_tagcloud' => false,
 		'hierarchical' => true,
-		'rewrite' => array( 'slug' => 'venue' ),
+		'rewrite' => array( 'slug' => get_option( 'sportspress_venue_slug', 'venue' ) ),
 	);
 	$object_types = array( 'sp_event', 'sp_calendar', 'attachment' );
 	register_taxonomy( 'sp_venue', $object_types, $args );
