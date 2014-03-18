@@ -10,11 +10,11 @@ if ( !function_exists( 'sportspress_player_statistics' ) ) {
 		$output = '';
 
 		// Loop through statistics for each league
-		foreach ( $leagues as $league ):
-
-			$output .= sportspress_player_league_statistics( $league, $id );
-
-		endforeach;
+		if ( is_array( $leagues ) ):
+			foreach ( $leagues as $league ):
+				$output .= sportspress_player_league_statistics( $league, $id );
+			endforeach;
+		endif;
 
 		return apply_filters( 'sportspress_player_statistics',  $output );
 
