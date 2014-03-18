@@ -1,29 +1,11 @@
 <?php
 class SportsPressTextSettingsPage {
 	public function __construct() {
-		global $sportspress_options;
+		global $sportspress_options, $sportspress_text_options;
 		$this->options =& $sportspress_options;
-
-		$this->strings = array(
-			array( 'league', __( 'League', 'sportspress' ) ),
-			array( 'season', __( 'Season', 'sportspress' ) ),
-			array( 'venue', __( 'Venue', 'sportspress' ) ),
-			array( 'rank', __( 'Rank', 'sportspress' ) ),
-			array( 'hash', '#' ),
-			array( 'player', __( 'Player', 'sportspress' ) ),
-			array( 'team', __( 'Team', 'sportspress' ) ),
-			array( 'pos', __( 'Pos', 'sportspress' ) ),
-			array( 'current_team', __( 'Current Team', 'sportspress' ) ),
-		);
-		usort( $this->strings, array( $this, 'compare_label' ) );
-
+		$this->strings =& $sportspress_text_options;
 		add_action( 'admin_init', array( $this, 'page_init' ), 1 );
 	}
-
-	private function compare_label( $a, $b ) {
-		return strcmp( $a[1], $b[1] );
-	}
-
 
 	function page_init() {
 		register_setting(
@@ -41,8 +23,8 @@ class SportsPressTextSettingsPage {
 
 		foreach ( $this->strings as $string ):
 			add_settings_field(	
-				$string[0],
-				$string[1],
+				sanitize_title( $string ),
+				__( $string, 'sportspress' ),
 				array( $this, 'text_callback' ),
 				'sportspress_text',
 				'text'
@@ -52,10 +34,10 @@ class SportsPressTextSettingsPage {
 
 	public function text_callback( $test ) {
 		$string = array_shift( $this->strings );
-		$key = $string[0];
-		$placeholder = $string[1];
-		$text = sportspress_array_value( $this->options, $key . '_string', null );
-		?><fieldset><input id="sportspress_<?php echo $key; ?>_string" name="sportspress[<?php echo $key; ?>_string]" type="text" value="<?php echo $text; ?>" placeholder="<?php echo $placeholder; ?>"></fieldset><?php
+		$key = sanitize_title( $string );
+		$localized = $string;
+		$text = sportspress_array_value( sportspress_array_value( $this->options, 'text', array() ), $string, null );
+		?><fieldset><input id="sportspress_text_<?php echo $key; ?>" name="sportspress[text][<?php echo $string; ?>]" type="text" class="regular-text code" value="<?php echo $text; ?>" placeholder="<?php echo $localized; ?>"></fieldset><?php
 	}
 }
 

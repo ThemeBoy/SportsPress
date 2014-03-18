@@ -150,6 +150,8 @@ function sportspress_options_validate( $input ) {
 
 		endforeach;
 
+	elseif ( isset( $input['text'] ) ):
+		$input['text'] = array_filter( $input['text'] );
 	endif;
 
 	if ( ! is_array( $input ) )
