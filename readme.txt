@@ -1,4 +1,4 @@
-=== SportsPress - automated league statistics ===
+=== SportsPress - flexible league management ===
 Contributors: ThemeBoy
 Tags: sports, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
