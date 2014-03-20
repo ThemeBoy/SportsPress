@@ -60,7 +60,7 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 			$output .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
 
 			if ( $r['show_team_logo'] )
-				$name = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon' ) . ' ' . $name;
+				$name = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon', array( 'class' => 'team-logo' ) ) . ' ' . $name;
 
 			if ( $r['link_posts'] ):
 				$permalink = get_post_permalink( $team_id );
