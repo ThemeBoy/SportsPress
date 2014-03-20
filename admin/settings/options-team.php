@@ -109,4 +109,4 @@ class SportsPressTeamSettingsPage {
 }
 
 if ( is_admin() )
-	$sportspress_event_settings_page = new SportsPressTeamSettingsPage();
+	$sportspress_team_settings_page = new SportsPressTeamSettingsPage();
