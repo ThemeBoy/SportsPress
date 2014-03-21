@@ -46,9 +46,19 @@ function sportspress_table_meta_init( $post ) {
 
 	remove_meta_box( 'sp_seasondiv', 'sp_table', 'side' );
 	remove_meta_box( 'sp_leaguediv', 'sp_table', 'side' );
+	add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'sportspress_table_shortcode_meta', 'sp_table', 'side', 'default' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_table_team_meta', 'sp_table', 'side', 'default' );
 	add_meta_box( 'sp_columnsdiv', __( 'League Table', 'sportspress' ), 'sportspress_table_columns_meta', 'sp_table', 'normal', 'high' );
 	add_meta_box( 'sp_descriptiondiv', __( 'Description', 'sportspress' ), 'sportspress_table_description_meta', 'sp_table', 'normal', 'high' );
+}
+
+function sportspress_table_shortcode_meta( $post ) {
+	?>
+	<p class="howto">
+		<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
+	</p>
+	<p><input type="text" value="[league-table <?php echo $post->ID; ?>]" readonly="readonly" class="wp-ui-text-highlight code"></p>
+	<?php
 }
 
 function sportspress_table_team_meta( $post, $test ) {

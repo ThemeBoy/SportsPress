@@ -47,10 +47,21 @@ function sportspress_list_meta_init( $post ) {
 
 	remove_meta_box( 'sp_seasondiv', 'sp_list', 'side' );
 	remove_meta_box( 'sp_leaguediv', 'sp_list', 'side' );
-	add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'sportspress_list_format_meta', 'sp_list', 'side', 'high' );
-	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_list_details_meta', 'sp_list', 'side', 'high' );
-	add_meta_box( 'sp_statsdiv', __( 'Player List', 'sportspress' ), 'sportspress_list_stats_meta', 'sp_list', 'normal', 'high' );
+	add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'sportspress_list_shortcode_meta', 'sp_list', 'side', 'default' );
+	add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'sportspress_list_format_meta', 'sp_list', 'side', 'default' );
+	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_list_details_meta', 'sp_list', 'side', 'default' );
+	add_meta_box( 'sp_statsdiv', __( 'Player List', 'sportspress' ), 'sportspress_list_stats_meta', 'sp_list', 'normal', 'default' );
 	add_meta_box( 'sp_descriptiondiv', __( 'Description', 'sportspress' ), 'sportspress_list_description_meta', 'sp_list', 'normal', 'high' );
+}
+
+function sportspress_list_shortcode_meta( $post ) {
+	$the_format = get_post_meta( $post->ID, 'sp_format', true );
+	?>
+	<p class="howto">
+		<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
+	</p>
+	<p><input type="text" value="[player-<?php echo $the_format; ?> <?php echo $post->ID; ?>]" readonly="readonly" class="wp-ui-text-highlight code"></p>
+	<?php
 }
 
 function sportspress_list_format_meta( $post ) {

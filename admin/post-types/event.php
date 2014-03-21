@@ -63,9 +63,9 @@ function sportspress_event_meta_init( $post ) {
 	remove_meta_box( 'sp_leaguediv', 'sp_event', 'side' );
 	remove_meta_box( 'sp_seasondiv', 'sp_event', 'side' );
 
-	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
-	add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'sportspress_event_format_meta', 'sp_event', 'side', 'high' );
-	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_event_details_meta', 'sp_event', 'side', 'high' );
+	add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'default' );
+	add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'sportspress_event_format_meta', 'sp_event', 'side', 'default' );
+	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_event_details_meta', 'sp_event', 'side', 'default' );
 	add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'sportspress_event_team_meta', 'sp_event', 'side', 'default' );
 	add_meta_box( 'sp_videodiv', __( 'Video', 'sportspress' ), 'sportspress_event_video_meta', 'sp_event', 'side', 'low' );
 	if ( sizeof( $teams ) > 0 )

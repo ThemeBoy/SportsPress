@@ -49,10 +49,21 @@ function sportspress_calendar_meta_init( $post ) {
 	remove_meta_box( 'sp_seasondiv', 'sp_calendar', 'side' );
 	remove_meta_box( 'sp_leaguediv', 'sp_calendar', 'side' );
 	remove_meta_box( 'sp_venuediv', 'sp_calendar', 'side' );
+	add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'sportspress_calendar_shortcode_meta', 'sp_calendar', 'side', 'default' );
 	add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'sportspress_calendar_format_meta', 'sp_calendar', 'side', 'default' );
 	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_calendar_details_meta', 'sp_calendar', 'side', 'default' );
 	add_meta_box( 'sp_columnsdiv', __( 'Events', 'sportspress' ), 'sportspress_calendar_events_meta', 'sp_calendar', 'normal', 'high' );
 	add_meta_box( 'sp_descriptiondiv', __( 'Description', 'sportspress' ), 'sportspress_calendar_description_meta', 'sp_calendar', 'normal', 'high' );
+}
+
+function sportspress_calendar_shortcode_meta( $post ) {
+	$the_format = get_post_meta( $post->ID, 'sp_format', true );
+	?>
+	<p class="howto">
+		<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
+	</p>
+	<p><input type="text" value="[events-<?php echo $the_format; ?> <?php echo $post->ID; ?>]" onclick="copy_clipboard( jQuery($this.val())" readonly="readonly" class="wp-ui-text-highlight code"></p>
+	<?php
 }
 
 function sportspress_calendar_format_meta( $post ) {
