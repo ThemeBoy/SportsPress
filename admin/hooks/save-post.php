@@ -58,7 +58,7 @@ function sportspress_save_post( $post_id ) {
 
 			// Update columns array
 			update_post_meta( $post_id, 'sp_columns', sportspress_array_value( $_POST, 'sp_columns', array() ) );
-		
+
 			// Update format
 			update_post_meta( $post_id, 'sp_format', sportspress_array_value( $_POST, 'sp_format', 'calendar' ) );
 
