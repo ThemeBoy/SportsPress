@@ -58,9 +58,12 @@ jQuery(document).ready(function($){
 		var $filters = $(this).closest(".sp-tab-select").siblings(".sp-tab-select");
 		if($filters.length) {
 			$filters.each(function() {
-				filter += ".sp-filter-"+$(this).find("select").val();
+				filterval = $(this).find("select").val();
+				if(filterval !== undefined)
+					filter += ".sp-filter-"+filterval;
 			});
 		}
+		console.log( filter );
 		$panel = $(this).closest(".sp-tab-select").siblings(".sp-tab-panel")
 		$panel.find(".sp-post").hide(0, function() {
 			$(this).find("input").prop("disabled", true);
