@@ -14,13 +14,6 @@ class SportsPressTeamSettingsPage {
 		);
 		
 		add_settings_section(
-			'team',
-			__( 'Team Options', 'sportspress' ),
-			'',
-			'sportspress_teams'
-		);
-		
-		add_settings_section(
 			'table',
 			__( 'League Table Options', 'sportspress' ),
 			'',
@@ -28,7 +21,7 @@ class SportsPressTeamSettingsPage {
 		);
 		
 		add_settings_field(	
-			'table',
+			'teams',
 			__( 'Teams', 'sportspress' ),
 			array( $this, 'tables_callback' ),
 			'sportspress_teams',
