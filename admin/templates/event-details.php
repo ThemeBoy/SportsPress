@@ -25,7 +25,7 @@ if ( !function_exists( 'sportspress_event_details' ) ) {
 		$output = '<h3>' . __( 'Details', 'sportspress' ) . '</h3>';
 
 		$output .= '<div class="sp-table-wrapper">' .
-			'<table class="sp-event-details sp-data-table sp-responsive-table"><tbody>';
+			'<table class="sp-event-details sp-data-table"><tbody>';
 		
 		$i = 0;
 

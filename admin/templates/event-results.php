@@ -26,7 +26,7 @@ if ( !function_exists( 'sportspress_event_results' ) ) {
 
 				$table_rows .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
-				$table_rows .= '<td class="column_name">' . get_the_title( $team_id ) . '</td>';
+				$table_rows .= '<td class="data-name">' . get_the_title( $team_id ) . '</td>';
 
 				foreach( $result_labels as $key => $label ):
 					if ( $key == 'name' )
