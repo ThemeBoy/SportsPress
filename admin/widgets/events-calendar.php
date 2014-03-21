@@ -15,7 +15,7 @@ class SportsPress_Widget_Events_Calendar extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 		echo '<div id="calendar_wrap">';
-		echo sportspress_events_calendar( $id, true, array( 'show_all_events_link' => $show_all_events_link )  );
+		echo sportspress_events_calendar( $id, true, array( 'caption_tag' => 'caption', 'show_all_events_link' => $show_all_events_link )  );
 		echo '</div>';
 		echo $after_widget;
 	}
