@@ -37,6 +37,7 @@ function sportspress_define_globals() {
 		'Season',
 		'Seasons',
 		'Staff',
+		'Substitute',
 		'Team',
 		'Teams',
 		'Venue',

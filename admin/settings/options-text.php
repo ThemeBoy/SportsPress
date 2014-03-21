@@ -37,7 +37,7 @@ class SportsPressTextSettingsPage {
 		$key = sanitize_title( $string );
 		$localized = $string;
 		$text = sportspress_array_value( sportspress_array_value( $this->options, 'text', array() ), $string, null );
-		?><fieldset><input id="sportspress_text_<?php echo $key; ?>" name="sportspress[text][<?php echo $string; ?>]" type="text" class="regular-text code" value="<?php echo $text; ?>" placeholder="<?php echo $localized; ?>"></fieldset><?php
+		?><fieldset><input id="sportspress_text_<?php echo $key; ?>" name="sportspress[text][<?php echo $string; ?>]" type="text" class="regular-text" value="<?php echo $text; ?>" placeholder="<?php echo $localized; ?>"></fieldset><?php
 	}
 }
 
