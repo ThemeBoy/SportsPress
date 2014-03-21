@@ -10,12 +10,12 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 		$stats = (array)get_post_meta( $id, 'sp_players', true );
 		$statistic_labels = sportspress_get_var_labels( 'sp_statistic' );
 
-		$totals = array();
-
 		$output = '';
 
 		foreach( $teams as $key => $team_id ):
 			if ( ! $team_id ) continue;
+
+			$totals = array();
 
 			// Get results for players in the team
 			$players = sportspress_array_between( (array)get_post_meta( $id, 'sp_player', false ), 0, $key );
