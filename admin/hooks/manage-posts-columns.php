@@ -68,7 +68,9 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 						endif;
 
 						if ( $team_result != null ):
-							echo '<strong class="result">' . $team_result . '</strong> ';
+							unset( $team_results['outcome'] );
+							$team_results = implode( ' | ', $team_results );
+							echo '<a class="result tips" title="' . $team_results . '" href="' . get_edit_post_link( $post_id ) . '">' . $team_result . '</a> ';
 						endif;
 
 						echo $team->post_title;

@@ -152,6 +152,10 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 
 == Changelog ==
 
+= 0.6.1 =
+* Feature - Display full event results on hover over main team result in admin.
+* Feature - Add option to choose delimiter to use between team names in event titles.
+
 = 0.6 =
 * Feature - New events shortcodes: countdown, events-calendar, and events-list.
 * Feature - New teams shortcode: league-table.
