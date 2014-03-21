@@ -852,7 +852,9 @@ if ( !function_exists( 'sportspress_edit_calendar_table' ) ) {
 											endif;
 
 											if ( $team_result != null ):
-												echo '<strong class="result">' . $team_result . '</strong> ';
+												unset( $team_results['outcome'] );
+												$team_results = implode( ' | ', $team_results );
+												echo '<a class="result tips" title="' . $team_results . '" href="' . get_edit_post_link( $event->ID ) . '">' . $team_result . '</a> ';
 											endif;
 
 											echo $name . '<br>';

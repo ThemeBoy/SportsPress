@@ -87,8 +87,8 @@
 	margin-bottom: 1px !important;
 }
 
-.fixed .column-sp_team strong.result,
-.sp-calendar-table strong.result {
+.fixed .column-sp_team .result,
+.sp-calendar-table .result {
 	background: #888;
 	color: #fff;
 	font-size: 11px;
@@ -100,6 +100,12 @@
 	display: inline-block;
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
+	cursor: pointer;
+}
+
+.fixed .column-sp_team .result:hover,
+.sp-calendar-table .result:hover {
+	background: #2ea2cc;
 }
 
 .fixed .column-sp_format,
@@ -452,7 +458,7 @@ table.widefat select.sp-outcome {
 /* TipTip */
 
 .tips {
-	cursor: help !important;
+	cursor: help;
 }
 
 #tiptip_holder {
