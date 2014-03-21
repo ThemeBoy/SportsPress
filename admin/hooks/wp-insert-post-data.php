@@ -1,5 +1,6 @@
 <?php
 function sportspress_insert_post_data( $data, $postarr ) {
+	global $sportspress_options;
   
 	if( $data['post_type'] == 'sp_event' && $data['post_title'] == '' ):
 
@@ -10,7 +11,7 @@ function sportspress_insert_post_data( $data, $postarr ) {
 				$team_names[] = get_the_title( $team );
 			endforeach;
 
-			$data['post_title'] = implode( ' ' . __( 'vs', 'sportspress' ) . ' ', $team_names );
+			$data['post_title'] = implode( ' ' . sportspress_array_value( $sportspress_options, 'event_teams_delimiter', 'vs' ) . ' ', $team_names );
 
 	endif;
 

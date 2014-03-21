@@ -21,6 +21,14 @@ class SportsPressEventSettingsPage {
 		);
 		
 		add_settings_field(	
+			'delimiter',
+			__( 'Delimiter', 'sportspress' ),
+			array( $this, 'delimiter_callback' ),
+			'sportspress_events',
+			'event'
+		);
+		
+		add_settings_field(	
 			'results',
 			__( 'Results', 'sportspress' ),
 			array( $this, 'results_callback' ),
@@ -35,6 +43,21 @@ class SportsPressEventSettingsPage {
 			'sportspress_events',
 			'event'
 		);
+	}
+
+	function delimiter_callback() {
+		$teams_delimiter = sportspress_array_value( $this->options, 'event_teams_delimiter', __( 'vs', 'sportspress' ) );
+		?>
+		<fieldset class="sp-custom-input-wrapper">
+			<legend class="screen-reader-text"><span><?php _e( 'Delimiter', 'sportspress' ); ?></span></legend>
+			<?php $delimiters = array( 'vs', 'v', '—', '/' ); ?>
+			<?php foreach ( $delimiters as $delimiter ): ?>
+				<label title="<?php echo $delimiter; ?>"><input type="radio" class="preset" name="sportspress_event_teams_delimiter_preset" value="<?php echo $delimiter; ?>" data-example="<?php _e( 'Team', 'sportspress' ); ?> <?php echo $delimiter; ?> <?php _e( 'Team', 'sportspress' ); ?>" <?php checked( $delimiter, $teams_delimiter ); ?>> <span><?php _e( 'Team', 'sportspress' ); ?> <?php echo $delimiter; ?> <?php _e( 'Team', 'sportspress' ); ?></span></label><br>
+			<?php endforeach; ?>
+			<label><input type="radio" class="preset" name="sportspress_event_teams_delimiter_preset" value="\c\u\s\t\o\m" <?php checked( false, in_array( $teams_delimiter, $delimiters ) ); ?>> <?php _e( 'Custom:', 'sportspress' ); ?> </label><input type="text" class="small-text value" name="sportspress[event_teams_delimiter]" value="<?php echo $teams_delimiter; ?>">
+			<span class="example"><?php _e( 'Team', 'sportspress' ); ?> <?php echo $teams_delimiter; ?> <?php _e( 'Team', 'sportspress' ); ?></span>
+		</fieldset>
+		<?php
 	}
 
 	function results_callback() {
