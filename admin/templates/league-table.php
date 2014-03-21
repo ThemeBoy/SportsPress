@@ -30,6 +30,9 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 
 		$columns = sportspress_array_value( $r, 'columns', null );
 
+		if ( ! $columns )
+			$columns = get_post_meta( $id, 'sp_columns', true );
+
 		if ( ! is_array( $columns ) )
 			$columns = explode( ',', $columns );
 
