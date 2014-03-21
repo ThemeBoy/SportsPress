@@ -40,7 +40,8 @@ function sportspress_manage_posts_custom_column( $column, $post_id ) {
 			break;
 		case 'sp_team':
 			$post_type = get_post_type( $post );
-			$teams = get_post_meta( $post_id, 'sp_team', false );
+			$teams = (array)get_post_meta( $post_id, 'sp_team', false );
+			$teams = array_filter( $teams );
 			if ( empty( $teams ) ):
 				echo '&mdash;';
 				break;
