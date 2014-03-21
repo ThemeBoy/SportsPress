@@ -156,6 +156,7 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 * Feature - New events shortcodes: countdown, events-calendar, and events-list.
 * Feature - New teams shortcode: league-table.
 * Feature - New players shortcodes: player-list and player-gallery.
+* Feature - Display available shortcodes in post edit screen.
 * Feature - Add new settings page to change default text output.
 * Feature - Add new section to permalinks settings to change post and term slugs.
 * Tweak - Display teams as link list in admin page for league table teams columns.
@@ -163,6 +164,7 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 * Fix - Check if player belongs to leagues to avoid warnings in player profile.
 * Fix - Total player statistics calculation in events.
 * Fix - Responsive tables in event details and outcomes.
+* Fix - Display players from all seasons or leagues when none have been created.
 
 = 0.5 =
 * Feature - Import tool added for importing events from CSV file.
