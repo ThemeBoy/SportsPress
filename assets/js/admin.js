@@ -316,6 +316,15 @@ jQuery(document).ready(function($){
 		$(this).siblings("label").find(".preset").prop("checked", true);
 	});
 
+	// Adjust example field when custom preset is entered
+	$(".sp-custom-input-wrapper .value").on("keyup", function() {
+		val = $(this).val();
+		if ( val === undefined ) return true;
+		format = $(this).attr("data-example-format");
+		example = format.replace("__val__", val);
+		$(this).siblings(".example").html(example);
+	});
+
 	// Remove slug editor in quick edit for slug-sensitive post types
 	$(".inline-edit-sp_result, .inline-edit-sp_outcome, .inline-edit-sp_column, .inline-edit-sp_statistic").find("input[name=post_name]").closest("label").remove();
 
