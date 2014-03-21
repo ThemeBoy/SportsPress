@@ -49,7 +49,7 @@ function sportspress_calendar_meta_init( $post ) {
 	remove_meta_box( 'sp_seasondiv', 'sp_calendar', 'side' );
 	remove_meta_box( 'sp_leaguediv', 'sp_calendar', 'side' );
 	remove_meta_box( 'sp_venuediv', 'sp_calendar', 'side' );
-	add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'sportspress_calendar_format_meta', 'sp_calendar', 'side', 'high' );
+	add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'sportspress_calendar_format_meta', 'sp_calendar', 'side', 'default' );
 	add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'sportspress_calendar_details_meta', 'sp_calendar', 'side', 'default' );
 	add_meta_box( 'sp_columnsdiv', __( 'Events', 'sportspress' ), 'sportspress_calendar_events_meta', 'sp_calendar', 'normal', 'high' );
 	add_meta_box( 'sp_descriptiondiv', __( 'Description', 'sportspress' ), 'sportspress_calendar_description_meta', 'sp_calendar', 'normal', 'high' );
