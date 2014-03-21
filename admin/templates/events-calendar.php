@@ -9,7 +9,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 			return;
 
 		$defaults = array(
-			'caption_tag' => 'caption',
+			'caption_tag' => 'h4',
 			'show_all_events_link' => false,
 		);
 
