@@ -13,12 +13,14 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 			'show_full_table_link' => false,
 			'show_team_logo' => sportspress_array_value( $sportspress_options, 'league_table_show_team_logo', false ),
 			'link_posts' => sportspress_array_value( $sportspress_options, 'league_table_link_posts', false ),
+			'sortable' => sportspress_array_value( $sportspress_options, 'league_table_sortable', true ),
+			'responsive' => sportspress_array_value( $sportspress_options, 'league_table_responsive', true ),
 		);
 
 		$r = wp_parse_args( $args, $defaults );
 		
 		$output = '<div class="sp-table-wrapper">' .
-			'<table class="sp-league-table sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
+			'<table class="sp-league-table sp-data-table' . ( $r['responsive'] ? ' sp-responsive-table' : '' ) . ( $r['sortable'] ? ' sp-sortable-table' : '' ) . '">' . '<thead>' . '<tr>';
 
 		$data = sportspress_get_league_table_data( $id );
 
