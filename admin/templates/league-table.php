@@ -36,7 +36,7 @@ if ( !function_exists( 'sportspress_league_table' ) ) {
 		if ( ! is_array( $columns ) )
 			$columns = explode( ',', $columns );
 
-		$output .= '<th class="data-number">' . __( 'Pos', 'sportspress' ) . '</th>';
+		$output .= '<th class="data-rank">' . __( 'Pos', 'sportspress' ) . '</th>';
 
 		foreach( $labels as $key => $label ):
 			if ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) )
