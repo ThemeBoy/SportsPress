@@ -35,7 +35,7 @@ require_once dirname( __FILE__ ) . '/functions.php';
 // Templates
 require_once dirname( __FILE__ ) . '/admin/templates/countdown.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-details.php';
-require_once dirname( __FILE__ ) . '/admin/templates/event-players.php';
+require_once dirname( __FILE__ ) . '/admin/templates/event-statistics.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-results.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-staff.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-venue.php';
