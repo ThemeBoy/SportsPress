@@ -77,6 +77,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		/* translators: Calendar caption: 1: month name, 2: 4-digit year */
 		$calendar_caption = _x('%1$s %2$s', 'calendar caption', 'sportspress');
 		$calendar_output = '
+		<div class="sp-calendar-wrapper">
 		<table id="wp-calendar" class="sp-calendar sp-events-calendar">
 		<' . $caption_tag . ' class="sp-table-caption">' . sprintf($calendar_caption, $wp_locale->get_month($thismonth), date('Y', $unixmonth)) . '</' . $caption_tag . '>
 		<thead>
@@ -194,7 +195,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		if ( $pad != 0 && $pad != 7 )
 			$calendar_output .= "\n\t\t".'<td class="pad" colspan="'. esc_attr($pad) .'">&nbsp;</td>';
 
-		$calendar_output .= "\n\t</tr>\n\t</tbody>\n\t</table>";
+		$calendar_output .= "\n\t</tr>\n\t</tbody>\n\t</table>\n\t</div>";
 
 		if ( $id && $r['show_all_events_link'] )
 			$calendar_output .= '<a class="sp-calendar-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
