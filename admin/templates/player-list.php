@@ -14,12 +14,14 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 			'order' => 'ASC',
 			'show_all_players_link' => false,
 			'link_posts' => sportspress_array_value( $sportspress_options, 'player_list_link_posts', true ),
+			'sortable' => sportspress_array_value( $sportspress_options, 'player_list_sortable', true ),
+			'responsive' => sportspress_array_value( $sportspress_options, 'player_list_responsive', true ),
 		);
 
 		$r = wp_parse_args( $args, $defaults );
 
 		$output = '<div class="sp-table-wrapper">' .
-			'<table class="sp-player-list sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
+			'<table class="sp-player-list sp-data-table' . ( $r['responsive'] ? ' sp-responsive-table' : '' ) . ( $r['sortable'] ? ' sp-sortable-table' : '' ) . '">' . '<thead>' . '<tr>';
 
 		$data = sportspress_get_player_list_data( $id );
 

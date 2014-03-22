@@ -24,22 +24,25 @@ function viewport() {
 	/* Data Tables */
 
 	if (viewport().width > 640) {
-		$(".sp-league-table, .sp-event-statistics, .sp-player-list").dataTable({
-			"aaSorting": [],
-			"bAutoWidth": false,
-			"bFilter": false,
-			"bInfo": false,
-			"bPaginate": false,
-			"bSort": true,
-		    "oLanguage": {
-		      "oAria": {
-		        "sSortAscending": "",
-		        "sSortDescending": ""
-		      }
-		    },
-		    "aoColumnDefs": [
-		      { "sType": "numeric", "aTargets": [ 0 ] },
-		    ]
+		$(".sp-league-table, .sp-event-statistics, .sp-player-list").each(function() {
+			sort = $(this).hasClass("sp-sortable-table");
+			$(this).dataTable({
+				"aaSorting": [],
+				"bAutoWidth": false,
+				"bFilter": false,
+				"bInfo": false,
+				"bPaginate": false,
+				"bSort": sort,
+			    "oLanguage": {
+			      "oAria": {
+			        "sSortAscending": "",
+			        "sSortDescending": ""
+			      }
+			    },
+			    "aoColumnDefs": [
+			      { "sType": "numeric", "aTargets": [ 0 ] },
+			    ]
+			});
 		});
 	}
 

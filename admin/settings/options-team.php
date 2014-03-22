@@ -21,9 +21,17 @@ class SportsPressTeamSettingsPage {
 		);
 		
 		add_settings_field(	
+			'table',
+			__( 'Table', 'sportspress' ),
+			array( $this, 'table_callback' ),
+			'sportspress_teams',
+			'table'
+		);
+		
+		add_settings_field(	
 			'teams',
 			__( 'Teams', 'sportspress' ),
-			array( $this, 'tables_callback' ),
+			array( $this, 'teams_callback' ),
 			'sportspress_teams',
 			'table'
 		);
@@ -37,7 +45,28 @@ class SportsPressTeamSettingsPage {
 		);
 	}
 
-	function tables_callback() {
+	function table_callback() {
+		$responsive = sportspress_array_value( $this->options, 'league_table_responsive', true );
+		$sortable = sportspress_array_value( $this->options, 'league_table_sortable', true );
+		?>
+		<fieldset>
+			<label for="sportspress_league_table_responsive">
+				<input id="sportspress_league_table_responsive_default" name="sportspress[league_table_responsive]" type="hidden" value="0">
+				<input id="sportspress_league_table_responsive" name="sportspress[league_table_responsive]" type="checkbox" value="1" <?php checked( $responsive ); ?>>
+				<?php _e( 'Responsive', 'sportspress' ); ?>
+			</label>
+		</fieldset>
+		<fieldset>
+			<label for="sportspress_league_table_sortable">
+				<input id="sportspress_league_table_sortable_default" name="sportspress[league_table_sortable]" type="hidden" value="0">
+				<input id="sportspress_league_table_sortable" name="sportspress[league_table_sortable]" type="checkbox" value="1" <?php checked( $sortable ); ?>>
+				<?php _e( 'Sortable', 'sportspress' ); ?>
+			</label>
+		</fieldset>
+		<?php
+	}
+
+	function teams_callback() {
 		$show_team_logo = sportspress_array_value( $this->options, 'league_table_show_team_logo', false );
 		$link_posts = sportspress_array_value( $this->options, 'league_table_link_posts', false );
 		?>
