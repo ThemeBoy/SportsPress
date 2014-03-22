@@ -24,7 +24,7 @@ class SportsPressTextSettingsPage {
 		foreach ( $this->strings as $string ):
 			add_settings_field(	
 				sanitize_title( $string ),
-				__( $string, 'sportspress' ),
+				$string,
 				array( $this, 'text_callback' ),
 				'sportspress_text',
 				'text'
@@ -35,9 +35,8 @@ class SportsPressTextSettingsPage {
 	public function text_callback( $test ) {
 		$string = array_shift( $this->strings );
 		$key = sanitize_title( $string );
-		$localized = $string;
 		$text = sportspress_array_value( sportspress_array_value( $this->options, 'text', array() ), $string, null );
-		?><fieldset><input id="sportspress_text_<?php echo $key; ?>" name="sportspress[text][<?php echo $string; ?>]" type="text" class="regular-text" value="<?php echo $text; ?>" placeholder="<?php echo $localized; ?>"></fieldset><?php
+		?><fieldset><input id="sportspress_text_<?php echo $key; ?>" name="sportspress[text][<?php echo $string; ?>]" type="text" class="regular-text" value="<?php echo $text; ?>" placeholder="<?php echo $string; ?>"></fieldset><?php
 	}
 }
 

@@ -70,14 +70,13 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 				$translated_text = $venue->name;
 			endif;
 		endif;
-	endif;
-
-	if ( isset( $sportspress_options['text'] ) ):
-		foreach( $sportspress_options['text'] as $key => $value ):
-			if ( $untranslated_text == $key ):
-				$translated_text = $value;
-			endif;
-		endforeach;
+		if ( isset( $sportspress_options['text'] ) ):
+			foreach( $sportspress_options['text'] as $key => $value ):
+				if ( $translated_text == $key ):
+					$translated_text = $value;
+				endif;
+			endforeach;
+		endif;
 	endif;
 	
 	return $translated_text;
