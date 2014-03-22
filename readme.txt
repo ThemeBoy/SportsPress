@@ -4,7 +4,7 @@ Tags: sports, sports journalism, teams, team management, fixtures, results, stan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 0.6
+Stable tag: 0.6.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,9 @@ SportsPress is a fully configurable sports plugin that seamlessly automates leag
 
 == Description ==
 
-Add schedules, results, league tables, player profiles and statistics to your team or league site with SportsPress. It uses core WordPress markup syntax and is designed to work with virtually every theme. Several language translations are included.
+Created by the developers at [ThemeBoy](http://themeboy.com/) and featured on Softpedia as [Script of the Day](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml), SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully configurable league website.
+
+Add schedules, results, league tables, player profiles and statistics to your team or league site with SportsPress. It uses core WordPress markup syntax and is designed to work with virtually every theme. Custom shortcodes, CSV importers, and several language translations are included.
 
 = Features =
 * Team Profiles
@@ -155,6 +157,7 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 = 0.6.1 =
 * Feature - Display full event results on hover over main team result in admin.
 * Feature - Add option to choose delimiter to use between team names in event titles.
+* Tweak - Adjust text options to modify front-end only.
 
 = 0.6 =
 * Feature - New events shortcodes: countdown, events-calendar, and events-list.
