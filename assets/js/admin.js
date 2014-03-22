@@ -37,8 +37,8 @@ jQuery(document).ready(function($){
 	});
 
 	// Calendar affects view all link checkbox in widget options
-	$("body.widgets-php").on("change", ".sp-events-calendar-select", function() {
-		$el = $(this).closest(".widget-content").find(".sp-events-calendar-show-all-toggle");
+	$("body.widgets-php").on("change", ".sp-event-calendar-select", function() {
+		$el = $(this).closest(".widget-content").find(".sp-event-calendar-show-all-toggle");
 		if($(this).val() == 0)
 			$el.hide();
 		else

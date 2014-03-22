@@ -1,6 +1,6 @@
 <?php
-if ( !function_exists( 'sportspress_events_list' ) ) {
-	function sportspress_events_list( $id = null, $args = '' ) {
+if ( !function_exists( 'sportspress_event_list' ) ) {
+	function sportspress_event_list( $id = null, $args = '' ) {
 
 		global $sportspress_options;
 		$main_result = sportspress_array_value( $sportspress_options, 'main_result', null );
@@ -12,7 +12,7 @@ if ( !function_exists( 'sportspress_events_list' ) ) {
 		$r = wp_parse_args( $args, $defaults );
 
 		$output = '<div class="sp-table-wrapper">' .
-			'<table class="sp-events-list sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
+			'<table class="sp-event-list sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
 
 		list( $data, $usecolumns ) = sportspress_get_calendar_data( $id, true );
 
@@ -121,12 +121,12 @@ if ( !function_exists( 'sportspress_events_list' ) ) {
 
 		$output .= '</div>';
 
-		return apply_filters( 'sportspress_events_list',  $output );
+		return apply_filters( 'sportspress_event_list',  $output );
 
 	}
 }
 
-function sportspress_events_list_shortcode( $atts ) {
+function sportspress_event_list_shortcode( $atts ) {
 	if ( isset( $atts['id'] ) ):
 		$id = $atts['id'];
 		unset( $atts['id'] );
@@ -136,6 +136,7 @@ function sportspress_events_list_shortcode( $atts ) {
 	else:
 		$id = null;
 	endif;
-    return sportspress_events_list( $id, $atts );
+    return sportspress_event_list( $id, $atts );
 }
-add_shortcode('events-list', 'sportspress_events_list_shortcode');
+add_shortcode('event-list', 'sportspress_event_list_shortcode');
+add_shortcode('events-list', 'sportspress_event_list_shortcode');

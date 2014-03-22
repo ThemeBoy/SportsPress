@@ -1,6 +1,6 @@
 <?php
-if ( !function_exists( 'sportspress_events_calendar' ) ) {
-	function sportspress_events_calendar( $id = null, $initial = true, $args = array() ) {
+if ( !function_exists( 'sportspress_event_calendar' ) ) {
+	function sportspress_event_calendar( $id = null, $initial = true, $args = array() ) {
 	
 		global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
 
@@ -78,7 +78,7 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		$calendar_caption = _x('%1$s %2$s', 'calendar caption', 'sportspress');
 		$calendar_output = '
 		<div class="sp-calendar-wrapper">
-		<table id="wp-calendar" class="sp-calendar sp-events-calendar">
+		<table id="wp-calendar" class="sp-calendar sp-event-calendar">
 		<' . $caption_tag . ' class="sp-table-caption">' . sprintf($calendar_caption, $wp_locale->get_month($thismonth), date('Y', $unixmonth)) . '</' . $caption_tag . '>
 		<thead>
 		<tr>';
@@ -200,12 +200,12 @@ if ( !function_exists( 'sportspress_events_calendar' ) ) {
 		if ( $id && $r['show_all_events_link'] )
 			$calendar_output .= '<a class="sp-calendar-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
 
-		return apply_filters( 'sportspress_events_calendar',  $calendar_output );
+		return apply_filters( 'sportspress_event_calendar',  $calendar_output );
 
 	}
 }
 
-function sportspress_events_calendar_shortcode( $atts ) {
+function sportspress_event_calendar_shortcode( $atts ) {
 	if ( isset( $atts['id'] ) ):
 		$id = $atts['id'];
 		unset( $atts['id'] );
@@ -216,6 +216,7 @@ function sportspress_events_calendar_shortcode( $atts ) {
 		$id = null;
 	endif;
 	$initial = isset( $atts['initial'] ) ? $atts['initial'] : true;
-    return sportspress_events_calendar( $id, $initial, $atts );
+    return sportspress_event_calendar( $id, $initial, $atts );
 }
-add_shortcode('events-calendar', 'sportspress_events_calendar_shortcode');
+add_shortcode('event-calendar', 'sportspress_event_calendar_shortcode');
+add_shortcode('events-calendar', 'sportspress_event_calendar_shortcode');
