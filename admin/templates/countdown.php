@@ -16,7 +16,7 @@ if ( !function_exists( 'sportspress_countdown' ) ) {
 		$output = '';
 
 		if ( isset( $post ) ):
-			$output .= '<div id="sp_countdown_wrap">';
+			$output .= '<div id="sp-countdown-wrapper">';
 			$output .= '<h3 class="event-name"><a href="' . get_permalink( $post->ID ) . '">' . $post->post_title . '</a></h3>';
 
 			if ( $show_league ):
