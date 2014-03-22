@@ -1,6 +1,6 @@
 <?php
 function sportspress_widget_text( $content ) {
-	if ( ! preg_match( '/\[[\r\n\t ]*(countdown|league-table|events-(calendar|list)|player-(list|gallery))?[\r\n\t ].*?\]/', $content ) )
+	if ( ! preg_match( '/\[[\r\n\t ]*(countdown|league-table|event(s)-(calendar|list)|player-(list|gallery))?[\r\n\t ].*?\]/', $content ) )
 		return $content;
 
 	$content = do_shortcode( $content );

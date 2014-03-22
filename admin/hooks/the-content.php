@@ -38,10 +38,10 @@ function sportspress_default_calendar_content( $content ) {
         $format = get_post_meta( $id, 'sp_format', true );
         switch ( $format ):
             case 'list':
-                $calendar = sportspress_events_list( $id );
+                $calendar = sportspress_event_list( $id );
                 break;
             default:
-                $calendar = sportspress_events_calendar( $id, false );
+                $calendar = sportspress_event_calendar( $id, false );
                 break;
             endswitch;
         $content = $calendar . $content;

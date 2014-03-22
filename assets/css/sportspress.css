@@ -33,20 +33,20 @@
 }
 
 /* Events Calendar */
-.sp-events-calendar tbody td, .sp-events-calendar thead th {
+.sp-event-calendar tbody td, .sp-event-calendar thead th {
 	text-align: center;
 }
-.sp-events-calendar #next {
+.sp-event-calendar #next {
 	text-align: right;
 }
-.sp-events-calendar #prev {
+.sp-event-calendar #prev {
 	text-align: left;
 }
 /* Events List */
-.sp-events-list .column-article {
+.sp-event-list .column-article {
 	white-space: nowrap;
 }
-.sp-events-list .column-article a .dashicons {
+.sp-event-list .column-article a .dashicons {
 	padding-right: 3px;
 	text-decoration: none;
 }
