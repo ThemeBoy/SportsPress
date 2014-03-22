@@ -15,7 +15,7 @@ class SportsPressTeamSettingsPage {
 		
 		add_settings_section(
 			'table',
-			__( 'League Table Options', 'sportspress' ),
+			__( 'League Tables', 'sportspress' ),
 			'',
 			'sportspress_teams'
 		);
@@ -24,14 +24,6 @@ class SportsPressTeamSettingsPage {
 			'table',
 			__( 'Table', 'sportspress' ),
 			array( $this, 'table_callback' ),
-			'sportspress_teams',
-			'table'
-		);
-		
-		add_settings_field(	
-			'teams',
-			__( 'Teams', 'sportspress' ),
-			array( $this, 'teams_callback' ),
 			'sportspress_teams',
 			'table'
 		);
@@ -48,6 +40,8 @@ class SportsPressTeamSettingsPage {
 	function table_callback() {
 		$responsive = sportspress_array_value( $this->options, 'league_table_responsive', true );
 		$sortable = sportspress_array_value( $this->options, 'league_table_sortable', true );
+		$show_team_logo = sportspress_array_value( $this->options, 'league_table_show_team_logo', false );
+		$link_posts = sportspress_array_value( $this->options, 'league_table_link_posts', false );
 		?>
 		<fieldset>
 			<label for="sportspress_league_table_responsive">
@@ -63,13 +57,6 @@ class SportsPressTeamSettingsPage {
 				<?php _e( 'Sortable', 'sportspress' ); ?>
 			</label>
 		</fieldset>
-		<?php
-	}
-
-	function teams_callback() {
-		$show_team_logo = sportspress_array_value( $this->options, 'league_table_show_team_logo', false );
-		$link_posts = sportspress_array_value( $this->options, 'league_table_link_posts', false );
-		?>
 		<fieldset>
 			<label for="sportspress_league_table_show_team_logo">
 				<input id="sportspress_league_table_show_team_logo_default" name="sportspress[league_table_show_team_logo]" type="hidden" value="0">
@@ -81,7 +68,7 @@ class SportsPressTeamSettingsPage {
 			<label for="sportspress_league_table_link_posts">
 				<input id="sportspress_league_table_link_posts_default" name="sportspress[league_table_link_posts]" type="hidden" value="0">
 				<input id="sportspress_league_table_link_posts" name="sportspress[league_table_link_posts]" type="checkbox" value="1" <?php checked( $link_posts ); ?>>
-				<?php _e( 'Display teams as links', 'sportspress' ); ?>
+				<?php _e( 'Link teams', 'sportspress' ); ?>
 			</label>
 		</fieldset>
 		<?php

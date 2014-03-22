@@ -15,14 +15,14 @@ class SportsPressPlayerSettingsPage {
 		
 		add_settings_section(
 			'player',
-			__( 'Player Options', 'sportspress' ),
+			__( 'Players', 'sportspress' ),
 			'',
 			'sportspress_players'
 		);
 		
 		add_settings_section(
 			'list',
-			__( 'Player List Options', 'sportspress' ),
+			__( 'Player Lists', 'sportspress' ),
 			'',
 			'sportspress_players'
 		);
@@ -47,14 +47,6 @@ class SportsPressPlayerSettingsPage {
 			'gallery',
 			__( 'Gallery', 'sportspress' ),
 			array( $this, 'gallery_callback' ),
-			'sportspress_players',
-			'list'
-		);
-		
-		add_settings_field(	
-			'players',
-			__( 'Players', 'sportspress' ),
-			array( $this, 'players_callback' ),
 			'sportspress_players',
 			'list'
 		);
@@ -92,6 +84,7 @@ class SportsPressPlayerSettingsPage {
 	function list_callback() {
 		$responsive = sportspress_array_value( $this->options, 'player_list_responsive', true );
 		$sortable = sportspress_array_value( $this->options, 'player_list_sortable', true );
+		$link_posts = sportspress_array_value( $this->options, 'player_list_link_posts', true );
 		?>
 		<fieldset>
 			<label for="sportspress_player_list_responsive">
@@ -107,6 +100,13 @@ class SportsPressPlayerSettingsPage {
 				<?php _e( 'Sortable', 'sportspress' ); ?>
 			</label>
 		</fieldset>
+		<fieldset>
+			<label for="sportspress_player_list_link_posts">
+				<input id="sportspress_player_list_link_posts_default" name="sportspress[player_list_link_posts]" type="hidden" value="0">
+				<input id="sportspress_player_list_link_posts" name="sportspress[player_list_link_posts]" type="checkbox" value="1" <?php checked( $link_posts ); ?>>
+				<?php _e( 'Link players', 'sportspress' ); ?>
+			</label>
+		</fieldset>
 		<?php
 	}
 
@@ -118,19 +118,6 @@ class SportsPressPlayerSettingsPage {
 				<input id="sportspress_player_gallery_show_names_on_hover_default" name="sportspress[player_gallery_show_names_on_hover]" type="hidden" value="0">
 				<input id="sportspress_player_gallery_show_names_on_hover" name="sportspress[player_gallery_show_names_on_hover]" type="checkbox" value="1" <?php checked( $show_names_on_hover ); ?>>
 				<?php _e( 'Display player names on hover', 'sportspress' ); ?>
-			</label>
-		</fieldset>
-		<?php
-	}
-
-	function players_callback() {
-		$link_posts = sportspress_array_value( $this->options, 'player_list_link_posts', true );
-		?>
-		<fieldset>
-			<label for="sportspress_player_list_link_posts">
-				<input id="sportspress_player_list_link_posts_default" name="sportspress[player_list_link_posts]" type="hidden" value="0">
-				<input id="sportspress_player_list_link_posts" name="sportspress[player_list_link_posts]" type="checkbox" value="1" <?php checked( $link_posts ); ?>>
-				<?php _e( 'Display players as links', 'sportspress' ); ?>
 			</label>
 		</fieldset>
 		<?php
