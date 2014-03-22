@@ -11,7 +11,7 @@ function sportspress_default_event_content( $content ) {
     if ( is_singular( 'sp_event' ) && in_the_loop() ):
         $details = sportspress_event_details();
         $results = sportspress_event_results();
-        $players = sportspress_event_players();
+        $statistics = sportspress_event_statistics();
         $staff = sportspress_event_staff();
         $id = get_the_ID();
         $video_url = get_post_meta( $id, 'sp_video', true );
@@ -22,10 +22,10 @@ function sportspress_default_event_content( $content ) {
             $video = '';
         endif;
         if ( $results ):
-            $content = $video . $results . $details . $players . $staff . $content;
+            $content = $video . $results . $details . $statistics . $staff . $content;
         else:
             $venue = sportspress_event_venue();
-            $content = $video . $details . $venue . $players . $staff . $content;
+            $content = $video . $details . $venue . $statistics . $staff . $content;
         endif;
     endif;
     return $content;

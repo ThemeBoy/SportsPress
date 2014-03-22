@@ -1,6 +1,7 @@
 <?php
-if ( !function_exists( 'sportspress_event_players' ) ) {
-	function sportspress_event_players( $id = null ) {
+if ( !function_exists( 'sportspress_event_statistics' ) ) {
+	function sportspress_event_statistics( $id = null ) {
+		global $sportspress_options;
 
 		if ( ! $id )
 			$id = get_the_ID();
@@ -9,6 +10,9 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 		$staff = (array)get_post_meta( $id, 'sp_staff', false );
 		$stats = (array)get_post_meta( $id, 'sp_players', true );
 		$statistic_labels = sportspress_get_var_labels( 'sp_statistic' );
+		$link_posts = sportspress_array_value( $sportspress_options, 'event_statistics_link_posts', true );
+		$sortable = sportspress_array_value( $sportspress_options, 'event_statistics_sortable', true );
+		$responsive = sportspress_array_value( $sportspress_options, 'event_statistics_responsive', true );
 
 		$output = '';
 
@@ -24,7 +28,7 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 			$output .= '<h3>' . get_the_title( $team_id ) . '</h3>';
 
 			$output .= '<div class="sp-table-wrapper">' .
-				'<table class="sp-event-statistics sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
+				'<table class="sp-event-statistics sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . '">' . '<thead>' . '<tr>';
 
 			$output .= '<th class="data-number">#</th>';
 			$output .= '<th class="data-number">' . __( 'Player', 'sportspress' ) . '</th>';
@@ -54,9 +58,12 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 				// Player number
 				$output .= '<td class="data-number">' . $number . '</td>';
 
-				// Name as link
-				$permalink = get_post_permalink( $player_id );
-				$output .= '<td class="data-name">' . '<a href="' . $permalink . '">' . $name . '</a></td>';
+				if ( $link_posts ):
+					$permalink = get_post_permalink( $player_id );
+					$name =  '<a href="' . $permalink . '">' . $name . '</a>';
+				endif;
+
+				$output .= '<td class="data-name">' . $name . '</td>';
 
 				foreach( $statistic_labels as $key => $label ):
 					if ( $key == 'name' )
@@ -113,7 +120,7 @@ if ( !function_exists( 'sportspress_event_players' ) ) {
 
 		endforeach;
 
-		return apply_filters( 'sportspress_event_players',  $output );
+		return apply_filters( 'sportspress_event_statistics',  $output );
 
 	}
 }
