@@ -16,7 +16,7 @@ class SportsPressTextSettingsPage {
 		
 		add_settings_section(
 			'text',
-			__( 'Text Settings', 'sportspress' ),
+			__( 'Text', 'sportspress' ),
 			'',
 			'sportspress_text'
 		);
