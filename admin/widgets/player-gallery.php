@@ -1,5 +1,5 @@
 <?php
-class SportsPress_Widget_Player_Gallery extends WP_Widget {
+class SP_Widget_Player_Gallery extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_player_gallery widget_sp_player_gallery', 'description' => __( 'Display a gallery of players.', 'sportspress' ) );
@@ -105,4 +105,4 @@ class SportsPress_Widget_Player_Gallery extends WP_Widget {
 <?php
 	}
 }
-add_action( 'widgets_init', create_function( '', 'return register_widget( "SportsPress_Widget_Player_Gallery" );' ) );
+add_action( 'widgets_init', create_function( '', 'return register_widget( "SP_Widget_Player_Gallery" );' ) );

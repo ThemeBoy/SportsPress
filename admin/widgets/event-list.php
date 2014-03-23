@@ -1,5 +1,5 @@
 <?php
-class SportsPress_Widget_Event_List extends WP_Widget {
+class SP_Widget_Event_List extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_sp_event_list', 'description' => __( 'A list of events.', 'sportspress' ) );
@@ -78,4 +78,4 @@ class SportsPress_Widget_Event_List extends WP_Widget {
 <?php
 	}
 }
-add_action( 'widgets_init', create_function( '', 'return register_widget( "SportsPress_Widget_Event_List" );' ) );
+add_action( 'widgets_init', create_function( '', 'return register_widget( "SP_Widget_Event_List" );' ) );
