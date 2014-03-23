@@ -1,5 +1,5 @@
 <?php
-class SportsPress_Widget_Player_list extends WP_Widget {
+class SP_Widget_Player_list extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_player_list widget_sp_player_list', 'description' => __( 'Display a list of players.', 'sportspress' ) );
@@ -123,4 +123,4 @@ class SportsPress_Widget_Player_list extends WP_Widget {
 <?php
 	}
 }
-add_action( 'widgets_init', create_function( '', 'return register_widget( "SportsPress_Widget_Player_list" );' ) );
+add_action( 'widgets_init', create_function( '', 'return register_widget( "SP_Widget_Player_list" );' ) );
