@@ -11,7 +11,7 @@ class SP_Widget_Player_list extends WP_Widget {
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$id = empty($instance['id']) ? null : $instance['id'];
 		$number = empty($instance['number']) ? null : $instance['number'];
-		$statistics = $instance['statistics'];
+		$performance = $instance['performance'];
 		$orderby = empty($instance['orderby']) ? 'default' : $instance['orderby'];
 		$order = empty($instance['order']) ? 'ASC' : $instance['order'];
 		$show_all_players_link = empty($instance['show_all_players_link']) ? false : $instance['show_all_players_link'];
@@ -19,7 +19,7 @@ class SP_Widget_Player_list extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 		echo '<div id="sp_player_list_wrap">';
-		echo sportspress_player_list( $id, array( 'number' => $number, 'statistics' => $statistics, 'orderby' => $orderby , 'order' => $order, 'show_all_players_link' => $show_all_players_link ) );
+		echo sportspress_player_list( $id, array( 'number' => $number, 'performance' => $performance, 'orderby' => $orderby , 'order' => $order, 'show_all_players_link' => $show_all_players_link ) );
 		echo '</div>';
 		echo $after_widget;
 	}
@@ -29,7 +29,7 @@ class SP_Widget_Player_list extends WP_Widget {
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['id'] = intval($new_instance['id']);
 		$instance['number'] = intval($new_instance['number']);
-		$instance['statistics'] = (array)$new_instance['statistics'];
+		$instance['performance'] = (array)$new_instance['performance'];
 		$instance['orderby'] = strip_tags($new_instance['orderby']);
 		$instance['order'] = strip_tags($new_instance['order']);
 		$instance['show_all_players_link'] = $new_instance['show_all_players_link'];
@@ -38,11 +38,11 @@ class SP_Widget_Player_list extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'number' => 5, 'statistics' => null, 'orderby' => 'default', 'order' => 'ASC', 'show_all_players_link' => true ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'number' => 5, 'performance' => null, 'orderby' => 'default', 'order' => 'ASC', 'show_all_players_link' => true ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
 		$number = intval($instance['number']);
-		$statistics = $instance['statistics'];
+		$performance = $instance['performance'];
 		$orderby = strip_tags($instance['orderby']);
 		$order = strip_tags($instance['order']);
 		$show_all_players_link = $instance['show_all_players_link'];
@@ -70,23 +70,23 @@ class SP_Widget_Player_list extends WP_Widget {
 		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" size="3"></p>
 
 		<p class="sp-prefs">
-			<?php _e( 'Statistics:', 'sportspress' ); ?><br>
+			<?php _e( 'Performance:', 'sportspress' ); ?><br>
 			<?php 
 			$args = array(
-				'post_type' => 'sp_statistic',
+				'post_type' => 'sp_performance',
 				'numberposts' => -1,
 				'posts_per_page' => -1,
 				'orderby' => 'menu_order',
 				'order' => 'ASC'
 			);
-			$the_statistics = get_posts( $args );
+			$the_performance = get_posts( $args );
 
-			$field_name = $this->get_field_name('statistics') . '[]';
-			$field_id = $this->get_field_id('statistics');
+			$field_name = $this->get_field_name('performance') . '[]';
+			$field_id = $this->get_field_id('performance');
 			?>
-			<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . 'eventsplayed'; ?>" value="<?php echo 'eventsplayed'; ?>" <?php if ( is_array( $statistics) && in_array( 'eventsplayed', $statistics ) ): ?>checked="checked"<?php endif; ?>><?php _e( 'Played', 'sportspress' ); ?></label>
-			<?php foreach ( $the_statistics as $column ): ?>
-				<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . $column->post_name; ?>" value="<?php echo $column->post_name; ?>" <?php if ( $statistics === null || in_array( $column->post_name, $statistics ) ): ?>checked="checked"<?php endif; ?>><?php echo $column->post_title; ?></label>
+			<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . 'eventsplayed'; ?>" value="<?php echo 'eventsplayed'; ?>" <?php if ( is_array( $performance) && in_array( 'eventsplayed', $performance ) ): ?>checked="checked"<?php endif; ?>><?php _e( 'Played', 'sportspress' ); ?></label>
+			<?php foreach ( $the_performance as $column ): ?>
+				<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . $column->post_name; ?>" value="<?php echo $column->post_name; ?>" <?php if ( $performance === null || in_array( $column->post_name, $performance ) ): ?>checked="checked"<?php endif; ?>><?php echo $column->post_title; ?></label>
 			<?php endforeach; ?>
 		</p>
 
@@ -99,7 +99,7 @@ class SP_Widget_Player_list extends WP_Widget {
 				'name' => __( 'Name', 'sportspress' ),
 				'eventsplayed' => __( 'Played', 'sportspress' )
 			),
-			'post_type' => 'sp_statistic',
+			'post_type' => 'sp_performance',
 			'name' => $this->get_field_name('orderby'),
 			'id' => $this->get_field_id('orderby'),
 			'selected' => $orderby,

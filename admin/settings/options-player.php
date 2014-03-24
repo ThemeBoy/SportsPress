@@ -60,9 +60,9 @@ class SportsPressPlayerSettingsPage {
 		);
 		
 		add_settings_field(	
-			'statistics',
-			__( 'Statistics', 'sportspress' ),
-			array( $this, 'statistics_callback' ),
+			'performance',
+			__( 'Performance', 'sportspress' ),
+			array( $this, 'performance_callback' ),
 			'sportspress_players',
 			'list'
 		);
@@ -161,9 +161,9 @@ class SportsPressPlayerSettingsPage {
 		<?
 	}
 
-	function statistics_callback() {
+	function performance_callback() {
 		$args = array(
-			'post_type' => 'sp_statistic',
+			'post_type' => 'sp_performance',
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'menu_order',
@@ -190,8 +190,8 @@ class SportsPressPlayerSettingsPage {
 			</table>
 			<div class="tablenav bottom">
 				<div class="alignleft actions">
-					<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_statistic' ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></a>
-					<a class="button" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_statistic' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
+					<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_performance' ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></a>
+					<a class="button" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_performance' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
 				</div>
 				<br class="clear">
 			</div>

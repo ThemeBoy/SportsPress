@@ -119,7 +119,7 @@ $sportspress_sports['rugby'] = array(
 			),
 		),
 		// Player Statistics
-		'sp_statistic' => array(
+		'sp_performance' => array(
 			array(
 				'post_title' => 'Points',
 				'post_name'  => 'points',

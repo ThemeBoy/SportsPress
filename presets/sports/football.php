@@ -184,7 +184,7 @@ $sportspress_sports['football'] = array(
 			),
 		),
 		// Player Statistics
-		'sp_statistic' => array(
+		'sp_performance' => array(
 			array(
 				'post_title' => 'Comp',
 				'post_name' => 'comp',

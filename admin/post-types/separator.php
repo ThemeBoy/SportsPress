@@ -5,7 +5,8 @@ function sportspress_separator_post_init() {
 		'public' => false,
 		'show_ui' => true,
 		'show_in_nav_menus' => false,
-		'show_in_admin_bar' => false
+		'show_in_admin_bar' => false,
+		'can_export' => false,
 	);
 	register_post_type( 'sp_separator', $args );
 }

@@ -23,7 +23,7 @@ function sportspress_position_term_init() {
 		'hierarchical' => true,
 		'rewrite' => array( 'slug' => get_option( 'sportspress_position_slug', 'position' ) ),
 	);
-	$object_types = array( 'sp_player', 'sp_statistic', 'sp_metric', 'attachment' );
+	$object_types = array( 'sp_player', 'sp_performance', 'sp_metric', 'attachment' );
 	register_taxonomy( 'sp_position', $object_types, $args );
 	foreach ( $object_types as $object_type ):
 		register_taxonomy_for_object_type( 'sp_league', $object_type );

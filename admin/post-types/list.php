@@ -22,7 +22,7 @@ function sportspress_list_post_init() {
 		'rewrite' => array( 'slug' => get_option( 'sportspress_list_slug', 'list' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_player',
 		'show_in_admin_bar' => true,
-		'capability_type' => 'sp_list'
+		'capability_type' => 'sp_list',
 	);
 	register_post_type( 'sp_list', $args );
 }
@@ -136,7 +136,7 @@ function sportspress_list_details_meta( $post ) {
 				'name' => __( 'Name', 'sportspress' ),
 				'eventsplayed' => __( 'Played', 'sportspress' )
 			),
-			'post_type' => 'sp_statistic',
+			'post_type' => 'sp_performance',
 			'name' => 'sp_orderby',
 			'selected' => $orderby,
 			'values' => 'slug',

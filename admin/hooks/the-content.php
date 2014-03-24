@@ -11,7 +11,7 @@ function sportspress_default_event_content( $content ) {
     if ( is_singular( 'sp_event' ) && in_the_loop() ):
         $details = sportspress_event_details();
         $results = sportspress_event_results();
-        $statistics = sportspress_event_statistics();
+        $performance = sportspress_event_performance();
         $staff = sportspress_event_staff();
         $id = get_the_ID();
         $video_url = get_post_meta( $id, 'sp_video', true );
@@ -22,10 +22,10 @@ function sportspress_default_event_content( $content ) {
             $video = '';
         endif;
         if ( $results ):
-            $content = $video . $results . $details . $statistics . $staff . $content;
+            $content = $video . $results . $details . $performance . $staff . $content;
         else:
             $venue = sportspress_event_venue();
-            $content = $video . $details . $venue . $statistics . $staff . $content;
+            $content = $video . $details . $venue . $performance . $staff . $content;
         endif;
     endif;
     return $content;
@@ -87,8 +87,8 @@ add_filter( 'the_content', 'sportspress_default_table_content' );
 function sportspress_default_player_content( $content ) {
     if ( is_singular( 'sp_player' ) && in_the_loop() ):
         $metrics = sportspress_player_metrics();
-        $statistics = sportspress_player_statistics();
-        $content .= $metrics . $statistics;
+        $performance = sportspress_player_performance();
+        $content .= $metrics . $performance;
     endif;
     return $content;
 }

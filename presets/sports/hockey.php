@@ -64,7 +64,7 @@ $sportspress_sports['hockey'] = array(
 			),
 		),
 		// Statistics
-		'sp_statistic' => array(
+		'sp_performance' => array(
 		),
 		// Results
 		'sp_result' => array(

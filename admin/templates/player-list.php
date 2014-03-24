@@ -9,7 +9,7 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 
 		$defaults = array(
 			'number' => -1,
-			'statistics' => null,
+			'performance' => null,
 			'orderby' => 'default',
 			'order' => 'ASC',
 			'show_all_players_link' => false,
@@ -31,16 +31,16 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 		// Remove the first row to leave us with the actual data
 		unset( $data[0] );
 
-		$statistics = sportspress_array_value( $r, 'statistics', null );
+		$performance = sportspress_array_value( $r, 'performance', null );
 
 		if ( $r['orderby'] == 'default' ):
 			$r['orderby'] = get_post_meta( $id, 'sp_orderby', true );
 			$r['order'] = get_post_meta( $id, 'sp_order', true );
 		else:
-			global $sportspress_statistic_priorities;
-			$sportspress_statistic_priorities = array(
+			global $sportspress_performance_priorities;
+			$sportspress_performance_priorities = array(
 				array(
-					'statistic' => $r['orderby'],
+					'key' => $r['orderby'],
 					'order' => $r['order'],
 				),
 			);
@@ -54,7 +54,7 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 		endif;
 
 		foreach( $labels as $key => $label ):
-			if ( ! is_array( $statistics ) || $key == 'name' || in_array( $key, $statistics ) )
+			if ( ! is_array( $performance ) || $key == 'name' || in_array( $key, $performance ) )
 			$output .= '<th class="data-' . $key . '">'. $label . '</th>';
 		endforeach;
 
@@ -91,7 +91,7 @@ if ( !function_exists( 'sportspress_player_list' ) ) {
 			foreach( $labels as $key => $value ):
 				if ( $key == 'name' )
 					continue;
-				if ( ! is_array( $statistics ) || in_array( $key, $statistics ) )
+				if ( ! is_array( $performance ) || in_array( $key, $performance ) )
 				$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '&mdash;' ) . '</td>';
 			endforeach;
 

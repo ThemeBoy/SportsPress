@@ -1,7 +1,7 @@
 <?php
 function sportspress_admin_head() {
 	global $typenow;
-	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic', 'sp_metric' ) ) )
+	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric' ) ) )
 		sportspress_highlight_admin_menu();
 	elseif ( $typenow == 'sp_table' )
 		sportspress_highlight_admin_menu( 'edit.php?post_type=sp_team', 'edit.php?post_type=sp_table' );

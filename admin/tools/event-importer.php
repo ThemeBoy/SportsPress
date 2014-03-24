@@ -119,9 +119,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 					$league = ( empty( $_POST['sp_league'] ) ? false : $_POST['sp_league'] );
 					$season = ( empty( $_POST['sp_season'] ) ? false : $_POST['sp_season'] );
 
-					// Get labels from result and statistic post types
+					// Get labels from result and performance post types
 					$result_labels = sportspress_get_var_labels( 'sp_result' );
-					$statistic_labels = sportspress_get_var_labels( 'sp_statistic' );
+					$performance_labels = sportspress_get_var_labels( 'sp_performance' );
 
 					while ( ( $row = fgetcsv( $handle, 0, $this->delimiter ) ) !== FALSE ):
 
@@ -133,7 +133,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						// Add new event if date is given
 						if ( sizeof( $event ) > 0 && ! empty( $event[0] ) ):
 
-							// Add player statistics to last event if available
+							// Add player performance to last event if available
 							if ( isset( $id ) && isset( $players ) && sizeof( $players ) > 0 ):
 								update_post_meta( $id, 'sp_players', $players );
 							endif;
@@ -155,7 +155,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 							// Insert event
 							$id = wp_insert_post( $args );
 
-							// Initialize statistics array
+							// Initialize performance array
 							$players = array();
 
 							// Flag as import
@@ -331,7 +331,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						// Add new player if player name is given
 						if ( sizeof( $player ) > 0 && ! empty( $player[0] ) ):
 
-							// Get and unset player name leaving us with the statistics
+							// Get and unset player name leaving us with the performance
 							$player_name = $player[0];
 							unset( $player[0] );
 
@@ -378,17 +378,17 @@ if ( class_exists( 'WP_Importer' ) ) {
 								// Add player to event
 								add_post_meta( $id, 'sp_player', $player_id );
 
-								// Add player statistics to array if team is available
+								// Add player performance to array if team is available
 								if ( isset( $team_id ) ):
 
-									// Initialize statistics array
-									$statistics = array();
+									// Initialize performance array
+									$performance = array();
 
-									// Map keys to player statistics
-									foreach ( $statistic_labels as $key => $label ):
-										$statistics[ $key ] = array_shift( $player );
+									// Map keys to player performance
+									foreach ( $performance_labels as $key => $label ):
+										$performance[ $key ] = array_shift( $player );
 									endforeach;
-									$players[ $team_id ][ $player_id ] = $statistics;
+									$players[ $team_id ][ $player_id ] = $performance;
 
 									// Get player teams
 									$player_teams = get_post_meta( $player_id, 'sp_team', false );
@@ -415,7 +415,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 					endwhile;
 
-					// Add player statistics to last event if available
+					// Add player performance to last event if available
 					if ( isset( $id ) && isset( $players ) && sizeof( $players ) > 0 ):
 						update_post_meta( $id, 'sp_players', $players );
 					endif;

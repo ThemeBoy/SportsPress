@@ -19,8 +19,9 @@ function sportspress_metric_post_init() {
 		'show_in_menu' => false,
 		'has_archive' => false,
 		'hierarchical' => false,
+		'can_export' => false,
 		'supports' => array( 'title', 'page-attributes' ),
-		'capability_type' => 'sp_config'
+		'capability_type' => 'sp_config',
 	);
 	register_post_type( 'sp_metric', $args );
 }

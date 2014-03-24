@@ -22,7 +22,7 @@ function sportspress_team_post_init() {
 		'register_meta_box_cb' => 'sportspress_team_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sportspress_teams_slug', 'teams' ) ),
 		'menu_icon' => 'dashicons-shield-alt',
-		'capability_type' => 'sp_team'
+		'capability_type' => 'sp_team',
 	);
 	register_post_type( 'sp_team', $args );
 }
@@ -55,7 +55,7 @@ function sportspress_team_columns_meta( $post ) {
 
 	$league_num = sizeof( $leagues );
 
-	// Loop through statistics for each league
+	// Loop through columns for each league
 	foreach ( $leagues as $league ):
 
 		$league_id = $league->term_id;

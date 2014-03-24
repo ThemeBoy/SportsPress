@@ -29,9 +29,9 @@ class SportsPressEventSettingsPage {
 		);
 		
 		add_settings_field(	
-			'statistics',
-			__( 'Statistics', 'sportspress' ),
-			array( $this, 'statistics_callback' ),
+			'performance',
+			__( 'Performance', 'sportspress' ),
+			array( $this, 'performance_callback' ),
 			'sportspress_events',
 			'event'
 		);
@@ -68,29 +68,29 @@ class SportsPressEventSettingsPage {
 		<?php
 	}
 
-	function statistics_callback() {
-		$responsive = sportspress_array_value( $this->options, 'event_statistics_responsive', true );
-		$sortable = sportspress_array_value( $this->options, 'event_statistics_sortable', true );
-		$link_posts = sportspress_array_value( $this->options, 'event_statistics_link_posts', true );
+	function performance_callback() {
+		$responsive = sportspress_array_value( $this->options, 'event_performance_responsive', true );
+		$sortable = sportspress_array_value( $this->options, 'event_performance_sortable', true );
+		$link_posts = sportspress_array_value( $this->options, 'event_performance_link_posts', true );
 		?>
 		<fieldset>
-			<label for="sportspress_event_statistics_responsive">
-				<input id="sportspress_event_statistics_responsive_default" name="sportspress[event_statistics_responsive]" type="hidden" value="0">
-				<input id="sportspress_event_statistics_responsive" name="sportspress[event_statistics_responsive]" type="checkbox" value="1" <?php checked( $responsive ); ?>>
+			<label for="sportspress_event_performance_responsive">
+				<input id="sportspress_event_performance_responsive_default" name="sportspress[event_performance_responsive]" type="hidden" value="0">
+				<input id="sportspress_event_performance_responsive" name="sportspress[event_performance_responsive]" type="checkbox" value="1" <?php checked( $responsive ); ?>>
 				<?php _e( 'Responsive', 'sportspress' ); ?>
 			</label>
 		</fieldset>
 		<fieldset>
-			<label for="sportspress_event_statistics_sortable">
-				<input id="sportspress_event_statistics_sortable_default" name="sportspress[event_statistics_sortable]" type="hidden" value="0">
-				<input id="sportspress_event_statistics_sortable" name="sportspress[event_statistics_sortable]" type="checkbox" value="1" <?php checked( $sortable ); ?>>
+			<label for="sportspress_event_performance_sortable">
+				<input id="sportspress_event_performance_sortable_default" name="sportspress[event_performance_sortable]" type="hidden" value="0">
+				<input id="sportspress_event_performance_sortable" name="sportspress[event_performance_sortable]" type="checkbox" value="1" <?php checked( $sortable ); ?>>
 				<?php _e( 'Sortable', 'sportspress' ); ?>
 			</label>
 		</fieldset>
 		<fieldset>
-			<label for="sportspress_event_statistics_link_posts">
-				<input id="sportspress_event_statistics_link_posts_default" name="sportspress[event_statistics_link_posts]" type="hidden" value="0">
-				<input id="sportspress_event_statistics_link_posts" name="sportspress[event_statistics_link_posts]" type="checkbox" value="1" <?php checked( $link_posts ); ?>>
+			<label for="sportspress_event_performance_link_posts">
+				<input id="sportspress_event_performance_link_posts_default" name="sportspress[event_performance_link_posts]" type="hidden" value="0">
+				<input id="sportspress_event_performance_link_posts" name="sportspress[event_performance_link_posts]" type="checkbox" value="1" <?php checked( $link_posts ); ?>>
 				<?php _e( 'Link players', 'sportspress' ); ?>
 			</label>
 		</fieldset>

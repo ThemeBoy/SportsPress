@@ -149,7 +149,7 @@ $sportspress_sports['basketball'] = array(
 			),
 		),
 		// Player Statistics
-		'sp_statistic' => array(
+		'sp_performance' => array(
 			array(
 				'post_title' => 'MIN',
 				'post_name' => 'min',
