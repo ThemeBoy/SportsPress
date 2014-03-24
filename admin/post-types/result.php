@@ -19,9 +19,10 @@ function sportspress_result_post_init() {
 		'show_in_menu' => false,
 		'has_archive' => false,
 		'hierarchical' => false,
+		'can_export' => false,
 		'supports' => array( 'title', 'page-attributes' ),
 		'register_meta_box_cb' => 'sportspress_result_meta_init',
-		'capability_type' => 'sp_config'
+		'capability_type' => 'sp_config',
 	);
 	register_post_type( 'sp_result', $args );
 }

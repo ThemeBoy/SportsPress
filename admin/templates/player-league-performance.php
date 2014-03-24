@@ -1,6 +1,6 @@
 <?php
-if ( !function_exists( 'sportspress_player_league_statistics' ) ) {
-	function sportspress_player_league_statistics( $league, $id = null ) {
+if ( !function_exists( 'sportspress_player_league_performance' ) ) {
+	function sportspress_player_league_performance( $league, $id = null ) {
 
 		if ( ! $league )
 			return false;
@@ -8,7 +8,7 @@ if ( !function_exists( 'sportspress_player_league_statistics' ) ) {
 		if ( ! $id )
 			$id = get_the_ID();
 
-		$data = sportspress_get_player_statistics_data( $id, $league->term_id );
+		$data = sportspress_get_player_performance_data( $id, $league->term_id );
 
 		// The first row should be column labels
 		$labels = $data[0];
@@ -22,7 +22,7 @@ if ( !function_exists( 'sportspress_player_league_statistics' ) ) {
 
 		$output = '<h4 class="sp-table-caption">' . $league->name . '</h4>' .
 			'<div class="sp-table-wrapper">' .
-			'<table class="sp-player-statistics sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
+			'<table class="sp-player-performance sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
 
 		foreach( $labels as $key => $label ):
 			$output .= '<th class="data-' . $key . '">' . $label . '</th>';
@@ -48,7 +48,7 @@ if ( !function_exists( 'sportspress_player_league_statistics' ) ) {
 
 		$output .= '</tbody>' . '</table>' . '</div>';
 
-		return apply_filters( 'sportspress_player_league_statistics',  $output );
+		return apply_filters( 'sportspress_player_league_performance',  $output );
 		
 	}
 }

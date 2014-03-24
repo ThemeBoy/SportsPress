@@ -8,7 +8,7 @@ $sportspress_sports['racing'] = array(
 		'sp_column' => array(
 		),
 		// Statistics
-		'sp_statistic' => array(
+		'sp_performance' => array(
 			array(
 				'post_title' => 'Pts',
 				'post_name' => 'pts',

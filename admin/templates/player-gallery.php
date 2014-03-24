@@ -48,16 +48,16 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 		// Remove the first row to leave us with the actual data
 		unset( $data[0] );
 
-		$statistics = sportspress_array_value( $r, 'statistics', null );
+		$performance = sportspress_array_value( $r, 'performance', null );
 
 		if ( $r['orderby'] == 'default' ):
 			$r['orderby'] = get_post_meta( $id, 'sp_orderby', true );
 			$r['order'] = get_post_meta( $id, 'sp_order', true );
 		else:
-			global $sportspress_statistic_priorities;
-			$sportspress_statistic_priorities = array(
+			global $sportspress_performance_priorities;
+			$sportspress_performance_priorities = array(
 				array(
-					'statistic' => $r['orderby'],
+					'key' => $r['orderby'],
 					'order' => $r['order'],
 				),
 			);
@@ -94,7 +94,7 @@ if ( !function_exists( 'sportspress_player_gallery' ) ) {
 		if ( is_int( $r['number'] ) && $r['number'] > 0 )
 			$limit = $r['number'];
 
-		foreach( $data as $player_id => $statistics ):
+		foreach( $data as $player_id => $performance ):
 
 			if ( $r['show_names_on_hover'] ):
 				$caption = get_the_title( $player_id );

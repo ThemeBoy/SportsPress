@@ -1,6 +1,6 @@
 <?php
-if ( !function_exists( 'sportspress_event_statistics' ) ) {
-	function sportspress_event_statistics( $id = null ) {
+if ( !function_exists( 'sportspress_event_performance' ) ) {
+	function sportspress_event_performance( $id = null ) {
 		global $sportspress_options;
 
 		if ( ! $id )
@@ -9,10 +9,10 @@ if ( !function_exists( 'sportspress_event_statistics' ) ) {
 		$teams = (array)get_post_meta( $id, 'sp_team', false );
 		$staff = (array)get_post_meta( $id, 'sp_staff', false );
 		$stats = (array)get_post_meta( $id, 'sp_players', true );
-		$statistic_labels = sportspress_get_var_labels( 'sp_statistic' );
-		$link_posts = sportspress_array_value( $sportspress_options, 'event_statistics_link_posts', true );
-		$sortable = sportspress_array_value( $sportspress_options, 'event_statistics_sortable', true );
-		$responsive = sportspress_array_value( $sportspress_options, 'event_statistics_responsive', true );
+		$performance_labels = sportspress_get_var_labels( 'sp_performance' );
+		$link_posts = sportspress_array_value( $sportspress_options, 'event_performance_link_posts', true );
+		$sortable = sportspress_array_value( $sportspress_options, 'event_performance_sortable', true );
+		$responsive = sportspress_array_value( $sportspress_options, 'event_performance_responsive', true );
 
 		$output = '';
 
@@ -28,12 +28,12 @@ if ( !function_exists( 'sportspress_event_statistics' ) ) {
 			$output .= '<h3>' . get_the_title( $team_id ) . '</h3>';
 
 			$output .= '<div class="sp-table-wrapper">' .
-				'<table class="sp-event-statistics sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . '">' . '<thead>' . '<tr>';
+				'<table class="sp-event-performance sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . '">' . '<thead>' . '<tr>';
 
 			$output .= '<th class="data-number">#</th>';
 			$output .= '<th class="data-number">' . __( 'Player', 'sportspress' ) . '</th>';
 
-			foreach( $statistic_labels as $key => $label ):
+			foreach( $performance_labels as $key => $label ):
 				$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 			endforeach;
 
@@ -65,7 +65,7 @@ if ( !function_exists( 'sportspress_event_statistics' ) ) {
 
 				$output .= '<td class="data-name">' . $name . '</td>';
 
-				foreach( $statistic_labels as $key => $label ):
+				foreach( $performance_labels as $key => $label ):
 					if ( $key == 'name' )
 						continue;
 					if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
@@ -100,7 +100,7 @@ if ( !function_exists( 'sportspress_event_statistics' ) ) {
 
 				$row = $data[0];
 
-				foreach( $statistic_labels as $key => $label ):
+				foreach( $performance_labels as $key => $label ):
 					if ( $key == 'name' ):
 						continue;
 					endif;
@@ -120,7 +120,7 @@ if ( !function_exists( 'sportspress_event_statistics' ) ) {
 
 		endforeach;
 
-		return apply_filters( 'sportspress_event_statistics',  $output );
+		return apply_filters( 'sportspress_event_performance',  $output );
 
 	}
 }

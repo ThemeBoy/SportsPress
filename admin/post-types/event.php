@@ -22,7 +22,7 @@ function sportspress_event_post_init() {
 		'register_meta_box_cb' => 'sportspress_event_meta_init',
 		'rewrite' => array( 'slug' => get_option( 'sportspress_events_slug', 'events' ) ),
 		'menu_icon' => 'dashicons-calendar',
-		'capability_type' => 'sp_event'
+		'capability_type' => 'sp_event',
 	);
 	register_post_type( 'sp_event', $args );
 }
@@ -74,7 +74,7 @@ function sportspress_event_meta_init( $post ) {
 	do_action( 'sportspress_event_meta_init' );
 
 	if ( sizeof( $players ) > 0 )
-		add_meta_box( 'sp_statisticsdiv', __( 'Statistics', 'sportspress' ), 'sportspress_event_statistics_meta', 'sp_event', 'normal', 'high' );
+		add_meta_box( 'sp_performancediv', __( 'Performance', 'sportspress' ), 'sportspress_event_performance_meta', 'sp_event', 'normal', 'high' );
 	add_meta_box( 'sp_articlediv', __( 'Article', 'sportspress' ), 'sportspress_event_article_meta', 'sp_event', 'normal', 'high' );
 }
 
@@ -214,12 +214,12 @@ function sportspress_event_video_meta( $post ) {
 	<?php
 }
 
-function sportspress_event_statistics_meta( $post ) {
+function sportspress_event_performance_meta( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
 
-	// Get columns from statistic variables
-	$columns = sportspress_get_var_labels( 'sp_statistic' );
+	// Get columns from performance variables
+	$columns = sportspress_get_var_labels( 'sp_performance' );
 
 	foreach ( $teams as $key => $team_id ):
 		if ( ! $team_id ) continue;

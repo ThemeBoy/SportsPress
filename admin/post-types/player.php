@@ -56,7 +56,7 @@ function sportspress_player_meta_init( $post ) {
 	add_meta_box( 'sp_metricsdiv', __( 'Metrics', 'sportspress' ), 'sportspress_player_metrics_meta', 'sp_player', 'side', 'default' );
 
 	if ( $leagues && ! empty( $leagues ) && $seasons && ! empty( $seasons ) ):
-		add_meta_box( 'sp_statsdiv', __( 'Statistics', 'sportspress' ), 'sportspress_player_stats_meta', 'sp_player', 'normal', 'high' );
+		add_meta_box( 'sp_performancediv', __( 'Performance', 'sportspress' ), 'sportspress_player_performance_meta', 'sp_player', 'normal', 'high' );
 	endif;
 }
 
@@ -236,12 +236,12 @@ function sportspress_player_metrics_meta( $post ) {
 	sportspress_nonce();
 }
 
-function sportspress_player_stats_meta( $post ) {
+function sportspress_player_performance_meta( $post ) {
 	$leagues = get_the_terms( $post->ID, 'sp_league' );
 
 	$league_num = sizeof( $leagues );
 
-	// Loop through statistics for each league
+	// Loop through performance for each league
 	foreach ( $leagues as $league ):
 		
 		if ( $league_num > 1 ):
@@ -250,9 +250,9 @@ function sportspress_player_stats_meta( $post ) {
 			<?php
 		endif;
 
-		list( $columns, $data, $placeholders, $merged, $seasons_teams ) = sportspress_get_player_statistics_data( $post->ID, $league->term_id, true );
+		list( $columns, $data, $placeholders, $merged, $seasons_teams ) = sportspress_get_player_performance_data( $post->ID, $league->term_id, true );
 
-		sportspress_edit_player_statistics_table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_teams' ) );
+		sportspress_edit_player_performance_table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_teams' ) );
 
 	endforeach;
 }

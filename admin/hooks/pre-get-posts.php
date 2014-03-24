@@ -7,7 +7,7 @@ function sportspress_pre_get_posts( $query ) {
 		endif;
 		$post_type = $query->query['post_type'];
 
-		if ( in_array( $post_type, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_statistic' ) ) ):
+		if ( in_array( $post_type, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance' ) ) ):
 			$query->set( 'orderby', 'menu_order' );
 			$query->set( 'order', 'ASC' );
 		elseif ( $post_type == 'sp_event' ):

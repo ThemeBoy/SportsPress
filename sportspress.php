@@ -35,19 +35,19 @@ require_once dirname( __FILE__ ) . '/functions.php';
 // Templates
 require_once dirname( __FILE__ ) . '/admin/templates/countdown.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-details.php';
-require_once dirname( __FILE__ ) . '/admin/templates/event-statistics.php';
+require_once dirname( __FILE__ ) . '/admin/templates/event-performance.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-results.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-staff.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-venue.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-calendar.php';
 require_once dirname( __FILE__ ) . '/admin/templates/event-list.php';
 require_once dirname( __FILE__ ) . '/admin/templates/league-table.php';
-require_once dirname( __FILE__ ) . '/admin/templates/player-league-statistics.php';
+require_once dirname( __FILE__ ) . '/admin/templates/player-league-performance.php';
 require_once dirname( __FILE__ ) . '/admin/templates/player-list.php';
 //require_once dirname( __FILE__ ) . '/admin/templates/player-roster.php';
 require_once dirname( __FILE__ ) . '/admin/templates/player-gallery.php';
 require_once dirname( __FILE__ ) . '/admin/templates/player-metrics.php';
-require_once dirname( __FILE__ ) . '/admin/templates/player-statistics.php';
+require_once dirname( __FILE__ ) . '/admin/templates/player-performance.php';
 require_once dirname( __FILE__ ) . '/admin/templates/team-columns.php';
 
 // Options
@@ -62,7 +62,8 @@ require_once dirname( __FILE__ ) . '/admin/settings/options-permalink.php';
 // Custom post types
 require_once dirname( __FILE__ ) . '/admin/post-types/separator.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/column.php';
-require_once dirname( __FILE__ ) . '/admin/post-types/statistic.php';
+require_once dirname( __FILE__ ) . '/admin/post-types/performance.php';
+//require_once dirname( __FILE__ ) . '/admin/post-types/statistic.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/metric.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/result.php';
 require_once dirname( __FILE__ ) . '/admin/post-types/outcome.php';

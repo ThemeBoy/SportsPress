@@ -22,7 +22,7 @@ function sportspress_calendar_post_init() {
 		'rewrite' => array( 'slug' => get_option( 'sportspress_calendar_slug', 'calendar' ) ),
 		'show_in_menu' => 'edit.php?post_type=sp_event',
 		'show_in_admin_bar' => true,
-		'capability_type' => 'sp_calendar'
+		'capability_type' => 'sp_calendar',
 	);
 	register_post_type( 'sp_calendar', $args );
 }

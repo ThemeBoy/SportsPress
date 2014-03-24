@@ -24,7 +24,7 @@ function viewport() {
 	/* Data Tables */
 
 	if (viewport().width > 640) {
-		$(".sp-league-table, .sp-event-statistics, .sp-player-list").each(function() {
+		$(".sp-league-table, .sp-event-performance, .sp-player-list").each(function() {
 			sort = $(this).hasClass("sp-sortable-table");
 			$(this).dataTable({
 				"aaSorting": [],
