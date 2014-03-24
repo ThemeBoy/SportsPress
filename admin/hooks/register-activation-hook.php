@@ -162,4 +162,4 @@ function sportspress_activation_hook() {
 
     sportspress_flush_rewrite_rules();
 }
-register_activation_hook( SPORTSPRESS_PLUGIN_FILE, 'sportspress_activation_hook' );
+register_activation_hook( SP_PLUGIN_FILE, 'sportspress_activation_hook' );

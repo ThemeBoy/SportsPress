@@ -23,7 +23,7 @@ if ( !function_exists( 'sportspress_player_metrics' ) ) {
 		$common = array();
 		if ( $nationality ):
 			$country_name = sportspress_array_value( $sportspress_countries, $nationality, null );
-			$common[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $r['show_nationality_flag'] ? '<img src="' . SPORTSPRESS_PLUGIN_URL . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
+			$common[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $r['show_nationality_flag'] ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 		endif;
 
 		$data = array_merge( $common, $metrics );
