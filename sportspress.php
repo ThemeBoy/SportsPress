@@ -31,6 +31,7 @@ require_once dirname( __FILE__ ) . '/admin/includes/globals.php';
 
 // Functions
 require_once dirname( __FILE__ ) . '/functions.php';
+require_once dirname( __FILE__ ) . '/includes/sp-deprecated-functions.php';
 
 // Templates
 require_once dirname( __FILE__ ) . '/admin/templates/countdown.php';
