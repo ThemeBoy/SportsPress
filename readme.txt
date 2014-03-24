@@ -1,10 +1,10 @@
 === SportsPress - flexible league management ===
 Contributors: ThemeBoy
-Tags: sports, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
+Tags: sports, press, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 0.6.1
+Stable tag: 0.6.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -14,7 +14,7 @@ SportsPress is a fully configurable sports plugin that seamlessly automates leag
 
 Created by the developers at [ThemeBoy](http://themeboy.com/) and featured on Softpedia as [Script of the Day](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml), SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully configurable league website.
 
-Add schedules, results, league tables, player profiles and statistics to your team or league site with SportsPress. It uses core WordPress markup syntax and is designed to work with virtually every theme. Custom shortcodes, CSV importers, and several language translations are included.
+Add schedules, results, league tables, player profiles and statistics to your team or league site with SportsPress. It uses core WordPress markup syntax and will integrate seamlessly with most themes. Custom shortcodes, CSV importers, and several language translations are included.
 
 = Features =
 * Team Profiles
@@ -153,6 +153,10 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 8. SportsPress Status dashboard widget.
 
 == Changelog ==
+
+= 0.6.2 =
+* Feature - Add options to make tables responsive and sortable.
+* Feature - Use consistent shortcode naming with backwards compatibility.
 
 = 0.6.1 =
 * Feature - Display full event results on hover over main team result in admin.
