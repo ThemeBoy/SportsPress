@@ -171,8 +171,8 @@ function sportspress_event_team_meta( $post ) {
 				<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
 			</ul>
 			<?php
-			sportspress_post_checklist( $post->ID, 'sp_player', 'block', 'sp_team', $key );
-			sportspress_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_team', $key );
+			sportspress_post_checklist( $post->ID, 'sp_player', 'block', 'sp_current_team', $key );
+			sportspress_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_current_team', $key );
 			?>
 		</div>
 	<?php endforeach; ?>
