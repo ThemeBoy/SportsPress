@@ -1,5 +1,15 @@
 <?php
 /**
+ * EOS v2.0
+ * https://github.com/jlawrence11/Classes
+ *
+ * Equation Operating System Classes
+ *
+ * Copyright 2005-2013, Jon Lawrence <jlawrence11@gmail.com>
+ * Licensed under LGPL 2.1 License
+ */
+
+/**
  * Equation Operating System Classes.
  * 
  * This class was created for the safe parsing of mathematical equations
@@ -51,12 +61,6 @@ define('EQEOS_E_NO_VAR', 5503);
 if(!defined('DEBUG'))
 	define('DEBUG', false);
 
-//We use a stack class so we don't have to keep track of indices for an array
-// May eventually update to use `array_pop()` `end()` and `array_push()` instead
-// of this class.
-require_once "stack.class.php";
-
-
 /**
  * Equation Operating System (EOS) Parser
  *
@@ -73,7 +77,7 @@ require_once "stack.class.php";
  * @subpackage EOS
  * @version 2.0
  */
-class SP_eqEOS {
+class eqEOS {
     /**#@+
      *Private variables
      */

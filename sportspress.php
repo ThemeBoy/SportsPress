@@ -117,106 +117,101 @@ final class SportsPress {
 	 * Include required core files used in admin and on the frontend.
 	 */
 	private function includes() {
-
-		// Libraries
-		require_once dirname( __FILE__ ) . '/lib/eos/eos.class.php' ;
-
 		// Globals
-		require_once dirname( __FILE__ ) . '/admin/includes/globals.php';
+		include_once( 'admin/includes/globals.php' );
 
 		// Functions
-		require_once dirname( __FILE__ ) . '/functions.php';
-		require_once dirname( __FILE__ ) . '/includes/sp-deprecated-functions.php';
+		include_once( 'includes/sp-core-functions.php' );
+		include_once( 'includes/sp-deprecated-functions.php' );
 
 		// Templates
-		require_once dirname( __FILE__ ) . '/admin/templates/countdown.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/event-details.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/event-performance.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/event-results.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/event-staff.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/event-venue.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/event-calendar.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/event-list.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/league-table.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/player-league-performance.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/player-list.php';
-		//require_once dirname( __FILE__ ) . '/admin/templates/player-roster.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/player-gallery.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/player-metrics.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/player-performance.php';
-		require_once dirname( __FILE__ ) . '/admin/templates/team-columns.php';
+		include_once( 'includes/templates/countdown.php' );
+		include_once( 'includes/templates/event-details.php' );
+		include_once( 'includes/templates/event-performance.php' );
+		include_once( 'includes/templates/event-results.php' );
+		include_once( 'includes/templates/event-staff.php' );
+		include_once( 'includes/templates/event-venue.php' );
+		include_once( 'includes/templates/event-calendar.php' );
+		include_once( 'includes/templates/event-list.php' );
+		include_once( 'includes/templates/league-table.php' );
+		include_once( 'includes/templates/player-league-performance.php' );
+		include_once( 'includes/templates/player-list.php' );
+		//include_once( 'includes/templates/player-roster.php' );
+		include_once( 'includes/templates/player-gallery.php' );
+		include_once( 'includes/templates/player-metrics.php' );
+		include_once( 'includes/templates/player-performance.php' );
+		include_once( 'includes/templates/team-columns.php' );
 
 		// Options
-		require_once dirname( __FILE__ ) . '/admin/settings/settings.php';
-		require_once dirname( __FILE__ ) . '/admin/settings/options-general.php';
-		require_once dirname( __FILE__ ) . '/admin/settings/options-event.php';
-		require_once dirname( __FILE__ ) . '/admin/settings/options-team.php';
-		require_once dirname( __FILE__ ) . '/admin/settings/options-player.php';
-		require_once dirname( __FILE__ ) . '/admin/settings/options-text.php';
-		require_once dirname( __FILE__ ) . '/admin/settings/options-permalink.php';
+		include_once( 'admin/settings/settings.php' );
+		include_once( 'admin/settings/options-general.php' );
+		include_once( 'admin/settings/options-event.php' );
+		include_once( 'admin/settings/options-team.php' );
+		include_once( 'admin/settings/options-player.php' );
+		include_once( 'admin/settings/options-text.php' );
+		include_once( 'admin/settings/options-permalink.php' );
 
 		// Custom post types
-		require_once dirname( __FILE__ ) . '/admin/post-types/separator.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/column.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/performance.php';
-		//require_once dirname( __FILE__ ) . '/admin/post-types/statistic.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/metric.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/result.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/outcome.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/event.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/calendar.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/team.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/table.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/player.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/list.php';
-		require_once dirname( __FILE__ ) . '/admin/post-types/staff.php';
-		//require_once dirname( __FILE__ ) . '/admin/post-types/directory.php';
+		include_once( 'admin/post-types/separator.php' );
+		include_once( 'admin/post-types/column.php' );
+		include_once( 'admin/post-types/performance.php' );
+		//include_once( 'admin/post-types/statistic.php' );
+		include_once( 'admin/post-types/metric.php' );
+		include_once( 'admin/post-types/result.php' );
+		include_once( 'admin/post-types/outcome.php' );
+		include_once( 'admin/post-types/event.php' );
+		include_once( 'admin/post-types/calendar.php' );
+		include_once( 'admin/post-types/team.php' );
+		include_once( 'admin/post-types/table.php' );
+		include_once( 'admin/post-types/player.php' );
+		include_once( 'admin/post-types/list.php' );
+		include_once( 'admin/post-types/staff.php' );
+		//include_once( 'admin/post-types/directory.php' );
 
 		// Terms
-		require_once dirname( __FILE__ ) . '/admin/terms/league.php';
-		require_once dirname( __FILE__ ) . '/admin/terms/season.php';
-		require_once dirname( __FILE__ ) . '/admin/terms/venue.php';
-		require_once dirname( __FILE__ ) . '/admin/terms/position.php';
+		include_once( 'admin/terms/league.php' );
+		include_once( 'admin/terms/season.php' );
+		include_once( 'admin/terms/venue.php' );
+		include_once( 'admin/terms/position.php' );
 
 		// Tools
-		require_once dirname( __FILE__ ) . '/admin/tools/importers.php';
+		include_once( 'admin/tools/importers.php' );
 
 		// Typical request actions
-		require_once dirname( __FILE__ ) . '/admin/hooks/plugins-loaded.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/after-setup-theme.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/wp-enqueue-scripts.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/loop-start.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/the-title.php';
+		include_once( 'admin/hooks/plugins-loaded.php' );
+		include_once( 'admin/hooks/wp-enqueue-scripts.php' );
+		include_once( 'admin/hooks/loop-start.php' );
+		include_once( 'admin/hooks/the-title.php' );
 
 		// Admin request actions
-		require_once dirname( __FILE__ ) . '/admin/hooks/admin-init.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/admin-menu.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/admin-enqueue-scripts.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/admin-print-styles.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/admin-head.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/current-screen.php';
+		include_once( 'admin/hooks/admin-init.php' );
+		include_once( 'admin/hooks/admin-menu.php' );
+		include_once( 'admin/hooks/admin-enqueue-scripts.php' );
+		include_once( 'admin/hooks/admin-print-styles.php' );
+		include_once( 'admin/hooks/admin-head.php' );
+		include_once( 'admin/hooks/current-screen.php' );
 
 		// Administrative actions
-		require_once dirname( __FILE__ ) . '/admin/hooks/manage-posts-columns.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/post-thumbnail-html.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/restrict-manage-posts.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/parse-query.php';;
-		require_once dirname( __FILE__ ) . '/admin/hooks/save-post.php';
+		include_once( 'admin/hooks/manage-posts-columns.php' );
+		include_once( 'admin/hooks/post-thumbnail-html.php' );
+		include_once( 'admin/hooks/restrict-manage-posts.php' );
+		include_once( 'admin/hooks/parse-query.php' );
+		include_once( 'admin/hooks/save-post.php' );
 
 		// Filters
-		require_once dirname( __FILE__ ) . '/admin/hooks/admin-post-thumbnail-html.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/gettext.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/pre-get-posts.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/the-posts.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/sanitize-title.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/the-content.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/widget-text.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/wp-insert-post-data.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/plugin-action-links.php';
-		require_once dirname( __FILE__ ) . '/admin/hooks/post-updated-messages.php';
+		include_once( 'admin/hooks/admin-post-thumbnail-html.php' );
+		include_once( 'admin/hooks/gettext.php' );
+		include_once( 'admin/hooks/pre-get-posts.php' );
+		include_once( 'admin/hooks/the-posts.php' );
+		include_once( 'admin/hooks/sanitize-title.php' );
+		include_once( 'admin/hooks/the-content.php' );
+		include_once( 'admin/hooks/widget-text.php' );
+		include_once( 'admin/hooks/wp-insert-post-data.php' );
+		include_once( 'admin/hooks/plugin-action-links.php' );
+		include_once( 'admin/hooks/post-updated-messages.php' );
 
 		// Register activation hook
-		require_once dirname( __FILE__ ) . '/admin/hooks/register-activation-hook.php';
+		include_once( 'admin/hooks/register-activation-hook.php' );
 	}
 
 	/**
@@ -235,12 +230,12 @@ final class SportsPress {
 	 * Include core widgets
 	 */
 	public function include_widgets() {
-		require_once dirname( __FILE__ ) . '/admin/widgets/countdown.php';
-		require_once dirname( __FILE__ ) . '/admin/widgets/event-calendar.php';
-		require_once dirname( __FILE__ ) . '/admin/widgets/event-list.php';
-		require_once dirname( __FILE__ ) . '/admin/widgets/league-table.php';
-		require_once dirname( __FILE__ ) . '/admin/widgets/player-list.php';
-		require_once dirname( __FILE__ ) . '/admin/widgets/player-gallery.php';
+		include_once( 'includes/widgets/class-sp-widget-countdown.php' );
+		include_once( 'includes/widgets/class-sp-widget-event-calendar.php' );
+		include_once( 'includes/widgets/class-sp-widget-event-list.php' );
+		include_once( 'includes/widgets/class-sp-widget-league-table.php' );
+		include_once( 'includes/widgets/class-sp-widget-player-list.php' );
+		include_once( 'includes/widgets/class-sp-widget-player-gallery.php' );
 	}
 
 	/**
@@ -267,13 +262,14 @@ final class SportsPress {
 		
 		// Global + Frontend Locale
 		load_textdomain( 'sportspress', WP_LANG_DIR . "/sportspress/sportspress-$locale.mo" );
-		load_plugin_textdomain( 'sportspress', false, plugin_basename( dirname( __FILE__ ) ) . "/languages" );
+		load_plugin_textdomain( 'sportspress', false, plugin_basename( dirname( __FILE__ ) . "/languages" ) );
 	}
 
 	/**
 	 * Ensure theme and server variable compatibility and setup image sizes..
 	 */
 	public function setup_environment() {
+		add_theme_support( 'post-thumbnails' );
 	}
 
 	/** Helper functions ******************************************************/

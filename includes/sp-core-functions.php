@@ -1496,7 +1496,12 @@ if ( !function_exists( 'sp_solve' ) ) {
 
 		if ( $clearance ):
 			// Equation Operating System
-			$eos = new SP_eqEOS();
+	        if ( ! class_exists( 'phpStack' ) )
+	            include_once( SP()->plugin_path() . '/includes/libraries/class-phpstack.php' );
+	        if ( ! class_exists( 'eqEOS' ) )
+	            include_once( SP()->plugin_path() . '/includes/libraries/class-eqeos.php' );
+
+			$eos = new eqEOS();
 
 			// Solve using EOS
 			return round( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision );
