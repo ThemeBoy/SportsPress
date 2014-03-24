@@ -9,5 +9,5 @@ function sportspress_plugin_action_links( $links ) {
   return $links;
 }
  
-$plugin = SPORTSPRESS_PLUGIN_BASENAME; 
+$plugin = plugin_basename( SP_PLUGIN_FILE ); 
 add_filter( "plugin_action_links_$plugin", 'sportspress_plugin_action_links' );

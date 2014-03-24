@@ -34,7 +34,7 @@ add_action( 'admin_print_styles', 'sportspress_admin_notices_styles' );
  * @return void
  */
 function sportspress_admin_install_notices() {
-//	include( dirname( SPORTSPRESS_PLUGIN_FILE ) . '/admin/includes/notice-install.php' );
+//	include( dirname( SP_PLUGIN_FILE ) . '/admin/includes/notice-install.php' );
 }
 
 /**
@@ -44,5 +44,5 @@ function sportspress_admin_install_notices() {
  * @return void
  */
 function sportspress_theme_check_notice() {
-//	include( dirname( SPORTSPRESS_PLUGIN_FILE ) . '/admin/includes/notice-theme-support.php' );
+//	include( dirname( SP_PLUGIN_FILE ) . '/admin/includes/notice-theme-support.php' );
 }

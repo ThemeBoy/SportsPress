@@ -9,7 +9,7 @@ function sportspress_event_importer() {
     }
 
     // includes
-    require dirname( SPORTSPRESS_PLUGIN_FILE ) . '/admin/tools/event-importer.php';
+    require dirname( SP_PLUGIN_FILE ) . '/admin/tools/event-importer.php';
 
     // Dispatch
     $importer = new SP_Event_Importer();
@@ -26,7 +26,7 @@ function sportspress_team_importer() {
     }
 
     // includes
-    require dirname( SPORTSPRESS_PLUGIN_FILE ) . '/admin/tools/team-importer.php';
+    require dirname( SP_PLUGIN_FILE ) . '/admin/tools/team-importer.php';
 
     // Dispatch
     $importer = new SP_Team_Importer();
@@ -43,7 +43,7 @@ function sportspress_player_importer() {
     }
 
     // includes
-    require dirname( SPORTSPRESS_PLUGIN_FILE ) . '/admin/tools/player-importer.php';
+    require dirname( SP_PLUGIN_FILE ) . '/admin/tools/player-importer.php';
 
     // Dispatch
     $importer = new SP_Player_Importer();

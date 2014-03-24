@@ -113,7 +113,7 @@ if ( !function_exists( 'sp_flush_rewrite_rules' ) ) {
 
 if ( !function_exists( 'sp_nonce' ) ) {
 	function sp_nonce() {
-		echo '<input type="hidden" name="sportspress_nonce" id="sportspress_nonce" value="' . wp_create_nonce( SPORTSPRESS_PLUGIN_BASENAME ) . '" />';
+		echo '<input type="hidden" name="sportspress_nonce" id="sportspress_nonce" value="' . wp_create_nonce( plugin_basename( SP_PLUGIN_FILE ) ) . '" />';
 	}
 }
 

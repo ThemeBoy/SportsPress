@@ -3,7 +3,7 @@ function sportspress_save_post( $post_id ) {
 	global $post, $typenow;
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
     if ( !current_user_can( 'edit_post', $post_id ) ) return $post_id;
-	if ( !isset( $_POST['sportspress_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_nonce'], SPORTSPRESS_PLUGIN_BASENAME ) ) return $post_id;
+	if ( !isset( $_POST['sportspress_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_nonce'], plugin_basename( SP_PLUGIN_FILE ) ) ) return $post_id;
 	switch ( $_POST['post_type'] ):
 
 		case ( 'sp_team' ):
