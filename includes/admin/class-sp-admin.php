@@ -34,7 +34,7 @@ class SP_Admin {
 //		include_once( 'sp-meta-box-functions.php' );
 
 		// Classes
-//		include_once( 'class-sp-admin-post-types.php' );
+		include_once( 'class-sp-admin-post-types.php' );
 //		include_once( 'class-sp-admin-taxonomies.php' );
 
 		// Classes we only need if the ajax is not-ajax

@@ -208,14 +208,14 @@ final class SportsPress {
 		include_once( 'includes/admin/settings/options-permalink.php' );
 
 		// Custom post types (deprecating)
-		include_once( 'admin/post-types/separator.php' );
+		//include_once( 'admin/post-types/separator.php' );
 		include_once( 'admin/post-types/column.php' );
 		include_once( 'admin/post-types/performance.php' );
 		//include_once( 'admin/post-types/statistic.php' );
 		include_once( 'admin/post-types/metric.php' );
 		include_once( 'admin/post-types/result.php' );
 		include_once( 'admin/post-types/outcome.php' );
-		include_once( 'admin/post-types/event.php' );
+		//include_once( 'admin/post-types/event.php' );
 		include_once( 'admin/post-types/calendar.php' );
 		include_once( 'admin/post-types/team.php' );
 		include_once( 'admin/post-types/table.php' );
@@ -234,13 +234,6 @@ final class SportsPress {
 
 		// Post types
 		include_once( 'includes/class-sp-post-types.php' );						// Registers post types
-
-		// Include abstract classes
-//		include_once( 'includes/abstracts/abstract-sp-product.php' );			// Products
-//		include_once( 'includes/abstracts/abstract-sp-settings-api.php' );		// Settings API (for gateways, shipping, and integrations)
-//		include_once( 'includes/abstracts/abstract-sp-shipping-method.php' );	// A Shipping method
-//		include_once( 'includes/abstracts/abstract-sp-payment-gateway.php' ); 	// A Payment gateway
-//		include_once( 'includes/abstracts/abstract-sp-integration.php' );		// An integration with a service
 
 		// Classes (used on all pages)
 		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
@@ -264,10 +257,10 @@ final class SportsPress {
 		include_once( 'admin/hooks/current-screen.php' );
 
 		// Administrative actions (deprecating)
-		include_once( 'admin/hooks/manage-posts-columns.php' );
+		//include_once( 'admin/hooks/manage-posts-columns.php' );
 		include_once( 'admin/hooks/post-thumbnail-html.php' );
-		include_once( 'admin/hooks/restrict-manage-posts.php' );
-		include_once( 'admin/hooks/parse-query.php' );
+		//include_once( 'admin/hooks/restrict-manage-posts.php' );
+		//include_once( 'admin/hooks/parse-query.php' );
 		include_once( 'admin/hooks/save-post.php' );
 
 		// Filters (deprecating)

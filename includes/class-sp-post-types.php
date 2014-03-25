@@ -22,6 +22,7 @@ class SP_Post_types {
 	public function __construct() {
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 5 );
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
+		add_filter( 'the_posts', array( __CLASS__, 'display_scheduled_events' ) );
 	}
 
 	/**
@@ -155,9 +156,59 @@ class SP_Post_types {
 	 */
 	public static function register_post_types() {
 
+		register_post_type( 'sp_separator',
+			array(
+				'label' => '',
+				'public' => false,
+				'show_ui' => true,
+				'show_in_nav_menus' => false,
+				'show_in_admin_bar' => false,
+				'can_export' => false,
+			)
+		);	
+
 		do_action( 'sportspress_register_post_type' );
 
+		register_post_type( 'sp_event',
+			apply_filters( 'sportspress_register_post_type_product',
+				array(
+					'label' 					=> __( 'Events', 'sportspress' ),
+					'labels' => array(
+						'name' 					=> __( 'Schedule', 'sportspress' ),
+						'singular_name' 		=> __( 'Event', 'sportspress' ),
+						'all_items' 			=> __( 'Events', 'sportspress' ),
+						'add_new_item' 			=> __( 'Add New Event', 'sportspress' ),
+						'edit_item' 			=> __( 'Edit Event', 'sportspress' ),
+						'new_item' 				=> __( 'New', 'sportspress' ),
+						'view_item' 			=> __( 'View', 'sportspress' ),
+						'search_items' 			=> __( 'Search', 'sportspress' ),
+						'not_found' 			=> __( 'No results found.', 'sportspress' ),
+						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
+					),
+					'public' 				=> true,
+					'show_ui' 				=> true,
+					'capability_type' 		=> 'sp_event',
+					'map_meta_cap' 			=> true,
+					'publicly_queryable' 	=> true,
+					'exclude_from_search' 	=> false,
+					'hierarchical' 			=> false,
+					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_events_slug', 'events' ) ),
+					'query_var' 			=> true,
+					'supports' 				=> array( 'title', 'author', 'thumbnail', 'comments' ),
+					'has_archive' 			=> true,
+					'show_in_nav_menus' 	=> true,
+					'menu_icon' 			=> 'dashicons-calendar',
+				)
+			)
+		);
+	}
 
+	public function display_scheduled_events( $posts ) {
+		global $wp_query, $wpdb;
+		if ( is_single() && $wp_query->post_count == 0 && isset( $wp_query->query_vars['sp_event'] )) {
+			$posts = $wpdb->get_results( $wp_query->request );
+		}
+		return $posts;
 	}
 }
 
