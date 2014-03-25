@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin functions for the events post type
+ * Admin functions for the calendars post type
  *
  * @author 		ThemeBoy
  * @category 	Admin
@@ -13,29 +13,23 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'SP_Admin_CPT' ) )
 	include( 'class-sp-admin-cpt.php' );
 
-if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
+if ( ! class_exists( 'SP_Admin_CPT_Calendar' ) ) :
 
 /**
- * SP_Admin_CPT_Event Class
+ * SP_Admin_CPT_Calendar Class
  */
-class SP_Admin_CPT_Event extends SP_Admin_CPT {
+class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->type = 'sp_event';
-
-		// Post title fields
-		add_filter( 'enter_title_here', array( $this, 'enter_title_here' ), 1, 2 );
-
-		// Before data updates
-		add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 99, 2 );
+		$this->type = 'sp_calendar';
 
 		// Admin Columns
-		add_filter( 'manage_edit-sp_event_columns', array( $this, 'edit_columns' ) );
-		add_action( 'manage_sp_event_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
-		add_filter( 'manage_edit-sp_event_sortable_columns', array( $this, 'custom_columns_sort' ) );
+		add_filter( 'manage_edit-sp_calendar_columns', array( $this, 'edit_columns' ) );
+		add_action( 'manage_sp_calendar_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
+		add_filter( 'manage_edit-sp_calendar_sortable_columns', array( $this, 'custom_columns_sort' ) );
 
 		// Filtering
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
@@ -50,54 +44,16 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	 * @return boolean
 	 */
 	private function is_editing() {
-		if ( ! empty( $_GET['post_type'] ) && 'sp_event' == $_GET['post_type'] ) {
+		if ( ! empty( $_GET['post_type'] ) && 'sp_calendar' == $_GET['post_type'] ) {
 			return true;
 		}
-		if ( ! empty( $_GET['post'] ) && 'sp_event' == get_post_type( $_GET['post'] ) ) {
+		if ( ! empty( $_GET['post'] ) && 'sp_calendar' == get_post_type( $_GET['post'] ) ) {
 			return true;
 		}
-		if ( ! empty( $_REQUEST['post_id'] ) && 'sp_event' == get_post_type( $_REQUEST['post_id'] ) ) {
+		if ( ! empty( $_REQUEST['post_id'] ) && 'sp_calendar' == get_post_type( $_REQUEST['post_id'] ) ) {
 			return true;
 		}
 		return false;
-	}
-
-	/**
-	 * Change title boxes in admin.
-	 * @param  string $text
-	 * @param  object $post
-	 * @return string
-	 */
-	public function enter_title_here( $text, $post ) {
-		if ( $post->post_type == 'sp_event' )
-			return __( '(Auto)', 'sportspress' );
-
-		return $text;
-	}
-
-	/**
-	 * Auto-generate an event title based on the team playing if left blank.
-	 *
-	 * @param array $data
-	 * @return array
-	 */
-	public function wp_insert_post_data( $data, $postarr ) {
-		global $sportspress_options;
-	  
-		if ( $data['post_type'] == 'sp_event' && $data['post_title'] == '' ):
-
-			$teams = sportspress_array_value( $postarr, 'sp_team', array() );
-
-			$team_names = array();
-			foreach( $teams as $team ):
-				$team_names[] = get_the_title( $team );
-			endforeach;
-
-			$data['post_title'] = implode( ' ' . sportspress_array_value( $sportspress_options, 'event_teams_delimiter', 'vs' ) . ' ', $team_names );
-
-		endif;
-
-		return $data;
 	}
 
 	/**
@@ -106,14 +62,12 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	public function edit_columns( $existing_columns ) {
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
-			'sp_format' => '<span class="dashicons sp-icon-calendar tips" title="' . __( 'Format', 'sportspress' ) . '"></span>',
-			'title' => __( 'Event', 'sportspress' ),
-			'date' => __( 'Date', 'sportspress' ),
-			'sp_time' => __( 'Time', 'sportspress' ),
-			'sp_team' => __( 'Teams', 'sportspress' ),
+			'title' => __( 'Title', 'sportspress' ),
 			'sp_league' => __( 'League', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_venue' => __( 'Venue', 'sportspress' ),
+			'sp_team' => __( 'Team', 'sportspress' ),
+			'sp_events' => __( 'Events', 'sportspress' ),
 			'sp_views' => __( 'Views', 'sportspress' ),
 		);
 		return $columns;
@@ -125,19 +79,14 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	 */
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
-			case 'sp_format':
-				$format = get_post_meta( $post_id, 'sp_format', true );
-				switch ( $format ):
-					case 'league':
-						echo '<span class="dashicons sp-icon-crown tips" title="' . __( 'League', 'sportspress' ) . '"></span>';
-					break;
-					case 'friendly':
-						echo '<span class="dashicons sp-icon-smile tips" title="' . __( 'Friendly', 'sportspress' ) . '"></span>';
-					break;
-				endswitch;
+			case 'sp_league':
+				echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
 			break;
-			case 'sp_time':
-				echo get_post_time( 'H:i', false, $post_id );
+			case 'sp_season':
+				echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
+			break;
+			case 'sp_venue':
+				echo get_the_terms ( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
 			break;
 			case 'sp_team':
 				$teams = (array)get_post_meta( $post_id, 'sp_team', false );
@@ -159,14 +108,8 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 					endforeach;
 				endif;
 			break;
-			case 'sp_league':
-				echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
-			break;
-			case 'sp_season':
-				echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
-			break;
-			case 'sp_venue':
-				echo get_the_terms ( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
+			case 'sp_events':
+				echo sizeof( sportspress_get_calendar_data( $post_id ) );
 			break;
 			case 'sp_views':
 	        	echo sportspress_get_post_views( $post_id );
@@ -196,20 +139,10 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	public function filters() {
 		global $typenow, $wp_query;
 
-	    if ( $typenow != 'sp_event' )
+	    if ( $typenow != 'sp_calendar' )
 	    	return;
 
 		sportspress_highlight_admin_menu();
-
-		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
-		$args = array(
-			'post_type' => 'sp_team',
-			'name' => 'team',
-			'show_option_none' => __( 'Show all teams', 'sportspress' ),
-			'selected' => $selected,
-			'values' => 'ID',
-		);
-		wp_dropdown_pages( $args );
 
 		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 		$args = array(
@@ -228,6 +161,16 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			'selected' => $selected
 		);
 		sportspress_dropdown_taxonomies( $args );
+
+		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
+		$args = array(
+			'post_type' => 'sp_team',
+			'name' => 'team',
+			'show_option_none' => __( 'Show all teams', 'sportspress' ),
+			'selected' => $selected,
+			'values' => 'ID',
+		);
+		wp_dropdown_pages( $args );
 	}
 
 	/**
@@ -238,7 +181,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	public function filters_query( $query ) {
 		global $typenow, $wp_query;
 
-	    if ( $typenow == 'sp_event' ) {
+	    if ( $typenow == 'sp_calendar' ) {
 
 	    	if ( isset( $_GET['team'] ) ) {
 		    	$query->query_vars['meta_value'] 	= $_GET['team'];
@@ -250,4 +193,4 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 
 endif;
 
-return new SP_Admin_CPT_Event();
+return new SP_Admin_CPT_Calendar();

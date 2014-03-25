@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin functions for the teams post type
+ * Admin functions for the staff post type
  *
  * @author 		ThemeBoy
  * @category 	Admin
@@ -13,46 +13,47 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'SP_Admin_CPT' ) )
 	include( 'class-sp-admin-cpt.php' );
 
-if ( ! class_exists( 'SP_Admin_CPT_Team' ) ) :
+if ( ! class_exists( 'SP_Admin_CPT_Staff' ) ) :
 
 /**
- * SP_Admin_CPT_Team Class
+ * SP_Admin_CPT_Staff Class
  */
-class SP_Admin_CPT_Team extends SP_Admin_CPT {
+class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->type = 'sp_team';
+		$this->type = 'sp_staff';
 
 		// Post title fields
 		add_filter( 'enter_title_here', array( $this, 'enter_title_here' ), 1, 2 );
 
 		// Admin Columns
-		add_filter( 'manage_edit-sp_team_columns', array( $this, 'edit_columns' ) );
-		add_action( 'manage_sp_team_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
-		add_filter( 'manage_edit-sp_team_sortable_columns', array( $this, 'custom_columns_sort' ) );
+		add_filter( 'manage_edit-sp_staff_columns', array( $this, 'edit_columns' ) );
+		add_action( 'manage_sp_staff_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
+		add_filter( 'manage_edit-sp_staff_sortable_columns', array( $this, 'custom_columns_sort' ) );
 
 		// Filtering
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
+		add_filter( 'parse_query', array( $this, 'filters_query' ) );
 		
 		// Call SP_Admin_CPT constructor
 		parent::__construct();
 	}
 
 	/**
-	 * Check if we're editing or adding a team
+	 * Check if we're editing or adding an event
 	 * @return boolean
 	 */
 	private function is_editing() {
-		if ( ! empty( $_GET['post_type'] ) && 'sp_team' == $_GET['post_type'] ) {
+		if ( ! empty( $_GET['post_type'] ) && 'sp_staff' == $_GET['post_type'] ) {
 			return true;
 		}
-		if ( ! empty( $_GET['post'] ) && 'sp_team' == get_post_type( $_GET['post'] ) ) {
+		if ( ! empty( $_GET['post'] ) && 'sp_staff' == get_post_type( $_GET['post'] ) ) {
 			return true;
 		}
-		if ( ! empty( $_REQUEST['post_id'] ) && 'sp_team' == get_post_type( $_REQUEST['post_id'] ) ) {
+		if ( ! empty( $_REQUEST['post_id'] ) && 'sp_staff' == get_post_type( $_REQUEST['post_id'] ) ) {
 			return true;
 		}
 		return false;
@@ -65,7 +66,7 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 	 * @return string
 	 */
 	public function enter_title_here( $text, $post ) {
-		if ( $post->post_type == 'sp_team' )
+		if ( $post->post_type == 'sp_staff' )
 			return __( 'Name', 'sportspress' );
 
 		return $text;
@@ -77,8 +78,9 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 	public function edit_columns( $existing_columns ) {
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
-			'sp_icon' => '<span class="dashicons sp-icon-shield tips" title="' . __( 'Logo', 'sportspress' ) . '"></span>',
-			'title' => __( 'Team', 'sportspress' ),
+			'title' => __( 'Name', 'sportspress' ),
+			'sp_role' => __( 'Role', 'sportspress' ),
+			'sp_team' => __( 'Teams', 'sportspress' ),
 			'sp_league' => __( 'Leagues', 'sportspress' ),
 			'sp_season' => __( 'Seasons', 'sportspress' ),
 			'sp_views' => __( 'Views', 'sportspress' ),
@@ -92,6 +94,30 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 	 */
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
+			case 'sp_role':
+				$role = get_post_meta ( $post_id, 'sp_role', true );
+				echo $role ? $role : '&mdash;';
+			break;
+			case 'sp_team':
+				$teams = (array)get_post_meta( $post_id, 'sp_team', false );
+				$teams = array_filter( $teams );
+				if ( empty( $teams ) ):
+					echo '&mdash;';
+				else:
+					$current_team = get_post_meta( $post_id, 'sp_current_team', true );
+					foreach( $teams as $team_id ):
+						if ( ! $team_id ) continue;
+						$team = get_post( $team_id );
+						if ( $team ):
+							echo $team->post_title;
+							if ( $team_id == $current_team ):
+								echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
+							endif;
+							echo '<br>';
+						endif;
+					endforeach;
+				endif;
+			break;
 			case 'sp_league':
 				echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
 			break;
@@ -126,10 +152,20 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 	public function filters() {
 		global $typenow, $wp_query;
 
-	    if ( $typenow != 'sp_team' )
+	    if ( $typenow != 'sp_staff' )
 	    	return;
 
 		sportspress_highlight_admin_menu();
+
+		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
+		$args = array(
+			'post_type' => 'sp_team',
+			'name' => 'team',
+			'show_option_none' => __( 'Show all teams', 'sportspress' ),
+			'selected' => $selected,
+			'values' => 'ID',
+		);
+		wp_dropdown_pages( $args );
 
 		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 		$args = array(
@@ -149,8 +185,25 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 		);
 		sportspress_dropdown_taxonomies( $args );
 	}
+
+	/**
+	 * Filter in admin based on options
+	 *
+	 * @param mixed $query
+	 */
+	public function filters_query( $query ) {
+		global $typenow, $wp_query;
+
+	    if ( $typenow == 'sp_staff' ) {
+
+	    	if ( isset( $_GET['team'] ) ) {
+		    	$query->query_vars['meta_value'] 	= $_GET['team'];
+		        $query->query_vars['meta_key'] 		= 'sp_team';
+		    }
+		}
+	}
 }
 
 endif;
 
-return new SP_Admin_CPT_Team();
+return new SP_Admin_CPT_Staff();

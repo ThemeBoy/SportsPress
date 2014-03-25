@@ -31,8 +31,12 @@ class SP_Admin_Post_Types {
 	public function include_post_type_handlers() {
 		//include( 'post-types/class-sp-admin-meta-boxes.php' );
 		include( 'post-types/class-sp-admin-cpt-event.php' );
+		include( 'post-types/class-sp-admin-cpt-calendar.php' );
 		include( 'post-types/class-sp-admin-cpt-team.php' );
+		include( 'post-types/class-sp-admin-cpt-table.php' );
 		include( 'post-types/class-sp-admin-cpt-player.php' );
+		include( 'post-types/class-sp-admin-cpt-list.php' );
+		include( 'post-types/class-sp-admin-cpt-staff.php' );
 	}
 
 	/**
