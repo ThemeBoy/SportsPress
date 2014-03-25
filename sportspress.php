@@ -222,10 +222,6 @@ final class SportsPress {
 			include_once( 'includes/admin/class-sp-admin.php' );
 		}
 
-		if ( defined( 'DOING_AJAX' ) ) {
-			$this->ajax_includes();
-		}
-
 		if ( ! is_admin() ) {
 			$this->frontend_includes();
 		}
@@ -283,13 +279,6 @@ final class SportsPress {
 	}
 
 	/**
-	 * Include required ajax files.
-	 */
-	public function ajax_includes() {
-		include_once( 'includes/class-sp-ajax.php' );					// Ajax functions for admin and the front-end
-	}
-
-	/**
 	 * Include required frontend files.
 	 */
 	public function frontend_includes() {
@@ -307,6 +296,7 @@ final class SportsPress {
 	 * Include core widgets
 	 */
 	public function include_widgets() {
+		//include_once( 'includes/abstracts/abstract-wc-widget.php' );
 		include_once( 'includes/widgets/class-sp-widget-countdown.php' );
 		include_once( 'includes/widgets/class-sp-widget-event-calendar.php' );
 		include_once( 'includes/widgets/class-sp-widget-event-list.php' );

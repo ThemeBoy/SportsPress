@@ -78,4 +78,5 @@ class SP_Widget_Event_List extends WP_Widget {
 <?php
 	}
 }
-add_action( 'widgets_init', create_function( '', 'return register_widget( "SP_Widget_Event_List" );' ) );
+
+register_widget( 'SP_Widget_Event_List' );

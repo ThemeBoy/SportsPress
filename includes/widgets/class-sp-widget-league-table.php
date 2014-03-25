@@ -95,4 +95,5 @@ class SP_Widget_League_Table extends WP_Widget {
 <?php
 	}
 }
-add_action( 'widgets_init', create_function( '', 'return register_widget( "SP_Widget_League_Table" );' ) );
+
+register_widget( 'SP_Widget_League_Table' );

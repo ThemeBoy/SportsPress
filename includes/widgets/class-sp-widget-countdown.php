@@ -14,35 +14,35 @@ class SP_Widget_Countdown extends WP_Widget {
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		echo sportspress_countdown( $id, array( 'show_league' => $show_league ) );
+		sp_get_template( 'countdown.php', array( 'id' => $id, 'show_league' => $show_league ) );
 		echo $after_widget;
 	}
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['event'] = intval($new_instance['event']);
+		$instance['id'] = intval($new_instance['id']);
 		$instance['show_league'] = intval($new_instance['show_league']);
 
 		return $instance;
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'event' => '', 'show_league' => false ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'show_league' => false ) );
 		$title = strip_tags($instance['title']);
-		$event = intval($instance['event']);
+		$id = intval($instance['id']);
 		$show_league = intval($instance['show_league']);
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('event'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?></label>
+		<p><label for="<?php echo $this->get_field_id('id'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?></label>
 		<?php
 		$args = array(
 			'post_type' => 'sp_event',
-			'name' => $this->get_field_name('event'),
-			'id' => $this->get_field_id('event'),
-			'selected' => $event,
+			'name' => $this->get_field_name('id'),
+			'id' => $this->get_field_id('id'),
+			'selected' => $id,
 			'show_option_all' => __( '(Auto)', 'sportspress' ),
 			'values' => 'ID',
 			'class' => 'widefat',
@@ -60,4 +60,5 @@ class SP_Widget_Countdown extends WP_Widget {
 <?php
 	}
 }
-add_action( 'widgets_init', create_function( '', 'return register_widget( "SP_Widget_Countdown" );' ) );
+
+register_widget( 'SP_Widget_Countdown' );
