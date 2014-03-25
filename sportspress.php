@@ -207,23 +207,6 @@ final class SportsPress {
 		include_once( 'includes/admin/settings/options-text.php' );
 		include_once( 'includes/admin/settings/options-permalink.php' );
 
-		// Custom post types (deprecating)
-		//include_once( 'admin/post-types/separator.php' );
-		//include_once( 'admin/post-types/column.php' );
-		//include_once( 'admin/post-types/performance.php' );
-		//include_once( 'admin/post-types/statistic.php' );
-		//include_once( 'admin/post-types/metric.php' );
-		//include_once( 'admin/post-types/result.php' );
-		//include_once( 'admin/post-types/outcome.php' );
-		//include_once( 'admin/post-types/event.php' );
-		//include_once( 'admin/post-types/calendar.php' );
-		//include_once( 'admin/post-types/team.php' );
-		//include_once( 'admin/post-types/table.php' );
-		//include_once( 'admin/post-types/player.php' );
-		//include_once( 'admin/post-types/list.php' );
-		//include_once( 'admin/post-types/staff.php' );
-		//include_once( 'admin/post-types/directory.php' );
-
 		if ( is_admin() ) {
 			include_once( 'includes/admin/class-sp-admin.php' );
 		}
