@@ -15,7 +15,7 @@ class SP_Widget_Event_List extends WP_Widget {
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		echo sportspress_event_list( $id, array( 'columns' => $columns, 'show_all_events_link' => $show_all_events_link ) );
+		sp_get_template( 'event-list.php', array( 'id' => $id, 'columns' => $columns, 'show_all_events_link' => $show_all_events_link ) );
 		echo $after_widget;
 	}
 
