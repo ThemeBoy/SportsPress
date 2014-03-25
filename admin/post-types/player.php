@@ -61,15 +61,7 @@ function sportspress_player_meta_init( $post ) {
 }
 
 function sportspress_player_details_meta( $post ) {
-	global $sportspress_continents, $sportspress_countries;
-
-	$continents = array();
-
-	foreach( $sportspress_continents as $continent => $codes ):
-		$countries = array_intersect_key( $sportspress_countries, array_flip( $codes ) );
-		asort( $countries );
-		$continents[ $continent ] = $countries;
-	endforeach;
+	$continents = SP()->countries->continents;
 
 	$number = get_post_meta( $post->ID, 'sp_number', true );
 	$nationality = get_post_meta( $post->ID, 'sp_nationality', true );

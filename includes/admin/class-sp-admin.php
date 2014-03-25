@@ -22,7 +22,7 @@ class SP_Admin {
 		add_action( 'current_screen', array( $this, 'conditonal_includes' ) );
 		add_action( 'admin_init', array( $this, 'prevent_admin_access' ) );
 //		add_action( 'admin_init', array( $this, 'preview_emails' ) );
-//		add_action( 'admin_footer', 'wc_print_js', 25 );
+//		add_action( 'admin_footer', 'sp_print_js', 25 );
 	}
 
 	/**
@@ -30,25 +30,25 @@ class SP_Admin {
 	 */
 	public function includes() {
 		// Functions
-//		include_once( 'wc-admin-functions.php' );
-//		include_once( 'wc-meta-box-functions.php' );
+//		include_once( 'sp-admin-functions.php' );
+//		include_once( 'sp-meta-box-functions.php' );
 
 		// Classes
-//		include_once( 'class-wc-admin-post-types.php' );
-//		include_once( 'class-wc-admin-taxonomies.php' );
+//		include_once( 'class-sp-admin-post-types.php' );
+//		include_once( 'class-sp-admin-taxonomies.php' );
 
 		// Classes we only need if the ajax is not-ajax
 		if ( ! is_ajax() ) {
-//			include( 'class-wc-admin-menus.php' );
-//			include( 'class-wc-admin-welcome.php' );
-//			include( 'class-wc-admin-notices.php' );
-//			include( 'class-wc-admin-assets.php' );
-//			include( 'class-wc-admin-permalink-settings.php' );
-//			include( 'class-wc-admin-editor.php' );
+//			include( 'class-sp-admin-menus.php' );
+//			include( 'class-sp-admin-welcome.php' );
+//			include( 'class-sp-admin-notices.php' );
+//			include( 'class-sp-admin-assets.php' );
+//			include( 'class-sp-admin-permalink-settings.php' );
+//			include( 'class-sp-admin-editor.php' );
 
 			// Help
 //			if ( apply_filters( 'sportspress_enable_admin_help_tab', true ) )
-//				include( 'class-wc-admin-help.php' );
+//				include( 'class-sp-admin-help.php' );
 		}
 
 		// Importers
