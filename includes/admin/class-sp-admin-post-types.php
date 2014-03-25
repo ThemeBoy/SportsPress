@@ -30,6 +30,12 @@ class SP_Admin_Post_Types {
 	 */
 	public function include_post_type_handlers() {
 		//include( 'post-types/class-sp-admin-meta-boxes.php' );
+		include( 'post-types/class-sp-admin-cpt-result.php' );
+		include( 'post-types/class-sp-admin-cpt-outcome.php' );
+		include( 'post-types/class-sp-admin-cpt-performance.php' );
+		include( 'post-types/class-sp-admin-cpt-column.php' );
+		include( 'post-types/class-sp-admin-cpt-metric.php' );
+		//include( 'post-types/class-sp-admin-cpt-statistic.php' );
 		include( 'post-types/class-sp-admin-cpt-event.php' );
 		include( 'post-types/class-sp-admin-cpt-calendar.php' );
 		include( 'post-types/class-sp-admin-cpt-team.php' );

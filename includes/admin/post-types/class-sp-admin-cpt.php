@@ -40,11 +40,28 @@ class SP_Admin_CPT {
 		if ( $post_type == $this->type ) {
 			$obj = get_post_type_object( $this->type );
 
-			$strings['insertIntoPost']     = sprintf( __( 'Insert into %s', 'woocommerce' ), $obj->labels->singular_name );
-			$strings['uploadedToThisPost'] = sprintf( __( 'Uploaded to this %s', 'woocommerce' ), $obj->labels->singular_name );
+			$strings['insertIntoPost']     = sprintf( __( 'Insert into %s', 'sportspress' ), $obj->labels->singular_name );
+			$strings['uploadedToThisPost'] = sprintf( __( 'Uploaded to this %s', 'sportspress' ), $obj->labels->singular_name );
 		}
 
 		return $strings;
+	}
+
+	/**
+	 * Check if we're editing or adding an event
+	 * @return boolean
+	 */
+	private function is_editing() {
+		if ( ! empty( $_GET['post_type'] ) && $this->type == $_GET['post_type'] ) {
+			return true;
+		}
+		if ( ! empty( $_GET['post'] ) && $this->type == get_post_type( $_GET['post'] ) ) {
+			return true;
+		}
+		if ( ! empty( $_REQUEST['post_id'] ) && $this->type == get_post_type( $_REQUEST['post_id'] ) ) {
+			return true;
+		}
+		return false;
 	}
 
 	/**

@@ -43,23 +43,6 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 	}
 
 	/**
-	 * Check if we're editing or adding an event
-	 * @return boolean
-	 */
-	private function is_editing() {
-		if ( ! empty( $_GET['post_type'] ) && 'sp_staff' == $_GET['post_type'] ) {
-			return true;
-		}
-		if ( ! empty( $_GET['post'] ) && 'sp_staff' == get_post_type( $_GET['post'] ) ) {
-			return true;
-		}
-		if ( ! empty( $_REQUEST['post_id'] ) && 'sp_staff' == get_post_type( $_REQUEST['post_id'] ) ) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
 	 * Change title boxes in admin.
 	 * @param  string $text
 	 * @param  object $post
