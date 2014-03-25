@@ -215,6 +215,16 @@ final class SportsPress {
 		// Post types
 		include_once( 'includes/class-sp-post-types.php' );						// Registers post types
 
+		// Include abstract classes
+//		include_once( 'includes/abstracts/abstract-sp-product.php' );			// Products
+//		include_once( 'includes/abstracts/abstract-sp-settings-api.php' );		// Settings API (for gateways, shipping, and integrations)
+//		include_once( 'includes/abstracts/abstract-sp-shipping-method.php' );	// A Shipping method
+//		include_once( 'includes/abstracts/abstract-sp-payment-gateway.php' ); 	// A Payment gateway
+//		include_once( 'includes/abstracts/abstract-sp-integration.php' );		// An integration with a service
+
+		// Classes (used on all pages)
+		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
+
 		// Terms
 		include_once( 'admin/terms/venue.php' );
 
@@ -297,6 +307,9 @@ final class SportsPress {
 
 		// Set up localisation
 		$this->load_plugin_textdomain();
+
+		// Load class instances
+		$this->countries = new SP_Countries();	// Countries class
 
 		// Init action
 		do_action( 'sportspress_init' );
