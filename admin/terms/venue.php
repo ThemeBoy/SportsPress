@@ -1,36 +1,4 @@
 <?php
-function sportspress_venue_term_init() {
-	$labels = array(
-		'name' => __( 'Venues', 'sportspress' ),
-		'singular_name' => __( 'Venue', 'sportspress' ),
-		'all_items' => __( 'All', 'sportspress' ),
-		'edit_item' => __( 'Edit Venue', 'sportspress' ),
-		'view_item' => __( 'View', 'sportspress' ),
-		'update_item' => __( 'Update', 'sportspress' ),
-		'add_new_item' => __( 'Add New', 'sportspress' ),
-		'new_item_name' => __( 'Name', 'sportspress' ),
-		'parent_item' => __( 'Parent', 'sportspress' ),
-		'parent_item_colon' => __( 'Parent:', 'sportspress' ),
-		'search_items' =>  __( 'Search', 'sportspress' ),
-		'not_found' => __( 'No results found.', 'sportspress' ),
-	);
-	$args = array(
-		'label' => __( 'Venues', 'sportspress' ),
-		'labels' => $labels,
-		'public' => true,
-		'show_in_nav_menus' => false,
-		'show_tagcloud' => false,
-		'hierarchical' => true,
-		'rewrite' => array( 'slug' => get_option( 'sportspress_venue_slug', 'venue' ) ),
-	);
-	$object_types = array( 'sp_event', 'sp_calendar', 'attachment' );
-	register_taxonomy( 'sp_venue', $object_types, $args );
-	foreach ( $object_types as $object_type ):
-		register_taxonomy_for_object_type( 'sp_league', $object_type );
-	endforeach;
-}
-add_action( 'init', 'sportspress_venue_term_init' );
-
 function sportspress_venue_edit_form_fields( $term ) {
  	$t_id = $term->term_id;
 	$term_meta = get_option( "taxonomy_$t_id" ); ?>

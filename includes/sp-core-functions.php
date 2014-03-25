@@ -1,4 +1,89 @@
 <?php
+/**
+ * SportsPress Core Functions
+ *
+ * General core functions available on both the front-end and admin.
+ *
+ * @author 		ThemeBoy
+ * @category 	Core
+ * @package 	SportsPress/Functions
+ * @version     0.7
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+/**
+ * Get templates passing attributes and including the file.
+ *
+ * @access public
+ * @param mixed $template_name
+ * @param array $args (default: array())
+ * @param string $template_path (default: '')
+ * @param string $default_path (default: '')
+ * @return void
+ */
+function sp_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
+	if ( $args && is_array( $args ) ) {
+		extract( $args );
+	}
+
+	$located = sp_locate_template( $template_name, $template_path, $default_path );
+
+	if ( ! file_exists( $located ) ) {
+		_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', $located ), '0.7' );
+		return;
+	}
+
+	do_action( 'sportspress_before_template_part', $template_name, $template_path, $located, $args );
+
+	include( $located );
+
+	do_action( 'sportspress_after_template_part', $template_name, $template_path, $located, $args );
+}
+
+/**
+ * Locate a template and return the path for inclusion.
+ *
+ * This is the load order:
+ *
+ *		yourtheme		/	$template_path	/	$template_name
+ *		yourtheme		/	$template_name
+ *		$default_path	/	$template_name
+ *
+ * @access public
+ * @param mixed $template_name
+ * @param string $template_path (default: '')
+ * @param string $default_path (default: '')
+ * @return string
+ */
+function sp_locate_template( $template_name, $template_path = '', $default_path = '' ) {
+	if ( ! $template_path ) {
+		$template_path = SP()->template_path();
+	}
+
+	if ( ! $default_path ) {
+		$default_path = SP()->plugin_path() . '/templates/';
+	}
+
+	// Look within passed path within the theme - this is priority
+	$template = locate_template(
+		array(
+			trailingslashit( $template_path ) . $template_name,
+			$template_name
+		)
+	);
+
+	// Get default template
+	if ( ! $template ) {
+		$template = $default_path . $template_name;
+	}
+
+	// Return what we found
+	return apply_filters('sportspress_locate_template', $template, $template_name, $template_path);
+}
+
+/* deprecated functions below */
+
 if( !function_exists( 'date_diff' ) ) {
 	class DateInterval {
 		public $y;

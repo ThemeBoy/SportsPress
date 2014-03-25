@@ -9,25 +9,31 @@ add_filter( 'get_the_content', 'sportspress_the_content' );
 
 function sportspress_default_event_content( $content ) {
     if ( is_singular( 'sp_event' ) && in_the_loop() ):
-        $details = sportspress_event_details();
-        $results = sportspress_event_results();
-        $performance = sportspress_event_performance();
-        $staff = sportspress_event_staff();
         $id = get_the_ID();
+
+        // Video
         $video_url = get_post_meta( $id, 'sp_video', true );
         if ( $video_url ):
             global $wp_embed;
-            $video = $wp_embed->autoembed( $video_url );
-        else:
-            $video = '';
+            echo $wp_embed->autoembed( $video_url );
         endif;
-        if ( $results ):
-            $content = $video . $results . $details . $performance . $staff . $content;
-        else:
-            $venue = sportspress_event_venue();
-            $content = $video . $details . $venue . $performance . $staff . $content;
-        endif;
+
+        // Results
+        sp_get_template( 'event-results.php' );
+
+        // Details
+        sp_get_template( 'event-details.php' );
+
+        // Venue
+        sp_get_template( 'event-venue.php' );
+
+        // Performance
+        sp_get_template( 'event-performance.php' );
+
+        // Staff
+        sp_get_template( 'event-staff.php' );
     endif;
+
     return $content;
 }
 add_filter( 'the_content', 'sportspress_default_event_content', 7 );
@@ -38,13 +44,17 @@ function sportspress_default_calendar_content( $content ) {
         $format = get_post_meta( $id, 'sp_format', true );
         switch ( $format ):
             case 'list':
-                $calendar = sportspress_event_list( $id );
+                sp_get_template( 'event-list.php', array(
+                    'id' => $id
+                ) );
                 break;
             default:
-                $calendar = sportspress_event_calendar( $id, false );
+                sp_get_template( 'event-calendar.php', array(
+                    'id' => $id,
+                    'initial' => false
+                ) );
                 break;
             endswitch;
-        $content = $calendar . $content;
     endif;
     return $content;
 }
@@ -52,8 +62,7 @@ add_filter( 'the_content', 'sportspress_default_calendar_content' );
 
 function sportspress_default_team_content( $content ) {
     if ( is_singular( 'sp_team' ) && in_the_loop() ):
-        $columns = sportspress_team_columns();
-        $content = $content . $columns;
+        sp_get_template( 'team-columns.php' );
     endif;
     return $content;
 }
@@ -75,10 +84,11 @@ function sportspress_default_table_content( $content ) {
         endif;
         $title = '';
         if ( sizeof( $terms ) )
-            $title = '<h4 class="sp-table-caption">' . implode( ' &mdash; ', $terms ) . '</h4>';
-        $table = sportspress_league_table();
+            echo '<h4 class="sp-table-caption">' . implode( ' &mdash; ', $terms ) . '</h4>';
+
+        sp_get_template( 'league-table.php' );
         $excerpt = has_excerpt() ? wpautop( get_the_excerpt() ) : '';
-        $content = $title . $table . $content . $excerpt;
+        $content = $content . $excerpt;
     endif;
     return $content;
 }
@@ -86,9 +96,8 @@ add_filter( 'the_content', 'sportspress_default_table_content' );
 
 function sportspress_default_player_content( $content ) {
     if ( is_singular( 'sp_player' ) && in_the_loop() ):
-        $metrics = sportspress_player_metrics();
-        $performance = sportspress_player_performance();
-        $content .= $metrics . $performance;
+        sp_get_template( 'player-metrics.php' );
+        sp_get_template( 'player-performance.php' );
     endif;
     return $content;
 }
@@ -100,13 +109,12 @@ function sportspress_default_list_content( $content ) {
         $format = get_post_meta( $id, 'sp_format', true );
         switch ( $format ):
             case 'gallery':
-                $list = sportspress_player_gallery( $id );
+                sp_get_template( 'player-gallery.php' );
                 break;
             default:
-                $list = sportspress_player_list( $id );
+                sp_get_template( 'player-list.php' );
                 break;
             endswitch;
-        $content = $list . $content;
     endif;
     return $content;
 }

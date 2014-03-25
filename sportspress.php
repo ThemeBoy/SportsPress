@@ -82,6 +82,13 @@ final class SportsPress {
 	 * @return SportsPress
 	 */
 	public function __construct() {
+		// Auto-load classes on demand
+		if ( function_exists( "__autoload" ) ) {
+			spl_autoload_register( "__autoload" );
+		}
+
+		spl_autoload_register( array( $this, 'autoload' ) );
+
 		// Define constants
 		$this->define_constants();
 
@@ -91,10 +98,54 @@ final class SportsPress {
 		// Hooks
 		add_action( 'widgets_init', array( $this, 'include_widgets' ) );
 		add_action( 'init', array( $this, 'init' ), 0 );
+		add_action( 'init', array( 'SP_Shortcodes', 'init' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup_environment' ) );
 
 		// Loaded action
 		do_action( 'sportspress_loaded' );
+	}
+
+	/**
+	 * Auto-load SP classes on demand to reduce memory consumption.
+	 *
+	 * @param mixed $class
+	 * @return void
+	 */
+	public function autoload( $class ) {
+
+		$class = strtolower( $class );
+
+		if ( strpos( $class, 'sp_shortcode_' ) === 0 ) {
+
+			$path = $this->plugin_path() . '/includes/shortcodes/';
+			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
+
+			if ( is_readable( $path . $file ) ) {
+				include_once( $path . $file );
+				return;
+			}
+
+		} elseif ( strpos( $class, 'sp_meta_box' ) === 0 ) {
+
+			$path = $this->plugin_path() . '/includes/admin/post-types/meta-boxes/';
+			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
+
+			if ( is_readable( $path . $file ) ) {
+				include_once( $path . $file );
+				return;
+			}
+		}
+
+		if ( strpos( $class, 'sp_' ) === 0 ) {
+
+			$path = $this->plugin_path() . '/includes/';
+			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
+
+			if ( is_readable( $path . $file ) ) {
+				include_once( $path . $file );
+				return;
+			}
+		}
 	}
 
 	/**
@@ -124,24 +175,6 @@ final class SportsPress {
 		include_once( 'includes/sp-core-functions.php' );
 		include_once( 'includes/sp-deprecated-functions.php' );
 
-		// Templates
-		include_once( 'includes/templates/countdown.php' );
-		include_once( 'includes/templates/event-details.php' );
-		include_once( 'includes/templates/event-performance.php' );
-		include_once( 'includes/templates/event-results.php' );
-		include_once( 'includes/templates/event-staff.php' );
-		include_once( 'includes/templates/event-venue.php' );
-		include_once( 'includes/templates/event-calendar.php' );
-		include_once( 'includes/templates/event-list.php' );
-		include_once( 'includes/templates/league-table.php' );
-		include_once( 'includes/templates/player-league-performance.php' );
-		include_once( 'includes/templates/player-list.php' );
-		//include_once( 'includes/templates/player-roster.php' );
-		include_once( 'includes/templates/player-gallery.php' );
-		include_once( 'includes/templates/player-metrics.php' );
-		include_once( 'includes/templates/player-performance.php' );
-		include_once( 'includes/templates/team-columns.php' );
-
 		// Options
 		include_once( 'admin/settings/settings.php' );
 		include_once( 'admin/settings/options-general.php' );
@@ -168,11 +201,15 @@ final class SportsPress {
 		include_once( 'admin/post-types/staff.php' );
 		//include_once( 'admin/post-types/directory.php' );
 
+		if ( ! is_admin() ) {
+			$this->frontend_includes();
+		}
+
+		// Post types
+		include_once( 'includes/class-sp-post-types.php' );						// Registers post types
+
 		// Terms
-		include_once( 'admin/terms/league.php' );
-		include_once( 'admin/terms/season.php' );
 		include_once( 'admin/terms/venue.php' );
-		include_once( 'admin/terms/position.php' );
 
 		// Tools
 		include_once( 'admin/tools/importers.php' );
@@ -218,6 +255,7 @@ final class SportsPress {
 	 * Include required frontend files.
 	 */
 	public function frontend_includes() {
+		include_once( 'includes/class-sp-shortcodes.php' );				// Shortcodes class
 	}
 
 	/**
