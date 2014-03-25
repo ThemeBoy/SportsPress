@@ -42,6 +42,11 @@ final class SportsPress {
 	protected static $_instance = null;
 
 	/**
+	 * @var SP_Countries $countries
+	 */
+	public $countries = null;
+
+	/**
 	 * Main SportsPress Instance
 	 *
 	 * Ensures only one instance of SportsPress is loaded or can be loaded.
@@ -96,6 +101,7 @@ final class SportsPress {
 		$this->includes();
 
 		// Hooks
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 		add_action( 'widgets_init', array( $this, 'include_widgets' ) );
 		add_action( 'init', array( $this, 'init' ), 0 );
 		add_action( 'init', array( 'SP_Shortcodes', 'init' ) );
@@ -103,6 +109,18 @@ final class SportsPress {
 
 		// Loaded action
 		do_action( 'sportspress_loaded' );
+	}
+
+	/**
+	 * Show action links on the plugin screen
+	 *
+	 * @param mixed $links
+	 * @return array
+	 */
+	public function action_links( $links ) {
+		return array_merge( array(
+			'<a href="' . admin_url( 'options-general.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
+		), $links );
 	}
 
 	/**
@@ -258,7 +276,6 @@ final class SportsPress {
 		include_once( 'admin/hooks/the-content.php' );
 		include_once( 'admin/hooks/widget-text.php' );
 		include_once( 'admin/hooks/wp-insert-post-data.php' );
-		include_once( 'admin/hooks/plugin-action-links.php' );
 		include_once( 'admin/hooks/post-updated-messages.php' );
 
 		// Register activation hook
