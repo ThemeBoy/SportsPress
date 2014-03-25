@@ -12,6 +12,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+// Include core functions
+include( 'sp-conditional-functions.php' );
+include( 'sp-deprecated-functions.php' );
+
 /**
  * Get templates passing attributes and including the file.
  *
