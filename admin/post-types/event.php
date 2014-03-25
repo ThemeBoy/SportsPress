@@ -28,32 +28,6 @@ function sportspress_event_post_init() {
 }
 add_action( 'init', 'sportspress_event_post_init' );
 
-function sportspress_event_edit_columns() {
-	$columns = array(
-		'cb' => '<input type="checkbox" />',
-		'sp_format' => '<span class="dashicons sp-icon-calendar tips" title="' . __( 'Format', 'sportspress' ) . '"></span>',
-		'title' => __( 'Event', 'sportspress' ),
-		'date' => __( 'Date', 'sportspress' ),
-		'sp_time' => __( 'Time', 'sportspress' ),
-		'sp_team' => __( 'Teams', 'sportspress' ),
-		'sp_league' => __( 'League', 'sportspress' ),
-		'sp_season' => __( 'Season', 'sportspress' ),
-		'sp_venue' => __( 'Venue', 'sportspress' ),
-		'sp_views' => __( 'Views', 'sportspress' ),
-	);
-	return $columns;
-}
-add_filter( 'manage_edit-sp_event_columns', 'sportspress_event_edit_columns' );
-
-function sportspress_event_display_scheduled( $posts ) {
-	global $wp_query, $wpdb;
-	if ( is_single() && $wp_query->post_count == 0 && isset( $wp_query->query_vars['sp_event'] )) {
-		$posts = $wpdb->get_results( $wp_query->request );
-	}
-	return $posts;
-}
-add_filter( 'the_posts', 'sportspress_event_display_scheduled' );
-
 function sportspress_event_meta_init( $post ) {
 	$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 	$players = (array)get_post_meta( $post->ID, 'sp_player', false );
