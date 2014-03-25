@@ -209,12 +209,12 @@ final class SportsPress {
 
 		// Custom post types (deprecating)
 		//include_once( 'admin/post-types/separator.php' );
-		include_once( 'admin/post-types/column.php' );
-		include_once( 'admin/post-types/performance.php' );
+		//include_once( 'admin/post-types/column.php' );
+		//include_once( 'admin/post-types/performance.php' );
 		//include_once( 'admin/post-types/statistic.php' );
-		include_once( 'admin/post-types/metric.php' );
-		include_once( 'admin/post-types/result.php' );
-		include_once( 'admin/post-types/outcome.php' );
+		//include_once( 'admin/post-types/metric.php' );
+		//include_once( 'admin/post-types/result.php' );
+		//include_once( 'admin/post-types/outcome.php' );
 		//include_once( 'admin/post-types/event.php' );
 		//include_once( 'admin/post-types/calendar.php' );
 		//include_once( 'admin/post-types/team.php' );
@@ -296,7 +296,7 @@ final class SportsPress {
 	 * Include core widgets
 	 */
 	public function include_widgets() {
-		//include_once( 'includes/abstracts/abstract-wc-widget.php' );
+		//include_once( 'includes/abstracts/abstract-sp-widget.php' );
 		include_once( 'includes/widgets/class-sp-widget-countdown.php' );
 		include_once( 'includes/widgets/class-sp-widget-event-calendar.php' );
 		include_once( 'includes/widgets/class-sp-widget-event-list.php' );
