@@ -173,7 +173,6 @@ final class SportsPress {
 
 		// Functions
 		include_once( 'includes/sp-core-functions.php' );
-		include_once( 'includes/sp-deprecated-functions.php' );
 
 		// Options
 		include_once( 'admin/settings/settings.php' );
@@ -201,6 +200,14 @@ final class SportsPress {
 		include_once( 'admin/post-types/staff.php' );
 		//include_once( 'admin/post-types/directory.php' );
 
+		if ( is_admin() ) {
+			include_once( 'includes/admin/class-sp-admin.php' );
+		}
+
+		if ( defined( 'DOING_AJAX' ) ) {
+			$this->ajax_includes();
+		}
+
 		if ( ! is_admin() ) {
 			$this->frontend_includes();
 		}
@@ -210,9 +217,6 @@ final class SportsPress {
 
 		// Terms
 		include_once( 'admin/terms/venue.php' );
-
-		// Tools
-		include_once( 'admin/tools/importers.php' );
 
 		// Typical request actions
 		include_once( 'admin/hooks/plugins-loaded.php' );
@@ -252,6 +256,13 @@ final class SportsPress {
 	}
 
 	/**
+	 * Include required ajax files.
+	 */
+	public function ajax_includes() {
+		include_once( 'includes/class-sp-ajax.php' );					// Ajax functions for admin and the front-end
+	}
+
+	/**
 	 * Include required frontend files.
 	 */
 	public function frontend_includes() {
@@ -262,6 +273,7 @@ final class SportsPress {
 	 * Function used to Init SportsPress Template Functions - This makes them pluggable by plugins and themes.
 	 */
 	public function include_template_functions() {
+		include_once( 'includes/sp-template-functions.php' );
 	}
 
 	/**
