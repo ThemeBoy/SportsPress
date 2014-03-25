@@ -19,7 +19,7 @@ class SP_Widget_Player_list extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 		echo '<div id="sp_player_list_wrap">';
-		echo sportspress_player_list( $id, array( 'number' => $number, 'performance' => $performance, 'orderby' => $orderby , 'order' => $order, 'show_all_players_link' => $show_all_players_link ) );
+		sp_get_template( 'player-list.php', array( 'id' => $id, 'number' => $number, 'performance' => $performance, 'orderby' => $orderby , 'order' => $order, 'show_all_players_link' => $show_all_players_link ) );
 		echo '</div>';
 		echo $after_widget;
 	}
