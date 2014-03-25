@@ -64,7 +64,7 @@ class SP_Admin {
 
 		switch ( $screen->id ) {
 			case 'dashboard' :
-//				include( 'class-sp-admin-dashboard.php' );
+				include( 'class-sp-admin-dashboard.php' );
 			break;
 			case 'users' :
 			case 'user' :
@@ -76,7 +76,7 @@ class SP_Admin {
 	}
 
 	/**
-	 * Prevent any user who cannot 'edit_posts' (subscribers, customers etc) from accessing admin
+	 * Prevent any user who cannot 'edit_posts' (subscribers, fans etc) from accessing admin
 	 */
 	public function prevent_admin_access() {
 		$prevent_access = false;
