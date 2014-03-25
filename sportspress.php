@@ -191,22 +191,23 @@ final class SportsPress {
 	 * Include required core files used in admin and on the frontend.
 	 */
 	private function includes() {
-		// Globals
-		include_once( 'admin/includes/globals.php' );
 
 		// Functions
 		include_once( 'includes/sp-core-functions.php' );
 
-		// Options
-		include_once( 'admin/settings/settings.php' );
-		include_once( 'admin/settings/options-general.php' );
-		include_once( 'admin/settings/options-event.php' );
-		include_once( 'admin/settings/options-team.php' );
-		include_once( 'admin/settings/options-player.php' );
-		include_once( 'admin/settings/options-text.php' );
-		include_once( 'admin/settings/options-permalink.php' );
+		// Globals
+		include_once( 'includes/admin/settings/globals.php' );
 
-		// Custom post types
+		// Options
+		include_once( 'includes/admin/settings/settings.php' );
+		include_once( 'includes/admin/settings/options-general.php' );
+		include_once( 'includes/admin/settings/options-event.php' );
+		include_once( 'includes/admin/settings/options-team.php' );
+		include_once( 'includes/admin/settings/options-player.php' );
+		include_once( 'includes/admin/settings/options-text.php' );
+		include_once( 'includes/admin/settings/options-permalink.php' );
+
+		// Custom post types (deprecating)
 		include_once( 'admin/post-types/separator.php' );
 		include_once( 'admin/post-types/column.php' );
 		include_once( 'admin/post-types/performance.php' );
@@ -245,16 +246,16 @@ final class SportsPress {
 		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
 		include_once( 'includes/class-sp-text.php' );							// Defines editable strings
 
-		// Terms
+		// Terms (deprecating)
 		include_once( 'admin/terms/venue.php' );
 
-		// Typical request actions
+		// Typical request actions (deprecating)
 		include_once( 'admin/hooks/plugins-loaded.php' );
 		include_once( 'admin/hooks/wp-enqueue-scripts.php' );
 		include_once( 'admin/hooks/loop-start.php' );
 		include_once( 'admin/hooks/the-title.php' );
 
-		// Admin request actions
+		// Admin request actions (deprecating)
 		include_once( 'admin/hooks/admin-init.php' );
 		include_once( 'admin/hooks/admin-menu.php' );
 		include_once( 'admin/hooks/admin-enqueue-scripts.php' );
@@ -262,14 +263,14 @@ final class SportsPress {
 		include_once( 'admin/hooks/admin-head.php' );
 		include_once( 'admin/hooks/current-screen.php' );
 
-		// Administrative actions
+		// Administrative actions (deprecating)
 		include_once( 'admin/hooks/manage-posts-columns.php' );
 		include_once( 'admin/hooks/post-thumbnail-html.php' );
 		include_once( 'admin/hooks/restrict-manage-posts.php' );
 		include_once( 'admin/hooks/parse-query.php' );
 		include_once( 'admin/hooks/save-post.php' );
 
-		// Filters
+		// Filters (deprecating)
 		include_once( 'admin/hooks/admin-post-thumbnail-html.php' );
 		include_once( 'admin/hooks/gettext.php' );
 		include_once( 'admin/hooks/pre-get-posts.php' );
@@ -280,7 +281,7 @@ final class SportsPress {
 		include_once( 'admin/hooks/wp-insert-post-data.php' );
 		include_once( 'admin/hooks/post-updated-messages.php' );
 
-		// Register activation hook
+		// Register activation hook (deprecating)
 		include_once( 'admin/hooks/register-activation-hook.php' );
 	}
 
