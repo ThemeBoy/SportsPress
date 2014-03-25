@@ -56,6 +56,9 @@
 	height: 320px;
 	margin-bottom: 32px;
 }
+.sp-google-map img {
+	max-width: none !important;
+}
 
 @media only screen and (max-width: 40em) {
 	.sp-responsive-table {
