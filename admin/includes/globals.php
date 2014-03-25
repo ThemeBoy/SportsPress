@@ -6,59 +6,6 @@ function sportspress_define_globals() {
 	
 	$sportspress_options = (array)get_option( 'sportspress', array() );
 
-	// Text
-	global $sportspress_text_options;
-	
-	$sportspress_text_options = array(
-		__( 'Article', 'sportspress' ),
-		__( 'Current Team', 'sportspress' ),
-		__( 'Date', 'sportspress' ),
-		__( 'Details', 'sportspress' ),
-		__( 'days', 'sportspress' ),
-		__( 'Event', 'sportspress' ),
-		__( 'Friendly', 'sportspress' ),
-		__( 'hrs', 'sportspress' ),
-		__( 'League', 'sportspress' ),
-		__( 'mins', 'sportspress' ),
-		__( 'Nationality', 'sportspress' ),
-		__( 'Past Teams', 'sportspress' ),
-		__( 'Player', 'sportspress' ),
-		__( 'Position', 'sportspress' ),
-		__( 'Pos', 'sportspress' ),
-		__( 'Preview', 'sportspress' ),
-		__( 'Rank', 'sportspress' ),
-		__( 'Recap', 'sportspress' ),
-		__( 'Results', 'sportspress' ),
-		__( 'Season', 'sportspress' ),
-		__( 'secs', 'sportspress' ),
-		__( 'Staff', 'sportspress' ),
-		__( 'Substitute', 'sportspress' ),
-		__( 'Team', 'sportspress' ),
-		__( 'Teams', 'sportspress' ),
-		__( 'Time', 'sportspress' ),
-		__( 'Total', 'sportspress' ),
-		__( 'Venue', 'sportspress' ),
-		__( 'View all players', 'sportspress' ),
-		__( 'View all events', 'sportspress' ),
-		__( 'View full table', 'sportspress' ),
-	);
-
-	sort( $sportspress_text_options );
-
-	// Formats
-	global $sportspress_formats;
-
-	$sportspress_formats = array( 'event' => array(), 'list' => array() );
-
-	$sportspress_formats['event']['league'] = __( 'League', 'sportspress' );
-	$sportspress_formats['event']['friendly'] = __( 'Friendly', 'sportspress' );
-
-	$sportspress_formats['calendar']['calendar'] = __( 'Calendar', 'sportspress' );
-	$sportspress_formats['calendar']['list'] = __( 'List', 'sportspress' );
-
-	$sportspress_formats['list']['list'] = __( 'List', 'sportspress' );
-	$sportspress_formats['list']['gallery'] = __( 'Gallery', 'sportspress' );
-
 	// Sports
 	global $sportspress_sports;
 

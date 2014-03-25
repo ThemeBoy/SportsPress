@@ -25,7 +25,6 @@ class SP_Countries {
 	 * @return void
 	 */
 	public function __construct() {
-
 		$continents = array(
 			__( 'Africa', 'sportspress' ) => array('AO','BF','BI','BJ','BW','CD','CF','CG','CI','CM','CV','DJ','DZ','EG','EH','ER','ET','GA','GH','GM','GN','GQ','GW','KE','KM','LR','LS','LY','MA','MG','ML','MR','MU','MZ','NA','NE','NG','RW','SC','SD','SL','SN','SO','ST','SZ','TD','TG','TN','TZ','UG','ZA','ZM','ZW'),
 			__( 'Asia', 'sportspress' ) => array('AE','AF','AM','AZ','BD','BH','BN','BT','CN','CY','GE','HK','IL','IN','IQ','IR','JO','JP','KG','KH','KP','KR','KW','KZ','LA','LB','LK','MM','MN','MO','MV','MY','NP','OM','PH','PK','QA','SA','SG','TH','TJ','TM','TW','UZ','VN','YE'),

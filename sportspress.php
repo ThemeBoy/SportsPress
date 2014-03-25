@@ -47,6 +47,11 @@ final class SportsPress {
 	public $countries = null;
 
 	/**
+	 * @var SP_Text $text
+	 */
+	public $text = null;
+
+	/**
 	 * Main SportsPress Instance
 	 *
 	 * Ensures only one instance of SportsPress is loaded or can be loaded.
@@ -238,6 +243,7 @@ final class SportsPress {
 
 		// Classes (used on all pages)
 		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
+		include_once( 'includes/class-sp-text.php' );							// Defines editable strings
 
 		// Terms
 		include_once( 'admin/terms/venue.php' );
@@ -317,6 +323,9 @@ final class SportsPress {
 
 		// Load class instances
 		$this->countries = new SP_Countries();	// Countries class
+
+		// Load class instances
+		$this->text = new SP_Text();			// Text class
 
 		// Init action
 		do_action( 'sportspress_init' );

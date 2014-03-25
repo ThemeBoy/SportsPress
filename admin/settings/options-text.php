@@ -1,9 +1,10 @@
 <?php
 class SportsPressTextSettingsPage {
+	private $strings = null;
+
 	public function __construct() {
-		global $sportspress_options, $sportspress_text_options;
+		global $sportspress_options;
 		$this->options =& $sportspress_options;
-		$this->strings =& $sportspress_text_options;
 		add_action( 'admin_init', array( $this, 'page_init' ), 1 );
 	}
 
@@ -21,6 +22,7 @@ class SportsPressTextSettingsPage {
 			'sportspress_text'
 		);
 
+		$this->strings =& SP()->text->strings;
 		foreach ( $this->strings as $string ):
 			add_settings_field(	
 				sanitize_title( $string ),
