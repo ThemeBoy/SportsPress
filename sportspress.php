@@ -216,12 +216,12 @@ final class SportsPress {
 		include_once( 'admin/post-types/result.php' );
 		include_once( 'admin/post-types/outcome.php' );
 		//include_once( 'admin/post-types/event.php' );
-		include_once( 'admin/post-types/calendar.php' );
-		include_once( 'admin/post-types/team.php' );
-		include_once( 'admin/post-types/table.php' );
-		include_once( 'admin/post-types/player.php' );
-		include_once( 'admin/post-types/list.php' );
-		include_once( 'admin/post-types/staff.php' );
+		//include_once( 'admin/post-types/calendar.php' );
+		//include_once( 'admin/post-types/team.php' );
+		//include_once( 'admin/post-types/table.php' );
+		//include_once( 'admin/post-types/player.php' );
+		//include_once( 'admin/post-types/list.php' );
+		//include_once( 'admin/post-types/staff.php' );
 		//include_once( 'admin/post-types/directory.php' );
 
 		if ( is_admin() ) {

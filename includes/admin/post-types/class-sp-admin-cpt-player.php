@@ -38,7 +38,6 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
 		add_filter( 'parse_query', array( $this, 'filters_query' ) );
 		
-
 		// Call SP_Admin_CPT constructor
 		parent::__construct();
 	}
@@ -80,7 +79,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
 			'sp_number' => '<span class="dashicons sp-icon-tshirt tips" title="' . __( 'Number', 'sportspress' ) . '"></span>',
-			'title' => __( 'Player', 'sportspress' ),
+			'title' => __( 'Name', 'sportspress' ),
 			'sp_position' => __( 'Positions', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),
 			'sp_league' => __( 'Leagues', 'sportspress' ),
