@@ -64,13 +64,13 @@ class SP_Admin {
 
 		switch ( $screen->id ) {
 			case 'dashboard' :
-				include( 'class-sp-admin-dashboard.php' );
+//				include( 'class-sp-admin-dashboard.php' );
 			break;
 			case 'users' :
 			case 'user' :
 			case 'profile' :
 			case 'user-edit' :
-				include( 'class-sp-admin-profile.php' );
+//				include( 'class-sp-admin-profile.php' );
 			break;
 		}
 	}
