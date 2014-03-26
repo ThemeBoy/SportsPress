@@ -21,8 +21,6 @@ class SP_Admin {
 		add_action( 'init', array( $this, 'includes' ) );
 		add_action( 'current_screen', array( $this, 'conditonal_includes' ) );
 		add_action( 'admin_init', array( $this, 'prevent_admin_access' ) );
-//		add_action( 'admin_init', array( $this, 'preview_emails' ) );
-//		add_action( 'admin_footer', 'sp_print_js', 25 );
 	}
 
 	/**

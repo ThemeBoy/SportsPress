@@ -29,7 +29,7 @@ class SP_Admin_Post_Types {
 	 * Conditonally load classes and functions only needed when viewing a post type.
 	 */
 	public function include_post_type_handlers() {
-		//include( 'post-types/class-sp-admin-meta-boxes.php' );
+		include( 'post-types/class-sp-admin-meta-boxes.php' );
 		include( 'post-types/class-sp-admin-cpt-result.php' );
 		include( 'post-types/class-sp-admin-cpt-outcome.php' );
 		include( 'post-types/class-sp-admin-cpt-performance.php' );
@@ -52,52 +52,43 @@ class SP_Admin_Post_Types {
 	 * @return array
 	 */
 	public function post_updated_messages( $messages ) {
-		global $post, $post_ID;
+		global $typenow, $post;
 
-		$messages['product'] = array(
-			0 => '', // Unused. Messages start at index 1.
-			1 => sprintf( __( 'Product updated. <a href="%s">View Product</a>', 'sportspress' ), esc_url( get_permalink($post_ID) ) ),
-			2 => __( 'Custom field updated.', 'sportspress' ),
-			3 => __( 'Custom field deleted.', 'sportspress' ),
-			4 => __( 'Product updated.', 'sportspress' ),
-			5 => isset($_GET['revision']) ? sprintf( __( 'Product restored to revision from %s', 'sportspress' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-			6 => sprintf( __( 'Product published. <a href="%s">View Product</a>', 'sportspress' ), esc_url( get_permalink($post_ID) ) ),
-			7 => __( 'Product saved.', 'sportspress' ),
-			8 => sprintf( __( 'Product submitted. <a target="_blank" href="%s">Preview Product</a>', 'sportspress' ), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
-			9 => sprintf( __( 'Product scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview Product</a>', 'sportspress' ),
-			  date_i18n( __( 'M j, Y @ G:i', 'sportspress' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
-			10 => sprintf( __( 'Product draft updated. <a target="_blank" href="%s">Preview Product</a>', 'sportspress' ), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
-		);
+		if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_metric', 'sp_performance' ) ) ):
+			$obj = get_post_type_object( $typenow );
 
-		$messages['shop_order'] = array(
-			0 => '', // Unused. Messages start at index 1.
-			1 => __( 'Order updated.', 'sportspress' ),
-			2 => __( 'Custom field updated.', 'sportspress' ),
-			3 => __( 'Custom field deleted.', 'sportspress' ),
-			4 => __( 'Order updated.', 'sportspress' ),
-			5 => isset($_GET['revision']) ? sprintf( __( 'Order restored to revision from %s', 'sportspress' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-			6 => __( 'Order updated.', 'sportspress' ),
-			7 => __( 'Order saved.', 'sportspress' ),
-			8 => __( 'Order submitted.', 'sportspress' ),
-			9 => sprintf( __( 'Order scheduled for: <strong>%1$s</strong>.', 'sportspress' ),
-			  date_i18n( __( 'M j, Y @ G:i', 'sportspress' ), strtotime( $post->post_date ) ) ),
-			10 => __( 'Order draft updated.', 'sportspress' )
-		);
+			for ( $i = 0; $i <= 10; $i++ ):
+				$messages['post'][ $i ] = __( 'Settings saved.', 'sportspress' ) .
+					' <a href="' . esc_url( admin_url( 'edit.php?post_type=' . $typenow ) ) . '">' .
+					__( 'View All', 'sportspress' ) . '</a>';
+			endfor;
+		elseif ( in_array( $typenow, array( 'sp_event', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) ) ):
+			$obj = get_post_type_object( $typenow );
 
-		$messages['shop_coupon'] = array(
-			0 => '', // Unused. Messages start at index 1.
-			1 => __( 'Coupon updated.', 'sportspress' ),
-			2 => __( 'Custom field updated.', 'sportspress' ),
-			3 => __( 'Custom field deleted.', 'sportspress' ),
-			4 => __( 'Coupon updated.', 'sportspress' ),
-			5 => isset($_GET['revision']) ? sprintf( __( 'Coupon restored to revision from %s', 'sportspress' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-			6 => __( 'Coupon updated.', 'sportspress' ),
-			7 => __( 'Coupon saved.', 'sportspress' ),
-			8 => __( 'Coupon submitted.', 'sportspress' ),
-			9 => sprintf( __( 'Coupon scheduled for: <strong>%1$s</strong>.', 'sportspress' ),
-			  date_i18n( __( 'M j, Y @ G:i', 'sportspress' ), strtotime( $post->post_date ) ) ),
-			10 => __( 'Coupon draft updated.', 'sportspress' )
-		);
+			$messages['post'][1] = __( 'Changes saved.', 'sportspress' ) .
+				' <a href="' . esc_url( get_permalink($post->ID) ) . '">' . $obj->labels->view_item . '</a>';
+
+			$messages['post'][4] = __( 'Changes saved.', 'sportspress' );
+
+			$messages['post'][6] = __( 'Success!', 'sportspress' ) .
+				' <a href="' . esc_url( get_permalink($post->ID) ) . '">' . $obj->labels->view_item . '</a>';
+
+			$messages['post'][7] = __( 'Changes saved.', 'sportspress' );
+
+			$messages['post'][8] = __( 'Success!', 'sportspress' ) .
+				' <a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink($post->ID) ) ) . '">' .
+				sprintf( __( 'Preview %s', 'sportspress' ), $obj->labels->singular_name ) . '</a>';
+
+			$messages['post'][9] = sprintf(
+				__( 'Scheduled for: <b>%1$s</b>.', 'sportspress' ),
+				date_i18n( __( 'M j, Y @ G:i', 'sportspress' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post->ID) ) ) .
+				' <a target="_blank" href="' . esc_url( get_permalink($post->ID) ) . '">' .
+				sprintf( __( 'Preview %s', 'sportspress' ), $obj->labels->singular_name ) . '</a>';
+
+			$messages['post'][10] = __( 'Success!', 'sportspress' ) .
+				' <a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink($post->ID) ) ) . '">' .
+				sprintf( __( 'Preview %s', 'sportspress' ), $obj->labels->singular_name ) . '</a>';
+		endif;
 
 		return $messages;
 	}

@@ -39,8 +39,8 @@ class SP_Admin_Assets {
 		if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
 
 			// Admin styles for SP pages only
-			wp_enqueue_style( 'sportspress-admin', SP()->plugin_url() . 'assets/css/admin.css', array(), SP_VERSION );
-			wp_enqueue_style( 'jquery-chosen', SP()->plugin_url() . 'assets/css/chosen.css', array(), '1.1.0' );
+			wp_enqueue_style( 'sportspress-admin', SP()->plugin_url() . '/assets/css/admin.css', array(), SP_VERSION );
+			wp_enqueue_style( 'jquery-chosen', SP()->plugin_url() . '/assets/css/chosen.css', array(), '1.1.0' );
 			wp_enqueue_style( 'wp-color-picker' );
 		}
 
@@ -60,21 +60,21 @@ class SP_Admin_Assets {
 		$screen = get_current_screen();
 
 		// Register scripts
-		wp_register_script( 'jquery-chosen', SP()->plugin_url() .'assets/js/chosen.jquery.min.js', array( 'jquery' ), '1.1.0', true );
+		wp_register_script( 'jquery-chosen', SP()->plugin_url() . '/assets/js/chosen.jquery.min.js', array( 'jquery' ), '1.1.0', true );
 
-		wp_register_script( 'jquery-tiptip', SP()->plugin_url() .'assets/js/jquery.tipTip.min.js', array( 'jquery' ), '1.3', true );
+		wp_register_script( 'jquery-tiptip', SP()->plugin_url() . '/assets/js/jquery.tipTip.min.js', array( 'jquery' ), '1.3', true );
 
-		wp_register_script( 'jquery-caret', SP()->plugin_url() .'assets/js/jquery.caret.min.js', array( 'jquery' ), '1.02', true );
+		wp_register_script( 'jquery-caret', SP()->plugin_url() . '/assets/js/jquery.caret.min.js', array( 'jquery' ), '1.02', true );
 
-		wp_register_script( 'jquery-countdown', SP()->plugin_url() .'assets/js/jquery.countdown.min.js', array( 'jquery' ), '2.0.2', true );
+		wp_register_script( 'jquery-countdown', SP()->plugin_url() . '/assets/js/jquery.countdown.min.js', array( 'jquery' ), '2.0.2', true );
 
 		wp_register_script( 'google-maps', 'http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places' );
 
-		wp_register_script( 'jquery-locationpicker', SP()->plugin_url() .'assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
+		wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
 
-		wp_register_script( 'sportspress-admin-locationpicker', SP()->plugin_url() .'assets/js/admin-locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_VERSION, true );
+		wp_register_script( 'sportspress-admin-locationpicker', SP()->plugin_url() . '/assets/js/admin-locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_VERSION, true );
 	
-		wp_register_script( 'sportspress-admin', SP()->plugin_url() .'assets/js/admin.js', array( 'jquery', 'jquery-chosen', 'jquery-tiptip', 'jquery-caret', 'jquery-countdown' ), SP_VERSION, true );
+		wp_register_script( 'sportspress-admin', SP()->plugin_url() . '/assets/js/admin.js', array( 'jquery', 'jquery-chosen', 'jquery-tiptip', 'jquery-caret', 'jquery-countdown' ), SP_VERSION, true );
 
 		// SportsPress admin pages
 	    if ( in_array( $screen->id, sp_get_screen_ids() ) ) {

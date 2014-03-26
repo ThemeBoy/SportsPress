@@ -13,7 +13,7 @@
 class SP_Formats {
 
 	/** @var array Array of formats */
-	public $formats;
+	private $data;
 
 	/**
 	 * Constructor for the formats class - defines all preset formats.
@@ -22,7 +22,7 @@ class SP_Formats {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->formats = apply_filters( 'sportspress_formats', array(
+		$this->data = apply_filters( 'sportspress_formats', array(
 			'event' => array(
 				'league' => __( 'League', 'sportspress' ),
 				'friendly' => __( 'Friendly', 'sportspress' ),
@@ -36,5 +36,13 @@ class SP_Formats {
 				'gallery' => __( 'Gallery', 'sportspress' ),
 			),
 		));
+	}
+
+	public function __get( $key ) {
+		return ( array_key_exists( $key, $this->data ) ? $this->data[ $key ] : null );
+	}
+
+	public function __set( $key, $value ){
+		$this->data[ $key ] = $value;
 	}
 }

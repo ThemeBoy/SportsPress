@@ -47,6 +47,16 @@ final class SportsPress {
 	public $countries = null;
 
 	/**
+	 * @var SP_Sports $sports
+	 */
+	public $sports = null;
+
+	/**
+	 * @var SP_Formats $formats
+	 */
+	public $formats = null;
+
+	/**
 	 * @var SP_Text $text
 	 */
 	public $text = null;
@@ -148,7 +158,7 @@ final class SportsPress {
 				return;
 			}
 
-		} elseif ( strpos( $class, 'sp_meta_box' ) === 0 ) {
+		} elseif ( strpos( $class, 'sp_meta_box_' ) === 0 ) {
 
 			$path = $this->plugin_path() . '/includes/admin/post-types/meta-boxes/';
 			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
@@ -196,7 +206,7 @@ final class SportsPress {
 		include_once( 'includes/sp-core-functions.php' );
 
 		// Globals
-		include_once( 'includes/admin/settings/globals.php' );
+		//include_once( 'includes/admin/settings/globals.php' );
 
 		// Options
 		include_once( 'includes/admin/settings/settings.php' );
@@ -220,6 +230,7 @@ final class SportsPress {
 
 		// Classes (used on all pages)
 		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
+		include_once( 'includes/class-sp-formats.php' );						// Defines custom post type formats
 		include_once( 'includes/class-sp-text.php' );							// Defines editable strings
 
 		// Typical request actions (deprecating)
@@ -231,7 +242,7 @@ final class SportsPress {
 		// Admin request actions (deprecating)
 		include_once( 'admin/hooks/admin-init.php' );
 		include_once( 'admin/hooks/admin-menu.php' );
-		include_once( 'admin/hooks/admin-enqueue-scripts.php' );
+		//include_once( 'admin/hooks/admin-enqueue-scripts.php' );
 		include_once( 'admin/hooks/admin-print-styles.php' );
 		include_once( 'admin/hooks/admin-head.php' );
 		//include_once( 'admin/hooks/current-screen.php' );
@@ -241,7 +252,7 @@ final class SportsPress {
 		include_once( 'admin/hooks/post-thumbnail-html.php' );
 		//include_once( 'admin/hooks/restrict-manage-posts.php' );
 		//include_once( 'admin/hooks/parse-query.php' );
-		include_once( 'admin/hooks/save-post.php' );
+		//include_once( 'admin/hooks/save-post.php' );
 
 		// Filters (deprecating)
 		include_once( 'admin/hooks/admin-post-thumbnail-html.php' );
@@ -251,7 +262,7 @@ final class SportsPress {
 		include_once( 'admin/hooks/sanitize-title.php' );
 		include_once( 'admin/hooks/the-content.php' );
 		include_once( 'admin/hooks/widget-text.php' );
-		include_once( 'admin/hooks/wp-insert-post-data.php' );
+		//include_once( 'admin/hooks/wp-insert-post-data.php' );
 		include_once( 'admin/hooks/post-updated-messages.php' );
 
 		// Register activation hook (deprecating)
@@ -297,8 +308,8 @@ final class SportsPress {
 
 		// Load class instances
 		$this->countries = new SP_Countries();	// Countries class
-
-		// Load class instances
+		$this->sports = new SP_Sports();		// Sports class
+		$this->formats = new SP_Formats();		// Formats class
 		$this->text = new SP_Text();			// Text class
 
 		// Init action
