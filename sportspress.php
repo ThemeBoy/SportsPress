@@ -222,9 +222,6 @@ final class SportsPress {
 		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
 		include_once( 'includes/class-sp-text.php' );							// Defines editable strings
 
-		// Terms (deprecating)
-		include_once( 'admin/terms/venue.php' );
-
 		// Typical request actions (deprecating)
 		include_once( 'admin/hooks/plugins-loaded.php' );
 		include_once( 'admin/hooks/wp-enqueue-scripts.php' );
@@ -237,7 +234,7 @@ final class SportsPress {
 		include_once( 'admin/hooks/admin-enqueue-scripts.php' );
 		include_once( 'admin/hooks/admin-print-styles.php' );
 		include_once( 'admin/hooks/admin-head.php' );
-		include_once( 'admin/hooks/current-screen.php' );
+		//include_once( 'admin/hooks/current-screen.php' );
 
 		// Administrative actions (deprecating)
 		//include_once( 'admin/hooks/manage-posts-columns.php' );
