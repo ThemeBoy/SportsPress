@@ -241,7 +241,7 @@ final class SportsPress {
 
 		// Admin request actions (deprecating)
 		include_once( 'admin/hooks/admin-init.php' );
-		include_once( 'admin/hooks/admin-menu.php' );
+		//include_once( 'admin/hooks/admin-menu.php' );
 		//include_once( 'admin/hooks/admin-enqueue-scripts.php' );
 		include_once( 'admin/hooks/admin-print-styles.php' );
 		include_once( 'admin/hooks/admin-head.php' );

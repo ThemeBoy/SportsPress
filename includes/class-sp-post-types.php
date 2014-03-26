@@ -353,9 +353,8 @@ class SP_Post_types {
 			apply_filters( 'sportspress_register_post_type_event',
 				array(
 					'labels' => array(
-						'name' 					=> __( 'Schedule', 'sportspress' ),
+						'name' 					=> __( 'Events', 'sportspress' ),
 						'singular_name' 		=> __( 'Event', 'sportspress' ),
-						'all_items' 			=> __( 'Events', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Event', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Event', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
@@ -386,7 +385,6 @@ class SP_Post_types {
 					'labels' => array(
 						'name' 					=> __( 'Calendars', 'sportspress' ),
 						'singular_name' 		=> __( 'Calendar', 'sportspress' ),
-						'all_items' 			=> __( 'Calendars', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Calendar', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Calendar', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
@@ -417,7 +415,6 @@ class SP_Post_types {
 					'labels' => array(
 						'name' 					=> __( 'Teams', 'sportspress' ),
 						'singular_name' 		=> __( 'Team', 'sportspress' ),
-						'all_items' 			=> __( 'Teams', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Team', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Team', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
@@ -448,7 +445,6 @@ class SP_Post_types {
 					'labels' => array(
 						'name' 					=> __( 'League Tables', 'sportspress' ),
 						'singular_name' 		=> __( 'League Table', 'sportspress' ),
-						'all_items' 			=> __( 'League Tables', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New League Table', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit League Table', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
@@ -477,9 +473,8 @@ class SP_Post_types {
 			apply_filters( 'sportspress_register_post_type_player',
 				array(
 					'labels' => array(
-						'name' 					=> __( 'Roster', 'sportspress' ),
+						'name' 					=> __( 'Players', 'sportspress' ),
 						'singular_name' 		=> __( 'Player', 'sportspress' ),
-						'all_items' 			=> __( 'Players', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Player', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Player', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
@@ -510,7 +505,6 @@ class SP_Post_types {
 					'labels' => array(
 						'name' 					=> __( 'Player Lists', 'sportspress' ),
 						'singular_name' 		=> __( 'Player List', 'sportspress' ),
-						'all_items' 			=> __( 'Player Lists', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Player List', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Player List', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
@@ -541,7 +535,6 @@ class SP_Post_types {
 					'labels' => array(
 						'name' 					=> __( 'Staff', 'sportspress' ),
 						'singular_name' 		=> __( 'Staff', 'sportspress' ),
-						'all_items' 			=> __( 'Staff', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Staff', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Staff', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
@@ -561,7 +554,7 @@ class SP_Post_types {
 					'supports' 				=> array( 'title', 'author', 'thumbnail' ),
 					'has_archive' 			=> true,
 					'show_in_nav_menus' 	=> true,
-					'show_in_menu' 			=> 'edit.php?post_type=sp_player',
+					'menu_icon' 			=> 'dashicons-businessman',
 				)
 			)
 		);

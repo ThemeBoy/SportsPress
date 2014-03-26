@@ -2264,8 +2264,13 @@ class SP_Sports {
 	}
 
 	public function __get( $key ) {
-		if ( 'options' == $key )
-			return $this->data;
+		if ( 'options' == $key ):
+			$option = array();
+			foreach ( $this->data as $slug => $data ):
+				$options[ $slug ] = $data['name'];
+			endforeach;
+			return $options;
+		endif;
 		return ( array_key_exists( $key, $this->data ) ? $this->data[ $key ] : null );
 	}
 
