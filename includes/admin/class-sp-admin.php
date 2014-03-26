@@ -30,7 +30,7 @@ class SP_Admin {
 	 */
 	public function includes() {
 		// Functions
-//		include_once( 'sp-admin-functions.php' );
+		include_once( 'sp-admin-functions.php' );
 //		include_once( 'sp-meta-box-functions.php' );
 
 		// Classes
@@ -42,7 +42,7 @@ class SP_Admin {
 //			include( 'class-sp-admin-menus.php' );
 //			include( 'class-sp-admin-welcome.php' );
 //			include( 'class-sp-admin-notices.php' );
-//			include( 'class-sp-admin-assets.php' );
+			include( 'class-sp-admin-assets.php' );
 //			include( 'class-sp-admin-permalink-settings.php' );
 //			include( 'class-sp-admin-editor.php' );
 
