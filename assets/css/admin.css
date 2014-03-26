@@ -53,16 +53,6 @@
 	content: "\f328";
 }
 
-#adminmenu #toplevel_page_sportspress .menu-icon-generic div.wp-menu-image:before,
-#adminmenu #menu-posts-sp_event .menu-icon-sp_event div.wp-menu-image:before,
-#adminmenu #menu-posts-sp_team .menu-icon-sp_team div.wp-menu-image:before,
-#adminmenu #menu-posts-sp_player .menu-icon-sp_player div.wp-menu-image:before,
-#sp_formatdiv #post-formats-select .post-format-icon:before {
-	font-family: sportspress, dashicons !important;
-	width: 20px;
-	text-align: center;
-}
-
 .post-state-format.post-format-calendar:before, .post-format-icon.post-format-calendar:before, a.post-state-format.format-calendar:before {
 	content: "\f145";
 }
@@ -126,108 +116,6 @@
 
 .fixed td.column-sp_format .dashicons:before {
 	color: #888;
-}
-
-#sportspress_dashboard_status .inside {
-	padding: 0;
-	margin: 0;
-}
-
-#sportspress_dashboard_status .sp_status_list {
-	overflow: hidden;
-	margin: 0;
-}
-
-#sportspress_dashboard_status .sp_status_list li {
-	width: 50%;
-	float: left;
-	padding: 0;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	margin: 0;
-	border-top: 1px solid #ececec;
-	color: #aaa;
-}
-
-#sportspress_dashboard_status .sp_status_list li:first-child {
-	border-top: 0;
-}
-
-#sportspress_dashboard_status .sp_status_list li.countdown {
-	width: 100%;
-}
-
-#sportspress_dashboard_status .sp_status_list li.events-scheduled {
-	border-right: 1px solid #ececec;
-}
-
-#sportspress_dashboard_status .sp_status_list li a {
-	display: block;
-	color: #aaa;
-	padding: 9px 12px;
-	-webkit-transition: all ease .5s;
-	position: relative;
-	font-size: 12px;
-}
-
-#sportspress_dashboard_status .sp_status_list li a:before {
-	font-family: sportspress, dashicons;
-	speak: none;
-	font-weight: 400;
-	font-variant: normal;
-	text-transform: none;
-	-webkit-font-smoothing: antialiased;
-	margin: 0;
-	text-indent: 0;
-	top: 0;
-	left: 0;
-	height: 100%;
-	text-align: center;
-	content: "\f145";
-	font-size: 2em;
-	position: relative;
-	width: auto;
-	line-height: 1.2em;
-	color: #464646;
-	float: left;
-	margin-right: 12px;
-	margin-bottom: 12px;
-}
-
-#sportspress_dashboard_status .sp_status_list li.countdown a:before {
-	content: "\f469";
-}
-
-#sportspress_dashboard_status .sp_status_list li.events-scheduled a:before,
-#sportspress_dashboard_status .sp_status_list li.events-published a:before {
-	color: #999;
-	font-size: 2.5em;
-	line-height: 1em;
-	margin-left: -3px;
-	margin-right: 9px;
-}
-
-#sportspress_dashboard_status .sp_status_list li.events-scheduled a:before {
-	color: #ffba00;
-}
-
-#sportspress_dashboard_status .sp_status_list li.events-published a:before {
-	color: #21759b;
-}
-
-#sportspress_dashboard_status .sp_status_list li strong {
-	font-size: 18px;
-	line-height: 1.2em;
-	font-weight: 400;
-	display: block;
-	color: #21759b;
-}
-
-#sportspress_dashboard_status .sp_status_list li a:hover,
-#sportspress_dashboard_status .sp_status_list li a:hover strong,
-#sportspress_dashboard_status .sp_status_list li a:hover:before {
-	color: #2ea2cc;
 }
 
 .sportspress-message {
