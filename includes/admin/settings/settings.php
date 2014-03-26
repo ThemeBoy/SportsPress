@@ -162,12 +162,5 @@ function sportspress_options_validate( $input ) {
 }
 
 function sportspress_add_menu_page() {
-	add_options_page(
-		__( 'SportsPress', 'sportspress' ),
-		__( 'SportsPress', 'sportspress' ),
-		'manage_options',
-		'sportspress',
-		'sportspress_options'
-	);
 }
 add_action( 'admin_menu', 'sportspress_add_menu_page' );

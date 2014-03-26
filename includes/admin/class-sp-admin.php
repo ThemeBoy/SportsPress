@@ -37,7 +37,7 @@ class SP_Admin {
 
 		// Classes we only need if the ajax is not-ajax
 		if ( ! is_ajax() ) {
-//			include( 'class-sp-admin-menus.php' );
+			include( 'class-sp-admin-menus.php' );
 //			include( 'class-sp-admin-welcome.php' );
 //			include( 'class-sp-admin-notices.php' );
 			include( 'class-sp-admin-assets.php' );

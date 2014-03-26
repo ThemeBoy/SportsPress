@@ -1,4 +1,56 @@
 /* SportsPress menu styles */
+@font-face {
+	font-family: 'sportspress';
+	src:url('../fonts/sportspress.eot?ofuus8');
+	src:url('../fonts/sportspress.eot?#iefixofuus8') format('embedded-opentype'),
+		url('../fonts/sportspress.woff?ofuus8') format('woff'),
+		url('../fonts/sportspress.ttf?ofuus8') format('truetype'),
+		url('../fonts/sportspress.svg?ofuus8#sportspress') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="sp-icon-"], [class*=" sp-icon-"] {
+	font-family: 'sportspress';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.sp-icon-calendar:before {
+	content: "\f145";
+}
+.sp-icon-shield:before {
+	content: "\f334";
+}
+.sp-icon-clock:before {
+	content: "\f469";
+}
+.sp-icon-tshirt:before {
+	content: "\f307";
+}
+.sp-icon-megaphone:before {
+	content: "\f322";
+}
+.sp-icon-crown:before {
+	content: "\f313";
+}
+.sp-icon-trophy:before {
+	content: "\f325";
+}
+.sp-icon-list:before {
+	content: "\f163"
+}
+.sp-icon-smile:before {
+	content: "\f328";
+}
 
 #adminmenu #toplevel_page_sportspress .menu-icon-generic div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_event .menu-icon-sp_event div.wp-menu-image:before,
