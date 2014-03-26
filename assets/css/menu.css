@@ -1,0 +1,11 @@
+/* SportsPress menu styles */
+
+#adminmenu #toplevel_page_sportspress .menu-icon-generic div.wp-menu-image:before,
+#adminmenu #menu-posts-sp_event .menu-icon-sp_event div.wp-menu-image:before,
+#adminmenu #menu-posts-sp_team .menu-icon-sp_team div.wp-menu-image:before,
+#adminmenu #menu-posts-sp_player .menu-icon-sp_player div.wp-menu-image:before,
+#sp_formatdiv #post-formats-select .post-format-icon:before {
+	font-family: sportspress, dashicons !important;
+	width: 20px;
+	text-align: center;
+}
