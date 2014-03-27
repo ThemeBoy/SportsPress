@@ -21,6 +21,9 @@ foreach( $teams as $key => $team_id ):
 
 	// Get results for players in the team
 	$players = sportspress_array_between( (array)get_post_meta( $id, 'sp_player', false ), 0, $key );
+
+	if ( sizeof( $players ) <= 1 ) continue;
+
 	$data = sportspress_array_combine( $players, sportspress_array_value( $stats, $team_id, array() ) );
 
 	$output .= '<h3>' . get_the_title( $team_id ) . '</h3>';

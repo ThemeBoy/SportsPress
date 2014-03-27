@@ -3,7 +3,7 @@
  * Handle frontend forms
  *
  * @class 		SP_Frontend_Scripts
- * @version		2.1.0
+ * @version		0.7
  * @package		SportsPress/Classes/
  * @category	Class
  * @author 		ThemeBoy
@@ -66,10 +66,10 @@ class SP_Frontend_Scripts {
 		if ( $enabled == 'yes' ) {
 
 			$colors = get_option( 'sportspress_frontend_css_colors' );
+			
+			echo '<style type="text/css">.sp-data-table a,.sp-calendar a{text-decoration:none;}.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a,.sp-calendar tbody a:hover{background:none;}';
 
 			if ( sizeof( $colors ) > 0 ) {
-			
-				echo '<style type="text/css">';
 
 				if ( isset( $colors['primary'] ) )
 					echo '.sp-data-table th,.sp-calendar th,.sp-data-table tfoot,.sp-calendar tfoot{background:' . $colors['primary'] . ' !important}.sp-data-table tbody a,.sp-calendar tbody a{color:' . $colors['primary'] . ' !important}';
@@ -85,9 +85,9 @@ class SP_Frontend_Scripts {
 
 				if ( isset( $colors['alternate'] ) )
 					echo '.sp-data-table tbody tr.odd,.sp-data-table tbody tr.alternate,.sp-calendar tbody td#today{background: ' . $colors['alternate'] . ' !important}';
-
-				echo '</style>';
 			}
+			
+			echo '</style>';
 		}
 	}
 }

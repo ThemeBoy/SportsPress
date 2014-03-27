@@ -71,10 +71,7 @@ class SP_Install {
 		// Update button
 		} elseif ( ! empty( $_GET['do_update_sportspress'] ) ) {
 
-			$this->update();
-
 			// Update complete
-			delete_option( '_sp_needs_pages' );
 			delete_option( '_sp_needs_update' );
 			delete_transient( '_sp_activation_redirect' );
 
@@ -98,13 +95,6 @@ class SP_Install {
 
 		// Queue upgrades
 		$current_version = get_option( 'sportspress_version', null );
-		$current_db_version = get_option( 'sportspress_db_version', null );
-
-		if ( version_compare( $current_db_version, '2.1.0', '<' ) && null !== $current_db_version ) {
-			update_option( '_sp_needs_update', 1 );
-		} else {
-			update_option( 'sportspress_db_version', SP()->version );
-		}
 
 		// Update version
 		update_option( 'sportspress_version', SP()->version );
@@ -114,49 +104,6 @@ class SP_Install {
 
 		// Redirect to welcome screen
 		set_transient( '_sp_activation_redirect', 1, 60 * 60 );
-	}
-
-	/**
-	 * Handle updates
-	 */
-	public function update() {
-		// Do updates
-		$current_db_version = get_option( 'sportspress_db_version' );
-
-		if ( version_compare( $current_db_version, '1.4', '<' ) ) {
-			include( 'updates/sportspress-update-1.4.php' );
-			update_option( 'sportspress_db_version', '1.4' );
-		}
-
-		if ( version_compare( $current_db_version, '1.5', '<' ) ) {
-			include( 'updates/sportspress-update-1.5.php' );
-			update_option( 'sportspress_db_version', '1.5' );
-		}
-
-		if ( version_compare( $current_db_version, '2.0', '<' ) ) {
-			include( 'updates/sportspress-update-2.0.php' );
-			update_option( 'sportspress_db_version', '2.0' );
-		}
-
-		if ( version_compare( $current_db_version, '2.0.9', '<' ) ) {
-			include( 'updates/sportspress-update-2.0.9.php' );
-			update_option( 'sportspress_db_version', '2.0.9' );
-		}
-
-		if ( version_compare( $current_db_version, '2.0.14', '<' ) ) {
-			if ( 'HU' == get_option( 'sportspress_default_country' ) ) {
-				update_option( 'sportspress_default_country', 'HU:BU' );
-			}
-
-			update_option( 'sportspress_db_version', '2.0.14' );
-		}
-
-		if ( version_compare( $current_db_version, '2.1.0', '<' ) || SP_VERSION == '2.1-bleeding' ) {
-			include( 'updates/sportspress-update-2.1.php' );
-			update_option( 'sportspress_db_version', '2.1.0' );
-		}
-
-		update_option( 'sportspress_db_version', SP()->version );
 	}
 
 	/**
