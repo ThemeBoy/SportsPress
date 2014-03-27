@@ -109,6 +109,7 @@
 	.sp-responsive-table .data-number,
 	.sp-responsive-table .data-name,
 	.sp-responsive-table .data-rank,
+	.sp-responsive-table .data-date,
 	.sp-responsive-.sp-pinned-table td {
 		display: none;
 	}

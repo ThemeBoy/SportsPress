@@ -8,9 +8,9 @@ $defaults = array(
 	'orderby' => 'default',
 	'order' => 'ASC',
 	'show_all_players_link' => false,
-	'link_posts' => sportspress_array_value( $sportspress_options, 'player_list_link_posts', true ),
-	'sortable' => sportspress_array_value( $sportspress_options, 'player_list_sortable', true ),
-	'responsive' => sportspress_array_value( $sportspress_options, 'player_list_responsive', true ),
+	'link_posts' => get_option( 'sportspress_list_link_players', 'yes' ) == 'yes' ? true : false,
+	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
+	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -43,7 +43,7 @@ endif;
 if ( in_array( $orderby, array( 'number', 'name' ) ) ):
 	$output .= '<th class="data-number">#</th>';
 else:
-	$output .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
+	$output .= '<th class="data-rank">' . SP()->text->string('Rank', 'player') . '</th>';
 endif;
 
 foreach( $labels as $key => $label ):
@@ -97,6 +97,6 @@ endforeach;
 $output .= '</tbody>' . '</table>' . '</div>';
 
 if ( $show_all_players_link )
-	$output .= '<a class="sp-player-list-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
+	$output .= '<a class="sp-player-list-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all players', 'player') . '</a>';
 
 echo apply_filters( 'sportspress_player_list',  $output );

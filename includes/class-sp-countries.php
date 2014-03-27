@@ -245,4 +245,38 @@ class SP_Countries {
 
 		$this->continents = apply_filters( 'sportspress_continents', $continents );
 	}
+
+	/**
+	 * Get the base country.
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function get_base_country() {
+		$default = esc_attr( get_option('sportspress_default_country') );
+		$country = ( ( $pos = strrpos( $default, ':' ) ) === false ) ? $default : substr( $default, 0, $pos );
+
+		return apply_filters( 'sportspress_countries_base_country', $country );
+	}
+
+
+	/**
+	 * Outputs the list of continents and countries for use in dropdown boxes.
+	 *
+	 * @access public
+	 * @param string $selected_country (default: '')
+	 * @param bool $escape (default: false)
+	 * @return void
+	 */
+	public function country_dropdown_options( $selected_country = '', $escape = false ) {
+		if ( $this->continents ) foreach ( $this->continents as $continent => $countries ):
+			?>
+				<optgroup label="<?php echo $continent; ?>">
+					<?php foreach ( $countries as $code => $country ): ?>
+						<option value="<?php echo $code; ?>" <?php selected ( $selected_country, $code ); ?>><?php echo $country; ?></option>
+					<?php endforeach; ?>
+				</optgroup>
+			<?php
+		endforeach;
+	}
 }

@@ -6,10 +6,10 @@ $defaults = array(
 	'number' => -1,
 	'columns' => null,
 	'show_full_table_link' => false,
-	'show_team_logo' => sportspress_array_value( $sportspress_options, 'league_table_show_team_logo', false ),
-	'link_posts' => sportspress_array_value( $sportspress_options, 'league_table_link_posts', false ),
-	'sortable' => sportspress_array_value( $sportspress_options, 'league_table_sortable', true ),
-	'responsive' => sportspress_array_value( $sportspress_options, 'league_table_responsive', true ),
+	'show_team_logo' => get_option( 'sportspress_table_show_logos', 'yes' ) == 'yes' ? true : false,
+	'link_posts' => get_option( 'sportspress_table_link_teams', 'no' ) == 'yes' ? true : false,
+	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
+	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -31,7 +31,7 @@ if ( ! $columns )
 if ( ! is_array( $columns ) )
 	$columns = explode( ',', $columns );
 
-$output .= '<th class="data-rank">' . __( 'Pos', 'sportspress' ) . '</th>';
+$output .= '<th class="data-rank">' . SP()->text->string('Pos', 'team') . '</th>';
 
 foreach( $labels as $key => $label ):
 	if ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) )
@@ -83,7 +83,7 @@ endforeach;
 $output .= '</tbody>' . '</table>';
 
 if ( $show_full_table_link )
-	$output .= '<a class="sp-league-table-link" href="' . get_permalink( $id ) . '">' . __( 'View full table', 'sportspress' ) . '</a>';
+	$output .= '<a class="sp-league-table-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View full table', 'team') . '</a>';
 
 $output .= '</div>';
 

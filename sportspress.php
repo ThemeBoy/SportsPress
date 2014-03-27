@@ -201,21 +201,8 @@ final class SportsPress {
 	 * Include required core files used in admin and on the frontend.
 	 */
 	private function includes() {
-
-		// Functions
 		include_once( 'includes/sp-core-functions.php' );
-
-		// Globals
-		//include_once( 'includes/admin/settings/globals.php' );
-
-		// Options
-		include_once( 'includes/admin/settings/settings.php' );
-		include_once( 'includes/admin/settings/options-general.php' );
-		include_once( 'includes/admin/settings/options-event.php' );
-		include_once( 'includes/admin/settings/options-team.php' );
-		include_once( 'includes/admin/settings/options-player.php' );
-		include_once( 'includes/admin/settings/options-text.php' );
-		include_once( 'includes/admin/settings/options-permalink.php' );
+		include_once( 'includes/class-sp-install.php' );
 
 		if ( is_admin() ) {
 			include_once( 'includes/admin/class-sp-admin.php' );
@@ -233,46 +220,15 @@ final class SportsPress {
 		include_once( 'includes/class-sp-formats.php' );						// Defines custom post type formats
 		include_once( 'includes/class-sp-text.php' );							// Defines editable strings
 
-		// Typical request actions (deprecating)
-		include_once( 'admin/hooks/plugins-loaded.php' );
-		include_once( 'admin/hooks/wp-enqueue-scripts.php' );
-		include_once( 'admin/hooks/loop-start.php' );
-		include_once( 'admin/hooks/the-title.php' );
-
-		// Admin request actions (deprecating)
-		include_once( 'admin/hooks/admin-init.php' );
-		//include_once( 'admin/hooks/admin-menu.php' );
-		//include_once( 'admin/hooks/admin-enqueue-scripts.php' );
-		include_once( 'admin/hooks/admin-print-styles.php' );
-		include_once( 'admin/hooks/admin-head.php' );
-		//include_once( 'admin/hooks/current-screen.php' );
-
-		// Administrative actions (deprecating)
-		//include_once( 'admin/hooks/manage-posts-columns.php' );
-		include_once( 'admin/hooks/post-thumbnail-html.php' );
-		//include_once( 'admin/hooks/restrict-manage-posts.php' );
-		//include_once( 'admin/hooks/parse-query.php' );
-		//include_once( 'admin/hooks/save-post.php' );
-
-		// Filters (deprecating)
-		include_once( 'admin/hooks/admin-post-thumbnail-html.php' );
-		include_once( 'admin/hooks/gettext.php' );
-		include_once( 'admin/hooks/pre-get-posts.php' );
-		include_once( 'admin/hooks/the-posts.php' );
-		include_once( 'admin/hooks/sanitize-title.php' );
-		include_once( 'admin/hooks/the-content.php' );
-		include_once( 'admin/hooks/widget-text.php' );
-		//include_once( 'admin/hooks/wp-insert-post-data.php' );
-		include_once( 'admin/hooks/post-updated-messages.php' );
-
-		// Register activation hook (deprecating)
-		include_once( 'admin/hooks/register-activation-hook.php' );
+		// Include template hooks in time for themes to remove/modify them
+		include_once( 'includes/sp-template-hooks.php' );
 	}
 
 	/**
 	 * Include required frontend files.
 	 */
 	public function frontend_includes() {
+		include_once( 'includes/class-sp-frontend-scripts.php' );		// Frontend Scripts
 		include_once( 'includes/class-sp-shortcodes.php' );				// Shortcodes class
 	}
 
@@ -287,7 +243,6 @@ final class SportsPress {
 	 * Include core widgets
 	 */
 	public function include_widgets() {
-		//include_once( 'includes/abstracts/abstract-sp-widget.php' );
 		include_once( 'includes/widgets/class-sp-widget-countdown.php' );
 		include_once( 'includes/widgets/class-sp-widget-event-calendar.php' );
 		include_once( 'includes/widgets/class-sp-widget-event-list.php' );

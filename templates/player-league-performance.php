@@ -5,6 +5,8 @@ if ( ! isset( $league ) )
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 
+$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
+
 $data = sportspress_get_player_performance_data( $id, $league->term_id );
 
 // The first row should be column labels
@@ -19,7 +21,7 @@ if ( empty( $data ) )
 
 $output = '<h4 class="sp-table-caption">' . $league->name . '</h4>' .
 	'<div class="sp-table-wrapper">' .
-	'<table class="sp-player-performance sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
+	'<table class="sp-player-performance sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . '">' . '<thead>' . '<tr>';
 
 foreach( $labels as $key => $label ):
 	$output .= '<th class="data-' . $key . '">' . $label . '</th>';

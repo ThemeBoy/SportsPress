@@ -83,7 +83,7 @@ function viewport() {
 		original.wrap("<div class='sp-responsive-table-wrapper' />");
 		
 		var copy = original.clone();
-		copy.find("td:not(.data-number):not(.data-name):not(.data-rank), th:not(.data-number):not(.data-name):not(.data-rank)").css("display", "none");
+		copy.find("td:not(.data-number):not(.data-name):not(.data-rank):not(.data-date), th:not(.data-number):not(.data-name):not(.data-rank):not(.data-date)").css("display", "none");
 		copy.removeClass("sp-responsive-table");
 		
 		original.closest(".sp-responsive-table-wrapper").append(copy);

@@ -16,19 +16,19 @@ list( $data, $usecolumns ) = sportspress_get_calendar_data( $id, true );
 if ( isset( $columns ) )
 	$usecolumns = $columns;
 
-$output .= '<th class="column-date">' . __( 'Date', 'sportspress' ). '</th>';
+$output .= '<th class="data-date">' . SP()->text->string('Date', 'event') . '</th>';
 
 if ( $usecolumns == null || in_array( 'event', $usecolumns ) )
-	$output .= '<th class="column-event">' . __( 'Event', 'sportspress' ). '</th>';
+	$output .= '<th class="data-event">' . SP()->text->string('Event', 'event') . '</th>';
 
 if ( $usecolumns == null || in_array( 'teams', $usecolumns ) )
-	$output .= '<th class="column-teams">' . __( 'Teams', 'sportspress' ). '</th>';
+	$output .= '<th class="data-teams">' . SP()->text->string('Teams', 'event') . '</th>';
 
 if ( $usecolumns == null || in_array( 'time', $usecolumns ) )
-	$output .= '<th class="column-time">' . __( 'Time', 'sportspress' ). '</th>';
+	$output .= '<th class="data-time">' . SP()->text->string('Time', 'event') . '</th>';
 
 if ( $usecolumns == null || in_array( 'article', $usecolumns ) )
-	$output .= '<th class="column-article">' . __( 'Article', 'sportspress' ). '</th>';
+	$output .= '<th class="data-article">' . SP()->text->string('Article', 'event') . '</th>';
 
 $output .= '</tr>' . '</thead>' . '<tbody>';
 
@@ -40,13 +40,13 @@ foreach ( $data as $event ):
 
 	$output .= '<tr class="sp-row sp-post' . ( $i % 2 == 0 ? ' alternate' : '' ) . '">';
 
-		$output .= '<td class="column-date">' . get_post_time( get_option( 'date_format' ), false, $event ) . '</td>';
+		$output .= '<td class="data-date">' . get_post_time( get_option( 'date_format' ), false, $event ) . '</td>';
 
 		if ( $usecolumns == null || in_array( 'event', $usecolumns ) )
-			$output .= '<td class="column-event">' . $event->post_title . '</td>';
+			$output .= '<td class="data-event">' . $event->post_title . '</td>';
 	
 		if ( $usecolumns == null || in_array( 'teams', $usecolumns ) ):
-			$output .= '<td class="column-teams">';
+			$output .= '<td class="data-teams">';
 
 				$teams = get_post_meta( $event->ID, 'sp_team', false );
 				if ( $teams ):
@@ -83,11 +83,11 @@ foreach ( $data as $event ):
 		endif;
 
 	if ( $usecolumns == null || in_array( 'time', $usecolumns ) )
-		$output .= '<td class="column-time">' . get_post_time( get_option( 'time_format' ), false, $event ) . '</td>';
+		$output .= '<td class="data-time">' . get_post_time( get_option( 'time_format' ), false, $event ) . '</td>';
 
 	if ( $usecolumns == null || in_array( 'article', $usecolumns ) ):
-		$output .= '<td class="column-article">
-			<a href="' . get_permalink( $event->ID ) . '#sp_articlediv">';
+		$output .= '<td class="data-article">
+			<a href="' . get_permalink( $event->ID ) . '">';
 
 			if ( $video ):
 				$output .= '<div class="dashicons dashicons-video-alt"></div>';
@@ -96,9 +96,9 @@ foreach ( $data as $event ):
 			endif;
 			if ( $event->post_content !== null ):
 				if ( $event->post_status == 'publish' ):
-					$output .= __( 'Recap', 'sportspress' );
+					$output .= SP()->text->string('Recap', 'event');
 				else:
-					$output .= __( 'Preview', 'sportspress' );
+					$output .= SP()->text->string('Preview', 'event');
 				endif;
 			endif;
 
@@ -114,7 +114,7 @@ endforeach;
 $output .= '</tbody>' . '</table>';
 
 if ( $id && $show_all_events_link )
-	$output .= '<a class="sp-calendar-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
+	$output .= '<a class="sp-calendar-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all events', 'event') . '</a>';
 
 $output .= '</div>';
 

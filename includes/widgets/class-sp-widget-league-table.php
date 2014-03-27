@@ -2,7 +2,7 @@
 class SP_Widget_League_Table extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'widget_league_table widget_sp_league_table', 'description' => __( 'Display a league table.', 'sportspress' ) );
+		$widget_ops = array('classname' => 'widget_calendar widget_league_table widget_sp_league_table', 'description' => __( 'Display a league table.', 'sportspress' ) );
 		parent::__construct('sp_league_table', __( 'SportsPress League Table', 'sportspress' ), $widget_ops);
 	}
 

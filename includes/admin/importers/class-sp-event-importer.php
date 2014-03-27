@@ -535,7 +535,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						<tbody>
 							<tr>
 								<th>
-									<label for="upload"><?php _e( 'Choose a file from your computer:' ); ?></label>
+									<label for="upload"><?php _e( 'Choose a file from your computer:', 'sportspress' ); ?></label>
 								</th>
 								<td>
 									<input type="file" id="upload" name="import" size="25" />

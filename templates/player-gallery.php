@@ -12,7 +12,6 @@ $defaults = array(
 	'columns' => 3,
 	'size' => 'thumbnail',
 	'show_all_players_link' => false,
-	'show_names_on_hover' => sportspress_array_value( $sportspress_options, 'player_gallery_show_names_on_hover', true ),
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -89,14 +88,10 @@ if ( is_int( $number ) && $number > 0 )
 
 foreach( $data as $player_id => $performance ):
 
-	if ( $show_names_on_hover ):
-		$caption = get_the_title( $player_id );
-		$player_number = get_post_meta( $player_id, 'sp_number', true );
-		if ( $player_number ):
-			$caption = '<strong>' . $player_number . '</strong> ' . $caption;
-		endif;
-	else:
-		$caption = null;
+	$caption = get_the_title( $player_id );
+	$player_number = get_post_meta( $player_id, 'sp_number', true );
+	if ( $player_number ):
+		$caption = '<strong>' . $player_number . '</strong> ' . $caption;
 	endif;
 
 	if ( isset( $limit ) && $i >= $limit )
@@ -128,6 +123,6 @@ $output .= "
 	</div>\n";
 
 if ( $show_all_players_link )
-	$output .= '<a class="sp-player-list-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
+	$output .= '<a class="sp-player-list-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all players', 'player') . '</a>';
 
 echo apply_filters( 'sportspress_player_gallery',  $output );
