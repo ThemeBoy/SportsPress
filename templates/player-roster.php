@@ -82,7 +82,7 @@ foreach ( $positions as $position ):
 		if ( in_array( $r['orderby'], array( 'number', 'name' ) ) ):
 			$output .= '<th class="data-number">#</th>';
 		else:
-			$output .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
+			$output .= '<th class="data-rank">' . SP()->text->string('Rank', 'player') . '</th>';
 		endif;
 
 		foreach( $labels as $key => $label ):

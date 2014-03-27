@@ -68,8 +68,57 @@
 .sportspress table.form-table, .sportspress table.form-table .forminp-radio ul {
 	margin: 0;
 }
+.sportspress table.form-table fieldset {
+	margin-top: 4px;
+}
+.sportspress table.form-table fieldset:first-child {
+	margin-top: 0;
+}
+.sportspress table.form-table fieldset p.description {
+	margin-bottom: 8px;
+}
 .sportspress table.sp-admin-config-table .edit {
 	text-align: right;
+}
+.sportspress table.form-table .sp-color-box {
+	border: 1px solid #ccc;
+	box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+	-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+	-moz-box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 4px 6px;
+	float: left;
+	width: 90px;
+	margin: 0 10px 0 0;
+}
+.sportspress table.form-table .sp-color-box strong {
+	text-align: left;
+	display: block;
+	padding: 0 0 2px;
+	font-size: .92em;
+}
+.sportspress table.form-table .sp-color-box input.colorpick {
+	width: 100%;
+	margin: 0;
+	font-family: monospace;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.sportspress table.form-table .sp-color-box .iris-picker {
+	z-index: 100;
+	position: absolute;
+	display: none;
+	border: 1px solid #ccc;
+	box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+	-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+	-moz-box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	margin: 15px 0 0 -7px;
 }
 
 /* Messages */

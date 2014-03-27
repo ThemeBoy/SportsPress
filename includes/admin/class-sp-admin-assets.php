@@ -60,7 +60,7 @@ class SP_Admin_Assets {
 		$screen = get_current_screen();
 
 		// Register scripts
-		wp_register_script( 'jquery-chosen', SP()->plugin_url() . '/assets/js/chosen.jquery.min.js', array( 'jquery' ), '1.1.0', true );
+		wp_register_script( 'chosen', SP()->plugin_url() . '/assets/js/chosen.jquery.min.js', array( 'jquery' ), '1.1.0', true );
 
 		wp_register_script( 'jquery-tiptip', SP()->plugin_url() . '/assets/js/jquery.tipTip.min.js', array( 'jquery' ), '1.3', true );
 
@@ -72,15 +72,15 @@ class SP_Admin_Assets {
 
 		wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
 
-		wp_register_script( 'sportspress-admin-locationpicker', SP()->plugin_url() . '/assets/js/admin-locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_VERSION, true );
+		wp_register_script( 'sportspress-admin-locationpicker', SP()->plugin_url() . '/assets/js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_VERSION, true );
 	
-		wp_register_script( 'sportspress-admin', SP()->plugin_url() . '/assets/js/admin.js', array( 'jquery', 'jquery-chosen', 'jquery-tiptip', 'jquery-caret', 'jquery-countdown' ), SP_VERSION, true );
+		wp_register_script( 'sportspress-admin', SP()->plugin_url() . '/assets/js/admin/sportspress-admin.js', array( 'jquery', 'chosen', 'jquery-tiptip', 'jquery-caret', 'jquery-countdown' ), SP_VERSION, true );
 
 		// SportsPress admin pages
 	    if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
 
 	    	wp_enqueue_script( 'jquery' );
-	    	wp_enqueue_script( 'jquery-chosen' );
+	    	wp_enqueue_script( 'chosen' );
 	    	wp_enqueue_script( 'jquery-tiptip' );
 	    	wp_enqueue_script( 'jquery-caret' );
 	    	wp_enqueue_script( 'jquery-countdown' );
@@ -98,6 +98,10 @@ class SP_Admin_Assets {
 	    	// Localize scripts
 			wp_localize_script( 'sportspress-admin', 'localized_strings', $params );
 	    }
+
+		if ( in_array( $screen->id, array( 'dashboard' ) ) ) {
+			//wp_enqueue_style( 'sportspress-admin-dashboard' );
+		}
 
 	    // Edit venue pages
 	    if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {

@@ -8,9 +8,9 @@ $teams = (array)get_post_meta( $id, 'sp_team', false );
 $staff = (array)get_post_meta( $id, 'sp_staff', false );
 $stats = (array)get_post_meta( $id, 'sp_players', true );
 $performance_labels = sportspress_get_var_labels( 'sp_performance' );
-$link_posts = sportspress_array_value( $sportspress_options, 'event_performance_link_posts', true );
-$sortable = sportspress_array_value( $sportspress_options, 'event_performance_sortable', true );
-$responsive = sportspress_array_value( $sportspress_options, 'event_performance_responsive', true );
+$link_posts = get_option( 'sportspress_event_link_players', 'yes' ) == 'yes' ? true : false;
+$sortable = get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false;
+$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
 
 $output = '';
 
@@ -29,7 +29,7 @@ foreach( $teams as $key => $team_id ):
 		'<table class="sp-event-performance sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . '">' . '<thead>' . '<tr>';
 
 	$output .= '<th class="data-number">#</th>';
-	$output .= '<th class="data-number">' . __( 'Player', 'sportspress' ) . '</th>';
+	$output .= '<th class="data-name">' . SP()->text->string('Player', 'event') . '</th>';
 
 	foreach( $performance_labels as $key => $label ):
 		$output .= '<th class="data-' . $key . '">' . $label . '</th>';
@@ -94,7 +94,7 @@ foreach( $teams as $key => $team_id ):
 
 		// Player number
 		$output .= '<td class="data-number">&nbsp;</td>';
-		$output .= '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
+		$output .= '<td class="data-name">' . SP()->text->string('Total', 'event') . '</td>';
 
 		$row = $data[0];
 

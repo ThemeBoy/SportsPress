@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // Include core functions
 include( 'sp-conditional-functions.php' );
+include( 'sp-formatting-functions.php' );
 include( 'sp-deprecated-functions.php' );
 
 /**
@@ -181,21 +182,9 @@ if( !function_exists( 'date_diff' ) ) {
 if ( !function_exists( 'sp_flush_rewrite_rules' ) ) {
 	function sp_flush_rewrite_rules() {
 	    // Flush rewrite rules
-	    sportspress_result_post_init();
-	    sportspress_outcome_post_init();
-	    sportspress_column_post_init();
-	    sportspress_performance_post_init();
-	    sportspress_event_post_init();
-	    sportspress_calendar_post_init();
-	    sportspress_team_post_init();
-	    sportspress_table_post_init();
-	    sportspress_player_post_init();
-	    sportspress_list_post_init();
-	    sportspress_staff_post_init();
-	    sportspress_venue_term_init();
-	    sportspress_league_term_init();
-	    sportspress_season_term_init();
-	    sportspress_position_term_init();
+	    $post_types = new SP_Post_types();
+	    $post_types->register_taxonomies();
+	    $post_types->register_post_types();
 	    flush_rewrite_rules();
 	}
 }
@@ -2195,7 +2184,7 @@ if ( !function_exists( 'sp_get_league_table_data' ) ) {
 					unset( $columns[ $key ] );
 				endif;
 			endforeach;
-			$labels = array_merge( array( 'name' => __( 'Team', 'sportspress' ) ), $columns );
+			$labels = array_merge( array( 'name' => SP()->text->string('Team', 'team') ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;
@@ -2388,7 +2377,7 @@ if ( !function_exists( 'sp_get_player_list_data' ) ) {
 		);
 		$performances = get_posts( $args );
 
-		$columns = array( 'eventsplayed' => __( 'Played', 'sportspress' ) );
+		$columns = array( 'eventsplayed' => SP()->text->string('Played', 'team') );
 
 		foreach ( $performances as $performance ):
 
@@ -2491,7 +2480,7 @@ if ( !function_exists( 'sp_get_player_list_data' ) ) {
 					unset( $columns[ $key ] );
 				endif;
 			endforeach;
-			$labels = array_merge( array( 'name' => __( 'Player', 'sportspress' ) ), $columns );
+			$labels = array_merge( array( 'name' => SP()->text->string('Player', 'player') ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;
@@ -2654,7 +2643,7 @@ if ( !function_exists( 'sp_get_player_roster_data' ) ) {
 		);
 		$performances = get_posts( $args );
 
-		$columns = array( 'eventsplayed' => __( 'Played', 'sportspress' ) );
+		$columns = array( 'eventsplayed' => SP()->text->string('Played', 'player') );
 
 		foreach ( $performances as $performance ):
 
@@ -2750,7 +2739,7 @@ if ( !function_exists( 'sp_get_player_roster_data' ) ) {
 		if ( $admin ):
 			return array( $columns, $data, $placeholders, $merged );
 		else:
-			$labels = array_merge( array( 'name' => __( 'Player', 'sportspress' ) ), $columns );
+			$labels = array_merge( array( 'name' => SP()->text->string('Player', 'player') ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;
@@ -2856,7 +2845,7 @@ if ( !function_exists( 'sp_get_player_performance_data' ) ) {
 			$performance_labels[ $performance->post_name ] = $performance->post_title;
 			$equations[ $performance->post_name ] = get_post_meta( $performance->ID, 'sp_calculate', true );
 		endforeach;
-		$columns = array_merge( array( 'eventsplayed' => __( 'Played', 'sportspress' ) ), $performance_labels );
+		$columns = array_merge( array( 'eventsplayed' => SP()->text->string('Played', 'player') ), $performance_labels );
 
 		// Generate array of all season ids and season names
 		$div_ids = array();
@@ -2991,7 +2980,7 @@ if ( !function_exists( 'sp_get_player_performance_data' ) ) {
 		if ( $admin ):
 			return array( $columns, $tempdata, $placeholders, $merged, $seasons_teams );
 		else:
-			$labels = array_merge( array( 'name' => __( 'Season', 'sportspress' ), 'team' => __( 'Team', 'sportspress' ), 'eventsplayed' => __( 'Played', 'sportspress' ) ), $columns );
+			$labels = array_merge( array( 'name' => SP()->text->string('Season'), 'team' => SP()->text->string('Team', 'player'), 'eventsplayed' => SP()->text->string('Played', 'player') ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;

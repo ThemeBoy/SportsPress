@@ -5,7 +5,7 @@ if ( ! isset( $id ) )
 global $sportspress_options;
 
 $defaults = array(
-	'show_nationality_flag' => sportspress_array_value( $sportspress_options, 'player_show_nationality_flag', true ),
+	'show_nationality_flag' => get_option( 'sportspress_player_show_flag', 'yes' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -20,20 +20,20 @@ $metrics = sportspress_get_player_metrics_data( $id );
 $common = array();
 if ( $nationality ):
 	$country_name = sportspress_array_value( $countries, $nationality, null );
-	$common[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $show_nationality_flag ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
+	$common[ SP()->text->string('Nationality', 'player') ] = $country_name ? ( $show_nationality_flag ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 endif;
 
 $data = array_merge( $common, $metrics );
 
 if ( $current_team )
-	$data[ __( 'Current Team', 'sportspress' ) ] = '<a href="' . get_post_permalink( $current_team ) . '">' . get_the_title( $current_team ) . '</a>';
+	$data[ SP()->text->string('Current Team', 'player') ] = '<a href="' . get_post_permalink( $current_team ) . '">' . get_the_title( $current_team ) . '</a>';
 
 if ( $past_teams ):
 	$teams = array();
 	foreach ( $past_teams as $team ):
 		$teams[] = '<a href="' . get_post_permalink( $team ) . '">' . get_the_title( $team ) . '</a>';
 	endforeach;
-	$data[ __( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
+	$data[ SP()->text->string('Past Teams', 'player') ] = implode( ', ', $teams );
 endif;
 
 $output = '<div class="sp-list-wrapper">' .

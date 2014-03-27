@@ -41,7 +41,7 @@ class SP_Admin {
 //			include( 'class-sp-admin-welcome.php' );
 //			include( 'class-sp-admin-notices.php' );
 			include( 'class-sp-admin-assets.php' );
-//			include( 'class-sp-admin-permalink-settings.php' );
+			include( 'class-sp-admin-permalink-settings.php' );
 //			include( 'class-sp-admin-editor.php' );
 
 			// Help

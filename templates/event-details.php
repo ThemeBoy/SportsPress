@@ -7,19 +7,19 @@ $time = get_the_time( get_option('time_format'), $id );
 $leagues = get_the_terms( $id, 'sp_league' );
 $seasons = get_the_terms( $id, 'sp_season' );
 
-$data = array( __( 'Date', 'sportspress' ) => $date, __( 'Time', 'sportspress' ) => $time );
+$data = array( SP()->text->string('Date', 'event') => $date, SP()->text->string('Time', 'event') => $time );
 
 if ( $leagues ):
 	$league = array_pop( $leagues );
-	$data[ __( 'League', 'sportspress' ) ] = $league->name;
+	$data[ SP()->text->string('League') ] = $league->name;
 endif;
 
 if ( $seasons ):
 	$season = array_pop( $seasons );
-	$data[ __( 'Season', 'sportspress' ) ] = $season->name;
+	$data[ SP()->text->string('Season') ] = $season->name;
 endif;
 
-$output = '<h3>' . __( 'Details', 'sportspress' ) . '</h3>';
+$output = '<h3>' . SP()->text->string('Details', 'event') . '</h3>';
 
 $output .= '<div class="sp-table-wrapper">' .
 	'<table class="sp-event-details sp-data-table"><tbody>';

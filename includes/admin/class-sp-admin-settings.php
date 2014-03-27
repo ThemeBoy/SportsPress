@@ -34,7 +34,6 @@ class SP_Admin_Settings {
 			$settings[] = include( 'settings/class-sp-settings-events.php' );
 			$settings[] = include( 'settings/class-sp-settings-teams.php' );
 			$settings[] = include( 'settings/class-sp-settings-players.php' );
-			$settings[] = include( 'settings/class-sp-settings-text.php' );
 			$settings[] = include( 'settings/class-sp-settings-config.php' );
 
 			self::$settings = apply_filters( 'sportspress_get_settings_pages', $settings );
@@ -103,10 +102,10 @@ class SP_Admin_Settings {
 
 	    do_action( 'sportspress_settings_start' );
 
-	    wp_enqueue_script( 'sportspress_settings', SP()->plugin_url() . '/assets/js/admin/settings.min.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'chosen' ), SP()->version, true );
+	    wp_enqueue_script( 'sportspress_settings', SP()->plugin_url() . '/assets/js/admin/settings.js', array( 'jquery', 'wp-color-picker', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'chosen' ), SP()->version, true );
 
-		wp_localize_script( 'sportspress_settings', 'sportspress_settings_params', array(
-			'i18n_nav_warning' => __( 'The changes you made will be lost if you navigate away from this page.', 'sportspress' )
+		wp_localize_script( 'sportspress_settings', 'localized_strings', array(
+			'none' => __( 'None', 'sportspress' )
 		) );
 
 		// Include settings pages
@@ -464,102 +463,6 @@ class SP_Admin_Settings {
 					}
 	            break;
 
-	            // Image width settings
-	            case 'image_width' :
-
-	            	$width 	= self::get_option( $value['id'] . '[width]', $value['default']['width'] );
-	            	$height = self::get_option( $value['id'] . '[height]', $value['default']['height'] );
-	            	$crop 	= checked( 1, self::get_option( $value['id'] . '[crop]', $value['default']['crop'] ), false );
-
-	            	?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ) ?> <?php echo $tip; ?></th>
-	                    <td class="forminp image_width_settings">
-
-	                    	<input name="<?php echo esc_attr( $value['id'] ); ?>[width]" id="<?php echo esc_attr( $value['id'] ); ?>-width" type="text" size="3" value="<?php echo $width; ?>" /> &times; <input name="<?php echo esc_attr( $value['id'] ); ?>[height]" id="<?php echo esc_attr( $value['id'] ); ?>-height" type="text" size="3" value="<?php echo $height; ?>" />px
-
-	                    	<label><input name="<?php echo esc_attr( $value['id'] ); ?>[crop]" id="<?php echo esc_attr( $value['id'] ); ?>-crop" type="checkbox" <?php echo $crop; ?> /> <?php _e( 'Hard Crop?', 'sportspress' ); ?></label>
-
-	                    	</td>
-	                </tr><?php
-	            break;
-
-	            // Single page selects
-	            case 'single_select_page' :
-
-	            	$args = array( 'name'				=> $value['id'],
-	            				   'id'					=> $value['id'],
-	            				   'sort_column' 		=> 'menu_order',
-	            				   'sort_order'			=> 'ASC',
-	            				   'show_option_none' 	=> ' ',
-	            				   'class'				=> $value['class'],
-	            				   'echo' 				=> false,
-	            				   'selected'			=> absint( self::get_option( $value['id'] ) )
-	            				   );
-
-	            	if( isset( $value['args'] ) )
-	            		$args = wp_parse_args( $value['args'], $args );
-
-	            	?><tr valign="top" class="single_select_page">
-	                    <th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ) ?> <?php echo $tip; ?></th>
-	                    <td class="forminp">
-				        	<?php echo str_replace(' id=', " data-placeholder='" . __( 'Select a page&hellip;', 'sportspress' ) .  "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); ?> <?php echo $description; ?>
-				        </td>
-	               	</tr><?php
-	            break;
-
-	            // Single country selects
-	            case 'single_select_country' :
-					$country_setting = (string) self::get_option( $value['id'] );
-					$countries       = SP()->countries->countries;
-
-	            	if ( strstr( $country_setting, ':' ) ) {
-						$country_setting = explode( ':', $country_setting );
-						$country         = current( $country_setting );
-						$state           = end( $country_setting );
-	            	} else {
-						$country = $country_setting;
-						$state   = '*';
-	            	}
-	            	?><tr valign="top">
-						<th scope="row" class="titledesc">
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-							<?php echo $tip; ?>
-						</th>
-	                    <td class="forminp"><select name="<?php echo esc_attr( $value['id'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php _e( 'Choose a country&hellip;', 'sportspress' ); ?>" title="Country" class="chosen_select">
-				        	<?php SP()->countries->country_dropdown_options( $country, $state ); ?>
-				        </select> <?php echo $description; ?>
-	               		</td>
-	               	</tr><?php
-	            break;
-
-	            // Country multiselects
-	            case 'multi_select_countries' :
-
-	            	$selections = (array) self::get_option( $value['id'] );
-
-	            	if ( ! empty( $value['options'] ) )
-	            		$countries = $value['options'];
-	            	else
-	            		$countries = SP()->countries->countries;
-
-	            	asort( $countries );
-	            	?><tr valign="top">
-						<th scope="row" class="titledesc">
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-							<?php echo $tip; ?>
-						</th>
-	                    <td class="forminp">
-		                    <select multiple="multiple" name="<?php echo esc_attr( $value['id'] ); ?>[]" style="width:350px" data-placeholder="<?php _e( 'Choose countries&hellip;', 'sportspress' ); ?>" title="Country" class="chosen_select">
-					        	<?php
-					        		if ( $countries )
-					        			foreach ( $countries as $key => $val )
-		                    				echo '<option value="' . esc_attr( $key ) . '" ' . selected( in_array( $key, $selections ), true, false ).'>' . $val . '</option>';
-		                    	?>
-					        </select> <?php if ( $description ) echo $description; ?> </br><a class="select_all button" href="#"><?php _e( 'Select all', 'sportspress' ); ?></a> <a class="select_none button" href="#"><?php _e( 'Select none', 'sportspress' ); ?></a>
-	               		</td>
-	               	</tr><?php
-	            break;
-
 	            // Default: run an action
 	            default:
 	            	do_action( 'sportspress_admin_field_' . $value['type'], $value );
@@ -598,7 +501,7 @@ class SP_Admin_Settings {
 	    	switch ( $type ) {
 
 		    	// Standard types
-		    	case "checkbox" :
+		    	case 'checkbox' :
 
 		    		if ( isset( $_POST[ $value['id'] ] ) ) {
 		    			$option_value = 'yes';
@@ -608,7 +511,7 @@ class SP_Admin_Settings {
 
 		    	break;
 
-		    	case "textarea" :
+		    	case 'textarea' :
 
 			    	if ( isset( $_POST[$value['id']] ) ) {
 			    		$option_value = wp_kses_post( trim( stripslashes( $_POST[ $value['id'] ] ) ) );
@@ -618,14 +521,12 @@ class SP_Admin_Settings {
 
 		    	break;
 
-		    	case "text" :
+		    	case 'text' :
 		    	case 'email':
 	            case 'number':
-		    	case "select" :
-		    	case "color" :
+		    	case 'select' :
+		    	case 'color' :
 	            case 'password' :
-		    	case "single_select_page" :
-		    	case "single_select_country" :
 		    	case 'radio' :
 
 			       if ( isset( $_POST[$value['id']] ) ) {
