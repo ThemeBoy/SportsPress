@@ -83,8 +83,8 @@ class SP_Frontend_Scripts {
 				if ( isset( $colors['background'] ) )
 					echo '.sp-data-table tbody,.sp-calendar tbody{background: ' . $colors['background'] . ' !important}';
 
-				if ( isset( $colors['alternatea'] ) )
-					echo '.sp-data-table tbody tr.odd,.sp-data-table tbody tr.alternate,.sp-calendar tbody td#today{background: ' . $colors['alternatea'] . ' !important}';
+				if ( isset( $colors['alternate'] ) )
+					echo '.sp-data-table tbody tr.odd,.sp-data-table tbody tr.alternate,.sp-calendar tbody td#today{background: ' . $colors['alternate'] . ' !important}';
 
 				echo '</style>';
 			}

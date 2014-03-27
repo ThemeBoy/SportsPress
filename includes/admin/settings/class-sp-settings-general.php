@@ -185,7 +185,6 @@ class SP_Settings_General extends SP_Settings_Page {
 				if ( empty( $colors['text'] ) ) $colors['text'] = '#ffffff';
 				if ( empty( $colors['background'] ) ) $colors['background'] = '#3a3a3a';
 	            if ( empty( $colors['alternate'] ) ) $colors['alternate'] = '#494949';
-	            if ( empty( $colors['alternatea'] ) ) $colors['alternatea'] = '#494949';
 
 				// Show inputs
 	    		$this->color_picker( __( 'Primary', 'sportspress' ), 'sportspress_frontend_css_primary', $colors['primary'] );
