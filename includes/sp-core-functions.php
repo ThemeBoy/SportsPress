@@ -889,6 +889,12 @@ if ( !function_exists( 'sp_edit_calendar_table' ) ) {
 								<?php _e( 'Time', 'sportspress' ); ?>
 							</label>
 						</th>
+						<th class="column-venue">
+							<label for="sp_columns_venue">
+								<input type="checkbox" name="sp_columns[]" value="venue" id="sp_columns_venue" <?php checked( ! is_array( $usecolumns ) || in_array( 'venue', $usecolumns ) ); ?>>
+								<?php _e( 'Venue', 'sportspress' ); ?>
+							</label>
+						</th>
 						<th class="column-article">
 							<label for="sp_columns_article">
 								<input type="checkbox" name="sp_columns[]" value="article" id="sp_columns_article" <?php checked( ! is_array( $usecolumns ) || in_array( 'article', $usecolumns ) ); ?>>
@@ -941,6 +947,7 @@ if ( !function_exists( 'sp_edit_calendar_table' ) ) {
 									?>
 								</td>
 								<td><?php echo get_post_time( get_option( 'time_format' ), false, $event ); ?></td>
+								<td><?php the_terms( $event->ID, 'sp_venue' ); ?></td>
 								<td>
 									<a href="<?php echo get_edit_post_link( $event->ID ); ?>#sp_articlediv">
 										<?php if ( $video ): ?>
@@ -966,7 +973,7 @@ if ( !function_exists( 'sp_edit_calendar_table' ) ) {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="4">
+						<td colspan="6">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) ); ?>
 						</td>
 					</tr>
@@ -1074,27 +1081,37 @@ if ( !function_exists( 'sp_edit_player_list_table' ) ) {
 				</thead>
 				<tbody>
 					<?php
-					$i = 0;
-					foreach ( $data as $player_id => $player_stats ):
-						if ( !$player_id ) continue;
-						$div = get_term( $player_id, 'sp_season' );
-						$number = get_post_meta( $player_id, 'sp_number', true );
-						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-							<td><?php echo ( $number ? $number : '&nbsp;' ); ?></td>
-							<td>
-								<?php echo get_the_title( $player_id ); ?>
-							</td>
-							<?php foreach( $columns as $column => $label ):
-								$value = sportspress_array_value( $player_stats, $column, '' );
-								$placeholder = sportspress_array_value( sportspress_array_value( $placeholders, $player_id, array() ), $column, 0 );
-								?>
-								<td><input type="text" name="sp_players[<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
-							<?php endforeach; ?>
-						</tr>
-						<?php
-						$i++;
-					endforeach;
+					if ( is_array( $data ) && sizeof( $data ) > 0 ):
+						$i = 0;
+						foreach ( $data as $player_id => $player_stats ):
+							if ( !$player_id ) continue;
+							$div = get_term( $player_id, 'sp_season' );
+							$number = get_post_meta( $player_id, 'sp_number', true );
+							?>
+							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+								<td><?php echo ( $number ? $number : '&nbsp;' ); ?></td>
+								<td>
+									<?php echo get_the_title( $player_id ); ?>
+								</td>
+								<?php foreach( $columns as $column => $label ):
+									$value = sportspress_array_value( $player_stats, $column, '' );
+									$placeholder = sportspress_array_value( sportspress_array_value( $placeholders, $player_id, array() ), $column, 0 );
+									?>
+									<td><input type="text" name="sp_players[<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" /></td>
+								<?php endforeach; ?>
+							</tr>
+							<?php
+							$i++;
+						endforeach;
+					else:
+					?>
+					<tr class="sp-row alternate">
+						<td colspan="<?php $colspan = sizeof( $columns ) + 1; echo $colspan; ?>">
+							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Players', 'sportspress' ) ); ?>
+						</td>
+					</tr>
+					<?php
+					endif;
 					?>
 				</tbody>
 			</table>
@@ -1607,6 +1624,7 @@ if ( !function_exists( 'sp_event_players_sub_filter' ) ) {
 
 if ( !function_exists( 'sp_get_calendar_data' ) ) {
 	function sp_get_calendar_data( $post_id = null, $admin = false ) {
+		global $pagenow;
 
 		$args = array(
 			'post_type' => 'sp_event',
@@ -1620,7 +1638,7 @@ if ( !function_exists( 'sp_get_calendar_data' ) ) {
 			),
 		);
 
-		if ( $post_id ):
+		if ( $pagenow != 'post-new.php' && $post_id ):
 			$leagues = get_the_terms( $post_id, 'sp_league' );
 			$seasons = get_the_terms( $post_id, 'sp_season' );
 			$venues = get_the_terms( $post_id, 'sp_venue' );
@@ -1671,11 +1689,12 @@ if ( !function_exists( 'sp_get_calendar_data' ) ) {
 					),
 				);
 			endif;
+
+			$events = get_posts( $args );
 		else:
 			$usecolumns = null;
+			$events = null;
 		endif;
-
-		$events = get_posts( $args );
 
 		if ( $admin ):
 			return array( $events, $usecolumns );

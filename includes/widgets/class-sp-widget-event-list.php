@@ -10,12 +10,13 @@ class SP_Widget_Event_List extends WP_Widget {
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$id = empty($instance['id']) ? null : $instance['id'];
+		$number = empty($instance['number']) ? null : $instance['number'];
 		$columns = empty($instance['columns']) ? null : $instance['columns'];
 		$show_all_events_link = empty($instance['show_all_events_link']) ? false : $instance['show_all_events_link'];
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		sp_get_template( 'event-list.php', array( 'id' => $id, 'columns' => $columns, 'show_all_events_link' => $show_all_events_link ) );
+		sp_get_template( 'event-list.php', array( 'id' => $id, 'number' => $number, 'columns' => $columns, 'show_all_events_link' => $show_all_events_link ) );
 		echo $after_widget;
 	}
 
@@ -23,6 +24,7 @@ class SP_Widget_Event_List extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['id'] = intval($new_instance['id']);
+		$instance['number'] = intval($new_instance['number']);
 		$instance['columns'] = (array)$new_instance['columns'];
 		$instance['show_all_events_link'] = $new_instance['show_all_events_link'];
 
@@ -30,9 +32,10 @@ class SP_Widget_Event_List extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'columns' => null, 'show_all_events_link' => true ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'number' => 5, 'columns' => null, 'show_all_events_link' => true ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
+		$number = intval($instance['number']);
 		$columns = $instance['columns'];
 		$show_all_events_link = $instance['show_all_events_link'];
 ?>
@@ -56,6 +59,10 @@ class SP_Widget_Event_List extends WP_Widget {
 		?>
 		</p>
 
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of events to show:', 'sportspress' ); ?></label>
+		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" size="3"></p>
+
+
 		<p class="sp-prefs">
 			<?php _e( 'Columns:', 'sportspress' ); ?><br>
 			<?php 
@@ -63,6 +70,7 @@ class SP_Widget_Event_List extends WP_Widget {
 				'event' => __( 'Event', 'sportspress' ),
 				'teams' => __( 'Teams', 'sportspress' ),
 				'time' => __( 'Time', 'sportspress' ),
+				'venue' => __( 'Venue', 'sportspress' ),
 				'article' => __( 'Article', 'sportspress' ),
 			);
 			$field_name = $this->get_field_name('columns') . '[]';
