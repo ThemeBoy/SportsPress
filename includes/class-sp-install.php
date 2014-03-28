@@ -47,7 +47,7 @@ class SP_Install {
 	 */
 	public function install_actions() {
 		// Install - Add pages button
-		if ( ! empty( $_GET['install_sportspress_pages'] ) ) {
+		if ( ! empty( $_GET['install_sportspress'] ) ) {
 
 			// We no longer need to install pages
 			delete_option( '_sp_needs_pages' );
@@ -58,7 +58,7 @@ class SP_Install {
 			exit;
 
 		// Skip button
-		} elseif ( ! empty( $_GET['skip_install_sportspress_pages'] ) ) {
+		} elseif ( ! empty( $_GET['skip_install_sportspress'] ) ) {
 
 			// We no longer need to install pages
 			delete_option( '_sp_needs_pages' );

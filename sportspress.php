@@ -145,39 +145,31 @@ final class SportsPress {
 	 * @return void
 	 */
 	public function autoload( $class ) {
-
+		$path  = null;
 		$class = strtolower( $class );
+		$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
 
 		if ( strpos( $class, 'sp_shortcode_' ) === 0 ) {
-
 			$path = $this->plugin_path() . '/includes/shortcodes/';
-			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
-
-			if ( is_readable( $path . $file ) ) {
-				include_once( $path . $file );
-				return;
-			}
-
-		} elseif ( strpos( $class, 'sp_meta_box_' ) === 0 ) {
-
+		} elseif ( strpos( $class, 'sp_meta_box' ) === 0 ) {
 			$path = $this->plugin_path() . '/includes/admin/post-types/meta-boxes/';
-			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
-
-			if ( is_readable( $path . $file ) ) {
-				include_once( $path . $file );
-				return;
-			}
+		} elseif ( strpos( $class, 'sp_admin' ) === 0 ) {
+			$path = $this->plugin_path() . '/includes/admin/';
 		}
 
+		if ( $path && is_readable( $path . $file ) ) {
+			include_once( $path . $file );
+			return;
+		}
+
+		// Fallback
 		if ( strpos( $class, 'sp_' ) === 0 ) {
-
 			$path = $this->plugin_path() . '/includes/';
-			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
+		}
 
-			if ( is_readable( $path . $file ) ) {
-				include_once( $path . $file );
-				return;
-			}
+		if ( $path && is_readable( $path . $file ) ) {
+			include_once( $path . $file );
+			return;
 		}
 	}
 
@@ -208,7 +200,7 @@ final class SportsPress {
 			include_once( 'includes/admin/class-sp-admin.php' );
 		}
 
-		if ( ! is_admin() ) {
+		if ( ! is_admin() || defined( 'DOING_AJAX' ) ) {
 			$this->frontend_includes();
 		}
 
@@ -289,6 +281,24 @@ final class SportsPress {
 	 */
 	public function setup_environment() {
 		add_theme_support( 'post-thumbnails' );
+		
+		// Standard (3:2)
+		add_image_size( 'sportspress-standard', 637, 425, true );
+		add_image_size( 'sportspress-standard-thumbnail', 303, 202, true );
+
+		// Wide (16:9)
+		add_image_size( 'sportspress-wide-header', 1600, 900, true );
+		add_image_size( 'sportspress-wide', 637, 358, true );
+		add_image_size( 'sportspress-wide-thumbnail', 303, 170, true );
+
+		// Square (1:1)
+		add_image_size( 'sportspress-square', 637, 637, true );
+		add_image_size( 'sportspress-square-thumbnail', 303, 303, true );
+
+		// Fit (Proportional)
+		add_image_size( 'sportspress-fit',  637, 637, false );
+		add_image_size( 'sportspress-fit-thumbnail',  303, 303, false );
+		add_image_size( 'sportspress-fit-icon',  32, 32, false );
 	}
 
 	/** Helper functions ******************************************************/
