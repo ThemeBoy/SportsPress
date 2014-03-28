@@ -121,6 +121,6 @@ $output .= "
 	</div>\n";
 
 if ( $show_all_players_link )
-	$output .= '<a class="sp-player-list-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all players', 'player') . '</a>';
+	$output .= '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all players', 'player') . '</a>';
 
 echo apply_filters( 'sportspress_player_gallery',  $output );

@@ -62,7 +62,7 @@ function sportspress_default_venue_content( $query ) {
     $longitude = sp_array_value( $venue_meta, 'sp_longitude', null );
 
     if ( $latitude != null && $longitude != null )
-        echo '<div class="sp-google-map" data-address="' . $address . '" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '"></div>';
+        echo '<div class="sp-google-map sp-venue-map" data-address="' . $address . '" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '"></div>';
 }
 add_action( 'loop_start', 'sportspress_default_venue_content' );
 
