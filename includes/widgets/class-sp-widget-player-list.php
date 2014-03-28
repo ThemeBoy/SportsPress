@@ -60,8 +60,8 @@ class SP_Widget_Player_list extends WP_Widget {
 			'values' => 'ID',
 			'class' => 'widefat',
 		);
-		if ( ! sportspress_dropdown_pages( $args ) ):
-			sportspress_post_adder( 'sp_list', __( 'Add New', 'sportspress' ) );
+		if ( ! sp_dropdown_pages( $args ) ):
+			sp_post_adder( 'sp_list', __( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>
@@ -106,8 +106,8 @@ class SP_Widget_Player_list extends WP_Widget {
 			'values' => 'slug',
 			'class' => 'sp-select-orderby widefat',
 		);
-		if ( ! sportspress_dropdown_pages( $args ) ):
-			sportspress_post_adder( 'sp_list', __( 'Add New', 'sportspress' ) );
+		if ( ! sp_dropdown_pages( $args ) ):
+			sp_post_adder( 'sp_list', __( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>

@@ -19,7 +19,6 @@ class SP_Meta_Box_Team_Columns {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
 		$league_num = sizeof( $leagues );
 
@@ -34,9 +33,9 @@ class SP_Meta_Box_Team_Columns {
 				<?php
 			endif;
 
-			list( $columns, $data, $placeholders, $merged, $leagues_seasons ) = sportspress_get_team_columns_data( $post->ID, $league_id, true );
+			list( $columns, $data, $placeholders, $merged, $leagues_seasons ) = sp_get_team_columns_data( $post->ID, $league_id, true );
 
-			sportspress_edit_team_columns_table( $league_id, $columns, $data, $placeholders, $merged, $leagues_seasons, ! current_user_can( 'edit_sp_tables' ) );
+			sp_edit_team_columns_table( $league_id, $columns, $data, $placeholders, $merged, $leagues_seasons, ! current_user_can( 'edit_sp_tables' ) );
 
 		endforeach;
 	}
@@ -45,8 +44,8 @@ class SP_Meta_Box_Team_Columns {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_leagues_seasons', sportspress_array_value( $_POST, 'sp_leagues_seasons', array() ) );
+		update_post_meta( $post_id, 'sp_leagues_seasons', sp_array_value( $_POST, 'sp_leagues_seasons', array() ) );
 		if ( current_user_can( 'edit_sp_tables' ) )
-			update_post_meta( $post_id, 'sp_columns', sportspress_array_value( $_POST, 'sp_columns', array() ) );
+			update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 	}
 }

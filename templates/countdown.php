@@ -5,7 +5,7 @@ else:
 	$args = array();
 	if ( isset( $team ) )
 		$args = array( 'key' => 'sp_team', 'value' => $team );
-	$post = sportspress_get_next_event( $args );
+	$post = sp_get_next_event( $args );
 endif;
 
 $output = '';

@@ -36,7 +36,7 @@ class SP_Meta_Box_Column_Details {
 		<p class="sp-equation-selector">
 			<?php
 			foreach ( $equation as $piece ):
-				sportspress_equation_selector( $post->ID, $piece, array( 'team_event', 'result', 'outcome' ) );
+				sp_equation_selector( $post->ID, $piece, array( 'team_event', 'result', 'outcome' ) );
 			endforeach;
 			?>
 		</p>
@@ -74,10 +74,10 @@ class SP_Meta_Box_Column_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		sportspress_delete_duplicate_post( $_POST );
-		update_post_meta( $post_id, 'sp_equation', implode( ' ', sportspress_array_value( $_POST, 'sp_equation', array() ) ) );
-		update_post_meta( $post_id, 'sp_precision', (int) sportspress_array_value( $_POST, 'sp_precision', 1 ) );
-		update_post_meta( $post_id, 'sp_priority', sportspress_array_value( $_POST, 'sp_priority', '0' ) );
-		update_post_meta( $post_id, 'sp_order', sportspress_array_value( $_POST, 'sp_order', 'DESC' ) );
+		sp_delete_duplicate_post( $_POST );
+		update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
+		update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
+		update_post_meta( $post_id, 'sp_priority', sp_array_value( $_POST, 'sp_priority', '0' ) );
+		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', 'DESC' ) );
 	}
 }

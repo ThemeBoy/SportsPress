@@ -24,14 +24,14 @@ class SP_Meta_Box_Event_Results {
 		$results = (array)get_post_meta( $post->ID, 'sp_results', true );
 
 		// Get columns from result variables
-		$columns = sportspress_get_var_labels( 'sp_result' );
+		$columns = sp_get_var_labels( 'sp_result' );
 
 		// Get results for all teams
-		$data = sportspress_array_combine( $teams, $results );
+		$data = sp_array_combine( $teams, $results );
 
 		?>
 		<div>
-			<?php sportspress_edit_event_results_table( $columns, $data ); ?>
+			<?php sp_edit_event_results_table( $columns, $data ); ?>
 		</div>
 		<?php
 	}
@@ -40,7 +40,7 @@ class SP_Meta_Box_Event_Results {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		$results = (array)sportspress_array_value( $_POST, 'sp_results', array() );
+		$results = (array)sp_array_value( $_POST, 'sp_results', array() );
 		update_post_meta( $post_id, 'sp_results', $results );
 	}
 }

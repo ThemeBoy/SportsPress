@@ -38,7 +38,7 @@ class SP_Admin_Dashboard {
      * Show status widget
      */
     public function status_widget() {
-        $next_event = sportspress_get_next_event();
+        $next_event = sp_get_next_event();
         $now = new DateTime( current_time( 'mysql', 0 ) );
         $date = new DateTime( $next_event->post_date );
         $interval = date_diff( $now, $date );

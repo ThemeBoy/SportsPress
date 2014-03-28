@@ -7,7 +7,7 @@ if ( ! isset( $id ) )
 $teams = (array)get_post_meta( $id, 'sp_team', false );
 $staff = (array)get_post_meta( $id, 'sp_staff', false );
 $stats = (array)get_post_meta( $id, 'sp_players', true );
-$performance_labels = sportspress_get_var_labels( 'sp_performance' );
+$performance_labels = sp_get_var_labels( 'sp_performance' );
 $link_posts = get_option( 'sportspress_event_link_players', 'yes' ) == 'yes' ? true : false;
 $sortable = get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false;
 $responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
@@ -20,11 +20,11 @@ foreach( $teams as $key => $team_id ):
 	$totals = array();
 
 	// Get results for players in the team
-	$players = sportspress_array_between( (array)get_post_meta( $id, 'sp_player', false ), 0, $key );
+	$players = sp_array_between( (array)get_post_meta( $id, 'sp_player', false ), 0, $key );
 
 	if ( sizeof( $players ) <= 1 ) continue;
 
-	$data = sportspress_array_combine( $players, sportspress_array_value( $stats, $team_id, array() ) );
+	$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
 
 	$output .= '<h3>' . get_the_title( $team_id ) . '</h3>';
 
@@ -108,7 +108,7 @@ foreach( $teams as $key => $team_id ):
 			if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
 				$value = $row[ $key ];
 			else:
-				$value = sportspress_array_value( $totals, $key, 0 );
+				$value = sp_array_value( $totals, $key, 0 );
 			endif;
 			$output .= '<td class="data-' . $key . '">' . $value . '</td>';
 		endforeach;

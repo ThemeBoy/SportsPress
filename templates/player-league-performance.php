@@ -7,7 +7,7 @@ if ( ! isset( $id ) )
 
 $responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
 
-$data = sportspress_get_player_performance_data( $id, $league->term_id );
+$data = sp_get_player_performance_data( $id, $league->term_id );
 
 // The first row should be column labels
 $labels = $data[0];
@@ -36,7 +36,7 @@ foreach( $data as $season_id => $row ):
 	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 	foreach( $labels as $key => $value ):
-		$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '&mdash;' ) . '</td>';
+		$output .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
 	endforeach;
 
 	$output .= '</tr>';

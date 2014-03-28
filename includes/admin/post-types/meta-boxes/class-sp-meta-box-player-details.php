@@ -80,7 +80,7 @@ class SP_Meta_Box_Player_Details {
 			'property' => 'multiple',
 			'chosen' => true,
 		);
-		sportspress_dropdown_taxonomies( $args );
+		sp_dropdown_taxonomies( $args );
 		?></p>
 
 		<p><strong><?php _e( 'Current Team', 'sportspress' ); ?></strong></p>
@@ -95,7 +95,7 @@ class SP_Meta_Box_Player_Details {
 			'class' => 'sp-current-team widefat',
 			'chosen' => true,
 		);
-		sportspress_dropdown_pages( $args );
+		sp_dropdown_pages( $args );
 		?></p>
 
 		<p><strong><?php _e( 'Past Teams', 'sportspress' ); ?></strong></p>
@@ -110,7 +110,7 @@ class SP_Meta_Box_Player_Details {
 			'property' => 'multiple',
 			'chosen' => true,
 		);
-		sportspress_dropdown_pages( $args );
+		sp_dropdown_pages( $args );
 		?></p>
 
 		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
@@ -125,7 +125,7 @@ class SP_Meta_Box_Player_Details {
 			'property' => 'multiple',
 			'chosen' => true,
 		);
-		sportspress_dropdown_taxonomies( $args );
+		sp_dropdown_taxonomies( $args );
 		?></p>
 
 		<p><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></p>
@@ -140,7 +140,7 @@ class SP_Meta_Box_Player_Details {
 			'property' => 'multiple',
 			'chosen' => true,
 		);
-		sportspress_dropdown_taxonomies( $args );
+		sp_dropdown_taxonomies( $args );
 		?></p>
 		<?php
 	}
@@ -149,10 +149,10 @@ class SP_Meta_Box_Player_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_number', sportspress_array_value( $_POST, 'sp_number', '' ) );
-		update_post_meta( $post_id, 'sp_nationality', sportspress_array_value( $_POST, 'sp_nationality', '' ) );
-		update_post_meta( $post_id, 'sp_current_team', sportspress_array_value( $_POST, 'sp_current_team', null ) );
-		sportspress_update_post_meta_recursive( $post_id, 'sp_past_team', sportspress_array_value( $_POST, 'sp_past_team', array() ) );
-		sportspress_update_post_meta_recursive( $post_id, 'sp_team', array_merge( array( sportspress_array_value( $_POST, 'sp_current_team', null ) ), sportspress_array_value( $_POST, 'sp_past_team', array() ) ) );
+		update_post_meta( $post_id, 'sp_number', sp_array_value( $_POST, 'sp_number', '' ) );
+		update_post_meta( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', '' ) );
+		update_post_meta( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', null ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_past_team', sp_array_value( $_POST, 'sp_past_team', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_team', array_merge( array( sp_array_value( $_POST, 'sp_current_team', null ) ), sp_array_value( $_POST, 'sp_past_team', array() ) ) );
 	}
 }

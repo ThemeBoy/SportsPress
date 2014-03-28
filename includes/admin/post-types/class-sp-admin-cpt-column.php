@@ -60,13 +60,13 @@ class SP_Admin_CPT_Column extends SP_Admin_CPT {
 				echo $post->post_name;
 			break;
 			case 'sp_equation':
-				echo sportspress_get_post_equation( $post_id );
+				echo sp_get_post_equation( $post_id );
 			break;
 			case 'sp_precision':
-				echo sportspress_get_post_precision( $post_id );
+				echo sp_get_post_precision( $post_id );
 			break;
 			case 'sp_order':
-				echo sportspress_get_post_order( $post_id );
+				echo sp_get_post_order( $post_id );
 			break;
 		endswitch;
 	}

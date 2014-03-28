@@ -1,6 +1,6 @@
 <?php
 global $sportspress_options;
-$primary_result = sportspress_array_value( $sportspress_options, 'sportspress_primary_result', null );
+$primary_result = sp_array_value( $sportspress_options, 'sportspress_primary_result', null );
 
 $defaults = array(
 	'number' => -1,
@@ -14,7 +14,7 @@ extract( $defaults, EXTR_SKIP );
 		<thead>
 			<tr>
 				<?php
-				list( $data, $usecolumns ) = sportspress_get_calendar_data( $id, true );
+				list( $data, $usecolumns ) = sp_get_calendar_data( $id, true );
 
 				if ( isset( $columns ) )
 					$usecolumns = $columns;
@@ -67,10 +67,10 @@ extract( $defaults, EXTR_SKIP );
 								foreach ( $teams as $team ):
 									$name = get_the_title( $team );
 									if ( $name ):
-										$team_results = sportspress_array_value( $results, $team, null );
+										$team_results = sp_array_value( $results, $team, null );
 
 										if ( $primary_result ):
-											$team_result = sportspress_array_value( $team_results, $primary_result, null );
+											$team_result = sp_array_value( $team_results, $primary_result, null );
 										else:
 											if ( is_array( $team_results ) ):
 												end( $team_results );

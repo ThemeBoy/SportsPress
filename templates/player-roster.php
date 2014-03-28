@@ -12,7 +12,7 @@ $r = wp_parse_args( $args, $defaults );
 
 $output = '';
 
-$data = sportspress_get_player_roster_data( $id );
+$data = sp_get_player_roster_data( $id );
 
 // The first row should be column labels
 $labels = $data[0];
@@ -20,7 +20,7 @@ $labels = $data[0];
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
 
-$performance = sportspress_array_value( $r, 'performance', null );
+$performance = sp_array_value( $r, 'performance', null );
 
 if ( $r['orderby'] == 'default' ):
 	$r['orderby'] = get_post_meta( $id, 'sp_orderby', true );
@@ -33,7 +33,7 @@ else:
 			'order' => $r['order'],
 		),
 	);
-	uasort( $data, 'sportspress_sort_list_players' );
+	uasort( $data, 'sp_sort_list_players' );
 endif;
 
 $positions = get_terms ( 'sp_position' );
@@ -59,14 +59,14 @@ foreach ( $positions as $position ):
 
 		// Name as link
 		$permalink = get_post_permalink( $player_id );
-		$name = sportspress_array_value( $row, 'name', sportspress_array_value( $row, 'name', '&nbsp;' ) );
+		$name = sp_array_value( $row, 'name', sp_array_value( $row, 'name', '&nbsp;' ) );
 		$rows .= '<td class="data-name">' . '<a href="' . $permalink . '">' . $name . '</a></td>';
 
 		foreach( $labels as $key => $value ):
 			if ( $key == 'name' )
 				continue;
 			if ( ! is_array( $performance ) || in_array( $key, $performance ) )
-			$rows .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '&mdash;' ) . '</td>';
+			$rows .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
 		endforeach;
 
 		$rows .= '</tr>';

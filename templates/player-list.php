@@ -18,7 +18,7 @@ extract( $defaults, EXTR_SKIP );
 $output = '<div class="sp-table-wrapper">' .
 	'<table class="sp-player-list sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . '">' . '<thead>' . '<tr>';
 
-$data = sportspress_get_player_list_data( $id );
+$data = sp_get_player_list_data( $id );
 
 // The first row should be column labels
 $labels = $data[0];
@@ -37,7 +37,7 @@ else:
 			'order' => $order,
 		),
 	);
-	uasort( $data, 'sportspress_sort_list_players' );
+	uasort( $data, 'sp_sort_list_players' );
 endif;
 
 if ( in_array( $orderby, array( 'number', 'name' ) ) ):
@@ -61,7 +61,7 @@ if ( is_int( $number ) && $number > 0 )
 foreach( $data as $player_id => $row ):
 	if ( isset( $limit ) && $i >= $limit ) continue;
 
-	$name = sportspress_array_value( $row, 'name', null );
+	$name = sp_array_value( $row, 'name', null );
 	if ( ! $name ) continue;
 
 	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
@@ -85,7 +85,7 @@ foreach( $data as $player_id => $row ):
 		if ( $key == 'name' )
 			continue;
 		if ( ! is_array( $performance ) || in_array( $key, $performance ) )
-		$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '&mdash;' ) . '</td>';
+		$output .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
 	endforeach;
 
 	$output .= '</tr>';

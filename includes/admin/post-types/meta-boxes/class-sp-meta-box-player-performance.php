@@ -32,9 +32,9 @@ class SP_Meta_Box_Player_Performance {
 				<?php
 			endif;
 
-			list( $columns, $data, $placeholders, $merged, $seasons_teams ) = sportspress_get_player_performance_data( $post->ID, $league->term_id, true );
+			list( $columns, $data, $placeholders, $merged, $seasons_teams ) = sp_get_player_performance_data( $post->ID, $league->term_id, true );
 
-			sportspress_edit_player_performance_table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_teams' ) );
+			sp_edit_player_performance_table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_teams' ) );
 
 		endforeach;
 	}
@@ -43,8 +43,8 @@ class SP_Meta_Box_Player_Performance {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_leagues', sportspress_array_value( $_POST, 'sp_leagues', array() ) );
+		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
 		if ( current_user_can( 'edit_sp_teams' ) )
-			update_post_meta( $post_id, 'sp_performance', sportspress_array_value( $_POST, 'sp_performance', array() ) );
+			update_post_meta( $post_id, 'sp_performance', sp_array_value( $_POST, 'sp_performance', array() ) );
 	}
 }

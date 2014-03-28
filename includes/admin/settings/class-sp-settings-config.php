@@ -316,9 +316,9 @@ class SP_Settings_Config extends SP_Settings_Page {
 						<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 							<td class="row-title"><?php echo $row->post_title; ?></td>
 							<td><?php echo $row->post_name; ?></td>
-							<td><?php echo sportspress_get_post_equation( $row->ID, $row->post_name ); ?></td>
-							<td><?php echo sportspress_get_post_precision( $row->ID ); ?></td>
-							<td><?php echo sportspress_get_post_order( $row->ID ); ?></td>
+							<td><?php echo sp_get_post_equation( $row->ID, $row->post_name ); ?></td>
+							<td><?php echo sp_get_post_precision( $row->ID ); ?></td>
+							<td><?php echo sp_get_post_order( $row->ID ); ?></td>
 							<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 						</tr>
 					<?php $i++; endforeach; ?>
@@ -417,7 +417,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 						<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 							<td class="row-title"><?php echo $row->post_title; ?></td>
 							<td><?php echo get_the_terms ( $row->ID, 'sp_position' ) ? the_terms( $row->ID, 'sp_position' ) : '&mdash;'; ?></td>
-							<td><?php echo sportspress_get_post_calculate( $row->ID ); ?></td>
+							<td><?php echo sp_get_post_calculate( $row->ID ); ?></td>
 							<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 						</tr>
 					<?php $i++; endforeach; ?>

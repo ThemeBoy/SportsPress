@@ -19,18 +19,15 @@ class SP_Meta_Box_Table_Data {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		list( $columns, $usecolumns, $data, $placeholders, $merged ) = sportspress_get_league_table_data( $post->ID, true );
-
-		sportspress_edit_league_table( $columns, $usecolumns, $data, $placeholders );
-
-		sportspress_nonce();
+		list( $columns, $usecolumns, $data, $placeholders, $merged ) = sp_get_league_table_data( $post->ID, true );
+		sp_edit_league_table( $columns, $usecolumns, $data, $placeholders );
 	}
 
 	/**
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_columns', sportspress_array_value( $_POST, 'sp_columns', array() ) );
-		update_post_meta( $post_id, 'sp_teams', sportspress_array_value( $_POST, 'sp_teams', array() ) );
+		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
+		update_post_meta( $post_id, 'sp_teams', sp_array_value( $_POST, 'sp_teams', array() ) );
 	}
 }

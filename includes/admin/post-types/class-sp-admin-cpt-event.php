@@ -69,14 +69,14 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	  
 		if ( $data['post_type'] == 'sp_event' && $data['post_title'] == '' ):
 
-			$teams = sportspress_array_value( $postarr, 'sp_team', array() );
+			$teams = sp_array_value( $postarr, 'sp_team', array() );
 
 			$team_names = array();
 			foreach( $teams as $team ):
 				$team_names[] = get_the_title( $team );
 			endforeach;
 
-			$data['post_title'] = implode( ' ' . sportspress_array_value( $sportspress_options, 'event_teams_delimiter', 'vs' ) . ' ', $team_names );
+			$data['post_title'] = implode( ' ' . sp_array_value( $sportspress_options, 'event_teams_delimiter', 'vs' ) . ' ', $team_names );
 
 		endif;
 
@@ -152,7 +152,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				echo get_the_terms ( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
 			break;
 			case 'sp_views':
-	        	echo sportspress_get_post_views( $post_id );
+	        	echo sp_get_post_views( $post_id );
 			break;
 		endswitch;
 	}
@@ -182,7 +182,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_event' )
 	    	return;
 
-		sportspress_highlight_admin_menu();
+		sp_highlight_admin_menu();
 
 		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
 		$args = array(
@@ -201,7 +201,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			'name' => 'sp_league',
 			'selected' => $selected
 		);
-		sportspress_dropdown_taxonomies( $args );
+		sp_dropdown_taxonomies( $args );
 
 		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
 		$args = array(
@@ -210,7 +210,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			'name' => 'sp_season',
 			'selected' => $selected
 		);
-		sportspress_dropdown_taxonomies( $args );
+		sp_dropdown_taxonomies( $args );
 	}
 
 	/**

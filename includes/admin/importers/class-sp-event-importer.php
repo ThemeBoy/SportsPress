@@ -120,8 +120,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 					$season = ( empty( $_POST['sp_season'] ) ? false : $_POST['sp_season'] );
 
 					// Get labels from result and performance post types
-					$result_labels = sportspress_get_var_labels( 'sp_result' );
-					$performance_labels = sportspress_get_var_labels( 'sp_performance' );
+					$result_labels = sp_get_var_labels( 'sp_result' );
+					$performance_labels = sp_get_var_labels( 'sp_performance' );
 
 					while ( ( $row = fgetcsv( $handle, 0, $this->delimiter ) ) !== FALSE ):
 
@@ -311,7 +311,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 								// Add delimiter if event name is set
 								if ( $title ):
-									$title .= ' ' . sportspress_array_value( $sportspress_options, 'event_teams_delimiter', 'vs' ) . ' ';
+									$title .= ' ' . sp_array_value( $sportspress_options, 'event_teams_delimiter', 'vs' ) . ' ';
 								endif;
 
 								// Append team name to event name
@@ -575,9 +575,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 									'values' => 'slug',
 									'show_option_none' => __( '-- Not set --', 'sportspress' ),
 								);
-								if ( ! sportspress_dropdown_taxonomies( $args ) ):
+								if ( ! sp_dropdown_taxonomies( $args ) ):
 									echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
-									sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
+									sp_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
 								endif;
 								?></td>
 							</tr>
@@ -590,9 +590,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 									'values' => 'slug',
 									'show_option_none' => __( '-- Not set --', 'sportspress' ),
 								);
-								if ( ! sportspress_dropdown_taxonomies( $args ) ):
+								if ( ! sp_dropdown_taxonomies( $args ) ):
 									echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
-									sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' ) );
+									sp_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' ) );
 								endif;
 								?></td>
 							</tr>

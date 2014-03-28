@@ -41,8 +41,8 @@ class SP_Meta_Box_Event_Teams {
 					<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
 				</ul>
 				<?php
-				sportspress_post_checklist( $post->ID, 'sp_player', 'block', 'sp_current_team', $key );
-				sportspress_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_current_team', $key );
+				sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_current_team', $key );
+				sp_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_current_team', $key );
 				?>
 			</div>
 		<?php endforeach; ?>
@@ -67,8 +67,8 @@ class SP_Meta_Box_Event_Teams {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		sportspress_update_post_meta_recursive( $post_id, 'sp_team', sportspress_array_value( $_POST, 'sp_team', array() ) );
-		sportspress_update_post_meta_recursive( $post_id, 'sp_player', sportspress_array_value( $_POST, 'sp_player', array() ) );
-		sportspress_update_post_meta_recursive( $post_id, 'sp_staff', sportspress_array_value( $_POST, 'sp_staff', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
 	}
 }

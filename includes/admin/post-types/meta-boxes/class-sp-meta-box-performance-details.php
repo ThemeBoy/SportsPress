@@ -24,7 +24,7 @@ class SP_Meta_Box_Performance_Details {
 		?>
 		<p><strong><?php _e( 'Calculate', 'sportspress' ); ?></strong></p>
 		<p class="sp-calculate-selector">
-			<?php sportspress_calculate_selector( $post->ID, $calculate ); ?>
+			<?php sp_calculate_selector( $post->ID, $calculate ); ?>
 		</p>
 		<?php
 	}
@@ -33,7 +33,7 @@ class SP_Meta_Box_Performance_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		sportspress_delete_duplicate_post( $_POST );
-		update_post_meta( $post_id, 'sp_calculate', sportspress_array_value( $_POST, 'sp_calculate', 'DESC' ) );
+		sp_delete_duplicate_post( $_POST );
+		update_post_meta( $post_id, 'sp_calculate', sp_array_value( $_POST, 'sp_calculate', 'DESC' ) );
 	}
 }

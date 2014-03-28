@@ -49,7 +49,7 @@ function sportspress_default_venue_content( $query ) {
     if ( ! is_tax( 'sp_venue' ) )
         return;
 
-    $slug = sportspress_array_value( $query->query, 'sp_venue', null );
+    $slug = sp_array_value( $query->query, 'sp_venue', null );
 
     if ( ! $slug )
         return;
@@ -57,9 +57,9 @@ function sportspress_default_venue_content( $query ) {
     $venue = get_term_by( 'slug', $slug, 'sp_venue' );
     $t_id = $venue->term_id;
     $venue_meta = get_option( "taxonomy_$t_id" );
-    $address = sportspress_array_value( $venue_meta, 'sp_address', null );
-    $latitude = sportspress_array_value( $venue_meta, 'sp_latitude', null );
-    $longitude = sportspress_array_value( $venue_meta, 'sp_longitude', null );
+    $address = sp_array_value( $venue_meta, 'sp_address', null );
+    $latitude = sp_array_value( $venue_meta, 'sp_latitude', null );
+    $longitude = sp_array_value( $venue_meta, 'sp_longitude', null );
 
     if ( $latitude != null && $longitude != null )
         echo '<div class="sp-google-map" data-address="' . $address . '" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '"></div>';
@@ -194,13 +194,13 @@ function sportspress_pre_get_posts( $query ) {
 }
 add_filter('pre_get_posts', 'sportspress_pre_get_posts');
 
-function sportspress_posts_where( $where, $that ) {
+function sp_posts_where( $where, $that ) {
     global $wpdb;
     if( 'sp_event' == $that->query_vars['post_type'] && is_archive() )
         $where = str_replace( "{$wpdb->posts}.post_status = 'publish'", "{$wpdb->posts}.post_status = 'publish' OR $wpdb->posts.post_status = 'future'", $where );
     return $where;
 }
-add_filter( 'posts_where', 'sportspress_posts_where', 2, 10 );
+add_filter( 'posts_where', 'sp_posts_where', 2, 10 );
 
 function sportspress_sanitize_title( $title ) {
 
@@ -214,9 +214,9 @@ function sportspress_sanitize_title( $title ) {
 
 		if ( ! $key ) $key = $_POST['post_title'];
 
-		$id = sportspress_array_value( $_POST, 'post_ID', 'var' );
+		$id = sp_array_value( $_POST, 'post_ID', 'var' );
 
-		$title = sportspress_get_eos_safe_slug( $key, $id );
+		$title = sp_get_eos_safe_slug( $key, $id );
 
 	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && $_POST['post_type'] == 'sp_event' ):
 
@@ -235,7 +235,7 @@ add_filter( 'sanitize_title', 'sportspress_sanitize_title' );
 
 function sportspress_the_content( $content ) {
     if ( is_single() || is_page() )
-        sportspress_set_post_views( get_the_ID() );
+        sp_set_post_views( get_the_ID() );
     return $content;
 }
 add_filter( 'the_content', 'sportspress_the_content' );

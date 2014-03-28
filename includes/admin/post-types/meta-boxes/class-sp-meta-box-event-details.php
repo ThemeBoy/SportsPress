@@ -19,10 +19,10 @@ class SP_Meta_Box_Event_Details {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$type = sportspress_get_the_term_id( $post->ID, 'sp_type', null );
-		$league_id = sportspress_get_the_term_id( $post->ID, 'sp_league', 0 );
-		$season_id = sportspress_get_the_term_id( $post->ID, 'sp_season', 0 );
-		$venue_id = sportspress_get_the_term_id( $post->ID, 'sp_venue', 0 );
+		$type = sp_get_the_term_id( $post->ID, 'sp_type', null );
+		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
+		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
+		$venue_id = sp_get_the_term_id( $post->ID, 'sp_venue', 0 );
 		?>
 		<div>
 			<fieldset class="sp-event-format-field sp-league-event-field sp-friendly-event-field">
@@ -36,8 +36,8 @@ class SP_Meta_Box_Event_Details {
 						'values' => 'term_id',
 						'show_option_none' => __( '-- Not set --', 'sportspress' ),
 					);
-					if ( ! sportspress_dropdown_taxonomies( $args ) ):
-						sportspress_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
+					if ( ! sp_dropdown_taxonomies( $args ) ):
+						sp_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
 					endif;
 					?>
 				</p>
@@ -51,8 +51,8 @@ class SP_Meta_Box_Event_Details {
 						'values' => 'term_id',
 						'show_option_none' => __( '-- Not set --', 'sportspress' ),
 					);
-					if ( ! sportspress_dropdown_taxonomies( $args ) ):
-						sportspress_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
+					if ( ! sp_dropdown_taxonomies( $args ) ):
+						sp_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
 					endif;
 					?>
 				</p>
@@ -67,8 +67,8 @@ class SP_Meta_Box_Event_Details {
 					'values' => 'term_id',
 					'show_option_none' => __( '-- Not set --', 'sportspress' ),
 				);
-				if ( ! sportspress_dropdown_taxonomies( $args ) ):
-					sportspress_taxonomy_adder( 'sp_venue', 'sp_event', __( 'Add New', 'sportspress' )  );
+				if ( ! sp_dropdown_taxonomies( $args ) ):
+					sp_taxonomy_adder( 'sp_venue', 'sp_event', __( 'Add New', 'sportspress' )  );
 				endif;
 				?>
 			</p>
@@ -80,8 +80,8 @@ class SP_Meta_Box_Event_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
-		wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
-		wp_set_post_terms( $post_id, sportspress_array_value( $_POST, 'sp_venue', 0 ), 'sp_venue' );
+		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
+		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
+		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_venue', 0 ), 'sp_venue' );
 	}
 }

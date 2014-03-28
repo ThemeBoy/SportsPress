@@ -23,19 +23,19 @@ class SP_Meta_Box_Event_Performance {
 		$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
 
 		// Get columns from performance variables
-		$columns = sportspress_get_var_labels( 'sp_performance' );
+		$columns = sp_get_var_labels( 'sp_performance' );
 
 		foreach ( $teams as $key => $team_id ):
 			if ( ! $team_id ) continue;
 
 			// Get results for players in the team
-			$players = sportspress_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
-			$data = sportspress_array_combine( $players, sportspress_array_value( $stats, $team_id, array() ) );
+			$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
+			$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
 
 			?>
 			<div>
 				<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-				<?php sportspress_edit_event_players_table( $columns, $data, $team_id ); ?>
+				<?php sp_edit_event_players_table( $columns, $data, $team_id ); ?>
 			</div>
 			<?php
 
@@ -46,6 +46,6 @@ class SP_Meta_Box_Event_Performance {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_players', sportspress_array_value( $_POST, 'sp_players', array() ) );
+		update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array() ) );
 	}
 }
