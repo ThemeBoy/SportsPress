@@ -22,48 +22,7 @@ class SP_Text {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->data = apply_filters( 'sportspress_text', array(
-			'general' => array(
-				'league' => __( 'League', 'sportspress' ),
-				'season' => __( 'Season', 'sportspress' ),
-			),
-			'event' => array(
-				'event' => __( 'Event', 'sportspress' ),
-				'date' => __( 'Date', 'sportspress' ),
-				'time' => __( 'Time', 'sportspress' ),
-				'results' => __( 'Results', 'sportspress' ),
-				'team' => __( 'Team', 'sportspress' ),
-				'teams' => __( 'Teams', 'sportspress' ),
-				'details' => __( 'Details', 'sportspress' ),
-				'venue' => __( 'Venue', 'sportspress' ),
-				'player' => __( 'Player', 'sportspress' ),
-				'substitutes' => __( 'Substitutes', 'sportspress' ),
-				'total' => __( 'Total', 'sportspress' ),
-				'article' => __( 'Article', 'sportspress' ),
-				'preview' => __( 'Preview', 'sportspress' ),
-				'recap' => __( 'Recap', 'sportspress' ),
-				'view_all_events' => __( 'View all events', 'sportspress' ),
-			),
-			'team' => array(
-				'team' => __( 'Team', 'sportspress' ),
-				'teams' => __( 'Teams', 'sportspress' ),
-				'pos' => __( 'Pos', 'sportspress' ),
-				'view_full_table' => __( 'View full table', 'sportspress' ),
-			),
-			'player' => array(
-				'player' => __( 'Player', 'sportspress' ),
-				'position' => __( 'Position', 'sportspress' ),
-				'nationality' => __( 'Nationality', 'sportspress' ),
-				'current_team' => __( 'Current Team', 'sportspress' ),
-				'past_teams' => __( 'Past Teams', 'sportspress' ),
-				'rank' => __( 'Rank', 'sportspress' ),
-				'played' => __( 'Played', 'sportspress' ),
-				'view_all_players' => __( 'View all players', 'sportspress' ),
-			),
-			'staff' => array(
-				'staff' => __( 'Staff', 'sportspress' ),
-			),
-		));
+		$this->data = sp_get_text_options();
 	}
 
 	public function __get( $key ) {

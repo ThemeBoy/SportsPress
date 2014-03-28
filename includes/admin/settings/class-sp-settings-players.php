@@ -62,7 +62,9 @@ class SP_Settings_Players extends SP_Settings_Page {
 
 		);
 
-		foreach ( SP()->text->player as $key => $value ):
+		$strings = sp_get_text_options();
+
+		foreach ( sp_array_value( $strings, 'player', array() ) as $key => $value ):
 			$settings[] = array(
 				'title'   => $value,
 				'id'      => 'sportspress_player_' . $key . '_text',

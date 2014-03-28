@@ -40,6 +40,12 @@ class SP_Settings_Config extends SP_Settings_Page {
 	 * @return array
 	 */
 	public function get_settings() {
+		$sports = sp_get_sport_options();
+		$sport_options = array();
+		foreach ( $sports as $slug => $data ):
+			$sport_options[ $slug ] = $data['name'];
+		endforeach;
+
 		return apply_filters('sportspress_event_settings', array(
 
 			array( 'title' => __( 'Configure SportsPress', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'config_options' ),
@@ -49,7 +55,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 				'id'        => 'sportspress_sport',
 				'default'   => 'soccer',
 				'type'      => 'select',
-				'options'   => SP()->sports->options,
+				'options'   => $sport_options,
 			),
 			
 			array( 'type' => 'results' ),
@@ -73,12 +79,6 @@ class SP_Settings_Config extends SP_Settings_Page {
 	 * Save settings
 	 */
 	public function save() {
-		$settings = $this->get_settings();
-		SP_Admin_Settings::save_fields( $settings );
-		
-		if ( isset( $_POST['sportspress_primary_result'] ) )
-	    	update_option( 'sportspress_primary_result', $_POST['sportspress_primary_result'] );
-
 		if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
 
 			$sport = SP()->sports->$_POST['sportspress_sport'];
@@ -162,7 +162,13 @@ class SP_Settings_Config extends SP_Settings_Page {
 					endif;
 				endforeach;
 			endforeach;
+	    	update_option( 'sportspress_primary_result', 0 );
+		elseif ( isset( $_POST['sportspress_primary_result'] ) ):
+	    	update_option( 'sportspress_primary_result', $_POST['sportspress_primary_result'] );
 		endif;
+
+		$settings = $this->get_settings();
+		SP_Admin_Settings::save_fields( $settings );
 	}
 
 	/**
