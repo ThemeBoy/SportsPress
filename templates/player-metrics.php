@@ -3,7 +3,7 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $defaults = array(
-	'show_nationality_flag' => get_option( 'sportspress_player_show_flag', 'yes' ) == 'yes' ? true : false,
+	'show_nationality_flags' => get_option( 'sportspress_player_show_flags', 'yes' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -18,7 +18,7 @@ $metrics = sp_get_player_metrics_data( $id );
 $common = array();
 if ( $nationality ):
 	$country_name = sp_array_value( $countries, $nationality, null );
-	$common[ SP()->text->string('Nationality', 'player') ] = $country_name ? ( $show_nationality_flag ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
+	$common[ SP()->text->string('Nationality', 'player') ] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 endif;
 
 $data = array_merge( $common, $metrics );

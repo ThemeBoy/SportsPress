@@ -58,7 +58,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 			array(
 				'title'     => __( 'Venue', 'sportspress' ),
 				'desc' 		=> __( 'Display maps', 'sportspress' ),
-				'id' 		=> 'sportspress_event_show_map',
+				'id' 		=> 'sportspress_event_show_maps',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'	=> 'start',
