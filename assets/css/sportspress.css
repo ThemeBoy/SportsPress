@@ -54,10 +54,18 @@
 /* Google Maps */
 .sp-google-map {
 	height: 320px;
-	margin-bottom: 32px;
 }
 .sp-google-map img {
 	max-width: none !important;
+}
+.sp-venue-map {
+	margin-bottom: 4em;
+}
+
+/* Templates */
+.sp-view-all-link {
+	display: block;
+	margin-top: 0.5em;
 }
 
 @media only screen and (max-width: 40em) {

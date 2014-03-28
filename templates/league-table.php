@@ -81,7 +81,7 @@ endforeach;
 $output .= '</tbody>' . '</table>';
 
 if ( $show_full_table_link )
-	$output .= '<a class="sp-league-table-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View full table', 'team') . '</a>';
+	$output .= '<a class="sp-league-table-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View full table', 'team') . '</a>';
 
 $output .= '</div>';
 
