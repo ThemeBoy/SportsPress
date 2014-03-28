@@ -1,4 +1,9 @@
 <?php
+$defaults = array(
+	'id' => null,
+	'live' => get_option( 'sportspress_enable_live_countdowns', 'yes' ) == 'yes' ? true : false,
+);
+
 if ( isset( $id ) ):
 	$post = get_post( $id );
 else:
@@ -7,6 +12,8 @@ else:
 		$args = array( 'key' => 'sp_team', 'value' => $team );
 	$post = sp_get_next_event( $args );
 endif;
+
+extract( $defaults, EXTR_SKIP );
 
 $output = '';
 
@@ -28,7 +35,7 @@ if ( isset( $post ) ):
 	$date = new DateTime( $post->post_date );
 	$interval = date_diff( $now, $date );
 
-	$output .= '<p class="countdown sp-countdown"><time datetime="' . $post->post_date . '" data-countdown="' . str_replace( '-', '/', $post->post_date ) . '">' .
+	$output .= '<p class="countdown sp-countdown"><time datetime="' . $post->post_date . '"' . ( $live ? ' data-countdown="' . str_replace( '-', '/', $post->post_date ) . '"' : '' ) . '>' .
 		'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->days ) ) . ' <small>' . __( 'days', 'sportspress' ) . '</small></span> ' .
 		'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->h ) ) . ' <small>' . __( 'hrs', 'sportspress' ) . '</small></span> ' .
 		'<span>' . sprintf( '%02s', ( $interval->invert ? 0 : $interval->i ) ) . ' <small>' . __( 'mins', 'sportspress' ) . '</small></span> ' .
