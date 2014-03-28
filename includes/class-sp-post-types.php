@@ -22,7 +22,7 @@ class SP_Post_types {
 	public function __construct() {
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 5 );
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
-		add_filter( 'the_posts', array( __CLASS__, 'display_scheduled_events' ) );
+		add_filter( 'the_posts', array( $this, 'display_scheduled_events' ) );
 	}
 
 	/**
