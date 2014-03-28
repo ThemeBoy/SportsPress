@@ -18,25 +18,23 @@ if ( $seasons ):
 	$season = array_pop( $seasons );
 	$data[ SP()->text->string('Season') ] = $season->name;
 endif;
-
-$output = '<h3>' . SP()->text->string('Details', 'event') . '</h3>';
-
-$output .= '<div class="sp-table-wrapper">' .
-	'<table class="sp-event-details sp-data-table"><tbody>';
-
-$i = 0;
-
-foreach( $data as $label => $value ):
-
-	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
-	$output .= '<th>' . $label . '</th>';
-	$output .= '<td>' . $value . '</td>';
-	$output .= '</tr>';
-
-	$i++;
-
-endforeach;
-
-$output .= '</tbody></table></div>';
-
-echo apply_filters( 'sportspress_event_details',  $output );
+?>
+<h3><?php echo SP()->text->string('Details', 'event'); ?></h3>
+<div class="sp-table-wrapper">
+	<table class="sp-event-details sp-data-table">
+		<thead>
+			<tr>
+				<?php $i = 0; foreach( $data as $label => $value ):	?>
+					<th><?php echo $label; ?></th>
+				<?php $i++; endforeach; ?>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="odd">
+				<?php $i = 0; foreach( $data as $value ):	?>
+					<td><?php echo $value; ?></td>
+				<?php $i++; endforeach; ?>
+			</tr>
+		</tbody>
+	</table>
+</div>
