@@ -10,6 +10,7 @@ $defaults = array(
 	'columns' => 3,
 	'size' => 'thumbnail',
 	'show_all_players_link' => false,
+	'link_posts' => get_option( 'sportspress_list_link_players', 'yes' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -87,10 +88,19 @@ if ( is_int( $number ) && $number > 0 )
 foreach( $data as $player_id => $performance ):
 
 	$caption = get_the_title( $player_id );
+	$caption = trim( $caption );
+
+	// Add player number to caption if available
 	$player_number = get_post_meta( $player_id, 'sp_number', true );
-	if ( $player_number ):
+	if ( $player_number )
 		$caption = '<strong>' . $player_number . '</strong> ' . $caption;
-	endif;
+
+	// Add caption tag if has caption
+	if ( $captiontag && $caption )
+		$caption = '<' . $captiontag . ' class="wp-caption-text gallery-caption">' . wptexturize( $caption ) . '</' . $captiontag . '>';
+
+	if ( $link_posts )
+		$caption = '<a href="' . get_permalink( $player_id ) . '">' . $caption . '</a>';
 
 	if ( isset( $limit ) && $i >= $limit )
 		continue;
@@ -103,12 +113,7 @@ foreach( $data as $player_id => $performance ):
 			<{$icontag} class='gallery-icon portrait'>"
 				. '<a href="' . get_permalink( $player_id ) . '">' . $thumbnail . '</a>'
 			. "</{$icontag}>";
-		if ( $captiontag && trim( $caption ) ) {
-			$output .= '<a href="' . get_permalink( $player_id ) . '">' . "
-				<{$captiontag} class='wp-caption-text gallery-caption'>
-				" . wptexturize($caption) . "
-				</{$captiontag}>" . '</a>';
-		}
+		$output .= $caption;
 		$output .= "</{$itemtag}>";
 		if ( $columns > 0 && ++$i % $columns == 0 )
 			$output .= '<br style="clear: both" />';

@@ -42,8 +42,8 @@ class SP_Settings_Players extends SP_Settings_Page {
 
 			array(
 				'title'     => __( 'Nationality', 'sportspress' ),
-				'desc' 		=> __( 'Display national flag', 'sportspress' ),
-				'id' 		=> 'sportspress_player_show_flag',
+				'desc' 		=> __( 'Display national flags', 'sportspress' ),
+				'id' 		=> 'sportspress_player_show_flags',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 			),
