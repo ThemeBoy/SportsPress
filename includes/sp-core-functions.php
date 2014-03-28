@@ -2284,7 +2284,7 @@ if ( !function_exists( 'sp_get_player_list_data' ) ) {
 		);
 		$performances = get_posts( $args );
 
-		$columns = array( 'eventsplayed' => SP()->text->string('Played', 'team') );
+		$columns = array( 'eventsplayed' => SP()->text->string('Played', 'player') );
 
 		foreach ( $performances as $performance ):
 
