@@ -95,7 +95,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		function import( $file ) {
-			global $wpdb, $sportspress_options;
+			global $wpdb;
 
 			$this->imported = $this->skipped = 0;
 
@@ -311,7 +311,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 								// Add delimiter if event name is set
 								if ( $title ):
-									$title .= ' ' . sp_array_value( $sportspress_options, 'event_teams_delimiter', 'vs' ) . ' ';
+									$title .= ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ';
 								endif;
 
 								// Append team name to event name

@@ -129,7 +129,7 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 	if ( $domain != 'sportspress' )
 		return $translated_text;
 
-	global $typenow, $sportspress_options;
+	global $typenow;
 
 	if ( is_admin() ):
 		if ( in_array( $typenow, array( 'sp_event', 'sp_team', 'sp_player', 'sp_staff' ) ) ):
@@ -154,13 +154,6 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 			    $venue = get_term_by( 'slug', $slug, 'sp_venue' );
 				$translated_text = $venue->name;
 			endif;
-		endif;
-		if ( isset( $sportspress_options['text'] ) ):
-			foreach( $sportspress_options['text'] as $key => $value ):
-				if ( $translated_text == $key ):
-					$translated_text = $value;
-				endif;
-			endforeach;
 		endif;
 	endif;
 	

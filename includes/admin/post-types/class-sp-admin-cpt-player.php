@@ -88,8 +88,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 					echo '&mdash;';
 				else:
 					$results = get_post_meta( $post_id, 'sp_results', true );
-					global $sportspress_options;
-					$main_result = sp_array_value( $sportspress_options, 'main_result', null );
+					$main_result = get_option( 'sportspress_primary_result', null );
 					foreach( $teams as $team_id ):
 						if ( ! $team_id ) continue;
 						$team = get_post( $team_id );

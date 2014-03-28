@@ -2,8 +2,6 @@
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 
-global $sportspress_options;
-
 $defaults = array(
 	'show_nationality_flag' => get_option( 'sportspress_player_show_flag', 'yes' ) == 'yes' ? true : false,
 );

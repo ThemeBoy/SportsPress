@@ -1,6 +1,4 @@
 <?php
-global $sportspress_options;
-
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 
