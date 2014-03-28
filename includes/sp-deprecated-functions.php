@@ -51,9 +51,6 @@ function sportspress_get_post_equation( $post_id ) {
 function sportspress_get_post_order( $post_id ) {
 	return sp_get_post_order( $post_id );
 }
-function sportspress_get_config_formats() {
-	return sp_get_config_formats();
-}
 function sportspress_dropdown_taxonomies( $args = array() ) {
 	return sp_dropdown_taxonomies( $args );
 }
@@ -75,17 +72,11 @@ function sportspress_get_equation_optgroup_array( $post_id, $type = null, $varia
 function sportspress_equation_selector( $post_id, $selected = null, $groups = array() ) {
 	return sp_equation_selector( $post_id, $selected, $groups );
 }
-function sportspress_get_term_names( $id = null, $post_type = null ) {
-	return sp_get_term_names( $id, $post_type );
-}
 function sportspress_get_var_labels( $post_type ) {
 	return sp_get_var_labels( $post_type );
 }
 function sportspress_get_var_equations( $post_type ) {
 	return sp_get_var_equations( $post_type );
-}
-function sportspress_get_var_calculates( $post_type ) {
-	return sp_get_var_calculates( $post_type );
 }
 function sportspress_edit_calendar_table( $data = array(), $usecolumns = null ) {
 	return sp_edit_calendar_table( $data, $usecolumns );
@@ -114,9 +105,6 @@ function sportspress_event_player_sub_selector( $team_id, $player_id, $value, $d
 function sportspress_edit_event_players_table( $columns = array(), $data = array(), $team_id ) {
 	return sp_edit_event_players_table( $columns, $data, $team_id );
 }
-function sportspress_player_nationality_selector( $value = null ) {
-	return sp_player_nationality_selector( $value );
-}
 function sportspress_post_adder( $post_type = 'post', $label = null ) {
 	return sp_post_adder( $post_type, $label );
 }
@@ -129,20 +117,11 @@ function sportspress_update_post_meta( $post_id, $meta_key, $meta_value, $defaul
 function sportspress_update_post_meta_recursive( $post_id, $meta_key, $meta_value ) {
 	return sp_update_post_meta_recursive( $post_id, $meta_key, $meta_value );
 }
-function sportspress_render_option_field( $group, $name, $type = 'text' ) {
-	return sp_render_option_field( $group, $name, $type );
-}
 function sportspress_get_eos_safe_slug( $title, $post_id = 'var' ) {
 	return sp_get_eos_safe_slug( $title, $post_id );
 }
 function sportspress_solve( $equation, $vars, $precision = 0 ) {
 	return sp_solve( $equation, $vars, $precision );
-}
-function sportspress_event_players_lineup_filter( $arr ) {
-	return sp_event_players_lineup_filter( $arr );
-}
-function sportspress_event_players_sub_filter( $arr ) {
-	return sp_event_players_sub_filter( $arr );
 }
 function sportspress_get_calendar_data( $post_id = null, $admin = false ) {
 	return sp_get_calendar_data( $post_id, $admin );
@@ -152,9 +131,6 @@ function sportspress_get_team_columns_data( $post_id, $league_id, $admin = false
 }
 function sportspress_get_league_table_data( $post_id, $breakdown = false ) {
 	return sp_get_league_table_data( $post_id, $breakdown );
-}
-function sportspress_sort_sports ( $a, $b ) {
-	return sp_sort_sports( $a, $b );
 }
 function sportspress_sort_table_teams ( $a, $b ) {
 	return sp_sort_table_teams( $a, $b );
@@ -178,7 +154,7 @@ function sportspress_get_next_event( $args = array() ) {
 	return sp_get_next_event( $args );
 }
 function sportspress_delete_duplicate_post( &$post ) {
-	return sp_delete_duplicate_post( &$post );
+	return sp_delete_duplicate_post( $post );
 }
 function sportspress_highlight_admin_menu( $p = 'options-general.php', $s = 'sportspress' ) {
 	return sp_highlight_admin_menu( $p, $s );
