@@ -12,7 +12,7 @@ $output = '';
 // Loop through data for each league
 foreach ( $leagues as $league ):
 
-	$data = sportspress_get_team_columns_data( $id, $league->term_id );
+	$data = sp_get_team_columns_data( $id, $league->term_id );
 
 	if ( sizeof( $data ) <= 1 )
 		continue;
@@ -40,7 +40,7 @@ foreach ( $leagues as $league ):
 		$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 		foreach( $labels as $key => $value ):
-			$output .= '<td class="data-' . $key . '">' . sportspress_array_value( $row, $key, '&mdash;' ) . '</td>';
+			$output .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
 		endforeach;
 
 		$output .= '</tr>';

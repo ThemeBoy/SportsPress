@@ -34,7 +34,7 @@ $float = is_rtl() ? 'right' : 'left';
 
 $selector = 'sp-player-gallery-' . $id;
 
-$data = sportspress_get_player_list_data( $id );
+$data = sp_get_player_list_data( $id );
 
 // The first row should be column labels
 $labels = $data[0];
@@ -53,7 +53,7 @@ else:
 			'order' => $order,
 		),
 	);
-	uasort( $data, 'sportspress_sort_list_players' );
+	uasort( $data, 'sp_sort_list_players' );
 endif;
 
 $gallery_style = $gallery_div = '';

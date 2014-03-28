@@ -32,6 +32,6 @@ class SP_Meta_Box_Result_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		sportspress_delete_duplicate_post( $_POST );
+		sp_delete_duplicate_post( $_POST );
 	}
 }

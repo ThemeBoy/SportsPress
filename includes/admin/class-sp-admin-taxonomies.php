@@ -50,8 +50,8 @@ class SP_Admin_Taxonomies {
 			$term = reset( $terms );
 	 		$t_id = $term->term_id;
 			$term_meta = get_option( "taxonomy_$t_id" );
-			$latitude = sportspress_array_value( $term_meta, 'sp_latitude', '40.7324319' );
-			$longitude = sportspress_array_value( $term_meta, 'sp_longitude', '-73.82480799999996' );
+			$latitude = sp_array_value( $term_meta, 'sp_latitude', '40.7324319' );
+			$longitude = sp_array_value( $term_meta, 'sp_longitude', '-73.82480799999996' );
 		else:
 			$latitude = '40.7324319';
 			$longitude = '-73.82480799999996';

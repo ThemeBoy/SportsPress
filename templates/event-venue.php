@@ -14,9 +14,9 @@ foreach( $venues as $venue ):
 	$t_id = $venue->term_id;
 	$term_meta = get_option( "taxonomy_$t_id" );
 
-	$address = sportspress_array_value( $term_meta, 'sp_address', '' );
-	$latitude = sportspress_array_value( $term_meta, 'sp_latitude', 0 );
-	$longitude = sportspress_array_value( $term_meta, 'sp_longitude', 0 );
+	$address = sp_array_value( $term_meta, 'sp_address', '' );
+	$latitude = sp_array_value( $term_meta, 'sp_latitude', 0 );
+	$longitude = sp_array_value( $term_meta, 'sp_longitude', 0 );
 
 	$output .= '<h3>' . SP()->text->string('Venue', 'event') . '</h3>';
 	$output .= '<p><a href="' . get_term_link( $t_id, 'sp_venue' ) . '">' . $venue->name . '</a><br><small>' . $address . '</small></p>';

@@ -3,8 +3,8 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $teams = (array)get_post_meta( $id, 'sp_team', false );
-$results = array_filter( sportspress_array_combine( $teams, (array)get_post_meta( $id, 'sp_results', true ) ), 'array_filter' );
-$result_labels = sportspress_get_var_labels( 'sp_result' );
+$results = array_filter( sp_array_combine( $teams, (array)get_post_meta( $id, 'sp_results', true ) ), 'array_filter' );
+$result_labels = sp_get_var_labels( 'sp_result' );
 
 $output = '';
 
@@ -17,7 +17,7 @@ if ( empty( $results ) )
 	return false;
 
 foreach( $results as $team_id => $result ):
-	if ( sportspress_array_value( $result, 'outcome', '-1' ) != '-1' ):
+	if ( sp_array_value( $result, 'outcome', '-1' ) != '-1' ):
 
 		unset( $result['outcome'] );
 

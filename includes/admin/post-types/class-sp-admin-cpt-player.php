@@ -89,16 +89,16 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 				else:
 					$results = get_post_meta( $post_id, 'sp_results', true );
 					global $sportspress_options;
-					$main_result = sportspress_array_value( $sportspress_options, 'main_result', null );
+					$main_result = sp_array_value( $sportspress_options, 'main_result', null );
 					foreach( $teams as $team_id ):
 						if ( ! $team_id ) continue;
 						$team = get_post( $team_id );
 
 						if ( $team ):
-							$team_results = sportspress_array_value( $results, $team_id, null );
+							$team_results = sp_array_value( $results, $team_id, null );
 
 							if ( $main_result ):
-								$team_result = sportspress_array_value( $team_results, $main_result, null );
+								$team_result = sp_array_value( $team_results, $main_result, null );
 							else:
 								if ( is_array( $team_results ) ):
 									end( $team_results );
@@ -131,7 +131,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 				echo get_the_terms ( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
 			break;
 			case 'sp_views':
-	        	echo sportspress_get_post_views( $post_id );
+	        	echo sp_get_post_views( $post_id );
 			break;
 		endswitch;
 	}
@@ -161,7 +161,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_player' )
 	    	return;
 
-		sportspress_highlight_admin_menu();
+		sp_highlight_admin_menu();
 
 		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
 		$args = array(
@@ -180,7 +180,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 			'name' => 'sp_league',
 			'selected' => $selected
 		);
-		sportspress_dropdown_taxonomies( $args );
+		sp_dropdown_taxonomies( $args );
 
 		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
 		$args = array(
@@ -189,7 +189,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 			'name' => 'sp_season',
 			'selected' => $selected
 		);
-		sportspress_dropdown_taxonomies( $args );
+		sp_dropdown_taxonomies( $args );
 	}
 
 	/**

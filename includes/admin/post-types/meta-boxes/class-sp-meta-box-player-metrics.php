@@ -50,11 +50,11 @@ class SP_Meta_Box_Player_Metrics {
 			foreach ( $vars as $var ):
 			?>
 			<p><strong><?php echo $var->post_title; ?></strong></p>
-			<p><input type="text" name="sp_metrics[<?php echo $var->post_name; ?>]" value="<?php echo sportspress_array_value( $metrics, $var->post_name, '' ); ?>" /></p>
+			<p><input type="text" name="sp_metrics[<?php echo $var->post_name; ?>]" value="<?php echo sp_array_value( $metrics, $var->post_name, '' ); ?>" /></p>
 			<?php
 			endforeach;
 		else:
-			sportspress_post_adder( 'sp_metric', __( 'Add New', 'sportspress' ) );
+			sp_post_adder( 'sp_metric', __( 'Add New', 'sportspress' ) );
 		endif;
 	}
 
@@ -62,6 +62,6 @@ class SP_Meta_Box_Player_Metrics {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_metrics', sportspress_array_value( $_POST, 'sp_metrics', array() ) );
+		update_post_meta( $post_id, 'sp_metrics', sp_array_value( $_POST, 'sp_metrics', array() ) );
 	}
 }

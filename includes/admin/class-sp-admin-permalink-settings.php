@@ -93,7 +93,7 @@ class SP_Admin_Permalink_Settings {
 				else
 					update_option( $key, $value );
 			endforeach;
-			sportspress_flush_rewrite_rules();
+			sp_flush_rewrite_rules();
 		endif;
 	}
 }

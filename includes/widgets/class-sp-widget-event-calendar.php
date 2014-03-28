@@ -49,8 +49,8 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 			'values' => 'ID',
 			'class' => 'sp-event-calendar-select widefat',
 		);
-		if ( ! sportspress_dropdown_pages( $args ) ):
-			sportspress_post_adder( 'sp_calendar', __( 'Add New', 'sportspress' ) );
+		if ( ! sp_dropdown_pages( $args ) ):
+			sp_post_adder( 'sp_calendar', __( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>

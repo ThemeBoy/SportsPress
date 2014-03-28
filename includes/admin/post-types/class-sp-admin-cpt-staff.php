@@ -108,7 +108,7 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 				echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
 			break;
 			case 'sp_views':
-	        	echo sportspress_get_post_views( $post_id );
+	        	echo sp_get_post_views( $post_id );
 			break;
 		endswitch;
 	}
@@ -138,7 +138,7 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_staff' )
 	    	return;
 
-		sportspress_highlight_admin_menu();
+		sp_highlight_admin_menu();
 
 		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
 		$args = array(
@@ -157,7 +157,7 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 			'name' => 'sp_league',
 			'selected' => $selected
 		);
-		sportspress_dropdown_taxonomies( $args );
+		sp_dropdown_taxonomies( $args );
 
 		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
 		$args = array(
@@ -166,7 +166,7 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 			'name' => 'sp_season',
 			'selected' => $selected
 		);
-		sportspress_dropdown_taxonomies( $args );
+		sp_dropdown_taxonomies( $args );
 	}
 
 	/**

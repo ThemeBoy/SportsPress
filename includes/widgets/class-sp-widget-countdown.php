@@ -49,8 +49,8 @@ class SP_Widget_Countdown extends WP_Widget {
 			'show_dates' => true,
 			'post_status' => 'future',
 		);
-		if ( ! sportspress_dropdown_pages( $args ) ):
-			sportspress_post_adder( 'sp_event', __( 'Add New', 'sportspress' ) );
+		if ( ! sp_dropdown_pages( $args ) ):
+			sp_post_adder( 'sp_event', __( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>

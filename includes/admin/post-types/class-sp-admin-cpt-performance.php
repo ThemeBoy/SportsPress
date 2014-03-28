@@ -62,7 +62,7 @@ class SP_Admin_CPT_Performance extends SP_Admin_CPT {
 				echo get_the_terms( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '&mdash;';
 			break;
 			case 'sp_calculate':
-				echo sportspress_get_post_calculate( $post_id );
+				echo sp_get_post_calculate( $post_id );
 			break;
 		endswitch;
 	}

@@ -42,15 +42,15 @@ class SP_Admin_Menus {
 	public function menu_highlight() {
 		global $typenow;
 		if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric' ) ) )
-			sportspress_highlight_admin_menu();
+			sp_highlight_admin_menu();
 		elseif ( $typenow == 'sp_calendar' )
-			sportspress_highlight_admin_menu( 'edit.php?post_type=sp_event', 'edit.php?post_type=sp_calendar' );
+			sp_highlight_admin_menu( 'edit.php?post_type=sp_event', 'edit.php?post_type=sp_calendar' );
 		elseif ( $typenow == 'sp_table' )
-			sportspress_highlight_admin_menu( 'edit.php?post_type=sp_team', 'edit.php?post_type=sp_table' );
+			sp_highlight_admin_menu( 'edit.php?post_type=sp_team', 'edit.php?post_type=sp_table' );
 		elseif ( $typenow == 'sp_list' )
-			sportspress_highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_list' );
+			sp_highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_list' );
 		elseif ( $typenow == 'sp_directory' )
-			sportspress_highlight_admin_menu( 'edit.php?post_type=sp_staff', 'edit.php?post_type=sp_directory' );
+			sp_highlight_admin_menu( 'edit.php?post_type=sp_staff', 'edit.php?post_type=sp_directory' );
 	}
 
 	/**

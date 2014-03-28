@@ -15,7 +15,7 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 if ( isset( $id ) ):
-	$events = sportspress_get_calendar_data( $id );
+	$events = sp_get_calendar_data( $id );
 	$event_ids = array();
 	foreach ( $events as $event ):
 		$event_ids[] = $event->ID;

@@ -19,17 +19,14 @@ class SP_Meta_Box_Calendar_Data {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		list( $data, $usecolumns ) = sportspress_get_calendar_data( $post->ID, true );
-
-		sportspress_edit_calendar_table( $data, $usecolumns );
-
-		sportspress_nonce();
+		list( $data, $usecolumns ) = sp_get_calendar_data( $post->ID, true );
+		sp_edit_calendar_table( $data, $usecolumns );
 	}
 
 	/**
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_columns', sportspress_array_value( $_POST, 'sp_columns', array() ) );
+		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 	}
 }

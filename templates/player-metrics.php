@@ -15,11 +15,11 @@ $countries = SP()->countries->countries;
 $nationality = get_post_meta( $id, 'sp_nationality', true );
 $current_team = get_post_meta( $id, 'sp_current_team', true );
 $past_teams = get_post_meta( $id, 'sp_past_team', false );
-$metrics = sportspress_get_player_metrics_data( $id );
+$metrics = sp_get_player_metrics_data( $id );
 
 $common = array();
 if ( $nationality ):
-	$country_name = sportspress_array_value( $countries, $nationality, null );
+	$country_name = sp_array_value( $countries, $nationality, null );
 	$common[ SP()->text->string('Nationality', 'player') ] = $country_name ? ( $show_nationality_flag ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 endif;
 
