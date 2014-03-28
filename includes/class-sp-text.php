@@ -57,6 +57,7 @@ class SP_Text {
 				'current_team' => __( 'Current Team', 'sportspress' ),
 				'past_teams' => __( 'Past Teams', 'sportspress' ),
 				'rank' => __( 'Rank', 'sportspress' ),
+				'played' => __( 'Played', 'sportspress' ),
 				'view_all_players' => __( 'View all players', 'sportspress' ),
 			),
 			'staff' => array(
@@ -73,8 +74,11 @@ class SP_Text {
 		$this->data[ $key ] = $value;
 	}
 
-	public function string( $key, $context = null ){
-		$key = str_replace( '-', '_', sanitize_title( $key ) );
+	public function string( $string, $context = null ){
+		if ( is_admin() )
+			return $string;
+		
+		$key = str_replace( '-', '_', sanitize_title( $string ) );
 
 		if ( $context == null )
 			$context = 'general';
@@ -83,7 +87,7 @@ class SP_Text {
 			$string = get_option( 'sportspress_' . ( $context == 'general' ? '' : $context . '_' ) . $key . '_text' );
 			return ( empty( $string ) ? $this->data[ $context ][ $key ] : $string );
 		else:
-			return $key;
+			return $string;
 		endif;
 	}
 }
