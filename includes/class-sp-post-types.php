@@ -402,6 +402,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' => 'edit.php?post_type=sp_event',
+					'show_in_admin_bar' 	=> true,
 				)
 			)
 		);
@@ -462,6 +463,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' 			=> 'edit.php?post_type=sp_team',
+					'show_in_admin_bar' 	=> true,
 				)
 			)
 		);
@@ -522,6 +524,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' 			=> 'edit.php?post_type=sp_player',
+					'show_in_admin_bar' 	=> true,
 				)
 			)
 		);
