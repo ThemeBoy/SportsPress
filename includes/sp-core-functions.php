@@ -856,8 +856,7 @@ if ( !function_exists( 'sp_edit_calendar_table' ) ) {
 				<tbody>
 					<?php
 					if ( is_array( $data ) && sizeof( $data ) > 0 ):
-						global $sportspress_options;
-						$main_result = sp_array_value( $sportspress_options, 'main_result', null );
+						$main_result = get_option( 'sportspress_primary_result', null );
 						$i = 0;
 						foreach ( $data as $event ):
 							$teams = get_post_meta( $event->ID, 'sp_team' );
@@ -941,8 +940,7 @@ if ( !function_exists( 'sp_edit_league_table' ) ) {
 	function sp_edit_league_table( $columns = array(), $usecolumns = null, $data = array(), $placeholders = array() ) {
 		if ( is_array( $usecolumns ) )
 			$usecolumns = array_filter( $usecolumns );
-			global $sportspress_options;
-			$show_team_logo = sp_array_value( $sportspress_options, 'league_table_show_team_logo', false );
+			$show_team_logo = get_option( 'sportspress_table_show_logos', false );
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-league-table">

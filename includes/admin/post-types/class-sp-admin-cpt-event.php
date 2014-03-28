@@ -65,8 +65,6 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	 * @return array
 	 */
 	public function wp_insert_post_data( $data, $postarr ) {
-		global $sportspress_options;
-	  
 		if ( $data['post_type'] == 'sp_event' && $data['post_title'] == '' ):
 
 			$teams = sp_array_value( $postarr, 'sp_team', array() );
@@ -76,7 +74,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				$team_names[] = get_the_title( $team );
 			endforeach;
 
-			$data['post_title'] = implode( ' ' . sp_array_value( $sportspress_options, 'event_teams_delimiter', 'vs' ) . ' ', $team_names );
+			$data['post_title'] = implode( ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ', $team_names );
 
 		endif;
 

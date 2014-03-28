@@ -1,6 +1,4 @@
 <?php
-global $sportspress_options;
-
 $defaults = array(
 	'id' => get_the_ID(),
 	'number' => -1,

@@ -1,6 +1,5 @@
 <?php
-global $sportspress_options;
-$primary_result = sp_array_value( $sportspress_options, 'sportspress_primary_result', null );
+$primary_result = get_option( 'sportspress_primary_result', null );
 
 $defaults = array(
 	'number' => -1,
