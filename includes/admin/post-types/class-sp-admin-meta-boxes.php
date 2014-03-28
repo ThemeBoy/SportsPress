@@ -87,7 +87,6 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Column_Details::output', 'sp_column', 'normal', 'high' );
 
 		// Events
-		add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'default' );
 		add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'SP_Meta_Box_Event_Format::output', 'sp_event', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Event_Details::output', 'sp_event', 'side', 'default' );
 		add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'SP_Meta_Box_Event_Teams::output', 'sp_event', 'side', 'default' );
@@ -131,7 +130,6 @@ class SP_Admin_Meta_Boxes {
 	public function remove_meta_boxes() {
 
 		// Events
-		remove_meta_box( 'submitdiv', 'sp_event', 'side' );
 		remove_meta_box( 'sp_venuediv', 'sp_event', 'side' );
 		remove_meta_box( 'sp_leaguediv', 'sp_event', 'side' );
 		remove_meta_box( 'sp_seasondiv', 'sp_event', 'side' );
@@ -161,11 +159,11 @@ class SP_Admin_Meta_Boxes {
 	public function rename_meta_boxes() {
 		global $post;
 
-		// Comments/Reviews
-		if ( isset( $post ) && ( 'publish' == $post->post_status || 'private' == $post->post_status ) ) {
-			remove_meta_box( 'commentsdiv', 'product', 'normal' );
+		// Publish/Event
+		if ( isset( $post ) ) {
+			remove_meta_box( 'submitdiv', 'sp_event', 'side' );
 
-			add_meta_box( 'commentsdiv', __( 'Reviews', 'sportspress' ), 'post_comment_meta_box', 'product', 'normal' );
+			add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
 		}
 	}
 
