@@ -82,10 +82,12 @@ class SP_Admin_Permalink_Settings {
 		if ( ! is_admin() )
 			return;
 
-		if ( isset( $_POST['permalink_structure'] ) || isset( $_POST['category_base'] ) && isset( $_POST['product_permalink'] ) ):
+		if ( isset( $_POST['permalink_structure'] ) || isset( $_POST['sportspress_events_slug'] ) ):
 			foreach ( $this->slugs as $slug ):
 				$key = 'sportspress_' . $slug[0] . '_slug';
-				$value = sanitize_text_field( $_POST[ $key ] );
+				$value = null;
+				if ( isset( $_POST[ $key ] ) )
+					$value = sanitize_text_field( $_POST[ $key ] );
 				if ( empty( $value ) )
 					delete_option( $key );
 				else

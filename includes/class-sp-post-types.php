@@ -29,9 +29,6 @@ class SP_Post_types {
 	 * Register SportsPress taxonomies.
 	 */
 	public static function register_taxonomies() {
-		if ( taxonomy_exists( 'product_type' ) )
-			return;
-
 		do_action( 'sportspress_register_taxonomy' );
 
 		$labels = array(
