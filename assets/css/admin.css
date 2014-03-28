@@ -98,6 +98,7 @@
 	display: block;
 	padding: 0 0 2px;
 	font-size: .92em;
+	word-wrap: break-word;
 }
 .sportspress table.form-table .sp-color-box input.colorpick {
 	width: 100%;
