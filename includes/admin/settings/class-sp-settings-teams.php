@@ -63,7 +63,9 @@ class SP_Settings_Teams extends SP_Settings_Page {
 
 		);
 
-		foreach ( SP()->text->team as $key => $value ):
+		$strings = sp_get_text_options();
+
+		foreach ( sp_array_value( $strings, 'team', array() ) as $key => $value ):
 			$settings[] = array(
 				'title'   => $value,
 				'id'      => 'sportspress_team_' . $key . '_text',

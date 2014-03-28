@@ -91,7 +91,9 @@ class SP_Settings_General extends SP_Settings_Page {
 
 		);
 
-		foreach ( SP()->text->general as $key => $value ):
+		$strings = sp_get_text_options();
+
+		foreach ( sp_array_value( $strings, 'general', array() ) as $key => $value ):
 			$settings[] = array(
 				'title'   		=> $value,
 				'id'      		=> 'sportspress_' . $key . '_text',

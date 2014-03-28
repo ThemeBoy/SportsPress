@@ -86,7 +86,9 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 		);
 
-		foreach ( SP()->text->event as $key => $value ):
+		$strings = sp_get_text_options();
+
+		foreach ( sp_array_value( $strings, 'event', array() ) as $key => $value ):
 			$settings[] = array(
 				'title'   => $value,
 				'id'      => 'sportspress_event_' . $key . '_text',
