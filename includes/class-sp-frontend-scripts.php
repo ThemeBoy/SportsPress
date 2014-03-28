@@ -62,14 +62,16 @@ class SP_Frontend_Scripts {
 
 	public function custom_css() {
 		$enabled = get_option( 'sportspress_enable_frontend_css', 'yes' );
+		$custom = get_option( 'sportspress_custom_css', null );
 
-		if ( $enabled == 'yes' ) {
+		if ( $enabled == 'yes' || ! empty( $custom ) ) {
 
 			$colors = get_option( 'sportspress_frontend_css_colors' );
 			
 			echo '<style type="text/css">.sp-data-table a,.sp-calendar a{text-decoration:none;}.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a,.sp-calendar tbody a:hover{background:none;}';
 
-			if ( sizeof( $colors ) > 0 ) {
+			if ( $enabled == 'yes' && sizeof( $colors ) > 0 ) {
+				echo ' /* SportsPress Frontend CSS */ ';
 
 				if ( isset( $colors['primary'] ) )
 					echo '.sp-data-table th,.sp-calendar th,.sp-data-table tfoot,.sp-calendar tfoot{background:' . $colors['primary'] . ' !important}.sp-data-table tbody a,.sp-calendar tbody a{color:' . $colors['primary'] . ' !important}';
@@ -86,6 +88,9 @@ class SP_Frontend_Scripts {
 				if ( isset( $colors['alternate'] ) )
 					echo '.sp-data-table tbody tr.odd,.sp-data-table tbody tr.alternate,.sp-calendar tbody td#today{background: ' . $colors['alternate'] . ' !important}';
 			}
+
+			if ( ! empty( $custom ) )
+				echo ' /* SportsPress Custom CSS */ ' . $custom;
 			
 			echo '</style>';
 		}
