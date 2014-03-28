@@ -24,15 +24,14 @@ function viewport() {
 	/* Data Tables */
 
 	if (viewport().width > 640) {
-		$(".sp-league-table, .sp-event-performance, .sp-player-list").each(function() {
-			sort = $(this).hasClass("sp-sortable-table");
+		$(".sp-sortable-table").each(function() {
 			$(this).dataTable({
 				"aaSorting": [],
 				"bAutoWidth": false,
 				"bFilter": false,
 				"bInfo": false,
 				"bPaginate": false,
-				"bSort": sort,
+				"bSort": true,
 			    "oLanguage": {
 			      "oAria": {
 			        "sSortAscending": "",
