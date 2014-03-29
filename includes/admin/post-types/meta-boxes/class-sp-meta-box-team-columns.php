@@ -19,11 +19,11 @@ class SP_Meta_Box_Team_Columns {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$leagues = (array)get_the_terms( $post->ID, 'sp_league' );
+		$leagues = get_the_terms( $post->ID, 'sp_league' );
 		$league_num = sizeof( $leagues );
 
 		// Loop through columns for each league
-		foreach ( $leagues as $league ):
+		if ( $leagues ): foreach ( $leagues as $league ):
 
 			$league_id = $league->term_id;
 			
@@ -37,7 +37,11 @@ class SP_Meta_Box_Team_Columns {
 
 			sp_edit_team_columns_table( $league_id, $columns, $data, $placeholders, $merged, $leagues_seasons, ! current_user_can( 'edit_sp_tables' ) );
 
-		endforeach;
+		endforeach; else:
+
+			printf( __( 'Select %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) );
+
+		endif;
 	}
 
 	/**
