@@ -4,11 +4,11 @@ if ( ! isset( $id ) )
 
 $venues = get_the_terms( $id, 'sp_venue' );
 
+if ( ! $venues )
+	return;
+
 $show_maps = get_option( 'sportspress_event_show_maps', 'yes' ) == 'yes' ? true : false;
 $link_venues = get_option( 'sportspress_event_link_venues', 'no' ) == 'yes' ? true : false;
-
-if ( ! $venues )
-	return $output;
 
 foreach( $venues as $venue ):
 	$t_id = $venue->term_id;
