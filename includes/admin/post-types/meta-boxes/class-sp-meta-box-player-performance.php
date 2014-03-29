@@ -24,7 +24,7 @@ class SP_Meta_Box_Player_Performance {
 		$league_num = sizeof( $leagues );
 
 		// Loop through performance for each league
-		foreach ( $leagues as $league ):
+		if ( $leagues ): foreach ( $leagues as $league ):
 			
 			if ( $league_num > 1 ):
 				?>
@@ -36,7 +36,11 @@ class SP_Meta_Box_Player_Performance {
 
 			sp_edit_player_performance_table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_teams' ) );
 
-		endforeach;
+		endforeach; else:
+
+			printf( __( 'Select %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) );
+
+		endif;
 	}
 
 	/**
