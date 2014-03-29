@@ -155,8 +155,11 @@ jQuery(document).ready(function($){
 		matrix = $(this).attr("data-matrix");
 		$el = $(this).closest(".sp-table-adjustments").siblings(".sp-table-values").find("input[data-matrix="+matrix+"]");
 		placeholder = parseFloat($el.attr("data-placeholder"));
-		adjustment = parseFloat($(this).val()) - parseFloat($el.attr("data-adjustment"));
-		if(!isNaN(adjustment)) placeholder += adjustment;
+		current_adjustment = parseFloat($el.attr("data-adjustment"));
+		adjustment = parseFloat($(this).val());
+		if(isNaN(current_adjustment)) current_adjustment = 0;
+		if(isNaN(adjustment)) adjustment = 0;
+		placeholder += adjustment - current_adjustment;
 		$el.attr("placeholder", placeholder);
 	});
 
