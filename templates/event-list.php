@@ -3,13 +3,17 @@ $primary_result = get_option( 'sportspress_primary_result', null );
 
 $defaults = array(
 	'number' => -1,
+	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
+	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
+	'paginated' => get_option( 'sportspress_calendar_paginated', 'yes' ) == 'yes' ? true : false,
+	'rows' => get_option( 'sportspress_calendar_rows', 10 ),
 	'show_all_events_link' => false,
 );
 
 extract( $defaults, EXTR_SKIP );
 ?>
 <div class="sp-table-wrapper">
-	<table class="sp-event-list sp-data-table sp-responsive-table">
+	<table class="sp-event-list sp-data-table<?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $paginated ) { ?> sp-paginated-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
 		<thead>
 			<tr>
 				<?php

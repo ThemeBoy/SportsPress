@@ -32,6 +32,40 @@
 	width: auto;
 }
 
+/* Pagination */
+.sp-paginated-table {
+	margin-bottom: 0 !important;
+}
+.sp-pagination {
+	margin-top: 0 !important;
+}
+.sp-pagination tfoot tr td {
+	text-align: center;
+	cursor: pointer;
+	opacity: 0.5;
+}
+.sp-pagination tfoot tr td.prev {
+	text-align: left;
+}
+.sp-pagination tfoot tr td.next {
+	text-align: right;
+}
+.sp-pagination tfoot tr td a {
+	cursor: inherit;
+}
+.sp-pagination tfoot tr td.active {
+	opacity: 1;
+	cursor: default;
+}
+.sp-pagination tfoot tr td.disabled {
+	opacity: 0;
+	cursor: default;
+}
+.widget .sp-pagination tfoot tr td.prev,
+.widget .sp-pagination tfoot tr td.next {
+	text-align: center;
+}
+
 /* Events Calendar */
 .sp-event-calendar tbody td, .sp-event-calendar thead th {
 	text-align: center;

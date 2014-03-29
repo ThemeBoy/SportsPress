@@ -48,15 +48,40 @@ class SP_Settings_Players extends SP_Settings_Page {
 				'type' 		=> 'checkbox',
 			),
 
+			array( 'type' => 'sectionend', 'id' => 'player_options' ),
+
+			array( 'title' => __( 'Player Lists', 'sportspress' ), 'type' => 'title', 'id' => 'list_options' ),
+
 			array(
-				'title'     => __( 'Player Lists', 'sportspress' ),
+				'title'     => __( 'Players', 'sportspress' ),
 				'desc' 		=> __( 'Link players', 'sportspress' ),
 				'id' 		=> 'sportspress_list_link_players',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 			),
 
-			array( 'type' => 'sectionend', 'id' => 'player_options' ),
+			array(
+				'title'     => __( 'Pagination', 'sportspress' ),
+				'desc' 		=> __( 'Paginate', 'sportspress' ),
+				'id' 		=> 'sportspress_list_paginated',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+			),
+			
+			array(
+				'title' 	=> __( 'Limit', 'sportspress' ),
+				'id' 		=> 'sportspress_list_rows',
+				'class' 	=> 'small-text',
+				'default'	=> '10',
+				'desc' 		=> __( 'players', 'sportspress' ),
+				'type' 		=> 'number',
+				'custom_attributes' => array(
+					'min' 	=> 1,
+					'step' 	=> 1
+				),
+			),
+
+			array( 'type' => 'sectionend', 'id' => 'list_options' ),
 
 			array( 'title' => __( 'Text', 'sportspress' ), 'type' => 'title', 'desc' => __( 'The following options affect how words are displayed on the frontend.', 'sportspress' ), 'id' => 'text_options' ),
 

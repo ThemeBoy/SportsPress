@@ -8,12 +8,14 @@ $defaults = array(
 	'link_posts' => get_option( 'sportspress_table_link_teams', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
+	'paginated' => get_option( 'sportspress_table_paginated', 'yes' ) == 'yes' ? true : false,
+	'rows' => get_option( 'sportspress_table_rows', 10 ),
 );
 
 extract( $defaults, EXTR_SKIP );
 
 $output = '<div class="sp-table-wrapper">' .
-	'<table class="sp-league-table sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . '">' . '<thead>' . '<tr>';
+	'<table class="sp-league-table sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
 $data = sp_get_league_table_data( $id );
 

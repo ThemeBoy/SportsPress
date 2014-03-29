@@ -39,9 +39,13 @@ class SP_Settings_Teams extends SP_Settings_Page {
 		$settings = array(
 
 			array(	'title' => __( 'Team Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'team_options' ),
+
+			array( 'type' => 'sectionend', 'id' => 'team_options' ),
+
+			array( 'title' => __( 'League Tables', 'sportspress' ), 'type' => 'title', 'id' => 'table_options' ),
 			
 			array(
-				'title'     => __( 'League Tables', 'sportspress' ),
+				'title'     => __( 'Teams', 'sportspress' ),
 				'desc' 		=> __( 'Display logos', 'sportspress' ),
 				'id' 		=> 'sportspress_table_show_logos',
 				'default'	=> 'yes',
@@ -57,7 +61,28 @@ class SP_Settings_Teams extends SP_Settings_Page {
 				'checkboxgroup'		=> 'end',
 			),
 
-			array( 'type' => 'sectionend', 'id' => 'team_options' ),
+			array(
+				'title'     => __( 'Pagination', 'sportspress' ),
+				'desc' 		=> __( 'Paginate', 'sportspress' ),
+				'id' 		=> 'sportspress_table_paginated',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+			),
+			
+			array(
+				'title' 	=> __( 'Limit', 'sportspress' ),
+				'id' 		=> 'sportspress_table_rows',
+				'class' 	=> 'small-text',
+				'default'	=> '10',
+				'desc' 		=> __( 'teams', 'sportspress' ),
+				'type' 		=> 'number',
+				'custom_attributes' => array(
+					'min' 	=> 1,
+					'step' 	=> 1
+				),
+			),
+
+			array( 'type' => 'sectionend', 'id' => 'table_options' ),
 
 			array( 'title' => __( 'Text', 'sportspress' ), 'type' => 'title', 'desc' => __( 'The following options affect how words are displayed on the frontend.', 'sportspress' ), 'id' => 'text_options' ),
 
