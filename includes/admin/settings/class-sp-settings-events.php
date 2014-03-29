@@ -44,7 +44,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 			array(
 				'title' => __( 'Number of Teams', 'sportspress' ),
 				'id' 		=> 'sportspress_event_num_teams',
-				'css' 		=> 'width:50px;',
+				'class' 	=> 'small-text',
 				'default'	=> '2',
 				'type' 		=> 'number',
 				'custom_attributes' => array(
@@ -81,6 +81,31 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array( 'type' => 'sectionend', 'id' => 'event_options' ),
+
+			array( 'title' => __( 'Calendars', 'sportspress' ), 'type' => 'title', 'id' => 'calendar_options' ),
+
+			array(
+				'title'     => __( 'Pagination', 'sportspress' ),
+				'desc' 		=> __( 'Paginate', 'sportspress' ),
+				'id' 		=> 'sportspress_calendar_paginated',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+			),
+			
+			array(
+				'title' 	=> __( 'Limit', 'sportspress' ),
+				'id' 		=> 'sportspress_calendar_rows',
+				'class' 	=> 'small-text',
+				'default'	=> '10',
+				'desc' 		=> __( 'events', 'sportspress' ),
+				'type' 		=> 'number',
+				'custom_attributes' => array(
+					'min' 	=> 1,
+					'step' 	=> 1
+				),
+			),
+
+			array( 'type' => 'sectionend', 'id' => 'calendar_options' ),
 
 			array( 'title' => __( 'Text', 'sportspress' ), 'type' => 'title', 'desc' => __( 'The following options affect how words are displayed on the frontend.', 'sportspress' ), 'id' => 'text_options' ),
 

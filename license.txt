@@ -19,6 +19,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 This program incorporates work covered by the following copyright and
 permission notices:
 
+  The SportsPress code has been inspired by and partly adapted from the
+  beautifully coded WooCommerce plugin by WooThemes.
+
   Wherever third party code has been used, credit has been given in the code's
   comments.
 
