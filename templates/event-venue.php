@@ -29,16 +29,18 @@ foreach( $venues as $venue ):
 				<th><?php echo $name; ?></th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-				<td><?php echo $address; ?></td>
-			</tr>
-			<?php if ( $show_maps && $latitude != null && $longitude != null ): ?>
+		<?php if ( $address != null || ( $show_maps && $latitude != null && $longitude != null ) ): ?>
+			<tbody>
 				<tr>
-					<td><div class="sp-google-map" data-address="<?php echo $address; ?>" data-latitude="<?php echo $latitude; ?>" data-longitude="<?php echo $longitude; ?>"></div></td>
+					<td><?php echo $address; ?></td>
 				</tr>
-			<?php endif; ?>
-		</tbody>
+				<?php if ( $show_maps && $latitude != null && $longitude != null ): ?>
+					<tr>
+						<td><div class="sp-google-map" data-address="<?php echo $address; ?>" data-latitude="<?php echo $latitude; ?>" data-longitude="<?php echo $longitude; ?>"></div></td>
+					</tr>
+				<?php endif; ?>
+			</tbody>
+		<?php endif; ?>
 	</table>
 	<?php
 endforeach;
