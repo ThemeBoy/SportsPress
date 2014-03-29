@@ -20,7 +20,8 @@ class SP_Meta_Box_Table_Data {
 	 */
 	public static function output( $post ) {
 		list( $columns, $usecolumns, $data, $placeholders, $merged ) = sp_get_league_table_data( $post->ID, true );
-		sp_edit_league_table( $columns, $usecolumns, $data, $placeholders );
+		$adjustments = get_post_meta( $post->ID, 'sp_adjustments', true );
+		sp_edit_league_table( $columns, $usecolumns, $data, $placeholders, $adjustments );
 	}
 
 	/**
@@ -28,6 +29,7 @@ class SP_Meta_Box_Table_Data {
 	 */
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
+		update_post_meta( $post_id, 'sp_adjustments', sp_array_value( $_POST, 'sp_adjustments', array() ) );
 		update_post_meta( $post_id, 'sp_teams', sp_array_value( $_POST, 'sp_teams', array() ) );
 	}
 }

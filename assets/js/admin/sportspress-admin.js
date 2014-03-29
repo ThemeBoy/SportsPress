@@ -45,6 +45,12 @@ jQuery(document).ready(function($){
 			$el.show();
 	});
 
+	// Table switcher
+	$(".sp-table-panel").siblings(".sp-table-bar").find("a").click(function() {
+		$(this).closest("li").find("a").addClass("current").closest("li").siblings().find("a").removeClass("current").closest(".sp-table-bar").siblings($(this).attr("href")).show().siblings(".sp-table-panel").hide();
+		return false;
+	});
+
 	// Tab switcher
 	$(".sp-tab-panel").siblings(".sp-tab-bar").find("a").click(function() {
 		$(this).closest("li").removeClass("wp-tab").addClass("wp-tab-active").siblings().removeClass("wp-tab-active").addClass("wp-tab").closest(".wp-tab-bar").siblings($(this).attr("href")).show().siblings(".wp-tab-panel").hide();
@@ -63,7 +69,6 @@ jQuery(document).ready(function($){
 					filter += ".sp-filter-"+filterval;
 			});
 		}
-		console.log( filter );
 		$panel = $(this).closest(".sp-tab-select").siblings(".sp-tab-panel")
 		$panel.find(".sp-post").hide(0, function() {
 			$(this).find("input").prop("disabled", true);
@@ -97,43 +102,62 @@ jQuery(document).ready(function($){
 	// Activate self-cloning
 	$(".sp-clone:last").find("select").change();
 
-	// Name editor
-	$(".sp-data-table .sp-default-name").click(function() {
-		$(this).hide().siblings(".sp-custom-name").show().find(".sp-custom-name-input").focus();
+	// Custom value editor
+	$(".sp-data-table .sp-default-value").click(function() {
+		$(this).hide().siblings(".sp-custom-value").show().find(".sp-custom-value-input").focus();
 	});
 
-	// Name editor save
-	$(".sp-data-table .sp-custom-name .sp-save").click(function() {
-		$val = $(this).siblings(".sp-custom-name-input").val();
-		if($val == "") $val = $(this).siblings(".sp-custom-name-input").attr("placeholder");
-		$(this).closest(".sp-custom-name").hide().siblings(".sp-default-name").show().find(".sp-default-name-input").html($val);
+	// Define custom value editor saving
+	$(".sp-data-table .sp-custom-value .sp-custom-value-input").on("saveInput", function() {
+		$val = $(this).val();
+		if($val == "") $val = $(this).attr("placeholder");
+		$(this).closest(".sp-custom-value").hide().siblings(".sp-default-value").show().find(".sp-default-value-input").html($val);
 	});
 
-	// Name editor cancel
-	$(".sp-data-table .sp-custom-name .sp-cancel").click(function() {
-		$val = $(this).closest(".sp-custom-name").siblings(".sp-default-name").find(".sp-default-name-input").html();
-		$el = $(this).siblings(".sp-custom-name-input");
-		if($val == $el.attr("placeholder")) $el.val("");
-		else $el.val($val);
-		$(this).closest(".sp-custom-name").hide().siblings(".sp-default-name").show();
+	// Define custom value editor cancellation
+	$(".sp-data-table .sp-custom-value .sp-custom-value-input").on("cancelInput", function() {
+		$val = $(this).closest(".sp-custom-value").siblings(".sp-default-value").find(".sp-default-value-input").html();
+		if($val == $(this).attr("placeholder")) $(this).val("");
+		else $(this).val($val);
+		$(this).closest(".sp-custom-value").hide().siblings(".sp-default-value").show();
 	});
 
-	// Prevent name editor input from submitting form
-	$(".sp-data-table .sp-custom-name .sp-custom-name-input").keypress(function(event) {
+	// Custom value editor save
+	$(".sp-data-table .sp-custom-value .sp-save").click(function() {
+		$(this).siblings(".sp-custom-value-input").trigger("saveInput");
+	});
+
+	// Custom value editor cancel
+	$(".sp-data-table .sp-custom-value .sp-cancel").click(function() {
+		$(this).siblings(".sp-custom-value-input").trigger("cancelInput");
+	});
+
+	// Prevent custom value editor input from submitting form
+	$(".sp-data-table .sp-custom-value .sp-custom-value-input").keypress(function(event) {
 		if(event.keyCode == 13){
 			event.preventDefault();
-			$(this).siblings(".sp-save").click();
+			$(this).trigger("saveInput");
 			return false;
 		}
 	});
 
-	// Cancel name editor form on escape
-	$(".sp-data-table .sp-custom-name .sp-custom-name-input").keyup(function(event) {
+	// Cancel custom value editor form on escape
+	$(".sp-data-table .sp-custom-value .sp-custom-value-input").keyup(function(event) {
 		if(event.keyCode == 27){
 			event.preventDefault();
-			$(this).siblings(".sp-cancel").click();
+			$(this).trigger("cancelInput");
 			return false;
 		}
+	});
+
+	// Data table adjustments
+	$(".sp-table-adjustments input").change(function() {
+		matrix = $(this).attr("data-matrix");
+		$el = $(this).closest(".sp-table-adjustments").siblings(".sp-table-values").find("input[data-matrix="+matrix+"]");
+		placeholder = parseFloat($el.attr("data-placeholder"));
+		adjustment = parseFloat($(this).val()) - parseFloat($el.attr("data-adjustment"));
+		if(!isNaN(adjustment)) placeholder += adjustment;
+		$el.attr("placeholder", placeholder);
 	});
 
 	// Data table keyboard navigation

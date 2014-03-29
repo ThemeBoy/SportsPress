@@ -215,13 +215,13 @@ table.widefat.sp-data-table a.dashicons {
 	line-height: 27px;
 }
 
-table.widefat.sp-data-table a.sp-edit-name {
+table.widefat.sp-data-table a.sp-edit {
 	-moz-opacity: 0;
 	opacity: 0;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
 
-table.widefat.sp-data-table tr:hover a.sp-edit-name {
+table.widefat.sp-data-table tr:hover a.sp-edit {
 	-moz-opacity: 1;
 	opacity: 1;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
