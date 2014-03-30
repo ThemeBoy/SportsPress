@@ -49,7 +49,7 @@ function sportspress_admin_notices_styles() {
 
 	if ( $screen->id != 'settings_page_sportspress' ):
 		if ( isset( $_REQUEST['skip_install_sportspress'] ) ):
-			update_option( '_sp_needs_config', $_REQUEST['_sp_needs_config'] );
+			update_option( '_sp_needs_welcome', $_REQUEST['_sp_needs_welcome'] );
 		endif;
 
 		if ( ! get_option( 'sportspress_installed' ) ):

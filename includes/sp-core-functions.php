@@ -2998,7 +2998,7 @@ if ( !function_exists( 'sp_highlight_admin_menu' ) ) {
  * Get an array of sport options and settings.
  * @return array
  */
-function sp_get_sport_options() {
+function sp_get_sport_presets() {
 	return apply_filters( 'sportspress_sports', array(
 		'baseball' => array(
 			'name' => __( 'Baseball', 'sportspress' ),
@@ -5238,6 +5238,15 @@ function sp_get_sport_options() {
 			),
 		),
 	));
+}
+
+function sp_get_sport_options() {
+	$sports = sp_get_sport_presets();
+	$options = array();
+	foreach ( $sports as $slug => $data ):
+		$options[ $slug ] = $data['name'];
+	endforeach;
+	return $options;
 }
 
 /**

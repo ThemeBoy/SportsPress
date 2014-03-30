@@ -22,7 +22,7 @@ class SP_Sports {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->data = sp_get_sport_options();
+		$this->data = sp_get_sport_presets();
 	}
 
 	public function __get( $key ) {
