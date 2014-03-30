@@ -150,13 +150,13 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 
 == Screenshots ==
 
-1. Events admin.
-2. Teams admin.
-3. Players admin.
-4. SportsPress Settings panel.
-5. League Table widget settings.
-6. Player List widget settings.
-7. Events Calendar widget settings.
+1. League Table in Twenty Fourteen theme.
+2. Events List in Twenty Fourteen theme.
+3. Events Calendar in Twenty Fourteen theme.
+4. Player List in Twenty Fourteen theme.
+5. League Table column configuration.
+6. General Options page.
+7. Player List widget settings.
 8. SportsPress Status dashboard widget.
 
 == Changelog ==
