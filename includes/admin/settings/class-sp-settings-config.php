@@ -46,6 +46,9 @@ class SP_Settings_Config extends SP_Settings_Page {
 			$sport_options[ $slug ] = $data['name'];
 		endforeach;
 
+		if ( ! get_option( 'sportspress_sport' ) )
+			$sport_options = array_merge( array( 0 => __( '&mdash; Select &mdash;', 'sportspress' ) ), $sport_options );
+
 		return apply_filters('sportspress_event_settings', array(
 
 			array( 'title' => __( 'Configure SportsPress', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'config_options' ),
@@ -163,6 +166,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 				endforeach;
 			endforeach;
 	    	update_option( 'sportspress_primary_result', 0 );
+	    	update_option( '_sp_needs_config', 0 );
 		elseif ( isset( $_POST['sportspress_primary_result'] ) ):
 	    	update_option( 'sportspress_primary_result', $_POST['sportspress_primary_result'] );
 		endif;
