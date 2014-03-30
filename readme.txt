@@ -4,7 +4,7 @@ Tags: sports, press, sports journalism, teams, team management, fixtures, result
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 0.6.2
+Stable tag: 0.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -35,6 +35,7 @@ League table columns, player statistics, and match results can be customized to 
 
 = Available Languages =
 * English (en_US)
+* Arabic (ar)
 * Czech - Čeština (cs_CZ)
 * German - Deutsch (de_DE)
 * Spanish - Español (es_ES)
@@ -143,6 +144,10 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 
 SportsPress is currently in beta and is undergoing testing. We are still actively making adjustments to the code, so we do not recommend using it until we officially leave the beta phase.
 
+= Can I import teams/players/events from a CSV file? =
+
+Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
+
 == Screenshots ==
 
 1. Events admin.
@@ -178,6 +183,9 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 * Fix - Warning messages when adding new team, player, or event.
 * Fix - Countdown widget when event is selected.
 * Fix - Multiple select box height glitch in some browsers fixed.
+* Localization - Arabic translation by Abdulelah.
+* Localization - German translation by Bhelpful2.
+* Localization - Update Swedish translation by JensZ.
 
 = 0.6.2 =
 * Feature - Add options to make tables responsive and sortable.
@@ -229,7 +237,7 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 * Fix - Check that selected columns are in array to avoid warning.
 * Localization - Add Czech translation.
 * Localization - Add Slovak translation.
-* Localization - Add Polish translation.
+* Localization - Add Polish translation by karimjarro.
 
 = 0.4.2 =
 * Feature - Enable selecting columns to display in single league table.
@@ -244,7 +252,7 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 = 0.4.1 =
 * Tweak - Activate checkbox when all players are added to player list.
 * Fix - Function date_diff added for PHP < 5.3.
-* Localization - Swedish translation by jenszackrisson.
+* Localization - Swedish translation by JensZ.
 
 = 0.4 =
 * Feature - SportsPress Status dashboard widget added to display number of events and countdown in admin.
