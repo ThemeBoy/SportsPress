@@ -41,13 +41,6 @@ class SP_Settings_Config extends SP_Settings_Page {
 	 */
 	public function get_settings() {
 		$sports = sp_get_sport_options();
-		$sport_options = array();
-		foreach ( $sports as $slug => $data ):
-			$sport_options[ $slug ] = $data['name'];
-		endforeach;
-
-		if ( ! get_option( 'sportspress_sport' ) )
-			$sport_options = array_merge( array( 0 => __( '&mdash; Select &mdash;', 'sportspress' ) ), $sport_options );
 
 		return apply_filters('sportspress_event_settings', array(
 
@@ -58,7 +51,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 				'id'        => 'sportspress_sport',
 				'default'   => 'soccer',
 				'type'      => 'select',
-				'options'   => $sport_options,
+				'options'   => $sports,
 			),
 			
 			array( 'type' => 'results' ),
@@ -83,90 +76,9 @@ class SP_Settings_Config extends SP_Settings_Page {
 	 */
 	public function save() {
 		if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
-
 			$sport = SP()->sports->$_POST['sportspress_sport'];
-
-			// Get array of taxonomies to insert
-			$term_groups = sp_array_value( $sport, 'term', array() );
-
-			foreach( $term_groups as $taxonomy => $terms ):
-				// Find empty terms and destroy
-				$allterms = get_terms( $taxonomy, 'hide_empty=0' );
-
-				foreach( $allterms as $term ):
-					if ( $term->count == 0 )
-						wp_delete_term( $term->term_id, $taxonomy );
-				endforeach;
-
-				// Insert terms
-				foreach( $terms as $term ):
-					wp_insert_term( $term['name'], $taxonomy, array( 'slug' => $term['slug'] ) );
-				endforeach;
-			endforeach;
-
-			// Get array of post types to insert
-			$post_groups = sp_array_value( $sport, 'posts', array() );
-
-			// Loop through each post type
-			foreach( $post_groups as $post_type => $posts ):
-
-				$args = array(
-					'post_type' => $post_type,
-					'numberposts' => -1,
-					'posts_per_page' => -1,
-					'meta_query' => array(
-						array(
-							'key' => '_sp_preset',
-							'value' => 1
-						)
-					)
-				);
-
-				// Delete posts
-				$old_posts = get_posts( $args );
-
-				foreach( $old_posts as $post ):
-					wp_delete_post( $post->ID, true);
-				endforeach;
-
-				// Add posts
-				foreach( $posts as $index => $post ):
-
-					// Make sure post doesn't overlap
-					if ( ! get_page_by_path( $post['post_name'], OBJECT, $post_type ) ):
-
-						// Translate post title
-						$post['post_title'] = __( $post['post_title'], 'sportspress' );
-
-						// Set post type
-						$post['post_type'] = $post_type;
-
-						// Increment menu order by 2 and publish post
-						$post['menu_order'] = $index * 2 + 2;
-						$post['post_status'] = 'publish';
-						$id = wp_insert_post( $post );
-
-						// Flag as preset
-						update_post_meta( $id, '_sp_preset', 1 );
-
-						// Update meta
-						if ( array_key_exists( 'meta', $post ) ):
-							foreach ( $post['meta'] as $key => $value ):
-								update_post_meta( $id, $key, $value );
-							endforeach;
-						endif;
-
-						// Update terms
-						if ( array_key_exists( 'tax_input', $post ) ):
-							foreach ( $post['tax_input'] as $taxonomy => $terms ):
-								wp_set_object_terms( $id, $terms, $taxonomy, false );
-							endforeach;
-						endif;
-					endif;
-				endforeach;
-			endforeach;
-	    	update_option( 'sportspress_primary_result', 0 );
-	    	update_option( '_sp_needs_config', 0 );
+			SP_Admin_Settings::configure_sport( $sport );
+    		update_option( '_sp_needs_welcome', 0 );
 		elseif ( isset( $_POST['sportspress_primary_result'] ) ):
 	    	update_option( 'sportspress_primary_result', $_POST['sportspress_primary_result'] );
 		endif;

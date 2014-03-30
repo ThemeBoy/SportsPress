@@ -40,18 +40,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 		$settings = array(
 
 			array(	'title' => __( 'Event Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'event_options' ),
-
-			array(
-				'title' => __( 'Number of Teams', 'sportspress' ),
-				'id' 		=> 'sportspress_event_num_teams',
-				'class' 	=> 'small-text',
-				'default'	=> '2',
-				'type' 		=> 'number',
-				'custom_attributes' => array(
-					'min' 	=> 0,
-					'step' 	=> 1
-				)
-			),
 			
 			array( 'type' => 'delimiter' ),
 

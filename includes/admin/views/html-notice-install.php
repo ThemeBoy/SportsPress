@@ -2,9 +2,9 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 <div id="message" class="updated sportspress-message">
-	<p><?php _e( '<strong>Welcome to SportsPress</strong> &#8211; Get Started', 'sportspress' ); ?></p>
+	<p><strong><?php printf( __( 'Welcome to SportsPress %s', 'sportspress' ), SP()->version ); ?></strong></p>
 	<p class="submit">
-		<a class="button-primary" href="<?php echo admin_url('options-general.php?page=sportspress&tab=config'); ?>"><?php _e( 'Configure SportsPress', 'sportspress' ); ?></a>
-		<a class="button-secondary" href="<?php echo add_query_arg('skip_install_sportspress', 'true' ); ?>"><?php _e( 'Skip setup', 'sportspress' ); ?></a>
+		<a class="button-primary" href="<?php echo admin_url( add_query_arg( array( 'page' => 'sp-about', 'install_sportspress' => 'true' ), 'index.php' ) ); ?>"><?php _e( "Get Started", 'sportspress' ); ?></a>
+		<a class="button-secondary" href="<?php echo add_query_arg('skip_install_sportspress', 'true' ); ?>"><?php _e( 'Hide this notice', 'sportspress' ); ?></a>
 	</p>
 </div>

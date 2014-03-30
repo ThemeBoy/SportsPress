@@ -112,6 +112,13 @@ class SP_Settings_General extends SP_Settings_Page {
 	 * Save settings
 	 */
 	public function save() {
+		if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
+			$sport = SP()->sports->$_POST['sportspress_sport'];
+			SP_Admin_Settings::configure_sport( $sport );
+			update_option( 'sportspress_sport', $_POST['sportspress_sport'] );
+    		update_option( '_sp_needs_welcome', 0 );
+    	endif;
+
 		$settings = $this->get_settings();
 		SP_Admin_Settings::save_fields( $settings );
 

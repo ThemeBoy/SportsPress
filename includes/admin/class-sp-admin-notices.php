@@ -37,16 +37,12 @@ class SP_Admin_Notices {
 	 * Add notices + styles if needed.
 	 */
 	public function add_notices() {
-		if ( get_option( '_sp_needs_config' ) == 1 ) {
+		if ( get_option( '_sp_needs_welcome' ) == 1 ) {
 			wp_enqueue_style( 'sportspress-activation', plugins_url(  '/assets/css/activation.css', SP_PLUGIN_FILE ) );
 			add_action( 'admin_notices', array( $this, 'install_notice' ) );
 		}
 
 		$notices = get_option( 'sportspress_admin_notices', array() );
-
-		if ( isset( $_GET['skip_install_sportspress'] ) ):
-			update_option( '_sp_needs_config', $_GET['_sp_needs_config'] ? 0 : 1 );
-		endif;
 
 		if ( ! empty( $_GET['hide_theme_support_notice'] ) ) {
 			$notices = array_diff( $notices, array( 'theme_support' ) );
@@ -80,7 +76,7 @@ class SP_Admin_Notices {
 		$screen = get_current_screen();
 
 		// If we have just installed, show a message with the install pages button
-		if ( get_option( '_sp_needs_config' ) == 1 && $screen->id != 'settings_page_sportspress' ) {
+		if ( get_option( '_sp_needs_welcome' ) == 1 && $screen->id != 'settings_page_sportspress' ) {
 			include( 'views/html-notice-install.php' );
 		}
 	}

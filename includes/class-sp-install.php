@@ -50,34 +50,25 @@ class SP_Install {
 		if ( ! empty( $_GET['install_sportspress'] ) ) {
 
 			// We no longer need to install pages
-			delete_option( '_sp_needs_pages' );
+			delete_option( '_sp_needs_welcome' );
 			delete_transient( '_sp_activation_redirect' );
 
 			// What's new redirect
-			wp_redirect( admin_url( 'index.php?page=sp-about&sp-installed=true' ) );
-			exit;
+			//wp_redirect( admin_url( 'index.php?page=sp-about&sp-installed=true' ) );
+			//exit;
 
 		// Skip button
 		} elseif ( ! empty( $_GET['skip_install_sportspress'] ) ) {
 
-			// We no longer need to install pages
-			delete_option( '_sp_needs_pages' );
+			// We no longer need to install configs
+			delete_option( '_sp_needs_welcome' );
 			delete_transient( '_sp_activation_redirect' );
 
 			// What's new redirect
-			wp_redirect( admin_url( 'index.php?page=sp-about' ) );
-			exit;
+			//wp_redirect( admin_url( 'index.php?page=sp-about' ) );
+			//exit;
 
 		// Update button
-		} elseif ( ! empty( $_GET['do_update_sportspress'] ) ) {
-
-			// Update complete
-			delete_option( '_sp_needs_update' );
-			delete_transient( '_sp_activation_redirect' );
-
-			// What's new redirect
-			wp_redirect( admin_url( 'index.php?page=sp-about&sp-updated=true' ) );
-			exit;
 		}
 	}
 
@@ -85,13 +76,14 @@ class SP_Install {
 	 * Install SP
 	 */
 	public function install() {
-		$this->create_options();
 		$this->create_roles();
 
 		// Register post types
 		include_once( 'class-sp-post-types.php' );
 		SP_Post_types::register_post_types();
 		SP_Post_types::register_taxonomies();
+
+		$this->create_options();
 
 		// Queue upgrades
 		$current_version = get_option( 'sportspress_version', null );
@@ -101,7 +93,7 @@ class SP_Install {
 
 		// Check if pages are needed
 		if ( ! get_option( 'sportspress_sport' ) ) {
-			update_option( '_sp_needs_config', 1 );
+			update_option( '_sp_needs_welcome', 1 );
 		}
 
 		// Flush rules after install
@@ -132,6 +124,12 @@ class SP_Install {
 				}
 			}
 		}
+
+		// Configure default sport
+		$sport = 'soccer';
+		$options = sp_get_sport_presets();
+		SP_Settings_Config::configure_sport( $options[ $sport ] );
+	    update_option( 'sportspress_sport', $sport );
 	}
 
 	/**
