@@ -68,7 +68,7 @@ class SP_Frontend_Scripts {
 
 			$colors = get_option( 'sportspress_frontend_css_colors' );
 			
-			echo '<style type="text/css">.sp-data-table a,.sp-calendar a{text-decoration:none;}.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a,.sp-calendar tbody a:hover{background:none;}';
+			echo '<style type="text/css">.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a,.sp-calendar tbody a:hover{background:none;}';
 
 			if ( $enabled == 'yes' && sizeof( $colors ) > 0 ) {
 				echo ' /* SportsPress Frontend CSS */ ';

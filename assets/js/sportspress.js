@@ -53,12 +53,12 @@ function viewport() {
 	            $(nPaging).addClass('pagination').append(
 	                '<table class="sp-data-table sp-pagination" role="navigation">'+
 	                	'<tfoot><tr>' +
-		                    '<td class="prev disabled"><a href="#">&laquo; '+oLang.sPrevious+'</a></td>'+
-		                    '<td class="next disabled"><a href="#">'+oLang.sNext+' &raquo; </a></td>'+
+		                    '<td class="prev disabled"><a>&laquo; '+oLang.sPrevious+'</a></td>'+
+		                    '<td class="next disabled"><a>'+oLang.sNext+' &raquo; </a></td>'+
 						'</tr></tfoot>' +
 	                '</table>'
 	            );
-	            var els = $('a', nPaging);
+	            var els = $('td', nPaging);
 	            $(els[0]).bind( 'click.DT', { action: "previous" }, fnClickHandler );
 	            $(els[1]).bind( 'click.DT', { action: "next" }, fnClickHandler );
 	        },
@@ -91,7 +91,7 @@ function viewport() {
 	                // Add the new cells and their event handlers
 	                for ( j=iStart ; j<=iEnd ; j++ ) {
 	                    sClass = (j==oPaging.iPage+1) ? 'class="active"' : '';
-	                    $('<td '+sClass+'><a href="#">'+j+'</a></td>')
+	                    $('<td '+sClass+'><a>'+j+'</a></td>')
 	                        .insertBefore( $('td:last', an[i])[0] )
 	                        .bind('click', function (e) {
 	                            e.preventDefault();
