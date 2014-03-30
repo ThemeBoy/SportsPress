@@ -39,7 +39,7 @@ class SP_Admin {
 		if ( ! is_ajax() ) {
 			include( 'class-sp-admin-menus.php' );
 //			include( 'class-sp-admin-welcome.php' );
-//			include( 'class-sp-admin-notices.php' );
+			include( 'class-sp-admin-notices.php' );
 			include( 'class-sp-admin-assets.php' );
 			include( 'class-sp-admin-permalink-settings.php' );
 //			include( 'class-sp-admin-editor.php' );

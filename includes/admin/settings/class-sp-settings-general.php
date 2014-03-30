@@ -51,7 +51,7 @@ class SP_Settings_General extends SP_Settings_Page {
 			array( 'type' 		=> 'frontend_styles' ),
 
 			array(
-				'title' 	=> __( 'Custom CSS', 'woocommerce' ),
+				'title' 	=> __( 'Custom CSS', 'sportspress' ),
 				'id' 		=> 'sportspress_custom_css',
 				'css' 		=> 'width:100%; height: 130px;',
 				'type' 		=> 'textarea',

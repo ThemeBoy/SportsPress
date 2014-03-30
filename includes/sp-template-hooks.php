@@ -48,8 +48,8 @@ function sportspress_admin_notices_styles() {
 	$screen = get_current_screen();
 
 	if ( $screen->id != 'settings_page_sportspress' ):
-		if ( isset( $_REQUEST['sportspress_installed'] ) ):
-			update_option( 'sportspress_installed', $_REQUEST['sportspress_installed'] );
+		if ( isset( $_REQUEST['skip_install_sportspress'] ) ):
+			update_option( '_sp_needs_config', $_REQUEST['_sp_needs_config'] );
 		endif;
 
 		if ( ! get_option( 'sportspress_installed' ) ):
@@ -70,7 +70,7 @@ function sportspress_admin_notices_styles() {
 		endif;
 	endif;
 }
-add_action( 'admin_print_styles', 'sportspress_admin_notices_styles' );
+//add_action( 'admin_print_styles', 'sportspress_admin_notices_styles' );
 
 /**
  * sportspress_admin_install_notices function.
@@ -79,7 +79,7 @@ add_action( 'admin_print_styles', 'sportspress_admin_notices_styles' );
  * @return void
  */
 function sportspress_admin_install_notices() {
-//	include( dirname( SP_PLUGIN_FILE ) . '/includes/admin/views/notice-install.php' );
+	include( dirname( SP_PLUGIN_FILE ) . '/includes/admin/views/notice-install.php' );
 }
 
 /**
@@ -290,8 +290,7 @@ add_filter( 'the_content', 'sportspress_default_table_content' );
 
 function sportspress_default_player_content( $content ) {
     if ( is_singular( 'sp_player' ) && in_the_loop() ):
-        sp_get_template( 'player-metrics.php' );
-        sp_get_template( 'player-performance.php' );
+        sp_get_template( 'player.php' );
     endif;
     return $content;
 }

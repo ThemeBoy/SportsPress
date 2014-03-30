@@ -99,6 +99,11 @@ class SP_Install {
 		// Update version
 		update_option( 'sportspress_version', SP()->version );
 
+		// Check if pages are needed
+		if ( ! get_option( 'sportspress_sport' ) ) {
+			update_option( '_sp_needs_config', 1 );
+		}
+
 		// Flush rules after install
 		flush_rewrite_rules();
 
