@@ -42,7 +42,6 @@
 .sp-pagination tfoot tr td {
 	text-align: center;
 	cursor: pointer;
-	opacity: 0.5;
 }
 .sp-pagination tfoot tr td.prev {
 	text-align: left;
@@ -54,7 +53,7 @@
 	cursor: inherit;
 }
 .sp-pagination tfoot tr td.active {
-	opacity: 1;
+	opacity: 0.5;
 	cursor: default;
 }
 .sp-pagination tfoot tr td.disabled {
@@ -82,7 +81,6 @@
 }
 .sp-event-list .column-article a .dashicons {
 	padding-right: 3px;
-	text-decoration: none;
 }
 
 /* Google Maps */

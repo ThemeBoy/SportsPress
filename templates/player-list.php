@@ -55,7 +55,7 @@ $output .= '</tr>' . '</thead>' . '<tbody>';
 
 $i = 0;
 
-if ( is_int( $number ) && $number > 0 )
+if ( intval( $number ) > 0 )
 	$limit = $number;
 
 foreach( $data as $player_id => $row ):
