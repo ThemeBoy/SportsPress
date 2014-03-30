@@ -292,6 +292,7 @@ table.widefat select.sp-outcome {
 	color: #a00;
 }
 
+/* Chosen */
 .chosen-container-single .chosen-single {
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
@@ -327,6 +328,7 @@ table.widefat select.sp-outcome {
 
 .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
 	color: #a9a9a9;
+	height: auto;
 }
 
 .chosen-container-multi .chosen-choices li.search-choice {
