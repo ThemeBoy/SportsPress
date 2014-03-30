@@ -1,19 +1,19 @@
 #
 # Translators:
-# ThemeBoy <support@themeboy.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-03-28 13:28+1000\n"
-"PO-Revision-Date: 2014-03-31 01:52+1000\n"
+"PO-Revision-Date: 2014-03-31 01:51+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
-"Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/"
-"sportspress/language/it_IT/)\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/sportspress/"
+"language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it_IT\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -28,831 +28,831 @@ msgstr ""
 
 #: sportspress.php:137
 msgid "Settings"
-msgstr "Impostazioni"
+msgstr "الإعدادات"
 
 #: includes/class-sp-countries.php:29
 msgid "Africa"
-msgstr "Africa"
+msgstr "أفريقيا"
 
 #: includes/class-sp-countries.php:30
 msgid "Asia"
-msgstr "Asia"
+msgstr "آسيا"
 
 #: includes/class-sp-countries.php:31
 msgid "Europe"
-msgstr "Europa"
+msgstr "أوروبا"
 
 #: includes/class-sp-countries.php:32
 msgid "North America"
-msgstr "Nord America"
+msgstr "امريكا الشمالية"
 
 #: includes/class-sp-countries.php:33
 msgid "Oceania"
-msgstr "Oceania"
+msgstr "أستراليا"
 
 #: includes/class-sp-countries.php:34
 msgid "South America"
-msgstr "America del Sud"
+msgstr "جنوب أفريقيا"
 
 #: includes/class-sp-countries.php:38
 msgid "Andorra"
-msgstr "Andorra"
+msgstr "أندورا"
 
 #: includes/class-sp-countries.php:39
 msgid "United Arab Emirates"
-msgstr "Emirati Arabi Uniti"
+msgstr "الإمارات العربية المتحدة"
 
 #: includes/class-sp-countries.php:40
 msgid "Afghanistan"
-msgstr "Afghanistan"
+msgstr "أفغانستان"
 
 #: includes/class-sp-countries.php:41
 msgid "Antigua and Barbuda"
-msgstr "Antigua e Barbuda"
+msgstr "أنتيغوا وبربودا"
 
 #: includes/class-sp-countries.php:42
 msgid "Albania"
-msgstr "Albania"
+msgstr "ألبانيا"
 
 #: includes/class-sp-countries.php:43
 msgid "Armenia"
-msgstr "Armenia"
+msgstr "أرمينيا"
 
 #: includes/class-sp-countries.php:44
 msgid "Angola"
-msgstr "Angola"
+msgstr "أنجولا"
 
 #: includes/class-sp-countries.php:45
 msgid "Argentina"
-msgstr "Argentina"
+msgstr "الأرجنتين "
 
 #: includes/class-sp-countries.php:46
 msgid "Austria"
-msgstr "Austria"
+msgstr "النمسا"
 
 #: includes/class-sp-countries.php:47
 msgid "Australia"
-msgstr "Australia"
+msgstr "أستراليا"
 
 #: includes/class-sp-countries.php:48
 msgid "Azerbaijan"
-msgstr "Azerbaigian"
+msgstr "أذربيجان"
 
 #: includes/class-sp-countries.php:49
 msgid "Bosnia and Herzegovina"
-msgstr "Bosnia-Erzegovina"
+msgstr "البوسنة والهرسك"
 
 #: includes/class-sp-countries.php:50
 msgid "Barbados"
-msgstr "Barbados"
+msgstr "بربادوس "
 
 #: includes/class-sp-countries.php:51
 msgid "Bangladesh"
-msgstr "Bangladesh"
+msgstr "بنجلاديش"
 
 #: includes/class-sp-countries.php:52
 msgid "Belgium"
-msgstr "Belgio"
+msgstr "بلجيكا"
 
 #: includes/class-sp-countries.php:53
 msgid "Burkina Faso"
-msgstr "Burkina Faso"
+msgstr "بوركينافاسو"
 
 #: includes/class-sp-countries.php:54
 msgid "Bulgaria"
-msgstr "Bulgaria"
+msgstr "بلغاريا"
 
 #: includes/class-sp-countries.php:55
 msgid "Bahrain"
-msgstr "Bahrain"
+msgstr "البحرين"
 
 #: includes/class-sp-countries.php:56
 msgid "Burundi"
-msgstr "Burundi"
+msgstr "بوروندي"
 
 #: includes/class-sp-countries.php:57
 msgid "Benin"
-msgstr "Benin"
+msgstr "بنين"
 
 #: includes/class-sp-countries.php:58
 msgid "Brunei"
-msgstr "Brunei"
+msgstr "بروناي "
 
 #: includes/class-sp-countries.php:59
 msgid "Bolivia"
-msgstr "Bolivia"
+msgstr "بوليفيا"
 
 #: includes/class-sp-countries.php:60
 msgid "Brazil"
-msgstr "Brasile"
+msgstr "البرازيل"
 
 #: includes/class-sp-countries.php:61
 msgid "Bahamas"
-msgstr "Bahamas"
+msgstr "جزر البهاما"
 
 #: includes/class-sp-countries.php:62
 msgid "Bhutan"
-msgstr "Bhutan"
+msgstr "بوتان"
 
 #: includes/class-sp-countries.php:63
 msgid "Botswana"
-msgstr "Botswana"
+msgstr "بتسوانا"
 
 #: includes/class-sp-countries.php:64
 msgid "Belarus"
-msgstr "Bielorussia"
+msgstr "روسيا البيضاء"
 
 #: includes/class-sp-countries.php:65
 msgid "Belize"
-msgstr "Belize"
+msgstr "بليز"
 
 #: includes/class-sp-countries.php:66
 msgid "Canada"
-msgstr "Canada"
+msgstr "كندا"
 
 #: includes/class-sp-countries.php:67
 msgid "Democratic Republic of the Congo"
-msgstr "Rep. Dem. del Congo"
+msgstr "جمهورية الكونغو الديمقراطية"
 
 #: includes/class-sp-countries.php:68
 msgid "Central African Republic"
-msgstr "Repubblica Centrafricana"
+msgstr "جمهورية أفريقيا الوسطى"
 
 #: includes/class-sp-countries.php:69
 msgid "Republic of the Congo"
-msgstr "Repubblica del Congo"
+msgstr "الكونغو"
 
 #: includes/class-sp-countries.php:70
 msgid "Switzerland"
-msgstr "Svizzera"
+msgstr "سويسرا"
 
 #: includes/class-sp-countries.php:71
 msgid "Ivory Coast"
-msgstr "Costa d'Avorio"
+msgstr "ساحل العاج"
 
 #: includes/class-sp-countries.php:72
 msgid "Chile"
-msgstr "Cile"
+msgstr "تشيلي"
 
 #: includes/class-sp-countries.php:73
 msgid "Cameroon"
-msgstr "Camerun"
+msgstr "الكاميرون"
 
 #: includes/class-sp-countries.php:74
 msgid "China"
-msgstr "Cina"
+msgstr "الصين"
 
 #: includes/class-sp-countries.php:75
 msgid "Colombia"
-msgstr "Colombia"
+msgstr "كولومبيا"
 
 #: includes/class-sp-countries.php:76
 msgid "Costa Rica"
-msgstr "Costa Rica"
+msgstr "كوستاريكا"
 
 #: includes/class-sp-countries.php:77
 msgid "Cuba"
-msgstr "Cuba"
+msgstr "كوبا"
 
 #: includes/class-sp-countries.php:78
 msgid "Cape Verde"
-msgstr "Capo Verde"
+msgstr "الرأس الأخضر أو كاب فيردي"
 
 #: includes/class-sp-countries.php:79
 msgid "Cyprus"
-msgstr "Cipro"
+msgstr "قبرص"
 
 #: includes/class-sp-countries.php:80
 msgid "Czech Republic"
-msgstr "Repubblica Ceca"
+msgstr "جمهورية التشيك"
 
 #: includes/class-sp-countries.php:81
 msgid "Germany"
-msgstr "Germania"
+msgstr "ألمانيا"
 
 #: includes/class-sp-countries.php:82
 msgid "Djibouti"
-msgstr "Gibuti"
+msgstr "جيبوتي"
 
 #: includes/class-sp-countries.php:83
 msgid "Denmark"
-msgstr "Danimarca"
+msgstr "الدنمرك"
 
 #: includes/class-sp-countries.php:84
 msgid "Dominica"
-msgstr "Dominica"
+msgstr "دومينيكان "
 
 #: includes/class-sp-countries.php:85
 msgid "Dominican Republic"
-msgstr "Repubblica Dominicana"
+msgstr "جمهورية الدومينيكان"
 
 #: includes/class-sp-countries.php:86
 msgid "Algeria"
-msgstr "Algeria"
+msgstr "الجزائر"
 
 #: includes/class-sp-countries.php:87
 msgid "Ecuador"
-msgstr "Ecuador"
+msgstr "الإكوادور"
 
 #: includes/class-sp-countries.php:88
 msgid "Estonia"
-msgstr "Estonia"
+msgstr "إستونيا"
 
 #: includes/class-sp-countries.php:89
 msgid "Egypt"
-msgstr "Egitto"
+msgstr "مصر"
 
 #: includes/class-sp-countries.php:90
 msgid "Western Sahara"
-msgstr "Sahara Occidentale"
+msgstr "الصحراء الغربية"
 
 #: includes/class-sp-countries.php:91
 msgid "England"
-msgstr "Inghilterra"
+msgstr "أنجلترا"
 
 #: includes/class-sp-countries.php:92
 msgid "Eritrea"
-msgstr "Eritrea"
+msgstr "أريتريا"
 
 #: includes/class-sp-countries.php:93
 msgid "Spain"
-msgstr "Spagna"
+msgstr "أسبانيا"
 
 #: includes/class-sp-countries.php:94
 msgid "Ethiopia"
-msgstr "Etiopia"
+msgstr "إثيوبيا"
 
 #: includes/class-sp-countries.php:95
 msgid "Finland"
-msgstr "Finlandia"
+msgstr "فنلندا"
 
 #: includes/class-sp-countries.php:96
 msgid "Fiji"
-msgstr "Figi"
+msgstr "فيجي"
 
 #: includes/class-sp-countries.php:97
 msgid "Micronesia"
-msgstr "Micronesia"
+msgstr "ماكرونيزيا"
 
 #: includes/class-sp-countries.php:98
 msgid "France"
-msgstr "Francia"
+msgstr "فرنسا"
 
 #: includes/class-sp-countries.php:99
 msgid "Gabon"
-msgstr "Gabon"
+msgstr "الجابون"
 
 #: includes/class-sp-countries.php:100
 msgid "United Kingdom"
-msgstr "Regno Unito"
+msgstr "المملكة المتحدة"
 
 #: includes/class-sp-countries.php:101
 msgid "Grenada"
-msgstr "Grenada"
+msgstr "جرينادا"
 
 #: includes/class-sp-countries.php:102
 msgid "Georgia"
-msgstr "Georgia"
+msgstr "جورجيا"
 
 #: includes/class-sp-countries.php:103
 msgid "Ghana"
-msgstr "Ghana"
+msgstr "غانا"
 
 #: includes/class-sp-countries.php:104
 msgid "Gambia"
-msgstr "Gambia"
+msgstr "غامبيا"
 
 #: includes/class-sp-countries.php:105
 msgid "Guinea"
-msgstr "Guinea"
+msgstr "غينيا"
 
 #: includes/class-sp-countries.php:106
 msgid "Equatorial Guinea"
-msgstr "Guinea Equatoriale"
+msgstr "غينيا الاستوائية "
 
 #: includes/class-sp-countries.php:107
 msgid "Greece"
-msgstr "Grecia"
+msgstr "اليونان"
 
 #: includes/class-sp-countries.php:108
 msgid "Guatemala"
-msgstr "Guatemala"
+msgstr "جواتيمالا"
 
 #: includes/class-sp-countries.php:109
 msgid "Guinea-Bissau"
-msgstr "Guinea-Bissau"
+msgstr "غينيا بيساو"
 
 #: includes/class-sp-countries.php:110
 msgid "Guyana"
-msgstr "Guyana"
+msgstr "غويانا"
 
 #: includes/class-sp-countries.php:111
 msgid "Hong Kong"
-msgstr "Hong Kong"
+msgstr "هونغ كونغ"
 
 #: includes/class-sp-countries.php:112
 msgid "Honduras"
-msgstr "Honduras"
+msgstr "هندوراس"
 
 #: includes/class-sp-countries.php:113
 msgid "Croatia"
-msgstr "Croazia"
+msgstr "كرواتيا"
 
 #: includes/class-sp-countries.php:114
 msgid "Haiti"
-msgstr "Haiti"
+msgstr "هايتي"
 
 #: includes/class-sp-countries.php:115
 msgid "Hungary"
-msgstr "Ungheria"
+msgstr "المجر "
 
 #: includes/class-sp-countries.php:116
 msgid "Indonesia"
-msgstr "Indonesia"
+msgstr "إندونيسيا"
 
 #: includes/class-sp-countries.php:117
 msgid "Ireland"
-msgstr "Irlanda"
+msgstr "أيرلندا"
 
 #: includes/class-sp-countries.php:118
 msgid "Israel"
-msgstr "Israele"
+msgstr "إسرائيل"
 
 #: includes/class-sp-countries.php:119
 msgid "India"
-msgstr "India"
+msgstr "الهند"
 
 #: includes/class-sp-countries.php:120
 msgid "Iraq"
-msgstr "Iraq"
+msgstr "العراق"
 
 #: includes/class-sp-countries.php:121
 msgid "Iran"
-msgstr "Iran"
+msgstr "إيران"
 
 #: includes/class-sp-countries.php:122
 msgid "Iceland"
-msgstr "Islanda"
+msgstr "آيسلندا"
 
 #: includes/class-sp-countries.php:123
 msgid "Italy"
-msgstr "Italia"
+msgstr "إيطاليا"
 
 #: includes/class-sp-countries.php:124
 msgid "Jamaica"
-msgstr "Giamaica"
+msgstr "جامايكا"
 
 #: includes/class-sp-countries.php:125
 msgid "Jordan"
-msgstr "Giordania"
+msgstr "الأردن"
 
 #: includes/class-sp-countries.php:126
 msgid "Japan"
-msgstr "Giappone"
+msgstr "اليابان"
 
 #: includes/class-sp-countries.php:127
 msgid "Kenya"
-msgstr "Kenya"
+msgstr "كينيا"
 
 #: includes/class-sp-countries.php:128
 msgid "Kyrgyzstan"
-msgstr "Kirghizistan"
+msgstr "كيرجيزستان"
 
 #: includes/class-sp-countries.php:129
 msgid "Cambodia"
-msgstr "Cambogia"
+msgstr "كمبوديا"
 
 #: includes/class-sp-countries.php:130
 msgid "Kiribati"
-msgstr "Kiribati"
+msgstr "كيريباتي"
 
 #: includes/class-sp-countries.php:131
 msgid "Comoros"
-msgstr "Comore"
+msgstr "جزر القمر"
 
 #: includes/class-sp-countries.php:132
 msgid "Saint Kitts and Nevis"
-msgstr "Saint Kitts e Nevis"
+msgstr "سانت كيتس ونيفيس"
 
 #: includes/class-sp-countries.php:133
 msgid "North Korea"
-msgstr "Corea del Nord"
+msgstr "كوريا الشمالية"
 
 #: includes/class-sp-countries.php:134
 msgid "South Korea"
-msgstr "Corea del Sud"
+msgstr "كوريا الجنوبية"
 
 #: includes/class-sp-countries.php:135
 msgid "Kuwait"
-msgstr "Kuwait"
+msgstr "الكويت"
 
 #: includes/class-sp-countries.php:136
 msgid "Kazakhstan"
-msgstr "Kazakistan"
+msgstr "كازاخستان"
 
 #: includes/class-sp-countries.php:137
 msgid "Laos"
-msgstr "Laos"
+msgstr "لاوس"
 
 #: includes/class-sp-countries.php:138
 msgid "Lebanon"
-msgstr "Libano"
+msgstr "لبنان"
 
 #: includes/class-sp-countries.php:139
 msgid "Saint Lucia"
-msgstr "Santa Lucia"
+msgstr "سانت لوسيا"
 
 #: includes/class-sp-countries.php:140
 msgid "Liechtenstein"
-msgstr "Liechtenstein"
+msgstr "ليشتنشتاين "
 
 #: includes/class-sp-countries.php:141
 msgid "Sri Lanka"
-msgstr "Sri Lanka"
+msgstr "سيريلانكا"
 
 #: includes/class-sp-countries.php:142
 msgid "Liberia"
-msgstr "Liberia"
+msgstr "ليبيريا"
 
 #: includes/class-sp-countries.php:143
 msgid "Lesotho"
-msgstr "Lesotho"
+msgstr "ليسوتو"
 
 #: includes/class-sp-countries.php:144
 msgid "Lithuania"
-msgstr "Lituania"
+msgstr "ليتوانيا"
 
 #: includes/class-sp-countries.php:145
 msgid "Luxembourg"
-msgstr "Lussemburgo"
+msgstr "لوكسمبورج "
 
 #: includes/class-sp-countries.php:146
 msgid "Latvia"
-msgstr "Lettonia"
+msgstr "لاتفيا"
 
 #: includes/class-sp-countries.php:147
 msgid "Libya"
-msgstr "Libia"
+msgstr "ليبيا"
 
 #: includes/class-sp-countries.php:148
 msgid "Morocco"
-msgstr "Marocco"
+msgstr "المغرب"
 
 #: includes/class-sp-countries.php:149
 msgid "Monaco"
-msgstr "Principato di Monaco"
+msgstr "موناكو"
 
 #: includes/class-sp-countries.php:150
 msgid "Moldova"
-msgstr "Moldavia"
+msgstr "مولدوفا"
 
 #: includes/class-sp-countries.php:151
 msgid "Montenegro"
-msgstr "Montenegro"
+msgstr "مونتنجرو"
 
 #: includes/class-sp-countries.php:152
 msgid "Madagascar"
-msgstr "Madagascar"
+msgstr "مدغشقر"
 
 #: includes/class-sp-countries.php:153
 msgid "Marshall Islands"
-msgstr "Isole Marshall"
+msgstr "جزر مارشال"
 
 #: includes/class-sp-countries.php:154
 msgid "Macedonia"
-msgstr "Macedonia"
+msgstr "مقدونيا"
 
 #: includes/class-sp-countries.php:155
 msgid "Mali"
-msgstr "Mali"
+msgstr "مالي"
 
 #: includes/class-sp-countries.php:156
 msgid "Burma"
-msgstr "Birmania"
+msgstr "بورما"
 
 #: includes/class-sp-countries.php:157
 msgid "Mongolia"
-msgstr "Mongolia"
+msgstr "منغوليا"
 
 #: includes/class-sp-countries.php:158
 msgid "Macau"
-msgstr "Macau"
+msgstr "ماكاو"
 
 #: includes/class-sp-countries.php:159
 msgid "Mauritania"
-msgstr "Mauritania"
+msgstr "موريتانيا"
 
 #: includes/class-sp-countries.php:160
 msgid "Malta"
-msgstr "Malta"
+msgstr "مالطة"
 
 #: includes/class-sp-countries.php:161
 msgid "Mauritius"
-msgstr "Mauritius"
+msgstr "موريشيوس "
 
 #: includes/class-sp-countries.php:162
 msgid "Maldives"
-msgstr "Maldive"
+msgstr "جزر المالديف"
 
 #: includes/class-sp-countries.php:163
 msgid "Malawi"
-msgstr "Malawi"
+msgstr "مالاوي"
 
 #: includes/class-sp-countries.php:164
 msgid "Mexico"
-msgstr "Messico"
+msgstr "المكسيك"
 
 #: includes/class-sp-countries.php:165
 msgid "Malaysia"
-msgstr "Malesia"
+msgstr "ماليزيا"
 
 #: includes/class-sp-countries.php:166
 msgid "Mozambique"
-msgstr "Mozambico"
+msgstr "موزمبيق"
 
 #: includes/class-sp-countries.php:167
 msgid "Namibia"
-msgstr "Namibia"
+msgstr "ناميبيا"
 
 #: includes/class-sp-countries.php:168
 msgid "Northern Ireland"
-msgstr "Irlanda del Nord"
+msgstr "إيرلندا الشمالية"
 
 #: includes/class-sp-countries.php:169
 msgid "Niger"
-msgstr "Niger"
+msgstr "النيجر"
 
 #: includes/class-sp-countries.php:170
 msgid "Nigeria"
-msgstr "Nigeria"
+msgstr "نيجيريا"
 
 #: includes/class-sp-countries.php:171
 msgid "Nicaragua"
-msgstr "Nicaragua"
+msgstr "نيكاراجوا "
 
 #: includes/class-sp-countries.php:172
 msgid "Netherlands"
-msgstr "Paesi Bassi"
+msgstr "هولندا"
 
 #: includes/class-sp-countries.php:173
 msgid "Norway"
-msgstr "Norvegia"
+msgstr "النرويج"
 
 #: includes/class-sp-countries.php:174
 msgid "Nepal"
-msgstr "Nepal"
+msgstr "نيبال"
 
 #: includes/class-sp-countries.php:175
 msgid "Nauru"
-msgstr "Nauru"
+msgstr "ناورو"
 
 #: includes/class-sp-countries.php:176
 msgid "New Zealand"
-msgstr "Nuova Zelanda"
+msgstr "نيوزيلندا"
 
 #: includes/class-sp-countries.php:177
 msgid "Oman"
-msgstr "Oman"
+msgstr "عُمان"
 
 #: includes/class-sp-countries.php:178
 msgid "Panama"
-msgstr "PanamÃ¡"
+msgstr "بنما"
 
 #: includes/class-sp-countries.php:179
 msgid "Peru"
-msgstr "PerÃ¹"
+msgstr "بيرو"
 
 #: includes/class-sp-countries.php:180
 msgid "Papua New Guinea"
-msgstr "Papua Nuova Guinea"
+msgstr "بابوا (غينيا الجديدة)"
 
 #: includes/class-sp-countries.php:181
 msgid "Philippines"
-msgstr "Filippine"
+msgstr "الفلبين"
 
 #: includes/class-sp-countries.php:182
 msgid "Pakistan"
-msgstr "Pakistan"
+msgstr "باكستان"
 
 #: includes/class-sp-countries.php:183
 msgid "Poland"
-msgstr "Polonia"
+msgstr "بولندا"
 
 #: includes/class-sp-countries.php:184
 msgid "Portugal"
-msgstr "Portogallo"
+msgstr "البرتغال"
 
 #: includes/class-sp-countries.php:185
 msgid "Palau"
-msgstr "Palau"
+msgstr "بالاو"
 
 #: includes/class-sp-countries.php:186
 msgid "Paraguay"
-msgstr "Paraguay"
+msgstr "باراجواي "
 
 #: includes/class-sp-countries.php:187
 msgid "Qatar"
-msgstr "Qatar"
+msgstr "قطر"
 
 #: includes/class-sp-countries.php:188
 msgid "Romania"
-msgstr "Romania"
+msgstr "رومانيا"
 
 #: includes/class-sp-countries.php:189
 msgid "Serbia"
-msgstr "Serbia"
+msgstr "صربيا"
 
 #: includes/class-sp-countries.php:190
 msgid "Russia"
-msgstr "Russia"
+msgstr "روسيا"
 
 #: includes/class-sp-countries.php:191
 msgid "Rwanda"
-msgstr "Ruanda"
+msgstr "رواندا"
 
 #: includes/class-sp-countries.php:192
 msgid "Saudi Arabia"
-msgstr "Arabia Saudita"
+msgstr "المملكة العربية السعودية"
 
 #: includes/class-sp-countries.php:193
 msgid "Solomon Islands"
-msgstr "Isole Salomone"
+msgstr "جزر سليمان"
 
 #: includes/class-sp-countries.php:194
 msgid "Seychelles"
-msgstr "Seychelles"
+msgstr "سيشل"
 
 #: includes/class-sp-countries.php:195
 msgid "Sudan"
-msgstr "Sudan"
+msgstr "السودان"
 
 #: includes/class-sp-countries.php:196
 msgid "Sweden"
-msgstr "Svezia"
+msgstr "السويد"
 
 #: includes/class-sp-countries.php:197
 msgid "Scotland"
-msgstr "Scozia"
+msgstr "أسكتلندا"
 
 #: includes/class-sp-countries.php:198
 msgid "Singapore"
-msgstr "Singapore"
+msgstr "سنغافورا"
 
 #: includes/class-sp-countries.php:199
 msgid "Slovenia"
-msgstr "Slovenia"
+msgstr "سلوفينيا"
 
 #: includes/class-sp-countries.php:200
 msgid "Slovakia"
-msgstr "Slovacchia"
+msgstr "سلوفاكيا"
 
 #: includes/class-sp-countries.php:201
 msgid "Sierra Leone"
-msgstr "Sierra Leone"
+msgstr "سيراليون"
 
 #: includes/class-sp-countries.php:202
 msgid "San Marino"
-msgstr "San Marino"
+msgstr "سان مارينو"
 
 #: includes/class-sp-countries.php:203
 msgid "Senegal"
-msgstr "Senegal"
+msgstr "السنغال"
 
 #: includes/class-sp-countries.php:204
 msgid "Somalia"
-msgstr "Somalia"
+msgstr "الصومال"
 
 #: includes/class-sp-countries.php:205
 msgid "Suriname"
-msgstr "Suriname"
+msgstr "سورينام "
 
 #: includes/class-sp-countries.php:206
 msgid "Sao Tome and Principe"
-msgstr "SÃ£o TomÃ© e PrÃ­ncipe"
+msgstr "سان تومي وبرينسيبي"
 
 #: includes/class-sp-countries.php:207
 msgid "El Salvador"
-msgstr "El Salvador"
+msgstr "السلفادور"
 
 #: includes/class-sp-countries.php:208
 msgid "Swaziland"
-msgstr "Swaziland"
+msgstr "سوازيلاند"
 
 #: includes/class-sp-countries.php:209
 msgid "Chad"
-msgstr "Ciad"
+msgstr "تشاد"
 
 #: includes/class-sp-countries.php:210
 msgid "Togo"
-msgstr "Togo"
+msgstr "توجو"
 
 #: includes/class-sp-countries.php:211
 msgid "Thailand"
-msgstr "Thailandia"
+msgstr "تايلاند"
 
 #: includes/class-sp-countries.php:212
 msgid "Tajikistan"
-msgstr "Tagikistan"
+msgstr "طاجيكستان"
 
 #: includes/class-sp-countries.php:213
 msgid "East Timor"
-msgstr "Timor Est"
+msgstr "تيمور الشرقية"
 
 #: includes/class-sp-countries.php:214
 msgid "Turkmenistan"
-msgstr "Turkmenistan"
+msgstr "تركمانستان"
 
 #: includes/class-sp-countries.php:215
 msgid "Tunisia"
-msgstr "Tunisia"
+msgstr "تونس"
 
 #: includes/class-sp-countries.php:216
 msgid "Tonga"
-msgstr "Tonga"
+msgstr "تونجا"
 
 #: includes/class-sp-countries.php:217
 msgid "Turkey"
-msgstr "Turchia"
+msgstr "تركيا"
 
 #: includes/class-sp-countries.php:218
 msgid "Trinidad and Tobago"
-msgstr "Trinidad e Tobago"
+msgstr "ترينيداد و توباجو "
 
 #: includes/class-sp-countries.php:219
 msgid "Tuvalu"
-msgstr "Tuvalu"
+msgstr "توفالو"
 
 #: includes/class-sp-countries.php:220
 msgid "Taiwan"
-msgstr "Taiwan"
+msgstr "تايوان"
 
 #: includes/class-sp-countries.php:221
 msgid "Tanzania"
-msgstr "Tanzania"
+msgstr "تنزانيا"
 
 #: includes/class-sp-countries.php:222
 msgid "Ukraine"
-msgstr "Ucraina"
+msgstr "أوكرانيا"
 
 #: includes/class-sp-countries.php:223
 msgid "Uganda"
-msgstr "Uganda"
+msgstr "أوغندا"
 
 #: includes/class-sp-countries.php:224
 msgid "United States"
-msgstr "Stati Uniti d'America"
+msgstr "الولايات المتحدة"
 
 #: includes/class-sp-countries.php:225
 msgid "Uruguay"
-msgstr "Uruguay"
+msgstr "أوروجواي"
 
 #: includes/class-sp-countries.php:226
 msgid "Uzbekistan"
-msgstr "Uzbekistan"
+msgstr "أوزبكستان"
 
 #: includes/class-sp-countries.php:227
 msgid "Vatican City"
-msgstr "CittÃ  del Vaticano"
+msgstr "مدينة الفاتيكان"
 
 #: includes/class-sp-countries.php:228
 msgid "Saint Vincent and the Grenadines"
-msgstr "Saint Vincent e Grenadine"
+msgstr "سانت فنسنت وجزر غرينادين"
 
 #: includes/class-sp-countries.php:229
 msgid "Venezuela"
-msgstr "Venezuela"
+msgstr "فنزويلا"
 
 #: includes/class-sp-countries.php:230
 msgid "Vietnam"
-msgstr "Vietnam"
+msgstr "فيتنام"
 
 #: includes/class-sp-countries.php:231
 msgid "Vanuatu"
-msgstr "Vanuatu"
+msgstr "فانواتو "
 
 #: includes/class-sp-countries.php:232
 msgid "Wales"
-msgstr "Galles"
+msgstr "ويلز"
 
 #: includes/class-sp-countries.php:233
 msgid "Samoa"
-msgstr "Samoa"
+msgstr "ساموا"
 
 #: includes/class-sp-countries.php:234
 msgid "Yemen"
-msgstr "Yemen"
+msgstr "اليمن"
 
 #: includes/class-sp-countries.php:235
 msgid "South Africa"
-msgstr "Sudafrica"
+msgstr "جنوب أفريقيا"
 
 #: includes/class-sp-countries.php:236
 msgid "Zambia"
-msgstr "Zambia"
+msgstr "زامبيا"
 
 #: includes/class-sp-countries.php:237
 msgid "Zimbabwe"
-msgstr "Zimbabwe"
+msgstr "زيمبابوي"
 
 #: includes/class-sp-formats.php:27 includes/class-sp-post-types.php:36
 #: includes/class-sp-text.php:27
@@ -867,68 +867,68 @@ msgstr "Zimbabwe"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:29
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:27
 msgid "League"
-msgstr "Lega"
+msgstr "بطلولة"
 
 #: includes/class-sp-formats.php:28
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:118
 msgid "Friendly"
-msgstr ""
+msgstr "ودي"
 
 #: includes/class-sp-formats.php:31 includes/class-sp-post-types.php:384
 #: includes/widgets/class-sp-widget-event-calendar.php:41
 #: includes/widgets/class-sp-widget-event-list.php:42
 msgid "Calendar"
-msgstr ""
+msgstr "تقويم"
 
 #: includes/class-sp-formats.php:32 includes/class-sp-formats.php:35
 msgid "List"
-msgstr ""
+msgstr "قائمة"
 
 #: includes/class-sp-formats.php:36
 msgid "Gallery"
-msgstr ""
+msgstr "المكتبة"
 
 #: includes/class-sp-frontend-scripts.php:40
 #: includes/admin/class-sp-admin-assets.php:92
 #: includes/admin/class-sp-admin-dashboard.php:54 templates/countdown.php:32
 msgid "days"
-msgstr "giorni"
+msgstr "أيام"
 
 #: includes/class-sp-frontend-scripts.php:40
 #: includes/admin/class-sp-admin-assets.php:93 templates/countdown.php:33
 msgid "hrs"
-msgstr "orario"
+msgstr "hrs"
 
 #: includes/class-sp-frontend-scripts.php:40
 #: includes/admin/class-sp-admin-assets.php:94 templates/countdown.php:34
 msgid "mins"
-msgstr "verbale"
+msgstr "mins"
 
 #: includes/class-sp-frontend-scripts.php:40
 #: includes/admin/class-sp-admin-assets.php:95 templates/countdown.php:35
 msgid "secs"
-msgstr "secondi"
+msgstr "secs"
 
 #: includes/class-sp-install.php:148 includes/class-sp-post-types.php:474
 #: includes/class-sp-text.php:39 includes/class-sp-text.php:54
 #: includes/sp-core-functions.php:1066 includes/sp-core-functions.php:1352
 msgid "Player"
-msgstr "Giocatore"
+msgstr "الاعب"
 
 #: includes/class-sp-install.php:164 includes/class-sp-post-types.php:533
 #: includes/class-sp-post-types.php:534 includes/class-sp-text.php:63
 #: includes/admin/class-sp-admin-permalink-settings.php:35
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:41
 msgid "Staff"
-msgstr "Personale"
+msgstr "الطاقم"
 
 #: includes/class-sp-install.php:180
 msgid "Team Manager"
-msgstr "Squadra Gerente"
+msgstr "إدارة الفريق"
 
 #: includes/class-sp-install.php:222
 msgid "League Manager"
-msgstr "Lega Gerente"
+msgstr "إدارة البطولة"
 
 #: includes/class-sp-install.php:413
 msgid "What's new:"
@@ -943,7 +943,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:116
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:123
 msgid "Leagues"
-msgstr "Leghe"
+msgstr "بطولات"
 
 #: includes/class-sp-post-types.php:37 includes/class-sp-post-types.php:66
 #: includes/class-sp-post-types.php:95 includes/class-sp-post-types.php:124
@@ -955,11 +955,11 @@ msgstr "Leghe"
 #: includes/widgets/class-sp-widget-event-calendar.php:45
 #: includes/widgets/class-sp-widget-event-list.php:46
 msgid "All"
-msgstr "Tutte"
+msgstr "كافة"
 
 #: includes/class-sp-post-types.php:38
 msgid "Edit League"
-msgstr ""
+msgstr "تحرير البطولة"
 
 #: includes/class-sp-post-types.php:39 includes/class-sp-post-types.php:68
 #: includes/class-sp-post-types.php:97 includes/class-sp-post-types.php:126
@@ -971,12 +971,12 @@ msgstr ""
 #: includes/class-sp-post-types.php:478 includes/class-sp-post-types.php:508
 #: includes/class-sp-post-types.php:538
 msgid "View"
-msgstr "Vedi"
+msgstr "عرض"
 
 #: includes/class-sp-post-types.php:40 includes/class-sp-post-types.php:69
 #: includes/class-sp-post-types.php:98 includes/class-sp-post-types.php:127
 msgid "Update"
-msgstr "Aggiorna"
+msgstr "تحديث"
 
 #: includes/class-sp-post-types.php:41 includes/class-sp-post-types.php:70
 #: includes/class-sp-post-types.php:99 includes/class-sp-post-types.php:128
@@ -1014,7 +1014,7 @@ msgstr "Aggiorna"
 #: includes/widgets/class-sp-widget-player-list.php:64
 #: includes/widgets/class-sp-widget-player-list.php:110
 msgid "Add New"
-msgstr "Aggiungi nuovo"
+msgstr "أضف"
 
 #: includes/class-sp-post-types.php:42 includes/class-sp-post-types.php:71
 #: includes/class-sp-post-types.php:100 includes/class-sp-post-types.php:129
@@ -1027,17 +1027,17 @@ msgstr "Aggiungi nuovo"
 #: includes/widgets/class-sp-widget-player-gallery.php:78
 #: includes/widgets/class-sp-widget-player-list.php:99
 msgid "Name"
-msgstr "Nome"
+msgstr "الإسم"
 
 #: includes/class-sp-post-types.php:43 includes/class-sp-post-types.php:72
 #: includes/class-sp-post-types.php:101 includes/class-sp-post-types.php:130
 msgid "Parent"
-msgstr "Genitore"
+msgstr "الاب"
 
 #: includes/class-sp-post-types.php:44 includes/class-sp-post-types.php:73
 #: includes/class-sp-post-types.php:102 includes/class-sp-post-types.php:131
 msgid "Parent:"
-msgstr "Genitore:"
+msgstr "الاب:"
 
 #: includes/class-sp-post-types.php:45 includes/class-sp-post-types.php:74
 #: includes/class-sp-post-types.php:103 includes/class-sp-post-types.php:132
@@ -1049,7 +1049,7 @@ msgstr "Genitore:"
 #: includes/class-sp-post-types.php:479 includes/class-sp-post-types.php:509
 #: includes/class-sp-post-types.php:539
 msgid "Search"
-msgstr "Cerca"
+msgstr "بحث"
 
 #: includes/class-sp-post-types.php:46 includes/class-sp-post-types.php:75
 #: includes/class-sp-post-types.php:104 includes/class-sp-post-types.php:133
@@ -1068,7 +1068,7 @@ msgstr "Cerca"
 #: includes/class-sp-post-types.php:540 includes/class-sp-post-types.php:541
 #: includes/sp-core-functions.php:636 includes/sp-core-functions.php:1211
 msgid "No results found."
-msgstr "Nessun risultato trovato."
+msgstr "لا توجد نتائج."
 
 #: includes/class-sp-post-types.php:64 includes/class-sp-post-types.php:78
 #: includes/admin/class-sp-admin-menus.php:119
@@ -1079,7 +1079,7 @@ msgstr "Nessun risultato trovato."
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:131
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:138
 msgid "Seasons"
-msgstr "Stagioni"
+msgstr "المواسم"
 
 #: includes/class-sp-post-types.php:65 includes/class-sp-text.php:28
 #: includes/sp-core-functions.php:1114 includes/sp-core-functions.php:1166
@@ -1094,17 +1094,17 @@ msgstr "Stagioni"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:43
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:41
 msgid "Season"
-msgstr "Stagione"
+msgstr "الموسم"
 
 #: includes/class-sp-post-types.php:67
 msgid "Edit Season"
-msgstr ""
+msgstr "تحرير الموسم"
 
 #: includes/class-sp-post-types.php:93 includes/class-sp-post-types.php:107
 #: includes/admin/class-sp-admin-menus.php:123
 #: includes/admin/class-sp-admin-permalink-settings.php:26
 msgid "Venues"
-msgstr "Luoghi"
+msgstr "الملاعب"
 
 #: includes/class-sp-post-types.php:94 includes/class-sp-text.php:38
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:51
@@ -1113,11 +1113,11 @@ msgstr "Luoghi"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:60
 #: includes/admin/settings/class-sp-settings-events.php:59
 msgid "Venue"
-msgstr "Sede"
+msgstr "ملعب"
 
 #: includes/class-sp-post-types.php:96
 msgid "Edit Venue"
-msgstr ""
+msgstr "تحرير المكان"
 
 #: includes/class-sp-post-types.php:122 includes/class-sp-post-types.php:136
 #: includes/admin/class-sp-admin-menus.php:115
@@ -1130,15 +1130,15 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-config.php:362
 #: includes/admin/settings/class-sp-settings-config.php:411
 msgid "Positions"
-msgstr "Posizioni"
+msgstr "المواقع"
 
 #: includes/class-sp-post-types.php:123 includes/class-sp-text.php:55
 msgid "Position"
-msgstr "Posizione"
+msgstr "الموقع"
 
 #: includes/class-sp-post-types.php:125
 msgid "Edit Position"
-msgstr ""
+msgstr "تحرير المركز"
 
 #: includes/class-sp-post-types.php:173 includes/class-sp-text.php:34
 #: includes/sp-core-functions.php:718
@@ -1146,19 +1146,19 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-config.php:187
 #: includes/admin/settings/class-sp-settings-config.php:190
 msgid "Results"
-msgstr "Risultati"
+msgstr "النتائج"
 
 #: includes/class-sp-post-types.php:174
 msgid "Result"
-msgstr "Risultato"
+msgstr "النتيجة"
 
 #: includes/class-sp-post-types.php:175
 msgid "Add New Result"
-msgstr ""
+msgstr "أضف نتيجة جديدة"
 
 #: includes/class-sp-post-types.php:176
 msgid "Edit Result"
-msgstr ""
+msgstr "تحرير النتيجة"
 
 #: includes/class-sp-post-types.php:177 includes/class-sp-post-types.php:207
 #: includes/class-sp-post-types.php:237 includes/class-sp-post-types.php:267
@@ -1168,22 +1168,22 @@ msgstr ""
 #: includes/class-sp-post-types.php:477 includes/class-sp-post-types.php:507
 #: includes/class-sp-post-types.php:537
 msgid "New"
-msgstr "Nuovo"
+msgstr "جديد"
 
 #: includes/class-sp-post-types.php:203 includes/sp-core-functions.php:721
 #: includes/sp-core-functions.php:722 includes/sp-core-functions.php:723
 #: includes/sp-core-functions.php:724
 #: includes/admin/settings/class-sp-settings-config.php:255
 msgid "Outcomes"
-msgstr "Esiti"
+msgstr "يخرج"
 
 #: includes/class-sp-post-types.php:204 includes/sp-core-functions.php:1246
 msgid "Outcome"
-msgstr "Esito"
+msgstr "يخرج"
 
 #: includes/class-sp-post-types.php:205
 msgid "Add New Outcome"
-msgstr ""
+msgstr "إضافة نتائج جديدة"
 
 #: includes/class-sp-post-types.php:206
 msgid "Edit Outcome"
@@ -1210,29 +1210,29 @@ msgstr ""
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:106
 #: includes/admin/settings/class-sp-settings-config.php:302
 msgid "Columns"
-msgstr "Colonne"
+msgstr "الأعمدة"
 
 #: includes/class-sp-post-types.php:264
 msgid "Column"
-msgstr "Colonna"
+msgstr "عمود"
 
 #: includes/class-sp-post-types.php:265
 msgid "Add New Column"
-msgstr ""
+msgstr "أضف عمود جديد"
 
 #: includes/class-sp-post-types.php:266
 msgid "Edit Column"
-msgstr ""
+msgstr "تحرير العمود"
 
 #: includes/class-sp-post-types.php:293
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:116
 #: includes/admin/settings/class-sp-settings-config.php:356
 msgid "Metrics"
-msgstr "Metrica"
+msgstr "المقاييس"
 
 #: includes/class-sp-post-types.php:294
 msgid "Metric"
-msgstr "Metrico"
+msgstr "المقياس"
 
 #: includes/class-sp-post-types.php:295
 msgid "Add New Metric"
@@ -1244,19 +1244,19 @@ msgstr ""
 
 #: includes/class-sp-post-types.php:323
 msgid "Statistics"
-msgstr "statistica"
+msgstr "احصائيات"
 
 #: includes/class-sp-post-types.php:324
 msgid "Statistic"
-msgstr "statistico"
+msgstr "إحصائية"
 
 #: includes/class-sp-post-types.php:325
 msgid "Add New Statistic"
-msgstr ""
+msgstr "أضف أحصائية جديدة"
 
 #: includes/class-sp-post-types.php:326
 msgid "Edit Statistic"
-msgstr ""
+msgstr "تحرير الإحصائية"
 
 #: includes/class-sp-post-types.php:353 includes/sp-core-functions.php:712
 #: includes/sp-core-functions.php:715
@@ -1266,7 +1266,7 @@ msgstr ""
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:102
 #: includes/admin/settings/class-sp-settings-events.php:25
 msgid "Events"
-msgstr "Eventi "
+msgstr "أحداث"
 
 #: includes/class-sp-post-types.php:354 includes/class-sp-text.php:31
 #: includes/sp-core-functions.php:877
@@ -1275,28 +1275,28 @@ msgstr "Eventi "
 #: includes/widgets/class-sp-widget-countdown.php:39
 #: includes/widgets/class-sp-widget-event-list.php:63
 msgid "Event"
-msgstr "Evento"
+msgstr "حدث"
 
 #: includes/class-sp-post-types.php:355
 msgid "Add New Event"
-msgstr ""
+msgstr "أضف حدث جديد"
 
 #: includes/class-sp-post-types.php:356
 msgid "Edit Event"
-msgstr ""
+msgstr "تحرير الحدث"
 
 #: includes/class-sp-post-types.php:383
 #: includes/admin/class-sp-admin-permalink-settings.php:27
 msgid "Calendars"
-msgstr ""
+msgstr "التقويمات"
 
 #: includes/class-sp-post-types.php:385
 msgid "Add New Calendar"
-msgstr ""
+msgstr "إضافة تقويم جديد"
 
 #: includes/class-sp-post-types.php:386
 msgid "Edit Calendar"
-msgstr ""
+msgstr "تحرير التقويم"
 
 #: includes/class-sp-post-types.php:413 includes/class-sp-text.php:36
 #: includes/class-sp-text.php:49 includes/sp-core-functions.php:883
@@ -1312,7 +1312,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-teams.php:25
 #: includes/widgets/class-sp-widget-event-list.php:64
 msgid "Teams"
-msgstr "Squadre"
+msgstr "الفرق"
 
 #: includes/class-sp-post-types.php:414 includes/class-sp-text.php:35
 #: includes/class-sp-text.php:48 includes/sp-core-functions.php:994
@@ -1327,35 +1327,35 @@ msgstr "Squadre"
 #: includes/admin/settings/class-sp-settings-events.php:136
 #: includes/admin/settings/class-sp-settings-events.php:137
 msgid "Team"
-msgstr "Squadra"
+msgstr "الفريق"
 
 #: includes/class-sp-post-types.php:415
 msgid "Add New Team"
-msgstr ""
+msgstr "أضف فريق جديد"
 
 #: includes/class-sp-post-types.php:416
 msgid "Edit Team"
-msgstr ""
+msgstr "تحرير الفريق"
 
 #: includes/class-sp-post-types.php:443
 #: includes/admin/class-sp-admin-permalink-settings.php:31
 #: includes/admin/settings/class-sp-settings-teams.php:44
 msgid "League Tables"
-msgstr "Tabelle League"
+msgstr "جداول البطولة"
 
 #: includes/class-sp-post-types.php:444
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:111
 #: includes/widgets/class-sp-widget-league-table.php:50
 msgid "League Table"
-msgstr "League Table"
+msgstr "جدول البطولة"
 
 #: includes/class-sp-post-types.php:445
 msgid "Add New League Table"
-msgstr ""
+msgstr "أضف جدول بطولة جديد"
 
 #: includes/class-sp-post-types.php:446
 msgid "Edit League Table"
-msgstr ""
+msgstr "تجرير جدول البطولة"
 
 #: includes/class-sp-post-types.php:473
 #: includes/admin/class-sp-admin-permalink-settings.php:32
@@ -1364,100 +1364,100 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:98
 #: includes/admin/settings/class-sp-settings-players.php:25
 msgid "Players"
-msgstr "Giocatori"
+msgstr "لاعبين"
 
 #: includes/class-sp-post-types.php:475
 msgid "Add New Player"
-msgstr ""
+msgstr "أضف لاعب جديد"
 
 #: includes/class-sp-post-types.php:476
 msgid "Edit Player"
-msgstr ""
+msgstr "تحرير لاعب"
 
 #: includes/class-sp-post-types.php:503
 #: includes/admin/class-sp-admin-permalink-settings.php:34
 #: includes/admin/settings/class-sp-settings-players.php:52
 msgid "Player Lists"
-msgstr "Lista giocatori"
+msgstr "قائمة اللاعبين"
 
 #: includes/class-sp-post-types.php:504
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:123
 #: includes/widgets/class-sp-widget-player-gallery.php:53
 #: includes/widgets/class-sp-widget-player-list.php:53
 msgid "Player List"
-msgstr "Elenchi Giocatori"
+msgstr "قائمة اللعبين"
 
 #: includes/class-sp-post-types.php:505
 msgid "Add New Player List"
-msgstr ""
+msgstr "أضف قائمة لاعبين جديده"
 
 #: includes/class-sp-post-types.php:506
 msgid "Edit Player List"
-msgstr ""
+msgstr "تحرير قائمة اللاعب"
 
 #: includes/class-sp-post-types.php:535
 msgid "Add New Staff"
-msgstr ""
+msgstr "أضف إداري جديد"
 
 #: includes/class-sp-post-types.php:536
 msgid "Edit Staff"
-msgstr ""
+msgstr "تحرير إداري"
 
 #: includes/class-sp-sports.php:27
 msgid "Baseball"
-msgstr "Baseball"
+msgstr "بيسبول"
 
 #: includes/class-sp-sports.php:194
 msgid "Basketball"
-msgstr "Pallacanestro"
+msgstr "كرة السلة"
 
 #: includes/class-sp-sports.php:602
 msgid "Cricket"
-msgstr "Cricket"
+msgstr "كركت"
 
 #: includes/class-sp-sports.php:670
 msgid "American Football"
-msgstr "Football Americano"
+msgstr "كرة القدم الأمريكية"
 
 #: includes/class-sp-sports.php:1558
 msgid "Australian Rules Football"
-msgstr "Football Australiano"
+msgstr "قوانين كرة القدم الأسترالية"
 
 #: includes/class-sp-sports.php:1631
 msgid "Competitive Gaming"
-msgstr "Gaming Competitive"
+msgstr "الألعاب التنافسية"
 
 #: includes/class-sp-sports.php:1697
 msgid "Golf"
-msgstr "Golf"
+msgstr "قولف"
 
 #: includes/class-sp-sports.php:1749
 msgid "Hockey"
-msgstr "Hockey"
+msgstr "هوكي"
 
 #: includes/class-sp-sports.php:1834
 msgid "Racing"
-msgstr "Corsa"
+msgstr "سباق"
 
 #: includes/class-sp-sports.php:1888
 msgid "Rugby"
-msgstr "Rugby"
+msgstr "الركبي"
 
 #: includes/class-sp-sports.php:2045
 msgid "Soccer (Association Football)"
-msgstr "Calcio"
+msgstr "كرة القدم (اتحاد كرة القدم)"
 
 #: includes/class-sp-text.php:32 includes/sp-core-functions.php:872
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:94
 msgid "Date"
-msgstr "Data"
+msgstr "التاريخ"
 
 #: includes/class-sp-text.php:33 includes/sp-core-functions.php:349
 #: includes/sp-core-functions.php:889
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:95
 #: includes/widgets/class-sp-widget-event-list.php:65
 msgid "Time"
-msgstr "Tempo"
+msgstr "الوقت"
 
 #: includes/class-sp-text.php:37 includes/sp-core-functions.php:970
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:78
@@ -1470,7 +1470,7 @@ msgstr "Tempo"
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:115
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:122
 msgid "Details"
-msgstr "Dettagli"
+msgstr "تفاصيل"
 
 #: includes/class-sp-text.php:40
 msgid "Substitutes"
@@ -1480,40 +1480,40 @@ msgstr ""
 #: includes/sp-core-functions.php:309 includes/sp-core-functions.php:646
 #: includes/sp-core-functions.php:1387
 msgid "Total"
-msgstr "Totale:"
+msgstr "م"
 
 #: includes/class-sp-text.php:42 includes/sp-core-functions.php:895
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:96
 #: includes/widgets/class-sp-widget-event-list.php:66
 msgid "Article"
-msgstr "Articolo"
+msgstr "مقالة"
 
 #: includes/class-sp-text.php:43 includes/sp-core-functions.php:957
 msgid "Preview"
-msgstr ""
+msgstr "معاينة"
 
 #: includes/class-sp-text.php:44 includes/sp-core-functions.php:955
 msgid "Recap"
-msgstr ""
+msgstr "خلاصة"
 
 #: includes/class-sp-text.php:45
 msgid "View all events"
-msgstr ""
+msgstr "عرض جميع الأحداث"
 
 #: includes/class-sp-text.php:50
 msgid "Pos"
-msgstr "Pos"
+msgstr "أسم النادي"
 
 #: includes/class-sp-text.php:51
 msgid "View full table"
-msgstr ""
+msgstr "عرض جميع الجداول"
 
 #: includes/class-sp-text.php:56
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:59
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:60
 #: includes/admin/settings/class-sp-settings-players.php:44
 msgid "Nationality"
-msgstr "Nazionalità"
+msgstr "الجنسية"
 
 #: includes/class-sp-text.php:57
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:87
@@ -1521,57 +1521,57 @@ msgstr "Nazionalità"
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:97
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
 msgid "Current Team"
-msgstr "squadra corrente"
+msgstr "الفريق الحالي"
 
 #: includes/class-sp-text.php:58
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:101
 msgid "Past Teams"
-msgstr "Squadre passati"
+msgstr "الفرق السابقة"
 
 #: includes/class-sp-text.php:59
 msgid "Rank"
-msgstr "Rango"
+msgstr "المرتبة"
 
 #: includes/class-sp-text.php:60
 msgid "View all players"
-msgstr ""
+msgstr "عرض جميع اللاعبين"
 
 #: includes/sp-core-functions.php:264
 msgid "1 view"
-msgstr "1 vedi"
+msgstr "زائر"
 
 #: includes/sp-core-functions.php:266
 #, php-format
 msgid "%s views"
-msgstr "%s viste"
+msgstr "%s مشاهدات"
 
 #: includes/sp-core-functions.php:305 includes/sp-core-functions.php:647
 msgid "Average"
-msgstr "Media"
+msgstr "متوسط"
 
 #: includes/sp-core-functions.php:347
 msgid "Integer"
-msgstr "numero intero"
+msgstr "عدد صحيح"
 
 #: includes/sp-core-functions.php:348
 msgid "Decimal"
-msgstr "decimale"
+msgstr "عشري"
 
 #: includes/sp-core-functions.php:350
 msgid "Custom Field"
-msgstr "Campo Personalizzato"
+msgstr "حقل مخصص"
 
 #: includes/sp-core-functions.php:573 includes/sp-core-functions.php:627
 msgid "(no title)"
-msgstr "(senza titolo)"
+msgstr "(بلا ​​عنوان)"
 
 #: includes/sp-core-functions.php:590
 msgid "Select All"
-msgstr "Seleziona tutto"
+msgstr "حدد الكل"
 
 #: includes/sp-core-functions.php:712
 msgid "Attended"
-msgstr "Partecipato"
+msgstr "حضر"
 
 #: includes/sp-core-functions.php:712 includes/sp-core-functions.php:715
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:79
@@ -1579,31 +1579,31 @@ msgstr "Partecipato"
 #: includes/widgets/class-sp-widget-player-list.php:87
 #: includes/widgets/class-sp-widget-player-list.php:100
 msgid "Played"
-msgstr "Giocato"
+msgstr "لعب"
 
 #: includes/sp-core-functions.php:722
 msgid "Streak"
-msgstr "Striscia "
+msgstr "خط"
 
 #: includes/sp-core-functions.php:723
 msgid "Last 5"
-msgstr "Ultimi 5"
+msgstr "آخر 5"
 
 #: includes/sp-core-functions.php:724
 msgid "Last 10"
-msgstr "Ultimi 10"
+msgstr "آخر 10"
 
 #: includes/sp-core-functions.php:739
 msgid "Operators"
-msgstr "Operatori"
+msgstr "مشغلي"
 
 #: includes/sp-core-functions.php:752
 msgid "Constants"
-msgstr "Costanti"
+msgstr "الثوابت"
 
 #: includes/sp-core-functions.php:756
 msgid "&mdash; Select &mdash;"
-msgstr "&mdash; Seleziona &mdash;"
+msgstr "&mdash; حدد &mdash;"
 
 #: includes/sp-core-functions.php:953 includes/sp-core-functions.php:1328
 #: includes/admin/class-sp-admin-assets.php:90
@@ -1611,7 +1611,7 @@ msgstr "&mdash; Seleziona &mdash;"
 #: includes/admin/importers/class-sp-event-importer.php:579
 #: includes/admin/importers/class-sp-event-importer.php:594
 msgid "None"
-msgstr "Nessuno"
+msgstr "لاشي"
 
 #: includes/sp-core-functions.php:970 includes/sp-core-functions.php:1043
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:60
@@ -1622,7 +1622,7 @@ msgstr "Nessuno"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:138
 #, php-format
 msgid "Select %s"
-msgstr "Seleziona %s"
+msgstr "اختر %s"
 
 #: includes/sp-core-functions.php:1021
 #: includes/admin/settings/class-sp-settings-config.php:221
@@ -1632,49 +1632,49 @@ msgstr "Seleziona %s"
 #: includes/admin/settings/class-sp-settings-config.php:378
 #: includes/admin/settings/class-sp-settings-config.php:421
 msgid "Edit"
-msgstr "Modifica"
+msgstr "تحرير"
 
 #: includes/sp-core-functions.php:1025
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:33
 msgid "Cancel"
-msgstr "Annulla"
+msgstr "ألغاء"
 
 #: includes/sp-core-functions.php:1026
 msgid "Save"
-msgstr "Salva"
+msgstr "حفظ"
 
 #: includes/sp-core-functions.php:1190
 msgid "&mdash; None &mdash;"
-msgstr "&mdash; Nessuna &mdash;"
+msgstr "&mdash; لا يوجد &mdash;"
 
 #: includes/sp-core-functions.php:1303 includes/sp-core-functions.php:1408
 msgid "Starting Lineup"
-msgstr "Formazione di partenza"
+msgstr "Starting Lineup"
 
 #: includes/sp-core-functions.php:1304 includes/sp-core-functions.php:1409
 msgid "Substitute"
-msgstr "Supplenti"
+msgstr "استبدل"
 
 #: includes/sp-core-functions.php:1356
 msgid "Status"
-msgstr "Stato"
+msgstr "الحالة"
 
 #: includes/sp-template-hooks.php:138
 msgid "User"
-msgstr ""
+msgstr "مستخدم"
 
 #: includes/sp-template-hooks.php:146
 msgid "Date/Time:"
-msgstr ""
+msgstr "تاريخ/وقت:"
 
 #: includes/sp-template-hooks.php:146
 msgid "Now"
-msgstr ""
+msgstr "الآن"
 
 #: includes/sp-template-hooks.php:375
 #: includes/admin/class-sp-admin-post-types.php:61
 msgid "Settings saved."
-msgstr "Impostazioni salvate."
+msgstr "تم حفظ الاعدادات"
 
 #: includes/sp-template-hooks.php:377
 #: includes/admin/class-sp-admin-post-types.php:63
@@ -1683,7 +1683,7 @@ msgstr "Impostazioni salvate."
 #: includes/admin/settings/class-sp-settings-config.php:328
 #: includes/admin/settings/class-sp-settings-config.php:427
 msgid "View All"
-msgstr "Mostra tutti"
+msgstr "مشاهدة الكل"
 
 #: includes/sp-template-hooks.php:383 includes/sp-template-hooks.php:386
 #: includes/sp-template-hooks.php:391
@@ -1691,7 +1691,7 @@ msgstr "Mostra tutti"
 #: includes/admin/class-sp-admin-post-types.php:71
 #: includes/admin/class-sp-admin-post-types.php:76
 msgid "Changes saved."
-msgstr "Le modifiche sono state salvate."
+msgstr "تم حفظ التغييرات ."
 
 #: includes/sp-template-hooks.php:388 includes/sp-template-hooks.php:393
 #: includes/sp-template-hooks.php:403
@@ -1699,7 +1699,7 @@ msgstr "Le modifiche sono state salvate."
 #: includes/admin/class-sp-admin-post-types.php:78
 #: includes/admin/class-sp-admin-post-types.php:88
 msgid "Success!"
-msgstr "Successo!"
+msgstr "نجح!"
 
 #: includes/sp-template-hooks.php:395 includes/sp-template-hooks.php:401
 #: includes/sp-template-hooks.php:405
@@ -1708,26 +1708,26 @@ msgstr "Successo!"
 #: includes/admin/class-sp-admin-post-types.php:90
 #, php-format
 msgid "Preview %s"
-msgstr "Anteprima %s"
+msgstr "معاينة %s"
 
 #: includes/sp-template-hooks.php:398
 #: includes/admin/class-sp-admin-post-types.php:83
 #, php-format
 msgid "Scheduled for: <b>%1$s</b>."
-msgstr "Pianificato il: <b>%1$s</b>"
+msgstr "المقرر إلى: <b>%1$s</b>."
 
 #: includes/sp-template-hooks.php:399
 #: includes/admin/class-sp-admin-post-types.php:84
 msgid "M j, Y @ G:i"
-msgstr "j F Y @ H:i"
+msgstr "M j, Y @ G:i"
 
 #: includes/admin/class-sp-admin-assets.php:91
 msgid "&mdash; Remove &mdash;"
-msgstr "&mdash; Rimuovi &mdash;"
+msgstr "&mdash; حذف &mdash;"
 
 #: includes/admin/class-sp-admin-dashboard.php:34
 msgid "SportsPress Status"
-msgstr "SportsPress Stato"
+msgstr "حالة SportsPress"
 
 #: includes/admin/class-sp-admin-dashboard.php:54
 #, php-format
@@ -1740,6 +1740,10 @@ msgid "<strong>%s event</strong> scheduled"
 msgid_plural "<strong>%s events</strong> scheduled"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: includes/admin/class-sp-admin-dashboard.php:66
 #, php-format
@@ -1747,30 +1751,34 @@ msgid "<strong>%s event</strong> published"
 msgid_plural "<strong>%s events</strong> published"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "SportsPress Events (CSV)"
-msgstr ""
+msgstr "SportsPress أحداث (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "Import <strong>events</strong> from a csv file."
-msgstr ""
+msgstr "أستيراد <strong>الأحداث</strong>من الملف csv ."
 
 #: includes/admin/class-sp-admin-importers.php:32
 msgid "SportsPress Teams (CSV)"
-msgstr "SportsPress Squadre (CSV)"
+msgstr "SportsPress الفرق (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:32
 msgid "Import <strong>teams</strong> from a csv file."
-msgstr "Importazione <strong>squadre</strong> da un file CSV."
+msgstr "أستيراد <strong>الفرق</strong> من ملف csv ."
 
 #: includes/admin/class-sp-admin-importers.php:33
 msgid "SportsPress Players (CSV)"
-msgstr "SportsPress Giocatori (CSV)"
+msgstr "SportsPress اللاعبين (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:33
 msgid "Import <strong>players</strong> from a csv file."
-msgstr "Importazione <strong>giocatori</strong> da un file CSV."
+msgstr "استيراد<strong>اللاعبين</strong> من ملف csv ."
 
 #: includes/admin/class-sp-admin-menus.php:33
 #: includes/admin/class-sp-admin-permalink-settings.php:47
@@ -1782,6 +1790,8 @@ msgid ""
 "These settings control the permalinks used for SportsPress. These settings "
 "only apply when <strong>not using \"default\" permalinks above</strong>."
 msgstr ""
+"تستخدم هذه الإعدادات روابط بريما في  SportsPress. تطبيق هذه الإعدادات فقط "
+"عندما <strong>لا تستخدم \"default\" روابط بريما فوق</strong>."
 
 #: includes/admin/class-sp-admin-settings.php:51
 msgid "Action failed. Please refresh the page and retry."
@@ -1795,15 +1805,15 @@ msgstr ""
 #: includes/admin/class-sp-admin-taxonomies.php:81
 #: includes/admin/class-sp-admin-taxonomies.php:134
 msgid "Address"
-msgstr "Indirizzo"
+msgstr "العنوان"
 
 #: includes/admin/class-sp-admin-taxonomies.php:88
 msgid "Latitude"
-msgstr "Latitudine"
+msgstr "خط العرض"
 
 #: includes/admin/class-sp-admin-taxonomies.php:94
 msgid "Longitude"
-msgstr "Longitudine"
+msgstr "خط الطول"
 
 #: includes/admin/importers/class-sp-event-importer.php:425
 #: includes/admin/importers/class-sp-event-importer.php:465
@@ -1815,13 +1825,13 @@ msgstr "Longitudine"
 #: includes/admin/importers/class-sp-team-importer.php:189
 #: includes/admin/importers/class-sp-team-importer.php:204
 msgid "Sorry, there has been an error."
-msgstr "Siamo spiacenti, si è verificato un errore."
+msgstr "آسف، يوجد  خطأ."
 
 #: includes/admin/importers/class-sp-event-importer.php:426
 #: includes/admin/importers/class-sp-player-importer.php:193
 #: includes/admin/importers/class-sp-team-importer.php:150
 msgid "The CSV is invalid."
-msgstr "Il CSV non è valido."
+msgstr "الملف CSV  غير صالح ."
 
 #: includes/admin/importers/class-sp-event-importer.php:437
 #, php-format
@@ -1829,20 +1839,21 @@ msgid ""
 "Import complete - imported <strong>%s</strong> events and skipped <strong>"
 "%s</strong>."
 msgstr ""
+"استيراد كامل - المستوردة<strong>%s</strong> الأحداث وتخطي<strong>%s</strong>."
 
 #: includes/admin/importers/class-sp-event-importer.php:447
 #: includes/admin/importers/class-sp-player-importer.php:214
 #: includes/admin/importers/class-sp-team-importer.php:171
 msgid "All done!"
-msgstr "Fatto tutto!"
+msgstr "تم للكل !"
 
 #: includes/admin/importers/class-sp-event-importer.php:447
 msgid "View Events"
-msgstr ""
+msgstr "عرض الأحداث"
 
 #: includes/admin/importers/class-sp-event-importer.php:497
 msgid "Import Events"
-msgstr ""
+msgstr "استيراد الأحداث"
 
 #: includes/admin/importers/class-sp-event-importer.php:519
 #: includes/admin/importers/class-sp-player-importer.php:286
@@ -1851,8 +1862,6 @@ msgid ""
 "Hi there! Choose a .csv file to upload, then click \"Upload file and import"
 "\"."
 msgstr ""
-"Hi there! Scegliere un file .csv da caricare, quindi fare clic su \"Carica e "
-"importa file\"."
 
 #: includes/admin/importers/class-sp-event-importer.php:521
 #, php-format
@@ -1868,27 +1877,27 @@ msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
 msgstr ""
-"Prima di caricare il file di importazione, è necessario risolvere il "
-"seguente errore:"
+"قبل أن تتمكن من تحميل ملف الاستيراد الخاص بك، فإنك بحاجة إلى إصلاح الخطأ "
+"التالي:"
 
 #: includes/admin/importers/class-sp-event-importer.php:538
 #: includes/admin/importers/class-sp-player-importer.php:305
 #: includes/admin/importers/class-sp-team-importer.php:262
 msgid "Choose a file from your computer:"
-msgstr "Scegli un file dal tuo computer:"
+msgstr "أختر ملف من جهاز الكمبيوتر الخاص بك:"
 
 #: includes/admin/importers/class-sp-event-importer.php:544
 #: includes/admin/importers/class-sp-player-importer.php:311
 #: includes/admin/importers/class-sp-team-importer.php:268
 #, php-format
 msgid "Maximum size: %s"
-msgstr "Dimensione massima: %s"
+msgstr "الحد الأقصى لحجم: %s"
 
 #: includes/admin/importers/class-sp-event-importer.php:549
 #: includes/admin/importers/class-sp-player-importer.php:316
 #: includes/admin/importers/class-sp-team-importer.php:273
 msgid "OR enter path to file:"
-msgstr "OR digitare il percorso al file:"
+msgstr "أو أدخل المسار إلى ملف:"
 
 #: includes/admin/importers/class-sp-event-importer.php:556
 #: includes/admin/importers/class-sp-player-importer.php:323
@@ -1897,13 +1906,13 @@ msgstr "OR digitare il percorso al file:"
 #: includes/admin/settings/class-sp-settings-events.php:131
 #: includes/admin/settings/class-sp-settings-general.php:157
 msgid "Delimiter"
-msgstr "Separatore"
+msgstr "محدد"
 
 #: includes/admin/importers/class-sp-event-importer.php:560
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:92
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:90
 msgid "Format"
-msgstr ""
+msgstr "البنية"
 
 #: includes/admin/importers/class-sp-event-importer.php:576
 #: includes/admin/importers/class-sp-event-importer.php:591
@@ -1911,13 +1920,13 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:52
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:68
 msgid "-- Not set --"
-msgstr "-- Non è impostata --"
+msgstr "-- Not set --"
 
 #: includes/admin/importers/class-sp-event-importer.php:602
 #: includes/admin/importers/class-sp-player-importer.php:329
 #: includes/admin/importers/class-sp-team-importer.php:286
 msgid "Upload file and import"
-msgstr "Carica il file ed importa"
+msgstr "تحميل الملف والاستيراد"
 
 #: includes/admin/importers/class-sp-player-importer.php:204
 #, php-format
@@ -1925,16 +1934,14 @@ msgid ""
 "Import complete - imported <strong>%s</strong> players and skipped <strong>"
 "%s</strong>."
 msgstr ""
-"Importazione completa - importato <strong>% s</strong> giocatori e saltato "
-"<strong>% s</strong>."
 
 #: includes/admin/importers/class-sp-player-importer.php:214
 msgid "View Players"
-msgstr "Visualizza Giocatori"
+msgstr "عرض اللاعبين"
 
 #: includes/admin/importers/class-sp-player-importer.php:264
 msgid "Import Players"
-msgstr "Importa Giocatori"
+msgstr "أستيراد اللاعبين"
 
 #: includes/admin/importers/class-sp-player-importer.php:288
 #, php-format
@@ -1942,8 +1949,6 @@ msgid ""
 "Players need to be defined with columns in a specific order (7 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"Giocatori devono essere definiti con colonne in un ordine specifico (7 "
-"colonne). <a href=\"%s\">Clicca qui per scaricare un esempio</a>."
 
 #: includes/admin/importers/class-sp-team-importer.php:161
 #, php-format
@@ -1951,16 +1956,14 @@ msgid ""
 "Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
 "strong>."
 msgstr ""
-"Importazione completa - importato <strong>% s</strong> squadre e saltato "
-"<strong>% s</strong>."
 
 #: includes/admin/importers/class-sp-team-importer.php:171
 msgid "View Teams"
-msgstr "Visualizza Squadre"
+msgstr "عرض الفرق"
 
 #: includes/admin/importers/class-sp-team-importer.php:221
 msgid "Import Teams"
-msgstr "Importa Squadre"
+msgstr "أستيراد الفرق"
 
 #: includes/admin/importers/class-sp-team-importer.php:245
 #, php-format
@@ -1968,14 +1971,14 @@ msgid ""
 "Teams need to be defined with columns in a specific order (3 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"Squadre devono essere definiti con colonne in un ordine specifico (3 "
-"colonne). <a href=\"%s\">Clicca qui per scaricare un esempio</a>."
+"تحتاج إلى تعريف فرق مع الأعمدة في ترتيب معين (3 أعمدة). <a href=\"%s\">أضغط "
+"هنا لتحميل العينة</a>."
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:48
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:48
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:48
 msgid "Title"
-msgstr "Titolo"
+msgstr "العنوان"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:54
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:100
@@ -1985,7 +1988,7 @@ msgstr "Titolo"
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:52
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:67
 msgid "Views"
-msgstr "Viste"
+msgstr "المشاهدات"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:132
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:199
@@ -1995,7 +1998,7 @@ msgstr "Viste"
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:107
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:119
 msgid "Show all leagues"
-msgstr "Mostra tutti i campionati"
+msgstr "عرض جميع البطولات"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:141
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:208
@@ -2005,7 +2008,7 @@ msgstr "Mostra tutti i campionati"
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:116
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:128
 msgid "Show all seasons"
-msgstr "Mostra tutte le stagioni"
+msgstr "عرض جميع المواسم"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:152
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:191
@@ -2014,7 +2017,7 @@ msgstr "Mostra tutte le stagioni"
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:147
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:127
 msgid "Show all teams"
-msgstr "Mostra tutte le squadre"
+msgstr "كرض كل الفرق"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:43
 #: includes/admin/post-types/class-sp-admin-cpt-metric.php:43
@@ -2027,7 +2030,7 @@ msgstr "Mostra tutte le squadre"
 #: includes/admin/settings/class-sp-settings-config.php:361
 #: includes/admin/settings/class-sp-settings-config.php:410
 msgid "Label"
-msgstr "Etichetta"
+msgstr "ملصق"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:44
 #: includes/admin/post-types/class-sp-admin-cpt-outcome.php:44
@@ -2040,36 +2043,36 @@ msgstr "Etichetta"
 #: includes/admin/settings/class-sp-settings-config.php:261
 #: includes/admin/settings/class-sp-settings-config.php:308
 msgid "Key"
-msgstr "Chiave"
+msgstr "مفتاح"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:45
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:35
 #: includes/admin/settings/class-sp-settings-config.php:309
 msgid "Equation"
-msgstr "Equazione"
+msgstr "معادلة"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:46
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:43
 #: includes/admin/settings/class-sp-settings-config.php:310
 msgid "Rounding"
-msgstr "Arrotondamento"
+msgstr "التقريب"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:47
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:47
 #: includes/admin/settings/class-sp-settings-config.php:311
 msgid "Sort Order"
-msgstr "Ordinamento"
+msgstr "الترتيب"
 
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:56
 #: includes/widgets/class-sp-widget-countdown.php:46
 msgid "(Auto)"
-msgstr "(Auto)"
+msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-cpt-performance.php:46
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-performance-details.php:25
 #: includes/admin/settings/class-sp-settings-config.php:412
 msgid "Calculate"
-msgstr "Calcolare"
+msgstr "أحسب"
 
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:77
@@ -2077,7 +2080,7 @@ msgstr "Calcolare"
 #: includes/widgets/class-sp-widget-player-gallery.php:77
 #: includes/widgets/class-sp-widget-player-list.php:98
 msgid "Number"
-msgstr "Numero"
+msgstr "رقم"
 
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:65
 msgid "Role"
@@ -2085,7 +2088,7 @@ msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:63
 msgid "Logo"
-msgstr "Logo"
+msgstr "شعار"
 
 #: includes/admin/post-types/class-sp-admin-cpt.php:43
 #, php-format
@@ -2099,13 +2102,13 @@ msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:93
 msgid "Video"
-msgstr ""
+msgstr "فيديو"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:99
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:109
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:120
 msgid "Shortcode"
-msgstr ""
+msgstr "رمز أختصار"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:100
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:121
@@ -2116,64 +2119,64 @@ msgstr ""
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:112
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:124
 msgid "Description"
-msgstr ""
+msgstr "الوصف"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-shortcode.php:25
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-shortcode.php:25
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-shortcode.php:24
 msgid ""
 "Copy this code and paste it into your post, page or text widget content."
-msgstr ""
+msgstr "أنسخ هذا الرمز وألصقه في آخر، أو نص صفحة المحتويات القطعة الخاصة بك."
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:51
 msgid "Disable"
-msgstr "Disabilita"
+msgstr "تعطيل"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:63
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:95
 #: includes/widgets/class-sp-widget-player-gallery.php:97
 #: includes/widgets/class-sp-widget-player-list.php:118
 msgid "Descending"
-msgstr "Discendente"
+msgstr "تنازلي"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:63
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:94
 #: includes/widgets/class-sp-widget-player-gallery.php:96
 #: includes/widgets/class-sp-widget-player-list.php:117
 msgid "Ascending"
-msgstr "Ascendente"
+msgstr "تصاعدي"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:32
 msgid "Remove"
-msgstr "Rimuovi"
+msgstr "حذف"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:56
 msgid "&mdash; Add &mdash;"
-msgstr "&mdash; Aggiungi &mdash;"
+msgstr "&mdash; أضف &mdash;"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:27
 msgid "Remove video"
-msgstr ""
+msgstr "حذف الفيديو"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:31
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:36
 msgid "Add video"
-msgstr ""
+msgstr "أضف فيديو"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:72
 #: includes/widgets/class-sp-widget-player-gallery.php:72
 #: includes/widgets/class-sp-widget-player-list.php:93
 msgid "Sort by:"
-msgstr "Ordina per:"
+msgstr "ترتيب حسب:"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:91
 #: includes/widgets/class-sp-widget-player-gallery.php:94
 #: includes/widgets/class-sp-widget-player-list.php:115
 msgid "Sort Order:"
-msgstr "Ordinamento:"
+msgstr "الترتيب:"
 
 #: includes/admin/settings/class-sp-settings-config.php:25
 msgid "Configure"
@@ -2185,27 +2188,27 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-config.php:48
 msgid "Sport"
-msgstr "Sport"
+msgstr "الرياضة"
 
 #: includes/admin/settings/class-sp-settings-config.php:194
 #: includes/admin/settings/class-sp-settings-general.php:190
 msgid "Primary"
-msgstr ""
+msgstr "أساسي"
 
 #: includes/admin/settings/class-sp-settings-config.php:208
 #, php-format
 msgid "Default (%s)"
-msgstr ""
+msgstr "أفتراضي (%s)"
 
 #: includes/admin/settings/class-sp-settings-config.php:210
 #: includes/widgets/class-sp-widget-player-gallery.php:76
 #: includes/widgets/class-sp-widget-player-list.php:97
 msgid "Default"
-msgstr "Predefinito"
+msgstr "أفتراضي"
 
 #: includes/admin/settings/class-sp-settings-events.php:42
 msgid "Event Options"
-msgstr ""
+msgstr "خيارات الحدث"
 
 #: includes/admin/settings/class-sp-settings-events.php:45
 msgid "Number of Teams"
@@ -2230,7 +2233,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-players.php:61
 #: includes/admin/settings/class-sp-settings-teams.php:62
 msgid "Text"
-msgstr ""
+msgstr "نص"
 
 #: includes/admin/settings/class-sp-settings-events.php:85
 #: includes/admin/settings/class-sp-settings-general.php:90
@@ -2249,7 +2252,7 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-general.php:43
 msgid "General Options"
-msgstr ""
+msgstr "خيارات عامة"
 
 #: includes/admin/settings/class-sp-settings-general.php:49
 msgid "Styles and Scripts"
@@ -2317,7 +2320,7 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-players.php:41
 msgid "Player Options"
-msgstr ""
+msgstr "خيارات اللاعب"
 
 #: includes/admin/settings/class-sp-settings-players.php:45
 msgid "Display national flag"
@@ -2330,7 +2333,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-teams.php:45
 #: includes/widgets/class-sp-widget-league-table.php:90
 msgid "Display logos"
-msgstr ""
+msgstr "عرض الشعارات"
 
 #: includes/admin/settings/class-sp-settings-teams.php:53
 msgid "Link teams"
@@ -2342,15 +2345,15 @@ msgstr ""
 
 #: includes/admin/views/html-notice-install.php:5
 msgid "<strong>Welcome to SportsPress</strong> &#8211; Get Started"
-msgstr "<strong>Benvenuti in SportsPress</strong> &#8211; Cominciate"
+msgstr "<strong>أهلاً وسهلاً بك في SportsPress</strong> &#8211; Get Started"
 
 #: includes/admin/views/html-notice-install.php:7
 msgid "Go to SportsPress Settings"
-msgstr "Vai alle impostazioni di SportsPress"
+msgstr "انتقل إلى إعدادات SportsPress"
 
 #: includes/admin/views/html-notice-install.php:8
 msgid "Skip setup"
-msgstr "Salta configurazione"
+msgstr "تخطي الخطوة"
 
 #: includes/admin/views/html-notice-theme-support.php:5
 msgid ""
@@ -2358,25 +2361,25 @@ msgid ""
 "you encounter layout issues please read our integration guide or choose a "
 "SportsPress theme :)"
 msgstr ""
-"<strong>Il tuo tema non dichiara il supporto a SportsPress</strong> &#8211; "
-"se si riscontrano problemi di layout si prega di leggere la nostra guida per "
-"l'integrazione o scegli un tema SportsPress :)"
+"<strong>القالب الخاص بك لا يتوافق مع SportsPress</strong> &#8211; إذا كنت "
+"تواجه مشكلات في القالب يرجى قراءة دليل التكامل لدينا أو اختيار موضوع "
+"SportsPress :)"
 
 #: includes/admin/views/html-notice-theme-support.php:7
 msgid "Theme Integration Guide"
-msgstr "Theme Integration Guide"
+msgstr "دليل القالب المتكامل"
 
 #: includes/admin/views/html-notice-theme-support.php:8
 msgid "Hide this notice"
-msgstr "Nascondi questo avviso"
+msgstr "إخفاء الملاحظة"
 
 #: includes/widgets/class-sp-widget-countdown.php:5
 msgid "A clock that counts down to an upcoming event."
-msgstr "Un orologio che conta fino a un evento imminente."
+msgstr "ساعة العد التنازلي للحدث القادم ."
 
 #: includes/widgets/class-sp-widget-countdown.php:6
 msgid "SportsPress Countdown"
-msgstr "SportsPress Conto alla rovescia"
+msgstr "SportsPress العد التنازلي"
 
 #: includes/widgets/class-sp-widget-countdown.php:36
 #: includes/widgets/class-sp-widget-event-calendar.php:38
@@ -2385,7 +2388,7 @@ msgstr "SportsPress Conto alla rovescia"
 #: includes/widgets/class-sp-widget-player-gallery.php:50
 #: includes/widgets/class-sp-widget-player-list.php:50
 msgid "Title:"
-msgstr "Titolo:"
+msgstr "العنوان:"
 
 #: includes/widgets/class-sp-widget-countdown.php:39
 #: includes/widgets/class-sp-widget-event-calendar.php:41
@@ -2395,83 +2398,83 @@ msgstr "Titolo:"
 #: includes/widgets/class-sp-widget-player-list.php:53
 #, php-format
 msgid "Select %s:"
-msgstr "Seleziona %s"
+msgstr "حدد %s:"
 
 #: includes/widgets/class-sp-widget-countdown.php:59
 msgid "Display league"
-msgstr "Visualizza Lega"
+msgstr "عرض البطولة"
 
 #: includes/widgets/class-sp-widget-event-calendar.php:5
 msgid "A calendar of events."
-msgstr "Un calendario di eventi."
+msgstr "تقويم الأحداث."
 
 #: includes/widgets/class-sp-widget-event-calendar.php:6
 msgid "SportsPress Events Calendar"
-msgstr "SportsPress Calendario Eventi"
+msgstr "تقويم أحداث SportsPress "
 
 #: includes/widgets/class-sp-widget-event-calendar.php:59
 #: includes/widgets/class-sp-widget-event-list.php:77
 msgid "Display link to view all events"
-msgstr ""
+msgstr "عرض رابط لعرض جميع الأحداث"
 
 #: includes/widgets/class-sp-widget-event-list.php:5
 msgid "A list of events."
-msgstr ""
+msgstr "قائمة الأحداث."
 
 #: includes/widgets/class-sp-widget-event-list.php:6
 msgid "SportsPress Events List"
-msgstr ""
+msgstr "قائمة الأحداث SportsPress"
 
 #: includes/widgets/class-sp-widget-event-list.php:60
 #: includes/widgets/class-sp-widget-league-table.php:70
 msgid "Columns:"
-msgstr "Colonne:"
+msgstr "أعمدة :"
 
 #: includes/widgets/class-sp-widget-league-table.php:5
 msgid "Display a league table."
-msgstr "Mostra un tabelle League"
+msgstr "عرض جدول الدوري."
 
 #: includes/widgets/class-sp-widget-league-table.php:6
 msgid "SportsPress League Table"
-msgstr "SportsPress Tabella League"
+msgstr "جدول بطولة SportsPress"
 
 #: includes/widgets/class-sp-widget-league-table.php:66
 msgid "Number of teams to show:"
-msgstr ""
+msgstr "عدد الفرق إلى المعرض:"
 
 #: includes/widgets/class-sp-widget-league-table.php:93
 msgid "Display link to view full table"
-msgstr ""
+msgstr "عرض رابط لعرض الجدول الكامل"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:5
 msgid "Display a gallery of players."
-msgstr ""
+msgstr "عرض معرض اللاعبين."
 
 #: includes/widgets/class-sp-widget-player-gallery.php:6
 msgid "SportsPress Player Gallery"
-msgstr ""
+msgstr "SportsPress معرض لاعبين"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:69
 #: includes/widgets/class-sp-widget-player-list.php:69
 msgid "Number of players to show:"
-msgstr ""
+msgstr "عرض عدد اللاعبين للعرض :"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:101
 #: includes/widgets/class-sp-widget-player-list.php:122
 msgid "Display link to view all players"
-msgstr ""
+msgstr "عرض رابط لعرض جميع اللاعبين"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:104
 msgid "Display player names on hover"
-msgstr ""
+msgstr "عرض أسماء اللاعبين المرفرفين"
 
 #: includes/widgets/class-sp-widget-player-list.php:5
 msgid "Display a list of players."
-msgstr "Mostra un elenco di giocatori"
+msgstr "عرض قائمة اللاعبين."
 
 #: includes/widgets/class-sp-widget-player-list.php:6
 msgid "SportsPress Player List"
-msgstr "SportsPress Lista giocatori"
+msgstr "قائمة لاعبين SportsPress "
 
 #: includes/widgets/class-sp-widget-player-list.php:73
 msgid "Performance:"
@@ -2483,4 +2486,4 @@ msgstr ""
 #, php-format
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
-msgstr "%1$s %2$s"
+msgstr ""
