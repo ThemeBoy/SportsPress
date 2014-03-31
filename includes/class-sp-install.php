@@ -128,7 +128,7 @@ class SP_Install {
 		// Configure default sport
 		$sport = 'soccer';
 		$options = sp_get_sport_presets();
-		SP_Settings_Config::configure_sport( $options[ $sport ] );
+		SP_Admin_Settings::configure_sport( $options[ $sport ] );
 	    update_option( 'sportspress_sport', $sport );
 	}
 

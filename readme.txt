@@ -4,7 +4,7 @@ Tags: sports, press, sports journalism, teams, team management, fixtures, result
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 0.7
+Stable tag: 0.7.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -79,9 +79,20 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 If on the off-chance you do encounter issues with the event/team/player/staff pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
-== Configuration ==
+== Screenshots ==
 
-= Sport =
+1. League Table in Twenty Fourteen theme.
+2. Events List in Twenty Fourteen theme.
+3. Events Calendar in Twenty Fourteen theme.
+4. Player List in Twenty Fourteen theme.
+5. League Table column configuration.
+6. General Options page.
+7. Player List widget settings.
+8. SportsPress Status dashboard widget.
+
+== Other Notes ==
+
+= Sport Presets =
 
 SportsPress comes with settings for some sports that you can apply by going to WordPress > Settings > SportsPress. By selecting a sport, presets will be applied to Events, League Tables, and Players.
 
@@ -148,18 +159,13 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
-== Screenshots ==
-
-1. League Table in Twenty Fourteen theme.
-2. Events List in Twenty Fourteen theme.
-3. Events Calendar in Twenty Fourteen theme.
-4. Player List in Twenty Fourteen theme.
-5. League Table column configuration.
-6. General Options page.
-7. Player List widget settings.
-8. SportsPress Status dashboard widget.
-
 == Changelog ==
+
+= 0.7.2 =
+* Fix - Update missing assets.
+
+= 0.7.1 =
+* Fix - Activation error preventing new installation.
 
 = 0.7 =
 * Feature - Welcome page to display on activation.
