@@ -81,11 +81,11 @@
 }
 
 #sportspress_dashboard_status .sp_status_list li.events-scheduled a:before {
-	color: #ffba00;
+	color: #f9af4b;
 }
 
 #sportspress_dashboard_status .sp_status_list li.events-published a:before {
-	color: #21759b;
+	color: #00a69c;
 }
 
 #sportspress_dashboard_status .sp_status_list li strong {

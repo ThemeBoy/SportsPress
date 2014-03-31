@@ -32,6 +32,9 @@ class SP_Admin_Meta_Boxes {
 		// Save Outcome Meta Boxes
 		add_action( 'sportspress_process_sp_outcome_meta', 'SP_Meta_Box_Outcome_Details::save', 10, 2 );
 
+		// Save Metric Meta Boxes
+		add_action( 'sportspress_process_sp_metric_meta', 'SP_Meta_Box_Metric_Details::save', 10, 2 );
+
 		// Save Performance Meta Boxes
 		add_action( 'sportspress_process_sp_performance_meta', 'SP_Meta_Box_Performance_Details::save', 10, 2 );
 
@@ -80,11 +83,14 @@ class SP_Admin_Meta_Boxes {
 		// Outcomes
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Outcome_Details::output', 'sp_outcome', 'normal', 'high' );
 
-		// Performance
-		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Performance_Details::output', 'sp_performance', 'normal', 'high' );
-
 		// Columns
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Column_Details::output', 'sp_column', 'normal', 'high' );
+
+		// Performance
+		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Metric_Details::output', 'sp_metric', 'normal', 'high' );
+
+		// Performance
+		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Performance_Details::output', 'sp_performance', 'normal', 'high' );
 
 		// Events
 		add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'SP_Meta_Box_Event_Format::output', 'sp_event', 'side', 'default' );
