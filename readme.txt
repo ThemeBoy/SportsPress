@@ -126,14 +126,12 @@ Performance is for keeping track of the performance variables like goals, assist
 
 == Screenshots ==
 
-1. League Table in Twenty Fourteen theme with default color scheme.
-2. Events List in Twenty Fourteen theme with custom color scheme.
-3. Events Calendar in Twenty Fourteen theme with custom color scheme.
-4. Player List in Twenty Fourteen theme with custom color scheme.
-5. League Table column configuration.
-6. General Options page.
-7. Player List widget settings.
-8. SportsPress Status dashboard widget.
+1. SportsPress style settings, configuration, and responsive layout example.
+2. League Table in Twenty Fourteen theme with default color scheme.
+3. Events List in Twenty Fourteen theme with custom color scheme.
+4. Events Calendar in Twenty Fourteen theme with custom color scheme.
+5. Player List in Twenty Fourteen theme with custom color scheme.
+6. Player Gallery in Twenty Fourteen theme with custom color scheme.
 
 == Frequently Asked Questions ==
 
