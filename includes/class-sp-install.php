@@ -125,11 +125,21 @@ class SP_Install {
 			}
 		}
 
-		// Configure default sport
-		$sport = 'soccer';
-		$options = sp_get_sport_presets();
-		SP_Admin_Settings::configure_sport( $options[ $sport ] );
-	    update_option( 'sportspress_sport', $sport );
+		// Default color scheme
+	    add_option( 'sportspress_frontend_css_primary', '#00a69c' );
+	    add_option( 'sportspress_frontend_css_heading', '#ffffff' );
+	    add_option( 'sportspress_frontend_css_text', '#222222' );
+	    add_option( 'sportspress_frontend_css_background', '#f5f5f5' );
+	    add_option( 'sportspress_frontend_css_alternate', '#f0f0f0' );
+
+		if ( ! get_option( 'sportspress_installed' ) ) {
+			// Configure default sport
+			$sport = 'soccer';
+			$options = sp_get_sport_presets();
+			SP_Admin_Settings::configure_sport( $options[ $sport ] );
+		    update_option( 'sportspress_sport', $sport );
+			update_option( 'sportspress_installed', 1 );
+		}
 	}
 
 	/**
