@@ -56,7 +56,14 @@
 	width: 6%;
 }
 
-.fixed .column-sp_league, .fixed .column-sp_season, .fixed .column-sp_venue, .fixed .column-sp_position, .fixed .column-sp_views {
+.post-type-sp_event .fixed .column-sp_league,
+.post-type-sp_calendar .fixed .column-sp_league,
+.post-type-sp_event .fixed .column-sp_season,
+.post-type-sp_calendar .fixed .column-sp_season,
+.post-type-sp_event .fixed .column-sp_venue,
+.post-type-sp_calendar .fixed .column-sp_venue,
+.post-type-sp_player .fixed .column-sp_position,
+.fixed .column-sp_views {
 	width: 10%;
 }
 

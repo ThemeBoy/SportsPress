@@ -1,6 +1,6 @@
 <?php
 /**
- * Performance Details
+ * Metric Details
  *
  * @author 		ThemeBoy
  * @category 	Admin
@@ -11,9 +11,9 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * SP_Meta_Box_Performance_Details
+ * SP_Meta_Box_Metric_Details
  */
-class SP_Meta_Box_Performance_Details {
+class SP_Meta_Box_Metric_Details {
 
 	/**
 	 * Output the metabox
@@ -26,10 +26,6 @@ class SP_Meta_Box_Performance_Details {
 		<p>
 			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
 		</p>
-		<p><strong><?php _e( 'Calculate', 'sportspress' ); ?></strong></p>
-		<p class="sp-calculate-selector">
-			<?php sp_calculate_selector( $post->ID, $calculate ); ?>
-		</p>
 		<?php
 	}
 
@@ -38,6 +34,5 @@ class SP_Meta_Box_Performance_Details {
 	 */
 	public static function save( $post_id, $post ) {
 		sp_delete_duplicate_post( $_POST );
-		update_post_meta( $post_id, 'sp_calculate', sp_array_value( $_POST, 'sp_calculate', 'DESC' ) );
 	}
 }

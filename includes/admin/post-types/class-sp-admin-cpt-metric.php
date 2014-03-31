@@ -41,6 +41,7 @@ class SP_Admin_CPT_Metric extends SP_Admin_CPT {
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Label', 'sportspress' ),
+			'sp_key' => __( 'Key', 'sportspress' ),
 			'sp_position' => __( 'Positions', 'sportspress' ),
 		);
 		return $columns;
