@@ -159,6 +159,10 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 
 == Changelog ==
 
+= 0.7.3 =
+* Feature - Enable editing Key field in Metrics and Performance.
+* Tweak - Lighter default color scheme.
+
 = 0.7.2 =
 * Fix - Update missing assets.
 
