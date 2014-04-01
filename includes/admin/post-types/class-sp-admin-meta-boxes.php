@@ -93,6 +93,7 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Performance_Details::output', 'sp_performance', 'normal', 'high' );
 
 		// Events
+		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'SP_Meta_Box_Event_Shortcode::output', 'sp_event', 'side', 'default' );
 		add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'SP_Meta_Box_Event_Format::output', 'sp_event', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Event_Details::output', 'sp_event', 'side', 'default' );
 		add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'SP_Meta_Box_Event_Teams::output', 'sp_event', 'side', 'default' );
@@ -109,6 +110,7 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_descriptiondiv', __( 'Description', 'sportspress' ), 'SP_Meta_Box_Calendar_Description::output', 'sp_calendar', 'normal', 'high' );
 
 		// Teams
+//		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'SP_Meta_Box_Team_Shortcode::output', 'sp_team', 'side', 'default' );
 		add_meta_box( 'sp_columnssdiv', __( 'Columns', 'sportspress' ), 'SP_Meta_Box_Team_Columns::output', 'sp_team', 'normal', 'high' );
 
 		// Tables
@@ -118,6 +120,7 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_descriptiondiv', __( 'Description', 'sportspress' ), 'SP_Meta_Box_Table_Description::output', 'sp_table', 'normal', 'high' );
 
 		// Players
+//		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'SP_Meta_Box_Player_Shortcode::output', 'sp_player', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Player_Details::output', 'sp_player', 'side', 'default' );
 		add_meta_box( 'sp_metricsdiv', __( 'Metrics', 'sportspress' ), 'SP_Meta_Box_Player_Metrics::output', 'sp_player', 'side', 'default' );
 		add_meta_box( 'sp_performancediv', __( 'Performance', 'sportspress' ), 'SP_Meta_Box_Player_Performance::output', 'sp_player', 'normal', 'high' );
@@ -128,6 +131,9 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_List_Details::output', 'sp_list', 'side', 'default' );
 		add_meta_box( 'sp_datadiv', __( 'Player List', 'sportspress' ), 'SP_Meta_Box_List_Data::output', 'sp_list', 'normal', 'high' );
 		add_meta_box( 'sp_descriptiondiv', __( 'Description', 'sportspress' ), 'SP_Meta_Box_List_Description::output', 'sp_list', 'normal', 'high' );
+
+		// Staff
+//		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'SP_Meta_Box_Staff_Shortcode::output', 'sp_staff', 'side', 'default' );
 	}
 
 	/**

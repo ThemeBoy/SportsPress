@@ -171,31 +171,8 @@ add_filter( 'the_content', 'sportspress_the_content' );
 add_filter( 'get_the_content', 'sportspress_the_content' );
 
 function sportspress_default_event_content( $content ) {
-    if ( is_singular( 'sp_event' ) && in_the_loop() ):
-        $id = get_the_ID();
-
-        // Video
-        $video_url = get_post_meta( $id, 'sp_video', true );
-        if ( $video_url ):
-            global $wp_embed;
-            echo $wp_embed->autoembed( $video_url );
-        endif;
-
-        // Results
-        sp_get_template( 'event-results.php' );
-
-        // Details
-        sp_get_template( 'event-details.php' );
-
-        // Venue
-        sp_get_template( 'event-venue.php' );
-
-        // Performance
-        sp_get_template( 'event-performance.php' );
-
-        // Staff
-        sp_get_template( 'event-staff.php' );
-    endif;
+    if ( is_singular( 'sp_event' ) && in_the_loop() )
+        sp_get_template( 'event.php' );
 
     return $content;
 }
@@ -258,9 +235,8 @@ function sportspress_default_table_content( $content ) {
 add_filter( 'the_content', 'sportspress_default_table_content' );
 
 function sportspress_default_player_content( $content ) {
-    if ( is_singular( 'sp_player' ) && in_the_loop() ):
+    if ( is_singular( 'sp_player' ) && in_the_loop() )
         sp_get_template( 'player.php' );
-    endif;
     return $content;
 }
 add_filter( 'the_content', 'sportspress_default_player_content' );
