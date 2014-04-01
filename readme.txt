@@ -128,10 +128,10 @@ Performance is for keeping track of the performance variables like goals, assist
 
 1. SportsPress style settings, configuration, and responsive layout example.
 2. League Table in Twenty Fourteen theme with default color scheme.
-3. Events List in Twenty Fourteen theme with custom color scheme.
-4. Events Calendar in Twenty Fourteen theme with custom color scheme.
-5. Player List in Twenty Fourteen theme with custom color scheme.
-6. Player Gallery in Twenty Fourteen theme with custom color scheme.
+3. Events List in Twenty Fourteen theme with default color scheme.
+4. Events Calendar in Twenty Fourteen theme with default color scheme.
+5. Player List in Twenty Fourteen theme with default color scheme.
+6. Player Gallery in Twenty Fourteen theme with default color scheme.
 
 == Frequently Asked Questions ==
 
@@ -156,6 +156,16 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 0.7.5 =
+* Localization - Portuguese (Brazil) translation by rochester.
+* Localization - Update Swedish translation by JensZ.
+
+= 0.7.4 =
+* Feature - Shortcode added to display single event content.
+* Tweak - Display default shortcode format when editing a calendar or player list.
+* Tweak - Add backwards compatibility for shortcodes prior to version 0.7.
+* Fix - Template hook to change display strings in admin.
 
 = 0.7.3 =
 * Feature - Enable editing Key field in Metrics and Performance.
