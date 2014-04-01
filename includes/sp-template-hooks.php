@@ -65,9 +65,6 @@ function sportspress_theme_check_notice() {
 }
 
 function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
-	if ( $domain != 'sportspress' )
-		return $translated_text;
-
 	global $typenow;
 
 	if ( is_admin() ):
