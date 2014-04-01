@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.7
+ * @version     0.7.5
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -252,7 +252,7 @@ class SP_Admin_Welcome {
 						<h4><?php _e( 'Translators', 'sportspress' ); ?></h4>
 						<p><?php _e( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="https://www.transifex.com/projects/p/sportspress/">Translate SportsPress</a>.', 'sportspress' ); ?></p>
 						<?php
-						$translator_handles = array( 'Abdulelah', 'aylaview', 'Bhelpful2', 'JensZ', 'karimjarro', 'Spirossmil', 'ThemeBoy' );
+						$translator_handles = array( 'Abdulelah', 'aylaview', 'Bhelpful2', 'JensZ', 'karimjarro', 'rochester', 'Spirossmil', 'ThemeBoy' );
 						$translator_links = array();
 						foreach ( $translator_handles as $handle ):
 							$translator_links[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';
