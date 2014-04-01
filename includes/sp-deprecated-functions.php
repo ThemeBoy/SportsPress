@@ -7,11 +7,19 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	ThemeBoy/Functions
- * @version     0.7
+ * @version     0.7.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/* Shortcodes */
+add_shortcode( 'events-calendar', 'SP_Shortcodes::event_calendar' );
+add_shortcode( 'events-list', 'SP_Shortcodes::event_list' );
+add_shortcode( 'league-table', 'SP_Shortcodes::league_table' );
+add_shortcode( 'player-list', 'SP_Shortcodes::player_list' );
+add_shortcode( 'player-gallery', 'SP_Shortcodes::player_gallery' );
+
+/* Functions */
 function sportspress_flush_rewrite_rules() {
 	return sp_flush_rewrite_rules();
 }
