@@ -90,8 +90,6 @@ foreach( $teams as $key => $team_id ):
 				<<?php echo ( $has_players ? 'tfoot' : 'tbody' ); ?>>
 					<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">
 						<?php
-						$number = get_post_meta( $player_id, 'sp_number', true );
-
 						if ( $has_players ):
 							echo '<td class="data-number">&nbsp;</td>';
 							echo '<td class="data-name">' . SP()->text->string('Total', 'event') . '</td>';
