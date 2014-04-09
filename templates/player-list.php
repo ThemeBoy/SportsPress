@@ -70,8 +70,7 @@ foreach( $data as $player_id => $row ):
 	if ( isset( $orderby ) && $orderby != 'number' ):
 		$output .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
 	else:
-		$number = get_post_meta( $player_id, 'sp_number', true );
-		$output .= '<td class="data-number">' . ( $number ? $number : '&nbsp;' ) . '</td>';
+		$output .= '<td class="data-number">' . sp_array_value( $row, 'number', '&nbsp;' ) . '</td>';
 	endif;
 
 	if ( $link_posts ):
