@@ -1,0 +1,20 @@
+#available-widgets [class*=sp_] .widget-title:before {
+	font-family: 'sportspress';
+}
+#available-widgets [class*=sp_countdown] .widget-title:before {
+	content: "\f469";
+}
+#available-widgets [class*=sp_event_calendar] .widget-title:before,
+#available-widgets [class*=sp_event_list] .widget-title:before {
+	content: "\f145";
+}
+#available-widgets [class*=sp_league_table] .widget-title:before {
+	content: "\f334";
+}
+#available-widgets [class*=sp_player_list] .widget-title:before,
+#available-widgets [class*=sp_player_gallery] .widget-title:before {
+	content: "\f307";
+}
+#available-widgets [class*=sp_countdown] .widget-title:before {
+	content: "\f469";
+}
