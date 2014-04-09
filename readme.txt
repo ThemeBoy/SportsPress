@@ -3,8 +3,8 @@ Contributors: ThemeBoy
 Tags: sports, press, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
-Tested up to: 3.8.1
-Stable tag: 0.7.4
+Tested up to: 3.8.2
+Stable tag: 0.7.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,17 +34,18 @@ Add schedules, results, league tables, player profiles and statistics to your te
 League table columns, player statistics, and match results can be customized to fit any sport. Presets are available for some of the most popular sports including soccer, rugby, American football, Australian Rules football, baseball, basketball, cricket, and hockey.
 
 = Available Languages =
-* English (en_US)
-* Arabic (ar)
-* Czech - Čeština (cs_CZ)
-* German - Deutsch (de_DE)
-* Spanish - Español (es_ES)
-* French - Français (fr_FR)
-* Italian - Italiano (it_IT)
-* Japanese - 日本語 (ja)
-* Polish - Polski (pl_PL)
-* Slovak – Slovenčina (sk_SK)
-* Swedish - Svenska (sv_SE)
+* English – English ( en_US )
+* Arabic – العربية ( ar )
+* Czech – Čeština ( cs_CZ )
+* German – Deutsch ( de_DE )
+* Spanish – Español ( es_ES )
+* French – Français ( fr_FR )
+* Italian – Italiano ( it_IT )
+* Japanese – 日本語 ( ja )
+* Polish – Polski ( pl_PL )
+* Portuguese (Brazil) – Português do Brasil ( pt_BR )
+* Slovak – Slovenčina ( sk_SK )
+* Swedish – Svenska ( sv_SE )
 
 = Get involved =
 
