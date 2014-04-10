@@ -152,18 +152,6 @@ class SP_Post_types {
 	 * Register core post types
 	 */
 	public static function register_post_types() {
-
-		register_post_type( 'sp_separator',
-			array(
-				'label' => '',
-				'public' => false,
-				'show_ui' => true,
-				'show_in_nav_menus' => false,
-				'show_in_admin_bar' => false,
-				'can_export' => false,
-			)
-		);	
-
 		do_action( 'sportspress_register_post_type' );
 
 		register_post_type( 'sp_result',
@@ -189,9 +177,9 @@ class SP_Post_types {
 					'hierarchical' 			=> false,
 					'supports' 				=> array( 'title', 'page-attributes' ),
 					'has_archive' 			=> false,
-					'show_in_menu' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
+					'show_in_menu' => 'sportspress',
 				)
 			)
 		);
@@ -219,39 +207,9 @@ class SP_Post_types {
 					'hierarchical' 			=> false,
 					'supports' 				=> array( 'title', 'page-attributes' ),
 					'has_archive' 			=> false,
-					'show_in_menu' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-				)
-			)
-		);
-
-		register_post_type( 'sp_performance',
-			apply_filters( 'sportspress_register_post_type_performance',
-				array(
-					'labels' => array(
-						'name' 					=> __( 'Performance', 'sportspress' ),
-						'singular_name' 		=> __( 'Performance', 'sportspress' ),
-						'add_new_item' 			=> __( 'Add New Performance', 'sportspress' ),
-						'edit_item' 			=> __( 'Edit Performance', 'sportspress' ),
-						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View', 'sportspress' ),
-						'search_items' 			=> __( 'Search', 'sportspress' ),
-						'not_found' 			=> __( 'No results found.', 'sportspress' ),
-						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
-					),
-					'public' 				=> false,
-					'show_ui' 				=> true,
-					'capability_type' 		=> 'sp_config',
-					'map_meta_cap' 			=> true,
-					'publicly_queryable' 	=> false,
-					'exclude_from_search' 	=> true,
-					'hierarchical' 			=> false,
-					'supports' 				=> array( 'title', 'page-attributes' ),
-					'has_archive' 			=> false,
-					'show_in_menu' 			=> false,
-					'show_in_nav_menus' 	=> false,
-					'can_export' 			=> false,
+					'show_in_menu' => 'sportspress',
 				)
 			)
 		);
@@ -279,9 +237,39 @@ class SP_Post_types {
 					'hierarchical' 			=> false,
 					'supports' 				=> array( 'title', 'page-attributes' ),
 					'has_archive' 			=> false,
-					'show_in_menu' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
+					'show_in_menu' => 'sportspress',
+				)
+			)
+		);
+
+		register_post_type( 'sp_performance',
+			apply_filters( 'sportspress_register_post_type_performance',
+				array(
+					'labels' => array(
+						'name' 					=> __( 'Performance', 'sportspress' ),
+						'singular_name' 		=> __( 'Performance', 'sportspress' ),
+						'add_new_item' 			=> __( 'Add New Performance', 'sportspress' ),
+						'edit_item' 			=> __( 'Edit Performance', 'sportspress' ),
+						'new_item' 				=> __( 'New', 'sportspress' ),
+						'view_item' 			=> __( 'View', 'sportspress' ),
+						'search_items' 			=> __( 'Search', 'sportspress' ),
+						'not_found' 			=> __( 'No results found.', 'sportspress' ),
+						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
+					),
+					'public' 				=> false,
+					'show_ui' 				=> true,
+					'capability_type' 		=> 'sp_config',
+					'map_meta_cap' 			=> true,
+					'publicly_queryable' 	=> false,
+					'exclude_from_search' 	=> true,
+					'hierarchical' 			=> false,
+					'supports' 				=> array( 'title', 'page-attributes' ),
+					'has_archive' 			=> false,
+					'show_in_nav_menus' 	=> false,
+					'can_export' 			=> false,
+					'show_in_menu' => 'sportspress',
 				)
 			)
 		);
@@ -309,9 +297,9 @@ class SP_Post_types {
 					'hierarchical' 			=> false,
 					'supports' 				=> array( 'title', 'page-attributes' ),
 					'has_archive' 			=> false,
-					'show_in_menu' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
+					'show_in_menu' => 'sportspress',
 				)
 			)
 		);
@@ -339,9 +327,9 @@ class SP_Post_types {
 					'hierarchical' 			=> false,
 					'supports' 				=> array( 'title', 'page-attributes' ),
 					'has_archive' 			=> false,
-					'show_in_menu' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
+					'show_in_menu' => 'sportspress',
 				)
 			)
 		);

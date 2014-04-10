@@ -76,7 +76,7 @@ class SP_Admin_Notices {
 		$screen = get_current_screen();
 
 		// If we have just installed, show a message with the install pages button
-		if ( get_option( '_sp_needs_welcome' ) == 1 && $screen->id != 'settings_page_sportspress' ) {
+		if ( get_option( '_sp_needs_welcome' ) == 1 && $screen->id != 'toplevel_page_sportspress' ) {
 			include( 'views/html-notice-install.php' );
 		}
 	}

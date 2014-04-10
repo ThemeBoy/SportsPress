@@ -112,8 +112,6 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_team' )
 	    	return;
 
-		sp_highlight_admin_menu();
-
 		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 		$args = array(
 			'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),

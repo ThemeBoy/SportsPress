@@ -160,7 +160,7 @@ class SP_Admin_Welcome {
 		<div class="sp-badge"><?php printf( __( 'Version %s', 'sportspress' ), SP()->version ); ?></div>
 
 		<p class="sportspress-actions">
-			<?php if ( false ): ?><a href="<?php echo admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'options-general.php' ) ); ?>" class="button button-primary"><?php _e( 'Settings', 'sportspress' ); ?></a><?php endif; ?>
+			<?php if ( false ): ?><a href="<?php echo admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'admin.php' ) ); ?>" class="button button-primary"><?php _e( 'Settings', 'sportspress' ); ?></a><?php endif; ?>
 			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ow.ly/vaGUv" data-text="An open-source (free) #WordPress plugin that helps you build professional league websites." data-via="ThemeBoy" data-size="large" data-hashtags="SportsPress">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		</p>
@@ -266,7 +266,7 @@ class SP_Admin_Welcome {
 			</div>
 
 			<div class="return-to-dashboard">
-				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'options-general.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
 			</div>
 		</div>
 		<?php
