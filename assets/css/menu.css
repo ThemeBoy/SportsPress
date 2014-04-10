@@ -24,6 +24,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.sp-icon-sportspress:before {
+	content: "\f111";
+}
 .sp-icon-calendar:before {
 	content: "\f145";
 }

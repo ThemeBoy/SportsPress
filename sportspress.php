@@ -134,7 +134,7 @@ final class SportsPress {
 	 */
 	public function action_links( $links ) {
 		return array_merge( array(
-			'<a href="' . admin_url( 'options-general.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
+			'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
 		), $links );
 	}
 

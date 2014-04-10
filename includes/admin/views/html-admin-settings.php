@@ -3,7 +3,7 @@
 		<div class="icon32 icon32-sportspress-settings" id="icon-sportspress"><br /></div><h2 class="nav-tab-wrapper sp-nav-tab-wrapper">
 			<?php
 				foreach ( $tabs as $name => $label )
-					echo '<a href="' . admin_url( 'options-general.php?page=sportspress&tab=' . $name ) . '" class="nav-tab ' . ( $current_tab == $name ? 'nav-tab-active' : '' ) . '">' . $label . '</a>';
+					echo '<a href="' . admin_url( 'admin.php?page=sportspress&tab=' . $name ) . '" class="nav-tab ' . ( $current_tab == $name ? 'nav-tab-active' : '' ) . '">' . $label . '</a>';
 
 				do_action( 'sportspress_settings_tabs' );
 			?>

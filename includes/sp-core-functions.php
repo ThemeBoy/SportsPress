@@ -2986,14 +2986,6 @@ if ( !function_exists( 'sp_delete_duplicate_post' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_highlight_admin_menu' ) ) {
-	function sp_highlight_admin_menu( $p = 'options-general.php', $s = 'sportspress' ) {
-		global $parent_file, $submenu_file;
-		$parent_file = $p;
-		$submenu_file = $s;
-	}
-}
-
 /**
  * Get an array of sport options and settings.
  * @return array

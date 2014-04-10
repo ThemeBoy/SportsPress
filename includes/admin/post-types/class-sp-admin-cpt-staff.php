@@ -138,8 +138,6 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_staff' )
 	    	return;
 
-		sp_highlight_admin_menu();
-
 		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
 		$args = array(
 			'post_type' => 'sp_team',

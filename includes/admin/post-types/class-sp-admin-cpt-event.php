@@ -180,8 +180,6 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_event' )
 	    	return;
 
-		sp_highlight_admin_menu();
-
 		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
 		$args = array(
 			'post_type' => 'sp_team',
