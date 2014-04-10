@@ -75,18 +75,23 @@
 .sportspress table.form-table, .sportspress table.form-table .forminp-radio ul {
 	margin: 0;
 }
+
 .sportspress table.form-table fieldset {
 	margin-top: 4px;
 }
+
 .sportspress table.form-table fieldset:first-child {
 	margin-top: 0;
 }
+
 .sportspress table.form-table fieldset p.description {
 	margin-bottom: 8px;
 }
+
 .sp-admin-config-table .edit {
 	text-align: right;
 }
+
 .sportspress table.form-table .sp-color-box {
 	border: 1px solid #ccc;
 	box-shadow: 1px 1px 3px rgba(0,0,0,.2);
@@ -98,8 +103,9 @@
 	padding: 4px 6px;
 	float: left;
 	width: 90px;
-	margin: 0 10px 0 0;
+	margin: 0 10px 10px 0;
 }
+
 .sportspress table.form-table .sp-color-box strong {
 	text-align: left;
 	display: block;
@@ -107,6 +113,7 @@
 	font-size: .92em;
 	word-wrap: break-word;
 }
+
 .sportspress table.form-table .sp-color-box input.colorpick {
 	width: 100%;
 	margin: 0;
@@ -115,6 +122,7 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
 .sportspress table.form-table .sp-color-box .iris-picker {
 	z-index: 100;
 	position: absolute;
@@ -129,32 +137,8 @@
 	margin: 15px 0 0 -7px;
 }
 
-.wp-media-buttons .button.sp-insert {
-	padding-left: 5px;
-}
-
-.wp-media-buttons .sp-insert span.sp-buttons-icon {
-	display: inline-block;
-	width: 18px;
-	height: 18px;
-	vertical-align: text-top;
-	margin: 0 2px;
-}
-
-.wp-media-buttons .sp-insert span.sp-buttons-icon:before {
-	font: 400 18px/1 dashicons;
-	speak: none;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: #888;
-}
-
-.wp-media-buttons .sp-insert span.sp-map-buttons-icon:before {
-	content: '\f231';
-}
-
-.wp-media-buttons .sp-insert span.sp-table-buttons-icon:before {
-	content: '\f185';
+.sportspress table.form-table #sportspress_custom_css {
+	font-family: monospace;
 }
 
 table.widefat.sp-data-table img {
