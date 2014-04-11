@@ -179,7 +179,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => 'sportspress',
+					'show_in_menu' => false,
 				)
 			)
 		);
@@ -209,7 +209,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => 'sportspress',
+					'show_in_menu' => false,
 				)
 			)
 		);
@@ -239,7 +239,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => 'sportspress',
+					'show_in_menu' => false,
 				)
 			)
 		);
@@ -269,7 +269,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => 'sportspress',
+					'show_in_menu' => false,
 				)
 			)
 		);
@@ -299,7 +299,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => 'sportspress',
+					'show_in_menu' => false,
 				)
 			)
 		);
@@ -329,7 +329,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => 'sportspress',
+					'show_in_menu' => false,
 				)
 			)
 		);

@@ -48,7 +48,7 @@ class SP_Admin_Menus {
 	public function menu_highlight() {
 		global $typenow, $submenu;
 		if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric' ) ) )
-			$this->highlight_admin_menu( 'sportspress', 'edit.php?post_type=' . $typenow );
+			$this->highlight_admin_menu( 'sportspress', null );
 		elseif ( $typenow == 'sp_calendar' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_event', 'edit.php?post_type=sp_calendar' );
 		elseif ( $typenow == 'sp_table' )
@@ -187,7 +187,7 @@ class SP_Admin_Menus {
 		return $arr[0] != __( 'Venues', 'sportspress' );
 	}
 
-	public static function highlight_admin_menu( $p = 'sportspress', $s = 'sportspress' ) {
+	public static function highlight_admin_menu( $p = 'sportspress', $s = null ) {
 		global $parent_file, $submenu_file;
 		$parent_file = $p;
 		$submenu_file = $s;
