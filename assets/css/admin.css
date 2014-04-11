@@ -381,6 +381,36 @@ table.widefat select.sp-outcome {
 	border-left-color: #464646;
 }
 
+#debug-report {
+	display: none;
+	margin: 10px 0;
+	padding: 0;
+	position: relative;
+}
+
+#debug-report textarea {
+	font-family: monospace;
+	width: 100%;
+	margin: 0;
+	height: 300px;
+	padding: 20px;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	resize: none;
+	font-size: 12px;
+	line-height: 20px;
+	outline: 0;
+}
+
+table.sp_status_table td mark {
+	background: transparent none;
+}
+
+table.sp_status_table td mark.yes {
+	color: #7ad03a;
+}
+
 /* Media Queries */
 @media only screen and (max-width: 782px) {
 
