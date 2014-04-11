@@ -22,6 +22,11 @@ class SP_Admin_Menus {
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 9 );
+		add_action( 'admin_menu', array( $this, 'status_menu' ), 60 );
+
+		if ( apply_filters( 'sportspress_show_addons_page', false ) ) // Make true to display by default
+			add_action( 'admin_menu', array( $this, 'addons_menu' ), 70 );
+
 		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
 		add_filter( 'menu_order', array( $this, 'menu_order' ) );
 		add_filter( 'custom_menu_order', array( $this, 'custom_menu_order' ) );
@@ -37,6 +42,21 @@ class SP_Admin_Menus {
 	    	$menu[] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
 
 		$main_page = add_menu_page( __( 'SportsPress Settings', 'sportspress' ), __( 'SportsPress', 'sportspress' ), 'manage_sportspress', 'sportspress', array( $this, 'settings_page' ), null, '51.5' );
+	}
+
+	/**
+	 * Add menu item
+	 */
+	public function status_menu() {
+		add_submenu_page( 'sportspress', __( 'SportsPress Status', 'sportspress' ),  __( 'System Status', 'sportspress' ) , 'manage_sportspress', 'sp-status', array( $this, 'status_page' ) );
+		register_setting( 'sportspress_status_settings_fields', 'sportspress_status_options' );
+	}
+
+	/**
+	 * Addons menu item
+	 */
+	public function addons_menu() {
+		add_submenu_page( 'sportspress', __( 'SportsPress Add-ons/Extensions', 'sportspress' ),  __( 'Add-ons', 'sportspress' ) , 'manage_sportspress', 'sp-addons', array( $this, 'addons_page' ) );
 	}
 
 	/**
@@ -115,6 +135,22 @@ class SP_Admin_Menus {
 		if ( ! current_user_can( 'manage_sportspress' ) )
 			return false;
 		return true;
+	}
+
+	/**
+	 * Init the status page
+	 */
+	public function status_page() {
+		$page = include( 'class-sp-admin-status.php' );
+		$page->output();
+	}
+
+	/**
+	 * Init the addons page
+	 */
+	public function addons_page() {
+		$page = include( 'class-sp-admin-addons.php' );
+		$page->output();
 	}
 
 	/**
