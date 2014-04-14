@@ -44,26 +44,6 @@ function sportspress_the_title( $title, $id ) {
 }
 add_filter( 'the_title', 'sportspress_the_title', 10, 2 );
 
-/**
- * sportspress_admin_install_notices function.
- *
- * @access public
- * @return void
- */
-function sportspress_admin_install_notices() {
-	include( dirname( SP_PLUGIN_FILE ) . '/includes/admin/views/notice-install.php' );
-}
-
-/**
- * sportspress_theme_check_notice function.
- *
- * @access public
- * @return void
- */
-function sportspress_theme_check_notice() {
-//	include( dirname( SP_PLUGIN_FILE ) . '/includes/admin/views/notice-theme-support.php' );
-}
-
 function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 	global $typenow;
 
