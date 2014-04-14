@@ -27,8 +27,10 @@ class SP_Settings_General extends SP_Settings_Page {
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
 		add_action( 'sportspress_admin_field_country', array( $this, 'country_setting' ) );
-		add_action( 'sportspress_admin_field_frontend_styles', array( $this, 'frontend_styles_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
+
+		if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) )
+			add_action( 'sportspress_admin_field_frontend_styles', array( $this, 'frontend_styles_setting' ) );
 	}
 
 	/**

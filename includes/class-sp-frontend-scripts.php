@@ -20,15 +20,27 @@ class SP_Frontend_Scripts {
 	}
 
 	/**
+	 * Get styles for the frontend
+	 * @return array
+	 */
+	public static function get_styles() {
+		return apply_filters( 'sportspress_enqueue_styles', array(
+			'sportspress-general' => array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', SP()->plugin_url() ) . '/assets/css/sportspress.css',
+				'deps'    => '',
+				'version' => SP_VERSION,
+				'media'   => 'all'
+			),
+		) );
+	}
+
+	/**
 	 * Register/queue frontend scripts.
 	 *
 	 * @access public
 	 * @return void
 	 */
 	public function load_scripts() {
-		// Styles
-		wp_enqueue_style( 'sportspress', plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/css/sportspress.css', array( 'dashicons' ), time() );
-
 		// Scripts
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array(), '3.exp', true );
@@ -38,6 +50,13 @@ class SP_Frontend_Scripts {
 
 		// Localize scripts.
 		wp_localize_script( 'sportspress', 'localized_strings', array( 'days' => __( 'days', 'sportspress' ), 'hrs' => __( 'hrs', 'sportspress' ), 'mins' => __( 'mins', 'sportspress' ), 'secs' => __( 'secs', 'sportspress' ), 'previous' => __( 'Previous', 'sportspress' ), 'next' => __( 'Next', 'sportspress' ) ) );
+
+		// CSS Styles
+		$enqueue_styles = $this->get_styles();
+
+		if ( $enqueue_styles )
+			foreach ( $enqueue_styles as $handle => $args )
+				wp_enqueue_style( $handle, $args['src'], $args['deps'], $args['version'], $args['media'] );
 	}
 
 	/**

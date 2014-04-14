@@ -4,7 +4,7 @@ Tags: sports, press, sports journalism, teams, team management, fixtures, result
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.8.2
-Stable tag: 0.7.5
+Stable tag: 0.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -158,7 +158,7 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 
 == Changelog ==
 
-= 0.7.5 =
+= 0.8 =
 * Localization - Portuguese (Brazil) translation by rochester.
 * Localization - Update Swedish translation by JensZ.
 
