@@ -21,15 +21,13 @@ class SP_Admin_Status {
 	 * Handles output of the reports page in admin.
 	 */
 	public function output() {
-		$current_tab = ! empty( $_REQUEST['tab'] ) ? sanitize_title( $_REQUEST['tab'] ) : 'status';
-
 		include_once( 'views/html-admin-page-status.php' );
 	}
 
 	/**
 	 * Retrieve metadata from a file. Based on WP Core's get_file_data function
 	 *
-	 * @since 2.1.1
+	 * @since 0.8
 	 * @param string $file Path to the file
 	 * @param array $all_headers List of headers, in the format array('HeaderKey' => 'Header Name')
 	 */
