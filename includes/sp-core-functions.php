@@ -5289,3 +5289,13 @@ function sp_get_text_options() {
 		),
 	));
 }
+
+function sp_is_config_type( $typenow = null ) {
+	if ( $typenow == null ) global $typenow;
+	
+	$post_types = array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric' );
+
+	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric' ) ) )
+		return true;
+	return false;
+}
