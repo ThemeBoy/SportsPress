@@ -15,8 +15,7 @@ class SP_Frontend_Scripts {
 	 */
 	public function __construct () {
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
-		add_action( 'wp_print_scripts', array( $this, 'check_jquery' ), 25 );;
-		add_action( 'wp_print_scripts', array( $this, 'custom_css' ), 30 );;
+		add_action( 'wp_print_scripts', array( $this, 'check_jquery' ), 25 );
 	}
 
 	/**
@@ -54,9 +53,11 @@ class SP_Frontend_Scripts {
 		// CSS Styles
 		$enqueue_styles = $this->get_styles();
 
-		if ( $enqueue_styles )
+		if ( $enqueue_styles ):
+			add_action( 'wp_print_scripts', array( $this, 'custom_css' ), 30 );
 			foreach ( $enqueue_styles as $handle => $args )
 				wp_enqueue_style( $handle, $args['src'], $args['deps'], $args['version'], $args['media'] );
+		endif;
 	}
 
 	/**
