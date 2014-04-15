@@ -352,9 +352,6 @@ jQuery(document).ready(function($){
 		$(this).siblings(".example").html(example);
 	});
 
-	// Remove slug editor in quick edit for slug-sensitive post types
-	$(".inline-edit-sp_result, .inline-edit-sp_outcome, .inline-edit-sp_column, .inline-edit-sp_performance").find("input[name=post_name]").closest("label").remove();
-
 	// Prevent address input from submitting form
 	$(".sp-address").keypress(function(event) {
 		return event.keyCode != 13;
