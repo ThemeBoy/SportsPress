@@ -80,10 +80,17 @@ add_action( 'sportspress_single_list_content', 'sportspress_output_player_list',
 add_action( 'loop_start', 'sportspress_output_venue_map' );
 
 function sportspress_the_title( $title, $id ) {
-	if ( is_singular( 'sp_player' ) && in_the_loop() && $id == get_the_ID() ):
-		$number = get_post_meta( $id, 'sp_number', true );
-		if ( $number != null ):
-			$title = '<strong>' . $number . '</strong> ' . $title;
+	if ( ! current_theme_supports( 'sportspress' ) && in_the_loop() && $id == get_the_ID() ):
+		if ( is_singular( 'sp_player' ) ):
+			$number = get_post_meta( $id, 'sp_number', true );
+			if ( $number != null ):
+				$title = '<strong>' . $number . '</strong> ' . $title;
+			endif;
+		elseif ( is_singular( 'sp_staff' ) ):
+			$role = get_post_meta( $id, 'sp_role', true );
+			if ( $role != null ):
+				$title = $title . '<br><small><strong>' . $role . '</strong></small>';
+			endif;
 		endif;
 	endif;
 	return $title;
@@ -118,7 +125,7 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 			endswitch;
 		endif;
 	else:
-    	if ( $untranslated_text == 'Archives' && is_tax( 'sp_venue' ) ):
+    	if ( ! current_theme_supports( 'sportspress' ) && $untranslated_text == 'Archives' && is_tax( 'sp_venue' ) ):
     		$slug = get_query_var( 'sp_venue' );
 		    if ( $slug ):
 			    $venue = get_term_by( 'slug', $slug, 'sp_venue' );
@@ -207,7 +214,7 @@ add_filter( 'the_content', 'sportspress_content_post_views' );
 add_filter( 'get_the_content', 'sportspress_content_post_views' );
 
 function sportspress_widget_text( $content ) {
-	if ( ! preg_match( '/\[[\r\n\t ]*(countdown|league(_|-)table|events?(_|-)(calendar|list)|player(_|-)(list|gallery))?[\r\n\t ].*?\]/', $content ) )
+	if ( ! preg_match( '/\[[\r\n\t ]*(countdown|events?(_|-)(results|details|performance|calendar|list)|team(_|-)columns|league(_|-)table|player(_|-)(metrics|performance|list|gallery))?[\r\n\t ].*?\]/', $content ) )
 		return $content;
 
 	$content = do_shortcode( $content );
