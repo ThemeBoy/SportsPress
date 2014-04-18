@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta Boxes
- * @version     0.7
+ * @version     0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,6 +19,7 @@ class SP_Meta_Box_Team_Columns {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
+		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$leagues = get_the_terms( $post->ID, 'sp_league' );
 		$league_num = sizeof( $leagues );
 
