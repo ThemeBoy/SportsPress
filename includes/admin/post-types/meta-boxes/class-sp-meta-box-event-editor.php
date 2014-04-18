@@ -1,19 +1,19 @@
 <?php
 /**
- * List Description
+ * Event Editor
  *
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta Boxes
- * @version     0.7
+ * @version     0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * SP_Meta_Box_List_Description
+ * SP_Meta_Box_Event_Editor
  */
-class SP_Meta_Box_List_Description {
+class SP_Meta_Box_Event_Editor {
 
 	/**
 	 * Output the metabox
