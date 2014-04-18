@@ -21,6 +21,7 @@ class SP_Admin_Menus {
 	 * Hook in tabs.
 	 */
 	public function __construct() {
+		add_filter( 'admin_menu', array( $this, 'menu_clean' ), 5 );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 9 );
 		add_action( 'admin_menu', array( $this, 'status_menu' ), 60 );
 
@@ -75,8 +76,6 @@ class SP_Admin_Menus {
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_team', 'edit.php?post_type=sp_table' );
 		elseif ( $typenow == 'sp_list' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_list' );
-		elseif ( $typenow == 'sp_directory' )
-			$this->highlight_admin_menu( 'edit.php?post_type=sp_staff', 'edit.php?post_type=sp_directory' );
 
 		if ( isset( $submenu['sportspress'] ) && isset( $submenu['sportspress'][0] ) && isset( $submenu['sportspress'][0][0] ) ) {
 			$submenu['sportspress'][0][0] = __( 'Settings', 'sportspress' );
@@ -168,12 +167,6 @@ class SP_Admin_Menus {
 		// Swap our separator post type with a menu separator
 		if ( isset( $separator_position ) ):
 			$menu[ $separator_position ] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
-		endif;
-
-	    // Remove "Venues" and "Positions" links from Media submenu
-		if ( isset( $submenu['upload.php'] ) ):
-			$submenu['upload.php'] = array_filter( $submenu['upload.php'], array( $this, 'remove_venues' ) );
-			$submenu['upload.php'] = array_filter( $submenu['upload.php'], array( $this, 'remove_positions' ) );
 		endif;
 
 	    // Remove "Leagues" and "Seasons" links from Events submenu
