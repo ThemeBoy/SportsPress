@@ -16,16 +16,16 @@ class SP_Shortcodes {
 	public static function init() {
 		// Define shortcodes
 		$shortcodes = array(
-			'event'				=> __CLASS__ . '::event',
-			'countdown'      	=> __CLASS__ . '::countdown',
-			'event_list'     	=> __CLASS__ . '::event_list',
-			'event_calendar' 	=> __CLASS__ . '::event_calendar',
-//			'team'      		=> __CLASS__ . '::team',
-			'league_table'   	=> __CLASS__ . '::league_table',
-//			'player'      		=> __CLASS__ . '::player',
-			'player_list'    	=> __CLASS__ . '::player_list',
-			'player_gallery' 	=> __CLASS__ . '::player_gallery',
-//			'staff'      		=> __CLASS__ . '::staff',
+			'event_results'			=> __CLASS__ . '::event_results',
+			'event_details'			=> __CLASS__ . '::event_details',
+			'event_performance'		=> __CLASS__ . '::event_performance',
+			'countdown'      		=> __CLASS__ . '::countdown',
+			'event_list'     		=> __CLASS__ . '::event_list',
+			'event_calendar' 		=> __CLASS__ . '::event_calendar',
+			'league_table'   		=> __CLASS__ . '::league_table',
+			'player_metrics'		=> __CLASS__ . '::player_metrics',
+			'player_list'    		=> __CLASS__ . '::player_list',
+			'player_gallery' 		=> __CLASS__ . '::player_gallery',
 		);
 
 		foreach ( $shortcodes as $shortcode => $function ) {
@@ -62,14 +62,36 @@ class SP_Shortcodes {
 	}
 
 	/**
-	 * Event shortcode.
+	 * Event results shortcode.
 	 *
 	 * @access public
 	 * @param mixed $atts
 	 * @return string
 	 */
-	public static function event( $atts ) {
-		return self::shortcode_wrapper( array( 'SP_Shortcode_Event', 'output' ), $atts );
+	public static function event_results( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Results', 'output' ), $atts );
+	}
+
+	/**
+	 * Event details shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function event_details( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Details', 'output' ), $atts );
+	}
+
+	/**
+	 * Event performance shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function event_performance( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Performance', 'output' ), $atts );
 	}
 
 	/**
@@ -106,14 +128,14 @@ class SP_Shortcodes {
 	}
 
 	/**
-	 * Team shortcode.
+	 * Team columns shortcode.
 	 *
 	 * @access public
 	 * @param mixed $atts
 	 * @return string
 	 */
-	public static function team( $atts ) {
-		return self::shortcode_wrapper( array( 'SP_Shortcode_Team', 'output' ), $atts );
+	public static function team_columns( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Team_Columns', 'output' ), $atts );
 	}
 
 	/**
@@ -128,14 +150,14 @@ class SP_Shortcodes {
 	}
 
 	/**
-	 * Player shortcode.
+	 * Player performance shortcode.
 	 *
 	 * @access public
 	 * @param mixed $atts
 	 * @return string
 	 */
-	public static function player( $atts ) {
-		return self::shortcode_wrapper( array( 'SP_Shortcode_Player', 'output' ), $atts );
+	public static function player_performance( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Player_Performance', 'output' ), $atts );
 	}
 
 	/**

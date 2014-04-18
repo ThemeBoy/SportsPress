@@ -112,7 +112,7 @@ class SP_Post_types {
 			'hierarchical' => true,
 			'rewrite' => array( 'slug' => get_option( 'sportspress_venue_slug', 'venue' ) ),
 		);
-		$object_types = array( 'sp_event', 'sp_calendar', 'attachment' );
+		$object_types = array( 'sp_event', 'sp_calendar' );
 		register_taxonomy( 'sp_venue', $object_types, $args );
 		foreach ( $object_types as $object_type ):
 			register_taxonomy_for_object_type( 'sp_league', $object_type );
@@ -141,7 +141,7 @@ class SP_Post_types {
 			'hierarchical' => true,
 			'rewrite' => array( 'slug' => get_option( 'sportspress_position_slug', 'position' ) ),
 		);
-		$object_types = array( 'sp_player', 'sp_performance', 'sp_metric', 'attachment' );
+		$object_types = array( 'sp_player', 'sp_performance', 'sp_metric' );
 		register_taxonomy( 'sp_position', $object_types, $args );
 		foreach ( $object_types as $object_type ):
 			register_taxonomy_for_object_type( 'sp_league', $object_type );
@@ -417,7 +417,7 @@ class SP_Post_types {
 					'exclude_from_search' 	=> false,
 					'hierarchical' 			=> true,
 					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_teams_slug', 'teams' ) ),
-					'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
+					'supports' 				=> array( 'title', 'author', 'thumbnail', 'page-attributes' ),
 					'has_archive' 			=> true,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-shield-alt',
@@ -478,7 +478,7 @@ class SP_Post_types {
 					'exclude_from_search' 	=> false,
 					'hierarchical' 			=> false,
 					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_players_slug', 'players' ) ),
-					'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'page-attributes' ),
+					'supports' 				=> array( 'title', 'author', 'thumbnail', 'excerpt', 'page-attributes' ),
 					'has_archive' 			=> true,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-groups',

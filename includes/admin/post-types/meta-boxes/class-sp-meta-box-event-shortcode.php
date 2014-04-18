@@ -23,7 +23,18 @@ class SP_Meta_Box_Event_Shortcode {
 		<p class="howto">
 			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
 		</p>
-		<p><input type="text" value="[event <?php echo $post->ID; ?>]" readonly="readonly" class="wp-ui-text-highlight code"></p>
+		<p>
+			<strong><?php _e( 'Results', 'sportspress' ); ?></strong>
+		</p>
+		<p><input type="text" value="[event_results <?php echo $post->ID; ?>]" readonly="readonly" class="wp-ui-text-highlight code"></p>
+		<p>
+			<strong><?php _e( 'Details', 'sportspress' ); ?></strong>
+		</p>
+		<p><input type="text" value="[event_details <?php echo $post->ID; ?>]" readonly="readonly" class="wp-ui-text-highlight code"></p>
+		<p>
+			<strong><?php _e( 'Performance', 'sportspress' ); ?></strong>
+		</p>
+		<p><input type="text" value="[event_performance <?php echo $post->ID; ?>]" readonly="readonly" class="wp-ui-text-highlight code"></p>
 		<?php
 	}
 }
