@@ -7,7 +7,7 @@
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
- * Tested up to: 3.8
+ * Tested up to: 3.9
  *
  * Text Domain: sportspress
  * Domain Path: /languages/
@@ -119,6 +119,7 @@ final class SportsPress {
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 		add_action( 'widgets_init', array( $this, 'include_widgets' ) );
 		add_action( 'init', array( $this, 'init' ), 0 );
+		add_action( 'init', array( $this, 'include_template_functions' ) );
 		add_action( 'init', array( 'SP_Shortcodes', 'init' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup_environment' ) );
 
@@ -220,6 +221,7 @@ final class SportsPress {
 	 * Include required frontend files.
 	 */
 	public function frontend_includes() {
+		include_once( 'includes/class-sp-template-loader.php' );		// Template Loader
 		include_once( 'includes/class-sp-frontend-scripts.php' );		// Frontend Scripts
 		include_once( 'includes/class-sp-shortcodes.php' );				// Shortcodes class
 	}
@@ -298,7 +300,8 @@ final class SportsPress {
 		// Fit (Proportional)
 		add_image_size( 'sportspress-fit',  637, 637, false );
 		add_image_size( 'sportspress-fit-thumbnail',  303, 303, false );
-		add_image_size( 'sportspress-fit-icon',  32, 32, false );
+		add_image_size( 'sportspress-fit-icon',  128, 128, false );
+		add_image_size( 'sportspress-fit-mini',  32, 32, false );
 	}
 
 	/** Helper functions ******************************************************/

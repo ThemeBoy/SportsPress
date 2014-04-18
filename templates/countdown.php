@@ -1,4 +1,14 @@
 <?php
+/**
+ * Countdown
+ *
+ * @author 		ThemeBoy
+ * @package 	SportsPress/Templates
+ * @version     0.8
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 $defaults = array(
 	'id' => null,
 	'live' => get_option( 'sportspress_enable_live_countdowns', 'yes' ) == 'yes' ? true : false,

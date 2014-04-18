@@ -3,7 +3,7 @@ Contributors: ThemeBoy
 Tags: sports, press, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
-Tested up to: 3.8.2
+Tested up to: 3.9
 Stable tag: 0.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html

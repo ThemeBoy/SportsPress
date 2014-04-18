@@ -1,4 +1,14 @@
 <?php
+/**
+ * Event Calendar
+ *
+ * @author 		ThemeBoy
+ * @package 	SportsPress/Templates
+ * @version     0.8
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
 
 // Quick check. If we have no posts at all, abort!

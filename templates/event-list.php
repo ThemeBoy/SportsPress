@@ -1,4 +1,14 @@
 <?php
+/**
+ * Event List
+ *
+ * @author 		ThemeBoy
+ * @package 	SportsPress/Templates
+ * @version     0.8
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 $primary_result = get_option( 'sportspress_primary_result', null );
 
 $defaults = array(
