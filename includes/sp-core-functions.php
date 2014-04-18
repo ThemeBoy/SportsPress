@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     0.7
+ * @version     0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -16,6 +16,40 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 include( 'sp-conditional-functions.php' );
 include( 'sp-formatting-functions.php' );
 include( 'sp-deprecated-functions.php' );
+
+/**
+ * Get template part.
+ *
+ * @access public
+ * @param mixed $slug
+ * @param string $name (default: '')
+ * @return void
+ */
+function sp_get_template_part( $slug, $name = '' ) {
+	$template = '';
+
+	// Look in yourtheme/slug-name.php and yourtheme/sportspress/slug-name.php
+	if ( $name ) {
+		$template = locate_template( array( "{$slug}-{$name}.php", SP()->template_path() . "{$slug}-{$name}.php" ) );
+	}
+
+	// Get default slug-name.php
+	if ( ! $template && $name && file_exists( SP()->plugin_path() . "/templates/{$slug}-{$name}.php" ) ) {
+		$template = SP()->plugin_path() . "/templates/{$slug}-{$name}.php";
+	}
+
+	// If template file doesn't exist, look in yourtheme/slug.php and yourtheme/sportspress/slug.php
+	if ( ! $template ) {
+		$template = locate_template( array( "{$slug}.php", SP()->template_path() . "{$slug}.php" ) );
+	}
+
+	// Allow 3rd party plugin filter template file from their plugin
+	$template = apply_filters( 'sp_get_template_part', $template, $slug, $name );
+
+	if ( $template ) {
+		load_template( $template, false );
+	}
+}
 
 /**
  * Get templates passing attributes and including the file.
@@ -973,7 +1007,7 @@ if ( !function_exists( 'sp_edit_league_table' ) ) {
 							?>
 							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 								<td>
-									<?php if ( $show_team_logo ) echo get_the_post_thumbnail( $team_id, 'sportspress-fit-icon' ); ?>
+									<?php if ( $show_team_logo ) echo get_the_post_thumbnail( $team_id, 'sportspress-fit-mini' ); ?>
 									<span class="sp-default-value">
 										<span class="sp-default-value-input"><?php echo $default_name; ?></span>
 										<a class="dashicons dashicons-edit sp-edit" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>
@@ -5198,7 +5232,7 @@ function sp_get_sport_presets() {
 					),
 					array(
 						'post_title' => 'Yellow Cards',
-						'post_name'  => 'yellowcards',
+						'post_name'  => 'yellospards',
 						'meta'       => array(
 							'sp_calculate'     => 'total',
 						),

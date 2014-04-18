@@ -7,7 +7,260 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     0.7
+ * @version     0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+/**
+ * Output generator tag to aid debugging.
+ *
+ * @access public
+ * @return void
+ */
+function sp_generator_tag( $gen, $type ) {
+	switch ( $type ) {
+		case 'html':
+			$gen .= "\n" . '<meta name="generator" content="SportsPress ' . esc_attr( SP_VERSION ) . '">';
+			break;
+		case 'xhtml':
+			$gen .= "\n" . '<meta name="generator" content="SportsPress ' . esc_attr( SP_VERSION ) . '" />';
+			break;
+	}
+	return $gen;
+}
+
+/**
+ * Add body classes for SP pages
+ *
+ * @param  array $classes
+ * @return array
+ */
+function sp_body_class( $classes ) {
+	$classes = (array) $classes;
+
+	if ( is_sportspress() ) {
+		$classes[] = 'sportspress';
+		$classes[] = 'sportspress-page';
+	}
+
+	return array_unique( $classes );
+}
+
+/** Template pages ********************************************************/
+
+if ( ! function_exists( 'sportspress_taxonomy_archive_description' ) ) {
+
+	/**
+	 * Show an archive description on taxonomy archives
+	 *
+	 * @access public
+	 * @subpackage	Archives
+	 * @return void
+	 */
+	function sportspress_taxonomy_archive_description() {
+		echo 'test';
+		if ( is_tax( array( 'sp_season', 'sp_league', 'sp_venue', 'sp_position' ) ) && get_query_var( 'paged' ) == 0 ) {
+			$description = apply_filters( 'the_content', term_description() );
+			if ( $description ) {
+				echo '<div class="term-description">' . $description . '</div>';
+			}
+		}
+	}
+}
+
+/** Single Event ********************************************************/
+
+if ( ! function_exists( 'sportspress_output_event_video' ) ) {
+
+	/**
+	 * Output the event video.
+	 *
+	 * @access public
+	 * @subpackage	Event/Video
+	 * @return void
+	 */
+	function sportspress_output_event_video() {
+		sp_get_template( 'event-video.php' );
+	}
+}
+if ( ! function_exists( 'sportspress_output_event_results' ) ) {
+
+	/**
+	 * Output the event results.
+	 *
+	 * @access public
+	 * @subpackage	Event/Results
+	 * @return void
+	 */
+	function sportspress_output_event_results() {
+		sp_get_template( 'event-results.php' );
+	}
+}
+if ( ! function_exists( 'sportspress_output_event_details' ) ) {
+
+	/**
+	 * Output the event details.
+	 *
+	 * @access public
+	 * @subpackage	Event/Details
+	 * @return void
+	 */
+	function sportspress_output_event_details() {
+		sp_get_template( 'event-details.php' );
+	}
+}
+if ( ! function_exists( 'sportspress_output_event_venue' ) ) {
+
+	/**
+	 * Output the event venue.
+	 *
+	 * @access public
+	 * @subpackage	Event/Venue
+	 * @return void
+	 */
+	function sportspress_output_event_venue() {
+		sp_get_template( 'event-venue.php' );
+	}
+}
+if ( ! function_exists( 'sportspress_output_event_performance' ) ) {
+
+	/**
+	 * Output the event performance.
+	 *
+	 * @access public
+	 * @subpackage	Event/Performance
+	 * @return void
+	 */
+	function sportspress_output_event_performance() {
+		sp_get_template( 'event-performance.php' );
+	}
+}
+
+/** Single Calendar ********************************************************/
+
+if ( ! function_exists( 'sportspress_output_calendar' ) ) {
+
+	/**
+	 * Output the calendar.
+	 *
+	 * @access public
+	 * @subpackage	Calendar
+	 * @return void
+	 */
+	function sportspress_output_calendar() {
+        $id = get_the_ID();
+        $format = get_post_meta( $id, 'sp_format', true );
+        switch ( $format ):
+            case 'list':
+                sp_get_template( 'event-list.php', array( 'id' => $id ) );
+                break;
+            default:
+                sp_get_template( 'event-calendar.php', array( 'id' => $id ) );
+                break;
+            endswitch;
+	}
+}
+
+/** Single Team ********************************************************/
+
+if ( ! function_exists( 'sportspress_output_team_columns' ) ) {
+
+	/**
+	 * Output the team columns.
+	 *
+	 * @access public
+	 * @subpackage	Team/Columns
+	 * @return void
+	 */
+	function sportspress_output_team_columns() {
+		sp_get_template( 'team-columns.php' );
+	}
+}
+
+/** Single League Table ********************************************************/
+
+if ( ! function_exists( 'sportspress_output_league_table' ) ) {
+
+	/**
+	 * Output the team columns.
+	 *
+	 * @access public
+	 * @subpackage	Table
+	 * @return void
+	 */
+	function sportspress_output_league_table() {
+		sp_get_template( 'league-table.php' );
+	}
+}
+
+/** Single Player ********************************************************/
+
+if ( ! function_exists( 'sportspress_output_player_metrics' ) ) {
+
+	/**
+	 * Output the player metrics.
+	 *
+	 * @access public
+	 * @subpackage	Player/Metrics
+	 * @return void
+	 */
+	function sportspress_output_player_metrics() {
+		sp_get_template( 'player-metrics.php' );
+	}
+}
+if ( ! function_exists( 'sportspress_output_player_performance' ) ) {
+
+	/**
+	 * Output the player performance.
+	 *
+	 * @access public
+	 * @subpackage	Player/Performance
+	 * @return void
+	 */
+	function sportspress_output_player_performance() {
+		sp_get_template( 'player-performance.php' );
+	}
+}
+
+/** Single Player List ********************************************************/
+
+if ( ! function_exists( 'sportspress_output_player_list' ) ) {
+
+	/**
+	 * Output the player list.
+	 *
+	 * @access public
+	 * @subpackage	List
+	 * @return void
+	 */
+	function sportspress_output_player_list() {
+        $id = get_the_ID();
+        $format = get_post_meta( $id, 'sp_format', true );
+        switch ( $format ):
+            case 'gallery':
+                sp_get_template( 'player-gallery.php', array( 'id' => $id ) );
+                break;
+            default:
+                sp_get_template( 'player-list.php', array( 'id' => $id ) );
+                break;
+            endswitch;
+	}
+}
+
+/** Venue Archive ********************************************************/
+
+function sportspress_output_venue_map( $query ) {
+    if ( ! is_tax( 'sp_venue' ) )
+        return;
+
+    $slug = sp_array_value( $query->query, 'sp_venue', null );
+
+    if ( ! $slug )
+        return;
+
+    $venue = get_term_by( 'slug', $slug, 'sp_venue' );
+    $t_id = $venue->term_id;
+    $meta = get_option( "taxonomy_$t_id" );
+	sp_get_template( 'venue-map.php', array( 'meta' => $meta ) );
+}

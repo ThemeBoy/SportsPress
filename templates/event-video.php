@@ -1,4 +1,14 @@
 <?php
+/**
+ * Event Video
+ *
+ * @author 		ThemeBoy
+ * @package 	SportsPress/Templates
+ * @version     0.8
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 

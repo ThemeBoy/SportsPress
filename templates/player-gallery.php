@@ -1,4 +1,14 @@
 <?php
+/**
+ * Player Gallery
+ *
+ * @author 		ThemeBoy
+ * @package 	SportsPress/Templates
+ * @version     0.8
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 $defaults = array(
 	'id' => get_the_ID(),
 	'number' => -1,

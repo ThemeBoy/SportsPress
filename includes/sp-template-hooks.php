@@ -7,31 +7,77 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     0.7
+ * @version     0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-function sportspress_default_venue_content( $query ) {
-    if ( ! is_tax( 'sp_venue' ) )
-        return;
+add_filter( 'body_class', 'sp_body_class' );
 
-    $slug = sp_array_value( $query->query, 'sp_venue', null );
+/** 
+ * WP Header
+ *
+ * @see  sp_generator_tag()
+ */
+add_action( 'get_the_generator_html', 'sp_generator_tag', 10, 2 );
+add_action( 'get_the_generator_xhtml', 'sp_generator_tag', 10, 2 );
 
-    if ( ! $slug )
-        return;
+/**
+ * Single Event Content
+ *
+ * @see sportspress_output_event_video()
+ * @see sportspress_output_event_results()
+ * @see sportspress_output_event_details()
+ * @see sportspress_output_event_venue()
+ * @see sportspress_output_event_performance()
+ */
+add_action( 'sportspress_single_event_content', 'sportspress_output_event_video', 10 );
+add_action( 'sportspress_single_event_content', 'sportspress_output_event_results', 20 );
+add_action( 'sportspress_single_event_content', 'sportspress_output_event_details', 30 );
+add_action( 'sportspress_single_event_content', 'sportspress_output_event_venue', 40 );
+add_action( 'sportspress_single_event_content', 'sportspress_output_event_performance', 50 );
 
-    $venue = get_term_by( 'slug', $slug, 'sp_venue' );
-    $t_id = $venue->term_id;
-    $venue_meta = get_option( "taxonomy_$t_id" );
-    $address = sp_array_value( $venue_meta, 'sp_address', null );
-    $latitude = sp_array_value( $venue_meta, 'sp_latitude', null );
-    $longitude = sp_array_value( $venue_meta, 'sp_longitude', null );
+/**
+ * Single Calendar Content
+ *
+ * @see sportspress_output_calendar()
+ */
+add_action( 'sportspress_single_calendar_content', 'sportspress_output_calendar', 10 );
 
-    if ( $latitude != null && $longitude != null )
-        echo '<div class="sp-google-map sp-venue-map" data-address="' . $address . '" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '"></div>';
-}
-add_action( 'loop_start', 'sportspress_default_venue_content' );
+/**
+ * Single Team Content
+ *
+ * @see sportspress_output_team_columns()
+ */
+add_action( 'sportspress_single_team_content', 'sportspress_output_team_columns', 10 );
+
+/**
+ * Single Table Content
+ *
+ * @see sportspress_output_league_table()
+ */
+add_action( 'sportspress_single_table_content', 'sportspress_output_league_table', 10 );
+
+/**
+ * Single Player Content
+ *
+ * @see sportspress_output_player_metrics()
+ * @see sportspress_output_player_performance()
+ */
+add_action( 'sportspress_single_player_content', 'sportspress_output_player_metrics', 10 );
+add_action( 'sportspress_single_player_content', 'sportspress_output_player_performance', 20 );
+
+/**
+ * Single List Content
+ *
+ * @see sportspress_output_player_list()
+ */
+add_action( 'sportspress_single_list_content', 'sportspress_output_player_list', 10 );
+
+/**
+ * Venue Archive Content
+ */
+add_action( 'loop_start', 'sportspress_output_venue_map' );
 
 function sportspress_the_title( $title, $id ) {
 	if ( is_singular( 'sp_player' ) && in_the_loop() && $id == get_the_ID() ):
@@ -152,104 +198,16 @@ function sportspress_sanitize_title( $title ) {
 }
 add_filter( 'sanitize_title', 'sportspress_sanitize_title' );
 
-function sportspress_the_content( $content ) {
+function sportspress_content_post_views( $content ) {
     if ( is_single() || is_page() )
         sp_set_post_views( get_the_ID() );
     return $content;
 }
-add_filter( 'the_content', 'sportspress_the_content' );
-add_filter( 'get_the_content', 'sportspress_the_content' );
-
-function sportspress_default_event_content( $content ) {
-    if ( is_singular( 'sp_event' ) && in_the_loop() )
-        sp_get_template( 'event.php' );
-
-    return $content;
-}
-add_filter( 'the_content', 'sportspress_default_event_content', 7 );
-
-function sportspress_default_calendar_content( $content ) {
-    if ( is_singular( 'sp_calendar' ) && in_the_loop() ):
-        $id = get_the_ID();
-        $format = get_post_meta( $id, 'sp_format', true );
-        switch ( $format ):
-            case 'list':
-                sp_get_template( 'event-list.php', array(
-                    'id' => $id
-                ) );
-                break;
-            default:
-                sp_get_template( 'event-calendar.php', array(
-                    'id' => $id,
-                    'initial' => false
-                ) );
-                break;
-            endswitch;
-    endif;
-    return $content;
-}
-add_filter( 'the_content', 'sportspress_default_calendar_content' );
-
-function sportspress_default_team_content( $content ) {
-    if ( is_singular( 'sp_team' ) && in_the_loop() ):
-        sp_get_template( 'team-columns.php' );
-    endif;
-    return $content;
-}
-add_filter( 'the_content', 'sportspress_default_team_content' );
-
-function sportspress_default_table_content( $content ) {
-    if ( is_singular( 'sp_table' ) && in_the_loop() ):
-        $id = get_the_ID();
-        $leagues = get_the_terms( $id, 'sp_league' );
-        $seasons = get_the_terms( $id, 'sp_season' );
-        $terms = array();
-        if ( $leagues ):
-            $league = reset( $leagues );
-            $terms[] = $league->name;
-        endif;
-        if ( $seasons ):
-            $season = reset( $seasons );
-            $terms[] = $season->name;
-        endif;
-        $title = '';
-        if ( sizeof( $terms ) )
-            echo '<h4 class="sp-table-caption">' . implode( ' &mdash; ', $terms ) . '</h4>';
-
-        sp_get_template( 'league-table.php' );
-        $excerpt = has_excerpt() ? wpautop( get_the_excerpt() ) : '';
-        $content = $content . $excerpt;
-    endif;
-    return $content;
-}
-add_filter( 'the_content', 'sportspress_default_table_content' );
-
-function sportspress_default_player_content( $content ) {
-    if ( is_singular( 'sp_player' ) && in_the_loop() )
-        sp_get_template( 'player.php' );
-    return $content;
-}
-add_filter( 'the_content', 'sportspress_default_player_content' );
-
-function sportspress_default_list_content( $content ) {
-    if ( is_singular( 'sp_list' ) && in_the_loop() ):
-        $id = get_the_ID();
-        $format = get_post_meta( $id, 'sp_format', true );
-        switch ( $format ):
-            case 'gallery':
-                sp_get_template( 'player-gallery.php' );
-                break;
-            default:
-                sp_get_template( 'player-list.php' );
-                break;
-            endswitch;
-    endif;
-    return $content;
-}
-add_filter( 'the_content', 'sportspress_default_list_content' );
+add_filter( 'the_content', 'sportspress_content_post_views' );
+add_filter( 'get_the_content', 'sportspress_content_post_views' );
 
 function sportspress_widget_text( $content ) {
-	if ( ! preg_match( '/\[[\r\n\t ]*(countdown|league_table|event(s)_(calendar|list)|player_(list|gallery))?[\r\n\t ].*?\]/', $content ) )
+	if ( ! preg_match( '/\[[\r\n\t ]*(countdown|league(_|-)table|events?(_|-)(calendar|list)|player(_|-)(list|gallery))?[\r\n\t ].*?\]/', $content ) )
 		return $content;
 
 	$content = do_shortcode( $content );

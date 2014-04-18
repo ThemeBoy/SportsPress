@@ -1,4 +1,14 @@
 <?php
+/**
+ * Player League Performance
+ *
+ * @author 		ThemeBoy
+ * @package 	SportsPress/Templates
+ * @version     0.8
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 if ( ! isset( $league ) )
 	return false;
 

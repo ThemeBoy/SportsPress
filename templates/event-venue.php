@@ -1,4 +1,14 @@
 <?php
+/**
+ * Event Venue
+ *
+ * @author 		ThemeBoy
+ * @package 	SportsPress/Templates
+ * @version     0.8
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 
@@ -12,15 +22,15 @@ $link_venues = get_option( 'sportspress_event_link_venues', 'no' ) == 'yes' ? tr
 
 foreach( $venues as $venue ):
 	$t_id = $venue->term_id;
-	$term_meta = get_option( "taxonomy_$t_id" );
+	$meta = get_option( "taxonomy_$t_id" );
 
 	$name = $venue->name;
 	if ( $link_venues )
 		$name = '<a href="' . get_term_link( $t_id, 'sp_venue' ) . '">' . $name . '</a>';
 
-	$address = sp_array_value( $term_meta, 'sp_address', '' );
-	$latitude = sp_array_value( $term_meta, 'sp_latitude', 0 );
-	$longitude = sp_array_value( $term_meta, 'sp_longitude', 0 );
+	$address = sp_array_value( $meta, 'sp_address', '' );
+	$latitude = sp_array_value( $meta, 'sp_latitude', 0 );
+	$longitude = sp_array_value( $meta, 'sp_longitude', 0 );
 	?>
 	<h3><?php echo SP()->text->string('Venue', 'event'); ?></h3>
 	<table class="sp-data-table sp-event-venue">
@@ -36,7 +46,7 @@ foreach( $venues as $venue ):
 				</tr>
 				<?php if ( $show_maps && $latitude != null && $longitude != null ): ?>
 					<tr>
-						<td><div class="sp-google-map" data-address="<?php echo $address; ?>" data-latitude="<?php echo $latitude; ?>" data-longitude="<?php echo $longitude; ?>"></div></td>
+						<td><?php sp_get_template( 'venue-map.php', array( 'meta' => $meta ) ); ?></td>
 					</tr>
 				<?php endif; ?>
 			</tbody>
