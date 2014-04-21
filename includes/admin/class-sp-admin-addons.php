@@ -53,7 +53,7 @@ class SP_Admin_Addons {
 			}
 		}
 
-		include_once( 'views/html-admin-page-addons.php' );
+//		include_once( 'views/html-admin-page-addons.php' );
 	}
 }
 
