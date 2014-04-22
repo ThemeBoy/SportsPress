@@ -200,58 +200,31 @@ function viewport() {
 	}
 
 	function sp_unsplit_table(original) {
-	original.closest(".sp-responsive-table-wrapper").find(".sp-pinned-table").remove();
-	original.unwrap();
-	original.unwrap();
+		original.closest(".sp-responsive-table-wrapper").find(".sp-pinned-table").remove();
+		original.unwrap();
+		original.unwrap();
 	}
 
 	function sp_set_cell_heights(original, copy) {
-	var tr = original.find('tr'),
-	    tr_copy = copy.find('tr'),
-	    heights = [];
+		var tr = original.find('tr'),
+		    tr_copy = copy.find('tr'),
+		    heights = [];
 
-	tr.each(function (index) {
-	  var self = $(this),
-	      tx = self.find('th, td');
+		tr.each(function (index) {
+		  var self = $(this),
+		      tx = self.find('th, td');
 
-	  tx.each(function () {
-	    var height = $(this).outerHeight(true);
-	    heights[index] = heights[index] || 0;
-	    if (height > heights[index]) heights[index] = height;
-	  });
+		  tx.each(function () {
+		    var height = $(this).outerHeight(true);
+		    heights[index] = heights[index] || 0;
+		    if (height > heights[index]) heights[index] = height;
+		  });
 
-	});
+		});
 
-	tr_copy.each(function (index) {
-	  $(this).height(heights[index]);
-	});
-	}
-
-
-	/* Google Maps */
-	function initialize_google_maps() {
-		$maps = $('.sp-google-map');
-		$maps.each(function() {
-			$self = $(this);
-			address = $self.attr('data-address');
-			latitude = $self.attr('data-latitude');
-			longitude = $self.attr('data-longitude');
-			var ll = new google.maps.LatLng(latitude,longitude);
-			var mapOptions = {
-				scrollwheel: false,
-				zoom: 16,
-				center: ll
-			};
-			var map = new google.maps.Map($self[0], mapOptions)
-			var marker = new google.maps.Marker({
-				position: ll,
-				map: map,
-				animation: google.maps.Animation.DROP,
-				flat: true,
-				title: address
-			});
+		tr_copy.each(function (index) {
+		  $(this).height(heights[index]);
 		});
 	}
-	google.maps.event.addDomListener(window, "load", initialize_google_maps);
 
 })(jQuery);
