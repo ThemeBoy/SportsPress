@@ -67,7 +67,7 @@ extract( $defaults, EXTR_SKIP );
 
 				echo '<tr class="sp-row sp-post' . ( $i % 2 == 0 ? ' alternate' : '' ) . '">';
 
-					echo '<td class="data-date">' . get_post_time( get_option( 'date_format' ), false, $event ) . '</td>';
+					echo '<td class="data-date"><a href="' . get_permalink( $event->ID ) . '">' . get_post_time( get_option( 'date_format' ), false, $event ) . '</a></td>';
 
 					if ( $usecolumns == null || in_array( 'event', $usecolumns ) )
 						echo '<td class="data-event">' . $event->post_title . '</td>';
