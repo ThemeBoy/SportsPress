@@ -153,7 +153,7 @@ class SP_Admin_Welcome {
 				else
 					$message = __( 'Thanks for installing!', 'sportspress' );
 
-				printf( __( '%s SportsPress %s is more powerful, stable, and secure than ever before. We hope you enjoy it.', 'sportspress' ), $message, $major_version );
+				printf( __( '%s SportsPress %s has lots of refinements we think you&#8217;ll love.', 'sportspress' ), $message, $major_version );
 			?>
 		</div>
 
