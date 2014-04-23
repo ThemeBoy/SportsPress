@@ -1,6 +1,6 @@
 <?php
 /**
- * Player Metrics
+ * Player Details
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
@@ -45,7 +45,7 @@ if ( $past_teams ):
 endif;
 
 $output = '<div class="sp-list-wrapper">' .
-	'<dl class="sp-player-metrics">';
+	'<dl class="sp-player-details">';
 
 foreach( $data as $label => $value ):
 
@@ -55,4 +55,4 @@ endforeach;
 
 $output .= '</dl></div>';
 
-echo apply_filters( 'sportspress_player_metrics',  $output );
+echo apply_filters( 'sportspress_player_details',  $output );

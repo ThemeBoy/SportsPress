@@ -23,7 +23,6 @@ class SP_Shortcodes {
 			'event_list'     		=> __CLASS__ . '::event_list',
 			'event_calendar' 		=> __CLASS__ . '::event_calendar',
 			'league_table'   		=> __CLASS__ . '::league_table',
-			'player_metrics'		=> __CLASS__ . '::player_metrics',
 			'player_list'    		=> __CLASS__ . '::player_list',
 			'player_gallery' 		=> __CLASS__ . '::player_gallery',
 		);

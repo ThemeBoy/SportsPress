@@ -196,7 +196,7 @@ if ( ! function_exists( 'sportspress_output_league_table' ) ) {
 
 /** Single Player ********************************************************/
 
-if ( ! function_exists( 'sportspress_output_player_metrics' ) ) {
+if ( ! function_exists( 'sportspress_output_player_details' ) ) {
 
 	/**
 	 * Output the player metrics.
@@ -205,8 +205,8 @@ if ( ! function_exists( 'sportspress_output_player_metrics' ) ) {
 	 * @subpackage	Player/Metrics
 	 * @return void
 	 */
-	function sportspress_output_player_metrics() {
-		sp_get_template( 'player-metrics.php' );
+	function sportspress_output_player_details() {
+		sp_get_template( 'player-details.php' );
 	}
 }
 if ( ! function_exists( 'sportspress_output_player_performance' ) ) {

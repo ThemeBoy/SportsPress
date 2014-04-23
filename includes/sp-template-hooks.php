@@ -61,10 +61,10 @@ add_action( 'sportspress_single_table_content', 'sportspress_output_league_table
 /**
  * Single Player Content
  *
- * @see sportspress_output_player_metrics()
+ * @see sportspress_output_player_details()
  * @see sportspress_output_player_performance()
  */
-add_action( 'sportspress_single_player_content', 'sportspress_output_player_metrics', 10 );
+add_action( 'sportspress_single_player_content', 'sportspress_output_player_details', 10 );
 add_action( 'sportspress_single_player_content', 'sportspress_output_player_performance', 20 );
 
 /**
