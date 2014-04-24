@@ -32,22 +32,22 @@ extract( $defaults, EXTR_SKIP );
 				if ( isset( $columns ) )
 					$usecolumns = $columns;
 
-				echo '<th class="data-date">' . SP()->text->string('Date', 'event') . '</th>';
+				echo '<th class="data-date">' . SP()->text->string('Date') . '</th>';
 
 				if ( $usecolumns == null || in_array( 'event', $usecolumns ) )
-					echo '<th class="data-event">' . SP()->text->string('Event', 'event') . '</th>';
+					echo '<th class="data-event">' . SP()->text->string('Event') . '</th>';
 
 				if ( $usecolumns == null || in_array( 'teams', $usecolumns ) )
-					echo '<th class="data-teams">' . SP()->text->string('Teams', 'event') . '</th>';
+					echo '<th class="data-teams">' . SP()->text->string('Teams') . '</th>';
 
 				if ( $usecolumns == null || in_array( 'time', $usecolumns ) )
-					echo '<th class="data-time">' . SP()->text->string('Time', 'event') . '</th>';
+					echo '<th class="data-time">' . SP()->text->string('Time') . '</th>';
 
 				if ( $usecolumns == null || in_array( 'venue', $usecolumns ) )
-					echo '<th class="data-venue">' . SP()->text->string('Venue', 'event') . '</th>';
+					echo '<th class="data-venue">' . SP()->text->string('Venue') . '</th>';
 
 				if ( $usecolumns == null || in_array( 'article', $usecolumns ) )
-					echo '<th class="data-article">' . SP()->text->string('Article', 'event') . '</th>';
+					echo '<th class="data-article">' . SP()->text->string('Article') . '</th>';
 				?>
 			</tr>
 		</thead>
@@ -129,9 +129,9 @@ extract( $defaults, EXTR_SKIP );
 						endif;
 						if ( $event->post_content !== null ):
 							if ( $event->post_status == 'publish' ):
-								echo SP()->text->string('Recap', 'event');
+								echo SP()->text->string('Recap');
 							else:
-								echo SP()->text->string('Preview', 'event');
+								echo SP()->text->string('Preview');
 							endif;
 						endif;
 
@@ -148,6 +148,6 @@ extract( $defaults, EXTR_SKIP );
 	</table>
 	<?php
 	if ( $id && $show_all_events_link )
-		echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all events', 'event') . '</a>';
+		echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all events') . '</a>';
 	?>
 </div>

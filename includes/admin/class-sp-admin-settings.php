@@ -34,6 +34,7 @@ class SP_Admin_Settings {
 			$settings[] = include( 'settings/class-sp-settings-events.php' );
 			$settings[] = include( 'settings/class-sp-settings-teams.php' );
 			$settings[] = include( 'settings/class-sp-settings-players.php' );
+			$settings[] = include( 'settings/class-sp-settings-text.php' );
 			$settings[] = include( 'settings/class-sp-settings-config.php' );
 
 			self::$settings = apply_filters( 'sportspress_get_settings_pages', $settings );
