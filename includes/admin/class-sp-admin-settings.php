@@ -336,7 +336,7 @@ class SP_Admin_Settings {
 	                    		name="<?php echo esc_attr( $value['id'] ); ?><?php if ( $value['type'] == 'multiselect' ) echo '[]'; ?>"
 	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
 	                    		style="<?php echo esc_attr( $value['css'] ); ?>"
-	                    		class="<?php echo esc_attr( $value['class'] ); ?>"
+	                    		class="chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?> <?php echo esc_attr( $value['class'] ); ?>"
 	                    		<?php echo implode( ' ', $custom_attributes ); ?>
 	                    		<?php if ( $value['type'] == 'multiselect' ) echo 'multiple="multiple"'; ?>
 	                    		>
