@@ -737,19 +737,19 @@ if ( !function_exists( 'sp_equation_selector' ) ) {
 					$options[ __( 'Events', 'sportspress' ) ] = array( '$eventsplayed' => __( 'Played', 'sportspress' ) );
 					break;
 				case 'result':
-					$options[ __( 'Results', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_result', array( 'for' => '&rarr;', 'against' => '&larr;' ), null, false );
+					$options[ __( 'Team Results', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_result', array( 'for' => '&rarr;', 'against' => '&larr;' ), null, false );
 					break;
 				case 'outcome':
-					$options[ __( 'Outcomes', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_outcome', array() );
-					$options[ __( 'Outcomes', 'sportspress' ) ]['$streak'] = __( 'Streak', 'sportspress' );
-					$options[ __( 'Outcomes', 'sportspress' ) ]['$last5'] = __( 'Last 5', 'sportspress' );
-					$options[ __( 'Outcomes', 'sportspress' ) ]['$last10'] = __( 'Last 10', 'sportspress' );
+					$options[ __( 'Event Outcomes', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_outcome', array() );
+					$options[ __( 'Event Outcomes', 'sportspress' ) ]['$streak'] = __( 'Streak', 'sportspress' );
+					$options[ __( 'Event Outcomes', 'sportspress' ) ]['$last5'] = __( 'Last 5', 'sportspress' );
+					$options[ __( 'Event Outcomes', 'sportspress' ) ]['$last10'] = __( 'Last 10', 'sportspress' );
 					break;
 				case 'column':
-					$options[ __( 'Columns', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_column' );
+					$options[ __( 'Table Columns', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_column' );
 					break;
 				case 'performance':
-					$options[ __( 'Performance', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_performance' );
+					$options[ __( 'Player Performance', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_performance' );
 					break;
 			endswitch;
 		endforeach;
@@ -5289,7 +5289,7 @@ function sp_get_text_options() {
 			'event' => __( 'Event', 'sportspress' ),
 			'date' => __( 'Date', 'sportspress' ),
 			'time' => __( 'Time', 'sportspress' ),
-			'results' => __( 'Results', 'sportspress' ),
+			'results' => __( 'Team Results', 'sportspress' ),
 			'team' => __( 'Team', 'sportspress' ),
 			'teams' => __( 'Teams', 'sportspress' ),
 			'details' => __( 'Details', 'sportspress' ),
@@ -5327,9 +5327,9 @@ function sp_get_text_options() {
 function sp_is_config_type( $typenow = null ) {
 	if ( $typenow == null ) global $typenow;
 	
-	$post_types = array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric' );
+	$post_types = array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric', 'sp_statistic' );
 
-	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric' ) ) )
+	if ( in_array( $typenow, $post_types ) )
 		return true;
 	return false;
 }

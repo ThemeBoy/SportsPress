@@ -59,7 +59,7 @@ if ( empty( $table_rows ) ):
 
 else:
 
-	$output .= '<h3>' . SP()->text->string('Results', 'event') . '</h3>';
+	$output .= '<h3>' . SP()->text->string('Team Results', 'event') . '</h3>';
 
 	$output .= '<div class="sp-table-wrapper">' .
 		'<table class="sp-event-results sp-data-table sp-responsive-table"><thead>' .
