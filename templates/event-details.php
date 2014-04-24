@@ -17,7 +17,7 @@ $time = get_the_time( get_option('time_format'), $id );
 $leagues = get_the_terms( $id, 'sp_league' );
 $seasons = get_the_terms( $id, 'sp_season' );
 
-$data = array( SP()->text->string('Date', 'event') => $date, SP()->text->string('Time', 'event') => $time );
+$data = array( SP()->text->string('Date') => $date, SP()->text->string('Time') => $time );
 
 if ( $leagues ):
 	$league = array_pop( $leagues );
@@ -29,7 +29,7 @@ if ( $seasons ):
 	$data[ SP()->text->string('Season') ] = $season->name;
 endif;
 ?>
-<h3><?php echo SP()->text->string('Details', 'event'); ?></h3>
+<h3><?php echo SP()->text->string('Details'); ?></h3>
 <div class="sp-table-wrapper">
 	<table class="sp-event-details sp-data-table">
 		<thead>

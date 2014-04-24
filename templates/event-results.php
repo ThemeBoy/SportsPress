@@ -59,11 +59,11 @@ if ( empty( $table_rows ) ):
 
 else:
 
-	$output .= '<h3>' . SP()->text->string('Team Results', 'event') . '</h3>';
+	$output .= '<h3>' . SP()->text->string('Team Results') . '</h3>';
 
 	$output .= '<div class="sp-table-wrapper">' .
 		'<table class="sp-event-results sp-data-table sp-responsive-table"><thead>' .
-		'<th class="data-name">' . SP()->text->string('Team', 'event') . '</th>';
+		'<th class="data-name">' . SP()->text->string('Team') . '</th>';
 	foreach( $result_labels as $key => $label ):
 		$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 	endforeach;

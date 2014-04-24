@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.7
+ * @version     0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -41,19 +41,10 @@ class SP_Settings_Config extends SP_Settings_Page {
 	 * @return array
 	 */
 	public function get_settings() {
-		$sports = sp_get_sport_options();
 
 		return apply_filters('sportspress_event_settings', array(
 
 			array( 'title' => __( 'Configure SportsPress', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'config_options' ),
-
-			array(
-				'title'     => __( 'Sport', 'sportspress' ),
-				'id'        => 'sportspress_sport',
-				'default'   => 'soccer',
-				'type'      => 'select',
-				'options'   => $sports,
-			),
 			
 			array( 'type' => 'outcomes' ),
 			
@@ -76,11 +67,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 	 * Save settings
 	 */
 	public function save() {
-		if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
-			$sport = SP()->sports->$_POST['sportspress_sport'];
-			SP_Admin_Settings::configure_sport( $sport );
-    		update_option( '_sp_needs_welcome', 0 );
-		elseif ( isset( $_POST['sportspress_primary_result'] ) ):
+		if ( isset( $_POST['sportspress_primary_result'] ) ):
 	    	update_option( 'sportspress_primary_result', $_POST['sportspress_primary_result'] );
 		endif;
 
@@ -114,7 +101,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 					<thead>
 						<tr>
 							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-							<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 							<th scope="col" class="edit"></th>
 						</tr>
 					</thead>
@@ -169,7 +156,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 							<tr>
 								<th scope="col"><?php _e( 'Primary', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
 							</tr>
 						</thead>
@@ -237,7 +224,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 					<thead>
 						<tr>
 							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-							<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 							<th scope="col" class="edit"></th>
 						</tr>
 					</thead>
@@ -287,7 +274,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 					<thead>
 						<tr>
 							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-							<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Sort Order', 'sportspress' ); ?></th>
@@ -344,7 +331,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 					<thead>
 						<tr>
 							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-							<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 							<th scope="col">&nbsp;</th>
 							<th scope="col" class="edit"></th>
 						</tr>
@@ -396,7 +383,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 					<thead>
 						<tr>
 							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-							<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
 							<th scope="col" class="edit"></th>

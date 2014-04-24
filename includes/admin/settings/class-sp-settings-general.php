@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.7
+ * @version     0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -39,12 +39,21 @@ class SP_Settings_General extends SP_Settings_Page {
 	 * @return array
 	 */
 	public function get_settings() {
+		$sports = sp_get_sport_options();
 
-		$settings = array(
+		return apply_filters( 'sportspress_general_settings', array(
 
 			array( 'title' => __( 'General Options', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'general_options' ),
 			
 			array( 'type' => 'country' ),
+
+			array(
+				'title'     => __( 'Sport', 'sportspress' ),
+				'id'        => 'sportspress_sport',
+				'default'   => 'soccer',
+				'type'      => 'select',
+				'options'   => $sports,
+			),
 
 			array( 'type' => 'sectionend', 'id' => 'general_options' ),
 
@@ -89,25 +98,7 @@ class SP_Settings_General extends SP_Settings_Page {
 
 			array( 'type' => 'sectionend', 'id' => 'script_styling_options' ),
 
-			array( 'title' => __( 'Text', 'sportspress' ), 'type' => 'title', 'desc' => __( 'The following options affect how words are displayed on the frontend.', 'sportspress' ), 'id' => 'text_options' ),
-
-		);
-
-		$strings = sp_get_text_options();
-
-		foreach ( sp_array_value( $strings, 'general', array() ) as $key => $value ):
-			$settings[] = array(
-				'title'   		=> $value,
-				'id'      		=> 'sportspress_' . $key . '_text',
-				'default' 		=> '',
-				'placeholder' 	=> $value,
-				'type'    		=> 'text',
-			);
-		endforeach;
-
-		$settings[] = array( 'type' => 'sectionend', 'id' => 'text_options' );
-
-		return apply_filters( 'sportspress_general_settings', $settings ); // End general settings
+		)); // End general settings
 	}
 
 	/**
@@ -117,9 +108,8 @@ class SP_Settings_General extends SP_Settings_Page {
 		if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
 			$sport = SP()->sports->$_POST['sportspress_sport'];
 			SP_Admin_Settings::configure_sport( $sport );
-			update_option( 'sportspress_sport', $_POST['sportspress_sport'] );
     		update_option( '_sp_needs_welcome', 0 );
-    	endif;
+		endif;
 
 		$settings = $this->get_settings();
 		SP_Admin_Settings::save_fields( $settings );

@@ -53,7 +53,7 @@ endif;
 if ( in_array( $orderby, array( 'number', 'name' ) ) ):
 	$output .= '<th class="data-number">#</th>';
 else:
-	$output .= '<th class="data-rank">' . SP()->text->string('Rank', 'player') . '</th>';
+	$output .= '<th class="data-rank">' . SP()->text->string('Rank') . '</th>';
 endif;
 
 foreach( $labels as $key => $label ):
@@ -106,6 +106,6 @@ endforeach;
 $output .= '</tbody>' . '</table>' . '</div>';
 
 if ( $show_all_players_link )
-	$output .= '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all players', 'player') . '</a>';
+	$output .= '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all players') . '</a>';
 
 echo apply_filters( 'sportspress_player_list',  $output );

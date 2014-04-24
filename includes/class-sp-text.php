@@ -5,7 +5,7 @@
  * The SportsPress text class stores editable strings.
  *
  * @class 		SP_Text
- * @version		0.7
+ * @version		0.8
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -33,18 +33,15 @@ class SP_Text {
 		$this->data[ $key ] = $value;
 	}
 
-	public function string( $string, $context = null ){
+	public function string( $string ){
 		if ( is_admin() )
 			return $string;
 		
 		$key = str_replace( '-', '_', sanitize_title( $string ) );
 
-		if ( $context == null )
-			$context = 'general';
-
-		if ( array_key_exists( $context, $this->data ) && array_key_exists( $key, $this->data[ $context ] ) ):
-			$string = get_option( 'sportspress_' . ( $context == 'general' ? '' : $context . '_' ) . $key . '_text' );
-			return ( empty( $string ) ? $this->data[ $context ][ $key ] : $string );
+		if ( array_key_exists( $key, $this->data ) ):
+			$string = get_option( 'sportspress_' . $key . '_text' );
+			return ( empty( $string ) ? $this->data[ $key ] : $string );
 		else:
 			return $string;
 		endif;

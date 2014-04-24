@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.7
+ * @version     0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -37,9 +37,9 @@ class SP_Settings_Events extends SP_Settings_Page {
 	 */
 	public function get_settings() {
 
-		$settings = array(
+		return apply_filters( 'sportspress_event_settings', array(
 
-			array(	'title' => __( 'Event Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'event_options' ),
+			array( 'title' => __( 'Event Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'event_options' ),
 			
 			array( 'type' => 'delimiter' ),
 
@@ -95,25 +95,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 			array( 'type' => 'sectionend', 'id' => 'calendar_options' ),
 
-			array( 'title' => __( 'Text', 'sportspress' ), 'type' => 'title', 'desc' => __( 'The following options affect how words are displayed on the frontend.', 'sportspress' ), 'id' => 'text_options' ),
-
-		);
-
-		$strings = sp_get_text_options();
-
-		foreach ( sp_array_value( $strings, 'event', array() ) as $key => $value ):
-			$settings[] = array(
-				'title'   => $value,
-				'id'      => 'sportspress_event_' . $key . '_text',
-				'default' => '',
-				'placeholder' => $value,
-				'type'    => 'text',
-			);
-		endforeach;
-
-		$settings[] = array( 'type' => 'sectionend', 'id' => 'text_options' );
-
-		return apply_filters( 'sportspress_event_settings', $settings ); // End event settings
+		)); // End event settings
 	}
 
 	/**

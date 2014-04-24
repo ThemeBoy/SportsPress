@@ -220,7 +220,7 @@ class SP_Admin_Welcome {
 					        		<?php SP()->countries->country_dropdown_options( $selected ); ?>
 					        	</select>
 					        </p>
-							<h4><?php printf( __( 'Select %s', 'sportspress' ), __( 'Sport', 'sportspress' ) ); ?></h4>
+							<h4><?php _e( 'Sport', 'sportspress' ); ?></h4>
 							<?php
 							$sport_options = sp_get_sport_options();
 							$class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
