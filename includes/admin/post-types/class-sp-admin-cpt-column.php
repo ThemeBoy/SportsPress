@@ -41,7 +41,7 @@ class SP_Admin_CPT_Column extends SP_Admin_CPT {
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Label', 'sportspress' ),
-			'sp_key' => __( 'Key', 'sportspress' ),
+			'sp_variable' => __( 'Variable', 'sportspress' ),
 			'sp_equation' => __( 'Equation', 'sportspress' ),
 			'sp_precision' => __( 'Rounding', 'sportspress' ),
 			'sp_order' => __( 'Sort Order', 'sportspress' ),
@@ -55,7 +55,7 @@ class SP_Admin_CPT_Column extends SP_Admin_CPT {
 	 */
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
-			case 'sp_key':
+			case 'sp_variable':
 				global $post;
 				echo $post->post_name;
 			break;

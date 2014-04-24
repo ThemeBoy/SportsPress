@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin functions for the performance post type
+ * Admin functions for the statistics post type
  *
  * @author 		ThemeBoy
  * @category 	Admin
@@ -13,22 +13,22 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'SP_Admin_CPT' ) )
 	include( 'class-sp-admin-cpt.php' );
 
-if ( ! class_exists( 'SP_Admin_CPT_Performance' ) ) :
+if ( ! class_exists( 'SP_Admin_CPT_Statistic' ) ) :
 
 /**
- * SP_Admin_CPT_Performance Class
+ * SP_Admin_CPT_Statistic Class
  */
-class SP_Admin_CPT_Performance extends SP_Admin_CPT {
+class SP_Admin_CPT_Statistic extends SP_Admin_CPT {
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->type = 'sp_performance';
+		$this->type = 'sp_statistic';
 
 		// Admin Columns
-		add_filter( 'manage_edit-sp_performance_columns', array( $this, 'edit_columns' ) );
-		add_action( 'manage_sp_performance_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
+		add_filter( 'manage_edit-sp_statistic_columns', array( $this, 'edit_columns' ) );
+		add_action( 'manage_sp_statistic_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
 		
 		// Call SP_Admin_CPT constructor
 		parent::__construct();
@@ -42,6 +42,8 @@ class SP_Admin_CPT_Performance extends SP_Admin_CPT {
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Label', 'sportspress' ),
 			'sp_variable' => __( 'Variable', 'sportspress' ),
+			'sp_equation' => __( 'Equation', 'sportspress' ),
+			'sp_precision' => __( 'Rounding', 'sportspress' ),
 		);
 		return $columns;
 	}
@@ -56,10 +58,16 @@ class SP_Admin_CPT_Performance extends SP_Admin_CPT {
 				global $post;
 				echo $post->post_name;
 			break;
+			case 'sp_equation':
+				echo sp_get_post_equation( $post_id );
+			break;
+			case 'sp_precision':
+				echo sp_get_post_precision( $post_id );
+			break;
 		endswitch;
 	}
 }
 
 endif;
 
-return new SP_Admin_CPT_Performance();
+return new SP_Admin_CPT_Statistic();
