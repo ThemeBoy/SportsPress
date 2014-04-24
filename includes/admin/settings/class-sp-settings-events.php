@@ -61,7 +61,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
-				'title'     => __( 'Performance', 'sportspress' ),
+				'title'     => __( 'Player Performance', 'sportspress' ),
 				'desc' 		=> __( 'Link players', 'sportspress' ),
 				'id' 		=> 'sportspress_event_link_players',
 				'default'	=> 'yes',

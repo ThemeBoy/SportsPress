@@ -141,7 +141,7 @@ class SP_Post_types {
 			'hierarchical' => true,
 			'rewrite' => array( 'slug' => get_option( 'sportspress_position_slug', 'position' ) ),
 		);
-		$object_types = array( 'sp_player', 'sp_performance', 'sp_metric' );
+		$object_types = array( 'sp_player' );
 		register_taxonomy( 'sp_position', $object_types, $args );
 		foreach ( $object_types as $object_type ):
 			register_taxonomy_for_object_type( 'sp_league', $object_type );
@@ -158,7 +158,7 @@ class SP_Post_types {
 			apply_filters( 'sportspress_register_post_type_result',
 				array(
 					'labels' => array(
-						'name' 					=> __( 'Results', 'sportspress' ),
+						'name' 					=> __( 'Team Results', 'sportspress' ),
 						'singular_name' 		=> __( 'Result', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Result', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Result', 'sportspress' ),
@@ -188,7 +188,7 @@ class SP_Post_types {
 			apply_filters( 'sportspress_register_post_type_outcome',
 				array(
 					'labels' => array(
-						'name' 					=> __( 'Outcomes', 'sportspress' ),
+						'name' 					=> __( 'Event Outcomes', 'sportspress' ),
 						'singular_name' 		=> __( 'Outcome', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Outcome', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Outcome', 'sportspress' ),
@@ -218,40 +218,10 @@ class SP_Post_types {
 			apply_filters( 'sportspress_register_post_type_column',
 				array(
 					'labels' => array(
-						'name' 					=> __( 'Columns', 'sportspress' ),
+						'name' 					=> __( 'Table Columns', 'sportspress' ),
 						'singular_name' 		=> __( 'Column', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Column', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Column', 'sportspress' ),
-						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View', 'sportspress' ),
-						'search_items' 			=> __( 'Search', 'sportspress' ),
-						'not_found' 			=> __( 'No results found.', 'sportspress' ),
-						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
-					),
-					'public' 				=> false,
-					'show_ui' 				=> true,
-					'capability_type' 		=> 'sp_config',
-					'map_meta_cap' 			=> true,
-					'publicly_queryable' 	=> false,
-					'exclude_from_search' 	=> true,
-					'hierarchical' 			=> false,
-					'supports' 				=> array( 'title', 'page-attributes' ),
-					'has_archive' 			=> false,
-					'show_in_nav_menus' 	=> false,
-					'can_export' 			=> false,
-					'show_in_menu' => false,
-				)
-			)
-		);
-
-		register_post_type( 'sp_performance',
-			apply_filters( 'sportspress_register_post_type_performance',
-				array(
-					'labels' => array(
-						'name' 					=> __( 'Performance', 'sportspress' ),
-						'singular_name' 		=> __( 'Performance', 'sportspress' ),
-						'add_new_item' 			=> __( 'Add New Performance', 'sportspress' ),
-						'edit_item' 			=> __( 'Edit Performance', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
 						'view_item' 			=> __( 'View', 'sportspress' ),
 						'search_items' 			=> __( 'Search', 'sportspress' ),
@@ -278,10 +248,40 @@ class SP_Post_types {
 			apply_filters( 'sportspress_register_post_type_metric',
 				array(
 					'labels' => array(
-						'name' 					=> __( 'Metrics', 'sportspress' ),
+						'name' 					=> __( 'Player Metrics', 'sportspress' ),
 						'singular_name' 		=> __( 'Metric', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Metric', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Metric', 'sportspress' ),
+						'new_item' 				=> __( 'New', 'sportspress' ),
+						'view_item' 			=> __( 'View', 'sportspress' ),
+						'search_items' 			=> __( 'Search', 'sportspress' ),
+						'not_found' 			=> __( 'No results found.', 'sportspress' ),
+						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
+					),
+					'public' 				=> false,
+					'show_ui' 				=> true,
+					'capability_type' 		=> 'sp_config',
+					'map_meta_cap' 			=> true,
+					'publicly_queryable' 	=> false,
+					'exclude_from_search' 	=> true,
+					'hierarchical' 			=> false,
+					'supports' 				=> array( 'title', 'page-attributes' ),
+					'has_archive' 			=> false,
+					'show_in_nav_menus' 	=> false,
+					'can_export' 			=> false,
+					'show_in_menu' => false,
+				)
+			)
+		);
+
+		register_post_type( 'sp_performance',
+			apply_filters( 'sportspress_register_post_type_performance',
+				array(
+					'labels' => array(
+						'name' 					=> __( 'Player Performance', 'sportspress' ),
+						'singular_name' 		=> __( 'Player Performance', 'sportspress' ),
+						'add_new_item' 			=> __( 'Add New Performance', 'sportspress' ),
+						'edit_item' 			=> __( 'Edit Performance', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
 						'view_item' 			=> __( 'View', 'sportspress' ),
 						'search_items' 			=> __( 'Search', 'sportspress' ),
@@ -308,7 +308,7 @@ class SP_Post_types {
 			apply_filters( 'sportspress_register_post_type_statistic',
 				array(
 					'labels' => array(
-						'name' 					=> __( 'Statistics', 'sportspress' ),
+						'name' 					=> __( 'Player Statistics', 'sportspress' ),
 						'singular_name' 		=> __( 'Statistic', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Statistic', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Statistic', 'sportspress' ),
