@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post Types
- * @version     0.7
+ * @version     0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -41,8 +41,7 @@ class SP_Admin_CPT_Metric extends SP_Admin_CPT {
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Label', 'sportspress' ),
-			'sp_key' => __( 'Key', 'sportspress' ),
-			'sp_position' => __( 'Positions', 'sportspress' ),
+			'sp_variable' => __( 'Variable', 'sportspress' ),
 		);
 		return $columns;
 	}
@@ -53,8 +52,9 @@ class SP_Admin_CPT_Metric extends SP_Admin_CPT {
 	 */
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
-			case 'sp_position':
-				echo get_the_terms( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '&mdash;';
+			case 'sp_variable':
+				global $post;
+				echo $post->post_name;
 			break;
 		endswitch;
 	}

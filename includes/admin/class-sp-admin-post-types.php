@@ -35,7 +35,7 @@ class SP_Admin_Post_Types {
 		include( 'post-types/class-sp-admin-cpt-performance.php' );
 		include( 'post-types/class-sp-admin-cpt-column.php' );
 		include( 'post-types/class-sp-admin-cpt-metric.php' );
-		//include( 'post-types/class-sp-admin-cpt-statistic.php' );
+		include( 'post-types/class-sp-admin-cpt-statistic.php' );
 		include( 'post-types/class-sp-admin-cpt-event.php' );
 		include( 'post-types/class-sp-admin-cpt-calendar.php' );
 		include( 'post-types/class-sp-admin-cpt-team.php' );

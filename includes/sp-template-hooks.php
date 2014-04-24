@@ -104,7 +104,7 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 		if ( sp_is_config_type( $typenow ) ):
 			switch ( $untranslated_text ):
 			case 'Slug':
-				$translated_text = __( 'Key', 'sportspress' );
+				$translated_text = __( 'Variable', 'sportspress' );
 				break;
 			endswitch;
 		endif;
@@ -178,11 +178,11 @@ function sportspress_sanitize_title( $title ) {
 
 		return $title;
 	
-	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && in_array( $_POST['post_type'], array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric' ) ) ):
+	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && sp_is_config_type( $_POST['post_type'] ) ):
 
-		$key = isset( $_POST['sp_key'] ) ? $_POST['sp_key'] : null;
+		$key = isset( $_POST['sp_variable'] ) ? $_POST['sp_variable'] : null;
 
-		if ( ! $key ) $key = isset( $_POST['post_name'] ) ? $_POST['post_name'] : null;
+		if ( ! $key ) $key = isset( $_POST['sp_default_variable'] ) ? $_POST['sp_default_variable'] : null;
 
 		if ( ! $key ) $key = $_POST['post_title'];
 

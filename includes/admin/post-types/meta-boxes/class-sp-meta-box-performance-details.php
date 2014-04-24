@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta Boxes
- * @version     0.7.3
+ * @version     0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -22,13 +22,10 @@ class SP_Meta_Box_Performance_Details {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$calculate = get_post_meta( $post->ID, 'sp_calculate', true );
 		?>
-		<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
-			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
-		</p>
-		<p><strong><?php _e( 'Calculate', 'sportspress' ); ?></strong></p>
-		<p class="sp-calculate-selector">
-			<?php sp_calculate_selector( $post->ID, $calculate ); ?>
+			<input name="sp_default_variable" type="hidden" id="sp_default_variable" value="<?php echo $post->post_name; ?>">
+			<input name="sp_variable" type="text" id="sp_variable" value="<?php echo $post->post_name; ?>">
 		</p>
 		<?php
 	}
@@ -38,6 +35,5 @@ class SP_Meta_Box_Performance_Details {
 	 */
 	public static function save( $post_id, $post ) {
 		sp_delete_duplicate_post( $_POST );
-		update_post_meta( $post_id, 'sp_calculate', sp_array_value( $_POST, 'sp_calculate', 'DESC' ) );
 	}
 }

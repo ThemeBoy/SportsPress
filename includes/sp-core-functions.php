@@ -350,9 +350,9 @@ if ( !function_exists( 'sp_get_post_equation' ) ) {
 		$equation = get_post_meta ( $post_id, 'sp_equation', true );
 		if ( $equation ):
 			return str_replace(
-				array( '$', '+', '-', '*', '/' ),
-				array( '&Sigma; ', '&plus;', '&minus;', '&times;', '&divide' ),
-				$equation
+				array( '/', '(', ')', '+', '-', '*', '$' ),
+				array( '<code>&divide;</code>', '<code>(</code>', '<code>)</code>', '<code>&plus;</code>', '<code>&minus;</code>', '<code>&times;</code>', '' ),
+				trim( $equation )
 			);
 		else:
 			return '&mdash;';
@@ -737,19 +737,19 @@ if ( !function_exists( 'sp_equation_selector' ) ) {
 					$options[ __( 'Events', 'sportspress' ) ] = array( '$eventsplayed' => __( 'Played', 'sportspress' ) );
 					break;
 				case 'result':
-					$options[ __( 'Team Results', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_result', array( 'for' => '&rarr;', 'against' => '&larr;' ), null, false );
+					$options[ __( 'Results', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_result', array( 'for' => '&rarr;', 'against' => '&larr;' ), null, false );
 					break;
 				case 'outcome':
-					$options[ __( 'Event Outcomes', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_outcome', array() );
-					$options[ __( 'Event Outcomes', 'sportspress' ) ]['$streak'] = __( 'Streak', 'sportspress' );
-					$options[ __( 'Event Outcomes', 'sportspress' ) ]['$last5'] = __( 'Last 5', 'sportspress' );
-					$options[ __( 'Event Outcomes', 'sportspress' ) ]['$last10'] = __( 'Last 10', 'sportspress' );
-					break;
-				case 'column':
-					$options[ __( 'Table Columns', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_column' );
+					$options[ __( 'Outcomes', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_outcome', array() );
+					$options[ __( 'Outcomes', 'sportspress' ) ]['$streak'] = __( 'Streak', 'sportspress' );
+					$options[ __( 'Outcomes', 'sportspress' ) ]['$last5'] = __( 'Last 5', 'sportspress' );
+					$options[ __( 'Outcomes', 'sportspress' ) ]['$last10'] = __( 'Last 10', 'sportspress' );
 					break;
 				case 'performance':
-					$options[ __( 'Player Performance', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_performance' );
+					$options[ __( 'Performance', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_performance' );
+					break;
+				case 'metric':
+					$options[ __( 'Metric', 'sportspress' ) ] = sp_get_equation_optgroup_array( $postid, 'sp_metric' );
 					break;
 			endswitch;
 		endforeach;
@@ -2187,7 +2187,7 @@ if ( !function_exists( 'sp_get_league_table_data' ) ) {
 					unset( $columns[ $key ] );
 				endif;
 			endforeach;
-			$labels = array_merge( array( 'name' => SP()->text->string('Team', 'team') ), $columns );
+			$labels = array_merge( array( 'name' => SP()->text->string('Team') ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;
@@ -2373,7 +2373,7 @@ if ( !function_exists( 'sp_get_player_list_data' ) ) {
 		);
 		$performances = get_posts( $args );
 
-		$columns = array( 'eventsplayed' => SP()->text->string('Played', 'player') );
+		$columns = array( 'eventsplayed' => SP()->text->string('Played') );
 
 		foreach ( $performances as $performance ):
 
@@ -2476,7 +2476,7 @@ if ( !function_exists( 'sp_get_player_list_data' ) ) {
 					unset( $columns[ $key ] );
 				endif;
 			endforeach;
-			$labels = array_merge( array( 'name' => SP()->text->string('Player', 'player') ), $columns );
+			$labels = array_merge( array( 'name' => SP()->text->string('Player') ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;
@@ -2639,7 +2639,7 @@ if ( !function_exists( 'sp_get_player_roster_data' ) ) {
 		);
 		$performances = get_posts( $args );
 
-		$columns = array( 'eventsplayed' => SP()->text->string('Played', 'player') );
+		$columns = array( 'eventsplayed' => SP()->text->string('Played') );
 
 		foreach ( $performances as $performance ):
 
@@ -2735,7 +2735,7 @@ if ( !function_exists( 'sp_get_player_roster_data' ) ) {
 		if ( $admin ):
 			return array( $columns, $data, $placeholders, $merged );
 		else:
-			$labels = array_merge( array( 'name' => SP()->text->string('Player', 'player') ), $columns );
+			$labels = array_merge( array( 'name' => SP()->text->string('Player') ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;
@@ -2841,7 +2841,7 @@ if ( !function_exists( 'sp_get_player_performance_data' ) ) {
 			$performance_labels[ $performance->post_name ] = $performance->post_title;
 			$equations[ $performance->post_name ] = get_post_meta( $performance->ID, 'sp_calculate', true );
 		endforeach;
-		$columns = array_merge( array( 'eventsplayed' => SP()->text->string('Played', 'player') ), $performance_labels );
+		$columns = array_merge( array( 'eventsplayed' => SP()->text->string('Played') ), $performance_labels );
 
 		// Generate array of all season ids and season names
 		$div_ids = array();
@@ -2976,7 +2976,7 @@ if ( !function_exists( 'sp_get_player_performance_data' ) ) {
 		if ( $admin ):
 			return array( $columns, $tempdata, $placeholders, $merged, $seasons_teams );
 		else:
-			$labels = array_merge( array( 'name' => SP()->text->string('Season'), 'team' => SP()->text->string('Team', 'player'), 'eventsplayed' => SP()->text->string('Played', 'player') ), $columns );
+			$labels = array_merge( array( 'name' => SP()->text->string('Season'), 'team' => SP()->text->string('Team'), 'eventsplayed' => SP()->text->string('Played') ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;
@@ -3003,7 +3003,7 @@ if ( !function_exists( 'sp_delete_duplicate_post' ) ) {
 	function sp_delete_duplicate_post( &$post ) {
 		global $wpdb;
 
-		$key = isset( $post['sp_key'] ) ? $post['sp_key'] : null;
+		$key = isset( $post['sp_variable'] ) ? $post['sp_variable'] : null;
 		if ( ! $key ) $key = $post['post_title'];
 		$id = sp_array_value( $post, 'post_ID', 'var' );
 		$title = sp_get_eos_safe_slug( $key, $id );
@@ -5280,48 +5280,37 @@ function sp_get_sport_options() {
  * @return array
  */
 function sp_get_text_options() {
-	return apply_filters( 'sportspress_text', array(
-		'general' => array(
-			'league' => __( 'League', 'sportspress' ),
-			'season' => __( 'Season', 'sportspress' ),
-		),
-		'event' => array(
-			'event' => __( 'Event', 'sportspress' ),
-			'date' => __( 'Date', 'sportspress' ),
-			'time' => __( 'Time', 'sportspress' ),
-			'results' => __( 'Team Results', 'sportspress' ),
-			'team' => __( 'Team', 'sportspress' ),
-			'teams' => __( 'Teams', 'sportspress' ),
-			'details' => __( 'Details', 'sportspress' ),
-			'venue' => __( 'Venue', 'sportspress' ),
-			'player' => __( 'Player', 'sportspress' ),
-			'substitutes' => __( 'Substitutes', 'sportspress' ),
-			'total' => __( 'Total', 'sportspress' ),
-			'article' => __( 'Article', 'sportspress' ),
-			'preview' => __( 'Preview', 'sportspress' ),
-			'recap' => __( 'Recap', 'sportspress' ),
-			'view_all_events' => __( 'View all events', 'sportspress' ),
-		),
-		'team' => array(
-			'team' => __( 'Team', 'sportspress' ),
-			'teams' => __( 'Teams', 'sportspress' ),
-			'pos' => __( 'Pos', 'sportspress' ),
-			'view_full_table' => __( 'View full table', 'sportspress' ),
-		),
-		'player' => array(
-			'player' => __( 'Player', 'sportspress' ),
-			'position' => __( 'Position', 'sportspress' ),
-			'nationality' => __( 'Nationality', 'sportspress' ),
-			'current_team' => __( 'Current Team', 'sportspress' ),
-			'past_teams' => __( 'Past Teams', 'sportspress' ),
-			'rank' => __( 'Rank', 'sportspress' ),
-			'played' => __( 'Played', 'sportspress' ),
-			'view_all_players' => __( 'View all players', 'sportspress' ),
-		),
-		'staff' => array(
-			'staff' => __( 'Staff', 'sportspress' ),
-		),
+	$strings = apply_filters( 'sportspress_text', array(
+		'article' => __( 'Article', 'sportspress' ),
+		'current_team' => __( 'Current Team', 'sportspress' ),
+		'date' => __( 'Date', 'sportspress' ),
+		'details' => __( 'Details', 'sportspress' ),
+		'event' => __( 'Event', 'sportspress' ),
+		'league' => __( 'League', 'sportspress' ),
+		'nationality' => __( 'Nationality', 'sportspress' ),
+		'past_teams' => __( 'Past Teams', 'sportspress' ),
+		'played' => __( 'Played', 'sportspress' ),
+		'player' => __( 'Player', 'sportspress' ),
+		'pos' => __( 'Pos', 'sportspress' ),
+		'position' => __( 'Position', 'sportspress' ),
+		'preview' => __( 'Preview', 'sportspress' ),
+		'rank' => __( 'Rank', 'sportspress' ),
+		'recap' => __( 'Recap', 'sportspress' ),
+		'results' => __( 'Team Results', 'sportspress' ),
+		'season' => __( 'Season', 'sportspress' ),
+		'staff' => __( 'Staff', 'sportspress' ),
+		'substitutes' => __( 'Substitutes', 'sportspress' ),
+		'team' => __( 'Team', 'sportspress' ),
+		'teams' => __( 'Teams', 'sportspress' ),
+		'time' => __( 'Time', 'sportspress' ),
+		'total' => __( 'Total', 'sportspress' ),
+		'venue' => __( 'Venue', 'sportspress' ),
+		'view_all_events' => __( 'View all events', 'sportspress' ),
+		'view_all_players' => __( 'View all players', 'sportspress' ),
+		'view_full_table' => __( 'View full table', 'sportspress' ),
 	));
+	asort( $strings );
+	return $strings;
 }
 
 function sp_is_config_type( $typenow = null ) {

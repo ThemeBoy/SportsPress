@@ -38,6 +38,9 @@ class SP_Admin_Meta_Boxes {
 		// Save Performance Meta Boxes
 		add_action( 'sportspress_process_sp_performance_meta', 'SP_Meta_Box_Performance_Details::save', 10, 2 );
 
+		// Save Statistic Meta Boxes
+		add_action( 'sportspress_process_sp_statistic_meta', 'SP_Meta_Box_Statistic_Details::save', 10, 2 );
+
 		// Save Column Meta Boxes
 		add_action( 'sportspress_process_sp_column_meta', 'SP_Meta_Box_Column_Details::save', 10, 2 );
 
@@ -94,6 +97,9 @@ class SP_Admin_Meta_Boxes {
 
 		// Performance
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Performance_Details::output', 'sp_performance', 'normal', 'high' );
+
+		// Metrics
+		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Statistic_Details::output', 'sp_statistic', 'normal', 'high' );
 
 		// Events
 		add_meta_box( 'sp_shortcodediv', __( 'Shortcodes', 'sportspress' ), 'SP_Meta_Box_Event_Shortcode::output', 'sp_event', 'side', 'default' );
@@ -200,7 +206,7 @@ class SP_Admin_Meta_Boxes {
 		if ( is_int( wp_is_post_autosave( $post ) ) ) return;
 		if ( empty( $_POST['sportspress_meta_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_meta_nonce'], 'sportspress_save_data' ) ) return;
 		if ( ! current_user_can( 'edit_post', $post_id  )) return;
-		if ( ! in_array( $post->post_type, array( 'sp_result', 'sp_outcome', 'sp_performance', 'sp_column', 'sp_metric', 'sp_statistic', 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) ) ) return;
+		if ( ! in_array( $post->post_type, array( 'sp_result', 'sp_outcome', 'sp_performance', 'sp_statistic', 'sp_column', 'sp_metric', 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) ) ) return;
 
 		do_action( 'sportspress_process_' . $post->post_type . '_meta', $post_id, $post );
 	}
