@@ -20,6 +20,7 @@ jQuery(document).ready(function($){
 	$(".chosen-select").chosen({
 		allow_single_deselect: true,
 		single_backstroke_delete: false,
+		disable_search_threshold: 10,
 		placeholder_text_multiple: localized_strings.none
 	});
 
