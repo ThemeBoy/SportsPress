@@ -23,8 +23,8 @@ class SP_Meta_Box_Result_Details {
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
-			<input name="sp_default_variable" type="hidden" id="sp_default_variable" value="<?php echo $post->post_name; ?>">
-			<input name="sp_variable" type="text" id="sp_variable" value="<?php echo $post->post_name; ?>">
+			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo $post->post_name; ?>">
+			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
 		</p>
 		<?php
 	}

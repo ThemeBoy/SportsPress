@@ -28,10 +28,10 @@ class SP_Meta_Box_Column_Details {
 		// Defaults
 		if ( $precision == '' ) $precision = 0;
 		?>
-		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
 		<p>
-			<input name="sp_default_variable" type="hidden" id="sp_default_variable" value="<?php echo $post->post_name; ?>">
-			<input name="sp_variable" type="text" id="sp_variable" value="<?php echo $post->post_name; ?>">
+			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo $post->post_name; ?>">
+			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
 		</p>
 		<p><strong><?php _e( 'Equation', 'sportspress' ); ?></strong></p>
 		<p class="sp-equation-selector">
