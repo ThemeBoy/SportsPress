@@ -76,9 +76,8 @@ class SP_Meta_Box_List_Details {
 				'prepend_options' => array(
 					'number' => __( 'Number', 'sportspress' ),
 					'name' => __( 'Name', 'sportspress' ),
-					'eventsplayed' => __( 'Played', 'sportspress' )
 				),
-				'post_type' => 'sp_performance',
+				'post_type' => array( 'sp_metric', 'sp_statistic' ),
 				'name' => 'sp_orderby',
 				'selected' => $orderby,
 				'values' => 'slug',

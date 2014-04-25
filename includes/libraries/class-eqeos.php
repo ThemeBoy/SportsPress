@@ -424,4 +424,3 @@ class eqEOS {
 
 	} //end function solveIF
 } //end class 'eqEOS'
-?>
