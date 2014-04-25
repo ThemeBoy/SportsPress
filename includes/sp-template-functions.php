@@ -209,17 +209,17 @@ if ( ! function_exists( 'sportspress_output_player_details' ) ) {
 		sp_get_template( 'player-details.php' );
 	}
 }
-if ( ! function_exists( 'sportspress_output_player_performance' ) ) {
+if ( ! function_exists( 'sportspress_output_player_statistics' ) ) {
 
 	/**
-	 * Output the player performance.
+	 * Output the player statistics.
 	 *
 	 * @access public
-	 * @subpackage	Player/Performance
+	 * @subpackage	Player/Statistics
 	 * @return void
 	 */
-	function sportspress_output_player_performance() {
-		sp_get_template( 'player-performance.php' );
+	function sportspress_output_player_statistics() {
+		sp_get_template( 'player-statistics.php' );
 	}
 }
 
