@@ -156,7 +156,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 							<tr>
 								<th scope="col"><?php _e( 'Primary', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Variables', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
 							</tr>
 						</thead>
@@ -180,7 +180,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="radio"><input type="radio" id="sportspress_primary_result_<?php echo $row->post_name; ?>" name="sportspress_primary_result" value="<?php echo $row->post_name; ?>" <?php checked( $selection, $row->post_name ); ?>></td>
 								<td class="row-title"><label for="sportspress_primary_result_<?php echo $row->post_name; ?>"><?php echo $row->post_title; ?></label></td>
-								<td><?php echo $row->post_name; ?>for / <?php echo $row->post_name; ?>against</td>
+								<td><?php echo $row->post_name; ?>for, <?php echo $row->post_name; ?>against</td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
 						<?php $i++; endforeach; ?>
@@ -274,7 +274,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 					<thead>
 						<tr>
 							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-							<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Sort Order', 'sportspress' ); ?></th>
@@ -383,7 +383,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 					<thead>
 						<tr>
 							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-							<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
 							<th scope="col" class="edit"></th>

@@ -27,8 +27,8 @@ jQuery(document).ready(function($){
 	// Auto key placeholder
 	$("#poststuff #title").on("keyup", function() {
 		val = $(this).val().replace(/[^a-z]/gi,"").toLowerCase();
-		$("#sp_variable").attr("placeholder", val);
-		$("#sp_default_variable").val(val);
+		$("#sp_key").attr("placeholder", val);
+		$("#sp_default_key").val(val);
 	});
 
 	// Activate auto key placeholder

@@ -3003,7 +3003,7 @@ if ( !function_exists( 'sp_delete_duplicate_post' ) ) {
 	function sp_delete_duplicate_post( &$post ) {
 		global $wpdb;
 
-		$key = isset( $post['sp_variable'] ) ? $post['sp_variable'] : null;
+		$key = isset( $post['sp_key'] ) ? $post['sp_key'] : null;
 		if ( ! $key ) $key = $post['post_title'];
 		$id = sp_array_value( $post, 'post_ID', 'var' );
 		$title = sp_get_eos_safe_slug( $key, $id );
