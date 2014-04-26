@@ -33,21 +33,6 @@ jQuery(document).ready(function($){
 
 	// Activate auto key placeholder
 	$("#poststuff #title").keyup();
-
-	// Orderby affects order select in widget options
-	$("body.widgets-php").on("change", ".sp-select-orderby", function() {
-		$(this).closest(".widget-content").find(".sp-select-order").prop("disabled", $(this).val() == "default");
-	});
-
-	// Calendar affects view all link checkbox in widget options
-	$("body.widgets-php").on("change", ".sp-event-calendar-select", function() {
-		$el = $(this).closest(".widget-content").find(".sp-event-calendar-show-all-toggle");
-		if($(this).val() == 0)
-			$el.hide();
-		else
-			$el.show();
-	});
-
 	// Table switcher
 	$(".sp-table-panel").siblings(".sp-table-bar").find("a").click(function() {
 		$(this).closest("li").find("a").addClass("current").closest("li").siblings().find("a").removeClass("current").closest(".sp-table-bar").siblings($(this).attr("href")).show().siblings(".sp-table-panel").hide();
