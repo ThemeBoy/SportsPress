@@ -5,15 +5,18 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta Boxes
- * @version     0.7
+ * @version     0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+if ( ! class_exists( 'SP_Meta_Box_Config' ) )
+	include( 'class-sp-meta-box-config.php' );
+
 /**
  * SP_Meta_Box_Result_Details
  */
-class SP_Meta_Box_Result_Details {
+class SP_Meta_Box_Result_Details extends SP_Meta_Box_Config {
 
 	/**
 	 * Output the metabox
@@ -27,12 +30,5 @@ class SP_Meta_Box_Result_Details {
 			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
 		</p>
 		<?php
-	}
-
-	/**
-	 * Save meta box data
-	 */
-	public static function save( $post_id, $post ) {
-		sp_delete_duplicate_post( $_POST );
 	}
 }

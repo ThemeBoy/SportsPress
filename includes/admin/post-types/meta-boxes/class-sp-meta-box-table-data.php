@@ -19,7 +19,7 @@ class SP_Meta_Box_Table_Data {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$table = new SP_Table( $post );
+		$table = new SP_League_Table( $post );
 		list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );
 		$adjustments = $table->adjustments;
 		self::table( $columns, $usecolumns, $data, $placeholders, $adjustments );

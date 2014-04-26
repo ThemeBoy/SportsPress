@@ -10,10 +10,13 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+if ( ! class_exists( 'SP_Meta_Box_Config' ) )
+	include( 'class-sp-meta-box-config.php' );
+
 /**
  * SP_Meta_Box_Statistic_Details
  */
-class SP_Meta_Box_Statistic_Details {
+class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 
 	/**
 	 * Output the metabox
@@ -35,7 +38,7 @@ class SP_Meta_Box_Statistic_Details {
 		<p class="sp-equation-selector">
 			<?php
 			foreach ( $equation as $piece ):
-				sp_equation_selector( $post->ID, $piece, array( 'player_event', 'outcome', 'performance', 'metric' ) );
+				self::select( $post->ID, $piece, array( 'player_event', 'outcome', 'performance', 'metric' ) );
 			endforeach;
 			?>
 		</p>
@@ -50,8 +53,9 @@ class SP_Meta_Box_Statistic_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		sp_delete_duplicate_post( $_POST );
+		self::delete_duplicate( $_POST );
 		update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
 		update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
 	}
+
 }

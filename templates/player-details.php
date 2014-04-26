@@ -20,10 +20,12 @@ extract( $defaults, EXTR_SKIP );
 
 $countries = SP()->countries->countries;
 
-$nationality = get_post_meta( $id, 'sp_nationality', true );
-$current_team = get_post_meta( $id, 'sp_current_team', true );
-$past_teams = get_post_meta( $id, 'sp_past_team', false );
-$metrics = sp_get_player_metrics_data( $id );
+$player = new SP_Player( $id );
+
+$nationality = $player->nationality;
+$current_team = $player->current_team;
+$past_teams = $player->past_teams;
+$metrics = $player->metrics;
 
 $common = array();
 if ( $nationality ):

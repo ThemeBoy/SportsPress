@@ -2,15 +2,15 @@
 /**
  * League Table Class
  *
- * The SportsPress table class handles individual league table data.
+ * The SportsPress league table class handles individual league table data.
  *
- * @class 		SP_Table
+ * @class 		SP_League_Table
  * @version		0.8
- * @package		SportsPress/Abstracts
+ * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
  */
-class SP_Table {
+class SP_League_Table {
 
 	/** @var int The league table (post) ID. */
 	public $ID;
@@ -19,7 +19,7 @@ class SP_Table {
 	public $post;
 
 	/** @var array The sort priorities array. */
-	private $priorities;
+	public $priorities;
 
 	/**
 	 * __construct function.
@@ -28,7 +28,7 @@ class SP_Table {
 	 * @param mixed $post
 	 */
 	public function __construct( $post ) {
-		if ( $post instanceof WP_Post || $post instanceof SP_Table ):
+		if ( $post instanceof WP_Post || $post instanceof SP_League_Table ):
 			$this->ID   = absint( $post->ID );
 			$this->post = $post;
 		else:
@@ -356,7 +356,7 @@ class SP_Table {
 	 * @param array $b
 	 * @return int
 	 */
-	private function sort( $a, $b ) {
+	public function sort( $a, $b ) {
 
 		// Loop through priorities
 		foreach( $this->priorities as $priority ):

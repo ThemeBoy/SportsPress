@@ -43,7 +43,8 @@ $float = is_rtl() ? 'right' : 'left';
 
 $selector = 'sp-player-gallery-' . $id;
 
-$data = sp_get_player_list_data( $id );
+$list = new SP_Player_List( $id );
+$data = $list->data();
 
 // The first row should be column labels
 $labels = $data[0];
@@ -51,18 +52,14 @@ $labels = $data[0];
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
 
-if ( $orderby == 'default' ):
-	$orderby = get_post_meta( $id, 'sp_orderby', true );
-	$order = get_post_meta( $id, 'sp_order', true );
-else:
-	global $sportspress_performance_priorities;
-	$sportspress_performance_priorities = array(
+if ( $orderby != 'default' ):
+	$list->priorities = array(
 		array(
 			'key' => $orderby,
 			'order' => $order,
 		),
 	);
-	uasort( $data, 'sp_sort_list_players' );
+	uasort( $data, array( $list, 'sort' ) );
 endif;
 
 $gallery_style = $gallery_div = '';
