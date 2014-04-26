@@ -86,6 +86,8 @@ class SP_Admin_Assets {
 	
 		wp_register_script( 'sportspress-admin', SP()->plugin_url() . '/assets/js/admin/sportspress-admin.js', array( 'jquery', 'chosen', 'jquery-tiptip', 'jquery-caret', 'jquery-countdown' ), SP_VERSION, true );
 
+		wp_register_script( 'sportspress-admin-widgets', SP()->plugin_url() . '/assets/js/admin/widgets.js', array( 'jquery' ), SP_VERSION, true );
+
 		// SportsPress admin pages
 	    if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
 
@@ -111,6 +113,10 @@ class SP_Admin_Assets {
 
 		if ( in_array( $screen->id, array( 'dashboard' ) ) ) {
 			//wp_enqueue_style( 'sportspress-admin-dashboard' );
+		}
+
+		if ( in_array( $screen->id, array( 'widgets' ) ) ) {
+	    	wp_enqueue_script( 'sportspress-admin-widgets' );
 		}
 
 	    // Edit venue pages
