@@ -1590,20 +1590,6 @@ if ( !function_exists( 'sp_get_team_columns_data' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_get_player_list_data' ) ) {
-	function sp_get_player_list_data( $post_id, $admin = false ) {
-		$formatter = new SP_Data_Formatter;
-		return $formatter->player_list( $post_id, $admin );
-	}
-}
-
-if ( !function_exists( 'sp_get_league_table_data' ) ) {
-	function sp_get_league_table_data( $post_id, $admin = false ) {		
-		$formatter = new SP_Data_Formatter;
-		return $formatter->league_table( $post_id, $admin );
-	}
-}
-
 if ( !function_exists( 'sp_sort_table_teams' ) ) {
 	function sp_sort_table_teams ( $a, $b ) {
 

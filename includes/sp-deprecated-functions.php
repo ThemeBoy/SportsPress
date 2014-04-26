@@ -167,3 +167,17 @@ function sportspress_delete_duplicate_post( &$post ) {
 function sportspress_highlight_admin_menu( $p = 'options-general.php', $s = 'sportspress' ) {
 	return sp_highlight_admin_menu( $p, $s );
 }
+
+if ( !function_exists( 'sp_get_player_list_data' ) ) {
+	function sp_get_player_list_data( $post_id, $admin = false ) {
+		$formatter = new SP_Data_Formatter;
+		return $formatter->player_list( $post_id, $admin );
+	}
+}
+
+if ( !function_exists( 'sp_get_league_table_data' ) ) {
+	function sp_get_league_table_data( $post_id, $admin = false ) {		
+		$table = new SP_Table( $post_id );
+		return $table->data( $admin );
+	}
+}
