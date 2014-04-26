@@ -27,7 +27,9 @@ extract( $defaults, EXTR_SKIP );
 $output = '<div class="sp-table-wrapper">' .
 	'<table class="sp-league-table sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
-$data = sp_get_league_table_data( $id );
+$table = new SP_Table( $id );
+
+$data = $table->data();
 
 // The first row should be column labels
 $labels = $data[0];

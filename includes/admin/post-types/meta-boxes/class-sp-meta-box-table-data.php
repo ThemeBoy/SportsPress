@@ -19,8 +19,9 @@ class SP_Meta_Box_Table_Data {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		list( $columns, $usecolumns, $data, $placeholders, $merged ) = sp_get_league_table_data( $post->ID, true );
-		$adjustments = get_post_meta( $post->ID, 'sp_adjustments', true );
+		$table = new SP_Table( $post );
+		list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );
+		$adjustments = $table->adjustments;
 		self::table( $columns, $usecolumns, $data, $placeholders, $adjustments );
 	}
 
