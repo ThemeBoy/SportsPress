@@ -54,7 +54,7 @@ class SP_Admin_Post_Types {
 	public function post_updated_messages( $messages ) {
 		global $typenow, $post;
 
-		if ( sp_is_config_type( $typenow ) ):
+		if ( is_sp_config_type( $typenow ) ):
 			$obj = get_post_type_object( $typenow );
 
 			for ( $i = 0; $i <= 10; $i++ ):

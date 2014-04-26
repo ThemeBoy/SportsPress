@@ -19,7 +19,8 @@ if ( is_array( $leagues ) ):
 	foreach ( $leagues as $league ):
 		$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
 
-		$data = sp_get_player_statistics_data( $id, $league->term_id );
+		$player = new SP_Player( $id );
+		$data = $player->data( $league->term_id );
 
 		// The first row should be column labels
 		$labels = $data[0];

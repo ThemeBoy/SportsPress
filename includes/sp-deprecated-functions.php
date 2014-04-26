@@ -155,9 +155,6 @@ function sportspress_sort_list_players ( $a, $b ) {
 function sportspress_get_player_metrics_data( $post_id ) {
 	return sp_get_player_metrics_data( $post_id );
 }
-function sportspress_get_player_performance_data( $post_id, $league_id, $admin = false ) {
-	return sp_get_player_performance_data( $post_id, $league_id, $admin );
-}
 function sportspress_get_next_event( $args = array() ) {
 	return sp_get_next_event( $args );
 }
@@ -168,16 +165,30 @@ function sportspress_highlight_admin_menu( $p = 'options-general.php', $s = 'spo
 	return sp_highlight_admin_menu( $p, $s );
 }
 
-if ( !function_exists( 'sp_get_player_list_data' ) ) {
-	function sp_get_player_list_data( $post_id, $admin = false ) {
-		$formatter = new SP_Data_Formatter;
-		return $formatter->player_list( $post_id, $admin );
+if ( !function_exists( 'sp_get_team_columns_data' ) ) {
+	function sp_get_team_columns_data( $post_id, $league_id, $admin = false ) {
+		$team = new SP_Team( $post_id );
+		return $team->data( $league_id, $admin );
 	}
 }
 
 if ( !function_exists( 'sp_get_league_table_data' ) ) {
 	function sp_get_league_table_data( $post_id, $admin = false ) {		
-		$table = new SP_Table( $post_id );
+		$table = new SP_League_Table( $post_id );
 		return $table->data( $admin );
+	}
+}
+
+if ( !function_exists( 'sp_get_player_statistics_data' ) ) {
+	function sp_get_player_statistics_data( $post_id, $league_id, $admin = false ) {
+		$list = new SP_Player_List( $post_id );
+		return $list->data( $league_id, $admin );
+	}
+}
+
+if ( !function_exists( 'sp_get_player_list_data' ) ) {
+	function sp_get_player_list_data( $post_id, $admin = false ) {
+		$list = new SP_Player_List( $post_id );
+		return $list->data( $admin );
 	}
 }

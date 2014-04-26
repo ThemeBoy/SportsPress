@@ -68,7 +68,7 @@ class SP_Admin_Menus {
 	 */
 	public function menu_highlight() {
 		global $typenow, $submenu;
-		if ( sp_is_config_type( $typenow ) )
+		if ( is_sp_config_type( $typenow ) )
 			$this->highlight_admin_menu();
 		elseif ( $typenow == 'sp_calendar' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_event', 'edit.php?post_type=sp_calendar' );

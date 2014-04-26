@@ -27,7 +27,7 @@ extract( $defaults, EXTR_SKIP );
 $output = '<div class="sp-table-wrapper">' .
 	'<table class="sp-league-table sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
-$table = new SP_Table( $id );
+$table = new SP_League_Table( $id );
 
 $data = $table->data();
 

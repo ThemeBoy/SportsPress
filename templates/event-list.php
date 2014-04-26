@@ -27,7 +27,9 @@ extract( $defaults, EXTR_SKIP );
 		<thead>
 			<tr>
 				<?php
-				list( $data, $usecolumns ) = sp_get_calendar_data( $id, true );
+				$calendar = new SP_Calendar( $id );
+				$data = $calendar->data();
+				$usecolumns = $calendar->columns;
 
 				if ( isset( $columns ) )
 					$usecolumns = $columns;

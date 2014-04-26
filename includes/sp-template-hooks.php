@@ -101,7 +101,7 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 	global $typenow;
 
 	if ( is_admin() ):
-		if ( sp_is_config_type( $typenow ) ):
+		if ( is_sp_config_type( $typenow ) ):
 			switch ( $untranslated_text ):
 			case 'Slug':
 				$translated_text = ( in_array( $typenow, array( 'sp_column', 'sp_statistic' ) ) ) ? __( 'Key', 'sportspress' ) : __( 'Variable', 'sportspress' );
@@ -146,7 +146,7 @@ function sportspress_pre_get_posts( $query ) {
 		endif;
 		$post_type = $query->query['post_type'];
 
-		if ( sp_is_config_type( $post_type ) ):
+		if ( is_sp_config_type( $post_type ) ):
 			$query->set( 'orderby', 'menu_order' );
 			$query->set( 'order', 'ASC' );
 		elseif ( $post_type == 'sp_event' ):
@@ -178,7 +178,7 @@ function sportspress_sanitize_title( $title ) {
 
 		return $title;
 	
-	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && sp_is_config_type( $_POST['post_type'] ) ):
+	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && is_sp_config_type( $_POST['post_type'] ) ):
 
 		$key = isset( $_POST['sp_key'] ) ? $_POST['sp_key'] : null;
 

@@ -25,7 +25,8 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 if ( isset( $id ) ):
-	$events = sp_get_calendar_data( $id );
+	$calendar = new SP_Calendar( $id );
+	$events = $calendar->data();
 	$event_ids = array();
 	foreach ( $events as $event ):
 		$event_ids[] = $event->ID;
