@@ -12,6 +12,30 @@
  */
 class SP_Calendar extends SP_Custom_Post {
 
+	/** @var array The events status. */
+	public $status;
+
+	/**
+	 * __construct function.
+	 *
+	 * @access public
+	 * @param mixed $post
+	 */
+	public function __construct( $post ) {
+		if ( $post instanceof WP_Post || $post instanceof SP_Custom_Post ):
+			$this->ID   = absint( $post->ID );
+			$this->post = $post;
+		else:
+			$this->ID  = absint( $post );
+			$this->post = get_post( $this->ID );
+		endif;
+
+		$this->status = $this->__get( 'status' );
+
+		if ( ! $this->status )
+			$this->status = 'any';
+	}
+
 	/**
 	 * Returns formatted data
 	 *
@@ -21,17 +45,13 @@ class SP_Calendar extends SP_Custom_Post {
 	public function data() {
 		global $pagenow;
 
-		$post_status = $this->status;
-		if ( ! $post_status )
-			$post_status = 'any';
-
 		$args = array(
 			'post_type' => 'sp_event',
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'post_date',
 			'order' => 'ASC',
-			'post_status' => $post_status,
+			'post_status' => $this->status,
 			'tax_query' => array(
 				'relation' => 'AND'
 			),
