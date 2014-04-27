@@ -790,6 +790,9 @@ if ( !function_exists( 'sp_get_eos_safe_slug' ) ) {
 if ( !function_exists( 'sp_solve' ) ) {
 	function sp_solve( $equation, $vars, $precision = 0 ) {
 
+		if ( $equation == null )
+			return '-';
+
 		if ( strpos( $equation, '$streak' ) !== false ):
 
 			// Return direct value
