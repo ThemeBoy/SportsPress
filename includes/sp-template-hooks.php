@@ -156,14 +156,6 @@ function sportspress_pre_get_posts( $query ) {
 		if ( is_sp_config_type( $post_type ) ):
 			$query->set( 'orderby', 'menu_order' );
 			$query->set( 'order', 'ASC' );
-		elseif ( $post_type == 'sp_event' ):
-			$query->set( 'orderby', 'post_date' );
-			$query->set( 'order', 'ASC' );
-		endif;
-	else:
-		$post_type = $query->get( 'post_type' );
-		if ( $query->is_post_type_archive && $post_type == 'sp_event' ):
-			$query->set( 'order' , 'ASC' );
 		endif;
 	endif;
 

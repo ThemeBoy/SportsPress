@@ -24,6 +24,7 @@ class SP_Meta_Box_Calendar_Details {
 		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 		$venue_id = sp_get_the_term_id( $post->ID, 'sp_venue', 0 );
 		$team_id = get_post_meta( $post->ID, 'sp_team', true );
+		$order = get_post_meta( $post->ID, 'sp_order', true );
 		?>
 		<div>
 			<p><strong><?php _e( 'Status', 'sportspress' ); ?></strong></p>
@@ -97,6 +98,13 @@ class SP_Meta_Box_Calendar_Details {
 				endif;
 				?>
 			</p>
+			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
+			<p>
+				<select name="sp_order">
+					<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
+					<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
+				</select>
+			</p>
 		</div>
 		<?php
 	}
@@ -110,5 +118,6 @@ class SP_Meta_Box_Calendar_Details {
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_venue', 0 ), 'sp_venue' );
 		update_post_meta( $post_id, 'sp_status', sp_array_value( $_POST, 'sp_status', 0 ) );
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', 0 ) );
+		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
 	}
 }

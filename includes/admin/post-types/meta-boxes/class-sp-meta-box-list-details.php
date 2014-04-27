@@ -69,7 +69,7 @@ class SP_Meta_Box_List_Details {
 				endif;
 				?>
 			</p>
-			<p><strong><?php _e( 'Sort by:', 'sportspress' ); ?></strong></p>
+			<p><strong><?php _e( 'Sort by', 'sportspress' ); ?></strong></p>
 			<p>
 			<?php
 			$args = array(
@@ -87,7 +87,7 @@ class SP_Meta_Box_List_Details {
 			endif;
 			?>
 			</p>
-			<p><strong><?php _e( 'Sort Order:', 'sportspress' ); ?></strong></p>
+			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
 			<p>
 				<select name="sp_order">
 					<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>

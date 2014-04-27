@@ -18,25 +18,28 @@ $defaults = array(
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_calendar_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_calendar_rows', 10 ),
+	'order' => 'default',
 	'show_all_events_link' => false,
 );
 
 extract( $defaults, EXTR_SKIP );
+
+$calendar = new SP_Calendar( $id );
+if ( $status != 'default' )
+	$calendar->status = $status;
+if ( $order != 'default' )
+	$calendar->order = $order;
+$data = $calendar->data();
+$usecolumns = $calendar->columns;
+
+if ( isset( $columns ) )
+	$usecolumns = $columns;
 ?>
 <div class="sp-table-wrapper">
 	<table class="sp-event-list sp-data-table<?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $paginated ) { ?> sp-paginated-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
 		<thead>
 			<tr>
 				<?php
-				$calendar = new SP_Calendar( $id );
-				if ( $status != 'default' )
-					$calendar->status = $status;
-				$data = $calendar->data();
-				$usecolumns = $calendar->columns;
-
-				if ( isset( $columns ) )
-					$usecolumns = $columns;
-
 				echo '<th class="data-date">' . SP()->text->string('Date') . '</th>';
 
 				if ( $usecolumns == null || in_array( 'event', $usecolumns ) )

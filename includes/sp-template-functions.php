@@ -151,14 +151,10 @@ if ( ! function_exists( 'sportspress_output_calendar' ) ) {
 	function sportspress_output_calendar() {
         $id = get_the_ID();
         $format = get_post_meta( $id, 'sp_format', true );
-        switch ( $format ):
-            case 'list':
-                sp_get_template( 'event-list.php', array( 'id' => $id ) );
-                break;
-            default:
-                sp_get_template( 'event-calendar.php', array( 'id' => $id ) );
-                break;
-            endswitch;
+        if ( array_key_exists( $format, SP()->formats->calendar ) )
+			sp_get_template( 'event-' . $format . '.php', array( 'id' => $id ) );
+        else
+			sp_get_template( 'event-calendar.php', array( 'id' => $id ) );
 	}
 }
 
@@ -237,14 +233,10 @@ if ( ! function_exists( 'sportspress_output_player_list' ) ) {
 	function sportspress_output_player_list() {
         $id = get_the_ID();
         $format = get_post_meta( $id, 'sp_format', true );
-        switch ( $format ):
-            case 'gallery':
-                sp_get_template( 'player-gallery.php', array( 'id' => $id ) );
-                break;
-            default:
-                sp_get_template( 'player-list.php', array( 'id' => $id ) );
-                break;
-            endswitch;
+        if ( array_key_exists( $format, SP()->formats->list ) )
+			sp_get_template( 'player-' . $format . '.php', array( 'id' => $id ) );
+        else
+			sp_get_template( 'player-list.php', array( 'id' => $id ) );
 	}
 }
 

@@ -26,11 +26,6 @@
 	content: "\f140";
 	position: absolute;
 }
-.sp-data-table .team-logo {
-	vertical-align: middle;
-	height: 2.5em;
-	width: auto;
-}
 
 /* Pagination */
 .sp-paginated-table {
@@ -66,6 +61,13 @@
 	text-align: center;
 }
 
+/* League table */
+.sp-league-table .team-logo {
+	vertical-align: middle;
+	height: 2.5em;
+	width: auto;
+}
+
 /* Event Calendar */
 .sp-event-calendar tbody td, .sp-event-calendar thead th {
 	text-align: center;
@@ -76,12 +78,40 @@
 .sp-event-calendar #prev {
 	text-align: left;
 }
+
 /* Event List */
 .sp-event-list .column-article {
 	white-space: nowrap;
 }
 .sp-event-list .column-article a .dashicons {
 	padding-right: 3px;
+}
+
+/* Event Blocks */
+.sp-event-blocks .event-date,
+.sp-event-blocks .event-time,
+.sp-event-blocks .event-results,
+.sp-event-blocks .event-title {
+	text-align: center;
+	display: block;
+	margin: 10px 20%;
+	padding: 0 20px;
+	clear: none;
+}
+.sp-event-blocks .team-logo {
+	width: 20%;
+	height: auto;
+	margin: 10px;
+}
+.sp-event-blocks .logo-odd {
+	float: left;
+}
+.sp-event-blocks .logo-even {
+	float: right;
+}
+.widget .sp-event-blocks .event-title {
+	margin: 10px;
+	padding: 0;
 }
 
 /* Google Maps */
