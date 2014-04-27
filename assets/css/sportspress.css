@@ -38,6 +38,7 @@
 }
 .sp-pagination {
 	margin-top: 0 !important;
+	border-top: 0 !important;
 }
 .sp-pagination tfoot tr td {
 	text-align: center;
@@ -65,7 +66,7 @@
 	text-align: center;
 }
 
-/* Events Calendar */
+/* Event Calendar */
 .sp-event-calendar tbody td, .sp-event-calendar thead th {
 	text-align: center;
 }
@@ -75,7 +76,7 @@
 .sp-event-calendar #prev {
 	text-align: left;
 }
-/* Events List */
+/* Event List */
 .sp-event-list .column-article {
 	white-space: nowrap;
 }
