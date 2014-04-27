@@ -52,11 +52,11 @@
 .sp-pagination tfoot tr td a {
 	cursor: inherit;
 }
-.sp-pagination tfoot tr td.active {
+.sp-pagination tfoot tr td.active a {
 	opacity: 0.5;
 	cursor: default;
 }
-.sp-pagination tfoot tr td.disabled {
+.sp-pagination tfoot tr td.disabled a {
 	opacity: 0;
 	cursor: default;
 }
