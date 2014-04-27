@@ -378,6 +378,7 @@ if ( !function_exists( 'sp_get_post_order' ) ) {
 if ( !function_exists( 'sp_dropdown_statuses' ) ) {
 	function sp_dropdown_statuses( $args = array() ) {
 		$defaults = array(
+			'show_option_default' => false,
 			'name' => 'sp_status',
 			'id' => null,
 			'selected' => null,
@@ -386,6 +387,10 @@ if ( !function_exists( 'sp_dropdown_statuses' ) ) {
 		$args = array_merge( $defaults, $args ); 
 
 		printf( '<select name="%s" class="postform %s">', $args['name'], $args['class'] );
+
+		if ( $args['show_option_default'] ):
+			printf( '<option value="default">%s</option>', $args['show_option_default'] );
+		endif;
 
 		$statuses = apply_filters( 'sportspress_statuses', array(
 			'any' => __( 'All', 'sportspress' ),

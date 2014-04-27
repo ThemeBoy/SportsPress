@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $primary_result = get_option( 'sportspress_primary_result', null );
 
 $defaults = array(
+	'status' => 'default',
 	'number' => -1,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
@@ -28,6 +29,8 @@ extract( $defaults, EXTR_SKIP );
 			<tr>
 				<?php
 				$calendar = new SP_Calendar( $id );
+				if ( $status != 'default' )
+					$calendar->status = $status;
 				$data = $calendar->data();
 				$usecolumns = $calendar->columns;
 
