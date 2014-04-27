@@ -75,6 +75,13 @@ add_action( 'sportspress_single_player_content', 'sportspress_output_player_stat
 add_action( 'sportspress_single_list_content', 'sportspress_output_player_list', 10 );
 
 /**
+ * Single Staff Content
+ *
+ * @see sportspress_output_staff_details()
+ */
+add_action( 'sportspress_single_staff_content', 'sportspress_output_staff_details', 10 );
+
+/**
  * Venue Archive Content
  */
 add_action( 'loop_start', 'sportspress_output_venue_map' );
@@ -89,7 +96,7 @@ function sportspress_the_title( $title, $id ) {
 		elseif ( is_singular( 'sp_staff' ) ):
 			$role = get_post_meta( $id, 'sp_role', true );
 			if ( $role != null ):
-				$title = $title . '<br><small><strong>' . $role . '</strong></small>';
+				$title = '<strong>' . $role . '</strong> ' . $title;
 			endif;
 		endif;
 	endif;

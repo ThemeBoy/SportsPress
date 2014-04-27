@@ -248,6 +248,22 @@ if ( ! function_exists( 'sportspress_output_player_list' ) ) {
 	}
 }
 
+/** Single Staff ********************************************************/
+
+if ( ! function_exists( 'sportspress_output_staff_details' ) ) {
+
+	/**
+	 * Output the staff metrics.
+	 *
+	 * @access public
+	 * @subpackage	Staff/Metrics
+	 * @return void
+	 */
+	function sportspress_output_staff_details() {
+		sp_get_template( 'staff-details.php' );
+	}
+}
+
 /** Venue Archive ********************************************************/
 
 function sportspress_output_venue_map( $query ) {
