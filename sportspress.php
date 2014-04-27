@@ -208,6 +208,9 @@ final class SportsPress {
 		// Post types
 		include_once( 'includes/class-sp-post-types.php' );						// Registers post types
 
+		// Include abstract classes
+		include_once( 'includes/abstracts/abstract-sp-custom-post.php' );		// Custom posts
+
 		// Classes (used on all pages)
 		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
 		include_once( 'includes/class-sp-formats.php' );						// Defines custom post type formats

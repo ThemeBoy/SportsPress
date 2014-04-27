@@ -10,49 +10,10 @@
  * @category	Class
  * @author 		ThemeBoy
  */
-class SP_League_Table {
-
-	/** @var int The league table (post) ID. */
-	public $ID;
-
-	/** @var object The actual post object. */
-	public $post;
+class SP_League_Table extends SP_Custom_Post{
 
 	/** @var array The sort priorities array. */
 	public $priorities;
-
-	/**
-	 * __construct function.
-	 *
-	 * @access public
-	 * @param mixed $post
-	 */
-	public function __construct( $post ) {
-		if ( $post instanceof WP_Post || $post instanceof SP_League_Table ):
-			$this->ID   = absint( $post->ID );
-			$this->post = $post;
-		else:
-			$this->ID  = absint( $post );
-			$this->post = get_post( $this->ID );
-		endif;
-	}
-
-	/**
-	 * __get function.
-	 *
-	 * @access public
-	 * @param mixed $key
-	 * @return bool
-	 */
-	public function __get( $key ) {
-		if ( ! isset( $key ) ):
-			return $this->post;
-		else:
-			$value = get_post_meta( $this->ID, 'sp_' . $key, true );
-		endif;
-
-		return $value;
-	}
 
 	/**
 	 * Returns formatted data
@@ -379,5 +340,4 @@ class SP_League_Table {
 		// Default sort by alphabetical
 		return strcmp( sp_array_value( $a, 'name', '' ), sp_array_value( $b, 'name', '' ) );
 	}
-
 }

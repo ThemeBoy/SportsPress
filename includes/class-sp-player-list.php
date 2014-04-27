@@ -10,49 +10,10 @@
  * @category	Class
  * @author 		ThemeBoy
  */
-class SP_Player_List {
-
-	/** @var int The player list (post) ID. */
-	public $ID;
-
-	/** @var object The actual post object. */
-	public $post;
+class SP_Player_List extends SP_Custom_Post {
 
 	/** @var array The sort priorities array. */
 	public $priorities;
-
-	/**
-	 * __construct function.
-	 *
-	 * @access public
-	 * @param mixed $post
-	 */
-	public function __construct( $post ) {
-		if ( $post instanceof WP_Post || $post instanceof SP_Player_List ):
-			$this->ID   = absint( $post->ID );
-			$this->post = $post;
-		else:
-			$this->ID  = absint( $post );
-			$this->post = get_post( $this->ID );
-		endif;
-	}
-
-	/**
-	 * __get function.
-	 *
-	 * @access public
-	 * @param mixed $key
-	 * @return bool
-	 */
-	public function __get( $key ) {
-		if ( ! isset( $key ) ):
-			return $this->post;
-		else:
-			$value = get_post_meta( $this->ID, 'sp_' . $key, true );
-		endif;
-
-		return $value;
-	}
 
 	/**
 	 * Returns formatted data

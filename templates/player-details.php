@@ -24,8 +24,8 @@ $player = new SP_Player( $id );
 
 $nationality = $player->nationality;
 $current_team = $player->current_team;
-$past_teams = $player->past_teams;
-$metrics = $player->metrics;
+$past_teams = $player->past_teams();
+$metrics = $player->metrics();
 
 $common = array();
 if ( $nationality ):

@@ -10,66 +10,35 @@
  * @category	Class
  * @author 		ThemeBoy
  */
-class SP_Player {
-
-	/** @var int The player (post) ID. */
-	public $ID;
-
-	/** @var object The actual post object. */
-	public $post;
+class SP_Player extends SP_Custom_Post {
 
 	/**
-	 * __construct function.
+	 * Returns past teams
 	 *
 	 * @access public
-	 * @param mixed $post
+	 * @return array
 	 */
-	public function __construct( $post ) {
-		if ( $post instanceof WP_Post || $post instanceof SP_Player ):
-			$this->ID   = absint( $post->ID );
-			$this->post = $post;
-		else:
-			$this->ID  = absint( $post );
-			$this->post = get_post( $this->ID );
-		endif;
+	public function past_teams() {
+		return get_post_meta( $this->ID, 'sp_past_team', false );
 	}
 
 	/**
-	 * __get function.
+	 * Returns formatted player metrics
 	 *
 	 * @access public
-	 * @param mixed $key
-	 * @return bool
+	 * @return array
 	 */
-	public function __get( $key ) {
-		if ( ! isset( $key ) ):
-			return $this->post;
-		elseif ( 'past_teams' == $key ):
-			return get_post_meta( $this->ID, 'sp_past_team', false );
-		elseif ( 'metrics' == $key ):
-			$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
-
-			// Get labels from metric variables
-			$metric_labels = (array)sp_get_var_labels( 'sp_metric' );
-
-			$data = array();
-
-			foreach( $metric_labels as $key => $value ):
-
-				$metric = sp_array_value( $metrics, $key, null );
-				if ( $metric == null )
-					continue;
-
-				$data[ $value ] = sp_array_value( $metrics, $key, '&nbsp;' );
-
-			endforeach;
-
-			return $data;
-		else:
-			$value = get_post_meta( $this->ID, 'sp_' . $key, true );
-		endif;
-
-		return $value;
+	public function metrics() {
+		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
+		$metric_labels = (array)sp_get_var_labels( 'sp_metric' );
+		$data = array();
+		foreach( $metric_labels as $key => $value ):
+			$metric = sp_array_value( $metrics, $key, null );
+			if ( $metric == null )
+				continue;
+			$data[ $value ] = sp_array_value( $metrics, $key, '&nbsp;' );
+		endforeach;
+		return $data;
 	}
 
 	/**
