@@ -92,7 +92,8 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 				endif;
 			break;
 			case 'sp_events':
-				echo sizeof( sp_get_calendar_data( $post_id ) );
+				$calendar = new SP_Calendar( $post_id );
+				echo sizeof( $calendar->data() );
 			break;
 			case 'sp_views':
 	        	echo sp_get_post_views( $post_id );

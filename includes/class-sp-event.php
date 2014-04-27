@@ -10,46 +10,7 @@
  * @category	Class
  * @author 		ThemeBoy
  */
-class SP_Event {
-
-	/** @var int The event (post) ID. */
-	public $ID;
-
-	/** @var object The actual post object. */
-	public $post;
-
-	/**
-	 * __construct function.
-	 *
-	 * @access public
-	 * @param mixed $post
-	 */
-	public function __construct( $post ) {
-		if ( $post instanceof WP_Post || $post instanceof SP_Event ):
-			$this->ID   = absint( $post->ID );
-			$this->post = $post;
-		else:
-			$this->ID  = absint( $post );
-			$this->post = get_post( $this->ID );
-		endif;
-	}
-
-	/**
-	 * __get function.
-	 *
-	 * @access public
-	 * @param mixed $key
-	 * @return bool
-	 */
-	public function __get( $key ) {
-		if ( ! isset( $key ) ):
-			return $this->post;
-		else:
-			$value = get_post_meta( $this->ID, 'sp_' . $key, true );
-		endif;
-
-		return $value;
-	}
+class SP_Event extends SP_Custom_Post{
 
 	/**
 	 * Returns formatted data
@@ -299,5 +260,4 @@ class SP_Event {
 			return $merged;
 		endif;
 	}
-
 }
