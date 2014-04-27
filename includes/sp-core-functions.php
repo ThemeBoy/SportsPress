@@ -375,6 +375,32 @@ if ( !function_exists( 'sp_get_post_order' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_dropdown_statuses' ) ) {
+	function sp_dropdown_statuses( $args = array() ) {
+		$defaults = array(
+			'name' => 'sp_status',
+			'id' => null,
+			'selected' => null,
+		    'class' => null,
+		);
+		$args = array_merge( $defaults, $args ); 
+
+		printf( '<select name="%s" class="postform %s">', $args['name'], $args['class'] );
+
+		$statuses = apply_filters( 'sportspress_statuses', array(
+			'any' => __( 'All', 'sportspress' ),
+			'publish' => __( 'Published', 'sportspress' ),
+			'future' => __( 'Scheduled', 'sportspress' )
+		));
+
+		foreach ( $statuses as $value => $label ):
+			printf( '<option value="%s" %s>%s</option>', $value, selected( $value, $args['selected'], false ), $label );
+		endforeach;
+		print( '</select>' );
+		return true;
+	}
+}
+
 if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 	function sp_dropdown_taxonomies( $args = array() ) {
 		$defaults = array(

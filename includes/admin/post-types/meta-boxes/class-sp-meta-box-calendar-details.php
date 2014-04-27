@@ -19,14 +19,24 @@ class SP_Meta_Box_Calendar_Details {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		global $sportspress_formats;
+		$status = get_post_meta( $post->ID, 'sp_status', true );
 		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
 		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 		$venue_id = sp_get_the_term_id( $post->ID, 'sp_venue', 0 );
 		$team_id = get_post_meta( $post->ID, 'sp_team', true );
-		$formats = get_post_meta( $post->ID, 'sp_format' );
 		?>
 		<div>
+			<p><strong><?php _e( 'Status', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$args = array(
+					'name' => 'sp_status',
+					'id' => 'sp_status',
+					'selected' => $status,
+				);
+				sp_dropdown_statuses( $args );
+				?>
+			</p>
 			<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
 			<p>
 				<?php
@@ -98,6 +108,7 @@ class SP_Meta_Box_Calendar_Details {
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_venue', 0 ), 'sp_venue' );
+		update_post_meta( $post_id, 'sp_status', sp_array_value( $_POST, 'sp_status', 0 ) );
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', 0 ) );
 	}
 }

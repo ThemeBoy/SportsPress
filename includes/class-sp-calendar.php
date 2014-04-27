@@ -21,13 +21,17 @@ class SP_Calendar extends SP_Custom_Post {
 	public function data() {
 		global $pagenow;
 
+		$post_status = $this->status;
+		if ( ! $post_status )
+			$post_status = 'any';
+
 		$args = array(
 			'post_type' => 'sp_event',
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'post_date',
 			'order' => 'ASC',
-			'post_status' => 'any',
+			'post_status' => $post_status,
 			'tax_query' => array(
 				'relation' => 'AND'
 			),
