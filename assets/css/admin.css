@@ -19,6 +19,10 @@
 	content: "\f163";
 }
 
+.post-state-format.post-format-blocks:before, .post-format-icon.post-format-blocks:before, a.post-state-format.format-blocks:before {
+	content: "\f164";
+}
+
 #sp_videodiv .inside > fieldset > p:last-child {
 	margin-bottom: 1px !important;
 }

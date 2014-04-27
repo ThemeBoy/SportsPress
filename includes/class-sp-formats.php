@@ -30,6 +30,7 @@ class SP_Formats {
 			'calendar' => array(
 				'calendar' => __( 'Calendar', 'sportspress' ),
 				'list' => __( 'List', 'sportspress' ),
+				'blocks' => __( 'Blocks', 'sportspress' ),
 			),
 			'list' => array(
 				'list' => __( 'List', 'sportspress' ),

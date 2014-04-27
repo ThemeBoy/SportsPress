@@ -51,6 +51,9 @@
 .sp-icon-list:before {
 	content: "\f163"
 }
+.sp-icon-blocks:before {
+	content: "\f164"
+}
 .sp-icon-smile:before {
 	content: "\f328";
 }

@@ -243,6 +243,7 @@ final class SportsPress {
 		include_once( 'includes/widgets/class-sp-widget-countdown.php' );
 		include_once( 'includes/widgets/class-sp-widget-event-calendar.php' );
 		include_once( 'includes/widgets/class-sp-widget-event-list.php' );
+		include_once( 'includes/widgets/class-sp-widget-event-blocks.php' );
 		include_once( 'includes/widgets/class-sp-widget-league-table.php' );
 		include_once( 'includes/widgets/class-sp-widget-player-list.php' );
 		include_once( 'includes/widgets/class-sp-widget-player-gallery.php' );

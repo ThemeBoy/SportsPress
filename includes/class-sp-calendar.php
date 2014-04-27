@@ -15,6 +15,9 @@ class SP_Calendar extends SP_Custom_Post {
 	/** @var array The events status. */
 	public $status;
 
+	/** @var array The events order. */
+	public $order;
+
 	/**
 	 * __construct function.
 	 *
@@ -31,9 +34,13 @@ class SP_Calendar extends SP_Custom_Post {
 		endif;
 
 		$this->status = $this->__get( 'status' );
+		$this->order = $this->__get( 'order' );
 
 		if ( ! $this->status )
 			$this->status = 'any';
+
+		if ( ! $this->order )
+			$this->order = 'ASC';
 	}
 
 	/**
@@ -49,8 +56,8 @@ class SP_Calendar extends SP_Custom_Post {
 			'post_type' => 'sp_event',
 			'numberposts' => -1,
 			'posts_per_page' => -1,
-			'orderby' => 'post_date',
-			'order' => 'ASC',
+			'orderby' => 'date',
+			'order' => $this->order,
 			'post_status' => $this->status,
 			'tax_query' => array(
 				'relation' => 'AND'

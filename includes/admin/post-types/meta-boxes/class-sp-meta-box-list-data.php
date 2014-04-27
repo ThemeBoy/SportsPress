@@ -19,7 +19,8 @@ class SP_Meta_Box_List_Data {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		list( $columns, $usecolumns, $data, $placeholders, $merged ) = sp_get_player_list_data( $post->ID, true );
+		$list = new SP_Player_List( $post );
+		list( $columns, $usecolumns, $data, $placeholders, $merged ) = $list->data( true );
 		$adjustments = get_post_meta( $post->ID, 'sp_adjustments', true );
 		self::table( $columns, $usecolumns, $data, $placeholders, $adjustments );
 	}
