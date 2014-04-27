@@ -17,6 +17,7 @@ if ( ! $posts )
 
 $defaults = array(
 	'id' => null,
+	'status' => 'default',
 	'initial' => true,
 	'caption_tag' => 'h4',
 	'show_all_events_link' => false,
@@ -26,6 +27,8 @@ extract( $defaults, EXTR_SKIP );
 
 if ( isset( $id ) ):
 	$calendar = new SP_Calendar( $id );
+	if ( $status != 'default' )
+		$calendar->status = $status;
 	$events = $calendar->data();
 	$event_ids = array();
 	foreach ( $events as $event ):

@@ -10,12 +10,13 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$id = empty($instance['id']) ? null : $instance['id'];
+		$status = empty($instance['status']) ? 'default' : $instance['status'];
 		$show_all_events_link = empty($instance['show_all_events_link']) ? false : $instance['show_all_events_link'];
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
 		echo '<div id="calendar_wrap">';
-		sp_get_template( 'event-calendar.php', array( 'id' => $id, 'caption_tag' => 'caption', 'show_all_events_link' => $show_all_events_link )  );
+		sp_get_template( 'event-calendar.php', array( 'id' => $id, 'status' => $status, 'caption_tag' => 'caption', 'show_all_events_link' => $show_all_events_link )  );
 		echo '</div>';
 		echo $after_widget;
 	}
@@ -24,15 +25,17 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['id'] = intval($new_instance['id']);
+		$instance['status'] = $new_instance['status'];
 		$instance['show_all_events_link'] = $new_instance['show_all_events_link'];
 
 		return $instance;
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'show_all_events_link' => false ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'status' => 'default', 'show_all_events_link' => false ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
+		$status = $instance['status'];
 		$show_all_events_link = $instance['show_all_events_link'];
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
@@ -53,6 +56,19 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 			sp_post_adder( 'sp_calendar', __( 'Add New', 'sportspress' ) );
 		endif;
 		?>
+		</p>
+
+		<p><label for="<?php echo $this->get_field_id('status'); ?>"><?php _e( 'Status:', 'sportspress' ); ?></label>
+			<?php
+			$args = array(
+				'show_option_default' => __( 'Default', 'sportspress' ),
+				'name' => $this->get_field_name('status'),
+				'id' => $this->get_field_id('status'),
+				'selected' => $status,
+				'class' => 'sp-event-status-select widefat',
+			);
+			sp_dropdown_statuses( $args );
+			?>
 		</p>
 
 		<p class="sp-event-calendar-show-all-toggle<?php if ( ! $id ): ?> hidden<?php endif; ?>"><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_all_events_link'); ?>" name="<?php echo $this->get_field_name('show_all_events_link'); ?>" value="1" <?php checked( $show_all_events_link, 1 ); ?>>
