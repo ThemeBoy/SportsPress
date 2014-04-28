@@ -157,6 +157,10 @@ function sportspress_pre_get_posts( $query ) {
 			$query->set( 'orderby', 'menu_order' );
 			$query->set( 'order', 'ASC' );
 		endif;
+	else:
+		if ( isset( $query->query[ 'sp_venue' ] ) ):
+        	$GLOBALS[ 'wp_post_statuses' ][ 'future' ]->public = true;
+		endif;
 	endif;
 
 	return $query;
