@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $defaults = array(
 	'id' => get_the_ID(),
 	'number' => -1,
+	'grouping' => null,
 	'orderby' => 'default',
 	'order' => 'ASC',
 	'itemtag' => 'dl',
@@ -52,7 +53,14 @@ $labels = $data[0];
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
 
-if ( $orderby != 'default' ):
+if ( ! $grouping || $grouping == 'default' ):
+	$grouping = $list->grouping;
+endif;
+
+if ( $orderby == 'default' ):
+	$orderby = $list->orderby;
+	$order = $list->order;
+else:
 	$list->priorities = array(
 		array(
 			'key' => $orderby,
@@ -85,54 +93,50 @@ if ( apply_filters( 'use_default_gallery_style', true ) )
 	</style>";
 $size_class = sanitize_html_class( $size );
 $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
-
-$i = 0;
+echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
 
 if ( is_int( $number ) && $number > 0 )
 	$limit = $number;
 
-foreach( $data as $player_id => $performance ):
+if ( $grouping == 'position' ):
+	$groups = get_terms( 'sp_position' );
+else:
+	$group = new stdClass();
+	$group->term_id = null;
+	$group->name = null;
+	$group->slug = null;
+	$groups = array( $group );
+endif;
 
-	$caption = get_the_title( $player_id );
-	$caption = trim( $caption );
+foreach ( $groups as $group ):
+	$i = 0;
 
-	// Add player number to caption if available
-	$player_number = get_post_meta( $player_id, 'sp_number', true );
-	if ( $player_number )
-		$caption = '<strong>' . $player_number . '</strong> ' . $caption;
+	if ( ! empty( $group->name ) )
+		echo '<h3 class="sp-list-group-name">' . $group->name . '</h3>';
 
-	// Add caption tag if has caption
-	if ( $captiontag && $caption )
-		$caption = '<' . $captiontag . ' class="wp-caption-text gallery-caption">' . wptexturize( $caption ) . '</' . $captiontag . '>';
+	foreach( $data as $player_id => $performance ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):
 
-	if ( $link_posts )
-		$caption = '<a href="' . get_permalink( $player_id ) . '">' . $caption . '</a>';
+		$caption = get_the_title( $player_id );
+		$caption = trim( $caption );
 
-	if ( isset( $limit ) && $i >= $limit )
-		continue;
+	    sp_get_template( 'player-gallery-thumbnail.php', array(
+	    	'id' => $player_id,
+	    	'performance' => $performance,
+	    	'itemtag' => $itemtag,
+	    	'icontag' => $icontag,
+	    	'captiontag' => $captiontag,
+	    	'caption' => $caption,
+	    	'size' => $size,
+	    	'link_posts' => $link_posts,
+	    ) );
 
-	if ( has_post_thumbnail( $player_id ) ):
-		$thumbnail = get_the_post_thumbnail( $player_id, $size );
+	endif; endforeach;
 
-		$output .= "<{$itemtag} class='gallery-item'>";
-		$output .= "
-			<{$icontag} class='gallery-icon portrait'>"
-				. '<a href="' . get_permalink( $player_id ) . '">' . $thumbnail . '</a>'
-			. "</{$icontag}>";
-		$output .= $caption;
-		$output .= "</{$itemtag}>";
-		if ( $columns > 0 && ++$i % $columns == 0 )
-			$output .= '<br style="clear: both" />';
-	endif;
+	echo '<br style="clear: both;" />';
 
 endforeach;
-
-$output .= "
-		<br style='clear: both;' />
-	</div>\n";
+	
+echo "</div>\n";
 
 if ( $show_all_players_link )
-	$output .= '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all players') . '</a>';
-
-echo apply_filters( 'sportspress_player_gallery',  $output );
+	echo '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all players') . '</a>';
