@@ -1,6 +1,6 @@
 <?php
 /**
- * Player League Performance
+ * Player Performance Table
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
