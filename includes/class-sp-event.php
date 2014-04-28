@@ -260,4 +260,12 @@ class SP_Event extends SP_Custom_Post{
 			return $merged;
 		endif;
 	}
+
+	public function lineup_filter( $v ) {
+		return sp_array_value( $v, 'sub', false ) == false;
+	}
+
+	public function sub_filter( $v ) {
+		return sp_array_value( $v, 'sub', false );
+	}
 }
