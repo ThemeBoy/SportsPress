@@ -76,6 +76,7 @@ class SP_Install {
 	 * Install SP
 	 */
 	public function install() {
+		$this->remove_roles();
 		$this->create_roles();
 
 		// Register post types
@@ -148,27 +149,33 @@ class SP_Install {
 	public function create_roles() {
 		global $wp_roles;
 
-		if ( class_exists( 'WP_Roles' ) ) {
-			if ( ! isset( $wp_roles ) ) {
+		if ( class_exists( 'WP_Roles' ) ):
+			if ( ! isset( $wp_roles ) ):
 				$wp_roles = new WP_Roles();
-			}
-		}
+			endif;
+		endif;
 
-		if ( is_object( $wp_roles ) ) {
+		if ( is_object( $wp_roles ) ):
 
 		    add_role(
 		        'sp_player',
 		        __( 'Player', 'sportspress' ),
 		        array(
-		            'read' => true,
-		            'edit_posts' => true,
-		            'delete_posts' => true,
-		            'upload_files' => true,
+					'level_1' 						=> true,
+					'level_0' 						=> true,
 
-		            'edit_sp_player' => true,
-		            'edit_sp_players' => true,
-		            'read_sp_players' => true,
-		            'delete_sp_players' => true,
+		            'read' 							=> true,
+		            'delete_posts' 					=> true,
+		            'edit_posts' 					=> true,
+
+		            'edit_sp_player'				=> true,
+		            'read_sp_player'				=> true,
+		            'delete_sp_player'				=> true,
+		            'edit_sp_players' 				=> true,
+		            'delete_sp_players' 			=> true,
+		            'edit_published_sp_players' 	=> true,
+
+					'assign_sp_player_terms' 		=> true,
 		        )
 		    );
 
@@ -176,15 +183,21 @@ class SP_Install {
 		        'sp_staff',
 		        __( 'Staff', 'sportspress' ),
 		        array(
-		            'read' => true,
-		            'edit_posts' => true,
-		            'delete_posts' => true,
-		            'upload_files' => true,
+					'level_1' 						=> true,
+					'level_0' 						=> true,
 
-		            'edit_sp_staff' => true,
-		            'edit_sp_staffs' => true,
-		            'read_sp_staffs' => true,
-		            'delete_sp_staffs' => true,
+		            'read' 							=> true,
+		            'delete_posts' 					=> true,
+		            'edit_posts' 					=> true,
+
+		            'edit_sp_staff'					=> true,
+		            'read_sp_staff'					=> true,
+		            'delete_sp_staff'				=> true,
+		            'edit_sp_staffs' 				=> true,
+		            'delete_sp_staffs' 				=> true,
+		            'edit_published_sp_staffs' 		=> true,
+
+					'assign_sp_staff_terms' 		=> true,
 		        )
 		    );
 
@@ -192,98 +205,112 @@ class SP_Install {
 		        'sp_team_manager',
 		        __( 'Team Manager', 'sportspress' ),
 		        array(
-		            'read' => true,
-		            'edit_posts' => true,
-		            'delete_posts' => true,
-		            'upload_files' => true,
+					'level_2' 						=> true,
+					'level_1' 						=> true,
+					'level_0' 						=> true,
 
-		            'edit_sp_player' => true,
-		            'edit_sp_players' => true,
-		            'edit_private_sp_players' => true,
-		            'edit_published_sp_players' => true,
-		            'read_sp_players' => true,
-		            'read_private_sp_players' => true,
-		            'publish_sp_players' => true,
-		            'delete_sp_players' => true,
-		            'delete_private_sp_players' => true,
-		            'delete_published_sp_players' => true,
+		            'read' 							=> true,
+		            'delete_posts' 					=> true,
+		            'edit_posts' 					=> true,
+		            'delete_published_posts' 		=> true,
+		            'publish_posts' 				=> true,
+		            'upload_files' 					=> true,
+		            'edit_published_posts' 			=> true,
 
-		            'edit_sp_staff' => true,
-		            'edit_sp_staffs' => true,
-		            'edit_private_sp_staffs' => true,
-		            'edit_published_sp_staffs' => true,
-		            'read_sp_staffs' => true,
-		            'read_private_sp_staffs' => true,
-		            'publish_sp_staffs' => true,
-		            'delete_sp_staffs' => true,
-		            'delete_private_sp_staffs' => true,
-		            'delete_published_sp_staffs' => true,
+		            'edit_sp_player'				=> true,
+		            'read_sp_player'				=> true,
+		            'delete_sp_player'				=> true,
+		            'edit_sp_players' 				=> true,
+		            'edit_others_sp_players' 		=> true,
+		            'publish_sp_players' 			=> true,
+		            'delete_sp_players' 			=> true,
+		            'delete_published_sp_players' 	=> true,
+		            'edit_published_sp_players' 	=> true,
 
-		            'edit_sp_team' => true,
-		            'edit_sp_teams' => true,
-		            'read_sp_teams' => true,
-		            'delete_sp_teams' => true,
+		            'edit_sp_staff'					=> true,
+		            'read_sp_staff'					=> true,
+		            'delete_sp_staff'				=> true,
+		            'edit_sp_staffs' 				=> true,
+		            'edit_others_sp_staffs' 		=> true,
+		            'delete_sp_staffs' 				=> true,
+		            'delete_published_sp_staffs' 	=> true,
+		            'edit_published_sp_staffs' 		=> true,
 
-		            'edit_sp_list' => true,
-		            'edit_sp_lists' => true,
-		            'read_sp_lists' => true,
-		            'delete_sp_lists' => true,
+					'manage_sp_player_terms' 		=> true,
+					'edit_sp_player_terms' 			=> true,
+					'delete_sp_player_terms' 		=> true,
+					'assign_sp_player_terms' 		=> true,
+
+					'manage_sp_staff_terms' 		=> true,
+					'edit_sp_staff_terms' 			=> true,
+					'delete_sp_staff_terms' 		=> true,
+					'assign_sp_staff_terms' 		=> true,
+
+		            'edit_sp_team'					=> true,
+		            'read_sp_team'					=> true,
+		            'delete_sp_team'				=> true,
+		            'edit_sp_teams' 				=> true,
+		            'delete_sp_teams' 				=> true,
+		            'edit_published_sp_teams' 		=> true,
+
+		            'edit_sp_player_statistics'		=> true,
 		        )
 		    );
 
 			// League manager role
-			add_role( 'sp_league_manager', __( 'League Manager', 'sportspress' ), array(
-				'level_9'                => true,
-				'level_8'                => true,
-				'level_7'                => true,
-				'level_6'                => true,
-				'level_5'                => true,
-				'level_4'                => true,
-				'level_3'                => true,
-				'level_2'                => true,
-				'level_1'                => true,
-				'level_0'                => true,
-				'read'                   => true,
-				'read_private_pages'     => true,
-				'read_private_posts'     => true,
-				'edit_users'             => true,
-				'edit_posts'             => true,
-				'edit_pages'             => true,
-				'edit_published_posts'   => true,
-				'edit_published_pages'   => true,
-				'edit_private_pages'     => true,
-				'edit_private_posts'     => true,
-				'edit_others_posts'      => true,
-				'edit_others_pages'      => true,
-				'publish_posts'          => true,
-				'publish_pages'          => true,
-				'delete_posts'           => true,
-				'delete_pages'           => true,
-				'delete_private_pages'   => true,
-				'delete_private_posts'   => true,
-				'delete_published_pages' => true,
-				'delete_published_posts' => true,
-				'delete_others_posts'    => true,
-				'delete_others_pages'    => true,
-				'manage_categories'      => true,
-				'manage_links'           => true,
-				'moderate_comments'      => true,
-				'unfiltered_html'        => true,
-				'upload_files'           => true,
-				'export'                 => true,
-				'import'                 => true,
-				'list_users'             => true
-			) );
+			add_role( 'sp_league_manager', __( 'League Manager', 'sportspress' ),
+				array(
+					'level_7' 						=> true,
+					'level_6' 						=> true,
+					'level_5' 						=> true,
+					'level_4' 						=> true,
+					'level_3' 						=> true,
+					'level_2' 						=> true,
+					'level_1' 						=> true,
+					'level_0' 						=> true,
+
+					'read' 							=> true,
+					'read_private_pages' 			=> true,
+					'read_private_posts' 			=> true,
+					'edit_users' 					=> true,
+					'edit_posts' 					=> true,
+					'edit_pages' 					=> true,
+					'edit_published_posts' 			=> true,
+					'edit_published_pages' 			=> true,
+					'edit_private_pages' 			=> true,
+					'edit_private_posts' 			=> true,
+					'edit_others_posts' 			=> true,
+					'edit_others_pages' 			=> true,
+					'publish_posts' 				=> true,
+					'publish_pages' 				=> true,
+					'delete_posts' 					=> true,
+					'delete_pages' 					=> true,
+					'delete_private_pages' 			=> true,
+					'delete_private_posts' 			=> true,
+					'delete_published_pages' 		=> true,
+					'delete_published_posts' 		=> true,
+					'delete_others_posts' 			=> true,
+					'delete_others_pages' 			=> true,
+					'manage_categories' 			=> true,
+					'manage_links' 					=> true,
+					'moderate_comments' 			=> true,
+					'unfiltered_html' 				=> true,
+					'upload_files' 					=> true,
+					'export' 						=> true,
+					'import' 						=> true,
+					'list_users' 					=> true
+				)
+			);
 
 			$capabilities = $this->get_core_capabilities();
 
-			foreach ( $capabilities as $cap_group ) {
-				foreach ( $cap_group as $cap ) {
+			foreach ( $capabilities as $cap_group ):
+				foreach ( $cap_group as $cap ):
 					$wp_roles->add_cap( 'sp_league_manager', $cap );
 					$wp_roles->add_cap( 'administrator', $cap );
-				}
-			}
-		}
+				endforeach;
+			endforeach;
+		endif;
 	}
 
 	/**
@@ -297,7 +324,9 @@ class SP_Install {
 
 		$capabilities['core'] = array(
 			'manage_sportspress',
-			'view_sportspress_reports'
+			'view_sportspress_reports',
+			'edit_sp_player_statistics',
+			'edit_sp_team_columns',
 		);
 
 		$capability_types = array( 'sp_config', 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' );
