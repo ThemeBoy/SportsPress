@@ -22,6 +22,7 @@ class SP_Meta_Box_List_Details {
 		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
 		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 		$team_id = get_post_meta( $post->ID, 'sp_team', true );
+		$grouping = get_post_meta( $post->ID, 'sp_grouping', true );
 		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
 		?>
@@ -69,6 +70,13 @@ class SP_Meta_Box_List_Details {
 				endif;
 				?>
 			</p>
+			<p><strong><?php _e( 'Grouping', 'sportspress' ); ?></strong></p>
+			<p>
+			<select name="sp_grouping">
+				<option value="0"><?php _e( 'None', 'sportspress' ); ?></option>
+				<option value="position" <?php selected( $grouping, 'position' ); ?>><?php _e( 'Position', 'sportspress' ); ?></option>
+			</select>
+			</p>
 			<p><strong><?php _e( 'Sort by', 'sportspress' ); ?></strong></p>
 			<p>
 			<?php
@@ -82,9 +90,7 @@ class SP_Meta_Box_List_Details {
 				'selected' => $orderby,
 				'values' => 'slug',
 			);
-			if ( ! sp_dropdown_pages( $args ) ):
-				sp_post_adder( 'sp_list', __( 'Add New', 'sportspress' ) );
-			endif;
+			sp_dropdown_pages( $args );
 			?>
 			</p>
 			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
@@ -110,6 +116,7 @@ class SP_Meta_Box_List_Details {
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
+		update_post_meta( $post_id, 'sp_grouping', sp_array_value( $_POST, 'sp_grouping', array() ) );
 		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', array() ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
