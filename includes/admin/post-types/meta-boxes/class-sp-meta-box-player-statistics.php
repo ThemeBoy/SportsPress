@@ -35,7 +35,7 @@ class SP_Meta_Box_Player_Statistics {
 			$player = new SP_Player( $post );
 			list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( $league->term_id, true );
 
-			self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_teams' ) );
+			self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_player_statistics' ) );
 
 		endforeach; else:
 
@@ -49,7 +49,7 @@ class SP_Meta_Box_Player_Statistics {
 	 */
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
-		if ( current_user_can( 'edit_sp_teams' ) )
+		if ( current_user_can( 'edit_sp_player_statistics' ) )
 			update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
 	}
 
@@ -117,7 +117,10 @@ class SP_Meta_Box_Player_Statistics {
 								<td><?php
 									$value = sp_array_value( sp_array_value( $data, $div_id, array() ), $column, null );
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $div_id, array() ), $column, 0 );
-									echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . $value . '" placeholder="' . $placeholder . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+									if ( $readonly )
+										echo $value ? $value : $placeholder;
+									else
+										echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . $value . '" placeholder="' . $placeholder . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
 								?></td>
 							<?php endforeach; ?>
 						</tr>
