@@ -3231,6 +3231,7 @@ function sp_get_text_options() {
 		'team' => __( 'Team', 'sportspress' ),
 		'teams' => __( 'Teams', 'sportspress' ),
 		'time' => __( 'Time', 'sportspress' ),
+		'timeresults' => __( 'Time/Results', 'sportspress' ),
 		'total' => __( 'Total', 'sportspress' ),
 		'venue' => __( 'Venue', 'sportspress' ),
 		'view_all_events' => __( 'View all events', 'sportspress' ),

@@ -61,7 +61,7 @@ class SP_Meta_Box_Calendar_Data {
 						<th class="column-time">
 							<label for="sp_columns_time">
 								<input type="checkbox" name="sp_columns[]" value="time" id="sp_columns_time" <?php checked( ! is_array( $usecolumns ) || in_array( 'time', $usecolumns ) ); ?>>
-								<?php _e( 'Time', 'sportspress' ); ?>
+								<?php _e( 'Time/Results', 'sportspress' ); ?>
 							</label>
 						</th>
 						<th class="column-venue">
@@ -86,6 +86,7 @@ class SP_Meta_Box_Calendar_Data {
 						foreach ( $data as $event ):
 							$teams = get_post_meta( $event->ID, 'sp_team' );
 							$results = get_post_meta( $event->ID, 'sp_results', true );
+							$main_results = array();
 							$video = get_post_meta( $event->ID, 'sp_video', true );
 							?>
 							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
@@ -110,6 +111,7 @@ class SP_Meta_Box_Calendar_Data {
 											endif;
 
 											if ( $team_result != null ):
+												$main_results[] = $team_result;
 												unset( $team_results['outcome'] );
 												$team_results = implode( ' | ', $team_results );
 												echo '<a class="result tips" title="' . $team_results . '" href="' . get_edit_post_link( $event->ID ) . '">' . $team_result . '</a> ';
@@ -120,7 +122,15 @@ class SP_Meta_Box_Calendar_Data {
 									endforeach;
 									?>
 								</td>
-								<td><?php echo get_post_time( get_option( 'time_format' ), false, $event ); ?></td>
+								<td>
+									<?php
+										if ( ! empty( $main_results ) ):
+											echo implode( ' - ', $main_results );
+										else:
+											echo get_post_time( get_option( 'time_format' ), false, $event );
+										endif;
+									?>
+								</td>
 								<td><?php the_terms( $event->ID, 'sp_venue' ); ?></td>
 								<td>
 									<a href="<?php echo get_edit_post_link( $event->ID ); ?>#sp_articlediv">
