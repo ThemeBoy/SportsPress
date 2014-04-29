@@ -31,6 +31,7 @@ class SP_Player_List extends SP_Custom_Post {
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$orderby = get_post_meta( $this->ID, 'sp_orderby', true );
 		$order = get_post_meta( $this->ID, 'sp_order', true );
+		$column_groups = (array)get_post_meta( $this->ID, 'sp_column_group' );
 
 		// Get labels from performance variables
 		$performance_labels = (array)sp_get_var_labels( 'sp_performance' );
@@ -226,10 +227,8 @@ class SP_Player_List extends SP_Custom_Post {
 			$totals[ $player_id ]['last10'] = $last10;
 		endforeach;
 
-		$placeholders[ $player_id ] = array_merge( $totals[ $player_id ], $placeholders[ $player_id ] );
-
 		$args = array(
-			'post_type' => array( 'sp_performance', 'sp_metric', 'sp_statistic' ),
+			'post_type' => $column_groups,
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 	  		'orderby' => 'menu_order',

@@ -72,8 +72,9 @@ class SP_Admin_Meta_Boxes {
 
 		// Save List Meta Boxes
 		add_action( 'sportspress_process_sp_list_meta', 'SP_Meta_Box_List_Format::save', 10, 2 );
-		add_action( 'sportspress_process_sp_list_meta', 'SP_Meta_Box_List_Details::save', 20, 2 );
-		add_action( 'sportspress_process_sp_list_meta', 'SP_Meta_Box_List_Data::save', 30, 2 );
+		add_action( 'sportspress_process_sp_list_meta', 'SP_Meta_Box_List_Columns::save', 20, 2 );
+		add_action( 'sportspress_process_sp_list_meta', 'SP_Meta_Box_List_Details::save', 30, 2 );
+		add_action( 'sportspress_process_sp_list_meta', 'SP_Meta_Box_List_Data::save', 40, 2 );
 
 		// Save Staff Meta Boxes
 		add_action( 'sportspress_process_sp_staff_meta', 'SP_Meta_Box_Staff_Details::save', 10, 2 );
@@ -139,6 +140,7 @@ class SP_Admin_Meta_Boxes {
 		// Lists
 		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'SP_Meta_Box_List_Shortcode::output', 'sp_list', 'side', 'default' );
 		add_meta_box( 'sp_formatdiv', __( 'Layout', 'sportspress' ), 'SP_Meta_Box_List_Format::output', 'sp_list', 'side', 'default' );
+		add_meta_box( 'sp_columnsdiv', __( 'Columns', 'sportspress' ), 'SP_Meta_Box_List_Columns::output', 'sp_list', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_List_Details::output', 'sp_list', 'side', 'default' );
 		add_meta_box( 'sp_datadiv', __( 'Player List', 'sportspress' ), 'SP_Meta_Box_List_Data::output', 'sp_list', 'normal', 'high' );
 		add_meta_box( 'sp_editordiv', __( 'Description', 'sportspress' ), 'SP_Meta_Box_List_Editor::output', 'sp_list', 'normal', 'high' );
