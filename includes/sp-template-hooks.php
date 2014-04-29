@@ -87,7 +87,7 @@ add_action( 'sportspress_single_staff_content', 'sportspress_output_staff_detail
 add_action( 'loop_start', 'sportspress_output_venue_map' );
 
 function sportspress_the_title( $title, $id ) {
-	if ( ! current_theme_supports( 'sportspress' ) && in_the_loop() && $id == get_the_ID() ):
+	if ( ! is_admin() && ! current_theme_supports( 'sportspress' ) && in_the_loop() && $id == get_the_ID() ):
 		if ( is_singular( 'sp_player' ) ):
 			$number = get_post_meta( $id, 'sp_number', true );
 			if ( $number != null ):
