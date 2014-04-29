@@ -191,6 +191,7 @@ class SP_Player_List extends SP_Custom_Post {
 					endif;
 
 				endforeach;
+
 			endforeach;
 
 		endforeach;
@@ -246,7 +247,13 @@ class SP_Player_List extends SP_Custom_Post {
 				$meta = get_post_meta( $stat->ID );
 
 				// Add equation to object
-				$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, null );
+				if ( $stat->post_type == 'sp_metric' ):
+					$stat->equation = null;
+				else:
+					$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
+				endif;
+
+				// Add precision to object
 				$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 );
 
 				// Add column name to columns
@@ -259,19 +266,19 @@ class SP_Player_List extends SP_Custom_Post {
 				if ( ! $player_id )
 					continue;
 
-				$variables = array_merge( sp_array_value( $totals, $player_id, array() ), array_filter( sp_array_value( $placeholders, $player_id, array() ) ) );
+				$placeholders[ $player_id ] = array_merge( sp_array_value( $totals, $player_id, array() ), array_filter( sp_array_value( $placeholders, $player_id, array() ) ) );
 
 				foreach ( $stats as $stat ):
 					if ( sp_array_value( $placeholders[ $player_id ], $stat->post_name, '' ) == '' ):
 
-						if ( $stat->equation == null ):
+						if ( $stat->equation === null ):
 							$placeholder = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, null );
 							if ( $placeholder == null ):
 								$placeholder = '-';
 							endif;
 						else:
 							// Solve
-							$placeholder = sp_solve( $stat->equation, $variables, $stat->precision );
+							$placeholder = sp_solve( $stat->equation, $placeholders[ $player_id ], $stat->precision );
 
 							// Adjustments
 							$placeholder += sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, 0 );
@@ -290,9 +297,9 @@ class SP_Player_List extends SP_Custom_Post {
 
 		foreach( $placeholders as $player_id => $player_data ):
 
-			// Add player name to row
+			// Add player number and name to row
 			$merged[ $player_id ] = array();
-
+			$player_data['number'] = get_post_meta( $player_id, 'sp_number', true );
 			$player_data['name'] = get_the_title( $player_id );
 
 			foreach( $player_data as $key => $value ):
