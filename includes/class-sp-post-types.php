@@ -54,7 +54,7 @@ class SP_Post_types {
 			'hierarchical' => true,
 			'rewrite' => array( 'slug' => get_option( 'sportspress_league_slug', 'league' ) ),
 		);
-		$object_types = array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' );
+		$object_types = apply_filters( 'sportspress_league_object_types', array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) );
 		register_taxonomy( 'sp_league', $object_types, $args );
 		foreach ( $object_types as $object_type ):
 			register_taxonomy_for_object_type( 'sp_league', $object_type );
@@ -83,10 +83,10 @@ class SP_Post_types {
 			'hierarchical' => true,
 			'rewrite' => array( 'slug' => get_option( 'sportspress_season_slug', 'season' ) ),
 		);
-		$object_types = array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' );
+		$object_types = apply_filters( 'sportspress_season_object_types', array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) );
 		register_taxonomy( 'sp_season', $object_types, $args );
 		foreach ( $object_types as $object_type ):
-			register_taxonomy_for_object_type( 'sp_league', $object_type );
+			register_taxonomy_for_object_type( 'sp_season', $object_type );
 		endforeach;
 
 		$labels = array(
@@ -112,10 +112,10 @@ class SP_Post_types {
 			'hierarchical' => true,
 			'rewrite' => array( 'slug' => get_option( 'sportspress_venue_slug', 'venue' ) ),
 		);
-		$object_types = array( 'sp_event', 'sp_calendar' );
+		$object_types = apply_filters( 'sportspress_event_object_types', array( 'sp_event', 'sp_calendar' ) );
 		register_taxonomy( 'sp_venue', $object_types, $args );
 		foreach ( $object_types as $object_type ):
-			register_taxonomy_for_object_type( 'sp_league', $object_type );
+			register_taxonomy_for_object_type( 'sp_venue', $object_type );
 		endforeach;
 
 		$labels = array(
@@ -141,10 +141,10 @@ class SP_Post_types {
 			'hierarchical' => true,
 			'rewrite' => array( 'slug' => get_option( 'sportspress_position_slug', 'position' ) ),
 		);
-		$object_types = array( 'sp_player' );
+		$object_types = apply_filters( 'sportspress_position_object_types', array( 'sp_player' ) );
 		register_taxonomy( 'sp_position', $object_types, $args );
 		foreach ( $object_types as $object_type ):
-			register_taxonomy_for_object_type( 'sp_league', $object_type );
+			register_taxonomy_for_object_type( 'sp_position', $object_type );
 		endforeach;
 	}
 
