@@ -3216,6 +3216,7 @@ function sp_get_text_options() {
 		'event' => __( 'Event', 'sportspress' ),
 		'league' => __( 'League', 'sportspress' ),
 		'nationality' => __( 'Nationality', 'sportspress' ),
+		'outcome' => __( 'Outcome', 'sportspress' ),
 		'past_teams' => __( 'Past Teams', 'sportspress' ),
 		'played' => __( 'Played', 'sportspress' ),
 		'player' => __( 'Player', 'sportspress' ),
