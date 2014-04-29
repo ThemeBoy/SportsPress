@@ -225,7 +225,7 @@ class SP_League_Table extends SP_Custom_Post{
 			$meta = get_post_meta( $stat->ID );
 
 			// Add equation to object
-			$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
+			$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, null );
 			$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 );
 
 			// Add column name to columns
@@ -253,11 +253,18 @@ class SP_League_Table extends SP_Custom_Post{
 			foreach ( $stats as $stat ):
 				if ( sp_array_value( $placeholders[ $team_id ], $stat->post_name, '' ) == '' ):
 
-					// Solve
-					$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $team_id, array() ), $stat->precision );
+					if ( $stat->equation == null ):
+						$placeholder += sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $stat->post_name, null );
+						if ( $placeholder == null ):
+							$placeholder = '-';
+						endif;
+					else:
+						// Solve
+						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $team_id, array() ), $stat->precision );
 
-					// Adjustments
-					$placeholder += sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $stat->post_name, 0 );
+						// Adjustments
+						$placeholder += sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $stat->post_name, 0 );
+					endif;
 
 					$placeholders[ $team_id ][ $stat->post_name ] = $placeholder;
 				endif;

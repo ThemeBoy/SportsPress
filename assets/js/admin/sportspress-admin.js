@@ -145,6 +145,7 @@ jQuery(document).ready(function($){
 		placeholder = parseFloat($el.attr("data-placeholder"));
 		current_adjustment = parseFloat($el.attr("data-adjustment"));
 		adjustment = parseFloat($(this).val());
+		if(isNaN(placeholder)) placeholder = 0;
 		if(isNaN(current_adjustment)) current_adjustment = 0;
 		if(isNaN(adjustment)) adjustment = 0;
 		placeholder += adjustment - current_adjustment;

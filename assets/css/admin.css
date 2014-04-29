@@ -146,6 +146,7 @@
 }
 
 .sp-data-table-container {
+	clear: both;
 	overflow: auto;
 }
 
