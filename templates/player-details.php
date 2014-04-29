@@ -25,7 +25,8 @@ $player = new SP_Player( $id );
 $nationality = $player->nationality;
 $current_team = $player->current_team;
 $past_teams = $player->past_teams();
-$metrics = $player->metrics();
+$metrics_before = $player->metrics( true );
+$metrics_after = $player->metrics( false );
 
 $common = array();
 if ( $nationality ):
@@ -33,7 +34,7 @@ if ( $nationality ):
 	$common[ SP()->text->string('Nationality') ] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 endif;
 
-$data = array_merge( $common, $metrics );
+$data = array_merge( $metrics_before, $common, $metrics_after );
 
 if ( $current_team )
 	$data[ SP()->text->string('Current Team') ] = '<a href="' . get_post_permalink( $current_team ) . '">' . get_the_title( $current_team ) . '</a>';
