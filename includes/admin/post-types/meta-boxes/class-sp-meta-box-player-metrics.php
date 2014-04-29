@@ -20,7 +20,6 @@ class SP_Meta_Box_Player_Metrics {
 	 */
 	public static function output( $post ) {
 		$metrics = get_post_meta( $post->ID, 'sp_metrics', true );
-		$positions = get_the_terms( $post->ID, 'sp_position' );
 
 		$args = array(
 			'post_type' => 'sp_metric',
@@ -29,20 +28,6 @@ class SP_Meta_Box_Player_Metrics {
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
 		);
-
-		if ( $positions ):
-			$position_ids = array();
-			foreach( $positions as $position ):
-				$position_ids[] = $position->term_id;
-			endforeach;
-			$args['tax_query'] = array(
-				array(
-					'taxonomy' => 'sp_position',
-					'field' => 'id',
-					'terms' => $position_ids,
-				),
-			);
-		endif;
 
 		$vars = get_posts( $args );
 
