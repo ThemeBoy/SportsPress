@@ -145,6 +145,10 @@
 	font-family: monospace;
 }
 
+.sp-data-table-container {
+	overflow: auto;
+}
+
 table.widefat.sp-data-table img {
 	vertical-align: top;
 }
