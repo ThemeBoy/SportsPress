@@ -83,6 +83,11 @@ class SP_Player_List extends SP_Custom_Post {
 
 			// Get metrics
 			$metrics = get_post_meta( $player_id, 'sp_metrics', true );
+			foreach ( $metrics as $key => $value ):
+				$adjustment = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $key, null );
+				if ( $adjustment != null )
+					$metrics[ $key ] += $adjustment;
+			endforeach;
 
 			// Get static stats
 			$static = get_post_meta( $player_id, 'sp_statistics', true );
@@ -255,7 +260,10 @@ class SP_Player_List extends SP_Custom_Post {
 				if ( sp_array_value( $placeholders[ $player_id ], $stat->post_name, '' ) == '' ):
 
 					if ( $stat->equation == null ):
-						$placeholder = '-';
+						$placeholder = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, null );
+						if ( $placeholder == null ):
+							$placeholder = '-';
+						endif;
 					else:
 						// Solve
 						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $player_id, array() ), $stat->precision );
