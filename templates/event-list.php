@@ -49,7 +49,7 @@ if ( isset( $columns ) )
 					echo '<th class="data-teams">' . SP()->text->string('Teams') . '</th>';
 
 				if ( $usecolumns == null || in_array( 'time', $usecolumns ) )
-					echo '<th class="data-time">' . SP()->text->string('Time') . '</th>';
+					echo '<th class="data-time">' . SP()->text->string('Time/Results') . '</th>';
 
 				if ( $usecolumns == null || in_array( 'venue', $usecolumns ) )
 					echo '<th class="data-venue">' . SP()->text->string('Venue') . '</th>';
@@ -71,6 +71,7 @@ if ( isset( $columns ) )
 
 				$teams = get_post_meta( $event->ID, 'sp_team' );
 				$results = get_post_meta( $event->ID, 'sp_results', true );
+				$main_results = array();
 				$video = get_post_meta( $event->ID, 'sp_video', true );
 
 				echo '<tr class="sp-row sp-post' . ( $i % 2 == 0 ? ' alternate' : '' ) . '">';
@@ -104,6 +105,7 @@ if ( isset( $columns ) )
 										echo $name;
 
 										if ( $team_result != null ):
+											$main_results[] = $team_result;
 											echo ' (' . $team_result . ')';
 										endif;
 
@@ -117,8 +119,15 @@ if ( isset( $columns ) )
 						echo '</td>';
 					endif;
 
-				if ( $usecolumns == null || in_array( 'time', $usecolumns ) )
-					echo '<td class="data-time">' . get_post_time( get_option( 'time_format' ), false, $event ) . '</td>';
+				if ( $usecolumns == null || in_array( 'time', $usecolumns ) ):
+					echo '<td class="data-time">';
+					if ( ! empty( $main_results ) ):
+						echo implode( ' - ', $main_results );
+					else:
+						echo get_post_time( get_option( 'time_format' ), false, $event );
+					endif;
+					echo '</td>';
+				endif;
 
 				if ( $usecolumns == null || in_array( 'venue', $usecolumns ) ):
 					echo '<td class="data-venue">';
