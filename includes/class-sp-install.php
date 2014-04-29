@@ -65,10 +65,9 @@ class SP_Install {
 			delete_transient( '_sp_activation_redirect' );
 
 			// What's new redirect
-			//wp_redirect( admin_url( 'index.php?page=sp-about' ) );
-			//exit;
-
-		// Update button
+			wp_redirect( admin_url( 'index.php?page=sp-about' ) );
+			exit;
+			
 		}
 	}
 
