@@ -46,10 +46,10 @@ class SP_Admin_CPT_List extends SP_Admin_CPT {
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Title', 'sportspress' ),
-			'sp_player' => __( 'Players', 'sportspress' ),
 			'sp_league' => __( 'League', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_team' => __( 'Team', 'sportspress' ),
+			'sp_player' => __( 'Players', 'sportspress' ),
 			'sp_views' => __( 'Views', 'sportspress' ),
 		);
 		return $columns;
@@ -62,7 +62,7 @@ class SP_Admin_CPT_List extends SP_Admin_CPT {
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
 			case 'sp_player':
-				echo sp_posts( $post_id, 'sp_player' );
+				echo sizeof( array_filter( get_post_meta( $post_id, 'sp_player' ) ) );
 			break;
 			case 'sp_league':
 				echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
