@@ -36,15 +36,19 @@ League table columns, player statistics, and match results can be customized to 
 = Available Languages =
 * English – English ( en_US )
 * Arabic – العربية ( ar )
+* Croatian – Hrvatski ( hr )
 * Czech – Čeština ( cs_CZ )
-* German – Deutsch ( de_DE )
-* Spanish – Español ( es_ES )
 * French – Français ( fr_FR )
+* German – Deutsch ( de_DE )
+* Greek – Ελληνικά ( el_GR )
 * Italian – Italiano ( it_IT )
 * Japanese – 日本語 ( ja )
 * Polish – Polski ( pl_PL )
 * Portuguese (Brazil) – Português do Brasil ( pt_BR )
+* Russian - Русский ( ru_RU )
 * Slovak – Slovenčina ( sk_SK )
+* Slovenian – Slovenija ( sl_SI )
+* Spanish – Español ( es_ES )
 * Swedish – Svenska ( sv_SE )
 
 Some language files are incomplete as they are still being translated by the community. Help us translate SportsPress by contributing to our [Transifex project](https://www.transifex.com/projects/p/sportspress/)!
@@ -161,8 +165,40 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 == Changelog ==
 
 = 0.8 =
+* Feature - New shortcode event_results.
+* Feature - New shortcode event_details.
+* Feature - New shortcode event_performance.
+* Feature - New blocks layout to display calendars in fixtures/results style.
+* Feature - New player statistics calculate values using performance and metrics.
+* Feature - New staff profiles.
+* Feature - New System Status screen in admin.
+* Feature - Add status selector to calendars and event widgets.
+* Feature - Add ability to display metrics in player lists.
+* Feature - Add time/results column to event list.
+* Feature - Link WP user roles with players and staff.
+* Feature - Option to group player lists by position.
+* Feature - Option to display outcomes in event results.
+* Refactor - Player profiles and lists now use statistics instead of performance.
+* Tweak - Split admin CSS files for better performance.
+* Tweak - Display player numbers in admin.
+* Tweak - Move SportsPress settings to top-level page.
+* Tweak - Link date to event page in event list.
+* Tweak - Load Google Maps script only when needed.
+* Tweak - Add descriptions to configure screen for clarity.
+* Tweak - Create dedicated settings tab for text settings.
+* Tweak - Remove redundant border from pagination table.
+* Tweak - Display players and teams as total count in admin.
+* Fix - Display player number when 0 or 00.
+* Fix - Enable changing variable name or key from quick edit.
+* Fix - Team data saving issue.
+* Fix - Display all future events in venue archive.
+* Fix - Display all metrics instead of filtering by position.
+* Localization - Croatian translation by i__k.
+* Localization - Greek translation by Spirossmil.
 * Localization - Portuguese (Brazil) translation by rochester.
-* Localization - Update Swedish translation by JensZ.
+* Localization - Russian translation by Selskei.
+* Localization - Slovenian translation by BOCo.
+* Localization - Update translations.
 
 = 0.7.4 =
 * Feature - Shortcode added to display single event content.
