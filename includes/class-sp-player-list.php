@@ -226,8 +226,10 @@ class SP_Player_List extends SP_Custom_Post {
 			$totals[ $player_id ]['last10'] = $last10;
 		endforeach;
 
+		$placeholders[ $player_id ] = array_merge( $totals[ $player_id ], $placeholders[ $player_id ] );
+
 		$args = array(
-			'post_type' => array( 'sp_metric', 'sp_statistic' ),
+			'post_type' => array( 'sp_performance', 'sp_metric', 'sp_statistic' ),
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 	  		'orderby' => 'menu_order',
@@ -256,6 +258,8 @@ class SP_Player_List extends SP_Custom_Post {
 			if ( ! $player_id )
 				continue;
 
+			$variables = array_merge( sp_array_value( $totals, $player_id, array() ), array_filter( sp_array_value( $placeholders, $player_id, array() ) ) );
+
 			foreach ( $stats as $stat ):
 				if ( sp_array_value( $placeholders[ $player_id ], $stat->post_name, '' ) == '' ):
 
@@ -266,7 +270,7 @@ class SP_Player_List extends SP_Custom_Post {
 						endif;
 					else:
 						// Solve
-						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $player_id, array() ), $stat->precision );
+						$placeholder = sp_solve( $stat->equation, $variables, $stat->precision );
 
 						// Adjustments
 						$placeholder += sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, 0 );
@@ -275,6 +279,7 @@ class SP_Player_List extends SP_Custom_Post {
 					$placeholders[ $player_id ][ $stat->post_name ] = $placeholder;
 				endif;
 			endforeach;
+
 		endforeach;
 
 		// Merge the data and placeholders arrays
