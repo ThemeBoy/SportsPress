@@ -235,6 +235,10 @@ class SP_Player extends SP_Custom_Post {
 				$placeholders[ $div_id ][ $key ] = sp_solve( $value['equation'], $totals, $value['precision'] );
 			endforeach;
 
+			foreach ( $performance_labels as $key => $label ):
+				$placeholders[ $div_id ][ $key ] = sp_array_value( $totals, $key, 0 );
+			endforeach;
+
 		endforeach;
 
 		// Get stats from statistic variables
@@ -281,10 +285,12 @@ class SP_Player extends SP_Custom_Post {
 
 		endforeach;
 
+		$columns = array_merge( $performance_labels, $stats );
+
 		if ( $admin ):
-			return array( $stats, $data, $placeholders, $merged, $leagues );
+			return array( $columns, $data, $placeholders, $merged, $leagues );
 		else:
-			$labels = array_merge( array( 'name' => SP()->text->string('Season'), 'team' => SP()->text->string('Team') ), $stats );
+			$labels = array_merge( array( 'name' => SP()->text->string('Season'), 'team' => SP()->text->string('Team') ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;
