@@ -709,7 +709,7 @@ if ( !function_exists( 'sp_draft_or_post_title' ) ) {
 }
 
 if ( !function_exists( 'sp_get_var_labels' ) ) {
-	function sp_get_var_labels( $post_type ) {
+	function sp_get_var_labels( $post_type, $neg = null ) {
 		$args = array(
 			'post_type' => $post_type,
 			'numberposts' => -1,
@@ -722,7 +722,8 @@ if ( !function_exists( 'sp_get_var_labels' ) ) {
 
 		$output = array();
 		foreach ( $vars as $var ):
-			$output[ $var->post_name ] = $var->post_title;
+			if ( $neg === null || ( $neg && $var->menu_order < 0 ) || ( ! $neg && $var->menu_order >= 0 ) )
+				$output[ $var->post_name ] = $var->post_title;
 		endforeach;
 
 		return $output;

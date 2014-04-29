@@ -28,9 +28,9 @@ class SP_Player extends SP_Custom_Post {
 	 * @access public
 	 * @return array
 	 */
-	public function metrics() {
+	public function metrics( $neg = null ) {
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
-		$metric_labels = (array)sp_get_var_labels( 'sp_metric' );
+		$metric_labels = (array)sp_get_var_labels( 'sp_metric', $neg );
 		$data = array();
 		foreach( $metric_labels as $key => $value ):
 			$metric = sp_array_value( $metrics, $key, null );
