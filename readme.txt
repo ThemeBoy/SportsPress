@@ -8,11 +8,11 @@ Stable tag: 0.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-SportsPress is a fully configurable sports plugin that seamlessly automates league, team, and player statistics. Currently in beta.
+SportsPress is a league management plugin that helps you create a team website using WordPress. Currently in beta.
 
 == Description ==
 
-Created by the developers at [ThemeBoy](http://themeboy.com/) and featured on Softpedia as [Script of the Day](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml), SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully configurable league website.
+Created by the developers at [ThemeBoy](http://themeboy.com/) and featured on Softpedia as [Script of the Day](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml), SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team website.
 
 Add schedules, results, league tables, player profiles and statistics to your team or league site with SportsPress. It uses core WordPress markup syntax and will integrate seamlessly with most themes. Custom shortcodes, CSV importers, and several language translations are included.
 
@@ -46,6 +46,8 @@ League table columns, player statistics, and match results can be customized to 
 * Portuguese (Brazil) – Português do Brasil ( pt_BR )
 * Slovak – Slovenčina ( sk_SK )
 * Swedish – Svenska ( sv_SE )
+
+Some language files are incomplete as they are still being translated by the community. Help us translate SportsPress by contributing to our [Transifex project](https://www.transifex.com/projects/p/sportspress/)!
 
 = Get involved =
 
