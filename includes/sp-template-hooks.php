@@ -217,7 +217,7 @@ add_filter( 'the_content', 'sportspress_content_post_views' );
 add_filter( 'get_the_content', 'sportspress_content_post_views' );
 
 function sportspress_widget_text( $content ) {
-	if ( ! preg_match( '/\[[\r\n\t ]*(countdown|events?(_|-)(results|details|performance|calendar|list)|team(_|-)columns|league(_|-)table|player(_|-)(metrics|performance|list|gallery))?[\r\n\t ].*?\]/', $content ) )
+	if ( ! preg_match( '/\[[\r\n\t ]*(countdown|events?(_|-)(results|details|performance|calendar|list|blocks)|team(_|-)columns|league(_|-)table|player(_|-)(metrics|performance|list|gallery))?[\r\n\t ].*?\]/', $content ) )
 		return $content;
 
 	$content = do_shortcode( $content );

@@ -20,8 +20,9 @@ class SP_Shortcodes {
 			'event_details'			=> __CLASS__ . '::event_details',
 			'event_performance'		=> __CLASS__ . '::event_performance',
 			'countdown'      		=> __CLASS__ . '::countdown',
-			'event_list'     		=> __CLASS__ . '::event_list',
 			'event_calendar' 		=> __CLASS__ . '::event_calendar',
+			'event_list'     		=> __CLASS__ . '::event_list',
+			'event_blocks'     		=> __CLASS__ . '::event_blocks',
 			'league_table'   		=> __CLASS__ . '::league_table',
 			'player_list'    		=> __CLASS__ . '::player_list',
 			'player_gallery' 		=> __CLASS__ . '::player_gallery',
@@ -124,6 +125,17 @@ class SP_Shortcodes {
 	 */
 	public static function event_list( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_List', 'output' ), $atts );
+	}
+
+	/**
+	 * Event blocks shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function event_blocks( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Blocks', 'output' ), $atts );
 	}
 
 	/**
