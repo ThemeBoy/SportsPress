@@ -14,6 +14,8 @@ $primary_result = get_option( 'sportspress_primary_result', null );
 $defaults = array(
 	'status' => 'default',
 	'number' => -1,
+	'paginated' => get_option( 'sportspress_calendar_paginated', 'yes' ) == 'yes' ? true : false,
+	'rows' => get_option( 'sportspress_calendar_rows', 10 ),
 	'order' => 'default',
 	'show_all_events_link' => false,
 );
@@ -32,7 +34,8 @@ if ( isset( $columns ) )
 	$usecolumns = $columns;
 ?>
 <div class="sp-table-wrapper">
-	<table class="sp-event-blocks sp-data-table">
+	<table class="sp-event-blocks sp-data-table<?php if ( $paginated ) { ?> sp-paginated-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
+		<thead><tr><th></th></tr></thead> <?php # Required for DataTables ?>
 		<tbody>
 			<?php
 			$i = 0;

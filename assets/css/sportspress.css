@@ -88,6 +88,9 @@
 }
 
 /* Event Blocks */
+.sp-event-blocks thead {
+	display: none;
+}
 .sp-event-blocks .event-date,
 .sp-event-blocks .event-time,
 .sp-event-blocks .event-results,
