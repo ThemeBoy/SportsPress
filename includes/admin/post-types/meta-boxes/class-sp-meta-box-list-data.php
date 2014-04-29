@@ -98,7 +98,7 @@ class SP_Meta_Box_List_Data {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="<?php $colspan = sizeof( $columns ) + 1; echo $colspan; ?>">
+						<td colspan="<?php $colspan = sizeof( $columns ) + 2; echo $colspan; ?>">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Players', 'sportspress' ) ); ?>
 						</td>
 					</tr>
@@ -145,7 +145,7 @@ class SP_Meta_Box_List_Data {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="<?php $colspan = sizeof( $columns ) + 1; echo $colspan; ?>">
+						<td colspan="<?php $colspan = sizeof( $columns ) + 2; echo $colspan; ?>">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Players', 'sportspress' ) ); ?>
 						</td>
 					</tr>

@@ -85,7 +85,7 @@ class SP_Meta_Box_List_Details {
 					'number' => __( 'Number', 'sportspress' ),
 					'name' => __( 'Name', 'sportspress' ),
 				),
-				'post_type' => array( 'sp_metric', 'sp_statistic' ),
+				'post_type' => array( 'sp_performance', 'sp_metric', 'sp_statistic' ),
 				'name' => 'sp_orderby',
 				'selected' => $orderby,
 				'values' => 'slug',
