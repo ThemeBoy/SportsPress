@@ -81,11 +81,14 @@ class SP_Player_List extends SP_Custom_Post {
 				$totals[ $player_id ][ $key ] = 0;
 			endforeach;
 
+			// Get metrics
+			$metrics = get_post_meta( $player_id, 'sp_metrics', true );
+
 			// Get static stats
 			$static = get_post_meta( $player_id, 'sp_statistics', true );
 
-			// Add static stats to placeholders
-			$placeholders[ $player_id ] = sp_array_value( sp_array_value( $static, $league_id, array() ), $div_id, array() );
+			// Add metrics and static stats to placeholders
+			$placeholders[ $player_id ] = array_merge( $metrics, sp_array_value( sp_array_value( $static, $league_id, array() ), $div_id, array() ) );
 
 		endforeach;
 
@@ -219,7 +222,7 @@ class SP_Player_List extends SP_Custom_Post {
 		endforeach;
 
 		$args = array(
-			'post_type' => 'sp_statistic',
+			'post_type' => array( 'sp_metric', 'sp_statistic' ),
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 	  		'orderby' => 'menu_order',
@@ -235,7 +238,7 @@ class SP_Player_List extends SP_Custom_Post {
 			$meta = get_post_meta( $stat->ID );
 
 			// Add equation to object
-			$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
+			$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, null );
 			$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 );
 
 			// Add column name to columns
@@ -251,11 +254,15 @@ class SP_Player_List extends SP_Custom_Post {
 			foreach ( $stats as $stat ):
 				if ( sp_array_value( $placeholders[ $player_id ], $stat->post_name, '' ) == '' ):
 
-					// Solve
-					$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $player_id, array() ), $stat->precision );
+					if ( $stat->equation == null ):
+						$placeholder = '-';
+					else:
+						// Solve
+						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $player_id, array() ), $stat->precision );
 
-					// Adjustments
-					$placeholder += sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, 0 );
+						// Adjustments
+						$placeholder += sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, 0 );
+					endif;
 
 					$placeholders[ $player_id ][ $stat->post_name ] = $placeholder;
 				endif;
