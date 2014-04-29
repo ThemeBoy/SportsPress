@@ -674,12 +674,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
 							<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
-							<?php
-							$title = $post->post_title;
-							if ( empty( $title ) )
-								$title = __( '(no title)', 'sportspress' );
-							echo $title;
-							?>
+							<?php echo sp_draft_or_post_title( $post ); ?>
 						</label>
 						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
 					</li>
@@ -690,6 +685,26 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 			</ul>
 		</div>
 		<?php
+	}
+}
+
+
+/**
+ * Get the post title.
+ *
+ * The post title is fetched and if it is blank then a default string is
+ * returned.
+ *
+ * @since 2.7.0
+ * @param mixed $post Post id or object. If not supplied the global $post is used.
+ * @return string The post title if set
+ */
+if ( !function_exists( 'sp_draft_or_post_title' ) ) {
+	function sp_draft_or_post_title( $post = 0 ) {
+		$title = get_the_title( $post );
+		if ( empty( $title ) )
+			$title = __( '(no title)', 'sportspress' );
+		return $title;
 	}
 }
 
