@@ -23,15 +23,15 @@ class SP_Meta_Box_List_Columns {
 		?>
 		<div id="sp-column-group-select">
 			<label class="selectit">
-				<input type="checkbox" name="sp_column_group[]" value="sp_performance" <?php checked( true, ( empty( $column_groups ) || in_array( 'sp_performance', $column_groups ) ) ); ?>>
+				<input type="checkbox" name="sp_column_group[]" value="sp_performance" <?php checked( true, in_array( 'sp_performance', $column_groups ) ); ?>>
 				<?php _e( 'Performance', 'sportspress' ); ?>
 			</label><br>
 			<label class="selectit">
-				<input type="checkbox" name="sp_column_group[]" value="sp_metric" <?php checked( true, ( empty( $column_groups ) || in_array( 'sp_metric', $column_groups ) ) ); ?>>
+				<input type="checkbox" name="sp_column_group[]" value="sp_metric" <?php checked( true, in_array( 'sp_metric', $column_groups ) ); ?>>
 				<?php _e( 'Metrics', 'sportspress' ); ?>
 			</label><br>
 			<label class="selectit">
-				<input type="checkbox" name="sp_column_group[]" value="sp_statistic" <?php checked( true, ( empty( $column_groups ) || in_array( 'sp_statistic', $column_groups ) ) ); ?>>
+				<input type="checkbox" name="sp_column_group[]" value="sp_statistic" <?php checked( true, in_array( 'sp_statistic', $column_groups ) ); ?>>
 				<?php _e( 'Statistics', 'sportspress' ); ?>
 			</label><br>
 		</div>

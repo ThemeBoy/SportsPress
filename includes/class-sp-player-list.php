@@ -83,7 +83,7 @@ class SP_Player_List extends SP_Custom_Post {
 			endforeach;
 
 			// Get metrics
-			$metrics = get_post_meta( $player_id, 'sp_metrics', true );
+			$metrics = (array) get_post_meta( $player_id, 'sp_metrics', true );
 			foreach ( $metrics as $key => $value ):
 				$adjustment = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $key, null );
 				if ( $adjustment != null )
@@ -227,59 +227,63 @@ class SP_Player_List extends SP_Custom_Post {
 			$totals[ $player_id ]['last10'] = $last10;
 		endforeach;
 
-		$args = array(
-			'post_type' => $column_groups,
-			'numberposts' => -1,
-			'posts_per_page' => -1,
-	  		'orderby' => 'menu_order',
-	  		'order' => 'ASC'
-		);
-		$stats = get_posts( $args );
-
 		$columns = array();
 
-		foreach ( $stats as $stat ):
+		if ( ! empty( $column_groups ) ):
 
-			// Get post meta
-			$meta = get_post_meta( $stat->ID );
-
-			// Add equation to object
-			$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, null );
-			$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 );
-
-			// Add column name to columns
-			$columns[ $stat->post_name ] = $stat->post_title;
-
-		endforeach;
-
-		// Fill in empty placeholder values for each player
-		foreach ( $player_ids as $player_id ):
-			if ( ! $player_id )
-				continue;
-
-			$variables = array_merge( sp_array_value( $totals, $player_id, array() ), array_filter( sp_array_value( $placeholders, $player_id, array() ) ) );
+			$args = array(
+				'post_type' => $column_groups,
+				'numberposts' => -1,
+				'posts_per_page' => -1,
+		  		'orderby' => 'menu_order',
+		  		'order' => 'ASC'
+			);
+			$stats = get_posts( $args );
 
 			foreach ( $stats as $stat ):
-				if ( sp_array_value( $placeholders[ $player_id ], $stat->post_name, '' ) == '' ):
 
-					if ( $stat->equation == null ):
-						$placeholder = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, null );
-						if ( $placeholder == null ):
-							$placeholder = '-';
-						endif;
-					else:
-						// Solve
-						$placeholder = sp_solve( $stat->equation, $variables, $stat->precision );
+				// Get post meta
+				$meta = get_post_meta( $stat->ID );
 
-						// Adjustments
-						$placeholder += sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, 0 );
-					endif;
+				// Add equation to object
+				$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, null );
+				$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 );
 
-					$placeholders[ $player_id ][ $stat->post_name ] = $placeholder;
-				endif;
+				// Add column name to columns
+				$columns[ $stat->post_name ] = $stat->post_title;
+
 			endforeach;
 
-		endforeach;
+			// Fill in empty placeholder values for each player
+			foreach ( $player_ids as $player_id ):
+				if ( ! $player_id )
+					continue;
+
+				$variables = array_merge( sp_array_value( $totals, $player_id, array() ), array_filter( sp_array_value( $placeholders, $player_id, array() ) ) );
+
+				foreach ( $stats as $stat ):
+					if ( sp_array_value( $placeholders[ $player_id ], $stat->post_name, '' ) == '' ):
+
+						if ( $stat->equation == null ):
+							$placeholder = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, null );
+							if ( $placeholder == null ):
+								$placeholder = '-';
+							endif;
+						else:
+							// Solve
+							$placeholder = sp_solve( $stat->equation, $variables, $stat->precision );
+
+							// Adjustments
+							$placeholder += sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, 0 );
+						endif;
+
+						$placeholders[ $player_id ][ $stat->post_name ] = $placeholder;
+					endif;
+				endforeach;
+
+			endforeach;
+
+		endif;
 
 		// Merge the data and placeholders arrays
 		$merged = array();
