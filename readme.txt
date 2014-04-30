@@ -173,9 +173,10 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 * Feature - New staff profiles.
 * Feature - New System Status screen in admin.
 * Feature - Add status selector to calendars and event widgets.
-* Feature - Add ability to display metrics in player lists.
+* Feature - Add ability to display statistics and metrics in player lists.
 * Feature - Add time/results column to event list.
 * Feature - Link WP user roles with players and staff.
+* Feature - Display player substitutions in event page.
 * Feature - Option to group player lists by position.
 * Feature - Option to display outcomes in event results.
 * Refactor - Player profiles and lists now use statistics instead of performance.
