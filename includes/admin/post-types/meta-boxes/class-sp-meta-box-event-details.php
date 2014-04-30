@@ -24,39 +24,41 @@ class SP_Meta_Box_Event_Details {
 		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 		$venue_id = sp_get_the_term_id( $post->ID, 'sp_venue', 0 );
 		?>
-		<div>
-			<fieldset class="sp-event-format-field sp-league-event-field sp-friendly-event-field">
-				<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
-				<p>
-					<?php
-					$args = array(
-						'taxonomy' => 'sp_league',
-						'name' => 'sp_league',
-						'selected' => $league_id,
-						'values' => 'term_id',
-						'show_option_none' => __( '-- Not set --', 'sportspress' ),
-					);
-					if ( ! sp_dropdown_taxonomies( $args ) ):
-						sp_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
-					endif;
-					?>
-				</p>
-				<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
-				<p>
-					<?php
-					$args = array(
-						'taxonomy' => 'sp_season',
-						'name' => 'sp_season',
-						'selected' => $season_id,
-						'values' => 'term_id',
-						'show_option_none' => __( '-- Not set --', 'sportspress' ),
-					);
-					if ( ! sp_dropdown_taxonomies( $args ) ):
-						sp_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
-					endif;
-					?>
-				</p>
-			</fieldset>
+		<div class="sp-event-league-field">
+			<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$args = array(
+					'taxonomy' => 'sp_league',
+					'name' => 'sp_league',
+					'selected' => $league_id,
+					'values' => 'term_id',
+					'show_option_none' => __( '-- Not set --', 'sportspress' ),
+				);
+				if ( ! sp_dropdown_taxonomies( $args ) ):
+					sp_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
+				endif;
+				?>
+			</p>
+		</div>
+		<div class="sp-event-season-field">
+			<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$args = array(
+					'taxonomy' => 'sp_season',
+					'name' => 'sp_season',
+					'selected' => $season_id,
+					'values' => 'term_id',
+					'show_option_none' => __( '-- Not set --', 'sportspress' ),
+				);
+				if ( ! sp_dropdown_taxonomies( $args ) ):
+					sp_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
+				endif;
+				?>
+			</p>
+		</div>
+		<div class="sp-event-venue-field">
 			<p><strong><?php _e( 'Venue', 'sportspress' ); ?></strong></p>
 			<p>
 				<?php
