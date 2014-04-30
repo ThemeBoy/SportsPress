@@ -61,11 +61,27 @@
 	text-align: center;
 }
 
-/* League table */
+/* League Table */
 .sp-league-table .team-logo {
 	vertical-align: middle;
 	height: 2.5em;
 	width: auto;
+}
+
+/* Event Performance */
+.sp-event-performance .sub-in,
+.sp-event-performance .sub-out {
+	cursor: default;
+}
+.sp-event-performance .sub-in:before,
+.sp-event-performance .sub-out:before {
+	font-family: dashicons;
+}
+.sp-event-performance .sub-in:before {
+	content: "\f140";
+}
+.sp-event-performance .sub-out:before {
+	content: "\f142";
 }
 
 /* Event Calendar */
