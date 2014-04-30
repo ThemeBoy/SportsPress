@@ -964,7 +964,6 @@ function sp_get_sport_presets() {
 						'post_name' => 'w',
 						'meta'       => array(
 							'sp_equation'     => '$w',
-							'sp_format'       => 'integer',
 							'sp_precision'    => 0,
 							'sp_priority'     => 1,
 							'sp_order'        => 'DESC',
@@ -975,7 +974,6 @@ function sp_get_sport_presets() {
 						'post_name' => 'l',
 						'meta'       => array(
 							'sp_equation'     => '$l',
-							'sp_format'       => 'integer',
 							'sp_precision'    => 0,
 							'sp_priority'     => 2,
 							'sp_order'        => 'ASC',
@@ -986,7 +984,6 @@ function sp_get_sport_presets() {
 						'post_name' => 'pct',
 						'meta'       => array(
 							'sp_equation'     => '$w / $eventsplayed',
-							'sp_format'       => 'decimal',
 							'sp_precision'    => 2,
 						),
 					),
@@ -995,7 +992,6 @@ function sp_get_sport_presets() {
 						'post_name' => 'rs',
 						'meta'       => array(
 							'sp_equation'     => '$rfor',
-							'sp_format'       => 'integer',
 							'sp_precision'    => 0,
 							'sp_priority'     => 3,
 							'sp_order'        => 'DESC',
@@ -1006,7 +1002,6 @@ function sp_get_sport_presets() {
 						'post_name' => 'ra',
 						'meta'       => array(
 							'sp_equation'     => '$ragainst',
-							'sp_format'       => 'integer',
 							'sp_precision'    => 0,
 						),
 					),
@@ -1015,7 +1010,6 @@ function sp_get_sport_presets() {
 						'post_name' => 'strk',
 						'meta'       => array(
 							'sp_equation'     => '$streak',
-							'sp_format'       => 'integer',
 							'sp_precision'    => 0,
 						),
 					),
@@ -1268,263 +1262,71 @@ function sp_get_sport_presets() {
 						'post_name' => 'experience',
 					),
 				),
-				// Player Statistics
-				'sp_statistic' => array(
+				// Player Performance
+				'sp_performance' => array(
 					array(
 						'post_title' => 'MIN',
 						'post_name' => 'min',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'FGM',
 						'post_name' => 'fgm',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'FGA',
 						'post_name' => 'fga',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => '3PM',
 						'post_name' => '3pm',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => '3PA',
 						'post_name' => '3pa',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'FTM',
 						'post_name' => 'ftm',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'FTA',
 						'post_name' => 'fta',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'OFF',
 						'post_name' => 'off',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'DEF',
 						'post_name' => 'def',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'REB',
 						'post_name' => 'reb',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'AST',
 						'post_name' => 'ast',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'STL',
 						'post_name' => 'stl',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'BLK',
 						'post_name' => 'blk',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'TO',
 						'post_name' => 'to',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'PF',
 						'post_name' => 'pf',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 					array(
 						'post_title' => 'PTS',
 						'post_name' => 'pts',
-						'tax_input' => array(
-							'sp_position' => array(
-								'slug' => 'pointguard',
-								'slug' => 'shootingguard',
-								'slug' => 'smallforward',
-								'slug' => 'powerforward',
-								'slug' => 'center',
-							),
-						),
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
 					),
 				),
 			),
@@ -1586,8 +1388,8 @@ function sp_get_sport_presets() {
 						),
 					),
 				),
-				// Statistics
-				'sp_statistic' => array(
+				// Performance
+				'sp_performance' => array(
 				),
 				// Results
 				'sp_result' => array(
@@ -1779,708 +1581,207 @@ function sp_get_sport_presets() {
 						'post_name'  => 'weight',
 					),
 				),
-				// Player Statistics
-				'sp_statistic' => array(
+				// Player Performance
+				'sp_performance' => array(
 					array(
 						'post_title' => 'Comp',
 						'post_name' => 'comp',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Att',
 						'post_name' => 'att',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'runningback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Pct',
 						'post_name' => 'pct',
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'kickoffkicker',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Att/G',
 						'post_name' => 'attg',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'runningback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Rec',
 						'post_name' => 'rec',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'widereceiver',
-								'tightend',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Comb',
 						'post_name' => 'comb',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Total',
 						'post_name' => 'total',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Ast',
 						'post_name' => 'ast',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Sck',
 						'post_name' => 'scktackles',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'SFTY',
 						'post_name' => 'sfty',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'PDef',
 						'post_name' => 'pdef',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'TDs',
 						'post_name' => 'tds',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'KO',
 						'post_name' => 'ko',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickoffkicker',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Ret',
 						'post_name' => 'ret',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickreturner',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Punts',
 						'post_name' => 'punts',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'punter',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Yds',
 						'post_name' => 'yds',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'runningback',
-								'widereceiver',
-								'tightend',
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-								'kickoffkicker',
-								'kickreturner',
-								'punter',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Net Yds',
 						'post_name' => 'netyds',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'punter',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Avg',
 						'post_name' => 'avg',
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'runningback',
-								'widereceiver',
-								'tightend',
-								'kickoffkicker',
-								'kickreturner',
-								'punter',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Net Avg',
 						'post_name' => 'netavg',
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'punter',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Blk',
 						'post_name' => 'blk',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'punter',
-							),
-						),
 					),
 					array(
 						'post_title' => 'OOB',
 						'post_name' => 'oob',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickoffkicker',
-								'punter',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Dn',
 						'post_name' => 'dn',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'punter',
-							),
-						),
 					),
 					array(
 						'post_title' => 'IN 20',
 						'post_name' => 'in20',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'punter',
-							),
-						),
 					),
 					array(
 						'post_title' => 'TB',
 						'post_name' => 'tb',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'punter',
-							),
-						),
 					),
 					array(
 						'post_title' => 'FC',
 						'post_name' => 'fc',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickreturner',
-								'punter',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Ret',
 						'post_name' => 'retpunt',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickoffkicker',
-								'kickreturner',
-								'punter',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'RetY',
 						'post_name' => 'rety',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickreturner',
-								'punter',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Yds/G',
 						'post_name' => 'ydsg',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'runningback',
-								'widereceiver',
-								'tightend',
-							),
-						),
 					),
 					array(
 						'post_title' => 'TD',
 						'post_name' => 'TD',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'runningback',
-								'widereceiver',
-								'tightend',
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-								'kickreturner',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Int',
 						'post_name' => 'int',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-							),
-						),
 					),
 					array(
 						'post_title' => '1st',
 						'post_name' => 'first',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'runningback',
-								'widereceiver',
-								'tightend',
-							),
-						),
 					),
 					array(
 						'post_title' => '1st%',
 						'post_name' => 'firstpct',
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'runningback',
-								'widereceiver',
-								'tightend',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Lng',
 						'post_name' => 'lng',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'runningback',
-								'widereceiver',
-								'tightend',
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-								'kickreturner',
-								'punter',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => '20+',
 						'post_name' => 'twentyplus',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'runningback',
-								'widereceiver',
-								'tightend',
-								'kickreturner',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => '40+',
 						'post_name' => 'fourtyplus',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-								'runningback',
-								'widereceiver',
-								'tightend',
-								'kickreturner',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Sck',
 						'post_name' => 'sck',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Rate',
 						'post_name' => 'rate',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'quarterback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'FUM',
 						'post_name' => 'fum',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'runningback',
-								'widereceiver',
-								'tightend',
-								'kickreturner',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'FF',
 						'post_name' => 'ff',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Rec',
 						'post_name' => 'recfum',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'defensivelineman',
-								'linebacker',
-								'defensiveback',
-							),
-						),
 					),
 					array(
 						'post_title' => 'TD',
 						'post_name' => 'tdfum',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickoffkicker',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Avg',
 						'post_name' => 'avgpunt',
-						'meta' => array(
-							'sp_calculate' => 'average',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickoffkicker',
-								'kickreturner',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Lng',
 						'post_name' => 'lngpunt',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickreturner',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'TD',
 						'post_name' => 'tdpunt',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickoffkicker',
-								'kickreturner',
-								'punter',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => '20+',
 						'post_name' => 'twentypluspunt',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickreturner',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => '40+',
 						'post_name' => 'fourtypluspunt',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickreturner',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'FC',
 						'post_name' => 'fcpunt',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickreturner',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'FUM',
 						'post_name' => 'fumpunt',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickreturner',
-								'puntreturner',
-							),
-						),
 					),
 					array(
 						'post_title' => 'OSK',
 						'post_name' => 'osk',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickoffkicker',
-							),
-						),
 					),
 					array(
 						'post_title' => 'OSKR',
 						'post_name' => 'oskr',
-						'meta' => array(
-							'sp_calculate' => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'kickoffkicker',
-							),
-						),
 					),
 				),
 			),
@@ -2547,8 +1848,8 @@ function sp_get_sport_presets() {
 						)
 					)
 				),
-				// Statistics
-				'sp_statistic' => array(
+				// Performance
+				'sp_performance' => array(
 				),
 				// Results
 				'sp_result' => array(
@@ -2613,8 +1914,8 @@ function sp_get_sport_presets() {
 						),
 					),
 				),
-				// Statistics
-				'sp_statistic' => array(
+				// Performance
+				'sp_performance' => array(
 				),
 				// Results
 				'sp_result' => array(
@@ -2630,42 +1931,27 @@ function sp_get_sport_presets() {
 				// Table Columns
 				'sp_column' => array(
 				),
-				// Statistics
-				'sp_statistic' => array(
+				// Performance
+				'sp_performance' => array(
 					array(
 						'post_title' => 'Events',
 						'post_name' => 'events',
-						'meta'       => array(
-							'sp_equation'     => '$eventsplayed',
-						),
 					),
 					array(
 						'post_title' => 'Avg',
 						'post_name' => 'avg',
-						'meta'       => array(
-							'sp_equation'     => '$ptsfor / $eventsplayed',
-						),
 					),
 					array(
 						'post_title' => 'Total',
 						'post_name' => 'total',
-						'meta'       => array(
-							'sp_equation'     => '$ptsfor',
-						),
 					),
 					array(
 						'post_title' => 'PL',
 						'post_name' => 'lost',
-						'meta'       => array(
-							'sp_equation'     => '$ptsagainst',
-						),
 					),
 					array(
 						'post_title' => 'PG',
 						'post_name' => 'gained',
-						'meta'       => array(
-							'sp_equation'     => '$ptsfor',
-						),
 					),
 				),
 				// Results
@@ -2738,8 +2024,8 @@ function sp_get_sport_presets() {
 						),
 					),
 				),
-				// Statistics
-				'sp_statistic' => array(
+				// Performance
+				'sp_performance' => array(
 				),
 				// Results
 				'sp_result' => array(
@@ -2767,44 +2053,27 @@ function sp_get_sport_presets() {
 				// Table Columns
 				'sp_column' => array(
 				),
-				// Statistics
-				'sp_statistic' => array(
+				// Performance
+				'sp_performance' => array(
 					array(
 						'post_title' => 'Pts',
 						'post_name' => 'pts',
-						'meta'       => array(
-							'sp_equation'     => '$ptsfor',
-						),
 					),
 					array(
 						'post_title' => 'B',
 						'post_name' => 'b',
-						'meta'       => array(
-							'sp_equation'     => '$ptsmax - $ptsfor',
-						),
 					),
 					array(
 						'post_title' => 'S',
 						'post_name' => 's',
-						'meta'       => array(
-							'sp_equation'     => '$eventsplayed',
-						),
 					),
 					array(
 						'post_title' => 'W',
 						'post_name' => 'w',
-						'meta'       => array(
-							'sp_equation'     => '$w',
-							'sp_priority'     => '1',
-							'sp_order'        => 'DESC',
-						),
 					),
 					array(
 						'post_title' => 'DNF',
 						'post_name' => 'dnf',
-						'meta'       => array(
-							'sp_equation'     => '$dnf',
-						),
 					),
 				),
 				// Results
@@ -2932,42 +2201,27 @@ function sp_get_sport_presets() {
 						'post_name'  => 'weight',
 					),
 				),
-				// Player Statistics
-				'sp_statistic' => array(
+				// Player Performance
+				'sp_performance' => array(
 					array(
 						'post_title' => 'Points',
 						'post_name'  => 'points',
-						'meta'       => array(
-							'sp_calculate'     => 'total',
-						),
 					),
 					array(
 						'post_title' => 'Tries',
 						'post_name'  => 'tries',
-						'meta'       => array(
-							'sp_calculate'     => 'total',
-						),
 					),
 					array(
 						'post_title' => 'Conversions',
 						'post_name'  => 'conversions',
-						'meta'       => array(
-							'sp_calculate'     => 'total',
-						),
 					),
 					array(
 						'post_title' => 'Penalty Goals',
 						'post_name'  => 'penaltygoals',
-						'meta'       => array(
-							'sp_calculate'     => 'total',
-						),
 					),
 					array(
 						'post_title' => 'Drop Goals',
 						'post_name'  => 'dropgoals',
-						'meta'       => array(
-							'sp_calculate'     => 'total',
-						),
 					),
 				),
 			),
@@ -3126,70 +2380,29 @@ function sp_get_sport_presets() {
 						),
 					),
 				),
-				// Player Statistics
-				'sp_statistic' => array(
+				// Player Performance
+				'sp_performance' => array(
 					array(
 						'post_title' => 'Goals',
 						'post_name'  => 'goals',
-						'meta'       => array(
-							'sp_calculate'     => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'goalkeeper',
-								'defender',
-								'midfielder',
-								'forward',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Assists',
 						'post_name'  => 'assists',
-						'meta'       => array(
-							'sp_calculate'     => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'goalkeeper',
-								'defender',
-								'midfielder',
-								'forward',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Yellow Cards',
 						'post_name'  => 'yellospards',
-						'meta'       => array(
-							'sp_calculate'     => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'goalkeeper',
-								'defender',
-								'midfielder',
-								'forward',
-							),
-						),
 					),
 					array(
 						'post_title' => 'Red Cards',
 						'post_name'  => 'redcards',
-						'meta'       => array(
-							'sp_calculate'     => 'total',
-						),
-						'tax_input' => array(
-							'sp_position' => array(
-								'goalkeeper',
-								'defender',
-								'midfielder',
-								'forward',
-							),
-						),
 					),
 				),
 			),
+		),
+		'custom' => array(
+			'name' => __( 'Custom', 'sportspress' ),
 		),
 	));
 }
