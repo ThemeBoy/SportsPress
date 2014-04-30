@@ -179,8 +179,8 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 * Feature - Display player substitutions in event page.
 * Feature - Option to group player lists by position.
 * Feature - Option to display outcomes in event results.
-* Refactor - Player profiles and lists now use statistics instead of performance.
-* Tweak - Split admin CSS files for better performance.
+* Refactor - Player profiles now use statistics and performance.
+* Refactor - Split admin CSS files for better performance.
 * Tweak - Display player numbers in admin.
 * Tweak - Move SportsPress settings to top-level page.
 * Tweak - Link date to event page in event list.
