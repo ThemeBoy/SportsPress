@@ -21,20 +21,26 @@ class SP_Meta_Box_List_Columns {
 	public static function output( $post ) {
 		$column_groups = (array) get_post_meta( $post->ID, 'sp_column_group' );
 		?>
-		<div id="sp-column-group-select">
-			<label class="selectit">
-				<input type="checkbox" name="sp_column_group[]" value="sp_performance" <?php checked( true, in_array( 'sp_performance', $column_groups ) ); ?>>
-				<?php _e( 'Performance', 'sportspress' ); ?>
-			</label><br>
-			<label class="selectit">
-				<input type="checkbox" name="sp_column_group[]" value="sp_metric" <?php checked( true, in_array( 'sp_metric', $column_groups ) ); ?>>
-				<?php _e( 'Metrics', 'sportspress' ); ?>
-			</label><br>
-			<label class="selectit">
-				<input type="checkbox" name="sp_column_group[]" value="sp_statistic" <?php checked( true, in_array( 'sp_statistic', $column_groups ) ); ?>>
-				<?php _e( 'Statistics', 'sportspress' ); ?>
-			</label><br>
-		</div>
+		<ul id="sp-column-group-select">
+			<li>
+				<label class="selectit">
+					<input type="checkbox" name="sp_column_group[]" value="sp_performance" <?php checked( true, in_array( 'sp_performance', $column_groups ) ); ?>>
+					<?php _e( 'Performance', 'sportspress' ); ?>
+				</label>
+			</li>
+			<li>
+				<label class="selectit">
+					<input type="checkbox" name="sp_column_group[]" value="sp_metric" <?php checked( true, in_array( 'sp_metric', $column_groups ) ); ?>>
+					<?php _e( 'Metrics', 'sportspress' ); ?>
+				</label>
+			</li>
+			<li>
+				<label class="selectit">
+					<input type="checkbox" name="sp_column_group[]" value="sp_statistic" <?php checked( true, in_array( 'sp_statistic', $column_groups ) ); ?>>
+					<?php _e( 'Statistics', 'sportspress' ); ?>
+				</label>
+			</li>
+		</ul>
 		<?php
 	}
 
