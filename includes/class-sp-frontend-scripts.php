@@ -56,6 +56,7 @@ class SP_Frontend_Scripts {
 		wp_localize_script( 'sportspress', 'localized_strings', array( 'days' => __( 'days', 'sportspress' ), 'hrs' => __( 'hrs', 'sportspress' ), 'mins' => __( 'mins', 'sportspress' ), 'secs' => __( 'secs', 'sportspress' ), 'previous' => __( 'Previous', 'sportspress' ), 'next' => __( 'Next', 'sportspress' ) ) );
 
 		// CSS Styles
+    	wp_enqueue_style( 'dashicons' );
 		$enqueue_styles = $this->get_styles();
 
 		if ( $enqueue_styles ):
