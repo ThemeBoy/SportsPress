@@ -4,7 +4,7 @@ Tags: sports, press, sports journalism, teams, team management, fixtures, result
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: 0.8.1
+Stable tag: 0.8.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -164,10 +164,12 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 
 == Changelog ==
 
+= 0.8.2 =
+* Fix - Add content in main loop only.
+
 = 0.8.1 =
 * Tweak - Output player statistics in system status.
 * Tweak - Prepend templates to content instead of outputting directly.
-* Fix - Add content in main loop only.
 * Fix - Enable metrics usage in individual player statistics.
 
 = 0.8 =

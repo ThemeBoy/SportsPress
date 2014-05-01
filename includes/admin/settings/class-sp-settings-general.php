@@ -39,7 +39,10 @@ class SP_Settings_General extends SP_Settings_Page {
 	 * @return array
 	 */
 	public function get_settings() {
-		$sports = sp_get_sport_options();
+
+		$sports = new SP_Admin_Sports();
+
+		$presets = $sports->get_preset_options();
 
 		return apply_filters( 'sportspress_general_settings', array(
 
@@ -52,7 +55,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				'id'        => 'sportspress_sport',
 				'default'   => 'soccer',
 				'type'      => 'select',
-				'options'   => $sports,
+				'options'   => $presets,
 			),
 
 			array( 'type' => 'sectionend', 'id' => 'general_options' ),

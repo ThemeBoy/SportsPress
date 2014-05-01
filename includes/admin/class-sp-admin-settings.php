@@ -28,6 +28,7 @@ class SP_Admin_Settings {
 		if ( empty( self::$settings ) ) {
 			$settings = array();
 
+			include_once( 'class-sp-admin-sports.php' );
 			include_once( 'settings/class-sp-settings-page.php' );
 
 			$settings[] = include( 'settings/class-sp-settings-general.php' );
