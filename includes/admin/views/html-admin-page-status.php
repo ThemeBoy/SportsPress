@@ -228,6 +228,16 @@
 			<td><?php echo get_option( 'sportspress_sport', __( 'None', 'sportspress' ) ); ?></td>
 		</tr>
 		<tr>
+			<td><?php _e( 'Event Outcomes', 'sportspress' ); ?>:</td>
+			<td><?php
+				$display_posts = array();
+				$posts = get_posts( array( 'post_type' => 'sp_outcome', 'orderby' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => -1, 'post_status' => 'any' ) );
+				foreach ( $posts as $post )
+					$display_posts[] = $post->post_title . ' (' . $post->post_name . ') [' . $post->menu_order . ']';
+				echo implode( ', ', array_map( 'esc_html', $display_posts ) );
+			?></td>
+		</tr>
+		<tr>
 			<td><?php _e( 'Team Results', 'sportspress' ); ?>:</td>
 			<td><?php
 				$display_posts = array();
@@ -238,10 +248,10 @@
 			?></td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Event Outcomes', 'sportspress' ); ?>:</td>
+			<td><?php _e( 'Player Performance', 'sportspress' ); ?>:</td>
 			<td><?php
 				$display_posts = array();
-				$posts = get_posts( array( 'post_type' => 'sp_outcome', 'orderby' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => -1, 'post_status' => 'any' ) );
+				$posts = get_posts( array( 'post_type' => 'sp_performance', 'orderby' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => -1, 'post_status' => 'any' ) );
 				foreach ( $posts as $post )
 					$display_posts[] = $post->post_title . ' (' . $post->post_name . ') [' . $post->menu_order . ']';
 				echo implode( ', ', array_map( 'esc_html', $display_posts ) );
@@ -253,7 +263,7 @@
 				$display_posts = array();
 				$posts = get_posts( array( 'post_type' => 'sp_column', 'orderby' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => -1, 'post_status' => 'any' ) );
 				foreach ( $posts as $post )
-					$display_posts[] = $post->post_title . ' (' . $post->post_name . ') [' . $post->menu_order . ']';
+					$display_posts[] = $post->post_title . ' (' . $post->post_name . ' = ' . get_post_meta( $post->ID, 'sp_equation', true ) . ') [' . $post->menu_order . ']';
 				echo implode( ', ', array_map( 'esc_html', $display_posts ) );
 			?></td>
 		</tr>
@@ -268,12 +278,12 @@
 			?></td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Player Performance', 'sportspress' ); ?>:</td>
+			<td><?php _e( 'Player Statistics', 'sportspress' ); ?>:</td>
 			<td><?php
 				$display_posts = array();
-				$posts = get_posts( array( 'post_type' => 'sp_performance', 'orderby' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => -1, 'post_status' => 'any' ) );
+				$posts = get_posts( array( 'post_type' => 'sp_statistic', 'orderby' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => -1, 'post_status' => 'any' ) );
 				foreach ( $posts as $post )
-					$display_posts[] = $post->post_title . ' (' . $post->post_name . ') [' . $post->menu_order . ']';
+					$display_posts[] = $post->post_title . ' (' . $post->post_name . ' = ' . get_post_meta( $post->ID, 'sp_equation', true ) . ') [' . $post->menu_order . ']';
 				echo implode( ', ', array_map( 'esc_html', $display_posts ) );
 			?></td>
 		</tr>
