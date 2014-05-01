@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		0.8
+ * @version		0.8.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -52,6 +52,7 @@ class SP_Player extends SP_Custom_Post {
 	public function data( $league_id, $admin = false ) {
 
 		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
+		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
 
@@ -228,6 +229,9 @@ class SP_Player extends SP_Custom_Post {
 			// Add last counters to totals
 			$totals['last5'] = $last5;
 			$totals['last10'] = $last10;
+
+			// Add metrics to totals
+			$totals = array_merge( $metrics, $totals );
 
 			// Generate array of placeholder values for each league
 			$placeholders[ $div_id ] = array();
