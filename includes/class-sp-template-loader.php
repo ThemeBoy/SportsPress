@@ -3,7 +3,7 @@
  * Template Loader
  *
  * @class 		SP_Template_Loader
- * @version		0.8
+ * @version		0.8.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -24,45 +24,54 @@ class SP_Template_Loader {
 		add_filter( 'the_content', array( $this, 'staff_content' ) );
 	}
 
+	public function add_content( $content, $template, $append = false) {
+		ob_start();
+		call_user_func( 'sp_get_template_part', 'content', 'single-' . $template );
+		if ( $append )
+			return $content . ob_get_clean();
+		else
+			return ob_get_clean() . $content;
+	}
+
 	public function event_content( $content ) {
 		if ( is_singular( 'sp_event' ) )
-			sp_get_template_part( 'content', 'single-event' );
+			$content = self::add_content( $content, 'event' );
 		return $content;
 	}
 
 	public function calendar_content( $content ) {
 		if ( is_singular( 'sp_calendar' ) )
-			sp_get_template_part( 'content', 'single-calendar' );
+			$content = self::add_content( $content, 'calendar' );
 		return $content;
 	}
 
 	public function team_content( $content ) {
 		if ( is_singular( 'sp_team' ) )
-			sp_get_template_part( 'content', 'single-team' );
+			$content = self::add_content( $content, 'team' );
 		return $content;
 	}
 
 	public function table_content( $content ) {
 		if ( is_singular( 'sp_table' ) )
-			sp_get_template_part( 'content', 'single-table' );
+			$content = self::add_content( $content, 'table' );
 		return $content;
 	}
 
 	public function player_content( $content ) {
 		if ( is_singular( 'sp_player' ) )
-			sp_get_template_part( 'content', 'single-player' );
+			$content = self::add_content( $content, 'player' );
 		return $content;
 	}
 
 	public function list_content( $content ) {
 		if ( is_singular( 'sp_list' ) )
-			sp_get_template_part( 'content', 'single-list' );
+			$content = self::add_content( $content, 'list' );
 		return $content;
 	}
 
 	public function staff_content( $content ) {
 		if ( is_singular( 'sp_staff' ) )
-			sp_get_template_part( 'content', 'single-staff' );
+			$content = self::add_content( $content, 'staff' );
 		return $content;
 	}
 
