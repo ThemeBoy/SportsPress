@@ -6,10 +6,11 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     0.8
+ * @version     0.8.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! in_the_loop() ) return; // Return if not in main loop
 ?>
 
 <?php
