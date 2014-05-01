@@ -163,50 +163,48 @@ class SP_Player extends SP_Custom_Post {
 						// Find the outcome
 						if ( array_key_exists( 'outcome', $team_results ) ):
 
-							$value = $team_results['outcome'];
+							// Increment events attended
+							$totals['eventsattended']++;
 
-							// Convert to array
-							if ( ! is_array( $value ) ):
-								$value = array( $value );
-							endif;
+							// Continue with incrementing values if active in event
+							if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
+								$totals['eventsplayed']++;
 
-							foreach( $value as $outcome ):
+								$value = $team_results['outcome'];
 
-								if ( $outcome && $outcome != '-1' ):
-
-									// Increment events attended and outcome count
-									if ( array_key_exists( $outcome, $totals ) ):
-										$totals['eventsattended']++;
-										$totals[ $outcome ]++;
-
-										// Increment events played if active in event
-										if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
-											$totals['eventsplayed']++;
-										endif;
-									endif;
-
-									// Add to streak counter
-									if ( $streak['fire'] && ( $streak['name'] == '' || $streak['name'] == $outcome ) ):
-										$streak['name'] = $outcome;
-										$streak['count'] ++;
-									else:
-										$streak['fire'] = 0;
-									endif;
-
-									// Add to last 5 counter if sum is less than 5
-									if ( array_key_exists( $outcome, $last5 ) && array_sum( $last5 ) < 5 ):
-										$last5[ $outcome ] ++;
-									endif;
-
-									// Add to last 10 counter if sum is less than 10
-									if ( array_key_exists( $outcome, $last10 ) && array_sum( $last10 ) < 10 ):
-										$last10[ $outcome ] ++;
-									endif;
-
+								// Convert to array
+								if ( ! is_array( $value ) ):
+									$value = array( $value );
 								endif;
 
-							endforeach;
+								foreach( $value as $outcome ):
+									if ( $outcome && $outcome != '-1' ):
 
+										// Increment outcome count
+										if ( array_key_exists( $outcome, $totals ) ):
+											$totals[ $outcome ]++;
+										endif;
+
+										// Add to streak counter
+										if ( $streak['fire'] && ( $streak['name'] == '' || $streak['name'] == $outcome ) ):
+											$streak['name'] = $outcome;
+											$streak['count'] ++;
+										else:
+											$streak['fire'] = 0;
+										endif;
+
+										// Add to last 5 counter if sum is less than 5
+										if ( array_key_exists( $outcome, $last5 ) && array_sum( $last5 ) < 5 ):
+											$last5[ $outcome ] ++;
+										endif;
+
+										// Add to last 10 counter if sum is less than 10
+										if ( array_key_exists( $outcome, $last10 ) && array_sum( $last10 ) < 10 ):
+											$last10[ $outcome ] ++;
+										endif;
+									endif;
+								endforeach;
+							endif;
 						endif;
 					endif;
 				endforeach;

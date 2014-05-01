@@ -142,58 +142,53 @@ class SP_Player_List extends SP_Custom_Post {
 						// Find the outcome
 						if ( array_key_exists( 'outcome', $team_results ) ):
 
-							$value = $team_results['outcome'];
+							// Increment events attended
+							$totals[ $player_id ]['eventsattended']++;
 
-							// Convert to array
-							if ( ! is_array( $value ) ):
-								$value = array( $value );
-							endif;
+							// Continue with incrementing values if active in event
+							if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
+								$totals[ $player_id ]['eventsplayed']++;
 
-							foreach ( $value as $outcome ):
+								$value = $team_results['outcome'];
 
-								if ( $outcome && $outcome != '-1' ):
-
-									// Increment events attended and outcome count
-									if ( array_key_exists( $outcome, $totals[ $player_id ] ) ):
-										$totals[ $player_id ]['eventsattended']++;
-										$totals[ $player_id ][ $outcome ]++;
-
-										// Increment events played if active in event
-										if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
-											$totals[ $player_id ]['eventsplayed']++;
-										endif;
-									endif;
-
-									// Add to streak counter
-									if ( $streaks[ $player_id ]['fire'] && ( $streaks[ $player_id ]['name'] == '' || $streaks[ $player_id ]['name'] == $outcome ) ):
-										$streaks[ $player_id ]['name'] = $outcome;
-										$streaks[ $player_id ]['count'] ++;
-									else:
-										$streaks[ $player_id ]['fire'] = 0;
-									endif;
-
-									// Add to last 5 counter if sum is less than 5
-									if ( array_key_exists( $player_id, $last5s ) && array_key_exists( $outcome, $last5s[ $player_id ] ) && array_sum( $last5s[ $player_id ] ) < 5 ):
-										$last5s[ $player_id ][ $outcome ] ++;
-									endif;
-
-									// Add to last 10 counter if sum is less than 10
-									if ( array_key_exists( $player_id, $last10s ) && array_key_exists( $outcome, $last10s[ $player_id ] ) && array_sum( $last10s[ $player_id ] ) < 10 ):
-										$last10s[ $player_id ][ $outcome ] ++;
-									endif;
-
+								// Convert to array
+								if ( ! is_array( $value ) ):
+									$value = array( $value );
 								endif;
 
-							endforeach;
+								foreach ( $value as $outcome ):
 
+									if ( $outcome && $outcome != '-1' ):
+
+										// Increment events attended and outcome count
+										if ( array_key_exists( $outcome, $totals[ $player_id ] ) ):
+											$totals[ $player_id ][ $outcome ]++;
+										endif;
+
+										// Add to streak counter
+										if ( $streaks[ $player_id ]['fire'] && ( $streaks[ $player_id ]['name'] == '' || $streaks[ $player_id ]['name'] == $outcome ) ):
+											$streaks[ $player_id ]['name'] = $outcome;
+											$streaks[ $player_id ]['count'] ++;
+										else:
+											$streaks[ $player_id ]['fire'] = 0;
+										endif;
+
+										// Add to last 5 counter if sum is less than 5
+										if ( array_key_exists( $player_id, $last5s ) && array_key_exists( $outcome, $last5s[ $player_id ] ) && array_sum( $last5s[ $player_id ] ) < 5 ):
+											$last5s[ $player_id ][ $outcome ] ++;
+										endif;
+
+										// Add to last 10 counter if sum is less than 10
+										if ( array_key_exists( $player_id, $last10s ) && array_key_exists( $outcome, $last10s[ $player_id ] ) && array_sum( $last10s[ $player_id ] ) < 10 ):
+											$last10s[ $player_id ][ $outcome ] ++;
+										endif;
+									endif;
+								endforeach;
+							endif;
 						endif;
-
 					endif;
-
 				endforeach;
-
 			endforeach;
-
 		endforeach;
 
 		foreach ( $streaks as $player_id => $streak ):
