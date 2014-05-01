@@ -4,13 +4,13 @@
  *
  * The SportsPress admin sports class stores preset sport data.
  *
- * @class 		SP_Sports
+ * @class 		SP_Admin_Sports
  * @version		0.8
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
  */
-class SP_Sports {
+class SP_Admin_Sports {
 	private static $presets = array();
 
 	/**
@@ -20,13 +20,35 @@ class SP_Sports {
 		if ( empty( self::$presets ) ) {
 			$presets = array();
 
-			include_once( 'preset/class-sp-preset-sport.php' );
+			include( 'presets/class-sp-preset-sport.php' );
 
-			$presets[] = include( 'preset/class-sp-preset-soccer.php' );
+			$dir = scandir( SP()->plugin_path() . '/presets' );
+			$files = array();
+			if ( $dir ) {
+				foreach ( $dir as $key => $value ) {
+					if ( ! in_array( $value, array( ".",".." ) ) ) {
+						$files[] = $value;
+					}
+				}
+			}
+			foreach( $files as $file ) {
+				$json_data = file_get_contents( SP()->plugin_path() . '/presets/' . $file );
+				$data = json_decode( $json_data, true );
+				pr( $data );
+			}
+
+			//$presets[] = include( 'presets/class-sp-preset-soccer.php' );
+			//$presets[] = include( 'presets/class-sp-preset-baseball.php' );SP_TEMPLATE_PATH
 
 			self::$presets = apply_filters( 'sportspress_get_presets', $presets );
 		}
 		return self::$presets;
+	}
+
+	public static function get_preset_options() {
+		$presets = self::get_presets();
+	    $options = apply_filters( 'sportspress_sport_presets_array', array() );
+		return $options;
 	}
 
 	/** @var array Array of sports */

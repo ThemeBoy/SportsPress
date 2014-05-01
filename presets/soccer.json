@@ -1,0 +1,46 @@
+{
+	"sport":			"soccer",
+	"id":				"premier-league",
+	"name":				"Premier League",
+	"outcomes": [
+						"W",
+						"D",
+						"L"
+	],
+	"results": [
+						"1st Half",
+						"2nd Half",
+						"Goals"
+	],
+	"performance": [
+						"Goals",
+						"Assists",
+						"Fouls",
+						"Yellow Cards",
+						"Red Cards"
+	],
+	"columns": [
+						{ "name" : "P", "equation" : "$events" },
+						{ "name" : "W", "equation" : "$w" },
+						{ "name" : "D", "equation" : "$d" },
+						{ "name" : "L", "equation" : "$l" },
+						{ "name" : "GF", "equation" : "$goalsfor" },
+						{ "name" : "GA", "equation" : "$goalsagainst" },
+						{ "name" : "GD", "equation" : "$goalsfor - $goalsagainst" },
+						{ "name" : "Pts", "equation" : "$w * 3 + $d" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "Appearances", "equation" : "$events" }
+						{ "name" : "Average Goals per Match", "equation" : "$goals / $events" }
+						{ "name" : "Win Ratio", "equation" : "$w / $events" }
+						{ "name" : "Played", "equation" : "$eventsplayed" }
+						{ "name" : "Played", "equation" : "$eventsplayed" }
+						{ "name" : "Played", "equation" : "$eventsplayed" }
+						{ "name" : "Played", "equation" : "$eventsplayed" }
+						{ "name" : "Played", "equation" : "$eventsplayed" }
+	]
+}
