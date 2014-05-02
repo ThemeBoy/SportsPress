@@ -71,7 +71,7 @@ class SP_Player_List extends SP_Custom_Post {
 			endforeach;
 
 			// Initialize player totals
-			$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0, 'streak' => 0 );
+			$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0, 'eventsstarted' => 0, 'eventssubbed' => 0, 'streak' => 0 );
 
 			foreach ( $performance_labels as $key => $value ):
 				$totals[ $player_id ][ $key ] = 0;
@@ -148,6 +148,12 @@ class SP_Player_List extends SP_Custom_Post {
 							// Continue with incrementing values if active in event
 							if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
 								$totals[ $player_id ]['eventsplayed']++;
+
+								if ( sp_array_value( $player_performance, 'status' ) == 'lineup' ):
+									$totals[ $player_id ]['eventsstarted']++;
+								elseif ( sp_array_value( $player_performance, 'status' ) == 'sub' && sp_array_value( $player_performance, 'sub', 0 ) ):
+									$totals[ $player_id ]['eventssubbed']++;
+								endif;
 
 								$value = $team_results['outcome'];
 
