@@ -34,7 +34,7 @@ class SP_Meta_Box_Config {
 		foreach ( $groups as $group ):
 			switch ( $group ):
 				case 'player_event':
-					$options[ __( 'Events', 'sportspress' ) ] = array( '$eventsattended' => __( 'Attended', 'sportspress' ), '$eventsplayed' => __( 'Played', 'sportspress' ) );
+					$options[ __( 'Events', 'sportspress' ) ] = array( '$eventsattended' => __( 'Attended', 'sportspress' ), '$eventsplayed' => __( 'Played', 'sportspress' ), '$eventsstarted' => __( 'Started', 'sportspress' ), '$eventssubbed' => __( 'Substituted', 'sportspress' ) );
 					break;
 				case 'team_event':
 					$options[ __( 'Events', 'sportspress' ) ] = array( '$eventsplayed' => __( 'Played', 'sportspress' ) );
