@@ -40,9 +40,7 @@ class SP_Settings_General extends SP_Settings_Page {
 	 */
 	public function get_settings() {
 
-		$sports = new SP_Admin_Sports();
-
-		$presets = $sports->get_preset_options();
+		$presets = SP_Admin_Sports::get_preset_options();
 
 		return apply_filters( 'sportspress_general_settings', array(
 
@@ -109,8 +107,8 @@ class SP_Settings_General extends SP_Settings_Page {
 	 */
 	public function save() {
 		if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
-			$sport = SP()->sports->$_POST['sportspress_sport'];
-			SP_Admin_Settings::configure_sport( $sport );
+			$sport = $_POST['sportspress_sport'];
+			SP_Admin_Sports::apply_preset( $sport );
     		update_option( '_sp_needs_welcome', 0 );
 		endif;
 

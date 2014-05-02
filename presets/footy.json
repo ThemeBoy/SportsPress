@@ -1,0 +1,19 @@
+{
+	"name":				"Footy - coming soon",
+	"outcomes": [
+						"Win",
+						"Loss"
+	],
+	"results": [
+	],
+	"performance": [
+	],
+	"columns": [
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+	]
+}

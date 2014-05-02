@@ -2407,15 +2407,6 @@ function sp_get_sport_presets() {
 	));
 }
 
-function sp_get_sport_options() {
-	$sports = sp_get_sport_presets();
-	$options = array();
-	foreach ( $sports as $slug => $data ):
-		$options[ $slug ] = $data['name'];
-	endforeach;
-	return $options;
-}
-
 /**
  * Get an array of text options per context.
  * @return array
