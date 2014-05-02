@@ -16,8 +16,15 @@ $event = new SP_Event( $id );
 
 $teams = (array)get_post_meta( $id, 'sp_team', false );
 $staff = (array)get_post_meta( $id, 'sp_staff', false );
+
+$status = $event->status();
 $stats = (array)get_post_meta( $id, 'sp_players', true );
-$performance_labels = sp_get_var_labels( 'sp_performance' );
+if ( $status == 'results' ):
+	$performance_labels = sp_get_var_labels( 'sp_performance' );
+else:
+	$performance_labels = array();
+endif;
+
 $link_posts = get_option( 'sportspress_event_link_players', 'yes' ) == 'yes' ? true : false;
 $sortable = get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false;
 $responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
@@ -117,7 +124,7 @@ foreach( $teams as $key => $team_id ):
 					?>
 				</tbody>
 			<?php endif; ?>
-			<?php if ( array_key_exists( 0, $data ) ): ?>
+			<?php if ( $status == 'results' && array_key_exists( 0, $data ) ): ?>
 				<<?php echo ( $has_players ? 'tfoot' : 'tbody' ); ?>>
 					<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">
 						<?php

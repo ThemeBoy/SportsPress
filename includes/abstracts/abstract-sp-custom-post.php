@@ -62,5 +62,15 @@ abstract class SP_Custom_Post {
 		return $value;
 	}
 
+	/**
+	 * Get the post data.
+	 *
+	 * @access public
+	 * @return object
+	 */
+	public function get_post_data() {
+		return $this->post;
+	}
+
 
 }
