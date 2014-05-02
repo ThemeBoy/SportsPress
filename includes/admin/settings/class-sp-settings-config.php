@@ -102,6 +102,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 						<tr>
 							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 							<th scope="col" class="edit"></th>
 						</tr>
 					</thead>
@@ -109,6 +110,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 						<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 							<td class="row-title"><?php echo $row->post_title; ?></td>
 							<td><?php echo $row->post_name; ?></td>
+							<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 							<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 						</tr>
 					<?php $i++; endforeach; ?>
@@ -149,50 +151,50 @@ class SP_Settings_Config extends SP_Settings_Page {
 				<p class="description"><?php _e( 'Used for events.' ); ?></p>
 			</th>
 		    <td class="forminp">
-		    	<fieldset>
-					<legend class="screen-reader-text"><span><?php _e( 'Team Results', 'sportspress' ) ?></span></legend>
-					<table class="widefat sp-admin-config-table">
-						<thead>
-							<tr>
-								<th scope="col"><?php _e( 'Primary', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Variables', 'sportspress' ); ?></th>
-								<th scope="col" class="edit"></th>
-							</tr>
-						</thead>
-						<tfoot>
-							<tr>
-								<th class="radio"><input type="radio" id="sportspress_primary_result_0" name="sportspress_primary_result" value="0" <?php checked( $selection, 0 ); ?>></th>
-								<th colspan="3"><label for="sportspress_primary_result_0">
-									<?php
-									if ( sizeof( $data ) > 0 ):
-										$default = end( $data );
-										reset( $data );
-										printf( __( 'Default (%s)', 'sportspress' ), $default->post_title );
-									else:
-										_e( 'Default', 'sportspress' );
-									endif;
-									?>
-								</label></th>
-							</tr>
-						</tfoot>
-						<?php $i = 0; foreach ( $data as $row ): ?>
-							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
-								<td class="radio"><input type="radio" id="sportspress_primary_result_<?php echo $row->post_name; ?>" name="sportspress_primary_result" value="<?php echo $row->post_name; ?>" <?php checked( $selection, $row->post_name ); ?>></td>
-								<td class="row-title"><label for="sportspress_primary_result_<?php echo $row->post_name; ?>"><?php echo $row->post_title; ?></label></td>
-								<td><?php echo $row->post_name; ?>for, <?php echo $row->post_name; ?>against</td>
-								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
-							</tr>
-						<?php $i++; endforeach; ?>
-					</table>
-					<div class="tablenav bottom">
-						<div class="alignleft actions">
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_result' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
-							<a class="button" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_result' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
-						</div>
-						<br class="clear">
+				<legend class="screen-reader-text"><span><?php _e( 'Team Results', 'sportspress' ) ?></span></legend>
+				<table class="widefat sp-admin-config-table">
+					<thead>
+						<tr>
+							<th scope="col"><?php _e( 'Primary', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Variables', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
+							<th scope="col" class="edit"></th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th class="radio"><input type="radio" id="sportspress_primary_result_0" name="sportspress_primary_result" value="0" <?php checked( $selection, 0 ); ?>></th>
+							<th colspan="4"><label for="sportspress_primary_result_0">
+								<?php
+								if ( sizeof( $data ) > 0 ):
+									$default = end( $data );
+									reset( $data );
+									printf( __( 'Default (%s)', 'sportspress' ), $default->post_title );
+								else:
+									_e( 'Default', 'sportspress' );
+								endif;
+								?>
+							</label></th>
+						</tr>
+					</tfoot>
+					<?php $i = 0; foreach ( $data as $row ): ?>
+						<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
+							<td class="radio"><input type="radio" id="sportspress_primary_result_<?php echo $row->post_name; ?>" name="sportspress_primary_result" value="<?php echo $row->post_name; ?>" <?php checked( $selection, $row->post_name ); ?>></td>
+							<td class="row-title"><label for="sportspress_primary_result_<?php echo $row->post_name; ?>"><?php echo $row->post_title; ?></label></td>
+							<td><?php echo $row->post_name; ?>for, <?php echo $row->post_name; ?>against</td>
+							<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
+							<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
+						</tr>
+					<?php $i++; endforeach; ?>
+				</table>
+				<div class="tablenav bottom">
+					<div class="alignleft actions">
+						<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_result' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
+						<a class="button" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_result' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
 					</div>
-				</fieldset>
+					<br class="clear">
+				</div>
 			</td>
 		</tr>
 		<?php
@@ -225,6 +227,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 						<tr>
 							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 							<th scope="col" class="edit"></th>
 						</tr>
 					</thead>
@@ -232,6 +235,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 						<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 							<td class="row-title"><?php echo $row->post_title; ?></td>
 							<td><?php echo $row->post_name; ?></td>
+							<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 							<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 						</tr>
 					<?php $i++; endforeach; ?>
@@ -278,6 +282,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 							<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Sort Order', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 							<th scope="col" class="edit"></th>
 						</tr>
 					</thead>
@@ -288,6 +293,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 							<td><?php echo sp_get_post_equation( $row->ID ); ?></td>
 							<td><?php echo sp_get_post_precision( $row->ID ); ?></td>
 							<td><?php echo sp_get_post_order( $row->ID ); ?></td>
+							<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 							<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 						</tr>
 					<?php $i++; endforeach; ?>
@@ -332,7 +338,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 						<tr>
 							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
-							<th scope="col">&nbsp;</th>
+							<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 							<th scope="col" class="edit"></th>
 						</tr>
 					</thead>
@@ -340,7 +346,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 						<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 							<td class="row-title"><?php echo $row->post_title; ?></td>
 							<td><?php echo $row->post_name; ?></td>
-							<td>&nbsp;</td>
+							<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 							<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 						</tr>
 					<?php $i++; endforeach; ?>
@@ -386,6 +392,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 							<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 							<th scope="col" class="edit"></th>
 						</tr>
 					</thead>
@@ -395,6 +402,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 							<td><?php echo $row->post_name; ?></td>
 							<td><?php echo sp_get_post_equation( $row->ID ); ?></td>
 							<td><?php echo sp_get_post_precision( $row->ID ); ?></td>
+							<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 							<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 						</tr>
 					<?php $i++; endforeach; ?>

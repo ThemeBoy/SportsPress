@@ -195,8 +195,8 @@ class SP_Admin_Welcome {
 			<?php
 			// Save settings
 			if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
-				$sport = SP()->sports->$_POST['sportspress_sport'];
-				SP_Admin_Settings::configure_sport( $sport );
+				$sport = $_POST['sportspress_sport'];
+				SP_Admin_Sports::apply_preset( $sport );
 				update_option( 'sportspress_sport', $_POST['sportspress_sport'] );
 	    	endif;
 	    	if ( isset( $_POST['sportspress_default_country'] ) ):
@@ -222,7 +222,7 @@ class SP_Admin_Welcome {
 					        </p>
 							<h4><?php _e( 'Sport', 'sportspress' ); ?></h4>
 							<?php
-							$sport_options = sp_get_sport_options();
+							$sport_options = SP_Admin_Sports::get_preset_options();
 							$class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
 							$settings = array( array(
 								'id'        => 'sportspress_sport',

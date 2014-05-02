@@ -1,0 +1,20 @@
+{
+	"name":				"Rugby - coming soon",
+	"outcomes": [
+						"Win",
+						"Draw",
+						"Loss"
+	],
+	"results": [
+	],
+	"performance": [
+	],
+	"columns": [
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+	]
+}

@@ -1,46 +1,43 @@
 {
-	"sport":			"soccer",
-	"id":				"premier-league",
-	"name":				"Premier League",
+	"name":				"Soccer (Association Football)",
 	"outcomes": [
-						"W",
-						"D",
-						"L"
+						"Win",
+						"Draw",
+						"Loss"
 	],
 	"results": [
-						"1st Half",
-						"2nd Half",
-						"Goals"
+						{ "name" : "1st Half", "description" : "1st half goals" },
+						{ "name" : "2nd Half", "description" : "2nd half goals" },
+						{ "name" : "Goals", "description" : "Total goals", "main" : 1 }
 	],
 	"performance": [
 						"Goals",
+						"Shots on Goal",
 						"Assists",
 						"Fouls",
+						"Fouled",
 						"Yellow Cards",
 						"Red Cards"
 	],
 	"columns": [
-						{ "name" : "P", "equation" : "$events" },
-						{ "name" : "W", "equation" : "$w" },
-						{ "name" : "D", "equation" : "$d" },
-						{ "name" : "L", "equation" : "$l" },
-						{ "name" : "GF", "equation" : "$goalsfor" },
-						{ "name" : "GA", "equation" : "$goalsagainst" },
-						{ "name" : "GD", "equation" : "$goalsfor - $goalsagainst" },
-						{ "name" : "Pts", "equation" : "$w * 3 + $d" }
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "F", "equation" : "$goalsfor", "priority" : 3, "description" : "Goals for" },
+						{ "name" : "A", "equation" : "$goalsagainst", "description" : "Goals against" },
+						{ "name" : "GD", "equation" : "$goalsfor - $goalsagainst", "priority" : 2, "description" : "Goal difference" },
+						{ "name" : "PTS", "equation" : "$win * 3 + $draw", "priority" : 1, "description" : "Team points" }
 	],
 	"metrics": [
 						"Height",
 						"Weight"
 	],
 	"statistics": [
-						{ "name" : "Appearances", "equation" : "$events" }
-						{ "name" : "Average Goals per Match", "equation" : "$goals / $events" }
-						{ "name" : "Win Ratio", "equation" : "$w / $events" }
-						{ "name" : "Played", "equation" : "$eventsplayed" }
-						{ "name" : "Played", "equation" : "$eventsplayed" }
-						{ "name" : "Played", "equation" : "$eventsplayed" }
-						{ "name" : "Played", "equation" : "$eventsplayed" }
-						{ "name" : "Played", "equation" : "$eventsplayed" }
+						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "Average Goals per Match", "id" : "averagegoals", "equation" : "$goals / $eventsplayed", "precision" : 2 },
+						{ "name" : "Win Ratio", "equation" : "$win / $eventsplayed * 100", "precision" : 2 },
+						{ "name" : "Draw Ratio", "equation" : "$draw / $eventsplayed * 100", "precision" : 2 },
+						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 100", "precision" : 2 }
 	]
 }

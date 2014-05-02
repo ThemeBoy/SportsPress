@@ -1,0 +1,21 @@
+{
+	"name":				"Cricket - coming soon",
+	"outcomes": [
+						"Win",
+						"Loss",
+						"Tie",
+						"Draw"
+	],
+	"results": [
+	],
+	"performance": [
+	],
+	"columns": [
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+	]
+}
