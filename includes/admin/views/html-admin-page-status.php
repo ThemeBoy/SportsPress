@@ -45,10 +45,6 @@
 			<td><?php if ( function_exists( 'phpversion' ) ) echo esc_html( phpversion() ); ?></td>
 		</tr>
 		<tr>
-			<td><?php _e( 'MySQL Version','sportspress' ); ?>:</td>
-			<td><?php if ( function_exists( 'mysql_get_server_info' ) ) echo esc_html( mysql_get_server_info() ); ?></td>
-		</tr>
-		<tr>
 			<td><?php _e( 'WP Memory Limit','sportspress' ); ?>:</td>
 			<td><?php
 				$memory = sp_let_to_num( WP_MEMORY_LIMIT );
