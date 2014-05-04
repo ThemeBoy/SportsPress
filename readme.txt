@@ -51,13 +51,14 @@ League table columns, player statistics, and match results can be customized to 
 * Spanish – Español ( es_ES )
 * Swedish – Svenska ( sv_SE )
 
-Some language files are incomplete as they are still being translated by the community. Help us translate SportsPress by contributing to our [Transifex project](https://www.transifex.com/projects/p/sportspress/)!
-
 = Get involved =
 
 Developers can contribute via the [SportsPress GitHub Repository](https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md).
 
 Translators can contribute new languages to SportsPress through [Transifex](https://www.transifex.com/projects/p/sportspress/).
+
+= Please Rate, Vote, and Enjoy =
+Your feedback can make a difference! Thanks :)
 
 == Installation ==
 
