@@ -2392,7 +2392,7 @@ function sp_get_sport_presets() {
 					),
 					array(
 						'post_title' => 'Yellow Cards',
-						'post_name'  => 'yellospards',
+						'post_name'  => 'yellowcards',
 					),
 					array(
 						'post_title' => 'Red Cards',
