@@ -22,15 +22,14 @@ class SP_Meta_Box_Event_Teams {
 		$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
 		foreach ( $teams as $key => $value ):
 		?>
-			<div class="sp-clone">
+			<div class="sp-instance">
 				<p class="sp-tab-select sp-title-generator">
 					<?php
 					$args = array(
 						'post_type' => 'sp_team',
 						'name' => 'sp_team[]',
 						'class' => 'sportspress-pages',
-						'show_option_none' => sprintf( __( 'Remove', 'sportspress' ), 'Team' ),
-						'option_none_value' => '0',
+						'show_option_none' => sprintf( __( '&mdash; None &mdash;', 'sportspress' ), 'Team' ),
 						'selected' => $value
 					);
 					wp_dropdown_pages( $args );
@@ -45,28 +44,14 @@ class SP_Meta_Box_Event_Teams {
 				sp_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_current_team', $key );
 				?>
 			</div>
-		<?php endforeach; ?>
-		<div class="sp-clone" data-clone-name="sp_team">
-			<p class="sp-tab-select sp-title-generator">
-				<?php
-				$args = array(
-					'post_type' => 'sp_team',
-					'name' => 'sp_team_selector',
-					'class' => 'sportspress-pages',
-					'show_option_none' => __( '&mdash; Add &mdash;', 'sportspress' ),
-					'option_none_value' => '0'
-				);
-				wp_dropdown_pages( $args );
-				?>
-			</p>
-		</div>
-		<?php
+		<?php endforeach;
 	}
 
 	/**
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		sp_update_post_meta( $post_id, 'sp_limit', sp_array_value( $_POST, 'sp_limit', 2 ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
