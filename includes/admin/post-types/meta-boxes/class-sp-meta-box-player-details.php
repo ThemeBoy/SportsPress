@@ -51,7 +51,7 @@ class SP_Meta_Box_Player_Details {
 		
 		$teams = get_posts( array( 'post_type' => 'sp_team', 'posts_per_page' => -1 ) );
 		$past_teams = array_filter( get_post_meta( $post->ID, 'sp_past_team', false ) );
-		$current_team = get_post_meta( $post->ID, 'sp_current_team', true );
+		$current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
 		?>
 		<p><strong><?php _e( 'Number', 'sportspress' ); ?></strong></p>
 		<p><input type="text" size="4" id="sp_number" name="sp_number" value="<?php echo $number; ?>"></p>
@@ -83,16 +83,16 @@ class SP_Meta_Box_Player_Details {
 		sp_dropdown_taxonomies( $args );
 		?></p>
 
-		<p><strong><?php _e( 'Current Team', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Current Teams', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
 			'post_type' => 'sp_team',
-			'name' => 'sp_current_team',
-			'show_option_blank' => true,
-			'selected' => $current_team,
+			'name' => 'sp_current_team[]',
+			'selected' => $current_teams,
 			'values' => 'ID',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Team', 'sportspress' ) ),
-			'class' => 'sp-current-team widefat',
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
+			'class' => 'sp-current-teams widefat',
+			'property' => 'multiple',
 			'chosen' => true,
 		);
 		sp_dropdown_pages( $args );
@@ -151,8 +151,8 @@ class SP_Meta_Box_Player_Details {
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_number', sp_array_value( $_POST, 'sp_number', '' ) );
 		update_post_meta( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', '' ) );
-		update_post_meta( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', null ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_past_team', sp_array_value( $_POST, 'sp_past_team', array() ) );
-		sp_update_post_meta_recursive( $post_id, 'sp_team', array_merge( array( sp_array_value( $_POST, 'sp_current_team', null ) ), sp_array_value( $_POST, 'sp_past_team', array() ) ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_team', array_merge( array( sp_array_value( $_POST, 'sp_current_team', array() ) ), sp_array_value( $_POST, 'sp_past_team', array() ) ) );
 	}
 }
