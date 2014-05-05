@@ -25,14 +25,13 @@ $defaults = array(
 
 extract( $defaults, EXTR_SKIP );
 
-$output = '<div class="sp-table-wrapper">' .
-	'<table class="sp-league-table sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">';
+$output = '<div class="sp-table-wrapper">';
 
 if ( $show_caption ):
-	$output .= '<caption class="sp-table-caption"><a href="' . get_post_permalink( $id ) . '">' . get_the_title( $id ) . '</a></caption>';
+	$output .= '<h4 class="sp-table-caption"><a href="' . get_post_permalink( $id ) . '">' . get_the_title( $id ) . '</a></h4>';
 endif;
 
-$output .= '<thead>' . '<tr>';
+$output .= '<table class="sp-league-table sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
 $table = new SP_League_Table( $id );
 
