@@ -41,6 +41,19 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 			array( 'title' => __( 'Event Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'event_options' ),
 			
+			array(
+				'title' 	=> __( 'Limit', 'sportspress' ),
+				'id' 		=> 'sportspress_event_teams',
+				'class' 	=> 'small-text',
+				'default'	=> '2',
+				'desc' 		=> __( 'teams', 'sportspress' ),
+				'type' 		=> 'number',
+				'custom_attributes' => array(
+					'min' 	=> 1,
+					'step' 	=> 1
+				),
+			),
+			
 			array( 'type' => 'delimiter' ),
 
 			array(
@@ -125,7 +138,9 @@ class SP_Settings_Events extends SP_Settings_Page {
 	 */
 	public function delimiter_setting() {
 		$selection = get_option( 'sportspress_event_teams_delimiter', 'vs' );
-
+		$limit = get_option( 'sportspress_event_teams', 2 );
+		$example = str_repeat( __( 'Team', 'sportspress' ) . ' %1$s ', $limit );
+		$example = rtrim( $example, ' %1$s ' );
 		?>
 		<tr valign="top">
 			<th scope="row" class="titledesc">
@@ -136,10 +151,10 @@ class SP_Settings_Events extends SP_Settings_Page {
 					<legend class="screen-reader-text"><span><?php _e( 'Delimiter', 'sportspress' ); ?></span></legend>
 					<?php $delimiters = array( 'vs', 'v', '—', '/' ); ?>
 					<?php foreach ( $delimiters as $delimiter ): ?>
-						<label title="<?php echo $delimiter; ?>"><input type="radio" class="preset" name="sportspress_event_teams_delimiter_preset" value="<?php echo $delimiter; ?>" data-example="<?php _e( 'Team', 'sportspress' ); ?> <?php echo $delimiter; ?> <?php _e( 'Team', 'sportspress' ); ?>" <?php checked( $delimiter, $selection ); ?>> <span><?php _e( 'Team', 'sportspress' ); ?> <?php echo $delimiter; ?> <?php _e( 'Team', 'sportspress' ); ?></span></label><br>
+						<label title="<?php echo $delimiter; ?>"><input type="radio" class="preset" name="sportspress_event_teams_delimiter_preset" value="<?php echo $delimiter; ?>" data-example="<?php printf( $example, $delimiter ); ?>" <?php checked( $delimiter, $selection ); ?>> <span><?php printf( $example, $delimiter ); ?></span></label><br>
 					<?php endforeach; ?>
-					<label><input type="radio" class="preset" name="sportspress_event_teams_delimiter_preset" value="\c\u\s\t\o\m" <?php checked( false, in_array( $selection, $delimiters ) ); ?>> <?php _e( 'Custom:', 'sportspress' ); ?> </label><input type="text" class="small-text value" name="sportspress_event_teams_delimiter" value="<?php echo $selection; ?>" data-example-format="<?php _e( 'Team', 'sportspress' ); ?> __val__ <?php _e( 'Team', 'sportspress' ); ?>">
-					<span class="example"><?php _e( 'Team', 'sportspress' ); ?> <?php echo $selection; ?> <?php _e( 'Team', 'sportspress' ); ?></span>
+					<label><input type="radio" class="preset" name="sportspress_event_teams_delimiter_preset" value="\c\u\s\t\o\m" <?php checked( false, in_array( $selection, $delimiters ) ); ?>> <?php _e( 'Custom:', 'sportspress' ); ?> </label><input type="text" class="small-text value" name="sportspress_event_teams_delimiter" value="<?php echo $selection; ?>" data-example-format="<?php printf( $example, '__val__' ); ?>">
+					<span class="example"><?php printf( $example, $selection ); ?></span>
 				</fieldset>
 			</td>
 		</tr>
