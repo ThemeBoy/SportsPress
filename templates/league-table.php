@@ -15,6 +15,7 @@ $defaults = array(
 	'columns' => null,
 	'show_full_table_link' => false,
 	'show_team_logo' => get_option( 'sportspress_table_show_logos', 'yes' ) == 'yes' ? true : false,
+	'show_caption' => false,
 	'link_posts' => get_option( 'sportspress_table_link_teams', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
@@ -25,7 +26,13 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 $output = '<div class="sp-table-wrapper">' .
-	'<table class="sp-league-table sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
+	'<table class="sp-league-table sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">';
+
+if ( $show_caption ):
+	$output .= '<caption class="sp-table-caption"><a href="' . get_post_permalink( $id ) . '">' . get_the_title( $id ) . '</a></caption>';
+endif;
+
+$output .= '<thead>' . '<tr>';
 
 $table = new SP_League_Table( $id );
 
@@ -69,8 +76,10 @@ foreach( $data as $team_id => $row ):
 	// Rank
 	$output .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
 
-	if ( $show_team_logo )
-		$name = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon', array( 'class' => 'team-logo' ) ) . ' ' . $name;
+	if ( $show_team_logo ):
+		$logo = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon', array( 'class' => 'team-logo' ) );
+		$name = str_replace( 'wp-post-image', '', $logo ) . ' ' . $name;
+	endif;
 
 	if ( $link_posts ):
 		$permalink = get_post_permalink( $team_id );
