@@ -10,11 +10,12 @@ class SP_Widget_Countdown extends WP_Widget {
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? null : $instance['title'], $instance, $this->id_base);
 		$id = empty($instance['id']) ? null : $instance['id'];
+		$show_venue = empty($instance['show_venue']) ? false : $instance['show_venue'];
 		$show_league = empty($instance['show_league']) ? false : $instance['show_league'];
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		sp_get_template( 'countdown.php', array( 'id' => $id, 'show_league' => $show_league ) );
+		sp_get_template( 'countdown.php', array( 'id' => $id, 'show_venue' => $show_venue, 'show_league' => $show_league ) );
 		echo $after_widget;
 	}
 
@@ -22,15 +23,17 @@ class SP_Widget_Countdown extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['id'] = intval($new_instance['id']);
+		$instance['show_venue'] = intval($new_instance['show_venue']);
 		$instance['show_league'] = intval($new_instance['show_league']);
 
 		return $instance;
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'show_league' => false ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'show_venue' => false, 'show_league' => false ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
+		$show_venue = intval($instance['show_venue']);
 		$show_league = intval($instance['show_league']);
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
@@ -54,6 +57,9 @@ class SP_Widget_Countdown extends WP_Widget {
 		endif;
 		?>
 		</p>
+
+		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_venue'); ?>" name="<?php echo $this->get_field_name('show_venue'); ?>" value="1" <?php checked( $show_venue, 1 ); ?>>
+		<label for="<?php echo $this->get_field_id('show_venue'); ?>"><?php _e( 'Display venue', 'sportspress' ); ?></label></p>
 
 		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_league'); ?>" name="<?php echo $this->get_field_name('show_league'); ?>" value="1" <?php checked( $show_league, 1 ); ?>>
 		<label for="<?php echo $this->get_field_id('show_league'); ?>"><?php _e( 'Display league', 'sportspress' ); ?></label></p>

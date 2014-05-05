@@ -30,8 +30,13 @@ if ( ! isset( $post ) ) return;
 <div id="sp-countdown-wrapper">
 	<h3 class="event-name"><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a></h3>
 	<?php
-	if ( true || isset( $show_venue ) && $show_venue ):
-		the_terms( $post->ID, 'sp_venue' );
+	if ( isset( $show_venue ) && $show_venue ):
+		$venues = get_the_terms( $post->ID, 'sp_venue' );
+		if ( $venues ):
+			?>
+			<h5 class="event-venue"><?php the_terms( $post->ID, 'sp_venue' ); ?></h5>
+			<?php
+		endif;
 	endif;
 
 	if ( isset( $show_league ) && $show_league ):
@@ -49,11 +54,16 @@ if ( ! isset( $post ) ) return;
 	$now = new DateTime( current_time( 'mysql', 0 ) );
 	$date = new DateTime( $post->post_date );
 	$interval = date_diff( $now, $date );
+
+	$days = $interval->invert ? 0 : $interval->days;
+	$h = $interval->invert ? 0 : $interval->h;
+	$i = $interval->invert ? 0 : $interval->i;
+	$s = $interval->invert ? 0 : $interval->s;
 	?>
-	<p class="countdown sp-countdown"><time datetime="<?php echo $post->post_date; ?>"<?php if ( $live ): ?> data-countdown="<?php echo str_replace( '-', '/', $post->post_date ); ?>"<?php endif; ?>>
-		<span><?php echo sprintf( '%02s', ( $interval->invert ? 0 : $interval->days ) ); ?> <small><?php echo __( 'days', 'sportspress' ); ?></small></span>
-		<span><?php echo sprintf( '%02s', ( $interval->invert ? 0 : $interval->h ) ); ?> <small><?php echo __( 'hrs', 'sportspress' ); ?></small></span>
-		<span><?php echo sprintf( '%02s', ( $interval->invert ? 0 : $interval->i ) ); ?> <small><?php echo __( 'mins', 'sportspress' ); ?></small></span>
-		<span><?php echo sprintf( '%02s', ( $interval->invert ? 0 : $interval->s ) ); ?> <small><?php echo __( 'secs', 'sportspress' ); ?></small></span>
+	<p class="countdown sp-countdown<?php if ( $days >= 10 ): ?> long-countdown<?php endif; ?>"><time datetime="<?php echo $post->post_date; ?>"<?php if ( $live ): ?> data-countdown="<?php echo str_replace( '-', '/', $post->post_date ); ?>"<?php endif; ?>>
+		<span><?php echo sprintf( '%02s', $days ); ?> <small><?php echo __( 'days', 'sportspress' ); ?></small></span>
+		<span><?php echo sprintf( '%02s', $h ); ?> <small><?php echo __( 'hrs', 'sportspress' ); ?></small></span>
+		<span><?php echo sprintf( '%02s', $i ); ?> <small><?php echo __( 'mins', 'sportspress' ); ?></small></span>
+		<span><?php echo sprintf( '%02s', $s ); ?> <small><?php echo __( 'secs', 'sportspress' ); ?></small></span>
 	</time></p>
 </div>
