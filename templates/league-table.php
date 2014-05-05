@@ -77,7 +77,7 @@ foreach( $data as $team_id => $row ):
 
 	if ( $show_team_logo ):
 		$logo = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon', array( 'class' => 'team-logo' ) );
-		$name = str_replace( 'wp-post-image', '', $logo ) . ' ' . $name;
+		$name = $logo . ' ' . $name;
 	endif;
 
 	if ( $link_posts ):
