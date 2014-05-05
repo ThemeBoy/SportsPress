@@ -134,15 +134,18 @@ class SP_Template_Loader {
 					break;
 			endswitch;
 
-		elseif ( is_tax( 'sp_venue' ) || is_tax( 'sp_season' ) ):
+		elseif ( is_tax() ):
 
 			$term = get_queried_object();
 
-			$file 		= 'taxonomy-' . $term->taxonomy . '.php';
-			$find[] 	= 'taxonomy-' . $term->taxonomy . '-' . $term->slug . '.php';
-			$find[] 	= SP_TEMPLATE_PATH . 'taxonomy-' . $term->taxonomy . '-' . $term->slug . '.php';
-			$find[] 	= $file;
-			$find[] 	= SP_TEMPLATE_PATH . $file;
+			switch( $term->taxonomy ):
+				case 'sp_venue':
+				$file = 'taxonomy-venue.php';
+				$find[] 	= 'taxonomy-venue-' . $term->slug . '.php';
+				$find[] 	= SP_TEMPLATE_PATH . 'taxonomy-venue-' . $term->slug . '.php';
+				$find[] 	= $file;
+				$find[] 	= SP_TEMPLATE_PATH . $file;
+			endswitch;
 
 		endif;
 
