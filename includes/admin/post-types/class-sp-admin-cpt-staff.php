@@ -87,13 +87,13 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 				if ( empty( $teams ) ):
 					echo '&mdash;';
 				else:
-					$current_team = get_post_meta( $post_id, 'sp_current_team', true );
+					$current_teams = get_post_meta( $post_id, 'sp_current_team', false );
 					foreach( $teams as $team_id ):
 						if ( ! $team_id ) continue;
 						$team = get_post( $team_id );
 						if ( $team ):
 							echo $team->post_title;
-							if ( $team_id == $current_team ):
+							if ( in_array( $team_id, $current_teams ) ):
 								echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
 							endif;
 							echo '<br>';
