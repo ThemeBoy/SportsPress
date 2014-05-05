@@ -9,7 +9,7 @@
 			var ll = new google.maps.LatLng(latitude,longitude);
 			var mapOptions = {
 				scrollwheel: false,
-				zoom: 16,
+				zoom: 12,
 				center: ll
 			};
 			var map = new google.maps.Map($self[0], mapOptions)
