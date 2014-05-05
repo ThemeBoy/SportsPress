@@ -1,6 +1,9 @@
 /* SportsPress */
 
 /* Data Tables */
+.sp-data-table {
+	width: 100%;
+}
 .sp-data-table thead .sorting,
 .sp-data-table thead .sorting_asc,
 .sp-data-table thead .sorting_desc,
