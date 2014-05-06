@@ -139,7 +139,7 @@ class SP_Admin_CPT_Table extends SP_Admin_CPT {
 
 	    if ( $typenow == 'sp_table' ) {
 
-	    	if ( isset( $_GET['team'] ) ) {
+	    	if ( ! empty( $_GET['team'] ) ) {
 		    	$query->query_vars['meta_value'] 	= $_GET['team'];
 		        $query->query_vars['meta_key'] 		= 'sp_team';
 		    }
