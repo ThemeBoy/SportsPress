@@ -294,7 +294,7 @@ if ( !function_exists( 'sp_get_post_views' ) ) {
 	        delete_post_meta( $post_id, $count_key );
 	        add_post_meta( $post_id, $count_key, '0' );
 	    endif;
-	    if ( isset( $views ) && $views == 1 )
+	    if ( $count == 1 )
 	    	return __( '1 view', 'sportspress' );
 	    else
 	    	return sprintf( __( '%s views', 'sportspress' ), $count );
