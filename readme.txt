@@ -120,6 +120,9 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 
 == Changelog ==
 
+= 0.8.5 =
+* Fix - Issue saving new venues.
+
 = 0.8.4 =
 * Feature - Add option to limit number of teams per event.
 * Feature - Show venue option in Countdown widget.
