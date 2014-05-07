@@ -54,7 +54,6 @@ class SP_Admin_Assets {
 		}
 
 		if ( in_array( $screen->id, array( 'customize' ) ) ) {
-			wp_enqueue_style( 'sportspress-admin-menu-styles', SP()->plugin_url() . '/assets/css/menu.css', array(), SP_VERSION );
 			wp_enqueue_style( 'sportspress-admin-customize-styles', SP()->plugin_url() . '/assets/css/customize.css', array(), SP_VERSION );
 		}
 
