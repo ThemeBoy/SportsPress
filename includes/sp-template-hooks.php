@@ -139,10 +139,10 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 				$translated_text = __( 'Select Photo', 'sportspress' );
 				break;
 			case 'Set featured image':
-				$translated_text = __( 'Add Photo', 'sportspress' );
+				$translated_text = __( 'Add photo', 'sportspress' );
 				break;
 			case 'Remove featured image':
-				$translated_text = __( 'Remove Photo', 'sportspress' );
+				$translated_text = __( 'Remove photo', 'sportspress' );
 				break;
 			endswitch;
 		endif;
@@ -156,10 +156,10 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 				$translated_text = __( 'Select Logo', 'sportspress' );
 				break;
 			case 'Set featured image':
-				$translated_text = __( 'Add Logo', 'sportspress' );
+				$translated_text = __( 'Add logo', 'sportspress' );
 				break;
 			case 'Remove featured image':
-				$translated_text = __( 'Remove Logo', 'sportspress' );
+				$translated_text = __( 'Remove logo', 'sportspress' );
 				break;
 			endswitch;
 		endif;
