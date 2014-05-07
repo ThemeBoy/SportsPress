@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Handles taxonomies in admin
  *
  * @class 		SP_Admin_Taxonomies
- * @version		0.7
+ * @version		0.8.5
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
@@ -22,8 +22,8 @@ class SP_Admin_Taxonomies {
 		// Add form
 		add_action( 'sp_venue_add_form_fields', array( $this, 'add_venue_fields' ) );
 		add_action( 'sp_venue_edit_form_fields', array( $this, 'edit_venue_fields' ), 10, 1 );
-		add_action( 'edited_sp_venue', array( $this, 'save_venue_fields' ), 10, 2 );
-		add_action( 'create_sp_venue', array( $this, 'save_venue_fields' ), 10, 2 );
+		add_action( 'edited_sp_venue', array( $this, 'save_venue_fields' ), 10, 1 );
+		add_action( 'create_sp_venue', array( $this, 'save_venue_fields' ), 10, 1 );
 
 		// Add columns
 		add_filter( 'manage_edit-sp_venue_columns', array( $this, 'venue_columns' ) );
@@ -72,9 +72,8 @@ class SP_Admin_Taxonomies {
 	 *
 	 * @access public
 	 * @param mixed $term Term (category) being edited
-	 * @param mixed $taxonomy Taxonomy of the term being edited
 	 */
-	public function edit_venue_fields( $term, $taxonomy ) {
+	public function edit_venue_fields( $term ) {
 	 	$t_id = $term->term_id;
 		$term_meta = get_option( "taxonomy_$t_id" ); ?>
 		<tr class="form-field">
@@ -104,11 +103,9 @@ class SP_Admin_Taxonomies {
 	 *
 	 * @access public
 	 * @param mixed $term_id Term ID being saved
-	 * @param mixed $tt_id
-	 * @param mixed $taxonomy Taxonomy of the term being saved
 	 * @return void
 	 */
-	public function save_venue_fields( $term_id, $tt_id ) {
+	public function save_venue_fields( $term_id ) {
 		if ( isset( $_POST['term_meta'] ) ) {
 			$t_id = $term_id;
 			$term_meta = get_option( "taxonomy_$t_id" );
