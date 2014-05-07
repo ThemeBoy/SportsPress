@@ -1,9 +1,10 @@
-=== SportsPress ===
+=== SportsPress - sports league management ===
 Contributors: ThemeBoy
+Tags: sports, press, soccer, football, teams, fixtures, results, standings, league tables, leagues, world cup, statistics, stats, themeboy
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: 0.8.3
+Stable tag: 0.8.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,6 +16,41 @@ Created by the developers at [ThemeBoy](http://themeboy.com/) and featured on So
 
 Add schedules, results, league tables, player profiles and statistics to your team or league site with SportsPress. It uses core WordPress markup syntax and will integrate seamlessly with most themes. Custom shortcodes, CSV importers, and several language translations are included.
 
+= Features =
+* Team Profiles
+* League Tables
+* Events (Fixtures & Results)
+* Events Calendar
+* Player Profiles & Statistics Per Position
+* Player Lists
+* Staff Profiles
+* Season Archives
+* Venue Information & Maps
+* Statistics & League Table Columns Configuration
+* Import Events, Teams, and Players from CSV Files
+
+= Customizable =
+
+League table columns, player statistics, and match results can be customized to fit any sport. Presets are available for some of the most popular sports including soccer, rugby, American football, Australian Rules football, baseball, basketball, cricket, and hockey.
+
+= Available Languages =
+* English – English ( en_US )
+* Arabic – العربية ( ar )
+* Croatian – Hrvatski ( hr )
+* Czech – Čeština ( cs_CZ )
+* French – Français ( fr_FR )
+* German – Deutsch ( de_DE )
+* Greek – Ελληνικά ( el_GR )
+* Italian – Italiano ( it_IT )
+* Japanese – 日本語 ( ja )
+* Polish – Polski ( pl_PL )
+* Portuguese (Brazil) – Português do Brasil ( pt_BR )
+* Russian - Русский ( ru_RU )
+* Slovak – Slovenčina ( sk_SK )
+* Slovenian – Slovenija ( sl_SI )
+* Spanish – Español ( es_ES )
+* Swedish – Svenska ( sv_SE )
+
 = Get involved =
 
 Developers can contribute via the [SportsPress GitHub Repository](https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md).
@@ -22,7 +58,7 @@ Developers can contribute via the [SportsPress GitHub Repository](https://github
 Translators can contribute new languages to SportsPress through [Transifex](https://www.transifex.com/projects/p/sportspress/).
 
 = Please Rate, Vote, and Enjoy =
-Your feedback can make a difference! Thanks :)
+Your feedback really makes a difference! Thanks :)
 
 == Installation ==
 
@@ -51,6 +87,15 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 If on the off-chance you do encounter issues with the event/team/player/staff pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
+== Screenshots ==
+
+1. SportsPress style settings, configuration, and responsive layout example.
+2. League Table in Twenty Fourteen theme with default color scheme.
+3. Events List in Twenty Fourteen theme with default color scheme.
+4. Events Calendar in Twenty Fourteen theme with default color scheme.
+5. Player List in Twenty Fourteen theme with default color scheme.
+6. Player Gallery in Twenty Fourteen theme with default color scheme.
+
 == Frequently Asked Questions ==
 
 = Which sports does this plugin support? =
@@ -69,7 +114,24 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 
 SportsPress is currently in beta and is undergoing testing. We are still actively making adjustments to the code, so we do not recommend using it until we officially leave the beta phase.
 
+= Can I import teams/players/events from a CSV file? =
+
+Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
+
 == Changelog ==
+
+= 0.8.4 =
+* Feature - Add option to limit number of teams per event.
+* Feature - Show venue option in Countdown widget.
+* Feature - Enable multiple current teams per player.
+* Feature - Format performance data for use in templates.
+* Feature - Add next event function to team for template.
+* Refactor - Adjust theme template loader for venues and seasons.
+* Tweak - Replace featured image text in admin.
+* Tweak - Use wider map zoom setting.
+* Tweak - Make SportsPress tables full width by default.
+* Fix - Team filter in admin.
+* Fix - Displaying 1 view as plural.
 
 = 0.8.3 =
 * Feature - Enable using events started and substituted in statistics equations.
