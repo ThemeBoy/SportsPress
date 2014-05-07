@@ -130,6 +130,40 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 			endswitch;
 		endif;
 
+		if ( in_array( $typenow, array( 'sp_player', 'sp_staff' ) ) ):
+			switch ( $untranslated_text ):
+			case 'Featured Image':
+				$translated_text = __( 'Photo', 'sportspress' );
+				break;
+			case 'Set Featured Image':
+				$translated_text = __( 'Select Photo', 'sportspress' );
+				break;
+			case 'Set featured image':
+				$translated_text = __( 'Add Photo', 'sportspress' );
+				break;
+			case 'Remove featured image':
+				$translated_text = __( 'Remove Photo', 'sportspress' );
+				break;
+			endswitch;
+		endif;
+
+		if ( in_array( $typenow, array( 'sp_team' ) ) ):
+			switch ( $untranslated_text ):
+			case 'Featured Image':
+				$translated_text = __( 'Logo', 'sportspress' );
+				break;
+			case 'Set Featured Image':
+				$translated_text = __( 'Select Logo', 'sportspress' );
+				break;
+			case 'Set featured image':
+				$translated_text = __( 'Add Logo', 'sportspress' );
+				break;
+			case 'Remove featured image':
+				$translated_text = __( 'Remove Logo', 'sportspress' );
+				break;
+			endswitch;
+		endif;
+
 		if ( in_array( $typenow, array( 'sp_event' ) ) ):
 			switch ( $untranslated_text ):
 			case 'Publish <b>immediately</b>':
