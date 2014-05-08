@@ -19,6 +19,9 @@ class SP_Shortcode_League_Table {
 		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
 			$atts['id'] = $atts[0];
 
+		if ( ! isset( $atts['show_caption'] ) )
+			$atts['show_caption'] = true;
+
 		sp_get_template( 'league-table.php', $atts );
 	}
 }
