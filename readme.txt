@@ -1,6 +1,6 @@
 === SportsPress - sports league management ===
 Contributors: ThemeBoy
-Tags: sports, press, soccer, football, teams, fixtures, results, standings, league tables, leagues, world cup, statistics, stats, themeboy
+Tags: sport, sports, press, club, sport statistics, sports management, soccer, football, teams, fixtures, results, standings, league tables, leagues, world cup, statistics, stats, wordpress sports, themeboy
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9
@@ -119,6 +119,9 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 0.8.6 =
+* Fix - Issue adding teams to events.
 
 = 0.8.5 =
 * Fix - Issue saving new venues.
