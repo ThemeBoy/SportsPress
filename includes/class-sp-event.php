@@ -55,10 +55,16 @@ class SP_Event extends SP_Custom_Post{
 			$lineup = array_filter( $data, array( $this, 'lineup_filter' ) );
 			$subs = array_filter( $data, array( $this, 'sub_filter' ) );
 
-			foreach ( $subs as $sub_id => $sub ):
-				if ( ! $sub_id )
+			foreach ( $subs as $player_id => $player ):
+				if ( ! $player_id )
 					continue;
-				$lineup[ sp_array_value( $sub, 'sub', 0 ) ]['sub'] = $sub_id;
+
+				$sub = sp_array_value( $player, 'sub', 0 );
+
+				if ( ! $sub )
+					continue;
+
+				$lineup[ $sub ]['sub'] = $player_id;
 			endforeach;
 
 			$output[ $team_id ] = array(
