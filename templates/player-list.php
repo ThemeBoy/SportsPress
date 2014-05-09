@@ -68,7 +68,7 @@ foreach ( $groups as $group ):
 	if ( ! empty( $group->name ) )
 		$output .= '<h3 class="sp-list-group-name">' . $group->name . '</h3>';
 
-	$output .= '<div class="sp-table-wrapper">' .
+	$output .= '<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
 		'<table class="sp-player-list sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
 	if ( in_array( $orderby, array( 'number', 'name' ) ) ):

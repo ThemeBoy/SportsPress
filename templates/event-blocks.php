@@ -94,8 +94,8 @@ if ( isset( $columns ) )
 			?>
 		</tbody>
 	</table>
-	<?php
-	if ( $id && $show_all_events_link )
-		echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all events') . '</a>';
-	?>
 </div>
+<?php
+if ( $id && $show_all_events_link )
+	echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all events') . '</a>';
+?>

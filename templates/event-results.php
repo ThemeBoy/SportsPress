@@ -33,7 +33,7 @@ if ( empty( $results ) )
 	return false;
 
 foreach( $results as $team_id => $result ):
-	if ( sp_array_value( $result, 'outcome', '-1' ) != '-1' ):
+	if ( count( array_filter( $results ) ) ):
 
 		if ( $show_outcomes ):
 			$outcomes = array();
@@ -85,7 +85,7 @@ else:
 
 	$output .= '<h3>' . SP()->text->string('Team Results') . '</h3>';
 
-	$output .= '<div class="sp-table-wrapper">' .
+	$output .= '<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
 		'<table class="sp-event-results sp-data-table sp-responsive-table"><thead>' .
 		'<th class="data-name">' . SP()->text->string('Team') . '</th>';
 	foreach( $result_labels as $key => $label ):

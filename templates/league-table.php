@@ -25,7 +25,7 @@ $defaults = array(
 
 extract( $defaults, EXTR_SKIP );
 
-$output = '<div class="sp-table-wrapper">';
+$output = '<div class="sp-table-wrapper sp-scrollable-table-wrapper">';
 
 if ( $show_caption ):
 	$output .= '<h4 class="sp-table-caption"><a href="' . get_post_permalink( $id ) . '">' . get_the_title( $id ) . '</a></h4>';
@@ -102,9 +102,9 @@ endforeach;
 
 $output .= '</tbody>' . '</table>';
 
+$output .= '</div>';
+
 if ( $show_full_table_link )
 	$output .= '<a class="sp-league-table-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View full table') . '</a>';
-
-$output .= '</div>';
 
 echo $output;

@@ -30,7 +30,7 @@ if ( empty( $data ) )
 	return false;
 
 $output = '<h4 class="sp-table-caption">' . $league->name . '</h4>' .
-	'<div class="sp-table-wrapper">' .
+	'<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
 	'<table class="sp-player-performance sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . '">' . '<thead>' . '<tr>';
 
 foreach( $labels as $key => $label ):
