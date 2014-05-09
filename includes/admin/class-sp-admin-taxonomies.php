@@ -63,6 +63,7 @@ class SP_Admin_Taxonomies {
 			<input type="hidden" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo $latitude; ?>">
 			<input type="hidden" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo $longitude; ?>">
 			<p><div class="sp-location-picker"></div></p>
+			<p><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
 		</div>
 	<?php
 	}
@@ -80,7 +81,8 @@ class SP_Admin_Taxonomies {
 			<th scope="row" valign="top"><label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label></th>
 			<td>
 				<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo esc_attr( $term_meta['sp_address'] ) ? esc_attr( $term_meta['sp_address'] ) : ''; ?>">
-				<p><div class="sp-location-picker"></div></p>
+				<p><div class="sp-location-picker"></div><br>
+				<span class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></span></p>
 			</td>
 		</tr>
 		<tr class="form-field">
