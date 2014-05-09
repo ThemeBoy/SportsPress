@@ -47,9 +47,6 @@ $selector = 'sp-player-gallery-' . $id;
 $list = new SP_Player_List( $id );
 $data = $list->data();
 
-// The first row should be column labels
-$labels = $data[0];
-
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
 
