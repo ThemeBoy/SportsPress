@@ -23,6 +23,7 @@ class SP_Meta_Box_Team_Details {
 		?>
 		<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 		<p><input type="text" id="sp_abbreviation" name="sp_abbreviation" value="<?php echo $abbreviation; ?>"></p>
+		<p class="description"><?php _e( 'The abbreviation is not prominent by default; however, some themes may show it', 'sportspress' ); ?></p>
 		<?php
 	}
 
