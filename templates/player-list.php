@@ -65,8 +65,10 @@ endif;
 $output = '';
 
 foreach ( $groups as $group ):
-	if ( ! empty( $group->name ) )
-		$output .= '<h3 class="sp-list-group-name">' . $group->name . '</h3>';
+	if ( ! empty( $group->name ) ):
+		$output .= '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
+		$output .= '<h3 class="player-group-name">' . $group->name . '</h3>';
+	endif;
 
 	$output .= '<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
 		'<table class="sp-player-list sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';

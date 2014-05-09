@@ -108,8 +108,10 @@ endif;
 foreach ( $groups as $group ):
 	$i = 0;
 
-	if ( ! empty( $group->name ) )
-		echo '<h3 class="sp-list-group-name">' . $group->name . '</h3>';
+	if ( ! empty( $group->name ) ):
+		$output .= '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
+		$output .= '<h3 class="player-group-name">' . $group->name . '</h3>';
+	endif;
 
 	foreach( $data as $player_id => $performance ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):
 
