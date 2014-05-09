@@ -1,8 +1,13 @@
 /* SportsPress */
 
+.sp-scrollable-table-wrapper {
+	overflow: auto;
+}
+
 /* Data Tables */
 .sp-data-table {
 	width: 100%;
+	position: relative;
 }
 .sp-data-table thead .sorting,
 .sp-data-table thead .sorting_asc,
@@ -122,7 +127,6 @@
 }
 .sp-event-blocks .team-logo {
 	width: 20%;
-	height: auto;
 	margin: 10px;
 }
 .sp-event-blocks .logo-odd {

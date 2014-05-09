@@ -30,7 +30,7 @@ if ( $seasons ):
 endif;
 ?>
 <h3><?php echo SP()->text->string('Details'); ?></h3>
-<div class="sp-table-wrapper">
+<div class="sp-table-wrapper sp-scrollable-table-wrapper">
 	<table class="sp-event-details sp-data-table">
 		<thead>
 			<tr>

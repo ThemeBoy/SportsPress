@@ -35,7 +35,7 @@ foreach ( $leagues as $league ):
 	unset( $data[0] );
 
 	$output .= '<h4 class="sp-table-caption">' . $league->name . '</h4>' .
-		'<div class="sp-table-wrapper">' .
+		'<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
 		'<table class="sp-team-columns sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
 
 	foreach( $labels as $key => $label ):

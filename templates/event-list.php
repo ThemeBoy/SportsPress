@@ -35,7 +35,7 @@ $usecolumns = $calendar->columns;
 if ( isset( $columns ) )
 	$usecolumns = $columns;
 ?>
-<div class="sp-table-wrapper">
+<div class="sp-table-wrapper sp-scrollable-table-wrapper">
 	<table class="sp-event-list sp-data-table<?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $paginated ) { ?> sp-paginated-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
 		<thead>
 			<tr>
@@ -163,8 +163,8 @@ if ( isset( $columns ) )
 			?>
 		</tbody>
 	</table>
-	<?php
-	if ( $id && $show_all_events_link )
-		echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all events') . '</a>';
-	?>
 </div>
+<?php
+if ( $id && $show_all_events_link )
+	echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all events') . '</a>';
+?>

@@ -41,7 +41,7 @@ foreach( $teams as $key => $team_id ):
 	$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
 	?>
 	<h3><?php echo get_the_title( $team_id ); ?></h3>
-	<div class="sp-table-wrapper">
+	<div class="sp-table-wrapper sp-scrollable-table-wrapper">
 		<table class="sp-event-performance sp-data-table <?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $has_players && $sortable ) { ?> sp-sortable-table<?php } ?>">
 			<thead>
 				<tr>
