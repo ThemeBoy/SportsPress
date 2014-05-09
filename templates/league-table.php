@@ -28,7 +28,7 @@ extract( $defaults, EXTR_SKIP );
 $output = '<div class="sp-table-wrapper sp-scrollable-table-wrapper">';
 
 if ( $show_caption ):
-	$output .= '<h4 class="sp-table-caption"><a href="' . get_post_permalink( $id ) . '">' . get_the_title( $id ) . '</a></h4>';
+	$output .= '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
 endif;
 
 $output .= '<table class="sp-league-table sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
