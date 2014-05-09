@@ -55,6 +55,7 @@ class SP_Player extends SP_Custom_Post {
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
+		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 
 		// Get labels from performance variables
 		$performance_labels = (array)sp_get_var_labels( 'sp_performance' );
@@ -298,6 +299,13 @@ class SP_Player extends SP_Custom_Post {
 		if ( $admin ):
 			return array( $columns, $data, $placeholders, $merged, $leagues );
 		else:
+			if ( ! is_array( $usecolumns ) )
+				$usecolumns = array();
+			foreach ( $columns as $key => $label ):
+				if ( ! in_array( $key, $usecolumns ) ):
+					unset( $columns[ $key ] );
+				endif;
+			endforeach;
 			$labels = array_merge( array( 'name' => SP()->text->string('Season'), 'team' => SP()->text->string('Team') ), $columns );
 			$merged[0] = $labels;
 			return $merged;
