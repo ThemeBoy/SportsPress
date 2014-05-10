@@ -75,8 +75,10 @@ class SP_Admin_Welcome {
 		?>
 		<style type="text/css">
 			/*<![CDATA[*/
-			.sp-badge {
-				position: relative;;
+			.about-sportspress-wrap .sp-badge {
+				position: absolute;
+				top: 0;
+				right: 0;
 				background: #2f4265 url(<?php echo $badge_url; ?>) no-repeat center top;
 				text-rendering: optimizeLegibility;
 				padding-top: 160px;
@@ -89,38 +91,21 @@ class SP_Admin_Welcome {
 				-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2);
 				box-shadow: 0 1px 3px rgba(0,0,0,.2);
 			}
-			.about-wrap .sp-badge {
-				position: absolute;
-				top: 0;
-				right: 0;
+			.about-sportspress-wrap .sp-actions {
+				text-align: right;
+				margin-right: 200px;
 			}
-			.about-wrap .sp-feature {
+			.about-sportspress-wrap .sp-feature {
 				overflow: visible !important;
 				*zoom:1;
 			}
-			.about-wrap .sp-feature:before,
-			.about-wrap .sp-feature:after {
+			.about-sportspress-wrap .sp-feature:before,
+			.about-sportspress-wrap .sp-feature:after {
 				content: " ";
 				display: table;
 			}
-			.about-wrap .sp-feature:after {
+			.about-sportspress-wrap .sp-feature:after {
 				clear: both;
-			}
-			.about-wrap .feature-rest div {
-				width: 50% !important;
-				padding-right: 100px;
-				-moz-box-sizing: border-box;
-				box-sizing: border-box;
-				margin: 0 !important;
-			}
-			.about-wrap .feature-rest div.last-feature {
-				padding-left: 100px;
-				padding-right: 0;
-			}
-			.about-integrations {
-				background: #fff;
-				margin: 20px 0;
-				padding: 1px 20px 10px;
 			}
 			/*]]>*/
 		</style>
@@ -144,7 +129,7 @@ class SP_Admin_Welcome {
 		?>
 		<h1><?php printf( __( 'Welcome to SportsPress!', 'sportspress' ), $major_version ); ?></h1>
 
-		<div class="about-text sportspress-about-text">
+		<div class="about-text sp-about-text">
 			<?php
 				if ( ! empty( $_GET['sp-installed'] ) )
 					$message = __( 'Thanks, all done!', 'sportspress' );
@@ -159,22 +144,17 @@ class SP_Admin_Welcome {
 
 		<div class="sp-badge"><?php printf( __( 'Version %s', 'sportspress' ), SP()->version ); ?></div>
 
-		<p class="sportspress-actions">
-			<?php if ( false ): ?><a href="<?php echo admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'admin.php' ) ); ?>" class="button button-primary"><?php _e( 'Settings', 'sportspress' ); ?></a><?php endif; ?>
-			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ow.ly/vaGUv" data-text="An open-source (free) #WordPress plugin that helps you build professional league websites." data-via="ThemeBoy" data-size="large" data-hashtags="SportsPress">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		<p class="sp-actions">
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wordpress.org/plugins/sportspress" data-text="An open-source (free) #WordPress plugin that helps you build professional league websites." data-via="ThemeBoy" data-size="large" data-hashtags="SportsPress">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		</p>
 
-		<?php if ( false ): ?>
 		<h2 class="nav-tab-wrapper">
 			<a class="nav-tab <?php if ( $_GET['page'] == 'sp-about' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-about' ), 'index.php' ) ) ); ?>">
 				<?php _e( 'Get Started', 'sportspress' ); ?>
-			</a><a class="nav-tab <?php if ( $_GET['page'] == 'sp-translators' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-translators' ), 'index.php' ) ) ); ?>">
-				<?php _e( 'Translators', 'sportspress' ); ?>
 			</a>
 		</h2>
 		<?php
-		endif;
 	}
 
 	/**
@@ -190,7 +170,6 @@ class SP_Admin_Welcome {
 			<!--<div class="changelog point-releases"></div>-->
 
 			<div class="changelog">
-				<h3><?php _e( 'Get Started', 'sportspress' ); ?></h3>
 			
 			<?php
 			// Save settings
