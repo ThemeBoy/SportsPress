@@ -71,8 +71,41 @@ if ( isset( $columns ) )
 
 				$teams = get_post_meta( $event->ID, 'sp_team' );
 				$results = get_post_meta( $event->ID, 'sp_results', true );
-				$main_results = array();
 				$video = get_post_meta( $event->ID, 'sp_video', true );
+
+				$main_results = array();
+				$teams_output = '';
+
+				if ( $teams ):
+					foreach ( $teams as $team ):
+						$name = get_the_title( $team );
+						if ( $name ):
+							$team_results = sp_array_value( $results, $team, null );
+
+							if ( $primary_result ):
+								$team_result = sp_array_value( $team_results, $primary_result, null );
+							else:
+								if ( is_array( $team_results ) ):
+									end( $team_results );
+									$team_result = prev( $team_results );
+								else:
+									$team_result = null;
+								endif;
+							endif;
+
+							$teams_output .= $name;
+
+							if ( $team_result != null ):
+								$main_results[] = $team_result;
+								$teams_output .= ' (' . $team_result . ')';
+							endif;
+
+							$teams_output .= '<br>';
+						endif;
+					endforeach;
+				else:
+					$teams_output .= '&mdash;';
+				endif;
 
 				echo '<tr class="sp-row sp-post' . ( $i % 2 == 0 ? ' alternate' : '' ) . '">';
 
@@ -80,42 +113,10 @@ if ( isset( $columns ) )
 
 					if ( $usecolumns == null || in_array( 'event', $usecolumns ) )
 						echo '<td class="data-event">' . $event->post_title . '</td>';
-				
+
 					if ( $usecolumns == null || in_array( 'teams', $usecolumns ) ):
 						echo '<td class="data-teams">';
-
-							$teams = get_post_meta( $event->ID, 'sp_team', false );
-							if ( $teams ):
-								foreach ( $teams as $team ):
-									$name = get_the_title( $team );
-									if ( $name ):
-										$team_results = sp_array_value( $results, $team, null );
-
-										if ( $primary_result ):
-											$team_result = sp_array_value( $team_results, $primary_result, null );
-										else:
-											if ( is_array( $team_results ) ):
-												end( $team_results );
-												$team_result = prev( $team_results );
-											else:
-												$team_result = null;
-											endif;
-										endif;
-
-										echo $name;
-
-										if ( $team_result != null ):
-											$main_results[] = $team_result;
-											echo ' (' . $team_result . ')';
-										endif;
-
-										echo '<br>';
-									endif;
-								endforeach;
-							else:
-								echo '&mdash;';
-							endif;
-
+							echo $teams_output;
 						echo '</td>';
 					endif;
 
