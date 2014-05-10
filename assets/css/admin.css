@@ -56,6 +56,10 @@
 	text-align: center;
 }
 
+.fixed tbody .column-sp_icon {
+	padding-top: 12px;
+}
+
 .fixed .column-sp_time {
 	width: 6%;
 }
