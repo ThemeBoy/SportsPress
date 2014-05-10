@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post Types
- * @version     0.8.4
+ * @version     0.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -97,7 +97,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			'sp_venue' => __( 'Venue', 'sportspress' ),
 			'sp_views' => __( 'Views', 'sportspress' ),
 		);
-		return $columns;
+		return apply_filters( 'sportspress_event_admin_columns', $columns );
 	}
 
 	/**
@@ -111,15 +111,15 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				switch ( $format ):
 					case 'league':
 						echo '<span class="dashicons sp-icon-crown tips" title="' . __( 'League', 'sportspress' ) . '"></span>';
-					break;
+						break;
 					case 'friendly':
 						echo '<span class="dashicons sp-icon-smile tips" title="' . __( 'Friendly', 'sportspress' ) . '"></span>';
-					break;
+						break;
 				endswitch;
-			break;
+				break;
 			case 'sp_time':
 				echo get_post_time( 'H:i', false, $post_id );
-			break;
+				break;
 			case 'sp_team':
 				$teams = (array)get_post_meta( $post_id, 'sp_team', false );
 				$teams = array_filter( $teams );
@@ -139,19 +139,19 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 						endif;
 					endforeach;
 				endif;
-			break;
+				break;
 			case 'sp_league':
 				echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
-			break;
+				break;
 			case 'sp_season':
 				echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
-			break;
+				break;
 			case 'sp_venue':
 				echo get_the_terms ( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
-			break;
+				break;
 			case 'sp_views':
 	        	echo sp_get_post_views( $post_id );
-			break;
+				break;
 		endswitch;
 	}
 
