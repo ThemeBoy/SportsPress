@@ -107,6 +107,11 @@ class SP_Admin_Welcome {
 			.about-sportspress-wrap .sp-feature:after {
 				clear: both;
 			}
+			@media only screen and (max-width: 500px) {
+				.about-sportspress-wrap h1 {
+					padding-top: 240px;
+				}
+			}
 			/*]]>*/
 		</style>
 		<?php
