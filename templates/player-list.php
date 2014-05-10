@@ -67,7 +67,7 @@ $output = '';
 foreach ( $groups as $group ):
 	if ( ! empty( $group->name ) ):
 		$output .= '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
-		$output .= '<h3 class="player-group-name">' . $group->name . '</h3>';
+		$output .= '<h3 class="sp-table-caption player-group-name player-list-group-name">' . $group->name . '</h3>';
 	endif;
 
 	$output .= '<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
