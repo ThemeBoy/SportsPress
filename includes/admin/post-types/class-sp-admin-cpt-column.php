@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post Types
- * @version     0.7
+ * @version     0.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -45,8 +45,9 @@ class SP_Admin_CPT_Column extends SP_Admin_CPT {
 			'sp_equation' => __( 'Equation', 'sportspress' ),
 			'sp_precision' => __( 'Rounding', 'sportspress' ),
 			'sp_order' => __( 'Sort Order', 'sportspress' ),
+			'sp_description' => __( 'Description', 'sportspress' ),
 		);
-		return $columns;
+		return apply_filters( 'sportspress_column_admin_columns', $columns );
 	}
 
 	/**
@@ -58,16 +59,20 @@ class SP_Admin_CPT_Column extends SP_Admin_CPT {
 			case 'sp_key':
 				global $post;
 				echo $post->post_name;
-			break;
+				break;
 			case 'sp_equation':
 				echo sp_get_post_equation( $post_id );
-			break;
+				break;
 			case 'sp_precision':
 				echo sp_get_post_precision( $post_id );
-			break;
+				break;
 			case 'sp_order':
 				echo sp_get_post_order( $post_id );
-			break;
+				break;
+			case 'sp_description':
+				global $post;
+				echo '<span class="description">' . $post->post_excerpt . '</span>';
+				break;
 		endswitch;
 	}
 }
