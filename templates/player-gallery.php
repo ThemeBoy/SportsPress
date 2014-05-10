@@ -110,7 +110,7 @@ foreach ( $groups as $group ):
 
 	if ( ! empty( $group->name ) ):
 		echo '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
-		echo '<h3 class="player-group-name">' . $group->name . '</h3>';
+		echo '<h3 class="player-group-name player-gallery-group-name">' . $group->name . '</h3>';
 	endif;
 
 	foreach( $data as $player_id => $performance ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):
