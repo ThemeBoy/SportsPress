@@ -18,7 +18,7 @@ class SP_Widget_League_Table extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 		echo '<div id="sp_league_table_wrap">';
-		sp_get_template( 'league-table.php', array( 'id' => $id, 'number' => $number, 'columns' => $columns, 'show_full_table_link' => $show_full_table_link, 'show_team_logo' => $show_team_logo, 'show_caption' => true ) );
+		sp_get_template( 'league-table.php', array( 'id' => $id, 'number' => $number, 'columns' => $columns, 'show_full_table_link' => $show_full_table_link, 'show_team_logo' => $show_team_logo ) );
 		echo '</div>';
 		echo $after_widget;
 	}
