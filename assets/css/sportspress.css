@@ -151,10 +151,17 @@
 	margin-bottom: 4em;
 }
 
-/* Templates */
+/* View all */
 .sp-view-all-link {
 	display: block;
 	margin-top: 0.5em;
+}
+
+/* Alternate */
+.sp-data-table tbody tr.odd,
+.sp-data-table tbody tr.alternate,
+.sp-calendar tbody td#today {
+	background: rgba(0, 0, 0, 0.02);
 }
 
 @media only screen and (max-width: 40em) {

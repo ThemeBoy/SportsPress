@@ -129,8 +129,8 @@ class SP_Install {
 	    add_option( 'sportspress_frontend_css_primary', '#00a69c' );
 	    add_option( 'sportspress_frontend_css_heading', '#ffffff' );
 	    add_option( 'sportspress_frontend_css_text', '#222222' );
+	    add_option( 'sportspress_frontend_css_link', '#00a69c' );
 	    add_option( 'sportspress_frontend_css_background', '#f5f5f5' );
-	    add_option( 'sportspress_frontend_css_alternate', '#f0f0f0' );
 
 		if ( ! get_option( 'sportspress_installed' ) ) {
 			// Configure default sport
