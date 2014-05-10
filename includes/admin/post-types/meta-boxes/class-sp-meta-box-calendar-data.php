@@ -86,15 +86,15 @@ class SP_Meta_Box_Calendar_Data {
 						foreach ( $data as $event ):
 							$teams = get_post_meta( $event->ID, 'sp_team' );
 							$results = get_post_meta( $event->ID, 'sp_results', true );
-							$main_results = array();
 							$video = get_post_meta( $event->ID, 'sp_video', true );
+							$main_results = array();
 							?>
 							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 								<td><?php echo get_post_time( get_option( 'date_format' ), false, $event ); ?></td>
 								<td><?php echo $event->post_title; ?></td>
 								<td>
 									<?php
-									foreach ( $teams as $team ):
+									if ( $teams ): foreach ( $teams as $team ):
 										$name = get_the_title( $team );
 										if ( $name ):
 											$team_results = sp_array_value( $results, $team, null );
@@ -119,7 +119,9 @@ class SP_Meta_Box_Calendar_Data {
 
 											echo $name . '<br>';
 										endif;
-									endforeach;
+									endforeach; else:
+										echo '&mdash;';
+									endif;
 									?>
 								</td>
 								<td>
