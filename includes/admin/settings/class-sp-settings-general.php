@@ -124,17 +124,17 @@ class SP_Settings_General extends SP_Settings_Page {
 
 			// Save settings
 			$primary 		= ( ! empty( $_POST['sportspress_frontend_css_primary'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_primary'] ) : '';
-			$heading 		= ( ! empty( $_POST['sportspress_frontend_css_heading'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_heading'] ) : '';
-			$text 			= ( ! empty( $_POST['sportspress_frontend_css_text'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_text'] ) : '';
-			$link 			= ( ! empty( $_POST['sportspress_frontend_css_link'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_link'] ) : '';
 			$background 	= ( ! empty( $_POST['sportspress_frontend_css_background'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_background'] ) : '';
+			$text 			= ( ! empty( $_POST['sportspress_frontend_css_text'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_text'] ) : '';
+			$heading 		= ( ! empty( $_POST['sportspress_frontend_css_heading'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_heading'] ) : '';
+			$link 			= ( ! empty( $_POST['sportspress_frontend_css_link'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_link'] ) : '';
 
 			$colors = array(
 				'primary' 		=> $primary,
-				'heading' 		=> $heading,
-				'text' 			=> $text,
 				'background' 	=> $background,
-				'link' 			=> $link
+				'text' 			=> $text,
+				'heading' 		=> $heading,
+				'link' 			=> $link,
 			);
 
 			update_option( 'sportspress_frontend_css_colors', $colors );
@@ -183,17 +183,17 @@ class SP_Settings_General extends SP_Settings_Page {
 
 				// Defaults
 				if ( empty( $colors['primary'] ) ) $colors['primary'] = '#00a69c';
+				if ( empty( $colors['background'] ) ) $colors['background'] = '#f4f4f4';
+				if ( empty( $colors['text'] ) ) $colors['text'] = '#363f48';
 				if ( empty( $colors['heading'] ) ) $colors['heading'] = '#ffffff';
-				if ( empty( $colors['text'] ) ) $colors['text'] = '#222222';
-				if ( empty( $colors['background'] ) ) $colors['background'] = '#f5f5f5';
-	            if ( empty( $colors['link'] ) ) $colors['link'] = '#00a69c';
+	            if ( empty( $colors['link'] ) ) $colors['link'] = '#ef6848';
 
 				// Show inputs
 	    		$this->color_picker( __( 'Primary', 'sportspress' ), 'sportspress_frontend_css_primary', $colors['primary'] );
-	    		$this->color_picker( __( 'Heading', 'sportspress' ), 'sportspress_frontend_css_heading', $colors['heading'] );
-	    		$this->color_picker( __( 'Text', 'sportspress' ), 'sportspress_frontend_css_text', $colors['text'] );
-	    		$this->color_picker( __( 'Link', 'sportspress' ), 'sportspress_frontend_css_link', $colors['link'] );
 	    		$this->color_picker( __( 'Background', 'sportspress' ), 'sportspress_frontend_css_background', $colors['background'] );
+	    		$this->color_picker( __( 'Text', 'sportspress' ), 'sportspress_frontend_css_text', $colors['text'] );
+	    		$this->color_picker( __( 'Heading', 'sportspress' ), 'sportspress_frontend_css_heading', $colors['heading'] );
+	    		$this->color_picker( __( 'Link', 'sportspress' ), 'sportspress_frontend_css_link', $colors['link'] );
 
 		    ?><br>
 			    <label for="sportspress_enable_frontend_css">
