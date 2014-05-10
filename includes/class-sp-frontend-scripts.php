@@ -108,11 +108,11 @@ class SP_Frontend_Scripts {
 				if ( isset( $colors['text'] ) )
 					echo '.sp-data-table tbody,.sp-calendar tbody{color: ' . $colors['text'] . ' !important}';
 
+				if ( isset( $colors['link'] ) )
+					echo '.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a:focus{color: ' . $colors['link'] . ' !important}';
+
 				if ( isset( $colors['background'] ) )
 					echo '.sp-data-table tbody,.sp-calendar tbody{background: ' . $colors['background'] . ' !important}';
-
-				if ( isset( $colors['alternate'] ) )
-					echo '.sp-data-table tbody tr.odd,.sp-data-table tbody tr.alternate,.sp-calendar tbody td#today{background: ' . $colors['alternate'] . ' !important}';
 			}
 
 			if ( ! empty( $custom ) )
