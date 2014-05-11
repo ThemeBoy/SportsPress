@@ -22,14 +22,14 @@ class SP_Admin_Permalink_Settings {
 	 */
 	public function __construct() {
 		$this->slugs = array(
-			array( 'events', __( 'Events', 'sportspress' ) ),
+			array( 'event', __( 'Events', 'sportspress' ) ),
 			array( 'venue', __( 'Venues', 'sportspress' ) ),
 			array( 'calendar', __( 'Calendars', 'sportspress' ) ),
-			array( 'teams', __( 'Teams', 'sportspress' ) ),
+			array( 'team', __( 'Teams', 'sportspress' ) ),
 			array( 'league', __( 'Leagues', 'sportspress' ) ),
 			array( 'season', __( 'Seasons', 'sportspress' ) ),
 			array( 'table', __( 'League Tables', 'sportspress' ) ),
-			array( 'players', __( 'Players', 'sportspress' ) ),
+			array( 'player', __( 'Players', 'sportspress' ) ),
 			array( 'position', __( 'Positions', 'sportspress' ) ),
 			array( 'list', __( 'Player Lists', 'sportspress' ) ),
 			array( 'staff', __( 'Staff', 'sportspress' ) ),
@@ -82,7 +82,7 @@ class SP_Admin_Permalink_Settings {
 		if ( ! is_admin() )
 			return;
 
-		if ( isset( $_POST['permalink_structure'] ) || isset( $_POST['sportspress_events_slug'] ) ):
+		if ( isset( $_POST['permalink_structure'] ) || isset( $_POST['sportspress_event_slug'] ) ):
 			foreach ( $this->slugs as $slug ):
 				$key = 'sportspress_' . $slug[0] . '_slug';
 				$value = null;
