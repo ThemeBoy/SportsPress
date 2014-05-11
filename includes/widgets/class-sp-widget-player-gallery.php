@@ -19,7 +19,7 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 		echo '<div id="sp_player_gallery_wrap">';
-		sp_get_template( 'player-gallery.php', array( 'id' => $id, 'number' => $number, 'orderby' => $orderby , 'order' => $order, 'show_all_players_link' => $show_all_players_link, 'show_names_on_hover' => $show_names_on_hover ) );
+		sp_get_template( 'player-gallery.php', array( 'id' => $id, 'number' => $number, 'orderby' => $orderby , 'order' => $order, 'grouping' => 0, 'show_all_players_link' => $show_all_players_link, 'show_names_on_hover' => $show_names_on_hover ) );
 		echo '</div>';
 		echo $after_widget;
 	}
