@@ -12,8 +12,19 @@
  */
 class SP_Player_List extends SP_Custom_Post {
 
+	/** @var array The columns array. */
+	public $columns;
+
 	/** @var array The sort priorities array. */
 	public $priorities;
+
+	/**
+	 * Constructor
+	 */
+	public function __construct( $post ) {
+		parent::__construct( $post );
+		$this->columns = get_post_meta( $this->ID, 'sp_columns', true );
+	}
 
 	/**
 	 * Returns formatted data
@@ -27,7 +38,6 @@ class SP_Player_List extends SP_Custom_Post {
 		$div_id = sp_get_the_term_id( $this->ID, 'sp_season', 0 );
 		$player_ids = (array)get_post_meta( $this->ID, 'sp_player', false );
 		$list_stats = (array)get_post_meta( $this->ID, 'sp_players', true );
-		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$orderby = get_post_meta( $this->ID, 'sp_orderby', true );
 		$order = get_post_meta( $this->ID, 'sp_order', true );
@@ -332,12 +342,12 @@ class SP_Player_List extends SP_Custom_Post {
 		endforeach;
 		
 		if ( $admin ):
-			return array( $columns, $usecolumns, $data, $placeholders, $merged );
+			return array( $columns, $this->columns, $data, $placeholders, $merged );
 		else:
-			if ( ! is_array( $usecolumns ) )
-				$usecolumns = array();
+			if ( ! is_array( $this->columns ) )
+				$this->columns = array();
 			foreach ( $columns as $key => $label ):
-				if ( ! in_array( $key, $usecolumns ) ):
+				if ( ! in_array( $key, $this->columns ) ):
 					unset( $columns[ $key ] );
 				endif;
 			endforeach;
