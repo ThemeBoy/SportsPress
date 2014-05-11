@@ -9,6 +9,9 @@
 	width: 100%;
 	position: relative;
 }
+.sp-data-table thead th {
+	white-space: nowrap;
+}
 .sp-data-table thead .sorting,
 .sp-data-table thead .sorting_asc,
 .sp-data-table thead .sorting_desc,
