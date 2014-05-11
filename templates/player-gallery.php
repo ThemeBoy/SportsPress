@@ -45,12 +45,13 @@ $float = is_rtl() ? 'right' : 'left';
 $selector = 'sp-player-gallery-' . $id;
 
 $list = new SP_Player_List( $id );
+$list->columns = $performance;
 $data = $list->data();
 
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
 
-if ( ! $grouping || $grouping == 'default' ):
+if ( $grouping === null || $grouping === 'default' ):
 	$grouping = $list->grouping;
 endif;
 
@@ -95,7 +96,7 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
 if ( is_int( $number ) && $number > 0 )
 	$limit = $number;
 
-if ( $grouping == 'position' ):
+if ( $grouping === 'position' ):
 	$groups = get_terms( 'sp_position' );
 else:
 	$group = new stdClass();
