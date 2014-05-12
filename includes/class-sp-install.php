@@ -327,7 +327,10 @@ class SP_Install {
 			'edit_sp_team_columns',
 		);
 
-		$capability_types = array( 'sp_config', 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' );
+		$post_types = sp_post_types();
+		array_unshift( $post_types, 'sp_config' );
+
+		$capability_types = apply_filters( 'sportspress_post_types', $post_types );
 
 		foreach ( $capability_types as $capability_type ) {
 
