@@ -181,8 +181,11 @@ class eqEOS {
 			// if the character is numerical
 			if(preg_match('/[0-9.]/i', $chr)) {
 				// if the previous character was not a '-' or a number
-				if((!preg_match('/[0-9.]/i', $lChar) && ($lChar != "")) && (@$pf[$pfIndex]!="-"))
+				if((!preg_match('/[0-9.]/i', $lChar) && ($lChar != "")) && (array_key_exists($pfIndex, @$pf) && @$pf[$pfIndex]!="-"))
 					$pfIndex++;	// increase the index so as not to overlap anything
+				// if the array key doesn't exist
+				if(!array_key_exists($pfIndex, @$pf))
+					@$pf[$pfIndex] = null; // add index to the array
 				// Add the number character to the array
 				@$pf[$pfIndex] .= $chr;
 			}
