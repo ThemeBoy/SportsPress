@@ -57,7 +57,7 @@ if ( isset( $columns ) )
 					if ( ! has_post_thumbnail ( $team ) )
 						continue;
 					$j++;
-					$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) ) );
+					$logo = '<a href="' . get_post_permalink( $team ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) ) ) . '</a>';
 					$logos[] = $logo;
 					$team_results = sp_array_value( $results, $team, null );
 
