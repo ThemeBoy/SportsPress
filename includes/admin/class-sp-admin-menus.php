@@ -22,13 +22,16 @@ class SP_Admin_Menus {
 	 */
 	public function __construct() {
 		add_filter( 'admin_menu', array( $this, 'menu_clean' ), 5 );
-		add_action( 'admin_menu', array( $this, 'admin_menu' ), 9 );
-		add_action( 'admin_menu', array( $this, 'status_menu' ), 60 );
+		add_action( 'admin_menu', array( $this, 'admin_menu' ), 6 );
+		add_action( 'admin_menu', array( $this, 'status_menu' ), 7 );
+		add_action( 'admin_menu', array( $this, 'leagues_menu' ), 8 );
+		add_action( 'admin_menu', array( $this, 'seasons_menu' ), 9 );
 
 		if ( apply_filters( 'sportspress_show_addons_page', false ) ) // Make true to display by default
 			add_action( 'admin_menu', array( $this, 'addons_menu' ), 70 );
 
 		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
+		add_action( 'parent_file', array( $this, 'parent_file' ) );
 		add_filter( 'menu_order', array( $this, 'menu_order' ) );
 		add_filter( 'custom_menu_order', array( $this, 'custom_menu_order' ) );
 	}
@@ -43,6 +46,20 @@ class SP_Admin_Menus {
 	    	$menu[] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
 
 		$main_page = add_menu_page( __( 'SportsPress Settings', 'sportspress' ), __( 'SportsPress', 'sportspress' ), 'manage_sportspress', 'sportspress', array( $this, 'settings_page' ), null, '51.5' );
+	}
+
+	/**
+	 * Add menu item
+	 */
+	public function leagues_menu() {
+		add_submenu_page( 'sportspress', __( 'Leagues', 'sportspress' ), __( 'Leagues', 'sportspress' ), 'manage_sportspress', 'edit-tags.php?taxonomy=sp_league');
+	}
+
+	/**
+	 * Add menu item
+	 */
+	public function seasons_menu() {
+		add_submenu_page( 'sportspress', __( 'Seasons', 'sportspress' ), __( 'Seasons', 'sportspress' ), 'manage_sportspress', 'edit-tags.php?taxonomy=sp_season');
 	}
 
 	/**
@@ -80,6 +97,14 @@ class SP_Admin_Menus {
 		if ( isset( $submenu['sportspress'] ) && isset( $submenu['sportspress'][0] ) && isset( $submenu['sportspress'][0][0] ) ) {
 			$submenu['sportspress'][0][0] = __( 'Settings', 'sportspress' );
 		}
+	}
+
+	public function parent_file( $parent_file ) {
+		global $current_screen;
+		$taxonomy = $current_screen->taxonomy;
+		if ( in_array( $taxonomy, array( 'sp_league', 'sp_season' ) ) )
+			$parent_file = 'sportspress';
+		return $parent_file;
 	}
 
 	/**
@@ -173,6 +198,12 @@ class SP_Admin_Menus {
 		if ( isset( $submenu['edit.php?post_type=sp_event'] ) ):
 			$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], array( $this, 'remove_seasons' ) );
+		endif;
+
+	    // Remove "Leagues" and "Seasons" links from Teams submenu
+		if ( isset( $submenu['edit.php?post_type=sp_team'] ) ):
+			$submenu['edit.php?post_type=sp_team'] = array_filter( $submenu['edit.php?post_type=sp_team'], array( $this, 'remove_leagues' ) );
+			$submenu['edit.php?post_type=sp_team'] = array_filter( $submenu['edit.php?post_type=sp_team'], array( $this, 'remove_seasons' ) );
 		endif;
 
 	    // Remove "Leagues" and "Seasons" links from Players submenu
