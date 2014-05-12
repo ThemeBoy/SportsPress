@@ -336,6 +336,32 @@
 
 	<thead>
 		<tr>
+			<th colspan="2"><?php _e( 'SP Post Types', 'sportspress' ); ?></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<?php
+		$post_types = sp_post_types();
+		foreach ( $post_types as $post_type ):
+		?>
+		<tr>
+			<td>
+				<?php
+				$object = get_post_type_object( $post_type );
+				echo $object->labels->name;
+				?>:
+			</td>
+			<td>
+				<?php $count = wp_count_posts( $post_type ); ?>
+				<?php echo $count->publish; ?> publish, <?php echo $count->future; ?> future, <?php echo $count->draft; ?> draft, <?php echo $count->private; ?> private, <?php echo $count->trash; ?> trash, <?php echo $count->{'auto-draft'}; ?> auto-draft, <?php echo $count->inherit; ?> inherit
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+
+	<thead>
+		<tr>
 			<th colspan="2"><?php _e( 'Theme', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
