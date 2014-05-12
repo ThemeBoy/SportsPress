@@ -28,9 +28,7 @@ class SP_Settings_General extends SP_Settings_Page {
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
 		add_action( 'sportspress_admin_field_country', array( $this, 'country_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
-
-		if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) )
-			add_action( 'sportspress_admin_field_frontend_styles', array( $this, 'frontend_styles_setting' ) );
+		add_action( 'sportspress_admin_field_frontend_styles', array( $this, 'frontend_styles_setting' ) );
 	}
 
 	/**
@@ -195,11 +193,13 @@ class SP_Settings_General extends SP_Settings_Page {
 	    		$this->color_picker( __( 'Heading', 'sportspress' ), 'sportspress_frontend_css_heading', $colors['heading'] );
 	    		$this->color_picker( __( 'Link', 'sportspress' ), 'sportspress_frontend_css_link', $colors['link'] );
 
-		    ?><br>
-			    <label for="sportspress_enable_frontend_css">
-					<input name="sportspress_enable_frontend_css" id="sportspress_enable_frontend_css" type="checkbox" value="1" <?php checked( get_option( 'sportspress_enable_frontend_css', 'yes' ), 'yes' ); ?>>
-					<?php _e( 'Enable', 'sportspress' ); ?>
-				</label>
+				if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) ):
+				    ?><br>
+				    <label for="sportspress_enable_frontend_css">
+						<input name="sportspress_enable_frontend_css" id="sportspress_enable_frontend_css" type="checkbox" value="1" <?php checked( get_option( 'sportspress_enable_frontend_css', 'yes' ), 'yes' ); ?>>
+						<?php _e( 'Enable', 'sportspress' ); ?>
+					</label>
+				<?php endif; ?>
 			</td>
 		</tr><?php
 	}
