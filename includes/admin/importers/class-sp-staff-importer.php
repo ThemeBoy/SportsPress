@@ -1,25 +1,17 @@
 <?php
 /**
- * Team importer - import teams into SportsPress.
+ * Staff importer - import staff into SportsPress.
  *
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Importers
- * @version     0.2.11
+ * @version     0.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( class_exists( 'WP_Importer' ) ) {
-	class SP_Team_Importer extends WP_Importer {
-
-		var $id;
-		var $file_url;
-		var $import_page;
-		var $delimiter;
-		var $posts = array();
-		var $imported;
-		var $skipped;
+	class SP_Staff_Importer extends SP_Importer {
 
 		/**
 		 * __construct function.
@@ -28,63 +20,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		public function __construct() {
-			$this->import_page = 'sportspress_team_csv';
-		}
-
-		/**
-		 * Registered callback function for the WordPress Importer
-		 *
-		 * Manages the three separate stages of the CSV import process
-		 */
-		function dispatch() {
-			$this->header();
-
-			if ( ! empty( $_POST['delimiter'] ) )
-				$this->delimiter = stripslashes( trim( $_POST['delimiter'] ) );
-
-			if ( ! $this->delimiter )
-				$this->delimiter = ',';
-
-			$step = empty( $_GET['step'] ) ? 0 : (int) $_GET['step'];
-			switch ( $step ):
-				case 0:
-					$this->greet();
-					break;
-				case 1:
-					check_admin_referer( 'import-upload' );
-					if ( $this->handle_upload() ):
-
-						if ( $this->id )
-							$file = get_attached_file( $this->id );
-						else
-							$file = ABSPATH . $this->file_url;
-
-						add_filter( 'http_request_timeout', array( $this, 'bump_request_timeout' ) );
-
-						if ( function_exists( 'gc_enable' ) )
-							gc_enable();
-
-						@set_time_limit(0);
-						@ob_flush();
-						@flush();
-
-						$this->import( $file );
-					endif;
-					break;
-			endswitch;
-			$this->footer();
-		}
-
-		/**
-		 * format_data_from_csv function.
-		 *
-		 * @access public
-		 * @param mixed $data
-		 * @param string $enc
-		 * @return string
-		 */
-		function format_data_from_csv( $data, $enc ) {
-			return ( $enc == 'UTF-8' ) ? $data : utf8_encode( $data );
+			$this->import_page = 'sportspress_staff_csv';
 		}
 
 		/**
@@ -110,22 +46,25 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				$header = fgetcsv( $handle, 0, $this->delimiter );
 
-				if ( sizeof( $header ) == 3 ):
+				if ( sizeof( $header ) == 5 ):
 
 					$loop = 0;
 
 					while ( ( $row = fgetcsv( $handle, 0, $this->delimiter ) ) !== FALSE ):
 
-						list( $name, $leagues, $seasons ) = $row;
+						list( $name, $teams, $leagues, $seasons, $nationality ) = $row;
 
-						$team_object = get_page_by_title( $name, OBJECT, 'sp_team' );
+						$nationality = trim( strtoupper( $nationality ) );
 
-						if ( ! $name || $team_object ):
+						if ( $nationality == '*' )
+							$nationality = '';
+
+						if ( ! $name ):
 							$this->skipped++;
 							continue;
 						endif;
 
-						$args = array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => $name );
+						$args = array( 'post_type' => 'sp_staff', 'post_status' => 'publish', 'post_title' => $name );
 
 						$id = wp_insert_post( $args );
 
@@ -139,6 +78,39 @@ if ( class_exists( 'WP_Importer' ) ) {
 						// Update seasons
 						$seasons = explode( '|', $seasons );
 						wp_set_object_terms( $id, $seasons, 'sp_season', false );
+
+						// Update teams
+						$teams = (array)explode( '|', $teams );
+						$i = 0;
+						foreach ( $teams as $team ):
+							// Get or insert team
+							$team_object = get_page_by_title( $team, OBJECT, 'sp_team' );
+							if ( $team_object ):
+								if ( $team_object->post_status != 'publish' ):
+									wp_update_post( array( 'ID' => $team_object->ID, 'post_status' => 'publish' ) );
+								endif;
+								$team_id = $team_object->ID;
+							else:
+								$team_id = wp_insert_post( array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => $team ) );
+								// Flag as import
+								update_post_meta( $team_id, '_sp_import', 1 );
+								wp_set_object_terms( $team_id, $leagues, 'sp_league', false );
+								wp_set_object_terms( $team_id, $seasons, 'sp_season', false );
+							endif;
+
+							// Add team to staff
+							add_post_meta( $id, 'sp_team', $team_id );
+
+							// Update current team if first in array
+							if ( $i == 0 ):
+								update_post_meta( $id, 'sp_current_team', $team_id );
+							endif;
+
+							$i++;
+						endforeach;
+
+						// Update nationality
+						update_post_meta( $id, 'sp_nationality', $nationality );
 
 						$loop ++;
 						$this->imported++;
@@ -158,7 +130,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			// Show Result
 			echo '<div class="updated settings-error below-h2"><p>
-				'.sprintf( __( 'Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</strong>.', 'sportspress' ), $this->imported, $this->skipped ).'
+				'.sprintf( __( 'Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</strong>.', 'sportspress' ), $this->imported, $this->skipped ).'
 			</p></div>';
 
 			$this->import_end();
@@ -168,47 +140,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * Performs post-import cleanup of files and the cache
 		 */
 		function import_end() {
-			echo '<p>' . __( 'All done!', 'sportspress' ) . ' <a href="' . admin_url('edit.php?post_type=sp_team') . '">' . __( 'View Teams', 'sportspress' ) . '</a>' . '</p>';
+			echo '<p>' . __( 'All done!', 'sportspress' ) . ' <a href="' . admin_url('edit.php?post_type=sp_staff') . '">' . __( 'View Staff', 'sportspress' ) . '</a>' . '</p>';
 
 			do_action( 'import_end' );
-		}
-
-		/**
-		 * Handles the CSV upload and initial parsing of the file to prepare for
-		 * displaying author import options
-		 *
-		 * @return bool False if error uploading or invalid file, true otherwise
-		 */
-		function handle_upload() {
-
-			if ( empty( $_POST['file_url'] ) ) {
-
-				$file = wp_import_handle_upload();
-
-				if ( isset( $file['error'] ) ) {
-					echo '<p><strong>' . __( 'Sorry, there has been an error.', 'sportspress' ) . '</strong><br />';
-					echo esc_html( $file['error'] ) . '</p>';
-					return false;
-				}
-
-				$this->id = (int) $file['id'];
-
-			} else {
-
-				if ( file_exists( ABSPATH . $_POST['file_url'] ) ) {
-
-					$this->file_url = esc_attr( $_POST['file_url'] );
-
-				} else {
-
-					echo '<p><strong>' . __( 'Sorry, there has been an error.', 'sportspress' ) . '</strong></p>';
-					return false;
-
-				}
-
-			}
-
-			return true;
 		}
 
 		/**
@@ -218,17 +152,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		function header() {
-			echo '<div class="wrap"><h2>' . __( 'Import Teams', 'sportspress' ) . '</h2>';
-		}
-
-		/**
-		 * footer function.
-		 *
-		 * @access public
-		 * @return void
-		 */
-		function footer() {
-			echo '</div>';
+			echo '<div class="wrap"><h2>' . __( 'Import Staff', 'sportspress' ) . '</h2>';
 		}
 
 		/**
@@ -242,9 +166,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
 
-			echo '<p>' . sprintf( __( 'Teams need to be defined with columns in a specific order (3 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/teams-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( __( 'Staff need to be defined with columns in a specific order (5 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/staff-sample.csv' ) . '</p>';
 
-			$action = 'admin.php?import=sportspress_team_csv&step=1';
+			$action = 'admin.php?import=sportspress_staff_csv&step=1';
 
 			$bytes = apply_filters( 'import_upload_size_limit', wp_max_upload_size() );
 			$size = size_format( $bytes );
@@ -290,15 +214,6 @@ if ( class_exists( 'WP_Importer' ) ) {
 			endif;
 
 			echo '</div>';
-		}
-
-		/**
-		 * Added to http_request_timeout filter to force timeout at 60 seconds during import
-		 * @param  int $val
-		 * @return int 60
-		 */
-		function bump_request_timeout( $val ) {
-			return 60;
 		}
 	}
 }
