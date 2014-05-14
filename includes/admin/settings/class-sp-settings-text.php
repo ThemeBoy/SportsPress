@@ -56,7 +56,7 @@ class SP_Settings_Text extends SP_Settings_Page {
 
 		$settings[] = array( 'type' => 'sectionend', 'id' => 'text_options' );
 
-		return apply_filters( 'sportspress_event_settings', $settings ); // End event settings
+		return apply_filters( 'sportspress_text_settings', $settings ); // End event settings
 	}
 }
 
