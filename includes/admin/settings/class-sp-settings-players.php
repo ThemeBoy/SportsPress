@@ -36,7 +36,7 @@ class SP_Settings_Players extends SP_Settings_Page {
 	 */
 	public function get_settings() {
 
-		return apply_filters( 'sportspress_event_settings', array(
+		return apply_filters( 'sportspress_player_settings', array(
 
 			array(	'title' => __( 'Player Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'player_options' ),
 

@@ -42,7 +42,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 	 */
 	public function get_settings() {
 
-		return apply_filters('sportspress_event_settings', array(
+		return apply_filters('sportspress_config_settings', array(
 
 			array( 'title' => __( 'Configure SportsPress', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'config_options' ),
 			
