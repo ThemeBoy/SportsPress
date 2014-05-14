@@ -44,7 +44,7 @@ function sp_get_template_part( $slug, $name = '' ) {
 	}
 
 	// Allow 3rd party plugin filter template file from their plugin
-	$template = apply_filters( 'sp_get_template_part', $template, $slug, $name );
+	$template = apply_filters( 'sportspress_get_template_part', $template, $slug, $name );
 
 	if ( $template ) {
 		load_template( $template, false );
