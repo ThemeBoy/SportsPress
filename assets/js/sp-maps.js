@@ -10,7 +10,8 @@
 			var mapOptions = {
 				scrollwheel: false,
 				zoom: 12,
-				center: ll
+				center: ll,
+				mapTypeId: google.maps.MapTypeId[vars.map_type]
 			};
 			var map = new google.maps.Map($self[0], mapOptions)
 			var marker = new google.maps.Marker({
