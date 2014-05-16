@@ -54,6 +54,19 @@ class SP_Settings_General extends SP_Settings_Page {
 				'options'   => $presets,
 			),
 
+			array(
+				'title'     => __( 'Google Maps', 'sportspress' ),
+				'id'        => 'sportspress_map_type',
+				'default'   => 'ROADMAP',
+				'type'      => 'select',
+				'options'   => array(
+					'ROADMAP' => __( 'Default', 'sportspress' ),
+					'SATELLITE' => __( 'Satellite', 'sportspress' ),
+					'HYBRID' => __( 'Hybrid', 'sportspress' ),
+					'TERRAIN' => __( 'Terrain', 'sportspress' ),
+				),
+			),
+
 			array( 'type' => 'sectionend', 'id' => 'general_options' ),
 
 			array( 'title' => __( 'Styles and Scripts', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'script_styling_options' ),
