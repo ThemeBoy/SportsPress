@@ -32,7 +32,7 @@ class SP_Meta_Box_Event_Teams {
 					'name' => 'sp_team[]',
 					'class' => 'sportspress-pages',
 					'show_option_none' => sprintf( __( '&mdash; None &mdash;', 'sportspress' ), 'Team' ),
-					'selected' => $team
+					'selected' => $team,
 				);
 				wp_dropdown_pages( $args );
 				?>
