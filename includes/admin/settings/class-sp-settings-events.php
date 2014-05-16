@@ -57,6 +57,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 			array( 'type' => 'delimiter' ),
 
 			array(
+				'title'     => __( 'Teams', 'sportspress' ),
+				'desc' 		=> __( 'Display logos', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_logos',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+			),
+
+			array(
 				'title'     => __( 'Venue', 'sportspress' ),
 				'desc' 		=> __( 'Display maps', 'sportspress' ),
 				'id' 		=> 'sportspress_event_show_maps',

@@ -98,6 +98,15 @@ function sportspress_the_title( $title, $id ) {
 			if ( $role != null ):
 				$title = '<strong>' . $role . '</strong> ' . $title;
 			endif;
+		elseif ( is_singular( 'sp_event' ) && get_option( 'sportspress_event_show_logos', 'yes' ) == 'yes' ):
+			$teams = get_post_meta( $id, 'sp_team' );
+			if ( $teams ):
+				$title .= '<div class="sp-event-teams">';
+				foreach ( $teams as $team ):
+					$title .= get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . ' ';
+				endforeach;
+				$title .= '</div>';
+			endif;
 		endif;
 	endif;
 	return $title;

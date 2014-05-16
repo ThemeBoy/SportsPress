@@ -45,7 +45,6 @@ $float = is_rtl() ? 'right' : 'left';
 $selector = 'sp-player-gallery-' . $id;
 
 $list = new SP_Player_List( $id );
-$list->columns = $performance;
 $data = $list->data();
 
 // Remove the first row to leave us with the actual data
