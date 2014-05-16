@@ -1,22 +1,19 @@
 #
 # Translators:
-# aner42 <ae@mobilasystem.se>, 2014
-# Berislav Lopac <berislav.lopac@gmail.com>, 2012
-# bobosbodega <henrik.boo@gmail.com>, 2014
-# jenszackrisson <info@jenszackrisson.se>, 2014
-# JensZ <jenszackrisson@hotmail.com>, 2014
-# sennbrink <konsult@sennbrink.se>, 2014
-# ThemeBoy <support@themeboy.com>, 2014
-# vericule <fenuks@o2.pl>, 2014
+# arhipaiva <info@swratkaisut.com>, 2013
+# hanro <hanromen@gmail.com>, 2014
+# jpvanhal <janne.vanhala@gmail.com>, 2012
+# JuKi <jttkinnunen@gmail.com>, 2014
+# Zuige <antti@seravo.fi>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-05-16 21:35+1000\n"
-"PO-Revision-Date: 2014-05-16 21:35+1000\n"
+"POT-Creation-Date: 2014-05-16 21:36+1000\n"
+"PO-Revision-Date: 2014-05-16 21:36+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
-"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/"
-"sportspress/language/sv_SE/)\n"
-"Language: sv_SE\n"
+"Language-Team: Finnish (http://www.transifex.com/projects/p/sportspress/"
+"language/fi/)\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,35 +28,35 @@ msgstr ""
 
 #: sportspress.php:82 sportspress.php:91
 msgid "Cheatin&#8217; huh?"
-msgstr "Fuskar du?"
+msgstr "Huijaustako&#8217; vai?"
 
 #: sportspress.php:133 includes/admin/class-sp-admin-menus.php:98
 msgid "Settings"
-msgstr "Inställningar"
+msgstr "Asetukset"
 
 #: includes/class-sp-countries.php:29
 msgid "Africa"
-msgstr "Afrika"
+msgstr "Afrikka"
 
 #: includes/class-sp-countries.php:30
 msgid "Asia"
-msgstr "Asien"
+msgstr "Aasia"
 
 #: includes/class-sp-countries.php:31
 msgid "Europe"
-msgstr "Europa"
+msgstr "Eurooppa"
 
 #: includes/class-sp-countries.php:32
 msgid "North America"
-msgstr "Nordamerika"
+msgstr "Pohjois-Amerikka"
 
 #: includes/class-sp-countries.php:33
 msgid "Oceania"
-msgstr "Oceanien"
+msgstr "Oceania"
 
 #: includes/class-sp-countries.php:34
 msgid "South America"
-msgstr "Sydamerika"
+msgstr "Etelä-Afrikka"
 
 #: includes/class-sp-countries.php:38
 msgid "Andorra"
@@ -67,23 +64,23 @@ msgstr "Andorra"
 
 #: includes/class-sp-countries.php:39
 msgid "United Arab Emirates"
-msgstr "Förenade Arabemiraten"
+msgstr "Yhdistyneet Arabiemiirikunnat"
 
 #: includes/class-sp-countries.php:40
 msgid "Afghanistan"
-msgstr "Afghanistan"
+msgstr "Afganistan"
 
 #: includes/class-sp-countries.php:41
 msgid "Antigua and Barbuda"
-msgstr "Antigua och Barbuda"
+msgstr "Antigua ja Barbuda"
 
 #: includes/class-sp-countries.php:42
 msgid "Albania"
-msgstr "Albanien"
+msgstr "Albania"
 
 #: includes/class-sp-countries.php:43
 msgid "Armenia"
-msgstr "Armenien"
+msgstr "Armenia"
 
 #: includes/class-sp-countries.php:44
 msgid "Angola"
@@ -91,23 +88,23 @@ msgstr "Angola"
 
 #: includes/class-sp-countries.php:45
 msgid "Argentina"
-msgstr "Argentina"
+msgstr "Argentiina"
 
 #: includes/class-sp-countries.php:46
 msgid "Austria"
-msgstr "Österrike"
+msgstr "Itävalta"
 
 #: includes/class-sp-countries.php:47
 msgid "Australia"
-msgstr "Australien"
+msgstr "Australia"
 
 #: includes/class-sp-countries.php:48
 msgid "Azerbaijan"
-msgstr "Azerbaijan"
+msgstr "Azerbaidžan"
 
 #: includes/class-sp-countries.php:49
 msgid "Bosnia and Herzegovina"
-msgstr "Bosnien Hercegovina"
+msgstr "Bosnia ja Hertsegovina"
 
 #: includes/class-sp-countries.php:50
 msgid "Barbados"
@@ -119,7 +116,7 @@ msgstr "Bangladesh"
 
 #: includes/class-sp-countries.php:52
 msgid "Belgium"
-msgstr "Belgien"
+msgstr "Belgia"
 
 #: includes/class-sp-countries.php:53
 msgid "Burkina Faso"
@@ -127,7 +124,7 @@ msgstr "Burkina Faso"
 
 #: includes/class-sp-countries.php:54
 msgid "Bulgaria"
-msgstr "Bulgarien"
+msgstr "Bulgaria"
 
 #: includes/class-sp-countries.php:55
 msgid "Bahrain"
@@ -151,11 +148,11 @@ msgstr "Bolivia"
 
 #: includes/class-sp-countries.php:60
 msgid "Brazil"
-msgstr "Brasilien"
+msgstr "Brasilia"
 
 #: includes/class-sp-countries.php:61
 msgid "Bahamas"
-msgstr "Bahamas"
+msgstr "Bahama"
 
 #: includes/class-sp-countries.php:62
 msgid "Bhutan"
@@ -167,7 +164,7 @@ msgstr "Botswana"
 
 #: includes/class-sp-countries.php:64
 msgid "Belarus"
-msgstr "Vitryssland"
+msgstr "Valko-Venäjä"
 
 #: includes/class-sp-countries.php:65
 msgid "Belize"
@@ -179,23 +176,23 @@ msgstr "Kanada"
 
 #: includes/class-sp-countries.php:67
 msgid "Democratic Republic of the Congo"
-msgstr "Kongo-Kinshasa"
+msgstr "Kongon Demokraattinen Tasavalta "
 
 #: includes/class-sp-countries.php:68
 msgid "Central African Republic"
-msgstr "Centralafrikanska republiken"
+msgstr "Keski-Afrikan tasavalta"
 
 #: includes/class-sp-countries.php:69
 msgid "Republic of the Congo"
-msgstr "Kongo-Brazzaville"
+msgstr "Kongon Tasavalta"
 
 #: includes/class-sp-countries.php:70
 msgid "Switzerland"
-msgstr "Schweiz"
+msgstr "Sveitsi"
 
 #: includes/class-sp-countries.php:71
 msgid "Ivory Coast"
-msgstr "Elfenbenskusten"
+msgstr "Norsunluurannikko"
 
 #: includes/class-sp-countries.php:72
 msgid "Chile"
@@ -207,11 +204,11 @@ msgstr "Kamerun"
 
 #: includes/class-sp-countries.php:74
 msgid "China"
-msgstr "Kina"
+msgstr "Kiina"
 
 #: includes/class-sp-countries.php:75
 msgid "Colombia"
-msgstr "Colombia"
+msgstr "Kolumbia"
 
 #: includes/class-sp-countries.php:76
 msgid "Costa Rica"
@@ -219,23 +216,23 @@ msgstr "Costa Rica"
 
 #: includes/class-sp-countries.php:77
 msgid "Cuba"
-msgstr "Kuba"
+msgstr "Kuuba"
 
 #: includes/class-sp-countries.php:78
 msgid "Cape Verde"
-msgstr "Cap Verde"
+msgstr "Kap Verde"
 
 #: includes/class-sp-countries.php:79
 msgid "Cyprus"
-msgstr "Cypern"
+msgstr "Kypros"
 
 #: includes/class-sp-countries.php:80
 msgid "Czech Republic"
-msgstr "Tjeckien"
+msgstr "Tsekki"
 
 #: includes/class-sp-countries.php:81
 msgid "Germany"
-msgstr "Tyskland"
+msgstr "Saksa"
 
 #: includes/class-sp-countries.php:82
 msgid "Djibouti"
@@ -243,7 +240,7 @@ msgstr "Djibouti"
 
 #: includes/class-sp-countries.php:83
 msgid "Denmark"
-msgstr "Danmark"
+msgstr "Tanska"
 
 #: includes/class-sp-countries.php:84
 msgid "Dominica"
@@ -251,11 +248,11 @@ msgstr "Dominica"
 
 #: includes/class-sp-countries.php:85
 msgid "Dominican Republic"
-msgstr "Dominikanska Republiken"
+msgstr "Dominikaaninen tasavalta"
 
 #: includes/class-sp-countries.php:86
 msgid "Algeria"
-msgstr "Algeriet"
+msgstr "Algeria"
 
 #: includes/class-sp-countries.php:87
 msgid "Ecuador"
@@ -263,19 +260,19 @@ msgstr "Ecuador"
 
 #: includes/class-sp-countries.php:88
 msgid "Estonia"
-msgstr "Estland"
+msgstr "Viro"
 
 #: includes/class-sp-countries.php:89
 msgid "Egypt"
-msgstr "Egypten"
+msgstr "Egypti"
 
 #: includes/class-sp-countries.php:90
 msgid "Western Sahara"
-msgstr "Västra Sahara"
+msgstr "Länsi-Sahara"
 
 #: includes/class-sp-countries.php:91
 msgid "England"
-msgstr "England"
+msgstr "Englanti"
 
 #: includes/class-sp-countries.php:92
 msgid "Eritrea"
@@ -283,27 +280,27 @@ msgstr "Eritrea"
 
 #: includes/class-sp-countries.php:93
 msgid "Spain"
-msgstr "Spanien"
+msgstr "Espanja"
 
 #: includes/class-sp-countries.php:94
 msgid "Ethiopia"
-msgstr "Etiopien"
+msgstr "Etiopia"
 
 #: includes/class-sp-countries.php:95
 msgid "Finland"
-msgstr "Finland"
+msgstr "Suomi"
 
 #: includes/class-sp-countries.php:96
 msgid "Fiji"
-msgstr "Fiji"
+msgstr "Fidži"
 
 #: includes/class-sp-countries.php:97
 msgid "Micronesia"
-msgstr "Mikronesien"
+msgstr "Mikronesia"
 
 #: includes/class-sp-countries.php:98
 msgid "France"
-msgstr "Frankrike"
+msgstr "Ranska"
 
 #: includes/class-sp-countries.php:99
 msgid "Gabon"
@@ -311,7 +308,7 @@ msgstr "Gabon"
 
 #: includes/class-sp-countries.php:100
 msgid "United Kingdom"
-msgstr "Storbritannien"
+msgstr "Yhdistynyt kuningaskunta"
 
 #: includes/class-sp-countries.php:101
 msgid "Grenada"
@@ -319,7 +316,7 @@ msgstr "Grenada"
 
 #: includes/class-sp-countries.php:102
 msgid "Georgia"
-msgstr "Georgien"
+msgstr "Georgia"
 
 #: includes/class-sp-countries.php:103
 msgid "Ghana"
@@ -335,11 +332,11 @@ msgstr "Guinea"
 
 #: includes/class-sp-countries.php:106
 msgid "Equatorial Guinea"
-msgstr "Equatorial Guinea"
+msgstr "Päiväntasaajan Guinea"
 
 #: includes/class-sp-countries.php:107
 msgid "Greece"
-msgstr "Grekland"
+msgstr "Kreikka"
 
 #: includes/class-sp-countries.php:108
 msgid "Guatemala"
@@ -347,7 +344,7 @@ msgstr "Guatemala"
 
 #: includes/class-sp-countries.php:109
 msgid "Guinea-Bissau"
-msgstr "Guinea-Bissau"
+msgstr "Guinea-Bissaun"
 
 #: includes/class-sp-countries.php:110
 msgid "Guyana"
@@ -363,7 +360,7 @@ msgstr "Honduras"
 
 #: includes/class-sp-countries.php:113
 msgid "Croatia"
-msgstr "Kroatien"
+msgstr "Kroatia"
 
 #: includes/class-sp-countries.php:114
 msgid "Haiti"
@@ -371,15 +368,15 @@ msgstr "Haiti"
 
 #: includes/class-sp-countries.php:115
 msgid "Hungary"
-msgstr "Ungern"
+msgstr "Unkari"
 
 #: includes/class-sp-countries.php:116
 msgid "Indonesia"
-msgstr "Indonesien"
+msgstr "Indonesia"
 
 #: includes/class-sp-countries.php:117
 msgid "Ireland"
-msgstr "Irland"
+msgstr "Irlanti"
 
 #: includes/class-sp-countries.php:118
 msgid "Israel"
@@ -387,7 +384,7 @@ msgstr "Israel"
 
 #: includes/class-sp-countries.php:119
 msgid "India"
-msgstr "Indien"
+msgstr "Intia"
 
 #: includes/class-sp-countries.php:120
 msgid "Iraq"
@@ -399,35 +396,35 @@ msgstr "Iran"
 
 #: includes/class-sp-countries.php:122
 msgid "Iceland"
-msgstr "Island"
+msgstr "Islanti"
 
 #: includes/class-sp-countries.php:123
 msgid "Italy"
-msgstr "Italien"
+msgstr "Italia"
 
 #: includes/class-sp-countries.php:124
 msgid "Jamaica"
-msgstr "Jamaica"
+msgstr "Jamaika"
 
 #: includes/class-sp-countries.php:125
 msgid "Jordan"
-msgstr "Jordanien"
+msgstr "Jordan"
 
 #: includes/class-sp-countries.php:126
 msgid "Japan"
-msgstr "Japan"
+msgstr "Japani"
 
 #: includes/class-sp-countries.php:127
 msgid "Kenya"
-msgstr "Kenya"
+msgstr "Kenia"
 
 #: includes/class-sp-countries.php:128
 msgid "Kyrgyzstan"
-msgstr "Kirigistan"
+msgstr "Kirgisia"
 
 #: includes/class-sp-countries.php:129
 msgid "Cambodia"
-msgstr "Kambodja"
+msgstr "Kambodza"
 
 #: includes/class-sp-countries.php:130
 msgid "Kiribati"
@@ -435,19 +432,19 @@ msgstr "Kiribati"
 
 #: includes/class-sp-countries.php:131
 msgid "Comoros"
-msgstr "Comoros"
+msgstr "Komorit"
 
 #: includes/class-sp-countries.php:132
 msgid "Saint Kitts and Nevis"
-msgstr "Saint Kitts och Nevis"
+msgstr "Saint Kitts ja Nevis"
 
 #: includes/class-sp-countries.php:133
 msgid "North Korea"
-msgstr "Nordkorea"
+msgstr "Pohjois-Korea"
 
 #: includes/class-sp-countries.php:134
 msgid "South Korea"
-msgstr "Sydkorea"
+msgstr "Etelä-Korea"
 
 #: includes/class-sp-countries.php:135
 msgid "Kuwait"
@@ -455,7 +452,7 @@ msgstr "Kuwait"
 
 #: includes/class-sp-countries.php:136
 msgid "Kazakhstan"
-msgstr "Kazakhstan"
+msgstr "Kazakstan"
 
 #: includes/class-sp-countries.php:137
 msgid "Laos"
@@ -467,7 +464,7 @@ msgstr "Libanon"
 
 #: includes/class-sp-countries.php:139
 msgid "Saint Lucia"
-msgstr "Sankta Lucia"
+msgstr "Saint Lucia"
 
 #: includes/class-sp-countries.php:140
 msgid "Liechtenstein"
@@ -487,23 +484,23 @@ msgstr "Lesotho"
 
 #: includes/class-sp-countries.php:144
 msgid "Lithuania"
-msgstr "Litauen"
+msgstr "Liettua"
 
 #: includes/class-sp-countries.php:145
 msgid "Luxembourg"
-msgstr "Luxemburg"
+msgstr "Luxembourg"
 
 #: includes/class-sp-countries.php:146
 msgid "Latvia"
-msgstr "Lettland"
+msgstr "Latvia"
 
 #: includes/class-sp-countries.php:147
 msgid "Libya"
-msgstr "Libyen"
+msgstr "Libya"
 
 #: includes/class-sp-countries.php:148
 msgid "Morocco"
-msgstr "Marocco"
+msgstr "Marokko"
 
 #: includes/class-sp-countries.php:149
 msgid "Monaco"
@@ -511,7 +508,7 @@ msgstr "Monaco"
 
 #: includes/class-sp-countries.php:150
 msgid "Moldova"
-msgstr "Moldavien"
+msgstr "Moldova"
 
 #: includes/class-sp-countries.php:151
 msgid "Montenegro"
@@ -519,15 +516,15 @@ msgstr "Montenegro"
 
 #: includes/class-sp-countries.php:152
 msgid "Madagascar"
-msgstr "Madagaskar"
+msgstr "Madagascar"
 
 #: includes/class-sp-countries.php:153
 msgid "Marshall Islands"
-msgstr "Marshall Islands"
+msgstr "Marshallinsaaret"
 
 #: includes/class-sp-countries.php:154
 msgid "Macedonia"
-msgstr "Makedonien"
+msgstr "Makedonia"
 
 #: includes/class-sp-countries.php:155
 msgid "Mali"
@@ -539,15 +536,15 @@ msgstr "Burma"
 
 #: includes/class-sp-countries.php:157
 msgid "Mongolia"
-msgstr "Mongolien"
+msgstr "Mongolia"
 
 #: includes/class-sp-countries.php:158
 msgid "Macau"
-msgstr "Macao"
+msgstr "Macau"
 
 #: includes/class-sp-countries.php:159
 msgid "Mauritania"
-msgstr "Mauritanien"
+msgstr "Mauritania"
 
 #: includes/class-sp-countries.php:160
 msgid "Malta"
@@ -559,7 +556,7 @@ msgstr "Mauritius"
 
 #: includes/class-sp-countries.php:162
 msgid "Maldives"
-msgstr "Maldiverna"
+msgstr "Malediivit"
 
 #: includes/class-sp-countries.php:163
 msgid "Malawi"
@@ -567,11 +564,11 @@ msgstr "Malawi"
 
 #: includes/class-sp-countries.php:164
 msgid "Mexico"
-msgstr "Mexico"
+msgstr "Meksiko"
 
 #: includes/class-sp-countries.php:165
 msgid "Malaysia"
-msgstr "Malaysia"
+msgstr "Malesia"
 
 #: includes/class-sp-countries.php:166
 msgid "Mozambique"
@@ -583,7 +580,7 @@ msgstr "Namibia"
 
 #: includes/class-sp-countries.php:168
 msgid "Northern Ireland"
-msgstr "Nordirland"
+msgstr "Pohjois-Irlanti"
 
 #: includes/class-sp-countries.php:169
 msgid "Niger"
@@ -599,11 +596,11 @@ msgstr "Nicaragua"
 
 #: includes/class-sp-countries.php:172
 msgid "Netherlands"
-msgstr "Nederländerna"
+msgstr "Hollanti"
 
 #: includes/class-sp-countries.php:173
 msgid "Norway"
-msgstr "Norge"
+msgstr "Norja"
 
 #: includes/class-sp-countries.php:174
 msgid "Nepal"
@@ -615,7 +612,7 @@ msgstr "Nauru"
 
 #: includes/class-sp-countries.php:176
 msgid "New Zealand"
-msgstr "Nya Zeeland"
+msgstr "Uusi-Seelanti"
 
 #: includes/class-sp-countries.php:177
 msgid "Oman"
@@ -631,11 +628,11 @@ msgstr "Peru"
 
 #: includes/class-sp-countries.php:180
 msgid "Papua New Guinea"
-msgstr "Papua New Guinea"
+msgstr "Papua-Uusi-Guinea"
 
 #: includes/class-sp-countries.php:181
 msgid "Philippines"
-msgstr "Filippinerna"
+msgstr "Filippiinit"
 
 #: includes/class-sp-countries.php:182
 msgid "Pakistan"
@@ -643,11 +640,11 @@ msgstr "Pakistan"
 
 #: includes/class-sp-countries.php:183
 msgid "Poland"
-msgstr "Polen"
+msgstr "Puola"
 
 #: includes/class-sp-countries.php:184
 msgid "Portugal"
-msgstr "Portugal"
+msgstr "Portugali"
 
 #: includes/class-sp-countries.php:185
 msgid "Palau"
@@ -663,31 +660,31 @@ msgstr "Qatar"
 
 #: includes/class-sp-countries.php:188
 msgid "Romania"
-msgstr "Rumänien"
+msgstr "Romania"
 
 #: includes/class-sp-countries.php:189
 msgid "Serbia"
-msgstr "Serbien"
+msgstr "Serbia"
 
 #: includes/class-sp-countries.php:190
 msgid "Russia"
-msgstr "Ryssland"
+msgstr "Venäjä"
 
 #: includes/class-sp-countries.php:191
 msgid "Rwanda"
-msgstr "Rwanda"
+msgstr "Ruanda"
 
 #: includes/class-sp-countries.php:192
 msgid "Saudi Arabia"
-msgstr "Saudi Arabien"
+msgstr "Saudi-Arabia"
 
 #: includes/class-sp-countries.php:193
 msgid "Solomon Islands"
-msgstr "Solomon Islands"
+msgstr "Salomonsaaret"
 
 #: includes/class-sp-countries.php:194
 msgid "Seychelles"
-msgstr "Seychellerna"
+msgstr "Seychellit"
 
 #: includes/class-sp-countries.php:195
 msgid "Sudan"
@@ -695,11 +692,11 @@ msgstr "Sudan"
 
 #: includes/class-sp-countries.php:196
 msgid "Sweden"
-msgstr "Sverige"
+msgstr "Ruotsi"
 
 #: includes/class-sp-countries.php:197
 msgid "Scotland"
-msgstr "Skottland"
+msgstr "Skotlanti"
 
 #: includes/class-sp-countries.php:198
 msgid "Singapore"
@@ -707,11 +704,11 @@ msgstr "Singapore"
 
 #: includes/class-sp-countries.php:199
 msgid "Slovenia"
-msgstr "Slovenien"
+msgstr "Slovenia"
 
 #: includes/class-sp-countries.php:200
 msgid "Slovakia"
-msgstr "Slovakien"
+msgstr "Slovakia"
 
 #: includes/class-sp-countries.php:201
 msgid "Sierra Leone"
@@ -735,7 +732,7 @@ msgstr "Surinam"
 
 #: includes/class-sp-countries.php:206
 msgid "Sao Tome and Principe"
-msgstr "Sao Tomé och Principe"
+msgstr "Sao Tomé ja Príncipe"
 
 #: includes/class-sp-countries.php:207
 msgid "El Salvador"
@@ -743,7 +740,7 @@ msgstr "El Salvador"
 
 #: includes/class-sp-countries.php:208
 msgid "Swaziland"
-msgstr "Swaziland"
+msgstr "Swazimaa"
 
 #: includes/class-sp-countries.php:209
 msgid "Chad"
@@ -755,15 +752,15 @@ msgstr "Togo"
 
 #: includes/class-sp-countries.php:211
 msgid "Thailand"
-msgstr "Thailand"
+msgstr "Thaimaa"
 
 #: includes/class-sp-countries.php:212
 msgid "Tajikistan"
-msgstr "Tachikistan"
+msgstr "Tadžikistan"
 
 #: includes/class-sp-countries.php:213
 msgid "East Timor"
-msgstr "Östtimor"
+msgstr "Itä-Timor"
 
 #: includes/class-sp-countries.php:214
 msgid "Turkmenistan"
@@ -771,7 +768,7 @@ msgstr "Turkmenistan"
 
 #: includes/class-sp-countries.php:215
 msgid "Tunisia"
-msgstr "Tunisien"
+msgstr "Tunisia"
 
 #: includes/class-sp-countries.php:216
 msgid "Tonga"
@@ -779,11 +776,11 @@ msgstr "Tonga"
 
 #: includes/class-sp-countries.php:217
 msgid "Turkey"
-msgstr "Turkiet"
+msgstr "Turkki"
 
 #: includes/class-sp-countries.php:218
 msgid "Trinidad and Tobago"
-msgstr "Trinidad och Tobago"
+msgstr "Trinidad ja Tobago"
 
 #: includes/class-sp-countries.php:219
 msgid "Tuvalu"
@@ -795,7 +792,7 @@ msgstr "Taiwan"
 
 #: includes/class-sp-countries.php:221
 msgid "Tanzania"
-msgstr "Tanzania"
+msgstr "Tansania"
 
 #: includes/class-sp-countries.php:222
 msgid "Ukraine"
@@ -807,7 +804,7 @@ msgstr "Uganda"
 
 #: includes/class-sp-countries.php:224
 msgid "United States"
-msgstr "USA"
+msgstr "Yhdysvallat"
 
 #: includes/class-sp-countries.php:225
 msgid "Uruguay"
@@ -815,15 +812,15 @@ msgstr "Uruguay"
 
 #: includes/class-sp-countries.php:226
 msgid "Uzbekistan"
-msgstr "Usbekistan"
+msgstr "Uzbekistan"
 
 #: includes/class-sp-countries.php:227
 msgid "Vatican City"
-msgstr "Vatikanstaten"
+msgstr "Vatikaani"
 
 #: includes/class-sp-countries.php:228
 msgid "Saint Vincent and the Grenadines"
-msgstr "Saint Vincent och Grenadinerna"
+msgstr "Saint Vincent ja Grenadiinit"
 
 #: includes/class-sp-countries.php:229
 msgid "Venezuela"
@@ -851,11 +848,11 @@ msgstr "Yemen"
 
 #: includes/class-sp-countries.php:235
 msgid "South Africa"
-msgstr "Sydafrika"
+msgstr "Etelä-Afrikka"
 
 #: includes/class-sp-countries.php:236
 msgid "Zambia"
-msgstr "Zambia"
+msgstr "Sambia"
 
 #: includes/class-sp-countries.php:237
 msgid "Zimbabwe"
@@ -874,19 +871,19 @@ msgstr "Zimbabwe"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:30
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:27
 msgid "League"
-msgstr "Serie"
+msgstr "Liiga"
 
 #: includes/class-sp-formats.php:28
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:116
 msgid "Friendly"
-msgstr "Vänskapsmatch"
+msgstr "Ystävyysottelu"
 
 #: includes/class-sp-formats.php:31 includes/class-sp-post-types.php:372
 #: includes/widgets/class-sp-widget-event-blocks.php:48
 #: includes/widgets/class-sp-widget-event-calendar.php:44
 #: includes/widgets/class-sp-widget-event-list.php:51
 msgid "Calendar"
-msgstr "Kalender"
+msgstr "Kalenteri"
 
 #: includes/class-sp-formats.php:32 includes/class-sp-formats.php:36
 msgid "List"
@@ -894,40 +891,40 @@ msgstr "Lista"
 
 #: includes/class-sp-formats.php:33
 msgid "Blocks"
-msgstr ""
+msgstr "Estot"
 
 #: includes/class-sp-formats.php:37
 msgid "Gallery"
-msgstr "Galleri"
+msgstr "Galleria"
 
 #: includes/class-sp-frontend-scripts.php:57
 #: includes/admin/class-sp-admin-assets.php:103
 #: includes/admin/class-sp-admin-dashboard.php:54 templates/countdown.php:64
 msgid "days"
-msgstr "dagar"
+msgstr "päivää"
 
 #: includes/class-sp-frontend-scripts.php:57
 #: includes/admin/class-sp-admin-assets.php:104 templates/countdown.php:65
 msgid "hrs"
-msgstr "tim"
+msgstr "tuntia"
 
 #: includes/class-sp-frontend-scripts.php:57
 #: includes/admin/class-sp-admin-assets.php:105 templates/countdown.php:66
 msgid "mins"
-msgstr "min"
+msgstr "minuuttia"
 
 #: includes/class-sp-frontend-scripts.php:57
 #: includes/admin/class-sp-admin-assets.php:106 templates/countdown.php:67
 msgid "secs"
-msgstr "sek"
+msgstr "sekuntia"
 
 #: includes/class-sp-frontend-scripts.php:57
 msgid "Previous"
-msgstr "Föregående"
+msgstr "Edellinen"
 
 #: includes/class-sp-frontend-scripts.php:57
 msgid "Next"
-msgstr "Nästa"
+msgstr "Seuraava"
 
 #: includes/class-sp-install.php:160 includes/class-sp-post-types.php:464
 #: includes/sp-core-functions.php:2426
@@ -935,26 +932,26 @@ msgstr "Nästa"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:116
 msgid "Player"
-msgstr "Spelare"
+msgstr "Pelaaja"
 
 #: includes/class-sp-install.php:182 includes/class-sp-post-types.php:524
 #: includes/class-sp-post-types.php:525 includes/sp-core-functions.php:2434
 #: includes/admin/class-sp-admin-permalink-settings.php:35
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:42
 msgid "Staff"
-msgstr "Personal"
+msgstr "Toimihenkilöt"
 
 #: includes/class-sp-install.php:204
 msgid "Team Manager"
-msgstr "Lagredigerare"
+msgstr "Joukkuejohtaja"
 
 #: includes/class-sp-install.php:259
 msgid "League Manager"
-msgstr "Serieredigerare"
+msgstr "Liigamanageri"
 
 #: includes/class-sp-install.php:456
 msgid "What's new:"
-msgstr "Vad som är nytt:"
+msgstr "Mitä uutta:"
 
 #: includes/class-sp-post-types.php:35 includes/class-sp-post-types.php:49
 #: includes/admin/class-sp-admin-menus.php:55
@@ -971,7 +968,7 @@ msgstr "Vad som är nytt:"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:45
 #: includes/admin/views/html-admin-page-status.php:296
 msgid "Leagues"
-msgstr "Serier"
+msgstr "Liigat"
 
 #: includes/class-sp-post-types.php:37 includes/class-sp-post-types.php:66
 #: includes/class-sp-post-types.php:95 includes/class-sp-post-types.php:124
@@ -985,11 +982,11 @@ msgstr "Serier"
 #: includes/widgets/class-sp-widget-event-calendar.php:48
 #: includes/widgets/class-sp-widget-event-list.php:55
 msgid "All"
-msgstr "Alla"
+msgstr "Kaikki"
 
 #: includes/class-sp-post-types.php:38
 msgid "Edit League"
-msgstr "Redigera serie"
+msgstr "Muokkaa Liigaa"
 
 #: includes/class-sp-post-types.php:39 includes/class-sp-post-types.php:68
 #: includes/class-sp-post-types.php:97 includes/class-sp-post-types.php:126
@@ -1001,12 +998,12 @@ msgstr "Redigera serie"
 #: includes/class-sp-post-types.php:468 includes/class-sp-post-types.php:498
 #: includes/class-sp-post-types.php:529
 msgid "View"
-msgstr "Visa"
+msgstr "Katso"
 
 #: includes/class-sp-post-types.php:40 includes/class-sp-post-types.php:69
 #: includes/class-sp-post-types.php:98 includes/class-sp-post-types.php:127
 msgid "Update"
-msgstr "Uppdatera"
+msgstr "Päivitä"
 
 #: includes/class-sp-post-types.php:41 includes/class-sp-post-types.php:70
 #: includes/class-sp-post-types.php:99 includes/class-sp-post-types.php:128
@@ -1045,7 +1042,7 @@ msgstr "Uppdatera"
 #: includes/widgets/class-sp-widget-player-list.php:64
 #: includes/widgets/class-sp-widget-player-list.php:110
 msgid "Add New"
-msgstr "Lägg till..."
+msgstr "Lisää Uusi"
 
 #: includes/class-sp-post-types.php:42 includes/class-sp-post-types.php:71
 #: includes/class-sp-post-types.php:100 includes/class-sp-post-types.php:129
@@ -1058,17 +1055,17 @@ msgstr "Lägg till..."
 #: includes/widgets/class-sp-widget-player-gallery.php:78
 #: includes/widgets/class-sp-widget-player-list.php:99
 msgid "Name"
-msgstr "Namn"
+msgstr "Nimi"
 
 #: includes/class-sp-post-types.php:43 includes/class-sp-post-types.php:72
 #: includes/class-sp-post-types.php:101 includes/class-sp-post-types.php:130
 msgid "Parent"
-msgstr "Förälder"
+msgstr "Ylempi taso"
 
 #: includes/class-sp-post-types.php:44 includes/class-sp-post-types.php:73
 #: includes/class-sp-post-types.php:102 includes/class-sp-post-types.php:131
 msgid "Parent:"
-msgstr "Förälder:"
+msgstr "Ylempi taso:"
 
 #: includes/class-sp-post-types.php:45 includes/class-sp-post-types.php:74
 #: includes/class-sp-post-types.php:103 includes/class-sp-post-types.php:132
@@ -1080,7 +1077,7 @@ msgstr "Förälder:"
 #: includes/class-sp-post-types.php:469 includes/class-sp-post-types.php:499
 #: includes/class-sp-post-types.php:530
 msgid "Search"
-msgstr "Sök"
+msgstr "Haku"
 
 #: includes/class-sp-post-types.php:46 includes/class-sp-post-types.php:75
 #: includes/class-sp-post-types.php:104 includes/class-sp-post-types.php:133
@@ -1100,7 +1097,7 @@ msgstr "Sök"
 #: includes/sp-core-functions.php:684
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:117
 msgid "No results found."
-msgstr "Inga resultat hittades."
+msgstr "Tuloksia ei löytynyt "
 
 #: includes/class-sp-post-types.php:64 includes/class-sp-post-types.php:78
 #: includes/admin/class-sp-admin-menus.php:62
@@ -1115,7 +1112,7 @@ msgstr "Inga resultat hittades."
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:115
 #: includes/admin/views/html-admin-page-status.php:306
 msgid "Seasons"
-msgstr "Säsonger"
+msgstr "Kaudet"
 
 #: includes/class-sp-post-types.php:65 includes/sp-core-functions.php:2433
 #: includes/admin/importers/class-sp-event-importer.php:473
@@ -1130,18 +1127,18 @@ msgstr "Säsonger"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:41
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:69
 msgid "Season"
-msgstr "Säsong"
+msgstr "Kausi"
 
 #: includes/class-sp-post-types.php:67
 msgid "Edit Season"
-msgstr "Redigera säsong"
+msgstr "Muokkaa Kautta"
 
 #: includes/class-sp-post-types.php:93 includes/class-sp-post-types.php:107
 #: includes/admin/class-sp-admin-menus.php:247
 #: includes/admin/class-sp-admin-permalink-settings.php:26
 #: includes/admin/views/html-admin-page-status.php:316
 msgid "Venues"
-msgstr "Spelplatser"
+msgstr "Tapahtumapaikat"
 
 #: includes/class-sp-post-types.php:94 includes/sp-core-functions.php:2441
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:51
@@ -1152,11 +1149,11 @@ msgstr "Spelplatser"
 #: includes/admin/settings/class-sp-settings-events.php:68
 #: includes/widgets/class-sp-widget-event-list.php:98
 msgid "Venue"
-msgstr "Spelplats"
+msgstr "Tapahtumapaikka"
 
 #: includes/class-sp-post-types.php:96
 msgid "Edit Venue"
-msgstr "Redigera spelplats"
+msgstr "Muokkaa Tapahtumapaikkaa"
 
 #: includes/class-sp-post-types.php:122 includes/class-sp-post-types.php:136
 #: includes/admin/class-sp-admin-menus.php:239
@@ -1166,16 +1163,16 @@ msgstr "Redigera spelplats"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:78
 #: includes/admin/views/html-admin-page-status.php:326
 msgid "Positions"
-msgstr "Positioner"
+msgstr "Pelipaikat"
 
 #: includes/class-sp-post-types.php:123 includes/sp-core-functions.php:2428
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:77
 msgid "Position"
-msgstr "Position"
+msgstr "Sijainti"
 
 #: includes/class-sp-post-types.php:125
 msgid "Edit Position"
-msgstr "Redigera spelarposition"
+msgstr "Muokkaa Pelipaikkaa"
 
 #: includes/class-sp-post-types.php:161 includes/sp-core-functions.php:2432
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:112
@@ -1184,19 +1181,19 @@ msgstr "Redigera spelarposition"
 #: includes/admin/settings/class-sp-settings-config.php:154
 #: includes/admin/views/html-admin-page-status.php:237
 msgid "Team Results"
-msgstr ""
+msgstr "Joukkueen Tulokset"
 
 #: includes/class-sp-post-types.php:162
 msgid "Result"
-msgstr "Resultat"
+msgstr "Tulos"
 
 #: includes/class-sp-post-types.php:163
 msgid "Add New Result"
-msgstr "Lägg till nytt resultat"
+msgstr "Lisää Uusi Tulos"
 
 #: includes/class-sp-post-types.php:164
 msgid "Edit Result"
-msgstr "Redigera resultat"
+msgstr "Muokkaa Tulosta"
 
 #: includes/class-sp-post-types.php:165 includes/class-sp-post-types.php:195
 #: includes/class-sp-post-types.php:225 includes/class-sp-post-types.php:255
@@ -1206,64 +1203,64 @@ msgstr "Redigera resultat"
 #: includes/class-sp-post-types.php:467 includes/class-sp-post-types.php:497
 #: includes/class-sp-post-types.php:528
 msgid "New"
-msgstr "Ny"
+msgstr "Uusi"
 
 #: includes/class-sp-post-types.php:191
 #: includes/admin/settings/class-sp-settings-config.php:96
 #: includes/admin/views/html-admin-page-status.php:227
 msgid "Event Outcomes"
-msgstr ""
+msgstr "Tapahtuman Lopputulokset"
 
 #: includes/class-sp-post-types.php:192 includes/sp-core-functions.php:2423
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:60
 msgid "Outcome"
-msgstr "Utfall"
+msgstr "Lopputulos"
 
 #: includes/class-sp-post-types.php:193
 msgid "Add New Outcome"
-msgstr "Lägg till nytt utfall"
+msgstr "Lisää Uusi Lopputulos"
 
 #: includes/class-sp-post-types.php:194
 msgid "Edit Outcome"
-msgstr "Redigera utfall"
+msgstr "Muokkaa Lopputulosta"
 
 #: includes/class-sp-post-types.php:221
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:124
 #: includes/admin/settings/class-sp-settings-config.php:273
 #: includes/admin/views/html-admin-page-status.php:257
 msgid "Table Columns"
-msgstr ""
+msgstr "Taulukon Sarakkeet"
 
 #: includes/class-sp-post-types.php:222
 msgid "Column"
-msgstr "Kolumn"
+msgstr "Sarake"
 
 #: includes/class-sp-post-types.php:223
 msgid "Add New Column"
-msgstr "Lägg till kolumn"
+msgstr "Lisää Uusi Sarake"
 
 #: includes/class-sp-post-types.php:224
 msgid "Edit Column"
-msgstr "Redigera kolumn"
+msgstr "Muokkaa Saraketta"
 
 #: includes/class-sp-post-types.php:251
 #: includes/admin/settings/class-sp-settings-config.php:332
 #: includes/admin/views/html-admin-page-status.php:267
 msgid "Player Metrics"
-msgstr ""
+msgstr "Pelaajan Metriikka"
 
 #: includes/class-sp-post-types.php:252
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:55
 msgid "Metric"
-msgstr "Metrik"
+msgstr "Metriikka"
 
 #: includes/class-sp-post-types.php:253
 msgid "Add New Metric"
-msgstr "Lägg till ny metrik"
+msgstr "Lisää Uusi Metriikka"
 
 #: includes/class-sp-post-types.php:254
 msgid "Edit Metric"
-msgstr "Redigera metrik"
+msgstr "Muokkaa Metriikoita"
 
 #: includes/class-sp-post-types.php:281 includes/class-sp-post-types.php:282
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:113
@@ -1272,33 +1269,33 @@ msgstr "Redigera metrik"
 #: includes/admin/settings/class-sp-settings-events.php:93
 #: includes/admin/views/html-admin-page-status.php:247
 msgid "Player Performance"
-msgstr ""
+msgstr "Pelaajan Saavutukset"
 
 #: includes/class-sp-post-types.php:283
 msgid "Add New Performance"
-msgstr "Lägg till spelarstatistik"
+msgstr "Lisää Uusi Saavutus"
 
 #: includes/class-sp-post-types.php:284
 msgid "Edit Performance"
-msgstr "Redigera spelarstatistik"
+msgstr "Muokkaa Saavutusta"
 
 #: includes/class-sp-post-types.php:311
 #: includes/admin/settings/class-sp-settings-config.php:384
 #: includes/admin/views/html-admin-page-status.php:277
 msgid "Player Statistics"
-msgstr ""
+msgstr "Pelaajan Tilastot"
 
 #: includes/class-sp-post-types.php:312
 msgid "Statistic"
-msgstr "Statistik"
+msgstr "Tilasto"
 
 #: includes/class-sp-post-types.php:313
 msgid "Add New Statistic"
-msgstr "Lägg till ny statistik"
+msgstr "Lisää Uusi Tilasto"
 
 #: includes/class-sp-post-types.php:314
 msgid "Edit Statistic"
-msgstr "Redigera statistik"
+msgstr "Muokkaa Tilastoja"
 
 #: includes/class-sp-post-types.php:341
 #: includes/admin/class-sp-admin-permalink-settings.php:25
@@ -1309,7 +1306,7 @@ msgstr "Redigera statistik"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:40
 #: includes/admin/settings/class-sp-settings-events.php:25
 msgid "Events"
-msgstr "Evenemang"
+msgstr "Tapahtumat"
 
 #: includes/class-sp-post-types.php:342 includes/sp-core-functions.php:2420
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:91
@@ -1318,30 +1315,30 @@ msgstr "Evenemang"
 #: includes/widgets/class-sp-widget-countdown.php:42
 #: includes/widgets/class-sp-widget-event-list.php:95
 msgid "Event"
-msgstr "Evenemang"
+msgstr "Tapahtuma"
 
 #: includes/class-sp-post-types.php:343
 #: includes/admin/class-sp-admin-welcome.php:232
 msgid "Add New Event"
-msgstr "Lägg till nytt evenemang"
+msgstr "Lisää Uusi Tapahtuma"
 
 #: includes/class-sp-post-types.php:344
 msgid "Edit Event"
-msgstr "Redigera evenemang"
+msgstr "Muokkaa Tapahtumaa"
 
 #: includes/class-sp-post-types.php:371
 #: includes/admin/class-sp-admin-permalink-settings.php:27
 #: includes/admin/settings/class-sp-settings-events.php:102
 msgid "Calendars"
-msgstr "Kalendrar"
+msgstr "Kalenterit"
 
 #: includes/class-sp-post-types.php:373
 msgid "Add New Calendar"
-msgstr "Lägg till kalender"
+msgstr "Lisää Uusi Kalenteri"
 
 #: includes/class-sp-post-types.php:374
 msgid "Edit Calendar"
-msgstr "Redigera kalender"
+msgstr "Muokkaa Kalenteria"
 
 #: includes/class-sp-post-types.php:402 includes/sp-core-functions.php:2437
 #: includes/admin/class-sp-admin-permalink-settings.php:28
@@ -1363,7 +1360,7 @@ msgstr "Redigera kalender"
 #: includes/admin/settings/class-sp-settings-teams.php:48
 #: includes/widgets/class-sp-widget-event-list.php:96
 msgid "Teams"
-msgstr "Lag (plural)"
+msgstr "Joukkueet"
 
 #: includes/class-sp-post-types.php:403 includes/sp-core-functions.php:2436
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:52
@@ -1377,36 +1374,36 @@ msgstr "Lag (plural)"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:114
 #: includes/admin/settings/class-sp-settings-events.php:150
 msgid "Team"
-msgstr "Lag"
+msgstr "Joukkue"
 
 #: includes/class-sp-post-types.php:404
 #: includes/admin/class-sp-admin-welcome.php:230
 msgid "Add New Team"
-msgstr "Lägg till nytt lag"
+msgstr "Lisää Uusi Joukkue"
 
 #: includes/class-sp-post-types.php:405
 msgid "Edit Team"
-msgstr "Redigera lag"
+msgstr "Muokkaa Joukkuetta"
 
 #: includes/class-sp-post-types.php:432
 #: includes/admin/class-sp-admin-permalink-settings.php:31
 #: includes/admin/settings/class-sp-settings-teams.php:45
 msgid "League Tables"
-msgstr "Tabeller"
+msgstr "Liigataulukot"
 
 #: includes/class-sp-post-types.php:433
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:131
 #: includes/widgets/class-sp-widget-league-table.php:50
 msgid "League Table"
-msgstr "Serietabell"
+msgstr "Liigataulu"
 
 #: includes/class-sp-post-types.php:434
 msgid "Add New League Table"
-msgstr "Lägg till serietabell"
+msgstr "Lisää Uusi Liigataulu"
 
 #: includes/class-sp-post-types.php:435
 msgid "Edit League Table"
-msgstr "Redigera serietabell"
+msgstr "Muokkaa Liigataulua"
 
 #: includes/class-sp-post-types.php:463
 #: includes/admin/class-sp-admin-permalink-settings.php:32
@@ -1418,80 +1415,80 @@ msgstr "Redigera serietabell"
 #: includes/admin/settings/class-sp-settings-players.php:25
 #: includes/admin/settings/class-sp-settings-players.php:56
 msgid "Players"
-msgstr "Spelare"
+msgstr "Pelaajat"
 
 #: includes/class-sp-post-types.php:465
 #: includes/admin/class-sp-admin-welcome.php:231
 msgid "Add New Player"
-msgstr "Lägg till ny spelare"
+msgstr "Lisää Uusi Pelaaja"
 
 #: includes/class-sp-post-types.php:466
 msgid "Edit Player"
-msgstr "Redigera spelare"
+msgstr "Muokkaa Pelaajaa"
 
 #: includes/class-sp-post-types.php:493
 #: includes/admin/class-sp-admin-permalink-settings.php:34
 #: includes/admin/settings/class-sp-settings-players.php:53
 msgid "Player Lists"
-msgstr "Spelarlistor"
+msgstr "Pelaajalistat"
 
 #: includes/class-sp-post-types.php:494
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:145
 #: includes/widgets/class-sp-widget-player-gallery.php:53
 #: includes/widgets/class-sp-widget-player-list.php:53
 msgid "Player List"
-msgstr "Spelarlista"
+msgstr "Pelaajalista"
 
 #: includes/class-sp-post-types.php:495
 msgid "Add New Player List"
-msgstr "Lägg till ny spelarlista"
+msgstr "Lisää Uusi Pelaajalista"
 
 #: includes/class-sp-post-types.php:496
 msgid "Edit Player List"
-msgstr "Redigera spelarlista"
+msgstr "Muokkaa Pelaajalistaa"
 
 #: includes/class-sp-post-types.php:526
 msgid "Add New Staff"
-msgstr "Lägg till ny personal"
+msgstr "Lisää Uusi Toimihenkilöryhmä"
 
 #: includes/class-sp-post-types.php:527
 msgid "Edit Staff"
-msgstr "Redigera personal"
+msgstr "Muokkaa Toimihenkilöryhmää"
 
 #: includes/sp-core-functions.php:298
 msgid "1 view"
-msgstr "1 visning"
+msgstr "1 näkymä"
 
 #: includes/sp-core-functions.php:300
 #, php-format
 msgid "%s views"
-msgstr "%s visningar"
+msgstr "%s näkymät"
 
 #: includes/sp-core-functions.php:339 includes/sp-core-functions.php:343
 #: includes/sp-core-functions.php:2440
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:97
 msgid "Total"
-msgstr "Total"
+msgstr "Yhteensä"
 
 #: includes/sp-core-functions.php:339
 msgid "Average"
-msgstr "Ok"
+msgstr "Kohtalainen"
 
 #: includes/sp-core-functions.php:397
 msgid "Published"
-msgstr ""
+msgstr "Julkaistu"
 
 #: includes/sp-core-functions.php:398
 msgid "Scheduled"
-msgstr ""
+msgstr "Odottaa julkaisua"
 
 #: includes/sp-core-functions.php:626 includes/sp-core-functions.php:706
 msgid "(no title)"
-msgstr "(ingen titel)"
+msgstr "(ei otsikkoa)"
 
 #: includes/sp-core-functions.php:643
 msgid "Select All"
-msgstr "Välj alla"
+msgstr "Valitse Kaikki"
 
 #: includes/sp-core-functions.php:958
 msgid "Baseball"
@@ -1499,23 +1496,23 @@ msgstr "Baseball"
 
 #: includes/sp-core-functions.php:1119
 msgid "Basketball"
-msgstr "Basket"
+msgstr "Koripallo"
 
 #: includes/sp-core-functions.php:1335
 msgid "Cricket"
-msgstr "Cricket"
+msgstr "Kriketti"
 
 #: includes/sp-core-functions.php:1403
 msgid "American Football"
-msgstr "Amerikansk fotboll"
+msgstr "Amerikkalainen Jalkapallo"
 
 #: includes/sp-core-functions.php:1790
 msgid "Australian Rules Football"
-msgstr "Australiensisk fotboll"
+msgstr "Australialainen Jalkapallo"
 
 #: includes/sp-core-functions.php:1863
 msgid "Competitive Gaming"
-msgstr "E-sport"
+msgstr "Kilpailullinen pelaaminen"
 
 #: includes/sp-core-functions.php:1929
 msgid "Golf"
@@ -1523,11 +1520,11 @@ msgstr "Golf"
 
 #: includes/sp-core-functions.php:1966
 msgid "Hockey"
-msgstr "Ishockey"
+msgstr "Jääkiekko"
 
 #: includes/sp-core-functions.php:2051
 msgid "Racing"
-msgstr "Racing"
+msgstr "Kilpailut"
 
 #: includes/sp-core-functions.php:2088
 msgid "Rugby"
@@ -1535,20 +1532,20 @@ msgstr "Rugby"
 
 #: includes/sp-core-functions.php:2230
 msgid "Soccer (Association Football)"
-msgstr "Fotboll"
+msgstr "Jalkapallo"
 
 #: includes/sp-core-functions.php:2405
 #: includes/admin/class-sp-admin-sports.php:42
 #, fuzzy
 msgid "Custom"
-msgstr "Egna val:"
+msgstr "Oma Valinta:"
 
 #: includes/sp-core-functions.php:2416
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:114
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:76
 #: includes/widgets/class-sp-widget-event-list.php:99
 msgid "Article"
-msgstr "Artikel"
+msgstr "Artikkeli"
 
 #: includes/sp-core-functions.php:2417
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:87
@@ -1556,13 +1553,13 @@ msgstr "Artikel"
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:100
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:97
 msgid "Current Team"
-msgstr "Nuvarande lag"
+msgstr "Nykyinen Joukkue"
 
 #: includes/sp-core-functions.php:2418
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:92
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:47
 msgid "Date"
-msgstr "Datum"
+msgstr "Päivämäärä:"
 
 #: includes/sp-core-functions.php:2419
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:89
@@ -1581,7 +1578,7 @@ msgstr "Datum"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:163
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:31
 msgid "Details"
-msgstr "Detaljer"
+msgstr "Tiedot"
 
 #: includes/sp-core-functions.php:2422
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:59
@@ -1590,13 +1587,13 @@ msgstr "Detaljer"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:52
 #: includes/admin/settings/class-sp-settings-players.php:44
 msgid "Nationality"
-msgstr "Nationalitet"
+msgstr "Kansallisuus"
 
 #: includes/sp-core-functions.php:2424
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:101
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:78
 msgid "Past Teams"
-msgstr "Tidigare lag"
+msgstr "Aikaisemmat Joukkueet"
 
 #: includes/sp-core-functions.php:2425
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
@@ -1605,52 +1602,52 @@ msgstr "Tidigare lag"
 #: includes/widgets/class-sp-widget-player-list.php:87
 #: includes/widgets/class-sp-widget-player-list.php:100
 msgid "Played"
-msgstr "Spelad"
+msgstr "Pelattu"
 
 #: includes/sp-core-functions.php:2427
 msgid "Pos"
-msgstr "Pos"
+msgstr "Sij"
 
 #: includes/sp-core-functions.php:2429
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:150
 msgid "Preview"
-msgstr "Förhandsgranska"
+msgstr "Esikatselu"
 
 #: includes/sp-core-functions.php:2430
 msgid "Rank"
-msgstr "Rank"
+msgstr "Sijoitus"
 
 #: includes/sp-core-functions.php:2431
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:148
 msgid "Recap"
-msgstr "Återblicka"
+msgstr "Yhteenveto"
 
 #: includes/sp-core-functions.php:2435
 msgid "Substitutes"
-msgstr "Avbytare"
+msgstr "Vaihtopelaajat"
 
 #: includes/sp-core-functions.php:2438
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:93
 #: includes/widgets/class-sp-widget-event-list.php:97
 msgid "Time"
-msgstr "Tid"
+msgstr "Aika"
 
 #: includes/sp-core-functions.php:2439
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:64
 msgid "Time/Results"
-msgstr ""
+msgstr "Aika/Tulokset"
 
 #: includes/sp-core-functions.php:2442
 msgid "View all events"
-msgstr "Visa alla evenemang"
+msgstr "Näytä kaikki tapahtumat"
 
 #: includes/sp-core-functions.php:2443
 msgid "View all players"
-msgstr "Visa alla spelare"
+msgstr "Näytä kaikki pelaajat"
 
 #: includes/sp-core-functions.php:2444
 msgid "View full table"
-msgstr "Visa fullständig tabell"
+msgstr "Näytä koko taulu"
 
 #: includes/sp-template-hooks.php:123
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:48
@@ -1669,7 +1666,7 @@ msgstr "Visa fullständig tabell"
 #: includes/admin/settings/class-sp-settings-config.php:341
 #: includes/admin/settings/class-sp-settings-config.php:395
 msgid "Description"
-msgstr "Beskrivning"
+msgstr "Kuvaus"
 
 #: includes/sp-template-hooks.php:126
 msgid ""
@@ -1685,7 +1682,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-config.php:281
 #: includes/admin/settings/class-sp-settings-config.php:392
 msgid "Key"
-msgstr "Nyckel"
+msgstr "Avain"
 
 #: includes/sp-template-hooks.php:129
 #: includes/admin/post-types/class-sp-admin-cpt-metric.php:44
@@ -1700,11 +1697,11 @@ msgstr "Nyckel"
 #: includes/admin/settings/class-sp-settings-config.php:229
 #: includes/admin/settings/class-sp-settings-config.php:340
 msgid "Variable"
-msgstr ""
+msgstr "Muuttuja"
 
 #: includes/sp-template-hooks.php:137
 msgid "User"
-msgstr "Användare"
+msgstr "Käyttäjä"
 
 #: includes/sp-template-hooks.php:145
 msgid "Photo"
@@ -1713,7 +1710,7 @@ msgstr ""
 #: includes/sp-template-hooks.php:148
 #, fuzzy
 msgid "Select Photo"
-msgstr "Välj %s"
+msgstr "Valitse %s"
 
 #: includes/sp-template-hooks.php:151
 msgid "Add photo"
@@ -1722,17 +1719,17 @@ msgstr ""
 #: includes/sp-template-hooks.php:154
 #, fuzzy
 msgid "Remove photo"
-msgstr "Ta bort video"
+msgstr "Poista video"
 
 #: includes/sp-template-hooks.php:162
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:63
 msgid "Logo"
-msgstr "Emblem"
+msgstr "Logo"
 
 #: includes/sp-template-hooks.php:165
 #, fuzzy
 msgid "Select Logo"
-msgstr "Välj %s"
+msgstr "Valitse %s"
 
 #: includes/sp-template-hooks.php:168
 msgid "Add logo"
@@ -1741,20 +1738,20 @@ msgstr ""
 #: includes/sp-template-hooks.php:171
 #, fuzzy
 msgid "Remove logo"
-msgstr "Ta bort"
+msgstr "Poista"
 
 #: includes/sp-template-hooks.php:179
 msgid "Date/Time:"
-msgstr "Datum/Tid:"
+msgstr "Päivämäärä/Aika:"
 
 #: includes/sp-template-hooks.php:179
 msgid "Now"
-msgstr "Nu"
+msgstr "Nyt"
 
 #: includes/sp-template-hooks.php:286
 #: includes/admin/class-sp-admin-post-types.php:62
 msgid "Settings saved."
-msgstr "Inställningar sparade."
+msgstr "Asetukset tallennettu"
 
 #: includes/sp-template-hooks.php:288
 #: includes/admin/class-sp-admin-post-types.php:64
@@ -1765,7 +1762,7 @@ msgstr "Inställningar sparade."
 #: includes/admin/settings/class-sp-settings-config.php:356
 #: includes/admin/settings/class-sp-settings-config.php:412
 msgid "View All"
-msgstr "Visa alla"
+msgstr "Näytä kaikki"
 
 #: includes/sp-template-hooks.php:294 includes/sp-template-hooks.php:297
 #: includes/sp-template-hooks.php:302
@@ -1773,7 +1770,7 @@ msgstr "Visa alla"
 #: includes/admin/class-sp-admin-post-types.php:72
 #: includes/admin/class-sp-admin-post-types.php:77
 msgid "Changes saved."
-msgstr "Ändringar sparade."
+msgstr "Muutokset tallennettu."
 
 #: includes/sp-template-hooks.php:299 includes/sp-template-hooks.php:304
 #: includes/sp-template-hooks.php:314
@@ -1781,7 +1778,7 @@ msgstr "Ändringar sparade."
 #: includes/admin/class-sp-admin-post-types.php:79
 #: includes/admin/class-sp-admin-post-types.php:89
 msgid "Success!"
-msgstr "Lyckades!"
+msgstr "Onnistui!"
 
 #: includes/sp-template-hooks.php:306 includes/sp-template-hooks.php:312
 #: includes/sp-template-hooks.php:316
@@ -1790,18 +1787,18 @@ msgstr "Lyckades!"
 #: includes/admin/class-sp-admin-post-types.php:91
 #, php-format
 msgid "Preview %s"
-msgstr "Förhandsgranska %s"
+msgstr "Esikatsele teemaa %s"
 
 #: includes/sp-template-hooks.php:309
 #: includes/admin/class-sp-admin-post-types.php:84
 #, php-format
 msgid "Scheduled for: <b>%1$s</b>."
-msgstr "Planerat till: <b>%1$s</b>."
+msgstr "Ajankohta: <b>%1$s</b>."
 
 #: includes/sp-template-hooks.php:310
 #: includes/admin/class-sp-admin-post-types.php:85
 msgid "M j, Y @ G:i"
-msgstr "j M Y @ G:i"
+msgstr "j.n.Y @ H:i"
 
 #: includes/admin/class-sp-admin-assets.php:101
 #: includes/admin/class-sp-admin-settings.php:113
@@ -1812,114 +1809,115 @@ msgstr "j M Y @ G:i"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:76
 #: includes/admin/views/html-admin-page-status.php:224
 msgid "None"
-msgstr "Ingen"
+msgstr "Ei mitään"
 
 #: includes/admin/class-sp-admin-assets.php:102
 msgid "&mdash; Remove &mdash;"
-msgstr "&mdash; Ta bort &mdash;"
+msgstr "&mdash; Poista &mdash;"
 
 #: includes/admin/class-sp-admin-dashboard.php:34
 #: includes/admin/class-sp-admin-menus.php:69
 msgid "SportsPress Status"
-msgstr "SportsPress-status"
+msgstr "SportsPressn tila"
 
 #: includes/admin/class-sp-admin-dashboard.php:54
 #, php-format
 msgid "<strong>%s</strong> until next event"
-msgstr "<strong>%s</strong> till nästa evenemang"
+msgstr "<strong>%s</strong> seuraavaan tapahtumaan"
 
 #: includes/admin/class-sp-admin-dashboard.php:61
 #, php-format
 msgid "<strong>%s event</strong> scheduled"
 msgid_plural "<strong>%s events</strong> scheduled"
-msgstr[0] "<strong>%s evenemang</strong> schemalagt"
-msgstr[1] "<strong>%s evenemang</strong> schemalagda"
+msgstr[0] "<strong>%s tapahtumaa</strong> suunniteltu"
+msgstr[1] "<strong>%s tapahtumia</strong> suunniteltu"
 
 #: includes/admin/class-sp-admin-dashboard.php:66
 #, php-format
 msgid "<strong>%s event</strong> published"
 msgid_plural "<strong>%s events</strong> published"
-msgstr[0] "<strong>%s evenemang</strong> publicerat"
-msgstr[1] "<strong>%s evenemang</strong> publicerade"
+msgstr[0] "<strong>%s tapahtumaa</strong> julkaistu"
+msgstr[1] "<strong>%s tapahtumia</strong> julkaistu"
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "SportsPress Events (CSV)"
-msgstr "SportPress-evenemang (CSV)"
+msgstr "SportsPress Tapahtumat (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "Import <strong>events</strong> from a csv file."
-msgstr "Importera <strong>evenemang</strong> från en CSV-fil."
+msgstr "Tuo <strong>tapahtumat</strong>  csv tiedostosta."
 
 #: includes/admin/class-sp-admin-importers.php:32
 msgid "SportsPress Teams (CSV)"
-msgstr "SportPress-lag (CSV)"
+msgstr "SportsPress Joukkueet (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:32
 msgid "Import <strong>teams</strong> from a csv file."
-msgstr "Importera <strong>lag</strong> från en CSV-fil."
+msgstr "Tuo <strong>joukkueet</strong>  csv tiedostosta."
 
 #: includes/admin/class-sp-admin-importers.php:33
 msgid "SportsPress Players (CSV)"
-msgstr "SportPress spelare (CSV)"
+msgstr "SportsPress Pelaajat (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:33
 msgid "Import <strong>players</strong> from a csv file."
-msgstr "Importera <strong>spelare</strong> från en CSV-fil."
+msgstr "Tuo <strong>pelaajat</strong>  csv tiedostosta."
 
 #: includes/admin/class-sp-admin-importers.php:34
 #, fuzzy
 msgid "SportsPress Staff (CSV)"
-msgstr "SportPress-lag (CSV)"
+msgstr "SportsPress Joukkueet (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:34
 #, fuzzy
 msgid "Import <strong>staff</strong> from a csv file."
-msgstr "Importera <strong>lag</strong> från en CSV-fil."
+msgstr "Tuo <strong>joukkueet</strong>  csv tiedostosta."
 
 #: includes/admin/class-sp-admin-menus.php:48
 msgid "SportsPress Settings"
-msgstr "Inställningar för SportPress"
+msgstr "SportsPressn asetukset"
 
 #: includes/admin/class-sp-admin-menus.php:48
 #: includes/admin/class-sp-admin-permalink-settings.php:47
 msgid "SportsPress"
-msgstr "SportPress"
+msgstr "SportsPress"
 
 #: includes/admin/class-sp-admin-menus.php:69
 #: includes/admin/views/html-admin-page-status.php:2
 msgid "System Status"
-msgstr "Systemstatus"
+msgstr "Järjestelmän tila"
 
 #: includes/admin/class-sp-admin-menus.php:77
 msgid "SportsPress Add-ons/Extensions"
-msgstr "SportPress Tillägg"
+msgstr "SportsPressn lisukkeet/laajennukset"
 
 #: includes/admin/class-sp-admin-menus.php:77
 msgid "Add-ons"
-msgstr "Add-ons"
+msgstr "Laajennukset"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:75
 msgid ""
 "These settings control the permalinks used for SportsPress. These settings "
 "only apply when <strong>not using \"default\" permalinks above</strong>."
 msgstr ""
-"Inställningarna kontrollerar permalänkarna som används av SportsPress. "
-"Används endast då <strong>förvalda permalängar ej används</strong>."
+"Nämä asetukset ohjaavat permalinkkejä joita käytetään SportsPress;ä. Nämä "
+"asetukset koskevat vain kun <strong> ei ole käytössä \"oletust\" permalinkin "
+"edellä </ strong>."
 
 #: includes/admin/class-sp-admin-settings.php:56
 msgid "Action failed. Please refresh the page and retry."
-msgstr "Processen misslyckades. Uppdatera sidan och försök igen."
+msgstr "Toiminto ei onnistunut. Päivitä sivu ja yritä uudelleen."
 
 #: includes/admin/class-sp-admin-settings.php:63
 #: includes/admin/class-sp-admin-welcome.php:191
 msgid "Your settings have been saved."
-msgstr "Dina inställningar har sparats."
+msgstr "Asetukset on tallennettu."
 
 #: includes/admin/class-sp-admin-taxonomies.php:61
 #: includes/admin/class-sp-admin-taxonomies.php:81
 #: includes/admin/class-sp-admin-taxonomies.php:133
 msgid "Address"
-msgstr "Adress"
+msgstr "Osoite"
 
 #: includes/admin/class-sp-admin-taxonomies.php:66
 #: includes/admin/class-sp-admin-taxonomies.php:85
@@ -1928,75 +1926,77 @@ msgstr ""
 
 #: includes/admin/class-sp-admin-taxonomies.php:89
 msgid "Latitude"
-msgstr "Latitud"
+msgstr "Latitude"
 
 #: includes/admin/class-sp-admin-taxonomies.php:95
 msgid "Longitude"
-msgstr "Longitud"
+msgstr "Longitude"
 
 #: includes/admin/class-sp-admin-welcome.php:45
 msgid "Welcome to SportsPress"
-msgstr "Välkommen till SportsPress"
+msgstr "Tervetuloa SportsPress-ohjelmistoon"
 
 #: includes/admin/class-sp-admin-welcome.php:135
 msgid "Welcome to SportsPress!"
-msgstr "Välkommen till SportsPress!"
+msgstr "Tervetuloa SportsPress-ohjelmistoon!"
 
 #: includes/admin/class-sp-admin-welcome.php:140
 msgid "Thanks, all done!"
-msgstr "Tack, allt klart!"
+msgstr "Kiitos, kaikki tehty!"
 
 #: includes/admin/class-sp-admin-welcome.php:142
 msgid "Thank you for updating to the latest version!"
-msgstr "Tack för att du uppdaterade till den senaste versionen!"
+msgstr "Kiitos, kun päivitit uusimpaan versioon!"
 
 #: includes/admin/class-sp-admin-welcome.php:144
 msgid "Thanks for installing!"
-msgstr "Tack för installationen!"
+msgstr "Kiitos, kun asensit!"
 
 #: includes/admin/class-sp-admin-welcome.php:146
 #, php-format
 msgid "%s SportsPress %s has lots of refinements we think you&#8217;ll love."
 msgstr ""
+"%s SportsPress %s sisältää paljon parannuksia ajattelemme, &#8217 että "
+"ihastut."
 
 #: includes/admin/class-sp-admin-welcome.php:150
 #, php-format
 msgid "Version %s"
-msgstr "Version %s"
+msgstr "Versio %s"
 
 #: includes/admin/class-sp-admin-welcome.php:159
 #: includes/admin/views/html-notice-install.php:7
 msgid "Get Started"
-msgstr "Kom igång"
+msgstr "Aloita"
 
 #: includes/admin/class-sp-admin-welcome.php:197
 #: includes/admin/settings/class-sp-settings-general.php:167
 msgid "Base Location"
-msgstr "Basplats"
+msgstr "Kaupan sijainti"
 
 #: includes/admin/class-sp-admin-welcome.php:203
 #: includes/admin/settings/class-sp-settings-general.php:171
 msgid "Choose a country&hellip;"
-msgstr "Välj land&hellip;"
+msgstr "Valitse maa..."
 
 #: includes/admin/class-sp-admin-welcome.php:207
 #: includes/admin/settings/class-sp-settings-general.php:50
 #: includes/admin/views/html-admin-page-status.php:223
 msgid "Sport"
-msgstr "Sport"
+msgstr "Laji"
 
 #: includes/admin/class-sp-admin-welcome.php:221
 #: includes/admin/views/html-admin-settings.php:18
 msgid "Save changes"
-msgstr "Spara ändringar"
+msgstr "Tallenna muutokset"
 
 #: includes/admin/class-sp-admin-welcome.php:228
 msgid "Next Steps"
-msgstr "Nästa steg"
+msgstr "Seuraavat vaiheet"
 
 #: includes/admin/class-sp-admin-welcome.php:236
 msgid "Translators"
-msgstr "Översättare"
+msgstr "Kääntäjät"
 
 #: includes/admin/class-sp-admin-welcome.php:237
 msgid ""
@@ -2004,13 +2004,13 @@ msgid ""
 "to our translation team. Want to see your name? <a href=\"https://www."
 "transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
 msgstr ""
-"SportsPress har översatts till flertalet språk tack vare vårt "
-"översättningsteam. Vill du se ditt namn här? <a href=\"https://www.transifex."
-"com/projects/p/sportspress/\">Översätt SportsPress</a>."
+"SportsPress on ystävällisesti käännetty useille muille kielille kiitos "
+"käännös joukkue. Haluatko nähdä nimesi? <a href=\"https://www.transifex.com/"
+"projects/p/sportspress/\"> Käännä SportsPress </ a>."
 
 #: includes/admin/class-sp-admin-welcome.php:253
 msgid "Go to SportsPress Settings"
-msgstr "Till Sportpress-inställingarna"
+msgstr "Siirry SportsPress-asetuksiin"
 
 #: includes/admin/importers/class-sp-event-importer.php:361
 #: includes/admin/importers/class-sp-importer.php:93
@@ -2019,14 +2019,14 @@ msgstr "Till Sportpress-inställingarna"
 #: includes/admin/importers/class-sp-staff-importer.php:121
 #: includes/admin/importers/class-sp-team-importer.php:85
 msgid "Sorry, there has been an error."
-msgstr "Ett fel har tyvärr uppstått."
+msgstr "Pahoittelemme, on tapahtunut virhe."
 
 #: includes/admin/importers/class-sp-event-importer.php:362
 #: includes/admin/importers/class-sp-player-importer.php:129
 #: includes/admin/importers/class-sp-staff-importer.php:122
 #: includes/admin/importers/class-sp-team-importer.php:86
 msgid "The CSV is invalid."
-msgstr "Ogiltig CSV-fil."
+msgstr "CSV-tiedosto ei ole kelvollinen."
 
 #: includes/admin/importers/class-sp-event-importer.php:373
 #, php-format
@@ -2034,23 +2034,23 @@ msgid ""
 "Import complete - imported <strong>%s</strong> events and skipped <strong>"
 "%s</strong>."
 msgstr ""
-"Importering utförd - importerade <strong>%s</strong> evenemang och hoppade "
-"över <strong>%s</strong>."
+"Tuonti suoritettu - tuotu <strong>%s</strong> tapahtumia ja hylätty <strong>"
+"%s</strong>."
 
 #: includes/admin/importers/class-sp-event-importer.php:383
 #: includes/admin/importers/class-sp-player-importer.php:150
 #: includes/admin/importers/class-sp-staff-importer.php:143
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "All done!"
-msgstr "Genomfört!"
+msgstr "Kaikki tehty!"
 
 #: includes/admin/importers/class-sp-event-importer.php:383
 msgid "View Events"
-msgstr "Visa evenemang"
+msgstr "Näytä Tapahtumat"
 
 #: includes/admin/importers/class-sp-event-importer.php:395
 msgid "Import Events"
-msgstr "Importera evenemang"
+msgstr "Tuo Tapahtumia"
 
 #: includes/admin/importers/class-sp-event-importer.php:407
 #: includes/admin/importers/class-sp-player-importer.php:174
@@ -2060,8 +2060,8 @@ msgid ""
 "Hi there! Choose a .csv file to upload, then click \"Upload file and import"
 "\"."
 msgstr ""
-"Hej! Välj en .csv-fil att ladda upp, klicka sedan på \"Ladda upp fil för "
-"importering\"."
+"Hei! Valitse ladattava .csv tiedosto ja klikkaa \"Lataa tiedosto ja tuo "
+"tiedot\"."
 
 #: includes/admin/importers/class-sp-event-importer.php:409
 #, php-format
@@ -2069,8 +2069,8 @@ msgid ""
 "Events need to be defined with columns in a specific order (3+ columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"Evenemang behöver anges med kolumnerna i en särskid ordning (mer än 3 "
-"kolumner).  <a href=\"%s\">Klicka här för att ladda ner ett exempel</a>."
+"Tapahtumat on määriteltävä sarakkeisiin tietyssä järjestyksessä (3+ "
+"saraketta). <a href=\\\"%s\\\"> Klikkaa tästä ladataksesi esimerkki </ a>."
 
 #: includes/admin/importers/class-sp-event-importer.php:417
 #: includes/admin/importers/class-sp-player-importer.php:184
@@ -2079,14 +2079,14 @@ msgstr ""
 msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
-msgstr "Du måste åtgärda följande fel innan du kan ladda upp din fil:"
+msgstr "Tiedoston voi siirtää sen jälkeen, kun seuraavat virheet on korjattu:"
 
 #: includes/admin/importers/class-sp-event-importer.php:426
 #: includes/admin/importers/class-sp-player-importer.php:193
 #: includes/admin/importers/class-sp-staff-importer.php:186
 #: includes/admin/importers/class-sp-team-importer.php:150
 msgid "Choose a file from your computer:"
-msgstr "Välj en fil från din hårddisk:"
+msgstr "Valitse tiedosto tietokoneelta:"
 
 #: includes/admin/importers/class-sp-event-importer.php:432
 #: includes/admin/importers/class-sp-player-importer.php:199
@@ -2094,14 +2094,14 @@ msgstr "Välj en fil från din hårddisk:"
 #: includes/admin/importers/class-sp-team-importer.php:156
 #, php-format
 msgid "Maximum size: %s"
-msgstr "Maximal filstorlek: %s"
+msgstr "Suurin koko: %s"
 
 #: includes/admin/importers/class-sp-event-importer.php:437
 #: includes/admin/importers/class-sp-player-importer.php:204
 #: includes/admin/importers/class-sp-staff-importer.php:197
 #: includes/admin/importers/class-sp-team-importer.php:161
 msgid "OR enter path to file:"
-msgstr "ELLER ange sökvägen till filen:"
+msgstr "TAI kirjoita tiedostopolku:"
 
 #: includes/admin/importers/class-sp-event-importer.php:444
 #: includes/admin/importers/class-sp-player-importer.php:211
@@ -2111,13 +2111,13 @@ msgstr "ELLER ange sökvägen till filen:"
 #: includes/admin/settings/class-sp-settings-events.php:159
 #: includes/admin/settings/class-sp-settings-general.php:170
 msgid "Delimiter"
-msgstr "Avdelare"
+msgstr "Kentän erotin"
 
 #: includes/admin/importers/class-sp-event-importer.php:448
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:90
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:108
 msgid "Format"
-msgstr "Format"
+msgstr "Formaatti"
 
 #: includes/admin/importers/class-sp-event-importer.php:464
 #: includes/admin/importers/class-sp-event-importer.php:479
@@ -2125,19 +2125,19 @@ msgstr "Format"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:70
 msgid "-- Not set --"
-msgstr "-- Ej angiven --"
+msgstr "-- Ei asetettu --"
 
 #: includes/admin/importers/class-sp-event-importer.php:490
 #: includes/admin/importers/class-sp-player-importer.php:217
 #: includes/admin/importers/class-sp-staff-importer.php:210
 #: includes/admin/importers/class-sp-team-importer.php:174
 msgid "Upload file and import"
-msgstr "Ladda upp fil och importera"
+msgstr "Lataa tiedosto ja tuo tiedot"
 
 #: includes/admin/importers/class-sp-importer.php:125
 #, fuzzy
 msgid "Import"
-msgstr "Sport"
+msgstr "Laji"
 
 #: includes/admin/importers/class-sp-player-importer.php:140
 #, php-format
@@ -2145,16 +2145,16 @@ msgid ""
 "Import complete - imported <strong>%s</strong> players and skipped <strong>"
 "%s</strong>."
 msgstr ""
-"Importeringen färdig - importerade  <strong>%s</strong> spelare och "
-"ignorerade <strong>%s</strong>."
+"Tuonti suoritettu - tuotu <strong>%s</strong> pelaajaa ja hylätty <strong>"
+"%s</strong>."
 
 #: includes/admin/importers/class-sp-player-importer.php:150
 msgid "View Players"
-msgstr "Visa spelare"
+msgstr "Näytä Pelaajat"
 
 #: includes/admin/importers/class-sp-player-importer.php:162
 msgid "Import Players"
-msgstr "Importera spelare"
+msgstr "Tuo Pelaajat"
 
 #: includes/admin/importers/class-sp-player-importer.php:176
 #, php-format
@@ -2162,8 +2162,8 @@ msgid ""
 "Players need to be defined with columns in a specific order (7 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"Spelare måste definieras med kolumner i en särskild ordning (7 kolumner). <a "
-"href=\"%s\">Ladda ner exempel</a>."
+"Pelaajat on määriteltävä sarakkeisiin tietyssä järjestyksessä (7 saraketta). "
+"<a href=\\\"%s\\\"> Klikkaa tästä ladataksesi esimerkki </ a>."
 
 #: includes/admin/importers/class-sp-staff-importer.php:133
 #, fuzzy, php-format
@@ -2171,18 +2171,18 @@ msgid ""
 "Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
 "strong>."
 msgstr ""
-"Importering färdig - importerade <strong>%s</strong> lag och ignorerade "
-"<strong>%s</strong>."
+"Tuonti suoritettu - tuotu <strong>%s</strong> joukkuetta ja hylätty <strong>"
+"%s</strong>."
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
 #, fuzzy
 msgid "View Staff"
-msgstr "Redigera personal"
+msgstr "Muokkaa Toimihenkilöryhmää"
 
 #: includes/admin/importers/class-sp-staff-importer.php:155
 #, fuzzy
 msgid "Import Staff"
-msgstr "Importera lag"
+msgstr "Tuo Joukkueet"
 
 #: includes/admin/importers/class-sp-staff-importer.php:169
 #, fuzzy, php-format
@@ -2190,8 +2190,8 @@ msgid ""
 "Staff need to be defined with columns in a specific order (5 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"Spelare måste definieras med kolumner i en särskild ordning (3 kolumner). <a "
-"href=\"%s\">Klicak här för att ladda ner ett exempel</a>."
+"Joukkueet on määriteltävä sarakkeisiin tietyssä järjestyksessä (3 "
+"saraketta). <a href=\\\"%s\\\"> Klikkaa tästä ladataksesi esimerkki </ a>."
 
 #: includes/admin/importers/class-sp-team-importer.php:97
 #, php-format
@@ -2199,16 +2199,16 @@ msgid ""
 "Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
 "strong>."
 msgstr ""
-"Importering färdig - importerade <strong>%s</strong> lag och ignorerade "
-"<strong>%s</strong>."
+"Tuonti suoritettu - tuotu <strong>%s</strong> joukkuetta ja hylätty <strong>"
+"%s</strong>."
 
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "View Teams"
-msgstr "Visa lag"
+msgstr "Näytä Joukkueet"
 
 #: includes/admin/importers/class-sp-team-importer.php:119
 msgid "Import Teams"
-msgstr "Importera lag"
+msgstr "Tuo Joukkueet"
 
 #: includes/admin/importers/class-sp-team-importer.php:133
 #, php-format
@@ -2216,14 +2216,14 @@ msgid ""
 "Teams need to be defined with columns in a specific order (3 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"Spelare måste definieras med kolumner i en särskild ordning (3 kolumner). <a "
-"href=\"%s\">Klicak här för att ladda ner ett exempel</a>."
+"Joukkueet on määriteltävä sarakkeisiin tietyssä järjestyksessä (3 "
+"saraketta). <a href=\\\"%s\\\"> Klikkaa tästä ladataksesi esimerkki </ a>."
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:48
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:48
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:48
 msgid "Title"
-msgstr "Titel"
+msgstr "Otsikko"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:54
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:98
@@ -2233,7 +2233,7 @@ msgstr "Titel"
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:52
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:68
 msgid "Views"
-msgstr "Visningar"
+msgstr "Katsottu"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:131
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:195
@@ -2243,7 +2243,7 @@ msgstr "Visningar"
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:105
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:125
 msgid "Show all leagues"
-msgstr "Visa alla serier"
+msgstr "Näytä kaikki liigat"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:140
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:204
@@ -2253,7 +2253,7 @@ msgstr "Visa alla serier"
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:114
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:134
 msgid "Show all seasons"
-msgstr "Visa alla säsonger"
+msgstr "Näytä kaikki kaudet"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:151
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:187
@@ -2262,7 +2262,7 @@ msgstr "Visa alla säsonger"
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:145
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:125
 msgid "Show all teams"
-msgstr "Visa alla lag"
+msgstr "Näytä kaikki joukkueet"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:43
 #: includes/admin/post-types/class-sp-admin-cpt-metric.php:43
@@ -2277,7 +2277,7 @@ msgstr "Visa alla lag"
 #: includes/admin/settings/class-sp-settings-config.php:339
 #: includes/admin/settings/class-sp-settings-config.php:391
 msgid "Label"
-msgstr "Benämning"
+msgstr "Nimike"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:45
 #: includes/admin/post-types/class-sp-admin-cpt-statistic.php:45
@@ -2286,7 +2286,7 @@ msgstr "Benämning"
 #: includes/admin/settings/class-sp-settings-config.php:282
 #: includes/admin/settings/class-sp-settings-config.php:393
 msgid "Equation"
-msgstr "Ekvation"
+msgstr "Yhtälö"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:46
 #: includes/admin/post-types/class-sp-admin-cpt-statistic.php:46
@@ -2295,7 +2295,7 @@ msgstr "Ekvation"
 #: includes/admin/settings/class-sp-settings-config.php:283
 #: includes/admin/settings/class-sp-settings-config.php:394
 msgid "Rounding"
-msgstr "Avrundning"
+msgstr "Pyöristys"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:47
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:101
@@ -2303,12 +2303,12 @@ msgstr "Avrundning"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:96
 #: includes/admin/settings/class-sp-settings-config.php:284
 msgid "Sort Order"
-msgstr "Sorteringsordning"
+msgstr "Järjestys"
 
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:56
 #: includes/widgets/class-sp-widget-countdown.php:49
 msgid "(Auto)"
-msgstr "(Genereras)"
+msgstr "(Auto)"
 
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:85
@@ -2316,31 +2316,31 @@ msgstr "(Genereras)"
 #: includes/widgets/class-sp-widget-player-gallery.php:77
 #: includes/widgets/class-sp-widget-player-list.php:98
 msgid "Number"
-msgstr "Nummer"
+msgstr "Numero"
 
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:65
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:48
 msgid "Role"
-msgstr "Roll"
+msgstr "Rooli"
 
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:65
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:24
 msgid "Abbreviation"
-msgstr ""
+msgstr "Lyhennys"
 
 #: includes/admin/post-types/class-sp-admin-cpt.php:43
 #, php-format
 msgid "Insert into %s"
-msgstr "Infoga i %s"
+msgstr "Liitä tuotteeseen %s"
 
 #: includes/admin/post-types/class-sp-admin-cpt.php:44
 #, php-format
 msgid "Uploaded to this %s"
-msgstr "Uppladdad till denna %s"
+msgstr "Ladattu/siirretty tähän %s"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:107
 msgid "Shortcodes"
-msgstr "Kortkoder"
+msgstr "Shortcodes"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:111
 msgid "Video"
@@ -2355,28 +2355,28 @@ msgstr "Shortcode"
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:118
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:142
 msgid "Layout"
-msgstr "Utseende"
+msgstr "Suunnitelma"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:125
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:138
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:150
 msgid "Profile"
-msgstr "Profil"
+msgstr "Profiili"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:136
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:34
 msgid "Metrics"
-msgstr "Metriker"
+msgstr "Metriikat"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:137
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:40
 msgid "Statistics"
-msgstr "Statistik"
+msgstr "Tilastot"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:143
 #, fuzzy
 msgid "Columns"
-msgstr "Kolumner:"
+msgstr "Sarakkeet:"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:163
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:102
@@ -2398,12 +2398,12 @@ msgstr "Kolumner:"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:45
 #, php-format
 msgid "Select %s"
-msgstr "Välj %s"
+msgstr "Valitse %s"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:30
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:66
 msgid "Status"
-msgstr "Status"
+msgstr "Tila"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:104
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:67
@@ -2413,7 +2413,7 @@ msgstr "Status"
 #: includes/widgets/class-sp-widget-player-gallery.php:96
 #: includes/widgets/class-sp-widget-player-list.php:117
 msgid "Ascending"
-msgstr "Stigande"
+msgstr "Nouseva"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:105
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:67
@@ -2423,7 +2423,7 @@ msgstr "Stigande"
 #: includes/widgets/class-sp-widget-player-gallery.php:97
 #: includes/widgets/class-sp-widget-player-list.php:118
 msgid "Descending"
-msgstr "Fallande"
+msgstr "Laskeva"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-shortcode.php:26
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:24
@@ -2432,84 +2432,84 @@ msgstr "Fallande"
 msgid ""
 "Copy this code and paste it into your post, page or text widget content."
 msgstr ""
-"Kopiera koden och klistra in den i ditt inlägg, på din sida eller som "
-"innehåll i en text-widget."
+"Kopioi tämä koodi ja liitä se postauksen, sivun tai tekstin vimpaimen "
+"sisältöön."
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:55
 msgid "Disable"
-msgstr "Inaktivera"
+msgstr "Poista käytöstä"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
 msgid "Attended"
-msgstr "Besökt"
+msgstr "Osallistunut"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
 #, fuzzy
 msgid "Started"
-msgstr "Kom igång"
+msgstr "Aloita"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
 #, fuzzy
 msgid "Substituted"
-msgstr "Avbytare"
+msgstr "Vaihtopelaaja"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:43
 #: includes/admin/settings/class-sp-settings-events.php:85
 msgid "Results"
-msgstr "Resultat"
+msgstr "Tulokset"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:46
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:47
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:48
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:49
 msgid "Outcomes"
-msgstr "Utfall"
+msgstr "Lopputulokset"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:47
 msgid "Streak"
-msgstr "Svit"
+msgstr "Peräkkäin"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:48
 msgid "Last 5"
-msgstr "Sista 5"
+msgstr "Viimeisimmät 5"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:49
 msgid "Last 10"
-msgstr "Sista 10"
+msgstr "Viimeisimmät 10"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:52
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:28
 msgid "Performance"
-msgstr "Spelarstatistik"
+msgstr "Saavutus"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:64
 msgid "Operators"
-msgstr "Operatörer"
+msgstr "Käyttäjät"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:77
 msgid "Constants"
-msgstr "Konstanter"
+msgstr "Vakiot"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:81
 msgid "&mdash; Select &mdash;"
-msgstr "&mdash; Välj &mdash;"
+msgstr "&mdash; Valitse &mdash;"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:122
 msgid "Starting Lineup"
-msgstr "Startspelare"
+msgstr "Avauskokoonpanoon"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:123
 msgid "Substitute"
-msgstr "Avbytare"
+msgstr "Vaihtopelaaja"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:34
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:96
 msgid "&mdash; None &mdash;"
-msgstr "&mdash; Ingen &mdash;"
+msgstr "&mdash; Tyhjä &mdash;"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:27
 msgid "Remove video"
-msgstr "Ta bort video"
+msgstr "Poista video"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:31
 msgid "URL"
@@ -2519,21 +2519,21 @@ msgstr "URL"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:84
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:83
 msgid "Cancel"
-msgstr "Avbryt"
+msgstr "Peruuta"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:36
 msgid "Add video"
-msgstr "Lägg till video"
+msgstr "Lisää video"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:45
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:46
 msgid "Values"
-msgstr "Värden"
+msgstr "Arvot"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:46
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:47
 msgid "Adjustments"
-msgstr "Justeringar"
+msgstr "Säädöt"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:80
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:79
@@ -2544,26 +2544,26 @@ msgstr "Justeringar"
 #: includes/admin/settings/class-sp-settings-config.php:350
 #: includes/admin/settings/class-sp-settings-config.php:406
 msgid "Edit"
-msgstr "Redigera"
+msgstr "Muokkaa"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:85
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:84
 msgid "Save"
-msgstr "Spara"
+msgstr "Tallenna"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:73
 msgid "Grouping"
-msgstr ""
+msgstr "Ryhmitys"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:80
 msgid "Sort by"
-msgstr ""
+msgstr "Lajitteluperuste"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
 #, fuzzy
 msgid "Current Teams"
-msgstr "Nuvarande lag"
+msgstr "Nykyinen Joukkue"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:26
 msgid ""
@@ -2573,31 +2573,31 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-config.php:25
 msgid "Configure"
-msgstr "Konfigurera"
+msgstr "Määritykset"
 
 #: includes/admin/settings/class-sp-settings-config.php:47
 msgid "Configure SportsPress"
-msgstr "Konfigurera SportsPress"
+msgstr "Määritä SportsPress"
 
 #: includes/admin/settings/class-sp-settings-config.php:97
 #: includes/admin/settings/class-sp-settings-config.php:151
 #: includes/admin/settings/class-sp-settings-config.php:222
 msgid "Used for events."
-msgstr ""
+msgstr "Käytetään tapahtumissa."
 
 #: includes/admin/settings/class-sp-settings-config.php:158
 #: includes/admin/settings/class-sp-settings-general.php:203
 msgid "Primary"
-msgstr "Primär"
+msgstr "Tärkein"
 
 #: includes/admin/settings/class-sp-settings-config.php:160
 msgid "Variables"
-msgstr ""
+msgstr "Muuttujat"
 
 #: includes/admin/settings/class-sp-settings-config.php:173
 #, php-format
 msgid "Default (%s)"
-msgstr "Standard (%s)"
+msgstr "Oletus (%s)"
 
 #: includes/admin/settings/class-sp-settings-config.php:175
 #: includes/admin/settings/class-sp-settings-general.php:63
@@ -2610,83 +2610,83 @@ msgstr "Standard (%s)"
 #: includes/widgets/class-sp-widget-player-gallery.php:76
 #: includes/widgets/class-sp-widget-player-list.php:97
 msgid "Default"
-msgstr "Standard"
+msgstr "Oletus"
 
 #: includes/admin/settings/class-sp-settings-config.php:274
 msgid "Used for league tables."
-msgstr ""
+msgstr "Käytetään liigatauluissa."
 
 #: includes/admin/settings/class-sp-settings-config.php:333
 #: includes/admin/settings/class-sp-settings-config.php:385
 msgid "Used for player lists."
-msgstr ""
+msgstr "Käytetään pelaajalistoihin"
 
 #: includes/admin/settings/class-sp-settings-events.php:42
 msgid "Event Options"
-msgstr "Evenemangsalternativ"
+msgstr "Tapahtumien asetukset"
 
 #: includes/admin/settings/class-sp-settings-events.php:45
 #: includes/admin/settings/class-sp-settings-events.php:113
 #: includes/admin/settings/class-sp-settings-players.php:72
 #: includes/admin/settings/class-sp-settings-teams.php:73
 msgid "Limit"
-msgstr "Gräns"
+msgstr "Raja"
 
 #: includes/admin/settings/class-sp-settings-events.php:49
 #: includes/admin/settings/class-sp-settings-teams.php:77
 msgid "teams"
-msgstr "lag"
+msgstr "joukkueet"
 
 #: includes/admin/settings/class-sp-settings-events.php:61
 #: includes/admin/settings/class-sp-settings-teams.php:49
 #: includes/widgets/class-sp-widget-league-table.php:90
 msgid "Display logos"
-msgstr "Visa klubbemblem"
+msgstr "Näytä logot"
 
 #: includes/admin/settings/class-sp-settings-events.php:69
 msgid "Display maps"
-msgstr "Visa kartor"
+msgstr "Näytä kartat"
 
 #: includes/admin/settings/class-sp-settings-events.php:77
 msgid "Link venues"
-msgstr "Länka spelplatser"
+msgstr "Linkitä tapahtumapaikat"
 
 #: includes/admin/settings/class-sp-settings-events.php:86
 msgid "Display outcomes"
-msgstr ""
+msgstr "Näytä lopputulokset."
 
 #: includes/admin/settings/class-sp-settings-events.php:94
 #: includes/admin/settings/class-sp-settings-players.php:57
 msgid "Link players"
-msgstr "Länka spelare"
+msgstr "Linkitä pelaajat"
 
 #: includes/admin/settings/class-sp-settings-events.php:105
 #: includes/admin/settings/class-sp-settings-players.php:64
 #: includes/admin/settings/class-sp-settings-teams.php:65
 msgid "Pagination"
-msgstr "Sidnumrering"
+msgstr "Sivunumerointi"
 
 #: includes/admin/settings/class-sp-settings-events.php:106
 #: includes/admin/settings/class-sp-settings-players.php:65
 #: includes/admin/settings/class-sp-settings-teams.php:66
 msgid "Paginate"
-msgstr "Sidnumrera"
+msgstr "Sivuttaa"
 
 #: includes/admin/settings/class-sp-settings-events.php:117
 msgid "events"
-msgstr "event"
+msgstr "tapahtumat"
 
 #: includes/admin/settings/class-sp-settings-events.php:164
 msgid "Custom:"
-msgstr "Egna val:"
+msgstr "Oma Valinta:"
 
 #: includes/admin/settings/class-sp-settings-general.php:25
 msgid "General"
-msgstr "Generellt"
+msgstr "Yleiset"
 
 #: includes/admin/settings/class-sp-settings-general.php:45
 msgid "General Options"
-msgstr "Generella alternativ"
+msgstr "Yleisasetukset"
 
 #: includes/admin/settings/class-sp-settings-general.php:58
 msgid "Google Maps"
@@ -2706,57 +2706,58 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-general.php:72
 msgid "Styles and Scripts"
-msgstr "Stilmallar och skript"
+msgstr "Tyylit ja skriptit"
 
 #: includes/admin/settings/class-sp-settings-general.php:77
 msgid "Custom CSS"
-msgstr "Egen CSS"
+msgstr "Oma CSS"
 
 #: includes/admin/settings/class-sp-settings-general.php:84
 msgid "Scripts"
-msgstr "Script"
+msgstr "Skriptit"
 
 #: includes/admin/settings/class-sp-settings-general.php:85
 msgid "Responsive tables"
-msgstr "Responsiva tabeller"
+msgstr "Reagoiva taulukot"
 
 #: includes/admin/settings/class-sp-settings-general.php:90
 msgid "This will enable a script allowing the tables to be responsive."
-msgstr "Detta tillåter ett skript som gör tabellerna responsiva."
+msgstr ""
+"Tämä sallii skriptin mahdollisuuden taulukoiden reagoivaan mukauttamiseen."
 
 #: includes/admin/settings/class-sp-settings-general.php:94
 msgid "Sortable tables"
-msgstr "Sorterbara tabeller"
+msgstr "Jörjesteltävät taulukot"
 
 #: includes/admin/settings/class-sp-settings-general.php:99
 msgid "This will enable a script allowing the tables to be sortable."
-msgstr "Detta tillåter ett skript som gör tabellerna sorterbara."
+msgstr "Tämä sallii skriptin järjestellä taulukoita."
 
 #: includes/admin/settings/class-sp-settings-general.php:103
 msgid "Live countdowns"
-msgstr "Nedräkningar i realtid."
+msgstr "Live-laskureita"
 
 #: includes/admin/settings/class-sp-settings-general.php:108
 msgid "This will enable a script allowing the countdowns to be animated."
-msgstr "Detta tillåter ett skript som gör nedräkningar animerade."
+msgstr "Tämä sallii skriptin animoida live-laskuria."
 
 #: includes/admin/settings/class-sp-settings-general.php:188
 msgid "Frontend Styles"
-msgstr "Utseende i butiken, frontend"
+msgstr "Korostusvärit (julkisella puolella)"
 
 #: includes/admin/settings/class-sp-settings-general.php:204
 msgid "Background"
-msgstr "Bakgrund"
+msgstr "Taustakuva"
 
 #: includes/admin/settings/class-sp-settings-general.php:205
 #: includes/admin/settings/class-sp-settings-text.php:25
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "Text"
-msgstr "Text"
+msgstr "Teksti"
 
 #: includes/admin/settings/class-sp-settings-general.php:206
 msgid "Heading"
-msgstr "Sidhuvud"
+msgstr "Otsikko"
 
 #: includes/admin/settings/class-sp-settings-general.php:207
 msgid "Link"
@@ -2764,87 +2765,88 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-general.php:213
 msgid "Enable"
-msgstr "Aktivera"
+msgstr "Ota käyttöön"
 
 #: includes/admin/settings/class-sp-settings-players.php:41
 msgid "Player Options"
-msgstr "Spelaralternativ"
+msgstr "Pelaaja asetukset"
 
 #: includes/admin/settings/class-sp-settings-players.php:45
 msgid "Display national flags"
-msgstr "Visa nationalitetsflaggor"
+msgstr "Näytä kansalliset liput"
 
 #: includes/admin/settings/class-sp-settings-players.php:76
 msgid "players"
-msgstr "spelare"
+msgstr "pelaajat"
 
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
-msgstr "Lagalternativ"
+msgstr "Joukkueen asetukset"
 
 #: includes/admin/settings/class-sp-settings-teams.php:57
 msgid "Link teams"
-msgstr "Länka lag"
+msgstr "Linkitä joukkueet"
 
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "The following options affect how words are displayed on the frontend."
-msgstr "Följande val påverkar hur ord visas frontend"
+msgstr ""
+"Seuraavat vaihtoehdot vaikuttavat kuinka sanat näkyvät käyttöliittymään."
 
 #: includes/admin/views/html-admin-page-status.php:5
 msgid "Please include this information when requesting support:"
-msgstr "Vänligen inkludera den här informationen när du ber om support:"
+msgstr "Liitä tämä tieto tukipyyntöön, ole hyvä:"
 
 #: includes/admin/views/html-admin-page-status.php:6
 msgid "Get System Report"
-msgstr "Få en systemrapport"
+msgstr "Lataa järjestelmän tila -raportti"
 
 #: includes/admin/views/html-admin-page-status.php:14
 msgid "Environment"
-msgstr "Miljö"
+msgstr "Ympäristö"
 
 #: includes/admin/views/html-admin-page-status.php:20
 msgid "Home URL"
-msgstr "Hemadress"
+msgstr "Etusivun verkko-osoite (URL)"
 
 #: includes/admin/views/html-admin-page-status.php:24
 msgid "Site URL"
-msgstr "Sajtadress"
+msgstr "Sivuston verkko-osoite (URL)"
 
 #: includes/admin/views/html-admin-page-status.php:28
 msgid "SP Version"
-msgstr "SP version"
+msgstr "SP Versio"
 
 #: includes/admin/views/html-admin-page-status.php:32
 msgid "WP Version"
-msgstr "WP-version"
+msgstr "WP-versio"
 
 #: includes/admin/views/html-admin-page-status.php:36
 msgid "WP Multisite Enabled"
-msgstr "WP Multisite Aktiverat"
+msgstr "WP Multisite käytössä"
 
 #: includes/admin/views/html-admin-page-status.php:37
 #: includes/admin/views/html-admin-page-status.php:61
 #: includes/admin/views/html-admin-page-status.php:86
 msgid "Yes"
-msgstr "Ja"
+msgstr "Kyllä"
 
 #: includes/admin/views/html-admin-page-status.php:37
 #: includes/admin/views/html-admin-page-status.php:61
 #: includes/admin/views/html-admin-page-status.php:86
 msgid "No"
-msgstr "Nej"
+msgstr "Ei"
 
 #: includes/admin/views/html-admin-page-status.php:40
 msgid "Web Server Info"
-msgstr "Webserverinfo"
+msgstr "Palvelimen tiedot"
 
 #: includes/admin/views/html-admin-page-status.php:44
 msgid "PHP Version"
-msgstr "PHP-version"
+msgstr "PHP-versio"
 
 #: includes/admin/views/html-admin-page-status.php:48
 msgid "WP Memory Limit"
-msgstr "WP Memory Limit"
+msgstr "WP-muistinvaraus"
 
 #: includes/admin/views/html-admin-page-status.php:53
 #, php-format
@@ -2852,50 +2854,51 @@ msgid ""
 "%s - We recommend setting memory to at least 64MB. See: <a href=\"%s"
 "\">Increasing memory allocated to PHP</a>"
 msgstr ""
-"%s - Vi rekommenderar att minnesgränsen sätts till minst 64MB. Se: <a href="
-"\"%s\">Increasing memory allocated to PHP</a>"
+"%s - Suositus: aseta WP:n muistinvaraus vähintään arvoksi 64MB, esim. 'wp-"
+"config.php' tiedostossa. Lisätietoja: <a href=\"%s\">Increasing memory "
+"allocated to PHP</a>"
 
 #: includes/admin/views/html-admin-page-status.php:60
 msgid "WP Debug Mode"
-msgstr "WP Debug Mode"
+msgstr "WP-testaustila"
 
 #: includes/admin/views/html-admin-page-status.php:64
 msgid "WP Language"
-msgstr "WP-språk"
+msgstr "WP-kieli"
 
 #: includes/admin/views/html-admin-page-status.php:68
 msgid "WP Max Upload Size"
-msgstr "WP Max Upload Size"
+msgstr "WP-suurin siirrettävän tiedoston koko"
 
 #: includes/admin/views/html-admin-page-status.php:73
 msgid "PHP Post Max Size"
-msgstr "PHP Post Max Size"
+msgstr "PHP 'post' -suurin koko"
 
 #: includes/admin/views/html-admin-page-status.php:77
 msgid "PHP Time Limit"
-msgstr "PHP Time Limit"
+msgstr "PHP max suoritusaika"
 
 #: includes/admin/views/html-admin-page-status.php:81
 msgid "PHP Max Input Vars"
-msgstr "PHP Max Input Vars"
+msgstr "PHP Max Input -muuttujat"
 
 #: includes/admin/views/html-admin-page-status.php:85
 msgid "SUHOSIN Installed"
-msgstr "SUHOSIN installerat"
+msgstr "SUHOSIN asennettu"
 
 #: includes/admin/views/html-admin-page-status.php:90
 msgid "Default Timezone"
-msgstr "Tidszon"
+msgstr "Oletus aikavyöhyke"
 
 #: includes/admin/views/html-admin-page-status.php:94
 #, php-format
 msgid "Default timezone is %s - it should be UTC"
-msgstr "Tidszon är %s - det ska vara UTC"
+msgstr "Oletus aikavyöhyke on %s – sen pitäisi olla UTC"
 
 #: includes/admin/views/html-admin-page-status.php:96
 #, php-format
 msgid "Default timezone is %s"
-msgstr "Tidszon är %s"
+msgstr "Oletus aikavyöhyke on %s"
 
 #: includes/admin/views/html-admin-page-status.php:104
 msgid "fsockopen/cURL"
@@ -2903,15 +2906,15 @@ msgstr "fsockopen/cURL"
 
 #: includes/admin/views/html-admin-page-status.php:107
 msgid "Your server has fsockopen and cURL enabled."
-msgstr "fsockopen och cURL är aktiverat på din server."
+msgstr "Palvelimella on käytössä fsockopen ja cURL."
 
 #: includes/admin/views/html-admin-page-status.php:109
 msgid "Your server has fsockopen enabled, cURL is disabled."
-msgstr "fsockopen är aktiverat på servern, men inte cURL."
+msgstr "Palvelimella on käytössä fsockopen mutta cURL ei ole käytössä."
 
 #: includes/admin/views/html-admin-page-status.php:111
 msgid "Your server has cURL enabled, fsockopen is disabled."
-msgstr "Servern har cURL aktiverat, men inte fsockopen."
+msgstr "Palvelimella on käytössä cURL mutta fsockopen ei ole käytössä."
 
 #: includes/admin/views/html-admin-page-status.php:115
 msgid ""
@@ -2919,17 +2922,16 @@ msgid ""
 "scripts which communicate with other servers will not work. Contact your "
 "hosting provider."
 msgstr ""
-"Servern verkar ha varken fsockopen eller cURL aktiverat. PayPal IPN och "
-"andra skript som behöver kommunicera med servern kommer inte att fungera. "
-"Vänligen kontakta ditt webbhotell."
+"Palvelimella ei ole käytössä fsockopen, cURL. PayPal IPN ja muut skriptit "
+"eivät toimi. – Ota yhteyttä palvelimen ylläpitäjään ja selvitä tilanne."
 
 #: includes/admin/views/html-admin-page-status.php:120
 msgid "SOAP Client"
-msgstr "SOAP-klient"
+msgstr "SOAP Client (-asiakas)"
 
 #: includes/admin/views/html-admin-page-status.php:122
 msgid "Your server has the SOAP Client class enabled."
-msgstr "Servern har SOAP-klientklassen aktiverad."
+msgstr "Palvelimella on käytössä SOAP Client class."
 
 #: includes/admin/views/html-admin-page-status.php:125
 #, php-format
@@ -2937,66 +2939,66 @@ msgid ""
 "Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled - "
 "some gateway plugins which use SOAP may not work as expected."
 msgstr ""
-"Din server har inte <a href=\"%s\">SOAP-klientklassen</a> aktiverad. Vissa "
-"betalningstjänster som använder SOAP kanske inte kommer att fungera."
+"Palvelimella ei ole käytössä <a href=\"%s\">SOAP Client class</a> – ne "
+"lisäosat jotka käyttävät SOAP eivät toimi odotetulla tavalla."
 
 #: includes/admin/views/html-admin-page-status.php:148
 msgid "Plugins"
-msgstr "Plugins"
+msgstr "Lisäosat"
 
 #: includes/admin/views/html-admin-page-status.php:154
 msgid "Installed Plugins"
-msgstr "Installerade plugins"
+msgstr "Asennetut lisäosat"
 
 #: includes/admin/views/html-admin-page-status.php:174
 msgid "Visit plugin homepage"
-msgstr "Besök tilläggets webbplats"
+msgstr "Käy lisäosan kotisivulla"
 
 #: includes/admin/views/html-admin-page-status.php:198
 #: includes/admin/views/html-admin-page-status.php:413
 msgid "is available"
-msgstr "är tillgänglig"
+msgstr "on saatavilla"
 
 #: includes/admin/views/html-admin-page-status.php:201
 msgid "by"
-msgstr "av"
+msgstr "tekijä"
 
 #: includes/admin/views/html-admin-page-status.php:201
 msgid "version"
-msgstr "version"
+msgstr "versio"
 
 #: includes/admin/views/html-admin-page-status.php:217
 msgid "SP Configuration"
-msgstr "SP konfiguration"
+msgstr "SP Määritykset"
 
 #: includes/admin/views/html-admin-page-status.php:290
 msgid "SP Taxonomies"
-msgstr "SP taxonomier"
+msgstr "SP Luokittelut"
 
 #: includes/admin/views/html-admin-page-status.php:339
 #, fuzzy
 msgid "SP Post Types"
-msgstr "Tidigare lag"
+msgstr "Aikaisemmat Joukkueet"
 
 #: includes/admin/views/html-admin-page-status.php:365
 msgid "Theme"
-msgstr "Tema"
+msgstr "Teema"
 
 #: includes/admin/views/html-admin-page-status.php:402
 msgid "Theme Name"
-msgstr "Temanamn"
+msgstr "Teeman nimi"
 
 #: includes/admin/views/html-admin-page-status.php:408
 msgid "Theme Version"
-msgstr "Temaversion"
+msgstr "Teeman versio"
 
 #: includes/admin/views/html-admin-page-status.php:417
 msgid "Author URL"
-msgstr "Author URL"
+msgstr "Kirjoittajan URL"
 
 #: includes/admin/views/html-admin-page-status.php:426
 msgid "Templates"
-msgstr "Mallar"
+msgstr "Teemat"
 
 #: includes/admin/views/html-admin-page-status.php:459
 #, php-format
@@ -3004,27 +3006,27 @@ msgid ""
 "<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
 "date. The core version is %s"
 msgstr ""
-"<code>%s</code> versionen <strong style=\"color:red\">%s</strong> är "
-"utdaterad. Huvudversionen är %s"
+"<code>%s</code> versio <strong style=\"color:red\">%s</strong> on "
+"vanhentunut. Nykyinen versio on %s"
 
 #: includes/admin/views/html-admin-page-status.php:470
 #: includes/admin/views/html-admin-page-status.php:476
 msgid "Template Overrides"
-msgstr "Överskridande av mallar"
+msgstr "Teema ohittaa WC:n toiminnan"
 
 #: includes/admin/views/html-admin-page-status.php:477
 msgid "No overrides present in theme."
-msgstr "Inga överskridningar i temat."
+msgstr "Teemassa ei ole toimintoja jotka ohittavat WC:n toiminnan."
 
 #: includes/admin/views/html-notice-install.php:5
 #, php-format
 msgid "Welcome to SportsPress %s"
-msgstr "Välkommen till SportsPress %s"
+msgstr "Tervetuloa SportsPress;iin %s"
 
 #: includes/admin/views/html-notice-install.php:8
 #: includes/admin/views/html-notice-theme-support.php:8
 msgid "Hide this notice"
-msgstr "Dölj notis"
+msgstr "Piilota tämä huomautus"
 
 #: includes/admin/views/html-notice-theme-support.php:5
 msgid ""
@@ -3032,21 +3034,21 @@ msgid ""
 "you encounter layout issues please read our integration guide or choose a "
 "SportsPress theme :)"
 msgstr ""
-"<strong>Ditt tema stödjer kanske inte SportsPress</strong> &#8211; om du "
-"stöter på layout-problem, var god läs vår integrationsguide eller väl ett "
-"Sportpress-tema."
+"<strong>Teema ei ilmoita että se tukisi SportsPress-lisäosaa</strong> "
+"&#8211; jos havaitset asemointiin ja sivun ulkoasuun liittyviä ongelmia, "
+"tutustu integraatio-opaaseemme tai valitse SportsPress teema :)"
 
 #: includes/admin/views/html-notice-theme-support.php:7
 msgid "Theme Integration Guide"
-msgstr "Integrationsguide för tema"
+msgstr "Teeman integrointi -ohje"
 
 #: includes/widgets/class-sp-widget-countdown.php:5
 msgid "A clock that counts down to an upcoming event."
-msgstr "Ett nedräkningsur till kommande evenemang."
+msgstr "Kello, joka näyttää jäljellä olevaa aikaa tulevaan tapahtumaan."
 
 #: includes/widgets/class-sp-widget-countdown.php:6
 msgid "SportsPress Countdown"
-msgstr "SportPress nedräkning"
+msgstr "SportsPress Laskuri"
 
 #: includes/widgets/class-sp-widget-countdown.php:39
 #: includes/widgets/class-sp-widget-event-blocks.php:45
@@ -3056,7 +3058,7 @@ msgstr "SportPress nedräkning"
 #: includes/widgets/class-sp-widget-player-gallery.php:50
 #: includes/widgets/class-sp-widget-player-list.php:50
 msgid "Title:"
-msgstr "Titel:"
+msgstr "Otsikko:"
 
 #: includes/widgets/class-sp-widget-countdown.php:42
 #: includes/widgets/class-sp-widget-event-blocks.php:48
@@ -3067,121 +3069,121 @@ msgstr "Titel:"
 #: includes/widgets/class-sp-widget-player-list.php:53
 #, php-format
 msgid "Select %s:"
-msgstr "Välj %s:"
+msgstr "Valitse %s:"
 
 #: includes/widgets/class-sp-widget-countdown.php:62
 #, fuzzy
 msgid "Display venue"
-msgstr "Visa serie"
+msgstr "Näytä liiga"
 
 #: includes/widgets/class-sp-widget-countdown.php:65
 msgid "Display league"
-msgstr "Visa serie"
+msgstr "Näytä liiga"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:5
 #: includes/widgets/class-sp-widget-event-list.php:5
 msgid "A list of events."
-msgstr "En lista över evenemang."
+msgstr "Tapahtumien lista"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:6
 msgid "SportsPress Event Blocks"
-msgstr ""
+msgstr "SportsPress Tapahtumien Estot"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:65
 #: includes/widgets/class-sp-widget-event-calendar.php:61
 #: includes/widgets/class-sp-widget-event-list.php:68
 msgid "Status:"
-msgstr ""
+msgstr "Status:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:78
 #: includes/widgets/class-sp-widget-event-list.php:81
 msgid "Number of events to show:"
-msgstr "Antal event att visa:"
+msgstr "Näytettävien tapahtumien määrä:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:81
 #: includes/widgets/class-sp-widget-event-list.php:84
 #: includes/widgets/class-sp-widget-player-gallery.php:94
 #: includes/widgets/class-sp-widget-player-list.php:115
 msgid "Sort Order:"
-msgstr "Sorteringordning:"
+msgstr "Järjestys:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:89
 #: includes/widgets/class-sp-widget-event-calendar.php:75
 #: includes/widgets/class-sp-widget-event-list.php:110
 msgid "Display link to view all events"
-msgstr "Visa länk för att se alla evenemang."
+msgstr "Näytä linkki kaikkiin tapahtumiin"
 
 #: includes/widgets/class-sp-widget-event-calendar.php:5
 msgid "A calendar of events."
-msgstr "Evenemangskalender."
+msgstr "Tapahtumakalenteri"
 
 #: includes/widgets/class-sp-widget-event-calendar.php:6
 msgid "SportsPress Event Calendar"
-msgstr ""
+msgstr "SportsPress Tapahtumakalenteri"
 
 #: includes/widgets/class-sp-widget-event-list.php:6
 msgid "SportsPress Event List"
-msgstr ""
+msgstr "SportsPress Tapahtumalista"
 
 #: includes/widgets/class-sp-widget-event-list.php:92
 #: includes/widgets/class-sp-widget-league-table.php:70
 msgid "Columns:"
-msgstr "Kolumner:"
+msgstr "Sarakkeet:"
 
 #: includes/widgets/class-sp-widget-league-table.php:5
 msgid "Display a league table."
-msgstr "Visa en serietabell"
+msgstr "Näytä liigataulukko"
 
 #: includes/widgets/class-sp-widget-league-table.php:6
 msgid "SportsPress League Table"
-msgstr "SportPress serietabell"
+msgstr "SportsPress Liigataulukko"
 
 #: includes/widgets/class-sp-widget-league-table.php:66
 msgid "Number of teams to show:"
-msgstr "Antal lag att visa:"
+msgstr "Näytettävien joukkueiden määrä:"
 
 #: includes/widgets/class-sp-widget-league-table.php:93
 msgid "Display link to view full table"
-msgstr "Visa länk till fullständig tabell"
+msgstr "Näytä linkki koko tauluun"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:5
 msgid "Display a gallery of players."
-msgstr "Visa spelargalleri"
+msgstr "Näytä pelaaja galleria"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:6
 msgid "SportsPress Player Gallery"
-msgstr "SportPress spelargalleri"
+msgstr "SportsPress Pelaaja Galleria"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:69
 #: includes/widgets/class-sp-widget-player-list.php:69
 msgid "Number of players to show:"
-msgstr "Antal spelare att visa:"
+msgstr "Näytettävien pelaajien määrä:"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:72
 #: includes/widgets/class-sp-widget-player-list.php:93
 msgid "Sort by:"
-msgstr "Sortera efter:"
+msgstr "Järjestys:"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:101
 #: includes/widgets/class-sp-widget-player-list.php:122
 msgid "Display link to view all players"
-msgstr "Visa länk för att se alla spelare"
+msgstr "Näytä linkki kaikkiin pelaajiin"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:104
 msgid "Display player names on hover"
-msgstr "Visa spelarnamn vid hovring"
+msgstr "Näytä pelaajien nimet leijuvina"
 
 #: includes/widgets/class-sp-widget-player-list.php:5
 msgid "Display a list of players."
-msgstr "Visa en spelarlista"
+msgstr "Näytä Pelaajalista."
 
 #: includes/widgets/class-sp-widget-player-list.php:6
 msgid "SportsPress Player List"
-msgstr "SportPress spelarlista"
+msgstr "SportsPress Pelaajalista"
 
 #: includes/widgets/class-sp-widget-player-list.php:73
 msgid "Performance:"
-msgstr "Spelarstatistik:"
+msgstr "Saavutus:"
 
 #. translators: Calendar caption: 1: month name, 2: 4-digit year
 #: templates/event-calendar.php:89 templates/event-calendar.php:117
@@ -3192,10 +3194,10 @@ msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
 
 #~ msgid "&mdash; Add &mdash;"
-#~ msgstr "&mdash; Lägg till &mdash;"
+#~ msgstr "&mdash; Lisää &mdash;"
 
 #~ msgid "Alternate"
-#~ msgstr "Alternera"
+#~ msgstr "Vaihtoehtoinen"
 
 #~ msgid "MySQL Version"
-#~ msgstr "MySQL-version"
+#~ msgstr "MySQL-versio"
