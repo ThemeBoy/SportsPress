@@ -1,10 +1,10 @@
 === SportsPress - sports league management ===
 Contributors: ThemeBoy
-Tags: sport, sports, press, club, sport statistics, sports management, soccer, football, teams, fixtures, results, standings, league tables, leagues, world cup, statistics, stats, wordpress sports, themeboy
+Tags: sport, sports, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: 0.8.6
+Stable tag: 0.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -36,9 +36,12 @@ League table columns, player statistics, and match results can be customized to 
 = Available Languages =
 * English – English ( en_US )
 * Arabic – العربية ( ar )
+* Chinese (China) - 中文 (zh_CN)
 * Croatian – Hrvatski ( hr )
 * Czech – Čeština ( cs_CZ )
+* Dutch - Nederlands ( nl_NL )
 * French – Français ( fr_FR )
+* Finnish – Suomi ( fi )
 * German – Deutsch ( de_DE )
 * Greek – Ελληνικά ( el_GR )
 * Italian – Italiano ( it_IT )
@@ -119,6 +122,28 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 0.9 =
+* Feature - Import tool added for importing staff from CSV file.
+* Feature - Add checkboxes to select player statistics columns.
+* Feature - Add option to select Google Map type.
+* Feature - Add option to display team logos under event title.
+* Feature - Enable player metrics and statistics selection in player list widget.
+* Feature - Enable linking event blocks and event list to team pages.
+* Tweak - Move leagues and seasons to SportsPress submenu.
+* Tweak - Use singular post type slugs by default for consistency with WP core.
+* Tweak - Remove alternate color in favor of link color setting.
+* Tweak - Enable scrollable tables to prevent overflow.
+* Tweak - Add helper text to venue location picker.
+* Tweak - Adjust markup and remove link in league table caption.
+* Tweak - Insert group name anchors to player list.
+* Tweak - Display post type counts in system status.
+* Fix - Event list results calculation when team column unchecked.
+* Fix - Display player group names.
+* Preset - Add snooker preset.
+* Localization - Finnish translation by JuKi and hanro.
+* Localization - Chinese translation by dic_2008.
+* Localization - Dutch translation by valentijnreza.
 
 = 0.8.6 =
 * Fix - Issue adding teams to events.
