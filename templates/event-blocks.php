@@ -14,6 +14,7 @@ $primary_result = get_option( 'sportspress_primary_result', null );
 $defaults = array(
 	'status' => 'default',
 	'number' => -1,
+	'link_teams' => get_option( 'sportspress_calendar_link_teams', 'no' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_calendar_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_calendar_rows', 10 ),
 	'order' => 'default',
@@ -57,7 +58,11 @@ if ( isset( $columns ) )
 					if ( ! has_post_thumbnail ( $team ) )
 						continue;
 					$j++;
-					$logo = '<a href="' . get_post_permalink( $team ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) ) ) . '</a>';
+					if ( $link_teams ):
+						$logo = '<a href="' . get_post_permalink( $team ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) ) ) . '</a>';
+					else:
+						$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) ) );
+					endif;
 					$logos[] = $logo;
 					$team_results = sp_array_value( $results, $team, null );
 

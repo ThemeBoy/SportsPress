@@ -14,6 +14,7 @@ $primary_result = get_option( 'sportspress_primary_result', null );
 $defaults = array(
 	'status' => 'default',
 	'number' => -1,
+	'link_teams' => get_option( 'sportspress_calendar_link_teams', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_calendar_paginated', 'yes' ) == 'yes' ? true : false,
@@ -93,7 +94,11 @@ if ( isset( $columns ) )
 								endif;
 							endif;
 
-							$teams_output .= $name;
+							if ( $link_teams ):
+								$teams_output .= '<a href="' . get_post_permalink( $team ) . '">' . $name . '</a>';
+							else:
+								$teams_output .= $name;
+							endif;
 
 							if ( $team_result != null ):
 								$main_results[] = $team_result;

@@ -102,6 +102,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 			array( 'title' => __( 'Calendars', 'sportspress' ), 'type' => 'title', 'id' => 'calendar_options' ),
 
 			array(
+				'title' 	=> __( 'Teams', 'sportspress' ),
+				'desc' 		=> __( 'Link teams', 'sportspress' ),
+				'id' 		=> 'sportspress_calendar_link_teams',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+			),
+
+			array(
 				'title'     => __( 'Pagination', 'sportspress' ),
 				'desc' 		=> __( 'Paginate', 'sportspress' ),
 				'id' 		=> 'sportspress_calendar_paginated',
