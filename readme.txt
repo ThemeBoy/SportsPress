@@ -4,7 +4,7 @@ Tags: sport, sports, sports journalism, teams, team management, fixtures, result
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: 0.9
+Stable tag: 0.9.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,10 +28,6 @@ Add schedules, results, league tables, player profiles and statistics to your te
 * Venue Information & Maps
 * Statistics & League Table Columns Configuration
 * Import Events, Teams, and Players from CSV Files
-
-= Customizable =
-
-League table columns, player statistics, and match results can be customized to fit any sport. Presets are available for some of the most popular sports including soccer, rugby, American football, Australian Rules football, baseball, basketball, cricket, and hockey.
 
 = Available Languages =
 * English – English ( en_US )
@@ -122,6 +118,11 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 0.9.1 =
+* Tweak - Add text domain to configure descriptions.
+* Tweak - Change default country to US.
+* Fix - Event block results display for teams without logos.
 
 = 0.9 =
 * Feature - Import tool added for importing staff from CSV file.
