@@ -94,7 +94,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 		<tr valign="top">
 			<th scope="row" class="titledesc">
 				<?php _e( 'Event Outcomes', 'sportspress' ) ?>
-				<p class="description"><?php _e( 'Used for events.' ); ?></p>
+				<p class="description"><?php _e( 'Used for events.', 'sportspress' ); ?></p>
 			</th>
 		    <td class="forminp">
 				<table class="widefat sp-admin-config-table">
@@ -148,7 +148,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 		<tr valign="top">
 			<th scope="row" class="titledesc">
 				<?php _e( 'Team Results', 'sportspress' ) ?>
-				<p class="description"><?php _e( 'Used for events.' ); ?></p>
+				<p class="description"><?php _e( 'Used for events.', 'sportspress' ); ?></p>
 			</th>
 		    <td class="forminp">
 				<legend class="screen-reader-text"><span><?php _e( 'Team Results', 'sportspress' ) ?></span></legend>
@@ -219,7 +219,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 		<tr valign="top">
 			<th scope="row" class="titledesc">
 				<?php _e( 'Player Performance', 'sportspress' ) ?>
-				<p class="description"><?php _e( 'Used for events.' ); ?></p>
+				<p class="description"><?php _e( 'Used for events.', 'sportspress' ); ?></p>
 			</th>
 		    <td class="forminp">
 				<table class="widefat sp-admin-config-table">
@@ -271,7 +271,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 		<tr valign="top">
 			<th scope="row" class="titledesc">
 				<?php _e( 'Table Columns', 'sportspress' ) ?>
-				<p class="description"><?php _e( 'Used for league tables.' ); ?></p>
+				<p class="description"><?php _e( 'Used for league tables.', 'sportspress' ); ?></p>
 			</th>
 		    <td class="forminp">
 				<table class="widefat sp-admin-config-table">
@@ -330,7 +330,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 		<tr valign="top">
 			<th scope="row" class="titledesc">
 				<?php _e( 'Player Metrics', 'sportspress' ) ?>
-				<p class="description"><?php _e( 'Used for player lists.' ); ?></p>
+				<p class="description"><?php _e( 'Used for player lists.', 'sportspress' ); ?></p>
 			</th>
 		    <td class="forminp">
 				<table class="widefat sp-admin-config-table">
@@ -382,7 +382,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 		<tr valign="top">
 			<th scope="row" class="titledesc">
 				<?php _e( 'Player Statistics', 'sportspress' ) ?>
-				<p class="description"><?php _e( 'Used for player lists.' ); ?></p>
+				<p class="description"><?php _e( 'Used for player lists.', 'sportspress' ); ?></p>
 			</th>
 		    <td class="forminp">
 				<table class="widefat sp-admin-config-table">
