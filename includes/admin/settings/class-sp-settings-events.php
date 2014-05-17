@@ -165,7 +165,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 		    <td class="forminp">
 				<fieldset class="sp-custom-input-wrapper">
 					<legend class="screen-reader-text"><span><?php _e( 'Delimiter', 'sportspress' ); ?></span></legend>
-					<?php $delimiters = array( 'vs', 'v', '—', '/' ); ?>
+					<?php $delimiters = array( 'vs', 'v', '&mdash;', '/' ); ?>
 					<?php foreach ( $delimiters as $delimiter ): ?>
 						<label title="<?php echo $delimiter; ?>"><input type="radio" class="preset" name="sportspress_event_teams_delimiter_preset" value="<?php echo $delimiter; ?>" data-example="<?php printf( $example, $delimiter ); ?>" <?php checked( $delimiter, $selection ); ?>> <span><?php printf( $example, $delimiter ); ?></span></label><br>
 					<?php endforeach; ?>
