@@ -196,7 +196,7 @@ class SP_Admin_Welcome {
 						<form method="post" id="mainform" action="" enctype="multipart/form-data">
 							<h4><?php _e( 'Base Location', 'sportspress' ); ?></h4>
 							<?php
-							$selected = (string) get_option( 'sportspress_default_country', 'AU' );
+							$selected = (string) get_option( 'sportspress_default_country', 'US' );
 							$continents = SP()->countries->continents;
 					    	?>
 					    	<p>
