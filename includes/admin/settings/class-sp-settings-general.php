@@ -159,7 +159,7 @@ class SP_Settings_General extends SP_Settings_Page {
 	 * @return void
 	 */
 	public function country_setting() {
-		$selected = (string) get_option( 'sportspress_default_country', 'AU' );
+		$selected = (string) get_option( 'sportspress_default_country', 'US' );
 		$continents = SP()->countries->continents;
     	?>
 		<tr valign="top">
