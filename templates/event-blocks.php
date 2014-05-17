@@ -55,15 +55,15 @@ if ( isset( $columns ) )
 
 				$j = 0;
 				foreach( $teams as $team ):
-					if ( ! has_post_thumbnail ( $team ) )
-						continue;
 					$j++;
-					if ( $link_teams ):
-						$logo = '<a href="' . get_post_permalink( $team ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) ) ) . '</a>';
-					else:
-						$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) ) );
+					if ( has_post_thumbnail ( $team ) ):
+						if ( $link_teams ):
+							$logo = '<a href="' . get_post_permalink( $team ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) ) ) . '</a>';
+						else:
+							$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) ) );
+						endif;
+						$logos[] = $logo;
 					endif;
-					$logos[] = $logo;
 					$team_results = sp_array_value( $results, $team, null );
 
 					if ( $primary_result ):
