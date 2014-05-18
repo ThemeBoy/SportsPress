@@ -417,7 +417,7 @@ class SP_Post_types {
 					'exclude_from_search' 	=> false,
 					'hierarchical' 			=> true,
 					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_team_slug', 'team' ) ),
-					'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes', 'excerpt' ),
+					'supports' 				=> array( 'title', 'author', 'thumbnail', 'page-attributes', 'excerpt' ),
 					'has_archive' 			=> true,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-shield-alt',
