@@ -31,8 +31,11 @@ if ( isset( $performance ) )
 	$columns = $performance;
 
 $list = new SP_Player_List( $id );
-$list->columns = $columns;
+if ( isset( $columns ) && null !== $columns ):
+	$list->columns = $columns;
+endif;
 $data = $list->data();
+
 
 // The first row should be column labels
 $labels = $data[0];
