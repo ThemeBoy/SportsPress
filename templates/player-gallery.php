@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     0.8
+ * @version     0.9.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -115,6 +115,8 @@ foreach ( $groups as $group ):
 
 	foreach( $data as $player_id => $performance ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):
 
+		if ( isset( $limit ) && $i >= $limit ) continue;
+
 		$caption = get_the_title( $player_id );
 		$caption = trim( $caption );
 
@@ -128,6 +130,8 @@ foreach ( $groups as $group ):
 	    	'size' => $size,
 	    	'link_posts' => $link_posts,
 	    ) );
+
+		$i++;
 
 	endif; endforeach;
 
