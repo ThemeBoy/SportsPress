@@ -117,7 +117,7 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
-== Changelog ===
+== Changelog ==
 
 = 0.9.3 =
 * Fix - Player list columns not displaying.
