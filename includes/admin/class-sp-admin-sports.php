@@ -141,8 +141,8 @@ class SP_Admin_Sports {
 	public static function delete_preset_posts( $post_type = null ) {
 		$args = array(
 			'post_type' => $post_type,
-			'numberposts' => -1,
 			'posts_per_page' => -1,
+			'post_status' => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
 			'meta_query' => array(
 				array(
 					'key' => '_sp_preset',
@@ -154,7 +154,7 @@ class SP_Admin_Sports {
 		// Delete posts
 		$old_posts = get_posts( $args );
 		foreach( $old_posts as $post ):
-			wp_delete_post( $post->ID, true);
+			wp_delete_post( $post->ID, true );
 		endforeach;
 	}
 
