@@ -2429,7 +2429,7 @@ function sp_get_text_options() {
 		'preview' => __( 'Preview', 'sportspress' ),
 		'rank' => __( 'Rank', 'sportspress' ),
 		'recap' => __( 'Recap', 'sportspress' ),
-		'results' => __( 'Team Results', 'sportspress' ),
+		'team_results' => __( 'Team Results', 'sportspress' ),
 		'season' => __( 'Season', 'sportspress' ),
 		'staff' => __( 'Staff', 'sportspress' ),
 		'substitutes' => __( 'Substitutes', 'sportspress' ),
