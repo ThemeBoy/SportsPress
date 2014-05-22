@@ -1,18 +1,43 @@
 #
 # Translators:
-# mikejolley <mike.jolley@me.com>, 2013-2014
-# richardshaylor <rshaylor@me.com>, 2014
-# ThemeBoy <support@themeboy.com>, 2014
-# ThemeBoy <support@themeboy.com>, 2014
+# capitainawesome <samurai_pedrosousa@hotmail.com>, 2013
+# dinis_cunha <dinisf.cunha@gmail.com>, 2013
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009
+# gaspar <ng.dsgn@gmail.com>, 2014
+# gastice <inactive+gastice@transifex.com>, 2012
+# Hitsuh <pedro.filipe.amorim.machado@gmail.com>, 2013
+# Ian32 <jorge.monzondiaz@gmail.com>, 2013
+# iPedro, 2013
+# jluisfreitas <jluisfreitas@gmail.com>, 2013
+# JonasSabimbi <14jsilva@gmail.com>, 2012
+# jonnybel <jonnybel91@gmail.com>, 2012
+# jpBenfica <jp.jp@sapo.pt>, 2014
+# luisgguedes <luisgguedes@gmail.com>, 2013
+# Lvothe <nunopf99@gmail.com>, 2012-2013
+# Mendrax <mendrax94@gmail.com>, 2013
+# Mikey Pinhas <>, 2012
+# nardow <nardo895@hotmail.com>, 2013
+# Drew Melim <nokostya.translation@gmail.com>, 2014
+# OneNinjaKitten <comando_meu@hotmail.com>, 2013
+# Psychamele0n <duckzify@gmail.com>, 2013
+# pyker, 2013
+# Ricardo Ribeiro <ricardoribeiro_1991@hotmail.com>, 2014
+# ricardosimoes <xmcorporation@gmail.com>, 2013
+# rogou <rfagouveia@gmail.com>, 2012
+# samuka222 <samuka212@live.com.pt>, 2013
+# sepheN <vasco-silva@hotmail.com>, 2013
+# Terathunder <jpauribeiro@hotmail.com>, 2013
+# viegasn <viegas312@gmail.com>, 2014
+# Winters75 <marcopita75@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-04-29 17:20+1000\n"
-"PO-Revision-Date: 2014-04-29 17:20+1000\n"
+"POT-Creation-Date: 2014-05-22 23:11+1000\n"
+"PO-Revision-Date: 2014-05-22 23:11+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
-"Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/"
-"sportspress/language/en_GB/)\n"
-"Language: en_GB\n"
+"Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/"
+"sportspress/language/pt_PT/)\n"
+"Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,38 +50,37 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: sportspress.php:87 sportspress.php:96
+#: sportspress.php:82 sportspress.php:91
 msgid "Cheatin&#8217; huh?"
-msgstr "Cheatin&#8217; huh?"
+msgstr "Enganou-se?"
 
-#: sportspress.php:138 includes/admin/class-sp-admin-menus.php:81
-#: includes/admin/class-sp-admin-welcome.php:163
+#: sportspress.php:133 includes/admin/class-sp-admin-menus.php:98
 msgid "Settings"
-msgstr "Settings"
+msgstr "Configurações"
 
 #: includes/class-sp-countries.php:29
 msgid "Africa"
-msgstr "Africa"
+msgstr ""
 
 #: includes/class-sp-countries.php:30
 msgid "Asia"
-msgstr "Asia"
+msgstr ""
 
 #: includes/class-sp-countries.php:31
 msgid "Europe"
-msgstr "Europe"
+msgstr "Europa"
 
 #: includes/class-sp-countries.php:32
 msgid "North America"
-msgstr "North America"
+msgstr "America do Norte"
 
 #: includes/class-sp-countries.php:33
 msgid "Oceania"
-msgstr "Oceania"
+msgstr "Oceania "
 
 #: includes/class-sp-countries.php:34
 msgid "South America"
-msgstr "South America"
+msgstr "America do Sul"
 
 #: includes/class-sp-countries.php:38
 msgid "Andorra"
@@ -64,23 +88,23 @@ msgstr "Andorra"
 
 #: includes/class-sp-countries.php:39
 msgid "United Arab Emirates"
-msgstr "United Arab Emirates"
+msgstr "Emirados Árabes Unidos"
 
 #: includes/class-sp-countries.php:40
 msgid "Afghanistan"
-msgstr "Afghanistan"
+msgstr "Afeganistão"
 
 #: includes/class-sp-countries.php:41
 msgid "Antigua and Barbuda"
-msgstr "Antigua and Barbuda"
+msgstr "Antígua e Barbuda"
 
 #: includes/class-sp-countries.php:42
 msgid "Albania"
-msgstr "Albania"
+msgstr "Albânia"
 
 #: includes/class-sp-countries.php:43
 msgid "Armenia"
-msgstr "Armenia"
+msgstr "Armênia"
 
 #: includes/class-sp-countries.php:44
 msgid "Angola"
@@ -92,19 +116,19 @@ msgstr "Argentina"
 
 #: includes/class-sp-countries.php:46
 msgid "Austria"
-msgstr "Austria"
+msgstr "Áustria"
 
 #: includes/class-sp-countries.php:47
 msgid "Australia"
-msgstr "Australia"
+msgstr "Austrália"
 
 #: includes/class-sp-countries.php:48
 msgid "Azerbaijan"
-msgstr "Azerbaijan"
+msgstr "Azerbaijão"
 
 #: includes/class-sp-countries.php:49
 msgid "Bosnia and Herzegovina"
-msgstr "Bosnia and Herzegovina"
+msgstr "Bósnia e Herzegovina"
 
 #: includes/class-sp-countries.php:50
 msgid "Barbados"
@@ -116,27 +140,27 @@ msgstr "Bangladesh"
 
 #: includes/class-sp-countries.php:52
 msgid "Belgium"
-msgstr "Belgium"
+msgstr "Bélgica"
 
 #: includes/class-sp-countries.php:53
 msgid "Burkina Faso"
-msgstr "Burkina Faso"
+msgstr "Burquina Fasso"
 
 #: includes/class-sp-countries.php:54
 msgid "Bulgaria"
-msgstr "Bulgaria"
+msgstr "Bulgária"
 
 #: includes/class-sp-countries.php:55
 msgid "Bahrain"
-msgstr "Bahrain"
+msgstr "Barém"
 
 #: includes/class-sp-countries.php:56
 msgid "Burundi"
-msgstr "Burundi"
+msgstr "Burúndi"
 
 #: includes/class-sp-countries.php:57
 msgid "Benin"
-msgstr "Benin"
+msgstr "Benim"
 
 #: includes/class-sp-countries.php:58
 msgid "Brunei"
@@ -144,11 +168,11 @@ msgstr "Brunei"
 
 #: includes/class-sp-countries.php:59
 msgid "Bolivia"
-msgstr "Bolivia"
+msgstr "Bolívia"
 
 #: includes/class-sp-countries.php:60
 msgid "Brazil"
-msgstr "Brazil"
+msgstr "Brasil"
 
 #: includes/class-sp-countries.php:61
 msgid "Bahamas"
@@ -156,15 +180,15 @@ msgstr "Bahamas"
 
 #: includes/class-sp-countries.php:62
 msgid "Bhutan"
-msgstr "Bhutan"
+msgstr "Butão"
 
 #: includes/class-sp-countries.php:63
 msgid "Botswana"
-msgstr "Botswana"
+msgstr "Botsuana"
 
 #: includes/class-sp-countries.php:64
 msgid "Belarus"
-msgstr "Belarus"
+msgstr "Bielorrússia"
 
 #: includes/class-sp-countries.php:65
 msgid "Belize"
@@ -172,27 +196,27 @@ msgstr "Belize"
 
 #: includes/class-sp-countries.php:66
 msgid "Canada"
-msgstr "Canada"
+msgstr "Canadá"
 
 #: includes/class-sp-countries.php:67
 msgid "Democratic Republic of the Congo"
-msgstr "Democratic Republic of the Congo"
+msgstr ""
 
 #: includes/class-sp-countries.php:68
 msgid "Central African Republic"
-msgstr "Central African Republic"
+msgstr "República da África Central"
 
 #: includes/class-sp-countries.php:69
 msgid "Republic of the Congo"
-msgstr "Republic of the Congo"
+msgstr ""
 
 #: includes/class-sp-countries.php:70
 msgid "Switzerland"
-msgstr "Switzerland"
+msgstr "Suiça"
 
 #: includes/class-sp-countries.php:71
 msgid "Ivory Coast"
-msgstr "Ivory Coast"
+msgstr "Costa do Marfim"
 
 #: includes/class-sp-countries.php:72
 msgid "Chile"
@@ -200,7 +224,7 @@ msgstr "Chile"
 
 #: includes/class-sp-countries.php:73
 msgid "Cameroon"
-msgstr "Cameroon"
+msgstr "Camarões"
 
 #: includes/class-sp-countries.php:74
 msgid "China"
@@ -208,7 +232,7 @@ msgstr "China"
 
 #: includes/class-sp-countries.php:75
 msgid "Colombia"
-msgstr "Colombia"
+msgstr "Colômbia"
 
 #: includes/class-sp-countries.php:76
 msgid "Costa Rica"
@@ -220,19 +244,19 @@ msgstr "Cuba"
 
 #: includes/class-sp-countries.php:78
 msgid "Cape Verde"
-msgstr "Cape Verde"
+msgstr "Cabo Verde"
 
 #: includes/class-sp-countries.php:79
 msgid "Cyprus"
-msgstr "Cyprus"
+msgstr "Chipre"
 
 #: includes/class-sp-countries.php:80
 msgid "Czech Republic"
-msgstr "Czech Republic"
+msgstr "República Checa"
 
 #: includes/class-sp-countries.php:81
 msgid "Germany"
-msgstr "Germany"
+msgstr "Alemanha"
 
 #: includes/class-sp-countries.php:82
 msgid "Djibouti"
@@ -240,7 +264,7 @@ msgstr "Djibouti"
 
 #: includes/class-sp-countries.php:83
 msgid "Denmark"
-msgstr "Denmark"
+msgstr "Dinamarca"
 
 #: includes/class-sp-countries.php:84
 msgid "Dominica"
@@ -248,47 +272,47 @@ msgstr "Dominica"
 
 #: includes/class-sp-countries.php:85
 msgid "Dominican Republic"
-msgstr "Dominican Republic"
+msgstr "República Dominicana"
 
 #: includes/class-sp-countries.php:86
 msgid "Algeria"
-msgstr "Algeria"
+msgstr "Argélia"
 
 #: includes/class-sp-countries.php:87
 msgid "Ecuador"
-msgstr "Ecuador"
+msgstr "Equador"
 
 #: includes/class-sp-countries.php:88
 msgid "Estonia"
-msgstr "Estonia"
+msgstr "Estônia"
 
 #: includes/class-sp-countries.php:89
 msgid "Egypt"
-msgstr "Egypt"
+msgstr "Egito"
 
 #: includes/class-sp-countries.php:90
 msgid "Western Sahara"
-msgstr "Western Sahara"
+msgstr "Saara Ocidental"
 
 #: includes/class-sp-countries.php:91
 msgid "England"
-msgstr "England"
+msgstr "englaterra "
 
 #: includes/class-sp-countries.php:92
 msgid "Eritrea"
-msgstr "Eritrea"
+msgstr "Eritreia"
 
 #: includes/class-sp-countries.php:93
 msgid "Spain"
-msgstr "Spain"
+msgstr "Espanha"
 
 #: includes/class-sp-countries.php:94
 msgid "Ethiopia"
-msgstr "Ethiopia"
+msgstr "Etiópia"
 
 #: includes/class-sp-countries.php:95
 msgid "Finland"
-msgstr "Finland"
+msgstr "Finlândia"
 
 #: includes/class-sp-countries.php:96
 msgid "Fiji"
@@ -296,47 +320,47 @@ msgstr "Fiji"
 
 #: includes/class-sp-countries.php:97
 msgid "Micronesia"
-msgstr "Micronesia"
+msgstr "Micronésia"
 
 #: includes/class-sp-countries.php:98
 msgid "France"
-msgstr "France"
+msgstr "França"
 
 #: includes/class-sp-countries.php:99
 msgid "Gabon"
-msgstr "Gabon"
+msgstr "Gabão"
 
 #: includes/class-sp-countries.php:100
 msgid "United Kingdom"
-msgstr "United Kingdom"
+msgstr "Reino Unido"
 
 #: includes/class-sp-countries.php:101
 msgid "Grenada"
-msgstr "Grenada"
+msgstr "Granada"
 
 #: includes/class-sp-countries.php:102
 msgid "Georgia"
-msgstr "Georgia"
+msgstr "Geórgia"
 
 #: includes/class-sp-countries.php:103
 msgid "Ghana"
-msgstr "Ghana"
+msgstr "Gana"
 
 #: includes/class-sp-countries.php:104
 msgid "Gambia"
-msgstr "Gambia"
+msgstr "Gâmbia"
 
 #: includes/class-sp-countries.php:105
 msgid "Guinea"
-msgstr "Guinea"
+msgstr "Guiné"
 
 #: includes/class-sp-countries.php:106
 msgid "Equatorial Guinea"
-msgstr "Equatorial Guinea"
+msgstr "Guiné Equatorial"
 
 #: includes/class-sp-countries.php:107
 msgid "Greece"
-msgstr "Greece"
+msgstr "Grécia"
 
 #: includes/class-sp-countries.php:108
 msgid "Guatemala"
@@ -344,11 +368,11 @@ msgstr "Guatemala"
 
 #: includes/class-sp-countries.php:109
 msgid "Guinea-Bissau"
-msgstr "Guinea-Bissau"
+msgstr "Guiné-Bissau"
 
 #: includes/class-sp-countries.php:110
 msgid "Guyana"
-msgstr "Guyana"
+msgstr "Guiana"
 
 #: includes/class-sp-countries.php:111
 msgid "Hong Kong"
@@ -360,7 +384,7 @@ msgstr "Honduras"
 
 #: includes/class-sp-countries.php:113
 msgid "Croatia"
-msgstr "Croatia"
+msgstr "Croácia"
 
 #: includes/class-sp-countries.php:114
 msgid "Haiti"
@@ -368,15 +392,15 @@ msgstr "Haiti"
 
 #: includes/class-sp-countries.php:115
 msgid "Hungary"
-msgstr "Hungary"
+msgstr "Hungria"
 
 #: includes/class-sp-countries.php:116
 msgid "Indonesia"
-msgstr "Indonesia"
+msgstr "Indonésia"
 
 #: includes/class-sp-countries.php:117
 msgid "Ireland"
-msgstr "Ireland"
+msgstr "Irlanda"
 
 #: includes/class-sp-countries.php:118
 msgid "Israel"
@@ -384,23 +408,23 @@ msgstr "Israel"
 
 #: includes/class-sp-countries.php:119
 msgid "India"
-msgstr "India"
+msgstr "Índia"
 
 #: includes/class-sp-countries.php:120
 msgid "Iraq"
-msgstr "Iraq"
+msgstr "Iraque"
 
 #: includes/class-sp-countries.php:121
 msgid "Iran"
-msgstr "Iran"
+msgstr "Irã"
 
 #: includes/class-sp-countries.php:122
 msgid "Iceland"
-msgstr "Iceland"
+msgstr "Islândia"
 
 #: includes/class-sp-countries.php:123
 msgid "Italy"
-msgstr "Italy"
+msgstr "Itália"
 
 #: includes/class-sp-countries.php:124
 msgid "Jamaica"
@@ -408,51 +432,51 @@ msgstr "Jamaica"
 
 #: includes/class-sp-countries.php:125
 msgid "Jordan"
-msgstr "Jordan"
+msgstr "Jordânia"
 
 #: includes/class-sp-countries.php:126
 msgid "Japan"
-msgstr "Japan"
+msgstr "Japão"
 
 #: includes/class-sp-countries.php:127
 msgid "Kenya"
-msgstr "Kenya"
+msgstr "Quênia"
 
 #: includes/class-sp-countries.php:128
 msgid "Kyrgyzstan"
-msgstr "Kyrgyzstan"
+msgstr "Quirguistão"
 
 #: includes/class-sp-countries.php:129
 msgid "Cambodia"
-msgstr "Cambodia"
+msgstr "Camboja"
 
 #: includes/class-sp-countries.php:130
 msgid "Kiribati"
-msgstr "Kiribati"
+msgstr "Quiribáti"
 
 #: includes/class-sp-countries.php:131
 msgid "Comoros"
-msgstr "Comoros"
+msgstr "Comores"
 
 #: includes/class-sp-countries.php:132
 msgid "Saint Kitts and Nevis"
-msgstr "Saint Kitts and Nevis"
+msgstr "São Cristóvão e Nevis"
 
 #: includes/class-sp-countries.php:133
 msgid "North Korea"
-msgstr "North Korea"
+msgstr "Coréia do Norte"
 
 #: includes/class-sp-countries.php:134
 msgid "South Korea"
-msgstr "South Korea"
+msgstr "Coréia do Sul"
 
 #: includes/class-sp-countries.php:135
 msgid "Kuwait"
-msgstr "Kuwait"
+msgstr "Kuweit"
 
 #: includes/class-sp-countries.php:136
 msgid "Kazakhstan"
-msgstr "Kazakhstan"
+msgstr "Cazaquistão"
 
 #: includes/class-sp-countries.php:137
 msgid "Laos"
@@ -460,11 +484,11 @@ msgstr "Laos"
 
 #: includes/class-sp-countries.php:138
 msgid "Lebanon"
-msgstr "Lebanon"
+msgstr "Líbano"
 
 #: includes/class-sp-countries.php:139
 msgid "Saint Lucia"
-msgstr "Saint Lucia"
+msgstr "Santa Lúcia"
 
 #: includes/class-sp-countries.php:140
 msgid "Liechtenstein"
@@ -476,39 +500,39 @@ msgstr "Sri Lanka"
 
 #: includes/class-sp-countries.php:142
 msgid "Liberia"
-msgstr "Liberia"
+msgstr "Libéria"
 
 #: includes/class-sp-countries.php:143
 msgid "Lesotho"
-msgstr "Lesotho"
+msgstr "Lesoto"
 
 #: includes/class-sp-countries.php:144
 msgid "Lithuania"
-msgstr "Lithuania"
+msgstr "Lituânia"
 
 #: includes/class-sp-countries.php:145
 msgid "Luxembourg"
-msgstr "Luxembourg"
+msgstr "Luxemburgo"
 
 #: includes/class-sp-countries.php:146
 msgid "Latvia"
-msgstr "Latvia"
+msgstr "Látvia"
 
 #: includes/class-sp-countries.php:147
 msgid "Libya"
-msgstr "Libya"
+msgstr "Líbia"
 
 #: includes/class-sp-countries.php:148
 msgid "Morocco"
-msgstr "Morocco"
+msgstr "Marrocos"
 
 #: includes/class-sp-countries.php:149
 msgid "Monaco"
-msgstr "Monaco"
+msgstr "Mônaco"
 
 #: includes/class-sp-countries.php:150
 msgid "Moldova"
-msgstr "Moldova"
+msgstr "Moldávia"
 
 #: includes/class-sp-countries.php:151
 msgid "Montenegro"
@@ -516,15 +540,15 @@ msgstr "Montenegro"
 
 #: includes/class-sp-countries.php:152
 msgid "Madagascar"
-msgstr "Madagascar"
+msgstr "Madagáscar"
 
 #: includes/class-sp-countries.php:153
 msgid "Marshall Islands"
-msgstr "Marshall Islands"
+msgstr "Ilhas Marshall"
 
 #: includes/class-sp-countries.php:154
 msgid "Macedonia"
-msgstr "Macedonia"
+msgstr "República da Macedónia"
 
 #: includes/class-sp-countries.php:155
 msgid "Mali"
@@ -532,11 +556,11 @@ msgstr "Mali"
 
 #: includes/class-sp-countries.php:156
 msgid "Burma"
-msgstr "Burma"
+msgstr ""
 
 #: includes/class-sp-countries.php:157
 msgid "Mongolia"
-msgstr "Mongolia"
+msgstr "Mongólia"
 
 #: includes/class-sp-countries.php:158
 msgid "Macau"
@@ -544,7 +568,7 @@ msgstr "Macau"
 
 #: includes/class-sp-countries.php:159
 msgid "Mauritania"
-msgstr "Mauritania"
+msgstr "Mauritânia"
 
 #: includes/class-sp-countries.php:160
 msgid "Malta"
@@ -552,11 +576,11 @@ msgstr "Malta"
 
 #: includes/class-sp-countries.php:161
 msgid "Mauritius"
-msgstr "Mauritius"
+msgstr "Maurício"
 
 #: includes/class-sp-countries.php:162
 msgid "Maldives"
-msgstr "Maldives"
+msgstr "Maldivas"
 
 #: includes/class-sp-countries.php:163
 msgid "Malawi"
@@ -564,43 +588,43 @@ msgstr "Malawi"
 
 #: includes/class-sp-countries.php:164
 msgid "Mexico"
-msgstr "Mexico"
+msgstr "México"
 
 #: includes/class-sp-countries.php:165
 msgid "Malaysia"
-msgstr "Malaysia"
+msgstr "Malásia"
 
 #: includes/class-sp-countries.php:166
 msgid "Mozambique"
-msgstr "Mozambique"
+msgstr "Moçambique"
 
 #: includes/class-sp-countries.php:167
 msgid "Namibia"
-msgstr "Namibia"
+msgstr "Namíbia"
 
 #: includes/class-sp-countries.php:168
 msgid "Northern Ireland"
-msgstr "Northern Ireland"
+msgstr "Irlanda do Norte"
 
 #: includes/class-sp-countries.php:169
 msgid "Niger"
-msgstr "Niger"
+msgstr "Níger"
 
 #: includes/class-sp-countries.php:170
 msgid "Nigeria"
-msgstr "Nigeria"
+msgstr "Nigéria"
 
 #: includes/class-sp-countries.php:171
 msgid "Nicaragua"
-msgstr "Nicaragua"
+msgstr "Nicarágua"
 
 #: includes/class-sp-countries.php:172
 msgid "Netherlands"
-msgstr "Netherlands"
+msgstr "Holanda"
 
 #: includes/class-sp-countries.php:173
 msgid "Norway"
-msgstr "Norway"
+msgstr "Noruega"
 
 #: includes/class-sp-countries.php:174
 msgid "Nepal"
@@ -612,15 +636,15 @@ msgstr "Nauru"
 
 #: includes/class-sp-countries.php:176
 msgid "New Zealand"
-msgstr "New Zealand"
+msgstr "Nova Zelândia"
 
 #: includes/class-sp-countries.php:177
 msgid "Oman"
-msgstr "Oman"
+msgstr "Omã"
 
 #: includes/class-sp-countries.php:178
 msgid "Panama"
-msgstr "Panama"
+msgstr "Panamá"
 
 #: includes/class-sp-countries.php:179
 msgid "Peru"
@@ -628,19 +652,19 @@ msgstr "Peru"
 
 #: includes/class-sp-countries.php:180
 msgid "Papua New Guinea"
-msgstr "Papua New Guinea"
+msgstr "Papua-Nova Guiné"
 
 #: includes/class-sp-countries.php:181
 msgid "Philippines"
-msgstr "Philippines"
+msgstr "Filipinas"
 
 #: includes/class-sp-countries.php:182
 msgid "Pakistan"
-msgstr "Pakistan"
+msgstr "Paquistão"
 
 #: includes/class-sp-countries.php:183
 msgid "Poland"
-msgstr "Poland"
+msgstr "Polônia"
 
 #: includes/class-sp-countries.php:184
 msgid "Portugal"
@@ -652,35 +676,35 @@ msgstr "Palau"
 
 #: includes/class-sp-countries.php:186
 msgid "Paraguay"
-msgstr "Paraguay"
+msgstr "Paraguai"
 
 #: includes/class-sp-countries.php:187
 msgid "Qatar"
-msgstr "Qatar"
+msgstr "Catar"
 
 #: includes/class-sp-countries.php:188
 msgid "Romania"
-msgstr "Romania"
+msgstr "Romênia"
 
 #: includes/class-sp-countries.php:189
 msgid "Serbia"
-msgstr "Serbia"
+msgstr "Sérvia"
 
 #: includes/class-sp-countries.php:190
 msgid "Russia"
-msgstr "Russia"
+msgstr "Rússia"
 
 #: includes/class-sp-countries.php:191
 msgid "Rwanda"
-msgstr "Rwanda"
+msgstr "Ruanda"
 
 #: includes/class-sp-countries.php:192
 msgid "Saudi Arabia"
-msgstr "Saudi Arabia"
+msgstr "Arábia Saudita"
 
 #: includes/class-sp-countries.php:193
 msgid "Solomon Islands"
-msgstr "Solomon Islands"
+msgstr "Ilhas Salomão"
 
 #: includes/class-sp-countries.php:194
 msgid "Seychelles"
@@ -688,31 +712,31 @@ msgstr "Seychelles"
 
 #: includes/class-sp-countries.php:195
 msgid "Sudan"
-msgstr "Sudan"
+msgstr "Sudão"
 
 #: includes/class-sp-countries.php:196
 msgid "Sweden"
-msgstr "Sweden"
+msgstr "Suécia"
 
 #: includes/class-sp-countries.php:197
 msgid "Scotland"
-msgstr "Scotland"
+msgstr "Escocia "
 
 #: includes/class-sp-countries.php:198
 msgid "Singapore"
-msgstr "Singapore"
+msgstr "Cingapura"
 
 #: includes/class-sp-countries.php:199
 msgid "Slovenia"
-msgstr "Slovenia"
+msgstr "Eslovenia"
 
 #: includes/class-sp-countries.php:200
 msgid "Slovakia"
-msgstr "Slovakia"
+msgstr "Eslováquia"
 
 #: includes/class-sp-countries.php:201
 msgid "Sierra Leone"
-msgstr "Sierra Leone"
+msgstr "Serra Leoa"
 
 #: includes/class-sp-countries.php:202
 msgid "San Marino"
@@ -724,7 +748,7 @@ msgstr "Senegal"
 
 #: includes/class-sp-countries.php:204
 msgid "Somalia"
-msgstr "Somalia"
+msgstr "Somália"
 
 #: includes/class-sp-countries.php:205
 msgid "Suriname"
@@ -732,7 +756,7 @@ msgstr "Suriname"
 
 #: includes/class-sp-countries.php:206
 msgid "Sao Tome and Principe"
-msgstr "Sao Tome and Principe"
+msgstr "São Tomé e Príncipe"
 
 #: includes/class-sp-countries.php:207
 msgid "El Salvador"
@@ -740,11 +764,11 @@ msgstr "El Salvador"
 
 #: includes/class-sp-countries.php:208
 msgid "Swaziland"
-msgstr "Swaziland"
+msgstr "Suazilândia"
 
 #: includes/class-sp-countries.php:209
 msgid "Chad"
-msgstr "Chad"
+msgstr "Chade"
 
 #: includes/class-sp-countries.php:210
 msgid "Togo"
@@ -752,23 +776,23 @@ msgstr "Togo"
 
 #: includes/class-sp-countries.php:211
 msgid "Thailand"
-msgstr "Thailand"
+msgstr "Tailândia"
 
 #: includes/class-sp-countries.php:212
 msgid "Tajikistan"
-msgstr "Tajikistan"
+msgstr "Tajiquistão"
 
 #: includes/class-sp-countries.php:213
 msgid "East Timor"
-msgstr "East Timor"
+msgstr "Tmor Leste"
 
 #: includes/class-sp-countries.php:214
 msgid "Turkmenistan"
-msgstr "Turkmenistan"
+msgstr "Turcomenistão"
 
 #: includes/class-sp-countries.php:215
 msgid "Tunisia"
-msgstr "Tunisia"
+msgstr "Tunísia"
 
 #: includes/class-sp-countries.php:216
 msgid "Tonga"
@@ -776,11 +800,11 @@ msgstr "Tonga"
 
 #: includes/class-sp-countries.php:217
 msgid "Turkey"
-msgstr "Turkey"
+msgstr "Turquia"
 
 #: includes/class-sp-countries.php:218
 msgid "Trinidad and Tobago"
-msgstr "Trinidad and Tobago"
+msgstr "Trinidad e Tobago"
 
 #: includes/class-sp-countries.php:219
 msgid "Tuvalu"
@@ -792,11 +816,11 @@ msgstr "Taiwan"
 
 #: includes/class-sp-countries.php:221
 msgid "Tanzania"
-msgstr "Tanzania"
+msgstr "Tanzânia"
 
 #: includes/class-sp-countries.php:222
 msgid "Ukraine"
-msgstr "Ukraine"
+msgstr "Ucrânia"
 
 #: includes/class-sp-countries.php:223
 msgid "Uganda"
@@ -804,23 +828,23 @@ msgstr "Uganda"
 
 #: includes/class-sp-countries.php:224
 msgid "United States"
-msgstr "United States"
+msgstr "Estados Unidos"
 
 #: includes/class-sp-countries.php:225
 msgid "Uruguay"
-msgstr "Uruguay"
+msgstr "Uruguai"
 
 #: includes/class-sp-countries.php:226
 msgid "Uzbekistan"
-msgstr "Uzbekistan"
+msgstr "Uzbequistão"
 
 #: includes/class-sp-countries.php:227
 msgid "Vatican City"
-msgstr "Vatican City"
+msgstr ""
 
 #: includes/class-sp-countries.php:228
 msgid "Saint Vincent and the Grenadines"
-msgstr "Saint Vincent and the Grenadines"
+msgstr "São Vicente e Granadinas"
 
 #: includes/class-sp-countries.php:229
 msgid "Venezuela"
@@ -828,7 +852,7 @@ msgstr "Venezuela"
 
 #: includes/class-sp-countries.php:230
 msgid "Vietnam"
-msgstr "Vietnam"
+msgstr "Vietnã"
 
 #: includes/class-sp-countries.php:231
 msgid "Vanuatu"
@@ -836,7 +860,7 @@ msgstr "Vanuatu"
 
 #: includes/class-sp-countries.php:232
 msgid "Wales"
-msgstr "Wales"
+msgstr ""
 
 #: includes/class-sp-countries.php:233
 msgid "Samoa"
@@ -844,50 +868,50 @@ msgstr "Samoa"
 
 #: includes/class-sp-countries.php:234
 msgid "Yemen"
-msgstr "Yemen"
+msgstr "Iémen"
 
 #: includes/class-sp-countries.php:235
 msgid "South Africa"
-msgstr "South Africa"
+msgstr "África do Sul"
 
 #: includes/class-sp-countries.php:236
 msgid "Zambia"
-msgstr "Zambia"
+msgstr "Zâmbia"
 
 #: includes/class-sp-countries.php:237
 msgid "Zimbabwe"
-msgstr "Zimbabwe"
+msgstr "Zimbábue"
 
 #: includes/class-sp-formats.php:27 includes/class-sp-post-types.php:36
-#: includes/sp-core-functions.php:3217
-#: includes/admin/importers/class-sp-event-importer.php:570
+#: includes/sp-core-functions.php:2421
+#: includes/admin/importers/class-sp-event-importer.php:458
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:49
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:95
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:113
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:49
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:49
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:41
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:29
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:28
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:30
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:27
 msgid "League"
-msgstr "League"
+msgstr ""
 
 #: includes/class-sp-formats.php:28
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:116
 msgid "Friendly"
-msgstr "Friendly"
+msgstr ""
 
 #: includes/class-sp-formats.php:31 includes/class-sp-post-types.php:372
 #: includes/widgets/class-sp-widget-event-blocks.php:48
 #: includes/widgets/class-sp-widget-event-calendar.php:44
 #: includes/widgets/class-sp-widget-event-list.php:51
 msgid "Calendar"
-msgstr "Calendar"
+msgstr ""
 
 #: includes/class-sp-formats.php:32 includes/class-sp-formats.php:36
 msgid "List"
-msgstr "List"
+msgstr "Lista"
 
 #: includes/class-sp-formats.php:33
 msgid "Blocks"
@@ -895,66 +919,67 @@ msgstr ""
 
 #: includes/class-sp-formats.php:37
 msgid "Gallery"
-msgstr "Gallery"
+msgstr ""
 
-#: includes/class-sp-frontend-scripts.php:56
-#: includes/admin/class-sp-admin-assets.php:104
-#: includes/admin/class-sp-admin-dashboard.php:54 templates/countdown.php:49
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:103
+#: includes/admin/class-sp-admin-dashboard.php:54 templates/countdown.php:64
 msgid "days"
-msgstr "days"
+msgstr "dias"
 
-#: includes/class-sp-frontend-scripts.php:56
-#: includes/admin/class-sp-admin-assets.php:105 templates/countdown.php:50
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:104 templates/countdown.php:65
 msgid "hrs"
-msgstr "hrs"
+msgstr ""
 
-#: includes/class-sp-frontend-scripts.php:56
-#: includes/admin/class-sp-admin-assets.php:106 templates/countdown.php:51
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:105 templates/countdown.php:66
 msgid "mins"
-msgstr "mins"
+msgstr ""
 
-#: includes/class-sp-frontend-scripts.php:56
-#: includes/admin/class-sp-admin-assets.php:107 templates/countdown.php:52
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:106 templates/countdown.php:67
 msgid "secs"
-msgstr "secs"
+msgstr ""
 
-#: includes/class-sp-frontend-scripts.php:56
+#: includes/class-sp-frontend-scripts.php:57
 msgid "Previous"
-msgstr "Previous"
+msgstr ""
 
-#: includes/class-sp-frontend-scripts.php:56
+#: includes/class-sp-frontend-scripts.php:57
 msgid "Next"
-msgstr "Next"
+msgstr ""
 
-#: includes/class-sp-install.php:162 includes/class-sp-post-types.php:464
-#: includes/sp-core-functions.php:3222
+#: includes/class-sp-install.php:160 includes/class-sp-post-types.php:464
+#: includes/sp-core-functions.php:2426
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:62
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:116
 msgid "Player"
-msgstr "Player"
+msgstr "Jogador"
 
-#: includes/class-sp-install.php:184 includes/class-sp-post-types.php:524
-#: includes/class-sp-post-types.php:525 includes/sp-core-functions.php:3230
+#: includes/class-sp-install.php:182 includes/class-sp-post-types.php:524
+#: includes/class-sp-post-types.php:525 includes/sp-core-functions.php:2434
 #: includes/admin/class-sp-admin-permalink-settings.php:35
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:41
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:42
 msgid "Staff"
-msgstr "Staff"
+msgstr "Equipa técnica"
 
-#: includes/class-sp-install.php:206
+#: includes/class-sp-install.php:204
 msgid "Team Manager"
-msgstr "Team Manager"
+msgstr ""
 
-#: includes/class-sp-install.php:261
+#: includes/class-sp-install.php:259
 msgid "League Manager"
-msgstr "League Manager"
+msgstr ""
 
-#: includes/class-sp-install.php:455
+#: includes/class-sp-install.php:456
 msgid "What's new:"
-msgstr "What's new:"
+msgstr "Novidades:"
 
 #: includes/class-sp-post-types.php:35 includes/class-sp-post-types.php:49
-#: includes/admin/class-sp-admin-menus.php:204
+#: includes/admin/class-sp-admin-menus.php:55
+#: includes/admin/class-sp-admin-menus.php:235
 #: includes/admin/class-sp-admin-permalink-settings.php:29
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:68
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:67
@@ -965,9 +990,9 @@ msgstr "What's new:"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:93
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:100
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:45
-#: includes/admin/views/html-admin-page-status.php:290
+#: includes/admin/views/html-admin-page-status.php:296
 msgid "Leagues"
-msgstr "Leagues"
+msgstr ""
 
 #: includes/class-sp-post-types.php:37 includes/class-sp-post-types.php:66
 #: includes/class-sp-post-types.php:95 includes/class-sp-post-types.php:124
@@ -981,11 +1006,11 @@ msgstr "Leagues"
 #: includes/widgets/class-sp-widget-event-calendar.php:48
 #: includes/widgets/class-sp-widget-event-list.php:55
 msgid "All"
-msgstr "All"
+msgstr "Todos"
 
 #: includes/class-sp-post-types.php:38
 msgid "Edit League"
-msgstr "Edit League"
+msgstr ""
 
 #: includes/class-sp-post-types.php:39 includes/class-sp-post-types.php:68
 #: includes/class-sp-post-types.php:97 includes/class-sp-post-types.php:126
@@ -997,26 +1022,26 @@ msgstr "Edit League"
 #: includes/class-sp-post-types.php:468 includes/class-sp-post-types.php:498
 #: includes/class-sp-post-types.php:529
 msgid "View"
-msgstr "View"
+msgstr "Visualizar"
 
 #: includes/class-sp-post-types.php:40 includes/class-sp-post-types.php:69
 #: includes/class-sp-post-types.php:98 includes/class-sp-post-types.php:127
 msgid "Update"
-msgstr "Update"
+msgstr "Atualizar"
 
 #: includes/class-sp-post-types.php:41 includes/class-sp-post-types.php:70
 #: includes/class-sp-post-types.php:99 includes/class-sp-post-types.php:128
 #: includes/sp-core-functions.php:765 includes/sp-core-functions.php:782
-#: includes/admin/class-sp-admin-menus.php:200
-#: includes/admin/importers/class-sp-event-importer.php:580
-#: includes/admin/importers/class-sp-event-importer.php:595
+#: includes/admin/class-sp-admin-menus.php:231
+#: includes/admin/importers/class-sp-event-importer.php:468
+#: includes/admin/importers/class-sp-event-importer.php:483
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:52
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:67
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:82
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:97
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:40
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:55
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:71
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:39
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:56
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:73
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:40
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:54
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:69
@@ -1025,13 +1050,13 @@ msgstr "Update"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:37
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:51
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:58
-#: includes/admin/settings/class-sp-settings-config.php:119
-#: includes/admin/settings/class-sp-settings-config.php:191
-#: includes/admin/settings/class-sp-settings-config.php:242
-#: includes/admin/settings/class-sp-settings-config.php:298
-#: includes/admin/settings/class-sp-settings-config.php:351
-#: includes/admin/settings/class-sp-settings-config.php:405
-#: includes/widgets/class-sp-widget-countdown.php:53
+#: includes/admin/settings/class-sp-settings-config.php:121
+#: includes/admin/settings/class-sp-settings-config.php:194
+#: includes/admin/settings/class-sp-settings-config.php:246
+#: includes/admin/settings/class-sp-settings-config.php:304
+#: includes/admin/settings/class-sp-settings-config.php:357
+#: includes/admin/settings/class-sp-settings-config.php:413
+#: includes/widgets/class-sp-widget-countdown.php:56
 #: includes/widgets/class-sp-widget-event-blocks.php:60
 #: includes/widgets/class-sp-widget-event-calendar.php:56
 #: includes/widgets/class-sp-widget-event-list.php:63
@@ -1041,7 +1066,7 @@ msgstr "Update"
 #: includes/widgets/class-sp-widget-player-list.php:64
 #: includes/widgets/class-sp-widget-player-list.php:110
 msgid "Add New"
-msgstr "Add New"
+msgstr "Adicionar novo"
 
 #: includes/class-sp-post-types.php:42 includes/class-sp-post-types.php:71
 #: includes/class-sp-post-types.php:100 includes/class-sp-post-types.php:129
@@ -1054,17 +1079,17 @@ msgstr "Add New"
 #: includes/widgets/class-sp-widget-player-gallery.php:78
 #: includes/widgets/class-sp-widget-player-list.php:99
 msgid "Name"
-msgstr "Name"
+msgstr "Nome"
 
 #: includes/class-sp-post-types.php:43 includes/class-sp-post-types.php:72
 #: includes/class-sp-post-types.php:101 includes/class-sp-post-types.php:130
 msgid "Parent"
-msgstr "Parent"
+msgstr "Pai"
 
 #: includes/class-sp-post-types.php:44 includes/class-sp-post-types.php:73
 #: includes/class-sp-post-types.php:102 includes/class-sp-post-types.php:131
 msgid "Parent:"
-msgstr "Parent:"
+msgstr ""
 
 #: includes/class-sp-post-types.php:45 includes/class-sp-post-types.php:74
 #: includes/class-sp-post-types.php:103 includes/class-sp-post-types.php:132
@@ -1076,7 +1101,7 @@ msgstr "Parent:"
 #: includes/class-sp-post-types.php:469 includes/class-sp-post-types.php:499
 #: includes/class-sp-post-types.php:530
 msgid "Search"
-msgstr "Search"
+msgstr "Pesquisa"
 
 #: includes/class-sp-post-types.php:46 includes/class-sp-post-types.php:75
 #: includes/class-sp-post-types.php:104 includes/class-sp-post-types.php:133
@@ -1094,12 +1119,13 @@ msgstr "Search"
 #: includes/class-sp-post-types.php:500 includes/class-sp-post-types.php:501
 #: includes/class-sp-post-types.php:531 includes/class-sp-post-types.php:532
 #: includes/sp-core-functions.php:684
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:111
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:117
 msgid "No results found."
-msgstr "No results found."
+msgstr "Nenhum resultado encontrado."
 
 #: includes/class-sp-post-types.php:64 includes/class-sp-post-types.php:78
-#: includes/admin/class-sp-admin-menus.php:212
+#: includes/admin/class-sp-admin-menus.php:62
+#: includes/admin/class-sp-admin-menus.php:243
 #: includes/admin/class-sp-admin-permalink-settings.php:30
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:69
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:68
@@ -1108,90 +1134,90 @@ msgstr "No results found."
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:138
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:108
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:115
-#: includes/admin/views/html-admin-page-status.php:300
+#: includes/admin/views/html-admin-page-status.php:306
 msgid "Seasons"
-msgstr "Seasons"
+msgstr "Épocas"
 
-#: includes/class-sp-post-types.php:65 includes/sp-core-functions.php:3229
-#: includes/admin/importers/class-sp-event-importer.php:585
+#: includes/class-sp-post-types.php:65 includes/sp-core-functions.php:2433
+#: includes/admin/importers/class-sp-event-importer.php:473
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:50
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:96
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:50
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:50
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:56
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:44
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:45
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:44
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:66
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:69
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:41
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:69
 msgid "Season"
-msgstr "Season"
+msgstr "Época"
 
 #: includes/class-sp-post-types.php:67
 msgid "Edit Season"
-msgstr "Edit Season"
+msgstr ""
 
 #: includes/class-sp-post-types.php:93 includes/class-sp-post-types.php:107
-#: includes/admin/class-sp-admin-menus.php:216
+#: includes/admin/class-sp-admin-menus.php:247
 #: includes/admin/class-sp-admin-permalink-settings.php:26
-#: includes/admin/views/html-admin-page-status.php:310
+#: includes/admin/views/html-admin-page-status.php:316
 msgid "Venues"
-msgstr "Venues"
+msgstr "Recintos"
 
-#: includes/class-sp-post-types.php:94 includes/sp-core-functions.php:3237
+#: includes/class-sp-post-types.php:94 includes/sp-core-functions.php:2441
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:51
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:97
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:71
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:60
-#: includes/admin/settings/class-sp-settings-events.php:47
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:62
+#: includes/admin/settings/class-sp-settings-events.php:68
 #: includes/widgets/class-sp-widget-event-list.php:98
 msgid "Venue"
-msgstr "Venue"
+msgstr "Recinto"
 
 #: includes/class-sp-post-types.php:96
 msgid "Edit Venue"
-msgstr "Edit Venue"
+msgstr ""
 
 #: includes/class-sp-post-types.php:122 includes/class-sp-post-types.php:136
-#: includes/admin/class-sp-admin-menus.php:208
+#: includes/admin/class-sp-admin-menus.php:239
 #: includes/admin/class-sp-admin-permalink-settings.php:33
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:66
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:71
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:78
-#: includes/admin/views/html-admin-page-status.php:320
+#: includes/admin/views/html-admin-page-status.php:326
 msgid "Positions"
-msgstr "Positions"
+msgstr "Posições"
 
-#: includes/class-sp-post-types.php:123 includes/sp-core-functions.php:3224
+#: includes/class-sp-post-types.php:123 includes/sp-core-functions.php:2428
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:77
 msgid "Position"
-msgstr "Position"
+msgstr "Posição"
 
 #: includes/class-sp-post-types.php:125
 msgid "Edit Position"
-msgstr "Edit Position"
+msgstr ""
 
-#: includes/class-sp-post-types.php:161 includes/sp-core-functions.php:3228
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:111
+#: includes/class-sp-post-types.php:161 includes/sp-core-functions.php:2432
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:112
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:27
-#: includes/admin/settings/class-sp-settings-config.php:148
-#: includes/admin/settings/class-sp-settings-config.php:153
-#: includes/admin/views/html-admin-page-status.php:231
+#: includes/admin/settings/class-sp-settings-config.php:150
+#: includes/admin/settings/class-sp-settings-config.php:154
+#: includes/admin/views/html-admin-page-status.php:237
 msgid "Team Results"
 msgstr ""
 
 #: includes/class-sp-post-types.php:162
 msgid "Result"
-msgstr "Result"
+msgstr "Resultado"
 
 #: includes/class-sp-post-types.php:163
 msgid "Add New Result"
-msgstr "Add New Result"
+msgstr ""
 
 #: includes/class-sp-post-types.php:164
 msgid "Edit Result"
-msgstr "Edit Result"
+msgstr ""
 
 #: includes/class-sp-post-types.php:165 includes/class-sp-post-types.php:195
 #: includes/class-sp-post-types.php:225 includes/class-sp-post-types.php:255
@@ -1201,276 +1227,277 @@ msgstr "Edit Result"
 #: includes/class-sp-post-types.php:467 includes/class-sp-post-types.php:497
 #: includes/class-sp-post-types.php:528
 msgid "New"
-msgstr "New"
+msgstr ""
 
 #: includes/class-sp-post-types.php:191
 #: includes/admin/settings/class-sp-settings-config.php:96
-#: includes/admin/views/html-admin-page-status.php:241
+#: includes/admin/views/html-admin-page-status.php:227
 msgid "Event Outcomes"
 msgstr ""
 
-#: includes/class-sp-post-types.php:192 includes/sp-core-functions.php:3219
+#: includes/class-sp-post-types.php:192 includes/sp-core-functions.php:2423
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:60
 msgid "Outcome"
-msgstr "Outcome"
+msgstr ""
 
 #: includes/class-sp-post-types.php:193
 msgid "Add New Outcome"
-msgstr "Add New Outcome"
+msgstr ""
 
 #: includes/class-sp-post-types.php:194
 msgid "Edit Outcome"
-msgstr "Edit Outcome"
+msgstr ""
 
 #: includes/class-sp-post-types.php:221
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:123
-#: includes/admin/settings/class-sp-settings-config.php:269
-#: includes/admin/views/html-admin-page-status.php:251
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:124
+#: includes/admin/settings/class-sp-settings-config.php:273
+#: includes/admin/views/html-admin-page-status.php:257
 msgid "Table Columns"
 msgstr ""
 
 #: includes/class-sp-post-types.php:222
 msgid "Column"
-msgstr "Column"
+msgstr "Coluna"
 
 #: includes/class-sp-post-types.php:223
 msgid "Add New Column"
-msgstr "Add New Column"
+msgstr ""
 
 #: includes/class-sp-post-types.php:224
 msgid "Edit Column"
-msgstr "Edit Column"
+msgstr ""
 
 #: includes/class-sp-post-types.php:251
-#: includes/admin/settings/class-sp-settings-config.php:326
-#: includes/admin/views/html-admin-page-status.php:261
+#: includes/admin/settings/class-sp-settings-config.php:332
+#: includes/admin/views/html-admin-page-status.php:267
 msgid "Player Metrics"
 msgstr ""
 
 #: includes/class-sp-post-types.php:252
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:55
 msgid "Metric"
-msgstr "Metric"
+msgstr ""
 
 #: includes/class-sp-post-types.php:253
 msgid "Add New Metric"
-msgstr "Add New Metric"
+msgstr ""
 
 #: includes/class-sp-post-types.php:254
 msgid "Edit Metric"
-msgstr "Edit Metric"
+msgstr ""
 
 #: includes/class-sp-post-types.php:281 includes/class-sp-post-types.php:282
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:112
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:113
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:35
-#: includes/admin/settings/class-sp-settings-config.php:219
-#: includes/admin/settings/class-sp-settings-events.php:72
-#: includes/admin/views/html-admin-page-status.php:271
+#: includes/admin/settings/class-sp-settings-config.php:221
+#: includes/admin/settings/class-sp-settings-events.php:93
+#: includes/admin/views/html-admin-page-status.php:247
 msgid "Player Performance"
 msgstr ""
 
 #: includes/class-sp-post-types.php:283
 msgid "Add New Performance"
-msgstr "Add New Performance"
+msgstr ""
 
 #: includes/class-sp-post-types.php:284
 msgid "Edit Performance"
-msgstr "Edit Performance"
+msgstr ""
 
 #: includes/class-sp-post-types.php:311
-#: includes/admin/settings/class-sp-settings-config.php:378
+#: includes/admin/settings/class-sp-settings-config.php:384
+#: includes/admin/views/html-admin-page-status.php:277
 msgid "Player Statistics"
 msgstr ""
 
 #: includes/class-sp-post-types.php:312
 msgid "Statistic"
-msgstr "Statistic"
+msgstr ""
 
 #: includes/class-sp-post-types.php:313
 msgid "Add New Statistic"
-msgstr "Add New Statistic"
+msgstr ""
 
 #: includes/class-sp-post-types.php:314
 msgid "Edit Statistic"
-msgstr "Edit Statistic"
+msgstr ""
 
 #: includes/class-sp-post-types.php:341
 #: includes/admin/class-sp-admin-permalink-settings.php:25
-#: includes/admin/class-sp-admin-taxonomies.php:135
+#: includes/admin/class-sp-admin-taxonomies.php:134
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:53
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:119
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:120
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:40
 #: includes/admin/settings/class-sp-settings-events.php:25
 msgid "Events"
-msgstr "Events"
+msgstr ""
 
-#: includes/class-sp-post-types.php:342 includes/sp-core-functions.php:3216
+#: includes/class-sp-post-types.php:342 includes/sp-core-functions.php:2420
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:91
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:194
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:196
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:52
-#: includes/widgets/class-sp-widget-countdown.php:39
+#: includes/widgets/class-sp-widget-countdown.php:42
 #: includes/widgets/class-sp-widget-event-list.php:95
 msgid "Event"
-msgstr "Event"
+msgstr ""
 
 #: includes/class-sp-post-types.php:343
-#: includes/admin/class-sp-admin-welcome.php:248
+#: includes/admin/class-sp-admin-welcome.php:232
 msgid "Add New Event"
-msgstr "Add New Event"
+msgstr ""
 
 #: includes/class-sp-post-types.php:344
 msgid "Edit Event"
-msgstr "Edit Event"
+msgstr ""
 
 #: includes/class-sp-post-types.php:371
 #: includes/admin/class-sp-admin-permalink-settings.php:27
-#: includes/admin/settings/class-sp-settings-events.php:81
+#: includes/admin/settings/class-sp-settings-events.php:102
 msgid "Calendars"
-msgstr "Calendars"
+msgstr ""
 
 #: includes/class-sp-post-types.php:373
 msgid "Add New Calendar"
-msgstr "Add New Calendar"
+msgstr ""
 
 #: includes/class-sp-post-types.php:374
 msgid "Edit Calendar"
-msgstr "Edit Calendar"
+msgstr ""
 
-#: includes/class-sp-post-types.php:402 includes/sp-core-functions.php:3233
+#: includes/class-sp-post-types.php:402 includes/sp-core-functions.php:2437
 #: includes/admin/class-sp-admin-permalink-settings.php:28
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:94
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:67
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:66
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:51
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:109
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:110
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:58
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:93
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:108
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:85
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:101
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:55
+#: includes/admin/settings/class-sp-settings-events.php:60
+#: includes/admin/settings/class-sp-settings-events.php:105
 #: includes/admin/settings/class-sp-settings-teams.php:25
 #: includes/admin/settings/class-sp-settings-teams.php:48
 #: includes/widgets/class-sp-widget-event-list.php:96
 msgid "Teams"
-msgstr "Teams"
+msgstr "Equipas"
 
-#: includes/class-sp-post-types.php:403 includes/sp-core-functions.php:3232
+#: includes/class-sp-post-types.php:403 includes/sp-core-functions.php:2436
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:52
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:51
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:86
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:56
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:58
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:94
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:67
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:71
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:114
-#: includes/admin/settings/class-sp-settings-events.php:139
-#: includes/admin/settings/class-sp-settings-events.php:141
-#: includes/admin/settings/class-sp-settings-events.php:142
+#: includes/admin/settings/class-sp-settings-events.php:158
 msgid "Team"
-msgstr "Team"
+msgstr "Equipa"
 
 #: includes/class-sp-post-types.php:404
-#: includes/admin/class-sp-admin-welcome.php:246
+#: includes/admin/class-sp-admin-welcome.php:230
 msgid "Add New Team"
-msgstr "Add New Team"
+msgstr ""
 
 #: includes/class-sp-post-types.php:405
 msgid "Edit Team"
-msgstr "Edit Team"
+msgstr ""
 
 #: includes/class-sp-post-types.php:432
 #: includes/admin/class-sp-admin-permalink-settings.php:31
 #: includes/admin/settings/class-sp-settings-teams.php:45
 msgid "League Tables"
-msgstr "League Tables"
+msgstr ""
 
 #: includes/class-sp-post-types.php:433
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:130
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:131
 #: includes/widgets/class-sp-widget-league-table.php:50
 msgid "League Table"
-msgstr "League Table"
+msgstr ""
 
 #: includes/class-sp-post-types.php:434
 msgid "Add New League Table"
-msgstr "Add New League Table"
+msgstr ""
 
 #: includes/class-sp-post-types.php:435
 msgid "Edit League Table"
-msgstr "Edit League Table"
+msgstr ""
 
 #: includes/class-sp-post-types.php:463
 #: includes/admin/class-sp-admin-permalink-settings.php:32
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:52
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:40
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:41
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:102
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:149
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:103
 #: includes/admin/settings/class-sp-settings-players.php:25
 #: includes/admin/settings/class-sp-settings-players.php:56
 msgid "Players"
-msgstr "Players"
+msgstr "Jogadores"
 
 #: includes/class-sp-post-types.php:465
-#: includes/admin/class-sp-admin-welcome.php:247
+#: includes/admin/class-sp-admin-welcome.php:231
 msgid "Add New Player"
-msgstr "Add New Player"
+msgstr "Adicionar novo jogador "
 
 #: includes/class-sp-post-types.php:466
 msgid "Edit Player"
-msgstr "Edit Player"
+msgstr ""
 
 #: includes/class-sp-post-types.php:493
 #: includes/admin/class-sp-admin-permalink-settings.php:34
 #: includes/admin/settings/class-sp-settings-players.php:53
 msgid "Player Lists"
-msgstr "Player Lists"
+msgstr "Listas de jogadores"
 
 #: includes/class-sp-post-types.php:494
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:143
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:145
 #: includes/widgets/class-sp-widget-player-gallery.php:53
 #: includes/widgets/class-sp-widget-player-list.php:53
 msgid "Player List"
-msgstr "Player List"
+msgstr "Lista de jogadores"
 
 #: includes/class-sp-post-types.php:495
 msgid "Add New Player List"
-msgstr "Add New Player List"
+msgstr ""
 
 #: includes/class-sp-post-types.php:496
 msgid "Edit Player List"
-msgstr "Edit Player List"
+msgstr ""
 
 #: includes/class-sp-post-types.php:526
 msgid "Add New Staff"
-msgstr "Add New Staff"
+msgstr ""
 
 #: includes/class-sp-post-types.php:527
 msgid "Edit Staff"
-msgstr "Edit Staff"
+msgstr ""
 
 #: includes/sp-core-functions.php:298
 msgid "1 view"
-msgstr "1 view"
+msgstr ""
 
 #: includes/sp-core-functions.php:300
 #, php-format
 msgid "%s views"
-msgstr "%s views"
+msgstr ""
 
 #: includes/sp-core-functions.php:339 includes/sp-core-functions.php:343
-#: includes/sp-core-functions.php:3236
+#: includes/sp-core-functions.php:2440
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:97
 msgid "Total"
 msgstr "Total"
 
 #: includes/sp-core-functions.php:339
 msgid "Average"
-msgstr "Average"
+msgstr "Razoável"
 
 #: includes/sp-core-functions.php:397
 msgid "Published"
@@ -1482,178 +1509,207 @@ msgstr ""
 
 #: includes/sp-core-functions.php:626 includes/sp-core-functions.php:706
 msgid "(no title)"
-msgstr "(no title)"
+msgstr "(sem título)"
 
 #: includes/sp-core-functions.php:643
 msgid "Select All"
-msgstr "Select All"
+msgstr "Seleccionar tudo"
 
 #: includes/sp-core-functions.php:958
 msgid "Baseball"
-msgstr "Baseball"
+msgstr ""
 
-#: includes/sp-core-functions.php:1125
+#: includes/sp-core-functions.php:1119
 msgid "Basketball"
-msgstr "Basketball"
+msgstr ""
 
-#: includes/sp-core-functions.php:1533
+#: includes/sp-core-functions.php:1335
 msgid "Cricket"
-msgstr "Cricket"
+msgstr ""
 
-#: includes/sp-core-functions.php:1601
+#: includes/sp-core-functions.php:1403
 msgid "American Football"
-msgstr "American Football"
+msgstr ""
 
-#: includes/sp-core-functions.php:2489
+#: includes/sp-core-functions.php:1790
 msgid "Australian Rules Football"
-msgstr "Australian Rules Football"
+msgstr ""
 
-#: includes/sp-core-functions.php:2562
+#: includes/sp-core-functions.php:1863
 msgid "Competitive Gaming"
-msgstr "Competitive Gaming"
+msgstr ""
 
-#: includes/sp-core-functions.php:2628
+#: includes/sp-core-functions.php:1929
 msgid "Golf"
 msgstr "Golf"
 
-#: includes/sp-core-functions.php:2680
+#: includes/sp-core-functions.php:1966
 msgid "Hockey"
-msgstr "Hockey"
+msgstr ""
 
-#: includes/sp-core-functions.php:2765
+#: includes/sp-core-functions.php:2051
 msgid "Racing"
-msgstr "Racing"
+msgstr ""
 
-#: includes/sp-core-functions.php:2819
+#: includes/sp-core-functions.php:2088
 msgid "Rugby"
-msgstr "Rugby"
+msgstr ""
 
-#: includes/sp-core-functions.php:2976
+#: includes/sp-core-functions.php:2230
 msgid "Soccer (Association Football)"
-msgstr "Football (Soccer)"
+msgstr ""
 
-#: includes/sp-core-functions.php:3212
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:113
+#: includes/sp-core-functions.php:2405
+#: includes/admin/class-sp-admin-sports.php:42
+#, fuzzy
+msgid "Custom"
+msgstr "Personalizado:"
+
+#: includes/sp-core-functions.php:2416
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:114
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:76
 #: includes/widgets/class-sp-widget-event-list.php:99
 msgid "Article"
-msgstr "Article"
+msgstr ""
 
-#: includes/sp-core-functions.php:3213
+#: includes/sp-core-functions.php:2417
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:87
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:136
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:100
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:97
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
 msgid "Current Team"
-msgstr "Current Team"
+msgstr ""
 
-#: includes/sp-core-functions.php:3214
+#: includes/sp-core-functions.php:2418
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:92
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:47
 msgid "Date"
-msgstr "Date"
+msgstr "Data"
 
-#: includes/sp-core-functions.php:3215
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:88
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:91
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:94
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:97
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:100
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:103
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:108
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:118
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:125
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:134
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:142
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:147
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:161
+#: includes/sp-core-functions.php:2419
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:89
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:92
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:95
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:98
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:101
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:104
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:109
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:119
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:126
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:130
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:135
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:144
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:149
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:163
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:31
 msgid "Details"
-msgstr "Details"
+msgstr "Detalhes"
 
-#: includes/sp-core-functions.php:3218
+#: includes/sp-core-functions.php:2422
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:59
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:60
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:51
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:52
 #: includes/admin/settings/class-sp-settings-players.php:44
 msgid "Nationality"
-msgstr "Nationality"
+msgstr "Nacionalidade"
 
-#: includes/sp-core-functions.php:3220
+#: includes/sp-core-functions.php:2424
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:101
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:78
 msgid "Past Teams"
-msgstr "Past Teams"
+msgstr ""
 
-#: includes/sp-core-functions.php:3221
+#: includes/sp-core-functions.php:2425
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:40
 #: includes/widgets/class-sp-widget-player-gallery.php:79
 #: includes/widgets/class-sp-widget-player-list.php:87
 #: includes/widgets/class-sp-widget-player-list.php:100
 msgid "Played"
-msgstr "Played"
+msgstr ""
 
-#: includes/sp-core-functions.php:3223
+#: includes/sp-core-functions.php:2427
 msgid "Pos"
-msgstr "Pos"
+msgstr ""
 
-#: includes/sp-core-functions.php:3225
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:148
+#: includes/sp-core-functions.php:2429
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:150
 msgid "Preview"
-msgstr "Preview"
+msgstr "Visualizar"
 
-#: includes/sp-core-functions.php:3226
+#: includes/sp-core-functions.php:2430
 msgid "Rank"
-msgstr "Rank"
+msgstr ""
 
-#: includes/sp-core-functions.php:3227
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:146
+#: includes/sp-core-functions.php:2431
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:148
 msgid "Recap"
-msgstr "Recap"
+msgstr ""
 
-#: includes/sp-core-functions.php:3231
+#: includes/sp-core-functions.php:2435
 msgid "Substitutes"
-msgstr "Substitutes"
+msgstr ""
 
-#: includes/sp-core-functions.php:3234
+#: includes/sp-core-functions.php:2438
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:93
 #: includes/widgets/class-sp-widget-event-list.php:97
 msgid "Time"
-msgstr "Time"
+msgstr ""
 
-#: includes/sp-core-functions.php:3235
+#: includes/sp-core-functions.php:2439
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:64
-#, fuzzy
 msgid "Time/Results"
-msgstr "Results"
+msgstr ""
 
-#: includes/sp-core-functions.php:3238
+#: includes/sp-core-functions.php:2442
 msgid "View all events"
-msgstr "View all events"
+msgstr ""
 
-#: includes/sp-core-functions.php:3239
+#: includes/sp-core-functions.php:2443
 msgid "View all players"
-msgstr "View all players"
+msgstr ""
 
-#: includes/sp-core-functions.php:3240
+#: includes/sp-core-functions.php:2444
 msgid "View full table"
-msgstr "View full table"
+msgstr ""
 
-#: includes/sp-template-hooks.php:114
+#: includes/sp-template-hooks.php:123
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:48
+#: includes/admin/post-types/class-sp-admin-cpt-metric.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-outcome.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-performance.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-result.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-statistic.php:47
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:121
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:132
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:146
+#: includes/admin/settings/class-sp-settings-config.php:105
+#: includes/admin/settings/class-sp-settings-config.php:161
+#: includes/admin/settings/class-sp-settings-config.php:230
+#: includes/admin/settings/class-sp-settings-config.php:285
+#: includes/admin/settings/class-sp-settings-config.php:341
+#: includes/admin/settings/class-sp-settings-config.php:395
+msgid "Description"
+msgstr "Descrição"
+
+#: includes/sp-template-hooks.php:126
+msgid ""
+"The description is not prominent by default; however, some themes may show "
+"it."
+msgstr ""
+
+#: includes/sp-template-hooks.php:129
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:44
 #: includes/admin/post-types/class-sp-admin-cpt-statistic.php:44
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:34
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-statistic-details.php:32
-#: includes/admin/settings/class-sp-settings-config.php:277
-#: includes/admin/settings/class-sp-settings-config.php:386
+#: includes/admin/settings/class-sp-settings-config.php:281
+#: includes/admin/settings/class-sp-settings-config.php:392
 msgid "Key"
-msgstr "Key"
+msgstr "Chave"
 
-#: includes/sp-template-hooks.php:114
+#: includes/sp-template-hooks.php:129
 #: includes/admin/post-types/class-sp-admin-cpt-metric.php:44
 #: includes/admin/post-types/class-sp-admin-cpt-outcome.php:44
 #: includes/admin/post-types/class-sp-admin-cpt-performance.php:44
@@ -1663,157 +1719,203 @@ msgstr "Key"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-performance-details.php:27
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-result-details.php:27
 #: includes/admin/settings/class-sp-settings-config.php:104
-#: includes/admin/settings/class-sp-settings-config.php:227
-#: includes/admin/settings/class-sp-settings-config.php:334
+#: includes/admin/settings/class-sp-settings-config.php:229
+#: includes/admin/settings/class-sp-settings-config.php:340
 msgid "Variable"
 msgstr ""
 
-#: includes/sp-template-hooks.php:122
+#: includes/sp-template-hooks.php:137
 msgid "User"
-msgstr "User"
+msgstr ""
 
-#: includes/sp-template-hooks.php:130
+#: includes/sp-template-hooks.php:145
+msgid "Photo"
+msgstr ""
+
+#: includes/sp-template-hooks.php:148
+#, fuzzy
+msgid "Select Photo"
+msgstr "Seleccionar %s"
+
+#: includes/sp-template-hooks.php:151
+msgid "Add photo"
+msgstr ""
+
+#: includes/sp-template-hooks.php:154
+#, fuzzy
+msgid "Remove photo"
+msgstr "Remover"
+
+#: includes/sp-template-hooks.php:162
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:63
+msgid "Logo"
+msgstr ""
+
+#: includes/sp-template-hooks.php:165
+#, fuzzy
+msgid "Select Logo"
+msgstr "Seleccionar %s"
+
+#: includes/sp-template-hooks.php:168
+msgid "Add logo"
+msgstr ""
+
+#: includes/sp-template-hooks.php:171
+#, fuzzy
+msgid "Remove logo"
+msgstr "Remover"
+
+#: includes/sp-template-hooks.php:179
 msgid "Date/Time:"
-msgstr "Date/Time:"
+msgstr ""
 
-#: includes/sp-template-hooks.php:130
+#: includes/sp-template-hooks.php:179
 msgid "Now"
-msgstr "Now"
+msgstr ""
 
-#: includes/sp-template-hooks.php:237
-#: includes/admin/class-sp-admin-post-types.php:61
+#: includes/sp-template-hooks.php:286
+#: includes/admin/class-sp-admin-post-types.php:62
 msgid "Settings saved."
-msgstr "Settings saved."
+msgstr "Definições guardadas"
 
-#: includes/sp-template-hooks.php:239
-#: includes/admin/class-sp-admin-post-types.php:63
-#: includes/admin/settings/class-sp-settings-config.php:118
-#: includes/admin/settings/class-sp-settings-config.php:190
-#: includes/admin/settings/class-sp-settings-config.php:241
-#: includes/admin/settings/class-sp-settings-config.php:297
-#: includes/admin/settings/class-sp-settings-config.php:350
-#: includes/admin/settings/class-sp-settings-config.php:404
+#: includes/sp-template-hooks.php:288
+#: includes/admin/class-sp-admin-post-types.php:64
+#: includes/admin/settings/class-sp-settings-config.php:120
+#: includes/admin/settings/class-sp-settings-config.php:193
+#: includes/admin/settings/class-sp-settings-config.php:245
+#: includes/admin/settings/class-sp-settings-config.php:303
+#: includes/admin/settings/class-sp-settings-config.php:356
+#: includes/admin/settings/class-sp-settings-config.php:412
 msgid "View All"
-msgstr "View All"
+msgstr "Ver todos"
 
-#: includes/sp-template-hooks.php:245 includes/sp-template-hooks.php:248
-#: includes/sp-template-hooks.php:253
-#: includes/admin/class-sp-admin-post-types.php:68
-#: includes/admin/class-sp-admin-post-types.php:71
-#: includes/admin/class-sp-admin-post-types.php:76
+#: includes/sp-template-hooks.php:294 includes/sp-template-hooks.php:297
+#: includes/sp-template-hooks.php:302
+#: includes/admin/class-sp-admin-post-types.php:69
+#: includes/admin/class-sp-admin-post-types.php:72
+#: includes/admin/class-sp-admin-post-types.php:77
 msgid "Changes saved."
-msgstr "Changes saved."
+msgstr "Modificações guardadas"
 
-#: includes/sp-template-hooks.php:250 includes/sp-template-hooks.php:255
-#: includes/sp-template-hooks.php:265
-#: includes/admin/class-sp-admin-post-types.php:73
-#: includes/admin/class-sp-admin-post-types.php:78
-#: includes/admin/class-sp-admin-post-types.php:88
+#: includes/sp-template-hooks.php:299 includes/sp-template-hooks.php:304
+#: includes/sp-template-hooks.php:314
+#: includes/admin/class-sp-admin-post-types.php:74
+#: includes/admin/class-sp-admin-post-types.php:79
+#: includes/admin/class-sp-admin-post-types.php:89
 msgid "Success!"
-msgstr "Success!"
+msgstr "Sucesso!"
 
-#: includes/sp-template-hooks.php:257 includes/sp-template-hooks.php:263
-#: includes/sp-template-hooks.php:267
-#: includes/admin/class-sp-admin-post-types.php:80
-#: includes/admin/class-sp-admin-post-types.php:86
-#: includes/admin/class-sp-admin-post-types.php:90
+#: includes/sp-template-hooks.php:306 includes/sp-template-hooks.php:312
+#: includes/sp-template-hooks.php:316
+#: includes/admin/class-sp-admin-post-types.php:81
+#: includes/admin/class-sp-admin-post-types.php:87
+#: includes/admin/class-sp-admin-post-types.php:91
 #, php-format
 msgid "Preview %s"
-msgstr "Preview %s"
+msgstr "Pré-visualizar %s"
 
-#: includes/sp-template-hooks.php:260
-#: includes/admin/class-sp-admin-post-types.php:83
+#: includes/sp-template-hooks.php:309
+#: includes/admin/class-sp-admin-post-types.php:84
 #, php-format
 msgid "Scheduled for: <b>%1$s</b>."
-msgstr "Scheduled for: <b>%1$s</b>."
+msgstr ""
 
-#: includes/sp-template-hooks.php:261
-#: includes/admin/class-sp-admin-post-types.php:84
+#: includes/sp-template-hooks.php:310
+#: includes/admin/class-sp-admin-post-types.php:85
 msgid "M j, Y @ G:i"
-msgstr "j M Y @ G:i"
+msgstr "j \\d\\e F \\d\\e Y @ H:i"
 
-#: includes/admin/class-sp-admin-assets.php:102
-#: includes/admin/class-sp-admin-settings.php:109
-#: includes/admin/importers/class-sp-event-importer.php:579
-#: includes/admin/importers/class-sp-event-importer.php:594
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:144
+#: includes/admin/class-sp-admin-assets.php:101
+#: includes/admin/class-sp-admin-settings.php:113
+#: includes/admin/importers/class-sp-event-importer.php:467
+#: includes/admin/importers/class-sp-event-importer.php:482
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:146
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:148
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:76
-#: includes/admin/views/html-admin-page-status.php:228
+#: includes/admin/views/html-admin-page-status.php:224
 msgid "None"
-msgstr "None"
+msgstr "Nenhum"
 
-#: includes/admin/class-sp-admin-assets.php:103
+#: includes/admin/class-sp-admin-assets.php:102
 msgid "&mdash; Remove &mdash;"
-msgstr "&mdash; Remove &mdash;"
+msgstr ""
 
 #: includes/admin/class-sp-admin-dashboard.php:34
-#: includes/admin/class-sp-admin-menus.php:52
+#: includes/admin/class-sp-admin-menus.php:69
 msgid "SportsPress Status"
-msgstr "SportsPress Status"
+msgstr "SportsPress Estado"
 
 #: includes/admin/class-sp-admin-dashboard.php:54
 #, php-format
 msgid "<strong>%s</strong> until next event"
-msgstr "<strong>%s</strong> until next event"
+msgstr ""
 
 #: includes/admin/class-sp-admin-dashboard.php:61
 #, php-format
 msgid "<strong>%s event</strong> scheduled"
 msgid_plural "<strong>%s events</strong> scheduled"
-msgstr[0] "<strong>%s event</strong> scheduled"
-msgstr[1] "<strong>%s events</strong> scheduled"
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/admin/class-sp-admin-dashboard.php:66
 #, php-format
 msgid "<strong>%s event</strong> published"
 msgid_plural "<strong>%s events</strong> published"
-msgstr[0] "<strong>%s event</strong> published"
-msgstr[1] "<strong>%s events</strong> published"
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "SportsPress Events (CSV)"
-msgstr "SportsPress Events (CSV)"
+msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "Import <strong>events</strong> from a csv file."
-msgstr "Import <strong>events</strong> from a csv file."
+msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:32
 msgid "SportsPress Teams (CSV)"
-msgstr "SportsPress Teams (CSV)"
+msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:32
 msgid "Import <strong>teams</strong> from a csv file."
-msgstr "Import <strong>teams</strong> from a csv file."
+msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:33
 msgid "SportsPress Players (CSV)"
-msgstr "SportsPress Players (CSV)"
+msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:33
 msgid "Import <strong>players</strong> from a csv file."
-msgstr "Import <strong>players</strong> from a csv file."
+msgstr ""
 
-#: includes/admin/class-sp-admin-menus.php:45
+#: includes/admin/class-sp-admin-importers.php:34
+#, fuzzy
+msgid "SportsPress Staff (CSV)"
+msgstr "SportsPress Estado"
+
+#: includes/admin/class-sp-admin-importers.php:34
+msgid "Import <strong>staff</strong> from a csv file."
+msgstr ""
+
+#: includes/admin/class-sp-admin-menus.php:48
 msgid "SportsPress Settings"
-msgstr "SportsPress Settings"
+msgstr "Opções SportsPress"
 
-#: includes/admin/class-sp-admin-menus.php:45
+#: includes/admin/class-sp-admin-menus.php:48
 #: includes/admin/class-sp-admin-permalink-settings.php:47
 msgid "SportsPress"
 msgstr "SportsPress"
 
-#: includes/admin/class-sp-admin-menus.php:52
+#: includes/admin/class-sp-admin-menus.php:69
 #: includes/admin/views/html-admin-page-status.php:2
 msgid "System Status"
-msgstr "System Status"
+msgstr "Estado do Sistema"
 
-#: includes/admin/class-sp-admin-menus.php:60
+#: includes/admin/class-sp-admin-menus.php:77
 msgid "SportsPress Add-ons/Extensions"
-msgstr "SportsPress Add-ons/Extensions"
+msgstr "Add-ons / Extensões do SportsPress"
 
-#: includes/admin/class-sp-admin-menus.php:60
+#: includes/admin/class-sp-admin-menus.php:77
 msgid "Add-ons"
 msgstr "Add-ons"
 
@@ -1822,287 +1924,304 @@ msgid ""
 "These settings control the permalinks used for SportsPress. These settings "
 "only apply when <strong>not using \"default\" permalinks above</strong>."
 msgstr ""
-"These settings control the permalinks used for SportsPress. These settings "
-"only apply when <strong>not using \"default\" permalinks above</strong>."
 
-#: includes/admin/class-sp-admin-settings.php:52
+#: includes/admin/class-sp-admin-settings.php:56
 msgid "Action failed. Please refresh the page and retry."
-msgstr "Action failed. Please refresh the page and retry."
+msgstr "Falha. Por favor, atualize a página e tente novamente."
 
-#: includes/admin/class-sp-admin-settings.php:59
-#: includes/admin/class-sp-admin-welcome.php:207
+#: includes/admin/class-sp-admin-settings.php:63
+#: includes/admin/class-sp-admin-welcome.php:191
 msgid "Your settings have been saved."
-msgstr "Your settings have been saved."
+msgstr "As suas configurações foram salvas."
 
 #: includes/admin/class-sp-admin-taxonomies.php:61
 #: includes/admin/class-sp-admin-taxonomies.php:81
-#: includes/admin/class-sp-admin-taxonomies.php:134
+#: includes/admin/class-sp-admin-taxonomies.php:133
 msgid "Address"
-msgstr "Address"
+msgstr "Endereço"
 
-#: includes/admin/class-sp-admin-taxonomies.php:88
+#: includes/admin/class-sp-admin-taxonomies.php:66
+#: includes/admin/class-sp-admin-taxonomies.php:85
+msgid "Drag the marker to the venue's location."
+msgstr ""
+
+#: includes/admin/class-sp-admin-taxonomies.php:89
 msgid "Latitude"
-msgstr "Latitude"
+msgstr ""
 
-#: includes/admin/class-sp-admin-taxonomies.php:94
+#: includes/admin/class-sp-admin-taxonomies.php:95
 msgid "Longitude"
-msgstr "Longitude"
+msgstr ""
 
 #: includes/admin/class-sp-admin-welcome.php:45
 msgid "Welcome to SportsPress"
-msgstr "Welcome to SportsPress"
+msgstr "Bem-vindo ao SportsPress"
 
-#: includes/admin/class-sp-admin-welcome.php:145
+#: includes/admin/class-sp-admin-welcome.php:135
 msgid "Welcome to SportsPress!"
-msgstr "Welcome to SportsPress!"
+msgstr ""
 
-#: includes/admin/class-sp-admin-welcome.php:150
+#: includes/admin/class-sp-admin-welcome.php:140
 msgid "Thanks, all done!"
-msgstr "Thanks, all done!"
+msgstr "Obrigado, tudo feito!"
 
-#: includes/admin/class-sp-admin-welcome.php:152
+#: includes/admin/class-sp-admin-welcome.php:142
 msgid "Thank you for updating to the latest version!"
-msgstr "Thank you for updating to the latest version!"
+msgstr "Obrigado por atualizar para a versão mais recente!"
 
-#: includes/admin/class-sp-admin-welcome.php:154
+#: includes/admin/class-sp-admin-welcome.php:144
 msgid "Thanks for installing!"
-msgstr "Thanks for installing!"
+msgstr "Obrigado por instalar!"
 
-#: includes/admin/class-sp-admin-welcome.php:156
+#: includes/admin/class-sp-admin-welcome.php:146
 #, php-format
 msgid "%s SportsPress %s has lots of refinements we think you&#8217;ll love."
 msgstr ""
 
-#: includes/admin/class-sp-admin-welcome.php:160
+#: includes/admin/class-sp-admin-welcome.php:150
 #, php-format
 msgid "Version %s"
-msgstr "Version %s"
+msgstr "Versão %s"
 
-#: includes/admin/class-sp-admin-welcome.php:171
-#: includes/admin/class-sp-admin-welcome.php:193
+#: includes/admin/class-sp-admin-welcome.php:159
 #: includes/admin/views/html-notice-install.php:7
 msgid "Get Started"
-msgstr "Get Started"
+msgstr ""
 
-#: includes/admin/class-sp-admin-welcome.php:173
-#: includes/admin/class-sp-admin-welcome.php:252
-msgid "Translators"
-msgstr "Translators"
-
-#: includes/admin/class-sp-admin-welcome.php:213
-#: includes/admin/settings/class-sp-settings-general.php:155
+#: includes/admin/class-sp-admin-welcome.php:197
+#: includes/admin/settings/class-sp-settings-general.php:167
 msgid "Base Location"
-msgstr "Base Location"
+msgstr "Localização base"
 
-#: includes/admin/class-sp-admin-welcome.php:219
-#: includes/admin/settings/class-sp-settings-general.php:159
+#: includes/admin/class-sp-admin-welcome.php:203
+#: includes/admin/settings/class-sp-settings-general.php:171
 msgid "Choose a country&hellip;"
-msgstr "Choose a country&hellip;"
+msgstr "Escolha o país&hellip;"
 
-#: includes/admin/class-sp-admin-welcome.php:223
-#: includes/admin/settings/class-sp-settings-general.php:51
-#: includes/admin/views/html-admin-page-status.php:227
+#: includes/admin/class-sp-admin-welcome.php:207
+#: includes/admin/settings/class-sp-settings-general.php:50
+#: includes/admin/views/html-admin-page-status.php:223
 msgid "Sport"
-msgstr "Sport"
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:221
+#: includes/admin/views/html-admin-settings.php:18
+msgid "Save changes"
+msgstr "Salve as alterações"
+
+#: includes/admin/class-sp-admin-welcome.php:228
+msgid "Next Steps"
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:236
+msgid "Translators"
+msgstr "Traduções"
 
 #: includes/admin/class-sp-admin-welcome.php:237
-#: includes/admin/views/html-admin-settings.php:20
-msgid "Save changes"
-msgstr "Save changes"
-
-#: includes/admin/class-sp-admin-welcome.php:244
-msgid "Next Steps"
-msgstr "Next Steps"
-
-#: includes/admin/class-sp-admin-welcome.php:253
 msgid ""
 "SportsPress has been kindly translated into several other languages thanks "
 "to our translation team. Want to see your name? <a href=\"https://www."
 "transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
 msgstr ""
-"SportsPress has been kindly translated into several other languages thanks "
-"to our translation team. Want to see your name? <a href=\"https://www."
-"transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
 
-#: includes/admin/class-sp-admin-welcome.php:269
+#: includes/admin/class-sp-admin-welcome.php:253
 msgid "Go to SportsPress Settings"
-msgstr "Go to SportsPress Settings"
+msgstr "Ir para a página de Configurações do SportsPress"
 
-#: includes/admin/importers/class-sp-event-importer.php:425
-#: includes/admin/importers/class-sp-event-importer.php:465
-#: includes/admin/importers/class-sp-event-importer.php:480
-#: includes/admin/importers/class-sp-player-importer.php:192
-#: includes/admin/importers/class-sp-player-importer.php:232
-#: includes/admin/importers/class-sp-player-importer.php:247
-#: includes/admin/importers/class-sp-team-importer.php:149
-#: includes/admin/importers/class-sp-team-importer.php:189
-#: includes/admin/importers/class-sp-team-importer.php:204
+#: includes/admin/importers/class-sp-event-importer.php:361
+#: includes/admin/importers/class-sp-importer.php:93
+#: includes/admin/importers/class-sp-importer.php:108
+#: includes/admin/importers/class-sp-player-importer.php:128
+#: includes/admin/importers/class-sp-staff-importer.php:121
+#: includes/admin/importers/class-sp-team-importer.php:85
 msgid "Sorry, there has been an error."
-msgstr "Sorry, there has been an error."
+msgstr "Desculpe, ocorreu um erro."
+
+#: includes/admin/importers/class-sp-event-importer.php:362
+#: includes/admin/importers/class-sp-player-importer.php:129
+#: includes/admin/importers/class-sp-staff-importer.php:122
+#: includes/admin/importers/class-sp-team-importer.php:86
+msgid "The CSV is invalid."
+msgstr "O arquivo CSV é inválido."
+
+#: includes/admin/importers/class-sp-event-importer.php:373
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> events and skipped <strong>"
+"%s</strong>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:383
+#: includes/admin/importers/class-sp-player-importer.php:150
+#: includes/admin/importers/class-sp-staff-importer.php:143
+#: includes/admin/importers/class-sp-team-importer.php:107
+msgid "All done!"
+msgstr "Tudo feito!"
+
+#: includes/admin/importers/class-sp-event-importer.php:383
+msgid "View Events"
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:395
+msgid "Import Events"
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:407
+#: includes/admin/importers/class-sp-player-importer.php:174
+#: includes/admin/importers/class-sp-staff-importer.php:167
+#: includes/admin/importers/class-sp-team-importer.php:131
+msgid ""
+"Hi there! Choose a .csv file to upload, then click \"Upload file and import"
+"\"."
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:409
+#, php-format
+msgid ""
+"Events need to be defined with columns in a specific order (3+ columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:417
+#: includes/admin/importers/class-sp-player-importer.php:184
+#: includes/admin/importers/class-sp-staff-importer.php:177
+#: includes/admin/importers/class-sp-team-importer.php:141
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+"Antes de poder realizar upload do arquivo de importação, você deve corrigir "
+"o seguinte erro:"
 
 #: includes/admin/importers/class-sp-event-importer.php:426
 #: includes/admin/importers/class-sp-player-importer.php:193
+#: includes/admin/importers/class-sp-staff-importer.php:186
 #: includes/admin/importers/class-sp-team-importer.php:150
-msgid "The CSV is invalid."
-msgstr "The CSV is invalid."
-
-#: includes/admin/importers/class-sp-event-importer.php:437
-#, php-format
-msgid ""
-"Import complete - imported <strong>%s</strong> events and skipped <strong>"
-"%s</strong>."
-msgstr ""
-"Import complete - imported <strong>%s</strong> events and skipped <strong>"
-"%s</strong>."
-
-#: includes/admin/importers/class-sp-event-importer.php:447
-#: includes/admin/importers/class-sp-player-importer.php:214
-#: includes/admin/importers/class-sp-team-importer.php:171
-msgid "All done!"
-msgstr "All done!"
-
-#: includes/admin/importers/class-sp-event-importer.php:447
-msgid "View Events"
-msgstr "View Events"
-
-#: includes/admin/importers/class-sp-event-importer.php:497
-msgid "Import Events"
-msgstr "Import Events"
-
-#: includes/admin/importers/class-sp-event-importer.php:519
-#: includes/admin/importers/class-sp-player-importer.php:286
-#: includes/admin/importers/class-sp-team-importer.php:243
-msgid ""
-"Hi there! Choose a .csv file to upload, then click \"Upload file and import"
-"\"."
-msgstr ""
-"Hi there! Choose a .csv file to upload, then click \"Upload file and import"
-"\"."
-
-#: includes/admin/importers/class-sp-event-importer.php:521
-#, php-format
-msgid ""
-"Events need to be defined with columns in a specific order (3+ columns). <a "
-"href=\"%s\">Click here to download a sample</a>."
-msgstr ""
-"Events need to be defined with columns in a specific order (3+ columns). <a "
-"href=\"%s\">Click here to download a sample</a>."
-
-#: includes/admin/importers/class-sp-event-importer.php:529
-#: includes/admin/importers/class-sp-player-importer.php:296
-#: includes/admin/importers/class-sp-team-importer.php:253
-msgid ""
-"Before you can upload your import file, you will need to fix the following "
-"error:"
-msgstr ""
-"Before you can upload your import file, you will need to fix the following "
-"error:"
-
-#: includes/admin/importers/class-sp-event-importer.php:538
-#: includes/admin/importers/class-sp-player-importer.php:305
-#: includes/admin/importers/class-sp-team-importer.php:262
 msgid "Choose a file from your computer:"
-msgstr "Choose a file from your computer:"
+msgstr "Selecione um arquivo no seu computador:"
 
-#: includes/admin/importers/class-sp-event-importer.php:544
-#: includes/admin/importers/class-sp-player-importer.php:311
-#: includes/admin/importers/class-sp-team-importer.php:268
+#: includes/admin/importers/class-sp-event-importer.php:432
+#: includes/admin/importers/class-sp-player-importer.php:199
+#: includes/admin/importers/class-sp-staff-importer.php:192
+#: includes/admin/importers/class-sp-team-importer.php:156
 #, php-format
 msgid "Maximum size: %s"
-msgstr "Maximum size: %s"
+msgstr "Tamanho máximo: %s"
 
-#: includes/admin/importers/class-sp-event-importer.php:549
-#: includes/admin/importers/class-sp-player-importer.php:316
-#: includes/admin/importers/class-sp-team-importer.php:273
-msgid "OR enter path to file:"
-msgstr "OR enter path to file:"
-
-#: includes/admin/importers/class-sp-event-importer.php:556
-#: includes/admin/importers/class-sp-player-importer.php:323
-#: includes/admin/importers/class-sp-team-importer.php:280
-#: includes/admin/settings/class-sp-settings-events.php:132
-#: includes/admin/settings/class-sp-settings-events.php:136
-#: includes/admin/settings/class-sp-settings-general.php:158
-msgid "Delimiter"
-msgstr "Delimiter"
-
-#: includes/admin/importers/class-sp-event-importer.php:560
-#: includes/admin/post-types/class-sp-admin-cpt-event.php:90
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:107
-msgid "Format"
-msgstr "Format"
-
-#: includes/admin/importers/class-sp-event-importer.php:576
-#: includes/admin/importers/class-sp-event-importer.php:591
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:37
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:52
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:68
-msgid "-- Not set --"
-msgstr "-- Not set --"
-
-#: includes/admin/importers/class-sp-event-importer.php:602
-#: includes/admin/importers/class-sp-player-importer.php:329
-#: includes/admin/importers/class-sp-team-importer.php:286
-msgid "Upload file and import"
-msgstr "Upload file and import"
-
+#: includes/admin/importers/class-sp-event-importer.php:437
 #: includes/admin/importers/class-sp-player-importer.php:204
-#, php-format
-msgid ""
-"Import complete - imported <strong>%s</strong> players and skipped <strong>"
-"%s</strong>."
-msgstr ""
-"Import complete - imported <strong>%s</strong> players and skipped <strong>"
-"%s</strong>."
-
-#: includes/admin/importers/class-sp-player-importer.php:214
-msgid "View Players"
-msgstr "View Players"
-
-#: includes/admin/importers/class-sp-player-importer.php:264
-msgid "Import Players"
-msgstr "Import Players"
-
-#: includes/admin/importers/class-sp-player-importer.php:288
-#, php-format
-msgid ""
-"Players need to be defined with columns in a specific order (7 columns). <a "
-"href=\"%s\">Click here to download a sample</a>."
-msgstr ""
-"Players need to be defined with columns in a specific order (7 columns). <a "
-"href=\"%s\">Click here to download a sample</a>."
-
+#: includes/admin/importers/class-sp-staff-importer.php:197
 #: includes/admin/importers/class-sp-team-importer.php:161
+msgid "OR enter path to file:"
+msgstr "ou indique o caminho para o arquivo:"
+
+#: includes/admin/importers/class-sp-event-importer.php:444
+#: includes/admin/importers/class-sp-player-importer.php:211
+#: includes/admin/importers/class-sp-staff-importer.php:204
+#: includes/admin/importers/class-sp-team-importer.php:168
+#: includes/admin/settings/class-sp-settings-events.php:163
+#: includes/admin/settings/class-sp-settings-events.php:167
+#: includes/admin/settings/class-sp-settings-general.php:170
+msgid "Delimiter"
+msgstr "Delimitador"
+
+#: includes/admin/importers/class-sp-event-importer.php:448
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:90
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:108
+msgid "Format"
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:464
+#: includes/admin/importers/class-sp-event-importer.php:479
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:36
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:53
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:70
+msgid "-- Not set --"
+msgstr "--Não definido--"
+
+#: includes/admin/importers/class-sp-event-importer.php:490
+#: includes/admin/importers/class-sp-player-importer.php:217
+#: includes/admin/importers/class-sp-staff-importer.php:210
+#: includes/admin/importers/class-sp-team-importer.php:174
+msgid "Upload file and import"
+msgstr "Fazer upload do arquivo e importar"
+
+#: includes/admin/importers/class-sp-importer.php:125
+msgid "Import"
+msgstr ""
+
+#: includes/admin/importers/class-sp-player-importer.php:140
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> players and skipped <strong>"
+"%s</strong>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-player-importer.php:150
+msgid "View Players"
+msgstr ""
+
+#: includes/admin/importers/class-sp-player-importer.php:162
+msgid "Import Players"
+msgstr ""
+
+#: includes/admin/importers/class-sp-player-importer.php:176
+#, php-format
+msgid ""
+"Players need to be defined with columns in a specific order (7 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-staff-importer.php:133
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
+"strong>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-staff-importer.php:143
+#, fuzzy
+msgid "View Staff"
+msgstr "Equipa técnica"
+
+#: includes/admin/importers/class-sp-staff-importer.php:155
+msgid "Import Staff"
+msgstr ""
+
+#: includes/admin/importers/class-sp-staff-importer.php:169
+#, php-format
+msgid ""
+"Staff need to be defined with columns in a specific order (5 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-team-importer.php:97
 #, php-format
 msgid ""
 "Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
 "strong>."
 msgstr ""
-"Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
-"strong>."
 
-#: includes/admin/importers/class-sp-team-importer.php:171
+#: includes/admin/importers/class-sp-team-importer.php:107
 msgid "View Teams"
-msgstr "View Teams"
+msgstr ""
 
-#: includes/admin/importers/class-sp-team-importer.php:221
+#: includes/admin/importers/class-sp-team-importer.php:119
 msgid "Import Teams"
-msgstr "Import Teams"
+msgstr ""
 
-#: includes/admin/importers/class-sp-team-importer.php:245
+#: includes/admin/importers/class-sp-team-importer.php:133
 #, php-format
 msgid ""
 "Teams need to be defined with columns in a specific order (3 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"Teams need to be defined with columns in a specific order (3 columns). <a "
-"href=\"%s\">Click here to download a sample</a>."
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:48
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:48
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:48
 msgid "Title"
-msgstr "Title"
+msgstr "Título"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:54
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:98
@@ -2112,36 +2231,36 @@ msgstr "Title"
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:52
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:68
 msgid "Views"
-msgstr "Views"
+msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:131
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:195
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:119
-#: includes/admin/post-types/class-sp-admin-cpt-player.php:178
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:159
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:153
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:105
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:125
 msgid "Show all leagues"
-msgstr "Show all leagues"
+msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:140
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:204
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:128
-#: includes/admin/post-types/class-sp-admin-cpt-player.php:187
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:168
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:162
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:114
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:134
 msgid "Show all seasons"
-msgstr "Show all seasons"
+msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:151
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:187
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:139
-#: includes/admin/post-types/class-sp-admin-cpt-player.php:170
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:151
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:145
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:125
 msgid "Show all teams"
-msgstr "Show all teams"
+msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:43
 #: includes/admin/post-types/class-sp-admin-cpt-metric.php:43
@@ -2150,44 +2269,44 @@ msgstr "Show all teams"
 #: includes/admin/post-types/class-sp-admin-cpt-result.php:43
 #: includes/admin/post-types/class-sp-admin-cpt-statistic.php:43
 #: includes/admin/settings/class-sp-settings-config.php:103
-#: includes/admin/settings/class-sp-settings-config.php:158
-#: includes/admin/settings/class-sp-settings-config.php:226
-#: includes/admin/settings/class-sp-settings-config.php:276
-#: includes/admin/settings/class-sp-settings-config.php:333
-#: includes/admin/settings/class-sp-settings-config.php:385
+#: includes/admin/settings/class-sp-settings-config.php:159
+#: includes/admin/settings/class-sp-settings-config.php:228
+#: includes/admin/settings/class-sp-settings-config.php:280
+#: includes/admin/settings/class-sp-settings-config.php:339
+#: includes/admin/settings/class-sp-settings-config.php:391
 msgid "Label"
-msgstr "Label"
+msgstr "Etiqueta"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:45
 #: includes/admin/post-types/class-sp-admin-cpt-statistic.php:45
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:39
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-statistic-details.php:37
-#: includes/admin/settings/class-sp-settings-config.php:278
-#: includes/admin/settings/class-sp-settings-config.php:387
+#: includes/admin/settings/class-sp-settings-config.php:282
+#: includes/admin/settings/class-sp-settings-config.php:393
 msgid "Equation"
-msgstr "Equation"
+msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:46
 #: includes/admin/post-types/class-sp-admin-cpt-statistic.php:46
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:47
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-statistic-details.php:45
-#: includes/admin/settings/class-sp-settings-config.php:279
-#: includes/admin/settings/class-sp-settings-config.php:388
+#: includes/admin/settings/class-sp-settings-config.php:283
+#: includes/admin/settings/class-sp-settings-config.php:394
 msgid "Rounding"
-msgstr "Rounding"
+msgstr "Arredondamento"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:47
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:101
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:51
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:96
-#: includes/admin/settings/class-sp-settings-config.php:280
+#: includes/admin/settings/class-sp-settings-config.php:284
 msgid "Sort Order"
-msgstr "Sort Order"
+msgstr "Ordenamento"
 
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:56
-#: includes/widgets/class-sp-widget-countdown.php:46
+#: includes/widgets/class-sp-widget-countdown.php:49
 msgid "(Auto)"
-msgstr "(Auto)"
+msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:85
@@ -2195,16 +2314,12 @@ msgstr "(Auto)"
 #: includes/widgets/class-sp-widget-player-gallery.php:77
 #: includes/widgets/class-sp-widget-player-list.php:98
 msgid "Number"
-msgstr "Number"
+msgstr "Número"
 
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:65
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:48
 msgid "Role"
-msgstr "Role"
-
-#: includes/admin/post-types/class-sp-admin-cpt-team.php:63
-msgid "Logo"
-msgstr "Logo"
+msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:65
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:24
@@ -2214,64 +2329,65 @@ msgstr ""
 #: includes/admin/post-types/class-sp-admin-cpt.php:43
 #, php-format
 msgid "Insert into %s"
-msgstr "Insert into %s"
+msgstr "Inserir em %s"
 
 #: includes/admin/post-types/class-sp-admin-cpt.php:44
 #, php-format
 msgid "Uploaded to this %s"
-msgstr "Uploaded to this %s"
+msgstr "Enviado para este %s"
 
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:106
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:107
 msgid "Shortcodes"
-msgstr "Shortcodes"
+msgstr ""
 
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:110
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:111
 msgid "Video"
-msgstr "Video"
-
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:116
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:128
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:140
-msgid "Shortcode"
-msgstr "Shortcode"
+msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:117
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:141
+msgid "Shortcode"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:118
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:142
 msgid "Layout"
-msgstr "Layout"
+msgstr ""
 
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:120
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:131
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:144
-msgid "Description"
-msgstr "Description"
-
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:124
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:137
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:148
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:125
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:138
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:150
 msgid "Profile"
-msgstr "Profile"
-
-#: includes/admin/post-types/class-sp-admin-meta-boxes.php:135
-msgid "Metrics"
-msgstr "Metrics"
+msgstr "Perfil"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:136
-msgid "Statistics"
-msgstr "Statistics"
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:34
+msgid "Metrics"
+msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:161
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:137
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:40
+msgid "Statistics"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:143
+#, fuzzy
+msgid "Columns"
+msgstr "Colunas:"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:163
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:102
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:149
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:60
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:78
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:94
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:93
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:108
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:123
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:138
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:42
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:52
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:71
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:85
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:100
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:115
@@ -2280,12 +2396,12 @@ msgstr "Statistics"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:45
 #, php-format
 msgid "Select %s"
-msgstr "Select %s"
+msgstr "Seleccionar %s"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:30
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:66
 msgid "Status"
-msgstr "Status"
+msgstr "Estado"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:104
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:67
@@ -2295,7 +2411,7 @@ msgstr "Status"
 #: includes/widgets/class-sp-widget-player-gallery.php:96
 #: includes/widgets/class-sp-widget-player-list.php:117
 msgid "Ascending"
-msgstr "Ascending"
+msgstr "Ascendente"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:105
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:67
@@ -2305,7 +2421,7 @@ msgstr "Ascending"
 #: includes/widgets/class-sp-widget-player-gallery.php:97
 #: includes/widgets/class-sp-widget-player-list.php:118
 msgid "Descending"
-msgstr "Descending"
+msgstr "Descendente"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-shortcode.php:26
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:24
@@ -2314,115 +2430,120 @@ msgstr "Descending"
 msgid ""
 "Copy this code and paste it into your post, page or text widget content."
 msgstr ""
-"Copy this code and paste it into your post, page or text widget content."
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:55
 msgid "Disable"
-msgstr "Disable"
+msgstr "Desactivar"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
 msgid "Attended"
-msgstr "Attended"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
+msgid "Started"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
+msgid "Substituted"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:43
-#: includes/admin/settings/class-sp-settings-events.php:64
+#: includes/admin/settings/class-sp-settings-events.php:85
 msgid "Results"
-msgstr "Results"
+msgstr "Resultados"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:46
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:47
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:48
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:49
 msgid "Outcomes"
-msgstr "Outcomes"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:47
 msgid "Streak"
-msgstr "Streak"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:48
 msgid "Last 5"
-msgstr "Last 5"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:49
 msgid "Last 10"
-msgstr "Last 10"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:52
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:28
 msgid "Performance"
-msgstr "Performance"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:64
 msgid "Operators"
-msgstr "Operators"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:77
 msgid "Constants"
-msgstr "Constants"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:81
 msgid "&mdash; Select &mdash;"
-msgstr "&mdash; Select &mdash;"
+msgstr "&mdash; Seleccione &mdash;"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:122
 msgid "Starting Lineup"
-msgstr "Starting Lineup"
+msgstr "Onze Inicial"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:123
 msgid "Substitute"
-msgstr "Substitute"
+msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:32
-msgid "Remove"
-msgstr "Remove"
-
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:56
-msgid "&mdash; Add &mdash;"
-msgstr "&mdash; Add &mdash;"
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:34
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:96
+msgid "&mdash; None &mdash;"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:27
 msgid "Remove video"
-msgstr "Remove video"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:31
 msgid "URL"
-msgstr "URL"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:33
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:84
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:83
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:36
 msgid "Add video"
-msgstr "Add video"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:45
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:46
 msgid "Values"
-msgstr "Values"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:46
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:47
 msgid "Adjustments"
-msgstr "Adjustments"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:80
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:79
-#: includes/admin/settings/class-sp-settings-config.php:112
-#: includes/admin/settings/class-sp-settings-config.php:184
-#: includes/admin/settings/class-sp-settings-config.php:235
-#: includes/admin/settings/class-sp-settings-config.php:291
-#: includes/admin/settings/class-sp-settings-config.php:344
-#: includes/admin/settings/class-sp-settings-config.php:398
+#: includes/admin/settings/class-sp-settings-config.php:114
+#: includes/admin/settings/class-sp-settings-config.php:187
+#: includes/admin/settings/class-sp-settings-config.php:239
+#: includes/admin/settings/class-sp-settings-config.php:297
+#: includes/admin/settings/class-sp-settings-config.php:350
+#: includes/admin/settings/class-sp-settings-config.php:406
 msgid "Edit"
-msgstr "Edit"
+msgstr "Editar"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:85
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:84
 msgid "Save"
-msgstr "Save"
+msgstr "Salvar"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:73
 msgid "Grouping"
@@ -2432,40 +2553,48 @@ msgstr ""
 msgid "Sort by"
 msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:90
-msgid "&mdash; None &mdash;"
-msgstr "&mdash; None &mdash;"
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
+msgid "Current Teams"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:26
+msgid ""
+"The abbreviation is not prominent by default; however, some themes may show "
+"it"
+msgstr ""
 
 #: includes/admin/settings/class-sp-settings-config.php:25
 msgid "Configure"
-msgstr "Configure"
+msgstr ""
 
 #: includes/admin/settings/class-sp-settings-config.php:47
 msgid "Configure SportsPress"
-msgstr "Configure SportsPress"
+msgstr ""
 
 #: includes/admin/settings/class-sp-settings-config.php:97
-#: includes/admin/settings/class-sp-settings-config.php:149
-#: includes/admin/settings/class-sp-settings-config.php:220
+#: includes/admin/settings/class-sp-settings-config.php:151
+#: includes/admin/settings/class-sp-settings-config.php:222
 msgid "Used for events."
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-config.php:157
-#: includes/admin/settings/class-sp-settings-general.php:191
+#: includes/admin/settings/class-sp-settings-config.php:158
+#: includes/admin/settings/class-sp-settings-general.php:203
 msgid "Primary"
-msgstr "Primary"
+msgstr "Primário"
 
-#: includes/admin/settings/class-sp-settings-config.php:159
+#: includes/admin/settings/class-sp-settings-config.php:160
 msgid "Variables"
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-config.php:171
+#: includes/admin/settings/class-sp-settings-config.php:173
 #, php-format
 msgid "Default (%s)"
-msgstr "Default (%s)"
+msgstr ""
 
-#: includes/admin/settings/class-sp-settings-config.php:173
-#: includes/admin/views/html-admin-page-status.php:69
+#: includes/admin/settings/class-sp-settings-config.php:175
+#: includes/admin/settings/class-sp-settings-general.php:63
+#: includes/admin/views/html-admin-page-status.php:65
 #: includes/widgets/class-sp-widget-event-blocks.php:68
 #: includes/widgets/class-sp-widget-event-blocks.php:83
 #: includes/widgets/class-sp-widget-event-calendar.php:64
@@ -2474,402 +2603,427 @@ msgstr "Default (%s)"
 #: includes/widgets/class-sp-widget-player-gallery.php:76
 #: includes/widgets/class-sp-widget-player-list.php:97
 msgid "Default"
-msgstr "Standard"
+msgstr "Padrão"
 
-#: includes/admin/settings/class-sp-settings-config.php:270
+#: includes/admin/settings/class-sp-settings-config.php:274
 msgid "Used for league tables."
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-config.php:327
-#: includes/admin/settings/class-sp-settings-config.php:379
+#: includes/admin/settings/class-sp-settings-config.php:333
+#: includes/admin/settings/class-sp-settings-config.php:385
 msgid "Used for player lists."
 msgstr ""
 
 #: includes/admin/settings/class-sp-settings-events.php:42
 msgid "Event Options"
-msgstr "Event Options"
+msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:48
-msgid "Display maps"
-msgstr "Display maps"
-
-#: includes/admin/settings/class-sp-settings-events.php:56
-msgid "Link venues"
-msgstr "Link venues"
-
-#: includes/admin/settings/class-sp-settings-events.php:65
-#, fuzzy
-msgid "Display outcomes"
-msgstr "Display logos"
-
-#: includes/admin/settings/class-sp-settings-events.php:73
-#: includes/admin/settings/class-sp-settings-players.php:57
-msgid "Link players"
-msgstr "Link players"
-
-#: includes/admin/settings/class-sp-settings-events.php:84
-#: includes/admin/settings/class-sp-settings-players.php:64
-#: includes/admin/settings/class-sp-settings-teams.php:65
-msgid "Pagination"
-msgstr "Pagination"
-
-#: includes/admin/settings/class-sp-settings-events.php:85
-#: includes/admin/settings/class-sp-settings-players.php:65
-#: includes/admin/settings/class-sp-settings-teams.php:66
-msgid "Paginate"
-msgstr "Paginate"
-
-#: includes/admin/settings/class-sp-settings-events.php:92
+#: includes/admin/settings/class-sp-settings-events.php:45
+#: includes/admin/settings/class-sp-settings-events.php:121
 #: includes/admin/settings/class-sp-settings-players.php:72
 #: includes/admin/settings/class-sp-settings-teams.php:73
 msgid "Limit"
-msgstr "Limit"
+msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:96
-msgid "events"
-msgstr "events"
+#: includes/admin/settings/class-sp-settings-events.php:49
+#: includes/admin/settings/class-sp-settings-teams.php:77
+msgid "teams"
+msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:141
-msgid "Custom:"
-msgstr "Custom:"
-
-#: includes/admin/settings/class-sp-settings-general.php:25
-msgid "General"
-msgstr "General"
-
-#: includes/admin/settings/class-sp-settings-general.php:46
-msgid "General Options"
-msgstr "General Options"
-
-#: includes/admin/settings/class-sp-settings-general.php:60
-msgid "Styles and Scripts"
-msgstr "Styles and Scripts"
-
-#: includes/admin/settings/class-sp-settings-general.php:65
-msgid "Custom CSS"
-msgstr "Custom CSS"
-
-#: includes/admin/settings/class-sp-settings-general.php:72
-msgid "Scripts"
-msgstr "Scripts"
-
-#: includes/admin/settings/class-sp-settings-general.php:73
-msgid "Responsive tables"
-msgstr "Responsive tables"
-
-#: includes/admin/settings/class-sp-settings-general.php:78
-msgid "This will enable a script allowing the tables to be responsive."
-msgstr "This will enable a script allowing the tables to be responsive."
-
-#: includes/admin/settings/class-sp-settings-general.php:82
-msgid "Sortable tables"
-msgstr "Sortable tables"
-
-#: includes/admin/settings/class-sp-settings-general.php:87
-msgid "This will enable a script allowing the tables to be sortable."
-msgstr "This will enable a script allowing the tables to be sortable."
-
-#: includes/admin/settings/class-sp-settings-general.php:91
-msgid "Live countdowns"
-msgstr "Live countdowns"
-
-#: includes/admin/settings/class-sp-settings-general.php:96
-msgid "This will enable a script allowing the countdowns to be animated."
-msgstr "This will enable a script allowing the countdowns to be animated."
-
-#: includes/admin/settings/class-sp-settings-general.php:176
-msgid "Frontend Styles"
-msgstr "Frontend Styles"
-
-#: includes/admin/settings/class-sp-settings-general.php:192
-msgid "Heading"
-msgstr "Heading"
-
-#: includes/admin/settings/class-sp-settings-general.php:193
-#: includes/admin/settings/class-sp-settings-text.php:25
-#: includes/admin/settings/class-sp-settings-text.php:41
-msgid "Text"
-msgstr "Text"
-
-#: includes/admin/settings/class-sp-settings-general.php:194
-msgid "Background"
-msgstr "Background"
-
-#: includes/admin/settings/class-sp-settings-general.php:195
-msgid "Alternate"
-msgstr "Alternate"
-
-#: includes/admin/settings/class-sp-settings-general.php:200
-msgid "Enable"
-msgstr "Enable"
-
-#: includes/admin/settings/class-sp-settings-players.php:41
-msgid "Player Options"
-msgstr "Player Options"
-
-#: includes/admin/settings/class-sp-settings-players.php:45
-msgid "Display national flags"
-msgstr "Display national flags"
-
-#: includes/admin/settings/class-sp-settings-players.php:76
-msgid "players"
-msgstr "players"
-
-#: includes/admin/settings/class-sp-settings-teams.php:41
-msgid "Team Options"
-msgstr "Team Options"
-
+#: includes/admin/settings/class-sp-settings-events.php:61
 #: includes/admin/settings/class-sp-settings-teams.php:49
 #: includes/widgets/class-sp-widget-league-table.php:90
 msgid "Display logos"
-msgstr "Display logos"
+msgstr ""
 
+#: includes/admin/settings/class-sp-settings-events.php:69
+msgid "Display maps"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:77
+msgid "Link venues"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:86
+msgid "Display outcomes"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:94
+#: includes/admin/settings/class-sp-settings-players.php:57
+msgid "Link players"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:106
 #: includes/admin/settings/class-sp-settings-teams.php:57
 msgid "Link teams"
-msgstr "Link teams"
+msgstr ""
 
-#: includes/admin/settings/class-sp-settings-teams.php:77
-msgid "teams"
-msgstr "teams"
+#: includes/admin/settings/class-sp-settings-events.php:113
+#: includes/admin/settings/class-sp-settings-players.php:64
+#: includes/admin/settings/class-sp-settings-teams.php:65
+msgid "Pagination"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:114
+#: includes/admin/settings/class-sp-settings-players.php:65
+#: includes/admin/settings/class-sp-settings-teams.php:66
+msgid "Paginate"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:125
+msgid "events"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:172
+msgid "Custom:"
+msgstr "Personalizado:"
+
+#: includes/admin/settings/class-sp-settings-general.php:25
+msgid "General"
+msgstr "Geral"
+
+#: includes/admin/settings/class-sp-settings-general.php:45
+msgid "General Options"
+msgstr "Opções Gerais"
+
+#: includes/admin/settings/class-sp-settings-general.php:58
+msgid "Google Maps"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:64
+msgid "Satellite"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:65
+msgid "Hybrid"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:66
+msgid "Terrain"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:72
+msgid "Styles and Scripts"
+msgstr "Estilos e Scripts"
+
+#: includes/admin/settings/class-sp-settings-general.php:77
+msgid "Custom CSS"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:84
+msgid "Scripts"
+msgstr "Scripts"
+
+#: includes/admin/settings/class-sp-settings-general.php:85
+msgid "Responsive tables"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:90
+msgid "This will enable a script allowing the tables to be responsive."
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:94
+msgid "Sortable tables"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:99
+msgid "This will enable a script allowing the tables to be sortable."
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:103
+msgid "Live countdowns"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:108
+msgid "This will enable a script allowing the countdowns to be animated."
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:188
+msgid "Frontend Styles"
+msgstr "Folhas de Estilos do Frontend"
+
+#: includes/admin/settings/class-sp-settings-general.php:204
+msgid "Background"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:205
+#: includes/admin/settings/class-sp-settings-text.php:25
+#: includes/admin/settings/class-sp-settings-text.php:41
+msgid "Text"
+msgstr "Texto"
+
+#: includes/admin/settings/class-sp-settings-general.php:206
+msgid "Heading"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:207
+msgid "Link"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:213
+msgid "Enable"
+msgstr "Permitir"
+
+#: includes/admin/settings/class-sp-settings-players.php:41
+msgid "Player Options"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-players.php:45
+msgid "Display national flags"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-players.php:76
+msgid "players"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-teams.php:41
+msgid "Team Options"
+msgstr ""
 
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "The following options affect how words are displayed on the frontend."
-msgstr "The following options affect how words are displayed on the frontend."
+msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:5
 msgid "Please include this information when requesting support:"
-msgstr "Please include this information when requesting support:"
+msgstr "Por favor, inclua esta informação ao solicitar suporte:"
 
 #: includes/admin/views/html-admin-page-status.php:6
 msgid "Get System Report"
-msgstr "Get System Report"
+msgstr "Obter Relatório do Sistema"
 
 #: includes/admin/views/html-admin-page-status.php:14
 msgid "Environment"
-msgstr "Environment"
+msgstr "Ambiente"
 
 #: includes/admin/views/html-admin-page-status.php:20
 msgid "Home URL"
-msgstr "Home URL"
+msgstr "URL da página inicial"
 
 #: includes/admin/views/html-admin-page-status.php:24
 msgid "Site URL"
-msgstr "Site URL"
+msgstr "URL do site"
 
 #: includes/admin/views/html-admin-page-status.php:28
 msgid "SP Version"
-msgstr "SP Version"
+msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:32
 msgid "WP Version"
-msgstr "WP Version"
+msgstr "Versão do WP"
 
 #: includes/admin/views/html-admin-page-status.php:36
 msgid "WP Multisite Enabled"
-msgstr "WP Multisite Enabled"
+msgstr "WP Multisite Activo"
 
 #: includes/admin/views/html-admin-page-status.php:37
-#: includes/admin/views/html-admin-page-status.php:65
-#: includes/admin/views/html-admin-page-status.php:90
+#: includes/admin/views/html-admin-page-status.php:61
+#: includes/admin/views/html-admin-page-status.php:86
 msgid "Yes"
-msgstr "Yes"
+msgstr "Sim"
 
 #: includes/admin/views/html-admin-page-status.php:37
-#: includes/admin/views/html-admin-page-status.php:65
-#: includes/admin/views/html-admin-page-status.php:90
+#: includes/admin/views/html-admin-page-status.php:61
+#: includes/admin/views/html-admin-page-status.php:86
 msgid "No"
-msgstr "No"
+msgstr "Não"
 
 #: includes/admin/views/html-admin-page-status.php:40
 msgid "Web Server Info"
-msgstr "Web Server Info"
+msgstr "Informações do Servidor Web"
 
 #: includes/admin/views/html-admin-page-status.php:44
 msgid "PHP Version"
-msgstr "PHP Version"
+msgstr "Versão do PHP"
 
 #: includes/admin/views/html-admin-page-status.php:48
-msgid "MySQL Version"
-msgstr "MySQL Version"
-
-#: includes/admin/views/html-admin-page-status.php:52
 msgid "WP Memory Limit"
-msgstr "WP Memory Limit"
+msgstr "Limite de Memória do WP"
 
-#: includes/admin/views/html-admin-page-status.php:57
+#: includes/admin/views/html-admin-page-status.php:53
 #, php-format
 msgid ""
 "%s - We recommend setting memory to at least 64MB. See: <a href=\"%s"
 "\">Increasing memory allocated to PHP</a>"
 msgstr ""
-"%s - We recommend setting memory to at least 64MB. See: <a href=\"%s"
-"\">Increasing memory allocated to PHP</a>"
+"%s - Recomendamos o valor de 64MB para o limite de memória. Veja mais em: <a "
+"href=\"%s\">Aumento de memória para PHP</a>"
+
+#: includes/admin/views/html-admin-page-status.php:60
+msgid "WP Debug Mode"
+msgstr "Modo WP Debug"
 
 #: includes/admin/views/html-admin-page-status.php:64
-msgid "WP Debug Mode"
-msgstr "WP Debug Mode"
+msgid "WP Language"
+msgstr "Língua do WP"
 
 #: includes/admin/views/html-admin-page-status.php:68
-msgid "WP Language"
-msgstr "WP Language"
-
-#: includes/admin/views/html-admin-page-status.php:72
 msgid "WP Max Upload Size"
-msgstr "WP Max Upload Size"
+msgstr "Tamanho máximo do upload do WP"
+
+#: includes/admin/views/html-admin-page-status.php:73
+msgid "PHP Post Max Size"
+msgstr "Tamanho máximo para upload no PHP"
 
 #: includes/admin/views/html-admin-page-status.php:77
-msgid "PHP Post Max Size"
-msgstr "PHP Post Max Size"
+msgid "PHP Time Limit"
+msgstr "Limite de tempo PHP"
 
 #: includes/admin/views/html-admin-page-status.php:81
-msgid "PHP Time Limit"
-msgstr "PHP Time Limit"
-
-#: includes/admin/views/html-admin-page-status.php:85
 msgid "PHP Max Input Vars"
 msgstr "PHP Max Input Vars"
 
-#: includes/admin/views/html-admin-page-status.php:89
+#: includes/admin/views/html-admin-page-status.php:85
 msgid "SUHOSIN Installed"
-msgstr "SUHOSIN Installed"
+msgstr "SUHOSIN Instalado"
+
+#: includes/admin/views/html-admin-page-status.php:90
+msgid "Default Timezone"
+msgstr "Fuso horário padrão"
 
 #: includes/admin/views/html-admin-page-status.php:94
-msgid "Default Timezone"
-msgstr "Default Timezone"
-
-#: includes/admin/views/html-admin-page-status.php:98
 #, php-format
 msgid "Default timezone is %s - it should be UTC"
-msgstr "Default timezone is %s - it should be UTC"
+msgstr "Fuso horário padrão é %s - deve ser UTC"
 
-#: includes/admin/views/html-admin-page-status.php:100
+#: includes/admin/views/html-admin-page-status.php:96
 #, php-format
 msgid "Default timezone is %s"
-msgstr "Default timezone is %s"
+msgstr "Fuso horário padrão é %s"
 
-#: includes/admin/views/html-admin-page-status.php:108
+#: includes/admin/views/html-admin-page-status.php:104
 msgid "fsockopen/cURL"
 msgstr "fsockopen/cURL"
 
-#: includes/admin/views/html-admin-page-status.php:111
+#: includes/admin/views/html-admin-page-status.php:107
 msgid "Your server has fsockopen and cURL enabled."
-msgstr "Your server has fsockopen and cURL enabled."
+msgstr "O servidor da sua hospedagem deve ter fsockopen e cURL habilitados."
 
-#: includes/admin/views/html-admin-page-status.php:113
+#: includes/admin/views/html-admin-page-status.php:109
 msgid "Your server has fsockopen enabled, cURL is disabled."
-msgstr "Your server has fsockopen enabled, cURL is disabled."
+msgstr ""
+"O servidor da sua hospedagem está com o fsockopen habilitado, mas o cURL "
+"desabilitado."
+
+#: includes/admin/views/html-admin-page-status.php:111
+msgid "Your server has cURL enabled, fsockopen is disabled."
+msgstr ""
+"O servidor da sua hospedagem está com o cURL habilitado, mas o fsockopen "
+"desabilitado."
 
 #: includes/admin/views/html-admin-page-status.php:115
-msgid "Your server has cURL enabled, fsockopen is disabled."
-msgstr "Your server has cURL enabled, fsockopen is disabled."
-
-#: includes/admin/views/html-admin-page-status.php:119
 msgid ""
 "Your server does not have fsockopen or cURL enabled - PayPal IPN and other "
 "scripts which communicate with other servers will not work. Contact your "
 "hosting provider."
 msgstr ""
-"Your server does not have fsockopen or cURL enabled - PayPal IPN and other "
-"scripts which communicate with other servers will not work. Contact your "
-"hosting provider."
+"O servidor da sua hospedagem não possue o fsockopen e o cURL habilitados. "
+"PayPal IPN e outros scripts que se comunicam com o servidor não irão "
+"funcionar. Entre em contato com o seu provedor de hospedagem para mais "
+"detalhes."
 
-#: includes/admin/views/html-admin-page-status.php:124
+#: includes/admin/views/html-admin-page-status.php:120
 msgid "SOAP Client"
-msgstr "SOAP Client"
+msgstr "Cliente SOAP"
 
-#: includes/admin/views/html-admin-page-status.php:126
+#: includes/admin/views/html-admin-page-status.php:122
 msgid "Your server has the SOAP Client class enabled."
-msgstr "Your server has the SOAP Client class enabled."
+msgstr "O seu servidor possui o cliente SOAP ativo."
 
-#: includes/admin/views/html-admin-page-status.php:129
+#: includes/admin/views/html-admin-page-status.php:125
 #, php-format
 msgid ""
 "Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled - "
 "some gateway plugins which use SOAP may not work as expected."
 msgstr ""
-"Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled - "
-"some gateway plugins which use SOAP may not work as expected."
+"O seu servidor não possui a classe <a href=\"%s\">SOAP Client</a> habilitada "
+"- algumas extensões de pagamento que utilizam essa classe podem não "
+"funcionar como esperado."
 
-#: includes/admin/views/html-admin-page-status.php:152
+#: includes/admin/views/html-admin-page-status.php:148
 msgid "Plugins"
-msgstr "Plugins"
+msgstr "Extensões"
 
-#: includes/admin/views/html-admin-page-status.php:158
+#: includes/admin/views/html-admin-page-status.php:154
 msgid "Installed Plugins"
-msgstr "Installed Plugins"
+msgstr "Extensões Instaladas"
 
-#: includes/admin/views/html-admin-page-status.php:178
+#: includes/admin/views/html-admin-page-status.php:174
 msgid "Visit plugin homepage"
-msgstr "Visit plugin homepage"
+msgstr "Visite a página da extensão"
 
-#: includes/admin/views/html-admin-page-status.php:202
-#: includes/admin/views/html-admin-page-status.php:381
+#: includes/admin/views/html-admin-page-status.php:198
+#: includes/admin/views/html-admin-page-status.php:413
 msgid "is available"
-msgstr "is available"
+msgstr "está disponível"
 
-#: includes/admin/views/html-admin-page-status.php:205
+#: includes/admin/views/html-admin-page-status.php:201
 msgid "by"
-msgstr "by"
+msgstr "por"
 
-#: includes/admin/views/html-admin-page-status.php:205
+#: includes/admin/views/html-admin-page-status.php:201
 msgid "version"
-msgstr "version"
+msgstr "versão"
 
-#: includes/admin/views/html-admin-page-status.php:221
+#: includes/admin/views/html-admin-page-status.php:217
 msgid "SP Configuration"
-msgstr "SP Configuration"
+msgstr ""
 
-#: includes/admin/views/html-admin-page-status.php:284
+#: includes/admin/views/html-admin-page-status.php:290
 msgid "SP Taxonomies"
-msgstr "SP Taxonomies"
+msgstr ""
 
-#: includes/admin/views/html-admin-page-status.php:333
+#: includes/admin/views/html-admin-page-status.php:339
+msgid "SP Post Types"
+msgstr ""
+
+#: includes/admin/views/html-admin-page-status.php:365
 msgid "Theme"
-msgstr "Theme"
+msgstr "Tema"
 
-#: includes/admin/views/html-admin-page-status.php:370
+#: includes/admin/views/html-admin-page-status.php:402
 msgid "Theme Name"
-msgstr "Theme Name"
+msgstr "Nome do tema"
 
-#: includes/admin/views/html-admin-page-status.php:376
+#: includes/admin/views/html-admin-page-status.php:408
 msgid "Theme Version"
-msgstr "Theme Version"
+msgstr "Versão do tema"
 
-#: includes/admin/views/html-admin-page-status.php:385
+#: includes/admin/views/html-admin-page-status.php:417
 msgid "Author URL"
-msgstr "Author URL"
+msgstr "URL do autor"
 
-#: includes/admin/views/html-admin-page-status.php:394
+#: includes/admin/views/html-admin-page-status.php:426
 msgid "Templates"
 msgstr "Templates"
 
-#: includes/admin/views/html-admin-page-status.php:427
+#: includes/admin/views/html-admin-page-status.php:459
 #, php-format
 msgid ""
 "<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
 "date. The core version is %s"
 msgstr ""
-"<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
-"date. The core version is %s"
+"<code>%s</code> versão <strong style=\"color:red\">%s</strong> está "
+"desatualizada. A versão do core é %s"
 
-#: includes/admin/views/html-admin-page-status.php:438
-#: includes/admin/views/html-admin-page-status.php:444
+#: includes/admin/views/html-admin-page-status.php:470
+#: includes/admin/views/html-admin-page-status.php:476
 msgid "Template Overrides"
-msgstr "Template Overrides"
+msgstr "Template Substituição"
 
-#: includes/admin/views/html-admin-page-status.php:445
+#: includes/admin/views/html-admin-page-status.php:477
 msgid "No overrides present in theme."
-msgstr "No overrides present in theme."
+msgstr "Não existem revogações no tema."
 
 #: includes/admin/views/html-notice-install.php:5
 #, php-format
 msgid "Welcome to SportsPress %s"
-msgstr "Welcome to SportsPress %s"
+msgstr "Bem-vindo ao SportsPress %s"
 
 #: includes/admin/views/html-notice-install.php:8
 #: includes/admin/views/html-notice-theme-support.php:8
 msgid "Hide this notice"
-msgstr "Hide this notice"
+msgstr "Ocultar este aviso"
 
 #: includes/admin/views/html-notice-theme-support.php:5
 msgid ""
@@ -2877,23 +3031,23 @@ msgid ""
 "you encounter layout issues please read our integration guide or choose a "
 "SportsPress theme :)"
 msgstr ""
-"<strong>Your theme does not declare SportsPress support</strong> &#8211; if "
-"you encounter layout issues please read our integration guide or choose a "
-"SportsPress theme :)"
+"<strong> O seu tema não declara suporte SportsPress </ strong> - se se "
+"deparar com problemas de layout, por favor leia o nosso guia de integração "
+"ou escolha um tema SportsPress :)"
 
 #: includes/admin/views/html-notice-theme-support.php:7
 msgid "Theme Integration Guide"
-msgstr "Theme Integration Guide"
+msgstr "Guia de Integração do Tema"
 
 #: includes/widgets/class-sp-widget-countdown.php:5
 msgid "A clock that counts down to an upcoming event."
-msgstr "A clock that counts down to an upcoming event."
+msgstr ""
 
 #: includes/widgets/class-sp-widget-countdown.php:6
 msgid "SportsPress Countdown"
-msgstr "SportsPress Countdown"
+msgstr ""
 
-#: includes/widgets/class-sp-widget-countdown.php:36
+#: includes/widgets/class-sp-widget-countdown.php:39
 #: includes/widgets/class-sp-widget-event-blocks.php:45
 #: includes/widgets/class-sp-widget-event-calendar.php:41
 #: includes/widgets/class-sp-widget-event-list.php:48
@@ -2901,9 +3055,9 @@ msgstr "SportsPress Countdown"
 #: includes/widgets/class-sp-widget-player-gallery.php:50
 #: includes/widgets/class-sp-widget-player-list.php:50
 msgid "Title:"
-msgstr "Title:"
+msgstr "Título:"
 
-#: includes/widgets/class-sp-widget-countdown.php:39
+#: includes/widgets/class-sp-widget-countdown.php:42
 #: includes/widgets/class-sp-widget-event-blocks.php:48
 #: includes/widgets/class-sp-widget-event-calendar.php:44
 #: includes/widgets/class-sp-widget-event-list.php:51
@@ -2912,16 +3066,20 @@ msgstr "Title:"
 #: includes/widgets/class-sp-widget-player-list.php:53
 #, php-format
 msgid "Select %s:"
-msgstr "Select %s:"
+msgstr ""
 
-#: includes/widgets/class-sp-widget-countdown.php:59
+#: includes/widgets/class-sp-widget-countdown.php:62
+msgid "Display venue"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-countdown.php:65
 msgid "Display league"
-msgstr "Display league"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-event-blocks.php:5
 #: includes/widgets/class-sp-widget-event-list.php:5
 msgid "A list of events."
-msgstr "A list of events."
+msgstr ""
 
 #: includes/widgets/class-sp-widget-event-blocks.php:6
 msgid "SportsPress Event Blocks"
@@ -2936,24 +3094,24 @@ msgstr ""
 #: includes/widgets/class-sp-widget-event-blocks.php:78
 #: includes/widgets/class-sp-widget-event-list.php:81
 msgid "Number of events to show:"
-msgstr "Number of events to show:"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-event-blocks.php:81
 #: includes/widgets/class-sp-widget-event-list.php:84
 #: includes/widgets/class-sp-widget-player-gallery.php:94
 #: includes/widgets/class-sp-widget-player-list.php:115
 msgid "Sort Order:"
-msgstr "Sort Order:"
+msgstr "Ordenamento:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:89
 #: includes/widgets/class-sp-widget-event-calendar.php:75
 #: includes/widgets/class-sp-widget-event-list.php:110
 msgid "Display link to view all events"
-msgstr "Display link to view all events"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-event-calendar.php:5
 msgid "A calendar of events."
-msgstr "A calendar of events."
+msgstr ""
 
 #: includes/widgets/class-sp-widget-event-calendar.php:6
 msgid "SportsPress Event Calendar"
@@ -2966,62 +3124,62 @@ msgstr ""
 #: includes/widgets/class-sp-widget-event-list.php:92
 #: includes/widgets/class-sp-widget-league-table.php:70
 msgid "Columns:"
-msgstr "Columns:"
+msgstr "Colunas:"
 
 #: includes/widgets/class-sp-widget-league-table.php:5
 msgid "Display a league table."
-msgstr "Display a league table."
+msgstr ""
 
 #: includes/widgets/class-sp-widget-league-table.php:6
 msgid "SportsPress League Table"
-msgstr "SportsPress League Table"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-league-table.php:66
 msgid "Number of teams to show:"
-msgstr "Number of teams to show:"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-league-table.php:93
 msgid "Display link to view full table"
-msgstr "Display link to view full table"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-player-gallery.php:5
 msgid "Display a gallery of players."
-msgstr "Display a gallery of players."
+msgstr ""
 
 #: includes/widgets/class-sp-widget-player-gallery.php:6
 msgid "SportsPress Player Gallery"
-msgstr "SportsPress Player Gallery"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-player-gallery.php:69
 #: includes/widgets/class-sp-widget-player-list.php:69
 msgid "Number of players to show:"
-msgstr "Number of players to show:"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-player-gallery.php:72
 #: includes/widgets/class-sp-widget-player-list.php:93
 msgid "Sort by:"
-msgstr "Sort by:"
+msgstr "Ordenar por:"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:101
 #: includes/widgets/class-sp-widget-player-list.php:122
 msgid "Display link to view all players"
-msgstr "Display link to view all players"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-player-gallery.php:104
 msgid "Display player names on hover"
-msgstr "Display player names on hover"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-player-list.php:5
 msgid "Display a list of players."
-msgstr "Display a list of players."
+msgstr ""
 
 #: includes/widgets/class-sp-widget-player-list.php:6
 msgid "SportsPress Player List"
-msgstr "SportsPress Player List"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-player-list.php:73
 msgid "Performance:"
-msgstr "Performance:"
+msgstr ""
 
 #. translators: Calendar caption: 1: month name, 2: 4-digit year
 #: templates/event-calendar.php:89 templates/event-calendar.php:117
@@ -3030,3 +3188,6 @@ msgstr "Performance:"
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
+
+#~ msgid "MySQL Version"
+#~ msgstr "Versão do MySQL"

@@ -4,7 +4,7 @@ Tags: sport, sports, sports journalism, teams, team management, fixtures, result
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: 0.9.3
+Stable tag: 0.9.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,7 +32,7 @@ Add schedules, results, league tables, player profiles and statistics to your te
 = Available Languages =
 * English – English ( en_US )
 * Arabic – العربية ( ar )
-* Chinese (China) - 中文 (zh_CN)
+* Chinese (China) - 中文 ( zh_CN )
 * Croatian – Hrvatski ( hr )
 * Czech – Čeština ( cs_CZ )
 * Dutch - Nederlands ( nl_NL )
@@ -44,6 +44,7 @@ Add schedules, results, league tables, player profiles and statistics to your te
 * Japanese – 日本語 ( ja )
 * Polish – Polski ( pl_PL )
 * Portuguese (Brazil) – Português do Brasil ( pt_BR )
+* Portuguese (Portugal) – Português ( pt_PT )
 * Russian - Русский ( ru_RU )
 * Slovak – Slovenčina ( sk_SK )
 * Slovenian – Slovenija ( sl_SI )
@@ -118,6 +119,13 @@ SportsPress is currently in beta and is undergoing testing. We are still activel
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 0.9.4 =
+* Tweak - Force delete preset variables when switching sports in settings.
+* Fix - Apply player gallery limit.
+* Fix - Display localized team results string.
+* Refactor - Use more common thumbnail sizes.
+* Localization - Portuguese (Portugal) translation by Andrew_Melim.
 
 = 0.9.3 =
 * Fix - Player list columns not displaying.
