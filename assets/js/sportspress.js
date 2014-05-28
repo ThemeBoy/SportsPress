@@ -11,6 +11,9 @@ function viewport() {
 
 	var sp_responsive_activated = false;
 
+	/* Header */
+	$('body').prepend( '<div class="sp-header"></div>' );
+
 	/* Countdown */
 	$("[data-countdown]").each(function() {
 		var $this = $(this), finalDate = $(this).data('countdown');

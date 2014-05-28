@@ -107,6 +107,19 @@ class SP_Settings_General extends SP_Settings_Page {
 				'checkboxgroup'		=> 'end',
 				'desc_tip'	=> __( 'This will enable a script allowing the countdowns to be animated.', 'sportspress' ),
 			),
+			
+			array(
+				'title' 	=> __( 'Header Offset', 'sportspress' ),
+				'id' 		=> 'sportspress_header_offset',
+				'class' 	=> 'small-text',
+				'default'	=> null,
+				'placeholder' => __( 'Auto', 'sportspress' ),
+				'desc' 		=> 'px',
+				'type' 		=> 'number',
+				'custom_attributes' => array(
+					'step' 	=> 1
+				),
+			),
 
 			array( 'type' => 'sectionend', 'id' => 'script_styling_options' ),
 
@@ -167,7 +180,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				<label for="sportspress_default_country"><?php _e( 'Base Location', 'sportspress' ); ?></label>
 			</th>
             <td class="forminp">
-				<legend class="screen-reader-text"><span><?php _e( 'Delimiter', 'sportspress' ); ?></span></legend>
+				<legend class="screen-reader-text"><span><?php _e( 'Base Location', 'sportspress' ); ?></span></legend>
 				<select name="sportspress_default_country" data-placeholder="<?php _e( 'Choose a country&hellip;', 'sportspress' ); ?>" title="Country" class="chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>">
 	        		<?php SP()->countries->country_dropdown_options( $selected ); ?>
 	        	</select>

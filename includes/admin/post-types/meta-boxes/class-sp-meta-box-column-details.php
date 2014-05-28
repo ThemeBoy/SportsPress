@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta Boxes
- * @version     0.8
+ * @version     1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -35,14 +35,6 @@ class SP_Meta_Box_Column_Details extends SP_Meta_Box_Config {
 		<p>
 			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo $post->post_name; ?>">
 			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
-		</p>
-		<p><strong><?php _e( 'Equation', 'sportspress' ); ?></strong></p>
-		<p class="sp-equation-selector">
-			<?php
-			foreach ( $equation as $piece ):
-				self::select( $post->ID, $piece, array( 'team_event', 'outcome', 'result' ) );
-			endforeach;
-			?>
 		</p>
 		<p><strong><?php _e( 'Rounding', 'sportspress' ); ?></strong></p>
 		<p class="sp-precision-selector">
@@ -79,7 +71,6 @@ class SP_Meta_Box_Column_Details extends SP_Meta_Box_Config {
 	 */
 	public static function save( $post_id, $post ) {
 		self::delete_duplicate( $_POST );
-		update_post_meta( $post_id, 'sp_equation', implode( ' ', sp_array_value( $_POST, 'sp_equation', array() ) ) );
 		update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
 		update_post_meta( $post_id, 'sp_priority', sp_array_value( $_POST, 'sp_priority', '0' ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', 'DESC' ) );

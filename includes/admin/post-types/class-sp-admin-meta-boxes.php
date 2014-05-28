@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta Boxes
- * @version     0.8
+ * @version     1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -40,9 +40,11 @@ class SP_Admin_Meta_Boxes {
 
 		// Save Statistic Meta Boxes
 		add_action( 'sportspress_process_sp_statistic_meta', 'SP_Meta_Box_Statistic_Details::save', 10, 2 );
+		add_action( 'sportspress_process_sp_statistic_meta', 'SP_Meta_Box_Statistic_Equation::save', 20, 2 );
 
 		// Save Column Meta Boxes
 		add_action( 'sportspress_process_sp_column_meta', 'SP_Meta_Box_Column_Details::save', 10, 2 );
+		add_action( 'sportspress_process_sp_column_meta', 'SP_Meta_Box_Column_Equation::save', 20, 2 );
 
 		// Save Event Meta Boxes
 		add_action( 'sportspress_process_sp_event_meta', 'SP_Meta_Box_Event_Format::save', 10, 2 );
@@ -92,7 +94,8 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Outcome_Details::output', 'sp_outcome', 'normal', 'high' );
 
 		// Columns
-		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Column_Details::output', 'sp_column', 'normal', 'high' );
+		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Column_Details::output', 'sp_column', 'side', 'default' );
+		add_meta_box( 'sp_equationdiv', __( 'Equation', 'sportspress' ), 'SP_Meta_Box_Column_Equation::output', 'sp_column', 'normal', 'high' );
 
 		// Metrics
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Metric_Details::output', 'sp_metric', 'normal', 'high' );
@@ -100,8 +103,9 @@ class SP_Admin_Meta_Boxes {
 		// Performance
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Performance_Details::output', 'sp_performance', 'normal', 'high' );
 
-		// Metrics
-		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Statistic_Details::output', 'sp_statistic', 'normal', 'high' );
+		// Statistics
+		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Statistic_Details::output', 'sp_statistic', 'side', 'default' );
+		add_meta_box( 'sp_equationdiv', __( 'Equation', 'sportspress' ), 'SP_Meta_Box_Statistic_Equation::output', 'sp_statistic', 'normal', 'high' );
 
 		// Events
 		add_meta_box( 'sp_shortcodediv', __( 'Shortcodes', 'sportspress' ), 'SP_Meta_Box_Event_Shortcode::output', 'sp_event', 'side', 'default' );
