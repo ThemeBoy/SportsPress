@@ -1,10 +1,15 @@
 /* SportsPress */
 
-.sp-scrollable-table-wrapper {
-	overflow: auto;
+/* Header */
+.sp-header {
+	position: relative;
+	overflow: visible;
 }
 
 /* Data Tables */
+.sp-scrollable-table-wrapper {
+	overflow: auto;
+}
 .sp-data-table {
 	width: 100%;
 	position: relative;

@@ -48,13 +48,16 @@ class SP_Admin_Assets {
 			wp_enqueue_style( 'sportspress-admin-dashboard-styles', SP()->plugin_url() . '/assets/css/dashboard.css', array(), SP_VERSION );
 		}
 
-
 		if ( in_array( $screen->id, array( 'widgets' ) ) ) {
 			wp_enqueue_style( 'sportspress-admin-widgets-styles', SP()->plugin_url() . '/assets/css/widgets.css', array(), SP_VERSION );
 		}
 
 		if ( in_array( $screen->id, array( 'customize' ) ) ) {
 			wp_enqueue_style( 'sportspress-admin-customize-styles', SP()->plugin_url() . '/assets/css/customize.css', array(), SP_VERSION );
+		}
+
+		if ( in_array( $screen->id, array( 'sp_column', 'sp_statistic' ) ) ) {
+			wp_enqueue_style( 'sportspress-admin-equation-styles', SP()->plugin_url() . '/assets/css/equation.css', array(), SP_VERSION );
 		}
 
 		do_action( 'sportspress_admin_css' );
@@ -82,6 +85,8 @@ class SP_Admin_Assets {
 		wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
 
 		wp_register_script( 'sportspress-admin-locationpicker', SP()->plugin_url() . '/assets/js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_VERSION, true );
+
+		wp_register_script( 'sportspress-admin-equationbuilder', SP()->plugin_url() . '/assets/js/admin/equationbuilder.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable' ), SP_VERSION, true );
 	
 		wp_register_script( 'sportspress-admin', SP()->plugin_url() . '/assets/js/admin/sportspress-admin.js', array( 'jquery', 'chosen', 'jquery-tiptip', 'jquery-caret', 'jquery-countdown' ), SP_VERSION, true );
 
@@ -120,11 +125,17 @@ class SP_Admin_Assets {
 
 	    // Edit venue pages
 	    if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
-
 	    	wp_enqueue_script( 'google-maps' );
 	    	wp_enqueue_script( 'jquery-locationpicker' );
 	    	wp_enqueue_script( 'sportspress-admin-locationpicker' );
+		}
 
+		// Edit equation
+		if ( in_array( $screen->id, array( 'sp_column', 'sp_statistic' ) ) ) {
+	    	wp_enqueue_script( 'jquery-ui-core' );
+	    	wp_enqueue_script( 'jquery-ui-draggable' );
+	    	wp_enqueue_script( 'jquery-ui-droppable' );
+	    	wp_enqueue_script( 'sportspress-admin-equationbuilder' );
 		}
 	}
 }

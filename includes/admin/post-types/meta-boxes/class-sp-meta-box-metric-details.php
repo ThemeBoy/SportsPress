@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta Boxes
- * @version     0.8
+ * @version     1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -23,7 +23,6 @@ class SP_Meta_Box_Metric_Details extends SP_Meta_Box_Config {
 	 */
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
-		$calculate = get_post_meta( $post->ID, 'sp_calculate', true );
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>

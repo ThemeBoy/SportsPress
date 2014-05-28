@@ -236,7 +236,7 @@ class SP_Admin_Welcome {
 						<h4><?php _e( 'Translators', 'sportspress' ); ?></h4>
 						<p><?php _e( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="https://www.transifex.com/projects/p/sportspress/">Translate SportsPress</a>.', 'sportspress' ); ?></p>
 						<?php
-						$translator_handles = array( 'Abdulelah', 'albertone', 'Andrew_Melim', 'aylaview', 'Bhelpful2', 'bizover', 'BOCo', 'dic_2008', 'hanro', 'i__k', 'JensZ', 'JuKi', 'karimjarro', 'King3R', 'massimo.marra', 'rochester', 'Selskei', 'Spirossmil', 'ThemeBoy', 'valentijnreza' );
+						$translator_handles = array( 'Abdulelah', 'albertone', 'Andrew_Melim', 'aylaview', 'Bhelpful2', 'bizover', 'BOCo', 'dic_2008', 'hanro', 'i__k', 'JensZ', 'JuKi', 'karimjarro', 'King3R', 'massimo.marra', 'rochester', 'Selskei', 'sijo', 'Spirossmil', 'ThemeBoy', 'valentijnreza' );
 						$translator_links = array();
 						foreach ( $translator_handles as $handle ):
 							$translator_links[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';

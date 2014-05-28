@@ -97,7 +97,13 @@ class SP_Frontend_Scripts {
 		$enabled = get_option( 'sportspress_enable_frontend_css', 'yes' );
 		$custom = get_option( 'sportspress_custom_css', null );
 
-		if ( $enabled == 'yes' || ! empty( $custom ) ) {
+		$offset = get_option( 'sportspress_header_offset', '' );
+		if ( $offset === '' ) {
+			$template = get_option( 'template' );
+			$offset = ( 'twentyfourteen' == $template ? 48 : 0 );
+		}
+
+		if ( $enabled == 'yes' || ! empty( $custom ) || $offset != 0 ) {
 
 			$colors = get_option( 'sportspress_frontend_css_colors' );
 			
@@ -121,6 +127,9 @@ class SP_Frontend_Scripts {
 				if ( isset( $colors['link'] ) )
 					echo '.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a:focus{color: ' . $colors['link'] . ' !important}';
 			}
+
+			if ( $offset != 0 )
+				echo ' @media only screen and (min-width: 40.063em) {.sp-header{top: ' . $offset . 'px}}';
 
 			if ( ! empty( $custom ) )
 				echo ' /* SportsPress Custom CSS */ ' . $custom;
