@@ -115,10 +115,6 @@ class SP_Admin_Assets {
 			wp_localize_script( 'sportspress-admin', 'localized_strings', $params );
 	    }
 
-		if ( in_array( $screen->id, array( 'dashboard' ) ) ) {
-			//wp_enqueue_style( 'sportspress-admin-dashboard' );
-		}
-
 		if ( in_array( $screen->id, array( 'widgets' ) ) ) {
 	    	wp_enqueue_script( 'sportspress-admin-widgets' );
 		}
