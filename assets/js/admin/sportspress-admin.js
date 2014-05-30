@@ -8,7 +8,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Chosen select
-	$(".chosen-select").chosen({
+	$(".chosen-select, #poststuff #post_author_override").chosen({
 		allow_single_deselect: true,
 		single_backstroke_delete: false,
 		disable_search_threshold: 10,
