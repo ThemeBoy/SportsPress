@@ -120,7 +120,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				break;
 			case 'sp_team':
 				$teams = (array)get_post_meta( $post_id, 'sp_team', false );
-				$teams = array_filter( $teams );
+				$teams = array_unique( array_filter( $teams ) );
 				if ( empty( $teams ) ):
 					echo '&mdash;';
 				else:
