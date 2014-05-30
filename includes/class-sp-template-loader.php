@@ -24,7 +24,7 @@ class SP_Template_Loader {
 		add_filter( 'the_content', array( $this, 'staff_content' ) );
 	}
 
-	public function add_content( $content, $template, $append = false) {
+	public function add_content( $content, $template, $append = false ) {
 		ob_start();
 		call_user_func( 'sp_get_template_part', 'content', 'single-' . $template );
 		if ( $append )
