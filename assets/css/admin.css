@@ -74,8 +74,7 @@
 .post-type-sp_calendar .fixed .column-sp_season,
 .post-type-sp_event .fixed .column-sp_venue,
 .post-type-sp_calendar .fixed .column-sp_venue,
-.post-type-sp_player .fixed .column-sp_position,
-.fixed .column-sp_views {
+.post-type-sp_player .fixed .column-sp_position {
 	width: 10%;
 }
 
@@ -435,7 +434,6 @@ table.sp_status_table td mark.yes {
 	.fixed .column-sp_league,
 	.fixed .column-sp_season,
 	.fixed .column-sp_venue,
-	.fixed .column-sp_views,
 	.fixed .column-sp_position,
 	.fixed .column-sp_player {
 		display: none;

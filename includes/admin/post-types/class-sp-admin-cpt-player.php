@@ -32,7 +32,6 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 		// Admin Columns
 		add_filter( 'manage_edit-sp_player_columns', array( $this, 'edit_columns' ) );
 		add_action( 'manage_sp_player_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
-		add_filter( 'manage_edit-sp_player_sortable_columns', array( $this, 'custom_columns_sort' ) );
 
 		// Filtering
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
@@ -67,7 +66,6 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 			'sp_team' => __( 'Teams', 'sportspress' ),
 			'sp_league' => __( 'Leagues', 'sportspress' ),
 			'sp_season' => __( 'Seasons', 'sportspress' ),
-			'sp_views' => __( 'Views', 'sportspress' ),
 		);
 		return apply_filters( 'sportspress_player_admin_columns', $columns );
 	}
@@ -113,26 +111,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 			case 'sp_venue':
 				echo get_the_terms ( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
 				break;
-			case 'sp_views':
-	        	echo sp_get_post_views( $post_id );
-				break;
 		endswitch;
-	}
-
-	/**
-	 * Make columns sortable
-	 *
-	 * https://gist.github.com/906872
-	 *
-	 * @access public
-	 * @param mixed $columns
-	 * @return array
-	 */
-	public function custom_columns_sort( $columns ) {
-		$custom = array(
-			'sp_views'		=> 'sp_views',
-		);
-		return wp_parse_args( $custom, $columns );
 	}
 
 	/**

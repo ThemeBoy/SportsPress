@@ -285,40 +285,6 @@ if ( !function_exists( 'sp_get_the_term_id' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_get_post_views' ) ) {
-	function sp_get_post_views( $post_id ) {
-	    $count_key = 'sp_views';
-	    $count = get_post_meta( $post_id, $count_key, true );
-	    if ( $count == '' ):
-	    	$count = 0;
-	        delete_post_meta( $post_id, $count_key );
-	        add_post_meta( $post_id, $count_key, '0' );
-	    endif;
-	    if ( $count == 1 )
-	    	return __( '1 view', 'sportspress' );
-	    else
-	    	return sprintf( __( '%s views', 'sportspress' ), $count );
-	}
-}
-
-if ( !function_exists( 'sp_set_post_views' ) ) {
-	function sp_set_post_views( $post_id ) {
-		if ( is_preview() )
-			return;
-		
-	    $count_key = 'sp_views';
-	    $count = get_post_meta( $post_id, $count_key, true );
-	    if ( $count == '' ):
-	        $count = 0;
-	        delete_post_meta( $post_id, $count_key );
-	        add_post_meta( $post_id, $count_key, '0' );
-	    else:
-	        $count++;
-	        update_post_meta( $post_id, $count_key, $count );
-	    endif;
-	}
-}
-
 if ( !function_exists( 'sp_get_post_precision' ) ) {
 	function sp_get_post_precision( $post_id ) {
 		$precision = get_post_meta ( $post_id, 'sp_precision', true );
