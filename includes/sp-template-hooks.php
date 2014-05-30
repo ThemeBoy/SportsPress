@@ -257,14 +257,6 @@ function sportspress_sanitize_title( $title ) {
 }
 add_filter( 'sanitize_title', 'sportspress_sanitize_title' );
 
-function sportspress_content_post_views( $content ) {
-    if ( is_single() || is_page() )
-        sp_set_post_views( get_the_ID() );
-    return $content;
-}
-add_filter( 'the_content', 'sportspress_content_post_views' );
-add_filter( 'get_the_content', 'sportspress_content_post_views' );
-
 function sportspress_widget_text( $content ) {
 	if ( ! preg_match( '/\[[\r\n\t ]*(countdown|events?(_|-)(results|details|performance|calendar|list|blocks)|team(_|-)columns|league(_|-)table|player(_|-)(metrics|performance|list|gallery))?[\r\n\t ].*?\]/', $content ) )
 		return $content;

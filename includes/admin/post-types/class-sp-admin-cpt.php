@@ -25,7 +25,6 @@ class SP_Admin_CPT {
 	public function __construct() {
 		// Insert into X media browser
 		add_filter( 'media_view_strings', array( $this, 'change_insert_into_post' ) );
-		add_filter( 'request', array( $this, 'custom_columns_orderby' ) );
 	}
 
 	/**
@@ -62,28 +61,6 @@ class SP_Admin_CPT {
 			return true;
 		}
 		return false;
-	}
-
-	/**
-	 * Custom column orderby
-	 *
-	 * http://scribu.net/wordpress/custom-sortable-columns.html#comment-4732
-	 *
-	 * @access public
-	 * @param mixed $vars
-	 * @return array
-	 */
-	public function custom_columns_orderby( $vars ) {
-		if (isset( $vars['orderby'] )) :
-			if ( 'sp_views' == $vars['orderby'] ) :
-				$vars = array_merge( $vars, array(
-					'meta_key' 	=> 'sp_views',
-					'orderby' 	=> 'meta_value_num'
-				) );
-			endif;
-		endif;
-
-		return $vars;
 	}
 }
 

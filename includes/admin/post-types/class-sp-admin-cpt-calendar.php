@@ -29,7 +29,6 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 		// Admin Columns
 		add_filter( 'manage_edit-sp_calendar_columns', array( $this, 'edit_columns' ) );
 		add_action( 'manage_sp_calendar_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
-		add_filter( 'manage_edit-sp_calendar_sortable_columns', array( $this, 'custom_columns_sort' ) );
 
 		// Filtering
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
@@ -51,7 +50,6 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 			'sp_venue' => __( 'Venue', 'sportspress' ),
 			'sp_team' => __( 'Team', 'sportspress' ),
 			'sp_events' => __( 'Events', 'sportspress' ),
-			'sp_views' => __( 'Views', 'sportspress' ),
 		);
 		return apply_filters( 'sportspress_calendar_admin_columns', $columns );
 	}
@@ -95,26 +93,7 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 				$calendar = new SP_Calendar( $post_id );
 				echo sizeof( $calendar->data() );
 				break;
-			case 'sp_views':
-	        	echo sp_get_post_views( $post_id );
-				break;
 		endswitch;
-	}
-
-	/**
-	 * Make columns sortable
-	 *
-	 * https://gist.github.com/906872
-	 *
-	 * @access public
-	 * @param mixed $columns
-	 * @return array
-	 */
-	public function custom_columns_sort( $columns ) {
-		$custom = array(
-			'sp_views'		=> 'sp_views',
-		);
-		return wp_parse_args( $custom, $columns );
 	}
 
 	/**
