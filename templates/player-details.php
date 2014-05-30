@@ -23,7 +23,7 @@ $countries = SP()->countries->countries;
 $player = new SP_Player( $id );
 
 $nationality = $player->nationality;
-$current_team = $player->current_team;
+$current_teams = $player->current_teams();
 $past_teams = $player->past_teams();
 $metrics_before = $player->metrics( true );
 $metrics_after = $player->metrics( false );
@@ -36,8 +36,14 @@ endif;
 
 $data = array_merge( $metrics_before, $common, $metrics_after );
 
-if ( $current_team )
-	$data[ SP()->text->string('Current Team') ] = '<a href="' . get_post_permalink( $current_team ) . '">' . get_the_title( $current_team ) . '</a>';
+if ( $current_teams ):
+	$teams = array();
+	foreach ( $current_teams as $team ):
+		$teams[] = '<a href="' . get_post_permalink( $team ) . '">' . get_the_title( $team ) . '</a>';
+	endforeach;
+	$label = _n( 'Current Team', 'Current Teams', count( $teams ) );
+	$data[ $label ] = implode( ', ', $teams );
+endif;
 
 if ( $past_teams ):
 	$teams = array();
