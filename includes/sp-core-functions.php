@@ -285,6 +285,14 @@ if ( !function_exists( 'sp_get_the_term_id' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_url' ) ) {
+	function sp_get_url( $post_id ) {
+		$url = get_post_meta( $post_id, 'sp_url', true );
+		if ( ! $url ) return;
+		return ' <a class="sp-link" href="' . $url . '" target="_blank" title="' . __( 'Visit Site', 'sportspress' ) . '">' . $url . '</a>';
+	}
+}
+
 if ( !function_exists( 'sp_get_post_precision' ) ) {
 	function sp_get_post_precision( $post_id ) {
 		$precision = get_post_meta ( $post_id, 'sp_precision', true );
