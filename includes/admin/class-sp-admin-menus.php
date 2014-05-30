@@ -93,6 +93,8 @@ class SP_Admin_Menus {
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_team', 'edit.php?post_type=sp_table' );
 		elseif ( $typenow == 'sp_list' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_list' );
+		elseif ( $typenow == 'sp_staff' )
+			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_staff' );
 
 		if ( isset( $submenu['sportspress'] ) && isset( $submenu['sportspress'][0] ) && isset( $submenu['sportspress'][0][0] ) ) {
 			$submenu['sportspress'][0][0] = __( 'Settings', 'sportspress' );

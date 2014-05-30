@@ -542,7 +542,8 @@ class SP_Post_types {
 					'supports' 				=> array( 'title', 'author', 'thumbnail', 'excerpt' ),
 					'has_archive' 			=> true,
 					'show_in_nav_menus' 	=> true,
-					'menu_icon' 			=> 'dashicons-businessman',
+					'show_in_menu' 			=> 'edit.php?post_type=sp_player',
+					'show_in_admin_bar' 	=> true,
 				)
 			)
 		);
