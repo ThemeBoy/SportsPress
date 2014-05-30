@@ -264,6 +264,11 @@ class SP_League_Table extends SP_Custom_Post{
 
 						// Adjustments
 						$placeholder += sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $stat->post_name, 0 );
+
+						// Format number
+						if ( $placeholder != '-' ):
+							$placeholder = number_format( $placeholder, $stat->precision );
+						endif;
 					endif;
 
 					$placeholders[ $team_id ][ $stat->post_name ] = $placeholder;

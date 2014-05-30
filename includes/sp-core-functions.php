@@ -870,8 +870,8 @@ if ( !function_exists( 'sp_solve' ) ) {
 
 			$eos = new eqEOS();
 
-			// Solve using EOS
-			return round( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision );
+			// Solve using EOS;
+			return number_format( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision );
 		else:
 			return 0;
 		endif;
