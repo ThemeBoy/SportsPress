@@ -66,7 +66,7 @@ class SP_Admin_Menus {
 	 * Add menu item
 	 */
 	public function status_menu() {
-		add_submenu_page( 'sportspress', __( 'SportsPress Status', 'sportspress' ),  __( 'System Status', 'sportspress' ) , 'manage_sportspress', 'sp-status', array( $this, 'status_page' ) );
+		add_submenu_page( 'sportspress', __( 'System Status', 'sportspress' ),  __( 'System Status', 'sportspress' ) , 'manage_sportspress', 'sp-status', array( $this, 'status_page' ) );
 		register_setting( 'sportspress_status_settings_fields', 'sportspress_status_options' );
 	}
 
