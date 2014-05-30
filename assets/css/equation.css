@@ -49,7 +49,8 @@
 	font-size: 14px;
 	position: absolute;
 	top: -10px;
-	left: -8px;
+	right: -8px;
+	color: #999;
 	border: 1px solid #ccc;
 	background: #f7f7f7;
 	display: block;
@@ -71,5 +72,5 @@
 }
 
 .sp-equation-formula .button .remove:hover {
-	background: #e0e0e0;
+	color: #d00;
 }
