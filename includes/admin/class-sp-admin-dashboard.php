@@ -31,7 +31,7 @@ class SP_Admin_Dashboard {
      * Init dashboard widgets
      */
     public function init() {
-        wp_add_dashboard_widget( 'sportspress_dashboard_status', __( 'SportsPress Status', 'sportspress' ), array( $this, 'status_widget' ) );
+        wp_add_dashboard_widget( 'sportspress_dashboard_status', __( 'SportsPress', 'sportspress' ), array( $this, 'status_widget' ) );
     }
 
     /**
