@@ -86,6 +86,12 @@ add_action( 'sportspress_single_staff_content', 'sportspress_output_staff_detail
  */
 add_action( 'loop_start', 'sportspress_output_venue_map' );
 
+/**
+ * Adjacent Team Links
+ */
+add_filter( 'previous_post_link', 'sportspress_hide_adjacent_post_links', 10, 4 );
+add_filter( 'next_post_link', 'sportspress_hide_adjacent_post_links', 10, 4 );
+
 function sportspress_the_title( $title, $id ) {
 	if ( ! is_admin() && ! current_theme_supports( 'sportspress' ) && in_the_loop() && $id == get_the_ID() ):
 		if ( is_singular( 'sp_player' ) ):
@@ -310,6 +316,12 @@ function sportspress_post_updated_messages( $messages ) {
 	endif;
 
 	return $messages;
+}
+
+function sportspress_hide_adjacent_post_links( $output, $format, $link, $post ) {
+	if ( property_exists( $post, 'post_type' ) && in_array( $post->post_type, sp_post_types() ) )
+		return false;
+	return $output;
 }
 
 add_filter('post_updated_messages', 'sportspress_post_updated_messages');
