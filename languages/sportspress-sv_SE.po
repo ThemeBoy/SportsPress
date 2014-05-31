@@ -11,15 +11,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-05-16 21:35+1000\n"
-"PO-Revision-Date: 2014-05-16 21:35+1000\n"
+"POT-Creation-Date: 2014-05-22 23:05+1000\n"
+"PO-Revision-Date: 2014-06-01 07:26+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/"
 "sportspress/language/sv_SE/)\n"
-"Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sv_SE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
@@ -1359,6 +1359,7 @@ msgstr "Redigera kalender"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:55
 #: includes/admin/settings/class-sp-settings-events.php:60
+#: includes/admin/settings/class-sp-settings-events.php:105
 #: includes/admin/settings/class-sp-settings-teams.php:25
 #: includes/admin/settings/class-sp-settings-teams.php:48
 #: includes/widgets/class-sp-widget-event-list.php:96
@@ -1375,7 +1376,7 @@ msgstr "Lag (plural)"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:114
-#: includes/admin/settings/class-sp-settings-events.php:150
+#: includes/admin/settings/class-sp-settings-events.php:158
 msgid "Team"
 msgstr "Lag"
 
@@ -1539,9 +1540,8 @@ msgstr "Fotboll"
 
 #: includes/sp-core-functions.php:2405
 #: includes/admin/class-sp-admin-sports.php:42
-#, fuzzy
 msgid "Custom"
-msgstr "Egna val:"
+msgstr ""
 
 #: includes/sp-core-functions.php:2416
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:114
@@ -1711,18 +1711,16 @@ msgid "Photo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:148
-#, fuzzy
 msgid "Select Photo"
-msgstr "Välj %s"
+msgstr ""
 
 #: includes/sp-template-hooks.php:151
 msgid "Add photo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:154
-#, fuzzy
 msgid "Remove photo"
-msgstr "Ta bort video"
+msgstr ""
 
 #: includes/sp-template-hooks.php:162
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:63
@@ -1730,18 +1728,16 @@ msgid "Logo"
 msgstr "Emblem"
 
 #: includes/sp-template-hooks.php:165
-#, fuzzy
 msgid "Select Logo"
-msgstr "Välj %s"
+msgstr ""
 
 #: includes/sp-template-hooks.php:168
 msgid "Add logo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:171
-#, fuzzy
 msgid "Remove logo"
-msgstr "Ta bort"
+msgstr ""
 
 #: includes/sp-template-hooks.php:179
 msgid "Date/Time:"
@@ -1867,14 +1863,12 @@ msgid "Import <strong>players</strong> from a csv file."
 msgstr "Importera <strong>spelare</strong> från en CSV-fil."
 
 #: includes/admin/class-sp-admin-importers.php:34
-#, fuzzy
 msgid "SportsPress Staff (CSV)"
-msgstr "SportPress-lag (CSV)"
+msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:34
-#, fuzzy
 msgid "Import <strong>staff</strong> from a csv file."
-msgstr "Importera <strong>lag</strong> från en CSV-fil."
+msgstr ""
 
 #: includes/admin/class-sp-admin-menus.php:48
 msgid "SportsPress Settings"
@@ -2107,8 +2101,8 @@ msgstr "ELLER ange sökvägen till filen:"
 #: includes/admin/importers/class-sp-player-importer.php:211
 #: includes/admin/importers/class-sp-staff-importer.php:204
 #: includes/admin/importers/class-sp-team-importer.php:168
-#: includes/admin/settings/class-sp-settings-events.php:155
-#: includes/admin/settings/class-sp-settings-events.php:159
+#: includes/admin/settings/class-sp-settings-events.php:163
+#: includes/admin/settings/class-sp-settings-events.php:167
 #: includes/admin/settings/class-sp-settings-general.php:170
 msgid "Delimiter"
 msgstr "Avdelare"
@@ -2135,9 +2129,8 @@ msgid "Upload file and import"
 msgstr "Ladda upp fil och importera"
 
 #: includes/admin/importers/class-sp-importer.php:125
-#, fuzzy
 msgid "Import"
-msgstr "Sport"
+msgstr ""
 
 #: includes/admin/importers/class-sp-player-importer.php:140
 #, php-format
@@ -2166,32 +2159,26 @@ msgstr ""
 "href=\"%s\">Ladda ner exempel</a>."
 
 #: includes/admin/importers/class-sp-staff-importer.php:133
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
 "strong>."
 msgstr ""
-"Importering färdig - importerade <strong>%s</strong> lag och ignorerade "
-"<strong>%s</strong>."
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
-#, fuzzy
 msgid "View Staff"
-msgstr "Redigera personal"
+msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:155
-#, fuzzy
 msgid "Import Staff"
-msgstr "Importera lag"
+msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:169
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Staff need to be defined with columns in a specific order (5 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"Spelare måste definieras med kolumner i en särskild ordning (3 kolumner). <a "
-"href=\"%s\">Klicak här för att ladda ner ett exempel</a>."
 
 #: includes/admin/importers/class-sp-team-importer.php:97
 #, php-format
@@ -2374,9 +2361,8 @@ msgid "Statistics"
 msgstr "Statistik"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:143
-#, fuzzy
 msgid "Columns"
-msgstr "Kolumner:"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:163
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:102
@@ -2444,14 +2430,12 @@ msgid "Attended"
 msgstr "Besökt"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
-#, fuzzy
 msgid "Started"
-msgstr "Kom igång"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
-#, fuzzy
 msgid "Substituted"
-msgstr "Avbytare"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:43
 #: includes/admin/settings/class-sp-settings-events.php:85
@@ -2561,9 +2545,8 @@ msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
-#, fuzzy
 msgid "Current Teams"
-msgstr "Nuvarande lag"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:26
 msgid ""
@@ -2626,7 +2609,7 @@ msgid "Event Options"
 msgstr "Evenemangsalternativ"
 
 #: includes/admin/settings/class-sp-settings-events.php:45
-#: includes/admin/settings/class-sp-settings-events.php:113
+#: includes/admin/settings/class-sp-settings-events.php:121
 #: includes/admin/settings/class-sp-settings-players.php:72
 #: includes/admin/settings/class-sp-settings-teams.php:73
 msgid "Limit"
@@ -2660,23 +2643,28 @@ msgstr ""
 msgid "Link players"
 msgstr "Länka spelare"
 
-#: includes/admin/settings/class-sp-settings-events.php:105
+#: includes/admin/settings/class-sp-settings-events.php:106
+#: includes/admin/settings/class-sp-settings-teams.php:57
+msgid "Link teams"
+msgstr "Länka lag"
+
+#: includes/admin/settings/class-sp-settings-events.php:113
 #: includes/admin/settings/class-sp-settings-players.php:64
 #: includes/admin/settings/class-sp-settings-teams.php:65
 msgid "Pagination"
 msgstr "Sidnumrering"
 
-#: includes/admin/settings/class-sp-settings-events.php:106
+#: includes/admin/settings/class-sp-settings-events.php:114
 #: includes/admin/settings/class-sp-settings-players.php:65
 #: includes/admin/settings/class-sp-settings-teams.php:66
 msgid "Paginate"
 msgstr "Sidnumrera"
 
-#: includes/admin/settings/class-sp-settings-events.php:117
+#: includes/admin/settings/class-sp-settings-events.php:125
 msgid "events"
 msgstr "event"
 
-#: includes/admin/settings/class-sp-settings-events.php:164
+#: includes/admin/settings/class-sp-settings-events.php:172
 msgid "Custom:"
 msgstr "Egna val:"
 
@@ -2781,10 +2769,6 @@ msgstr "spelare"
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
 msgstr "Lagalternativ"
-
-#: includes/admin/settings/class-sp-settings-teams.php:57
-msgid "Link teams"
-msgstr "Länka lag"
 
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "The following options affect how words are displayed on the frontend."
@@ -2974,9 +2958,8 @@ msgid "SP Taxonomies"
 msgstr "SP taxonomier"
 
 #: includes/admin/views/html-admin-page-status.php:339
-#, fuzzy
 msgid "SP Post Types"
-msgstr "Tidigare lag"
+msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:365
 msgid "Theme"
@@ -3070,9 +3053,8 @@ msgid "Select %s:"
 msgstr "Välj %s:"
 
 #: includes/widgets/class-sp-widget-countdown.php:62
-#, fuzzy
 msgid "Display venue"
-msgstr "Visa serie"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-countdown.php:65
 msgid "Display league"
@@ -3190,12 +3172,3 @@ msgstr "Spelarstatistik:"
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
-
-#~ msgid "&mdash; Add &mdash;"
-#~ msgstr "&mdash; Lägg till &mdash;"
-
-#~ msgid "Alternate"
-#~ msgstr "Alternera"
-
-#~ msgid "MySQL Version"
-#~ msgstr "MySQL-version"

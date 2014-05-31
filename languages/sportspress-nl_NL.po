@@ -11,15 +11,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-05-16 21:36+1000\n"
-"PO-Revision-Date: 2014-05-16 21:36+1000\n"
+"POT-Creation-Date: 2014-05-22 23:05+1000\n"
+"PO-Revision-Date: 2014-06-01 07:25+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
 "sportspress/language/nl_NL/)\n"
-"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
@@ -535,7 +535,7 @@ msgstr "Mali"
 
 #: includes/class-sp-countries.php:156
 msgid "Burma"
-msgstr ""
+msgstr "Burma"
 
 #: includes/class-sp-countries.php:157
 msgid "Mongolia"
@@ -1068,7 +1068,7 @@ msgstr "Hoofd"
 #: includes/class-sp-post-types.php:44 includes/class-sp-post-types.php:73
 #: includes/class-sp-post-types.php:102 includes/class-sp-post-types.php:131
 msgid "Parent:"
-msgstr ""
+msgstr "Hoofd:"
 
 #: includes/class-sp-post-types.php:45 includes/class-sp-post-types.php:74
 #: includes/class-sp-post-types.php:103 includes/class-sp-post-types.php:132
@@ -1188,15 +1188,15 @@ msgstr ""
 
 #: includes/class-sp-post-types.php:162
 msgid "Result"
-msgstr ""
+msgstr "Resultaat"
 
 #: includes/class-sp-post-types.php:163
 msgid "Add New Result"
-msgstr ""
+msgstr "Voeg Nieuw Resultaat Toe"
 
 #: includes/class-sp-post-types.php:164
 msgid "Edit Result"
-msgstr ""
+msgstr "Bewerk Resultaat"
 
 #: includes/class-sp-post-types.php:165 includes/class-sp-post-types.php:195
 #: includes/class-sp-post-types.php:225 includes/class-sp-post-types.php:255
@@ -1217,7 +1217,7 @@ msgstr ""
 #: includes/class-sp-post-types.php:192 includes/sp-core-functions.php:2423
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:60
 msgid "Outcome"
-msgstr ""
+msgstr "Uitslag"
 
 #: includes/class-sp-post-types.php:193
 msgid "Add New Outcome"
@@ -1255,7 +1255,7 @@ msgstr ""
 #: includes/class-sp-post-types.php:252
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:55
 msgid "Metric"
-msgstr ""
+msgstr "Metrisch"
 
 #: includes/class-sp-post-types.php:253
 msgid "Add New Metric"
@@ -1290,7 +1290,7 @@ msgstr "Spelerstatistieken"
 
 #: includes/class-sp-post-types.php:312
 msgid "Statistic"
-msgstr ""
+msgstr "Statistisch"
 
 #: includes/class-sp-post-types.php:313
 msgid "Add New Statistic"
@@ -1309,7 +1309,7 @@ msgstr "Bewerk Statistiek"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:40
 #: includes/admin/settings/class-sp-settings-events.php:25
 msgid "Events"
-msgstr ""
+msgstr "Gebeurtenissen"
 
 #: includes/class-sp-post-types.php:342 includes/sp-core-functions.php:2420
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:91
@@ -1318,16 +1318,16 @@ msgstr ""
 #: includes/widgets/class-sp-widget-countdown.php:42
 #: includes/widgets/class-sp-widget-event-list.php:95
 msgid "Event"
-msgstr ""
+msgstr "Gebeurtenis"
 
 #: includes/class-sp-post-types.php:343
 #: includes/admin/class-sp-admin-welcome.php:232
 msgid "Add New Event"
-msgstr ""
+msgstr "Voeg Nieuwe Gebeurtenis Toe"
 
 #: includes/class-sp-post-types.php:344
 msgid "Edit Event"
-msgstr ""
+msgstr "Bewerk Gebeurtenis"
 
 #: includes/class-sp-post-types.php:371
 #: includes/admin/class-sp-admin-permalink-settings.php:27
@@ -1359,6 +1359,7 @@ msgstr "Bewerk Kalendar"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:55
 #: includes/admin/settings/class-sp-settings-events.php:60
+#: includes/admin/settings/class-sp-settings-events.php:105
 #: includes/admin/settings/class-sp-settings-teams.php:25
 #: includes/admin/settings/class-sp-settings-teams.php:48
 #: includes/widgets/class-sp-widget-event-list.php:96
@@ -1375,7 +1376,7 @@ msgstr "Teams"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:114
-#: includes/admin/settings/class-sp-settings-events.php:150
+#: includes/admin/settings/class-sp-settings-events.php:158
 msgid "Team"
 msgstr "Team"
 
@@ -1402,7 +1403,7 @@ msgstr "Stand"
 
 #: includes/class-sp-post-types.php:434
 msgid "Add New League Table"
-msgstr ""
+msgstr "Voeg Nieuwe Competitie Tabel Toe"
 
 #: includes/class-sp-post-types.php:435
 msgid "Edit League Table"
@@ -1433,14 +1434,14 @@ msgstr "Bewerk Speler"
 #: includes/admin/class-sp-admin-permalink-settings.php:34
 #: includes/admin/settings/class-sp-settings-players.php:53
 msgid "Player Lists"
-msgstr ""
+msgstr "Spelers Lijsten"
 
 #: includes/class-sp-post-types.php:494
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:145
 #: includes/widgets/class-sp-widget-player-gallery.php:53
 #: includes/widgets/class-sp-widget-player-list.php:53
 msgid "Player List"
-msgstr ""
+msgstr "Spelers Lijst"
 
 #: includes/class-sp-post-types.php:495
 msgid "Add New Player List"
@@ -1595,7 +1596,7 @@ msgstr "Nationaliteit"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:101
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:78
 msgid "Past Teams"
-msgstr ""
+msgstr "Eerdere Teams"
 
 #: includes/sp-core-functions.php:2425
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
@@ -1608,7 +1609,7 @@ msgstr "Gespeeld"
 
 #: includes/sp-core-functions.php:2427
 msgid "Pos"
-msgstr ""
+msgstr "Pos"
 
 #: includes/sp-core-functions.php:2429
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:150
@@ -1641,7 +1642,7 @@ msgstr "Tijd/Uitslagen"
 
 #: includes/sp-core-functions.php:2442
 msgid "View all events"
-msgstr ""
+msgstr "Toon alle gebeurtenissen"
 
 #: includes/sp-core-functions.php:2443
 msgid "View all players"
@@ -1649,7 +1650,7 @@ msgstr "Bekijk alle spelers"
 
 #: includes/sp-core-functions.php:2444
 msgid "View full table"
-msgstr ""
+msgstr "Toon hele tabel"
 
 #: includes/sp-template-hooks.php:123
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:48
@@ -1710,18 +1711,16 @@ msgid "Photo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:148
-#, fuzzy
 msgid "Select Photo"
-msgstr "Selecteer %s"
+msgstr ""
 
 #: includes/sp-template-hooks.php:151
 msgid "Add photo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:154
-#, fuzzy
 msgid "Remove photo"
-msgstr "Verwijder video"
+msgstr ""
 
 #: includes/sp-template-hooks.php:162
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:63
@@ -1729,18 +1728,16 @@ msgid "Logo"
 msgstr "Logo"
 
 #: includes/sp-template-hooks.php:165
-#, fuzzy
 msgid "Select Logo"
-msgstr "Selecteer %s"
+msgstr ""
 
 #: includes/sp-template-hooks.php:168
 msgid "Add logo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:171
-#, fuzzy
 msgid "Remove logo"
-msgstr "Verwijderen"
+msgstr ""
 
 #: includes/sp-template-hooks.php:179
 msgid "Date/Time:"
@@ -1780,7 +1777,7 @@ msgstr "Wijzigingen opgeslagen."
 #: includes/admin/class-sp-admin-post-types.php:79
 #: includes/admin/class-sp-admin-post-types.php:89
 msgid "Success!"
-msgstr ""
+msgstr "Gelukt!"
 
 #: includes/sp-template-hooks.php:306 includes/sp-template-hooks.php:312
 #: includes/sp-template-hooks.php:316
@@ -1795,7 +1792,7 @@ msgstr "Voorbeeld %s"
 #: includes/admin/class-sp-admin-post-types.php:84
 #, php-format
 msgid "Scheduled for: <b>%1$s</b>."
-msgstr ""
+msgstr "Gepland voor: <b>%1$s</b>"
 
 #: includes/sp-template-hooks.php:310
 #: includes/admin/class-sp-admin-post-types.php:85
@@ -1825,29 +1822,29 @@ msgstr "SportsPress Status"
 #: includes/admin/class-sp-admin-dashboard.php:54
 #, php-format
 msgid "<strong>%s</strong> until next event"
-msgstr ""
+msgstr "<strong>%s</strong> tot volgende gebeurtenis."
 
 #: includes/admin/class-sp-admin-dashboard.php:61
 #, php-format
 msgid "<strong>%s event</strong> scheduled"
 msgid_plural "<strong>%s events</strong> scheduled"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "<strong>%s gebeurtenis</strong> gepland"
+msgstr[1] "<strong>%s gebeurtenissen</strong> gepland"
 
 #: includes/admin/class-sp-admin-dashboard.php:66
 #, php-format
 msgid "<strong>%s event</strong> published"
 msgid_plural "<strong>%s events</strong> published"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "<strong>%s gebeurtenis</strong> gepubliceerd"
+msgstr[1] "<strong>%s gebeurtenissen</strong> gepubliceerd"
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "SportsPress Events (CSV)"
-msgstr ""
+msgstr "SportPress Gebeurtenissen (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "Import <strong>events</strong> from a csv file."
-msgstr ""
+msgstr "Importeer <strong> gebeurtenissen</strong> uit een csv bestand."
 
 #: includes/admin/class-sp-admin-importers.php:32
 msgid "SportsPress Teams (CSV)"
@@ -1866,14 +1863,12 @@ msgid "Import <strong>players</strong> from a csv file."
 msgstr "Importeer <strong>spelers</strong> uit een csv bestand."
 
 #: includes/admin/class-sp-admin-importers.php:34
-#, fuzzy
 msgid "SportsPress Staff (CSV)"
-msgstr "SportsPress Team (CSV)"
+msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:34
-#, fuzzy
 msgid "Import <strong>staff</strong> from a csv file."
-msgstr "Importeer <strong>teams</strong> uit een csv bestand."
+msgstr ""
 
 #: includes/admin/class-sp-admin-menus.php:48
 msgid "SportsPress Settings"
@@ -1925,11 +1920,11 @@ msgstr ""
 
 #: includes/admin/class-sp-admin-taxonomies.php:89
 msgid "Latitude"
-msgstr ""
+msgstr "Breedte"
 
 #: includes/admin/class-sp-admin-taxonomies.php:95
 msgid "Longitude"
-msgstr ""
+msgstr "Lengte"
 
 #: includes/admin/class-sp-admin-welcome.php:45
 msgid "Welcome to SportsPress"
@@ -2001,9 +1996,9 @@ msgid ""
 "to our translation team. Want to see your name? <a href=\"https://www."
 "transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
 msgstr ""
-"SportPress is met liefde vertaald naar andere talen dankzij onze "
-"vertaalteam. Wil je ook je naam hier zien? <a href=\"https://www.transifex."
-"com/projects/p/sportspress/\">Vertaal SportPress</a>."
+"SportPress is met liefde vertaald  dankzij ons vertaalteam. Wil je ook je "
+"naam hier zien? <a href=\"https://www.transifex.com/projects/p/sportspress/"
+"\">Vertaal SportPress</a>."
 
 #: includes/admin/class-sp-admin-welcome.php:253
 msgid "Go to SportsPress Settings"
@@ -2041,11 +2036,11 @@ msgstr "Klaar!"
 
 #: includes/admin/importers/class-sp-event-importer.php:383
 msgid "View Events"
-msgstr ""
+msgstr "Toon Gebeurtenissen"
 
 #: includes/admin/importers/class-sp-event-importer.php:395
 msgid "Import Events"
-msgstr ""
+msgstr "Importeer Gebeurtenissen"
 
 #: includes/admin/importers/class-sp-event-importer.php:407
 #: includes/admin/importers/class-sp-player-importer.php:174
@@ -2102,8 +2097,8 @@ msgstr "OF voer bestandspad in:"
 #: includes/admin/importers/class-sp-player-importer.php:211
 #: includes/admin/importers/class-sp-staff-importer.php:204
 #: includes/admin/importers/class-sp-team-importer.php:168
-#: includes/admin/settings/class-sp-settings-events.php:155
-#: includes/admin/settings/class-sp-settings-events.php:159
+#: includes/admin/settings/class-sp-settings-events.php:163
+#: includes/admin/settings/class-sp-settings-events.php:167
 #: includes/admin/settings/class-sp-settings-general.php:170
 msgid "Delimiter"
 msgstr "Scheidingsteken"
@@ -2130,9 +2125,8 @@ msgid "Upload file and import"
 msgstr "Upload bestand en importeer"
 
 #: includes/admin/importers/class-sp-importer.php:125
-#, fuzzy
 msgid "Import"
-msgstr "Sport"
+msgstr ""
 
 #: includes/admin/importers/class-sp-player-importer.php:140
 #, php-format
@@ -2140,6 +2134,8 @@ msgid ""
 "Import complete - imported <strong>%s</strong> players and skipped <strong>"
 "%s</strong>."
 msgstr ""
+"Importeren voltooid - Er zijn <strong%s</strong> spelers geïmporteerd en "
+"<strong>%s</strong> spelers overgeslagen "
 
 #: includes/admin/importers/class-sp-player-importer.php:150
 msgid "View Players"
@@ -2164,14 +2160,12 @@ msgid ""
 msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
-#, fuzzy
 msgid "View Staff"
-msgstr "Bewerk Staf"
+msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:155
-#, fuzzy
 msgid "Import Staff"
-msgstr "Importeer Teams"
+msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:169
 #, php-format
@@ -2186,6 +2180,8 @@ msgid ""
 "Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
 "strong>."
 msgstr ""
+"Importeren voltooid - Er zijn <strong%s</strong> teams geïmporteerd en "
+"<strong>%s</strong> teams overgeslagen "
 
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "View Teams"
@@ -2269,7 +2265,7 @@ msgstr "Label"
 #: includes/admin/settings/class-sp-settings-config.php:282
 #: includes/admin/settings/class-sp-settings-config.php:393
 msgid "Equation"
-msgstr ""
+msgstr "Gelijkenis"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:46
 #: includes/admin/post-types/class-sp-admin-cpt-statistic.php:46
@@ -2349,7 +2345,7 @@ msgstr "Profiel"
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:136
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:34
 msgid "Metrics"
-msgstr ""
+msgstr "Metriek"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:137
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:40
@@ -2357,9 +2353,8 @@ msgid "Statistics"
 msgstr "Statistieken"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:143
-#, fuzzy
 msgid "Columns"
-msgstr "Kolommen:"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:163
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:102
@@ -2422,16 +2417,15 @@ msgstr "Uitschakelen"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
 msgid "Attended"
-msgstr ""
+msgstr "Deelgenomen"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
 msgid "Started"
 msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
-#, fuzzy
 msgid "Substituted"
-msgstr "Wissel"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:43
 #: includes/admin/settings/class-sp-settings-events.php:85
@@ -2443,7 +2437,7 @@ msgstr "Resultaten"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:48
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:49
 msgid "Outcomes"
-msgstr ""
+msgstr "Uitslagen"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:47
 msgid "Streak"
@@ -2451,11 +2445,11 @@ msgstr "Reeks"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:48
 msgid "Last 5"
-msgstr ""
+msgstr "Laatste 5"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:49
 msgid "Last 10"
-msgstr ""
+msgstr "Laatste 10"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:52
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:28
@@ -2537,13 +2531,12 @@ msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:80
 msgid "Sort by"
-msgstr ""
+msgstr "Sorteren op"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
-#, fuzzy
 msgid "Current Teams"
-msgstr "Huidig Team"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:26
 msgid ""
@@ -2603,10 +2596,10 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-events.php:42
 msgid "Event Options"
-msgstr ""
+msgstr "Gebeurtenis Opties"
 
 #: includes/admin/settings/class-sp-settings-events.php:45
-#: includes/admin/settings/class-sp-settings-events.php:113
+#: includes/admin/settings/class-sp-settings-events.php:121
 #: includes/admin/settings/class-sp-settings-players.php:72
 #: includes/admin/settings/class-sp-settings-teams.php:73
 msgid "Limit"
@@ -2640,25 +2633,30 @@ msgstr ""
 msgid "Link players"
 msgstr "Link Spelers"
 
-#: includes/admin/settings/class-sp-settings-events.php:105
+#: includes/admin/settings/class-sp-settings-events.php:106
+#: includes/admin/settings/class-sp-settings-teams.php:57
+msgid "Link teams"
+msgstr "Link teams"
+
+#: includes/admin/settings/class-sp-settings-events.php:113
 #: includes/admin/settings/class-sp-settings-players.php:64
 #: includes/admin/settings/class-sp-settings-teams.php:65
 msgid "Pagination"
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:106
+#: includes/admin/settings/class-sp-settings-events.php:114
 #: includes/admin/settings/class-sp-settings-players.php:65
 #: includes/admin/settings/class-sp-settings-teams.php:66
 msgid "Paginate"
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:117
+#: includes/admin/settings/class-sp-settings-events.php:125
 msgid "events"
-msgstr ""
+msgstr "gebeurtenissen"
 
-#: includes/admin/settings/class-sp-settings-events.php:164
+#: includes/admin/settings/class-sp-settings-events.php:172
 msgid "Custom:"
-msgstr ""
+msgstr "Aangepast:"
 
 #: includes/admin/settings/class-sp-settings-general.php:25
 msgid "General"
@@ -2748,7 +2746,7 @@ msgstr "Inschakelen"
 
 #: includes/admin/settings/class-sp-settings-players.php:41
 msgid "Player Options"
-msgstr ""
+msgstr "Speler Opties"
 
 #: includes/admin/settings/class-sp-settings-players.php:45
 msgid "Display national flags"
@@ -2761,10 +2759,6 @@ msgstr "spelers"
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
 msgstr "Team Opties"
-
-#: includes/admin/settings/class-sp-settings-teams.php:57
-msgid "Link teams"
-msgstr "Link teams"
 
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "The following options affect how words are displayed on the frontend."
@@ -3022,7 +3016,7 @@ msgstr "Thema integratie handleiding"
 
 #: includes/widgets/class-sp-widget-countdown.php:5
 msgid "A clock that counts down to an upcoming event."
-msgstr "Een klok die aftelt naar een volgend evenement."
+msgstr "Een klok die aftelt naar een komende gebeurtenis."
 
 #: includes/widgets/class-sp-widget-countdown.php:6
 msgid "SportsPress Countdown"
@@ -3050,9 +3044,8 @@ msgid "Select %s:"
 msgstr "Selecteer %s:"
 
 #: includes/widgets/class-sp-widget-countdown.php:62
-#, fuzzy
 msgid "Display venue"
-msgstr "Bekijk competitie"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-countdown.php:65
 msgid "Display league"
@@ -3061,7 +3054,7 @@ msgstr "Bekijk competitie"
 #: includes/widgets/class-sp-widget-event-blocks.php:5
 #: includes/widgets/class-sp-widget-event-list.php:5
 msgid "A list of events."
-msgstr ""
+msgstr "Een lijst met gebeurtenissen."
 
 #: includes/widgets/class-sp-widget-event-blocks.php:6
 msgid "SportsPress Event Blocks"
@@ -3076,7 +3069,7 @@ msgstr "Status:"
 #: includes/widgets/class-sp-widget-event-blocks.php:78
 #: includes/widgets/class-sp-widget-event-list.php:81
 msgid "Number of events to show:"
-msgstr ""
+msgstr "Aantal zichtbare gebeurtenissen:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:81
 #: includes/widgets/class-sp-widget-event-list.php:84
@@ -3089,11 +3082,11 @@ msgstr "Sorteer Volgorde:"
 #: includes/widgets/class-sp-widget-event-calendar.php:75
 #: includes/widgets/class-sp-widget-event-list.php:110
 msgid "Display link to view all events"
-msgstr ""
+msgstr "Toon een link naar alle gebeurtenissen"
 
 #: includes/widgets/class-sp-widget-event-calendar.php:5
 msgid "A calendar of events."
-msgstr ""
+msgstr "Een kalender met gebeurtenissen. "
 
 #: includes/widgets/class-sp-widget-event-calendar.php:6
 msgid "SportsPress Event Calendar"
@@ -3110,11 +3103,11 @@ msgstr "Kolommen:"
 
 #: includes/widgets/class-sp-widget-league-table.php:5
 msgid "Display a league table."
-msgstr ""
+msgstr "Toon een Competitie tabel"
 
 #: includes/widgets/class-sp-widget-league-table.php:6
 msgid "SportsPress League Table"
-msgstr ""
+msgstr "Sportpress Competitie Tabel"
 
 #: includes/widgets/class-sp-widget-league-table.php:66
 msgid "Number of teams to show:"
@@ -3122,7 +3115,7 @@ msgstr "Aantal zichtbare teams:"
 
 #: includes/widgets/class-sp-widget-league-table.php:93
 msgid "Display link to view full table"
-msgstr ""
+msgstr "Toon een link naar de volledige tabel"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:5
 msgid "Display a gallery of players."
@@ -3135,7 +3128,7 @@ msgstr ""
 #: includes/widgets/class-sp-widget-player-gallery.php:69
 #: includes/widgets/class-sp-widget-player-list.php:69
 msgid "Number of players to show:"
-msgstr ""
+msgstr "Aantal zichtbare spelers:"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:72
 #: includes/widgets/class-sp-widget-player-list.php:93
@@ -3145,7 +3138,7 @@ msgstr "Sorteren op:"
 #: includes/widgets/class-sp-widget-player-gallery.php:101
 #: includes/widgets/class-sp-widget-player-list.php:122
 msgid "Display link to view all players"
-msgstr ""
+msgstr "Toon een link naar alle spelers"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:104
 msgid "Display player names on hover"
@@ -3157,7 +3150,7 @@ msgstr "Toon een lijst met spelers."
 
 #: includes/widgets/class-sp-widget-player-list.php:6
 msgid "SportsPress Player List"
-msgstr ""
+msgstr "SportPress Speler lijst"
 
 #: includes/widgets/class-sp-widget-player-list.php:73
 msgid "Performance:"
@@ -3170,9 +3163,3 @@ msgstr ""
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
-
-#~ msgid "&mdash; Add &mdash;"
-#~ msgstr "&mdash; Voeg toe &mdash;"
-
-#~ msgid "MySQL Version"
-#~ msgstr "MySQL versie"

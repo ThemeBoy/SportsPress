@@ -2,19 +2,20 @@
 # Translators:
 # adamedotco <social@adame.co>, 2014
 # Ahmad Karama <ahmad.karama@hotmail.com>, 2014
+# hushiea <hushiea@gmail.com>, 2014
 # mustafamsy <mustafamsy@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-05-16 21:36+1000\n"
-"PO-Revision-Date: 2014-05-16 21:36+1000\n"
+"POT-Creation-Date: 2014-05-22 23:05+1000\n"
+"PO-Revision-Date: 2014-06-01 07:25+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/sportspress/"
 "language/ar/)\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Poedit 1.6.3\n"
@@ -1180,7 +1181,7 @@ msgstr "تحرير المركز"
 #: includes/admin/settings/class-sp-settings-config.php:154
 #: includes/admin/views/html-admin-page-status.php:237
 msgid "Team Results"
-msgstr ""
+msgstr "نتائج الفريق"
 
 #: includes/class-sp-post-types.php:162
 msgid "Result"
@@ -1208,7 +1209,7 @@ msgstr "جديد"
 #: includes/admin/settings/class-sp-settings-config.php:96
 #: includes/admin/views/html-admin-page-status.php:227
 msgid "Event Outcomes"
-msgstr ""
+msgstr "نتائج الأحداث"
 
 #: includes/class-sp-post-types.php:192 includes/sp-core-functions.php:2423
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:60
@@ -1221,14 +1222,14 @@ msgstr "إضافة نتائج جديدة"
 
 #: includes/class-sp-post-types.php:194
 msgid "Edit Outcome"
-msgstr ""
+msgstr "تحرير النتائج"
 
 #: includes/class-sp-post-types.php:221
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:124
 #: includes/admin/settings/class-sp-settings-config.php:273
 #: includes/admin/views/html-admin-page-status.php:257
 msgid "Table Columns"
-msgstr ""
+msgstr "اعمدة الجدول"
 
 #: includes/class-sp-post-types.php:222
 msgid "Column"
@@ -1246,7 +1247,7 @@ msgstr "تحرير العمود"
 #: includes/admin/settings/class-sp-settings-config.php:332
 #: includes/admin/views/html-admin-page-status.php:267
 msgid "Player Metrics"
-msgstr ""
+msgstr "مواصفات اللاعب"
 
 #: includes/class-sp-post-types.php:252
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:55
@@ -1255,11 +1256,11 @@ msgstr "المقياس"
 
 #: includes/class-sp-post-types.php:253
 msgid "Add New Metric"
-msgstr ""
+msgstr "إضافة مواصفات جديدة"
 
 #: includes/class-sp-post-types.php:254
 msgid "Edit Metric"
-msgstr ""
+msgstr "تحرير المواصفات"
 
 #: includes/class-sp-post-types.php:281 includes/class-sp-post-types.php:282
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:113
@@ -1268,7 +1269,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-events.php:93
 #: includes/admin/views/html-admin-page-status.php:247
 msgid "Player Performance"
-msgstr ""
+msgstr "أداء اللاعب"
 
 #: includes/class-sp-post-types.php:283
 msgid "Add New Performance"
@@ -1276,13 +1277,13 @@ msgstr ""
 
 #: includes/class-sp-post-types.php:284
 msgid "Edit Performance"
-msgstr ""
+msgstr "تحرير الأداء"
 
 #: includes/class-sp-post-types.php:311
 #: includes/admin/settings/class-sp-settings-config.php:384
 #: includes/admin/views/html-admin-page-status.php:277
 msgid "Player Statistics"
-msgstr ""
+msgstr "إحصائيات اللاعب"
 
 #: includes/class-sp-post-types.php:312
 msgid "Statistic"
@@ -1355,6 +1356,7 @@ msgstr "تحرير التقويم"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:55
 #: includes/admin/settings/class-sp-settings-events.php:60
+#: includes/admin/settings/class-sp-settings-events.php:105
 #: includes/admin/settings/class-sp-settings-teams.php:25
 #: includes/admin/settings/class-sp-settings-teams.php:48
 #: includes/widgets/class-sp-widget-event-list.php:96
@@ -1371,7 +1373,7 @@ msgstr "الفرق"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:114
-#: includes/admin/settings/class-sp-settings-events.php:150
+#: includes/admin/settings/class-sp-settings-events.php:158
 msgid "Team"
 msgstr "الفريق"
 
@@ -1475,11 +1477,11 @@ msgstr "متوسط"
 
 #: includes/sp-core-functions.php:397
 msgid "Published"
-msgstr ""
+msgstr "منشور"
 
 #: includes/sp-core-functions.php:398
 msgid "Scheduled"
-msgstr ""
+msgstr "مجدول"
 
 #: includes/sp-core-functions.php:626 includes/sp-core-functions.php:706
 msgid "(no title)"
@@ -1536,7 +1538,7 @@ msgstr "كرة القدم (اتحاد كرة القدم)"
 #: includes/sp-core-functions.php:2405
 #: includes/admin/class-sp-admin-sports.php:42
 msgid "Custom"
-msgstr ""
+msgstr "مخصص"
 
 #: includes/sp-core-functions.php:2416
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:114
@@ -1633,7 +1635,7 @@ msgstr "الوقت"
 #: includes/sp-core-functions.php:2439
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:64
 msgid "Time/Results"
-msgstr ""
+msgstr "الوقت/النتيجة"
 
 #: includes/sp-core-functions.php:2442
 msgid "View all events"
@@ -1670,7 +1672,7 @@ msgstr "الوصف"
 msgid ""
 "The description is not prominent by default; however, some themes may show "
 "it."
-msgstr ""
+msgstr "الوصف لا يظهر بشكل افتراضي؛مع ذلك فإن بعض القوالب قد تتمكن من عرضه."
 
 #: includes/sp-template-hooks.php:129
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:44
@@ -1695,7 +1697,7 @@ msgstr "مفتاح"
 #: includes/admin/settings/class-sp-settings-config.php:229
 #: includes/admin/settings/class-sp-settings-config.php:340
 msgid "Variable"
-msgstr ""
+msgstr "المتغير"
 
 #: includes/sp-template-hooks.php:137
 msgid "User"
@@ -1703,21 +1705,19 @@ msgstr "مستخدم"
 
 #: includes/sp-template-hooks.php:145
 msgid "Photo"
-msgstr ""
+msgstr "الصورة"
 
 #: includes/sp-template-hooks.php:148
-#, fuzzy
 msgid "Select Photo"
-msgstr "اختر %s"
+msgstr "اختيار الصورة"
 
 #: includes/sp-template-hooks.php:151
 msgid "Add photo"
-msgstr ""
+msgstr "إضافة صورة"
 
 #: includes/sp-template-hooks.php:154
-#, fuzzy
 msgid "Remove photo"
-msgstr "حذف الفيديو"
+msgstr "ازالة الصورة"
 
 #: includes/sp-template-hooks.php:162
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:63
@@ -1725,18 +1725,16 @@ msgid "Logo"
 msgstr "شعار"
 
 #: includes/sp-template-hooks.php:165
-#, fuzzy
 msgid "Select Logo"
-msgstr "اختر %s"
+msgstr "اختيار الشعار"
 
 #: includes/sp-template-hooks.php:168
 msgid "Add logo"
-msgstr ""
+msgstr "اضافة شعار"
 
 #: includes/sp-template-hooks.php:171
-#, fuzzy
 msgid "Remove logo"
-msgstr "إزالة"
+msgstr ""
 
 #: includes/sp-template-hooks.php:179
 msgid "Date/Time:"
@@ -1870,14 +1868,12 @@ msgid "Import <strong>players</strong> from a csv file."
 msgstr "استيراد<strong>اللاعبين</strong> من ملف csv ."
 
 #: includes/admin/class-sp-admin-importers.php:34
-#, fuzzy
 msgid "SportsPress Staff (CSV)"
-msgstr "SportsPress الفرق (CSV)"
+msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:34
-#, fuzzy
 msgid "Import <strong>staff</strong> from a csv file."
-msgstr "أستيراد <strong>الفرق</strong> من ملف csv ."
+msgstr ""
 
 #: includes/admin/class-sp-admin-menus.php:48
 msgid "SportsPress Settings"
@@ -1895,11 +1891,11 @@ msgstr "حالة النظام"
 
 #: includes/admin/class-sp-admin-menus.php:77
 msgid "SportsPress Add-ons/Extensions"
-msgstr ""
+msgstr "إضافات SportsPress "
 
 #: includes/admin/class-sp-admin-menus.php:77
 msgid "Add-ons"
-msgstr ""
+msgstr "الإضافات"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:75
 msgid ""
@@ -1943,7 +1939,7 @@ msgstr "مرحب إلى SportsPress"
 
 #: includes/admin/class-sp-admin-welcome.php:135
 msgid "Welcome to SportsPress!"
-msgstr ""
+msgstr "مرحبا فب SportsPress !"
 
 #: includes/admin/class-sp-admin-welcome.php:140
 msgid "Thanks, all done!"
@@ -1970,7 +1966,7 @@ msgstr "%s"
 #: includes/admin/class-sp-admin-welcome.php:159
 #: includes/admin/views/html-notice-install.php:7
 msgid "Get Started"
-msgstr ""
+msgstr "البدء"
 
 #: includes/admin/class-sp-admin-welcome.php:197
 #: includes/admin/settings/class-sp-settings-general.php:167
@@ -1995,7 +1991,7 @@ msgstr "حفظ الإعدادات"
 
 #: includes/admin/class-sp-admin-welcome.php:228
 msgid "Next Steps"
-msgstr ""
+msgstr "الخطوات التالية"
 
 #: includes/admin/class-sp-admin-welcome.php:236
 msgid "Translators"
@@ -2102,8 +2098,8 @@ msgstr "أو أدخل مسار الملف"
 #: includes/admin/importers/class-sp-player-importer.php:211
 #: includes/admin/importers/class-sp-staff-importer.php:204
 #: includes/admin/importers/class-sp-team-importer.php:168
-#: includes/admin/settings/class-sp-settings-events.php:155
-#: includes/admin/settings/class-sp-settings-events.php:159
+#: includes/admin/settings/class-sp-settings-events.php:163
+#: includes/admin/settings/class-sp-settings-events.php:167
 #: includes/admin/settings/class-sp-settings-general.php:170
 msgid "Delimiter"
 msgstr "الفاصل"
@@ -2120,7 +2116,7 @@ msgstr "البنية"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:70
 msgid "-- Not set --"
-msgstr "-- Not set --"
+msgstr "-- غير معين --"
 
 #: includes/admin/importers/class-sp-event-importer.php:490
 #: includes/admin/importers/class-sp-player-importer.php:217
@@ -2130,9 +2126,8 @@ msgid "Upload file and import"
 msgstr "رفع الملف واستيراده"
 
 #: includes/admin/importers/class-sp-importer.php:125
-#, fuzzy
 msgid "Import"
-msgstr "الرياضة"
+msgstr "إستيراد "
 
 #: includes/admin/importers/class-sp-player-importer.php:140
 #, php-format
@@ -2157,31 +2152,26 @@ msgid ""
 msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:133
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
 "strong>."
 msgstr ""
-"استيراد كامل - المستوردة<strong>%s</strong> الأحداث وتخطي<strong>%s</strong>."
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
-#, fuzzy
 msgid "View Staff"
-msgstr "تحرير إداري"
+msgstr "عرض الطاقم"
 
 #: includes/admin/importers/class-sp-staff-importer.php:155
-#, fuzzy
 msgid "Import Staff"
-msgstr "أستيراد الفرق"
+msgstr "إستيراد الطاقم"
 
 #: includes/admin/importers/class-sp-staff-importer.php:169
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Staff need to be defined with columns in a specific order (5 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"تحتاج إلى تعريف فرق مع الأعمدة في ترتيب معين (3 أعمدة). <a href=\"%s\">أضغط "
-"هنا لتحميل العينة</a>."
 
 #: includes/admin/importers/class-sp-team-importer.php:97
 #, php-format
@@ -2296,7 +2286,7 @@ msgstr "الترتيب"
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:56
 #: includes/widgets/class-sp-widget-countdown.php:49
 msgid "(Auto)"
-msgstr ""
+msgstr "(تلقائي)"
 
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:85
@@ -2309,26 +2299,26 @@ msgstr "رقم"
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:65
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:48
 msgid "Role"
-msgstr ""
+msgstr "القاعدة"
 
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:65
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:24
 msgid "Abbreviation"
-msgstr ""
+msgstr "الإختصار"
 
 #: includes/admin/post-types/class-sp-admin-cpt.php:43
 #, php-format
 msgid "Insert into %s"
-msgstr ""
+msgstr "إدخال إلى  %s"
 
 #: includes/admin/post-types/class-sp-admin-cpt.php:44
 #, php-format
 msgid "Uploaded to this %s"
-msgstr ""
+msgstr "تم الرفع إلى  %s"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:107
 msgid "Shortcodes"
-msgstr ""
+msgstr "الأكواد المختصرة"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:111
 msgid "Video"
@@ -2343,13 +2333,13 @@ msgstr "رمز أختصار"
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:118
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:142
 msgid "Layout"
-msgstr ""
+msgstr "التخطيط"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:125
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:138
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:150
 msgid "Profile"
-msgstr ""
+msgstr "الملف الشخصي"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:136
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:34
@@ -2362,9 +2352,8 @@ msgid "Statistics"
 msgstr "احصائيات"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:143
-#, fuzzy
 msgid "Columns"
-msgstr "أعمدة :"
+msgstr "أعمدة"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:163
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:102
@@ -2431,12 +2420,11 @@ msgstr "حضر"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
 msgid "Started"
-msgstr ""
+msgstr "أساسي"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
-#, fuzzy
 msgid "Substituted"
-msgstr "استبدل"
+msgstr "أستبدل"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:43
 #: includes/admin/settings/class-sp-settings-events.php:85
@@ -2481,7 +2469,7 @@ msgstr "&mdash; حدد &mdash;"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:122
 msgid "Starting Lineup"
-msgstr "Starting Lineup"
+msgstr "التشكيلة الأساسية"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:123
 msgid "Substitute"
@@ -2513,12 +2501,12 @@ msgstr "أضف فيديو"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:45
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:46
 msgid "Values"
-msgstr ""
+msgstr "القيم"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:46
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:47
 msgid "Adjustments"
-msgstr ""
+msgstr "الضوابط"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:80
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:79
@@ -2538,17 +2526,16 @@ msgstr "حفظ"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:73
 msgid "Grouping"
-msgstr ""
+msgstr "التجميع"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:80
 msgid "Sort by"
-msgstr ""
+msgstr "فرز حسب"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
-#, fuzzy
 msgid "Current Teams"
-msgstr "الفريق الحالي"
+msgstr "الفرق الحالية"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:26
 msgid ""
@@ -2558,11 +2545,11 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-config.php:25
 msgid "Configure"
-msgstr ""
+msgstr "إعداد"
 
 #: includes/admin/settings/class-sp-settings-config.php:47
 msgid "Configure SportsPress"
-msgstr ""
+msgstr "إعداد سبورت بريس"
 
 #: includes/admin/settings/class-sp-settings-config.php:97
 #: includes/admin/settings/class-sp-settings-config.php:151
@@ -2577,7 +2564,7 @@ msgstr "الأساسي"
 
 #: includes/admin/settings/class-sp-settings-config.php:160
 msgid "Variables"
-msgstr ""
+msgstr "المتغيرات"
 
 #: includes/admin/settings/class-sp-settings-config.php:173
 #, php-format
@@ -2599,23 +2586,23 @@ msgstr "الافتراضي"
 
 #: includes/admin/settings/class-sp-settings-config.php:274
 msgid "Used for league tables."
-msgstr ""
+msgstr "يستخدم في جداول الدوري"
 
 #: includes/admin/settings/class-sp-settings-config.php:333
 #: includes/admin/settings/class-sp-settings-config.php:385
 msgid "Used for player lists."
-msgstr ""
+msgstr "يستخدم في قوائم اللاعبين"
 
 #: includes/admin/settings/class-sp-settings-events.php:42
 msgid "Event Options"
 msgstr "خيارات الحدث"
 
 #: includes/admin/settings/class-sp-settings-events.php:45
-#: includes/admin/settings/class-sp-settings-events.php:113
+#: includes/admin/settings/class-sp-settings-events.php:121
 #: includes/admin/settings/class-sp-settings-players.php:72
 #: includes/admin/settings/class-sp-settings-teams.php:73
 msgid "Limit"
-msgstr ""
+msgstr "الحد الأقصى"
 
 #: includes/admin/settings/class-sp-settings-events.php:49
 #: includes/admin/settings/class-sp-settings-teams.php:77
@@ -2630,40 +2617,45 @@ msgstr "عرض الشعارات"
 
 #: includes/admin/settings/class-sp-settings-events.php:69
 msgid "Display maps"
-msgstr ""
+msgstr "عرض الخرائط"
 
 #: includes/admin/settings/class-sp-settings-events.php:77
 msgid "Link venues"
-msgstr ""
+msgstr "رابط الملعب"
 
 #: includes/admin/settings/class-sp-settings-events.php:86
 msgid "Display outcomes"
-msgstr ""
+msgstr "عرض النتائج"
 
 #: includes/admin/settings/class-sp-settings-events.php:94
 #: includes/admin/settings/class-sp-settings-players.php:57
 msgid "Link players"
-msgstr ""
+msgstr "رابط اللاعبين"
 
-#: includes/admin/settings/class-sp-settings-events.php:105
+#: includes/admin/settings/class-sp-settings-events.php:106
+#: includes/admin/settings/class-sp-settings-teams.php:57
+msgid "Link teams"
+msgstr "رابط الفريق"
+
+#: includes/admin/settings/class-sp-settings-events.php:113
 #: includes/admin/settings/class-sp-settings-players.php:64
 #: includes/admin/settings/class-sp-settings-teams.php:65
 msgid "Pagination"
-msgstr ""
+msgstr "أرقام الصفحات"
 
-#: includes/admin/settings/class-sp-settings-events.php:106
+#: includes/admin/settings/class-sp-settings-events.php:114
 #: includes/admin/settings/class-sp-settings-players.php:65
 #: includes/admin/settings/class-sp-settings-teams.php:66
 msgid "Paginate"
-msgstr ""
+msgstr "ترقيم الصفحات"
 
-#: includes/admin/settings/class-sp-settings-events.php:117
+#: includes/admin/settings/class-sp-settings-events.php:125
 msgid "events"
 msgstr "أحداث"
 
-#: includes/admin/settings/class-sp-settings-events.php:164
+#: includes/admin/settings/class-sp-settings-events.php:172
 msgid "Custom:"
-msgstr ""
+msgstr "مخصص"
 
 #: includes/admin/settings/class-sp-settings-general.php:25
 msgid "General"
@@ -2695,7 +2687,7 @@ msgstr "المظهر وجافاسكربت"
 
 #: includes/admin/settings/class-sp-settings-general.php:77
 msgid "Custom CSS"
-msgstr ""
+msgstr "نمط مخصص"
 
 #: includes/admin/settings/class-sp-settings-general.php:84
 msgid "Scripts"
@@ -2703,19 +2695,19 @@ msgstr "جافاسكربت"
 
 #: includes/admin/settings/class-sp-settings-general.php:85
 msgid "Responsive tables"
-msgstr ""
+msgstr "جداول متلائمة"
 
 #: includes/admin/settings/class-sp-settings-general.php:90
 msgid "This will enable a script allowing the tables to be responsive."
-msgstr ""
+msgstr "هاذا سوف يمكن الكود الذي يسمح للجداول بأن تكون متلائمة"
 
 #: includes/admin/settings/class-sp-settings-general.php:94
 msgid "Sortable tables"
-msgstr ""
+msgstr "جداول قابلة للفرز"
 
 #: includes/admin/settings/class-sp-settings-general.php:99
 msgid "This will enable a script allowing the tables to be sortable."
-msgstr ""
+msgstr "هاذا سوف يمكن الكود الذي يسمح للجداول بأن تكون قابلة للفرز"
 
 #: includes/admin/settings/class-sp-settings-general.php:103
 msgid "Live countdowns"
@@ -2723,15 +2715,15 @@ msgstr "العد التنازلي المباشر"
 
 #: includes/admin/settings/class-sp-settings-general.php:108
 msgid "This will enable a script allowing the countdowns to be animated."
-msgstr ""
+msgstr "هاذا سوف يمكن الكود الذي يسمح للعد التنازلي أن يكون متحركاً"
 
 #: includes/admin/settings/class-sp-settings-general.php:188
 msgid "Frontend Styles"
-msgstr ""
+msgstr "أنماط الواجهة الأمامية"
 
 #: includes/admin/settings/class-sp-settings-general.php:204
 msgid "Background"
-msgstr ""
+msgstr "الخلفية"
 
 #: includes/admin/settings/class-sp-settings-general.php:205
 #: includes/admin/settings/class-sp-settings-text.php:25
@@ -2741,7 +2733,7 @@ msgstr "حقل نص"
 
 #: includes/admin/settings/class-sp-settings-general.php:206
 msgid "Heading"
-msgstr ""
+msgstr "العنوان"
 
 #: includes/admin/settings/class-sp-settings-general.php:207
 msgid "Link"
@@ -2757,23 +2749,19 @@ msgstr "خيارات اللاعب"
 
 #: includes/admin/settings/class-sp-settings-players.php:45
 msgid "Display national flags"
-msgstr ""
+msgstr "عرض أعلام الدول"
 
 #: includes/admin/settings/class-sp-settings-players.php:76
 msgid "players"
-msgstr ""
+msgstr "اللاعبين"
 
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
-msgstr ""
-
-#: includes/admin/settings/class-sp-settings-teams.php:57
-msgid "Link teams"
-msgstr ""
+msgstr "خيارات الفريق"
 
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "The following options affect how words are displayed on the frontend."
-msgstr ""
+msgstr "هذه الخيارات تؤثر في كيفية عرض الكلمات في الواجهة الأمامية"
 
 #: includes/admin/views/html-admin-page-status.php:5
 msgid "Please include this information when requesting support:"
@@ -2781,7 +2769,7 @@ msgstr "رجاءً ضمن هذه البيانات عند طلب الدعم"
 
 #: includes/admin/views/html-admin-page-status.php:6
 msgid "Get System Report"
-msgstr ""
+msgstr "عرض تقرير النظام"
 
 #: includes/admin/views/html-admin-page-status.php:14
 msgid "Environment"
@@ -2797,7 +2785,7 @@ msgstr "رابط الموقع"
 
 #: includes/admin/views/html-admin-page-status.php:28
 msgid "SP Version"
-msgstr ""
+msgstr "إصدار الإضافة"
 
 #: includes/admin/views/html-admin-page-status.php:32
 msgid "WP Version"
@@ -2805,7 +2793,7 @@ msgstr "اصدار ووردبريس"
 
 #: includes/admin/views/html-admin-page-status.php:36
 msgid "WP Multisite Enabled"
-msgstr ""
+msgstr "مواقه ووردبريس المتعددة ممكنة"
 
 #: includes/admin/views/html-admin-page-status.php:37
 #: includes/admin/views/html-admin-page-status.php:61
@@ -2846,7 +2834,7 @@ msgstr "وضع المطورين لووردبريس"
 
 #: includes/admin/views/html-admin-page-status.php:64
 msgid "WP Language"
-msgstr ""
+msgstr "لغة ووردبريس"
 
 #: includes/admin/views/html-admin-page-status.php:68
 msgid "WP Max Upload Size"
@@ -2870,17 +2858,17 @@ msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:90
 msgid "Default Timezone"
-msgstr ""
+msgstr "المنطقة الزمنية الافتراضية"
 
 #: includes/admin/views/html-admin-page-status.php:94
 #, php-format
 msgid "Default timezone is %s - it should be UTC"
-msgstr ""
+msgstr "المنطقة الزمنية الافتراضية هي %s - يجب أن تكون بالتوقيت العالمي"
 
 #: includes/admin/views/html-admin-page-status.php:96
 #, php-format
 msgid "Default timezone is %s"
-msgstr ""
+msgstr "المنطقة الزمنية الافتراضية هي %s"
 
 #: includes/admin/views/html-admin-page-status.php:104
 msgid "fsockopen/cURL"
@@ -2934,7 +2922,7 @@ msgstr "الإضافات المثبتة"
 
 #: includes/admin/views/html-admin-page-status.php:174
 msgid "Visit plugin homepage"
-msgstr ""
+msgstr "زيارة موقع الإضافة"
 
 #: includes/admin/views/html-admin-page-status.php:198
 #: includes/admin/views/html-admin-page-status.php:413
@@ -2951,32 +2939,31 @@ msgstr "الإصدار"
 
 #: includes/admin/views/html-admin-page-status.php:217
 msgid "SP Configuration"
-msgstr ""
+msgstr "الإعدادات"
 
 #: includes/admin/views/html-admin-page-status.php:290
 msgid "SP Taxonomies"
-msgstr ""
+msgstr "التصنيفات"
 
 #: includes/admin/views/html-admin-page-status.php:339
-#, fuzzy
 msgid "SP Post Types"
-msgstr "الفرق السابقة"
+msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:365
 msgid "Theme"
-msgstr ""
+msgstr "القالب"
 
 #: includes/admin/views/html-admin-page-status.php:402
 msgid "Theme Name"
-msgstr ""
+msgstr "اسم القالب"
 
 #: includes/admin/views/html-admin-page-status.php:408
 msgid "Theme Version"
-msgstr ""
+msgstr "اصدار القالب"
 
 #: includes/admin/views/html-admin-page-status.php:417
 msgid "Author URL"
-msgstr ""
+msgstr "رابط الكاتب"
 
 #: includes/admin/views/html-admin-page-status.php:426
 msgid "Templates"
@@ -3051,9 +3038,8 @@ msgid "Select %s:"
 msgstr "حدد %s:"
 
 #: includes/widgets/class-sp-widget-countdown.php:62
-#, fuzzy
 msgid "Display venue"
-msgstr "عرض البطولة"
+msgstr "عرض الملعب"
 
 #: includes/widgets/class-sp-widget-countdown.php:65
 msgid "Display league"
@@ -3072,12 +3058,12 @@ msgstr ""
 #: includes/widgets/class-sp-widget-event-calendar.php:61
 #: includes/widgets/class-sp-widget-event-list.php:68
 msgid "Status:"
-msgstr ""
+msgstr "الحالة:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:78
 #: includes/widgets/class-sp-widget-event-list.php:81
 msgid "Number of events to show:"
-msgstr ""
+msgstr "عدد الأحداث المعروضة"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:81
 #: includes/widgets/class-sp-widget-event-list.php:84
@@ -3162,7 +3148,7 @@ msgstr "قائمة لاعبين SportsPress "
 
 #: includes/widgets/class-sp-widget-player-list.php:73
 msgid "Performance:"
-msgstr ""
+msgstr "الأداء:"
 
 #. translators: Calendar caption: 1: month name, 2: 4-digit year
 #: templates/event-calendar.php:89 templates/event-calendar.php:117
@@ -3171,9 +3157,3 @@ msgstr ""
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
 msgstr ""
-
-#~ msgid "&mdash; Add &mdash;"
-#~ msgstr "&mdash; أضف &mdash;"
-
-#~ msgid "MySQL Version"
-#~ msgstr "اصدار MySQL"
