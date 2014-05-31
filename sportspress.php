@@ -3,11 +3,11 @@
  * Plugin Name: SportsPress
  * Plugin URI: http://wordpress.org/plugins/sportspress
  * Description: Manage your club and its players, staff, events, league tables, and player lists.
- * Version: 0.9.4
+ * Version: 1.0
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
- * Tested up to: 3.9
+ * Tested up to: 3.9.1
  *
  * Text Domain: sportspress
  * Domain Path: /languages/
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress' ) ) :
  * Main SportsPress Class
  *
  * @class SportsPress
- * @version	0.9.4
+ * @version	1.0
  */
 final class SportsPress {
 
 	/**
 	 * @var string
 	 */
-	public $version = '0.9.4';
+	public $version = '1.0';
 
 	/**
 	 * @var SporsPress The single instance of the class
