@@ -183,7 +183,7 @@ class SP_Admin_Menus {
 	 * Clean the SP menu items in admin.
 	 */
 	public function menu_clean() {
-		global $menu, $submenu;
+		global $menu, $submenu, $current_user;
 
 		// Find where our separator is in the menu
 		foreach( $menu as $key => $data ):
@@ -218,6 +218,15 @@ class SP_Admin_Menus {
 		if ( isset( $submenu['edit.php?post_type=sp_staff'] ) ):
 			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_seasons' ) );
+		endif;
+
+		$user_roles = $current_user->roles;
+		$user_role = array_shift($user_roles);
+
+		if ( in_array( $user_role, array( 'sp_player', 'sp_staff', 'sp_event_manager', 'sp_team_manager' ) ) ):
+			remove_menu_page( 'upload.php' );
+			remove_menu_page( 'edit-comments.php' );
+			remove_menu_page( 'tools.php' );
 		endif;
 	}
 
