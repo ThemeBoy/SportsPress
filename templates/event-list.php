@@ -15,6 +15,7 @@ $defaults = array(
 	'status' => 'default',
 	'number' => -1,
 	'link_teams' => get_option( 'sportspress_calendar_link_teams', 'no' ) == 'yes' ? true : false,
+	'link_venues' => get_option( 'sportspress_calendar_link_venues', 'yes' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_calendar_paginated', 'yes' ) == 'yes' ? true : false,
@@ -137,7 +138,14 @@ if ( isset( $columns ) )
 
 				if ( $usecolumns == null || in_array( 'venue', $usecolumns ) ):
 					echo '<td class="data-venue">';
-					the_terms( $event->ID, 'sp_venue' );
+					if ( $link_venues ):
+						the_terms( $event->ID, 'sp_venue' );
+					else:
+						$venues = get_the_terms( $event->ID, 'sp_venue' );
+						foreach ( $venues as $venue ):
+							echo $venue->name;
+						endforeach;
+					endif;
 					echo '</td>';
 				endif;
 

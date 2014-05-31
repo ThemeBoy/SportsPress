@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.8.6
+ * @version     1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -106,6 +106,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 				'desc' 		=> __( 'Link teams', 'sportspress' ),
 				'id' 		=> 'sportspress_calendar_link_teams',
 				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+			),
+
+			array(
+				'title'     => __( 'Venues', 'sportspress' ),
+				'desc' 		=> __( 'Link venues', 'sportspress' ),
+				'id' 		=> 'sportspress_calendar_link_venues',
+				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 			),
 
