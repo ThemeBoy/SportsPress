@@ -1,20 +1,20 @@
-=== SportsPress - sports league management ===
+=== SportsPress - All-In-One League Management ===
 Contributors: ThemeBoy
 Tags: sport, sports, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
-Tested up to: 3.9
-Stable tag: 0.9.4
+Tested up to: 3.9.1
+Stable tag: 1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-SportsPress is a league management plugin that helps you create a team website using WordPress. Currently in beta.
+SportsPress is a feature rich, extendable league management plugin. It is designed to be extremely flexible because every sport and team is unique.
 
 == Description ==
 
-Created by the developers at [ThemeBoy](http://themeboy.com/) and featured on Softpedia as [Script of the Day](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml), SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team website.
+If you’re looking to create a professional sports website, you’ve come to the right place! Created by the developers at [ThemeBoy](http://themeboy.com/) and featured on Softpedia as [Script of the Day](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml), SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team website.
 
-Add schedules, results, league tables, player profiles and statistics to your team or league site with SportsPress. It uses core WordPress markup syntax and will integrate seamlessly with most themes. Custom shortcodes, CSV importers, and several language translations are included.
+For serious teams and athletes, ThemeBoy offers a series of premium SportsPress themes and extensions to give you even more sports functionality for your website. 
 
 = Features =
 * Team Profiles
@@ -29,6 +29,14 @@ Add schedules, results, league tables, player profiles and statistics to your te
 * Statistics & League Table Columns Configuration
 * Import Events, Teams, and Players from CSV Files
 
+= Premium Extensions =
+
+Looking for more league functionality? ThemeBoy offers a range of [SportsPress extensions](http://themeboy.com/plugins/) to add more features to your sports website. 
+
+= Get SportsPress in your language! =
+
+We have a wonderful group of users who have contributed over 30 languages to the SportsPress plugin, but the community could always use a little more help. If you speak another language and feel confident in translating, please join our Transfix project to contribute to your language!
+
 = Available Languages =
 * English – English ( en_US )
 * Arabic – العربية ( ar )
@@ -42,6 +50,7 @@ Add schedules, results, league tables, player profiles and statistics to your te
 * Greek – Ελληνικά ( el_GR )
 * Italian – Italiano ( it_IT )
 * Japanese – 日本語 ( ja )
+* Norwegian Bokmål - Norsk bokmål ( nb_NO )
 * Polish – Polski ( pl_PL )
 * Portuguese (Brazil) – Português do Brasil ( pt_BR )
 * Portuguese (Portugal) – Português ( pt_PT )
@@ -53,12 +62,20 @@ Add schedules, results, league tables, player profiles and statistics to your te
 
 = Get involved =
 
+Feel free to share your suggestions with us so we can continue to develop awesome sports features for you guys!
+
 Developers can contribute via the [SportsPress GitHub Repository](https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md).
 
 Translators can contribute new languages to SportsPress through [Transifex](https://www.transifex.com/projects/p/sportspress/).
 
-= Please Rate, Vote, and Enjoy =
-Your feedback really makes a difference! Thanks :)
+Your feedback is much appreciated and makes all the difference in improving SportsPress. Please rate, vote, review, and share!
+
+= Stay Current =
+To keep up with the latest updates and new features, be sure to do the following:
+
+* Visit the [ThemeBoy homepage](http://themeboy.com/).
+* Subscribe to our [YouTube channel](https://www.youtube.com/user/themeboyteam).
+* Follow ThemeBoy on [Facebook](https://facebook.com/themeboy) & [Twitter](http://twitter.com/themeboy).
 
 == Installation ==
 
@@ -90,17 +107,17 @@ If on the off-chance you do encounter issues with the event/team/player/staff pa
 == Screenshots ==
 
 1. SportsPress style settings, configuration, and responsive layout example.
-2. League Table in Twenty Fourteen theme with default color scheme.
-3. Events List in Twenty Fourteen theme with default color scheme.
-4. Events Calendar in Twenty Fourteen theme with default color scheme.
-5. Player List in Twenty Fourteen theme with default color scheme.
-6. Player Gallery in Twenty Fourteen theme with default color scheme.
+2. Equation builder admin page.
+3. League table in Twenty Fourteen theme.
+4. League table admin page.
+5. Events list in Twenty Fourteen theme.
+6. Events admin page.
 
 == Frequently Asked Questions ==
 
 = Which sports does this plugin support? =
 
-The plugin will support most team sports with a scoring system. You can customize the table columns and player statistics by going to WordPress > Settings > SportsPress. It includes presets for many of the popular sports, and you can also add your own.
+The plugin will support most team sports with a scoring system. You can customize the table columns and player statistics by going to WordPress > Settings > SportsPress. We're currently adding presets for commonly requested sports, and you can also add your own.
 
 = Will SportsPress work with my theme? =
 
@@ -112,13 +129,34 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 
 = Is this plugin ready for my site? =
 
-SportsPress is currently in beta and is undergoing testing. We are still actively making adjustments to the code, so we do not recommend using it until we officially leave the beta phase.
+Yes! If you're using an older version of SportsPress, be sure to upgrade to at least version 1.0.
 
 = Can I import teams/players/events from a CSV file? =
 
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 1.0 =
+* Feature - New drag and drop equation builder.
+* Feature - Add team website link in admin.
+* Feature - Enable searching for post user when there are more than 10.
+* Feature - New event manager role that can publish and manage events only.
+* Tweak - Fix league table alignment and responsive height.
+* Tweak - Set maximum size of event blocks logos.
+* Tweak - Add option to link venues in event list.
+* Tweak - Remove margin between table and scrollbar.
+* Tweak - Display delimiter between team logos under event title.
+* Tweak - Hide media, comments, and tools from feature limited users.
+* Tweak - Hide previous and next post links for custom post types.
+* Tweak - Rounding explicitly displays all decimal places.
+* Refactor - Combine players and staff in admin menu.
+* Fix - Duplicate team logos in event blocks.
+* Fix - Query future events for next team event.
+* Fix - Live countdown in admin dashboard.
+* Fix - Display all current teams in player profile.
+* Localization - Norwegian Bokmål translation by sijo.
+* Localization - Update translations.
 
 = 0.9.4 =
 * Tweak - Force delete preset variables when switching sports in settings.
