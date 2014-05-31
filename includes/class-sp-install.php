@@ -165,6 +165,7 @@ class SP_Install {
 		            'read' 							=> true,
 		            'delete_posts' 					=> true,
 		            'edit_posts' 					=> true,
+		            'upload_files' 					=> true,
 
 		            'edit_sp_player'				=> true,
 		            'read_sp_player'				=> true,
@@ -187,6 +188,10 @@ class SP_Install {
 		            'read' 							=> true,
 		            'delete_posts' 					=> true,
 		            'edit_posts' 					=> true,
+		            'upload_files' 					=> true,
+
+		            'read_sp_player'				=> true,
+		            'edit_sp_players' 				=> true,
 
 		            'edit_sp_staff'					=> true,
 		            'read_sp_staff'					=> true,
@@ -198,6 +203,32 @@ class SP_Install {
 					'assign_sp_staff_terms' 		=> true,
 		        )
 		    );
+
+		    add_role(
+		        'sp_event_manager',
+		        __( 'Event Manager', 'sportspress' ),
+		        array(
+					'level_1' 						=> true,
+					'level_0' 						=> true,
+
+		            'read' 							=> true,
+		            'delete_posts' 					=> true,
+		            'edit_posts' 					=> true,
+		            'upload_files' 					=> true,
+
+		            'edit_sp_event'					=> true,
+		            'read_sp_event'					=> true,
+		            'delete_sp_event'				=> true,
+		            'edit_sp_events' 				=> true,
+		            'edit_others_sp_events' 		=> true,
+		            'publish_sp_events' 			=> true,
+		            'delete_sp_events' 				=> true,
+		            'delete_published_sp_events' 	=> true,
+		            'edit_published_sp_events' 		=> true,
+
+					'assign_sp_event_terms' 		=> true,
+		        )
+			);
 
 		    add_role(
 		        'sp_team_manager',
@@ -244,6 +275,15 @@ class SP_Install {
 					'delete_sp_staff_terms' 		=> true,
 					'assign_sp_staff_terms' 		=> true,
 
+		            'edit_sp_event'					=> true,
+		            'read_sp_event'					=> true,
+		            'delete_sp_event'				=> true,
+		            'edit_sp_events' 				=> true,
+		            'edit_others_sp_events' 		=> true,
+		            'delete_sp_events' 				=> true,
+		            'delete_published_sp_events' 	=> true,
+		            'edit_published_sp_events' 		=> true,
+
 		            'edit_sp_team'					=> true,
 		            'read_sp_team'					=> true,
 		            'delete_sp_team'				=> true,
@@ -255,8 +295,9 @@ class SP_Install {
 		        )
 		    );
 
-			// League manager role
-			add_role( 'sp_league_manager', __( 'League Manager', 'sportspress' ),
+			add_role(
+				'sp_league_manager',
+				__( 'League Manager', 'sportspress' ),
 				array(
 					'level_7' 						=> true,
 					'level_6' 						=> true,
@@ -306,13 +347,14 @@ class SP_Install {
 				foreach ( $cap_group as $cap ):
 					$wp_roles->add_cap( 'sp_league_manager', $cap );
 					$wp_roles->add_cap( 'administrator', $cap );
+					$wp_roles->add_cap( 'administrator', 'manage_sportspress' );
 				endforeach;
 			endforeach;
 		endif;
 	}
 
 	/**
-	 * Get capabilities for SportsPress - these are assigned to admin/shop manager during installation or reset
+	 * Get capabilities for SportsPress - these are assigned during installation or reset
 	 *
 	 * @access public
 	 * @return array
@@ -321,7 +363,6 @@ class SP_Install {
 		$capabilities = array();
 
 		$capabilities['core'] = array(
-			'manage_sportspress',
 			'view_sportspress_reports',
 			'edit_sp_player_statistics',
 			'edit_sp_team_columns',
@@ -392,6 +433,7 @@ class SP_Install {
 
 			remove_role( 'sp_player' );
 			remove_role( 'sp_staff' );
+			remove_role( 'sp_event_manager' );
 			remove_role( 'sp_team_manager' );
 			remove_role( 'sp_league_manager' );
 		}
