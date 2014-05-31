@@ -9,15 +9,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-05-16 21:35+1000\n"
-"PO-Revision-Date: 2014-05-16 21:35+1000\n"
+"POT-Creation-Date: 2014-05-22 23:05+1000\n"
+"PO-Revision-Date: 2014-06-01 07:26+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/"
 "sportspress/language/zh_CN/)\n"
-"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
@@ -1357,6 +1357,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:55
 #: includes/admin/settings/class-sp-settings-events.php:60
+#: includes/admin/settings/class-sp-settings-events.php:105
 #: includes/admin/settings/class-sp-settings-teams.php:25
 #: includes/admin/settings/class-sp-settings-teams.php:48
 #: includes/widgets/class-sp-widget-event-list.php:96
@@ -1373,7 +1374,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:114
-#: includes/admin/settings/class-sp-settings-events.php:150
+#: includes/admin/settings/class-sp-settings-events.php:158
 msgid "Team"
 msgstr "球队"
 
@@ -1537,9 +1538,8 @@ msgstr ""
 
 #: includes/sp-core-functions.php:2405
 #: includes/admin/class-sp-admin-sports.php:42
-#, fuzzy
 msgid "Custom"
-msgstr "客户："
+msgstr ""
 
 #: includes/sp-core-functions.php:2416
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:114
@@ -1709,18 +1709,16 @@ msgid "Photo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:148
-#, fuzzy
 msgid "Select Photo"
-msgstr "选择%s"
+msgstr ""
 
 #: includes/sp-template-hooks.php:151
 msgid "Add photo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:154
-#, fuzzy
 msgid "Remove photo"
-msgstr "删除"
+msgstr ""
 
 #: includes/sp-template-hooks.php:162
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:63
@@ -1728,18 +1726,16 @@ msgid "Logo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:165
-#, fuzzy
 msgid "Select Logo"
-msgstr "选择%s"
+msgstr ""
 
 #: includes/sp-template-hooks.php:168
 msgid "Add logo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:171
-#, fuzzy
 msgid "Remove logo"
-msgstr "删除"
+msgstr ""
 
 #: includes/sp-template-hooks.php:179
 msgid "Date/Time:"
@@ -1863,9 +1859,8 @@ msgid "Import <strong>players</strong> from a csv file."
 msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:34
-#, fuzzy
 msgid "SportsPress Staff (CSV)"
-msgstr "SportsPress"
+msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:34
 msgid "Import <strong>staff</strong> from a csv file."
@@ -2091,8 +2086,8 @@ msgstr "或者输入文件路径:"
 #: includes/admin/importers/class-sp-player-importer.php:211
 #: includes/admin/importers/class-sp-staff-importer.php:204
 #: includes/admin/importers/class-sp-team-importer.php:168
-#: includes/admin/settings/class-sp-settings-events.php:155
-#: includes/admin/settings/class-sp-settings-events.php:159
+#: includes/admin/settings/class-sp-settings-events.php:163
+#: includes/admin/settings/class-sp-settings-events.php:167
 #: includes/admin/settings/class-sp-settings-general.php:170
 msgid "Delimiter"
 msgstr "分隔符"
@@ -2343,9 +2338,8 @@ msgid "Statistics"
 msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:143
-#, fuzzy
 msgid "Columns"
-msgstr "列"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:163
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:102
@@ -2415,9 +2409,8 @@ msgid "Started"
 msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
-#, fuzzy
 msgid "Substituted"
-msgstr "换人"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:43
 #: includes/admin/settings/class-sp-settings-events.php:85
@@ -2591,7 +2584,7 @@ msgid "Event Options"
 msgstr ""
 
 #: includes/admin/settings/class-sp-settings-events.php:45
-#: includes/admin/settings/class-sp-settings-events.php:113
+#: includes/admin/settings/class-sp-settings-events.php:121
 #: includes/admin/settings/class-sp-settings-players.php:72
 #: includes/admin/settings/class-sp-settings-teams.php:73
 msgid "Limit"
@@ -2625,23 +2618,28 @@ msgstr ""
 msgid "Link players"
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:105
+#: includes/admin/settings/class-sp-settings-events.php:106
+#: includes/admin/settings/class-sp-settings-teams.php:57
+msgid "Link teams"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:113
 #: includes/admin/settings/class-sp-settings-players.php:64
 #: includes/admin/settings/class-sp-settings-teams.php:65
 msgid "Pagination"
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:106
+#: includes/admin/settings/class-sp-settings-events.php:114
 #: includes/admin/settings/class-sp-settings-players.php:65
 #: includes/admin/settings/class-sp-settings-teams.php:66
 msgid "Paginate"
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:117
+#: includes/admin/settings/class-sp-settings-events.php:125
 msgid "events"
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:164
+#: includes/admin/settings/class-sp-settings-events.php:172
 msgid "Custom:"
 msgstr "客户："
 
@@ -2745,10 +2743,6 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
-msgstr ""
-
-#: includes/admin/settings/class-sp-settings-teams.php:57
-msgid "Link teams"
 msgstr ""
 
 #: includes/admin/settings/class-sp-settings-text.php:41
@@ -3150,6 +3144,3 @@ msgstr ""
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
 msgstr "%2$s年%1$s"
-
-#~ msgid "MySQL Version"
-#~ msgstr "软件版本"

@@ -14,15 +14,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-05-22 23:13+1000\n"
-"PO-Revision-Date: 2014-05-22 23:13+1000\n"
+"POT-Creation-Date: 2014-05-22 23:05+1000\n"
+"PO-Revision-Date: 2014-06-01 07:25+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/"
 "sportspress/language/it_IT/)\n"
-"Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
@@ -1543,9 +1543,8 @@ msgstr "Calcio"
 
 #: includes/sp-core-functions.php:2405
 #: includes/admin/class-sp-admin-sports.php:42
-#, fuzzy
 msgid "Custom"
-msgstr "Personalizzato:"
+msgstr ""
 
 #: includes/sp-core-functions.php:2416
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:114
@@ -1715,18 +1714,16 @@ msgid "Photo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:148
-#, fuzzy
 msgid "Select Photo"
-msgstr "Seleziona %s"
+msgstr ""
 
 #: includes/sp-template-hooks.php:151
 msgid "Add photo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:154
-#, fuzzy
 msgid "Remove photo"
-msgstr "Rimuovere"
+msgstr ""
 
 #: includes/sp-template-hooks.php:162
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:63
@@ -1734,18 +1731,16 @@ msgid "Logo"
 msgstr "Logo"
 
 #: includes/sp-template-hooks.php:165
-#, fuzzy
 msgid "Select Logo"
-msgstr "Seleziona %s"
+msgstr ""
 
 #: includes/sp-template-hooks.php:168
 msgid "Add logo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:171
-#, fuzzy
 msgid "Remove logo"
-msgstr "Rimuovere"
+msgstr ""
 
 #: includes/sp-template-hooks.php:179
 msgid "Date/Time:"
@@ -1871,14 +1866,12 @@ msgid "Import <strong>players</strong> from a csv file."
 msgstr "Importazione <strong>giocatori</strong> da un file CSV."
 
 #: includes/admin/class-sp-admin-importers.php:34
-#, fuzzy
 msgid "SportsPress Staff (CSV)"
-msgstr "SportsPress Squadre (CSV)"
+msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:34
-#, fuzzy
 msgid "Import <strong>staff</strong> from a csv file."
-msgstr "Importazione <strong>squadre</strong> da un file CSV."
+msgstr ""
 
 #: includes/admin/class-sp-admin-menus.php:48
 msgid "SportsPress Settings"
@@ -2132,9 +2125,8 @@ msgid "Upload file and import"
 msgstr "Carica ed importa file"
 
 #: includes/admin/importers/class-sp-importer.php:125
-#, fuzzy
 msgid "Import"
-msgstr "Sport"
+msgstr ""
 
 #: includes/admin/importers/class-sp-player-importer.php:140
 #, php-format
@@ -2163,32 +2155,26 @@ msgstr ""
 "colonne). <a href=\"%s\">Clicca qui per scaricare un esempio</a>."
 
 #: includes/admin/importers/class-sp-staff-importer.php:133
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
 "strong>."
 msgstr ""
-"Importazione completa - importato <strong>% s</strong> squadre e saltato "
-"<strong>% s</strong>."
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
-#, fuzzy
 msgid "View Staff"
-msgstr "Modifica nuovo staff"
+msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:155
-#, fuzzy
 msgid "Import Staff"
-msgstr "Importa Squadre"
+msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:169
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Staff need to be defined with columns in a specific order (5 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"Squadre devono essere definiti con colonne in un ordine specifico (3 "
-"colonne). <a href=\"%s\">Clicca qui per scaricare un esempio</a>."
 
 #: includes/admin/importers/class-sp-team-importer.php:97
 #, php-format
@@ -2371,9 +2357,8 @@ msgid "Statistics"
 msgstr "statistica"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:143
-#, fuzzy
 msgid "Columns"
-msgstr "Colonne:"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:163
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:102
@@ -2443,9 +2428,8 @@ msgid "Started"
 msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
-#, fuzzy
 msgid "Substituted"
-msgstr "Sostituto"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:43
 #: includes/admin/settings/class-sp-settings-events.php:85
@@ -2555,9 +2539,8 @@ msgstr "Ordina per"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
-#, fuzzy
 msgid "Current Teams"
-msgstr "squadra corrente"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:26
 msgid ""
@@ -2971,9 +2954,8 @@ msgid "SP Taxonomies"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:339
-#, fuzzy
 msgid "SP Post Types"
-msgstr "Squadre passati"
+msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:365
 msgid "Theme"
@@ -3065,9 +3047,8 @@ msgid "Select %s:"
 msgstr "Seleziona %s"
 
 #: includes/widgets/class-sp-widget-countdown.php:62
-#, fuzzy
 msgid "Display venue"
-msgstr "Visualizza Lega"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-countdown.php:65
 msgid "Display league"
@@ -3185,9 +3166,3 @@ msgstr ""
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
-
-#~ msgid "&mdash; Add &mdash;"
-#~ msgstr "&mdash; Aggiungi &mdash;"
-
-#~ msgid "MySQL Version"
-#~ msgstr "MySQL Version"

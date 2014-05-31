@@ -1,4 +1,4 @@
-#
+# 
 # Translators:
 # ideodora <ideodora@gmail.com>, 2013
 # Shohei Tanaka <shohei.tanaka@artisanworkshop.biz>, 2013
@@ -8,23 +8,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-05-16 21:36+1000\n"
-"PO-Revision-Date: 2014-05-16 21:36+1000\n"
+"POT-Creation-Date: 2014-05-22 23:05+1000\n"
+"PO-Revision-Date: 2014-05-23 09:51+0000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/projects/p/sportspress/"
-"language/ja/)\n"
-"Language: ja\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/sportspress/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: sportspress.php:82 sportspress.php:91
 msgid "Cheatin&#8217; huh?"
@@ -1356,6 +1353,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:55
 #: includes/admin/settings/class-sp-settings-events.php:60
+#: includes/admin/settings/class-sp-settings-events.php:105
 #: includes/admin/settings/class-sp-settings-teams.php:25
 #: includes/admin/settings/class-sp-settings-teams.php:48
 #: includes/widgets/class-sp-widget-event-list.php:96
@@ -1372,7 +1370,7 @@ msgstr "チーム"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:114
-#: includes/admin/settings/class-sp-settings-events.php:150
+#: includes/admin/settings/class-sp-settings-events.php:158
 msgid "Team"
 msgstr "チーム"
 
@@ -1536,9 +1534,8 @@ msgstr "サッカー"
 
 #: includes/sp-core-functions.php:2405
 #: includes/admin/class-sp-admin-sports.php:42
-#, fuzzy
 msgid "Custom"
-msgstr "カスタム期間:"
+msgstr ""
 
 #: includes/sp-core-functions.php:2416
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:114
@@ -1634,9 +1631,8 @@ msgstr "時間"
 
 #: includes/sp-core-functions.php:2439
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:64
-#, fuzzy
 msgid "Time/Results"
-msgstr "結果"
+msgstr ""
 
 #: includes/sp-core-functions.php:2442
 msgid "View all events"
@@ -1709,18 +1705,16 @@ msgid "Photo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:148
-#, fuzzy
 msgid "Select Photo"
-msgstr "%sを選択"
+msgstr ""
 
 #: includes/sp-template-hooks.php:151
 msgid "Add photo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:154
-#, fuzzy
 msgid "Remove photo"
-msgstr "動画を削除"
+msgstr ""
 
 #: includes/sp-template-hooks.php:162
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:63
@@ -1728,18 +1722,16 @@ msgid "Logo"
 msgstr "ロゴ"
 
 #: includes/sp-template-hooks.php:165
-#, fuzzy
 msgid "Select Logo"
-msgstr "%sを選択"
+msgstr ""
 
 #: includes/sp-template-hooks.php:168
 msgid "Add logo"
 msgstr ""
 
 #: includes/sp-template-hooks.php:171
-#, fuzzy
 msgid "Remove logo"
-msgstr "削除"
+msgstr ""
 
 #: includes/sp-template-hooks.php:179
 msgid "Date/Time:"
@@ -1863,14 +1855,12 @@ msgid "Import <strong>players</strong> from a csv file."
 msgstr "csvファイルで<strong>選手</strong>をインポート"
 
 #: includes/admin/class-sp-admin-importers.php:34
-#, fuzzy
 msgid "SportsPress Staff (CSV)"
-msgstr "SportsPress チーム (CSV)"
+msgstr ""
 
 #: includes/admin/class-sp-admin-importers.php:34
-#, fuzzy
 msgid "Import <strong>staff</strong> from a csv file."
-msgstr "csvファイルで<strong>チーム</strong>をインポート"
+msgstr ""
 
 #: includes/admin/class-sp-admin-menus.php:48
 msgid "SportsPress Settings"
@@ -1995,8 +1985,9 @@ msgstr "翻訳者"
 #: includes/admin/class-sp-admin-welcome.php:237
 msgid ""
 "SportsPress has been kindly translated into several other languages thanks "
-"to our translation team. Want to see your name? <a href=\"https://www."
-"transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
+"to our translation team. Want to see your name? <a "
+"href=\"https://www.transifex.com/projects/p/sportspress/\">Translate "
+"SportsPress</a>."
 msgstr ""
 
 #: includes/admin/class-sp-admin-welcome.php:253
@@ -2022,8 +2013,8 @@ msgstr "CSV形式は無効です"
 #: includes/admin/importers/class-sp-event-importer.php:373
 #, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> events and skipped <strong>"
-"%s</strong>."
+"Import complete - imported <strong>%s</strong> events and skipped "
+"<strong>%s</strong>."
 msgstr ""
 
 #: includes/admin/importers/class-sp-event-importer.php:383
@@ -2046,11 +2037,9 @@ msgstr ""
 #: includes/admin/importers/class-sp-staff-importer.php:167
 #: includes/admin/importers/class-sp-team-importer.php:131
 msgid ""
-"Hi there! Choose a .csv file to upload, then click \"Upload file and import"
-"\"."
-msgstr ""
-"CSVファイルをアップロードして選手を登録する場合は「ファイルをアップロードして"
-"インポート」をクリックし、アップロードするCSVファイルを選択して下さい。"
+"Hi there! Choose a .csv file to upload, then click \"Upload file and "
+"import\"."
+msgstr "CSVファイルをアップロードして選手を登録する場合は「ファイルをアップロードしてインポート」をクリックし、アップロードするCSVファイルを選択して下さい。"
 
 #: includes/admin/importers/class-sp-event-importer.php:409
 #, php-format
@@ -2094,8 +2083,8 @@ msgstr "またはファイルへのパスを入力:"
 #: includes/admin/importers/class-sp-player-importer.php:211
 #: includes/admin/importers/class-sp-staff-importer.php:204
 #: includes/admin/importers/class-sp-team-importer.php:168
-#: includes/admin/settings/class-sp-settings-events.php:155
-#: includes/admin/settings/class-sp-settings-events.php:159
+#: includes/admin/settings/class-sp-settings-events.php:163
+#: includes/admin/settings/class-sp-settings-events.php:167
 #: includes/admin/settings/class-sp-settings-general.php:170
 msgid "Delimiter"
 msgstr "区切り文字"
@@ -2122,18 +2111,15 @@ msgid "Upload file and import"
 msgstr "ファイルをアップロードしてインポート"
 
 #: includes/admin/importers/class-sp-importer.php:125
-#, fuzzy
 msgid "Import"
-msgstr "スポーツ"
+msgstr ""
 
 #: includes/admin/importers/class-sp-player-importer.php:140
 #, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> players and skipped <strong>"
-"%s</strong>."
-msgstr ""
-"完全なインポート - <strong>%s</strong>の選手をインポートし、<strong>%s</"
-"strong>をスキップ"
+"Import complete - imported <strong>%s</strong> players and skipped "
+"<strong>%s</strong>."
+msgstr "完全なインポート - <strong>%s</strong>の選手をインポートし、<strong>%s</strong>をスキップ"
 
 #: includes/admin/importers/class-sp-player-importer.php:150
 msgid "View Players"
@@ -2148,46 +2134,36 @@ msgstr "選手をインポート"
 msgid ""
 "Players need to be defined with columns in a specific order (7 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr ""
-"選手は、特定の列（7列）で定義する必要があります。<a href=\"%s\">ここをクリッ"
-"クして、サンプルをダウンロード</a>"
+msgstr "選手は、特定の列（7列）で定義する必要があります。<a href=\"%s\">ここをクリックして、サンプルをダウンロード</a>"
 
 #: includes/admin/importers/class-sp-staff-importer.php:133
-#, fuzzy, php-format
+#, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
-"strong>."
+"Import complete - imported <strong>%s</strong> staff and skipped "
+"<strong>%s</strong>."
 msgstr ""
-"完全なインポート - <strong>%s</strong>のチームをインポートし、<strong>%s</"
-"strong>をスキップ"
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
-#, fuzzy
 msgid "View Staff"
-msgstr "スタッフ"
+msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:155
-#, fuzzy
 msgid "Import Staff"
-msgstr "チームをインポート"
+msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:169
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Staff need to be defined with columns in a specific order (5 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"チームは、特定の列（3列）で定義する必要があります。<a href=\"%s\">ここをク"
-"リックして、サンプルをダウンロード</a>"
 
 #: includes/admin/importers/class-sp-team-importer.php:97
 #, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
-"strong>."
-msgstr ""
-"完全なインポート - <strong>%s</strong>のチームをインポートし、<strong>%s</"
-"strong>をスキップ"
+"Import complete - imported <strong>%s</strong> teams and skipped "
+"<strong>%s</strong>."
+msgstr "完全なインポート - <strong>%s</strong>のチームをインポートし、<strong>%s</strong>をスキップ"
 
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "View Teams"
@@ -2202,9 +2178,7 @@ msgstr "チームをインポート"
 msgid ""
 "Teams need to be defined with columns in a specific order (3 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr ""
-"チームは、特定の列（3列）で定義する必要があります。<a href=\"%s\">ここをク"
-"リックして、サンプルをダウンロード</a>"
+msgstr "チームは、特定の列（3列）で定義する必要があります。<a href=\"%s\">ここをクリックして、サンプルをダウンロード</a>"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:48
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:48
@@ -2361,9 +2335,8 @@ msgid "Statistics"
 msgstr "統計"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:143
-#, fuzzy
 msgid "Columns"
-msgstr "列:"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:163
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:102
@@ -2433,9 +2406,8 @@ msgid "Started"
 msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:37
-#, fuzzy
 msgid "Substituted"
-msgstr "補欠"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-config.php:43
 #: includes/admin/settings/class-sp-settings-events.php:85
@@ -2545,9 +2517,8 @@ msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
-#, fuzzy
 msgid "Current Teams"
-msgstr "現チーム"
+msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:26
 msgid ""
@@ -2610,7 +2581,7 @@ msgid "Event Options"
 msgstr ""
 
 #: includes/admin/settings/class-sp-settings-events.php:45
-#: includes/admin/settings/class-sp-settings-events.php:113
+#: includes/admin/settings/class-sp-settings-events.php:121
 #: includes/admin/settings/class-sp-settings-players.php:72
 #: includes/admin/settings/class-sp-settings-teams.php:73
 msgid "Limit"
@@ -2636,32 +2607,36 @@ msgid "Link venues"
 msgstr ""
 
 #: includes/admin/settings/class-sp-settings-events.php:86
-#, fuzzy
 msgid "Display outcomes"
-msgstr "地図を表示する"
+msgstr ""
 
 #: includes/admin/settings/class-sp-settings-events.php:94
 #: includes/admin/settings/class-sp-settings-players.php:57
 msgid "Link players"
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:105
+#: includes/admin/settings/class-sp-settings-events.php:106
+#: includes/admin/settings/class-sp-settings-teams.php:57
+msgid "Link teams"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:113
 #: includes/admin/settings/class-sp-settings-players.php:64
 #: includes/admin/settings/class-sp-settings-teams.php:65
 msgid "Pagination"
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:106
+#: includes/admin/settings/class-sp-settings-events.php:114
 #: includes/admin/settings/class-sp-settings-players.php:65
 #: includes/admin/settings/class-sp-settings-teams.php:66
 msgid "Paginate"
 msgstr ""
 
-#: includes/admin/settings/class-sp-settings-events.php:117
+#: includes/admin/settings/class-sp-settings-events.php:125
 msgid "events"
 msgstr "イベント"
 
-#: includes/admin/settings/class-sp-settings-events.php:164
+#: includes/admin/settings/class-sp-settings-events.php:172
 msgid "Custom:"
 msgstr "カスタム期間:"
 
@@ -2767,10 +2742,6 @@ msgstr "選手"
 msgid "Team Options"
 msgstr "チーム設定"
 
-#: includes/admin/settings/class-sp-settings-teams.php:57
-msgid "Link teams"
-msgstr ""
-
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "The following options affect how words are displayed on the frontend."
 msgstr ""
@@ -2834,11 +2805,9 @@ msgstr "WPメモリー制限"
 #: includes/admin/views/html-admin-page-status.php:53
 #, php-format
 msgid ""
-"%s - We recommend setting memory to at least 64MB. See: <a href=\"%s"
-"\">Increasing memory allocated to PHP</a>"
-msgstr ""
-"%s - 少なくとも64MBまでメモリを設定することをお勧めします。 参照: <a href="
-"\"%s\">PHPに割り当てられたメモリ使用量を増やす</a>。"
+"%s - We recommend setting memory to at least 64MB. See: <a "
+"href=\"%s\">Increasing memory allocated to PHP</a>"
+msgstr "%s - 少なくとも64MBまでメモリを設定することをお勧めします。 参照: <a href=\"%s\">PHPに割り当てられたメモリ使用量を増やす</a>。"
 
 #: includes/admin/views/html-admin-page-status.php:60
 msgid "WP Debug Mode"
@@ -2892,23 +2861,18 @@ msgstr "ご使用のサーバーは、fsockopen と cURLが有効になってい
 
 #: includes/admin/views/html-admin-page-status.php:109
 msgid "Your server has fsockopen enabled, cURL is disabled."
-msgstr ""
-"ご使用のサーバーは、fsockopenが有効になっています。cURLは無効になっています。"
+msgstr "ご使用のサーバーは、fsockopenが有効になっています。cURLは無効になっています。"
 
 #: includes/admin/views/html-admin-page-status.php:111
 msgid "Your server has cURL enabled, fsockopen is disabled."
-msgstr ""
-"ご使用のサーバーはcURLが有効になっています。fsockopenは無効になっています。"
+msgstr "ご使用のサーバーはcURLが有効になっています。fsockopenは無効になっています。"
 
 #: includes/admin/views/html-admin-page-status.php:115
 msgid ""
 "Your server does not have fsockopen or cURL enabled - PayPal IPN and other "
 "scripts which communicate with other servers will not work. Contact your "
 "hosting provider."
-msgstr ""
-"ご使用のサーバーには、fsockopenが無いか、cURLが有効になっていません。- "
-"PayPal IPN および他のサーバと通信する他のスクリプトが動作しません。ホスティン"
-"グプロバイダにお問い合わせください。"
+msgstr "ご使用のサーバーには、fsockopenが無いか、cURLが有効になっていません。- PayPal IPN および他のサーバと通信する他のスクリプトが動作しません。ホスティングプロバイダにお問い合わせください。"
 
 #: includes/admin/views/html-admin-page-status.php:120
 msgid "SOAP Client"
@@ -2921,12 +2885,9 @@ msgstr "ご使用のサーバーには、SOAP Client classが有効になって�
 #: includes/admin/views/html-admin-page-status.php:125
 #, php-format
 msgid ""
-"Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled - "
-"some gateway plugins which use SOAP may not work as expected."
-msgstr ""
-"ご使用のサーバーは、<a href=\"%s\">SOAP Client</a> classが有効になっていませ"
-"ん。- SOAPを使用するいくつかの支払いプラグインが予期せぬ動作をする可能性があ"
-"ります。"
+"Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled -"
+" some gateway plugins which use SOAP may not work as expected."
+msgstr "ご使用のサーバーは、<a href=\"%s\">SOAP Client</a> classが有効になっていません。- SOAPを使用するいくつかの支払いプラグインが予期せぬ動作をする可能性があります。"
 
 #: includes/admin/views/html-admin-page-status.php:148
 msgid "Plugins"
@@ -2962,9 +2923,8 @@ msgid "SP Taxonomies"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:339
-#, fuzzy
 msgid "SP Post Types"
-msgstr "過去のチーム"
+msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:365
 msgid "Theme"
@@ -2991,9 +2951,7 @@ msgstr "テンプレート"
 msgid ""
 "<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
 "date. The core version is %s"
-msgstr ""
-"<code>%s</code> version <strong style=\"color:red\">%s</strong>は古くなってい"
-"ます。現在のバージョンは%sです。"
+msgstr "<code>%s</code> version <strong style=\"color:red\">%s</strong>は古くなっています。現在のバージョンは%sです。"
 
 #: includes/admin/views/html-admin-page-status.php:470
 #: includes/admin/views/html-admin-page-status.php:476
@@ -3019,10 +2977,7 @@ msgid ""
 "<strong>Your theme does not declare SportsPress support</strong> &#8211; if "
 "you encounter layout issues please read our integration guide or choose a "
 "SportsPress theme :)"
-msgstr ""
-"<strong>あなたのテーマはSportsPressのサポートを宣言していません</strong> "
-"&#8211; あなたがレイアウトの問題に遭遇している場合は、我々の統合ガイドを読む"
-"か、SportsPressテーマを選んでください :)"
+msgstr "<strong>あなたのテーマはSportsPressのサポートを宣言していません</strong> &#8211; あなたがレイアウトの問題に遭遇している場合は、我々の統合ガイドを読むか、SportsPressテーマを選んでください :)"
 
 #: includes/admin/views/html-notice-theme-support.php:7
 msgid "Theme Integration Guide"
@@ -3058,9 +3013,8 @@ msgid "Select %s:"
 msgstr "%sを選択:"
 
 #: includes/widgets/class-sp-widget-countdown.php:62
-#, fuzzy
 msgid "Display venue"
-msgstr "リーグを表示"
+msgstr ""
 
 #: includes/widgets/class-sp-widget-countdown.php:65
 msgid "Display league"
@@ -3178,9 +3132,3 @@ msgstr ""
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
 msgstr "%2$s年%1$s"
-
-#~ msgid "&mdash; Add &mdash;"
-#~ msgstr "&mdash; 追加 &mdash;"
-
-#~ msgid "MySQL Version"
-#~ msgstr "MySQL バージョン"
