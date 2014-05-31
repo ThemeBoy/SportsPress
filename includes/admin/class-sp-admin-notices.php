@@ -66,7 +66,7 @@ class SP_Admin_Notices {
 
 		if ( in_array( 'template_files', $notices ) ) {
 			wp_enqueue_style( 'sportspress-activation', plugins_url(  '/assets/css/activation.css', SP_PLUGIN_FILE ) );
-//			add_action( 'admin_notices', array( $this, 'template_file_check_notice' ) );
+			add_action( 'admin_notices', array( $this, 'template_file_check_notice' ) );
 		}
 	}
 
@@ -81,7 +81,7 @@ class SP_Admin_Notices {
 	 * Show the Theme Check notice
 	 */
 	public function theme_check_notice() {
-//		include( 'views/html-notice-theme-support.php' );
+		include( 'views/html-notice-theme-support.php' );
 	}
 
 	/**
