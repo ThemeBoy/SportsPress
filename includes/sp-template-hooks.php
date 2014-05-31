@@ -108,9 +108,12 @@ function sportspress_the_title( $title, $id ) {
 			$teams = get_post_meta( $id, 'sp_team' );
 			if ( $teams ):
 				$title .= '<div class="sp-event-teams">';
+				$delimiter = get_option( 'sportspress_event_teams_delimiter', 'vs' );
+				$team_logos = array();
 				foreach ( $teams as $team ):
-					$title .= get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . ' ';
+					$team_logos[] = get_the_post_thumbnail( $team, 'sportspress-fit-icon' );
 				endforeach;
+				$title .= implode( ' ' . $delimiter . ' ', $team_logos );
 				$title .= '</div>';
 			endif;
 		endif;
