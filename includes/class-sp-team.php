@@ -18,6 +18,7 @@ class SP_Team extends SP_Custom_Post {
 			'numberposts' => 1,
 			'posts_per_page' => 1,
 			'order' => 'ASC',
+			'post_status' => 'future',
 			'meta_query' => array(
 				array(
 					'key' => 'sp_team',
