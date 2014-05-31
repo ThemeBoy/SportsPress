@@ -49,7 +49,7 @@ if ( isset( $columns ) )
 
 				$results = get_post_meta( $event->ID, 'sp_results', true );
 
-				$teams = get_post_meta( $event->ID, 'sp_team' );
+				$teams = array_unique( get_post_meta( $event->ID, 'sp_team' ) );
 				$logos = array();
 				$main_results = array();
 
