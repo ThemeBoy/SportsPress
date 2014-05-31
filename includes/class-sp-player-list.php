@@ -239,8 +239,6 @@ class SP_Player_List extends SP_Custom_Post {
 			$totals[ $player_id ]['last10'] = $last10;
 		endforeach;
 
-		$columns = array();
-
 		if ( ! empty( $column_groups ) ):
 
 			$args = array(
@@ -351,8 +349,12 @@ class SP_Player_List extends SP_Custom_Post {
 					unset( $columns[ $key ] );
 				endif;
 			endforeach;
-			$labels = array_merge( array( 'name' => SP()->text->string('Player') ), $columns );
-			$merged[0] = $labels;
+
+			$labels = array( 'name' => SP()->text->string('Player') );
+			if ( in_array( 'team', $this->columns ) )
+				$labels['team'] = __( 'Team', 'sportspress' );
+
+			$merged[0] = array_merge( $labels, $columns );
 			return $merged;
 		endif;
 	}

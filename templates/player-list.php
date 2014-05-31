@@ -18,6 +18,7 @@ $defaults = array(
 	'order' => 'ASC',
 	'show_all_players_link' => false,
 	'link_posts' => get_option( 'sportspress_list_link_players', 'yes' ) == 'yes' ? true : false,
+	'link_teams' => get_option( 'sportspress_list_link_teams', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_list_paginated', 'yes' ) == 'yes' ? true : false,
@@ -121,9 +122,22 @@ foreach ( $groups as $group ):
 		endif;
 
 		$output .= '<td class="data-name">' . $name . '</td>';
+		
+		if ( array_key_exists( 'team', $labels ) ):
+			$teams = get_post_meta( $player_id, 'sp_current_team' );
+			$team_names = array();
+			foreach ( $teams as $team ):
+				$team_name = get_the_title( $team );
+				if ( $link_teams ):
+					$team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
+				endif;
+				$team_names[] = $team_name;
+			endforeach;
+			$output .= '<td class="data-team">' . implode( ', ', $team_names ) . '</td>';
+		endif;
 
 		foreach( $labels as $key => $value ):
-			if ( $key == 'name' )
+			if ( in_array( $key, array( 'name', 'team' ) ) )
 				continue;
 			if ( ! is_array( $columns ) || in_array( $key, $columns ) )
 			$output .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';

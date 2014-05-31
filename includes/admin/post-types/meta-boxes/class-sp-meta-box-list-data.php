@@ -51,6 +51,10 @@ class SP_Meta_Box_List_Data {
 					<tr>
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
+						<th><label for="sp_columns_team">
+							<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $usecolumns ) || in_array( 'team', $usecolumns ) ); ?>>
+							<?php _e( 'Team', 'sportspress' ); ?>
+						</label></th>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
 								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
@@ -65,6 +69,7 @@ class SP_Meta_Box_List_Data {
 						$i = 0;
 						foreach ( $data as $player_id => $player_stats ):
 							if ( !$player_id ) continue;
+							$team = get_post_meta( $player_id, 'sp_team', true );
 							$div = get_term( $player_id, 'sp_season' );
 							$number = get_post_meta( $player_id, 'sp_number', true );
 
@@ -85,6 +90,7 @@ class SP_Meta_Box_List_Data {
 										<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
 									</span>
 								</td>
+								<td><?php echo get_the_title( $team ); ?></td>
 								<?php foreach( $columns as $column => $label ):
 									$value = sp_array_value( $player_stats, $column, '' );
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $player_id, array() ), $column, 0 );

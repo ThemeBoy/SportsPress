@@ -102,7 +102,7 @@ class SP_Meta_Box_List_Details {
 			</p>
 			<p><strong><?php _e( 'Players', 'sportspress' ); ?></strong></p>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_team' );
+			sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_current_team' );
 			sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
 			?>
 		</div>
