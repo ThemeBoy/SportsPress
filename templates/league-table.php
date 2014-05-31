@@ -72,9 +72,14 @@ foreach( $data as $team_id => $row ):
 	// Rank
 	$output .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
 
+	$name_class = '';
+
 	if ( $show_team_logo ):
-		$logo = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon', array( 'class' => 'team-logo' ) );
-		$name = $logo . ' ' . $name;
+		if ( has_post_thumbnail( $team_id ) ):
+			$logo = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon', array( 'class' => 'team-logo' ) );
+			$name = $logo . ' ' . $name;
+			$name_class .= ' has-logo';
+		endif;
 	endif;
 
 	if ( $link_posts ):
@@ -82,7 +87,7 @@ foreach( $data as $team_id => $row ):
 		$name = '<a href="' . $permalink . '">' . $name . '</a>';
 	endif;
 
-	$output .= '<td class="data-name">' . $name . '</td>';
+	$output .= '<td class="data-name' . $name_class . '">' . $name . '</td>';
 
 	foreach( $labels as $key => $value ):
 		if ( $key == 'name' )

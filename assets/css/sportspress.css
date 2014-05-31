@@ -78,10 +78,21 @@
 }
 
 /* League Table */
-.sp-league-table .team-logo {
-	vertical-align: middle;
-	height: 2.5em;
+.sp-league-table td {
+	line-height: 2em;
+}
+.sp-league-table .data-name.has-logo {
+	padding-left: 2.5em;
+	position: relative;
+}
+
+.sp-league-table .data-name.has-logo .team-logo {
 	width: auto;
+	height: auto;
+	max-width: 2em;
+	max-height: 2em;
+	position: absolute;
+	left: 0.25em;
 }
 
 /* Event Performance */
