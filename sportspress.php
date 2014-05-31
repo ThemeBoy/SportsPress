@@ -131,6 +131,8 @@ final class SportsPress {
 	public function action_links( $links ) {
 		return array_merge( array(
 			'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
+			'<a href="' . apply_filters( 'sportspress_themes_url', 'http://themeboy.com/themes/' ) . '">' . __( 'Themes', 'sportspress' ) . '</a>',
+			'<a href="' . apply_filters( 'sportspress_extensions_url', 'http://themeboy.com/plugins/' ) . '">' . __( 'Extensions', 'sportspress' ) . '</a>',
 		), $links );
 	}
 
