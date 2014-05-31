@@ -6,6 +6,12 @@
 	overflow: visible;
 }
 
+/* Title */
+.sp-event-teams {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
 /* Data Tables */
 .sp-scrollable-table-wrapper {
 	overflow: auto;
