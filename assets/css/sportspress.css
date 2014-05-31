@@ -146,7 +146,9 @@
 }
 .sp-event-blocks .team-logo {
 	width: 20%;
+	height: auto;
 	margin: 10px;
+	max-width: 6em;
 }
 .sp-event-blocks .logo-odd {
 	float: left;
