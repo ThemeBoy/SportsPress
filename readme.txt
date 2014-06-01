@@ -1,14 +1,14 @@
-=== SportsPress - All-In-One League Management ===
+=== SportsPress - All in One Sports Management ===
 Contributors: ThemeBoy
 Tags: sport, sports, sports journalism, teams, team management, fixtures, results, standings, league tables, leagues, reporting, themeboy, wordpress sports, configurable
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-SportsPress is a feature rich, extendable league management plugin. It is designed to be extremely flexible because every sport and team is unique.
+SportsPress is a feature rich, extendable league management plugin. Designed to be extremely flexible because every sport and team is unique.
 
 == Description ==
 
@@ -17,6 +17,7 @@ If you’re looking to create a professional sports website, you’ve come to t
 For serious teams and athletes, ThemeBoy offers a series of premium SportsPress themes and extensions to give you even more sports functionality for your website. 
 
 = Features =
+* Equation Builder
 * Team Profiles
 * League Tables
 * Events (Fixtures & Results)
@@ -27,13 +28,15 @@ For serious teams and athletes, ThemeBoy offers a series of premium SportsPres
 * Season Archives
 * Venue Information & Maps
 * Statistics & League Table Columns Configuration
-* Import Events, Teams, and Players from CSV Files
+* Import Events, Teams, Players, and Staff from CSV Files
+
+More details about each feature are available on the [ThemeBoy Website](http://themeboy.com/sportspress/).
 
 = Premium Extensions =
 
 Looking for more league functionality? ThemeBoy offers a range of [SportsPress extensions](http://themeboy.com/plugins/) to add more features to your sports website. 
 
-= Get SportsPress in your language! =
+= Get SportsPress in your language =
 
 We have a wonderful group of users who have contributed over 30 languages to the SportsPress plugin, but the community could always use a little more help. If you speak another language and feel confident in translating, please join our Transfix project to contribute to your language!
 
@@ -136,6 +139,9 @@ Yes! If you're using an older version of SportsPress, be sure to upgrade to at l
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix - Initialize columns array in player list class.
 
 = 1.0.1 =
 * Fix - Conditional install error relating to post types function.
