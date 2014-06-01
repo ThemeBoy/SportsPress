@@ -360,6 +360,7 @@ class SP_Install {
 	 * @return array
 	 */
 	public function get_core_capabilities() {
+		include_once( 'sp-conditional-functions.php' );
 		$capabilities = array();
 
 		$capabilities['core'] = array(
