@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta Boxes
- * @version     1.0
+ * @version     1.0.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -104,7 +104,7 @@ class SP_Meta_Box_List_Data {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="<?php $colspan = sizeof( $columns ) + 2; echo $colspan; ?>">
+						<td colspan="<?php $colspan = sizeof( $columns ) + 3; echo $colspan; ?>">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Players', 'sportspress' ) ); ?>
 						</td>
 					</tr>
@@ -151,7 +151,7 @@ class SP_Meta_Box_List_Data {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="<?php $colspan = sizeof( $columns ) + 2; echo $colspan; ?>">
+						<td colspan="<?php $colspan = sizeof( $columns ) + 3; echo $colspan; ?>">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Players', 'sportspress' ) ); ?>
 						</td>
 					</tr>
