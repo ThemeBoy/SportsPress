@@ -12,10 +12,7 @@
 	],
 	"performance": [
 						"Goals",
-						"Shots on Goal",
 						"Assists",
-						"Fouls",
-						"Fouled",
 						"Yellow Cards",
 						"Red Cards"
 	],
@@ -35,7 +32,6 @@
 	],
 	"statistics": [
 						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" },
-						{ "name" : "Average Goals per Match", "id" : "averagegoals", "equation" : "$goals / $eventsplayed", "precision" : 2 },
 						{ "name" : "Win Ratio", "equation" : "$win / $eventsplayed * 100", "precision" : 2 },
 						{ "name" : "Draw Ratio", "equation" : "$draw / $eventsplayed * 100", "precision" : 2 },
 						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 100", "precision" : 2 }
