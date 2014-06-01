@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version		0.8
+ * @version		1.0.2
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -55,6 +55,9 @@ class SP_Player_List extends SP_Custom_Post {
 		// Create entry for each player in totals
 		$totals = array();
 		$placeholders = array();
+
+		// Initialize columns
+		$columns = array();
 
 		// Initialize streaks counter
 		$streaks = array();
