@@ -93,7 +93,7 @@ if ( isset( $columns ) )
 						<h3 class="event-title"><a href="<?php echo get_post_permalink( $event ); ?>"><?php echo $event->post_title; ?></a></h3>
 					</td>
 				</tr>
-				<?
+				<?php
 				$i++;
 			endforeach;
 			?>
