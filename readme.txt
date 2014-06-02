@@ -4,7 +4,7 @@ Tags: sport, sports, sports journalism, teams, team management, fixtures, result
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.0.2
+Stable tag: 1.0.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -35,10 +35,6 @@ More details about each feature are available on the [ThemeBoy Website](http://t
 = Premium Extensions =
 
 Looking for more league functionality? ThemeBoy offers a range of [SportsPress extensions](http://themeboy.com/plugins/) to add more features to your sports website. 
-
-= Get SportsPress in your language =
-
-We have a wonderful group of users who have contributed over 30 languages to the SportsPress plugin, but the community could always use a little more help. If you speak another language and feel confident in translating, please join our Transfix project to contribute to your language!
 
 = Available Languages =
 * English – English ( en_US )
@@ -139,6 +135,14 @@ Yes! If you're using an older version of SportsPress, be sure to upgrade to at l
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 1.0.4 =
+* Fix - Shorthand php notation removed for better compatibility.
+* Localization - Update Finnish translation.
+* Localization - Update Greek translation.
+
+= 1.0.3 =
+* Tweak - Hide theme integration notice.
 
 = 1.0.2 =
 * Fix - Initialize columns array in player list class.
