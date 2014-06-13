@@ -90,7 +90,7 @@ if ( isset( $columns ) )
 						<?php else: ?>
 							<h5 class="event-results"><?php echo implode( $main_results, ' - ' ); ?></h5>
 						<?php endif; ?>
-						<h3 class="event-title"><a href="<?php echo get_post_permalink( $event ); ?>"><?php echo $event->post_title; ?></a></h3>
+						<h4 class="event-title"><a href="<?php echo get_post_permalink( $event ); ?>"><?php echo $event->post_title; ?></a></h4>
 					</td>
 				</tr>
 				<?php
