@@ -105,7 +105,7 @@ class SP_Frontend_Scripts {
 
 		if ( $enabled == 'yes' || ! empty( $custom ) || $offset != 0 ) {
 
-			$colors = get_option( 'sportspress_frontend_css_colors' );
+			$colors = (array) get_option( 'sportspress_frontend_css_colors', array() );
 			
 			echo '<style type="text/css">.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a,.sp-calendar tbody a:hover{background:none;}';
 
