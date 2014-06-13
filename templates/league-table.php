@@ -46,7 +46,7 @@ if ( ! $columns )
 if ( ! is_array( $columns ) )
 	$columns = explode( ',', $columns );
 
-$output .= '<th class="data-rank">' . SP()->text->string('Pos') . '</th>';
+$output .= '<th class="data-rank">' . __( 'Pos', 'sportspress' ) . '</th>';
 
 foreach( $labels as $key => $label ):
 	if ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) )
@@ -107,6 +107,6 @@ $output .= '</tbody>' . '</table>';
 $output .= '</div>';
 
 if ( $show_full_table_link )
-	$output .= '<a class="sp-league-table-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View full table') . '</a>';
+	$output .= '<a class="sp-league-table-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View full table', 'sportspress' ) . '</a>';
 
 echo $output;

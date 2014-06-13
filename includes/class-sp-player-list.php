@@ -358,7 +358,7 @@ class SP_Player_List extends SP_Custom_Post {
 				endif;
 			endforeach;
 
-			$labels = array( 'name' => SP()->text->string('Player') );
+			$labels = array( 'name' => __( 'Player', 'sportspress' ) );
 			if ( in_array( 'team', $this->columns ) )
 				$labels['team'] = __( 'Team', 'sportspress' );
 

@@ -316,7 +316,7 @@ class SP_League_Table extends SP_Custom_Post{
 					unset( $columns[ $key ] );
 				endif;
 			endforeach;
-			$labels = array_merge( array( 'name' => SP()->text->string('Team') ), $columns );
+			$labels = array_merge( array( 'name' => __( 'Team', 'sportspress' ) ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;

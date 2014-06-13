@@ -142,4 +142,4 @@ endforeach;
 echo "</div>\n";
 
 if ( $show_all_players_link )
-	echo '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all players') . '</a>';
+	echo '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';

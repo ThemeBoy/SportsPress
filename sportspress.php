@@ -52,9 +52,9 @@ final class SportsPress {
 	public $formats = null;
 
 	/**
-	 * @var SP_Text $text
+	 * @var array
 	 */
-	public $text = null;
+	public $text = array();
 
 	/**
 	 * Main SportsPress Instance
@@ -211,7 +211,6 @@ final class SportsPress {
 		// Classes (used on all pages)
 		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
 		include_once( 'includes/class-sp-formats.php' );						// Defines custom post type formats
-		include_once( 'includes/class-sp-text.php' );							// Defines editable strings
 
 		// Include template hooks in time for themes to remove/modify them
 		include_once( 'includes/sp-template-hooks.php' );
@@ -261,7 +260,9 @@ final class SportsPress {
 		// Load class instances
 		$this->countries = new SP_Countries();	// Countries class
 		$this->formats = new SP_Formats();		// Formats class
-		$this->text = new SP_Text();			// Text class
+
+		// Load string options
+		$this->text = get_option( 'sportspress_text', array() );
 
 		// Init action
 		do_action( 'sportspress_init' );

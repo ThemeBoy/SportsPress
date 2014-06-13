@@ -252,7 +252,7 @@ class SP_Team extends SP_Custom_Post {
 		if ( $admin ):
 			return array( $columns, $data, $placeholders, $merged, $leagues_seasons );
 		else:
-			$labels = array_merge( array( 'name' => SP()->text->string('Season') ), $columns );
+			$labels = array_merge( array( 'name' => __( 'Season', 'sportspress' ) ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;
