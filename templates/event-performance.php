@@ -47,7 +47,7 @@ foreach( $teams as $key => $team_id ):
 				<tr>
 					<?php if ( $has_players ): ?>
 						<th class="data-number">#</th>
-						<th class="data-name"><?php echo SP()->text->string('Player'); ?></th>
+						<th class="data-name"><?php echo __( 'Player'), 'sportspress' ; ?></th>
 					<?php endif; foreach( $performance_labels as $key => $label ): ?>
 						<th class="data-<?php echo $key; ?>"><?php echo $label; ?></th>
 					<?php endforeach; ?>
@@ -130,7 +130,7 @@ foreach( $teams as $key => $team_id ):
 						<?php
 						if ( $has_players ):
 							echo '<td class="data-number">&nbsp;</td>';
-							echo '<td class="data-name">' . SP()->text->string('Total') . '</td>';
+							echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
 						endif;
 
 						$row = $data[0];

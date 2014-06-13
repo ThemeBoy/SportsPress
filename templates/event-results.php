@@ -83,16 +83,16 @@ if ( empty( $table_rows ) ):
 
 else:
 
-	$output .= '<h3>' . SP()->text->string('Team Results') . '</h3>';
+	$output .= '<h3>' . __( 'Team Results', 'sportspress' ) . '</h3>';
 
 	$output .= '<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
 		'<table class="sp-event-results sp-data-table sp-responsive-table"><thead>' .
-		'<th class="data-name">' . SP()->text->string('Team') . '</th>';
+		'<th class="data-name">' . __( 'Team', 'sportspress' ) . '</th>';
 	foreach( $result_labels as $key => $label ):
 		$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 	endforeach;
 	if ( $show_outcomes ):
-		$output .= '<th class="data-outcome">' . SP()->text->string('Outcome') . '</th>';
+		$output .= '<th class="data-outcome">' . __( 'Outcome', 'sportspress' ) . '</th>';
 	endif;
 	$output .= '</tr>' . '</thead>' . '<tbody>';
 	$output .= $table_rows;

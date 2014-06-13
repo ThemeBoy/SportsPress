@@ -85,7 +85,7 @@ foreach ( $groups as $group ):
 	if ( in_array( $orderby, array( 'number', 'name' ) ) ):
 		$output .= '<th class="data-number">#</th>';
 	else:
-		$output .= '<th class="data-rank">' . SP()->text->string('Rank') . '</th>';
+		$output .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
 	endif;
 
 	foreach( $labels as $key => $label ):
@@ -153,6 +153,6 @@ foreach ( $groups as $group ):
 endforeach;
 
 if ( $show_all_players_link )
-	$output .= '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . SP()->text->string('View all players') . '</a>';
+	$output .= '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
 
 echo apply_filters( 'sportspress_player_list',  $output );

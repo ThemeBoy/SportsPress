@@ -190,7 +190,11 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 			endswitch;
 		endif;
 	else:
-    	if ( ! current_theme_supports( 'sportspress' ) && $untranslated_text == 'Archives' && is_tax( 'sp_venue' ) ):
+		if ( $domain == 'sportspress' ):
+			if ( ! empty( SP()->text[ $untranslated_text ] ) ):
+				$translated_text = SP()->text[ $untranslated_text ];
+			endif;
+    	elseif ( ! current_theme_supports( 'sportspress' ) && $untranslated_text == 'Archives' && is_tax( 'sp_venue' ) ):
     		$slug = get_query_var( 'sp_venue' );
 		    if ( $slug ):
 			    $venue = get_term_by( 'slug', $slug, 'sp_venue' );
