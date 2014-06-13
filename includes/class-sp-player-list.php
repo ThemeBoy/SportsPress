@@ -135,11 +135,11 @@ class SP_Player_List extends SP_Custom_Post {
 		// Event loop
 		foreach ( $events as $event ):
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
-			$team_performance = (array)get_post_meta( $event->ID, 'sp_players', true );
+			$team_performance = get_post_meta( $event->ID, 'sp_players', true );
 
 			// Add all team performance
-			foreach ( $team_performance as $team_id => $players ):
-				foreach( $players as $player_id => $player_performance ):
+			if ( $team_performance ): foreach ( $team_performance as $team_id => $players ):
+				if ( is_array( $players ) ): foreach( $players as $player_id => $player_performance ):
 					if ( array_key_exists( $player_id, $totals ) && is_array( $totals[ $player_id ] ) ):
 
 						$player_performance = sp_array_value( $players, $player_id, array() );
@@ -206,8 +206,8 @@ class SP_Player_List extends SP_Custom_Post {
 							endif;
 						endif;
 					endif;
-				endforeach;
-			endforeach;
+				endforeach; endif;
+			endforeach; endif;
 		endforeach;
 
 		foreach ( $streaks as $player_id => $streak ):
@@ -293,7 +293,12 @@ class SP_Player_List extends SP_Custom_Post {
 							$placeholder = sp_solve( $stat->equation, $placeholders[ $player_id ], $stat->precision );
 
 							// Adjustments
-							$placeholder += sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, 0 );
+							$adjustment = sp_array_value( $adjustments, $player_id, array() );
+
+							if ( $adjustment != 0 ):
+								$placeholder += sp_array_value( $adjustment, $stat->post_name, 0 );
+								$placeholder = number_format( $placeholder, $stat->precision );
+							endif;
 						endif;
 
 						$placeholders[ $player_id ][ $stat->post_name ] = $placeholder;
