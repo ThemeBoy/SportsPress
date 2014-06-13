@@ -20,6 +20,16 @@
 						{ "name" : "E", "description" : "Errors" }
 	],
 	"performance": [
+						{ "name" : "AB", "description" : "At bat" },
+						{ "name" : "R", "description" : "Runs" },
+						{ "name" : "H", "description" : "Hits" },
+						{ "name" : "RBI", "description" : "Runs batted in" },
+						{ "name" : "BB", "description" : "Base on balls" },
+						{ "name" : "SO", "description" : "Strike outs" },
+						{ "name" : "1B", "description" : "Singles" },
+						{ "name" : "2B", "description" : "Doubles" },
+						{ "name" : "3B", "description" : "Triples" },
+						{ "name" : "HR", "description" : "Home runs" },
 	],
 	"columns": [
 						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
@@ -36,5 +46,7 @@
 						"Weight"
 	],
 	"statistics": [
+						{ "name" : "G", "equation" : "$eventsplayed", "description" : "Games played" },
+						{ "name" : "AVG", "equation" : "$h / $ab", "precision" : 3, "description" : "Batting average" }
 	]
 }
