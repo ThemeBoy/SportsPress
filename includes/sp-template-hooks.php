@@ -92,8 +92,8 @@ add_action( 'loop_start', 'sportspress_output_venue_map' );
 add_filter( 'previous_post_link', 'sportspress_hide_adjacent_post_links', 10, 4 );
 add_filter( 'next_post_link', 'sportspress_hide_adjacent_post_links', 10, 4 );
 
-function sportspress_the_title( $title, $id ) {
-	if ( ! is_admin() && ! current_theme_supports( 'sportspress' ) && in_the_loop() && $id == get_the_ID() ):
+function sportspress_the_title( $title, $id = null ) {
+	if ( $id && ! is_admin() && ! current_theme_supports( 'sportspress' ) && in_the_loop() && $id == get_the_ID() ):
 		if ( is_singular( 'sp_player' ) ):
 			$number = get_post_meta( $id, 'sp_number', true );
 			if ( $number != null ):
