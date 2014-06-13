@@ -203,7 +203,7 @@ class SP_Settings_General extends SP_Settings_Page {
 		    <td class="forminp"><?php
 
 				// Get settings
-				$colors = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors' ) );
+				$colors = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
 
 				// Defaults
 				if ( empty( $colors['primary'] ) ) $colors['primary'] = '#364c74';
