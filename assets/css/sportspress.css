@@ -90,18 +90,19 @@
 .sp-league-table td {
 	line-height: 2em;
 }
-.sp-league-table .data-name.has-logo {
-	padding-left: 2.5em;
-	position: relative;
+.sp-league-table .data-name .team-logo {
+	width: 2em;
+	height: 2em;
+	margin-right: 0.25em;
+	display: block;
+	float: left;
+	text-align: center;
 }
-
-.sp-league-table .data-name.has-logo .team-logo {
+.sp-league-table .data-name .team-logo img {
 	width: auto;
 	height: auto;
 	max-width: 2em;
 	max-height: 2em;
-	position: absolute;
-	left: 0.25em;
 }
 
 /* Event Performance */

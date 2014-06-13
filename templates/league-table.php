@@ -76,8 +76,8 @@ foreach( $data as $team_id => $row ):
 
 	if ( $show_team_logo ):
 		if ( has_post_thumbnail( $team_id ) ):
-			$logo = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon', array( 'class' => 'team-logo' ) );
-			$name = $logo . ' ' . $name;
+			$logo = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon' );
+			$name = '<span class="team-logo">' . $logo . '</span>' . $name;
 			$name_class .= ' has-logo';
 		endif;
 	endif;
