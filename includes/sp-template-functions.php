@@ -160,6 +160,19 @@ if ( ! function_exists( 'sportspress_output_calendar' ) ) {
 
 /** Single Team ********************************************************/
 
+if ( ! function_exists( 'sportspress_output_team_link' ) ) {
+
+	/**
+	 * Output the team link.
+	 *
+	 * @access public
+	 * @subpackage	Team/Link
+	 * @return void
+	 */
+	function sportspress_output_team_link() {
+		sp_get_template( 'team-link.php' );
+	}
+}
 if ( ! function_exists( 'sportspress_output_team_columns' ) ) {
 
 	/**

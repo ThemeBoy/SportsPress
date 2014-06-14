@@ -49,7 +49,8 @@ add_action( 'sportspress_single_calendar_content', 'sportspress_output_calendar'
  *
  * @see sportspress_output_team_columns()
  */
-add_action( 'sportspress_single_team_content', 'sportspress_output_team_columns', 10 );
+add_action( 'sportspress_single_team_content', 'sportspress_output_team_link', 10 );
+add_action( 'sportspress_single_team_content', 'sportspress_output_team_columns', 20 );
 
 /**
  * Single Table Content
@@ -206,6 +207,19 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 	return $translated_text;
 }
 add_filter( 'gettext', 'sportspress_gettext', 20, 3 );
+
+function sportspress_team_permalink( $permalink, $post ) {
+    if ( ! is_admin() && 'sp_team' == get_post_type( $post ) ):
+    	if ( empty( $post->post_content ) ):
+    		$url = get_post_meta( $post->ID, 'sp_url', true );
+    		if ( ! empty( $url ) ):
+    			return $url;
+    		endif;
+    	endif;
+    endif;
+    return $permalink;
+}
+add_filter( 'post_type_link', 'sportspress_team_permalink', 10, 2 );
 
 function sportspress_pre_get_posts( $query ) {
 
