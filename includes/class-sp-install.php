@@ -347,7 +347,6 @@ class SP_Install {
 				foreach ( $cap_group as $cap ):
 					$wp_roles->add_cap( 'sp_league_manager', $cap );
 					$wp_roles->add_cap( 'administrator', $cap );
-					$wp_roles->add_cap( 'administrator', 'manage_sportspress' );
 				endforeach;
 			endforeach;
 		endif;
@@ -364,6 +363,7 @@ class SP_Install {
 		$capabilities = array();
 
 		$capabilities['core'] = array(
+			'manage_sportspress',
 			'view_sportspress_reports',
 			'edit_sp_player_statistics',
 			'edit_sp_team_columns',
