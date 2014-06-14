@@ -25,7 +25,9 @@ class SP_Admin_Menus {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 6 );
 		add_action( 'admin_menu', array( $this, 'leagues_menu' ), 7 );
 		add_action( 'admin_menu', array( $this, 'seasons_menu' ), 8 );
-		add_action( 'admin_menu', array( $this, 'status_menu' ), 20 );
+
+		if ( current_user_can( 'manage_options' ) )
+			add_action( 'admin_menu', array( $this, 'status_menu' ), 20 );
 
 		if ( apply_filters( 'sportspress_show_addons_page', false ) ) // Make true to display by default
 			add_action( 'admin_menu', array( $this, 'addons_menu' ), 70 );

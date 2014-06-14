@@ -27,8 +27,8 @@ class SP_Settings_General extends SP_Settings_Page {
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
 		add_action( 'sportspress_admin_field_country', array( $this, 'country_setting' ) );
-		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
 		add_action( 'sportspress_admin_field_frontend_styles', array( $this, 'frontend_styles_setting' ) );
+		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
 	}
 
 	/**
@@ -237,10 +237,9 @@ class SP_Settings_General extends SP_Settings_Page {
 	 * @param mixed $name
 	 * @param mixed $id
 	 * @param mixed $value
-	 * @param string $desc (default: '')
 	 * @return void
 	 */
-	function color_picker( $name, $id, $value, $desc = '' ) {
+	function color_picker( $name, $id, $value ) {
 		echo '<div class="sp-color-box"><strong>' . esc_html( $name ) . '</strong>
 	   		<input name="' . esc_attr( $id ). '" id="' . esc_attr( $id ) . '" type="text" value="' . esc_attr( $value ) . '" class="colorpick" /> <div id="colorPickerDiv_' . esc_attr( $id ) . '" class="colorpickdiv"></div>
 	    </div>';
