@@ -105,6 +105,12 @@
 	max-height: 2em;
 }
 
+/* Button */
+.sp-button {
+	border: none;
+	cursor: pointer;
+}
+
 /* Event Performance */
 .sp-event-performance .sub-in,
 .sp-event-performance .sub-out {
