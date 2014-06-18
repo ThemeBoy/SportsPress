@@ -12,10 +12,13 @@
  */
 class SP_Calendar extends SP_Custom_Post {
 
-	/** @var array The events status. */
+	/** @var string The events status. */
 	public $status;
 
-	/** @var array The events order. */
+	/** @var string The date filter for events. */
+	public $date;
+
+	/** @var string The events order. */
 	public $order;
 
 	/**
@@ -34,10 +37,14 @@ class SP_Calendar extends SP_Custom_Post {
 		endif;
 
 		$this->status = $this->__get( 'status' );
+		$this->date = $this->__get( 'date' );
 		$this->order = $this->__get( 'order' );
 
 		if ( ! $this->status )
 			$this->status = 'any';
+
+		if ( ! $this->date )
+			$this->date = 0;
 
 		if ( ! $this->order )
 			$this->order = 'ASC';
@@ -63,6 +70,16 @@ class SP_Calendar extends SP_Custom_Post {
 				'relation' => 'AND'
 			),
 		);
+
+		if ( $this->date !== 0 ):
+			$args['year'] = date('Y');
+			if ( $this->date == 'w' ):
+				$args['w'] = date('W');
+			elseif ( $this->date == 'day' ):
+				$args['day'] = date('j');
+				$args['monthnum'] = date('n');
+			endif;
+		endif;
 
 		if ( $pagenow != 'post-new.php' ):
 			if ( $this->ID ):
@@ -121,7 +138,7 @@ class SP_Calendar extends SP_Custom_Post {
 			$events = get_posts( $args );
 
 		else:
-			$events = array();
+			$events = null;
 		endif;
 
 		return $events;

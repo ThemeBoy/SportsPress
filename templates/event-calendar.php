@@ -34,7 +34,10 @@ if ( isset( $id ) ):
 	foreach ( $events as $event ):
 		$event_ids[] = $event->ID;
 	endforeach;
-	$in = 'AND ID IN (' . implode( ', ', $event_ids ) . ')';
+	if ( empty( $event_ids ) )
+		$in = 'AND 1 = 0'; // False logic to prevent SQL error
+	else
+		$in = 'AND ID IN (' . implode( ', ', $event_ids ) . ')';
 else:
 	$in = '';
 endif;

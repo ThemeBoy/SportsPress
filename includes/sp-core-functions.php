@@ -389,6 +389,37 @@ if ( !function_exists( 'sp_dropdown_statuses' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_dropdown_dates' ) ) {
+	function sp_dropdown_dates( $args = array() ) {
+		$defaults = array(
+			'show_option_default' => false,
+			'name' => 'sp_date',
+			'id' => null,
+			'selected' => null,
+		    'class' => null,
+		);
+		$args = array_merge( $defaults, $args ); 
+
+		printf( '<select name="%s" class="postform %s">', $args['name'], $args['class'] );
+
+		if ( $args['show_option_default'] ):
+			printf( '<option value="default">%s</option>', $args['show_option_default'] );
+		endif;
+
+		$dates = apply_filters( 'sportspress_dates', array(
+			0 => __( 'All', 'sportspress' ),
+			'w' => __( 'This week', 'sportspress' ),
+			'day' => __( 'Today', 'sportspress' )
+		));
+
+		foreach ( $dates as $value => $label ):
+			printf( '<option value="%s" %s>%s</option>', $value, selected( $value, $args['selected'], false ), $label );
+		endforeach;
+		print( '</select>' );
+		return true;
+	}
+}
+
 if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 	function sp_dropdown_taxonomies( $args = array() ) {
 		$defaults = array(
