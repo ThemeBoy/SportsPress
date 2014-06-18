@@ -657,14 +657,32 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
 				<?php
 				$selected = sp_array_between( (array)get_post_meta( $post_id, $meta, false ), 0, $index );
-				$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
 				if ( empty( $posts ) ):
-					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1 );
+					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1, 'tax_query' => array( 'relation' => 'AND' ) );
 					if ( $meta == 'sp_player' ):
 						$query['meta_key'] = 'sp_number';
 						$query['orderby'] = 'meta_value_num';
 						$query['order'] = 'ASC';
 					endif;
+
+					// Filter by league and season when available
+					$league = sp_get_the_term_id( $post_id, 'sp_league', 0 );
+					if ( $league ):
+						$query['tax_query'][] = array(
+							'taxonomy' => 'sp_league',
+							'field' => 'id',
+							'terms' => $league
+						);
+					endif;
+					$season = sp_get_the_term_id( $post_id, 'sp_season', 0 );
+					if ( $season ):
+						$query['tax_query'][] = array(
+							'taxonomy' => 'sp_season',
+							'field' => 'id',
+							'terms' => $season
+						);
+					endif;
+
 					$posts = get_posts( $query );
 				endif;
 				foreach ( $posts as $post ):
