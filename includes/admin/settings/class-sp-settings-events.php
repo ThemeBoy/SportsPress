@@ -97,6 +97,23 @@ class SP_Settings_Events extends SP_Settings_Page {
 				'type' 		=> 'checkbox',
 			),
 
+			array(
+				'title'     => __( 'Staff', 'sportspress' ),
+				'desc' 		=> __( 'Display staff', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_staff',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'	=> 'start',
+			),
+
+			array(
+				'desc' 		=> __( 'Link staff', 'sportspress' ),
+				'id' 		=> 'sportspress_event_link_staff',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'end',
+			),
+
 			array( 'type' => 'sectionend', 'id' => 'event_options' ),
 
 			array( 'title' => __( 'Calendars', 'sportspress' ), 'type' => 'title', 'id' => 'calendar_options' ),
