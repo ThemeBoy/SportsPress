@@ -4,7 +4,7 @@
  *
  * @class 		SP_Frontend_Scripts
  * @version		0.7
- * @package		SportsPress/Classes/
+ * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
  */

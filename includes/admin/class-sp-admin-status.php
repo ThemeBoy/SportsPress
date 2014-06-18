@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @category 	Admin
- * @package 	SportsPress/Admin/System Status
+ * @package 	SportsPress/Admin
  * @version     0.8
  */
 

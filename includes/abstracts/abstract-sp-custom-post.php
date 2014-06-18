@@ -71,6 +71,4 @@ abstract class SP_Custom_Post {
 	public function get_post_data() {
 		return $this->post;
 	}
-
-
 }
