@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @category 	Admin
- * @package 	SportsPress/Admin/Meta Boxes
+ * @package 	SportsPress/Admin/Meta_Boxes
  * @version     0.8.6
  */
 

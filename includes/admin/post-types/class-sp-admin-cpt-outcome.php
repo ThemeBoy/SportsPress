@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @category 	Admin
- * @package 	SportsPress/Admin/Post Types
+ * @package 	SportsPress/Admin/Post_Types
  * @version     0.9
  */
 
