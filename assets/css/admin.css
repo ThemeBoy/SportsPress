@@ -194,6 +194,11 @@ table.widefat.sp-data-table input[type="number"] {
 	width: 100%;
 }
 
+table.widefat.sp-data-table input.small-text {
+	width: 50px;
+	min-width: 0;
+}
+
 table.widefat.sp-data-table input.name {
 	min-width: 0;
 	width: auto;

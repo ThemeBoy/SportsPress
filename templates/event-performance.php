@@ -86,9 +86,9 @@ foreach( $teams as $index => $team_id ):
 						if ( ! $name )
 							continue;
 
-						echo '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
+						echo '<tr class="' . sp_array_value( $row, 'status', 'lineup' ) . ' ' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
-						$number = get_post_meta( $player_id, 'sp_number', true );
+						$number = sp_array_value( $row, 'number', '&nbsp;' );
 
 						// Player number
 						echo '<td class="data-number">' . $number . '</td>';
@@ -99,11 +99,12 @@ foreach( $teams as $index => $team_id ):
 							if ( isset( $row['status'] ) && $row['status'] == 'sub' ):
 								$name = '(' . $name . ')';
 							endif;
-							if ( array_key_exists( $player_id, $lineup_sub_relation ) ):
-								$name .= ' <span class="sub-in" title="' . get_the_title( $lineup_sub_relation[ $player_id ] ) . '">' . get_post_meta( $lineup_sub_relation[ $player_id ], 'sp_number', true ) . '</span>';
-							elseif ( isset( $row['sub'] ) && $row['sub'] ):
-								$name .= ' <span class="sub-out" title="' . get_the_title( $row[ 'sub' ] ) . '">' . get_post_meta( $row['sub'], 'sp_number', true ) . '</span>';
-							endif;
+						endif;
+
+						if ( array_key_exists( $player_id, $lineup_sub_relation ) ):
+							$name .= ' <span class="sub-in" title="' . get_the_title( $lineup_sub_relation[ $player_id ] ) . '">' . sp_array_value( sp_array_value( $data, $lineup_sub_relation[ $player_id ], array() ), 'number', null ) . '</span>';
+						elseif ( isset( $row['sub'] ) && $row['sub'] ):
+							$name .= ' <span class="sub-out" title="' . get_the_title( $row[ 'sub' ] ) . '">' . sp_array_value( sp_array_value( $data, $row['sub'], array() ), 'number', null ) . '</span>';
 						endif;
 
 						echo '<td class="data-name">' . $name . '</td>';
@@ -112,10 +113,19 @@ foreach( $teams as $index => $team_id ):
 						foreach( $labels as $key => $label ):
 							if ( $key == 'name' )
 								continue;
-							if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
-								$value = $row[ $key ];
+							if ( $key == 'position' ):
+								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
+									$position = get_term_by( 'id', $row[ $key ], 'sp_position' );
+									$value = $position->name;
+								else:
+									$value = '&mdash;';
+								endif;
 							else:
-								$value = 0;
+								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
+									$value = $row[ $key ];
+								else:
+									$value = 0;
+								endif;
 							endif;
 							if ( ! array_key_exists( $key, $totals ) ):
 								$totals[ $key ] = 0;
