@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.7
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -32,6 +32,32 @@ class SP_Admin_Dashboard {
      */
     public function init() {
         wp_add_dashboard_widget( 'sportspress_dashboard_status', __( 'SportsPress', 'sportspress' ), array( $this, 'status_widget' ) );
+        add_filter( 'dashboard_glance_items', array( $this, 'glance_items' ), 10, 1 );
+    }
+
+    /**
+     * Add links to At a Glance
+     */
+    function glance_items( $items = array() ) {
+        $post_types = array( 'sp_event', 'sp_team', 'sp_player' );
+        foreach ( $post_types as $type ):
+            if ( ! post_type_exists( $type ) ) continue;
+            $num_posts = wp_count_posts( $type );
+            if ( $num_posts ):
+                $published = intval( $num_posts->publish );
+                $post_type = get_post_type_object( $type );
+                $text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, 'your_textdomain' );
+                $text = sprintf( $text, number_format_i18n( $published ) );
+                if ( current_user_can( $post_type->cap->edit_posts ) ):
+                $output = '<a href="edit.php?post_type=' . $post_type->name . '">' . $text . '</a>';
+                    echo '<li class="post-count ' . str_replace( '_', '-', $post_type->name ) . '-count">' . $output . '</li>';
+                else:
+                $output = '<span>' . $text . '</span>';
+                    echo '<li class="post-count ' . str_replace( '_', '-', $post_type->name ) . '-count">' . $output . '</li>';
+                endif;
+            endif;
+        endforeach;
+        return $items;
     }
 
     /**
@@ -69,7 +95,6 @@ class SP_Admin_Dashboard {
         </ul>
         <?php
     }
-
 }
 
 endif;
