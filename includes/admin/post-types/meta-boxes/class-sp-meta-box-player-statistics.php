@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @category 	Admin
- * @package 	SportsPress/Admin/Meta Boxes
+ * @package 	SportsPress/Admin/Meta_Boxes
  * @version     0.8
  */
 
@@ -22,8 +22,6 @@ class SP_Meta_Box_Player_Statistics {
 		$leagues = get_the_terms( $post->ID, 'sp_league' );
 		$league_num = sizeof( $leagues );
 
-		$usecolumns = get_post_meta( $post->ID, 'sp_columns', true );
-
 		// Loop through statistics for each league
 		if ( $leagues ): foreach ( $leagues as $league ):
 			
@@ -35,7 +33,7 @@ class SP_Meta_Box_Player_Statistics {
 
 			$player = new SP_Player( $post );
 			list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( $league->term_id, true );
-			self::table( $post->ID, $league->term_id, $columns, $usecolumns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_player_statistics' ) );
+			self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_player_statistics' ) );
 
 		endforeach; else:
 
@@ -48,7 +46,6 @@ class SP_Meta_Box_Player_Statistics {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
 		if ( current_user_can( 'edit_sp_player_statistics' ) )
 			update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
@@ -57,20 +54,20 @@ class SP_Meta_Box_Player_Statistics {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $id = null, $league_id, $columns = array(), $usecolumns = null, $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $readonly = true ) {
+	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $readonly = true ) {
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
-		if ( is_array( $usecolumns ) )
-			$usecolumns = array_filter( $usecolumns );
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
 				<thead>
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
-						<th><?php _e( 'Team', 'sportspress' ); ?></th>
+						<th><label for="sp_columns_team">
+							<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
+							<?php _e( 'Team', 'sportspress' ); ?>
+						</label></th>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
-								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
 								<?php echo $label; ?>
 							</label></th>
 						<?php endforeach; ?>

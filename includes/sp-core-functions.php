@@ -662,6 +662,42 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_column_checklist' ) ) {
+	function sp_column_checklist( $post_id = null, $meta = 'post', $display = 'block', $selected = array(), $default_checked = false ) {
+		if ( ! isset( $post_id ) )
+			global $post_id;
+		?>
+		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
+			<input type="hidden" value="0" name="sp_columns[]" />
+			<ul class="categorychecklist form-no-clear">
+				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
+				<?php
+				$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
+				if ( empty( $posts ) ):
+					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1, 'order' => 'ASC', 'orderby' => 'menu_order' );
+					$posts = get_posts( $query );
+				endif;
+				if ( sizeof( $posts ) ):
+					foreach ( $posts as $post ):
+						?>
+						<li class="sp-post">
+							<label class="selectit">
+								<input type="checkbox" value="<?php echo $post->post_name; ?>" name="sp_columns[]"<?php if ( ( ! is_array( $selected ) && $default_checked ) || in_array( $post->post_name, $selected ) ) echo ' checked="checked"'; ?>>
+								<?php echo sp_draft_or_post_title( $post ); ?>
+							</label>
+						</li>
+						<?php
+					endforeach;
+				else:
+				?>
+				<li class="sp-not-found-container"><?php _e( 'No results found.', 'sportspress' ); ?></li>
+				<?php endif; ?>
+			</ul>
+		</div>
+		<?php
+	}
+}
+
 
 /**
  * Get the post title.

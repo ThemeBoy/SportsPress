@@ -307,8 +307,22 @@ class SP_Player extends SP_Custom_Post {
 		$columns = array_merge( $performance_labels, $stats );
 
 		if ( $admin ):
-			return array( $columns, $data, $placeholders, $merged, $leagues );
+			foreach( $usecolumns as $key ):
+				if ( $key == 'team' ):
+					$labels[ $key ] = __( 'Team', 'sportspress' );
+				elseif ( array_key_exists( $key, $columns ) ):
+					$labels[ $key ] = $columns[ $key ];
+				endif;
+			endforeach;
+			return array( $labels, $data, $placeholders, $merged, $leagues );
 		else:
+			if ( ! is_array( $this->columns ) )
+				$this->columns = array();
+			foreach ( $columns as $key => $label ):
+				if ( ! in_array( $key, $this->columns ) ):
+					unset( $columns[ $key ] );
+				endif;
+			endforeach;
 			if ( ! is_array( $usecolumns ) )
 				$usecolumns = array();
 			foreach ( $columns as $key => $label ):
@@ -316,8 +330,10 @@ class SP_Player extends SP_Custom_Post {
 					unset( $columns[ $key ] );
 				endif;
 			endforeach;
-			$labels = array_merge( array( 'name' => __( 'Season', 'sportspress' ), 'team' => __( 'Team', 'sportspress' ) ), $columns );
-			$merged[0] = $labels;
+			$labels = array( 'name' => __( 'Season', 'sportspress' ) );
+			if ( in_array( 'team', $this->columns ) )
+				$labels['team'] = __( 'Team', 'sportspress' );
+			$merged[0] = array_merge( $labels, $columns );
 			return $merged;
 		endif;
 	}
