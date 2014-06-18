@@ -58,7 +58,6 @@ class SP_Event extends SP_Custom_Post{
 		$performance = (array)get_post_meta( $this->ID, 'sp_players', true );
 		$labels = sp_get_var_labels( 'sp_performance' );
 		$columns = get_post_meta( $this->ID, 'sp_columns', true );
-		$output = array();
 		foreach( $teams as $i => $team_id ):
 			$players = sp_array_between( (array)get_post_meta( $this->ID, 'sp_player', false ), 0, $i );
 			$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
@@ -74,6 +73,12 @@ class SP_Event extends SP_Custom_Post{
 						$totals[ $key ] += sp_array_value( $player_performance, $key, 0 );
 					endif;
 				endforeach;
+				if ( ! array_key_exists( 'number', $player_performance ) || $player_performance['number'] == null ):
+					$performance[ $team_id ][ $player_id ]['number'] = get_post_meta( $player_id, 'sp_number', true );
+				endif;
+				if ( ! array_key_exists( 'position', $player_performance ) || $player_performance['position'] == null ):
+					$performance[ $team_id ][ $player_id ]['position'] = get_post_meta( $player_id, 'sp_position', true );
+				endif;
 			endforeach;
 
 			foreach( $totals as $key => $value ):
@@ -82,34 +87,13 @@ class SP_Event extends SP_Custom_Post{
 					$totals[ $key ] = $manual_total;
 				endif;
 			endforeach;
-
-			$lineup = array_filter( $data, array( $this, 'lineup_filter' ) );
-			$subs = array_filter( $data, array( $this, 'sub_filter' ) );
-
-			foreach ( $subs as $player_id => $player ):
-				if ( ! $player_id )
-					continue;
-
-				$sub = sp_array_value( $player, 'sub', 0 );
-
-				if ( ! $sub )
-					continue;
-
-				$lineup[ $sub ]['sub'] = $player_id;
-			endforeach;
-
-			$output[ $team_id ] = array(
-				'lineup' 	=> $lineup,
-				'subs' 		=> $subs,
-				'total' 	=> $totals
-			);
 		endforeach;
 
 		if ( $admin ):
 			return array( $labels, $columns, $performance, $teams );
 		else:
-			// Add status to performance labels
-			$labels['status'] = __( 'Status', 'sportspress' );
+			// Add position to performance labels
+			$labels = array_merge( array( 'position' => __( 'Position', 'sportspress' )  ), $labels );
 			if ( ! is_array( $columns ) )
 				$columns = array();
 			foreach ( $labels as $key => $label ):

@@ -60,6 +60,16 @@ class SP_Meta_Box_Event_Performance {
 					<tr>
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
+						<th>
+							<?php if ( $has_checkboxes ): ?>
+								<label for="sp_columns_position">
+									<input type="checkbox" name="sp_columns[]" value="position" id="sp_columns_position" <?php checked( is_array( $columns ) && in_array( 'position', $columns ) ); ?>>
+									<?php _e( 'Position', 'sportspress' ); ?>
+								</label>
+							<?php else: ?>
+								<?php _e( 'Position', 'sportspress' ); ?>
+							<?php endif; ?>
+						</th>
 						<?php foreach ( $labels as $key => $label ): ?>
 							<th>
 								<?php if ( $has_checkboxes ): ?>
@@ -80,10 +90,28 @@ class SP_Meta_Box_Event_Performance {
 					foreach ( $data as $player_id => $player_performance ):
 						if ( !$player_id ) continue;
 						$number = get_post_meta( $player_id, 'sp_number', true );
+						$value = sp_array_value( $player_performance, 'number', '' );
 						?>
 						<tr class="sp-row sp-post" data-player="<?php echo $player_id; ?>">
-							<td><?php echo ( $number ? $number : '&nbsp;' ); ?></td>
+							<td>
+								<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo $value; ?>" placeholder="<?php echo $number; ?>" />
+							</td>
 							<td><?php echo get_the_title( $player_id ); ?></td>
+							<td>
+								<?php
+								$selected = sp_array_value( $player_performance, 'position', null );
+								if ( $selected == null ):
+									$selected = sp_get_the_term_id( $player_id, 'sp_position', 0 );
+								endif;
+								$args = array(
+									'taxonomy' => 'sp_position',
+									'name' => 'sp_players[' . $team_id . '][' . $player_id . '][position]',
+									'values' => 'term_id',
+									'selected' => $selected
+								);
+								sp_dropdown_taxonomies( $args );
+								?>
+							</td>
 							<?php foreach( $labels as $column => $label ):
 								$value = sp_array_value( $player_performance, $column, '' );
 								?>
@@ -104,6 +132,7 @@ class SP_Meta_Box_Event_Performance {
 					<tr class="sp-row sp-total">
 						<td>&nbsp;</td>
 						<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
+						<td>&nbsp;</td>
 						<?php foreach( $labels as $column => $label ):
 							$player_id = 0;
 							$player_performance = sp_array_value( $data, 0, array() );
