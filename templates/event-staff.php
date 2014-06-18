@@ -12,10 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $defaults = array(
 	'id' => get_the_ID(),
 	'index' => 0,
-	'number' => -1,
 	'link_posts' => get_option( 'sportspress_event_link_staff', 'yes' ) == 'yes' ? true : false,
-	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
-	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 );
 
 $staff = array_filter( sp_array_between( (array)get_post_meta( $id, 'sp_staff', false ), 0, $index ) );
@@ -24,47 +21,34 @@ if ( ! $staff ) return;
 
 extract( $defaults, EXTR_SKIP );
 ?>
-<div class="sp-table-wrapper sp-scrollable-table-wrapper">
-	<table class="sp-event-performance sp-data-table <?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $sortable ) { ?> sp-sortable-table<?php } ?>">
-		<thead>
-			<tr>
-				<th class="data-name"><?php _e( 'Staff', 'sportspress' ); ?></th>
-				<th class="data-role"><?php _e( 'Role', 'sportspress' ); ?></th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php
-			$i = 0;
-			foreach( $staff as $staff_id ):
+<p class="sp-event-staff">
+<?php
+foreach( $staff as $staff_id ):
 
-				if ( ! $staff_id )
-					continue;
+	if ( ! $staff_id )
+		continue;
 
-				$name = get_the_title( $staff_id );
+	$name = get_the_title( $staff_id );
 
-				if ( ! $name )
-					continue;
+	if ( ! $name )
+		continue;
 
-				echo '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
+	$role = get_post_meta( $staff_id, 'sp_role', true );
 
-				if ( $link_posts ):
-					$permalink = get_post_permalink( $staff_id );
-					$name =  '<a href="' . $permalink . '">' . $name . '</a>';
-				endif;
+	if ( $role )
+		echo $role;
+	else
+		_e( 'Staff', 'sportspress' );
 
-				echo '<td class="data-name">' . $name . '</td>';
+	echo ': ';
 
-				$role = get_post_meta( $staff_id, 'sp_role', true );
+	if ( $link_posts ):
+		$permalink = get_post_permalink( $staff_id );
+		$name =  '<a href="' . $permalink . '">' . $name . '</a>';
+	endif;
 
-				// Staff role
-				echo '<td class="data-role">' . $role . '</td>';
+	echo $name . '<br>';
 
-				echo '</tr>';
-
-				$i++;
-
-			endforeach;
-			?>
-		</tbody>
-	</table>
-</div>
+endforeach;
+?>
+</p>
