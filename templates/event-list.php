@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     0.8
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -13,6 +13,7 @@ $primary_result = get_option( 'sportspress_primary_result', null );
 
 $defaults = array(
 	'status' => 'default',
+	'date' => 'default',
 	'number' => -1,
 	'link_teams' => get_option( 'sportspress_calendar_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_venues' => get_option( 'sportspress_calendar_link_venues', 'yes' ) == 'yes' ? true : false,
@@ -29,6 +30,8 @@ extract( $defaults, EXTR_SKIP );
 $calendar = new SP_Calendar( $id );
 if ( $status != 'default' )
 	$calendar->status = $status;
+if ( $date != 'default' )
+	$calendar->date = $date;
 if ( $order != 'default' )
 	$calendar->order = $order;
 $data = $calendar->data();

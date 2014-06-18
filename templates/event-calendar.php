@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     0.8
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -91,7 +91,7 @@ $next = $wpdb->get_row("SELECT MONTH(post_date) AS month, YEAR(post_date) AS yea
 /* translators: Calendar caption: 1: month name, 2: 4-digit year */
 $calendar_caption = _x('%1$s %2$s', 'calendar caption', 'sportspress');
 $calendar_output = '
-<div class="widget_calendar sp-calendar-wrapper">
+<div class="sp-calendar-wrapper">
 <table id="wp-calendar" class="sp-calendar sp-event-calendar">
 <caption class="sp-table-caption">' . ( $caption_tag == 'caption' ? '' : '<' . $caption_tag . '>' ) . sprintf($calendar_caption, $wp_locale->get_month($thismonth), date('Y', $unixmonth)) . ( $caption_tag == 'caption' ? '' : '</' . $caption_tag . '>' ) . '</caption>
 <thead>
