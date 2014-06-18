@@ -20,6 +20,7 @@ class SP_Meta_Box_Calendar_Details {
 	 */
 	public static function output( $post ) {
 		$status = get_post_meta( $post->ID, 'sp_status', true );
+		$date = get_post_meta( $post->ID, 'sp_date', true );
 		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
 		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 		$venue_id = sp_get_the_term_id( $post->ID, 'sp_venue', 0 );
@@ -36,6 +37,17 @@ class SP_Meta_Box_Calendar_Details {
 					'selected' => $status,
 				);
 				sp_dropdown_statuses( $args );
+				?>
+			</p>
+			<p><strong><?php _e( 'Date', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$args = array(
+					'name' => 'sp_date',
+					'id' => 'sp_date',
+					'selected' => $date,
+				);
+				sp_dropdown_dates( $args );
 				?>
 			</p>
 			<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
@@ -117,6 +129,7 @@ class SP_Meta_Box_Calendar_Details {
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_venue', 0 ), 'sp_venue' );
 		update_post_meta( $post_id, 'sp_status', sp_array_value( $_POST, 'sp_status', 0 ) );
+		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0 ) );
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', 0 ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
 	}
