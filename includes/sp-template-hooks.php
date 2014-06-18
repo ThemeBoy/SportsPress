@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     0.8.4
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -107,6 +107,7 @@ function sportspress_the_title( $title, $id = null ) {
 			endif;
 		elseif ( is_singular( 'sp_event' ) && get_option( 'sportspress_event_show_logos', 'yes' ) == 'yes' ):
 			$teams = get_post_meta( $id, 'sp_team' );
+			$teams = array_filter( $teams );
 			if ( $teams ):
 				$title .= '<div class="sp-event-teams">';
 				$delimiter = get_option( 'sportspress_event_teams_delimiter', 'vs' );

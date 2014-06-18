@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @category 	Admin
- * @package 	SportsPress/Admin/Meta Boxes
+ * @package 	SportsPress/Admin/Meta_Boxes
  * @version     0.8
  */
 
@@ -19,11 +19,10 @@ class SP_Meta_Box_Event_Performance {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
-		$stats = (array)get_post_meta( $post->ID, 'sp_players', true );
+		$event = new SP_Event( $post );
+		list( $labels, $columns, $stats, $teams ) = $event->performance( true );
 
-		// Get columns from performance variables
-		$columns = sp_get_var_labels( 'sp_performance' );
+		$i = 0;
 
 		foreach ( $teams as $key => $team_id ):
 			if ( ! $team_id ) continue;
@@ -35,10 +34,10 @@ class SP_Meta_Box_Event_Performance {
 			?>
 			<div>
 				<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-				<?php self::table( $columns, $data, $team_id ); ?>
+				<?php self::table( $labels, $columns, $data, $team_id, $i == 0 ); ?>
 			</div>
 			<?php
-
+			$i ++;
 		endforeach;
 	}
 
@@ -47,12 +46,13 @@ class SP_Meta_Box_Event_Performance {
 	 */
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array() ) );
+		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 	}
 
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $columns = array(), $data = array(), $team_id ) {
+	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-performance-table">
@@ -60,8 +60,17 @@ class SP_Meta_Box_Event_Performance {
 					<tr>
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
-						<?php foreach ( $columns as $label ): ?>
-							<th><?php echo $label; ?></th>
+						<?php foreach ( $labels as $key => $label ): ?>
+							<th>
+								<?php if ( $has_checkboxes ): ?>
+									<label for="sp_columns_<?php echo $key; ?>">
+										<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! is_array( $columns ) || in_array( $key, $columns ) ); ?>>
+										<?php echo $label; ?>
+									</label>
+								<?php else: ?>
+									<?php echo $label; ?>
+								<?php endif; ?>
+							</th>
 						<?php endforeach; ?>
 						<th><?php _e( 'Status', 'sportspress' ); ?></th>
 					</tr>
@@ -76,7 +85,7 @@ class SP_Meta_Box_Event_Performance {
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>" data-player="<?php echo $player_id; ?>">
 							<td><?php echo ( $number ? $number : '&nbsp;' ); ?></td>
 							<td><?php echo get_the_title( $player_id ); ?></td>
-							<?php foreach( $columns as $column => $label ):
+							<?php foreach( $labels as $column => $label ):
 								$value = sp_array_value( $player_performance, $column, '' );
 								?>
 								<td>
@@ -95,7 +104,7 @@ class SP_Meta_Box_Event_Performance {
 					<tr class="sp-row sp-total<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 						<td>&nbsp;</td>
 						<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
-						<?php foreach( $columns as $column => $label ):
+						<?php foreach( $labels as $column => $label ):
 							$player_id = 0;
 							$player_performance = sp_array_value( $data, 0, array() );
 							$value = sp_array_value( $player_performance, $column, '' );

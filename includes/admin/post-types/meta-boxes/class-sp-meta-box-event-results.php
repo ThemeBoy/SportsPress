@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @category 	Admin
- * @package 	SportsPress/Admin/Meta Boxes
+ * @package 	SportsPress/Admin/Meta_Boxes
  * @version     0.8
  */
 
@@ -19,21 +19,9 @@ class SP_Meta_Box_Event_Results {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$teams = (array)get_post_meta( $post->ID, 'sp_team', false );
-
-		$results = (array)get_post_meta( $post->ID, 'sp_results', true );
-
-		// Get columns from result variables
-		$columns = sp_get_var_labels( 'sp_result' );
-
-		// Get results for all teams
-		$data = sp_array_combine( $teams, $results );
-
-		?>
-		<div>
-			<?php self::table( $columns, $data ); ?>
-		</div>
-		<?php
+		$event = new SP_Event( $post );
+		list( $columns, $usecolumns, $data ) = $event->results( true );
+		self::table( $columns, $usecolumns, $data );
 	}
 
 	/**
@@ -42,12 +30,13 @@ class SP_Meta_Box_Event_Results {
 	public static function save( $post_id, $post ) {
 		$results = (array)sp_array_value( $_POST, 'sp_results', array() );
 		update_post_meta( $post_id, 'sp_results', $results );
+		update_post_meta( $post_id, 'sp_result_columns', sp_array_value( $_POST, 'sp_result_columns', array() ) );
 	}
 
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $columns = array(), $data = array() ) {
+	public static function table( $columns = array(), $usecolumns = array(), $data = array() ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
@@ -55,9 +44,19 @@ class SP_Meta_Box_Event_Results {
 					<tr>
 						<th class="column-team"><?php _e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): ?>
-							<th class="outcome-<?php echo $key; ?>"><?php echo $label; ?></th>
+							<th class="column-<?php echo $key; ?>">
+								<label for="sp_result_columns_<?php echo $key; ?>">
+									<input type="checkbox" name="sp_result_columns[]" value="<?php echo $key; ?>" id="sp_result_columns_<?php echo $key; ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
+									<?php echo $label; ?>
+								</label>
+							</th>
 						<?php endforeach; ?>
-						<th class="column-outcome"><?php _e( 'Outcome', 'sportspress' ); ?></th>
+						<th class="column-outcome">
+							<label for="sp_result_columns_outcome">
+								<input type="checkbox" name="sp_result_columns[]" value="outcome" id="sp_result_columns_outcome" <?php checked( ! is_array( $usecolumns ) || in_array( 'outcome', $usecolumns ) ); ?>>
+								<?php _e( 'Outcome', 'sportspress' ); ?>
+							</label>
+						</th>
 					</tr>
 				</thead>
 				<tbody>
