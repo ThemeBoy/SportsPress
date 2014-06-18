@@ -55,7 +55,7 @@ class SP_Meta_Box_Event_Performance {
 	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false ) {
 		?>
 		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table sp-performance-table">
+			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -77,12 +77,11 @@ class SP_Meta_Box_Event_Performance {
 				</thead>
 				<tbody>
 					<?php
-					$i = 0;
 					foreach ( $data as $player_id => $player_performance ):
 						if ( !$player_id ) continue;
 						$number = get_post_meta( $player_id, 'sp_number', true );
 						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>" data-player="<?php echo $player_id; ?>">
+						<tr class="sp-row sp-post" data-player="<?php echo $player_id; ?>">
 							<td><?php echo ( $number ? $number : '&nbsp;' ); ?></td>
 							<td><?php echo get_the_title( $player_id ); ?></td>
 							<?php foreach( $labels as $column => $label ):
@@ -98,10 +97,11 @@ class SP_Meta_Box_Event_Performance {
 							</td>
 						</tr>
 						<?php
-						$i++;
 					endforeach;
 					?>
-					<tr class="sp-row sp-total<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+				</tbody>
+				<tfoot>
+					<tr class="sp-row sp-total">
 						<td>&nbsp;</td>
 						<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
 						<?php foreach( $labels as $column => $label ):
@@ -113,7 +113,7 @@ class SP_Meta_Box_Event_Performance {
 						<?php endforeach; ?>
 						<td>&nbsp;</td>
 					</tr>
-				</tbody>
+				</tfoot>
 			</table>
 		</div>
 		<?php

@@ -24,6 +24,7 @@ jQuery(document).ready(function($){
 
 	// Activate auto key placeholder
 	$("#poststuff #title").keyup();
+
 	// Table switcher
 	$(".sp-table-panel").siblings(".sp-table-bar").find("a").click(function() {
 		$(this).closest("li").find("a").addClass("current").closest("li").siblings().find("a").removeClass("current").closest(".sp-table-bar").siblings($(this).attr("href")).show().siblings(".sp-table-panel").hide();
@@ -232,6 +233,11 @@ jQuery(document).ready(function($){
 
 	// Trigger check check
 	$(".sp-data-table").trigger("checkCheck");
+
+	// Sortable tables
+	$(".sp-sortable-table tbody").sortable({
+		axis: "y"
+	});
 
 	// Video embed
 	$(".sp-add-video").click(function() {
