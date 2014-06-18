@@ -4,8 +4,8 @@
  *
  * @author 		ThemeBoy
  * @category 	Admin
- * @package 	SportsPress/Admin/Meta Boxes
- * @version     0.8
+ * @package 	SportsPress/Admin/Meta_Boxes
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,28 +19,20 @@ class SP_Meta_Box_List_Columns {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$column_groups = (array) get_post_meta( $post->ID, 'sp_column_group' );
 		?>
-		<ul id="sp-column-group-select">
-			<li>
-				<label class="selectit">
-					<input type="checkbox" name="sp_column_group[]" value="sp_performance" <?php checked( true, in_array( 'sp_performance', $column_groups ) ); ?>>
-					<?php _e( 'Performance', 'sportspress' ); ?>
-				</label>
-			</li>
-			<li>
-				<label class="selectit">
-					<input type="checkbox" name="sp_column_group[]" value="sp_metric" <?php checked( true, in_array( 'sp_metric', $column_groups ) ); ?>>
-					<?php _e( 'Metrics', 'sportspress' ); ?>
-				</label>
-			</li>
-			<li>
-				<label class="selectit">
-					<input type="checkbox" name="sp_column_group[]" value="sp_statistic" <?php checked( true, in_array( 'sp_statistic', $column_groups ) ); ?>>
-					<?php _e( 'Statistics', 'sportspress' ); ?>
-				</label>
-			</li>
-		</ul>
+		<div class="sp-instance">
+			<ul id="sp_column-tabs" class="wp-tab-bar sp-tab-bar">
+				<li class="wp-tab-active"><a href="#sp_performance-all"><?php _e( 'Performance', 'sportspress' ); ?></a></li>
+				<li class="wp-tab"><a href="#sp_metric-all"><?php _e( 'Metrics', 'sportspress' ); ?></a></li>
+				<li class="wp-tab"><a href="#sp_statistic-all"><?php _e( 'Statistics', 'sportspress' ); ?></a></li>
+			</ul>
+			<?php
+			$selected = (array)get_post_meta( $post->ID, 'sp_columns', true );
+			sp_column_checklist( $post->ID, 'sp_performance', 'block', $selected );
+			sp_column_checklist( $post->ID, 'sp_metric', 'none', $selected );
+			sp_column_checklist( $post->ID, 'sp_statistic', 'none', $selected );
+			?>
+		</div>
 		<?php
 	}
 
@@ -48,6 +40,6 @@ class SP_Meta_Box_List_Columns {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		sp_update_post_meta_recursive( $post_id, 'sp_column_group', sp_array_value( $_POST, 'sp_column_group', array() ) );
+		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 	}
 }

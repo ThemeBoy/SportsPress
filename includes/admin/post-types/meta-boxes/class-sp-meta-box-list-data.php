@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @category 	Admin
- * @package 	SportsPress/Admin/Meta Boxes
+ * @package 	SportsPress/Admin/Meta_Boxes
  * @version     1.0.2
  */
 
@@ -20,16 +20,15 @@ class SP_Meta_Box_List_Data {
 	 */
 	public static function output( $post ) {
 		$list = new SP_Player_List( $post );
-		list( $columns, $usecolumns, $data, $placeholders, $merged ) = $list->data( true );
+		list( $columns, $data, $placeholders, $merged ) = $list->data( true );
 		$adjustments = $list->adjustments;
-		self::table( $columns, $usecolumns, $data, $placeholders, $adjustments );
+		self::table( $columns, $data, $placeholders, $adjustments );
 	}
 
 	/**
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 		update_post_meta( $post_id, 'sp_adjustments', sp_array_value( $_POST, 'sp_adjustments', array() ) );
 		update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array() ) );
 	}
@@ -37,9 +36,7 @@ class SP_Meta_Box_List_Data {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $columns = array(), $usecolumns = null, $data = array(), $placeholders = array(), $adjustments = array() ) {
-		if ( is_array( $usecolumns ) )
-			$usecolumns = array_filter( $usecolumns );
+	public static function table( $columns = array(), $data = array(), $placeholders = array(), $adjustments = array() ) {
 		?>
 		<ul class="subsubsub sp-table-bar">
 			<li><a href="#sp-table-values" class="current"><?php _e( 'Values', 'sportspress' ); ?></a></li> | 
@@ -52,12 +49,12 @@ class SP_Meta_Box_List_Data {
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
 						<th><label for="sp_columns_team">
-							<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $usecolumns ) || in_array( 'team', $usecolumns ) ); ?>>
+							<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
 							<?php _e( 'Team', 'sportspress' ); ?>
 						</label></th>
 						<?php foreach ( $columns as $key => $label ): ?>
+							<?php if ( $key == 'team' ) continue; ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
-								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
 								<?php echo $label; ?>
 							</label></th>
 						<?php endforeach; ?>
@@ -92,6 +89,7 @@ class SP_Meta_Box_List_Data {
 								</td>
 								<td><?php echo get_the_title( $team ); ?></td>
 								<?php foreach( $columns as $column => $label ):
+									if ( $column == 'team' ) continue;
 									$value = sp_array_value( $player_stats, $column, '' );
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $player_id, array() ), $column, 0 );
 									?>
