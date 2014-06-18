@@ -44,6 +44,11 @@ foreach( $teams as $index => $team_id ):
 	$data = sp_array_combine( $players, sp_array_value( $data, $team_id, array() ) );
 	?>
 	<h3><?php echo get_the_title( $team_id ); ?></h3>
+	<?php
+	if ( get_option( 'sportspress_event_show_staff', 'yes' ) == 'yes' ):
+		sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
+	endif;
+	?>
 	<div class="sp-table-wrapper sp-scrollable-table-wrapper">
 		<table class="sp-event-performance sp-data-table <?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $has_players && $sortable ) { ?> sp-sortable-table<?php } ?>">
 			<thead>
@@ -155,5 +160,5 @@ foreach( $teams as $index => $team_id ):
 			<?php endif; ?>
 		</table>
 	</div>
-	<?php if ( get_option( 'sportspress_event_show_staff', 'yes' ) == 'yes' ) sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) ); ?>
-<?php endforeach;
+	<?php
+endforeach;
