@@ -2,7 +2,8 @@
 	"name":				"Baseball - coming soon",
 	"outcomes": [
 						"Win",
-						"Loss"
+						"Loss",
+						"Tie"
 	],
 	"results": [
 						{ "name" : "1", "description" : "1st inning runs" },
