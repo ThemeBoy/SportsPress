@@ -13,15 +13,15 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $event = new SP_Event( $id );
-$data = $event->performance();
+$performance = $event->performance();
 
 // The first row should be column labels
-$labels = $data[0];
+$labels = $performance[0];
 
 // Remove the first row to leave us with the actual data
-unset( $data[0] );
+unset( $performance[0] );
 
-$data = array_filter( $data );
+$performance = array_filter( $performance );
 
 $teams = (array)get_post_meta( $id, 'sp_team', false );
 $status = $event->status();
@@ -41,7 +41,7 @@ foreach( $teams as $index => $team_id ):
 
 	$totals = array();
 
-	$data = sp_array_combine( $players, sp_array_value( $data, $team_id, array() ) );
+	$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
 	?>
 	<h3><?php echo get_the_title( $team_id ); ?></h3>
 	<?php

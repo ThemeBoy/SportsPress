@@ -252,13 +252,22 @@ if ( !function_exists( 'sp_array_value' ) ) {
 
 if ( !function_exists( 'sp_array_combine' ) ) {
 	function sp_array_combine( $keys = array(), $values = array() ) {
+		if ( ! is_array( $keys ) ) return array();
+		if ( ! is_array( $values ) ) $values = array();
+
 		$output = array();
+
+		foreach ( $values as $key => $value ):
+			if ( in_array( $key, $keys ) ):
+				$output[ $key ] = $value;
+			endif;
+		endforeach;
+
 		foreach ( $keys as $key ):
-			if ( is_array( $values ) && array_key_exists( $key, $values ) )
-				$output[ $key ] = $values[ $key ];
-			else
+			if ( ! array_key_exists( $key, $output ) )
 				$output[ $key ] = array();
 		endforeach;
+
 		return $output;
 	}
 }
