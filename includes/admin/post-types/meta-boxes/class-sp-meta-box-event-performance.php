@@ -94,7 +94,7 @@ class SP_Meta_Box_Event_Performance {
 						?>
 						<tr class="sp-row sp-post" data-player="<?php echo $player_id; ?>">
 							<td>
-								<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo $value; ?>" placeholder="<?php echo $number; ?>" />
+								<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo $value; ?>" />
 							</td>
 							<td><?php echo get_the_title( $player_id ); ?></td>
 							<td>

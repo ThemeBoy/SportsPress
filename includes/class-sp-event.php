@@ -73,7 +73,7 @@ class SP_Event extends SP_Custom_Post{
 						$totals[ $key ] += sp_array_value( $player_performance, $key, 0 );
 					endif;
 				endforeach;
-				if ( ! array_key_exists( 'number', $player_performance ) || $player_performance['number'] == null ):
+				if ( ! array_key_exists( 'number', $player_performance ) ):
 					$performance[ $team_id ][ $player_id ]['number'] = get_post_meta( $player_id, 'sp_number', true );
 				endif;
 				if ( ! array_key_exists( 'position', $player_performance ) || $player_performance['position'] == null ):
