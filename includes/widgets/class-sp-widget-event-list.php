@@ -11,6 +11,7 @@ class SP_Widget_Event_List extends WP_Widget {
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$id = empty($instance['id']) ? null : $instance['id'];
 		$status = empty($instance['status']) ? 'default' : $instance['status'];
+		$date = empty($instance['date']) ? 'default' : $instance['date'];
 		$number = empty($instance['number']) ? null : $instance['number'];
 		$columns = empty($instance['columns']) ? null : $instance['columns'];
 		$order = empty($instance['order']) ? 'default' : $instance['order'];
@@ -18,7 +19,7 @@ class SP_Widget_Event_List extends WP_Widget {
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		sp_get_template( 'event-list.php', array( 'id' => $id, 'status' => $status, 'number' => $number, 'columns' => $columns, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
+		sp_get_template( 'event-list.php', array( 'id' => $id, 'status' => $status, 'date' => $date, 'number' => $number, 'columns' => $columns, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
 		echo $after_widget;
 	}
 
@@ -27,6 +28,7 @@ class SP_Widget_Event_List extends WP_Widget {
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['id'] = intval($new_instance['id']);
 		$instance['status'] = $new_instance['status'];
+		$instance['date'] = $new_instance['date'];
 		$instance['number'] = intval($new_instance['number']);
 		$instance['columns'] = (array)$new_instance['columns'];
 		$instance['order'] = strip_tags($new_instance['order']);
@@ -36,10 +38,11 @@ class SP_Widget_Event_List extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'status' => 'default', 'number' => 5, 'columns' => null, 'order' => 'default', 'show_all_events_link' => true ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'status' => 'default', 'date' => 'default', 'number' => 5, 'columns' => null, 'order' => 'default', 'show_all_events_link' => true ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
 		$status = $instance['status'];
+		$date = $instance['date'];
 		$number = intval($instance['number']);
 		$columns = $instance['columns'];
 		$order = strip_tags($instance['order']);
@@ -75,6 +78,19 @@ class SP_Widget_Event_List extends WP_Widget {
 				'class' => 'sp-event-status-select widefat',
 			);
 			sp_dropdown_statuses( $args );
+			?>
+		</p>
+
+		<p><label for="<?php echo $this->get_field_id('date'); ?>"><?php _e( 'Date:', 'sportspress' ); ?></label>
+			<?php
+			$args = array(
+				'show_option_default' => __( 'Default', 'sportspress' ),
+				'name' => $this->get_field_name('date'),
+				'id' => $this->get_field_id('date'),
+				'selected' => $date,
+				'class' => 'sp-event-date-select widefat',
+			);
+			sp_dropdown_dates( $args );
 			?>
 		</p>
 
