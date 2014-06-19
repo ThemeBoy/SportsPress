@@ -60,6 +60,11 @@ class SP_Admin_Assets {
 			wp_enqueue_style( 'sportspress-admin-equation-styles', SP()->plugin_url() . '/assets/css/equation.css', array(), SP_VERSION );
 		}
 
+		if ( SP()->mode == 'player' ):
+	        $custom_css = '#adminmenu #menu-posts-sp_team .menu-icon-sp_team div.wp-menu-image:before,.sp-icon-shield:before{content: "\f307"}';
+	        wp_add_inline_style( 'sportspress-admin-menu-styles', $custom_css );
+		endif;
+
 		do_action( 'sportspress_admin_css' );
 	}
 

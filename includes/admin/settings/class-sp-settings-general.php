@@ -53,6 +53,16 @@ class SP_Settings_General extends SP_Settings_Page {
 				'type'      => 'select',
 				'options'   => $presets,
 			),
+			array(
+				'title'     => __( 'Mode', 'sportspress' ),
+				'id'        => 'sportspress_mode',
+				'default'   => 'team',
+				'type'      => 'select',
+				'options'   => array(
+					'team' => __( 'Team', 'sportspress' ),
+					'player' => __( 'Individual', 'sportspress' ),
+				),
+			),
 
 			array(
 				'title'     => __( 'Google Maps', 'sportspress' ),

@@ -133,7 +133,7 @@ if ( ! function_exists( 'sportspress_output_event_performance' ) ) {
 	 * @return void
 	 */
 	function sportspress_output_event_performance() {
-		sp_get_template( 'event-performance.php' );
+		if ( SP()->mode == 'team' ) sp_get_template( 'event-performance.php' );
 	}
 }
 
