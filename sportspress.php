@@ -319,7 +319,7 @@ final class SportsPress {
 	/**
 	 * Replace team strings with player if individual mode.
 	 */
-	public function gettext( $translated_text, $untranslated_text, $domain ) {
+	public function gettext( $translated_text, $untranslated_text, $domain = 'default' ) {
 		if ( SP()->mode == 'player' && $domain == 'sportspress' ):
 			switch ( $untranslated_text ):
 			case 'Teams':
