@@ -1,5 +1,11 @@
 {
 	"name":				"Soccer (Association Football)",
+	"positions": [
+						"Goalkeeper",
+						"Defender",
+						"Midfielder",
+						"Forward"
+	],
 	"outcomes": [
 						"Win",
 						"Draw",
@@ -8,6 +14,7 @@
 	"results": [
 						{ "name" : "1st Half", "description" : "1st half goals" },
 						{ "name" : "2nd Half", "description" : "2nd half goals" },
+						{ "name" : "PK", "description" : "Penalty kicks" },
 						{ "name" : "Goals", "description" : "Total goals", "main" : 1 }
 	],
 	"performance": [
@@ -24,7 +31,7 @@
 						{ "name" : "F", "equation" : "$goalsfor", "priority" : 3, "description" : "Goals for" },
 						{ "name" : "A", "equation" : "$goalsagainst", "description" : "Goals against" },
 						{ "name" : "GD", "equation" : "$goalsfor - $goalsagainst", "priority" : 2, "description" : "Goal difference" },
-						{ "name" : "PTS", "equation" : "$win * 3 + $draw", "priority" : 1, "description" : "Team points" }
+						{ "name" : "Pts", "equation" : "$win * 3 + $draw", "priority" : 1, "description" : "Team points" }
 	],
 	"metrics": [
 						"Height",
