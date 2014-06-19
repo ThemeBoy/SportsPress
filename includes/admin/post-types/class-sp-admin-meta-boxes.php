@@ -52,7 +52,7 @@ class SP_Admin_Meta_Boxes {
 		add_action( 'sportspress_process_sp_event_meta', 'SP_Meta_Box_Event_Teams::save', 30, 2 );
 		add_action( 'sportspress_process_sp_event_meta', 'SP_Meta_Box_Event_Video::save', 40, 2 );
 		add_action( 'sportspress_process_sp_event_meta', 'SP_Meta_Box_Event_Results::save', 50, 2 );
-		add_action( 'sportspress_process_sp_event_meta', 'SP_Meta_Box_Event_Performance::save', 60, 2 );
+		if ( SP()->mode == 'team' ) add_action( 'sportspress_process_sp_event_meta', 'SP_Meta_Box_Event_Performance::save', 60, 2 );
 
 		// Save Calendar Meta Boxes
 		add_action( 'sportspress_process_sp_calendar_meta', 'SP_Meta_Box_Calendar_Format::save', 10, 2 );
@@ -114,7 +114,7 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'SP_Meta_Box_Event_Teams::output', 'sp_event', 'side', 'default' );
 		add_meta_box( 'sp_videodiv', __( 'Video', 'sportspress' ), 'SP_Meta_Box_Event_Video::output', 'sp_event', 'side', 'low' );
 		add_meta_box( 'sp_resultsdiv', __( 'Team Results', 'sportspress' ), 'SP_Meta_Box_Event_Results::output', 'sp_event', 'normal', 'high' );
-		add_meta_box( 'sp_performancediv', __( 'Player Performance', 'sportspress' ), 'SP_Meta_Box_Event_Performance::output', 'sp_event', 'normal', 'high' );
+		if ( SP()->mode == 'team' ) add_meta_box( 'sp_performancediv', __( 'Player Performance', 'sportspress' ), 'SP_Meta_Box_Event_Performance::output', 'sp_event', 'normal', 'high' );
 		add_meta_box( 'sp_editordiv', __( 'Article', 'sportspress' ), 'SP_Meta_Box_Event_Editor::output', 'sp_event', 'normal', 'high' );
 
 		// Calendars

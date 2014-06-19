@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.8
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -42,25 +42,29 @@ class SP_Settings_Config extends SP_Settings_Page {
 	 */
 	public function get_settings() {
 
-		return apply_filters('sportspress_config_settings', array(
-
+		$settings = array(
 			array( 'title' => __( 'Configure SportsPress', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'config_options' ),
 			
 			array( 'type' => 'outcomes' ),
-			
+
 			array( 'type' => 'results' ),
+		);
 
-			array( 'type' => 'performance' ),
+		if ( SP()->mode == 'team' ) $settings[] = array( 'type' => 'performance' );
 
-			array( 'type' => 'columns' ),
+		$settings[] = array( 'type' => 'columns' );
 
-			array( 'type' => 'metrics' ),
+		if ( SP()->mode == 'team' ):
+			$settings = array_merge( $settings, array(
+				array( 'type' => 'metrics' ),
 
-			array( 'type' => 'statistics' ),
+				array( 'type' => 'statistics' ),
+			));
+		endif;
 
-			array( 'type' => 'sectionend', 'id' => 'config_options' ),
+		$settings[] = array( 'type' => 'sectionend', 'id' => 'config_options' ); // End event settings
 
-		)); // End event settings
+		return apply_filters( 'sportspress_config_settings', $settings );
 	}
 
 	/**
