@@ -24,7 +24,7 @@
 						{ "name" : "4", "description" : "4th quarter points" },
 						{ "name" : "OT", "description" : "Overtime points" },
 						{ "name" : "TD", "description" : "Touchdowns" },
-						{ "name" : "T", "description" : "Total points", "primary" : 1 }
+						{ "name" : "T", "id" : "pts", "description" : "Total points", "primary" : 1 }
 	],
 	"performance": [
 						{ "name" : "Comp", "description" : "Completions" },
@@ -43,9 +43,9 @@
 						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
 						{ "name" : "T", "equation" : "$tie", "priority" : 2, "description" : "Ties" },
 						{ "name" : "Pct", "equation" : "$win / $eventsplayed", "description" : "Win percentage" },
-						{ "name" : "PF", "equation" : "$tfor", "priority" : 3, "description" : "Points for" },
-						{ "name" : "PA", "equation" : "$tagainst", "description" : "Points against" },
-						{ "name" : "Net Pts", "equation" : "$tfor - $tagainst", "priority" : 2, "description" : "Net Points" },
+						{ "name" : "PF", "equation" : "$ptsfor", "priority" : 3, "description" : "Points for" },
+						{ "name" : "PA", "equation" : "$ptsagainst", "description" : "Points against" },
+						{ "name" : "Net Pts", "equation" : "$ptsfor - $ptsagainst", "priority" : 2, "description" : "Net Points" },
 						{ "name" : "TD", "equation" : "$td", "description" : "Touchdowns" },
 						{ "name" : "Streak", "equation" : "$streak", "description" : "Current streak" }
 	],
