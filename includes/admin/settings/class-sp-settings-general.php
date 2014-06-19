@@ -59,8 +59,8 @@ class SP_Settings_General extends SP_Settings_Page {
 				'default'   => 'team',
 				'type'      => 'select',
 				'options'   => array(
-					'team' => __( 'Team', 'sportspress' ),
-					'player' => __( 'Individual', 'sportspress' ),
+					'team' => _x( 'Team', 'mode select', 'sportspress' ),
+					'player' => _x( 'Individual', 'mode select', 'sportspress' ),
 				),
 			),
 
