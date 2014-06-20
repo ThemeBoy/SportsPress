@@ -169,27 +169,27 @@ class SP_Install {
 
 		            'edit_sp_player'				=> true,
 		            'read_sp_player'				=> true,
-		            'delete_sp_player'				=> true,
 		            'edit_sp_players' 				=> true,
-		            'delete_sp_players' 			=> true,
 		            'edit_published_sp_players' 	=> true,
+					'assign_sp_player_terms' 		=> true,
 
 		            'edit_sp_event'					=> true,
 		            'read_sp_event'					=> true,
 		            'edit_sp_events' 				=> true,
 		            'edit_published_sp_events' 		=> true,
+					'assign_sp_event_terms' 		=> true,
 
 		            'edit_sp_team'					=> true,
 		            'read_sp_team'					=> true,
 		            'edit_sp_teams' 				=> true,
 		            'edit_published_sp_teams' 		=> true,
+					'assign_sp_team_terms' 			=> true,
 
 		            'edit_sp_staff'					=> true,
 		            'read_sp_staff'					=> true,
 		            'edit_sp_staffs' 				=> true,
 		            'edit_published_sp_staffs' 		=> true,
-
-					'assign_sp_player_terms' 		=> true,
+					'assign_sp_staff_terms' 		=> true,
 		        )
 		    );
 
@@ -205,32 +205,29 @@ class SP_Install {
 		            'edit_posts' 					=> true,
 		            'upload_files' 					=> true,
 
-		            'read_sp_player'				=> true,
-		            'edit_sp_players' 				=> true,
-
 		            'edit_sp_staff'					=> true,
 		            'read_sp_staff'					=> true,
-		            'delete_sp_staff'				=> true,
 		            'edit_sp_staffs' 				=> true,
-		            'delete_sp_staffs' 				=> true,
 		            'edit_published_sp_staffs' 		=> true,
+					'assign_sp_staff_terms' 		=> true,
 
 		            'edit_sp_event'					=> true,
 		            'read_sp_event'					=> true,
 		            'edit_sp_events' 				=> true,
 		            'edit_published_sp_events' 		=> true,
+					'assign_sp_event_terms' 		=> true,
 
 		            'edit_sp_team'					=> true,
 		            'read_sp_team'					=> true,
 		            'edit_sp_teams' 				=> true,
 		            'edit_published_sp_teams' 		=> true,
+					'assign_sp_team_terms' 			=> true,
 
 		            'edit_sp_player'				=> true,
 		            'read_sp_player'				=> true,
 		            'edit_sp_players' 				=> true,
 		            'edit_published_sp_players' 	=> true,
-
-					'assign_sp_staff_terms' 		=> true,
+					'assign_sp_player_terms' 		=> true,
 		        )
 		    );
 
@@ -255,23 +252,25 @@ class SP_Install {
 		            'delete_sp_events' 				=> true,
 		            'delete_published_sp_events' 	=> true,
 		            'edit_published_sp_events' 		=> true,
+					'assign_sp_event_terms' 		=> true,
 
 		            'edit_sp_team'					=> true,
 		            'read_sp_team'					=> true,
 		            'edit_sp_teams' 				=> true,
 		            'edit_published_sp_teams' 		=> true,
+					'assign_sp_team_terms' 			=> true,
 
 		            'edit_sp_player'				=> true,
 		            'read_sp_player'				=> true,
 		            'edit_sp_players' 				=> true,
 		            'edit_published_sp_players' 	=> true,
+					'assign_sp_player_terms' 		=> true,
 
 		            'edit_sp_staff'					=> true,
 		            'read_sp_staff'					=> true,
 		            'edit_sp_staffs' 				=> true,
 		            'edit_published_sp_staffs' 		=> true,
-
-					'assign_sp_event_terms' 		=> true,
+					'assign_sp_staff_terms' 		=> true,
 		        )
 			);
 
@@ -299,6 +298,7 @@ class SP_Install {
 		            'delete_sp_players' 			=> true,
 		            'delete_published_sp_players' 	=> true,
 		            'edit_published_sp_players' 	=> true,
+					'assign_sp_player_terms' 		=> true,
 
 		            'edit_sp_staff'					=> true,
 		            'read_sp_staff'					=> true,
@@ -308,15 +308,6 @@ class SP_Install {
 		            'delete_sp_staffs' 				=> true,
 		            'delete_published_sp_staffs' 	=> true,
 		            'edit_published_sp_staffs' 		=> true,
-
-					'manage_sp_player_terms' 		=> true,
-					'edit_sp_player_terms' 			=> true,
-					'delete_sp_player_terms' 		=> true,
-					'assign_sp_player_terms' 		=> true,
-
-					'manage_sp_staff_terms' 		=> true,
-					'edit_sp_staff_terms' 			=> true,
-					'delete_sp_staff_terms' 		=> true,
 					'assign_sp_staff_terms' 		=> true,
 
 		            'edit_sp_event'					=> true,
@@ -327,11 +318,13 @@ class SP_Install {
 		            'delete_sp_events' 				=> true,
 		            'delete_published_sp_events' 	=> true,
 		            'edit_published_sp_events' 		=> true,
+					'assign_sp_event_terms' 		=> true,
 
 		            'edit_sp_team'					=> true,
 		            'read_sp_team'					=> true,
 		            'edit_sp_teams' 				=> true,
 		            'edit_published_sp_teams' 		=> true,
+					'assign_sp_team_terms' 			=> true,
 
 		            'edit_sp_list'					=> true,
 		            'read_sp_list'					=> true,
@@ -341,9 +334,7 @@ class SP_Install {
 		            'delete_sp_lists' 				=> true,
 		            'delete_published_sp_lists' 	=> true,
 		            'edit_published_sp_lists' 		=> true,
-
-		            'edit_sp_team_columns'			=> true,
-		            'edit_sp_player_statistics'		=> true,
+					'assign_sp_list_terms' 			=> true,
 		        )
 		    );
 
@@ -417,8 +408,6 @@ class SP_Install {
 		$capabilities['core'] = array(
 			'manage_sportspress',
 			'view_sportspress_reports',
-			'edit_sp_player_statistics',
-			'edit_sp_team_columns',
 		);
 
 		$post_types = sp_post_types();
