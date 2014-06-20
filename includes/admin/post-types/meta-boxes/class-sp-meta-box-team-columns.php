@@ -36,7 +36,7 @@ class SP_Meta_Box_Team_Columns {
 
 			$team = new SP_Team( $post );
 
-			list( $columns, $data, $placeholders, $merged, $leagues_seasons ) = $team->data( $league_id, true );
+			list( $columns, $data, $placeholders, $merged, $leagues_seasons ) = $team->columns( $league_id, true );
 
 			self::table( $league_id, $columns, $data, $placeholders, $merged, $leagues_seasons, ! current_user_can( 'edit_sp_team_columns' ) );
 
@@ -62,7 +62,7 @@ class SP_Meta_Box_Team_Columns {
 	public static function table( $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons = array(), $readonly = true ) {
 		?>
 		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table sp-select-all-range">
+			<table class="widefat sp-data-table sp-team-column-table sp-select-all-range">
 				<thead>
 					<tr>
 						<th class="check-column"><input class="sp-select-all" type="checkbox"></th>

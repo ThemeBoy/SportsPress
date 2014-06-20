@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     0.8
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -23,7 +23,7 @@ $output = '';
 foreach ( $leagues as $league ):
 
 	$team = new SP_Team( $id );
-	$data = $team->data( $league->term_id );
+	$data = $team->columns( $league->term_id );
 
 	if ( sizeof( $data ) <= 1 )
 		continue;

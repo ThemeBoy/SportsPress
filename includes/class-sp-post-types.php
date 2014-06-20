@@ -509,7 +509,7 @@ class SP_Post_types {
 						'exclude_from_search' 	=> false,
 						'hierarchical' 			=> false,
 						'rewrite' 				=> array( 'slug' => get_option( 'sportspress_list_slug', 'list' ) ),
-						'supports' 				=> array( 'title', 'author', 'thumbnail' ),
+						'supports' 				=> array( 'title', 'page-attributes', 'author', 'thumbnail' ),
 						'has_archive' 			=> false,
 						'show_in_nav_menus' 	=> true,
 						'show_in_menu' 			=> 'edit.php?post_type=sp_player',

@@ -186,6 +186,19 @@ if ( ! function_exists( 'sportspress_output_team_columns' ) ) {
 		sp_get_template( 'team-columns.php' );
 	}
 }
+if ( ! function_exists( 'sportspress_output_team_lists' ) ) {
+
+	/**
+	 * Output the team lists.
+	 *
+	 * @access public
+	 * @subpackage	Team/Lists
+	 * @return void
+	 */
+	function sportspress_output_team_lists() {
+		sp_get_template( 'team-lists.php' );
+	}
+}
 
 /** Single League Table ********************************************************/
 
@@ -284,4 +297,12 @@ function sportspress_output_venue_map( $query ) {
     $t_id = $venue->term_id;
     $meta = get_option( "taxonomy_$t_id" );
 	sp_get_template( 'venue-map.php', array( 'meta' => $meta ) );
+}
+
+/** Misc ********************************************************/
+
+function sportspress_output_br_tag() {
+	?>
+	<br>
+	<?php
 }
