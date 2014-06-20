@@ -1,0 +1,41 @@
+{
+	"name":				"Netball",
+	"outcomes": [
+						"Win",
+						"Loss"
+	],
+	"results": [
+						{ "name" : "1st", "description" : "1st quarter goals" },
+						{ "name" : "2nd", "description" : "2nd quarter goals" },
+						{ "name" : "3rd", "description" : "3rd quarter goals" },
+						{ "name" : "4th", "description" : "4th quarter goals" },
+						{ "name" : "Total", "id" : "goals", "description" : "Total goals", "primary" : 1 }
+	],
+	"performance": [
+						{ "name" : "G", "description" : "Goals" },
+						{ "name" : "A", "description" : "Attempts" },
+						{ "name" : "GA", "description" : "Goal assists" },
+						{ "name" : "R", "description" : "Rebounds" },
+						{ "name" : "CPR", "description" : "Centre pass receives" },
+						{ "name" : "I", "description" : "Intercepts" },
+						{ "name" : "D", "description" : "Deflections" },
+						{ "name" : "P", "description" : "Penalties" },
+						{ "name" : "T", "description" : "Turnovers" }
+	],
+	"columns": [
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "GF", "equation" : "$goalsfor", "description" : "Goals for" },
+						{ "name" : "GA", "equation" : "$goalsagainst", "description" : "Goals against" },
+						{ "name" : "GD", "equation" : "$goalsfor - $goalsagainst", "priority" : 2, "description" : "Goal difference" },
+						{ "name" : "GF", "equation" : "$win / $eventsplayed * 1 0 0", "precision" : 1, "priority" : 3, "description" : "Win percentage" },
+						{ "name" : "Pts", "equation" : "$win * 2", "priority" : 1, "description" : "Team points" }
+	],
+	"metrics": [
+						"Height"
+	],
+	"statistics": [
+						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" }
+	]
+}
