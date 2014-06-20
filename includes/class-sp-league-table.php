@@ -83,7 +83,7 @@ class SP_League_Table extends SP_Custom_Post{
 			$static = get_post_meta( $team_id, 'sp_columns', true );
 
 			// Add static stats to placeholders
-			$placeholders[ $team_id ] = sp_array_value( $static, $div_id, array() );
+			$placeholders[ $team_id ] = sp_array_value( sp_array_value( $static, $league_id, array() ), $div_id, array() );
 
 		endforeach;
 

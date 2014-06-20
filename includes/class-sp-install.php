@@ -174,6 +174,21 @@ class SP_Install {
 		            'delete_sp_players' 			=> true,
 		            'edit_published_sp_players' 	=> true,
 
+		            'edit_sp_event'					=> true,
+		            'read_sp_event'					=> true,
+		            'edit_sp_events' 				=> true,
+		            'edit_published_sp_events' 		=> true,
+
+		            'edit_sp_team'					=> true,
+		            'read_sp_team'					=> true,
+		            'edit_sp_teams' 				=> true,
+		            'edit_published_sp_teams' 		=> true,
+
+		            'edit_sp_staff'					=> true,
+		            'read_sp_staff'					=> true,
+		            'edit_sp_staffs' 				=> true,
+		            'edit_published_sp_staffs' 		=> true,
+
 					'assign_sp_player_terms' 		=> true,
 		        )
 		    );
@@ -199,6 +214,21 @@ class SP_Install {
 		            'edit_sp_staffs' 				=> true,
 		            'delete_sp_staffs' 				=> true,
 		            'edit_published_sp_staffs' 		=> true,
+
+		            'edit_sp_event'					=> true,
+		            'read_sp_event'					=> true,
+		            'edit_sp_events' 				=> true,
+		            'edit_published_sp_events' 		=> true,
+
+		            'edit_sp_team'					=> true,
+		            'read_sp_team'					=> true,
+		            'edit_sp_teams' 				=> true,
+		            'edit_published_sp_teams' 		=> true,
+
+		            'edit_sp_player'				=> true,
+		            'read_sp_player'				=> true,
+		            'edit_sp_players' 				=> true,
+		            'edit_published_sp_players' 	=> true,
 
 					'assign_sp_staff_terms' 		=> true,
 		        )
@@ -226,6 +256,21 @@ class SP_Install {
 		            'delete_published_sp_events' 	=> true,
 		            'edit_published_sp_events' 		=> true,
 
+		            'edit_sp_team'					=> true,
+		            'read_sp_team'					=> true,
+		            'edit_sp_teams' 				=> true,
+		            'edit_published_sp_teams' 		=> true,
+
+		            'edit_sp_player'				=> true,
+		            'read_sp_player'				=> true,
+		            'edit_sp_players' 				=> true,
+		            'edit_published_sp_players' 	=> true,
+
+		            'edit_sp_staff'					=> true,
+		            'read_sp_staff'					=> true,
+		            'edit_sp_staffs' 				=> true,
+		            'edit_published_sp_staffs' 		=> true,
+
 					'assign_sp_event_terms' 		=> true,
 		        )
 			);
@@ -250,7 +295,6 @@ class SP_Install {
 		            'read_sp_player'				=> true,
 		            'delete_sp_player'				=> true,
 		            'edit_sp_players' 				=> true,
-		            'edit_others_sp_players' 		=> true,
 		            'publish_sp_players' 			=> true,
 		            'delete_sp_players' 			=> true,
 		            'delete_published_sp_players' 	=> true,
@@ -260,7 +304,7 @@ class SP_Install {
 		            'read_sp_staff'					=> true,
 		            'delete_sp_staff'				=> true,
 		            'edit_sp_staffs' 				=> true,
-		            'edit_others_sp_staffs' 		=> true,
+		            'publish_sp_staffs' 			=> true,
 		            'delete_sp_staffs' 				=> true,
 		            'delete_published_sp_staffs' 	=> true,
 		            'edit_published_sp_staffs' 		=> true,
@@ -279,18 +323,26 @@ class SP_Install {
 		            'read_sp_event'					=> true,
 		            'delete_sp_event'				=> true,
 		            'edit_sp_events' 				=> true,
-		            'edit_others_sp_events' 		=> true,
+		            'publish_sp_events' 			=> true,
 		            'delete_sp_events' 				=> true,
 		            'delete_published_sp_events' 	=> true,
 		            'edit_published_sp_events' 		=> true,
 
 		            'edit_sp_team'					=> true,
 		            'read_sp_team'					=> true,
-		            'delete_sp_team'				=> true,
 		            'edit_sp_teams' 				=> true,
-		            'delete_sp_teams' 				=> true,
 		            'edit_published_sp_teams' 		=> true,
 
+		            'edit_sp_list'					=> true,
+		            'read_sp_list'					=> true,
+		            'delete_sp_list'				=> true,
+		            'edit_sp_lists' 				=> true,
+		            'publish_sp_lists' 				=> true,
+		            'delete_sp_lists' 				=> true,
+		            'delete_published_sp_lists' 	=> true,
+		            'edit_published_sp_lists' 		=> true,
+
+		            'edit_sp_team_columns'			=> true,
 		            'edit_sp_player_statistics'		=> true,
 		        )
 		    );
