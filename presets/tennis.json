@@ -1,0 +1,29 @@
+{
+	"name":				"Tennis",
+	"outcomes": [
+						"Win",
+						"Loss",
+						"Unfinished"
+	],
+	"results": [
+						{ "name" : "S1", "description" : "1st set" },
+						{ "name" : "S2", "description" : "2nd set" },
+						{ "name" : "S3", "description" : "3rd set" },
+						{ "name" : "S4", "description" : "4th set" },
+						{ "name" : "S5", "description" : "5th set" }
+	],
+	"performance": [
+	],
+	"columns": [
+						{ "name" : "Wins", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "Losses", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "Win %", "id" : "winpct", "equation" : "$win / $eventsplayed * 1 0 0", "precision" : 2, "description" : "Win percentage" },
+						{ "name" : "Points", "equation" : "$win * 2 + $loss - $unfinished" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+	]
+}
