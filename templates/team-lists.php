@@ -17,8 +17,9 @@ $lists = $team->lists();
 
 foreach ( $lists as $list ):
 	$id = $list->ID;
+	$grouping = get_post_meta( $id, 'sp_grouping', true );
 
-	if ( $id && sizeof( $lists ) > 1 ):
+	if ( $grouping !== 'position' && sizeof( $lists ) > 1 ):
 		?>
 		<h4 class="sp-table-caption"><?php echo $list->post_title; ?></h4>
 		<?php
