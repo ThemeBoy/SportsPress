@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version     0.9
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -50,6 +50,7 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 			'sp_venue' => __( 'Venue', 'sportspress' ),
 			'sp_team' => __( 'Team', 'sportspress' ),
 			'sp_events' => __( 'Events', 'sportspress' ),
+			'sp_layout' => __( 'Layout', 'sportspress' ),
 		);
 		return apply_filters( 'sportspress_calendar_admin_columns', $columns );
 	}
@@ -92,6 +93,9 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 			case 'sp_events':
 				$calendar = new SP_Calendar( $post_id );
 				echo sizeof( $calendar->data() );
+				break;
+			case 'sp_layout':
+				echo sp_array_value( SP()->formats->calendar, get_post_meta( $post_id, 'sp_format', true ), '&mdash;' );
 				break;
 		endswitch;
 	}

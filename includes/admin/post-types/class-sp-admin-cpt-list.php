@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version     0.9
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -49,6 +49,7 @@ class SP_Admin_CPT_List extends SP_Admin_CPT {
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_team' => __( 'Team', 'sportspress' ),
 			'sp_player' => __( 'Players', 'sportspress' ),
+			'sp_layout' => __( 'Layout', 'sportspress' ),
 		);
 		return apply_filters( 'sportspress_list_admin_columns', $columns );
 	}
@@ -80,6 +81,9 @@ class SP_Admin_CPT_List extends SP_Admin_CPT {
 						if ( $team ) echo $team->post_title . '<br>';
 					endforeach;
 				endif;
+				break;
+			case 'sp_layout':
+				echo sp_array_value( SP()->formats->list, get_post_meta( $post_id, 'sp_format', true ), '&mdash;' );
 				break;
 		endswitch;
 	}
