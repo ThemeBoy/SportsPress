@@ -33,7 +33,7 @@ class SP_Meta_Box_Player_Statistics {
 
 			$player = new SP_Player( $post );
 			list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( $league->term_id, true );
-			self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, ! current_user_can( 'edit_sp_player_statistics' ) );
+			self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams );
 
 		endforeach; else:
 
@@ -47,14 +47,13 @@ class SP_Meta_Box_Player_Statistics {
 	 */
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
-		if ( current_user_can( 'edit_sp_player_statistics' ) )
-			update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
+		update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
 	}
 
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $readonly = true ) {
+	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $readonly = false ) {
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
 		?>
 		<div class="sp-data-table-container">
