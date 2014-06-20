@@ -5,7 +5,7 @@
  * The SportsPress team class handles individual team data.
  *
  * @class 		SP_Team
- * @version		0.8.4
+ * @version		1.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -41,7 +41,7 @@ class SP_Team extends SP_Custom_Post {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $league_id, $admin = false ) {
+	public function columns( $league_id, $admin = false ) {
 		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$columns = (array)get_post_meta( $this->ID, 'sp_columns', true );
 		$leagues_seasons = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
@@ -256,5 +256,40 @@ class SP_Team extends SP_Custom_Post {
 			$merged[0] = $labels;
 			return $merged;
 		endif;
+	}
+
+	/**
+	 * Returns player lists
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function lists( $admin = false ) {
+		if ( ! $this->ID ) return null;
+
+		$args = array(
+			'post_type' => 'sp_list',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'meta_key' => 'sp_team',
+			'meta_value' => $this->ID,
+		);
+		$lists = get_posts( $args );
+
+		$checked = (array) get_post_meta( $this->ID, 'sp_list' );
+
+		if ( $admin ):
+			return array( $lists, $checked );
+		else:
+			foreach ( $lists as $key => $list ):
+				if ( ! in_array( $list->ID, $checked ) ):
+					unset( $lists[ $key ] );
+				endif;
+			endforeach;
+			return $lists;
+		endif;
+
 	}
 }

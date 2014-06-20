@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     0.9.4
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -18,6 +18,7 @@ $defaults = array(
 	'itemtag' => 'dl',
 	'icontag' => 'dt',
 	'captiontag' => 'dd',
+	'grouptag' => 'h4',
 	'columns' => 3,
 	'size' => 'thumbnail',
 	'show_all_players_link' => false,
@@ -110,7 +111,7 @@ foreach ( $groups as $group ):
 
 	if ( ! empty( $group->name ) ):
 		echo '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
-		echo '<h3 class="player-group-name player-gallery-group-name">' . $group->name . '</h3>';
+		echo '<' . $grouptag . ' class="player-group-name player-gallery-group-name">' . $group->name . '</' . $grouptag . '>';
 	endif;
 
 	foreach( $data as $player_id => $performance ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):

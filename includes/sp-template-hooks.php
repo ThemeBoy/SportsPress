@@ -37,6 +37,8 @@ add_action( 'sportspress_single_event_content', 'sportspress_output_event_detail
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_venue', 40 );
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_performance', 50 );
 
+add_action( 'sportspress_after_single_event', 'sportspress_output_br_tag', 100 );
+
 /**
  * Single Calendar Content
  *
@@ -44,13 +46,20 @@ add_action( 'sportspress_single_event_content', 'sportspress_output_event_perfor
  */
 add_action( 'sportspress_single_calendar_content', 'sportspress_output_calendar', 10 );
 
+add_action( 'sportspress_after_single_calendar', 'sportspress_output_br_tag', 100 );
+
 /**
  * Single Team Content
  *
+ * @see sportspress_output_team_link()
  * @see sportspress_output_team_columns()
+ * @see sportspress_output_team_lists()
  */
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_link', 10 );
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_columns', 20 );
+add_action( 'sportspress_single_team_content', 'sportspress_output_team_lists', 30 );
+
+add_action( 'sportspress_after_single_team', 'sportspress_output_br_tag', 100 );
 
 /**
  * Single Table Content
@@ -58,6 +67,8 @@ add_action( 'sportspress_single_team_content', 'sportspress_output_team_columns'
  * @see sportspress_output_league_table()
  */
 add_action( 'sportspress_single_table_content', 'sportspress_output_league_table', 10 );
+
+add_action( 'sportspress_after_single_table', 'sportspress_output_br_tag', 100 );
 
 /**
  * Single Player Content
@@ -68,6 +79,8 @@ add_action( 'sportspress_single_table_content', 'sportspress_output_league_table
 add_action( 'sportspress_single_player_content', 'sportspress_output_player_details', 10 );
 add_action( 'sportspress_single_player_content', 'sportspress_output_player_statistics', 20 );
 
+add_action( 'sportspress_after_single_player', 'sportspress_output_br_tag', 100 );
+
 /**
  * Single List Content
  *
@@ -75,12 +88,16 @@ add_action( 'sportspress_single_player_content', 'sportspress_output_player_stat
  */
 add_action( 'sportspress_single_list_content', 'sportspress_output_player_list', 10 );
 
+add_action( 'sportspress_after_single_list', 'sportspress_output_br_tag', 100 );
+
 /**
  * Single Staff Content
  *
  * @see sportspress_output_staff_details()
  */
 add_action( 'sportspress_single_staff_content', 'sportspress_output_staff_details', 10 );
+
+add_action( 'sportspress_after_single_staff', 'sportspress_output_br_tag', 100 );
 
 /**
  * Venue Archive Content

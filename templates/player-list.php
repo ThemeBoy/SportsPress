@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     0.8
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $defaults = array(
 	'id' => get_the_ID(),
 	'number' => -1,
+	'grouptag' => 'h4',
 	'columns' => null,
 	'grouping' => null,
 	'orderby' => 'default',
@@ -76,7 +77,7 @@ $output = '';
 foreach ( $groups as $group ):
 	if ( ! empty( $group->name ) ):
 		$output .= '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
-		$output .= '<h3 class="sp-table-caption player-group-name player-list-group-name">' . $group->name . '</h3>';
+		$output .= '<' . $grouptag . ' class="sp-table-caption player-group-name player-list-group-name">' . $group->name . '</' . $grouptag . '>';
 	endif;
 
 	$output .= '<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
