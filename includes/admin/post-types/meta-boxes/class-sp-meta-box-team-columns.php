@@ -38,7 +38,7 @@ class SP_Meta_Box_Team_Columns {
 
 			list( $columns, $data, $placeholders, $merged, $leagues_seasons ) = $team->columns( $league_id, true );
 
-			self::table( $league_id, $columns, $data, $placeholders, $merged, $leagues_seasons, ! current_user_can( 'edit_sp_team_columns' ) );
+			self::table( $league_id, $columns, $data, $placeholders, $merged, $leagues_seasons );
 
 		endforeach; else:
 
@@ -52,14 +52,13 @@ class SP_Meta_Box_Team_Columns {
 	 */
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
-		if ( current_user_can( 'edit_sp_team_columns' ) )
-			update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
+		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 	}
 
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons = array(), $readonly = true ) {
+	public static function table( $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons = array(), $readonly = false ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-team-column-table sp-select-all-range">
