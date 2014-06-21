@@ -184,12 +184,6 @@ class SP_Install {
 		            'edit_sp_teams' 				=> true,
 		            'edit_published_sp_teams' 		=> true,
 					'assign_sp_team_terms' 			=> true,
-
-		            'edit_sp_staff'					=> true,
-		            'read_sp_staff'					=> true,
-		            'edit_sp_staffs' 				=> true,
-		            'edit_published_sp_staffs' 		=> true,
-					'assign_sp_staff_terms' 		=> true,
 		        )
 		    );
 
