@@ -722,7 +722,13 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 					<?php
 				endforeach;
 				?>
-				<li class="sp-not-found-container"><?php _e( 'No results found.', 'sportspress' ); ?></li>
+				<li class="sp-not-found-container">
+					<?php _e( 'No results found.', 'sportspress' ); ?>
+					<?php if ( sizeof( $posts ) ): ?><a class="sp-show-all" href="#show-all-<?php echo $meta; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a><?php endif; ?>
+				</li>
+				<?php if ( sizeof( $posts ) ): ?>
+					<li class="sp-show-all-container"><a class="sp-show-all" href="#show-all-<?php echo $meta; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
+				<?php endif; ?>
 			</ul>
 		</div>
 		<?php
