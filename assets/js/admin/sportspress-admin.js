@@ -49,22 +49,24 @@ jQuery(document).ready(function($){
 					filter += ".sp-filter-"+filterval;
 			});
 		}
-		$panel = $(this).closest(".sp-tab-select").siblings(".sp-tab-panel")
-		$panel.find(".sp-post").hide(0, function() {
-			$(this).find("input").prop("disabled", true);
-			$(this).filter(filter).show(0, function() {
-				$(this).find("input").prop("disabled", false);
+		$panel = $(this).closest(".sp-tab-select").siblings(".sp-tab-panel");
+		$panel.each(function() {
+			$(this).find(".sp-post").hide(0, function() {
+				$(this).find("input").prop("disabled", true);
+				$(this).filter(filter).show(0, function() {
+					$(this).find("input").prop("disabled", false);
+				});
 			});
+			if($(this).find(".sp-post:visible").length > 0) {
+				$(this).find(".sp-select-all-container").show();
+				$(this).find(".sp-show-all-container").show();
+				$(this).find(".sp-not-found-container").hide();
+			} else {
+				$(this).find(".sp-select-all-container").hide();
+				$(this).find(".sp-show-all-container").hide();
+				$(this).find(".sp-not-found-container").show();
+			}
 		});
-		if($panel.find(".sp-post:visible").length > 0) {
-			$panel.find(".sp-select-all-container").show();
-			$panel.find(".sp-show-all-container").show();
-			$panel.find(".sp-not-found-container").hide();
-		} else {
-			$panel.find(".sp-select-all-container").hide();
-			$panel.find(".sp-show-all-container").hide();
-			$panel.find(".sp-not-found-container").show();
-		}
 	});
 
 	// Trigger tab filter
@@ -77,7 +79,7 @@ jQuery(document).ready(function($){
 
 	// Show all filter
 	$(".sp-tab-panel").on("click", ".sp-show-all", function() {
-		$(this).closest("li").hide().siblings(".sp-post").show().find("input").prop("disabled", false);
+		$(this).closest("li").hide().siblings(".sp-post, .sp-select-all-container").show().find("input").prop("disabled", false);
 	});
 
 	// Self-cloning
@@ -231,7 +233,7 @@ jQuery(document).ready(function($){
 	// Check if all checkboxes are checked already
 	$(".sp-select-all-range").on("checkCheck", function() {
 		$(this).each(function() {
-			$(this).find(".sp-select-all").prop("checked", $(this).find("input[type=checkbox]:checked:not(.sp-select-all)").length == $(this).find("input[type=checkbox]:visible:not(.sp-select-all)").length);
+			$(this).find(".sp-select-all").prop("checked", $(this).find("input[type=checkbox]:checked:not(.sp-select-all)").length != 0 && $(this).find("input[type=checkbox]:checked:not(.sp-select-all)").length == $(this).find("input[type=checkbox]:visible:not(.sp-select-all)").length);
 		});
 	});
 
