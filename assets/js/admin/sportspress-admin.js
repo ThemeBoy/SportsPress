@@ -58,15 +58,27 @@ jQuery(document).ready(function($){
 		});
 		if($panel.find(".sp-post:visible").length > 0) {
 			$panel.find(".sp-select-all-container").show();
+			$panel.find(".sp-show-all-container").show();
 			$panel.find(".sp-not-found-container").hide();
 		} else {
 			$panel.find(".sp-select-all-container").hide();
+			$panel.find(".sp-show-all-container").hide();
 			$panel.find(".sp-not-found-container").show();
 		}
 	});
 
 	// Trigger tab filter
 	$(".sp-tab-panel").siblings(".sp-tab-select").find("select").change();
+
+	// Filter show all action links
+	$(".sp-tab-panel").find(".sp-post input:checked").each(function() {
+		$(this).prop("disabled", false).closest("li").show().siblings(".sp-not-found-container").hide().siblings(".sp-show-all-container").show();
+	});
+
+	// Show all filter
+	$(".sp-tab-panel").on("click", ".sp-show-all", function() {
+		$(this).closest("li").hide().siblings(".sp-post").show().find("input").prop("disabled", false);
+	});
 
 	// Self-cloning
 	$(".sp-clone:last").find("select").change(function() {
