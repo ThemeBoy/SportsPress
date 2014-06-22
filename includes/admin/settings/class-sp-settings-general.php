@@ -95,6 +95,19 @@ class SP_Settings_General extends SP_Settings_Page {
 					'right'		=> __( 'Right', 'sportspress' ),
 				),
 			),
+			
+			array(
+				'title' 	=> __( 'Padding', 'sportspress' ),
+				'id' 		=> 'sportspress_table_padding',
+				'class' 	=> 'small-text',
+				'default'	=> null,
+				'placeholder' => __( 'Auto', 'sportspress' ),
+				'desc' 		=> 'px',
+				'type' 		=> 'number',
+				'custom_attributes' => array(
+					'step' 	=> 1
+				),
+			),
 
 			array(
 				'title' 	=> __( 'Custom CSS', 'sportspress' ),

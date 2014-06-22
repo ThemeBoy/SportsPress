@@ -98,6 +98,7 @@ class SP_Frontend_Scripts {
 		$custom = get_option( 'sportspress_custom_css', null );
 
 		$align = get_option( 'sportspress_table_text_align', 'default' );
+		$padding = get_option( 'sportspress_table_padding', null );
 
 		$offset = get_option( 'sportspress_header_offset', '' );
 		if ( $offset === '' ) {
@@ -130,6 +131,9 @@ class SP_Frontend_Scripts {
 
 		if ( $align != 'default' )
 			echo '.sp-data-table th,.sp-data-table td{text-align: ' . $align . ' !important}';
+
+		if ( $padding != null )
+			echo '.sp-data-table th,.sp-data-table td{padding: ' . $padding . 'px !important}';
 
 		if ( $offset != 0 )
 			echo ' @media only screen and (min-width: 40.063em) {.sp-header{top: ' . $offset . 'px}}';
