@@ -1,4 +1,4 @@
-# SportsPress - league management
+# SportsPress - WP league management
 
 Welcome to the SportsPress repository on GitHub. Here you can browse the source, look at open issues and keep track of development.
 
@@ -13,3 +13,5 @@ This repository is not suitable for support. Please don't use our issue tracker 
 
 ## Contributing to SportsPress
 If you have a patch, or stumbled upon an issue with SportsPress core, you can contribute this back to the code. Please read our [contributor guidelines](https://github.com/ThemeBoy/sportspress/blob/master/CONTRIBUTING.md) for more information how you can do this.
+
+Translators can contribute new languages to SportsPress through [Transifex](https://www.transifex.com/projects/p/sportspress/).
