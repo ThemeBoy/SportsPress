@@ -84,6 +84,19 @@ class SP_Settings_General extends SP_Settings_Page {
 			array( 'type' 		=> 'frontend_styles' ),
 
 			array(
+				'title' 	=> __( 'Align', 'sportspress' ),
+				'id' 		=> 'sportspress_table_text_align',
+				'default'	=> 'default',
+				'type' 		=> 'radio',
+				'options' => array(
+					'default'	=> __( 'Default', 'sportspress' ),
+					'left'		=> __( 'Left', 'sportspress' ),
+					'center'	=> __( 'Center', 'sportspress' ),
+					'right'		=> __( 'Right', 'sportspress' ),
+				),
+			),
+
+			array(
 				'title' 	=> __( 'Custom CSS', 'sportspress' ),
 				'id' 		=> 'sportspress_custom_css',
 				'css' 		=> 'width:100%; height: 130px;',
@@ -116,19 +129,6 @@ class SP_Settings_General extends SP_Settings_Page {
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',
 				'desc_tip'	=> __( 'This will enable a script allowing the countdowns to be animated.', 'sportspress' ),
-			),
-
-			array(
-				'title' 	=> __( 'Align', 'sportspress' ),
-				'id' 		=> 'sportspress_table_text_align',
-				'default'	=> 'default',
-				'type' 		=> 'radio',
-				'options' => array(
-					'default'	=> __( 'Default', 'sportspress' ),
-					'left'		=> __( 'Left', 'sportspress' ),
-					'center'	=> __( 'Center', 'sportspress' ),
-					'right'		=> __( 'Right', 'sportspress' ),
-				),
 			),
 			
 			array(
