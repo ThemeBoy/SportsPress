@@ -159,7 +159,7 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain ) {
 			endswitch;
 		endif;
 
-		if ( in_array( $typenow, array( 'sp_event', 'sp_team', 'sp_player', 'sp_list', 'sp_staff' ) ) ):
+		if ( is_sp_post_type( $typenow ) ):
 			switch ( $untranslated_text ):
 			case 'Author':
 				$translated_text = __( 'User', 'sportspress' );
