@@ -24,6 +24,7 @@ class SP_Player_List extends SP_Custom_Post {
 	public function __construct( $post ) {
 		parent::__construct( $post );
 		$this->columns = get_post_meta( $this->ID, 'sp_columns', true );
+		if ( ! is_array( $this->columns ) ) $this->columns = array();
 	}
 
 	/**
@@ -313,6 +314,7 @@ class SP_Player_List extends SP_Custom_Post {
 			$merged[ $player_id ] = array();
 			$player_data['number'] = get_post_meta( $player_id, 'sp_number', true );
 			$player_data['name'] = get_the_title( $player_id );
+			$player_data['team'] = get_post_meta( $player_id, 'sp_team', true );
 
 			foreach( $player_data as $key => $value ):
 
