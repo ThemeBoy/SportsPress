@@ -90,11 +90,20 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
-				'title'     => __( 'Player Performance', 'sportspress' ),
+				'title'     => __( 'Players', 'sportspress' ),
+				'desc' 		=> __( 'Display players', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_players',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'	=> 'start',
+			),
+
+			array(
 				'desc' 		=> __( 'Link players', 'sportspress' ),
 				'id' 		=> 'sportspress_event_link_players',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'end',
 			),
 
 			array(
