@@ -26,6 +26,7 @@ $performance = array_filter( $performance );
 $teams = (array)get_post_meta( $id, 'sp_team', false );
 $status = $event->status();
 
+$show_players = get_option( 'sportspress_event_show_players', 'yes' ) == 'yes' ? true : false;
 $link_posts = get_option( 'sportspress_event_link_players', 'yes' ) == 'yes' ? true : false;
 $sortable = get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false;
 $responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
@@ -61,7 +62,7 @@ foreach( $teams as $index => $team_id ):
 					<?php endforeach; ?>
 				</tr>
 			</thead>
-			<?php if ( $has_players ): ?>
+			<?php if ( $show_players && $has_players ): ?>
 				<tbody>
 					<?php
 
@@ -143,7 +144,7 @@ foreach( $teams as $index => $team_id ):
 				</tbody>
 			<?php endif; ?>
 			<?php if ( $status == 'results' && array_key_exists( 0, $data ) ): ?>
-				<<?php echo ( $has_players ? 'tfoot' : 'tbody' ); ?>>
+				<<?php echo ( $show_players && $has_players ? 'tfoot' : 'tbody' ); ?>>
 					<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">
 						<?php
 						if ( $has_players ):
@@ -154,10 +155,11 @@ foreach( $teams as $index => $team_id ):
 						$row = $data[0];
 
 						foreach( $labels as $key => $label ):
-							if ( $key == 'name' ):
+							if ( $key == 'name' )
 								continue;
-							endif;
-							if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
+							if ( $key == 'position' ):
+								$value = '&mdash;';
+							elseif ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
 								$value = $row[ $key ];
 							else:
 								$value = sp_array_value( $totals, $key, 0 );
