@@ -97,45 +97,47 @@ class SP_Frontend_Scripts {
 		$enabled = get_option( 'sportspress_enable_frontend_css', 'yes' );
 		$custom = get_option( 'sportspress_custom_css', null );
 
+		$align = get_option( 'sportspress_table_text_align', 'default' );
+
 		$offset = get_option( 'sportspress_header_offset', '' );
 		if ( $offset === '' ) {
 			$template = get_option( 'template' );
 			$offset = ( 'twentyfourteen' == $template ? 48 : 0 );
 		}
 
-		if ( $enabled == 'yes' || ! empty( $custom ) || $offset != 0 ) {
+		$colors = (array) get_option( 'sportspress_frontend_css_colors', array() );
+		
+		echo '<style type="text/css">.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a,.sp-calendar tbody a:hover{background:none;}';
 
-			$colors = (array) get_option( 'sportspress_frontend_css_colors', array() );
-			
-			echo '<style type="text/css">.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a,.sp-calendar tbody a:hover{background:none;}';
+		if ( $enabled == 'yes' && sizeof( $colors ) > 0 ) {
+			echo ' /* SportsPress Frontend CSS */ ';
 
-			if ( $enabled == 'yes' && sizeof( $colors ) > 0 ) {
-				echo ' /* SportsPress Frontend CSS */ ';
+			if ( isset( $colors['primary'] ) )
+				echo '.sp-data-table th,.sp-calendar th,.sp-data-table tfoot,.sp-calendar tfoot,.sp-button{background:' . $colors['primary'] . ' !important}.sp-data-table tbody a,.sp-calendar tbody a{color:' . $colors['primary'] . ' !important}';
 
-				if ( isset( $colors['primary'] ) )
-					echo '.sp-data-table th,.sp-calendar th,.sp-data-table tfoot,.sp-calendar tfoot,.sp-button{background:' . $colors['primary'] . ' !important}.sp-data-table tbody a,.sp-calendar tbody a{color:' . $colors['primary'] . ' !important}';
+			if ( isset( $colors['background'] ) )
+				echo '.sp-data-table tbody,.sp-calendar tbody{background: ' . $colors['background'] . ' !important}';
 
-				if ( isset( $colors['background'] ) )
-					echo '.sp-data-table tbody,.sp-calendar tbody{background: ' . $colors['background'] . ' !important}';
+			if ( isset( $colors['text'] ) )
+				echo '.sp-data-table tbody,.sp-calendar tbody{color: ' . $colors['text'] . ' !important}';
 
-				if ( isset( $colors['text'] ) )
-					echo '.sp-data-table tbody,.sp-calendar tbody{color: ' . $colors['text'] . ' !important}';
+			if ( isset( $colors['heading'] ) )
+				echo '.sp-data-table th,.sp-data-table th a,.sp-data-table tfoot,.sp-data-table tfoot a,.sp-calendar th,.sp-calendar th a,.sp-calendar tfoot,.sp-calendar tfoot a,.sp-button{color: ' . $colors['heading'] . ' !important}';
 
-				if ( isset( $colors['heading'] ) )
-					echo '.sp-data-table th,.sp-data-table th a,.sp-data-table tfoot,.sp-data-table tfoot a,.sp-calendar th,.sp-calendar th a,.sp-calendar tfoot,.sp-calendar tfoot a,.sp-button{color: ' . $colors['heading'] . ' !important}';
-
-				if ( isset( $colors['link'] ) )
-					echo '.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a:focus{color: ' . $colors['link'] . ' !important}';
-			}
-
-			if ( $offset != 0 )
-				echo ' @media only screen and (min-width: 40.063em) {.sp-header{top: ' . $offset . 'px}}';
-
-			if ( ! empty( $custom ) )
-				echo ' /* SportsPress Custom CSS */ ' . $custom;
-			
-			echo '</style>';
+			if ( isset( $colors['link'] ) )
+				echo '.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a:focus{color: ' . $colors['link'] . ' !important}';
 		}
+
+		if ( $align != 'default' )
+			echo '.sp-data-table th,.sp-data-table td{text-align: ' . $align . ' !important}';
+
+		if ( $offset != 0 )
+			echo ' @media only screen and (min-width: 40.063em) {.sp-header{top: ' . $offset . 'px}}';
+
+		if ( ! empty( $custom ) )
+			echo ' /* SportsPress Custom CSS */ ' . $custom;
+		
+		echo '</style>';
 	}
 }
 

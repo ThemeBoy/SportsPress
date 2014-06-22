@@ -117,6 +117,19 @@ class SP_Settings_General extends SP_Settings_Page {
 				'checkboxgroup'		=> 'end',
 				'desc_tip'	=> __( 'This will enable a script allowing the countdowns to be animated.', 'sportspress' ),
 			),
+
+			array(
+				'title' 	=> __( 'Align', 'sportspress' ),
+				'id' 		=> 'sportspress_table_text_align',
+				'default'	=> 'default',
+				'type' 		=> 'radio',
+				'options' => array(
+					'default'	=> __( 'Default', 'sportspress' ),
+					'left'		=> __( 'Left', 'sportspress' ),
+					'center'	=> __( 'Center', 'sportspress' ),
+					'right'		=> __( 'Right', 'sportspress' ),
+				),
+			),
 			
 			array(
 				'title' 	=> __( 'Header Offset', 'sportspress' ),
