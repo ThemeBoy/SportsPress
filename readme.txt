@@ -12,9 +12,8 @@ SportsPress is a feature rich, extendable league management plugin. Designed to 
 
 == Description ==
 
-If you’re looking to create a professional sports website, you’ve come to the right place! Created by the developers at [ThemeBoy](http://themeboy.com/) and featured on Softpedia as [Script of the Day](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml), SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team website.
-
-For serious teams and athletes, ThemeBoy offers a series of premium SportsPress themes and extensions to give you even more sports functionality for your website. 
+= Create a Professional Sports Website =
+SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team website.
 
 = Features =
 * Equation Builder
@@ -34,7 +33,7 @@ More details about each feature are available on the [ThemeBoy Website](http://t
 
 = Premium Extensions =
 
-Looking for more league functionality? ThemeBoy offers a range of [SportsPress extensions](http://themeboy.com/plugins/) to add more features to your sports website. 
+Looking for more advanced sports functionality? ThemeBoy offers a range of [SportsPress extensions](http://themeboy.com/plugins/) to add more features to your sports website. 
 
 = Available Languages =
 * English – English ( en_US )
@@ -59,7 +58,7 @@ Looking for more league functionality? ThemeBoy offers a range of [SportsPress e
 * Spanish – Español ( es_ES )
 * Swedish – Svenska ( sv_SE )
 
-= Get involved =
+= Get Involved =
 
 Feel free to share your suggestions with us so we can continue to develop awesome sports features for you guys!
 
@@ -67,14 +66,16 @@ Developers can contribute via the [SportsPress GitHub Repository](https://github
 
 Translators can contribute new languages to SportsPress through [Transifex](https://www.transifex.com/projects/p/sportspress/).
 
-Your feedback is much appreciated and makes all the difference in improving SportsPress. Please rate, vote, review, and share!
-
 = Stay Current =
 To keep up with the latest updates and new features, be sure to do the following:
 
 * Visit the [ThemeBoy homepage](http://themeboy.com/).
 * Subscribe to our [YouTube channel](https://www.youtube.com/user/themeboyteam).
 * Follow ThemeBoy on [Facebook](https://facebook.com/themeboy) & [Twitter](http://twitter.com/themeboy).
+
+
+= Please Rate, Vote, and Enjoy! =
+Your feedback is much appreciated and makes all the difference in improving SportsPress.
 
 == Installation ==
 
