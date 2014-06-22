@@ -125,16 +125,12 @@ foreach ( $groups as $group ):
 		$output .= '<td class="data-name">' . $name . '</td>';
 		
 		if ( array_key_exists( 'team', $labels ) ):
-			$teams = get_post_meta( $player_id, 'sp_current_team' );
-			$team_names = array();
-			foreach ( $teams as $team ):
-				$team_name = get_the_title( $team );
-				if ( $link_teams ):
-					$team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
-				endif;
-				$team_names[] = $team_name;
-			endforeach;
-			$output .= '<td class="data-team">' . implode( ', ', $team_names ) . '</td>';
+			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_team', true ) );
+			$team_name = get_the_title( $team );
+			if ( $link_teams ):
+				$team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
+			endif;
+			$output .= '<td class="data-team">' . $team_name . '</td>';
 		endif;
 
 		foreach( $labels as $key => $value ):

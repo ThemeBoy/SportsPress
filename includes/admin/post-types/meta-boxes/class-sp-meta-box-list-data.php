@@ -66,7 +66,7 @@ class SP_Meta_Box_List_Data {
 						$i = 0;
 						foreach ( $data as $player_id => $player_stats ):
 							if ( !$player_id ) continue;
-							$team = get_post_meta( $player_id, 'sp_team', true );
+							$teams = get_post_meta( $player_id, 'sp_team', false );
 							$div = get_term( $player_id, 'sp_season' );
 							$number = get_post_meta( $player_id, 'sp_number', true );
 
@@ -87,7 +87,21 @@ class SP_Meta_Box_List_Data {
 										<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
 									</span>
 								</td>
-								<td><?php echo get_the_title( $team ); ?></td>
+								<td>
+									<?php
+									$selected = sp_array_value( $player_stats, 'team', get_post_meta( get_the_ID(), 'sp_team', true ) );
+									if ( ! $selected ) $selected = get_post_meta( $player_id, 'sp_team', true );
+									$include = get_post_meta( $player_id, 'sp_team' );
+									$args = array(
+										'post_type' => 'sp_team',
+										'name' => 'sp_players[' . $player_id . '][team]',
+										'include' => $include,
+										'selected' => $selected,
+										'values' => 'ID',
+									);
+									wp_dropdown_pages( $args );
+									?>
+								</td>
 								<?php foreach( $columns as $column => $label ):
 									if ( $column == 'team' ) continue;
 									$value = sp_array_value( $player_stats, $column, '' );
@@ -118,7 +132,7 @@ class SP_Meta_Box_List_Data {
 					<tr>
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
-						<?php foreach ( $columns as $key => $label ): ?>
+						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
 							<th><?php echo $label; ?></th>
 						<?php endforeach; ?>
 					</tr>
@@ -138,6 +152,7 @@ class SP_Meta_Box_List_Data {
 									<?php echo get_the_title( $player_id ); ?>
 								</td>
 								<?php foreach( $columns as $column => $label ):
+									if ( $column == 'team' ) continue;
 									$value = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $column, '' );
 									?>
 									<td><input type="text" name="sp_adjustments[<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" data-matrix="<?php echo $player_id; ?>_<?php echo $column; ?>" /></td>
