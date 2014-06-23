@@ -958,6 +958,13 @@ if ( !function_exists( 'sp_solve' ) ) {
 		if ( sp_array_value( $vars, 'eventsplayed', 0 ) <= 0 )
 			return '-';
 
+		// Equation Operating System
+        if ( ! class_exists( 'phpStack' ) )
+            include_once( SP()->plugin_path() . '/includes/libraries/class-phpstack.php' );
+        if ( ! class_exists( 'eqEOS' ) )
+            include_once( SP()->plugin_path() . '/includes/libraries/class-eqeos.php' );
+		$eos = new eqEOS();
+
 		// Clearance to begin calculating remains true if all equation variables are in vars
 		$clearance = true;
 
@@ -966,24 +973,17 @@ if ( !function_exists( 'sp_solve' ) ) {
 		foreach( $parts as $key => $value ):
 			if ( substr( $value, 0, 1 ) == '$' ):
 				if ( ! array_key_exists( preg_replace( "/[^a-z]/", '', $value ), $vars ) )
-					$clearance = false;
+					return 0;
+			endif;
+
+			$pos = strpos( $equation, '/' );
+			if ( $pos ):
+				if ( $eos->solveIF( substr( $equation, $pos + 2 ), $vars ) == 0 )
+					return 0;
 			endif;
 		endforeach;
 
-		if ( $clearance ):
-			// Equation Operating System
-	        if ( ! class_exists( 'phpStack' ) )
-	            include_once( SP()->plugin_path() . '/includes/libraries/class-phpstack.php' );
-	        if ( ! class_exists( 'eqEOS' ) )
-	            include_once( SP()->plugin_path() . '/includes/libraries/class-eqeos.php' );
-
-			$eos = new eqEOS();
-
-			// Solve using EOS;
-			return number_format( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision );
-		else:
-			return 0;
-		endif;
+		return number_format( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision );
 
 	}
 }
