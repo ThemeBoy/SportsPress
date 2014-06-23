@@ -10,7 +10,7 @@
 						{ "name" : "3", "description" : "3rd quarter points" },
 						{ "name" : "4", "description" : "4th quarter points" },
 						{ "name" : "", "id" : "ot", "description" : "Overtime points" },
-						{ "name" : "T", "description" : "Total points", "main" : 1 }
+						{ "name" : "T", "id" : "points", "description" : "Total points", "main" : 1 }
 	],
 	"performance": [
 						{ "name" : "MIN", "description" : "Minutes" },
@@ -34,9 +34,9 @@
 						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
 						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
 						{ "name" : "PCT", "equation" : "$win / $eventsplayed", "precision" : 3, "description" : "Win percentage" },
-						{ "name" : "PF", "equation" : "$tfor / $eventsplayed", "precision" : 1, "description" : "Average points for" },
-						{ "name" : "PA", "equation" : "$tagainst / $eventsplayed", "precision" : 1, "description" : "Average points against" },
-						{ "name" : "DIFF", "equation" : "( $tfor - $tagainst ) / $eventsplayed", "precision" : 1, "description" : "Average point differential" },
+						{ "name" : "PF", "equation" : "$pointsfor / $eventsplayed", "description" : "Average points for" },
+						{ "name" : "PA", "equation" : "$pointsagainst / $eventsplayed", "description" : "Average points against" },
+						{ "name" : "DIFF", "equation" : "( $pointsfor - $pointsagainst ) / $eventsplayed", "description" : "Average point differential" },
 						{ "name" : "L10", "equation" : "$last10", "description" : "Last 10 games" },
 						{ "name" : "STRK", "equation" : "$streak", "description" : "Current streak" }
 	],

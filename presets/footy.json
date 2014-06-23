@@ -17,7 +17,7 @@
 						{ "name" : "Q4", "description" : "Fourth quarter points" },
 						"Goals",
 						"Behinds",
-						{ "name" : "Total", "description" : "Total points", "primary" : 1 }
+						{ "name" : "Total", "id" : "points", "description" : "Total points", "primary" : 1 }
 	],
 	"performance": [
 						"Kicks",
