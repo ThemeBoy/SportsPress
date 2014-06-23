@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.7
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,7 +21,7 @@ class SP_Admin_Permalink_Settings {
 	 * Hook in tabs.
 	 */
 	public function __construct() {
-		$this->slugs = array(
+		$this->slugs = apply_filters( 'sportspress_permalink_slugs', array(
 			array( 'event', __( 'Events', 'sportspress' ) ),
 			array( 'venue', __( 'Venues', 'sportspress' ) ),
 			array( 'calendar', __( 'Calendars', 'sportspress' ) ),
@@ -33,7 +33,7 @@ class SP_Admin_Permalink_Settings {
 			array( 'position', __( 'Positions', 'sportspress' ) ),
 			array( 'list', __( 'Player Lists', 'sportspress' ) ),
 			array( 'staff', __( 'Staff', 'sportspress' ) ),
-		);
+		) );
 
 		add_action( 'admin_init', array( $this, 'settings_init' ) );
 		add_action( 'admin_init', array( $this, 'settings_save' ) );
