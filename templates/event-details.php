@@ -29,7 +29,7 @@ if ( $seasons ):
 	$data[ __( 'Season', 'sportspress' ) ] = $season->name;
 endif;
 ?>
-<h3><?php echo __( 'Details', 'sportspress' ); ?></h3>
+<h3><?php _e( 'Details', 'sportspress' ); ?></h3>
 <div class="sp-table-wrapper sp-scrollable-table-wrapper">
 	<table class="sp-event-details sp-data-table">
 		<thead>

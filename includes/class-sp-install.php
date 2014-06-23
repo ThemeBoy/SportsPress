@@ -531,7 +531,7 @@ class SP_Install {
 			if ( preg_match( $regexp, $response['body'], $matches ) ) {
 				$changelog = (array) preg_split( '~[\r\n]+~', trim( $matches[2] ) );
 
-				echo __( 'What\'s new:', 'sportspress' ) . '<div style="font-weight: normal;">';
+				_e( 'What\'s new:', 'sportspress' ) . '<div style="font-weight: normal;">';
 
 				$ul = false;
 

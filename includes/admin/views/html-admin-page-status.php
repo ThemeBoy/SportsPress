@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<td><?php _e( 'WP Multisite Enabled','sportspress' ); ?>:</td>
-			<td><?php if ( is_multisite() ) echo __( 'Yes', 'sportspress' ); else echo __( 'No', 'sportspress' ); ?></td>
+			<td><?php if ( is_multisite() ) _e( 'Yes', 'sportspress' ); else _e( 'No', 'sportspress' ); ?></td>
 		</tr>
 		<tr>
 			<td><?php _e( 'Web Server Info','sportspress' ); ?>:</td>

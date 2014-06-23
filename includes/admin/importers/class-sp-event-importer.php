@@ -359,7 +359,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				else:
 
 					echo '<p><strong>' . __( 'Sorry, there has been an error.', 'sportspress' ) . '</strong><br />';
-					echo __( 'The CSV is invalid.', 'sportspress' ) . '</p>';
+					_e( 'The CSV is invalid.', 'sportspress' ) . '</p>';
 					$this->footer();
 					die();
 

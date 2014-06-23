@@ -163,9 +163,9 @@ if ( isset( $columns ) )
 						endif;
 						if ( $event->post_content !== null ):
 							if ( $event->post_status == 'publish' ):
-								echo __( 'Recap', 'sportspress' );
+								_e( 'Recap', 'sportspress' );
 							else:
-								echo __( 'Preview', 'sportspress' );
+								_e( 'Preview', 'sportspress' );
 							endif;
 						endif;
 
