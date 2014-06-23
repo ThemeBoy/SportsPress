@@ -1,0 +1,3251 @@
+#
+# Translators:
+# vanbo <vanbo.develops@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: SportsPress\n"
+"POT-Creation-Date: 2014-06-23 22:09+1000\n"
+"PO-Revision-Date: 2014-06-23 22:09+1000\n"
+"Last-Translator: ThemeBoy <support@themeboy.com>\n"
+"Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/projects/p/"
+"sportspress/language/bg_BG/)\n"
+"Language: bg_BG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: sportspress.php:87 sportspress.php:96
+msgid "Cheatin&#8217; huh?"
+msgstr "Правиме се на луди, а?"
+
+#: sportspress.php:139 includes/admin/class-sp-admin-menus.php:102
+msgid "Settings"
+msgstr "Настройки"
+
+#: sportspress.php:140
+msgid "Themes"
+msgstr ""
+
+#: sportspress.php:141
+msgid "Extensions"
+msgstr ""
+
+#: sportspress.php:326 includes/class-sp-post-types.php:464
+#: includes/admin/class-sp-admin-permalink-settings.php:32
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:51
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:44
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:120
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:168
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:103
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:58
+#: includes/admin/settings/class-sp-settings-events.php:93
+#: includes/admin/settings/class-sp-settings-players.php:25
+#: includes/admin/settings/class-sp-settings-players.php:54
+msgid "Players"
+msgstr ""
+
+#: sportspress.php:328 includes/class-sp-install.php:160
+#: includes/class-sp-player-list.php:366 includes/class-sp-post-types.php:465
+#: includes/sp-core-functions.php:1068
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:62
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:50
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:134
+#: templates/event-performance.php:59
+msgid "Player"
+msgstr ""
+
+#: sportspress.php:330
+#: includes/admin/settings/class-sp-settings-players.php:86
+msgid "players"
+msgstr ""
+
+#: sportspress.php:332 includes/class-sp-post-types.php:466
+#: includes/admin/class-sp-admin-welcome.php:250
+msgid "Add New Player"
+msgstr ""
+
+#: sportspress.php:334 includes/class-sp-post-types.php:467
+msgid "Edit Player"
+msgstr ""
+
+#: sportspress.php:336
+#: includes/admin/settings/class-sp-settings-players.php:39
+msgid "Player Options"
+msgstr ""
+
+#: sportspress.php:338 includes/class-sp-post-types.php:281
+#: includes/class-sp-post-types.php:282
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:127
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:35
+#: includes/admin/settings/class-sp-settings-config.php:225
+#: includes/admin/views/html-admin-page-status.php:247
+msgid "Player Performance"
+msgstr ""
+
+#: sportspress.php:340 includes/sp-template-hooks.php:173
+msgid "Photo"
+msgstr ""
+
+#: sportspress.php:342 includes/sp-template-hooks.php:179
+msgid "Add photo"
+msgstr ""
+
+#: sportspress.php:344 includes/sp-template-hooks.php:182
+msgid "Remove photo"
+msgstr ""
+
+#: sportspress.php:346 includes/sp-template-hooks.php:176
+msgid "Select Photo"
+msgstr ""
+
+#: sportspress.php:348
+msgid "Display photos"
+msgstr ""
+
+#: sportspress.php:350
+#: includes/admin/settings/class-sp-settings-events.php:102
+#: includes/admin/settings/class-sp-settings-players.php:55
+msgid "Link players"
+msgstr ""
+
+#: includes/class-sp-countries.php:29
+msgid "Africa"
+msgstr ""
+
+#: includes/class-sp-countries.php:30
+msgid "Asia"
+msgstr ""
+
+#: includes/class-sp-countries.php:31
+msgid "Europe"
+msgstr ""
+
+#: includes/class-sp-countries.php:32
+msgid "North America"
+msgstr ""
+
+#: includes/class-sp-countries.php:33
+msgid "Oceania"
+msgstr ""
+
+#: includes/class-sp-countries.php:34
+msgid "South America"
+msgstr ""
+
+#: includes/class-sp-countries.php:38
+msgid "Andorra"
+msgstr "Андора"
+
+#: includes/class-sp-countries.php:39
+msgid "United Arab Emirates"
+msgstr "Обединени Арабски Емирства"
+
+#: includes/class-sp-countries.php:40
+msgid "Afghanistan"
+msgstr "Афганистан"
+
+#: includes/class-sp-countries.php:41
+msgid "Antigua and Barbuda"
+msgstr "Антигуа и Барбуда"
+
+#: includes/class-sp-countries.php:42
+msgid "Albania"
+msgstr "Албания"
+
+#: includes/class-sp-countries.php:43
+msgid "Armenia"
+msgstr "Армения"
+
+#: includes/class-sp-countries.php:44
+msgid "Angola"
+msgstr "Ангола"
+
+#: includes/class-sp-countries.php:45
+msgid "Argentina"
+msgstr "Аржентина"
+
+#: includes/class-sp-countries.php:46
+msgid "Austria"
+msgstr "Австрия"
+
+#: includes/class-sp-countries.php:47
+msgid "Australia"
+msgstr "Австралия"
+
+#: includes/class-sp-countries.php:48
+msgid "Azerbaijan"
+msgstr "Азърбейджан"
+
+#: includes/class-sp-countries.php:49
+msgid "Bosnia and Herzegovina"
+msgstr "Босна и Херцеговина"
+
+#: includes/class-sp-countries.php:50
+msgid "Barbados"
+msgstr "Барбадос"
+
+#: includes/class-sp-countries.php:51
+msgid "Bangladesh"
+msgstr "Бангладеш"
+
+#: includes/class-sp-countries.php:52
+msgid "Belgium"
+msgstr "Белгия"
+
+#: includes/class-sp-countries.php:53
+msgid "Burkina Faso"
+msgstr "Буркина Фасо"
+
+#: includes/class-sp-countries.php:54
+msgid "Bulgaria"
+msgstr "България"
+
+#: includes/class-sp-countries.php:55
+msgid "Bahrain"
+msgstr "Бахрейн"
+
+#: includes/class-sp-countries.php:56
+msgid "Burundi"
+msgstr "Бурунди"
+
+#: includes/class-sp-countries.php:57
+msgid "Benin"
+msgstr "Бенин"
+
+#: includes/class-sp-countries.php:58
+msgid "Brunei"
+msgstr "Бруней"
+
+#: includes/class-sp-countries.php:59
+msgid "Bolivia"
+msgstr "Боливия"
+
+#: includes/class-sp-countries.php:60
+msgid "Brazil"
+msgstr "Бразилия"
+
+#: includes/class-sp-countries.php:61
+msgid "Bahamas"
+msgstr "Бахами"
+
+#: includes/class-sp-countries.php:62
+msgid "Bhutan"
+msgstr "Бутан"
+
+#: includes/class-sp-countries.php:63
+msgid "Botswana"
+msgstr "Ботсвана"
+
+#: includes/class-sp-countries.php:64
+msgid "Belarus"
+msgstr "Беларус"
+
+#: includes/class-sp-countries.php:65
+msgid "Belize"
+msgstr "Белиз"
+
+#: includes/class-sp-countries.php:66
+msgid "Canada"
+msgstr "Канада"
+
+#: includes/class-sp-countries.php:67
+msgid "Democratic Republic of the Congo"
+msgstr ""
+
+#: includes/class-sp-countries.php:68
+msgid "Central African Republic"
+msgstr "Централноафриканска република"
+
+#: includes/class-sp-countries.php:69
+msgid "Republic of the Congo"
+msgstr ""
+
+#: includes/class-sp-countries.php:70
+msgid "Switzerland"
+msgstr "Швейцария"
+
+#: includes/class-sp-countries.php:71
+msgid "Ivory Coast"
+msgstr "Кот д'Ивоар"
+
+#: includes/class-sp-countries.php:72
+msgid "Chile"
+msgstr "Чили"
+
+#: includes/class-sp-countries.php:73
+msgid "Cameroon"
+msgstr "Камерун"
+
+#: includes/class-sp-countries.php:74
+msgid "China"
+msgstr "Китай"
+
+#: includes/class-sp-countries.php:75
+msgid "Colombia"
+msgstr "Колумбия"
+
+#: includes/class-sp-countries.php:76
+msgid "Costa Rica"
+msgstr "Коста Рика"
+
+#: includes/class-sp-countries.php:77
+msgid "Cuba"
+msgstr "Куба"
+
+#: includes/class-sp-countries.php:78
+msgid "Cape Verde"
+msgstr "Кабо Верде"
+
+#: includes/class-sp-countries.php:79
+msgid "Cyprus"
+msgstr "Кипър"
+
+#: includes/class-sp-countries.php:80
+msgid "Czech Republic"
+msgstr "Република Чехия"
+
+#: includes/class-sp-countries.php:81
+msgid "Germany"
+msgstr "Германия"
+
+#: includes/class-sp-countries.php:82
+msgid "Djibouti"
+msgstr "Джиботи"
+
+#: includes/class-sp-countries.php:83
+msgid "Denmark"
+msgstr "Дания"
+
+#: includes/class-sp-countries.php:84
+msgid "Dominica"
+msgstr "Доминика"
+
+#: includes/class-sp-countries.php:85
+msgid "Dominican Republic"
+msgstr "Република Доминикана"
+
+#: includes/class-sp-countries.php:86
+msgid "Algeria"
+msgstr "Алжир"
+
+#: includes/class-sp-countries.php:87
+msgid "Ecuador"
+msgstr "Еквадор"
+
+#: includes/class-sp-countries.php:88
+msgid "Estonia"
+msgstr "Естония"
+
+#: includes/class-sp-countries.php:89
+msgid "Egypt"
+msgstr "Египет"
+
+#: includes/class-sp-countries.php:90
+msgid "Western Sahara"
+msgstr "Западна Сахара"
+
+#: includes/class-sp-countries.php:91
+msgid "England"
+msgstr ""
+
+#: includes/class-sp-countries.php:92
+msgid "Eritrea"
+msgstr "Еритея"
+
+#: includes/class-sp-countries.php:93
+msgid "Spain"
+msgstr "Испания"
+
+#: includes/class-sp-countries.php:94
+msgid "Ethiopia"
+msgstr "Етеопия"
+
+#: includes/class-sp-countries.php:95
+msgid "Finland"
+msgstr "Финландия"
+
+#: includes/class-sp-countries.php:96
+msgid "Fiji"
+msgstr "Фиджи"
+
+#: includes/class-sp-countries.php:97
+msgid "Micronesia"
+msgstr "Микронезия"
+
+#: includes/class-sp-countries.php:98
+msgid "France"
+msgstr "Франция"
+
+#: includes/class-sp-countries.php:99
+msgid "Gabon"
+msgstr "Габон"
+
+#: includes/class-sp-countries.php:100
+msgid "United Kingdom"
+msgstr "Великобритания"
+
+#: includes/class-sp-countries.php:101
+msgid "Grenada"
+msgstr "Гренада"
+
+#: includes/class-sp-countries.php:102
+msgid "Georgia"
+msgstr "Грузия"
+
+#: includes/class-sp-countries.php:103
+msgid "Ghana"
+msgstr "Гана"
+
+#: includes/class-sp-countries.php:104
+msgid "Gambia"
+msgstr "Гамбия"
+
+#: includes/class-sp-countries.php:105
+msgid "Guinea"
+msgstr "Гвинея"
+
+#: includes/class-sp-countries.php:106
+msgid "Equatorial Guinea"
+msgstr "Екваториална Гвинея"
+
+#: includes/class-sp-countries.php:107
+msgid "Greece"
+msgstr "Гърция"
+
+#: includes/class-sp-countries.php:108
+msgid "Guatemala"
+msgstr "Гватемала"
+
+#: includes/class-sp-countries.php:109
+msgid "Guinea-Bissau"
+msgstr "Гвинея-Бисау"
+
+#: includes/class-sp-countries.php:110
+msgid "Guyana"
+msgstr "Гуана"
+
+#: includes/class-sp-countries.php:111
+msgid "Hong Kong"
+msgstr "Хонг Конг"
+
+#: includes/class-sp-countries.php:112
+msgid "Honduras"
+msgstr "Хондурас"
+
+#: includes/class-sp-countries.php:113
+msgid "Croatia"
+msgstr "Хърватия"
+
+#: includes/class-sp-countries.php:114
+msgid "Haiti"
+msgstr "Хаити"
+
+#: includes/class-sp-countries.php:115
+msgid "Hungary"
+msgstr "Унгария"
+
+#: includes/class-sp-countries.php:116
+msgid "Indonesia"
+msgstr "Индонезия"
+
+#: includes/class-sp-countries.php:117
+msgid "Ireland"
+msgstr "Ирландия"
+
+#: includes/class-sp-countries.php:118
+msgid "Israel"
+msgstr "Израел"
+
+#: includes/class-sp-countries.php:119
+msgid "India"
+msgstr "Индия"
+
+#: includes/class-sp-countries.php:120
+msgid "Iraq"
+msgstr "Ирак"
+
+#: includes/class-sp-countries.php:121
+msgid "Iran"
+msgstr "Иран"
+
+#: includes/class-sp-countries.php:122
+msgid "Iceland"
+msgstr "Исландия"
+
+#: includes/class-sp-countries.php:123
+msgid "Italy"
+msgstr "Италия"
+
+#: includes/class-sp-countries.php:124
+msgid "Jamaica"
+msgstr "Ямайка"
+
+#: includes/class-sp-countries.php:125
+msgid "Jordan"
+msgstr "Йордания"
+
+#: includes/class-sp-countries.php:126
+msgid "Japan"
+msgstr "Япония"
+
+#: includes/class-sp-countries.php:127
+msgid "Kenya"
+msgstr "Кения"
+
+#: includes/class-sp-countries.php:128
+msgid "Kyrgyzstan"
+msgstr "Киргизстан"
+
+#: includes/class-sp-countries.php:129
+msgid "Cambodia"
+msgstr "Камбоджа"
+
+#: includes/class-sp-countries.php:130
+msgid "Kiribati"
+msgstr "Кирибати"
+
+#: includes/class-sp-countries.php:131
+msgid "Comoros"
+msgstr "Коморски острови"
+
+#: includes/class-sp-countries.php:132
+msgid "Saint Kitts and Nevis"
+msgstr "Сейнт Китс и Невис"
+
+#: includes/class-sp-countries.php:133
+msgid "North Korea"
+msgstr "Северна Корея"
+
+#: includes/class-sp-countries.php:134
+msgid "South Korea"
+msgstr "Южна Корея"
+
+#: includes/class-sp-countries.php:135
+msgid "Kuwait"
+msgstr "Кувейт"
+
+#: includes/class-sp-countries.php:136
+msgid "Kazakhstan"
+msgstr "Казахстан"
+
+#: includes/class-sp-countries.php:137
+msgid "Laos"
+msgstr "Лаос"
+
+#: includes/class-sp-countries.php:138
+msgid "Lebanon"
+msgstr "Ливан"
+
+#: includes/class-sp-countries.php:139
+msgid "Saint Lucia"
+msgstr "Сент Лусия"
+
+#: includes/class-sp-countries.php:140
+msgid "Liechtenstein"
+msgstr "Лихтенщайн"
+
+#: includes/class-sp-countries.php:141
+msgid "Sri Lanka"
+msgstr "Шри Ланка"
+
+#: includes/class-sp-countries.php:142
+msgid "Liberia"
+msgstr "Либерия"
+
+#: includes/class-sp-countries.php:143
+msgid "Lesotho"
+msgstr "Лесото"
+
+#: includes/class-sp-countries.php:144
+msgid "Lithuania"
+msgstr "Литуана"
+
+#: includes/class-sp-countries.php:145
+msgid "Luxembourg"
+msgstr "Люксембург"
+
+#: includes/class-sp-countries.php:146
+msgid "Latvia"
+msgstr "Латвия"
+
+#: includes/class-sp-countries.php:147
+msgid "Libya"
+msgstr "Либия"
+
+#: includes/class-sp-countries.php:148
+msgid "Morocco"
+msgstr "Мароко"
+
+#: includes/class-sp-countries.php:149
+msgid "Monaco"
+msgstr "Монако"
+
+#: includes/class-sp-countries.php:150
+msgid "Moldova"
+msgstr "Молдова"
+
+#: includes/class-sp-countries.php:151
+msgid "Montenegro"
+msgstr "Монтенегро"
+
+#: includes/class-sp-countries.php:152
+msgid "Madagascar"
+msgstr "Мадагаскар"
+
+#: includes/class-sp-countries.php:153
+msgid "Marshall Islands"
+msgstr "Маршалови острови"
+
+#: includes/class-sp-countries.php:154
+msgid "Macedonia"
+msgstr "Македония"
+
+#: includes/class-sp-countries.php:155
+msgid "Mali"
+msgstr "Мали"
+
+#: includes/class-sp-countries.php:156
+msgid "Burma"
+msgstr ""
+
+#: includes/class-sp-countries.php:157
+msgid "Mongolia"
+msgstr "Монголия"
+
+#: includes/class-sp-countries.php:158
+msgid "Macau"
+msgstr ""
+
+#: includes/class-sp-countries.php:159
+msgid "Mauritania"
+msgstr "Мавритания"
+
+#: includes/class-sp-countries.php:160
+msgid "Malta"
+msgstr "Малта"
+
+#: includes/class-sp-countries.php:161
+msgid "Mauritius"
+msgstr "Мавриций"
+
+#: includes/class-sp-countries.php:162
+msgid "Maldives"
+msgstr "Малдиви"
+
+#: includes/class-sp-countries.php:163
+msgid "Malawi"
+msgstr "Малави"
+
+#: includes/class-sp-countries.php:164
+msgid "Mexico"
+msgstr "Мексико"
+
+#: includes/class-sp-countries.php:165
+msgid "Malaysia"
+msgstr "Малайзия"
+
+#: includes/class-sp-countries.php:166
+msgid "Mozambique"
+msgstr "Мозамбик"
+
+#: includes/class-sp-countries.php:167
+msgid "Namibia"
+msgstr "Намибия"
+
+#: includes/class-sp-countries.php:168
+msgid "Northern Ireland"
+msgstr ""
+
+#: includes/class-sp-countries.php:169
+msgid "Niger"
+msgstr "Нигер"
+
+#: includes/class-sp-countries.php:170
+msgid "Nigeria"
+msgstr "Нигерия"
+
+#: includes/class-sp-countries.php:171
+msgid "Nicaragua"
+msgstr "Никарагуа"
+
+#: includes/class-sp-countries.php:172
+msgid "Netherlands"
+msgstr "Нидерландия"
+
+#: includes/class-sp-countries.php:173
+msgid "Norway"
+msgstr "Норвегия"
+
+#: includes/class-sp-countries.php:174
+msgid "Nepal"
+msgstr "Непал"
+
+#: includes/class-sp-countries.php:175
+msgid "Nauru"
+msgstr "Науру"
+
+#: includes/class-sp-countries.php:176
+msgid "New Zealand"
+msgstr "Нова Зеландия"
+
+#: includes/class-sp-countries.php:177
+msgid "Oman"
+msgstr "Оман"
+
+#: includes/class-sp-countries.php:178
+msgid "Panama"
+msgstr "Панама"
+
+#: includes/class-sp-countries.php:179
+msgid "Peru"
+msgstr "Перу"
+
+#: includes/class-sp-countries.php:180
+msgid "Papua New Guinea"
+msgstr "Папа Нова Гвинея"
+
+#: includes/class-sp-countries.php:181
+msgid "Philippines"
+msgstr "Филипини"
+
+#: includes/class-sp-countries.php:182
+msgid "Pakistan"
+msgstr "Пакистан"
+
+#: includes/class-sp-countries.php:183
+msgid "Poland"
+msgstr "Полша"
+
+#: includes/class-sp-countries.php:184
+msgid "Portugal"
+msgstr "Португалия"
+
+#: includes/class-sp-countries.php:185
+msgid "Palau"
+msgstr "Палау"
+
+#: includes/class-sp-countries.php:186
+msgid "Paraguay"
+msgstr "Парагуа"
+
+#: includes/class-sp-countries.php:187
+msgid "Qatar"
+msgstr "Катар"
+
+#: includes/class-sp-countries.php:188
+msgid "Romania"
+msgstr "Ромъния"
+
+#: includes/class-sp-countries.php:189
+msgid "Serbia"
+msgstr "Сърбия"
+
+#: includes/class-sp-countries.php:190
+msgid "Russia"
+msgstr "Русия"
+
+#: includes/class-sp-countries.php:191
+msgid "Rwanda"
+msgstr "Руанда"
+
+#: includes/class-sp-countries.php:192
+msgid "Saudi Arabia"
+msgstr "Саудитска Арабия"
+
+#: includes/class-sp-countries.php:193
+msgid "Solomon Islands"
+msgstr "Соломонови острови"
+
+#: includes/class-sp-countries.php:194
+msgid "Seychelles"
+msgstr "Сейшели"
+
+#: includes/class-sp-countries.php:195
+msgid "Sudan"
+msgstr "Судан"
+
+#: includes/class-sp-countries.php:196
+msgid "Sweden"
+msgstr "Швеция"
+
+#: includes/class-sp-countries.php:197
+msgid "Scotland"
+msgstr ""
+
+#: includes/class-sp-countries.php:198
+msgid "Singapore"
+msgstr "Сингапур"
+
+#: includes/class-sp-countries.php:199
+msgid "Slovenia"
+msgstr "Словения"
+
+#: includes/class-sp-countries.php:200
+msgid "Slovakia"
+msgstr "Словакия"
+
+#: includes/class-sp-countries.php:201
+msgid "Sierra Leone"
+msgstr "Сиера Леоне"
+
+#: includes/class-sp-countries.php:202
+msgid "San Marino"
+msgstr "Сан Марино"
+
+#: includes/class-sp-countries.php:203
+msgid "Senegal"
+msgstr "Сенегал"
+
+#: includes/class-sp-countries.php:204
+msgid "Somalia"
+msgstr "Сомалия"
+
+#: includes/class-sp-countries.php:205
+msgid "Suriname"
+msgstr "Суринам"
+
+#: includes/class-sp-countries.php:206
+msgid "Sao Tome and Principe"
+msgstr "Сао Томе и Принсипи"
+
+#: includes/class-sp-countries.php:207
+msgid "El Salvador"
+msgstr "Салвадор"
+
+#: includes/class-sp-countries.php:208
+msgid "Swaziland"
+msgstr "Свазиленд"
+
+#: includes/class-sp-countries.php:209
+msgid "Chad"
+msgstr "Чад"
+
+#: includes/class-sp-countries.php:210
+msgid "Togo"
+msgstr "Того"
+
+#: includes/class-sp-countries.php:211
+msgid "Thailand"
+msgstr "Тайланд"
+
+#: includes/class-sp-countries.php:212
+msgid "Tajikistan"
+msgstr "Таджикистан"
+
+#: includes/class-sp-countries.php:213
+msgid "East Timor"
+msgstr ""
+
+#: includes/class-sp-countries.php:214
+msgid "Turkmenistan"
+msgstr "Тюркменистан"
+
+#: includes/class-sp-countries.php:215
+msgid "Tunisia"
+msgstr "Тунис"
+
+#: includes/class-sp-countries.php:216
+msgid "Tonga"
+msgstr "Тонга"
+
+#: includes/class-sp-countries.php:217
+msgid "Turkey"
+msgstr "Турция"
+
+#: includes/class-sp-countries.php:218
+msgid "Trinidad and Tobago"
+msgstr "Тринидат и Тобаго"
+
+#: includes/class-sp-countries.php:219
+msgid "Tuvalu"
+msgstr "Тувалу"
+
+#: includes/class-sp-countries.php:220
+msgid "Taiwan"
+msgstr "Тайван"
+
+#: includes/class-sp-countries.php:221
+msgid "Tanzania"
+msgstr "Танзания"
+
+#: includes/class-sp-countries.php:222
+msgid "Ukraine"
+msgstr "Украйна"
+
+#: includes/class-sp-countries.php:223
+msgid "Uganda"
+msgstr "Уганда"
+
+#: includes/class-sp-countries.php:224
+msgid "United States"
+msgstr "Съединени Американски Щати"
+
+#: includes/class-sp-countries.php:225
+msgid "Uruguay"
+msgstr "Уругвай"
+
+#: includes/class-sp-countries.php:226
+msgid "Uzbekistan"
+msgstr "Узбекистан"
+
+#: includes/class-sp-countries.php:227
+msgid "Vatican City"
+msgstr "Ватикана"
+
+#: includes/class-sp-countries.php:228
+msgid "Saint Vincent and the Grenadines"
+msgstr "Сейнт Винсент и Гренадини"
+
+#: includes/class-sp-countries.php:229
+msgid "Venezuela"
+msgstr "Венецуела"
+
+#: includes/class-sp-countries.php:230
+msgid "Vietnam"
+msgstr "Виетнам"
+
+#: includes/class-sp-countries.php:231
+msgid "Vanuatu"
+msgstr "Вануату"
+
+#: includes/class-sp-countries.php:232
+msgid "Wales"
+msgstr ""
+
+#: includes/class-sp-countries.php:233
+msgid "Samoa"
+msgstr ""
+
+#: includes/class-sp-countries.php:234
+msgid "Yemen"
+msgstr "Йемен"
+
+#: includes/class-sp-countries.php:235
+msgid "South Africa"
+msgstr "Република Южна Африка"
+
+#: includes/class-sp-countries.php:236
+msgid "Zambia"
+msgstr "Замбия"
+
+#: includes/class-sp-countries.php:237
+msgid "Zimbabwe"
+msgstr "Зимбабве"
+
+#: includes/class-sp-event.php:43 includes/class-sp-post-types.php:192
+#: includes/sp-core-functions.php:1046
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:57
+msgid "Outcome"
+msgstr ""
+
+#: includes/class-sp-event.php:96 includes/class-sp-post-types.php:123
+#: includes/sp-core-functions.php:1069
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:67
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:70
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:77
+msgid "Position"
+msgstr "Позиция"
+
+#: includes/class-sp-formats.php:27 includes/class-sp-post-types.php:36
+#: includes/sp-core-functions.php:1044
+#: includes/admin/importers/class-sp-event-importer.php:458
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:48
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:94
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:111
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:48
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:48
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:53
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:28
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:30
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:27
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:61
+#: templates/event-details.php:24
+msgid "League"
+msgstr ""
+
+#: includes/class-sp-formats.php:28
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:114
+msgid "Friendly"
+msgstr ""
+
+#: includes/class-sp-formats.php:31 includes/class-sp-post-types.php:372
+#: includes/widgets/class-sp-widget-event-blocks.php:51
+#: includes/widgets/class-sp-widget-event-calendar.php:44
+#: includes/widgets/class-sp-widget-event-list.php:54
+msgid "Calendar"
+msgstr ""
+
+#: includes/class-sp-formats.php:32 includes/class-sp-formats.php:36
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:55
+msgid "List"
+msgstr "Списък"
+
+#: includes/class-sp-formats.php:33
+msgid "Blocks"
+msgstr ""
+
+#: includes/class-sp-formats.php:37
+msgid "Gallery"
+msgstr ""
+
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:113
+#: includes/admin/class-sp-admin-dashboard.php:80 templates/countdown.php:64
+msgid "days"
+msgstr ""
+
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:114 templates/countdown.php:65
+msgid "hrs"
+msgstr ""
+
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:115 templates/countdown.php:66
+msgid "mins"
+msgstr ""
+
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:116 templates/countdown.php:67
+msgid "secs"
+msgstr ""
+
+#: includes/class-sp-frontend-scripts.php:57
+msgid "Previous"
+msgstr ""
+
+#: includes/class-sp-frontend-scripts.php:57
+msgid "Next"
+msgstr ""
+
+#: includes/class-sp-install.php:192 includes/class-sp-post-types.php:525
+#: includes/class-sp-post-types.php:526 includes/sp-core-functions.php:1070
+#: includes/admin/class-sp-admin-permalink-settings.php:35
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:45
+#: includes/admin/settings/class-sp-settings-events.php:110
+#: includes/admin/settings/class-sp-settings-staff.php:25
+#: templates/event-staff.php:41
+msgid "Staff"
+msgstr ""
+
+#: includes/class-sp-install.php:230
+msgid "Event Manager"
+msgstr ""
+
+#: includes/class-sp-install.php:273
+msgid "Team Manager"
+msgstr ""
+
+#: includes/class-sp-install.php:337
+msgid "League Manager"
+msgstr ""
+
+#: includes/class-sp-install.php:534
+msgid "What's new:"
+msgstr "Какво ново:"
+
+#: includes/class-sp-league-table.php:319
+#: includes/class-sp-player-list.php:351 includes/class-sp-player-list.php:368
+#: includes/class-sp-player.php:312 includes/class-sp-player.php:335
+#: includes/class-sp-post-types.php:403 includes/sp-core-functions.php:1054
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:51
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:50
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:63
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:98
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:45
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:53
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:58
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:66
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:53
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:114
+#: includes/admin/settings/class-sp-settings-events.php:192
+#: templates/event-results.php:93
+msgid "Team"
+msgstr ""
+
+#: includes/class-sp-player.php:333 includes/class-sp-post-types.php:65
+#: includes/class-sp-team.php:255 includes/sp-core-functions.php:1053
+#: includes/admin/importers/class-sp-event-importer.php:473
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:49
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:95
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:49
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:49
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:68
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:45
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:44
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:63
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:41
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:68
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:64
+#: templates/event-details.php:29
+msgid "Season"
+msgstr ""
+
+#: includes/class-sp-post-types.php:35 includes/class-sp-post-types.php:49
+#: includes/admin/class-sp-admin-menus.php:57
+#: includes/admin/class-sp-admin-menus.php:248
+#: includes/admin/class-sp-admin-permalink-settings.php:29
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:67
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:66
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:66
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:116
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:123
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:40
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:93
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:100
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:45
+#: includes/admin/views/html-admin-page-status.php:296
+msgid "Leagues"
+msgstr ""
+
+#: includes/class-sp-post-types.php:37 includes/class-sp-post-types.php:66
+#: includes/class-sp-post-types.php:95 includes/class-sp-post-types.php:124
+#: includes/sp-core-functions.php:388 includes/sp-core-functions.php:419
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:57
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:72
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:87
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:102
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:64
+#: includes/widgets/class-sp-widget-event-blocks.php:55
+#: includes/widgets/class-sp-widget-event-calendar.php:48
+#: includes/widgets/class-sp-widget-event-list.php:58
+msgid "All"
+msgstr "Всички"
+
+#: includes/class-sp-post-types.php:38
+msgid "Edit League"
+msgstr ""
+
+#: includes/class-sp-post-types.php:39 includes/class-sp-post-types.php:68
+#: includes/class-sp-post-types.php:97 includes/class-sp-post-types.php:126
+#: includes/class-sp-post-types.php:166 includes/class-sp-post-types.php:196
+#: includes/class-sp-post-types.php:226 includes/class-sp-post-types.php:256
+#: includes/class-sp-post-types.php:286 includes/class-sp-post-types.php:316
+#: includes/class-sp-post-types.php:346 includes/class-sp-post-types.php:376
+#: includes/class-sp-post-types.php:407 includes/class-sp-post-types.php:437
+#: includes/class-sp-post-types.php:469 includes/class-sp-post-types.php:499
+#: includes/class-sp-post-types.php:530
+msgid "View"
+msgstr "Преглед"
+
+#: includes/class-sp-post-types.php:40 includes/class-sp-post-types.php:69
+#: includes/class-sp-post-types.php:98 includes/class-sp-post-types.php:127
+msgid "Update"
+msgstr "Обнови"
+
+#: includes/class-sp-post-types.php:41 includes/class-sp-post-types.php:70
+#: includes/class-sp-post-types.php:99 includes/class-sp-post-types.php:128
+#: includes/sp-core-functions.php:848 includes/sp-core-functions.php:865
+#: includes/admin/class-sp-admin-menus.php:244
+#: includes/admin/importers/class-sp-event-importer.php:468
+#: includes/admin/importers/class-sp-event-importer.php:483
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:64
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:79
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:94
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:109
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:39
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:56
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:73
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:40
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:54
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:69
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:106
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-metrics.php:42
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:37
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:51
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:58
+#: includes/admin/settings/class-sp-settings-config.php:125
+#: includes/admin/settings/class-sp-settings-config.php:198
+#: includes/admin/settings/class-sp-settings-config.php:250
+#: includes/admin/settings/class-sp-settings-config.php:308
+#: includes/admin/settings/class-sp-settings-config.php:361
+#: includes/admin/settings/class-sp-settings-config.php:417
+#: includes/widgets/class-sp-widget-countdown.php:56
+#: includes/widgets/class-sp-widget-event-blocks.php:63
+#: includes/widgets/class-sp-widget-event-calendar.php:56
+#: includes/widgets/class-sp-widget-event-list.php:66
+#: includes/widgets/class-sp-widget-league-table.php:61
+#: includes/widgets/class-sp-widget-player-gallery.php:64
+#: includes/widgets/class-sp-widget-player-gallery.php:89
+#: includes/widgets/class-sp-widget-player-list.php:64
+#: includes/widgets/class-sp-widget-player-list.php:110
+msgid "Add New"
+msgstr ""
+
+#: includes/class-sp-post-types.php:42 includes/class-sp-post-types.php:71
+#: includes/class-sp-post-types.php:100 includes/class-sp-post-types.php:129
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:52
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:64
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:52
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:63
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:51
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:86
+#: includes/widgets/class-sp-widget-player-gallery.php:78
+#: includes/widgets/class-sp-widget-player-list.php:99
+msgid "Name"
+msgstr "Име"
+
+#: includes/class-sp-post-types.php:43 includes/class-sp-post-types.php:72
+#: includes/class-sp-post-types.php:101 includes/class-sp-post-types.php:130
+msgid "Parent"
+msgstr "Родителски"
+
+#: includes/class-sp-post-types.php:44 includes/class-sp-post-types.php:73
+#: includes/class-sp-post-types.php:102 includes/class-sp-post-types.php:131
+msgid "Parent:"
+msgstr ""
+
+#: includes/class-sp-post-types.php:45 includes/class-sp-post-types.php:74
+#: includes/class-sp-post-types.php:103 includes/class-sp-post-types.php:132
+#: includes/class-sp-post-types.php:167 includes/class-sp-post-types.php:197
+#: includes/class-sp-post-types.php:227 includes/class-sp-post-types.php:257
+#: includes/class-sp-post-types.php:287 includes/class-sp-post-types.php:317
+#: includes/class-sp-post-types.php:347 includes/class-sp-post-types.php:377
+#: includes/class-sp-post-types.php:408 includes/class-sp-post-types.php:438
+#: includes/class-sp-post-types.php:470 includes/class-sp-post-types.php:500
+#: includes/class-sp-post-types.php:531
+msgid "Search"
+msgstr "Търси"
+
+#: includes/class-sp-post-types.php:46 includes/class-sp-post-types.php:75
+#: includes/class-sp-post-types.php:104 includes/class-sp-post-types.php:133
+#: includes/class-sp-post-types.php:168 includes/class-sp-post-types.php:169
+#: includes/class-sp-post-types.php:198 includes/class-sp-post-types.php:199
+#: includes/class-sp-post-types.php:228 includes/class-sp-post-types.php:229
+#: includes/class-sp-post-types.php:258 includes/class-sp-post-types.php:259
+#: includes/class-sp-post-types.php:288 includes/class-sp-post-types.php:289
+#: includes/class-sp-post-types.php:318 includes/class-sp-post-types.php:319
+#: includes/class-sp-post-types.php:348 includes/class-sp-post-types.php:349
+#: includes/class-sp-post-types.php:378 includes/class-sp-post-types.php:379
+#: includes/class-sp-post-types.php:409 includes/class-sp-post-types.php:410
+#: includes/class-sp-post-types.php:439 includes/class-sp-post-types.php:440
+#: includes/class-sp-post-types.php:471 includes/class-sp-post-types.php:472
+#: includes/class-sp-post-types.php:501 includes/class-sp-post-types.php:502
+#: includes/class-sp-post-types.php:532 includes/class-sp-post-types.php:533
+#: includes/sp-core-functions.php:726 includes/sp-core-functions.php:766
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:164
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:113
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:32
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:101
+msgid "No results found."
+msgstr "Не са открити резултати."
+
+#: includes/class-sp-post-types.php:64 includes/class-sp-post-types.php:78
+#: includes/admin/class-sp-admin-menus.php:64
+#: includes/admin/class-sp-admin-menus.php:256
+#: includes/admin/class-sp-admin-permalink-settings.php:30
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:68
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:67
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:67
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:131
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:138
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:108
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:115
+#: includes/admin/views/html-admin-page-status.php:306
+msgid "Seasons"
+msgstr ""
+
+#: includes/class-sp-post-types.php:67
+msgid "Edit Season"
+msgstr ""
+
+#: includes/class-sp-post-types.php:93 includes/class-sp-post-types.php:107
+#: includes/admin/class-sp-admin-menus.php:260
+#: includes/admin/class-sp-admin-permalink-settings.php:26
+#: includes/admin/settings/class-sp-settings-events.php:139
+#: includes/admin/views/html-admin-page-status.php:316
+msgid "Venues"
+msgstr ""
+
+#: includes/class-sp-post-types.php:94 includes/sp-core-functions.php:1059
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:50
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:96
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:70
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:83
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:62
+#: includes/admin/settings/class-sp-settings-events.php:68
+#: includes/widgets/class-sp-widget-event-list.php:114
+#: templates/event-list.php:60 templates/event-venue.php:35
+msgid "Venue"
+msgstr ""
+
+#: includes/class-sp-post-types.php:96
+msgid "Edit Venue"
+msgstr ""
+
+#: includes/class-sp-post-types.php:122 includes/class-sp-post-types.php:136
+#: includes/admin/class-sp-admin-menus.php:252
+#: includes/admin/class-sp-admin-permalink-settings.php:33
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:65
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:71
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:78
+#: includes/admin/views/html-admin-page-status.php:326
+msgid "Positions"
+msgstr ""
+
+#: includes/class-sp-post-types.php:125
+msgid "Edit Position"
+msgstr ""
+
+#: includes/class-sp-post-types.php:161 includes/sp-core-functions.php:1052
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:126
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:27
+#: includes/admin/settings/class-sp-settings-config.php:154
+#: includes/admin/settings/class-sp-settings-config.php:158
+#: includes/admin/views/html-admin-page-status.php:237
+#: templates/event-results.php:89
+msgid "Team Results"
+msgstr ""
+
+#: includes/class-sp-post-types.php:162
+msgid "Result"
+msgstr ""
+
+#: includes/class-sp-post-types.php:163
+msgid "Add New Result"
+msgstr ""
+
+#: includes/class-sp-post-types.php:164
+msgid "Edit Result"
+msgstr ""
+
+#: includes/class-sp-post-types.php:165 includes/class-sp-post-types.php:195
+#: includes/class-sp-post-types.php:225 includes/class-sp-post-types.php:255
+#: includes/class-sp-post-types.php:285 includes/class-sp-post-types.php:315
+#: includes/class-sp-post-types.php:345 includes/class-sp-post-types.php:375
+#: includes/class-sp-post-types.php:406 includes/class-sp-post-types.php:436
+#: includes/class-sp-post-types.php:468 includes/class-sp-post-types.php:498
+#: includes/class-sp-post-types.php:529
+msgid "New"
+msgstr ""
+
+#: includes/class-sp-post-types.php:191
+#: includes/admin/settings/class-sp-settings-config.php:100
+#: includes/admin/views/html-admin-page-status.php:227
+msgid "Event Outcomes"
+msgstr ""
+
+#: includes/class-sp-post-types.php:193
+msgid "Add New Outcome"
+msgstr ""
+
+#: includes/class-sp-post-types.php:194
+msgid "Edit Outcome"
+msgstr ""
+
+#: includes/class-sp-post-types.php:221
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:141
+#: includes/admin/settings/class-sp-settings-config.php:277
+#: includes/admin/views/html-admin-page-status.php:257
+msgid "Table Columns"
+msgstr ""
+
+#: includes/class-sp-post-types.php:222
+msgid "Column"
+msgstr "Колона"
+
+#: includes/class-sp-post-types.php:223
+msgid "Add New Column"
+msgstr ""
+
+#: includes/class-sp-post-types.php:224
+msgid "Edit Column"
+msgstr ""
+
+#: includes/class-sp-post-types.php:251
+#: includes/admin/settings/class-sp-settings-config.php:336
+#: includes/admin/views/html-admin-page-status.php:267
+msgid "Player Metrics"
+msgstr ""
+
+#: includes/class-sp-post-types.php:252
+msgid "Metric"
+msgstr ""
+
+#: includes/class-sp-post-types.php:253
+msgid "Add New Metric"
+msgstr ""
+
+#: includes/class-sp-post-types.php:254
+msgid "Edit Metric"
+msgstr ""
+
+#: includes/class-sp-post-types.php:283
+msgid "Add New Performance"
+msgstr ""
+
+#: includes/class-sp-post-types.php:284
+msgid "Edit Performance"
+msgstr ""
+
+#: includes/class-sp-post-types.php:311
+#: includes/admin/settings/class-sp-settings-config.php:388
+#: includes/admin/views/html-admin-page-status.php:277
+msgid "Player Statistics"
+msgstr ""
+
+#: includes/class-sp-post-types.php:312
+msgid "Statistic"
+msgstr ""
+
+#: includes/class-sp-post-types.php:313
+msgid "Add New Statistic"
+msgstr ""
+
+#: includes/class-sp-post-types.php:314
+msgid "Edit Statistic"
+msgstr ""
+
+#: includes/class-sp-post-types.php:341
+#: includes/admin/class-sp-admin-permalink-settings.php:25
+#: includes/admin/class-sp-admin-taxonomies.php:134
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:52
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:135
+#: includes/admin/settings/class-sp-settings-events.php:25
+msgid "Events"
+msgstr ""
+
+#: includes/class-sp-post-types.php:342 includes/sp-core-functions.php:1043
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:90
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:217
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:52
+#: includes/widgets/class-sp-widget-countdown.php:42
+#: includes/widgets/class-sp-widget-event-list.php:111
+#: templates/event-list.php:51
+msgid "Event"
+msgstr ""
+
+#: includes/class-sp-post-types.php:343
+#: includes/admin/class-sp-admin-welcome.php:251
+msgid "Add New Event"
+msgstr ""
+
+#: includes/class-sp-post-types.php:344
+msgid "Edit Event"
+msgstr ""
+
+#: includes/class-sp-post-types.php:371
+#: includes/admin/class-sp-admin-permalink-settings.php:27
+#: includes/admin/settings/class-sp-settings-events.php:128
+msgid "Calendars"
+msgstr ""
+
+#: includes/class-sp-post-types.php:373
+msgid "Add New Calendar"
+msgstr ""
+
+#: includes/class-sp-post-types.php:374
+msgid "Edit Calendar"
+msgstr ""
+
+#: includes/class-sp-post-types.php:402 includes/sp-core-functions.php:1055
+#: includes/admin/class-sp-admin-permalink-settings.php:28
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:93
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:66
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:65
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:50
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:123
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:58
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:93
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:108
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:70
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:85
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:101
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:55
+#: includes/admin/settings/class-sp-settings-events.php:60
+#: includes/admin/settings/class-sp-settings-events.php:131
+#: includes/admin/settings/class-sp-settings-players.php:64
+#: includes/admin/settings/class-sp-settings-teams.php:25
+#: includes/admin/settings/class-sp-settings-teams.php:48
+#: includes/widgets/class-sp-widget-event-list.php:112
+#: templates/event-list.php:54
+msgid "Teams"
+msgstr ""
+
+#: includes/class-sp-post-types.php:404
+#: includes/admin/class-sp-admin-welcome.php:249
+msgid "Add New Team"
+msgstr ""
+
+#: includes/class-sp-post-types.php:405
+msgid "Edit Team"
+msgstr ""
+
+#: includes/class-sp-post-types.php:432
+#: includes/admin/class-sp-admin-permalink-settings.php:31
+#: includes/admin/settings/class-sp-settings-teams.php:45
+msgid "League Tables"
+msgstr ""
+
+#: includes/class-sp-post-types.php:433
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:149
+#: includes/widgets/class-sp-widget-league-table.php:50
+msgid "League Table"
+msgstr ""
+
+#: includes/class-sp-post-types.php:434
+msgid "Add New League Table"
+msgstr ""
+
+#: includes/class-sp-post-types.php:435
+msgid "Edit League Table"
+msgstr ""
+
+#: includes/class-sp-post-types.php:494
+#: includes/admin/class-sp-admin-permalink-settings.php:34
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:142
+#: includes/admin/settings/class-sp-settings-players.php:51
+msgid "Player Lists"
+msgstr ""
+
+#: includes/class-sp-post-types.php:495
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:166
+#: includes/widgets/class-sp-widget-player-gallery.php:53
+#: includes/widgets/class-sp-widget-player-list.php:53
+msgid "Player List"
+msgstr ""
+
+#: includes/class-sp-post-types.php:496
+msgid "Add New Player List"
+msgstr ""
+
+#: includes/class-sp-post-types.php:497
+msgid "Edit Player List"
+msgstr ""
+
+#: includes/class-sp-post-types.php:527
+msgid "Add New Staff"
+msgstr ""
+
+#: includes/class-sp-post-types.php:528
+msgid "Edit Staff"
+msgstr ""
+
+#: includes/sp-core-functions.php:310
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:28
+#: templates/team-link.php:21
+msgid "Visit Site"
+msgstr ""
+
+#: includes/sp-core-functions.php:331 includes/sp-core-functions.php:335
+#: includes/sp-core-functions.php:1058
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:134
+#: templates/event-performance.php:152
+msgid "Total"
+msgstr "Общо"
+
+#: includes/sp-core-functions.php:331
+msgid "Average"
+msgstr "Средно"
+
+#: includes/sp-core-functions.php:389
+msgid "Published"
+msgstr ""
+
+#: includes/sp-core-functions.php:390
+msgid "Scheduled"
+msgstr ""
+
+#: includes/sp-core-functions.php:420
+msgid "This week"
+msgstr ""
+
+#: includes/sp-core-functions.php:421
+msgid "Today"
+msgstr ""
+
+#: includes/sp-core-functions.php:649 includes/sp-core-functions.php:789
+msgid "(no title)"
+msgstr "(без заглавие)"
+
+#: includes/sp-core-functions.php:666 includes/sp-core-functions.php:746
+msgid "Select All"
+msgstr "Избор на всички"
+
+#: includes/sp-core-functions.php:727 includes/sp-core-functions.php:730
+msgid "Show all"
+msgstr ""
+
+#: includes/sp-core-functions.php:1040
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:76
+#: includes/widgets/class-sp-widget-event-list.php:115
+#: templates/event-list.php:63
+msgid "Article"
+msgstr ""
+
+#: includes/sp-core-functions.php:1041
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:91
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:47
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:42
+#: templates/event-details.php:20 templates/event-list.php:48
+msgid "Date"
+msgstr "Дата"
+
+#: includes/sp-core-functions.php:1042
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:100
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:103
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:106
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:110
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:113
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:116
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:122
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:134
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:139
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:148
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:154
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:165
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:170
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:173
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:31
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:110
+#: templates/event-details.php:32
+msgid "Details"
+msgstr "Подробности"
+
+#: includes/sp-core-functions.php:1045
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:59
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:60
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:51
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:52
+#: includes/admin/settings/class-sp-settings-players.php:42
+#: includes/admin/settings/class-sp-settings-staff.php:44
+#: templates/player-details.php:34 templates/staff-details.php:32
+msgid "Nationality"
+msgstr ""
+
+#: includes/sp-core-functions.php:1047
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:37
+#: includes/widgets/class-sp-widget-player-gallery.php:79
+#: includes/widgets/class-sp-widget-player-list.php:87
+#: includes/widgets/class-sp-widget-player-list.php:100
+msgid "Played"
+msgstr ""
+
+#: includes/sp-core-functions.php:1048 templates/league-table.php:49
+msgid "Pos"
+msgstr ""
+
+#: includes/sp-core-functions.php:1049
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:151
+#: templates/event-list.php:168
+msgid "Preview"
+msgstr "Предварителен преглед"
+
+#: includes/sp-core-functions.php:1050 templates/player-list.php:88
+msgid "Rank"
+msgstr ""
+
+#: includes/sp-core-functions.php:1051
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:149
+#: templates/event-list.php:166
+msgid "Recap"
+msgstr ""
+
+#: includes/sp-core-functions.php:1056
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:92
+#: includes/widgets/class-sp-widget-event-list.php:113
+#: templates/event-details.php:20
+msgid "Time"
+msgstr ""
+
+#: includes/sp-core-functions.php:1057
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:64
+#: templates/event-list.php:57
+msgid "Time/Results"
+msgstr ""
+
+#: includes/sp-core-functions.php:1060 templates/event-blocks.php:108
+#: templates/event-calendar.php:215 templates/event-list.php:186
+msgid "View all events"
+msgstr ""
+
+#: includes/sp-core-functions.php:1061 templates/league-table.php:110
+msgid "View full table"
+msgstr ""
+
+#: includes/sp-core-functions.php:1066
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:86
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:134
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:98
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:95
+#: templates/player-details.php:44 templates/staff-details.php:36
+msgid "Current Team"
+msgstr ""
+
+#: includes/sp-core-functions.php:1067
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:101
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:78
+#: templates/player-details.php:53 templates/staff-details.php:43
+msgid "Past Teams"
+msgstr ""
+
+#: includes/sp-core-functions.php:1071
+msgid "Substitutes"
+msgstr ""
+
+#: includes/sp-core-functions.php:1072 templates/player-gallery.php:146
+#: templates/player-list.php:152
+msgid "View all players"
+msgstr ""
+
+#: includes/sp-template-hooks.php:151
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:48
+#: includes/admin/post-types/class-sp-admin-cpt-metric.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-outcome.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-performance.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-result.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-statistic.php:47
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:136
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:150
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:167
+#: includes/admin/settings/class-sp-settings-config.php:109
+#: includes/admin/settings/class-sp-settings-config.php:165
+#: includes/admin/settings/class-sp-settings-config.php:234
+#: includes/admin/settings/class-sp-settings-config.php:289
+#: includes/admin/settings/class-sp-settings-config.php:345
+#: includes/admin/settings/class-sp-settings-config.php:399
+msgid "Description"
+msgstr "Описание"
+
+#: includes/sp-template-hooks.php:154
+msgid ""
+"The description is not prominent by default; however, some themes may show "
+"it."
+msgstr ""
+
+#: includes/sp-template-hooks.php:157
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:44
+#: includes/admin/post-types/class-sp-admin-cpt-statistic.php:44
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:34
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-statistic-details.php:31
+#: includes/admin/settings/class-sp-settings-config.php:285
+#: includes/admin/settings/class-sp-settings-config.php:396
+msgid "Key"
+msgstr "Ключ"
+
+#: includes/sp-template-hooks.php:157
+#: includes/admin/post-types/class-sp-admin-cpt-metric.php:44
+#: includes/admin/post-types/class-sp-admin-cpt-outcome.php:44
+#: includes/admin/post-types/class-sp-admin-cpt-performance.php:44
+#: includes/admin/post-types/class-sp-admin-cpt-result.php:44
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-metric-details.php:27
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-outcome-details.php:27
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-performance-details.php:27
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-result-details.php:27
+#: includes/admin/settings/class-sp-settings-config.php:108
+#: includes/admin/settings/class-sp-settings-config.php:233
+#: includes/admin/settings/class-sp-settings-config.php:344
+msgid "Variable"
+msgstr ""
+
+#: includes/sp-template-hooks.php:165
+msgid "User"
+msgstr ""
+
+#: includes/sp-template-hooks.php:190
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:62
+msgid "Logo"
+msgstr ""
+
+#: includes/sp-template-hooks.php:193
+msgid "Select Logo"
+msgstr ""
+
+#: includes/sp-template-hooks.php:196
+msgid "Add logo"
+msgstr ""
+
+#: includes/sp-template-hooks.php:199
+msgid "Remove logo"
+msgstr ""
+
+#: includes/sp-template-hooks.php:207
+msgid "Date/Time:"
+msgstr ""
+
+#: includes/sp-template-hooks.php:207
+msgid "Now"
+msgstr ""
+
+#: includes/sp-template-hooks.php:323
+#: includes/admin/class-sp-admin-post-types.php:62
+msgid "Settings saved."
+msgstr "Настройките са запазени."
+
+#: includes/sp-template-hooks.php:325
+#: includes/admin/class-sp-admin-post-types.php:64
+#: includes/admin/settings/class-sp-settings-config.php:124
+#: includes/admin/settings/class-sp-settings-config.php:197
+#: includes/admin/settings/class-sp-settings-config.php:249
+#: includes/admin/settings/class-sp-settings-config.php:307
+#: includes/admin/settings/class-sp-settings-config.php:360
+#: includes/admin/settings/class-sp-settings-config.php:416
+msgid "View All"
+msgstr "Всички"
+
+#: includes/sp-template-hooks.php:331 includes/sp-template-hooks.php:334
+#: includes/sp-template-hooks.php:339
+#: includes/admin/class-sp-admin-post-types.php:69
+#: includes/admin/class-sp-admin-post-types.php:72
+#: includes/admin/class-sp-admin-post-types.php:77
+msgid "Changes saved."
+msgstr "Промените са записани."
+
+#: includes/sp-template-hooks.php:336 includes/sp-template-hooks.php:341
+#: includes/sp-template-hooks.php:351
+#: includes/admin/class-sp-admin-post-types.php:74
+#: includes/admin/class-sp-admin-post-types.php:79
+#: includes/admin/class-sp-admin-post-types.php:89
+msgid "Success!"
+msgstr "Готово!"
+
+#: includes/sp-template-hooks.php:343 includes/sp-template-hooks.php:349
+#: includes/sp-template-hooks.php:353
+#: includes/admin/class-sp-admin-post-types.php:81
+#: includes/admin/class-sp-admin-post-types.php:87
+#: includes/admin/class-sp-admin-post-types.php:91
+#, php-format
+msgid "Preview %s"
+msgstr ""
+
+#: includes/sp-template-hooks.php:346
+#: includes/admin/class-sp-admin-post-types.php:84
+#, php-format
+msgid "Scheduled for: <b>%1$s</b>."
+msgstr ""
+
+#: includes/sp-template-hooks.php:347
+#: includes/admin/class-sp-admin-post-types.php:85
+msgid "M j, Y @ G:i"
+msgstr "d M Y @ G:i"
+
+#: includes/admin/class-sp-admin-assets.php:111
+#: includes/admin/class-sp-admin-settings.php:117
+#: includes/admin/importers/class-sp-event-importer.php:467
+#: includes/admin/importers/class-sp-event-importer.php:482
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:147
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:186
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:76
+#: includes/admin/views/html-admin-page-status.php:224
+msgid "None"
+msgstr "Нищо"
+
+#: includes/admin/class-sp-admin-assets.php:112
+msgid "&mdash; Remove &mdash;"
+msgstr ""
+
+#: includes/admin/class-sp-admin-dashboard.php:34
+#: includes/admin/class-sp-admin-menus.php:50
+#: includes/admin/class-sp-admin-permalink-settings.php:47
+msgid "SportsPress"
+msgstr "SportsPress"
+
+#: includes/admin/class-sp-admin-dashboard.php:49
+#, php-format
+msgid "%s "
+msgid_plural "%s "
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-sp-admin-dashboard.php:80
+#, php-format
+msgid "<strong>%s</strong> until next event"
+msgstr ""
+
+#: includes/admin/class-sp-admin-dashboard.php:87
+#, php-format
+msgid "<strong>%s event</strong> scheduled"
+msgid_plural "<strong>%s events</strong> scheduled"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-sp-admin-dashboard.php:92
+#, php-format
+msgid "<strong>%s event</strong> published"
+msgid_plural "<strong>%s events</strong> published"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-sp-admin-importers.php:31
+msgid "SportsPress Events (CSV)"
+msgstr ""
+
+#: includes/admin/class-sp-admin-importers.php:31
+msgid "Import <strong>events</strong> from a csv file."
+msgstr ""
+
+#: includes/admin/class-sp-admin-importers.php:32
+msgid "SportsPress Teams (CSV)"
+msgstr ""
+
+#: includes/admin/class-sp-admin-importers.php:32
+msgid "Import <strong>teams</strong> from a csv file."
+msgstr ""
+
+#: includes/admin/class-sp-admin-importers.php:33
+msgid "SportsPress Players (CSV)"
+msgstr ""
+
+#: includes/admin/class-sp-admin-importers.php:33
+msgid "Import <strong>players</strong> from a csv file."
+msgstr ""
+
+#: includes/admin/class-sp-admin-importers.php:34
+msgid "SportsPress Staff (CSV)"
+msgstr ""
+
+#: includes/admin/class-sp-admin-importers.php:34
+msgid "Import <strong>staff</strong> from a csv file."
+msgstr ""
+
+#: includes/admin/class-sp-admin-menus.php:50
+msgid "SportsPress Settings"
+msgstr "SportsPress настройки"
+
+#: includes/admin/class-sp-admin-menus.php:71
+#: includes/admin/views/html-admin-page-status.php:2
+#: includes/admin/views/html-notice-template-check.php:6
+msgid "System Status"
+msgstr "Система"
+
+#: includes/admin/class-sp-admin-menus.php:79
+msgid "SportsPress Add-ons/Extensions"
+msgstr "SportsPress разширения и добавки"
+
+#: includes/admin/class-sp-admin-menus.php:79
+msgid "Add-ons"
+msgstr "Добвки"
+
+#: includes/admin/class-sp-admin-permalink-settings.php:75
+msgid ""
+"These settings control the permalinks used for SportsPress. These settings "
+"only apply when <strong>not using \"default\" permalinks above</strong>."
+msgstr ""
+
+#: includes/admin/class-sp-admin-settings.php:60
+msgid "Action failed. Please refresh the page and retry."
+msgstr "Действието беше неуспешно. Моля опитайте отново."
+
+#: includes/admin/class-sp-admin-settings.php:67
+#: includes/admin/class-sp-admin-welcome.php:196
+msgid "Your settings have been saved."
+msgstr "Настройките ви са записани."
+
+#: includes/admin/class-sp-admin-sports.php:42
+msgid "Custom"
+msgstr ""
+
+#: includes/admin/class-sp-admin-taxonomies.php:61
+#: includes/admin/class-sp-admin-taxonomies.php:81
+#: includes/admin/class-sp-admin-taxonomies.php:133
+msgid "Address"
+msgstr "Адрес"
+
+#: includes/admin/class-sp-admin-taxonomies.php:66
+#: includes/admin/class-sp-admin-taxonomies.php:85
+msgid "Drag the marker to the venue's location."
+msgstr ""
+
+#: includes/admin/class-sp-admin-taxonomies.php:89
+msgid "Latitude"
+msgstr ""
+
+#: includes/admin/class-sp-admin-taxonomies.php:95
+msgid "Longitude"
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:45
+msgid "Welcome to SportsPress"
+msgstr "Добре дошли в SportsPress"
+
+#: includes/admin/class-sp-admin-welcome.php:135
+msgid "Welcome to SportsPress!"
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:140
+msgid "Thanks, all done!"
+msgstr "Добре, вичко приключи!"
+
+#: includes/admin/class-sp-admin-welcome.php:142
+msgid "Thank you for updating to the latest version!"
+msgstr "Благодарим за обновяването!"
+
+#: includes/admin/class-sp-admin-welcome.php:144
+msgid "Thanks for installing!"
+msgstr "Благодарим за инсталирането!"
+
+#: includes/admin/class-sp-admin-welcome.php:146
+#, php-format
+msgid "%s SportsPress %s has lots of refinements we think you&#8217;ll love."
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:150
+#, php-format
+msgid "Version %s"
+msgstr "Версия %s"
+
+#: includes/admin/class-sp-admin-welcome.php:159
+#: includes/admin/views/html-notice-install.php:7
+msgid "Get Started"
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:202
+#: includes/admin/settings/class-sp-settings-general.php:216
+#: includes/admin/settings/class-sp-settings-general.php:219
+msgid "Base Location"
+msgstr "Седалище"
+
+#: includes/admin/class-sp-admin-welcome.php:208
+#: includes/admin/settings/class-sp-settings-general.php:220
+msgid "Choose a country&hellip;"
+msgstr "Избор на държава&hellip;"
+
+#: includes/admin/class-sp-admin-welcome.php:212
+#: includes/admin/settings/class-sp-settings-general.php:50
+#: includes/admin/views/html-admin-page-status.php:223
+msgid "Sport"
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:225
+#: includes/admin/settings/class-sp-settings-general.php:57
+msgid "Mode"
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:233
+#: includes/admin/settings/class-sp-settings-general.php:62
+msgctxt "mode select"
+msgid "Team"
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:234
+#: includes/admin/settings/class-sp-settings-general.php:63
+#, fuzzy
+msgctxt "mode select"
+msgid "Individual"
+msgstr "Индия"
+
+#: includes/admin/class-sp-admin-welcome.php:240
+#: includes/admin/views/html-admin-settings.php:16
+msgid "Save changes"
+msgstr "Запиши промените"
+
+#: includes/admin/class-sp-admin-welcome.php:247
+msgid "Next Steps"
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:255
+msgid "Translators"
+msgstr "Преводачи"
+
+#: includes/admin/class-sp-admin-welcome.php:256
+msgid ""
+"SportsPress has been kindly translated into several other languages thanks "
+"to our translation team. Want to see your name? <a href=\"https://www."
+"transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:272
+msgid "Go to SportsPress Settings"
+msgstr "Към настройките на SportsPress"
+
+#: includes/admin/importers/class-sp-event-importer.php:361
+#: includes/admin/importers/class-sp-importer.php:93
+#: includes/admin/importers/class-sp-importer.php:108
+#: includes/admin/importers/class-sp-player-importer.php:128
+#: includes/admin/importers/class-sp-staff-importer.php:121
+#: includes/admin/importers/class-sp-team-importer.php:85
+msgid "Sorry, there has been an error."
+msgstr "Съжаляваме, станала е някаква грешка."
+
+#: includes/admin/importers/class-sp-event-importer.php:362
+#: includes/admin/importers/class-sp-player-importer.php:129
+#: includes/admin/importers/class-sp-staff-importer.php:122
+#: includes/admin/importers/class-sp-team-importer.php:86
+msgid "The CSV is invalid."
+msgstr "CSV файла е невалиден."
+
+#: includes/admin/importers/class-sp-event-importer.php:373
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> events and skipped <strong>"
+"%s</strong>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:383
+#: includes/admin/importers/class-sp-player-importer.php:150
+#: includes/admin/importers/class-sp-staff-importer.php:143
+#: includes/admin/importers/class-sp-team-importer.php:107
+msgid "All done!"
+msgstr "Всичко приключи успешно!"
+
+#: includes/admin/importers/class-sp-event-importer.php:383
+msgid "View Events"
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:395
+msgid "Import Events"
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:407
+#: includes/admin/importers/class-sp-player-importer.php:174
+#: includes/admin/importers/class-sp-staff-importer.php:167
+#: includes/admin/importers/class-sp-team-importer.php:131
+msgid ""
+"Hi there! Choose a .csv file to upload, then click \"Upload file and import"
+"\"."
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:409
+#, php-format
+msgid ""
+"Events need to be defined with columns in a specific order (3+ columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:417
+#: includes/admin/importers/class-sp-player-importer.php:184
+#: includes/admin/importers/class-sp-staff-importer.php:177
+#: includes/admin/importers/class-sp-team-importer.php:141
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+"Преди да може да качите файл за импорт, е нужно да разрешите следния проблем:"
+
+#: includes/admin/importers/class-sp-event-importer.php:426
+#: includes/admin/importers/class-sp-player-importer.php:193
+#: includes/admin/importers/class-sp-staff-importer.php:186
+#: includes/admin/importers/class-sp-team-importer.php:150
+msgid "Choose a file from your computer:"
+msgstr "Избор на файл от вашият компютър:"
+
+#: includes/admin/importers/class-sp-event-importer.php:432
+#: includes/admin/importers/class-sp-player-importer.php:199
+#: includes/admin/importers/class-sp-staff-importer.php:192
+#: includes/admin/importers/class-sp-team-importer.php:156
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Максимален размер: %s"
+
+#: includes/admin/importers/class-sp-event-importer.php:437
+#: includes/admin/importers/class-sp-player-importer.php:204
+#: includes/admin/importers/class-sp-staff-importer.php:197
+#: includes/admin/importers/class-sp-team-importer.php:161
+msgid "OR enter path to file:"
+msgstr "ИЛИ въведете път до файла:"
+
+#: includes/admin/importers/class-sp-event-importer.php:444
+#: includes/admin/importers/class-sp-player-importer.php:211
+#: includes/admin/importers/class-sp-staff-importer.php:204
+#: includes/admin/importers/class-sp-team-importer.php:168
+#: includes/admin/settings/class-sp-settings-events.php:197
+#: includes/admin/settings/class-sp-settings-events.php:201
+msgid "Delimiter"
+msgstr "Разделител"
+
+#: includes/admin/importers/class-sp-event-importer.php:448
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:89
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:121
+msgid "Format"
+msgstr ""
+
+#: includes/admin/importers/class-sp-event-importer.php:464
+#: includes/admin/importers/class-sp-event-importer.php:479
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:36
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:53
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:70
+msgid "-- Not set --"
+msgstr "-- Празно --"
+
+#: includes/admin/importers/class-sp-event-importer.php:490
+#: includes/admin/importers/class-sp-player-importer.php:217
+#: includes/admin/importers/class-sp-staff-importer.php:210
+#: includes/admin/importers/class-sp-team-importer.php:174
+msgid "Upload file and import"
+msgstr "Качване на файл и импорт"
+
+#: includes/admin/importers/class-sp-importer.php:125
+msgid "Import"
+msgstr ""
+
+#: includes/admin/importers/class-sp-player-importer.php:140
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> players and skipped <strong>"
+"%s</strong>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-player-importer.php:150
+msgid "View Players"
+msgstr ""
+
+#: includes/admin/importers/class-sp-player-importer.php:162
+msgid "Import Players"
+msgstr ""
+
+#: includes/admin/importers/class-sp-player-importer.php:176
+#, php-format
+msgid ""
+"Players need to be defined with columns in a specific order (7 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-staff-importer.php:133
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
+"strong>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-staff-importer.php:143
+msgid "View Staff"
+msgstr ""
+
+#: includes/admin/importers/class-sp-staff-importer.php:155
+msgid "Import Staff"
+msgstr ""
+
+#: includes/admin/importers/class-sp-staff-importer.php:169
+#, php-format
+msgid ""
+"Staff need to be defined with columns in a specific order (5 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-team-importer.php:97
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
+"strong>."
+msgstr ""
+
+#: includes/admin/importers/class-sp-team-importer.php:107
+msgid "View Teams"
+msgstr ""
+
+#: includes/admin/importers/class-sp-team-importer.php:119
+msgid "Import Teams"
+msgstr ""
+
+#: includes/admin/importers/class-sp-team-importer.php:133
+#, php-format
+msgid ""
+"Teams need to be defined with columns in a specific order (3 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:47
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:47
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:47
+msgid "Title"
+msgstr "Заглавие"
+
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:53
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:52
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:133
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:163
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:67
+msgid "Layout"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:114
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:174
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:102
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:138
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:132
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:84
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:108
+msgid "Show all leagues"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:123
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:183
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:111
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:147
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:141
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:93
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:117
+msgid "Show all seasons"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:134
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:166
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:122
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:130
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:124
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:104
+msgid "Show all teams"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:43
+#: includes/admin/post-types/class-sp-admin-cpt-metric.php:43
+#: includes/admin/post-types/class-sp-admin-cpt-outcome.php:43
+#: includes/admin/post-types/class-sp-admin-cpt-performance.php:43
+#: includes/admin/post-types/class-sp-admin-cpt-result.php:43
+#: includes/admin/post-types/class-sp-admin-cpt-statistic.php:43
+#: includes/admin/settings/class-sp-settings-config.php:107
+#: includes/admin/settings/class-sp-settings-config.php:163
+#: includes/admin/settings/class-sp-settings-config.php:232
+#: includes/admin/settings/class-sp-settings-config.php:284
+#: includes/admin/settings/class-sp-settings-config.php:343
+#: includes/admin/settings/class-sp-settings-config.php:395
+msgid "Label"
+msgstr "Етикет"
+
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-statistic.php:45
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:107
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:117
+#: includes/admin/settings/class-sp-settings-config.php:286
+#: includes/admin/settings/class-sp-settings-config.php:397
+msgid "Equation"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:46
+#: includes/admin/post-types/class-sp-admin-cpt-statistic.php:46
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:39
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-statistic-details.php:36
+#: includes/admin/settings/class-sp-settings-config.php:287
+#: includes/admin/settings/class-sp-settings-config.php:398
+msgid "Rounding"
+msgstr "Закръгляне"
+
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:47
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:113
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:43
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:96
+#: includes/admin/settings/class-sp-settings-config.php:288
+msgid "Sort Order"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:55
+#: includes/widgets/class-sp-widget-countdown.php:49
+msgid "(Auto)"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:63
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:85
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:56
+#: includes/widgets/class-sp-widget-player-gallery.php:77
+#: includes/widgets/class-sp-widget-player-list.php:98
+msgid "Number"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:64
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:48
+msgid "Role"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:64
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:31
+msgid "URL"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:65
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:31
+msgid "Abbreviation"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-cpt.php:42
+#, php-format
+msgid "Insert into %s"
+msgstr "Вмъкване към %s"
+
+#: includes/admin/post-types/class-sp-admin-cpt.php:43
+#, php-format
+msgid "Uploaded to this %s"
+msgstr "Качено към %s"
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:120
+msgid "Shortcodes"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:124
+msgid "Video"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:132
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:147
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:162
+msgid "Shortcode"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:144
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:159
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:171
+msgid "Profile"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:153
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:164
+msgid "Columns"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:155
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:26
+msgid "Metrics"
+msgstr ""
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:157
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:27
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-columns.php:26
+msgid "Statistics"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:173
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:120
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:168
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:60
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:78
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:93
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:108
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:123
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:138
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:40
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:52
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:70
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:85
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:100
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:115
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:101
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:45
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:110
+#, php-format
+msgid "Select %s"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:31
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:85
+msgid "Status"
+msgstr "Статус"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:116
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:59
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:99
+#: includes/widgets/class-sp-widget-event-blocks.php:100
+#: includes/widgets/class-sp-widget-event-list.php:103
+#: includes/widgets/class-sp-widget-player-gallery.php:96
+#: includes/widgets/class-sp-widget-player-list.php:117
+msgid "Ascending"
+msgstr "Нарастващ"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:117
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:59
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:100
+#: includes/widgets/class-sp-widget-event-blocks.php:101
+#: includes/widgets/class-sp-widget-event-list.php:104
+#: includes/widgets/class-sp-widget-player-gallery.php:97
+#: includes/widgets/class-sp-widget-player-list.php:118
+msgid "Descending"
+msgstr "Намаляващ"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-shortcode.php:26
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:24
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-shortcode.php:26
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-shortcode.php:24
+msgid ""
+"Copy this code and paste it into your post, page or text widget content."
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:47
+msgid "Disable"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
+msgid "Attended"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
+msgid "Started"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
+msgid "Substituted"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
+msgid "for"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
+msgid "against"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:44
+msgid "Streak"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:45
+msgid "Last 5"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:46
+msgid "Last 10"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:160
+msgid "Starting Lineup"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:161
+msgid "Substitute"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:34
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:92
+msgid "&mdash; None &mdash;"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:27
+msgid "Remove video"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:33
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:86
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:83
+msgid "Cancel"
+msgstr "Отказ"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:36
+msgid "Add video"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:25
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-columns.php:25
+msgid "Performance"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:42
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:46
+msgid "Values"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:43
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:47
+msgid "Adjustments"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:82
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:79
+#: includes/admin/settings/class-sp-settings-config.php:118
+#: includes/admin/settings/class-sp-settings-config.php:191
+#: includes/admin/settings/class-sp-settings-config.php:243
+#: includes/admin/settings/class-sp-settings-config.php:301
+#: includes/admin/settings/class-sp-settings-config.php:354
+#: includes/admin/settings/class-sp-settings-config.php:410
+msgid "Edit"
+msgstr "Редактиране"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:87
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:84
+msgid "Save"
+msgstr "Запиши"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:73
+msgid "Grouping"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:80
+msgid "Sort by"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
+msgid "Current Teams"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:25
+#: includes/admin/views/html-admin-page-status.php:24
+msgid "Site URL"
+msgstr "Адрес на сайта"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:33
+msgid ""
+"The abbreviation is not prominent by default; however, some themes may show "
+"it"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-config.php:25
+msgid "Configure"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-config.php:46
+msgid "Configure SportsPress"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-config.php:101
+#: includes/admin/settings/class-sp-settings-config.php:155
+#: includes/admin/settings/class-sp-settings-config.php:226
+msgid "Used for events."
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-config.php:162
+#: includes/admin/settings/class-sp-settings-general.php:252
+msgid "Primary"
+msgstr "Първичен"
+
+#: includes/admin/settings/class-sp-settings-config.php:164
+msgid "Variables"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-config.php:177
+#, php-format
+msgid "Default (%s)"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-config.php:179
+#: includes/admin/settings/class-sp-settings-general.php:73
+#: includes/admin/settings/class-sp-settings-general.php:92
+#: includes/admin/views/html-admin-page-status.php:65
+#: includes/widgets/class-sp-widget-event-blocks.php:71
+#: includes/widgets/class-sp-widget-event-blocks.php:84
+#: includes/widgets/class-sp-widget-event-blocks.php:99
+#: includes/widgets/class-sp-widget-event-calendar.php:64
+#: includes/widgets/class-sp-widget-event-list.php:74
+#: includes/widgets/class-sp-widget-event-list.php:87
+#: includes/widgets/class-sp-widget-event-list.php:102
+#: includes/widgets/class-sp-widget-player-gallery.php:76
+#: includes/widgets/class-sp-widget-player-list.php:97
+msgid "Default"
+msgstr "По подразбиране"
+
+#: includes/admin/settings/class-sp-settings-config.php:278
+msgid "Used for league tables."
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-config.php:337
+#: includes/admin/settings/class-sp-settings-config.php:389
+msgid "Used for player lists."
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:42
+msgid "Event Options"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:45
+#: includes/admin/settings/class-sp-settings-events.php:155
+#: includes/admin/settings/class-sp-settings-players.php:82
+#: includes/admin/settings/class-sp-settings-teams.php:73
+msgid "Limit"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:49
+#: includes/admin/settings/class-sp-settings-teams.php:77
+msgid "teams"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:61
+#: includes/admin/settings/class-sp-settings-teams.php:49
+#: includes/widgets/class-sp-widget-league-table.php:90
+msgid "Display logos"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:69
+msgid "Display maps"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:77
+#: includes/admin/settings/class-sp-settings-events.php:140
+msgid "Link venues"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:85
+msgid "Results"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:86
+msgid "Display outcomes"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:94
+msgid "Display players"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:111
+msgid "Display staff"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:119
+msgid "Link staff"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:132
+#: includes/admin/settings/class-sp-settings-players.php:65
+#: includes/admin/settings/class-sp-settings-teams.php:57
+msgid "Link teams"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:147
+#: includes/admin/settings/class-sp-settings-players.php:74
+#: includes/admin/settings/class-sp-settings-teams.php:65
+msgid "Pagination"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:148
+#: includes/admin/settings/class-sp-settings-players.php:75
+#: includes/admin/settings/class-sp-settings-teams.php:66
+msgid "Paginate"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:159
+msgid "events"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-events.php:206
+msgid "Custom:"
+msgstr "Потребителски:"
+
+#: includes/admin/settings/class-sp-settings-general.php:25
+msgid "General"
+msgstr "Основни"
+
+#: includes/admin/settings/class-sp-settings-general.php:45
+msgid "General Options"
+msgstr "Основни настройки"
+
+#: includes/admin/settings/class-sp-settings-general.php:68
+msgid "Google Maps"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:74
+msgid "Satellite"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:75
+msgid "Hybrid"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:76
+msgid "Terrain"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:82
+msgid "Styles and Scripts"
+msgstr "Стилове и скриптове"
+
+#: includes/admin/settings/class-sp-settings-general.php:87
+msgid "Align"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:93
+msgid "Left"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:94
+msgid "Center"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:95
+msgid "Right"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:100
+msgid "Padding"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:104
+#: includes/admin/settings/class-sp-settings-general.php:152
+msgid "Auto"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:113
+msgid "Custom CSS"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:120
+msgid "Scripts"
+msgstr "Скриптове"
+
+#: includes/admin/settings/class-sp-settings-general.php:121
+msgid "Responsive tables"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:126
+msgid "This will enable a script allowing the tables to be responsive."
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:130
+msgid "Sortable tables"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:135
+msgid "This will enable a script allowing the tables to be sortable."
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:139
+msgid "Live countdowns"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:144
+msgid "This will enable a script allowing the countdowns to be animated."
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:148
+msgid "Header Offset"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:237
+msgid "Frontend Styles"
+msgstr "Стилове на началната страница"
+
+#: includes/admin/settings/class-sp-settings-general.php:253
+msgid "Background"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:254
+#: includes/admin/settings/class-sp-settings-text.php:25
+#: includes/admin/settings/class-sp-settings-text.php:41
+msgid "Text"
+msgstr "Текст"
+
+#: includes/admin/settings/class-sp-settings-general.php:255
+msgid "Heading"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:256
+msgid "Link"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:262
+msgid "Enable"
+msgstr "Включване"
+
+#: includes/admin/settings/class-sp-settings-players.php:43
+#: includes/admin/settings/class-sp-settings-staff.php:45
+msgid "Display national flags"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-staff.php:41
+#, fuzzy
+msgid "Staff Options"
+msgstr "Основни настройки"
+
+#: includes/admin/settings/class-sp-settings-teams.php:41
+msgid "Team Options"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-text.php:41
+msgid "The following options affect how words are displayed on the frontend."
+msgstr ""
+
+#: includes/admin/views/html-admin-page-status.php:5
+msgid "Please include this information when requesting support:"
+msgstr "Моля включете следната информация при заявка за подръжка:"
+
+#: includes/admin/views/html-admin-page-status.php:6
+msgid "Get System Report"
+msgstr "Изтегляне на системен доклад"
+
+#: includes/admin/views/html-admin-page-status.php:14
+msgid "Environment"
+msgstr "Среда"
+
+#: includes/admin/views/html-admin-page-status.php:20
+msgid "Home URL"
+msgstr "Начален адрес"
+
+#: includes/admin/views/html-admin-page-status.php:28
+msgid "SP Version"
+msgstr ""
+
+#: includes/admin/views/html-admin-page-status.php:32
+msgid "WP Version"
+msgstr "WP версия"
+
+#: includes/admin/views/html-admin-page-status.php:36
+msgid "WP Multisite Enabled"
+msgstr "WP мултисайт"
+
+#: includes/admin/views/html-admin-page-status.php:37
+#: includes/admin/views/html-admin-page-status.php:61
+#: includes/admin/views/html-admin-page-status.php:86
+msgid "Yes"
+msgstr "Да"
+
+#: includes/admin/views/html-admin-page-status.php:37
+#: includes/admin/views/html-admin-page-status.php:61
+#: includes/admin/views/html-admin-page-status.php:86
+msgid "No"
+msgstr "Не"
+
+#: includes/admin/views/html-admin-page-status.php:40
+msgid "Web Server Info"
+msgstr "Информация за уеб сървъра"
+
+#: includes/admin/views/html-admin-page-status.php:44
+msgid "PHP Version"
+msgstr "PHP версия"
+
+#: includes/admin/views/html-admin-page-status.php:48
+msgid "WP Memory Limit"
+msgstr "WP лимит за паметта"
+
+#: includes/admin/views/html-admin-page-status.php:53
+#, php-format
+msgid ""
+"%s - We recommend setting memory to at least 64MB. See: <a href=\"%s"
+"\">Increasing memory allocated to PHP</a>"
+msgstr ""
+"%s - Препоръчваме използването на поне 64MB. Вижте: <a href=\"%s"
+"\">Увеличаване на паметта в PHP</a>"
+
+#: includes/admin/views/html-admin-page-status.php:60
+msgid "WP Debug Mode"
+msgstr "WP Debug режим"
+
+#: includes/admin/views/html-admin-page-status.php:64
+msgid "WP Language"
+msgstr "WP език"
+
+#: includes/admin/views/html-admin-page-status.php:68
+msgid "WP Max Upload Size"
+msgstr "WP максимален размер за качване"
+
+#: includes/admin/views/html-admin-page-status.php:73
+msgid "PHP Post Max Size"
+msgstr "PHP Post Max Size"
+
+#: includes/admin/views/html-admin-page-status.php:77
+msgid "PHP Time Limit"
+msgstr "PHP Time Limit"
+
+#: includes/admin/views/html-admin-page-status.php:81
+msgid "PHP Max Input Vars"
+msgstr "PHP Max Input Vars"
+
+#: includes/admin/views/html-admin-page-status.php:85
+msgid "SUHOSIN Installed"
+msgstr "SUHOSIN Инсталиран"
+
+#: includes/admin/views/html-admin-page-status.php:90
+msgid "Default Timezone"
+msgstr "Часова зона по подразбиране"
+
+#: includes/admin/views/html-admin-page-status.php:94
+#, php-format
+msgid "Default timezone is %s - it should be UTC"
+msgstr "Часова зона по подразбиране %s - трябва да бъде по UTC"
+
+#: includes/admin/views/html-admin-page-status.php:96
+#, php-format
+msgid "Default timezone is %s"
+msgstr "Часова зона по подразбиране %s"
+
+#: includes/admin/views/html-admin-page-status.php:104
+msgid "fsockopen/cURL"
+msgstr "fsockopen/cURL"
+
+#: includes/admin/views/html-admin-page-status.php:107
+msgid "Your server has fsockopen and cURL enabled."
+msgstr "На вашият сървър fsockopen и cURL са включени."
+
+#: includes/admin/views/html-admin-page-status.php:109
+msgid "Your server has fsockopen enabled, cURL is disabled."
+msgstr "На вашият сървър fsockopen е включен, а cURL - изключен."
+
+#: includes/admin/views/html-admin-page-status.php:111
+msgid "Your server has cURL enabled, fsockopen is disabled."
+msgstr "На вашият сървър fsockopen е изключен, а cURL - включен."
+
+#: includes/admin/views/html-admin-page-status.php:115
+msgid ""
+"Your server does not have fsockopen or cURL enabled - PayPal IPN and other "
+"scripts which communicate with other servers will not work. Contact your "
+"hosting provider."
+msgstr ""
+"Вашият сървър не разполага с включени fsockopen или cURL - PayPal IPN и "
+"други услуги които работят със сървъри от трети страни няма да работят. "
+"Свържете се с вашият хостинг доставчик."
+
+#: includes/admin/views/html-admin-page-status.php:120
+msgid "SOAP Client"
+msgstr "SOAP Client"
+
+#: includes/admin/views/html-admin-page-status.php:122
+msgid "Your server has the SOAP Client class enabled."
+msgstr "Сървърът ви разполага с класът SOAP Client и е включен."
+
+#: includes/admin/views/html-admin-page-status.php:125
+#, php-format
+msgid ""
+"Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled - "
+"some gateway plugins which use SOAP may not work as expected."
+msgstr ""
+"Вашият сървър няма класът <a href=\"%s\">SOAP Client</a> включен - някои "
+"методи за разплащане го използват и могат да не работят както се очаква."
+
+#: includes/admin/views/html-admin-page-status.php:148
+msgid "Plugins"
+msgstr "Разширения"
+
+#: includes/admin/views/html-admin-page-status.php:154
+msgid "Installed Plugins"
+msgstr "Инсталирани разширения"
+
+#: includes/admin/views/html-admin-page-status.php:174
+msgid "Visit plugin homepage"
+msgstr "Към началната страница"
+
+#: includes/admin/views/html-admin-page-status.php:198
+#: includes/admin/views/html-admin-page-status.php:413
+msgid "is available"
+msgstr "налично"
+
+#: includes/admin/views/html-admin-page-status.php:201
+msgid "by"
+msgstr "от"
+
+#: includes/admin/views/html-admin-page-status.php:201
+msgid "version"
+msgstr "версия"
+
+#: includes/admin/views/html-admin-page-status.php:217
+msgid "SP Configuration"
+msgstr ""
+
+#: includes/admin/views/html-admin-page-status.php:290
+msgid "SP Taxonomies"
+msgstr ""
+
+#: includes/admin/views/html-admin-page-status.php:339
+msgid "SP Post Types"
+msgstr ""
+
+#: includes/admin/views/html-admin-page-status.php:365
+msgid "Theme"
+msgstr "Тема"
+
+#: includes/admin/views/html-admin-page-status.php:402
+msgid "Theme Name"
+msgstr "Име на темата"
+
+#: includes/admin/views/html-admin-page-status.php:408
+msgid "Theme Version"
+msgstr "Версия на темата"
+
+#: includes/admin/views/html-admin-page-status.php:417
+msgid "Author URL"
+msgstr "URL адрес на автора"
+
+#: includes/admin/views/html-admin-page-status.php:426
+msgid "Templates"
+msgstr "Шаблони"
+
+#: includes/admin/views/html-admin-page-status.php:459
+#, php-format
+msgid ""
+"<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
+"date. The core version is %s"
+msgstr ""
+"<code>%s</code> версия <strong style=\"color:red\">%s</strong> не е "
+"актуална. Версията на ядрото е %s"
+
+#: includes/admin/views/html-admin-page-status.php:470
+#: includes/admin/views/html-admin-page-status.php:476
+msgid "Template Overrides"
+msgstr "Замяна на шаблон"
+
+#: includes/admin/views/html-admin-page-status.php:477
+msgid "No overrides present in theme."
+msgstr "Няма шаблони в темата."
+
+#: includes/admin/views/html-notice-install.php:5
+#, php-format
+msgid "Welcome to SportsPress %s"
+msgstr "Добре дошли в SportsPress %s"
+
+#: includes/admin/views/html-notice-install.php:8
+#: includes/admin/views/html-notice-template-check.php:6
+#: includes/admin/views/html-notice-theme-support.php:8
+msgid "Hide this notice"
+msgstr "Скриване на това съобщение"
+
+#: includes/admin/views/html-notice-template-check.php:5
+msgid ""
+"<strong>Your theme has bundled outdated copies of SportsPress template "
+"files</strong> &#8211; if you encounter functionality issues on the frontend "
+"this could the reason. Ensure you update or remove them (in general we "
+"recommend only bundling the template files you actually need to customize). "
+"See the system report for full details."
+msgstr ""
+
+#: includes/admin/views/html-notice-theme-support.php:5
+msgid ""
+"<strong>Your theme does not declare SportsPress support</strong> &#8211; if "
+"you encounter layout issues please read our integration guide or choose a "
+"SportsPress theme :)"
+msgstr ""
+"<strong>Вашата текуща тема не е заявила че поддържа SportsPress</strong> "
+"&#8211; ако имате проблем с визуализацията на продукти, моля прочетете "
+"нашите напътствия за интеграция или си изберете подходяща SportsPress тема :)"
+
+#: includes/admin/views/html-notice-theme-support.php:7
+msgid "Theme Integration Guide"
+msgstr "Напътствия за интеграция на теми"
+
+#: includes/widgets/class-sp-widget-countdown.php:5
+msgid "A clock that counts down to an upcoming event."
+msgstr ""
+
+#: includes/widgets/class-sp-widget-countdown.php:6
+msgid "SportsPress Countdown"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-countdown.php:39
+#: includes/widgets/class-sp-widget-event-blocks.php:48
+#: includes/widgets/class-sp-widget-event-calendar.php:41
+#: includes/widgets/class-sp-widget-event-list.php:51
+#: includes/widgets/class-sp-widget-league-table.php:47
+#: includes/widgets/class-sp-widget-player-gallery.php:50
+#: includes/widgets/class-sp-widget-player-list.php:50
+msgid "Title:"
+msgstr "Заглавие:"
+
+#: includes/widgets/class-sp-widget-countdown.php:42
+#: includes/widgets/class-sp-widget-event-blocks.php:51
+#: includes/widgets/class-sp-widget-event-calendar.php:44
+#: includes/widgets/class-sp-widget-event-list.php:54
+#: includes/widgets/class-sp-widget-league-table.php:50
+#: includes/widgets/class-sp-widget-player-gallery.php:53
+#: includes/widgets/class-sp-widget-player-list.php:53
+#, php-format
+msgid "Select %s:"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-countdown.php:62
+msgid "Display venue"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-countdown.php:65
+msgid "Display league"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-event-blocks.php:5
+#: includes/widgets/class-sp-widget-event-list.php:5
+msgid "A list of events."
+msgstr ""
+
+#: includes/widgets/class-sp-widget-event-blocks.php:6
+msgid "SportsPress Event Blocks"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-event-blocks.php:68
+#: includes/widgets/class-sp-widget-event-calendar.php:61
+#: includes/widgets/class-sp-widget-event-list.php:71
+msgid "Status:"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-event-blocks.php:81
+#: includes/widgets/class-sp-widget-event-list.php:84
+#, fuzzy
+msgid "Date:"
+msgstr "Дата"
+
+#: includes/widgets/class-sp-widget-event-blocks.php:94
+#: includes/widgets/class-sp-widget-event-list.php:97
+msgid "Number of events to show:"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-event-blocks.php:97
+#: includes/widgets/class-sp-widget-event-list.php:100
+#: includes/widgets/class-sp-widget-player-gallery.php:94
+#: includes/widgets/class-sp-widget-player-list.php:115
+msgid "Sort Order:"
+msgstr "Подредба:"
+
+#: includes/widgets/class-sp-widget-event-blocks.php:105
+#: includes/widgets/class-sp-widget-event-calendar.php:75
+#: includes/widgets/class-sp-widget-event-list.php:126
+msgid "Display link to view all events"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-event-calendar.php:5
+msgid "A calendar of events."
+msgstr ""
+
+#: includes/widgets/class-sp-widget-event-calendar.php:6
+msgid "SportsPress Event Calendar"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-event-list.php:6
+msgid "SportsPress Event List"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-event-list.php:108
+#: includes/widgets/class-sp-widget-league-table.php:70
+msgid "Columns:"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-league-table.php:5
+msgid "Display a league table."
+msgstr ""
+
+#: includes/widgets/class-sp-widget-league-table.php:6
+msgid "SportsPress League Table"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-league-table.php:66
+msgid "Number of teams to show:"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-league-table.php:93
+msgid "Display link to view full table"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-player-gallery.php:5
+msgid "Display a gallery of players."
+msgstr ""
+
+#: includes/widgets/class-sp-widget-player-gallery.php:6
+msgid "SportsPress Player Gallery"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-player-gallery.php:69
+#: includes/widgets/class-sp-widget-player-list.php:69
+msgid "Number of players to show:"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-player-gallery.php:72
+#: includes/widgets/class-sp-widget-player-list.php:93
+msgid "Sort by:"
+msgstr "Сортиране по:"
+
+#: includes/widgets/class-sp-widget-player-gallery.php:101
+#: includes/widgets/class-sp-widget-player-list.php:122
+msgid "Display link to view all players"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-player-gallery.php:104
+msgid "Display player names on hover"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-player-list.php:5
+msgid "Display a list of players."
+msgstr ""
+
+#: includes/widgets/class-sp-widget-player-list.php:6
+msgid "SportsPress Player List"
+msgstr ""
+
+#: includes/widgets/class-sp-widget-player-list.php:73
+msgid "Performance:"
+msgstr ""
+
+#. translators: Calendar caption: 1: month name, 2: 4-digit year
+#: templates/event-calendar.php:92 templates/event-calendar.php:120
+#: templates/event-calendar.php:128
+#, php-format
+msgctxt "calendar caption"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
