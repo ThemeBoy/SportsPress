@@ -41,6 +41,7 @@ class SP_Admin_Sports {
 			}
 			self::$options[ 'custom' ] = __( 'Custom', 'sportspress' );
 			self::$presets = apply_filters( 'sportspress_get_presets', $presets );
+			asort( self::$options );
 		}
 		return self::$presets;
 	}
