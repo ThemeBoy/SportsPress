@@ -8,7 +8,7 @@ Stable tag: 1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-SportsPress is a feature rich, extendable league management plugin. Designed to be extremely flexible because every sport and team is unique.
+SportsPress is a feature rich, extendable sports plugin that gives your website instant league management capabilities and the ability to calculate statistics for any sport.
 
 == Description ==
 
@@ -38,6 +38,8 @@ Looking for more advanced sports functionality? ThemeBoy offers a range of [Spor
 = Available Languages =
 * English – English ( en_US )
 * Arabic – العربية ( ar )
+* Armenian – Հայերեն ( hy )
+* Bulgarian – Български ( bg_BG )
 * Chinese (China) - 中文 ( zh_CN )
 * Croatian – Hrvatski ( hr )
 * Czech – Čeština ( cs_CZ )
@@ -46,6 +48,7 @@ Looking for more advanced sports functionality? ThemeBoy offers a range of [Spor
 * Finnish – Suomi ( fi )
 * German – Deutsch ( de_DE )
 * Greek – Ελληνικά ( el_GR )
+* Hungarian - Magyar ( hu_HU )
 * Italian – Italiano ( it_IT )
 * Japanese – 日本語 ( ja )
 * Norwegian Bokmål - Norsk bokmål ( nb_NO )
@@ -57,6 +60,7 @@ Looking for more advanced sports functionality? ThemeBoy offers a range of [Spor
 * Slovenian – Slovenija ( sl_SI )
 * Spanish – Español ( es_ES )
 * Swedish – Svenska ( sv_SE )
+* Turkish - Türkçe ( tr_TR )
 
 = Get Involved =
 
@@ -117,7 +121,7 @@ If on the off-chance you do encounter issues with the event/team/player/staff pa
 
 = Which sports does this plugin support? =
 
-The plugin will support most team sports with a scoring system. You can customize the table columns and player statistics by going to WordPress > Settings > SportsPress. We're currently adding presets for commonly requested sports, and you can also add your own.
+The plugin will support most team sports with a scoring system. You can customize the table columns and player statistics via SportsPress settings. We've included presets for commonly requested sports, and you can also add your own.
 
 = Will SportsPress work with my theme? =
 
@@ -127,15 +131,43 @@ Yes; SportsPress will work with any theme, but may require some styling to make 
 
 Bugs can be reported either in our support forum or preferably on the [SportsPress GitHub repository](https://github.com/ThemeBoy/SportsPress/issues).
 
-= Is this plugin ready for my site? =
-
-Yes! If you're using an older version of SportsPress, be sure to upgrade to at least version 1.0.
-
 = Can I import teams/players/events from a CSV file? =
 
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 1.1 =
+* Feature - Enable individual sport mode.
+* Feature - Enable displaying player lists on team pages.
+* Feature - Enable player performance reordering in events.
+* Feature - Enable changing player numbers and positions per event.
+* Feature - Add date selector to display today's events and this week's events in calendar.
+* Feature - Option to redirect team permalinks to official team website instead of team page.
+* Feature - Display staff in event performance section.
+* Feature - Add column selector to player profiles and player lists.
+* Feature - Add option to show or hide player performance section in events.
+* Feature - Add global padding option to SportsPress settings.
+* Tweak - Force decimals to display when precision is set.
+* Tweak - Add SportsPress post types to At a Glance section in dashboard.
+* Tweak - Filter checklists by league and season.
+* Tweak - Display layout type in admin.
+* Tweak - Improve roles and permissions.
+* Fix - Some select all checkboxes defaulted to being checked.
+* Refactor - Use gettext filter to alter frontend text.
+* Preset - Add American Football preset.
+* Preset - Add Australian Rules Football preset.
+* Preset - Add baseball preset.
+* Preset - Add cricket preset.
+* Preset - Add darts preset.
+* Preset - Add handball preset.
+* Preset - Add netball preset.
+* Preset - Add Rugby League preset.
+* Preset - Add squash preset.
+* Preset - Add tennis preset.
+* Preset - Update soccer preset.
+* Localization - Armenian translation by ArtakEVN.
+* Localization - Update translations.
 
 = 1.0.4 =
 * Fix - Shorthand php notation removed for better compatibility.
