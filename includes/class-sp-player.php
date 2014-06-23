@@ -307,13 +307,14 @@ class SP_Player extends SP_Custom_Post {
 		$columns = array_merge( $performance_labels, $stats );
 
 		if ( $admin ):
-			foreach( $usecolumns as $key ):
+			$labels = array();
+			if ( is_array( $usecolumns ) ): foreach ( $usecolumns as $key ):
 				if ( $key == 'team' ):
 					$labels[ $key ] = __( 'Team', 'sportspress' );
 				elseif ( array_key_exists( $key, $columns ) ):
 					$labels[ $key ] = $columns[ $key ];
 				endif;
-			endforeach;
+			endforeach; endif;
 			return array( $labels, $data, $placeholders, $merged, $leagues );
 		else:
 			if ( ! is_array( $this->columns ) )
