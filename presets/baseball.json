@@ -30,7 +30,7 @@
 						{ "name" : "1B", "description" : "Singles" },
 						{ "name" : "2B", "description" : "Doubles" },
 						{ "name" : "3B", "description" : "Triples" },
-						{ "name" : "HR", "description" : "Home runs" },
+						{ "name" : "HR", "description" : "Home runs" }
 	],
 	"columns": [
 						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
