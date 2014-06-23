@@ -61,9 +61,9 @@ if ( ! isset( $post ) ) return;
 	$s = $interval->invert ? 0 : $interval->s;
 	?>
 	<p class="countdown sp-countdown<?php if ( $days >= 10 ): ?> long-countdown<?php endif; ?>"><time datetime="<?php echo $post->post_date; ?>"<?php if ( $live ): ?> data-countdown="<?php echo str_replace( '-', '/', $post->post_date ); ?>"<?php endif; ?>>
-		<span><?php echo sprintf( '%02s', $days ); ?> <small><?php echo __( 'days', 'sportspress' ); ?></small></span>
-		<span><?php echo sprintf( '%02s', $h ); ?> <small><?php echo __( 'hrs', 'sportspress' ); ?></small></span>
-		<span><?php echo sprintf( '%02s', $i ); ?> <small><?php echo __( 'mins', 'sportspress' ); ?></small></span>
-		<span><?php echo sprintf( '%02s', $s ); ?> <small><?php echo __( 'secs', 'sportspress' ); ?></small></span>
+		<span><?php echo sprintf( '%02s', $days ); ?> <small><?php _e( 'days', 'sportspress' ); ?></small></span>
+		<span><?php echo sprintf( '%02s', $h ); ?> <small><?php _e( 'hrs', 'sportspress' ); ?></small></span>
+		<span><?php echo sprintf( '%02s', $i ); ?> <small><?php _e( 'mins', 'sportspress' ); ?></small></span>
+		<span><?php echo sprintf( '%02s', $s ); ?> <small><?php _e( 'secs', 'sportspress' ); ?></small></span>
 	</time></p>
 </div>

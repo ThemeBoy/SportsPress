@@ -38,7 +38,6 @@ if ( isset( $columns ) && null !== $columns ):
 endif;
 $data = $list->data();
 
-
 // The first row should be column labels
 $labels = $data[0];
 
