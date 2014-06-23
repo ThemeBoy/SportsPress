@@ -1,14 +1,14 @@
 /* Messages */
 .sportspress-message {
-	border-left-color: #364c74 !important;
+	border-left-color: #00a69c !important;
 }
 
 .sportspress-message a.button-primary,
 .sportspress-message a.button-secondary,
 p.sportspress-actions input.button-primary,
 p.sportspress-actions input.button-primary:active {
-	background: #39507b;
-	border-color: #2c3e5f;
+	background: #3bbab3;
+	border-color: #15a29a;
 	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.1);
 	box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.1);
 	color: #fff;
@@ -19,8 +19,8 @@ p.sportspress-actions input.button-primary:active {
 .sportspress-message a.button-secondary:hover,
 p.sportspress-actions input.button-primary:hover,
 p.sportspress-actions input.button-primary:focus {
-	background: #2f4265;
-	border-color: #263551;
+	background: #00a69c;
+	border-color: #009187;
 	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.1);
 	box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.1);
 	color: #fff;
