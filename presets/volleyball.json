@@ -1,0 +1,45 @@
+{
+	"name":				"Volleyball",
+	"outcomes": [
+						"Win",
+						"Loss",
+						{ "name" : "Overtime win", "abbreviation" : "OTW" },
+						{ "name" : "Overtime loss", "abbreviation" : "OTL" }
+	],
+	"results": [
+						{ "name" : "1", "description" : "1st set points" },
+						{ "name" : "2", "description" : "2nd set points" },
+						{ "name" : "3", "description" : "3rd set points" },
+						{ "name" : "4", "description" : "4th set points" },
+						{ "name" : "5", "description" : "5th set points" },
+						{ "name" : "T", "id" : "points", "description" : "Total points", "primary" : 1 }
+	],
+	"performance": [
+						{ "name" : "S", "id" : "sets", "description" : "Sets played" },
+						{ "name" : "K", "description" : "Kills" },
+						{ "name" : "E", "description" : "Attack errors" },
+						{ "name" : "TA", "description" : "Total attacks" },
+						{ "name" : "A", "description" : "Assists" },
+						{ "name" : "B", "description" : "Blocks" },
+						{ "name" : "DIG", "id" : "digs", "description" : "Digs" },
+						{ "name" : "PTS", "id" : "points", "description" : "Points" }
+	],
+	"columns": [
+						{ "name" : "Pts", "equation" : "$win * 3 + $overtimewin * 2 + $overtimeloss", "priority" : 1, "description" : "Total points" },
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "W", "equation" : "$win + $overtimewin", "priority" : 2, "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss + $overtimeloss", "description" : "Losses" },
+						{ "name" : "PW", "equation" : "$pointsfor", "description" : "Points won" },
+						{ "name" : "PL", "equation" : "$pointsagainst", "description" : "Points lost" },
+						{ "name" : "Ratio", "equation" : "$pointsfor / $pointsagainst", "precision" : 3, "priority" : 2 }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "Pct", "equation" : "( $k - $e ) / $ta", "description" : "Hitting percentage" },
+						{ "name" : "B/S", "equation" : "$b / $sets", "description" : "Blocks per set" },
+						{ "name" : "A/S", "equation" : "$a / $sets", "description" : "Assists per set" }
+	]
+}
