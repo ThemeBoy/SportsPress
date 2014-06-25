@@ -13,14 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-06-23 22:10+1000\n"
-"PO-Revision-Date: 2014-06-23 22:10+1000\n"
+"PO-Revision-Date: 2014-06-25 12:47+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/"
 "sportspress/language/de_DE/)\n"
-"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
@@ -115,9 +115,8 @@ msgid "Select Photo"
 msgstr "Foto auswählen"
 
 #: sportspress.php:348
-#, fuzzy
 msgid "Display photos"
-msgstr "Logos anzeigen"
+msgstr "Fotos anzeigen"
 
 #: sportspress.php:350
 #: includes/admin/settings/class-sp-settings-events.php:102
@@ -1142,7 +1141,7 @@ msgstr "Liga bearbeiten"
 #: includes/class-sp-post-types.php:469 includes/class-sp-post-types.php:499
 #: includes/class-sp-post-types.php:530
 msgid "View"
-msgstr "Anzeigen"
+msgstr "Ansehen"
 
 #: includes/class-sp-post-types.php:40 includes/class-sp-post-types.php:69
 #: includes/class-sp-post-types.php:98 includes/class-sp-post-types.php:127
@@ -1565,11 +1564,11 @@ msgstr "Geplant"
 
 #: includes/sp-core-functions.php:420
 msgid "This week"
-msgstr ""
+msgstr "Diese Woche"
 
 #: includes/sp-core-functions.php:421
 msgid "Today"
-msgstr ""
+msgstr "Heute"
 
 #: includes/sp-core-functions.php:649 includes/sp-core-functions.php:789
 msgid "(no title)"
@@ -1580,9 +1579,8 @@ msgid "Select All"
 msgstr "Alle auswählen"
 
 #: includes/sp-core-functions.php:727 includes/sp-core-functions.php:730
-#, fuzzy
 msgid "Show all"
-msgstr "Alle Mannschaften anzeigen"
+msgstr "Alle anzeigen"
 
 #: includes/sp-core-functions.php:1040
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
@@ -1677,11 +1675,11 @@ msgstr "Zeit/Ergebnisse"
 #: includes/sp-core-functions.php:1060 templates/event-blocks.php:108
 #: templates/event-calendar.php:215 templates/event-list.php:186
 msgid "View all events"
-msgstr "Alle Begegnungen anzeigen"
+msgstr "Alle Begegnungen ansehen"
 
 #: includes/sp-core-functions.php:1061 templates/league-table.php:110
 msgid "View full table"
-msgstr "Vollständige Tabelle anzeigen"
+msgstr "Vollständige Tabelle ansehen"
 
 #: includes/sp-core-functions.php:1066
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:86
@@ -1701,12 +1699,12 @@ msgstr "Frühere Mannschaften"
 
 #: includes/sp-core-functions.php:1071
 msgid "Substitutes"
-msgstr "Ersatzspieler"
+msgstr "Auswechselspieler"
 
 #: includes/sp-core-functions.php:1072 templates/player-gallery.php:146
 #: templates/player-list.php:152
 msgid "View all players"
-msgstr "Alle Spieler anzeigen"
+msgstr "Alle Spieler ansehen"
 
 #: includes/sp-template-hooks.php:151
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:48
@@ -1803,7 +1801,7 @@ msgstr "Einstellungen gespeichert."
 #: includes/admin/settings/class-sp-settings-config.php:360
 #: includes/admin/settings/class-sp-settings-config.php:416
 msgid "View All"
-msgstr "Alle anzeigen"
+msgstr "Alle ansehen"
 
 #: includes/sp-template-hooks.php:331 includes/sp-template-hooks.php:334
 #: includes/sp-template-hooks.php:339
@@ -1866,8 +1864,8 @@ msgstr "SportsPress"
 #, php-format
 msgid "%s "
 msgid_plural "%s "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s"
+msgstr[1] "%s"
 
 #: includes/admin/class-sp-admin-dashboard.php:80
 #, php-format
@@ -1878,14 +1876,14 @@ msgstr "<strong>%s</strong> bis zur nächsten Begegnung"
 #, php-format
 msgid "<strong>%s event</strong> scheduled"
 msgid_plural "<strong>%s events</strong> scheduled"
-msgstr[0] "<strong>%s Veranstaltung</strong> geplant"
+msgstr[0] "<strong>%s Begegnung</strong> geplant"
 msgstr[1] "<strong>%s Begegnungen</strong> geplant"
 
 #: includes/admin/class-sp-admin-dashboard.php:92
 #, php-format
 msgid "<strong>%s event</strong> published"
 msgid_plural "<strong>%s events</strong> published"
-msgstr[0] "<strong>%s Veranstaltung</strong> veröffentlicht"
+msgstr[0] "<strong>%s Begegnung</strong> veröffentlicht"
 msgstr[1] "<strong>%s Begegnungen</strong> veröffentlicht"
 
 #: includes/admin/class-sp-admin-importers.php:31
@@ -2039,21 +2037,19 @@ msgstr "Sportart"
 #: includes/admin/class-sp-admin-welcome.php:225
 #: includes/admin/settings/class-sp-settings-general.php:57
 msgid "Mode"
-msgstr ""
+msgstr "Modus"
 
 #: includes/admin/class-sp-admin-welcome.php:233
 #: includes/admin/settings/class-sp-settings-general.php:62
-#, fuzzy
 msgctxt "mode select"
 msgid "Team"
 msgstr "Mannschaft"
 
 #: includes/admin/class-sp-admin-welcome.php:234
 #: includes/admin/settings/class-sp-settings-general.php:63
-#, fuzzy
 msgctxt "mode select"
 msgid "Individual"
-msgstr "Indien"
+msgstr "Individuell"
 
 #: includes/admin/class-sp-admin-welcome.php:240
 #: includes/admin/views/html-admin-settings.php:16
@@ -2075,7 +2071,7 @@ msgid ""
 "transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
 msgstr ""
 "SportsPress wurde freundlicherweise in mehrere andere Sprachen übersetzt. "
-"Vielen Dank an unser Übersetzungsteam. Möchten du deinen Namen hier auch "
+"Vielen Dank an unser Übersetzungsteam. Möchten Sie Ihren Namen hier auch "
 "lesen? <a href=\"https://www.transifex.com/projects/p/sportspress/"
 "\">Übersetze SportsPress</a>."
 
@@ -2117,7 +2113,7 @@ msgstr "Alles erledigt!"
 
 #: includes/admin/importers/class-sp-event-importer.php:383
 msgid "View Events"
-msgstr "Begegnungen anzeigen"
+msgstr "Begegnungen ansehen"
 
 #: includes/admin/importers/class-sp-event-importer.php:395
 msgid "Import Events"
@@ -2222,7 +2218,7 @@ msgstr ""
 
 #: includes/admin/importers/class-sp-player-importer.php:150
 msgid "View Players"
-msgstr "Spieler anzeigen"
+msgstr "Spieler ansehen"
 
 #: includes/admin/importers/class-sp-player-importer.php:162
 msgid "Import Players"
@@ -2249,7 +2245,7 @@ msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
 msgid "View Staff"
-msgstr "Mitarbeiter anzeigen"
+msgstr "Mitarbeiter ansehen"
 
 #: includes/admin/importers/class-sp-staff-importer.php:155
 msgid "Import Staff"
@@ -2276,7 +2272,7 @@ msgstr ""
 
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "View Teams"
-msgstr "Mannschaften anzeigen"
+msgstr "Mannschaften ansehen"
 
 #: includes/admin/importers/class-sp-team-importer.php:119
 msgid "Import Teams"
@@ -2505,7 +2501,7 @@ msgstr "Absteigend"
 msgid ""
 "Copy this code and paste it into your post, page or text widget content."
 msgstr ""
-"Kopieren Sie diesen Code und fügen Sie Ihn in Ihren Beitrag, eine Seite oder "
+"Kopieren Sie diesen Code und fügen Sie ihn in Ihren Beitrag, eine Seite oder "
 "als Text-Widget-Inhalt ein."
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:47
@@ -2518,7 +2514,7 @@ msgstr "Teilgenommen"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
 msgid "Started"
-msgstr "Gestartet"
+msgstr "Begonnen"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
 msgid "Substituted"
@@ -2550,7 +2546,7 @@ msgstr "Startaufstellung"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:161
 msgid "Substitute"
-msgstr "Ersatzspieler"
+msgstr "Auswechselspieler"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:34
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:92
@@ -2690,7 +2686,7 @@ msgstr "Begegnungseinstellungen"
 #: includes/admin/settings/class-sp-settings-players.php:82
 #: includes/admin/settings/class-sp-settings-teams.php:73
 msgid "Limit"
-msgstr "Limit"
+msgstr "Grenzwert"
 
 #: includes/admin/settings/class-sp-settings-events.php:49
 #: includes/admin/settings/class-sp-settings-teams.php:77
@@ -2721,19 +2717,16 @@ msgid "Display outcomes"
 msgstr "Spielausgänge anzeigen"
 
 #: includes/admin/settings/class-sp-settings-events.php:94
-#, fuzzy
 msgid "Display players"
-msgstr "Liga anzeigen"
+msgstr "Spieler anzeigen"
 
 #: includes/admin/settings/class-sp-settings-events.php:111
-#, fuzzy
 msgid "Display staff"
-msgstr "Karten anzeigen"
+msgstr "Mitarbeiter anzeigen"
 
 #: includes/admin/settings/class-sp-settings-events.php:119
-#, fuzzy
 msgid "Link staff"
-msgstr "Mannschaften verknüpfen"
+msgstr "Mitarbeiter verknüpfen"
 
 #: includes/admin/settings/class-sp-settings-events.php:132
 #: includes/admin/settings/class-sp-settings-players.php:65
@@ -2791,24 +2784,23 @@ msgstr "Stile und Skripte"
 
 #: includes/admin/settings/class-sp-settings-general.php:87
 msgid "Align"
-msgstr ""
+msgstr "Ausrichten"
 
 #: includes/admin/settings/class-sp-settings-general.php:93
 msgid "Left"
-msgstr ""
+msgstr "Links"
 
 #: includes/admin/settings/class-sp-settings-general.php:94
 msgid "Center"
-msgstr ""
+msgstr "Mitte"
 
 #: includes/admin/settings/class-sp-settings-general.php:95
 msgid "Right"
-msgstr ""
+msgstr "Rechts"
 
 #: includes/admin/settings/class-sp-settings-general.php:100
-#, fuzzy
 msgid "Padding"
-msgstr "Überschrift"
+msgstr "Padding"
 
 #: includes/admin/settings/class-sp-settings-general.php:104
 #: includes/admin/settings/class-sp-settings-general.php:152
@@ -2868,7 +2860,7 @@ msgstr "Hintergrund"
 #: includes/admin/settings/class-sp-settings-text.php:25
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "Text"
-msgstr "Textfeld"
+msgstr "Text"
 
 #: includes/admin/settings/class-sp-settings-general.php:255
 msgid "Heading"
@@ -2888,9 +2880,8 @@ msgid "Display national flags"
 msgstr "Nationalflaggen anzeigen"
 
 #: includes/admin/settings/class-sp-settings-staff.php:41
-#, fuzzy
 msgid "Staff Options"
-msgstr "Mannschaftseinstellungen"
+msgstr "Mitarbeitereinstellungen"
 
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
@@ -3068,7 +3059,7 @@ msgstr "Installierte Plugins"
 
 #: includes/admin/views/html-admin-page-status.php:174
 msgid "Visit plugin homepage"
-msgstr "Besuche Plugin Homepage"
+msgstr "Plugin Homepage besuchen"
 
 #: includes/admin/views/html-admin-page-status.php:198
 #: includes/admin/views/html-admin-page-status.php:413
@@ -3152,6 +3143,12 @@ msgid ""
 "recommend only bundling the template files you actually need to customize). "
 "See the system report for full details."
 msgstr ""
+"<strong>Mit Ihrem Theme sind veraltete Kopien der SportsPress "
+"Templatedateien</strong> gebündelt - sollten Sie auf funktionelle Probleme "
+"auf dem Frontend treffen, könnte das der Grund dafür sein. Stellen Sie "
+"sicher, dass sie aktualisiert oder entfernt werden. (In der Regel empfehlen "
+"wir, dass nur die Templatedateien gebündelt werden, die tatsächlich anpassen "
+"werden müssen.) Siehe auch den Systembericht für weitere Informationen."
 
 #: includes/admin/views/html-notice-theme-support.php:5
 msgid ""
@@ -3221,9 +3218,8 @@ msgstr "Status:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:81
 #: includes/widgets/class-sp-widget-event-list.php:84
-#, fuzzy
 msgid "Date:"
-msgstr "Datum"
+msgstr "Datum:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:94
 #: includes/widgets/class-sp-widget-event-list.php:97
@@ -3322,36 +3318,3 @@ msgstr "Leistung:"
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
-
-#~ msgid "Baseball"
-#~ msgstr "Baseball"
-
-#~ msgid "Basketball"
-#~ msgstr "Basketball"
-
-#~ msgid "Cricket"
-#~ msgstr "Kricket"
-
-#~ msgid "American Football"
-#~ msgstr "American Football"
-
-#~ msgid "Australian Rules Football"
-#~ msgstr "Football (australische Regeln)"
-
-#~ msgid "Competitive Gaming"
-#~ msgstr "E-Sports"
-
-#~ msgid "Golf"
-#~ msgstr "Golf"
-
-#~ msgid "Hockey"
-#~ msgstr "Hockey"
-
-#~ msgid "Racing"
-#~ msgstr "Rennsport"
-
-#~ msgid "Rugby"
-#~ msgstr "Rugby"
-
-#~ msgid "Soccer (Association Football)"
-#~ msgstr "Fußball"

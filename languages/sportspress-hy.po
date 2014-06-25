@@ -1,17 +1,19 @@
 #
 # Translators:
+# Artak Arzumanyan <aarzumanyan@gmail.com>, 2014
+# Edgar Amiraghyan <admin@calkut.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-06-23 22:24+1000\n"
-"PO-Revision-Date: 2014-06-23 22:24+1000\n"
+"POT-Creation-Date: 2014-06-23 22:10+1000\n"
+"PO-Revision-Date: 2014-06-25 12:47+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
-"Language-Team: Armenian (Armenia) (http://www.transifex.com/projects/p/"
-"sportspress/language/hy_AM/)\n"
-"Language: hy\n"
+"Language-Team: Armenian (http://www.transifex.com/projects/p/sportspress/"
+"language/hy/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hy\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
@@ -31,11 +33,11 @@ msgstr "Կարգավորումներ"
 
 #: sportspress.php:140
 msgid "Themes"
-msgstr ""
+msgstr "Թեմաներ"
 
 #: sportspress.php:141
 msgid "Extensions"
-msgstr ""
+msgstr "Լրացումներ"
 
 #: sportspress.php:326 includes/class-sp-post-types.php:464
 #: includes/admin/class-sp-admin-permalink-settings.php:32
@@ -106,9 +108,8 @@ msgid "Select Photo"
 msgstr "Ընտրել ֆոտո"
 
 #: sportspress.php:348
-#, fuzzy
 msgid "Display photos"
-msgstr "Ցուցադրել լոգոները"
+msgstr "Ցույց տալ ֆոտոները"
 
 #: sportspress.php:350
 #: includes/admin/settings/class-sp-settings-events.php:102
@@ -986,7 +987,7 @@ msgstr "Օրացույց"
 #: includes/class-sp-formats.php:32 includes/class-sp-formats.php:36
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:55
 msgid "List"
-msgstr ""
+msgstr "Ցանկ"
 
 #: includes/class-sp-formats.php:33
 msgid "Blocks"
@@ -1037,7 +1038,7 @@ msgstr "Անձնակազմ"
 
 #: includes/class-sp-install.php:230
 msgid "Event Manager"
-msgstr ""
+msgstr "Խաղերի կառավարում"
 
 #: includes/class-sp-install.php:273
 msgid "Team Manager"
@@ -1121,7 +1122,7 @@ msgstr "Բոլորը"
 
 #: includes/class-sp-post-types.php:38
 msgid "Edit League"
-msgstr "Խմբագրել Լիգան"
+msgstr "Խմբագրել լիգան"
 
 #: includes/class-sp-post-types.php:39 includes/class-sp-post-types.php:68
 #: includes/class-sp-post-types.php:97 includes/class-sp-post-types.php:126
@@ -1200,7 +1201,7 @@ msgstr "Ծնող"
 #: includes/class-sp-post-types.php:44 includes/class-sp-post-types.php:73
 #: includes/class-sp-post-types.php:102 includes/class-sp-post-types.php:131
 msgid "Parent:"
-msgstr "Ծնող."
+msgstr "Ծնող՝"
 
 #: includes/class-sp-post-types.php:45 includes/class-sp-post-types.php:74
 #: includes/class-sp-post-types.php:103 includes/class-sp-post-types.php:132
@@ -1533,7 +1534,7 @@ msgstr "Խմբագրել անձնակազմը"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:28
 #: templates/team-link.php:21
 msgid "Visit Site"
-msgstr ""
+msgstr "Կայք"
 
 #: includes/sp-core-functions.php:331 includes/sp-core-functions.php:335
 #: includes/sp-core-functions.php:1058
@@ -1556,11 +1557,11 @@ msgstr "Նախատեսված"
 
 #: includes/sp-core-functions.php:420
 msgid "This week"
-msgstr ""
+msgstr "Այս շաբաթ"
 
 #: includes/sp-core-functions.php:421
 msgid "Today"
-msgstr ""
+msgstr "Այսօր"
 
 #: includes/sp-core-functions.php:649 includes/sp-core-functions.php:789
 msgid "(no title)"
@@ -1571,9 +1572,8 @@ msgid "Select All"
 msgstr "Ընտրել բոլորը"
 
 #: includes/sp-core-functions.php:727 includes/sp-core-functions.php:730
-#, fuzzy
 msgid "Show all"
-msgstr "Բոլոր թիմերը"
+msgstr "Բոլորը"
 
 #: includes/sp-core-functions.php:1040
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
@@ -1644,13 +1644,13 @@ msgstr "Նախադիտել"
 
 #: includes/sp-core-functions.php:1050 templates/player-list.php:88
 msgid "Rank"
-msgstr ""
+msgstr "Կարգ"
 
 #: includes/sp-core-functions.php:1051
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:149
 #: templates/event-list.php:166
 msgid "Recap"
-msgstr ""
+msgstr "Ընդհանուր"
 
 #: includes/sp-core-functions.php:1056
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:92
@@ -1734,7 +1734,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-config.php:285
 #: includes/admin/settings/class-sp-settings-config.php:396
 msgid "Key"
-msgstr ""
+msgstr "Բանաի"
 
 #: includes/sp-template-hooks.php:157
 #: includes/admin/post-types/class-sp-admin-cpt-metric.php:44
@@ -1794,7 +1794,7 @@ msgstr "Կարգավորումներ պահպանվեցին։"
 #: includes/admin/settings/class-sp-settings-config.php:360
 #: includes/admin/settings/class-sp-settings-config.php:416
 msgid "View All"
-msgstr "Դիտել բոլորը"
+msgstr "Տեսնել բոլորը"
 
 #: includes/sp-template-hooks.php:331 includes/sp-template-hooks.php:334
 #: includes/sp-template-hooks.php:339
@@ -1834,7 +1834,7 @@ msgstr ""
 #: includes/sp-template-hooks.php:347
 #: includes/admin/class-sp-admin-post-types.php:85
 msgid "M j, Y @ G:i"
-msgstr ""
+msgstr "M j, Y @ G:i"
 
 #: includes/admin/class-sp-admin-assets.php:111
 #: includes/admin/class-sp-admin-settings.php:117
@@ -1861,8 +1861,8 @@ msgstr "SportsPress"
 #, php-format
 msgid "%s "
 msgid_plural "%s "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s"
+msgstr[1] "%s"
 
 #: includes/admin/class-sp-admin-dashboard.php:80
 #, php-format
@@ -2029,21 +2029,19 @@ msgstr "Մարզաձև"
 #: includes/admin/class-sp-admin-welcome.php:225
 #: includes/admin/settings/class-sp-settings-general.php:57
 msgid "Mode"
-msgstr ""
+msgstr "Ռեժիմ"
 
 #: includes/admin/class-sp-admin-welcome.php:233
 #: includes/admin/settings/class-sp-settings-general.php:62
-#, fuzzy
 msgctxt "mode select"
 msgid "Team"
 msgstr "Թիմ"
 
 #: includes/admin/class-sp-admin-welcome.php:234
 #: includes/admin/settings/class-sp-settings-general.php:63
-#, fuzzy
 msgctxt "mode select"
 msgid "Individual"
-msgstr "Հնդկաստան"
+msgstr "Անհատական"
 
 #: includes/admin/class-sp-admin-welcome.php:240
 #: includes/admin/views/html-admin-settings.php:16
@@ -2064,6 +2062,9 @@ msgid ""
 "to our translation team. Want to see your name? <a href=\"https://www."
 "transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
 msgstr ""
+"SportsPress-ը, մեր թարգմանիչների խմբի շնորհիվ,  հասանելի է  բազմաթիվ "
+"լեզուներով . Ուզու՞մ եք ձեր խոսքն ասել: <a href=\"https://www.transifex.com/"
+"projects/p/sportspress/\">Թարգմանեք SportsPress</a>."
 
 #: includes/admin/class-sp-admin-welcome.php:272
 msgid "Go to SportsPress Settings"
@@ -2202,7 +2203,7 @@ msgstr ""
 
 #: includes/admin/importers/class-sp-player-importer.php:150
 msgid "View Players"
-msgstr "Դիտել Խաղացողներին"
+msgstr "Տեսնել Խաղացողներին"
 
 #: includes/admin/importers/class-sp-player-importer.php:162
 msgid "Import Players"
@@ -2228,7 +2229,7 @@ msgstr ""
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
 msgid "View Staff"
-msgstr "Դիտել անձնակազմը"
+msgstr "Տեսնել անձնակազմը"
 
 #: includes/admin/importers/class-sp-staff-importer.php:155
 msgid "Import Staff"
@@ -2253,7 +2254,7 @@ msgstr ""
 
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "View Teams"
-msgstr "Դիտել Թիմերը"
+msgstr "Տեսնել թիմերը"
 
 #: includes/admin/importers/class-sp-team-importer.php:119
 msgid "Import Teams"
@@ -2382,16 +2383,16 @@ msgstr "Հապավում"
 #: includes/admin/post-types/class-sp-admin-cpt.php:42
 #, php-format
 msgid "Insert into %s"
-msgstr ""
+msgstr "Մտցնել %s-ի մեջ"
 
 #: includes/admin/post-types/class-sp-admin-cpt.php:43
 #, php-format
 msgid "Uploaded to this %s"
-msgstr ""
+msgstr "Վերբեռնած է այս  %s"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:120
 msgid "Shortcodes"
-msgstr ""
+msgstr "Համառոտագրեր"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:124
 msgid "Video"
@@ -2401,7 +2402,7 @@ msgstr "Վիդեո"
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:147
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:162
 msgid "Shortcode"
-msgstr ""
+msgstr "Համառոտագիր"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:144
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:159
@@ -2499,15 +2500,15 @@ msgstr "Փոխարինվել է"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
 msgid "for"
-msgstr ""
+msgstr "համար"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
 msgid "against"
-msgstr ""
+msgstr "դեմ"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:44
 msgid "Streak"
-msgstr ""
+msgstr "Անընդմեջ"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:45
 msgid "Last 5"
@@ -2557,7 +2558,7 @@ msgstr "Արժեքներ"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:43
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:47
 msgid "Adjustments"
-msgstr ""
+msgstr "Շտկումներ"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:82
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:79
@@ -2627,7 +2628,7 @@ msgstr "Փոփոխականներ"
 #: includes/admin/settings/class-sp-settings-config.php:177
 #, php-format
 msgid "Default (%s)"
-msgstr ""
+msgstr "Լռելյայն (%s)"
 
 #: includes/admin/settings/class-sp-settings-config.php:179
 #: includes/admin/settings/class-sp-settings-general.php:73
@@ -2643,7 +2644,7 @@ msgstr ""
 #: includes/widgets/class-sp-widget-player-gallery.php:76
 #: includes/widgets/class-sp-widget-player-list.php:97
 msgid "Default"
-msgstr ""
+msgstr "Լռելյայն"
 
 #: includes/admin/settings/class-sp-settings-config.php:278
 msgid "Used for league tables."
@@ -2694,19 +2695,16 @@ msgid "Display outcomes"
 msgstr "Ցուցադրել խաղի արդյունքները"
 
 #: includes/admin/settings/class-sp-settings-events.php:94
-#, fuzzy
 msgid "Display players"
-msgstr "Ցուցադրել քարտեզները"
+msgstr "Ցույց տալ խաղացողներին"
 
 #: includes/admin/settings/class-sp-settings-events.php:111
-#, fuzzy
 msgid "Display staff"
-msgstr "Ցուցադրել քարտեզները"
+msgstr "Ցույց տալ անձնակազմը"
 
 #: includes/admin/settings/class-sp-settings-events.php:119
-#, fuzzy
 msgid "Link staff"
-msgstr "Հղում թիմերին"
+msgstr "Հղում անձնակազմին"
 
 #: includes/admin/settings/class-sp-settings-events.php:132
 #: includes/admin/settings/class-sp-settings-players.php:65
@@ -2732,7 +2730,7 @@ msgstr "խաղ"
 
 #: includes/admin/settings/class-sp-settings-events.php:206
 msgid "Custom:"
-msgstr ""
+msgstr "Յուրահատուկ."
 
 #: includes/admin/settings/class-sp-settings-general.php:25
 msgid "General"
@@ -2764,29 +2762,28 @@ msgstr "Ոճեր և սկրիպտեր"
 
 #: includes/admin/settings/class-sp-settings-general.php:87
 msgid "Align"
-msgstr ""
+msgstr "Տողաշտկում"
 
 #: includes/admin/settings/class-sp-settings-general.php:93
 msgid "Left"
-msgstr ""
+msgstr "Ձախ"
 
 #: includes/admin/settings/class-sp-settings-general.php:94
 msgid "Center"
-msgstr ""
+msgstr "Կենտրոն"
 
 #: includes/admin/settings/class-sp-settings-general.php:95
 msgid "Right"
-msgstr ""
+msgstr "Աջ"
 
 #: includes/admin/settings/class-sp-settings-general.php:100
-#, fuzzy
 msgid "Padding"
-msgstr "Գլխադիր"
+msgstr "Խորություն"
 
 #: includes/admin/settings/class-sp-settings-general.php:104
 #: includes/admin/settings/class-sp-settings-general.php:152
 msgid "Auto"
-msgstr ""
+msgstr "Ավտո"
 
 #: includes/admin/settings/class-sp-settings-general.php:113
 msgid "Custom CSS"
@@ -2822,11 +2819,11 @@ msgstr "Սա կմիացնի ետհաշվարկի անիմացիայի սկրիպ
 
 #: includes/admin/settings/class-sp-settings-general.php:148
 msgid "Header Offset"
-msgstr ""
+msgstr "Գլխագրի շեղում"
 
 #: includes/admin/settings/class-sp-settings-general.php:237
 msgid "Frontend Styles"
-msgstr ""
+msgstr "Հիմնական ոճ"
 
 #: includes/admin/settings/class-sp-settings-general.php:253
 msgid "Background"
@@ -2856,9 +2853,8 @@ msgid "Display national flags"
 msgstr "Ցույց տալ դրոշները"
 
 #: includes/admin/settings/class-sp-settings-staff.php:41
-#, fuzzy
 msgid "Staff Options"
-msgstr "Թիմի լարք"
+msgstr "Անձնակազմի լարք"
 
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
@@ -2866,15 +2862,15 @@ msgstr "Թիմի լարք"
 
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "The following options affect how words are displayed on the frontend."
-msgstr ""
+msgstr "Հետևյալ կարգավորումները ազդում են բառերի արտապատկերման ձևի վրա:"
 
 #: includes/admin/views/html-admin-page-status.php:5
 msgid "Please include this information when requesting support:"
-msgstr ""
+msgstr "Խնդրում ենք, ներառեք այս տեղեկությունները օգնության հարցման ժամանակ:"
 
 #: includes/admin/views/html-admin-page-status.php:6
 msgid "Get System Report"
-msgstr ""
+msgstr "Ստանալ համակարգի հաշվետվությունը"
 
 #: includes/admin/views/html-admin-page-status.php:14
 msgid "Environment"
@@ -2894,7 +2890,7 @@ msgstr "WP տարբերակ"
 
 #: includes/admin/views/html-admin-page-status.php:36
 msgid "WP Multisite Enabled"
-msgstr "գործում է բազմակայք WP "
+msgstr "Բազմակայք WP "
 
 #: includes/admin/views/html-admin-page-status.php:37
 #: includes/admin/views/html-admin-page-status.php:61
@@ -2910,7 +2906,7 @@ msgstr "Ոչ"
 
 #: includes/admin/views/html-admin-page-status.php:40
 msgid "Web Server Info"
-msgstr "Վեբ Սերվերի ինֆո"
+msgstr "Վեբ Սերվեր"
 
 #: includes/admin/views/html-admin-page-status.php:44
 msgid "PHP Version"
@@ -3034,7 +3030,7 @@ msgstr "հասանելի է"
 
 #: includes/admin/views/html-admin-page-status.php:201
 msgid "by"
-msgstr ""
+msgstr "՝"
 
 #: includes/admin/views/html-admin-page-status.php:201
 msgid "version"
@@ -3084,22 +3080,22 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status.php:470
 #: includes/admin/views/html-admin-page-status.php:476
 msgid "Template Overrides"
-msgstr ""
+msgstr "Կաղապարների վերադրում"
 
 #: includes/admin/views/html-admin-page-status.php:477
 msgid "No overrides present in theme."
-msgstr ""
+msgstr "Այս թեմայում ոչ մի վերադրում չկա:"
 
 #: includes/admin/views/html-notice-install.php:5
 #, php-format
 msgid "Welcome to SportsPress %s"
-msgstr ""
+msgstr "Բարի Գալուստ SportsPress %s"
 
 #: includes/admin/views/html-notice-install.php:8
 #: includes/admin/views/html-notice-template-check.php:6
 #: includes/admin/views/html-notice-theme-support.php:8
 msgid "Hide this notice"
-msgstr ""
+msgstr "Թաքցնել այս հաղորդագրությունը"
 
 #: includes/admin/views/html-notice-template-check.php:5
 msgid ""
@@ -3109,6 +3105,11 @@ msgid ""
 "recommend only bundling the template files you actually need to customize). "
 "See the system report for full details."
 msgstr ""
+"Ձեր թեման փոխկապակցված է SportsPress-ի ժամկետանց կաղապար-ֆայլերի հետ։ Դա "
+"կարող է բերել սխալ աշխատանքի և ոչ լիարժեք արտապատկերման։ Համոզվեք, որ "
+"թարմացրել կամ հեռացրել եք ժամկետանց ֆայլերը ( մենք խորհուրդ ենք տալիս "
+"փոխկապակցել միայն այն կաղապարները, որոնք ձեզ իրոք անհրաժեշտ են)։ Ավելի "
+"մանրամասն կարող եք տեսնել համակարգի հաշվետվության մեջ. "
 
 #: includes/admin/views/html-notice-theme-support.php:5
 msgid ""
@@ -3116,18 +3117,21 @@ msgid ""
 "you encounter layout issues please read our integration guide or choose a "
 "SportsPress theme :)"
 msgstr ""
+"<strong>Ձեր թեմայի և  SportsPress-ի համատեղելիության մասին ոչինչ հայտնի չէ:</"
+"strong> Եթե դուք ունենաք շարվածքի հետ կապված խնդիրներ, ապա կարդացեք մեր "
+"ինտեգրման ուղեցույցը կամ ընտրեք SportsPress-ի հետ համատեղելի թեմա:"
 
 #: includes/admin/views/html-notice-theme-support.php:7
 msgid "Theme Integration Guide"
-msgstr ""
+msgstr "Թեմայի ինտեգրման ուղեցույց"
 
 #: includes/widgets/class-sp-widget-countdown.php:5
 msgid "A clock that counts down to an upcoming event."
-msgstr ""
+msgstr "Առաջիկա խաղի ետհաշվարկ ժամացույց:"
 
 #: includes/widgets/class-sp-widget-countdown.php:6
 msgid "SportsPress Countdown"
-msgstr ""
+msgstr "SportsPress - Ետհաշվարկ"
 
 #: includes/widgets/class-sp-widget-countdown.php:39
 #: includes/widgets/class-sp-widget-event-blocks.php:48
@@ -3137,7 +3141,7 @@ msgstr ""
 #: includes/widgets/class-sp-widget-player-gallery.php:50
 #: includes/widgets/class-sp-widget-player-list.php:50
 msgid "Title:"
-msgstr ""
+msgstr "Վերնագիր՝ "
 
 #: includes/widgets/class-sp-widget-countdown.php:42
 #: includes/widgets/class-sp-widget-event-blocks.php:51
@@ -3148,126 +3152,125 @@ msgstr ""
 #: includes/widgets/class-sp-widget-player-list.php:53
 #, php-format
 msgid "Select %s:"
-msgstr "Ընտրել %s:"
+msgstr "Ընտրել %s"
 
 #: includes/widgets/class-sp-widget-countdown.php:62
 msgid "Display venue"
-msgstr ""
+msgstr "Ցույց տալ մարզադաշտերը"
 
 #: includes/widgets/class-sp-widget-countdown.php:65
 msgid "Display league"
-msgstr ""
+msgstr "Ցույց տալ լիգան"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:5
 #: includes/widgets/class-sp-widget-event-list.php:5
 msgid "A list of events."
-msgstr ""
+msgstr "Խաղերի ցանկ:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:6
 msgid "SportsPress Event Blocks"
-msgstr ""
+msgstr "SportsPress - Խաղերի բլոկեր "
 
 #: includes/widgets/class-sp-widget-event-blocks.php:68
 #: includes/widgets/class-sp-widget-event-calendar.php:61
 #: includes/widgets/class-sp-widget-event-list.php:71
 msgid "Status:"
-msgstr ""
+msgstr "Կարգավիճակ՝"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:81
 #: includes/widgets/class-sp-widget-event-list.php:84
-#, fuzzy
 msgid "Date:"
-msgstr "Օր"
+msgstr "Օր՝"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:94
 #: includes/widgets/class-sp-widget-event-list.php:97
 msgid "Number of events to show:"
-msgstr ""
+msgstr "Ցուցադրվող խաղերի քանակը:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:97
 #: includes/widgets/class-sp-widget-event-list.php:100
 #: includes/widgets/class-sp-widget-player-gallery.php:94
 #: includes/widgets/class-sp-widget-player-list.php:115
 msgid "Sort Order:"
-msgstr ""
+msgstr "Հերթականությունը"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:105
 #: includes/widgets/class-sp-widget-event-calendar.php:75
 #: includes/widgets/class-sp-widget-event-list.php:126
 msgid "Display link to view all events"
-msgstr ""
+msgstr "Ցույց տալ հղում բոլորի խաղերին"
 
 #: includes/widgets/class-sp-widget-event-calendar.php:5
 msgid "A calendar of events."
-msgstr ""
+msgstr "Խաղերի օրացույց"
 
 #: includes/widgets/class-sp-widget-event-calendar.php:6
 msgid "SportsPress Event Calendar"
-msgstr ""
+msgstr "SportsPress - Խաղերի օրացույց"
 
 #: includes/widgets/class-sp-widget-event-list.php:6
 msgid "SportsPress Event List"
-msgstr ""
+msgstr "SportsPress-ի խաղերի ցանկ"
 
 #: includes/widgets/class-sp-widget-event-list.php:108
 #: includes/widgets/class-sp-widget-league-table.php:70
 msgid "Columns:"
-msgstr ""
+msgstr "Սյուներ"
 
 #: includes/widgets/class-sp-widget-league-table.php:5
 msgid "Display a league table."
-msgstr ""
+msgstr "Ցույց տալ լիգայի աղյուսակը:"
 
 #: includes/widgets/class-sp-widget-league-table.php:6
 msgid "SportsPress League Table"
-msgstr ""
+msgstr "SportsPress - Լիգայի աղյուսակ"
 
 #: includes/widgets/class-sp-widget-league-table.php:66
 msgid "Number of teams to show:"
-msgstr ""
+msgstr "Ցուցադրվող թիմերի քանակը:"
 
 #: includes/widgets/class-sp-widget-league-table.php:93
 msgid "Display link to view full table"
-msgstr ""
+msgstr "Ցույց տալ հղում լրիվ աղյուսակին"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:5
 msgid "Display a gallery of players."
-msgstr ""
+msgstr "Ցույց տալ խաղացողների պատկերասրահը:"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:6
 msgid "SportsPress Player Gallery"
-msgstr ""
+msgstr "SportsPress - Խաղացողների պատկերաասրահ"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:69
 #: includes/widgets/class-sp-widget-player-list.php:69
 msgid "Number of players to show:"
-msgstr ""
+msgstr "Ցուցադրվող խաղացողների քանակը:"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:72
 #: includes/widgets/class-sp-widget-player-list.php:93
 msgid "Sort by:"
-msgstr ""
+msgstr "Դասավորել ըստ"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:101
 #: includes/widgets/class-sp-widget-player-list.php:122
 msgid "Display link to view all players"
-msgstr ""
+msgstr "Ցույց տալ հղում բոլորի խաղացողներին"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:104
 msgid "Display player names on hover"
-msgstr ""
+msgstr "Վրան պահելուց ցույց տալ խաղացողների անունները"
 
 #: includes/widgets/class-sp-widget-player-list.php:5
 msgid "Display a list of players."
-msgstr ""
+msgstr "Ցույց տալ խաղացողների ցանկը: "
 
 #: includes/widgets/class-sp-widget-player-list.php:6
 msgid "SportsPress Player List"
-msgstr ""
+msgstr "SportsPress - Խաղացողների ցանկ"
 
 #: includes/widgets/class-sp-widget-player-list.php:73
 msgid "Performance:"
-msgstr ""
+msgstr "Արդյունավետություն."
 
 #. translators: Calendar caption: 1: month name, 2: 4-digit year
 #: templates/event-calendar.php:92 templates/event-calendar.php:120
@@ -3275,37 +3278,4 @@ msgstr ""
 #, php-format
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
-msgstr ""
-
-#~ msgid "Baseball"
-#~ msgstr "Բեյսբոլ"
-
-#~ msgid "Basketball"
-#~ msgstr "Բասկետբոլ"
-
-#~ msgid "Cricket"
-#~ msgstr "Քրիքեթ"
-
-#~ msgid "American Football"
-#~ msgstr "Ամերիկյան ֆուտբոլ"
-
-#~ msgid "Australian Rules Football"
-#~ msgstr "Ավստրալիական ֆուտբոլ"
-
-#~ msgid "Competitive Gaming"
-#~ msgstr "Մրցույթային խաղ"
-
-#~ msgid "Golf"
-#~ msgstr "Գոլֆ"
-
-#~ msgid "Hockey"
-#~ msgstr "Հոկեյ"
-
-#~ msgid "Racing"
-#~ msgstr "Ավտովազք"
-
-#~ msgid "Rugby"
-#~ msgstr "Ռեգբի"
-
-#~ msgid "Soccer (Association Football)"
-#~ msgstr "Ֆուտբոլ"
+msgstr "%1$s %2$s"
