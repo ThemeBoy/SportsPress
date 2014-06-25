@@ -3,7 +3,7 @@
 	"outcomes": [
 						"Win",
 						"Loss",
-						"Overtime Loss"
+						{ "name" : "Overtime loss", "abbreviation" : "OT" }
 	],
 	"results": [
 						{ "name" : "1st", "description" : "1st period goals" },

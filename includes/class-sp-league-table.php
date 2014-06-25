@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version		1.1
+ * @version		1.1.2
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -182,13 +182,18 @@ class SP_League_Table extends SP_Custom_Post{
 					'name' => $streak['name'],
 					'post_type' => 'sp_outcome',
 					'post_status' => 'publish',
-					'posts_per_page' => 1
+					'posts_per_page' => 1,
+					'orderby' => 'menu_order',
+					'order' => 'ASC',
 				);
 				$outcomes = get_posts( $args );
 
 				if ( $outcomes ):
 					$outcome = reset( $outcomes );
-					$totals[ $team_id ]['streak'] = $outcome->post_title . $streak['count'];
+					$abbreviation = get_post_meta( $outcome->ID, 'sp_abbreviation', true );
+					if ( ! $abbreviation )
+						$abbreviation = substr( $outcome->post_title, 0, 1 );
+					$totals[ $team_id ]['streak'] = $abbreviation . $streak['count'];
 				else:
 					$totals[ $team_id ]['streak'] = null;
 				endif;
@@ -262,12 +267,14 @@ class SP_League_Table extends SP_Custom_Post{
 						// Solve
 						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $team_id, array() ), $stat->precision );
 
-						// Adjustments
-						$adjustment = sp_array_value( $adjustments, $team_id, array() );
+						if ( ! in_array( $stat->equation, array( '$streak', '$last5', '$last10' ) ) ):
+							// Adjustments
+							$adjustment = sp_array_value( $adjustments, $team_id, array() );
 
-						if ( $adjustment != 0 ):
-							$placeholder += sp_array_value( $adjustment, $stat->post_name, 0 );
-							$placeholder = number_format( $placeholder, $stat->precision );
+							if ( $adjustment != 0 ):
+								$placeholder += sp_array_value( $adjustment, $stat->post_name, 0 );
+								$placeholder = number_format( $placeholder, $stat->precision );
+							endif;
 						endif;
 					endif;
 

@@ -106,6 +106,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 						<tr>
 							<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
+							<th scope="col"><?php _e( 'Abbreviation', 'sportspress' ); ?></th>
 							<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 							<th scope="col" class="edit"></th>
 						</tr>
@@ -114,6 +115,7 @@ class SP_Settings_Config extends SP_Settings_Page {
 						<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 							<td class="row-title"><?php echo $row->post_title; ?></td>
 							<td><?php echo $row->post_name; ?></td>
+							<td><?php echo sp_get_post_abbreviation( $row->ID ); ?></td>
 							<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 							<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 						</tr>
