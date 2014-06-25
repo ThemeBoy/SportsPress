@@ -4,7 +4,7 @@ Tags: sport, sports, clubs, teams, team management, fixtures, results, standings
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -136,6 +136,15 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 1.1.2 =
+* Feature - Event outcome abbreviation for streak column.
+* Fix - League table calculations for constants with 2 or more digits.
+* Preset - Add ice hockey preset.
+* Preset - Add volleyball preset.
+* Localization - Update Armenian translation.
+* Localization - Update Finnish translation.
+* Localization - Update German translation.
 
 = 1.1.1 =
 * Tweak - Check if equation is attempting to divide by zero to prevent errors.
