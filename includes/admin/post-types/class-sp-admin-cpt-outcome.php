@@ -42,6 +42,7 @@ class SP_Admin_CPT_Outcome extends SP_Admin_CPT {
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Label', 'sportspress' ),
 			'sp_key' => __( 'Variable', 'sportspress' ),
+			'sp_abbreviation' => __( 'Abbreviation', 'sportspress' ),
 			'sp_description' => __( 'Description', 'sportspress' ),
 		);
 		return apply_filters( 'sportspress_outcome_admin_columns', $columns );
@@ -56,6 +57,10 @@ class SP_Admin_CPT_Outcome extends SP_Admin_CPT {
 			case 'sp_key':
 				global $post;
 				echo $post->post_name;
+				break;
+			case 'sp_abbreviation':
+				global $post;
+				echo sp_get_post_abbreviation( $post->ID );
 				break;
 			case 'sp_description':
 				global $post;

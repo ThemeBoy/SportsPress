@@ -283,7 +283,7 @@ if ( !function_exists( 'sp_array_combine' ) ) {
 
 if ( !function_exists( 'sp_numbers_to_words' ) ) {
 	function sp_numbers_to_words( $str ) {
-	    $output = str_replace( array( '1st', '2nd', '3rd', '5th', '8th', '9th', '10', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ), array( 'first', 'second', 'third', 'fifth', 'eight', 'ninth', 'ten', 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine' ), $str );
+	    $output = str_replace( array( '%', '1st', '2nd', '3rd', '5th', '8th', '9th', '10', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ), array( 'percent', 'first', 'second', 'third', 'fifth', 'eight', 'ninth', 'ten', 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine' ), $str );
 	    return $output;
     }
 }
@@ -308,6 +308,17 @@ if ( !function_exists( 'sp_get_url' ) ) {
 		$url = get_post_meta( $post_id, 'sp_url', true );
 		if ( ! $url ) return;
 		return ' <a class="sp-link" href="' . $url . '" target="_blank" title="' . __( 'Visit Site', 'sportspress' ) . '">' . $url . '</a>';
+	}
+}
+
+if ( !function_exists( 'sp_get_post_abbreviation' ) ) {
+	function sp_get_post_abbreviation( $post_id ) {
+		$abbreviation = get_post_meta ( $post_id, 'sp_abbreviation', true );
+		if ( $abbreviation ):
+			return $abbreviation;
+		else:
+			return substr( get_the_title( $post_id ), 0, 1 );
+		endif;
 	}
 }
 
@@ -975,14 +986,19 @@ if ( !function_exists( 'sp_solve' ) ) {
 				if ( ! array_key_exists( preg_replace( "/[^a-z]/", '', $value ), $vars ) )
 					return 0;
 			endif;
-
-			$pos = strpos( $equation, '/' );
-			if ( $pos ):
-				if ( $eos->solveIF( substr( $equation, $pos + 2 ), $vars ) == 0 )
-					return 0;
-			endif;
 		endforeach;
 
+		// Remove space between equation parts
+		$equation = str_replace( ' ', '', $equation );
+
+		// Check if denominator is zero
+		$pos = strpos( $equation, '/' );
+		if ( $pos ):
+			if ( $eos->solveIF( substr( $equation, $pos + 1 ), $vars ) == 0 )
+				return 0;
+		endif;
+
+		// Return solution
 		return number_format( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision );
 
 	}

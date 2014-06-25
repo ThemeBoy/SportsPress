@@ -197,13 +197,18 @@ class SP_Team extends SP_Custom_Post {
 				'name' => $streak['name'],
 				'post_type' => 'sp_outcome',
 				'post_status' => 'publish',
-				'posts_per_page' => 1
+				'posts_per_page' => 1,
+				'orderby' => 'menu_order',
+				'order' => 'ASC',
 			);
 			$outcomes = get_posts( $args );
 
 			if ( $outcomes ):
 				$outcome = reset( $outcomes );
-				$totals['streak'] = $outcome->post_title . $streak['count'];
+				$abbreviation = get_post_meta( $outcome->ID, 'sp_abbreviation', true );
+				if ( ! $abbreviation )
+					$abbreviation = substr( $outcome->post_title, 0, 1 );
+				$totals['streak'] = $abbreviation . $streak['count'];
 			endif;
 
 			// Add last counters to totals
