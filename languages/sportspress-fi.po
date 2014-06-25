@@ -10,14 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-06-23 22:10+1000\n"
-"PO-Revision-Date: 2014-06-23 22:10+1000\n"
+"PO-Revision-Date: 2014-06-25 12:47+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/sportspress/"
 "language/fi/)\n"
-"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
@@ -112,9 +112,8 @@ msgid "Select Photo"
 msgstr "Valitse valokuva"
 
 #: sportspress.php:348
-#, fuzzy
 msgid "Display photos"
-msgstr "Näytä logot"
+msgstr "Näytä valokuvat"
 
 #: sportspress.php:350
 #: includes/admin/settings/class-sp-settings-events.php:102
@@ -1562,11 +1561,11 @@ msgstr "Suunniteltu"
 
 #: includes/sp-core-functions.php:420
 msgid "This week"
-msgstr ""
+msgstr "Tällä viikolla"
 
 #: includes/sp-core-functions.php:421
 msgid "Today"
-msgstr ""
+msgstr "Tänään"
 
 #: includes/sp-core-functions.php:649 includes/sp-core-functions.php:789
 msgid "(no title)"
@@ -1577,9 +1576,8 @@ msgid "Select All"
 msgstr "Valitse kaikki"
 
 #: includes/sp-core-functions.php:727 includes/sp-core-functions.php:730
-#, fuzzy
 msgid "Show all"
-msgstr "Näytä kaikki joukkueet"
+msgstr "Näytä kaikki"
 
 #: includes/sp-core-functions.php:1040
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
@@ -2033,21 +2031,19 @@ msgstr "Laji"
 #: includes/admin/class-sp-admin-welcome.php:225
 #: includes/admin/settings/class-sp-settings-general.php:57
 msgid "Mode"
-msgstr ""
+msgstr "Toimintatila"
 
 #: includes/admin/class-sp-admin-welcome.php:233
 #: includes/admin/settings/class-sp-settings-general.php:62
-#, fuzzy
 msgctxt "mode select"
 msgid "Team"
-msgstr "Joukkue"
+msgstr "Joukkueurheilu"
 
 #: includes/admin/class-sp-admin-welcome.php:234
 #: includes/admin/settings/class-sp-settings-general.php:63
-#, fuzzy
 msgctxt "mode select"
 msgid "Individual"
-msgstr "Intia"
+msgstr "Yksilöurheilu"
 
 #: includes/admin/class-sp-admin-welcome.php:240
 #: includes/admin/views/html-admin-settings.php:16
@@ -2070,7 +2066,7 @@ msgid ""
 msgstr ""
 "SportsPress on käännetty useille muille kielille kiitos kääntäjä-tiimin. "
 "Haluatko nähdä nimesi? <a href=\"https://www.transifex.com/projects/p/"
-"sportspress/\"> Käännä SportsPress</ a>."
+"sportspress/\"> Osallistu SportsPress-käännösprojektiin</ a>."
 
 #: includes/admin/class-sp-admin-welcome.php:272
 msgid "Go to SportsPress Settings"
@@ -2708,19 +2704,16 @@ msgid "Display outcomes"
 msgstr "Näytä lopputulokset"
 
 #: includes/admin/settings/class-sp-settings-events.php:94
-#, fuzzy
 msgid "Display players"
-msgstr "Näytä sarja"
+msgstr "Näytä pelaajat"
 
 #: includes/admin/settings/class-sp-settings-events.php:111
-#, fuzzy
 msgid "Display staff"
-msgstr "Näytä kartat"
+msgstr "Näytä toimihenkilöt"
 
 #: includes/admin/settings/class-sp-settings-events.php:119
-#, fuzzy
 msgid "Link staff"
-msgstr "Yhdistä joukkueet"
+msgstr "Yhdistä toimihenkilöt"
 
 #: includes/admin/settings/class-sp-settings-events.php:132
 #: includes/admin/settings/class-sp-settings-players.php:65
@@ -2778,24 +2771,23 @@ msgstr "Tyylit ja skriptit"
 
 #: includes/admin/settings/class-sp-settings-general.php:87
 msgid "Align"
-msgstr ""
+msgstr "Kohdistus"
 
 #: includes/admin/settings/class-sp-settings-general.php:93
 msgid "Left"
-msgstr ""
+msgstr "Vasemmalle"
 
 #: includes/admin/settings/class-sp-settings-general.php:94
 msgid "Center"
-msgstr ""
+msgstr "Keskelle"
 
 #: includes/admin/settings/class-sp-settings-general.php:95
 msgid "Right"
-msgstr ""
+msgstr "Oikealle"
 
 #: includes/admin/settings/class-sp-settings-general.php:100
-#, fuzzy
 msgid "Padding"
-msgstr "Otsikko"
+msgstr "Palstantäyte"
 
 #: includes/admin/settings/class-sp-settings-general.php:104
 #: includes/admin/settings/class-sp-settings-general.php:152
@@ -2872,9 +2864,8 @@ msgid "Display national flags"
 msgstr "Näytä maiden liput"
 
 #: includes/admin/settings/class-sp-settings-staff.php:41
-#, fuzzy
 msgid "Staff Options"
-msgstr "Joukkueen asetukset"
+msgstr "Toimihenkilöiden valinnat"
 
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
@@ -3195,9 +3186,8 @@ msgstr "Tila:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:81
 #: includes/widgets/class-sp-widget-event-list.php:84
-#, fuzzy
 msgid "Date:"
-msgstr "Päivämäärä"
+msgstr "Päivämäärä:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:94
 #: includes/widgets/class-sp-widget-event-list.php:97
@@ -3296,36 +3286,3 @@ msgstr "Suoritus:"
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
-
-#~ msgid "Baseball"
-#~ msgstr "Baseball"
-
-#~ msgid "Basketball"
-#~ msgstr "Koripallo"
-
-#~ msgid "Cricket"
-#~ msgstr "Kriketti"
-
-#~ msgid "American Football"
-#~ msgstr "Amerikkalainen jalkapallo"
-
-#~ msgid "Australian Rules Football"
-#~ msgstr "Australialainen jalkapallo"
-
-#~ msgid "Competitive Gaming"
-#~ msgstr "Kilpapelaaminen"
-
-#~ msgid "Golf"
-#~ msgstr "Golf"
-
-#~ msgid "Hockey"
-#~ msgstr "Jääkiekko"
-
-#~ msgid "Racing"
-#~ msgstr "Moottoriurheilu"
-
-#~ msgid "Rugby"
-#~ msgstr "Rugby"
-
-#~ msgid "Soccer (Association Football)"
-#~ msgstr "Jalkapallo"
