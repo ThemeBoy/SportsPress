@@ -41,13 +41,13 @@ class SP_Event extends SP_Custom_Post{
 		else:
 			// Add outcome to result columns
 			$columns['outcome'] = __( 'Outcome', 'sportspress' );
-			if ( ! is_array( $usecolumns ) )
-				$usecolumns = array();
-			foreach ( $columns as $key => $label ):
-				if ( ! in_array( $key, $usecolumns ) ):
-					unset( $columns[ $key ] );
-				endif;
-			endforeach;
+			if ( is_array( $usecolumns ) ):
+				foreach ( $columns as $key => $label ):
+					if ( ! in_array( $key, $usecolumns ) ):
+						unset( $columns[ $key ] );
+					endif;
+				endforeach;
+			endif;
 			$data[0] = $columns;
 			return $data;
 		endif;
