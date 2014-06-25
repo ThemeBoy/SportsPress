@@ -37,6 +37,6 @@
 	"statistics": [
 						{ "name" : "GP", "equation" : "$eventsplayed", "description" : "Games played" },
 						{ "name" : "P", "equation" : "$g + $assists", "description" : "Points" },
-						{ "name" : "S%", "equation" : "$g / $s * 1 0 0", "precision" : 2 }
+						{ "name" : "S%", "equation" : "$g / $s * 1 0 0", "precision" : 2, "description" : "Shot percentage" }
 	]
 }
