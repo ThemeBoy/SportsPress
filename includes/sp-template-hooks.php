@@ -239,6 +239,15 @@ function sportspress_team_permalink( $permalink, $post ) {
 }
 add_filter( 'post_type_link', 'sportspress_team_permalink', 10, 2 );
 
+function sportspress_no_terms_links( $term_list, $taxonomy ) {
+
+    if ( in_array( $taxonomy, array( 'sp_league', 'sp_season' ) ) )
+        return wp_filter_nohtml_kses( $term_list );
+
+    return $term_list;
+}
+add_filter( 'the_terms', 'sportspress_no_terms_links', 10, 2 );
+
 function sportspress_pre_get_posts( $query ) {
 
 	if ( is_admin() ):
