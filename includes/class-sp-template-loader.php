@@ -24,54 +24,77 @@ class SP_Template_Loader {
 		add_filter( 'the_content', array( $this, 'staff_content' ) );
 	}
 
-	public function add_content( $content, $template, $append = false ) {
+	public function add_content( $content, $template, $position = 10 ) {
+		if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+		if ( ! in_the_loop() ) return; // Return if not in main loop
+
 		ob_start();
-		call_user_func( 'sp_get_template_part', 'content', 'single-' . $template );
-		if ( $append )
-			return $content . ob_get_clean();
-		else
-			return ob_get_clean() . $content;
+
+		if ( $position <= 0 )
+			echo $content;
+
+		do_action( 'sportspress_before_single_' . $template );
+
+		if ( post_password_required() ) {
+			echo get_the_password_form();
+			return;
+		}
+
+		if ( $position > 0 && $position <= 5 )
+			echo $content;
+
+		do_action( 'sportspress_single_' . $template . '_content' );
+
+		if ( $position > 5 && $position <= 10 )
+			echo $content;
+
+		do_action( 'sportspress_after_single_' . $template );
+
+		if ( $position > 10 )
+			echo $content;
+
+		return ob_get_clean();
 	}
 
 	public function event_content( $content ) {
 		if ( is_singular( 'sp_event' ) )
-			$content = self::add_content( $content, 'event' );
+			$content = self::add_content( $content, 'event', apply_filters( 'sportspress_event_content_priority', 10 ) );
 		return $content;
 	}
 
 	public function calendar_content( $content ) {
 		if ( is_singular( 'sp_calendar' ) )
-			$content = self::add_content( $content, 'calendar' );
+			$content = self::add_content( $content, 'calendar', apply_filters( 'sportspress_calendar_content_priority', 10 ) );
 		return $content;
 	}
 
 	public function team_content( $content ) {
 		if ( is_singular( 'sp_team' ) )
-			$content = self::add_content( $content, 'team' );
+			$content = self::add_content( $content, 'team', apply_filters( 'sportspress_team_content_priority', 10 ) );
 		return $content;
 	}
 
 	public function table_content( $content ) {
 		if ( is_singular( 'sp_table' ) )
-			$content = self::add_content( $content, 'table' );
+			$content = self::add_content( $content, 'table', apply_filters( 'sportspress_table_content_priority', 10 ) );
 		return $content;
 	}
 
 	public function player_content( $content ) {
 		if ( is_singular( 'sp_player' ) )
-			$content = self::add_content( $content, 'player' );
+			$content = self::add_content( $content, 'player', apply_filters( 'sportspress_player_content_priority', 10 ) );
 		return $content;
 	}
 
 	public function list_content( $content ) {
 		if ( is_singular( 'sp_list' ) )
-			$content = self::add_content( $content, 'list' );
+			$content = self::add_content( $content, 'list', apply_filters( 'sportspress_list_content_priority', 10 ) );
 		return $content;
 	}
 
 	public function staff_content( $content ) {
 		if ( is_singular( 'sp_staff' ) )
-			$content = self::add_content( $content, 'staff' );
+			$content = self::add_content( $content, 'staff', apply_filters( 'sportspress_staff_content_priority', 10 ) );
 		return $content;
 	}
 
