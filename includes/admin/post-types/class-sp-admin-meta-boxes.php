@@ -186,6 +186,11 @@ class SP_Admin_Meta_Boxes {
 		remove_meta_box( 'sp_leaguediv', 'sp_calendar', 'side' );
 		remove_meta_box( 'sp_venuediv', 'sp_calendar', 'side' );
 
+		// Teams
+		remove_meta_box( 'sp_leaguediv', 'sp_team', 'side' );
+		remove_meta_box( 'sp_seasondiv', 'sp_team', 'side' );
+		remove_meta_box( 'sp_venuediv', 'sp_team', 'side' );
+
 		// Tables
 		remove_meta_box( 'sp_seasondiv', 'sp_table', 'side' );
 		remove_meta_box( 'sp_leaguediv', 'sp_table', 'side' );

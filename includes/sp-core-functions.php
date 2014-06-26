@@ -457,6 +457,8 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 		    'chosen' => false,
 		);
 		$args = array_merge( $defaults, $args ); 
+		if ( ! $args['taxonomy'] ) return false;
+
 		$terms = get_terms( $args['taxonomy'], $args );
 		$name = ( $args['name'] ) ? $args['name'] : $args['taxonomy'];
 		$id = ( $args['id'] ) ? $args['id'] : $name;
@@ -478,6 +480,8 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 
 		$chosen = $args['chosen'];
 		unset( $args['chosen'] );
+
+		printf( '<input type="hidden" name="tax_input[%s][]" value="0">', $args['taxonomy'] );
 
 		if ( $terms ):
 			printf( '<select name="%s" class="postform %s" %s>', $name, $class . ( $chosen ? ' chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' ) : '' ), ( $placeholder != null ? 'data-placeholder="' . $placeholder . '" ' : '' ) . $property );
