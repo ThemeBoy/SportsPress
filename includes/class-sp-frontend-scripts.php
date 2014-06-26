@@ -30,7 +30,7 @@ class SP_Frontend_Scripts {
 				'version' => SP_VERSION,
 				'media'   => 'all'
 			),
-		) );
+		));
 	}
 
 	/**
