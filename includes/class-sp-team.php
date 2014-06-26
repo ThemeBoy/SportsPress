@@ -295,6 +295,5 @@ class SP_Team extends SP_Custom_Post {
 			endforeach;
 			return $lists;
 		endif;
-
 	}
 }
