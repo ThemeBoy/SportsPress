@@ -1,0 +1,33 @@
+{
+	"name":				"Table Tennis",
+	"outcomes": [
+						"Win",
+						"Loss",
+						"Forfeit"
+	],
+	"results": [
+						{ "name" : "1", "description" : "1st set" },
+						{ "name" : "2", "description" : "2nd set" },
+						{ "name" : "3", "description" : "3rd set" },
+						{ "name" : "4", "description" : "4th set" },
+						{ "name" : "5", "description" : "5th set" },
+						{ "name" : "Sets", "description" : "Sets won" }
+	],
+	"performance": [
+	],
+	"columns": [
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "F", "equation" : "$setsfor", "description" : "Sets for" },
+						{ "name" : "A", "equation" : "$setsagainst", "description" : "Sets against" },
+						{ "name" : "%", "id" : "percent", "equation" : "$setsfor / $setsagainst * 1 0 0", "precision" : 2, "description" : "For/against ratio" },
+						{ "name" : "Points", "equation" : "$win * 3 + $loss" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+	]
+}
