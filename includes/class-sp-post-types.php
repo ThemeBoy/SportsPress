@@ -112,7 +112,7 @@ class SP_Post_types {
 			'hierarchical' => true,
 			'rewrite' => array( 'slug' => get_option( 'sportspress_venue_slug', 'venue' ) ),
 		);
-		$object_types = apply_filters( 'sportspress_event_object_types', array( 'sp_event', 'sp_calendar' ) );
+		$object_types = apply_filters( 'sportspress_event_object_types', array( 'sp_event', 'sp_calendar', 'sp_team' ) );
 		register_taxonomy( 'sp_venue', $object_types, $args );
 		foreach ( $object_types as $object_type ):
 			register_taxonomy_for_object_type( 'sp_venue', $object_type );
