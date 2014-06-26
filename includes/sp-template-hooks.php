@@ -366,8 +366,8 @@ function sportspress_post_updated_messages( $messages ) {
 	return $messages;
 }
 
-function sportspress_hide_adjacent_post_links( $output, $format, $link, $post ) {
-	if ( property_exists( $post, 'post_type' ) && in_array( $post->post_type, sp_post_types() ) )
+function sportspress_hide_adjacent_post_links( $output = null, $format = null, $link = null, $post = null ) {
+	if ( is_object( $post ) && property_exists( $post, 'post_type' ) && in_array( $post->post_type, sp_post_types() ) )
 		return false;
 	return $output;
 }
