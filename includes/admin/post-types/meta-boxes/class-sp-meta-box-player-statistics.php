@@ -65,10 +65,8 @@ class SP_Meta_Box_Player_Statistics {
 							<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
 							<?php _e( 'Team', 'sportspress' ); ?>
 						</label></th>
-						<?php foreach ( $columns as $key => $label ): ?>
-							<th><label for="sp_columns_<?php echo $key; ?>">
-								<?php echo $label; ?>
-							</label></th>
+						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
+							<th><?php echo $label; ?></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>
@@ -114,7 +112,7 @@ class SP_Meta_Box_Player_Statistics {
 								endif;
 								?>
 							</td>
-							<?php foreach( $columns as $column => $label ):
+							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
 								?>
 								<td><?php
 									$value = sp_array_value( sp_array_value( $data, $div_id, array() ), $column, null );
