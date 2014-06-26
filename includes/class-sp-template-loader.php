@@ -3,7 +3,7 @@
  * Template Loader
  *
  * @class 		SP_Template_Loader
- * @version		0.8.4
+ * @version		1.1.4
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

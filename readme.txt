@@ -4,7 +4,7 @@ Tags: sport, sports, clubs, teams, team management, fixtures, results, standings
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,6 +27,8 @@ SportsPress is the ultimate all-in-one plugin for transforming your WordPress bl
 * Season Archives
 * Venue Information & Maps
 * Statistics & League Table Columns Configuration
+* Sport Presets
+* Team & Individual mode
 * Import Events, Teams, Players, and Staff from CSV Files
 
 More details about each feature are available on the [ThemeBoy Website](http://themeboy.com/sportspress/).
@@ -136,6 +138,15 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 1.1.4 =
+* Feature - Add home venue option in team admin.
+* Tweak - Move editor meta boxes to bottom of post edit page.
+* Tweak - Remove link to league and season archives.
+* Fix - Previous and next post function in some themes.
+* Fix - Duplicate team checkboxes in player.
+* Preset - Add table tennis preset.
+* Preset - Update ice hockey preset.
 
 = 1.1.3 =
 * Fix - Display all event result columns by default.
