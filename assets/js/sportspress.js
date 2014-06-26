@@ -149,7 +149,7 @@ function viewport() {
 			      }
 			    },
 			    "aoColumnDefs": [
-			      { "sType": "numeric", "aTargets": [ 0 ] },
+			      { "sType": "numeric", "aTargets": [ ".data-number", ".data-rank" ] },
 			    ]
 			});
 		}
