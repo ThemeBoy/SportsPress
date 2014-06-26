@@ -40,8 +40,7 @@ class SP_Settings_General extends SP_Settings_Page {
 
 		$presets = SP_Admin_Sports::get_preset_options();
 
-		return apply_filters( 'sportspress_general_settings', array(
-
+		$settings = array(
 			array( 'title' => __( 'General Options', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'general_options' ),
 			
 			array( 'type' => 'country' ),
@@ -82,33 +81,39 @@ class SP_Settings_General extends SP_Settings_Page {
 			array( 'title' => __( 'Styles and Scripts', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'script_styling_options' ),
 
 			array( 'type' 		=> 'frontend_styles' ),
+		);
 
-			array(
-				'title' 	=> __( 'Align', 'sportspress' ),
-				'id' 		=> 'sportspress_table_text_align',
-				'default'	=> 'default',
-				'type' 		=> 'radio',
-				'options' => array(
-					'default'	=> __( 'Default', 'sportspress' ),
-					'left'		=> __( 'Left', 'sportspress' ),
-					'center'	=> __( 'Center', 'sportspress' ),
-					'right'		=> __( 'Right', 'sportspress' ),
+		if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) ):
+			$settings = array_merge( $settings, array(
+				array(
+					'title' 	=> __( 'Align', 'sportspress' ),
+					'id' 		=> 'sportspress_table_text_align',
+					'default'	=> 'default',
+					'type' 		=> 'radio',
+					'options' => array(
+						'default'	=> __( 'Default', 'sportspress' ),
+						'left'		=> __( 'Left', 'sportspress' ),
+						'center'	=> __( 'Center', 'sportspress' ),
+						'right'		=> __( 'Right', 'sportspress' ),
+					),
 				),
-			),
-			
-			array(
-				'title' 	=> __( 'Padding', 'sportspress' ),
-				'id' 		=> 'sportspress_table_padding',
-				'class' 	=> 'small-text',
-				'default'	=> null,
-				'placeholder' => __( 'Auto', 'sportspress' ),
-				'desc' 		=> 'px',
-				'type' 		=> 'number',
-				'custom_attributes' => array(
-					'step' 	=> 1
+				
+				array(
+					'title' 	=> __( 'Padding', 'sportspress' ),
+					'id' 		=> 'sportspress_table_padding',
+					'class' 	=> 'small-text',
+					'default'	=> null,
+					'placeholder' => __( 'Auto', 'sportspress' ),
+					'desc' 		=> 'px',
+					'type' 		=> 'number',
+					'custom_attributes' => array(
+						'step' 	=> 1
+					),
 				),
-			),
+			));
+		endif;
 
+		$settings = array_merge( $settings, array(
 			array(
 				'title' 	=> __( 'Custom CSS', 'sportspress' ),
 				'id' 		=> 'sportspress_custom_css',
@@ -158,8 +163,9 @@ class SP_Settings_General extends SP_Settings_Page {
 			),
 
 			array( 'type' => 'sectionend', 'id' => 'script_styling_options' ),
-
-		)); // End general settings
+		));
+		
+		return apply_filters( 'sportspress_general_settings', $settings ); // End general settings
 	}
 
 	/**
