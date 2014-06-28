@@ -28,6 +28,8 @@ class SP_Template_Loader {
 		if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		if ( ! in_the_loop() ) return; // Return if not in main loop
 
+		$content = '<div class="sp-post-content">' . $content . '</div>';
+
 		ob_start();
 
 		if ( $position <= 0 )
