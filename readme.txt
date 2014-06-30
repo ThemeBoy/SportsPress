@@ -4,7 +4,7 @@ Tags: sport, sports, clubs, teams, team management, fixtures, results, standings
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,13 +13,13 @@ SportsPress is an extendable sports plugin that adds league management capabilit
 == Description ==
 
 = Create a Professional Sports Website =
-SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team website.
+SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team or club website.
 
 = Features =
 * Equation Builder
-* Team Profiles
-* League Tables
-* Events (Fixtures & Results)
+* Team Profiles with Player List
+* League Tables with Club Logos
+* Events (Fixtures & Results) with Player Performance
 * Events Calendar
 * Player Profiles & Statistics Per Position
 * Player Lists
@@ -35,7 +35,7 @@ More details about each feature are available on the [ThemeBoy Website](http://t
 
 = Premium Extensions =
 
-Looking for more advanced sports functionality? ThemeBoy offers a range of [SportsPress extensions](http://themeboy.com/plugins/) to add more features to your sports website. 
+Looking for more advanced sports functionality? ThemeBoy offers a range of [SportsPress extensions](http://themeboy.com/sportspress/extensions/) to add more features to your club website.
 
 = Available Languages =
 * English – English ( en_US )
@@ -138,6 +138,11 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 1.1.5 =
+* Tweak - Wrap post content with div for easier templating.
+* Localization - Update French translation.
+* Localization - Update Spanish translation.
 
 = 1.1.4 =
 * Feature - Add home venue option in team admin.
