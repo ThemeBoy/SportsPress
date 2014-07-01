@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.7
+ * @version     1.1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -93,7 +93,7 @@ class SP_Admin_Assets {
 
 		wp_register_script( 'sportspress-admin-equationbuilder', SP()->plugin_url() . '/assets/js/admin/equationbuilder.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable' ), SP_VERSION, true );
 	
-		wp_register_script( 'sportspress-admin', SP()->plugin_url() . '/assets/js/admin/sportspress-admin.js', array( 'jquery', 'chosen', 'jquery-tiptip', 'jquery-caret', 'jquery-countdown' ), SP_VERSION, true );
+		wp_register_script( 'sportspress-admin', SP()->plugin_url() . '/assets/js/admin/sportspress-admin.js', array( 'jquery', 'chosen', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-tiptip', 'jquery-caret', 'jquery-countdown' ), SP_VERSION, true );
 
 		wp_register_script( 'sportspress-admin-widgets', SP()->plugin_url() . '/assets/js/admin/widgets.js', array( 'jquery' ), SP_VERSION, true );
 
@@ -102,6 +102,10 @@ class SP_Admin_Assets {
 
 	    	wp_enqueue_script( 'jquery' );
 	    	wp_enqueue_script( 'chosen' );
+	    	wp_enqueue_script( 'jquery-ui-core' );
+	    	wp_enqueue_script( 'jquery-ui-draggable' );
+	    	wp_enqueue_script( 'jquery-ui-droppable' );
+	    	wp_enqueue_script( 'jquery-ui-sortable' );
 	    	wp_enqueue_script( 'jquery-tiptip' );
 	    	wp_enqueue_script( 'jquery-caret' );
 	    	wp_enqueue_script( 'jquery-countdown' );
@@ -133,9 +137,6 @@ class SP_Admin_Assets {
 
 		// Edit equation
 		if ( in_array( $screen->id, array( 'sp_column', 'sp_statistic' ) ) ) {
-	    	wp_enqueue_script( 'jquery-ui-core' );
-	    	wp_enqueue_script( 'jquery-ui-draggable' );
-	    	wp_enqueue_script( 'jquery-ui-droppable' );
 	    	wp_enqueue_script( 'sportspress-admin-equationbuilder' );
 		}
 	}
