@@ -91,7 +91,7 @@ class SP_Meta_Box_Calendar_Data {
 								$main_results = array();
 								?>
 								<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-									<td><?php echo get_post_time( get_option( 'date_format' ), false, $event ); ?></td>
+									<td><?php echo get_post_time( get_option( 'date_format' ), false, $event, true ); ?></td>
 									<td><?php echo $event->post_title; ?></td>
 									<td>
 										<?php
@@ -130,7 +130,7 @@ class SP_Meta_Box_Calendar_Data {
 											if ( ! empty( $main_results ) ):
 												echo implode( ' - ', $main_results );
 											else:
-												echo get_post_time( get_option( 'time_format' ), false, $event );
+												echo get_post_time( get_option( 'time_format' ), false, $event, true );
 											endif;
 										?>
 									</td>

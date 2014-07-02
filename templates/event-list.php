@@ -118,7 +118,7 @@ if ( isset( $columns ) )
 
 				echo '<tr class="sp-row sp-post' . ( $i % 2 == 0 ? ' alternate' : '' ) . '">';
 
-					echo '<td class="data-date"><a href="' . get_permalink( $event->ID ) . '">' . get_post_time( get_option( 'date_format' ), false, $event ) . '</a></td>';
+					echo '<td class="data-date"><a href="' . get_permalink( $event->ID ) . '">' . get_post_time( get_option( 'date_format' ), false, $event, true ) . '</a></td>';
 
 					if ( $usecolumns == null || in_array( 'event', $usecolumns ) )
 						echo '<td class="data-event">' . $event->post_title . '</td>';
@@ -134,7 +134,7 @@ if ( isset( $columns ) )
 					if ( ! empty( $main_results ) ):
 						echo implode( ' - ', $main_results );
 					else:
-						echo get_post_time( get_option( 'time_format' ), false, $event );
+						echo get_post_time( get_option( 'time_format' ), false, $event, true );
 					endif;
 					echo '</td>';
 				endif;
