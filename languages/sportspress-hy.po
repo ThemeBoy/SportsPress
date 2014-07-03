@@ -1,12 +1,11 @@
 #
 # Translators:
 # Artak Arzumanyan <aarzumanyan@gmail.com>, 2014
-# Edgar Amiraghyan <admin@calkut.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-06-23 22:10+1000\n"
-"PO-Revision-Date: 2014-06-25 12:47+1000\n"
+"PO-Revision-Date: 2014-07-03 13:06+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Armenian (http://www.transifex.com/projects/p/sportspress/"
 "language/hy/)\n"
@@ -327,7 +326,7 @@ msgstr "Դանիա"
 
 #: includes/class-sp-countries.php:84
 msgid "Dominica"
-msgstr "Դոմինիա"
+msgstr "Դոմինիկա"
 
 #: includes/class-sp-countries.php:85
 msgid "Dominican Republic"
@@ -953,7 +952,7 @@ msgstr "Արդյունքներ"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:77
 msgid "Position"
-msgstr "Դիրք"
+msgstr "Տեղ"
 
 #: includes/class-sp-formats.php:27 includes/class-sp-post-types.php:36
 #: includes/sp-core-functions.php:1044
@@ -1042,11 +1041,11 @@ msgstr "Խաղերի կառավարում"
 
 #: includes/class-sp-install.php:273
 msgid "Team Manager"
-msgstr "Թիմի կառավարիչ"
+msgstr "Թիմի կառավարում"
 
 #: includes/class-sp-install.php:337
 msgid "League Manager"
-msgstr "Լիգայի կառավարիչ"
+msgstr "Լիգայի կառավարում"
 
 #: includes/class-sp-install.php:534
 msgid "What's new:"
@@ -1289,7 +1288,7 @@ msgstr "Խմբագրել մարզադաշտը"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:78
 #: includes/admin/views/html-admin-page-status.php:326
 msgid "Positions"
-msgstr "Դիրքեր"
+msgstr "Տեղեր"
 
 #: includes/class-sp-post-types.php:125
 msgid "Edit Position"
@@ -1335,11 +1334,11 @@ msgstr "Հանդիպման արդյունքներ"
 
 #: includes/class-sp-post-types.php:193
 msgid "Add New Outcome"
-msgstr "Նոր արդյունք"
+msgstr "Խաղի նոր ելք"
 
 #: includes/class-sp-post-types.php:194
 msgid "Edit Outcome"
-msgstr "Խմբագրել արդյուները"
+msgstr "Խմբագրել խաղի ելքը"
 
 #: includes/class-sp-post-types.php:221
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:141
@@ -1380,11 +1379,11 @@ msgstr "Խմբագրել ֆիզ. տվյալը"
 
 #: includes/class-sp-post-types.php:283
 msgid "Add New Performance"
-msgstr "Նոր նվաճում"
+msgstr "Նոր արդյունավետություն"
 
 #: includes/class-sp-post-types.php:284
 msgid "Edit Performance"
-msgstr "Խմբագրել նվաճումը"
+msgstr "Խմբագրել արդյունավետությունը"
 
 #: includes/class-sp-post-types.php:311
 #: includes/admin/settings/class-sp-settings-config.php:388
@@ -1634,7 +1633,7 @@ msgstr "Խաղացել է"
 
 #: includes/sp-core-functions.php:1048 templates/league-table.php:49
 msgid "Pos"
-msgstr "Դիրք"
+msgstr "Տեղ"
 
 #: includes/sp-core-functions.php:1049
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:151
@@ -1650,7 +1649,7 @@ msgstr "Կարգ"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:149
 #: templates/event-list.php:166
 msgid "Recap"
-msgstr "Ընդհանուր"
+msgstr "Ամփոփում"
 
 #: includes/sp-core-functions.php:1056
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:92
@@ -1734,7 +1733,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-config.php:285
 #: includes/admin/settings/class-sp-settings-config.php:396
 msgid "Key"
-msgstr "Բանաի"
+msgstr "Բանալի"
 
 #: includes/sp-template-hooks.php:157
 #: includes/admin/post-types/class-sp-admin-cpt-metric.php:44
@@ -1819,17 +1818,13 @@ msgstr "Ստացվե՛ց։"
 #: includes/admin/class-sp-admin-post-types.php:91
 #, php-format
 msgid "Preview %s"
-msgstr ""
-"Նախադիտել \n"
-"%s"
+msgstr "Նախադիտել %s"
 
 #: includes/sp-template-hooks.php:346
 #: includes/admin/class-sp-admin-post-types.php:84
 #, php-format
 msgid "Scheduled for: <b>%1$s</b>."
-msgstr ""
-"Պլանավորված է՝ \n"
-"<b>%1$s</b>"
+msgstr "Պլանավորված է՝ <b>%1$s</b>"
 
 #: includes/sp-template-hooks.php:347
 #: includes/admin/class-sp-admin-post-types.php:85
@@ -1885,7 +1880,7 @@ msgstr[1] "հրատարակված է <strong>%s խաղ</strong>"
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "SportsPress Events (CSV)"
-msgstr "SportsPress-ի Խաղերը(CSV)"
+msgstr "SportsPress-ի խաղերը(CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "Import <strong>events</strong> from a csv file."
@@ -2063,12 +2058,13 @@ msgid ""
 "transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
 msgstr ""
 "SportsPress-ը, մեր թարգմանիչների խմբի շնորհիվ,  հասանելի է  բազմաթիվ "
-"լեզուներով . Ուզու՞մ եք ձեր խոսքն ասել: <a href=\"https://www.transifex.com/"
-"projects/p/sportspress/\">Թարգմանեք SportsPress</a>."
+"լեզուներով։ Ուզու՞մ եք այստեղ ձեր անունը տեսնել: <a href=\"https://www."
+"transifex.com/projects/p/sportspress/\">Թարգմանեք SportsPress-ը ձեր լեզվով</"
+"a>։"
 
 #: includes/admin/class-sp-admin-welcome.php:272
 msgid "Go to SportsPress Settings"
-msgstr "Դեպի SportsPress-ի կարգավորումներ"
+msgstr "Անցնել SportsPress-ի կարգավորումներին"
 
 #: includes/admin/importers/class-sp-event-importer.php:361
 #: includes/admin/importers/class-sp-importer.php:93
@@ -2117,7 +2113,7 @@ msgstr "Ներմուծել խաղերը"
 msgid ""
 "Hi there! Choose a .csv file to upload, then click \"Upload file and import"
 "\"."
-msgstr "Ընտրեք համապատասխան .csv ֆայլը և ներբեռնեք ու ներմուծեք։"
+msgstr "Ընտրեք համապատասխան .csv ֆայլը և վերբեռնեք ու ներմուծեք։"
 
 #: includes/admin/importers/class-sp-event-importer.php:409
 #, php-format
@@ -2134,7 +2130,7 @@ msgstr ""
 msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
-msgstr "Մինչ ներմուծման ֆայլը ներբեռնելը դուք պետք է ուղղեք հետևյալ սխալները."
+msgstr "Մինչ ներմուծման ֆայլը վերբեռնելը դուք պետք է ուղղեք հետևյալ սխալները."
 
 #: includes/admin/importers/class-sp-event-importer.php:426
 #: includes/admin/importers/class-sp-player-importer.php:193
@@ -2186,7 +2182,7 @@ msgstr "-- Ընտրված չէ --"
 #: includes/admin/importers/class-sp-staff-importer.php:210
 #: includes/admin/importers/class-sp-team-importer.php:174
 msgid "Upload file and import"
-msgstr "Ներբեռնեք ֆայլը և ներմուծեք"
+msgstr "Վերբեռնեք ֆայլը և ներմուծեք"
 
 #: includes/admin/importers/class-sp-importer.php:125
 msgid "Import"
@@ -2203,11 +2199,11 @@ msgstr ""
 
 #: includes/admin/importers/class-sp-player-importer.php:150
 msgid "View Players"
-msgstr "Տեսնել Խաղացողներին"
+msgstr "Տեսնել խաղացողներին"
 
 #: includes/admin/importers/class-sp-player-importer.php:162
 msgid "Import Players"
-msgstr "Ներմուծել Խաղացողներին"
+msgstr "Ներմուծել խաղացողներին"
 
 #: includes/admin/importers/class-sp-player-importer.php:176
 #, php-format
@@ -2363,7 +2359,7 @@ msgstr "(Ավտո)"
 #: includes/widgets/class-sp-widget-player-gallery.php:77
 #: includes/widgets/class-sp-widget-player-list.php:98
 msgid "Number"
-msgstr "համար"
+msgstr "Համար"
 
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:48
@@ -2418,7 +2414,7 @@ msgstr "Սյունակներ"
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:155
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:26
 msgid "Metrics"
-msgstr "Ֆիզ. Տվյալներ"
+msgstr "Ֆիզ. տվյալներ"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:157
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:27
@@ -2730,7 +2726,7 @@ msgstr "խաղ"
 
 #: includes/admin/settings/class-sp-settings-events.php:206
 msgid "Custom:"
-msgstr "Յուրահատուկ."
+msgstr "Յուրահատուկ՝"
 
 #: includes/admin/settings/class-sp-settings-general.php:25
 msgid "General"
@@ -2935,7 +2931,7 @@ msgstr "WP լեզու"
 
 #: includes/admin/views/html-admin-page-status.php:68
 msgid "WP Max Upload Size"
-msgstr "WP ներբեռնման լիմիտ"
+msgstr "WP վերբեռնման լիմիտ"
 
 #: includes/admin/views/html-admin-page-status.php:73
 msgid "PHP Post Max Size"
@@ -2989,10 +2985,8 @@ msgid ""
 "scripts which communicate with other servers will not work. Contact your "
 "hosting provider."
 msgstr ""
-"Ձեր սերվերի վրա չի գործում ոչ \n"
-"fsockopen և ոչ էլ cURL:\n"
-" PayPal IPN և նման այլ ծրագրեը չեն կարող աշխատել: Դիմեք ձեր հոսթինգ-"
-"պրովայդերին:"
+"Ձեր սերվերի վրա չի գործում ոչ fsockopen և ոչ էլ cURL: PayPal IPN և նման այլ "
+"ծրագրեը չեն կարող աշխատել: Դիմեք ձեր հոսթինգ-պրովայդերին:"
 
 #: includes/admin/views/html-admin-page-status.php:120
 msgid "SOAP Client"
@@ -3030,7 +3024,7 @@ msgstr "հասանելի է"
 
 #: includes/admin/views/html-admin-page-status.php:201
 msgid "by"
-msgstr "՝"
+msgstr "&mdash;"
 
 #: includes/admin/views/html-admin-page-status.php:201
 msgid "version"
@@ -3038,7 +3032,7 @@ msgstr "տարբերակ"
 
 #: includes/admin/views/html-admin-page-status.php:217
 msgid "SP Configuration"
-msgstr "SP լարք"
+msgstr "SP կարգավորումներ"
 
 #: includes/admin/views/html-admin-page-status.php:290
 msgid "SP Taxonomies"
@@ -3066,7 +3060,7 @@ msgstr "Հեղինակի URL"
 
 #: includes/admin/views/html-admin-page-status.php:426
 msgid "Templates"
-msgstr "Կաղապարներ"
+msgstr "Ձևանմուշներ"
 
 #: includes/admin/views/html-admin-page-status.php:459
 #, php-format
@@ -3080,7 +3074,7 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status.php:470
 #: includes/admin/views/html-admin-page-status.php:476
 msgid "Template Overrides"
-msgstr "Կաղապարների վերադրում"
+msgstr "Ձևանմուշների վերադրում"
 
 #: includes/admin/views/html-admin-page-status.php:477
 msgid "No overrides present in theme."
@@ -3105,11 +3099,11 @@ msgid ""
 "recommend only bundling the template files you actually need to customize). "
 "See the system report for full details."
 msgstr ""
-"Ձեր թեման փոխկապակցված է SportsPress-ի ժամկետանց կաղապար-ֆայլերի հետ։ Դա "
-"կարող է բերել սխալ աշխատանքի և ոչ լիարժեք արտապատկերման։ Համոզվեք, որ "
-"թարմացրել կամ հեռացրել եք ժամկետանց ֆայլերը ( մենք խորհուրդ ենք տալիս "
-"փոխկապակցել միայն այն կաղապարները, որոնք ձեզ իրոք անհրաժեշտ են)։ Ավելի "
-"մանրամասն կարող եք տեսնել համակարգի հաշվետվության մեջ. "
+"Ձեր թեման փոխկապակցված է SportsPress-ի ժամկետանց ձևանմուշների հետ։ Դա կարող "
+"է բերել սխալ աշխատանքի և ոչ լիարժեք արտապատկերման։ Համոզվեք, որ թարմացրել "
+"կամ հեռացրել եք ժամկետանց ֆայլերը ( մենք խորհուրդ ենք տալիս փոխկապակցել "
+"միայն այն ձևանմուշները, որոնք ձեզ իրոք անհրաժեշտ են)։ Ավելի մանրամասն կարող "
+"եք տեսնել համակարգի հաշվետվության մեջ. "
 
 #: includes/admin/views/html-notice-theme-support.php:5
 msgid ""
@@ -3239,7 +3233,7 @@ msgstr "Ցույց տալ խաղացողների պատկերասրահը:"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:6
 msgid "SportsPress Player Gallery"
-msgstr "SportsPress - Խաղացողների պատկերաասրահ"
+msgstr "SportsPress - Խաղացողների պատկերասրահ"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:69
 #: includes/widgets/class-sp-widget-player-list.php:69
