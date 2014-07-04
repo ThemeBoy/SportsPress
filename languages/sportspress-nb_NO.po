@@ -10,14 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-06-23 22:10+1000\n"
-"PO-Revision-Date: 2014-06-23 22:10+1000\n"
+"PO-Revision-Date: 2014-07-04 16:04+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/"
 "p/sportspress/language/nb_NO/)\n"
-"Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nb_NO\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
@@ -112,9 +112,8 @@ msgid "Select Photo"
 msgstr "Velg Foto"
 
 #: sportspress.php:348
-#, fuzzy
 msgid "Display photos"
-msgstr "Vis logoer"
+msgstr "Vi bilder"
 
 #: sportspress.php:350
 #: includes/admin/settings/class-sp-settings-events.php:102
@@ -1562,11 +1561,11 @@ msgstr "Planlagt"
 
 #: includes/sp-core-functions.php:420
 msgid "This week"
-msgstr ""
+msgstr "Denne uke"
 
 #: includes/sp-core-functions.php:421
 msgid "Today"
-msgstr ""
+msgstr "I dag"
 
 #: includes/sp-core-functions.php:649 includes/sp-core-functions.php:789
 msgid "(no title)"
@@ -1577,9 +1576,8 @@ msgid "Select All"
 msgstr "Velg alle"
 
 #: includes/sp-core-functions.php:727 includes/sp-core-functions.php:730
-#, fuzzy
 msgid "Show all"
-msgstr "Vis alle lag"
+msgstr "Vis alle"
 
 #: includes/sp-core-functions.php:1040
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
@@ -1862,8 +1860,8 @@ msgstr "SportsPress"
 #, php-format
 msgid "%s "
 msgid_plural "%s "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s"
+msgstr[1] "%s"
 
 #: includes/admin/class-sp-admin-dashboard.php:80
 #, php-format
@@ -2030,21 +2028,19 @@ msgstr "Sport"
 #: includes/admin/class-sp-admin-welcome.php:225
 #: includes/admin/settings/class-sp-settings-general.php:57
 msgid "Mode"
-msgstr ""
+msgstr "Modus"
 
 #: includes/admin/class-sp-admin-welcome.php:233
 #: includes/admin/settings/class-sp-settings-general.php:62
-#, fuzzy
 msgctxt "mode select"
 msgid "Team"
 msgstr "Lag"
 
 #: includes/admin/class-sp-admin-welcome.php:234
 #: includes/admin/settings/class-sp-settings-general.php:63
-#, fuzzy
 msgctxt "mode select"
 msgid "Individual"
-msgstr "India"
+msgstr "Individuell"
 
 #: includes/admin/class-sp-admin-welcome.php:240
 #: includes/admin/views/html-admin-settings.php:16
@@ -2704,19 +2700,16 @@ msgid "Display outcomes"
 msgstr "Vis resultater"
 
 #: includes/admin/settings/class-sp-settings-events.php:94
-#, fuzzy
 msgid "Display players"
-msgstr "Vis liga"
+msgstr "Vis spillere"
 
 #: includes/admin/settings/class-sp-settings-events.php:111
-#, fuzzy
 msgid "Display staff"
-msgstr "Vis kart"
+msgstr "Vis personale"
 
 #: includes/admin/settings/class-sp-settings-events.php:119
-#, fuzzy
 msgid "Link staff"
-msgstr "Link lag"
+msgstr "Link personale"
 
 #: includes/admin/settings/class-sp-settings-events.php:132
 #: includes/admin/settings/class-sp-settings-players.php:65
@@ -2774,24 +2767,23 @@ msgstr "Stiler og skripter"
 
 #: includes/admin/settings/class-sp-settings-general.php:87
 msgid "Align"
-msgstr ""
+msgstr "Reguler"
 
 #: includes/admin/settings/class-sp-settings-general.php:93
 msgid "Left"
-msgstr ""
+msgstr "Venstre"
 
 #: includes/admin/settings/class-sp-settings-general.php:94
 msgid "Center"
-msgstr ""
+msgstr "Senter"
 
 #: includes/admin/settings/class-sp-settings-general.php:95
 msgid "Right"
-msgstr ""
+msgstr "Høyre"
 
 #: includes/admin/settings/class-sp-settings-general.php:100
-#, fuzzy
 msgid "Padding"
-msgstr "Overskrift"
+msgstr "Utfylling"
 
 #: includes/admin/settings/class-sp-settings-general.php:104
 #: includes/admin/settings/class-sp-settings-general.php:152
@@ -2866,9 +2858,8 @@ msgid "Display national flags"
 msgstr "Vis nasjonale flagg"
 
 #: includes/admin/settings/class-sp-settings-staff.php:41
-#, fuzzy
 msgid "Staff Options"
-msgstr "Lag Valg"
+msgstr "Personale valg"
 
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
@@ -3118,6 +3109,11 @@ msgid ""
 "recommend only bundling the template files you actually need to customize). "
 "See the system report for full details."
 msgstr ""
+"<strong> Ditt tema har samlet utdaterte eksemplarer av SportsPress malfiler "
+"</ strong> - hvis du finner funksjonalitetsfølger på frontend dette kan være "
+"grunnen. Sørg for at du oppdaterer eller fjerne dem (generelt anbefaler vi "
+"bare bunting av malfiler du faktisk trenger for å tilpasse). Se "
+"systemrapporten for detaljer."
 
 #: includes/admin/views/html-notice-theme-support.php:5
 msgid ""
@@ -3187,7 +3183,6 @@ msgstr "Status:"
 
 #: includes/widgets/class-sp-widget-event-blocks.php:81
 #: includes/widgets/class-sp-widget-event-list.php:84
-#, fuzzy
 msgid "Date:"
 msgstr "Dato"
 
@@ -3288,36 +3283,3 @@ msgstr "Utførelse:"
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
-
-#~ msgid "Baseball"
-#~ msgstr "Baseball"
-
-#~ msgid "Basketball"
-#~ msgstr "Basketball"
-
-#~ msgid "Cricket"
-#~ msgstr "Cricket"
-
-#~ msgid "American Football"
-#~ msgstr "Amerikansk Fotball"
-
-#~ msgid "Australian Rules Football"
-#~ msgstr "Australsk Fotball"
-
-#~ msgid "Competitive Gaming"
-#~ msgstr "Konkurrerende Spill"
-
-#~ msgid "Golf"
-#~ msgstr "Golf"
-
-#~ msgid "Hockey"
-#~ msgstr "Hockey"
-
-#~ msgid "Racing"
-#~ msgstr "Veddeløp"
-
-#~ msgid "Rugby"
-#~ msgstr "Rugby"
-
-#~ msgid "Soccer (Association Football)"
-#~ msgstr "Fotball"
