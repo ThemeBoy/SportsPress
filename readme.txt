@@ -142,6 +142,7 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 = 1.1.7 =
 * Fix - Inconsistent country code for Wales.
 * Fix - Localize post date month names.
+* Fix - Warning message when changing mode on welcome page.
 * Localization - Update Armenian, French, Italian & Norwegian translations.
 
 = 1.1.6 =

@@ -185,7 +185,6 @@ class SP_Admin_Welcome {
 	    	endif;
 			if ( isset( $_POST['sportspress_mode'] ) && ! empty( $_POST['sportspress_mode'] ) && get_option( 'sportspress_mode', null ) != $_POST['sportspress_mode'] ):
 				$sport = $_POST['sportspress_mode'];
-				SP_Admin_Sports::apply_preset( $sport );
 				update_option( 'sportspress_mode', $_POST['sportspress_mode'] );
 	    	endif;
 	    	if ( isset( $_POST['sportspress_default_country'] ) ):
