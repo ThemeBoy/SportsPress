@@ -62,7 +62,7 @@ else:
 endif;
 
 if ( $grouping === 'position' ):
-	$groups = get_terms( 'sp_position' );
+	$groups = get_terms( 'sp_position', array( 'orderby' => 'slug' ) );
 else:
 	$group = new stdClass();
 	$group->term_id = null;
