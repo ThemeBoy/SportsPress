@@ -243,12 +243,16 @@ function sportspress_no_terms_links( $term_list, $taxonomy ) {
 add_filter( 'the_terms', 'sportspress_no_terms_links', 10, 2 );
 
 function sportspress_pre_get_posts( $query ) {
+	$post_type = $query->query['post_type'];
+
+	if ( is_sp_post_type( $post_type ) ):
+		$query->set( 'suppress_filters', 0 );
+	endif;
 
 	if ( is_admin() ):
 		if ( isset( $query->query[ 'orderby' ] ) || isset( $query->query[ 'order' ] ) ):
 			return $query;
 		endif;
-		$post_type = $query->query['post_type'];
 
 		if ( is_sp_config_type( $post_type ) ):
 			$query->set( 'orderby', 'menu_order' );
