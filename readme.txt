@@ -4,7 +4,7 @@ Tags: sport, sports, clubs, teams, statistics, stats, fixtures, results, standin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -138,6 +138,13 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 1.1.8 =
+* Tweak - Order player list positions by slug.
+* Tweak - Wrap templates with div for frontend styling.
+* Fix - Date format in sample events CSV.
+* Localization - Fix WPML duplicate posts.
+* Localization - Update Armenian, Finnish, French, German, Norwegian, & Spanish translations.
 
 = 1.1.7 =
 * Fix - Inconsistent country code for Wales.
