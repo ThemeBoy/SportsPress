@@ -7,15 +7,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-06-28 16:30+1000\n"
-"PO-Revision-Date: 2014-06-28 16:30+1000\n"
+"POT-Creation-Date: 2014-07-04 16:04+1000\n"
+"PO-Revision-Date: 2014-07-09 17:07+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Spanish (Spain) (http://www.transifex.com/projects/p/"
 "sportspress/language/es_ES/)\n"
-"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
@@ -999,23 +999,23 @@ msgid "Gallery"
 msgstr "Galería"
 
 #: includes/class-sp-frontend-scripts.php:57
-#: includes/admin/class-sp-admin-assets.php:113
+#: includes/admin/class-sp-admin-assets.php:117
 #: includes/admin/class-sp-admin-dashboard.php:80 templates/countdown.php:64
 msgid "days"
 msgstr "día"
 
 #: includes/class-sp-frontend-scripts.php:57
-#: includes/admin/class-sp-admin-assets.php:114 templates/countdown.php:65
+#: includes/admin/class-sp-admin-assets.php:118 templates/countdown.php:65
 msgid "hrs"
 msgstr "hora"
 
 #: includes/class-sp-frontend-scripts.php:57
-#: includes/admin/class-sp-admin-assets.php:115 templates/countdown.php:66
+#: includes/admin/class-sp-admin-assets.php:119 templates/countdown.php:66
 msgid "mins"
 msgstr "acta"
 
 #: includes/class-sp-frontend-scripts.php:57
-#: includes/admin/class-sp-admin-assets.php:116 templates/countdown.php:67
+#: includes/admin/class-sp-admin-assets.php:120 templates/countdown.php:67
 msgid "secs"
 msgstr "segundo"
 
@@ -1838,7 +1838,7 @@ msgstr "Programada para:<b>%1$s</b>"
 msgid "M j, Y @ G:i"
 msgstr "M j, Y @ G:i"
 
-#: includes/admin/class-sp-admin-assets.php:111
+#: includes/admin/class-sp-admin-assets.php:115
 #: includes/admin/class-sp-admin-settings.php:117
 #: includes/admin/importers/class-sp-event-importer.php:467
 #: includes/admin/importers/class-sp-event-importer.php:482
@@ -1849,7 +1849,7 @@ msgstr "M j, Y @ G:i"
 msgid "None"
 msgstr "ninguno"
 
-#: includes/admin/class-sp-admin-assets.php:112
+#: includes/admin/class-sp-admin-assets.php:116
 msgid "&mdash; Remove &mdash;"
 msgstr "&mdash; Eliminar &mdash; "
 
@@ -1863,8 +1863,8 @@ msgstr "SportsPress"
 #, php-format
 msgid "%s "
 msgid_plural "%s "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s"
+msgstr[1] "%s"
 
 #: includes/admin/class-sp-admin-dashboard.php:80
 #, php-format
@@ -2610,9 +2610,8 @@ msgid "Current Teams"
 msgstr "Equipos Actuales"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:79
-#, fuzzy
 msgid "Home"
-msgstr "URL de inicio"
+msgstr "Inicio"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:94
 #: includes/admin/views/html-admin-page-status.php:24
@@ -3123,6 +3122,12 @@ msgid ""
 "recommend only bundling the template files you actually need to customize). "
 "See the system report for full details."
 msgstr ""
+"<strong>Su tema ha incluido copias no actualizadas de los archivos de "
+"plantilla de SportsPress</strong> &#8211; si se encuentra con problemas de "
+"funcionalidad en el frontend esta podría la razón. Asegúrese de actualizar o "
+"eliminarlos (en general sólo se recomienda agrupar los archivos de plantilla "
+"que realmente necesita personalizar). Véase el informe del sistema para "
+"obtener detalles completos."
 
 #: includes/admin/views/html-notice-theme-support.php:5
 msgid ""
@@ -3292,9 +3297,3 @@ msgstr "Registro"
 msgctxt "calendar caption"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s [opción de calendario]"
-
-#~ msgid "Results"
-#~ msgstr "Resultados"
-
-#~ msgid "Display outcomes"
-#~ msgstr "Mostrar resultados"
