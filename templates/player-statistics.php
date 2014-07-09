@@ -4,13 +4,15 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     0.8
+ * @version     1.1.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( ! isset( $id ) )
 	$id = get_the_ID();
+
+$player = new SP_Player( $id );
 
 $leagues = get_the_terms( $id, 'sp_league' );
 
@@ -19,7 +21,6 @@ if ( is_array( $leagues ) ):
 	foreach ( $leagues as $league ):
 		$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
 
-		$player = new SP_Player( $id );
 		$data = $player->data( $league->term_id );
 
 		// The first row should be column labels
