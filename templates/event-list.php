@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $primary_result = get_option( 'sportspress_primary_result', null );
 
 $defaults = array(
+	'id' => null,
 	'status' => 'default',
 	'date' => 'default',
 	'number' => -1,
