@@ -44,7 +44,7 @@ foreach( $teams as $index => $team_id ):
 
 	$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
 	?>
-	<h3><?php echo get_the_title( $team_id ); ?></h3>
+	<h4 class="sp-table=caption"><?php echo get_the_title( $team_id ); ?></h4>
 	<?php
 	if ( get_option( 'sportspress_event_show_staff', 'yes' ) == 'yes' ):
 		sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
