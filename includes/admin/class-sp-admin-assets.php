@@ -97,9 +97,20 @@ class SP_Admin_Assets {
 
 		wp_register_script( 'sportspress-admin-widgets', SP()->plugin_url() . '/assets/js/admin/widgets.js', array( 'jquery' ), SP_VERSION, true );
 
+    	$strings = array(
+			'none' => __( 'None', 'sportspress' ),
+			'remove_text' => __( '&mdash; Remove &mdash;', 'sportspress' ),
+			'days' => __( 'days', 'sportspress' ),
+			'hrs' => __( 'hrs', 'sportspress' ),
+			'mins' => __( 'mins', 'sportspress' ),
+			'secs' => __( 'secs', 'sportspress' )
+    	);
+
+    	// Localize scripts
+		wp_localize_script( 'sportspress-admin', 'localized_strings', $strings );
+
 		// SportsPress admin pages
 	    if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
-
 	    	wp_enqueue_script( 'jquery' );
 	    	wp_enqueue_script( 'chosen' );
 	    	wp_enqueue_script( 'jquery-ui-core' );
@@ -110,18 +121,6 @@ class SP_Admin_Assets {
 	    	wp_enqueue_script( 'jquery-caret' );
 	    	wp_enqueue_script( 'jquery-countdown' );
 	    	wp_enqueue_script( 'sportspress-admin' );
-
-	    	$params = array(
-				'none' => __( 'None', 'sportspress' ),
-				'remove_text' => __( '&mdash; Remove &mdash;', 'sportspress' ),
-				'days' => __( 'days', 'sportspress' ),
-				'hrs' => __( 'hrs', 'sportspress' ),
-				'mins' => __( 'mins', 'sportspress' ),
-				'secs' => __( 'secs', 'sportspress' )
-	    	);
-
-	    	// Localize scripts
-			wp_localize_script( 'sportspress-admin', 'localized_strings', $params );
 	    }
 
 		if ( in_array( $screen->id, array( 'widgets' ) ) ) {

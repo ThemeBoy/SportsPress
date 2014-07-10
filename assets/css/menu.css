@@ -73,3 +73,29 @@
 	width: 20px;
 	text-align: center;
 }
+
+.wp-media-buttons .add_sportspress span.wp-media-buttons-icon:before {
+	font: normal 20px/1 sportspress, dashicons;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: '\f111';
+}
+
+i.mce-i-sp_shortcodes_button:before, span.mce_sp_shortcodes_button:before {
+	font-family: 'sportspress';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	text-align: center;
+	content: "\f111";
+	font-size: 20px;
+}
