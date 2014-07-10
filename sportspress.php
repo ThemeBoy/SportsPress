@@ -220,6 +220,9 @@ final class SportsPress {
 
 		// Include template hooks in time for themes to remove/modify them
 		include_once( 'includes/sp-template-hooks.php' );
+
+		// WPML-related localization hooks
+		include_once( 'includes/class-sp-wpml.php' );
 	}
 
 	/**
