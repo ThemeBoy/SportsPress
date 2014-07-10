@@ -366,5 +366,4 @@ jQuery(document).ready(function($){
 			$this.find('strong').html(event.strftime("%D "+localized_strings.days+" %H:%M:%S"));
 		});
 	});
-
 });

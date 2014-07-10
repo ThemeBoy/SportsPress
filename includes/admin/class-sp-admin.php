@@ -42,7 +42,7 @@ class SP_Admin {
 			include( 'class-sp-admin-notices.php' );
 			include( 'class-sp-admin-assets.php' );
 			include( 'class-sp-admin-permalink-settings.php' );
-//			include( 'class-sp-admin-editor.php' );
+			include( 'class-sp-admin-editor.php' );
 
 			// Help
 //			if ( apply_filters( 'sportspress_enable_admin_help_tab', true ) )
