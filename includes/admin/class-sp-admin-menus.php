@@ -128,7 +128,6 @@ class SP_Admin_Menus {
 		$sportspress_event = array_search( 'edit.php?post_type=sp_event', $menu_order );
 		$sportspress_team = array_search( 'edit.php?post_type=sp_team', $menu_order );
 		$sportspress_player = array_search( 'edit.php?post_type=sp_player', $menu_order );
-		$sportspress_staff = array_search( 'edit.php?post_type=sp_staff', $menu_order );
 
 		// Loop through menu order and do some rearranging
 		foreach ( $menu_order as $index => $item ) :
@@ -139,12 +138,10 @@ class SP_Admin_Menus {
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_event';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_team';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_player';
-				$sportspress_menu_order[] = 'edit.php?post_type=sp_staff';
 				unset( $menu_order[$sportspress_separator] );
 				unset( $menu_order[$sportspress_event] );
 				unset( $menu_order[$sportspress_team] );
 				unset( $menu_order[$sportspress_player] );
-				unset( $menu_order[$sportspress_staff] );
 			elseif ( !in_array( $item, array( 'separator-sportspress' ) ) ) :
 				$sportspress_menu_order[] = $item;
 			endif;
@@ -204,8 +201,9 @@ class SP_Admin_Menus {
 			$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], array( $this, 'remove_seasons' ) );
 		endif;
 
-	    // Remove "Leagues" and "Seasons" links from Teams submenu
+	    // Remove "Venues", "Leagues" and "Seasons" links from Teams submenu
 		if ( isset( $submenu['edit.php?post_type=sp_team'] ) ):
+			$submenu['edit.php?post_type=sp_team'] = array_filter( $submenu['edit.php?post_type=sp_team'], array( $this, 'remove_venues' ) );
 			$submenu['edit.php?post_type=sp_team'] = array_filter( $submenu['edit.php?post_type=sp_team'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_team'] = array_filter( $submenu['edit.php?post_type=sp_team'], array( $this, 'remove_seasons' ) );
 		endif;
