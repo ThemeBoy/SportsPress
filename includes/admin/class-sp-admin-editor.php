@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.0
+ * @version     1.2
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * SP_Admin_Editor class.
  *
- * @since 2.0
+ * @since 1.2
  */
 class SP_Admin_Editor {
 

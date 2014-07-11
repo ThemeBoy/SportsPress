@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.1.4
+ * @version     1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -145,8 +145,17 @@ class SP_Settings_General extends SP_Settings_Page {
 				'id' 		=> 'sportspress_enable_live_countdowns',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> 'end',
+				'checkboxgroup'		=> '',
 				'desc_tip'	=> __( 'This will enable a script allowing the countdowns to be animated.', 'sportspress' ),
+			),
+
+			array(
+				'desc' 		=> __( 'Shortcode menu', 'sportspress' ),
+				'id' 		=> 'sportspress_rich_editing',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'end',
+				'desc_tip'	=> __( 'This will enable a shortcode menu to be displayed in the visual editor.', 'sportspress' ),
 			),
 			
 			array(
