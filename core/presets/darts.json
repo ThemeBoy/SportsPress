@@ -1,0 +1,25 @@
+{
+	"name":				"Darts",
+	"outcomes": [
+						"Win",
+						"Draw",
+						"Loss"
+	],
+	"results": [
+						"Legs"
+	],
+	"performance": [
+	],
+	"columns": [
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "W", "equation" : "$win", "priority" : 1, "description" : "Wins" },
+						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "Legs", "equation" : "$legs", "priority" : 2 },
+						{ "name" : "Pts", "equation" : "$win * 2 + $draw", "priority" : 1, "description" : "Total points" }
+	],
+	"metrics": [
+	],
+	"statistics": [
+	]
+}

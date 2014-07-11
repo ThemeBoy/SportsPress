@@ -1,0 +1,46 @@
+{
+	"name":				"Soccer (Association Football)",
+	"positions": [
+						"Goalkeeper",
+						"Defender",
+						"Midfielder",
+						"Forward"
+	],
+	"outcomes": [
+						"Win",
+						"Draw",
+						"Loss"
+	],
+	"results": [
+						{ "name" : "1st Half", "description" : "1st half goals" },
+						{ "name" : "2nd Half", "description" : "2nd half goals" },
+						{ "name" : "PK", "description" : "Penalty kicks" },
+						{ "name" : "Goals", "description" : "Total goals", "primary" : 1 }
+	],
+	"performance": [
+						"Goals",
+						"Assists",
+						"Yellow Cards",
+						"Red Cards"
+	],
+	"columns": [
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "F", "equation" : "$goalsfor", "priority" : 3, "description" : "Goals for" },
+						{ "name" : "A", "equation" : "$goalsagainst", "description" : "Goals against" },
+						{ "name" : "GD", "equation" : "$goalsfor - $goalsagainst", "priority" : 2, "description" : "Goal difference" },
+						{ "name" : "Pts", "equation" : "$win * 3 + $draw", "priority" : 1, "description" : "Team points" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "Win Ratio", "equation" : "$win / $eventsplayed * 1 0 0", "precision" : 2 },
+						{ "name" : "Draw Ratio", "equation" : "$draw / $eventsplayed * 1 0 0", "precision" : 2 },
+						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 1 0 0", "precision" : 2 }
+	]
+}

@@ -1,0 +1,69 @@
+<?php
+class SP_Widget_Staff_List extends WP_Widget {
+
+	function __construct() {
+		$widget_ops = array('classname' => 'widget_staff_list widget_sp_staff_list', 'description' => __( 'A list of staff.', 'sportspress' ) );
+		parent::__construct('sp_staff_list', __( 'SportsPress Staff List', 'sportspress' ), $widget_ops);
+	}
+
+	function widget( $args, $instance ) {
+		extract($args);
+		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
+		$id = empty($instance['id']) ? null : $instance['id'];
+		$number = empty($instance['number']) ? null : $instance['number'];
+		$show_all_staff_link = empty($instance['show_all_staff_link']) ? false : $instance['show_all_staff_link'];
+		echo $before_widget;
+		if ( $title )
+			echo $before_title . $title . $after_title;
+		echo '<div id="sp_staff_list_wrap">';
+		sp_get_template( 'staff-list.php', array( 'id' => $id, 'number' => $number, 'show_all_staff_link' => $show_all_staff_link ), 'staff-list', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+		echo '</div>';
+		echo $after_widget;
+	}
+
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['id'] = intval($new_instance['id']);
+		$instance['number'] = intval($new_instance['number']);
+		$instance['show_all_staff_link'] = $new_instance['show_all_staff_link'];
+
+		return $instance;
+	}
+
+	function form( $instance ) {
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'number' => 5, 'show_all_staff_link' => true ) );
+		$title = strip_tags($instance['title']);
+		$id = intval($instance['id']);
+		$number = intval($instance['number']);
+		$show_all_staff_link = $instance['show_all_staff_link'];
+?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('id'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Staff Directory', 'sportspress' ) ); ?></label>
+		<?php
+		$args = array(
+			'post_type' => 'sp_directory',
+			'name' => $this->get_field_name('id'),
+			'id' => $this->get_field_id('id'),
+			'selected' => $id,
+			'values' => 'ID',
+			'class' => 'widefat',
+		);
+		if ( ! sp_dropdown_pages( $args ) ):
+			sp_post_adder( 'sp_directory', __( 'Add New', 'sportspress' ) );
+		endif;
+		?>
+		</p>
+
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of staff to show:', 'sportspress' ); ?></label>
+		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" size="3"></p>
+
+		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_all_staff_link'); ?>" name="<?php echo $this->get_field_name('show_all_staff_link'); ?>" value="1" <?php checked( $show_all_staff_link, 1 ); ?>>
+		<label for="<?php echo $this->get_field_id('show_all_staff_link'); ?>"><?php _e( 'Display link to view all staff', 'sportspress' ); ?></label></p>
+<?php
+	}
+}
+
+register_widget( 'SP_Widget_Staff_List' );

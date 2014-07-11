@@ -1,0 +1,34 @@
+{
+	"name":				"Handball",
+	"outcomes": [
+						"Win",
+						"Draw",
+						"Loss"
+	],
+	"results": [
+						{ "name" : "1st Half", "description" : "1st half goals" },
+						{ "name" : "2nd Half", "description" : "2nd half goals" },
+						{ "name" : "Goals", "description" : "Total goals", "primary" : 1 }
+	],
+	"performance": [
+						"Goals",
+						"Interceptions"
+	],
+	"columns": [
+						{ "name" : "T", "equation" : "$eventsplayed", "description" : "Total matches" },
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "F", "equation" : "$goalsfor", "priority" : 3, "description" : "Goals for" },
+						{ "name" : "A", "equation" : "$goalsagainst", "description" : "Goals against" },
+						{ "name" : "DIFF", "equation" : "$goalsfor - $goalsagainst", "priority" : 2, "description" : "Goal difference" },
+						{ "name" : "Pts", "equation" : "$win * 2 + $draw", "priority" : 1, "description" : "Team points" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" }
+	]
+}

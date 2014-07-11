@@ -1,0 +1,37 @@
+{
+	"name":				"Cricket",
+	"outcomes": [
+						"Win",
+						"Loss",
+						"Draw",
+						"Tie"
+	],
+	"results": [
+						{ "name" : "1st", "description" : "1st inning runs" },
+						{ "name" : "2nd", "description" : "2nd inning runs" },
+						{ "name" : "3rd", "description" : "3rd inning runs" },
+						{ "name" : "4th", "description" : "4th inning runs" },
+						{ "name" : "BP", "description" : "Bonus points" },
+						{ "name" : "Points", "description" : "Total points", "primary" : 1 }
+	],
+	"performance": [
+						"Runs",
+						"Wickets taken"
+	],
+	"columns": [
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "W", "equation" : "$win", "priority" : 2, "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
+						{ "name" : "T", "equation" : "$tie", "description" : "Ties" },
+						{ "name" : "BP", "equation" : "$bp", "description" : "Bonus points" },
+						{ "name" : "Points", "equation" : "$points", "priority" : 1, "description" : "Total points" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" }
+	]
+}

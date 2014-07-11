@@ -1,0 +1,55 @@
+{
+	"name":				"Australian Rules Football",
+	"positions": [
+						"Defender",
+						"Midfielder",
+						"Forward"
+	],
+	"outcomes": [
+						"Win",
+						"Loss",
+						"Draw"
+	],
+	"results": [
+						{ "name" : "Q1", "description" : "First quarter points" },
+						{ "name" : "Q2", "description" : "Second quarter points" },
+						{ "name" : "Q3", "description" : "Third quarter points" },
+						{ "name" : "Q4", "description" : "Fourth quarter points" },
+						"Goals",
+						"Behinds",
+						{ "name" : "Total", "id" : "points", "description" : "Total points", "primary" : 1 }
+	],
+	"performance": [
+						"Kicks",
+						"Handballs",
+						"Disposals",
+						"Marks",
+						"Hitouts",
+						"Tackles",
+						"Goals"
+	],
+	"columns": [
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Games played" },
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
+						{ "name" : "F", "equation" : "$pointsfor", "priority" : 3, "description" : "Points for" },
+						{ "name" : "A", "equation" : "$pointsagainst", "description" : "Points against" },
+						{ "name" : "%", "id" : "pct", "equation" : "$pointsfor / $eventsplayed", "priority" : 2, "description" : "Season percentage" },
+						{ "name" : "Pts", "equation" : "$win * 4 + $draw * 2", "priority" : 1, "description" : "Points" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "Games played", "equation" : "$eventsplayed" },
+						{ "name" : "K", "equation" : "$kicks / $eventsplayed", "precision" : 1, "description" : "Average kicks per game" },
+						{ "name" : "H", "equation" : "$handballs / $eventsplayed", "precision" : 1, "description" : "Average handballs per game" },
+						{ "name" : "D", "equation" : "$disposals / $eventsplayed", "precision" : 1, "description" : "Average disposals per game" },
+						{ "name" : "M", "equation" : "$marks / $eventsplayed", "precision" : 1, "description" : "Average marks per game" },
+						{ "name" : "HO", "equation" : "$hitouts / $eventsplayed", "precision" : 1, "description" : "Average hitouts per game" },
+						{ "name" : "T", "equation" : "$tackles / $eventsplayed", "precision" : 1, "description" : "Average tackles per game" },
+						{ "name" : "G", "equation" : "$goals / $eventsplayed", "precision" : 1, "description" : "Average goals per game" }
+	]
+}

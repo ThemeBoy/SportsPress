@@ -1,0 +1,88 @@
+/* Messages */
+.sportspress-message {
+	border-left-color: #00a69c !important;
+}
+
+.sportspress-message a.button-primary,
+.sportspress-message a.button-secondary,
+p.sportspress-actions input.button-primary,
+p.sportspress-actions input.button-primary:active {
+	background: #3bbab3;
+	border-color: #15a29a;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.1);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.1);
+	color: #fff;
+	text-decoration: none;
+}
+
+.sportspress-message a.button-primary:hover,
+.sportspress-message a.button-secondary:hover,
+p.sportspress-actions input.button-primary:hover,
+p.sportspress-actions input.button-primary:focus {
+	background: #00a69c;
+	border-color: #009187;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.1);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.1);
+	color: #fff;
+	text-decoration: none;
+}
+
+.sportspress-message a.button-secondary {
+	-moz-opacity: 0.7;
+	opacity: 0.7;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+}
+
+.sp-feature a {
+	text-decoration: none;
+}
+
+.sp-feature p.sportspress-actions {
+	margin-top: 16px;
+}
+
+.about-sportspress-wrap div.updated {
+	display: block!important;
+}
+
+.about-sportspress-wrap .changelog .sportspress-steps {
+	margin-top: 24px;
+}
+
+.about-sportspress-wrap .changelog .sportspress-steps li {
+	line-height: 16px;
+	list-style-type: none;
+	margin-left: 0;
+}
+
+.about-sportspress-wrap .changelog .sportspress-steps li a {
+	display: block;
+	padding: 0 0 8px;
+	background: transparent!important;
+}
+
+.sportspress-steps .welcome-icon:before {
+	font: 400 20px/1 "sportspress";
+	speak: none;
+	display: inline-block;
+	padding: 0 10px 0 0;
+	top: -1px;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none!important;
+	vertical-align: top;
+	color: #888;
+}
+
+.sportspress-steps .welcome-add-team:before {
+	content: "\f334";
+}
+
+.sportspress-steps .welcome-add-player:before {
+	content: "\f307";
+}
+
+.sportspress-steps .welcome-add-event:before {
+	content: "\f145";
+}

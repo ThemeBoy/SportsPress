@@ -1,0 +1,41 @@
+.sportspress .form-table td fieldset li {
+	display: inline;
+	margin-right: 20px;
+}
+
+.sportspress .form-table td .sp-prefs .button {
+	margin: 0 3px 4px 0;
+	padding: 0 7px 1px 5px;
+}
+
+.sportspress .form-table td .sp-prefs .button input[type=checkbox] {
+	background: transparent;
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.sportspress .form-table td .sp-prefs .button input[type=checkbox]:not(:checked):before {
+	float: left;
+	display: inline-block;
+	vertical-align: middle;
+	width: 16px;
+	font: 400 21px/1 dashicons;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: '\f335';
+	margin: -3px 0 0 -4px;
+	color: #a00;
+}
+
+.sportspress .form-table .sp-league-menu-logo-options img {
+	width: auto;
+	height: auto;
+	-webkit-transition-duration:0.3s;
+	transition-duration:0.3s;
+}
+
+.sportspress .form-table .iris-picker {
+	position: absolute;
+}

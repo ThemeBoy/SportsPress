@@ -1,0 +1,30 @@
+{
+	"name":				"Snooker",
+	"outcomes": [
+						"Win",
+						"Draw",
+						"Loss"
+	],
+	"results": [
+						{ "name" : "Score", "description" : "Total points", "main" : 1 }
+	],
+	"performance": [
+						"1st Frame",
+						"2nd Frame"
+	],
+	"columns": [
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Games played" },
+						{ "name" : "W", "equation" : "$win", "priority" : 2, "description" : "Wins" },
+						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "F", "equation" : "$scorefor", "description" : "Points for" },
+						{ "name" : "A", "equation" : "$scoreagainst", "description" : "Points against" },
+						{ "name" : "+-", "equation" : "$win - $loss", "description" : "Point difference" },
+						{ "name" : "PTS", "equation" : "$scorefor", "priority" : 1, "description" : "Points" }
+	],
+	"statistics": [
+						{ "name" : "Games Played", "equation" : "$eventsplayed" },
+						{ "name" : "Games Won", "equation" : "$win" },
+						{ "name" : "Win Percentage", "equation" : "$win / $eventsplayed * 1 0 0", "precision" : 2 }
+	]
+}

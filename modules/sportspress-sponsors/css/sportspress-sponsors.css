@@ -1,0 +1,53 @@
+.sp-sponsors {
+	display: block;
+	clear: both;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.sp-sponsors .sp-sponsors-title {
+	margin-top: 0;
+}
+
+.sp-sponsors .sponsor {
+	display: inline-block;
+	margin: 15px;
+}
+
+.sp-sponsors .sp-sponsor-logo {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	height: auto;
+	width: auto;
+}
+
+.sp-header-sponsors {
+	z-index: 2;
+	right: 0;
+	top: 100%;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+.sp-header-sponsors .sp-sponsors .sponsor {
+	margin: 5px;
+}
+
+.sp-footer-sponsors {
+	position: relative;
+	z-index: 2;
+	clear: both;
+	padding: 5em 0;
+	background: #111111;
+}
+
+.sp-footer-sponsors .sp-sponsors-title {
+	color: #ffffff;
+}
+
+@media only screen and (min-width: 40.063em) {
+	.sp-header-sponsors {
+		position: absolute;
+	}
+}

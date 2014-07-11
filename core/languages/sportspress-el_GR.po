@@ -1,0 +1,3372 @@
+#
+# Translators:
+# AlexSunnO <info@taxpress.gr>, 2014
+# Socrates Alichanides <salichani75@gmail.com>, 2014
+# Apostolis Kyromites <apokyro@yahoo.gr>, 2012
+# Athanasiadis Evangelos <dyrer@wordpress.gr>, 2007
+# axil Pι, 2013
+# Achilleas Pipinellis, 2013
+# Demetris Kikizas <op111.net@gmail.com>, 2008-2012
+# Dimitris katsanis <dimikats1@gmail.com>, 2013-2014
+# Dimitris Glezos <>, 2005
+# Dimitris Korbetis <>, 2005
+# Christina Nikaki <christinenikaki@gmail.com>, 2012
+# Filippos Sdralias <filippos.sdr@gmail.com>, 2014
+# Giorgos Georgas <>, 2005
+# gorfeas <gorfeas@hotmail.com>, 2013-2014
+# Inceptive Design Labs <inceptive@inceptive.gr>, 2014
+# JOHN <jpalks@yahoo.gr>, 2013
+# kaggelakis <kaggelaki@yahoo.com>, 2013
+# Kostas Papadimas <pkst@gnome.org>, 2005
+# Kostas M <kostas@creativecollective.gr>, 2014
+# Jeffrey Rogers <ionikosfc@yopmail.com>, 2013
+# Logothetis Valasakis <thenovember5@gmail.com>, 2013
+# Μάκης Αντύπας <makis@realize.gr>, 2013
+# MARIOS <marios.rodos@gmail.com>, 2013
+# Marios Vlahos <marios.vlahos@outlook.com>, 2014
+# mtzanidakis <mtzanidakis@gmail.com>, 2014
+# nikcha <nikosx@gmail.com>, 2005,2007
+# ounos <ounos@live.com>, 2014
+# pefstra <pefstra@gmail.com>, 2013
+# pvs1984 <pissasvasilis@gmail.com>, 2013
+# Sakis Papadimitriou <>, 2005
+# Serafeim Zanikolas <serzan@hellug.gr>, 2005
+# ted gudis <seriusb@gmail.com>, 2014
+# Simos Xenitellis <simos@gnome.org>, 2005
+# Stefanos Petrakis <>, 2005
+# Ta panta rei <>, 2005
+# Vaios Kouvelis <>, 2005
+# Vasilis Zboukis <vasilis@minima.net.gr>, 2014
+# Σμηλιάνης Σπυρίδων <spirossm@hyperwebhost.net>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: SportsPress\n"
+"POT-Creation-Date: 2014-06-23 22:10+1000\n"
+"PO-Revision-Date: 2014-06-23 22:10+1000\n"
+"Last-Translator: ThemeBoy <support@themeboy.com>\n"
+"Language-Team: Greek (Greece) (http://www.transifex.com/projects/p/"
+"sportspress/language/el_GR/)\n"
+"Language: el_GR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: sportspress.php:87 sportspress.php:96
+msgid "Cheatin&#8217; huh?"
+msgstr "Προσπαθείς να κλέψεις;"
+
+#: sportspress.php:139 includes/admin/class-sp-admin-menus.php:102
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: sportspress.php:140
+msgid "Themes"
+msgstr "Θέματα"
+
+#: sportspress.php:141
+msgid "Extensions"
+msgstr "Επεκτάσεις"
+
+#: sportspress.php:326 includes/class-sp-post-types.php:464
+#: includes/admin/class-sp-admin-permalink-settings.php:32
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:51
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:44
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:120
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:168
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:103
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:58
+#: includes/admin/settings/class-sp-settings-events.php:93
+#: includes/admin/settings/class-sp-settings-players.php:25
+#: includes/admin/settings/class-sp-settings-players.php:54
+msgid "Players"
+msgstr "Παίκτες"
+
+#: sportspress.php:328 includes/class-sp-install.php:160
+#: includes/class-sp-player-list.php:366 includes/class-sp-post-types.php:465
+#: includes/sp-core-functions.php:1068
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:62
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:50
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:134
+#: templates/event-performance.php:59
+msgid "Player"
+msgstr "Παίχτης"
+
+#: sportspress.php:330
+#: includes/admin/settings/class-sp-settings-players.php:86
+msgid "players"
+msgstr "παίκτες"
+
+#: sportspress.php:332 includes/class-sp-post-types.php:466
+#: includes/admin/class-sp-admin-welcome.php:250
+msgid "Add New Player"
+msgstr "Προσθήκη νέου παίκτη"
+
+#: sportspress.php:334 includes/class-sp-post-types.php:467
+msgid "Edit Player"
+msgstr "Επεξεργασία παίκτη"
+
+#: sportspress.php:336
+#: includes/admin/settings/class-sp-settings-players.php:39
+msgid "Player Options"
+msgstr "Επιλογές του παίκτη"
+
+#: sportspress.php:338 includes/class-sp-post-types.php:281
+#: includes/class-sp-post-types.php:282
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:127
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:35
+#: includes/admin/settings/class-sp-settings-config.php:225
+#: includes/admin/views/html-admin-page-status.php:247
+msgid "Player Performance"
+msgstr "Απόδοση παίκτη"
+
+#: sportspress.php:340 includes/sp-template-hooks.php:173
+msgid "Photo"
+msgstr "Φωτογραφία"
+
+#: sportspress.php:342 includes/sp-template-hooks.php:179
+msgid "Add photo"
+msgstr "Προσθήκη φωτογραφιών"
+
+#: sportspress.php:344 includes/sp-template-hooks.php:182
+msgid "Remove photo"
+msgstr "Αφαιρέστε την φωτογραφία"
+
+#: sportspress.php:346 includes/sp-template-hooks.php:176
+msgid "Select Photo"
+msgstr "Επιλέξτε Φωτογραφία"
+
+#: sportspress.php:348
+#, fuzzy
+msgid "Display photos"
+msgstr "Εμφανίστε λογότυπα"
+
+#: sportspress.php:350
+#: includes/admin/settings/class-sp-settings-events.php:102
+#: includes/admin/settings/class-sp-settings-players.php:55
+msgid "Link players"
+msgstr "Σύνδεσμος παικτών"
+
+#: includes/class-sp-countries.php:29
+msgid "Africa"
+msgstr "Αφρική"
+
+#: includes/class-sp-countries.php:30
+msgid "Asia"
+msgstr "Ασία"
+
+#: includes/class-sp-countries.php:31
+msgid "Europe"
+msgstr "Ευρώπη"
+
+#: includes/class-sp-countries.php:32
+msgid "North America"
+msgstr "Βόρεια Αμερική"
+
+#: includes/class-sp-countries.php:33
+msgid "Oceania"
+msgstr "Ωκεανία"
+
+#: includes/class-sp-countries.php:34
+msgid "South America"
+msgstr "Νότια Αμερική"
+
+#: includes/class-sp-countries.php:38
+msgid "Andorra"
+msgstr "Ανδόρα"
+
+#: includes/class-sp-countries.php:39
+msgid "United Arab Emirates"
+msgstr "Ηνωμένα Αραβικά Εμιράτα"
+
+#: includes/class-sp-countries.php:40
+msgid "Afghanistan"
+msgstr "Αφγανιστάν"
+
+#: includes/class-sp-countries.php:41
+msgid "Antigua and Barbuda"
+msgstr "Αντίγκουα και Μπαρμπούντα"
+
+#: includes/class-sp-countries.php:42
+msgid "Albania"
+msgstr "Αλβανία"
+
+#: includes/class-sp-countries.php:43
+msgid "Armenia"
+msgstr "Αρμενία"
+
+#: includes/class-sp-countries.php:44
+msgid "Angola"
+msgstr "Αγκόλα"
+
+#: includes/class-sp-countries.php:45
+msgid "Argentina"
+msgstr "Αργεντινή"
+
+#: includes/class-sp-countries.php:46
+msgid "Austria"
+msgstr "Αυστρία"
+
+#: includes/class-sp-countries.php:47
+msgid "Australia"
+msgstr "Αυστραλία"
+
+#: includes/class-sp-countries.php:48
+msgid "Azerbaijan"
+msgstr "Αζερμπαϊτζάν"
+
+#: includes/class-sp-countries.php:49
+msgid "Bosnia and Herzegovina"
+msgstr "Βοσνία-Ερζεγοβίνη"
+
+#: includes/class-sp-countries.php:50
+msgid "Barbados"
+msgstr "Μπαρμπάντος"
+
+#: includes/class-sp-countries.php:51
+msgid "Bangladesh"
+msgstr "Μπανγκλαντές"
+
+#: includes/class-sp-countries.php:52
+msgid "Belgium"
+msgstr "Βέλγιο"
+
+#: includes/class-sp-countries.php:53
+msgid "Burkina Faso"
+msgstr "Μπουρκίνα Φάσο"
+
+#: includes/class-sp-countries.php:54
+msgid "Bulgaria"
+msgstr "Βουλγαρία"
+
+#: includes/class-sp-countries.php:55
+msgid "Bahrain"
+msgstr "Μπαχρέιν"
+
+#: includes/class-sp-countries.php:56
+msgid "Burundi"
+msgstr "Μπουρούντι"
+
+#: includes/class-sp-countries.php:57
+msgid "Benin"
+msgstr "Μπενίν"
+
+#: includes/class-sp-countries.php:58
+msgid "Brunei"
+msgstr "Μπρουνέι"
+
+#: includes/class-sp-countries.php:59
+msgid "Bolivia"
+msgstr "Βολιβία"
+
+#: includes/class-sp-countries.php:60
+msgid "Brazil"
+msgstr "Βραζιλία"
+
+#: includes/class-sp-countries.php:61
+msgid "Bahamas"
+msgstr "Μπαχάμες"
+
+#: includes/class-sp-countries.php:62
+msgid "Bhutan"
+msgstr "Μπουτάν"
+
+#: includes/class-sp-countries.php:63
+msgid "Botswana"
+msgstr "Μποτσουάνα"
+
+#: includes/class-sp-countries.php:64
+msgid "Belarus"
+msgstr "Λευκορωσία"
+
+#: includes/class-sp-countries.php:65
+msgid "Belize"
+msgstr "Μπελίσε"
+
+#: includes/class-sp-countries.php:66
+msgid "Canada"
+msgstr "Καναδάς"
+
+#: includes/class-sp-countries.php:67
+msgid "Democratic Republic of the Congo"
+msgstr "Λαϊκή Δημοκρατία του Κονγκό"
+
+#: includes/class-sp-countries.php:68
+msgid "Central African Republic"
+msgstr "Κεντροαφρικανική Δημοκρατία"
+
+#: includes/class-sp-countries.php:69
+msgid "Republic of the Congo"
+msgstr "Δημοκρατία του Κονγκό"
+
+#: includes/class-sp-countries.php:70
+msgid "Switzerland"
+msgstr "Ελβετία"
+
+#: includes/class-sp-countries.php:71
+msgid "Ivory Coast"
+msgstr "Ακτή Ελεφαντοστού"
+
+#: includes/class-sp-countries.php:72
+msgid "Chile"
+msgstr "Χιλή"
+
+#: includes/class-sp-countries.php:73
+msgid "Cameroon"
+msgstr "Καμερούν"
+
+#: includes/class-sp-countries.php:74
+msgid "China"
+msgstr "Κίνα"
+
+#: includes/class-sp-countries.php:75
+msgid "Colombia"
+msgstr "Κολομβία"
+
+#: includes/class-sp-countries.php:76
+msgid "Costa Rica"
+msgstr "Κόστα Ρίκα"
+
+#: includes/class-sp-countries.php:77
+msgid "Cuba"
+msgstr "Κούβα"
+
+#: includes/class-sp-countries.php:78
+msgid "Cape Verde"
+msgstr "Πράσινο Ακρωτήριο"
+
+#: includes/class-sp-countries.php:79
+msgid "Cyprus"
+msgstr "Κύπρος"
+
+#: includes/class-sp-countries.php:80
+msgid "Czech Republic"
+msgstr "Τσεχία"
+
+#: includes/class-sp-countries.php:81
+msgid "Germany"
+msgstr "Γερμανία"
+
+#: includes/class-sp-countries.php:82
+msgid "Djibouti"
+msgstr "Τζιμπουτί"
+
+#: includes/class-sp-countries.php:83
+msgid "Denmark"
+msgstr "Δανία"
+
+#: includes/class-sp-countries.php:84
+msgid "Dominica"
+msgstr "Ντομίνικα"
+
+#: includes/class-sp-countries.php:85
+msgid "Dominican Republic"
+msgstr "Δομινικανή Δημοκρατία"
+
+#: includes/class-sp-countries.php:86
+msgid "Algeria"
+msgstr "Αλγερία"
+
+#: includes/class-sp-countries.php:87
+msgid "Ecuador"
+msgstr "Ισημερινός"
+
+#: includes/class-sp-countries.php:88
+msgid "Estonia"
+msgstr "Εσθονία"
+
+#: includes/class-sp-countries.php:89
+msgid "Egypt"
+msgstr "Αίγυπτος"
+
+#: includes/class-sp-countries.php:90
+msgid "Western Sahara"
+msgstr "Δυτική Σαχάρα"
+
+#: includes/class-sp-countries.php:91
+msgid "England"
+msgstr "Αγγλία"
+
+#: includes/class-sp-countries.php:92
+msgid "Eritrea"
+msgstr "Ερυθραία"
+
+#: includes/class-sp-countries.php:93
+msgid "Spain"
+msgstr "Ισπανία"
+
+#: includes/class-sp-countries.php:94
+msgid "Ethiopia"
+msgstr "Αιθιοπία"
+
+#: includes/class-sp-countries.php:95
+msgid "Finland"
+msgstr "Φινλανδία"
+
+#: includes/class-sp-countries.php:96
+msgid "Fiji"
+msgstr "Φίτζι"
+
+#: includes/class-sp-countries.php:97
+msgid "Micronesia"
+msgstr "Μικρονησία"
+
+#: includes/class-sp-countries.php:98
+msgid "France"
+msgstr "Γαλλία"
+
+#: includes/class-sp-countries.php:99
+msgid "Gabon"
+msgstr "Γκαμπόν"
+
+#: includes/class-sp-countries.php:100
+msgid "United Kingdom"
+msgstr "Ηνωμένο Βασίλειο"
+
+#: includes/class-sp-countries.php:101
+msgid "Grenada"
+msgstr "Γρενάδα"
+
+#: includes/class-sp-countries.php:102
+msgid "Georgia"
+msgstr "Γεωργία"
+
+#: includes/class-sp-countries.php:103
+msgid "Ghana"
+msgstr "Γκάνα"
+
+#: includes/class-sp-countries.php:104
+msgid "Gambia"
+msgstr "Γκάμπια"
+
+#: includes/class-sp-countries.php:105
+msgid "Guinea"
+msgstr "Γουινέα"
+
+#: includes/class-sp-countries.php:106
+msgid "Equatorial Guinea"
+msgstr "Ισημερινή Γουινέα"
+
+#: includes/class-sp-countries.php:107
+msgid "Greece"
+msgstr "Ελλάδα"
+
+#: includes/class-sp-countries.php:108
+msgid "Guatemala"
+msgstr "Γουατεμάλα"
+
+#: includes/class-sp-countries.php:109
+msgid "Guinea-Bissau"
+msgstr "Γουϊνέα-Μπισάου"
+
+#: includes/class-sp-countries.php:110
+msgid "Guyana"
+msgstr "Γουιάνα"
+
+#: includes/class-sp-countries.php:111
+msgid "Hong Kong"
+msgstr "Χονγκ Κονγκ"
+
+#: includes/class-sp-countries.php:112
+msgid "Honduras"
+msgstr "Ονδούρα"
+
+#: includes/class-sp-countries.php:113
+msgid "Croatia"
+msgstr "Κροατία"
+
+#: includes/class-sp-countries.php:114
+msgid "Haiti"
+msgstr "Αϊτή"
+
+#: includes/class-sp-countries.php:115
+msgid "Hungary"
+msgstr "Ουγγαρία"
+
+#: includes/class-sp-countries.php:116
+msgid "Indonesia"
+msgstr "Ινδονησία"
+
+#: includes/class-sp-countries.php:117
+msgid "Ireland"
+msgstr "Ιρλανδία"
+
+#: includes/class-sp-countries.php:118
+msgid "Israel"
+msgstr "Ισραήλ"
+
+#: includes/class-sp-countries.php:119
+msgid "India"
+msgstr "Ινδία"
+
+#: includes/class-sp-countries.php:120
+msgid "Iraq"
+msgstr "Ιράκ"
+
+#: includes/class-sp-countries.php:121
+msgid "Iran"
+msgstr "Ιράν"
+
+#: includes/class-sp-countries.php:122
+msgid "Iceland"
+msgstr "Ισλανδία"
+
+#: includes/class-sp-countries.php:123
+msgid "Italy"
+msgstr "Ιταλία"
+
+#: includes/class-sp-countries.php:124
+msgid "Jamaica"
+msgstr "Ιαμαϊκή"
+
+#: includes/class-sp-countries.php:125
+msgid "Jordan"
+msgstr "Ιορδανία"
+
+#: includes/class-sp-countries.php:126
+msgid "Japan"
+msgstr "Ιαπωνία"
+
+#: includes/class-sp-countries.php:127
+msgid "Kenya"
+msgstr "Κένυα"
+
+#: includes/class-sp-countries.php:128
+msgid "Kyrgyzstan"
+msgstr "Κιργιστάν"
+
+#: includes/class-sp-countries.php:129
+msgid "Cambodia"
+msgstr "Καμπότζη"
+
+#: includes/class-sp-countries.php:130
+msgid "Kiribati"
+msgstr "Κιριμπάτι"
+
+#: includes/class-sp-countries.php:131
+msgid "Comoros"
+msgstr "Κομόρες"
+
+#: includes/class-sp-countries.php:132
+msgid "Saint Kitts and Nevis"
+msgstr "Άγιος Χριστόφορος και Νέβις"
+
+#: includes/class-sp-countries.php:133
+msgid "North Korea"
+msgstr "Βόρεια Κορέα"
+
+#: includes/class-sp-countries.php:134
+msgid "South Korea"
+msgstr "Νότια Κορέα"
+
+#: includes/class-sp-countries.php:135
+msgid "Kuwait"
+msgstr "Κουβέιτ"
+
+#: includes/class-sp-countries.php:136
+msgid "Kazakhstan"
+msgstr "Καζακστάν"
+
+#: includes/class-sp-countries.php:137
+msgid "Laos"
+msgstr "Λάος"
+
+#: includes/class-sp-countries.php:138
+msgid "Lebanon"
+msgstr "Λίβανος"
+
+#: includes/class-sp-countries.php:139
+msgid "Saint Lucia"
+msgstr "Αγία Λουκία"
+
+#: includes/class-sp-countries.php:140
+msgid "Liechtenstein"
+msgstr "Λιχτενστάιν"
+
+#: includes/class-sp-countries.php:141
+msgid "Sri Lanka"
+msgstr "Σρι Λάνκα"
+
+#: includes/class-sp-countries.php:142
+msgid "Liberia"
+msgstr "Λιβερία"
+
+#: includes/class-sp-countries.php:143
+msgid "Lesotho"
+msgstr "Λεσότο"
+
+#: includes/class-sp-countries.php:144
+msgid "Lithuania"
+msgstr "Λιθουανία"
+
+#: includes/class-sp-countries.php:145
+msgid "Luxembourg"
+msgstr "Λουξεμβούργο"
+
+#: includes/class-sp-countries.php:146
+msgid "Latvia"
+msgstr "Λετονία"
+
+#: includes/class-sp-countries.php:147
+msgid "Libya"
+msgstr "Λιβύη"
+
+#: includes/class-sp-countries.php:148
+msgid "Morocco"
+msgstr "Μαρόκο"
+
+#: includes/class-sp-countries.php:149
+msgid "Monaco"
+msgstr "Μονακό"
+
+#: includes/class-sp-countries.php:150
+msgid "Moldova"
+msgstr "Μολδαβία"
+
+#: includes/class-sp-countries.php:151
+msgid "Montenegro"
+msgstr "Μαυροβούνιο"
+
+#: includes/class-sp-countries.php:152
+msgid "Madagascar"
+msgstr "Μαδαγασκάρη"
+
+#: includes/class-sp-countries.php:153
+msgid "Marshall Islands"
+msgstr "Νήσοι Μάρσαλ"
+
+#: includes/class-sp-countries.php:154
+msgid "Macedonia"
+msgstr "ΠΓΔ Μακεδονίας"
+
+#: includes/class-sp-countries.php:155
+msgid "Mali"
+msgstr "Μάλι"
+
+#: includes/class-sp-countries.php:156
+msgid "Burma"
+msgstr "Βιρμανία"
+
+#: includes/class-sp-countries.php:157
+msgid "Mongolia"
+msgstr "Μογγολία"
+
+#: includes/class-sp-countries.php:158
+msgid "Macau"
+msgstr "Μακάο"
+
+#: includes/class-sp-countries.php:159
+msgid "Mauritania"
+msgstr "Μαυριτανία"
+
+#: includes/class-sp-countries.php:160
+msgid "Malta"
+msgstr "Μάλτα"
+
+#: includes/class-sp-countries.php:161
+msgid "Mauritius"
+msgstr "Μαυρίκιος"
+
+#: includes/class-sp-countries.php:162
+msgid "Maldives"
+msgstr "Μαλδίβες"
+
+#: includes/class-sp-countries.php:163
+msgid "Malawi"
+msgstr "Μαλάουι"
+
+#: includes/class-sp-countries.php:164
+msgid "Mexico"
+msgstr "Μεξικό"
+
+#: includes/class-sp-countries.php:165
+msgid "Malaysia"
+msgstr "Μαλαισία"
+
+#: includes/class-sp-countries.php:166
+msgid "Mozambique"
+msgstr "Μοζαμβίκη"
+
+#: includes/class-sp-countries.php:167
+msgid "Namibia"
+msgstr "Ναμίμπια"
+
+#: includes/class-sp-countries.php:168
+msgid "Northern Ireland"
+msgstr "Βόρεια Ιρλανδία"
+
+#: includes/class-sp-countries.php:169
+msgid "Niger"
+msgstr "Νίγηρας"
+
+#: includes/class-sp-countries.php:170
+msgid "Nigeria"
+msgstr "Νιγηρία"
+
+#: includes/class-sp-countries.php:171
+msgid "Nicaragua"
+msgstr "Νικαράγουα"
+
+#: includes/class-sp-countries.php:172
+msgid "Netherlands"
+msgstr "Ολλανδία"
+
+#: includes/class-sp-countries.php:173
+msgid "Norway"
+msgstr "Νορβηγία"
+
+#: includes/class-sp-countries.php:174
+msgid "Nepal"
+msgstr "Νεπάλ"
+
+#: includes/class-sp-countries.php:175
+msgid "Nauru"
+msgstr "Ναούρου"
+
+#: includes/class-sp-countries.php:176
+msgid "New Zealand"
+msgstr "Νέα Ζηλανδία"
+
+#: includes/class-sp-countries.php:177
+msgid "Oman"
+msgstr "Ομάν"
+
+#: includes/class-sp-countries.php:178
+msgid "Panama"
+msgstr "Παναμάς"
+
+#: includes/class-sp-countries.php:179
+msgid "Peru"
+msgstr "Περού"
+
+#: includes/class-sp-countries.php:180
+msgid "Papua New Guinea"
+msgstr "Παπούα Νέα Γουινέα"
+
+#: includes/class-sp-countries.php:181
+msgid "Philippines"
+msgstr "Φιλιππίνες"
+
+#: includes/class-sp-countries.php:182
+msgid "Pakistan"
+msgstr "Πακιστάν"
+
+#: includes/class-sp-countries.php:183
+msgid "Poland"
+msgstr "Πολωνία"
+
+#: includes/class-sp-countries.php:184
+msgid "Portugal"
+msgstr "Πορτογαλία"
+
+#: includes/class-sp-countries.php:185
+msgid "Palau"
+msgstr "Παλάου"
+
+#: includes/class-sp-countries.php:186
+msgid "Paraguay"
+msgstr "Παραγουάη"
+
+#: includes/class-sp-countries.php:187
+msgid "Qatar"
+msgstr "Κατάρ"
+
+#: includes/class-sp-countries.php:188
+msgid "Romania"
+msgstr "Ρουμανία"
+
+#: includes/class-sp-countries.php:189
+msgid "Serbia"
+msgstr "Σερβία"
+
+#: includes/class-sp-countries.php:190
+msgid "Russia"
+msgstr "Ρωσία"
+
+#: includes/class-sp-countries.php:191
+msgid "Rwanda"
+msgstr "Ρουάντα"
+
+#: includes/class-sp-countries.php:192
+msgid "Saudi Arabia"
+msgstr "Σαουδική Αραβία"
+
+#: includes/class-sp-countries.php:193
+msgid "Solomon Islands"
+msgstr "Νησιά Σολομώντα"
+
+#: includes/class-sp-countries.php:194
+msgid "Seychelles"
+msgstr "Σεϋχέλλες"
+
+#: includes/class-sp-countries.php:195
+msgid "Sudan"
+msgstr "Σουδάν"
+
+#: includes/class-sp-countries.php:196
+msgid "Sweden"
+msgstr "Σουηδία"
+
+#: includes/class-sp-countries.php:197
+msgid "Scotland"
+msgstr "Σκωτία"
+
+#: includes/class-sp-countries.php:198
+msgid "Singapore"
+msgstr "Σιγκαπούρη"
+
+#: includes/class-sp-countries.php:199
+msgid "Slovenia"
+msgstr "Σλοβενία"
+
+#: includes/class-sp-countries.php:200
+msgid "Slovakia"
+msgstr "Σλοβακία"
+
+#: includes/class-sp-countries.php:201
+msgid "Sierra Leone"
+msgstr "Σιέρα Λεόνε"
+
+#: includes/class-sp-countries.php:202
+msgid "San Marino"
+msgstr "Σαν Μαρίνο"
+
+#: includes/class-sp-countries.php:203
+msgid "Senegal"
+msgstr "Σενεγάλη"
+
+#: includes/class-sp-countries.php:204
+msgid "Somalia"
+msgstr "Σομαλία"
+
+#: includes/class-sp-countries.php:205
+msgid "Suriname"
+msgstr "Σουρινάμ"
+
+#: includes/class-sp-countries.php:206
+msgid "Sao Tome and Principe"
+msgstr "Σάο Τόμε και Πρίνσιπε"
+
+#: includes/class-sp-countries.php:207
+msgid "El Salvador"
+msgstr "Ελ Σαλβαδόρ"
+
+#: includes/class-sp-countries.php:208
+msgid "Swaziland"
+msgstr "Σουαζιλάνδη"
+
+#: includes/class-sp-countries.php:209
+msgid "Chad"
+msgstr "Τσαντ"
+
+#: includes/class-sp-countries.php:210
+msgid "Togo"
+msgstr "Τόγκο"
+
+#: includes/class-sp-countries.php:211
+msgid "Thailand"
+msgstr "Ταϊλάνδη"
+
+#: includes/class-sp-countries.php:212
+msgid "Tajikistan"
+msgstr "Τατζικιστάν"
+
+#: includes/class-sp-countries.php:213
+msgid "East Timor"
+msgstr "Ανατολικό Τιμόρ"
+
+#: includes/class-sp-countries.php:214
+msgid "Turkmenistan"
+msgstr "Τουρκμενιστάν"
+
+#: includes/class-sp-countries.php:215
+msgid "Tunisia"
+msgstr "Τυνησία"
+
+#: includes/class-sp-countries.php:216
+msgid "Tonga"
+msgstr "Τόνγκα"
+
+#: includes/class-sp-countries.php:217
+msgid "Turkey"
+msgstr "Τουρκία"
+
+#: includes/class-sp-countries.php:218
+msgid "Trinidad and Tobago"
+msgstr "Τρινιντάντ και Τομπάγκο"
+
+#: includes/class-sp-countries.php:219
+msgid "Tuvalu"
+msgstr "Τουβαλού"
+
+#: includes/class-sp-countries.php:220
+msgid "Taiwan"
+msgstr "Ταϊβάν"
+
+#: includes/class-sp-countries.php:221
+msgid "Tanzania"
+msgstr "Τανζανία"
+
+#: includes/class-sp-countries.php:222
+msgid "Ukraine"
+msgstr "Ουκρανία"
+
+#: includes/class-sp-countries.php:223
+msgid "Uganda"
+msgstr "Ουγκάντα"
+
+#: includes/class-sp-countries.php:224
+msgid "United States"
+msgstr "Ηνωμένες Πολιτείες Αμερικής"
+
+#: includes/class-sp-countries.php:225
+msgid "Uruguay"
+msgstr "Ουρουγουάη"
+
+#: includes/class-sp-countries.php:226
+msgid "Uzbekistan"
+msgstr "Ουζμπεκιστάν"
+
+#: includes/class-sp-countries.php:227
+msgid "Vatican City"
+msgstr "Βατικανό"
+
+#: includes/class-sp-countries.php:228
+msgid "Saint Vincent and the Grenadines"
+msgstr "Άγιος Βικέντιος και Γρεναδίνες"
+
+#: includes/class-sp-countries.php:229
+msgid "Venezuela"
+msgstr "Βενεζουέλα"
+
+#: includes/class-sp-countries.php:230
+msgid "Vietnam"
+msgstr "Βιετνάμ"
+
+#: includes/class-sp-countries.php:231
+msgid "Vanuatu"
+msgstr "Βανουάτου"
+
+#: includes/class-sp-countries.php:232
+msgid "Wales"
+msgstr "Ουαλία"
+
+#: includes/class-sp-countries.php:233
+msgid "Samoa"
+msgstr "Σαμόα"
+
+#: includes/class-sp-countries.php:234
+msgid "Yemen"
+msgstr "Υεμένη"
+
+#: includes/class-sp-countries.php:235
+msgid "South Africa"
+msgstr "Νότια Αφρική"
+
+#: includes/class-sp-countries.php:236
+msgid "Zambia"
+msgstr "Ζάμπια"
+
+#: includes/class-sp-countries.php:237
+msgid "Zimbabwe"
+msgstr "Ζιμπάμπουε"
+
+#: includes/class-sp-event.php:43 includes/class-sp-post-types.php:192
+#: includes/sp-core-functions.php:1046
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:57
+msgid "Outcome"
+msgstr "Κατάληξη"
+
+#: includes/class-sp-event.php:96 includes/class-sp-post-types.php:123
+#: includes/sp-core-functions.php:1069
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:67
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:70
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:77
+msgid "Position"
+msgstr "Θέση"
+
+#: includes/class-sp-formats.php:27 includes/class-sp-post-types.php:36
+#: includes/sp-core-functions.php:1044
+#: includes/admin/importers/class-sp-event-importer.php:458
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:48
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:94
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:111
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:48
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:48
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:53
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:28
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:30
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:27
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:61
+#: templates/event-details.php:24
+msgid "League"
+msgstr "Πρωτάθλημα"
+
+#: includes/class-sp-formats.php:28
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:114
+msgid "Friendly"
+msgstr "Φιλικός"
+
+#: includes/class-sp-formats.php:31 includes/class-sp-post-types.php:372
+#: includes/widgets/class-sp-widget-event-blocks.php:51
+#: includes/widgets/class-sp-widget-event-calendar.php:44
+#: includes/widgets/class-sp-widget-event-list.php:54
+msgid "Calendar"
+msgstr "Ημερολόγιο"
+
+#: includes/class-sp-formats.php:32 includes/class-sp-formats.php:36
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:55
+msgid "List"
+msgstr "Λίστα"
+
+#: includes/class-sp-formats.php:33
+msgid "Blocks"
+msgstr "Ομάδες δεδομένων"
+
+#: includes/class-sp-formats.php:37
+msgid "Gallery"
+msgstr "Πινακοθήκη"
+
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:113
+#: includes/admin/class-sp-admin-dashboard.php:80 templates/countdown.php:64
+msgid "days"
+msgstr "Ημέρες"
+
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:114 templates/countdown.php:65
+msgid "hrs"
+msgstr "ώρες"
+
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:115 templates/countdown.php:66
+msgid "mins"
+msgstr "λεπτά"
+
+#: includes/class-sp-frontend-scripts.php:57
+#: includes/admin/class-sp-admin-assets.php:116 templates/countdown.php:67
+msgid "secs"
+msgstr "δευτερόλεπτα"
+
+#: includes/class-sp-frontend-scripts.php:57
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+#: includes/class-sp-frontend-scripts.php:57
+msgid "Next"
+msgstr "Επόμενο"
+
+#: includes/class-sp-install.php:192 includes/class-sp-post-types.php:525
+#: includes/class-sp-post-types.php:526 includes/sp-core-functions.php:1070
+#: includes/admin/class-sp-admin-permalink-settings.php:35
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:45
+#: includes/admin/settings/class-sp-settings-events.php:110
+#: includes/admin/settings/class-sp-settings-staff.php:25
+#: templates/event-staff.php:41
+msgid "Staff"
+msgstr "Προσωπικό"
+
+#: includes/class-sp-install.php:230
+msgid "Event Manager"
+msgstr "Διαχειριστής γεγονότος"
+
+#: includes/class-sp-install.php:273
+msgid "Team Manager"
+msgstr "Διαχειριστής ομάδας"
+
+#: includes/class-sp-install.php:337
+msgid "League Manager"
+msgstr "Διαχειριστής στο πρωτάθλημα"
+
+#: includes/class-sp-install.php:534
+msgid "What's new:"
+msgstr "Τι νέο υπάρχει:"
+
+#: includes/class-sp-league-table.php:319
+#: includes/class-sp-player-list.php:351 includes/class-sp-player-list.php:368
+#: includes/class-sp-player.php:312 includes/class-sp-player.php:335
+#: includes/class-sp-post-types.php:403 includes/sp-core-functions.php:1054
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:51
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:50
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:63
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:98
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:45
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:53
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:58
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:66
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:53
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:114
+#: includes/admin/settings/class-sp-settings-events.php:192
+#: templates/event-results.php:93
+msgid "Team"
+msgstr "Ομάδα"
+
+#: includes/class-sp-player.php:333 includes/class-sp-post-types.php:65
+#: includes/class-sp-team.php:255 includes/sp-core-functions.php:1053
+#: includes/admin/importers/class-sp-event-importer.php:473
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:49
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:95
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:49
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:49
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:68
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:45
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:44
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:63
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:41
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:68
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:64
+#: templates/event-details.php:29
+msgid "Season"
+msgstr "Σεζόν"
+
+#: includes/class-sp-post-types.php:35 includes/class-sp-post-types.php:49
+#: includes/admin/class-sp-admin-menus.php:57
+#: includes/admin/class-sp-admin-menus.php:248
+#: includes/admin/class-sp-admin-permalink-settings.php:29
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:67
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:66
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:66
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:116
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:123
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:40
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:93
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:100
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:45
+#: includes/admin/views/html-admin-page-status.php:296
+msgid "Leagues"
+msgstr "Πρωταθλήματα"
+
+#: includes/class-sp-post-types.php:37 includes/class-sp-post-types.php:66
+#: includes/class-sp-post-types.php:95 includes/class-sp-post-types.php:124
+#: includes/sp-core-functions.php:388 includes/sp-core-functions.php:419
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:57
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:72
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:87
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:102
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:64
+#: includes/widgets/class-sp-widget-event-blocks.php:55
+#: includes/widgets/class-sp-widget-event-calendar.php:48
+#: includes/widgets/class-sp-widget-event-list.php:58
+msgid "All"
+msgstr "Όλα"
+
+#: includes/class-sp-post-types.php:38
+msgid "Edit League"
+msgstr "Επεξεργασία  πρωταθλήματος"
+
+#: includes/class-sp-post-types.php:39 includes/class-sp-post-types.php:68
+#: includes/class-sp-post-types.php:97 includes/class-sp-post-types.php:126
+#: includes/class-sp-post-types.php:166 includes/class-sp-post-types.php:196
+#: includes/class-sp-post-types.php:226 includes/class-sp-post-types.php:256
+#: includes/class-sp-post-types.php:286 includes/class-sp-post-types.php:316
+#: includes/class-sp-post-types.php:346 includes/class-sp-post-types.php:376
+#: includes/class-sp-post-types.php:407 includes/class-sp-post-types.php:437
+#: includes/class-sp-post-types.php:469 includes/class-sp-post-types.php:499
+#: includes/class-sp-post-types.php:530
+msgid "View"
+msgstr "Προβολή"
+
+#: includes/class-sp-post-types.php:40 includes/class-sp-post-types.php:69
+#: includes/class-sp-post-types.php:98 includes/class-sp-post-types.php:127
+msgid "Update"
+msgstr "Ενημέρωση"
+
+#: includes/class-sp-post-types.php:41 includes/class-sp-post-types.php:70
+#: includes/class-sp-post-types.php:99 includes/class-sp-post-types.php:128
+#: includes/sp-core-functions.php:848 includes/sp-core-functions.php:865
+#: includes/admin/class-sp-admin-menus.php:244
+#: includes/admin/importers/class-sp-event-importer.php:468
+#: includes/admin/importers/class-sp-event-importer.php:483
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:64
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:79
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:94
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:109
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:39
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:56
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:73
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:40
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:54
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:69
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:106
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-metrics.php:42
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:37
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:51
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:58
+#: includes/admin/settings/class-sp-settings-config.php:125
+#: includes/admin/settings/class-sp-settings-config.php:198
+#: includes/admin/settings/class-sp-settings-config.php:250
+#: includes/admin/settings/class-sp-settings-config.php:308
+#: includes/admin/settings/class-sp-settings-config.php:361
+#: includes/admin/settings/class-sp-settings-config.php:417
+#: includes/widgets/class-sp-widget-countdown.php:56
+#: includes/widgets/class-sp-widget-event-blocks.php:63
+#: includes/widgets/class-sp-widget-event-calendar.php:56
+#: includes/widgets/class-sp-widget-event-list.php:66
+#: includes/widgets/class-sp-widget-league-table.php:61
+#: includes/widgets/class-sp-widget-player-gallery.php:64
+#: includes/widgets/class-sp-widget-player-gallery.php:89
+#: includes/widgets/class-sp-widget-player-list.php:64
+#: includes/widgets/class-sp-widget-player-list.php:110
+msgid "Add New"
+msgstr "Προσθήκη νέου"
+
+#: includes/class-sp-post-types.php:42 includes/class-sp-post-types.php:71
+#: includes/class-sp-post-types.php:100 includes/class-sp-post-types.php:129
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:52
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:64
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:52
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:63
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:51
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:86
+#: includes/widgets/class-sp-widget-player-gallery.php:78
+#: includes/widgets/class-sp-widget-player-list.php:99
+msgid "Name"
+msgstr "Όνομα"
+
+#: includes/class-sp-post-types.php:43 includes/class-sp-post-types.php:72
+#: includes/class-sp-post-types.php:101 includes/class-sp-post-types.php:130
+msgid "Parent"
+msgstr "Γονικό"
+
+#: includes/class-sp-post-types.php:44 includes/class-sp-post-types.php:73
+#: includes/class-sp-post-types.php:102 includes/class-sp-post-types.php:131
+msgid "Parent:"
+msgstr "Μητρική:"
+
+#: includes/class-sp-post-types.php:45 includes/class-sp-post-types.php:74
+#: includes/class-sp-post-types.php:103 includes/class-sp-post-types.php:132
+#: includes/class-sp-post-types.php:167 includes/class-sp-post-types.php:197
+#: includes/class-sp-post-types.php:227 includes/class-sp-post-types.php:257
+#: includes/class-sp-post-types.php:287 includes/class-sp-post-types.php:317
+#: includes/class-sp-post-types.php:347 includes/class-sp-post-types.php:377
+#: includes/class-sp-post-types.php:408 includes/class-sp-post-types.php:438
+#: includes/class-sp-post-types.php:470 includes/class-sp-post-types.php:500
+#: includes/class-sp-post-types.php:531
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: includes/class-sp-post-types.php:46 includes/class-sp-post-types.php:75
+#: includes/class-sp-post-types.php:104 includes/class-sp-post-types.php:133
+#: includes/class-sp-post-types.php:168 includes/class-sp-post-types.php:169
+#: includes/class-sp-post-types.php:198 includes/class-sp-post-types.php:199
+#: includes/class-sp-post-types.php:228 includes/class-sp-post-types.php:229
+#: includes/class-sp-post-types.php:258 includes/class-sp-post-types.php:259
+#: includes/class-sp-post-types.php:288 includes/class-sp-post-types.php:289
+#: includes/class-sp-post-types.php:318 includes/class-sp-post-types.php:319
+#: includes/class-sp-post-types.php:348 includes/class-sp-post-types.php:349
+#: includes/class-sp-post-types.php:378 includes/class-sp-post-types.php:379
+#: includes/class-sp-post-types.php:409 includes/class-sp-post-types.php:410
+#: includes/class-sp-post-types.php:439 includes/class-sp-post-types.php:440
+#: includes/class-sp-post-types.php:471 includes/class-sp-post-types.php:472
+#: includes/class-sp-post-types.php:501 includes/class-sp-post-types.php:502
+#: includes/class-sp-post-types.php:532 includes/class-sp-post-types.php:533
+#: includes/sp-core-functions.php:726 includes/sp-core-functions.php:766
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:164
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:113
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:32
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:101
+msgid "No results found."
+msgstr "Δεν βρέθηκαν αποτελέσματα."
+
+#: includes/class-sp-post-types.php:64 includes/class-sp-post-types.php:78
+#: includes/admin/class-sp-admin-menus.php:64
+#: includes/admin/class-sp-admin-menus.php:256
+#: includes/admin/class-sp-admin-permalink-settings.php:30
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:68
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:67
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:67
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:131
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:138
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:108
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:115
+#: includes/admin/views/html-admin-page-status.php:306
+msgid "Seasons"
+msgstr "Αγωνιστικές Περίοδοι"
+
+#: includes/class-sp-post-types.php:67
+msgid "Edit Season"
+msgstr "Επεξεργασία σεζόν"
+
+#: includes/class-sp-post-types.php:93 includes/class-sp-post-types.php:107
+#: includes/admin/class-sp-admin-menus.php:260
+#: includes/admin/class-sp-admin-permalink-settings.php:26
+#: includes/admin/settings/class-sp-settings-events.php:139
+#: includes/admin/views/html-admin-page-status.php:316
+msgid "Venues"
+msgstr "Χώροι Εκδηλώσεων"
+
+#: includes/class-sp-post-types.php:94 includes/sp-core-functions.php:1059
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:50
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:96
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:70
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:83
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:62
+#: includes/admin/settings/class-sp-settings-events.php:68
+#: includes/widgets/class-sp-widget-event-list.php:114
+#: templates/event-list.php:60 templates/event-venue.php:35
+msgid "Venue"
+msgstr "Τόπος διεξαγωγής"
+
+#: includes/class-sp-post-types.php:96
+msgid "Edit Venue"
+msgstr "Επεξεργασία τόπου διεξαγωγής"
+
+#: includes/class-sp-post-types.php:122 includes/class-sp-post-types.php:136
+#: includes/admin/class-sp-admin-menus.php:252
+#: includes/admin/class-sp-admin-permalink-settings.php:33
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:65
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:71
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:78
+#: includes/admin/views/html-admin-page-status.php:326
+msgid "Positions"
+msgstr "Θέσεις"
+
+#: includes/class-sp-post-types.php:125
+msgid "Edit Position"
+msgstr "Επεξεργασία θέσης"
+
+#: includes/class-sp-post-types.php:161 includes/sp-core-functions.php:1052
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:126
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:27
+#: includes/admin/settings/class-sp-settings-config.php:154
+#: includes/admin/settings/class-sp-settings-config.php:158
+#: includes/admin/views/html-admin-page-status.php:237
+#: templates/event-results.php:89
+msgid "Team Results"
+msgstr "Αποτελέσματα Ομάδας"
+
+#: includes/class-sp-post-types.php:162
+msgid "Result"
+msgstr "Αποτέλεσμα"
+
+#: includes/class-sp-post-types.php:163
+msgid "Add New Result"
+msgstr "Προσθήκη νέων αποτελεσμάτων"
+
+#: includes/class-sp-post-types.php:164
+msgid "Edit Result"
+msgstr "Επεξεργασία αποτελεσμάτων"
+
+#: includes/class-sp-post-types.php:165 includes/class-sp-post-types.php:195
+#: includes/class-sp-post-types.php:225 includes/class-sp-post-types.php:255
+#: includes/class-sp-post-types.php:285 includes/class-sp-post-types.php:315
+#: includes/class-sp-post-types.php:345 includes/class-sp-post-types.php:375
+#: includes/class-sp-post-types.php:406 includes/class-sp-post-types.php:436
+#: includes/class-sp-post-types.php:468 includes/class-sp-post-types.php:498
+#: includes/class-sp-post-types.php:529
+msgid "New"
+msgstr "Νέο"
+
+#: includes/class-sp-post-types.php:191
+#: includes/admin/settings/class-sp-settings-config.php:100
+#: includes/admin/views/html-admin-page-status.php:227
+msgid "Event Outcomes"
+msgstr "Αποτελέσματα γεγονότος"
+
+#: includes/class-sp-post-types.php:193
+msgid "Add New Outcome"
+msgstr "Προσθήκη νέου αποτελέσματος"
+
+#: includes/class-sp-post-types.php:194
+msgid "Edit Outcome"
+msgstr "Επεξεργασία  αποτελέσματος"
+
+#: includes/class-sp-post-types.php:221
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:141
+#: includes/admin/settings/class-sp-settings-config.php:277
+#: includes/admin/views/html-admin-page-status.php:257
+msgid "Table Columns"
+msgstr "Πίνακας Στήλες"
+
+#: includes/class-sp-post-types.php:222
+msgid "Column"
+msgstr "Στήλη"
+
+#: includes/class-sp-post-types.php:223
+msgid "Add New Column"
+msgstr "Προσθήκη νέας στήλης"
+
+#: includes/class-sp-post-types.php:224
+msgid "Edit Column"
+msgstr "Επεξεργασία στήλης"
+
+#: includes/class-sp-post-types.php:251
+#: includes/admin/settings/class-sp-settings-config.php:336
+#: includes/admin/views/html-admin-page-status.php:267
+msgid "Player Metrics"
+msgstr "Μετρήσεις παίκτη"
+
+#: includes/class-sp-post-types.php:252
+msgid "Metric"
+msgstr "Μετρικός"
+
+#: includes/class-sp-post-types.php:253
+msgid "Add New Metric"
+msgstr "Προσθήκη νέου μετρικού"
+
+#: includes/class-sp-post-types.php:254
+msgid "Edit Metric"
+msgstr "Επεξεργασία Μετρικού"
+
+#: includes/class-sp-post-types.php:283
+msgid "Add New Performance"
+msgstr "Προσθήκη νέου απόδοσης"
+
+#: includes/class-sp-post-types.php:284
+msgid "Edit Performance"
+msgstr "Επεξεργασία απόδοσης"
+
+#: includes/class-sp-post-types.php:311
+#: includes/admin/settings/class-sp-settings-config.php:388
+#: includes/admin/views/html-admin-page-status.php:277
+msgid "Player Statistics"
+msgstr "Στατιστικά Παικτών"
+
+#: includes/class-sp-post-types.php:312
+msgid "Statistic"
+msgstr "Στατιστικά"
+
+#: includes/class-sp-post-types.php:313
+msgid "Add New Statistic"
+msgstr "Προσθήκη νέων Στατιστικών"
+
+#: includes/class-sp-post-types.php:314
+msgid "Edit Statistic"
+msgstr "Επεξεργασία στατιστικών"
+
+#: includes/class-sp-post-types.php:341
+#: includes/admin/class-sp-admin-permalink-settings.php:25
+#: includes/admin/class-sp-admin-taxonomies.php:134
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:52
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:135
+#: includes/admin/settings/class-sp-settings-events.php:25
+msgid "Events"
+msgstr "Εκδηλώσεις"
+
+#: includes/class-sp-post-types.php:342 includes/sp-core-functions.php:1043
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:90
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:217
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:52
+#: includes/widgets/class-sp-widget-countdown.php:42
+#: includes/widgets/class-sp-widget-event-list.php:111
+#: templates/event-list.php:51
+msgid "Event"
+msgstr "Γεγονός"
+
+#: includes/class-sp-post-types.php:343
+#: includes/admin/class-sp-admin-welcome.php:251
+msgid "Add New Event"
+msgstr "Προσθήκη νέου γεγονότος"
+
+#: includes/class-sp-post-types.php:344
+msgid "Edit Event"
+msgstr "Επεξεργασία γεγονότος"
+
+#: includes/class-sp-post-types.php:371
+#: includes/admin/class-sp-admin-permalink-settings.php:27
+#: includes/admin/settings/class-sp-settings-events.php:128
+msgid "Calendars"
+msgstr "Ημερολόγια"
+
+#: includes/class-sp-post-types.php:373
+msgid "Add New Calendar"
+msgstr "Προσθήκη νέου ημερολογίου"
+
+#: includes/class-sp-post-types.php:374
+msgid "Edit Calendar"
+msgstr "Επεξεργασία ημερολογίου"
+
+#: includes/class-sp-post-types.php:402 includes/sp-core-functions.php:1055
+#: includes/admin/class-sp-admin-permalink-settings.php:28
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:93
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:66
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:65
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:50
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:123
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:58
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:93
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:108
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:70
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:85
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:101
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:55
+#: includes/admin/settings/class-sp-settings-events.php:60
+#: includes/admin/settings/class-sp-settings-events.php:131
+#: includes/admin/settings/class-sp-settings-players.php:64
+#: includes/admin/settings/class-sp-settings-teams.php:25
+#: includes/admin/settings/class-sp-settings-teams.php:48
+#: includes/widgets/class-sp-widget-event-list.php:112
+#: templates/event-list.php:54
+msgid "Teams"
+msgstr "Ομάδες"
+
+#: includes/class-sp-post-types.php:404
+#: includes/admin/class-sp-admin-welcome.php:249
+msgid "Add New Team"
+msgstr "Προσθήκη νέας ομάδας"
+
+#: includes/class-sp-post-types.php:405
+msgid "Edit Team"
+msgstr "Επεξεργασία  ομάδας"
+
+#: includes/class-sp-post-types.php:432
+#: includes/admin/class-sp-admin-permalink-settings.php:31
+#: includes/admin/settings/class-sp-settings-teams.php:45
+msgid "League Tables"
+msgstr "Βαθμολογίες Πρωταθλήματος"
+
+#: includes/class-sp-post-types.php:433
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:149
+#: includes/widgets/class-sp-widget-league-table.php:50
+msgid "League Table"
+msgstr "Βαθμολογία Πρωταθλήματος"
+
+#: includes/class-sp-post-types.php:434
+msgid "Add New League Table"
+msgstr "Προσθήκη νέου πίνακα βαθμολογίας"
+
+#: includes/class-sp-post-types.php:435
+msgid "Edit League Table"
+msgstr "Επεξεργασία πίνακα βαθμολογίας"
+
+#: includes/class-sp-post-types.php:494
+#: includes/admin/class-sp-admin-permalink-settings.php:34
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:142
+#: includes/admin/settings/class-sp-settings-players.php:51
+msgid "Player Lists"
+msgstr "Λίστες παικτών"
+
+#: includes/class-sp-post-types.php:495
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:166
+#: includes/widgets/class-sp-widget-player-gallery.php:53
+#: includes/widgets/class-sp-widget-player-list.php:53
+msgid "Player List"
+msgstr "Λίστα παίκτη"
+
+#: includes/class-sp-post-types.php:496
+msgid "Add New Player List"
+msgstr "Προσθήκη νέας λίστας παικτών"
+
+#: includes/class-sp-post-types.php:497
+msgid "Edit Player List"
+msgstr "Επεξεργασία λίστας παικτών"
+
+#: includes/class-sp-post-types.php:527
+msgid "Add New Staff"
+msgstr "Προσθήκη νέου προσωπικού"
+
+#: includes/class-sp-post-types.php:528
+msgid "Edit Staff"
+msgstr "Επεξεργασία Προσωπικού"
+
+#: includes/sp-core-functions.php:310
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:28
+#: templates/team-link.php:21
+msgid "Visit Site"
+msgstr "Επίσκεψη στην ιστοσελίδα"
+
+#: includes/sp-core-functions.php:331 includes/sp-core-functions.php:335
+#: includes/sp-core-functions.php:1058
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:134
+#: templates/event-performance.php:152
+msgid "Total"
+msgstr "Σύνολο"
+
+#: includes/sp-core-functions.php:331
+msgid "Average"
+msgstr "Μέτριο"
+
+#: includes/sp-core-functions.php:389
+msgid "Published"
+msgstr "Δημοσιεύτηκε"
+
+#: includes/sp-core-functions.php:390
+msgid "Scheduled"
+msgstr "Προγραμματισμένες"
+
+#: includes/sp-core-functions.php:420
+msgid "This week"
+msgstr ""
+
+#: includes/sp-core-functions.php:421
+msgid "Today"
+msgstr ""
+
+#: includes/sp-core-functions.php:649 includes/sp-core-functions.php:789
+msgid "(no title)"
+msgstr "(χωρίς τίτλο)"
+
+#: includes/sp-core-functions.php:666 includes/sp-core-functions.php:746
+msgid "Select All"
+msgstr "Επιλογή όλων"
+
+#: includes/sp-core-functions.php:727 includes/sp-core-functions.php:730
+#, fuzzy
+msgid "Show all"
+msgstr "Εμφάνιση όλων των ομάδων"
+
+#: includes/sp-core-functions.php:1040
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:76
+#: includes/widgets/class-sp-widget-event-list.php:115
+#: templates/event-list.php:63
+msgid "Article"
+msgstr "Άρθρο"
+
+#: includes/sp-core-functions.php:1041
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:91
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:47
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:42
+#: templates/event-details.php:20 templates/event-list.php:48
+msgid "Date"
+msgstr "Ημερομηνία"
+
+#: includes/sp-core-functions.php:1042
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:100
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:103
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:106
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:110
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:113
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:116
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:122
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:134
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:139
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:148
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:154
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:165
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:170
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:173
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:31
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:110
+#: templates/event-details.php:32
+msgid "Details"
+msgstr "Λεπτομέρειες"
+
+#: includes/sp-core-functions.php:1045
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:59
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:60
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:51
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:52
+#: includes/admin/settings/class-sp-settings-players.php:42
+#: includes/admin/settings/class-sp-settings-staff.php:44
+#: templates/player-details.php:34 templates/staff-details.php:32
+msgid "Nationality"
+msgstr "Εθνικότητα"
+
+#: includes/sp-core-functions.php:1047
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:37
+#: includes/widgets/class-sp-widget-player-gallery.php:79
+#: includes/widgets/class-sp-widget-player-list.php:87
+#: includes/widgets/class-sp-widget-player-list.php:100
+msgid "Played"
+msgstr "Έπαιξε"
+
+#: includes/sp-core-functions.php:1048 templates/league-table.php:49
+msgid "Pos"
+msgstr "Θέση"
+
+#: includes/sp-core-functions.php:1049
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:151
+#: templates/event-list.php:168
+msgid "Preview"
+msgstr "Προεπισκόπηση"
+
+#: includes/sp-core-functions.php:1050 templates/player-list.php:88
+msgid "Rank"
+msgstr "Κατάταξη"
+
+#: includes/sp-core-functions.php:1051
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:149
+#: templates/event-list.php:166
+msgid "Recap"
+msgstr "Ανακεφαλαίωση"
+
+#: includes/sp-core-functions.php:1056
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:92
+#: includes/widgets/class-sp-widget-event-list.php:113
+#: templates/event-details.php:20
+msgid "Time"
+msgstr "Χρόνος"
+
+#: includes/sp-core-functions.php:1057
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:64
+#: templates/event-list.php:57
+msgid "Time/Results"
+msgstr "Ώρα / Αποτελέσματα "
+
+#: includes/sp-core-functions.php:1060 templates/event-blocks.php:108
+#: templates/event-calendar.php:215 templates/event-list.php:186
+msgid "View all events"
+msgstr "Προβολή όλων των εκδηλώσεων"
+
+#: includes/sp-core-functions.php:1061 templates/league-table.php:110
+msgid "View full table"
+msgstr "Δείτε τον πλήρη πίνακα"
+
+#: includes/sp-core-functions.php:1066
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:86
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:134
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:98
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:95
+#: templates/player-details.php:44 templates/staff-details.php:36
+msgid "Current Team"
+msgstr "Τρέχουσα ομάδα"
+
+#: includes/sp-core-functions.php:1067
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:101
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:78
+#: templates/player-details.php:53 templates/staff-details.php:43
+msgid "Past Teams"
+msgstr "Προηγούμενες ομάδες"
+
+#: includes/sp-core-functions.php:1071
+msgid "Substitutes"
+msgstr "Υποκατάστατα"
+
+#: includes/sp-core-functions.php:1072 templates/player-gallery.php:146
+#: templates/player-list.php:152
+msgid "View all players"
+msgstr "Προβολή όλων των παικτών"
+
+#: includes/sp-template-hooks.php:151
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:48
+#: includes/admin/post-types/class-sp-admin-cpt-metric.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-outcome.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-performance.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-result.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-statistic.php:47
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:136
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:150
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:167
+#: includes/admin/settings/class-sp-settings-config.php:109
+#: includes/admin/settings/class-sp-settings-config.php:165
+#: includes/admin/settings/class-sp-settings-config.php:234
+#: includes/admin/settings/class-sp-settings-config.php:289
+#: includes/admin/settings/class-sp-settings-config.php:345
+#: includes/admin/settings/class-sp-settings-config.php:399
+msgid "Description"
+msgstr "Περιγραφή"
+
+#: includes/sp-template-hooks.php:154
+msgid ""
+"The description is not prominent by default; however, some themes may show "
+"it."
+msgstr ""
+"Η περιγραφή δεν είναι εμφανή ως προεπιλογή? Ωστόσο, μερικά θέματα μπορεί να "
+"την δείξουν."
+
+#: includes/sp-template-hooks.php:157
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:44
+#: includes/admin/post-types/class-sp-admin-cpt-statistic.php:44
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:34
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-statistic-details.php:31
+#: includes/admin/settings/class-sp-settings-config.php:285
+#: includes/admin/settings/class-sp-settings-config.php:396
+msgid "Key"
+msgstr "Κλειδί"
+
+#: includes/sp-template-hooks.php:157
+#: includes/admin/post-types/class-sp-admin-cpt-metric.php:44
+#: includes/admin/post-types/class-sp-admin-cpt-outcome.php:44
+#: includes/admin/post-types/class-sp-admin-cpt-performance.php:44
+#: includes/admin/post-types/class-sp-admin-cpt-result.php:44
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-metric-details.php:27
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-outcome-details.php:27
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-performance-details.php:27
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-result-details.php:27
+#: includes/admin/settings/class-sp-settings-config.php:108
+#: includes/admin/settings/class-sp-settings-config.php:233
+#: includes/admin/settings/class-sp-settings-config.php:344
+msgid "Variable"
+msgstr "Μεταβλητό"
+
+#: includes/sp-template-hooks.php:165
+msgid "User"
+msgstr "Χρήστης"
+
+#: includes/sp-template-hooks.php:190
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:62
+msgid "Logo"
+msgstr "Λογότυπο"
+
+#: includes/sp-template-hooks.php:193
+msgid "Select Logo"
+msgstr "Επιλέξτε Λογότυπο"
+
+#: includes/sp-template-hooks.php:196
+msgid "Add logo"
+msgstr "Προσθέστε το λογότυπο"
+
+#: includes/sp-template-hooks.php:199
+msgid "Remove logo"
+msgstr "Αφαιρέστε την λογότυπο"
+
+#: includes/sp-template-hooks.php:207
+msgid "Date/Time:"
+msgstr "Ημερομηνία / Ώρα:"
+
+#: includes/sp-template-hooks.php:207
+msgid "Now"
+msgstr "Τώρα"
+
+#: includes/sp-template-hooks.php:323
+#: includes/admin/class-sp-admin-post-types.php:62
+msgid "Settings saved."
+msgstr "Οι ρυθμίσεις αποθηκεύτηκαν."
+
+#: includes/sp-template-hooks.php:325
+#: includes/admin/class-sp-admin-post-types.php:64
+#: includes/admin/settings/class-sp-settings-config.php:124
+#: includes/admin/settings/class-sp-settings-config.php:197
+#: includes/admin/settings/class-sp-settings-config.php:249
+#: includes/admin/settings/class-sp-settings-config.php:307
+#: includes/admin/settings/class-sp-settings-config.php:360
+#: includes/admin/settings/class-sp-settings-config.php:416
+msgid "View All"
+msgstr "Προβολή όλων"
+
+#: includes/sp-template-hooks.php:331 includes/sp-template-hooks.php:334
+#: includes/sp-template-hooks.php:339
+#: includes/admin/class-sp-admin-post-types.php:69
+#: includes/admin/class-sp-admin-post-types.php:72
+#: includes/admin/class-sp-admin-post-types.php:77
+msgid "Changes saved."
+msgstr "Οι αλλαγές αποθηκεύτηκαν."
+
+#: includes/sp-template-hooks.php:336 includes/sp-template-hooks.php:341
+#: includes/sp-template-hooks.php:351
+#: includes/admin/class-sp-admin-post-types.php:74
+#: includes/admin/class-sp-admin-post-types.php:79
+#: includes/admin/class-sp-admin-post-types.php:89
+msgid "Success!"
+msgstr "Επιτυχία!"
+
+#: includes/sp-template-hooks.php:343 includes/sp-template-hooks.php:349
+#: includes/sp-template-hooks.php:353
+#: includes/admin/class-sp-admin-post-types.php:81
+#: includes/admin/class-sp-admin-post-types.php:87
+#: includes/admin/class-sp-admin-post-types.php:91
+#, php-format
+msgid "Preview %s"
+msgstr "Προεπισκόπηση του %s"
+
+#: includes/sp-template-hooks.php:346
+#: includes/admin/class-sp-admin-post-types.php:84
+#, php-format
+msgid "Scheduled for: <b>%1$s</b>."
+msgstr "Προγραμματισμένη για: <b>%1$s</b>."
+
+#: includes/sp-template-hooks.php:347
+#: includes/admin/class-sp-admin-post-types.php:85
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: includes/admin/class-sp-admin-assets.php:111
+#: includes/admin/class-sp-admin-settings.php:117
+#: includes/admin/importers/class-sp-event-importer.php:467
+#: includes/admin/importers/class-sp-event-importer.php:482
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:147
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:186
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:76
+#: includes/admin/views/html-admin-page-status.php:224
+msgid "None"
+msgstr "Καμία"
+
+#: includes/admin/class-sp-admin-assets.php:112
+msgid "&mdash; Remove &mdash;"
+msgstr "&mdash; Κατάργηση &mdash;"
+
+#: includes/admin/class-sp-admin-dashboard.php:34
+#: includes/admin/class-sp-admin-menus.php:50
+#: includes/admin/class-sp-admin-permalink-settings.php:47
+msgid "SportsPress"
+msgstr "SportsPress"
+
+#: includes/admin/class-sp-admin-dashboard.php:49
+#, php-format
+msgid "%s "
+msgid_plural "%s "
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-sp-admin-dashboard.php:80
+#, php-format
+msgid "<strong>%s</strong> until next event"
+msgstr "<strong>%s</strong> μέχρι την επόμενη εκδήλωση"
+
+#: includes/admin/class-sp-admin-dashboard.php:87
+#, php-format
+msgid "<strong>%s event</strong> scheduled"
+msgid_plural "<strong>%s events</strong> scheduled"
+msgstr[0] "<strong>%s Εκδήλωση </strong> προγραμματισμένη"
+msgstr[1] "<strong>%s Εκδηλώσεις</strong> προγραμματισμένες"
+
+#: includes/admin/class-sp-admin-dashboard.php:92
+#, php-format
+msgid "<strong>%s event</strong> published"
+msgid_plural "<strong>%s events</strong> published"
+msgstr[0] "<strong>%s Εκδήλωση</strong> που δημοσιεύθηκε"
+msgstr[1] "<strong>%s Εκδηλώσεις</strong> που δημοσιεύθηκαν"
+
+#: includes/admin/class-sp-admin-importers.php:31
+msgid "SportsPress Events (CSV)"
+msgstr "SportsPress Εκδηλώσεις (CSV​​)"
+
+#: includes/admin/class-sp-admin-importers.php:31
+msgid "Import <strong>events</strong> from a csv file."
+msgstr "Εισαγωγή <strong>εκδηλώσεων</strong> από ένα αρχείο csv."
+
+#: includes/admin/class-sp-admin-importers.php:32
+msgid "SportsPress Teams (CSV)"
+msgstr "SportsPress ομάδες (CSV​​)"
+
+#: includes/admin/class-sp-admin-importers.php:32
+msgid "Import <strong>teams</strong> from a csv file."
+msgstr "Εισαγωγή <strong> Ομάδων </ strong> από ένα αρχείο csv."
+
+#: includes/admin/class-sp-admin-importers.php:33
+msgid "SportsPress Players (CSV)"
+msgstr "SportsPress Παίκτες (CSV​​)"
+
+#: includes/admin/class-sp-admin-importers.php:33
+msgid "Import <strong>players</strong> from a csv file."
+msgstr "Εισαγωγή <strong> Παικτών </ strong> από ένα αρχείο csv."
+
+#: includes/admin/class-sp-admin-importers.php:34
+msgid "SportsPress Staff (CSV)"
+msgstr "SportsPress Προσωπικό (CSV​​)"
+
+#: includes/admin/class-sp-admin-importers.php:34
+msgid "Import <strong>staff</strong> from a csv file."
+msgstr "Εισαγωγή <strong>προσωπικού</strong> από ένα αρχείο csv."
+
+#: includes/admin/class-sp-admin-menus.php:50
+msgid "SportsPress Settings"
+msgstr "SportsPress Ρυθμίσεις"
+
+#: includes/admin/class-sp-admin-menus.php:71
+#: includes/admin/views/html-admin-page-status.php:2
+#: includes/admin/views/html-notice-template-check.php:6
+msgid "System Status"
+msgstr "Κατάσταση Συστήματος"
+
+#: includes/admin/class-sp-admin-menus.php:79
+msgid "SportsPress Add-ons/Extensions"
+msgstr "SportsPress Πρόσθετα/Επεκτάσεις"
+
+#: includes/admin/class-sp-admin-menus.php:79
+msgid "Add-ons"
+msgstr "Πρόσθετα"
+
+#: includes/admin/class-sp-admin-permalink-settings.php:75
+msgid ""
+"These settings control the permalinks used for SportsPress. These settings "
+"only apply when <strong>not using \"default\" permalinks above</strong>."
+msgstr ""
+"Αυτές οι ρυθμίσεις ελέγχουν τις σταθερές συνδέσεις που χρησιμοποιούνται για "
+"το SportsPress. Αυτές οι ρυθμίσεις ισχύουν μόνο όταν <strong>δεν "
+"χρησιμοποιούν  τις \"προεπιλεγμένες\"  σταθερές συνδέσεις παραπάνω</strong>."
+
+#: includes/admin/class-sp-admin-settings.php:60
+msgid "Action failed. Please refresh the page and retry."
+msgstr "Η ενέργεια απέτυχε. Παρακαλώ ανανεώστε την σελίδα και ξαναδοκιμάστε."
+
+#: includes/admin/class-sp-admin-settings.php:67
+#: includes/admin/class-sp-admin-welcome.php:196
+msgid "Your settings have been saved."
+msgstr "Οι ρυθμίσεις σας έχουν αποθηκευτεί."
+
+#: includes/admin/class-sp-admin-sports.php:42
+msgid "Custom"
+msgstr "Προσαρμοσμένο"
+
+#: includes/admin/class-sp-admin-taxonomies.php:61
+#: includes/admin/class-sp-admin-taxonomies.php:81
+#: includes/admin/class-sp-admin-taxonomies.php:133
+msgid "Address"
+msgstr "Διεύθυνση"
+
+#: includes/admin/class-sp-admin-taxonomies.php:66
+#: includes/admin/class-sp-admin-taxonomies.php:85
+msgid "Drag the marker to the venue's location."
+msgstr "Σύρετε το δείκτη στη θέση του χώρου."
+
+#: includes/admin/class-sp-admin-taxonomies.php:89
+msgid "Latitude"
+msgstr "Γεωγραφικό πλάτος"
+
+#: includes/admin/class-sp-admin-taxonomies.php:95
+msgid "Longitude"
+msgstr "Γεωγραφικό μήκος"
+
+#: includes/admin/class-sp-admin-welcome.php:45
+msgid "Welcome to SportsPress"
+msgstr "Καλώς ήρθατε στο SportsPress"
+
+#: includes/admin/class-sp-admin-welcome.php:135
+msgid "Welcome to SportsPress!"
+msgstr "Καλώς ήρθατε στο SportsPress!"
+
+#: includes/admin/class-sp-admin-welcome.php:140
+msgid "Thanks, all done!"
+msgstr "Ευχαριστούμε, όλα έτοιμα!"
+
+#: includes/admin/class-sp-admin-welcome.php:142
+msgid "Thank you for updating to the latest version!"
+msgstr "Ευχαριστούμε που αναβαθμίσατε στην τελευταία έκδοση!"
+
+#: includes/admin/class-sp-admin-welcome.php:144
+msgid "Thanks for installing!"
+msgstr "Ευχαριστούμε για την εγκατάσταση!"
+
+#: includes/admin/class-sp-admin-welcome.php:146
+#, php-format
+msgid "%s SportsPress %s has lots of refinements we think you&#8217;ll love."
+msgstr ""
+"%s SportsPress %s έχει πολλές βελτιώσεις που πιστεύουμε ότι θα &#8217;ll "
+"αγαπήσετε."
+
+#: includes/admin/class-sp-admin-welcome.php:150
+#, php-format
+msgid "Version %s"
+msgstr "Έκδοση %s"
+
+#: includes/admin/class-sp-admin-welcome.php:159
+#: includes/admin/views/html-notice-install.php:7
+msgid "Get Started"
+msgstr "Ξεκινώντας"
+
+#: includes/admin/class-sp-admin-welcome.php:202
+#: includes/admin/settings/class-sp-settings-general.php:216
+#: includes/admin/settings/class-sp-settings-general.php:219
+msgid "Base Location"
+msgstr "Τοποθεσία βάσης"
+
+#: includes/admin/class-sp-admin-welcome.php:208
+#: includes/admin/settings/class-sp-settings-general.php:220
+msgid "Choose a country&hellip;"
+msgstr "Επιλέξτε χώρα&hellip;"
+
+#: includes/admin/class-sp-admin-welcome.php:212
+#: includes/admin/settings/class-sp-settings-general.php:50
+#: includes/admin/views/html-admin-page-status.php:223
+msgid "Sport"
+msgstr "Άθλημα"
+
+#: includes/admin/class-sp-admin-welcome.php:225
+#: includes/admin/settings/class-sp-settings-general.php:57
+msgid "Mode"
+msgstr ""
+
+#: includes/admin/class-sp-admin-welcome.php:233
+#: includes/admin/settings/class-sp-settings-general.php:62
+#, fuzzy
+msgctxt "mode select"
+msgid "Team"
+msgstr "Ομάδα"
+
+#: includes/admin/class-sp-admin-welcome.php:234
+#: includes/admin/settings/class-sp-settings-general.php:63
+#, fuzzy
+msgctxt "mode select"
+msgid "Individual"
+msgstr "Ινδία"
+
+#: includes/admin/class-sp-admin-welcome.php:240
+#: includes/admin/views/html-admin-settings.php:16
+msgid "Save changes"
+msgstr "Αποθήκευση αλλαγών"
+
+#: includes/admin/class-sp-admin-welcome.php:247
+msgid "Next Steps"
+msgstr "Επόμενα βήματα"
+
+#: includes/admin/class-sp-admin-welcome.php:255
+msgid "Translators"
+msgstr "Μεταφραστές"
+
+#: includes/admin/class-sp-admin-welcome.php:256
+msgid ""
+"SportsPress has been kindly translated into several other languages thanks "
+"to our translation team. Want to see your name? <a href=\"https://www."
+"transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
+msgstr ""
+"SportsPress έχει την καλοσύνη να μεταφραστεί σε πολλές άλλες γλώσσες χάρη "
+"στην μεταφραστική ομάδα μας. Θέλετε να δείτε το όνομά σας; <a href=\"https://"
+"www.transifex.com/projects/p/sportspress/\">Μετάφραση SportsPress</a>."
+
+#: includes/admin/class-sp-admin-welcome.php:272
+msgid "Go to SportsPress Settings"
+msgstr "Πηγαίνετε στις ρυθμίσεις SportsPress"
+
+#: includes/admin/importers/class-sp-event-importer.php:361
+#: includes/admin/importers/class-sp-importer.php:93
+#: includes/admin/importers/class-sp-importer.php:108
+#: includes/admin/importers/class-sp-player-importer.php:128
+#: includes/admin/importers/class-sp-staff-importer.php:121
+#: includes/admin/importers/class-sp-team-importer.php:85
+msgid "Sorry, there has been an error."
+msgstr "Δυστυχώς, υπήρξε ένα λάθος."
+
+#: includes/admin/importers/class-sp-event-importer.php:362
+#: includes/admin/importers/class-sp-player-importer.php:129
+#: includes/admin/importers/class-sp-staff-importer.php:122
+#: includes/admin/importers/class-sp-team-importer.php:86
+msgid "The CSV is invalid."
+msgstr "Το CSV είναι άκυρο."
+
+#: includes/admin/importers/class-sp-event-importer.php:373
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> events and skipped <strong>"
+"%s</strong>."
+msgstr ""
+"Εισαγωγή ολοκληρώθηκε - εισάγονται  <strong>%s</strong> εκδηλώσεις και "
+"παραλείπονται <strong>%s</strong>."
+
+#: includes/admin/importers/class-sp-event-importer.php:383
+#: includes/admin/importers/class-sp-player-importer.php:150
+#: includes/admin/importers/class-sp-staff-importer.php:143
+#: includes/admin/importers/class-sp-team-importer.php:107
+msgid "All done!"
+msgstr "Όλα έτοιμα!"
+
+#: includes/admin/importers/class-sp-event-importer.php:383
+msgid "View Events"
+msgstr "Προβολή Εκδηλώσεων"
+
+#: includes/admin/importers/class-sp-event-importer.php:395
+msgid "Import Events"
+msgstr "Εισαγωγή Εκδηλώσεων"
+
+#: includes/admin/importers/class-sp-event-importer.php:407
+#: includes/admin/importers/class-sp-player-importer.php:174
+#: includes/admin/importers/class-sp-staff-importer.php:167
+#: includes/admin/importers/class-sp-team-importer.php:131
+msgid ""
+"Hi there! Choose a .csv file to upload, then click \"Upload file and import"
+"\"."
+msgstr ""
+"Hi there! Επιλέξτε ένα αρχείο. Csv για να ανεβάσετε, στη συνέχεια, κάντε "
+"κλικ στο κουμπί \"Μεταφόρτωση αρχείου και εισαγωγή»."
+
+#: includes/admin/importers/class-sp-event-importer.php:409
+#, php-format
+msgid ""
+"Events need to be defined with columns in a specific order (3+ columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+"Εκδηλώσεις πρέπει να καθοριστούν με στήλες σε μια συγκεκριμένη σειρά (3 + "
+"στήλες)  <a href=\"%s\">Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
+
+#: includes/admin/importers/class-sp-event-importer.php:417
+#: includes/admin/importers/class-sp-player-importer.php:184
+#: includes/admin/importers/class-sp-staff-importer.php:177
+#: includes/admin/importers/class-sp-team-importer.php:141
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+"Πριν μπορέσετε να μεταφορτώσετε το αρχείο σας, θα πρέπει να διορθώσετε το "
+"ακόλουθο σφάλμα:"
+
+#: includes/admin/importers/class-sp-event-importer.php:426
+#: includes/admin/importers/class-sp-player-importer.php:193
+#: includes/admin/importers/class-sp-staff-importer.php:186
+#: includes/admin/importers/class-sp-team-importer.php:150
+msgid "Choose a file from your computer:"
+msgstr "Επιλέξτε ένα αρχείο από τον υπολογιστή σας:"
+
+#: includes/admin/importers/class-sp-event-importer.php:432
+#: includes/admin/importers/class-sp-player-importer.php:199
+#: includes/admin/importers/class-sp-staff-importer.php:192
+#: includes/admin/importers/class-sp-team-importer.php:156
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Μέγιστο μέγεθος: %s"
+
+#: includes/admin/importers/class-sp-event-importer.php:437
+#: includes/admin/importers/class-sp-player-importer.php:204
+#: includes/admin/importers/class-sp-staff-importer.php:197
+#: includes/admin/importers/class-sp-team-importer.php:161
+msgid "OR enter path to file:"
+msgstr "Ή εισάγετε το path προς το αρχείο:"
+
+#: includes/admin/importers/class-sp-event-importer.php:444
+#: includes/admin/importers/class-sp-player-importer.php:211
+#: includes/admin/importers/class-sp-staff-importer.php:204
+#: includes/admin/importers/class-sp-team-importer.php:168
+#: includes/admin/settings/class-sp-settings-events.php:197
+#: includes/admin/settings/class-sp-settings-events.php:201
+msgid "Delimiter"
+msgstr "Σύμβολο διαχωρισμού"
+
+#: includes/admin/importers/class-sp-event-importer.php:448
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:89
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:121
+msgid "Format"
+msgstr "Μορφή"
+
+#: includes/admin/importers/class-sp-event-importer.php:464
+#: includes/admin/importers/class-sp-event-importer.php:479
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:36
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:53
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:70
+msgid "-- Not set --"
+msgstr "– Χωρίς τιμή –"
+
+#: includes/admin/importers/class-sp-event-importer.php:490
+#: includes/admin/importers/class-sp-player-importer.php:217
+#: includes/admin/importers/class-sp-staff-importer.php:210
+#: includes/admin/importers/class-sp-team-importer.php:174
+msgid "Upload file and import"
+msgstr "Μεταφόρτωση αρχείου και εισαγωγή"
+
+#: includes/admin/importers/class-sp-importer.php:125
+msgid "Import"
+msgstr "Εισαγωγή"
+
+#: includes/admin/importers/class-sp-player-importer.php:140
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> players and skipped <strong>"
+"%s</strong>."
+msgstr ""
+"Εισαγωγή ολοκληρώθηκε - εισάγονται  <strong>%s</strong>οι παίκτες και "
+"παραλείπονται  <strong>%s</strong>."
+
+#: includes/admin/importers/class-sp-player-importer.php:150
+msgid "View Players"
+msgstr "Προβολή παικτών"
+
+#: includes/admin/importers/class-sp-player-importer.php:162
+msgid "Import Players"
+msgstr "Εισαγωγή παικτών"
+
+#: includes/admin/importers/class-sp-player-importer.php:176
+#, php-format
+msgid ""
+"Players need to be defined with columns in a specific order (7 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+"Οι παίκτες πρέπει να καθοριστούν με στήλες σε μια συγκεκριμένη σειρά (7 "
+"στήλες). <a href=\"%s\">Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
+
+#: includes/admin/importers/class-sp-staff-importer.php:133
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
+"strong>."
+msgstr ""
+"Εισαγωγή ολοκληρώθηκε - εισάγονται <strong>%s</strong> προσωπικού και "
+"παραλείπονται <strong>%s</strong>."
+
+#: includes/admin/importers/class-sp-staff-importer.php:143
+msgid "View Staff"
+msgstr "Προβολή Προσωπικού"
+
+#: includes/admin/importers/class-sp-staff-importer.php:155
+msgid "Import Staff"
+msgstr "Ειασαγωγή Προσωπικού"
+
+#: includes/admin/importers/class-sp-staff-importer.php:169
+#, php-format
+msgid ""
+"Staff need to be defined with columns in a specific order (5 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+"Το προσωπικό πρέπει να καθοριστεί με στήλες σε μια συγκεκριμένη σειρά (5 "
+"στήλες). <a href=\"%s\">Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
+
+#: includes/admin/importers/class-sp-team-importer.php:97
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
+"strong>."
+msgstr ""
+"Εισαγωγή ολοκληρώθηκε - εισάγονται <strong>%s</strong> ομάδες και "
+"παραλείπονται <strong>%s</strong>."
+
+#: includes/admin/importers/class-sp-team-importer.php:107
+msgid "View Teams"
+msgstr "Προβολή ομάδων"
+
+#: includes/admin/importers/class-sp-team-importer.php:119
+msgid "Import Teams"
+msgstr "Εισαγωγή ομάδων"
+
+#: includes/admin/importers/class-sp-team-importer.php:133
+#, php-format
+msgid ""
+"Teams need to be defined with columns in a specific order (3 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+"Οι Ομάδες πρέπει να καθοριστούν με στήλες σε μια συγκεκριμένη σειρά (3 "
+"στήλες). <a href=\"%s\"> Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
+
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:47
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:47
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:47
+msgid "Title"
+msgstr "Τίτλος:"
+
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:53
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:52
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:133
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:163
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:67
+msgid "Layout"
+msgstr "Διάταξη"
+
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:114
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:174
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:102
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:138
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:132
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:84
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:108
+msgid "Show all leagues"
+msgstr "Εμφάνιση όλων των πρωταθλημάτων"
+
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:123
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:183
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:111
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:147
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:141
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:93
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:117
+msgid "Show all seasons"
+msgstr "Εμφάνιση ολες τις περιόδους"
+
+#: includes/admin/post-types/class-sp-admin-cpt-calendar.php:134
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:166
+#: includes/admin/post-types/class-sp-admin-cpt-list.php:122
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:130
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:124
+#: includes/admin/post-types/class-sp-admin-cpt-table.php:104
+msgid "Show all teams"
+msgstr "Εμφάνιση όλων των ομάδων"
+
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:43
+#: includes/admin/post-types/class-sp-admin-cpt-metric.php:43
+#: includes/admin/post-types/class-sp-admin-cpt-outcome.php:43
+#: includes/admin/post-types/class-sp-admin-cpt-performance.php:43
+#: includes/admin/post-types/class-sp-admin-cpt-result.php:43
+#: includes/admin/post-types/class-sp-admin-cpt-statistic.php:43
+#: includes/admin/settings/class-sp-settings-config.php:107
+#: includes/admin/settings/class-sp-settings-config.php:163
+#: includes/admin/settings/class-sp-settings-config.php:232
+#: includes/admin/settings/class-sp-settings-config.php:284
+#: includes/admin/settings/class-sp-settings-config.php:343
+#: includes/admin/settings/class-sp-settings-config.php:395
+msgid "Label"
+msgstr "Όνομα"
+
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:45
+#: includes/admin/post-types/class-sp-admin-cpt-statistic.php:45
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:107
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:117
+#: includes/admin/settings/class-sp-settings-config.php:286
+#: includes/admin/settings/class-sp-settings-config.php:397
+msgid "Equation"
+msgstr "Εξομοίωση"
+
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:46
+#: includes/admin/post-types/class-sp-admin-cpt-statistic.php:46
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:39
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-statistic-details.php:36
+#: includes/admin/settings/class-sp-settings-config.php:287
+#: includes/admin/settings/class-sp-settings-config.php:398
+msgid "Rounding"
+msgstr "Στρογγυλοποίηση"
+
+#: includes/admin/post-types/class-sp-admin-cpt-column.php:47
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:113
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:43
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:96
+#: includes/admin/settings/class-sp-settings-config.php:288
+msgid "Sort Order"
+msgstr "Σειρά ταξινόμησης"
+
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:55
+#: includes/widgets/class-sp-widget-countdown.php:49
+msgid "(Auto)"
+msgstr "(Αυτόματο)"
+
+#: includes/admin/post-types/class-sp-admin-cpt-player.php:63
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:85
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:56
+#: includes/widgets/class-sp-widget-player-gallery.php:77
+#: includes/widgets/class-sp-widget-player-list.php:98
+msgid "Number"
+msgstr "Αριθμός"
+
+#: includes/admin/post-types/class-sp-admin-cpt-staff.php:64
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:48
+msgid "Role"
+msgstr "Ρόλος"
+
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:64
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:31
+msgid "URL"
+msgstr "URL"
+
+#: includes/admin/post-types/class-sp-admin-cpt-team.php:65
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:31
+msgid "Abbreviation"
+msgstr "Συντόμευση"
+
+#: includes/admin/post-types/class-sp-admin-cpt.php:42
+#, php-format
+msgid "Insert into %s"
+msgstr "Τοποθετήστε σε %s"
+
+#: includes/admin/post-types/class-sp-admin-cpt.php:43
+#, php-format
+msgid "Uploaded to this %s"
+msgstr "Καταχωρήθηκε σε αυτήν %s"
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:120
+msgid "Shortcodes"
+msgstr "Σύντομος κωδικός"
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:124
+msgid "Video"
+msgstr "Βίντεο"
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:132
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:147
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:162
+msgid "Shortcode"
+msgstr "Σύντομος κωδικός"
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:144
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:159
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:171
+msgid "Profile"
+msgstr "Προφίλ"
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:153
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:164
+msgid "Columns"
+msgstr "Στήλες"
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:155
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:26
+msgid "Metrics"
+msgstr "Μετρικές"
+
+#: includes/admin/post-types/class-sp-admin-meta-boxes.php:157
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:27
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-columns.php:26
+msgid "Statistics"
+msgstr "Στατιστικά"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:173
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:120
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:168
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:60
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:78
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:93
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:108
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:123
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:138
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:40
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:52
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:70
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:85
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:100
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:115
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:101
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:45
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:110
+#, php-format
+msgid "Select %s"
+msgstr "Επιλογή %s"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:31
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:85
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:116
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:59
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:99
+#: includes/widgets/class-sp-widget-event-blocks.php:100
+#: includes/widgets/class-sp-widget-event-list.php:103
+#: includes/widgets/class-sp-widget-player-gallery.php:96
+#: includes/widgets/class-sp-widget-player-list.php:117
+msgid "Ascending"
+msgstr "Αύξουσα"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:117
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:59
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:100
+#: includes/widgets/class-sp-widget-event-blocks.php:101
+#: includes/widgets/class-sp-widget-event-list.php:104
+#: includes/widgets/class-sp-widget-player-gallery.php:97
+#: includes/widgets/class-sp-widget-player-list.php:118
+msgid "Descending"
+msgstr "Φθίνουσα"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-shortcode.php:26
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:24
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-shortcode.php:26
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-shortcode.php:24
+msgid ""
+"Copy this code and paste it into your post, page or text widget content."
+msgstr ""
+"Αντιγράψτε αυτόν τον κώδικα και επικολλήστε το στη δημοσίευση, στη σελίδα ή "
+"το περιεχόμενο κειμένου widget σας."
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:47
+msgid "Disable"
+msgstr "Απενεργοποίηση"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
+msgid "Attended"
+msgstr "Παρακολούθησαν"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
+msgid "Started"
+msgstr "Ξεκίνησε"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
+msgid "Substituted"
+msgstr "Υποκατάστατο"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
+msgid "for"
+msgstr "για"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
+msgid "against"
+msgstr "against"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:44
+msgid "Streak"
+msgstr "Σερί"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:45
+msgid "Last 5"
+msgstr "Τελευταία 5"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:46
+msgid "Last 10"
+msgstr "Τελευταία 10"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:160
+msgid "Starting Lineup"
+msgstr "Εκκίνηση παράταξης"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:161
+msgid "Substitute"
+msgstr "Υποκατάστατο"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:34
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:92
+msgid "&mdash; None &mdash;"
+msgstr "&mdash; Κανένας &mdash;"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:27
+msgid "Remove video"
+msgstr "Αφαιρέστε το βίντεο"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:33
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:86
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:83
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:36
+msgid "Add video"
+msgstr "Προσθήκη βίντεο"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:25
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-columns.php:25
+msgid "Performance"
+msgstr "Επιδόσεις"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:42
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:46
+msgid "Values"
+msgstr "Αξίες"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:43
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:47
+msgid "Adjustments"
+msgstr "Αναπροσαρμογές"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:82
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:79
+#: includes/admin/settings/class-sp-settings-config.php:118
+#: includes/admin/settings/class-sp-settings-config.php:191
+#: includes/admin/settings/class-sp-settings-config.php:243
+#: includes/admin/settings/class-sp-settings-config.php:301
+#: includes/admin/settings/class-sp-settings-config.php:354
+#: includes/admin/settings/class-sp-settings-config.php:410
+msgid "Edit"
+msgstr "Αλλαγή"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:87
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:84
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:73
+msgid "Grouping"
+msgstr "Ομαδοποίηση"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:80
+msgid "Sort by"
+msgstr "Ταξινόμηση κατά"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
+msgid "Current Teams"
+msgstr "Τρέχουσα ομάδα"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:25
+#: includes/admin/views/html-admin-page-status.php:24
+msgid "Site URL"
+msgstr "Site URL"
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:33
+msgid ""
+"The abbreviation is not prominent by default; however, some themes may show "
+"it"
+msgstr ""
+"Η συντομογραφία δεν είναι εμφανή ως προεπιλογή? Ωστόσο, μερικά θέματα μπορεί "
+"να την δείξει"
+
+#: includes/admin/settings/class-sp-settings-config.php:25
+msgid "Configure"
+msgstr "Διαμορφώστε"
+
+#: includes/admin/settings/class-sp-settings-config.php:46
+msgid "Configure SportsPress"
+msgstr "Ρύθμιση παραμέτρων SportsPress"
+
+#: includes/admin/settings/class-sp-settings-config.php:101
+#: includes/admin/settings/class-sp-settings-config.php:155
+#: includes/admin/settings/class-sp-settings-config.php:226
+msgid "Used for events."
+msgstr "Χρησιμοποιείται για εκδηλώσεις."
+
+#: includes/admin/settings/class-sp-settings-config.php:162
+#: includes/admin/settings/class-sp-settings-general.php:252
+msgid "Primary"
+msgstr "Αρχικό"
+
+#: includes/admin/settings/class-sp-settings-config.php:164
+msgid "Variables"
+msgstr "Μεταβλητές"
+
+#: includes/admin/settings/class-sp-settings-config.php:177
+#, php-format
+msgid "Default (%s)"
+msgstr "Προεπιλογή (%s)"
+
+#: includes/admin/settings/class-sp-settings-config.php:179
+#: includes/admin/settings/class-sp-settings-general.php:73
+#: includes/admin/settings/class-sp-settings-general.php:92
+#: includes/admin/views/html-admin-page-status.php:65
+#: includes/widgets/class-sp-widget-event-blocks.php:71
+#: includes/widgets/class-sp-widget-event-blocks.php:84
+#: includes/widgets/class-sp-widget-event-blocks.php:99
+#: includes/widgets/class-sp-widget-event-calendar.php:64
+#: includes/widgets/class-sp-widget-event-list.php:74
+#: includes/widgets/class-sp-widget-event-list.php:87
+#: includes/widgets/class-sp-widget-event-list.php:102
+#: includes/widgets/class-sp-widget-player-gallery.php:76
+#: includes/widgets/class-sp-widget-player-list.php:97
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: includes/admin/settings/class-sp-settings-config.php:278
+msgid "Used for league tables."
+msgstr "Χρησιμοποιείται για πίνακες πρωταθλήματος."
+
+#: includes/admin/settings/class-sp-settings-config.php:337
+#: includes/admin/settings/class-sp-settings-config.php:389
+msgid "Used for player lists."
+msgstr "Χρησιμοποιείται για λίστες παίκτη."
+
+#: includes/admin/settings/class-sp-settings-events.php:42
+msgid "Event Options"
+msgstr "Επιλογές γεγονότος"
+
+#: includes/admin/settings/class-sp-settings-events.php:45
+#: includes/admin/settings/class-sp-settings-events.php:155
+#: includes/admin/settings/class-sp-settings-players.php:82
+#: includes/admin/settings/class-sp-settings-teams.php:73
+msgid "Limit"
+msgstr "Όριο"
+
+#: includes/admin/settings/class-sp-settings-events.php:49
+#: includes/admin/settings/class-sp-settings-teams.php:77
+msgid "teams"
+msgstr "ομάδες"
+
+#: includes/admin/settings/class-sp-settings-events.php:61
+#: includes/admin/settings/class-sp-settings-teams.php:49
+#: includes/widgets/class-sp-widget-league-table.php:90
+msgid "Display logos"
+msgstr "Εμφανίστε λογότυπα"
+
+#: includes/admin/settings/class-sp-settings-events.php:69
+msgid "Display maps"
+msgstr "Εμφάνιση χαρτών"
+
+#: includes/admin/settings/class-sp-settings-events.php:77
+#: includes/admin/settings/class-sp-settings-events.php:140
+msgid "Link venues"
+msgstr "Σύνδεσμος χώρου εκδηλώσεων"
+
+#: includes/admin/settings/class-sp-settings-events.php:85
+msgid "Results"
+msgstr "Αποτελέσματα"
+
+#: includes/admin/settings/class-sp-settings-events.php:86
+msgid "Display outcomes"
+msgstr "Εμφάνιση των αποτελεσμάτων"
+
+#: includes/admin/settings/class-sp-settings-events.php:94
+#, fuzzy
+msgid "Display players"
+msgstr "Εμφάνιση πρωταθλήματος"
+
+#: includes/admin/settings/class-sp-settings-events.php:111
+#, fuzzy
+msgid "Display staff"
+msgstr "Εμφάνιση χαρτών"
+
+#: includes/admin/settings/class-sp-settings-events.php:119
+#, fuzzy
+msgid "Link staff"
+msgstr "Σύνδεσμος ομάδων"
+
+#: includes/admin/settings/class-sp-settings-events.php:132
+#: includes/admin/settings/class-sp-settings-players.php:65
+#: includes/admin/settings/class-sp-settings-teams.php:57
+msgid "Link teams"
+msgstr "Σύνδεσμος ομάδων"
+
+#: includes/admin/settings/class-sp-settings-events.php:147
+#: includes/admin/settings/class-sp-settings-players.php:74
+#: includes/admin/settings/class-sp-settings-teams.php:65
+msgid "Pagination"
+msgstr "Σελιδοποίησης"
+
+#: includes/admin/settings/class-sp-settings-events.php:148
+#: includes/admin/settings/class-sp-settings-players.php:75
+#: includes/admin/settings/class-sp-settings-teams.php:66
+msgid "Paginate"
+msgstr "Για σελιδοποίηση"
+
+#: includes/admin/settings/class-sp-settings-events.php:159
+msgid "events"
+msgstr "Εκδηλώσεων"
+
+#: includes/admin/settings/class-sp-settings-events.php:206
+msgid "Custom:"
+msgstr "Προσαρμοσμένο:"
+
+#: includes/admin/settings/class-sp-settings-general.php:25
+msgid "General"
+msgstr "Γενικά"
+
+#: includes/admin/settings/class-sp-settings-general.php:45
+msgid "General Options"
+msgstr "Γενικές Ρυθμίσεις"
+
+#: includes/admin/settings/class-sp-settings-general.php:68
+msgid "Google Maps"
+msgstr "Χάρτες Google"
+
+#: includes/admin/settings/class-sp-settings-general.php:74
+msgid "Satellite"
+msgstr "Δορυφορική"
+
+#: includes/admin/settings/class-sp-settings-general.php:75
+msgid "Hybrid"
+msgstr "Υβριδική"
+
+#: includes/admin/settings/class-sp-settings-general.php:76
+msgid "Terrain"
+msgstr "Ανάγλυφο εδάφους"
+
+#: includes/admin/settings/class-sp-settings-general.php:82
+msgid "Styles and Scripts"
+msgstr "Styles και Scripts"
+
+#: includes/admin/settings/class-sp-settings-general.php:87
+msgid "Align"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:93
+msgid "Left"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:94
+msgid "Center"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:95
+msgid "Right"
+msgstr ""
+
+#: includes/admin/settings/class-sp-settings-general.php:100
+#, fuzzy
+msgid "Padding"
+msgstr "Επικεφαλίδα"
+
+#: includes/admin/settings/class-sp-settings-general.php:104
+#: includes/admin/settings/class-sp-settings-general.php:152
+msgid "Auto"
+msgstr "Αυτόματο"
+
+#: includes/admin/settings/class-sp-settings-general.php:113
+msgid "Custom CSS"
+msgstr "Προσαρμοσμένη  CSS"
+
+#: includes/admin/settings/class-sp-settings-general.php:120
+msgid "Scripts"
+msgstr "Scripts"
+
+#: includes/admin/settings/class-sp-settings-general.php:121
+msgid "Responsive tables"
+msgstr "Ανταπόκριση  πινάκων"
+
+#: includes/admin/settings/class-sp-settings-general.php:126
+msgid "This will enable a script allowing the tables to be responsive."
+msgstr ""
+"Αυτό θα επιτρέψει μια δέσμη ενεργειών που επιτρέπει στους πίνακες να "
+"ανταποκρίνονται."
+
+#: includes/admin/settings/class-sp-settings-general.php:130
+msgid "Sortable tables"
+msgstr "Δυνατότητα ταξινόμησης των πινάκων"
+
+#: includes/admin/settings/class-sp-settings-general.php:135
+msgid "This will enable a script allowing the tables to be sortable."
+msgstr ""
+"Αυτό θα επιτρέψει μια δέσμη ενεργειών που επιτρέπει στους πίνακες να έχουν "
+"δυνατότητα ταξινόμησης."
+
+#: includes/admin/settings/class-sp-settings-general.php:139
+msgid "Live countdowns"
+msgstr "Ζωντανές αντίστροφες μετρήσεις"
+
+#: includes/admin/settings/class-sp-settings-general.php:144
+msgid "This will enable a script allowing the countdowns to be animated."
+msgstr ""
+"Αυτό θα επιτρέψει μια δέσμη ενεργειών για να ξεκινήση η αντίστροφη μετρήση."
+
+#: includes/admin/settings/class-sp-settings-general.php:148
+msgid "Header Offset"
+msgstr "Απόκλιση επικεφαλίδας"
+
+#: includes/admin/settings/class-sp-settings-general.php:237
+msgid "Frontend Styles"
+msgstr "Στυλ περιβάλλοντος εργασίας"
+
+#: includes/admin/settings/class-sp-settings-general.php:253
+msgid "Background"
+msgstr "Φόντο"
+
+#: includes/admin/settings/class-sp-settings-general.php:254
+#: includes/admin/settings/class-sp-settings-text.php:25
+#: includes/admin/settings/class-sp-settings-text.php:41
+msgid "Text"
+msgstr "Κείμενο"
+
+#: includes/admin/settings/class-sp-settings-general.php:255
+msgid "Heading"
+msgstr "Επικεφαλίδα"
+
+#: includes/admin/settings/class-sp-settings-general.php:256
+msgid "Link"
+msgstr "Σύνδεσμος"
+
+#: includes/admin/settings/class-sp-settings-general.php:262
+msgid "Enable"
+msgstr "Διαθέσιμο"
+
+#: includes/admin/settings/class-sp-settings-players.php:43
+#: includes/admin/settings/class-sp-settings-staff.php:45
+msgid "Display national flags"
+msgstr "Απεικόνιση των εθνικών σημαιών"
+
+#: includes/admin/settings/class-sp-settings-staff.php:41
+#, fuzzy
+msgid "Staff Options"
+msgstr "Επιλογές ομάδας"
+
+#: includes/admin/settings/class-sp-settings-teams.php:41
+msgid "Team Options"
+msgstr "Επιλογές ομάδας"
+
+#: includes/admin/settings/class-sp-settings-text.php:41
+msgid "The following options affect how words are displayed on the frontend."
+msgstr ""
+"Οι ακόλουθες επιλογές επηρεάζουν τον τρόπο εμφάνισεις των λέξεων στην "
+"επιφάνεια εργασίας."
+
+#: includes/admin/views/html-admin-page-status.php:5
+msgid "Please include this information when requesting support:"
+msgstr ""
+"Παρακαλούμε συμπεριλάβετε αυτή την πληροφορία στο αίτημα υποστήριξής σας:"
+
+#: includes/admin/views/html-admin-page-status.php:6
+msgid "Get System Report"
+msgstr "Αποκτήστε έκθεση του συστήματος"
+
+#: includes/admin/views/html-admin-page-status.php:14
+msgid "Environment"
+msgstr "Περιβάλλον"
+
+#: includes/admin/views/html-admin-page-status.php:20
+msgid "Home URL"
+msgstr "URL Αρχικής"
+
+#: includes/admin/views/html-admin-page-status.php:28
+msgid "SP Version"
+msgstr "SP Έκδοση"
+
+#: includes/admin/views/html-admin-page-status.php:32
+msgid "WP Version"
+msgstr "Έκδοση WP"
+
+#: includes/admin/views/html-admin-page-status.php:36
+msgid "WP Multisite Enabled"
+msgstr "WP Ιστότοπος Ενεργοποιημένο"
+
+#: includes/admin/views/html-admin-page-status.php:37
+#: includes/admin/views/html-admin-page-status.php:61
+#: includes/admin/views/html-admin-page-status.php:86
+msgid "Yes"
+msgstr "Ναι"
+
+#: includes/admin/views/html-admin-page-status.php:37
+#: includes/admin/views/html-admin-page-status.php:61
+#: includes/admin/views/html-admin-page-status.php:86
+msgid "No"
+msgstr "Όχι"
+
+#: includes/admin/views/html-admin-page-status.php:40
+msgid "Web Server Info"
+msgstr "Πληροφορίες Web Server"
+
+#: includes/admin/views/html-admin-page-status.php:44
+msgid "PHP Version"
+msgstr "Έκδοση PHP"
+
+#: includes/admin/views/html-admin-page-status.php:48
+msgid "WP Memory Limit"
+msgstr "WP Memory Limit"
+
+#: includes/admin/views/html-admin-page-status.php:53
+#, php-format
+msgid ""
+"%s - We recommend setting memory to at least 64MB. See: <a href=\"%s"
+"\">Increasing memory allocated to PHP</a>"
+msgstr ""
+"%s - Συστήνουμε μνήμη τουλάχιστον 64MB. Δείτε: <a href=\"%s\">Increasing "
+"memory allocated to PHP</a>"
+
+#: includes/admin/views/html-admin-page-status.php:60
+msgid "WP Debug Mode"
+msgstr "WP Debug Mode"
+
+#: includes/admin/views/html-admin-page-status.php:64
+msgid "WP Language"
+msgstr "WP Γλώσσα"
+
+#: includes/admin/views/html-admin-page-status.php:68
+msgid "WP Max Upload Size"
+msgstr "Μέγιστο μέγεθος μεταφόρτωσης WP"
+
+#: includes/admin/views/html-admin-page-status.php:73
+msgid "PHP Post Max Size"
+msgstr "PHP Post Max Size"
+
+#: includes/admin/views/html-admin-page-status.php:77
+msgid "PHP Time Limit"
+msgstr "PHP Time Limit"
+
+#: includes/admin/views/html-admin-page-status.php:81
+msgid "PHP Max Input Vars"
+msgstr "PHP  Μέγιστη είσοδος Vars"
+
+#: includes/admin/views/html-admin-page-status.php:85
+msgid "SUHOSIN Installed"
+msgstr "Suhosin Εγκατεστημένο"
+
+#: includes/admin/views/html-admin-page-status.php:90
+msgid "Default Timezone"
+msgstr "Προεπιλεγμένη χρονική ζώνη"
+
+#: includes/admin/views/html-admin-page-status.php:94
+#, php-format
+msgid "Default timezone is %s - it should be UTC"
+msgstr "Προεπιλεγμένη ζώνη ώρας είναι %s - θα πρέπει να είναι UTC"
+
+#: includes/admin/views/html-admin-page-status.php:96
+#, php-format
+msgid "Default timezone is %s"
+msgstr "Προεπιλεγμένη ζώνη ώρας είναι %s"
+
+#: includes/admin/views/html-admin-page-status.php:104
+msgid "fsockopen/cURL"
+msgstr "fsockopen/cURL"
+
+#: includes/admin/views/html-admin-page-status.php:107
+msgid "Your server has fsockopen and cURL enabled."
+msgstr "O server σας έχει τα fsockopen και cURL ενεργοποιημένα."
+
+#: includes/admin/views/html-admin-page-status.php:109
+msgid "Your server has fsockopen enabled, cURL is disabled."
+msgstr ""
+"O server σας έχει το fsockopen ενεργοποιημένο αλλά το cURL απενεργοποιημένο."
+
+#: includes/admin/views/html-admin-page-status.php:111
+msgid "Your server has cURL enabled, fsockopen is disabled."
+msgstr ""
+"O server σας έχει το cURL ενεργοποιημένο αλλά το fsockopen απενεργοποιημένο."
+
+#: includes/admin/views/html-admin-page-status.php:115
+msgid ""
+"Your server does not have fsockopen or cURL enabled - PayPal IPN and other "
+"scripts which communicate with other servers will not work. Contact your "
+"hosting provider."
+msgstr ""
+"Ο server σας δεν έχει το fscockopen ή to cURL ενεργοποιημένο. Το PayPal IPN "
+"και άλλα scripts που επικοινωνούν με άλλους servers δεν θα λειτουργήσουν. "
+"Παρακαλώ επικοινωνήστε με τον διαχειριστή του συστήματός."
+
+#: includes/admin/views/html-admin-page-status.php:120
+msgid "SOAP Client"
+msgstr "SOAP Client"
+
+#: includes/admin/views/html-admin-page-status.php:122
+msgid "Your server has the SOAP Client class enabled."
+msgstr "Ο server σας έχει το SOAP Client class ενεργοποιημένο."
+
+#: includes/admin/views/html-admin-page-status.php:125
+#, php-format
+msgid ""
+"Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled - "
+"some gateway plugins which use SOAP may not work as expected."
+msgstr ""
+"Ο server σας δεν έχει ενεργοποιημένη την κλάση  <a href=\"%s\">SOAP Client</"
+"a> - ορισμένα gateway plugins που απαιτούν SOAP ίσως να μην λειτουργούν "
+"σωστά."
+
+#: includes/admin/views/html-admin-page-status.php:148
+msgid "Plugins"
+msgstr "Πρόσθετα"
+
+#: includes/admin/views/html-admin-page-status.php:154
+msgid "Installed Plugins"
+msgstr "Εγκατεστημένα plugins"
+
+#: includes/admin/views/html-admin-page-status.php:174
+msgid "Visit plugin homepage"
+msgstr "Επισκεφθείτε την αρχική σελίδα του πρόσθετου"
+
+#: includes/admin/views/html-admin-page-status.php:198
+#: includes/admin/views/html-admin-page-status.php:413
+msgid "is available"
+msgstr "είναι διαθέσιμο"
+
+#: includes/admin/views/html-admin-page-status.php:201
+msgid "by"
+msgstr "από"
+
+#: includes/admin/views/html-admin-page-status.php:201
+msgid "version"
+msgstr "έκδοση"
+
+#: includes/admin/views/html-admin-page-status.php:217
+msgid "SP Configuration"
+msgstr "SP Διαμόρφωση "
+
+#: includes/admin/views/html-admin-page-status.php:290
+msgid "SP Taxonomies"
+msgstr "SP Ταξονομίες"
+
+#: includes/admin/views/html-admin-page-status.php:339
+msgid "SP Post Types"
+msgstr "Τύποι SP δημοσίευσης"
+
+#: includes/admin/views/html-admin-page-status.php:365
+msgid "Theme"
+msgstr "Θέμα"
+
+#: includes/admin/views/html-admin-page-status.php:402
+msgid "Theme Name"
+msgstr "Όνομα Θέματος"
+
+#: includes/admin/views/html-admin-page-status.php:408
+msgid "Theme Version"
+msgstr "Έκδοση θέματος"
+
+#: includes/admin/views/html-admin-page-status.php:417
+msgid "Author URL"
+msgstr "Συγγραφέας διεύθυνση URL"
+
+#: includes/admin/views/html-admin-page-status.php:426
+msgid "Templates"
+msgstr "Πρότυπα"
+
+#: includes/admin/views/html-admin-page-status.php:459
+#, php-format
+msgid ""
+"<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
+"date. The core version is %s"
+msgstr ""
+"<code>%s</code> έκδοση <strong style=\"color:red\">%s</strong> είναι "
+"ξεπερασμένη. Η βασική έκδοση είναι %s"
+
+#: includes/admin/views/html-admin-page-status.php:470
+#: includes/admin/views/html-admin-page-status.php:476
+msgid "Template Overrides"
+msgstr "Παράκαμψη προτύπων"
+
+#: includes/admin/views/html-admin-page-status.php:477
+msgid "No overrides present in theme."
+msgstr "Δεν υπάρχουν στο θέμα υπερβάσεις"
+
+#: includes/admin/views/html-notice-install.php:5
+#, php-format
+msgid "Welcome to SportsPress %s"
+msgstr "Καλώς ήρθατε στο SportsPress %s"
+
+#: includes/admin/views/html-notice-install.php:8
+#: includes/admin/views/html-notice-template-check.php:6
+#: includes/admin/views/html-notice-theme-support.php:8
+msgid "Hide this notice"
+msgstr "Απόκρυψη ανακοίνωσης"
+
+#: includes/admin/views/html-notice-template-check.php:5
+msgid ""
+"<strong>Your theme has bundled outdated copies of SportsPress template "
+"files</strong> &#8211; if you encounter functionality issues on the frontend "
+"this could the reason. Ensure you update or remove them (in general we "
+"recommend only bundling the template files you actually need to customize). "
+"See the system report for full details."
+msgstr ""
+
+#: includes/admin/views/html-notice-theme-support.php:5
+msgid ""
+"<strong>Your theme does not declare SportsPress support</strong> &#8211; if "
+"you encounter layout issues please read our integration guide or choose a "
+"SportsPress theme :)"
+msgstr ""
+"<strong> Το θέμα σας δεν έχει δηλώσει υποστήριξη του SportsPress </strong> "
+"&#8211; αν αντιμετωπίζετε προβλήματα διάταξης παρακαλώ διαβάστε τις οδηγίες "
+"ολοκλήρωσης  ή επιλέξετε ένα θέμα SportsPress :)"
+
+#: includes/admin/views/html-notice-theme-support.php:7
+msgid "Theme Integration Guide"
+msgstr "Οδηγός διασύνδεσης θέματος"
+
+#: includes/widgets/class-sp-widget-countdown.php:5
+msgid "A clock that counts down to an upcoming event."
+msgstr "Ένα ρολόι που μετράει αντίστροφα για ένα επερχόμενο γεγονός."
+
+#: includes/widgets/class-sp-widget-countdown.php:6
+msgid "SportsPress Countdown"
+msgstr "SportsPress Αντίστροφη μέτρηση"
+
+#: includes/widgets/class-sp-widget-countdown.php:39
+#: includes/widgets/class-sp-widget-event-blocks.php:48
+#: includes/widgets/class-sp-widget-event-calendar.php:41
+#: includes/widgets/class-sp-widget-event-list.php:51
+#: includes/widgets/class-sp-widget-league-table.php:47
+#: includes/widgets/class-sp-widget-player-gallery.php:50
+#: includes/widgets/class-sp-widget-player-list.php:50
+msgid "Title:"
+msgstr "Τίτλος:"
+
+#: includes/widgets/class-sp-widget-countdown.php:42
+#: includes/widgets/class-sp-widget-event-blocks.php:51
+#: includes/widgets/class-sp-widget-event-calendar.php:44
+#: includes/widgets/class-sp-widget-event-list.php:54
+#: includes/widgets/class-sp-widget-league-table.php:50
+#: includes/widgets/class-sp-widget-player-gallery.php:53
+#: includes/widgets/class-sp-widget-player-list.php:53
+#, php-format
+msgid "Select %s:"
+msgstr "Επιλογή %s:"
+
+#: includes/widgets/class-sp-widget-countdown.php:62
+msgid "Display venue"
+msgstr "Εμφάνιση έδρας"
+
+#: includes/widgets/class-sp-widget-countdown.php:65
+msgid "Display league"
+msgstr "Εμφάνιση πρωταθλήματος"
+
+#: includes/widgets/class-sp-widget-event-blocks.php:5
+#: includes/widgets/class-sp-widget-event-list.php:5
+msgid "A list of events."
+msgstr "Ο κατάλογος των εκδηλώσεων."
+
+#: includes/widgets/class-sp-widget-event-blocks.php:6
+msgid "SportsPress Event Blocks"
+msgstr "SportsPress Εκδήλωση Blocks"
+
+#: includes/widgets/class-sp-widget-event-blocks.php:68
+#: includes/widgets/class-sp-widget-event-calendar.php:61
+#: includes/widgets/class-sp-widget-event-list.php:71
+msgid "Status:"
+msgstr "Κατάσταση:"
+
+#: includes/widgets/class-sp-widget-event-blocks.php:81
+#: includes/widgets/class-sp-widget-event-list.php:84
+#, fuzzy
+msgid "Date:"
+msgstr "Ημερομηνία"
+
+#: includes/widgets/class-sp-widget-event-blocks.php:94
+#: includes/widgets/class-sp-widget-event-list.php:97
+msgid "Number of events to show:"
+msgstr "Αριθμός εκδηλώσεων για εμφάνιση:"
+
+#: includes/widgets/class-sp-widget-event-blocks.php:97
+#: includes/widgets/class-sp-widget-event-list.php:100
+#: includes/widgets/class-sp-widget-player-gallery.php:94
+#: includes/widgets/class-sp-widget-player-list.php:115
+msgid "Sort Order:"
+msgstr "Ταξινόμηση κατά:"
+
+#: includes/widgets/class-sp-widget-event-blocks.php:105
+#: includes/widgets/class-sp-widget-event-calendar.php:75
+#: includes/widgets/class-sp-widget-event-list.php:126
+msgid "Display link to view all events"
+msgstr "Εμφανίστε σύνδεσμο για να δείτε όλες τις εκδηλώσεις"
+
+#: includes/widgets/class-sp-widget-event-calendar.php:5
+msgid "A calendar of events."
+msgstr "Ένα ημερολόγιο των εκδηλώσεων."
+
+#: includes/widgets/class-sp-widget-event-calendar.php:6
+msgid "SportsPress Event Calendar"
+msgstr "SportsPress Ημερολόγιο Εκδηλώσεων"
+
+#: includes/widgets/class-sp-widget-event-list.php:6
+msgid "SportsPress Event List"
+msgstr "SportsPress Λίστα Εκδηλώσεων"
+
+#: includes/widgets/class-sp-widget-event-list.php:108
+#: includes/widgets/class-sp-widget-league-table.php:70
+msgid "Columns:"
+msgstr "Στήλες:"
+
+#: includes/widgets/class-sp-widget-league-table.php:5
+msgid "Display a league table."
+msgstr "Εμφάνιση ενός πίνακα κατάταξης."
+
+#: includes/widgets/class-sp-widget-league-table.php:6
+msgid "SportsPress League Table"
+msgstr "SportsPress Πίνακα Κατάταξης"
+
+#: includes/widgets/class-sp-widget-league-table.php:66
+msgid "Number of teams to show:"
+msgstr "Αριθμός ομάδων που συμμετέχουν:"
+
+#: includes/widgets/class-sp-widget-league-table.php:93
+msgid "Display link to view full table"
+msgstr "Εμφανίστε σύνδεσμο για να δείτε την πλήρη πίνακα"
+
+#: includes/widgets/class-sp-widget-player-gallery.php:5
+msgid "Display a gallery of players."
+msgstr "Εμφανίσει μια συλλογή των παικτών."
+
+#: includes/widgets/class-sp-widget-player-gallery.php:6
+msgid "SportsPress Player Gallery"
+msgstr "SportsPress Πινακοθήκη παικτών"
+
+#: includes/widgets/class-sp-widget-player-gallery.php:69
+#: includes/widgets/class-sp-widget-player-list.php:69
+msgid "Number of players to show:"
+msgstr "Αριθμός παικτών που συμμετέχουν:"
+
+#: includes/widgets/class-sp-widget-player-gallery.php:72
+#: includes/widgets/class-sp-widget-player-list.php:93
+msgid "Sort by:"
+msgstr "Ταξινόμηση κατά:"
+
+#: includes/widgets/class-sp-widget-player-gallery.php:101
+#: includes/widgets/class-sp-widget-player-list.php:122
+msgid "Display link to view all players"
+msgstr "Εμφανίστε σύνδεσμο για να δείτε όλους τους παίκτες"
+
+#: includes/widgets/class-sp-widget-player-gallery.php:104
+msgid "Display player names on hover"
+msgstr "Τα εμφανιζόμενα ονόματα παικτών είναι στον αέρα"
+
+#: includes/widgets/class-sp-widget-player-list.php:5
+msgid "Display a list of players."
+msgstr "Εμφανίζει μια λίστα των παικτών."
+
+#: includes/widgets/class-sp-widget-player-list.php:6
+msgid "SportsPress Player List"
+msgstr "SportsPress Λίστα παικτών"
+
+#: includes/widgets/class-sp-widget-player-list.php:73
+msgid "Performance:"
+msgstr "Επιδόσεις:"
+
+#. translators: Calendar caption: 1: month name, 2: 4-digit year
+#: templates/event-calendar.php:92 templates/event-calendar.php:120
+#: templates/event-calendar.php:128
+#, php-format
+msgctxt "calendar caption"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#~ msgid "Baseball"
+#~ msgstr "Μπέιζμπολ"
+
+#~ msgid "Basketball"
+#~ msgstr "Μπάσκετ"
+
+#~ msgid "Cricket"
+#~ msgstr "Κρίκετ"
+
+#~ msgid "American Football"
+#~ msgstr "Αμερικάνικο Ποδόσφαιρο"
+
+#~ msgid "Australian Rules Football"
+#~ msgstr "Αυστραλιανό Ποδόσφαιρο"
+
+#~ msgid "Competitive Gaming"
+#~ msgstr "Ανταγωνιστικά Παιχνιδιών"
+
+#~ msgid "Golf"
+#~ msgstr "Γκόλφ"
+
+#~ msgid "Hockey"
+#~ msgstr "Χόκευ"
+
+#~ msgid "Racing"
+#~ msgstr "Ιπποδρομίες"
+
+#~ msgid "Rugby"
+#~ msgstr "Ράγκμπι"
+
+#~ msgid "Soccer (Association Football)"
+#~ msgstr "Ποδόσφαιρο (Ποδοσφαιρικών Σωματείων)"

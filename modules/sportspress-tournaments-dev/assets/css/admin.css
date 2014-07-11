@@ -1,0 +1,10 @@
+#adminmenu #menu-posts-sp_tournament .menu-icon-sp_tournament div.wp-menu-image:before {
+	font-family: sportspress, dashicons !important;
+	width: 20px;
+	text-align: center;
+}
+
+.post-state-format.post-format-tournament:before, .post-format-icon.post-format-tournament:before, a.post-state-format.format-tournament:before {
+	content: "\f325";
+	font-family: dashicons !important;
+}

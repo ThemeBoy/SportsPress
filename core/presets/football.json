@@ -1,0 +1,62 @@
+{
+	"name":				"American Football",
+	"positions": [
+						"Back",
+						"Quarterback",
+						"Wide receiver",
+						"Center",
+						"Tackle",
+						"Guard",
+						"Line backer",
+						"Defense end",
+						"Defense tackle",
+						"Defense back"
+	],
+	"outcomes": [
+						"Win",
+						"Loss",
+						"Tie"
+	],
+	"results": [
+						{ "name" : "1", "description" : "1st quarter points" },
+						{ "name" : "2", "description" : "2nd quarter points" },
+						{ "name" : "3", "description" : "3rd quarter points" },
+						{ "name" : "4", "description" : "4th quarter points" },
+						{ "name" : "OT", "description" : "Overtime points" },
+						{ "name" : "TD", "description" : "Touchdowns" },
+						{ "name" : "T", "id" : "points", "description" : "Total points", "primary" : 1 }
+	],
+	"performance": [
+						{ "name" : "Comp", "description" : "Completions" },
+						{ "name" : "Att", "description" : "Attempts" },
+						{ "name" : "Yds", "description" : "Rushing yards" },
+						{ "name" : "Rec", "description" : "Total receptions" },
+						{ "name" : "Rec Yds", "description" : "Receiving yards" },
+						{ "name" : "TD", "description" : "Touchdowns" },
+						{ "name" : "Int", "description" : "Interceptions thrown" },
+						{ "name" : "Lng", "description" : "Longest" },
+						{ "name" : "Fum", "description" : "Total fumbles" },
+						{ "name" : "Lost", "description" : "Fumbles lost" }
+	],
+	"columns": [
+						{ "name" : "W", "equation" : "$win", "priority" : 1, "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "T", "equation" : "$tie", "priority" : 2, "description" : "Ties" },
+						{ "name" : "Pct", "equation" : "$win / $eventsplayed", "description" : "Win percentage" },
+						{ "name" : "PF", "equation" : "$pointsfor", "priority" : 3, "description" : "Points for" },
+						{ "name" : "PA", "equation" : "$pointsagainst", "description" : "Points against" },
+						{ "name" : "Net Pts", "equation" : "$pointsfor - $pointsagainst", "priority" : 2, "description" : "Net Points" },
+						{ "name" : "TD", "equation" : "$td", "description" : "Touchdowns" },
+						{ "name" : "Streak", "equation" : "$streak", "description" : "Current streak" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "G", "equation" : "$eventsplayed", "description" : "Games played" },
+						{ "name" : "GS", "equation" : "$eventsstarted", "description" : "Games started" },
+						{ "name" : "Avg", "equation" : "$yds / $att", "precision" : 1, "description" : "Average yards per carry" },
+						{ "name" : "Rec Avg", "equation" : "$recyds / $rec", "precision" : 1, "description" : "Average yards per reception" }
+	]
+}
