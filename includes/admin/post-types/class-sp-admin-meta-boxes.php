@@ -150,6 +150,7 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_editordiv', __( 'Description', 'sportspress' ), 'SP_Meta_Box_Table_Editor::output', 'sp_table', 'normal', 'low' );
 
 		// Players
+		add_meta_box( 'sp_shortcodediv', __( 'Shortcodes', 'sportspress' ), 'SP_Meta_Box_Player_Shortcode::output', 'sp_player', 'side', 'default' );
 		add_meta_box( 'sp_columnsdiv', __( 'Columns', 'sportspress' ), 'SP_Meta_Box_Player_Columns::output', 'sp_player', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Player_Details::output', 'sp_player', 'side', 'default' );
 		add_meta_box( 'sp_metricsdiv', __( 'Metrics', 'sportspress' ), 'SP_Meta_Box_Player_Metrics::output', 'sp_player', 'side', 'default' );

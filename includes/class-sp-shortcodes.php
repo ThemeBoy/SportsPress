@@ -24,6 +24,8 @@ class SP_Shortcodes {
 			'event_list'     		=> __CLASS__ . '::event_list',
 			'event_blocks'     		=> __CLASS__ . '::event_blocks',
 			'league_table'   		=> __CLASS__ . '::league_table',
+			'player_details'   		=> __CLASS__ . '::player_details',
+			'player_statistics'		=> __CLASS__ . '::player_statistics',
 			'player_list'    		=> __CLASS__ . '::player_list',
 			'player_gallery' 		=> __CLASS__ . '::player_gallery',
 		);
@@ -158,6 +160,28 @@ class SP_Shortcodes {
 	 */
 	public static function league_table( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_League_Table', 'output' ), $atts );
+	}
+
+	/**
+	 * Player details shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function player_details( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Player_Details', 'output' ), $atts );
+	}
+
+	/**
+	 * Player statistics shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function player_statistics( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Player_Statistics', 'output' ), $atts );
 	}
 
 	/**
