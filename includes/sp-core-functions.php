@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.1.4
+ * @version     1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -273,7 +273,7 @@ if ( !function_exists( 'sp_array_combine' ) ) {
 		endforeach;
 
 		foreach ( $keys as $key ):
-			if ( ! array_key_exists( $key, $output ) )
+			if ( $key !== false && ! array_key_exists( $key, $output ) )
 				$output[ $key ] = array();
 		endforeach;
 

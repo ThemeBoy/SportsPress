@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.1
+ * @version     1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -23,6 +23,7 @@ $defaults = array(
 	'paginated' => get_option( 'sportspress_calendar_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_calendar_rows', 10 ),
 	'order' => 'default',
+	'columns' => null,
 	'show_all_events_link' => false,
 );
 
@@ -39,7 +40,7 @@ $data = $calendar->data();
 $usecolumns = $calendar->columns;
 
 if ( isset( $columns ) )
-	$usecolumns = $columns;
+	$usecolumns = explode( ',', $columns );
 ?>
 <div class="sp-table-wrapper sp-scrollable-table-wrapper">
 	<table class="sp-event-list sp-data-table<?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $paginated ) { ?> sp-paginated-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">

@@ -15,9 +15,11 @@ class SP_Event extends SP_Custom_Post{
 	public function status() {
 		$post_status = $this->post->post_status;
 		$results = get_post_meta( $this->ID, 'sp_results', true );
-		foreach( $results as $result ) {
-			if ( count( array_filter( $result ) ) > 0 ) {
-				return 'results';
+		if ( is_array( $results ) ) {
+			foreach( $results as $result ) {
+				if ( count( array_filter( $result ) ) > 0 ) {
+					return 'results';
+				}
 			}
 		}
 		return $post_status;
@@ -54,40 +56,42 @@ class SP_Event extends SP_Custom_Post{
 	}
 
 	public function performance( $admin = false ) {
-		$teams = (array)get_post_meta( $this->ID, 'sp_team', false );
+		$teams = get_post_meta( $this->ID, 'sp_team', false );
 		$performance = (array)get_post_meta( $this->ID, 'sp_players', true );
 		$labels = sp_get_var_labels( 'sp_performance' );
 		$columns = get_post_meta( $this->ID, 'sp_columns', true );
-		foreach( $teams as $i => $team_id ):
-			$players = sp_array_between( (array)get_post_meta( $this->ID, 'sp_player', false ), 0, $i );
-			$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
+		if ( is_array( $teams ) ):
+			foreach( $teams as $i => $team_id ):
+				$players = sp_array_between( (array)get_post_meta( $this->ID, 'sp_player', false ), 0, $i );
+				$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
 
-			$totals = array();
-			foreach( $labels as $key => $label ):
-				$totals[ $key ] = 0;
-			endforeach;
-
-			foreach( $data as $player_id => $player_performance ):
+				$totals = array();
 				foreach( $labels as $key => $label ):
-					if ( array_key_exists( $key, $totals ) ):
-						$totals[ $key ] += sp_array_value( $player_performance, $key, 0 );
+					$totals[ $key ] = 0;
+				endforeach;
+
+				foreach( $data as $player_id => $player_performance ):
+					foreach( $labels as $key => $label ):
+						if ( array_key_exists( $key, $totals ) ):
+							$totals[ $key ] += sp_array_value( $player_performance, $key, 0 );
+						endif;
+					endforeach;
+					if ( ! array_key_exists( 'number', $player_performance ) ):
+						$performance[ $team_id ][ $player_id ]['number'] = get_post_meta( $player_id, 'sp_number', true );
+					endif;
+					if ( ! array_key_exists( 'position', $player_performance ) || $player_performance['position'] == null ):
+						$performance[ $team_id ][ $player_id ]['position'] = get_post_meta( $player_id, 'sp_position', true );
 					endif;
 				endforeach;
-				if ( ! array_key_exists( 'number', $player_performance ) ):
-					$performance[ $team_id ][ $player_id ]['number'] = get_post_meta( $player_id, 'sp_number', true );
-				endif;
-				if ( ! array_key_exists( 'position', $player_performance ) || $player_performance['position'] == null ):
-					$performance[ $team_id ][ $player_id ]['position'] = get_post_meta( $player_id, 'sp_position', true );
-				endif;
-			endforeach;
 
-			foreach( $totals as $key => $value ):
-				$manual_total = sp_array_value( sp_array_value( $performance, 0, array() ), $key, null );
-				if ( $manual_total != null ):
-					$totals[ $key ] = $manual_total;
-				endif;
+				foreach( $totals as $key => $value ):
+					$manual_total = sp_array_value( sp_array_value( $performance, 0, array() ), $key, null );
+					if ( $manual_total != null ):
+						$totals[ $key ] = $manual_total;
+					endif;
+				endforeach;
 			endforeach;
-		endforeach;
+		endif;
 
 		if ( $admin ):
 			return array( $labels, $columns, $performance, $teams );
