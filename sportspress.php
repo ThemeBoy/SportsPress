@@ -204,6 +204,10 @@ final class SportsPress {
 			include_once( 'includes/admin/class-sp-admin.php' );
 		}
 
+		if ( defined( 'DOING_AJAX' ) ) {
+			$this->ajax_includes();
+		}
+
 		if ( ! is_admin() || defined( 'DOING_AJAX' ) ) {
 			$this->frontend_includes();
 		}
@@ -223,6 +227,13 @@ final class SportsPress {
 
 		// WPML-related localization hooks
 		include_once( 'includes/class-sp-wpml.php' );
+	}
+
+	/**
+	 * Include required ajax files.
+	 */
+	public function ajax_includes() {
+		include_once( 'includes/class-sp-ajax.php' );					// Ajax functions for admin and the front-end
 	}
 
 	/**
