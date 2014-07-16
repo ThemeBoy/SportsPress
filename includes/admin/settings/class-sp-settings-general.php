@@ -26,7 +26,7 @@ class SP_Settings_General extends SP_Settings_Page {
 
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
-		add_action( 'sportspress_admin_field_country', array( $this, 'country_setting' ) );
+		add_action( 'sportspress_admin_field_timezone', array( $this, 'timezone_setting' ) );
 		add_action( 'sportspress_admin_field_frontend_styles', array( $this, 'frontend_styles_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
 	}
@@ -43,7 +43,7 @@ class SP_Settings_General extends SP_Settings_Page {
 		$settings = array(
 			array( 'title' => __( 'General Options', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'general_options' ),
 			
-			array( 'type' => 'country' ),
+			array( 'type' => 'timezone' ),
 
 			array(
 				'title'     => __( 'Sport', 'sportspress' ),
@@ -52,6 +52,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				'type'      => 'select',
 				'options'   => $presets,
 			),
+
 			array(
 				'title'     => __( 'Mode', 'sportspress' ),
 				'id'        => 'sportspress_mode',
@@ -190,8 +191,8 @@ class SP_Settings_General extends SP_Settings_Page {
 		$settings = $this->get_settings();
 		SP_Admin_Settings::save_fields( $settings );
 
-		if ( isset( $_POST['sportspress_default_country'] ) )
-	    	update_option( 'sportspress_default_country', $_POST['sportspress_default_country'] );
+		if ( isset( $_POST['timezone_string'] ) )
+	    	update_option( 'timezone_string', $_POST['timezone_string'] );
 
 	    update_option( 'sportspress_enable_frontend_css', isset( $_POST['sportspress_enable_frontend_css'] ) ? 'yes' : 'no' );
 
@@ -217,24 +218,41 @@ class SP_Settings_General extends SP_Settings_Page {
 	}
 
 	/**
-	 * Country settings
+	 * Timezone settings
 	 *
 	 * @access public
 	 * @return void
 	 */
-	public function country_setting() {
-		$selected = (string) get_option( 'sportspress_default_country', 'US' );
-		$continents = SP()->countries->continents;
+	public function timezone_setting() {
+		$current_offset = get_option('gmt_offset');
+		$tzstring = get_option('timezone_string');
+
+		$check_zone_info = true;
+
+		// Remove old Etc mappings. Fallback to gmt_offset.
+		if ( false !== strpos($tzstring,'Etc/GMT') )
+			$tzstring = '';
+
+		if ( empty($tzstring) ) { // Create a UTC+- zone if no timezone string exists
+			$check_zone_info = false;
+			if ( 0 == $current_offset )
+				$tzstring = 'UTC+0';
+			elseif ($current_offset < 0)
+				$tzstring = 'UTC' . $current_offset;
+			else
+				$tzstring = 'UTC+' . $current_offset;
+		}
+		$class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
     	?>
 		<tr valign="top">
 			<th scope="row" class="titledesc">
-				<label for="sportspress_default_country"><?php _e( 'Base Location', 'sportspress' ); ?></label>
+				<label for="timezone_string"><?php _e( 'Timezone', 'sportspress' ); ?></label>
 			</th>
             <td class="forminp">
-				<legend class="screen-reader-text"><span><?php _e( 'Base Location', 'sportspress' ); ?></span></legend>
-				<select name="sportspress_default_country" data-placeholder="<?php _e( 'Choose a country&hellip;', 'sportspress' ); ?>" title="Country" class="chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>">
-	        		<?php SP()->countries->country_dropdown_options( $selected ); ?>
-	        	</select>
+				<legend class="screen-reader-text"><span><?php _e( 'Timezone', 'sportspress' ); ?></span></legend>
+				<select id="timezone_string" name="timezone_string" class="<?php echo $class; ?>">
+					<?php echo wp_timezone_choice($tzstring); ?>
+				</select>
        		</td>
        	</tr>
        	<?php

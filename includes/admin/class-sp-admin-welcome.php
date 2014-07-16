@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.9
+ * @version     1.2
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -167,6 +167,7 @@ class SP_Admin_Welcome {
 	 */
 	public function about_screen() {
 		include_once( 'class-sp-admin-settings.php' );
+		$class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
 		?>
 		<div class="wrap about-wrap about-sportspress-wrap">
 
@@ -178,19 +179,19 @@ class SP_Admin_Welcome {
 			
 			<?php
 			// Save settings
-			if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
-				$sport = $_POST['sportspress_sport'];
-				SP_Admin_Sports::apply_preset( $sport );
-				update_option( 'sportspress_sport', $_POST['sportspress_sport'] );
+	    	if ( isset( $_POST['timezone_string'] ) ):
+	    		update_option( 'timezone_string', $_POST['timezone_string'] );
 	    	endif;
 			if ( isset( $_POST['sportspress_mode'] ) && ! empty( $_POST['sportspress_mode'] ) && get_option( 'sportspress_mode', null ) != $_POST['sportspress_mode'] ):
 				$sport = $_POST['sportspress_mode'];
 				update_option( 'sportspress_mode', $_POST['sportspress_mode'] );
 	    	endif;
-	    	if ( isset( $_POST['sportspress_default_country'] ) ):
-	    		update_option( 'sportspress_default_country', $_POST['sportspress_default_country'] );
+			if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
+				$sport = $_POST['sportspress_sport'];
+				SP_Admin_Sports::apply_preset( $sport );
+				update_option( 'sportspress_sport', $_POST['sportspress_sport'] );
 	    		update_option( '_sportspress_needs_welcome', 1 );
-			?>
+				?>
 				<div id="message" class="updated sportspress-message">
 					<p><strong><?php _e( 'Your settings have been saved.', 'sportspress' ); ?></strong></p>
 				</div>
@@ -198,20 +199,33 @@ class SP_Admin_Welcome {
 				<div class="sp-feature feature-section col three-col">
 					<div>
 						<form method="post" id="mainform" action="" enctype="multipart/form-data">
-							<h4><?php _e( 'Base Location', 'sportspress' ); ?></h4>
-							<?php
-							$selected = (string) get_option( 'sportspress_default_country', 'US' );
-							$continents = SP()->countries->continents;
-					    	?>
-					    	<p>
-								<select name="sportspress_default_country" data-placeholder="<?php _e( 'Choose a country&hellip;', 'sportspress' ); ?>" title="Country" class="chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>">
-					        		<?php SP()->countries->country_dropdown_options( $selected ); ?>
-					        	</select>
-					        </p>
+							<h4><?php _e( 'Timezone', 'sportspress' ); ?></h4>
+							<select id="timezone_string" name="timezone_string" class="<?php echo $class; ?>">
+								<?php
+								$current_offset = get_option('gmt_offset');
+								$tzstring = get_option('timezone_string');
+
+								$check_zone_info = true;
+
+								// Remove old Etc mappings. Fallback to gmt_offset.
+								if ( false !== strpos($tzstring,'Etc/GMT') )
+									$tzstring = '';
+
+								if ( empty($tzstring) ) { // Create a UTC+- zone if no timezone string exists
+									$check_zone_info = false;
+									if ( 0 == $current_offset )
+										$tzstring = 'UTC+0';
+									elseif ($current_offset < 0)
+										$tzstring = 'UTC' . $current_offset;
+									else
+										$tzstring = 'UTC+' . $current_offset;
+								}
+								echo wp_timezone_choice($tzstring);
+								?>
+							</select>
 							<h4><?php _e( 'Sport', 'sportspress' ); ?></h4>
 							<?php
 							$sport_options = SP_Admin_Sports::get_preset_options();
-							$class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
 							$settings = array( array(
 								'id'        => 'sportspress_sport',
 								'default'   => 'soccer',
