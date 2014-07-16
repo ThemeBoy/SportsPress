@@ -2,7 +2,7 @@
 
 $strings = 'tinyMCE.addI18n({' . _WP_Editors::$mce_locale . ':{
     sportspress:{
-        insert: "' . esc_js( __( 'SportsPress shortcodes', 'sportspress' ) ) . '",
+        insert: "' . esc_js( __( 'SportsPress Shortcodes', 'sportspress' ) ) . '",
         auto: "' . esc_js( __( 'Auto', 'sportspress' ) ) . '",
         manual: "' . esc_js( __( 'Manual', 'sportspress' ) ) . '",
         single: "' . esc_js( __( 'Single', 'sportspress' ) ) . '",
