@@ -3,7 +3,7 @@
  * Plugin Name: SportsPress
  * Plugin URI: http://themeboy.com/sportspress/
  * Description: Manage your club and its players, staff, events, league tables, and player lists.
- * Version: 1.1.8
+ * Version: 1.2.0
  * Author: ThemeBoy
  * Author URI: http://themeboy.com/
  * Requires at least: 3.8
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress' ) ) :
  * Main SportsPress Class
  *
  * @class SportsPress
- * @version	1.1.8
+ * @version	1.2.0
  */
 final class SportsPress {
 
 	/**
 	 * @var string
 	 */
-	public $version = '1.1.8';
+	public $version = '1.2.0';
 
 	/**
 	 * @var SporsPress The single instance of the class
@@ -119,7 +119,6 @@ final class SportsPress {
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 		add_action( 'widgets_init', array( $this, 'include_widgets' ) );
 		add_action( 'init', array( $this, 'init' ), 0 );
-		add_action( 'init', array( $this, 'include_template_functions' ) );
 		add_action( 'init', array( 'SP_Shortcodes', 'init' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup_environment' ) );
 		add_filter( 'gettext', array( $this, 'gettext' ), 20, 3 );
@@ -221,6 +220,9 @@ final class SportsPress {
 		// Classes (used on all pages)
 		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
 		include_once( 'includes/class-sp-formats.php' );						// Defines custom post type formats
+		
+		// Include template functions making them pluggable by plugins and themes.
+		include_once( 'includes/sp-template-functions.php' );
 
 		// Include template hooks in time for themes to remove/modify them
 		include_once( 'includes/sp-template-hooks.php' );
@@ -243,13 +245,6 @@ final class SportsPress {
 		include_once( 'includes/class-sp-template-loader.php' );		// Template Loader
 		include_once( 'includes/class-sp-frontend-scripts.php' );		// Frontend Scripts
 		include_once( 'includes/class-sp-shortcodes.php' );				// Shortcodes class
-	}
-
-	/**
-	 * Function used to Init SportsPress Template Functions - This makes them pluggable by plugins and themes.
-	 */
-	public function include_template_functions() {
-		include_once( 'includes/sp-template-functions.php' );
 	}
 
 	/**
