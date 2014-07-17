@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-07-04 16:04+1000\n"
-"PO-Revision-Date: 2014-07-09 17:07+1000\n"
+"PO-Revision-Date: 2014-07-18 00:14+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/"
 "sportspress/language/de_DE/)\n"
@@ -1734,8 +1734,8 @@ msgid ""
 "The description is not prominent by default; however, some themes may show "
 "it."
 msgstr ""
-"Die Beschreibung ist standardmäßig nicht hervorgehoben, jedoch können einige "
-"Themes sie anzeigen."
+"Die Beschreibung wird standardmäßig nicht angezeigt, manche Themes "
+"unterstützten das aber."
 
 #: includes/sp-template-hooks.php:151
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:44
@@ -2400,7 +2400,7 @@ msgstr "Nummer"
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:48
 msgid "Role"
-msgstr "Rolle"
+msgstr "Tätigkeitsbereich"
 
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:31
@@ -2623,7 +2623,7 @@ msgstr "Aktuelle Mannschaften"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:79
 msgid "Home"
-msgstr ""
+msgstr "Heim"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:94
 #: includes/admin/views/html-admin-page-status.php:24
@@ -2635,8 +2635,8 @@ msgid ""
 "The abbreviation is not prominent by default; however, some themes may show "
 "it"
 msgstr ""
-"Das Kurzzeichen ist standardmäßig nicht hervorgehoben, jedoch können einige "
-"Themes es anzeigen."
+"Das Kurzzeichen wird standardmäßig nicht angezeigt, manche Themes "
+"unterstützten das aber."
 
 #: includes/admin/settings/class-sp-settings-config.php:25
 msgid "Configure"
@@ -3151,9 +3151,9 @@ msgid ""
 msgstr ""
 "<strong>Mit Ihrem Theme sind veraltete Kopien der SportsPress "
 "Templatedateien</strong> gebündelt - sollten Sie auf funktionelle Probleme "
-"auf dem Frontend treffen, könnte das der Grund dafür sein. Stellen Sie "
-"sicher, dass sie aktualisiert oder entfernt werden. (In der Regel empfehlen "
-"wir, dass nur die Templatedateien gebündelt werden, die tatsächlich anpassen "
+"im Frontend treffen, könnte das der Grund dafür sein. Stellen Sie sicher, "
+"dass sie aktualisiert oder entfernt werden. (In der Regel empfehlen wir, "
+"dass nur die Templatedateien gebündelt werden, die tatsächlich angepasst "
 "werden müssen.) Siehe auch den Systembericht für weitere Informationen."
 
 #: includes/admin/views/html-notice-theme-support.php:5

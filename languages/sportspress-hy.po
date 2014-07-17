@@ -4,15 +4,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-07-09 17:06+1000\n"
-"PO-Revision-Date: 2014-07-09 17:06+1000\n"
+"POT-Creation-Date: 2014-07-04 16:04+1000\n"
+"PO-Revision-Date: 2014-07-18 00:14+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Armenian (http://www.transifex.com/projects/p/sportspress/"
 "language/hy/)\n"
-"Language: hy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hy\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
@@ -68,7 +68,7 @@ msgid "players"
 msgstr "խաղացողներ"
 
 #: sportspress.php:332 includes/class-sp-post-types.php:466
-#: includes/admin/class-sp-admin-welcome.php:249
+#: includes/admin/class-sp-admin-welcome.php:250
 msgid "Add New Player"
 msgstr "Նոր խաղացող"
 
@@ -79,7 +79,7 @@ msgstr "Խմբագրել խաղացողին"
 #: sportspress.php:336
 #: includes/admin/settings/class-sp-settings-players.php:39
 msgid "Player Options"
-msgstr "Խաղացողի լարք"
+msgstr "Խաղացողի դրույթներ"
 
 #: sportspress.php:338 includes/class-sp-post-types.php:281
 #: includes/class-sp-post-types.php:282
@@ -1427,7 +1427,7 @@ msgid "Event"
 msgstr "Խաղ"
 
 #: includes/class-sp-post-types.php:343
-#: includes/admin/class-sp-admin-welcome.php:250
+#: includes/admin/class-sp-admin-welcome.php:251
 msgid "Add New Event"
 msgstr "Նոր խաղ"
 
@@ -1475,7 +1475,7 @@ msgid "Teams"
 msgstr "Թիմեր"
 
 #: includes/class-sp-post-types.php:404
-#: includes/admin/class-sp-admin-welcome.php:248
+#: includes/admin/class-sp-admin-welcome.php:249
 msgid "Add New Team"
 msgstr "Նոր թիմ"
 
@@ -1783,12 +1783,12 @@ msgstr "Օր/Ժամ."
 msgid "Now"
 msgstr "Հիմա"
 
-#: includes/sp-template-hooks.php:330
+#: includes/sp-template-hooks.php:326
 #: includes/admin/class-sp-admin-post-types.php:62
 msgid "Settings saved."
 msgstr "Կարգավորումները պահպանվեցին։"
 
-#: includes/sp-template-hooks.php:332
+#: includes/sp-template-hooks.php:328
 #: includes/admin/class-sp-admin-post-types.php:64
 #: includes/admin/settings/class-sp-settings-config.php:126
 #: includes/admin/settings/class-sp-settings-config.php:199
@@ -1799,24 +1799,24 @@ msgstr "Կարգավորումները պահպանվեցին։"
 msgid "View All"
 msgstr "Տեսնել բոլորը"
 
-#: includes/sp-template-hooks.php:338 includes/sp-template-hooks.php:341
-#: includes/sp-template-hooks.php:346
+#: includes/sp-template-hooks.php:334 includes/sp-template-hooks.php:337
+#: includes/sp-template-hooks.php:342
 #: includes/admin/class-sp-admin-post-types.php:69
 #: includes/admin/class-sp-admin-post-types.php:72
 #: includes/admin/class-sp-admin-post-types.php:77
 msgid "Changes saved."
 msgstr "Փոփոխությունները պահպանվեցին։"
 
-#: includes/sp-template-hooks.php:343 includes/sp-template-hooks.php:348
-#: includes/sp-template-hooks.php:358
+#: includes/sp-template-hooks.php:339 includes/sp-template-hooks.php:344
+#: includes/sp-template-hooks.php:354
 #: includes/admin/class-sp-admin-post-types.php:74
 #: includes/admin/class-sp-admin-post-types.php:79
 #: includes/admin/class-sp-admin-post-types.php:89
 msgid "Success!"
 msgstr "Ստացվե՛ց։"
 
-#: includes/sp-template-hooks.php:350 includes/sp-template-hooks.php:356
-#: includes/sp-template-hooks.php:360
+#: includes/sp-template-hooks.php:346 includes/sp-template-hooks.php:352
+#: includes/sp-template-hooks.php:356
 #: includes/admin/class-sp-admin-post-types.php:81
 #: includes/admin/class-sp-admin-post-types.php:87
 #: includes/admin/class-sp-admin-post-types.php:91
@@ -1824,13 +1824,13 @@ msgstr "Ստացվե՛ց։"
 msgid "Preview %s"
 msgstr "Նախադիտել %s"
 
-#: includes/sp-template-hooks.php:353
+#: includes/sp-template-hooks.php:349
 #: includes/admin/class-sp-admin-post-types.php:84
 #, php-format
 msgid "Scheduled for: <b>%1$s</b>."
 msgstr "Պլանավորված է՝ <b>%1$s</b>"
 
-#: includes/sp-template-hooks.php:354
+#: includes/sp-template-hooks.php:350
 #: includes/admin/class-sp-admin-post-types.php:85
 msgid "M j, Y @ G:i"
 msgstr "M j, Y @ G:i"
@@ -1946,7 +1946,7 @@ msgid "Action failed. Please refresh the page and retry."
 msgstr "Չստացվեց։ Վերբեռնեք էջը և կրկին փորձեք։ "
 
 #: includes/admin/class-sp-admin-settings.php:67
-#: includes/admin/class-sp-admin-welcome.php:195
+#: includes/admin/class-sp-admin-welcome.php:196
 msgid "Your settings have been saved."
 msgstr "Ձեր կարգավորումները պահպանվեցին։ "
 
@@ -2010,54 +2010,54 @@ msgstr "Տարբերակ %s"
 msgid "Get Started"
 msgstr "Սկսենք"
 
-#: includes/admin/class-sp-admin-welcome.php:201
+#: includes/admin/class-sp-admin-welcome.php:202
 #: includes/admin/settings/class-sp-settings-general.php:222
 #: includes/admin/settings/class-sp-settings-general.php:225
 msgid "Base Location"
 msgstr "Հիմնական վայրը"
 
-#: includes/admin/class-sp-admin-welcome.php:207
+#: includes/admin/class-sp-admin-welcome.php:208
 #: includes/admin/settings/class-sp-settings-general.php:226
 msgid "Choose a country&hellip;"
 msgstr "Ընտրեք երկիրը"
 
-#: includes/admin/class-sp-admin-welcome.php:211
+#: includes/admin/class-sp-admin-welcome.php:212
 #: includes/admin/settings/class-sp-settings-general.php:49
 #: includes/admin/views/html-admin-page-status.php:223
 msgid "Sport"
 msgstr "Մարզաձև"
 
-#: includes/admin/class-sp-admin-welcome.php:224
+#: includes/admin/class-sp-admin-welcome.php:225
 #: includes/admin/settings/class-sp-settings-general.php:56
 msgid "Mode"
 msgstr "Ռեժիմ"
 
-#: includes/admin/class-sp-admin-welcome.php:232
+#: includes/admin/class-sp-admin-welcome.php:233
 #: includes/admin/settings/class-sp-settings-general.php:61
 msgctxt "mode select"
 msgid "Team"
 msgstr "Թիմային"
 
-#: includes/admin/class-sp-admin-welcome.php:233
+#: includes/admin/class-sp-admin-welcome.php:234
 #: includes/admin/settings/class-sp-settings-general.php:62
 msgctxt "mode select"
 msgid "Individual"
 msgstr "Անհատական"
 
-#: includes/admin/class-sp-admin-welcome.php:239
+#: includes/admin/class-sp-admin-welcome.php:240
 #: includes/admin/views/html-admin-settings.php:16
 msgid "Save changes"
 msgstr "Պահպանել փոփոխությունները"
 
-#: includes/admin/class-sp-admin-welcome.php:246
+#: includes/admin/class-sp-admin-welcome.php:247
 msgid "Next Steps"
 msgstr "Հաջորդ քայլերը"
 
-#: includes/admin/class-sp-admin-welcome.php:254
+#: includes/admin/class-sp-admin-welcome.php:255
 msgid "Translators"
 msgstr "Թարգմանիչներ"
 
-#: includes/admin/class-sp-admin-welcome.php:255
+#: includes/admin/class-sp-admin-welcome.php:256
 msgid ""
 "SportsPress has been kindly translated into several other languages thanks "
 "to our translation team. Want to see your name? <a href=\"https://www."
@@ -2068,7 +2068,7 @@ msgstr ""
 "transifex.com/projects/p/sportspress/\">Թարգմանեք SportsPress-ը ձեր լեզվով</"
 "a>։"
 
-#: includes/admin/class-sp-admin-welcome.php:271
+#: includes/admin/class-sp-admin-welcome.php:272
 msgid "Go to SportsPress Settings"
 msgstr "Անցնել SportsPress-ի կարգավորումներին"
 
@@ -2094,7 +2094,7 @@ msgid ""
 "Import complete - imported <strong>%s</strong> events and skipped <strong>"
 "%s</strong>."
 msgstr ""
-"Ներմուծումն ավարտված է՝ ներմուծվել է <strong>%s</strong> խաղ և բաց է թողնվել "
+"Ներմուծումն ավարտված է։ Ներմուծվել է <strong>%s</strong> խաղ և բաց է թողնվել "
 "<strong>%s</strong>:"
 
 #: includes/admin/importers/class-sp-event-importer.php:383
@@ -2173,7 +2173,7 @@ msgstr "Բաժանիչ"
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:89
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:121
 msgid "Format"
-msgstr "Ֆորմատ"
+msgstr "Ձևաչափ"
 
 #: includes/admin/importers/class-sp-event-importer.php:464
 #: includes/admin/importers/class-sp-event-importer.php:479
@@ -2401,7 +2401,7 @@ msgstr "Համառոտագրեր"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:124
 msgid "Video"
-msgstr "Վիդեո"
+msgstr "Տեսանյութ"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:132
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:147
@@ -2541,7 +2541,7 @@ msgstr "&mdash; Չկա &mdash;"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:27
 msgid "Remove video"
-msgstr "Հեռացնել վիդեոն"
+msgstr "Հեռացնել տեսանյութը"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:33
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:86
@@ -2551,7 +2551,7 @@ msgstr "Չեղարկել"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:36
 msgid "Add video"
-msgstr "Նոր վիդեո"
+msgstr "Նոր տեսանյութ"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:25
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-columns.php:25
@@ -2669,7 +2669,7 @@ msgstr "Կիրառվում է խաղացողների ցանկերի համար:"
 
 #: includes/admin/settings/class-sp-settings-events.php:42
 msgid "Event Options"
-msgstr "Խաղի մանրամասներ"
+msgstr "Խաղի դրույթներ"
 
 #: includes/admin/settings/class-sp-settings-events.php:45
 #: includes/admin/settings/class-sp-settings-events.php:147
@@ -2803,7 +2803,7 @@ msgstr "Արձագանքող աղյուսակներ"
 
 #: includes/admin/settings/class-sp-settings-general.php:131
 msgid "This will enable a script allowing the tables to be responsive."
-msgstr "Սա կմիացնի աղյուսակները արձագանքող դարձնող սկրիպտը։"
+msgstr "Սա կմիացնի աղյուսակներն արձագանքող դարձնող սկրիպտը։"
 
 #: includes/admin/settings/class-sp-settings-general.php:135
 msgid "Sortable tables"
@@ -2858,15 +2858,15 @@ msgstr "Ցույց տալ դրոշները"
 
 #: includes/admin/settings/class-sp-settings-staff.php:41
 msgid "Staff Options"
-msgstr "Անձնակազմի լարք"
+msgstr "Անձնակազմի դրույթներ"
 
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
-msgstr "Թիմի լարք"
+msgstr "Թիմի դրույթներ"
 
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "The following options affect how words are displayed on the frontend."
-msgstr "Հետևյալ կարգավորումները ազդում են բառերի արտապատկերման ձևի վրա:"
+msgstr "Հետևյալ դրույթներն ազդում են բառերի արտապատկերման ձևի վրա:"
 
 #: includes/admin/views/html-admin-page-status.php:5
 msgid "Please include this information when requesting support:"
@@ -3120,8 +3120,8 @@ msgid ""
 "SportsPress theme :)"
 msgstr ""
 "<strong>Ձեր թեմայի և  SportsPress-ի համատեղելիության մասին ոչինչ հայտնի չէ:</"
-"strong> Եթե դուք ունենաք շարվածքի հետ կապված խնդիրներ, ապա կարդացեք մեր "
-"ինտեգրման ուղեցույցը կամ ընտրեք SportsPress-ի հետ համատեղելի թեմա:"
+"strong> Եթե ձեզ մոտ շարվածքի հետ կապված խնդիրներ ծագեն, ապա կարդացեք մեր "
+"ինտեգրման ուղեցույցը կամ ընտրեք SportsPress-ի հետ համատեղելի թեմա :)"
 
 #: includes/admin/views/html-notice-theme-support.php:7
 msgid "Theme Integration Guide"
