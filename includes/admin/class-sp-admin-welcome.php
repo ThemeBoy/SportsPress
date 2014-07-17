@@ -79,7 +79,7 @@ class SP_Admin_Welcome {
 				position: absolute;
 				top: 0;
 				right: 0;
-				background: #2f4265 url(<?php echo $badge_url; ?>) no-repeat center top;
+				background: #00cac4 url(<?php echo $badge_url; ?>) no-repeat center top;
 				text-rendering: optimizeLegibility;
 				padding-top: 160px;
 				height: 42px;
@@ -268,7 +268,7 @@ class SP_Admin_Welcome {
 						<h4><?php _e( 'Translators', 'sportspress' ); ?></h4>
 						<p><?php _e( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="https://www.transifex.com/projects/p/sportspress/">Translate SportsPress</a>.', 'sportspress' ); ?></p>
 						<?php
-						$translator_handles = array( 'Abdulelah', 'albertone', 'Andrew_Melim', 'ArtakEVN', 'aylaview', 'Bhelpful2', 'bizover', 'BOCo', 'dic_2008', 'fredodq', 'hanro', 'hushiea', 'i__k', 'JensZ', 'joegalaxy66', 'JuKi', 'karimjarro', 'King3R', 'latixns', 'massimo.marra', 'MohamedZ', 'rochester', 'Selskei', 'sijo', 'Spirossmil', 'Taurus', 'ThemeBoy', 'valentijnreza' );
+						$translator_handles = array( 'Abdulelah', 'albertone', 'Andrew_Melim', 'ArtakEVN', 'aylaview', 'Bhelpful2', 'bizover', 'BOCo', 'dic_2008', 'fredodq', 'hanro', 'hushiea', 'i__k', 'JensZ', 'joegalaxy66', 'JuKi', 'karimjarro', 'King3R', 'krisop', 'latixns', 'massimo.marra', 'MohamedZ', 'rochester', 'Selskei', 'sijo', 'Spirossmil', 'Taurus', 'ThemeBoy', 'valentijnreza' );
 						$translator_links = array();
 						foreach ( $translator_handles as $handle ):
 							$translator_links[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';
