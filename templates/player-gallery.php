@@ -97,7 +97,7 @@ if ( is_int( $number ) && $number > 0 )
 	$limit = $number;
 
 if ( $grouping === 'position' ):
-	$groups = get_terms( 'sp_position' );
+	$groups = get_terms( 'sp_position', array( 'orderby' => 'slug' ) );
 else:
 	$group = new stdClass();
 	$group->term_id = null;
