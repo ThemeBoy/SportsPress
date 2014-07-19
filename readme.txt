@@ -4,7 +4,7 @@ Tags: sport, sports, clubs, teams, statistics, stats, fixtures, results, standin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -139,6 +139,15 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 1.2.1 =
+* Feature - Enable option to display team's total player performance per event.
+* Tweak - Order player gallery positions by slug.
+* Tweak - Remove unused Played column setting from Player List widget.
+* Fix - League Table widget columns setting independent from post setting.
+* Fix - Event List widget columns setting not being applied.
+* Fix - Row limits in League Table, Player List, & Event List shortcodes.
+* Localization - Update Armenian, Finnish, & French translations.
 
 = 1.2 =
 * Feature - Shortcode dropdown menu added to page and post editor.
