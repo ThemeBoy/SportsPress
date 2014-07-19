@@ -49,7 +49,7 @@ if ( is_array( $teams ) ):
 		$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
 
 		?>
-		<h4 class="sp-table=caption"><?php echo get_the_title( $team_id ); ?></h4>
+		<h4 class="sp-table-caption"><?php echo get_the_title( $team_id ); ?></h4>
 		<?php
 		if ( get_option( 'sportspress_event_show_staff', 'yes' ) == 'yes' ):
 			sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
