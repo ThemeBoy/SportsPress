@@ -57,7 +57,7 @@ $output .= '</tr>' . '</thead>' . '<tbody>';
 
 $i = 0;
 
-if ( is_int( $number ) && $number > 0 )
+if ( is_numeric( $number ) && $number > 0 )
 	$limit = $number;
 
 foreach( $data as $team_id => $row ):
