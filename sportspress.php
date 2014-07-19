@@ -136,7 +136,7 @@ final class SportsPress {
 	public function action_links( $links ) {
 		return array_merge( array(
 			'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
-			'<a href="' . apply_filters( 'sportspress_themes_url', 'http://themeboy.com/sportspress/themes/' ) . '">' . __( 'Themes', 'sportspress' ) . '</a>',
+			'<a href="' . apply_filters( 'sportspress_docs_url', 'http://sportspresspro.com/docs/' ) . '">' . __( 'Docs', 'sportspress' ) . '</a>',
 			'<a href="' . apply_filters( 'sportspress_pro_url', 'http://sportspresspro.com/pricing/' ) . '">' . __( 'Upgrade', 'sportspress' ) . '</a>',
 		), $links );
 	}
