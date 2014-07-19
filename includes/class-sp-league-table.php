@@ -318,11 +318,6 @@ class SP_League_Table extends SP_Custom_Post{
 		else:
 			if ( ! is_array( $usecolumns ) )
 				$usecolumns = array();
-			foreach ( $columns as $key => $label ):
-				if ( ! in_array( $key, $usecolumns ) ):
-					unset( $columns[ $key ] );
-				endif;
-			endforeach;
 			$labels = array_merge( array( 'name' => __( 'Team', 'sportspress' ) ), $columns );
 			$merged[0] = $labels;
 			return $merged;
