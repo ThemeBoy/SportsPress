@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.2
+ * @version     1.2.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -39,11 +39,15 @@ if ( is_array( $teams ) ):
 		$players = sp_array_between( (array)get_post_meta( $id, 'sp_player', false ), 0, $index );
 		$has_players = sizeof( $players ) > 1;
 
-		if ( ! $has_players && $status != 'results' ) continue;
+		if ( ! $has_players ):
+			if ( $status != 'results' ) continue;
+			elseif ( get_option( 'sportspress_event_show_total', 'yes' ) != 'yes' ) continue;
+		endif;
 
 		$totals = array();
 
 		$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
+
 		?>
 		<h4 class="sp-table=caption"><?php echo get_the_title( $team_id ); ?></h4>
 		<?php
@@ -144,7 +148,7 @@ if ( is_array( $teams ) ):
 						?>
 					</tbody>
 				<?php endif; ?>
-				<?php if ( $status == 'results' && array_key_exists( 0, $data ) ): ?>
+				<?php if ( $status == 'results' && get_option( 'sportspress_event_show_total', 'yes' ) == 'yes' && array_key_exists( 0, $data ) ): ?>
 					<<?php echo ( $show_players && $has_players ? 'tfoot' : 'tbody' ); ?>>
 						<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">
 							<?php
