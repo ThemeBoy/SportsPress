@@ -86,7 +86,7 @@ if ( empty( $table_rows ) ):
 
 else:
 
-	$output .= '<h4 class="sp-table=caption">' . __( 'Team Results', 'sportspress' ) . '</h4>';
+	$output .= '<h4 class="sp-table-caption">' . __( 'Team Results', 'sportspress' ) . '</h4>';
 
 	$output .= '<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
 		'<table class="sp-event-results sp-data-table sp-responsive-table"><thead>' .

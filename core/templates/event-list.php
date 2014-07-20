@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.2
+ * @version     1.2.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -39,8 +39,12 @@ if ( $order != 'default' )
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
 
-if ( isset( $columns ) )
-	$usecolumns = explode( ',', $columns );
+if ( isset( $columns ) ):
+	if ( is_array( $columns ) )
+		$usecolumns = $columns;
+	else
+		$usecolumns = explode( ',', $columns );
+endif;
 ?>
 <div class="sp-table-wrapper sp-scrollable-table-wrapper">
 	<table class="sp-event-list sp-data-table<?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $paginated ) { ?> sp-paginated-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
@@ -70,7 +74,7 @@ if ( isset( $columns ) )
 			<?php
 			$i = 0;
 
-			if ( is_int( $number ) && $number > 0 )
+			if ( is_numeric( $number ) && $number > 0 )
 				$limit = $number;
 
 			foreach ( $data as $event ):

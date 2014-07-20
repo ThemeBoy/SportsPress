@@ -18,19 +18,43 @@ class SP_Sponsor_Template_Loader {
 		add_filter( 'the_content', array( $this, 'sponsor_content' ) );
 	}
 
-	public function add_content( $content, $template, $append = false ) {
+	public function add_content( $content, $template, $position = 10 ) {
+		if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+		if ( ! in_the_loop() ) return; // Return if not in main loop
+
+		$content = '<div class="sp-post-content">' . $content . '</div>';
+
 		ob_start();
-		$template = sp_get_template( 'content-single-sponsor.php', array(), 'content-single-sponsor', SP_SPONSORS_DIR . 'templates/' );
-		sp_set_post_impressions( get_the_ID() );
-		if ( $append )
-			return $content . ob_get_clean();
-		else
-			return ob_get_clean() . $content;
+
+		if ( $position <= 0 )
+			echo $content;
+
+		do_action( 'sportspress_before_single_' . $template );
+
+		if ( post_password_required() ) {
+			echo get_the_password_form();
+			return;
+		}
+
+		if ( $position > 0 && $position <= 5 )
+			echo $content;
+
+		do_action( 'sportspress_single_' . $template . '_content' );
+
+		if ( $position > 5 && $position <= 10 )
+			echo $content;
+
+		do_action( 'sportspress_after_single_' . $template );
+
+		if ( $position > 10 )
+			echo $content;
+
+		return ob_get_clean();
 	}
 
 	public function sponsor_content( $content ) {
 		if ( is_singular( 'sp_sponsor' ) )
-			$content = self::add_content( $content, 'sponsor' );
+			$content = self::add_content( $content, 'sponsor', apply_filters( 'sportspress_sponsor_content_priority', 10 ) );
 		return $content;
 	}
 

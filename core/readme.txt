@@ -4,7 +4,7 @@ Tags: sport, sports, clubs, teams, statistics, stats, fixtures, results, standin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.1.8
+Stable tag: 1.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,12 +30,13 @@ SportsPress is the ultimate all-in-one plugin for transforming your WordPress bl
 * Sport Presets
 * Team & Individual mode
 * Import Events, Teams, Players, and Staff from CSV Files
+* Easy Shortcodes Menu in Editor
 
-More details about each feature are available on the [ThemeBoy Website](http://themeboy.com/sportspress/).
+More details about each feature are available on the [SportsPress Website](http://sportspresspro.com/).
 
 = Premium Extensions =
 
-Looking for more advanced sports functionality? ThemeBoy offers a range of [SportsPress extensions](http://themeboy.com/sportspress/extensions/) to add more features to your club website.
+Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://sportspresspro.com/pricing/) to get access to more advanced features to your club website.
 
 = Available Languages =
 * English – English ( en_US )
@@ -75,7 +76,7 @@ Translators can contribute new languages to SportsPress through [Transifex](http
 = Stay Current =
 To keep up with the latest updates and new features, be sure to do the following:
 
-* Visit the [ThemeBoy homepage](http://themeboy.com/).
+* Visit the [SportsPress Pro homepage](http://sportspresspro.com/).
 * Subscribe to our [YouTube channel](https://www.youtube.com/user/themeboyteam).
 * Follow ThemeBoy on [Facebook](https://facebook.com/themeboy) & [Twitter](http://twitter.com/themeboy).
 
@@ -138,6 +139,26 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 1.2.2 =
+* Tweak - Display link to docs instead of themes.
+* Fix - Enable hide theme support notice.
+* Fix - Typo in table caption classes.
+
+= 1.2.1 =
+* Feature - Enable option to display team's total player performance per event.
+* Tweak - Order player gallery positions by slug.
+* Tweak - Remove unused Played column setting from Player List widget.
+* Fix - League Table widget columns setting independent from post setting.
+* Fix - Event List widget columns setting not being applied.
+* Fix - Row limits in League Table, Player List, & Event List shortcodes.
+* Localization - Update Armenian, Finnish, & French translations.
+
+= 1.2 =
+* Feature - Shortcode dropdown menu added to page and post editor.
+* Feature - New shortcodes added to individual player profiles.
+* Tweak - Add timezone setting in place of base country.
+* Localization - Update translations.
 
 = 1.1.8 =
 * Tweak - Order player list positions by slug.

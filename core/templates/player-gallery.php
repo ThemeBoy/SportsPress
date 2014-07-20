@@ -93,11 +93,11 @@ $size_class = sanitize_html_class( $size );
 $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
 echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
 
-if ( is_int( $number ) && $number > 0 )
+if ( intval( $number ) > 0 )
 	$limit = $number;
 
 if ( $grouping === 'position' ):
-	$groups = get_terms( 'sp_position' );
+	$groups = get_terms( 'sp_position', array( 'orderby' => 'slug' ) );
 else:
 	$group = new stdClass();
 	$group->term_id = null;

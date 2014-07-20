@@ -32,7 +32,7 @@ foreach( $venues as $venue ):
 	$latitude = sp_array_value( $meta, 'sp_latitude', 0 );
 	$longitude = sp_array_value( $meta, 'sp_longitude', 0 );
 	?>
-	<h4 class="sp-table=caption"><?php _e( 'Venue', 'sportspress' ); ?></h4>
+	<h4 class="sp-table-caption"><?php _e( 'Venue', 'sportspress' ); ?></h4>
 	<table class="sp-data-table sp-event-venue">
 		<thead>
 			<tr>

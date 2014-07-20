@@ -45,7 +45,6 @@ class SP_Admin {
 
 			if ( get_option( 'sportspress_rich_editing', true ) ):
 				include( 'class-sp-admin-editor.php' );
-				include( 'class-sp-admin-thickbox.php' );
 			endif;
 
 			// Help
