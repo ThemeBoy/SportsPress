@@ -124,15 +124,32 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				if ( empty( $teams ) ):
 					echo '&mdash;';
 				else:
-					$current_team = get_post_meta( $post_id, 'sp_current_team', true );
+					$results = get_post_meta( $post_id, 'sp_results', true );
+					$main_result = get_option( 'sportspress_primary_result', null );
 					foreach( $teams as $team_id ):
 						if ( ! $team_id ) continue;
 						$team = get_post( $team_id );
+
 						if ( $team ):
-							echo $team->post_title;
-							if ( $team_id == $current_team ):
-								echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
+							$team_results = sportspress_array_value( $results, $team_id, null );
+
+							if ( $main_result ):
+								$team_result = sportspress_array_value( $team_results, $main_result, null );
+							else:
+								if ( is_array( $team_results ) ):
+									end( $team_results );
+									$team_result = prev( $team_results );
+								else:
+									$team_result = null;
+								endif;
 							endif;
+
+							if ( $team_result != null ):
+								unset( $team_results['outcome'] );
+								$team_results = implode( ' | ', $team_results );
+								echo '<a class="result tips" title="' . $team_results . '" href="' . get_edit_post_link( $post_id ) . '">' . $team_result . '</a> ';
+							endif;
+							echo $team->post_title;
 							echo '<br>';
 						endif;
 					endforeach;
