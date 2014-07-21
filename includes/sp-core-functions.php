@@ -260,23 +260,31 @@ if ( !function_exists( 'sp_array_value' ) ) {
 }
 
 if ( !function_exists( 'sp_array_combine' ) ) {
-	function sp_array_combine( $keys = array(), $values = array() ) {
+	function sp_array_combine( $keys = array(), $values = array(), $key_order = false ) {
 		if ( ! is_array( $keys ) ) return array();
 		if ( ! is_array( $values ) ) $values = array();
 
 		$output = array();
 
-		foreach ( $values as $key => $value ):
-			if ( in_array( $key, $keys ) ):
-				$output[ $key ] = $value;
-			endif;
-		endforeach;
+		if ( $key_order ):
+			foreach( $keys as $key ):
+				if ( array_key_exists( $key, $values ) )
+					$output[ $key ] = $values[ $key ];
+				else
+					$output[ $key ] = array();
+			endforeach;
+		else:
+			foreach ( $values as $key => $value ):
+				if ( in_array( $key, $keys ) ):
+					$output[ $key ] = $value;
+				endif;
+			endforeach;
 
-		foreach ( $keys as $key ):
-			if ( $key !== false && ! array_key_exists( $key, $output ) )
-				$output[ $key ] = array();
-		endforeach;
-
+			foreach ( $keys as $key ):
+				if ( $key !== false && ! array_key_exists( $key, $output ) )
+					$output[ $key ] = array();
+			endforeach;
+		endif;
 		return $output;
 	}
 }

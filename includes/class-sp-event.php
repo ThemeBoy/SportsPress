@@ -36,7 +36,7 @@ class SP_Event extends SP_Custom_Post{
 		$usecolumns = get_post_meta( $this->ID, 'sp_result_columns', true );
 
 		// Get results for all teams
-		$data = sp_array_combine( $teams, $results );
+		$data = sp_array_combine( $teams, $results, true );
 
 		if ( $admin ):
 			return array( $columns, $usecolumns, $data );
