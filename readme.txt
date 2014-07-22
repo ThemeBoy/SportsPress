@@ -34,7 +34,7 @@ SportsPress is the ultimate all-in-one plugin for transforming your WordPress bl
 
 More details about each feature are available on the [SportsPress Website](http://sportspresspro.com/).
 
-= Premium Extensions =
+= SportsPress Pro =
 
 Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://sportspresspro.com/pricing/) to get access to more advanced features to your club website.
 
@@ -64,6 +64,14 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Spanish – Español ( es_ES )
 * Swedish – Svenska ( sv_SE )
 * Turkish - Türkçe ( tr_TR )
+
+= Documentation =
+* [Getting Started](https://sportspresspro.com/docs/installation/)
+* [User Roles](https://sportspresspro.com/docs/section/user-roles/)
+* [Integration Guide](https://sportspresspro.com/docs/theme-integration-guide/)
+* [Actions](https://sportspresspro.com/docs/action-reference/)
+* [Filters](https://sportspresspro.com/docs/filter-reference/)
+* [Shortcodes](https://sportspresspro.com/docs/shortcode-reference/)
 
 = Get Involved =
 
