@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-07-18 00:15+1000\n"
-"PO-Revision-Date: 2014-07-20 00:04+1000\n"
+"POT-Creation-Date: 2014-07-21 15:46+1000\n"
+"PO-Revision-Date: 2014-07-23 01:47+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Armenian (http://www.transifex.com/projects/p/sportspress/"
 "language/hy/)\n"
@@ -31,12 +31,12 @@ msgid "Settings"
 msgstr "Կարգավորումներ"
 
 #: sportspress.php:139
-msgid "Themes"
-msgstr "Թեմաներ"
+msgid "Docs"
+msgstr "Տեղեկագրեր"
 
 #: sportspress.php:140
-msgid "Extensions"
-msgstr "Լրացումներ"
+msgid "Upgrade"
+msgstr "Բարելավել"
 
 #: sportspress.php:335 includes/class-sp-post-types.php:464
 #: includes/admin/class-sp-admin-permalink-settings.php:32
@@ -46,7 +46,6 @@ msgstr "Լրացումներ"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:168
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:103
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:58
-#: includes/admin/settings/class-sp-settings-events.php:85
 #: includes/admin/settings/class-sp-settings-players.php:25
 #: includes/admin/settings/class-sp-settings-players.php:54
 msgid "Players"
@@ -55,11 +54,11 @@ msgstr "Խաղացողներ"
 #: sportspress.php:337 assets/js/admin/editor-lang.php:19
 #: includes/class-sp-ajax.php:467 includes/class-sp-ajax.php:496
 #: includes/class-sp-install.php:160 includes/class-sp-player-list.php:366
-#: includes/class-sp-post-types.php:465 includes/sp-core-functions.php:1088
+#: includes/class-sp-post-types.php:465 includes/sp-core-functions.php:1096
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:62
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:50
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:134
-#: templates/event-performance.php:60
+#: templates/event-performance.php:64
 msgid "Player"
 msgstr "Խաղացող"
 
@@ -87,6 +86,7 @@ msgstr "Խաղացողի դրույթներ"
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:127
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:35
 #: includes/admin/settings/class-sp-settings-config.php:227
+#: includes/admin/settings/class-sp-settings-events.php:85
 #: includes/admin/views/html-admin-page-status.php:247
 msgid "Player Performance"
 msgstr "Խաղացողների արդյունավետությունը"
@@ -145,17 +145,17 @@ msgstr "Ետհաշվարկ"
 #: assets/js/admin/editor-lang.php:11 includes/class-sp-ajax.php:57
 #: includes/class-sp-ajax.php:101 includes/class-sp-ajax.php:130
 #: includes/class-sp-ajax.php:159 includes/class-sp-ajax.php:290
-#: includes/class-sp-post-types.php:342 includes/sp-core-functions.php:1063
+#: includes/class-sp-post-types.php:342 includes/sp-core-functions.php:1071
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:90
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:223
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:52
 #: includes/widgets/class-sp-widget-countdown.php:42
 #: includes/widgets/class-sp-widget-event-list.php:111
-#: templates/event-list.php:53
+#: templates/event-list.php:57
 msgid "Event"
 msgstr "Խաղ"
 
-#: assets/js/admin/editor-lang.php:12 includes/sp-core-functions.php:1062
+#: assets/js/admin/editor-lang.php:12 includes/sp-core-functions.php:1070
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:100
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:103
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:106
@@ -295,8 +295,8 @@ msgstr "Չեղարկել"
 #: includes/class-sp-ajax.php:194 includes/class-sp-ajax.php:264
 #: includes/class-sp-ajax.php:355 includes/class-sp-post-types.php:37
 #: includes/class-sp-post-types.php:66 includes/class-sp-post-types.php:95
-#: includes/class-sp-post-types.php:124 includes/sp-core-functions.php:399
-#: includes/sp-core-functions.php:430
+#: includes/class-sp-post-types.php:124 includes/sp-core-functions.php:407
+#: includes/sp-core-functions.php:438
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:57
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:72
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:87
@@ -334,7 +334,7 @@ msgstr "Կարգավիճակ՝"
 #: includes/widgets/class-sp-widget-event-list.php:87
 #: includes/widgets/class-sp-widget-event-list.php:102
 #: includes/widgets/class-sp-widget-player-gallery.php:76
-#: includes/widgets/class-sp-widget-player-list.php:97
+#: includes/widgets/class-sp-widget-player-list.php:96
 msgid "Default"
 msgstr "Լռելյայն"
 
@@ -353,12 +353,12 @@ msgid "Date:"
 msgstr "Օր՝"
 
 #: includes/class-sp-ajax.php:265 includes/class-sp-ajax.php:356
-#: includes/sp-core-functions.php:431
+#: includes/sp-core-functions.php:439
 msgid "This week"
 msgstr "Այս շաբաթ"
 
 #: includes/class-sp-ajax.php:266 includes/class-sp-ajax.php:357
-#: includes/sp-core-functions.php:432
+#: includes/sp-core-functions.php:440
 msgid "Today"
 msgstr "Այսօր"
 
@@ -373,7 +373,7 @@ msgstr "Ցուցադրվող խաղերի քանակը՝"
 #: includes/widgets/class-sp-widget-event-blocks.php:97
 #: includes/widgets/class-sp-widget-event-list.php:100
 #: includes/widgets/class-sp-widget-player-gallery.php:94
-#: includes/widgets/class-sp-widget-player-list.php:115
+#: includes/widgets/class-sp-widget-player-list.php:114
 msgid "Sort Order:"
 msgstr "Հերթականությունը"
 
@@ -385,7 +385,7 @@ msgstr "Հերթականությունը"
 #: includes/widgets/class-sp-widget-event-blocks.php:100
 #: includes/widgets/class-sp-widget-event-list.php:103
 #: includes/widgets/class-sp-widget-player-gallery.php:96
-#: includes/widgets/class-sp-widget-player-list.php:117
+#: includes/widgets/class-sp-widget-player-list.php:116
 msgid "Ascending"
 msgstr "Ըստ աճման"
 
@@ -397,7 +397,7 @@ msgstr "Ըստ աճման"
 #: includes/widgets/class-sp-widget-event-blocks.php:101
 #: includes/widgets/class-sp-widget-event-list.php:104
 #: includes/widgets/class-sp-widget-player-gallery.php:97
-#: includes/widgets/class-sp-widget-player-list.php:118
+#: includes/widgets/class-sp-widget-player-list.php:117
 msgid "Descending"
 msgstr "Ըստ նվազման"
 
@@ -409,7 +409,7 @@ msgid "Columns:"
 msgstr "Սյուներ"
 
 #: includes/class-sp-ajax.php:291 includes/class-sp-post-types.php:402
-#: includes/sp-core-functions.php:1075
+#: includes/sp-core-functions.php:1083
 #: includes/admin/class-sp-admin-permalink-settings.php:28
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:93
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:66
@@ -425,16 +425,16 @@ msgstr "Սյուներ"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:55
 #: includes/admin/settings/class-sp-settings-events.php:60
-#: includes/admin/settings/class-sp-settings-events.php:123
+#: includes/admin/settings/class-sp-settings-events.php:131
 #: includes/admin/settings/class-sp-settings-players.php:64
 #: includes/admin/settings/class-sp-settings-teams.php:25
 #: includes/admin/settings/class-sp-settings-teams.php:48
 #: includes/widgets/class-sp-widget-event-list.php:112
-#: templates/event-list.php:56
+#: templates/event-list.php:60
 msgid "Teams"
 msgstr "Թիմեր"
 
-#: includes/class-sp-ajax.php:292 includes/sp-core-functions.php:1076
+#: includes/class-sp-ajax.php:292 includes/sp-core-functions.php:1084
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:92
 #: includes/widgets/class-sp-widget-event-list.php:113
 #: templates/event-details.php:20
@@ -442,7 +442,7 @@ msgid "Time"
 msgstr "Ժամ"
 
 #: includes/class-sp-ajax.php:293 includes/class-sp-post-types.php:94
-#: includes/sp-core-functions.php:1079
+#: includes/sp-core-functions.php:1087
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:50
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:96
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:70
@@ -451,15 +451,15 @@ msgstr "Ժամ"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:86
 #: includes/admin/settings/class-sp-settings-events.php:68
 #: includes/widgets/class-sp-widget-event-list.php:114
-#: templates/event-list.php:62 templates/event-venue.php:35
+#: templates/event-list.php:66 templates/event-venue.php:35
 msgid "Venue"
 msgstr "Մարզադաշտ"
 
-#: includes/class-sp-ajax.php:294 includes/sp-core-functions.php:1060
+#: includes/class-sp-ajax.php:294 includes/sp-core-functions.php:1068
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:76
 #: includes/widgets/class-sp-widget-event-list.php:115
-#: templates/event-list.php:65
+#: templates/event-list.php:69
 msgid "Article"
 msgstr "Հոդված"
 
@@ -496,7 +496,7 @@ msgstr "Ցուցադրվող խաղացողների քանակը:"
 
 #: includes/class-sp-ajax.php:563 includes/class-sp-ajax.php:634
 #: includes/widgets/class-sp-widget-player-gallery.php:72
-#: includes/widgets/class-sp-widget-player-list.php:93
+#: includes/widgets/class-sp-widget-player-list.php:92
 msgid "Sort by:"
 msgstr "Դասավորել ըստ"
 
@@ -505,7 +505,7 @@ msgstr "Դասավորել ըստ"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:85
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:56
 #: includes/widgets/class-sp-widget-player-gallery.php:77
-#: includes/widgets/class-sp-widget-player-list.php:98
+#: includes/widgets/class-sp-widget-player-list.php:97
 msgid "Number"
 msgstr "Համար"
 
@@ -519,23 +519,22 @@ msgstr "Համար"
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:51
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:86
 #: includes/widgets/class-sp-widget-player-gallery.php:78
-#: includes/widgets/class-sp-widget-player-list.php:99
+#: includes/widgets/class-sp-widget-player-list.php:98
 msgid "Name"
 msgstr "Անուն"
 
 #: includes/class-sp-ajax.php:570 includes/class-sp-ajax.php:641
-#: includes/sp-core-functions.php:1067
+#: includes/sp-core-functions.php:1075
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:37
 #: includes/widgets/class-sp-widget-player-gallery.php:79
-#: includes/widgets/class-sp-widget-player-list.php:87
-#: includes/widgets/class-sp-widget-player-list.php:100
+#: includes/widgets/class-sp-widget-player-list.php:99
 msgid "Played"
 msgstr "Խաղացել է"
 
 #: includes/class-sp-ajax.php:594 includes/class-sp-ajax.php:665
 #: includes/widgets/class-sp-widget-player-gallery.php:101
-#: includes/widgets/class-sp-widget-player-list.php:122
+#: includes/widgets/class-sp-widget-player-list.php:121
 msgid "Display link to view all players"
 msgstr "Ցույց տալ հղում բոլորի խաղացողներին"
 
@@ -1369,13 +1368,13 @@ msgid "Zimbabwe"
 msgstr "Զիմբաբվե"
 
 #: includes/class-sp-event.php:45 includes/class-sp-post-types.php:192
-#: includes/sp-core-functions.php:1066
+#: includes/sp-core-functions.php:1074
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:57
 msgid "Outcome"
 msgstr "Արդյունքներ"
 
 #: includes/class-sp-event.php:100 includes/class-sp-post-types.php:123
-#: includes/sp-core-functions.php:1089
+#: includes/sp-core-functions.php:1097
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:67
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:77
@@ -1383,7 +1382,7 @@ msgid "Position"
 msgstr "Տեղ"
 
 #: includes/class-sp-formats.php:27 includes/class-sp-post-types.php:36
-#: includes/sp-core-functions.php:1064
+#: includes/sp-core-functions.php:1072
 #: includes/admin/importers/class-sp-event-importer.php:458
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:48
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:94
@@ -1434,10 +1433,10 @@ msgid "Next"
 msgstr "Հաջորդ"
 
 #: includes/class-sp-install.php:192 includes/class-sp-post-types.php:525
-#: includes/class-sp-post-types.php:526 includes/sp-core-functions.php:1090
+#: includes/class-sp-post-types.php:526 includes/sp-core-functions.php:1098
 #: includes/admin/class-sp-admin-permalink-settings.php:35
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:45
-#: includes/admin/settings/class-sp-settings-events.php:102
+#: includes/admin/settings/class-sp-settings-events.php:110
 #: includes/admin/settings/class-sp-settings-staff.php:25
 #: templates/event-staff.php:41
 msgid "Staff"
@@ -1459,10 +1458,10 @@ msgstr "Լիգայի կառավարում"
 msgid "What's new:"
 msgstr "Ի՞նչ կա-չկա"
 
-#: includes/class-sp-league-table.php:326
+#: includes/class-sp-league-table.php:322
 #: includes/class-sp-player-list.php:351 includes/class-sp-player-list.php:368
 #: includes/class-sp-player.php:313 includes/class-sp-player.php:336
-#: includes/class-sp-post-types.php:403 includes/sp-core-functions.php:1074
+#: includes/class-sp-post-types.php:403 includes/sp-core-functions.php:1082
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:51
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:50
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:63
@@ -1473,13 +1472,13 @@ msgstr "Ի՞նչ կա-չկա"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:66
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:114
-#: includes/admin/settings/class-sp-settings-events.php:184
+#: includes/admin/settings/class-sp-settings-events.php:192
 #: templates/event-results.php:93
 msgid "Team"
 msgstr "Թիմ"
 
 #: includes/class-sp-player.php:334 includes/class-sp-post-types.php:65
-#: includes/class-sp-team.php:260 includes/sp-core-functions.php:1073
+#: includes/class-sp-team.php:261 includes/sp-core-functions.php:1081
 #: includes/admin/importers/class-sp-event-importer.php:473
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:49
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:95
@@ -1539,7 +1538,7 @@ msgstr "Թարմացնել"
 
 #: includes/class-sp-post-types.php:41 includes/class-sp-post-types.php:70
 #: includes/class-sp-post-types.php:99 includes/class-sp-post-types.php:128
-#: includes/sp-core-functions.php:863 includes/sp-core-functions.php:880
+#: includes/sp-core-functions.php:871 includes/sp-core-functions.php:888
 #: includes/admin/class-sp-admin-menus.php:242
 #: includes/admin/importers/class-sp-event-importer.php:468
 #: includes/admin/importers/class-sp-event-importer.php:483
@@ -1572,7 +1571,7 @@ msgstr "Թարմացնել"
 #: includes/widgets/class-sp-widget-player-gallery.php:64
 #: includes/widgets/class-sp-widget-player-gallery.php:89
 #: includes/widgets/class-sp-widget-player-list.php:64
-#: includes/widgets/class-sp-widget-player-list.php:110
+#: includes/widgets/class-sp-widget-player-list.php:109
 msgid "Add New"
 msgstr "Ավելացնել"
 
@@ -1613,7 +1612,7 @@ msgstr "Որոնում"
 #: includes/class-sp-post-types.php:471 includes/class-sp-post-types.php:472
 #: includes/class-sp-post-types.php:501 includes/class-sp-post-types.php:502
 #: includes/class-sp-post-types.php:532 includes/class-sp-post-types.php:533
-#: includes/sp-core-functions.php:741 includes/sp-core-functions.php:781
+#: includes/sp-core-functions.php:749 includes/sp-core-functions.php:789
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:164
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:111
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:32
@@ -1644,7 +1643,7 @@ msgstr "Խմբագրել խաղաշրջանը"
 #: includes/class-sp-post-types.php:93 includes/class-sp-post-types.php:107
 #: includes/admin/class-sp-admin-menus.php:258
 #: includes/admin/class-sp-admin-permalink-settings.php:26
-#: includes/admin/settings/class-sp-settings-events.php:131
+#: includes/admin/settings/class-sp-settings-events.php:139
 #: includes/admin/views/html-admin-page-status.php:316
 msgid "Venues"
 msgstr "Մարզադաշտեր"
@@ -1667,7 +1666,7 @@ msgstr "Տեղեր"
 msgid "Edit Position"
 msgstr "Խմբագրել դիրքը"
 
-#: includes/class-sp-post-types.php:161 includes/sp-core-functions.php:1072
+#: includes/class-sp-post-types.php:161 includes/sp-core-functions.php:1080
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:126
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:27
 #: includes/admin/settings/class-sp-settings-config.php:156
@@ -1796,7 +1795,7 @@ msgstr "Խմբագրել խաղը"
 
 #: includes/class-sp-post-types.php:371
 #: includes/admin/class-sp-admin-permalink-settings.php:27
-#: includes/admin/settings/class-sp-settings-events.php:120
+#: includes/admin/settings/class-sp-settings-events.php:128
 msgid "Calendars"
 msgstr "Օրացույցեր"
 
@@ -1854,52 +1853,52 @@ msgstr "Անձնակազմի նոր անդամ"
 msgid "Edit Staff"
 msgstr "Խմբագրել անձնակազմը"
 
-#: includes/sp-core-functions.php:310
+#: includes/sp-core-functions.php:318
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:97
 #: templates/team-link.php:21
 msgid "Visit Site"
 msgstr "Կայք"
 
-#: includes/sp-core-functions.php:342 includes/sp-core-functions.php:346
-#: includes/sp-core-functions.php:1078
+#: includes/sp-core-functions.php:350 includes/sp-core-functions.php:354
+#: includes/sp-core-functions.php:1086
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:134
-#: templates/event-performance.php:153
+#: templates/event-performance.php:157
 msgid "Total"
 msgstr "Ընդհանուր"
 
-#: includes/sp-core-functions.php:342
+#: includes/sp-core-functions.php:350
 msgid "Average"
 msgstr "Միջինը"
 
-#: includes/sp-core-functions.php:400
+#: includes/sp-core-functions.php:408
 msgid "Published"
 msgstr "Հրատարակված"
 
-#: includes/sp-core-functions.php:401
+#: includes/sp-core-functions.php:409
 msgid "Scheduled"
 msgstr "Նախատեսված"
 
-#: includes/sp-core-functions.php:664 includes/sp-core-functions.php:804
+#: includes/sp-core-functions.php:672 includes/sp-core-functions.php:812
 msgid "(no title)"
 msgstr "(անվերնագիր)"
 
-#: includes/sp-core-functions.php:681 includes/sp-core-functions.php:761
+#: includes/sp-core-functions.php:689 includes/sp-core-functions.php:769
 msgid "Select All"
 msgstr "Ընտրել բոլորը"
 
-#: includes/sp-core-functions.php:742 includes/sp-core-functions.php:745
+#: includes/sp-core-functions.php:750 includes/sp-core-functions.php:753
 msgid "Show all"
 msgstr "Բոլորը"
 
-#: includes/sp-core-functions.php:1061
+#: includes/sp-core-functions.php:1069
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:91
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:47
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:42
-#: templates/event-details.php:20 templates/event-list.php:50
+#: templates/event-details.php:20 templates/event-list.php:54
 msgid "Date"
 msgstr "Օր"
 
-#: includes/sp-core-functions.php:1065
+#: includes/sp-core-functions.php:1073
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:59
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:60
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:51
@@ -1910,62 +1909,61 @@ msgstr "Օր"
 msgid "Nationality"
 msgstr "Երկիրը"
 
-#: includes/sp-core-functions.php:1068 templates/league-table.php:49
+#: includes/sp-core-functions.php:1076 templates/league-table.php:49
 msgid "Pos"
 msgstr "Տեղ"
 
-#: includes/sp-core-functions.php:1069
+#: includes/sp-core-functions.php:1077
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:151
-#: templates/event-list.php:170
+#: templates/event-list.php:174
 msgid "Preview"
 msgstr "Նախադիտել"
 
-#: includes/sp-core-functions.php:1070 templates/player-list.php:88
+#: includes/sp-core-functions.php:1078 templates/player-list.php:88
 msgid "Rank"
 msgstr "Կարգ"
 
-#: includes/sp-core-functions.php:1071
+#: includes/sp-core-functions.php:1079
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:149
-#: templates/event-list.php:168
+#: templates/event-list.php:172
 msgid "Recap"
 msgstr "Ամփոփում"
 
-#: includes/sp-core-functions.php:1077
+#: includes/sp-core-functions.php:1085
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:64
-#: templates/event-list.php:59
+#: templates/event-list.php:63
 msgid "Time/Results"
 msgstr "Ժամ/Արդյունքներ"
 
-#: includes/sp-core-functions.php:1080 templates/event-blocks.php:108
-#: templates/event-calendar.php:215 templates/event-list.php:188
+#: includes/sp-core-functions.php:1088 templates/event-blocks.php:108
+#: templates/event-calendar.php:215 templates/event-list.php:192
 msgid "View all events"
 msgstr "Բոլոր խաղերը"
 
-#: includes/sp-core-functions.php:1081 templates/league-table.php:110
+#: includes/sp-core-functions.php:1089 templates/league-table.php:110
 msgid "View full table"
 msgstr "Ամբողջ աղյուսակը"
 
-#: includes/sp-core-functions.php:1086
+#: includes/sp-core-functions.php:1094
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:86
-#: includes/admin/post-types/class-sp-admin-cpt-event.php:134
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:98
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:95
 #: templates/player-details.php:44 templates/staff-details.php:36
 msgid "Current Team"
 msgstr "Ընթացիկ թիմ"
 
-#: includes/sp-core-functions.php:1087
+#: includes/sp-core-functions.php:1095
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:101
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:78
 #: templates/player-details.php:53 templates/staff-details.php:43
 msgid "Past Teams"
 msgstr "Նախկին թիմերը"
 
-#: includes/sp-core-functions.php:1091
+#: includes/sp-core-functions.php:1099
 msgid "Substitutes"
 msgstr "Պահեստայիններ"
 
-#: includes/sp-core-functions.php:1092 templates/player-gallery.php:146
+#: includes/sp-core-functions.php:1100 templates/player-gallery.php:146
 #: templates/player-list.php:152
 msgid "View all players"
 msgstr "Բոլոր խաղացողները"
@@ -2427,8 +2425,8 @@ msgstr "ԿԱՄ նշեք ուղին դեպի ֆայլ."
 #: includes/admin/importers/class-sp-player-importer.php:211
 #: includes/admin/importers/class-sp-staff-importer.php:204
 #: includes/admin/importers/class-sp-team-importer.php:168
-#: includes/admin/settings/class-sp-settings-events.php:189
-#: includes/admin/settings/class-sp-settings-events.php:193
+#: includes/admin/settings/class-sp-settings-events.php:197
+#: includes/admin/settings/class-sp-settings-events.php:201
 msgid "Delimiter"
 msgstr "Բաժանիչ"
 
@@ -2548,7 +2546,7 @@ msgid "Layout"
 msgstr "Շարվածք"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:114
-#: includes/admin/post-types/class-sp-admin-cpt-event.php:174
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:191
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:102
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:138
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:132
@@ -2558,7 +2556,7 @@ msgid "Show all leagues"
 msgstr "Բոլոր լիգաները"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:123
-#: includes/admin/post-types/class-sp-admin-cpt-event.php:183
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:200
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:111
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:147
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:141
@@ -2568,7 +2566,7 @@ msgid "Show all seasons"
 msgstr "Բոլոր խաղաշրջանները"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:134
-#: includes/admin/post-types/class-sp-admin-cpt-event.php:166
+#: includes/admin/post-types/class-sp-admin-cpt-event.php:183
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:122
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:130
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:124
@@ -2865,7 +2863,7 @@ msgid "Event Options"
 msgstr "Խաղի դրույթներ"
 
 #: includes/admin/settings/class-sp-settings-events.php:45
-#: includes/admin/settings/class-sp-settings-events.php:147
+#: includes/admin/settings/class-sp-settings-events.php:155
 #: includes/admin/settings/class-sp-settings-players.php:82
 #: includes/admin/settings/class-sp-settings-teams.php:73
 msgid "Limit"
@@ -2881,7 +2879,7 @@ msgid "Display maps"
 msgstr "Ցուցադրել քարտեզները"
 
 #: includes/admin/settings/class-sp-settings-events.php:77
-#: includes/admin/settings/class-sp-settings-events.php:132
+#: includes/admin/settings/class-sp-settings-events.php:140
 msgid "Link venues"
 msgstr "Հղում մարզադաշտերին"
 
@@ -2889,37 +2887,41 @@ msgstr "Հղում մարզադաշտերին"
 msgid "Display players"
 msgstr "Ցույց տալ խաղացողներին"
 
-#: includes/admin/settings/class-sp-settings-events.php:103
+#: includes/admin/settings/class-sp-settings-events.php:102
+msgid "Display total"
+msgstr "Ցույց տալ ընդհանուրը"
+
+#: includes/admin/settings/class-sp-settings-events.php:111
 msgid "Display staff"
 msgstr "Ցույց տալ անձնակազմը"
 
-#: includes/admin/settings/class-sp-settings-events.php:111
+#: includes/admin/settings/class-sp-settings-events.php:119
 msgid "Link staff"
 msgstr "Հղում անձնակազմին"
 
-#: includes/admin/settings/class-sp-settings-events.php:124
+#: includes/admin/settings/class-sp-settings-events.php:132
 #: includes/admin/settings/class-sp-settings-players.php:65
 #: includes/admin/settings/class-sp-settings-teams.php:57
 msgid "Link teams"
 msgstr "Հղում թիմերին"
 
-#: includes/admin/settings/class-sp-settings-events.php:139
+#: includes/admin/settings/class-sp-settings-events.php:147
 #: includes/admin/settings/class-sp-settings-players.php:74
 #: includes/admin/settings/class-sp-settings-teams.php:65
 msgid "Pagination"
 msgstr "Էջավորում"
 
-#: includes/admin/settings/class-sp-settings-events.php:140
+#: includes/admin/settings/class-sp-settings-events.php:148
 #: includes/admin/settings/class-sp-settings-players.php:75
 #: includes/admin/settings/class-sp-settings-teams.php:66
 msgid "Paginate"
 msgstr "Էջավորել"
 
-#: includes/admin/settings/class-sp-settings-events.php:151
+#: includes/admin/settings/class-sp-settings-events.php:159
 msgid "events"
 msgstr "խաղ"
 
-#: includes/admin/settings/class-sp-settings-events.php:198
+#: includes/admin/settings/class-sp-settings-events.php:206
 msgid "Custom:"
 msgstr "Յուրահատուկ՝"
 
@@ -3009,7 +3011,7 @@ msgstr "Համառոտագրերի ցանկ"
 
 #: includes/admin/settings/class-sp-settings-general.php:159
 msgid "This will enable a shortcode menu to be displayed in the visual editor."
-msgstr "Սա կընդգրկի համառոտագրերի ցանկը տեսախմբագրիչի մեջ։"
+msgstr "Սա ցույց կտա համառոտագրերի ցանկը տեսախմբագրիչի գործիքների մեջ։"
 
 #: includes/admin/settings/class-sp-settings-general.php:163
 msgid "Header Offset"
