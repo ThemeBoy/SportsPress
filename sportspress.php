@@ -395,6 +395,8 @@ final class SportsPress {
 
 endif;
 
+if ( ! function_exists( 'SP' ) ):
+
 /**
  * Returns the main instance of SP to prevent the need to use globals.
  *
@@ -406,3 +408,5 @@ function SP() {
 }
 
 SP();
+
+endif;
