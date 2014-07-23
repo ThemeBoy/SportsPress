@@ -5,7 +5,7 @@
  * The SportsPress team class handles individual team data.
  *
  * @class 		SP_Team
- * @version		1.1
+ * @version		1.2.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -104,7 +104,8 @@ class SP_Team extends SP_Custom_Post {
 				'post_type' => 'sp_event',
 				'numberposts' => -1,
 				'posts_per_page' => -1,
-				'order' => 'ASC',
+				'orderby' => 'post_date',
+				'order' => 'DESC',
 				'meta_query' => array(
 					'relation' => 'AND',
 					array(

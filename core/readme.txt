@@ -4,7 +4,7 @@ Tags: sport, sports, clubs, teams, statistics, stats, fixtures, results, standin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.2.2
+Stable tag: 1.2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,7 +34,7 @@ SportsPress is the ultimate all-in-one plugin for transforming your WordPress bl
 
 More details about each feature are available on the [SportsPress Website](http://sportspresspro.com/).
 
-= Premium Extensions =
+= SportsPress Pro =
 
 Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://sportspresspro.com/pricing/) to get access to more advanced features to your club website.
 
@@ -64,6 +64,14 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Spanish – Español ( es_ES )
 * Swedish – Svenska ( sv_SE )
 * Turkish - Türkçe ( tr_TR )
+
+= Documentation =
+* [Getting Started](https://sportspresspro.com/docs/installation/)
+* [User Roles](https://sportspresspro.com/docs/section/user-roles/)
+* [Integration Guide](https://sportspresspro.com/docs/theme-integration-guide/)
+* [Actions](https://sportspresspro.com/docs/action-reference/)
+* [Filters](https://sportspresspro.com/docs/filter-reference/)
+* [Shortcodes](https://sportspresspro.com/docs/shortcode-reference/)
 
 = Get Involved =
 
@@ -139,6 +147,17 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
 
 == Changelog ==
+
+= 1.2.4 =
+* Fix - Team URL and abbreviation not saving when adding new team.
+* Localization - Update Armenian, Finnish, French, & German translations.
+
+= 1.2.3 =
+* Feature - Display event results in admin teams columns.
+* Tweak - Ensure teams are in order in event results.
+* Fix - Streaks calculator in league tables.
+* Fix - Streaks calculator in team columns.
+* Localization - Update German, Greek, & Norwegian translations.
 
 = 1.2.2 =
 * Tweak - Display link to docs instead of themes.

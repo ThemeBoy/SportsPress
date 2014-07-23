@@ -34,15 +34,15 @@
 	margin: 5px;
 }
 
-.sp-footer-sponsors {
+.sp-footer-sponsors .sp-sponsors {
 	position: relative;
 	z-index: 2;
 	clear: both;
 	padding: 5em 0;
-	background: #111111;
+	background: #000000;
 }
 
-.sp-footer-sponsors .sp-sponsors-title {
+.sp-footer-sponsors .sp-sponsors .sp-sponsors-title {
 	color: #ffffff;
 }
 

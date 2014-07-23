@@ -5,7 +5,7 @@
  * The SportsPress event class handles individual event data.
  *
  * @class 		SP_Event
- * @version		1.2
+ * @version		1.2.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -36,7 +36,7 @@ class SP_Event extends SP_Custom_Post{
 		$usecolumns = get_post_meta( $this->ID, 'sp_result_columns', true );
 
 		// Get results for all teams
-		$data = sp_array_combine( $teams, $results );
+		$data = sp_array_combine( $teams, $results, true );
 
 		if ( $admin ):
 			return array( $columns, $usecolumns, $data );

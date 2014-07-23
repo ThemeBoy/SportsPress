@@ -110,7 +110,7 @@ class SportsPress_Branding {
 	public function rename_color_scheme() {
 		global $_wp_admin_css_colors;
 
-		$enabled = get_option( 'sportspress_enable_branding_css', 'yes' );
+		$enabled = get_option( 'sportspress_enable_branding_css', 'no' );
 		if ( $enabled !== 'yes' ) return $_wp_admin_css_colors;
 
 		$colors = get_option( 'sportspress_branding_css_colors' );
@@ -182,7 +182,7 @@ class SportsPress_Branding {
 		$current_color = get_user_option( 'admin_color' );
 		if ( $current_color != 'fresh' ) return;
 
-		$enabled = get_option( 'sportspress_enable_branding_css', 'yes' );
+		$enabled = get_option( 'sportspress_enable_branding_css', 'no' );
 		if ( $enabled !== 'yes' ) return;
 
 		$colors = get_option( 'sportspress_branding_css_colors', true );

@@ -161,7 +161,7 @@ class SP_Settings_Sponsors extends SP_Settings_Page {
 				'id' 		=> 'sportspress_footer_sponsors_css_background',
 				'type' 		=> 'color',
 				'css' 		=> 'width:6em;',
-				'default'	=> '#111111',
+				'default'	=> '#000000',
 				'autoload'  => false
 			),
 

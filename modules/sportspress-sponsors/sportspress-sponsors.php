@@ -444,15 +444,15 @@ class SportsPress_Sponsors {
 			$orderby = get_option( 'sportspress_footer_sponsors_orderby', 'menu_order' );
 			$order = get_option( 'sportspress_footer_sponsors_order', 'ASC' );
 
-			$background_color = get_option( 'sportspress_footer_sponsors_css_background', '#111111' );
+			$background_color = get_option( 'sportspress_footer_sponsors_css_background', '#000000' );
 			$text_color = get_option( 'sportspress_footer_sponsors_css_text', '#ffffff' );
 			?>
 			<style type="text/css">
-			.sp-footer-sponsors {
+			.sp-footer-sponsors .sp-sponsors {
 				background: <?php echo $background_color; ?>;
 				color: <?php echo $text_color; ?>;
 			}
-			.sp-footer-sponsors .sp-sponsors-title {
+			.sp-footer-sponsors .sp-sponsors .sp-sponsors-title {
 				color: <?php echo $text_color; ?>;
 			}
 			</style>
