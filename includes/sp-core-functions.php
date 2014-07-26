@@ -1011,7 +1011,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 		endif;
 
 		// Return solution
-		return number_format( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision );
+		return number_format( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision, '', '' );
 
 	}
 }
