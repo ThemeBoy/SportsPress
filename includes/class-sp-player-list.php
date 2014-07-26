@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version		1.2.5
+ * @version		1.2.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -295,7 +295,7 @@ class SP_Player_List extends SP_Custom_Post {
 
 						if ( $adjustment != 0 ):
 							$placeholder += sp_array_value( $adjustment, $stat->post_name, 0 );
-							$placeholder = number_format( $placeholder, $stat->precision, '', '' );
+							$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
 						endif;
 					endif;
 
