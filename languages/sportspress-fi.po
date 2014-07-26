@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-07-21 15:46+1000\n"
-"PO-Revision-Date: 2014-07-23 01:47+1000\n"
+"PO-Revision-Date: 2014-07-27 04:00+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/sportspress/"
 "language/fi/)\n"
@@ -37,7 +37,7 @@ msgstr "Asetukset"
 
 #: sportspress.php:139
 msgid "Docs"
-msgstr "Dokumentointi"
+msgstr "Dokum."
 
 #: sportspress.php:140
 msgid "Upgrade"
@@ -94,7 +94,7 @@ msgstr "Pelaaja-asetukset"
 #: includes/admin/settings/class-sp-settings-events.php:85
 #: includes/admin/views/html-admin-page-status.php:247
 msgid "Player Performance"
-msgstr "Pelaajan suoritukset"
+msgstr "Pelaajasuoritukset"
 
 #: sportspress.php:349 includes/sp-template-hooks.php:170
 msgid "Photo"
@@ -184,7 +184,7 @@ msgstr "Tiedot"
 
 #: assets/js/admin/editor-lang.php:13
 msgid "Results"
-msgstr "Lopputulokset"
+msgstr "Tulokset"
 
 #: assets/js/admin/editor-lang.php:14
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:25
@@ -256,7 +256,7 @@ msgstr "(Auto)"
 #: includes/class-sp-ajax.php:74
 #: includes/widgets/class-sp-widget-countdown.php:62
 msgid "Display venue"
-msgstr "Näytä tapahtumapaikka"
+msgstr "Näytä paikka"
 
 #: includes/class-sp-ajax.php:80
 #: includes/widgets/class-sp-widget-countdown.php:65
@@ -458,7 +458,7 @@ msgstr "Aika"
 #: includes/widgets/class-sp-widget-event-list.php:114
 #: templates/event-list.php:66 templates/event-venue.php:35
 msgid "Venue"
-msgstr "Tapahtumapaikka"
+msgstr "Paikka"
 
 #: includes/class-sp-ajax.php:294 includes/sp-core-functions.php:1068
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
@@ -1376,7 +1376,7 @@ msgstr "Zimbabwe"
 #: includes/sp-core-functions.php:1074
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:57
 msgid "Outcome"
-msgstr "Tulos"
+msgstr "Lopputulos"
 
 #: includes/class-sp-event.php:100 includes/class-sp-post-types.php:123
 #: includes/sp-core-functions.php:1097
@@ -1623,7 +1623,7 @@ msgstr "Haku"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:32
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:101
 msgid "No results found."
-msgstr "Lopputuloksia ei löytynyt."
+msgstr "Ei tuloksia."
 
 #: includes/class-sp-post-types.php:64 includes/class-sp-post-types.php:78
 #: includes/admin/class-sp-admin-menus.php:64
@@ -1651,11 +1651,11 @@ msgstr "Muokkaa sarjakautta"
 #: includes/admin/settings/class-sp-settings-events.php:139
 #: includes/admin/views/html-admin-page-status.php:316
 msgid "Venues"
-msgstr "Tapahtumapaikat"
+msgstr "Paikat"
 
 #: includes/class-sp-post-types.php:96
 msgid "Edit Venue"
-msgstr "Muokkaa tapahtumapaikkaa"
+msgstr "Muokkaa paikkaa"
 
 #: includes/class-sp-post-types.php:122 includes/class-sp-post-types.php:136
 #: includes/admin/class-sp-admin-menus.php:250
@@ -1679,19 +1679,19 @@ msgstr "Muokkaa pelipaikkaa"
 #: includes/admin/views/html-admin-page-status.php:237
 #: templates/event-results.php:89
 msgid "Team Results"
-msgstr "Joukkueen lopputulokset"
+msgstr "Joukkueen tulokset"
 
 #: includes/class-sp-post-types.php:162
 msgid "Result"
-msgstr "Lopputulos"
+msgstr "Tulos"
 
 #: includes/class-sp-post-types.php:163
 msgid "Add New Result"
-msgstr "Lisää uusi lopputulos"
+msgstr "Lisää uusi tulos"
 
 #: includes/class-sp-post-types.php:164
 msgid "Edit Result"
-msgstr "Muokkaa lopputulosta"
+msgstr "Muokkaa tulosta"
 
 #: includes/class-sp-post-types.php:165 includes/class-sp-post-types.php:195
 #: includes/class-sp-post-types.php:225 includes/class-sp-post-types.php:255
@@ -1707,15 +1707,15 @@ msgstr "Uusi"
 #: includes/admin/settings/class-sp-settings-config.php:100
 #: includes/admin/views/html-admin-page-status.php:227
 msgid "Event Outcomes"
-msgstr "Tapahtuman tulokset"
+msgstr "Tapahtuman lopputulokset"
 
 #: includes/class-sp-post-types.php:193
 msgid "Add New Outcome"
-msgstr "Lisää uusi tulos"
+msgstr "Lisää uusi lopputulos"
 
 #: includes/class-sp-post-types.php:194
 msgid "Edit Outcome"
-msgstr "Muokkaa tulosta"
+msgstr "Muokkaa lopputulosta"
 
 #: includes/class-sp-post-types.php:221
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:141
@@ -1938,7 +1938,7 @@ msgstr "Yhteenveto"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:64
 #: templates/event-list.php:63
 msgid "Time/Results"
-msgstr "Aika/Lopputulokset"
+msgstr "Aika/Tulokset"
 
 #: includes/sp-core-functions.php:1088 templates/event-blocks.php:108
 #: templates/event-calendar.php:215 templates/event-list.php:192
@@ -2234,7 +2234,7 @@ msgstr "Osoite"
 #: includes/admin/class-sp-admin-taxonomies.php:66
 #: includes/admin/class-sp-admin-taxonomies.php:85
 msgid "Drag the marker to the venue's location."
-msgstr "Vedä merkki tapahtumapaikan sijaintiin."
+msgstr "Siirrä merkki paikan sijaintiin."
 
 #: includes/admin/class-sp-admin-taxonomies.php:89
 msgid "Latitude"
@@ -2892,7 +2892,7 @@ msgstr "Näytä kartat"
 #: includes/admin/settings/class-sp-settings-events.php:77
 #: includes/admin/settings/class-sp-settings-events.php:140
 msgid "Link venues"
-msgstr "Yhdistä tapahtumapaikat"
+msgstr "Yhdistä paikat"
 
 #: includes/admin/settings/class-sp-settings-events.php:86
 msgid "Display players"
@@ -2982,7 +2982,7 @@ msgstr "Oikealle"
 
 #: includes/admin/settings/class-sp-settings-general.php:103
 msgid "Padding"
-msgstr "Täyte"
+msgstr "Kehys"
 
 #: includes/admin/settings/class-sp-settings-general.php:119
 msgid "Custom CSS"
