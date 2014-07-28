@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.2.3
+ * @version     1.2.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -1011,7 +1011,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 		endif;
 
 		// Return solution
-		return number_format( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision );
+		return number_format( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision, '.', '' );
 
 	}
 }

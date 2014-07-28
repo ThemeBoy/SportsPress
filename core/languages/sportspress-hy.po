@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-07-21 15:46+1000\n"
-"PO-Revision-Date: 2014-07-23 01:47+1000\n"
+"PO-Revision-Date: 2014-07-27 04:01+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Armenian (http://www.transifex.com/projects/p/sportspress/"
 "language/hy/)\n"
@@ -1379,7 +1379,7 @@ msgstr "Արդյունքներ"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:77
 msgid "Position"
-msgstr "Տեղ"
+msgstr "Դիրք"
 
 #: includes/class-sp-formats.php:27 includes/class-sp-post-types.php:36
 #: includes/sp-core-functions.php:1072
@@ -1660,7 +1660,7 @@ msgstr "Խմբագրել մարզադաշտը"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:78
 #: includes/admin/views/html-admin-page-status.php:326
 msgid "Positions"
-msgstr "Տեղեր"
+msgstr "Դիրքեր"
 
 #: includes/class-sp-post-types.php:125
 msgid "Edit Position"

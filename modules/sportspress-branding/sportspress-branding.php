@@ -38,6 +38,7 @@ class SportsPress_Branding {
 		add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 		add_filter( 'admin_init', array( $this, 'rename_color_scheme' ) );
 
+		add_action( 'login_enqueue_scripts', array( $this, 'login_logo' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'admin_head', array( $this, 'admin_styles' ) );
 	}
@@ -66,23 +67,8 @@ class SportsPress_Branding {
 	 * Init plugin when WordPress Initialises.
 	 */
 	public function init() {
-		// Set up localisation
-		$this->load_plugin_textdomain();
-
 		// Get label
 		$this->label = get_option( 'sportspress_branding_label' );
-	}
-
-	/**
-	 * Load Localisation files.
-	 *
-	 * Note: the first-loaded translation file overrides any following ones if the same translation is present
-	 */
-	public function load_plugin_textdomain() {
-		$locale = apply_filters( 'plugin_locale', get_locale(), 'sportspress' );
-		
-		// Global + Frontend Locale
-		load_plugin_textdomain( 'sportspress', false, plugin_basename( dirname( __FILE__ ) . "/languages" ) );
 	}
 
 	/** 
@@ -168,7 +154,7 @@ class SportsPress_Branding {
 		if ( $src ):
 			?>
 			<style type="text/css">
-				#adminmenu #toplevel_page_sportspress .menu-icon-generic div.wp-menu-image:before {
+				#adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before {
 					content: '';
 					background-image: url(<?php echo $src[0]; ?>);
 					background-repeat: no-repeat;
@@ -513,6 +499,27 @@ class SportsPress_Branding {
 			}
 		</style>
 		<?php
+	}
+
+	/**
+	 * Custom login logo
+	 */
+	public function login_logo() {
+		$icon = get_option( 'sportspress_branding_icon' );
+		$src = wp_get_attachment_image_src( $icon, 'sportspress-fit-icon' );
+
+		if ( $src ):
+			?>
+		    <style type="text/css">
+		    body.login div#login h1 a {
+		    		width: 128px;
+		    		height: 128px;
+		            background-image: url(<?php echo $src[0]; ?>);
+		            background-size: auto;
+				}
+		    </style>
+			<?php
+		endif;
 	}
 }
 

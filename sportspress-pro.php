@@ -3,7 +3,7 @@
  * Plugin Name: SportsPress Pro
  * Plugin URI: http://sportspresspro.com/
  * Description: Manage your club and its players, staff, events, league tables, and player lists.
- * Version: 1.2.4
+ * Version: 1.2.6
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress_Pro' ) ) :
  * Main SportsPress Pro Class
  *
  * @class SportsPress_Pro
- * @version	1.2.4
+ * @version	1.2.6
  */
 final class SportsPress_Pro {
 
 	/**
 	 * @var string
 	 */
-	public $version = '1.2.4';
+	public $version = '1.2.6';
 
 	/**
 	 * SportsPress Pro Constructor.
@@ -49,9 +49,20 @@ final class SportsPress_Pro {
 
 		// Hooks
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
+		add_action( 'before_sportspress_init', array( $this, 'load_module_translations' ), 0 );
+		add_action( 'get_the_generator_html', array( $this, 'generator_tag' ), 10, 2 );
+		add_action( 'get_the_generator_xhtml', array( $this, 'generator_tag' ), 10, 2 );
+		add_filter( 'sportspress_menu_icon', array( $this, 'menu_icon' ) );
 
 		// Loaded action
 		do_action( 'sportspress_pro_loaded' );
+	}
+
+	/**
+	 * Change menu icon
+	 */
+	public function menu_icon( ) {
+		return 'dashicons-chart-bar';
 	}
 
 	/**
@@ -104,6 +115,33 @@ final class SportsPress_Pro {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Load Localisation files.
+	 *
+	 * Note: the first-loaded translation file overrides any following ones if the same translation is present
+	 */
+	public function load_module_translations() {
+		$locale = apply_filters( 'plugin_locale', get_locale(), 'sportspress' );
+
+		// Global + Frontend Locale
+		load_textdomain( 'sportspress', dirname( __FILE__ ) . "/modules/languages/sportspress-pro-$locale.mo" );
+	}
+
+	/**
+	 * Output generator tag to aid debugging.
+	 */
+	function generator_tag( $gen, $type ) {
+		switch ( $type ) {
+			case 'html':
+				$gen .= "\n" . '<meta name="generator" content="SportsPress Pro ' . esc_attr( SP_PRO_VERSION ) . '">';
+				break;
+			case 'xhtml':
+				$gen .= "\n" . '<meta name="generator" content="SportsPress Pro ' . esc_attr( SP_PRO_VERSION ) . '" />';
+				break;
+		}
+		return $gen;
 	}
 
 	/** Helper functions ******************************************************/

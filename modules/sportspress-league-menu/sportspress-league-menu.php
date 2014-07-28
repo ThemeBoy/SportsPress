@@ -54,20 +54,6 @@ class SportsPress_League_Menu {
 	 * Init plugin when WordPress Initialises.
 	 */
 	public function init() {
-		// Set up localisation
-		$this->load_plugin_textdomain();
-	}
-
-	/**
-	 * Load Localisation files.
-	 *
-	 * Note: the first-loaded translation file overrides any following ones if the same translation is present
-	 */
-	public function load_plugin_textdomain() {
-		$locale = apply_filters( 'plugin_locale', get_locale(), 'sportspress' );
-		
-		// Global + Frontend Locale
-		load_plugin_textdomain( 'sportspress', false, plugin_basename( dirname( __FILE__ ) . "/languages" ) );
 	}
 
 	/**

@@ -160,13 +160,11 @@ class SP_Settings_Branding extends SP_Settings_Page {
 	    		$this->color_picker( __( 'Actions', 'sportspress' ), 'sportspress_branding_css_actions', $colors['actions'] );
 	    		$this->color_picker( __( 'Text', 'sportspress' ), 'sportspress_branding_css_text', $colors['text'] );
 
-				if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) ):
-				    ?><br>
-				    <label for="sportspress_enable_branding_css">
-						<input name="sportspress_enable_branding_css" id="sportspress_enable_branding_css" type="checkbox" value="1" <?php checked( get_option( 'sportspress_enable_branding_css', 'yes' ), 'yes' ); ?>>
-						<?php _e( 'Enable', 'sportspress' ); ?>
-					</label>
-				<?php endif; ?>
+			    ?><br>
+			    <label for="sportspress_enable_branding_css">
+					<input name="sportspress_enable_branding_css" id="sportspress_enable_branding_css" type="checkbox" value="1" <?php checked( get_option( 'sportspress_enable_branding_css', 'no' ), 'yes' ); ?>>
+					<?php _e( 'Enable', 'sportspress' ); ?>
+				</label>
 			</td>
 		</tr><?php
 	}

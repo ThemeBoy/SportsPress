@@ -241,17 +241,16 @@
 		overflow-y: hidden;
 	}	
 	
-	.sp-responsive-table td,
-	.sp-responsive-table th {
+	.sp-responsive-table-wrapper .scrollable td,
+	.sp-responsive-table-wrapper .scrollable th {
 		position: relative;
 		white-space: nowrap;
 		overflow: hidden;
 	}
-	.sp-responsive-table .data-number,
-	.sp-responsive-table .data-name,
-	.sp-responsive-table .data-rank,
-	.sp-responsive-table .data-date,
-	.sp-responsive-.sp-pinned-table td {
+	.sp-responsive-table-wrapper .scrollable .data-number,
+	.sp-responsive-table-wrapper .scrollable .data-name,
+	.sp-responsive-table-wrapper .scrollable .data-rank,
+ 	.sp-responsive-table-wrapper .scrollable .data-date {
 		display: none;
 	}
 }
