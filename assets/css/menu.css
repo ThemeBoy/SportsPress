@@ -1,11 +1,11 @@
 /* SportsPress menu styles */
 @font-face {
 	font-family: 'sportspress';
-	src:url('../fonts/sportspress.eot?ofuus8');
-	src:url('../fonts/sportspress.eot?#iefixofuus8') format('embedded-opentype'),
-		url('../fonts/sportspress.woff?ofuus8') format('woff'),
-		url('../fonts/sportspress.ttf?ofuus8') format('truetype'),
-		url('../fonts/sportspress.svg?ofuus8#sportspress') format('svg');
+	src:url('../fonts/sportspress.eot?4gs85g');
+	src:url('../fonts/sportspress.eot?#iefix4gs85g') format('embedded-opentype'),
+		url('../fonts/sportspress.woff?4gs85g') format('woff'),
+		url('../fonts/sportspress.ttf?4gs85g') format('truetype'),
+		url('../fonts/sportspress.svg?4gs85g#sportspress') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -64,7 +64,7 @@
 	content: "\f328";
 }
 
-#adminmenu #toplevel_page_sportspress .menu-icon-generic div.wp-menu-image:before,
+#adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_event .menu-icon-sp_event div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_team .menu-icon-sp_team div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_player .menu-icon-sp_player div.wp-menu-image:before,
