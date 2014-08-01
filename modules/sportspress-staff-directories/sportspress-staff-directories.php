@@ -5,7 +5,7 @@ Plugin URI: http://sportspresspro.com/
 Description: Adds staff directories to SportsPress.
 Author: ThemeBoy
 Author URI: http://sportspresspro.com
-Version: 1.0
+Version: 1.0.1
 */
 
 // Exit if accessed directly
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Main SportsPress Staff Directories Class
  *
  * @class SportsPress_Staff_Directories
- * @version	1.0
+ * @version	1.0.1
  */
 class SportsPress_Staff_Directories {
 
@@ -47,7 +47,9 @@ class SportsPress_Staff_Directories {
 		add_action( 'sportspress_single_team_content', array( $this, 'output_team_directories' ), 25 );
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
 
-		//add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
+		if ( defined( 'SP_PRO_PLUGIN_FILE' ) ) {
+			register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
+		}
 	}
 
 	/**

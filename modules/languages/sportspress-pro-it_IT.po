@@ -1,0 +1,2014 @@
+#
+# Translators:
+# Carloalberto Fornea <carlo.fornea@gmail.com>, 2014
+# Clubpress <leon@wpclubmanager.com>, 2014
+# FrancoBaccarini <info@francobaccarini.it>, 2014
+# Federico <federico.paletta88@gmail.com>, 2014
+# Gabriele <webmaster@onenet.it>, 2014
+# joegalaxy66 <joegalaxy66@hotmail.it>, 2014
+# Luca Barbetti <lucabarbetti@gmail.com>, 2014
+# Kiba_No_Ou <kiba.no.michi@gmail.com>, 2014
+# massimo.marra <massimo.marra@libero.it>, 2014
+# maxlam <lam.max@tiscali.it>, 2014
+# Nicola Mustone <mustone.nicola@gmail.com>, 2014
+# Paolo Albera <albera.paolo@yahoo.it>, 2014
+# ThemeBoy <support@themeboy.com>, 2014
+# TheJoe <asbruff@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: SportsPress\n"
+"POT-Creation-Date: 2014-07-28 07:06+1000\n"
+"PO-Revision-Date: 2014-07-29 06:10+1000\n"
+"Last-Translator: ThemeBoy <support@themeboy.com>\n"
+"Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/"
+"sportspress/language/it_IT/)\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:25
+#: sportspress-branding/includes/class-sp-settings-branding.php:44
+#, fuzzy
+msgid "Branding"
+msgstr "Arrotondamento"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:47
+msgid "Label"
+msgstr "Etichetta"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:50
+msgid "SportsPress"
+msgstr "SportsPress"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:117
+#: sportspress-branding/includes/class-sp-settings-branding.php:120
+#: sportspress-branding/includes/class-sp-settings-branding.php:123
+#: sportspress-branding/includes/class-sp-settings-branding.php:124
+#: sportspress-branding/includes/class-sp-settings-branding.php:126
+msgid "Icon"
+msgstr ""
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:123
+#: sportspress-branding/includes/class-sp-settings-branding.php:124
+#, fuzzy, php-format
+msgid "Remove %s"
+msgstr "Rimuovi video"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:126
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:236
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:367
+#, php-format
+msgid "Select %s"
+msgstr "Selezionare %s"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:142
+msgid "Admin Color Scheme"
+msgstr ""
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:157
+#, fuzzy
+msgid "Base Color"
+msgstr "Sede principale"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:158
+msgid "Highlight"
+msgstr ""
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:159
+#, fuzzy
+msgid "Notifications"
+msgstr "Posizioni"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:160
+#, fuzzy
+msgid "Actions"
+msgstr "Posizioni"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:161
+msgid "Text"
+msgstr "Testo"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:167
+msgid "Enable"
+msgstr "Abilita"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:25
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:44
+#, fuzzy
+msgid "League Menu"
+msgstr "Lega Gerente"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:47
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:50
+msgid "Title"
+msgstr "Titolo"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:58
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:80
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:125
+msgid "Sort by"
+msgstr "Ordina per"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:63
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:85
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:130
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:55
+#, fuzzy
+msgid "Menu Order"
+msgstr "Ordinamento"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:64
+#: sportspress-sponsors/sportspress-sponsors.php:354
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:52
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:87
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:132
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:57
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:192
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:193
+msgid "Name"
+msgstr "Nome"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:65
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:88
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:133
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:58
+msgid "Random"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:70
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:93
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:138
+msgid "Sort Order"
+msgstr "Ordinamento"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:75
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:98
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:143
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:63
+msgid "Ascending"
+msgstr "Ascendente"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:76
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:99
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:144
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:64
+msgid "Descending"
+msgstr "Discendente"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:81
+msgid "Width"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:97
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:151
+msgid "Text Color"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:106
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:160
+msgid "Background Color"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:115
+msgid "Align"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:120
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:205
+msgid "Left"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:121
+msgid "Center"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:122
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:229
+msgid "Right"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:184
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:187
+#: sportspress-sponsors/sportspress-sponsors.php:369
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:63
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:198
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:201
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:248
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:251
+msgid "Logo"
+msgstr "Logo"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:191
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:287
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:202
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:252
+msgid "Max Width"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:193
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:289
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:204
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:254
+msgid "Max Height"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:199
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:202
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:223
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:226
+msgid "Position"
+msgstr "Posizione"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:203
+msgid "Bottom"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:211
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:214
+#, fuzzy
+msgid "Remove Image"
+msgstr "Rimuovi video"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:215
+msgid "Remove logo"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:221
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:224
+#, fuzzy
+msgid "Select Image"
+msgstr "Selezionare %s"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:225
+#: sportspress-sponsors/sportspress-sponsors.php:366
+#: sportspress-sponsors/sportspress-sponsors.php:372
+msgid "Select Logo"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:225
+msgid "Add logo"
+msgstr ""
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:259
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:261
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:283
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:286
+msgid "Teams"
+msgstr "Squadre"
+
+#: sportspress-sponsors/sportspress-sponsors.php:109
+#: sportspress-sponsors/sportspress-sponsors.php:445
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:25
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:44
+msgid "Sponsors"
+msgstr ""
+
+#: sportspress-sponsors/sportspress-sponsors.php:110
+#: sportspress-sponsors/sportspress-sponsors.php:381
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:64
+msgid "Sponsor"
+msgstr ""
+
+#: sportspress-sponsors/sportspress-sponsors.php:111
+#, fuzzy
+msgid "Add New Sponsor"
+msgstr "Aggiungi nuova colonna"
+
+#: sportspress-sponsors/sportspress-sponsors.php:112
+#, fuzzy
+msgid "Edit Sponsor"
+msgstr "Modifica stagione"
+
+#: sportspress-sponsors/sportspress-sponsors.php:113
+#: sportspress-staff-directories/sportspress-staff-directories.php:104
+msgid "New"
+msgstr "Nuovo"
+
+#: sportspress-sponsors/sportspress-sponsors.php:114
+#: sportspress-staff-directories/sportspress-staff-directories.php:105
+msgid "View"
+msgstr "Vedi"
+
+#: sportspress-sponsors/sportspress-sponsors.php:115
+#: sportspress-staff-directories/sportspress-staff-directories.php:106
+msgid "Search"
+msgstr "Cerca"
+
+#: sportspress-sponsors/sportspress-sponsors.php:116
+#: sportspress-sponsors/sportspress-sponsors.php:117
+#: sportspress-staff-directories/sportspress-staff-directories.php:107
+#: sportspress-staff-directories/sportspress-staff-directories.php:108
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:237
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:301
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:358
+msgid "No results found."
+msgstr "Nessun risultato trovato."
+
+#: sportspress-sponsors/sportspress-sponsors.php:169
+#, fuzzy
+msgid "SportsPress Sponsors (CSV)"
+msgstr "SportsPress Giocatori (CSV)"
+
+#: sportspress-sponsors/sportspress-sponsors.php:169
+#, fuzzy
+msgid "Import <strong>sponsors</strong> from a csv file."
+msgstr "Importazione <strong>giocatori</strong> da un file CSV."
+
+#: sportspress-sponsors/sportspress-sponsors.php:375
+#, fuzzy
+msgid "Remove Logo"
+msgstr "Rimuovi video"
+
+#: sportspress-sponsors/sportspress-sponsors.php:378
+msgid "User"
+msgstr "Utente"
+
+#: sportspress-sponsors/sportspress-sponsors.php:398
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:45
+#: sportspress-sponsors/includes/sp-sponsor-functions.php:25
+msgid "Visit Site"
+msgstr ""
+
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:65
+msgid "URL"
+msgstr "URL"
+
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:66
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:48
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:47
+msgid "Impressions"
+msgstr ""
+
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:67
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:51
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:55
+msgid "Clicks"
+msgstr ""
+
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:30
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:37
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:236
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:367
+msgid "Details"
+msgstr "Dettagli"
+
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:42
+msgid "Site URL"
+msgstr "Site URL"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:48
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:56
+msgid "Exclude logged-in users"
+msgstr ""
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:64
+msgid "Header"
+msgstr ""
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:67
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:112
+#, fuzzy
+msgid "Display"
+msgstr "Visualizza loghi"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:71
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:116
+msgid "sponsors"
+msgstr ""
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:86
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:131
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:56
+msgid "Date"
+msgstr "Data"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:109
+msgid "Footer"
+msgstr ""
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:227
+msgid "Top"
+msgstr ""
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:75
+msgid "Sorry, there has been an error."
+msgstr "Siamo spiacenti, si è verificato un errore."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:76
+msgid "The CSV is invalid."
+msgstr "Il CSV non è valido."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:87
+#, fuzzy, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> sponsors and skipped <strong>"
+"%s</strong>."
+msgstr ""
+"Importazione completa - importato <strong>% s</strong> giocatori e saltato "
+"<strong>% s</strong>."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:97
+msgid "All done!"
+msgstr "Fatto tutto!"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:97
+msgid "View Sponsors"
+msgstr ""
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:109
+#, fuzzy
+msgid "Import Sponsors"
+msgstr "Importa Giocatori"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:121
+msgid ""
+"Hi there! Choose a .csv file to upload, then click \"Upload file and import"
+"\"."
+msgstr ""
+"Salve! Scegliere un file .csv da caricare, quindi fare clic su \"Carica e "
+"importa file\"."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:123
+#, fuzzy, php-format
+msgid ""
+"Sponsors need to be defined with columns in a specific order (2 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+"I giocatori devono essere definiti con colonne in un ordine specifico (7 "
+"colonne). <a href=\"%s\">Clicca qui per scaricare un esempio</a>."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:131
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+"Prima di caricare il file di importazione, è necessario risolvere il "
+"seguente errore:"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:140
+msgid "Choose a file from your computer:"
+msgstr "Scegli un file dal tuo computer:"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:146
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Dimensione massima: %s"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:151
+msgid "OR enter path to file:"
+msgstr "OPPURE digitare il percorso al file:"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:158
+msgid "Delimiter"
+msgstr "Separatore"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:164
+msgid "Upload file and import"
+msgstr "Carica ed importa file"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:5
+msgid "A list of sponsors."
+msgstr ""
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:6
+#, fuzzy
+msgid "SportsPress Sponsors"
+msgstr "Impostazioni SportsPress"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:47
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:41
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:41
+msgid "Title:"
+msgstr "Titolo:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:50
+#, fuzzy
+msgid "Number of sponsors to show:"
+msgstr "Numero di squadre da visualizzare:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:53
+msgid "Sort by:"
+msgstr "Ordina per:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:61
+msgid "Sort Order:"
+msgstr "Ordinamento:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:67
+msgid "Max Width:"
+msgstr ""
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:70
+msgid "Max Height:"
+msgstr ""
+
+#: sportspress-sponsors/includes/sp-sponsor-functions.php:38
+#, php-format
+msgid "%s impression"
+msgid_plural "%s impressions"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sportspress-sponsors/includes/sp-sponsor-functions.php:69
+#, php-format
+msgid "%s click"
+msgid_plural "%s clicks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:100
+#: sportspress-staff-directories/sportspress-staff-directories.php:197
+#: sportspress-staff-directories/sportspress-staff-directories.php:220
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:46
+msgid "Staff Directories"
+msgstr ""
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:101
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:38
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:44
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:44
+msgid "Staff Directory"
+msgstr ""
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:102
+#, fuzzy
+msgid "Add New Staff Directory"
+msgstr "Aggiungi nuovo staff"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:103
+#, fuzzy
+msgid "Edit Staff Directory"
+msgstr "Modifica staff"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:207
+msgid "List"
+msgstr "Elenco"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:208
+msgid "Gallery"
+msgstr ""
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:223
+msgid "Staff"
+msgstr "Staff"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:224
+msgid "Link staff"
+msgstr ""
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:231
+msgid "Pagination"
+msgstr ""
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:232
+msgid "Paginate"
+msgstr ""
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:239
+msgid "Limit"
+msgstr "Limite"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:243
+#, fuzzy
+msgid "staff"
+msgstr "Staff"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:51
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:97
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:320
+msgid "League"
+msgstr "Lega"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:52
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:112
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:323
+msgid "Season"
+msgstr "Stagione"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:53
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:127
+msgid "Team"
+msgstr "Squadra"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:65
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:68
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:74
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:103
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:118
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:133
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:347
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:348
+msgid "All"
+msgstr "Tutto"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:97
+msgid "Show all leagues"
+msgstr "Mostra tutti i campionati"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:106
+msgid "Show all seasons"
+msgstr "Mostra tutte le stagioni"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:117
+msgid "Show all teams"
+msgstr "Mostra tutte le squadre"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:35
+msgid "Shortcode"
+msgstr ""
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:36
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:326
+msgid "Layout"
+msgstr ""
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:39
+msgid "Description"
+msgstr "Descrizione"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:42
+msgid "Contact Info"
+msgstr ""
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:66
+msgid ""
+"Copy this code and paste it into your post, page or text widget content."
+msgstr ""
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:108
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:123
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:138
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:55
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:55
+msgid "Add New"
+msgstr "Aggiungi nuovo"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:191
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:193
+msgid "Role"
+msgstr ""
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:217
+msgid "Edit"
+msgstr "Modifica"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:221
+msgid "Cancel"
+msgstr "Annullare"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:222
+msgid "Save"
+msgstr "Salva"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:257
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:178
+#: sportspress-staff-directories/templates/staff-contacts.php:31
+msgid "Phone"
+msgstr ""
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:260
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:179
+#: sportspress-staff-directories/templates/staff-contacts.php:36
+msgid "Email"
+msgstr ""
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:317
+msgid "Directory"
+msgstr ""
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:5
+#, fuzzy
+msgid "A gallery of staff."
+msgstr "Un calendario di eventi."
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:6
+#, fuzzy
+msgid "SportsPress Staff Gallery"
+msgstr "SportsPress Tabella League"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:44
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:44
+#, php-format
+msgid "Select %s:"
+msgstr "Seleziona %s"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:60
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:60
+#, fuzzy
+msgid "Number of staff to show:"
+msgstr "Numero di squadre da visualizzare:"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:64
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:64
+#, fuzzy
+msgid "Display link to view all staff"
+msgstr "Mostra link alla visualizzazione completa"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:5
+msgid "A list of staff."
+msgstr ""
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:6
+#, fuzzy
+msgid "SportsPress Staff List"
+msgstr "SportsPress Lista giocatori"
+
+#: sportspress-staff-directories/templates/staff-gallery.php:108
+#: sportspress-staff-directories/templates/staff-list.php:105
+#, fuzzy
+msgid "View all staff"
+msgstr "Visualizza staff"
+
+#: sportspress-team-colors/sportspress-team-colors.php:83
+#, fuzzy
+msgid "Team Colors"
+msgstr "Squadre"
+
+#~ msgid "Cheatin&#8217; huh?"
+#~ msgstr "State barando?"
+
+#~ msgid "Settings"
+#~ msgstr "Impostazioni"
+
+#~ msgid "Players"
+#~ msgstr "Giocatori"
+
+#~ msgid "Player"
+#~ msgstr "Giocatore"
+
+#~ msgid "players"
+#~ msgstr "giocatori"
+
+#~ msgid "Add New Player"
+#~ msgstr "Aggiungi nuovo giocatore"
+
+#~ msgid "Edit Player"
+#~ msgstr "Modifica giocatore"
+
+#~ msgid "Player Options"
+#~ msgstr "Opzioni giocatore"
+
+#~ msgid "Player Performance"
+#~ msgstr "Performance del giocatore"
+
+#~ msgid "Africa"
+#~ msgstr "Africa"
+
+#~ msgid "Asia"
+#~ msgstr "Asia"
+
+#~ msgid "Europe"
+#~ msgstr "Europa"
+
+#~ msgid "North America"
+#~ msgstr "Nord America"
+
+#~ msgid "Oceania"
+#~ msgstr "Oceania"
+
+#~ msgid "South America"
+#~ msgstr "America del Sud"
+
+#~ msgid "Andorra"
+#~ msgstr "Andorra"
+
+#~ msgid "United Arab Emirates"
+#~ msgstr "Emirati Arabi Uniti"
+
+#~ msgid "Afghanistan"
+#~ msgstr "Afghanistan"
+
+#~ msgid "Antigua and Barbuda"
+#~ msgstr "Antigua and Barbuda"
+
+#~ msgid "Albania"
+#~ msgstr "Albania"
+
+#~ msgid "Armenia"
+#~ msgstr "Armenia"
+
+#~ msgid "Angola"
+#~ msgstr "Angola"
+
+#~ msgid "Argentina"
+#~ msgstr "Argentina"
+
+#~ msgid "Austria"
+#~ msgstr "Austria"
+
+#~ msgid "Australia"
+#~ msgstr "Australia"
+
+#~ msgid "Azerbaijan"
+#~ msgstr "Azerbaijan"
+
+#~ msgid "Bosnia and Herzegovina"
+#~ msgstr "Bosnia e Herzegovina"
+
+#~ msgid "Barbados"
+#~ msgstr "Barbados"
+
+#~ msgid "Bangladesh"
+#~ msgstr "Bangladesh"
+
+#~ msgid "Belgium"
+#~ msgstr "Belgio"
+
+#~ msgid "Burkina Faso"
+#~ msgstr "Burkina Faso"
+
+#~ msgid "Bulgaria"
+#~ msgstr "Bulgaria"
+
+#~ msgid "Bahrain"
+#~ msgstr "Bahrain"
+
+#~ msgid "Burundi"
+#~ msgstr "Burundi"
+
+#~ msgid "Benin"
+#~ msgstr "Benin"
+
+#~ msgid "Brunei"
+#~ msgstr "Brunei"
+
+#~ msgid "Bolivia"
+#~ msgstr "Bolivia"
+
+#~ msgid "Brazil"
+#~ msgstr "Brasile"
+
+#~ msgid "Bahamas"
+#~ msgstr "Bahamas"
+
+#~ msgid "Bhutan"
+#~ msgstr "Bhutan"
+
+#~ msgid "Botswana"
+#~ msgstr "Botswana"
+
+#~ msgid "Belarus"
+#~ msgstr "Bielorussia"
+
+#~ msgid "Belize"
+#~ msgstr "Belize"
+
+#~ msgid "Canada"
+#~ msgstr "Canada"
+
+#~ msgid "Democratic Republic of the Congo"
+#~ msgstr "Rep. Dem. del Congo"
+
+#~ msgid "Central African Republic"
+#~ msgstr "Repubblica Centro Africana "
+
+#~ msgid "Republic of the Congo"
+#~ msgstr "Repubblica del Congo"
+
+#~ msgid "Switzerland"
+#~ msgstr "Svizzera"
+
+#~ msgid "Ivory Coast"
+#~ msgstr "Costa d'Avorio"
+
+#~ msgid "Chile"
+#~ msgstr "Cile"
+
+#~ msgid "Cameroon"
+#~ msgstr "Camerun"
+
+#~ msgid "China"
+#~ msgstr "Cina"
+
+#~ msgid "Colombia"
+#~ msgstr "Colombia"
+
+#~ msgid "Costa Rica"
+#~ msgstr "Costa Rica"
+
+#~ msgid "Cuba"
+#~ msgstr "Cuba"
+
+#~ msgid "Cape Verde"
+#~ msgstr "Capo Verde"
+
+#~ msgid "Cyprus"
+#~ msgstr "Cipro"
+
+#~ msgid "Czech Republic"
+#~ msgstr "Repubblica Ceca"
+
+#~ msgid "Germany"
+#~ msgstr "Germania"
+
+#~ msgid "Djibouti"
+#~ msgstr "Djibouti"
+
+#~ msgid "Denmark"
+#~ msgstr "Danimarca"
+
+#~ msgid "Dominica"
+#~ msgstr "Dominica"
+
+#~ msgid "Dominican Republic"
+#~ msgstr "Repubblica Dominicana"
+
+#~ msgid "Algeria"
+#~ msgstr "Algeria"
+
+#~ msgid "Ecuador"
+#~ msgstr "Ecuador"
+
+#~ msgid "Estonia"
+#~ msgstr "Estonia"
+
+#~ msgid "Egypt"
+#~ msgstr "Egitto"
+
+#~ msgid "Western Sahara"
+#~ msgstr "Western Sahara"
+
+#~ msgid "England"
+#~ msgstr "Inghilterra"
+
+#~ msgid "Eritrea"
+#~ msgstr "Eritrea"
+
+#~ msgid "Spain"
+#~ msgstr "Spagna"
+
+#~ msgid "Ethiopia"
+#~ msgstr "Etiopia"
+
+#~ msgid "Finland"
+#~ msgstr "Finlandia"
+
+#~ msgid "Fiji"
+#~ msgstr "Fiji"
+
+#~ msgid "Micronesia"
+#~ msgstr "Micronesia"
+
+#~ msgid "France"
+#~ msgstr "Francia"
+
+#~ msgid "Gabon"
+#~ msgstr "Gabon"
+
+#~ msgid "United Kingdom"
+#~ msgstr "Regno Unito"
+
+#~ msgid "Grenada"
+#~ msgstr "Grenada"
+
+#~ msgid "Georgia"
+#~ msgstr "Georgia"
+
+#~ msgid "Ghana"
+#~ msgstr "Ghana"
+
+#~ msgid "Gambia"
+#~ msgstr "Gambia"
+
+#~ msgid "Guinea"
+#~ msgstr "Guinea"
+
+#~ msgid "Equatorial Guinea"
+#~ msgstr "Equatorial Guinea"
+
+#~ msgid "Greece"
+#~ msgstr "Grecia"
+
+#~ msgid "Guatemala"
+#~ msgstr "Guatemala"
+
+#~ msgid "Guinea-Bissau"
+#~ msgstr "Guinea-Bissau"
+
+#~ msgid "Guyana"
+#~ msgstr "Guyana"
+
+#~ msgid "Hong Kong"
+#~ msgstr "Hong Kong"
+
+#~ msgid "Honduras"
+#~ msgstr "Honduras"
+
+#~ msgid "Croatia"
+#~ msgstr "Croazia"
+
+#~ msgid "Haiti"
+#~ msgstr "Haiti"
+
+#~ msgid "Hungary"
+#~ msgstr "Ungaria"
+
+#~ msgid "Indonesia"
+#~ msgstr "Indonesia"
+
+#~ msgid "Ireland"
+#~ msgstr "Irlanda"
+
+#~ msgid "Israel"
+#~ msgstr "Israele"
+
+#~ msgid "India"
+#~ msgstr "India"
+
+#~ msgid "Iraq"
+#~ msgstr "Iraq"
+
+#~ msgid "Iran"
+#~ msgstr "Iran"
+
+#~ msgid "Iceland"
+#~ msgstr "Islanda"
+
+#~ msgid "Italy"
+#~ msgstr "Italia"
+
+#~ msgid "Jamaica"
+#~ msgstr "Jamaica"
+
+#~ msgid "Jordan"
+#~ msgstr "Giordania"
+
+#~ msgid "Japan"
+#~ msgstr "Giappone"
+
+#~ msgid "Kenya"
+#~ msgstr "Kenya"
+
+#~ msgid "Kyrgyzstan"
+#~ msgstr "Kyrgyzstan"
+
+#~ msgid "Cambodia"
+#~ msgstr "Cambogia"
+
+#~ msgid "Kiribati"
+#~ msgstr "Kiribati"
+
+#~ msgid "Comoros"
+#~ msgstr "Comoros"
+
+#~ msgid "Saint Kitts and Nevis"
+#~ msgstr "Saint Kitts and Nevis"
+
+#~ msgid "North Korea"
+#~ msgstr "Corea del Nord"
+
+#~ msgid "South Korea"
+#~ msgstr "Corea del Sud"
+
+#~ msgid "Kuwait"
+#~ msgstr "Kuwait"
+
+#~ msgid "Kazakhstan"
+#~ msgstr "Kazakhstan"
+
+#~ msgid "Laos"
+#~ msgstr "Laos"
+
+#~ msgid "Lebanon"
+#~ msgstr "Libano"
+
+#~ msgid "Saint Lucia"
+#~ msgstr "Saint Lucia"
+
+#~ msgid "Liechtenstein"
+#~ msgstr "Liechtenstein"
+
+#~ msgid "Sri Lanka"
+#~ msgstr "Sri Lanka"
+
+#~ msgid "Liberia"
+#~ msgstr "Liberia"
+
+#~ msgid "Lesotho"
+#~ msgstr "Lesotho"
+
+#~ msgid "Lithuania"
+#~ msgstr "Lituania"
+
+#~ msgid "Luxembourg"
+#~ msgstr "Lussemburgo"
+
+#~ msgid "Latvia"
+#~ msgstr "Lettonia"
+
+#~ msgid "Libya"
+#~ msgstr "Libia"
+
+#~ msgid "Morocco"
+#~ msgstr "Marocco"
+
+#~ msgid "Monaco"
+#~ msgstr "Monaco"
+
+#~ msgid "Moldova"
+#~ msgstr "Moldavia"
+
+#~ msgid "Montenegro"
+#~ msgstr "Montenegro"
+
+#~ msgid "Madagascar"
+#~ msgstr "Madagascar"
+
+#~ msgid "Marshall Islands"
+#~ msgstr "Isole Marshall"
+
+#~ msgid "Macedonia"
+#~ msgstr "Macedonia"
+
+#~ msgid "Mali"
+#~ msgstr "Mali"
+
+#~ msgid "Burma"
+#~ msgstr "Birmania"
+
+#~ msgid "Mongolia"
+#~ msgstr "Mongolia"
+
+#~ msgid "Macau"
+#~ msgstr "Macau"
+
+#~ msgid "Mauritania"
+#~ msgstr "Mauritania"
+
+#~ msgid "Malta"
+#~ msgstr "Malta"
+
+#~ msgid "Mauritius"
+#~ msgstr "Mauritius"
+
+#~ msgid "Maldives"
+#~ msgstr "Maldive"
+
+#~ msgid "Malawi"
+#~ msgstr "Malawi"
+
+#~ msgid "Mexico"
+#~ msgstr "Messico"
+
+#~ msgid "Malaysia"
+#~ msgstr "Malesia"
+
+#~ msgid "Mozambique"
+#~ msgstr "Mozambico"
+
+#~ msgid "Namibia"
+#~ msgstr "Namibia"
+
+#~ msgid "Northern Ireland"
+#~ msgstr "Irlanda del Nord"
+
+#~ msgid "Niger"
+#~ msgstr "Niger"
+
+#~ msgid "Nigeria"
+#~ msgstr "Nigeria"
+
+#~ msgid "Nicaragua"
+#~ msgstr "Nicaragua"
+
+#~ msgid "Netherlands"
+#~ msgstr "Olanda"
+
+#~ msgid "Norway"
+#~ msgstr "Norvegia"
+
+#~ msgid "Nepal"
+#~ msgstr "Nepal"
+
+#~ msgid "Nauru"
+#~ msgstr "Nauru"
+
+#~ msgid "New Zealand"
+#~ msgstr "Nuova Zelanda"
+
+#~ msgid "Oman"
+#~ msgstr "Oman"
+
+#~ msgid "Panama"
+#~ msgstr "Panama"
+
+#~ msgid "Peru"
+#~ msgstr "Peru"
+
+#~ msgid "Papua New Guinea"
+#~ msgstr "Papua Nuova Guinea"
+
+#~ msgid "Philippines"
+#~ msgstr "Filippine"
+
+#~ msgid "Pakistan"
+#~ msgstr "Pakistan"
+
+#~ msgid "Poland"
+#~ msgstr "Polonia"
+
+#~ msgid "Portugal"
+#~ msgstr "Porogallo"
+
+#~ msgid "Palau"
+#~ msgstr "Palau"
+
+#~ msgid "Paraguay"
+#~ msgstr "Paraguay"
+
+#~ msgid "Qatar"
+#~ msgstr "Qatar"
+
+#~ msgid "Romania"
+#~ msgstr "Romania"
+
+#~ msgid "Serbia"
+#~ msgstr "Serbia"
+
+#~ msgid "Russia"
+#~ msgstr "Russia"
+
+#~ msgid "Rwanda"
+#~ msgstr "Rwanda"
+
+#~ msgid "Saudi Arabia"
+#~ msgstr "Arabia Sudita"
+
+#~ msgid "Solomon Islands"
+#~ msgstr "Isole Solomone"
+
+#~ msgid "Seychelles"
+#~ msgstr "Seychelles"
+
+#~ msgid "Sudan"
+#~ msgstr "Sudan"
+
+#~ msgid "Sweden"
+#~ msgstr "Svezia"
+
+#~ msgid "Scotland"
+#~ msgstr "Scozia"
+
+#~ msgid "Singapore"
+#~ msgstr "Singapore"
+
+#~ msgid "Slovenia"
+#~ msgstr "Slovenia"
+
+#~ msgid "Slovakia"
+#~ msgstr "Slovacchia"
+
+#~ msgid "Sierra Leone"
+#~ msgstr "Sierra Leone"
+
+#~ msgid "San Marino"
+#~ msgstr "San Marino"
+
+#~ msgid "Senegal"
+#~ msgstr "Senegal"
+
+#~ msgid "Somalia"
+#~ msgstr "Somalia"
+
+#~ msgid "Suriname"
+#~ msgstr "Suriname"
+
+#~ msgid "Sao Tome and Principe"
+#~ msgstr "SÃ£o TomÃ© e PrÃ­ncipe"
+
+#~ msgid "El Salvador"
+#~ msgstr "El Salvador"
+
+#~ msgid "Swaziland"
+#~ msgstr "Swaziland"
+
+#~ msgid "Chad"
+#~ msgstr "Chad"
+
+#~ msgid "Togo"
+#~ msgstr "Togo"
+
+#~ msgid "Thailand"
+#~ msgstr "Tailandia"
+
+#~ msgid "Tajikistan"
+#~ msgstr "Tajikistan"
+
+#~ msgid "East Timor"
+#~ msgstr "Timor Est"
+
+#~ msgid "Turkmenistan"
+#~ msgstr "Turkmenistan"
+
+#~ msgid "Tunisia"
+#~ msgstr "Tunisia"
+
+#~ msgid "Tonga"
+#~ msgstr "Tonga"
+
+#~ msgid "Turkey"
+#~ msgstr "Turchia"
+
+#~ msgid "Trinidad and Tobago"
+#~ msgstr "Trinidad and Tobago"
+
+#~ msgid "Tuvalu"
+#~ msgstr "Tuvalu"
+
+#~ msgid "Taiwan"
+#~ msgstr "Taiwan"
+
+#~ msgid "Tanzania"
+#~ msgstr "Tanzania"
+
+#~ msgid "Ukraine"
+#~ msgstr "Ucraina"
+
+#~ msgid "Uganda"
+#~ msgstr "Uganda"
+
+#~ msgid "United States"
+#~ msgstr "Stati Uniti d'America"
+
+#~ msgid "Uruguay"
+#~ msgstr "Uruguay"
+
+#~ msgid "Uzbekistan"
+#~ msgstr "Uzbekistan"
+
+#~ msgid "Vatican City"
+#~ msgstr "CittÃ  del Vaticano"
+
+#~ msgid "Saint Vincent and the Grenadines"
+#~ msgstr "Saint Vincent and the Grenadines"
+
+#~ msgid "Venezuela"
+#~ msgstr "Venezuela"
+
+#~ msgid "Vietnam"
+#~ msgstr "Vietnam"
+
+#~ msgid "Vanuatu"
+#~ msgstr "Vanuatu"
+
+#~ msgid "Wales"
+#~ msgstr "Galles"
+
+#~ msgid "Samoa"
+#~ msgstr "Samoa"
+
+#~ msgid "Yemen"
+#~ msgstr "Yemen"
+
+#~ msgid "South Africa"
+#~ msgstr "Sudafrica"
+
+#~ msgid "Zambia"
+#~ msgstr "Zambia"
+
+#~ msgid "Zimbabwe"
+#~ msgstr "Zimbabwe"
+
+#~ msgid "Outcome"
+#~ msgstr "Esito"
+
+#~ msgid "Friendly"
+#~ msgstr "Amichevole"
+
+#~ msgid "Calendar"
+#~ msgstr "Calenadrio"
+
+#~ msgid "Blocks"
+#~ msgstr "Blocks (Stoppate)"
+
+#~ msgid "days"
+#~ msgstr "giorni"
+
+#~ msgid "hrs"
+#~ msgstr "orario"
+
+#~ msgid "mins"
+#~ msgstr "minuti"
+
+#~ msgid "secs"
+#~ msgstr "secondi"
+
+#~ msgid "Previous"
+#~ msgstr "precedente"
+
+#~ msgid "Next"
+#~ msgstr "prossimo"
+
+#~ msgid "Team Manager"
+#~ msgstr "Allenatore"
+
+#~ msgid "What's new:"
+#~ msgstr "Le novit&#224;:"
+
+#~ msgid "Leagues"
+#~ msgstr "Leghe"
+
+#~ msgid "Edit League"
+#~ msgstr "Modifica lega"
+
+#~ msgid "Update"
+#~ msgstr "Aggiorna"
+
+#~ msgid "Parent"
+#~ msgstr "Genitore"
+
+#~ msgid "Parent:"
+#~ msgstr "Genitore:"
+
+#~ msgid "Seasons"
+#~ msgstr "Stagioni"
+
+#~ msgid "Venues"
+#~ msgstr "Stadi"
+
+#~ msgid "Venue"
+#~ msgstr "Stadio"
+
+#~ msgid "Edit Venue"
+#~ msgstr "Modifica stadio"
+
+#~ msgid "Edit Position"
+#~ msgstr "Modifica posizione"
+
+#~ msgid "Result"
+#~ msgstr "Risultato"
+
+#~ msgid "Add New Result"
+#~ msgstr "Aggiungi nuovo risultato"
+
+#~ msgid "Edit Result"
+#~ msgstr "Modifica risultato"
+
+#~ msgid "Add New Outcome"
+#~ msgstr "Aggiungi nuovo risultato"
+
+#~ msgid "Edit Outcome"
+#~ msgstr "Modifica risultato"
+
+#~ msgid "Column"
+#~ msgstr "Colonna"
+
+#~ msgid "Edit Column"
+#~ msgstr "Modifica colonna"
+
+#~ msgid "Player Metrics"
+#~ msgstr "Misure del giocatore"
+
+#~ msgid "Metric"
+#~ msgstr "Metrico"
+
+#~ msgid "Add New Metric"
+#~ msgstr "Aggiungi nuove misure"
+
+#~ msgid "Edit Metric"
+#~ msgstr "Modifica misure"
+
+#~ msgid "Player Statistics"
+#~ msgstr "Statistiche del giocatore"
+
+#~ msgid "Statistic"
+#~ msgstr "statistico"
+
+#~ msgid "Add New Statistic"
+#~ msgstr "Aggiungi statistica"
+
+#~ msgid "Edit Statistic"
+#~ msgstr "Modifica statistica"
+
+#~ msgid "Events"
+#~ msgstr "Eventi "
+
+#~ msgid "Event"
+#~ msgstr "Evento"
+
+#~ msgid "Add New Event"
+#~ msgstr "Aggiungi un nuovo evento"
+
+#~ msgid "Edit Event"
+#~ msgstr "Modifica evento"
+
+#~ msgid "Add New Team"
+#~ msgstr "Aggiungi nuova squadra"
+
+#~ msgid "Edit Team"
+#~ msgstr "Modifica squadra"
+
+#~ msgid "League Tables"
+#~ msgstr "Tabelle League"
+
+#~ msgid "League Table"
+#~ msgstr "League Table"
+
+#~ msgid "Add New League Table"
+#~ msgstr "aggiungi nuova tabella lega"
+
+#~ msgid "Edit League Table"
+#~ msgstr "modifica tabella lega"
+
+#~ msgid "Player Lists"
+#~ msgstr "Elenchi Giocatori"
+
+#~ msgid "Player List"
+#~ msgstr "Elenco Giocatori"
+
+#~ msgid "Add New Player List"
+#~ msgstr "Aggiungi nuova lista giocatori"
+
+#~ msgid "Edit Player List"
+#~ msgstr "Modifica lista giocatori"
+
+#~ msgid "Total"
+#~ msgstr "Totale"
+
+#~ msgid "Average"
+#~ msgstr "Sufficiente"
+
+#~ msgid "Published"
+#~ msgstr "Pubblicato"
+
+#~ msgid "(no title)"
+#~ msgstr "(senza titolo)"
+
+#~ msgid "Select All"
+#~ msgstr "Seleziona tutto"
+
+#~ msgid "Article"
+#~ msgstr "Articolo"
+
+#~ msgid "Nationality"
+#~ msgstr "Nazionalit&#224;"
+
+#~ msgid "Played"
+#~ msgstr "Giocate"
+
+#~ msgid "Pos"
+#~ msgstr "Pos"
+
+#~ msgid "Preview"
+#~ msgstr "Anteprima"
+
+#~ msgid "Rank"
+#~ msgstr "Rango"
+
+#~ msgid "Time"
+#~ msgstr "Ora"
+
+#~ msgid "View all events"
+#~ msgstr "Visualizza tutti gli eventi"
+
+#~ msgid "Current Team"
+#~ msgstr "Squadra corrente"
+
+#~ msgid "Past Teams"
+#~ msgstr "Squadre passate"
+
+#~ msgid "Substitutes"
+#~ msgstr "Riserve"
+
+#~ msgid "View all players"
+#~ msgstr "Visualizzare tutti i giocatori"
+
+#~ msgid "Key"
+#~ msgstr "Chiave"
+
+#~ msgid "Variable"
+#~ msgstr "Variabile"
+
+#~ msgid "Date/Time:"
+#~ msgstr "Data/Ora"
+
+#~ msgid "Now"
+#~ msgstr "Adesso"
+
+#~ msgid "Settings saved."
+#~ msgstr "Impostazioni salvate."
+
+#~ msgid "View All"
+#~ msgstr "Mostra tutti"
+
+#~ msgid "Changes saved."
+#~ msgstr "Le modifiche sono state salvate."
+
+#~ msgid "Success!"
+#~ msgstr "Successo!"
+
+#~ msgid "Preview %s"
+#~ msgstr "Anteprima %s"
+
+#~ msgid "Scheduled for: <b>%1$s</b>."
+#~ msgstr "Pianificato il: <b>%1$s</b>"
+
+#~ msgid "M j, Y @ G:i"
+#~ msgstr "M j, Y @ G:i"
+
+#~ msgid "None"
+#~ msgstr "Nessuno"
+
+#~ msgid "&mdash; Remove &mdash;"
+#~ msgstr "&mdash; Rimuovi &mdash;"
+
+#~ msgid "SportsPress Teams (CSV)"
+#~ msgstr "SportsPress Squadre (CSV)"
+
+#~ msgid "Import <strong>teams</strong> from a csv file."
+#~ msgstr "Importazione <strong>squadre</strong> da un file CSV."
+
+#~ msgid "System Status"
+#~ msgstr "Stato del sistema"
+
+#~ msgid "SportsPress Add-ons/Extensions"
+#~ msgstr "SportsPress Add-ons/Estensioni"
+
+#~ msgid "Add-ons"
+#~ msgstr "Add-ons"
+
+#~ msgid "Action failed. Please refresh the page and retry."
+#~ msgstr "Azione fallita. Aggiornare la pagina e riprovare."
+
+#~ msgid "Your settings have been saved."
+#~ msgstr "Le impostazioni sono state salvate correttamente"
+
+#~ msgid "Address"
+#~ msgstr "Indirizzo"
+
+#~ msgid "Latitude"
+#~ msgstr "Latitudine"
+
+#~ msgid "Longitude"
+#~ msgstr "Longitudine"
+
+#~ msgid "Welcome to SportsPress"
+#~ msgstr "Benvenuti in SportsPress"
+
+#~ msgid "Thanks, all done!"
+#~ msgstr "&#200; tutto finito, grazie!"
+
+#~ msgid "Thank you for updating to the latest version!"
+#~ msgstr "Grazie per l'aggiornamento alla versione più recente!"
+
+#~ msgid "Thanks for installing!"
+#~ msgstr "Grazie per l'installazione!"
+
+#~ msgid "Version %s"
+#~ msgstr "Versione %s"
+
+#~ msgid "Get Started"
+#~ msgstr "Cominciamo"
+
+#~ msgid "Choose a country&hellip;"
+#~ msgstr "Scegliere un paese&hellip;"
+
+#~ msgid "Sport"
+#~ msgstr "Sport"
+
+#~ msgid "Save changes"
+#~ msgstr "Salva le impostazioni"
+
+#~ msgid "Next Steps"
+#~ msgstr "PAssi successivi"
+
+#~ msgid "Translators"
+#~ msgstr "Traduttori"
+
+#~ msgid "Go to SportsPress Settings"
+#~ msgstr "Vai alle impostazioni di SportsPress"
+
+#~ msgid ""
+#~ "Import complete - imported <strong>%s</strong> events and skipped <strong>"
+#~ "%s</strong>."
+#~ msgstr ""
+#~ "Importazione completa - importati <strong>%s</strong> eventi e saltati "
+#~ "<strong>%s</strong>."
+
+#~ msgid "Format"
+#~ msgstr "Formato"
+
+#~ msgid "-- Not set --"
+#~ msgstr "-- Non è impostata --"
+
+#~ msgid "View Players"
+#~ msgstr "Visualizza Giocatori"
+
+#~ msgid ""
+#~ "Import complete - imported <strong>%s</strong> teams and skipped <strong>"
+#~ "%s</strong>."
+#~ msgstr ""
+#~ "Importazione completa - importato <strong>% s</strong> squadre e saltato "
+#~ "<strong>% s</strong>."
+
+#~ msgid "View Teams"
+#~ msgstr "Visualizza Squadre"
+
+#~ msgid "Import Teams"
+#~ msgstr "Importa Squadre"
+
+#~ msgid ""
+#~ "Teams need to be defined with columns in a specific order (3 columns). <a "
+#~ "href=\"%s\">Click here to download a sample</a>."
+#~ msgstr ""
+#~ "Squadre devono essere definiti con colonne in un ordine specifico (3 "
+#~ "colonne). <a href=\"%s\">Clicca qui per scaricare un esempio</a>."
+
+#~ msgid "Equation"
+#~ msgstr "Equazione"
+
+#~ msgid "(Auto)"
+#~ msgstr "(Auto)"
+
+#~ msgid "Number"
+#~ msgstr "Numero"
+
+#~ msgid "Insert into %s"
+#~ msgstr "Inserisci in %s"
+
+#~ msgid "Uploaded to this %s"
+#~ msgstr "Caricato qui %s"
+
+#~ msgid "Video"
+#~ msgstr "Video"
+
+#~ msgid "Metrics"
+#~ msgstr "Metrica"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistiche"
+
+#~ msgid "Status"
+#~ msgstr "Stato"
+
+#~ msgid "Disable"
+#~ msgstr "Disabilita"
+
+#~ msgid "Attended"
+#~ msgstr "Partecipato"
+
+#~ msgid "Streak"
+#~ msgstr "Striscia "
+
+#~ msgid "Last 5"
+#~ msgstr "Ultimi 5"
+
+#~ msgid "Last 10"
+#~ msgstr "Ultimi 10"
+
+#~ msgid "Starting Lineup"
+#~ msgstr "Formazione titolare"
+
+#~ msgid "Substitute"
+#~ msgstr "Sostituto"
+
+#~ msgid "&mdash; None &mdash;"
+#~ msgstr "&mdash; Nessuna &mdash;"
+
+#~ msgid "Add video"
+#~ msgstr "Aggiungi video"
+
+#~ msgid "Values"
+#~ msgstr "valori"
+
+#~ msgid "Adjustments"
+#~ msgstr "aggiustamenti"
+
+#~ msgid "Used for events."
+#~ msgstr "Usato per eventi"
+
+#~ msgid "Primary"
+#~ msgstr "Primario"
+
+#~ msgid "Variables"
+#~ msgstr "Variabili"
+
+#~ msgid "Default"
+#~ msgstr "Default"
+
+#~ msgid "Event Options"
+#~ msgstr "Opzioni evento"
+
+#~ msgid "teams"
+#~ msgstr "squadre"
+
+#~ msgid "Results"
+#~ msgstr "Risultati"
+
+#~ msgid "Custom:"
+#~ msgstr "Personalizzato:"
+
+#~ msgid "General"
+#~ msgstr "Generali"
+
+#~ msgid "General Options"
+#~ msgstr "Opzioni generali"
+
+#~ msgid "Styles and Scripts"
+#~ msgstr "Stili e Scripts"
+
+#~ msgid "Auto"
+#~ msgstr "Automatico"
+
+#~ msgid "Scripts"
+#~ msgstr "Scripts"
+
+#~ msgid "Frontend Styles"
+#~ msgstr "Stili del frontend"
+
+#~ msgid "Please include this information when requesting support:"
+#~ msgstr ""
+#~ "Si prega di includere queste informazioni quando si richiede assistenza:"
+
+#~ msgid "Get System Report"
+#~ msgstr "Report di sistema"
+
+#~ msgid "Environment"
+#~ msgstr "Environment"
+
+#~ msgid "Home URL"
+#~ msgstr "Home URL"
+
+#~ msgid "WP Version"
+#~ msgstr "WP Version"
+
+#~ msgid "WP Multisite Enabled"
+#~ msgstr "WP Multisito Attivato"
+
+#~ msgid "Yes"
+#~ msgstr "Si"
+
+#~ msgid "No"
+#~ msgstr "No"
+
+#~ msgid "Web Server Info"
+#~ msgstr "Web Server Info"
+
+#~ msgid "PHP Version"
+#~ msgstr "PHP Version"
+
+#~ msgid "WP Memory Limit"
+#~ msgstr "WP Memory Limit"
+
+#~ msgid ""
+#~ "%s - We recommend setting memory to at least 64MB. See: <a href=\"%s"
+#~ "\">Increasing memory allocated to PHP</a>"
+#~ msgstr ""
+#~ "%s - Si consiglia di impostare la memoria ad almeno 64 MB. Vedi: <a href="
+#~ "\"%s\">Aumentare la memoria allocata a PHP</a>"
+
+#~ msgid "WP Debug Mode"
+#~ msgstr "WP Debug Mode"
+
+#~ msgid "WP Language"
+#~ msgstr "Lingua WP"
+
+#~ msgid "WP Max Upload Size"
+#~ msgstr "WP Dimensione Max Upload "
+
+#~ msgid "PHP Post Max Size"
+#~ msgstr "PHP Post Max Size"
+
+#~ msgid "PHP Time Limit"
+#~ msgstr "PHP Time Limit"
+
+#~ msgid "PHP Max Input Vars"
+#~ msgstr "PHP Max Input Vars"
+
+#~ msgid "SUHOSIN Installed"
+#~ msgstr "SUHOSIN Installato"
+
+#~ msgid "Default Timezone"
+#~ msgstr "Fuso orario predefinito"
+
+#~ msgid "Default timezone is %s - it should be UTC"
+#~ msgstr "Il fuso orario predefinito è %s - Dovrebbe essere UTC"
+
+#~ msgid "Default timezone is %s"
+#~ msgstr "Il fuso orario predefinito è %s"
+
+#~ msgid "fsockopen/cURL"
+#~ msgstr "fsockopen/cURL"
+
+#~ msgid "Your server has fsockopen and cURL enabled."
+#~ msgstr "Il server ha fsockopen e cURL abilitati."
+
+#~ msgid "Your server has fsockopen enabled, cURL is disabled."
+#~ msgstr "Il server ha abilitato fsockopen, cURL è disabilitato."
+
+#~ msgid "Your server has cURL enabled, fsockopen is disabled."
+#~ msgstr "Il server ha abilitato cURL, fsockopen è disabilitato."
+
+#~ msgid ""
+#~ "Your server does not have fsockopen or cURL enabled - PayPal IPN and "
+#~ "other scripts which communicate with other servers will not work. Contact "
+#~ "your hosting provider."
+#~ msgstr ""
+#~ "Il server non ha né fsockopen né cURL abilitati - PayPal IPN ed altri "
+#~ "script che comunicano con gli altri server non funzioneranno. Rivolgersi "
+#~ "al fornitore di hosting."
+
+#~ msgid "SOAP Client"
+#~ msgstr "SOAP Client"
+
+#~ msgid "Your server has the SOAP Client class enabled."
+#~ msgstr "Il server ha il SOAP class Client abilitato."
+
+#~ msgid ""
+#~ "Your server does not have the <a href=\"%s\">SOAP Client</a> class "
+#~ "enabled - some gateway plugins which use SOAP may not work as expected."
+#~ msgstr ""
+#~ "Il server non ha la classe <a href=\"%s\">SOAP Client</a> abilitata – "
+#~ "alcuni plugin di gateway che utilizzano SOAP potrebbero non funzionare "
+#~ "come previsto."
+
+#~ msgid "Plugins"
+#~ msgstr "Plugins"
+
+#~ msgid "Installed Plugins"
+#~ msgstr "Plugin installati"
+
+#~ msgid "Visit plugin homepage"
+#~ msgstr "Visita homepage plugin"
+
+#~ msgid "is available"
+#~ msgstr "è disponibile"
+
+#~ msgid "by"
+#~ msgstr "by"
+
+#~ msgid "version"
+#~ msgstr "versione"
+
+#~ msgid "Theme"
+#~ msgstr "Tema"
+
+#~ msgid "Theme Name"
+#~ msgstr "Nome del tema"
+
+#~ msgid "Theme Version"
+#~ msgstr "Versione del tema"
+
+#~ msgid "Author URL"
+#~ msgstr "URL Autore"
+
+#~ msgid "Templates"
+#~ msgstr "Templates"
+
+#~ msgid "Template Overrides"
+#~ msgstr "Template Overrides"
+
+#~ msgid "No overrides present in theme."
+#~ msgstr "Nessun override presente nel tema"
+
+#~ msgid "Welcome to SportsPress %s"
+#~ msgstr "Benvenuti in SportsPress %s"
+
+#~ msgid "Hide this notice"
+#~ msgstr "Nascondi questo avviso"
+
+#~ msgid ""
+#~ "<strong>Your theme does not declare SportsPress support</strong> &#8211; "
+#~ "if you encounter layout issues please read our integration guide or "
+#~ "choose a SportsPress theme :)"
+#~ msgstr ""
+#~ "<strong>Il tuo tema non dichiara il supporto a SportsPress</strong> "
+#~ "&#8211; se si riscontrano problemi di layout si prega di leggere la "
+#~ "nostra guida per l'integrazione o scegli un tema SportsPress :)"
+
+#~ msgid "Theme Integration Guide"
+#~ msgstr "Guida per l'integrazione con il tema"
+
+#~ msgid "A clock that counts down to an upcoming event."
+#~ msgstr "Un orologio che conta fino a un evento imminente."
+
+#~ msgid "SportsPress Countdown"
+#~ msgstr "SportsPress Conto alla rovescia"
+
+#~ msgid "Display league"
+#~ msgstr "Visualizza Lega"
+
+#~ msgid "Columns:"
+#~ msgstr "Colonne:"
+
+#~ msgid "Display a league table."
+#~ msgstr "Mostra un tabelle League"
+
+#~ msgid "Display player names on hover"
+#~ msgstr "Visualizza nomi giocatori al passaggio del mouse"
+
+#~ msgid "Display a list of players."
+#~ msgstr "Mostra un elenco di giocatori"
+
+#~ msgctxt "calendar caption"
+#~ msgid "%1$s %2$s"
+#~ msgstr "%1$s %2$s"

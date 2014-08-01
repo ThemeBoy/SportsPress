@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-07-21 15:46+1000\n"
-"PO-Revision-Date: 2014-07-23 01:47+1000\n"
+"PO-Revision-Date: 2014-07-30 23:51+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/"
 "sportspress/language/de_DE/)\n"
@@ -486,7 +486,7 @@ msgstr "Logos anzeigen"
 #: includes/class-sp-ajax.php:446
 #: includes/widgets/class-sp-widget-league-table.php:93
 msgid "Display link to view full table"
-msgstr "Verknüpfung zur vollständigen Tabelle anzeigen"
+msgstr "Verknüpfung zur Ansicht der vollständigen Tabelle anzeigen"
 
 #: includes/class-sp-ajax.php:525 includes/class-sp-ajax.php:615
 #: includes/class-sp-post-types.php:495
@@ -544,7 +544,7 @@ msgstr "Gespielt"
 #: includes/widgets/class-sp-widget-player-gallery.php:101
 #: includes/widgets/class-sp-widget-player-list.php:121
 msgid "Display link to view all players"
-msgstr "Verknüpfung zur Spielerübersicht anzeigen"
+msgstr "Verknüpfung zur Ansicht aller Spieler anzeigen"
 
 #: includes/class-sp-ajax.php:671
 #: includes/widgets/class-sp-widget-player-gallery.php:104

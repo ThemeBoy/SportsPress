@@ -5,7 +5,7 @@ Plugin URI: http://sportspresspro.com/
 Description: Add sponsors to SportsPress.
 Author: ThemeBoy
 Author URI: http://sportspresspro.com
-Version: 1.0.2
+Version: 1.0.3
 */
 
 // Exit if accessed directly
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Main SportsPress Sponsors Class
  *
  * @class SportsPress_Sponsors
- * @version	1.0
+ * @version	1.0.3
  */
 class SportsPress_Sponsors {
 
@@ -31,6 +31,7 @@ class SportsPress_Sponsors {
 
 		// Hooks
 		register_activation_hook( __FILE__, array( $this, 'install' ) );
+		register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
 		add_action( 'init', array( $this, 'init' ), 15 );
 		add_action( 'admin_init', array( $this, 'check_version' ), 5 );
 		add_action( 'admin_init', array( $this, 'register_importer' ) );
@@ -54,6 +55,10 @@ class SportsPress_Sponsors {
 
 		if ( is_admin() ) {
 			add_action( 'wp_ajax_nopriv_sp_clicks', array( $this, 'sp_clicks' ) );
+		}
+
+		if ( defined( 'SP_PRO_PLUGIN_FILE' ) ) {
+			register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
 		}
 	}
 

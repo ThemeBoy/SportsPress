@@ -1,22 +1,21 @@
 #
 # Translators:
 # ideodora <ideodora@gmail.com>, 2013
+# ThemeBoy <support@themeboy.com>, 2014
+# ThemeBoy <support@themeboy.com>, 2014
 # 田中　昌平 <shohei.tanaka@artisanworkshop.biz>, 2013
-# ThemeBoy <support@themeboy.com>, 2014
-# ThemeBoy <support@themeboy.com>, 2014
-# ThemeBoy <support@themeboy.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-07-28 07:06+1000\n"
-"PO-Revision-Date: 2014-07-28 09:15+1000\n"
+"PO-Revision-Date: 2014-07-29 06:10+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/sportspress/"
 "language/ja/)\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ..\n"
@@ -45,13 +44,13 @@ msgstr "SportsPress"
 #: sportspress-branding/includes/class-sp-settings-branding.php:124
 #: sportspress-branding/includes/class-sp-settings-branding.php:126
 msgid "Icon"
-msgstr ""
+msgstr "アイコン"
 
 #: sportspress-branding/includes/class-sp-settings-branding.php:123
 #: sportspress-branding/includes/class-sp-settings-branding.php:124
-#, fuzzy, php-format
+#, php-format
 msgid "Remove %s"
-msgstr "動画を削除"
+msgstr "%sを削除"
 
 #: sportspress-branding/includes/class-sp-settings-branding.php:126
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:236
@@ -62,26 +61,23 @@ msgstr "%sを選択"
 
 #: sportspress-branding/includes/class-sp-settings-branding.php:142
 msgid "Admin Color Scheme"
-msgstr ""
+msgstr "管理画面の配色"
 
 #: sportspress-branding/includes/class-sp-settings-branding.php:157
-#, fuzzy
 msgid "Base Color"
-msgstr "販売拠点"
+msgstr "基本色"
 
 #: sportspress-branding/includes/class-sp-settings-branding.php:158
 msgid "Highlight"
-msgstr ""
+msgstr "ハイライト"
 
 #: sportspress-branding/includes/class-sp-settings-branding.php:159
-#, fuzzy
 msgid "Notifications"
-msgstr "ポジション"
+msgstr "お知らせ"
 
 #: sportspress-branding/includes/class-sp-settings-branding.php:160
-#, fuzzy
 msgid "Actions"
-msgstr "ポジション"
+msgstr "操作"
 
 #: sportspress-branding/includes/class-sp-settings-branding.php:161
 msgid "Text"
@@ -89,7 +85,7 @@ msgstr "テキスト"
 
 #: sportspress-branding/includes/class-sp-settings-branding.php:167
 msgid "Enable"
-msgstr "有効にする"
+msgstr "有効"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:25
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:44
@@ -105,13 +101,12 @@ msgstr "タイトル"
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:80
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:125
 msgid "Sort by"
-msgstr ""
+msgstr "並び順"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:63
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:85
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:130
 #: sportspress-sponsors/includes/class-sp-widget-sponsors.php:55
-#, fuzzy
 msgid "Menu Order"
 msgstr "ソート順"
 
@@ -131,7 +126,7 @@ msgstr "名前"
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:133
 #: sportspress-sponsors/includes/class-sp-widget-sponsors.php:58
 msgid "Random"
-msgstr ""
+msgstr "ランダム"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:70
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:93
@@ -155,36 +150,35 @@ msgstr "降順"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:81
 msgid "Width"
-msgstr ""
+msgstr "幅"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:97
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:151
 msgid "Text Color"
-msgstr ""
+msgstr "文字色"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:106
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:160
-#, fuzzy
 msgid "Background Color"
-msgstr "背景"
+msgstr "背景色"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:115
 msgid "Align"
-msgstr ""
+msgstr "配置"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:120
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:205
 msgid "Left"
-msgstr ""
+msgstr "左"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:121
 msgid "Center"
-msgstr ""
+msgstr "中央"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:122
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:229
 msgid "Right"
-msgstr ""
+msgstr "右"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:184
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:187
@@ -202,51 +196,49 @@ msgstr "ロゴ"
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:202
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:252
 msgid "Max Width"
-msgstr ""
+msgstr "幅の上限"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:193
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:289
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:204
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:254
 msgid "Max Height"
-msgstr ""
+msgstr "高さの上限"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:199
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:202
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:223
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:226
 msgid "Position"
-msgstr "ポジション"
+msgstr "位置"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:203
 msgid "Bottom"
-msgstr ""
+msgstr "下"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:211
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:214
-#, fuzzy
 msgid "Remove Image"
-msgstr "動画を削除"
+msgstr "画像の削除"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:215
 msgid "Remove logo"
-msgstr ""
+msgstr "ロゴを削除"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:221
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:224
-#, fuzzy
 msgid "Select Image"
-msgstr "%sを選択"
+msgstr "画像を選択"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:225
 #: sportspress-sponsors/sportspress-sponsors.php:366
 #: sportspress-sponsors/sportspress-sponsors.php:372
 msgid "Select Logo"
-msgstr ""
+msgstr "ロゴを選択"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:225
 msgid "Add logo"
-msgstr ""
+msgstr "ロゴを追加"
 
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:259
 #: sportspress-league-menu/includes/class-sp-settings-league-menu.php:261
@@ -269,14 +261,12 @@ msgid "Sponsor"
 msgstr "スポンサー"
 
 #: sportspress-sponsors/sportspress-sponsors.php:111
-#, fuzzy
 msgid "Add New Sponsor"
-msgstr "新しい列を追加する"
+msgstr "新しいスポンサーを追加する"
 
 #: sportspress-sponsors/sportspress-sponsors.php:112
-#, fuzzy
 msgid "Edit Sponsor"
-msgstr "列の編集"
+msgstr "スポンサーの編集"
 
 #: sportspress-sponsors/sportspress-sponsors.php:113
 #: sportspress-staff-directories/sportspress-staff-directories.php:104
@@ -286,7 +276,7 @@ msgstr "新規"
 #: sportspress-sponsors/sportspress-sponsors.php:114
 #: sportspress-staff-directories/sportspress-staff-directories.php:105
 msgid "View"
-msgstr "詳細"
+msgstr "表示"
 
 #: sportspress-sponsors/sportspress-sponsors.php:115
 #: sportspress-staff-directories/sportspress-staff-directories.php:106
@@ -301,22 +291,19 @@ msgstr "検索"
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:301
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:358
 msgid "No results found."
-msgstr "見つかりません。"
+msgstr "見つかりませんでした。"
 
 #: sportspress-sponsors/sportspress-sponsors.php:169
-#, fuzzy
 msgid "SportsPress Sponsors (CSV)"
-msgstr "SportsPress 選手 (CSV)"
+msgstr "SportsPress スポンサー (CSV)"
 
 #: sportspress-sponsors/sportspress-sponsors.php:169
-#, fuzzy
 msgid "Import <strong>sponsors</strong> from a csv file."
-msgstr "csvファイルで<strong>選手</strong>をインポート"
+msgstr "csvファイルで<strong>スポンサー</strong>をインポート"
 
 #: sportspress-sponsors/sportspress-sponsors.php:375
-#, fuzzy
 msgid "Remove Logo"
-msgstr "動画を削除"
+msgstr "ロゴを削除"
 
 #: sportspress-sponsors/sportspress-sponsors.php:378
 msgid "User"
@@ -326,7 +313,7 @@ msgstr "ユーザー"
 #: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:45
 #: sportspress-sponsors/includes/sp-sponsor-functions.php:25
 msgid "Visit Site"
-msgstr ""
+msgstr "サイトを表示"
 
 #: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:65
 msgid "URL"
@@ -336,20 +323,20 @@ msgstr "URL"
 #: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:48
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:47
 msgid "Impressions"
-msgstr ""
+msgstr "表示回数"
 
 #: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:67
 #: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:51
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:55
 msgid "Clicks"
-msgstr ""
+msgstr "クリック数"
 
 #: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:30
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:37
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:236
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:367
 msgid "Details"
-msgstr "詳細"
+msgstr "説明"
 
 #: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:42
 msgid "Site URL"
@@ -358,17 +345,16 @@ msgstr "サイトURL"
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:48
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:56
 msgid "Exclude logged-in users"
-msgstr ""
+msgstr "ログインしたユーザーを除外する"
 
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:64
 msgid "Header"
-msgstr ""
+msgstr "ヘッダー"
 
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:67
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:112
-#, fuzzy
 msgid "Display"
-msgstr "地図を表示する"
+msgstr "表示する"
 
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:71
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:116
@@ -379,15 +365,15 @@ msgstr "スポンサー"
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:131
 #: sportspress-sponsors/includes/class-sp-widget-sponsors.php:56
 msgid "Date"
-msgstr "日付"
+msgstr "日時"
 
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:109
 msgid "Footer"
-msgstr ""
+msgstr "フッター"
 
 #: sportspress-sponsors/includes/class-sp-settings-sponsors.php:227
 msgid "Top"
-msgstr ""
+msgstr "上"
 
 #: sportspress-sponsors/includes/class-sp-sponsor-importer.php:75
 msgid "Sorry, there has been an error."
@@ -398,13 +384,13 @@ msgid "The CSV is invalid."
 msgstr "CSV形式は無効です"
 
 #: sportspress-sponsors/includes/class-sp-sponsor-importer.php:87
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Import complete - imported <strong>%s</strong> sponsors and skipped <strong>"
 "%s</strong>."
 msgstr ""
-"完全なインポート - <strong>%s</strong>の選手をインポートし、<strong>%s</"
-"strong>をスキップ"
+"完全なインポート - <strong>%s</strong>のスポンサーをインポートし、<strong>"
+"%s</strong>をスキップ"
 
 #: sportspress-sponsors/includes/class-sp-sponsor-importer.php:97
 msgid "All done!"
@@ -412,12 +398,11 @@ msgstr "完了！"
 
 #: sportspress-sponsors/includes/class-sp-sponsor-importer.php:97
 msgid "View Sponsors"
-msgstr ""
+msgstr "スポンサーを表示"
 
 #: sportspress-sponsors/includes/class-sp-sponsor-importer.php:109
-#, fuzzy
 msgid "Import Sponsors"
-msgstr "選手をインポート"
+msgstr "スポンサーをインポート"
 
 #: sportspress-sponsors/includes/class-sp-sponsor-importer.php:121
 msgid ""
@@ -428,23 +413,24 @@ msgstr ""
 "インポート」をクリックし、アップロードするCSVファイルを選択して下さい。"
 
 #: sportspress-sponsors/includes/class-sp-sponsor-importer.php:123
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Sponsors need to be defined with columns in a specific order (2 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"選手は、特定の列（7列）で定義する必要があります。<a href=\"%s\">ここをクリッ"
-"クして、サンプルをダウンロード</a>"
+"スポンサーは、特定の列（2列）で定義する必要があります。<a href=\"%s\">ここを"
+"クリックして、サンプルをダウンロード</a>"
 
 #: sportspress-sponsors/includes/class-sp-sponsor-importer.php:131
 msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
-msgstr "インポートファイルをアップロードする前に、次を修正する必要があります:"
+msgstr ""
+"インポートファイルをアップロードする前に次のエラーを修復する必要があります:"
 
 #: sportspress-sponsors/includes/class-sp-sponsor-importer.php:140
 msgid "Choose a file from your computer:"
-msgstr "お使いのコンピュータからファイルを選択してください："
+msgstr "自分のコンピューターからファイルを選択する:"
 
 #: sportspress-sponsors/includes/class-sp-sponsor-importer.php:146
 #, php-format
@@ -465,12 +451,11 @@ msgstr "ファイルをアップロードしてインポート"
 
 #: sportspress-sponsors/includes/class-sp-widget-sponsors.php:5
 msgid "A list of sponsors."
-msgstr ""
+msgstr "スポンサーの一覧。"
 
 #: sportspress-sponsors/includes/class-sp-widget-sponsors.php:6
-#, fuzzy
 msgid "SportsPress Sponsors"
-msgstr "SportsPress 設定"
+msgstr "SportsPress スポンサー"
 
 #: sportspress-sponsors/includes/class-sp-widget-sponsors.php:47
 #: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:41
@@ -480,7 +465,7 @@ msgstr "タイトル:"
 
 #: sportspress-sponsors/includes/class-sp-widget-sponsors.php:50
 msgid "Number of sponsors to show:"
-msgstr ""
+msgstr "表示するスポンサーの数:"
 
 #: sportspress-sponsors/includes/class-sp-widget-sponsors.php:53
 msgid "Sort by:"
@@ -492,46 +477,45 @@ msgstr "ソート順:"
 
 #: sportspress-sponsors/includes/class-sp-widget-sponsors.php:67
 msgid "Max Width:"
-msgstr ""
+msgstr "最大幅:"
 
 #: sportspress-sponsors/includes/class-sp-widget-sponsors.php:70
 msgid "Max Height:"
-msgstr ""
+msgstr "最大高さ:"
 
 #: sportspress-sponsors/includes/sp-sponsor-functions.php:38
 #, php-format
 msgid "%s impression"
 msgid_plural "%s impressions"
-msgstr[0] ""
+msgstr[0] "%s回表示"
 
 #: sportspress-sponsors/includes/sp-sponsor-functions.php:69
 #, php-format
 msgid "%s click"
 msgid_plural "%s clicks"
-msgstr[0] ""
+msgstr[0] "%sクリック"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:100
 #: sportspress-staff-directories/sportspress-staff-directories.php:197
 #: sportspress-staff-directories/sportspress-staff-directories.php:220
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:46
-#, fuzzy
 msgid "Staff Directories"
-msgstr "チーム設定"
+msgstr "スタッフ名鑑"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:101
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:38
 #: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:44
 #: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:44
 msgid "Staff Directory"
-msgstr ""
+msgstr "スタッフ名鑑"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:102
 msgid "Add New Staff Directory"
-msgstr ""
+msgstr "新しいスタッフ名鑑を追加する"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:103
 msgid "Edit Staff Directory"
-msgstr ""
+msgstr "スタッフ名鑑の編集"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:207
 msgid "List"
@@ -539,7 +523,7 @@ msgstr "リスト"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:208
 msgid "Gallery"
-msgstr ""
+msgstr "ギャラリー"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:223
 msgid "Staff"
@@ -547,22 +531,21 @@ msgstr "スタッフ"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:224
 msgid "Link staff"
-msgstr ""
+msgstr "スタッフをリンクする"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:231
 msgid "Pagination"
-msgstr ""
+msgstr "ページ分け"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:232
 msgid "Paginate"
-msgstr ""
+msgstr "ページ分けする"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:239
 msgid "Limit"
-msgstr ""
+msgstr "制限"
 
 #: sportspress-staff-directories/sportspress-staff-directories.php:243
-#, fuzzy
 msgid "staff"
 msgstr "スタッフ"
 
@@ -613,7 +596,7 @@ msgstr "ショートコード"
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:36
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:326
 msgid "Layout"
-msgstr ""
+msgstr "レイアウト"
 
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:39
 msgid "Description"
@@ -621,12 +604,14 @@ msgstr "説明"
 
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:42
 msgid "Contact Info"
-msgstr ""
+msgstr "連絡先情報"
 
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:66
 msgid ""
 "Copy this code and paste it into your post, page or text widget content."
 msgstr ""
+"このコードをコピーして、投稿、ページ、またはテキストウィジェットの本文内に"
+"ペーストしてください。"
 
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:108
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:123
@@ -639,7 +624,7 @@ msgstr "新規追加"
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:191
 #: sportspress-staff-directories/includes/class-sp-staff-directory.php:193
 msgid "Role"
-msgstr ""
+msgstr "権限グループ"
 
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:217
 msgid "Edit"
@@ -647,7 +632,7 @@ msgstr "編集"
 
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:221
 msgid "Cancel"
-msgstr "取消"
+msgstr "キャンセル"
 
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:222
 msgid "Save"
@@ -657,27 +642,25 @@ msgstr "保存"
 #: sportspress-staff-directories/includes/class-sp-staff-directory.php:178
 #: sportspress-staff-directories/templates/staff-contacts.php:31
 msgid "Phone"
-msgstr ""
+msgstr "電話"
 
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:260
 #: sportspress-staff-directories/includes/class-sp-staff-directory.php:179
 #: sportspress-staff-directories/templates/staff-contacts.php:36
 msgid "Email"
-msgstr ""
+msgstr "メールアドレス"
 
 #: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:317
 msgid "Directory"
-msgstr ""
+msgstr "名鑑"
 
 #: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:5
-#, fuzzy
 msgid "A gallery of staff."
-msgstr "イベントのカレンダー"
+msgstr "ギャラリースタイルでスタッフを表示します。"
 
 #: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:6
-#, fuzzy
 msgid "SportsPress Staff Gallery"
-msgstr "SportsPress 順位表"
+msgstr "SportsPress スタッフギャラリー"
 
 #: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:44
 #: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:44
@@ -688,1261 +671,26 @@ msgstr "%sを選択:"
 #: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:60
 #: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:60
 msgid "Number of staff to show:"
-msgstr ""
+msgstr "表示するスタッフの数:"
 
 #: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:64
 #: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:64
-#, fuzzy
 msgid "Display link to view all staff"
-msgstr "地図を表示する"
+msgstr "「すべてのスタッフを表示」リンクを表示する"
 
 #: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:5
 msgid "A list of staff."
-msgstr ""
+msgstr "スタッフの一覧。"
 
 #: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:6
-#, fuzzy
 msgid "SportsPress Staff List"
-msgstr "SportsPress 選手名鑑"
+msgstr "SportsPress スタッフ一覧"
 
 #: sportspress-staff-directories/templates/staff-gallery.php:108
 #: sportspress-staff-directories/templates/staff-list.php:105
-#, fuzzy
 msgid "View all staff"
-msgstr "すべて表示"
+msgstr "すべてのスタッフを表示"
 
 #: sportspress-team-colors/sportspress-team-colors.php:83
-#, fuzzy
 msgid "Team Colors"
-msgstr "チーム"
-
-#~ msgid "Cheatin&#8217; huh?"
-#~ msgstr "Cheatin&#8217; huh?"
-
-#~ msgid "Settings"
-#~ msgstr "設定"
-
-#~ msgid "Players"
-#~ msgstr "選手"
-
-#~ msgid "Player"
-#~ msgstr "選手"
-
-#~ msgid "players"
-#~ msgstr "選手"
-
-#, fuzzy
-#~ msgid "Display photos"
-#~ msgstr "地図を表示する"
-
-#~ msgid "Africa"
-#~ msgstr "アフリカ"
-
-#~ msgid "Asia"
-#~ msgstr "アジア"
-
-#~ msgid "Europe"
-#~ msgstr "ヨーロッパ"
-
-#~ msgid "North America"
-#~ msgstr "北アメリカ"
-
-#~ msgid "Oceania"
-#~ msgstr "オセアニア"
-
-#~ msgid "South America"
-#~ msgstr "南アメリカ"
-
-#~ msgid "Andorra"
-#~ msgstr "アンドラ"
-
-#~ msgid "United Arab Emirates"
-#~ msgstr "アラブ首長国連邦"
-
-#~ msgid "Afghanistan"
-#~ msgstr "アフガニスタン"
-
-#~ msgid "Antigua and Barbuda"
-#~ msgstr "アンチグアバーブーダ"
-
-#~ msgid "Albania"
-#~ msgstr "アルバニア"
-
-#~ msgid "Armenia"
-#~ msgstr "アルメリア"
-
-#~ msgid "Angola"
-#~ msgstr "アンゴラ"
-
-#~ msgid "Argentina"
-#~ msgstr "アルゼンチン"
-
-#~ msgid "Austria"
-#~ msgstr "オーストリア"
-
-#~ msgid "Australia"
-#~ msgstr "オーストラリア"
-
-#~ msgid "Azerbaijan"
-#~ msgstr "アゼルバイジャン"
-
-#~ msgid "Bosnia and Herzegovina"
-#~ msgstr "ボスニア・ヘルツェゴビナ"
-
-#~ msgid "Barbados"
-#~ msgstr "バルバドス"
-
-#~ msgid "Bangladesh"
-#~ msgstr "バングラデシュ"
-
-#~ msgid "Belgium"
-#~ msgstr "ベルギー"
-
-#~ msgid "Burkina Faso"
-#~ msgstr "ブルキナファソ"
-
-#~ msgid "Bulgaria"
-#~ msgstr "ブルガリア"
-
-#~ msgid "Bahrain"
-#~ msgstr "バーレーン"
-
-#~ msgid "Burundi"
-#~ msgstr "ブルンジ"
-
-#~ msgid "Benin"
-#~ msgstr "ベナン"
-
-#~ msgid "Brunei"
-#~ msgstr "ブルネイ"
-
-#~ msgid "Bolivia"
-#~ msgstr "ボリビア"
-
-#~ msgid "Brazil"
-#~ msgstr "ブラジル"
-
-#~ msgid "Bahamas"
-#~ msgstr "バハマ"
-
-#~ msgid "Bhutan"
-#~ msgstr "ブータン"
-
-#~ msgid "Botswana"
-#~ msgstr "ボツワナ"
-
-#~ msgid "Belarus"
-#~ msgstr "ベラルーシ"
-
-#~ msgid "Belize"
-#~ msgstr "ベリーズ"
-
-#~ msgid "Canada"
-#~ msgstr "カナダ"
-
-#~ msgid "Democratic Republic of the Congo"
-#~ msgstr "コンゴ民主共和国"
-
-#~ msgid "Central African Republic"
-#~ msgstr "中央アフリカ共和国"
-
-#~ msgid "Republic of the Congo"
-#~ msgstr "コンゴ共和国"
-
-#~ msgid "Switzerland"
-#~ msgstr "スイス"
-
-#~ msgid "Ivory Coast"
-#~ msgstr "コートジボワール"
-
-#~ msgid "Chile"
-#~ msgstr "チリ"
-
-#~ msgid "Cameroon"
-#~ msgstr "カメルーン"
-
-#~ msgid "China"
-#~ msgstr "中国"
-
-#~ msgid "Colombia"
-#~ msgstr "コロンビア"
-
-#~ msgid "Costa Rica"
-#~ msgstr "コスタリカ"
-
-#~ msgid "Cuba"
-#~ msgstr "キューバ"
-
-#~ msgid "Cape Verde"
-#~ msgstr "カーボヴェルデ"
-
-#~ msgid "Cyprus"
-#~ msgstr "キプロス"
-
-#~ msgid "Czech Republic"
-#~ msgstr "チェコ共和国"
-
-#~ msgid "Germany"
-#~ msgstr "ドイツ"
-
-#~ msgid "Djibouti"
-#~ msgstr "ジブチ"
-
-#~ msgid "Denmark"
-#~ msgstr "デンマーク"
-
-#~ msgid "Dominica"
-#~ msgstr "ドミニカ"
-
-#~ msgid "Dominican Republic"
-#~ msgstr "ドミニカ共和国"
-
-#~ msgid "Algeria"
-#~ msgstr "アルジェリア"
-
-#~ msgid "Ecuador"
-#~ msgstr "エクアドル"
-
-#~ msgid "Estonia"
-#~ msgstr "エストニア"
-
-#~ msgid "Egypt"
-#~ msgstr "エジプト"
-
-#~ msgid "Western Sahara"
-#~ msgstr "西サハラ"
-
-#~ msgid "England"
-#~ msgstr "イングランド"
-
-#~ msgid "Eritrea"
-#~ msgstr "エリトリア"
-
-#~ msgid "Spain"
-#~ msgstr "スペイン"
-
-#~ msgid "Ethiopia"
-#~ msgstr "エチオピア"
-
-#~ msgid "Finland"
-#~ msgstr "フィンランド"
-
-#~ msgid "Fiji"
-#~ msgstr "フィジー"
-
-#~ msgid "Micronesia"
-#~ msgstr "ミクロネシア"
-
-#~ msgid "France"
-#~ msgstr "フランス"
-
-#~ msgid "Gabon"
-#~ msgstr "ガボン"
-
-#~ msgid "United Kingdom"
-#~ msgstr "イギリス"
-
-#~ msgid "Grenada"
-#~ msgstr "グレナダ"
-
-#~ msgid "Georgia"
-#~ msgstr "ジョージア"
-
-#~ msgid "Ghana"
-#~ msgstr "ガーナ"
-
-#~ msgid "Gambia"
-#~ msgstr "ガンビア"
-
-#~ msgid "Guinea"
-#~ msgstr "ギニア"
-
-#~ msgid "Equatorial Guinea"
-#~ msgstr "赤道ギニア共和国"
-
-#~ msgid "Greece"
-#~ msgstr "ギリシャ"
-
-#~ msgid "Guatemala"
-#~ msgstr "グアテマラ"
-
-#~ msgid "Guinea-Bissau"
-#~ msgstr "ギニアビサウ"
-
-#~ msgid "Guyana"
-#~ msgstr "ガイアナ"
-
-#~ msgid "Hong Kong"
-#~ msgstr "香港"
-
-#~ msgid "Honduras"
-#~ msgstr "ホンジュラス"
-
-#~ msgid "Croatia"
-#~ msgstr "クロアチア"
-
-#~ msgid "Haiti"
-#~ msgstr "ハイチ"
-
-#~ msgid "Hungary"
-#~ msgstr "ハンガリー"
-
-#~ msgid "Indonesia"
-#~ msgstr "インドネシア"
-
-#~ msgid "Ireland"
-#~ msgstr "アイルランド"
-
-#~ msgid "Israel"
-#~ msgstr "イスラエル"
-
-#~ msgid "India"
-#~ msgstr "インド"
-
-#~ msgid "Iraq"
-#~ msgstr "イラク"
-
-#~ msgid "Iran"
-#~ msgstr "イラン"
-
-#~ msgid "Iceland"
-#~ msgstr "アイスランド"
-
-#~ msgid "Italy"
-#~ msgstr "イタリア"
-
-#~ msgid "Jamaica"
-#~ msgstr "ジャマイカ"
-
-#~ msgid "Jordan"
-#~ msgstr "ヨルダン"
-
-#~ msgid "Japan"
-#~ msgstr "日本"
-
-#~ msgid "Kenya"
-#~ msgstr "ケニア"
-
-#~ msgid "Kyrgyzstan"
-#~ msgstr "キルギスタン"
-
-#~ msgid "Cambodia"
-#~ msgstr "カンボジア"
-
-#~ msgid "Kiribati"
-#~ msgstr "キリバス"
-
-#~ msgid "Comoros"
-#~ msgstr "コモロ"
-
-#~ msgid "Saint Kitts and Nevis"
-#~ msgstr "セントクリストファー・ネイビス"
-
-#~ msgid "North Korea"
-#~ msgstr "北朝鮮"
-
-#~ msgid "South Korea"
-#~ msgstr "韓国"
-
-#~ msgid "Kuwait"
-#~ msgstr "クウェート"
-
-#~ msgid "Kazakhstan"
-#~ msgstr "カザフスタン"
-
-#~ msgid "Laos"
-#~ msgstr "ラオス"
-
-#~ msgid "Lebanon"
-#~ msgstr "レバノン"
-
-#~ msgid "Saint Lucia"
-#~ msgstr "セントルシア"
-
-#~ msgid "Liechtenstein"
-#~ msgstr "リヒテンシュタイン"
-
-#~ msgid "Sri Lanka"
-#~ msgstr "スリランカ"
-
-#~ msgid "Liberia"
-#~ msgstr "リベリア"
-
-#~ msgid "Lesotho"
-#~ msgstr "レソト"
-
-#~ msgid "Lithuania"
-#~ msgstr "リトアニア"
-
-#~ msgid "Luxembourg"
-#~ msgstr "ルクセンブルク"
-
-#~ msgid "Latvia"
-#~ msgstr "ラトビア"
-
-#~ msgid "Libya"
-#~ msgstr "リビア"
-
-#~ msgid "Morocco"
-#~ msgstr "モロッコ"
-
-#~ msgid "Monaco"
-#~ msgstr "モナコ"
-
-#~ msgid "Moldova"
-#~ msgstr "モルドバ"
-
-#~ msgid "Montenegro"
-#~ msgstr "モンテネグロ"
-
-#~ msgid "Madagascar"
-#~ msgstr "マダガスカル"
-
-#~ msgid "Marshall Islands"
-#~ msgstr "マーシャル諸島"
-
-#~ msgid "Macedonia"
-#~ msgstr "マケドニア"
-
-#~ msgid "Mali"
-#~ msgstr "マリ"
-
-#~ msgid "Burma"
-#~ msgstr "ミャンマー"
-
-#~ msgid "Mongolia"
-#~ msgstr "モンゴル"
-
-#~ msgid "Macau"
-#~ msgstr "マカオ"
-
-#~ msgid "Mauritania"
-#~ msgstr "モーリタニア"
-
-#~ msgid "Malta"
-#~ msgstr "マルタ"
-
-#~ msgid "Mauritius"
-#~ msgstr "モーリシャス"
-
-#~ msgid "Maldives"
-#~ msgstr "モルディブ"
-
-#~ msgid "Malawi"
-#~ msgstr "マラウイ"
-
-#~ msgid "Mexico"
-#~ msgstr "メキシコ"
-
-#~ msgid "Malaysia"
-#~ msgstr "マレーシア"
-
-#~ msgid "Mozambique"
-#~ msgstr "モザンビーク"
-
-#~ msgid "Namibia"
-#~ msgstr "ナミビア"
-
-#~ msgid "Northern Ireland"
-#~ msgstr "北アイルランド"
-
-#~ msgid "Niger"
-#~ msgstr "ニジェール"
-
-#~ msgid "Nigeria"
-#~ msgstr "ナイジェリア"
-
-#~ msgid "Nicaragua"
-#~ msgstr "ニカラグア"
-
-#~ msgid "Netherlands"
-#~ msgstr "オランダ"
-
-#~ msgid "Norway"
-#~ msgstr "ノルウェー"
-
-#~ msgid "Nepal"
-#~ msgstr "ネパール"
-
-#~ msgid "Nauru"
-#~ msgstr "ナウル"
-
-#~ msgid "New Zealand"
-#~ msgstr "ニュージーランド"
-
-#~ msgid "Oman"
-#~ msgstr "オマーン"
-
-#~ msgid "Panama"
-#~ msgstr "パナマ"
-
-#~ msgid "Peru"
-#~ msgstr "ペルー"
-
-#~ msgid "Papua New Guinea"
-#~ msgstr "パプアニューギニア"
-
-#~ msgid "Philippines"
-#~ msgstr "フィリピン"
-
-#~ msgid "Pakistan"
-#~ msgstr "パキスタン"
-
-#~ msgid "Poland"
-#~ msgstr "ポーランド"
-
-#~ msgid "Portugal"
-#~ msgstr "ポルトガル"
-
-#~ msgid "Palau"
-#~ msgstr "パラオ"
-
-#~ msgid "Paraguay"
-#~ msgstr "パラグアイ"
-
-#~ msgid "Qatar"
-#~ msgstr "カタール"
-
-#~ msgid "Romania"
-#~ msgstr "ルーマニア"
-
-#~ msgid "Serbia"
-#~ msgstr "セルビア"
-
-#~ msgid "Russia"
-#~ msgstr "ロシア"
-
-#~ msgid "Rwanda"
-#~ msgstr "ルワンダ"
-
-#~ msgid "Saudi Arabia"
-#~ msgstr "サウジアラビア"
-
-#~ msgid "Solomon Islands"
-#~ msgstr "ソロモン諸島"
-
-#~ msgid "Seychelles"
-#~ msgstr "セイシェル"
-
-#~ msgid "Sudan"
-#~ msgstr "スーダン"
-
-#~ msgid "Sweden"
-#~ msgstr "スウェーデン"
-
-#~ msgid "Scotland"
-#~ msgstr "スコットランド"
-
-#~ msgid "Singapore"
-#~ msgstr "シンガポール"
-
-#~ msgid "Slovenia"
-#~ msgstr "スロベニア"
-
-#~ msgid "Slovakia"
-#~ msgstr "スロバキア"
-
-#~ msgid "Sierra Leone"
-#~ msgstr "シエラレオネ"
-
-#~ msgid "San Marino"
-#~ msgstr "サモア"
-
-#~ msgid "Senegal"
-#~ msgstr "セネガル"
-
-#~ msgid "Somalia"
-#~ msgstr "ソマリア"
-
-#~ msgid "Suriname"
-#~ msgstr "スリナム"
-
-#~ msgid "Sao Tome and Principe"
-#~ msgstr "サントメ・プリンシペ"
-
-#~ msgid "El Salvador"
-#~ msgstr "エルサルバドル"
-
-#~ msgid "Swaziland"
-#~ msgstr "スワジランド"
-
-#~ msgid "Chad"
-#~ msgstr "チャド"
-
-#~ msgid "Togo"
-#~ msgstr "トーゴ"
-
-#~ msgid "Thailand"
-#~ msgstr "タイ"
-
-#~ msgid "Tajikistan"
-#~ msgstr "タジキスタン"
-
-#~ msgid "East Timor"
-#~ msgstr "東ティモール"
-
-#~ msgid "Turkmenistan"
-#~ msgstr "トルクメニスタン"
-
-#~ msgid "Tunisia"
-#~ msgstr "チュニジア"
-
-#~ msgid "Tonga"
-#~ msgstr "トンガ"
-
-#~ msgid "Turkey"
-#~ msgstr "トルコ"
-
-#~ msgid "Trinidad and Tobago"
-#~ msgstr "トリニダード・トバゴ"
-
-#~ msgid "Tuvalu"
-#~ msgstr "ツバル"
-
-#~ msgid "Taiwan"
-#~ msgstr "台湾"
-
-#~ msgid "Tanzania"
-#~ msgstr "タンザニア"
-
-#~ msgid "Ukraine"
-#~ msgstr "ウクライナ"
-
-#~ msgid "Uganda"
-#~ msgstr "ウガンダ"
-
-#~ msgid "United States"
-#~ msgstr "アメリカ合衆国"
-
-#~ msgid "Uruguay"
-#~ msgstr "ウルグアイ"
-
-#~ msgid "Uzbekistan"
-#~ msgstr "ウズベキスタン"
-
-#~ msgid "Vatican City"
-#~ msgstr "バチカン市国"
-
-#~ msgid "Saint Vincent and the Grenadines"
-#~ msgstr "セントビンセントおよびグレナディーン諸島"
-
-#~ msgid "Venezuela"
-#~ msgstr "ベネズエラ"
-
-#~ msgid "Vietnam"
-#~ msgstr "ベトナム"
-
-#~ msgid "Vanuatu"
-#~ msgstr "バヌアツ"
-
-#~ msgid "Wales"
-#~ msgstr "ウェールズ"
-
-#~ msgid "Samoa"
-#~ msgstr "サモア"
-
-#~ msgid "Yemen"
-#~ msgstr "イエメン"
-
-#~ msgid "South Africa"
-#~ msgstr "南アフリカ"
-
-#~ msgid "Zambia"
-#~ msgstr "ザンビア"
-
-#~ msgid "Zimbabwe"
-#~ msgstr "ジンバブエ"
-
-#~ msgid "Outcome"
-#~ msgstr "勝敗"
-
-#~ msgid "days"
-#~ msgstr "日"
-
-#~ msgid "hrs"
-#~ msgstr "時間"
-
-#~ msgid "mins"
-#~ msgstr "分"
-
-#~ msgid "secs"
-#~ msgstr "秒"
-
-#~ msgid "Previous"
-#~ msgstr "前"
-
-#~ msgid "Next"
-#~ msgstr "次"
-
-#~ msgid "Team Manager"
-#~ msgstr "チームマネージャー"
-
-#~ msgid "What's new:"
-#~ msgstr "新着情報:"
-
-#~ msgid "Leagues"
-#~ msgstr "リーグ"
-
-#~ msgid "Update"
-#~ msgstr "アップデート"
-
-#~ msgid "Parent"
-#~ msgstr "Parent"
-
-#~ msgid "Parent:"
-#~ msgstr "親:"
-
-#~ msgid "Seasons"
-#~ msgstr "シーズン"
-
-#~ msgid "Venues"
-#~ msgstr "会場"
-
-#~ msgid "Venue"
-#~ msgstr "会場"
-
-#~ msgid "Result"
-#~ msgstr "結果"
-
-#~ msgid "Column"
-#~ msgstr "列"
-
-#~ msgid "Metric"
-#~ msgstr "メトリック"
-
-#~ msgid "Statistic"
-#~ msgstr "統計"
-
-#~ msgid "Events"
-#~ msgstr "試合"
-
-#~ msgid "Event"
-#~ msgstr "試合"
-
-#~ msgid "League Tables"
-#~ msgstr "順位表"
-
-#~ msgid "League Table"
-#~ msgstr "順位表"
-
-#~ msgid "Player Lists"
-#~ msgstr "選手名鑑"
-
-#~ msgid "Player List"
-#~ msgstr "選手名鑑"
-
-#~ msgid "Total"
-#~ msgstr "小計金額"
-
-#~ msgid "Average"
-#~ msgstr "普通"
-
-#~ msgid "(no title)"
-#~ msgstr "(タイトルなし)"
-
-#~ msgid "Select All"
-#~ msgstr "すべて選択"
-
-#, fuzzy
-#~ msgid "Show all"
-#~ msgstr "すべてのチームを表示"
-
-#~ msgid "Article"
-#~ msgstr "戦評"
-
-#~ msgid "Nationality"
-#~ msgstr "国籍"
-
-#~ msgid "Played"
-#~ msgstr "試合終了"
-
-#~ msgid "Pos"
-#~ msgstr "Pos"
-
-#~ msgid "Preview"
-#~ msgstr "プレビュー"
-
-#~ msgid "Rank"
-#~ msgstr "順位"
-
-#~ msgid "Time"
-#~ msgstr "時間"
-
-#~ msgid "Current Team"
-#~ msgstr "現チーム"
-
-#~ msgid "Past Teams"
-#~ msgstr "過去のチーム"
-
-#~ msgid "Key"
-#~ msgstr "キー"
-
-#~ msgid "Date/Time:"
-#~ msgstr "日付/時間"
-
-#~ msgid "Now"
-#~ msgstr "今すぐ"
-
-#~ msgid "Settings saved."
-#~ msgstr "設定を保存しました。"
-
-#~ msgid "Changes saved."
-#~ msgstr "変更を保存しました。"
-
-#~ msgid "Success!"
-#~ msgstr "成功しました !"
-
-#~ msgid "Preview %s"
-#~ msgstr "%sをプレビュー"
-
-#~ msgid "Scheduled for: <b>%1$s</b>."
-#~ msgstr "<strong>%1$s</strong>に公開するよう予約しました。"
-
-#~ msgid "M j, Y @ G:i"
-#~ msgstr "Y年 M月 j日 @ G:i"
-
-#~ msgid "None"
-#~ msgstr "なし"
-
-#~ msgid "&mdash; Remove &mdash;"
-#~ msgstr "&mdash; 削除 &mdash;"
-
-#~ msgid "<strong>%s</strong> until next event"
-#~ msgstr "次のイベントまで<strong>%s</strong>"
-
-#~ msgid "<strong>%s event</strong> scheduled"
-#~ msgid_plural "<strong>%s events</strong> scheduled"
-#~ msgstr[0] "<strong>%sイベント</strong>予約済み"
-
-#~ msgid "<strong>%s event</strong> published"
-#~ msgid_plural "<strong>%s events</strong> published"
-#~ msgstr[0] "<strong>%sイベント</strong>公開済み"
-
-#~ msgid "SportsPress Teams (CSV)"
-#~ msgstr "SportsPress チーム (CSV)"
-
-#~ msgid "Import <strong>teams</strong> from a csv file."
-#~ msgstr "csvファイルで<strong>チーム</strong>をインポート"
-
-#~ msgid "System Status"
-#~ msgstr "システム状態"
-
-#~ msgid "SportsPress Add-ons/Extensions"
-#~ msgstr "SportsPress アドオン／機能拡張"
-
-#~ msgid "Add-ons"
-#~ msgstr "アドオン"
-
-#~ msgid "Action failed. Please refresh the page and retry."
-#~ msgstr ""
-#~ "アクションは失敗しました。ページをリフレッシュし、再試行してください。"
-
-#~ msgid "Your settings have been saved."
-#~ msgstr "設定が保存されました"
-
-#~ msgid "Address"
-#~ msgstr "住所"
-
-#~ msgid "Latitude"
-#~ msgstr "緯度"
-
-#~ msgid "Longitude"
-#~ msgstr "経度"
-
-#~ msgid "Welcome to SportsPress"
-#~ msgstr "Welcome to SportsPress"
-
-#~ msgid "Thanks, all done!"
-#~ msgstr "Thanks, all done!"
-
-#~ msgid "Thank you for updating to the latest version!"
-#~ msgstr "最新のバージョンにアップデートしていただきありがとうございます！"
-
-#~ msgid "Thanks for installing!"
-#~ msgstr "インストールしていただき、ありがとうございます！"
-
-#~ msgid "Version %s"
-#~ msgstr "Version %s"
-
-#~ msgid "Choose a country&hellip;"
-#~ msgstr "国を選択&hellip;"
-
-#~ msgid "Sport"
-#~ msgstr "スポーツ"
-
-#, fuzzy
-#~ msgctxt "mode select"
-#~ msgid "Team"
-#~ msgstr "チーム"
-
-#, fuzzy
-#~ msgctxt "mode select"
-#~ msgid "Individual"
-#~ msgstr "インド"
-
-#~ msgid "Save changes"
-#~ msgstr "変更を保存"
-
-#~ msgid "Translators"
-#~ msgstr "翻訳者"
-
-#~ msgid "Go to SportsPress Settings"
-#~ msgstr "SportsPress設定を行いましょう！"
-
-#~ msgid "-- Not set --"
-#~ msgstr "-- 未設定 --"
-
-#~ msgid "View Players"
-#~ msgstr "選手を表示"
-
-#~ msgid ""
-#~ "Import complete - imported <strong>%s</strong> teams and skipped <strong>"
-#~ "%s</strong>."
-#~ msgstr ""
-#~ "完全なインポート - <strong>%s</strong>のチームをインポートし、<strong>%s</"
-#~ "strong>をスキップ"
-
-#~ msgid "View Teams"
-#~ msgstr "チームを表示"
-
-#~ msgid "Import Teams"
-#~ msgstr "チームをインポート"
-
-#~ msgid ""
-#~ "Teams need to be defined with columns in a specific order (3 columns). <a "
-#~ "href=\"%s\">Click here to download a sample</a>."
-#~ msgstr ""
-#~ "チームは、特定の列（3列）で定義する必要があります。<a href=\"%s\">ここをク"
-#~ "リックして、サンプルをダウンロード</a>"
-
-#~ msgid "Equation"
-#~ msgstr "方程式"
-
-#~ msgid "(Auto)"
-#~ msgstr "(自動)"
-
-#~ msgid "Number"
-#~ msgstr "背番号"
-
-#~ msgid "Insert into %s"
-#~ msgstr "%sに挿入"
-
-#~ msgid "Uploaded to this %s"
-#~ msgstr "%sのアップロードが完了しました。"
-
-#~ msgid "Shortcodes"
-#~ msgstr "ショートコード"
-
-#~ msgid "Video"
-#~ msgstr "動画"
-
-#~ msgid "Profile"
-#~ msgstr "プロフィール"
-
-#~ msgid "Metrics"
-#~ msgstr "メトリック"
-
-#~ msgid "Statistics"
-#~ msgstr "統計"
-
-#~ msgid "Status"
-#~ msgstr "注文状況"
-
-#~ msgid "Disable"
-#~ msgstr "無効化"
-
-#~ msgid "Attended"
-#~ msgstr "出場"
-
-#~ msgid "Streak"
-#~ msgstr "連勝敗"
-
-#~ msgid "Last 5"
-#~ msgstr "ラスト5"
-
-#~ msgid "Last 10"
-#~ msgstr "ラスト10"
-
-#~ msgid "Starting Lineup"
-#~ msgstr "スターティングメンバー"
-
-#~ msgid "Substitute"
-#~ msgstr "補欠"
-
-#~ msgid "&mdash; None &mdash;"
-#~ msgstr "&mdash; なし &mdash;"
-
-#~ msgid "Primary"
-#~ msgstr "プライマリー"
-
-#~ msgid "Default"
-#~ msgstr "デフォルト"
-
-#~ msgid "teams"
-#~ msgstr "チーム"
-
-#~ msgid "Results"
-#~ msgstr "結果"
-
-#, fuzzy
-#~ msgid "Display players"
-#~ msgstr "リーグを表示"
-
-#~ msgid "events"
-#~ msgstr "イベント"
-
-#~ msgid "Custom:"
-#~ msgstr "カスタム期間:"
-
-#~ msgid "General"
-#~ msgstr "一般"
-
-#~ msgid "General Options"
-#~ msgstr "基本設定"
-
-#~ msgid "Styles and Scripts"
-#~ msgstr "スタイルシートとスクリプト"
-
-#~ msgid "Custom CSS"
-#~ msgstr "カスタムCSS"
-
-#~ msgid "Scripts"
-#~ msgstr "スクリプト"
-
-#~ msgid "Frontend Styles"
-#~ msgstr "フロントエンドのスタイルシート"
-
-#~ msgid "Team Options"
-#~ msgstr "チーム設定"
-
-#~ msgid "Please include this information when requesting support:"
-#~ msgstr "サポートを依頼する際に、この情報を含めるようにしてください:"
-
-#~ msgid "Get System Report"
-#~ msgstr "システムレポートを見る"
-
-#~ msgid "Environment"
-#~ msgstr "環境"
-
-#~ msgid "Home URL"
-#~ msgstr "ホームURL"
-
-#~ msgid "WP Version"
-#~ msgstr "WP バージョン"
-
-#~ msgid "WP Multisite Enabled"
-#~ msgstr "WPマルチサイト利用"
-
-#~ msgid "Yes"
-#~ msgstr "あり"
-
-#~ msgid "No"
-#~ msgstr "なし"
-
-#~ msgid "Web Server Info"
-#~ msgstr "Webサーバ情報"
-
-#~ msgid "PHP Version"
-#~ msgstr "PHPバージョン"
-
-#~ msgid "WP Memory Limit"
-#~ msgstr "WPメモリー制限"
-
-#~ msgid ""
-#~ "%s - We recommend setting memory to at least 64MB. See: <a href=\"%s"
-#~ "\">Increasing memory allocated to PHP</a>"
-#~ msgstr ""
-#~ "%s - 少なくとも64MBまでメモリを設定することをお勧めします。 参照: <a href="
-#~ "\"%s\">PHPに割り当てられたメモリ使用量を増やす</a>。"
-
-#~ msgid "WP Debug Mode"
-#~ msgstr "WP デバッグモード"
-
-#~ msgid "WP Language"
-#~ msgstr "WP言語"
-
-#~ msgid "WP Max Upload Size"
-#~ msgstr "WP 最大アップロードサイズ"
-
-#~ msgid "PHP Post Max Size"
-#~ msgstr "PHP Post Max Size"
-
-#~ msgid "PHP Time Limit"
-#~ msgstr "PHP Time Limit"
-
-#~ msgid "PHP Max Input Vars"
-#~ msgstr "PHP Max Input Vars"
-
-#~ msgid "SUHOSIN Installed"
-#~ msgstr "SUHOSINをインストールしました"
-
-#~ msgid "Default Timezone"
-#~ msgstr "デフォルトタイムゾーン"
-
-#~ msgid "Default timezone is %s - it should be UTC"
-#~ msgstr "デフォルトのタイムゾーンは%s - UTCの必要があります"
-
-#~ msgid "Default timezone is %s"
-#~ msgstr "デフォルトのタイムゾーンは%s"
-
-#~ msgid "fsockopen/cURL"
-#~ msgstr "fsockopen/cURL"
-
-#~ msgid "Your server has fsockopen and cURL enabled."
-#~ msgstr "ご使用のサーバーは、fsockopen と cURLが有効になっています。"
-
-#~ msgid "Your server has fsockopen enabled, cURL is disabled."
-#~ msgstr ""
-#~ "ご使用のサーバーは、fsockopenが有効になっています。cURLは無効になっていま"
-#~ "す。"
-
-#~ msgid "Your server has cURL enabled, fsockopen is disabled."
-#~ msgstr ""
-#~ "ご使用のサーバーはcURLが有効になっています。fsockopenは無効になっていま"
-#~ "す。"
-
-#~ msgid ""
-#~ "Your server does not have fsockopen or cURL enabled - PayPal IPN and "
-#~ "other scripts which communicate with other servers will not work. Contact "
-#~ "your hosting provider."
-#~ msgstr ""
-#~ "ご使用のサーバーには、fsockopenが無いか、cURLが有効になっていません。- "
-#~ "PayPal IPN および他のサーバと通信する他のスクリプトが動作しません。ホス"
-#~ "ティングプロバイダにお問い合わせください。"
-
-#~ msgid "SOAP Client"
-#~ msgstr "SOAPクライアント"
-
-#~ msgid "Your server has the SOAP Client class enabled."
-#~ msgstr "ご使用のサーバーには、SOAP Client classが有効になっている。"
-
-#~ msgid ""
-#~ "Your server does not have the <a href=\"%s\">SOAP Client</a> class "
-#~ "enabled - some gateway plugins which use SOAP may not work as expected."
-#~ msgstr ""
-#~ "ご使用のサーバーは、<a href=\"%s\">SOAP Client</a> classが有効になっていま"
-#~ "せん。- SOAPを使用するいくつかの支払いプラグインが予期せぬ動作をする可能性"
-#~ "があります。"
-
-#~ msgid "Plugins"
-#~ msgstr "プラグイン"
-
-#~ msgid "Installed Plugins"
-#~ msgstr "インストールされたプラグイン"
-
-#~ msgid "Visit plugin homepage"
-#~ msgstr "プラグインのホームページへ行く"
-
-#~ msgid "is available"
-#~ msgstr "利用可能"
-
-#~ msgid "by"
-#~ msgstr "by"
-
-#~ msgid "version"
-#~ msgstr "バージョン"
-
-#~ msgid "Theme"
-#~ msgstr "テーマ"
-
-#~ msgid "Theme Name"
-#~ msgstr "テーマ名"
-
-#~ msgid "Theme Version"
-#~ msgstr "テーマバージョン"
-
-#~ msgid "Author URL"
-#~ msgstr "制作者URL"
-
-#~ msgid "Templates"
-#~ msgstr "テンプレート"
-
-#~ msgid ""
-#~ "<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
-#~ "date. The core version is %s"
-#~ msgstr ""
-#~ "<code>%s</code> version <strong style=\"color:red\">%s</strong>は古くなっ"
-#~ "ています。現在のバージョンは%sです。"
-
-#~ msgid "Template Overrides"
-#~ msgstr "テンプレート無効化"
-
-#~ msgid "No overrides present in theme."
-#~ msgstr "上書きできるテーマは現在ありません。"
-
-#~ msgid "Welcome to SportsPress %s"
-#~ msgstr "Welcome to SportsPress %s"
-
-#~ msgid "Hide this notice"
-#~ msgstr "このお知らせを隠す"
-
-#~ msgid ""
-#~ "<strong>Your theme does not declare SportsPress support</strong> &#8211; "
-#~ "if you encounter layout issues please read our integration guide or "
-#~ "choose a SportsPress theme :)"
-#~ msgstr ""
-#~ "<strong>あなたのテーマはSportsPressのサポートを宣言していません</strong> "
-#~ "&#8211; あなたがレイアウトの問題に遭遇している場合は、我々の統合ガイドを読"
-#~ "むか、SportsPressテーマを選んでください :)"
-
-#~ msgid "Theme Integration Guide"
-#~ msgstr "テーマの統合ガイド"
-
-#~ msgid "A clock that counts down to an upcoming event."
-#~ msgstr "イベント開催までのカウントダウン"
-
-#~ msgid "SportsPress Countdown"
-#~ msgstr "SportsPress カウントダウン"
-
-#~ msgid "Display league"
-#~ msgstr "リーグを表示"
-
-#, fuzzy
-#~ msgid "Date:"
-#~ msgstr "日付"
-
-#~ msgid "Columns:"
-#~ msgstr "列:"
-
-#~ msgid "Display a league table."
-#~ msgstr "順位表を表示します"
-
-#~ msgid "Display a list of players."
-#~ msgstr "選手名鑑を表示します"
-
-#~ msgctxt "calendar caption"
-#~ msgid "%1$s %2$s"
-#~ msgstr "%2$s年%1$s"
-
-#~ msgid "Baseball"
-#~ msgstr "野球"
-
-#~ msgid "Basketball"
-#~ msgstr "バスケットボール"
-
-#~ msgid "Cricket"
-#~ msgstr "クリケット"
-
-#~ msgid "American Football"
-#~ msgstr "アメリカンフットボール"
-
-#~ msgid "Australian Rules Football"
-#~ msgstr "オージーフットボール"
-
-#~ msgid "Competitive Gaming"
-#~ msgstr "ゲーミング"
-
-#~ msgid "Golf"
-#~ msgstr "ゴルフ"
-
-#~ msgid "Hockey"
-#~ msgstr "ホッケー"
-
-#~ msgid "Racing"
-#~ msgstr "レーシング"
-
-#~ msgid "Rugby"
-#~ msgstr "ラグビー"
-
-#~ msgid "Soccer (Association Football)"
-#~ msgstr "サッカー"
+msgstr "チームの配色"

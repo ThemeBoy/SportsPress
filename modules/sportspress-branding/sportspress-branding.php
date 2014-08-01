@@ -5,7 +5,7 @@ Plugin URI: http://sportspresspro.com/
 Description: White label SportsPress branding.
 Author: ThemeBoy
 Author URI: http://sportspresspro.com
-Version: 1.0
+Version: 1.0.1
 */
 
 // Exit if accessed directly

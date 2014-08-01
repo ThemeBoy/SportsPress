@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-07-28 07:07+1000\n"
-"PO-Revision-Date: 2014-07-28 07:07+1000\n"
+"POT-Creation-Date: 2014-07-29 06:11+1000\n"
+"PO-Revision-Date: 2014-07-29 06:11+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/projects/p/"
 "sportspress/language/sk_SK/)\n"
@@ -86,7 +86,7 @@ msgstr "Pozície"
 msgid "Text"
 msgstr ""
 
-#: sportspress-branding/includes/class-sp-settings-branding.php:167
+#: sportspress-branding/includes/class-sp-settings-branding.php:166
 msgid "Enable"
 msgstr "Povoliť"
 
