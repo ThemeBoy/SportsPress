@@ -1,0 +1,49 @@
+{
+	"name":				"Water Polo",
+	"positions": [
+						"Goalkeeper",
+						"Driver",
+						"Hole Set",
+						"Hole Guard"
+	],
+	"outcomes": [
+						"Win",
+						"Draw",
+						"Loss"
+	],
+	"results": [
+						{ "name" : "1st Quarter", "description" : "1st quarter goals" },
+						{ "name" : "2nd Quarter", "description" : "2nd quarter goals" },
+						{ "name" : "3rd Quarter", "description" : "3rd quarter goals" },
+						{ "name" : "4rd Quarter", "description" : "4th quarter goals" },
+						{ "name" : "PS", "description" : "Five Meter Penalty" },
+						{ "name" : "Goals", "description" : "Total goals", "primary" : 1 }
+	],
+	"performance": [
+						"Goals",
+						"Assists",
+						"Exclusion Foul",
+						"Brutality Foul",
+						"Misconduct Foul"
+	],
+	"columns": [
+						{ "name" : "T", "equation" : "$eventsplayed", "description" : "Total matches" },
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "F", "equation" : "$goalsfor", "priority" : 3, "description" : "Goals for" },
+						{ "name" : "A", "equation" : "$goalsagainst", "description" : "Goals against" },
+						{ "name" : "DIFF", "equation" : "$goalsfor - $goalsagainst", "priority" : 2, "description" : "Goal difference" },
+						{ "name" : "Pts", "equation" : "$win * 2 + $draw", "priority" : 1, "description" : "Team points" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "Win Ratio", "equation" : "$win / $eventsplayed * 1 0 0", "precision" : 2 },
+						{ "name" : "Draw Ratio", "equation" : "$draw / $eventsplayed * 1 0 0", "precision" : 2 },
+						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 1 0 0", "precision" : 2 }
+	]
+}
