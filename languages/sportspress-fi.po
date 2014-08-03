@@ -9,17 +9,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-07-29 06:13+1000\n"
-"PO-Revision-Date: 2014-07-29 06:13+1000\n"
-"Last-Translator: ThemeBoy <support@themeboy.com>\n"
+"POT-Creation-Date: 2014-07-21 15:46+1000\n"
+"PO-Revision-Date: 2014-08-03 23:36+1000\n"
+"Last-Translator: Taurus <wiikate@windowslive.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/sportspress/"
 "language/fi/)\n"
-"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -453,7 +453,7 @@ msgstr "Aika"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:70
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:83
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:62
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:87
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:86
 #: includes/admin/settings/class-sp-settings-events.php:68
 #: includes/widgets/class-sp-widget-event-list.php:114
 #: templates/event-list.php:66 templates/event-venue.php:35
@@ -1494,7 +1494,7 @@ msgstr "Joukkue"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:44
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:63
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:41
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:67
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:68
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:64
 #: templates/event-details.php:29
 msgid "Season"
@@ -1512,10 +1512,10 @@ msgstr "Sarjakausi"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:40
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:93
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:100
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:44
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:50
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:57
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:72
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:45
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:49
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:56
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:71
 #: includes/admin/views/html-admin-page-status.php:296
 msgid "Leagues"
 msgstr "Sarjat"
@@ -1636,7 +1636,7 @@ msgstr "Ei tuloksia."
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:138
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:108
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:115
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:65
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:64
 #: includes/admin/views/html-admin-page-status.php:306
 msgid "Seasons"
 msgstr "Sarjakaudet"
@@ -1859,7 +1859,7 @@ msgid "Edit Staff"
 msgstr "Muokkaa toimihenkilöä"
 
 #: includes/sp-core-functions.php:318
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:98
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:97
 #: templates/team-link.php:21
 msgid "Visit Site"
 msgstr "Vieraile sivulla"
@@ -2627,7 +2627,7 @@ msgstr "Järjestä"
 #: includes/admin/post-types/class-sp-admin-cpt-outcome.php:45
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:65
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-outcome-details.php:33
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:101
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:100
 #: includes/admin/settings/class-sp-settings-config.php:109
 msgid "Abbreviation"
 msgstr "Lyhenne"
@@ -2694,10 +2694,10 @@ msgstr "Ominaisuudet"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:115
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:101
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:145
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:44
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:57
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:72
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:87
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-columns.php:45
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:56
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:71
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:86
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:110
 #, php-format
 msgid "Select %s"
@@ -2815,16 +2815,16 @@ msgstr "Lajitteluperuste"
 msgid "Current Teams"
 msgstr "Nykyiset joukkueet"
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:80
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:79
 msgid "Home"
 msgstr "Koti"
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:95
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:94
 #: includes/admin/views/html-admin-page-status.php:24
 msgid "Site URL"
 msgstr "Sivuston verkko-osoite (URL)"
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:103
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:102
 msgid ""
 "The abbreviation is not prominent by default; however, some themes may show "
 "it"

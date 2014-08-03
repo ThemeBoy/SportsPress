@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-07-21 15:46+1000\n"
-"PO-Revision-Date: 2014-07-27 04:01+1000\n"
-"Last-Translator: ThemeBoy <support@themeboy.com>\n"
+"PO-Revision-Date: 2014-08-03 23:36+1000\n"
+"Last-Translator: Artak Arzumanyan <aarzumanyan@gmail.com>\n"
 "Language-Team: Armenian (http://www.transifex.com/projects/p/sportspress/"
 "language/hy/)\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: hy\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -1440,7 +1440,7 @@ msgstr "Հաջորդ"
 #: includes/admin/settings/class-sp-settings-staff.php:25
 #: templates/event-staff.php:41
 msgid "Staff"
-msgstr "Անձնակազմ"
+msgstr "Աշխատակազմ"
 
 #: includes/class-sp-install.php:230
 msgid "Event Manager"
@@ -1847,11 +1847,11 @@ msgstr "Խմբագրել խաղացողների ցանկը"
 
 #: includes/class-sp-post-types.php:527
 msgid "Add New Staff"
-msgstr "Անձնակազմի նոր անդամ"
+msgstr "Աշխատակազմի նոր անդամ"
 
 #: includes/class-sp-post-types.php:528
 msgid "Edit Staff"
-msgstr "Խմբագրել անձնակազմը"
+msgstr "Խմբագրել աշխատակազմը"
 
 #: includes/sp-core-functions.php:318
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:97
@@ -1917,7 +1917,7 @@ msgstr "Տեղ"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:151
 #: templates/event-list.php:174
 msgid "Preview"
-msgstr "Նախադիտել"
+msgstr "Անոնս"
 
 #: includes/sp-core-functions.php:1078 templates/player-list.php:88
 msgid "Rank"
@@ -2174,11 +2174,11 @@ msgstr "Ներմուծել <strong>խաղացողներին</strong> csv ֆայ�
 
 #: includes/admin/class-sp-admin-importers.php:34
 msgid "SportsPress Staff (CSV)"
-msgstr "SportsPress-ի անձնակազմը (CSV)"
+msgstr "SportsPress-ի աշխատակազմը (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:34
 msgid "Import <strong>staff</strong> from a csv file."
-msgstr "Ներմուծել <strong>անձնակազմին</strong> csv ֆայլից."
+msgstr "Ներմուծել <strong>աշխատակազմը</strong> csv ֆայլից."
 
 #: includes/admin/class-sp-admin-menus.php:50
 msgid "SportsPress Settings"
@@ -2487,16 +2487,16 @@ msgid ""
 "Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
 "strong>."
 msgstr ""
-"Ներմուծումն ավարտված է՝ ներմուծվել է <strong>%s</strong> անձնակազմի անդամ և "
+"Ներմուծումն ավարտված է՝ ներմուծվել է <strong>%s</strong> աշխատակազմի անդամ և "
 "բաց է թողնվել <strong>%s</strong>."
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
 msgid "View Staff"
-msgstr "Տեսնել անձնակազմը"
+msgstr "Տեսնել աշխատակազմը"
 
 #: includes/admin/importers/class-sp-staff-importer.php:155
 msgid "Import Staff"
-msgstr "Ներմուծել անձնակազմ"
+msgstr "Ներմուծել աշխատակազմ"
 
 #: includes/admin/importers/class-sp-staff-importer.php:169
 #, php-format
@@ -2504,7 +2504,8 @@ msgid ""
 "Staff need to be defined with columns in a specific order (5 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
-"Անձնակազմը պետք է ներկայացված լինեն <a href=\"%s\">համապատասխան ձևաչափով</a>։"
+"Աշխատակազմը պետք է ներկայացված լինեն <a href=\"%s\">համապատասխան ձևաչափով</"
+"a>։"
 
 #: includes/admin/importers/class-sp-team-importer.php:97
 #, php-format
@@ -2512,8 +2513,8 @@ msgid ""
 "Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
 "strong>."
 msgstr ""
-"Ներմուծումն ավարտված է՝ ներմուծվել է <strong>%s</strong> անձնակազմի թիմ և "
-"բաց է թողնվել <strong>%s</strong>:"
+"Ներմուծումն ավարտված է՝ ներմուծվել է <strong>%s</strong>  թիմ և բաց է "
+"թողնվել <strong>%s</strong>:"
 
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "View Teams"
@@ -2893,11 +2894,11 @@ msgstr "Ցույց տալ ընդհանուրը"
 
 #: includes/admin/settings/class-sp-settings-events.php:111
 msgid "Display staff"
-msgstr "Ցույց տալ անձնակազմը"
+msgstr "Ցույց տալ աշխատակազմը"
 
 #: includes/admin/settings/class-sp-settings-events.php:119
 msgid "Link staff"
-msgstr "Հղում անձնակազմին"
+msgstr "Հղում աշխատակազմին"
 
 #: includes/admin/settings/class-sp-settings-events.php:132
 #: includes/admin/settings/class-sp-settings-players.php:65
@@ -3050,7 +3051,7 @@ msgstr "Ցույց տալ դրոշները"
 
 #: includes/admin/settings/class-sp-settings-staff.php:41
 msgid "Staff Options"
-msgstr "Անձնակազմի դրույթներ"
+msgstr "Աշխատակազմի դրույթներ"
 
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
