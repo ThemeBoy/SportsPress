@@ -1,4 +1,4 @@
-# 
+#
 # Translators:
 # ideodora <ideodora@gmail.com>, 2013
 # 田中　昌平 <shohei.tanaka@artisanworkshop.biz>, 2013
@@ -9,19 +9,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-07-21 15:46+1000\n"
-"PO-Revision-Date: 2014-07-28 14:05+0000\n"
+"PO-Revision-Date: 2014-08-03 23:48+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/projects/p/sportspress/language/ja/)\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/sportspress/"
+"language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: sportspress.php:87 sportspress.php:96
 msgid "Cheatin&#8217; huh?"
@@ -1992,7 +1995,9 @@ msgstr "説明"
 msgid ""
 "The description is not prominent by default; however, some themes may show "
 "it."
-msgstr "説明はデフォルトではあまり重要な意味を持ちませんが、これを表示するテーマも中にはあります。"
+msgstr ""
+"説明はデフォルトではあまり重要な意味を持ちませんが、これを表示するテーマも中"
+"にはあります。"
 
 #: includes/sp-template-hooks.php:154
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:44
@@ -2198,7 +2203,10 @@ msgstr "アドオン"
 msgid ""
 "These settings control the permalinks used for SportsPress. These settings "
 "only apply when <strong>not using \"default\" permalinks above</strong>."
-msgstr "これらの設定は、SportsPressに使用するパーマリンクを制御します。<strong>上記の\\\"デフォルト\\\"のパーマリンクを使用していないと</strong>、これらの設定にのみ適用されます。"
+msgstr ""
+"これらの設定は、SportsPressに使用するパーマリンクを制御します。<strong>上記の"
+"\\\"デフォルト\\\"のパーマリンクを使用していないと</strong>、これらの設定にの"
+"み適用されます。"
 
 #: includes/admin/class-sp-admin-settings.php:60
 msgid "Action failed. Please refresh the page and retry."
@@ -2255,7 +2263,9 @@ msgstr "インストールしていただき、ありがとうございます！
 #: includes/admin/class-sp-admin-welcome.php:146
 #, php-format
 msgid "%s SportsPress %s has lots of refinements we think you&#8217;ll love."
-msgstr "%s SportsPress %s には、きっと気に入っていただけるたくさんの改良点が含まれています。"
+msgstr ""
+"%s SportsPress %s には、きっと気に入っていただけるたくさんの改良点が含まれて"
+"います。"
 
 #: includes/admin/class-sp-admin-welcome.php:150
 #, php-format
@@ -2312,10 +2322,12 @@ msgstr "翻訳者"
 #: includes/admin/class-sp-admin-welcome.php:269
 msgid ""
 "SportsPress has been kindly translated into several other languages thanks "
-"to our translation team. Want to see your name? <a "
-"href=\"https://www.transifex.com/projects/p/sportspress/\">Translate "
-"SportsPress</a>."
-msgstr "SportsPressは各国の協力者によって各国の言語に翻訳されています。ご協力頂けたら、こちらに表示されます。<a href=\"https://www.transifex.com/projects/p/sportspress/\">SportsPress翻訳関連</a>"
+"to our translation team. Want to see your name? <a href=\"https://www."
+"transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
+msgstr ""
+"SportsPressは各国の協力者によって各国の言語に翻訳されています。ご協力頂けた"
+"ら、こちらに表示されます。<a href=\"https://www.transifex.com/projects/p/"
+"sportspress/\">SportsPress翻訳関連</a>"
 
 #: includes/admin/class-sp-admin-welcome.php:285
 msgid "Go to SportsPress Settings"
@@ -2340,9 +2352,11 @@ msgstr "CSV形式は無効です"
 #: includes/admin/importers/class-sp-event-importer.php:373
 #, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> events and skipped "
-"<strong>%s</strong>."
-msgstr "完全なインポート - <strong>%s</strong>のイベントをインポートし、<strong>%s</strong>をスキップ"
+"Import complete - imported <strong>%s</strong> events and skipped <strong>"
+"%s</strong>."
+msgstr ""
+"完全なインポート - <strong>%s</strong>のイベントをインポートし、<strong>%s</"
+"strong>をスキップ"
 
 #: includes/admin/importers/class-sp-event-importer.php:383
 #: includes/admin/importers/class-sp-player-importer.php:150
@@ -2364,16 +2378,20 @@ msgstr "イベントをインポート"
 #: includes/admin/importers/class-sp-staff-importer.php:167
 #: includes/admin/importers/class-sp-team-importer.php:131
 msgid ""
-"Hi there! Choose a .csv file to upload, then click \"Upload file and "
-"import\"."
-msgstr "CSVファイルをアップロードして選手を登録する場合は「ファイルをアップロードしてインポート」をクリックし、アップロードするCSVファイルを選択して下さい。"
+"Hi there! Choose a .csv file to upload, then click \"Upload file and import"
+"\"."
+msgstr ""
+"CSVファイルをアップロードして選手を登録する場合は「ファイルをアップロードして"
+"インポート」をクリックし、アップロードするCSVファイルを選択して下さい。"
 
 #: includes/admin/importers/class-sp-event-importer.php:409
 #, php-format
 msgid ""
 "Events need to be defined with columns in a specific order (3+ columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr "イベントは、特定の列（3列+）で定義する必要があります。<a href=\"%s\">ここをクリックして、サンプルをダウンロード</a>"
+msgstr ""
+"イベントは、特定の列（3列+）で定義する必要があります。<a href=\"%s\">ここをク"
+"リックして、サンプルをダウンロード</a>"
 
 #: includes/admin/importers/class-sp-event-importer.php:417
 #: includes/admin/importers/class-sp-player-importer.php:184
@@ -2443,9 +2461,11 @@ msgstr "インポート"
 #: includes/admin/importers/class-sp-player-importer.php:140
 #, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> players and skipped "
-"<strong>%s</strong>."
-msgstr "完全なインポート - <strong>%s</strong>の選手をインポートし、<strong>%s</strong>をスキップ"
+"Import complete - imported <strong>%s</strong> players and skipped <strong>"
+"%s</strong>."
+msgstr ""
+"完全なインポート - <strong>%s</strong>の選手をインポートし、<strong>%s</"
+"strong>をスキップ"
 
 #: includes/admin/importers/class-sp-player-importer.php:150
 msgid "View Players"
@@ -2460,14 +2480,18 @@ msgstr "選手をインポート"
 msgid ""
 "Players need to be defined with columns in a specific order (7 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr "選手は、特定の列（7列）で定義する必要があります。<a href=\"%s\">ここをクリックして、サンプルをダウンロード</a>"
+msgstr ""
+"選手は、特定の列（7列）で定義する必要があります。<a href=\"%s\">ここをクリッ"
+"クして、サンプルをダウンロード</a>"
 
 #: includes/admin/importers/class-sp-staff-importer.php:133
 #, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> staff and skipped "
-"<strong>%s</strong>."
-msgstr "完全なインポート - <strong>%s</strong>のスタッフをインポートし、<strong>%s</strong>をスキップ"
+"Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
+"strong>."
+msgstr ""
+"完全なインポート - <strong>%s</strong>のスタッフをインポートし、<strong>%s</"
+"strong>をスキップ"
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
 msgid "View Staff"
@@ -2482,14 +2506,18 @@ msgstr "スタッフをインポート"
 msgid ""
 "Staff need to be defined with columns in a specific order (5 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr "スタッフは、特定の列（5列）で定義する必要があります。<a href=\"%s\">ここをクリックして、サンプルをダウンロード</a>"
+msgstr ""
+"スタッフは、特定の列（5列）で定義する必要があります。<a href=\"%s\">ここをク"
+"リックして、サンプルをダウンロード</a>"
 
 #: includes/admin/importers/class-sp-team-importer.php:97
 #, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> teams and skipped "
-"<strong>%s</strong>."
-msgstr "完全なインポート - <strong>%s</strong>のチームをインポートし、<strong>%s</strong>をスキップ"
+"Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
+"strong>."
+msgstr ""
+"完全なインポート - <strong>%s</strong>のチームをインポートし、<strong>%s</"
+"strong>をスキップ"
 
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "View Teams"
@@ -2504,7 +2532,9 @@ msgstr "チームをインポート"
 msgid ""
 "Teams need to be defined with columns in a specific order (3 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr "チームは、特定の列（3列）で定義する必要があります。<a href=\"%s\">ここをクリックして、サンプルをダウンロード</a>"
+msgstr ""
+"チームは、特定の列（3列）で定義する必要があります。<a href=\"%s\">ここをク"
+"リックして、サンプルをダウンロード</a>"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:47
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:47
@@ -2681,7 +2711,9 @@ msgstr "注文状況"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-shortcode.php:24
 msgid ""
 "Copy this code and paste it into your post, page or text widget content."
-msgstr "このコードをコピーして、投稿、ページ、またはテキストウィジェットの本文内にペーストしてください。"
+msgstr ""
+"このコードをコピーして、投稿、ページ、またはテキストウィジェットの本文内に"
+"ペーストしてください。"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:47
 msgid "Disable"
@@ -2792,7 +2824,9 @@ msgstr "サイトURL"
 msgid ""
 "The abbreviation is not prominent by default; however, some themes may show "
 "it"
-msgstr "略語はデフォルトではあまり重要な意味を持ちませんが、これを表示するテーマも中にはあります。"
+msgstr ""
+"略語はデフォルトではあまり重要な意味を持ちませんが、これを表示するテーマも中"
+"にはあります。"
 
 #: includes/admin/settings/class-sp-settings-config.php:25
 msgid "Configure"
@@ -2983,8 +3017,7 @@ msgid "Shortcode menu"
 msgstr "ショートコードメニュー"
 
 #: includes/admin/settings/class-sp-settings-general.php:159
-msgid ""
-"This will enable a shortcode menu to be displayed in the visual editor."
+msgid "This will enable a shortcode menu to be displayed in the visual editor."
 msgstr "投稿及び固定ページ編集時に、ショートコードメニューを表示します。"
 
 #: includes/admin/settings/class-sp-settings-general.php:163
@@ -3032,7 +3065,9 @@ msgstr "チーム設定"
 
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "The following options affect how words are displayed on the frontend."
-msgstr "次のオプションは、その言葉がフロントエンドでどのように表示されるかに影響します。"
+msgstr ""
+"次のオプションは、その言葉がフロントエンドでどのように表示されるかに影響しま"
+"す。"
 
 #: includes/admin/views/html-admin-page-status.php:5
 msgid "Please include this information when requesting support:"
@@ -3089,9 +3124,11 @@ msgstr "WPメモリー制限"
 #: includes/admin/views/html-admin-page-status.php:53
 #, php-format
 msgid ""
-"%s - We recommend setting memory to at least 64MB. See: <a "
-"href=\"%s\">Increasing memory allocated to PHP</a>"
-msgstr "%s - 少なくとも64MBまでメモリを設定することをお勧めします。 参照: <a href=\"%s\">PHPに割り当てられたメモリ使用量を増やす</a>。"
+"%s - We recommend setting memory to at least 64MB. See: <a href=\"%s"
+"\">Increasing memory allocated to PHP</a>"
+msgstr ""
+"%s - 少なくとも64MBまでメモリを設定することをお勧めします。 参照: <a href="
+"\"%s\">PHPに割り当てられたメモリ使用量を増やす</a>。"
 
 #: includes/admin/views/html-admin-page-status.php:60
 msgid "WP Debug Mode"
@@ -3145,18 +3182,23 @@ msgstr "ご使用のサーバーは、fsockopen と cURLが有効になってい
 
 #: includes/admin/views/html-admin-page-status.php:109
 msgid "Your server has fsockopen enabled, cURL is disabled."
-msgstr "ご使用のサーバーは、fsockopenが有効になっています。cURLは無効になっています。"
+msgstr ""
+"ご使用のサーバーは、fsockopenが有効になっています。cURLは無効になっています。"
 
 #: includes/admin/views/html-admin-page-status.php:111
 msgid "Your server has cURL enabled, fsockopen is disabled."
-msgstr "ご使用のサーバーはcURLが有効になっています。fsockopenは無効になっています。"
+msgstr ""
+"ご使用のサーバーはcURLが有効になっています。fsockopenは無効になっています。"
 
 #: includes/admin/views/html-admin-page-status.php:115
 msgid ""
 "Your server does not have fsockopen or cURL enabled - PayPal IPN and other "
 "scripts which communicate with other servers will not work. Contact your "
 "hosting provider."
-msgstr "ご使用のサーバーには、fsockopenが無いか、cURLが有効になっていません。- PayPal IPN および他のサーバと通信する他のスクリプトが動作しません。ホスティングプロバイダにお問い合わせください。"
+msgstr ""
+"ご使用のサーバーには、fsockopenが無いか、cURLが有効になっていません。- "
+"PayPal IPN および他のサーバと通信する他のスクリプトが動作しません。ホスティン"
+"グプロバイダにお問い合わせください。"
 
 #: includes/admin/views/html-admin-page-status.php:120
 msgid "SOAP Client"
@@ -3169,9 +3211,12 @@ msgstr "ご使用のサーバーには、SOAP Client classが有効になって�
 #: includes/admin/views/html-admin-page-status.php:125
 #, php-format
 msgid ""
-"Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled -"
-" some gateway plugins which use SOAP may not work as expected."
-msgstr "ご使用のサーバーは、<a href=\"%s\">SOAP Client</a> classが有効になっていません。- SOAPを使用するいくつかの支払いプラグインが予期せぬ動作をする可能性があります。"
+"Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled - "
+"some gateway plugins which use SOAP may not work as expected."
+msgstr ""
+"ご使用のサーバーは、<a href=\"%s\">SOAP Client</a> classが有効になっていませ"
+"ん。- SOAPを使用するいくつかの支払いプラグインが予期せぬ動作をする可能性があ"
+"ります。"
 
 #: includes/admin/views/html-admin-page-status.php:148
 msgid "Plugins"
@@ -3235,7 +3280,9 @@ msgstr "テンプレート"
 msgid ""
 "<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
 "date. The core version is %s"
-msgstr "<code>%s</code> version <strong style=\"color:red\">%s</strong>は古くなっています。現在のバージョンは%sです。"
+msgstr ""
+"<code>%s</code> version <strong style=\"color:red\">%s</strong>は古くなってい"
+"ます。現在のバージョンは%sです。"
 
 #: includes/admin/views/html-admin-page-status.php:470
 #: includes/admin/views/html-admin-page-status.php:476
@@ -3260,18 +3307,25 @@ msgstr "このお知らせを隠す"
 #: includes/admin/views/html-notice-template-check.php:5
 msgid ""
 "<strong>Your theme has bundled outdated copies of SportsPress template "
-"files</strong> &#8211; if you encounter functionality issues on the frontend"
-" this could the reason. Ensure you update or remove them (in general we "
+"files</strong> &#8211; if you encounter functionality issues on the frontend "
+"this could the reason. Ensure you update or remove them (in general we "
 "recommend only bundling the template files you actually need to customize). "
 "See the system report for full details."
-msgstr "<strong>テーマがSportsPressテンプレートファイルの期限切れの物が利用されています。</strong>&#8211;フロントエンドで機能性の問題が発生した場合は、これが原因と思われます。(また、カスタマイズしていたらそのファイルを更新したり、削除して確認してください。)詳細については、システムのレポートを参照してください。"
+msgstr ""
+"<strong>テーマがSportsPressテンプレートファイルの期限切れの物が利用されていま"
+"す。</strong>&#8211;フロントエンドで機能性の問題が発生した場合は、これが原因"
+"と思われます。(また、カスタマイズしていたらそのファイルを更新したり、削除して"
+"確認してください。)詳細については、システムのレポートを参照してください。"
 
 #: includes/admin/views/html-notice-theme-support.php:5
 msgid ""
 "<strong>Your theme does not declare SportsPress support</strong> &#8211; if "
 "you encounter layout issues please read our integration guide or choose a "
 "SportsPress theme :)"
-msgstr "<strong>あなたのテーマはSportsPressのサポートを宣言していません</strong> &#8211; あなたがレイアウトの問題に遭遇している場合は、我々の統合ガイドを読むか、SportsPressテーマを選んでください :)"
+msgstr ""
+"<strong>あなたのテーマはSportsPressのサポートを宣言していません</strong> "
+"&#8211; あなたがレイアウトの問題に遭遇している場合は、我々の統合ガイドを読む"
+"か、SportsPressテーマを選んでください :)"
 
 #: includes/admin/views/html-notice-theme-support.php:7
 msgid "Theme Integration Guide"
