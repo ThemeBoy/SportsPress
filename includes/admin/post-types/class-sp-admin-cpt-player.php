@@ -123,6 +123,15 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_player' )
 	    	return;
 
+		$selected = isset( $_REQUEST['sp_position'] ) ? $_REQUEST['sp_position'] : null;
+		$args = array(
+			'show_option_all' =>  __( 'Show all positions', 'sportspress' ),
+			'taxonomy' => 'sp_position',
+			'name' => 'sp_position',
+			'selected' => $selected
+		);
+		sp_dropdown_taxonomies( $args );
+
 		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
 		$args = array(
 			'post_type' => 'sp_team',
