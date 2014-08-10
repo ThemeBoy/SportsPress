@@ -44,6 +44,10 @@ class SP_Admin_Assets {
 			wp_enqueue_style( 'sportspress-admin', SP()->plugin_url() . '/assets/css/admin.css', array(), SP_VERSION );
 		}
 
+		if ( in_array( $screen->id, array( 'sportspress_page_sp-overview' ) ) ) {
+			wp_enqueue_style( 'sportspress-admin-slickmap', SP()->plugin_url() . '/assets/css/slickmap.css', array(), '1.1.0' );
+		}
+
 		if ( in_array( $screen->id, array( 'dashboard' ) ) ) {
 			wp_enqueue_style( 'sportspress-admin-dashboard-styles', SP()->plugin_url() . '/assets/css/dashboard.css', array(), SP_VERSION );
 		}

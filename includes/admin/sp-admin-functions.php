@@ -20,6 +20,7 @@ function sp_get_screen_ids() {
         'dashboard',
         'dashboard_page_sp-about',
         'toplevel_page_sportspress',
+        'sportspress_page_sp-overview',
         'sportspress_page_sp-status',
     	'edit-sp_result',
     	'sp_result',

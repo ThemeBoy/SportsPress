@@ -23,8 +23,9 @@ class SP_Admin_Menus {
 	public function __construct() {
 		add_filter( 'admin_menu', array( $this, 'menu_clean' ), 5 );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 6 );
-		add_action( 'admin_menu', array( $this, 'leagues_menu' ), 7 );
-		add_action( 'admin_menu', array( $this, 'seasons_menu' ), 8 );
+		add_action( 'admin_menu', array( $this, 'overview_menu' ), 7 );
+		add_action( 'admin_menu', array( $this, 'leagues_menu' ), 8 );
+		add_action( 'admin_menu', array( $this, 'seasons_menu' ), 9 );
 
 		if ( current_user_can( 'manage_options' ) )
 			add_action( 'admin_menu', array( $this, 'status_menu' ), 20 );
@@ -47,7 +48,14 @@ class SP_Admin_Menus {
 	    if ( current_user_can( 'manage_sportspress' ) )
 	    	$menu[] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
 
-		$main_page = add_menu_page( __( 'SportsPress Settings', 'sportspress' ), __( 'SportsPress', 'sportspress' ), 'manage_sportspress', 'sportspress', array( $this, 'settings_page' ), apply_filters( 'sportspress_menu_icon', null ), '51.5' );
+		$main_page = add_menu_page( __( 'SportsPress', 'sportspress' ), __( 'SportsPress', 'sportspress' ), 'manage_sportspress', 'sportspress', array( $this, 'settings_page' ), apply_filters( 'sportspress_menu_icon', null ), '51.5' );
+	}
+
+	/**
+	 * Add menu item
+	 */
+	public function overview_menu() {
+		add_submenu_page( 'sportspress', __( 'Overview', 'sportspress' ), __( 'Overview', 'sportspress' ), 'manage_sportspress', 'sp-overview', array( $this, 'overview_page' ) );
 	}
 
 	/**
@@ -228,6 +236,14 @@ class SP_Admin_Menus {
 			remove_menu_page( 'edit-comments.php' );
 			remove_menu_page( 'tools.php' );
 		endif;
+	}
+
+	/**
+	 * Init the overview page
+	 */
+	public function overview_page() {
+		include_once( 'class-sp-admin-overview.php' );
+		SP_Admin_Overview::output();
 	}
 
 	/**

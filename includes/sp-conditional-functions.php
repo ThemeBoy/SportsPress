@@ -35,6 +35,38 @@ if ( ! function_exists( 'sp_post_types' ) ) {
 }
 
 /**
+ * sp_post_type_hierarchy - Returns array of SP primary post types
+ *
+ * @access public
+ * @return array
+ */
+if ( ! function_exists( 'sp_post_type_hierarchy' ) ) {
+	function sp_post_type_hierarchy() {
+		return apply_filters(
+			'sportspress_post_type_hierarchy',
+			array(
+				'sp_event' => array( 'sp_calendar' ),
+				'sp_team' => array( 'sp_table' ),
+				'sp_player' => array( 'sp_list' ),
+				'sp_staff' => array()
+			)
+		);
+	}
+}
+
+/**
+ * sp_secondary_post_types - Returns array of SP secondary post types
+ *
+ * @access public
+ * @return array
+ */
+if ( ! function_exists( 'sp_secondary_post_types' ) ) {
+	function sp_secondary_post_types() {
+		return apply_filters( 'sportspress_secondary_post_types', array( 'sp_calendar', 'sp_table', 'sp_list' ) );
+	}
+}
+
+/**
  * sp_config_types - Returns array of SP config types
  *
  * @access public
@@ -43,6 +75,18 @@ if ( ! function_exists( 'sp_post_types' ) ) {
 if ( ! function_exists( 'sp_config_types' ) ) {
 	function sp_config_types() {
 		return apply_filters( 'sportspress_config_types', array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric', 'sp_statistic' ) );
+	}
+}
+
+/**
+ * sp_taxonomies - Returns array of SP taxonomies
+ *
+ * @access public
+ * @return array
+ */
+if ( ! function_exists( 'sp_taxonomies' ) ) {
+	function sp_taxonomies() {
+		return apply_filters( 'sportspress_terms', array( 'sp_league', 'sp_season', 'sp_venue', 'sp_position' ) );
 	}
 }
 
