@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registers post types and taxonomies
  *
  * @class 		SP_Post_types
- * @version		1.1.4
+ * @version		1.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -343,7 +343,7 @@ class SP_Post_types {
 						'add_new_item' 			=> __( 'Add New Event', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Event', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View', 'sportspress' ),
+						'view_item' 			=> __( 'View Event', 'sportspress' ),
 						'search_items' 			=> __( 'Search', 'sportspress' ),
 						'not_found' 			=> __( 'No results found.', 'sportspress' ),
 						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
@@ -373,7 +373,7 @@ class SP_Post_types {
 						'add_new_item' 			=> __( 'Add New Calendar', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Calendar', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View', 'sportspress' ),
+						'view_item' 			=> __( 'View Calendar', 'sportspress' ),
 						'search_items' 			=> __( 'Search', 'sportspress' ),
 						'not_found' 			=> __( 'No results found.', 'sportspress' ),
 						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
@@ -404,7 +404,7 @@ class SP_Post_types {
 						'add_new_item' 			=> __( 'Add New Team', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Team', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View', 'sportspress' ),
+						'view_item' 			=> __( 'View Team', 'sportspress' ),
 						'search_items' 			=> __( 'Search', 'sportspress' ),
 						'not_found' 			=> __( 'No results found.', 'sportspress' ),
 						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
@@ -434,7 +434,7 @@ class SP_Post_types {
 						'add_new_item' 			=> __( 'Add New League Table', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit League Table', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View', 'sportspress' ),
+						'view_item' 			=> __( 'View League Table', 'sportspress' ),
 						'search_items' 			=> __( 'Search', 'sportspress' ),
 						'not_found' 			=> __( 'No results found.', 'sportspress' ),
 						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
@@ -466,7 +466,7 @@ class SP_Post_types {
 							'add_new_item' 			=> __( 'Add New Player', 'sportspress' ),
 							'edit_item' 			=> __( 'Edit Player', 'sportspress' ),
 							'new_item' 				=> __( 'New', 'sportspress' ),
-							'view_item' 			=> __( 'View', 'sportspress' ),
+							'view_item' 			=> __( 'View Player', 'sportspress' ),
 							'search_items' 			=> __( 'Search', 'sportspress' ),
 							'not_found' 			=> __( 'No results found.', 'sportspress' ),
 							'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
@@ -496,7 +496,7 @@ class SP_Post_types {
 							'add_new_item' 			=> __( 'Add New Player List', 'sportspress' ),
 							'edit_item' 			=> __( 'Edit Player List', 'sportspress' ),
 							'new_item' 				=> __( 'New', 'sportspress' ),
-							'view_item' 			=> __( 'View', 'sportspress' ),
+							'view_item' 			=> __( 'View Player List', 'sportspress' ),
 							'search_items' 			=> __( 'Search', 'sportspress' ),
 							'not_found' 			=> __( 'No results found.', 'sportspress' ),
 							'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
@@ -527,7 +527,7 @@ class SP_Post_types {
 							'add_new_item' 			=> __( 'Add New Staff', 'sportspress' ),
 							'edit_item' 			=> __( 'Edit Staff', 'sportspress' ),
 							'new_item' 				=> __( 'New', 'sportspress' ),
-							'view_item' 			=> __( 'View', 'sportspress' ),
+							'view_item' 			=> __( 'View Staff', 'sportspress' ),
 							'search_items' 			=> __( 'Search', 'sportspress' ),
 							'not_found' 			=> __( 'No results found.', 'sportspress' ),
 							'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
