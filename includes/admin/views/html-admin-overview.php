@@ -39,10 +39,10 @@
 													<li>
 														<?php if ( sizeof ( $object->object_type ) <= 1 ): ?>
 															<?php if ( sizeof( $object->object_type ) ): foreach ( $object->object_type as $post_type ): ?>
-																<a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?></a>
+																<a class="button wp-ui-text-notification" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?></a>
 															<?php endforeach; endif; ?>
 														<?php else: ?>
-															<a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $child->term_id ), 'admin.php' ) ) ); ?>"><?php echo $child->name; ?></a>
+															<a class="button wp-ui-text-notification" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $child->term_id ), 'admin.php' ) ) ); ?>"><?php echo $child->name; ?></a>
 														<?php endif; ?>
 													</li>
 												<?php endforeach; ?>
@@ -70,7 +70,7 @@
 
 				<?php if ( $terms ): // Has children ?>
 
-					<ul id="sp-primary" class="col<?php echo sizeof( $terms ) + sizeof ( $taxonomy_object->object_type ); ?>">
+					<ul id="sp-primary" class="col<?php echo sizeof( $terms ) + 1; ?>">
 						<li class="sp-breadcrumb"><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview' ), 'admin.php' ) ) ); ?>"><?php _e( 'SportsPress', 'sportspress' ); ?></a></li>
 						<li class="sp-breadcrumb"><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy ), 'admin.php' ) ) ); ?>"><?php echo $taxonomy_object->labels->name; ?></a></li>
 						<li class="sp-home"><a class="button disabled"><?php echo $term->name; ?></a></li>
@@ -85,13 +85,36 @@
 						</li>
 						<?php foreach ( $terms as $term ): ?>
 							<li><a class="button button-primary" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $term->term_id ), 'admin.php' ) ) ); ?>"><?php echo $term->name; ?></a>
-							<?php if ( sizeof ( $taxonomy_object->object_type ) ): ?>
-								<ul>
-									<?php foreach ( $taxonomy_object->object_type as $post_type ): if ( array_key_exists( $post_type, $hierarchy ) ): $post_object = get_post_type_object( $post_type ); ?>
-										<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo $post_object->labels->name; ?></a></li>
-									<?php endif; endforeach; ?>
-								</ul>
-							<?php endif; ?>
+								<?php $children = get_terms( $taxonomy, array( 'hide_empty' => false, 'parent' => $term->term_id, 'orderby' => 'slug' ) ); ?>
+
+								<?php if ( $children ): // Has children ?>
+
+									<ul>
+										<?php foreach ( $children as $child ): ?>
+											<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?></a>
+
+												<?php if ( sizeof ( $taxonomy_object->object_type ) ): // Has associated post types ?>
+													<ul>
+														<?php foreach ( $taxonomy_object->object_type as $post_type ): if ( array_key_exists( $post_type, $hierarchy ) ): $post_object = get_post_type_object( $post_type ); ?>
+															<li><a class="button wp-ui-text-notification" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $post_object->labels->name; ?></a></li>
+														<?php endif; endforeach; ?>
+													</ul>
+												<?php endif; ?>
+
+											</li>
+										<?php endforeach; ?>
+									</ul>
+
+								<?php elseif ( sizeof ( $taxonomy_object->object_type ) ): // Has associated post types ?>
+
+									<ul>
+										<?php foreach ( $taxonomy_object->object_type as $post_type ): if ( array_key_exists( $post_type, $hierarchy ) ): $post_object = get_post_type_object( $post_type ); ?>
+											<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo $post_object->labels->name; ?></a></li>
+										<?php endif; endforeach; ?>
+									</ul>
+
+								<?php endif; ?>
+
 							</li>
 						<?php endforeach; ?>
 					</ul>
@@ -152,22 +175,20 @@
 
 										<?php else: ?>
 
-											<li>
-												<ul>
-													<?php if ( sizeof ( $taxonomy_object->object_type ) ): ?>
-														<?php foreach ( $taxonomy_object->object_type as $post_type ): if ( array_key_exists( $post_type, $hierarchy ) ): $post_object = get_post_type_object( $post_type ); ?>
-															<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo $post_object->labels->name; ?></a></li>
-														<?php endif; endforeach; ?>
-													<?php endif; ?>
-												</ul>
-											</li>
+											<?php if ( sizeof ( $taxonomy_object->object_type ) ): ?>
+												<?php foreach ( $taxonomy_object->object_type as $post_type ): if ( array_key_exists( $post_type, $hierarchy ) ): $post_object = get_post_type_object( $post_type ); ?>
+													<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo $post_object->labels->name; ?></a></li>
+												<?php endif; endforeach; ?>
+												<li></li>
+												<li></li>
+											<?php endif; ?>
 
 											<?php foreach ( $children as $child ): ?>
 												<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $child->term_id ), 'admin.php' ) ) ); ?>"><?php echo $child->name; ?></a>
 													<?php if ( sizeof ( $object->object_type ) ): ?>
 														<ul>
 															<?php foreach ( $object->object_type as $post_type ): if ( array_key_exists( $post_type, $hierarchy ) ): $post_object = get_post_type_object( $post_type ); ?>
-																<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $post_object->labels->name; ?></a></li>
+																<li><a class="button wp-ui-text-notification" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $post_object->labels->name; ?></a></li>
 															<?php endif; endforeach; ?>
 														</ul>
 													<?php endif; ?>
@@ -236,7 +257,7 @@
 
 												<ul>
 													<?php foreach ( $children as $child ): ?>
-														<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?></a></li>
+														<li><a class="button wp-ui-text-notification" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?></a></li>
 													<?php endforeach; ?>
 												</ul>
 
@@ -286,7 +307,18 @@
 
 							<ul>
 								<?php foreach ( $children as $child ): ?>
-									<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?></a></li>
+									<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?></a>
+										<?php $grandchildren = get_terms( $taxonomy, array( 'hide_empty' => false, 'parent' => $child->term_id, 'orderby' => 'slug' ) ); ?>
+
+										<?php if ( $grandchildren ): // Has grandchildren ?>
+											<ul>
+												<?php foreach ( $grandchildren as $grandchild ): ?>
+													<li><a class="button wp-ui-text-notification" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $grandchild->slug ), 'edit.php' ) ) ); ?>"><?php echo $grandchild->name; ?></a></li>
+												<?php endforeach; ?>
+											</ul>
+										<?php endif; ?>
+
+									</li>
 								<?php endforeach; ?>
 							</ul>
 
