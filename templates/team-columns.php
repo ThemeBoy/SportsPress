@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.1
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -17,12 +17,13 @@ $leagues = get_the_terms( $id, 'sp_league' );
 if ( ! $leagues )
 	return false;
 
+$team = new SP_Team( $id );
+
 $output = '';
 
 // Loop through data for each league
 foreach ( $leagues as $league ):
 
-	$team = new SP_Team( $id );
 	$data = $team->columns( $league->term_id );
 
 	if ( sizeof( $data ) <= 1 )
