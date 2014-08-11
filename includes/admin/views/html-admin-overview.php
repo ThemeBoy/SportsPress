@@ -51,7 +51,7 @@
 									</li>
 								<?php endforeach; ?>
 							<?php else: ?>
-								<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type ), 'post-new.php' ) ) ); ?>"><?php echo $object->labels->add_new_item; ?></a></li>
+								<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'taxonomy' => $taxonomy ), 'edit-tags.php' ) ) ); ?>"><?php echo $object->labels->add_new_item; ?></a></li>
 							<?php endif; ?>
 						</ul>
 					</li>
