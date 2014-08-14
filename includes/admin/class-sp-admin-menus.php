@@ -95,7 +95,7 @@ class SP_Admin_Menus {
 	public function menu_highlight() {
 		global $typenow, $submenu;
 		if ( is_sp_config_type( $typenow ) )
-			$this->highlight_admin_menu();
+			$this->highlight_admin_menu( 'sportspress', 'sp-config' );
 		elseif ( $typenow == 'sp_calendar' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_event', 'edit.php?post_type=sp_calendar' );
 		elseif ( $typenow == 'sp_table' )
