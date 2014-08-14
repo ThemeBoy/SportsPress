@@ -249,7 +249,9 @@ table.widefat.sp-sortable-table tr:nth-child(2n-1) {
 }
 
 .sp-admin-config-table th.radio,
-.sp-admin-config-table td.radio {
+.sp-admin-config-table td.radio,
+.sp-admin-config-table th.icon,
+.sp-admin-config-table td.icon {
 	width: 1%;
 	text-align: center;
 }

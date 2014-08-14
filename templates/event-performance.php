@@ -31,6 +31,16 @@ $link_posts = get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : 
 $sortable = get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false;
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 $responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
+$mode = get_option( 'sportspress_event_performance_mode', 'values' );
+
+// Get performance ids for icons
+if ( $mode == 'icons' ):
+	$performance_ids = array();
+	$performance_posts = get_posts( array( 'posts_per_page' => -1, 'post_type' => 'sp_performance' ) );
+	foreach ( $performance_posts as $post ):
+		$performance_ids[ $post->post_name ] = $post->ID;
+	endforeach;
+endif;
 
 if ( is_array( $teams ) ):
 	foreach( $teams as $index => $team_id ):
@@ -63,9 +73,12 @@ if ( is_array( $teams ) ):
 						<?php if ( $has_players ): ?>
 							<th class="data-number">#</th>
 							<th class="data-name"><?php _e( 'Player', 'sportspress' ); ?></th>
-						<?php endif; foreach( $labels as $key => $label ): ?>
+						<?php endif; ?>
+						<?php if ( $mode == 'values' ): foreach( $labels as $key => $label ): ?>
 							<th class="data-<?php echo $key; ?>"><?php echo $label; ?></th>
-						<?php endforeach; ?>
+						<?php endforeach; else: ?>
+							<th class="sp-performance-icons">&nbsp;</th>
+						<?php endif; ?>
 					</tr>
 				</thead>
 				<?php if ( $show_players && $has_players ): ?>
@@ -115,17 +128,17 @@ if ( is_array( $teams ) ):
 							endif;
 
 							echo '<td class="data-name">' . $name . '</td>';
-
+							
+							if ( $mode == 'icons' ); echo '<td class="sp-performance-icons">';
 
 							foreach( $labels as $key => $label ):
 								if ( $key == 'name' )
 									continue;
+								$value = '&mdash;';
 								if ( $key == 'position' ):
 									if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
 										$position = get_term_by( 'id', $row[ $key ], 'sp_position' );
-										$value = $position->name;
-									else:
-										$value = '&mdash;';
+										if ( $position ) $value = $position->name;
 									endif;
 								else:
 									if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
@@ -138,8 +151,18 @@ if ( is_array( $teams ) ):
 									$totals[ $key ] = 0;
 								endif;
 								$totals[ $key ] += $value;
-								echo '<td class="data-' . $key . '">' . $value . '</td>';
+
+								if ( $mode == 'values' ):
+									echo '<td class="data-' . $key . '">' . $value . '</td>';
+								elseif ( intval( $value ) && $mode == 'icons' ):
+									$performance_id = sp_array_value( $performance_ids, $key, null );
+									if ( $performance_id && has_post_thumbnail( $performance_id ) ):
+										echo str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini' ) . ' ', $value );
+									endif;
+								endif;
 							endforeach;
+							
+							if ( $mode == 'icons' ); echo '</td>';
 
 							echo '</tr>';
 
@@ -160,6 +183,8 @@ if ( is_array( $teams ) ):
 
 							$row = $data[0];
 
+							if ( $mode == 'icons' ) echo '<td class="sp-performance-icons">';
+
 							foreach( $labels as $key => $label ):
 								if ( $key == 'name' )
 									continue;
@@ -170,8 +195,18 @@ if ( is_array( $teams ) ):
 								else:
 									$value = sp_array_value( $totals, $key, 0 );
 								endif;
-								echo '<td class="data-' . $key . '">' . $value . '</td>';
+
+								if ( $mode == 'values' ):
+									echo '<td class="data-' . $key . '">' . $value . '</td>';
+								elseif ( intval( $value ) && $mode == 'icons' ):
+									$performance_id = sp_array_value( $performance_ids, $key, null );
+									if ( $performance_id && has_post_thumbnail( $performance_id ) ):
+										echo str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini' ) . ' ', $value );
+									endif;
+								endif;
 							endforeach;
+
+							if ( $mode == 'icons' ) echo '</td>';
 							?>
 						</tr>
 					</<?php echo ( $has_players ? 'tfoot' : 'tbody' ); ?>>

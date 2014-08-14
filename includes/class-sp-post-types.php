@@ -295,7 +295,7 @@ class SP_Post_types {
 					'publicly_queryable' 	=> false,
 					'exclude_from_search' 	=> true,
 					'hierarchical' 			=> false,
-					'supports' 				=> array( 'title', 'page-attributes', 'excerpt' ),
+					'supports' 				=> array( 'title', 'thumbnail', 'page-attributes', 'excerpt' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,

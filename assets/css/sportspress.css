@@ -51,6 +51,10 @@
 	content: "\f140";
 	position: absolute;
 }
+.sp-data-table .data-number,
+.sp-data-table .data-rank {
+	width: 1px;
+}
 
 /* Pagination */
 .sp-paginated-table {
@@ -125,6 +129,9 @@
 }
 .sp-event-performance .sub-out:before {
 	content: "\f142";
+}
+.sp-event-performance .sp-performance-icons {
+	width: 25%;
 }
 
 /* Event Calendar */

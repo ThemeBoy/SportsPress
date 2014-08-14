@@ -77,7 +77,7 @@
 						<table class="widefat sp-admin-config-table">
 							<thead>
 								<tr>
-									<th scope="col"><?php _e( 'Primary', 'sportspress' ); ?></th>
+									<th class="radio" scope="col"><?php _e( 'Primary', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Variables', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
@@ -143,6 +143,7 @@
 					<table class="widefat sp-admin-config-table">
 						<thead>
 							<tr>
+								<th class="icon" scope="col"><?php _e( 'Icon', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
@@ -151,6 +152,7 @@
 						</thead>
 						<?php $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
+								<td class="icon"><?php if ( has_post_thumbnail( $row->ID ) ) echo get_the_post_thumbnail( $row->ID, 'sportspress-fit-mini' ); ?></td>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
 								<td><?php echo $row->post_name; ?></td>
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>

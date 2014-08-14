@@ -153,6 +153,18 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain = nu
 			case 'Slug':
 				$translated_text = ( in_array( $typenow, array( 'sp_column', 'sp_statistic' ) ) ) ? __( 'Key', 'sportspress' ) : __( 'Variable', 'sportspress' );
 				break;
+			case 'Featured Image':
+				$translated_text = __( 'Icon', 'sportspress' );
+				break;
+			case 'Set Featured Image':
+				$translated_text = __( 'Select Icon', 'sportspress' );
+				break;
+			case 'Set featured image':
+				$translated_text = __( 'Add icon', 'sportspress' );
+				break;
+			case 'Remove featured image':
+				$translated_text = __( 'Remove icon', 'sportspress' );
+				break;
 			endswitch;
 		endif;
 

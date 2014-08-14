@@ -79,14 +79,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 				'id' 		=> 'sportspress_event_show_logos',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
-			),
-
-			array(
-				'title'     => __( 'Venue', 'sportspress' ),
-				'desc' 		=> __( 'Display maps', 'sportspress' ),
-				'id' 		=> 'sportspress_event_show_maps',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
 				'checkboxgroup'	=> 'start',
 			),
 
@@ -96,7 +88,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 				'id' 		=> 'sportspress_event_show_players',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
-				'checkboxgroup'	=> 'start',
+				'checkboxgroup'	=> '',
 			),
 
 			array(
@@ -105,6 +97,26 @@ class SP_Settings_Events extends SP_Settings_Page {
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',
+			),
+
+			array(
+				'title' 	=> __( 'Player Performance', 'sportspress' ),
+				'id' 		=> 'sportspress_event_performance_mode',
+				'default'	=> 'values',
+				'type' 		=> 'radio',
+				'options' => array(
+					'values'	=> __( 'Values', 'sportspress' ),
+					'icons'		=> __( 'Icons', 'sportspress' ),
+				),
+			),
+
+			array(
+				'title'     => __( 'Venue', 'sportspress' ),
+				'desc' 		=> __( 'Display maps', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_maps',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'	=> 'start',
 			),
 
 			array(
