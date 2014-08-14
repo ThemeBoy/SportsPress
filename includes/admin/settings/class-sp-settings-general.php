@@ -54,17 +54,6 @@ class SP_Settings_General extends SP_Settings_Page {
 			),
 
 			array(
-				'title'     => __( 'Mode', 'sportspress' ),
-				'id'        => 'sportspress_mode',
-				'default'   => 'team',
-				'type'      => 'select',
-				'options'   => array(
-					'team' => _x( 'Team', 'mode select', 'sportspress' ),
-					'player' => _x( 'Individual', 'mode select', 'sportspress' ),
-				),
-			),
-
-			array(
 				'title'     => __( 'Google Maps', 'sportspress' ),
 				'id'        => 'sportspress_map_type',
 				'default'   => 'ROADMAP',
@@ -139,6 +128,15 @@ class SP_Settings_General extends SP_Settings_Page {
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> '',
 				'desc_tip'	=> __( 'This will enable a script allowing the tables to be sortable.', 'sportspress' ),
+			),
+
+			array(
+				'desc' 		=> __( 'Scrollable tables', 'sportspress' ),
+				'id' 		=> 'sportspress_enable_scrollable_tables',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+				'desc_tip'	=> __( 'This will enable a script allowing the tables to be scrollable.', 'sportspress' ),
 			),
 
 			array(

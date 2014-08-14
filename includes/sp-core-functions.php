@@ -1066,19 +1066,25 @@ if ( !function_exists( 'sp_get_next_event' ) ) {
 function sp_get_text_options() {
 	$strings = apply_filters( 'sportspress_text', array(
 		__( 'Article', 'sportspress' ),
+		__( 'Current Team', 'sportspress' ),
 		__( 'Date', 'sportspress' ),
 		__( 'Details', 'sportspress' ),
 		__( 'Event', 'sportspress' ),
 		__( 'League', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
 		__( 'Outcome', 'sportspress' ),
+		__( 'Past Teams', 'sportspress' ),
 		__( 'Played', 'sportspress' ),
+		__( 'Player', 'sportspress' ),
 		__( 'Pos', 'sportspress' ),
+		__( 'Position', 'sportspress' ),
 		__( 'Preview', 'sportspress' ),
 		__( 'Rank', 'sportspress' ),
 		__( 'Recap', 'sportspress' ),
 		__( 'Team Results', 'sportspress' ),
 		__( 'Season', 'sportspress' ),
+		__( 'Staff', 'sportspress' ),
+		__( 'Substitutes', 'sportspress' ),
 		__( 'Team', 'sportspress' ),
 		__( 'Teams', 'sportspress' ),
 		__( 'Time', 'sportspress' ),
@@ -1086,20 +1092,9 @@ function sp_get_text_options() {
 		__( 'Total', 'sportspress' ),
 		__( 'Venue', 'sportspress' ),
 		__( 'View all events', 'sportspress' ),
+		__( 'View all players', 'sportspress' ),
 		__( 'View full table', 'sportspress' ),
 	));
-
-	if ( SP()->mode == 'team' ):
-		$strings = array_merge( $strings, array(
-			__( 'Current Team', 'sportspress' ),
-			__( 'Past Teams', 'sportspress' ),
-			__( 'Player', 'sportspress' ),
-			__( 'Position', 'sportspress' ),
-			__( 'Staff', 'sportspress' ),
-			__( 'Substitutes', 'sportspress' ),
-			__( 'View all players', 'sportspress' ),
-		));
-	endif;
 	
 	asort( $strings );
 	return $strings;

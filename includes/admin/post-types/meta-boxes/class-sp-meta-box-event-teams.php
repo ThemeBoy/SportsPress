@@ -37,17 +37,13 @@ class SP_Meta_Box_Event_Teams {
 				wp_dropdown_pages( $args );
 				?>
 				</p>
-				<?php 
-				if ( SP()->mode == 'team' ):
-					?>
-					<ul id="sp_team-tabs" class="wp-tab-bar sp-tab-bar">
-						<li class="wp-tab-active"><a href="#sp_player-all"><?php _e( 'Players', 'sportspress' ); ?></a></li>
-						<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
-					</ul>
-					<?php
-					sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_current_team', $i );
-					sp_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_current_team', $i );
-				endif;
+				<ul id="sp_team-tabs" class="wp-tab-bar sp-tab-bar">
+					<li class="wp-tab-active"><a href="#sp_player-all"><?php _e( 'Players', 'sportspress' ); ?></a></li>
+					<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
+				</ul>
+				<?php
+				sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_current_team', $i );
+				sp_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_current_team', $i );
 				?>
 			</div>
 			<?php

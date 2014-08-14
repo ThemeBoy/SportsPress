@@ -17,6 +17,7 @@ $defaults = array(
 	'show_team_logo' => get_option( 'sportspress_table_show_logos', 'yes' ) == 'yes' ? true : false,
 	'link_posts' => get_option( 'sportspress_table_link_teams', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
+	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_table_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_table_rows', 10 ),
@@ -26,7 +27,7 @@ extract( $defaults, EXTR_SKIP );
 
 $output = '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
 
-$output .= '<div class="sp-table-wrapper sp-scrollable-table-wrapper">';
+$output .= '<div class="sp-table-wrapper' . ( $scrollable ? ' sp-scrollable-table-wrapper' : '' ) . '">';
 
 $output .= '<table class="sp-league-table sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 

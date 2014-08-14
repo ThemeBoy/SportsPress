@@ -57,11 +57,6 @@ final class SportsPress {
 	public $text = array();
 
 	/**
-	 * @var string
-	 */
-	public $mode = 'team';
-
-	/**
 	 * Main SportsPress Instance
 	 *
 	 * Ensures only one instance of SportsPress is loaded or can be loaded.
@@ -121,7 +116,6 @@ final class SportsPress {
 		add_action( 'init', array( $this, 'init' ), 0 );
 		add_action( 'init', array( 'SP_Shortcodes', 'init' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup_environment' ) );
-		add_filter( 'gettext', array( $this, 'gettext' ), 20, 3 );
 
 		// Loaded action
 		do_action( 'sportspress_loaded' );
@@ -279,9 +273,6 @@ final class SportsPress {
 		// Load string options
 		$this->text = get_option( 'sportspress_text', array() );
 
-		// Get mode option
-		$this->mode = sp_get_option( 'sportspress_mode', 'team' );
-
 		// Init action
 		do_action( 'sportspress_init' );
 	}
@@ -304,63 +295,11 @@ final class SportsPress {
 	 */
 	public function setup_environment() {
 		add_theme_support( 'post-thumbnails' );
-		
-		// Standard (3:2)
-		add_image_size( 'sportspress-standard', 640, 480, true );
-		add_image_size( 'sportspress-standard-thumbnail', 320, 240, true );
 
-		// Wide (16:9)
-		add_image_size( 'sportspress-wide-header', 1920, 1080, true );
-		add_image_size( 'sportspress-wide', 640, 360, true );
-		add_image_size( 'sportspress-wide-thumbnail', 320, 180, true );
-
-		// Square (1:1)
-		add_image_size( 'sportspress-square', 640, 640, true );
-		add_image_size( 'sportspress-square-thumbnail', 320, 320, true );
-
-		// Fit (Proportional)
-		add_image_size( 'sportspress-fit',  640, 640, false );
+		// Add image sizes
 		add_image_size( 'sportspress-fit-thumbnail',  320, 320, false );
 		add_image_size( 'sportspress-fit-icon',  128, 128, false );
 		add_image_size( 'sportspress-fit-mini',  32, 32, false );
-	}
-
-	/**
-	 * Replace team strings with player if individual mode.
-	 */
-	public function gettext( $translated_text, $untranslated_text, $domain = 'default' ) {
-		if ( SP()->mode == 'player' && $domain == 'sportspress' ):
-			switch ( $untranslated_text ):
-			case 'Teams':
-				return __( 'Players', 'sportspress' );
-			case 'Team':
-				return __( 'Player', 'sportspress' );
-			case 'teams':
-				return __( 'players', 'sportspress' );
-			case 'Add New Team':
-				return __( 'Add New Player', 'sportspress' );
-			case 'Edit Team':
-				return __( 'Edit Player', 'sportspress' );
-			case 'Team Options':
-				return __( 'Player Options', 'sportspress' );
-			case 'Team Results':
-				return __( 'Player Performance', 'sportspress' );
-			case 'Logo':
-				return __( 'Photo', 'sportspress' );
-			case 'Add logo':
-				return __( 'Add photo', 'sportspress' );
-			case 'Remove logo':
-				return __( 'Remove photo', 'sportspress' );
-			case 'Select Logo':
-				return __( 'Select Photo', 'sportspress' );
-			case 'Display logos':
-				return __( 'Display photos', 'sportspress' );
-			case 'Link teams':
-				return __( 'Link players', 'sportspress' );
-			endswitch;
-		endif;
-		
-		return $translated_text;
 	}
 
 	/** Helper functions ******************************************************/

@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 
+$scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 $leagues = get_the_terms( $id, 'sp_league' );
 
 if ( ! $leagues )
@@ -36,7 +37,7 @@ foreach ( $leagues as $league ):
 	unset( $data[0] );
 
 	$output .= '<h4 class="sp-table-caption">' . $league->name . '</h4>' .
-		'<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
+		'<div class="sp-table-wrapper' . ( $scrollable ? ' sp-scrollable-table-wrapper' : '' ) . '">' .
 		'<table class="sp-team-columns sp-data-table sp-responsive-table">' . '<thead>' . '<tr>';
 
 	foreach( $labels as $key => $label ):

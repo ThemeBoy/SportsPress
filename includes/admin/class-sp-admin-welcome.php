@@ -182,10 +182,6 @@ class SP_Admin_Welcome {
 	    	if ( isset( $_POST['timezone_string'] ) ):
 	    		update_option( 'timezone_string', $_POST['timezone_string'] );
 	    	endif;
-			if ( isset( $_POST['sportspress_mode'] ) && ! empty( $_POST['sportspress_mode'] ) && get_option( 'sportspress_mode', null ) != $_POST['sportspress_mode'] ):
-				$sport = $_POST['sportspress_mode'];
-				update_option( 'sportspress_mode', $_POST['sportspress_mode'] );
-	    	endif;
 			if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
 				$sport = $_POST['sportspress_sport'];
 				SP_Admin_Sports::apply_preset( $sport );
@@ -232,20 +228,6 @@ class SP_Admin_Welcome {
 								'type'      => 'select',
 								'class' 	=> $class,
 								'options'   => $sport_options,
-							));
-							SP_Admin_Settings::output_fields( $settings );
-							?>
-							<h4><?php _e( 'Mode', 'sportspress' ); ?></h4>
-							<?php
-							$settings = array( array(
-								'id'        => 'sportspress_mode',
-								'default'   => 'team',
-								'type'      => 'select',
-								'class' 	=> $class,
-								'options'   => array(
-									'team' => _x( 'Team', 'mode select', 'sportspress' ),
-									'player' => _x( 'Individual', 'mode select', 'sportspress' ),
-								),
 							));
 							SP_Admin_Settings::output_fields( $settings );
 							?>

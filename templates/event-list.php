@@ -19,6 +19,7 @@ $defaults = array(
 	'link_teams' => get_option( 'sportspress_calendar_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_venues' => get_option( 'sportspress_calendar_link_venues', 'yes' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
+	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_calendar_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_calendar_rows', 10 ),
@@ -46,7 +47,7 @@ if ( isset( $columns ) ):
 		$usecolumns = explode( ',', $columns );
 endif;
 ?>
-<div class="sp-table-wrapper sp-scrollable-table-wrapper">
+<div class="sp-table-wrapper<?php if ( $scrollable ) { ?> sp-scrollable-table-wrapper<?php } ?>">
 	<table class="sp-event-list sp-data-table<?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $paginated ) { ?> sp-paginated-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
 		<thead>
 			<tr>

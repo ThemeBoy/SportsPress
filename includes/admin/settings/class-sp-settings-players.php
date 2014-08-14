@@ -57,19 +57,15 @@ class SP_Settings_Players extends SP_Settings_Page {
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 			),
-		);
 
-		if ( SP()->mode == 'team' ):
-			$settings[] = array(
+			array(
 				'title'     => __( 'Teams', 'sportspress' ),
 				'desc' 		=> __( 'Link teams', 'sportspress' ),
 				'id' 		=> 'sportspress_list_link_teams',
 				'default'	=> 'no',
 				'type' 		=> 'checkbox',
-			);
-		endif;
+			),
 
-		$settings = array_merge( $settings, array(
 			array(
 				'title'     => __( 'Pagination', 'sportspress' ),
 				'desc' 		=> __( 'Paginate', 'sportspress' ),
@@ -92,7 +88,7 @@ class SP_Settings_Players extends SP_Settings_Page {
 			),
 
 			array( 'type' => 'sectionend', 'id' => 'list_options' ),
-		)); // End player settings
+		); // End player settings
 
 		return apply_filters( 'sportspress_player_settings', $settings );
 	}

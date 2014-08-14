@@ -14,13 +14,13 @@ if ( ! isset( $id ) )
 
 $player = new SP_Player( $id );
 
+$scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
+$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
 $leagues = get_the_terms( $id, 'sp_league' );
 
 // Loop through statistics for each league
 if ( is_array( $leagues ) ):
 	foreach ( $leagues as $league ):
-		$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
-
 		$data = $player->data( $league->term_id );
 
 		// The first row should be column labels
@@ -34,7 +34,7 @@ if ( is_array( $leagues ) ):
 			return false;
 
 		$output = '<h4 class="sp-table-caption">' . $league->name . '</h4>' .
-			'<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
+			'<div class="sp-table-wrapper' . ( $scrollable ? ' sp-scrollable-table-wrapper' : '' ) . '">' .
 			'<table class="sp-player-statistics sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . '">' . '<thead>' . '<tr>';
 
 		foreach( $labels as $key => $label ):
