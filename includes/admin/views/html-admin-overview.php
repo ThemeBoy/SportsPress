@@ -27,7 +27,7 @@
 									<li>
 										<?php if ( ! $children && sizeof ( $post_types ) <= 1 ): ?>
 											<?php if ( sizeof( $post_types ) ): foreach ( $post_types as $post_type ): ?>
-												<a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo $term->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a>
+												<a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo $term->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a>
 											<?php endforeach; endif; ?>
 										<?php else: ?>
 											<a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $term->term_id ), 'admin.php' ) ) ); ?>"><?php echo $term->name; ?></a>
@@ -39,10 +39,10 @@
 													<li>
 														<?php if ( sizeof( $post_types ) <= 1 ): ?>
 															<?php if ( sizeof( $post_types ) ): foreach ( $post_types as $post_type ): ?>
-																<a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a>
+																<a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?><span class="dashicons dashicons-list-view wp-ui-text-highlight"></span></a>
 															<?php endforeach; endif; ?>
 														<?php else: ?>
-															<a class="button wp-ui-text-highlight" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $child->term_id ), 'admin.php' ) ) ); ?>"><?php echo $child->name; ?></a>
+															<a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $child->term_id ), 'admin.php' ) ) ); ?>"><?php echo $child->name; ?></a>
 														<?php endif; ?>
 													</li>
 												<?php endforeach; ?>
@@ -98,7 +98,7 @@
 												<?php if ( sizeof ( $post_types ) ): // Has associated post types ?>
 													<ul>
 														<?php foreach ( $post_types as $post_type ): $post_object = get_post_type_object( $post_type ); ?>
-															<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $post_object->labels->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a></li>
+															<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $post_object->labels->name; ?><span class="dashicons dashicons-list-view wp-ui-text-highlight"></span></a></li>
 														<?php endforeach; ?>
 													</ul>
 												<?php endif; ?>
@@ -185,7 +185,7 @@
 													<?php if ( sizeof ( $post_types ) ): ?>
 														<ul>
 															<?php foreach ( $post_types as $post_type ): $post_object = get_post_type_object( $post_type ); ?>
-																<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $post_object->labels->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a></li>
+																<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $post_object->labels->name; ?><span class="dashicons dashicons-list-view wp-ui-text-highlight"></span></a></li>
 															<?php endforeach; ?>
 														</ul>
 													<?php endif; ?>
@@ -235,7 +235,7 @@
 							<?php if ( $posts ): ?>
 								<ul>
 									<?php foreach ( $posts as $post ): ?>
-										<li><a class="button action" href="<?php echo esc_url( get_edit_post_link( $post->ID ) ); ?>"><?php echo $post->post_title; ?><span class="dashicons dashicons-edit wp-ui-text-highlight"></span></a></li>
+										<li><a class="button action" href="<?php echo esc_url( get_edit_post_link( $post->ID ) ); ?>"><?php echo $post->post_title; ?><span class="dashicons dashicons-edit wp-ui-text-notification"></span></a></li>
 									<?php endforeach; ?>
 								</ul>
 							<?php endif; ?>
@@ -254,7 +254,7 @@
 
 												<ul>
 													<?php foreach ( $children as $child ): ?>
-														<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a></li>
+														<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?><span class="dashicons dashicons-list-view wp-ui-text-highlight"></span></a></li>
 													<?php endforeach; ?>
 												</ul>
 
@@ -310,7 +310,7 @@
 										<?php if ( $grandchildren ): // Has grandchildren ?>
 											<ul>
 												<?php foreach ( $grandchildren as $grandchild ): ?>
-													<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $grandchild->slug ), 'edit.php' ) ) ); ?>"><?php echo $grandchild->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a></li>
+													<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $grandchild->slug ), 'edit.php' ) ) ); ?>"><?php echo $grandchild->name; ?><span class="dashicons dashicons-list-view wp-ui-text-highlight"></span></a></li>
 												<?php endforeach; ?>
 											</ul>
 										<?php endif; ?>
