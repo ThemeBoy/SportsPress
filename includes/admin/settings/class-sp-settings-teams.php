@@ -51,7 +51,7 @@ class SP_Settings_Teams extends SP_Settings_Page {
 			array( 'type' => 'sectionend', 'id' => 'team_options' ),
 
 			array( 'title' => __( 'League Tables', 'sportspress' ), 'type' => 'title', 'id' => 'table_options' ),
-			
+
 			array(
 				'title'     => __( 'Teams', 'sportspress' ),
 				'desc' 		=> __( 'Display logos', 'sportspress' ),

@@ -188,6 +188,16 @@ table.widefat.sp-data-table td:first-child {
 	white-space: nowrap;
 }
 
+table.widefat.sp-data-table th.icon,
+table.widefat.sp-data-table td.icon {
+	width: 1px;
+}
+
+table.widefat.sp-data-table th.icon span,
+table.widefat.sp-data-table td.icon span {
+	margin-right: 0;
+}
+
 table.widefat.sp-data-table input[type="text"],
 table.widefat.sp-data-table input[type="number"] {
 	min-width: 1.25em;

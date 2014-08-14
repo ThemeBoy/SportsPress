@@ -40,7 +40,7 @@ class SP_Meta_Box_Table_Data {
 	public static function table( $columns = array(), $usecolumns = null, $data = array(), $placeholders = array(), $adjustments = array() ) {
 		if ( is_array( $usecolumns ) )
 			$usecolumns = array_filter( $usecolumns );
-			$show_team_logo = get_option( 'sportspress_table_show_logos', false );
+			$show_team_logo = get_option( 'sportspress_table_show_logos', 'no' ) == 'yes' ? true : false;
 		?>
 		<ul class="subsubsub sp-table-bar">
 			<li><a href="#sp-table-values" class="current"><?php _e( 'Values', 'sportspress' ); ?></a></li> | 

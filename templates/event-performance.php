@@ -28,7 +28,6 @@ $status = $event->status();
 
 $show_players = get_option( 'sportspress_event_show_players', 'yes' ) == 'yes' ? true : false;
 $link_posts = get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false;
-$sortable = get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false;
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 $responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
 $mode = get_option( 'sportspress_event_performance_mode', 'values' );
@@ -67,7 +66,7 @@ if ( is_array( $teams ) ):
 		endif;
 		?>
 		<div class="sp-table-wrapper<?php if ( $scrollable ) { ?> sp-scrollable-table-wrapper<?php } ?>">
-			<table class="sp-event-performance sp-data-table <?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $has_players && $sortable ) { ?> sp-sortable-table<?php } ?>">
+			<table class="sp-event-performance sp-data-table <?php if ( $responsive ) { ?> sp-responsive-table<?php } ?>">
 				<thead>
 					<tr>
 						<?php if ( $has_players ): ?>

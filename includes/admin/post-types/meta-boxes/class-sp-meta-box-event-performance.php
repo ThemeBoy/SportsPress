@@ -58,6 +58,7 @@ class SP_Meta_Box_Event_Performance {
 			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
 				<thead>
 					<tr>
+						<th class="icon">&nbsp;</th>
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
 						<th>
@@ -93,6 +94,7 @@ class SP_Meta_Box_Event_Performance {
 						$value = sp_array_value( $player_performance, 'number', '' );
 						?>
 						<tr class="sp-row sp-post" data-player="<?php echo $player_id; ?>">
+							<td class="icon"><span class="dashicons dashicons-menu post-state-format"></span></td>
 							<td>
 								<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo $value; ?>" />
 							</td>
