@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.0.2
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -37,6 +37,7 @@ class SP_Meta_Box_List_Data {
 	 * Admin edit table
 	 */
 	public static function table( $columns = array(), $data = array(), $placeholders = array(), $adjustments = array() ) {
+		$show_player_photo = get_option( 'sportspress_list_show_photos', 'no' ) == 'yes' ? true : false;
 		?>
 		<ul class="subsubsub sp-table-bar">
 			<li><a href="#sp-table-values" class="current"><?php _e( 'Values', 'sportspress' ); ?></a></li> | 
@@ -77,6 +78,7 @@ class SP_Meta_Box_List_Data {
 							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 								<td><?php echo ( $number ? $number : '&nbsp;' ); ?></td>
 								<td>
+									<?php if ( $show_player_photo ) echo get_the_post_thumbnail( $player_id, 'sportspress-fit-mini' ); ?>
 									<span class="sp-default-value">
 										<span class="sp-default-value-input"><?php echo $default_name; ?></span>
 										<a class="dashicons dashicons-edit sp-edit" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>

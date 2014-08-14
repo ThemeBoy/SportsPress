@@ -109,6 +109,25 @@
 	max-height: 2em;
 }
 
+/* Player List */
+.sp-player-list td {
+	line-height: 2em;
+}
+.sp-player-list .data-name .player-photo {
+	width: 2em;
+	height: 2em;
+	margin-right: 0.25em;
+	display: block;
+	float: left;
+	text-align: center;
+}
+.sp-player-list .data-name .player-photo img {
+	width: auto;
+	height: auto;
+	max-width: 2em;
+	max-height: 2em;
+}
+
 /* Button */
 .sp-button {
 	border: none;

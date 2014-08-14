@@ -59,6 +59,14 @@ class SP_Settings_Players extends SP_Settings_Page {
 			array( 'title' => __( 'Player Lists', 'sportspress' ), 'type' => 'title', 'id' => 'list_options' ),
 
 			array(
+				'title'     => __( 'Players', 'sportspress' ),
+				'desc' 		=> __( 'Display photos', 'sportspress' ),
+				'id' 		=> 'sportspress_list_show_photos',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+			),
+
+			array(
 				'title'     => __( 'Pagination', 'sportspress' ),
 				'desc' 		=> __( 'Paginate', 'sportspress' ),
 				'id' 		=> 'sportspress_list_paginated',

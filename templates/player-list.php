@@ -18,6 +18,7 @@ $defaults = array(
 	'orderby' => 'default',
 	'order' => 'ASC',
 	'show_all_players_link' => false,
+	'show_player_photo' => get_option( 'sportspress_list_show_photos', 'yes' ) == 'yes' ? true : false,
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
@@ -116,13 +117,23 @@ foreach ( $groups as $group ):
 		else:
 			$output .= '<td class="data-number">' . sp_array_value( $row, 'number', '&nbsp;' ) . '</td>';
 		endif;
+		
+		$name_class = '';
+
+		if ( $show_player_photo ):
+			if ( has_post_thumbnail( $player_id ) ):
+				$logo = get_the_post_thumbnail( $player_id, 'sportspress-fit-icon' );
+				$name = '<span class="player-photo">' . $logo . '</span>' . $name;
+				$name_class .= ' has-photo';
+			endif;
+		endif;
 
 		if ( $link_posts ):
 			$permalink = get_post_permalink( $player_id );
 			$name = '<a href="' . $permalink . '">' . $name . '</a>';
 		endif;
 
-		$output .= '<td class="data-name">' . $name . '</td>';
+		$output .= '<td class="data-name' . $name_class . '">' . $name . '</td>';
 		
 		if ( array_key_exists( 'team', $labels ) ):
 			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_team', true ) );
