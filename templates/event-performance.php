@@ -27,7 +27,7 @@ $teams = get_post_meta( $id, 'sp_team', false );
 $status = $event->status();
 
 $show_players = get_option( 'sportspress_event_show_players', 'yes' ) == 'yes' ? true : false;
-$link_posts = get_option( 'sportspress_event_link_players', 'yes' ) == 'yes' ? true : false;
+$link_posts = get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false;
 $sortable = get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false;
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 $responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;

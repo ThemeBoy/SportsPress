@@ -18,7 +18,7 @@ if ( ! $venues )
 	return;
 
 $show_maps = get_option( 'sportspress_event_show_maps', 'yes' ) == 'yes' ? true : false;
-$link_venues = get_option( 'sportspress_event_link_venues', 'no' ) == 'yes' ? true : false;
+$link_venues = get_option( 'sportspress_link_venues', 'no' ) == 'yes' ? true : false;
 
 foreach( $venues as $venue ):
 	$t_id = $venue->term_id;

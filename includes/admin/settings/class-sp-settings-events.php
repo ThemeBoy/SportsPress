@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.1
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -40,6 +40,23 @@ class SP_Settings_Events extends SP_Settings_Page {
 		return apply_filters( 'sportspress_event_settings', array(
 
 			array( 'title' => __( 'Event Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'event_options' ),
+
+			array(
+				'title'     => __( 'Link', 'sportspress' ),
+				'desc' 		=> __( 'Link events', 'sportspress' ),
+				'id' 		=> 'sportspress_link_events',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'start',
+			),
+
+			array(
+				'desc' 		=> __( 'Link venues', 'sportspress' ),
+				'id' 		=> 'sportspress_link_venues',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'end',
+			),
 			
 			array(
 				'title' 	=> __( 'Limit', 'sportspress' ),
@@ -74,28 +91,12 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
-				'desc' 		=> __( 'Link venues', 'sportspress' ),
-				'id' 		=> 'sportspress_event_link_venues',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> 'end',
-			),
-
-			array(
 				'title'     => __( 'Player Performance', 'sportspress' ),
 				'desc' 		=> __( 'Display players', 'sportspress' ),
 				'id' 		=> 'sportspress_event_show_players',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'	=> 'start',
-			),
-
-			array(
-				'desc' 		=> __( 'Link players', 'sportspress' ),
-				'id' 		=> 'sportspress_event_link_players',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> '',
 			),
 
 			array(
@@ -115,33 +116,9 @@ class SP_Settings_Events extends SP_Settings_Page {
 				'checkboxgroup'	=> 'start',
 			),
 
-			array(
-				'desc' 		=> __( 'Link staff', 'sportspress' ),
-				'id' 		=> 'sportspress_event_link_staff',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> 'end',
-			),
-
 			array( 'type' => 'sectionend', 'id' => 'event_options' ),
 
 			array( 'title' => __( 'Calendars', 'sportspress' ), 'type' => 'title', 'id' => 'calendar_options' ),
-
-			array(
-				'title' 	=> __( 'Teams', 'sportspress' ),
-				'desc' 		=> __( 'Link teams', 'sportspress' ),
-				'id' 		=> 'sportspress_calendar_link_teams',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox',
-			),
-
-			array(
-				'title'     => __( 'Venues', 'sportspress' ),
-				'desc' 		=> __( 'Link venues', 'sportspress' ),
-				'id' 		=> 'sportspress_calendar_link_venues',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-			),
 
 			array(
 				'title'     => __( 'Pagination', 'sportspress' ),

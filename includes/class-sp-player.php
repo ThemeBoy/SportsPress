@@ -280,7 +280,7 @@ class SP_Player extends SP_Custom_Post {
 
 			$team_name = get_the_title( $team_id );
 			
-			if ( get_option( 'sportspress_player_link_teams', 'no' ) == 'yes' ? true : false ):
+			if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
 				$team_permalink = get_permalink( $team_id );
 				$team_name = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
 			endif;

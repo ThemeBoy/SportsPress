@@ -22,7 +22,7 @@ $defaults = array(
 	'columns' => 3,
 	'size' => 'thumbnail',
 	'show_all_players_link' => false,
-	'link_posts' => get_option( 'sportspress_list_link_players', 'yes' ) == 'yes' ? true : false,
+	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );

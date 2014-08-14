@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $defaults = array(
 	'id' => get_the_ID(),
 	'index' => 0,
-	'link_posts' => get_option( 'sportspress_event_link_staff', 'yes' ) == 'yes' ? true : false,
+	'link_posts' => get_option( 'sportspress_link_staff', 'yes' ) == 'yes' ? true : false,
 );
 
 $staff = array_filter( sp_array_between( (array)get_post_meta( $id, 'sp_staff', false ), 0, $index ) );
