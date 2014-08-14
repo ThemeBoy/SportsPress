@@ -97,8 +97,8 @@ endif;
 								$team_result = sp_array_value( $team_results, $primary_result, null );
 							else:
 								if ( is_array( $team_results ) ):
-									end( $team_results );
-									$team_result = prev( $team_results );
+									unset( $team_results['outcome'] );
+									$team_result = end( $team_results );
 								else:
 									$team_result = null;
 								endif;
