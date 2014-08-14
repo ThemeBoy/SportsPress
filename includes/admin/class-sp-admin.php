@@ -34,6 +34,7 @@ class SP_Admin {
 		// Classes
 		include_once( 'class-sp-admin-post-types.php' );
 		include_once( 'class-sp-admin-taxonomies.php' );
+		include_once( 'class-sp-admin-ajax.php' );
 
 		// Classes we only need if the ajax is not-ajax
 		if ( ! is_ajax() ) {

@@ -366,4 +366,13 @@ jQuery(document).ready(function($){
 			$this.find('strong').html(event.strftime("%D "+localized_strings.days+" %H:%M:%S"));
 		});
 	});
+
+	// Configure primary result option
+	$( ".sp-admin-config-table" ).on( "click", ".sp-primary-result-option", function() {
+		$.post( ajaxurl, {
+			action:         "sp-save-primary-result",
+			primary_result: $(this).val(),
+			nonce:          $("#sp-config-nonce").val()
+		});
+	});
 });

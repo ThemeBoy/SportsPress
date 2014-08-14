@@ -43,7 +43,7 @@ class SP_Admin_Settings {
 			$settings = apply_filters( 'sportspress_get_settings_pages', $settings );
 
 			$settings[] = include( 'settings/class-sp-settings-text.php' );
-			$settings[] = include( 'settings/class-sp-settings-config.php' );
+			//$settings[] = include( 'settings/class-sp-settings-config.php' );
 
 			self::$settings = apply_filters( 'sportspress_get_settings_config_pages', $settings );
 		}
