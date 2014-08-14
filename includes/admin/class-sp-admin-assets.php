@@ -29,22 +29,21 @@ class SP_Admin_Assets {
 	 * Enqueue styles
 	 */
 	public function admin_styles() {
-		global $wp_scripts;
-
 		// Sitewide menu CSS
 		wp_enqueue_style( 'sportspress-admin-menu-styles', SP()->plugin_url() . '/assets/css/menu.css', array(), SP_VERSION );
 
 		$screen = get_current_screen();
 
 		if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
-
 			// Admin styles for SP pages only
 			wp_enqueue_style( 'jquery-chosen', SP()->plugin_url() . '/assets/css/chosen.css', array(), '1.1.0' );
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_style( 'sportspress-admin', SP()->plugin_url() . '/assets/css/admin.css', array(), SP_VERSION );
+		} elseif ( strpos( $screen->id, 'sp-config' ) !== false || strpos( $screen->id, 'sp-status' ) !== false ) {
+			wp_enqueue_style( 'sportspress-admin', SP()->plugin_url() . '/assets/css/admin.css', array(), SP_VERSION );
 		}
 
-		if ( in_array( $screen->id, array( 'sportspress_page_sp-overview' ) ) ) {
+		if ( strpos( $screen->id, 'sp-overview' ) !== false ) {
 			wp_enqueue_style( 'sportspress-admin-slickmap', SP()->plugin_url() . '/assets/css/slickmap.css', array(), '1.1.0' );
 		}
 
@@ -96,7 +95,7 @@ class SP_Admin_Assets {
 		wp_register_script( 'sportspress-admin-widgets', SP()->plugin_url() . '/assets/js/admin/widgets.js', array( 'jquery' ), SP_VERSION, true );
 
 		// SportsPress admin pages
-	    if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
+	    if ( in_array( $screen->id, sp_get_screen_ids() ) || strpos( $screen->id, 'sp-config' )) {
 	    	wp_enqueue_script( 'jquery' );
 	    	wp_enqueue_script( 'chosen' );
 	    	wp_enqueue_script( 'jquery-ui-core' );

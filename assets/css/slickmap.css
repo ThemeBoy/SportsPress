@@ -1,3 +1,15 @@
+/*!
+Adapted from SlickMap CSS by Matt Everson of Astuteo, LLC
+http://astuteo.com/slickmap
+
+Version 1.1
+Copyright (c) 2009 Astuteo, LLC http://astuteo.com
+*/
+
+.sp-overview-wrap {
+	margin-right: 0;
+}
+
 .sp-sitemap {
 	margin: 40px 0;
 	float: left;
@@ -25,10 +37,7 @@ table, .sp-sitemap caption, .sp-sitemap tbody, .sp-sitemap tfoot, .sp-sitemap th
 }
 
 /* ------------------------------------------------------------
-	NUMBER OF COLUMNS: Adjust .sp-sitemap li to set the number
-	of columns required in your site map. The default is 
-	4 columns (25%). 5 columns would be 20%, 6 columns would 
-	be 16.6%, etc. 
+	Number of Columns
 ------------------------------------------------------------ */
 
 .sp-sitemap li {
@@ -92,6 +101,27 @@ table, .sp-sitemap caption, .sp-sitemap tbody, .sp-sitemap tfoot, .sp-sitemap th
 }
 .sp-sitemap li a.button {
 	white-space: normal;
+	position: relative;
+	text-align: center;
+	padding: 10px 0;
+}
+.sp-sitemap li a.action {
+	white-space: normal;
+	position: relative;
+	text-align: center;
+	padding: 10px 28px;
+}
+.sp-sitemap li a.button span {
+	position: absolute;
+	left: 9px;
+	top: 9px;
+}
+.sp-sitemap li a.button span.dashicons-plus {
+	left: 12px;
+	top: 12px;
+}
+.sp-sitemap li a.button-primary span {
+	opacity: 0.55;
 }
 
 
@@ -101,7 +131,7 @@ table, .sp-sitemap caption, .sp-sitemap tbody, .sp-sitemap tfoot, .sp-sitemap th
 
 /* --------	Top Level --------- */
 
-.sp-sitemap #sp-primary .sp-home {
+.sp-sitemap .sp-primary .sp-home {
 	display: block;
 	float: none;
 	background: #f1f1f1 url('../images/slickmap/L1-left.png') center bottom no-repeat;
@@ -109,7 +139,7 @@ table, .sp-sitemap caption, .sp-sitemap tbody, .sp-sitemap tfoot, .sp-sitemap th
 	z-index: 2;
 	padding: 0 0 30px 0;
 }
-.sp-sitemap #sp-primary .sp-breadcrumb {
+.sp-sitemap .sp-primary .sp-breadcrumb {
 	display: block;
 	float: none;
 	background: #f1f1f1 url('../images/slickmap/vertical-line.png') center bottom repeat-y;
@@ -118,66 +148,63 @@ table, .sp-sitemap caption, .sp-sitemap tbody, .sp-sitemap tfoot, .sp-sitemap th
 	padding: 0 0 30px 0;
 	margin-bottom: 30px;
 }
-.sp-sitemap #sp-primary li {
+.sp-sitemap .sp-primary li {
 	min-width: 149px;
 	float: left;
 	background: url('../images/slickmap/L1-center.png') center top no-repeat;
 	padding: 30px 0;
 	margin-top: -30px;
 }
-.sp-sitemap #sp-primary li a.button {
+.sp-sitemap .sp-primary li a.button {
 	margin: 0 20px 0 0;
-	padding: 10px 0;
 	display: block;
 	font-size: 13px;
 	font-weight: bold;
-	text-align: center;
 	height: auto;
 	line-height: normal;
 }
-.sp-sitemap #sp-primary li:last-child {
+.sp-sitemap .sp-primary li:last-child {
 	background: url('../images/slickmap/L1-right.png') center top no-repeat;
 }
 
 /* --------	Second Level --------- */
 
-.sp-sitemap #sp-primary li li {
+.sp-sitemap .sp-primary li li {
 	width: 100%;
 	clear: left;
 	margin-top: 0;
 	padding: 10px 0 0 0;
 	background: url('../images/slickmap/vertical-line.png') center bottom repeat-y;
 }
-.sp-sitemap #sp-primary li li:first-child {
+.sp-sitemap .sp-primary li li:first-child {
 	padding-top: 30px;
 }
-.sp-sitemap #sp-primary li li:last-child {
+.sp-sitemap .sp-primary li li:last-child {
 	background: url('../images/slickmap/vertical-line.png') center bottom repeat-y;
 }
 
 /* --------	Third Level --------- */
 
-.sp-sitemap #sp-primary li li ul {
+.sp-sitemap .sp-primary li li ul {
 	margin: 10px 0 0 0;
 	width: 100%;
 	float: right;
 	padding: 9px 0 10px 0;
 	background: #f1f1f1 url('../images/slickmap/L3-ul-top.png') center top no-repeat;
 }
-.sp-sitemap #sp-primary li li li {
+.sp-sitemap .sp-primary li li li {
 	background: url('../images/slickmap/L3-center.png') left center no-repeat;
 	padding: 5px 0;
 }
-.sp-sitemap #sp-primary li li li a {
-	padding: 5px 0;
+.sp-sitemap .sp-primary li li li a {
 	width: 80%;
 	float: right;
 }
-.sp-sitemap #sp-primary li li li:first-child {
+.sp-sitemap .sp-primary li li li:first-child {
 	padding: 15px 0 5px 0;
 	background: url('../images/slickmap/L3-li-top.png') left center no-repeat;
 }
-.sp-sitemap #sp-primary li li li:last-child {
+.sp-sitemap .sp-primary li li li:last-child {
 	background: url('../images/slickmap/L3-bottom.png') left center no-repeat;
 }
 
@@ -186,40 +213,39 @@ table, .sp-sitemap caption, .sp-sitemap tbody, .sp-sitemap tfoot, .sp-sitemap th
 	Utility Navigation
 ------------------------------------------------------------ */
 
-.sp-sitemap #sp-utility {
+.sp-sitemap .sp-utility {
 	float: right;
 	max-width: 80%;
 	margin-top: -30px;
 	margin-right: 10px;
 }
-.sp-sitemap #sp-utility li {
+.sp-sitemap .sp-utility li {
 	float: left;
 	margin-bottom: 10px;
 	width: auto;
 }
-.sp-sitemap #sp-utility li a.button {
+.sp-sitemap .sp-utility li a.button {
 	margin: 0 10px 0 0;
 	padding: 10px 16px;
 	display: block;
 	font-size: 13px;
 	font-weight: bold;
-	text-align: center;
 	height: auto;
 	line-height: normal;
 	position: relative;
 	z-index: 10;
 }
-.sp-sitemap #sp-utility li a:link:before,
-.sp-sitemap #sp-utility li a:visited:before {
+.sp-sitemap .sp-utility li a:link:before,
+.sp-sitemap .sp-utility li a:visited:before {
 	margin-bottom: 3px;
 }
 
 @media screen and ( max-width: 782px ) {
-	.sp-sitemap #sp-primary {
+	.sp-sitemap .sp-primary {
 		clear: both;
 		padding-top: 50px;
 	}
-	.sp-sitemap #sp-utility {
+	.sp-sitemap .sp-utility {
 		max-width: none;
 	}
 }
