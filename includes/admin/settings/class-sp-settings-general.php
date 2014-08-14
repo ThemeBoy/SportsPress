@@ -113,38 +113,11 @@ class SP_Settings_General extends SP_Settings_Page {
 
 			array(
 				'title'     => __( 'Scripts', 'sportspress' ),
-				'desc' 		=> __( 'Responsive tables', 'sportspress' ),
-				'id' 		=> 'sportspress_enable_responsive_tables',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'	=> 'start',
-				'desc_tip'	=> __( 'This will enable a script allowing the tables to be responsive.', 'sportspress' ),
-			),
-
-			array(
-				'desc' 		=> __( 'Sortable tables', 'sportspress' ),
-				'id' 		=> 'sportspress_enable_sortable_tables',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> '',
-				'desc_tip'	=> __( 'This will enable a script allowing the tables to be sortable.', 'sportspress' ),
-			),
-
-			array(
-				'desc' 		=> __( 'Scrollable tables', 'sportspress' ),
-				'id' 		=> 'sportspress_enable_scrollable_tables',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> '',
-				'desc_tip'	=> __( 'This will enable a script allowing the tables to be scrollable.', 'sportspress' ),
-			),
-
-			array(
 				'desc' 		=> __( 'Live countdowns', 'sportspress' ),
 				'id' 		=> 'sportspress_enable_live_countdowns',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> '',
+				'checkboxgroup'	=> 'start',
 				'desc_tip'	=> __( 'This will enable a script allowing the countdowns to be animated.', 'sportspress' ),
 			),
 
@@ -155,6 +128,31 @@ class SP_Settings_General extends SP_Settings_Page {
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',
 				'desc_tip'	=> __( 'This will enable a shortcode menu to be displayed in the visual editor.', 'sportspress' ),
+			),
+
+			array(
+				'title'     => __( 'Tables', 'sportspress' ),
+				'desc' 		=> __( 'Responsive', 'sportspress' ),
+				'id' 		=> 'sportspress_enable_responsive_tables',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'	=> 'start',
+			),
+
+			array(
+				'desc' 		=> __( 'Sortable', 'sportspress' ),
+				'id' 		=> 'sportspress_enable_sortable_tables',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Scrollable', 'sportspress' ),
+				'id' 		=> 'sportspress_enable_scrollable_tables',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'end',
 			),
 			
 			array(
