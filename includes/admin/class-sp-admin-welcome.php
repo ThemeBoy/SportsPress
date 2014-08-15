@@ -182,7 +182,7 @@ class SP_Admin_Welcome {
 	    	if ( isset( $_POST['timezone_string'] ) ):
 	    		update_option( 'timezone_string', $_POST['timezone_string'] );
 	    	endif;
-			if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
+			if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) ):
 				$sport = $_POST['sportspress_sport'];
 				SP_Admin_Sports::apply_preset( $sport );
 				update_option( 'sportspress_sport', $_POST['sportspress_sport'] );
