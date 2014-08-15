@@ -22,13 +22,15 @@ class SP_Meta_Box_Table_Data {
 		$table = new SP_League_Table( $post );
 		list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );
 		$adjustments = $table->adjustments;
-		self::table( $columns, $usecolumns, $data, $placeholders, $adjustments );
+		$highlight = get_post_meta( $table->ID, 'sp_highlight', true );
+		self::table( $columns, $usecolumns, $data, $placeholders, $adjustments, $highlight );
 	}
 
 	/**
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		update_post_meta( $post_id, 'sp_highlight', sp_array_value( $_POST, 'sp_highlight', array() ) );
 		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 		update_post_meta( $post_id, 'sp_adjustments', sp_array_value( $_POST, 'sp_adjustments', array() ) );
 		update_post_meta( $post_id, 'sp_teams', sp_array_value( $_POST, 'sp_teams', array() ) );
@@ -37,11 +39,12 @@ class SP_Meta_Box_Table_Data {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $columns = array(), $usecolumns = null, $data = array(), $placeholders = array(), $adjustments = array() ) {
+	public static function table( $columns = array(), $usecolumns = null, $data = array(), $placeholders = array(), $adjustments = array(), $highlight = null ) {
 		if ( is_array( $usecolumns ) )
 			$usecolumns = array_filter( $usecolumns );
 			$show_team_logo = get_option( 'sportspress_table_show_logos', 'no' ) == 'yes' ? true : false;
 		?>
+		<input type="hidden" name="sp_highlight" value="0">
 		<ul class="subsubsub sp-table-bar">
 			<li><a href="#sp-table-values" class="current"><?php _e( 'Values', 'sportspress' ); ?></a></li> | 
 			<li><a href="#sp-table-adjustments" class=""><?php _e( 'Adjustments', 'sportspress' ); ?></a></li>
@@ -50,6 +53,7 @@ class SP_Meta_Box_Table_Data {
 			<table class="widefat sp-data-table sp-league-table">
 				<thead>
 					<tr>
+						<th class="radio"><span class="dashicons sp-icon-shield tips" title="<?php _e( 'Highlight', 'sportspress' ); ?>"></span></th>
 						<th><?php _e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
@@ -72,6 +76,7 @@ class SP_Meta_Box_Table_Data {
 								$default_name = get_the_title( $team_id );
 							?>
 							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+								<td><input type="radio" class="sp-radio-toggle" name="sp_highlight" value="<?php echo $team_id; ?>" <?php checked( $highlight, $team_id ); ?>></td>
 								<td>
 									<?php if ( $show_team_logo ) echo get_the_post_thumbnail( $team_id, 'sportspress-fit-mini' ); ?>
 									<span class="sp-default-value">

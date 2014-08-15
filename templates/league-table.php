@@ -21,9 +21,12 @@ $defaults = array(
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_table_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_table_rows', 10 ),
+	'highlight' => get_post_meta( get_the_ID(), 'sp_highlight', true ),
 );
 
 extract( $defaults, EXTR_SKIP );
+
+if ( empty( $highlight ) ) $highlight = null;
 
 $output = '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
 
@@ -57,28 +60,67 @@ endforeach;
 $output .= '</tr>' . '</thead>' . '<tbody>';
 
 $i = 0;
+$start = 0;
 
-if ( intval( $number ) > 0 )
+if ( intval( $number ) > 0 ):
 	$limit = $number;
 
-foreach( $data as $team_id => $row ):
+	// Trim table to center around highlighted team
+	if ( $highlight && sizeof( $data ) > $limit && array_key_exists( $highlight, $data ) ):
+		
+		// Number of teams in the table
+		$size = sizeof( $data );
+
+		// Position of highlighted team in the table
+		$key = array_search( $highlight, array_keys( $data ) );
+
+		// Get starting position
+		$start = $key - ceil( $limit / 2 ) + 1;
+		if ( $start < 0 ) $start = 0;
+
+		// Trim table using starting position
+		$trimmed = array_slice( $data, $start, $limit, true );
+
+		// Move starting position if we are too far down the table
+		if ( sizeof( $trimmed ) < $limit && sizeof( $trimmed ) < $size ):
+			$offset = $limit - sizeof( $trimmed );
+			$start -= $offset;
+			if ( $start < 0 ) $start = 0;
+			$trimmed = array_slice( $data, $start, $limit, true );
+		endif;
+
+		// Replace data
+		$data = $trimmed;
+	endif;
+endif;
+
+// Loop through the teams
+foreach ( $data as $team_id => $row ):
 
 	if ( isset( $limit ) && $i >= $limit ) continue;
 
 	$name = sp_array_value( $row, 'name', null );
 	if ( ! $name ) continue;
 
-	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
+	// Generate tags for highlighted team
+	$before = $after = $class = '';
+	if ( $highlight == $team_id ):
+		$before = '<strong>';
+		$after = '</strong>';
+		$class = ' highlighted';
+	endif;
+
+	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . $class . '">';
 
 	// Rank
-	$output .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
+	$output .= '<td class="data-rank">' . $before . ( $start + 1 ) . $after . '</td>';
 
 	$name_class = '';
 
 	if ( $show_team_logo ):
 		if ( has_post_thumbnail( $team_id ) ):
 			$logo = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon' );
-			$name = '<span class="team-logo">' . $logo . '</span>' . $name;
+			$name = '<span class="team-logo">' . $logo . '</span>' . $before . $name . $after;
 			$name_class .= ' has-logo';
 		endif;
 	endif;
@@ -94,12 +136,13 @@ foreach( $data as $team_id => $row ):
 		if ( $key == 'name' )
 			continue;
 		if ( ! is_array( $columns ) || in_array( $key, $columns ) )
-			$output .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+			$output .= '<td class="data-' . $key . '">' . $before . sp_array_value( $row, $key, '&mdash;' ) . $after . '</td>';
 	endforeach;
 
 	$output .= '</tr>';
 
 	$i++;
+	$start++;
 
 endforeach;
 

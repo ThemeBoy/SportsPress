@@ -25,6 +25,16 @@ jQuery(document).ready(function($){
 	// Activate auto key placeholder
 	$("#poststuff #title").keyup();
 
+	// Radio input toggle
+	$(".sp-radio-toggle").click(function() {
+		if($(this).data("sp-checked")) {
+			$(this).attr("checked", false );
+			$(this).data("sp-checked", false );
+		} else {
+			$(this).data("sp-checked", true );
+		}
+	});
+
 	// Table switcher
 	$(".sp-table-panel").siblings(".sp-table-bar").find("a").click(function() {
 		$(this).closest("li").find("a").addClass("current").closest("li").siblings().find("a").removeClass("current").closest(".sp-table-bar").siblings($(this).attr("href")).show().siblings(".sp-table-panel").hide();
