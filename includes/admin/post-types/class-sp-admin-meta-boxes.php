@@ -136,6 +136,7 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_editordiv', __( 'Description', 'sportspress' ), 'SP_Meta_Box_Calendar_Editor::output', 'sp_calendar', 'normal', 'low' );
 
 		// Teams
+		add_meta_box( 'sp_shortcodediv', __( 'Shortcodes', 'sportspress' ), 'SP_Meta_Box_Team_Shortcode::output', 'sp_team', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Team_Details::output', 'sp_team', 'side', 'default' );
 		if ( isset( $post ) && isset( $post->ID ) ):
 			if ( get_the_terms( $post->ID, 'sp_league' ) && get_the_terms( $post->ID, 'sp_season' ) ) add_meta_box( 'sp_columnssdiv', __( 'Table Columns', 'sportspress' ), 'SP_Meta_Box_Team_Columns::output', 'sp_team', 'normal', 'high' );
