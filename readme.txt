@@ -1,5 +1,5 @@
 === SportsPress - All in One Sports Management ===
-Contributors: ThemeBoy
+Contributors: ThemeBoy, brianmiyaji
 Tags: sport, sports, clubs, teams, statistics, stats, fixtures, results, standings, league tables, leagues, shortcodes, sports journalism, themeboy, wordpress sports
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
