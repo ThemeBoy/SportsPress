@@ -26,7 +26,7 @@ class SP_Meta_Box_Team_Shortcode {
 		<p>
 			<strong><?php _e( 'Table Columns', 'sportspress' ); ?></strong>
 		</p>
-		<p><input type="text" value="[team_columns <?php echo $post->ID; ?>]" readonly="readonly" class="wp-ui-text-highlight code"></p>
+		<p><input type="text" value="[team_columns <?php echo $post->ID; ?>]" readonly="readonly" class="code"></p>
 		<?php
 	}
 }
