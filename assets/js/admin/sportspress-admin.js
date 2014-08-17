@@ -260,6 +260,7 @@ jQuery(document).ready(function($){
 
 	// Sortable tables
 	$(".sp-sortable-table tbody").sortable({
+		handle: ".icon",
 		axis: "y"
 	});
 

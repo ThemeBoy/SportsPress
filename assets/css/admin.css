@@ -241,7 +241,7 @@ table.widefat select.sp-outcome {
 	width: 100%;
 }
 
-table.widefat.sp-sortable-table tbody tr {
+table.widefat.sp-sortable-table tbody tr .icon {
 	cursor: move;
 }
 
