@@ -58,14 +58,17 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 	 * Change the columns shown in admin.
 	 */
 	public function edit_columns( $existing_columns ) {
-		$columns = array(
+		unset( $existing_columns['author'], $existing_columns['date'] );
+		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
-			'title' => __( 'Name', 'sportspress' ),
+			'title' => null,
 			'sp_role' => __( 'Role', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),
 			'sp_league' => __( 'Leagues', 'sportspress' ),
 			'sp_season' => __( 'Seasons', 'sportspress' ),
-		);
+		), $existing_columns, array(
+			'title' => __( 'Name', 'sportspress' )
+		) );
 		return apply_filters( 'sportspress_staff_admin_columns', $columns );
 	}
 

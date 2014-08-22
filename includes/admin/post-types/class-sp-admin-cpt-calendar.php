@@ -42,7 +42,8 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 	 * Change the columns shown in admin.
 	 */
 	public function edit_columns( $existing_columns ) {
-		$columns = array(
+		unset( $existing_columns['author'], $existing_columns['date'] );
+		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Title', 'sportspress' ),
 			'sp_league' => __( 'League', 'sportspress' ),
@@ -51,7 +52,7 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 			'sp_team' => __( 'Team', 'sportspress' ),
 			'sp_events' => __( 'Events', 'sportspress' ),
 			'sp_layout' => __( 'Layout', 'sportspress' ),
-		);
+		), $existing_columns );
 		return apply_filters( 'sportspress_calendar_admin_columns', $columns );
 	}
 

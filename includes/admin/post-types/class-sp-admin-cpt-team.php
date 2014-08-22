@@ -57,15 +57,18 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 	 * Change the columns shown in admin.
 	 */
 	public function edit_columns( $existing_columns ) {
-		$columns = array(
+		unset( $existing_columns['author'], $existing_columns['date'] );
+		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
 			'sp_icon' => '<span class="dashicons sp-icon-shield tips" title="' . __( 'Logo', 'sportspress' ) . '"></span>',
-			'title' => __( 'Team', 'sportspress' ),
+			'title' => null,
 			'sp_url' => __( 'URL', 'sportspress' ),
 			'sp_abbreviation' => __( 'Abbreviation', 'sportspress' ),
 			'sp_league' => __( 'Leagues', 'sportspress' ),
 			'sp_season' => __( 'Seasons', 'sportspress' ),
-		);
+		), $existing_columns, array(
+			'title' => __( 'Team', 'sportspress' ),
+		) );
 		return apply_filters( 'sportspress_team_admin_columns', $columns );
 	}
 
