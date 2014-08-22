@@ -1,7 +1,0 @@
-[main]
-host = https://www.transifex.com
-
-[sportspress.sportspress]
-file_filter = languages/sportspress-<lang>.po
-source_file = languages/sportspress-en_US.po
-source_lang = en_US
