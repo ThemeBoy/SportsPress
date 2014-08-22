@@ -27,10 +27,10 @@
 									<li>
 										<?php if ( ! $children && sizeof ( $post_types ) <= 1 ): ?>
 											<?php if ( sizeof( $post_types ) ): foreach ( $post_types as $post_type ): ?>
-												<a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo $term->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a>
+												<a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $term->name ); ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a>
 											<?php endforeach; endif; ?>
 										<?php else: ?>
-											<a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $term->term_id ), 'admin.php' ) ) ); ?>"><?php echo $term->name; ?></a>
+											<a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $term->term_id ), 'admin.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $term->name ); ?></a>
 										<?php endif; ?>
 
 										<?php if ( $children ): ?>
@@ -39,10 +39,10 @@
 													<li>
 														<?php if ( sizeof( $post_types ) <= 1 ): ?>
 															<?php if ( sizeof( $post_types ) ): foreach ( $post_types as $post_type ): ?>
-																<a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?><span class="dashicons dashicons-list-view wp-ui-text-highlight"></span></a>
+																<a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $child->name ); ?><span class="dashicons dashicons-list-view wp-ui-text-highlight"></span></a>
 															<?php endforeach; endif; ?>
 														<?php else: ?>
-															<a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $child->term_id ), 'admin.php' ) ) ); ?>"><?php echo $child->name; ?></a>
+															<a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $child->term_id ), 'admin.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $child->name ); ?></a>
 														<?php endif; ?>
 													</li>
 												<?php endforeach; ?>
@@ -75,7 +75,7 @@
 					<ul class="sp-primary col<?php echo sizeof( $terms ) + 1; ?>">
 						<li class="sp-breadcrumb"><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview' ), 'admin.php' ) ) ); ?>"><?php _e( 'SportsPress', 'sportspress' ); ?></a></li>
 						<li class="sp-breadcrumb"><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy ), 'admin.php' ) ) ); ?>"><?php echo $taxonomy_object->labels->name; ?></a></li>
-						<li class="sp-home"><a class="button disabled"><?php echo $term->name; ?></a></li>
+						<li class="sp-home"><a class="button disabled"><?php echo wp_strip_all_tags( $term->name ); ?></a></li>
 						<li><a class="button disabled"><?php _e( 'All', 'sportspress' ); ?></a>
 							<ul>
 								<?php if ( sizeof ( $post_types ) ): ?>
@@ -86,14 +86,14 @@
 							</ul>
 						</li>
 						<?php foreach ( $terms as $term ): ?>
-							<li><a class="button button-primary" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $term->term_id ), 'admin.php' ) ) ); ?>"><?php echo $term->name; ?></a>
+							<li><a class="button button-primary" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $term->term_id ), 'admin.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $term->name ); ?></a>
 								<?php $children = get_terms( $taxonomy, array( 'hide_empty' => false, 'parent' => $term->term_id, 'orderby' => 'slug' ) ); ?>
 
 								<?php if ( $children ): // Has children ?>
 
 									<ul>
 										<?php foreach ( $children as $child ): ?>
-											<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a>
+											<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $child->name ); ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a>
 
 												<?php if ( sizeof ( $post_types ) ): // Has associated post types ?>
 													<ul>
@@ -129,7 +129,7 @@
 						<?php if ( $term->parent ): $parent = get_term( $term->parent, $taxonomy ); ?>
 							<li class="sp-breadcrumb"><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $term->parent ), 'admin.php' ) ) ); ?>"><?php echo $parent->name; ?></a></li>
 						<?php endif; ?>
-						<li class="sp-home"><a class="button disabled"><?php echo $term->name; ?></a></li>
+						<li class="sp-home"><a class="button disabled"><?php echo wp_strip_all_tags( $term->name ); ?></a></li>
 						<?php if ( sizeof ( $taxonomy_object->object_type ) ): ?>
 							<ul>
 								<?php foreach ( $post_types as $post_type ): $post_object = get_post_type_object( $post_type ); ?>
@@ -151,9 +151,9 @@
 						<?php foreach ( $terms as $term ): ?>
 							<li>
 								<?php if ( sizeof( $post_types ) <= 1 ): $post_type = reset( $post_types ); ?>
-									<a class="button button-primary action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo $term->name; ?><span class="dashicons dashicons-list-view"></span></a>
+									<a class="button button-primary action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $term->name ); ?><span class="dashicons dashicons-list-view"></span></a>
 								<?php else: ?>
-									<a class="button button-primary" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $term->term_id ), 'admin.php' ) ) ); ?>"><?php echo $term->name; ?></a>
+									<a class="button button-primary" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $term->term_id ), 'admin.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $term->name ); ?></a>
 								<?php endif; ?>
 								<?php $children = get_terms( $taxonomy, array( 'hide_empty' => false, 'parent' => $term->term_id, 'orderby' => 'slug' ) ); ?>
 								<ul>
@@ -165,7 +165,7 @@
 											<?php foreach ( $children as $child ): ?>
 												<?php if ( sizeof ( $post_types ) ): ?>
 													<?php foreach ( $post_types as $post_type ): $post_object = get_post_type_object( $post_type ); ?>
-														<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a></li>
+														<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $child->name ); ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a></li>
 													<?php endforeach; ?>
 												<?php endif; ?>
 											<?php endforeach; ?>
@@ -181,7 +181,7 @@
 											<?php endif; ?>
 
 											<?php foreach ( $children as $child ): ?>
-												<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $child->term_id ), 'admin.php' ) ) ); ?>"><?php echo $child->name; ?></a>
+												<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview', 'taxonomy' => $taxonomy, 'term' => $child->term_id ), 'admin.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $child->name ); ?></a>
 													<?php if ( sizeof ( $post_types ) ): ?>
 														<ul>
 															<?php foreach ( $post_types as $post_type ): $post_object = get_post_type_object( $post_type ); ?>
@@ -221,21 +221,21 @@
 			?>
 
 			<ul class="sp-utility">
-				<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type ), 'edit.php' ) ) ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a></li>
 				<li><a class="button button-primary" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type ), 'post-new.php' ) ) ); ?>"><?php echo $post_object->labels->add_new_item; ?></a></li>
+				<li><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type ), 'edit.php' ) ) ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a></li>
 			</ul>
 
 			<?php if ( sizeof( $taxonomies ) || sizeof( sp_array_value( $hierarchy, $post_type ) ) ): // Display taxonomies ?>
 				<ul class="sp-primary col<?php echo sizeof( $taxonomies ) + sizeof( sp_array_value( $hierarchy, $post_type ) ); ?>">
 					<li class="sp-breadcrumb"><a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview' ), 'admin.php' ) ) ); ?>"><?php _e( 'SportsPress', 'sportspress' ); ?></a></li>
 					<li class="sp-home"><a class="button disabled"><?php echo $post_object->labels->name; ?></a></li>
-					<?php foreach ( sp_array_value( $hierarchy, $post_type ) as $secondary_post_type ): $secondary_post_object = get_post_type_object( $secondary_post_type );?>
+					<?php foreach ( sp_array_value( $hierarchy, $post_type ) as $secondary_post_type ): $secondary_post_object = get_post_type_object( $secondary_post_type ); ?>
 						<li><a class="button button-primary action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $secondary_post_type ), 'edit.php' ) ) ); ?>"><?php echo $secondary_post_object->labels->name; ?><span class="dashicons dashicons-list-view"></span></a>
 							<?php $posts = get_posts( array( 'posts_per_page' => -1, 'post_type' => $secondary_post_type ) ); ?>
 							<?php if ( $posts ): ?>
 								<ul>
 									<?php foreach ( $posts as $post ): ?>
-										<li><a class="button action" href="<?php echo esc_url( get_edit_post_link( $post->ID ) ); ?>"><?php echo $post->post_title; ?><span class="dashicons dashicons-edit wp-ui-text-notification"></span></a></li>
+										<li><a class="button action" href="<?php echo esc_url( get_edit_post_link( $post->ID ) ); ?>"><?php echo wp_strip_all_tags( $post->post_title ); ?><span class="dashicons dashicons-edit wp-ui-text-notification"></span></a></li>
 									<?php endforeach; ?>
 								</ul>
 							<?php endif; ?>
@@ -247,14 +247,14 @@
 							<?php if ( $terms ): ?>
 								<ul>
 									<?php foreach ( $terms as $term ): ?>
-										<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo $term->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a>
+										<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $term->name ); ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a>
 											<?php $children = get_terms( $taxonomy, array( 'hide_empty' => false, 'parent' => $term->term_id, 'orderby' => 'slug' ) ); ?>
 
 											<?php if ( $children ): // Has children ?>
 
 												<ul>
 													<?php foreach ( $children as $child ): ?>
-														<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?><span class="dashicons dashicons-list-view wp-ui-text-highlight"></span></a></li>
+														<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $child->name ); ?><span class="dashicons dashicons-list-view wp-ui-text-highlight"></span></a></li>
 													<?php endforeach; ?>
 												</ul>
 
@@ -276,7 +276,7 @@
 					<li class="sp-home"><a class="button disabled"><?php echo $post_object->labels->name; ?></a></li>
 					<?php if ( $posts ): ?>
 						<?php foreach ( $posts as $post ): ?>
-							<li><a class="button button-primary action" href="<?php echo esc_url( get_edit_post_link( $post->ID ) ); ?>"><?php echo $post->post_title; ?><span class="dashicons dashicons-edit"></span></a></li>
+							<li><a class="button button-primary action" href="<?php echo esc_url( get_edit_post_link( $post->ID ) ); ?>"><?php echo wp_strip_all_tags( $post->post_title ); ?><span class="dashicons dashicons-edit"></span></a></li>
 						<?php endforeach; ?>
 					<?php else: ?>
 						<li><a class="button disabled"><?php _e( 'No results found.', 'sportspress' ); ?></a></li>
@@ -297,14 +297,14 @@
 				<li class="sp-home"><a class="button disabled"><?php echo $taxonomy_object->labels->name; ?></a></li>
 
 				<?php if ( $terms ): foreach ( $terms as $term ): ?>
-					<li><a class="button button-primary action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo $term->name; ?><span class="dashicons dashicons-list-view"></span></a>
+					<li><a class="button button-primary action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $term->slug ), 'edit.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $term->name ); ?><span class="dashicons dashicons-list-view"></span></a>
 						<?php $children = get_terms( $taxonomy, array( 'hide_empty' => false, 'parent' => $term->term_id, 'orderby' => 'slug' ) ); ?>
 
 						<?php if ( $children ): // Has children ?>
 
 							<ul>
 								<?php foreach ( $children as $child ): ?>
-									<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo $child->name; ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a>
+									<li><a class="button action" href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => $post_type, $taxonomy => $child->slug ), 'edit.php' ) ) ); ?>"><?php echo wp_strip_all_tags( $child->name ); ?><span class="dashicons dashicons-list-view wp-ui-text-notification"></span></a>
 										<?php $grandchildren = get_terms( $taxonomy, array( 'hide_empty' => false, 'parent' => $child->term_id, 'orderby' => 'slug' ) ); ?>
 
 										<?php if ( $grandchildren ): // Has grandchildren ?>

@@ -41,26 +41,23 @@ table, .sp-sitemap caption, .sp-sitemap tbody, .sp-sitemap tfoot, .sp-sitemap th
 ------------------------------------------------------------ */
 
 .sp-sitemap li {
-	width: 10%;
+	width: 12.5%;
 }
 
 .sp-sitemap li ul li {
 	width:100% !important;
 }
 
-.sp-sitemap .col0 { max-width: 300px; }
-.sp-sitemap .col1 { max-width: 300px; }
-.sp-sitemap .col2 { max-width: 600px; }
-.sp-sitemap .col3 { max-width: 900px; }
-.sp-sitemap .col4 { max-width: 1200px; }
-.sp-sitemap .col5 { max-width: 1500px; }
-.sp-sitemap .col6 { max-width: 1800px; }
-.sp-sitemap .col7 { max-width: 2100px; }
-.sp-sitemap .col8 { max-width: 2400px; }
-.sp-sitemap .col9 { max-width: 2700px; }
-.sp-sitemap .col10 { max-width: 3000px; }
-.sp-sitemap .col11 { max-width: 3300px; }
-.sp-sitemap .col12 { max-width: 3600px; }
+.sp-sitemap .sp-primary { max-width: 1600px; }
+.sp-sitemap .col0 { max-width: 200px; }
+.sp-sitemap .col1 { max-width: 200px; }
+.sp-sitemap .col2 { max-width: 400px; }
+.sp-sitemap .col3 { max-width: 600px; }
+.sp-sitemap .col4 { max-width: 800px; }
+.sp-sitemap .col5 { max-width: 1000px; }
+.sp-sitemap .col6 { max-width: 1200px; }
+.sp-sitemap .col7 { max-width: 1400px; }
+.sp-sitemap .col8 { max-width: 1600px; }
 
 .sp-sitemap .col1 li { width:99.9%; }
 .sp-sitemap .col2 li { width:50%; }
@@ -70,10 +67,6 @@ table, .sp-sitemap caption, .sp-sitemap tbody, .sp-sitemap tfoot, .sp-sitemap th
 .sp-sitemap .col6 li { width:16.6%; }
 .sp-sitemap .col7 li { width:14.2%; }
 .sp-sitemap .col8 li { width:12.5%; }
-.sp-sitemap .col9 li { width:11.1%; }
-.sp-sitemap .col10 li { width:10%; }
-.sp-sitemap .col11 li { width:9%; }
-.sp-sitemap .col12 li { width:8.3%; }
 
 /* ------------------------------------------------------------
 	General Styles
@@ -117,7 +110,6 @@ table, .sp-sitemap caption, .sp-sitemap tbody, .sp-sitemap tfoot, .sp-sitemap th
 	top: 9px;
 }
 .sp-sitemap li a.button span.dashicons-plus {
-	left: 12px;
 	top: 12px;
 }
 .sp-sitemap li a.button-primary span {
