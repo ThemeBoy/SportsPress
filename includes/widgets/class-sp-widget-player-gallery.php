@@ -3,7 +3,7 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_player_gallery widget_sp_player_gallery', 'description' => __( 'Display a gallery of players.', 'sportspress' ) );
-		parent::__construct('sp_player_gallery', __( 'SportsPress Player Gallery', 'sportspress' ), $widget_ops);
+		parent::__construct('sp_player_gallery', __( 'Player Gallery', 'sportspress' ) . ' (' . __( 'SportsPress', 'sportspress' ) . ')', $widget_ops);
 	}
 
 	function widget( $args, $instance ) {

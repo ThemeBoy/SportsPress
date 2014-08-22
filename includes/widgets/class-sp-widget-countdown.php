@@ -3,7 +3,7 @@ class SP_Widget_Countdown extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_countdown widget_sp_countdown', 'description' => __( 'A clock that counts down to an upcoming event.', 'sportspress' ) );
-		parent::__construct('sp_countdown', __( 'SportsPress Countdown', 'sportspress' ), $widget_ops);
+		parent::__construct('sp_countdown', __( 'Countdown', 'sportspress' ) . ' (' . __( 'SportsPress', 'sportspress' ) . ')', $widget_ops);
 	}
 
 	function widget( $args, $instance ) {
