@@ -8,6 +8,7 @@
 # Iago Melanias <me@imelanias.com>, 2013
 # israel.cefrin <israel.cefrin@gmail.com>, 2013
 # Jean Michell de Souza Bernardo <jeanmichellsouber@gmail.com>, 2013
+# Lucas Pelusi <lucaspelusi@gmail.com>, 2014
 # Marcos Ortiz <marcosortizf@gmail.com>, 2014
 # Matheus Beck <math_beck@hotmail.com>, 2013
 # Renato Frota <renatofrota@gmail.com>, 2013
@@ -20,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-08-11 23:23+1000\n"
-"PO-Revision-Date: 2014-08-12 09:41+0000\n"
-"Last-Translator: ThemeBoy <support@themeboy.com>\n"
+"PO-Revision-Date: 2014-08-16 10:32+0000\n"
+"Last-Translator: Lucas Pelusi <lucaspelusi@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/sportspress/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,7 +47,7 @@ msgstr ""
 
 #: assets/js/admin/editor-lang.php:7
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 #: assets/js/admin/editor-lang.php:8
 msgid "Single"
@@ -610,7 +611,7 @@ msgstr "Time"
 #: includes/admin/settings/class-sp-settings-general.php:63
 msgctxt "mode select"
 msgid "Individual"
-msgstr ""
+msgstr "Individual"
 
 #: includes/admin/class-sp-admin-welcome.php:253
 #: includes/admin/views/html-admin-settings.php:16
@@ -837,18 +838,18 @@ msgstr ""
 #: includes/admin/importers/class-sp-staff-importer.php:143
 #: includes/class-sp-post-types.php:530
 msgid "View Staff"
-msgstr ""
+msgstr "Ver Comissão Técnica"
 
 #: includes/admin/importers/class-sp-staff-importer.php:155
 msgid "Import Staff"
-msgstr ""
+msgstr "Importar Comissão Técnica"
 
 #: includes/admin/importers/class-sp-staff-importer.php:169
 #, php-format
 msgid ""
 "Staff need to be defined with columns in a specific order (5 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr ""
+msgstr "A Comissão Técnica precisa ser definida por colunas em uma ordem especifica. (5 colunas). <a href=\"%s\">Clique aqui para realizar o download de um exemplo</a>."
 
 #: includes/admin/importers/class-sp-team-importer.php:97
 #, php-format
@@ -1065,7 +1066,7 @@ msgstr "Amistoso"
 #: includes/admin/settings/class-sp-settings-config.php:346
 #: includes/sp-template-hooks.php:154
 msgid "Variable"
-msgstr ""
+msgstr "Variável"
 
 #: includes/admin/post-types/class-sp-admin-cpt-outcome.php:45
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:65
@@ -1073,7 +1074,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:101
 #: includes/admin/settings/class-sp-settings-config.php:109
 msgid "Abbreviation"
-msgstr ""
+msgstr "Abreviação"
 
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:52
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:64
@@ -1100,7 +1101,7 @@ msgstr "Número"
 
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:128
 msgid "Show all positions"
-msgstr ""
+msgstr "Mostrar todas as posições"
 
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:48
@@ -1144,7 +1145,7 @@ msgstr "Vídeo"
 #: includes/class-sp-post-types.php:161 includes/sp-core-functions.php:1080
 #: templates/event-results.php:89
 msgid "Team Results"
-msgstr ""
+msgstr "Resultado da Equipe"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:127
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:35
@@ -1154,7 +1155,7 @@ msgstr ""
 #: includes/class-sp-post-types.php:281 includes/class-sp-post-types.php:282
 #: sportspress.php:347
 msgid "Player Performance"
-msgstr ""
+msgstr "Performance do Jogador"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:76
@@ -1350,7 +1351,7 @@ msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
 msgid "Substituted"
-msgstr ""
+msgstr "Reservas"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
 msgid "for"
@@ -1358,7 +1359,7 @@ msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
 msgid "against"
-msgstr ""
+msgstr "contra"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:44
 msgid "Streak"
@@ -1457,7 +1458,7 @@ msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:80
 msgid "Sort by"
-msgstr ""
+msgstr "Ordenar por"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:59
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:60
@@ -1473,7 +1474,7 @@ msgstr "Nacionalidade"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
 msgid "Current Teams"
-msgstr ""
+msgstr "Time Atual"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:101
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:78
@@ -1484,7 +1485,7 @@ msgstr "Times Anteriores"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:80
 msgid "Home"
-msgstr ""
+msgstr "URL da página inicial"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:95
 #: includes/admin/views/html-admin-page-status.php:24
@@ -1494,7 +1495,7 @@ msgstr "URL do site"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:98
 #: includes/sp-core-functions.php:318 templates/team-link.php:21
 msgid "Visit Site"
-msgstr ""
+msgstr "Visite o WebSite"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:103
 msgid ""
@@ -3280,31 +3281,31 @@ msgstr "Usuário"
 
 #: includes/sp-template-hooks.php:170 sportspress.php:349
 msgid "Photo"
-msgstr ""
+msgstr "Foto"
 
 #: includes/sp-template-hooks.php:173 sportspress.php:355
 msgid "Select Photo"
-msgstr ""
+msgstr "Selecionar Foto"
 
 #: includes/sp-template-hooks.php:176 sportspress.php:351
 msgid "Add photo"
-msgstr ""
+msgstr "Adicionar foto"
 
 #: includes/sp-template-hooks.php:179 sportspress.php:353
 msgid "Remove photo"
-msgstr ""
+msgstr "Remover Foto"
 
 #: includes/sp-template-hooks.php:190
 msgid "Select Logo"
-msgstr ""
+msgstr "Selecionar Logo"
 
 #: includes/sp-template-hooks.php:193
 msgid "Add logo"
-msgstr ""
+msgstr "Adicionar Logo"
 
 #: includes/sp-template-hooks.php:196
 msgid "Remove logo"
-msgstr ""
+msgstr "Remover logo"
 
 #: includes/sp-template-hooks.php:204
 msgid "Date/Time:"

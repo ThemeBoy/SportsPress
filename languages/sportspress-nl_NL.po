@@ -5,17 +5,17 @@
 # Flobin <7dabe782@opayq.com>, 2014
 # poelie <poelman.rombaut@telenet.be>, 2014
 # Ramon van Belzen <ramoonus@zeelandnet.nl>, 2014
-# Thom <thom.pp9@gmail.com>, 2014
+# Thom, 2014
 # stgoos, 2013
 # sylvie_janssens <sylvie_janssens@yahoo.com>, 2014
-# Thom <thom.pp9@gmail.com>, 2014
+# Thom, 2014
 # valentijnreza <valentijnishaqsada@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-08-11 23:23+1000\n"
-"PO-Revision-Date: 2014-08-14 21:38+0000\n"
-"Last-Translator: Thom <thom.pp9@gmail.com>\n"
+"PO-Revision-Date: 2014-08-16 10:47+0000\n"
+"Last-Translator: Thom\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/sportspress/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgstr "SportsPress shortcodes"
 #: includes/admin/settings/class-sp-settings-general.php:107
 #: includes/admin/settings/class-sp-settings-general.php:167
 msgid "Auto"
-msgstr "Automatisch"
+msgstr "Auto"
 
 #: assets/js/admin/editor-lang.php:7
 msgid "Manual"
@@ -147,7 +147,7 @@ msgstr "Statistieken"
 
 #: assets/js/admin/editor-lang.php:22 includes/class-sp-formats.php:37
 msgid "Gallery"
-msgstr "Gallerij"
+msgstr "Galerij"
 
 #: includes/admin/class-sp-admin-assets.php:112
 #: includes/admin/class-sp-admin-settings.php:117
@@ -235,7 +235,7 @@ msgstr "Importeer <strong>gebeurtenissen</strong> uit een csv-bestand."
 
 #: includes/admin/class-sp-admin-importers.php:32
 msgid "SportsPress Teams (CSV)"
-msgstr "SportsPress team (CSV)"
+msgstr "SportsPress teams (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:32
 msgid "Import <strong>teams</strong> from a csv file."
@@ -255,7 +255,7 @@ msgstr "SportsPress staf (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:34
 msgid "Import <strong>staff</strong> from a csv file."
-msgstr "Importeer <strong>stafleden</strong> uit een csv-bestand."
+msgstr "Importeer <strong>staf</strong> uit een csv-bestand."
 
 #: includes/admin/class-sp-admin-menus.php:58
 msgid "Overview"
@@ -464,7 +464,7 @@ msgstr "Staf"
 msgid ""
 "These settings control the permalinks used for SportsPress. These settings "
 "only apply when <strong>not using \"default\" permalinks above</strong>."
-msgstr "Deze instellingen besturen de permalinks van SportsPress. Deze instellingen zijn enkel van toepassing als <strong> \"default\" permalinks hierboven uitgevinkt staat</strong> "
+msgstr "Deze instellingen besturen de permalinks die gebruikt worden voor SportsPress. Deze instellingen zijn alleen van toepassing wanneer <strong>\"standaard\"-permalinks hierboven niet worden gebruikt</strong>."
 
 #: includes/admin/class-sp-admin-post-types.php:62
 #: includes/sp-template-hooks.php:333
@@ -565,7 +565,7 @@ msgstr "Bedankt voor het installeren!"
 #: includes/admin/class-sp-admin-welcome.php:146
 #, php-format
 msgid "%s SportsPress %s has lots of refinements we think you&#8217;ll love."
-msgstr "%s SportsPress %s heeft veel verfijningen die u leuk zal vinden, denken we."
+msgstr "%s SportsPress %s heeft veel verfijningen waarvan wij denken dat u ze geweldig zult vinden."
 
 #: includes/admin/class-sp-admin-welcome.php:150
 #, php-format
@@ -592,7 +592,7 @@ msgstr "Sport"
 #: includes/admin/class-sp-admin-welcome.php:238
 #: includes/admin/settings/class-sp-settings-general.php:57
 msgid "Mode"
-msgstr "Mode"
+msgstr "Modus"
 
 #: includes/admin/class-sp-admin-welcome.php:246
 #: includes/admin/settings/class-sp-settings-general.php:62
@@ -640,11 +640,11 @@ msgid ""
 "to our translation team. Want to see your name? <a "
 "href=\"https://www.transifex.com/projects/p/sportspress/\">Translate "
 "SportsPress</a>."
-msgstr "SportPress is met liefde vertaald  dankzij ons vertaalteam. Wil je ook je naam hier zien? <a href=\"https://www.transifex.com/projects/p/sportspress/\">Vertaal SportPress</a>."
+msgstr "SportsPress is met veel liefde en zorg vertaald in verschillende andere talen dankzij ons vertaalteam. Wilt u uw naam zien? <a href=\"https://www.transifex.com/projects/p/sportspress/\">Vertaal SportsPress</a>."
 
 #: includes/admin/class-sp-admin-welcome.php:285
 msgid "Go to SportsPress Settings"
-msgstr "Ga naar SportsPress instellingen"
+msgstr "Ga naar SportsPress-instellingen"
 
 #: includes/admin/importers/class-sp-event-importer.php:361
 #: includes/admin/importers/class-sp-importer.php:93
@@ -653,7 +653,7 @@ msgstr "Ga naar SportsPress instellingen"
 #: includes/admin/importers/class-sp-staff-importer.php:121
 #: includes/admin/importers/class-sp-team-importer.php:85
 msgid "Sorry, there has been an error."
-msgstr "Sorry, er ging iets mis."
+msgstr "Sorry, er is een fout opgetreden."
 
 #: includes/admin/importers/class-sp-event-importer.php:362
 #: includes/admin/importers/class-sp-player-importer.php:129
@@ -667,14 +667,14 @@ msgstr "De CSV is ongeldig."
 msgid ""
 "Import complete - imported <strong>%s</strong> events and skipped "
 "<strong>%s</strong>."
-msgstr "Importeren voltooid - <strong>%s</strong> gebeurtenissen geïmporteerd en <strong>%s</strong> overgeslaan"
+msgstr "Importeren voltooid - <strong>%s</strong> gebeurtenissen geïmporteerd en <strong>%s</strong> overgeslagen."
 
 #: includes/admin/importers/class-sp-event-importer.php:383
 #: includes/admin/importers/class-sp-player-importer.php:150
 #: includes/admin/importers/class-sp-staff-importer.php:143
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "All done!"
-msgstr "Klaar!"
+msgstr "Helemaal klaar!"
 
 #: includes/admin/importers/class-sp-event-importer.php:383
 msgid "View Events"
@@ -691,14 +691,14 @@ msgstr "Gebeurtenissen importeren"
 msgid ""
 "Hi there! Choose a .csv file to upload, then click \"Upload file and "
 "import\"."
-msgstr "Hallo! Kies een .csv bestand om te uploaden, klik dan op \"Upload bestand en importeer\""
+msgstr "Hallo! Kies een .csv-bestand om te uploaden, klik daarna op \"Bestand uploaden en importeren\"."
 
 #: includes/admin/importers/class-sp-event-importer.php:409
 #, php-format
 msgid ""
 "Events need to be defined with columns in a specific order (3+ columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr "Gebeurtenissen moeten gedefinieerd met kolommen in een bepaalde volgorde (3+ kolommen) <a href=\"%s\"> klik hier om een voorbeeld te downloaden </a>"
+msgstr "Gebeurtenissen moeten worden gedefinieerd met kolommen in een specifieke volgorde (3+ kolommen). <a href=\"%s\">Klik hier om een voorbeeld te downloaden</a>."
 
 #: includes/admin/importers/class-sp-event-importer.php:417
 #: includes/admin/importers/class-sp-player-importer.php:184
@@ -707,7 +707,7 @@ msgstr "Gebeurtenissen moeten gedefinieerd met kolommen in een bepaalde volgorde
 msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
-msgstr "Voordat u een import bestand kunt uploaden moet u de volgende fouten corrigeren:"
+msgstr "Voordat u uw importbestand kunt uploaden, moet u de volgende fout corrigeren:"
 
 #: includes/admin/importers/class-sp-event-importer.php:426
 #: includes/admin/importers/class-sp-player-importer.php:193
@@ -804,7 +804,7 @@ msgstr "Importeren"
 msgid ""
 "Import complete - imported <strong>%s</strong> players and skipped "
 "<strong>%s</strong>."
-msgstr "Importeren voltooid - Er zijn <strong%s</strong> spelers geïmporteerd en <strong>%s</strong> spelers overgeslagen "
+msgstr "Importeren voltooid - <strong%s</strong> spelers geïmporteerd en <strong>%s</strong> overgeslagen."
 
 #: includes/admin/importers/class-sp-player-importer.php:150
 msgid "View Players"
@@ -819,14 +819,14 @@ msgstr "Spelers importeren"
 msgid ""
 "Players need to be defined with columns in a specific order (7 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr ""
+msgstr "Spelers moeten worden gedefinieerd met kolommen in een specifieke volgorde (7 kolommen). <a href=\"%s\">Klik hier om een voorbeeld te downloaden</a>."
 
 #: includes/admin/importers/class-sp-staff-importer.php:133
 #, php-format
 msgid ""
 "Import complete - imported <strong>%s</strong> staff and skipped "
 "<strong>%s</strong>."
-msgstr ""
+msgstr "Importeren voltooid - <strong>%s</strong> stafleden geïmporteerd en <strong>%s</strong> overgeslagen."
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
 #: includes/class-sp-post-types.php:530
@@ -842,14 +842,14 @@ msgstr "Staf importeren"
 msgid ""
 "Staff need to be defined with columns in a specific order (5 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr ""
+msgstr "Staf moet worden gedefinieerd met kolommen in een specifieke volgorde (5 kolommen). <a href=\"%s\">Klik hier om een voorbeeld te downloaden</a>."
 
 #: includes/admin/importers/class-sp-team-importer.php:97
 #, php-format
 msgid ""
 "Import complete - imported <strong>%s</strong> teams and skipped "
 "<strong>%s</strong>."
-msgstr "Importeren voltooid - Er zijn <strong%s</strong> teams geïmporteerd en <strong>%s</strong> teams overgeslagen "
+msgstr "Importeren voltooid - <strong%s</strong> teams geïmporteerd en <strong>%s</strong> overgeslagen."
 
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "View Teams"
@@ -864,7 +864,7 @@ msgstr "Teams importeren"
 msgid ""
 "Teams need to be defined with columns in a specific order (3 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr ""
+msgstr "Teams moeten worden gedefinieerd met kolommen in een specifieke volgorde (3 kolommen). <a href=\"%s\">Klik hier om een voorbeeld te downloaden</a>."
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:47
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:47
@@ -929,7 +929,7 @@ msgstr "Huidige team"
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:84
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:108
 msgid "Show all leagues"
-msgstr "Alle competities bekijken"
+msgstr "Alle competities tonen"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:123
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:200
@@ -939,7 +939,7 @@ msgstr "Alle competities bekijken"
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:93
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:117
 msgid "Show all seasons"
-msgstr "Alle seizoenen bekijken"
+msgstr "Alle seizoenen tonen"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:134
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:183
@@ -948,7 +948,7 @@ msgstr "Alle seizoenen bekijken"
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:124
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:104
 msgid "Show all teams"
-msgstr "Alle teams bekijken"
+msgstr "Alle teams tonen"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:43
 #: includes/admin/post-types/class-sp-admin-cpt-metric.php:43
@@ -1018,7 +1018,7 @@ msgstr "Sorteervolgorde"
 #: includes/admin/settings/class-sp-settings-config.php:401
 #: includes/sp-template-hooks.php:148
 msgid "Description"
-msgstr "Omschrijving"
+msgstr "Beschrijving"
 
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:55
 #: includes/class-sp-ajax.php:63
@@ -1059,7 +1059,7 @@ msgstr "Vriendschappelijk"
 #: includes/admin/settings/class-sp-settings-config.php:346
 #: includes/sp-template-hooks.php:154
 msgid "Variable"
-msgstr "Variabel"
+msgstr "Variabele"
 
 #: includes/admin/post-types/class-sp-admin-cpt-outcome.php:45
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:65
@@ -1094,7 +1094,7 @@ msgstr "Nummer"
 
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:128
 msgid "Show all positions"
-msgstr "Alle posities bekijken"
+msgstr "Alle posities tonen"
 
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:48
@@ -1238,7 +1238,7 @@ msgstr "Voorbeeld"
 #: includes/class-sp-post-types.php:532 includes/class-sp-post-types.php:533
 #: includes/sp-core-functions.php:749 includes/sp-core-functions.php:789
 msgid "No results found."
-msgstr "Niets gevonden."
+msgstr "Geen resultaten gevonden."
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:173
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:120
@@ -1319,7 +1319,7 @@ msgstr "Aflopend"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-shortcode.php:24
 msgid ""
 "Copy this code and paste it into your post, page or text widget content."
-msgstr ""
+msgstr "Kopieer deze code en plak het in uw bericht, op uw pagina of als inhoud van uw tekstwidget."
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:47
 msgid "Disable"
@@ -1478,7 +1478,7 @@ msgstr "Eerdere teams"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:80
 msgid "Home"
-msgstr "Home"
+msgstr "Thuislocatie"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:95
 #: includes/admin/views/html-admin-page-status.php:24
@@ -1494,7 +1494,7 @@ msgstr "Site bezoeken"
 msgid ""
 "The abbreviation is not prominent by default; however, some themes may show "
 "it"
-msgstr ""
+msgstr "De afkorting is standaard niet prominent; echter, sommige thema's kunnen het tonen."
 
 #: includes/admin/settings/class-sp-settings-config.php:25
 msgid "Configure"
@@ -1508,7 +1508,7 @@ msgstr "SportsPress configureren"
 #: includes/admin/views/html-admin-page-status.php:227
 #: includes/class-sp-post-types.php:191
 msgid "Event Outcomes"
-msgstr "Uitslag gebeurtenis"
+msgstr "Uitslagen gebeurtenis"
 
 #: includes/admin/settings/class-sp-settings-config.php:101
 #: includes/admin/settings/class-sp-settings-config.php:157
@@ -1683,7 +1683,7 @@ msgstr "Stijlen en scripts"
 
 #: includes/admin/settings/class-sp-settings-general.php:90
 msgid "Align"
-msgstr "Uitlijnen"
+msgstr "Uitlijning"
 
 #: includes/admin/settings/class-sp-settings-general.php:96
 msgid "Left"
@@ -1691,7 +1691,7 @@ msgstr "Links"
 
 #: includes/admin/settings/class-sp-settings-general.php:97
 msgid "Center"
-msgstr "Midden"
+msgstr "Centreren"
 
 #: includes/admin/settings/class-sp-settings-general.php:98
 msgid "Right"
@@ -1715,7 +1715,7 @@ msgstr "Responsieve tabellen"
 
 #: includes/admin/settings/class-sp-settings-general.php:132
 msgid "This will enable a script allowing the tables to be responsive."
-msgstr ""
+msgstr "Dit zal een script inschakelen waardoor de tabellen responsief zijn."
 
 #: includes/admin/settings/class-sp-settings-general.php:136
 msgid "Sortable tables"
@@ -1723,7 +1723,7 @@ msgstr "Sorteerbare tabellen"
 
 #: includes/admin/settings/class-sp-settings-general.php:141
 msgid "This will enable a script allowing the tables to be sortable."
-msgstr ""
+msgstr "Dit zal een script inschakelen waardoor de tabellen sorteerbaar zijn."
 
 #: includes/admin/settings/class-sp-settings-general.php:145
 msgid "Live countdowns"
@@ -1731,7 +1731,7 @@ msgstr "Live aftellingen"
 
 #: includes/admin/settings/class-sp-settings-general.php:150
 msgid "This will enable a script allowing the countdowns to be animated."
-msgstr ""
+msgstr "Dit zal een script inschakelen waardoor de aftellingen geanimeerd zijn."
 
 #: includes/admin/settings/class-sp-settings-general.php:154
 msgid "Shortcode menu"
@@ -1740,7 +1740,7 @@ msgstr "Shortcode menu"
 #: includes/admin/settings/class-sp-settings-general.php:159
 msgid ""
 "This will enable a shortcode menu to be displayed in the visual editor."
-msgstr ""
+msgstr "Dit zal een shortcode menu inschakelen dat getoond wordt in de visuele bewerker."
 
 #: includes/admin/settings/class-sp-settings-general.php:163
 msgid "Header Offset"
@@ -1797,16 +1797,16 @@ msgstr "Teamopties"
 
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "The following options affect how words are displayed on the frontend."
-msgstr ""
+msgstr "De volgende opties hebben invloed op de manier waarop woorden worden getoond in de front-end."
 
 #: includes/admin/views/html-admin-overview.php:304
 msgid ""
 "Love SportsPress? Help spread the word by rating us 5★ on WordPress.org"
-msgstr ""
+msgstr "Dol op SportsPress? Help met het verspreiden door ons 5★ te beoordelen op WordPress.org"
 
 #: includes/admin/views/html-admin-page-status.php:5
 msgid "Please include this information when requesting support:"
-msgstr "Gelieve deze informatie bijvoegen bij het aanvragen van ondersteuning:"
+msgstr "Gelieve deze informatie bij te voegen bij het aanvragen van ondersteuning:"
 
 #: includes/admin/views/html-admin-page-status.php:6
 msgid "Get System Report"
@@ -1830,7 +1830,7 @@ msgstr "WP-versie"
 
 #: includes/admin/views/html-admin-page-status.php:36
 msgid "WP Multisite Enabled"
-msgstr "WP multisite ingeschakeld"
+msgstr "WP Multisite ingeschakeld"
 
 #: includes/admin/views/html-admin-page-status.php:37
 #: includes/admin/views/html-admin-page-status.php:61
@@ -1861,7 +1861,7 @@ msgstr "WP Memory Limit"
 msgid ""
 "%s - We recommend setting memory to at least 64MB. See: <a "
 "href=\"%s\">Increasing memory allocated to PHP</a>"
-msgstr "%s - Wij raden het aan om het geheugen minimaal op 64 MB in te stellen. Zie: <a href=\"%s\">Verhoog toegewezen geheugen aan PHP</a>"
+msgstr "%s - Wij raden aan om het geheugen in te stellen op minstens 64MB. Zie: <a href=\"%s\">Increasing memory allocated to PHP</a>"
 
 #: includes/admin/views/html-admin-page-status.php:60
 msgid "WP Debug Mode"
@@ -1889,7 +1889,7 @@ msgstr "PHP Max Input Vars"
 
 #: includes/admin/views/html-admin-page-status.php:85
 msgid "SUHOSIN Installed"
-msgstr "SUHOSIN genstalleerd"
+msgstr "SUHOSIN geïnstalleerd"
 
 #: includes/admin/views/html-admin-page-status.php:90
 msgid "Default Timezone"
@@ -1898,12 +1898,12 @@ msgstr "Standaard tijdzone"
 #: includes/admin/views/html-admin-page-status.php:94
 #, php-format
 msgid "Default timezone is %s - it should be UTC"
-msgstr "Standaard tijdzone is %s - dit zou UTC moeten zijn"
+msgstr "Standaard tijdzone is %s - dit zou UTC moeten zijn."
 
 #: includes/admin/views/html-admin-page-status.php:96
 #, php-format
 msgid "Default timezone is %s"
-msgstr "Standaard tijdzone is %s"
+msgstr "Standaard tijdzone is %s."
 
 #: includes/admin/views/html-admin-page-status.php:104
 msgid "fsockopen/cURL"
@@ -1926,7 +1926,7 @@ msgid ""
 "Your server does not have fsockopen or cURL enabled - PayPal IPN and other "
 "scripts which communicate with other servers will not work. Contact your "
 "hosting provider."
-msgstr "Uw server heeft geen fsockopen of cURL ingeschakeld - PayPal IPN en andere script die communiceren met andere servers zullen niet werken. Contacteer uw hosting provider."
+msgstr "Uw server heeft fsockopen en cURL niet ingeschakeld - PayPal IPN en andere scripts die communiceren met andere servers zullen niet werken. Neem contact op met uw hostingprovider."
 
 #: includes/admin/views/html-admin-page-status.php:120
 msgid "SOAP Client"
@@ -1934,14 +1934,14 @@ msgstr "SOAP Client"
 
 #: includes/admin/views/html-admin-page-status.php:122
 msgid "Your server has the SOAP Client class enabled."
-msgstr "Uw server heeft de SOAP Client klasse ingeschakeld."
+msgstr "Uw server heeft de SOAP Client-class ingeschakeld."
 
 #: includes/admin/views/html-admin-page-status.php:125
 #, php-format
 msgid ""
 "Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled -"
 " some gateway plugins which use SOAP may not work as expected."
-msgstr "Uw server heeft niet de <a href=\"%s\">SOAP Client</a> klasse ingeschakeld - enkele gateway plugins die SOAP gebruiken werken mogelijk niet zoals verwacht."
+msgstr "Uw server heeft de <a href=\"%s\">SOAP Client</a>-class niet ingeschakeld - enkele gateway-plugins die SOAP gebruiken werken mogelijk niet zoals verwacht."
 
 #: includes/admin/views/html-admin-page-status.php:148
 msgid "Plugins"
@@ -1953,7 +1953,7 @@ msgstr "Geïnstalleerde plugins"
 
 #: includes/admin/views/html-admin-page-status.php:174
 msgid "Visit plugin homepage"
-msgstr "Bezoek plugin homepagina"
+msgstr "Homepage plugin bezoeken"
 
 #: includes/admin/views/html-admin-page-status.php:198
 #: includes/admin/views/html-admin-page-status.php:413
@@ -1970,15 +1970,15 @@ msgstr "versie"
 
 #: includes/admin/views/html-admin-page-status.php:217
 msgid "SP Configuration"
-msgstr "SP Configuratie"
+msgstr "SP configuratie"
 
 #: includes/admin/views/html-admin-page-status.php:290
 msgid "SP Taxonomies"
-msgstr "SP Taxonomies"
+msgstr "SP taxonomieën"
 
 #: includes/admin/views/html-admin-page-status.php:339
 msgid "SP Post Types"
-msgstr "SP Post Types"
+msgstr "SP berichtsoorten"
 
 #: includes/admin/views/html-admin-page-status.php:365
 msgid "Theme"
@@ -2005,16 +2005,16 @@ msgstr "Sjablonen"
 msgid ""
 "<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
 "date. The core version is %s"
-msgstr "<code>%s</code> versie <strong style=\"color:red\">%s</strong> is niet up to date. De core versie is %s"
+msgstr "<code>%s</code> versie <strong style=\"color:red\">%s</strong> is verouderd. De core-versie is %s"
 
 #: includes/admin/views/html-admin-page-status.php:470
 #: includes/admin/views/html-admin-page-status.php:476
 msgid "Template Overrides"
-msgstr "Template overschrijvingen"
+msgstr "Overschrijvingen sjabloon"
 
 #: includes/admin/views/html-admin-page-status.php:477
 msgid "No overrides present in theme."
-msgstr ""
+msgstr "Geen overschrijvingen aanwezig binnen thema."
 
 #: includes/admin/views/html-notice-install.php:5
 #, php-format
@@ -2025,7 +2025,7 @@ msgstr "Welkom bij SportsPress %s"
 #: includes/admin/views/html-notice-template-check.php:6
 #: includes/admin/views/html-notice-theme-support.php:8
 msgid "Hide this notice"
-msgstr "DIt bericht verbergen"
+msgstr "Dit bericht verbergen"
 
 #: includes/admin/views/html-notice-template-check.php:5
 msgid ""
@@ -2034,18 +2034,18 @@ msgid ""
 " this could the reason. Ensure you update or remove them (in general we "
 "recommend only bundling the template files you actually need to customize). "
 "See the system report for full details."
-msgstr ""
+msgstr "<strong>Uw thema heeft gebundelde, verouderde kopieën van SportsPress-themabestanden</strong> &#8211; als u functioneringsproblemen aan de front-end ondervindt, kan dit de reden zijn. Zorg er voor dat deze worden bijgewerkt of verwijderd (in het algemeen raden wij aan alleen themabestanden te bundelen als u deze daadwerkelijk aanpast). Bekijk het systeemrapport voor volledige details."
 
 #: includes/admin/views/html-notice-theme-support.php:5
 msgid ""
 "<strong>Your theme does not declare SportsPress support</strong> &#8211; if "
 "you encounter layout issues please read our integration guide or choose a "
 "SportsPress theme :)"
-msgstr "<strong>Uw thema geeft niet aan SportsPress te ondersteunen</strong> &#8211; Als u opmaak problemen tegenkomt lees dan onze integratie handleiding of kies een SportsPress thema :)"
+msgstr "<strong>Uw thema geeft niet aan SportsPress te ondersteunen</strong> &#8211; als u lay-outproblemen ondervindt, lees dan a.u.b. onze handleiding over integratie of kies een SportsPress thema :)"
 
 #: includes/admin/views/html-notice-theme-support.php:7
 msgid "Theme Integration Guide"
-msgstr "Thema integratie handleiding"
+msgstr "Handleiding thema-integratie"
 
 #: includes/class-sp-ajax.php:57 includes/class-sp-ajax.php:101
 #: includes/class-sp-ajax.php:130 includes/class-sp-ajax.php:159
@@ -2146,7 +2146,7 @@ msgstr "Aantal te tonen teams:"
 #: includes/class-sp-ajax.php:446
 #: includes/widgets/class-sp-widget-league-table.php:93
 msgid "Display link to view full table"
-msgstr "Toon een link naar de volledige tabel"
+msgstr "Link tonen om hele tabel te bekijken"
 
 #: includes/class-sp-ajax.php:538 includes/class-sp-ajax.php:628
 #: includes/widgets/class-sp-widget-player-gallery.php:69
@@ -2164,12 +2164,12 @@ msgstr "Sorteren op:"
 #: includes/widgets/class-sp-widget-player-gallery.php:101
 #: includes/widgets/class-sp-widget-player-list.php:121
 msgid "Display link to view all players"
-msgstr "Toon een link naar alle spelers"
+msgstr "Link tonen om alle spelers te bekijken"
 
 #: includes/class-sp-ajax.php:671
 #: includes/widgets/class-sp-widget-player-gallery.php:104
 msgid "Display player names on hover"
-msgstr "Toon spelersnamen bij hoveren"
+msgstr "Spelersnamen tonen bij hover"
 
 #: includes/class-sp-countries.php:29
 msgid "Africa"
@@ -3005,15 +3005,15 @@ msgstr "Volgende"
 
 #: includes/class-sp-install.php:230
 msgid "Event Manager"
-msgstr "Gebeurtenis-manager"
+msgstr "Gebeurtenismanager"
 
 #: includes/class-sp-install.php:273
 msgid "Team Manager"
-msgstr "Team-manager"
+msgstr "Teammanager"
 
 #: includes/class-sp-install.php:337
 msgid "League Manager"
-msgstr "Competitie-manager"
+msgstr "Competitiemanager"
 
 #: includes/class-sp-install.php:534
 msgid "What's new:"
@@ -3034,7 +3034,7 @@ msgstr "Bekijken"
 #: includes/class-sp-post-types.php:40 includes/class-sp-post-types.php:69
 #: includes/class-sp-post-types.php:98 includes/class-sp-post-types.php:127
 msgid "Update"
-msgstr "Bijwerken"
+msgstr "Updaten"
 
 #: includes/class-sp-post-types.php:43 includes/class-sp-post-types.php:72
 #: includes/class-sp-post-types.php:101 includes/class-sp-post-types.php:130
@@ -3214,7 +3214,7 @@ msgstr "Staf bewerken"
 
 #: includes/sp-core-functions.php:350
 msgid "Average"
-msgstr "Gemiddeld"
+msgstr "Gemiddelde"
 
 #: includes/sp-core-functions.php:408
 msgid "Published"
@@ -3247,11 +3247,11 @@ msgstr "Rang"
 #: includes/sp-core-functions.php:1088 templates/event-blocks.php:108
 #: templates/event-calendar.php:215 templates/event-list.php:192
 msgid "View all events"
-msgstr "Alle gebeurtenissen tonen"
+msgstr "Alle gebeurtenissen bekijken"
 
 #: includes/sp-core-functions.php:1089 templates/league-table.php:110
 msgid "View full table"
-msgstr "Hele tabel tonen"
+msgstr "Gehele tabel bekijken"
 
 #: includes/sp-core-functions.php:1099
 msgid "Substitutes"
@@ -3260,13 +3260,13 @@ msgstr "Wissels"
 #: includes/sp-core-functions.php:1100 templates/player-gallery.php:146
 #: templates/player-list.php:152
 msgid "View all players"
-msgstr "Alle spelers tonen"
+msgstr "Alle spelers bekijken"
 
 #: includes/sp-template-hooks.php:151
 msgid ""
 "The description is not prominent by default; however, some themes may show "
 "it."
-msgstr "Deze beschrijving is niet standaard verplicht, Nochtans, sommige themes kunnen het weergeven."
+msgstr "De beschrijving is standaard niet prominent; echter, sommige thema's kunnen het tonen."
 
 #: includes/sp-template-hooks.php:162
 msgid "User"
@@ -3333,7 +3333,7 @@ msgstr "Een lijst met gebeurtenissen."
 
 #: includes/widgets/class-sp-widget-event-blocks.php:6
 msgid "SportsPress Event Blocks"
-msgstr "SportsPress Gebeurtenis blokken"
+msgstr "SportsPress gebeurtenisblokken"
 
 #: includes/widgets/class-sp-widget-event-calendar.php:5
 msgid "A calendar of events."
@@ -3341,35 +3341,35 @@ msgstr "Een kalender met gebeurtenissen. "
 
 #: includes/widgets/class-sp-widget-event-calendar.php:6
 msgid "SportsPress Event Calendar"
-msgstr "SportsPress Gebeurtenis kalender"
+msgstr "SportsPress gebeurteniskalender"
 
 #: includes/widgets/class-sp-widget-event-list.php:6
 msgid "SportsPress Event List"
-msgstr "SportsPress Gebeurtenis lijst"
+msgstr "SportsPress gebeurtenislijst"
 
 #: includes/widgets/class-sp-widget-league-table.php:5
 msgid "Display a league table."
-msgstr "Toon een Competitie tabel"
+msgstr "Een stand tonen."
 
 #: includes/widgets/class-sp-widget-league-table.php:6
 msgid "SportsPress League Table"
-msgstr "Sportpress Competitie Tabel"
+msgstr "SportsPress stand"
 
 #: includes/widgets/class-sp-widget-player-gallery.php:5
 msgid "Display a gallery of players."
-msgstr "Toon spelers gallerij"
+msgstr "Een galerij met spelers tonen."
 
 #: includes/widgets/class-sp-widget-player-gallery.php:6
 msgid "SportsPress Player Gallery"
-msgstr "SportsPress spelers gallerij"
+msgstr "SportsPress spelersgalerij"
 
 #: includes/widgets/class-sp-widget-player-list.php:5
 msgid "Display a list of players."
-msgstr "Toon een lijst met spelers."
+msgstr "Een lijst met spelers tonen."
 
 #: includes/widgets/class-sp-widget-player-list.php:6
 msgid "SportsPress Player List"
-msgstr "SportPress Speler lijst"
+msgstr "SportsPress spelerslijst"
 
 #: includes/widgets/class-sp-widget-player-list.php:73
 msgid "Performance:"
@@ -3385,7 +3385,7 @@ msgstr "Documenten"
 
 #: sportspress.php:140
 msgid "Upgrade"
-msgstr "Bijwerken"
+msgstr "Upgraden"
 
 #: sportspress.php:357
 msgid "Display photos"

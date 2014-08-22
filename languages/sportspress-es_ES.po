@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-08-11 23:23+1000\n"
-"PO-Revision-Date: 2014-08-12 09:41+0000\n"
+"PO-Revision-Date: 2014-08-15 10:01+0000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: Spanish (Spain) (http://www.transifex.com/projects/p/sportspress/language/es_ES/)\n"
 "MIME-Version: 1.0\n"
@@ -592,7 +592,7 @@ msgstr "Modalidad"
 #: includes/admin/settings/class-sp-settings-general.php:62
 msgctxt "mode select"
 msgid "Team"
-msgstr "Equipo"
+msgstr "equipo"
 
 #: includes/admin/class-sp-admin-welcome.php:247
 #: includes/admin/settings/class-sp-settings-general.php:63

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-08-11 23:23+1000\n"
-"PO-Revision-Date: 2014-08-12 14:28+0000\n"
+"PO-Revision-Date: 2014-08-16 16:48+0000\n"
 "Last-Translator: Artak Arzumanyan <aarzumanyan@gmail.com>\n"
 "Language-Team: Armenian (http://www.transifex.com/projects/p/sportspress/language/hy/)\n"
 "MIME-Version: 1.0\n"
@@ -589,7 +589,7 @@ msgstr "Ռեժիմ"
 #: includes/admin/settings/class-sp-settings-general.php:62
 msgctxt "mode select"
 msgid "Team"
-msgstr "Թիմային"
+msgstr "Թիմ"
 
 #: includes/admin/class-sp-admin-welcome.php:247
 #: includes/admin/settings/class-sp-settings-general.php:63
@@ -1195,7 +1195,7 @@ msgstr "Խաղացողների ցանկ"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:64
 #: includes/sp-core-functions.php:1085 templates/event-list.php:63
 msgid "Time/Results"
-msgstr "Ժամ/Արդյունքներ"
+msgstr "Ժամ/Արդյունք"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:149
 #: includes/sp-core-functions.php:1079 templates/event-list.php:172
@@ -1327,7 +1327,7 @@ msgstr "Մասնակցել է"
 #: includes/widgets/class-sp-widget-player-gallery.php:79
 #: includes/widgets/class-sp-widget-player-list.php:99
 msgid "Played"
-msgstr "Խաղացել է"
+msgstr "Խաղ"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
 msgid "Started"
@@ -1339,11 +1339,11 @@ msgstr "Փոխարինվել է"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
 msgid "for"
-msgstr "համար"
+msgstr "խփած"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
 msgid "against"
-msgstr "դեմ"
+msgstr "ընդունած"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:44
 msgid "Streak"
@@ -1706,7 +1706,7 @@ msgstr "Արձագանքող աղյուսակներ"
 
 #: includes/admin/settings/class-sp-settings-general.php:132
 msgid "This will enable a script allowing the tables to be responsive."
-msgstr "Սա կմիացնի աղյուսակներն արձագանքող դարձնող սկրիպտը։"
+msgstr "Սա աղյուսակները կդարձնի արձագանքող։"
 
 #: includes/admin/settings/class-sp-settings-general.php:136
 msgid "Sortable tables"
@@ -1714,7 +1714,7 @@ msgstr "Դասավորվող աղյուսակներ"
 
 #: includes/admin/settings/class-sp-settings-general.php:141
 msgid "This will enable a script allowing the tables to be sortable."
-msgstr "Սա կմիացնի աղյուսակները դասավորվող դարձնող սկրիպտը։"
+msgstr "Սա աղյուսակները կդարձնի դասավորվող։"
 
 #: includes/admin/settings/class-sp-settings-general.php:145
 msgid "Live countdowns"
@@ -2428,7 +2428,7 @@ msgstr "Միկրոնեզիա"
 
 #: includes/class-sp-countries.php:98
 msgid "France"
-msgstr "Ֆրանիսա"
+msgstr "Ֆրանսիա"
 
 #: includes/class-sp-countries.php:99
 msgid "Gabon"
@@ -3233,7 +3233,7 @@ msgstr "Տեղ"
 
 #: includes/sp-core-functions.php:1078 templates/player-list.php:88
 msgid "Rank"
-msgstr "Կարգ"
+msgstr "Տեղ"
 
 #: includes/sp-core-functions.php:1088 templates/event-blocks.php:108
 #: templates/event-calendar.php:215 templates/event-list.php:192

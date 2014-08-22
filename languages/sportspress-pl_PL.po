@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-08-11 23:23+1000\n"
-"PO-Revision-Date: 2014-08-12 11:06+0000\n"
+"PO-Revision-Date: 2014-08-18 11:12+0000\n"
 "Last-Translator: Krzysztof <kris.o.poranq@gmail.com>\n"
 "Language-Team: Polish (Poland) (http://www.transifex.com/projects/p/sportspress/language/pl_PL/)\n"
 "MIME-Version: 1.0\n"
@@ -200,9 +200,9 @@ msgstr "SportsPress"
 #, php-format
 msgid "%s "
 msgid_plural "%s "
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s"
+msgstr[1] "%s"
+msgstr[2] "%s"
 
 #: includes/admin/class-sp-admin-dashboard.php:80
 #, php-format
