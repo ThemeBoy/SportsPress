@@ -42,8 +42,8 @@
 					</table>
 					<div class="tablenav bottom">
 						<div class="alignleft actions">
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_outcome' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_outcome' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
+							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_outcome' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 						</div>
 						<br class="clear">
 					</div>
@@ -113,8 +113,8 @@
 					</form>
 					<div class="tablenav bottom">
 						<div class="alignleft actions">
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_result' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_result' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
+							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_result' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 						</div>
 						<br class="clear">
 					</div>
@@ -162,8 +162,8 @@
 					</table>
 					<div class="tablenav bottom">
 						<div class="alignleft actions">
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_performance' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_performance' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
+							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_performance' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 						</div>
 						<br class="clear">
 					</div>
@@ -215,8 +215,8 @@
 					</table>
 					<div class="tablenav bottom">
 						<div class="alignleft actions">
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_column' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_column' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
+							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_column' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 						</div>
 						<br class="clear">
 					</div>
@@ -263,8 +263,8 @@
 					</table>
 					<div class="tablenav bottom">
 						<div class="alignleft actions">
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_metric' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_metric' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
+							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_metric' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 						</div>
 						<br class="clear">
 					</div>
@@ -314,8 +314,8 @@
 					</table>
 					<div class="tablenav bottom">
 						<div class="alignleft actions">
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_statistic' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_statistic' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
+							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_statistic' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 						</div>
 						<br class="clear">
 					</div>
@@ -323,6 +323,7 @@
 			</tr>
 		</tbody>
 	</table>
+	<?php do_action( 'sportspress_config_page', 'sportspress' ); ?>
 	<p>
 		<a href="http://wordpress.org/support/view/plugin-reviews/sportspress?rate=5#postform">
 			<?php _e( 'Love SportsPress? Help spread the word by rating us 5★ on WordPress.org', 'sportspress' ); ?>
