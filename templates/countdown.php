@@ -29,7 +29,7 @@ extract( $defaults, EXTR_SKIP );
 if ( ! isset( $post ) ) return;
 ?>
 <div class="sp-template sp-template-countdown">
-	<div id="sp-countdown-wrapper">
+	<div class="sp-countdown-wrapper">
 		<h3 class="event-name"><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a></h3>
 		<?php
 		if ( isset( $show_venue ) && $show_venue ):
