@@ -10,6 +10,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
+	'team' => null,
 	'id' => null,
 	'live' => get_option( 'sportspress_enable_live_countdowns', 'yes' ) == 'yes' ? true : false,
 );
@@ -19,7 +20,7 @@ if ( isset( $id ) ):
 else:
 	$args = array();
 	if ( isset( $team ) )
-		$args = array( 'key' => 'sp_team', 'value' => $team );
+		$args = array( array( 'key' => 'sp_team', 'value' => $team ) );
 	$post = sp_get_next_event( $args );
 endif;
 

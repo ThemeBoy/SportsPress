@@ -82,6 +82,27 @@ jQuery(document).ready(function($){
 	// Trigger tab filter
 	$(".sp-tab-panel").siblings(".sp-tab-select").find("select").change();
 
+	// Dropdown filter
+	$(".sp-dropdown-target").siblings(".sp-dropdown-filter").find("select").change(function() {
+		var val = $(this).val();
+		var filter = ".sp-filter-"+val;
+		var $filters = $(this).closest(".sp-dropdown-filter").siblings(".sp-dropdown-filter");
+		if($filters.length) {
+			$filters.each(function() {
+				filterval = $(this).find("select").val();
+				if(filterval !== undefined)
+					filter += ".sp-filter-"+filterval;
+			});
+		}
+		$target = $(this).closest(".sp-dropdown-filter").siblings(".sp-dropdown-target").find("select");
+		$target.find(".sp-post").prop("disabled", true).each(function() {
+			$(this).filter(filter).prop("disabled", false);
+		});
+	});
+
+	// Trigger dropdown filter
+	$(".sp-dropdown-target").siblings(".sp-dropdown-filter").find("select").change();
+
 	// Filter show all action links
 	$(".sp-tab-panel").find(".sp-post input:checked").each(function() {
 		$(this).prop("disabled", false).closest("li").show().siblings(".sp-not-found-container").hide().siblings(".sp-show-all-container").show();

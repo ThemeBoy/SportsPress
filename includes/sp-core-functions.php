@@ -560,6 +560,7 @@ if ( !function_exists( 'sp_dropdown_pages' ) ) {
 		    'property' => null,
 		    'placeholder' => null,
 		    'chosen' => false,
+		    'filter' => false,
 		);
 		$args = array_merge( $defaults, $args );
 
@@ -586,6 +587,9 @@ if ( !function_exists( 'sp_dropdown_pages' ) ) {
 
 		$chosen = $args['chosen'];
 		unset( $args['chosen'] );
+
+		$filter = $args['filter'];
+		unset( $args['filter'] );
 		
 		$posts = get_posts( $args );
 		if ( $posts || $args['prepend_options'] || $args['append_options'] ):
@@ -623,7 +627,17 @@ if ( !function_exists( 'sp_dropdown_pages' ) ) {
 					$selected_prop = selected( $this_value, $selected, false );
 				endif;
 
-				printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
+				if ( $filter !== false ):
+					$class = 'sp-post sp-filter-0';
+					$filter_values = get_post_meta( $post->ID, $filter, false );
+					foreach ( $filter_values as $filter_value ):
+						$class .= ' sp-filter-' . $filter_value;
+					endforeach;
+				else:
+					$class = '';
+				endif;
+
+				printf( '<option value="%s" class="%s" %s>%s</option>', $this_value, $class, $selected_prop, $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
 			endforeach;
 			wp_reset_postdata();
 
