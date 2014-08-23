@@ -100,6 +100,10 @@
 
 /* TinyMCE */
 
+.mce-toolbar i.mce-i-sp_shortcodes_button, .mce-toolbar span.mce_sp_shortcodes_button {
+	margin-right: -5px;
+}
+
 i.mce-i-sp_shortcodes_button:before, span.mce_sp_shortcodes_button:before {
 	font-family: 'sportspress';
 	speak: none;
