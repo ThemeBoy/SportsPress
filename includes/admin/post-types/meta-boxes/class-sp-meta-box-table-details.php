@@ -25,13 +25,14 @@ class SP_Meta_Box_Table_Details {
 		?>
 		<div>
 			<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
-			<p>
+			<p class="sp-tab-select">
 				<?php
 				$args = array(
 					'taxonomy' => 'sp_league',
 					'name' => 'sp_league',
+					'show_option_all' => __( 'All', 'sportspress' ),
 					'selected' => $league_id,
-					'values' => 'term_id'
+					'values' => 'term_id',
 				);
 				if ( ! sp_dropdown_taxonomies( $args ) ):
 					sp_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' )  );
@@ -44,8 +45,9 @@ class SP_Meta_Box_Table_Details {
 				$args = array(
 					'taxonomy' => 'sp_season',
 					'name' => 'sp_season',
+					'show_option_all' => __( 'All', 'sportspress' ),
 					'selected' => $season_id,
-					'values' => 'term_id'
+					'values' => 'term_id',
 				);
 				if ( ! sp_dropdown_taxonomies( $args ) ):
 					sp_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
@@ -54,7 +56,7 @@ class SP_Meta_Box_Table_Details {
 			</p>
 			<p><strong><?php _e( 'Teams', 'sportspress' ); ?></strong></p>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_team', 'block', 'sp_season' );
+			sp_post_checklist( $post->ID, 'sp_team', 'block', array( 'sp_league', 'sp_season' ) );
 			sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
 			?>
 		</div>
