@@ -153,4 +153,7 @@ $output .= '</div>';
 if ( $show_full_table_link )
 	$output .= '<a class="sp-league-table-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View full table', 'sportspress' ) . '</a>';
 
-echo $output;
+?>
+<div class="sp-template sp-template-league-table">
+	<?php echo $output; ?>
+</div>

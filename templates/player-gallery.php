@@ -91,56 +91,61 @@ if ( apply_filters( 'use_default_gallery_style', true ) )
 	</style>";
 $size_class = sanitize_html_class( $size );
 $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
+echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
+?>
+<div class="sp-template sp-template-player-gallery">
+	<?php echo $gallery_div; ?>
+	<?php
+	if ( intval( $number ) > 0 )
+		$limit = $number;
 
-if ( intval( $number ) > 0 )
-	$limit = $number;
-
-if ( $grouping === 'position' ):
-	$groups = get_terms( 'sp_position', array( 'orderby' => 'slug' ) );
-else:
-	$group = new stdClass();
-	$group->term_id = null;
-	$group->name = null;
-	$group->slug = null;
-	$groups = array( $group );
-endif;
-
-foreach ( $groups as $group ):
-	$i = 0;
-
-	if ( ! empty( $group->name ) ):
-		echo '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
-		echo '<' . $grouptag . ' class="player-group-name player-gallery-group-name">' . $group->name . '</' . $grouptag . '>';
+	if ( $grouping === 'position' ):
+		$groups = get_terms( 'sp_position', array( 'orderby' => 'slug' ) );
+	else:
+		$group = new stdClass();
+		$group->term_id = null;
+		$group->name = null;
+		$group->slug = null;
+		$groups = array( $group );
 	endif;
 
-	foreach( $data as $player_id => $performance ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):
+	foreach ( $groups as $group ):
+		$i = 0;
 
-		if ( isset( $limit ) && $i >= $limit ) continue;
+		if ( ! empty( $group->name ) ):
+			echo '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
+			echo '<' . $grouptag . ' class="player-group-name player-gallery-group-name">' . $group->name . '</' . $grouptag . '>';
+		endif;
 
-		$caption = get_the_title( $player_id );
-		$caption = trim( $caption );
+		foreach( $data as $player_id => $performance ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):
 
-	    sp_get_template( 'player-gallery-thumbnail.php', array(
-	    	'id' => $player_id,
-	    	'performance' => $performance,
-	    	'itemtag' => $itemtag,
-	    	'icontag' => $icontag,
-	    	'captiontag' => $captiontag,
-	    	'caption' => $caption,
-	    	'size' => $size,
-	    	'link_posts' => $link_posts,
-	    ) );
+			if ( isset( $limit ) && $i >= $limit ) continue;
 
-		$i++;
+			$caption = get_the_title( $player_id );
+			$caption = trim( $caption );
 
-	endif; endforeach;
+		    sp_get_template( 'player-gallery-thumbnail.php', array(
+		    	'id' => $player_id,
+		    	'performance' => $performance,
+		    	'itemtag' => $itemtag,
+		    	'icontag' => $icontag,
+		    	'captiontag' => $captiontag,
+		    	'caption' => $caption,
+		    	'size' => $size,
+		    	'link_posts' => $link_posts,
+		    ) );
 
-	echo '<br style="clear: both;" />';
+			$i++;
 
-endforeach;
-	
-echo "</div>\n";
+		endif; endforeach;
 
-if ( $show_all_players_link )
-	echo '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
+		echo '<br style="clear: both;" />';
+
+	endforeach;
+		
+	echo "</div>\n";
+
+	if ( $show_all_players_link )
+		echo '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
+	?>
+</div>

@@ -67,4 +67,7 @@ foreach ( $leagues as $league ):
 
 endforeach;
 
-echo apply_filters( 'sportspress_team_columns',  $output );
+?>
+<div class="sp-template sp-template-team-columns">
+	<?php echo $output; ?>
+</div>

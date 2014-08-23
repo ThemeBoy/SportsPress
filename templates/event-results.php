@@ -100,5 +100,7 @@ else:
 	$output .= '</tbody>' . '</table>' . '</div>';
 
 endif;
-
-echo $output;
+?>
+<div class="sp-template sp-template-event-results">
+	<?php echo $output; ?>
+</div>

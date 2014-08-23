@@ -162,5 +162,7 @@ endforeach;
 
 if ( $show_all_players_link )
 	$output .= '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
-
-echo apply_filters( 'sportspress_player_list',  $output );
+?>
+<div class="sp-template sp-template-player-list">
+	<?php echo $output; ?>
+</div>

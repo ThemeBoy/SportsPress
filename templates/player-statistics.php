@@ -60,7 +60,10 @@ if ( is_array( $leagues ) ):
 		endforeach;
 
 		$output .= '</tbody>' . '</table>' . '</div>';
-
-		echo apply_filters( 'sportspress_player_statistics',  $output );
+		?>
+		<div class="sp-template sp-template-player-statistics">
+			<?php echo $output; ?>
+		</div>
+		<?php
 	endforeach;
 endif;

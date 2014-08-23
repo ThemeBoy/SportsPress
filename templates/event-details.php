@@ -30,22 +30,24 @@ if ( $seasons ):
 	$data[ __( 'Season', 'sportspress' ) ] = $season->name;
 endif;
 ?>
-<h4 class="sp-table-caption"><?php _e( 'Details', 'sportspress' ); ?></h4>
-<div class="sp-table-wrapper<?php if ( $scrollable ) { ?> sp-scrollable-table-wrapper<?php } ?>">
-	<table class="sp-event-details sp-data-table">
-		<thead>
-			<tr>
-				<?php $i = 0; foreach( $data as $label => $value ):	?>
-					<th><?php echo $label; ?></th>
-				<?php $i++; endforeach; ?>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="odd">
-				<?php $i = 0; foreach( $data as $value ):	?>
-					<td><?php echo $value; ?></td>
-				<?php $i++; endforeach; ?>
-			</tr>
-		</tbody>
-	</table>
+<div class="sp-template sp-template-event-details">
+	<h4 class="sp-table-caption"><?php _e( 'Details', 'sportspress' ); ?></h4>
+	<div class="sp-table-wrapper<?php if ( $scrollable ) { ?> sp-scrollable-table-wrapper<?php } ?>">
+		<table class="sp-event-details sp-data-table">
+			<thead>
+				<tr>
+					<?php $i = 0; foreach( $data as $label => $value ):	?>
+						<th><?php echo $label; ?></th>
+					<?php $i++; endforeach; ?>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="odd">
+					<?php $i = 0; foreach( $data as $value ):	?>
+						<td><?php echo $value; ?></td>
+					<?php $i++; endforeach; ?>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
