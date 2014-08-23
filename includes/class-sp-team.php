@@ -62,6 +62,9 @@ class SP_Team extends SP_Custom_Post {
 			endif;
 		endforeach;
 
+		$div_ids[] = 0;
+		$season_names[ 0 ] = __( 'Total', 'sportspress' );
+
 		$data = array();
 
 		// Get all seasons populated with data where available
@@ -119,18 +122,25 @@ class SP_Team extends SP_Custom_Post {
 				),
 				'tax_query' => array(
 					'relation' => 'AND',
-					array(
-						'taxonomy' => 'sp_league',
-						'field' => 'id',
-						'terms' => $league_id
-					),
-					array(
-						'taxonomy' => 'sp_season',
-						'field' => 'id',
-						'terms' => $div_id
-					),
-				)
+				),
 			);
+
+			if ( $league_id ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_league',
+					'field' => 'id',
+					'terms' => $league_id
+				);
+			endif;
+
+			if ( $div_id ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_season',
+					'field' => 'id',
+					'terms' => $div_id
+				);
+			endif;
+
 			$events = get_posts( $args );
 
 			foreach( $events as $event ):

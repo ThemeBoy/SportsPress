@@ -102,7 +102,7 @@ class SP_Meta_Box_Table_Data {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="<?php $colspan = sizeof( $columns ) + 1; echo $colspan; ?>">
+						<td colspan="<?php $colspan = sizeof( $columns ) + 2; echo $colspan; ?>">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ); ?>
 						</td>
 					</tr>

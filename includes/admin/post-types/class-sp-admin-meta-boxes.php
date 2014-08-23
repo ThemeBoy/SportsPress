@@ -139,7 +139,7 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_shortcodediv', __( 'Shortcodes', 'sportspress' ), 'SP_Meta_Box_Team_Shortcode::output', 'sp_team', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Team_Details::output', 'sp_team', 'side', 'default' );
 		if ( isset( $post ) && isset( $post->ID ) ):
-			if ( get_the_terms( $post->ID, 'sp_league' ) && get_the_terms( $post->ID, 'sp_season' ) ) add_meta_box( 'sp_columnssdiv', __( 'Table Columns', 'sportspress' ), 'SP_Meta_Box_Team_Columns::output', 'sp_team', 'normal', 'high' );
+			add_meta_box( 'sp_columnssdiv', __( 'Table Columns', 'sportspress' ), 'SP_Meta_Box_Team_Columns::output', 'sp_team', 'normal', 'high' );
 			add_meta_box( 'sp_listsdiv', __( 'Player Lists', 'sportspress' ), 'SP_Meta_Box_Team_Lists::output', 'sp_team', 'normal', 'high' );
 		endif;
 		add_meta_box( 'sp_editordiv', __( 'Profile', 'sportspress' ), 'SP_Meta_Box_Team_Editor::output', 'sp_team', 'normal', 'low' );
@@ -155,7 +155,7 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_columnsdiv', __( 'Columns', 'sportspress' ), 'SP_Meta_Box_Player_Columns::output', 'sp_player', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Player_Details::output', 'sp_player', 'side', 'default' );
 		add_meta_box( 'sp_metricsdiv', __( 'Metrics', 'sportspress' ), 'SP_Meta_Box_Player_Metrics::output', 'sp_player', 'side', 'default' );
-		if ( isset( $post ) && isset( $post->ID ) && get_the_terms( $post->ID, 'sp_league' ) && get_the_terms( $post->ID, 'sp_season' ) ):
+		if ( isset( $post ) && isset( $post->ID ) ):
 			add_meta_box( 'sp_statisticsdiv', __( 'Statistics', 'sportspress' ), 'SP_Meta_Box_Player_Statistics::output', 'sp_player', 'normal', 'high' );
 		endif;
 		add_meta_box( 'sp_editordiv', __( 'Profile', 'sportspress' ), 'SP_Meta_Box_Player_Editor::output', 'sp_player', 'normal', 'low' );
