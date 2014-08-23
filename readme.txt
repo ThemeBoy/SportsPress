@@ -36,7 +36,7 @@ More details about each feature are available on the [SportsPress Website](http:
 
 = SportsPress Pro =
 
-Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://sportspresspro.com/pricing/) to get access to more advanced features to your club website.
+Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://sportspresspro.com/pricing/) to get access to more advanced features for your club website.
 
 = Available Languages =
 * English – English ( en_US )
