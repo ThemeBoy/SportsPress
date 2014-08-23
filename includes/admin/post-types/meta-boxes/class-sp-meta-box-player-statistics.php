@@ -19,27 +19,24 @@ class SP_Meta_Box_Player_Statistics {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
+		$player = new SP_Player( $post );
 		$leagues = get_the_terms( $post->ID, 'sp_league' );
 		$league_num = sizeof( $leagues );
 
 		// Loop through statistics for each league
 		if ( $leagues ): foreach ( $leagues as $league ):
-			
-			if ( $league_num > 1 ):
-				?>
-				<p><strong><?php echo $league->name; ?></strong></p>
-				<?php
-			endif;
-
-			$player = new SP_Player( $post );
+			?>
+			<p><strong><?php echo $league->name; ?></strong></p>
+			<?php
 			list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( $league->term_id, true );
 			self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams );
 
-		endforeach; else:
-
-			printf( __( 'Select %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) );
-
-		endif;
+		endforeach; endif;
+		?>
+		<p><strong><?php _e( 'Total', 'sportspress' ); ?></strong></p>
+		<?php
+		list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true );
+		self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams );
 	}
 
 	/**
@@ -61,10 +58,12 @@ class SP_Meta_Box_Player_Statistics {
 				<thead>
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
-						<th><label for="sp_columns_team">
-							<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
-							<?php _e( 'Team', 'sportspress' ); ?>
-						</label></th>
+						<?php if ( $league_id ): ?>
+							<th><label for="sp_columns_team">
+								<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
+								<?php _e( 'Team', 'sportspress' ); ?>
+							</label></th>
+						<?php endif; ?>
 						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
 							<th><?php echo $label; ?></th>
 						<?php endforeach; ?>
@@ -74,44 +73,49 @@ class SP_Meta_Box_Player_Statistics {
 					<?php
 					$i = 0;
 					foreach ( $data as $div_id => $div_stats ):
-						if ( !$div_id || $div_id == 'statistics' ) continue;
+						if ( $div_id === 'statistics' ) continue;
 						$div = get_term( $div_id, 'sp_season' );
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
-								<?php echo $div->name; ?>
-							</td>
-							<td>
 								<?php
-								$value = sp_array_value( $leagues, $div_id, '-1' );
-								$args = array(
-									'post_type' => 'sp_team',
-									'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
-									'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
-								    'sort_order'   => 'ASC',
-								    'sort_column'  => 'menu_order',
-									'selected' => $value,
-									'values' => 'ID',
-									'include' => $teams,
-									'tax_query' => array(
-										'relation' => 'AND',
-										array(
-											'taxonomy' => 'sp_league',
-											'terms' => $league_id,
-											'field' => 'id',
-										),
-										array(
-											'taxonomy' => 'sp_season',
-											'terms' => $div_id,
-											'field' => 'id',
-										),
-									),
-								);
-								if ( ! sp_dropdown_pages( $args ) ):
-									_e( 'No results found.', 'sportspress' );
-								endif;
+								if ( 'WP_Error' == get_class( $div ) ) _e( 'Total', 'sportspress' );
+								else echo $div->name;
 								?>
 							</td>
+							<?php if ( $league_id ): ?>
+								<td>
+									<?php
+									$value = sp_array_value( $leagues, $div_id, '-1' );
+									$args = array(
+										'post_type' => 'sp_team',
+										'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
+										'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+									    'sort_order'   => 'ASC',
+									    'sort_column'  => 'menu_order',
+										'selected' => $value,
+										'values' => 'ID',
+										'include' => $teams,
+										'tax_query' => array(
+											'relation' => 'AND',
+											array(
+												'taxonomy' => 'sp_league',
+												'terms' => $league_id,
+												'field' => 'id',
+											),
+											array(
+												'taxonomy' => 'sp_season',
+												'terms' => $div_id,
+												'field' => 'id',
+											),
+										),
+									);
+									if ( ! sp_dropdown_pages( $args ) ):
+										_e( 'No results found.', 'sportspress' );
+									endif;
+									?>
+								</td>
+							<?php endif; ?>
 							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
 								?>
 								<td><?php

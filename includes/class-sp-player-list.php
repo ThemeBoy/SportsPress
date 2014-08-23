@@ -118,18 +118,25 @@ class SP_Player_List extends SP_Custom_Post {
 			'order' => 'ASC',
 			'tax_query' => array(
 				'relation' => 'AND',
-				array(
-					'taxonomy' => 'sp_league',
-					'field' => 'id',
-					'terms' => $league_id
-				),
-				array(
-					'taxonomy' => 'sp_season',
-					'field' => 'id',
-					'terms' => $div_id
-				)
-			)
+			),
 		);
+
+		if ( $league_id ):
+			$args['tax_query'][] = array(
+				'taxonomy' => 'sp_league',
+				'field' => 'id',
+				'terms' => $league_id
+			);
+		endif;
+
+		if ( $league_id ):
+			$args['tax_query'][] = array(
+				'taxonomy' => 'sp_season',
+				'field' => 'id',
+				'terms' => $div_id
+			);
+		endif;
+		
 		$events = get_posts( $args );
 
 		// Event loop
