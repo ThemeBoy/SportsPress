@@ -693,7 +693,7 @@ if ( !function_exists( 'sp_posts' ) ) {
 }
 
 if ( !function_exists( 'sp_post_checklist' ) ) {
-	function sp_post_checklist( $post_id = null, $meta = 'post', $display = 'block', $filter = null, $index = null ) {
+	function sp_post_checklist( $post_id = null, $meta = 'post', $display = 'block', $filters = null, $index = null ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		?>
@@ -710,40 +710,34 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 						$query['orderby'] = 'meta_value_num';
 						$query['order'] = 'ASC';
 					endif;
-
-					// Filter by league and season when available
-					$league = sp_get_the_term_id( $post_id, 'sp_league', 0 );
-					if ( $league ):
-						$query['tax_query'][] = array(
-							'taxonomy' => 'sp_league',
-							'field' => 'id',
-							'terms' => $league
-						);
-					endif;
-					$season = sp_get_the_term_id( $post_id, 'sp_season', 0 );
-					if ( $season ):
-						$query['tax_query'][] = array(
-							'taxonomy' => 'sp_season',
-							'field' => 'id',
-							'terms' => $season
-						);
-					endif;
-
 					$posts = get_posts( $query );
 				endif;
 				foreach ( $posts as $post ):
 					$parents = get_post_ancestors( $post );
-					if ( $filter ):
-						$filter_values = (array)get_post_meta( $post->ID, $filter, false );
-						$terms = (array)get_the_terms( $post->ID, 'sp_season' );
-						foreach ( $terms as $term ):
-							if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
-								$filter_values[] = $term->term_id;
-						endforeach;
+					if ( $filters ):
+						if ( is_array( $filters ) ):
+							$filter_values = array();
+							foreach ( $filters as $filter ):
+								$filter_values = array_merge( $filter_values, (array)get_post_meta( $post->ID, $filter, false ) );
+								$terms = (array)get_the_terms( $post->ID, $filter );
+								foreach ( $terms as $term ):
+									if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
+										$filter_values[] = $term->term_id;
+								endforeach;
+							endforeach;
+						else:
+							$filter = $filters;
+							$filter_values = (array)get_post_meta( $post->ID, $filter, false );
+							$terms = (array)get_the_terms( $post->ID, $filter );
+							foreach ( $terms as $term ):
+								if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
+									$filter_values[] = $term->term_id;
+							endforeach;
+						endif;
 					endif;
 					?>
 					<li class="sp-post sp-filter-0<?php
-						if ( $filter ):
+						if ( $filters ):
 							foreach ( $filter_values as $filter_value ):
 								echo ' sp-filter-' . $filter_value;
 							endforeach;
