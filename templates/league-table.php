@@ -21,12 +21,11 @@ $defaults = array(
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_table_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_table_rows', 10 ),
-	'highlight' => get_post_meta( get_the_ID(), 'sp_highlight', true ),
 );
 
 extract( $defaults, EXTR_SKIP );
 
-if ( empty( $highlight ) ) $highlight = null;
+if ( ! isset( $highlight ) ) $highlight = get_post_meta( $id, 'sp_highlight', true );
 
 $output = '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
 
