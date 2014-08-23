@@ -718,21 +718,27 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 						if ( is_array( $filters ) ):
 							$filter_values = array();
 							foreach ( $filters as $filter ):
-								$filter_values = array_merge( $filter_values, (array)get_post_meta( $post->ID, $filter, false ) );
+								if ( get_taxonomy( $filter ) ):
+									$terms = (array)get_the_terms( $post->ID, $filter );
+									foreach ( $terms as $term ):
+										if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
+											$filter_values[] = $term->term_id;
+									endforeach;
+								else:
+									$filter_values = array_merge( $filter_values, (array)get_post_meta( $post->ID, $filter, false ) );
+								endif;
+							endforeach;
+						else:
+							$filter = $filters;
+							if ( get_taxonomy( $filter ) ):
 								$terms = (array)get_the_terms( $post->ID, $filter );
 								foreach ( $terms as $term ):
 									if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
 										$filter_values[] = $term->term_id;
 								endforeach;
-							endforeach;
-						else:
-							$filter = $filters;
-							$filter_values = (array)get_post_meta( $post->ID, $filter, false );
-							$terms = (array)get_the_terms( $post->ID, $filter );
-							foreach ( $terms as $term ):
-								if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
-									$filter_values[] = $term->term_id;
-							endforeach;
+							else:
+								$filter_values = (array)get_post_meta( $post->ID, $filter, false );
+							endif;
 						endif;
 					endif;
 					?>
