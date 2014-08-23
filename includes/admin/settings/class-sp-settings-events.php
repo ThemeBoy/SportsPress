@@ -94,7 +94,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 			array(
 				'desc' 		=> __( 'Display total', 'sportspress' ),
 				'id' 		=> 'sportspress_event_show_total',
-				'default'	=> 'yes',
+				'default'	=> 'no',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',
 			),
