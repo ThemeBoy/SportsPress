@@ -114,9 +114,10 @@ function sportspress_the_title( $title, $id = null ) {
 				$title = '<strong>' . $number . '</strong> ' . $title;
 			endif;
 		elseif ( is_singular( 'sp_staff' ) ):
-			$role = get_post_meta( $id, 'sp_role', true );
-			if ( $role != null ):
-				$title = '<strong>' . $role . '</strong> ' . $title;
+			$staff = new SP_Staff( $id );
+			$role = $staff->role();
+			if ( $role ):
+				$title = '<strong>' . $role->name . '</strong> ' . $title;
 			endif;
 		elseif ( is_singular( 'sp_event' ) && get_option( 'sportspress_event_show_logos', 'yes' ) == 'yes' ):
 			$teams = get_post_meta( $id, 'sp_team' );
