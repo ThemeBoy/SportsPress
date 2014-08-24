@@ -1,0 +1,39 @@
+{
+	"name":				"Rugby Union",
+	"outcomes": [
+						"Win",
+						"Loss",
+						"Draw"
+	],
+	"results": [
+						"Tries",
+						"Conversions",
+						{ "name" : "BP", "description" : "Bonus points" },
+						{ "name" : "Points", "description" : "Total points", "primary" : 1 }
+	],
+	"performance": [
+						{ "name" : "T", "description" : "Tries" },
+						{ "name" : "C", "description" : "Conversions" },
+						{ "name" : "P", "description" : "Penalty goals" },
+						{ "name" : "DG", "description" : "Drop goals" }
+	],
+	"columns": [
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "W", "equation" : "$win", "description" : "Matches won" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Matches lost" },
+						{ "name" : "D", "equation" : "$draw", "description" : "Matches drawn" },
+						{ "name" : "PF", "equation" : "$pointsfor", "description" : "Points for", "priority" : 3 },
+						{ "name" : "PA", "equation" : "$pointsagainst", "description" : "Points against" },
+						{ "name" : "PD", "equation" : "$pointsfor - $pointsagainst", "description" : "Points difference", "priority" : 2 },
+						{ "name" : "BP", "equation" : "$bp", "description" : "Bonus points" },
+						{ "name" : "Pts", "equation" : "$points", "description" : "Total points", "priority" : 1 }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "A", "equation" : "$eventsplayed", "description" : "Appearances" },
+						{ "name" : "Pts", "equation" : "$t * 5 + $c * 2 + $p * 3 + $dg * 3", "description" : "Points" }
+	]
+}
