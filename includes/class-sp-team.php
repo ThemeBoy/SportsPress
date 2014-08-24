@@ -5,7 +5,7 @@
  * The SportsPress team class handles individual team data.
  *
  * @class 		SP_Team
- * @version		1.2.3
+ * @version		1.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -41,10 +41,9 @@ class SP_Team extends SP_Custom_Post {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function columns( $league_id, $admin = false ) {
+	public function columns( $league_id ) {
 		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$columns = (array)get_post_meta( $this->ID, 'sp_columns', true );
-		$leagues_seasons = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
 
 		// Get labels from result variables
 		$result_labels = (array)sp_get_var_labels( 'sp_result' );
@@ -241,41 +240,7 @@ class SP_Team extends SP_Custom_Post {
 		// Get columns from column variables
 		$columns = sp_get_var_labels( 'sp_column' );
 
-		// Merge the data and placeholders arrays
-		$merged = array();
-
-		foreach( $placeholders as $season_id => $season_data ):
-
-			if ( ! sp_array_value( $leagues_seasons, $season_id, 0 ) )
-				continue;
-
-			$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
-
-			// Add season name to row
-			$merged[ $season_id ] = array(
-				'name' => $season_name
-			);
-
-			foreach( $season_data as $key => $value ):
-
-				// Use static data if key exists and value is not empty, else use placeholder
-				if ( array_key_exists( $season_id, $data ) && array_key_exists( $key, $data[ $season_id ] ) && $data[ $season_id ][ $key ] != '' ):
-					$merged[ $season_id ][ $key ] = $data[ $season_id ][ $key ];
-				else:
-					$merged[ $season_id ][ $key ] = $value;
-				endif;
-
-			endforeach;
-
-		endforeach;
-
-		if ( $admin ):
-			return array( $columns, $data, $placeholders, $merged, $leagues_seasons );
-		else:
-			$labels = array_merge( array( 'name' => __( 'Season', 'sportspress' ) ), $columns );
-			$merged[0] = $labels;
-			return $merged;
-		endif;
+		return array( $columns, $data, $placeholders );
 	}
 
 	/**

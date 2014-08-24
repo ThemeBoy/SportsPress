@@ -140,9 +140,9 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_shortcodediv', __( 'Shortcodes', 'sportspress' ), 'SP_Meta_Box_Team_Shortcode::output', 'sp_team', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Team_Details::output', 'sp_team', 'side', 'default' );
 		if ( isset( $post ) && isset( $post->ID ) ):
-			add_meta_box( 'sp_columnssdiv', __( 'Table Columns', 'sportspress' ), 'SP_Meta_Box_Team_Columns::output', 'sp_team', 'normal', 'high' );
 			add_meta_box( 'sp_listsdiv', __( 'Player Lists', 'sportspress' ), 'SP_Meta_Box_Team_Lists::output', 'sp_team', 'normal', 'high' );
 			add_meta_box( 'sp_tablesdiv', __( 'League Tables', 'sportspress' ), 'SP_Meta_Box_Team_Tables::output', 'sp_team', 'normal', 'high' );
+			add_meta_box( 'sp_columnssdiv', __( 'Table Columns', 'sportspress' ), 'SP_Meta_Box_Team_Columns::output', 'sp_team', 'normal', 'high' );
 		endif;
 		add_meta_box( 'sp_editordiv', __( 'Profile', 'sportspress' ), 'SP_Meta_Box_Team_Editor::output', 'sp_team', 'normal', 'low' );
 
