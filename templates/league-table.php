@@ -13,6 +13,7 @@ $defaults = array(
 	'id' => get_the_ID(),
 	'number' => -1,
 	'columns' => null,
+	'highlight' => null,
 	'show_full_table_link' => false,
 	'show_team_logo' => get_option( 'sportspress_table_show_logos', 'yes' ) == 'yes' ? true : false,
 	'link_posts' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
