@@ -23,7 +23,6 @@ class SP_Shortcodes {
 			'event_calendar' 		=> __CLASS__ . '::event_calendar',
 			'event_list'     		=> __CLASS__ . '::event_list',
 			'event_blocks'     		=> __CLASS__ . '::event_blocks',
-			'team_columns'			=> __CLASS__ . '::team_columns',
 			'league_table'   		=> __CLASS__ . '::league_table',
 			'player_details'   		=> __CLASS__ . '::player_details',
 			'player_statistics'		=> __CLASS__ . '::player_statistics',
@@ -139,17 +138,6 @@ class SP_Shortcodes {
 	 */
 	public static function event_blocks( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Blocks', 'output' ), $atts );
-	}
-
-	/**
-	 * Team columns shortcode.
-	 *
-	 * @access public
-	 * @param mixed $atts
-	 * @return string
-	 */
-	public static function team_columns( $atts ) {
-		return self::shortcode_wrapper( array( 'SP_Shortcode_Team_Columns', 'output' ), $atts );
 	}
 
 	/**

@@ -89,21 +89,6 @@
 					]
 				},
 				{
-					text: ed.getLang( 'sportspress.team' ),
-					menu: [
-						{
-							text: ed.getLang( 'sportspress.table_columns' ),
-							onclick: function() {
-								// triggers the thickbox
-								var width = jQuery(window).width(), H = jQuery(window).height(), W = ( 720 < width ) ? 720 : width;
-								W = W - 80;
-								H = H - 84;
-								tb_show( ed.getLang( 'sportspress.team' ) + ' - ' + ed.getLang( 'sportspress.table_columns' ), 'admin-ajax.php?action=sportspress_team_columns_shortcode&width=' + W + '&height=' + H );
-							}
-						}
-					]
-				},
-				{
 					text: ed.getLang( 'sportspress.league_table' ),
 					onclick : function() {
                         // triggers the thickbox

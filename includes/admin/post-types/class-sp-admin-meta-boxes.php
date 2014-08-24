@@ -63,6 +63,7 @@ class SP_Admin_Meta_Boxes {
 		add_action( 'sportspress_process_sp_team_meta', 'SP_Meta_Box_Team_Details::save', 10, 2 );
 		add_action( 'sportspress_process_sp_team_meta', 'SP_Meta_Box_Team_Columns::save', 20, 2 );
 		add_action( 'sportspress_process_sp_team_meta', 'SP_Meta_Box_Team_Lists::save', 30, 2 );
+		add_action( 'sportspress_process_sp_team_meta', 'SP_Meta_Box_Team_Tables::save', 40, 2 );
 
 		// Save Table Meta Boxes
 		add_action( 'sportspress_process_sp_table_meta', 'SP_Meta_Box_Table_Details::save', 10, 2 );
@@ -141,6 +142,7 @@ class SP_Admin_Meta_Boxes {
 		if ( isset( $post ) && isset( $post->ID ) ):
 			add_meta_box( 'sp_columnssdiv', __( 'Table Columns', 'sportspress' ), 'SP_Meta_Box_Team_Columns::output', 'sp_team', 'normal', 'high' );
 			add_meta_box( 'sp_listsdiv', __( 'Player Lists', 'sportspress' ), 'SP_Meta_Box_Team_Lists::output', 'sp_team', 'normal', 'high' );
+			add_meta_box( 'sp_tablesdiv', __( 'League Tables', 'sportspress' ), 'SP_Meta_Box_Team_Tables::output', 'sp_team', 'normal', 'high' );
 		endif;
 		add_meta_box( 'sp_editordiv', __( 'Profile', 'sportspress' ), 'SP_Meta_Box_Team_Editor::output', 'sp_team', 'normal', 'low' );
 
@@ -161,7 +163,7 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_editordiv', __( 'Profile', 'sportspress' ), 'SP_Meta_Box_Player_Editor::output', 'sp_player', 'normal', 'low' );
 
 		// Lists
-		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'SP_Meta_Box_List_Shortcode::output', 'sp_list', 'side', 'default' );
+		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'SP_Meta_Box_List_Shortcode::output', 'sp_table', 'side', 'default' );
 		add_meta_box( 'sp_formatdiv', __( 'Layout', 'sportspress' ), 'SP_Meta_Box_List_Format::output', 'sp_list', 'side', 'default' );
 		add_meta_box( 'sp_columnsdiv', __( 'Columns', 'sportspress' ), 'SP_Meta_Box_List_Columns::output', 'sp_list', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_List_Details::output', 'sp_list', 'side', 'default' );

@@ -78,7 +78,7 @@ class SP_Team extends SP_Custom_Post {
 
 		foreach ( $div_ids as $div_id ):
 
-			$totals = array( 'eventsplayed' => 0, 'streak' => 0, 'last5' => null, 'last10' => null );
+			$totals = array( 'eventsplayed' => 0, 'eventminutes' => 0, 'streak' => 0, 'last5' => null, 'last10' => null );
 
 			foreach ( $result_labels as $key => $value ):
 				$totals[ $key . 'for' ] = 0;
@@ -145,6 +145,9 @@ class SP_Team extends SP_Custom_Post {
 
 			foreach( $events as $event ):
 				$results = (array)get_post_meta( $event->ID, 'sp_results', true );
+				$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
+				if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
+
 				foreach ( $results as $team_id => $team_result ):
 					foreach ( $team_result as $key => $value ):
 						if ( $team_id == $this->ID ):
@@ -159,8 +162,9 @@ class SP_Team extends SP_Custom_Post {
 
 									// Increment events played and outcome count
 									if ( array_key_exists( $outcome, $totals ) ):
-										$totals['eventsplayed']++;
-										$totals[ $outcome ]++;
+										$totals['eventsplayed'] ++;
+										$totals['eventminutes'] += $minutes;
+										$totals[ $outcome ] ++;
 									endif;
 
 									if ( $outcome && $outcome != '-1' ):
@@ -305,6 +309,40 @@ class SP_Team extends SP_Custom_Post {
 				endif;
 			endforeach;
 			return $lists;
+		endif;
+	}
+
+	/**
+	 * Returns league tables
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function tables( $admin = false ) {
+		if ( ! $this->ID ) return null;
+
+		$args = array(
+			'post_type' => 'sp_table',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'meta_key' => 'sp_team',
+			'meta_value' => $this->ID,
+		);
+		$tables = get_posts( $args );
+
+		$checked = (array) get_post_meta( $this->ID, 'sp_table' );
+
+		if ( $admin ):
+			return array( $tables, $checked );
+		else:
+			foreach ( $tables as $key => $table ):
+				if ( ! in_array( $table->ID, $checked ) ):
+					unset( $tables[ $key ] );
+				endif;
+			endforeach;
+			return $tables;
 		endif;
 	}
 }

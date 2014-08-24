@@ -50,11 +50,11 @@ add_action( 'sportspress_single_calendar_content', 'sportspress_output_br_tag', 
  * Single Team Content
  *
  * @see sportspress_output_team_link()
- * @see sportspress_output_team_columns()
+ * @see sportspress_output_team_tables()
  * @see sportspress_output_team_lists()
  */
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_lists', 20 );
-add_action( 'sportspress_single_team_content', 'sportspress_output_team_columns', 30 );
+add_action( 'sportspress_single_team_content', 'sportspress_output_team_tables', 30 );
 add_action( 'sportspress_single_team_content', 'sportspress_output_br_tag', 100 );
 
 add_action( 'sportspress_after_single_team', 'sportspress_output_team_link', 10 );
