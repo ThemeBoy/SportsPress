@@ -39,6 +39,7 @@ if ( $order != 'default' )
 	$calendar->order = $order;
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
+$title_format = $calendar->title_format;
 
 if ( isset( $columns ) ):
 	if ( is_array( $columns ) )
@@ -55,11 +56,16 @@ endif;
 					<?php
 					echo '<th class="data-date">' . __( 'Date', 'sportspress' ) . '</th>';
 
-					if ( $usecolumns == null || in_array( 'event', $usecolumns ) )
-						echo '<th class="data-event">' . __( 'Event', 'sportspress' ) . '</th>';
-
-					if ( $usecolumns == null || in_array( 'teams', $usecolumns ) )
-						echo '<th class="data-teams">' . __( 'Teams', 'sportspress' ) . '</th>';
+					if ( $usecolumns == null || in_array( 'event', $usecolumns ) ):
+						if ( $title_format == 'homeaway' ):
+							echo '<th class="data-home">' . __( 'Home', 'sportspress' ) . '</th>';
+							echo '<th class="data-away">' . __( 'Away', 'sportspress' ) . '</th>';
+						elseif ( $title_format == 'teams' ):
+							echo '<th class="data-teams">' . __( 'Teams', 'sportspress' ) . '</th>';
+						else:
+							echo '<th class="data-event">' . __( 'Event', 'sportspress' ) . '</th>';
+						endif;
+					endif;
 
 					if ( $usecolumns == null || in_array( 'time', $usecolumns ) )
 						echo '<th class="data-time">' . __( 'Time/Results', 'sportspress' ) . '</th>';
@@ -88,6 +94,7 @@ endif;
 
 					$main_results = array();
 					$teams_output = '';
+					$teams_array = '';
 
 					if ( $teams ):
 						foreach ( $teams as $team ):
@@ -107,17 +114,19 @@ endif;
 								endif;
 
 								if ( $link_teams ):
-									$teams_output .= '<a href="' . get_post_permalink( $team ) . '">' . $name . '</a>';
+									$team_output = '<a href="' . get_post_permalink( $team ) . '">' . $name . '</a>';
 								else:
-									$teams_output .= $name;
+									$team_output = $name;
 								endif;
 
 								if ( $team_result != null ):
 									$main_results[] = $team_result;
-									$teams_output .= ' (' . $team_result . ')';
+									$team_output .= ' (' . $team_result . ')';
 								endif;
 
-								$teams_output .= '<br>';
+								$teams_array[] = $team_output;
+
+								$teams_output .= $team_output . '<br>';
 							endif;
 						endforeach;
 					else:
@@ -128,58 +137,64 @@ endif;
 
 						echo '<td class="data-date"><a href="' . get_permalink( $event->ID ) . '">' . get_post_time( get_option( 'date_format' ), false, $event, true ) . '</a></td>';
 
-						if ( $usecolumns == null || in_array( 'event', $usecolumns ) )
-							echo '<td class="data-event">' . $event->post_title . '</td>';
+						if ( $usecolumns == null || in_array( 'event', $usecolumns ) ):
+							if ( $title_format == 'homeaway' ):
+								$team = array_shift( $teams_array );
+								echo '<td class="data-home">' . $team . '</td>';
+								$team = array_shift( $teams_array );
+								echo '<td class="data-away">' . $team . '</td>';
+							else:
+								if ( $title_format == 'teams' ):
+									echo '<td class="data-event">' . $teams_output . '</td>';
+								else:
+									echo '<td class="data-event"><a href="' . get_permalink( $event->ID ) . '">' . $event->post_title . '</a></td>';
+								endif;
+							endif;
+						endif;
 
-						if ( $usecolumns == null || in_array( 'teams', $usecolumns ) ):
-							echo '<td class="data-teams">';
-								echo $teams_output;
+						if ( $usecolumns == null || in_array( 'time', $usecolumns ) ):
+							echo '<td class="data-time"><a href="' . get_permalink( $event->ID ) . '">';
+							if ( ! empty( $main_results ) ):
+								echo implode( ' - ', $main_results );
+							else:
+								echo get_post_time( get_option( 'time_format' ), false, $event, true );
+							endif;
+							echo '</a></td>';
+						endif;
+
+						if ( $usecolumns == null || in_array( 'venue', $usecolumns ) ):
+							echo '<td class="data-venue">';
+							if ( $link_venues ):
+								the_terms( $event->ID, 'sp_venue' );
+							else:
+								$venues = get_the_terms( $event->ID, 'sp_venue' );
+								foreach ( $venues as $venue ):
+									echo $venue->name;
+								endforeach;
+							endif;
 							echo '</td>';
 						endif;
 
-					if ( $usecolumns == null || in_array( 'time', $usecolumns ) ):
-						echo '<td class="data-time">';
-						if ( ! empty( $main_results ) ):
-							echo implode( ' - ', $main_results );
-						else:
-							echo get_post_time( get_option( 'time_format' ), false, $event, true );
-						endif;
-						echo '</td>';
-					endif;
+						if ( $usecolumns == null || in_array( 'article', $usecolumns ) ):
+							echo '<td class="data-article">
+								<a href="' . get_permalink( $event->ID ) . '">';
 
-					if ( $usecolumns == null || in_array( 'venue', $usecolumns ) ):
-						echo '<td class="data-venue">';
-						if ( $link_venues ):
-							the_terms( $event->ID, 'sp_venue' );
-						else:
-							$venues = get_the_terms( $event->ID, 'sp_venue' );
-							foreach ( $venues as $venue ):
-								echo $venue->name;
-							endforeach;
-						endif;
-						echo '</td>';
-					endif;
-
-					if ( $usecolumns == null || in_array( 'article', $usecolumns ) ):
-						echo '<td class="data-article">
-							<a href="' . get_permalink( $event->ID ) . '">';
-
-							if ( $video ):
-								echo '<div class="dashicons dashicons-video-alt"></div>';
-							elseif ( has_post_thumbnail( $event->ID ) ):
-								echo '<div class="dashicons dashicons-camera"></div>';
-							endif;
-							if ( $event->post_content !== null ):
-								if ( $event->post_status == 'publish' ):
-									_e( 'Recap', 'sportspress' );
-								else:
-									_e( 'Preview', 'sportspress' );
+								if ( $video ):
+									echo '<div class="dashicons dashicons-video-alt"></div>';
+								elseif ( has_post_thumbnail( $event->ID ) ):
+									echo '<div class="dashicons dashicons-camera"></div>';
 								endif;
-							endif;
+								if ( $event->post_content !== null ):
+									if ( $event->post_status == 'publish' ):
+										_e( 'Recap', 'sportspress' );
+									else:
+										_e( 'Preview', 'sportspress' );
+									endif;
+								endif;
 
-							echo '</a>
-						</td>';
-					endif;
+								echo '</a>
+							</td>';
+						endif;
 
 					echo '</tr>';
 

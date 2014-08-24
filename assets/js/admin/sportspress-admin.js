@@ -135,6 +135,12 @@ jQuery(document).ready(function($){
 		$(".sp-dummy."+name+"-dummy").val(val).trigger("change");
 	});
 
+	// Title format switcher
+	$(".sp-title-format-select").change(function() {
+		val = $(this).val();
+		$(".sp-title-format").hide().filter(".sp-title-format-"+val).show();
+	});
+
 	// Custom value editor
 	$(".sp-data-table .sp-default-value").click(function() {
 		$(this).hide().siblings(".sp-custom-value").show().find(".sp-custom-value-input").focus();

@@ -22,20 +22,22 @@ class SP_Meta_Box_Calendar_Data {
 		$calendar = new SP_Calendar( $post );
 		$data = $calendar->data();
 		$usecolumns = $calendar->columns;
-		self::table( $data, $usecolumns );
+		$title_format = $calendar->title_format;
+		self::table( $data, $usecolumns, $title_format );
 	}
 
 	/**
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		update_post_meta( $post_id, 'sp_title_format', sp_array_value( $_POST, 'sp_title_format', 'title' ) );
 		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 	}
 
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $data = array(), $usecolumns = null ) {
+	public static function table( $data = array(), $usecolumns = null, $title_format = null ) {
 		if ( is_array( $usecolumns ) )
 			$usecolumns = array_filter( $usecolumns );
 		?>
@@ -49,13 +51,11 @@ class SP_Meta_Box_Calendar_Data {
 						<th class="column-event">
 							<label for="sp_columns_event">
 								<input type="checkbox" name="sp_columns[]" value="event" id="sp_columns_event" <?php checked( ! is_array( $usecolumns ) || in_array( 'event', $usecolumns ) ); ?>>
-								<?php _e( 'Event', 'sportspress' ); ?>
-							</label>
-						</th>
-						<th class="column-teams">
-							<label for="sp_columns_teams">
-								<input type="checkbox" name="sp_columns[]" value="teams" id="sp_columns_teams" <?php checked( ! is_array( $usecolumns ) || in_array( 'teams', $usecolumns ) ); ?>>
-								<?php _e( 'Teams', 'sportspress' ); ?>
+								<select name="sp_title_format" class="sp-title-format-select">
+									<option value="title" <?php selected( $title_format, 'title' ); ?>><?php _e( 'Title', 'sportspress' ); ?></option>
+									<option value="teams" <?php selected( $title_format, 'teams' ); ?>><?php _e( 'Teams', 'sportspress' ); ?></option>
+									<option value="homeaway" <?php selected( $title_format, 'homeaway' ); ?>><?php _e( 'Home', 'sportspress' ); ?> | <?php _e( 'Away', 'sportspress' ); ?></option>
+								</select>
 							</label>
 						</th>
 						<th class="column-time">
@@ -92,38 +92,40 @@ class SP_Meta_Box_Calendar_Data {
 								?>
 								<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 									<td><?php echo get_post_time( get_option( 'date_format' ), false, $event, true ); ?></td>
-									<td><?php echo $event->post_title; ?></td>
 									<td>
-										<?php
-										if ( $teams ): foreach ( $teams as $team ):
-											$name = get_the_title( $team );
-											if ( $name ):
-												$team_results = sp_array_value( $results, $team, null );
+										<div class="sp-title-format sp-title-format-title<?php if ( $title_format != 'title' ): ?> hidden<?php endif; ?>"><?php echo $event->post_title; ?></div>
+										<div class="sp-title-format sp-title-format-teams sp-title-format-homeaway<?php if ( ! in_array( $title_format, array( 'teams', 'homeaway' ) ) ): ?> hidden<?php endif; ?>">
+											<?php
+											if ( $teams ): foreach ( $teams as $team ):
+												$name = get_the_title( $team );
+												if ( $name ):
+													$team_results = sp_array_value( $results, $team, null );
 
-												if ( $main_result ):
-													$team_result = sp_array_value( $team_results, $main_result, null );
-												else:
-													if ( is_array( $team_results ) ):
-														end( $team_results );
-														$team_result = prev( $team_results );
+													if ( $main_result ):
+														$team_result = sp_array_value( $team_results, $main_result, null );
 													else:
-														$team_result = null;
+														if ( is_array( $team_results ) ):
+															end( $team_results );
+															$team_result = prev( $team_results );
+														else:
+															$team_result = null;
+														endif;
 													endif;
-												endif;
 
-												if ( $team_result != null ):
-													$main_results[] = $team_result;
-													unset( $team_results['outcome'] );
-													$team_results = implode( ' | ', $team_results );
-													echo '<a class="result tips" title="' . $team_results . '" href="' . get_edit_post_link( $event->ID ) . '">' . $team_result . '</a> ';
-												endif;
+													if ( $team_result != null ):
+														$main_results[] = $team_result;
+														unset( $team_results['outcome'] );
+														$team_results = implode( ' | ', $team_results );
+														echo '<a class="result tips" title="' . $team_results . '" href="' . get_edit_post_link( $event->ID ) . '">' . $team_result . '</a> ';
+													endif;
 
-												echo $name . '<br>';
+													echo $name . '<br>';
+												endif;
+											endforeach; else:
+												echo '&mdash;';
 											endif;
-										endforeach; else:
-											echo '&mdash;';
-										endif;
-										?>
+											?>
+										</div>
 									</td>
 									<td>
 										<?php

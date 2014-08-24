@@ -21,12 +21,12 @@ $seasons = get_the_terms( $id, 'sp_season' );
 $data = array( __( 'Date', 'sportspress' ) => $date, __( 'Time', 'sportspress' ) => $time );
 
 if ( $leagues ):
-	$league = array_pop( $leagues );
+	$league = array_shift( $leagues );
 	$data[ __( 'League', 'sportspress' ) ] = $league->name;
 endif;
 
 if ( $seasons ):
-	$season = array_pop( $seasons );
+	$season = array_shift( $seasons );
 	$data[ __( 'Season', 'sportspress' ) ] = $season->name;
 endif;
 ?>
