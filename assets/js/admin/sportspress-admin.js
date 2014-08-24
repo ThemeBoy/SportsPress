@@ -399,8 +399,51 @@ jQuery(document).ready(function($){
 		});
 	});
 
-	// Configure primary result option
-	$( ".sp-admin-config-table" ).on( "click", ".sp-primary-result-option", function() {
+	// Event format affects data
+	$(".post-type-sp_event #post-formats-select input.post-format").change(function() {
+		layout = $(".post-type-sp_event #post-formats-select input:checked").val();
+		if ( layout == "friendly" ) {
+			$(".sp-event-league-field").hide();
+		} else {
+			$(".sp-event-league-field").show();
+		}
+	});
+
+	// Trigger event format change
+	$(".post-type-sp_event #post-formats-select input.post-format").trigger("change");
+
+	// Calendar layout affects data
+	$(".post-type-sp_calendar #post-formats-select input.post-format").change(function() {
+		layout = $(".post-type-sp_calendar #post-formats-select input:checked").val();
+		$(".sp-calendar-table tr").each(function() {
+			if ( layout == "list" ) {
+				$(this).find("th input[type=checkbox]").show();
+			} else {
+				$(this).find("th input[type=checkbox]").hide();
+			}
+		});
+	});
+
+	// Trigger calendar layout change
+	$(".post-type-sp_calendar #post-formats-select input.post-format").trigger("change");
+
+	// Player list layout affects data
+	$(".post-type-sp_list #post-formats-select input.post-format").change(function() {
+		layout = $(".post-type-sp_list #post-formats-select input:checked").val();
+		$(".sp-player-list-table tr").each(function() {
+			if ( layout == "list" ) {
+				$(this).find("th input[type=checkbox]").show();
+			} else {
+				$(this).find("th input[type=checkbox]").hide();
+			}
+		});
+	});
+
+	// Trigger player list layout change
+	$(".post-type-sp_list #post-formats-select input.post-format").trigger("change");
+
+	// Configure primary result option (Ajax)
+	$(".sp-admin-config-table").on("click", ".sp-primary-result-option", function() {
 		$.post( ajaxurl, {
 			action:         "sp-save-primary-result",
 			primary_result: $(this).val(),
