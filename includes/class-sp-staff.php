@@ -31,7 +31,7 @@ class SP_Staff extends SP_Custom_Post {
 	public function role() {
 		$roles = get_the_terms( $this->ID, 'sp_role' );
 		if ( $roles ):
-			return array_pop( $roles );
+			return array_shift( $roles );
 		else:
 			return false;
 		endif;

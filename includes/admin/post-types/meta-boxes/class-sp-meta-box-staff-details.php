@@ -42,7 +42,7 @@ class SP_Meta_Box_Staff_Details {
 
 		$roles = get_the_terms( $post->ID, 'sp_role' );
 		if ( $roles ):
-			$term = array_pop( $roles );
+			$term = array_shift( $roles );
 			$role = $term->term_id;
 		else:
 			$role = null;
