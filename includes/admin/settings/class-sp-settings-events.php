@@ -126,6 +126,19 @@ class SP_Settings_Events extends SP_Settings_Page {
 				'type' 		=> 'checkbox',
 				'checkboxgroup'	=> 'start',
 			),
+			
+			array(
+				'title' 	=> __( 'Full Time', 'sportspress' ),
+				'id' 		=> 'sportspress_event_minutes',
+				'class' 	=> 'small-text',
+				'default'	=> '90',
+				'desc' 		=> __( 'mins', 'sportspress' ),
+				'type' 		=> 'number',
+				'custom_attributes' => array(
+					'min' 	=> 0,
+					'step' 	=> 1
+				),
+			),
 
 			array( 'type' => 'sectionend', 'id' => 'event_options' ),
 

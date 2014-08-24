@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version		1.2.6
+ * @version		1.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -84,7 +84,7 @@ class SP_Player_List extends SP_Custom_Post {
 			endforeach;
 
 			// Initialize player totals
-			$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0, 'eventsstarted' => 0, 'eventssubbed' => 0, 'streak' => 0 );
+			$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0, 'eventsstarted' => 0, 'eventssubbed' => 0, 'eventminutes' => 0, 'streak' => 0 );
 
 			foreach ( $performance_labels as $key => $value ):
 				$totals[ $player_id ][ $key ] = 0;
@@ -143,6 +143,8 @@ class SP_Player_List extends SP_Custom_Post {
 		foreach ( $events as $event ):
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			$team_performance = get_post_meta( $event->ID, 'sp_players', true );
+			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
+			if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
 			// Add all team performance
 			if ( is_array( $team_performance ) ): foreach ( $team_performance as $team_id => $players ):
@@ -163,16 +165,17 @@ class SP_Player_List extends SP_Custom_Post {
 						if ( array_key_exists( 'outcome', $team_results ) ):
 
 							// Increment events attended
-							$totals[ $player_id ]['eventsattended']++;
+							$totals[ $player_id ]['eventsattended'] ++;
 
 							// Continue with incrementing values if active in event
 							if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
-								$totals[ $player_id ]['eventsplayed']++;
+								$totals[ $player_id ]['eventsplayed'] ++;
+								$totals[ $player_id ]['eventminutes'] += $minutes;
 
 								if ( sp_array_value( $player_performance, 'status' ) == 'lineup' ):
-									$totals[ $player_id ]['eventsstarted']++;
+									$totals[ $player_id ]['eventsstarted'] ++;
 								elseif ( sp_array_value( $player_performance, 'status' ) == 'sub' && sp_array_value( $player_performance, 'sub', 0 ) ):
-									$totals[ $player_id ]['eventssubbed']++;
+									$totals[ $player_id ]['eventssubbed'] ++;
 								endif;
 
 								$value = $team_results['outcome'];
@@ -188,7 +191,7 @@ class SP_Player_List extends SP_Custom_Post {
 
 										// Increment events attended and outcome count
 										if ( array_key_exists( $outcome, $totals[ $player_id ] ) ):
-											$totals[ $player_id ][ $outcome ]++;
+											$totals[ $player_id ][ $outcome ] ++;
 										endif;
 
 										// Add to streak counter

@@ -19,10 +19,18 @@ class SP_Meta_Box_Event_Details {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
+		$minutes = get_post_meta( $post->ID, 'sp_minutes', true );
 		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
 		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 		$venue_id = sp_get_the_term_id( $post->ID, 'sp_venue', 0 );
 		?>
+		<div class="sp-event-minutes-field">
+			<p><strong><?php _e( 'Full Time', 'sportspress' ); ?></strong></p>
+			<p>
+				<input name="sp_minutes" type="number" step="1" min="0" class="small-text" placeholder="<?php echo get_option( 'sportspress_event_minutes', 90 ); ?>" value="<?php echo $minutes; ?>">
+				<?php _e( 'mins', 'sportspress' ); ?>
+			</p>
+		</div>
 		<div class="sp-event-league-field">
 			<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
 			<p>
@@ -83,6 +91,7 @@ class SP_Meta_Box_Event_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		update_post_meta( $post_id, 'sp_minutes', sp_array_value( $_POST, 'sp_minutes', get_option( 'sportspress_event_minutes', 90 ) ) );
 		$format = get_post_meta( $post_id, 'sp_format', true );
 		if ( $format == 'friendly' )
 			wp_set_post_terms( $post_id, -1, 'sp_league' );
