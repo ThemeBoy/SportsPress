@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     0.7
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,7 +19,6 @@ class SP_Meta_Box_Event_Details {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$type = sp_get_the_term_id( $post->ID, 'sp_type', null );
 		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
 		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 		$venue_id = sp_get_the_term_id( $post->ID, 'sp_venue', 0 );
@@ -82,7 +81,11 @@ class SP_Meta_Box_Event_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
+		$format = get_post_meta( $post_id, 'sp_format', true );
+		if ( $format == 'friendly' )
+			wp_set_post_terms( $post_id, -1, 'sp_league' );
+		else
+			wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_venue', 0 ), 'sp_venue' );
 	}
