@@ -186,6 +186,10 @@
 	padding: 0 20px;
 	clear: none;
 }
+.sp-event-blocks .event-league,
+.sp-event-blocks .event-season {
+	text-align: center;
+}
 .sp-event-blocks .team-logo {
 	width: 20%;
 	height: auto;

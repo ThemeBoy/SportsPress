@@ -64,6 +64,18 @@ class SP_Meta_Box_Calendar_Data {
 								<?php _e( 'Time/Results', 'sportspress' ); ?>
 							</label>
 						</th>
+						<th class="column-league">
+							<label for="sp_columns_league">
+								<input type="checkbox" name="sp_columns[]" value="league" id="sp_columns_league" <?php checked( ! is_array( $usecolumns ) || in_array( 'league', $usecolumns ) ); ?>>
+								<?php _e( 'League', 'sportspress' ); ?>
+							</label>
+						</th>
+						<th class="column-season">
+							<label for="sp_columns_season">
+								<input type="checkbox" name="sp_columns[]" value="season" id="sp_columns_season" <?php checked( ! is_array( $usecolumns ) || in_array( 'season', $usecolumns ) ); ?>>
+								<?php _e( 'Season', 'sportspress' ); ?>
+							</label>
+						</th>
 						<th class="column-venue">
 							<label for="sp_columns_venue">
 								<input type="checkbox" name="sp_columns[]" value="venue" id="sp_columns_venue" <?php checked( ! is_array( $usecolumns ) || in_array( 'venue', $usecolumns ) ); ?>>
@@ -136,6 +148,8 @@ class SP_Meta_Box_Calendar_Data {
 											endif;
 										?>
 									</td>
+									<td><?php the_terms( $event->ID, 'sp_league' ); ?></td>
+									<td><?php the_terms( $event->ID, 'sp_season' ); ?></td>
 									<td><?php the_terms( $event->ID, 'sp_venue' ); ?></td>
 									<td>
 										<a href="<?php echo get_edit_post_link( $event->ID ); ?>#sp_articlediv">

@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.1
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,6 +20,8 @@ $defaults = array(
 	'rows' => get_option( 'sportspress_event_blocks_rows', 10 ),
 	'order' => 'default',
 	'show_all_events_link' => false,
+	'show_league' => get_option( 'sportspress_event_blocks_show_league', 'no' ) == 'yes' ? true : false,
+	'show_season' => get_option( 'sportspress_event_blocks_show_season', 'no' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -89,11 +91,17 @@ if ( isset( $columns ) )
 						<td>
 							<?php echo implode( $logos, ' ' ); ?>
 							<time class="event-date"><?php echo get_the_time( get_option( 'date_format' ), $event ); ?></time>
-							<?php if ( $event->post_status == 'future' ): ?>
-								<h5 class="event-time"><?php echo get_the_time( get_option( 'time_format' ), $event ); ?></h5>
-							<?php else: ?>
+							<?php if ( ! empty( $main_results ) ): ?>
 								<h5 class="event-results"><?php echo implode( $main_results, ' - ' ); ?></h5>
+							<?php else: ?>
+								<h5 class="event-time"><?php echo get_the_time( get_option( 'time_format' ), $event ); ?></h5>
 							<?php endif; ?>
+							<?php if ( $show_league ): $leagues = get_the_terms( $event, 'sp_league' ); if ( $leagues ): $league = array_shift( $leagues ); ?>
+								<div class="event-league"><?php echo $league->name; ?></div>
+							<?php endif; endif; ?>
+							<?php if ( $show_season ): $seasons = get_the_terms( $event, 'sp_season' ); if ( $seasons ): $season = array_shift( $seasons ); ?>
+								<div class="event-season"><?php echo $season->name; ?></div>
+							<?php endif; endif; ?>
 							<h4 class="event-title"><a href="<?php echo get_post_permalink( $event ); ?>"><?php echo $event->post_title; ?></a></h4>
 						</td>
 					</tr>

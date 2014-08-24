@@ -70,6 +70,12 @@ endif;
 					if ( $usecolumns == null || in_array( 'time', $usecolumns ) )
 						echo '<th class="data-time">' . __( 'Time/Results', 'sportspress' ) . '</th>';
 
+					if ( $usecolumns == null || in_array( 'league', $usecolumns ) )
+						echo '<th class="data-league">' . __( 'League', 'sportspress' ) . '</th>';
+
+					if ( $usecolumns == null || in_array( 'season', $usecolumns ) )
+						echo '<th class="data-season">' . __( 'Season', 'sportspress' ) . '</th>';
+
 					if ( $usecolumns == null || in_array( 'venue', $usecolumns ) )
 						echo '<th class="data-venue">' . __( 'Venue', 'sportspress' ) . '</th>';
 
@@ -160,6 +166,24 @@ endif;
 								echo get_post_time( get_option( 'time_format' ), false, $event, true );
 							endif;
 							echo '</a></td>';
+						endif;
+
+						if ( $usecolumns == null || in_array( 'league', $usecolumns ) ):
+							echo '<td class="data-league">';
+							$leagues = get_the_terms( $event->ID, 'sp_league' );
+							foreach ( $leagues as $league ):
+								echo $league->name;
+							endforeach;
+							echo '</td>';
+						endif;
+
+						if ( $usecolumns == null || in_array( 'season', $usecolumns ) ):
+							echo '<td class="data-season">';
+							$seasons = get_the_terms( $event->ID, 'sp_season' );
+							foreach ( $seasons as $season ):
+								echo $season->name;
+							endforeach;
+							echo '</td>';
 						endif;
 
 						if ( $usecolumns == null || in_array( 'venue', $usecolumns ) ):

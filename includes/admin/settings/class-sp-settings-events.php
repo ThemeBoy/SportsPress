@@ -83,7 +83,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
-				'title'     => __( 'Player Performance', 'sportspress' ),
 				'desc' 		=> __( 'Display players', 'sportspress' ),
 				'id' 		=> 'sportspress_event_show_players',
 				'default'	=> 'yes',
@@ -156,6 +155,23 @@ class SP_Settings_Events extends SP_Settings_Page {
 			array( 'type' => 'sectionend', 'id' => 'event_list_options' ),
 
 			array( 'title' => __( 'Event Blocks', 'sportspress' ), 'type' => 'title', 'id' => 'event_blocks_options' ),
+
+			array(
+				'title'     => __( 'Details', 'sportspress' ),
+				'desc' 		=> __( 'Display league', 'sportspress' ),
+				'id' 		=> 'sportspress_event_blocks_show_league',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'	=> 'start',
+			),
+
+			array(
+				'desc' 		=> __( 'Display season', 'sportspress' ),
+				'id' 		=> 'sportspress_event_blocks_show_season',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'end',
+			),
 
 			array(
 				'title'     => __( 'Pagination', 'sportspress' ),

@@ -432,8 +432,10 @@ jQuery(document).ready(function($){
 		$(".sp-calendar-table tr").each(function() {
 			if ( layout == "list" ) {
 				$(this).find("th input[type=checkbox]").show();
+				$(this).find("th select").prop("disabled", false);
 			} else {
 				$(this).find("th input[type=checkbox]").hide();
+				$(this).find("th select").prop('selectedIndex', 0).prop("disabled", true);
 			}
 		});
 	});
