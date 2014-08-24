@@ -704,7 +704,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 				<?php
 				$selected = sp_array_between( (array)get_post_meta( $post_id, $meta, false ), 0, $index );
 				if ( empty( $posts ) ):
-					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1, 'tax_query' => array( 'relation' => 'AND' ) );
+					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1 );
 					if ( $meta == 'sp_player' ):
 						$query['meta_key'] = 'sp_number';
 						$query['orderby'] = 'meta_value_num';

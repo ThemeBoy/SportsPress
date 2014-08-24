@@ -23,6 +23,10 @@
 	content: "\f164";
 }
 
+.sp-dummy {
+	display: none;
+}
+
 #sp_videodiv .inside > fieldset > p:first-child {
 	margin-top: 7px !important;
 }

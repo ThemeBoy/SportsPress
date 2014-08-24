@@ -30,6 +30,7 @@ class SP_Meta_Box_Event_Details {
 				$args = array(
 					'taxonomy' => 'sp_league',
 					'name' => 'sp_league',
+					'class' => 'sp-has-dummy',
 					'selected' => $league_id,
 					'values' => 'term_id',
 					'show_option_none' => __( '-- Not set --', 'sportspress' ),
@@ -47,6 +48,7 @@ class SP_Meta_Box_Event_Details {
 				$args = array(
 					'taxonomy' => 'sp_season',
 					'name' => 'sp_season',
+					'class' => 'sp-has-dummy',
 					'selected' => $season_id,
 					'values' => 'term_id',
 					'show_option_none' => __( '-- Not set --', 'sportspress' ),

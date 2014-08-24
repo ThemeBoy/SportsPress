@@ -21,10 +21,38 @@ class SP_Meta_Box_Event_Teams {
 	public static function output( $post ) {
 		$limit = get_option( 'sportspress_event_teams', 2 );
 		$teams = (array) get_post_meta( $post->ID, 'sp_team', false );
+		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
+		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 		for ( $i = 0; $i < $limit; $i ++ ):
 			$team = array_shift( $teams );
 			?>
 			<div class="sp-instance">
+				<p class="sp-tab-select sp-tab-select-dummy">
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_league',
+						'name' => 'sp_league_dummy',
+						'class' => 'sp-dummy sp_league-dummy',
+						'show_option_all' => __( 'All', 'sportspress' ),
+						'selected' => $league_id,
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</p>
+				<p class="sp-tab-select sp-tab-select-dummy">
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_season',
+						'name' => 'sp_season_dummy',
+						'class' => 'sp-dummy sp_season-dummy',
+						'show_option_all' => __( 'All', 'sportspress' ),
+						'selected' => $season_id,
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</p>
 				<p class="sp-tab-select sp-title-generator">
 				<?php
 				$args = array(
@@ -42,8 +70,8 @@ class SP_Meta_Box_Event_Teams {
 					<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
 				</ul>
 				<?php
-				sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_current_team', $i );
-				sp_post_checklist( $post->ID, 'sp_staff', 'none', 'sp_current_team', $i );
+				sp_post_checklist( $post->ID, 'sp_player', 'block', array( 'sp_league', 'sp_season', 'sp_current_team' ), $i );
+				sp_post_checklist( $post->ID, 'sp_staff', 'none', array( 'sp_league', 'sp_season', 'sp_current_team' ), $i );
 				?>
 			</div>
 			<?php

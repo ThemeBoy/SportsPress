@@ -127,6 +127,14 @@ jQuery(document).ready(function($){
 	// Activate self-cloning
 	$(".sp-clone:last").find("select").change();
 
+	// Dummy controller
+	$(".sp-has-dummy").change(function() {
+		val = $(this).val();
+		if ( val == -1 ) val = 0;
+		name = $(this).attr("name");
+		$(".sp-dummy."+name+"-dummy").val(val).trigger("change");
+	});
+
 	// Custom value editor
 	$(".sp-data-table .sp-default-value").click(function() {
 		$(this).hide().siblings(".sp-custom-value").show().find(".sp-custom-value-input").focus();
