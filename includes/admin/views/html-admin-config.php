@@ -30,7 +30,7 @@
 								<th scope="col" class="edit"></th>
 							</tr>
 						</thead>
-						<?php $i = 0; foreach ( $data as $row ): ?>
+						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
 								<td><?php echo $row->post_name; ?></td>
@@ -38,7 +38,11 @@
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
-						<?php $i++; endforeach; ?>
+						<?php $i++; endforeach; else: ?>
+							<tr class="alternate">
+								<td colspan="5"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+							</tr>
+						<?php endif; ?>
 					</table>
 					<div class="tablenav bottom">
 						<div class="alignleft actions">
@@ -100,7 +104,7 @@
 									</label></th>
 								</tr>
 							</tfoot>
-							<?php $i = 0; foreach ( $data as $row ): ?>
+							<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 								<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 									<td class="radio"><input type="radio" class="sp-primary-result-option" id="sportspress_primary_result_<?php echo $row->post_name; ?>" name="sportspress_primary_result" value="<?php echo $row->post_name; ?>" <?php checked( $selection, $row->post_name ); ?>></td>
 									<td class="row-title"><label for="sportspress_primary_result_<?php echo $row->post_name; ?>"><?php echo $row->post_title; ?></label></td>
@@ -108,7 +112,11 @@
 									<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 									<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 								</tr>
-							<?php $i++; endforeach; ?>
+							<?php $i++; endforeach; else: ?>
+							<tr class="alternate">
+								<td colspan="5"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+							</tr>
+						<?php endif; ?>
 						</table>
 					</form>
 					<div class="tablenav bottom">
@@ -150,7 +158,7 @@
 								<th scope="col" class="edit"></th>
 							</tr>
 						</thead>
-						<?php $i = 0; foreach ( $data as $row ): ?>
+						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="icon"><?php if ( has_post_thumbnail( $row->ID ) ) echo get_the_post_thumbnail( $row->ID, 'sportspress-fit-mini' ); ?></td>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
@@ -158,7 +166,11 @@
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
-						<?php $i++; endforeach; ?>
+						<?php $i++; endforeach; else: ?>
+							<tr class="alternate">
+								<td colspan="5"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+							</tr>
+						<?php endif; ?>
 					</table>
 					<div class="tablenav bottom">
 						<div class="alignleft actions">
@@ -201,7 +213,7 @@
 								<th scope="col" class="edit"></th>
 							</tr>
 						</thead>
-						<?php $i = 0; foreach ( $data as $row ): ?>
+						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
 								<td><?php echo $row->post_name; ?></td>
@@ -211,7 +223,11 @@
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
-						<?php $i++; endforeach; ?>
+						<?php $i++; endforeach; else: ?>
+							<tr class="alternate">
+								<td colspan="7"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+							</tr>
+						<?php endif; ?>
 					</table>
 					<div class="tablenav bottom">
 						<div class="alignleft actions">
@@ -252,14 +268,18 @@
 								<th scope="col" class="edit"></th>
 							</tr>
 						</thead>
-						<?php $i = 0; foreach ( $data as $row ): ?>
+						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
 								<td><?php echo $row->post_name; ?></td>
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
-						<?php $i++; endforeach; ?>
+						<?php $i++; endforeach; else: ?>
+							<tr class="alternate">
+								<td colspan="4"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+							</tr>
+						<?php endif; ?>
 					</table>
 					<div class="tablenav bottom">
 						<div class="alignleft actions">
@@ -301,7 +321,7 @@
 								<th scope="col" class="edit"></th>
 							</tr>
 						</thead>
-						<?php $i = 0; foreach ( $data as $row ): ?>
+						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
 								<td><?php echo $row->post_name; ?></td>
@@ -310,7 +330,11 @@
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
-						<?php $i++; endforeach; ?>
+						<?php $i++; endforeach; else: ?>
+							<tr class="alternate">
+								<td colspan="6"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+							</tr>
+						<?php endif; ?>
 					</table>
 					<div class="tablenav bottom">
 						<div class="alignleft actions">
