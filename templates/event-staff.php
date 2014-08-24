@@ -15,15 +15,15 @@ $defaults = array(
 	'link_posts' => get_option( 'sportspress_link_staff', 'yes' ) == 'yes' ? true : false,
 );
 
-$staff = array_filter( sp_array_between( (array)get_post_meta( $id, 'sp_staff', false ), 0, $index ) );
+$staffs = array_filter( sp_array_between( (array)get_post_meta( $id, 'sp_staff', false ), 0, $index ) );
 
-if ( ! $staff ) return;
+if ( ! $staffs ) return;
 
 extract( $defaults, EXTR_SKIP );
 ?>
 <p class="sp-event-staff">
 <?php
-foreach( $staff as $staff_id ):
+foreach( $staffs as $staff_id ):
 
 	if ( ! $staff_id )
 		continue;
@@ -33,10 +33,12 @@ foreach( $staff as $staff_id ):
 	if ( ! $name )
 		continue;
 
-	$role = get_post_meta( $staff_id, 'sp_role', true );
+	$staff = new SP_Staff( $staff_id );
+
+	$role = $staff->role();
 
 	if ( $role )
-		echo $role;
+		echo $role->name;
 	else
 		_e( 'Staff', 'sportspress' );
 

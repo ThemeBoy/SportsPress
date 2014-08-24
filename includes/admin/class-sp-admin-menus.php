@@ -27,6 +27,7 @@ class SP_Admin_Menus {
 		add_action( 'admin_menu', array( $this, 'overview_menu' ), 8 );
 		add_action( 'admin_menu', array( $this, 'leagues_menu' ), 9 );
 		add_action( 'admin_menu', array( $this, 'seasons_menu' ), 10 );
+		add_filter( 'admin_menu', array( $this, 'menu_add' ), 20 );
 
 		if ( current_user_can( 'manage_options' ) )
 			add_action( 'admin_menu', array( $this, 'status_menu' ), 20 );
@@ -94,7 +95,10 @@ class SP_Admin_Menus {
 	 */
 	public function menu_highlight() {
 		global $typenow, $submenu;
-		if ( is_sp_config_type( $typenow ) )
+		$screen = get_current_screen();
+		if ( $screen->id == 'edit-sp_role' )
+			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit-tags.php?taxonomy=sp_role&post_type=sp_player' );			
+		elseif ( is_sp_config_type( $typenow ) )
 			$this->highlight_admin_menu( 'sportspress', 'sp-config' );
 		elseif ( $typenow == 'sp_calendar' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_event', 'edit.php?post_type=sp_calendar' );
@@ -213,12 +217,6 @@ class SP_Admin_Menus {
 			$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], array( $this, 'remove_seasons' ) );
 		endif;
 
-	    // Remove "Leagues" and "Seasons" links from Staff submenu
-		if ( isset( $submenu['edit.php?post_type=sp_staff'] ) ):
-			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_leagues' ) );
-			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_seasons' ) );
-		endif;
-
 		$user_roles = $current_user->roles;
 		$user_role = array_shift($user_roles);
 
@@ -226,6 +224,18 @@ class SP_Admin_Menus {
 			remove_menu_page( 'upload.php' );
 			remove_menu_page( 'edit-comments.php' );
 			remove_menu_page( 'tools.php' );
+		endif;
+	}
+
+	/**
+	 * Add missing SP menu items in admin.
+	 */
+	public function menu_add() {
+		global $menu, $submenu, $current_user;
+
+		// Add "Roles" to Players submenu
+		if ( isset( $submenu['edit.php?post_type=sp_player'] ) ):
+			array_splice( $submenu['edit.php?post_type=sp_player'], 5, 0, array( array( __( 'Roles', 'sportspress' ), 'manage_categories', 'edit-tags.php?taxonomy=sp_role&post_type=sp_player' ) ) );
 		endif;
 	}
 

@@ -146,6 +146,35 @@ class SP_Post_types {
 		foreach ( $object_types as $object_type ):
 			register_taxonomy_for_object_type( 'sp_position', $object_type );
 		endforeach;
+
+		$labels = array(
+			'name' => __( 'Roles', 'sportspress' ),
+			'singular_name' => __( 'Role', 'sportspress' ),
+			'all_items' => __( 'All', 'sportspress' ),
+			'edit_item' => __( 'Edit Role', 'sportspress' ),
+			'view_item' => __( 'View', 'sportspress' ),
+			'update_item' => __( 'Update', 'sportspress' ),
+			'add_new_item' => __( 'Add New', 'sportspress' ),
+			'new_item_name' => __( 'Name', 'sportspress' ),
+			'parent_item' => __( 'Parent', 'sportspress' ),
+			'parent_item_colon' => __( 'Parent:', 'sportspress' ),
+			'search_items' =>  __( 'Search', 'sportspress' ),
+			'not_found' => __( 'No results found.', 'sportspress' ),
+		);
+		$args = array(
+			'label' => __( 'Roles', 'sportspress' ),
+			'labels' => $labels,
+			'public' => true,
+			'show_in_nav_menus' => false,
+			'show_tagcloud' => false,
+			'hierarchical' => true,
+			'rewrite' => array( 'slug' => get_option( 'sportspress_role_slug', 'role' ) ),
+		);
+		$object_types = apply_filters( 'sportspress_role_object_types', array( 'sp_staff' ) );
+		register_taxonomy( 'sp_role', $object_types, $args );
+		foreach ( $object_types as $object_type ):
+			register_taxonomy_for_object_type( 'sp_role', $object_type );
+		endforeach;
 	}
 
 	/**

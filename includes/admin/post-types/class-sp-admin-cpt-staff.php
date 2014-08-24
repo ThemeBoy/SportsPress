@@ -79,8 +79,7 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
 			case 'sp_role':
-				$role = get_post_meta ( $post_id, 'sp_role', true );
-				echo $role ? $role : '&mdash;';
+				echo get_the_terms( $post_id, 'sp_role' ) ? the_terms( $post_id, 'sp_role' ) : '&mdash;';
 				break;
 			case 'sp_team':
 				$teams = (array)get_post_meta( $post_id, 'sp_team', false );
