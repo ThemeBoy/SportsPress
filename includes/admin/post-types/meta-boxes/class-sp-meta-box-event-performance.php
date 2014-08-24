@@ -86,6 +86,22 @@ class SP_Meta_Box_Event_Performance {
 						<th><?php _e( 'Status', 'sportspress' ); ?></th>
 					</tr>
 				</thead>
+				<tfoot>
+					<tr class="sp-row sp-total">
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
+						<td>&nbsp;</td>
+						<?php foreach( $labels as $column => $label ):
+							$player_id = 0;
+							$player_performance = sp_array_value( $data, 0, array() );
+							$value = sp_array_value( $player_performance, $column, '' );
+							?>
+							<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
+						<?php endforeach; ?>
+						<td>&nbsp;</td>
+					</tr>
+				</tfoot>
 				<tbody>
 					<?php
 					foreach ( $data as $player_id => $player_performance ):
@@ -130,21 +146,6 @@ class SP_Meta_Box_Event_Performance {
 					endforeach;
 					?>
 				</tbody>
-				<tfoot>
-					<tr class="sp-row sp-total">
-						<td>&nbsp;</td>
-						<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
-						<td>&nbsp;</td>
-						<?php foreach( $labels as $column => $label ):
-							$player_id = 0;
-							$player_performance = sp_array_value( $data, 0, array() );
-							$value = sp_array_value( $player_performance, $column, '' );
-							?>
-							<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
-						<?php endforeach; ?>
-						<td>&nbsp;</td>
-					</tr>
-				</tfoot>
 			</table>
 		</div>
 		<?php
