@@ -56,3 +56,5 @@ foreach( $venues as $venue ):
 	</div>
 	<?php
 endforeach;
+?>
+<br>

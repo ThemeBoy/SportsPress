@@ -23,3 +23,5 @@ if ( $video_url ):
 	</div>
     <?php
 endif;
+?>
+<br>

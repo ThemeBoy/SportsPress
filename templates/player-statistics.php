@@ -67,3 +67,5 @@ if ( is_array( $leagues ) ):
 		<?php
 	endforeach;
 endif;
+?>
+<br>

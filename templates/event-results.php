@@ -104,3 +104,4 @@ endif;
 <div class="sp-template sp-template-event-results">
 	<?php echo $output; ?>
 </div>
+<br>

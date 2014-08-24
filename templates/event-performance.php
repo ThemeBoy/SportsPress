@@ -214,6 +214,7 @@ if ( is_array( $teams ) ):
 				</table>
 			</div>
 		</div>
+		<br>
 		<?php
 	endforeach;
 endif;
