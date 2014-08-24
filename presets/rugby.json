@@ -22,11 +22,11 @@
 						{ "name" : "W", "equation" : "$win", "description" : "Matches won" },
 						{ "name" : "L", "equation" : "$loss", "description" : "Matches lost" },
 						{ "name" : "D", "equation" : "$draw", "description" : "Matches drawn" },
-						{ "name" : "PF", "equation" : "$pointsfor", "description" : "Points for" },
+						{ "name" : "PF", "equation" : "$pointsfor", "description" : "Points for", "priority" : 3 },
 						{ "name" : "PA", "equation" : "$pointsagainst", "description" : "Points against" },
-						{ "name" : "PD", "equation" : "$pointsfor - $pointsagainst", "description" : "Points difference" },
+						{ "name" : "PD", "equation" : "$pointsfor - $pointsagainst", "description" : "Points difference", "priority" : 2 },
 						{ "name" : "BP", "equation" : "$bp", "description" : "Bonus points" },
-						{ "name" : "Pts", "equation" : "$points", "description" : "Total points" }
+						{ "name" : "Pts", "equation" : "$points", "description" : "Total points", "priority" : 1 }
 	],
 	"metrics": [
 						"Height",
