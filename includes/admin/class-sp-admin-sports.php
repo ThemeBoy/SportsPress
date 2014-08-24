@@ -5,7 +5,7 @@
  * The SportsPress admin sports class stores preset sport data.
  *
  * @class 		SP_Admin_Sports
- * @version		0.8
+ * @version		1.3
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
@@ -21,11 +21,17 @@ class SP_Admin_Sports {
 	public static function get_presets() {
 		if ( empty( self::$presets ) ) {
 			$presets = array();
+			self::$options = array(
+				__( 'Traditional Sports', 'sportspress' ) => array(),
+				__( 'Esports', 'sportspress' ) => array(),
+				__( 'Other', 'sportspress' ) => array( 'custom' => __( 'Custom', 'sportspress' ) ),
+			);
+
 			$dir = scandir( SP()->plugin_path() . '/presets' );
 			$files = array();
 			if ( $dir ) {
 				foreach ( $dir as $key => $value ) {
-					if ( substr( $value, 0, 1 ) !== '.' ) {
+					if ( substr( $value, 0, 1 ) !== '.' && strpos( $value, '.' ) !== false ) {
 						$files[] = $value;
 					}
 				}
@@ -37,18 +43,49 @@ class SP_Admin_Sports {
 				$id = preg_replace('/\\.[^.\\s]{3,4}$/', '', $file );
 				$presets[ $id ] = $data;
 				$name = array_key_exists( 'name', $data ) ? $data['name'] : $id;
-				self::$options[ $id ] = $name;
+				self::$options[ __( 'Traditional Sports', 'sportspress' ) ][ $id ] = $name;
 			}
-			self::$options[ 'custom' ] = __( 'Custom', 'sportspress' );
+			asort( self::$options[ __( 'Traditional Sports', 'sportspress' ) ] );
+
+			$dir = scandir( SP()->plugin_path() . '/presets/esports' );
+			$files = array();
+			if ( $dir ) {
+				foreach ( $dir as $key => $value ) {
+					if ( substr( $value, 0, 1 ) !== '.' && strpos( $value, '.' ) !== false ) {
+						$files[] = $value;
+					}
+				}
+			}
+			foreach( $files as $file ) {
+				$json_data = file_get_contents( SP()->plugin_path() . '/presets/esports/' . $file );
+				$data = json_decode( $json_data, true );
+				if ( ! is_array( $data ) ) continue;
+				$id = preg_replace('/\\.[^.\\s]{3,4}$/', '', $file );
+				$presets[ $id ] = $data;
+				$name = array_key_exists( 'name', $data ) ? $data['name'] : $id;
+				self::$options[ __( 'Esports', 'sportspress' ) ][ $id ] = $name;
+			}
+			asort( self::$options[ __( 'Esports', 'sportspress' ) ] );
+
 			self::$presets = apply_filters( 'sportspress_get_presets', $presets );
-			asort( self::$options );
 		}
 		return self::$presets;
 	}
 
 	public static function get_preset( $id ) {
-		$json_data = file_get_contents( SP()->plugin_path() . '/presets/' . $id . '.json' );
-		return json_decode( $json_data, true );
+		$json_data = @file_get_contents( SP()->plugin_path() . '/presets/' . $id . '.json', true );
+		
+		if ( $json_data ) return json_decode( $json_data, true );
+		
+		$dir = scandir( SP()->plugin_path() . '/presets' );
+		if ( $dir ) {
+			foreach ( $dir as $key => $value ) {
+				if ( substr( $value, 0, 1 ) !== '.' && strpos( $value, '.' ) === false ) {
+					$json_data = @file_get_contents( SP()->plugin_path() . '/presets/' . $value . '/' . $id . '.json', true );
+					if ( $json_data ) return json_decode( $json_data, true );
+				}
+			}
+		}
 	}
 
 	public static function get_preset_options() {
@@ -89,7 +126,7 @@ class SP_Admin_Sports {
 			$post = self::get_post_array( $result, $post_type );
 			if ( empty( $post ) ) continue;
 			$id = self::insert_preset_post( $post, $index );
-			if ( array_key_exists( 'primary', $result ) ) $primary_result = $post['post_name'];
+			if ( is_array( $result ) && array_key_exists( 'primary', $result ) ) $primary_result = $post['post_name'];
 		}
 
 		// Performance

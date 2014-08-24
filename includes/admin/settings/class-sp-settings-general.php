@@ -49,7 +49,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				'title'     => __( 'Sport', 'sportspress' ),
 				'id'        => 'sportspress_sport',
 				'default'   => 'soccer',
-				'type'      => 'select',
+				'type'      => 'groupselect',
 				'options'   => $presets,
 			),
 

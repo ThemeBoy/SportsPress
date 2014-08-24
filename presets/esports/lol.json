@@ -1,0 +1,30 @@
+{
+	"name":				"League of Legends",
+	"outcomes": [
+						"Win",
+						"Loss"
+	],
+	"results": [
+						"Kills",
+						"Deaths",
+						"Assists",
+						{ "name" : "Gold", "primary" : 1 }
+	],
+	"performance": [
+						"Kills",
+						"Deaths",
+						"Assists",
+						"Gold"
+	],
+	"columns": [
+						{ "name" : "Wins", "equation" : "$win", "priority" : 1, "description" : "Wins" },
+						{ "name" : "Losses", "equation" : "$loss", "priority" : 2, "order" : "ASC", "description" : "Losses" }
+	],
+	"metrics": [
+	],
+	"statistics": [
+						{ "name" : "Avg. KDA Ratio", "equation" : "( $kills + $assists ) / $deaths", "precision" : 1, "description" : "Average kills/deaths/assists ratio" },
+						{ "name" : "Avg. Gold per Min", "equation" : "$gold / $eventminutes", "description" : "Average gold per minute" },
+						{ "name" : "Avg. Total Gold", "equation" : "$gold / $eventsplayed", "description" : "Average total gold" }
+	]
+}
