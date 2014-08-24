@@ -130,19 +130,19 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 			array( 'type' => 'sectionend', 'id' => 'event_options' ),
 
-			array( 'title' => __( 'Calendars', 'sportspress' ), 'type' => 'title', 'id' => 'calendar_options' ),
+			array( 'title' => __( 'Event List', 'sportspress' ), 'type' => 'title', 'id' => 'event_list_options' ),
 
 			array(
 				'title'     => __( 'Pagination', 'sportspress' ),
 				'desc' 		=> __( 'Paginate', 'sportspress' ),
-				'id' 		=> 'sportspress_calendar_paginated',
+				'id' 		=> 'sportspress_event_list_paginated',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 			),
 			
 			array(
 				'title' 	=> __( 'Limit', 'sportspress' ),
-				'id' 		=> 'sportspress_calendar_rows',
+				'id' 		=> 'sportspress_event_list_rows',
 				'class' 	=> 'small-text',
 				'default'	=> '10',
 				'desc' 		=> __( 'events', 'sportspress' ),
@@ -153,7 +153,32 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 			),
 
-			array( 'type' => 'sectionend', 'id' => 'calendar_options' ),
+			array( 'type' => 'sectionend', 'id' => 'event_list_options' ),
+
+			array( 'title' => __( 'Event Blocks', 'sportspress' ), 'type' => 'title', 'id' => 'event_blocks_options' ),
+
+			array(
+				'title'     => __( 'Pagination', 'sportspress' ),
+				'desc' 		=> __( 'Paginate', 'sportspress' ),
+				'id' 		=> 'sportspress_event_blocks_paginated',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+			),
+			
+			array(
+				'title' 	=> __( 'Limit', 'sportspress' ),
+				'id' 		=> 'sportspress_event_blocks_rows',
+				'class' 	=> 'small-text',
+				'default'	=> '10',
+				'desc' 		=> __( 'events', 'sportspress' ),
+				'type' 		=> 'number',
+				'custom_attributes' => array(
+					'min' 	=> 1,
+					'step' 	=> 1
+				),
+			),
+
+			array( 'type' => 'sectionend', 'id' => 'event_list_options' ),
 
 		)); // End event settings
 	}

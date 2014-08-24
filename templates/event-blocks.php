@@ -16,8 +16,8 @@ $defaults = array(
 	'date' => 'default',
 	'number' => -1,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
-	'paginated' => get_option( 'sportspress_calendar_paginated', 'yes' ) == 'yes' ? true : false,
-	'rows' => get_option( 'sportspress_calendar_rows', 10 ),
+	'paginated' => get_option( 'sportspress_event_blocks_paginated', 'yes' ) == 'yes' ? true : false,
+	'rows' => get_option( 'sportspress_event_blocks_rows', 10 ),
 	'order' => 'default',
 	'show_all_events_link' => false,
 );
