@@ -36,9 +36,9 @@ endif;
 
 $position_names = array();
 $positions = get_the_terms( $id, 'sp_position' );
-foreach ( $positions as $position ):
+if ( $positions ): foreach ( $positions as $position ):
 	$position_names[] = $position->name;
-endforeach;
+endforeach; endif;
 
 $common[ __( 'Position', 'sportspress' ) ] = implode( ', ', $position_names );
 
