@@ -9,6 +9,7 @@
 # israel.cefrin <israel.cefrin@gmail.com>, 2013
 # Jean Michell de Souza Bernardo <jeanmichellsouber@gmail.com>, 2013
 # Lucas Pelusi <lucaspelusi@gmail.com>, 2014
+# Lucas Pelusi <lucaspelusi@gmail.com>, 2014
 # Marcos Ortiz <marcosortizf@gmail.com>, 2014
 # Matheus Beck <math_beck@hotmail.com>, 2013
 # Renato Frota <renatofrota@gmail.com>, 2013
@@ -21,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-08-11 23:23+1000\n"
-"PO-Revision-Date: 2014-08-16 10:32+0000\n"
+"PO-Revision-Date: 2014-08-21 18:46+0000\n"
 "Last-Translator: Lucas Pelusi <lucaspelusi@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/sportspress/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +44,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-general.php:107
 #: includes/admin/settings/class-sp-settings-general.php:167
 msgid "Auto"
-msgstr ""
+msgstr "Automático"
 
 #: assets/js/admin/editor-lang.php:7
 msgid "Manual"
@@ -51,15 +52,15 @@ msgstr "Manual"
 
 #: assets/js/admin/editor-lang.php:8
 msgid "Single"
-msgstr ""
+msgstr "Único"
 
 #: assets/js/admin/editor-lang.php:9
 msgid "Select..."
-msgstr ""
+msgstr "Selecione..."
 
 #: assets/js/admin/editor-lang.php:10
 msgid "Countdown"
-msgstr ""
+msgstr "Contagem Regressiva"
 
 #: assets/js/admin/editor-lang.php:11
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:90
@@ -124,7 +125,7 @@ msgstr "Lista"
 
 #: assets/js/admin/editor-lang.php:17 includes/class-sp-formats.php:33
 msgid "Blocks"
-msgstr ""
+msgstr "Bloquear"
 
 #: assets/js/admin/editor-lang.php:18
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:149
@@ -210,8 +211,8 @@ msgstr "SportsPress"
 #, php-format
 msgid "%s "
 msgid_plural "%s "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s"
+msgstr[1] "%s"
 
 #: includes/admin/class-sp-admin-dashboard.php:80
 #, php-format
@@ -258,15 +259,15 @@ msgstr "Importar <strong>jogadores</strong> de um arquivo csv."
 
 #: includes/admin/class-sp-admin-importers.php:34
 msgid "SportsPress Staff (CSV)"
-msgstr ""
+msgstr "Equipe SportsPress (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:34
 msgid "Import <strong>staff</strong> from a csv file."
-msgstr ""
+msgstr "Importar <strong>equipe</strong> de um arquivo csv."
 
 #: includes/admin/class-sp-admin-menus.php:58
 msgid "Overview"
-msgstr ""
+msgstr "Visão Global"
 
 #: includes/admin/class-sp-admin-menus.php:65
 #: includes/admin/class-sp-admin-menus.php:262
@@ -539,7 +540,7 @@ msgstr "Endereço"
 #: includes/admin/class-sp-admin-taxonomies.php:66
 #: includes/admin/class-sp-admin-taxonomies.php:85
 msgid "Drag the marker to the venue's location."
-msgstr ""
+msgstr "Largue o marcador para a localização local."
 
 #: includes/admin/class-sp-admin-taxonomies.php:89
 msgid "Latitude"
@@ -572,7 +573,7 @@ msgstr "Obrigado por instalar!"
 #: includes/admin/class-sp-admin-welcome.php:146
 #, php-format
 msgid "%s SportsPress %s has lots of refinements we think you&#8217;ll love."
-msgstr ""
+msgstr "%s SportsPress %s has lots of refinements we think you&#8217;ll love."
 
 #: includes/admin/class-sp-admin-welcome.php:150
 #, php-format
@@ -1530,7 +1531,7 @@ msgstr "Primário"
 
 #: includes/admin/settings/class-sp-settings-config.php:166
 msgid "Variables"
-msgstr ""
+msgstr "Variáveis"
 
 #: includes/admin/settings/class-sp-settings-config.php:179
 #, php-format
@@ -1561,13 +1562,13 @@ msgstr "Padrão"
 
 #: includes/admin/settings/class-sp-settings-config.php:280
 msgid "Used for league tables."
-msgstr ""
+msgstr "Usado para tabela da liga."
 
 #: includes/admin/settings/class-sp-settings-config.php:338
 #: includes/admin/views/html-admin-page-status.php:267
 #: includes/class-sp-post-types.php:251
 msgid "Player Metrics"
-msgstr ""
+msgstr "Métricas do Jogador"
 
 #: includes/admin/settings/class-sp-settings-config.php:339
 #: includes/admin/settings/class-sp-settings-config.php:391
@@ -1578,7 +1579,7 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status.php:277
 #: includes/class-sp-post-types.php:311
 msgid "Player Statistics"
-msgstr ""
+msgstr "Estatísticas do Jogador"
 
 #: includes/admin/settings/class-sp-settings-events.php:42
 msgid "Event Options"
@@ -1614,7 +1615,7 @@ msgstr "Linkar campos"
 
 #: includes/admin/settings/class-sp-settings-events.php:86
 msgid "Display players"
-msgstr ""
+msgstr "Mostrar jogadores"
 
 #: includes/admin/settings/class-sp-settings-events.php:94
 #: includes/admin/settings/class-sp-settings-players.php:55
@@ -1624,15 +1625,15 @@ msgstr "Linkar jogadores"
 
 #: includes/admin/settings/class-sp-settings-events.php:102
 msgid "Display total"
-msgstr ""
+msgstr "Mostrar total"
 
 #: includes/admin/settings/class-sp-settings-events.php:111
 msgid "Display staff"
-msgstr ""
+msgstr "Mostrar equipe"
 
 #: includes/admin/settings/class-sp-settings-events.php:119
 msgid "Link staff"
-msgstr ""
+msgstr "Link da equipe"
 
 #: includes/admin/settings/class-sp-settings-events.php:132
 #: includes/admin/settings/class-sp-settings-players.php:65
@@ -1670,7 +1671,7 @@ msgstr "Opções gerais"
 
 #: includes/admin/settings/class-sp-settings-general.php:68
 msgid "Google Maps"
-msgstr ""
+msgstr "Google Maps"
 
 #: includes/admin/settings/class-sp-settings-general.php:74
 msgid "Satellite"
@@ -1690,19 +1691,19 @@ msgstr "Estilos e scripts"
 
 #: includes/admin/settings/class-sp-settings-general.php:90
 msgid "Align"
-msgstr ""
+msgstr "Alinhamento"
 
 #: includes/admin/settings/class-sp-settings-general.php:96
 msgid "Left"
-msgstr ""
+msgstr "Esquerda"
 
 #: includes/admin/settings/class-sp-settings-general.php:97
 msgid "Center"
-msgstr ""
+msgstr "Centro"
 
 #: includes/admin/settings/class-sp-settings-general.php:98
 msgid "Right"
-msgstr ""
+msgstr "Direita"
 
 #: includes/admin/settings/class-sp-settings-general.php:103
 msgid "Padding"
@@ -1773,7 +1774,7 @@ msgstr "Cabeçalho"
 
 #: includes/admin/settings/class-sp-settings-general.php:289
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
 #: includes/admin/settings/class-sp-settings-general.php:295
 msgid "Enable"
@@ -1796,7 +1797,7 @@ msgstr "jogadores"
 
 #: includes/admin/settings/class-sp-settings-staff.php:41
 msgid "Staff Options"
-msgstr ""
+msgstr "Opções da Equipe"
 
 #: includes/admin/settings/class-sp-settings-teams.php:41
 msgid "Team Options"
@@ -1809,7 +1810,7 @@ msgstr "As opções a seguir afetam como as palavras são exibidas aos usuários
 #: includes/admin/views/html-admin-overview.php:304
 msgid ""
 "Love SportsPress? Help spread the word by rating us 5★ on WordPress.org"
-msgstr ""
+msgstr "Ama SportPress? Ajude-nos a espalhar a palavra nos avaliando em 5★ em WordPress.org"
 
 #: includes/admin/views/html-admin-page-status.php:5
 msgid "Please include this information when requesting support:"
@@ -2074,7 +2075,7 @@ msgstr "Selecionar %s:"
 #: includes/class-sp-ajax.php:74
 #: includes/widgets/class-sp-widget-countdown.php:62
 msgid "Display venue"
-msgstr ""
+msgstr "Ver local"
 
 #: includes/class-sp-ajax.php:80
 #: includes/widgets/class-sp-widget-countdown.php:65
@@ -2089,7 +2090,7 @@ msgstr "Ver liga"
 #: includes/class-sp-ajax.php:598 includes/class-sp-ajax.php:675
 #, php-format
 msgid "Insert %s"
-msgstr ""
+msgstr "Inserir %s"
 
 #: includes/class-sp-ajax.php:202 includes/class-sp-ajax.php:249
 #: includes/class-sp-ajax.php:340
@@ -2111,12 +2112,12 @@ msgstr "Mostrar link para todos os eventos"
 #: includes/widgets/class-sp-widget-event-blocks.php:81
 #: includes/widgets/class-sp-widget-event-list.php:84
 msgid "Date:"
-msgstr ""
+msgstr "Data:"
 
 #: includes/class-sp-ajax.php:265 includes/class-sp-ajax.php:356
 #: includes/sp-core-functions.php:439
 msgid "This week"
-msgstr ""
+msgstr "Essa equipe:"
 
 #: includes/class-sp-ajax.php:266 includes/class-sp-ajax.php:357
 #: includes/sp-core-functions.php:440
@@ -3012,7 +3013,7 @@ msgstr "Próximo"
 
 #: includes/class-sp-install.php:230
 msgid "Event Manager"
-msgstr ""
+msgstr "Gerenciar Evento"
 
 #: includes/class-sp-install.php:273
 msgid "Team Manager"
@@ -3157,7 +3158,7 @@ msgstr "Editar Evento"
 
 #: includes/class-sp-post-types.php:346
 msgid "View Event"
-msgstr ""
+msgstr "Ver Evento"
 
 #: includes/class-sp-post-types.php:373
 msgid "Add New Calendar"
@@ -3169,7 +3170,7 @@ msgstr "Editar Calendário"
 
 #: includes/class-sp-post-types.php:376
 msgid "View Calendar"
-msgstr ""
+msgstr "Ver Calendário"
 
 #: includes/class-sp-post-types.php:405
 msgid "Edit Team"
@@ -3177,7 +3178,7 @@ msgstr "Editar Time"
 
 #: includes/class-sp-post-types.php:407
 msgid "View Team"
-msgstr ""
+msgstr "Ver Equipe"
 
 #: includes/class-sp-post-types.php:434
 msgid "Add New League Table"
@@ -3189,7 +3190,7 @@ msgstr "Editar Tabela da Liga"
 
 #: includes/class-sp-post-types.php:437
 msgid "View League Table"
-msgstr ""
+msgstr "Ver Tabela da Liga"
 
 #: includes/class-sp-post-types.php:467 sportspress.php:343
 msgid "Edit Player"
@@ -3197,7 +3198,7 @@ msgstr "Editar Jogador"
 
 #: includes/class-sp-post-types.php:469
 msgid "View Player"
-msgstr ""
+msgstr "Ver Jogador"
 
 #: includes/class-sp-post-types.php:496
 msgid "Add New Player List"
@@ -3209,7 +3210,7 @@ msgstr "Editar Lista de Jogadores"
 
 #: includes/class-sp-post-types.php:499
 msgid "View Player List"
-msgstr ""
+msgstr "Ver Lista de Jogadores"
 
 #: includes/class-sp-post-types.php:527
 msgid "Add New Staff"
@@ -3225,7 +3226,7 @@ msgstr "Média"
 
 #: includes/sp-core-functions.php:408
 msgid "Published"
-msgstr ""
+msgstr "Publicado"
 
 #: includes/sp-core-functions.php:409
 msgid "Scheduled"
@@ -3241,7 +3242,7 @@ msgstr "Selecionar todos"
 
 #: includes/sp-core-functions.php:750 includes/sp-core-functions.php:753
 msgid "Show all"
-msgstr ""
+msgstr "Mostrar todos"
 
 #: includes/sp-core-functions.php:1076 templates/league-table.php:49
 msgid "Pos"
@@ -3388,15 +3389,15 @@ msgstr "Cheatin&#8217; huh?"
 
 #: sportspress.php:139
 msgid "Docs"
-msgstr ""
+msgstr "Documentos"
 
 #: sportspress.php:140
 msgid "Upgrade"
-msgstr ""
+msgstr "Atualize"
 
 #: sportspress.php:357
 msgid "Display photos"
-msgstr ""
+msgstr "Mostrar fotos"
 
 #. translators: Calendar caption: 1: month name, 2: 4-digit year
 #: templates/event-calendar.php:92 templates/event-calendar.php:120

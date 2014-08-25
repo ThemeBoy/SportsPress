@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-08-11 23:23+1000\n"
-"PO-Revision-Date: 2014-08-15 12:41+0000\n"
+"PO-Revision-Date: 2014-08-21 09:21+0000\n"
 "Last-Translator: tyby94 <tyby04@gmail.com>\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/sportspress/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -22,25 +22,25 @@ msgstr ""
 
 #: assets/js/admin/editor-lang.php:5
 msgid "SportsPress Shortcodes"
-msgstr ""
+msgstr "Prescurtari SportPress"
 
 #: assets/js/admin/editor-lang.php:6
 #: includes/admin/settings/class-sp-settings-general.php:107
 #: includes/admin/settings/class-sp-settings-general.php:167
 msgid "Auto"
-msgstr ""
+msgstr "Auto"
 
 #: assets/js/admin/editor-lang.php:7
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 #: assets/js/admin/editor-lang.php:8
 msgid "Single"
-msgstr ""
+msgstr "Singur"
 
 #: assets/js/admin/editor-lang.php:9
 msgid "Select..."
-msgstr ""
+msgstr "Selectează"
 
 #: assets/js/admin/editor-lang.php:10
 msgid "Countdown"
@@ -58,7 +58,7 @@ msgstr ""
 #: includes/widgets/class-sp-widget-event-list.php:111
 #: templates/event-list.php:57
 msgid "Event"
-msgstr ""
+msgstr "Eveniment"
 
 #: assets/js/admin/editor-lang.php:12
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:100
@@ -84,7 +84,7 @@ msgstr "Detalii"
 
 #: assets/js/admin/editor-lang.php:13
 msgid "Results"
-msgstr ""
+msgstr "Rezultate"
 
 #: assets/js/admin/editor-lang.php:14
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:25
@@ -116,7 +116,7 @@ msgstr ""
 #: includes/class-sp-ajax.php:401 includes/class-sp-post-types.php:433
 #: includes/widgets/class-sp-widget-league-table.php:50
 msgid "League Table"
-msgstr ""
+msgstr "Clasament"
 
 #: assets/js/admin/editor-lang.php:19
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:62
@@ -127,7 +127,7 @@ msgstr ""
 #: includes/class-sp-post-types.php:465 includes/sp-core-functions.php:1096
 #: sportspress.php:337 templates/event-performance.php:64
 msgid "Player"
-msgstr ""
+msgstr "Jucător"
 
 #: assets/js/admin/editor-lang.php:20
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:158
@@ -347,7 +347,7 @@ msgstr "Setări"
 #: includes/widgets/class-sp-widget-player-list.php:64
 #: includes/widgets/class-sp-widget-player-list.php:109
 msgid "Add New"
-msgstr ""
+msgstr "Adaugă nou"
 
 #: includes/admin/class-sp-admin-menus.php:266
 #: includes/admin/class-sp-admin-permalink-settings.php:33
@@ -357,7 +357,7 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status.php:326
 #: includes/class-sp-post-types.php:122 includes/class-sp-post-types.php:136
 msgid "Positions"
-msgstr ""
+msgstr "Poziții"
 
 #: includes/admin/class-sp-admin-menus.php:274
 #: includes/admin/class-sp-admin-permalink-settings.php:26
@@ -385,13 +385,13 @@ msgstr "Setările dvs. au fost salvate."
 #: includes/admin/settings/class-sp-settings-events.php:25
 #: includes/class-sp-post-types.php:341
 msgid "Events"
-msgstr ""
+msgstr "Evenimente"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:27
 #: includes/admin/settings/class-sp-settings-events.php:128
 #: includes/class-sp-post-types.php:371
 msgid "Calendars"
-msgstr ""
+msgstr "Calendare"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:28
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:93
@@ -417,13 +417,13 @@ msgstr ""
 #: includes/widgets/class-sp-widget-event-list.php:112
 #: templates/event-list.php:60
 msgid "Teams"
-msgstr ""
+msgstr "Echipe"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:31
 #: includes/admin/settings/class-sp-settings-teams.php:45
 #: includes/class-sp-post-types.php:432
 msgid "League Tables"
-msgstr ""
+msgstr "Clasamente"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:32
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:51
@@ -436,14 +436,14 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-players.php:54
 #: includes/class-sp-post-types.php:464 sportspress.php:335
 msgid "Players"
-msgstr ""
+msgstr "Jucători"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:34
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:142
 #: includes/admin/settings/class-sp-settings-players.php:51
 #: includes/class-sp-post-types.php:494
 msgid "Player Lists"
-msgstr ""
+msgstr "Lista Jucătorilor"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:35
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:45
@@ -453,7 +453,7 @@ msgstr ""
 #: includes/class-sp-post-types.php:526 includes/sp-core-functions.php:1098
 #: templates/event-staff.php:41
 msgid "Staff"
-msgstr ""
+msgstr "Staff"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:75
 msgid ""
@@ -531,11 +531,11 @@ msgstr ""
 
 #: includes/admin/class-sp-admin-taxonomies.php:89
 msgid "Latitude"
-msgstr ""
+msgstr "Latitudine"
 
 #: includes/admin/class-sp-admin-taxonomies.php:95
 msgid "Longitude"
-msgstr ""
+msgstr "Longitudine"
 
 #: includes/admin/class-sp-admin-welcome.php:45
 msgid "Welcome to SportsPress"
@@ -543,7 +543,7 @@ msgstr "Bine ai venit la SportsPress"
 
 #: includes/admin/class-sp-admin-welcome.php:135
 msgid "Welcome to SportsPress!"
-msgstr ""
+msgstr "Bine ai venit la SportsPress!"
 
 #: includes/admin/class-sp-admin-welcome.php:140
 msgid "Thanks, all done!"
@@ -582,24 +582,24 @@ msgstr "Fus orar"
 #: includes/admin/settings/class-sp-settings-general.php:49
 #: includes/admin/views/html-admin-page-status.php:223
 msgid "Sport"
-msgstr ""
+msgstr "Sport"
 
 #: includes/admin/class-sp-admin-welcome.php:238
 #: includes/admin/settings/class-sp-settings-general.php:57
 msgid "Mode"
-msgstr ""
+msgstr "Mod"
 
 #: includes/admin/class-sp-admin-welcome.php:246
 #: includes/admin/settings/class-sp-settings-general.php:62
 msgctxt "mode select"
 msgid "Team"
-msgstr ""
+msgstr "Echipa"
 
 #: includes/admin/class-sp-admin-welcome.php:247
 #: includes/admin/settings/class-sp-settings-general.php:63
 msgctxt "mode select"
 msgid "Individual"
-msgstr ""
+msgstr "Individual"
 
 #: includes/admin/class-sp-admin-welcome.php:253
 #: includes/admin/views/html-admin-settings.php:16
@@ -613,17 +613,17 @@ msgstr "Următorii pași"
 #: includes/admin/class-sp-admin-welcome.php:262
 #: includes/class-sp-post-types.php:404
 msgid "Add New Team"
-msgstr ""
+msgstr "Adaugă echipă noua"
 
 #: includes/admin/class-sp-admin-welcome.php:263
 #: includes/class-sp-post-types.php:466 sportspress.php:341
 msgid "Add New Player"
-msgstr ""
+msgstr "Adaugă jucător nou"
 
 #: includes/admin/class-sp-admin-welcome.php:264
 #: includes/class-sp-post-types.php:343
 msgid "Add New Event"
-msgstr ""
+msgstr "Adaugă eveniment nou"
 
 #: includes/admin/class-sp-admin-welcome.php:268
 msgid "Translators"
@@ -673,11 +673,11 @@ msgstr "Operațiune finalizată!"
 
 #: includes/admin/importers/class-sp-event-importer.php:383
 msgid "View Events"
-msgstr ""
+msgstr "Vezi evenimente"
 
 #: includes/admin/importers/class-sp-event-importer.php:395
 msgid "Import Events"
-msgstr ""
+msgstr "Adaugă evenimente"
 
 #: includes/admin/importers/class-sp-event-importer.php:407
 #: includes/admin/importers/class-sp-player-importer.php:174
@@ -686,7 +686,7 @@ msgstr ""
 msgid ""
 "Hi there! Choose a .csv file to upload, then click \"Upload file and "
 "import\"."
-msgstr ""
+msgstr "Salut! Alege un fișier .csv pentru upload, apoi apasă \"Uploadeaza fișierul si importează\"."
 
 #: includes/admin/importers/class-sp-event-importer.php:409
 #, php-format
@@ -755,7 +755,7 @@ msgstr "Formatare"
 #: includes/class-sp-formats.php:27 includes/class-sp-post-types.php:36
 #: includes/sp-core-functions.php:1072 templates/event-details.php:24
 msgid "League"
-msgstr ""
+msgstr "Ligă"
 
 #: includes/admin/importers/class-sp-event-importer.php:464
 #: includes/admin/importers/class-sp-event-importer.php:479
@@ -781,7 +781,7 @@ msgstr "-- Nefixat --"
 #: includes/class-sp-team.php:261 includes/sp-core-functions.php:1081
 #: templates/event-details.php:29
 msgid "Season"
-msgstr ""
+msgstr "Sezon"
 
 #: includes/admin/importers/class-sp-event-importer.php:490
 #: includes/admin/importers/class-sp-player-importer.php:217
@@ -803,7 +803,7 @@ msgstr ""
 
 #: includes/admin/importers/class-sp-player-importer.php:150
 msgid "View Players"
-msgstr ""
+msgstr "Vezi jucători"
 
 #: includes/admin/importers/class-sp-player-importer.php:162
 msgid "Import Players"
@@ -898,7 +898,7 @@ msgstr ""
 #: includes/class-sp-post-types.php:403 includes/sp-core-functions.php:1082
 #: templates/event-results.php:93
 msgid "Team"
-msgstr ""
+msgstr "Echipa"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:53
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:52

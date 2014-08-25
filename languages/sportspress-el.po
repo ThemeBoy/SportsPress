@@ -1,27 +1,22 @@
-#
+# 
 # Translators:
+# Achilleas Pipinellis, 2013
 # AlexSunnO <info@taxpress.gr>, 2014
-# Socrates Alichanides <salichani75@gmail.com>, 2014
 # Apostolis Kyromites <apokyro@yahoo.gr>, 2012
 # Athanasiadis Evangelos <dyrer@wordpress.gr>, 2007
 # axil Pι, 2013
-# Achilleas Pipinellis, 2013
-# Demetris Kikizas <op111.net@gmail.com>, 2008-2012
-# Dimitris katsanis <dimikats1@gmail.com>, 2013-2014
+# Christina Nikaki <christinenikaki@gmail.com>, 2012
 # Dimitris Glezos <>, 2005
 # Dimitris Korbetis <>, 2005
-# Christina Nikaki <christinenikaki@gmail.com>, 2012
 # Filippos Sdralias <filippos.sdr@gmail.com>, 2014
 # Giorgos Georgas <>, 2005
-# gorfeas <gorfeas@hotmail.com>, 2013-2014
 # Inceptive Design Labs <inceptive@inceptive.gr>, 2014
+# Jeffrey Rogers <ionikosfc@yopmail.com>, 2013
 # JOHN <jpalks@yahoo.gr>, 2013
 # kaggelakis <kaggelaki@yahoo.com>, 2013
-# Kostas Papadimas <pkst@gnome.org>, 2005
 # Kostas M <kostas@creativecollective.gr>, 2014
-# Jeffrey Rogers <ionikosfc@yopmail.com>, 2013
+# Kostas Papadimas <pkst@gnome.org>, 2005
 # Logothetis Valasakis <thenovember5@gmail.com>, 2013
-# Μάκης Αντύπας <makis@realize.gr>, 2013
 # MARIOS <marios.rodos@gmail.com>, 2013
 # Marios Vlahos <marios.vlahos@outlook.com>, 2014
 # mtzanidakis <mtzanidakis@gmail.com>, 2014
@@ -31,33 +26,32 @@
 # pvs1984 <pissasvasilis@gmail.com>, 2013
 # Sakis Papadimitriou <>, 2005
 # Serafeim Zanikolas <serzan@hellug.gr>, 2005
-# ted gudis <seriusb@gmail.com>, 2014
 # Simos Xenitellis <simos@gnome.org>, 2005
+# Socrates Alichanides <salichani75@gmail.com>, 2014
 # Stefanos Petrakis <>, 2005
 # Ta panta rei <>, 2005
+# ted gudis <seriusb@gmail.com>, 2014
 # Vaios Kouvelis <>, 2005
 # Vasilis Zboukis <vasilis@minima.net.gr>, 2014
+# Μάκης Αντύπας <makis@realize.gr>, 2013
 # Σμηλιάνης Σπυρίδων <spirossm@hyperwebhost.net>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-08-11 23:23+1000\n"
-"PO-Revision-Date: 2014-08-21 17:57+1000\n"
+"PO-Revision-Date: 2014-08-21 07:59+0000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
-"Language-Team: Greek (http://www.transifex.com/projects/p/sportspress/"
-"language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/projects/p/sportspress/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: assets/js/admin/editor-lang.php:5
 msgid "SportsPress Shortcodes"
@@ -495,10 +489,7 @@ msgstr "Προσωπικό"
 msgid ""
 "These settings control the permalinks used for SportsPress. These settings "
 "only apply when <strong>not using \"default\" permalinks above</strong>."
-msgstr ""
-"Αυτές οι ρυθμίσεις ελέγχουν τις σταθερές συνδέσεις που χρησιμοποιούνται για "
-"το SportsPress. Αυτές οι ρυθμίσεις ισχύουν μόνο όταν <strong>δεν "
-"χρησιμοποιούν  τις \"προεπιλεγμένες\"  σταθερές συνδέσεις παραπάνω</strong>."
+msgstr "Αυτές οι ρυθμίσεις ελέγχουν τις σταθερές συνδέσεις που χρησιμοποιούνται για το SportsPress. Αυτές οι ρυθμίσεις ισχύουν μόνο όταν <strong>δεν χρησιμοποιούν  τις \"προεπιλεγμένες\"  σταθερές συνδέσεις παραπάνω</strong>."
 
 #: includes/admin/class-sp-admin-post-types.php:62
 #: includes/sp-template-hooks.php:333
@@ -599,9 +590,7 @@ msgstr "Ευχαριστούμε για την εγκατάσταση!"
 #: includes/admin/class-sp-admin-welcome.php:146
 #, php-format
 msgid "%s SportsPress %s has lots of refinements we think you&#8217;ll love."
-msgstr ""
-"%s SportsPress %s έχει πολλές βελτιώσεις που πιστεύουμε ότι θα &#8217;ll "
-"αγαπήσετε."
+msgstr "%s SportsPress %s έχει πολλές βελτιώσεις που πιστεύουμε ότι θα &#8217;ll αγαπήσετε."
 
 #: includes/admin/class-sp-admin-welcome.php:150
 #, php-format
@@ -673,12 +662,10 @@ msgstr "Μεταφραστές"
 #: includes/admin/class-sp-admin-welcome.php:269
 msgid ""
 "SportsPress has been kindly translated into several other languages thanks "
-"to our translation team. Want to see your name? <a href=\"https://www."
-"transifex.com/projects/p/sportspress/\">Translate SportsPress</a>."
-msgstr ""
-"SportsPress έχει την καλοσύνη να μεταφραστεί σε πολλές άλλες γλώσσες χάρη "
-"στην μεταφραστική ομάδα μας. Θέλετε να δείτε το όνομά σας; <a href=\"https://"
-"www.transifex.com/projects/p/sportspress/\">Μετάφραση SportsPress</a>."
+"to our translation team. Want to see your name? <a "
+"href=\"https://www.transifex.com/projects/p/sportspress/\">Translate "
+"SportsPress</a>."
+msgstr "SportsPress έχει την καλοσύνη να μεταφραστεί σε πολλές άλλες γλώσσες χάρη στην μεταφραστική ομάδα μας. Θέλετε να δείτε το όνομά σας; <a href=\"https://www.transifex.com/projects/p/sportspress/\">Μετάφραση SportsPress</a>."
 
 #: includes/admin/class-sp-admin-welcome.php:285
 msgid "Go to SportsPress Settings"
@@ -703,11 +690,9 @@ msgstr "Το CSV είναι άκυρο."
 #: includes/admin/importers/class-sp-event-importer.php:373
 #, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> events and skipped <strong>"
-"%s</strong>."
-msgstr ""
-"Εισαγωγή ολοκληρώθηκε - εισάγονται  <strong>%s</strong> εκδηλώσεις και "
-"παραλείπονται <strong>%s</strong>."
+"Import complete - imported <strong>%s</strong> events and skipped "
+"<strong>%s</strong>."
+msgstr "Εισαγωγή ολοκληρώθηκε - εισάγονται  <strong>%s</strong> εκδηλώσεις και παραλείπονται <strong>%s</strong>."
 
 #: includes/admin/importers/class-sp-event-importer.php:383
 #: includes/admin/importers/class-sp-player-importer.php:150
@@ -729,20 +714,16 @@ msgstr "Εισαγωγή Εκδηλώσεων"
 #: includes/admin/importers/class-sp-staff-importer.php:167
 #: includes/admin/importers/class-sp-team-importer.php:131
 msgid ""
-"Hi there! Choose a .csv file to upload, then click \"Upload file and import"
-"\"."
-msgstr ""
-"Hi there! Επιλέξτε ένα αρχείο. Csv για να ανεβάσετε, στη συνέχεια, κάντε "
-"κλικ στο κουμπί \"Μεταφόρτωση αρχείου και εισαγωγή»."
+"Hi there! Choose a .csv file to upload, then click \"Upload file and "
+"import\"."
+msgstr "Hi there! Επιλέξτε ένα αρχείο. Csv για να ανεβάσετε, στη συνέχεια, κάντε κλικ στο κουμπί \"Μεταφόρτωση αρχείου και εισαγωγή»."
 
 #: includes/admin/importers/class-sp-event-importer.php:409
 #, php-format
 msgid ""
 "Events need to be defined with columns in a specific order (3+ columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr ""
-"Εκδηλώσεις πρέπει να καθοριστούν με στήλες σε μια συγκεκριμένη σειρά (3 + "
-"στήλες)  <a href=\"%s\">Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
+msgstr "Εκδηλώσεις πρέπει να καθοριστούν με στήλες σε μια συγκεκριμένη σειρά (3 + στήλες)  <a href=\"%s\">Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
 
 #: includes/admin/importers/class-sp-event-importer.php:417
 #: includes/admin/importers/class-sp-player-importer.php:184
@@ -751,9 +732,7 @@ msgstr ""
 msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
-msgstr ""
-"Πριν μπορέσετε να μεταφορτώσετε το αρχείο σας, θα πρέπει να διορθώσετε το "
-"ακόλουθο σφάλμα:"
+msgstr "Πριν μπορέσετε να μεταφορτώσετε το αρχείο σας, θα πρέπει να διορθώσετε το ακόλουθο σφάλμα:"
 
 #: includes/admin/importers/class-sp-event-importer.php:426
 #: includes/admin/importers/class-sp-player-importer.php:193
@@ -848,11 +827,9 @@ msgstr "Εισαγωγή"
 #: includes/admin/importers/class-sp-player-importer.php:140
 #, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> players and skipped <strong>"
-"%s</strong>."
-msgstr ""
-"Εισαγωγή ολοκληρώθηκε - εισάγονται  <strong>%s</strong>οι παίκτες και "
-"παραλείπονται  <strong>%s</strong>."
+"Import complete - imported <strong>%s</strong> players and skipped "
+"<strong>%s</strong>."
+msgstr "Εισαγωγή ολοκληρώθηκε - εισάγονται  <strong>%s</strong>οι παίκτες και παραλείπονται  <strong>%s</strong>."
 
 #: includes/admin/importers/class-sp-player-importer.php:150
 msgid "View Players"
@@ -867,18 +844,14 @@ msgstr "Εισαγωγή παικτών"
 msgid ""
 "Players need to be defined with columns in a specific order (7 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr ""
-"Οι παίκτες πρέπει να καθοριστούν με στήλες σε μια συγκεκριμένη σειρά (7 "
-"στήλες). <a href=\"%s\">Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
+msgstr "Οι παίκτες πρέπει να καθοριστούν με στήλες σε μια συγκεκριμένη σειρά (7 στήλες). <a href=\"%s\">Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
 
 #: includes/admin/importers/class-sp-staff-importer.php:133
 #, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
-"strong>."
-msgstr ""
-"Εισαγωγή ολοκληρώθηκε - εισάγονται <strong>%s</strong> προσωπικού και "
-"παραλείπονται <strong>%s</strong>."
+"Import complete - imported <strong>%s</strong> staff and skipped "
+"<strong>%s</strong>."
+msgstr "Εισαγωγή ολοκληρώθηκε - εισάγονται <strong>%s</strong> προσωπικού και παραλείπονται <strong>%s</strong>."
 
 #: includes/admin/importers/class-sp-staff-importer.php:143
 #: includes/class-sp-post-types.php:530
@@ -894,18 +867,14 @@ msgstr "Ειασαγωγή Προσωπικού"
 msgid ""
 "Staff need to be defined with columns in a specific order (5 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr ""
-"Το προσωπικό πρέπει να καθοριστεί με στήλες σε μια συγκεκριμένη σειρά (5 "
-"στήλες). <a href=\"%s\">Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
+msgstr "Το προσωπικό πρέπει να καθοριστεί με στήλες σε μια συγκεκριμένη σειρά (5 στήλες). <a href=\"%s\">Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
 
 #: includes/admin/importers/class-sp-team-importer.php:97
 #, php-format
 msgid ""
-"Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</"
-"strong>."
-msgstr ""
-"Εισαγωγή ολοκληρώθηκε - εισάγονται <strong>%s</strong> ομάδες και "
-"παραλείπονται <strong>%s</strong>."
+"Import complete - imported <strong>%s</strong> teams and skipped "
+"<strong>%s</strong>."
+msgstr "Εισαγωγή ολοκληρώθηκε - εισάγονται <strong>%s</strong> ομάδες και παραλείπονται <strong>%s</strong>."
 
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "View Teams"
@@ -920,9 +889,7 @@ msgstr "Εισαγωγή ομάδων"
 msgid ""
 "Teams need to be defined with columns in a specific order (3 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
-msgstr ""
-"Οι Ομάδες πρέπει να καθοριστούν με στήλες σε μια συγκεκριμένη σειρά (3 "
-"στήλες). <a href=\"%s\"> Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
+msgstr "Οι Ομάδες πρέπει να καθοριστούν με στήλες σε μια συγκεκριμένη σειρά (3 στήλες). <a href=\"%s\"> Κάντε κλικ εδώ για να κατεβάσετε ένα δείγμα</a>."
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:47
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:47
@@ -1377,9 +1344,7 @@ msgstr "Φθίνουσα"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-shortcode.php:24
 msgid ""
 "Copy this code and paste it into your post, page or text widget content."
-msgstr ""
-"Αντιγράψτε αυτόν τον κώδικα και επικολλήστε το στη δημοσίευση, στη σελίδα ή "
-"το περιεχόμενο κειμένου widget σας."
+msgstr "Αντιγράψτε αυτόν τον κώδικα και επικολλήστε το στη δημοσίευση, στη σελίδα ή το περιεχόμενο κειμένου widget σας."
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:47
 msgid "Disable"
@@ -1554,9 +1519,7 @@ msgstr "Επίσκεψη στην ιστοσελίδα"
 msgid ""
 "The abbreviation is not prominent by default; however, some themes may show "
 "it"
-msgstr ""
-"Η συντομογραφία δεν είναι εμφανή ως προεπιλογή? Ωστόσο, μερικά θέματα μπορεί "
-"να την δείξει"
+msgstr "Η συντομογραφία δεν είναι εμφανή ως προεπιλογή? Ωστόσο, μερικά θέματα μπορεί να την δείξει"
 
 #: includes/admin/settings/class-sp-settings-config.php:25
 msgid "Configure"
@@ -1777,9 +1740,7 @@ msgstr "Ανταπόκριση  πινάκων"
 
 #: includes/admin/settings/class-sp-settings-general.php:132
 msgid "This will enable a script allowing the tables to be responsive."
-msgstr ""
-"Αυτό θα επιτρέψει μια δέσμη ενεργειών που επιτρέπει στους πίνακες να "
-"ανταποκρίνονται."
+msgstr "Αυτό θα επιτρέψει μια δέσμη ενεργειών που επιτρέπει στους πίνακες να ανταποκρίνονται."
 
 #: includes/admin/settings/class-sp-settings-general.php:136
 msgid "Sortable tables"
@@ -1787,9 +1748,7 @@ msgstr "Δυνατότητα ταξινόμησης των πινάκων"
 
 #: includes/admin/settings/class-sp-settings-general.php:141
 msgid "This will enable a script allowing the tables to be sortable."
-msgstr ""
-"Αυτό θα επιτρέψει μια δέσμη ενεργειών που επιτρέπει στους πίνακες να έχουν "
-"δυνατότητα ταξινόμησης."
+msgstr "Αυτό θα επιτρέψει μια δέσμη ενεργειών που επιτρέπει στους πίνακες να έχουν δυνατότητα ταξινόμησης."
 
 #: includes/admin/settings/class-sp-settings-general.php:145
 msgid "Live countdowns"
@@ -1797,18 +1756,16 @@ msgstr "Ζωντανές αντίστροφες μετρήσεις"
 
 #: includes/admin/settings/class-sp-settings-general.php:150
 msgid "This will enable a script allowing the countdowns to be animated."
-msgstr ""
-"Αυτό θα επιτρέψει μια δέσμη ενεργειών για να ξεκινήση η αντίστροφη μετρήση."
+msgstr "Αυτό θα επιτρέψει μια δέσμη ενεργειών για να ξεκινήση η αντίστροφη μετρήση."
 
 #: includes/admin/settings/class-sp-settings-general.php:154
 msgid "Shortcode menu"
 msgstr "Συντόμοι κωδικοί μενού"
 
 #: includes/admin/settings/class-sp-settings-general.php:159
-msgid "This will enable a shortcode menu to be displayed in the visual editor."
-msgstr ""
-"Αυτό θα επιτρέψει ένα σύντομο μενού κώδικα για να εμφανίζεται στο visual "
-"επεξεργαστή."
+msgid ""
+"This will enable a shortcode menu to be displayed in the visual editor."
+msgstr "Αυτό θα επιτρέψει ένα σύντομο μενού κώδικα για να εμφανίζεται στο visual επεξεργαστή."
 
 #: includes/admin/settings/class-sp-settings-general.php:163
 msgid "Header Offset"
@@ -1865,20 +1822,16 @@ msgstr "Επιλογές ομάδας"
 
 #: includes/admin/settings/class-sp-settings-text.php:41
 msgid "The following options affect how words are displayed on the frontend."
-msgstr ""
-"Οι ακόλουθες επιλογές επηρεάζουν τον τρόπο εμφάνισεις των λέξεων στην "
-"επιφάνεια εργασίας."
+msgstr "Οι ακόλουθες επιλογές επηρεάζουν τον τρόπο εμφάνισεις των λέξεων στην επιφάνεια εργασίας."
 
 #: includes/admin/views/html-admin-overview.php:304
-msgid "Love SportsPress? Help spread the word by rating us 5★ on WordPress.org"
-msgstr ""
-"Σας άρεσε το SportsPress? Βοηθήστε να διαδωθούν τα νέα δίνοντας μας 5 ★ στο "
-"WordPress.org"
+msgid ""
+"Love SportsPress? Help spread the word by rating us 5★ on WordPress.org"
+msgstr "Σας άρεσε το SportsPress? Βοηθήστε να διαδωθούν τα νέα δίνοντας μας 5 ★ στο WordPress.org"
 
 #: includes/admin/views/html-admin-page-status.php:5
 msgid "Please include this information when requesting support:"
-msgstr ""
-"Παρακαλούμε συμπεριλάβετε αυτή την πληροφορία στο αίτημα υποστήριξής σας:"
+msgstr "Παρακαλούμε συμπεριλάβετε αυτή την πληροφορία στο αίτημα υποστήριξής σας:"
 
 #: includes/admin/views/html-admin-page-status.php:6
 msgid "Get System Report"
@@ -1931,11 +1884,9 @@ msgstr "WP Memory Limit"
 #: includes/admin/views/html-admin-page-status.php:53
 #, php-format
 msgid ""
-"%s - We recommend setting memory to at least 64MB. See: <a href=\"%s"
-"\">Increasing memory allocated to PHP</a>"
-msgstr ""
-"%s - Συστήνουμε μνήμη τουλάχιστον 64MB. Δείτε: <a href=\"%s\">Increasing "
-"memory allocated to PHP</a>"
+"%s - We recommend setting memory to at least 64MB. See: <a "
+"href=\"%s\">Increasing memory allocated to PHP</a>"
+msgstr "%s - Συστήνουμε μνήμη τουλάχιστον 64MB. Δείτε: <a href=\"%s\">Increasing memory allocated to PHP</a>"
 
 #: includes/admin/views/html-admin-page-status.php:60
 msgid "WP Debug Mode"
@@ -1989,23 +1940,18 @@ msgstr "O server σας έχει τα fsockopen και cURL ενεργοποιη
 
 #: includes/admin/views/html-admin-page-status.php:109
 msgid "Your server has fsockopen enabled, cURL is disabled."
-msgstr ""
-"O server σας έχει το fsockopen ενεργοποιημένο αλλά το cURL απενεργοποιημένο."
+msgstr "O server σας έχει το fsockopen ενεργοποιημένο αλλά το cURL απενεργοποιημένο."
 
 #: includes/admin/views/html-admin-page-status.php:111
 msgid "Your server has cURL enabled, fsockopen is disabled."
-msgstr ""
-"O server σας έχει το cURL ενεργοποιημένο αλλά το fsockopen απενεργοποιημένο."
+msgstr "O server σας έχει το cURL ενεργοποιημένο αλλά το fsockopen απενεργοποιημένο."
 
 #: includes/admin/views/html-admin-page-status.php:115
 msgid ""
 "Your server does not have fsockopen or cURL enabled - PayPal IPN and other "
 "scripts which communicate with other servers will not work. Contact your "
 "hosting provider."
-msgstr ""
-"Ο server σας δεν έχει το fscockopen ή to cURL ενεργοποιημένο. Το PayPal IPN "
-"και άλλα scripts που επικοινωνούν με άλλους servers δεν θα λειτουργήσουν. "
-"Παρακαλώ επικοινωνήστε με τον διαχειριστή του συστήματός."
+msgstr "Ο server σας δεν έχει το fscockopen ή to cURL ενεργοποιημένο. Το PayPal IPN και άλλα scripts που επικοινωνούν με άλλους servers δεν θα λειτουργήσουν. Παρακαλώ επικοινωνήστε με τον διαχειριστή του συστήματός."
 
 #: includes/admin/views/html-admin-page-status.php:120
 msgid "SOAP Client"
@@ -2018,12 +1964,9 @@ msgstr "Ο server σας έχει το SOAP Client class ενεργοποιημ�
 #: includes/admin/views/html-admin-page-status.php:125
 #, php-format
 msgid ""
-"Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled - "
-"some gateway plugins which use SOAP may not work as expected."
-msgstr ""
-"Ο server σας δεν έχει ενεργοποιημένη την κλάση  <a href=\"%s\">SOAP Client</"
-"a> - ορισμένα gateway plugins που απαιτούν SOAP ίσως να μην λειτουργούν "
-"σωστά."
+"Your server does not have the <a href=\"%s\">SOAP Client</a> class enabled -"
+" some gateway plugins which use SOAP may not work as expected."
+msgstr "Ο server σας δεν έχει ενεργοποιημένη την κλάση  <a href=\"%s\">SOAP Client</a> - ορισμένα gateway plugins που απαιτούν SOAP ίσως να μην λειτουργούν σωστά."
 
 #: includes/admin/views/html-admin-page-status.php:148
 msgid "Plugins"
@@ -2087,9 +2030,7 @@ msgstr "Πρότυπα"
 msgid ""
 "<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
 "date. The core version is %s"
-msgstr ""
-"<code>%s</code> έκδοση <strong style=\"color:red\">%s</strong> είναι "
-"ξεπερασμένη. Η βασική έκδοση είναι %s"
+msgstr "<code>%s</code> έκδοση <strong style=\"color:red\">%s</strong> είναι ξεπερασμένη. Η βασική έκδοση είναι %s"
 
 #: includes/admin/views/html-admin-page-status.php:470
 #: includes/admin/views/html-admin-page-status.php:476
@@ -2114,27 +2055,18 @@ msgstr "Απόκρυψη ανακοίνωσης"
 #: includes/admin/views/html-notice-template-check.php:5
 msgid ""
 "<strong>Your theme has bundled outdated copies of SportsPress template "
-"files</strong> &#8211; if you encounter functionality issues on the frontend "
-"this could the reason. Ensure you update or remove them (in general we "
+"files</strong> &#8211; if you encounter functionality issues on the frontend"
+" this could the reason. Ensure you update or remove them (in general we "
 "recommend only bundling the template files you actually need to customize). "
 "See the system report for full details."
-msgstr ""
-"<strong> Το θέμα σας έχει ομαδοποιησή ξεπερασμένα αντίγραφα του πρότυπου "
-"SportsPress</ strong> &#8211;  εάν αντιμετωπίσετε προβλήματα με τη "
-"λειτουργικότητα στο frontend αυτό θα μπορούσε να είναι η αιτία. Βεβαιωθείτε "
-"ότι έχετε ενημερώσει ή τους έχετε καταργήσει (σε γενικές γραμμές συνιστούμε "
-"ομαδοποίηση μόνο τα αρχεία προτύπων που πραγματικά χρειάζεται να "
-"προσαρμόσετε). Δείτε την έκθεση του συστήματος για περισσότερες λεπτομέρειες."
+msgstr "<strong> Το θέμα σας έχει ομαδοποιησή ξεπερασμένα αντίγραφα του πρότυπου SportsPress</ strong> &#8211;  εάν αντιμετωπίσετε προβλήματα με τη λειτουργικότητα στο frontend αυτό θα μπορούσε να είναι η αιτία. Βεβαιωθείτε ότι έχετε ενημερώσει ή τους έχετε καταργήσει (σε γενικές γραμμές συνιστούμε ομαδοποίηση μόνο τα αρχεία προτύπων που πραγματικά χρειάζεται να προσαρμόσετε). Δείτε την έκθεση του συστήματος για περισσότερες λεπτομέρειες."
 
 #: includes/admin/views/html-notice-theme-support.php:5
 msgid ""
 "<strong>Your theme does not declare SportsPress support</strong> &#8211; if "
 "you encounter layout issues please read our integration guide or choose a "
 "SportsPress theme :)"
-msgstr ""
-"<strong> Το θέμα σας δεν έχει την υποστήριξη του SportsPress </strong> "
-"&#8211; αν αντιμετωπίζετε προβλήματα διάταξης παρακαλώ διαβάστε τις οδηγίες "
-"ολοκλήρωσης  ή επιλέξετε ένα θέμα SportsPress :)"
+msgstr "<strong> Το θέμα σας δεν έχει την υποστήριξη του SportsPress </strong> &#8211; αν αντιμετωπίζετε προβλήματα διάταξης παρακαλώ διαβάστε τις οδηγίες ολοκλήρωσης  ή επιλέξετε ένα θέμα SportsPress :)"
 
 #: includes/admin/views/html-notice-theme-support.php:7
 msgid "Theme Integration Guide"
@@ -3359,9 +3291,7 @@ msgstr "Προβολή όλων των παικτών"
 msgid ""
 "The description is not prominent by default; however, some themes may show "
 "it."
-msgstr ""
-"Η περιγραφή δεν είναι εμφανή ως προεπιλογή? Ωστόσο, μερικά θέματα μπορεί να "
-"την δείξουν."
+msgstr "Η περιγραφή δεν είναι εμφανή ως προεπιλογή? Ωστόσο, μερικά θέματα μπορεί να την δείξουν."
 
 #: includes/sp-template-hooks.php:162
 msgid "User"

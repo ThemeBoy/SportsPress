@@ -1,11 +1,12 @@
 # 
 # Translators:
+# Xyteton <xyteton@hotmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-08-11 23:23+1000\n"
-"PO-Revision-Date: 2014-08-15 09:54+0000\n"
-"Last-Translator: ThemeBoy <support@themeboy.com>\n"
+"PO-Revision-Date: 2014-08-24 02:48+0000\n"
+"Last-Translator: Xyteton <xyteton@hotmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/projects/p/sportspress/language/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,23 +27,23 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-general.php:107
 #: includes/admin/settings/class-sp-settings-general.php:167
 msgid "Auto"
-msgstr ""
+msgstr "อัตโนมัติ"
 
 #: assets/js/admin/editor-lang.php:7
 msgid "Manual"
-msgstr ""
+msgstr "ทำด้วยตนเอง"
 
 #: assets/js/admin/editor-lang.php:8
 msgid "Single"
-msgstr ""
+msgstr "เดี่ยว"
 
 #: assets/js/admin/editor-lang.php:9
 msgid "Select..."
-msgstr ""
+msgstr "เลือก..."
 
 #: assets/js/admin/editor-lang.php:10
 msgid "Countdown"
-msgstr ""
+msgstr "นับถอยหลัง"
 
 #: assets/js/admin/editor-lang.php:11
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:90
@@ -56,7 +57,7 @@ msgstr ""
 #: includes/widgets/class-sp-widget-event-list.php:111
 #: templates/event-list.php:57
 msgid "Event"
-msgstr ""
+msgstr "รายการแข่งขัน"
 
 #: assets/js/admin/editor-lang.php:12
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:100
@@ -78,17 +79,17 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:110
 #: includes/sp-core-functions.php:1070 templates/event-details.php:32
 msgid "Details"
-msgstr ""
+msgstr "รายละเอียด"
 
 #: assets/js/admin/editor-lang.php:13
 msgid "Results"
-msgstr ""
+msgstr "ผล"
 
 #: assets/js/admin/editor-lang.php:14
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-columns.php:25
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-columns.php:25
 msgid "Performance"
-msgstr ""
+msgstr "สมรรถนะ"
 
 #: assets/js/admin/editor-lang.php:15 includes/class-sp-ajax.php:188
 #: includes/class-sp-ajax.php:236 includes/class-sp-ajax.php:327
@@ -107,14 +108,14 @@ msgstr "รายชื่อ"
 
 #: assets/js/admin/editor-lang.php:17 includes/class-sp-formats.php:33
 msgid "Blocks"
-msgstr ""
+msgstr "บล็อค"
 
 #: assets/js/admin/editor-lang.php:18
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:149
 #: includes/class-sp-ajax.php:401 includes/class-sp-post-types.php:433
 #: includes/widgets/class-sp-widget-league-table.php:50
 msgid "League Table"
-msgstr ""
+msgstr "ตารางลีก"
 
 #: assets/js/admin/editor-lang.php:19
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:62
@@ -125,7 +126,7 @@ msgstr ""
 #: includes/class-sp-post-types.php:465 includes/sp-core-functions.php:1096
 #: sportspress.php:337 templates/event-performance.php:64
 msgid "Player"
-msgstr ""
+msgstr "ผู้เล่น"
 
 #: assets/js/admin/editor-lang.php:20
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:158
@@ -133,11 +134,11 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-columns.php:26
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-shortcode.php:31
 msgid "Statistics"
-msgstr ""
+msgstr "สถิติ"
 
 #: assets/js/admin/editor-lang.php:22 includes/class-sp-formats.php:37
 msgid "Gallery"
-msgstr ""
+msgstr "คลังภาพ"
 
 #: includes/admin/class-sp-admin-assets.php:112
 #: includes/admin/class-sp-admin-settings.php:117
@@ -152,28 +153,28 @@ msgstr "ไม่มี"
 
 #: includes/admin/class-sp-admin-assets.php:113
 msgid "&mdash; Remove &mdash;"
-msgstr ""
+msgstr "&mdash; ลบออก &mdash;"
 
 #: includes/admin/class-sp-admin-assets.php:114
 #: includes/admin/class-sp-admin-dashboard.php:80
 #: includes/class-sp-frontend-scripts.php:57 templates/countdown.php:64
 msgid "days"
-msgstr ""
+msgstr "วัน"
 
 #: includes/admin/class-sp-admin-assets.php:115
 #: includes/class-sp-frontend-scripts.php:57 templates/countdown.php:65
 msgid "hrs"
-msgstr ""
+msgstr "ชม."
 
 #: includes/admin/class-sp-admin-assets.php:116
 #: includes/class-sp-frontend-scripts.php:57 templates/countdown.php:66
 msgid "mins"
-msgstr ""
+msgstr "นาที"
 
 #: includes/admin/class-sp-admin-assets.php:117
 #: includes/class-sp-frontend-scripts.php:57 templates/countdown.php:67
 msgid "secs"
-msgstr ""
+msgstr "วินาที"
 
 #: includes/admin/class-sp-admin-dashboard.php:34
 #: includes/admin/class-sp-admin-menus.php:51
@@ -198,23 +199,23 @@ msgstr[0] ""
 #: includes/admin/class-sp-admin-dashboard.php:80
 #, php-format
 msgid "<strong>%s</strong> until next event"
-msgstr ""
+msgstr "<strong>%s</strong> จนกระทั่งรายการแข่งถัดไป"
 
 #: includes/admin/class-sp-admin-dashboard.php:87
 #, php-format
 msgid "<strong>%s event</strong> scheduled"
 msgid_plural "<strong>%s events</strong> scheduled"
-msgstr[0] ""
+msgstr[0] "<strong>%s รายการแข่งขัน</strong> ถูกกำหนดการณ์"
 
 #: includes/admin/class-sp-admin-dashboard.php:92
 #, php-format
 msgid "<strong>%s event</strong> published"
 msgid_plural "<strong>%s events</strong> published"
-msgstr[0] ""
+msgstr[0] "<strong>%s รายการแข่งขัน</strong> ถูกเผยแพร่"
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "SportsPress Events (CSV)"
-msgstr ""
+msgstr "รายการแข่งขัน SportPress (CSV)"
 
 #: includes/admin/class-sp-admin-importers.php:31
 msgid "Import <strong>events</strong> from a csv file."
@@ -246,7 +247,7 @@ msgstr ""
 
 #: includes/admin/class-sp-admin-menus.php:58
 msgid "Overview"
-msgstr ""
+msgstr "ข้อมูลทั่วไป"
 
 #: includes/admin/class-sp-admin-menus.php:65
 #: includes/admin/class-sp-admin-menus.php:262
@@ -266,7 +267,7 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status.php:296
 #: includes/class-sp-post-types.php:35 includes/class-sp-post-types.php:49
 msgid "Leagues"
-msgstr ""
+msgstr "ลีก"
 
 #: includes/admin/class-sp-admin-menus.php:72
 #: includes/admin/class-sp-admin-menus.php:270
@@ -282,25 +283,25 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status.php:306
 #: includes/class-sp-post-types.php:64 includes/class-sp-post-types.php:78
 msgid "Seasons"
-msgstr ""
+msgstr "ฤดูกาล"
 
 #: includes/admin/class-sp-admin-menus.php:79
 #: includes/admin/views/html-admin-page-status.php:2
 #: includes/admin/views/html-notice-template-check.php:6
 msgid "System Status"
-msgstr ""
+msgstr "สถานะระบบ"
 
 #: includes/admin/class-sp-admin-menus.php:87
 msgid "SportsPress Add-ons/Extensions"
-msgstr ""
+msgstr "ส่วนเสริม SportsPress"
 
 #: includes/admin/class-sp-admin-menus.php:87
 msgid "Add-ons"
-msgstr ""
+msgstr "ส่วนเสริม"
 
 #: includes/admin/class-sp-admin-menus.php:110 sportspress.php:138
 msgid "Settings"
-msgstr ""
+msgstr "การตั้งค่า"
 
 #: includes/admin/class-sp-admin-menus.php:258
 #: includes/admin/importers/class-sp-event-importer.php:468
@@ -339,7 +340,7 @@ msgstr ""
 #: includes/widgets/class-sp-widget-player-list.php:64
 #: includes/widgets/class-sp-widget-player-list.php:109
 msgid "Add New"
-msgstr ""
+msgstr "เพิ่มใหม่"
 
 #: includes/admin/class-sp-admin-menus.php:266
 #: includes/admin/class-sp-admin-permalink-settings.php:33
@@ -349,7 +350,7 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status.php:326
 #: includes/class-sp-post-types.php:122 includes/class-sp-post-types.php:136
 msgid "Positions"
-msgstr ""
+msgstr "ตำแหน่ง"
 
 #: includes/admin/class-sp-admin-menus.php:274
 #: includes/admin/class-sp-admin-permalink-settings.php:26
@@ -357,7 +358,7 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status.php:316
 #: includes/class-sp-post-types.php:93 includes/class-sp-post-types.php:107
 msgid "Venues"
-msgstr ""
+msgstr "สถานที่"
 
 #: includes/admin/class-sp-admin-overview.php:60
 #: includes/admin/class-sp-admin-settings.php:60
@@ -368,7 +369,7 @@ msgstr ""
 #: includes/admin/class-sp-admin-settings.php:67
 #: includes/admin/class-sp-admin-welcome.php:196
 msgid "Your settings have been saved."
-msgstr ""
+msgstr "การตั้งค่าของคุณถูกบันทึกแล้ว"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:25
 #: includes/admin/class-sp-admin-taxonomies.php:134
@@ -377,13 +378,13 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-events.php:25
 #: includes/class-sp-post-types.php:341
 msgid "Events"
-msgstr ""
+msgstr "รายการแข่งขัน"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:27
 #: includes/admin/settings/class-sp-settings-events.php:128
 #: includes/class-sp-post-types.php:371
 msgid "Calendars"
-msgstr ""
+msgstr "ปฏิทิน"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:28
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:93
@@ -409,13 +410,13 @@ msgstr ""
 #: includes/widgets/class-sp-widget-event-list.php:112
 #: templates/event-list.php:60
 msgid "Teams"
-msgstr ""
+msgstr "ทีม"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:31
 #: includes/admin/settings/class-sp-settings-teams.php:45
 #: includes/class-sp-post-types.php:432
 msgid "League Tables"
-msgstr ""
+msgstr "ตารางลีก"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:32
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:51
@@ -428,14 +429,14 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-players.php:54
 #: includes/class-sp-post-types.php:464 sportspress.php:335
 msgid "Players"
-msgstr ""
+msgstr "ผู้เล่น"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:34
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:142
 #: includes/admin/settings/class-sp-settings-players.php:51
 #: includes/class-sp-post-types.php:494
 msgid "Player Lists"
-msgstr ""
+msgstr "รายชื่อผู้เล่น"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:35
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:45
@@ -445,7 +446,7 @@ msgstr ""
 #: includes/class-sp-post-types.php:526 includes/sp-core-functions.php:1098
 #: templates/event-staff.php:41
 msgid "Staff"
-msgstr ""
+msgstr "สตาฟฟ์"
 
 #: includes/admin/class-sp-admin-permalink-settings.php:75
 msgid ""
@@ -456,7 +457,7 @@ msgstr ""
 #: includes/admin/class-sp-admin-post-types.php:62
 #: includes/sp-template-hooks.php:333
 msgid "Settings saved."
-msgstr ""
+msgstr "การตั้งค่าถูกบันทึกแล้ว"
 
 #: includes/admin/class-sp-admin-post-types.php:64
 #: includes/admin/settings/class-sp-settings-config.php:126
@@ -468,7 +469,7 @@ msgstr ""
 #: includes/admin/views/html-admin-overview.php:206
 #: includes/sp-template-hooks.php:335
 msgid "View All"
-msgstr ""
+msgstr "ดูทั้งหมด"
 
 #: includes/admin/class-sp-admin-post-types.php:69
 #: includes/admin/class-sp-admin-post-types.php:72
@@ -476,7 +477,7 @@ msgstr ""
 #: includes/sp-template-hooks.php:341 includes/sp-template-hooks.php:344
 #: includes/sp-template-hooks.php:349
 msgid "Changes saved."
-msgstr ""
+msgstr "การเปลี่ยนแปลงถูกบันทึกแล้ว"
 
 #: includes/admin/class-sp-admin-post-types.php:74
 #: includes/admin/class-sp-admin-post-types.php:79
@@ -484,7 +485,7 @@ msgstr ""
 #: includes/sp-template-hooks.php:346 includes/sp-template-hooks.php:351
 #: includes/sp-template-hooks.php:361
 msgid "Success!"
-msgstr ""
+msgstr "สำเร็จ!"
 
 #: includes/admin/class-sp-admin-post-types.php:81
 #: includes/admin/class-sp-admin-post-types.php:87
@@ -493,13 +494,13 @@ msgstr ""
 #: includes/sp-template-hooks.php:363
 #, php-format
 msgid "Preview %s"
-msgstr ""
+msgstr "ตัวอย่าง %s"
 
 #: includes/admin/class-sp-admin-post-types.php:84
 #: includes/sp-template-hooks.php:356
 #, php-format
 msgid "Scheduled for: <b>%1$s</b>."
-msgstr ""
+msgstr "กำหนดการณ์สำหรับ: <b>%1$s</b>"
 
 #: includes/admin/class-sp-admin-post-types.php:85
 #: includes/sp-template-hooks.php:357
@@ -519,27 +520,27 @@ msgstr "ที่อยู่"
 #: includes/admin/class-sp-admin-taxonomies.php:66
 #: includes/admin/class-sp-admin-taxonomies.php:85
 msgid "Drag the marker to the venue's location."
-msgstr ""
+msgstr "ลากตัวทำเครื่องหมายไปยังที่ตั้งของสถานที่"
 
 #: includes/admin/class-sp-admin-taxonomies.php:89
 msgid "Latitude"
-msgstr ""
+msgstr "ละติจูด"
 
 #: includes/admin/class-sp-admin-taxonomies.php:95
 msgid "Longitude"
-msgstr ""
+msgstr "ลองจิจูด"
 
 #: includes/admin/class-sp-admin-welcome.php:45
 msgid "Welcome to SportsPress"
-msgstr ""
+msgstr "ยินดีต้อนรับสู่ SportsPress"
 
 #: includes/admin/class-sp-admin-welcome.php:135
 msgid "Welcome to SportsPress!"
-msgstr ""
+msgstr "ยินดีต้อนรับสู่ SportsPress!"
 
 #: includes/admin/class-sp-admin-welcome.php:140
 msgid "Thanks, all done!"
-msgstr ""
+msgstr "ขอบคุณ, ทุกอย่างเรียบร้อย"
 
 #: includes/admin/class-sp-admin-welcome.php:142
 msgid "Thank you for updating to the latest version!"
@@ -547,7 +548,7 @@ msgstr ""
 
 #: includes/admin/class-sp-admin-welcome.php:144
 msgid "Thanks for installing!"
-msgstr ""
+msgstr "ขอบคุณที่ติดตั้ง!"
 
 #: includes/admin/class-sp-admin-welcome.php:146
 #, php-format
@@ -562,64 +563,64 @@ msgstr ""
 #: includes/admin/class-sp-admin-welcome.php:159
 #: includes/admin/views/html-notice-install.php:7
 msgid "Get Started"
-msgstr ""
+msgstr "เริ่มต้น"
 
 #: includes/admin/class-sp-admin-welcome.php:202
 #: includes/admin/settings/class-sp-settings-general.php:249
 #: includes/admin/settings/class-sp-settings-general.php:252
 msgid "Timezone"
-msgstr ""
+msgstr "เขตเวลา"
 
 #: includes/admin/class-sp-admin-welcome.php:226
 #: includes/admin/settings/class-sp-settings-general.php:49
 #: includes/admin/views/html-admin-page-status.php:223
 msgid "Sport"
-msgstr ""
+msgstr "กีฬา"
 
 #: includes/admin/class-sp-admin-welcome.php:238
 #: includes/admin/settings/class-sp-settings-general.php:57
 msgid "Mode"
-msgstr ""
+msgstr "โหมด"
 
 #: includes/admin/class-sp-admin-welcome.php:246
 #: includes/admin/settings/class-sp-settings-general.php:62
 msgctxt "mode select"
 msgid "Team"
-msgstr ""
+msgstr "ทีม"
 
 #: includes/admin/class-sp-admin-welcome.php:247
 #: includes/admin/settings/class-sp-settings-general.php:63
 msgctxt "mode select"
 msgid "Individual"
-msgstr ""
+msgstr "รายบุคคล"
 
 #: includes/admin/class-sp-admin-welcome.php:253
 #: includes/admin/views/html-admin-settings.php:16
 msgid "Save changes"
-msgstr ""
+msgstr "บันทึกการเปลี่ยนแปลง"
 
 #: includes/admin/class-sp-admin-welcome.php:260
 msgid "Next Steps"
-msgstr ""
+msgstr "ขั้นตอนถัดไป"
 
 #: includes/admin/class-sp-admin-welcome.php:262
 #: includes/class-sp-post-types.php:404
 msgid "Add New Team"
-msgstr ""
+msgstr "เพิ่มทีมใหม่"
 
 #: includes/admin/class-sp-admin-welcome.php:263
 #: includes/class-sp-post-types.php:466 sportspress.php:341
 msgid "Add New Player"
-msgstr ""
+msgstr "เพิ่มผู้เล่นใหม่"
 
 #: includes/admin/class-sp-admin-welcome.php:264
 #: includes/class-sp-post-types.php:343
 msgid "Add New Event"
-msgstr ""
+msgstr "เพิ่มรายการแข่งขันใหม่"
 
 #: includes/admin/class-sp-admin-welcome.php:268
 msgid "Translators"
-msgstr ""
+msgstr "ผู้แปล"
 
 #: includes/admin/class-sp-admin-welcome.php:269
 msgid ""
@@ -631,7 +632,7 @@ msgstr ""
 
 #: includes/admin/class-sp-admin-welcome.php:285
 msgid "Go to SportsPress Settings"
-msgstr ""
+msgstr "ไปที่การตั้งค่า SportsPress"
 
 #: includes/admin/importers/class-sp-event-importer.php:361
 #: includes/admin/importers/class-sp-importer.php:93
@@ -640,7 +641,7 @@ msgstr ""
 #: includes/admin/importers/class-sp-staff-importer.php:121
 #: includes/admin/importers/class-sp-team-importer.php:85
 msgid "Sorry, there has been an error."
-msgstr ""
+msgstr "ขออภัย, มีข้อผิดพลาด"
 
 #: includes/admin/importers/class-sp-event-importer.php:362
 #: includes/admin/importers/class-sp-player-importer.php:129
@@ -661,15 +662,15 @@ msgstr ""
 #: includes/admin/importers/class-sp-staff-importer.php:143
 #: includes/admin/importers/class-sp-team-importer.php:107
 msgid "All done!"
-msgstr ""
+msgstr "ทุกอย่างเรียบร้อย!"
 
 #: includes/admin/importers/class-sp-event-importer.php:383
 msgid "View Events"
-msgstr ""
+msgstr "ดูรายการแข่งขัน"
 
 #: includes/admin/importers/class-sp-event-importer.php:395
 msgid "Import Events"
-msgstr ""
+msgstr "นำเข้ารายการแข่งขัน"
 
 #: includes/admin/importers/class-sp-event-importer.php:407
 #: includes/admin/importers/class-sp-player-importer.php:174
@@ -701,7 +702,7 @@ msgstr ""
 #: includes/admin/importers/class-sp-staff-importer.php:186
 #: includes/admin/importers/class-sp-team-importer.php:150
 msgid "Choose a file from your computer:"
-msgstr ""
+msgstr "เลือกไฟล์จากคอมพิวเตอร์ของคุณ:"
 
 #: includes/admin/importers/class-sp-event-importer.php:432
 #: includes/admin/importers/class-sp-player-importer.php:199
@@ -709,14 +710,14 @@ msgstr ""
 #: includes/admin/importers/class-sp-team-importer.php:156
 #, php-format
 msgid "Maximum size: %s"
-msgstr ""
+msgstr "ขนาดสูงสุด: %s"
 
 #: includes/admin/importers/class-sp-event-importer.php:437
 #: includes/admin/importers/class-sp-player-importer.php:204
 #: includes/admin/importers/class-sp-staff-importer.php:197
 #: includes/admin/importers/class-sp-team-importer.php:161
 msgid "OR enter path to file:"
-msgstr ""
+msgstr "หรือ ใส่เส้นทางไฟล์:"
 
 #: includes/admin/importers/class-sp-event-importer.php:444
 #: includes/admin/importers/class-sp-player-importer.php:211
@@ -725,13 +726,13 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-events.php:197
 #: includes/admin/settings/class-sp-settings-events.php:201
 msgid "Delimiter"
-msgstr ""
+msgstr "ตัวคั่น"
 
 #: includes/admin/importers/class-sp-event-importer.php:448
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:89
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:121
 msgid "Format"
-msgstr ""
+msgstr "รูปแบบ"
 
 #: includes/admin/importers/class-sp-event-importer.php:458
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:48
@@ -747,7 +748,7 @@ msgstr ""
 #: includes/class-sp-formats.php:27 includes/class-sp-post-types.php:36
 #: includes/sp-core-functions.php:1072 templates/event-details.php:24
 msgid "League"
-msgstr ""
+msgstr "ลีก"
 
 #: includes/admin/importers/class-sp-event-importer.php:464
 #: includes/admin/importers/class-sp-event-importer.php:479
@@ -755,7 +756,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:53
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:70
 msgid "-- Not set --"
-msgstr ""
+msgstr "-- ไม่ระบุ --"
 
 #: includes/admin/importers/class-sp-event-importer.php:473
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:49
@@ -773,14 +774,14 @@ msgstr ""
 #: includes/class-sp-team.php:261 includes/sp-core-functions.php:1081
 #: templates/event-details.php:29
 msgid "Season"
-msgstr ""
+msgstr "ฤดูกาล"
 
 #: includes/admin/importers/class-sp-event-importer.php:490
 #: includes/admin/importers/class-sp-player-importer.php:217
 #: includes/admin/importers/class-sp-staff-importer.php:210
 #: includes/admin/importers/class-sp-team-importer.php:174
 msgid "Upload file and import"
-msgstr ""
+msgstr "อัปโหลดไฟล์และนำเข้า"
 
 #: includes/admin/importers/class-sp-importer.php:125
 msgid "Import"
@@ -791,15 +792,15 @@ msgstr ""
 msgid ""
 "Import complete - imported <strong>%s</strong> players and skipped "
 "<strong>%s</strong>."
-msgstr ""
+msgstr "นำเข้าเสร็จแล้ว - ได้นำเข้า <strong>%s</strong> ผู้เล่น และได้ข้าม <strong>%s</strong>"
 
 #: includes/admin/importers/class-sp-player-importer.php:150
 msgid "View Players"
-msgstr ""
+msgstr "ดูผู้เล่น"
 
 #: includes/admin/importers/class-sp-player-importer.php:162
 msgid "Import Players"
-msgstr ""
+msgstr "นำเข้าผู้เล่น"
 
 #: includes/admin/importers/class-sp-player-importer.php:176
 #, php-format
@@ -871,7 +872,7 @@ msgstr "หัวข้อ"
 #: includes/widgets/class-sp-widget-event-list.php:114
 #: templates/event-list.php:66 templates/event-venue.php:35
 msgid "Venue"
-msgstr ""
+msgstr "สถานที่"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:51
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:50
@@ -890,7 +891,7 @@ msgstr ""
 #: includes/class-sp-post-types.php:403 includes/sp-core-functions.php:1082
 #: templates/event-results.php:93
 msgid "Team"
-msgstr ""
+msgstr "ทีม"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:53
 #: includes/admin/post-types/class-sp-admin-cpt-list.php:52
@@ -906,7 +907,7 @@ msgstr ""
 #: includes/sp-core-functions.php:1094 templates/player-details.php:44
 #: templates/staff-details.php:36
 msgid "Current Team"
-msgstr ""
+msgstr "ทีมปัจจุบัน"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:114
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:191
@@ -916,7 +917,7 @@ msgstr ""
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:84
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:108
 msgid "Show all leagues"
-msgstr ""
+msgstr "แสดงลีกทั้งหมด"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:123
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:200
@@ -926,7 +927,7 @@ msgstr ""
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:93
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:117
 msgid "Show all seasons"
-msgstr ""
+msgstr "แสดงฤดูกาลทั้งหมด"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:134
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:183
@@ -935,7 +936,7 @@ msgstr ""
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:124
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:104
 msgid "Show all teams"
-msgstr ""
+msgstr "แสดงทีมทั้งหมด"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:43
 #: includes/admin/post-types/class-sp-admin-cpt-metric.php:43
@@ -950,7 +951,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-config.php:345
 #: includes/admin/settings/class-sp-settings-config.php:397
 msgid "Label"
-msgstr ""
+msgstr "ป้ายกำกับ"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:44
 #: includes/admin/post-types/class-sp-admin-cpt-statistic.php:44
@@ -969,7 +970,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-config.php:288
 #: includes/admin/settings/class-sp-settings-config.php:399
 msgid "Equation"
-msgstr ""
+msgstr "สมการ"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:46
 #: includes/admin/post-types/class-sp-admin-cpt-statistic.php:46
@@ -986,7 +987,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:96
 #: includes/admin/settings/class-sp-settings-config.php:290
 msgid "Sort Order"
-msgstr ""
+msgstr "เรียงลำดับ"
 
 #: includes/admin/post-types/class-sp-admin-cpt-column.php:48
 #: includes/admin/post-types/class-sp-admin-cpt-metric.php:45
@@ -1011,7 +1012,7 @@ msgstr "คำขยายความ"
 #: includes/class-sp-ajax.php:63
 #: includes/widgets/class-sp-widget-countdown.php:49
 msgid "(Auto)"
-msgstr ""
+msgstr "(อัตโนมัติ)"
 
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:91
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:47
@@ -1019,14 +1020,14 @@ msgstr ""
 #: includes/sp-core-functions.php:1069 templates/event-details.php:20
 #: templates/event-list.php:54
 msgid "Date"
-msgstr ""
+msgstr "วันที่"
 
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:92
 #: includes/class-sp-ajax.php:292 includes/sp-core-functions.php:1084
 #: includes/widgets/class-sp-widget-event-list.php:113
 #: templates/event-details.php:20
 msgid "Time"
-msgstr ""
+msgstr "เวลา"
 
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:114
 #: includes/class-sp-formats.php:28
@@ -1054,7 +1055,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:101
 #: includes/admin/settings/class-sp-settings-config.php:109
 msgid "Abbreviation"
-msgstr ""
+msgstr "ตัวย่อ"
 
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:52
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:64
@@ -1077,21 +1078,21 @@ msgstr "ชื่อ"
 #: includes/widgets/class-sp-widget-player-gallery.php:77
 #: includes/widgets/class-sp-widget-player-list.php:97
 msgid "Number"
-msgstr ""
+msgstr "หมายเลข"
 
 #: includes/admin/post-types/class-sp-admin-cpt-player.php:128
 msgid "Show all positions"
-msgstr ""
+msgstr "แสดงตำแหน่งทั้งหมด"
 
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:48
 msgid "Role"
-msgstr ""
+msgstr "บทบาท"
 
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:62
 #: includes/sp-template-hooks.php:187
 msgid "Logo"
-msgstr ""
+msgstr "โลโก้"
 
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:64
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:31
@@ -1101,12 +1102,12 @@ msgstr "URL"
 #: includes/admin/post-types/class-sp-admin-cpt.php:42
 #, php-format
 msgid "Insert into %s"
-msgstr ""
+msgstr "แทรกไปยัง %s"
 
 #: includes/admin/post-types/class-sp-admin-cpt.php:43
 #, php-format
 msgid "Uploaded to this %s"
-msgstr ""
+msgstr "ได้อัปโหลดไปยัง %s นี้"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:120
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:153
@@ -1115,7 +1116,7 @@ msgstr ""
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:124
 msgid "Video"
-msgstr "ไฟล์วีดีโอ "
+msgstr "ไฟล์วิดีโอ "
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:126
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:27
@@ -1125,7 +1126,7 @@ msgstr "ไฟล์วีดีโอ "
 #: includes/class-sp-post-types.php:161 includes/sp-core-functions.php:1080
 #: templates/event-results.php:89
 msgid "Team Results"
-msgstr ""
+msgstr "ผลของทีม"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:127
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:35
@@ -1135,7 +1136,7 @@ msgstr ""
 #: includes/class-sp-post-types.php:281 includes/class-sp-post-types.php:282
 #: sportspress.php:347
 msgid "Player Performance"
-msgstr ""
+msgstr "สมรรถนะผู้เล่น"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:129
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:76
@@ -1143,7 +1144,7 @@ msgstr ""
 #: includes/widgets/class-sp-widget-event-list.php:115
 #: templates/event-list.php:69
 msgid "Article"
-msgstr ""
+msgstr "บทความ"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:132
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:147
@@ -1162,13 +1163,13 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status.php:257
 #: includes/class-sp-post-types.php:221
 msgid "Table Columns"
-msgstr ""
+msgstr "คอลัมน์ตาราง"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:144
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:160
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:172
 msgid "Profile"
-msgstr ""
+msgstr "ข้อมูลประจำตัว"
 
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:154
 #: includes/admin/post-types/class-sp-admin-meta-boxes.php:165
@@ -1186,12 +1187,12 @@ msgstr ""
 #: includes/widgets/class-sp-widget-player-gallery.php:53
 #: includes/widgets/class-sp-widget-player-list.php:53
 msgid "Player List"
-msgstr ""
+msgstr "รายชื่อผู้เล่น"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:64
 #: includes/sp-core-functions.php:1085 templates/event-list.php:63
 msgid "Time/Results"
-msgstr ""
+msgstr "เวลา/ผลแข่ง"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:149
 #: includes/sp-core-functions.php:1079 templates/event-list.php:172
@@ -1225,7 +1226,7 @@ msgstr "ดูก่อน"
 #: includes/class-sp-post-types.php:532 includes/class-sp-post-types.php:533
 #: includes/sp-core-functions.php:749 includes/sp-core-functions.php:789
 msgid "No results found."
-msgstr ""
+msgstr "ไม่พบผลลัพธ์"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:173
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:120
@@ -1251,12 +1252,12 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-lists.php:110
 #, php-format
 msgid "Select %s"
-msgstr ""
+msgstr "เลือก %s"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:31
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:85
 msgid "Status"
-msgstr ""
+msgstr "สถานะ"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:57
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:72
@@ -1273,7 +1274,7 @@ msgstr ""
 #: includes/widgets/class-sp-widget-event-calendar.php:48
 #: includes/widgets/class-sp-widget-event-list.php:58
 msgid "All"
-msgstr ""
+msgstr "ทั้งหมด"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:116
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:59
@@ -1285,7 +1286,7 @@ msgstr ""
 #: includes/widgets/class-sp-widget-player-gallery.php:96
 #: includes/widgets/class-sp-widget-player-list.php:116
 msgid "Ascending"
-msgstr ""
+msgstr "เรียงขึ้น"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-details.php:117
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:59
@@ -1297,7 +1298,7 @@ msgstr ""
 #: includes/widgets/class-sp-widget-player-gallery.php:97
 #: includes/widgets/class-sp-widget-player-list.php:117
 msgid "Descending"
-msgstr ""
+msgstr "เรียงลง"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-shortcode.php:26
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-shortcode.php:24
@@ -1306,15 +1307,15 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-shortcode.php:24
 msgid ""
 "Copy this code and paste it into your post, page or text widget content."
-msgstr ""
+msgstr "คัดลอกโค้ดนี้ แล้ววางไปยังโพสต์, เพจ หรือเนื้อหาวิดเจ็ตข้อความของคุณ"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-column-details.php:47
 msgid "Disable"
-msgstr ""
+msgstr "ไม่ใช้งาน"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
 msgid "Attended"
-msgstr ""
+msgstr "ได้เข้าร่วม"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:37
@@ -1323,35 +1324,35 @@ msgstr ""
 #: includes/widgets/class-sp-widget-player-gallery.php:79
 #: includes/widgets/class-sp-widget-player-list.php:99
 msgid "Played"
-msgstr ""
+msgstr "ได้เล่น"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
 msgid "Started"
-msgstr ""
+msgstr "ได้เริ่มต้น"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:34
 msgid "Substituted"
-msgstr ""
+msgstr "ถูกเปลี่ยนตัว"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
 msgid "for"
-msgstr ""
+msgstr "ได้"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:40
 msgid "against"
-msgstr ""
+msgstr "เสีย"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:44
 msgid "Streak"
-msgstr ""
+msgstr "รวด"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:45
 msgid "Last 5"
-msgstr ""
+msgstr "5 ล่าสุด"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:46
 msgid "Last 10"
-msgstr ""
+msgstr "10 ล่าสุด"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:67
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:70
@@ -1359,36 +1360,36 @@ msgstr ""
 #: includes/class-sp-event.php:100 includes/class-sp-post-types.php:123
 #: includes/sp-core-functions.php:1097
 msgid "Position"
-msgstr ""
+msgstr "ตำแหน่ง"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:134
 #: includes/sp-core-functions.php:350 includes/sp-core-functions.php:354
 #: includes/sp-core-functions.php:1086 templates/event-performance.php:157
 msgid "Total"
-msgstr ""
+msgstr "รวม"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:160
 msgid "Starting Lineup"
-msgstr ""
+msgstr "ผู้เล่นตัวจริง"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-performance.php:161
 msgid "Substitute"
-msgstr ""
+msgstr "เปลี่ยนตัว"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:57
 #: includes/class-sp-event.php:45 includes/class-sp-post-types.php:192
 #: includes/sp-core-functions.php:1074
 msgid "Outcome"
-msgstr ""
+msgstr "ผลลัพธ์"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:34
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-statistics.php:90
 msgid "&mdash; None &mdash;"
-msgstr ""
+msgstr "&mdash; ไม่มี &mdash;"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:27
 msgid "Remove video"
-msgstr ""
+msgstr "ลบวิดีโอ"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:33
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:86
@@ -1404,12 +1405,12 @@ msgstr "ยกเลิก"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-video.php:36
 msgid "Add video"
-msgstr ""
+msgstr "เพิ่มวิดีโอ"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:42
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:46
 msgid "Values"
-msgstr ""
+msgstr "มูลค่า"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:43
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:47
@@ -1434,11 +1435,11 @@ msgstr "บันทึก"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:73
 msgid "Grouping"
-msgstr ""
+msgstr "การแบ่งกลุ่ม"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:80
 msgid "Sort by"
-msgstr ""
+msgstr "เรียงตาม"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:59
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:60
@@ -1449,19 +1450,19 @@ msgstr ""
 #: includes/sp-core-functions.php:1073 templates/player-details.php:34
 #: templates/staff-details.php:32
 msgid "Nationality"
-msgstr ""
+msgstr "สัญชาติ"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:86
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:63
 msgid "Current Teams"
-msgstr ""
+msgstr "ทีมปัจจุบัน"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-details.php:101
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:78
 #: includes/sp-core-functions.php:1095 templates/player-details.php:53
 #: templates/staff-details.php:43
 msgid "Past Teams"
-msgstr ""
+msgstr "ทีมในอดีต"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:80
 msgid "Home"
@@ -1470,7 +1471,7 @@ msgstr "หน้าแรก"
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:95
 #: includes/admin/views/html-admin-page-status.php:24
 msgid "Site URL"
-msgstr ""
+msgstr "URL ไซต์"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:98
 #: includes/sp-core-functions.php:318 templates/team-link.php:21
@@ -1481,11 +1482,11 @@ msgstr "เยี่ยมชมเว็บไซต์"
 msgid ""
 "The abbreviation is not prominent by default; however, some themes may show "
 "it"
-msgstr ""
+msgstr "ตัวย่อไม่ได้เป็นค่าหลักโดยค่าตั้งต้น อย่างไรก็ตามบางรูปลักษณ์อาจจะแสดงมันได้"
 
 #: includes/admin/settings/class-sp-settings-config.php:25
 msgid "Configure"
-msgstr ""
+msgstr "กำหนดค่า"
 
 #: includes/admin/settings/class-sp-settings-config.php:46
 msgid "Configure SportsPress"
@@ -1495,13 +1496,13 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status.php:227
 #: includes/class-sp-post-types.php:191
 msgid "Event Outcomes"
-msgstr ""
+msgstr "ผลการแข่งขัน"
 
 #: includes/admin/settings/class-sp-settings-config.php:101
 #: includes/admin/settings/class-sp-settings-config.php:157
 #: includes/admin/settings/class-sp-settings-config.php:228
 msgid "Used for events."
-msgstr ""
+msgstr "ถูกใช้สำหรับรายการแข่งขัน"
 
 #: includes/admin/settings/class-sp-settings-config.php:164
 #: includes/admin/settings/class-sp-settings-general.php:285
@@ -1562,7 +1563,7 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-events.php:42
 msgid "Event Options"
-msgstr ""
+msgstr "ตัวเลือกของรายการแข่งขัน"
 
 #: includes/admin/settings/class-sp-settings-events.php:45
 #: includes/admin/settings/class-sp-settings-events.php:155
@@ -1581,11 +1582,11 @@ msgstr ""
 #: includes/class-sp-ajax.php:440
 #: includes/widgets/class-sp-widget-league-table.php:90
 msgid "Display logos"
-msgstr ""
+msgstr "แสดงโลโก้"
 
 #: includes/admin/settings/class-sp-settings-events.php:69
 msgid "Display maps"
-msgstr ""
+msgstr "แสดงแผนที่"
 
 #: includes/admin/settings/class-sp-settings-events.php:77
 #: includes/admin/settings/class-sp-settings-events.php:140
@@ -1638,7 +1639,7 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-events.php:206
 msgid "Custom:"
-msgstr ""
+msgstr "ปรับแต่ง:"
 
 #: includes/admin/settings/class-sp-settings-general.php:25
 msgid "General"
@@ -1646,15 +1647,15 @@ msgstr "ทั่วไป"
 
 #: includes/admin/settings/class-sp-settings-general.php:44
 msgid "General Options"
-msgstr ""
+msgstr "ตัวเลือกทั่วไป"
 
 #: includes/admin/settings/class-sp-settings-general.php:68
 msgid "Google Maps"
-msgstr ""
+msgstr "แผนที่ Google"
 
 #: includes/admin/settings/class-sp-settings-general.php:74
 msgid "Satellite"
-msgstr ""
+msgstr "ดาวเทียม"
 
 #: includes/admin/settings/class-sp-settings-general.php:75
 msgid "Hybrid"
@@ -1670,7 +1671,7 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-general.php:90
 msgid "Align"
-msgstr "จัดแถว"
+msgstr "แนวจัดวาง"
 
 #: includes/admin/settings/class-sp-settings-general.php:96
 msgid "Left"
@@ -1686,7 +1687,7 @@ msgstr "ขวา"
 
 #: includes/admin/settings/class-sp-settings-general.php:103
 msgid "Padding"
-msgstr ""
+msgstr "การชิด"
 
 #: includes/admin/settings/class-sp-settings-general.php:119
 msgid "Custom CSS"
@@ -1714,7 +1715,7 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-general.php:145
 msgid "Live countdowns"
-msgstr ""
+msgstr "นับถอยหลังรายการสด"
 
 #: includes/admin/settings/class-sp-settings-general.php:150
 msgid "This will enable a script allowing the countdowns to be animated."
@@ -1757,7 +1758,7 @@ msgstr ""
 
 #: includes/admin/settings/class-sp-settings-general.php:295
 msgid "Enable"
-msgstr ""
+msgstr "ใช้งาน"
 
 #: includes/admin/settings/class-sp-settings-players.php:39
 #: sportspress.php:345
@@ -1823,13 +1824,13 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status.php:61
 #: includes/admin/views/html-admin-page-status.php:86
 msgid "Yes"
-msgstr "ตกลง"
+msgstr "ใช่"
 
 #: includes/admin/views/html-admin-page-status.php:37
 #: includes/admin/views/html-admin-page-status.php:61
 #: includes/admin/views/html-admin-page-status.php:86
 msgid "No"
-msgstr "ไม่ตกลง"
+msgstr "ไม่ใช่"
 
 #: includes/admin/views/html-admin-page-status.php:40
 msgid "Web Server Info"
@@ -1969,11 +1970,11 @@ msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:365
 msgid "Theme"
-msgstr ""
+msgstr "รูปลักษณ์"
 
 #: includes/admin/views/html-admin-page-status.php:402
 msgid "Theme Name"
-msgstr ""
+msgstr "ชื่อรูปลักษณ์"
 
 #: includes/admin/views/html-admin-page-status.php:408
 msgid "Theme Version"
@@ -1985,7 +1986,7 @@ msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:426
 msgid "Templates"
-msgstr ""
+msgstr "แม่แบบ"
 
 #: includes/admin/views/html-admin-page-status.php:459
 #, php-format
@@ -2012,7 +2013,7 @@ msgstr ""
 #: includes/admin/views/html-notice-template-check.php:6
 #: includes/admin/views/html-notice-theme-support.php:8
 msgid "Hide this notice"
-msgstr ""
+msgstr "ซ่อนการแจ้งนี้"
 
 #: includes/admin/views/html-notice-template-check.php:5
 msgid ""
@@ -2091,23 +2092,23 @@ msgstr ""
 #: includes/widgets/class-sp-widget-event-blocks.php:81
 #: includes/widgets/class-sp-widget-event-list.php:84
 msgid "Date:"
-msgstr ""
+msgstr "วันที่:"
 
 #: includes/class-sp-ajax.php:265 includes/class-sp-ajax.php:356
 #: includes/sp-core-functions.php:439
 msgid "This week"
-msgstr ""
+msgstr "สัปดาห์นี้"
 
 #: includes/class-sp-ajax.php:266 includes/class-sp-ajax.php:357
 #: includes/sp-core-functions.php:440
 msgid "Today"
-msgstr ""
+msgstr "วันนี้"
 
 #: includes/class-sp-ajax.php:272 includes/class-sp-ajax.php:363
 #: includes/widgets/class-sp-widget-event-blocks.php:94
 #: includes/widgets/class-sp-widget-event-list.php:97
 msgid "Number of events to show:"
-msgstr ""
+msgstr "จำนวนรายการแข่งขันที่แสดง:"
 
 #: includes/class-sp-ajax.php:278 includes/class-sp-ajax.php:369
 #: includes/class-sp-ajax.php:583 includes/class-sp-ajax.php:654
@@ -2116,7 +2117,7 @@ msgstr ""
 #: includes/widgets/class-sp-widget-player-gallery.php:94
 #: includes/widgets/class-sp-widget-player-list.php:114
 msgid "Sort Order:"
-msgstr ""
+msgstr "เรียงลำดับ:"
 
 #: includes/class-sp-ajax.php:287 includes/class-sp-ajax.php:419
 #: includes/class-sp-ajax.php:543
@@ -2160,27 +2161,27 @@ msgstr ""
 
 #: includes/class-sp-countries.php:29
 msgid "Africa"
-msgstr ""
+msgstr "แอฟริกา"
 
 #: includes/class-sp-countries.php:30
 msgid "Asia"
-msgstr ""
+msgstr "เอเชีย"
 
 #: includes/class-sp-countries.php:31
 msgid "Europe"
-msgstr ""
+msgstr "ยุโรป"
 
 #: includes/class-sp-countries.php:32
 msgid "North America"
-msgstr ""
+msgstr "อเมริกาเหนือ"
 
 #: includes/class-sp-countries.php:33
 msgid "Oceania"
-msgstr ""
+msgstr "โอเชียเนีย"
 
 #: includes/class-sp-countries.php:34
 msgid "South America"
-msgstr ""
+msgstr "อเมริกาใต้"
 
 #: includes/class-sp-countries.php:38
 msgid "Andorra"
@@ -2196,7 +2197,7 @@ msgstr "อัฟกานิสถาน"
 
 #: includes/class-sp-countries.php:41
 msgid "Antigua and Barbuda"
-msgstr "แอนติกาและบาร์บูดา"
+msgstr "แอนติกัวและบาร์บูดา"
 
 #: includes/class-sp-countries.php:42
 msgid "Albania"
@@ -2224,7 +2225,7 @@ msgstr "ออสเตรเลีย"
 
 #: includes/class-sp-countries.php:48
 msgid "Azerbaijan"
-msgstr "อาเซอร์ไบจาน"
+msgstr "อาเซอร์ไบจัน"
 
 #: includes/class-sp-countries.php:49
 msgid "Bosnia and Herzegovina"
@@ -2396,7 +2397,7 @@ msgstr "ซาฮาราตะวันตก"
 
 #: includes/class-sp-countries.php:91
 msgid "England"
-msgstr ""
+msgstr "อังกฤษ"
 
 #: includes/class-sp-countries.php:92
 msgid "Eritrea"
@@ -2664,7 +2665,7 @@ msgstr "มองโกเลีย"
 
 #: includes/class-sp-countries.php:158
 msgid "Macau"
-msgstr "มาเก๊า เขตปกครองพิเศษประเทศจีน"
+msgstr "มาเก๊า"
 
 #: includes/class-sp-countries.php:159
 msgid "Mauritania"
@@ -2704,7 +2705,7 @@ msgstr "นามิเบีย"
 
 #: includes/class-sp-countries.php:168
 msgid "Northern Ireland"
-msgstr ""
+msgstr "ไอร์แลนด์เหนือ"
 
 #: includes/class-sp-countries.php:169
 msgid "Niger"
@@ -2820,7 +2821,7 @@ msgstr "สวีเดน"
 
 #: includes/class-sp-countries.php:197
 msgid "Scotland"
-msgstr ""
+msgstr "สก็อตแลนด์"
 
 #: includes/class-sp-countries.php:198
 msgid "Singapore"
@@ -2960,7 +2961,7 @@ msgstr "วานูอาตู"
 
 #: includes/class-sp-countries.php:232
 msgid "Wales"
-msgstr ""
+msgstr "เวลส์"
 
 #: includes/class-sp-countries.php:233
 msgid "Samoa"
@@ -2984,11 +2985,11 @@ msgstr "ซิมบับเว"
 
 #: includes/class-sp-frontend-scripts.php:57
 msgid "Previous"
-msgstr ""
+msgstr "ก่อนหน้า"
 
 #: includes/class-sp-frontend-scripts.php:57
 msgid "Next"
-msgstr "ต่อไป"
+msgstr "ถัดไป"
 
 #: includes/class-sp-install.php:230
 msgid "Event Manager"
@@ -3004,7 +3005,7 @@ msgstr ""
 
 #: includes/class-sp-install.php:534
 msgid "What's new:"
-msgstr ""
+msgstr "สิ่งใหม่:"
 
 #: includes/class-sp-post-types.php:38
 msgid "Edit League"
@@ -3201,15 +3202,15 @@ msgstr ""
 
 #: includes/sp-core-functions.php:350
 msgid "Average"
-msgstr ""
+msgstr "เฉลี่ย"
 
 #: includes/sp-core-functions.php:408
 msgid "Published"
-msgstr "เผยแพร่"
+msgstr "เผยแพร่แล้ว"
 
 #: includes/sp-core-functions.php:409
 msgid "Scheduled"
-msgstr ""
+msgstr "ถูกกำหนดการณ์"
 
 #: includes/sp-core-functions.php:672 includes/sp-core-functions.php:812
 msgid "(no title)"
@@ -3376,7 +3377,7 @@ msgstr ""
 
 #: sportspress.php:357
 msgid "Display photos"
-msgstr ""
+msgstr "แสดงรูปภาพ"
 
 #. translators: Calendar caption: 1: month name, 2: 4-digit year
 #: templates/event-calendar.php:92 templates/event-calendar.php:120
