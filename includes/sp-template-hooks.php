@@ -127,7 +127,8 @@ function sportspress_the_title( $title, $id = null ) {
 				foreach ( $teams as $team ):
 					$team_logos[] = get_the_post_thumbnail( $team, 'sportspress-fit-icon' );
 				endforeach;
-				if ( ! empty( array_filter( $team_logos ) ) ):
+				$team_logos = array_filter( $team_logos );
+				if ( ! empty( $team_logos ) ):
 					$title .= '<div class="sp-event-teams">';
 					$delimiter = get_option( 'sportspress_event_teams_delimiter', 'vs' );
 					$title .= implode( ' ' . $delimiter . ' ', $team_logos );

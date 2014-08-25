@@ -80,7 +80,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 				case 2:
 					check_admin_referer( 'import-upload' );
 					if ( isset( $_POST['sp_import'] ) ):
-						$this->import( $_POST['sp_import'], array_values( array_filter( sp_array_value( $_POST, 'sp_columns', array( 'post_title' ) ) ) ) );
+						$columns = array_filter( sp_array_value( $_POST, 'sp_columns', array( 'post_title' ) ) );
+						$this->import( $_POST['sp_import'], array_values( $columns ) );
 					endif;
 					break;
 			endswitch;

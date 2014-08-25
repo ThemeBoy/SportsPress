@@ -66,7 +66,8 @@ class SP_Admin_CPT_Table extends SP_Admin_CPT {
 				echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
 				break;
 			case 'sp_team':
-				echo sizeof( array_filter( get_post_meta( $post_id, 'sp_team' ) ) );
+				$teams = array_filter( get_post_meta( $post_id, 'sp_team' ) );
+				echo sizeof( $teams );
 				break;
 		endswitch;
 	}

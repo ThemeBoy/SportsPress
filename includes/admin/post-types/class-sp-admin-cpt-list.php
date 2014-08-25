@@ -62,7 +62,8 @@ class SP_Admin_CPT_List extends SP_Admin_CPT {
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
 			case 'sp_player':
-				echo sizeof( array_filter( get_post_meta( $post_id, 'sp_player' ) ) );
+				$players = array_filter( get_post_meta( $post_id, 'sp_player' ) );
+				echo sizeof( $players );
 				break;
 			case 'sp_league':
 				echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
