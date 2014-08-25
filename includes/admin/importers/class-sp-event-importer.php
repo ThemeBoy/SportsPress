@@ -66,7 +66,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			foreach ( $rows as $row ):
 
-				if ( empty( array_filter( $row ) ) ) continue;
+				$row = array_filter( $row );
+
+				if ( empty( $row ) ) continue;
 
 				$meta = array();
 
