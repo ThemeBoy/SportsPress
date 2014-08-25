@@ -108,7 +108,8 @@ class SP_Admin_Assets {
 				'days' => __( 'days', 'sportspress' ),
 				'hrs' => __( 'hrs', 'sportspress' ),
 				'mins' => __( 'mins', 'sportspress' ),
-				'secs' => __( 'secs', 'sportspress' )
+				'secs' => __( 'secs', 'sportspress' ),
+				'displaying_posts' => html_entity_decode( __( 'Displaying %s&#8211;%s of %s', 'sportspress' ) ),
 	    	);
 
 	    	// Localize scripts

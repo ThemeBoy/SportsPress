@@ -106,6 +106,15 @@
 	margin: 0;
 }
 
+.sportspress table.form-table .forminp-radio ul  li {
+	display: inline;
+	margin-right: 20px;
+}
+
+.sportspress table.form-table .forminp-radio ul  li label.post-format-icon {
+	margin-top: 0 !important;
+}
+
 .sportspress table.form-table fieldset {
 	margin-top: 4px;
 }
@@ -481,6 +490,44 @@ table.sp_status_table td mark {
 
 table.sp_status_table td mark.yes {
 	color: #7ad03a;
+}
+
+/* Importers */
+#import-upload-form table.form-table th,
+#import-upload-form table.form-table td {
+	padding-bottom: 0;
+}
+#import-upload-form table.form-table tbody tr:last-child td {
+	padding-bottom: 20px;
+}
+.sp-import-table th,
+.sp-import-table td {
+	padding-right: 0;
+}
+.sp-import-table th:last-child,
+.sp-import-table td:last-child {
+	padding-right: 10px;
+}
+.sp-import-table tbody tr:nth-child(2n-1) {
+	background: #f9f9f9;
+}
+.sp-import-table select {
+	max-width: 100%;
+}
+.sp-import-table .sp-actions-column {
+	width: 40px;
+	text-align: right;
+}
+.sp-import-table .sp-add-row {
+	line-height: 1.5;
+}
+.sp-import-table .sp-delete-row {
+	font-size: 16px;
+	line-height: 1.5;
+	color: #a00;
+}
+.sp-import-table .sp-delete-row:hover {
+	color: #f00;
 }
 
 /* Media Queries */

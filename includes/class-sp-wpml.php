@@ -50,7 +50,7 @@ class SP_WPML {
 			// Get translated post ID
 			$translated_id = icl_object_id( $id, 'any', false, ICL_LANGUAGE_CODE );
 
-			if ( $translated_id && $translated_id != $id ):
+			if ( $translated_id && $translated_id != $id && get_the_ID() != $translated_id ):
 				return get_permalink( $translated_id, $leavename );
 			endif;
 		endif;
@@ -59,7 +59,7 @@ class SP_WPML {
 	}
 
 	public static function can_localize( $post, $id = null ) {
-		return function_exists( 'icl_object_id' ) && is_sp_post_type( get_post_type( $post ) ) && $id != get_the_ID();
+		return function_exists( 'icl_object_id' ) && is_sp_post_type( get_post_type( $post ) );
 	}
 }
 

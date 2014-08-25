@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 function sp_get_screen_ids() {
     return apply_filters( 'sportspress_screen_ids', array(
+        'admin',
         'widgets',
         'dashboard',
         'dashboard_page_sp-about',

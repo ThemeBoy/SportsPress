@@ -466,4 +466,53 @@ jQuery(document).ready(function($){
 			nonce:          $("#sp-config-nonce").val()
 		});
 	});
+
+	// Update importer post count
+	$(".sp-import-table").on("updatePostCount", function() {
+		$(".sp-post-count").text(localized_strings.displaying_posts.replace("%s", 1).replace(/%s/g, count = $(this).find("tbody tr").length));
+	});
+
+	// Delete importer row
+	$(".sp-import-table").on("click", ".sp-delete-row", function() {
+		$self = $(this);
+		$self.closest("tr").css("background-color", "#fcc").fadeOut(400, function() {
+			$table = $self.closest(".sp-import-table");
+			$(this).remove();
+			$table.trigger("updatePostCount");
+		});
+		return false;
+	});
+
+	// Add importer row
+	$(".sp-import-table").on("click", ".sp-add-row", function() {
+		$self = $(this);
+		$table = $self.closest(".sp-import-table");
+		if ( $self.hasClass("sp-add-first") ) {
+			$tr = $table.find("tbody tr:first-child");
+			$row = $tr.clone();
+			$row.insertBefore($tr).find("input").val("");
+		} else {
+			$tr = $self.closest("tr");
+			$row = $tr.clone();
+			$tr.find("input").val("");
+			$row.insertBefore($tr);
+		}
+		$table.trigger("updatePostCount");
+		return false;
+	});
+
+	// Enable or disable importer inputs based on column label
+	$(".sp-import-table").on("change", "select", function() {
+		$self = $(this);
+		$table = $self.closest(".sp-import-table");
+		index = parseInt($self.data("index"));
+		if ( $self.val() == 0 ) {
+			$table.find("tbody tr td:nth-child("+parseInt(index+1)+") input").prop("disabled", true);
+		} else {
+			$table.find("tbody tr td:nth-child("+parseInt(index+1)+") input").prop("disabled", false);
+			$self.closest("th").siblings().find("select").each(function() {
+				if ( $(this).val() == $self.val() ) $(this).val("0").trigger("change");
+			});
+		}
+	});
 });
