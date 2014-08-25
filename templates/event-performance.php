@@ -129,7 +129,7 @@ if ( is_array( $teams ) ):
 
 								echo '<td class="data-name">' . $name . '</td>';
 								
-								if ( $mode == 'icons' ); echo '<td class="sp-performance-icons">';
+								if ( $mode == 'icons' ) echo '<td class="sp-performance-icons">';
 
 								foreach( $labels as $key => $label ):
 									if ( $key == 'name' )
@@ -162,7 +162,7 @@ if ( is_array( $teams ) ):
 									endif;
 								endforeach;
 								
-								if ( $mode == 'icons' ); echo '</td>';
+								if ( $mode == 'icons' ) echo '</td>';
 
 								echo '</tr>';
 
