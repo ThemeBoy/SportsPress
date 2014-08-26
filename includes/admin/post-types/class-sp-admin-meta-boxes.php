@@ -162,7 +162,7 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_editordiv', __( 'Profile', 'sportspress' ), 'SP_Meta_Box_Player_Editor::output', 'sp_player', 'normal', 'low' );
 
 		// Lists
-		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'SP_Meta_Box_List_Shortcode::output', 'sp_table', 'side', 'default' );
+		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'SP_Meta_Box_List_Shortcode::output', 'sp_list', 'side', 'default' );
 		add_meta_box( 'sp_formatdiv', __( 'Layout', 'sportspress' ), 'SP_Meta_Box_List_Format::output', 'sp_list', 'side', 'default' );
 		add_meta_box( 'sp_columnsdiv', __( 'Columns', 'sportspress' ), 'SP_Meta_Box_List_Columns::output', 'sp_list', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_List_Details::output', 'sp_list', 'side', 'default' );
