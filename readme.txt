@@ -4,7 +4,7 @@ Tags: sport, sports, clubs, teams, statistics, stats, fixtures, results, standin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -150,6 +150,10 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 
 == Changelog ==
 
+= 1.3.1 =
+* Fix - Player list shortcode meta displayed on league table edit page.
+* Localization - Update Dutch translation.
+
 = 1.3 =
 * Feature - New overview page with interactive sitemap.
 * Feature - New and improved CSV import tools for bulk adding.
@@ -187,7 +191,7 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 * Preset - Add missing primary results and column priorities.
 * Localization - Fix multilingual post linking.
 * Localization - Thai translation by Xyteton.
-* Localization - Add Xyteton, tyby, & SilverXp to translation team.
+* Localization - Add Xyteton, tyby94, & SilverXp to translation team.
 * Localization - Update translations from Transifex.
 
 = 1.2.8 =
