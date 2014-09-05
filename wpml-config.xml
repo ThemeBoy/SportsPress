@@ -1,0 +1,35 @@
+<wpml-config>
+  <admin-texts>
+    <key name="sportspress_text">
+      <key name="Article"/>
+      <key name="Current Team"/>
+      <key name="Date"/>
+      <key name="Details"/>
+      <key name="Event"/>
+      <key name="League"/>
+      <key name="Nationality"/>
+      <key name="Outcome"/>
+      <key name="Past Teams"/>
+      <key name="Played"/>
+      <key name="Player"/>
+      <key name="Pos"/>
+      <key name="Position"/>
+      <key name="Preview"/>
+      <key name="Rank"/>
+      <key name="Recap"/>
+      <key name="Season"/>
+      <key name="Staff"/>
+      <key name="Substitutes"/>
+      <key name="Team"/>
+      <key name="Team Results"/>
+      <key name="Teams"/>
+      <key name="Time"/>
+      <key name="Time/Results"/>
+      <key name="Total"/>
+      <key name="Venue"/>
+      <key name="View all events"/>
+      <key name="View all players"/>
+      <key name="View full table"/>
+    </key>
+  </admin-texts>
+</wpml-config>
