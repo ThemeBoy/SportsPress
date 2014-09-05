@@ -171,18 +171,18 @@ endif;
 						if ( $usecolumns == null || in_array( 'league', $usecolumns ) ):
 							echo '<td class="data-league">';
 							$leagues = get_the_terms( $event->ID, 'sp_league' );
-							foreach ( $leagues as $league ):
+							if ( $leagues ): foreach ( $leagues as $league ):
 								echo $league->name;
-							endforeach;
+							endforeach; endif;
 							echo '</td>';
 						endif;
 
 						if ( $usecolumns == null || in_array( 'season', $usecolumns ) ):
 							echo '<td class="data-season">';
 							$seasons = get_the_terms( $event->ID, 'sp_season' );
-							foreach ( $seasons as $season ):
+							if ( $seasons ): foreach ( $seasons as $season ):
 								echo $season->name;
-							endforeach;
+							endforeach; endif;
 							echo '</td>';
 						endif;
 
@@ -192,9 +192,9 @@ endif;
 								the_terms( $event->ID, 'sp_venue' );
 							else:
 								$venues = get_the_terms( $event->ID, 'sp_venue' );
-								foreach ( $venues as $venue ):
+								if ( $venues ): foreach ( $venues as $venue ):
 									echo $venue->name;
-								endforeach;
+								endforeach; endif;
 							endif;
 							echo '</td>';
 						endif;
