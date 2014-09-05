@@ -1,19 +1,28 @@
 === SportsPress - All in One Sports Management ===
 Contributors: ThemeBoy, brianmiyaji, aylaview
-Tags: sport, sports, clubs, teams, statistics, stats, fixtures, results, standings, league tables, leagues, shortcodes, sports journalism, themeboy, wordpress sports
+Tags: sport, sports, clubs, teams, statistics, stats, fixtures, results, standings, league tables, leagues, shortcodes, sports data, themeboy, esports, wordpress sports
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-SportsPress is an extendable sports plugin that adds league management capabilities and a statistics calculator for any sport.
+SportsPress is an extendable sports data plugin that adds league management capabilities and a statistics calculator for any sport.
 
 == Description ==
 
 = Create a Professional Sports Website =
 SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team or club website.
+
+= Industry Reviews =
+> "*The SportsPress plugin brings in some amazing features to your WordPress site and league management capabilities. If you are looking forward to create a sports related website on WordPress, you must have a look at SportsPress plugin.*" — [indexwp.com](http://www.indexwp.com/sportspress-plugin-review/)
+>
+> "*Script of the Day: While the WordPress repository holds various team and sports-related plugins, few of them come close to what you can achieve with SportsPress.*" — [softpedia.com](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml)
+>
+> "*SportsPress is our number 1 WordPress plugin for sport!*" — [gbsport.org.uk](http://www.gbsport.org.uk/5-great-wordpress-plugins-for-sport/)
+>
+> "*The freely available and highly impressive Sportspress plugin offers terrific functionality including a fixtures listing, league table, player & staff profiles, customizable point system and a built-in translation system for 36 different languages.*" — [clubthemes.com](http://clubthemes.com/awesome-sporting-templates-themes-wordpress-joomla/)
 
 = Features =
 * Equation Builder
@@ -123,12 +132,12 @@ If on the off-chance you do encounter issues with the event/team/player/staff pa
 
 == Screenshots ==
 
-1. SportsPress style settings, configuration, and responsive layout example.
-2. Equation builder admin page.
-3. League table in Twenty Fourteen theme.
-4. League table admin page.
-5. Events list in Twenty Fourteen theme.
-6. Events admin page.
+1. Manage events from multiple leagues and seasons. Event names are generated automatically.
+2. Each team has a unique logo and website URL. Optionally link teams from your blog to their official websites.
+3. Configure variables used throughout the plugin to fit your sport. Presets are provided for some sports, and will automatically populate these options.
+4. Design your own points system using the custom drag-and-drop equation builder.
+5. The overview page provides a birds-eye view of your entire sports network.
+6. Twenty Fourteen theme showcasing the dynamic league table and some of the included widgets.
 
 == Frequently Asked Questions ==
 
@@ -146,9 +155,22 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 
 = Can I import teams/players/events from a CSV file? =
 
-Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
+Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers.
 
 == Changelog ==
+
+= 1.3.2 =
+* Integration - WPML compatibility.
+* Feature - Option to set number of columns in player gallery.
+* Tweak - Remove line break after templates.
+* Tweak - Update plugin icon.
+* Tweak - Update welcome screen badge.
+* Tweak - Display admin menu label as Players & Staff.
+* Fix - Typo in sample CSV import file.
+* Fix - Apply default color scheme when left blank.
+* Fix - Notices where taxonomies or posts not found.
+* Localization - Update source strings.
+* Localization - Update French and Dutch translations.
 
 = 1.3.1 =
 * Fix - Player list shortcode meta displayed on league table edit page.
