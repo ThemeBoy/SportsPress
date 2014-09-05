@@ -75,18 +75,23 @@ class SP_Admin_Welcome {
 		?>
 		<style type="text/css">
 			/*<![CDATA[*/
+			.about-sportspress-wrap .sp-about-text {
+				min-height: 0;
+			}
 			.about-sportspress-wrap .sp-badge {
 				position: absolute;
 				top: 0;
 				right: 0;
 				background: #00cac4 url(<?php echo $badge_url; ?>) no-repeat center top;
 				text-rendering: optimizeLegibility;
-				padding-top: 160px;
-				height: 42px;
-				width: 165px;
+				padding-top: 10px;
+				height: 150px;
+				width: 150px;
 				font-size: 14px;
+				line-height: 1.75;
 				text-align: center;
-				color: #e6e7e8;
+				font-weight: 600;
+				color: #c4fffc;
 				margin: 5px 0 0 0;
 				-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2);
 				box-shadow: 0 1px 3px rgba(0,0,0,.2);
