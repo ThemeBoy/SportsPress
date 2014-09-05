@@ -33,6 +33,7 @@ class SP_Admin_Menus {
 			add_action( 'admin_menu', array( $this, 'status_menu' ), 20 );
 
 		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
+		add_action( 'admin_head', array( $this, 'menu_rename' ) );
 		add_action( 'parent_file', array( $this, 'parent_file' ) );
 		add_filter( 'menu_order', array( $this, 'menu_order' ) );
 		add_filter( 'custom_menu_order', array( $this, 'custom_menu_order' ) );
@@ -94,7 +95,7 @@ class SP_Admin_Menus {
 	 * @return void
 	 */
 	public function menu_highlight() {
-		global $typenow, $submenu;
+		global $typenow;
 		$screen = get_current_screen();
 		if ( $screen->id == 'edit-sp_role' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit-tags.php?taxonomy=sp_role&post_type=sp_player' );			
@@ -108,10 +109,24 @@ class SP_Admin_Menus {
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_list' );
 		elseif ( $typenow == 'sp_staff' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_staff' );
+	}
 
-		if ( isset( $submenu['sportspress'] ) && isset( $submenu['sportspress'][0] ) && isset( $submenu['sportspress'][0][0] ) ) {
+	/**
+	 * Renames admin menu items.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function menu_rename() {
+		global $menu, $submenu;
+
+		if ( isset( $submenu['sportspress'] ) && isset( $submenu['sportspress'][0] ) && isset( $submenu['sportspress'][0][0] ) )
 			$submenu['sportspress'][0][0] = __( 'Settings', 'sportspress' );
-		}
+
+		foreach ( $menu as $index => $values ):
+			if ( sp_array_value( $values, 0 ) === __( 'Players', 'sportspress' ) )
+				$menu[ $index ][0] = __( 'Players & Staff', 'sportspress' );
+		endforeach;
 	}
 
 	public function parent_file( $parent_file ) {
@@ -141,18 +156,27 @@ class SP_Admin_Menus {
 		$sportspress_player = array_search( 'edit.php?post_type=sp_player', $menu_order );
 
 		// Loop through menu order and do some rearranging
-		foreach ( $menu_order as $index => $item ) :
+		foreach ( $menu_order as $index => $item ):
 
-			if ( ( ( 'sportspress' ) == $item ) ) :
+			if ( ( ( 'sportspress' ) == $item ) ):
 				$sportspress_menu_order[] = 'separator-sportspress';
 				$sportspress_menu_order[] = $item;
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_event';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_team';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_player';
-				unset( $menu_order[$sportspress_separator] );
-				unset( $menu_order[$sportspress_event] );
-				unset( $menu_order[$sportspress_team] );
-				unset( $menu_order[$sportspress_player] );
+				unset( $menu_order[ $sportspress_separator ] );
+				unset( $menu_order[ $sportspress_event ] );
+				unset( $menu_order[ $sportspress_team ] );
+				unset( $menu_order[ $sportspress_player ] );
+
+				// Apply to added menu items
+				$menu_items = apply_filters( 'sportspress_menu_items', array() );
+				foreach ( $menu_items as $menu_item ):
+					$sportspress_menu_order[] = $menu_item;
+					$index = array_search( $menu_item, $menu_order );
+					unset( $menu_order[ $index ] );
+				endforeach;
+
 			elseif ( !in_array( $item, array( 'separator-sportspress' ) ) ) :
 				$sportspress_menu_order[] = $item;
 			endif;
