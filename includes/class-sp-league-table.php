@@ -128,7 +128,7 @@ class SP_League_Table extends SP_Custom_Post{
 				if ( ! in_array( $team_id, $team_ids ) )
 					continue;
 
-				foreach ( $team_result as $key => $value ):
+				if ( $team_result ): foreach ( $team_result as $key => $value ):
 
 					if ( $key == 'outcome' ):
 
@@ -180,7 +180,7 @@ class SP_League_Table extends SP_Custom_Post{
 						endif;
 					endif;
 
-				endforeach;
+				endforeach; endif;
 
 			endforeach;
 
