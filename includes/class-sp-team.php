@@ -148,7 +148,7 @@ class SP_Team extends SP_Custom_Post {
 				if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
 				foreach ( $results as $team_id => $team_result ):
-					foreach ( $team_result as $key => $value ):
+					if ( is_array( $team_result ) ): foreach ( $team_result as $key => $value ):
 						if ( $team_id == $this->ID ):
 							if ( $key == 'outcome' ):
 
@@ -202,7 +202,7 @@ class SP_Team extends SP_Custom_Post {
 								endif;
 							endif;
 						endif;
-					endforeach;
+					endforeach; endif;
 				endforeach;
 			endforeach;
 
