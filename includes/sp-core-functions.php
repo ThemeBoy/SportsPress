@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.3
+ * @version     1.3.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -896,14 +896,14 @@ if ( !function_exists( 'sp_post_adder' ) ) {
 }
 
 if ( !function_exists( 'sp_taxonomy_adder' ) ) {
-	function sp_taxonomy_adder( $taxonomy = 'category', $post_type = 'post', $label = null ) {
+	function sp_taxonomy_adder( $taxonomy = 'category', $post_type = null, $label = null ) {
 		$obj = get_taxonomy( $taxonomy );
 		if ( $label == null )
 			$label = __( 'Add New', 'sportspress' );
 		?>
 		<div id="<?php echo $taxonomy; ?>-adder">
 			<h4>
-				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( 'edit-tags.php?taxonomy=' . $taxonomy . '&post_type=' . $post_type ); ?>" target="_blank">
+				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( 'edit-tags.php?taxonomy=' . $taxonomy . ( $post_type ? '&post_type=' . $post_type : '' ) ); ?>" target="_blank">
 					+ <?php echo $label; ?>
 				</a>
 			</h4>
@@ -1068,8 +1068,8 @@ if ( !function_exists( 'sp_get_next_event' ) ) {
 				'meta_query' => $args,
 			);
 			$posts = get_posts( $options );
-			$post = array_pop( $posts );
-			return $post;
+			if ( $posts && is_array( $posts ) ) return array_pop( $posts );
+			else return false;
 	}
 }
 
@@ -1111,5 +1111,15 @@ function sp_get_text_options() {
 	));
 	
 	asort( $strings );
-	return $strings;
+	return array_unique( $strings );
+}
+
+function sp_review_link() {
+	?>
+	<p>
+		<a href="http://wordpress.org/support/view/plugin-reviews/sportspress?rate=5#postform">
+			<?php _e( 'Love SportsPress? Help spread the word by rating us 5★ on WordPress.org', 'sportspress' ); ?>
+		</a>
+	</p>
+	<?php
 }
