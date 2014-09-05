@@ -271,7 +271,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				$colors = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
 
 				// Defaults
-				if ( empty( $colors['primary'] ) ) $colors['primary'] = '#364c74';
+				if ( empty( $colors['primary'] ) ) $colors['primary'] = '#00a69c';
 				if ( empty( $colors['background'] ) ) $colors['background'] = '#f4f4f4';
 				if ( empty( $colors['text'] ) ) $colors['text'] = '#363f48';
 				if ( empty( $colors['heading'] ) ) $colors['heading'] = '#ffffff';
