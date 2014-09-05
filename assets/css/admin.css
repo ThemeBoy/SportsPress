@@ -1,4 +1,8 @@
 /* SportsPress admin styles */
+#sp_formatdiv .post-format-icon {
+	margin-left: 0.5px;
+}
+
 .post-state-format.post-format-calendar:before, .post-format-icon.post-format-calendar:before, a.post-state-format.format-calendar:before {
 	content: "\f145";
 }
