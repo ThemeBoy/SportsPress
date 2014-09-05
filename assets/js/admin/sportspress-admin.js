@@ -416,10 +416,12 @@ jQuery(document).ready(function($){
 	// Event format affects data
 	$(".post-type-sp_event #post-formats-select input.post-format").change(function() {
 		layout = $(".post-type-sp_event #post-formats-select input:checked").val();
-		if ( layout == "friendly" ) {
-			$(".sp-event-league-field").hide();
-		} else {
-			$(".sp-event-league-field").show();
+		if ( layout == "league" ) {
+			$(".sp-event-sp_league-field").show().find("select").prop("disabled", false);
+			$(".sp-event-sp_season-field").show().find("select").prop("disabled", false);
+		} else if ( layout == "friendly" ) {
+			$(".sp-event-sp_league-field").hide().find("select").prop("disabled", true);
+			$(".sp-event-sp_season-field").show().find("select").prop("disabled", false);
 		}
 	});
 
@@ -475,7 +477,7 @@ jQuery(document).ready(function($){
 	// Delete importer row
 	$(".sp-import-table").on("click", ".sp-delete-row", function() {
 		$self = $(this);
-		$self.closest("tr").css("background-color", "#fcc").fadeOut(400, function() {
+		$self.closest("tr").css("background-color", "#f99").fadeOut(400, function() {
 			$table = $self.closest(".sp-import-table");
 			$(this).remove();
 			$table.trigger("updatePostCount");
