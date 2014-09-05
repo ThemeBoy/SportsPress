@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.3
+ * @version     1.3.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -214,7 +214,6 @@ if ( is_array( $teams ) ):
 				</table>
 			</div>
 		</div>
-		<br>
 		<?php
 	endforeach;
 endif;

@@ -57,4 +57,3 @@ $output .= '</dl></div>';
 <div class="sp-template sp-template-staff-details">
 	<?php echo $output; ?>
 </div>
-<br>

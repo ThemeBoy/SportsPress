@@ -24,4 +24,3 @@ if ( $video_url ):
     <?php
 endif;
 ?>
-<br>

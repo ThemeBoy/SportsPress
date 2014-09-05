@@ -15,20 +15,19 @@ if ( ! isset( $id ) )
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 $date = get_the_time( get_option('date_format'), $id );
 $time = get_the_time( get_option('time_format'), $id );
-$leagues = get_the_terms( $id, 'sp_league' );
-$seasons = get_the_terms( $id, 'sp_season' );
 
 $data = array( __( 'Date', 'sportspress' ) => $date, __( 'Time', 'sportspress' ) => $time );
 
-if ( $leagues ):
-	$league = array_shift( $leagues );
-	$data[ __( 'League', 'sportspress' ) ] = $league->name;
-endif;
+$taxonomies = apply_filters( 'sportspress_event_taxonomies', array( 'sp_league' => null, 'sp_season' => null ) );
 
-if ( $seasons ):
-	$season = array_shift( $seasons );
-	$data[ __( 'Season', 'sportspress' ) ] = $season->name;
-endif;
+foreach ( $taxonomies as $taxonomy => $post_type ):
+	$terms = get_the_terms( $id, $taxonomy );
+	if ( $terms ):
+		$obj = get_taxonomy( $taxonomy );
+		$term = array_shift( $terms );
+		$data[ $obj->labels->singular_name ] = $term->name;
+	endif;
+endforeach;
 ?>
 <div class="sp-template sp-template-event-details">
 	<h4 class="sp-table-caption"><?php _e( 'Details', 'sportspress' ); ?></h4>
@@ -51,4 +50,3 @@ endif;
 		</table>
 	</div>
 </div>
-<br>

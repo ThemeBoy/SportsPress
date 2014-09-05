@@ -14,6 +14,7 @@ if ( ! isset( $id ) )
 
 $defaults = array(
 	'show_nationality_flags' => get_option( 'sportspress_player_show_flags', 'yes' ) == 'yes' ? true : false,
+	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -49,7 +50,7 @@ if ( $current_teams ):
 	foreach ( $current_teams as $team ):
 		$teams[] = '<a href="' . get_post_permalink( $team ) . '">' . get_the_title( $team ) . '</a>';
 	endforeach;
-	$label = _n( 'Current Team', 'Current Teams', count( $teams ) );
+	$label = _n( 'Current Team', 'Current Teams', count( $teams ), 'sportspress' );
 	$data[ $label ] = implode( ', ', $teams );
 endif;
 
@@ -71,6 +72,5 @@ foreach( $data as $label => $value ):
 endforeach;
 
 $output .= '</dl></div>';
-?>
-<?php echo $output; ?>
-<br>
+
+echo $output;

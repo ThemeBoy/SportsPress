@@ -26,5 +26,3 @@ foreach ( $tables as $table ):
 
 	sp_get_template( 'league-table.php', array( 'id' => $table->ID, 'highlight' => $id ) );
 endforeach;
-?>
-<br>

@@ -31,5 +31,3 @@ foreach ( $lists as $list ):
 	else
 		sp_get_template( 'player-list.php', array( 'id' => $id ) );
 endforeach;
-?>
-<br>
