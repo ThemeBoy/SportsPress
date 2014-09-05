@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.1.4
+ * @version     1.3.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -84,37 +84,41 @@ class SP_Meta_Box_Player_Statistics {
 								?>
 							</td>
 							<?php if ( $league_id ): ?>
-								<td>
-									<?php
-									$value = sp_array_value( $leagues, $div_id, '-1' );
-									$args = array(
-										'post_type' => 'sp_team',
-										'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
-										'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
-									    'sort_order'   => 'ASC',
-									    'sort_column'  => 'menu_order',
-										'selected' => $value,
-										'values' => 'ID',
-										'include' => $teams,
-										'tax_query' => array(
-											'relation' => 'AND',
-											array(
-												'taxonomy' => 'sp_league',
-												'terms' => $league_id,
-												'field' => 'id',
+								<?php if ( $div_id == 0 ): ?>
+									<td>&nbsp;</td>
+								<?php else: ?>
+									<td>
+										<?php
+										$value = sp_array_value( $leagues, $div_id, '-1' );
+										$args = array(
+											'post_type' => 'sp_team',
+											'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
+											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+										    'sort_order'   => 'ASC',
+										    'sort_column'  => 'menu_order',
+											'selected' => $value,
+											'values' => 'ID',
+											'include' => $teams,
+											'tax_query' => array(
+												'relation' => 'AND',
+												array(
+													'taxonomy' => 'sp_league',
+													'terms' => $league_id,
+													'field' => 'id',
+												),
+												array(
+													'taxonomy' => 'sp_season',
+													'terms' => $div_id,
+													'field' => 'id',
+												),
 											),
-											array(
-												'taxonomy' => 'sp_season',
-												'terms' => $div_id,
-												'field' => 'id',
-											),
-										),
-									);
-									if ( ! sp_dropdown_pages( $args ) ):
-										_e( 'No results found.', 'sportspress' );
-									endif;
-									?>
-								</td>
+										);
+										if ( ! sp_dropdown_pages( $args ) ):
+											_e( 'No results found.', 'sportspress' );
+										endif;
+										?>
+									</td>
+								<?php endif; ?>
 							<?php endif; ?>
 							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
 								?>
