@@ -105,7 +105,7 @@ class SP_Meta_Box_Calendar_Data {
 								<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 									<td><?php echo get_post_time( get_option( 'date_format' ), false, $event, true ); ?></td>
 									<td>
-										<div class="sp-title-format sp-title-format-title<?php if ( $title_format != 'title' ): ?> hidden<?php endif; ?>"><?php echo $event->post_title; ?></div>
+										<div class="sp-title-format sp-title-format-title<?php if ( $title_format && $title_format != 'title' ): ?> hidden<?php endif; ?>"><?php echo $event->post_title; ?></div>
 										<div class="sp-title-format sp-title-format-teams sp-title-format-homeaway<?php if ( ! in_array( $title_format, array( 'teams', 'homeaway' ) ) ): ?> hidden<?php endif; ?>">
 											<?php
 											if ( $teams ): foreach ( $teams as $team ):
