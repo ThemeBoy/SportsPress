@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
 "POT-Creation-Date: 2014-08-26 02:27+1000\n"
-"PO-Revision-Date: 2014-08-25 21:17+0000\n"
+"PO-Revision-Date: 2014-09-02 15:12+0000\n"
 "Last-Translator: Thom\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/sportspress/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -3099,7 +3099,7 @@ msgstr "Tabellen"
 
 #: includes/admin/settings/class-sp-settings-general.php:135
 msgid "Responsive"
-msgstr "Responsief"
+msgstr "Responsive"
 
 #: includes/admin/settings/class-sp-settings-general.php:143
 msgid "Sortable"
