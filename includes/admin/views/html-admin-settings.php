@@ -17,9 +17,5 @@
 	    	<?php wp_nonce_field( 'sportspress-settings' ); ?>
 	    </p>
 	</form>
-	<p>
-		<a href="http://wordpress.org/support/view/plugin-reviews/sportspress?rate=5#postform">
-			<?php _e( 'Love SportsPress? Help spread the word by rating us 5★ on WordPress.org', 'sportspress' ); ?>
-		</a>
-	</p>
+	<?php do_action( 'sportspress_settings_page' ); ?>
 </div>

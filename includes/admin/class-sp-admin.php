@@ -21,6 +21,9 @@ class SP_Admin {
 		add_action( 'init', array( $this, 'includes' ) );
 		add_action( 'current_screen', array( $this, 'conditonal_includes' ) );
 		add_action( 'admin_init', array( $this, 'prevent_admin_access' ) );
+		add_action( 'sportspress_settings_page', 'sp_review_link' );
+		add_action( 'sportspress_config_page', 'sp_review_link' );
+		add_action( 'sportspress_overview_page', 'sp_review_link' );
 	}
 
 	/**

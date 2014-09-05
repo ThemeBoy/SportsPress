@@ -347,10 +347,5 @@
 			</tr>
 		</tbody>
 	</table>
-	<?php do_action( 'sportspress_config_page', 'sportspress' ); ?>
-	<p>
-		<a href="http://wordpress.org/support/view/plugin-reviews/sportspress?rate=5#postform">
-			<?php _e( 'Love SportsPress? Help spread the word by rating us 5★ on WordPress.org', 'sportspress' ); ?>
-		</a>
-	</p>
+	<?php do_action( 'sportspress_config_page' ); ?>
 </div>
