@@ -59,6 +59,7 @@ class SP_Meta_Box_Staff_Details {
 			'name' => 'sp_role',
 			'selected' => $role,
 			'values' => 'term_id',
+			'show_option_blank' => true,
 			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Role', 'sportspress' ) ),
 			'class' => 'widefat',
 			'chosen' => true,

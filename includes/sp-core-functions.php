@@ -451,6 +451,7 @@ if ( !function_exists( 'sp_dropdown_dates' ) ) {
 if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 	function sp_dropdown_taxonomies( $args = array() ) {
 		$defaults = array(
+			'show_option_blank' => false,
 			'show_option_all' => false,
 			'show_option_none' => false,
 			'taxonomy' => null,
@@ -495,6 +496,9 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 			printf( '<select name="%s" class="postform %s" %s>', $name, $class . ( $chosen ? ' chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' ) : '' ), ( $placeholder != null ? 'data-placeholder="' . $placeholder . '" ' : '' ) . $property );
 
 			if ( strpos( $property, 'multiple' ) === false ):
+				if ( $args['show_option_blank'] ):
+					echo '<option></option>';
+				endif;
 				if ( $args['show_option_all'] ):
 					printf( '<option value="0">%s</option>', $args['show_option_all'] );
 				endif;
