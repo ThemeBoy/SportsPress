@@ -26,15 +26,15 @@ class SP_Meta_Box_Event_Shortcode {
 		<p>
 			<strong><?php _e( 'Team Results', 'sportspress' ); ?></strong>
 		</p>
-		<p><input type="text" value="[event_results <?php echo $post->ID; ?>]" readonly="readonly" class="code"></p>
+		<p><input type="text" value="[event_results <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
 		<p>
 			<strong><?php _e( 'Details', 'sportspress' ); ?></strong>
 		</p>
-		<p><input type="text" value="[event_details <?php echo $post->ID; ?>]" readonly="readonly" class="code"></p>
+		<p><input type="text" value="[event_details <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
 		<p>
 			<strong><?php _e( 'Player Performance', 'sportspress' ); ?></strong>
 		</p>
-		<p><input type="text" value="[event_performance <?php echo $post->ID; ?>]" readonly="readonly" class="code"></p>
+		<p><input type="text" value="[event_performance <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
 		<?php
 	}
 }
