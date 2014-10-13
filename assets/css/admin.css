@@ -39,6 +39,15 @@
 	margin-bottom: 1px !important;
 }
 
+#sp_editordiv #wp-content-editor-tools {
+	background: transparent;
+}
+
+#sp_editordiv .tmce-active .switch-html,
+#sp_editordiv .html-active .switch-tmce {
+	background: #fdfdfd;
+}
+
 .sp-link:before {
 	font: normal 20px/1 'dashicons';
 	speak: none;
@@ -267,16 +276,16 @@ table.widefat select.sp-outcome {
 	width: 100%;
 }
 
-table.widefat.sp-sortable-table tbody tr .icon {
-	cursor: move;
-}
-
-table.widefat.sp-sortable-table tr {
+table.widefat.sp-sortable-table tbody tr {
 	background-color: #fff;
 }
 
-table.widefat.sp-sortable-table tr:nth-child(2n-1) {
+table.widefat.sp-sortable-table tbody tr:nth-child(2n-1) {
 	background-color: #f9f9f9;
+}
+
+table.widefat.sp-sortable-table tbody tr .icon {
+	cursor: move;
 }
 
 .sp-admin-config-table th,
