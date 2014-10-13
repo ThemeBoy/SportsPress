@@ -314,7 +314,7 @@ class SP_Admin_Menus {
 	public static function sitemap_taxonomy_post_types( $post_types = array(), $taxonomy ) {
 		$post_types = array_intersect( $post_types, sp_primary_post_types() );
 		// Remove teams from venues taxonomy post type array
-		if ( ( $key = array_search( 'sp_team', $post_types ) ) !== false ):
+		if ( $taxonomy === 'sp_venue' && ( $key = array_search( 'sp_team', $post_types ) ) !== false ):
 			unset( $post_types[ $key ] );
 		endif;
 
