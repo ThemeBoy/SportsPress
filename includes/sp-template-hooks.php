@@ -223,8 +223,8 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain = nu
 		endif;
 	else:
 		if ( $domain == 'sportspress' ):
-			if ( ! empty( SP()->text[ $untranslated_text ] ) ):
-				$translated_text = SP()->text[ $untranslated_text ];
+			if ( ! empty( SP()->text[ $translated_text ] ) ):
+				$translated_text = SP()->text[ $translated_text ];
 			endif;
     	elseif ( ! current_theme_supports( 'sportspress' ) && $untranslated_text == 'Archives' && is_tax( 'sp_venue' ) ):
     		$slug = get_query_var( 'sp_venue' );
