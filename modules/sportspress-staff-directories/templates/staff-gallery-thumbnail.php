@@ -16,7 +16,7 @@ $defaults = array(
 	'captiontag' => 'dd',
 	'caption' => null,
 	'size' => 'thumbnail',
-	'link_posts' => get_option( 'sportspress_directory_link_staff', 'yes' ) == 'yes' ? true : false,
+	'link_posts' => get_option( 'sportspress_link_staff', 'yes' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );

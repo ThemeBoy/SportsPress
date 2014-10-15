@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.1
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -58,12 +58,13 @@ class SP_Meta_Box_Event_Performance {
 			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
 				<thead>
 					<tr>
+						<th class="icon">&nbsp;</th>
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
 						<th>
 							<?php if ( $has_checkboxes ): ?>
 								<label for="sp_columns_position">
-									<input type="checkbox" name="sp_columns[]" value="position" id="sp_columns_position" <?php checked( is_array( $columns ) && in_array( 'position', $columns ) ); ?>>
+									<input type="checkbox" name="sp_columns[]" value="position" id="sp_columns_position" <?php checked( ! is_array( $columns ) || in_array( 'position', $columns ) ); ?>>
 									<?php _e( 'Position', 'sportspress' ); ?>
 								</label>
 							<?php else: ?>
@@ -85,6 +86,22 @@ class SP_Meta_Box_Event_Performance {
 						<th><?php _e( 'Status', 'sportspress' ); ?></th>
 					</tr>
 				</thead>
+				<tfoot>
+					<tr class="sp-row sp-total">
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
+						<td>&nbsp;</td>
+						<?php foreach( $labels as $column => $label ):
+							$player_id = 0;
+							$player_performance = sp_array_value( $data, 0, array() );
+							$value = sp_array_value( $player_performance, $column, '' );
+							?>
+							<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
+						<?php endforeach; ?>
+						<td>&nbsp;</td>
+					</tr>
+				</tfoot>
 				<tbody>
 					<?php
 					foreach ( $data as $player_id => $player_performance ):
@@ -93,6 +110,7 @@ class SP_Meta_Box_Event_Performance {
 						$value = sp_array_value( $player_performance, 'number', '' );
 						?>
 						<tr class="sp-row sp-post" data-player="<?php echo $player_id; ?>">
+							<td class="icon"><span class="dashicons dashicons-menu post-state-format"></span></td>
 							<td>
 								<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo $value; ?>" />
 							</td>
@@ -128,21 +146,6 @@ class SP_Meta_Box_Event_Performance {
 					endforeach;
 					?>
 				</tbody>
-				<tfoot>
-					<tr class="sp-row sp-total">
-						<td>&nbsp;</td>
-						<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
-						<td>&nbsp;</td>
-						<?php foreach( $labels as $column => $label ):
-							$player_id = 0;
-							$player_performance = sp_array_value( $data, 0, array() );
-							$value = sp_array_value( $player_performance, $column, '' );
-							?>
-							<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
-						<?php endforeach; ?>
-						<td>&nbsp;</td>
-					</tr>
-				</tfoot>
 			</table>
 		</div>
 		<?php

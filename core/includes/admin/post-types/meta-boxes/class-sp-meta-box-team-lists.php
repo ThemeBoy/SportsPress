@@ -52,7 +52,7 @@ class SP_Meta_Box_Team_Lists {
 					<tr>
 						<th class="check-column"><input class="sp-select-all" type="checkbox"></th>
 						<th class="column-list">
-							<?php _e( 'List', 'sportspress' ); ?>
+							<?php _e( 'Player List', 'sportspress' ); ?>
 						</th>
 						<th class="column-players">
 							<?php _e( 'Players', 'sportspress' ); ?>

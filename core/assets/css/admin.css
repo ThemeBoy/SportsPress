@@ -1,4 +1,8 @@
 /* SportsPress admin styles */
+#sp_formatdiv .post-format-icon {
+	margin-left: 0.5px;
+}
+
 .post-state-format.post-format-calendar:before, .post-format-icon.post-format-calendar:before, a.post-state-format.format-calendar:before {
 	content: "\f145";
 }
@@ -23,12 +27,25 @@
 	content: "\f164";
 }
 
+.sp-dummy {
+	display: none;
+}
+
 #sp_videodiv .inside > fieldset > p:first-child {
 	margin-top: 7px !important;
 }
 
 #sp_videodiv .inside > fieldset > p:last-child {
 	margin-bottom: 1px !important;
+}
+
+#sp_editordiv #wp-content-editor-tools {
+	background: transparent;
+}
+
+#sp_editordiv .tmce-active .switch-html,
+#sp_editordiv .html-active .switch-tmce {
+	background: #fdfdfd;
 }
 
 .sp-link:before {
@@ -100,6 +117,15 @@
 /* Settings */
 .sportspress table.form-table, .sportspress table.form-table .forminp-radio ul {
 	margin: 0;
+}
+
+.sportspress table.form-table .forminp-radio ul  li {
+	display: inline;
+	margin-right: 20px;
+}
+
+.sportspress table.form-table .forminp-radio ul  li label.post-format-icon {
+	margin-top: 0 !important;
 }
 
 .sportspress table.form-table fieldset {
@@ -179,6 +205,15 @@ table.widefat.sp-data-table th.column-outcome {
 	width: 10em;
 }
 
+table.widefat.sp-data-table th,
+table.widefat.sp-data-table td {
+	padding-right: 0;
+}
+table.widefat.sp-data-table th:last-child,
+table.widefat.sp-data-table td:last-child {
+	padding-right: 10px;
+}
+
 table.widefat.sp-data-table td {
 	line-height: 2;
 	overflow: visible;
@@ -186,6 +221,16 @@ table.widefat.sp-data-table td {
 
 table.widefat.sp-data-table td:first-child {
 	white-space: nowrap;
+}
+
+table.widefat.sp-data-table th.icon,
+table.widefat.sp-data-table td.icon {
+	width: 1px;
+}
+
+table.widefat.sp-data-table th.icon span,
+table.widefat.sp-data-table td.icon span {
+	margin-right: 0;
 }
 
 table.widefat.sp-data-table input[type="text"],
@@ -232,15 +277,15 @@ table.widefat select.sp-outcome {
 }
 
 table.widefat.sp-sortable-table tbody tr {
-	cursor: move;
-}
-
-table.widefat.sp-sortable-table tr {
 	background-color: #fff;
 }
 
-table.widefat.sp-sortable-table tr:nth-child(2n-1) {
+table.widefat.sp-sortable-table tbody tr:nth-child(2n-1) {
 	background-color: #f9f9f9;
+}
+
+table.widefat.sp-sortable-table tbody tr .icon {
+	cursor: move;
 }
 
 .sp-admin-config-table th,
@@ -249,7 +294,9 @@ table.widefat.sp-sortable-table tr:nth-child(2n-1) {
 }
 
 .sp-admin-config-table th.radio,
-.sp-admin-config-table td.radio {
+.sp-admin-config-table td.radio,
+.sp-admin-config-table th.icon,
+.sp-admin-config-table td.icon {
 	width: 1%;
 	text-align: center;
 }
@@ -456,6 +503,44 @@ table.sp_status_table td mark {
 
 table.sp_status_table td mark.yes {
 	color: #7ad03a;
+}
+
+/* Importers */
+#import-upload-form table.form-table th,
+#import-upload-form table.form-table td {
+	padding-bottom: 0;
+}
+#import-upload-form table.form-table tbody tr:last-child td {
+	padding-bottom: 20px;
+}
+.sp-import-table th,
+.sp-import-table td {
+	padding-right: 0;
+}
+.sp-import-table th:last-child,
+.sp-import-table td:last-child {
+	padding-right: 10px;
+}
+.sp-import-table tbody tr:nth-child(2n-1) {
+	background: #f9f9f9;
+}
+.sp-import-table select {
+	max-width: 100%;
+}
+.sp-import-table .sp-actions-column {
+	width: 40px;
+	text-align: right;
+}
+.sp-import-table .sp-add-row {
+	line-height: 1.5;
+}
+.sp-import-table .sp-delete-row {
+	font-size: 16px;
+	line-height: 1.5;
+	color: #a00;
+}
+.sp-import-table .sp-delete-row:hover {
+	color: #f00;
 }
 
 /* Media Queries */

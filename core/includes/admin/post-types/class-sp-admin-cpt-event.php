@@ -84,17 +84,20 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	 * Change the columns shown in admin.
 	 */
 	public function edit_columns( $existing_columns ) {
-		$columns = array(
+		unset( $existing_columns['author'], $existing_columns['comments'] );
+		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
 			'sp_format' => '<span class="dashicons sp-icon-calendar tips" title="' . __( 'Format', 'sportspress' ) . '"></span>',
-			'title' => __( 'Event', 'sportspress' ),
+			'title' => null,
 			'date' => __( 'Date', 'sportspress' ),
 			'sp_time' => __( 'Time', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),
 			'sp_league' => __( 'League', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_venue' => __( 'Venue', 'sportspress' ),
-		);
+		), $existing_columns, array(
+			'title' => __( 'Event', 'sportspress' ),
+		) );
 		return apply_filters( 'sportspress_event_admin_columns', $columns );
 	}
 
@@ -120,7 +123,8 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				break;
 			case 'sp_team':
 				$teams = (array)get_post_meta( $post_id, 'sp_team', false );
-				$teams = array_unique( array_filter( $teams ) );
+				$teams = array_filter( $teams );
+				$teams = array_unique( $teams );
 				if ( empty( $teams ) ):
 					echo '&mdash;';
 				else:

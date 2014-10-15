@@ -1,16 +1,19 @@
 {
 	"name":				"American Football",
 	"positions": [
-						"Back",
 						"Quarterback",
+						"Running back",
 						"Wide receiver",
+						"Tight end",
 						"Center",
-						"Tackle",
-						"Guard",
-						"Line backer",
-						"Defense end",
-						"Defense tackle",
-						"Defense back"
+						"Offensive guard",
+						"Offensive tackle",
+						"Defensive tackle",
+						"Defensive end",
+						"Middle linebacker",
+						"Outside linebacker",
+						"Cornerback",
+						"Safety"
 	],
 	"outcomes": [
 						"Win",

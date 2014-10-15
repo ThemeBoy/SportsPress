@@ -93,7 +93,7 @@ class SportsPress_Team_Colors {
 		$options = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
 
 		// Defaults
-		if ( empty( $options['primary'] ) ) $options['primary'] = '#364c74';
+		if ( empty( $options['primary'] ) ) $options['primary'] = '#00a69c';
 		if ( empty( $options['background'] ) ) $options['background'] = '#f4f4f4';
 		if ( empty( $options['text'] ) ) $options['text'] = '#363f48';
 		if ( empty( $options['heading'] ) ) $options['heading'] = '#ffffff';

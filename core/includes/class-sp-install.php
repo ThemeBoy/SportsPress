@@ -126,7 +126,7 @@ class SP_Install {
 		}
 
 		// Default color scheme
-	    add_option( 'sportspress_frontend_css_primary', '#364c74' );
+	    add_option( 'sportspress_frontend_css_primary', '#00a69c' );
 	    add_option( 'sportspress_frontend_css_background', '#f4f4f4' );
 	    add_option( 'sportspress_frontend_css_text', '#363f48' );
 	    add_option( 'sportspress_frontend_css_heading', '#ffffff' );
@@ -134,9 +134,14 @@ class SP_Install {
 
 		if ( ! get_option( 'sportspress_installed' ) ) {
 			// Configure default sport
-			$sport = 'soccer';
-			SP_Admin_Sports::apply_preset( $sport );
+			$sport = 'custom';
+			//SP_Admin_Sports::apply_preset( $sport );
 		    update_option( 'sportspress_sport', $sport );
+
+		    // Add sample data
+		    $this->add_sample_data();
+
+			// Flag as installed
 			update_option( 'sportspress_installed', 1 );
 		}
 	}

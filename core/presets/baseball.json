@@ -1,5 +1,11 @@
 {
 	"name":				"Baseball",
+	"positions": [
+						"Pitcher",
+						"Catcher",
+						"Infielder",
+						"Outfielder"
+	],
 	"outcomes": [
 						"Win",
 						"Loss",
@@ -16,7 +22,7 @@
 						{ "name" : "8", "description" : "8th inning runs" },
 						{ "name" : "9", "description" : "9th inning runs" },
 						{ "name" : "", "id" : "extra", "description" : "Extra inning runs" },
-						{ "name" : "R", "description" : "Total runs", "main" : 1 },
+						{ "name" : "R", "description" : "Total runs", "primary" : 1 },
 						{ "name" : "H", "description" : "Hits" },
 						{ "name" : "E", "description" : "Errors" }
 	],
@@ -35,7 +41,7 @@
 	"columns": [
 						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
 						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
-						{ "name" : "PCT", "equation" : "$win / $eventsplayed", "precision" : 3, "description" : "Win percentage" },
+						{ "name" : "PCT", "equation" : "$win / $eventsplayed", "precision" : 3, "priority" : 1, "description" : "Win percentage" },
 						{ "name" : "RS", "equation" : "$rfor", "description" : "Runs scored" },
 						{ "name" : "RA", "equation" : "$ragainst", "description" : "Runs allowed" },
 						{ "name" : "DIFF", "equation" : "$rfor - $ragainst", "description" : "Run differential" },
@@ -43,8 +49,9 @@
 						{ "name" : "STRK", "equation" : "$streak", "description" : "Current streak" }
 	],
 	"metrics": [
-						"Height",
-						"Weight"
+						{ "name" : "B/T", "description": "Bats / Throws" },
+						{ "name" : "Ht", "description": "Height" },
+						{ "name" : "Wt", "description": "Weight" }
 	],
 	"statistics": [
 						{ "name" : "G", "equation" : "$eventsplayed", "description" : "Games played" },

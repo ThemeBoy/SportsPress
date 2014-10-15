@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress Sponsors
- * @version     1.0
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,66 +21,61 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		public function __construct() {
 			$this->import_page = 'sportspress_sponsor_csv';
+			$this->import_label = __( 'Import Sponsors', 'sportspress' );
+			$this->columns = array(
+				'post_title' => __( 'Name', 'sportspress' ),
+				'sp_url' => __( 'URL', 'sportspress' ),
+			);
+			parent::__construct();
 		}
 
 		/**
 		 * import function.
 		 *
 		 * @access public
-		 * @param mixed $file
+		 * @param array $array
+		 * @param array $columns
 		 * @return void
 		 */
-		function import( $file ) {
-			global $wpdb;
-
+		function import( $array = array(), $columns = array( 'post_title' ) ) {
 			$this->imported = $this->skipped = 0;
 
-			if ( ! is_file($file) ):
+			if ( ! is_array( $array ) || ! sizeof( $array ) ):
 				$this->footer();
 				die();
 			endif;
 
-			ini_set( 'auto_detect_line_endings', '1' );
+			$rows = array_chunk( $array, sizeof( $columns ) );
 
-			if ( ( $handle = fopen( $file, "r" ) ) !== FALSE ):
+			foreach ( $rows as $row ):
 
-				$header = fgetcsv( $handle, 0, $this->delimiter );
+				$row = array_filter( $row );
 
-				if ( sizeof( $header ) == 2 ):
+				if ( empty( $row ) ) continue;
 
-					$loop = 0;
+				$meta = array();
 
-					while ( ( $row = fgetcsv( $handle, 0, $this->delimiter ) ) !== FALSE ):
+				foreach ( $columns as $index => $key ):
+					$meta[ $key ] = sp_array_value( $row, $index );
+				endforeach;
 
-						list( $name, $url ) = $row;
+				$name = sp_array_value( $meta, 'post_title' );
 
-						if ( ! $name ):
-							$this->skipped++;
-							continue;
-						endif;
-
-						$args = array( 'post_type' => 'sp_sponsor', 'post_status' => 'publish', 'post_title' => $name );
-
-						$id = wp_insert_post( $args );
-
-						// Update URL
-						update_post_meta( $id, 'sp_url', $url );
-
-						$loop ++;
-						$this->imported++;
-				    endwhile;
-
-				else:
-
-					echo '<p><strong>' . __( 'Sorry, there has been an error.', 'sportspress' ) . '</strong><br />';
-					echo __( 'The CSV is invalid.', 'sportspress' ) . '</p>';
-					$this->footer();
-					die();
-
+				if ( ! $name ):
+					$this->skipped++;
+					continue;
 				endif;
 
-			    fclose( $handle );
-			endif;
+				$args = array( 'post_type' => 'sp_sponsor', 'post_status' => 'publish', 'post_title' => $name );
+
+				$id = wp_insert_post( $args );
+
+				// Update URL
+				update_post_meta( $id, 'sp_url', sp_array_value( $meta, 'sp_url' ) );
+
+				$this->imported++;
+
+			endforeach;
 
 			// Show Result
 			echo '<div class="updated settings-error below-h2"><p>
@@ -116,57 +111,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		function greet() {
-	
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
-
 			echo '<p>' . sprintf( __( 'Sponsors need to be defined with columns in a specific order (2 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), SP_SPONSORS_URL . 'dummy-data/sponsors-sample.csv' ) . '</p>';
-
-			$action = 'admin.php?import=sportspress_sponsor_csv&step=1';
-
-			$bytes = apply_filters( 'import_upload_size_limit', wp_max_upload_size() );
-			$size = size_format( $bytes );
-			$upload_dir = wp_upload_dir();
-			if ( ! empty( $upload_dir['error'] ) ) :
-				?><div class="error"><p><?php _e('Before you can upload your import file, you will need to fix the following error:', 'sportspress'); ?></p>
-				<p><strong><?php echo $upload_dir['error']; ?></strong></p></div><?php
-			else :
-				?>
-				<form enctype="multipart/form-data" id="import-upload-form" method="post" action="<?php echo esc_attr(wp_nonce_url($action, 'import-upload')); ?>">
-					<table class="form-table">
-						<tbody>
-							<tr>
-								<th>
-									<label for="upload"><?php _e( 'Choose a file from your computer:', 'sportspress' ); ?></label>
-								</th>
-								<td>
-									<input type="file" id="upload" name="import" size="25" />
-									<input type="hidden" name="action" value="save" />
-									<input type="hidden" name="max_file_size" value="<?php echo $bytes; ?>" />
-									<small><?php printf( __( 'Maximum size: %s', 'sportspress' ), $size ); ?></small>
-								</td>
-							</tr>
-							<tr>
-								<th>
-									<label for="file_url"><?php _e( 'OR enter path to file:', 'sportspress' ); ?></label>
-								</th>
-								<td>
-									<?php echo ' ' . ABSPATH . ' '; ?><input type="text" id="file_url" name="file_url" size="25" />
-								</td>
-							</tr>
-							<tr>
-								<th><label><?php _e( 'Delimiter', 'sportspress' ); ?></label><br/></th>
-								<td><input type="text" name="delimiter" placeholder="," size="2" /></td>
-							</tr>
-						</tbody>
-					</table>
-					<p class="submit">
-						<input type="submit" class="button" value="<?php esc_attr_e( 'Upload file and import', 'sportspress' ); ?>" />
-					</p>
-				</form>
-				<?php
-			endif;
-
+			wp_import_upload_form( 'admin.php?import=sportspress_sponsor_csv&step=1' );
 			echo '</div>';
 		}
 	}

@@ -1,4 +1,4 @@
-Name,Leagues,Seasons
-Essendon Eagles,Primary League|Secondary League,2014
-Southbank Sharks,Primary League|Secondary League,2014|2013
-Carlton Kangaroos,Primary League,2014|2013
+Name,Leagues,Seasons,Site URL,Abbreviation,Home
+Essendon Eagles,Primary League|Secondary League,2014,http://tboy.co/eagles,EAGLES,Little Park
+Southbank Sharks,Primary League|Secondary League,2014|2013,http://tboy.co/sharks,SHARKS
+Carlton Kangaroos,Primary League,2014|2013,http://tboy.co/roos,ROOS,Big Stadium

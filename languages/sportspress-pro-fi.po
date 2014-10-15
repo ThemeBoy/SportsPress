@@ -1,0 +1,689 @@
+# 
+# Translators:
+# Antti Kuosmanen <antti@seravo.fi>, 2014
+# Arhi Paivarinta <info@swratkaisut.com>, 2013
+# hanro <hanromen@gmail.com>, 2014
+# jpvanhal <janne.vanhala@gmail.com>, 2012
+# JuKi <jttkinnunen@gmail.com>, 2014
+# Taurus <wiikate@windowslive.com>, 2014
+# Taurus <wiikate@windowslive.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: SportsPress\n"
+"POT-Creation-Date: 2014-07-28 07:06+1000\n"
+"PO-Revision-Date: 2014-09-01 10:21+0000\n"
+"Last-Translator: Taurus <wiikate@windowslive.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/projects/p/sportspress/language/fi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:25
+#: sportspress-branding/includes/class-sp-settings-branding.php:44
+msgid "Branding"
+msgstr "Brändäys"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:47
+msgid "Label"
+msgstr "Nimike"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:50
+msgid "SportsPress"
+msgstr "SportsPress"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:117
+#: sportspress-branding/includes/class-sp-settings-branding.php:120
+#: sportspress-branding/includes/class-sp-settings-branding.php:123
+#: sportspress-branding/includes/class-sp-settings-branding.php:124
+#: sportspress-branding/includes/class-sp-settings-branding.php:126
+msgid "Icon"
+msgstr "Kuvake"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:123
+#: sportspress-branding/includes/class-sp-settings-branding.php:124
+#, php-format
+msgid "Remove %s"
+msgstr "Poista %s"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:126
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:236
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:367
+#, php-format
+msgid "Select %s"
+msgstr "Valitse %s"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:142
+msgid "Admin Color Scheme"
+msgstr "Admin-väriteema"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:157
+msgid "Base Color"
+msgstr "Pohjaväri"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:158
+msgid "Highlight"
+msgstr "Korostus"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:159
+msgid "Notifications"
+msgstr "Huomautukset"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:160
+msgid "Actions"
+msgstr "Toimenpiteet"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:161
+msgid "Text"
+msgstr "Teksti"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:167
+msgid "Enable"
+msgstr "Ota käyttöön"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:25
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:44
+msgid "League Menu"
+msgstr "Sarjavalikko"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:47
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:50
+msgid "Title"
+msgstr "Otsikko"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:58
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:80
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:125
+msgid "Sort by"
+msgstr "Lajitteluperuste"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:63
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:85
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:130
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:55
+msgid "Menu Order"
+msgstr "Valikon järjestys"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:64
+#: sportspress-sponsors/sportspress-sponsors.php:354
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:52
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:87
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:132
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:57
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:192
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:193
+msgid "Name"
+msgstr "Nimi"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:65
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:88
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:133
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:58
+msgid "Random"
+msgstr "Satunnainen"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:70
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:93
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:138
+msgid "Sort Order"
+msgstr "Järjestä"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:75
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:98
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:143
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:63
+msgid "Ascending"
+msgstr "Nouseva"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:76
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:99
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:144
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:64
+msgid "Descending"
+msgstr "Laskeva"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:81
+msgid "Width"
+msgstr "Leveys"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:97
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:151
+msgid "Text Color"
+msgstr "Tekstin väri"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:106
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:160
+msgid "Background Color"
+msgstr "Taustan väri"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:115
+msgid "Align"
+msgstr "Kohdistus"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:120
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:205
+msgid "Left"
+msgstr "Vasemmalle"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:121
+msgid "Center"
+msgstr "Keskelle"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:122
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:229
+msgid "Right"
+msgstr "Oikealle"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:184
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:187
+#: sportspress-sponsors/sportspress-sponsors.php:369
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:63
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:198
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:201
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:248
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:251
+msgid "Logo"
+msgstr "Logo"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:191
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:287
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:202
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:252
+msgid "Max Width"
+msgstr "Maksimileveys"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:193
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:289
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:204
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:254
+msgid "Max Height"
+msgstr "Maksimikorkeus"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:199
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:202
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:223
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:226
+msgid "Position"
+msgstr "Pelipaikka"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:203
+msgid "Bottom"
+msgstr "Alaosa"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:211
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:214
+msgid "Remove Image"
+msgstr "Poista kuva"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:215
+msgid "Remove logo"
+msgstr "Poista logo"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:221
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:224
+msgid "Select Image"
+msgstr "Valitse kuva"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:225
+#: sportspress-sponsors/sportspress-sponsors.php:366
+#: sportspress-sponsors/sportspress-sponsors.php:372
+msgid "Select Logo"
+msgstr "Valitse logo"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:225
+msgid "Add logo"
+msgstr "Lisää logo"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:259
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:261
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:283
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:286
+msgid "Teams"
+msgstr "Joukkueet"
+
+#: sportspress-sponsors/sportspress-sponsors.php:109
+#: sportspress-sponsors/sportspress-sponsors.php:445
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:25
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:44
+msgid "Sponsors"
+msgstr "Sponsorit"
+
+#: sportspress-sponsors/sportspress-sponsors.php:110
+#: sportspress-sponsors/sportspress-sponsors.php:381
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:64
+msgid "Sponsor"
+msgstr "Sponsori"
+
+#: sportspress-sponsors/sportspress-sponsors.php:111
+msgid "Add New Sponsor"
+msgstr "Lisää uusi sponsori"
+
+#: sportspress-sponsors/sportspress-sponsors.php:112
+msgid "Edit Sponsor"
+msgstr "Muokkaa sponsoria"
+
+#: sportspress-sponsors/sportspress-sponsors.php:113
+#: sportspress-staff-directories/sportspress-staff-directories.php:104
+msgid "New"
+msgstr "Uusi"
+
+#: sportspress-sponsors/sportspress-sponsors.php:114
+#: sportspress-staff-directories/sportspress-staff-directories.php:105
+msgid "View"
+msgstr "Näytä"
+
+#: sportspress-sponsors/sportspress-sponsors.php:115
+#: sportspress-staff-directories/sportspress-staff-directories.php:106
+msgid "Search"
+msgstr "Haku"
+
+#: sportspress-sponsors/sportspress-sponsors.php:116
+#: sportspress-sponsors/sportspress-sponsors.php:117
+#: sportspress-staff-directories/sportspress-staff-directories.php:107
+#: sportspress-staff-directories/sportspress-staff-directories.php:108
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:237
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:301
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:358
+msgid "No results found."
+msgstr "Ei tuloksia."
+
+#: sportspress-sponsors/sportspress-sponsors.php:169
+msgid "SportsPress Sponsors (CSV)"
+msgstr "SportsPress-sponsorit (CSV)"
+
+#: sportspress-sponsors/sportspress-sponsors.php:169
+msgid "Import <strong>sponsors</strong> from a csv file."
+msgstr "Tuo <strong>sponsorit</strong> csv-tiedostosta."
+
+#: sportspress-sponsors/sportspress-sponsors.php:375
+msgid "Remove Logo"
+msgstr "Poista logo"
+
+#: sportspress-sponsors/sportspress-sponsors.php:378
+msgid "User"
+msgstr "Käyttäjä"
+
+#: sportspress-sponsors/sportspress-sponsors.php:398
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:45
+#: sportspress-sponsors/includes/sp-sponsor-functions.php:25
+msgid "Visit Site"
+msgstr "Vieraile sivulla"
+
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:65
+msgid "URL"
+msgstr "URL"
+
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:66
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:48
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:47
+msgid "Impressions"
+msgstr "Vaikutelmat"
+
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:67
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:51
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:55
+msgid "Clicks"
+msgstr "Klikkaukset"
+
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:30
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:37
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:236
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:367
+msgid "Details"
+msgstr "Tiedot"
+
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:42
+msgid "Site URL"
+msgstr "Sivuston verkko-osoite (URL)"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:48
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:56
+msgid "Exclude logged-in users"
+msgstr "Jätä sisäänkirjautuneet käyttäjät pois laskuista"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:64
+msgid "Header"
+msgstr "Ylätunniste"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:67
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:112
+msgid "Display"
+msgstr "Näytä"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:71
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:116
+msgid "sponsors"
+msgstr "sponsorit"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:86
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:131
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:56
+msgid "Date"
+msgstr "Päivämäärä"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:109
+msgid "Footer"
+msgstr "Alatunniste"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:227
+msgid "Top"
+msgstr "Yläosa"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:75
+msgid "Sorry, there has been an error."
+msgstr "Pahoittelemme, on tapahtunut virhe."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:76
+msgid "The CSV is invalid."
+msgstr "CSV-tiedosto ei ole kelvollinen."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:87
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> sponsors and skipped "
+"<strong>%s</strong>."
+msgstr "Tuonti suoritettu - tuotu <strong>%s</strong> sponsoria ja ohitettu <strong>%s</strong>."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:97
+msgid "All done!"
+msgstr "Valmis!"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:97
+msgid "View Sponsors"
+msgstr "Näytä sponsorit"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:109
+msgid "Import Sponsors"
+msgstr "Tuo sponsorit"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:121
+msgid ""
+"Hi there! Choose a .csv file to upload, then click \"Upload file and "
+"import\"."
+msgstr "Hei! Valitse ladattava .csv-tiedosto ja klikkaa \"Lataa tiedosto ja tuo tiedot\"."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:123
+#, php-format
+msgid ""
+"Sponsors need to be defined with columns in a specific order (2 columns). <a"
+" href=\"%s\">Click here to download a sample</a>."
+msgstr "Sponsorit on määriteltävä sarakkeittain tietyssä järjestyksessä (2 saraketta). <a href=\"%s\">Lataa tästä esimerkkitiedosto</a>."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:131
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr "Tiedoston voi siirtää vasta kun seuraavat virheet on korjattu:"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:140
+msgid "Choose a file from your computer:"
+msgstr "Valitse tiedosto tietokoneelta:"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:146
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Suurin koko: %s"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:151
+msgid "OR enter path to file:"
+msgstr "TAI kirjoita tiedostopolku:"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:158
+msgid "Delimiter"
+msgstr "Kentän erotin"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:164
+msgid "Upload file and import"
+msgstr "Lataa tiedosto ja tuo tiedot"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:5
+msgid "A list of sponsors."
+msgstr "Lista sponsoreista."
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:6
+msgid "SportsPress Sponsors"
+msgstr "SportsPress-sponsorit"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:47
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:41
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:41
+msgid "Title:"
+msgstr "Otsikko:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:50
+msgid "Number of sponsors to show:"
+msgstr "Näytettävien sponsoreiden määrä:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:53
+msgid "Sort by:"
+msgstr "Järjestä:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:61
+msgid "Sort Order:"
+msgstr "Järjestys:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:67
+msgid "Max Width:"
+msgstr "Maksimileveys:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:70
+msgid "Max Height:"
+msgstr "Maksimikorkeus:"
+
+#: sportspress-sponsors/includes/sp-sponsor-functions.php:38
+#, php-format
+msgid "%s impression"
+msgid_plural "%s impressions"
+msgstr[0] "%s vaikutelma"
+msgstr[1] "%s vaikutelmat"
+
+#: sportspress-sponsors/includes/sp-sponsor-functions.php:69
+#, php-format
+msgid "%s click"
+msgid_plural "%s clicks"
+msgstr[0] "%s klikkaus"
+msgstr[1] "%s klikkausta"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:100
+#: sportspress-staff-directories/sportspress-staff-directories.php:197
+#: sportspress-staff-directories/sportspress-staff-directories.php:220
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:46
+msgid "Staff Directories"
+msgstr "Toimihenkilöluettelot"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:101
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:38
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:44
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:44
+msgid "Staff Directory"
+msgstr "Toimihenkilöluettelo"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:102
+msgid "Add New Staff Directory"
+msgstr "Lisää uusi toimihenkilöluettelo"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:103
+msgid "Edit Staff Directory"
+msgstr "Muokkaa toimihenkilöluetteloa"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:207
+msgid "List"
+msgstr "Lista"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:208
+msgid "Gallery"
+msgstr "Galleria"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:223
+msgid "Staff"
+msgstr "Toimihenkilöt"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:224
+msgid "Link staff"
+msgstr "Yhdistä toimihenkilöt"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:231
+msgid "Pagination"
+msgstr "Sivunumerointi"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:232
+msgid "Paginate"
+msgstr "Sivunumeroi"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:239
+msgid "Limit"
+msgstr "Raja"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:243
+msgid "staff"
+msgstr "toimihenkilö"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:51
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:97
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:320
+msgid "League"
+msgstr "Sarja"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:52
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:112
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:323
+msgid "Season"
+msgstr "Sarjakausi"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:53
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:127
+msgid "Team"
+msgstr "Joukkue"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:65
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:68
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:74
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:103
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:118
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:133
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:347
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:348
+msgid "All"
+msgstr "Kaikki"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:97
+msgid "Show all leagues"
+msgstr "Näytä kaikki sarjat"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:106
+msgid "Show all seasons"
+msgstr "Näytä kaikki sarjakaudet"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:117
+msgid "Show all teams"
+msgstr "Näytä kaikki joukkueet"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:35
+msgid "Shortcode"
+msgstr "Lyhytkoodi"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:36
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:326
+msgid "Layout"
+msgstr "Tekstin asettelu"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:39
+msgid "Description"
+msgstr "Kuvaus"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:42
+msgid "Contact Info"
+msgstr "Yhteystiedot"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:66
+msgid ""
+"Copy this code and paste it into your post, page or text widget content."
+msgstr "Kopioi tämä koodi ja liitä se postauksen, sivun tai tekstivimpaimen sisältöön."
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:108
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:123
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:138
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:55
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:55
+msgid "Add New"
+msgstr "Lisää uusi"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:191
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:193
+msgid "Role"
+msgstr "Rooli"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:217
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:221
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:222
+msgid "Save"
+msgstr "Tallenna"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:257
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:178
+#: sportspress-staff-directories/templates/staff-contacts.php:31
+msgid "Phone"
+msgstr "Puhelinnro"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:260
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:179
+#: sportspress-staff-directories/templates/staff-contacts.php:36
+msgid "Email"
+msgstr "Sähköposti"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:317
+msgid "Directory"
+msgstr "Luettelo"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:5
+msgid "A gallery of staff."
+msgstr "Toimihenkilögalleria."
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:6
+msgid "SportsPress Staff Gallery"
+msgstr "SportsPress-toimihenkilögalleria"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:44
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:44
+#, php-format
+msgid "Select %s:"
+msgstr "Valitse %s:"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:60
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:60
+msgid "Number of staff to show:"
+msgstr "Näytettävien toimihenkilöiden määrä:"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:64
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:64
+msgid "Display link to view all staff"
+msgstr "Näytä linkki kaikkiin toimihenkilöihin"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:5
+msgid "A list of staff."
+msgstr "Lista toimihenkilöistä."
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:6
+msgid "SportsPress Staff List"
+msgstr "SportsPress-toimihenkilölista"
+
+#: sportspress-staff-directories/templates/staff-gallery.php:108
+#: sportspress-staff-directories/templates/staff-list.php:105
+msgid "View all staff"
+msgstr "Näytä kaikki toimihenkilöt"
+
+#: sportspress-team-colors/sportspress-team-colors.php:83
+msgid "Team Colors"
+msgstr "Joukkueen värit"

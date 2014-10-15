@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.1
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -31,6 +31,7 @@ $data = array_filter( $data );
 if ( empty( $data ) )
 	return false;
 
+$scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 $show_outcomes = array_key_exists( 'outcome', $labels );
 
 // Initialize
@@ -88,7 +89,7 @@ else:
 
 	$output .= '<h4 class="sp-table-caption">' . __( 'Team Results', 'sportspress' ) . '</h4>';
 
-	$output .= '<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
+	$output .= '<div class="sp-table-wrapper' . ( $scrollable ? ' sp-scrollable-table-wrapper' : '' ) . '">' .
 		'<table class="sp-event-results sp-data-table sp-responsive-table"><thead>' .
 		'<th class="data-name">' . __( 'Team', 'sportspress' ) . '</th>';
 	foreach( $labels as $key => $label ):
@@ -99,5 +100,7 @@ else:
 	$output .= '</tbody>' . '</table>' . '</div>';
 
 endif;
-
-echo $output;
+?>
+<div class="sp-template sp-template-event-results">
+	<?php echo $output; ?>
+</div>

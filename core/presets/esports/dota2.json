@@ -1,0 +1,25 @@
+{
+	"name":				"Dota 2",
+	"outcomes": [
+						"Win",
+						"Loss"
+	],
+	"results": [
+						{ "name" : "Rating", "description" : "Rating adjustment", "primary" : 1 }
+	],
+	"performance": [
+						{ "name" : "Rating", "description" : "Rating adjustment" }
+	],
+	"columns": [
+						{ "name" : "W", "equation" : "$win", "priority" : 2, "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "Rating", "equation" : "$rating", "priority" : 1 }
+	],
+	"metrics": [
+	],
+	"statistics": [
+						{ "name" : "Wins", "equation" : "$win" },
+						{ "name" : "Losses", "equation" : "$loss" },
+						{ "name" : "Winrate", "equation" : "$win / $eventsplayed * 1 0 0" }
+	]
+}

@@ -28,11 +28,12 @@ class SP_Meta_Box_List_Details {
 		?>
 		<div>
 			<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
-			<p>
+			<p class="sp-tab-select">
 				<?php
 				$args = array(
 					'taxonomy' => 'sp_league',
 					'name' => 'sp_league',
+					'show_option_all' => __( 'All', 'sportspress' ),
 					'selected' => $league_id,
 					'values' => 'term_id',
 				);
@@ -47,6 +48,7 @@ class SP_Meta_Box_List_Details {
 				$args = array(
 					'taxonomy' => 'sp_season',
 					'name' => 'sp_season',
+					'show_option_all' => __( 'All', 'sportspress' ),
 					'selected' => $season_id,
 					'values' => 'term_id',
 				);
@@ -102,7 +104,7 @@ class SP_Meta_Box_List_Details {
 			</p>
 			<p><strong><?php _e( 'Players', 'sportspress' ); ?></strong></p>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_player', 'block', 'sp_current_team' );
+			sp_post_checklist( $post->ID, 'sp_player', 'block', array( 'sp_league', 'sp_season', 'sp_current_team' ) );
 			sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
 			?>
 		</div>

@@ -1,5 +1,14 @@
 {
 	"name":				"Handball",
+	"positions": [
+						"Goalkeeper",
+						"Center back",
+						"Left back",
+						"Right back",
+						"Pivot",
+						"Left wing",
+						"Right wing"
+	],
 	"outcomes": [
 						"Win",
 						"Draw",

@@ -36,20 +36,23 @@ class SportsPress_Staff_Directories {
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handlers' ) );
 		add_filter( 'sportspress_permalink_slugs', array( $this, 'add_permalink_slug' ) );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
+		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'add_screen_ids' ) );
 		add_action( 'sportspress_single_directory_content', array( $this, 'output_directory' ), 10 );
 		add_action( 'sportspress_after_single_directory', 'sportspress_output_br_tag', 100 );
 		add_filter( 'sportspress_league_object_types', array( $this, 'add_taxonomy_object' ) );
 		add_filter( 'sportspress_season_object_types', array( $this, 'add_taxonomy_object' ) );
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
+		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_filter( 'sportspress_staff_settings', array( $this, 'add_options' ) );
 		add_action( 'sportspress_single_staff_content', array( $this, 'output_staff_contacts' ), 20 );
 		add_action( 'sportspress_single_team_content', array( $this, 'output_team_directories' ), 25 );
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
+		add_action( 'sportspress_register_post_type_staff', array( $this, 'add_staff_attributes_support' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
-		if ( defined( 'SP_PRO_PLUGIN_FILE' ) ) {
+		if ( defined( 'SP_PRO_PLUGIN_FILE' ) )
 			register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
-		}
 	}
 
 	/**
@@ -57,7 +60,7 @@ class SportsPress_Staff_Directories {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_STAFF_DIRECTORIES_VERSION' ) )
-			define( 'SP_STAFF_DIRECTORIES_VERSION', '1.0' );
+			define( 'SP_STAFF_DIRECTORIES_VERSION', '1.0.1' );
 
 		if ( !defined( 'SP_STAFF_DIRECTORIES_URL' ) )
 			define( 'SP_STAFF_DIRECTORIES_URL', plugin_dir_url( __FILE__ ) );
@@ -125,6 +128,37 @@ class SportsPress_Staff_Directories {
 				)
 			)
 		);
+
+		register_post_type( 'sp_bracket',
+			apply_filters( 'sportspress_register_post_type_bracket',
+				array(
+					'labels' => array(
+						'name' 					=> __( 'Brackets', 'sportspress' ),
+						'singular_name' 		=> __( 'Bracket', 'sportspress' ),
+						'add_new_item' 			=> __( 'Add New Bracket', 'sportspress' ),
+						'edit_item' 			=> __( 'Edit Bracket', 'sportspress' ),
+						'new_item' 				=> __( 'New', 'sportspress' ),
+						'view_item' 			=> __( 'View Bracket', 'sportspress' ),
+						'search_items' 			=> __( 'Search', 'sportspress' ),
+						'not_found' 			=> __( 'No results found.', 'sportspress' ),
+						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
+					),
+					'public' 				=> true,
+					'show_ui' 				=> true,
+					'capability_type' 		=> 'sp_tournament',
+					'map_meta_cap' 			=> true,
+					'publicly_queryable' 	=> true,
+					'exclude_from_search' 	=> false,
+					'hierarchical' 			=> false,
+					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_bracket_slug', 'bracket' ) ),
+					'supports' 				=> array( 'title', 'author', 'thumbnail' ),
+					'has_archive' 			=> false,
+					'show_in_nav_menus' 	=> true,
+					'show_in_menu' => 'edit.php?post_type=sp_tournament',
+					'show_in_admin_bar' 	=> true,
+				)
+			)
+		);
 	}
 
 	/**
@@ -136,7 +170,15 @@ class SportsPress_Staff_Directories {
 	}
 
 	/**
-	 * Add post type
+	 * Add to hierarchy
+	 */
+	public static function add_to_hierarchy( $hierarchy = array() ) {
+		$hierarchy['sp_staff'][] = 'sp_directory';
+		return $hierarchy;
+	}
+
+	/**
+	 * Add screen ids
 	 */
 	public static function add_screen_ids( $screen_ids = array() ) {
 		$screen_ids[] = 'edit-sp_directory';
@@ -218,16 +260,27 @@ class SportsPress_Staff_Directories {
 	 * @return array
 	 */
 	public function add_options( $settings ) {
-		return array_merge( $settings, array(
-			array( 'title' => __( 'Staff Directories', 'sportspress' ), 'type' => 'title', 'id' => 'directory_options' ),
-
+		array_splice( $settings, 2, 0, array(
 			array(
-				'title'     => __( 'Staff', 'sportspress' ),
-				'desc' 		=> __( 'Link staff', 'sportspress' ),
-				'id' 		=> 'sportspress_directory_link_staff',
+				'title'     => __( 'Contact Info', 'sportspress' ),
+				'desc' 		=> __( 'Link phone', 'sportspress' ),
+				'id' 		=> 'sportspress_link_phone',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'start',
 			),
+
+			array(
+				'desc' 		=> __( 'Link email', 'sportspress' ),
+				'id' 		=> 'sportspress_link_email',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'end',
+			),
+		) );
+
+		return array_merge( $settings, array(
+			array( 'title' => __( 'Staff Directories', 'sportspress' ), 'type' => 'title', 'id' => 'directory_options' ),
 
 			array(
 				'title'     => __( 'Pagination', 'sportspress' ),
@@ -251,6 +304,17 @@ class SportsPress_Staff_Directories {
 			),
 
 			array( 'type' => 'sectionend', 'id' => 'directory_options' ),
+		) );
+	}
+
+	/**
+	 * Add text options 
+	 */
+	public function add_text_options( $options = array() ) {
+		return array_merge( $options, array(
+			__( 'Phone', 'sportspress' ),
+			__( 'Email', 'sportspress' ),
+			__( 'View all staff', 'sportspress' ),
 		) );
 	}
 
@@ -317,6 +381,25 @@ class SportsPress_Staff_Directories {
 				$wp_roles->add_cap( 'administrator', $cap );
 			endforeach;
 		endif;
+	}
+
+	/**
+	 * Add page attribute support to staff post type
+	 */
+	public function add_staff_attributes_support( $arr ) {
+		$arr['supports'][] = 'page-attributes';
+		return $arr;
+	}
+
+	/**
+	 * Enqueue scripts
+	 */
+	public function admin_enqueue_scripts() {
+		$screen = get_current_screen();
+
+		if ( $screen->id == 'sp_directory' ) {
+			wp_enqueue_script( 'sportspress-staff-directories-admin', SP_STAFF_DIRECTORIES_URL . 'js/admin.js', array( 'jquery' ), SP_STAFF_DIRECTORIES_VERSION );
+		}
 	}
 
 	/**

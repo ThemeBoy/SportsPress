@@ -46,7 +46,7 @@ class SP_Admin_Dashboard {
             if ( $num_posts ):
                 $published = intval( $num_posts->publish );
                 $post_type = get_post_type_object( $type );
-                $text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, 'your_textdomain' );
+                $text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, 'sportspress' );
                 $text = sprintf( $text, number_format_i18n( $published ) );
                 if ( current_user_can( $post_type->cap->edit_posts ) ):
                 $output = '<a href="edit.php?post_type=' . $post_type->name . '">' . $text . '</a>';
@@ -64,23 +64,24 @@ class SP_Admin_Dashboard {
      * Show status widget
      */
     public function status_widget() {
-        $next_event = sp_get_next_event();
-        $now = new DateTime( current_time( 'mysql', 0 ) );
-        $date = new DateTime( $next_event->post_date );
-        $interval = date_diff( $now, $date );
-
-        $count = wp_count_posts( 'sp_event' );
-        $scheduled_count = $count->future;
-        $published_count = $count->publish;
         ?>
         <ul class="sp_status_list">
-            <?php if ( $next_event ): ?>
-            <li class="countdown" data-countdown="<?php echo str_replace( '-', '/', $next_event->post_date ); ?>">
-                <a href="<?php echo get_edit_post_link( $next_event->ID ); ?>">
-                    <?php printf( __( '<strong>%s</strong> until next event', 'sportspress' ), $interval->days . ' ' . __( 'days', 'sportspress' ) . ' ' . sprintf( '%02s:%02s:%02s', $interval->h, $interval->i, $interval->s ) ); ?>
-                    (<?php echo $next_event->post_title; ?>)
-                </a>
-            </li>
+            <?php
+            $count = wp_count_posts( 'sp_event' );
+            $scheduled_count = isset( $count->future ) ? $count->future : 0;
+            $published_count = isset( $count->publish ) ? $count->publish : 0;
+            $next_event = sp_get_next_event();
+            if ( $next_event ):
+                $now = new DateTime( current_time( 'mysql', 0 ) );
+                $date = new DateTime( $next_event->post_date );
+                $interval = date_diff( $now, $date );
+                ?>
+                <li class="countdown" data-countdown="<?php echo str_replace( '-', '/', $next_event->post_date ); ?>">
+                    <a href="<?php echo get_edit_post_link( $next_event->ID ); ?>">
+                        <?php printf( __( '<strong>%s</strong> until next event', 'sportspress' ), $interval->days . ' ' . __( 'days', 'sportspress' ) . ' ' . sprintf( '%02s:%02s:%02s', $interval->h, $interval->i, $interval->s ) ); ?>
+                        (<?php echo $next_event->post_title; ?>)
+                    </a>
+                </li>
             <?php endif; ?>
             <li class="events-scheduled">
                 <a href="<?php echo admin_url( 'edit.php?post_type=sp_event&post_status=future' ); ?>">

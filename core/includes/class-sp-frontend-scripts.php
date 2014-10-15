@@ -107,6 +107,13 @@ class SP_Frontend_Scripts {
 		}
 
 		$colors = (array) get_option( 'sportspress_frontend_css_colors', array() );
+
+		// Defaults
+		if ( empty( $colors['primary'] ) ) $colors['primary'] = '#00a69c';
+		if ( empty( $colors['background'] ) ) $colors['background'] = '#f4f4f4';
+		if ( empty( $colors['text'] ) ) $colors['text'] = '#363f48';
+		if ( empty( $colors['heading'] ) ) $colors['heading'] = '#ffffff';
+		if ( empty( $colors['link'] ) ) $colors['link'] = '#00a69c';
 		
 		echo '<style type="text/css">.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a,.sp-calendar tbody a:hover{background:none;}';
 

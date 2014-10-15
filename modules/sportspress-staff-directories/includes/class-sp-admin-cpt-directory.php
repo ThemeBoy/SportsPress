@@ -45,13 +45,14 @@ class SP_Admin_CPT_Directory extends SP_Admin_CPT {
 	 * Change the columns shown in admin.
 	 */
 	public function edit_columns( $existing_columns ) {
-		$columns = array(
+		unset( $existing_columns['author'], $existing_columns['date'] );
+		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Title', 'sportspress' ),
 			'sp_league' => __( 'League', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_team' => __( 'Team', 'sportspress' ),
-		);
+		), $existing_columns );
 		return apply_filters( 'sportspress_directory_admin_columns', $columns );
 	}
 

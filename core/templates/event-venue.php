@@ -18,7 +18,7 @@ if ( ! $venues )
 	return;
 
 $show_maps = get_option( 'sportspress_event_show_maps', 'yes' ) == 'yes' ? true : false;
-$link_venues = get_option( 'sportspress_event_link_venues', 'no' ) == 'yes' ? true : false;
+$link_venues = get_option( 'sportspress_link_venues', 'no' ) == 'yes' ? true : false;
 
 foreach( $venues as $venue ):
 	$t_id = $venue->term_id;
@@ -32,25 +32,28 @@ foreach( $venues as $venue ):
 	$latitude = sp_array_value( $meta, 'sp_latitude', 0 );
 	$longitude = sp_array_value( $meta, 'sp_longitude', 0 );
 	?>
-	<h4 class="sp-table-caption"><?php _e( 'Venue', 'sportspress' ); ?></h4>
-	<table class="sp-data-table sp-event-venue">
-		<thead>
-			<tr>
-				<th><?php echo $name; ?></th>
-			</tr>
-		</thead>
-		<?php if ( $address != null || ( $show_maps && $latitude != null && $longitude != null ) ): ?>
-			<tbody>
+	<div class="sp-template sp-template-event-venue">
+		<h4 class="sp-table-caption"><?php _e( 'Venue', 'sportspress' ); ?></h4>
+		<table class="sp-data-table sp-event-venue">
+			<thead>
 				<tr>
-					<td><?php echo $address; ?></td>
+					<th><?php echo $name; ?></th>
 				</tr>
-				<?php if ( $show_maps && $latitude != null && $longitude != null ): ?>
+			</thead>
+			<?php if ( $address != null || ( $show_maps && $latitude != null && $longitude != null ) ): ?>
+				<tbody>
 					<tr>
-						<td><?php sp_get_template( 'venue-map.php', array( 'meta' => $meta ) ); ?></td>
+						<td><?php echo $address; ?></td>
 					</tr>
-				<?php endif; ?>
-			</tbody>
-		<?php endif; ?>
-	</table>
+					<?php if ( $show_maps && $latitude != null && $longitude != null ): ?>
+						<tr>
+							<td><?php sp_get_template( 'venue-map.php', array( 'meta' => $meta ) ); ?></td>
+						</tr>
+					<?php endif; ?>
+				</tbody>
+			<?php endif; ?>
+		</table>
+	</div>
 	<?php
 endforeach;
+?>

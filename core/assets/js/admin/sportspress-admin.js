@@ -25,6 +25,16 @@ jQuery(document).ready(function($){
 	// Activate auto key placeholder
 	$("#poststuff #title").keyup();
 
+	// Radio input toggle
+	$(".sp-radio-toggle").click(function() {
+		if($(this).data("sp-checked")) {
+			$(this).attr("checked", false );
+			$(this).data("sp-checked", false );
+		} else {
+			$(this).data("sp-checked", true );
+		}
+	});
+
 	// Table switcher
 	$(".sp-table-panel").siblings(".sp-table-bar").find("a").click(function() {
 		$(this).closest("li").find("a").addClass("current").closest("li").siblings().find("a").removeClass("current").closest(".sp-table-bar").siblings($(this).attr("href")).show().siblings(".sp-table-panel").hide();
@@ -72,6 +82,27 @@ jQuery(document).ready(function($){
 	// Trigger tab filter
 	$(".sp-tab-panel").siblings(".sp-tab-select").find("select").change();
 
+	// Dropdown filter
+	$(".sp-dropdown-target").siblings(".sp-dropdown-filter").find("select").change(function() {
+		var val = $(this).val();
+		var filter = ".sp-filter-"+val;
+		var $filters = $(this).closest(".sp-dropdown-filter").siblings(".sp-dropdown-filter");
+		if($filters.length) {
+			$filters.each(function() {
+				filterval = $(this).find("select").val();
+				if(filterval !== undefined)
+					filter += ".sp-filter-"+filterval;
+			});
+		}
+		$target = $(this).closest(".sp-dropdown-filter").siblings(".sp-dropdown-target").find("select");
+		$target.find(".sp-post").prop("disabled", true).each(function() {
+			$(this).filter(filter).prop("disabled", false);
+		});
+	});
+
+	// Trigger dropdown filter
+	$(".sp-dropdown-target").siblings(".sp-dropdown-filter").find("select").change();
+
 	// Filter show all action links
 	$(".sp-tab-panel").find(".sp-post input:checked").each(function() {
 		$(this).prop("disabled", false).closest("li").show().siblings(".sp-not-found-container").hide().siblings(".sp-show-all-container").show();
@@ -95,6 +126,20 @@ jQuery(document).ready(function($){
 
 	// Activate self-cloning
 	$(".sp-clone:last").find("select").change();
+
+	// Dummy controller
+	$(".sp-has-dummy").change(function() {
+		val = $(this).val();
+		if ( val == -1 ) val = 0;
+		name = $(this).attr("name");
+		$(".sp-dummy."+name+"-dummy").val(val).trigger("change");
+	});
+
+	// Title format switcher
+	$(".sp-title-format-select").change(function() {
+		val = $(this).val();
+		$(".sp-title-format").hide().filter(".sp-title-format-"+val).show();
+	});
 
 	// Custom value editor
 	$(".sp-data-table .sp-default-value").click(function() {
@@ -250,6 +295,7 @@ jQuery(document).ready(function($){
 
 	// Sortable tables
 	$(".sp-sortable-table tbody").sortable({
+		handle: ".icon",
 		axis: "y"
 	});
 
@@ -366,4 +412,112 @@ jQuery(document).ready(function($){
 			$this.find('strong').html(event.strftime("%D "+localized_strings.days+" %H:%M:%S"));
 		});
 	});
+
+	// Event format affects data
+	$(".post-type-sp_event #post-formats-select input.post-format").change(function() {
+		layout = $(".post-type-sp_event #post-formats-select input:checked").val();
+		if ( layout == "league" ) {
+			$(".sp-event-sp_league-field").show().find("select").prop("disabled", false);
+			$(".sp-event-sp_season-field").show().find("select").prop("disabled", false);
+		} else if ( layout == "friendly" ) {
+			$(".sp-event-sp_league-field").hide().find("select").prop("disabled", true);
+			$(".sp-event-sp_season-field").show().find("select").prop("disabled", false);
+		}
+	});
+
+	// Trigger event format change
+	$(".post-type-sp_event #post-formats-select input.post-format").trigger("change");
+
+	// Calendar layout affects data
+	$(".post-type-sp_calendar #post-formats-select input.post-format").change(function() {
+		layout = $(".post-type-sp_calendar #post-formats-select input:checked").val();
+		$(".sp-calendar-table tr").each(function() {
+			if ( layout == "list" ) {
+				$(this).find("th input[type=checkbox]").show();
+				$(this).find("th select").prop("disabled", false);
+			} else {
+				$(this).find("th input[type=checkbox]").hide();
+				$(this).find("th select").prop('selectedIndex', 0).prop("disabled", true);
+			}
+		});
+	});
+
+	// Trigger calendar layout change
+	$(".post-type-sp_calendar #post-formats-select input.post-format").trigger("change");
+
+	// Player list layout affects data
+	$(".post-type-sp_list #post-formats-select input.post-format").change(function() {
+		layout = $(".post-type-sp_list #post-formats-select input:checked").val();
+		$(".sp-player-list-table tr").each(function() {
+			if ( layout == "list" ) {
+				$(this).find("th input[type=checkbox]").show();
+			} else {
+				$(this).find("th input[type=checkbox]").hide();
+			}
+		});
+	});
+
+	// Trigger player list layout change
+	$(".post-type-sp_list #post-formats-select input.post-format").trigger("change");
+
+	// Configure primary result option (Ajax)
+	$(".sp-admin-config-table").on("click", ".sp-primary-result-option", function() {
+		$.post( ajaxurl, {
+			action:         "sp-save-primary-result",
+			primary_result: $(this).val(),
+			nonce:          $("#sp-config-nonce").val()
+		});
+	});
+
+	// Update importer post count
+	$(".sp-import-table").on("updatePostCount", function() {
+		$(".sp-post-count").text(localized_strings.displaying_posts.replace("%s", 1).replace(/%s/g, count = $(this).find("tbody tr").length));
+	});
+
+	// Delete importer row
+	$(".sp-import-table").on("click", ".sp-delete-row", function() {
+		$self = $(this);
+		$self.closest("tr").css("background-color", "#f99").fadeOut(400, function() {
+			$table = $self.closest(".sp-import-table");
+			$(this).remove();
+			$table.trigger("updatePostCount");
+		});
+		return false;
+	});
+
+	// Add importer row
+	$(".sp-import-table").on("click", ".sp-add-row", function() {
+		$self = $(this);
+		$table = $self.closest(".sp-import-table");
+		if ( $self.hasClass("sp-add-first") ) {
+			$tr = $table.find("tbody tr:first-child");
+			$row = $tr.clone();
+			$row.insertBefore($tr).find("input").val("");
+		} else {
+			$tr = $self.closest("tr");
+			$row = $tr.clone();
+			$tr.find("input").val("");
+			$row.insertBefore($tr);
+		}
+		$table.trigger("updatePostCount");
+		return false;
+	});
+
+	// Enable or disable importer inputs based on column label
+	$(".sp-import-table").on("change", "select", function() {
+		$self = $(this);
+		$table = $self.closest(".sp-import-table");
+		index = parseInt($self.data("index"));
+		if ( $self.val() == 0 ) {
+			$table.find("tbody tr td:nth-child("+parseInt(index+1)+") input").prop("disabled", true);
+		} else {
+			$table.find("tbody tr td:nth-child("+parseInt(index+1)+") input").prop("disabled", false);
+			$self.closest("th").siblings().find("select").each(function() {
+				if ( $(this).val() == $self.val() ) $(this).val("0").trigger("change");
+			});
+		}
+	});
+
+	// Fitvids
+	$(".sp-fitvids").fitVids();
 });

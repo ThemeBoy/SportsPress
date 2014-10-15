@@ -5,7 +5,7 @@
  * The SportsPress team class handles individual team data.
  *
  * @class 		SP_Team
- * @version		1.2.3
+ * @version		1.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -41,10 +41,9 @@ class SP_Team extends SP_Custom_Post {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function columns( $league_id, $admin = false ) {
+	public function columns( $league_id ) {
 		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$columns = (array)get_post_meta( $this->ID, 'sp_columns', true );
-		$leagues_seasons = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
 
 		// Get labels from result variables
 		$result_labels = (array)sp_get_var_labels( 'sp_result' );
@@ -62,6 +61,9 @@ class SP_Team extends SP_Custom_Post {
 			endif;
 		endforeach;
 
+		$div_ids[] = 0;
+		$season_names[ 0 ] = __( 'Total', 'sportspress' );
+
 		$data = array();
 
 		// Get all seasons populated with data where available
@@ -75,7 +77,7 @@ class SP_Team extends SP_Custom_Post {
 
 		foreach ( $div_ids as $div_id ):
 
-			$totals = array( 'eventsplayed' => 0, 'streak' => 0, 'last5' => null, 'last10' => null );
+			$totals = array( 'eventsplayed' => 0, 'eventminutes' => 0, 'streak' => 0, 'last5' => null, 'last10' => null );
 
 			foreach ( $result_labels as $key => $value ):
 				$totals[ $key . 'for' ] = 0;
@@ -119,24 +121,34 @@ class SP_Team extends SP_Custom_Post {
 				),
 				'tax_query' => array(
 					'relation' => 'AND',
-					array(
-						'taxonomy' => 'sp_league',
-						'field' => 'id',
-						'terms' => $league_id
-					),
-					array(
-						'taxonomy' => 'sp_season',
-						'field' => 'id',
-						'terms' => $div_id
-					),
-				)
+				),
 			);
+
+			if ( $league_id ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_league',
+					'field' => 'id',
+					'terms' => $league_id
+				);
+			endif;
+
+			if ( $div_id ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_season',
+					'field' => 'id',
+					'terms' => $div_id
+				);
+			endif;
+
 			$events = get_posts( $args );
 
 			foreach( $events as $event ):
 				$results = (array)get_post_meta( $event->ID, 'sp_results', true );
+				$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
+				if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
+
 				foreach ( $results as $team_id => $team_result ):
-					foreach ( $team_result as $key => $value ):
+					if ( is_array( $team_result ) ): foreach ( $team_result as $key => $value ):
 						if ( $team_id == $this->ID ):
 							if ( $key == 'outcome' ):
 
@@ -149,8 +161,9 @@ class SP_Team extends SP_Custom_Post {
 
 									// Increment events played and outcome count
 									if ( array_key_exists( $outcome, $totals ) ):
-										$totals['eventsplayed']++;
-										$totals[ $outcome ]++;
+										$totals['eventsplayed'] ++;
+										$totals['eventminutes'] += $minutes;
+										$totals[ $outcome ] ++;
 									endif;
 
 									if ( $outcome && $outcome != '-1' ):
@@ -189,7 +202,7 @@ class SP_Team extends SP_Custom_Post {
 								endif;
 							endif;
 						endif;
-					endforeach;
+					endforeach; endif;
 				endforeach;
 			endforeach;
 
@@ -227,41 +240,7 @@ class SP_Team extends SP_Custom_Post {
 		// Get columns from column variables
 		$columns = sp_get_var_labels( 'sp_column' );
 
-		// Merge the data and placeholders arrays
-		$merged = array();
-
-		foreach( $placeholders as $season_id => $season_data ):
-
-			if ( ! sp_array_value( $leagues_seasons, $season_id, 0 ) )
-				continue;
-
-			$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
-
-			// Add season name to row
-			$merged[ $season_id ] = array(
-				'name' => $season_name
-			);
-
-			foreach( $season_data as $key => $value ):
-
-				// Use static data if key exists and value is not empty, else use placeholder
-				if ( array_key_exists( $season_id, $data ) && array_key_exists( $key, $data[ $season_id ] ) && $data[ $season_id ][ $key ] != '' ):
-					$merged[ $season_id ][ $key ] = $data[ $season_id ][ $key ];
-				else:
-					$merged[ $season_id ][ $key ] = $value;
-				endif;
-
-			endforeach;
-
-		endforeach;
-
-		if ( $admin ):
-			return array( $columns, $data, $placeholders, $merged, $leagues_seasons );
-		else:
-			$labels = array_merge( array( 'name' => __( 'Season', 'sportspress' ) ), $columns );
-			$merged[0] = $labels;
-			return $merged;
-		endif;
+		return array( $columns, $data, $placeholders );
 	}
 
 	/**
@@ -295,6 +274,40 @@ class SP_Team extends SP_Custom_Post {
 				endif;
 			endforeach;
 			return $lists;
+		endif;
+	}
+
+	/**
+	 * Returns league tables
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function tables( $admin = false ) {
+		if ( ! $this->ID ) return null;
+
+		$args = array(
+			'post_type' => 'sp_table',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'meta_key' => 'sp_team',
+			'meta_value' => $this->ID,
+		);
+		$tables = get_posts( $args );
+
+		$checked = (array) get_post_meta( $this->ID, 'sp_table' );
+
+		if ( $admin ):
+			return array( $tables, $checked );
+		else:
+			foreach ( $tables as $key => $table ):
+				if ( ! in_array( $table->ID, $checked ) ):
+					unset( $tables[ $key ] );
+				endif;
+			endforeach;
+			return $tables;
 		endif;
 	}
 }

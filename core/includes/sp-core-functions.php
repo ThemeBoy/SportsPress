@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.2.6
+ * @version     1.3.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -451,6 +451,7 @@ if ( !function_exists( 'sp_dropdown_dates' ) ) {
 if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 	function sp_dropdown_taxonomies( $args = array() ) {
 		$defaults = array(
+			'show_option_blank' => false,
 			'show_option_all' => false,
 			'show_option_none' => false,
 			'taxonomy' => null,
@@ -495,6 +496,9 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 			printf( '<select name="%s" class="postform %s" %s>', $name, $class . ( $chosen ? ' chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' ) : '' ), ( $placeholder != null ? 'data-placeholder="' . $placeholder . '" ' : '' ) . $property );
 
 			if ( strpos( $property, 'multiple' ) === false ):
+				if ( $args['show_option_blank'] ):
+					echo '<option></option>';
+				endif;
 				if ( $args['show_option_all'] ):
 					printf( '<option value="0">%s</option>', $args['show_option_all'] );
 				endif;
@@ -560,6 +564,7 @@ if ( !function_exists( 'sp_dropdown_pages' ) ) {
 		    'property' => null,
 		    'placeholder' => null,
 		    'chosen' => false,
+		    'filter' => false,
 		);
 		$args = array_merge( $defaults, $args );
 
@@ -586,6 +591,9 @@ if ( !function_exists( 'sp_dropdown_pages' ) ) {
 
 		$chosen = $args['chosen'];
 		unset( $args['chosen'] );
+
+		$filter = $args['filter'];
+		unset( $args['filter'] );
 		
 		$posts = get_posts( $args );
 		if ( $posts || $args['prepend_options'] || $args['append_options'] ):
@@ -623,7 +631,17 @@ if ( !function_exists( 'sp_dropdown_pages' ) ) {
 					$selected_prop = selected( $this_value, $selected, false );
 				endif;
 
-				printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
+				if ( $filter !== false ):
+					$class = 'sp-post sp-filter-0';
+					$filter_values = get_post_meta( $post->ID, $filter, false );
+					foreach ( $filter_values as $filter_value ):
+						$class .= ' sp-filter-' . $filter_value;
+					endforeach;
+				else:
+					$class = '';
+				endif;
+
+				printf( '<option value="%s" class="%s" %s>%s</option>', $this_value, $class, $selected_prop, $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
 			endforeach;
 			wp_reset_postdata();
 
@@ -679,7 +697,7 @@ if ( !function_exists( 'sp_posts' ) ) {
 }
 
 if ( !function_exists( 'sp_post_checklist' ) ) {
-	function sp_post_checklist( $post_id = null, $meta = 'post', $display = 'block', $filter = null, $index = null ) {
+	function sp_post_checklist( $post_id = null, $meta = 'post', $display = 'block', $filters = null, $index = null ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		?>
@@ -690,46 +708,46 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 				<?php
 				$selected = sp_array_between( (array)get_post_meta( $post_id, $meta, false ), 0, $index );
 				if ( empty( $posts ) ):
-					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1, 'tax_query' => array( 'relation' => 'AND' ) );
+					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1 );
 					if ( $meta == 'sp_player' ):
 						$query['meta_key'] = 'sp_number';
 						$query['orderby'] = 'meta_value_num';
 						$query['order'] = 'ASC';
 					endif;
-
-					// Filter by league and season when available
-					$league = sp_get_the_term_id( $post_id, 'sp_league', 0 );
-					if ( $league ):
-						$query['tax_query'][] = array(
-							'taxonomy' => 'sp_league',
-							'field' => 'id',
-							'terms' => $league
-						);
-					endif;
-					$season = sp_get_the_term_id( $post_id, 'sp_season', 0 );
-					if ( $season ):
-						$query['tax_query'][] = array(
-							'taxonomy' => 'sp_season',
-							'field' => 'id',
-							'terms' => $season
-						);
-					endif;
-
 					$posts = get_posts( $query );
 				endif;
 				foreach ( $posts as $post ):
 					$parents = get_post_ancestors( $post );
-					if ( $filter ):
-						$filter_values = (array)get_post_meta( $post->ID, $filter, false );
-						$terms = (array)get_the_terms( $post->ID, 'sp_season' );
-						foreach ( $terms as $term ):
-							if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
-								$filter_values[] = $term->term_id;
-						endforeach;
+					if ( $filters ):
+						if ( is_array( $filters ) ):
+							$filter_values = array();
+							foreach ( $filters as $filter ):
+								if ( get_taxonomy( $filter ) ):
+									$terms = (array)get_the_terms( $post->ID, $filter );
+									foreach ( $terms as $term ):
+										if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
+											$filter_values[] = $term->term_id;
+									endforeach;
+								else:
+									$filter_values = array_merge( $filter_values, (array)get_post_meta( $post->ID, $filter, false ) );
+								endif;
+							endforeach;
+						else:
+							$filter = $filters;
+							if ( get_taxonomy( $filter ) ):
+								$terms = (array)get_the_terms( $post->ID, $filter );
+								foreach ( $terms as $term ):
+									if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
+										$filter_values[] = $term->term_id;
+								endforeach;
+							else:
+								$filter_values = (array)get_post_meta( $post->ID, $filter, false );
+							endif;
+						endif;
 					endif;
 					?>
 					<li class="sp-post sp-filter-0<?php
-						if ( $filter ):
+						if ( $filters ):
 							foreach ( $filter_values as $filter_value ):
 								echo ' sp-filter-' . $filter_value;
 							endforeach;
@@ -882,14 +900,14 @@ if ( !function_exists( 'sp_post_adder' ) ) {
 }
 
 if ( !function_exists( 'sp_taxonomy_adder' ) ) {
-	function sp_taxonomy_adder( $taxonomy = 'category', $post_type = 'post', $label = null ) {
+	function sp_taxonomy_adder( $taxonomy = 'category', $post_type = null, $label = null ) {
 		$obj = get_taxonomy( $taxonomy );
 		if ( $label == null )
 			$label = __( 'Add New', 'sportspress' );
 		?>
 		<div id="<?php echo $taxonomy; ?>-adder">
 			<h4>
-				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( 'edit-tags.php?taxonomy=' . $taxonomy . '&post_type=' . $post_type ); ?>" target="_blank">
+				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( 'edit-tags.php?taxonomy=' . $taxonomy . ( $post_type ? '&post_type=' . $post_type : '' ) ); ?>" target="_blank">
 					+ <?php echo $label; ?>
 				</a>
 			</h4>
@@ -1054,8 +1072,8 @@ if ( !function_exists( 'sp_get_next_event' ) ) {
 				'meta_query' => $args,
 			);
 			$posts = get_posts( $options );
-			$post = array_pop( $posts );
-			return $post;
+			if ( $posts && is_array( $posts ) ) return array_pop( $posts );
+			else return false;
 	}
 }
 
@@ -1066,19 +1084,25 @@ if ( !function_exists( 'sp_get_next_event' ) ) {
 function sp_get_text_options() {
 	$strings = apply_filters( 'sportspress_text', array(
 		__( 'Article', 'sportspress' ),
+		__( 'Current Team', 'sportspress' ),
 		__( 'Date', 'sportspress' ),
 		__( 'Details', 'sportspress' ),
 		__( 'Event', 'sportspress' ),
 		__( 'League', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
 		__( 'Outcome', 'sportspress' ),
+		__( 'Past Teams', 'sportspress' ),
 		__( 'Played', 'sportspress' ),
+		__( 'Player', 'sportspress' ),
 		__( 'Pos', 'sportspress' ),
+		__( 'Position', 'sportspress' ),
 		__( 'Preview', 'sportspress' ),
 		__( 'Rank', 'sportspress' ),
 		__( 'Recap', 'sportspress' ),
 		__( 'Team Results', 'sportspress' ),
 		__( 'Season', 'sportspress' ),
+		__( 'Staff', 'sportspress' ),
+		__( 'Substitutes', 'sportspress' ),
 		__( 'Team', 'sportspress' ),
 		__( 'Teams', 'sportspress' ),
 		__( 'Time', 'sportspress' ),
@@ -1086,21 +1110,20 @@ function sp_get_text_options() {
 		__( 'Total', 'sportspress' ),
 		__( 'Venue', 'sportspress' ),
 		__( 'View all events', 'sportspress' ),
+		__( 'View all players', 'sportspress' ),
 		__( 'View full table', 'sportspress' ),
 	));
-
-	if ( SP()->mode == 'team' ):
-		$strings = array_merge( $strings, array(
-			__( 'Current Team', 'sportspress' ),
-			__( 'Past Teams', 'sportspress' ),
-			__( 'Player', 'sportspress' ),
-			__( 'Position', 'sportspress' ),
-			__( 'Staff', 'sportspress' ),
-			__( 'Substitutes', 'sportspress' ),
-			__( 'View all players', 'sportspress' ),
-		));
-	endif;
 	
 	asort( $strings );
-	return $strings;
+	return array_unique( $strings );
+}
+
+function sp_review_link() {
+	?>
+	<p>
+		<a href="http://wordpress.org/support/view/plugin-reviews/sportspress?rate=5#postform">
+			<?php _e( 'Love SportsPress? Help spread the word by rating us 5★ on WordPress.org', 'sportspress' ); ?>
+		</a>
+	</p>
+	<?php
 }

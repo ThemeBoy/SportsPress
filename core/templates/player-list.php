@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.1
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -18,9 +18,11 @@ $defaults = array(
 	'orderby' => 'default',
 	'order' => 'ASC',
 	'show_all_players_link' => false,
-	'link_posts' => get_option( 'sportspress_list_link_players', 'yes' ) == 'yes' ? true : false,
-	'link_teams' => get_option( 'sportspress_list_link_teams', 'no' ) == 'yes' ? true : false,
+	'show_player_photo' => get_option( 'sportspress_list_show_photos', 'yes' ) == 'yes' ? true : false,
+	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
+	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
+	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_list_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_list_rows', 10 ),
@@ -79,7 +81,7 @@ foreach ( $groups as $group ):
 		$output .= '<' . $grouptag . ' class="sp-table-caption player-group-name player-list-group-name">' . $group->name . '</' . $grouptag . '>';
 	endif;
 
-	$output .= '<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
+	$output .= '<div class="sp-table-wrapper' . ( $scrollable ? ' sp-scrollable-table-wrapper' : '' ) . '">' .
 		'<table class="sp-player-list sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
 	if ( in_array( $orderby, array( 'number', 'name' ) ) ):
@@ -115,13 +117,23 @@ foreach ( $groups as $group ):
 		else:
 			$output .= '<td class="data-number">' . sp_array_value( $row, 'number', '&nbsp;' ) . '</td>';
 		endif;
+		
+		$name_class = '';
+
+		if ( $show_player_photo ):
+			if ( has_post_thumbnail( $player_id ) ):
+				$logo = get_the_post_thumbnail( $player_id, 'sportspress-fit-icon' );
+				$name = '<span class="player-photo">' . $logo . '</span>' . $name;
+				$name_class .= ' has-photo';
+			endif;
+		endif;
 
 		if ( $link_posts ):
 			$permalink = get_post_permalink( $player_id );
 			$name = '<a href="' . $permalink . '">' . $name . '</a>';
 		endif;
 
-		$output .= '<td class="data-name">' . $name . '</td>';
+		$output .= '<td class="data-name' . $name_class . '">' . $name . '</td>';
 		
 		if ( array_key_exists( 'team', $labels ) ):
 			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_team', true ) );
@@ -150,5 +162,7 @@ endforeach;
 
 if ( $show_all_players_link )
 	$output .= '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
-
-echo apply_filters( 'sportspress_player_list',  $output );
+?>
+<div class="sp-template sp-template-player-list">
+	<?php echo $output; ?>
+</div>

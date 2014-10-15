@@ -41,6 +41,10 @@ class SportsPress_Branding {
 		add_action( 'login_enqueue_scripts', array( $this, 'login_logo' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'admin_head', array( $this, 'admin_styles' ) );
+
+		remove_action( 'sportspress_settings_page', 'sp_review_link' );
+		remove_action( 'sportspress_config_page', 'sp_review_link' );
+		remove_action( 'sportspress_overview_page', 'sp_review_link' );
 	}
 
 	/**
@@ -132,8 +136,6 @@ class SportsPress_Branding {
 	 * Enqueue styles
 	 */
 	public function admin_enqueue_scripts() {
-		global $wp_scripts;
-
 		$screen = get_current_screen();
 
 		if ( in_array( $screen->id, array( 'toplevel_page_sportspress' ) ) ) {
@@ -149,20 +151,21 @@ class SportsPress_Branding {
 	 */
 	public function admin_styles() {
 		$icon = get_option( 'sportspress_branding_icon' );
-		$src = wp_get_attachment_image_src( $icon, 'sportspress-fit-mini' );
-
-		if ( $src ):
-			?>
-			<style type="text/css">
-				#adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before {
-					content: '';
-					background-image: url(<?php echo $src[0]; ?>);
-					background-repeat: no-repeat;
-					background-size: contain;
-					background-position: center center;
-				}
-			</style>
-			<?php
+		if ( $icon ):
+			$src = wp_get_attachment_image_src( $icon, 'sportspress-fit-mini' );
+			if ( $src ):
+				?>
+				<style type="text/css">
+					#adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before {
+						content: '';
+						background-image: url(<?php echo $src[0]; ?>);
+						background-repeat: no-repeat;
+						background-size: contain;
+						background-position: center center;
+					}
+				</style>
+				<?php
+			endif;
 		endif;
 		
 		$current_color = get_user_option( 'admin_color' );
@@ -183,6 +186,122 @@ class SportsPress_Branding {
 		$text = new SP_Color( str_replace( '#', '', sp_array_value( $colors, 'text', 'ffffff' ) ) );
 		?>
 		<style type="text/css">
+		/* Links */
+			a {
+				color: #0074a2;
+			}
+			
+			a:hover, a:active, a:focus {
+				color: #0099d5;
+			}
+
+			#media-upload a.del-link:hover, div.dashboard-widget-submit input:hover, .subsubsub a:hover, .subsubsub a.current:hover {
+				color: #0099d5;
+			}
+
+			/* Forms */
+			input[type=checkbox]:checked:before {
+				color: #<?php echo $highlight->getHex(); ?>;
+			}
+
+			input[type=radio]:checked:before {
+				background: #<?php echo $highlight->getHex(); ?>;
+			}
+
+			.wp-core-ui input[type="reset"]:hover, .wp-core-ui input[type="reset"]:active {
+				color: #0099d5;
+			}
+
+			/* Core UI */
+			.wp-core-ui .button-primary {
+				background: #<?php echo $highlight->getHex(); ?>;
+				border-color: #<?php echo $highlight->darken(6.5); ?>;
+				-webkit-box-shadow: inset 0 1px 0 #<?php echo $highlight->lighten(7); ?>, 0 1px 0 rgba(0, 0, 0, 0.15);
+				box-shadow: inset 0 1px 0 #<?php echo $highlight->lighten(7); ?>, 0 1px 0 rgba(0, 0, 0, 0.15);
+			}
+
+			.wp-core-ui .button-primary:hover, .wp-core-ui .button-primary:focus {
+				background: #<?php echo $highlight->darken(3) ?>;
+				border-color: #<?php echo $highlight->darken(10) ?>;
+				color: white;
+				-webkit-box-shadow: inset 0 1px 0 #<?php echo $highlight->lighten(3); ?>, 0 1px 0 rgba(0, 0, 0, 0.15);
+				box-shadow: inset 0 1px 0 #<?php echo $highlight->lighten(3); ?>, 0 1px 0 rgba(0, 0, 0, 0.15);
+			}
+
+			.wp-core-ui .button-primary:active {
+				background: #<?php echo $highlight->darken(3); ?>;
+				border-color: #<?php echo $highlight->darken(10) ?>;
+				color: white;
+				-webkit-box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.5);
+				box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.5);
+			}
+
+			.wp-core-ui .button-primary[disabled], .wp-core-ui .button-primary:disabled, .wp-core-ui .button-primary.button-primary-disabled, .wp-core-ui .button-primary.disabled {
+				color: #<?php echo $highlight->mix( '#cccccc', 50); ?> !important;
+				background: #<?php echo $highlight->darken(10); ?> !important;
+				border-color: #<?php echo $highlight->darken(20); ?> !important;
+				text-shadow: none !important;
+			}
+
+			.wp-core-ui .wp-ui-primary {
+				color: #fff;
+				background-color: #<?php echo $base->getHex(); ?>;
+			}
+
+			.wp-core-ui .wp-ui-text-primary {
+				color: #<?php echo $base->getHex(); ?>;
+			}
+
+			.wp-core-ui .wp-ui-highlight {
+				color: #fff;
+				background-color: #<?php echo $highlight->getHex(); ?>;
+			}
+
+			.wp-core-ui .wp-ui-text-highlight {
+				color: #<?php echo $highlight->getHex(); ?>;
+			}
+
+			.wp-core-ui .wp-ui-notification {
+				color: #fff;
+				background-color: #<?php echo $notifications->getHex(); ?>;
+			}
+
+			.wp-core-ui .wp-ui-text-notification {
+				color: #<?php echo $notifications->getHex(); ?>;
+			}
+
+			/* List tables */
+			.wrap .add-new-h2:hover, #add-new-comment a:hover, .tablenav .tablenav-pages a:hover, .tablenav .tablenav-pages a:focus {
+				color: #fff;
+				background-color: #<?php echo $base->getHex(); ?>;
+			}
+
+			.view-switch a.current:before {
+				color: #<?php echo $base->getHex(); ?>;
+			}
+
+			.view-switch a:hover:before {
+				color: #<?php echo $notifications->getHex(); ?>;
+			}
+
+			.post-com-count:hover:after {
+				border-top-color: #<?php echo $base->getHex(); ?>;
+			}
+
+			.post-com-count:hover span {
+				color: #fff;
+				background-color: #<?php echo $base->getHex(); ?>;
+			}
+
+			strong .post-com-count:after {
+				border-top-color: #<?php echo $notifications->getHex(); ?>;
+			}
+
+			strong .post-com-count span {
+				background-color: #<?php echo $notifications->getHex(); ?>;
+			}
+
+			/* Admin Menu */
 			#wpadminbar a.ab-item,
 			#wpadminbar > #wp-toolbar span.ab-label,
 			#wpadminbar > #wp-toolbar span.noticon {
@@ -371,7 +490,6 @@ class SportsPress_Branding {
 			}
 
 			/* New Menu icons */
-
 			.icon16:before {
 				color: #<?php echo $text->mix($base->getHex(), 8.3); ?>;
 			}

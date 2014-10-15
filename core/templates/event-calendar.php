@@ -4,16 +4,12 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.1
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
-
-// Quick check. If we have no posts at all, abort!
-if ( ! $posts )
-	return;
+global $wpdb, $m, $monthnum, $year, $wp_locale;
 
 $defaults = array(
 	'id' => null,
@@ -213,5 +209,7 @@ $calendar_output .= "\n\t</tr>\n\t</tbody>\n\t</table>\n\t</div>";
 
 if ( $id && $show_all_events_link )
 	$calendar_output .= '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
-
-echo apply_filters( 'sportspress_event_calendar',  $calendar_output );
+?>
+<div class="sp-template sp-template-event-calendar">
+	<?php echo $calendar_output; ?>
+</div>

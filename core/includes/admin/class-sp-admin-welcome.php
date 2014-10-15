@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.2.5
+ * @version     1.3
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -42,12 +42,27 @@ class SP_Admin_Welcome {
 	 * @return void
 	 */
 	public function admin_menus() {
+		if ( empty( $_GET['page'] ) ) {
+			return;
+		}
+
+		$welcome_page_name  = __( 'About SportsPress', 'sportspress' );
 		$welcome_page_title = __( 'Welcome to SportsPress', 'sportspress' );
 
-		// About
-		$about = add_dashboard_page( $welcome_page_title, $welcome_page_title, 'manage_options', 'sp-about', array( $this, 'about_screen' ) );
-
-		add_action( 'admin_print_styles-'. $about, array( $this, 'admin_css' ) );
+		switch ( $_GET['page'] ) {
+			case 'sp-about' :
+				$page = add_dashboard_page( $welcome_page_title, $welcome_page_name, 'manage_options', 'sp-about', array( $this, 'about_screen' ) );
+				add_action( 'admin_print_styles-'. $page, array( $this, 'admin_css' ) );
+			break;
+			case 'sp-credits' :
+				$page = add_dashboard_page( $welcome_page_title, $welcome_page_name, 'manage_options', 'sp-credits', array( $this, 'credits_screen' ) );
+				add_action( 'admin_print_styles-'. $page, array( $this, 'admin_css' ) );
+			break;
+			case 'sp-translators' :
+				$page = add_dashboard_page( $welcome_page_title, $welcome_page_name, 'manage_options', 'sp-translators', array( $this, 'translators_screen' ) );
+				add_action( 'admin_print_styles-'. $page, array( $this, 'admin_css' ) );
+			break;
+		}
 	}
 
 	/**
@@ -68,6 +83,7 @@ class SP_Admin_Welcome {
 	 */
 	public function admin_head() {
 		remove_submenu_page( 'index.php', 'sp-about' );
+		remove_submenu_page( 'index.php', 'sp-credits' );
 		remove_submenu_page( 'index.php', 'sp-translators' );
 
 		// Badge for welcome page
@@ -75,25 +91,31 @@ class SP_Admin_Welcome {
 		?>
 		<style type="text/css">
 			/*<![CDATA[*/
+			.about-sportspress-wrap .sp-about-text {
+				min-height: 0;
+			}
 			.about-sportspress-wrap .sp-badge {
 				position: absolute;
 				top: 0;
 				right: 0;
 				background: #00cac4 url(<?php echo $badge_url; ?>) no-repeat center top;
 				text-rendering: optimizeLegibility;
-				padding-top: 160px;
-				height: 42px;
-				width: 165px;
+				padding-top: 10px;
+				height: 150px;
+				width: 150px;
 				font-size: 14px;
+				line-height: 1.75;
 				text-align: center;
-				color: #e6e7e8;
+				font-weight: 600;
+				color: #c4fffc;
 				margin: 5px 0 0 0;
 				-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2);
 				box-shadow: 0 1px 3px rgba(0,0,0,.2);
 			}
-			.about-sportspress-wrap .sp-actions {
-				text-align: right;
-				margin-right: 200px;
+			.about-sportspress-wrap .sportspress-actions .twitter-share-button {
+				margin-top: -3px;
+				margin-left: 3px;
+				vertical-align: middle;
 			}
 			.about-sportspress-wrap .sp-feature {
 				overflow: visible !important;
@@ -106,6 +128,30 @@ class SP_Admin_Welcome {
 			}
 			.about-sportspress-wrap .sp-feature:after {
 				clear: both;
+			}
+			.about-sportspress-wrap div.icon {
+				width: 0 !important;
+				padding: 0;
+				margin: 0;
+			}
+			.about-sportspress-wrap .sp-feature div.icon:before {
+				font-family: sportspress !important;
+				font-weight: normal;
+				width: 100%;
+				font-size: 170px;
+				line-height: 125px;
+				color: #9c5d90;
+				display: inline-block;
+				position: relative;
+				text-align: center;
+				speak: none;
+				margin: <?php echo is_rtl() ? '0 -100px 0 0' : '0 0 0 -100px'; ?>;
+				content: "\f111";
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			.about-sportspress-wrap .form-table th {
+				width: auto;
 			}
 			@media only screen and (max-width: 500px) {
 				.about-sportspress-wrap h1 {
@@ -132,7 +178,7 @@ class SP_Admin_Welcome {
 		// Drop minor version if 0
 		$major_version = substr( SP()->version, 0, 3 );
 		?>
-		<h1><?php printf( __( 'Welcome to SportsPress!', 'sportspress' ), $major_version ); ?></h1>
+		<h1><?php printf( __( 'Welcome to SportsPress %s', 'sportspress' ), $major_version ); ?></h1>
 
 		<div class="about-text sp-about-text">
 			<?php
@@ -149,7 +195,9 @@ class SP_Admin_Welcome {
 
 		<div class="sp-badge"><?php printf( __( 'Version %s', 'sportspress' ), SP()->version ); ?></div>
 
-		<p class="sp-actions">
+		<p class="sportspress-actions">
+			<a href="<?php echo admin_url('admin.php?page=sportspress'); ?>" class="button button-primary"><?php _e( 'Settings', 'sportspress' ); ?></a>
+			<a href="<?php echo esc_url( apply_filters( 'sportspress_docs_url', 'http://sportspresspro.com/docs/', 'sportspress' ) ); ?>" class="docs button button-primary"><?php _e( 'Docs', 'sportspress' ); ?></a>
 			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wordpress.org/plugins/sportspress" data-text="An open-source (free) #WordPress plugin that helps you build professional league websites." data-via="ThemeBoy" data-size="large" data-hashtags="SportsPress">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		</p>
@@ -157,6 +205,10 @@ class SP_Admin_Welcome {
 		<h2 class="nav-tab-wrapper">
 			<a class="nav-tab <?php if ( $_GET['page'] == 'sp-about' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-about' ), 'index.php' ) ) ); ?>">
 				<?php _e( 'Get Started', 'sportspress' ); ?>
+			</a><a class="nav-tab <?php if ( $_GET['page'] == 'sp-credits' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-credits' ), 'index.php' ) ) ); ?>">
+				<?php _e( 'Credits', 'sportspress' ); ?>
+			</a><a class="nav-tab <?php if ( $_GET['page'] == 'sp-translators' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-translators' ), 'index.php' ) ) ); ?>">
+				<?php _e( 'Translators', 'sportspress' ); ?>
 			</a>
 		</h2>
 		<?php
@@ -173,20 +225,13 @@ class SP_Admin_Welcome {
 
 			<?php $this->intro(); ?>
 
-			<!--<div class="changelog point-releases"></div>-->
-
-			<div class="changelog">
-			
 			<?php
 			// Save settings
 	    	if ( isset( $_POST['timezone_string'] ) ):
 	    		update_option( 'timezone_string', $_POST['timezone_string'] );
+				update_option( 'sportspress_basic_setup', 1 );
 	    	endif;
-			if ( isset( $_POST['sportspress_mode'] ) && ! empty( $_POST['sportspress_mode'] ) && get_option( 'sportspress_mode', null ) != $_POST['sportspress_mode'] ):
-				$sport = $_POST['sportspress_mode'];
-				update_option( 'sportspress_mode', $_POST['sportspress_mode'] );
-	    	endif;
-			if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
+			if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) ):
 				$sport = $_POST['sportspress_sport'];
 				SP_Admin_Sports::apply_preset( $sport );
 				update_option( 'sportspress_sport', $_POST['sportspress_sport'] );
@@ -196,96 +241,209 @@ class SP_Admin_Welcome {
 					<p><strong><?php _e( 'Your settings have been saved.', 'sportspress' ); ?></strong></p>
 				</div>
 			<?php endif; ?>
-				<div class="sp-feature feature-section col three-col">
-					<div>
+			<div class="sp-feature feature-section col two-col">
+				<div>
+					<?php if ( get_option( 'sportspress_basic_setup' ) ) { ?>
+						<h4><?php _e( 'Sport', 'sportspress' ); ?></h4>
+						<?php
+						$sport = get_option( 'sportspress_sport' );
+						$sport_options = SP_Admin_Sports::get_preset_options();
+						foreach ( $sport_options as $options ):
+							foreach ( $options as $slug => $name ):
+								if ( $sport === $slug ):
+									$sport = $name;
+									continue;
+								endif;
+							endforeach;
+						endforeach;
+						echo $sport;
+						?>
+						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'admin.php' ) ) ); ?>"><div class="dashicons dashicons-edit"></div><?php _e( 'Change', 'sportspress' ); ?></a>
+						<h4><?php _e( 'Next Steps', 'sportspress' ); ?></h4>
+						<p><?php _e( 'We&#8217;ve assembled some links to get you started:', 'sportspress' ); ?></p>
+						<div class="sportspress-steps">
+							<ul>
+								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'post-new.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-shield-alt"><?php _e( 'Add New Team', 'sportspress' ); ?></a></li>
+								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'post-new.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-groups"><?php _e( 'Add New Player', 'sportspress' ); ?></a></li>
+								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'post-new.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-calendar"><?php _e( 'Add New Event', 'sportspress' ); ?></a></li>
+							</ul>
+							<ul>
+								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview' ), 'admin.php' ) ) ); ?>" class="welcome-icon dashicons-networking"><?php _e( 'Overview', 'sportspress' ); ?></a></li>
+								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-config' ), 'admin.php' ) ) ); ?>" class="welcome-icon dashicons-performance"><?php _e( 'Configure', 'sportspress' ); ?></a></li>
+								<li><a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>" class="welcome-icon dashicons-welcome-widgets-menus"><?php _e( 'Widgets', 'sportspress' ); ?></a></li>
+							</ul>
+						</div>
+						<div class="return-to-dashboard">
+							<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
+						</div>
+					<?php } else { ?>
 						<form method="post" id="mainform" action="" enctype="multipart/form-data">
-							<h4><?php _e( 'Timezone', 'sportspress' ); ?></h4>
-							<select id="timezone_string" name="timezone_string" class="<?php echo $class; ?>">
-								<?php
-								$current_offset = get_option('gmt_offset');
-								$tzstring = get_option('timezone_string');
+							<h4><?php _e( 'Basic Setup', 'sportspress' ); ?></h4>
+							<p><?php _e( 'Select your timezone and sport to get started.', 'sportspress' ); ?></p>
+							<table class="form-table">
+								<tbody>
+									<tr valign="top">
+										<th scope="row" class="titledesc">
+											<label for="timezone_string"><?php _e( 'Timezone', 'sportspress' ); ?></label>
+										</th>
+										<td>
+											<select id="timezone_string" name="timezone_string" class="<?php echo $class; ?>">
+												<?php
+												$current_offset = get_option('gmt_offset');
+												$tzstring = get_option('timezone_string');
 
-								$check_zone_info = true;
+												$check_zone_info = true;
 
-								// Remove old Etc mappings. Fallback to gmt_offset.
-								if ( false !== strpos($tzstring,'Etc/GMT') )
-									$tzstring = '';
+												// Remove old Etc mappings. Fallback to gmt_offset.
+												if ( false !== strpos($tzstring,'Etc/GMT') )
+													$tzstring = '';
 
-								if ( empty($tzstring) ) { // Create a UTC+- zone if no timezone string exists
-									$check_zone_info = false;
-									if ( 0 == $current_offset )
-										$tzstring = 'UTC+0';
-									elseif ($current_offset < 0)
-										$tzstring = 'UTC' . $current_offset;
-									else
-										$tzstring = 'UTC+' . $current_offset;
-								}
-								echo wp_timezone_choice($tzstring);
-								?>
-							</select>
-							<h4><?php _e( 'Sport', 'sportspress' ); ?></h4>
-							<?php
-							$sport_options = SP_Admin_Sports::get_preset_options();
-							$settings = array( array(
-								'id'        => 'sportspress_sport',
-								'default'   => 'soccer',
-								'type'      => 'select',
-								'class' 	=> $class,
-								'options'   => $sport_options,
-							));
-							SP_Admin_Settings::output_fields( $settings );
-							?>
-							<h4><?php _e( 'Mode', 'sportspress' ); ?></h4>
-							<?php
-							$settings = array( array(
-								'id'        => 'sportspress_mode',
-								'default'   => 'team',
-								'type'      => 'select',
-								'class' 	=> $class,
-								'options'   => array(
-									'team' => _x( 'Team', 'mode select', 'sportspress' ),
-									'player' => _x( 'Individual', 'mode select', 'sportspress' ),
-								),
-							));
-							SP_Admin_Settings::output_fields( $settings );
-							?>
+												if ( empty($tzstring) ) { // Create a UTC+- zone if no timezone string exists
+													$check_zone_info = false;
+													if ( 0 == $current_offset )
+														$tzstring = 'UTC+0';
+													elseif ($current_offset < 0)
+														$tzstring = 'UTC' . $current_offset;
+													else
+														$tzstring = 'UTC+' . $current_offset;
+												}
+												echo wp_timezone_choice($tzstring);
+												?>
+											</select>
+										</td>
+									</tr>
+									<?php
+									$sport_options = SP_Admin_Sports::get_preset_options();
+									$settings = array( array(
+										'id'        => 'sportspress_sport',
+										'default'   => 'custom',
+										'type'      => 'groupselect',
+										'title'		=> __( 'Sport', 'sportspress' ),
+										'class' 	=> $class,
+										'options'   => $sport_options,
+									));
+									SP_Admin_Settings::output_fields( $settings );
+									?>
+								</tbody>
+							</table>
 					        <p class="submit sportspress-actions">
 					        	<input name="save" class="button-primary" type="submit" value="<?php _e( 'Save changes', 'sportspress' ); ?>" />
 					        	<input type="hidden" name="subtab" id="last_tab" />
 					        	<?php wp_nonce_field( 'sportspress-settings' ); ?>
 					        </p>
 						</form>
-					</div>
-					<div>
-						<h4><?php _e( 'Next Steps', 'sportspress' ); ?></h4>
-						<ul class="sportspress-steps">
-							<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'post-new.php' ) ) ); ?>" class="welcome-icon welcome-add-team"><?php _e( 'Add New Team', 'sportspress' ); ?></a></li>
-							<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'post-new.php' ) ) ); ?>" class="welcome-icon welcome-add-player"><?php _e( 'Add New Player', 'sportspress' ); ?></a></li>
-							<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'post-new.php' ) ) ); ?>" class="welcome-icon welcome-add-event"><?php _e( 'Add New Event', 'sportspress' ); ?></a></li>
-						</ul>
-					</div>
-					<div class="last-feature">
-						<h4><?php _e( 'Translators', 'sportspress' ); ?></h4>
-						<p><?php _e( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="https://www.transifex.com/projects/p/sportspress/">Translate SportsPress</a>.', 'sportspress' ); ?></p>
-						<?php
-						$translator_handles = array( 'Abdulelah', 'albertone', 'Andrew_Melim', 'ArtakEVN', 'aylaview', 'Bhelpful2', 'bizover', 'BOCo', 'dic_2008', 'fredodq', 'hanro', 'hushiea', 'i__k', 'JensZ', 'joegalaxy66', 'JuKi', 'karimjarro', 'King3R', 'krisop', 'latixns', 'massimo.marra', 'MohamedZ', 'poelie', 'rochester', 'Selskei', 'sijo', 'Spirossmil', 'Taurus', 'ThemeBoy', 'valentijnreza' );
-						$translator_links = array();
-						foreach ( $translator_handles as $handle ):
-							$translator_links[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';
-						endforeach;
-						?>
-						<p class="wp-credits-list">
-							<?php echo implode( ', ', $translator_links ); ?>
-						</p>
-					</div>
+					<?php } ?>
 				</div>
-			</div>
-
-			<div class="return-to-dashboard">
-				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
+				<div class="last-feature">
+					<h4><?php _e( 'What is SportsPress?', 'sportspress' ); ?></h4>
+					<div class="sp-welcome-video sp-fitvids"><iframe width="500" height="281" src="//www.youtube.com/embed/_9jeSkXs5Hc?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>
+				</div>
 			</div>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Output the credits.
+	 */
+	public function credits_screen() {
+		?>
+		<div class="wrap about-wrap about-sportspress-wrap">
+
+			<?php $this->intro(); ?>
+
+			<p class="about-description"><?php printf( __( 'SportsPress is developed and maintained by a worldwide team of passionate individuals and backed by an awesome developer community. Want to see your name? <a href="%s">Contribute to SportsPress</a>.', 'sportspress' ), 'https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md' ); ?></p>
+
+			<?php echo $this->contributors(); ?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Output the translators screen
+	 */
+	public function translators_screen() {
+		?>
+		<div class="wrap about-wrap about-sportspress-wrap">
+
+			<?php $this->intro(); ?>
+
+			<p class="about-description"><?php printf( __( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ), 'https://www.transifex.com/projects/p/sportspress/' ); ?></p>
+			<?php
+			$translator_handles = array( 'Abdulelah', 'albertone', 'Andrew_Melim', 'ArtakEVN', 'aylaview', 'Bhelpful2', 'bizover', 'BOCo', 'den_zlateva', 'dic_2008', 'doncer', 'etcloki', 'Ferenan', 'fredodq', 'GhiMax', 'GuneshGamza95', 'hanro', 'hushiea', 'i__k', 'JensZ', 'jenymoen', 'joegalaxy66', 'JuKi', 'karimjarro', 'King3R', 'krisop', 'latixns', 'massimo.marra', 'MohamedZ', 'overbite', 'poelie', 'popeosorio', 'rochester', 'sashaCZ', 'Selskei', 'sijo', 'SilverXp', 'SmilyCarrot', 'Spirossmil', 'Taurus', 'ThemeBoy', 'tyby94', 'valentijnreza', 'vlinicx', 'Xyteton', 'zzcs' );
+			$translator_links = array();
+			foreach ( $translator_handles as $handle ):
+				$translator_links[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';
+			endforeach;
+			?>
+			<p class="wp-credits-list">
+				<?php echo implode( ', ', $translator_links ); ?>
+			</p>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Render Contributors List
+	 *
+	 * @access public
+	 * @return string $contributor_list HTML formatted list of contributors.
+	 */
+	public function contributors() {
+		$contributors = $this->get_contributors();
+
+		if ( empty( $contributors ) ) {
+			return '';
+		}
+
+		$contributor_list = '<ul class="wp-people-group">';
+
+		foreach ( $contributors as $contributor ) {
+			$contributor_list .= '<li class="wp-person">';
+			$contributor_list .= sprintf( '<a href="%s" title="%s">',
+				esc_url( 'https://github.com/' . $contributor->login ),
+				esc_html( sprintf( __( 'View %s', 'sportspress' ), $contributor->login ) )
+			);
+			$contributor_list .= sprintf( '<img src="%s" width="64" height="64" class="gravatar" alt="%s" />', esc_url( $contributor->avatar_url ), esc_html( $contributor->login ) );
+			$contributor_list .= '</a>';
+			$contributor_list .= sprintf( '<a class="web" href="%s">%s</a>', esc_url( 'https://github.com/' . $contributor->login ), esc_html( $contributor->login ) );
+			$contributor_list .= '</a>';
+			$contributor_list .= '</li>';
+		}
+
+		$contributor_list .= '</ul>';
+
+		return $contributor_list;
+	}
+
+	/**
+	 * Retrieve list of contributors from GitHub.
+	 *
+	 * @access public
+	 * @return mixed
+	 */
+	public function get_contributors() {
+		$contributors = get_transient( 'sportspress_contributors' );
+
+		if ( false !== $contributors ) {
+			return $contributors;
+		}
+
+		$response = wp_remote_get( 'https://api.github.com/repos/ThemeBoy/SportsPress/contributors', array( 'sslverify' => false ) );
+
+		if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) ) {
+			return array();
+		}
+
+		$contributors = json_decode( wp_remote_retrieve_body( $response ) );
+
+		if ( ! is_array( $contributors ) ) {
+			return array();
+		}
+
+		set_transient( 'sportspress_contributors', $contributors, HOUR_IN_SECONDS );
+
+		return $contributors;
 	}
 
 	/**

@@ -40,12 +40,14 @@ class SportsPress_Sponsors {
 		add_action( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_action( 'sportspress_after_single_sponsor', array( $this, 'sponsor_link' ), 10 );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
+		add_filter( 'sportspress_primary_post_types', array( $this, 'add_post_type' ) );
+		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
 	    add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
+		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
+		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ), 20 );
 
-		add_filter( 'menu_order', array( $this, 'menu_order' ) );
-		add_filter( 'custom_menu_order', array( $this, 'custom_menu_order' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'wp_footer', array( $this, 'header' ) );
@@ -57,9 +59,8 @@ class SportsPress_Sponsors {
 			add_action( 'wp_ajax_nopriv_sp_clicks', array( $this, 'sp_clicks' ) );
 		}
 
-		if ( defined( 'SP_PRO_PLUGIN_FILE' ) ) {
+		if ( defined( 'SP_PRO_PLUGIN_FILE' ) )
 			register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
-		}
 	}
 
 	/**
@@ -219,6 +220,15 @@ class SportsPress_Sponsors {
 	}
 
 	/**
+	 * Add text options 
+	 */
+	public function add_text_options( $options = array() ) {
+		return array_merge( $options, array(
+			__( 'Sponsors', 'sportspress' ),
+		) );
+	}
+
+	/**
 	 * Install
 	 */
 	public function install() {
@@ -352,6 +362,11 @@ class SportsPress_Sponsors {
 		return $post_types;
 	}
 
+	public static function add_to_hierarchy( $hierarchy = array() ) {
+		$hierarchy['sp_sponsor'] = array();
+		return $hierarchy;
+	}
+
 	public static function edit_columns() {
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
@@ -392,6 +407,14 @@ class SportsPress_Sponsors {
 		return $translated_text;
 	}
 
+	/**
+	 * Add menu item
+	 */
+	public function add_menu_item( $items ) {
+		$items[] = 'edit.php?post_type=sp_sponsor';
+		return $items;
+	}
+
 	public static function admin_enqueue_scripts() {
 		wp_enqueue_style( 'sportspress-sponsors-admin', SP_SPONSORS_URL . 'css/admin.css', array( 'sportspress-admin-menu-styles' ), time() );
 	}
@@ -429,13 +452,14 @@ class SportsPress_Sponsors {
 	public static function footer() {
 		$limit = get_option( 'sportspress_footer_sponsors_limit', 0 );
 		if ( $limit ) {
+			$title = get_option( 'sportspress_footer_sponsors_title', null );
 			$width = get_option( 'sportspress_footer_sponsor_width', 256 );
 			$height = get_option( 'sportspress_footer_sponsor_height', 128 );
 			$orderby = get_option( 'sportspress_footer_sponsors_orderby', 'menu_order' );
 			$order = get_option( 'sportspress_footer_sponsors_order', 'ASC' );
 
-			$background_color = get_option( 'sportspress_footer_sponsors_css_background', '#000000' );
-			$text_color = get_option( 'sportspress_footer_sponsors_css_text', '#ffffff' );
+			$background_color = get_option( 'sportspress_footer_sponsors_css_background', '#f4f4f4' );
+			$text_color = get_option( 'sportspress_footer_sponsors_css_text', '#363f48' );
 			?>
 			<style type="text/css">
 			.sp-footer-sponsors .sp-sponsors {
@@ -447,7 +471,7 @@ class SportsPress_Sponsors {
 			}
 			</style>
 			<div class="sp-footer-sponsors">
-				<?php echo do_shortcode( '[sponsors limit="' . $limit . '" width="' . $width . '" height="' . $height . '" title="' . __( 'Sponsors', 'sportspress' ) . '" orderby="' . $orderby . '" order="' . $order . '"]' ); ?>
+				<?php echo do_shortcode( '[sponsors limit="' . $limit . '" width="' . $width . '" height="' . $height . '" title="' . $title . '" orderby="' . $orderby . '" order="' . $order . '"]' ); ?>
 			</div>
 			<?php
 		}

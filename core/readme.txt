@@ -1,19 +1,30 @@
-=== SportsPress - All in One Sports Management ===
-Contributors: ThemeBoy
-Tags: sport, sports, clubs, teams, statistics, stats, fixtures, results, standings, league tables, leagues, shortcodes, sports journalism, themeboy, wordpress sports
+=== SportsPress - Sports Team & Club Manager ===
+Contributors: ThemeBoy, brianmiyaji, aylaview
+Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
-Tested up to: 3.9.1
-Stable tag: 1.2.8
+Tested up to: 4.0
+Stable tag: 1.3.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-SportsPress is an extendable sports plugin that adds league management capabilities and a statistics calculator for any sport.
+SportsPress is an extendable sports data plugin that adds league management capabilities and a statistics calculator for any sport.
 
 == Description ==
 
 = Create a Professional Sports Website =
 SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team or club website.
+
+[youtube http://www.youtube.com/watch?v=_9jeSkXs5Hc]
+
+= Industry Reviews =
+> "*The SportsPress plugin brings in some amazing features to your WordPress site and league management capabilities. If you are looking forward to create a sports related website on WordPress, you must have a look at SportsPress plugin.*" — [indexwp.com](http://www.indexwp.com/sportspress-plugin-review/)
+>
+> "*Script of the Day: While the WordPress repository holds various team and sports-related plugins, few of them come close to what you can achieve with SportsPress.*" — [softpedia.com](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml)
+>
+> "*SportsPress is our number 1 WordPress plugin for sport!*" — [gbsport.org.uk](http://www.gbsport.org.uk/5-great-wordpress-plugins-for-sport/)
+>
+> "*The freely available and highly impressive Sportspress plugin offers terrific functionality including a fixtures listing, league table, player & staff profiles, customizable point system and a built-in translation system for 36 different languages.*" — [clubthemes.com](http://clubthemes.com/awesome-sporting-templates-themes-wordpress-joomla/)
 
 = Features =
 * Equation Builder
@@ -36,7 +47,7 @@ More details about each feature are available on the [SportsPress Website](http:
 
 = SportsPress Pro =
 
-Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://sportspresspro.com/pricing/) to get access to more advanced features to your club website.
+Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://sportspresspro.com/pricing/) to get access to more advanced features for your club website.
 
 = Available Languages =
 * English – English ( en_US )
@@ -54,6 +65,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Hungarian - Magyar ( hu_HU )
 * Italian – Italiano ( it_IT )
 * Japanese – 日本語 ( ja )
+* Macedonian - македонски ( mk_MK )
 * Norwegian Bokmål - Norsk bokmål ( nb_NO )
 * Polish – Polski ( pl_PL )
 * Portuguese (Brazil) – Português do Brasil ( pt_BR )
@@ -63,6 +75,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Slovenian – Slovenija ( sl_SI )
 * Spanish – Español ( es_ES )
 * Swedish – Svenska ( sv_SE )
+* Thai - ไทย ( th )
 * Turkish - Türkçe ( tr_TR )
 
 = Documentation =
@@ -121,12 +134,12 @@ If on the off-chance you do encounter issues with the event/team/player/staff pa
 
 == Screenshots ==
 
-1. SportsPress style settings, configuration, and responsive layout example.
-2. Equation builder admin page.
-3. League table in Twenty Fourteen theme.
-4. League table admin page.
-5. Events list in Twenty Fourteen theme.
-6. Events admin page.
+1. Manage events from multiple leagues and seasons. Event names are generated automatically.
+2. Each team has a unique logo and website URL. Optionally link teams from your blog to their official websites.
+3. Configure variables used throughout the plugin to fit your sport. Presets are provided for some sports, and will automatically populate these options.
+4. Design your own points system using the custom drag-and-drop equation builder.
+5. The overview page provides a birds-eye view of your entire sports network.
+6. Twenty Fourteen theme showcasing the dynamic league table and some of the included widgets.
 
 == Frequently Asked Questions ==
 
@@ -144,9 +157,71 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 
 = Can I import teams/players/events from a CSV file? =
 
-Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers. When importing events, be sure to use the date format yyyy/mm/dd.
+Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers.
 
 == Changelog ==
+
+= 1.3.2 =
+* Integration - WPML compatibility.
+* Feature - Option to set number of columns in player gallery.
+* Tweak - Remove line break after templates.
+* Tweak - Update plugin icon.
+* Tweak - Update welcome screen badge.
+* Tweak - Display admin menu label as Players & Staff.
+* Fix - Typo in sample CSV import file.
+* Fix - Apply default color scheme when left blank.
+* Fix - Notices where taxonomies or posts not found.
+* Localization - Update source strings.
+* Localization - Update French and Dutch translations.
+
+= 1.3.1 =
+* Fix - Player list shortcode meta displayed on league table edit page.
+* Localization - Update Dutch translation.
+
+= 1.3 =
+* Feature - New overview page with interactive sitemap.
+* Feature - New and improved CSV import tools for bulk adding.
+* Feature - New full time minutes setting in events for statistics calculation.
+* Feature - New roles taxonomy for staff.
+* Feature - Option to display home/away teams in event lists.
+* Feature - Option to display league and season in event blocks.
+* Feature - Option to choose all leagues and seasons in league table.
+* Feature - Option to choose all leagues and seasons in player list.
+* Feature - Choose between displaying values and icons in event player performance.
+* Feature - Option to display photos in player list.
+* Feature - Filter players by league and season in admin.
+* Feature - Select a team to highlight in league tables.
+* Feature - Display league tables in team pages.
+* Feature - Display total statistics per player.
+* Feature - Add team option to countdown widget.
+* Feature - Add scrollable tables option.
+* Feature - Ability to adjust overall table columns per team.
+* Refactor - Remove individual mode in favor of upcoming hybrid.
+* Refactor - Use global linking options per post type.
+* Refactor - Display player position in profile.
+* Tweak - Reorganize settings options.
+* Tweak - Update SportsPress icon.
+* Tweak - Rename widgets for better usability.
+* Tweak - Add div wrappers to templates for easier targeting.
+* Tweak - Show or hide admin checkboxes based on event format.
+* Tweak - Make event list and blocks pagination independent.
+* Tweak - Trim admin table padding.
+* Tweak - Display all event performance columns by default.
+* Fix - Event list results column not always displaying.
+* Preset - New Rugby Union preset.
+* Preset - New League of Legends preset.
+* Preset - New DotA 2 preset.
+* Preset - Group into traditional sports and esports.
+* Preset - Add missing primary results and column priorities.
+* Localization - Fix multilingual post linking.
+* Localization - Thai translation by Xyteton.
+* Localization - Add Xyteton, tyby94, & SilverXp to translation team.
+* Localization - Update translations from Transifex.
+
+= 1.2.8 =
+* Preset - Add water polo preset.
+* Localization - Add Macedonian translations.
+* Localization - Update Armenian, Bulgarian, Finnish, German, Greek, Japanese, & Norwegian translations.
 
 = 1.2.7 =
 * Fix - Responsive table columns hidden when script active.

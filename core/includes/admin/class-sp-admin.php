@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.2
+ * @version     1.3
  */
 class SP_Admin {
 
@@ -21,6 +21,9 @@ class SP_Admin {
 		add_action( 'init', array( $this, 'includes' ) );
 		add_action( 'current_screen', array( $this, 'conditonal_includes' ) );
 		add_action( 'admin_init', array( $this, 'prevent_admin_access' ) );
+		add_action( 'sportspress_settings_page', 'sp_review_link' );
+		add_action( 'sportspress_config_page', 'sp_review_link' );
+		add_action( 'sportspress_overview_page', 'sp_review_link' );
 	}
 
 	/**
@@ -34,6 +37,7 @@ class SP_Admin {
 		// Classes
 		include_once( 'class-sp-admin-post-types.php' );
 		include_once( 'class-sp-admin-taxonomies.php' );
+		include_once( 'class-sp-admin-ajax.php' );
 
 		// Classes we only need if the ajax is not-ajax
 		if ( ! is_ajax() ) {

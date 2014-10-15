@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.8
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -40,25 +40,24 @@ class SP_Settings_Teams extends SP_Settings_Page {
 
 			array(	'title' => __( 'Team Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'team_options' ),
 
+			array(
+				'title'     => __( 'Link', 'sportspress' ),
+				'desc' 		=> __( 'Link teams', 'sportspress' ),
+				'id' 		=> 'sportspress_link_teams',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+			),
+
 			array( 'type' => 'sectionend', 'id' => 'team_options' ),
 
 			array( 'title' => __( 'League Tables', 'sportspress' ), 'type' => 'title', 'id' => 'table_options' ),
-			
+
 			array(
 				'title'     => __( 'Teams', 'sportspress' ),
 				'desc' 		=> __( 'Display logos', 'sportspress' ),
 				'id' 		=> 'sportspress_table_show_logos',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
-				'checkboxgroup'	=> 'start',
-			),
-
-			array(
-				'desc' 		=> __( 'Link teams', 'sportspress' ),
-				'id' 		=> 'sportspress_table_link_teams',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> 'end',
 			),
 
 			array(

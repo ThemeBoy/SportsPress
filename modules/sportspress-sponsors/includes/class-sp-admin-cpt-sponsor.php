@@ -58,14 +58,18 @@ class SP_Admin_CPT_Sponsor extends SP_Admin_CPT {
 	 * Change the columns shown in admin.
 	 */
 	public function edit_columns( $existing_columns ) {
-		$columns = array(
+		unset( $existing_columns['author'], $existing_columns['date'] );
+		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
-			'sp_icon' => '<span class="dashicons sp-icon-megaphone tips" title="' . __( 'Logo', 'sportspress' ) . '"></span>',
-			'title' => __( 'Sponsor', 'sportspress' ),
+			'sp_icon' => null,
+			'title' => null,
 			'sp_url' => __( 'URL', 'sportspress' ),
 			'sp_impressions' => __( 'Impressions', 'sportspress' ),
 			'sp_clicks' => __( 'Clicks', 'sportspress' ),
-		);
+		), $existing_columns, array(
+			'sp_icon' => '<span class="dashicons sp-icon-megaphone tips" title="' . __( 'Logo', 'sportspress' ) . '"></span>',
+			'title' => __( 'Sponsor', 'sportspress' ),
+		) );
 		return apply_filters( 'sportspress_sponsor_admin_columns', $columns );
 	}
 

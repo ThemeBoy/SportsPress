@@ -22,6 +22,24 @@ permission notices:
   The SportsPress code has been inspired by and partly adapted from the
   beautifully coded WooCommerce plugin by WooThemes.
 
+  "Crown" icon from WebHostingHub Glyphs, released under the SIL Open Font
+  License.
+
+  "Calendar", "Menu", "List", and "Trash" icons from 80 Shades of White Icons
+  by Victor Erixon.
+
+  "Eye" and "Cancel" icons from 60 Vicons by Victor Erixon.
+
+  "Clock" icon from Entypo by Daniel Bruce, released under CC BY-SA 3.0.
+
+  "Smile" icon from Font Awesome by Dave Gancy, released under the GPL.
+
+  "Megaphone" icon modified from WebHostingHub Glyphs, released under the SIL
+  Open Font License. Height decreased.
+
+  "Shield" icon modified from Font Awesome by Dave Gancy, released under the
+  GPL. Inner spacing added.
+
   Wherever third party code has been used, credit has been given in the code's
   comments.
 

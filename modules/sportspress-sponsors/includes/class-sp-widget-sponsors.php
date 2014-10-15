@@ -3,7 +3,7 @@ class SP_Widget_Sponsors extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_sponsors widget_sp_sponsors', 'description' => __( 'A list of sponsors.', 'sportspress' ) );
-		parent::__construct('sp_sponsors', __( 'SportsPress Sponsors', 'sportspress' ), $widget_ops);
+		parent::__construct('sp_sponsors', __( 'Sponsors', 'sportspress' ) . ' (' . __( 'SportsPress', 'sportspress' ) . ')' , $widget_ops);
 	}
 
 	function widget( $args, $instance ) {

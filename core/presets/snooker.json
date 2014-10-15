@@ -6,7 +6,7 @@
 						"Loss"
 	],
 	"results": [
-						{ "name" : "Score", "description" : "Total points", "main" : 1 }
+						{ "name" : "Score", "description" : "Total points", "primary" : 1 }
 	],
 	"performance": [
 						"1st Frame",
@@ -17,10 +17,10 @@
 						{ "name" : "W", "equation" : "$win", "priority" : 2, "description" : "Wins" },
 						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
 						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
-						{ "name" : "F", "equation" : "$scorefor", "description" : "Points for" },
+						{ "name" : "F", "equation" : "$scorefor", "description" : "Points for", "priority" : 3 },
 						{ "name" : "A", "equation" : "$scoreagainst", "description" : "Points against" },
-						{ "name" : "+-", "equation" : "$win - $loss", "description" : "Point difference" },
-						{ "name" : "PTS", "equation" : "$scorefor", "priority" : 1, "description" : "Points" }
+						{ "name" : "+-", "equation" : "$win - $loss", "description" : "Point difference", "priority" : 2 },
+						{ "name" : "PTS", "equation" : "$scorefor", "priority" : 1, "description" : "Points", "priority" : 1 }
 	],
 	"statistics": [
 						{ "name" : "Games Played", "equation" : "$eventsplayed" },

@@ -166,7 +166,9 @@ class SP_Staff_Directory {
 			foreach ( $posts as $post ):
 				$staff = array( 'name' => get_the_title( $post->ID ) );
 				
-				$staff['role'] = get_post_meta( $post->ID, 'sp_role', true );
+				$staff_object = new SP_Staff( $post->ID );
+				$role = $staff_object->role();
+				$staff['role'] = $role ? $role->name : '&mdash;';
 				$staff['phone'] = get_post_meta( $post->ID, 'sp_phone', true );
 				$staff['email'] = get_post_meta( $post->ID, 'sp_email', true );
 				

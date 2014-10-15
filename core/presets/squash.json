@@ -10,7 +10,8 @@
 						{ "name" : "G2", "description" : "2nd game" },
 						{ "name" : "G3", "description" : "3rd game" },
 						{ "name" : "G4", "description" : "4th game" },
-						{ "name" : "G5", "description" : "5th game" }
+						{ "name" : "G5", "description" : "5th game" },
+						{ "name" : "T", "id" : "points", "description" : "Total points", "primary" : 1 }
 	],
 	"performance": [
 	],
@@ -19,9 +20,9 @@
 						{ "name" : "W", "equation" : "$win", "priority" : 1, "description" : "Wins" },
 						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
 						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
-						{ "name" : "F", "equation" : "$gonefor + $gtwofor + $gthreefor + $gfourfor + $gfivefor", "priority" : 3, "description" : "Points for" },
-						{ "name" : "A", "equation" : "$goneagainst + $gtwoagainst + $gthreeagainst + $gfouragainst + $gfiveagainst", "description" : "Points against" },
-						{ "name" : "Pts", "equation" : "$gonefor + $gtwofor + $gthreefor + $gfourfor + $gfivefor - $goneagainst - $gtwoagainst - $gthreeagainst - $gfouragainst - $gfiveagainst", "priority" : 2, "description" : "Total points" }
+						{ "name" : "F", "equation" : "$pointsfor", "priority" : 3, "description" : "Points for" },
+						{ "name" : "A", "equation" : "$pointsagainst", "description" : "Points against" },
+						{ "name" : "Pts", "equation" : "$pointsfor - $pointsagainst", "priority" : 2, "description" : "Total points" }
 	],
 	"metrics": [
 						"Height",

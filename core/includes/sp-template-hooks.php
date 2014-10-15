@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.1.4
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -50,11 +50,11 @@ add_action( 'sportspress_single_calendar_content', 'sportspress_output_br_tag', 
  * Single Team Content
  *
  * @see sportspress_output_team_link()
- * @see sportspress_output_team_columns()
+ * @see sportspress_output_team_tables()
  * @see sportspress_output_team_lists()
  */
-add_action( 'sportspress_single_team_content', 'sportspress_output_team_columns', 20 );
-add_action( 'sportspress_single_team_content', 'sportspress_output_team_lists', 30 );
+add_action( 'sportspress_single_team_content', 'sportspress_output_team_lists', 20 );
+add_action( 'sportspress_single_team_content', 'sportspress_output_team_tables', 30 );
 add_action( 'sportspress_single_team_content', 'sportspress_output_br_tag', 100 );
 
 add_action( 'sportspress_after_single_team', 'sportspress_output_team_link', 10 );
@@ -114,22 +114,26 @@ function sportspress_the_title( $title, $id = null ) {
 				$title = '<strong>' . $number . '</strong> ' . $title;
 			endif;
 		elseif ( is_singular( 'sp_staff' ) ):
-			$role = get_post_meta( $id, 'sp_role', true );
-			if ( $role != null ):
-				$title = '<strong>' . $role . '</strong> ' . $title;
+			$staff = new SP_Staff( $id );
+			$role = $staff->role();
+			if ( $role ):
+				$title = '<strong>' . $role->name . '</strong> ' . $title;
 			endif;
 		elseif ( is_singular( 'sp_event' ) && get_option( 'sportspress_event_show_logos', 'yes' ) == 'yes' ):
 			$teams = get_post_meta( $id, 'sp_team' );
 			$teams = array_filter( $teams );
 			if ( $teams ):
-				$title .= '<div class="sp-event-teams">';
-				$delimiter = get_option( 'sportspress_event_teams_delimiter', 'vs' );
 				$team_logos = array();
 				foreach ( $teams as $team ):
 					$team_logos[] = get_the_post_thumbnail( $team, 'sportspress-fit-icon' );
 				endforeach;
-				$title .= implode( ' ' . $delimiter . ' ', $team_logos );
-				$title .= '</div>';
+				$team_logos = array_filter( $team_logos );
+				if ( ! empty( $team_logos ) ):
+					$title .= '<div class="sp-event-teams">';
+					$delimiter = get_option( 'sportspress_event_teams_delimiter', 'vs' );
+					$title .= implode( ' ' . $delimiter . ' ', $team_logos );
+					$title .= '</div>';
+				endif;
 			endif;
 		endif;
 	endif;
@@ -152,6 +156,18 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain = nu
 				break;
 			case 'Slug':
 				$translated_text = ( in_array( $typenow, array( 'sp_column', 'sp_statistic' ) ) ) ? __( 'Key', 'sportspress' ) : __( 'Variable', 'sportspress' );
+				break;
+			case 'Featured Image':
+				$translated_text = __( 'Icon', 'sportspress' );
+				break;
+			case 'Set Featured Image':
+				$translated_text = __( 'Select Icon', 'sportspress' );
+				break;
+			case 'Set featured image':
+				$translated_text = __( 'Add icon', 'sportspress' );
+				break;
+			case 'Remove featured image':
+				$translated_text = __( 'Remove icon', 'sportspress' );
 				break;
 			endswitch;
 		endif;
@@ -207,8 +223,8 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain = nu
 		endif;
 	else:
 		if ( $domain == 'sportspress' ):
-			if ( ! empty( SP()->text[ $untranslated_text ] ) ):
-				$translated_text = SP()->text[ $untranslated_text ];
+			if ( ! empty( SP()->text[ $translated_text ] ) ):
+				$translated_text = SP()->text[ $translated_text ];
 			endif;
     	elseif ( ! current_theme_supports( 'sportspress' ) && $untranslated_text == 'Archives' && is_tax( 'sp_venue' ) ):
     		$slug = get_query_var( 'sp_venue' );

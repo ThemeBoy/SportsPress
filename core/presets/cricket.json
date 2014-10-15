@@ -1,5 +1,11 @@
 {
 	"name":				"Cricket",
+	"positions": [
+						"Batsman",
+						"Bowler",
+						"Keeper",
+						"All-rounder"
+	],
 	"outcomes": [
 						"Win",
 						"Loss",
@@ -29,7 +35,8 @@
 	],
 	"metrics": [
 						"Height",
-						"Weight"
+						"Weight",
+						"Bat brand"
 	],
 	"statistics": [
 						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" }

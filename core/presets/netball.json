@@ -1,5 +1,14 @@
 {
 	"name":				"Netball",
+	"positions": [
+						"Goal Keeper",
+						"Goal Defense",
+						"Wing Defense",
+						"Center",
+						"Wing Attack",
+						"Goal Attack",
+						"Goal Shooter"
+	],
 	"outcomes": [
 						"Win",
 						"Loss"

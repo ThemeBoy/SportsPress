@@ -5,7 +5,7 @@
  * The SportsPress event class handles individual event data.
  *
  * @class 		SP_Event
- * @version		1.2.3
+ * @version		1.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -17,7 +17,8 @@ class SP_Event extends SP_Custom_Post{
 		$results = get_post_meta( $this->ID, 'sp_results', true );
 		if ( is_array( $results ) ) {
 			foreach( $results as $result ) {
-				if ( count( array_filter( $result ) ) > 0 ) {
+				$result = array_filter( $result );
+				if ( count( $result ) > 0 ) {
 					return 'results';
 				}
 			}
@@ -98,13 +99,13 @@ class SP_Event extends SP_Custom_Post{
 		else:
 			// Add position to performance labels
 			$labels = array_merge( array( 'position' => __( 'Position', 'sportspress' )  ), $labels );
-			if ( ! is_array( $columns ) )
-				$columns = array();
-			foreach ( $labels as $key => $label ):
-				if ( ! in_array( $key, $columns ) ):
-					unset( $labels[ $key ] );
-				endif;
-			endforeach;
+			if ( is_array( $columns ) ):
+				foreach ( $labels as $key => $label ):
+					if ( ! in_array( $key, $columns ) ):
+						unset( $labels[ $key ] );
+					endif;
+				endforeach;
+			endif;
 			$performance[0] = $labels;
 			return $performance;
 		endif;

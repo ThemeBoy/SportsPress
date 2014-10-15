@@ -14,6 +14,13 @@ if ( ! isset( $id ) )
 
 $video_url = get_post_meta( $id, 'sp_video', true );
 if ( $video_url ):
-    global $wp_embed;
-    echo $wp_embed->autoembed( $video_url );
+	?>
+	<div class="sp-event-video">
+		<?php
+	    global $wp_embed;
+	    echo $wp_embed->autoembed( $video_url );
+	    ?>
+	</div>
+    <?php
 endif;
+?>

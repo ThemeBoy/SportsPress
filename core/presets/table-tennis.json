@@ -11,7 +11,7 @@
 						{ "name" : "3", "description" : "3rd set" },
 						{ "name" : "4", "description" : "4th set" },
 						{ "name" : "5", "description" : "5th set" },
-						{ "name" : "Sets", "description" : "Sets won" }
+						{ "name" : "Sets", "description" : "Sets won", "primary" : 1 }
 	],
 	"performance": [
 	],
@@ -21,8 +21,8 @@
 						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
 						{ "name" : "F", "equation" : "$setsfor", "description" : "Sets for" },
 						{ "name" : "A", "equation" : "$setsagainst", "description" : "Sets against" },
-						{ "name" : "%", "id" : "percent", "equation" : "$setsfor / $setsagainst * 1 0 0", "precision" : 2, "description" : "For/against ratio" },
-						{ "name" : "Points", "equation" : "$win * 3 + $loss" }
+						{ "name" : "%", "id" : "percent", "equation" : "$setsfor / $setsagainst * 1 0 0", "precision" : 2, "description" : "For/against ratio", "priority" : 2 },
+						{ "name" : "Points", "equation" : "$win * 3 + $loss", "priority" : 1 }
 	],
 	"metrics": [
 						"Height",

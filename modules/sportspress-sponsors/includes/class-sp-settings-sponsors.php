@@ -109,6 +109,13 @@ class SP_Settings_Sponsors extends SP_Settings_Page {
 			array( 'title' => __( 'Footer', 'sportspress' ), 'type' => 'title', 'id' => 'footer_sponsor_options' ),
 			
 			array(
+				'title' => __( 'Title', 'sportspress' ),
+				'id' => 'sportspress_footer_sponsors_title',
+				'default' => '',
+				'type' => 'text',
+			),
+
+			array(
 				'title' 	=> __( 'Display', 'sportspress' ),
 				'id' 		=> 'sportspress_footer_sponsors_limit',
 				'class' 	=> 'small-text',
@@ -152,7 +159,7 @@ class SP_Settings_Sponsors extends SP_Settings_Page {
 				'id' 		=> 'sportspress_footer_sponsors_css_text',
 				'type' 		=> 'color',
 				'css' 		=> 'width:6em;',
-				'default'	=> '#ffffff',
+				'default'	=> '#363f48',
 				'autoload'  => false
 			),
 
@@ -161,7 +168,7 @@ class SP_Settings_Sponsors extends SP_Settings_Page {
 				'id' 		=> 'sportspress_footer_sponsors_css_background',
 				'type' 		=> 'color',
 				'css' 		=> 'width:6em;',
-				'default'	=> '#000000',
+				'default'	=> '#f4f4f4',
 				'autoload'  => false
 			),
 

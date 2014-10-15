@@ -3,7 +3,7 @@ class SP_Widget_Event_List extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_sp_event_list', 'description' => __( 'A list of events.', 'sportspress' ) );
-		parent::__construct('sp_event_list', __( 'SportsPress Event List', 'sportspress' ), $widget_ops);
+		parent::__construct('sp_event_list', __( 'Event List', 'sportspress' ) . ' (' . __( 'SportsPress', 'sportspress' ) . ')', $widget_ops);
 	}
 
 	function widget( $args, $instance ) {
@@ -109,7 +109,6 @@ class SP_Widget_Event_List extends WP_Widget {
 			<?php 
 			$the_columns = array(
 				'event' => __( 'Event', 'sportspress' ),
-				'teams' => __( 'Teams', 'sportspress' ),
 				'time' => __( 'Time', 'sportspress' ),
 				'venue' => __( 'Venue', 'sportspress' ),
 				'article' => __( 'Article', 'sportspress' ),

@@ -3,11 +3,11 @@
  * Plugin Name: SportsPress Pro
  * Plugin URI: http://sportspresspro.com/
  * Description: Manage your club and its players, staff, events, league tables, and player lists.
- * Version: 1.2.8
+ * Version: 1.3
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
- * Tested up to: 3.9.1
+ * Tested up to: 4.0
  *
  * Text Domain: sportspress
  * Domain Path: /languages/
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress_Pro' ) ) :
  * Main SportsPress Pro Class
  *
  * @class SportsPress_Pro
- * @version	1.2.8
+ * @version	1.3
  */
 final class SportsPress_Pro {
 
 	/**
 	 * @var string
 	 */
-	public $version = '1.2.8';
+	public $version = '1.3';
 
 	/**
 	 * SportsPress Pro Constructor.
@@ -47,12 +47,18 @@ final class SportsPress_Pro {
 		// Include required files
 		$this->includes();
 
+		// Install
+		if ( class_exists( 'SP_Install' ) ):
+			$install = new SP_Install();
+			register_activation_hook( SP_PRO_PLUGIN_FILE, array( $install, 'install' ) );
+		endif;
+
 		// Hooks
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 		add_action( 'before_sportspress_init', array( $this, 'load_module_translations' ), 0 );
 		add_action( 'get_the_generator_html', array( $this, 'generator_tag' ), 10, 2 );
 		add_action( 'get_the_generator_xhtml', array( $this, 'generator_tag' ), 10, 2 );
-		add_filter( 'sportspress_menu_icon', array( $this, 'menu_icon' ) );
+		add_action( 'themeboy_required_plugins', array( $this, 'unrequire_core' ) );
 
 		// Loaded action
 		do_action( 'sportspress_pro_loaded' );
@@ -96,13 +102,11 @@ final class SportsPress_Pro {
 	}
 
 	/**
-	 * Include required core files used in admin and on the frontend.
+	 * Include SportsPress core and modules.
 	 */
 	private function includes() {
-		// Core
 		include_once( $this->plugin_path() . '/core/sportspress.php' );
 
-		// Modules
 		$dir = scandir( $this->plugin_path() . '/modules' );
 		if ( $dir ) {
 			foreach ( $dir as $module ) {
@@ -126,7 +130,7 @@ final class SportsPress_Pro {
 		$locale = apply_filters( 'plugin_locale', get_locale(), 'sportspress' );
 
 		// Global + Frontend Locale
-		load_textdomain( 'sportspress', dirname( __FILE__ ) . "/modules/languages/sportspress-pro-$locale.mo" );
+		load_textdomain( 'sportspress', dirname( __FILE__ ) . "/languages/sportspress-pro-$locale.mo" );
 	}
 
 	/**
@@ -142,6 +146,16 @@ final class SportsPress_Pro {
 				break;
 		}
 		return $gen;
+	}
+
+	/**
+	 * Unrequire SportsPress core
+	 */
+	function unrequire_core( $plugins = array() ) {
+		foreach ( $plugins as $index => $plugin ):
+			if ( sp_array_value( $plugin, 'slug' ) == 'sportspress' ) unset( $plugins[ $index ] );
+		endforeach;
+		return $plugins;
 	}
 
 	/** Helper functions ******************************************************/

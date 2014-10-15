@@ -43,16 +43,12 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 0;
-	border-top: 1px solid #ececec;
 	color: #aaa;
-}
-
-#sportspress_dashboard_status .sp_status_list li:first-child {
-	border-top: 0;
 }
 
 #sportspress_dashboard_status .sp_status_list li.countdown {
 	width: 100%;
+	border-bottom: 1px solid #ececec;
 }
 
 #sportspress_dashboard_status .sp_status_list li.events-scheduled {

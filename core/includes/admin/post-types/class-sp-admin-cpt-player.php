@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version     0.9
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -58,15 +58,18 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 	 * Change the columns shown in admin.
 	 */
 	public function edit_columns( $existing_columns ) {
-		$columns = array(
+		unset( $existing_columns['author'], $existing_columns['date'] );
+		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
 			'sp_number' => '<span class="dashicons sp-icon-tshirt tips" title="' . __( 'Number', 'sportspress' ) . '"></span>',
-			'title' => __( 'Name', 'sportspress' ),
+			'title' => null,
 			'sp_position' => __( 'Positions', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),
 			'sp_league' => __( 'Leagues', 'sportspress' ),
 			'sp_season' => __( 'Seasons', 'sportspress' ),
-		);
+		), $existing_columns, array(
+			'title' => __( 'Name', 'sportspress' )
+		) );
 		return apply_filters( 'sportspress_player_admin_columns', $columns );
 	}
 
@@ -122,6 +125,15 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 
 	    if ( $typenow != 'sp_player' )
 	    	return;
+
+		$selected = isset( $_REQUEST['sp_position'] ) ? $_REQUEST['sp_position'] : null;
+		$args = array(
+			'show_option_all' =>  __( 'Show all positions', 'sportspress' ),
+			'taxonomy' => 'sp_position',
+			'name' => 'sp_position',
+			'selected' => $selected
+		);
+		sp_dropdown_taxonomies( $args );
 
 		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
 		$args = array(

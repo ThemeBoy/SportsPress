@@ -141,17 +141,6 @@ class SP_Shortcodes {
 	}
 
 	/**
-	 * Team columns shortcode.
-	 *
-	 * @access public
-	 * @param mixed $atts
-	 * @return string
-	 */
-	public static function team_columns( $atts ) {
-		return self::shortcode_wrapper( array( 'SP_Shortcode_Team_Columns', 'output' ), $atts );
-	}
-
-	/**
 	 * League table shortcode.
 	 *
 	 * @access public

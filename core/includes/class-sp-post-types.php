@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registers post types and taxonomies
  *
  * @class 		SP_Post_types
- * @version		1.1.4
+ * @version		1.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -145,6 +145,35 @@ class SP_Post_types {
 		register_taxonomy( 'sp_position', $object_types, $args );
 		foreach ( $object_types as $object_type ):
 			register_taxonomy_for_object_type( 'sp_position', $object_type );
+		endforeach;
+
+		$labels = array(
+			'name' => __( 'Roles', 'sportspress' ),
+			'singular_name' => __( 'Role', 'sportspress' ),
+			'all_items' => __( 'All', 'sportspress' ),
+			'edit_item' => __( 'Edit Role', 'sportspress' ),
+			'view_item' => __( 'View', 'sportspress' ),
+			'update_item' => __( 'Update', 'sportspress' ),
+			'add_new_item' => __( 'Add New', 'sportspress' ),
+			'new_item_name' => __( 'Name', 'sportspress' ),
+			'parent_item' => __( 'Parent', 'sportspress' ),
+			'parent_item_colon' => __( 'Parent:', 'sportspress' ),
+			'search_items' =>  __( 'Search', 'sportspress' ),
+			'not_found' => __( 'No results found.', 'sportspress' ),
+		);
+		$args = array(
+			'label' => __( 'Roles', 'sportspress' ),
+			'labels' => $labels,
+			'public' => true,
+			'show_in_nav_menus' => false,
+			'show_tagcloud' => false,
+			'hierarchical' => true,
+			'rewrite' => array( 'slug' => get_option( 'sportspress_role_slug', 'role' ) ),
+		);
+		$object_types = apply_filters( 'sportspress_role_object_types', array( 'sp_staff' ) );
+		register_taxonomy( 'sp_role', $object_types, $args );
+		foreach ( $object_types as $object_type ):
+			register_taxonomy_for_object_type( 'sp_role', $object_type );
 		endforeach;
 	}
 
@@ -295,7 +324,7 @@ class SP_Post_types {
 					'publicly_queryable' 	=> false,
 					'exclude_from_search' 	=> true,
 					'hierarchical' 			=> false,
-					'supports' 				=> array( 'title', 'page-attributes', 'excerpt' ),
+					'supports' 				=> array( 'title', 'thumbnail', 'page-attributes', 'excerpt' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
@@ -343,7 +372,7 @@ class SP_Post_types {
 						'add_new_item' 			=> __( 'Add New Event', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Event', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View', 'sportspress' ),
+						'view_item' 			=> __( 'View Event', 'sportspress' ),
 						'search_items' 			=> __( 'Search', 'sportspress' ),
 						'not_found' 			=> __( 'No results found.', 'sportspress' ),
 						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
@@ -373,7 +402,7 @@ class SP_Post_types {
 						'add_new_item' 			=> __( 'Add New Calendar', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Calendar', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View', 'sportspress' ),
+						'view_item' 			=> __( 'View Calendar', 'sportspress' ),
 						'search_items' 			=> __( 'Search', 'sportspress' ),
 						'not_found' 			=> __( 'No results found.', 'sportspress' ),
 						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
@@ -404,7 +433,7 @@ class SP_Post_types {
 						'add_new_item' 			=> __( 'Add New Team', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Team', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View', 'sportspress' ),
+						'view_item' 			=> __( 'View Team', 'sportspress' ),
 						'search_items' 			=> __( 'Search', 'sportspress' ),
 						'not_found' 			=> __( 'No results found.', 'sportspress' ),
 						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
@@ -434,7 +463,7 @@ class SP_Post_types {
 						'add_new_item' 			=> __( 'Add New League Table', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit League Table', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View', 'sportspress' ),
+						'view_item' 			=> __( 'View League Table', 'sportspress' ),
 						'search_items' 			=> __( 'Search', 'sportspress' ),
 						'not_found' 			=> __( 'No results found.', 'sportspress' ),
 						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
@@ -456,99 +485,97 @@ class SP_Post_types {
 			)
 		);
 
-		if ( SP()->mode == 'team' ):
-			register_post_type( 'sp_player',
-				apply_filters( 'sportspress_register_post_type_player',
-					array(
-						'labels' => array(
-							'name' 					=> __( 'Players', 'sportspress' ),
-							'singular_name' 		=> __( 'Player', 'sportspress' ),
-							'add_new_item' 			=> __( 'Add New Player', 'sportspress' ),
-							'edit_item' 			=> __( 'Edit Player', 'sportspress' ),
-							'new_item' 				=> __( 'New', 'sportspress' ),
-							'view_item' 			=> __( 'View', 'sportspress' ),
-							'search_items' 			=> __( 'Search', 'sportspress' ),
-							'not_found' 			=> __( 'No results found.', 'sportspress' ),
-							'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
-						),
-						'public' 				=> true,
-						'show_ui' 				=> true,
-						'capability_type' 		=> 'sp_player',
-						'map_meta_cap' 			=> true,
-						'publicly_queryable' 	=> true,
-						'exclude_from_search' 	=> false,
-						'hierarchical' 			=> false,
-						'rewrite' 				=> array( 'slug' => get_option( 'sportspress_player_slug', 'player' ) ),
-						'supports' 				=> array( 'title', 'author', 'thumbnail', 'excerpt', 'page-attributes' ),
-						'has_archive' 			=> false,
-						'show_in_nav_menus' 	=> true,
-						'menu_icon' 			=> 'dashicons-groups',
-					)
+		register_post_type( 'sp_player',
+			apply_filters( 'sportspress_register_post_type_player',
+				array(
+					'labels' => array(
+						'name' 					=> __( 'Players', 'sportspress' ),
+						'singular_name' 		=> __( 'Player', 'sportspress' ),
+						'add_new_item' 			=> __( 'Add New Player', 'sportspress' ),
+						'edit_item' 			=> __( 'Edit Player', 'sportspress' ),
+						'new_item' 				=> __( 'New', 'sportspress' ),
+						'view_item' 			=> __( 'View Player', 'sportspress' ),
+						'search_items' 			=> __( 'Search', 'sportspress' ),
+						'not_found' 			=> __( 'No results found.', 'sportspress' ),
+						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
+					),
+					'public' 				=> true,
+					'show_ui' 				=> true,
+					'capability_type' 		=> 'sp_player',
+					'map_meta_cap' 			=> true,
+					'publicly_queryable' 	=> true,
+					'exclude_from_search' 	=> false,
+					'hierarchical' 			=> false,
+					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_player_slug', 'player' ) ),
+					'supports' 				=> array( 'title', 'author', 'thumbnail', 'excerpt', 'page-attributes' ),
+					'has_archive' 			=> false,
+					'show_in_nav_menus' 	=> true,
+					'menu_icon' 			=> 'dashicons-groups',
 				)
-			);
+			)
+		);
 
-			register_post_type( 'sp_list',
-				apply_filters( 'sportspress_register_post_type_list',
-					array(
-						'labels' => array(
-							'name' 					=> __( 'Player Lists', 'sportspress' ),
-							'singular_name' 		=> __( 'Player List', 'sportspress' ),
-							'add_new_item' 			=> __( 'Add New Player List', 'sportspress' ),
-							'edit_item' 			=> __( 'Edit Player List', 'sportspress' ),
-							'new_item' 				=> __( 'New', 'sportspress' ),
-							'view_item' 			=> __( 'View', 'sportspress' ),
-							'search_items' 			=> __( 'Search', 'sportspress' ),
-							'not_found' 			=> __( 'No results found.', 'sportspress' ),
-							'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
-						),
-						'public' 				=> true,
-						'show_ui' 				=> true,
-						'capability_type' 		=> 'sp_list',
-						'map_meta_cap' 			=> true,
-						'publicly_queryable' 	=> true,
-						'exclude_from_search' 	=> false,
-						'hierarchical' 			=> false,
-						'rewrite' 				=> array( 'slug' => get_option( 'sportspress_list_slug', 'list' ) ),
-						'supports' 				=> array( 'title', 'page-attributes', 'author', 'thumbnail' ),
-						'has_archive' 			=> false,
-						'show_in_nav_menus' 	=> true,
-						'show_in_menu' 			=> 'edit.php?post_type=sp_player',
-						'show_in_admin_bar' 	=> true,
-					)
+		register_post_type( 'sp_list',
+			apply_filters( 'sportspress_register_post_type_list',
+				array(
+					'labels' => array(
+						'name' 					=> __( 'Player Lists', 'sportspress' ),
+						'singular_name' 		=> __( 'Player List', 'sportspress' ),
+						'add_new_item' 			=> __( 'Add New Player List', 'sportspress' ),
+						'edit_item' 			=> __( 'Edit Player List', 'sportspress' ),
+						'new_item' 				=> __( 'New', 'sportspress' ),
+						'view_item' 			=> __( 'View Player List', 'sportspress' ),
+						'search_items' 			=> __( 'Search', 'sportspress' ),
+						'not_found' 			=> __( 'No results found.', 'sportspress' ),
+						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
+					),
+					'public' 				=> true,
+					'show_ui' 				=> true,
+					'capability_type' 		=> 'sp_list',
+					'map_meta_cap' 			=> true,
+					'publicly_queryable' 	=> true,
+					'exclude_from_search' 	=> false,
+					'hierarchical' 			=> false,
+					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_list_slug', 'list' ) ),
+					'supports' 				=> array( 'title', 'page-attributes', 'author', 'thumbnail' ),
+					'has_archive' 			=> false,
+					'show_in_nav_menus' 	=> true,
+					'show_in_menu' 			=> 'edit.php?post_type=sp_player',
+					'show_in_admin_bar' 	=> true,
 				)
-			);
+			)
+		);
 
-			register_post_type( 'sp_staff',
-				apply_filters( 'sportspress_register_post_type_staff',
-					array(
-						'labels' => array(
-							'name' 					=> __( 'Staff', 'sportspress' ),
-							'singular_name' 		=> __( 'Staff', 'sportspress' ),
-							'add_new_item' 			=> __( 'Add New Staff', 'sportspress' ),
-							'edit_item' 			=> __( 'Edit Staff', 'sportspress' ),
-							'new_item' 				=> __( 'New', 'sportspress' ),
-							'view_item' 			=> __( 'View', 'sportspress' ),
-							'search_items' 			=> __( 'Search', 'sportspress' ),
-							'not_found' 			=> __( 'No results found.', 'sportspress' ),
-							'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
-						),
-						'public' 				=> true,
-						'show_ui' 				=> true,
-						'capability_type' 		=> 'sp_staff',
-						'map_meta_cap' 			=> true,
-						'publicly_queryable' 	=> true,
-						'exclude_from_search' 	=> false,
-						'hierarchical' 			=> false,
-						'rewrite' 				=> array( 'slug' => get_option( 'sportspress_staff_slug', 'staff' ) ),
-						'supports' 				=> array( 'title', 'author', 'thumbnail', 'excerpt' ),
-						'has_archive' 			=> false,
-						'show_in_nav_menus' 	=> true,
-						'show_in_menu' 			=> 'edit.php?post_type=sp_player',
-						'show_in_admin_bar' 	=> true,
-					)
+		register_post_type( 'sp_staff',
+			apply_filters( 'sportspress_register_post_type_staff',
+				array(
+					'labels' => array(
+						'name' 					=> __( 'Staff', 'sportspress' ),
+						'singular_name' 		=> __( 'Staff', 'sportspress' ),
+						'add_new_item' 			=> __( 'Add New Staff', 'sportspress' ),
+						'edit_item' 			=> __( 'Edit Staff', 'sportspress' ),
+						'new_item' 				=> __( 'New', 'sportspress' ),
+						'view_item' 			=> __( 'View Staff', 'sportspress' ),
+						'search_items' 			=> __( 'Search', 'sportspress' ),
+						'not_found' 			=> __( 'No results found.', 'sportspress' ),
+						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
+					),
+					'public' 				=> true,
+					'show_ui' 				=> true,
+					'capability_type' 		=> 'sp_staff',
+					'map_meta_cap' 			=> true,
+					'publicly_queryable' 	=> true,
+					'exclude_from_search' 	=> false,
+					'hierarchical' 			=> false,
+					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_staff_slug', 'staff' ) ),
+					'supports' 				=> array( 'title', 'author', 'thumbnail', 'excerpt' ),
+					'has_archive' 			=> false,
+					'show_in_nav_menus' 	=> true,
+					'show_in_menu' 			=> 'edit.php?post_type=sp_player',
+					'show_in_admin_bar' 	=> true,
 				)
-			);
-		endif;
+			)
+		);
 	}
 
 	public function display_scheduled_events( $posts ) {

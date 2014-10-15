@@ -212,7 +212,7 @@ class SP_Settings_League_Menu extends SP_Settings_Page {
 	            <td class="forminp">
 					<fieldset>
 						<legend class="screen-reader-text"><span><?php _e( 'Remove Image', 'sportspress' ); ?></span></legend>
-						<input type="button" name="remove_sp_league_menu_logo" id="remove_sp_league_menu_logo" class="button" value="<?php _e( 'Remove logo' ); ?>">
+						<input type="button" name="remove_sp_league_menu_logo" id="remove_sp_league_menu_logo" class="button" value="<?php _e( 'Remove logo', 'sportspress' ); ?>">
 					</fieldset>
 				</td>
 			</tr>

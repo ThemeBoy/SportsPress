@@ -53,5 +53,7 @@ foreach( $data as $label => $value ):
 endforeach;
 
 $output .= '</dl></div>';
-
-echo apply_filters( 'sportspress_staff_details',  $output );
+?>
+<div class="sp-template sp-template-staff-details">
+	<?php echo $output; ?>
+</div>

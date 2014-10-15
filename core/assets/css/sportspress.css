@@ -51,6 +51,10 @@
 	content: "\f140";
 	position: absolute;
 }
+.sp-data-table .data-number,
+.sp-data-table .data-rank {
+	width: 1px;
+}
 
 /* Pagination */
 .sp-paginated-table {
@@ -105,6 +109,25 @@
 	max-height: 2em;
 }
 
+/* Player List */
+.sp-player-list td {
+	line-height: 2em;
+}
+.sp-player-list .data-name .player-photo {
+	width: 2em;
+	height: 2em;
+	margin-right: 0.25em;
+	display: block;
+	float: left;
+	text-align: center;
+}
+.sp-player-list .data-name .player-photo img {
+	width: auto;
+	height: auto;
+	max-width: 2em;
+	max-height: 2em;
+}
+
 /* Button */
 .sp-button {
 	border: none;
@@ -125,6 +148,9 @@
 }
 .sp-event-performance .sub-out:before {
 	content: "\f142";
+}
+.sp-event-performance .sp-performance-icons {
+	width: 25%;
 }
 
 /* Event Calendar */
@@ -159,6 +185,10 @@
 	margin: 10px 20%;
 	padding: 0 20px;
 	clear: none;
+}
+.sp-event-blocks .event-league,
+.sp-event-blocks .event-season {
+	text-align: center;
 }
 .sp-event-blocks .team-logo {
 	width: 20%;

@@ -35,7 +35,7 @@ if ( !function_exists( 'sp_get_post_impressions' ) ) {
 	        delete_post_meta( $post_id, $count_key );
 	        add_post_meta( $post_id, $count_key, '0' );
 	    endif;
-	    return sprintf( _n( '%s impression', '%s impressions', $count ), $count );
+	    return sprintf( _n( '%s impression', '%s impressions', $count, 'sportspress' ), $count );
 	}
 }
 
@@ -66,7 +66,7 @@ if ( !function_exists( 'sp_get_post_clicks' ) ) {
 	        delete_post_meta( $post_id, $count_key );
 	        add_post_meta( $post_id, $count_key, '0' );
 	    endif;
-	    return sprintf( _n( '%s click', '%s clicks', $count ), $count );
+	    return sprintf( _n( '%s click', '%s clicks', $count, 'sportspress' ), $count );
 	}
 }
 

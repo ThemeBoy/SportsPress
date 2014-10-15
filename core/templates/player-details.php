@@ -14,6 +14,7 @@ if ( ! isset( $id ) )
 
 $defaults = array(
 	'show_nationality_flags' => get_option( 'sportspress_player_show_flags', 'yes' ) == 'yes' ? true : false,
+	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -34,6 +35,14 @@ if ( $nationality ):
 	$common[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 endif;
 
+$position_names = array();
+$positions = get_the_terms( $id, 'sp_position' );
+if ( $positions ): foreach ( $positions as $position ):
+	$position_names[] = $position->name;
+endforeach; endif;
+
+$common[ __( 'Position', 'sportspress' ) ] = implode( ', ', $position_names );
+
 $data = array_merge( $metrics_before, $common, $metrics_after );
 
 if ( $current_teams ):
@@ -41,7 +50,7 @@ if ( $current_teams ):
 	foreach ( $current_teams as $team ):
 		$teams[] = '<a href="' . get_post_permalink( $team ) . '">' . get_the_title( $team ) . '</a>';
 	endforeach;
-	$label = _n( 'Current Team', 'Current Teams', count( $teams ) );
+	$label = _n( 'Current Team', 'Current Teams', count( $teams ), 'sportspress' );
 	$data[ $label ] = implode( ', ', $teams );
 endif;
 
@@ -64,4 +73,4 @@ endforeach;
 
 $output .= '</dl></div>';
 
-echo apply_filters( 'sportspress_player_details',  $output );
+echo $output;

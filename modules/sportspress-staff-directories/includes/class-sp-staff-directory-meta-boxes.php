@@ -43,7 +43,7 @@ class SP_Staff_Directory_Meta_Boxes {
 
 		// Add directories meta box to team
 		if ( isset( $post ) && isset( $post->ID ) ):
-			if ( SP()->mode == 'team' ) add_meta_box( 'sp_directoriesdiv', __( 'Staff Directories', 'sportspress' ), array( $this, 'team_directories' ), 'sp_team', 'normal', 'high' );
+			add_meta_box( 'sp_directoriesdiv', __( 'Staff Directories', 'sportspress' ), array( $this, 'team_directories' ), 'sp_team', 'normal', 'high' );
 		endif;
 	}
 
@@ -65,7 +65,7 @@ class SP_Staff_Directory_Meta_Boxes {
 		<p class="howto">
 			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
 		</p>
-		<p><input type="text" value="[staff_<?php echo $the_format; ?> <?php echo $post->ID; ?>]" readonly="readonly" class="wp-ui-text-highlight code"></p>
+		<p><input type="text" value="[staff_<?php echo $the_format; ?> <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
 		<?php
 	}
 
@@ -91,7 +91,6 @@ class SP_Staff_Directory_Meta_Boxes {
 		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
 		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 		$team_id = get_post_meta( $post->ID, 'sp_team', true );
-		$order = get_post_meta( $post->ID, 'sp_order', true );
 		?>
 		<div>
 			<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
@@ -185,7 +184,7 @@ class SP_Staff_Directory_Meta_Boxes {
 	public static function table( $labels, $columns = array(), $data = null ) {
 		?>
 		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table sp-player-list-table">
+			<table class="widefat sp-data-table sp-staff-directory-table">
 				<thead>
 					<tr>
 						<th><?php _e( 'Role', 'sportspress' ); ?></th>
@@ -380,7 +379,7 @@ class SP_Staff_Directory_Meta_Boxes {
 	 * Save team meta box
 	 */
 	public static function team_save( $post_id, $post ) {
-		if ( SP()->mode == 'team' ) sp_update_post_meta_recursive( $post_id, 'sp_directory', sp_array_value( $_POST, 'sp_directory', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_directory', sp_array_value( $_POST, 'sp_directory', array() ) );
 	}
 }
 

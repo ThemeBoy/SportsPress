@@ -46,5 +46,5 @@ foreach( $data as $label => $value ):
 endforeach;
 
 $output .= '</dl></div>';
-
-echo apply_filters( 'sportspress_staff_contact', $output );
+?>
+<?php echo $output; ?>

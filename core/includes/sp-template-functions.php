@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.1
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -133,7 +133,7 @@ if ( ! function_exists( 'sportspress_output_event_performance' ) ) {
 	 * @return void
 	 */
 	function sportspress_output_event_performance() {
-		if ( SP()->mode == 'team' ) sp_get_template( 'event-performance.php' );
+		sp_get_template( 'event-performance.php' );
 	}
 }
 
@@ -173,17 +173,17 @@ if ( ! function_exists( 'sportspress_output_team_link' ) ) {
 		sp_get_template( 'team-link.php' );
 	}
 }
-if ( ! function_exists( 'sportspress_output_team_columns' ) ) {
+if ( ! function_exists( 'sportspress_output_team_tables' ) ) {
 
 	/**
-	 * Output the team columns.
+	 * Output the team tables.
 	 *
 	 * @access public
-	 * @subpackage	Team/Columns
+	 * @subpackage	Team/Tables
 	 * @return void
 	 */
-	function sportspress_output_team_columns() {
-		sp_get_template( 'team-columns.php' );
+	function sportspress_output_team_tables() {
+		sp_get_template( 'team-tables.php' );
 	}
 }
 if ( ! function_exists( 'sportspress_output_team_lists' ) ) {

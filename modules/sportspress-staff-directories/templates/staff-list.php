@@ -14,9 +14,9 @@ $defaults = array(
 	'number' => -1,
 	'columns' => null,
 	'show_all_staff_link' => false,
-	'link_posts' => get_option( 'sportspress_directory_link_staff', 'yes' ) == 'yes' ? true : false,
-	'link_phone' => get_option( 'sportspress_directory_link_phone', 'yes' ) == 'yes' ? true : false,
-	'link_email' => get_option( 'sportspress_directory_link_email', 'yes' ) == 'yes' ? true : false,
+	'link_posts' => get_option( 'sportspress_link_staff', 'yes' ) == 'yes' ? true : false,
+	'link_phone' => get_option( 'sportspress_staff_link_phone', 'yes' ) == 'yes' ? true : false,
+	'link_email' => get_option( 'sportspress_staff_link_email', 'yes' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_directory_paginated', 'yes' ) == 'yes' ? true : false,
@@ -104,4 +104,7 @@ $output .= '</tbody>' . '</table>' . '</div>';
 if ( $show_all_staff_link )
 	$output .= '<a class="sp-staff-directory-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all staff', 'sportspress' ) . '</a>';
 
-echo apply_filters( 'sportspress_staff_directory',  $output );
+?>
+<div class="sp-template sp-template-staff-list">
+	<?php echo $output; ?>
+</div>

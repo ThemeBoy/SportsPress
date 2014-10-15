@@ -1,0 +1,690 @@
+# 
+# Translators:
+# cdevreugd <cdevreugd@gmail.com>, 2014
+# Flobin <7dabe782@opayq.com>, 2014
+# poelie <poelman.rombaut@telenet.be>, 2014
+# Ramon van Belzen <ramoonus@zeelandnet.nl>, 2014
+# stgoos, 2013
+# sylvie_janssens <sylvie_janssens@yahoo.com>, 2014
+# Thom, 2014
+# valentijnreza <valentijnishaqsada@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: SportsPress\n"
+"POT-Creation-Date: 2014-07-28 07:06+1000\n"
+"PO-Revision-Date: 2014-09-02 09:22+0000\n"
+"Last-Translator: Thom\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/sportspress/language/nl_NL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:25
+#: sportspress-branding/includes/class-sp-settings-branding.php:44
+msgid "Branding"
+msgstr "Branding"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:47
+msgid "Label"
+msgstr "Label"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:50
+msgid "SportsPress"
+msgstr "SportsPress"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:117
+#: sportspress-branding/includes/class-sp-settings-branding.php:120
+#: sportspress-branding/includes/class-sp-settings-branding.php:123
+#: sportspress-branding/includes/class-sp-settings-branding.php:124
+#: sportspress-branding/includes/class-sp-settings-branding.php:126
+msgid "Icon"
+msgstr "Icoon"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:123
+#: sportspress-branding/includes/class-sp-settings-branding.php:124
+#, php-format
+msgid "Remove %s"
+msgstr "Verwijder %s"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:126
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:236
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:367
+#, php-format
+msgid "Select %s"
+msgstr "Selecteer %s"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:142
+msgid "Admin Color Scheme"
+msgstr "Kleurenschema beheerder"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:157
+msgid "Base Color"
+msgstr "Basiskleur"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:158
+msgid "Highlight"
+msgstr "Markering"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:159
+msgid "Notifications"
+msgstr "Meldingen"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:160
+msgid "Actions"
+msgstr "Acties"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:161
+msgid "Text"
+msgstr "Tekst"
+
+#: sportspress-branding/includes/class-sp-settings-branding.php:167
+msgid "Enable"
+msgstr "Inschakelen"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:25
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:44
+msgid "League Menu"
+msgstr "Competitiemenu"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:47
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:50
+msgid "Title"
+msgstr "Titel"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:58
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:80
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:125
+msgid "Sort by"
+msgstr "Sorteren op"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:63
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:85
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:130
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:55
+msgid "Menu Order"
+msgstr "Menuvolgorde"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:64
+#: sportspress-sponsors/sportspress-sponsors.php:354
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:52
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:87
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:132
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:57
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:192
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:193
+msgid "Name"
+msgstr "Naam"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:65
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:88
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:133
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:58
+msgid "Random"
+msgstr "Willekeurig"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:70
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:93
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:138
+msgid "Sort Order"
+msgstr "Sorteervolgorde"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:75
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:98
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:143
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:63
+msgid "Ascending"
+msgstr "Oplopend"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:76
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:99
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:144
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:64
+msgid "Descending"
+msgstr "Aflopend"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:81
+msgid "Width"
+msgstr "Breedte"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:97
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:151
+msgid "Text Color"
+msgstr "Tekstkleur"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:106
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:160
+msgid "Background Color"
+msgstr "Achtergrondkleur"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:115
+msgid "Align"
+msgstr "Uitlijning"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:120
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:205
+msgid "Left"
+msgstr "Links"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:121
+msgid "Center"
+msgstr "Centreren"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:122
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:229
+msgid "Right"
+msgstr "Rechts"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:184
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:187
+#: sportspress-sponsors/sportspress-sponsors.php:369
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:63
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:198
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:201
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:248
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:251
+msgid "Logo"
+msgstr "Logo"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:191
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:287
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:202
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:252
+msgid "Max Width"
+msgstr "Maximum breedte"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:193
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:289
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:204
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:254
+msgid "Max Height"
+msgstr "Maximum hoogte"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:199
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:202
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:223
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:226
+msgid "Position"
+msgstr "Positie"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:203
+msgid "Bottom"
+msgstr "Onder"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:211
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:214
+msgid "Remove Image"
+msgstr "Afbeelding verwijderen"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:215
+msgid "Remove logo"
+msgstr "Logo verwijderen"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:221
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:224
+msgid "Select Image"
+msgstr "Afbeelding selecteren"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:225
+#: sportspress-sponsors/sportspress-sponsors.php:366
+#: sportspress-sponsors/sportspress-sponsors.php:372
+msgid "Select Logo"
+msgstr "Logo selecteren"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:225
+msgid "Add logo"
+msgstr "Logo toevoegen"
+
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:259
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:261
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:283
+#: sportspress-league-menu/includes/class-sp-settings-league-menu.php:286
+msgid "Teams"
+msgstr "Teams"
+
+#: sportspress-sponsors/sportspress-sponsors.php:109
+#: sportspress-sponsors/sportspress-sponsors.php:445
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:25
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:44
+msgid "Sponsors"
+msgstr "Sponsors"
+
+#: sportspress-sponsors/sportspress-sponsors.php:110
+#: sportspress-sponsors/sportspress-sponsors.php:381
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:64
+msgid "Sponsor"
+msgstr "Sponsor"
+
+#: sportspress-sponsors/sportspress-sponsors.php:111
+msgid "Add New Sponsor"
+msgstr "Nieuwe sponsor toevoegen"
+
+#: sportspress-sponsors/sportspress-sponsors.php:112
+msgid "Edit Sponsor"
+msgstr "Sponsor bewerken"
+
+#: sportspress-sponsors/sportspress-sponsors.php:113
+#: sportspress-staff-directories/sportspress-staff-directories.php:104
+msgid "New"
+msgstr "Nieuw"
+
+#: sportspress-sponsors/sportspress-sponsors.php:114
+#: sportspress-staff-directories/sportspress-staff-directories.php:105
+msgid "View"
+msgstr "Bekijken"
+
+#: sportspress-sponsors/sportspress-sponsors.php:115
+#: sportspress-staff-directories/sportspress-staff-directories.php:106
+msgid "Search"
+msgstr "Zoeken"
+
+#: sportspress-sponsors/sportspress-sponsors.php:116
+#: sportspress-sponsors/sportspress-sponsors.php:117
+#: sportspress-staff-directories/sportspress-staff-directories.php:107
+#: sportspress-staff-directories/sportspress-staff-directories.php:108
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:237
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:301
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:358
+msgid "No results found."
+msgstr "Geen resultaten gevonden."
+
+#: sportspress-sponsors/sportspress-sponsors.php:169
+msgid "SportsPress Sponsors (CSV)"
+msgstr "SportsPress sponsors (CSV)"
+
+#: sportspress-sponsors/sportspress-sponsors.php:169
+msgid "Import <strong>sponsors</strong> from a csv file."
+msgstr "Importeer <strong>sponsors</strong> uit een csv-bestand."
+
+#: sportspress-sponsors/sportspress-sponsors.php:375
+msgid "Remove Logo"
+msgstr "Logo verwijderen"
+
+#: sportspress-sponsors/sportspress-sponsors.php:378
+msgid "User"
+msgstr "Gebruiker"
+
+#: sportspress-sponsors/sportspress-sponsors.php:398
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:45
+#: sportspress-sponsors/includes/sp-sponsor-functions.php:25
+msgid "Visit Site"
+msgstr "Site bezoeken"
+
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:65
+msgid "URL"
+msgstr "URL"
+
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:66
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:48
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:47
+msgid "Impressions"
+msgstr "Impressies"
+
+#: sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:67
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:51
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:55
+msgid "Clicks"
+msgstr "Klikken"
+
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:30
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:37
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:236
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:367
+msgid "Details"
+msgstr "Details"
+
+#: sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:42
+msgid "Site URL"
+msgstr "URL site"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:48
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:56
+msgid "Exclude logged-in users"
+msgstr "Ingelogde gebruikers uitsluiten"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:64
+msgid "Header"
+msgstr "Header"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:67
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:112
+msgid "Display"
+msgstr "Vertoning"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:71
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:116
+msgid "sponsors"
+msgstr "sponsors"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:86
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:131
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:56
+msgid "Date"
+msgstr "Datum"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:109
+msgid "Footer"
+msgstr "Footer"
+
+#: sportspress-sponsors/includes/class-sp-settings-sponsors.php:227
+msgid "Top"
+msgstr "Boven"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:75
+msgid "Sorry, there has been an error."
+msgstr "Sorry, er is een fout opgetreden."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:76
+msgid "The CSV is invalid."
+msgstr "De CSV is ongeldig."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:87
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> sponsors and skipped "
+"<strong>%s</strong>."
+msgstr "Importeren voltooid - <strong>%s</strong> sponsors geïmporteerd en <strong>%s</strong> overgeslagen."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:97
+msgid "All done!"
+msgstr "Helemaal klaar!"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:97
+msgid "View Sponsors"
+msgstr "Sponsors bekijken"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:109
+msgid "Import Sponsors"
+msgstr "Sponsors importeren"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:121
+msgid ""
+"Hi there! Choose a .csv file to upload, then click \"Upload file and "
+"import\"."
+msgstr "Hallo! Kies een .csv-bestand om te uploaden, klik daarna op \"Bestand uploaden en importeren\"."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:123
+#, php-format
+msgid ""
+"Sponsors need to be defined with columns in a specific order (2 columns). <a"
+" href=\"%s\">Click here to download a sample</a>."
+msgstr "Sponsors moeten worden gedefinieerd met kolommen in een specifieke volgorde (2 kolommen). <a href=\"%s\">Klik hier om een voorbeeld te downloaden</a>."
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:131
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr "Voordat u uw importbestand kunt uploaden, moet u de volgende fout corrigeren:"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:140
+msgid "Choose a file from your computer:"
+msgstr "Kies een bestand van uw computer:"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:146
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Maximum grootte: %s"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:151
+msgid "OR enter path to file:"
+msgstr "OF voer bestandspad in:"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:158
+msgid "Delimiter"
+msgstr "Scheidingsteken"
+
+#: sportspress-sponsors/includes/class-sp-sponsor-importer.php:164
+msgid "Upload file and import"
+msgstr "Bestand uploaden en importeren"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:5
+msgid "A list of sponsors."
+msgstr "Een lijst met sponsors."
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:6
+msgid "SportsPress Sponsors"
+msgstr "SportPress sponsors"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:47
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:41
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:41
+msgid "Title:"
+msgstr "Titel:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:50
+msgid "Number of sponsors to show:"
+msgstr "Aantal te tonen sponsors:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:53
+msgid "Sort by:"
+msgstr "Sorteren op:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:61
+msgid "Sort Order:"
+msgstr "Sorteervolgorde:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:67
+msgid "Max Width:"
+msgstr "Maximum breedte:"
+
+#: sportspress-sponsors/includes/class-sp-widget-sponsors.php:70
+msgid "Max Height:"
+msgstr "Maximum hoogte:"
+
+#: sportspress-sponsors/includes/sp-sponsor-functions.php:38
+#, php-format
+msgid "%s impression"
+msgid_plural "%s impressions"
+msgstr[0] "%s impressie"
+msgstr[1] "%s impressies"
+
+#: sportspress-sponsors/includes/sp-sponsor-functions.php:69
+#, php-format
+msgid "%s click"
+msgid_plural "%s clicks"
+msgstr[0] "%s klik"
+msgstr[1] "%s klikken"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:100
+#: sportspress-staff-directories/sportspress-staff-directories.php:197
+#: sportspress-staff-directories/sportspress-staff-directories.php:220
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:46
+msgid "Staff Directories"
+msgstr "Stafdirectories"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:101
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:38
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:44
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:44
+msgid "Staff Directory"
+msgstr "Stafdirectory"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:102
+msgid "Add New Staff Directory"
+msgstr "Nieuwe stafdirectory toevoegen"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:103
+msgid "Edit Staff Directory"
+msgstr "Stafdirectory bewerken"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:207
+msgid "List"
+msgstr "Lijst"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:208
+msgid "Gallery"
+msgstr "Galerij"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:223
+msgid "Staff"
+msgstr "Staf"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:224
+msgid "Link staff"
+msgstr "Staf koppelen"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:231
+msgid "Pagination"
+msgstr "Paginering"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:232
+msgid "Paginate"
+msgstr "Pagineren"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:239
+msgid "Limit"
+msgstr "Limiet"
+
+#: sportspress-staff-directories/sportspress-staff-directories.php:243
+msgid "staff"
+msgstr "staf"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:51
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:97
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:320
+msgid "League"
+msgstr "Competitie"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:52
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:112
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:323
+msgid "Season"
+msgstr "Seizoen"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:53
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:127
+msgid "Team"
+msgstr "Team"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:65
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:68
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:74
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:103
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:118
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:133
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:347
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:348
+msgid "All"
+msgstr "Alle"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:97
+msgid "Show all leagues"
+msgstr "Alle competities tonen"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:106
+msgid "Show all seasons"
+msgstr "Alle seizoenen tonen"
+
+#: sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:117
+msgid "Show all teams"
+msgstr "Alle teams tonen"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:35
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:36
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:326
+msgid "Layout"
+msgstr "Lay-out"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:39
+msgid "Description"
+msgstr "Beschrijving"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:42
+msgid "Contact Info"
+msgstr "Contactinfo"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:66
+msgid ""
+"Copy this code and paste it into your post, page or text widget content."
+msgstr "Kopieer deze code en plak het in uw bericht, op uw pagina of als inhoud van uw tekstwidget."
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:108
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:123
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:138
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:55
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:55
+msgid "Add New"
+msgstr "Nieuwe toevoegen"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:191
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:193
+msgid "Role"
+msgstr "Rol"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:217
+msgid "Edit"
+msgstr "Bewerken"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:221
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:222
+msgid "Save"
+msgstr "Opslaan"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:257
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:178
+#: sportspress-staff-directories/templates/staff-contacts.php:31
+msgid "Phone"
+msgstr "Telefoon"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:260
+#: sportspress-staff-directories/includes/class-sp-staff-directory.php:179
+#: sportspress-staff-directories/templates/staff-contacts.php:36
+msgid "Email"
+msgstr "E-mail"
+
+#: sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:317
+msgid "Directory"
+msgstr "Directory"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:5
+msgid "A gallery of staff."
+msgstr "Een galerij van de staf."
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:6
+msgid "SportsPress Staff Gallery"
+msgstr "SportsPress stafgalerij"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:44
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:44
+#, php-format
+msgid "Select %s:"
+msgstr "Selecteer %s:"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:60
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:60
+msgid "Number of staff to show:"
+msgstr "Aantal te tonen staf:"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:64
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:64
+msgid "Display link to view all staff"
+msgstr "Link tonen om gehele staf te bekijken"
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:5
+msgid "A list of staff."
+msgstr "Een lijst van de staf."
+
+#: sportspress-staff-directories/includes/class-sp-widget-staff-list.php:6
+msgid "SportsPress Staff List"
+msgstr "SportsPress staflijst"
+
+#: sportspress-staff-directories/templates/staff-gallery.php:108
+#: sportspress-staff-directories/templates/staff-list.php:105
+msgid "View all staff"
+msgstr "Gehele staf bekijken"
+
+#: sportspress-team-colors/sportspress-team-colors.php:83
+msgid "Team Colors"
+msgstr "Teamkleuren"

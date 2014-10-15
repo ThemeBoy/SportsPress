@@ -68,7 +68,7 @@ class SP_League_Table extends SP_Custom_Post{
 			endforeach;
 
 			// Initialize team totals
-			$totals[ $team_id ] = array( 'eventsplayed' => 0, 'streak' => 0 );
+			$totals[ $team_id ] = array( 'eventsplayed' => 0, 'eventminutes' => 0, 'streak' => 0 );
 
 			foreach ( $result_labels as $key => $value ):
 				$totals[ $team_id ][ $key . 'for' ] = 0;
@@ -95,31 +95,40 @@ class SP_League_Table extends SP_Custom_Post{
 			'order' => 'DESC',
 			'tax_query' => array(
 				'relation' => 'AND',
-				array(
-					'taxonomy' => 'sp_league',
-					'field' => 'id',
-					'terms' => $league_id
-				),
-				array(
-					'taxonomy' => 'sp_season',
-					'field' => 'id',
-					'terms' => $div_id
-				)
-			)
+			),
 		);
+
+		if ( $league_id ):
+			$args['tax_query'][] = array(
+				'taxonomy' => 'sp_league',
+				'field' => 'id',
+				'terms' => $league_id
+			);
+		endif;
+
+		if ( $league_id ):
+			$args['tax_query'][] = array(
+				'taxonomy' => 'sp_season',
+				'field' => 'id',
+				'terms' => $div_id
+			);
+		endif;
+		
 		$events = get_posts( $args );
 
 		// Event loop
 		foreach ( $events as $event ):
 
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
+			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
+			if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
 			foreach ( $results as $team_id => $team_result ):
 
 				if ( ! in_array( $team_id, $team_ids ) )
 					continue;
 
-				foreach ( $team_result as $key => $value ):
+				if ( $team_result ): foreach ( $team_result as $key => $value ):
 
 					if ( $key == 'outcome' ):
 
@@ -131,8 +140,9 @@ class SP_League_Table extends SP_Custom_Post{
 
 							// Increment events played and outcome count
 							if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $outcome, $totals[ $team_id ] ) ):
-								$totals[ $team_id ]['eventsplayed']++;
-								$totals[ $team_id ][ $outcome ]++;
+								$totals[ $team_id ]['eventsplayed'] ++;
+								$totals[ $team_id ]['eventminutes'] += $minutes;
+								$totals[ $team_id ][ $outcome ] ++;
 							endif;
 
 							if ( $outcome && $outcome != '-1' ):
@@ -170,7 +180,7 @@ class SP_League_Table extends SP_Custom_Post{
 						endif;
 					endif;
 
-				endforeach;
+				endforeach; endif;
 
 			endforeach;
 

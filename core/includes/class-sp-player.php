@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		0.8.1
+ * @version		1.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -83,6 +83,9 @@ class SP_Player extends SP_Custom_Post {
 			endif;
 		endforeach;
 
+		$div_ids[] = 0;
+		$season_names[0] = __( 'Total', 'sportspress' );
+
 		$data = array();
 
 		// Get all seasons populated with data where available
@@ -96,7 +99,7 @@ class SP_Player extends SP_Custom_Post {
 
 		foreach ( $div_ids as $div_id ):
 
-			$totals = array( 'eventsattended' => 0, 'eventsplayed' => 0, 'eventsstarted' => 0, 'eventssubbed' => 0, 'streak' => 0, 'last5' => null, 'last10' => null );
+			$totals = array( 'eventsattended' => 0, 'eventsplayed' => 0, 'eventsstarted' => 0, 'eventssubbed' => 0, 'eventminutes' => 0, 'streak' => 0, 'last5' => null, 'last10' => null );
 
 			foreach ( $performance_labels as $key => $value ):
 				$totals[ $key ] = 0;
@@ -138,24 +141,33 @@ class SP_Player extends SP_Custom_Post {
 				),
 				'tax_query' => array(
 					'relation' => 'AND',
-					array(
-						'taxonomy' => 'sp_league',
-						'field' => 'id',
-						'terms' => $league_id
-					),
-					array(
-						'taxonomy' => 'sp_season',
-						'field' => 'id',
-						'terms' => $div_id
-					),
-				)
+				),
 			);
+
+			if ( $league_id ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_league',
+					'field' => 'id',
+					'terms' => $league_id
+				);
+			endif;
+
+			if ( $div_id ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_season',
+					'field' => 'id',
+					'terms' => $div_id
+				);
+			endif;
+
 			$events = get_posts( $args );
 
 			// Event loop
 			foreach( $events as $event ):
 				$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 				$team_performance = (array)get_post_meta( $event->ID, 'sp_players', true );
+				$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
+				if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
 				// Add all team performance
 				foreach ( $team_performance as $team_id => $players ):
@@ -175,16 +187,17 @@ class SP_Player extends SP_Custom_Post {
 						if ( array_key_exists( 'outcome', $team_results ) ):
 
 							// Increment events attended
-							$totals['eventsattended']++;
+							$totals['eventsattended'] ++;
 
 							// Continue with incrementing values if active in event
 							if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
-								$totals['eventsplayed']++;
+								$totals['eventsplayed'] ++;
+								$totals['eventminutes'] += $minutes;
 
 								if ( sp_array_value( $player_performance, 'status' ) == 'lineup' ):
-									$totals['eventsstarted']++;
+									$totals['eventsstarted'] ++;
 								elseif ( sp_array_value( $player_performance, 'status' ) == 'sub' && sp_array_value( $player_performance, 'sub', 0 ) ):
-									$totals['eventssubbed']++;
+									$totals['eventssubbed'] ++;
 								endif;
 
 								$value = $team_results['outcome'];
@@ -199,7 +212,7 @@ class SP_Player extends SP_Custom_Post {
 
 										// Increment outcome count
 										if ( array_key_exists( $outcome, $totals ) ):
-											$totals[ $outcome ]++;
+											$totals[ $outcome ] ++;
 										endif;
 
 										// Add to streak counter
@@ -280,7 +293,7 @@ class SP_Player extends SP_Custom_Post {
 
 			$team_name = get_the_title( $team_id );
 			
-			if ( get_option( 'sportspress_player_link_teams', 'no' ) == 'yes' ? true : false ):
+			if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
 				$team_permalink = get_permalink( $team_id );
 				$team_name = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
 			endif;

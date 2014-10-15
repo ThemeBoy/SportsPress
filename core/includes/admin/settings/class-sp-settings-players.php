@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.1
+ * @version     1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -39,6 +39,14 @@ class SP_Settings_Players extends SP_Settings_Page {
 			array(	'title' => __( 'Player Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'player_options' ),
 
 			array(
+				'title'     => __( 'Link', 'sportspress' ),
+				'desc' 		=> __( 'Link players', 'sportspress' ),
+				'id' 		=> 'sportspress_link_players',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+			),
+
+			array(
 				'title'     => __( 'Nationality', 'sportspress' ),
 				'desc' 		=> __( 'Display national flags', 'sportspress' ),
 				'id' 		=> 'sportspress_player_show_flags',
@@ -52,24 +60,12 @@ class SP_Settings_Players extends SP_Settings_Page {
 
 			array(
 				'title'     => __( 'Players', 'sportspress' ),
-				'desc' 		=> __( 'Link players', 'sportspress' ),
-				'id' 		=> 'sportspress_list_link_players',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-			),
-		);
-
-		if ( SP()->mode == 'team' ):
-			$settings[] = array(
-				'title'     => __( 'Teams', 'sportspress' ),
-				'desc' 		=> __( 'Link teams', 'sportspress' ),
-				'id' 		=> 'sportspress_list_link_teams',
+				'desc' 		=> __( 'Display photos', 'sportspress' ),
+				'id' 		=> 'sportspress_list_show_photos',
 				'default'	=> 'no',
 				'type' 		=> 'checkbox',
-			);
-		endif;
+			),
 
-		$settings = array_merge( $settings, array(
 			array(
 				'title'     => __( 'Pagination', 'sportspress' ),
 				'desc' 		=> __( 'Paginate', 'sportspress' ),
@@ -92,7 +88,7 @@ class SP_Settings_Players extends SP_Settings_Page {
 			),
 
 			array( 'type' => 'sectionend', 'id' => 'list_options' ),
-		)); // End player settings
+		); // End player settings
 
 		return apply_filters( 'sportspress_player_settings', $settings );
 	}
