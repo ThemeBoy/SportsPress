@@ -272,6 +272,11 @@ table.widefat.sp-data-table th:not(.check-column) input[type=checkbox] {
 	vertical-align: middle;
 }
 
+table.widefat.sp-data-table tfoot th,
+table.widefat.sp-data-table tfoot td {
+	border-top: 1px solid #e1e1e1;
+}
+
 table.widefat select.sp-outcome {
 	width: 100%;
 }
