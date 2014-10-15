@@ -1,6 +1,6 @@
-=== SportsPress - All in One Sports Management ===
+=== SportsPress - Sports Team & Club Manager ===
 Contributors: ThemeBoy, brianmiyaji, aylaview
-Tags: sport, sports, clubs, teams, statistics, stats, fixtures, results, standings, league tables, leagues, shortcodes, sports data, themeboy, esports, wordpress sports
+Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 4.0
@@ -14,6 +14,8 @@ SportsPress is an extendable sports data plugin that adds league management capa
 
 = Create a Professional Sports Website =
 SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team or club website.
+
+[youtube http://www.youtube.com/watch?v=_9jeSkXs5Hc]
 
 = Industry Reviews =
 > "*The SportsPress plugin brings in some amazing features to your WordPress site and league management capabilities. If you are looking forward to create a sports related website on WordPress, you must have a look at SportsPress plugin.*" — [indexwp.com](http://www.indexwp.com/sportspress-plugin-review/)
