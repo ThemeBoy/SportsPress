@@ -13,8 +13,8 @@
 	],
 	"outcomes": [
 						"Win",
-						"Draw",
-						"Loss"
+						"Loss",
+						"Draw"
 	],
 	"results": [
 						{ "name" : "1st Quarter", "description" : "1st quarter goals" },

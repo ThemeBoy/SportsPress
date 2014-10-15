@@ -8,13 +8,12 @@
 	],
 	"outcomes": [
 						"Win",
-						"Draw",
-						"Loss"
+						"Loss",
+						"Draw"
 	],
 	"results": [
 						{ "name" : "1st Half", "description" : "1st half goals" },
 						{ "name" : "2nd Half", "description" : "2nd half goals" },
-						{ "name" : "PK", "description" : "Penalty kicks" },
 						{ "name" : "Goals", "description" : "Total goals", "primary" : 1 }
 	],
 	"performance": [

@@ -2,8 +2,8 @@
 	"name":				"Snooker",
 	"outcomes": [
 						"Win",
-						"Draw",
-						"Loss"
+						"Loss",
+						"Draw"
 	],
 	"results": [
 						{ "name" : "Score", "description" : "Total points", "primary" : 1 }

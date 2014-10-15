@@ -2,8 +2,8 @@
 	"name":				"Squash",
 	"outcomes": [
 						"Win",
-						"Draw",
-						"Loss"
+						"Loss",
+						"Draw"
 	],
 	"results": [
 						{ "name" : "G1", "description" : "1st game" },

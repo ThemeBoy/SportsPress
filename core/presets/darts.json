@@ -2,8 +2,8 @@
 	"name":				"Darts",
 	"outcomes": [
 						"Win",
-						"Draw",
-						"Loss"
+						"Loss",
+						"Draw"
 	],
 	"results": [
 						"Legs"
