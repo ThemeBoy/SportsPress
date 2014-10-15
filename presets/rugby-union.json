@@ -1,5 +1,17 @@
 {
 	"name":				"Rugby Union",
+	"positions": [
+						"Full-back",
+						"Wing",
+						"Centre",
+						"Fly-half",
+						"Scrum-half",
+						"Number Eight",
+						"Flanker",
+						"Lock",
+						"Hooker",
+						"Prop"
+	],
 	"outcomes": [
 						"Win",
 						"Loss",

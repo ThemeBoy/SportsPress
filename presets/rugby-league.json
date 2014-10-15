@@ -1,5 +1,16 @@
 {
 	"name":				"Rugby League",
+	"positions": [
+						"Fullback",
+						"Wing",
+						"Centre",
+						"Five-Eighth",
+						"Halfback",
+						"Hooker",
+						"Prop",
+						"Second-row",
+						"Lock"
+	],
 	"outcomes": [
 						"Win",
 						"Loss",

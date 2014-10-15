@@ -1,5 +1,12 @@
 {
 	"name":				"Basketball",
+	"positions": [
+						"Guard",
+						"Forward-Guard",
+						"Forward",
+						"Forward-Center",
+						"Center"
+	],
 	"outcomes": [
 						"Win",
 						"Loss"

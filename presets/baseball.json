@@ -1,5 +1,11 @@
 {
 	"name":				"Baseball",
+	"positions": [
+						"Pitcher",
+						"Catcher",
+						"Infielder",
+						"Outfielder"
+	],
 	"outcomes": [
 						"Win",
 						"Loss",
@@ -43,8 +49,9 @@
 						{ "name" : "STRK", "equation" : "$streak", "description" : "Current streak" }
 	],
 	"metrics": [
-						"Height",
-						"Weight"
+						{ "name" : "B/T", "description": "Bats / Throws" },
+						{ "name" : "Ht", "description": "Height" },
+						{ "name" : "Wt", "description": "Weight" }
 	],
 	"statistics": [
 						{ "name" : "G", "equation" : "$eventsplayed", "description" : "Games played" },
