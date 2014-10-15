@@ -517,4 +517,7 @@ jQuery(document).ready(function($){
 			});
 		}
 	});
+
+	// Fitvids
+	$(".sp-fitvids").fitVids();
 });

@@ -6,7 +6,9 @@
 .sportspress-message a.button-primary,
 .sportspress-message a.button-secondary,
 p.sportspress-actions input.button-primary,
-p.sportspress-actions input.button-primary:active {
+p.sportspress-actions input.button-primary:active,
+p.sportspress-actions a.button-primary,
+p.sportspress-actions a.button-primary:active {
 	background: #3bbab3;
 	border-color: #15a29a;
 	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.1);
@@ -18,7 +20,9 @@ p.sportspress-actions input.button-primary:active {
 .sportspress-message a.button-primary:hover,
 .sportspress-message a.button-secondary:hover,
 p.sportspress-actions input.button-primary:hover,
-p.sportspress-actions input.button-primary:focus {
+p.sportspress-actions input.button-primary:focus,
+p.sportspress-actions a.button-primary:hover,
+p.sportspress-actions a.button-primary:focus {
 	background: #00a69c;
 	border-color: #009187;
 	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.1);
@@ -61,8 +65,29 @@ p.sportspress-actions input.button-primary:focus {
 	background: transparent!important;
 }
 
+.sportspress-steps:before,
+.sportspress-steps:after {
+    content: " ";
+    display: table;
+}
+
+.sportspress-steps:after {
+    clear: both;
+}
+
+.sportspress-steps {
+    *zoom: 1;
+}
+
+.sportspress-steps ul {
+	width: 45%;
+	margin-right: 5%;
+	float: left;
+	margin-bottom: 0;
+}
+
 .sportspress-steps .welcome-icon:before {
-	font: 400 20px/1 "sportspress";
+	font: 400 20px/1 dashicons;
 	speak: none;
 	display: inline-block;
 	padding: 0 10px 0 0;
@@ -75,14 +100,6 @@ p.sportspress-actions input.button-primary:focus {
 	color: #888;
 }
 
-.sportspress-steps .welcome-add-team:before {
-	content: "\f334";
-}
-
-.sportspress-steps .welcome-add-player:before {
-	content: "\f307";
-}
-
-.sportspress-steps .welcome-add-event:before {
-	content: "\f145";
+.sportspress-steps .sp-welcome-icon:before {
+	font-family: sportspress;
 }
