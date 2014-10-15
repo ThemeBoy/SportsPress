@@ -22,6 +22,7 @@ class SP_Admin_Post_Types {
 	 */
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'include_post_type_handlers' ) );
+		add_action( 'save_post', array( $this, 'unflag_post' ) );
 		add_filter( 'post_updated_messages', array( $this, 'post_updated_messages' ) );
 	}
 
@@ -44,6 +45,20 @@ class SP_Admin_Post_Types {
 		include( 'post-types/class-sp-admin-cpt-list.php' );
 		include( 'post-types/class-sp-admin-cpt-staff.php' );
 		do_action( 'sportspress_include_post_type_handlers' );
+	}
+
+	/**
+	 * Unflag preset and sample posts.
+	 */
+	public function unflag_post( $post_id ) {
+		$post_types = sp_post_types();
+		$config_types = sp_config_types();
+		$post_type = get_post_type( $post_id );
+		if ( in_array( $post_type, $post_types ) ):
+			delete_post_meta( $post_id, '_sp_sample' );
+		elseif ( in_array( $post_type, $config_types ) ):
+			delete_post_meta( $post_id, '_sp_preset' );
+		endif;
 	}
 
 	/**
