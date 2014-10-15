@@ -134,9 +134,11 @@ class SP_Install {
 
 		if ( ! get_option( 'sportspress_installed' ) ) {
 			// Configure default sport
-			$sport = 'soccer';
-			SP_Admin_Sports::apply_preset( $sport );
+			$sport = 'custom';
+			//SP_Admin_Sports::apply_preset( $sport );
 		    update_option( 'sportspress_sport', $sport );
+
+			// Flag as installed
 			update_option( 'sportspress_installed', 1 );
 		}
 	}
