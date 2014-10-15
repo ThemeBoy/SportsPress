@@ -40,6 +40,7 @@ class SP_Admin_CPT_Performance extends SP_Admin_CPT {
 	public function edit_columns( $existing_columns ) {
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
+			'sp_icon' => __( 'Icon', 'sportspress' ),
 			'title' => __( 'Label', 'sportspress' ),
 			'sp_key' => __( 'Variable', 'sportspress' ),
 			'sp_description' => __( 'Description', 'sportspress' ),
@@ -53,6 +54,9 @@ class SP_Admin_CPT_Performance extends SP_Admin_CPT {
 	 */
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
+			case 'sp_icon':
+				echo has_post_thumbnail( $post_id ) ? edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-mini' ), '', '', $post_id ) : '';
+				break;
 			case 'sp_key':
 				global $post;
 				echo $post->post_name;
