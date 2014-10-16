@@ -66,16 +66,16 @@ class SP_Admin_CPT_List extends SP_Admin_CPT {
 				echo sizeof( $players );
 				break;
 			case 'sp_league':
-				echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
+				echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : __( 'All', 'sportspress' );
 				break;
 			case 'sp_season':
-				echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
+				echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : __( 'All', 'sportspress' );
 				break;
 			case 'sp_team':
 				$teams = (array)get_post_meta( $post_id, 'sp_team', false );
 				$teams = array_filter( $teams );
 				if ( empty( $teams ) ):
-					echo '&mdash;';
+					echo __( 'All', 'sportspress' );
 				else:
 					foreach( $teams as $team_id ):
 						if ( ! $team_id ) continue;
