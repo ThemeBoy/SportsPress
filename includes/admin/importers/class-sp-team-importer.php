@@ -85,6 +85,14 @@ if ( class_exists( 'WP_Importer' ) ) {
 				$seasons = explode( '|', sp_array_value( $meta, 'sp_season' ) );
 				wp_set_object_terms( $id, $seasons, 'sp_season', false );
 
+				// Update venues
+				$venues = explode( '|', sp_array_value( $meta, 'sp_venue' ) );
+				wp_set_object_terms( $id, $venues, 'sp_venue', false );
+
+				// Update meta
+				update_post_meta( $id, 'sp_url', sp_array_value( $meta, 'sp_url' ) );
+				update_post_meta( $id, 'sp_abbreviation', sp_array_value( $meta, 'sp_abbreviation' ) );
+
 				$this->imported++;
 
 			endforeach;
