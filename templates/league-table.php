@@ -117,10 +117,12 @@ foreach ( $data as $team_id => $row ):
 
 	$name_class = '';
 
+	$name = $before . $name . $after;
+
 	if ( $show_team_logo ):
 		if ( has_post_thumbnail( $team_id ) ):
 			$logo = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon' );
-			$name = '<span class="team-logo">' . $logo . '</span>' . $before . $name . $after;
+			$name = '<span class="team-logo">' . $logo . '</span>' . $name;
 			$name_class .= ' has-logo';
 		endif;
 	endif;
