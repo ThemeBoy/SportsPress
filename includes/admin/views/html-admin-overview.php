@@ -1,6 +1,6 @@
 <div class="wrap sportspress sp-overview-wrap">
 	<h2>
-		<?php _e( 'Overview', 'sportspress' ); ?>
+		<?php _e( 'SportsPress Overview', 'sportspress' ); ?>
 	</h2>
 	<div class="sp-sitemap">
 

@@ -411,6 +411,58 @@ class SP_Admin_Settings {
 	                </tr><?php
 	            break;
 
+	            // Select sport
+	            case 'sport' :
+
+	            	$option_value 	= self::get_option( $value['id'], $value['default'] );
+
+	            	?><tr valign="top">
+						<th scope="row" class="titledesc">
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
+							<?php echo $tip; ?>
+						</th>
+	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    	<select
+	                    		name="<?php echo esc_attr( $value['id'] ); ?><?php if ( $value['type'] == 'multiselect' ) echo '[]'; ?>"
+	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
+	                    		style="<?php echo esc_attr( $value['css'] ); ?>"
+	                    		class="chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?> <?php echo esc_attr( $value['class'] ); ?>"
+	                    		<?php echo implode( ' ', $custom_attributes ); ?>
+	                    		<?php if ( $value['type'] == 'multiselect' ) echo 'multiple="multiple"'; ?>
+	                    		>
+		                    	<?php
+	                    		foreach ( $value['options'] as $group => $options ) {
+	                    			?>
+	                    			<optgroup label="<?php _e( $group, 'sportspress' ); ?>">
+	                    				<?php
+				                        foreach ( $options as $key => $val ) {
+				                        	?>
+				                        	<option value="<?php echo esc_attr( $key ); ?>" <?php
+
+					                        	if ( is_array( $option_value ) )
+					                        		selected( in_array( $key, $option_value ), true );
+					                        	else
+					                        		selected( $option_value, $key );
+
+				                        	?>><?php echo $val ?></option>
+				                        	<?php
+				                        }
+				                        ?>
+				                    </optgroup>
+				                  	<?php
+				                }
+			                    ?>
+							</select> <?php echo $description; ?>
+							<p>
+								<label>
+									<input type="checkbox" name="add_sample_data" id="add_sample_data" <?php checked( sp_array_value( $value, 'welcome' ) ); ?>>
+									<?php _e( 'Install demo content', 'sportspress' ); ?>
+								</label>
+							</p>
+	                    </td>
+	                </tr><?php
+	            break;
+
 	            // Radio inputs
 	            case 'radio' :
 
@@ -578,6 +630,7 @@ class SP_Admin_Settings {
 	            case 'number':
 		    	case 'select' :
 		    	case 'groupselect' :
+		    	case 'sport' :
 		    	case 'color' :
 	            case 'password' :
 		    	case 'radio' :

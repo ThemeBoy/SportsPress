@@ -49,7 +49,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				'title'     => __( 'Sport', 'sportspress' ),
 				'id'        => 'sportspress_sport',
 				'default'   => 'custom',
-				'type'      => 'groupselect',
+				'type'      => 'sport',
 				'options'   => $presets,
 			),
 
@@ -182,6 +182,10 @@ class SP_Settings_General extends SP_Settings_Page {
 			$sport = $_POST['sportspress_sport'];
 			SP_Admin_Sports::apply_preset( $sport );
     		update_option( '_sp_needs_welcome', 0 );
+		endif;
+
+		if ( isset( $_POST['add_sample_data'] ) ):
+			SP_Admin_Sample_Data::insert_posts();
 		endif;
 
 		$settings = $this->get_settings();

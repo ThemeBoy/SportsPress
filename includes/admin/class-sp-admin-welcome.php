@@ -240,7 +240,12 @@ class SP_Admin_Welcome {
 				<div id="message" class="updated sportspress-message">
 					<p><strong><?php _e( 'Your settings have been saved.', 'sportspress' ); ?></strong></p>
 				</div>
-			<?php endif; ?>
+			<?php
+			endif;
+			if ( isset( $_POST['add_sample_data'] ) ):
+				SP_Admin_Sample_Data::insert_posts();
+			endif;
+			?>
 			<div class="sp-feature feature-section col two-col">
 				<div>
 					<?php if ( get_option( 'sportspress_basic_setup' ) ) { ?>
@@ -263,14 +268,14 @@ class SP_Admin_Welcome {
 						<p><?php _e( 'We&#8217;ve assembled some links to get you started:', 'sportspress' ); ?></p>
 						<div class="sportspress-steps">
 							<ul>
+								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview' ), 'admin.php' ) ) ); ?>" class="welcome-icon dashicons-networking"><?php _e( 'SportsPress Overview', 'sportspress' ); ?></a></li>
+								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-config' ), 'admin.php' ) ) ); ?>" class="welcome-icon dashicons-performance"><?php _e( 'Configure SportsPress', 'sportspress' ); ?></a></li>
+								<li><a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>" class="welcome-icon dashicons-welcome-widgets-menus"><?php _e( 'Widgets', 'sportspress' ); ?></a></li>
+							</ul>
+							<ul>
 								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'post-new.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-shield-alt"><?php _e( 'Add New Team', 'sportspress' ); ?></a></li>
 								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'post-new.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-groups"><?php _e( 'Add New Player', 'sportspress' ); ?></a></li>
 								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'post-new.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-calendar"><?php _e( 'Add New Event', 'sportspress' ); ?></a></li>
-							</ul>
-							<ul>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview' ), 'admin.php' ) ) ); ?>" class="welcome-icon dashicons-networking"><?php _e( 'Overview', 'sportspress' ); ?></a></li>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-config' ), 'admin.php' ) ) ); ?>" class="welcome-icon dashicons-performance"><?php _e( 'Configure', 'sportspress' ); ?></a></li>
-								<li><a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>" class="welcome-icon dashicons-welcome-widgets-menus"><?php _e( 'Widgets', 'sportspress' ); ?></a></li>
 							</ul>
 						</div>
 						<div class="return-to-dashboard">
@@ -317,8 +322,9 @@ class SP_Admin_Welcome {
 									$settings = array( array(
 										'id'        => 'sportspress_sport',
 										'default'   => 'custom',
-										'type'      => 'groupselect',
+										'type'      => 'sport',
 										'title'		=> __( 'Sport', 'sportspress' ),
+										'welcome' 	=> true,
 										'class' 	=> $class,
 										'options'   => $sport_options,
 									));
