@@ -87,8 +87,11 @@ foreach( $data as $staff_id => $row ):
 			continue;
 		if ( ! is_array( $columns ) || in_array( $key, $columns ) ):
 			$value = sp_array_value( $row, $key, '&mdash;' );
-			if ( $key == 'phone' && $link_phone ) $value = '<a href="tel:' . $value . '">' . $value . '</a>';
-			if ( $key == 'email' && $link_email ) $value = '<a href="mailto:' . $value . '">' . $value . '</a>';
+			if ( $key == 'phone' && $value !== '&mdash;' && $link_phone ) {
+				$value = '<a href="tel:' . $value . '">' . $value . '</a>';
+			} elseif ( $key == 'email' && $value !== '&mdash;' && $link_email ) {
+				$value = '<a href="mailto:' . $value . '">' . $value . '</a>';
+			}
 			$output .= '<td class="data-' . $key . '">' . $value . '</td>';
 		endif;
 	endforeach;

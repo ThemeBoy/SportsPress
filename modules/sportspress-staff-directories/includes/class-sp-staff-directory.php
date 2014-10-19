@@ -5,7 +5,7 @@
  * The SportsPress staff directory class handles individual staff directory data.
  *
  * @class 		SP_Staff_Directory
- * @version		1.0
+ * @version		1.4
  * @package		SportsPress_Staff_Directories
  * @category	Class
  * @author 		ThemeBoy
@@ -102,6 +102,7 @@ class SP_Staff_Directory {
 
 		$league_id = sp_get_the_term_id( $this->ID, 'sp_league', 0 );
 		$season_id = sp_get_the_term_id( $this->ID, 'sp_season', 0 );
+		$staffs = get_post_meta( $this->ID, 'sp_staffs', true );
 
 		$args = array(
 			'post_type' => 'sp_staff',
@@ -168,12 +169,26 @@ class SP_Staff_Directory {
 				
 				$staff_object = new SP_Staff( $post->ID );
 				$role = $staff_object->role();
-				$staff['role'] = $role ? $role->name : '&mdash;';
-				$staff['phone'] = get_post_meta( $post->ID, 'sp_phone', true );
-				$staff['email'] = get_post_meta( $post->ID, 'sp_email', true );
+				if ( ! empty( $role ) ) $staff['role'] = $role->name;
+				$phone = get_post_meta( $post->ID, 'sp_phone', true );
+				if ( ! empty( $phone ) ) $staff['phone'] = $phone;
+				$email = get_post_meta( $post->ID, 'sp_email', true );
+				if ( ! empty( $email ) ) $staff['email'] = $email;
 				
 				$data[ $post->ID ] = $staff;
 			endforeach;
+
+			// Sort them by manual order
+			if ( is_array( $staffs ) ):
+				$prepend = array();
+				foreach ( $staffs as $staff ):
+					if ( array_key_exists( $staff, $data ) ):
+						$prepend[ $staff ] = $data[ $staff ];
+						unset( $data[ $staff ] );
+					endif;
+				endforeach;
+				$data = $prepend + $data;
+			endif;
 		endif;
 
 		$labels = apply_filters( 'sportspress_directory_labels', array(

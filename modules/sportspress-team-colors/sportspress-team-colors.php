@@ -5,7 +5,7 @@ Plugin URI: http://sportspresspro.com/
 Description: Add team colors to SportsPress.
 Author: ThemeBoy
 Author URI: http://sportspresspro.com
-Version: 1.0.2
+Version: 1.4
 */
 
 // Exit if accessed directly
@@ -27,7 +27,6 @@ class SportsPress_Team_Colors {
 		$this->define_constants();
 
 		// Hooks
-		add_action( 'init', array( $this, 'init' ) );
 		add_filter( 'option_sportspress_frontend_css_colors', array( $this, 'css' ) );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'sportspress_process_sp_team_meta', array( $this, 'meta_box_save' ), 15, 2 );
@@ -40,19 +39,13 @@ class SportsPress_Team_Colors {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_TEAM_COLORS_VERSION' ) )
-			define( 'SP_TEAM_COLORS_VERSION', '1.0.2' );
+			define( 'SP_TEAM_COLORS_VERSION', '1.4' );
 
 		if ( !defined( 'SP_TEAM_COLORS_URL' ) )
 			define( 'SP_TEAM_COLORS_URL', plugin_dir_url( __FILE__ ) );
 
 		if ( !defined( 'SP_TEAM_COLORS_DIR' ) )
 			define( 'SP_TEAM_COLORS_DIR', plugin_dir_path( __FILE__ ) );
-	}
-
-	/**
-	 * Init plugin when WordPress Initialises.
-	 */
-	public function init() {
 	}
 
 	/**

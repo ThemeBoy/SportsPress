@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress_Staff_Directories
- * @version     1.0
+ * @version     1.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -148,7 +148,8 @@ class SP_Staff_Directory_Meta_Boxes {
 	public static function data( $post ) {
 		$directory = new SP_Staff_Directory( $post );
 		list( $labels, $columns, $data ) = $directory->data( true );
-		self::table( $labels, $columns, $data );
+		$staff = get_post_meta( $post->ID, 'sp_staff', true );
+		self::table( $labels, $columns, $data, $staff );
 	}
 
 	/**
@@ -176,17 +177,19 @@ class SP_Staff_Directory_Meta_Boxes {
 
 		// Data
 		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
+		update_post_meta( $post_id, 'sp_staffs', sp_array_value( $_POST, 'sp_staffs', array() ) );
 	}
 
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $labels, $columns = array(), $data = null ) {
+	public static function table( $labels, $columns = array(), $data = null, $staff = null ) {
 		?>
 		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table sp-staff-directory-table">
+			<table class="widefat sp-data-table sp-staff-directory-table sp-sortable-table">
 				<thead>
 					<tr>
+						<th class="icon">&nbsp;</th>
 						<th><?php _e( 'Role', 'sportspress' ); ?></th>
 						<th><?php _e( 'Name', 'sportspress' ); ?></th>
 						<?php foreach ( $labels as $key => $label ): ?>
@@ -207,22 +210,20 @@ class SP_Staff_Directory_Meta_Boxes {
 							$default_name = sp_array_value( $staff_data, 'name', '' );
 							if ( $default_name == null )
 								$default_name = get_the_title( $staff_id );
+
+							$role = sp_array_value( $staff_data, 'role', '&mdash;' );
+							$phone = sp_array_value( $staff_data, 'phone', '&mdash;' );
+							$email = sp_array_value( $staff_data, 'email', '&mdash;' );
 							?>
 							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-								<td><?php echo ( $staff_data['role'] !== '' ? $staff_data['role'] : '&mdash;' ); ?></td>
-								<td>
-									<span class="sp-default-value">
-										<span class="sp-default-value-input"><?php echo $default_name; ?></span>
-										<a class="dashicons dashicons-edit sp-edit" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>
-									</span>
-									<span class="hidden sp-custom-value">
-										<input type="text" name="sp_players[<?php echo $staff_id; ?>][name]" class="name sp-custom-value-input" value="<?php echo sp_array_value( $staff_data, 'name', '' ); ?>" placeholder="<?php echo get_the_title( $staff_id ); ?>" size="6">
-										<a class="button button-secondary sp-cancel"><?php _e( 'Cancel', 'sportspress' ); ?></a>
-										<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
-									</span>
+								<td class="icon">
+									<span class="dashicons dashicons-menu post-state-format"></span>
+									<input type="hidden" name="sp_staffs[]" value="<?php echo $staff_id; ?>">
 								</td>
-								<td><?php echo ( $staff_data['phone'] !== '' ? $staff_data['phone'] : '&mdash;' ); ?></td>
-								<td><?php echo ( $staff_data['email'] !== '' ? $staff_data['email'] : '&mdash;' ); ?></td>
+								<td><?php echo $role; ?></td>
+								<td><?php echo $default_name; ?></span></td>
+								<td><?php echo $phone; ?></td>
+								<td><?php echo $email; ?></td>
 							</tr>
 							<?php
 							$i++;
@@ -230,7 +231,7 @@ class SP_Staff_Directory_Meta_Boxes {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="<?php $colspan = sizeof( $labels ) + 3; echo $colspan; ?>">
+						<td colspan="<?php $colspan = sizeof( $labels ) + 4; echo $colspan; ?>">
 							<?php
 							if ( $data === null ) printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) );
 							else _e( 'No results found.', 'sportspress' );
