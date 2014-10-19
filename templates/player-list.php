@@ -34,6 +34,10 @@ extract( $defaults, EXTR_SKIP );
 if ( isset( $performance ) )
 	$columns = $performance;
 
+// Explode into array
+if ( ! is_array( $columns ) )
+	$columns = explode( ',', $columns );
+
 $list = new SP_Player_List( $id );
 if ( isset( $columns ) && null !== $columns ):
 	$list->columns = $columns;
