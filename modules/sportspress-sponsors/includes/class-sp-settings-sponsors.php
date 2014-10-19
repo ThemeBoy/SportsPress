@@ -59,6 +59,14 @@ class SP_Settings_Sponsors extends SP_Settings_Page {
 				'type' 		=> 'checkbox',
 			),
 
+			array(
+				'title'     => __( 'Visit Site', 'sportspress' ),
+				'desc' 		=> __( 'Open link in a new window/tab', 'sportspress' ),
+				'id' 		=> 'sportspress_sponsor_site_target_blank',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+			),
+
 			array( 'type' => 'sectionend', 'id' => 'sponsor_options' ),
 
 			array( 'title' => __( 'Header', 'sportspress' ), 'type' => 'title', 'id' => 'header_sponsor_options' ),

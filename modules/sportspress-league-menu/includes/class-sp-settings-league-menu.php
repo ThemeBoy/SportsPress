@@ -253,7 +253,7 @@ class SP_Settings_League_Menu extends SP_Settings_Page {
 			$team_options[ $team->ID ] = $team->post_title;
 		endforeach;
 
-		$selected = (array) get_option( 'sportspress_league_menu_teams', array() );
+		$selected = get_option( 'sportspress_league_menu_teams', null );
 		?>
 		<tr valign="top">
 			<th scope="row" class="titledesc"><?php _e( 'Teams', 'sportspress' ); ?></th>
@@ -261,7 +261,7 @@ class SP_Settings_League_Menu extends SP_Settings_Page {
 				<legend class="screen-reader-text"><span><?php _e( 'Teams', 'sportspress' ); ?></span></legend>
 				<fieldset class="sp-prefs">
 					<?php foreach ( $team_options as $key => $value ): ?>
-						<label class="button"><input name="sportspress_league_menu_teams[]" type="checkbox" value="<?php echo $key; ?>" <?php checked( in_array( $key, $selected ) ); ?>><?php echo $value; ?></label>
+						<label class="button"><input name="sportspress_league_menu_teams[]" type="checkbox" value="<?php echo $key; ?>" <?php checked( ! is_array( $selected ) || in_array( $key, $selected ) ); ?>><?php echo $value; ?></label>
 					<?php endforeach; ?>
 				</fieldset>
        		</td>

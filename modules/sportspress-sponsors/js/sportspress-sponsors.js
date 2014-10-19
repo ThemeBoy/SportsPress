@@ -8,8 +8,7 @@ jQuery(document).ready(function($){
 			post_id: self.data("post")
 		};
 		$.post( ajax_options.ajaxurl, ajax_options, function() {
-			window.location.href = self.attr( "href" );
+			return true;
 		});
-		return false;
 	});
 });

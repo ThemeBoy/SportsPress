@@ -30,8 +30,6 @@ class SportsPress_Sponsors {
 		$this->includes();
 
 		// Hooks
-		register_activation_hook( __FILE__, array( $this, 'install' ) );
-		register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
 		add_action( 'init', array( $this, 'init' ), 15 );
 		add_action( 'admin_init', array( $this, 'check_version' ), 5 );
 		add_action( 'admin_init', array( $this, 'register_importer' ) );
@@ -58,9 +56,6 @@ class SportsPress_Sponsors {
 		if ( is_admin() ) {
 			add_action( 'wp_ajax_nopriv_sp_clicks', array( $this, 'sp_clicks' ) );
 		}
-
-		if ( defined( 'SP_PRO_PLUGIN_FILE' ) )
-			register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
 	}
 
 	/**
@@ -423,7 +418,7 @@ class SportsPress_Sponsors {
 		$id = get_the_ID();
 		$url = get_post_meta( $id, 'sp_url', true );
 		if ( $url ): ?>
-			<a class="button sponsor sp-sponsor sp-button sp-sponsor-button" href="<?php echo $url; ?>" data-nonce="<?php echo wp_create_nonce( 'sp_clicks_' . $id ); ?>" data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>" data-post="<?php echo $id; ?>"><?php _e( 'Visit Site', 'sportspress' ); ?></a>
+			<a class="button sponsor sp-sponsor sp-button sp-sponsor-button" href="<?php echo $url; ?>" data-nonce="<?php echo wp_create_nonce( 'sp_clicks_' . $id ); ?>" data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>" data-post="<?php echo $id; ?>"<?php if ( get_option( 'sportspress_sponsor_site_target_blank', 'no' ) == 'yes' ) { ?> target="_blank"<?php } ?>><?php _e( 'Visit Site', 'sportspress' ); ?></a>
 		<?php endif;
 	}
 

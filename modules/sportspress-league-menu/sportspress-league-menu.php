@@ -94,8 +94,8 @@ class SportsPress_League_Menu {
 	}
 
 	public static function menu() {
-		$teams = (array) get_option( 'sportspress_league_menu_teams', array() );
-		if ( ! $teams )
+		$teams = get_option( 'sportspress_league_menu_teams' );
+		if ( is_array( $teams ) && empty( $teams ) )
 			return;
 
 		$title = get_option( 'sportspress_league_menu_title', null );
@@ -138,10 +138,10 @@ class SportsPress_League_Menu {
 			'post_type' => 'sp_team',
 			'numberposts' => $limit,
 			'posts_per_page' => $limit,
-			'include' => $teams,
 			'orderby' => $orderby,
 			'order' => $order,
 		);
+		if ( is_array( $teams ) ) $args['include'] = $teams;
 		$teams = get_posts( $args );
 
 		if ( $teams || ! empty( $logo ) || $title ):
