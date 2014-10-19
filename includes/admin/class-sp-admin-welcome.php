@@ -269,14 +269,9 @@ class SP_Admin_Welcome {
 						<p><?php _e( 'We&#8217;ve assembled some links to get you started:', 'sportspress' ); ?></p>
 						<div class="sportspress-steps">
 							<ul>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-overview' ), 'admin.php' ) ) ); ?>" class="welcome-icon dashicons-networking"><?php _e( 'SportsPress Overview', 'sportspress' ); ?></a></li>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-config' ), 'admin.php' ) ) ); ?>" class="welcome-icon dashicons-performance"><?php _e( 'Configure SportsPress', 'sportspress' ); ?></a></li>
-								<li><a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>" class="welcome-icon dashicons-welcome-widgets-menus"><?php _e( 'Widgets', 'sportspress' ); ?></a></li>
-							</ul>
-							<ul>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'post-new.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-shield-alt"><?php _e( 'Add New Team', 'sportspress' ); ?></a></li>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'post-new.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-groups"><?php _e( 'Add New Player', 'sportspress' ); ?></a></li>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'post-new.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-calendar"><?php _e( 'Add New Event', 'sportspress' ); ?></a></li>
+								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-shield-alt"><?php _e( 'Add New Team', 'sportspress' ); ?></a></li>
+								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-groups"><?php _e( 'Add New Player', 'sportspress' ); ?></a></li>
+								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-calendar"><?php _e( 'Add New Event', 'sportspress' ); ?></a></li>
 							</ul>
 						</div>
 						<div class="return-to-dashboard">
