@@ -47,7 +47,7 @@ unset( $data[0] );
 if ( ! $columns )
 	$columns = get_post_meta( $id, 'sp_columns', true );
 
-if ( ! is_array( $columns ) )
+if ( null !== $columns && ! is_array( $columns ) )
 	$columns = explode( ',', $columns );
 
 $output .= '<th class="data-rank">' . __( 'Pos', 'sportspress' ) . '</th>';

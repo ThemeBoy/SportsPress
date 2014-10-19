@@ -3,12 +3,14 @@
  * Handle frontend forms
  *
  * @class 		SP_Frontend_Scripts
- * @version		1.1.4
+ * @version		1.4
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
  */
 class SP_Frontend_Scripts {
+
+	public $theme;
 
 	/**
 	 * Constructor
@@ -26,6 +28,21 @@ class SP_Frontend_Scripts {
 		return apply_filters( 'sportspress_enqueue_styles', array(
 			'sportspress-general' => array(
 				'src'     => str_replace( array( 'http:', 'https:' ), '', SP()->plugin_url() ) . '/assets/css/sportspress.css',
+				'deps'    => '',
+				'version' => SP_VERSION,
+				'media'   => 'all'
+			),
+		));
+	}
+
+	/**
+	 * Add theme-specific styles to the frontend
+	 * @return array
+	 */
+	public function add_theme_styles( $styles ) {
+		return array_merge( $styles, array(
+			'sportspress-' . $this->theme => array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', SP()->plugin_url() ) . '/assets/css/themes/' . $this->theme . '.css',
 				'deps'    => '',
 				'version' => SP_VERSION,
 				'media'   => 'all'
@@ -53,8 +70,22 @@ class SP_Frontend_Scripts {
 			wp_localize_script( 'sp-maps', 'vars', array( 'map_type' => strtoupper( get_option( 'sportspress_map_type', 'ROADMAP' ) ) ) );
 		endif;
 
-		// Localize scripts.
+		// Localize scripts
 		wp_localize_script( 'sportspress', 'localized_strings', array( 'days' => __( 'days', 'sportspress' ), 'hrs' => __( 'hrs', 'sportspress' ), 'mins' => __( 'mins', 'sportspress' ), 'secs' => __( 'secs', 'sportspress' ), 'previous' => __( 'Previous', 'sportspress' ), 'next' => __( 'Next', 'sportspress' ) ) );
+
+		// Theme styles
+		$theme = wp_get_theme();
+		$this->theme = $theme->stylesheet;
+		$dir = scandir( SP()->plugin_path() . '/assets/css/themes' );
+		$files = array();
+		if ( $dir ) {
+			foreach ( $dir as $key => $value ) {
+				if ( preg_replace('/\\.[^.\\s]{3,4}$/', '', $value ) == $this->theme ) {
+					add_filter( 'sportspress_enqueue_styles', array( $this, 'add_theme_styles' ) );
+					break;
+				}
+			}
+		}
 
 		// CSS Styles
     	wp_enqueue_style( 'dashicons' );

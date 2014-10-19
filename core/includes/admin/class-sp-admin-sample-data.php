@@ -561,9 +561,23 @@ class SP_Admin_Sample_Data {
 			// Get players from team
 			$list_players = array_slice( $inserted_ids['sp_player'], $index * 4, 4 );
 
+			// Get columns
+			$columns = array();
+			$args = array(
+				'post_type' => array( 'sp_metric' ),
+				'posts_per_page' => 2,
+				'orderby' => 'menu_order',
+				'order' => 'ASC',
+			);
+			$column_posts = get_posts( $args );
+			foreach ( $column_posts as $column_post ) {
+				$columns[] = $column_post->post_name;
+			}
+
 			// Update meta
-			update_post_meta( $id, 'sp_format', 'gallery' );
+			update_post_meta( $id, 'sp_format', 'list' );
 			sp_update_post_meta_recursive( $id, 'sp_player', $list_players );
+			update_post_meta( $id, 'sp_columns', $columns );
 			update_post_meta( $id, 'sp_grouping', 'position' );
 			update_post_meta( $id, 'sp_orderby', 'name' );
 			update_post_meta( $id, 'sp_order', 'ASC' );

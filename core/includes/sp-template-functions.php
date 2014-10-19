@@ -59,7 +59,6 @@ if ( ! function_exists( 'sportspress_taxonomy_archive_description' ) ) {
 	 * @return void
 	 */
 	function sportspress_taxonomy_archive_description() {
-		echo 'test';
 		if ( is_tax( array( 'sp_season', 'sp_league', 'sp_venue', 'sp_position' ) ) && get_query_var( 'paged' ) == 0 ) {
 			$description = apply_filters( 'the_content', term_description() );
 			if ( $description ) {

@@ -1,0 +1,9 @@
+/*
+ * Theme-specific stylesheet.
+ *
+ * This stylesheet will automatically be loaded when a theme with the same name is active. Use the folder name of the theme as the stylesheet name. For example, twentyfourteen.css will be loaded with the Twenty Fourteen theme.
+ */
+
+.sportspress-page .entry-content h4:first-child {
+	margin-top: 36px;
+}

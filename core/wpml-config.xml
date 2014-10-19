@@ -3,6 +3,7 @@
     <key name="sportspress_text">
       <key name="Article"/>
       <key name="Current Team"/>
+      <key name="Current Teams"/>
       <key name="Date"/>
       <key name="Details"/>
       <key name="Event"/>

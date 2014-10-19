@@ -35,7 +35,7 @@ if ( isset( $performance ) )
 	$columns = $performance;
 
 // Explode into array
-if ( ! is_array( $columns ) )
+if ( null !== $columns && ! is_array( $columns ) )
 	$columns = explode( ',', $columns );
 
 $list = new SP_Player_List( $id );

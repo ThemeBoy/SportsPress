@@ -603,11 +603,11 @@ if ( !function_exists( 'sp_dropdown_pages' ) ) {
 				if ( $args['show_option_blank'] ):
 					printf( '<option value=""></option>' );
 				endif;
-				if ( $args['show_option_all'] ):
-					printf( '<option value="%s" %s>%s</option>', $args['option_all_value'], selected( $selected, $args['option_all_value'], false ), $args['show_option_all'] );
-				endif;
 				if ( $args['show_option_none'] ):
 					printf( '<option value="%s" %s>%s</option>', $args['option_none_value'], selected( $selected, $args['option_none_value'], false ), ( $args['show_option_none'] === true ? '' : $args['show_option_none'] ) );
+				endif;
+				if ( $args['show_option_all'] ):
+					printf( '<option value="%s" %s>%s</option>', $args['option_all_value'], selected( $selected, $args['option_all_value'], false ), $args['show_option_all'] );
 				endif;
 				if ( $args['prepend_options'] && is_array( $args['prepend_options'] ) ):
 					foreach( $args['prepend_options'] as $slug => $label ):
@@ -1085,6 +1085,7 @@ function sp_get_text_options() {
 	$strings = apply_filters( 'sportspress_text', array(
 		__( 'Article', 'sportspress' ),
 		__( 'Current Team', 'sportspress' ),
+		__( 'Current Teams', 'sportspress' ),
 		__( 'Date', 'sportspress' ),
 		__( 'Details', 'sportspress' ),
 		__( 'Event', 'sportspress' ),
