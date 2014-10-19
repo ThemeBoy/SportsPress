@@ -50,7 +50,7 @@ endif;
 ?>
 <div class="sp-template sp-template-event-list">
 	<div class="sp-table-wrapper<?php if ( $scrollable ) { ?> sp-scrollable-table-wrapper<?php } ?>">
-		<table class="sp-event-list sp-data-table<?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $paginated ) { ?> sp-paginated-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
+		<table class="sp-event-list sp-data-table<?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $paginated ) { ?> sp-paginated-table<?php } if ( $sortable ) { ?> sp-sortable-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
 			<thead>
 				<tr>
 					<?php
@@ -149,7 +149,7 @@ endif;
 
 					echo '<tr class="sp-row sp-post' . ( $i % 2 == 0 ? ' alternate' : '' ) . '">';
 
-						echo '<td class="data-date"><a href="' . get_permalink( $event->ID ) . '">' . get_post_time( get_option( 'date_format' ), false, $event, true ) . '</a></td>';
+						echo '<td class="data-date"><a href="' . get_permalink( $event->ID ) . '"><date>' . get_post_time( 'Y-m-d H:i:s', false, $event ) . '</date>' . get_post_time( get_option( 'date_format' ), false, $event, true ) . '</a></td>';
 
 						if ( $usecolumns == null || in_array( 'event', $usecolumns ) ):
 							if ( $title_format == 'homeaway' ):
@@ -169,7 +169,7 @@ endif;
 							if ( ! empty( $main_results ) ):
 								echo implode( ' - ', $main_results );
 							else:
-								echo get_post_time( get_option( 'time_format' ), false, $event, true );
+								echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . get_post_time( get_option( 'time_format' ), false, $event, true );
 							endif;
 							echo '</a></td>';
 						endif;

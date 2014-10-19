@@ -165,6 +165,10 @@
 }
 
 /* Event List */
+.sp-event-list .data-date date,
+.sp-event-list .data-time date {
+	display: none;
+}
 .sp-event-list .data-article {
 	white-space: nowrap;
 }
