@@ -88,7 +88,7 @@ class SP_Admin_Notices {
 	 * Show a notice highlighting bad template files
 	 */
 	public function template_file_check_notice() {
-		if ( isset( $_GET['page'] ) && 'sp-status' == $_GET['page'] ) {
+		if ( isset( $_GET['page'] ) && 'sportspress' == $_GET['page'] && isset( $_GET['tab'] ) && 'status' == $_GET['tab'] ) {
 			return;
 		}
 

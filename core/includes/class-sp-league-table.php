@@ -15,6 +15,12 @@ class SP_League_Table extends SP_Custom_Post{
 	/** @var array The sort priorities array. */
 	public $priorities;
 
+	/** @var array Positions of teams in the table. */
+	public $pos;
+
+	/** @var array Inremental value for team position. */
+	public $counter;
+
 	/**
 	 * Returns formatted data
 	 *
@@ -42,6 +48,10 @@ class SP_League_Table extends SP_Custom_Post{
 		// Create entry for each team in totals
 		$totals = array();
 		$placeholders = array();
+
+		// Initialize incremental counter
+		$this->pos = array( 1 );
+		$this->counter = 1;
 
 		// Initialize streaks counter
 		$streaks = array();
@@ -314,9 +324,16 @@ class SP_League_Table extends SP_Custom_Post{
 				endif;
 
 			endforeach;
+
 		endforeach;
 
 		uasort( $merged, array( $this, 'sort' ) );
+
+		uasort( $merged, array( $this, 'calculate_pos' ) );
+
+		foreach ( $merged as $team_id => $team_columns ) {
+			$merged[ $team_id ]['pos'] = array_shift( $this->pos );
+		}
 
 		// Rearrange data array to reflect values
 		$data = array();
@@ -329,7 +346,7 @@ class SP_League_Table extends SP_Custom_Post{
 		else:
 			if ( ! is_array( $usecolumns ) )
 				$usecolumns = array();
-			$labels = array_merge( array( 'name' => __( 'Team', 'sportspress' ) ), $columns );
+			$labels = array_merge( array( 'pos' => __( 'Pos', 'sportspress' ), 'name' => __( 'Team', 'sportspress' ) ), $columns );
 			$merged[0] = $labels;
 			return $merged;
 		endif;
@@ -364,5 +381,35 @@ class SP_League_Table extends SP_Custom_Post{
 
 		// Default sort by alphabetical
 		return strcmp( sp_array_value( $a, 'name', '' ), sp_array_value( $b, 'name', '' ) );
+	}
+
+	/**
+	 * Find accurate position of teams.
+	 *
+	 * @param array $a
+	 * @param array $b
+	 * @return int
+	 */
+	public function calculate_pos( $a, $b ) {
+		$this->counter ++;
+
+		// Loop through priorities
+		foreach( $this->priorities as $priority ):
+
+			// Proceed if columns are not equal
+			if ( sp_array_value( $a, $priority['column'], 0 ) != sp_array_value( $b, $priority['column'], 0 ) ):
+
+				// Increment if not equal
+				$this->pos[] = $this->counter;
+
+				return 1;
+
+			endif;
+
+		endforeach;
+
+		// Repeat position if equal
+		$this->pos[] = end( $this->pos );
+		return 1;
 	}
 }

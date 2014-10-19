@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registers post types and taxonomies
  *
  * @class 		SP_Post_types
- * @version		1.3
+ * @version		1.4
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -22,6 +22,7 @@ class SP_Post_types {
 	public function __construct() {
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 5 );
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
+		add_action( 'wp_trash_post', array( $this, 'delete_config_post' ) );
 		add_filter( 'the_posts', array( $this, 'display_scheduled_events' ) );
 	}
 
@@ -576,6 +577,13 @@ class SP_Post_types {
 				)
 			)
 		);
+	}
+
+	public function delete_config_post( $post_id ) {
+		$post_type = get_post_type( $post_id );
+		if ( is_sp_config_type( $post_type ) ) {
+			wp_delete_post( $post_id, true );
+		}
 	}
 
 	public function display_scheduled_events( $posts ) {

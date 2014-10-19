@@ -165,11 +165,18 @@
 }
 
 /* Event List */
-.sp-event-list .column-article {
+.sp-event-list .data-date date,
+.sp-event-list .data-time date {
+	display: none;
+}
+.sp-event-list .data-article {
 	white-space: nowrap;
 }
-.sp-event-list .column-article a .dashicons {
+.sp-event-list .data-article a .dashicons {
 	padding-right: 3px;
+}
+.sp-event-list .data-time {
+	white-space: nowrap;
 }
 
 /* Event Blocks */

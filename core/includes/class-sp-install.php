@@ -138,9 +138,6 @@ class SP_Install {
 			//SP_Admin_Sports::apply_preset( $sport );
 		    update_option( 'sportspress_sport', $sport );
 
-		    // Add sample data
-		    $this->add_sample_data();
-
 			// Flag as installed
 			update_option( 'sportspress_installed', 1 );
 		}

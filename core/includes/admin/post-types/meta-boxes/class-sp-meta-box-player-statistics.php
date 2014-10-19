@@ -24,14 +24,17 @@ class SP_Meta_Box_Player_Statistics {
 		$league_num = sizeof( $leagues );
 
 		// Loop through statistics for each league
-		if ( $leagues ): foreach ( $leagues as $league ):
-			?>
-			<p><strong><?php echo $league->name; ?></strong></p>
-			<?php
-			list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( $league->term_id, true );
-			self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams );
-
-		endforeach; endif;
+		if ( $leagues ):
+			$i = 0;
+			foreach ( $leagues as $league ):
+				?>
+				<p><strong><?php echo $league->name; ?></strong></p>
+				<?php
+				list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( $league->term_id, true );
+				self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $i == 0 );
+				$i ++;
+			endforeach;
+		endif;
 		?>
 		<p><strong><?php _e( 'Total', 'sportspress' ); ?></strong></p>
 		<?php
@@ -50,7 +53,7 @@ class SP_Meta_Box_Player_Statistics {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $readonly = false ) {
+	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $readonly = false ) {
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
 		?>
 		<div class="sp-data-table-container">
@@ -59,10 +62,16 @@ class SP_Meta_Box_Player_Statistics {
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
 						<?php if ( $league_id ): ?>
-							<th><label for="sp_columns_team">
-								<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
-								<?php _e( 'Team', 'sportspress' ); ?>
-							</label></th>
+							<th>
+								<?php if ( $has_checkboxes ): ?>
+									<label for="sp_columns_team">
+										<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
+										<?php _e( 'Team', 'sportspress' ); ?>
+									</label>
+								<?php else: ?>
+									<?php _e( 'Team', 'sportspress' ); ?>
+								<?php endif; ?>
+							</th>
 						<?php endif; ?>
 						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
 							<th><?php echo $label; ?></th>
@@ -114,7 +123,7 @@ class SP_Meta_Box_Player_Statistics {
 											),
 										);
 										if ( ! sp_dropdown_pages( $args ) ):
-											_e( 'No results found.', 'sportspress' );
+											_e( '&mdash; None &mdash;', 'sportspress' );
 										endif;
 										?>
 									</td>

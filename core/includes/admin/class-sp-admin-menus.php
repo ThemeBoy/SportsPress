@@ -29,9 +29,6 @@ class SP_Admin_Menus {
 		add_action( 'admin_menu', array( $this, 'seasons_menu' ), 10 );
 		add_filter( 'admin_menu', array( $this, 'menu_add' ), 20 );
 
-		if ( current_user_can( 'manage_options' ) )
-			add_action( 'admin_menu', array( $this, 'status_menu' ), 20 );
-
 		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
 		add_action( 'admin_head', array( $this, 'menu_rename' ) );
 		add_action( 'parent_file', array( $this, 'parent_file' ) );
@@ -78,14 +75,6 @@ class SP_Admin_Menus {
 	 */
 	public function seasons_menu() {
 		add_submenu_page( 'sportspress', __( 'Seasons', 'sportspress' ), __( 'Seasons', 'sportspress' ), 'manage_sportspress', 'edit-tags.php?taxonomy=sp_season');
-	}
-
-	/**
-	 * Add menu item
-	 */
-	public function status_menu() {
-		add_submenu_page( 'sportspress', __( 'System Status', 'sportspress' ),  __( 'System Status', 'sportspress' ) , 'manage_sportspress', 'sp-status', array( $this, 'status_page' ) );
-		register_setting( 'sportspress_status_settings_fields', 'sportspress_status_options' );
 	}
 
 	/**
@@ -195,14 +184,6 @@ class SP_Admin_Menus {
 		if ( ! current_user_can( 'manage_sportspress' ) )
 			return false;
 		return true;
-	}
-
-	/**
-	 * Init the status page
-	 */
-	public function status_page() {
-		$page = include( 'class-sp-admin-status.php' );
-		$page->output();
 	}
 
 	/**

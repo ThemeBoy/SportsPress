@@ -1,4 +1,4 @@
-=== SportsPress - Sports Team & Club Manager ===
+=== SportsPress - All in One Sports Management ===
 Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
@@ -42,41 +42,65 @@ SportsPress is the ultimate all-in-one plugin for transforming your WordPress bl
 * Team & Individual mode
 * Import Events, Teams, Players, and Staff from CSV Files
 * Easy Shortcodes Menu in Editor
+* Certified compatibility with [WPML](http://wpml.org/plugin/sportspress/)
 
 More details about each feature are available on the [SportsPress Website](http://sportspresspro.com/).
 
 = SportsPress Pro =
 
-Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://sportspresspro.com/pricing/) to get access to more advanced features for your club website.
+Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://sportspresspro.com/pricing/) to get access to more advanced features for your team, club, or league website.
 
 = Available Languages =
 * English – English ( en_US )
 * Arabic – العربية ( ar )
 * Armenian – Հայերեն ( hy )
 * Bulgarian – Български ( bg_BG )
-* Chinese (China) - 中文 ( zh_CN )
+* Chinese (China) – 中文 ( zh_CN )
 * Croatian – Hrvatski ( hr )
 * Czech – Čeština ( cs_CZ )
-* Dutch - Nederlands ( nl_NL )
+* Danish – Dansk ( da_DK )
+* Dutch – Nederlands ( nl_NL )
 * French – Français ( fr_FR )
 * Finnish – Suomi ( fi )
 * German – Deutsch ( de_DE )
 * Greek – Ελληνικά ( el_GR )
-* Hungarian - Magyar ( hu_HU )
+* Hungarian – Magyar ( hu_HU )
 * Italian – Italiano ( it_IT )
 * Japanese – 日本語 ( ja )
-* Macedonian - македонски ( mk_MK )
-* Norwegian Bokmål - Norsk bokmål ( nb_NO )
+* Macedonian – македонски ( mk_MK )
+* Norwegian Bokmål – Norsk bokmål ( nb_NO )
 * Polish – Polski ( pl_PL )
 * Portuguese (Brazil) – Português do Brasil ( pt_BR )
 * Portuguese (Portugal) – Português ( pt_PT )
-* Russian - Русский ( ru_RU )
+* Romanian – Română ( ro_RO )
+* Russian – Русский ( ru_RU )
 * Slovak – Slovenčina ( sk_SK )
 * Slovenian – Slovenija ( sl_SI )
 * Spanish – Español ( es_ES )
 * Swedish – Svenska ( sv_SE )
-* Thai - ไทย ( th )
-* Turkish - Türkçe ( tr_TR )
+* Thai – ไทย ( th )
+* Turkish – Türkçe ( tr_TR )
+
+= Sport Presets Included =
+* American Football
+* Australian Rules Football
+* Baseball
+* Basketball
+* Cricket
+* Darts
+* Esports (Dota 2, League of Legends)
+* Handball
+* Ice Hockey
+* Netball
+* Rugby League
+* Rugby Union
+* Snooker
+* Soccer (Association Football)
+* Squash
+* Table Tennis
+* Tennis
+* Volleyball
+* Water Polo
 
 = Documentation =
 * [Getting Started](https://sportspresspro.com/docs/installation/)
@@ -92,7 +116,7 @@ Feel free to share your suggestions with us so we can continue to develop awesom
 
 Developers can contribute via the [SportsPress GitHub Repository](https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md).
 
-Translators can contribute new languages to SportsPress through [Transifex](https://www.transifex.com/projects/p/sportspress/).
+Translators can contribute to SportsPress translations through [Transifex](https://www.transifex.com/projects/p/sportspress/).
 
 = Stay Current =
 To keep up with the latest updates and new features, be sure to do the following:

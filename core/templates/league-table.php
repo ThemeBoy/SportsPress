@@ -113,14 +113,16 @@ foreach ( $data as $team_id => $row ):
 	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . $class . '">';
 
 	// Rank
-	$output .= '<td class="data-rank">' . $before . ( $start + 1 ) . $after . '</td>';
+	$output .= '<td class="data-rank">' . $before . sp_array_value( $row, 'pos' ) . $after . '</td>';
 
 	$name_class = '';
+
+	$name = $before . $name . $after;
 
 	if ( $show_team_logo ):
 		if ( has_post_thumbnail( $team_id ) ):
 			$logo = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon' );
-			$name = '<span class="team-logo">' . $logo . '</span>' . $before . $name . $after;
+			$name = '<span class="team-logo">' . $logo . '</span>' . $name;
 			$name_class .= ' has-logo';
 		endif;
 	endif;
@@ -133,7 +135,7 @@ foreach ( $data as $team_id => $row ):
 	$output .= '<td class="data-name' . $name_class . '">' . $name . '</td>';
 
 	foreach( $labels as $key => $value ):
-		if ( $key == 'name' )
+		if ( in_array( $key, array( 'pos', 'name' ) ) )
 			continue;
 		if ( ! is_array( $columns ) || in_array( $key, $columns ) )
 			$output .= '<td class="data-' . $key . '">' . $before . sp_array_value( $row, $key, '&mdash;' ) . $after . '</td>';

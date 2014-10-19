@@ -50,7 +50,7 @@ endif;
 ?>
 <div class="sp-template sp-template-event-list">
 	<div class="sp-table-wrapper<?php if ( $scrollable ) { ?> sp-scrollable-table-wrapper<?php } ?>">
-		<table class="sp-event-list sp-data-table<?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $paginated ) { ?> sp-paginated-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
+		<table class="sp-event-list sp-data-table<?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $paginated ) { ?> sp-paginated-table<?php } if ( $sortable ) { ?> sp-sortable-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
 			<thead>
 				<tr>
 					<?php
@@ -59,7 +59,6 @@ endif;
 					if ( $usecolumns == null || in_array( 'event', $usecolumns ) ):
 						if ( $title_format == 'homeaway' ):
 							echo '<th class="data-home">' . __( 'Home', 'sportspress' ) . '</th>';
-							echo '<th class="data-away">' . __( 'Away', 'sportspress' ) . '</th>';
 						elseif ( $title_format == 'teams' ):
 							echo '<th class="data-teams">' . __( 'Teams', 'sportspress' ) . '</th>';
 						else:
@@ -67,8 +66,15 @@ endif;
 						endif;
 					endif;
 
-					if ( $usecolumns == null || in_array( 'time', $usecolumns ) )
-						echo '<th class="data-time">' . __( 'Time/Results', 'sportspress' ) . '</th>';
+					if ( $usecolumns == null || in_array( 'time', $usecolumns ) ):
+						if ( $usecolumns == null || in_array( 'event', $usecolumns ) && $title_format == 'homeaway' )
+							echo '<th class="data-time">&nbsp;</th>';
+						else
+							echo '<th class="data-time">' . __( 'Time/Results', 'sportspress' ) . '</th>';
+					endif;
+
+					if ( $usecolumns == null || in_array( 'event', $usecolumns ) && $title_format == 'homeaway' )
+						echo '<th class="data-away">' . __( 'Away', 'sportspress' ) . '</th>';
 
 					if ( $usecolumns == null || in_array( 'league', $usecolumns ) )
 						echo '<th class="data-league">' . __( 'League', 'sportspress' ) . '</th>';
@@ -127,7 +133,9 @@ endif;
 
 								if ( $team_result != null ):
 									$main_results[] = $team_result;
-									$team_output .= ' (' . $team_result . ')';
+									if ( $usecolumns != null && ! in_array( 'time', $usecolumns ) ):
+										$team_output .= ' (' . $team_result . ')';
+									endif;
 								endif;
 
 								$teams_array[] = $team_output;
@@ -141,14 +149,12 @@ endif;
 
 					echo '<tr class="sp-row sp-post' . ( $i % 2 == 0 ? ' alternate' : '' ) . '">';
 
-						echo '<td class="data-date"><a href="' . get_permalink( $event->ID ) . '">' . get_post_time( get_option( 'date_format' ), false, $event, true ) . '</a></td>';
+						echo '<td class="data-date"><a href="' . get_permalink( $event->ID ) . '"><date>' . get_post_time( 'Y-m-d H:i:s', false, $event ) . '</date>' . get_post_time( get_option( 'date_format' ), false, $event, true ) . '</a></td>';
 
 						if ( $usecolumns == null || in_array( 'event', $usecolumns ) ):
 							if ( $title_format == 'homeaway' ):
 								$team = array_shift( $teams_array );
 								echo '<td class="data-home">' . $team . '</td>';
-								$team = array_shift( $teams_array );
-								echo '<td class="data-away">' . $team . '</td>';
 							else:
 								if ( $title_format == 'teams' ):
 									echo '<td class="data-event">' . $teams_output . '</td>';
@@ -163,9 +169,14 @@ endif;
 							if ( ! empty( $main_results ) ):
 								echo implode( ' - ', $main_results );
 							else:
-								echo get_post_time( get_option( 'time_format' ), false, $event, true );
+								echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . get_post_time( get_option( 'time_format' ), false, $event, true );
 							endif;
 							echo '</a></td>';
+						endif;
+
+						if ( $usecolumns == null || in_array( 'event', $usecolumns ) && $title_format == 'homeaway' ):
+							$team = array_shift( $teams_array );
+							echo '<td class="data-away">' . $team . '</td>';
 						endif;
 
 						if ( $usecolumns == null || in_array( 'league', $usecolumns ) ):

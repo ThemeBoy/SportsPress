@@ -48,6 +48,14 @@ class SP_Settings_Teams extends SP_Settings_Page {
 				'type' 		=> 'checkbox',
 			),
 
+			array(
+				'title'     => __( 'Visit Site', 'sportspress' ),
+				'desc' 		=> __( 'Open link in a new window/tab', 'sportspress' ),
+				'id' 		=> 'sportspress_team_site_target_blank',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+			),
+
 			array( 'type' => 'sectionend', 'id' => 'team_options' ),
 
 			array( 'title' => __( 'League Tables', 'sportspress' ), 'type' => 'title', 'id' => 'table_options' ),

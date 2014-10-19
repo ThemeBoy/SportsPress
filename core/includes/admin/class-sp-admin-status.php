@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     0.8
+ * @version     1.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -16,13 +16,6 @@ if ( ! class_exists( 'SP_Admin_Status' ) ) :
  * SP_Admin_Status Class
  */
 class SP_Admin_Status {
-
-	/**
-	 * Handles output of the reports page in admin.
-	 */
-	public function output() {
-		include_once( 'views/html-admin-page-status.php' );
-	}
 
 	/**
 	 * Retrieve metadata from a file. Based on WP Core's get_file_data function

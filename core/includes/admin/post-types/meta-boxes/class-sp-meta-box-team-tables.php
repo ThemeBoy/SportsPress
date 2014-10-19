@@ -54,7 +54,7 @@ class SP_Meta_Box_Team_Tables {
 						<th class="column-table">
 							<?php _e( 'League Table', 'sportspress' ); ?>
 						</th>
-						<th class="column-players">
+						<th class="column-teams">
 							<?php _e( 'Teams', 'sportspress' ); ?>
 						</th>
 						<th class="column-league">
@@ -71,7 +71,7 @@ class SP_Meta_Box_Team_Tables {
 						if ( sizeof( $data ) > 0 ):
 							$i = 0;
 							foreach ( $data as $table ):
-								$players = array_filter( get_post_meta( $table->ID, 'sp_player' ) );
+								$teams = array_filter( get_post_meta( $table->ID, 'sp_team' ) );
 								$format = get_post_meta( $table->ID, 'sp_format', true );
 								?>
 								<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
@@ -83,7 +83,7 @@ class SP_Meta_Box_Team_Tables {
 											<?php echo $table->post_title; ?>
 										</a>
 									</td>
-									<td><?php echo sizeof( $players ); ?></td>
+									<td><?php echo sizeof( $teams ); ?></td>
 									<td><?php echo get_the_terms ( $table->ID, 'sp_league' ) ? the_terms( $table->ID, 'sp_league' ) : '&mdash;'; ?></td>
 									<td><?php echo get_the_terms ( $table->ID, 'sp_season' ) ? the_terms( $table->ID, 'sp_season' ) : '&mdash;'; ?></td>
 								</tr>

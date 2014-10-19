@@ -20,9 +20,9 @@ class SP_Meta_Box_List_Data {
 	 */
 	public static function output( $post ) {
 		$list = new SP_Player_List( $post );
-		list( $columns, $data, $placeholders, $merged ) = $list->data( true );
+		list( $columns, $data, $placeholders, $merged, $orderby ) = $list->data( true );
 		$adjustments = $list->adjustments;
-		self::table( $columns, $data, $placeholders, $adjustments );
+		self::table( $columns, $data, $placeholders, $adjustments, $orderby );
 	}
 
 	/**
@@ -36,7 +36,7 @@ class SP_Meta_Box_List_Data {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $columns = array(), $data = array(), $placeholders = array(), $adjustments = array() ) {
+	public static function table( $columns = array(), $data = array(), $placeholders = array(), $adjustments = array(), $orderby = 'number' ) {
 		$show_player_photo = get_option( 'sportspress_list_show_photos', 'no' ) == 'yes' ? true : false;
 		?>
 		<ul class="subsubsub sp-table-bar">
@@ -47,14 +47,17 @@ class SP_Meta_Box_List_Data {
 			<table class="widefat sp-data-table sp-player-list-table">
 				<thead>
 					<tr>
-						<th>#</th>
+						<th><label for="sp_columns_number">
+							<input type="checkbox" name="sp_columns[]" value="number" id="sp_columns_number" <?php checked( ! is_array( $columns ) || array_key_exists( 'number', $columns ) ); ?>>
+							<?php echo 'number' == $orderby ? '#' : __( 'Rank', 'sportspress' ); ?>
+						</label></th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
 						<th><label for="sp_columns_team">
 							<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
 							<?php _e( 'Team', 'sportspress' ); ?>
 						</label></th>
 						<?php foreach ( $columns as $key => $label ): ?>
-							<?php if ( $key == 'team' ) continue; ?>
+							<?php if ( in_array( $key, array( 'number', 'team' ) ) ) continue; ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
 								<?php echo $label; ?>
 							</label></th>
@@ -76,7 +79,15 @@ class SP_Meta_Box_List_Data {
 								$default_name = get_the_title( $player_id );
 							?>
 							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-								<td><?php echo ( $number ? $number : '&nbsp;' ); ?></td>
+								<td>
+									<?php
+									if ( 'number' == $orderby ) {
+										echo ( $number ? $number : '&nbsp;' );
+									} else {
+										echo $i + 1;
+									}
+									?>
+								</td>
 								<td>
 									<?php if ( $show_player_photo ) echo get_the_post_thumbnail( $player_id, 'sportspress-fit-mini' ); ?>
 									<span class="sp-default-value">
@@ -105,7 +116,7 @@ class SP_Meta_Box_List_Data {
 									?>
 								</td>
 								<?php foreach( $columns as $column => $label ):
-									if ( $column == 'team' ) continue;
+									if ( in_array( $column, array( 'number', 'team' ) ) ) continue;
 									$value = sp_array_value( $player_stats, $column, '' );
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $player_id, array() ), $column, 0 );
 									?>
