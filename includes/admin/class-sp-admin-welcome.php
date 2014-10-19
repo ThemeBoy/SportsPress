@@ -243,6 +243,7 @@ class SP_Admin_Welcome {
 			<?php
 			endif;
 			if ( isset( $_POST['add_sample_data'] ) ):
+				SP_Admin_Sample_Data::delete_posts();
 				SP_Admin_Sample_Data::insert_posts();
 			endif;
 			?>

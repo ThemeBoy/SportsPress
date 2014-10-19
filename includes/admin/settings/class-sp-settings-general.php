@@ -185,6 +185,7 @@ class SP_Settings_General extends SP_Settings_Page {
 		endif;
 
 		if ( isset( $_POST['add_sample_data'] ) ):
+			SP_Admin_Sample_Data::delete_posts();
 			SP_Admin_Sample_Data::insert_posts();
 		endif;
 
