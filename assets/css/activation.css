@@ -79,13 +79,6 @@ p.sportspress-actions a.button-primary:focus {
     *zoom: 1;
 }
 
-.sportspress-steps ul {
-	width: 45%;
-	margin-right: 5%;
-	float: left;
-	margin-bottom: 0;
-}
-
 .sportspress-steps .welcome-icon:before {
 	font: 400 20px/1 dashicons;
 	speak: none;
