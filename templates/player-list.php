@@ -84,14 +84,16 @@ foreach ( $groups as $group ):
 	$output .= '<div class="sp-table-wrapper' . ( $scrollable ? ' sp-scrollable-table-wrapper' : '' ) . '">' .
 		'<table class="sp-player-list sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
-	if ( in_array( $orderby, array( 'number', 'name' ) ) ):
-		$output .= '<th class="data-number">#</th>';
-	else:
-		$output .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
+	if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
+		if ( in_array( $orderby, array( 'number', 'name' ) ) ):
+			$output .= '<th class="data-number">#</th>';
+		else:
+			$output .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
+		endif;
 	endif;
 
 	foreach( $labels as $key => $label ):
-		if ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) )
+		if ( $key !== 'number' && ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) ) )
 		$output .= '<th class="data-' . $key . '">'. $label . '</th>';
 	endforeach;
 
@@ -112,10 +114,12 @@ foreach ( $groups as $group ):
 		$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 		// Rank or number
-		if ( isset( $orderby ) && $orderby != 'number' ):
-			$output .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
-		else:
-			$output .= '<td class="data-number">' . sp_array_value( $row, 'number', '&nbsp;' ) . '</td>';
+		if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
+			if ( isset( $orderby ) && $orderby != 'number' ):
+				$output .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
+			else:
+				$output .= '<td class="data-number">' . sp_array_value( $row, 'number', '&nbsp;' ) . '</td>';
+			endif;
 		endif;
 		
 		$name_class = '';
@@ -145,7 +149,7 @@ foreach ( $groups as $group ):
 		endif;
 
 		foreach( $labels as $key => $value ):
-			if ( in_array( $key, array( 'name', 'team' ) ) )
+			if ( in_array( $key, array( 'number', 'name', 'team' ) ) )
 				continue;
 			if ( ! is_array( $columns ) || in_array( $key, $columns ) )
 			$output .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
