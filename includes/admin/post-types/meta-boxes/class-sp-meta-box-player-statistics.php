@@ -123,7 +123,7 @@ class SP_Meta_Box_Player_Statistics {
 											),
 										);
 										if ( ! sp_dropdown_pages( $args ) ):
-											_e( 'No results found.', 'sportspress' );
+											_e( '&mdash; None &mdash;', 'sportspress' );
 										endif;
 										?>
 									</td>
