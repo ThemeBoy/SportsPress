@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'SP_Settings_General' ) ) :
 
 /**
- * SP_Admin_Settings_General
+ * SP_Settings_General
  */
 class SP_Settings_General extends SP_Settings_Page {
 

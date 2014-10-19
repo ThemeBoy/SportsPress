@@ -39,7 +39,7 @@ class SP_Admin_Assets {
 			wp_enqueue_style( 'jquery-chosen', SP()->plugin_url() . '/assets/css/chosen.css', array(), '1.1.0' );
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_style( 'sportspress-admin', SP()->plugin_url() . '/assets/css/admin.css', array(), SP_VERSION );
-		} elseif ( strpos( $screen->id, 'sp-config' ) !== false || strpos( $screen->id, 'sp-status' ) !== false ) {
+		} elseif ( strpos( $screen->id, 'sp-config' ) !== false ) {
 			wp_enqueue_style( 'sportspress-admin', SP()->plugin_url() . '/assets/css/admin.css', array(), SP_VERSION );
 		}
 
