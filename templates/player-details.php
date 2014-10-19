@@ -48,7 +48,9 @@ $data = array_merge( $metrics_before, $common, $metrics_after );
 if ( $current_teams ):
 	$teams = array();
 	foreach ( $current_teams as $team ):
-		$teams[] = '<a href="' . get_post_permalink( $team ) . '">' . get_the_title( $team ) . '</a>';
+		$team_name = get_the_title( $team );
+		if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
+		$teams[] = $team_name;
 	endforeach;
 	$label = _n( 'Current Team', 'Current Teams', count( $teams ), 'sportspress' );
 	$data[ $label ] = implode( ', ', $teams );
@@ -57,7 +59,9 @@ endif;
 if ( $past_teams ):
 	$teams = array();
 	foreach ( $past_teams as $team ):
-		$teams[] = '<a href="' . get_post_permalink( $team ) . '">' . get_the_title( $team ) . '</a>';
+		$team_name = get_the_title( $team );
+		if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
+		$teams[] = $team_name;
 	endforeach;
 	$data[ __( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
 endif;
