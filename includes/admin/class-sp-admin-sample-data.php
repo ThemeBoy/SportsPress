@@ -193,7 +193,7 @@ class SP_Admin_Sample_Data {
 		$columns = array( 'team' );
 		$args = array(
 			'post_type' => array( 'sp_performance', 'sp_statistic' ),
-			'posts_per_page' => 5,
+			'posts_per_page' => 2,
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
 		);
