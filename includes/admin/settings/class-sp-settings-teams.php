@@ -49,6 +49,14 @@ class SP_Settings_Teams extends SP_Settings_Page {
 			),
 
 			array(
+				'title'     => __( 'Abbreviation', 'sportspress' ),
+				'desc' 		=> __( 'Abbreviate team names', 'sportspress' ),
+				'id' 		=> 'sportspress_abbreviate_teams',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+			),
+
+			array(
 				'title'     => __( 'Visit Site', 'sportspress' ),
 				'desc' 		=> __( 'Open link in a new window/tab', 'sportspress' ),
 				'id' 		=> 'sportspress_team_site_target_blank',
