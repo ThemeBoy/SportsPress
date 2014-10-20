@@ -31,6 +31,7 @@ add_action( 'get_the_generator_xhtml', 'sp_generator_tag', 10, 2 );
  * @see sportspress_output_event_venue()
  * @see sportspress_output_event_performance()
  */
+add_action( 'sportspress_single_event_content', 'sportspress_output_event_logos', 5 );
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_video', 10 );
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_results', 20 );
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_details', 30 );
@@ -118,22 +119,6 @@ function sportspress_the_title( $title, $id = null ) {
 			$role = $staff->role();
 			if ( $role ):
 				$title = '<strong>' . $role->name . '</strong> ' . $title;
-			endif;
-		elseif ( is_singular( 'sp_event' ) && get_option( 'sportspress_event_show_logos', 'yes' ) == 'yes' ):
-			$teams = get_post_meta( $id, 'sp_team' );
-			$teams = array_filter( $teams );
-			if ( $teams ):
-				$team_logos = array();
-				foreach ( $teams as $team ):
-					$team_logos[] = get_the_post_thumbnail( $team, 'sportspress-fit-icon' );
-				endforeach;
-				$team_logos = array_filter( $team_logos );
-				if ( ! empty( $team_logos ) ):
-					$title .= '<div class="sp-event-teams">';
-					$delimiter = get_option( 'sportspress_event_teams_delimiter', 'vs' );
-					$title .= implode( ' ' . $delimiter . ' ', $team_logos );
-					$title .= '</div>';
-				endif;
 			endif;
 		endif;
 	endif;
@@ -251,6 +236,18 @@ function sportspress_team_permalink( $permalink, $post ) {
     return $permalink;
 }
 add_filter( 'post_type_link', 'sportspress_team_permalink', 10, 2 );
+
+function sportspress_abbreviate_team( $title, $id = null ) {
+    if ( ! is_admin() && 'sp_team' == get_post_type( $id ) && get_option( 'sportspress_abbreviate_teams', 'yes' ) == 'yes' ):
+		if ( in_the_loop() && get_the_ID() == $id ) return $title;
+    	$abbreviation = get_post_meta( $id, 'sp_abbreviation', true );
+    	if ( ! empty( $abbreviation ) ):
+    		return $abbreviation;
+    	endif;
+    endif;
+    return $title;
+}
+add_filter( 'the_title', 'sportspress_abbreviate_team', 10, 2 );
 
 function sportspress_no_terms_links( $term_list, $taxonomy ) {
 

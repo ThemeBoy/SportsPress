@@ -70,6 +70,20 @@ if ( ! function_exists( 'sportspress_taxonomy_archive_description' ) ) {
 
 /** Single Event ********************************************************/
 
+if ( ! function_exists( 'sportspress_output_event_logos' ) ) {
+
+	/**
+	 * Output the event logos.
+	 *
+	 * @access public
+	 * @subpackage	Event/Logos
+	 * @return void
+	 */
+	function sportspress_output_event_logos() {
+		sp_get_template( 'event-logos.php' );
+	}
+}
+
 if ( ! function_exists( 'sportspress_output_event_video' ) ) {
 
 	/**
