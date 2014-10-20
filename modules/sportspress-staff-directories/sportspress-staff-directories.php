@@ -128,37 +128,6 @@ class SportsPress_Staff_Directories {
 				)
 			)
 		);
-
-		register_post_type( 'sp_bracket',
-			apply_filters( 'sportspress_register_post_type_bracket',
-				array(
-					'labels' => array(
-						'name' 					=> __( 'Brackets', 'sportspress' ),
-						'singular_name' 		=> __( 'Bracket', 'sportspress' ),
-						'add_new_item' 			=> __( 'Add New Bracket', 'sportspress' ),
-						'edit_item' 			=> __( 'Edit Bracket', 'sportspress' ),
-						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View Bracket', 'sportspress' ),
-						'search_items' 			=> __( 'Search', 'sportspress' ),
-						'not_found' 			=> __( 'No results found.', 'sportspress' ),
-						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
-					),
-					'public' 				=> true,
-					'show_ui' 				=> true,
-					'capability_type' 		=> 'sp_tournament',
-					'map_meta_cap' 			=> true,
-					'publicly_queryable' 	=> true,
-					'exclude_from_search' 	=> false,
-					'hierarchical' 			=> false,
-					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_bracket_slug', 'bracket' ) ),
-					'supports' 				=> array( 'title', 'author', 'thumbnail' ),
-					'has_archive' 			=> false,
-					'show_in_nav_menus' 	=> true,
-					'show_in_menu' => 'edit.php?post_type=sp_tournament',
-					'show_in_admin_bar' 	=> true,
-				)
-			)
-		);
 	}
 
 	/**
@@ -197,9 +166,9 @@ class SportsPress_Staff_Directories {
         $id = get_the_ID();
         $format = get_post_meta( $id, 'sp_format', true );
         if ( array_key_exists( $format, SP()->formats->directory ) )
-			sp_get_template( 'staff-' . $format . '.php', array( 'id' => $id ), 'staff-contacts', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+			sp_get_template( 'staff-' . $format . '.php', array( 'id' => $id ), 'staff-' . $format, SP_STAFF_DIRECTORIES_DIR . 'templates/' );
         else
-			sp_get_template( 'staff-list.php', array( 'id' => $id ), 'staff-contacts', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+			sp_get_template( 'staff-list.php', array( 'id' => $id ), 'staff-list', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 	}
 
 	/**

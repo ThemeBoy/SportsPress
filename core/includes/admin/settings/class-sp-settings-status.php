@@ -329,7 +329,7 @@ class SP_Settings_Status extends SP_Settings_Page {
 
 			<tbody>
 				<tr>
-					<td><?php _e( 'Leagues', 'sportspress' ); ?>:</td>
+					<td><?php _e( 'Competitions', 'sportspress' ); ?>:</td>
 					<td><?php
 						$display_terms = array();
 						$terms = get_terms( 'sp_league', array( 'hide_empty' => 0 ) );

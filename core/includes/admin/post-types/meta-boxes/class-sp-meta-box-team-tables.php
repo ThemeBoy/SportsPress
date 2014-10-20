@@ -58,7 +58,7 @@ class SP_Meta_Box_Team_Tables {
 							<?php _e( 'Teams', 'sportspress' ); ?>
 						</th>
 						<th class="column-league">
-							<?php _e( 'League', 'sportspress' ); ?>
+							<?php _e( 'Competition', 'sportspress' ); ?>
 						</th>
 						<th class="column-season">
 							<?php _e( 'Season', 'sportspress' ); ?>

@@ -67,7 +67,7 @@ class SP_Admin_Menus {
 	 * Add menu item
 	 */
 	public function leagues_menu() {
-		add_submenu_page( 'sportspress', __( 'Leagues', 'sportspress' ), __( 'Leagues', 'sportspress' ), 'manage_sportspress', 'edit-tags.php?taxonomy=sp_league');
+		add_submenu_page( 'sportspress', __( 'Competitions', 'sportspress' ), __( 'Competitions', 'sportspress' ), 'manage_sportspress', 'edit-tags.php?taxonomy=sp_league');
 	}
 
 	/**
@@ -271,7 +271,7 @@ class SP_Admin_Menus {
 	}
 
 	public function remove_leagues( $arr = array() ) {
-		return $arr[0] != __( 'Leagues', 'sportspress' );
+		return $arr[0] != __( 'Competitions', 'sportspress' );
 	}
 
 	public function remove_positions( $arr = array() ) {

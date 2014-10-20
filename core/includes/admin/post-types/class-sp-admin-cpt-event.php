@@ -92,7 +92,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			'date' => __( 'Date', 'sportspress' ),
 			'sp_time' => __( 'Time', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),
-			'sp_league' => __( 'League', 'sportspress' ),
+			'sp_league' => __( 'Competition', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_venue' => __( 'Venue', 'sportspress' ),
 		), $existing_columns, array(
@@ -109,14 +109,11 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		switch ( $column ):
 			case 'sp_format':
 				$format = get_post_meta( $post_id, 'sp_format', true );
-				switch ( $format ):
-					case 'league':
-						echo '<span class="dashicons sp-icon-crown tips" title="' . __( 'League', 'sportspress' ) . '"></span>';
-						break;
-					case 'friendly':
-						echo '<span class="dashicons sp-icon-smile tips" title="' . __( 'Friendly', 'sportspress' ) . '"></span>';
-						break;
-				endswitch;
+				$formats = new SP_Formats();
+				$event_formats = $formats->event;
+				if ( array_key_exists( $format, $event_formats ) ):
+					echo '<span class="dashicons sp-icon-' . $format . ' tips" title="' . $event_formats[ $format ] . '"></span>';
+				endif;
 				break;
 			case 'sp_time':
 				echo get_post_time( 'H:i', false, $post_id, true );

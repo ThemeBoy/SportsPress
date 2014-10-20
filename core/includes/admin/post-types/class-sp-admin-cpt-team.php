@@ -64,7 +64,7 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 			'title' => null,
 			'sp_url' => __( 'URL', 'sportspress' ),
 			'sp_abbreviation' => __( 'Abbreviation', 'sportspress' ),
-			'sp_league' => __( 'Leagues', 'sportspress' ),
+			'sp_league' => __( 'Competitions', 'sportspress' ),
 			'sp_season' => __( 'Seasons', 'sportspress' ),
 		), $existing_columns, array(
 			'title' => __( 'Team', 'sportspress' ),

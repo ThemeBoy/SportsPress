@@ -24,7 +24,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_label = __( 'Import Teams', 'sportspress' );
 			$this->columns = array(
 				'post_title' => __( 'Name', 'sportspress' ),
-				'sp_league' => __( 'Leagues', 'sportspress' ),
+				'sp_league' => __( 'Competitions', 'sportspress' ),
 				'sp_season' => __( 'Seasons', 'sportspress' ),
 				'sp_url' => __( 'Site URL', 'sportspress' ),
 				'sp_abbreviation' => __( 'Abbreviation', 'sportspress' ),

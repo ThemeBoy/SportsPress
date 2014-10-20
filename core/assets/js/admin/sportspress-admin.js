@@ -299,6 +299,11 @@ jQuery(document).ready(function($){
 		axis: "y"
 	});
 
+	// Autosave
+	$(".sp-autosave").change(function() {
+		$(this).attr("readonly", true).closest("form").submit();
+	});
+
 	// Video embed
 	$(".sp-add-video").click(function() {
 		$(this).closest("fieldset").hide().siblings(".sp-video-field").show();
@@ -416,11 +421,11 @@ jQuery(document).ready(function($){
 	// Event format affects data
 	$(".post-type-sp_event #post-formats-select input.post-format").change(function() {
 		layout = $(".post-type-sp_event #post-formats-select input:checked").val();
-		if ( layout == "league" ) {
-			$(".sp-event-sp_league-field").show().find("select").prop("disabled", false);
-			$(".sp-event-sp_season-field").show().find("select").prop("disabled", false);
-		} else if ( layout == "friendly" ) {
+		if ( layout == "friendly" ) {
 			$(".sp-event-sp_league-field").hide().find("select").prop("disabled", true);
+			$(".sp-event-sp_season-field").show().find("select").prop("disabled", false);
+		} else {
+			$(".sp-event-sp_league-field").show().find("select").prop("disabled", false);
 			$(".sp-event-sp_season-field").show().find("select").prop("disabled", false);
 		}
 	});

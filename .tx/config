@@ -1,0 +1,12 @@
+[main]
+host = https://www.transifex.com
+
+[sportspress.sportspress]
+file_filter = core/languages/sportspress-<lang>.po
+source_file = core/languages/sportspress.pot
+source_lang = en_US
+
+[sportspress.sportspress-pro]
+file_filter = languages/sportspress-pro-<lang>.po
+source_file = languages/sportspress-pro.pot
+source_lang = en_US

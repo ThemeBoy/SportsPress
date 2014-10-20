@@ -88,6 +88,7 @@ class SportsPress_Team_Colors {
 		// Defaults
 		if ( empty( $options['primary'] ) ) $options['primary'] = '#00a69c';
 		if ( empty( $options['background'] ) ) $options['background'] = '#f4f4f4';
+		if ( empty( $options['highlight'] ) ) $options['highlight'] = '#ffffff';
 		if ( empty( $options['text'] ) ) $options['text'] = '#363f48';
 		if ( empty( $options['heading'] ) ) $options['heading'] = '#ffffff';
         if ( empty( $options['link'] ) ) $options['link'] = '#00a69c';

@@ -27,7 +27,7 @@ class SP_Meta_Box_List_Details {
 		$order = get_post_meta( $post->ID, 'sp_order', true );
 		?>
 		<div>
-			<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
+			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
 			<p class="sp-tab-select">
 				<?php
 				$args = array(

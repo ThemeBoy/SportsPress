@@ -36,16 +36,20 @@ class SportsPress_Tournaments {
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handlers' ) );
 		add_filter( 'sportspress_permalink_slugs', array( $this, 'add_permalink_slug' ) );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
-		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'add_screen_ids' ) );
-		//add_action( 'sportspress_single_bracket_content', array( $this, 'output_bracket' ), 10 );
+		add_action( 'sportspress_single_tournament_content', array( $this, 'output_tournament' ), 10 );
+		add_action( 'sportspress_after_single_tournament', 'sportspress_output_br_tag', 100 );
+	    add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
+	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_filter( 'sportspress_staff_settings', array( $this, 'add_options' ) );
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
 		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ), 30 );
-		add_filter( 'sportspress_event_taxonomies', array( $this, 'add_event_taxonomy' ) );
+
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'sportspress_frontend_css', array( $this, 'frontend_css' ) );
 
 		if ( defined( 'SP_PRO_PLUGIN_FILE' ) )
 			register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
@@ -69,7 +73,7 @@ class SportsPress_Tournaments {
 	 * Include required files.
 	*/
 	private function includes() {
-		include_once( 'includes/class-sp-tournament-bracket.php' );
+		include_once( 'includes/class-sp-tournament.php' );
 
 		if ( ! is_admin() || defined( 'DOING_AJAX' ) ) {
 			$this->frontend_includes();
@@ -80,7 +84,7 @@ class SportsPress_Tournaments {
 	 * Include required frontend files.
 	 */
 	public function frontend_includes() {
-		include_once( 'includes/class-sp-bracket-template-loader.php' );
+		include_once( 'includes/class-sp-tournament-template-loader.php' );
 		//include_once( 'includes/class-sp-shortcode-staff-list.php' );
 		//include_once( 'includes/class-sp-shortcode-staff-gallery.php' );
 	}
@@ -89,50 +93,13 @@ class SportsPress_Tournaments {
 	 * Init plugin when WordPress Initialises.
 	 */
 	public function init() {
-		// Register taxonomies
-		$this->register_taxonomies();
-		
 		// Register post type
 		$this->register_post_type();
 	}
 
-	/**
-	 * Register taxonomies
-	 */
-	public static function register_taxonomies() {
-		$labels = array(
-			'name' => __( 'Groups', 'sportspress' ),
-			'singular_name' => __( 'Group', 'sportspress' ),
-			'all_items' => __( 'All', 'sportspress' ),
-			'edit_item' => __( 'Edit Group', 'sportspress' ),
-			'view_item' => __( 'View', 'sportspress' ),
-			'update_item' => __( 'Update', 'sportspress' ),
-			'add_new_item' => __( 'Add New', 'sportspress' ),
-			'new_item_name' => __( 'Name', 'sportspress' ),
-			'parent_item' => __( 'Parent', 'sportspress' ),
-			'parent_item_colon' => __( 'Parent:', 'sportspress' ),
-			'search_items' =>  __( 'Search', 'sportspress' ),
-			'not_found' => __( 'No results found.', 'sportspress' ),
-		);
-		$args = array(
-			'label' => __( 'Groups', 'sportspress' ),
-			'labels' => $labels,
-			'public' => true,
-			'show_in_nav_menus' => false,
-			'show_tagcloud' => false,
-			'hierarchical' => true,
-			'rewrite' => array( 'slug' => get_option( 'sportspress_group_slug', 'group' ) ),
-		);
-		$object_types = apply_filters( 'sportspress_group_object_types', array( 'sp_tournament' ) );
-		register_taxonomy( 'sp_group', $object_types, $args );
-		foreach ( $object_types as $object_type ):
-			register_taxonomy_for_object_type( 'sp_group', $object_type );
-		endforeach;
-	}
-
 	public function register_post_type() {
 		register_post_type( 'sp_tournament',
-			apply_filters( 'sportspress_register_post_type_bracket',
+			apply_filters( 'sportspress_register_post_type_tournament',
 				array(
 					'labels' => array(
 						'name' 					=> __( 'Tournaments', 'sportspress' ),
@@ -152,7 +119,7 @@ class SportsPress_Tournaments {
 					'publicly_queryable' 	=> true,
 					'exclude_from_search' 	=> false,
 					'hierarchical' 			=> false,
-					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_bracket_slug', 'bracket' ) ),
+					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_tournament_slug', 'tournament' ) ),
 					'supports' 				=> array( 'title', 'author', 'thumbnail', 'comments' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
@@ -167,47 +134,27 @@ class SportsPress_Tournaments {
 	 */
 	public static function add_post_type( $post_types = array() ) {
 		$post_types[] = 'sp_tournament';
-		$post_types[] = 'sp_group';
-		$post_types[] = 'sp_bracket';
 		return $post_types;
 	}
-
-	/**
-	 * Add to hierarchy
-	 */
-	public static function add_to_hierarchy( $hierarchy = array() ) {
-		$hierarchy['sp_bracket'] = array( 'sp_tournament' );
-		$hierarchy['sp_group'] = array( 'sp_tournament' );
-		return $hierarchy;
-	}
-
 	/**
 	 * Add screen ids
 	 */
 	public static function add_screen_ids( $screen_ids = array() ) {
 		$screen_ids[] = 'edit-sp_tournament';
 		$screen_ids[] = 'sp_tournament';
-		$screen_ids[] = 'edit-sp_group';
-		$screen_ids[] = 'sp_group';
-		$screen_ids[] = 'edit-sp_bracket';
-		$screen_ids[] = 'sp_bracket';
 		return $screen_ids;
 	}
 
 	/**
-	 * Output the tournament bracket.
+	 * Output the tournament.
 	 *
 	 * @access public
 	 * @subpackage	Directory
 	 * @return void
 	 */
-	public static function output_bracket() {
+	public static function output_tournament() {
         $id = get_the_ID();
-        $format = get_post_meta( $id, 'sp_format', true );
-        if ( array_key_exists( $format, SP()->formats->bracket ) )
-			sp_get_template( 'staff-' . $format . '.php', array( 'id' => $id ), 'staff-contacts', SP_TOURNAMENTS_DIR . 'templates/' );
-        else
-			sp_get_template( 'staff-list.php', array( 'id' => $id ), 'staff-contacts', SP_TOURNAMENTS_DIR . 'templates/' );
+		sp_get_template( 'tournament-bracket.php', array( 'id' => $id ), 'tournament-bracket', SP_TOURNAMENTS_DIR . 'templates/' );
 	}
 
 	/**
@@ -226,8 +173,8 @@ class SportsPress_Tournaments {
 	 * Conditonally load classes and functions only needed when viewing the post type.
 	 */
 	public function include_post_type_handlers() {
-		include_once( 'includes/class-sp-tournament-bracket-meta-boxes.php' );
-		include_once( 'includes/class-sp-admin-cpt-bracket.php' );
+		include_once( 'includes/class-sp-tournament-meta-boxes.php' );
+		include_once( 'includes/class-sp-admin-cpt-tournament.php' );
 	}
 
 	/**
@@ -236,8 +183,16 @@ class SportsPress_Tournaments {
 	 * @return array
 	 */
 	public function add_permalink_slug( $slugs ) {
-		$slugs[] = array( 'bracket', __( 'Brackets', 'sportspress' ) );
+		$slugs[] = array( 'tournament', __( 'Tournaments', 'sportspress' ) );
 		return $slugs;
+	}
+
+	/**
+	 * Add settings page
+	 */
+	public function add_settings_page( $settings = array() ) {
+		$settings[] = include( 'includes/class-sp-settings-tournaments.php' );
+		return $settings;
 	}
 
 
@@ -245,8 +200,7 @@ class SportsPress_Tournaments {
 	 * Add formats.
 	 */
 	public function add_formats( $formats ) {
-		$formats['event']['group'] = __( 'Group', 'sportspress' );
-		$formats['event']['bracket'] = __( 'Bracket', 'sportspress' );
+		$formats['event']['tournament'] = __( 'Tournament', 'sportspress' );
 		return $formats;
 	}
 
@@ -304,6 +258,35 @@ class SportsPress_Tournaments {
 	}
 
 	/**
+	 * Add styles to SP frontend
+	 */
+	public function add_styles( $styles = array() ) {
+		$styles['sportspress-tournaments'] = array(
+			'src'     => str_replace( array( 'http:', 'https:' ), '', SP_TOURNAMENTS_URL ) . 'css/sportspress-tournaments.css',
+			'deps'    => 'sportspress-general',
+			'version' => SP_TOURNAMENTS_VERSION,
+			'media'   => 'all'
+		);
+
+		if ( is_rtl() ) {
+			$styles['sportspress-tournaments-rtl'] = array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', SP_TOURNAMENTS_URL ) . 'css/sportspress-tournaments-rtl.css',
+				'deps'    => 'sportspress-tournaments',
+				'version' => SP_TOURNAMENTS_VERSION,
+				'media'   => 'all'
+			);
+		} else {
+			$styles['sportspress-tournaments-ltr'] = array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', SP_TOURNAMENTS_URL ) . 'css/sportspress-tournaments-ltr.css',
+				'deps'    => 'sportspress-tournaments',
+				'version' => SP_TOURNAMENTS_VERSION,
+				'media'   => 'all'
+			);
+		}
+		return $styles;
+	}
+
+	/**
 	 * Add text options 
 	 */
 	public function add_text_options( $options = array() ) {
@@ -322,7 +305,7 @@ class SportsPress_Tournaments {
 		$this->register_post_type();
 
 		// Update version
-		update_option( 'sportspress_tournament_brackets_version', SP_TOURNAMENTS_VERSION );
+		update_option( 'sportspress_tournaments_version', SP_TOURNAMENTS_VERSION );
 
 		// Flush rules after install
 		flush_rewrite_rules();
@@ -393,15 +376,25 @@ class SportsPress_Tournaments {
 	}
 
 	/**
+	 * Register/queue frontend scripts.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function load_scripts() {
+		wp_enqueue_script( 'sportspress-tournaments', SP_TOURNAMENTS_URL .'js/sportspress-tournaments.js', array( 'jquery' ), time(), true );
+	}
+
+	/**
 	 * Enqueue scripts
 	 */
 	public function admin_enqueue_scripts() {
 		$screen = get_current_screen();
 
-		wp_enqueue_style( 'sportspress-tournament-brackets-admin', SP_TOURNAMENTS_URL . 'css/admin.css', array( 'sportspress-admin-menu-styles' ), time() );
+		wp_enqueue_style( 'sportspress-tournaments-admin', SP_TOURNAMENTS_URL . 'css/admin.css', array( 'sportspress-admin-menu-styles' ), time() );
 
-		if ( in_array( $screen->id, array( 'sp_event', 'edit-sp_event', 'sp_bracket', 'edit-sp_bracket' ) ) ) {
-			wp_enqueue_script( 'sportspress-tournament-brackets-admin', SP_TOURNAMENTS_URL . 'js/admin.js', array( 'jquery' ), SP_TOURNAMENTS_VERSION );
+		if ( in_array( $screen->id, array( 'sp_tournament', 'edit-sp_tournament' ) ) ) {
+			wp_enqueue_script( 'sportspress-tournaments-admin', SP_TOURNAMENTS_URL . 'js/admin.js', array( 'jquery' ), SP_TOURNAMENTS_VERSION );
 		}
 	}
 
@@ -411,6 +404,19 @@ class SportsPress_Tournaments {
 	public static function widgets() {
 		//include_once( 'includes/class-sp-widget-staff-list.php' );
 		//include_once( 'includes/class-sp-widget-staff-gallery.php' );
+	}
+
+	public static function frontend_css( $colors ) {
+		if ( isset( $colors['highlight'] ) ) {
+			echo '.sp-tournament .sp-event{border-color:' . $colors['highlight'] . ' !important}';
+			echo '.sp-tournament .sp-team .sp-team-name:before{border-left-color:' . $colors['highlight'] . ' !important}';
+		}
+		if ( isset( $colors['text'] ) ) {
+			echo '.sp-tournament .sp-team .sp-team-name{color:' . $colors['text'] . ' !important}';
+		}
+		if ( isset( $colors['heading'] ) ) {
+			echo '.sp-tournament .sp-team .sp-team-name.sp-heading{color:' . $colors['heading'] . ' !important}';
+		}
 	}
 }
 

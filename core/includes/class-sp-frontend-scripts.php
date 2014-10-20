@@ -142,6 +142,7 @@ class SP_Frontend_Scripts {
 		// Defaults
 		if ( empty( $colors['primary'] ) ) $colors['primary'] = '#00a69c';
 		if ( empty( $colors['background'] ) ) $colors['background'] = '#f4f4f4';
+		if ( empty( $colors['highlight'] ) ) $colors['highlight'] = '#ffffff';
 		if ( empty( $colors['text'] ) ) $colors['text'] = '#363f48';
 		if ( empty( $colors['heading'] ) ) $colors['heading'] = '#ffffff';
 		if ( empty( $colors['link'] ) ) $colors['link'] = '#00a69c';
@@ -152,19 +153,24 @@ class SP_Frontend_Scripts {
 			echo ' /* SportsPress Frontend CSS */ ';
 
 			if ( isset( $colors['primary'] ) )
-				echo '.sp-data-table th,.sp-calendar th,.sp-data-table tfoot,.sp-calendar tfoot,.sp-button{background:' . $colors['primary'] . ' !important}.sp-data-table tbody a,.sp-calendar tbody a{color:' . $colors['primary'] . ' !important}';
+				echo '.sp-data-table th,.sp-calendar th,.sp-data-table tfoot,.sp-calendar tfoot,.sp-button,.sp-heading{background:' . $colors['primary'] . ' !important}.sp-data-table tbody a,.sp-calendar tbody a{color:' . $colors['primary'] . ' !important}';
 
 			if ( isset( $colors['background'] ) )
 				echo '.sp-data-table tbody,.sp-calendar tbody{background: ' . $colors['background'] . ' !important}';
+
+			if ( isset( $colors['highlight'] ) )
+				echo '.sp-data-table tbody .sp-highlight,.sp-calendar tbody .sp-highlight{background: ' . $colors['highlight'] . ' !important}';
 
 			if ( isset( $colors['text'] ) )
 				echo '.sp-data-table tbody,.sp-calendar tbody{color: ' . $colors['text'] . ' !important}';
 
 			if ( isset( $colors['heading'] ) )
-				echo '.sp-data-table th,.sp-data-table th a,.sp-data-table tfoot,.sp-data-table tfoot a,.sp-calendar th,.sp-calendar th a,.sp-calendar tfoot,.sp-calendar tfoot a,.sp-button{color: ' . $colors['heading'] . ' !important}';
+				echo '.sp-data-table th,.sp-data-table th a,.sp-data-table tfoot,.sp-data-table tfoot a,.sp-calendar th,.sp-calendar th a,.sp-calendar tfoot,.sp-calendar tfoot a,.sp-button,.sp-heading{color: ' . $colors['heading'] . ' !important}';
 
 			if ( isset( $colors['link'] ) )
 				echo '.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a:focus{color: ' . $colors['link'] . ' !important}';
+
+			do_action( 'sportspress_frontend_css', $colors );
 		}
 
 		if ( $align != 'default' )

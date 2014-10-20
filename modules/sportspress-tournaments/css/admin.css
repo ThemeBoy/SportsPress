@@ -4,27 +4,36 @@
 	text-align: center;
 }
 
-.post-state-format.post-format-group:before, .post-format-icon.post-format-group:before, a.post-state-format.format-group:before {
-	content: "\f180";
+.post-state-format.post-format-tournament:before, .post-format-icon.post-format-tournament:before, a.post-state-format.format-tournament:before {
+	content: "\f185";
 }
 
-.post-state-format.post-format-bracket:before, .post-format-icon.post-format-bracket:before, a.post-state-format.format-bracket:before {
-	content: "\f325";
-}
-
-table.sp-tournament-bracket-container tbody {
+table.sp-tournament-container tbody {
 	background: #f9f9f9;
 }
 
-table.sp-tournament-bracket-container td {
+table.sp-tournament-container td {
 	padding-right: 0;
 }
 
-table.sp-tournament-bracket-container .sp-team {
+table.sp-tournament-container th {
+	padding-right: 0;
+}
+
+table.sp-tournament-container th:last-child {
+	padding-right: 10px;
+}
+
+table.sp-tournament-container th input {
+	padding: 3px 5px;
+	margin: 0;
+}
+
+table.sp-tournament-container .sp-team {
 	position: relative;
 }
 
-table.sp-tournament-bracket-container .sp-team:before {
+table.sp-tournament-container .sp-team:before {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -34,11 +43,11 @@ table.sp-tournament-bracket-container .sp-team:before {
 	border-bottom: 7px solid transparent;
 }
 
-table.sp-tournament-bracket-container .sp-first-round:before {
+table.sp-tournament-container .sp-first-round:before {
 	border: none;
 }
 
-table.sp-tournament-bracket-container .sp-event {
+table.sp-tournament-container .sp-event {
 	border-right: 1px solid #e5e5e5;
 	text-align: center;
 	vertical-align: middle;
@@ -47,12 +56,12 @@ table.sp-tournament-bracket-container .sp-event {
 	padding-right: 10px;
 }
 
-table.sp-tournament-bracket-container .sp-last-round {
+table.sp-tournament-container .sp-last-round {
 	padding-right: 10px;
 	border-right: 0;
 }
 
-table.sp-tournament-bracket-container .sp-event select {
+table.sp-tournament-container .sp-event select {
 	display: block;
 	width: 100%;
 	height: auto;

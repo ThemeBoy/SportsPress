@@ -27,7 +27,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				'post_title' => __( 'Name', 'sportspress' ),
 				'sp_position' => __( 'Positions', 'sportspress' ),
 				'sp_team' => __( 'Teams', 'sportspress' ),
-				'sp_league' => __( 'Leagues', 'sportspress' ),
+				'sp_league' => __( 'Competitions', 'sportspress' ),
 				'sp_season' => __( 'Seasons', 'sportspress' ),
 				'sp_nationality' => __( 'Nationality', 'sportspress' ),
 			);

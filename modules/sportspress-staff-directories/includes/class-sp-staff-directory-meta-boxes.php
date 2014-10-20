@@ -93,7 +93,7 @@ class SP_Staff_Directory_Meta_Boxes {
 		$team_id = get_post_meta( $post->ID, 'sp_team', true );
 		?>
 		<div>
-			<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
+			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
 			<p>
 				<?php
 				$args = array(
@@ -317,7 +317,7 @@ class SP_Staff_Directory_Meta_Boxes {
 							<?php _e( 'Directory', 'sportspress' ); ?>
 						</th>
 						<th class="column-league">
-							<?php _e( 'League', 'sportspress' ); ?>
+							<?php _e( 'Competition', 'sportspress' ); ?>
 						</th>
 						<th class="column-season">
 							<?php _e( 'Season', 'sportspress' ); ?>

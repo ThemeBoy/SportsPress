@@ -77,7 +77,7 @@ endif;
 						echo '<th class="data-away">' . __( 'Away', 'sportspress' ) . '</th>';
 
 					if ( $usecolumns == null || in_array( 'league', $usecolumns ) )
-						echo '<th class="data-league">' . __( 'League', 'sportspress' ) . '</th>';
+						echo '<th class="data-league">' . __( 'Competition', 'sportspress' ) . '</th>';
 
 					if ( $usecolumns == null || in_array( 'season', $usecolumns ) )
 						echo '<th class="data-season">' . __( 'Season', 'sportspress' ) . '</th>';

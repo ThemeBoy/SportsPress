@@ -2,12 +2,13 @@
   <admin-texts>
     <key name="sportspress_text">
       <key name="Article"/>
+      <key name="Competition"/>
       <key name="Current Team"/>
+      <key name="Current Teams"/>
       <key name="Date"/>
       <key name="Details"/>
       <key name="Email"/>
       <key name="Event"/>
-      <key name="League"/>
       <key name="Nationality"/>
       <key name="Outcome"/>
       <key name="Past Teams"/>

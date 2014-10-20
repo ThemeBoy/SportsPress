@@ -1,0 +1,58 @@
+.sp-tournament {
+	border-width: 1px;
+	border-collapse: separate !important;
+}
+
+.sp-tournament th,
+.sp-tournament td {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.sp-tournament td {
+	border: none;
+}
+
+.sp-tournament a {
+	text-decoration: none !important;
+}
+
+.sp-tournament tr:first-child td {
+	padding-top: 20px !important;
+}
+
+.sp-tournament tr:last-child td {
+	padding-bottom: 20px !important;
+}
+
+.sp-tournament .sp-event {
+	padding: 0 !important;
+}
+
+.sp-tournament .sp-event .sp-event-title {
+	padding: 8px;
+	display: block;
+}
+
+.sp-tournament .sp-team .sp-team-name {
+	position: relative;
+	padding: 8px;
+	display: block;
+}
+
+.sp-tournament .sp-team .sp-team-name:hover {
+	cursor: default;
+}
+
+.sp-tournament .sp-team .sp-team-name:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	margin-top: -5px;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+}
+
+.sp-tournament .sp-team.sp-first-round .sp-team-name:before {
+	border: none;
+}

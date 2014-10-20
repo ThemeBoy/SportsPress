@@ -25,9 +25,19 @@ class SP_Admin_Taxonomies {
 		add_action( 'edited_sp_venue', array( $this, 'save_venue_fields' ), 10, 1 );
 		add_action( 'create_sp_venue', array( $this, 'save_venue_fields' ), 10, 1 );
 
-		// Add columns
+		// Change league and season columns
+		add_filter( 'manage_edit-sp_league_columns', array( $this, 'taxonomy_columns' ) );
+		add_filter( 'manage_edit-sp_season_columns', array( $this, 'taxonomy_columns' ) );
+
+		// Change venue columns
 		add_filter( 'manage_edit-sp_venue_columns', array( $this, 'venue_columns' ) );
 		add_filter( 'manage_sp_venue_custom_column', array( $this, 'venue_column' ), 10, 3 );
+
+		// Change position columns
+		add_filter( 'manage_edit-sp_position_columns', array( $this, 'position_columns' ) );
+
+		// Change role columns
+		add_filter( 'manage_edit-sp_role_columns', array( $this, 'role_columns' ) );
 	}
 
 	/**
@@ -122,7 +132,19 @@ class SP_Admin_Taxonomies {
 	}
 
 	/**
-	 * Thumbnail column added to category admin.
+	 * Posts column changed to Events in admin.
+	 *
+	 * @access public
+	 * @param mixed $columns
+	 * @return array
+	 */
+	public function taxonomy_columns( $columns ) {
+		$columns['posts'] = __( 'Events', 'sportspress' );
+		return $columns;
+	}
+
+	/**
+	 * Change venue columns in admin.
 	 *
 	 * @access public
 	 * @param mixed $columns
@@ -138,6 +160,30 @@ class SP_Admin_Taxonomies {
 		unset( $columns['posts'] );
 
 		return array_merge( $columns, $new_columns );
+	}
+
+	/**
+	 * Posts column changed to Players in admin.
+	 *
+	 * @access public
+	 * @param mixed $columns
+	 * @return array
+	 */
+	public function position_columns( $columns ) {
+		$columns['posts'] = __( 'Players', 'sportspress' );
+		return $columns;
+	}
+
+	/**
+	 * Posts column changed to Staff in admin.
+	 *
+	 * @access public
+	 * @param mixed $columns
+	 * @return array
+	 */
+	public function role_columns( $columns ) {
+		$columns['posts'] = __( 'Staff', 'sportspress' );
+		return $columns;
 	}
 
 	/**
