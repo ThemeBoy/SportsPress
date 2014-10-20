@@ -47,14 +47,14 @@ class SP_Meta_Box_Team_Details {
 		$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
 		$url = get_post_meta( $post->ID, 'sp_url', true );
 		?>
-		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Competitions', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
 			'taxonomy' => 'sp_league',
 			'name' => 'tax_input[sp_league][]',
 			'selected' => $league_ids,
 			'values' => 'term_id',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Competitions', 'sportspress' ) ),
 			'class' => 'widefat',
 			'property' => 'multiple',
 			'chosen' => true,
@@ -69,7 +69,7 @@ class SP_Meta_Box_Team_Details {
 			'name' => 'tax_input[sp_season][]',
 			'selected' => $season_ids,
 			'values' => 'term_id',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Competitions', 'sportspress' ) ),
 			'class' => 'widefat',
 			'property' => 'multiple',
 			'chosen' => true,
@@ -100,7 +100,6 @@ class SP_Meta_Box_Team_Details {
 
 		<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 		<p><input type="text" id="sp_abbreviation" name="sp_abbreviation" value="<?php echo $abbreviation; ?>"></p>
-		<p class="description"><?php _e( 'The abbreviation is not prominent by default; however, some themes may show it', 'sportspress' ); ?></p>
 		<?php
 	}
 

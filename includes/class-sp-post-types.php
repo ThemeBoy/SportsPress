@@ -33,10 +33,10 @@ class SP_Post_types {
 		do_action( 'sportspress_register_taxonomy' );
 
 		$labels = array(
-			'name' => __( 'Leagues', 'sportspress' ),
-			'singular_name' => __( 'League', 'sportspress' ),
+			'name' => __( 'Competitions', 'sportspress' ),
+			'singular_name' => __( 'Competition', 'sportspress' ),
 			'all_items' => __( 'All', 'sportspress' ),
-			'edit_item' => __( 'Edit League', 'sportspress' ),
+			'edit_item' => __( 'Edit Competition', 'sportspress' ),
 			'view_item' => __( 'View', 'sportspress' ),
 			'update_item' => __( 'Update', 'sportspress' ),
 			'add_new_item' => __( 'Add New', 'sportspress' ),
@@ -47,7 +47,7 @@ class SP_Post_types {
 			'not_found' => __( 'No results found.', 'sportspress' ),
 		);
 		$args = array(
-			'label' => __( 'Leagues', 'sportspress' ),
+			'label' => __( 'Competitions', 'sportspress' ),
 			'labels' => $labels,
 			'public' => true,
 			'show_in_nav_menus' => false,

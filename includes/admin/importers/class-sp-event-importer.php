@@ -475,7 +475,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label><?php _e( 'League', 'sportspress' ); ?></label><br/></th>
+						<th scope="row"><label><?php _e( 'Competition', 'sportspress' ); ?></label><br/></th>
 						<td><?php
 						$args = array(
 							'taxonomy' => 'sp_league',

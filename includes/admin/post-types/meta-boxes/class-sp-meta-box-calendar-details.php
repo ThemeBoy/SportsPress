@@ -50,7 +50,7 @@ class SP_Meta_Box_Calendar_Details {
 				sp_dropdown_dates( $args );
 				?>
 			</p>
-			<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
+			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
 			<p>
 				<?php
 				$args = array(

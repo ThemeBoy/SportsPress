@@ -67,7 +67,7 @@ class SP_Meta_Box_Calendar_Data {
 						<th class="column-league">
 							<label for="sp_columns_league">
 								<input type="checkbox" name="sp_columns[]" value="league" id="sp_columns_league" <?php checked( ! is_array( $usecolumns ) || in_array( 'league', $usecolumns ) ); ?>>
-								<?php _e( 'League', 'sportspress' ); ?>
+								<?php _e( 'Competition', 'sportspress' ); ?>
 							</label>
 						</th>
 						<th class="column-season">

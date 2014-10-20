@@ -111,14 +111,14 @@ class SP_Meta_Box_Staff_Details {
 		sp_dropdown_pages( $args );
 		?></p>
 
-		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Competitions', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
 			'taxonomy' => 'sp_league',
 			'name' => 'tax_input[sp_league][]',
 			'selected' => $league_ids,
 			'values' => 'term_id',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Competitions', 'sportspress' ) ),
 			'class' => 'widefat',
 			'property' => 'multiple',
 			'chosen' => true,

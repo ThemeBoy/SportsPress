@@ -40,7 +40,7 @@ class SP_Admin_Sample_Data {
 		// Terms to insert
 		$taxonomies = array();
 
-		// Leagues
+		// Competitions
 		$taxonomies['sp_league'] = array( _x( 'Primary League', 'example', 'sportspress' ), _x( 'Secondary League', 'example', 'sportspress' ) );
 
 		// Seasons

@@ -1089,7 +1089,7 @@ function sp_get_text_options() {
 		__( 'Date', 'sportspress' ),
 		__( 'Details', 'sportspress' ),
 		__( 'Event', 'sportspress' ),
-		__( 'League', 'sportspress' ),
+		__( 'Competition', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
 		__( 'Outcome', 'sportspress' ),
 		__( 'Past Teams', 'sportspress' ),
