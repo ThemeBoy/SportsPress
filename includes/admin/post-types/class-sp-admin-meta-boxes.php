@@ -131,6 +131,9 @@ class SP_Admin_Meta_Boxes {
 
 		// Calendars
 		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'SP_Meta_Box_Calendar_Shortcode::output', 'sp_calendar', 'side', 'default' );
+		if ( isset( $post ) && 'publish' == $post->post_status ):
+			add_meta_box( 'sp_feedsdiv', __( 'Feeds', 'sportspress' ), 'SP_Meta_Box_Calendar_Feeds::output', 'sp_calendar', 'side', 'default' );
+		endif;
 		add_meta_box( 'sp_formatdiv', __( 'Layout', 'sportspress' ), 'SP_Meta_Box_Calendar_Format::output', 'sp_calendar', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Calendar_Details::output', 'sp_calendar', 'side', 'default' );
 		add_meta_box( 'sp_datadiv', __( 'Events', 'sportspress' ), 'SP_Meta_Box_Calendar_Data::output', 'sp_calendar', 'normal', 'high' );
