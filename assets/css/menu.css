@@ -36,17 +36,11 @@
 .sp-icon-clock:before {
 	content: "\f469";
 }
-.sp-icon-clipboard:before {
-	content: "\f481";
-}
 .sp-icon-whistle:before {
 	content: "\f227";
 }
 .sp-icon-tshirt:before {
 	content: "\f307";
-}
-.sp-icon-staff:before {
-	content: "\f338";
 }
 .sp-icon-megaphone:before {
 	content: "\f488";
