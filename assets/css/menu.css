@@ -51,20 +51,20 @@
 .sp-icon-megaphone:before {
 	content: "\f488";
 }
-.sp-icon-crown:before {
-	content: "\f313";
-}
 .sp-icon-list:before {
 	content: "\f163"
 }
 .sp-icon-blocks:before {
 	content: "\f164"
 }
-.sp-icon-smile:before {
-	content: "\f328";
-}
 .sp-icon-trash:before {
 	content: "\f182";
+}
+.sp-icon-league:before {
+	content: "\f313";
+}
+.sp-icon-friendly:before {
+	content: "\f328";
 }
 
 #adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,

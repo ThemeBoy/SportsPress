@@ -24,7 +24,7 @@ class SP_Formats {
 	public function __construct() {
 		$this->data = apply_filters( 'sportspress_formats', array(
 			'event' => array(
-				'league' => __( 'Competition', 'sportspress' ),
+				'league' => __( 'Competitive', 'sportspress' ),
 				'friendly' => __( 'Friendly', 'sportspress' ),
 			),
 			'calendar' => array(
