@@ -126,7 +126,7 @@ class SportsPress_League_Menu {
 		} elseif ( $logo_height <= 128 && $logo_width <= 128 ) {
 			$logo_size = 'sportspress-fit-mini';
 		} else {
-			$logo_size = 'sportspress-fit-thumbnail';
+			$logo_size = 'sportspress-fit-medium';
 		}
 
 		$orderby = get_option( 'sportspress_league_menu_teams_orderby', 'title' );

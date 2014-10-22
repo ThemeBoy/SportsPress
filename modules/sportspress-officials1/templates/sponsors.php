@@ -22,7 +22,7 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 if ( $size == 'sportspress-fit-icon' && (int) $height > 128 || (int) $width > 128 )
-	$size = 'sportspress-fit-thumbnail';
+	$size = 'sportspress-fit-medium';
 
 $args = array(
 	'post_type' => 'sp_sponsor',

@@ -1,11 +1,11 @@
 <?php
 /**
- * Admin functions for the staff directories post type
+ * Admin functions for the tournaments post type
  *
  * @author 		ThemeBoy
  * @category 	Admin
- * @package 	SportsPress_Staff_Directories
- * @version     1.0
+ * @package 	SportsPress_Tournaments
+ * @version     1.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -13,29 +13,22 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'SP_Admin_CPT' ) )
 	include( SP()->plugin_path() . '/includes/admin/post-types/class-sp-admin-cpt.php' );
 
-if ( ! class_exists( 'SP_Admin_CPT_Directory' ) ) :
+if ( ! class_exists( 'SP_Admin_CPT_Tournament' ) ) :
 
 /**
- * SP_Admin_CPT_Directory Class
+ * SP_Admin_CPT_Tournament Class
  */
-class SP_Admin_CPT_Directory extends SP_Admin_CPT {
+class SP_Admin_CPT_Tournament extends SP_Admin_CPT {
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->type = 'sp_directory';
+		$this->type = 'sp_tournament';
 
 		// Admin Columns
-		add_filter( 'manage_edit-sp_directory_columns', array( $this, 'edit_columns' ) );
-		add_action( 'manage_sp_directory_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
-
-		// Filtering
-		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
-		add_filter( 'parse_query', array( $this, 'filters_query' ) );
-
-		// Highlight menu
-		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
+		add_filter( 'manage_edit-sp_tournament_columns', array( $this, 'edit_columns' ) );
+		add_action( 'manage_sp_tournament_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
 		
 		// Call SP_Admin_CPT constructor
 		parent::__construct();
@@ -51,9 +44,9 @@ class SP_Admin_CPT_Directory extends SP_Admin_CPT {
 			'title' => __( 'Title', 'sportspress' ),
 			'sp_league' => __( 'Competition', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
-			'sp_team' => __( 'Team', 'sportspress' ),
+			'sp_rounds' => __( 'Rounds', 'sportspress' ),
 		), $existing_columns );
-		return apply_filters( 'sportspress_directory_admin_columns', $columns );
+		return apply_filters( 'sportspress_tournament_admin_columns', $columns );
 	}
 
 	/**
@@ -68,92 +61,13 @@ class SP_Admin_CPT_Directory extends SP_Admin_CPT {
 			case 'sp_season':
 				echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : __( 'All', 'sportspress' );
 				break;
-			case 'sp_team':
-				$teams = (array)get_post_meta( $post_id, 'sp_team', false );
-				$teams = array_filter( $teams );
-				if ( empty( $teams ) ):
-					_e( 'All', 'sportspress' );
-				else:
-					foreach( $teams as $team_id ):
-						if ( ! $team_id ) continue;
-						$team = get_post( $team_id );
-						if ( $team ) echo $team->post_title . '<br>';
-					endforeach;
-				endif;
+			case 'sp_rounds':
+				echo get_post_meta ( $post_id, 'sp_rounds', true );
 				break;
 		endswitch;
-	}
-
-	/**
-	 * Show a category filter box
-	 */
-	public function filters() {
-		global $typenow, $wp_query;
-
-	    if ( $typenow != 'sp_directory' )
-	    	return;
-
-		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
-		$args = array(
-			'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),
-			'taxonomy' => 'sp_league',
-			'name' => 'sp_league',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
-
-		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
-		$args = array(
-			'show_option_all' =>  __( 'Show all seasons', 'sportspress' ),
-			'taxonomy' => 'sp_season',
-			'name' => 'sp_season',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
-
-		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
-		$args = array(
-			'post_type' => 'sp_team',
-			'name' => 'team',
-			'show_option_none' => __( 'Show all teams', 'sportspress' ),
-			'selected' => $selected,
-			'values' => 'ID',
-		);
-		wp_dropdown_pages( $args );
-	}
-
-	/**
-	 * Filter in admin based on options
-	 *
-	 * @param mixed $query
-	 */
-	public function filters_query( $query ) {
-		global $typenow, $wp_query;
-
-	    if ( $typenow == 'sp_directory' ) {
-
-	    	if ( ! empty( $_GET['team'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['team'];
-		        $query->query_vars['meta_key'] 		= 'sp_team';
-		    }
-		}
-	}
-
-	/**
-	 * Highlights the correct top level admin menu item for post type add screens.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function menu_highlight() {
-		global $typenow, $menu_file, $submenu_file;
-		if ( 'sp_directory' == $typenow ):
-			$menu_file = 'edit.php?post_type=sp_player';
-			$submenu_file  = 'edit.php?post_type=sp_directory';
-		endif;
 	}
 }
 
 endif;
 
-return new SP_Admin_CPT_Directory();
+return new SP_Admin_CPT_Tournament();

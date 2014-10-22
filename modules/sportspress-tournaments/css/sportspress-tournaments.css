@@ -40,7 +40,7 @@
 	display: block;
 }
 
-.sp-tournament .sp-team .sp-team-name:hover {
+.sp-tournament .sp-team span.sp-team-name {
 	cursor: default;
 }
 

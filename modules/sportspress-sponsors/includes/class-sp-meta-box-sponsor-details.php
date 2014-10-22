@@ -42,7 +42,7 @@ class SP_Meta_Box_Sponsor_Details {
 		<p><strong><?php _e( 'Site URL', 'sportspress' ); ?></strong></p>
 		<p><input type="text" class="widefat" id="sp_url" name="sp_url" value="<?php echo $url; ?>"></p>
 		<?php if ( $url ): ?>
-			<p><a class="sp-sponsor-link" title="<?php _e( 'Visit Site', 'sportspress' ); ?>" href="<?php echo $url; ?>" target="_blank"><?php _e( 'Visit Site', 'sportspress' ); ?></a></p>
+			<p><a class="sp-link" title="<?php _e( 'Visit Site', 'sportspress' ); ?>" href="<?php echo $url; ?>" target="_blank"><?php _e( 'Visit Site', 'sportspress' ); ?></a></p>
 		<?php endif; ?>
 
 		<p><strong><?php _e( 'Impressions', 'sportspress' ); ?></strong></p>

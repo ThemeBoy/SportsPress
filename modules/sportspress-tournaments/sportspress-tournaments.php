@@ -32,20 +32,16 @@ class SportsPress_Tournaments {
 		// Hooks
 		register_activation_hook( __FILE__, array( $this, 'install' ) );
 		add_action( 'init', array( $this, 'init' ) );
-		add_filter( 'widget_text', array( $this, 'widget_text' ), 9 );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handlers' ) );
 		add_filter( 'sportspress_permalink_slugs', array( $this, 'add_permalink_slug' ) );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'add_screen_ids' ) );
 		add_action( 'sportspress_single_tournament_content', array( $this, 'output_tournament' ), 10 );
 		add_action( 'sportspress_after_single_tournament', 'sportspress_output_br_tag', 100 );
-	    add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
-		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
-		add_filter( 'sportspress_staff_settings', array( $this, 'add_options' ) );
-		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
 		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ), 30 );
+		add_filter( 'sportspress_event_settings', array( $this, 'add_options' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -85,8 +81,6 @@ class SportsPress_Tournaments {
 	 */
 	public function frontend_includes() {
 		include_once( 'includes/class-sp-tournament-template-loader.php' );
-		//include_once( 'includes/class-sp-shortcode-staff-list.php' );
-		//include_once( 'includes/class-sp-shortcode-staff-gallery.php' );
 	}
 
 	/**
@@ -123,7 +117,8 @@ class SportsPress_Tournaments {
 					'supports' 				=> array( 'title', 'author', 'thumbnail', 'comments' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
-					'menu_icon' 			=> 'dashicons-chart-bar',
+					'show_in_menu' 			=> 'edit.php?post_type=sp_event',
+					'show_in_admin_bar' 	=> true,
 				)
 			)
 		);
@@ -149,24 +144,11 @@ class SportsPress_Tournaments {
 	 * Output the tournament.
 	 *
 	 * @access public
-	 * @subpackage	Directory
 	 * @return void
 	 */
 	public static function output_tournament() {
         $id = get_the_ID();
 		sp_get_template( 'tournament-bracket.php', array( 'id' => $id ), 'tournament-bracket', SP_TOURNAMENTS_DIR . 'templates/' );
-	}
-
-	/**
-	 * Do shortcode in widgets
-	 */
-	function widget_text( $content ) {
-		if ( ! preg_match( '/\[[\r\n\t ]*(staff(_|-)(list|gallery))?[\r\n\t ].*?\]/', $content ) )
-			return $content;
-
-		$content = do_shortcode( $content );
-
-		return $content;
 	}
 
 	/**
@@ -188,11 +170,24 @@ class SportsPress_Tournaments {
 	}
 
 	/**
-	 * Add settings page
+	 * Add options to settings page.
+	 *
+	 * @return array
 	 */
-	public function add_settings_page( $settings = array() ) {
-		$settings[] = include( 'includes/class-sp-settings-tournaments.php' );
-		return $settings;
+	public function add_options( $settings ) {
+		return array_merge( $settings, array(
+			array( 'title' => __( 'Tournaments', 'sportspress' ), 'type' => 'title', 'id' => 'tournament_options' ),
+
+			array(
+				'title'     => __( 'Teams', 'sportspress' ),
+				'desc' 		=> __( 'Display logos', 'sportspress' ),
+				'id' 		=> 'sportspress_tournament_show_logos',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+			),
+
+			array( 'type' => 'sectionend', 'id' => 'tournament_options' ),
+		) );
 	}
 
 
@@ -202,59 +197,6 @@ class SportsPress_Tournaments {
 	public function add_formats( $formats ) {
 		$formats['event']['tournament'] = __( 'Tournament', 'sportspress' );
 		return $formats;
-	}
-
-	/**
-	 * Add options to settings page.
-	 *
-	 * @return array
-	 */
-	public function add_options( $settings ) {
-		array_splice( $settings, 2, 0, array(
-			array(
-				'title'     => __( 'Contact Info', 'sportspress' ),
-				'desc' 		=> __( 'Link phone', 'sportspress' ),
-				'id' 		=> 'sportspress_link_phone',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> 'start',
-			),
-
-			array(
-				'desc' 		=> __( 'Link email', 'sportspress' ),
-				'id' 		=> 'sportspress_link_email',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> 'end',
-			),
-		) );
-
-		return array_merge( $settings, array(
-			array( 'title' => __( 'Tournament Brackets', 'sportspress' ), 'type' => 'title', 'id' => 'bracket_options' ),
-
-			array(
-				'title'     => __( 'Pagination', 'sportspress' ),
-				'desc' 		=> __( 'Paginate', 'sportspress' ),
-				'id' 		=> 'sportspress_bracket_paginated',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-			),
-			
-			array(
-				'title' 	=> __( 'Limit', 'sportspress' ),
-				'id' 		=> 'sportspress_bracket_rows',
-				'class' 	=> 'small-text',
-				'default'	=> '10',
-				'desc' 		=> __( 'staff', 'sportspress' ),
-				'type' 		=> 'number',
-				'custom_attributes' => array(
-					'min' 	=> 1,
-					'step' 	=> 1
-				),
-			),
-
-			array( 'type' => 'sectionend', 'id' => 'bracket_options' ),
-		) );
 	}
 
 	/**
@@ -284,17 +226,6 @@ class SportsPress_Tournaments {
 			);
 		}
 		return $styles;
-	}
-
-	/**
-	 * Add text options 
-	 */
-	public function add_text_options( $options = array() ) {
-		return array_merge( $options, array(
-			__( 'Phone', 'sportspress' ),
-			__( 'Email', 'sportspress' ),
-			__( 'View all staff', 'sportspress' ),
-		) );
 	}
 
 	/**
@@ -396,14 +327,6 @@ class SportsPress_Tournaments {
 		if ( in_array( $screen->id, array( 'sp_tournament', 'edit-sp_tournament' ) ) ) {
 			wp_enqueue_script( 'sportspress-tournaments-admin', SP_TOURNAMENTS_URL . 'js/admin.js', array( 'jquery' ), SP_TOURNAMENTS_VERSION );
 		}
-	}
-
-	/**
-	 * Register widgets
-	 */
-	public static function widgets() {
-		//include_once( 'includes/class-sp-widget-staff-list.php' );
-		//include_once( 'includes/class-sp-widget-staff-gallery.php' );
 	}
 
 	public static function frontend_css( $colors ) {

@@ -229,7 +229,7 @@ class SportsPress_Staff_Directories {
 	 * @return array
 	 */
 	public function add_options( $settings ) {
-		array_splice( $settings, 2, 0, array(
+		array_splice( $settings, -1, 0, array(
 			array(
 				'title'     => __( 'Contact Info', 'sportspress' ),
 				'desc' 		=> __( 'Link phone', 'sportspress' ),
@@ -366,7 +366,7 @@ class SportsPress_Staff_Directories {
 	public function admin_enqueue_scripts() {
 		$screen = get_current_screen();
 
-		if ( $screen->id == 'sp_directory' ) {
+		if ( in_array( $screen->id, array( 'sp_directory', 'edit-sp_directory' ) ) ) {
 			wp_enqueue_script( 'sportspress-staff-directories-admin', SP_STAFF_DIRECTORIES_URL . 'js/admin.js', array( 'jquery' ), SP_STAFF_DIRECTORIES_VERSION );
 		}
 	}

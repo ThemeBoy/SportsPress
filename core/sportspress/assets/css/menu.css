@@ -1,0 +1,125 @@
+/* SportsPress menu styles */
+@font-face {
+	font-family: 'sportspress';
+	src:url('../fonts/sportspress.eot?20140904');
+	src:url('../fonts/sportspress.eot?#iefix20140904') format('embedded-opentype'),
+		url('../fonts/sportspress.woff?20140904') format('woff'),
+		url('../fonts/sportspress.ttf?20140904') format('truetype'),
+		url('../fonts/sportspress.svg?20140904#sportspress') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="sp-icon-"], [class*=" sp-icon-"] {
+	font-family: 'sportspress';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.sp-icon-sportspress:before {
+	content: "\f111";
+}
+.sp-icon-calendar:before {
+	content: "\f145";
+}
+.sp-icon-shield:before {
+	content: "\f334";
+}
+.sp-icon-clock:before {
+	content: "\f469";
+}
+.sp-icon-whistle:before {
+	content: "\f227";
+}
+.sp-icon-tshirt:before {
+	content: "\f307";
+}
+.sp-icon-megaphone:before {
+	content: "\f488";
+}
+.sp-icon-list:before {
+	content: "\f163"
+}
+.sp-icon-blocks:before {
+	content: "\f164"
+}
+.sp-icon-trash:before {
+	content: "\f182";
+}
+.sp-icon-league:before {
+	content: "\f313";
+}
+.sp-icon-friendly:before {
+	content: "\f328";
+}
+
+#adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,
+#adminmenu #menu-posts-sp_event .menu-icon-sp_event div.wp-menu-image:before,
+#adminmenu #menu-posts-sp_team .menu-icon-sp_team div.wp-menu-image:before,
+#adminmenu #menu-posts-sp_player .menu-icon-sp_player div.wp-menu-image:before,
+#adminmenu #menu-posts-sp_staff .menu-icon-sp_staff div.wp-menu-image:before,
+#sp_formatdiv #post-formats-select .post-format-icon:before {
+	font-family: sportspress, dashicons;
+	width: 20px;
+	text-align: center;
+}
+
+/* Prefs */
+.sp-prefs .button {
+	margin: 0 3px 4px 0;
+	padding: 0 7px 1px 5px;
+}
+
+.sp-prefs .button input[type=checkbox] {
+	background: transparent;
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.sp-prefs .button input[type=checkbox]:before {
+	font: 400 14px/22px sportspress, dashicons;
+	width: 22px;
+}
+
+.sp-prefs .button input[type=checkbox]:not(:checked):before {
+	float: left;
+	display: inline-block;
+	vertical-align: middle;
+	speak: none;
+	content: '\f147';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: -3px 0 0 -4px;
+	color: #ccc;
+}
+
+/* TinyMCE */
+.mce-toolbar i.mce-i-sp_shortcodes_button, .mce-toolbar span.mce_sp_shortcodes_button {
+	margin-right: -5px;
+}
+i.mce-i-sp_shortcodes_button:before, span.mce_sp_shortcodes_button:before {
+	font-family: 'sportspress';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	text-align: center;
+	content: "\f111";
+	font-size: 20px;
+}

@@ -105,7 +105,7 @@ final class SportsPress_Pro {
 	 * Include SportsPress core and modules.
 	 */
 	private function includes() {
-		include_once( $this->plugin_path() . '/core/sportspress.php' );
+		include_once( $this->plugin_path() . '/core/sportspress/sportspress.php' );
 
 		$dir = scandir( $this->plugin_path() . '/modules' );
 		if ( $dir ) {

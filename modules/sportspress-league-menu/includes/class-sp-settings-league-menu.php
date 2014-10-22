@@ -185,7 +185,7 @@ class SP_Settings_League_Menu extends SP_Settings_Page {
 	            <td class="forminp">
 					<fieldset>
 						<legend class="screen-reader-text"><span><?php _e( 'Logo', 'sportspress' ); ?></span></legend>
-						<?php echo wp_get_attachment_image( $logo, 'sportspress-fit-thumbnail', false, array( 'style' => 'max-width:' . $width . 'px; max-height:' . $height . 'px;' ) ); ?>
+						<?php echo wp_get_attachment_image( $logo, 'sportspress-fit-medium', false, array( 'style' => 'max-width:' . $width . 'px; max-height:' . $height . 'px;' ) ); ?>
 					</fieldset>
 					<fieldset>
 						<label for="sportspress_league_menu_logo_width"><?php _e( 'Max Width', 'sportspress' ); ?></label>

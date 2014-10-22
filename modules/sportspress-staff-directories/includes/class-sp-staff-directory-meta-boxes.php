@@ -254,10 +254,20 @@ class SP_Staff_Directory_Meta_Boxes {
 		$phone = get_post_meta( $post->ID, 'sp_phone', true );
 		$email = get_post_meta( $post->ID, 'sp_email', true );
 		?>
-		<p><strong><?php _e( 'Phone', 'sportspress' ); ?></strong></p>
+		<p>
+			<strong><?php _e( 'Phone', 'sportspress' ); ?></strong>
+			<?php if ( ! empty( $phone ) ): ?>
+				<a class="sp-link" href="tel:<?php echo $phone; ?>" title="<?php _e( 'Phone', 'sportspress' ); ?>"></a>
+			<?php endif; ?>
+		</p>
 		<p><input type="text" id="sp_phone" name="sp_phone" value="<?php echo $phone; ?>"></p>
 
-		<p><strong><?php _e( 'Email', 'sportspress' ); ?></strong></p>
+		<p>
+			<strong><?php _e( 'Email', 'sportspress' ); ?></strong>
+			<?php if ( ! empty( $email ) ): ?>
+				<a class="sp-link" href="mailto:<?php echo $email; ?>" title="<?php _e( 'Email', 'sportspress' ); ?>"></a>
+			<?php endif; ?>
+		</p>
 		<p><input type="text" id="sp_email" name="sp_email" value="<?php echo $email; ?>"></p>
 		<?php
 	}

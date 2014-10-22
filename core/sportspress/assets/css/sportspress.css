@@ -1,0 +1,299 @@
+/* SportsPress */
+
+/* Header */
+.sp-header {
+	position: relative;
+	overflow: visible;
+}
+
+/* Thumbnails and Details */
+.sp-template-logo,
+.sp-template-photo {
+	float: left;
+	margin-bottom: 2em;
+	margin-right: 2em;
+	max-width: 50%;
+}
+.sp-template-event-logos {
+	text-align: center;
+}
+.sp-template-details {
+	display: inline-block;
+}
+
+/* Data Tables */
+.sp-scrollable-table-wrapper {
+	overflow: auto;
+}
+.sp-data-table {
+	width: 100%;
+	position: relative;
+}
+.sp-scrollable-table-wrapper .sp-data-table {
+	margin-bottom: 0;
+}
+.sp-data-table thead th {
+	white-space: nowrap;
+}
+.sp-data-table thead .sorting,
+.sp-data-table thead .sorting_asc,
+.sp-data-table thead .sorting_desc,
+.sp-data-table thead .sorting_asc_disabled,
+.sp-data-table thead .sorting_desc_disabled {
+	cursor: pointer;
+}
+.sp-data-table .sorting:after,
+.sp-data-table .sorting_asc:after,
+.sp-data-table .sorting_desc:after {
+	font-family: dashicons;
+}
+.sp-data-table .sorting:after {
+	content: "\f156";
+	color: transparent;
+	position: absolute;
+}
+.sp-data-table .sorting_asc:after {
+	content: "\f142";
+	position: absolute;
+}
+.sp-data-table .sorting_desc:after {
+	content: "\f140";
+	position: absolute;
+}
+.sp-data-table .data-number,
+.sp-data-table .data-rank {
+	width: 1px;
+}
+
+/* Pagination */
+.sp-paginated-table {
+	margin-bottom: 0 !important;
+}
+.sp-pagination {
+	margin-top: 0 !important;
+	border-top: 0 !important;
+}
+.sp-pagination tfoot tr td {
+	text-align: center;
+	cursor: pointer;
+}
+.sp-pagination tfoot tr td.prev {
+	text-align: left;
+}
+.sp-pagination tfoot tr td.next {
+	text-align: right;
+}
+.sp-pagination tfoot tr td a {
+	cursor: inherit;
+}
+.sp-pagination tfoot tr td.active a {
+	opacity: 0.5;
+	cursor: default;
+}
+.sp-pagination tfoot tr td.disabled a {
+	opacity: 0;
+	cursor: default;
+}
+.widget .sp-pagination tfoot tr td.prev,
+.widget .sp-pagination tfoot tr td.next {
+	text-align: center;
+}
+
+/* League Table */
+.sp-league-table td {
+	line-height: 2em;
+}
+.sp-league-table .data-name .team-logo {
+	width: 2em;
+	height: 2em;
+	margin-right: 0.25em;
+	display: block;
+	float: left;
+	text-align: center;
+}
+.sp-league-table .data-name .team-logo img {
+	width: auto;
+	height: auto;
+	max-width: 2em;
+	max-height: 2em;
+}
+
+/* Player List */
+.sp-player-list td {
+	line-height: 2em;
+}
+.sp-player-list .data-name .player-photo {
+	width: 2em;
+	height: 2em;
+	margin-right: 0.25em;
+	display: block;
+	float: left;
+	text-align: center;
+}
+.sp-player-list .data-name .player-photo img {
+	width: auto;
+	height: auto;
+	max-width: 2em;
+	max-height: 2em;
+}
+
+/* Button */
+.sp-button {
+	border: none;
+	cursor: pointer;
+}
+
+/* Event Performance */
+.sp-event-performance .sub-in,
+.sp-event-performance .sub-out {
+	cursor: default;
+}
+.sp-event-performance .sub-in:before,
+.sp-event-performance .sub-out:before {
+	font-family: dashicons;
+}
+.sp-event-performance .sub-in:before {
+	content: "\f140";
+}
+.sp-event-performance .sub-out:before {
+	content: "\f142";
+}
+.sp-event-performance .sp-performance-icons {
+	width: 25%;
+}
+
+/* Event Calendar */
+.sp-event-calendar tbody td, .sp-event-calendar thead th {
+	text-align: center;
+}
+.sp-event-calendar #next {
+	text-align: right;
+}
+.sp-event-calendar #prev {
+	text-align: left;
+}
+
+/* Event List */
+.sp-event-list .data-date date,
+.sp-event-list .data-time date {
+	display: none;
+}
+.sp-event-list .data-article {
+	white-space: nowrap;
+}
+.sp-event-list .data-article a .dashicons {
+	padding-right: 3px;
+}
+.sp-event-list .data-time {
+	white-space: nowrap;
+}
+
+/* Event Blocks */
+.sp-event-blocks thead {
+	display: none;
+}
+.sp-event-blocks .event-date,
+.sp-event-blocks .event-time,
+.sp-event-blocks .event-results,
+.sp-event-blocks .event-title {
+	text-align: center;
+	display: block;
+	margin: 10px 20%;
+	padding: 0 20px;
+	clear: none;
+}
+.sp-event-blocks .event-league,
+.sp-event-blocks .event-season {
+	text-align: center;
+}
+.sp-event-blocks .team-logo {
+	width: 20%;
+	height: auto;
+	margin: 10px;
+	max-width: 6em;
+}
+.sp-event-blocks .logo-odd {
+	float: left;
+}
+.sp-event-blocks .logo-even {
+	float: right;
+}
+.widget .sp-event-blocks .event-title {
+	margin: 10px;
+	padding: 0;
+}
+
+/* Google Maps */
+.sp-google-map {
+	height: 320px;
+}
+.sp-google-map img {
+	max-width: none !important;
+}
+.sp-venue-map {
+	margin-bottom: 4em;
+}
+
+/* View all */
+.sp-view-all-link {
+	display: block;
+	margin-top: 0.5em;
+}
+
+/* Alternate */
+.sp-data-table tbody tr.odd,
+.sp-data-table tbody tr.alternate,
+.sp-calendar tbody td#today {
+	background: rgba(0, 0, 0, 0.02);
+}
+
+@media only screen and (max-width: 40em) {
+	.sp-responsive-table {
+		margin-bottom: 0;
+	}
+	.sp-pinned-table {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 50%;
+		overflow: hidden;
+		overflow-x: scroll;
+		box-shadow: 0 0 1em rgba(0,0,0,0.5);
+	}
+	.sp-pinned-table table {
+		border-right: none;
+		border-left: none;
+		width: 100%;
+	}
+	.sp-pinned-table table th,
+	.sp-pinned-table table td {
+		white-space: nowrap;
+	}
+	.sp-pinned-table td:last-child {
+		border-bottom: 0;
+	}
+	.sp-responsive-table-wrapper {
+		position: relative;
+		overflow: hidden;
+		background: #fff;
+	}
+	.sp-responsive-table-wrapper .scrollable {
+		margin-left: 50%;
+	}
+	.sp-responsive-table-wrapper .scrollable {
+		overflow: scroll;
+		overflow-y: hidden;
+	}	
+	.sp-responsive-table-wrapper .scrollable td,
+	.sp-responsive-table-wrapper .scrollable th {
+		position: relative;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.sp-responsive-table-wrapper .scrollable .data-number,
+	.sp-responsive-table-wrapper .scrollable .data-name,
+	.sp-responsive-table-wrapper .scrollable .data-rank,
+ 	.sp-responsive-table-wrapper .scrollable .data-date {
+		display: none;
+	}
+}

@@ -55,7 +55,7 @@ list( $labels, $data, $rounds, $rows ) = $tournament->data();
 							if ( $event ) {
 								$event_name = get_the_title( $event );
 								if ( $link_events ) $event_name = '<a href="' . get_post_permalink( $event ) . '" class="sp-event-title">' . $event_name . '</a>';
-								else $event_name = '<div class="sp-event-title">' . $event_name . '</div>';
+								else $event_name = '<span class="sp-event-title">' . $event_name . '</span>';
 								echo $event_name;
 							} else {
 								echo '&nbsp;';
@@ -68,7 +68,7 @@ list( $labels, $data, $rounds, $rows ) = $tournament->data();
 								$team_name = get_the_title( $team );
 								if ( $show_logos ) $team_name = get_the_post_thumbnail( $team, 'sportspress-fit-mini' ) . ' ' . $team_name;
 								if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '" class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</a>';
-								else $team_name = '<div class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</div>';;
+								else $team_name = '<span class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</span>';;
 								echo $team_name;
 							} else {
 								echo '&nbsp;';

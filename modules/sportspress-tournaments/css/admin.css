@@ -1,3 +1,7 @@
+.sp-icon-tournament:before {
+	content: "\f185";
+}
+
 #adminmenu #menu-posts-sp_tournament .menu-icon-sp_tournament div.wp-menu-image:before {
 	font-family: sportspress, dashicons !important;
 	width: 20px;

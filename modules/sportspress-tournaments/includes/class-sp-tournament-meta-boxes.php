@@ -49,12 +49,58 @@ class SP_Tournament_Meta_Boxes {
 	 */
 	public static function details( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
+		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
+		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 		$rounds = get_post_meta( $post->ID, 'sp_rounds', true );
 		if ( $rounds === '' ) $rounds = 3;
+		$winner = get_post_meta( $post->ID, 'sp_winner', true );
 		?>
 		<div>
+			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$args = array(
+					'show_option_all' => __( 'All', 'sportspress' ),
+					'taxonomy' => 'sp_league',
+					'name' => 'sp_league',
+					'selected' => $league_id,
+					'values' => 'term_id'
+				);
+				if ( ! sp_dropdown_taxonomies( $args ) ):
+					sp_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' )  );
+				endif;
+				?>
+			</p>
+			<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
+			<p class="sp-tab-select">
+				<?php
+				$args = array(
+					'show_option_all' => __( 'All', 'sportspress' ),
+					'taxonomy' => 'sp_season',
+					'name' => 'sp_season',
+					'selected' => $season_id,
+					'values' => 'term_id'
+				);
+				if ( ! sp_dropdown_taxonomies( $args ) ):
+					sp_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
+				endif;
+				?>
+			</p>
 			<p><strong><?php _e( 'Rounds', 'sportspress' ); ?></strong></p>
 			<p><input name="sp_rounds" type="number" min="1" max="6" value="<?php echo $rounds; ?>" placeholder="0" class="small-text sp-autosave"></p>
+			<p><strong><?php _e( 'Winner', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$args = array(
+					'show_option_none' => __( '-- Not set --', 'sportspress' ),
+					'post_type' => 'sp_team',
+					'name' => 'sp_team',
+					'selected' => $winner,
+					'values' => 'ID'
+				);
+				sp_dropdown_pages( $args );
+				?>
+			</p>
 		</div>
 		<?php
 	}
@@ -65,7 +111,7 @@ class SP_Tournament_Meta_Boxes {
 	public static function data( $post ) {
 		$bracket = new SP_Tournament( $post );
 		list( $labels, $data, $rounds, $rows ) = $bracket->data( true );
-		self::table( $labels, $data, $rounds, $rows );
+		self::table( $labels, $data, $rounds, $rows, $post->ID );
 	}
 
 	/**
@@ -79,7 +125,11 @@ class SP_Tournament_Meta_Boxes {
 	 * Save meta boxes data
 	 */
 	public static function save( $post_id, $post ) {
-		// Details
+		// Competition & Season
+		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
+		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
+
+		// Rounds
 		$rounds = sp_array_value( $_POST, 'sp_rounds', 1 );
 		if ( $rounds < 1 ) $rounds = 1;
 		elseif ( $rounds > 6 ) $rounds = 6;
@@ -96,16 +146,38 @@ class SP_Tournament_Meta_Boxes {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $labels = array(), $data = null, $rounds = 3, $rows = 23 ) {
-		$posts = get_posts(
-			array(
-				'post_type' => 'sp_event',
-				'posts_per_page' => -1,
-				'post_status' => 'any',
-				'meta_key' => 'sp_format',
-				'meta_value' => 'tournament',
-			)
+	public static function table( $labels = array(), $data = null, $rounds = 3, $rows = 23, $post_id = null ) {
+		$args = array(
+			'post_type' => 'sp_event',
+			'posts_per_page' => -1,
+			'post_status' => 'any',
+			'meta_key' => 'sp_format',
+			'meta_value' => 'tournament',
+			'tax_query' => array(),
 		);
+		
+		// Filter by league if selected
+		$league_id = sp_get_the_term_id( $post_id, 'sp_league', 0 );
+		if ( $league_id ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'sp_league',
+				'field' => 'id',
+				'terms' => $league_id,
+			);
+		}
+		
+		// Filter by season if selected
+		$season_id = sp_get_the_term_id( $post_id, 'sp_season', 0 );
+		if ( $season_id ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'sp_season',
+				'field' => 'id',
+				'terms' => $season_id,
+			);
+		}
+
+		// Get events
+		$posts = get_posts( $args );
 		?>
 		<table class="widefat sp-tournament-container">
 			<thead>
