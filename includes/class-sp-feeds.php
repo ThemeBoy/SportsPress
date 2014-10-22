@@ -31,7 +31,7 @@ class SP_Feeds {
 		foreach ( $data as $type => $feeds ) {
 			foreach ( $feeds as $slug => $name ) {
 				$this->feed = $slug;
-				add_feed( 'sp-' . $type . '-' . $slug, array( $this, 'load_' . $type . '_' . $slug . '_feed' ) );
+				add_feed( 'sp-' . $slug, array( $this, $slug . '_feed' ) );
 			}
 		}
 	}
@@ -44,9 +44,8 @@ class SP_Feeds {
 		$this->data[ $key ] = $value;
 	}
 
-	public static function load_calendar_ical_feed() {
+	public static function ical_feed() {
 	    $feed_template = SP()->plugin_path() . '/feeds/ical.php';
 	    load_template( $feed_template );
 	}
 }
-

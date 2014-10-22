@@ -25,11 +25,11 @@ class SP_Meta_Box_Calendar_Feeds {
 		$calendar_feeds = $feeds->calendar;
 		?>
 		<div>
-			<?php foreach ( $calendar_feeds as $slug => $name ) { ?>
-				<?php $link = add_query_arg( 'feed', 'sp-calendar-' . $slug, get_post_permalink( $post ) ); ?>
+			<?php foreach ( $calendar_feeds as $feed => $name ) { ?>
+				<?php $link = str_replace( array( 'http:', 'https:' ), 'webcal:', add_query_arg( 'feed', 'sp-' . $feed, untrailingslashit( get_post_permalink( $post ) ) ) ); ?>
 				<p>
 					<strong><?php echo $name; ?></strong>
-					<a class="sp-link" href="<?php echo $link; ?>" target="_blank" title="<?php _e( 'Link', 'sportspress' ); ?>"></a>
+					<a class="sp-link" href="<?php echo $link; ?>" title="<?php _e( 'Link', 'sportspress' ); ?>"></a>
 				</p>
 				<p>
 					<input type="text" value="<?php echo $link; ?>" readonly="readonly" class="code widefat">

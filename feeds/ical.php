@@ -21,6 +21,9 @@ $events = $calendar->data();
 // Get blog locale
 $locale = substr( get_locale(), 0, 2 );
 
+// Get main result setting
+$main_result = get_option( 'sportspress_primary_result', null );
+
 // Initialize output. Max line length is 75 chars.
 $output =
 "BEGIN:VCALENDAR\n" .
@@ -46,8 +49,8 @@ foreach ( $events as $event):
 	$end = new DateTime( $event->post_date_gmt );
 
 	// Get full time minutes
-	$minutes = get_post_meta( $event->post_id, 'sp_minutes', true );
-	if ( false === $minutes ) $minutes = get_option( 'sportspress_event_minutes', 90 );
+	$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
+	if ( '' === $minutes ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
 	// Add full time minutes to end time
 	$end->add( new DateInterval( 'PT' . $minutes . 'M' ) );
@@ -81,10 +84,47 @@ foreach ( $events as $event):
 		}
 	}
 
+	// Get title or write summary based on scores
+	$results = array();
+	$teams = (array)get_post_meta( $event->ID, 'sp_team', false );
+	$teams = array_filter( $teams );
+	$teams = array_unique( $teams );
+	if ( ! empty( $teams ) ) {
+		$event_results = get_post_meta( $event->ID, 'sp_results', true );
+		foreach( $teams as $team_id ) {
+			if ( ! $team_id ) continue;
+			$team = get_post( $team_id );
+
+			if ( $team ) {
+				$team_results = sportspress_array_value( $event_results, $team_id, null );
+
+				if ( $main_result ) {
+					$team_result = sportspress_array_value( $team_results, $main_result, null );
+				} else {
+					if ( is_array( $team_results ) ) {
+						end( $team_results );
+						$team_result = prev( $team_results );
+					} else {
+						$team_result = null;
+					}
+				}
+
+				if ( $team_result != null ) {
+					$results[] = get_the_title( $team_id ) . ' ' . $team_result;
+				}
+			}
+		}
+	}
+	if ( sizeof( $results ) ) {
+		$summary = implode( ' ', $results );
+	} else {
+		$summary = $event->post_title;
+	}
+
 	// Append to output string
 	$output .=
 	"BEGIN:VEVENT\n" .
-	"SUMMARY:$event->post_title\n" .
+	"SUMMARY:" . $summary . "\n" .
 	"UID:$event->ID\n" .
 	"STATUS:CONFIRMED\n" .
 	"DTSTART:" . mysql2date( $date_format, $event->post_date_gmt ) . "\n" .
@@ -102,4 +142,9 @@ endforeach;
 // End output
 $output .= "END:VCALENDAR";
 
+// Print headers
+header('Content-type: text/calendar; charset=utf-8');
+header('Content-Disposition: inline; filename=' . $post->post_name . '.ics');
+
+// Print content
 echo $output;
