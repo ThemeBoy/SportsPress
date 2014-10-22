@@ -25,14 +25,25 @@ class SP_Frontend_Scripts {
 	 * @return array
 	 */
 	public static function get_styles() {
-		return apply_filters( 'sportspress_enqueue_styles', array(
+		$styles = array(
 			'sportspress-general' => array(
 				'src'     => str_replace( array( 'http:', 'https:' ), '', SP()->plugin_url() ) . '/assets/css/sportspress.css',
 				'deps'    => '',
 				'version' => SP_VERSION,
 				'media'   => 'all'
 			),
-		));
+		);
+
+		if ( is_rtl() ):
+			$styles['sportspress-rtl'] = array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', SP()->plugin_url() ) . '/assets/css/sportspress-rtl.css',
+				'deps'    => '',
+				'version' => SP_VERSION,
+				'media'   => 'all'
+			);
+		endif;
+
+		return apply_filters( 'sportspress_enqueue_styles', $styles );
 	}
 
 	/**

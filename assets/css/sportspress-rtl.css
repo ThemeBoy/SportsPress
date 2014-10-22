@@ -1,0 +1,58 @@
+/* SportsPress RTL */
+
+/* Thumbnails and Details */
+.sp-template-logo,
+.sp-template-photo {
+	float: right;
+	margin-right: 0;
+	margin-left: 2em;
+}
+
+/* Pagination */
+.sp-pagination tfoot tr td.prev {
+	text-align: right;
+}
+.sp-pagination tfoot tr td.next {
+	text-align: left;
+}
+
+/* League Table and Player List */
+.sp-league-table .data-name .team-logo,
+.sp-player-list .data-name .player-photo {
+	margin-right: 0;
+	margin-left: 0.25em;
+	float: right;
+}
+
+/* Event Calendar */
+.sp-event-calendar #next {
+	text-align: left;
+}
+.sp-event-calendar #prev {
+	text-align: right;
+}
+
+/* Event List */
+.sp-event-list .data-article a .dashicons {
+	padding-right: 0;
+	padding-left: 3px;
+}
+
+/* Event Blocks */
+.sp-event-blocks .logo-odd {
+	float: right;
+}
+.sp-event-blocks .logo-even {
+	float: left;
+}
+
+@media only screen and (max-width: 40em) {
+	.sp-pinned-table {
+		left: auto;
+		right: 0;
+	}
+	.sp-responsive-table-wrapper .scrollable {
+		margin-left: 0;
+		margin-right: 50%;
+	}
+}

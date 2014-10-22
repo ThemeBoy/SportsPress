@@ -6,11 +6,19 @@
 	overflow: visible;
 }
 
-/* Title */
-.sp-event-logos {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+/* Thumbnails and Details */
+.sp-template-logo,
+.sp-template-photo {
+	float: left;
+	margin-bottom: 2em;
+	margin-right: 2em;
+	max-width: 50%;
+}
+.sp-template-event-logos {
 	text-align: center;
+}
+.sp-template-details {
+	display: inline-block;
 }
 
 /* Data Tables */
@@ -243,7 +251,6 @@
 	.sp-responsive-table {
 		margin-bottom: 0;
 	}
-
 	.sp-pinned-table {
 		position: absolute;
 		left: 0;
@@ -265,7 +272,6 @@
 	.sp-pinned-table td:last-child {
 		border-bottom: 0;
 	}
-	
 	.sp-responsive-table-wrapper {
 		position: relative;
 		overflow: hidden;
@@ -278,7 +284,6 @@
 		overflow: scroll;
 		overflow-y: hidden;
 	}	
-	
 	.sp-responsive-table-wrapper .scrollable td,
 	.sp-responsive-table-wrapper .scrollable th {
 		position: relative;
