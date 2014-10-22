@@ -153,7 +153,6 @@ class SP_Frontend_Scripts {
 		// Defaults
 		if ( empty( $colors['primary'] ) ) $colors['primary'] = '#00a69c';
 		if ( empty( $colors['background'] ) ) $colors['background'] = '#f4f4f4';
-		if ( empty( $colors['highlight'] ) ) $colors['highlight'] = '#ffffff';
 		if ( empty( $colors['text'] ) ) $colors['text'] = '#363f48';
 		if ( empty( $colors['heading'] ) ) $colors['heading'] = '#ffffff';
 		if ( empty( $colors['link'] ) ) $colors['link'] = '#00a69c';
@@ -168,9 +167,6 @@ class SP_Frontend_Scripts {
 
 			if ( isset( $colors['background'] ) )
 				echo '.sp-data-table tbody,.sp-calendar tbody{background: ' . $colors['background'] . ' !important}';
-
-			if ( isset( $colors['highlight'] ) )
-				echo '.sp-data-table tbody .sp-highlight,.sp-calendar tbody .sp-highlight{background: ' . $colors['highlight'] . ' !important}';
 
 			if ( isset( $colors['text'] ) )
 				echo '.sp-data-table tbody,.sp-calendar tbody{color: ' . $colors['text'] . ' !important}';

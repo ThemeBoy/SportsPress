@@ -202,7 +202,6 @@ class SP_Settings_General extends SP_Settings_Page {
 			// Save settings
 			$primary 		= ( ! empty( $_POST['sportspress_frontend_css_primary'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_primary'] ) : '';
 			$background 	= ( ! empty( $_POST['sportspress_frontend_css_background'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_background'] ) : '';
-			$highlight 		= ( ! empty( $_POST['sportspress_frontend_css_highlight'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_highlight'] ) : '';
 			$text 			= ( ! empty( $_POST['sportspress_frontend_css_text'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_text'] ) : '';
 			$heading 		= ( ! empty( $_POST['sportspress_frontend_css_heading'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_heading'] ) : '';
 			$link 			= ( ! empty( $_POST['sportspress_frontend_css_link'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_link'] ) : '';
@@ -210,7 +209,6 @@ class SP_Settings_General extends SP_Settings_Page {
 			$colors = array(
 				'primary' 		=> $primary,
 				'background' 	=> $background,
-				'highlight' 	=> $highlight,
 				'text' 			=> $text,
 				'heading' 		=> $heading,
 				'link' 			=> $link,
@@ -280,7 +278,6 @@ class SP_Settings_General extends SP_Settings_Page {
 				// Defaults
 				if ( empty( $colors['primary'] ) ) $colors['primary'] = '#00a69c';
 				if ( empty( $colors['background'] ) ) $colors['background'] = '#f4f4f4';
-				if ( empty( $colors['highlight'] ) ) $colors['highlight'] = '#ffffff';
 				if ( empty( $colors['text'] ) ) $colors['text'] = '#363f48';
 				if ( empty( $colors['heading'] ) ) $colors['heading'] = '#ffffff';
 	            if ( empty( $colors['link'] ) ) $colors['link'] = '#00a69c';
@@ -288,7 +285,6 @@ class SP_Settings_General extends SP_Settings_Page {
 				// Show inputs
 	    		$this->color_picker( __( 'Primary', 'sportspress' ), 'sportspress_frontend_css_primary', $colors['primary'] );
 	    		$this->color_picker( __( 'Background', 'sportspress' ), 'sportspress_frontend_css_background', $colors['background'] );
-	    		$this->color_picker( __( 'Highlight', 'sportspress' ), 'sportspress_frontend_css_highlight', $colors['highlight'] );
 	    		$this->color_picker( __( 'Text', 'sportspress' ), 'sportspress_frontend_css_text', $colors['text'] );
 	    		$this->color_picker( __( 'Heading', 'sportspress' ), 'sportspress_frontend_css_heading', $colors['heading'] );
 	    		$this->color_picker( __( 'Link', 'sportspress' ), 'sportspress_frontend_css_link', $colors['link'] );
