@@ -4,10 +4,11 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     0.8
+ * @version     1.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( get_option( 'sportspress_player_show_details', 'yes' ) === 'no' ) return;
 
 if ( ! isset( $id ) )
 	$id = get_the_ID();
@@ -66,15 +67,14 @@ if ( $past_teams ):
 	$data[ __( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
 endif;
 
-$output = '<div class="sp-list-wrapper">' .
-	'<dl class="sp-player-details">';
+$output = '<div class="sp-template sp-template-player-details sp-template-details"><div class="sp-list-wrapper"><dl class="sp-player-details">';
 
 foreach( $data as $label => $value ):
 
-	$output .= '<dt>' . $label . '<dd>' . $value . '</dd>';
+	$output .= '<dt>' . $label . '</dt><dd>' . $value . '</dd>';
 
 endforeach;
 
-$output .= '</dl></div>';
+$output .= '</dl></div></div>';
 
 echo $output;

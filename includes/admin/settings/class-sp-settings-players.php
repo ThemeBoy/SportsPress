@@ -47,6 +47,23 @@ class SP_Settings_Players extends SP_Settings_Page {
 			),
 
 			array(
+				'title'     => __( 'Display', 'sportspress' ),
+				'desc' 		=> __( 'Photo', 'sportspress' ),
+				'id' 		=> 'sportspress_player_show_photo',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'start',
+			),
+
+			array(
+				'desc' 		=> __( 'Details', 'sportspress' ),
+				'id' 		=> 'sportspress_player_show_details',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'end',
+			),
+
+			array(
 				'title'     => __( 'Nationality', 'sportspress' ),
 				'desc' 		=> __( 'Display national flags', 'sportspress' ),
 				'id' 		=> 'sportspress_player_show_flags',

@@ -186,6 +186,32 @@ if ( ! function_exists( 'sportspress_output_team_link' ) ) {
 		sp_get_template( 'team-link.php' );
 	}
 }
+if ( ! function_exists( 'sportspress_output_team_logo' ) ) {
+
+	/**
+	 * Output the team logo.
+	 *
+	 * @access public
+	 * @subpackage	Team/Logo
+	 * @return void
+	 */
+	function sportspress_output_team_logo() {
+		sp_get_template( 'team-logo.php' );
+	}
+}
+if ( ! function_exists( 'sportspress_output_team_details' ) ) {
+
+	/**
+	 * Output the team details.
+	 *
+	 * @access public
+	 * @subpackage	Team/Details
+	 * @return void
+	 */
+	function sportspress_output_team_details() {
+		sp_get_template( 'team-details.php' );
+	}
+}
 if ( ! function_exists( 'sportspress_output_team_tables' ) ) {
 
 	/**
@@ -231,13 +257,26 @@ if ( ! function_exists( 'sportspress_output_league_table' ) ) {
 
 /** Single Player ********************************************************/
 
+if ( ! function_exists( 'sportspress_output_player_photo' ) ) {
+
+	/**
+	 * Output the player photo.
+	 *
+	 * @access public
+	 * @subpackage	Player/Photo
+	 * @return void
+	 */
+	function sportspress_output_player_photo() {
+		sp_get_template( 'player-photo.php' );
+	}
+}
 if ( ! function_exists( 'sportspress_output_player_details' ) ) {
 
 	/**
-	 * Output the player metrics.
+	 * Output the player details.
 	 *
 	 * @access public
-	 * @subpackage	Player/Metrics
+	 * @subpackage	Player/Details
 	 * @return void
 	 */
 	function sportspress_output_player_details() {
@@ -281,13 +320,26 @@ if ( ! function_exists( 'sportspress_output_player_list' ) ) {
 
 /** Single Staff ********************************************************/
 
+if ( ! function_exists( 'sportspress_output_staff_photo' ) ) {
+
+	/**
+	 * Output the staff photo.
+	 *
+	 * @access public
+	 * @subpackage	Staff/Photo
+	 * @return void
+	 */
+	function sportspress_output_staff_photo() {
+		sp_get_template( 'staff-photo.php' );
+	}
+}
 if ( ! function_exists( 'sportspress_output_staff_details' ) ) {
 
 	/**
-	 * Output the staff metrics.
+	 * Output the staff details.
 	 *
 	 * @access public
-	 * @subpackage	Staff/Metrics
+	 * @subpackage	Staff/Details
 	 * @return void
 	 */
 	function sportspress_output_staff_details() {

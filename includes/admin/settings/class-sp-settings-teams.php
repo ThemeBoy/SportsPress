@@ -49,6 +49,39 @@ class SP_Settings_Teams extends SP_Settings_Page {
 			),
 
 			array(
+				'title'     => __( 'Display', 'sportspress' ),
+				'desc' 		=> __( 'Logo', 'sportspress' ),
+				'id' 		=> 'sportspress_team_show_logo',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'start',
+			),
+
+			array(
+				'desc' 		=> __( 'Details', 'sportspress' ),
+				'id' 		=> 'sportspress_team_show_details',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Visit Site', 'sportspress' ),
+				'id' 		=> 'sportspress_team_show_link',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'end',
+			),
+
+			array(
+				'title'     => __( 'Venue', 'sportspress' ),
+				'desc' 		=> __( 'Link venues', 'sportspress' ),
+				'id' 		=> 'sportspress_team_link_venues',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+			),
+
+			array(
 				'title'     => __( 'Abbreviation', 'sportspress' ),
 				'desc' 		=> __( 'Abbreviate team names', 'sportspress' ),
 				'id' 		=> 'sportspress_abbreviate_teams',

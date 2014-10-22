@@ -47,13 +47,61 @@ class SP_Settings_Events extends SP_Settings_Page {
 				'id' 		=> 'sportspress_link_events',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
+			),
+
+			array(
+				'title'     => __( 'Display', 'sportspress' ),
+				'desc' 		=> __( 'Logos', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_logos',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'start',
 			),
 
 			array(
-				'desc' 		=> __( 'Link venues', 'sportspress' ),
-				'id' 		=> 'sportspress_link_venues',
-				'default'	=> 'no',
+				'desc' 		=> __( 'Results', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_results',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Details', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_details',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Venue', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_venue',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Players', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_players',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Staff', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_staff',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'	=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Total', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_total',
+				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',
 			),
@@ -74,31 +122,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 			array( 'type' => 'delimiter' ),
 
 			array(
-				'title'     => __( 'Teams', 'sportspress' ),
-				'desc' 		=> __( 'Display logos', 'sportspress' ),
-				'id' 		=> 'sportspress_event_show_logos',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'	=> 'start',
-			),
-
-			array(
-				'desc' 		=> __( 'Display players', 'sportspress' ),
-				'id' 		=> 'sportspress_event_show_players',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'	=> '',
-			),
-
-			array(
-				'desc' 		=> __( 'Display total', 'sportspress' ),
-				'id' 		=> 'sportspress_event_show_total',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> 'end',
-			),
-
-			array(
 				'title' 	=> __( 'Player Performance', 'sportspress' ),
 				'id' 		=> 'sportspress_event_performance_mode',
 				'default'	=> 'values',
@@ -110,7 +133,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
-				'title'     => __( 'Venue', 'sportspress' ),
+				'title'     => __( 'Venues', 'sportspress' ),
 				'desc' 		=> __( 'Display maps', 'sportspress' ),
 				'id' 		=> 'sportspress_event_show_maps',
 				'default'	=> 'yes',
@@ -119,12 +142,11 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
-				'title'     => __( 'Staff', 'sportspress' ),
-				'desc' 		=> __( 'Display staff', 'sportspress' ),
-				'id' 		=> 'sportspress_event_show_staff',
-				'default'	=> 'yes',
+				'desc' 		=> __( 'Link venues', 'sportspress' ),
+				'id' 		=> 'sportspress_link_venues',
+				'default'	=> 'no',
 				'type' 		=> 'checkbox',
-				'checkboxgroup'	=> 'start',
+				'checkboxgroup'	=> 'end',
 			),
 			
 			array(

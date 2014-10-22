@@ -4,10 +4,11 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     0.8
+ * @version     1.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( get_option( 'sportspress_staff_show_details', 'yes' ) === 'no' ) return;
 
 if ( ! isset( $id ) )
 	$id = get_the_ID();
@@ -48,12 +49,12 @@ $output = '<div class="sp-list-wrapper">' .
 
 foreach( $data as $label => $value ):
 
-	$output .= '<dt>' . $label . '<dd>' . $value . '</dd>';
+	$output .= '<dt>' . $label . '</dt><dd>' . $value . '</dd>';
 
 endforeach;
 
 $output .= '</dl></div>';
 ?>
-<div class="sp-template sp-template-staff-details">
+<div class="sp-template sp-template-staff-details sp-template-details">
 	<?php echo $output; ?>
 </div>
