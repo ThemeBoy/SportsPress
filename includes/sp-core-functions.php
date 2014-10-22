@@ -1110,6 +1110,7 @@ function sp_get_text_options() {
 		__( 'Time/Results', 'sportspress' ),
 		__( 'Total', 'sportspress' ),
 		__( 'Venue', 'sportspress' ),
+		__( 'Video', 'sportspress' ),
 		__( 'View all events', 'sportspress' ),
 		__( 'View all players', 'sportspress' ),
 		__( 'View full table', 'sportspress' ),
