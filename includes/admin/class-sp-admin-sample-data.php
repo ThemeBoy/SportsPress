@@ -131,7 +131,7 @@ class SP_Admin_Sample_Data {
 		/*
 		 * Insert teams
 		 */
-		foreach ( $teams as $team ) {
+		foreach ( $teams as $index => $team ) {
 			$post['post_title'] = $team['name'];
 			$post['post_type'] = 'sp_team';
 			$post['post_status'] = 'publish';
@@ -143,6 +143,8 @@ class SP_Admin_Sample_Data {
 			foreach ( $taxonomies as $taxonomy ) {
 				$post['tax_input'][ $taxonomy ] = get_terms( $taxonomy, array( 'hide_empty' => 0, 'fields' => 'ids' ) );
 			};
+
+			$post['tax_input']['sp_venue'] = get_terms( 'sp_venue', array( 'hide_empty' => 0, 'fields' => 'ids', 'orderby' => 'id', 'order' => 'ASC', 'number' => 1, 'offset' => $index ) );
 
 			// Insert post
 			$id = wp_insert_post( $post );
