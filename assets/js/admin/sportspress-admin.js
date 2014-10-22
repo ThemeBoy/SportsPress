@@ -523,6 +523,30 @@ jQuery(document).ready(function($){
 		}
 	});
 
+	// Datepicker
+	$(".sp-datepicker-from").datepicker({
+		dateFormat : "yy-mm-dd",
+		onClose: function( selectedDate ) {
+			$(this).closest(".sp-date-selector").find(".sp-datepicker-to").datepicker("option", "minDate", selectedDate);
+		}
+	});
+	$(".sp-datepicker-to").datepicker({
+		dateFormat : "yy-mm-dd",
+		onClose: function( selectedDate ) {
+			$(this).closest(".sp-date-selector").find(".sp-datepicker-from").datepicker("option", "maxDate", selectedDate);
+		}
+	});
+
+	// Show or hide datepicker
+	$(".sp-date-selector select").change(function() {
+		if ( $(this).val() == "range" ) {
+			$(this).closest(".sp-date-selector").find(".sp-date-range").show();
+		} else {
+			$(this).closest(".sp-date-selector").find(".sp-date-range").hide();
+		}
+	});
+	$(".sp-date-selector select").trigger("change");
+
 	// Fitvids
 	$(".sp-fitvids").fitVids();
 });

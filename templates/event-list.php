@@ -15,6 +15,8 @@ $defaults = array(
 	'id' => null,
 	'status' => 'default',
 	'date' => 'default',
+	'date_to' => 'default',
+	'date_from' => 'default',
 	'number' => -1,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_venues' => get_option( 'sportspress_link_venues', 'yes' ) == 'yes' ? true : false,
@@ -35,6 +37,10 @@ if ( $status != 'default' )
 	$calendar->status = $status;
 if ( $date != 'default' )
 	$calendar->date = $date;
+if ( $date_from != 'default' )
+	$calendar->from = $date_from;
+if ( $date_to != 'default' )
+	$calendar->to = $date_to;
 if ( $order != 'default' )
 	$calendar->order = $order;
 $data = $calendar->data();

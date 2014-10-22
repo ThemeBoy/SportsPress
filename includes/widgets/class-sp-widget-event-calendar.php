@@ -11,12 +11,15 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$id = empty($instance['id']) ? null : $instance['id'];
 		$status = empty($instance['status']) ? 'default' : $instance['status'];
+		$date = empty($instance['date']) ? 'default' : $instance['date'];
+		$date_from = empty($instance['date_from']) ? 'default' : $instance['date_from'];
+		$date_to = empty($instance['date_to']) ? 'default' : $instance['date_to'];
 		$show_all_events_link = empty($instance['show_all_events_link']) ? false : $instance['show_all_events_link'];
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
 		echo '<div id="calendar_wrap">';
-		sp_get_template( 'event-calendar.php', array( 'id' => $id, 'status' => $status, 'caption_tag' => 'caption', 'show_all_events_link' => $show_all_events_link )  );
+		sp_get_template( 'event-calendar.php', array( 'id' => $id, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'caption_tag' => 'caption', 'show_all_events_link' => $show_all_events_link )  );
 		echo '</div>';
 		echo $after_widget;
 	}
@@ -26,16 +29,22 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['id'] = intval($new_instance['id']);
 		$instance['status'] = $new_instance['status'];
+		$instance['date'] = $new_instance['date'];
+		$instance['date_from'] = $new_instance['date_from'];
+		$instance['date_to'] = $new_instance['date_to'];
 		$instance['show_all_events_link'] = $new_instance['show_all_events_link'];
 
 		return $instance;
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'status' => 'default', 'show_all_events_link' => false ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'status' => 'default', 'date' => 'default', 'date_from' => date_i18n( 'Y-m-d' ), 'date_to' => date_i18n( 'Y-m-d' ), 'show_all_events_link' => false ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
 		$status = $instance['status'];
+		$date = $instance['date'];
+		$date_from = $instance['date_from'];
+		$date_to = $instance['date_to'];
 		$show_all_events_link = $instance['show_all_events_link'];
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
@@ -70,6 +79,26 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 			sp_dropdown_statuses( $args );
 			?>
 		</p>
+
+		<div class="sp-date-selector sp-event-calendar-show-all-toggle<?php if ( ! $id ): ?> hidden<?php endif; ?>">
+			<p><label for="<?php echo $this->get_field_id('date'); ?>"><?php _e( 'Date:', 'sportspress' ); ?></label>
+				<?php
+				$args = array(
+					'show_option_default' => __( 'Default', 'sportspress' ),
+					'name' => $this->get_field_name('date'),
+					'id' => $this->get_field_id('date'),
+					'selected' => $date,
+					'class' => 'sp-event-date-select widefat',
+				);
+				sp_dropdown_dates( $args );
+				?>
+			</p>
+			<p class="sp-date-range<?php if ( 'range' !== $date ): ?> hidden<?php endif; ?>">
+				<input type="text" name="<?php echo $this->get_field_name( 'date_from' ); ?>" value="<?php echo $date_from; ?>" placeholder="yyyy-mm-dd" size="10">
+				:
+				<input type="text" name="<?php echo $this->get_field_name( 'date_to' ); ?>" value="<?php echo $date_to; ?>" placeholder="yyyy-mm-dd" size="10">
+			</p>
+		</div>
 
 		<p class="sp-event-calendar-show-all-toggle<?php if ( ! $id ): ?> hidden<?php endif; ?>"><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_all_events_link'); ?>" name="<?php echo $this->get_field_name('show_all_events_link'); ?>" value="1" <?php checked( $show_all_events_link, 1 ); ?>>
 		<label for="<?php echo $this->get_field_id('show_all_events_link'); ?>"><?php _e( 'Display link to view all events', 'sportspress' ); ?></label></p>

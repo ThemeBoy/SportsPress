@@ -10,6 +10,7 @@
  * @category	Class
  * @author 		ThemeBoy
  */
+
 class SP_Calendar extends SP_Custom_Post {
 
 	/** @var string The events status. */
@@ -20,6 +21,12 @@ class SP_Calendar extends SP_Custom_Post {
 
 	/** @var string The events order. */
 	public $order;
+
+	/** @var string The date to range from. */
+	public $from;
+
+	/** @var string The date to range to. */
+	public $to;
 
 	/**
 	 * __construct function.
@@ -48,6 +55,15 @@ class SP_Calendar extends SP_Custom_Post {
 
 		if ( ! $this->order )
 			$this->order = 'ASC';
+
+		if ( ! $this->from )
+			$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
+
+		if ( ! $this->to ):
+			$to = new DateTime( get_post_meta( $this->ID, 'sp_date_to', true ) );
+			$to->modify( '+1 day' );
+			$this->to = $to->format( 'Y-m-d' );
+		endif;
 	}
 
 	/**
@@ -72,12 +88,15 @@ class SP_Calendar extends SP_Custom_Post {
 		);
 
 		if ( $this->date !== 0 ):
-			$args['year'] = date('Y');
 			if ( $this->date == 'w' ):
+				$args['year'] = date('Y');
 				$args['w'] = date('W');
 			elseif ( $this->date == 'day' ):
+				$args['year'] = date('Y');
 				$args['day'] = date('j');
 				$args['monthnum'] = date('n');
+			elseif ( $this->date == 'range' ):
+				add_filter( 'posts_where', array( $this, 'range' ) );
 			endif;
 		endif;
 
@@ -141,7 +160,14 @@ class SP_Calendar extends SP_Custom_Post {
 			$events = null;
 		endif;
 
+		remove_filter( 'posts_where', array( $this, 'range' ) );
+
 		return $events;
 
+	}
+
+	public function range( $where = '' ) {
+		$where .= " AND post_date BETWEEN '" . $this->from . "' AND '" . $this->to . "'";
+		return $where;
 	}
 }

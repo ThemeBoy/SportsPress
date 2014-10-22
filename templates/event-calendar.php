@@ -14,6 +14,9 @@ global $wpdb, $m, $monthnum, $year, $wp_locale;
 $defaults = array(
 	'id' => null,
 	'status' => 'default',
+	'date' => 'default',
+	'date_to' => 'default',
+	'date_from' => 'default',
 	'initial' => true,
 	'caption_tag' => 'h4',
 	'show_all_events_link' => false,
@@ -25,6 +28,12 @@ if ( isset( $id ) ):
 	$calendar = new SP_Calendar( $id );
 	if ( $status != 'default' )
 		$calendar->status = $status;
+	if ( $date != 'default' )
+		$calendar->date = $date;
+	if ( $date_from != 'default' )
+		$calendar->from = $date_from;
+	if ( $date_to != 'default' )
+		$calendar->to = $date_to;
 	$events = $calendar->data();
 	$event_ids = array();
 	foreach ( $events as $event ):

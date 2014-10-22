@@ -14,4 +14,13 @@ jQuery(document).ready(function($){
 			$el.show();
 	});
 
+	// Show or hide datepicker
+	$("body").on("change", ".sp-date-selector select", function() {
+		if ( $(this).val() == "range" ) {
+			$(this).closest(".sp-date-selector").find(".sp-date-range").show();
+		} else {
+			$(this).closest(".sp-date-selector").find(".sp-date-range").hide();
+		}
+	});
+	$(".sp-date-selector select").trigger("change");
 });

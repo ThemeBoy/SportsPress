@@ -12,6 +12,8 @@ class SP_Widget_Event_List extends WP_Widget {
 		$id = empty($instance['id']) ? null : $instance['id'];
 		$status = empty($instance['status']) ? 'default' : $instance['status'];
 		$date = empty($instance['date']) ? 'default' : $instance['date'];
+		$date_from = empty($instance['date_from']) ? 'default' : $instance['date_from'];
+		$date_to = empty($instance['date_to']) ? 'default' : $instance['date_to'];
 		$number = empty($instance['number']) ? null : $instance['number'];
 		$columns = empty($instance['columns']) ? null : $instance['columns'];
 		$order = empty($instance['order']) ? 'default' : $instance['order'];
@@ -19,7 +21,7 @@ class SP_Widget_Event_List extends WP_Widget {
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		sp_get_template( 'event-list.php', array( 'id' => $id, 'status' => $status, 'date' => $date, 'number' => $number, 'columns' => $columns, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
+		sp_get_template( 'event-list.php', array( 'id' => $id, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'number' => $number, 'columns' => $columns, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
 		echo $after_widget;
 	}
 
@@ -29,6 +31,8 @@ class SP_Widget_Event_List extends WP_Widget {
 		$instance['id'] = intval($new_instance['id']);
 		$instance['status'] = $new_instance['status'];
 		$instance['date'] = $new_instance['date'];
+		$instance['date_from'] = $new_instance['date_from'];
+		$instance['date_to'] = $new_instance['date_to'];
 		$instance['number'] = intval($new_instance['number']);
 		$instance['columns'] = (array)$new_instance['columns'];
 		$instance['order'] = strip_tags($new_instance['order']);
@@ -38,11 +42,13 @@ class SP_Widget_Event_List extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'status' => 'default', 'date' => 'default', 'number' => 5, 'columns' => null, 'order' => 'default', 'show_all_events_link' => true ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'status' => 'default', 'date' => 'default', 'date_from' => date_i18n( 'Y-m-d' ), 'date_to' => date_i18n( 'Y-m-d' ), 'number' => 5, 'columns' => null, 'order' => 'default', 'show_all_events_link' => true ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
 		$status = $instance['status'];
 		$date = $instance['date'];
+		$date_from = $instance['date_from'];
+		$date_to = $instance['date_to'];
 		$number = intval($instance['number']);
 		$columns = $instance['columns'];
 		$order = strip_tags($instance['order']);
@@ -81,18 +87,25 @@ class SP_Widget_Event_List extends WP_Widget {
 			?>
 		</p>
 
-		<p><label for="<?php echo $this->get_field_id('date'); ?>"><?php _e( 'Date:', 'sportspress' ); ?></label>
-			<?php
-			$args = array(
-				'show_option_default' => __( 'Default', 'sportspress' ),
-				'name' => $this->get_field_name('date'),
-				'id' => $this->get_field_id('date'),
-				'selected' => $date,
-				'class' => 'sp-event-date-select widefat',
-			);
-			sp_dropdown_dates( $args );
-			?>
-		</p>
+		<div class="sp-date-selector">
+			<p><label for="<?php echo $this->get_field_id('date'); ?>"><?php _e( 'Date:', 'sportspress' ); ?></label>
+				<?php
+				$args = array(
+					'show_option_default' => __( 'Default', 'sportspress' ),
+					'name' => $this->get_field_name('date'),
+					'id' => $this->get_field_id('date'),
+					'selected' => $date,
+					'class' => 'sp-event-date-select widefat',
+				);
+				sp_dropdown_dates( $args );
+				?>
+			</p>
+			<p class="sp-date-range<?php if ( 'range' !== $date ): ?> hidden<?php endif; ?>">
+				<input type="text" name="<?php echo $this->get_field_name( 'date_from' ); ?>" value="<?php echo $date_from; ?>" placeholder="yyyy-mm-dd" size="10">
+				:
+				<input type="text" name="<?php echo $this->get_field_name( 'date_to' ); ?>" value="<?php echo $date_to; ?>" placeholder="yyyy-mm-dd" size="10">
+			</p>
+		</div>
 
 		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of events to show:', 'sportspress' ); ?></label>
 		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" size="3"></p>

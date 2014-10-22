@@ -14,6 +14,8 @@ $primary_result = get_option( 'sportspress_primary_result', null );
 $defaults = array(
 	'status' => 'default',
 	'date' => 'default',
+	'date_to' => 'default',
+	'date_from' => 'default',
 	'number' => -1,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_event_blocks_paginated', 'yes' ) == 'yes' ? true : false,
@@ -31,6 +33,10 @@ if ( $status != 'default' )
 	$calendar->status = $status;
 if ( $date != 'default' )
 	$calendar->date = $date;
+if ( $date_from != 'default' )
+	$calendar->from = $date_from;
+if ( $date_to != 'default' )
+	$calendar->to = $date_to;
 if ( $order != 'default' )
 	$calendar->order = $order;
 $data = $calendar->data();
