@@ -364,35 +364,37 @@ class SP_Post_types {
 			)
 		);
 
-		register_post_type( 'sp_event',
-			apply_filters( 'sportspress_register_post_type_event',
-				array(
-					'labels' => array(
-						'name' 					=> __( 'Events', 'sportspress' ),
-						'singular_name' 		=> __( 'Event', 'sportspress' ),
-						'add_new_item' 			=> __( 'Add New Event', 'sportspress' ),
-						'edit_item' 			=> __( 'Edit Event', 'sportspress' ),
-						'new_item' 				=> __( 'New', 'sportspress' ),
-						'view_item' 			=> __( 'View Event', 'sportspress' ),
-						'search_items' 			=> __( 'Search', 'sportspress' ),
-						'not_found' 			=> __( 'No results found.', 'sportspress' ),
-						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
-					),
-					'public' 				=> true,
-					'show_ui' 				=> true,
-					'capability_type' 		=> 'sp_event',
-					'map_meta_cap' 			=> true,
-					'publicly_queryable' 	=> true,
-					'exclude_from_search' 	=> false,
-					'hierarchical' 			=> false,
-					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_event_slug', 'event' ) ),
-					'supports' 				=> array( 'title', 'author', 'thumbnail', 'excerpt', 'comments' ),
-					'has_archive' 			=> false,
-					'show_in_nav_menus' 	=> true,
-					'menu_icon' 			=> 'dashicons-calendar',
-				)
-			)
+		$args = array(
+			'labels' => array(
+				'name' 					=> __( 'Events', 'sportspress' ),
+				'singular_name' 		=> __( 'Event', 'sportspress' ),
+				'add_new_item' 			=> __( 'Add New Event', 'sportspress' ),
+				'edit_item' 			=> __( 'Edit Event', 'sportspress' ),
+				'new_item' 				=> __( 'New', 'sportspress' ),
+				'view_item' 			=> __( 'View Event', 'sportspress' ),
+				'search_items' 			=> __( 'Search', 'sportspress' ),
+				'not_found' 			=> __( 'No results found.', 'sportspress' ),
+				'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
+			),
+			'public' 				=> true,
+			'show_ui' 				=> true,
+			'capability_type' 		=> 'sp_event',
+			'map_meta_cap' 			=> true,
+			'publicly_queryable' 	=> true,
+			'exclude_from_search' 	=> false,
+			'hierarchical' 			=> false,
+			'rewrite' 				=> array( 'slug' => get_option( 'sportspress_event_slug', 'event' ) ),
+			'supports' 				=> array( 'title', 'author', 'thumbnail', 'excerpt' ),
+			'has_archive' 			=> false,
+			'show_in_nav_menus' 	=> true,
+			'menu_icon' 			=> 'dashicons-calendar',
 		);
+
+		if ( get_option( 'sportspress_event_comment_status', 'no' ) == 'yes' ):
+			$args[ 'supports' ][] = 'comments';
+		endif;
+
+		register_post_type( 'sp_event', apply_filters( 'sportspress_register_post_type_event', $args  ) );
 
 		register_post_type( 'sp_calendar',
 			apply_filters( 'sportspress_register_post_type_calendar',

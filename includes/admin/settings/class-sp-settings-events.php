@@ -50,7 +50,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
-				'title'     => __( 'Display', 'sportspress' ),
+				'title'     => __( 'Templates', 'sportspress' ),
 				'desc' 		=> __( 'Logos', 'sportspress' ),
 				'id' 		=> 'sportspress_event_show_logos',
 				'default'	=> 'yes',
@@ -160,6 +160,15 @@ class SP_Settings_Events extends SP_Settings_Page {
 					'min' 	=> 0,
 					'step' 	=> 1
 				),
+			),
+
+			array(
+				'title'     => __( 'Comments', 'sportspress' ),
+				'desc' 		=> __( 'Allow people to post comments on new articles', 'sportspress' ),
+				'id' 		=> 'sportspress_event_comment_status',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+				'desc_tip' 	=> __( 'These settings may be overridden for individual articles.', 'sportspress' ),
 			),
 
 			array( 'type' => 'sectionend', 'id' => 'event_options' ),

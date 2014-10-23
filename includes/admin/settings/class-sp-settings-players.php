@@ -47,7 +47,7 @@ class SP_Settings_Players extends SP_Settings_Page {
 			),
 
 			array(
-				'title'     => __( 'Display', 'sportspress' ),
+				'title'     => __( 'Templates', 'sportspress' ),
 				'desc' 		=> __( 'Photo', 'sportspress' ),
 				'id' 		=> 'sportspress_player_show_photo',
 				'default'	=> 'yes',
