@@ -42,6 +42,9 @@
 .sp-data-table thead .sorting_desc_disabled {
 	cursor: pointer;
 }
+.sp-data-table tbody a {
+	text-decoration: none;
+}
 .sp-data-table .sorting:after,
 .sp-data-table .sorting_asc:after,
 .sp-data-table .sorting_desc:after {
