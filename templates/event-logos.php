@@ -18,6 +18,7 @@ $teams = array_filter( $teams );
 if ( $teams ):
 	$team_logos = array();
 	foreach ( $teams as $team ):
+		if ( ! has_post_thumbnail( $team ) ) continue;
 		$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon' );
 		if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ) $logo = '<a href="' . get_post_permalink( $team ) . '">' . $logo . '</a>';
 		$team_logos[] = $logo;
