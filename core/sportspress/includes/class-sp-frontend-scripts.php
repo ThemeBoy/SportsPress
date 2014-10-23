@@ -156,6 +156,10 @@ class SP_Frontend_Scripts {
 		if ( empty( $colors['text'] ) ) $colors['text'] = '#363f48';
 		if ( empty( $colors['heading'] ) ) $colors['heading'] = '#ffffff';
 		if ( empty( $colors['link'] ) ) $colors['link'] = '#00a69c';
+
+		// Calculate colors
+		$colors['highlight'] = sp_hex_lighter( $colors['background'], 30, true );
+		$colors['lowlight'] = sp_hex_darker( $colors['background'], 8, true );
 		
 		echo '<style type="text/css">.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a,.sp-calendar tbody a:hover{background:none;}';
 
@@ -176,6 +180,12 @@ class SP_Frontend_Scripts {
 
 			if ( isset( $colors['link'] ) )
 				echo '.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a:focus{color: ' . $colors['link'] . ' !important}';
+
+			if ( isset( $colors['highlight'] ) )
+				echo '.sp-highlight,.sp-calendar td#today{background: ' . $colors['highlight'] . ' !important}';
+
+			if ( isset( $colors['lowlight'] ) )
+				echo '.sp-lowlight,.sp-data-table tbody tr.odd,.sp-data-table tr.alternate{background: ' . $colors['lowlight'] . ' !important}';
 
 			do_action( 'sportspress_frontend_css', $colors );
 		}

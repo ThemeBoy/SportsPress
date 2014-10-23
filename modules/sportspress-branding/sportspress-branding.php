@@ -606,6 +606,20 @@ class SportsPress_Branding {
 				color: #<?php echo $actions->getHex(); ?>;
 			}
 
+			/* Datepicker */
+			.ui-datepicker .ui-datepicker-header,
+			.ui-datepicker .ui-datepicker-header .ui-state-hover,
+			.ui-datepicker thead {
+				background: #<?php echo $base->getHex(); ?>;
+			}
+			.ui-datepicker th {
+				border-color: #<?php echo $base->lighten(7); ?>;
+			}
+			.ui-datepicker td .ui-state-active,
+			.ui-datepicker td .ui-state-hover {
+				background: #<?php echo $highlight->getHex(); ?>;
+			}
+
 			@media screen and ( max-width: 782px ) {
 				.wp-responsive-open #wpadminbar #wp-admin-bar-menu-toggle a {
 					<?php if ( $base->isDark() ): ?>

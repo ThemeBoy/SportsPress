@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     0.7
+ * @version     1.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -141,14 +141,18 @@ if ( ! function_exists( 'sp_hex_darker' ) ) {
 	 * @param int $factor (default: 30)
 	 * @return string
 	 */
-	function sp_hex_darker( $color, $factor = 30 ) {
+	function sp_hex_darker( $color, $factor = 30, $absolute = false ) {
 		$base = sp_rgb_from_hex( $color );
 		$color = '#';
 
 		foreach ($base as $k => $v) :
-	        $amount = $v / 100;
-	        $amount = round($amount * $factor);
-	        $new_decimal = $v - $amount;
+	    	if ( $absolute ) {
+	    		$amount = $factor;
+	    	} else {
+		        $amount = $v / 100;
+		        $amount = round($amount * $factor);
+		    }
+	        $new_decimal = max( $v - $amount, 0 );
 
 	        $new_hex_component = dechex($new_decimal);
 	        if(strlen($new_hex_component) < 2) :
@@ -171,15 +175,19 @@ if ( ! function_exists( 'sp_hex_lighter' ) ) {
 	 * @param int $factor (default: 30)
 	 * @return string
 	 */
-	function sp_hex_lighter( $color, $factor = 30 ) {
+	function sp_hex_lighter( $color, $factor = 30, $absolute = false ) {
 		$base = sp_rgb_from_hex( $color );
 		$color = '#';
 
 	    foreach ($base as $k => $v) :
-	        $amount = 255 - $v;
-	        $amount = $amount / 100;
-	        $amount = round($amount * $factor);
-	        $new_decimal = $v + $amount;
+	    	if ( $absolute ) {
+	    		$amount = $factor;
+	    	} else {
+		        $amount = 255 - $v;
+		        $amount = $amount / 100;
+		        $amount = round($amount * $factor);
+		    }
+	        $new_decimal = min( $v + $amount, 255 );
 
 	        $new_hex_component = dechex($new_decimal);
 	        if(strlen($new_hex_component) < 2) :

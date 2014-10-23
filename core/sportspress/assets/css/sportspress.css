@@ -42,6 +42,9 @@
 .sp-data-table thead .sorting_desc_disabled {
 	cursor: pointer;
 }
+.sp-data-table tbody a {
+	text-decoration: none;
+}
 .sp-data-table .sorting:after,
 .sp-data-table .sorting_asc:after,
 .sp-data-table .sorting_desc:after {
@@ -242,9 +245,14 @@
 
 /* Alternate */
 .sp-data-table tbody tr.odd,
-.sp-data-table tbody tr.alternate,
-.sp-calendar tbody td#today {
-	background: rgba(255, 255, 255, 0.02);
+.sp-data-table tbody tr.alternate {
+	background: rgba(0, 0, 0, 0.02);
+}
+
+/* Highlight */
+.sp-highlight {
+	background: #fff;
+	font-weight: bold;
 }
 
 @media only screen and (max-width: 40em) {

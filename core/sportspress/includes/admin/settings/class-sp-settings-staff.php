@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.3
+ * @version     1.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -49,7 +49,7 @@ class SP_Settings_Staff extends SP_Settings_Page {
 			),
 
 			array(
-				'title'     => __( 'Display', 'sportspress' ),
+				'title'     => __( 'Templates', 'sportspress' ),
 				'desc' 		=> __( 'Photo', 'sportspress' ),
 				'id' 		=> 'sportspress_staff_show_photo',
 				'default'	=> 'yes',

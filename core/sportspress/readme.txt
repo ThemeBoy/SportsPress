@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.3.2
+Stable tag: 1.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -184,6 +184,41 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers.
 
 == Changelog ==
+
+= 1.4 =
+* Feature - New welcome page with intro video and separate tabs.
+* Feature - New iCal feeds for event calendars.
+* Feature - Add date range selector to event calendars.
+* Feature - Ability to insert sample data during installation.
+* Feature - Assign teams same position in league table when all values are tied.
+* Feature - Display time/results between home and away teams in event list.
+* Feature - Theme-specific stylesheets to apply when third-party theme is active.
+* Feature - Make event lists sortable.
+* Feature - Add team and event logo templates.
+* Feature - Add player and staff photo templates.
+* Feature - Option to hide Rank column in player lists.
+* Feature - Option to toggle frontend templates per post type.
+* Feature - Option to use abbreviated team names.
+* Feature - Option to enable comments in events articles.
+* Refactor - Change label for League to Competition.
+* Tweak - Bold and apply class to highlighted team name in league table.
+* Tweak - Remove team from venue hierarchy in overview.
+* Tweak - Admin editor styles to match WordPress 4.0 inline editor.
+* Tweak - Display performance icons in admin.
+* Tweak - Change default sport to Custom.
+* Tweak - Display none when no team available for player.
+* Tweak - Permanently delete config post types when sent to trash.
+* Tweak - Add hooks to widgets, shortcodes, and templates for integration.
+* Fix - Display team checkbox only once in player admin.
+* Fix - CSV team importer not saving all fields.
+* Preset - Adjust player positions in sport presets.
+* Preset - Add Bats / Throws metric to Baseball preset.
+* Preset - Add Bat brand metric to Cricket preset.
+* Localization - Make Video and Current Teams translatable.
+* Localization - Auto-load RTL stylesheet.
+* Localization - Include only compiled languages to reduce overall size.
+* Localization - Apply text options to translations.
+* Localization - Update Dutch, French, Armenian, Russian, Croatian, German, Greek, Thai, Japanese, Bosnian, Turkish, Spanish, Arabic, Italian, and Polish translations.
 
 = 1.3.2 =
 * Integration - WPML compatibility.
