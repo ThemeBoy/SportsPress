@@ -8,8 +8,9 @@ class SP_Widget_Player_list extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract($args);
+		$id = empty($instance['id']) ? 0 : $instance['id'];
+		if ( $id <= 0 ) return;
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
-		$id = empty($instance['id']) ? null : $instance['id'];
 		$number = empty($instance['number']) ? null : $instance['number'];
 		$columns = $instance['columns'];
 		$orderby = empty($instance['orderby']) ? 'default' : $instance['orderby'];
@@ -18,9 +19,15 @@ class SP_Widget_Player_list extends WP_Widget {
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		echo '<div id="sp_player_list_wrap">';
+
+		// Action to hook into
+		do_action( 'sportspress_before_widget_template', $args, $instance, 'player-list' );
+
 		sp_get_template( 'player-list.php', array( 'id' => $id, 'number' => $number, 'columns' => $columns, 'orderby' => $orderby, 'order' => $order, 'grouping' => 0, 'show_all_players_link' => $show_all_players_link ) );
-		echo '</div>';
+
+		// Action to hook into
+		do_action( 'sportspress_after_widget_template', $args, $instance, 'player-list' );
+
 		echo $after_widget;
 	}
 
@@ -34,6 +41,9 @@ class SP_Widget_Player_list extends WP_Widget {
 		$instance['order'] = strip_tags($new_instance['order']);
 		$instance['show_all_players_link'] = $new_instance['show_all_players_link'];
 
+		// Filter to hook into
+		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'player-list' );
+
 		return $instance;
 	}
 
@@ -46,7 +56,10 @@ class SP_Widget_Player_list extends WP_Widget {
 		$orderby = strip_tags($instance['orderby']);
 		$order = strip_tags($instance['order']);
 		$show_all_players_link = $instance['show_all_players_link'];
-?>
+
+		// Action to hook into
+		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'player-list' );
+		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
@@ -119,7 +132,10 @@ class SP_Widget_Player_list extends WP_Widget {
 
 		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_all_players_link'); ?>" name="<?php echo $this->get_field_name('show_all_players_link'); ?>" value="1" <?php checked( $show_all_players_link, 1 ); ?>>
 		<label for="<?php echo $this->get_field_id('show_all_players_link'); ?>"><?php _e( 'Display link to view all players', 'sportspress' ); ?></label></p>
-<?php
+
+		<?php
+		// Action to hook into
+		do_action( 'sportspress_after_widget_template_form', $this, $instance, 'player-list' );
 	}
 }
 
