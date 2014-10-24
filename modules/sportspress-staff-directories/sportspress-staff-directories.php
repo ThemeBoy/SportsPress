@@ -281,6 +281,7 @@ class SportsPress_Staff_Directories {
 	 */
 	public function add_text_options( $options = array() ) {
 		return array_merge( $options, array(
+			__( 'Job', 'sportspress' ),
 			__( 'Phone', 'sportspress' ),
 			__( 'Email', 'sportspress' ),
 			__( 'View all staff', 'sportspress' ),
@@ -378,7 +379,7 @@ class SportsPress_Staff_Directories {
 	 * @subpackage	Staff
 	 * @return void
 	 */
-	function output_staff_contacts() {
+	public function output_staff_contacts() {
 		sp_get_template( 'staff-contacts.php', array(), 'staff-contacts', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 	}
 
@@ -389,9 +390,10 @@ class SportsPress_Staff_Directories {
 	 * @subpackage	Team
 	 * @return void
 	 */
-	function output_team_directories() {
+	public function output_team_directories() {
 		sp_get_template( 'team-directories.php', array(), 'team-directories', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 	}
+
 
 	/**
 	 * Register widgets

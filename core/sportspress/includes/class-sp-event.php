@@ -111,6 +111,59 @@ class SP_Event extends SP_Custom_Post{
 		endif;
 	}
 
+	public function main_results() {
+		// Get main result option
+		$main_result = get_option( 'sportspress_main_result', null );
+
+		// Get teams from event
+		$teams = get_post_meta( $this->ID, 'sp_team', false );
+		
+		// Initialize output
+		$output = array();
+
+		// Return empty array if there are no teams
+		if ( ! $teams ) return $output;
+
+		// Get results from event
+		$results = get_post_meta( $this->ID, 'sp_results', true );
+
+		// Loop through teams			
+		foreach ( $teams as $team_id ) {
+
+			// Skip if not a team
+			if ( ! $team_id ) continue;
+
+			// Get team results from all results
+			$team_results = sp_array_value( $results, $team_id, null );
+
+			// Get main or last result
+			if ( $main_result ) {
+			
+				// Get main result from team results
+				$team_result = sp_array_value( $team_results, $main_result, null );
+			} else {
+
+				// If there are any team results available
+				if ( is_array( $team_results ) ) {
+
+					// Get last result that is not outcome
+					unset( $team_results['outcome'] );
+					$team_result = end( $team_results );
+				} else {
+
+					// Give team null result
+					$team_result = null;
+				}
+			}
+
+			if ( null != $team_result ) {
+				$output[] = $team_result;
+			}
+		}
+
+		return $output;
+	}
+
 	public function lineup_filter( $v ) {
 		return sp_array_value( $v, 'status', 'lineup' ) == 'lineup';
 	}

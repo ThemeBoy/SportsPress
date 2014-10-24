@@ -30,6 +30,7 @@ class SP_Tournament_Meta_Boxes {
 		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), array( $this, 'shortcode' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), array( $this, 'details' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_datadiv', __( 'Tournament', 'sportspress' ), array( $this, 'data' ), 'sp_tournament', 'normal', 'high' );
+		add_meta_box( 'sp_editordiv', __( 'Description', 'sportspress' ), array( $this, 'editor' ), 'sp_tournament', 'normal', 'low' );
 	}
 
 	/**
@@ -94,7 +95,7 @@ class SP_Tournament_Meta_Boxes {
 				$args = array(
 					'show_option_none' => __( '-- Not set --', 'sportspress' ),
 					'post_type' => 'sp_team',
-					'name' => 'sp_team',
+					'name' => 'sp_winner',
 					'selected' => $winner,
 					'values' => 'ID'
 				);
@@ -134,6 +135,9 @@ class SP_Tournament_Meta_Boxes {
 		if ( $rounds < 1 ) $rounds = 1;
 		elseif ( $rounds > 6 ) $rounds = 6;
 		update_post_meta( $post_id, 'sp_rounds', $rounds );
+
+		// Winner
+		update_post_meta( $post_id, 'sp_winner', sp_array_value( $_POST, 'sp_winner' ) );
 
 		// Data
 		update_post_meta( $post_id, 'sp_labels', sp_array_value( $_POST, 'sp_labels', array() ) );

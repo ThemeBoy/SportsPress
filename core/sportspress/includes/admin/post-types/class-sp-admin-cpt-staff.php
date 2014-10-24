@@ -62,7 +62,7 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
 			'title' => null,
-			'sp_role' => __( 'Role', 'sportspress' ),
+			'sp_role' => __( 'Job', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),
 			'sp_league' => __( 'Competitions', 'sportspress' ),
 			'sp_season' => __( 'Seasons', 'sportspress' ),

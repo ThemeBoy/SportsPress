@@ -12,10 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $primary_result = get_option( 'sportspress_primary_result', null );
 
 $defaults = array(
+	'id' => null,
 	'status' => 'default',
 	'date' => 'default',
-	'date_to' => 'default',
 	'date_from' => 'default',
+	'date_to' => 'default',
 	'number' => -1,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_event_blocks_paginated', 'yes' ) == 'yes' ? true : false,

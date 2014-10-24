@@ -28,6 +28,8 @@
 .sp-data-table {
 	width: 100%;
 	position: relative;
+    border-spacing: 0;
+	border-collapse: separate;
 }
 .sp-scrollable-table-wrapper .sp-data-table {
 	margin-bottom: 0;
@@ -166,6 +168,10 @@
 }
 
 /* Event Calendar */
+.sp-event-calendar {
+    border-spacing: 0;
+	border-collapse: separate;
+}
 .sp-event-calendar tbody td, .sp-event-calendar thead th {
 	text-align: center;
 }
@@ -220,6 +226,12 @@
 }
 .sp-event-blocks .logo-even {
 	float: right;
+}
+.sp-event-blocks .team-logo img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
 }
 .widget .sp-event-blocks .event-title {
 	margin: 10px;

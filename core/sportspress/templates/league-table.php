@@ -44,7 +44,7 @@ $labels = $data[0];
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
 
-if ( ! $columns )
+if ( $columns === null )
 	$columns = get_post_meta( $id, 'sp_columns', true );
 
 if ( null !== $columns && ! is_array( $columns ) )

@@ -168,7 +168,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 				'id' 		=> 'sportspress_event_comment_status',
 				'default'	=> 'no',
 				'type' 		=> 'checkbox',
-				'desc_tip' 	=> __( 'These settings may be overridden for individual articles.', 'sportspress' ),
 			),
 
 			array( 'type' => 'sectionend', 'id' => 'event_options' ),

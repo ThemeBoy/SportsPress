@@ -1,24 +1,24 @@
-.sp-tournament td {
+.sp-tournament-bracket td {
 	padding-left: 0;
 }
 
-.sp-tournament .sp-event {
+.sp-tournament-bracket .sp-event {
 	border-left: 8px solid #fff;
 }
 
-.sp-tournament .sp-team {
+.sp-tournament-bracket .sp-team {
 	padding: 0 8px 0 0 !important;
 }
 
-.sp-tournament .sp-team .sp-team-name:before {
+.sp-tournament-bracket .sp-team .sp-team-name:before {
 	right: -8px;
 	border-right: 5px solid #fff;
 }
 
-.sp-tournament .sp-team.sp-first-round {
+.sp-tournament-bracket .sp-team.sp-first-round {
 	padding-right: 0 !important;
 }
 
-.sp-tournament .sp-event.sp-last-round {
+.sp-tournament-bracket .sp-event.sp-last-round {
 	border-left: 0;
 }

@@ -1,4 +1,4 @@
-SportsPress Sponsors
+SportsPress Multisite
 
 Copyright 2014 by ThemeBoy
 
@@ -26,7 +26,7 @@ and
 
   ThemeBoy
 
-  SportsPress Sponsors is released under the GPL
+  SportsPress Multisite is released under the GPL
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

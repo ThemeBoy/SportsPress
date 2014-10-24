@@ -238,9 +238,9 @@ class SP_Admin_Menus {
 	public function menu_add() {
 		global $menu, $submenu, $current_user;
 
-		// Add "Roles" to Players submenu
+		// Add "Jobs" to Players submenu
 		if ( isset( $submenu['edit.php?post_type=sp_player'] ) ):
-			array_splice( $submenu['edit.php?post_type=sp_player'], 5, 0, array( array( __( 'Roles', 'sportspress' ), 'manage_categories', 'edit-tags.php?taxonomy=sp_role&post_type=sp_player' ) ) );
+			array_splice( $submenu['edit.php?post_type=sp_player'], 5, 0, array( array( __( 'Jobs', 'sportspress' ), 'manage_categories', 'edit-tags.php?taxonomy=sp_role&post_type=sp_player' ) ) );
 		endif;
 	}
 

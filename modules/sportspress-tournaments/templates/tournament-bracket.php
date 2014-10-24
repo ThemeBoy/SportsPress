@@ -21,8 +21,8 @@ extract( $defaults, EXTR_SKIP );
 $tournament = new SP_Tournament( $id );
 list( $labels, $data, $rounds, $rows ) = $tournament->data();
 ?>
-<div class="sp-template sp-template-tournament">
-	<table class="sp-data-table sp-tournament">
+<div class="sp-template sp-template-tournament-bracket">
+	<table class="sp-data-table sp-tournament-bracket">
 		<thead>
 			<tr>
 				<?php for ( $round = 0; $round < $rounds; $round++ ): ?>

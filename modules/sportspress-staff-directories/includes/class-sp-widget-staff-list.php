@@ -8,16 +8,23 @@ class SP_Widget_Staff_List extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract($args);
+		$id = empty($instance['id']) ? 0 : $instance['id'];
+		if ( $id <= 0 ) return;
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
-		$id = empty($instance['id']) ? null : $instance['id'];
 		$number = empty($instance['number']) ? null : $instance['number'];
 		$show_all_staff_link = empty($instance['show_all_staff_link']) ? false : $instance['show_all_staff_link'];
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		echo '<div id="sp_staff_list_wrap">';
+
+		// Action to hook into
+		do_action( 'sportspress_before_widget_template', $args, $instance, 'staff-list' );
+
 		sp_get_template( 'staff-list.php', array( 'id' => $id, 'number' => $number, 'show_all_staff_link' => $show_all_staff_link ), 'staff-list', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
-		echo '</div>';
+
+		// Action to hook into
+		do_action( 'sportspress_after_widget_template', $args, $instance, 'staff-list' );
+
 		echo $after_widget;
 	}
 
@@ -28,6 +35,9 @@ class SP_Widget_Staff_List extends WP_Widget {
 		$instance['number'] = intval($new_instance['number']);
 		$instance['show_all_staff_link'] = $new_instance['show_all_staff_link'];
 
+		// Filter to hook into
+		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'staff-list' );
+
 		return $instance;
 	}
 
@@ -37,7 +47,10 @@ class SP_Widget_Staff_List extends WP_Widget {
 		$id = intval($instance['id']);
 		$number = intval($instance['number']);
 		$show_all_staff_link = $instance['show_all_staff_link'];
-?>
+
+		// Action to hook into
+		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'staff-list' );
+		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
@@ -62,7 +75,10 @@ class SP_Widget_Staff_List extends WP_Widget {
 
 		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_all_staff_link'); ?>" name="<?php echo $this->get_field_name('show_all_staff_link'); ?>" value="1" <?php checked( $show_all_staff_link, 1 ); ?>>
 		<label for="<?php echo $this->get_field_id('show_all_staff_link'); ?>"><?php _e( 'Display link to view all staff', 'sportspress' ); ?></label></p>
-<?php
+
+		<?php
+		// Action to hook into
+		do_action( 'sportspress_after_widget_template_form', $this, $instance, 'staff-list' );
 	}
 }
 

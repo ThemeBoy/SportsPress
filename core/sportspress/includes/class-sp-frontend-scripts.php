@@ -161,7 +161,7 @@ class SP_Frontend_Scripts {
 		$colors['highlight'] = sp_hex_lighter( $colors['background'], 30, true );
 		$colors['lowlight'] = sp_hex_darker( $colors['background'], 8, true );
 		
-		echo '<style type="text/css">.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a,.sp-calendar tbody a:hover{background:none;}';
+		echo '<style type="text/css">';
 
 		if ( $enabled == 'yes' && sizeof( $colors ) > 0 ) {
 			echo ' /* SportsPress Frontend CSS */ ';

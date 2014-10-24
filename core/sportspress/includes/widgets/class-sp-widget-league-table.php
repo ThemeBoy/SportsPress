@@ -8,26 +8,25 @@ class SP_Widget_League_Table extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract($args);
+		$id = empty($instance['id']) ? 0 : $instance['id'];
+		if ( $id <= 0 ) return;
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
-		$id = empty($instance['id']) ? null : $instance['id'];
 		$number = empty($instance['number']) ? null : $instance['number'];
-		$columns = empty($instance['columns']) ? null : $instance['columns'];
+		$columns = empty($instance['columns']) ? array() : $instance['columns'];
 		$show_team_logo = empty($instance['show_team_logo']) ? false : $instance['show_team_logo'];
 		$show_full_table_link = empty($instance['show_full_table_link']) ? false : $instance['show_full_table_link'];
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		echo '<div id="sp_league_table_wrap">';
 
-			// Action to hook into
-			do_action( 'sportspress_before_widget', $args, $instance, 'league-table' );
+		// Action to hook into
+		do_action( 'sportspress_before_widget_template', $args, $instance, 'league-table' );
 
-			sp_get_template( 'league-table.php', array( 'id' => $id, 'number' => $number, 'columns' => $columns, 'show_full_table_link' => $show_full_table_link, 'show_team_logo' => $show_team_logo ) );
+		sp_get_template( 'league-table.php', array( 'id' => $id, 'number' => $number, 'columns' => $columns, 'show_full_table_link' => $show_full_table_link, 'show_team_logo' => $show_team_logo ) );
 
-			// Action to hook into
-			do_action( 'sportspress_after_widget', $args, $instance, 'league-table' );
+		// Action to hook into
+		do_action( 'sportspress_after_widget_template', $args, $instance, 'league-table' );
 
-		echo '</div>';
 		echo $after_widget;
 	}
 
@@ -40,7 +39,7 @@ class SP_Widget_League_Table extends WP_Widget {
 		$instance['show_team_logo'] = $new_instance['show_team_logo'];
 		$instance['show_full_table_link'] = $new_instance['show_full_table_link'];
 
-		// Action to hook into
+		// Filter to hook into
 		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'league-table' );
 
 		return $instance;
@@ -57,7 +56,7 @@ class SP_Widget_League_Table extends WP_Widget {
 		$show_full_table_link = $instance['show_full_table_link'];
 
 		// Action to hook into
-		do_action( 'sportspress_before_widget_form', $this, $instance, 'league-table' );
+		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'league-table' );
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
@@ -68,6 +67,7 @@ class SP_Widget_League_Table extends WP_Widget {
 			'post_type' => 'sp_table',
 			'name' => $this->get_field_name('id'),
 			'id' => $this->get_field_id('id'),
+			'show_option_none' => __( '&mdash; Select &mdash;', 'sportspress' ),
 			'selected' => $id,
 			'values' => 'ID',
 			'class' => 'widefat',
@@ -109,7 +109,7 @@ class SP_Widget_League_Table extends WP_Widget {
 
 		<?php
 		// Action to hook into
-		do_action( 'sportspress_after_widget_form', $this, $instance, 'league-table' );
+		do_action( 'sportspress_after_widget_template_form', $this, $instance, 'league-table' );
 	}
 }
 

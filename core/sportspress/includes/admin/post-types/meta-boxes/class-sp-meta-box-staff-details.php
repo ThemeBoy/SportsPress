@@ -52,7 +52,7 @@ class SP_Meta_Box_Staff_Details {
 		$past_teams = array_filter( get_post_meta( $post->ID, 'sp_past_team', false ) );
 		$current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
 		?>
-		<p><strong><?php _e( 'Role', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Job', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
 			'taxonomy' => 'sp_role',
@@ -60,7 +60,7 @@ class SP_Meta_Box_Staff_Details {
 			'selected' => $role,
 			'values' => 'term_id',
 			'show_option_blank' => true,
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Role', 'sportspress' ) ),
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Job', 'sportspress' ) ),
 			'class' => 'widefat',
 			'chosen' => true,
 		);

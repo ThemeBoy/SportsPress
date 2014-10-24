@@ -16,7 +16,15 @@ class SP_Widget_Countdown extends WP_Widget {
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
+
+		// Action to hook into
+		do_action( 'sportspress_before_widget_template', $args, $instance, 'countdown' );
+
 		sp_get_template( 'countdown.php', array( 'team' => $team, 'id' => $id, 'show_venue' => $show_venue, 'show_league' => $show_league ) );
+
+		// Action to hook into
+		do_action( 'sportspress_after_widget_template', $args, $instance, 'countdown' );
+
 		echo $after_widget;
 	}
 
@@ -28,6 +36,9 @@ class SP_Widget_Countdown extends WP_Widget {
 		$instance['show_venue'] = intval($new_instance['show_venue']);
 		$instance['show_league'] = intval($new_instance['show_league']);
 
+		// Filter to hook into
+		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'countdown' );
+
 		return $instance;
 	}
 
@@ -38,7 +49,10 @@ class SP_Widget_Countdown extends WP_Widget {
 		$id = intval($instance['id']);
 		$show_venue = intval($instance['show_venue']);
 		$show_league = intval($instance['show_league']);
-?>
+
+		// Action to hook into
+		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'countdown' );
+		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
@@ -84,7 +98,10 @@ class SP_Widget_Countdown extends WP_Widget {
 
 		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_league'); ?>" name="<?php echo $this->get_field_name('show_league'); ?>" value="1" <?php checked( $show_league, 1 ); ?>>
 		<label for="<?php echo $this->get_field_id('show_league'); ?>"><?php _e( 'Display league', 'sportspress' ); ?></label></p>
-<?php
+		
+		<?php
+		// Action to hook into
+		do_action( 'sportspress_after_widget_template_form', $this, $instance, 'countdown' );
 	}
 }
 

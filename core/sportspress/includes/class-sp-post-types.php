@@ -149,10 +149,10 @@ class SP_Post_types {
 		endforeach;
 
 		$labels = array(
-			'name' => __( 'Roles', 'sportspress' ),
-			'singular_name' => __( 'Role', 'sportspress' ),
+			'name' => __( 'Jobs', 'sportspress' ),
+			'singular_name' => __( 'Job', 'sportspress' ),
 			'all_items' => __( 'All', 'sportspress' ),
-			'edit_item' => __( 'Edit Role', 'sportspress' ),
+			'edit_item' => __( 'Edit Job', 'sportspress' ),
 			'view_item' => __( 'View', 'sportspress' ),
 			'update_item' => __( 'Update', 'sportspress' ),
 			'add_new_item' => __( 'Add New', 'sportspress' ),
@@ -163,7 +163,7 @@ class SP_Post_types {
 			'not_found' => __( 'No results found.', 'sportspress' ),
 		);
 		$args = array(
-			'label' => __( 'Roles', 'sportspress' ),
+			'label' => __( 'Jobs', 'sportspress' ),
 			'labels' => $labels,
 			'public' => true,
 			'show_in_nav_menus' => false,

@@ -21,7 +21,15 @@ class SP_Widget_Event_List extends WP_Widget {
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
+
+		// Action to hook into
+		do_action( 'sportspress_before_widget_template', $args, $instance, 'event-list' );
+
 		sp_get_template( 'event-list.php', array( 'id' => $id, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'number' => $number, 'columns' => $columns, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
+
+		// Action to hook into
+		do_action( 'sportspress_after_widget_template', $args, $instance, 'event-list' );
+
 		echo $after_widget;
 	}
 
@@ -38,6 +46,9 @@ class SP_Widget_Event_List extends WP_Widget {
 		$instance['order'] = strip_tags($new_instance['order']);
 		$instance['show_all_events_link'] = $new_instance['show_all_events_link'];
 
+		// Filter to hook into
+		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'event-list' );
+
 		return $instance;
 	}
 
@@ -53,7 +64,10 @@ class SP_Widget_Event_List extends WP_Widget {
 		$columns = $instance['columns'];
 		$order = strip_tags($instance['order']);
 		$show_all_events_link = $instance['show_all_events_link'];
-?>
+
+		// Action to hook into
+		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'event-list' );
+		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
@@ -136,7 +150,10 @@ class SP_Widget_Event_List extends WP_Widget {
 
 		<p class="sp-event-calendar-show-all-toggle<?php if ( ! $id ): ?> hidden<?php endif; ?>"><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_all_events_link'); ?>" name="<?php echo $this->get_field_name('show_all_events_link'); ?>" value="1" <?php checked( $show_all_events_link, 1 ); ?>>
 		<label for="<?php echo $this->get_field_id('show_all_events_link'); ?>"><?php _e( 'Display link to view all events', 'sportspress' ); ?></label></p>
-<?php
+
+		<?php
+		// Action to hook into
+		do_action( 'sportspress_after_widget_template_form', $this, $instance, 'event-list' );
 	}
 }
 

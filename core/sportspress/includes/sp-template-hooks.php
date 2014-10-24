@@ -302,13 +302,13 @@ function sportspress_pre_get_posts( $query ) {
 }
 add_filter('pre_get_posts', 'sportspress_pre_get_posts');
 
-function sp_posts_where( $where, $that ) {
+function sportspress_show_future_posts( $where, $that ) {
     global $wpdb;
     if( 'sp_event' == $that->query_vars['post_type'] && is_archive() )
         $where = str_replace( "{$wpdb->posts}.post_status = 'publish'", "{$wpdb->posts}.post_status = 'publish' OR $wpdb->posts.post_status = 'future'", $where );
     return $where;
 }
-add_filter( 'posts_where', 'sp_posts_where', 2, 10 );
+add_filter( 'posts_where', 'sportspress_show_future_posts', 2, 10 );
 
 function sportspress_sanitize_title( $title ) {
 

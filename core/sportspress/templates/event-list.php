@@ -9,14 +9,12 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-$primary_result = get_option( 'sportspress_primary_result', null );
-
 $defaults = array(
 	'id' => null,
 	'status' => 'default',
 	'date' => 'default',
-	'date_to' => 'default',
 	'date_from' => 'default',
+	'date_to' => 'default',
 	'number' => -1,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_venues' => get_option( 'sportspress_link_venues', 'yes' ) == 'yes' ? true : false,
@@ -107,10 +105,10 @@ endif;
 					if ( isset( $limit ) && $i >= $limit ) continue;
 
 					$teams = get_post_meta( $event->ID, 'sp_team' );
-					$results = get_post_meta( $event->ID, 'sp_results', true );
 					$video = get_post_meta( $event->ID, 'sp_video', true );
 
-					$main_results = array();
+					$main_results = sp_get_main_results( $event );
+
 					$teams_output = '';
 					$teams_array = '';
 
@@ -118,27 +116,15 @@ endif;
 						foreach ( $teams as $team ):
 							$name = get_the_title( $team );
 							if ( $name ):
-								$team_results = sp_array_value( $results, $team, null );
-
-								if ( $primary_result ):
-									$team_result = sp_array_value( $team_results, $primary_result, null );
-								else:
-									if ( is_array( $team_results ) ):
-										unset( $team_results['outcome'] );
-										$team_result = end( $team_results );
-									else:
-										$team_result = null;
-									endif;
-								endif;
-
 								if ( $link_teams ):
 									$team_output = '<a href="' . get_post_permalink( $team ) . '">' . $name . '</a>';
 								else:
 									$team_output = $name;
 								endif;
 
+								$team_result = sp_array_value( $main_results, $team, null );
+
 								if ( $team_result != null ):
-									$main_results[] = $team_result;
 									if ( $usecolumns != null && ! in_array( 'time', $usecolumns ) ):
 										$team_output .= ' (' . $team_result . ')';
 									endif;
@@ -175,7 +161,7 @@ endif;
 							if ( ! empty( $main_results ) ):
 								echo implode( ' - ', $main_results );
 							else:
-								echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . get_post_time( get_option( 'time_format' ), false, $event, true );
+								echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
 							endif;
 							echo '</a></td>';
 						endif;

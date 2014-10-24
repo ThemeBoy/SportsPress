@@ -17,9 +17,15 @@ class SP_Widget_Sponsors extends WP_Widget {
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		echo '<div id="sp_sponsors_wrap">';
+
+		// Action to hook into
+		do_action( 'sportspress_before_widget_template', $args, $instance, 'sponsors' );
+
 		sp_get_template( 'sponsors.php', array( 'limit' => $limit, 'width' => $width, 'height' => $height, 'orderby' => $orderby, 'order' => $order ), 'sponsors', SP_SPONSORS_DIR . 'templates/' );
-		echo '</div>';
+
+		// Action to hook into
+		do_action( 'sportspress_after_widget_template', $args, $instance, 'sponsors' );
+
 		echo $after_widget;
 	}
 
@@ -32,6 +38,9 @@ class SP_Widget_Sponsors extends WP_Widget {
 		$instance['orderby'] = strip_tags($new_instance['orderby']);
 		$instance['order'] = strip_tags($new_instance['order']);
 
+		// Filter to hook into
+		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'sponsors' );
+
 		return $instance;
 	}
 
@@ -43,6 +52,9 @@ class SP_Widget_Sponsors extends WP_Widget {
 		$height = intval($instance['height']);
 		$orderby = strip_tags($instance['orderby']);
 		$order = strip_tags($instance['order']);
+
+		// Action to hook into
+		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'sponsors' );
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
@@ -71,6 +83,8 @@ class SP_Widget_Sponsors extends WP_Widget {
 		<input id="<?php echo $this->get_field_id('height'); ?>" name="<?php echo $this->get_field_name('height'); ?>" placeholder="128" type="number" value="<?php echo esc_attr($height); ?>" class="small-text"></p>
 
 		<?php
+		// Action to hook into
+		do_action( 'sportspress_after_widget_template_form', $this, $instance, 'sponsors' );
 	}
 }
 

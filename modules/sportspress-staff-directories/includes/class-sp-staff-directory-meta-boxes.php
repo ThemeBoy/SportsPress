@@ -190,7 +190,7 @@ class SP_Staff_Directory_Meta_Boxes {
 				<thead>
 					<tr>
 						<th class="icon">&nbsp;</th>
-						<th><?php _e( 'Role', 'sportspress' ); ?></th>
+						<th><?php _e( 'Job', 'sportspress' ); ?></th>
 						<th><?php _e( 'Name', 'sportspress' ); ?></th>
 						<?php foreach ( $labels as $key => $label ): ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">

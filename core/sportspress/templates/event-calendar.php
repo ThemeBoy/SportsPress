@@ -15,8 +15,8 @@ $defaults = array(
 	'id' => null,
 	'status' => 'default',
 	'date' => 'default',
-	'date_to' => 'default',
 	'date_from' => 'default',
+	'date_to' => 'default',
 	'initial' => true,
 	'caption_tag' => 'h4',
 	'show_all_events_link' => false,
@@ -162,7 +162,7 @@ else
 	$ak_title_separator = ', ';
 
 $ak_titles_for_day = array();
-$ak_post_titles = $wpdb->get_results("SELECT ID, post_title, DAYOFMONTH(post_date) as dom "
+$ak_post_titles = $wpdb->get_results("SELECT ID, post_title, post_date, DAYOFMONTH(post_date) as dom "
 	."FROM $wpdb->posts "
 	."WHERE post_date >= '{$thisyear}-{$thismonth}-01 00:00:00' "
 	."AND post_date <= '{$thisyear}-{$thismonth}-{$last_day} 23:59:59' "
@@ -173,7 +173,7 @@ if ( $ak_post_titles ) {
 	foreach ( (array) $ak_post_titles as $ak_post_title ) {
 
 			/** This filter is documented in wp-includes/post-template.php */
-			$post_title = esc_attr( apply_filters( 'the_title', $ak_post_title->post_title, $ak_post_title->ID ) );
+			$post_title = esc_attr( apply_filters( 'the_title', $ak_post_title->post_title, $ak_post_title->ID ) . ' @ ' . date_i18n( get_option( 'time_format' ), strtotime( $ak_post_title->post_date ) ) );
 
 			if ( empty($ak_titles_for_day['day_'.$ak_post_title->dom]) )
 				$ak_titles_for_day['day_'.$ak_post_title->dom] = '';

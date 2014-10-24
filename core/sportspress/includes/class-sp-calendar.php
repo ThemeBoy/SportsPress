@@ -60,9 +60,7 @@ class SP_Calendar extends SP_Custom_Post {
 			$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
 
 		if ( ! $this->to ):
-			$to = new DateTime( get_post_meta( $this->ID, 'sp_date_to', true ) );
-			$to->modify( '+1 day' );
-			$this->to = $to->format( 'Y-m-d' );
+			$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
 		endif;
 	}
 
@@ -163,11 +161,12 @@ class SP_Calendar extends SP_Custom_Post {
 		remove_filter( 'posts_where', array( $this, 'range' ) );
 
 		return $events;
-
 	}
 
 	public function range( $where = '' ) {
-		$where .= " AND post_date BETWEEN '" . $this->from . "' AND '" . $this->to . "'";
+		$to = new DateTime( $this->to );
+		$to->modify( '+1 day' );
+		$where .= " AND post_date BETWEEN '" . $this->from . "' AND '" . $to->format( 'Y-m-d' ) . "'";
 		return $where;
 	}
 }

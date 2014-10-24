@@ -1,50 +1,56 @@
-.sp-tournament {
+.sp-tournament-bracket {
 	border-width: 1px;
+    border-spacing: 0;
 	border-collapse: separate !important;
 }
 
-.sp-tournament th,
-.sp-tournament td {
+.sp-tournament-bracket th,
+.sp-tournament-bracket td {
 	text-align: center;
 	vertical-align: middle;
 }
 
-.sp-tournament td {
+.sp-tournament-bracket td {
 	border: none;
 }
 
-.sp-tournament a {
+.sp-tournament-bracket a {
 	text-decoration: none !important;
 }
 
-.sp-tournament tr:first-child td {
+.sp-tournament-bracket img {
+	vertical-align: middle;
+}
+
+.sp-tournament-bracket tr:first-child td {
 	padding-top: 20px !important;
 }
 
-.sp-tournament tr:last-child td {
+.sp-tournament-bracket tr:last-child td {
 	padding-bottom: 20px !important;
 }
 
-.sp-tournament .sp-event {
+.sp-tournament-bracket .sp-event,
+.sp-tournament-bracket .sp-team {
 	padding: 0 !important;
 }
 
-.sp-tournament .sp-event .sp-event-title {
+.sp-tournament-bracket .sp-event .sp-event-title {
 	padding: 8px;
 	display: block;
 }
 
-.sp-tournament .sp-team .sp-team-name {
+.sp-tournament-bracket .sp-team .sp-team-name {
 	position: relative;
 	padding: 8px;
 	display: block;
 }
 
-.sp-tournament .sp-team span.sp-team-name {
+.sp-tournament-bracket .sp-team span.sp-team-name {
 	cursor: default;
 }
 
-.sp-tournament .sp-team .sp-team-name:before {
+.sp-tournament-bracket .sp-team .sp-team-name:before {
 	content: "";
 	position: absolute;
 	top: 50%;
@@ -53,6 +59,11 @@
 	border-bottom: 5px solid transparent;
 }
 
-.sp-tournament .sp-team.sp-first-round .sp-team-name:before {
+.sp-tournament-bracket .sp-team.sp-first-round .sp-team-name:before {
 	border: none;
+}
+
+.sp-template-tournament-winner {
+	text-align: center;
+	margin-bottom: 2em;
 }
