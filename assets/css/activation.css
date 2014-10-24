@@ -1,10 +1,10 @@
 /* Messages */
-.sportspress-message {
+div.sportspress-message {
 	border-left-color: #00a69c !important;
 }
 
-.sportspress-message a.button-primary,
-.sportspress-message a.button-secondary,
+div.sportspress-message a.button-primary,
+div.sportspress-message a.button-secondary,
 p.sportspress-actions input.button-primary,
 p.sportspress-actions input.button-primary:active,
 p.sportspress-actions a.button-primary,
@@ -17,8 +17,8 @@ p.sportspress-actions a.button-primary:active {
 	text-decoration: none;
 }
 
-.sportspress-message a.button-primary:hover,
-.sportspress-message a.button-secondary:hover,
+div.sportspress-message a.button-primary:hover,
+div.sportspress-message a.button-secondary:hover,
 p.sportspress-actions input.button-primary:hover,
 p.sportspress-actions input.button-primary:focus,
 p.sportspress-actions a.button-primary:hover,
@@ -31,7 +31,7 @@ p.sportspress-actions a.button-primary:focus {
 	text-decoration: none;
 }
 
-.sportspress-message a.button-secondary {
+div.sportspress-message a.button-secondary {
 	-moz-opacity: 0.7;
 	opacity: 0.7;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
