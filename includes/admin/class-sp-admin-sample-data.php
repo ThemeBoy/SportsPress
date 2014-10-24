@@ -76,7 +76,7 @@ class SP_Admin_Sample_Data {
 			),
 		);
 
-		// Roles
+		// Jobs
 		$taxonomies['sp_role'] = array( _X( 'Coach', 'example', 'sportspress' ) );
 
 		/*
