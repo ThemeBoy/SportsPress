@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 include( 'sp-conditional-functions.php' );
 include( 'sp-formatting-functions.php' );
 include( 'sp-deprecated-functions.php' );
+include( 'sp-api-functions.php' );
 
 /**
  * Get template part.
