@@ -1,4 +1,4 @@
-=== SportsPress - All in One Sports Management ===
+=== SportsPress - Sports Club & League Manager ===
 Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
@@ -8,7 +8,7 @@ Stable tag: 1.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-SportsPress is an extendable sports data plugin that adds league management capabilities and a statistics calculator for any sport.
+SportsPress is an extendable all-in-one sports data plugin that adds club and league management capabilities for any team sport.
 
 == Description ==
 
@@ -158,11 +158,11 @@ If on the off-chance you do encounter issues with the event/team/player/staff pa
 
 == Screenshots ==
 
-1. Manage events from multiple leagues and seasons. Event names are generated automatically.
+1. Select your sport to automatically install presets and sample data.
 2. Each team has a unique logo and website URL. Optionally link teams from your blog to their official websites.
-3. Configure variables used throughout the plugin to fit your sport. Presets are provided for some sports, and will automatically populate these options.
-4. Design your own points system using the custom drag-and-drop equation builder.
-5. The overview page provides a birds-eye view of your entire sports network.
+3. The overview page provides a birds-eye view of your entire sports network.
+4. Configure variables used throughout the plugin to fit your sport. Presets are provided for some sports, and will automatically populate these options.
+5. Design your own points system using the custom drag-and-drop equation builder.
 6. Twenty Fourteen theme showcasing the dynamic league table and some of the included widgets.
 
 == Frequently Asked Questions ==
