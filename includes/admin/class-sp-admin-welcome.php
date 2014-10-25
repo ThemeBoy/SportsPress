@@ -339,7 +339,7 @@ class SP_Admin_Welcome {
 				<div class="last-feature">
 					<h4><?php _e( 'What is SportsPress?', 'sportspress' ); ?></h4>
 					<?php $hl = substr( get_locale(), 0, 2 ); ?>
-					<div class="sp-welcome-video sp-fitvids"><iframe width="500" height="281" src="//www.youtube.com/embed/Z1cXPQIUzpE?rel=0&amp;controls=2&amp;showinfo=0&amp;hl=<?php echo $hl; ?>" frameborder="0" allowfullscreen></iframe></div>
+					<div class="sp-welcome-video sp-fitvids"><iframe width="500" height="281" src="//www.youtube.com/embed/KQyga_C5a6M?rel=0&amp;controls=2&amp;showinfo=0&amp;hl=<?php echo $hl; ?>" frameborder="0" allowfullscreen></iframe></div>
 				</div>
 			</div>
 		</div>

@@ -15,7 +15,7 @@ SportsPress is an extendable sports data plugin that adds league management capa
 = Create a Professional Sports Website =
 SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team or club website.
 
-[youtube http://www.youtube.com/watch?v=Z1cXPQIUzpE]
+[youtube http://www.youtube.com/watch?v=KQyga_C5a6M]
 
 = Industry Reviews =
 > "*The SportsPress plugin brings in some amazing features to your WordPress site and league management capabilities. If you are looking forward to create a sports related website on WordPress, you must have a look at SportsPress plugin.*" — [indexwp.com](http://www.indexwp.com/sportspress-plugin-review/)
