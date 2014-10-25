@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version     1.4
+ * @version     1.4.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -329,7 +329,9 @@ class SP_League_Table extends SP_Custom_Post{
 
 		uasort( $merged, array( $this, 'sort' ) );
 
-		uasort( $merged, array( $this, 'calculate_pos' ) );
+		// Create temp array and calculate position of teams for ties
+		$temp = $merged;
+		uasort( $temp, array( $this, 'calculate_pos' ) );
 
 		foreach ( $merged as $team_id => $team_columns ) {
 			$merged[ $team_id ]['pos'] = array_shift( $this->pos );
