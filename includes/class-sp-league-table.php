@@ -404,7 +404,7 @@ class SP_League_Table extends SP_Custom_Post{
 				// Increment if not equal
 				$this->pos[] = $this->counter;
 
-				return 1;
+				return 0;
 
 			endif;
 
@@ -412,6 +412,6 @@ class SP_League_Table extends SP_Custom_Post{
 
 		// Repeat position if equal
 		$this->pos[] = end( $this->pos );
-		return 1;
+		return 0;
 	}
 }
