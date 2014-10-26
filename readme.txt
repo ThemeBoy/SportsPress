@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,7 +13,7 @@ SportsPress is an extendable all-in-one sports data plugin that adds club and le
 == Description ==
 
 = Create a Professional Sports Website =
-SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team or club website.
+Transform your WordPress blog into a fully configurable team, club, or league website. Features a suite of sports tools including fixtures, results, automated standings, players rankings, and individual profiles for teams, players, and staff.
 
 [youtube http://www.youtube.com/watch?v=KQyga_C5a6M]
 
@@ -29,7 +29,7 @@ SportsPress is the ultimate all-in-one plugin for transforming your WordPress bl
 = Features =
 * Equation Builder
 * Team Profiles with Player List
-* League Tables with Club Logos
+* Automated League Standings with Club Logos
 * Events (Fixtures & Results) with Player Performance
 * Events Calendar
 * Player Profiles & Statistics Per Position
@@ -184,6 +184,9 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers.
 
 == Changelog ==
+
+= 1.4.2 =
+* Tweak - Remove solid color from base stylesheet to improve integration.
 
 = 1.4.1 =
 * Fix - League table positions not sorting by sort order.
