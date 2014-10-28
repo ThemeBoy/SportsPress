@@ -183,9 +183,9 @@ class SP_Admin_Sample_Data {
 
 		// Define event videos
 		$event_videos = array(
-			'https://www.youtube.com/watch?v=t_aQRQGoXRk',
-			'https://www.youtube.com/watch?v=sIrjQyuwteM',
-			'https://www.youtube.com/watch?v=PJuqJefZwuA',
+			'https://www.youtube.com/watch?v=xNkf2LYckI0',
+			'https://www.youtube.com/watch?v=KM0oPAbNnoE',
+			'https://www.youtube.com/watch?v=xSGxuTGVQYE',
 		);
 
 		// Get countries
