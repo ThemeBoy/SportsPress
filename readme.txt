@@ -186,7 +186,10 @@ Yes, CSV importers are included with the plugin. Go to Tools > Import and choose
 == Changelog ==
 
 = 1.4.3 =
-* Localization - Update Spanish translation.
+* Tweak - Update API functions for events and teams.
+* Tweak - Update sample video links.
+* Fix - Remove calendar link background color for more consistent styling.
+* Localization - Update Finnish, Italian, Russian, and Spanish translations.
 
 = 1.4.2 =
 * Tweak - Remove solid color from base stylesheet to improve integration.
