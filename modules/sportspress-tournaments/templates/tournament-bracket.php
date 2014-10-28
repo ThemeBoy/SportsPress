@@ -53,9 +53,26 @@ list( $labels, $data, $rounds, $rows ) = $tournament->data();
 						if ( sp_array_value( $cell, 'type', null ) === 'event' ):
 							echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="' . ( $event ? ' sp-event' : '' ) . ( $round === 0 ? ' sp-first-round' : '' ) . ( $round === $rounds - 1 ? ' sp-last-round' : '' ) . '">';
 							if ( $event ) {
-								$event_name = get_the_title( $event );
-								if ( $link_events ) $event_name = '<a href="' . get_post_permalink( $event ) . '" class="sp-event-title">' . $event_name . '</a>';
-								else $event_name = '<span class="sp-event-title">' . $event_name . '</span>';
+								$event_name = implode( '-', sp_get_main_results_or_time( $event ) );
+
+								if ( $show_logos ) {
+									$teams = sp_get_teams( $event );
+									if ( $teams && sizeof( $teams ) >= 2 ) {
+										$home = reset( $teams );
+										if ( sp_has_logo( $home ) ) {
+											$event_name = sp_get_logo( $home, 'mini' ) . ' ' . $event_name;
+										}
+
+										$away = end( $teams );
+										if ( sp_has_logo( $away ) ) {
+											$event_name .= ' ' . sp_get_logo( $away, 'mini' );
+										}
+									}
+								}
+
+								if ( $link_events ) $event_name = '<a href="' . get_post_permalink( $event ) . '" class="sp-event-title" title="' . get_the_title( $event ) . '">' . $event_name . '</a>';
+								else $event_name = '<span class="sp-event-title" title="' . get_the_title( $event ) . '">' . $event_name . '</span>';
+								
 								echo $event_name;
 							} else {
 								echo '&nbsp;';
@@ -66,7 +83,6 @@ list( $labels, $data, $rounds, $rows ) = $tournament->data();
 							echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="sp-team' . ( $round === 0 ? ' sp-first-round' : '' ) . ( $round === $rounds - 1 ? ' sp-last-round' : '' ) . '">';
 							if ( $team ) {
 								$team_name = get_the_title( $team );
-								if ( $show_logos ) $team_name = get_the_post_thumbnail( $team, 'sportspress-fit-mini' ) . ' ' . $team_name;
 								if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '" class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</a>';
 								else $team_name = '<span class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</span>';;
 								echo $team_name;

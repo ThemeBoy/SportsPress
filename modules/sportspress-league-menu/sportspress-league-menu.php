@@ -5,7 +5,7 @@ Plugin URI: http://sportspresspro.com/
 Description: Add a league menu to SportsPress.
 Author: ThemeBoy
 Author URI: http://sportspresspro.com
-Version: 1.0.2
+Version: 1.4
 */
 
 // Exit if accessed directly
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Main SportsPress League Menu Class
  *
  * @class SportsPress_League_Menu
- * @version	1.0
+ * @version	1.4
  */
 class SportsPress_League_Menu {
 
@@ -41,7 +41,7 @@ class SportsPress_League_Menu {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_LEAGUE_MENU_VERSION' ) )
-			define( 'SP_LEAGUE_MENU_VERSION', '1.0.2' );
+			define( 'SP_LEAGUE_MENU_VERSION', '1.4' );
 
 		if ( !defined( 'SP_LEAGUE_MENU_URL' ) )
 			define( 'SP_LEAGUE_MENU_URL', plugin_dir_url( __FILE__ ) );

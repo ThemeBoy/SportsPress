@@ -1,47 +1,47 @@
-=== SportsPress - All in One Sports Management ===
+=== SportsPress - Manage Leagues & Sports Clubs ===
 Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.4
+Stable tag: 1.4.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-SportsPress is an extendable sports data plugin that adds league management capabilities and a statistics calculator for any sport.
+SportsPress is an extendable all-in-one sports data plugin that adds club and league management capabilities for any team sport.
 
 == Description ==
 
 = Create a Professional Sports Website =
-SportsPress is the ultimate all-in-one plugin for transforming your WordPress blog into a fully automated, configurable team or club website.
+Transform your WordPress blog into a fully configurable team, club, or league website. Features a suite of sports tools including fixtures, results, automated standings, players rankings, and individual profiles for clubs, players, and staff.
 
-[youtube http://www.youtube.com/watch?v=Z1cXPQIUzpE]
+[youtube http://www.youtube.com/watch?v=KQyga_C5a6M]
 
 = Industry Reviews =
-> "*The SportsPress plugin brings in some amazing features to your WordPress site and league management capabilities. If you are looking forward to create a sports related website on WordPress, you must have a look at SportsPress plugin.*" — [indexwp.com](http://www.indexwp.com/sportspress-plugin-review/)
+> "*The SportsPress plugin brings in some amazing features to your WordPress site and league management capabilities. If you are looking forward to create a sports related website on WordPress, you must have a look at SportsPress plugin.*" — [Indexwp](http://www.indexwp.com/sportspress-plugin-review/)
 >
-> "*Script of the Day: While the WordPress repository holds various team and sports-related plugins, few of them come close to what you can achieve with SportsPress.*" — [softpedia.com](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml)
+> "*Script of the Day: While the WordPress repository holds various team and sports-related plugins, few of them come close to what you can achieve with SportsPress.*" — [Softpedia](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml)
 >
-> "*SportsPress is our number 1 WordPress plugin for sport!*" — [gbsport.org.uk](http://www.gbsport.org.uk/5-great-wordpress-plugins-for-sport/)
+> "*SportsPress is our number 1 WordPress plugin for sport!*" — [GBSport](http://www.gbsport.org.uk/5-great-wordpress-plugins-for-sport/)
 >
-> "*The freely available and highly impressive Sportspress plugin offers terrific functionality including a fixtures listing, league table, player & staff profiles, customizable point system and a built-in translation system for 36 different languages.*" — [clubthemes.com](http://clubthemes.com/awesome-sporting-templates-themes-wordpress-joomla/)
+> "*The freely available and highly impressive Sportspress plugin offers terrific functionality including a fixtures listing, league table, player & staff profiles, customizable point system and a built-in translation system for 36 different languages.*" — [Club Themes](http://clubthemes.com/awesome-sporting-templates-themes-wordpress-joomla/)
 
 = Features =
 * Equation Builder
-* Team Profiles with Player List
-* League Tables with Club Logos
+* Club Profiles with Player List
+* Automated League Standings with Club Logos
 * Events (Fixtures & Results) with Player Performance
 * Events Calendar
-* Player Profiles & Statistics Per Position
+* Player Profiles & Statistics
 * Player Lists
 * Staff Profiles
 * Season Archives
 * Venue Information & Maps
 * Statistics & League Table Columns Configuration
 * Sport Presets
-* Team & Individual mode
 * Import Events, Teams, Players, and Staff from CSV Files
 * Easy Shortcodes Menu in Editor
+* Events Integrate with iCal
 * Certified compatibility with [WPML](http://wpml.org/plugin/sportspress/)
 
 More details about each feature are available on the [SportsPress Website](http://sportspresspro.com/).
@@ -158,11 +158,11 @@ If on the off-chance you do encounter issues with the event/team/player/staff pa
 
 == Screenshots ==
 
-1. Manage events from multiple leagues and seasons. Event names are generated automatically.
+1. Select your sport to automatically install presets and sample data.
 2. Each team has a unique logo and website URL. Optionally link teams from your blog to their official websites.
-3. Configure variables used throughout the plugin to fit your sport. Presets are provided for some sports, and will automatically populate these options.
-4. Design your own points system using the custom drag-and-drop equation builder.
-5. The overview page provides a birds-eye view of your entire sports network.
+3. The overview page provides a birds-eye view of your entire sports network.
+4. Configure variables used throughout the plugin to fit your sport. Presets are provided for some sports, and will automatically populate these options.
+5. Design your own points system using the custom drag-and-drop equation builder.
 6. Twenty Fourteen theme showcasing the dynamic league table and some of the included widgets.
 
 == Frequently Asked Questions ==
@@ -184,6 +184,18 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers.
 
 == Changelog ==
+
+= 1.4.3 =
+* Tweak - Update API functions for events and teams.
+* Tweak - Update sample video links.
+* Fix - Remove calendar link background color for more consistent styling.
+* Localization - Update Finnish, Italian, Russian, and Spanish translations.
+
+= 1.4.2 =
+* Tweak - Remove solid color from base stylesheet to improve integration.
+
+= 1.4.1 =
+* Fix - League table positions not sorting by sort order.
 
 = 1.4 =
 * Feature - New welcome page with intro video and separate tabs.

@@ -36,8 +36,9 @@
 }
 
 .sp-tournament-bracket .sp-event .sp-event-title {
-	padding: 8px;
+	padding: 30px 8px;
 	display: block;
+	font-weight: bold;
 }
 
 .sp-tournament-bracket .sp-team .sp-team-name {

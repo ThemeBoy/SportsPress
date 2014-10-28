@@ -1,6 +1,6 @@
 <div class="wrap sportspress sp-config-wrap">
 	<h2>
-		<?php _e( 'Configure SportsPress', 'sportspress' ); ?>
+		<?php _e( 'Configure', 'sportspress' ); ?>
 	</h2>
 	<table class="form-table">
 		<tbody>

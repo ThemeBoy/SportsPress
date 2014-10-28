@@ -5,7 +5,7 @@ Plugin URI: http://sportspresspro.com/
 Description: White label SportsPress branding.
 Author: ThemeBoy
 Author URI: http://sportspresspro.com
-Version: 1.0.1
+Version: 1.4
 */
 
 // Exit if accessed directly
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Main SportsPress Branding Class
  *
  * @class SportsPress_Branding
- * @version	1.0
+ * @version	1.4
  */
 class SportsPress_Branding {
 
@@ -52,7 +52,7 @@ class SportsPress_Branding {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_BRANDING_VERSION' ) )
-			define( 'SP_BRANDING_VERSION', '1.0' );
+			define( 'SP_BRANDING_VERSION', '1.4' );
 
 		if ( !defined( 'SP_BRANDING_URL' ) )
 			define( 'SP_BRANDING_URL', plugin_dir_url( __FILE__ ) );
