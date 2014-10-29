@@ -296,7 +296,9 @@ final class SportsPress {
 	 * Ensure theme and server variable compatibility and setup image sizes.
 	 */
 	public function setup_environment() {
-		add_theme_support( 'post-thumbnails', sp_post_types() );
+		if ( ! current_theme_supports( 'post-thumbnails' ) ) {
+			add_theme_support( 'post-thumbnails' );
+		}
 
 		// Add image sizes
 		add_image_size( 'sportspress-fit-medium',  300, 300, false );
