@@ -22,7 +22,7 @@ class SP_Admin_Sports {
 		if ( empty( self::$presets ) ) {
 			$presets = array();
 			self::$options = array(
-				__( 'Traditional Sports', 'sportspress' ) => array(),
+				__( 'Sports', 'sportspress' ) => array(),
 				__( 'Esports', 'sportspress' ) => array(),
 				__( 'Other', 'sportspress' ) => array( 'custom' => __( 'Custom', 'sportspress' ) ),
 			);
@@ -43,9 +43,9 @@ class SP_Admin_Sports {
 				$id = preg_replace('/\\.[^.\\s]{3,4}$/', '', $file );
 				$presets[ $id ] = $data;
 				$name = array_key_exists( 'name', $data ) ? __( $data['name'], 'sportspress' ) : $id;
-				self::$options[ __( 'Traditional Sports', 'sportspress' ) ][ $id ] = $name;
+				self::$options[ __( 'Sports', 'sportspress' ) ][ $id ] = $name;
 			}
-			asort( self::$options[ __( 'Traditional Sports', 'sportspress' ) ] );
+			asort( self::$options[ __( 'Sports', 'sportspress' ) ] );
 
 			$dir = scandir( SP()->plugin_path() . '/presets/esports' );
 			$files = array();
