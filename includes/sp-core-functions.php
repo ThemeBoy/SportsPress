@@ -298,7 +298,7 @@ if ( !function_exists( 'sp_numbers_to_words' ) ) {
 }
 
 if ( !function_exists( 'sp_get_the_term_id' ) ) {
-	function sp_get_the_term_id( $post_id, $taxonomy, $index ) {
+	function sp_get_the_term_id( $post_id, $taxonomy ) {
 		$terms = get_the_terms( $post_id, $taxonomy );
 		if ( is_array( $terms ) && sizeof( $terms ) > 0 ):
 			$term = reset( $terms );
@@ -308,6 +308,21 @@ if ( !function_exists( 'sp_get_the_term_id' ) ) {
 				return 0;
 		else:
 			return 0;
+		endif;
+	}
+}
+
+if ( !function_exists( 'sp_get_the_term_id_or_meta' ) ) {
+	function sp_get_the_term_id_or_meta( $post_id, $taxonomy ) {
+		$terms = get_the_terms( $post_id, $taxonomy );
+		if ( is_array( $terms ) && sizeof( $terms ) > 0 ):
+			$term = reset( $terms );
+			if ( is_object( $term ) && property_exists( $term, 'term_id' ) )
+				return $term->term_id;
+			else
+				return 0;
+		else:
+			return get_post_meta( $post_id, $taxonomy, true );
 		endif;
 	}
 }
@@ -502,10 +517,10 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 					echo '<option></option>';
 				endif;
 				if ( $args['show_option_all'] ):
-					printf( '<option value="0">%s</option>', $args['show_option_all'] );
+					printf( '<option value="0" ' . selected( '0', $selected, false ) . '>%s</option>', $args['show_option_all'] );
 				endif;
 				if ( $args['show_option_none'] ):
-					printf( '<option value="-1">%s</option>', $args['show_option_none'] );
+					printf( '<option value="-1" ' . selected( '-1', $selected, false ) . '>%s</option>', $args['show_option_none'] );
 				endif;
 			endif;
 
