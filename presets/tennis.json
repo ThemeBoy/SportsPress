@@ -18,7 +18,7 @@
 	"columns": [
 						{ "name" : "Wins", "equation" : "$win", "description" : "Wins" },
 						{ "name" : "Losses", "equation" : "$loss", "description" : "Losses" },
-						{ "name" : "Win %", "id" : "winpct", "equation" : "$win / $eventsplayed * 1 0 0", "precision" : 2, "description" : "Win percentage", "priority" : 2 },
+						{ "name" : "Win %", "id" : "winpct", "equation" : "$win / $eventsplayed * 100", "precision" : 2, "description" : "Win percentage", "priority" : 2 },
 						{ "name" : "Points", "equation" : "$win * 2 + $loss - $unfinished", "priority" : 1 }
 	],
 	"metrics": [

@@ -38,7 +38,7 @@
 						{ "name" : "GF", "equation" : "$goalsfor", "description" : "Goals for" },
 						{ "name" : "GA", "equation" : "$goalsagainst", "description" : "Goals against" },
 						{ "name" : "GD", "equation" : "$goalsfor - $goalsagainst", "priority" : 2, "description" : "Goal difference" },
-						{ "name" : "GF", "equation" : "$win / $eventsplayed * 1 0 0", "precision" : 1, "priority" : 3, "description" : "Win percentage" },
+						{ "name" : "GF", "equation" : "$win / $eventsplayed * 100", "precision" : 1, "priority" : 3, "description" : "Win percentage" },
 						{ "name" : "Pts", "equation" : "$win * 2", "priority" : 1, "description" : "Team points" }
 	],
 	"metrics": [

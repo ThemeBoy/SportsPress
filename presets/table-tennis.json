@@ -21,7 +21,7 @@
 						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
 						{ "name" : "F", "equation" : "$setsfor", "description" : "Sets for" },
 						{ "name" : "A", "equation" : "$setsagainst", "description" : "Sets against" },
-						{ "name" : "%", "id" : "percent", "equation" : "$setsfor / $setsagainst * 1 0 0", "precision" : 2, "description" : "For/against ratio", "priority" : 2 },
+						{ "name" : "%", "id" : "percent", "equation" : "$setsfor / $setsagainst * 100", "precision" : 2, "description" : "For/against ratio", "priority" : 2 },
 						{ "name" : "Points", "equation" : "$win * 3 + $loss", "priority" : 1 }
 	],
 	"metrics": [

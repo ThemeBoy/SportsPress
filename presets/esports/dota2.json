@@ -20,6 +20,6 @@
 	"statistics": [
 						{ "name" : "Wins", "equation" : "$win" },
 						{ "name" : "Losses", "equation" : "$loss" },
-						{ "name" : "Winrate", "equation" : "$win / $eventsplayed * 1 0 0" }
+						{ "name" : "Winrate", "equation" : "$win / $eventsplayed * 100" }
 	]
 }

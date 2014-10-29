@@ -47,8 +47,8 @@
 	],
 	"statistics": [
 						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" },
-						{ "name" : "Win Ratio", "equation" : "$win / $eventsplayed * 1 0 0", "precision" : 2 },
-						{ "name" : "Draw Ratio", "equation" : "$draw / $eventsplayed * 1 0 0", "precision" : 2 },
-						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 1 0 0", "precision" : 2 }
+						{ "name" : "Win Ratio", "equation" : "$win / $eventsplayed * 100", "precision" : 2 },
+						{ "name" : "Draw Ratio", "equation" : "$draw / $eventsplayed * 100", "precision" : 2 },
+						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 100", "precision" : 2 }
 	]
 }
