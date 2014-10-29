@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.0
+ * @version     1.4.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -31,31 +31,31 @@ class SP_Meta_Box_Equation {
 		foreach ( $groups as $group ):
 			switch ( $group ):
 				case 'player_event':
-					$options[ __( 'Events', 'sportspress' ) ] = array( '$eventsattended' => __( 'Attended', 'sportspress' ), '$eventsplayed' => __( 'Played', 'sportspress' ), '$eventsstarted' => __( 'Started', 'sportspress' ), '$eventssubbed' => __( 'Substituted', 'sportspress' ), '$eventminutes' => __( 'Minutes', 'sportspress' ) );
+					$options[ 'Events' ] = array( '$eventsattended' => __( 'Attended', 'sportspress' ), '$eventsplayed' => __( 'Played', 'sportspress' ), '$eventsstarted' => __( 'Started', 'sportspress' ), '$eventssubbed' => __( 'Substituted', 'sportspress' ), '$eventminutes' => __( 'Minutes', 'sportspress' ) );
 					break;
 				case 'team_event':
-					$options[ __( 'Events', 'sportspress' ) ] = array( '$eventsplayed' => __( 'Played', 'sportspress' ), '$eventminutes' => __( 'Minutes', 'sportspress' ) );
+					$options[ 'Events' ] = array( '$eventsplayed' => __( 'Played', 'sportspress' ), '$eventminutes' => __( 'Minutes', 'sportspress' ) );
 					break;
 				case 'result':
-					$options[ __( 'Results', 'sportspress' ) ] = self::optgroup( 'sp_result', array( 'for' => '(' . __( 'for', 'sportspress' ) . ')', 'against' => '(' . __( 'against', 'sportspress' ) . ')' ), null, false );
+					$options[ 'Results' ] = self::optgroup( 'sp_result', array( 'for' => '(' . __( 'for', 'sportspress' ) . ')', 'against' => '(' . __( 'against', 'sportspress' ) . ')' ), null, false );
 					break;
 				case 'outcome':
-					$options[ __( 'Outcomes', 'sportspress' ) ] = self::optgroup( 'sp_outcome' );
-					$options[ __( 'Outcomes', 'sportspress' ) ]['$streak'] = __( 'Streak', 'sportspress' );
-					$options[ __( 'Outcomes', 'sportspress' ) ]['$last5'] = __( 'Last 5', 'sportspress' );
-					$options[ __( 'Outcomes', 'sportspress' ) ]['$last10'] = __( 'Last 10', 'sportspress' );
+					$options[ 'Outcomes' ] = self::optgroup( 'sp_outcome' );
+					$options[ 'Outcomes' ]['$streak'] = __( 'Streak', 'sportspress' );
+					$options[ 'Outcomes' ]['$last5'] = __( 'Last 5', 'sportspress' );
+					$options[ 'Outcomes' ]['$last10'] = __( 'Last 10', 'sportspress' );
 					break;
 				case 'performance':
-					$options[ __( 'Performance', 'sportspress' ) ] = self::optgroup( 'sp_performance' );
+					$options[ 'Performance' ] = self::optgroup( 'sp_performance' );
 					break;
 				case 'metric':
-					$options[ __( 'Metric', 'sportspress' ) ] = self::optgroup( 'sp_metric' );
+					$options[ 'Metric' ] = self::optgroup( 'sp_metric' );
 					break;
 			endswitch;
 		endforeach;
 
 		// Add operators to options
-		$options[ __( 'Operators', 'sportspress' ) ] = array( '+' => '&plus;', '-' => '&minus;', '*' => '&times;', '/' => '&divide;', '(' => '(', ')' => ')' );
+		$options[ 'Operators' ] = array( '+' => '&plus;', '-' => '&minus;', '*' => '&times;', '/' => '&divide;', '(' => '(', ')' => ')' );
 
 		// Create array of constants
 		$max = 10;
@@ -68,7 +68,7 @@ class SP_Meta_Box_Equation {
 		$constants[100] = 100;
 
 		// Add constants to options
-		$options[ __( 'Constants', 'sportspress' ) ] = (array) $constants;
+		$options[ 'Constants' ] = (array) $constants;
 
 		$options = apply_filters( 'sportspress_equation_options', $options );
 		?>
@@ -77,7 +77,7 @@ class SP_Meta_Box_Equation {
 				<table class="widefat sp-data-table">
 					<?php $i = 0; foreach ( $options as $label => $option ): ?>
 						<tr<?php if ( $i % 2 == 0 ): ?> class="alternate"<?php endif; ?>>
-							<th><?php _e( $label, 'sportspress' ) ?></th>
+							<th><?php _e( $label, 'sportspress' ); ?></th>
 							<td>
 								<?php foreach ( $option as $key => $value ): $parts[ $key ] = $value;
 									?><span class="button" data-variable="<?php echo $key; ?>"><?php echo $value; ?></span><?php
@@ -141,5 +141,14 @@ class SP_Meta_Box_Equation {
 		endif;
 
 		return (array) $arr;
+	}
+
+	/**
+	 * Equation part labels for localization
+	 * @return null
+	 */
+	public static function equation_part_labels() {
+		__( 'Operators', 'sportspress' );
+		__( 'Constants', 'sportspress' );
 	}
 }
