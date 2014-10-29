@@ -1,14 +1,14 @@
 === SportsPress - Manage Leagues & Sports Clubs ===
 Contributors: ThemeBoy, brianmiyaji, aylaview
-Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
+Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-SportsPress is an extendable all-in-one sports data plugin that adds club and league management capabilities for any team sport.
+SportsPress is an extendable all-in-one sports data plugin that helps sports clubs set up and manage a league or club site quickly and easily.
 
 == Description ==
 
@@ -102,6 +102,10 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Volleyball
 * Water Polo
 
+= Themes =
+* [Football Club](https://themeboy.com/products/footballclub/)
+* [Premier](https://themeboy.com/products/premier/)
+
 = Documentation =
 * [Getting Started](https://sportspresspro.com/docs/installation/)
 * [User Roles](https://sportspresspro.com/docs/section/user-roles/)
@@ -184,6 +188,12 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers.
 
 == Changelog ==
+
+= 1.4.4 =
+* Feature - Automatically select event venue based on home team.
+* Fix - Featured images not displaying in some themes.
+* Preset - New Floorball preset.
+* Localization - Update Finnish and Armenian translations.
 
 = 1.4.3 =
 * Tweak - Update API functions for events and teams.
