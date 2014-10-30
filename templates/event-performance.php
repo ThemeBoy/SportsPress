@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.4
+ * @version     1.4.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -56,12 +56,13 @@ if ( is_array( $teams ) ):
 		$players = sp_array_between( (array)get_post_meta( $id, 'sp_player', false ), 0, $index );
 		$has_players = sizeof( $players ) > 1;
 
-		$show_players = $show_players && $has_players;
+		$show_team_players = $show_players && $has_players;
 
 		$totals = array();
 
 		$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
 
+		if ( ! $show_team_players && ! $show_staff && ! $show_total ) continue;
 		?>
 		<div class="sp-template sp-template-event-performance">
 			<h4 class="sp-table-caption"><?php echo get_the_title( $team_id ); ?></h4>
@@ -70,12 +71,12 @@ if ( is_array( $teams ) ):
 				sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
 			endif;
 			?>
-			<?php if ( $show_players || $show_total ): ?>
+			<?php if ( $show_team_players || $show_total ): ?>
 				<div class="sp-table-wrapper<?php if ( $scrollable ) { ?> sp-scrollable-table-wrapper<?php } ?>">
 					<table class="sp-event-performance sp-data-table <?php if ( $responsive ) { ?> sp-responsive-table<?php } ?>">
 						<thead>
 							<tr>
-								<?php if ( $show_players ): ?>
+								<?php if ( $show_team_players ): ?>
 									<th class="data-number">#</th>
 									<th class="data-name"><?php _e( 'Player', 'sportspress' ); ?></th>
 								<?php endif; ?>
@@ -86,7 +87,7 @@ if ( is_array( $teams ) ):
 								<?php endif; ?>
 							</tr>
 						</thead>
-						<?php if ( $show_players ): ?>
+						<?php if ( $show_team_players ): ?>
 							<tbody>
 								<?php
 
@@ -178,10 +179,10 @@ if ( is_array( $teams ) ):
 							</tbody>
 						<?php endif; ?>
 						<?php if ( $status == 'results' && $show_total && array_key_exists( 0, $data ) ): ?>
-							<<?php echo ( $show_players ? 'tfoot' : 'tbody' ); ?>>
+							<<?php echo ( $show_team_players ? 'tfoot' : 'tbody' ); ?>>
 								<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">
 									<?php
-									if ( $show_players ):
+									if ( $show_team_players ):
 										echo '<td class="data-number">&nbsp;</td>';
 										echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
 									endif;
@@ -214,7 +215,7 @@ if ( is_array( $teams ) ):
 									if ( $mode == 'icons' ) echo '</td>';
 									?>
 								</tr>
-							</<?php echo ( $show_players ? 'tfoot' : 'tbody' ); ?>>
+							</<?php echo ( $show_team_players ? 'tfoot' : 'tbody' ); ?>>
 						<?php endif; ?>
 					</table>
 				</div>
