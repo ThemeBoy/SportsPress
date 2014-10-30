@@ -4,7 +4,7 @@
  * Plugin URI: http://themeboy.com/sportspress/
  * Description: Manage your club and its players, staff, events, league tables, and player lists.
  * Version: 1.4.4
- * Author: ThemeBoy, brianmiyaji, aylaview
+ * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
  * Tested up to: 4.0
