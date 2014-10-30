@@ -113,7 +113,7 @@ class SP_Event extends SP_Custom_Post{
 
 	public function main_results() {
 		// Get main result option
-		$main_result = get_option( 'sportspress_main_result', null );
+		$main_result = get_option( 'sportspress_primary_result', null );
 
 		// Get teams from event
 		$teams = get_post_meta( $this->ID, 'sp_team', false );
