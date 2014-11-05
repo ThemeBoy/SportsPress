@@ -211,6 +211,7 @@ class SP_Admin_Meta_Boxes {
 		remove_meta_box( 'sp_leaguediv', 'sp_list', 'side' );
 
 		// Staff
+		remove_meta_box( 'sp_rolediv', 'sp_staff', 'side' );
 		remove_meta_box( 'sp_seasondiv', 'sp_staff', 'side' );
 		remove_meta_box( 'sp_leaguediv', 'sp_staff', 'side' );
 	}
