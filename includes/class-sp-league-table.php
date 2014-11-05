@@ -99,6 +99,7 @@ class SP_League_Table extends SP_Custom_Post{
 
 		$args = array(
 			'post_type' => 'sp_event',
+			'post_status' => array( 'publish', 'future' ),
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'post_date',
