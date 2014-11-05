@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -188,6 +188,12 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers.
 
 == Changelog ==
+
+= 1.4.6 =
+* Tweak - Include all events that have results in league table calculations.
+* Fix - Duplicate Jobs selector in Edit Staff page.
+* Preset - Update basketball preset column priorities.
+* Localization - Update Finnish, Polish, Italian, Greek, Dutch, Turkish, and Russian translations.
 
 = 1.4.5 =
 * Fix - Away team players not being displayed without players in home team.
