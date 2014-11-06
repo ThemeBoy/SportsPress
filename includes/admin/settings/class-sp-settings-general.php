@@ -192,8 +192,18 @@ class SP_Settings_General extends SP_Settings_Page {
 		$settings = $this->get_settings();
 		SP_Admin_Settings::save_fields( $settings );
 
+		// Map UTC+- timezones to gmt_offsets and set timezone_string to empty.
+		if ( ! empty( $_POST['timezone_string'] ) && preg_match( '/^UTC[+-]/', $_POST['timezone_string'] ) ) {
+			$_POST['gmt_offset'] = $_POST['timezone_string'];
+			$_POST['gmt_offset'] = preg_replace( '/UTC\+?/', '', $_POST['gmt_offset'] );
+			$_POST['timezone_string'] = '';
+		}
+
 		if ( isset( $_POST['timezone_string'] ) )
-	    	update_option( 'timezone_string', $_POST['timezone_string'] );
+			update_option( 'timezone_string', $_POST['timezone_string'] );
+
+		if ( isset( $_POST['gmt_offset'] ) )
+			update_option( 'gmt_offset', $_POST['gmt_offset'] );
 
 	    update_option( 'sportspress_enable_frontend_css', isset( $_POST['sportspress_enable_frontend_css'] ) ? 'yes' : 'no' );
 
@@ -231,10 +241,10 @@ class SP_Settings_General extends SP_Settings_Page {
 		$check_zone_info = true;
 
 		// Remove old Etc mappings. Fallback to gmt_offset.
-		if ( false !== strpos($tzstring,'Etc/GMT') )
+		if ( false !== strpos( $tzstring,'Etc/GMT' ) )
 			$tzstring = '';
 
-		if ( empty($tzstring) ) { // Create a UTC+- zone if no timezone string exists
+		if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 			$check_zone_info = false;
 			if ( 0 == $current_offset )
 				$tzstring = 'UTC+0';
@@ -254,6 +264,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				<select id="timezone_string" name="timezone_string" class="<?php echo $class; ?>">
 					<?php echo wp_timezone_choice($tzstring); ?>
 				</select>
+				<p class="description"><?php _e( 'Choose a city in the same timezone as you.', 'sportspress' ); ?></p>
        		</td>
        	</tr>
        	<?php
