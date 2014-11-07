@@ -1,4 +1,4 @@
-for file in $(find ./core/sportspress/languages/ -name *.po -type f);
+for file in $(find ./includes/sportspress/languages/ -name *.po -type f);
 	do msgfmt "$file" -o "${file%po}mo"; rm "$file";
 done
 

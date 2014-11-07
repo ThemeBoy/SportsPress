@@ -3,7 +3,7 @@
  * Plugin Name: SportsPress Pro
  * Plugin URI: http://sportspresspro.com/
  * Description: Manage your club and its players, staff, events, league tables, and player lists.
- * Version: 1.4.3
+ * Version: 1.4.6
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress_Pro' ) ) :
  * Main SportsPress Pro Class
  *
  * @class SportsPress_Pro
- * @version	1.4.3
+ * @version	1.4.6
  */
 final class SportsPress_Pro {
 
 	/**
 	 * @var string
 	 */
-	public $version = '1.4.3';
+	public $version = '1.4.6';
 
 	/**
 	 * SportsPress Pro Constructor.
@@ -55,6 +55,7 @@ final class SportsPress_Pro {
 
 		// Hooks
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
+		add_action( 'admin_init', array( $this, 'deactivate_core' ) );
 		add_action( 'before_sportspress_init', array( $this, 'load_module_translations' ), 0 );
 		add_action( 'get_the_generator_html', array( $this, 'generator_tag' ), 10, 2 );
 		add_action( 'get_the_generator_xhtml', array( $this, 'generator_tag' ), 10, 2 );
@@ -62,27 +63,6 @@ final class SportsPress_Pro {
 
 		// Loaded action
 		do_action( 'sportspress_pro_loaded' );
-	}
-
-	/**
-	 * Change menu icon
-	 */
-	public function menu_icon( ) {
-		return 'dashicons-chart-bar';
-	}
-
-	/**
-	 * Show action links on the plugin screen.
-	 *
-	 * @param mixed $links
-	 * @return array
-	 */
-	public function action_links( $links ) {
-		return array_merge( array(
-			'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
-			'<a href="' . apply_filters( 'sportspress_docs_url', 'http://sportspresspro.com/docs/' ) . '">' . __( 'Docs', 'sportspress' ) . '</a>',
-			'<a href="' . apply_filters( 'sportspress_support_url', 'http://sportspresspro.com/support/' ) . '">' . __( 'Support', 'sportspress' ) . '</a>',
-		), $links );
 	}
 
 	/**
@@ -105,12 +85,10 @@ final class SportsPress_Pro {
 	 * Include SportsPress core and modules.
 	 */
 	private function includes() {
-		include_once( $this->plugin_path() . '/core/sportspress/sportspress.php' );
-
-		$dir = scandir( $this->plugin_path() . '/modules' );
+		$dir = scandir( $this->plugin_path() . '/includes' );
 		if ( $dir ) {
 			foreach ( $dir as $module ) {
-				$path = $this->plugin_path() . '/modules/' . $module;
+				$path = $this->plugin_path() . '/includes/' . $module;
 				if ( $path && substr( $module, 0, 1 ) !== '.' ) {
 					$file = '/' . $module . '.php';
 					if ( is_readable( $path . $file ) ) {
@@ -118,6 +96,25 @@ final class SportsPress_Pro {
 					}
 				}
 			}
+		}
+	}
+
+	/**
+	 * Show action links on the plugin screen.
+	 *
+	 * @param mixed $links
+	 * @return array
+	 */
+	public function action_links( $links ) {
+		return array_merge( array(
+			'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
+			'<a href="' . apply_filters( 'sportspress_docs_url', 'http://sportspresspro.com/docs/' ) . '">' . __( 'Docs', 'sportspress' ) . '</a>',
+		), $links );
+	}
+
+	public function deactivate_core() {
+		if ( is_plugin_active( 'sportspress/sportspress.php' ) ) {
+			deactivate_plugins( 'sportspress/sportspress.php' );
 		}
 	}
 

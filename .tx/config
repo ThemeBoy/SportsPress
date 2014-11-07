@@ -2,8 +2,8 @@
 host = https://www.transifex.com
 
 [sportspress.sportspress]
-file_filter = core/sportspress/languages/sportspress-<lang>.po
-source_file = core/sportspress/languages/sportspress.pot
+file_filter = includes/sportspress/languages/sportspress-<lang>.po
+source_file = includes/sportspress/languages/sportspress.pot
 source_lang = en_US
 
 [sportspress.sportspress-pro]
