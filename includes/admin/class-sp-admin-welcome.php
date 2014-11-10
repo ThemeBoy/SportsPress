@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.4.6
+ * @version     1.4.7
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -373,7 +373,7 @@ class SP_Admin_Welcome {
 
 			<p class="about-description"><?php printf( __( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ), 'https://www.transifex.com/projects/p/sportspress/' ); ?></p>
 			<?php
-			$translator_handles = array( 'Abdulelah', 'albertone', 'ALooNeBoy87', 'Andrew_Melim', 'ArtakEVN', 'aylaview', 'Bhelpful2', 'bizover', 'BOCo', 'den_zlateva', 'dic_2008', 'doncer', 'elrawys', 'EmiDelCaz', 'eNnvi', 'etcloki', 'Ferenan', 'fredodq', 'GhiMax', 'GuneshGamza95', 'hanro', 'hushiea', 'i__k', 'JensZ', 'jenymoen', 'joegalaxy66', 'JuKi', 'karimjarro', 'King3R', 'krisop', 'latixns', 'massimo.marra', 'MohamedZ', 'overbite', 'poelie', 'popeosorio', 'rochester', 'sashaCZ', 'Selskei', 'sijo', 'SilverXp', 'SmilyCarrot', 'Spirossmil', 'Taurus', 'ThemeBoy', 'tyby94', 'valentijnreza', 'vlinicx', 'Xyteton', 'zzcs' );
+			$translator_handles = array( 'Abdulelah', 'albertone', 'ALooNeBoy87', 'Andrew_Melim', 'ArtakEVN', 'aylaview', 'Bhelpful2', 'bizover', 'BOCo', 'den_zlateva', 'dic_2008', 'doncer', 'elrawys', 'EmiDelCaz', 'eNnvi', 'etcloki', 'Ferenan', 'fredodq', 'GhiMax', 'GuneshGamza95', 'hanro', 'hushiea', 'i__k', 'JensZ', 'jenymoen', 'joegalaxy66', 'JuKi', 'karimjarro', 'King3R', 'krisop', 'latixns', 'massimo.marra', 'MohamedZ', 'overbite', 'poelie', 'popeosorio', 'rochester', 'sashaCZ', 'Selskei', 'sijo', 'SilverXp', 'SmilyCarrot', 'Spirossmil', 'Taurus', 'ThemeBoy', 'tyby94', 'valentijnreza', 'violaud', 'vlinicx', 'Xyteton', 'zzcs' );
 			$translator_links = array();
 			foreach ( $translator_handles as $handle ):
 				$translator_links[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';
