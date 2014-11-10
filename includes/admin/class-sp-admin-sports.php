@@ -253,6 +253,7 @@ class SP_Admin_Sports {
 		__( 'Basketball', 'sportspress' );
 		__( 'Cricket', 'sportspress' );
 		__( 'Darts', 'sportspress' );
+		__( 'Floorball', 'sportspress' );
 		__( 'American Football', 'sportspress' );
 		__( 'Australian Rules Football', 'sportspress' );
 		__( 'Handball', 'sportspress' );
