@@ -4,7 +4,9 @@
 						"Outside Hitter",
 						"Middle Blocker",
 						"Setter",
-						"Defender"
+						"Opposite",
+						"Defensive Specialist",
+						"Libero"
 	],
 	"outcomes": [
 						"Win",
