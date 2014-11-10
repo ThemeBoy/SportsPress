@@ -28,6 +28,7 @@ class SP_Shortcodes {
 			'player_statistics'		=> __CLASS__ . '::player_statistics',
 			'player_list'    		=> __CLASS__ . '::player_list',
 			'player_gallery' 		=> __CLASS__ . '::player_gallery',
+			'staff' 				=> __CLASS__ . '::staff',
 		);
 
 		foreach ( $shortcodes as $shortcode => $function ) {
