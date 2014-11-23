@@ -127,6 +127,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				else:
 					$results = get_post_meta( $post_id, 'sp_results', true );
 					$main_result = get_option( 'sportspress_primary_result', null );
+					echo '<input type="hidden" name="sp_post_id" value="' . $post_id . '">';
 					foreach( $teams as $team_id ):
 						if ( ! $team_id ) continue;
 						$team = get_post( $team_id );
@@ -140,20 +141,37 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 								if ( is_array( $team_results ) ):
 									end( $team_results );
 									$team_result = prev( $team_results );
+									$main_result = key( $team_results );
 								else:
 									$team_result = null;
 								endif;
 							endif;
 
-							if ( $team_result != null ):
+							if ( is_array( $team_results ) ):
 								unset( $team_results['outcome'] );
 								$team_results = implode( ' | ', $team_results );
-								echo '<a class="result tips" title="' . $team_results . '" href="' . get_edit_post_link( $post_id ) . '">' . $team_result . '</a> ';
 							endif;
+
+							if ( $team_result == null ) $team_result = '-';
+							echo '<a class="sp-result tips" title="' . $team_results . '" data-team="' . $team_id . '" href="#">' . $team_result . '</a>';
+							echo '<input type="text" class="sp-edit-result hidden small-text" data-team="' . $team_id . '" data-key="' . $main_result . '" value="' . $team_result . '"> ';
 							echo $team->post_title;
 							echo '<br>';
 						endif;
 					endforeach;
+					?>
+					<div class="row-actions sp-row-actions"><span class="inline hide-if-no-js"><a href="#" class="sp-edit-results"><?php _e( 'Edit Results', 'sportspress' ); ?></a></span></div>
+					<p class="inline-edit-save sp-inline-edit-save hidden">
+						<a href="#inline-edit" class="button-secondary cancel alignleft"><?php _e( 'Cancel' ); ?></a>
+						<?php wp_nonce_field( 'sp-save-inline-results', 'sp-inline-nonce', false ); ?>
+						<a href="#inline-edit" class="button-primary save alignright"><?php _e( 'Update' ); ?></a>
+						<span class="spinner"></span>
+						<input type="hidden" name="post_view" value="<?php echo esc_attr( $m ); ?>" />
+						<input type="hidden" name="screen" value="<?php echo esc_attr( $screen->id ); ?>" />
+						<span class="error" style="display:none"></span>
+						<br class="clear" />
+					</p>
+					<?php
 				endif;
 				break;
 			case 'sp_league':
