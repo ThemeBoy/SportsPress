@@ -579,7 +579,8 @@ jQuery(document).ready(function($){
 			nonce:          $("#sp-inline-nonce").val()
 		}, function(response) {
 			$column.find(".sp-edit-result").each(function() {
-				$column.find(".sp-result[data-team='"+$(this).data("team")+"']").html($(this).val());
+				val = $(this).val();
+				$column.find(".sp-result[data-team='"+$(this).data("team")+"']").html(val==''?'-':val);
 			});
 			$column.find(".sp-edit-result, .sp-inline-edit-save").hide();
 			$column.find(".sp-result, .sp-row-actions").show();

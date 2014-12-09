@@ -35,7 +35,7 @@ class SP_Meta_Box_Event_Results {
 		$primary_results = array();
 		foreach ( $results as $team => $team_results ) {
 			if ( $main_result ) {
-				$primary_results[ $team ] = sportspress_array_value( $team_results, $main_result, null );
+				$primary_results[ $team ] = sp_array_value( $team_results, $main_result, null );
 			} else {
 				if ( is_array( $team_results ) ) {
 					end( $team_results );
@@ -48,56 +48,61 @@ class SP_Meta_Box_Event_Results {
 
 		arsort( $primary_results );
 
-		if ( count( $primary_results ) && ! in_array( null, $primary_results ) && count( array_unique( $primary_results ) ) === 1 ) {
-			$args = array(
-				'post_type' => 'sp_outcome',
-				'numberposts' => -1,
-				'posts_per_page' => -1,
-				'meta_key' => 'sp_condition',
-				'meta_value' => '=',
-			);
-			$outcomes = get_posts( $args );
-			foreach ( $results as $team => $team_results ) {
-				if ( array_key_exists( 'outcome', $team_results ) ) continue;
-				if ( $outcomes ) {
-					foreach ( $outcomes as $outcome ) {
-						$results[ $team ][ 'outcome' ] = $outcome->post_name;
-					}
-				}
-			}
-		} else {
-			reset( $primary_results );
-			$max = key( $primary_results );
-			if ( ! array_key_exists( 'outcome', $results[ $max ] ) ) {
+		if ( count( $primary_results ) && ! in_array( null, $primary_results ) ) {
+			if ( count( array_unique( $primary_results ) ) === 1 ) {
 				$args = array(
 					'post_type' => 'sp_outcome',
 					'numberposts' => -1,
 					'posts_per_page' => -1,
 					'meta_key' => 'sp_condition',
-					'meta_value' => '>',
+					'meta_value' => '=',
 				);
 				$outcomes = get_posts( $args );
-				if ( $outcomes ) {
-					foreach ( $outcomes as $outcome ) {
-						$results[ $max ][ 'outcome' ] = $outcome->post_name;
+				foreach ( $results as $team => $team_results ) {
+					if ( array_key_exists( 'outcome', $team_results ) ) continue;
+					if ( $outcomes ) {
+						$results[ $team ][ 'outcome' ] = array();
+						foreach ( $outcomes as $outcome ) {
+							$results[ $team ][ 'outcome' ][] = $outcome->post_name;
+						}
 					}
 				}
-			}
+			} else {
+				reset( $primary_results );
+				$max = key( $primary_results );
+				if ( ! array_key_exists( 'outcome', $results[ $max ] ) ) {
+					$args = array(
+						'post_type' => 'sp_outcome',
+						'numberposts' => -1,
+						'posts_per_page' => -1,
+						'meta_key' => 'sp_condition',
+						'meta_value' => '>',
+					);
+					$outcomes = get_posts( $args );
+					if ( $outcomes ) {
+						$results[ $max ][ 'outcome' ] = array();
+						foreach ( $outcomes as $outcome ) {
+							$results[ $max ][ 'outcome' ][] = $outcome->post_name;
+						}
+					}
+				}
 
-			end( $primary_results );
-			$min = key( $primary_results );
-			if ( ! array_key_exists( 'outcome', $results[ $min ] ) ) {
-				$args = array(
-					'post_type' => 'sp_outcome',
-					'numberposts' => -1,
-					'posts_per_page' => -1,
-					'meta_key' => 'sp_condition',
-					'meta_value' => '<',
-				);
-				$outcomes = get_posts( $args );
-				if ( $outcomes ) {
-					foreach ( $outcomes as $outcome ) {
-						$results[ $min ][ 'outcome' ] = $outcome->post_name;
+				end( $primary_results );
+				$min = key( $primary_results );
+				if ( ! array_key_exists( 'outcome', $results[ $min ] ) ) {
+					$args = array(
+						'post_type' => 'sp_outcome',
+						'numberposts' => -1,
+						'posts_per_page' => -1,
+						'meta_key' => 'sp_condition',
+						'meta_value' => '<',
+					);
+					$outcomes = get_posts( $args );
+					if ( $outcomes ) {
+						$results[ $min ][ 'outcome' ] = array();
+						foreach ( $outcomes as $outcome ) {
+							$results[ $min ][ 'outcome' ][] = $outcome->post_name;
+						}
 					}
 				}
 			}
