@@ -553,8 +553,8 @@ class SP_Post_types {
 			apply_filters( 'sportspress_register_post_type_staff',
 				array(
 					'labels' => array(
-						'name' 					=> __( 'Staff', 'sportspress' ),
-						'singular_name' 		=> __( 'Staff', 'sportspress' ),
+						'name' 					=> _n( 'Staff', 'Staff', 2, 'sportspress' ),
+						'singular_name' 		=> _n( 'Staff', 'Staff', 1, 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Staff', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Staff', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
@@ -574,8 +574,7 @@ class SP_Post_types {
 					'supports' 				=> array( 'title', 'author', 'thumbnail', 'excerpt' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
-					'show_in_menu' 			=> 'edit.php?post_type=sp_player',
-					'show_in_admin_bar' 	=> true,
+					'menu_icon' 			=> 'dashicons-businessman',
 				)
 			)
 		);
