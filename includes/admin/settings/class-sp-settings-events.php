@@ -175,6 +175,31 @@ class SP_Settings_Events extends SP_Settings_Page {
 			array( 'title' => __( 'Event List', 'sportspress' ), 'type' => 'title', 'id' => 'event_list_options' ),
 
 			array(
+				'title'     => __( 'Title Format', 'sportspress' ),
+				'id'        => 'sportspress_event_list_title_format',
+				'default'   => 'title',
+				'type'      => 'select',
+				'options'   => array(
+					'title' => __( 'Title', 'sportspress' ),
+					'teams' => __( 'Teams', 'sportspress' ),
+					'homeaway' => sprintf( '%s | %s', __( 'Home', 'sportspress' ), __( 'Away', 'sportspress' ) ),
+				),
+			),
+
+			array(
+				'title'     => __( 'Time/Results Format', 'sportspress' ),
+				'id'        => 'sportspress_event_list_time_format',
+				'default'   => 'combined',
+				'type'      => 'select',
+				'options'   => array(
+					'combined' => __( 'Combined', 'sportspress' ),
+					'separate' => __( 'Separate', 'sportspress' ),
+					'time' => __( 'Time Only', 'sportspress' ),
+					'results' => __( 'Results Only', 'sportspress' ),
+				),
+			),
+
+			array(
 				'title'     => __( 'Pagination', 'sportspress' ),
 				'desc' 		=> __( 'Paginate', 'sportspress' ),
 				'id' 		=> 'sportspress_event_list_paginated',
@@ -201,7 +226,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 			array(
 				'title'     => __( 'Details', 'sportspress' ),
-				'desc' 		=> __( 'Display league', 'sportspress' ),
+				'desc' 		=> __( 'Display competition', 'sportspress' ),
 				'id' 		=> 'sportspress_event_blocks_show_league',
 				'default'	=> 'no',
 				'type' 		=> 'checkbox',

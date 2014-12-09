@@ -128,37 +128,39 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 					$results = get_post_meta( $post_id, 'sp_results', true );
 					$main_result = get_option( 'sportspress_primary_result', null );
 					echo '<input type="hidden" name="sp_post_id" value="' . $post_id . '">';
-					foreach( $teams as $team_id ):
-						if ( ! $team_id ) continue;
-						$team = get_post( $team_id );
+					echo '<div class="sp-results">';
+						foreach( $teams as $team_id ):
+							if ( ! $team_id ) continue;
+							$team = get_post( $team_id );
 
-						if ( $team ):
-							$team_results = sportspress_array_value( $results, $team_id, null );
+							if ( $team ):
+								$team_results = sportspress_array_value( $results, $team_id, null );
 
-							if ( $main_result ):
-								$team_result = sportspress_array_value( $team_results, $main_result, null );
-							else:
-								if ( is_array( $team_results ) ):
-									end( $team_results );
-									$team_result = prev( $team_results );
-									$main_result = key( $team_results );
+								if ( $main_result ):
+									$team_result = sportspress_array_value( $team_results, $main_result, null );
 								else:
-									$team_result = null;
+									if ( is_array( $team_results ) ):
+										end( $team_results );
+										$team_result = prev( $team_results );
+										$main_result = key( $team_results );
+									else:
+										$team_result = null;
+									endif;
 								endif;
-							endif;
 
-							if ( is_array( $team_results ) ):
-								unset( $team_results['outcome'] );
-								$team_results = implode( ' | ', $team_results );
-							endif;
+								if ( is_array( $team_results ) ):
+									unset( $team_results['outcome'] );
+									$team_results = implode( ' | ', $team_results );
+								endif;
 
-							if ( $team_result == null ) $team_result = '-';
-							echo '<a class="sp-result tips" title="' . $team_results . '" data-team="' . $team_id . '" href="#">' . $team_result . '</a>';
-							echo '<input type="text" class="sp-edit-result hidden small-text" data-team="' . $team_id . '" data-key="' . $main_result . '" value="' . $team_result . '"> ';
-							echo $team->post_title;
-							echo '<br>';
-						endif;
-					endforeach;
+								if ( $team_result == null ) $team_result = '-';
+								echo '<a class="sp-result tips" tabindex="10" title="' . $team_results . '" data-team="' . $team_id . '" href="#">' . $team_result . '</a>';
+								echo '<input type="text" tabindex="10" class="sp-edit-result hidden small-text" data-team="' . $team_id . '" data-key="' . $main_result . '" value="' . $team_result . '"> ';
+								echo $team->post_title;
+								echo '<br>';
+							endif;
+						endforeach;
+					echo '</div>';
 					?>
 					<div class="row-actions sp-row-actions"><span class="inline hide-if-no-js"><a href="#" class="sp-edit-results"><?php _e( 'Edit Results', 'sportspress' ); ?></a></span></div>
 					<p class="inline-edit-save sp-inline-edit-save hidden">
@@ -207,7 +209,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 
 		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 		$args = array(
-			'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),
+			'show_option_all' =>  __( 'Show all competitions', 'sportspress' ),
 			'taxonomy' => 'sp_league',
 			'name' => 'sp_league',
 			'selected' => $selected
