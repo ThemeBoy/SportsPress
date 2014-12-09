@@ -1148,6 +1148,7 @@ if ( !function_exists( 'sp_get_next_event' ) ) {
 function sp_get_text_options() {
 	$strings = apply_filters( 'sportspress_text', array(
 		__( 'Article', 'sportspress' ),
+		__( 'Career Total', 'sportspress' ),
 		__( 'Current Team', 'sportspress' ),
 		__( 'Current Teams', 'sportspress' ),
 		__( 'Date', 'sportspress' ),

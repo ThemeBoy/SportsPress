@@ -36,7 +36,7 @@ class SP_Meta_Box_Player_Statistics {
 			endforeach;
 		endif;
 		?>
-		<p><strong><?php _e( 'Total', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Career Total', 'sportspress' ); ?></strong></p>
 		<?php
 		list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true );
 		self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams );
