@@ -16,9 +16,9 @@
 						"Safety"
 	],
 	"outcomes": [
-						"Win",
-						"Loss",
-						"Tie"
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
+						{ "name" : "Tie", "condition" : "=" }
 	],
 	"results": [
 						{ "name" : "1", "description" : "1st quarter points" },

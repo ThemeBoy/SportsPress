@@ -7,9 +7,9 @@
 						"Forward"
 	],
 	"outcomes": [
-						"Win",
-						"Loss",
-						"Draw"
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
+						{ "name" : "Draw", "condition" : "=" }
 	],
 	"results": [
 						{ "name" : "1st Half", "description" : "1st half goals" },

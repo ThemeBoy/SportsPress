@@ -13,9 +13,9 @@
 						"Prop"
 	],
 	"outcomes": [
-						"Win",
-						"Loss",
-						"Draw"
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
+						{ "name" : "Draw", "condition" : "=" }
 	],
 	"results": [
 						"Tries",

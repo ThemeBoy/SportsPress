@@ -7,10 +7,10 @@
 						"All-rounder"
 	],
 	"outcomes": [
-						"Win",
-						"Loss",
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
 						"Draw",
-						"Tie"
+						{ "name" : "Tie", "condition" : "=" }
 	],
 	"results": [
 						{ "name" : "1st", "description" : "1st inning runs" },

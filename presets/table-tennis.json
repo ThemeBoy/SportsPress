@@ -1,8 +1,8 @@
 {
 	"name":				"Table Tennis",
 	"outcomes": [
-						"Win",
-						"Loss",
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
 						"Forfeit"
 	],
 	"results": [

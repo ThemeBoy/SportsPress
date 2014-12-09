@@ -9,8 +9,8 @@
 						"Libero"
 	],
 	"outcomes": [
-						"Win",
-						"Loss",
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
 						{ "name" : "Overtime win", "abbreviation" : "OTW" },
 						{ "name" : "Overtime loss", "abbreviation" : "OTL" }
 	],

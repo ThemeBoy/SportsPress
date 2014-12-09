@@ -1,8 +1,8 @@
 {
 	"name":				"Tennis",
 	"outcomes": [
-						"Win",
-						"Loss",
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
 						"Unfinished"
 	],
 	"results": [
