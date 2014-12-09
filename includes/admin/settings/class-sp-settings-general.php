@@ -287,9 +287,9 @@ class SP_Settings_General extends SP_Settings_Page {
 				$colors = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
 
 				// Defaults
-				if ( empty( $colors['primary'] ) ) $colors['primary'] = '#00a69c';
+				if ( empty( $colors['primary'] ) ) $colors['primary'] = '#2b353e';
 				if ( empty( $colors['background'] ) ) $colors['background'] = '#f4f4f4';
-				if ( empty( $colors['text'] ) ) $colors['text'] = '#363f48';
+				if ( empty( $colors['text'] ) ) $colors['text'] = '#222222';
 				if ( empty( $colors['heading'] ) ) $colors['heading'] = '#ffffff';
 	            if ( empty( $colors['link'] ) ) $colors['link'] = '#00a69c';
 
@@ -300,7 +300,7 @@ class SP_Settings_General extends SP_Settings_Page {
 	    		$this->color_picker( __( 'Heading', 'sportspress' ), 'sportspress_frontend_css_heading', $colors['heading'] );
 	    		$this->color_picker( __( 'Link', 'sportspress' ), 'sportspress_frontend_css_link', $colors['link'] );
 
-				if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) ):
+				if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && ! current_theme_supports( 'sportspress' ) && array_key_exists( 'sportspress-general', $styles ) ):
 				    ?><br>
 				    <label for="sportspress_enable_frontend_css">
 						<input name="sportspress_enable_frontend_css" id="sportspress_enable_frontend_css" type="checkbox" value="1" <?php checked( get_option( 'sportspress_enable_frontend_css', 'yes' ), 'yes' ); ?>>
