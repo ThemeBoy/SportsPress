@@ -42,6 +42,7 @@ if ( is_array( $teams ) ):
 
 	// Get performance ids for icons
 	if ( $mode == 'icons' ):
+		$responsive = false;
 		$performance_ids = array();
 		$performance_posts = get_posts( array( 'posts_per_page' => -1, 'post_type' => 'sp_performance' ) );
 		foreach ( $performance_posts as $post ):
@@ -64,7 +65,7 @@ if ( is_array( $teams ) ):
 
 		if ( ! $show_team_players && ! $show_staff && ! $show_total ) continue;
 		?>
-		<div class="sp-template sp-template-event-performance">
+		<div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?>">
 			<h4 class="sp-table-caption"><?php echo get_the_title( $team_id ); ?></h4>
 			<?php
 			if ( $show_staff ):
