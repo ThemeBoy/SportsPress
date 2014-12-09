@@ -43,11 +43,11 @@ foreach( $venues as $venue ):
 			</thead>
 			<?php if ( $address != null || ( $show_maps && $latitude != null && $longitude != null ) ): ?>
 				<tbody>
-					<tr>
+					<tr class="sp-event-venue-address-row">
 						<td><?php echo $address; ?></td>
 					</tr>
 					<?php if ( $show_maps && $latitude != null && $longitude != null ): ?>
-						<tr>
+						<tr class="sp-event-venue-map-row">
 							<td><?php sp_get_template( 'venue-map.php', array( 'meta' => $meta ) ); ?></td>
 						</tr>
 					<?php endif; ?>
