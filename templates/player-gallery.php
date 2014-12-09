@@ -4,11 +4,12 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.1
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+$html5 = current_theme_supports( 'html5', 'gallery' );
 $defaults = array(
 	'id' => get_the_ID(),
 	'number' => -1,
@@ -69,7 +70,7 @@ else:
 endif;
 
 $gallery_style = $gallery_div = '';
-if ( apply_filters( 'use_default_gallery_style', true ) )
+if ( apply_filters( 'use_default_gallery_style', ! $html5 ) )
 	$gallery_style = "
 	<style type='text/css'>
 		#{$selector} {
@@ -139,13 +140,20 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 
 		endif; endforeach;
 
-		echo '<br style="clear: both;" />';
+		if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
+			echo '<br style="clear: both" />';
+		}
 
 	endforeach;
+
+	if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
+		echo '<br style="clear: both" />';
+	}
+
+	if ( $show_all_players_link ) {
+		echo '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
+	}
 		
 	echo "</div>\n";
-
-	if ( $show_all_players_link )
-		echo '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
 	?>
 </div>
