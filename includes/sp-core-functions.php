@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.4.4
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -297,6 +297,12 @@ if ( !function_exists( 'sp_numbers_to_words' ) ) {
     }
 }
 
+if ( !function_exists( 'sp_column_active' ) ) {
+	function sp_column_active( $array = null, $value = null ) {
+		return $array == null || in_array( $value, $array );
+	}
+}
+
 if ( !function_exists( 'sp_get_the_term_id' ) ) {
 	function sp_get_the_term_id( $post_id, $taxonomy ) {
 		$terms = get_the_terms( $post_id, $taxonomy );
@@ -477,10 +483,11 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 			'selected' => null,
 			'hide_empty' => false,
 			'values' => 'slug',
-		    'class' => null,
-		    'property' => null,
-		    'placeholder' => null,
-		    'chosen' => false,
+			'class' => null,
+			'property' => null,
+			'placeholder' => null,
+			'chosen' => false,
+			'parent' => 0,
 		);
 		$args = array_merge( $defaults, $args ); 
 		if ( ! $args['taxonomy'] ) return false;
@@ -539,6 +546,26 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 				endif;
 
 				printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, $term->name );
+
+				$term_children = get_term_children( $term->term_id, $args['taxonomy'] );
+
+				foreach ( $term_children as $term_child_id ):
+					$term_child = get_term_by( 'id', $term_child_id, $args['taxonomy'] );
+
+					if ( $args['values'] == 'term_id' ):
+						$this_value = $term_child->term_id;
+					else:
+						$this_value = $term_child->slug;
+					endif;
+
+					if ( strpos( $property, 'multiple' ) !== false ):
+						$selected_prop = in_array( $this_value, $selected ) ? 'selected' : '';
+					else:
+						$selected_prop = selected( $this_value, $selected, false );
+					endif;
+
+					printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, '— ' . $term_child->name );
+				endforeach;
 			endforeach;
 			print( '</select>' );
 			return true;
