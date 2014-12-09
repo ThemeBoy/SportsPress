@@ -3,7 +3,7 @@
  * SportsPress Feeds Class
  *
  * @class 		SP_Feeds
- * @version		1.4
+ * @version		1.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

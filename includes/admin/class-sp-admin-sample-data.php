@@ -5,7 +5,7 @@
  * The SportsPress admin sample data class stores demo content.
  *
  * @class 		SP_Admin_Sample_Data
- * @version		1.4
+ * @version		1.5
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy

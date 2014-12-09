@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * AJAX Event Handler
  *
  * @class 		SP_AJAX
- * @version		1.2
+ * @version		1.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
