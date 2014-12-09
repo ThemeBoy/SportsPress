@@ -88,7 +88,13 @@ class SP_Meta_Box_Event_Performance {
 							</th>
 						<?php endforeach; ?>
 						<?php if ( $team_id ): ?>
-							<th><?php _e( 'Status', 'sportspress' ); ?></th>
+							<th>
+								<?php _e( 'Status', 'sportspress' ); ?>
+							</th>
+						<?php else: ?>
+							<th>
+								<?php _e( 'Outcome', 'sportspress' ); ?>
+							</th>
 						<?php endif; ?>
 					</tr>
 				</thead>
@@ -105,9 +111,7 @@ class SP_Meta_Box_Event_Performance {
 							?>
 							<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
 						<?php endforeach; ?>
-						<?php if ( $team_id ): ?>
-							<td>&nbsp;</td>
-						<?php endif; ?>
+						<td>&nbsp;</td>
 					</tr>
 				</tfoot>
 				<tbody>
@@ -150,6 +154,28 @@ class SP_Meta_Box_Event_Performance {
 								<td class="sp-status-selector">
 									<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?>
 									<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?>
+								</td>
+							<?php else: ?>
+								<td>
+									<?php
+									$values = sp_array_value( $player_performance, 'outcome', '' );
+									if ( ! is_array( $values ) )
+										$values = array( $values );
+
+									$args = array(
+										'post_type' => 'sp_outcome',
+										'name' => 'sp_players[' . $team_id . '][' . $player_id . '][outcome][]',
+										'option_none_value' => '',
+									    'sort_order'   => 'ASC',
+									    'sort_column'  => 'menu_order',
+										'selected' => $values,
+										'class' => 'sp-outcome',
+										'property' => 'multiple',
+										'chosen' => true,
+										'placeholder' => __( 'None', 'sportspress' ),
+									);
+									sp_dropdown_pages( $args );
+									?>
 								</td>
 							<?php endif; ?>
 						</tr>
