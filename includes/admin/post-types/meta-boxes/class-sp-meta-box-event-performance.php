@@ -133,7 +133,8 @@ class SP_Meta_Box_Event_Performance {
 									'taxonomy' => 'sp_position',
 									'name' => 'sp_players[' . $team_id . '][' . $player_id . '][position]',
 									'values' => 'term_id',
-									'selected' => $selected
+									'orderby' => 'slug',
+									'selected' => $selected,
 								);
 								sp_dropdown_taxonomies( $args );
 								?>
