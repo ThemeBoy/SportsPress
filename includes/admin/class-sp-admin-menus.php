@@ -27,7 +27,6 @@ class SP_Admin_Menus {
 		add_action( 'admin_menu', array( $this, 'overview_menu' ), 8 );
 		add_action( 'admin_menu', array( $this, 'leagues_menu' ), 9 );
 		add_action( 'admin_menu', array( $this, 'seasons_menu' ), 10 );
-		add_action( 'admin_menu', array( $this, 'modules_menu' ), 11 );
 
 		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
 		add_action( 'admin_head', array( $this, 'menu_rename' ) );
@@ -75,13 +74,6 @@ class SP_Admin_Menus {
 	 */
 	public function seasons_menu() {
 		add_submenu_page( 'sportspress', __( 'Seasons', 'sportspress' ), __( 'Seasons', 'sportspress' ), 'manage_sportspress', 'edit-tags.php?taxonomy=sp_season');
-	}
-
-	/**
-	 * Add menu item
-	 */
-	public function modules_menu() {
-		add_submenu_page( 'sportspress', __( 'Modules', 'sportspress' ), __( 'Modules', 'sportspress' ), 'manage_sportspress', 'sportspress-extend', array( $this, 'config_page' ) );
 	}
 
 	/**
