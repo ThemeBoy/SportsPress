@@ -24,6 +24,10 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
+		$condition = get_post_meta( $post->ID, 'sp_condition', true );
+		$main_result = get_option( 'sportspress_primary_result', null );
+		$result = get_page_by_path( $main_result, ARRAY_A, 'sp_result' );
+		$label = sp_array_value( $result, 'post_title', __( 'Primary', 'sportspress' ) );
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
@@ -34,6 +38,25 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 		<p>
 			<input name="sp_abbreviation" type="text" id="sp_abbreviation" value="<?php echo $abbreviation; ?>" placeholder="<?php echo substr( $post->post_title, 0, 1 ); ?>">
 		</p>
+		<p><strong><?php _e( 'Condition', 'sportspress' ); ?></strong></p>
+		<p>
+			<select name="sp_condition">
+				<?php
+				$options = array(
+					'0' => __( '&mdash;', 'sportspress' ),
+					'>' => sprintf( __( 'Most %s', 'sportspress' ), $label ),
+					'<' => sprintf( __( 'Least %s', 'sportspress' ), $label ),
+					'=' => sprintf( __( 'Equal %s', 'sportspress' ), $label ),
+				);
+				for( $i = 1; $i <= $count->publish; $i++ ):
+					$options[ $i ] = $i;
+				endfor;
+				foreach ( $options as $key => $value ):
+					printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $condition, false ), $value );
+				endforeach;
+				?>
+			</select>
+		</p>
 		<?php
 	}
 
@@ -42,5 +65,6 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 	 */
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', array() ) );
+		update_post_meta( $post_id, 'sp_condition', sp_array_value( $_POST, 'sp_condition', array() ) );
 	}
 }

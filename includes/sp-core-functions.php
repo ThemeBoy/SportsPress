@@ -352,6 +352,26 @@ if ( !function_exists( 'sp_get_post_abbreviation' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_post_condition' ) ) {
+	function sp_get_post_condition( $post_id ) {
+		$condition = get_post_meta ( $post_id, 'sp_condition', true );
+		$main_result = get_option( 'sportspress_primary_result', null );
+		$result = get_page_by_path( $main_result, ARRAY_A, 'sp_result' );
+		$label = sp_array_value( $result, 'post_title', __( 'Primary', 'sportspress' ) );
+		if ( $condition ):
+			$conditions = array(
+				'0' => '&mdash;',
+				'>' => sprintf( __( 'Most %s', 'sportspress' ), $label ),
+				'<' => sprintf( __( 'Least %s', 'sportspress' ), $label ),
+				'=' => sprintf( __( 'Equal %s', 'sportspress' ), $label ),
+			);
+			return sp_array_value( $conditions, $condition, '&mdash;' );
+		else:
+			return '&mdash;';
+		endif;
+	}
+}
+
 if ( !function_exists( 'sp_get_post_precision' ) ) {
 	function sp_get_post_precision( $post_id ) {
 		$precision = get_post_meta ( $post_id, 'sp_precision', true );
@@ -752,7 +772,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 				<?php
 				$selected = sp_array_between( (array)get_post_meta( $post_id, $meta, false ), 0, $index );
 				if ( empty( $posts ) ):
-					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1 );
+					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1, 'orderby' => 'menu_order' );
 					if ( $meta == 'sp_player' ):
 						$query['meta_key'] = 'sp_number';
 						$query['orderby'] = 'meta_value_num';
