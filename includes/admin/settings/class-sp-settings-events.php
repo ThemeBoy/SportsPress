@@ -175,6 +175,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 			array( 'title' => __( 'Event List', 'sportspress' ), 'type' => 'title', 'id' => 'event_list_options' ),
 
 			array(
+				'title'     => __( 'Teams', 'sportspress' ),
+				'desc' 		=> __( 'Display logos', 'sportspress' ),
+				'id' 		=> 'sportspress_event_list_show_logos',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+			),
+
+			array(
 				'title'     => __( 'Title Format', 'sportspress' ),
 				'id'        => 'sportspress_event_list_title_format',
 				'default'   => 'title',

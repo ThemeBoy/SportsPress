@@ -63,18 +63,20 @@ class SP_Meta_Box_Calendar_Data {
 								?>
 							</label>
 						</th>
-						<th class="column-time">
-							<label for="sp_columns_time">
-								<input type="checkbox" name="sp_columns[]" value="time" id="sp_columns_time" <?php checked( ! is_array( $usecolumns ) || in_array( 'time', $usecolumns ) ); ?>>
-								<?php
-								if ( 'time' == $time_format || 'separate' == $time_format ) {
-									_e( 'Time', 'sportspress' );
-								} else {
-									_e( 'Time/Results', 'sportspress' );
-								}
-								?>
-							</label>
-						</th>
+						<?php if ( in_array( $time_format, array( 'combined', 'separate', 'time' ) ) ) { ?>
+							<th class="column-time">
+								<label for="sp_columns_time">
+									<input type="checkbox" name="sp_columns[]" value="time" id="sp_columns_time" <?php checked( ! is_array( $usecolumns ) || in_array( 'time', $usecolumns ) ); ?>>
+									<?php
+									if ( 'time' == $time_format || 'separate' == $time_format ) {
+										_e( 'Time', 'sportspress' );
+									} else {
+										_e( 'Time/Results', 'sportspress' );
+									}
+									?>
+								</label>
+							</th>
+						<?php } ?>
 						<?php if ( in_array( $time_format, array( 'separate', 'results' ) ) ) { ?>
 							<th class="column-results">
 								<label for="sp_columns_results">

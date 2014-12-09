@@ -202,8 +202,15 @@
 .sp-event-list .data-article a .dashicons {
 	padding-right: 3px;
 }
-.sp-event-list .data-time {
+.sp-event-list .data-time,
+.sp-event-list .data-results {
 	white-space: nowrap;
+}
+.sp-event-list .data-teams img,
+.sp-event-list .data-home img,
+.sp-event-list .data-away img {
+	display: inline-block;
+	vertical-align: middle;
 }
 
 /* Event Blocks */
