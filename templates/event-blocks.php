@@ -25,6 +25,7 @@ $defaults = array(
 	'show_all_events_link' => false,
 	'show_league' => get_option( 'sportspress_event_blocks_show_league', 'no' ) == 'yes' ? true : false,
 	'show_season' => get_option( 'sportspress_event_blocks_show_season', 'no' ) == 'yes' ? true : false,
+	'show_venue' => get_option( 'sportspress_event_blocks_show_venue', 'no' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -113,6 +114,9 @@ if ( $id ) {
 							<?php endif; endif; ?>
 							<?php if ( $show_season ): $seasons = get_the_terms( $event, 'sp_season' ); if ( $seasons ): $season = array_shift( $seasons ); ?>
 								<div class="event-season"><?php echo $season->name; ?></div>
+							<?php endif; endif; ?>
+							<?php if ( $show_venue ): $venues = get_the_terms( $event, 'sp_venue' ); if ( $venues ): $venue = array_shift( $venues ); ?>
+								<div class="event-venue"><?php echo $venue->name; ?></div>
 							<?php endif; endif; ?>
 							<h4 class="event-title"><a href="<?php echo get_post_permalink( $event ); ?>"><?php echo $event->post_title; ?></a></h4>
 						</td>

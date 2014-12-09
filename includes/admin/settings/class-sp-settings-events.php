@@ -246,6 +246,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 				'id' 		=> 'sportspress_event_blocks_show_season',
 				'default'	=> 'no',
 				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Display venue', 'sportspress' ),
+				'id' 		=> 'sportspress_event_blocks_show_venue',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',
 			),
 
