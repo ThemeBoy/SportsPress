@@ -77,7 +77,7 @@ class SP_AJAX {
 			<p>
 				<label>
 					<input class="checkbox" type="checkbox" name="show_league">
-					<?php _e( 'Display league', 'sportspress' ); ?>
+					<?php _e( 'Display competition', 'sportspress' ); ?>
 				</label>
 			</p>
 			<p class="submit">
