@@ -87,6 +87,10 @@
 	line-height: 1.4em;
 }
 
+.fixed .column-sp_team .sp-results {
+	margin-bottom: .2em;
+}
+
 .fixed .column-sp_format,
 .fixed .column-sp_icon,
 .fixed .column-sp_number {

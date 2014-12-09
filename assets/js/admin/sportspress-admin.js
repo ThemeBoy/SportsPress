@@ -135,12 +135,6 @@ jQuery(document).ready(function($){
 		$(".sp-dummy."+name+"-dummy").val(val).trigger("change");
 	});
 
-	// Title format switcher
-	$(".sp-title-format-select").change(function() {
-		val = $(this).val();
-		$(".sp-title-format").hide().filter(".sp-title-format-"+val).show();
-	});
-
 	// Custom value editor
 	$(".sp-data-table .sp-default-value").click(function() {
 		$(this).hide().siblings(".sp-custom-value").show().find(".sp-custom-value-input").focus();
@@ -548,7 +542,7 @@ jQuery(document).ready(function($){
 	$(".sp-date-selector select").trigger("change");
 
 	// Edit inline results
-	$("#the-list").on("click", ".sp-result, .sp-edit-results", function(){
+	$("#the-list").on("click, focus", ".sp-result, .sp-edit-results", function(){
 		team = $(this).data("team");
 		$column = $(this).closest(".column-sp_team");
 		$column.find(".sp-result, .sp-row-actions").hide();
