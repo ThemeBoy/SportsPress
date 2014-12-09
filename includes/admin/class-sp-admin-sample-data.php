@@ -184,7 +184,7 @@ class SP_Admin_Sample_Data {
 		// Define event videos
 		$event_videos = array(
 			'https://www.youtube.com/watch?v=xNkf2LYckI0',
-			'https://www.youtube.com/watch?v=KM0oPAbNnoE',
+			'https://www.youtube.com/watch?v=sIrjQyuwteM',
 			'https://www.youtube.com/watch?v=xSGxuTGVQYE',
 		);
 
@@ -492,7 +492,6 @@ class SP_Admin_Sample_Data {
 		update_post_meta( $id, 'sp_date', 0 );
 		update_post_meta( $id, 'sp_team', 0 );
 		update_post_meta( $id, 'sp_order', 'ASC' );
-		update_post_meta( $id, 'sp_title_format', 'homeaway' );
 		update_post_meta( $id, 'sp_columns', $columns );
 
 		/*
