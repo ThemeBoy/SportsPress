@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: 1.4.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -24,7 +24,7 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 >
 > "*SportsPress is our number 1 WordPress plugin for sport!*" — [GBSport](http://www.gbsport.org.uk/5-great-wordpress-plugins-for-sport/)
 >
-> "*The freely available and highly impressive Sportspress plugin offers terrific functionality including a fixtures listing, league table, player & staff profiles, customizable point system and a built-in translation system for 36 different languages.*" — [Club Themes](http://clubthemes.com/awesome-sporting-templates-themes-wordpress-joomla/)
+> "*The freely available and highly impressive SportsPress plugin offers terrific functionality including a fixtures listing, league table, player & staff profiles, customizable point system and a built-in translation system for 36 different languages.*" — [Club Themes](http://clubthemes.com/awesome-sporting-templates-themes-wordpress-joomla/)
 
 = Features =
 * Equation Builder
