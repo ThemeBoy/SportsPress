@@ -122,6 +122,7 @@ class SP_Admin_Sports {
 			if ( empty( $post ) ) continue;
 			$id = self::insert_preset_post( $post, $index );
 			update_post_meta( $id, 'sp_abbreviation', sp_array_value( $outcome, 'abbreviation', null ) );
+			update_post_meta( $id, 'sp_condition', sp_array_value( $outcome, 'condition', null ) );
 		}
 
 		// Results
