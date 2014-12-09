@@ -30,7 +30,6 @@ add_action( 'get_the_generator_xhtml', 'sp_generator_tag', 10, 2 );
  * @see sportspress_output_event_details()
  * @see sportspress_output_event_venue()
  * @see sportspress_output_event_performance()
- * @see sportspress_output_br_tag()
  */
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_logos', 0 );
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_video', 10 );
@@ -38,16 +37,13 @@ add_action( 'sportspress_single_event_content', 'sportspress_output_event_result
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_details', 30 );
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_venue', 40 );
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_performance', 50 );
-add_action( 'sportspress_single_event_content', 'sportspress_output_br_tag', 100 );
 
 /**
  * Single Calendar Content
  *
  * @see sportspress_output_calendar()
- * @see sportspress_output_br_tag()
  */
 add_action( 'sportspress_single_calendar_content', 'sportspress_output_calendar', 10 );
-add_action( 'sportspress_single_calendar_content', 'sportspress_output_br_tag', 100 );
 
 /**
  * Single Team Content
@@ -56,13 +52,11 @@ add_action( 'sportspress_single_calendar_content', 'sportspress_output_br_tag', 
  * @see sportspress_output_team_details()
  * @see sportspress_output_team_lists()
  * @see sportspress_output_team_tables()
- * @see sportspress_output_br_tag()
  */
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_logo', 0 );
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_details', 10 );
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_lists', 20 );
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_tables', 30 );
-add_action( 'sportspress_single_team_content', 'sportspress_output_br_tag', 100 );
 
 /**
  * After Single Team
@@ -74,10 +68,8 @@ add_action( 'sportspress_after_single_team', 'sportspress_output_team_link', 10 
  * Single Table Content
  *
  * @see sportspress_output_league_table()
- * @see sportspress_output_br_tag()
  */
 add_action( 'sportspress_single_table_content', 'sportspress_output_league_table', 10 );
-add_action( 'sportspress_single_table_content', 'sportspress_output_br_tag', 100 );
 
 /**
  * Single Player Content
@@ -85,32 +77,26 @@ add_action( 'sportspress_single_table_content', 'sportspress_output_br_tag', 100
  * @see sportspress_output_player_photo()
  * @see sportspress_output_player_details()
  * @see sportspress_output_player_statistics()
- * @see sportspress_output_br_tag()
  */
 add_action( 'sportspress_single_player_content', 'sportspress_output_player_photo', 0 );
 add_action( 'sportspress_single_player_content', 'sportspress_output_player_details', 10 );
 add_action( 'sportspress_single_player_content', 'sportspress_output_player_statistics', 20 );
-add_action( 'sportspress_single_player_content', 'sportspress_output_br_tag', 100 );
 
 /**
  * Single List Content
  *
  * @see sportspress_output_player_list()
- * @see sportspress_output_br_tag()
  */
 add_action( 'sportspress_single_list_content', 'sportspress_output_player_list', 10 );
-add_action( 'sportspress_single_list_content', 'sportspress_output_br_tag', 100 );
 
 /**
  * Single Staff Content
  *
  * @see sportspress_output_staff_photo()
  * @see sportspress_output_staff_details()
- * @see sportspress_output_br_tag()
  */
 add_action( 'sportspress_single_staff_content', 'sportspress_output_staff_photo', 0 );
 add_action( 'sportspress_single_staff_content', 'sportspress_output_staff_details', 10 );
-add_action( 'sportspress_single_staff_content', 'sportspress_output_br_tag', 100 );
 
 /**
  * Venue Archive Content
@@ -118,7 +104,7 @@ add_action( 'sportspress_single_staff_content', 'sportspress_output_br_tag', 100
 add_action( 'loop_start', 'sportspress_output_venue_map' );
 
 /**
- * Adjacent Team Links
+ * Adjacent Post Links
  */
 add_filter( 'previous_post_link', 'sportspress_hide_adjacent_post_links', 10, 4 );
 add_filter( 'next_post_link', 'sportspress_hide_adjacent_post_links', 10, 4 );
@@ -126,17 +112,17 @@ add_filter( 'next_post_link', 'sportspress_hide_adjacent_post_links', 10, 4 );
 function sportspress_the_title( $title, $id = null ) {
 	if ( ! $id ) return $title;
 
-	if ( ! is_admin() && ! current_theme_supports( 'sportspress' ) && in_the_loop() && $id == get_the_ID() ):
+	if ( ! is_admin() && in_the_loop() && $id == get_the_ID() ):
 		if ( is_singular( 'sp_player' ) ):
 			$number = get_post_meta( $id, 'sp_number', true );
 			if ( $number != null ):
-				$title = '<strong>' . $number . '</strong> ' . $title;
+				$title = '<strong class="sp-player-number">' . $number . '</strong> ' . $title;
 			endif;
 		elseif ( is_singular( 'sp_staff' ) ):
 			$staff = new SP_Staff( $id );
 			$role = $staff->role();
 			if ( $role ):
-				$title = '<strong>' . $role->name . '</strong> ' . $title;
+				$title = '<strong class="sp-staff-role">' . $role->name . '</strong> ' . $title;
 			endif;
 		endif;
 	endif;
