@@ -1,4 +1,4 @@
-<div class="wrap sportspress sp-config-wrap">
+<div class="wrap sportspress sportspress-config-wrap">
 	<h2>
 		<?php _e( 'Configure', 'sportspress' ); ?>
 	</h2>
