@@ -43,8 +43,13 @@ if ( $order != 'default' )
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
 
-if ( isset( $columns ) )
+if ( isset( $columns ) ) {
 	$usecolumns = $columns;
+}
+
+if ( $id ) {
+	echo '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
+}
 ?>
 <div class="sp-template sp-template-event-blocks">
 	<div class="sp-table-wrapper">
@@ -97,7 +102,7 @@ if ( isset( $columns ) )
 					<tr class="sp-row sp-post<?php echo ( $i % 2 == 0 ? ' alternate' : '' ); ?>">
 						<td>
 							<?php echo implode( $logos, ' ' ); ?>
-							<time class="event-date"><?php echo get_the_time( get_option( 'date_format' ), $event ); ?></time>
+							<time class="event-date" datetime="<?php echo $event->post_date; ?>"><?php echo get_the_time( get_option( 'date_format' ), $event ); ?></time>
 							<?php if ( ! empty( $main_results ) ): ?>
 								<h5 class="event-results"><?php echo implode( $main_results, ' - ' ); ?></h5>
 							<?php else: ?>
@@ -119,8 +124,8 @@ if ( isset( $columns ) )
 			</tbody>
 		</table>
 	</div>
+	<?php
+	if ( $id && $show_all_events_link )
+		echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
+	?>
 </div>
-<?php
-if ( $id && $show_all_events_link )
-	echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
-?>
