@@ -51,7 +51,7 @@ if ( is_array( $teams ) ):
 	endif;
 
 	foreach( $teams as $index => $team_id ):
-		if ( ! $team_id ) continue;
+		if ( -1 == $team_id ) continue;
 
 		// Get results for players in the team
 		$players = sp_array_between( (array)get_post_meta( $id, 'sp_player', false ), 0, $index );
@@ -61,12 +61,18 @@ if ( is_array( $teams ) ):
 
 		$totals = array();
 
-		$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
+		if ( $team_id ) {
+			$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
+		} else {
+			$data = sp_array_value( array_values( $performance ), $index );
+		}
 
 		if ( ! $show_team_players && ! $show_staff && ! $show_total ) continue;
 		?>
 		<div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?>">
-			<h4 class="sp-table-caption"><?php echo get_the_title( $team_id ); ?></h4>
+			<?php if ( $team_id ): ?>
+				<h4 class="sp-table-caption"><?php echo get_the_title( $team_id ); ?></h4>
+			<?php endif; ?>
 			<?php
 			if ( $show_staff ):
 				sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
@@ -179,7 +185,7 @@ if ( is_array( $teams ) ):
 								?>
 							</tbody>
 						<?php endif; ?>
-						<?php if ( $status == 'results' && $show_total && array_key_exists( 0, $data ) ): ?>
+						<?php if ( $show_total ): ?>
 							<<?php echo ( $show_team_players ? 'tfoot' : 'tbody' ); ?>>
 								<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">
 									<?php
@@ -188,7 +194,7 @@ if ( is_array( $teams ) ):
 										echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
 									endif;
 
-									$row = $data[0];
+									$row = sp_array_value( $data, 0, array() );
 
 									if ( $mode == 'icons' ) echo '<td class="sp-performance-icons">';
 

@@ -125,6 +125,8 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_videodiv', __( 'Video', 'sportspress' ), 'SP_Meta_Box_Event_Video::output', 'sp_event', 'side', 'low' );
 		if ( sizeof( array_filter( sp_array_value( $post_meta, 'sp_team', array() ) ) ) ):
 			add_meta_box( 'sp_resultsdiv', __( 'Team Results', 'sportspress' ), 'SP_Meta_Box_Event_Results::output', 'sp_event', 'normal', 'high' );
+		endif;
+		if ( sizeof( array_filter( sp_array_value( $post_meta, 'sp_player', array() ) ) ) ):
 			add_meta_box( 'sp_performancediv', __( 'Player Performance', 'sportspress' ), 'SP_Meta_Box_Event_Performance::output', 'sp_event', 'normal', 'high' );
 		endif;
 		add_meta_box( 'sp_editordiv', __( 'Article', 'sportspress' ), 'SP_Meta_Box_Event_Editor::output', 'sp_event', 'normal', 'low' );

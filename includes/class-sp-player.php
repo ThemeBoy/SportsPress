@@ -281,21 +281,25 @@ class SP_Player extends SP_Custom_Post {
 
 		foreach( $placeholders as $season_id => $season_data ):
 
-			if ( ! sp_array_value( $leagues, $season_id, 0 ) )
+			if ( -1 == sp_array_value( $leagues, $season_id, 0 ) )
 				continue;
 
 			$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
 
 			$team_id = sp_array_value( $leagues, $season_id, array() );
 
-			if ( ! $team_id || $team_id == '-1' )
+			if ( -1 == $team_id )
 				continue;
 
-			$team_name = get_the_title( $team_id );
-			
-			if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
-				$team_permalink = get_permalink( $team_id );
-				$team_name = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
+			if ( $team_id ):
+				$team_name = get_the_title( $team_id );
+				
+				if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
+					$team_permalink = get_permalink( $team_id );
+					$team_name = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
+				endif;
+			else:
+				$team_name = '&mdash;';
 			endif;
 
 			// Add season name to row

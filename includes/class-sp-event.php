@@ -106,6 +106,13 @@ class SP_Event extends SP_Custom_Post{
 					endif;
 				endforeach;
 			endif;
+
+			// Move individual players to top level of array
+			if ( array_key_exists( 0, $performance ) ) {
+				foreach ( $performance[ 0 ] as $player_id => $player_performance ) {
+					$performance[ $player_id ] = array( $player_id => $player_performance );
+				}
+			}
 			$performance[0] = $labels;
 			return $performance;
 		endif;

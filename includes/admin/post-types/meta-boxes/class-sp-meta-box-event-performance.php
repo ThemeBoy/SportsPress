@@ -25,7 +25,7 @@ class SP_Meta_Box_Event_Performance {
 		$i = 0;
 
 		foreach ( $teams as $key => $team_id ):
-			if ( ! $team_id ) continue;
+			if ( -1 == $team_id ) continue;
 
 			// Get results for players in the team
 			$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
@@ -33,7 +33,11 @@ class SP_Meta_Box_Event_Performance {
 
 			?>
 			<div>
-				<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
+				<?php if ( $team_id ): ?>
+					<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
+				<?php elseif ( $i ): ?>
+					<br>
+				<?php endif; ?>
 				<?php self::table( $labels, $columns, $data, $team_id, $i == 0 ); ?>
 			</div>
 			<?php
@@ -83,7 +87,9 @@ class SP_Meta_Box_Event_Performance {
 								<?php endif; ?>
 							</th>
 						<?php endforeach; ?>
-						<th><?php _e( 'Status', 'sportspress' ); ?></th>
+						<?php if ( $team_id ): ?>
+							<th><?php _e( 'Status', 'sportspress' ); ?></th>
+						<?php endif; ?>
 					</tr>
 				</thead>
 				<tfoot>
@@ -99,7 +105,9 @@ class SP_Meta_Box_Event_Performance {
 							?>
 							<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" /></td>
 						<?php endforeach; ?>
-						<td>&nbsp;</td>
+						<?php if ( $team_id ): ?>
+							<td>&nbsp;</td>
+						<?php endif; ?>
 					</tr>
 				</tfoot>
 				<tbody>
@@ -137,10 +145,12 @@ class SP_Meta_Box_Event_Performance {
 									<input class="sp-player-<?php echo $column; ?>-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" />
 								</td>
 							<?php endforeach; ?>
-							<td class="sp-status-selector">
-								<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?>
-								<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?>
-							</td>
+							<?php if ( $team_id ): ?>
+								<td class="sp-status-selector">
+									<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?>
+									<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?>
+								</td>
+							<?php endif; ?>
 						</tr>
 						<?php
 					endforeach;

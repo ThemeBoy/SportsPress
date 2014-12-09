@@ -103,6 +103,7 @@ class SP_Meta_Box_Player_Statistics {
 											'post_type' => 'sp_team',
 											'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
 											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+											'show_option_all' => __( '&mdash; Individual &mdash;', 'sportspress' ),
 										    'sort_order'   => 'ASC',
 										    'sort_column'  => 'menu_order',
 											'selected' => $value,
