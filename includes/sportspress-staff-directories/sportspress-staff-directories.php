@@ -102,7 +102,7 @@ class SportsPress_Staff_Directories {
 			apply_filters( 'sportspress_register_post_type_directory',
 				array(
 					'labels' => array(
-						'name' 					=> __( 'Staff Directories', 'sportspress' ),
+						'name' 					=> __( 'Directories', 'sportspress' ),
 						'singular_name' 		=> __( 'Staff Directory', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Staff Directory', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Staff Directory', 'sportspress' ),
@@ -123,7 +123,7 @@ class SportsPress_Staff_Directories {
 					'supports' 				=> array( 'title', 'author', 'thumbnail' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
-					'show_in_menu' 			=> 'edit.php?post_type=sp_player',
+					'show_in_menu' 			=> 'edit.php?post_type=sp_staff',
 					'show_in_admin_bar' 	=> true,
 				)
 			)

@@ -95,7 +95,7 @@ class SP_Admin_CPT_Directory extends SP_Admin_CPT {
 
 		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 		$args = array(
-			'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),
+			'show_option_all' =>  __( 'Show all competitions', 'sportspress' ),
 			'taxonomy' => 'sp_league',
 			'name' => 'sp_league',
 			'selected' => $selected

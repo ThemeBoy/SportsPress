@@ -49,7 +49,7 @@ class SP_Staff_Directory_Template_Loader {
 	 * @return string
 	 */
 	public function template_loader( $template ) {
-		$find = array();
+		$find = array( 'sportspress.php' );
 		$file = '';
 
 		if ( is_singular( 'sp_directory' ) ):
