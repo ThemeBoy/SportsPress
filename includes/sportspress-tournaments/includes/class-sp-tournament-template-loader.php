@@ -49,7 +49,7 @@ class SP_Tournament_Template_Loader {
 	 * @return string
 	 */
 	public function template_loader( $template ) {
-		$find = array();
+		$find = array( 'sportspress.php' );
 		$file = '';
 
 		if ( is_singular( 'sp_tournament' ) ):
