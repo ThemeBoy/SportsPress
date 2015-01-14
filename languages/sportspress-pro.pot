@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2014-10-29 22:53+1000\n"
-"PO-Revision-Date: 2014-10-29 22:53+1000\n"
+"POT-Creation-Date: 2014-12-10 10:15+1000\n"
+"PO-Revision-Date: 2014-12-10 10:15+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: ThemeBoy <support@themeboy.com>\n"
 "Language: en_US\n"
@@ -508,7 +508,7 @@ msgid "All"
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:98
-msgid "Show all leagues"
+msgid "Show all competitions"
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:107
@@ -547,7 +547,6 @@ msgid "Contact Info"
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:46
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:105
 #: includes/sportspress-staff-directories/sportspress-staff-directories.php:210
 #: includes/sportspress-staff-directories/sportspress-staff-directories.php:252
 msgid "Staff Directories"
@@ -625,6 +624,10 @@ msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:6
 msgid "Staff List"
+msgstr ""
+
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:105
+msgid "Directories"
 msgstr ""
 
 #: includes/sportspress-staff-directories/sportspress-staff-directories.php:107

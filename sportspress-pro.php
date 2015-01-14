@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: SportsPress Pro
+ * Plugin Name: SportsPress Pro (Social License)
  * Plugin URI: http://sportspresspro.com/
  * Description: Manage your club and its players, staff, events, league tables, and player lists.
- * Version: 1.4.6
+ * Version: 1.5
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress_Pro' ) ) :
  * Main SportsPress Pro Class
  *
  * @class SportsPress_Pro
- * @version	1.4.6
+ * @version	1.5
  */
 final class SportsPress_Pro {
 
 	/**
 	 * @var string
 	 */
-	public $version = '1.4.6';
+	public $version = '1.5';
 
 	/**
 	 * SportsPress Pro Constructor.
