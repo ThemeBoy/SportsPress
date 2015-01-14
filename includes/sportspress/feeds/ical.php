@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Feeds
  * @package 	SportsPress/Feeds
- * @version     1.4
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -27,17 +27,18 @@ $main_result = get_option( 'sportspress_primary_result', null );
 // Initialize output. Max line length is 75 chars.
 $output =
 "BEGIN:VCALENDAR\n" .
-"METHOD:PUBLISH\n" .
 "VERSION:2.0\n" .
+"PRODID:-//ThemeBoy//SportsPress//" . strtoupper( $locale ) . "\n" .
+"CALSCALE:GREGORIAN\n" .
+"METHOD:PUBLISH\n" .
 "URL:" . add_query_arg( 'feed', 'sp-calendar-ical', get_post_permalink( $post ) ) . "\n" .
+"X-FROM-URL:" . add_query_arg( 'feed', 'sp-calendar-ical', get_post_permalink( $post ) ) . "\n" .
 "NAME:" . $post->post_title . "\n" .
 "X-WR-CALNAME:" . $post->post_title . "\n" .
 "DESCRIPTION:" . $post->post_title . "\n" .
-"DESCRIPTION:" . $post->post_title . "\n" .
 "X-WR-CALDESC:" . $post->post_title . "\n" .
-"REFRESH-INTERVAL;VALUE=DURATION:PT1H\n" .
-"X-PUBLISHED-TTL:PT1H\n" .
-"PRODID:-//ThemeBoy//SportsPress//" . strtoupper( $locale ) . "\n";
+"REFRESH-INTERVAL;VALUE=DURATION:PT2M\n" .
+"X-PUBLISHED-TTL:PT2M\n";
 
 // Loop through each event
 foreach ( $events as $event):
@@ -129,10 +130,13 @@ foreach ( $events as $event):
 	"STATUS:CONFIRMED\n" .
 	"DTSTART:" . mysql2date( $date_format, $event->post_date_gmt ) . "\n" .
 	"DTEND:" . $end->format( $date_format ) . "\n" .
-	"LAST-MODIFIED:" . mysql2date( $date_format, $event->post_modified_gmt ) . "\n" .
-	"LOCATION:" . $location . "\n";
+	"LAST-MODIFIED:" . mysql2date( $date_format, $event->post_modified_gmt ) . "\n";
 
-	if ( false !== $geo ) {
+	if ( $location ) {
+		$output .= "LOCATION:" . $location . "\n";
+	}
+
+	if ( $geo ) {
 		$output .= "GEO:" . $geo . "\n";
 	}
 

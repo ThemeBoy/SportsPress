@@ -3,7 +3,7 @@
  * Handle frontend forms
  *
  * @class 		SP_Frontend_Scripts
- * @version		1.4
+ * @version		1.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -151,19 +151,18 @@ class SP_Frontend_Scripts {
 		$colors = (array) get_option( 'sportspress_frontend_css_colors', array() );
 
 		// Defaults
-		if ( empty( $colors['primary'] ) ) $colors['primary'] = '#00a69c';
+		if ( empty( $colors['primary'] ) ) $colors['primary'] = '#2b353e';
 		if ( empty( $colors['background'] ) ) $colors['background'] = '#f4f4f4';
-		if ( empty( $colors['text'] ) ) $colors['text'] = '#363f48';
+		if ( empty( $colors['text'] ) ) $colors['text'] = '#222222';
 		if ( empty( $colors['heading'] ) ) $colors['heading'] = '#ffffff';
 		if ( empty( $colors['link'] ) ) $colors['link'] = '#00a69c';
 
 		// Calculate colors
 		$colors['highlight'] = sp_hex_lighter( $colors['background'], 30, true );
-		$colors['lowlight'] = sp_hex_darker( $colors['background'], 8, true );
 		
 		echo '<style type="text/css">';
 
-		if ( $enabled == 'yes' && sizeof( $colors ) > 0 ) {
+		if ( $enabled == 'yes' && ! current_theme_supports( 'sportspress' ) && sizeof( $colors ) > 0 ) {
 			echo ' /* SportsPress Frontend CSS */ ';
 
 			echo '.sp-event-calendar tbody td a,.sp-event-calendar tbody td a:hover{background: none;}';
@@ -185,9 +184,6 @@ class SP_Frontend_Scripts {
 
 			if ( isset( $colors['highlight'] ) )
 				echo '.sp-highlight,.sp-calendar td#today{background: ' . $colors['highlight'] . ' !important}';
-
-			if ( isset( $colors['lowlight'] ) )
-				echo '.sp-lowlight,.sp-data-table tbody tr.odd,.sp-data-table tr.alternate{background: ' . $colors['lowlight'] . ' !important}';
 
 			do_action( 'sportspress_frontend_css', $colors );
 		}

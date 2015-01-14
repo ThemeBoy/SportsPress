@@ -135,12 +135,6 @@ jQuery(document).ready(function($){
 		$(".sp-dummy."+name+"-dummy").val(val).trigger("change");
 	});
 
-	// Title format switcher
-	$(".sp-title-format-select").change(function() {
-		val = $(this).val();
-		$(".sp-title-format").hide().filter(".sp-title-format-"+val).show();
-	});
-
 	// Custom value editor
 	$(".sp-data-table .sp-default-value").click(function() {
 		$(this).hide().siblings(".sp-custom-value").show().find(".sp-custom-value-input").focus();
@@ -546,6 +540,61 @@ jQuery(document).ready(function($){
 		}
 	});
 	$(".sp-date-selector select").trigger("change");
+
+	// Edit inline results
+	$("#the-list").on("click, focus", ".sp-result, .sp-edit-results", function(){
+		team = $(this).data("team");
+		$column = $(this).closest(".column-sp_team");
+		$column.find(".sp-result, .sp-row-actions").hide();
+		$column.find(".sp-edit-result, .sp-inline-edit-save").show();
+		if ( team != undefined ) {
+			$column.find(".sp-edit-result[data-team='"+team+"']").select();
+		}
+		return false;
+	});
+
+	// Cancel inline results
+	$("#the-list").on("click", ".sp-inline-edit-save .cancel", function(){
+		$column = $(this).closest(".column-sp_team");
+		$column.find(".sp-edit-result, .sp-inline-edit-save").hide();
+		$column.find(".sp-result, .sp-row-actions").show();
+		return false;
+	});
+
+	// Save inline results
+	$("#the-list").on("click", ".sp-inline-edit-save .save", function(){
+		$column = $(this).closest(".column-sp_team");
+		results = [];
+		$column.find(".sp-edit-result").each(function() {
+			team = {};
+			team.id = $(this).data("team");
+			team.key = $(this).data("key");
+			team.result = $(this).val();
+			results.push( team );
+		});
+		$.post( ajaxurl, {
+			action:         "sp-save-inline-results",
+			post_id: 		$column.find("input[name='sp_post_id']").val(),
+			results: 		results,
+			nonce:          $("#sp-inline-nonce").val()
+		}, function(response) {
+			$column.find(".sp-edit-result").each(function() {
+				val = $(this).val();
+				$column.find(".sp-result[data-team='"+$(this).data("team")+"']").html(val==''?'-':val);
+			});
+			$column.find(".sp-edit-result, .sp-inline-edit-save").hide();
+			$column.find(".sp-result, .sp-row-actions").show();
+			return false;
+		});
+	});
+
+	// Override inline form submission
+	$("#the-list").on("keypress", ".sp-edit-result", function(e) {
+		if ( e.which == 13 ) {
+			$(this).closest(".column-sp_team").find(".sp-inline-edit-save .save").trigger("click");
+			return false;
+		}
+	});
 
 	// Fitvids
 	$(".sp-fitvids").fitVids();

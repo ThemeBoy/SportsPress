@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Classes
- * @version     1.4
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -126,16 +126,15 @@ class SP_Install {
 		}
 
 		// Default color scheme
-	    add_option( 'sportspress_frontend_css_primary', '#00a69c' );
+	    add_option( 'sportspress_frontend_css_primary', '#2b353e' );
 	    add_option( 'sportspress_frontend_css_background', '#f4f4f4' );
-	    add_option( 'sportspress_frontend_css_text', '#363f48' );
+	    add_option( 'sportspress_frontend_css_text', '#222222' );
 	    add_option( 'sportspress_frontend_css_heading', '#ffffff' );
 	    add_option( 'sportspress_frontend_css_link', '#00a69c' );
 
 		if ( ! get_option( 'sportspress_installed' ) ) {
 			// Configure default sport
 			$sport = 'custom';
-			//SP_Admin_Sports::apply_preset( $sport );
 		    update_option( 'sportspress_sport', $sport );
 
 			// Flag as installed

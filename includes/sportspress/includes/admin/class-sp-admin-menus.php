@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.4
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -27,7 +27,6 @@ class SP_Admin_Menus {
 		add_action( 'admin_menu', array( $this, 'overview_menu' ), 8 );
 		add_action( 'admin_menu', array( $this, 'leagues_menu' ), 9 );
 		add_action( 'admin_menu', array( $this, 'seasons_menu' ), 10 );
-		add_filter( 'admin_menu', array( $this, 'menu_add' ), 20 );
 
 		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
 		add_action( 'admin_head', array( $this, 'menu_rename' ) );
@@ -53,14 +52,14 @@ class SP_Admin_Menus {
 	 * Add menu item
 	 */
 	public function overview_menu() {
-		add_submenu_page( 'sportspress', __( 'Overview', 'sportspress' ), __( 'Overview', 'sportspress' ), 'manage_sportspress', 'sp-overview', array( $this, 'overview_page' ) );
+		add_submenu_page( 'sportspress', __( 'Overview', 'sportspress' ), __( 'Overview', 'sportspress' ), 'manage_sportspress', 'sportspress-overview', array( $this, 'overview_page' ) );
 	}
 
 	/**
 	 * Add menu item
 	 */
 	public function config_menu() {
-		add_submenu_page( 'sportspress', __( 'Configure', 'sportspress' ), __( 'Configure', 'sportspress' ), 'manage_sportspress', 'sp-config', array( $this, 'config_page' ) );
+		add_submenu_page( 'sportspress', __( 'Configure', 'sportspress' ), __( 'Configure', 'sportspress' ), 'manage_sportspress', 'sportspress-config', array( $this, 'config_page' ) );
 	}
 
 	/**
@@ -89,15 +88,13 @@ class SP_Admin_Menus {
 		if ( $screen->id == 'edit-sp_role' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit-tags.php?taxonomy=sp_role&post_type=sp_player' );			
 		elseif ( is_sp_config_type( $typenow ) )
-			$this->highlight_admin_menu( 'sportspress', 'sp-config' );
+			$this->highlight_admin_menu( 'sportspress', 'sportspress-config' );
 		elseif ( $typenow == 'sp_calendar' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_event', 'edit.php?post_type=sp_calendar' );
 		elseif ( $typenow == 'sp_table' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_team', 'edit.php?post_type=sp_table' );
 		elseif ( $typenow == 'sp_list' )
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_list' );
-		elseif ( $typenow == 'sp_staff' )
-			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_staff' );
 	}
 
 	/**
@@ -111,11 +108,6 @@ class SP_Admin_Menus {
 
 		if ( isset( $submenu['sportspress'] ) && isset( $submenu['sportspress'][0] ) && isset( $submenu['sportspress'][0][0] ) )
 			$submenu['sportspress'][0][0] = __( 'Settings', 'sportspress' );
-
-		foreach ( $menu as $index => $values ):
-			if ( sp_array_value( $values, 0 ) === __( 'Players', 'sportspress' ) )
-				$menu[ $index ][0] = __( 'Players & Staff', 'sportspress' );
-		endforeach;
 	}
 
 	public function parent_file( $parent_file ) {
@@ -143,6 +135,7 @@ class SP_Admin_Menus {
 		$sportspress_event = array_search( 'edit.php?post_type=sp_event', $menu_order );
 		$sportspress_team = array_search( 'edit.php?post_type=sp_team', $menu_order );
 		$sportspress_player = array_search( 'edit.php?post_type=sp_player', $menu_order );
+		$sportspress_staff = array_search( 'edit.php?post_type=sp_staff', $menu_order );
 
 		// Loop through menu order and do some rearranging
 		foreach ( $menu_order as $index => $item ):
@@ -153,10 +146,12 @@ class SP_Admin_Menus {
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_event';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_team';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_player';
+				$sportspress_menu_order[] = 'edit.php?post_type=sp_staff';
 				unset( $menu_order[ $sportspress_separator ] );
 				unset( $menu_order[ $sportspress_event ] );
 				unset( $menu_order[ $sportspress_team ] );
 				unset( $menu_order[ $sportspress_player ] );
+				unset( $menu_order[ $sportspress_staff ] );
 
 				// Apply to added menu items
 				$menu_items = apply_filters( 'sportspress_menu_items', array() );
@@ -203,23 +198,29 @@ class SP_Admin_Menus {
 			$menu[ $separator_position ] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
 		endif;
 
-	    // Remove "Leagues" and "Seasons" links from Events submenu
+	    // Remove "Competitions" and "Seasons" links from Events submenu
 		if ( isset( $submenu['edit.php?post_type=sp_event'] ) ):
 			$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], array( $this, 'remove_seasons' ) );
 		endif;
 
-	    // Remove "Venues", "Leagues" and "Seasons" links from Teams submenu
+	    // Remove "Venues", "Competitions" and "Seasons" links from Teams submenu
 		if ( isset( $submenu['edit.php?post_type=sp_team'] ) ):
 			$submenu['edit.php?post_type=sp_team'] = array_filter( $submenu['edit.php?post_type=sp_team'], array( $this, 'remove_venues' ) );
 			$submenu['edit.php?post_type=sp_team'] = array_filter( $submenu['edit.php?post_type=sp_team'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_team'] = array_filter( $submenu['edit.php?post_type=sp_team'], array( $this, 'remove_seasons' ) );
 		endif;
 
-	    // Remove "Leagues" and "Seasons" links from Players submenu
+	    // Remove "Competitions" and "Seasons" links from Players submenu
 		if ( isset( $submenu['edit.php?post_type=sp_player'] ) ):
 			$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], array( $this, 'remove_seasons' ) );
+		endif;
+
+	    // Remove "Competitions" and "Seasons" links from Staff submenu
+		if ( isset( $submenu['edit.php?post_type=sp_staff'] ) ):
+			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_leagues' ) );
+			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_seasons' ) );
 		endif;
 
 		$user_roles = $current_user->roles;
@@ -229,18 +230,6 @@ class SP_Admin_Menus {
 			remove_menu_page( 'upload.php' );
 			remove_menu_page( 'edit-comments.php' );
 			remove_menu_page( 'tools.php' );
-		endif;
-	}
-
-	/**
-	 * Add missing SP menu items in admin.
-	 */
-	public function menu_add() {
-		global $menu, $submenu, $current_user;
-
-		// Add "Jobs" to Players submenu
-		if ( isset( $submenu['edit.php?post_type=sp_player'] ) ):
-			array_splice( $submenu['edit.php?post_type=sp_player'], 5, 0, array( array( __( 'Jobs', 'sportspress' ), 'manage_categories', 'edit-tags.php?taxonomy=sp_role&post_type=sp_player' ) ) );
 		endif;
 	}
 

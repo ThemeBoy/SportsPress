@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		1.3
+ * @version		1.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -176,7 +176,46 @@ class SP_Player extends SP_Custom_Post {
 						$player_performance = sp_array_value( $players, $this->ID, array() );
 
 						foreach ( $player_performance as $key => $value ):
-							if ( array_key_exists( $key, $totals ) ):
+							if ( 'outcome' == $key ):
+								// Increment events attended, played, and started
+								$totals['eventsattended'] ++;
+								$totals['eventsplayed'] ++;
+								$totals['eventsstarted'] ++;
+								$totals['eventminutes'] += $minutes;
+
+								// Convert to array
+								if ( ! is_array( $value ) ):
+									$value = array( $value );
+								endif;
+
+								foreach ( $value as $outcome ):
+									if ( $outcome && $outcome != '-1' ):
+
+										// Increment outcome count
+										if ( array_key_exists( $outcome, $totals ) ):
+											$totals[ $outcome ] ++;
+										endif;
+
+										// Add to streak counter
+										if ( $streak['fire'] && ( $streak['name'] == '' || $streak['name'] == $outcome ) ):
+											$streak['name'] = $outcome;
+											$streak['count'] ++;
+										else:
+											$streak['fire'] = 0;
+										endif;
+
+										// Add to last 5 counter if sum is less than 5
+										if ( array_key_exists( $outcome, $last5 ) && array_sum( $last5 ) < 5 ):
+											$last5[ $outcome ] ++;
+										endif;
+
+										// Add to last 10 counter if sum is less than 10
+										if ( array_key_exists( $outcome, $last10 ) && array_sum( $last10 ) < 10 ):
+											$last10[ $outcome ] ++;
+										endif;
+									endif;
+								endforeach;
+							elseif ( array_key_exists( $key, $totals ) ):
 								$totals[ $key ] += $value;
 							endif;
 						endforeach;
@@ -207,7 +246,7 @@ class SP_Player extends SP_Custom_Post {
 									$value = array( $value );
 								endif;
 
-								foreach( $value as $outcome ):
+								foreach ( $value as $outcome ):
 									if ( $outcome && $outcome != '-1' ):
 
 										// Increment outcome count
@@ -281,21 +320,25 @@ class SP_Player extends SP_Custom_Post {
 
 		foreach( $placeholders as $season_id => $season_data ):
 
-			if ( ! sp_array_value( $leagues, $season_id, 0 ) )
+			if ( -1 == sp_array_value( $leagues, $season_id, 0 ) )
 				continue;
 
 			$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
 
 			$team_id = sp_array_value( $leagues, $season_id, array() );
 
-			if ( ! $team_id || $team_id == '-1' )
+			if ( -1 == $team_id )
 				continue;
 
-			$team_name = get_the_title( $team_id );
-			
-			if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
-				$team_permalink = get_permalink( $team_id );
-				$team_name = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
+			if ( $team_id ):
+				$team_name = get_the_title( $team_id );
+				
+				if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
+					$team_permalink = get_permalink( $team_id );
+					$team_name = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
+				endif;
+			else:
+				$team_name = '&mdash;';
 			endif;
 
 			// Add season name to row

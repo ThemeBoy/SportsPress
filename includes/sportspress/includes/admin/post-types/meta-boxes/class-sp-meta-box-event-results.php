@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.1
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,6 +29,86 @@ class SP_Meta_Box_Event_Results {
 	 */
 	public static function save( $post_id, $post ) {
 		$results = (array)sp_array_value( $_POST, 'sp_results', array() );
+		$main_result = get_option( 'sportspress_primary_result', null );
+
+		// Auto outcome
+		$primary_results = array();
+		foreach ( $results as $team => $team_results ) {
+			if ( $main_result ) {
+				$primary_results[ $team ] = sp_array_value( $team_results, $main_result, null );
+			} else {
+				if ( is_array( $team_results ) ) {
+					end( $team_results );
+					$primary_results[ $team ] = prev( $team_results );
+				} else {
+					$primary_results[ $team ] = null;
+				}
+			}
+		}
+
+		arsort( $primary_results );
+
+		if ( count( $primary_results ) && ! in_array( null, $primary_results ) ) {
+			if ( count( array_unique( $primary_results ) ) === 1 ) {
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => '=',
+				);
+				$outcomes = get_posts( $args );
+				foreach ( $results as $team => $team_results ) {
+					if ( array_key_exists( 'outcome', $team_results ) ) continue;
+					if ( $outcomes ) {
+						$results[ $team ][ 'outcome' ] = array();
+						foreach ( $outcomes as $outcome ) {
+							$results[ $team ][ 'outcome' ][] = $outcome->post_name;
+						}
+					}
+				}
+			} else {
+				reset( $primary_results );
+				$max = key( $primary_results );
+				if ( ! array_key_exists( 'outcome', $results[ $max ] ) ) {
+					$args = array(
+						'post_type' => 'sp_outcome',
+						'numberposts' => -1,
+						'posts_per_page' => -1,
+						'meta_key' => 'sp_condition',
+						'meta_value' => '>',
+					);
+					$outcomes = get_posts( $args );
+					if ( $outcomes ) {
+						$results[ $max ][ 'outcome' ] = array();
+						foreach ( $outcomes as $outcome ) {
+							$results[ $max ][ 'outcome' ][] = $outcome->post_name;
+						}
+					}
+				}
+
+				end( $primary_results );
+				$min = key( $primary_results );
+				if ( ! array_key_exists( 'outcome', $results[ $min ] ) ) {
+					$args = array(
+						'post_type' => 'sp_outcome',
+						'numberposts' => -1,
+						'posts_per_page' => -1,
+						'meta_key' => 'sp_condition',
+						'meta_value' => '<',
+					);
+					$outcomes = get_posts( $args );
+					if ( $outcomes ) {
+						$results[ $min ][ 'outcome' ] = array();
+						foreach ( $outcomes as $outcome ) {
+							$results[ $min ][ 'outcome' ][] = $outcome->post_name;
+						}
+					}
+				}
+			}
+		}
+
+		// Update meta
 		update_post_meta( $post_id, 'sp_results', $results );
 		update_post_meta( $post_id, 'sp_result_columns', sp_array_value( $_POST, 'sp_result_columns', array() ) );
 	}
@@ -90,6 +170,7 @@ class SP_Meta_Box_Event_Results {
 									'class' => 'sp-outcome',
 									'property' => 'multiple',
 									'chosen' => true,
+									'placeholder' => __( '(Auto)', 'sportspress' ),
 								);
 								sp_dropdown_pages( $args );
 								?>

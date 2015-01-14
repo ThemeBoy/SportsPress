@@ -1,8 +1,8 @@
 {
 	"name":				"Dota 2",
 	"outcomes": [
-						"Win",
-						"Loss"
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" }
 	],
 	"results": [
 						{ "name" : "Rating", "description" : "Rating adjustment", "primary" : 1 }

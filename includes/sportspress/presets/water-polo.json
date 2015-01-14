@@ -12,9 +12,9 @@
 						"Hole Guard"
 	],
 	"outcomes": [
-						"Win",
-						"Loss",
-						"Draw"
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
+						{ "name" : "Draw", "condition" : "=" }
 	],
 	"results": [
 						{ "name" : "1st Quarter", "description" : "1st quarter goals" },

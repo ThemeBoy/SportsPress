@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * AJAX Event Handler
  *
  * @class 		SP_AJAX
- * @version		1.2
+ * @version		1.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -77,7 +77,7 @@ class SP_AJAX {
 			<p>
 				<label>
 					<input class="checkbox" type="checkbox" name="show_league">
-					<?php _e( 'Display league', 'sportspress' ); ?>
+					<?php _e( 'Display competition', 'sportspress' ); ?>
 				</label>
 			</p>
 			<p class="submit">

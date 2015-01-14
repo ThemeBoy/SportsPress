@@ -1,4 +1,4 @@
-<div class="wrap sportspress sp-config-wrap">
+<div class="wrap sportspress sportspress-config-wrap">
 	<h2>
 		<?php _e( 'Configure', 'sportspress' ); ?>
 	</h2>
@@ -26,6 +26,7 @@
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Abbreviation', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Condition', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
 							</tr>
@@ -35,6 +36,7 @@
 								<td class="row-title"><?php echo $row->post_title; ?></td>
 								<td><?php echo $row->post_name; ?></td>
 								<td><?php echo sp_get_post_abbreviation( $row->ID ); ?></td>
+								<td><?php echo sp_get_post_condition( $row->ID ); ?></td>
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
@@ -45,10 +47,8 @@
 						<?php endif; ?>
 					</table>
 					<div class="tablenav bottom">
-						<div class="alignleft actions">
-							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_outcome' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_outcome' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
-						</div>
+						<a class="button alignleft" href="<?php echo admin_url( 'edit.php?post_type=sp_outcome' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
+						<a class="button button-primary alignright" href="<?php echo admin_url( 'post-new.php?post_type=sp_outcome' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
 						<br class="clear">
 					</div>
 				</td>
@@ -120,10 +120,8 @@
 						</table>
 					</form>
 					<div class="tablenav bottom">
-						<div class="alignleft actions">
-							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_result' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_result' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
-						</div>
+						<a class="button alignleft" href="<?php echo admin_url( 'edit.php?post_type=sp_result' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
+						<a class="button button-primary alignright" href="<?php echo admin_url( 'post-new.php?post_type=sp_result' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
 						<br class="clear">
 					</div>
 				</td>
@@ -173,10 +171,8 @@
 						<?php endif; ?>
 					</table>
 					<div class="tablenav bottom">
-						<div class="alignleft actions">
-							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_performance' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_performance' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
-						</div>
+						<a class="button alignleft" href="<?php echo admin_url( 'edit.php?post_type=sp_performance' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
+						<a class="button button-primary alignright" href="<?php echo admin_url( 'post-new.php?post_type=sp_performance' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
 						<br class="clear">
 					</div>
 				</td>
@@ -230,10 +226,8 @@
 						<?php endif; ?>
 					</table>
 					<div class="tablenav bottom">
-						<div class="alignleft actions">
-							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_column' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_column' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
-						</div>
+						<a class="button alignleft" href="<?php echo admin_url( 'edit.php?post_type=sp_column' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
+						<a class="button button-primary alignright" href="<?php echo admin_url( 'post-new.php?post_type=sp_column' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
 						<br class="clear">
 					</div>
 				</fieldset>
@@ -282,10 +276,8 @@
 						<?php endif; ?>
 					</table>
 					<div class="tablenav bottom">
-						<div class="alignleft actions">
-							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_metric' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_metric' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
-						</div>
+						<a class="button alignleft" href="<?php echo admin_url( 'edit.php?post_type=sp_metric' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
+						<a class="button button-primary alignright" href="<?php echo admin_url( 'post-new.php?post_type=sp_metric' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
 						<br class="clear">
 					</div>
 				</td>
@@ -337,10 +329,8 @@
 						<?php endif; ?>
 					</table>
 					<div class="tablenav bottom">
-						<div class="alignleft actions">
-							<a class="button button-primary" id="doaction2" href="<?php echo admin_url( 'post-new.php?post_type=sp_statistic' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
-							<a class="button" id="doaction" href="<?php echo admin_url( 'edit.php?post_type=sp_statistic' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
-						</div>
+						<a class="button alignleft" href="<?php echo admin_url( 'edit.php?post_type=sp_statistic' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
+						<a class="button button-primary alignright" href="<?php echo admin_url( 'post-new.php?post_type=sp_statistic' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
 						<br class="clear">
 					</div>
 				</td>

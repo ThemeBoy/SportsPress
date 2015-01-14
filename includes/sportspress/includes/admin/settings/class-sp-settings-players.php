@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.4
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -59,6 +59,14 @@ class SP_Settings_Players extends SP_Settings_Page {
 				'desc' 		=> __( 'Details', 'sportspress' ),
 				'id' 		=> 'sportspress_player_show_details',
 				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Career Total', 'sportspress' ),
+				'id' 		=> 'sportspress_player_show_total',
+				'default'	=> 'no',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',
 			),

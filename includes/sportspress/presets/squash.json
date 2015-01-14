@@ -1,9 +1,9 @@
 {
 	"name":				"Squash",
 	"outcomes": [
-						"Win",
-						"Loss",
-						"Draw"
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
+						{ "name" : "Draw", "condition" : "=" }
 	],
 	"results": [
 						{ "name" : "G1", "description" : "1st game" },

@@ -6,7 +6,10 @@
 	overflow: visible;
 }
 
-/* Thumbnails and Details */
+/* Templates */
+.sp-template {
+	margin-bottom: 1.5em;
+}
 .sp-template-logo,
 .sp-template-photo {
 	float: left;
@@ -18,7 +21,10 @@
 	text-align: center;
 }
 .sp-template-details {
-	display: inline-block;
+	display: inline;
+}
+.sp-template-details dl {
+	overflow: hidden;
 }
 
 /* Data Tables */
@@ -172,6 +178,9 @@
     border-spacing: 0;
 	border-collapse: separate;
 }
+.sp-event-calendar a {
+	text-decoration: none;
+}
 .sp-event-calendar tbody td, .sp-event-calendar thead th {
 	text-align: center;
 }
@@ -185,7 +194,7 @@
 /* Event List */
 .sp-event-list .data-date date,
 .sp-event-list .data-time date {
-	display: none;
+	display: none !important;
 }
 .sp-event-list .data-article {
 	white-space: nowrap;
@@ -193,8 +202,15 @@
 .sp-event-list .data-article a .dashicons {
 	padding-right: 3px;
 }
-.sp-event-list .data-time {
+.sp-event-list .data-time,
+.sp-event-list .data-results {
 	white-space: nowrap;
+}
+.sp-event-list .data-teams img,
+.sp-event-list .data-home img,
+.sp-event-list .data-away img {
+	display: inline-block;
+	vertical-align: middle;
 }
 
 /* Event Blocks */
@@ -256,8 +272,7 @@
 }
 
 /* Alternate */
-.sp-data-table tbody tr.odd,
-.sp-data-table tbody tr.alternate {
+.sp-data-table tbody tr.odd {
 	background: rgba(0, 0, 0, 0.02);
 }
 

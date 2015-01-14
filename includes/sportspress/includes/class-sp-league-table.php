@@ -117,7 +117,7 @@ class SP_League_Table extends SP_Custom_Post{
 			);
 		endif;
 
-		if ( $league_id ):
+		if ( $div_id ):
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_season',
 				'field' => 'id',

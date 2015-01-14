@@ -136,7 +136,7 @@ class SP_Widget_Event_List extends WP_Widget {
 			<?php 
 			$the_columns = array(
 				'event' => __( 'Event', 'sportspress' ),
-				'time' => __( 'Time', 'sportspress' ),
+				'time' => __( 'Time/Results', 'sportspress' ),
 				'venue' => __( 'Venue', 'sportspress' ),
 				'article' => __( 'Article', 'sportspress' ),
 			);

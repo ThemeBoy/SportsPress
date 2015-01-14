@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.4
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -22,22 +22,23 @@ class SP_Meta_Box_Calendar_Data {
 		$calendar = new SP_Calendar( $post );
 		$data = $calendar->data();
 		$usecolumns = $calendar->columns;
-		$title_format = $calendar->title_format;
-		self::table( $data, $usecolumns, $title_format );
+		self::table( $data, $usecolumns );
 	}
 
 	/**
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_title_format', sp_array_value( $_POST, 'sp_title_format', 'title' ) );
 		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 	}
 
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $data = array(), $usecolumns = null, $title_format = null ) {
+	public static function table( $data = array(), $usecolumns = null ) {
+		$title_format = get_option( 'sportspress_event_list_title_format', 'title' );
+		$time_format = get_option( 'sportspress_event_list_time_format', 'combined' );
+
 		if ( is_array( $usecolumns ) )
 			$usecolumns = array_filter( $usecolumns );
 		?>
@@ -51,19 +52,39 @@ class SP_Meta_Box_Calendar_Data {
 						<th class="column-event">
 							<label for="sp_columns_event">
 								<input type="checkbox" name="sp_columns[]" value="event" id="sp_columns_event" <?php checked( ! is_array( $usecolumns ) || in_array( 'event', $usecolumns ) ); ?>>
-								<select name="sp_title_format" class="sp-title-format-select">
-									<option value="title" <?php selected( $title_format, 'title' ); ?>><?php _e( 'Title', 'sportspress' ); ?></option>
-									<option value="teams" <?php selected( $title_format, 'teams' ); ?>><?php _e( 'Teams', 'sportspress' ); ?></option>
-									<option value="homeaway" <?php selected( $title_format, 'homeaway' ); ?>><?php _e( 'Home', 'sportspress' ); ?> | <?php _e( 'Away', 'sportspress' ); ?></option>
-								</select>
+								<?php
+								if ( 'teams' == $title_format ) {
+									_e( 'Home', 'sportspress' ); ?> | <?php _e( 'Away', 'sportspress' );
+								} elseif ( 'homeaway' == $title_format ) {
+									_e( 'Teams', 'sportspress' );
+								} else {
+									_e( 'Title', 'sportspress' );
+								}
+								?>
 							</label>
 						</th>
-						<th class="column-time">
-							<label for="sp_columns_time">
-								<input type="checkbox" name="sp_columns[]" value="time" id="sp_columns_time" <?php checked( ! is_array( $usecolumns ) || in_array( 'time', $usecolumns ) ); ?>>
-								<?php _e( 'Time/Results', 'sportspress' ); ?>
-							</label>
-						</th>
+						<?php if ( in_array( $time_format, array( 'combined', 'separate', 'time' ) ) ) { ?>
+							<th class="column-time">
+								<label for="sp_columns_time">
+									<input type="checkbox" name="sp_columns[]" value="time" id="sp_columns_time" <?php checked( ! is_array( $usecolumns ) || in_array( 'time', $usecolumns ) ); ?>>
+									<?php
+									if ( 'time' == $time_format || 'separate' == $time_format ) {
+										_e( 'Time', 'sportspress' );
+									} else {
+										_e( 'Time/Results', 'sportspress' );
+									}
+									?>
+								</label>
+							</th>
+						<?php } ?>
+						<?php if ( in_array( $time_format, array( 'separate', 'results' ) ) ) { ?>
+							<th class="column-results">
+								<label for="sp_columns_results">
+									<input type="checkbox" name="sp_columns[]" value="results" id="sp_columns_results" <?php checked( ! is_array( $usecolumns ) || in_array( 'results', $usecolumns ) ); ?>>
+									<?php _e( 'Results', 'sportspress' ); ?>
+								</label>
+							</th>
+						<?php } ?>
 						<th class="column-league">
 							<label for="sp_columns_league">
 								<input type="checkbox" name="sp_columns[]" value="league" id="sp_columns_league" <?php checked( ! is_array( $usecolumns ) || in_array( 'league', $usecolumns ) ); ?>>
@@ -139,15 +160,30 @@ class SP_Meta_Box_Calendar_Data {
 											?>
 										</div>
 									</td>
-									<td>
-										<?php
-											if ( ! empty( $main_results ) ):
-												echo implode( ' - ', $main_results );
-											else:
-												echo get_post_time( get_option( 'time_format' ), false, $event, true );
-											endif;
-										?>
-									</td>
+									<?php if ( 'separate' == $time_format ) { ?>
+										<td>
+											<?php echo get_post_time( get_option( 'time_format' ), false, $event, true ); ?>
+										</td>
+										<td>
+											<?php
+												if ( ! empty( $main_results ) ):
+													echo implode( ' - ', $main_results );
+												else:
+													echo '-';
+												endif;
+											?>
+										</td>
+									<?php } else { ?>
+										<td>
+											<?php
+												if ( ! empty( $main_results ) ):
+													echo implode( ' - ', $main_results );
+												else:
+													echo get_post_time( get_option( 'time_format' ), false, $event, true );
+												endif;
+											?>
+										</td>
+									<?php } ?>
 									<td><?php the_terms( $event->ID, 'sp_league' ); ?></td>
 									<td><?php the_terms( $event->ID, 'sp_season' ); ?></td>
 									<td><?php the_terms( $event->ID, 'sp_venue' ); ?></td>

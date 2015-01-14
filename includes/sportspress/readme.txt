@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
-Tested up to: 4.0
-Stable tag: 1.4.6
+Tested up to: 4.1
+Stable tag: 1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,7 +24,7 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 >
 > "*SportsPress is our number 1 WordPress plugin for sport!*" — [GBSport](http://www.gbsport.org.uk/5-great-wordpress-plugins-for-sport/)
 >
-> "*The freely available and highly impressive Sportspress plugin offers terrific functionality including a fixtures listing, league table, player & staff profiles, customizable point system and a built-in translation system for 36 different languages.*" — [Club Themes](http://clubthemes.com/awesome-sporting-templates-themes-wordpress-joomla/)
+> "*The freely available and highly impressive SportsPress plugin offers terrific functionality including a fixtures listing, league table, player & staff profiles, customizable point system and a built-in translation system for 36 different languages.*" — [Club Themes](http://clubthemes.com/awesome-sporting-templates-themes-wordpress-joomla/)
 
 = Features =
 * Equation Builder
@@ -188,6 +188,42 @@ Bugs can be reported either in our support forum or preferably on the [SportsPre
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers.
 
 == Changelog ==
+
+= 1.5 =
+* Feature - New inline quick result editing for events.
+* Feature - Automatically detect event outcome based on user-defined conditions.
+* Feature - Enable individual players to compete in events.
+* Feature - Add new API functions for theme developers.
+* Feature - Add event list time/results formatting options.
+* Feature - Add option to display player career totals.
+* Feature - Add option to display team logos in event lists.
+* Feature - Add option to display venue in event blocks.
+* Feature - Split iCal feed links for Apple Calendar, Google, and Outlook.
+* Refactor - Move Staff to dedicated menu link.
+* Refactor - Load sportspress.php template as a fallback only.
+* Tweak - Add caption header to event blocks.
+* Tweak - Add selector classes to event venue rows.
+* Tweak - Remove line breaks after template output.
+* Tweak - Disable responsive event performance when icons are shown.
+* Tweak - Update default color scheme.
+* Tweak - Update player gallery thumbnail markup.
+* Tweak - Sort Player positions dropdown by slug.
+* Tweak - Frontend styling to add margins and fix overflows.
+* Fix - Countdown datetime format.
+* Fix - Page slug conflict with SendPress.
+* Fix - Missing sample event video link.
+* Fix - iCal feed formatting when venue location is not set.
+* Preset - Update presets to include automatic outcome conditions.
+* Localization - Add Puerto Rico to countries list.
+* Localization - Update Polish, German, Spanish, Russian, Finnish, Italian, Armenian, Greek, Dutch, Turkish, French, and Bengali translations.
+
+= 1.4.7 =
+* Feature - New staff shortcode and widget to display staff photo and details.
+* Tweak - Display player photo in player details shortcode.
+* Tweak - Sample event csv to reflect soccer preset.
+* Fix - Saving a manual offset timezone.
+* Preset - Add player positions to volleyball preset.
+* Localization - Update Turkish, Italian, Polish, Finnish, and French translations.
 
 = 1.4.6 =
 * Tweak - Include all events that have results in league table calculations.

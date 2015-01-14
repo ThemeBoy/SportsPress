@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.3
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -25,7 +25,7 @@ class SP_Meta_Box_Event_Performance {
 		$i = 0;
 
 		foreach ( $teams as $key => $team_id ):
-			if ( ! $team_id ) continue;
+			if ( -1 == $team_id ) continue;
 
 			// Get results for players in the team
 			$players = sp_array_between( (array)get_post_meta( $post->ID, 'sp_player', false ), 0, $key );
@@ -33,7 +33,11 @@ class SP_Meta_Box_Event_Performance {
 
 			?>
 			<div>
-				<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
+				<?php if ( $team_id ): ?>
+					<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
+				<?php elseif ( $i ): ?>
+					<br>
+				<?php endif; ?>
 				<?php self::table( $labels, $columns, $data, $team_id, $i == 0 ); ?>
 			</div>
 			<?php
@@ -83,7 +87,15 @@ class SP_Meta_Box_Event_Performance {
 								<?php endif; ?>
 							</th>
 						<?php endforeach; ?>
-						<th><?php _e( 'Status', 'sportspress' ); ?></th>
+						<?php if ( $team_id ): ?>
+							<th>
+								<?php _e( 'Status', 'sportspress' ); ?>
+							</th>
+						<?php else: ?>
+							<th>
+								<?php _e( 'Outcome', 'sportspress' ); ?>
+							</th>
+						<?php endif; ?>
 					</tr>
 				</thead>
 				<tfoot>
@@ -125,7 +137,8 @@ class SP_Meta_Box_Event_Performance {
 									'taxonomy' => 'sp_position',
 									'name' => 'sp_players[' . $team_id . '][' . $player_id . '][position]',
 									'values' => 'term_id',
-									'selected' => $selected
+									'orderby' => 'slug',
+									'selected' => $selected,
 								);
 								sp_dropdown_taxonomies( $args );
 								?>
@@ -137,10 +150,34 @@ class SP_Meta_Box_Event_Performance {
 									<input class="sp-player-<?php echo $column; ?>-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" />
 								</td>
 							<?php endforeach; ?>
-							<td class="sp-status-selector">
-								<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?>
-								<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?>
-							</td>
+							<?php if ( $team_id ): ?>
+								<td class="sp-status-selector">
+									<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?>
+									<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?>
+								</td>
+							<?php else: ?>
+								<td>
+									<?php
+									$values = sp_array_value( $player_performance, 'outcome', '' );
+									if ( ! is_array( $values ) )
+										$values = array( $values );
+
+									$args = array(
+										'post_type' => 'sp_outcome',
+										'name' => 'sp_players[' . $team_id . '][' . $player_id . '][outcome][]',
+										'option_none_value' => '',
+									    'sort_order'   => 'ASC',
+									    'sort_column'  => 'menu_order',
+										'selected' => $values,
+										'class' => 'sp-outcome',
+										'property' => 'multiple',
+										'chosen' => true,
+										'placeholder' => __( 'None', 'sportspress' ),
+									);
+									sp_dropdown_pages( $args );
+									?>
+								</td>
+							<?php endif; ?>
 						</tr>
 						<?php
 					endforeach;

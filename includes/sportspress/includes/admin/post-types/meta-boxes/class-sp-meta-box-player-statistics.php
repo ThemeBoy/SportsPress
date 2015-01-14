@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.4
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -36,7 +36,7 @@ class SP_Meta_Box_Player_Statistics {
 			endforeach;
 		endif;
 		?>
-		<p><strong><?php _e( 'Total', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Career Total', 'sportspress' ); ?></strong></p>
 		<?php
 		list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true );
 		self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams );
@@ -103,6 +103,7 @@ class SP_Meta_Box_Player_Statistics {
 											'post_type' => 'sp_team',
 											'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
 											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+											'show_option_all' => __( '&mdash; Individual &mdash;', 'sportspress' ),
 										    'sort_order'   => 'ASC',
 										    'sort_column'  => 'menu_order',
 											'selected' => $value,

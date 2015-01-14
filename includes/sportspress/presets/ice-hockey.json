@@ -6,8 +6,8 @@
 						"Goalie"
 	],
 	"outcomes": [
-						"Win",
-						"Loss",
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
 						{ "name" : "Overtime loss", "abbreviation" : "OT" }
 	],
 	"results": [

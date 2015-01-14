@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.4
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -25,6 +25,7 @@ $defaults = array(
 	'show_all_events_link' => false,
 	'show_league' => get_option( 'sportspress_event_blocks_show_league', 'no' ) == 'yes' ? true : false,
 	'show_season' => get_option( 'sportspress_event_blocks_show_season', 'no' ) == 'yes' ? true : false,
+	'show_venue' => get_option( 'sportspress_event_blocks_show_venue', 'no' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -43,8 +44,13 @@ if ( $order != 'default' )
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
 
-if ( isset( $columns ) )
+if ( isset( $columns ) ) {
 	$usecolumns = $columns;
+}
+
+if ( $id ) {
+	echo '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
+}
 ?>
 <div class="sp-template sp-template-event-blocks">
 	<div class="sp-table-wrapper">
@@ -97,7 +103,7 @@ if ( isset( $columns ) )
 					<tr class="sp-row sp-post<?php echo ( $i % 2 == 0 ? ' alternate' : '' ); ?>">
 						<td>
 							<?php echo implode( $logos, ' ' ); ?>
-							<time class="event-date"><?php echo get_the_time( get_option( 'date_format' ), $event ); ?></time>
+							<time class="event-date" datetime="<?php echo $event->post_date; ?>"><?php echo get_the_time( get_option( 'date_format' ), $event ); ?></time>
 							<?php if ( ! empty( $main_results ) ): ?>
 								<h5 class="event-results"><?php echo implode( $main_results, ' - ' ); ?></h5>
 							<?php else: ?>
@@ -109,6 +115,9 @@ if ( isset( $columns ) )
 							<?php if ( $show_season ): $seasons = get_the_terms( $event, 'sp_season' ); if ( $seasons ): $season = array_shift( $seasons ); ?>
 								<div class="event-season"><?php echo $season->name; ?></div>
 							<?php endif; endif; ?>
+							<?php if ( $show_venue ): $venues = get_the_terms( $event, 'sp_venue' ); if ( $venues ): $venue = array_shift( $venues ); ?>
+								<div class="event-venue"><?php echo $venue->name; ?></div>
+							<?php endif; endif; ?>
 							<h4 class="event-title"><a href="<?php echo get_post_permalink( $event ); ?>"><?php echo $event->post_title; ?></a></h4>
 						</td>
 					</tr>
@@ -119,8 +128,8 @@ if ( isset( $columns ) )
 			</tbody>
 		</table>
 	</div>
+	<?php
+	if ( $id && $show_all_events_link )
+		echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
+	?>
 </div>
-<?php
-if ( $id && $show_all_events_link )
-	echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
-?>

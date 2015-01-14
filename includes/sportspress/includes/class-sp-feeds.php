@@ -3,7 +3,7 @@
  * SportsPress Feeds Class
  *
  * @class 		SP_Feeds
- * @version		1.4
+ * @version		1.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -22,15 +22,27 @@ class SP_Feeds {
 	public function __construct() {
 		$data = array(
 			'calendar' => array(
-				'ical' => __( 'iCal', 'sportspress' ),
+				'ical' => array(
+					'apple' => array(
+						'name' => __( 'Apple Calendar', 'sportspress' ),
+						'protocol' => 'webcal',
+					),
+					'outlook' => array(
+						'name' => __( 'Outlook', 'sportspress' ),
+						'protocol' => 'webcal',
+					),
+					'google' => array(
+						'name' => __( 'Google', 'sportspress' ),
+						'prefix' => 'http://www.google.com/calendar/render?cid=',
+					),
+				),
 			),
 		);
 
 		$this->data = apply_filters( 'sportspress_feeds', $data );
 
-		foreach ( $data as $type => $feeds ) {
-			foreach ( $feeds as $slug => $name ) {
-				$this->feed = $slug;
+		foreach ( $data as $post_type => $feeds ) {
+			foreach ( $feeds as $slug => $formats ) {
 				add_feed( 'sp-' . $slug, array( $this, $slug . '_feed' ) );
 			}
 		}
@@ -45,7 +57,7 @@ class SP_Feeds {
 	}
 
 	public static function ical_feed() {
-	    $feed_template = SP()->plugin_path() . '/feeds/ical.php';
+		$feed_template = SP()->plugin_path() . '/feeds/ical.php';
 	    load_template( $feed_template );
 	}
 }

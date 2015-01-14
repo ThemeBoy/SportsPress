@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.4.4
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -297,6 +297,12 @@ if ( !function_exists( 'sp_numbers_to_words' ) ) {
     }
 }
 
+if ( !function_exists( 'sp_column_active' ) ) {
+	function sp_column_active( $array = null, $value = null ) {
+		return $array == null || in_array( $value, $array );
+	}
+}
+
 if ( !function_exists( 'sp_get_the_term_id' ) ) {
 	function sp_get_the_term_id( $post_id, $taxonomy ) {
 		$terms = get_the_terms( $post_id, $taxonomy );
@@ -342,6 +348,26 @@ if ( !function_exists( 'sp_get_post_abbreviation' ) ) {
 			return $abbreviation;
 		else:
 			return substr( get_the_title( $post_id ), 0, 1 );
+		endif;
+	}
+}
+
+if ( !function_exists( 'sp_get_post_condition' ) ) {
+	function sp_get_post_condition( $post_id ) {
+		$condition = get_post_meta ( $post_id, 'sp_condition', true );
+		$main_result = get_option( 'sportspress_primary_result', null );
+		$result = get_page_by_path( $main_result, ARRAY_A, 'sp_result' );
+		$label = sp_array_value( $result, 'post_title', __( 'Primary', 'sportspress' ) );
+		if ( $condition ):
+			$conditions = array(
+				'0' => '&mdash;',
+				'>' => sprintf( __( 'Most %s', 'sportspress' ), $label ),
+				'<' => sprintf( __( 'Least %s', 'sportspress' ), $label ),
+				'=' => sprintf( __( 'Equal %s', 'sportspress' ), $label ),
+			);
+			return sp_array_value( $conditions, $condition, '&mdash;' );
+		else:
+			return '&mdash;';
 		endif;
 	}
 }
@@ -477,10 +503,11 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 			'selected' => null,
 			'hide_empty' => false,
 			'values' => 'slug',
-		    'class' => null,
-		    'property' => null,
-		    'placeholder' => null,
-		    'chosen' => false,
+			'class' => null,
+			'property' => null,
+			'placeholder' => null,
+			'chosen' => false,
+			'parent' => 0,
 		);
 		$args = array_merge( $defaults, $args ); 
 		if ( ! $args['taxonomy'] ) return false;
@@ -539,6 +566,26 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 				endif;
 
 				printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, $term->name );
+
+				$term_children = get_term_children( $term->term_id, $args['taxonomy'] );
+
+				foreach ( $term_children as $term_child_id ):
+					$term_child = get_term_by( 'id', $term_child_id, $args['taxonomy'] );
+
+					if ( $args['values'] == 'term_id' ):
+						$this_value = $term_child->term_id;
+					else:
+						$this_value = $term_child->slug;
+					endif;
+
+					if ( strpos( $property, 'multiple' ) !== false ):
+						$selected_prop = in_array( $this_value, $selected ) ? 'selected' : '';
+					else:
+						$selected_prop = selected( $this_value, $selected, false );
+					endif;
+
+					printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, '— ' . $term_child->name );
+				endforeach;
 			endforeach;
 			print( '</select>' );
 			return true;
@@ -725,7 +772,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 				<?php
 				$selected = sp_array_between( (array)get_post_meta( $post_id, $meta, false ), 0, $index );
 				if ( empty( $posts ) ):
-					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1 );
+					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1, 'orderby' => 'menu_order' );
 					if ( $meta == 'sp_player' ):
 						$query['meta_key'] = 'sp_number';
 						$query['orderby'] = 'meta_value_num';
@@ -1101,6 +1148,7 @@ if ( !function_exists( 'sp_get_next_event' ) ) {
 function sp_get_text_options() {
 	$strings = apply_filters( 'sportspress_text', array(
 		__( 'Article', 'sportspress' ),
+		__( 'Career Total', 'sportspress' ),
 		__( 'Current Team', 'sportspress' ),
 		__( 'Current Teams', 'sportspress' ),
 		__( 'Date', 'sportspress' ),

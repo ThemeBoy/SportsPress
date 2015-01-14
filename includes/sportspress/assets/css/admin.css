@@ -60,8 +60,8 @@
 	content: "\f504";
 }
 
-.fixed .column-sp_team .result,
-.sp-calendar-table .result {
+.fixed .column-sp_team .sp-result,
+.sp-calendar-table .sp-result {
 	background: #888;
 	color: #fff;
 	font-size: 11px;
@@ -77,9 +77,18 @@
 	cursor: pointer;
 }
 
-.fixed .column-sp_team .result:hover,
-.sp-calendar-table .result:hover {
+.fixed .column-sp_team .sp-result:hover,
+.sp-calendar-table .sp-result:hover {
 	background: #2ea2cc;
+}
+
+.fixed .column-sp_team .sp-edit-result {
+	font-size: 11px;
+	line-height: 1.4em;
+}
+
+.fixed .column-sp_team .sp-results {
+	margin-bottom: .2em;
 }
 
 .fixed .column-sp_format,

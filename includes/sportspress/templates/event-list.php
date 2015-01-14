@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.4
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -16,6 +16,7 @@ $defaults = array(
 	'date_from' => 'default',
 	'date_to' => 'default',
 	'number' => -1,
+	'show_team_logo' => get_option( 'sportspress_event_list_show_logos', 'no' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_venues' => get_option( 'sportspress_link_venues', 'yes' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
@@ -43,7 +44,8 @@ if ( $order != 'default' )
 	$calendar->order = $order;
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
-$title_format = $calendar->title_format;
+$title_format = get_option( 'sportspress_event_list_title_format', 'title' );
+$time_format = get_option( 'sportspress_event_list_time_format', 'combined' );
 
 if ( isset( $columns ) ):
 	if ( is_array( $columns ) )
@@ -51,6 +53,10 @@ if ( isset( $columns ) ):
 	else
 		$usecolumns = explode( ',', $columns );
 endif;
+
+if ( $id ) {
+	echo '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
+}
 ?>
 <div class="sp-template sp-template-event-list">
 	<div class="sp-table-wrapper<?php if ( $scrollable ) { ?> sp-scrollable-table-wrapper<?php } ?>">
@@ -60,36 +66,63 @@ endif;
 					<?php
 					echo '<th class="data-date">' . __( 'Date', 'sportspress' ) . '</th>';
 
-					if ( $usecolumns == null || in_array( 'event', $usecolumns ) ):
-						if ( $title_format == 'homeaway' ):
-							echo '<th class="data-home">' . __( 'Home', 'sportspress' ) . '</th>';
-						elseif ( $title_format == 'teams' ):
-							echo '<th class="data-teams">' . __( 'Teams', 'sportspress' ) . '</th>';
-						else:
-							echo '<th class="data-event">' . __( 'Event', 'sportspress' ) . '</th>';
-						endif;
-					endif;
+					switch ( $title_format ) {
+						case 'homeaway':
+							if ( sp_column_active( $usecolumns, 'event' ) ) {
+								echo '<th class="data-home">' . __( 'Home', 'sportspress' ) . '</th>';
 
-					if ( $usecolumns == null || in_array( 'time', $usecolumns ) ):
-						if ( $usecolumns == null || in_array( 'event', $usecolumns ) && $title_format == 'homeaway' )
-							echo '<th class="data-time">&nbsp;</th>';
-						else
-							echo '<th class="data-time">' . __( 'Time/Results', 'sportspress' ) . '</th>';
-					endif;
+								if ( 'combined' == $time_format && sp_column_active( $usecolumns, 'time' ) ) {
+									echo '<th class="data-time">&nbsp;</th>';
+								} elseif ( in_array( $time_format, array( 'separate', 'results' ) ) && sp_column_active( $usecolumns, 'results' ) ) {
+									echo '<th class="data-results">&nbsp;</th>';
+								}
 
-					if ( $usecolumns == null || in_array( 'event', $usecolumns ) && $title_format == 'homeaway' )
-						echo '<th class="data-away">' . __( 'Away', 'sportspress' ) . '</th>';
+								echo '<th class="data-away">' . __( 'Away', 'sportspress' ) . '</th>';
 
-					if ( $usecolumns == null || in_array( 'league', $usecolumns ) )
+								if ( in_array( $time_format, array( 'separate', 'time' ) ) && sp_column_active( $usecolumns, 'time' ) ) {
+									echo '<th class="data-time">' . __( 'Time', 'sportspress' ) . '</th>';
+								}
+							}
+							break;
+						default:
+							if ( sp_column_active( $usecolumns, 'event' ) ) {
+								if ( $title_format == 'teams' )
+									echo '<th class="data-teams">' . __( 'Teams', 'sportspress' ) . '</th>';
+								else
+									echo '<th class="data-event">' . __( 'Event', 'sportspress' ) . '</th>';
+							}
+
+							switch ( $time_format ) {
+								case 'separate':
+									if ( sp_column_active( $usecolumns, 'time' ) )
+										echo '<th class="data-time">' . __( 'Time', 'sportspress' ) . '</th>';
+									if ( sp_column_active( $usecolumns, 'results' ) )
+										echo '<th class="data-results">' . __( 'Results', 'sportspress' ) . '</th>';
+									break;
+								case 'time':
+									if ( sp_column_active( $usecolumns, 'time' ) )
+										echo '<th class="data-time">' . __( 'Time', 'sportspress' ) . '</th>';
+									break;
+								case 'results':
+									if ( sp_column_active( $usecolumns, 'results' ) )
+										echo '<th class="data-results">' . __( 'Results', 'sportspress' ) . '</th>';
+									break;
+								default:
+									if ( sp_column_active( $usecolumns, 'time' ) )
+										echo '<th class="data-time">' . __( 'Time/Results', 'sportspress' ) . '</th>';
+							}
+					}
+
+					if ( sp_column_active( $usecolumns, 'league' ) )
 						echo '<th class="data-league">' . __( 'Competition', 'sportspress' ) . '</th>';
 
-					if ( $usecolumns == null || in_array( 'season', $usecolumns ) )
+					if ( sp_column_active( $usecolumns, 'season' ) )
 						echo '<th class="data-season">' . __( 'Season', 'sportspress' ) . '</th>';
 
-					if ( $usecolumns == null || in_array( 'venue', $usecolumns ) )
+					if ( sp_column_active( $usecolumns, 'venue' ) )
 						echo '<th class="data-venue">' . __( 'Venue', 'sportspress' ) . '</th>';
 
-					if ( $usecolumns == null || in_array( 'article', $usecolumns ) )
+					if ( sp_column_active( $usecolumns, 'article' ) )
 						echo '<th class="data-article">' . __( 'Article', 'sportspress' ) . '</th>';
 					?>
 				</tr>
@@ -110,12 +143,19 @@ endif;
 					$main_results = sp_get_main_results( $event );
 
 					$teams_output = '';
-					$teams_array = '';
+					$teams_array = array();
+					$team_logos = array();
 
 					if ( $teams ):
 						foreach ( $teams as $team ):
 							$name = get_the_title( $team );
 							if ( $name ):
+
+								if ( $show_team_logo ):
+									$name = sp_get_logo( $team, 'mini' ) . ' ' . $name;
+									$team_logos[] = sp_get_logo( $team, 'mini' );
+								endif;
+
 								if ( $link_teams ):
 									$team_output = '<a href="' . get_post_permalink( $team ) . '">' . $name . '</a>';
 								else:
@@ -143,35 +183,97 @@ endif;
 
 						echo '<td class="data-date"><a href="' . get_permalink( $event->ID ) . '"><date>' . get_post_time( 'Y-m-d H:i:s', false, $event ) . '</date>' . get_post_time( get_option( 'date_format' ), false, $event, true ) . '</a></td>';
 
-						if ( $usecolumns == null || in_array( 'event', $usecolumns ) ):
-							if ( $title_format == 'homeaway' ):
-								$team = array_shift( $teams_array );
-								echo '<td class="data-home">' . $team . '</td>';
-							else:
-								if ( $title_format == 'teams' ):
-									echo '<td class="data-event">' . $teams_output . '</td>';
-								else:
-									echo '<td class="data-event"><a href="' . get_permalink( $event->ID ) . '">' . $event->post_title . '</a></td>';
-								endif;
-							endif;
-						endif;
+						switch ( $title_format ) {
+							case 'homeaway':
+								if ( sp_column_active( $usecolumns, 'event' ) ) {
+									$team = array_shift( $teams_array );
+									echo '<td class="data-home">' . $team . '</td>';
 
-						if ( $usecolumns == null || in_array( 'time', $usecolumns ) ):
-							echo '<td class="data-time"><a href="' . get_permalink( $event->ID ) . '">';
-							if ( ! empty( $main_results ) ):
-								echo implode( ' - ', $main_results );
-							else:
-								echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
-							endif;
-							echo '</a></td>';
-						endif;
+									if ( 'combined' == $time_format && sp_column_active( $usecolumns, 'time' ) ) {
+										echo '<td class="data-time"><a href="' . get_permalink( $event->ID ) . '">';
+										if ( ! empty( $main_results ) ):
+											echo implode( ' - ', $main_results );
+										else:
+											echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
+										endif;
+										echo '</a></td>';
+									} elseif ( in_array( $time_format, array( 'separate', 'results' ) ) && sp_column_active( $usecolumns, 'results' ) ) {
+										echo '<td class="data-results"><a href="' . get_permalink( $event->ID ) . '">';
+										if ( ! empty( $main_results ) ):
+											echo implode( ' - ', $main_results );
+										else:
+											echo '-';
+										endif;
+										echo '</a></td>';
+									}
 
-						if ( $usecolumns == null || in_array( 'event', $usecolumns ) && $title_format == 'homeaway' ):
-							$team = array_shift( $teams_array );
-							echo '<td class="data-away">' . $team . '</td>';
-						endif;
+									$team = array_shift( $teams_array );
+									echo '<td class="data-away">' . $team . '</td>';
 
-						if ( $usecolumns == null || in_array( 'league', $usecolumns ) ):
+									if ( in_array( $time_format, array( 'separate', 'time' ) ) && sp_column_active( $usecolumns, 'time' ) ) {
+										echo '<td class="data-time"><a href="' . get_permalink( $event->ID ) . '">';
+										echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
+										echo '</a></td>';
+									}
+								}
+								break;
+							default:
+								if ( sp_column_active( $usecolumns, 'event' ) ) {
+									if ( $title_format == 'teams' )
+										echo '<td class="data-event data-teams">' . $teams_output . '</td>';
+									else
+										echo '<td class="data-event"><a href="' . get_permalink( $event->ID ) . '">' . implode( ' ', $team_logos ) . ' ' . $event->post_title . '</a></td>';
+								}
+
+								switch ( $time_format ) {
+									case 'separate':
+										if ( sp_column_active( $usecolumns, 'time' ) ) {
+											echo '<td class="data-time"><a href="' . get_permalink( $event->ID ) . '">';
+											echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
+											echo '</a></td>';
+										}
+										if ( sp_column_active( $usecolumns, 'results' ) ) {
+											echo '<td class="data-results"><a href="' . get_permalink( $event->ID ) . '">';
+											if ( ! empty( $main_results ) ):
+												echo implode( ' - ', $main_results );
+											else:
+												echo '-';
+											endif;
+											echo '</a></td>';
+										}
+										break;
+									case 'time':
+										if ( sp_column_active( $usecolumns, 'time' ) ) {
+											echo '<td class="data-time"><a href="' . get_permalink( $event->ID ) . '">';
+											echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
+											echo '</a></td>';
+										}
+										break;
+									case 'results':
+										if ( sp_column_active( $usecolumns, 'results' ) ) {
+											echo '<td class="data-results"><a href="' . get_permalink( $event->ID ) . '">';
+											if ( ! empty( $main_results ) ):
+												echo implode( ' - ', $main_results );
+											else:
+												echo '-';
+											endif;
+											echo '</a></td>';
+										}
+										break;
+									default:
+										if ( sp_column_active( $usecolumns, 'time' ) ) {
+											echo '<td class="data-time"><a href="' . get_permalink( $event->ID ) . '">';
+											if ( ! empty( $main_results ) ):
+												echo implode( ' - ', $main_results );
+											else:
+												echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
+											endif;
+											echo '</a></td>';
+										}
+								}
+						}
+
+						if ( sp_column_active( $usecolumns, 'league' ) ):
 							echo '<td class="data-league">';
 							$leagues = get_the_terms( $event->ID, 'sp_league' );
 							if ( $leagues ): foreach ( $leagues as $league ):
@@ -180,7 +282,7 @@ endif;
 							echo '</td>';
 						endif;
 
-						if ( $usecolumns == null || in_array( 'season', $usecolumns ) ):
+						if ( sp_column_active( $usecolumns, 'season' ) ):
 							echo '<td class="data-season">';
 							$seasons = get_the_terms( $event->ID, 'sp_season' );
 							if ( $seasons ): foreach ( $seasons as $season ):
@@ -189,7 +291,7 @@ endif;
 							echo '</td>';
 						endif;
 
-						if ( $usecolumns == null || in_array( 'venue', $usecolumns ) ):
+						if ( sp_column_active( $usecolumns, 'venue' ) ):
 							echo '<td class="data-venue">';
 							if ( $link_venues ):
 								the_terms( $event->ID, 'sp_venue' );
@@ -202,7 +304,7 @@ endif;
 							echo '</td>';
 						endif;
 
-						if ( $usecolumns == null || in_array( 'article', $usecolumns ) ):
+						if ( sp_column_active( $usecolumns, 'article' ) ):
 							echo '<td class="data-article">
 								<a href="' . get_permalink( $event->ID ) . '">';
 
@@ -231,8 +333,8 @@ endif;
 			</tbody>
 		</table>
 	</div>
+	<?php
+	if ( $id && $show_all_events_link )
+		echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
+	?>
 </div>
-<?php
-if ( $id && $show_all_events_link )
-	echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
-?>

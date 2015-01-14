@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.3
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -59,10 +59,12 @@ class SP_Meta_Box_Event_Teams {
 					'post_type' => 'sp_team',
 					'name' => 'sp_team[]',
 					'class' => 'sportspress-pages',
-					'show_option_none' => sprintf( __( '&mdash; None &mdash;', 'sportspress' ), 'Team' ),
+					'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+					'show_option_all' => __( '&mdash; Individual &mdash;', 'sportspress' ),
+					'values' => 'ID',
 					'selected' => $team,
 				);
-				wp_dropdown_pages( $args );
+				sp_dropdown_pages( $args );
 				?>
 				</p>
 				<ul id="sp_team-tabs" class="wp-tab-bar sp-tab-bar">

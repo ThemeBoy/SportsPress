@@ -5,7 +5,7 @@
  * The SportsPress admin sports class stores preset sport data.
  *
  * @class 		SP_Admin_Sports
- * @version		1.4.4
+ * @version		1.5
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
@@ -122,6 +122,7 @@ class SP_Admin_Sports {
 			if ( empty( $post ) ) continue;
 			$id = self::insert_preset_post( $post, $index );
 			update_post_meta( $id, 'sp_abbreviation', sp_array_value( $outcome, 'abbreviation', null ) );
+			update_post_meta( $id, 'sp_condition', sp_array_value( $outcome, 'condition', null ) );
 		}
 
 		// Results
@@ -253,6 +254,7 @@ class SP_Admin_Sports {
 		__( 'Basketball', 'sportspress' );
 		__( 'Cricket', 'sportspress' );
 		__( 'Darts', 'sportspress' );
+		__( 'Floorball', 'sportspress' );
 		__( 'American Football', 'sportspress' );
 		__( 'Australian Rules Football', 'sportspress' );
 		__( 'Handball', 'sportspress' );

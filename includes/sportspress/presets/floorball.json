@@ -6,9 +6,9 @@
 						"Goalkeeper"
 	],
 	"outcomes": [
-						"Win",
-						"Loss",
-						"Tie"
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
+						{ "name" : "Tie", "condition" : "=" }
 	],
 	"results": [
 						{ "name" : "1st", "description" : "1st period goals" },

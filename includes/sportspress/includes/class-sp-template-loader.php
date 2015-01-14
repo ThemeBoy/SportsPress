@@ -3,7 +3,7 @@
  * Template Loader
  *
  * @class 		SP_Template_Loader
- * @version		1.1.4
+ * @version		1.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -108,15 +108,15 @@ class SP_Template_Loader {
 	 * Templates are in the 'templates' folder. sportspress looks for theme
 	 * overrides in /theme/sportspress/ by default
 	 *
-	 * For beginners, it also looks for a sportspress.php template first. If the user adds
-	 * this to the theme (containing a sportspress() inside) this will be used for all
-	 * sportspress templates.
+	 * For beginners, it also looks for a sportspress.php template last. If the user adds
+	 * this to the theme (containing a sportspress() inside) this will be used as a
+	 * fallback for all sportspress templates.
 	 *
 	 * @param mixed $template
 	 * @return string
 	 */
 	public function template_loader( $template ) {
-		$find = array( 'sportspress.php' );
+		$find = array();
 		$file = '';
 
 		if ( is_single() ):
@@ -173,6 +173,8 @@ class SP_Template_Loader {
 			endswitch;
 
 		endif;
+
+		$find[] = 'sportspress.php';
 
 		if ( $file ):
 			$located       = locate_template( $find );

@@ -10,8 +10,8 @@
 						"Goal Shooter"
 	],
 	"outcomes": [
-						"Win",
-						"Loss"
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" }
 	],
 	"results": [
 						{ "name" : "1st", "description" : "1st quarter goals" },

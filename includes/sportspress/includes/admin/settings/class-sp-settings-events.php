@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.4
+ * @version     1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -175,6 +175,39 @@ class SP_Settings_Events extends SP_Settings_Page {
 			array( 'title' => __( 'Event List', 'sportspress' ), 'type' => 'title', 'id' => 'event_list_options' ),
 
 			array(
+				'title'     => __( 'Teams', 'sportspress' ),
+				'desc' 		=> __( 'Display logos', 'sportspress' ),
+				'id' 		=> 'sportspress_event_list_show_logos',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+			),
+
+			array(
+				'title'     => __( 'Title Format', 'sportspress' ),
+				'id'        => 'sportspress_event_list_title_format',
+				'default'   => 'title',
+				'type'      => 'select',
+				'options'   => array(
+					'title' => __( 'Title', 'sportspress' ),
+					'teams' => __( 'Teams', 'sportspress' ),
+					'homeaway' => sprintf( '%s | %s', __( 'Home', 'sportspress' ), __( 'Away', 'sportspress' ) ),
+				),
+			),
+
+			array(
+				'title'     => __( 'Time/Results Format', 'sportspress' ),
+				'id'        => 'sportspress_event_list_time_format',
+				'default'   => 'combined',
+				'type'      => 'select',
+				'options'   => array(
+					'combined' => __( 'Combined', 'sportspress' ),
+					'separate' => __( 'Separate', 'sportspress' ),
+					'time' => __( 'Time Only', 'sportspress' ),
+					'results' => __( 'Results Only', 'sportspress' ),
+				),
+			),
+
+			array(
 				'title'     => __( 'Pagination', 'sportspress' ),
 				'desc' 		=> __( 'Paginate', 'sportspress' ),
 				'id' 		=> 'sportspress_event_list_paginated',
@@ -201,7 +234,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 			array(
 				'title'     => __( 'Details', 'sportspress' ),
-				'desc' 		=> __( 'Display league', 'sportspress' ),
+				'desc' 		=> __( 'Display competition', 'sportspress' ),
 				'id' 		=> 'sportspress_event_blocks_show_league',
 				'default'	=> 'no',
 				'type' 		=> 'checkbox',
@@ -211,6 +244,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 			array(
 				'desc' 		=> __( 'Display season', 'sportspress' ),
 				'id' 		=> 'sportspress_event_blocks_show_season',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Display venue', 'sportspress' ),
+				'id' 		=> 'sportspress_event_blocks_show_venue',
 				'default'	=> 'no',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',

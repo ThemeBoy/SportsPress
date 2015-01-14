@@ -1,9 +1,9 @@
 {
 	"name":				"Snooker",
 	"outcomes": [
-						"Win",
-						"Loss",
-						"Draw"
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
+						{ "name" : "Draw", "condition" : "=" }
 	],
 	"results": [
 						{ "name" : "Score", "description" : "Total points", "primary" : 1 }
