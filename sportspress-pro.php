@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: SportsPress Pro (Social License)
+ * Plugin Name: SportsPress Pro
  * Plugin URI: http://sportspresspro.com/
  * Description: Manage your club and its players, staff, events, league tables, and player lists.
  * Version: 1.5
