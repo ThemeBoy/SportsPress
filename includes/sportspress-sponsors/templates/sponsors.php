@@ -42,7 +42,7 @@ if ( $sponsors ):
 		<?php endif; ?>
 		<?php foreach( $sponsors as $sponsor ): ?>
 			<?php if ( $sponsor->post_content == '' ): $url = get_post_meta( $sponsor->ID, 'sp_url', true ); ?>
-				<a class="sponsor sp-sponsor"<?php if ( $url ): ?> href="<?php echo $url; ?>" data-nonce="<?php echo wp_create_nonce( 'sp_clicks_' . $sponsor->ID ); ?>" data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>" data-post="<?php echo $sponsor->ID; ?>"<?php endif; ?>>
+				<a class="sponsor sp-sponsor"<?php if ( $url ): ?> href="<?php echo $url; ?>" data-nonce="<?php echo wp_create_nonce( 'sp_clicks_' . $sponsor->ID ); ?>" data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>" data-post="<?php echo $sponsor->ID; ?>"<?php endif; if ( get_option( 'sportspress_sponsor_site_target_blank', 'no' ) == 'yes' ) { ?> target="_blank"<?php } ?>>
 			<?php else: ?>
 				<a class="sponsor sp-sponsor" href="<?php echo get_post_permalink( $sponsor->ID ); ?>">
 			<?php endif; ?>

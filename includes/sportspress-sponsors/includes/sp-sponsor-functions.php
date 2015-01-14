@@ -42,7 +42,7 @@ if ( !function_exists( 'sp_get_post_impressions' ) ) {
 if ( !function_exists( 'sp_set_post_impressions' ) ) {
 	function sp_set_post_impressions( $post_id ) {
 		$exclude_authenticated = get_option( 'sportspress_exclude_authenticated_sponsor_impressions', 'no' );
-		if ( $exclude_authenticated == 'yes' && is_user_logged_in() )
+		if ( $exclude_authenticated && is_user_logged_in() )
 			return;
 	    $count_key = 'sp_impressions';
 	    $count = get_post_meta( $post_id, $count_key, true );

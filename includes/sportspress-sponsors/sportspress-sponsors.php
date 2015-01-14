@@ -437,7 +437,7 @@ class SportsPress_Sponsors {
 			</div>
 			<script type="text/javascript">
 			jQuery(document).ready( function($) {
-				$('.sp-header').prepend( $('.sp-header-sponsors') );
+				$('<?php echo apply_filters( 'sportspress_header_sponsors_selector', '.sp-header' ); ?>').prepend( $('.sp-header-sponsors') );
 			} );
 			</script>
 			<?php
