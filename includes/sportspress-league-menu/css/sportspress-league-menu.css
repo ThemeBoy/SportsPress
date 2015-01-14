@@ -1,54 +1,48 @@
 .sp-league-menu {
-	display: none;
+	display: block;
+	clear: both;
+	padding: 0 15px;
+	background: #000000;
+	position: relative;
+	z-index: 2;
 }
 
-@media only screen and (min-width: 64.063em) {
-	.sp-league-menu {
-		display: block;
-		clear: both;
-		padding: 0 15px;
-		background: #000000;
-		position: relative;
-		z-index: 2;
-	}
+.sp-league-menu .sp-inner {
+	width: 94%;
+	padding: 8px 0;
+	text-align: center;
+	margin: 0 auto;
+	position: relative;
+}
 
-	.sp-league-menu .sp-inner {
-		width: 970px;
-		padding: 8px 0;
-		text-align: center;
-		margin: 0 auto;
-		position: relative;
-	}
+.sp-league-menu .sp-league-menu-title {
+	padding: 4px 0;
+	margin-right: 8px;
+	color: #ffffff;
+	line-height: 32px;
+}
 
-	.sp-league-menu .sp-league-menu-title {
-		padding: 4px 0;
-		margin-right: 8px;
-		color: #ffffff;
-		line-height: 32px;
-	}
+.sp-league-menu .sp-league-menu-logo {
+	width: auto;
+	height: auto;
+}
 
-	.sp-league-menu .sp-league-menu-logo {
-		width: auto;
-		height: auto;
-	}
+.sp-league-menu .sp-team-link {
+	padding: 4px 2px;
+	display: inline-block;
+}
 
-	.sp-league-menu .sp-team-link {
-		padding: 4px 2px;
-		display: inline-block;
-	}
+.sp-league-menu .sp-team-logo {
+	max-width: 32px;
+	max-height: 32px;
+	width: auto;
+	height: auto;
+}
 
-	.sp-league-menu .sp-team-logo {
-		max-width: 32px;
-		max-height: 32px;
-		width: auto;
-		height: auto;
-	}
+.sp-league-menu.sp-align-left .sp-inner {
+	text-align: left;
+}
 
-	.sp-league-menu.sp-align-left .sp-inner {
-		text-align: left;
-	}
-
-	.sp-league-menu.sp-align-right .sp-inner {
-		text-align: right;
-	}
+.sp-league-menu.sp-align-right .sp-inner {
+	text-align: right;
 }

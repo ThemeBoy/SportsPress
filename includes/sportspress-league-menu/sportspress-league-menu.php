@@ -32,7 +32,7 @@ class SportsPress_League_Menu {
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 	    add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 
-		add_action( 'wp_footer', array( $this, 'menu' ) );
+		add_action( 'wp_footer', array( $this, 'menu' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 	}
 
