@@ -31,7 +31,7 @@ class SP_Modules {
 				'tournaments' => array(
 					'label' => __( 'Tournaments', 'sportspress' ),
 					'class' => 'SportsPress_Tournaments',
-					'icon' => 'sp-icon-trophy',
+					'icon' => 'sp-icon-tournament',
 				),
 			),
 			'team' => array(
