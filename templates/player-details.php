@@ -46,7 +46,7 @@ $common[ __( 'Position', 'sportspress' ) ] = implode( ', ', $position_names );
 
 $data = array_merge( $metrics_before, $common, $metrics_after );
 
-if ( 'teams' == get_option( 'sportspress_mode', 'teams' )  ) {
+if ( 'team' == get_option( 'sportspress_mode', 'team' )  ) {
 	if ( $current_teams ):
 		$teams = array();
 		foreach ( $current_teams as $team ):

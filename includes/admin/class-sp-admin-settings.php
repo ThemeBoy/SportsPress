@@ -224,7 +224,9 @@ class SP_Admin_Settings {
 			if ( $description && in_array( $value['type'], array( 'textarea', 'radio' ) ) ) {
 				$description = '<p style="margin-top:0">' . wp_kses_post( $description ) . '</p>';
 			} elseif ( $description && in_array( $value['type'], array( 'checkbox' ) ) ) {
-				$description =  wp_kses_post( $description );
+				$description = wp_kses_post( $description );
+			} elseif ( $description && in_array( $value['type'], array( 'select' ) ) ) {
+				$description = '<p class="description">' . wp_kses_post( $description ) . '</p>';
 			} elseif ( $description ) {
 				$description = '<span class="description">' . wp_kses_post( $description ) . '</span>';
 			}
@@ -235,7 +237,7 @@ class SP_Admin_Settings {
 
 			} elseif ( $tip ) {
 
-				$tip = '<img class="help_tip" data-tip="' . esc_attr( $tip ) . '" src="' . SP()->plugin_url() . '/assets/images/help.png" height="16" width="16" />';
+				$tip = '<i class="dashicons dashicons-editor-help sp-desc-tip" title="' . esc_attr( $tip ) . '" />';
 
 			}
 

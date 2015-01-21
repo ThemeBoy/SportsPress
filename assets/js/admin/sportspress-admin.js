@@ -1,10 +1,16 @@
 jQuery(document).ready(function($){
 
 	// Tiptip
-	$(".tips").tipTip({
+	$(".sp-tip").tipTip({
 		delay: 200,
 		fadeIn: 100,
 		fadeOut: 100
+	});
+	$(".sp-desc-tip").tipTip({
+		delay: 200,
+		fadeIn: 100,
+		fadeOut: 100,
+		defaultPosition: 'right'
 	});
 
 	// Chosen select
@@ -458,6 +464,11 @@ jQuery(document).ready(function($){
 
 	// Trigger player list layout change
 	$(".post-type-sp_list #post-formats-select input.post-format").trigger("change");
+
+	// Auto-select hides options
+	$(".sp-select-setting").change(function() {
+		$(".sp-select-options").toggle("manual"==$(this).val());
+	});
 
 	// Configure primary result option (Ajax)
 	$(".sp-admin-config-table").on("click", ".sp-primary-result-option", function() {

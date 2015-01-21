@@ -58,6 +58,18 @@ class SP_Settings_General extends SP_Settings_Page {
 				),
 
 				array(
+					'title'     => __( 'Mode', 'sportspress' ),
+					'id'        => 'sportspress_mode',
+					'default'   => 'team',
+					'type'      => 'select',
+					'options'   => array(
+						'team' => __( 'Teams', 'sportspress' ),
+						'player' => __( 'Players', 'sportspress' ),
+					),
+					'desc_tip' 		=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
+				),
+
+				array(
 					'title'     => __( 'Google Maps', 'sportspress' ),
 					'id'        => 'sportspress_map_type',
 					'default'   => 'ROADMAP',
@@ -269,14 +281,13 @@ class SP_Settings_General extends SP_Settings_Page {
     	?>
 		<tr valign="top">
 			<th scope="row" class="titledesc">
-				<label for="timezone_string"><?php _e( 'Timezone', 'sportspress' ); ?></label>
+				<label for="timezone_string"><?php _e( 'Timezone', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Choose a city in the same timezone as you.', 'sportspress' ); ?>"></i></label>
 			</th>
             <td class="forminp">
 				<legend class="screen-reader-text"><span><?php _e( 'Timezone', 'sportspress' ); ?></span></legend>
 				<select id="timezone_string" name="timezone_string" class="<?php echo $class; ?>">
 					<?php echo wp_timezone_choice($tzstring); ?>
 				</select>
-				<p class="description"><?php _e( 'Choose a city in the same timezone as you.', 'sportspress' ); ?></p>
        		</td>
        	</tr>
        	<?php
