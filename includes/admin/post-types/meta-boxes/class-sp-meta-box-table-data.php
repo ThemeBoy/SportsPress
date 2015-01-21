@@ -53,7 +53,7 @@ class SP_Meta_Box_Table_Data {
 			<table class="widefat sp-data-table sp-league-table">
 				<thead>
 					<tr>
-						<th class="radio"><span class="dashicons sp-icon-shield tips" title="<?php _e( 'Highlight', 'sportspress' ); ?>"></span></th>
+						<th class="radio"><span class="dashicons sp-icon-shield sp-tip" title="<?php _e( 'Highlight', 'sportspress' ); ?>"></span></th>
 						<th><?php _e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">

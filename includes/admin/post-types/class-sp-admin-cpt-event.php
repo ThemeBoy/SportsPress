@@ -66,7 +66,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	public function wp_insert_post_data( $data, $postarr ) {
 		if ( $data['post_type'] == 'sp_event' && $data['post_title'] == '' ):
 
-			if ( 'teams' == get_option( 'sportspress_mode', 'teams' ) ) $post_type = 'sp_team';
+			if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) $post_type = 'sp_team';
 			else $post_type = 'sp_player';
 
 			$teams = sp_array_value( $postarr, $post_type, array() );
@@ -96,7 +96,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		unset( $existing_columns['author'], $existing_columns['comments'] );
 		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
-			'sp_format' => '<span class="dashicons sp-icon-calendar tips" title="' . __( 'Format', 'sportspress' ) . '"></span>',
+			'sp_format' => '<span class="dashicons sp-icon-calendar sp-tip" title="' . __( 'Format', 'sportspress' ) . '"></span>',
 			'title' => null,
 			'date' => __( 'Date', 'sportspress' ),
 			'sp_time' => __( 'Time', 'sportspress' ),
@@ -121,7 +121,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				$formats = new SP_Formats();
 				$event_formats = $formats->event;
 				if ( array_key_exists( $format, $event_formats ) ):
-					echo '<span class="dashicons sp-icon-' . $format . ' tips" title="' . $event_formats[ $format ] . '"></span>';
+					echo '<span class="dashicons sp-icon-' . $format . ' sp-tip" title="' . $event_formats[ $format ] . '"></span>';
 				endif;
 				break;
 			case 'sp_time':
@@ -162,7 +162,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 									$team_results = implode( ' | ', $team_results );
 								endif;
 
-								echo '<a class="sp-result tips" tabindex="10" title="' . $team_results . '" data-team="' . $team_id . '" href="#">' . ( $team_result == '' ? '-' : $team_result ) . '</a>';
+								echo '<a class="sp-result sp-tip" tabindex="10" title="' . $team_results . '" data-team="' . $team_id . '" href="#">' . ( $team_result == '' ? '-' : $team_result ) . '</a>';
 								echo '<input type="text" tabindex="10" class="sp-edit-result hidden small-text" data-team="' . $team_id . '" data-key="' . $main_result . '" value="' . $team_result . '"> ';
 								echo $team->post_title;
 								echo '<br>';
@@ -175,11 +175,6 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 						<a href="#inline-edit" class="button-secondary cancel alignleft"><?php _e( 'Cancel' ); ?></a>
 						<?php wp_nonce_field( 'sp-save-inline-results', 'sp-inline-nonce', false ); ?>
 						<a href="#inline-edit" class="button-primary save alignright"><?php _e( 'Update' ); ?></a>
-						<span class="spinner"></span>
-						<input type="hidden" name="post_view" value="<?php echo esc_attr( $m ); ?>" />
-						<input type="hidden" name="screen" value="<?php echo esc_attr( $screen->id ); ?>" />
-						<span class="error" style="display:none"></span>
-						<br class="clear" />
 					</p>
 					<?php
 				endif;

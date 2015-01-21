@@ -53,7 +53,7 @@ class SP_Meta_Box_Event_Teams {
 					sp_dropdown_taxonomies( $args );
 					?>
 				</p>
-				<?php if ( 'teams' == get_option( 'sportspress_mode', 'teams' ) ) { ?>
+				<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) { ?>
 					<p class="sp-tab-select sp-title-generator">
 					<?php
 					$args = array(
@@ -61,7 +61,6 @@ class SP_Meta_Box_Event_Teams {
 						'name' => 'sp_team[]',
 						'class' => 'sportspress-pages',
 						'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
-						'show_option_all' => __( '&mdash; Individual &mdash;', 'sportspress' ),
 						'values' => 'ID',
 						'selected' => $team,
 					);
@@ -88,7 +87,7 @@ class SP_Meta_Box_Event_Teams {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		if ( 'teams' == get_option( 'sportspress_mode', 'teams' ) ) {
+		if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) {
 			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 		}
 		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );

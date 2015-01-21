@@ -60,7 +60,7 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 		unset( $existing_columns['author'], $existing_columns['date'] );
 		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
-			'sp_icon' => '<span class="dashicons sp-icon-shield tips" title="' . __( 'Logo', 'sportspress' ) . '"></span>',
+			'sp_icon' => '<span class="dashicons sp-icon-shield sp-tip" title="' . __( 'Logo', 'sportspress' ) . '"></span>',
 			'title' => null,
 			'sp_url' => __( 'URL', 'sportspress' ),
 			'sp_abbreviation' => __( 'Abbreviation', 'sportspress' ),

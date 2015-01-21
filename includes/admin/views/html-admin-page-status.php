@@ -7,7 +7,7 @@
 	<div id="debug-report"><textarea readonly="readonly"></textarea></div>
 </div>
 <br/>
-<table class="sp_status_table widefat" cellspacing="0">
+<table class="sp-status-table widefat" cellspacing="0">
 
 	<thead>
 		<tr>
@@ -509,7 +509,7 @@
 
 		var report = "";
 
-		jQuery('.sp_status_table thead, .sp_status_table tbody').each(function(){
+		jQuery('.sp-status-table thead, .sp-status-table tbody').each(function(){
 
 			if ( jQuery( this ).is('thead') ) {
 
