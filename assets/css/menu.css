@@ -1,23 +1,28 @@
 /* SportsPress menu styles */
 @font-face {
 	font-family: 'sportspress';
-	src:url('../fonts/sportspress.eot?20141210');
-	src:url('../fonts/sportspress.eot?#iefix20141210') format('embedded-opentype'),
-		url('../fonts/sportspress.woff?20141210') format('woff'),
-		url('../fonts/sportspress.ttf?20141210') format('truetype'),
-		url('../fonts/sportspress.svg?20141210#sportspress') format('svg');
+	src:url('../fonts/sportspress.eot?20150120');
+	src:url('../fonts/sportspress.eot?#iefix20150120') format('embedded-opentype'),
+		url('../fonts/sportspress.woff?20150120') format('woff'),
+		url('../fonts/sportspress.ttf?20150120') format('truetype'),
+		url('../fonts/sportspress.svg?20150120#sportspress') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 [class^="sp-icon-"], [class*=" sp-icon-"] {
-	font-family: 'sportspress';
+	font-family: sportspress, dashicons;
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	vertical-align: top;
 
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
@@ -63,6 +68,45 @@
 .sp-icon-friendly:before {
 	content: "\f328";
 }
+.sp-icon-color:before {
+	content: "\f309";
+}
+.sp-icon-calculator:before {
+	content: "\f108";
+}
+.sp-icon-clipboard:before {
+	content: "\f482";
+}
+.sp-icon-ticket:before {
+	content: "\f524";
+}
+.sp-icon-trophy:before {
+	content: "\f325";
+}
+.sp-icon-chart:before {
+	content: "\f185";
+}
+.sp-icon-archive:before {
+	content: "\f322";
+}
+.sp-icon-cake:before {
+	content: "\f453";
+}
+.sp-icon-globe:before {
+	content: "\f319";
+}
+.sp-icon-menu:before {
+	content: "\f116";
+}
+.sp-icon-book:before {
+	content: "\f330";
+}
+.sp-icon-stopwatch:before {
+	content: "\f503";
+}
+.sp-icon-availability:before {
+	content: "\f508";
+}
 
 #adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_event .menu-icon-sp_event div.wp-menu-image:before,
@@ -73,6 +117,27 @@
 	font-family: sportspress, dashicons;
 	width: 20px;
 	text-align: center;
+}
+
+/* Widgets */
+[id*="sportspress-"] .widget-title h4:before {
+	font-family: sportspress, dashicons;
+	color: #aaa;
+	font-size: 20px;
+	content: '\f111';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 0;
+	position: relative;
+	top: 4px;
+	margin-right: 4px;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 /* Prefs */
