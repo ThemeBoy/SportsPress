@@ -26,7 +26,10 @@ class SP_Meta_Box_List_Details {
 		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
 		$select = get_post_meta( $post->ID, 'sp_select', true );
-		if ( ! $select ) $select = 'auto';
+		if ( ! $select ) {
+			global $pagenow;
+			$select = ( 'post-new.php' == $pagenow ? 'auto' : 'manual' );
+		}
 		?>
 		<div>
 			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
@@ -105,18 +108,16 @@ class SP_Meta_Box_List_Details {
 				</select>
 			</p>
 			<p><strong><?php _e( 'Players', 'sportspress' ); ?></strong></p>
-			<p>
-				<select name="sp_select" class="sp-select-setting">
+			<p class="sp-select-setting">
+				<select name="sp_select">
 					<option value="auto" <?php selected( 'auto', $select ); ?>><?php _e( 'Auto', 'sportspress' ); ?></option>
 					<option value="manual" <?php selected( 'manual', $select ); ?>><?php _e( 'Manual', 'sportspress' ); ?></option>
 				</select>
 			</p>
-			<div class="sp-select-options<?php if ( 'auto' == $select ) { ?> hidden<?php } ?>">
-				<?php
-				sp_post_checklist( $post->ID, 'sp_player', 'block', array( 'sp_league', 'sp_season', 'sp_current_team' ) );
-				sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
-				?>
-			</div>
+			<?php
+			sp_post_checklist( $post->ID, 'sp_player', ( 'auto' == $select ? 'none' : 'block' ), array( 'sp_league', 'sp_season', 'sp_current_team' ) );
+			sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
+			?>
 		</div>
 		<?php
 	}
