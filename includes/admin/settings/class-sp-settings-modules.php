@@ -136,7 +136,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					<tbody>
 						<tr><td>
 							<ul class="sp-documentation-links">
-								<li><a href="http://sportspresspro.com/docs/" target="_blank"><?php _e( 'Getting Started', 'sportspress' ); ?></a></li>
+								<li><a href="http://sportspresspro.com/docs/installation/" target="_blank"><?php _e( 'Getting Started', 'sportspress' ); ?></a></li>
 								<li><a href="http://sportspresspro.com/docs/roles-and-capabilities/" target="_blank"><?php _e( 'Roles and Capabilities', 'sportspress' ); ?></a></li>
 								<li><a href="http://sportspresspro.com/docs/theme-integration-guide/" target="_blank"><?php _e( 'Theme Integration Guide', 'sportspress' ); ?></a></li>
 							</ul>
@@ -202,6 +202,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 				update_option( $name, isset( $_POST[ $name ] ) ? 'yes' : 'no' );
 			}
 		}
+		flush_rewrite_rules();
 	}
 }
 
