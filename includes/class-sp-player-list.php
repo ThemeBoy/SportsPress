@@ -37,17 +37,68 @@ class SP_Player_List extends SP_Custom_Post {
 	public function data( $admin = false ) {
 		$league_id = sp_get_the_term_id( $this->ID, 'sp_league', 0 );
 		$div_id = sp_get_the_term_id( $this->ID, 'sp_season', 0 );
-		$player_ids = (array)get_post_meta( $this->ID, 'sp_player', false );
+		$team = get_post_meta( $this->ID, 'sp_team', true );
 		$list_stats = (array)get_post_meta( $this->ID, 'sp_players', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$orderby = get_post_meta( $this->ID, 'sp_orderby', true );
 		$order = get_post_meta( $this->ID, 'sp_order', true );
+		$select = get_post_meta( $this->ID, 'sp_select', true );
 
 		// Get labels from performance variables
 		$performance_labels = (array)sp_get_var_labels( 'sp_performance' );
 
 		// Get labels from outcome variables
 		$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
+
+		// Get players automatically if set to auto
+		if ( 'auto' == $select ) {
+			$player_ids = array();
+
+			$args = array(
+				'post_type' => 'sp_player',
+				'numberposts' => -1,
+				'posts_per_page' => -1,
+				'order' => 'ASC',
+				'tax_query' => array(
+					'relation' => 'AND',
+				),
+			);
+
+			if ( $league_id ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_league',
+					'field' => 'id',
+					'terms' => $league_id
+				);
+			endif;
+
+			if ( $div_id ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_season',
+					'field' => 'id',
+					'terms' => $div_id
+				);
+			endif;
+
+			if ( $team ):
+				$args['meta_query'] = array(
+					array(
+						'key' => 'sp_team',
+						'value' => $team
+					),
+				);
+			endif;
+
+			$players = get_posts( $args );
+
+			if ( $players && is_array( $players ) ) {
+				foreach ( $players as $player ) {
+					$player_ids[] = $player->ID;
+				}
+			}
+		} else {
+			$player_ids = (array)get_post_meta( $this->ID, 'sp_player', false );
+		}
 
 		// Get all leagues populated with stats where available
 		$tempdata = sp_array_combine( $player_ids, $list_stats );
@@ -129,7 +180,7 @@ class SP_Player_List extends SP_Custom_Post {
 			);
 		endif;
 
-		if ( $league_id ):
+		if ( $div_id ):
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_season',
 				'field' => 'id',

@@ -25,6 +25,8 @@ class SP_Meta_Box_List_Details {
 		$grouping = get_post_meta( $post->ID, 'sp_grouping', true );
 		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
+		$select = get_post_meta( $post->ID, 'sp_select', true );
+		if ( ! $select ) $select = 'auto';
 		?>
 		<div>
 			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
@@ -103,10 +105,18 @@ class SP_Meta_Box_List_Details {
 				</select>
 			</p>
 			<p><strong><?php _e( 'Players', 'sportspress' ); ?></strong></p>
-			<?php
-			sp_post_checklist( $post->ID, 'sp_player', 'block', array( 'sp_league', 'sp_season', 'sp_current_team' ) );
-			sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
-			?>
+			<p>
+				<select name="sp_select" class="sp-select-setting">
+					<option value="auto" <?php selected( 'auto', $select ); ?>><?php _e( 'Auto', 'sportspress' ); ?></option>
+					<option value="manual" <?php selected( 'manual', $select ); ?>><?php _e( 'Manual', 'sportspress' ); ?></option>
+				</select>
+			</p>
+			<div class="sp-select-options<?php if ( 'auto' == $select ) { ?> hidden<?php } ?>">
+				<?php
+				sp_post_checklist( $post->ID, 'sp_player', 'block', array( 'sp_league', 'sp_season', 'sp_current_team' ) );
+				sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
+				?>
+			</div>
 		</div>
 		<?php
 	}
@@ -121,6 +131,7 @@ class SP_Meta_Box_List_Details {
 		update_post_meta( $post_id, 'sp_grouping', sp_array_value( $_POST, 'sp_grouping', array() ) );
 		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', array() ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
+		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
 	}
 }
