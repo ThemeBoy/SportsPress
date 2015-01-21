@@ -44,6 +44,8 @@ if ( $past_teams ):
 	$data[ __( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
 endif;
 
+$data = apply_filters( 'sportspress_staff_details', $data, $id );
+
 $output = '<div class="sp-list-wrapper">' .
 	'<dl class="sp-staff-details">';
 
