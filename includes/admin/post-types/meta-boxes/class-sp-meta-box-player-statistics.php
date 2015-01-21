@@ -97,36 +97,40 @@ class SP_Meta_Box_Player_Statistics {
 									<td>&nbsp;</td>
 								<?php else: ?>
 									<td>
-										<?php
-										$value = sp_array_value( $leagues, $div_id, '-1' );
-										$args = array(
-											'post_type' => 'sp_team',
-											'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
-											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
-											'show_option_all' => __( '&mdash; Individual &mdash;', 'sportspress' ),
-										    'sort_order'   => 'ASC',
-										    'sort_column'  => 'menu_order',
-											'selected' => $value,
-											'values' => 'ID',
-											'include' => $teams,
-											'tax_query' => array(
-												'relation' => 'AND',
-												array(
-													'taxonomy' => 'sp_league',
-													'terms' => $league_id,
-													'field' => 'id',
+										<?php $value = sp_array_value( $leagues, $div_id, '-1' ); ?>
+										<?php if ( 'teams' == get_option( 'sportspress_mode', 'teams' )  ) { ?>
+											<?php
+											$args = array(
+												'post_type' => 'sp_team',
+												'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
+												'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+												'show_option_all' => __( '&mdash; Individual &mdash;', 'sportspress' ),
+											    'sort_order'   => 'ASC',
+											    'sort_column'  => 'menu_order',
+												'selected' => $value,
+												'values' => 'ID',
+												'include' => $teams,
+												'tax_query' => array(
+													'relation' => 'AND',
+													array(
+														'taxonomy' => 'sp_league',
+														'terms' => $league_id,
+														'field' => 'id',
+													),
+													array(
+														'taxonomy' => 'sp_season',
+														'terms' => $div_id,
+														'field' => 'id',
+													),
 												),
-												array(
-													'taxonomy' => 'sp_season',
-													'terms' => $div_id,
-													'field' => 'id',
-												),
-											),
-										);
-										if ( ! sp_dropdown_pages( $args ) ):
-											_e( '&mdash; None &mdash;', 'sportspress' );
-										endif;
-										?>
+											);
+											if ( ! sp_dropdown_pages( $args ) ):
+												_e( '&mdash; None &mdash;', 'sportspress' );
+											endif;
+											?>
+										<?php } else { ?>
+											<input type="checkbox" name="sp_leagues[<?php echo $league_id; ?>][<?php echo $div_id; ?>]" value="0" <?php checked( 0, $value ); ?>>
+										<?php } ?>
 									</td>
 								<?php endif; ?>
 							<?php endif; ?>

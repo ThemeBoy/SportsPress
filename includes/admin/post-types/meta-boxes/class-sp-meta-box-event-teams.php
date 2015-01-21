@@ -53,20 +53,24 @@ class SP_Meta_Box_Event_Teams {
 					sp_dropdown_taxonomies( $args );
 					?>
 				</p>
-				<p class="sp-tab-select sp-title-generator">
-				<?php
-				$args = array(
-					'post_type' => 'sp_team',
-					'name' => 'sp_team[]',
-					'class' => 'sportspress-pages',
-					'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
-					'show_option_all' => __( '&mdash; Individual &mdash;', 'sportspress' ),
-					'values' => 'ID',
-					'selected' => $team,
-				);
-				sp_dropdown_pages( $args );
-				?>
-				</p>
+				<?php if ( 'teams' == get_option( 'sportspress_mode', 'teams' ) ) { ?>
+					<p class="sp-tab-select sp-title-generator">
+					<?php
+					$args = array(
+						'post_type' => 'sp_team',
+						'name' => 'sp_team[]',
+						'class' => 'sportspress-pages',
+						'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+						'show_option_all' => __( '&mdash; Individual &mdash;', 'sportspress' ),
+						'values' => 'ID',
+						'selected' => $team,
+					);
+					sp_dropdown_pages( $args );
+					?>
+					</p>
+				<?php } else { ?>
+					<input type="hidden" name="sp_team[]" value="0">
+				<?php } ?>
 				<ul id="sp_team-tabs" class="wp-tab-bar sp-tab-bar">
 					<li class="wp-tab-active"><a href="#sp_player-all"><?php _e( 'Players', 'sportspress' ); ?></a></li>
 					<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
@@ -84,7 +88,9 @@ class SP_Meta_Box_Event_Teams {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+		if ( 'teams' == get_option( 'sportspress_mode', 'teams' ) ) {
+			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+		}
 		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
 	}
