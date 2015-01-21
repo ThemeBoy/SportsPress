@@ -3,7 +3,7 @@ class SP_Widget_Player_list extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_player_list widget_sp_player_list', 'description' => __( 'Display a list of players.', 'sportspress' ) );
-		parent::__construct('sp_player_list', __( 'Player List', 'sportspress' ) . ' (' . __( 'SportsPress', 'sportspress' ) . ')', $widget_ops);
+		parent::__construct('sportspress-player-list', __( 'Player List', 'sportspress' ), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {

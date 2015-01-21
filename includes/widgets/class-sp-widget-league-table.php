@@ -3,7 +3,7 @@ class SP_Widget_League_Table extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_league_table widget_sp_league_table', 'description' => __( 'Display a league table.', 'sportspress' ) );
-		parent::__construct('sp_league_table', __( 'League Table', 'sportspress' ) . ' (' . __( 'SportsPress', 'sportspress' ) . ')', $widget_ops);
+		parent::__construct('sportspress-league-table', __( 'League Table', 'sportspress' ), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {

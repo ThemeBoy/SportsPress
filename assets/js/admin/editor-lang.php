@@ -1,23 +1,65 @@
 <?php
 
+$shortcodes = '';
+
+$options = array(
+    'event' => array(
+        'details', 'results', 'performance', 'countdown'
+    ),
+    'player' => array(
+        'details', 'statistics'
+    ),
+);
+
+if ( 'yes' == get_option( 'sportspress_load_calendars_module', 'yes' ) ) {
+    $options['event'][] = 'calendar';
+    $options['event'][] = 'list';
+    $options['event'][] = 'blocks';
+}
+
+if ( 'yes' == get_option( 'sportspress_load_league_tables_module', 'yes' ) ) {
+    $options['table'] = array( 'table' );
+}
+
+if ( 'yes' == get_option( 'sportspress_load_player_lists_module', 'yes' ) ) {
+    $options['player'][] = 'list';
+    $options['player'][] = 'gallery';
+}
+
+$options = apply_filters( 'sportspress_shortcodes', $options );
+
+foreach ( $options as $name => $group ) {
+    $shortcodes .= $name . '[' . implode( '|', $group ) . ']';
+}
+
+$raw = apply_filters( 'sportspress_tinymce_strings', array(
+    'shortcodes' =>  $shortcodes,
+    'insert' =>  __( 'SportsPress Shortcodes', 'sportspress' ),
+    'auto' =>  __( 'Auto', 'sportspress' ),
+    'manual' =>  __( 'Manual', 'sportspress' ),
+    'select' =>  __( 'Select...', 'sportspress' ),
+    'event' =>  __( 'Event', 'sportspress' ),
+    'details' =>  __( 'Details', 'sportspress' ),
+    'results' =>  __( 'Results', 'sportspress' ),
+    'countdown' =>  __( 'Countdown', 'sportspress' ),
+    'performance' =>  __( 'Performance', 'sportspress' ),
+    'calendar' =>  __( 'Calendar', 'sportspress' ),
+    'statistics' =>  __( 'Statistics', 'sportspress' ),
+    'table' =>  __( 'League Table', 'sportspress' ),
+    'player' =>  __( 'Player', 'sportspress' ),
+    'list' =>  __( 'List', 'sportspress' ),
+    'blocks' =>  __( 'Blocks', 'sportspress' ),
+    'gallery' =>  __( 'Gallery', 'sportspress' ),
+));
+
+$formatted = array();
+
+foreach ( $raw as $key => $value ) {
+    $formatted[] = $key . ': "' . esc_js( $value ) . '"';
+}
+
 $strings = 'tinyMCE.addI18n({' . _WP_Editors::$mce_locale . ':{
     sportspress:{
-        insert: "' . esc_js( __( 'SportsPress Shortcodes', 'sportspress' ) ) . '",
-        auto: "' . esc_js( __( 'Auto', 'sportspress' ) ) . '",
-        manual: "' . esc_js( __( 'Manual', 'sportspress' ) ) . '",
-        select: "' . esc_js( __( 'Select...', 'sportspress' ) ) . '",
-        event: "' . esc_js( __( 'Event', 'sportspress' ) ) . '",
-        details: "' . esc_js( __( 'Details', 'sportspress' ) ) . '",
-        results: "' . esc_js( __( 'Results', 'sportspress' ) ) . '",
-        countdown: "' . esc_js( __( 'Countdown', 'sportspress' ) ) . '",
-        performance: "' . esc_js( __( 'Performance', 'sportspress' ) ) . '",
-        calendar: "' . esc_js( __( 'Calendar', 'sportspress' ) ) . '",
-        statistics: "' . esc_js( __( 'Statistics', 'sportspress' ) ) . '",
-        league_table: "' . esc_js( __( 'League Table', 'sportspress' ) ) . '",
-        player_list: "' . esc_js( __( 'Player List', 'sportspress' ) ) . '",
-        list: "' . esc_js( __( 'List', 'sportspress' ) ) . '",
-        blocks: "' . esc_js( __( 'Blocks', 'sportspress' ) ) . '",
-        player: "' . esc_js( __( 'Player', 'sportspress' ) ) . '",
-        gallery: "' . esc_js( __( 'Gallery', 'sportspress' ) ) . '"
+        ' . implode( ', ', $formatted ) . '
     }
 }})';

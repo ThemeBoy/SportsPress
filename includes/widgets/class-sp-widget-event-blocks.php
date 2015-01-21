@@ -3,7 +3,7 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_sp_event_blocks', 'description' => __( 'A list of events.', 'sportspress' ) );
-		parent::__construct('sp_event_blocks', __( 'Event Blocks', 'sportspress' ) . ' (' . __( 'SportsPress', 'sportspress' ) . ')', $widget_ops);
+		parent::__construct('sportspress-event-blocks', __( 'Event Blocks', 'sportspress' ), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {
