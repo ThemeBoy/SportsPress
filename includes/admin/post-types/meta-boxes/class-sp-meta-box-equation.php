@@ -49,7 +49,7 @@ class SP_Meta_Box_Equation {
 					$options[ 'Performance' ] = self::optgroup( 'sp_performance' );
 					break;
 				case 'metric':
-					$options[ 'Metric' ] = self::optgroup( 'sp_metric' );
+					$options[ 'Metrics' ] = self::optgroup( 'sp_metric' );
 					break;
 			endswitch;
 		endforeach;
