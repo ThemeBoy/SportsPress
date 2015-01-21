@@ -23,6 +23,7 @@ $defaults = array(
 	'rows' => get_option( 'sportspress_event_blocks_rows', 10 ),
 	'order' => 'default',
 	'show_all_events_link' => false,
+	'show_title' => get_option( 'sportspress_event_blocks_show_title', 'no' ) == 'yes' ? true : false,
 	'show_league' => get_option( 'sportspress_event_blocks_show_league', 'no' ) == 'yes' ? true : false,
 	'show_season' => get_option( 'sportspress_event_blocks_show_season', 'no' ) == 'yes' ? true : false,
 	'show_venue' => get_option( 'sportspress_event_blocks_show_venue', 'no' ) == 'yes' ? true : false,
@@ -48,7 +49,7 @@ if ( isset( $columns ) ) {
 	$usecolumns = $columns;
 }
 
-if ( $id ) {
+if ( $show_title && $id ) {
 	echo '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
 }
 ?>
