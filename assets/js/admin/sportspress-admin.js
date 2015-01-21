@@ -466,8 +466,9 @@ jQuery(document).ready(function($){
 	$(".post-type-sp_list #post-formats-select input.post-format").trigger("change");
 
 	// Auto-select hides options
-	$(".sp-select-setting").change(function() {
-		$(".sp-select-options").toggle("manual"==$(this).val());
+	$(".sp-select-setting").find("select").change(function() {
+		$(".sp-select-all-range").toggle("manual"==$(this).val());
+		$(this).closest(".sp-select-setting").siblings(".sp-tab-select").find("select").change()
 	});
 
 	// Configure primary result option (Ajax)
