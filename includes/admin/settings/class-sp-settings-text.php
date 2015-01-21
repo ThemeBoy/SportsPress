@@ -37,16 +37,15 @@ class SP_Settings_Text extends SP_Settings_Page {
 	public function get_settings() {
 
 		$settings = array(
-
 			array( 'title' => __( 'Text', 'sportspress' ), 'type' => 'title', 'desc' => __( 'The following options affect how words are displayed on the frontend.', 'sportspress' ), 'id' => 'text_options' ),
-
 		);
 
 		$strings = sp_get_text_options();
 		$options = get_option( 'sportspress_text' );
 
+		$options = array();
 		foreach ( $strings as $string ):
-			$settings[] = array(
+			$options[] = array(
 				'title' 		=> $string,
 				'id' 			=> 'sportspress_text[' . $string . ']',
 				'default' 		=> '',
@@ -56,7 +55,9 @@ class SP_Settings_Text extends SP_Settings_Page {
 			);
 		endforeach;
 
-		$settings[] = array( 'type' => 'sectionend', 'id' => 'text_options' );
+		$settings = array_merge( $settings, apply_filters( 'sportspress_text_options', $options ), array(
+			array( 'type' => 'sectionend', 'id' => 'text_options' )
+		));
 
 		return apply_filters( 'sportspress_text_settings', $settings ); // End event settings
 	}

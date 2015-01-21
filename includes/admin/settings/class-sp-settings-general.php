@@ -40,41 +40,49 @@ class SP_Settings_General extends SP_Settings_Page {
 
 		$presets = SP_Admin_Sports::get_preset_options();
 
-		$settings = array(
-			array( 'title' => __( 'General Options', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'general_options' ),
-			
-			array( 'type' => 'timezone' ),
+		$settings = array_merge(
 
 			array(
-				'title'     => __( 'Sport', 'sportspress' ),
-				'id'        => 'sportspress_sport',
-				'default'   => 'custom',
-				'type'      => 'sport',
-				'options'   => $presets,
+				array( 'title' => __( 'General Options', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'general_options' ),
 			),
 
-			array(
-				'title'     => __( 'Google Maps', 'sportspress' ),
-				'id'        => 'sportspress_map_type',
-				'default'   => 'ROADMAP',
-				'type'      => 'select',
-				'options'   => array(
-					'ROADMAP' => __( 'Default', 'sportspress' ),
-					'SATELLITE' => __( 'Satellite', 'sportspress' ),
-					'HYBRID' => __( 'Hybrid', 'sportspress' ),
-					'TERRAIN' => __( 'Terrain', 'sportspress' ),
+			apply_filters( 'sportspress_general_options', array(
+				array( 'type' => 'timezone' ),
+
+				array(
+					'title'     => __( 'Sport', 'sportspress' ),
+					'id'        => 'sportspress_sport',
+					'default'   => 'custom',
+					'type'      => 'sport',
+					'options'   => $presets,
 				),
-			),
 
-			array( 'type' => 'sectionend', 'id' => 'general_options' ),
+				array(
+					'title'     => __( 'Google Maps', 'sportspress' ),
+					'id'        => 'sportspress_map_type',
+					'default'   => 'ROADMAP',
+					'type'      => 'select',
+					'options'   => array(
+						'ROADMAP' => __( 'Default', 'sportspress' ),
+						'SATELLITE' => __( 'Satellite', 'sportspress' ),
+						'HYBRID' => __( 'Hybrid', 'sportspress' ),
+						'TERRAIN' => __( 'Terrain', 'sportspress' ),
+					),
+				),
+			)),
 
-			array( 'title' => __( 'Styles and Scripts', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'script_styling_options' ),
-
-			array( 'type' 		=> 'frontend_styles' ),
+			array(
+				array( 'type' => 'sectionend', 'id' => 'general_options' ),
+				array( 'title' => __( 'Styles and Scripts', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'script_styling_options' ),
+			)
+		);
+		
+		$options = array(
+			array( 'type' => 'frontend_styles' ),
 		);
 
 		if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) ):
-			$settings = array_merge( $settings, array(
+			$options = array_merge( $options, array(
 				array(
 					'title' 	=> __( 'Align', 'sportspress' ),
 					'id' 		=> 'sportspress_table_text_align',
@@ -103,7 +111,7 @@ class SP_Settings_General extends SP_Settings_Page {
 			));
 		endif;
 
-		$settings = array_merge( $settings, array(
+		$options = array_merge( $options, array(
 			array(
 				'title' 	=> __( 'Custom CSS', 'sportspress' ),
 				'id' 		=> 'sportspress_custom_css',
@@ -154,8 +162,10 @@ class SP_Settings_General extends SP_Settings_Page {
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',
 			),
-			
-			array(
+		));
+
+		if ( apply_filters( 'sportspress_enable_header', false ) ) {
+			$options[] = array(
 				'title' 	=> __( 'Header Offset', 'sportspress' ),
 				'id' 		=> 'sportspress_header_offset',
 				'class' 	=> 'small-text',
@@ -166,8 +176,10 @@ class SP_Settings_General extends SP_Settings_Page {
 				'custom_attributes' => array(
 					'step' 	=> 1
 				),
-			),
+			);
+		}
 
+		$settings = array_merge( $settings, apply_filters( 'sportspress_script_styling_options', $options ), array(
 			array( 'type' => 'sectionend', 'id' => 'script_styling_options' ),
 		));
 		

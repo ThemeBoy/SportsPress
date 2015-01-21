@@ -1,11 +1,11 @@
 <?php
 /**
- * SportsPress General Settings
+ * SportsPress System Status
  *
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.4.1
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -43,7 +43,7 @@ class SP_Settings_Status extends SP_Settings_Page {
 			<div id="debug-report"><textarea readonly="readonly"></textarea></div>
 		</div>
 		<br/>
-		<table class="sp_status_table widefat" cellspacing="0">
+		<table class="sp-status-table widefat" cellspacing="0">
 
 			<thead>
 				<tr>
@@ -549,7 +549,7 @@ class SP_Settings_Status extends SP_Settings_Page {
 
 				var report = "";
 
-				jQuery('.sp_status_table thead, .sp_status_table tbody').each(function(){
+				jQuery('.sp-status-table thead, .sp-status-table tbody').each(function(){
 
 					if ( jQuery( this ).is('thead') ) {
 
