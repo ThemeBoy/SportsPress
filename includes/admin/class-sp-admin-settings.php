@@ -31,6 +31,7 @@ class SP_Admin_Settings {
 			include_once( 'class-sp-admin-sports.php' );
 			include_once( 'settings/class-sp-settings-page.php' );
 
+			$settings[] = include( 'settings/class-sp-settings-modules.php' );
 			$settings[] = include( 'settings/class-sp-settings-general.php' );
 			$settings[] = include( 'settings/class-sp-settings-events.php' );
 			$settings[] = include( 'settings/class-sp-settings-teams.php' );
@@ -119,7 +120,7 @@ class SP_Admin_Settings {
 		self::get_settings_pages();
 
 		// Get current tab/section
-		$current_tab     = empty( $_GET['tab'] ) ? 'general' : sanitize_title( $_GET['tab'] );
+		$current_tab     = empty( $_GET['tab'] ) ? 'modules' : sanitize_title( $_GET['tab'] );
 		$current_section = empty( $_REQUEST['section'] ) ? '' : sanitize_title( $_REQUEST['section'] );
 
 	    // Save settings if data has been posted

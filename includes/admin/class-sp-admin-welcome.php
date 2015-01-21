@@ -196,7 +196,7 @@ class SP_Admin_Welcome {
 		<div class="sp-badge"><?php printf( __( 'Version %s', 'sportspress' ), SP()->version ); ?></div>
 
 		<p class="sportspress-actions">
-			<a href="<?php echo admin_url('admin.php?page=sportspress'); ?>" class="button button-primary"><?php _e( 'Settings', 'sportspress' ); ?></a>
+			<a href="<?php echo admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ); ?>" class="button button-primary"><?php _e( 'Settings', 'sportspress' ); ?></a>
 			<a href="<?php echo esc_url( apply_filters( 'sportspress_docs_url', 'http://sportspresspro.com/docs/', 'sportspress' ) ); ?>" class="docs button button-primary"><?php _e( 'Docs', 'sportspress' ); ?></a>
 			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wordpress.org/plugins/sportspress" data-text="An open-source (free) #WordPress plugin that helps you build professional league websites." data-via="ThemeBoy" data-size="large" data-hashtags="SportsPress">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -264,7 +264,7 @@ class SP_Admin_Welcome {
 						endforeach;
 						echo $sport;
 						?>
-						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'admin.php' ) ) ); ?>"><div class="dashicons dashicons-edit"></div><?php _e( 'Change', 'sportspress' ); ?></a>
+						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><div class="dashicons dashicons-edit"></div><?php _e( 'Change', 'sportspress' ); ?></a>
 						<h4><?php _e( 'Next Steps', 'sportspress' ); ?></h4>
 						<p><?php _e( 'We&#8217;ve assembled some links to get you started:', 'sportspress' ); ?></p>
 						<div class="sportspress-steps">
@@ -275,7 +275,7 @@ class SP_Admin_Welcome {
 							</ul>
 						</div>
 						<div class="return-to-dashboard">
-							<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
+							<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
 						</div>
 					<?php } else { ?>
 						<form method="post" id="mainform" action="" enctype="multipart/form-data">
@@ -329,7 +329,7 @@ class SP_Admin_Welcome {
 								</tbody>
 							</table>
 					        <p class="submit sportspress-actions">
-					        	<input name="save" class="button-primary" type="submit" value="<?php _e( 'Save changes', 'sportspress' ); ?>" />
+					        	<input name="save" class="button-primary" type="submit" value="<?php _e( 'Save Changes', 'sportspress' ); ?>" />
 					        	<input type="hidden" name="subtab" id="last_tab" />
 					        	<?php wp_nonce_field( 'sportspress-settings' ); ?>
 					        </p>

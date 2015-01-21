@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.3
+ * @version     1.6
  */
 class SP_Admin {
 
@@ -32,7 +32,6 @@ class SP_Admin {
 	public function includes() {
 		// Functions
 		include_once( 'sp-admin-functions.php' );
-//		include_once( 'sp-meta-box-functions.php' );
 
 		// Classes
 		include_once( 'class-sp-admin-post-types.php' );
@@ -50,10 +49,6 @@ class SP_Admin {
 			if ( get_option( 'sportspress_rich_editing', true ) ):
 				include( 'class-sp-admin-editor.php' );
 			endif;
-
-			// Help
-//			if ( apply_filters( 'sportspress_enable_admin_help_tab', true ) )
-//				include( 'class-sp-admin-help.php' );
 		}
 
 		// Importers
@@ -70,13 +65,7 @@ class SP_Admin {
 		switch ( $screen->id ) {
 			case 'dashboard' :
 				include( 'class-sp-admin-dashboard.php' );
-			break;
-			case 'users' :
-			case 'user' :
-			case 'profile' :
-			case 'user-edit' :
-//				include( 'class-sp-admin-profile.php' );
-			break;
+				break;
 		}
 	}
 

@@ -42,6 +42,11 @@ final class SportsPress {
 	protected static $_instance = null;
 
 	/**
+	 * @var SP_Modules $modules
+	 */
+	public $modules = null;
+
+	/**
 	 * @var SP_Countries $countries
 	 */
 	public $countries = null;
@@ -212,6 +217,7 @@ final class SportsPress {
 		include_once( 'includes/abstracts/abstract-sp-custom-post.php' );		// Custom posts
 
 		// Classes (used on all pages)
+		include_once( 'includes/class-sp-modules.php' );						// Defines available modules
 		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
 		include_once( 'includes/class-sp-formats.php' );						// Defines custom post type formats
 		include_once( 'includes/class-sp-feeds.php' );							// Adds feeds
@@ -247,12 +253,18 @@ final class SportsPress {
 	 */
 	public function include_widgets() {
 		include_once( 'includes/widgets/class-sp-widget-countdown.php' );
-		include_once( 'includes/widgets/class-sp-widget-event-calendar.php' );
-		include_once( 'includes/widgets/class-sp-widget-event-list.php' );
-		include_once( 'includes/widgets/class-sp-widget-event-blocks.php' );
-		include_once( 'includes/widgets/class-sp-widget-league-table.php' );
-		include_once( 'includes/widgets/class-sp-widget-player-list.php' );
-		include_once( 'includes/widgets/class-sp-widget-player-gallery.php' );
+		if ( 'yes' == get_option( 'sportspress_load_calendars_module', 'yes' ) ) {
+			include_once( 'includes/widgets/class-sp-widget-event-calendar.php' );
+			include_once( 'includes/widgets/class-sp-widget-event-list.php' );
+			include_once( 'includes/widgets/class-sp-widget-event-blocks.php' );
+		}
+		if ( 'yes' == get_option( 'sportspress_load_league_tables_module', 'yes' ) ) {
+			include_once( 'includes/widgets/class-sp-widget-league-table.php' );
+		}
+		if ( 'yes' == get_option( 'sportspress_load_player_lists_module', 'yes' ) ) {
+			include_once( 'includes/widgets/class-sp-widget-player-list.php' );
+			include_once( 'includes/widgets/class-sp-widget-player-gallery.php' );
+		}
 		include_once( 'includes/widgets/class-sp-widget-staff.php' );
 
 		do_action( 'sportspress_widgets' );
@@ -269,6 +281,7 @@ final class SportsPress {
 		$this->load_plugin_textdomain();
 
 		// Load class instances
+		$this->modules = new SP_Modules();		// Modules class
 		$this->countries = new SP_Countries();	// Countries class
 		$this->formats = new SP_Formats();		// Formats class
 		$this->feeds = new SP_Feeds(); 			// Feeds class
@@ -351,6 +364,6 @@ function SP() {
 	return SportsPress::instance();
 }
 
-SP();
-
 endif;
+
+SP();

@@ -129,7 +129,6 @@ To keep up with the latest updates and new features, be sure to do the following
 * Subscribe to our [YouTube channel](https://www.youtube.com/user/themeboyteam).
 * Follow ThemeBoy on [Facebook](https://facebook.com/themeboy) & [Twitter](http://twitter.com/themeboy).
 
-
 = Please Rate, Vote, and Enjoy! =
 Your feedback is much appreciated and makes all the difference in improving SportsPress.
 

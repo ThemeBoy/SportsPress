@@ -199,6 +199,7 @@
 	font-family: monospace;
 }
 
+.sportspress .submit,
 .sp-data-table-container {
 	clear: both;
 }
@@ -486,6 +487,112 @@ table.widefat.sp-sortable-table tbody tr .icon {
 	border-left-color: #464646;
 }
 
+.sp-modules-wrapper {
+	margin-right: 300px;
+	max-width: 750px;
+}
+
+.sp-modules-main {
+	width: 100%;
+	float: left;
+}
+
+.sp-modules-sidebar {
+	float: right;
+	margin-right: -300px;
+	width: 280px;
+}
+
+.sp-modules-sidebar table th,
+.sp-modules-sidebar table td {
+	padding: 10px 14px;
+}
+
+.sp-modules-sidebar table th img {
+	display: block;
+}
+
+
+.sp-modules-sidebar table td p {
+	margin-top: 0;
+}
+
+.sp-modules-sidebar table td .sp-module-actions {
+	padding: 10px;
+	clear: both;
+	border-top: 1px solid #ddd;
+	background: #f5f5f5;
+	margin: 0 -14px -10px;
+	text-align: right;
+}
+
+.sp-modules-sidebar table td .sp-module-actions span {
+	line-height: 28px;
+	vertical-align: middle;
+	text-align: left;
+	float: left;
+	margin-left: 4px;
+	color: #999;
+}
+
+.sp-modules-sidebar table td .sp-documentation-links {
+	margin: 0.25em 0;
+}
+
+.sp-modules-wrapper img {
+	max-width: 100%;
+}
+
+.sp-modules-wrapper table {
+	margin-bottom: 20px;
+}
+
+table.sp-modules-table td {
+	padding: 10px 14px;
+	line-height: 25px;
+	border-bottom: 1px solid #e1e1e1;
+	position: relative;
+}
+
+table.sp-modules-table tr:last-child td {
+	border-bottom: none;
+}
+
+table.sp-modules-table td > input[type=checkbox] {
+	margin-top: -4px;
+}
+
+table.sp-modules-table td > input[type=checkbox][disabled=disabled] {
+	cursor: default;
+}
+
+table.sp-modules-table td .button {
+	float: right;
+	margin: -1px -5px -1px 10px;
+}
+
+table.sp-modules-table [class^="sp-icon-"],
+table.sp-modules-table [class*=" sp-icon-"],
+table.sp-modules-table .dashicons {
+	position: relative;
+	top: 3px;
+	left: -0.5px;
+	line-height: 1;
+}
+
+table.sp-modules-table .sp-module-unavailable label {
+	color: #aaa;
+	cursor: text;
+}
+
+table.sp-modules-table .sp-module-unavailable label [class^="sp-icon-"],
+table.sp-modules-table .sp-module-unavailable label [class*=" sp-icon-"],
+table.sp-modules-table .sp-module-unavailable label .dashicons {
+	-moz-opacity: 0.8;
+	opacity: 0.8;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+}
+
 #debug-report {
 	display: none;
 	margin: 10px 0;
@@ -555,8 +662,19 @@ table.sp_status_table td mark.yes {
 }
 
 /* Media Queries */
-@media only screen and (max-width: 782px) {
+@media only screen and (max-width: 850px) {
+	.sp-modules-wrapper {
+		margin-right: 0;
+	}
 
+	.sp-modules-main,
+	.sp-modules-sidebar {
+		margin-right: 0;
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 782px) {
 	.fixed .column-sp_time,
 	.fixed .column-sp_team,
 	.fixed .column-sp_league,
@@ -570,8 +688,12 @@ table.sp_status_table td mark.yes {
 	.form-field .sp-location-picker {
 		width: 99%;
 	}
+
 	.form-field td .sp-location-picker {
 		width: 100%;
 	}
 
+	table.sp-modules-table td .button {
+		margin: -3px -7px -3px 10px;
+	}
 }

@@ -38,11 +38,14 @@ class SP_Admin_Post_Types {
 		include( 'post-types/class-sp-admin-cpt-metric.php' );
 		include( 'post-types/class-sp-admin-cpt-statistic.php' );
 		include( 'post-types/class-sp-admin-cpt-event.php' );
-		include( 'post-types/class-sp-admin-cpt-calendar.php' );
+		if ( 'yes' == get_option( 'sportspress_load_calendars_module', 'yes' )  )
+			include( 'post-types/class-sp-admin-cpt-calendar.php' );
 		include( 'post-types/class-sp-admin-cpt-team.php' );
-		include( 'post-types/class-sp-admin-cpt-table.php' );
+		if ( 'yes' == get_option( 'sportspress_load_league_tables_module', 'yes' )  )
+			include( 'post-types/class-sp-admin-cpt-table.php' );
 		include( 'post-types/class-sp-admin-cpt-player.php' );
-		include( 'post-types/class-sp-admin-cpt-list.php' );
+		if ( 'yes' == get_option( 'sportspress_load_player_lists_module', 'yes' )  )
+			include( 'post-types/class-sp-admin-cpt-list.php' );
 		include( 'post-types/class-sp-admin-cpt-staff.php' );
 		do_action( 'sportspress_include_post_type_handlers' );
 	}

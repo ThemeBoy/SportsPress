@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.5
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -1188,7 +1188,7 @@ function sp_get_text_options() {
 function sp_review_link() {
 	?>
 	<p>
-		<a href="http://wordpress.org/support/view/plugin-reviews/sportspress?rate=5#postform">
+		<a href="http://wordpress.org/support/view/plugin-reviews/sportspress#postform">
 			<?php _e( 'Love SportsPress? Help spread the word by rating us 5★ on WordPress.org', 'sportspress' ); ?>
 		</a>
 	</p>
