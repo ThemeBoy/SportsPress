@@ -51,7 +51,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 
 		<div class="sp-modules-wrapper">
 			<div class="sp-modules-sidebar">
-				<?php if ( ! class_exists( 'SportsPress_Pro' ) ) { ?>
+				<?php if ( !! class_exists( 'SportsPress_Pro' ) ) { ?>
 				<table class="widefat" cellspacing="0">
 					<thead>
 						<tr><th>
@@ -60,7 +60,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					</thead>
 					<tbody>
 						<tr><td>
-							<p><?php _e( 'Looking for more advanced sports functionality? Upgrade to SportsPress Pro to get access to more advanced features for your team, club, or league website.','sportspress' ); ?></p>
+							<p><?php _e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.','sportspress' ); ?></p>
 							<p class="sp-module-actions">
 								<span><?php _e( 'Starting at $49', 'sportspress' ); ?></span>
 								<a class="button button-primary" href="<?php echo apply_filters( 'sportspress_pro_url', 'http://sportspresspro.com/pricing/' ); ?>" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
@@ -130,15 +130,25 @@ class SP_Settings_Modules extends SP_Settings_Page {
 				<table class="widefat" cellspacing="0">
 					<thead>
 						<tr><th>
-							<strong><?php _e( 'Documentation', 'sportspress' ); ?></strong>
+							<strong><?php _e( 'Need Help?', 'sportspress' ); ?></strong>
 						</th></tr>
 					</thead>
 					<tbody>
 						<tr><td>
+							<p><strong><i class="sp-icon-book"></i> <?php _e( 'Documentation', 'sportspress' ); ?></strong></p>
 							<ul class="sp-documentation-links">
 								<li><a href="http://sportspresspro.com/docs/installation/" target="_blank"><?php _e( 'Getting Started', 'sportspress' ); ?></a></li>
 								<li><a href="http://sportspresspro.com/docs/roles-and-capabilities/" target="_blank"><?php _e( 'Roles and Capabilities', 'sportspress' ); ?></a></li>
 								<li><a href="http://sportspresspro.com/docs/theme-integration-guide/" target="_blank"><?php _e( 'Theme Integration Guide', 'sportspress' ); ?></a></li>
+							</ul>
+							<p><strong><i class="dashicons dashicons-groups"></i> <?php _e( 'Support', 'sportspress' ); ?></strong></p>
+							<ul class="sp-community-links">
+								<li><a href="https://wordpress.org/support/plugin/sportspress" target="_blank"><?php _e( 'Plugin Forums', 'sportspress' ); ?></a></li>
+								<?php if ( class_exists( 'SportsPress_Pro' ) ) { ?>
+								<li><a href="<?php echo apply_filters( 'sportspress_support_url', 'http://sportspresspro.com/support/' ); ?>" target="_blank"><?php _e( 'Premium Support', 'sportspress' ); ?></a></li>
+								<?php } else { ?>
+								<li><a href="<?php echo apply_filters( 'sportspress_pro_url', 'http://sportspresspro.com/pricing/' ); ?>" target="_blank"><span class="sp-desc-tip" title="<?php _e( 'Upgrade to Pro', 'sportspress' ); ?>"><?php _e( 'Premium Support', 'sportspress' ); ?></span></a></li>
+								<?php } ?>
 							</ul>
 						</td></tr>
 					</tbody>

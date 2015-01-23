@@ -540,8 +540,16 @@ table.widefat.sp-sortable-table tbody tr .icon {
 	color: #999;
 }
 
-.sp-modules-sidebar table td .sp-documentation-links {
-	margin: 0.25em 0;
+.sp-modules-sidebar table td ul {
+	margin: 2px 0 0.8em;
+}
+
+.sp-modules-sidebar table td ul:last-child {
+	margin-bottom: 0;
+}
+
+.sp-modules-sidebar table td span {
+	color: #aaa;
 }
 
 .sp-modules-wrapper img {
