@@ -151,6 +151,19 @@ class SP_Settings_Events extends SP_Settings_Page {
 					'type' 		=> 'checkbox',
 					'checkboxgroup'	=> 'end',
 				),
+
+				array(
+					'title'     => __( 'Google Maps', 'sportspress' ),
+					'id'        => 'sportspress_map_type',
+					'default'   => 'ROADMAP',
+					'type'      => 'radio',
+					'options'   => array(
+						'ROADMAP' => __( 'Default', 'sportspress' ),
+						'SATELLITE' => __( 'Satellite', 'sportspress' ),
+						'HYBRID' => __( 'Hybrid', 'sportspress' ),
+						'TERRAIN' => __( 'Terrain', 'sportspress' ),
+					),
+				),
 				
 				array(
 					'title' 	=> __( 'Full Time', 'sportspress' ),

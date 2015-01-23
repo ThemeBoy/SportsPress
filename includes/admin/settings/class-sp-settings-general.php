@@ -61,25 +61,12 @@ class SP_Settings_General extends SP_Settings_Page {
 					'title'     => __( 'Mode', 'sportspress' ),
 					'id'        => 'sportspress_mode',
 					'default'   => 'team',
-					'type'      => 'select',
+					'type'      => 'radio',
 					'options'   => array(
 						'team' => __( 'Teams', 'sportspress' ),
 						'player' => __( 'Players', 'sportspress' ),
 					),
 					'desc_tip' 		=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
-				),
-
-				array(
-					'title'     => __( 'Google Maps', 'sportspress' ),
-					'id'        => 'sportspress_map_type',
-					'default'   => 'ROADMAP',
-					'type'      => 'select',
-					'options'   => array(
-						'ROADMAP' => __( 'Default', 'sportspress' ),
-						'SATELLITE' => __( 'Satellite', 'sportspress' ),
-						'HYBRID' => __( 'Hybrid', 'sportspress' ),
-						'TERRAIN' => __( 'Terrain', 'sportspress' ),
-					),
 				),
 			)),
 

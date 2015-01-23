@@ -262,7 +262,7 @@ class SP_Admin_Welcome {
 											'title'     => __( 'Mode', 'sportspress' ),
 											'id'        => 'sportspress_mode',
 											'default'   => 'team',
-											'type'      => 'select',
+											'type'      => 'radio',
 											'options'   => array(
 												'team' => __( 'Teams', 'sportspress' ),
 												'player' => __( 'Players', 'sportspress' ),
