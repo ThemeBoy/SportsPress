@@ -20,7 +20,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		public function __construct() {
-			$this->import_page = 'sportspress_team_csv';
+			$this->import_page = 'sp_team_csv';
 			$this->import_label = __( 'Import Teams', 'sportspress' );
 			$this->columns = array(
 				'post_title' => __( 'Name', 'sportspress' ),
@@ -124,7 +124,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
 			echo '<p>' . sprintf( __( 'Teams need to be defined with columns in a specific order (3 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/teams-sample.csv' ) . '</p>';
-			wp_import_upload_form( 'admin.php?import=sportspress_team_csv&step=1' );
+			wp_import_upload_form( 'admin.php?import=sp_team_csv&step=1' );
 			echo '</div>';
 		}
 	}
