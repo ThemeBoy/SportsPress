@@ -32,6 +32,7 @@ $data = array_filter( $data );
 if ( empty( $data ) )
 	return false;
 
+$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 $link_teams = get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false;
 $show_outcomes = array_key_exists( 'outcome', $labels );
