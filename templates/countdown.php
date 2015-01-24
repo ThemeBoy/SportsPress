@@ -13,6 +13,7 @@ $defaults = array(
 	'team' => null,
 	'id' => null,
 	'live' => get_option( 'sportspress_enable_live_countdowns', 'yes' ) == 'yes' ? true : false,
+	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
 );
 
 if ( isset( $id ) ):
@@ -27,10 +28,13 @@ endif;
 extract( $defaults, EXTR_SKIP );
 
 if ( ! isset( $post ) ) return;
+
+$title = $post->post_title;
+if ( $link_events ) $title = '<a href="' . get_permalink( $post->ID ) . '">' . $title . '</a>';
 ?>
 <div class="sp-template sp-template-countdown">
 	<div class="sp-countdown-wrapper">
-		<h3 class="event-name"><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a></h3>
+		<h3 class="event-name"><?php echo $title; ?></a></h3>
 		<?php
 		if ( isset( $show_venue ) && $show_venue ):
 			$venues = get_the_terms( $post->ID, 'sp_venue' );
