@@ -552,6 +552,10 @@ table.widefat.sp-sortable-table tbody tr .icon {
 	color: #aaa;
 }
 
+.sp-modules-sidebar table td .sp-theme-screenshot {
+	margin: 4px 0;
+}
+
 .sp-modules-wrapper img {
 	max-width: 100%;
 }
@@ -580,8 +584,17 @@ table.sp-modules-table td > input[type=checkbox][disabled=disabled] {
 }
 
 table.sp-modules-table td .button {
-	float: right;
-	margin: -1px -5px -1px 10px;
+	position: absolute;
+	right: 9px;
+	top: 9px;
+}
+
+table.sp-modules-table .button-primary {
+	display: none;
+}
+
+table.sp-modules-table td:hover .button-primary {
+	display: inline-block;
 }
 
 table.sp-modules-table [class^="sp-icon-"],
@@ -593,14 +606,14 @@ table.sp-modules-table .dashicons {
 	line-height: 1;
 }
 
-table.sp-modules-table .sp-module-unavailable label {
+table.sp-modules-table .sp-module-unavailable span {
+	vertical-align: middle;
 	color: #aaa;
-	cursor: text;
 }
 
-table.sp-modules-table .sp-module-unavailable label [class^="sp-icon-"],
-table.sp-modules-table .sp-module-unavailable label [class*=" sp-icon-"],
-table.sp-modules-table .sp-module-unavailable label .dashicons {
+table.sp-modules-table .sp-module-unavailable span [class^="sp-icon-"],
+table.sp-modules-table .sp-module-unavailable span [class*=" sp-icon-"],
+table.sp-modules-table .sp-module-unavailable span .dashicons {
 	-moz-opacity: 0.8;
 	opacity: 0.8;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";

@@ -51,7 +51,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 
 		<div class="sp-modules-wrapper">
 			<div class="sp-modules-sidebar">
-				<?php if ( !! class_exists( 'SportsPress_Pro' ) ) { ?>
+				<?php if ( ! class_exists( 'SportsPress_Pro' ) ) { ?>
 				<table class="widefat" cellspacing="0">
 					<thead>
 						<tr><th>
@@ -153,6 +153,43 @@ class SP_Settings_Modules extends SP_Settings_Page {
 						</td></tr>
 					</tbody>
 				</table>
+
+				<?php $theme = wp_get_theme(); ?>
+				<?php if ( ! current_theme_supports( 'sportspress' ) ) { ?>
+					<table class="widefat" cellspacing="0">
+						<thead>
+							<tr><th>
+								<strong><?php _e( 'Current Theme', 'sportspress' ); ?></strong>
+							</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>
+								<img src="<?php echo $theme->get_screenshot(); ?>" class="sp-theme-screenshot">
+								<p><?php _e( '<strong>Your theme does not declare SportsPress support</strong> &#8211; if you encounter layout issues please read our integration guide or choose a SportsPress theme :)', 'sportspress' ); ?></p>
+								<p class="sp-module-actions">
+									<a class="button" href="http://themeboy.com/sportspress/themes/" target="_blank"><?php _e( 'Need a Better Theme?', 'sportspress' ); ?></a>
+								</p>
+							</td></tr>
+						</tbody>
+					</table>
+				<?php } elseif ( 'rookie' == $theme->stylesheet ) { ?>
+					<table class="widefat" cellspacing="0">
+						<thead>
+							<tr><th>
+								<strong><?php _e( 'Current Theme', 'sportspress' ); ?></strong>
+							</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>
+								<img src="<?php echo $theme->get_screenshot(); ?>" class="sp-theme-screenshot">
+								<p><?php _e( '<strong>Rookie</strong> is a free starter theme designed for SportsPress.', 'sportspress' ); ?></p>
+								<p class="sp-module-actions">
+									<a class="button" href="http://themeboy.com/sportspress/themes/" target="_blank"><?php _e( 'Need a Better Theme?', 'sportspress' ); ?></a>
+								</p>
+							</td></tr>
+						</tbody>
+					</table>
+				<?php } ?>
 			</div>
 
 			<div class="sp-modules-main">
@@ -168,11 +205,13 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<?php if ( isset( $module['class'] ) && ! class_exists( $module['class'] ) ) { ?>
 							<tr class="sp-module-unavailable"><td>
 								<input type="checkbox" disabled="disabled">
-								<label>
+								<span<?php if ( array_key_exists( 'tip', $module ) ) { ?> class="sp-desc-tip" title="<?php echo $module['tip']; ?>"<?php } ?>>
 									<i class="<?php echo sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ); ?>"></i>
 									<?php echo sp_array_value( $module, 'label', $id ); ?>
-								</label>
-								<a class="button" href="<?php echo sp_array_value( $module, 'link', apply_filters( 'sportspress_pro_url', 'http://sportspresspro.com/pricing/' ) ); ?>" target="_blank"><?php echo sp_array_value( $module, 'action', __( 'Upgrade to Pro', 'sportspress' ) ); ?></a>
+								</span>
+								<?php if ( array_key_exists( 'link', $module ) ) { ?>
+								<a class="button<?php if ( ! array_key_exists( 'action', $module ) ) { ?> button-primary<?php } ?>" href="<?php echo $module['link']; ?>" target="_blank"><?php echo sp_array_value( $module, 'action', __( 'Learn More', 'sportspress' ) ); ?></a>
+								<?php } ?>
 							</td></tr>
 							<?php } else { ?>
 							<tr><td>
@@ -187,6 +226,9 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					</tbody>
 				</table>
 				<?php } ?>
+
+			    <input name="save" class="button-primary" type="submit" value="<?php _e( 'Save Changes', 'sportspress' ); ?>" />
+			    <?php $GLOBALS['hide_save_button'] = true; ?>
 			</div>
 		</div>
 
@@ -199,6 +241,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 		}
 		</script>
 		<?php } ?>
+
 		<?php
 	}
 

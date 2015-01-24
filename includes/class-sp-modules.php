@@ -28,10 +28,16 @@ class SP_Modules {
 					'label' => __( 'Calendars', 'sportspress' ),
 					'icon' => 'sp-icon-calendar',
 				),
+				'videos' => array(
+					'label' => __( 'Videos', 'sportspress' ),
+					'icon' => 'dashicons dashicons-video-alt',
+				),
 				'tournaments' => array(
 					'label' => __( 'Tournaments', 'sportspress' ),
 					'class' => 'SportsPress_Tournaments',
+					'tip' => __( 'Upgrade to Pro', 'sportspress' ),
 					'icon' => 'sp-icon-tournament',
+					'link' => 'test',
 				),
 			),
 			'team' => array(
@@ -42,7 +48,9 @@ class SP_Modules {
 				'team_colors' => array(
 					'label' => __( 'Team Colors', 'sportspress' ),
 					'class' => 'SportsPress_Team_Colors',
+					'tip' => __( 'Upgrade to Pro', 'sportspress' ),
 					'icon' => 'sp-icon-color',
+					'link' => 'test',
 				),
 			),
 			'player' => array(
@@ -55,6 +63,7 @@ class SP_Modules {
 					'class' => 'SportsPress_Birthdays',
 					'action' => __( 'Review on WP.org', 'sportspress' ),
 					'link' => 'http://wordpress.org/support/view/plugin-reviews/sportspress#postform',
+					'tip' => __( 'Post your ★★★★★ review on WordPress.org and get the Birthdays module for free.', 'sportspress' ),
 					'icon' => 'sp-icon-cake',
 				),
 			),
@@ -62,6 +71,7 @@ class SP_Modules {
 				'staff_directories' => array(
 					'label' => __( 'Directories', 'sportspress' ),
 					'class' => 'SportsPress_Staff_Directories',
+					'tip' => __( 'Upgrade to Pro', 'sportspress' ),
 					'icon' => 'sp-icon-archive',
 				),
 			),
@@ -71,27 +81,36 @@ class SP_Modules {
 					'class' => 'SportsPress_Twitter',
 					'action' => __( 'Tweet #SportsPress', 'sportspress' ),
 					'link' => 'http://ctt.ec/d0sCF',
+					'tip' => __( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.', 'sportspress' ),
 					'icon' => 'dashicons dashicons-twitter',
 				),
 				'branding' => array(
 					'label' => __( 'Branding', 'sportspress' ),
 					'class' => 'SportsPress_Branding',
+					'tip' => __( 'Upgrade to Pro', 'sportspress' ),
 					'icon' => 'sp-icon-sportspress',
+					'link' => 'test',
 				),
 				'league_menu' => array(
 					'label' => __( 'League Menu', 'sportspress' ),
 					'class' => 'SportsPress_League_Menu',
+					'tip' => __( 'Upgrade to Pro', 'sportspress' ),
 					'icon' => 'sp-icon-menu',
+					'link' => 'test',
 				),
 				'sponsors' => array(
 					'label' => __( 'Sponsors', 'sportspress' ),
 					'class' => 'SportsPress_Sponsors',
+					'tip' => __( 'Upgrade to Pro', 'sportspress' ),
 					'icon' => 'sp-icon-megaphone',
+					'link' => 'test',
 				),
 				'multisite' => array(
 					'label' => __( 'Multisite', 'sportspress' ),
 					'class' => 'SportsPress_Multisite',
+					'tip' => __( 'Upgrade to Pro', 'sportspress' ),
 					'icon' => 'sp-icon-globe',
+					'link' => 'test',
 				),
 			),
 		));

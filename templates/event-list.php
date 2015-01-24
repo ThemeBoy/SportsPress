@@ -332,7 +332,7 @@ if ( $id ) {
 							echo '<td class="data-article">';
 								if ( $link_events ) echo '<a href="' . get_permalink( $event->ID ) . '">';
 
-								if ( $video ):
+								if ( $video && 'yes' == get_option( 'sportspress_load_videos_module', 'yes' ) ):
 									echo '<div class="dashicons dashicons-video-alt"></div>';
 								elseif ( has_post_thumbnail( $event->ID ) ):
 									echo '<div class="dashicons dashicons-camera"></div>';

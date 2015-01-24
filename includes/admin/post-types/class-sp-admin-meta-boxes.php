@@ -126,7 +126,9 @@ class SP_Admin_Meta_Boxes {
 		add_meta_box( 'sp_formatdiv', __( 'Format', 'sportspress' ), 'SP_Meta_Box_Event_Format::output', 'sp_event', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Event_Details::output', 'sp_event', 'side', 'default' );
 		add_meta_box( 'sp_teamdiv', __( 'Teams', 'sportspress' ), 'SP_Meta_Box_Event_Teams::output', 'sp_event', 'side', 'default' );
-		add_meta_box( 'sp_videodiv', __( 'Video', 'sportspress' ), 'SP_Meta_Box_Event_Video::output', 'sp_event', 'side', 'low' );
+		if ( 'yes' == get_option( 'sportspress_load_videos_module', 'yes' )  ) {
+			add_meta_box( 'sp_videodiv', __( 'Video', 'sportspress' ), 'SP_Meta_Box_Event_Video::output', 'sp_event', 'side', 'low' );
+		}
 		add_meta_box( 'sp_resultsdiv', __( 'Team Results', 'sportspress' ), 'SP_Meta_Box_Event_Results::output', 'sp_event', 'normal', 'high' );
 		add_meta_box( 'sp_performancediv', __( 'Player Performance', 'sportspress' ), 'SP_Meta_Box_Event_Performance::output', 'sp_event', 'normal', 'high' );
 		add_meta_box( 'sp_editordiv', __( 'Article', 'sportspress' ), 'SP_Meta_Box_Event_Editor::output', 'sp_event', 'normal', 'low' );
