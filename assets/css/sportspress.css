@@ -33,7 +33,6 @@
 }
 .sp-data-table {
 	width: 100%;
-	position: relative;
     border-spacing: 0;
 	border-collapse: separate;
 }
@@ -77,37 +76,31 @@
 }
 
 /* Pagination */
-.sp-paginated-table {
-	margin-bottom: 0 !important;
-}
-.sp-pagination {
-	margin-top: 0 !important;
-	border-top: 0 !important;
-}
-.sp-pagination tfoot tr td {
+.sp-table-wrapper .dataTables_paginate {
 	text-align: center;
+}
+.sp-table-wrapper .dataTables_paginate .paginate_button {
+	color: #00a69c;
+	margin: 0.5em;
 	cursor: pointer;
+	display: inline-block;
 }
-.sp-pagination tfoot tr td.prev {
-	text-align: left;
+.sp-table-wrapper .dataTables_paginate .previous {
+	float: left;
+	margin-left: 0;
 }
-.sp-pagination tfoot tr td.next {
-	text-align: right;
+.sp-table-wrapper .dataTables_paginate .next {
+	float: right;
+	margin-right: 0;
 }
-.sp-pagination tfoot tr td a {
-	cursor: inherit;
-}
-.sp-pagination tfoot tr td.active a {
+.sp-table-wrapper .dataTables_paginate .current {
 	opacity: 0.5;
+	color: inherit;
 	cursor: default;
 }
-.sp-pagination tfoot tr td.disabled a {
+.sp-table-wrapper .dataTables_paginate .disabled {
 	opacity: 0;
 	cursor: default;
-}
-.widget .sp-pagination tfoot tr td.prev,
-.widget .sp-pagination tfoot tr td.next {
-	text-align: center;
 }
 
 /* League Table */
