@@ -35,8 +35,8 @@ if ( is_array( $leagues ) ):
 			continue;
 
 		$output = '<h4 class="sp-table-caption">' . $league->name . '</h4>' .
-			'<div class="sp-table-wrapper' . ( $scrollable ? ' sp-scrollable-table-wrapper' : '' ) . '">' .
-			'<table class="sp-player-statistics sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . '">' . '<thead>' . '<tr>';
+			'<div class="sp-table-wrapper">' .
+			'<table class="sp-player-statistics sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . '">' . '<thead>' . '<tr>';
 
 		foreach( $labels as $key => $label ):
 			$output .= '<th class="data-' . $key . '">' . $label . '</th>';
@@ -83,8 +83,8 @@ if ( $show_total ):
 		return false;
 
 	$output = '<h4 class="sp-table-caption">' . __( 'Career Total', 'sportspress' ) . '</h4>' .
-		'<div class="sp-table-wrapper' . ( $scrollable ? ' sp-scrollable-table-wrapper' : '' ) . '">' .
-		'<table class="sp-player-statistics sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . '">' . '<thead>' . '<tr>';
+		'<div class="sp-table-wrapper">' .
+		'<table class="sp-player-statistics sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . '">' . '<thead>' . '<tr>';
 
 	foreach( $labels as $key => $label ):
 		if ( 'team' == $key )

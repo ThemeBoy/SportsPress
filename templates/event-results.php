@@ -97,8 +97,8 @@ else:
 
 	$output .= '<h4 class="sp-table-caption">' . __( 'Team Results', 'sportspress' ) . '</h4>';
 
-	$output .= '<div class="sp-table-wrapper' . ( $scrollable ? ' sp-scrollable-table-wrapper' : '' ) . '">' .
-		'<table class="sp-event-results sp-data-table sp-responsive-table"><thead>' .
+	$output .= '<div class="sp-table-wrapper">' .
+		'<table class="sp-event-results sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . '"><thead>' .
 		'<th class="data-name">' . __( 'Team', 'sportspress' ) . '</th>';
 	foreach( $labels as $key => $label ):
 		$output .= '<th class="data-' . $key . '">' . $label . '</th>';

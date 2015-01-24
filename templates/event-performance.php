@@ -79,8 +79,8 @@ if ( is_array( $teams ) ):
 			endif;
 			?>
 			<?php if ( $show_team_players || $show_total ): ?>
-				<div class="sp-table-wrapper<?php if ( $scrollable ) { ?> sp-scrollable-table-wrapper<?php } ?>">
-					<table class="sp-event-performance sp-data-table <?php if ( $responsive ) { ?> sp-responsive-table<?php } ?>">
+				<div class="sp-table-wrapper">
+					<table class="sp-event-performance sp-data-table <?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
 						<thead>
 							<tr>
 								<?php if ( $show_team_players ): ?>

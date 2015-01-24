@@ -32,8 +32,8 @@ endforeach;
 ?>
 <div class="sp-template sp-template-event-details">
 	<h4 class="sp-table-caption"><?php _e( 'Details', 'sportspress' ); ?></h4>
-	<div class="sp-table-wrapper<?php if ( $scrollable ) { ?> sp-scrollable-table-wrapper<?php } ?>">
-		<table class="sp-event-details sp-data-table">
+	<div class="sp-table-wrapper">
+		<table class="sp-event-details sp-data-table<?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
 			<thead>
 				<tr>
 					<?php $i = 0; foreach( $data as $label => $value ):	?>
