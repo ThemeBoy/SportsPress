@@ -194,14 +194,16 @@ class SP_Admin_Welcome {
 						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><i class="dashicons dashicons-edit"></i> <?php _e( 'Change', 'sportspress' ); ?></a>
 
 						<h4><?php _e( 'Mode', 'sportspress' ); ?></h4>
-						<?php echo ( 'team' == get_option( 'sportspress_mode', 'team' ) ? __( 'Teams', 'sportspress' ) : __( 'Players', 'sportspress' ) ); ?>
+						<?php echo ( 'team' == get_option( 'sportspress_mode', 'team' ) ? __( 'Teams', 'sportspress' ) : __( 'Players', 'sportspress' ) . ' ' . __( '(Beta)', 'sportspress' ) ); ?>
 						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><i class="dashicons dashicons-edit"></i> <?php _e( 'Change', 'sportspress' ); ?></a>
 
 						<h4><?php _e( 'Next Steps', 'sportspress' ); ?></h4>
 						<p><?php _e( 'We&#8217;ve assembled some links to get you started:', 'sportspress' ); ?></p>
 						<div class="sportspress-steps">
 							<ul>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-shield-alt"><?php _e( 'Add New Team', 'sportspress' ); ?></a></li>
+								<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) { ?>
+									<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-shield-alt"><?php _e( 'Add New Team', 'sportspress' ); ?></a></li>
+								<?php } ?>
 								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-groups"><?php _e( 'Add New Player', 'sportspress' ); ?></a></li>
 								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-calendar"><?php _e( 'Add New Event', 'sportspress' ); ?></a></li>
 							</ul>
@@ -265,7 +267,7 @@ class SP_Admin_Welcome {
 											'type'      => 'radio',
 											'options'   => array(
 												'team' => __( 'Teams', 'sportspress' ),
-												'player' => __( 'Players', 'sportspress' ),
+												'player' => __( 'Players', 'sportspress' ) . ' ' . __( '(Beta)', 'sportspress' ),
 											),
 											'desc_tip'	=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
 										),

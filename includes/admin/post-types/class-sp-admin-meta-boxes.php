@@ -129,8 +129,14 @@ class SP_Admin_Meta_Boxes {
 		if ( 'yes' == get_option( 'sportspress_load_videos_module', 'yes' )  ) {
 			add_meta_box( 'sp_videodiv', __( 'Video', 'sportspress' ), 'SP_Meta_Box_Event_Video::output', 'sp_event', 'side', 'low' );
 		}
-		add_meta_box( 'sp_resultsdiv', __( 'Team Results', 'sportspress' ), 'SP_Meta_Box_Event_Results::output', 'sp_event', 'normal', 'high' );
-		add_meta_box( 'sp_performancediv', __( 'Player Performance', 'sportspress' ), 'SP_Meta_Box_Event_Performance::output', 'sp_event', 'normal', 'high' );
+		$teams = array_filter( sp_array_value( $post_meta, 'sp_team', array() ), array( $this, 'positive' ) );
+		if ( ! empty( $teams ) ) {
+			add_meta_box( 'sp_resultsdiv', __( 'Team Results', 'sportspress' ), 'SP_Meta_Box_Event_Results::output', 'sp_event', 'normal', 'high' );
+		}
+		$players = array_filter( sp_array_value( $post_meta, 'sp_player', array() ), array( $this, 'positive' ) );
+		if ( ! empty( $players ) ) {
+			add_meta_box( 'sp_performancediv', __( 'Player Performance', 'sportspress' ), 'SP_Meta_Box_Event_Performance::output', 'sp_event', 'normal', 'high' );
+		}
 		add_meta_box( 'sp_editordiv', __( 'Article', 'sportspress' ), 'SP_Meta_Box_Event_Editor::output', 'sp_event', 'normal', 'low' );
 
 		if ( 'yes' == get_option( 'sportspress_load_calendars_module', 'yes' ) ) {
@@ -261,6 +267,13 @@ class SP_Admin_Meta_Boxes {
 		if ( ! is_sp_post_type( $post->post_type ) && ! is_sp_config_type( $post->post_type ) ) return;
 
 		do_action( 'sportspress_process_' . $post->post_type . '_meta', $post_id, $post );
+	}
+
+	/*
+	 * Array filter removes values that are not positive.
+	 */
+	public function positive( $var = 0 ) {
+		return $var > 0;
 	}
 
 }

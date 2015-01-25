@@ -104,21 +104,23 @@ class SP_Meta_Box_Calendar_Details {
 				endif;
 				?>
 			</p>
-			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
-			<p>
-				<?php
-				$args = array(
-					'show_option_all' => __( 'All', 'sportspress' ),
-					'post_type' => 'sp_team',
-					'name' => 'sp_team',
-					'selected' => $team_id,
-					'values' => 'ID'
-				);
-				if ( ! sp_dropdown_pages( $args ) ):
-					sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' )  );
-				endif;
-				?>
-			</p>
+			<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) { ?>
+				<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
+				<p>
+					<?php
+					$args = array(
+						'show_option_all' => __( 'All', 'sportspress' ),
+						'post_type' => 'sp_team',
+						'name' => 'sp_team',
+						'selected' => $team_id,
+						'values' => 'ID'
+					);
+					if ( ! sp_dropdown_pages( $args ) ):
+						sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' )  );
+					endif;
+					?>
+				</p>
+			<?php } ?>
 			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
 			<p>
 				<select name="sp_order">
@@ -141,7 +143,9 @@ class SP_Meta_Box_Calendar_Details {
 		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0 ) );
 		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null ) );
 		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null ) );
-		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', 0 ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
+		if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) {
+			update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', 0 ) );
+		}
 	}
 }

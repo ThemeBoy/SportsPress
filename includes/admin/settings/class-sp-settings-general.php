@@ -28,6 +28,7 @@ class SP_Settings_General extends SP_Settings_Page {
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
 		add_action( 'sportspress_admin_field_timezone', array( $this, 'timezone_setting' ) );
 		add_action( 'sportspress_admin_field_frontend_styles', array( $this, 'frontend_styles_setting' ) );
+		add_action( 'sportspress_admin_field_current_mode', array( $this, 'current_mode_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
 	}
 
@@ -64,10 +65,12 @@ class SP_Settings_General extends SP_Settings_Page {
 					'type'      => 'radio',
 					'options'   => array(
 						'team' => __( 'Teams', 'sportspress' ),
-						'player' => __( 'Players', 'sportspress' ),
+						'player' => __( 'Players', 'sportspress' ) . ' ' . __( '(Beta)', 'sportspress' ),
 					),
 					'desc_tip' 		=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
 				),
+
+				array( 'type' => 'current_mode' ),
 			)),
 
 			array(
@@ -334,6 +337,21 @@ class SP_Settings_General extends SP_Settings_Page {
 		echo '<div class="sp-color-box"><strong>' . esc_html( $name ) . '</strong>
 	   		<input name="' . esc_attr( $id ). '" id="' . esc_attr( $id ) . '" type="text" value="' . esc_attr( $value ) . '" class="colorpick" /> <div id="colorPickerDiv_' . esc_attr( $id ) . '" class="colorpickdiv"></div>
 	    </div>';
+	}
+
+	/**
+	 * Output script to refresh page when mode is changed.
+	 */
+	function current_mode_setting() {
+		?>
+		<input type="hidden" name="sportspress_current_mode" value="<?php echo get_option( 'sportspress_mode', 'team' ); ?>">
+		<?php if ( sp_array_value( $_POST, 'sportspress_mode', 'team' ) !== sp_array_value( $_POST, 'sportspress_current_mode', 'team' ) ) { ?>
+			<script type="text/javascript">
+			window.onload = function() {
+				window.location = window.location.href;
+			}
+			</script>
+		<?php }
 	}
 }
 

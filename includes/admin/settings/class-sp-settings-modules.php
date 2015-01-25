@@ -167,7 +167,8 @@ class SP_Settings_Modules extends SP_Settings_Page {
 								<img src="<?php echo $theme->get_screenshot(); ?>" class="sp-theme-screenshot">
 								<p><?php _e( '<strong>Your theme does not declare SportsPress support</strong> &#8211; if you encounter layout issues please read our integration guide or choose a SportsPress theme :)', 'sportspress' ); ?></p>
 								<p class="sp-module-actions">
-									<a class="button" href="http://themeboy.com/sportspress/themes/" target="_blank"><?php _e( 'Need a Better Theme?', 'sportspress' ); ?></a>
+									<span><?php _e( 'Free', 'sportspress' ); ?></span>
+									<a class="button" href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), admin_url( 'theme-install.php' ) ); ?>" target="_blank"><?php _e( 'Install Rookie Theme', 'sportspress' ); ?></a>
 								</p>
 							</td></tr>
 						</tbody>
@@ -194,6 +195,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 
 			<div class="sp-modules-main">
 				<?php foreach ( SP()->modules->data as $section => $modules ) { ?>
+				<?php if ( 'team' == $section && 'team' != get_option( 'sportspress_mode', 'team' ) ) continue; ?>
 				<table class="sp-modules-table widefat" cellspacing="0">
 					<thead>
 						<tr><th>

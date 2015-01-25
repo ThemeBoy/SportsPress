@@ -61,17 +61,19 @@ class SP_Meta_Box_Player_Statistics {
 				<thead>
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
-						<?php if ( $league_id ): ?>
-							<th>
-								<?php if ( $has_checkboxes ): ?>
-									<label for="sp_columns_team">
-										<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
+						<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ): ?>
+							<?php if ( $league_id ): ?>
+								<th>
+									<?php if ( $has_checkboxes ): ?>
+										<label for="sp_columns_team">
+											<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
+											<?php _e( 'Team', 'sportspress' ); ?>
+										</label>
+									<?php else: ?>
 										<?php _e( 'Team', 'sportspress' ); ?>
-									</label>
-								<?php else: ?>
-									<?php _e( 'Team', 'sportspress' ); ?>
-								<?php endif; ?>
-							</th>
+									<?php endif; ?>
+								</th>
+							<?php endif; ?>
 						<?php endif; ?>
 						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
 							<th><?php echo $label; ?></th>
@@ -87,18 +89,29 @@ class SP_Meta_Box_Player_Statistics {
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
-								<?php
-								if ( 'WP_Error' == get_class( $div ) ) _e( 'Total', 'sportspress' );
-								else echo $div->name;
-								?>
-							</td>
-							<?php if ( $league_id ): ?>
-								<?php if ( $div_id == 0 ): ?>
-									<td>&nbsp;</td>
-								<?php else: ?>
-									<td>
+								<?php if ( 'team' != get_option( 'sportspress_mode', 'team' ) && 0 !== $div_id ): ?>
+									<label>
 										<?php $value = sp_array_value( $leagues, $div_id, '-1' ); ?>
-										<?php if ( 'team' == get_option( 'sportspress_mode', 'team' )  ) { ?>
+										<input type="checkbox" name="sp_leagues[<?php echo $league_id; ?>][<?php echo $div_id; ?>]" value="1" <?php checked( $value ); ?>>
+										<?php
+										if ( 'WP_Error' == get_class( $div ) ) _e( 'Total', 'sportspress' );
+										else echo $div->name;
+										?>
+									</label>
+								<?php else: ?>
+									<?php
+									if ( 'WP_Error' == get_class( $div ) ) _e( 'Total', 'sportspress' );
+									else echo $div->name;
+									?>
+								<?php endif; ?>
+							</td>
+							<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ): ?>
+								<?php if ( $league_id ): ?>
+									<?php if ( $div_id == 0 ): ?>
+										<td>&nbsp;</td>
+									<?php else: ?>
+										<td>
+											<?php $value = sp_array_value( $leagues, $div_id, '-1' ); ?>
 											<?php
 											$args = array(
 												'post_type' => 'sp_team',
@@ -127,10 +140,8 @@ class SP_Meta_Box_Player_Statistics {
 												_e( '&mdash; None &mdash;', 'sportspress' );
 											endif;
 											?>
-										<?php } else { ?>
-											<input type="checkbox" name="sp_leagues[<?php echo $league_id; ?>][<?php echo $div_id; ?>]" value="0" <?php checked( 0, $value ); ?>>
-										<?php } ?>
-									</td>
+										</td>
+									<?php endif; ?>
 								<?php endif; ?>
 							<?php endif; ?>
 							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;

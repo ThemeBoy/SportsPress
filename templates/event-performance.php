@@ -61,8 +61,15 @@ if ( is_array( $teams ) ):
 
 		$totals = array();
 
-		if ( $team_id ) {
+		if ( 0 < $team_id ) {
 			$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
+		} elseif ( 0 == $team_id ) {
+			$data = array();
+			foreach ( $players as $player_id ) {
+				if ( isset( $performance[ $player_id ][ $player_id ] ) ) {
+					$data[ $player_id ] = $performance[ $player_id ][ $player_id ];
+				}
+			}
 		} else {
 			$data = sp_array_value( array_values( $performance ), $index );
 		}

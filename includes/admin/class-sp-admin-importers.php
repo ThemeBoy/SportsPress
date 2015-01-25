@@ -28,8 +28,10 @@ class SP_Admin_Importers {
 	 * Add menu items
 	 */
 	public function register_importers() {
-		register_importer( 'sp_event_csv', __( 'SportsPress Events (CSV)', 'sportspress' ), __( 'Import <strong>events</strong> from a csv file.', 'sportspress'), array( $this, 'events_importer' ) );
-		register_importer( 'sp_team_csv', __( 'SportsPress Teams (CSV)', 'sportspress' ), __( 'Import <strong>teams</strong> from a csv file.', 'sportspress'), array( $this, 'teams_importer' ) );
+		if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) {
+			register_importer( 'sp_event_csv', __( 'SportsPress Events (CSV)', 'sportspress' ), __( 'Import <strong>events</strong> from a csv file.', 'sportspress'), array( $this, 'events_importer' ) );
+			register_importer( 'sp_team_csv', __( 'SportsPress Teams (CSV)', 'sportspress' ), __( 'Import <strong>teams</strong> from a csv file.', 'sportspress'), array( $this, 'teams_importer' ) );
+		}
 		register_importer( 'sp_player_csv', __( 'SportsPress Players (CSV)', 'sportspress' ), __( 'Import <strong>players</strong> from a csv file.', 'sportspress'), array( $this, 'players_importer' ) );
 		register_importer( 'sp_staff_csv', __( 'SportsPress Staff (CSV)', 'sportspress' ), __( 'Import <strong>staff</strong> from a csv file.', 'sportspress'), array( $this, 'staff_importer' ) );
 	}

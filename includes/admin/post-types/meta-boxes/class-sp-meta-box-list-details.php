@@ -62,21 +62,23 @@ class SP_Meta_Box_List_Details {
 				endif;
 				?>
 			</p>
-			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
-			<p class="sp-tab-select">
-				<?php
-				$args = array(
-					'post_type' => 'sp_team',
-					'name' => 'sp_team',
-					'show_option_all' => __( 'All', 'sportspress' ),
-					'selected' => $team_id,
-					'values' => 'ID',
-				);
-				if ( ! sp_dropdown_pages( $args ) ):
-					sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
-				endif;
-				?>
-			</p>
+			<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) { ?>
+				<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
+				<p class="sp-tab-select">
+					<?php
+					$args = array(
+						'post_type' => 'sp_team',
+						'name' => 'sp_team',
+						'show_option_all' => __( 'All', 'sportspress' ),
+						'selected' => $team_id,
+						'values' => 'ID',
+					);
+					if ( ! sp_dropdown_pages( $args ) ):
+						sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
+					endif;
+					?>
+				</p>
+			<?php } ?>
 			<p><strong><?php _e( 'Grouping', 'sportspress' ); ?></strong></p>
 			<p>
 			<select name="sp_grouping">
@@ -126,7 +128,9 @@ class SP_Meta_Box_List_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+		if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) {
+			update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+		}
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
 		update_post_meta( $post_id, 'sp_grouping', sp_array_value( $_POST, 'sp_grouping', array() ) );

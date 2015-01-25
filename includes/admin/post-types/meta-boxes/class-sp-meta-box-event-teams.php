@@ -87,9 +87,7 @@ class SP_Meta_Box_Event_Teams {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) {
-			sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
-		}
+		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
 	}
