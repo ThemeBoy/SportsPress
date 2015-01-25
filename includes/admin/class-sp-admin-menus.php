@@ -85,8 +85,8 @@ class SP_Admin_Menus {
 	public function menu_highlight() {
 		global $typenow;
 		$screen = get_current_screen();
-		if ( $screen->id == 'edit-sp_role' )
-			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit-tags.php?taxonomy=sp_role&post_type=sp_player' );			
+		if ( $screen->id == 'sp_role' )
+			$this->highlight_admin_menu( 'edit.php?post_type=sp_staff', 'edit-tags.php?taxonomy=sp_role&post_type=sp_staff' );			
 		elseif ( is_sp_config_type( $typenow ) )
 			$this->highlight_admin_menu( 'sportspress', 'sportspress-config' );
 		elseif ( $typenow == 'sp_calendar' )
