@@ -141,16 +141,16 @@ Your feedback is much appreciated and makes all the difference in improving Spor
 
 = Automatic Installation =
 
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t even need to leave your web browser. To do an automatic install of SportsPress, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you don't even need to leave your web browser. To do an automatic install of SportsPress, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
 
-In the search field type “SportsPress” and click Search Plugins. Once you’ve found our sports plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking Install Now. After clicking that link you will be asked if you’re sure you want to install the plugin. Click yes and WordPress will automatically complete the installation.
+In the search field type "SportsPress" and click Search Plugins. Once you've found our sports plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking Install Now. After clicking that link you will be asked if you're sure you want to install the plugin. Click yes and WordPress will automatically complete the installation.
 
 = Manual Installation =
 
 The manual installation method involves downloading our sports plugin and uploading it to your webserver via your favorite FTP application.
 
 1. Download the plugin file to your computer and unzip it
-2. Using an FTP program, or your hosting control panel, upload the unzipped plugin folder to your WordPress installation’s wp-content/plugins/ directory.
+2. Using an FTP program, or your hosting control panel, upload the unzipped plugin folder to your WordPress installation's wp-content/plugins/ directory.
 3. Activate the plugin from the Plugins menu within the WordPress admin.
 
 = Upgrading =
@@ -182,9 +182,34 @@ Yes; SportsPress will work with any theme, but may require some styling to make 
 
 Bugs can be reported either in our support forum or preferably on the [SportsPress GitHub repository](https://github.com/ThemeBoy/SportsPress/issues).
 
-= Can I import teams/players/events from a CSV file? =
+= Will SportsPress work with my sport? =
+
+The plugin comes preinstalled with several different sports presets to help you get started quickly, but is also flexible enough to be customized to fit the need of any team or individual sport. Please [let us know](http://wordpress.org/support/plugin/sportspress) if you'd like to work with us to get your preset added the plugin.
+
+= Can I import teams/players/staff/matches? =
 
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers.
+
+= What's the difference between the free and Pro plugin? =
+
+SportsPress is a free plugin developed to give sports organizations the functionality needed to run a team, club, or league website. The plugin allows you to schedule your upcoming matches and enter the results after you've played a game. Your league tables, team and player statistics will automatically update once you've published the result to reflect the new standings.
+
+Limitations? Don't worry, there are no limitations to the number of events, players, staff members, teams, clubs, or leagues you can add to the free plugin.
+
+[SportsPress Pro](http://sportspresspro.com) is a premium plugin made for serious teams who are looking for additional sports functionality in their website. By upgrading to SportsPress Pro, you will be given instant access to a suite of sports modules that will appear in your dashboard.
+
+The current modules that are available exclusively to SportsPress Pro are:
+
+* Tournaments: Create and display tournaments in a bracket/knockout cup format.
+* Sponsors: Add your sponsors on your website and track each of their clicks and impressions.
+* Staff Directories: Show contact information of your key personnel so people know who to get in touch with.
+* Team Colors: Make each team's profile page unique by displaying their team colors.
+* League Menu: Display a global navigation bar at the top of your website for easy navigation from one team to the next.
+* Branding: Instantly rebrands your admin panel to reflect your organization's brand.
+
+There are [3 different licenses](http://sportspresspro.com/pricing/) that you can choose from (Social, Club, and League), each with a [specified set of modules](http://sportspresspro.com/features/).
+
+When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
 
