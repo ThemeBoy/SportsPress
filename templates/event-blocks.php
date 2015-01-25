@@ -104,22 +104,22 @@ if ( $show_title && $id ) {
 					<tr class="sp-row sp-post<?php echo ( $i % 2 == 0 ? ' alternate' : '' ); ?>">
 						<td>
 							<?php echo implode( $logos, ' ' ); ?>
-							<time class="event-date" datetime="<?php echo $event->post_date; ?>"><?php echo get_the_time( get_option( 'date_format' ), $event ); ?></time>
+							<time class="sp-event-date" datetime="<?php echo $event->post_date; ?>"><?php echo get_the_time( get_option( 'date_format' ), $event ); ?></time>
 							<?php if ( ! empty( $main_results ) ): ?>
-								<h5 class="event-results"><?php echo implode( $main_results, ' - ' ); ?></h5>
+								<h5 class="sp-event-results"><?php echo implode( $main_results, ' - ' ); ?></h5>
 							<?php else: ?>
-								<h5 class="event-time"><?php echo get_the_time( get_option( 'time_format' ), $event ); ?></h5>
+								<h5 class="sp-event-time"><?php echo get_the_time( get_option( 'time_format' ), $event ); ?></h5>
 							<?php endif; ?>
 							<?php if ( $show_league ): $leagues = get_the_terms( $event, 'sp_league' ); if ( $leagues ): $league = array_shift( $leagues ); ?>
-								<div class="event-league"><?php echo $league->name; ?></div>
+								<div class="sp-event-league"><?php echo $league->name; ?></div>
 							<?php endif; endif; ?>
 							<?php if ( $show_season ): $seasons = get_the_terms( $event, 'sp_season' ); if ( $seasons ): $season = array_shift( $seasons ); ?>
-								<div class="event-season"><?php echo $season->name; ?></div>
+								<div class="sp-event-season"><?php echo $season->name; ?></div>
 							<?php endif; endif; ?>
 							<?php if ( $show_venue ): $venues = get_the_terms( $event, 'sp_venue' ); if ( $venues ): $venue = array_shift( $venues ); ?>
-								<div class="event-venue"><?php echo $venue->name; ?></div>
+								<div class="sp-event-venue"><?php echo $venue->name; ?></div>
 							<?php endif; endif; ?>
-							<h4 class="event-title"><a href="<?php echo get_post_permalink( $event ); ?>"><?php echo $event->post_title; ?></a></h4>
+							<h4 class="sp-event-title"><a href="<?php echo get_post_permalink( $event ); ?>"><?php echo $event->post_title; ?></a></h4>
 						</td>
 					</tr>
 					<?php

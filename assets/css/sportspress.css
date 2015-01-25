@@ -36,7 +36,7 @@
     border-spacing: 0;
 	border-collapse: separate;
 }
-.sp-scrollable-table-wrapper .sp-data-table {
+.sp-paginated-table {
 	margin-bottom: 0;
 }
 .sp-data-table thead th {
@@ -210,19 +210,22 @@
 .sp-event-blocks thead {
 	display: none;
 }
-.sp-event-blocks .event-date,
-.sp-event-blocks .event-time,
-.sp-event-blocks .event-results,
-.sp-event-blocks .event-title {
+.sp-event-blocks .sp-event-date,
+.sp-event-blocks .sp-event-time,
+.sp-event-blocks .sp-event-results,
+.sp-event-blocks .sp-event-title {
 	text-align: center;
 	display: block;
 	margin: 10px 20%;
 	padding: 0 20px;
 	clear: none;
 }
-.sp-event-blocks .event-league,
-.sp-event-blocks .event-season {
+.sp-event-blocks .sp-event-league,
+.sp-event-blocks .sp-event-season,
+.sp-event-blocks .sp-event-venue {
 	text-align: center;
+	margin: 0 20%;
+	padding: 0 20px;
 }
 .sp-event-blocks .team-logo {
 	width: 20%;
@@ -242,7 +245,7 @@
 	width: auto;
 	height: auto;
 }
-.widget .sp-event-blocks .event-title {
+.widget .sp-event-blocks .sp-event-title {
 	margin: 10px;
 	padding: 0;
 }
