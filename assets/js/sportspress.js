@@ -44,6 +44,7 @@ function viewport() {
 	/* Data Tables */
 	$(".sp-data-table").each(function() {
 		sortable = viewport().width > 640 && $(this).hasClass("sp-sortable-table");
+		responsive = $(this).hasClass("sp-responsive-table");
 		paginated = $(this).hasClass("sp-paginated-table");
 		display_length = parseInt($(this).attr("data-sp-rows"));
 		if ( display_length == undefined || isNaN( display_length ) ) display_length = 10;
@@ -54,6 +55,7 @@ function viewport() {
 				"autoWidth": false,
 				"searching": false,
 				"info": false,
+				"responsive": responsive,
 				"paging": paginated,
 				"lengthChange": false,
 				"pagingType": "simple_numbers",
