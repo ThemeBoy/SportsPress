@@ -530,6 +530,9 @@ jQuery(document).ready(function($){
 	});
 
 	// Datepicker
+	$(".sp-datepicker").datepicker({
+		dateFormat : "yy-mm-dd"
+	});
 	$(".sp-datepicker-from").datepicker({
 		dateFormat : "yy-mm-dd",
 		onClose: function( selectedDate ) {
