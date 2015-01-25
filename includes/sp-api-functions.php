@@ -131,6 +131,14 @@ function sp_get_logo( $post = 0, $size = 'icon', $attr = array() ) {
 	return get_the_post_thumbnail( $post, 'sportspress-fit-' . $size, $attr );
 }
 
+function sp_get_abbreviation( $post = 0 ) {
+	return get_post_meta ( $post, 'sp_abbreviation', true );
+}
+
+function sp_the_abbreviation( $post = 0 ) {
+	echo sp_get_abbreviation( $post );
+}
+
 function sp_the_logo( $post = 0, $size = 'icon', $attr = array() ) {
 	echo sp_get_logo( $post, $size, $attr );
 }
