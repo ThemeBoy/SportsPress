@@ -28,9 +28,14 @@ class SportsPress_Individual_Mode {
 		// Define constants
 		$this->define_constants();
 
+		// Actions
+		add_action( 'sportspress_process_sp_event_meta', array( $this, 'save_player_meta' ), 99, 2 );
+
 		// Filters
 		add_filter( 'gettext', array( $this, 'gettext' ), 99, 3 );
 		add_filter( 'pre_get_posts', array( $this, 'pre_get_posts' ) );
+		//add_filter( 'option_sportspress_event_show_total', '__return_false', 99 );
+		//add_action( 'sportspress_meta_boxes', array( $this, 'remove_meta_boxes' ), 99 );
 		add_filter( 'sportspress_register_post_type_team', array( $this, 'hide_post_type' ), 99 );
 		add_filter( 'sportspress_register_post_type_table', array( $this, 'move_table_post_type' ), 99 );
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'remove_team_settings_tab' ), 99 );
@@ -41,14 +46,18 @@ class SportsPress_Individual_Mode {
 		add_filter( 'sportspress_modules', array( $this, 'rearrange_modules' ), 99 );
 		add_filter( 'sportspress_glance_items', array( $this, 'remove_glance_item' ), 99 );
 		add_filter( 'sportspress_shortcodes', array( $this, 'remove_shortcodes' ), 99 );
+		add_filter( 'sportspress_event_shortcodes', array( $this, 'remove_event_shortcodes' ), 99 );
 		add_filter( 'sportspress_list_admin_columns', array( $this, 'remove_team_column' ), 99 );
 		add_filter( 'sportspress_importers', array( $this, 'remove_teams_importer' ), 99 );
 		add_filter( 'sportspress_permalink_slugs', array( $this, 'remove_team_permalink_slug' ), 99 );
+		//add_filter( 'sportspress_player_column_tabs', array( $this, 'player_column_tabs' ), 99 );
 		add_filter( 'sportspress_event_team_tabs', '__return_false' );
+		add_filter( 'sportspress_player_team_statistics', '__return_false' );
 		add_filter( 'sportspress_list_team_selector', '__return_false' );
+		add_filter( 'sportspress_split_performance_tables', '__return_false' );
 	
 		// Remove templates
-		remove_action( 'sportspress_single_event_content', 'sportspress_output_event_performance', 50 );
+		//remove_action( 'sportspress_single_event_content', 'sportspress_output_event_performance', 50 );
 	}
 
 	/**
@@ -63,6 +72,16 @@ class SportsPress_Individual_Mode {
 
 		if ( !defined( 'SP_INDIVIDUAL_MODE_DIR' ) )
 			define( 'SP_INDIVIDUAL_MODE_DIR', plugin_dir_path( __FILE__ ) );
+	}
+
+	public function save_player_meta( $post_id, $post ) {
+		if ( isset( $_POST['sp_team'] ) && is_array( $_POST['sp_team'] ) ) {
+			$players = array();
+			foreach ( $_POST['sp_team'] as $player ) {
+				$players[] = array( 0, $player );
+			}
+			sp_update_post_meta_recursive( $post_id, 'sp_player', $players );
+		}
 	}
 
 	/** 
@@ -95,6 +114,14 @@ class SportsPress_Individual_Mode {
 		$query->set( 'post_type', 'sp_player' );
 
 		return $query;
+	}
+
+	/**
+	 * Remove meta boxes.
+	 */
+	public function remove_meta_boxes( $meta_boxes ) {
+		unset( $meta_boxes['sp_event']['performance'] );
+		return $meta_boxes;
 	}
 
 	/**
@@ -199,6 +226,14 @@ class SportsPress_Individual_Mode {
 	}
 
 	/**
+	 * Remove shortcodes from event meta box.
+	 */
+	public function remove_event_shortcodes( $shortcodes ) {
+		unset( $shortcodes['event_performance'] );
+		return $shortcodes;
+	}
+
+	/**
 	 * Remove team column from player list admin.
 	 */
 	public function remove_team_column( $columns ) {
@@ -222,6 +257,16 @@ class SportsPress_Individual_Mode {
 			unset( $slugs[ $index ] );
 		}
 		return $slugs;
+	}
+
+	/**
+	 * Modify player column tabs.
+	 */
+	public function player_column_tabs( $tabs ) {
+		if ( ( $index = array_search ( 'sp_performance', $tabs ) ) !== false ) {
+			$tabs[ $index ] = 'sp_column';
+		}
+		return $tabs;
 	}
 }
 

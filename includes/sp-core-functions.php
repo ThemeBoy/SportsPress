@@ -1159,6 +1159,7 @@ function sp_get_text_options() {
 		__( 'Nationality', 'sportspress' ),
 		__( 'Outcome', 'sportspress' ),
 		__( 'Past Teams', 'sportspress' ),
+		__( 'Performance', 'sportspress' ),
 		__( 'Played', 'sportspress' ),
 		__( 'Player', 'sportspress' ),
 		__( 'Pos', 'sportspress' ),

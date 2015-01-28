@@ -19,17 +19,22 @@ class SP_Meta_Box_Player_Columns {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
+		$selected = (array) get_post_meta( $post->ID, 'sp_columns', true );
+		$tabs = apply_filters( 'sportspress_player_column_tabs', array( 'sp_performance', 'sp_statistic' ) );
 		?>
 		<div class="sp-instance">
+			<?php if ( $tabs ) { ?>
 			<ul id="sp_column-tabs" class="wp-tab-bar sp-tab-bar">
-				<li class="wp-tab-active"><a href="#sp_performance-all"><?php _e( 'Performance', 'sportspress' ); ?></a></li>
-				<li class="wp-tab"><a href="#sp_statistic-all"><?php _e( 'Statistics', 'sportspress' ); ?></a></li>
+				<?php foreach ( $tabs as $index => $post_type ) { $object = get_post_type_object( $post_type ); ?>
+				<li class="wp-tab<?php if ( 0 == $index ) { ?>-active<?php } ?>"><a href="#<?php echo $post_type; ?>-all"><?php echo $object->labels->name; ?></a></li>
+				<?php } ?>
 			</ul>
 			<?php
-			$selected = (array)get_post_meta( $post->ID, 'sp_columns', true );
-			sp_column_checklist( $post->ID, 'sp_performance', 'block', $selected );
-			sp_column_checklist( $post->ID, 'sp_statistic', 'none', $selected );
+				foreach ( $tabs as $index => $post_type ) {
+					sp_column_checklist( $post->ID, $post_type, ( 0 == $index ? 'block' : 'none' ), $selected );
+				}
 			?>
+			<?php } ?>
 		</div>
 		<?php
 	}

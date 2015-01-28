@@ -43,7 +43,8 @@ class SP_Meta_Box_Event_Details {
 							'class' => 'sp-has-dummy',
 							'selected' => sp_get_the_term_id_or_meta( $post->ID, $taxonomy ),
 							'values' => 'term_id',
-							'show_option_none' => __( '-- Not set --', 'sportspress' ),
+							'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
+							'chosen' => true,
 						);
 						if ( in_array( $taxonomy, apply_filters( 'sportspress_event_auto_taxonomies', array( 'sp_venue' ) ) ) ) {
 							$args['show_option_all'] = __( '(Auto)', 'sportspress' );

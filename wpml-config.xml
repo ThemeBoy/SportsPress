@@ -12,6 +12,7 @@
       <key name="Nationality"/>
       <key name="Outcome"/>
       <key name="Past Teams"/>
+      <key name="Performance"/>
       <key name="Played"/>
       <key name="Player"/>
       <key name="Pos"/>

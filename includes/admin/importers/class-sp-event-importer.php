@@ -481,7 +481,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 							'taxonomy' => 'sp_league',
 							'name' => 'sp_league',
 							'values' => 'slug',
-							'show_option_none' => __( '-- Not set --', 'sportspress' ),
+							'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
 						);
 						if ( ! sp_dropdown_taxonomies( $args ) ):
 							echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
@@ -496,7 +496,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 							'taxonomy' => 'sp_season',
 							'name' => 'sp_season',
 							'values' => 'slug',
-							'show_option_none' => __( '-- Not set --', 'sportspress' ),
+							'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
 						);
 						if ( ! sp_dropdown_taxonomies( $args ) ):
 							echo '<p>' . __( 'None', 'sportspress' ) . '</p>';

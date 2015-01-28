@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.5
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -61,7 +61,7 @@ class SP_Meta_Box_Player_Statistics {
 				<thead>
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
-						<?php if ( $league_id ): ?>
+						<?php if ( apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
 							<th>
 								<?php if ( $has_checkboxes ): ?>
 									<label for="sp_columns_team">
@@ -89,8 +89,11 @@ class SP_Meta_Box_Player_Statistics {
 							<td>
 								<?php if ( 0 !== $div_id ): ?>
 									<label>
-										<?php $value = sp_array_value( $leagues, $div_id, '-1' ); ?>
-										<input type="checkbox" name="sp_leagues[<?php echo $league_id; ?>][<?php echo $div_id; ?>]" value="1" <?php checked( $value ); ?>>
+										<?php if ( ! apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
+											<?php $value = sp_array_value( $leagues, $div_id, '-1' ); ?>
+											<input type="hidden" name="sp_leagues[<?php echo $league_id; ?>][<?php echo $div_id; ?>]" value="-1">
+											<input type="checkbox" name="sp_leagues[<?php echo $league_id; ?>][<?php echo $div_id; ?>]" value="1" <?php checked( $value ); ?>>
+										<?php endif; ?>
 										<?php
 										if ( 'WP_Error' == get_class( $div ) ) _e( 'Total', 'sportspress' );
 										else echo $div->name;
@@ -103,7 +106,7 @@ class SP_Meta_Box_Player_Statistics {
 									?>
 								<?php endif; ?>
 							</td>
-							<?php if ( $league_id ): ?>
+							<?php if ( apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
 								<?php if ( $div_id == 0 ): ?>
 									<td>&nbsp;</td>
 								<?php else: ?>

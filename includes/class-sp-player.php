@@ -338,7 +338,7 @@ class SP_Player extends SP_Custom_Post {
 					$team_name = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
 				endif;
 			else:
-				continue;
+				$team_name = __( 'Total', 'sportspress' );
 			endif;
 
 			// Add season name to row
