@@ -14,7 +14,7 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $teams = get_post_meta( $id, 'sp_team' );
-$teams = array_filter( $teams );
+$teams = array_filter( $teams, 'sp_filter_positive' );
 if ( $teams ):
 	$team_logos = array();
 	foreach ( $teams as $team ):

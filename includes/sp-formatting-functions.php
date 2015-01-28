@@ -64,6 +64,17 @@ function sp_array_overlay( $a1, $a2 ) {
 }
 
 /**
+ * Array filter returns positive values only.
+ *
+ * @access public
+ * @param int $var
+ * @return bool
+ */
+function sp_filter_positive( $var = 0 ) {
+	return $var > 0;
+}
+
+/**
  * let_to_num function.
  *
  * This function transforms the php.ini notation for numbers (like '2M') to an integer.
