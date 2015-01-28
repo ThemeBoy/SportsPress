@@ -91,53 +91,6 @@ class SP_Settings_Players extends SP_Settings_Page {
 
 		);
 
-		if ( 'yes' == get_option( 'sportspress_load_player_lists_module', 'yes' ) ) {
-
-			$settings = array_merge( $settings, array_merge(
-
-				array(
-					array( 'title' => __( 'Player Lists', 'sportspress' ), 'type' => 'title', 'id' => 'list_options' ),
-				),
-
-				apply_filters( 'sportspress_player_list_options', array(
-					array(
-						'title'     => __( 'Players', 'sportspress' ),
-						'desc' 		=> __( 'Display photos', 'sportspress' ),
-						'id' 		=> 'sportspress_list_show_photos',
-						'default'	=> 'no',
-						'type' 		=> 'checkbox',
-					),
-
-					array(
-						'title'     => __( 'Pagination', 'sportspress' ),
-						'desc' 		=> __( 'Paginate', 'sportspress' ),
-						'id' 		=> 'sportspress_list_paginated',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-					),
-					
-					array(
-						'title' 	=> __( 'Limit', 'sportspress' ),
-						'id' 		=> 'sportspress_list_rows',
-						'class' 	=> 'small-text',
-						'default'	=> '10',
-						'desc' 		=> __( 'players', 'sportspress' ),
-						'type' 		=> 'number',
-						'custom_attributes' => array(
-							'min' 	=> 1,
-							'step' 	=> 1
-						),
-					),
-				) ),
-
-				array(
-					array( 'type' => 'sectionend', 'id' => 'list_options' ),
-				)
-
-			));
-
-		} // End player settings
-
 		return apply_filters( 'sportspress_player_settings', $settings );
 	}
 }

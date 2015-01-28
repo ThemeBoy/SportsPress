@@ -265,13 +265,6 @@ final class SportsPress {
 	 */
 	public function include_widgets() {
 		include_once( 'includes/widgets/class-sp-widget-countdown.php' );
-		if ( 'yes' == get_option( 'sportspress_load_league_tables_module', 'yes' ) ) {
-			include_once( 'includes/widgets/class-sp-widget-league-table.php' );
-		}
-		if ( 'yes' == get_option( 'sportspress_load_player_lists_module', 'yes' ) ) {
-			include_once( 'includes/widgets/class-sp-widget-player-list.php' );
-			include_once( 'includes/widgets/class-sp-widget-player-gallery.php' );
-		}
 		include_once( 'includes/widgets/class-sp-widget-staff.php' );
 
 		do_action( 'sportspress_widgets' );

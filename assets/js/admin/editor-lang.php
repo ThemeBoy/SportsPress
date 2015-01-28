@@ -11,15 +11,6 @@ $options = array(
     ),
 );
 
-if ( 'yes' == get_option( 'sportspress_load_league_tables_module', 'yes' ) ) {
-    $options['table'] = array( 'table' );
-}
-
-if ( 'yes' == get_option( 'sportspress_load_player_lists_module', 'yes' ) ) {
-    $options['player'][] = 'list';
-    $options['player'][] = 'gallery';
-}
-
 $options = apply_filters( 'sportspress_shortcodes', $options );
 
 foreach ( $options as $name => $group ) {

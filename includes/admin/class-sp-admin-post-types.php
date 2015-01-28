@@ -39,11 +39,7 @@ class SP_Admin_Post_Types {
 		include_once( 'post-types/class-sp-admin-cpt-statistic.php' );
 		include_once( 'post-types/class-sp-admin-cpt-event.php' );
 		include_once( 'post-types/class-sp-admin-cpt-team.php' );
-		if ( 'yes' == get_option( 'sportspress_load_league_tables_module', 'yes' )  )
-			include_once( 'post-types/class-sp-admin-cpt-table.php' );
 		include_once( 'post-types/class-sp-admin-cpt-player.php' );
-		if ( 'yes' == get_option( 'sportspress_load_player_lists_module', 'yes' )  )
-			include_once( 'post-types/class-sp-admin-cpt-list.php' );
 		include_once( 'post-types/class-sp-admin-cpt-staff.php' );
 		do_action( 'sportspress_include_post_type_handlers' );
 	}

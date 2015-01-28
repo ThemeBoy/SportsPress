@@ -57,12 +57,8 @@ add_action( 'sportspress_single_calendar_content', 'sportspress_output_calendar'
  */
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_logo', 0 );
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_details', 10 );
-if ( 'yes' == get_option( 'sportspress_load_player_lists_module', 'yes' )  ) {
-	add_action( 'sportspress_single_team_content', 'sportspress_output_team_lists', 20 );
-}
-if ( 'yes' == get_option( 'sportspress_load_league_tables_module', 'yes' )  ) {
-	add_action( 'sportspress_single_team_content', 'sportspress_output_team_tables', 30 );
-}
+add_action( 'sportspress_single_team_content', 'sportspress_output_team_lists', 20 );
+add_action( 'sportspress_single_team_content', 'sportspress_output_team_tables', 30 );
 
 /**
  * After Single Team
