@@ -30,6 +30,7 @@ class SportsPress_Calendars {
 
 		// Actions
 		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'add_meta_boxes', array( $this, 'remove_meta_boxes' ), 10 );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
 		add_action( 'sportspress_widgets', array( $this, 'include_widgets' ) );
 
@@ -87,6 +88,15 @@ class SportsPress_Calendars {
 				)
 			)
 		);
+	}
+
+	/**
+	 * Remove meta boxes.
+	 */
+	public function remove_meta_boxes() {
+		remove_meta_box( 'sp_seasondiv', 'sp_calendar', 'side' );
+		remove_meta_box( 'sp_leaguediv', 'sp_calendar', 'side' );
+		remove_meta_box( 'sp_venuediv', 'sp_calendar', 'side' );
 	}
 
 	/**

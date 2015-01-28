@@ -136,19 +136,97 @@ class SP_Admin_Meta_Boxes {
 					'title' => __( 'Event Results', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Event_Results::save',
 					'output' => 'SP_Meta_Box_Event_Results::output',
-					'context' => 'side',
-					'priority' => 'default',
+					'context' => 'normal',
+					'priority' => 'high',
 				),
 				'performance' => array(
 					'title' => __( 'Player Performance', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Event_Performance::save',
 					'output' => 'SP_Meta_Box_Event_Performance::output',
+					'context' => 'normal',
+					'priority' => 'high',
+				),
+				'editor' => array(
+					'title' => __( 'Article', 'sportspress' ),
+					'output' => 'SP_Meta_Box_Event_Editor::output',
+					'context' => 'normal',
+					'priority' => 'low',
+				),
+			),
+			'sp_team' => array(
+				'details' => array(
+					'title' => __( 'Details', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Team_Details::save',
+					'output' => 'SP_Meta_Box_Team_Details::output',
 					'context' => 'side',
 					'priority' => 'default',
 				),
 				'editor' => array(
 					'title' => __( 'Article', 'sportspress' ),
-					'output' => 'SP_Meta_Box_Event_Editor::output',
+					'output' => 'SP_Meta_Box_Team_Editor::output',
+					'context' => 'normal',
+					'priority' => 'low',
+				),
+			),
+			'sp_player' => array(
+				'shortcode' => array(
+					'title' => __( 'Shortcodes', 'sportspress' ),
+					'output' => 'SP_Meta_Box_Player_Shortcode::output',
+					'context' => 'side',
+					'priority' => 'default',
+				),
+				'columns' => array(
+					'title' => __( 'Columns', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Player_Columns::save',
+					'output' => 'SP_Meta_Box_Player_Columns::output',
+					'context' => 'side',
+					'priority' => 'default',
+				),
+				'details' => array(
+					'title' => __( 'Details', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Player_Details::save',
+					'output' => 'SP_Meta_Box_Player_Details::output',
+					'context' => 'side',
+					'priority' => 'default',
+				),
+				'metrics' => array(
+					'title' => __( 'Metrics', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Player_Metrics::save',
+					'output' => 'SP_Meta_Box_Player_Metrics::output',
+					'context' => 'side',
+					'priority' => 'default',
+				),
+				'statistics' => array(
+					'title' => __( 'Statistics', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Player_Statistics::save',
+					'output' => 'SP_Meta_Box_Player_Statistics::output',
+					'context' => 'normal',
+					'priority' => 'high',
+				),
+				'editor' => array(
+					'title' => __( 'Profile', 'sportspress' ),
+					'output' => 'SP_Meta_Box_Player_Editor::output',
+					'context' => 'normal',
+					'priority' => 'low',
+				),
+			),
+			'sp_staff' => array(
+				'shortcode' => array(
+					'title' => __( 'Shortcode', 'sportspress' ),
+					'output' => 'SP_Meta_Box_Staff_Shortcode::output',
+					'context' => 'side',
+					'priority' => 'default',
+				),
+				'details' => array(
+					'title' => __( 'Details', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Staff_Details::save',
+					'output' => 'SP_Meta_Box_Staff_Details::output',
+					'context' => 'side',
+					'priority' => 'default',
+				),
+				'editor' => array(
+					'title' => __( 'Profile', 'sportspress' ),
+					'output' => 'SP_Meta_Box_Staff_Editor::output',
 					'context' => 'normal',
 					'priority' => 'low',
 				),
@@ -171,41 +249,12 @@ class SP_Admin_Meta_Boxes {
 		add_action( 'add_meta_boxes', array( $this, 'rename_meta_boxes' ), 20 );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 30 );
 		add_action( 'save_post', array( $this, 'save_meta_boxes' ), 1, 2 );
-
-		// Save Calendar Meta Boxes
-		add_action( 'sportspress_process_sp_calendar_meta', 'SP_Meta_Box_Calendar_Format::save', 10, 2 );
-		add_action( 'sportspress_process_sp_calendar_meta', 'SP_Meta_Box_Calendar_Details::save', 20, 2 );
-		add_action( 'sportspress_process_sp_calendar_meta', 'SP_Meta_Box_Calendar_Data::save', 30, 2 );
-
-		// Save Team Meta Boxes
-		add_action( 'sportspress_process_sp_team_meta', 'SP_Meta_Box_Team_Details::save', 10, 2 );
-
-		// Save Table Meta Boxes
-		add_action( 'sportspress_process_sp_table_meta', 'SP_Meta_Box_Table_Details::save', 10, 2 );
-		add_action( 'sportspress_process_sp_table_meta', 'SP_Meta_Box_Table_Data::save', 20, 2 );
-
-		// Save Player Meta Boxes
-		add_action( 'sportspress_process_sp_player_meta', 'SP_Meta_Box_Player_Columns::save', 10, 2 );
-		add_action( 'sportspress_process_sp_player_meta', 'SP_Meta_Box_Player_Details::save', 20, 2 );
-		add_action( 'sportspress_process_sp_player_meta', 'SP_Meta_Box_Player_Metrics::save', 30, 2 );
-		add_action( 'sportspress_process_sp_player_meta', 'SP_Meta_Box_Player_Statistics::save', 40, 2 );
-
-		// Save List Meta Boxes
-		add_action( 'sportspress_process_sp_list_meta', 'SP_Meta_Box_List_Format::save', 10, 2 );
-		add_action( 'sportspress_process_sp_list_meta', 'SP_Meta_Box_List_Columns::save', 20, 2 );
-		add_action( 'sportspress_process_sp_list_meta', 'SP_Meta_Box_List_Details::save', 30, 2 );
-		add_action( 'sportspress_process_sp_list_meta', 'SP_Meta_Box_List_Data::save', 40, 2 );
-
-		// Save Staff Meta Boxes
-		add_action( 'sportspress_process_sp_staff_meta', 'SP_Meta_Box_Staff_Details::save', 10, 2 );
 	}
 
 	/**
 	 * Add SP Meta boxes
 	 */
 	public function add_meta_boxes() {
-		global $post;
-
 		foreach ( $this->meta_boxes as $post_type => $meta_boxes ) {
 			foreach ( $meta_boxes as $id => $meta_box ) {
 				if ( array_key_exists( 'output', $meta_box ) ) {
@@ -213,31 +262,6 @@ class SP_Admin_Meta_Boxes {
 				}
 			}
 		}
-
-		// Get post meta array
-		if ( isset( $post ) && isset( $post->ID ) )
-			$post_meta = get_post_meta( $post->ID );
-		else
-			$post_meta = array();
-
-		// Teams
-		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Team_Details::output', 'sp_team', 'side', 'default' );
-		add_meta_box( 'sp_editordiv', __( 'Profile', 'sportspress' ), 'SP_Meta_Box_Team_Editor::output', 'sp_team', 'normal', 'low' );
-
-		// Players
-		add_meta_box( 'sp_shortcodediv', __( 'Shortcodes', 'sportspress' ), 'SP_Meta_Box_Player_Shortcode::output', 'sp_player', 'side', 'default' );
-		add_meta_box( 'sp_columnsdiv', __( 'Columns', 'sportspress' ), 'SP_Meta_Box_Player_Columns::output', 'sp_player', 'side', 'default' );
-		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Player_Details::output', 'sp_player', 'side', 'default' );
-		add_meta_box( 'sp_metricsdiv', __( 'Metrics', 'sportspress' ), 'SP_Meta_Box_Player_Metrics::output', 'sp_player', 'side', 'default' );
-		if ( isset( $post ) && isset( $post->ID ) ):
-			add_meta_box( 'sp_statisticsdiv', __( 'Statistics', 'sportspress' ), 'SP_Meta_Box_Player_Statistics::output', 'sp_player', 'normal', 'high' );
-		endif;
-		add_meta_box( 'sp_editordiv', __( 'Profile', 'sportspress' ), 'SP_Meta_Box_Player_Editor::output', 'sp_player', 'normal', 'low' );
-
-		// Staff
-		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), 'SP_Meta_Box_Staff_Shortcode::output', 'sp_staff', 'side', 'default' );
-		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), 'SP_Meta_Box_Staff_Details::output', 'sp_staff', 'side', 'default' );
-		add_meta_box( 'sp_editordiv', __( 'Profile', 'sportspress' ), 'SP_Meta_Box_Staff_Editor::output', 'sp_staff', 'normal', 'low' );
 	}
 
 	/**
@@ -250,28 +274,15 @@ class SP_Admin_Meta_Boxes {
 		remove_meta_box( 'sp_leaguediv', 'sp_event', 'side' );
 		remove_meta_box( 'sp_seasondiv', 'sp_event', 'side' );
 
-		// Calendars
-		remove_meta_box( 'sp_seasondiv', 'sp_calendar', 'side' );
-		remove_meta_box( 'sp_leaguediv', 'sp_calendar', 'side' );
-		remove_meta_box( 'sp_venuediv', 'sp_calendar', 'side' );
-
 		// Teams
 		remove_meta_box( 'sp_leaguediv', 'sp_team', 'side' );
 		remove_meta_box( 'sp_seasondiv', 'sp_team', 'side' );
 		remove_meta_box( 'sp_venuediv', 'sp_team', 'side' );
 
-		// Tables
-		remove_meta_box( 'sp_seasondiv', 'sp_table', 'side' );
-		remove_meta_box( 'sp_leaguediv', 'sp_table', 'side' );
-
 		// Players
 		remove_meta_box( 'sp_seasondiv', 'sp_player', 'side' );
 		remove_meta_box( 'sp_leaguediv', 'sp_player', 'side' );
 		remove_meta_box( 'sp_positiondiv', 'sp_player', 'side' );
-
-		// Lists
-		remove_meta_box( 'sp_seasondiv', 'sp_list', 'side' );
-		remove_meta_box( 'sp_leaguediv', 'sp_list', 'side' );
 
 		// Staff
 		remove_meta_box( 'sp_rolediv', 'sp_staff', 'side' );
