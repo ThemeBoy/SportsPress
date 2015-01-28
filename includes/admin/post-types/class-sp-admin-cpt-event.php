@@ -66,10 +66,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	public function wp_insert_post_data( $data, $postarr ) {
 		if ( $data['post_type'] == 'sp_event' && $data['post_title'] == '' ):
 
-			if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) $post_type = 'sp_team';
-			else $post_type = 'sp_player';
-
-			$teams = sp_array_value( $postarr, $post_type, array() );
+			$teams = sp_array_value( $postarr, 'sp_team', array() );
 			$teams = array_filter( $teams );
 
 			$team_names = array();
@@ -77,7 +74,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				while ( is_array( $team ) ) {
 					$team = array_shift( array_filter( $team ) );
 				}
-				if ( $team ) $team_names[] = get_the_title( $team );
+				if ( $team > 0 ) $team_names[] = get_the_title( $team );
 			endforeach;
 
 			$team_names = array_unique( $team_names );
