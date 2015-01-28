@@ -294,14 +294,8 @@ class SP_Admin_Meta_Boxes {
 	 * Rename core meta boxes
 	 */
 	public function rename_meta_boxes() {
-		global $post;
-
-		// Publish/Event
-		if ( isset( $post ) ) {
-			remove_meta_box( 'submitdiv', 'sp_event', 'side' );
-
-			add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
-		}
+		remove_meta_box( 'submitdiv', 'sp_event', 'side' );
+		add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
 	}
 
 	/**

@@ -182,7 +182,6 @@ class SportsPress_League_Tables {
 	 */
 	public function add_settings( $settings ) {
 		return array_merge( $settings,
-
 			array(
 				array( 'title' => __( 'League Tables', 'sportspress' ), 'type' => 'title', 'id' => 'table_options' ),
 			),
@@ -221,7 +220,6 @@ class SportsPress_League_Tables {
 			array(
 				array( 'type' => 'sectionend', 'id' => 'table_options' ),
 			)
-
 		);
 	}
 }
