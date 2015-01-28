@@ -62,6 +62,7 @@ class SP_Meta_Box_Event_Teams {
 					'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
 					'values' => 'ID',
 					'selected' => $team,
+					'chosen' => true,
 				);
 				sp_dropdown_pages( $args );
 				?>
