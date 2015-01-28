@@ -34,8 +34,6 @@ class SportsPress_Individual_Mode {
 		// Filters
 		add_filter( 'gettext', array( $this, 'gettext' ), 99, 3 );
 		add_filter( 'pre_get_posts', array( $this, 'pre_get_posts' ) );
-		//add_filter( 'option_sportspress_event_show_total', '__return_false', 99 );
-		//add_action( 'sportspress_meta_boxes', array( $this, 'remove_meta_boxes' ), 99 );
 		add_filter( 'sportspress_register_post_type_team', array( $this, 'hide_post_type' ), 99 );
 		add_filter( 'sportspress_register_post_type_table', array( $this, 'move_table_post_type' ), 99 );
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'remove_team_settings_tab' ), 99 );
@@ -47,12 +45,16 @@ class SportsPress_Individual_Mode {
 		add_filter( 'sportspress_glance_items', array( $this, 'remove_glance_item' ), 99 );
 		add_filter( 'sportspress_shortcodes', array( $this, 'remove_shortcodes' ), 99 );
 		add_filter( 'sportspress_event_shortcodes', array( $this, 'remove_event_shortcodes' ), 99 );
+		add_filter( 'sportspress_player_admin_columns', array( $this, 'remove_team_column' ), 99 );
 		add_filter( 'sportspress_list_admin_columns', array( $this, 'remove_team_column' ), 99 );
+		add_filter( 'sportspress_staff_admin_columns', array( $this, 'remove_team_column' ), 99 );
+		add_filter( 'sportspress_directory_admin_columns', array( $this, 'remove_team_column' ), 99 );
 		add_filter( 'sportspress_importers', array( $this, 'remove_teams_importer' ), 99 );
 		add_filter( 'sportspress_permalink_slugs', array( $this, 'remove_team_permalink_slug' ), 99 );
-		//add_filter( 'sportspress_player_column_tabs', array( $this, 'player_column_tabs' ), 99 );
 		add_filter( 'sportspress_event_team_tabs', '__return_false' );
 		add_filter( 'sportspress_player_team_statistics', '__return_false' );
+		add_filter( 'sportspress_player_teams', '__return_false' );
+		add_filter( 'sportspress_staff_teams', '__return_false' );
 		add_filter( 'sportspress_list_team_selector', '__return_false' );
 		add_filter( 'sportspress_split_performance_tables', '__return_false' );
 	
@@ -258,16 +260,6 @@ class SportsPress_Individual_Mode {
 			unset( $slugs[ $index ] );
 		}
 		return $slugs;
-	}
-
-	/**
-	 * Modify player column tabs.
-	 */
-	public function player_column_tabs( $tabs ) {
-		if ( ( $index = array_search ( 'sp_performance', $tabs ) ) !== false ) {
-			$tabs[ $index ] = 'sp_column';
-		}
-		return $tabs;
 	}
 }
 
