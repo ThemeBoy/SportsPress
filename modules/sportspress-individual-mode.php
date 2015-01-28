@@ -199,6 +199,7 @@ class SportsPress_Individual_Mode {
 			sp_array_value( $modules, 'team', array() ),
 			sp_array_value( $modules, 'player' )
 		);
+		unset( $modules['team'] );
 		unset( $modules['player']['team_colors'] );
 		return $modules;
 	}
