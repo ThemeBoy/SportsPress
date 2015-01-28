@@ -122,6 +122,9 @@ final class SportsPress {
 		add_action( 'init', array( 'SP_Shortcodes', 'init' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup_environment' ) );
 
+		// Include core modules
+		$this->include_modules();
+
 		// Loaded action
 		do_action( 'sportspress_loaded' );
 	}
@@ -249,15 +252,19 @@ final class SportsPress {
 	}
 
 	/**
-	 * Include core widgets
+	 * Include core modules.
+	 */
+	private function include_modules() {
+		foreach ( glob( $this->plugin_path() . '/modules/*.php' ) as $filename ) {
+			include $filename;
+		}
+	}
+
+	/**
+	 * Include core widgets.
 	 */
 	public function include_widgets() {
 		include_once( 'includes/widgets/class-sp-widget-countdown.php' );
-		if ( 'yes' == get_option( 'sportspress_load_calendars_module', 'yes' ) ) {
-			include_once( 'includes/widgets/class-sp-widget-event-calendar.php' );
-			include_once( 'includes/widgets/class-sp-widget-event-list.php' );
-			include_once( 'includes/widgets/class-sp-widget-event-blocks.php' );
-		}
 		if ( 'yes' == get_option( 'sportspress_load_league_tables_module', 'yes' ) ) {
 			include_once( 'includes/widgets/class-sp-widget-league-table.php' );
 		}

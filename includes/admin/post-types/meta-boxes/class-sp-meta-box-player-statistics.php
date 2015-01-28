@@ -61,19 +61,17 @@ class SP_Meta_Box_Player_Statistics {
 				<thead>
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
-						<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ): ?>
-							<?php if ( $league_id ): ?>
-								<th>
-									<?php if ( $has_checkboxes ): ?>
-										<label for="sp_columns_team">
-											<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
-											<?php _e( 'Team', 'sportspress' ); ?>
-										</label>
-									<?php else: ?>
+						<?php if ( $league_id ): ?>
+							<th>
+								<?php if ( $has_checkboxes ): ?>
+									<label for="sp_columns_team">
+										<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
 										<?php _e( 'Team', 'sportspress' ); ?>
-									<?php endif; ?>
-								</th>
-							<?php endif; ?>
+									</label>
+								<?php else: ?>
+									<?php _e( 'Team', 'sportspress' ); ?>
+								<?php endif; ?>
+							</th>
 						<?php endif; ?>
 						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
 							<th><?php echo $label; ?></th>
@@ -89,7 +87,7 @@ class SP_Meta_Box_Player_Statistics {
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
-								<?php if ( 'team' != get_option( 'sportspress_mode', 'team' ) && 0 !== $div_id ): ?>
+								<?php if ( 0 !== $div_id ): ?>
 									<label>
 										<?php $value = sp_array_value( $leagues, $div_id, '-1' ); ?>
 										<input type="checkbox" name="sp_leagues[<?php echo $league_id; ?>][<?php echo $div_id; ?>]" value="1" <?php checked( $value ); ?>>
@@ -105,43 +103,41 @@ class SP_Meta_Box_Player_Statistics {
 									?>
 								<?php endif; ?>
 							</td>
-							<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ): ?>
-								<?php if ( $league_id ): ?>
-									<?php if ( $div_id == 0 ): ?>
-										<td>&nbsp;</td>
-									<?php else: ?>
-										<td>
-											<?php $value = sp_array_value( $leagues, $div_id, '-1' ); ?>
-											<?php
-											$args = array(
-												'post_type' => 'sp_team',
-												'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
-												'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
-											    'sort_order'   => 'ASC',
-											    'sort_column'  => 'menu_order',
-												'selected' => $value,
-												'values' => 'ID',
-												'include' => $teams,
-												'tax_query' => array(
-													'relation' => 'AND',
-													array(
-														'taxonomy' => 'sp_league',
-														'terms' => $league_id,
-														'field' => 'id',
-													),
-													array(
-														'taxonomy' => 'sp_season',
-														'terms' => $div_id,
-														'field' => 'id',
-													),
+							<?php if ( $league_id ): ?>
+								<?php if ( $div_id == 0 ): ?>
+									<td>&nbsp;</td>
+								<?php else: ?>
+									<td>
+										<?php $value = sp_array_value( $leagues, $div_id, '-1' ); ?>
+										<?php
+										$args = array(
+											'post_type' => 'sp_team',
+											'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
+											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+										    'sort_order'   => 'ASC',
+										    'sort_column'  => 'menu_order',
+											'selected' => $value,
+											'values' => 'ID',
+											'include' => $teams,
+											'tax_query' => array(
+												'relation' => 'AND',
+												array(
+													'taxonomy' => 'sp_league',
+													'terms' => $league_id,
+													'field' => 'id',
 												),
-											);
-											if ( ! sp_dropdown_pages( $args ) ):
-												_e( '&mdash; None &mdash;', 'sportspress' );
-											endif;
-											?>
-										</td>
-									<?php endif; ?>
+												array(
+													'taxonomy' => 'sp_season',
+													'terms' => $div_id,
+													'field' => 'id',
+												),
+											),
+										);
+										if ( ! sp_dropdown_pages( $args ) ):
+											_e( '&mdash; None &mdash;', 'sportspress' );
+										endif;
+										?>
+									</td>
 								<?php endif; ?>
 							<?php endif; ?>
 							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;

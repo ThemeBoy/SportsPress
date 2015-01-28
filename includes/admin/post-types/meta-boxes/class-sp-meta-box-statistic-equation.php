@@ -23,6 +23,7 @@ class SP_Meta_Box_Statistic_Equation extends SP_Meta_Box_Equation {
 	 */
 	public static function output( $post ) {
 		$equation = get_post_meta( $post->ID, 'sp_equation', true );
-		self::builder( $post->post_title, $equation, array( 'player_event', 'outcome', 'performance', 'metric' ) );
+		$groups = array( 'player_event', 'outcome', 'performance', 'metric' );
+		self::builder( $post->post_title, $equation, $groups );
 	}
 }

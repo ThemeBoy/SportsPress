@@ -34,10 +34,7 @@ class SP_Admin_Settings {
 			$settings[] = include( 'settings/class-sp-settings-modules.php' );
 			$settings[] = include( 'settings/class-sp-settings-general.php' );
 			$settings[] = include( 'settings/class-sp-settings-events.php' );
-
-			if ( 'team' == get_option( 'sportspress_mode', 'team' ) )
-				$settings[] = include( 'settings/class-sp-settings-teams.php' );
-			
+			$settings[] = include( 'settings/class-sp-settings-teams.php' );
 			$settings[] = include( 'settings/class-sp-settings-players.php' );
 			$settings[] = include( 'settings/class-sp-settings-staff.php' );
 

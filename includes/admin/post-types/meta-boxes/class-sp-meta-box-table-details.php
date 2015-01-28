@@ -59,7 +59,9 @@ class SP_Meta_Box_Table_Details {
 				endif;
 				?>
 			</p>
-			<p><strong><?php _e( 'Teams', 'sportspress' ); ?></strong></p>
+			<p><strong>
+				<?php _e( 'Teams', 'sportspress' ); ?>
+			</strong></p>
 			<p class="sp-select-setting">
 				<select name="sp_select">
 					<option value="auto" <?php selected( 'auto', $select ); ?>><?php _e( 'Auto', 'sportspress' ); ?></option>

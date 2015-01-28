@@ -52,12 +52,10 @@ class SP_Meta_Box_List_Data {
 							<?php echo 'number' == $orderby ? '#' : __( 'Rank', 'sportspress' ); ?>
 						</label></th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
-						<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) { ?>
-							<th><label for="sp_columns_team">
-								<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
-								<?php _e( 'Team', 'sportspress' ); ?>
-							</label></th>
-						<?php } ?>
+						<th><label for="sp_columns_team">
+							<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
+							<?php _e( 'Team', 'sportspress' ); ?>
+						</label></th>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<?php if ( in_array( $key, array( 'number', 'team' ) ) ) continue; ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
@@ -102,23 +100,21 @@ class SP_Meta_Box_List_Data {
 										<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
 									</span>
 								</td>
-								<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) { ?>
-									<td>
-										<?php
-										$selected = sp_array_value( $player_stats, 'team', get_post_meta( get_the_ID(), 'sp_team', true ) );
-										if ( ! $selected ) $selected = get_post_meta( $player_id, 'sp_team', true );
-										$include = get_post_meta( $player_id, 'sp_team' );
-										$args = array(
-											'post_type' => 'sp_team',
-											'name' => 'sp_players[' . $player_id . '][team]',
-											'include' => $include,
-											'selected' => $selected,
-											'values' => 'ID',
-										);
-										wp_dropdown_pages( $args );
-										?>
-									</td>
-								<?php } ?>
+								<td>
+									<?php
+									$selected = sp_array_value( $player_stats, 'team', get_post_meta( get_the_ID(), 'sp_team', true ) );
+									if ( ! $selected ) $selected = get_post_meta( $player_id, 'sp_team', true );
+									$include = get_post_meta( $player_id, 'sp_team' );
+									$args = array(
+										'post_type' => 'sp_team',
+										'name' => 'sp_players[' . $player_id . '][team]',
+										'include' => $include,
+										'selected' => $selected,
+										'values' => 'ID',
+									);
+									wp_dropdown_pages( $args );
+									?>
+								</td>
 								<?php foreach( $columns as $column => $label ):
 									if ( in_array( $column, array( 'number', 'team' ) ) ) continue;
 									$value = sp_array_value( $player_stats, $column, '' );
@@ -134,7 +130,7 @@ class SP_Meta_Box_List_Data {
 					?>
 					<tr class="sp-row alternate">
 						<td colspan="<?php $colspan = sizeof( $columns ) + 3; echo $colspan; ?>">
-							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Players', 'sportspress' ) ); ?>
+							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Data', 'sportspress' ) ); ?>
 						</td>
 					</tr>
 					<?php
@@ -182,7 +178,7 @@ class SP_Meta_Box_List_Data {
 					?>
 					<tr class="sp-row alternate">
 						<td colspan="<?php $colspan = sizeof( $columns ) + 3; echo $colspan; ?>">
-							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Players', 'sportspress' ) ); ?>
+							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) ); ?>
 						</td>
 					</tr>
 					<?php

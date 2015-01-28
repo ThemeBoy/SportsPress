@@ -39,7 +39,7 @@ class SP_Admin_Dashboard {
      * Add links to At a Glance
      */
     function glance_items( $items = array() ) {
-        $post_types = array( 'sp_event', 'sp_team', 'sp_player' );
+        $post_types = apply_filters( 'sportspress_glance_items', array( 'sp_event', 'sp_team', 'sp_player', 'sp_staff' ) );
         foreach ( $post_types as $type ):
             if ( ! post_type_exists( $type ) ) continue;
             $num_posts = wp_count_posts( $type );
@@ -49,12 +49,11 @@ class SP_Admin_Dashboard {
                 $text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, 'sportspress' );
                 $text = sprintf( $text, number_format_i18n( $published ) );
                 if ( current_user_can( $post_type->cap->edit_posts ) ):
-                $output = '<a href="edit.php?post_type=' . $post_type->name . '">' . $text . '</a>';
-                    echo '<li class="post-count ' . str_replace( '_', '-', $post_type->name ) . '-count">' . $output . '</li>';
+                    $output = '<a href="edit.php?post_type=' . $post_type->name . '">' . $text . '</a>';
                 else:
-                $output = '<span>' . $text . '</span>';
-                    echo '<li class="post-count ' . str_replace( '_', '-', $post_type->name ) . '-count">' . $output . '</li>';
+                    $output = '<span>' . $text . '</span>';
                 endif;
+                echo '<li class="post-count ' . $post_type->name . '-count">' . $output . '</li>';
             endif;
         endforeach;
         return $items;

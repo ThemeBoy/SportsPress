@@ -23,28 +23,13 @@ class SP_Shortcodes {
 			'player_details'   		=> __CLASS__ . '::player_details',
 			'player_statistics'		=> __CLASS__ . '::player_statistics',
 			'staff' 				=> __CLASS__ . '::staff',
+			'event_calendar' 		=> __CLASS__ . '::event_calendar',
+			'event_list'     		=> __CLASS__ . '::event_list',
+			'event_blocks'    	 	=> __CLASS__ . '::event_blocks',
+			'league_table'   		=> __CLASS__ . '::league_table',
+			'player_list'    		=> __CLASS__ . '::player_list',
+			'player_gallery' 		=> __CLASS__ . '::player_gallery',
 		);
-
-		if ( 'yes' == get_option( 'sportspress_load_calendars_module', 'yes' ) ) {
-			$shortcodes = array_merge( $shortcodes, array(
-				'event_calendar' 	=> __CLASS__ . '::event_calendar',
-				'event_list'     	=> __CLASS__ . '::event_list',
-				'event_blocks'     	=> __CLASS__ . '::event_blocks',
-			));
-		}
-
-		if ( 'yes' == get_option( 'sportspress_load_league_tables_module', 'yes' ) ) {
-			$shortcodes = array_merge( $shortcodes, array(
-				'league_table'   	=> __CLASS__ . '::league_table',
-			));
-		}
-
-		if ( 'yes' == get_option( 'sportspress_load_player_lists_module', 'yes' ) ) {
-			$shortcodes = array_merge( $shortcodes, array(
-				'player_list'    	=> __CLASS__ . '::player_list',
-				'player_gallery' 	=> __CLASS__ . '::player_gallery',
-			));
-		}
 
 		foreach ( $shortcodes as $shortcode => $function ) {
 			add_shortcode( $shortcode, $function );

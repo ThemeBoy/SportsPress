@@ -11,12 +11,6 @@ $options = array(
     ),
 );
 
-if ( 'yes' == get_option( 'sportspress_load_calendars_module', 'yes' ) ) {
-    $options['event'][] = 'calendar';
-    $options['event'][] = 'list';
-    $options['event'][] = 'blocks';
-}
-
 if ( 'yes' == get_option( 'sportspress_load_league_tables_module', 'yes' ) ) {
     $options['table'] = array( 'table' );
 }

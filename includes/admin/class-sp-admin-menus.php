@@ -85,16 +85,17 @@ class SP_Admin_Menus {
 	public function menu_highlight() {
 		global $typenow;
 		$screen = get_current_screen();
-		if ( $screen->id == 'sp_role' )
+		if ( $screen->id == 'sp_role' ) {
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_staff', 'edit-tags.php?taxonomy=sp_role&post_type=sp_staff' );			
-		elseif ( is_sp_config_type( $typenow ) )
+		} elseif ( is_sp_config_type( $typenow ) ) {
 			$this->highlight_admin_menu( 'sportspress', 'sportspress-config' );
-		elseif ( $typenow == 'sp_calendar' )
+		} elseif ( $typenow == 'sp_calendar' ) {
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_event', 'edit.php?post_type=sp_calendar' );
-		elseif ( $typenow == 'sp_table' )
+		} elseif ( $typenow == 'sp_table' ) {
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_team', 'edit.php?post_type=sp_table' );
-		elseif ( $typenow == 'sp_list' )
+		} elseif ( $typenow == 'sp_list' ) {
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_list' );
+		}
 	}
 
 	/**

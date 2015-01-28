@@ -81,37 +81,35 @@ class SP_Meta_Box_Staff_Details {
 			<?php endforeach; ?>
 		</select></p>
 
-		<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) { ?>
 		<p><strong><?php _e( 'Current Teams', 'sportspress' ); ?></strong></p>
-			<p><?php
-			$args = array(
-				'post_type' => 'sp_team',
-				'name' => 'sp_current_team[]',
-				'selected' => $current_teams,
-				'values' => 'ID',
-				'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
-				'class' => 'sp-current-teams widefat',
-				'property' => 'multiple',
-				'chosen' => true,
-			);
-			sp_dropdown_pages( $args );
-			?></p>
+		<p><?php
+		$args = array(
+			'post_type' => 'sp_team',
+			'name' => 'sp_current_team[]',
+			'selected' => $current_teams,
+			'values' => 'ID',
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
+			'class' => 'sp-current-teams widefat',
+			'property' => 'multiple',
+			'chosen' => true,
+		);
+		sp_dropdown_pages( $args );
+		?></p>
 
-			<p><strong><?php _e( 'Past Teams', 'sportspress' ); ?></strong></p>
-			<p><?php
-			$args = array(
-				'post_type' => 'sp_team',
-				'name' => 'sp_past_team[]',
-				'selected' => $past_teams,
-				'values' => 'ID',
-				'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
-				'class' => 'sp-past-teams widefat',
-				'property' => 'multiple',
-				'chosen' => true,
-			);
-			sp_dropdown_pages( $args );
-			?></p>
-		<?php } ?>
+		<p><strong><?php _e( 'Past Teams', 'sportspress' ); ?></strong></p>
+		<p><?php
+		$args = array(
+			'post_type' => 'sp_team',
+			'name' => 'sp_past_team[]',
+			'selected' => $past_teams,
+			'values' => 'ID',
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
+			'class' => 'sp-past-teams widefat',
+			'property' => 'multiple',
+			'chosen' => true,
+		);
+		sp_dropdown_pages( $args );
+		?></p>
 
 		<p><strong><?php _e( 'Competitions', 'sportspress' ); ?></strong></p>
 		<p><?php
@@ -152,10 +150,8 @@ class SP_Meta_Box_Staff_Details {
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_role', null ), 'sp_role', false );
 		update_post_meta( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', '' ) );
 		
-		if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) {
-			sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array() ) );
-			sp_update_post_meta_recursive( $post_id, 'sp_past_team', sp_array_value( $_POST, 'sp_past_team', array() ) );
-			sp_update_post_meta_recursive( $post_id, 'sp_team', array_merge( array( sp_array_value( $_POST, 'sp_current_team', array() ) ), sp_array_value( $_POST, 'sp_past_team', array() ) ) );
-		}
+		sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_past_team', sp_array_value( $_POST, 'sp_past_team', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_team', array_merge( array( sp_array_value( $_POST, 'sp_current_team', array() ) ), sp_array_value( $_POST, 'sp_past_team', array() ) ) );
 	}
 }

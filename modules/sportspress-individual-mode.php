@@ -1,0 +1,232 @@
+<?php
+/*
+Plugin Name: SportsPress Individual Mode
+Plugin URI: http://themeboy.com/
+Description: Modify SportsPress to work with individual (player vs player) sports.
+Author: ThemeBoy
+Author URI: http://themeboy.com/
+Version: 1.6
+*/
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! class_exists( 'SportsPress_Individual_Mode' ) ) :
+
+/**
+ * Main SportsPress Individual Mode Class
+ *
+ * @class SportsPress_Individual_Mode
+ * @version	1.6
+ */
+class SportsPress_Individual_Mode {
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		// Define constants
+		$this->define_constants();
+
+		// Filters
+		add_filter( 'gettext', array( $this, 'gettext' ), 99, 3 );
+		add_filter( 'pre_get_posts', array( $this, 'pre_get_posts' ) );
+		add_filter( 'sportspress_register_post_type_team', array( $this, 'hide_post_type' ), 99 );
+		add_filter( 'sportspress_register_post_type_table', array( $this, 'move_table_post_type' ), 99 );
+		add_filter( 'sportspress_settings_tabs_array', array( $this, 'remove_team_settings_tab' ), 99 );
+		add_filter( 'sportspress_get_settings_pages', array( $this, 'remove_team_settings' ), 99 );
+		add_filter( 'sportspress_player_options', array( $this, 'add_player_options' ), 99 );
+		add_filter( 'sportspress_player_settings', array( $this, 'add_player_settings' ), 99 );
+		add_filter( 'sportspress_next_steps', array( $this, 'remove_team_step' ), 99 );
+		add_filter( 'sportspress_modules', array( $this, 'rearrange_modules' ), 99 );
+		add_filter( 'sportspress_glance_items', array( $this, 'remove_glance_item' ), 99 );
+		add_filter( 'sportspress_shortcodes', array( $this, 'remove_shortcodes' ), 99 );
+		add_filter( 'sportspress_list_admin_columns', array( $this, 'remove_team_column' ), 99 );
+		add_filter( 'sportspress_importers', array( $this, 'remove_teams_importer' ), 99 );
+		add_filter( 'sportspress_permalink_slugs', array( $this, 'remove_team_permalink_slug' ), 99 );
+		add_filter( 'sportspress_event_team_tabs', '__return_false' );
+		add_filter( 'sportspress_list_team_selector', '__return_false' );
+	
+		// Remove templates
+		remove_action( 'sportspress_single_event_content', 'sportspress_output_event_performance', 50 );
+	}
+
+	/**
+	 * Define constants.
+	*/
+	private function define_constants() {
+		if ( !defined( 'SP_INDIVIDUAL_MODE_VERSION' ) )
+			define( 'SP_INDIVIDUAL_MODE_VERSION', '1.6' );
+
+		if ( !defined( 'SP_INDIVIDUAL_MODE_URL' ) )
+			define( 'SP_INDIVIDUAL_MODE_URL', plugin_dir_url( __FILE__ ) );
+
+		if ( !defined( 'SP_INDIVIDUAL_MODE_DIR' ) )
+			define( 'SP_INDIVIDUAL_MODE_DIR', plugin_dir_path( __FILE__ ) );
+	}
+
+	/** 
+	 * Modify all team-related strings for players.
+	 */
+	public function gettext( $translated_text, $untranslated_text, $domain ) {
+		if ( 'sportspress' !== $domain ) return $translated_text;
+
+		switch ( $untranslated_text ) {
+			case 'Teams':
+				return __( 'Players', 'sportspress' );
+				break;
+			case 'Team':
+				return __( 'Player', 'sportspress' );
+				break;
+			case 'teams':
+				return __( 'players', 'sportspress' );
+				break;
+		}
+		
+		return $translated_text;
+	}
+
+	/**
+	 * Modify all team post type queries for players.
+	 */
+	public function pre_get_posts( $query ) {
+		if ( 'sp_team' !== $query->get( 'post_type' ) ) return $query;
+
+		$query->set( 'post_type', 'sp_player' );
+
+		return $query;
+	}
+
+	/**
+	 * Hide post types.
+	 */
+	public function hide_post_type( $args ) {
+		return array_merge( $args, array(
+			'public' => false,
+			'exclude_from_search' => true,
+			'publicly_queryable' => false,
+			'show_ui' => false,
+			'show_in_nav_menus' => false,
+			'show_in_menu' => false,
+			'show_in_admin_bar' => false,
+			'can_export' => false,
+		) );
+	}
+
+	/**
+	 * Move league table post type under players.
+	 */
+	public function move_table_post_type( $args ) {
+		return array_merge( $args, array(
+			'show_in_menu' => 'edit.php?post_type=sp_player',
+		) );
+	}
+
+	/**
+	 * Remove team settings tab.
+	 */
+	public function remove_team_settings_tab( $tabs ) {
+		unset( $tabs['teams'] );
+		return $tabs;
+	}
+
+	/**
+	 * Remove team settings section.
+	 */
+	public function remove_team_settings( $settings ) {
+		foreach ( $settings as $index => $section ) {
+			if ( is_a( $section, 'SP_Settings_Teams' ) ) {
+				unset( $settings[ $index ] );
+			}
+		}
+		return $settings;
+	}
+
+	/**
+	 * Add options from teams to players tab.
+	 */
+	public function add_player_options( $options ) {
+		return apply_filters( 'sportspress_team_options', $options );
+	}
+
+	/**
+	 * Add settings from teams to players tab.
+	 */
+	public function add_player_settings( $settings ) {
+		return apply_filters( 'sportspress_team_settings', $settings );
+	}
+
+	/**
+	 * Remove team step from welcome screen.
+	 */
+	public function remove_team_step( $steps ) {
+		unset( $steps['teams'] );
+		return $steps;
+	}
+
+	/**
+	 * Rearrange modules.
+	 */
+	public function rearrange_modules( $modules ) {
+		$modules['player'] = array_merge(
+			sp_array_value( $modules, 'team', array() ),
+			sp_array_value( $modules, 'player' )
+		);
+		unset( $modules['player']['team_colors'] );
+		return $modules;
+	}
+
+	/**
+	 * Remove teams glance item.
+	 */
+	public function remove_glance_item( $items ) {
+		if ( ( $index = array_search ( 'sp_team', $items ) ) !== false ) {
+			unset( $items[ $index ] );
+		}
+		return $items;
+	}
+
+	/**
+	 * Remove shortcodes from editor.
+	 */
+	public function remove_shortcodes( $shortcodes ) {
+		if ( array_key_exists( 'event', $shortcodes ) ) {
+			if ( ( $index = array_search ( 'performance', $shortcodes['event'] ) ) !== false ) {
+				unset( $shortcodes['event'][ $index ] );
+			}
+		}
+		return $shortcodes;
+	}
+
+	/**
+	 * Remove team column from player list admin.
+	 */
+	public function remove_team_column( $columns ) {
+		unset( $columns['sp_team'] );
+		return $columns;
+	}
+
+	/**
+	 * Remove the teams csv importer.
+	 */
+	public function remove_teams_importer( $importers ) {
+		unset( $importers['sp_team_csv'] );
+		return $importers;
+	}
+
+	/**
+	 * Remove the team permalink slug setting.
+	 */
+	public function remove_team_permalink_slug( $slugs ) {
+		if ( ( $index = array_search ( array( 'team', __( 'Teams', 'sportspress' ) ), $slugs ) ) !== false ) {
+			unset( $slugs[ $index ] );
+		}
+		return $slugs;
+	}
+}
+
+endif;
+
+if ( get_option( 'sportspress_load_individual_mode_module', 'yes' ) == 'yes' ) {
+	new SportsPress_Individual_Mode();
+}

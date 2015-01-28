@@ -195,7 +195,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 
 			<div class="sp-modules-main">
 				<?php foreach ( SP()->modules->data as $section => $modules ) { ?>
-				<?php if ( 'team' == $section && 'team' != get_option( 'sportspress_mode', 'team' ) ) continue; ?>
 				<table class="sp-modules-table widefat" cellspacing="0">
 					<thead>
 						<tr><th>

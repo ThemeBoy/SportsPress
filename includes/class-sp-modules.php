@@ -28,7 +28,7 @@ class SP_Modules {
 					'label' => __( 'Calendars', 'sportspress' ),
 					'icon' => 'sp-icon-calendar',
 				),
-				'videos' => array(
+				'event_videos' => array(
 					'label' => __( 'Videos', 'sportspress' ),
 					'icon' => 'dashicons dashicons-video-alt',
 				),

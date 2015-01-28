@@ -60,12 +60,12 @@ class SP_Settings_General extends SP_Settings_Page {
 
 				array(
 					'title'     => __( 'Mode', 'sportspress' ),
-					'id'        => 'sportspress_mode',
-					'default'   => 'team',
+					'id'        => 'sportspress_load_individual_mode_module',
+					'default'   => 'no',
 					'type'      => 'radio',
 					'options'   => array(
-						'team' => __( 'Teams', 'sportspress' ),
-						'player' => __( 'Players', 'sportspress' ) . ' ' . __( '(Beta)', 'sportspress' ),
+						'no' => __( 'Team vs team', 'sportspress' ),
+						'yes' => __( 'Player vs player', 'sportspress' ),
 					),
 					'desc_tip' 		=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
 				),
@@ -344,8 +344,8 @@ class SP_Settings_General extends SP_Settings_Page {
 	 */
 	function current_mode_setting() {
 		?>
-		<input type="hidden" name="sportspress_current_mode" value="<?php echo get_option( 'sportspress_mode', 'team' ); ?>">
-		<?php if ( sp_array_value( $_POST, 'sportspress_mode', 'team' ) !== sp_array_value( $_POST, 'sportspress_current_mode', 'team' ) ) { ?>
+		<input type="hidden" name="sportspress_individual_mode_module_loaded" value="<?php echo get_option( 'sportspress_load_individual_mode_module', 'no' ); ?>">
+		<?php if ( sp_array_value( $_POST, 'sportspress_load_individual_mode_module', 'no' ) !== sp_array_value( $_POST, 'sportspress_individual_mode_module_loaded', 'no' ) ) { ?>
 			<script type="text/javascript">
 			window.onload = function() {
 				window.location = window.location.href;

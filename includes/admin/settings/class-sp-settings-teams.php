@@ -107,53 +107,6 @@ class SP_Settings_Teams extends SP_Settings_Page {
 
 		);
 
-		if ( 'yes' == get_option( 'sportspress_load_league_tables_module', 'yes' ) ) {
-
-			$settings = array_merge( $settings,
-
-				array(
-					array( 'title' => __( 'League Tables', 'sportspress' ), 'type' => 'title', 'id' => 'table_options' ),
-				),
-
-				apply_filters( 'sportspress_table_options', array(
-					array(
-						'title'     => __( 'Teams', 'sportspress' ),
-						'desc' 		=> __( 'Display logos', 'sportspress' ),
-						'id' 		=> 'sportspress_table_show_logos',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-					),
-
-					array(
-						'title'     => __( 'Pagination', 'sportspress' ),
-						'desc' 		=> __( 'Paginate', 'sportspress' ),
-						'id' 		=> 'sportspress_table_paginated',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-					),
-					
-					array(
-						'title' 	=> __( 'Limit', 'sportspress' ),
-						'id' 		=> 'sportspress_table_rows',
-						'class' 	=> 'small-text',
-						'default'	=> '10',
-						'desc' 		=> __( 'teams', 'sportspress' ),
-						'type' 		=> 'number',
-						'custom_attributes' => array(
-							'min' 	=> 1,
-							'step' 	=> 1
-						),
-					),
-				)),
-
-				array(
-					array( 'type' => 'sectionend', 'id' => 'table_options' ),
-				)
-
-			);
-
-		} // End team settings
-
 		return apply_filters( 'sportspress_team_settings', $settings );
 	}
 }

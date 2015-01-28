@@ -166,8 +166,8 @@ class SP_Admin_Welcome {
 				</div>
 			<?php
 			endif;
-	    	if ( isset( $_POST['sportspress_mode'] ) ):
-	    		update_option( 'sportspress_mode', $_POST['sportspress_mode'] );
+	    	if ( isset( $_POST['sportspress_load_individual_mode_module'] ) ):
+	    		update_option( 'sportspress_load_individual_mode_module', $_POST['sportspress_load_individual_mode_module'] );
 	    	endif;
 			if ( isset( $_POST['add_sample_data'] ) ):
 				SP_Admin_Sample_Data::delete_posts();
@@ -194,20 +194,39 @@ class SP_Admin_Welcome {
 						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><i class="dashicons dashicons-edit"></i> <?php _e( 'Change', 'sportspress' ); ?></a>
 
 						<h4><?php _e( 'Mode', 'sportspress' ); ?></h4>
-						<?php echo ( 'team' == get_option( 'sportspress_mode', 'team' ) ? __( 'Teams', 'sportspress' ) : __( 'Players', 'sportspress' ) . ' ' . __( '(Beta)', 'sportspress' ) ); ?>
+						<?php echo ( 'yes' == get_option( 'sportspress_load_individual_mode_module', 'no' ) ? __( 'Player vs player', 'sportspress' ) : __( 'Team vs team', 'sportspress' ) ); ?>
 						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><i class="dashicons dashicons-edit"></i> <?php _e( 'Change', 'sportspress' ); ?></a>
 
 						<h4><?php _e( 'Next Steps', 'sportspress' ); ?></h4>
 						<p><?php _e( 'We&#8217;ve assembled some links to get you started:', 'sportspress' ); ?></p>
+						<?php
+						$steps = apply_filters( 'sportspress_next_steps', array(
+							'teams' => array(
+								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'edit.php' ) ),
+								'icon' => 'dashicons-shield-alt',
+								'label' => __( 'Add New Team', 'sportspress' ),
+							),
+							'players' => array(
+								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'edit.php' ) ),
+								'icon' => 'dashicons-groups',
+								'label' => __( 'Add New Player', 'sportspress' ),
+							),
+							'events' => array(
+								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ),
+								'icon' => 'dashicons-calendar',
+								'label' => __( 'Add New Event', 'sportspress' ),
+							),
+						) );
+						?>
+						<?php if ( sizeof ( $steps ) ) { ?>
 						<div class="sportspress-steps">
 							<ul>
-								<?php if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) { ?>
-									<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-shield-alt"><?php _e( 'Add New Team', 'sportspress' ); ?></a></li>
+								<?php foreach ( $steps as $step ) { ?>
+									<li><a href="<?php echo esc_url( $step['link'] ); ?>" class="welcome-icon sp-welcome-icon <?php echo sp_array_value( $step, 'icon' ); ?>"><?php echo $step['label']; ?></a></li>
 								<?php } ?>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-groups"><?php _e( 'Add New Player', 'sportspress' ); ?></a></li>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-calendar"><?php _e( 'Add New Event', 'sportspress' ); ?></a></li>
 							</ul>
 						</div>
+						<?php } ?>
 						<div class="return-to-dashboard">
 							<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
 						</div>
@@ -262,12 +281,12 @@ class SP_Admin_Welcome {
 
 										array(
 											'title'     => __( 'Mode', 'sportspress' ),
-											'id'        => 'sportspress_mode',
-											'default'   => 'team',
+											'id'        => 'sportspress_load_individual_mode_module',
+											'default'   => 'no',
 											'type'      => 'radio',
 											'options'   => array(
-												'team' => __( 'Teams', 'sportspress' ),
-												'player' => __( 'Players', 'sportspress' ) . ' ' . __( '(Beta)', 'sportspress' ),
+												'no' => __( 'Team vs team', 'sportspress' ),
+												'yes' => __( 'Player vs player', 'sportspress' ),
 											),
 											'desc_tip'	=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
 										),

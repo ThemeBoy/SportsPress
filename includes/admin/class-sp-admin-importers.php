@@ -28,12 +28,32 @@ class SP_Admin_Importers {
 	 * Add menu items
 	 */
 	public function register_importers() {
-		if ( 'team' == get_option( 'sportspress_mode', 'team' ) ) {
-			register_importer( 'sp_event_csv', __( 'SportsPress Events (CSV)', 'sportspress' ), __( 'Import <strong>events</strong> from a csv file.', 'sportspress'), array( $this, 'events_importer' ) );
-			register_importer( 'sp_team_csv', __( 'SportsPress Teams (CSV)', 'sportspress' ), __( 'Import <strong>teams</strong> from a csv file.', 'sportspress'), array( $this, 'teams_importer' ) );
+		$importers = apply_filters( 'sportspress_importers', array(
+			'sp_event_csv' => array(
+				'name' => __( 'SportsPress Events (CSV)', 'sportspress' ),
+				'description' => __( 'Import <strong>events</strong> from a csv file.', 'sportspress'),
+				'callback' => array( $this, 'events_importer' ),
+			),
+			'sp_team_csv' => array(
+				'name' => __( 'SportsPress Teams (CSV)', 'sportspress' ),
+				'description' => __( 'Import <strong>teams</strong> from a csv file.', 'sportspress'),
+				'callback' => array( $this, 'teams_importer' ),
+			),
+			'sp_player_csv' => array(
+				'name' => __( 'SportsPress Players (CSV)', 'sportspress' ),
+				'description' => __( 'Import <strong>players</strong> from a csv file.', 'sportspress'),
+				'callback' => array( $this, 'players_importer' ),
+			),
+			'sp_staff_csv' => array(
+				'name' => __( 'SportsPress Staff (CSV)', 'sportspress' ),
+				'description' => __( 'Import <strong>staff</strong> from a csv file.', 'sportspress'),
+				'callback' => array( $this, 'staff_importer' ),
+			),
+		) );
+
+		foreach ( $importers as $id => $importer ) {
+			register_importer( $id, $importer['name'], $importer['description'], $importer['callback'] );
 		}
-		register_importer( 'sp_player_csv', __( 'SportsPress Players (CSV)', 'sportspress' ), __( 'Import <strong>players</strong> from a csv file.', 'sportspress'), array( $this, 'players_importer' ) );
-		register_importer( 'sp_staff_csv', __( 'SportsPress Staff (CSV)', 'sportspress' ), __( 'Import <strong>staff</strong> from a csv file.', 'sportspress'), array( $this, 'staff_importer' ) );
 	}
 
 	/**
