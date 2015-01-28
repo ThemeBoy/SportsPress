@@ -8,6 +8,7 @@
       <key name="Date"/>
       <key name="Details"/>
       <key name="Event"/>
+      <key name="Event Results"/>
       <key name="Nationality"/>
       <key name="Outcome"/>
       <key name="Past Teams"/>
@@ -22,7 +23,6 @@
       <key name="Staff"/>
       <key name="Substitutes"/>
       <key name="Team"/>
-      <key name="Team Results"/>
       <key name="Teams"/>
       <key name="Time"/>
       <key name="Time/Results"/>
