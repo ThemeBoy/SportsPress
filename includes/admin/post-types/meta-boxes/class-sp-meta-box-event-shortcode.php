@@ -24,7 +24,7 @@ class SP_Meta_Box_Event_Shortcode {
 			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
 		</p>
 		<p>
-			<strong><?php _e( 'Team Results', 'sportspress' ); ?></strong>
+			<strong><?php _e( 'Event Results', 'sportspress' ); ?></strong>
 		</p>
 		<p><input type="text" value="[event_results <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
 		<p>

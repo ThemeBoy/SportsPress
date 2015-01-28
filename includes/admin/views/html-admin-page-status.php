@@ -234,7 +234,7 @@
 			?></td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Team Results', 'sportspress' ); ?>:</td>
+			<td><?php _e( 'Event Results', 'sportspress' ); ?>:</td>
 			<td><?php
 				$display_posts = array();
 				$posts = get_posts( array( 'post_type' => 'sp_result', 'orderby' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => -1, 'post_status' => 'any' ) );
