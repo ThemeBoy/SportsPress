@@ -189,7 +189,7 @@ class SP_Meta_Box_Calendar_Data {
 									<td><?php the_terms( $event->ID, 'sp_venue' ); ?></td>
 									<td>
 										<a href="<?php echo get_edit_post_link( $event->ID ); ?>#sp_articlediv">
-											<?php if ( $video && 'yes' == get_option( 'sportspress_load_videos_module', 'yes' ) ): ?>
+											<?php if ( $video ): ?>
 												<div class="dashicons dashicons-video-alt"></div>
 											<?php elseif ( has_post_thumbnail( $event->ID ) ): ?>
 												<div class="dashicons dashicons-camera"></div>
