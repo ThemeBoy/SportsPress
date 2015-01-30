@@ -58,7 +58,7 @@ class SP_Modules {
 					'label' => __( 'Player Lists', 'sportspress' ),
 					'icon' => 'sp-icon-list',
 				),
-				'player_birthdays' => array(
+				'birthdays' => array(
 					'label' => __( 'Birthdays', 'sportspress' ),
 					'class' => 'SportsPress_Birthdays',
 					'action' => __( 'Review on WP.org', 'sportspress' ),
