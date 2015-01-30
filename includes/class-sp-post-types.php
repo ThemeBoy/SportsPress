@@ -176,6 +176,8 @@ class SP_Post_types {
 		foreach ( $object_types as $object_type ):
 			register_taxonomy_for_object_type( 'sp_role', $object_type );
 		endforeach;
+
+		do_action( 'sportspress_after_register_taxonomy' );
 	}
 
 	/**
@@ -485,6 +487,8 @@ class SP_Post_types {
 				)
 			)
 		);
+
+		do_action( 'sportspress_after_register_post_type' );
 	}
 
 	public function delete_config_post( $post_id ) {

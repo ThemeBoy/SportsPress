@@ -86,7 +86,7 @@ class SP_Admin_Menus {
 		global $typenow;
 		$screen = get_current_screen();
 		if ( $screen->id == 'sp_role' ) {
-			$this->highlight_admin_menu( 'edit.php?post_type=sp_staff', 'edit-tags.php?taxonomy=sp_role&post_type=sp_staff' );			
+			$this->highlight_admin_menu( 'edit.php?post_type=sp_staff', 'edit-tags.php?taxonomy=sp_role&post_type=sp_staff' );
 		} elseif ( is_sp_config_type( $typenow ) ) {
 			$this->highlight_admin_menu( 'sportspress', 'sportspress-config' );
 		} elseif ( $typenow == 'sp_calendar' ) {

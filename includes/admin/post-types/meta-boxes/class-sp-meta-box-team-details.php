@@ -69,7 +69,7 @@ class SP_Meta_Box_Team_Details {
 			'name' => 'tax_input[sp_season][]',
 			'selected' => $season_ids,
 			'values' => 'term_id',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Competitions', 'sportspress' ) ),
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
 			'class' => 'widefat',
 			'property' => 'multiple',
 			'chosen' => true,

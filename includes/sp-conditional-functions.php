@@ -78,7 +78,7 @@ if ( ! function_exists( 'sp_config_types' ) ) {
  */
 if ( ! function_exists( 'sp_taxonomies' ) ) {
 	function sp_taxonomies() {
-		return apply_filters( 'sportspress_terms', array( 'sp_league', 'sp_season', 'sp_venue', 'sp_position' ) );
+		return apply_filters( 'sportspress_taxonomies', array( 'sp_league', 'sp_season', 'sp_venue', 'sp_position' ) );
 	}
 }
 
