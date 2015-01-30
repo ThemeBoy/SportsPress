@@ -62,7 +62,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 						<tr><td>
 							<p><?php _e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.','sportspress' ); ?></p>
 							<p class="sp-module-actions">
-								<span><?php _e( 'Starting at $49', 'sportspress' ); ?></span>
+								<span><?php _e( 'Premium', 'sportspress' ); ?></span>
 								<a class="button button-primary" href="<?php echo apply_filters( 'sportspress_pro_url', 'http://sportspresspro.com/pricing/' ); ?>" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
 							</p>
 						</td></tr>
