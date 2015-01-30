@@ -143,7 +143,7 @@ class SP_Settings_General extends SP_Settings_Page {
 			array(
 				'title'     => __( 'Tables', 'sportspress' ),
 				'desc' 		=> __( 'Responsive', 'sportspress' ),
-				'id' 		=> 'sportspress_enable_responsive_tables',
+				'id' 		=> 'sportspress_enable_scrollable_tables',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'	=> 'start',
@@ -152,14 +152,6 @@ class SP_Settings_General extends SP_Settings_Page {
 			array(
 				'desc' 		=> __( 'Sortable', 'sportspress' ),
 				'id' 		=> 'sportspress_enable_sortable_tables',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> '',
-			),
-
-			array(
-				'desc' 		=> __( 'Scrollable', 'sportspress' ),
-				'id' 		=> 'sportspress_enable_scrollable_tables',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',

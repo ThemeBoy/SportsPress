@@ -1,6 +1,6 @@
 === SportsPress - Manage Leagues & Sports Clubs ===
 Contributors: ThemeBoy, brianmiyaji, aylaview
-Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
+Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
 Requires at least: 3.8
 Tested up to: 4.1
@@ -18,7 +18,7 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 [youtube http://www.youtube.com/watch?v=KQyga_C5a6M]
 
 = Industry Reviews =
-> "*The SportsPress plugin brings in some amazing features to your WordPress site and league management capabilities. If you are looking forward to create a sports related website on WordPress, you must have a look at SportsPress plugin.*" — [Indexwp](http://www.indexwp.com/sportspress-plugin-review/)
+> "*There are number of professional sports club who likes to maintain their information and statistics online, SportsPress plugin makes this process really easy, cost effective and quick.*" — [Indexwp](http://www.indexwp.com/sportspress-plugin-review/)
 >
 > "*Script of the Day: While the WordPress repository holds various team and sports-related plugins, few of them come close to what you can achieve with SportsPress.*" — [Softpedia](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml)
 >
@@ -39,7 +39,8 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 * Venue Information & Maps
 * Statistics & League Table Columns Configuration
 * Sport Presets
-* Import Events, Teams, Players, and Staff from CSV Files
+* Switch Between Club vs Club and Player vs Player Mode.
+* Import Events, Clubs, Players, and Staff from CSV Files
 * Easy Shortcodes Menu in Editor
 * Events Integrate with iCal
 * Certified compatibility with [WPML](http://wpml.org/plugin/sportspress/)
@@ -102,7 +103,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Volleyball
 * Water Polo
 
-= Themes =
+= SportsPress Themes for Clubs =
 * [Football Club](https://themeboy.com/products/footballclub/)
 * [Premier](https://themeboy.com/products/premier/)
 
@@ -116,7 +117,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 
 = Get Involved =
 
-Feel free to share your suggestions with us so we can continue to develop awesome sports features for you guys!
+Feel free to share your suggestions with us so we can continue to develop awesome sports club features for you guys!
 
 Developers can contribute via the [SportsPress GitHub Repository](https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md).
 

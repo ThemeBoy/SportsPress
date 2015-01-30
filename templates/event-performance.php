@@ -38,12 +38,10 @@ if ( is_array( $teams ) ):
 
 	$link_posts = get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false;
 	$scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
-	$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
 	$mode = get_option( 'sportspress_event_performance_mode', 'values' );
 
 	// Get performance ids for icons
 	if ( $mode == 'icons' ):
-		$responsive = false;
 		$performance_ids = array();
 		$performance_posts = get_posts( array( 'posts_per_page' => -1, 'post_type' => 'sp_performance' ) );
 		foreach ( $performance_posts as $post ):
@@ -90,7 +88,7 @@ if ( is_array( $teams ) ):
 				?>
 				<?php if ( $show_team_players || $show_total ): ?>
 					<div class="sp-table-wrapper">
-						<table class="sp-event-performance sp-data-table <?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
+						<table class="sp-event-performance sp-data-table <?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
 							<thead>
 								<tr>
 									<?php if ( $show_team_players ): ?>
@@ -246,7 +244,7 @@ if ( is_array( $teams ) ):
 		<div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?>">
 			<h4 class="sp-table-caption"><?php _e( 'Performance', 'sportspress' ); ?></h4>
 			<div class="sp-table-wrapper">
-				<table class="sp-event-performance sp-data-table <?php if ( $responsive ) { ?> sp-responsive-table<?php } if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
+				<table class="sp-event-performance sp-data-table <?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
 					<thead>
 						<tr>
 							<th class="data-number">#</th>

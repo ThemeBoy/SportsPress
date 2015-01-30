@@ -32,7 +32,6 @@ $data = array_filter( $data );
 if ( empty( $data ) )
 	return false;
 
-$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 $link_teams = get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false;
 $show_outcomes = array_key_exists( 'outcome', $labels );
@@ -99,7 +98,7 @@ else:
 	$output .= '<h4 class="sp-table-caption">' . __( 'Event Results', 'sportspress' ) . '</h4>';
 
 	$output .= '<div class="sp-table-wrapper">' .
-		'<table class="sp-event-results sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . '"><thead>' .
+		'<table class="sp-event-results sp-data-table' . ( $scrollable ? ' sp-scrollable-table' : '' ) . '"><thead>' .
 		'<th class="data-name">' . __( 'Team', 'sportspress' ) . '</th>';
 	foreach( $labels as $key => $label ):
 		$output .= '<th class="data-' . $key . '">' . $label . '</th>';
