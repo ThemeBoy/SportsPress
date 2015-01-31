@@ -27,7 +27,7 @@ class SP_Countries {
 	public function __construct() {
 		$continents = array(
 			__( 'Africa', 'sportspress' ) => array('AO','BF','BI','BJ','BW','CD','CF','CG','CI','CM','CV','DJ','DZ','EG','EH','ER','ET','GA','GH','GM','GN','GQ','GW','KE','KM','LR','LS','LY','MA','MG','ML','MR','MU','MZ','NA','NE','NG','RW','SC','SD','SL','SN','SO','ST','SZ','TD','TG','TN','TZ','UG','ZA','ZM','ZW'),
-			__( 'Asia', 'sportspress' ) => array('AE','AF','AM','AZ','BD','BH','BN','BT','CN','CY','GE','HK','IL','IN','IQ','IR','JO','JP','KG','KH','KP','KR','KW','KZ','LA','LB','LK','MM','MN','MO','MV','MY','NP','OM','PH','PK','QA','SA','SG','TH','TJ','TM','TW','UZ','VN','YE'),
+			__( 'Asia', 'sportspress' ) => array('AE','AF','AM','AZ','BD','BH','BN','BT','CN','CY','GE','HK','IL','IN','IQ','IR','JO','JP','KG','KH','KP','KR','KW','KZ','LA','LB','LK','MM','MN','MO','MV','MY','NP','OM','PH','PK','PS','QA','SA','SG','SY','TH','TJ','TM','TW','UZ','VN','YE'),
 			__( 'Europe', 'sportspress' ) => array('AD','AL','AT','BA','BE','BG','BY','CH','CZ','DE','DK','EE','EN','ES','FI','FR','GB','GR','HR','HU','IE','IS','IT','LI','LT','LU','LV','MC','MD','ME','MK','MT','MW','NB','NL','NO','PL','PT','RO','RS','RU','SE','SF','SI','SK','SM','TR','UA','VA','WL'),
 			__( 'North America', 'sportspress' ) => array('AG','BB','BS','BZ','CA','CR','CU','DM','DO','GD','GT','HN','HT','JM','KN','LC','MX','NI','PA','PR','SV','US','VC'),
 			__( 'Oceania', 'sportspress' ) => array('AU','TL','FJ','FM','ID','KI','MH','NR','NZ','PG','PW','SB','TO','TV','VU','WS'),
@@ -182,6 +182,7 @@ class SP_Countries {
 		    'PK' => __( "Pakistan", 'sportspress' ),
 		    'PL' => __( "Poland", 'sportspress' ),
 		    'PR' => __( "Puerto Rico", 'sportspress' ),
+		    'PS' => __( "Palestine", 'sportspress' ),
 		    'PT' => __( "Portugal", 'sportspress' ),
 		    'PW' => __( "Palau", 'sportspress' ),
 		    'PY' => __( "Paraguay", 'sportspress' ),
@@ -206,6 +207,7 @@ class SP_Countries {
 		    'SR' => __( "Suriname", 'sportspress' ),
 		    'ST' => __( "Sao Tome and Principe", 'sportspress' ),
 		    'SV' => __( "El Salvador", 'sportspress' ),
+		    'SY' => __( "Syria", 'sportspress' ),
 		    'SZ' => __( "Swaziland", 'sportspress' ),
 		    'TD' => __( "Chad", 'sportspress' ),
 		    'TG' => __( "Togo", 'sportspress' ),
