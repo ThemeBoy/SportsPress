@@ -8,7 +8,7 @@ If you are not a developer, please use the [SportsPress plugin page](http://word
 This repository is not suitable for support. Please don't use our issue tracker for support requests, but for core SportsPress issues only. Support can take place in the appropriate channels:
 
 * The [public support forums](http://wordpress.org/support/plugin/sportspress) on WordPress.org, where the community can help each other out.
-* The [ThemeBoy premium support portal](http://support.themeboy.com/) for customers who have purchased themes or extensions.
+* The [ThemeBoy premium support portal](http://tboy.co/support) for customers who have purchased themes or extensions.
 
 
 ## Contributing to SportsPress

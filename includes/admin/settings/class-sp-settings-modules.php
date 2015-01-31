@@ -63,7 +63,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<p><?php _e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.','sportspress' ); ?></p>
 							<p class="sp-module-actions">
 								<span><?php _e( 'Premium', 'sportspress' ); ?></span>
-								<a class="button button-primary" href="<?php echo apply_filters( 'sportspress_pro_url', 'http://sportspresspro.com/pricing/' ); ?>" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
+								<a class="button button-primary" href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pricing' ); ?>" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
 							</p>
 						</td></tr>
 					</tbody>
@@ -137,9 +137,9 @@ class SP_Settings_Modules extends SP_Settings_Page {
 						<tr><td>
 							<p><strong><i class="sp-icon-book"></i> <?php _e( 'Documentation', 'sportspress' ); ?></strong></p>
 							<ul class="sp-documentation-links">
-								<li><a href="http://sportspresspro.com/docs/installation/" target="_blank"><?php _e( 'Getting Started', 'sportspress' ); ?></a></li>
-								<li><a href="http://sportspresspro.com/docs/roles-and-capabilities/" target="_blank"><?php _e( 'Roles and Capabilities', 'sportspress' ); ?></a></li>
-								<li><a href="http://sportspresspro.com/docs/theme-integration-guide/" target="_blank"><?php _e( 'Theme Integration Guide', 'sportspress' ); ?></a></li>
+								<li><a href="http://tboy.co/installation" target="_blank"><?php _e( 'Getting Started', 'sportspress' ); ?></a></li>
+								<li><a href="http://tboy.co/roles" target="_blank"><?php _e( 'Roles and Capabilities', 'sportspress' ); ?></a></li>
+								<li><a href="http://tboy.co/integration" target="_blank"><?php _e( 'Theme Integration Guide', 'sportspress' ); ?></a></li>
 							</ul>
 							<p><strong><i class="dashicons dashicons-groups"></i> <?php _e( 'Support', 'sportspress' ); ?></strong></p>
 							<ul class="sp-community-links">
@@ -147,7 +147,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 								<?php if ( class_exists( 'SportsPress_Pro' ) ) { ?>
 								<li><a href="<?php echo apply_filters( 'sportspress_support_url', 'http://sportspresspro.com/support/' ); ?>" target="_blank"><?php _e( 'Premium Support', 'sportspress' ); ?></a></li>
 								<?php } else { ?>
-								<li><a href="<?php echo apply_filters( 'sportspress_pro_url', 'http://sportspresspro.com/pricing/' ); ?>" target="_blank"><span class="sp-desc-tip" title="<?php _e( 'Upgrade to Pro', 'sportspress' ); ?>"><?php _e( 'Premium Support', 'sportspress' ); ?></span></a></li>
+								<li><a href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pricing/' ); ?>" target="_blank"><span class="sp-desc-tip" title="<?php _e( 'Upgrade to Pro', 'sportspress' ); ?>"><?php _e( 'Premium Support', 'sportspress' ); ?></span></a></li>
 								<?php } ?>
 							</ul>
 						</td></tr>
@@ -185,7 +185,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 								<img src="<?php echo $theme->get_screenshot(); ?>" class="sp-theme-screenshot">
 								<p><?php _e( '<strong>Rookie</strong> is a free starter theme designed for SportsPress.', 'sportspress' ); ?></p>
 								<p class="sp-module-actions">
-									<a class="button" href="http://themeboy.com/sportspress/themes/" target="_blank"><?php _e( 'Need a Better Theme?', 'sportspress' ); ?></a>
+									<a class="button" href="http://tboy.co/themes" target="_blank"><?php _e( 'Need a Better Theme?', 'sportspress' ); ?></a>
 								</p>
 							</td></tr>
 						</tbody>
@@ -203,7 +203,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					</thead>
 					<tbody>
 						<?php foreach ( $modules as $id => $module ) { ?>
-							<?php if ( isset( $module['class'] ) && ! class_exists( $module['class'] ) ) { ?>
+							<?php if ( isset( $module['class'] ) && ! class_exists( '.'.$module['class'] ) ) { ?>
 							<tr class="sp-module-unavailable"><td>
 								<input type="checkbox" disabled="disabled">
 								<span<?php if ( array_key_exists( 'tip', $module ) ) { ?> class="sp-desc-tip" title="<?php echo $module['tip']; ?>"<?php } ?>>

@@ -1,7 +1,7 @@
 === SportsPress - Manage Leagues & Sports Clubs ===
 Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
+Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.1
 Stable tag: 1.5
@@ -45,11 +45,11 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 * Events Integrate with iCal
 * Certified compatibility with [WPML](http://wpml.org/plugin/sportspress/)
 
-More details about each feature are available on the [SportsPress Website](http://sportspresspro.com/).
+More details about each feature are available on the [SportsPress Website](http://tboy.co/pro).
 
 = SportsPress Pro =
 
-Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://sportspresspro.com/pricing/) to get access to more advanced features for your team, club, or league website.
+Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://tboy.co/pricing) to get access to more advanced features for your team, club, or league website.
 
 = Available Languages =
 * English – English ( en_US )
@@ -104,16 +104,16 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Water Polo
 
 = SportsPress Themes for Clubs =
-* [Football Club](https://themeboy.com/products/footballclub/)
-* [Premier](https://themeboy.com/products/premier/)
+* [Football Club](http://tboy.co/fc)
+* [Premier](http://tboy.co/premier)
 
 = Documentation =
-* [Getting Started](https://sportspresspro.com/docs/installation/)
-* [User Roles](https://sportspresspro.com/docs/section/user-roles/)
-* [Integration Guide](https://sportspresspro.com/docs/theme-integration-guide/)
-* [Actions](https://sportspresspro.com/docs/action-reference/)
-* [Filters](https://sportspresspro.com/docs/filter-reference/)
-* [Shortcodes](https://sportspresspro.com/docs/shortcode-reference/)
+* [Getting Started](http://tboy.co/installation)
+* [User Roles](http://tboy.co/roles)
+* [Integration Guide](http://tboy.co/integration)
+* [Actions](http://tboy.co/actionref)
+* [Filters](http://tboy.co/filterref)
+* [Shortcodes](http://tboy.co/shortcoderef)
 
 = Get Involved =
 
@@ -126,9 +126,9 @@ Translators can contribute to SportsPress translations through [Transifex](https
 = Stay Current =
 To keep up with the latest updates and new features, be sure to do the following:
 
-* Visit the [SportsPress Pro homepage](http://sportspresspro.com/).
-* Subscribe to our [YouTube channel](https://www.youtube.com/user/themeboyteam).
-* Follow ThemeBoy on [Facebook](https://facebook.com/themeboy) & [Twitter](http://twitter.com/themeboy).
+* Visit the [SportsPress Pro homepage](http://tboy.co/pro).
+* Subscribe to our [YouTube channel](http://tboy.co/youtube).
+* Follow ThemeBoy on [Facebook](http://tboy.co/facebook) & [Twitter](http://tboy.co/twitter).
 
 = Please Rate, Vote, and Enjoy! =
 Your feedback is much appreciated and makes all the difference in improving SportsPress.
@@ -197,7 +197,7 @@ SportsPress is a free plugin developed to give sports organizations the function
 
 Limitations? Don't worry, there are no limitations to the number of events, players, staff members, teams, clubs, or leagues you can add to the free plugin.
 
-[SportsPress Pro](http://sportspresspro.com) is a premium plugin made for serious teams who are looking for additional sports functionality in their website. By upgrading to SportsPress Pro, you will be given instant access to a suite of sports modules that will appear in your dashboard.
+[SportsPress Pro](http://tboy.co/pro) is a premium plugin made for serious teams who are looking for additional sports functionality in their website. By upgrading to SportsPress Pro, you will be given instant access to a suite of sports modules that will appear in your dashboard.
 
 The current modules that are available exclusively to SportsPress Pro are:
 
@@ -208,7 +208,7 @@ The current modules that are available exclusively to SportsPress Pro are:
 * League Menu: Display a global navigation bar at the top of your website for easy navigation from one team to the next.
 * Branding: Instantly rebrands your admin panel to reflect your organization's brand.
 
-There are [3 different licenses](http://sportspresspro.com/pricing/) that you can choose from (Social, Club, and League), each with a [specified set of modules](http://sportspresspro.com/features/).
+There are [3 different licenses](http://tboy.co/pricing) that you can choose from (Social, Club, and League), each with a [specified set of modules](http://sportspresspro.com/features/).
 
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
