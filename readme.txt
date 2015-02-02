@@ -214,6 +214,34 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 == Changelog ==
 
+= 1.6 =
+* Feature - New modules page to quickly toggle additional features.
+* Feature - Option to automatically populate player list and league table based on criteria.
+* Feature - Display link to CSV importer at the top of admin list pages.
+* Feature - Update jQuery dataTables to version 1.10.4.
+* Feature - Wrap responsive tables via script.
+* Feature - New API functions for team abbreviations.
+* Feature - Enable searching team names in event edit screen.
+* Refactor - Enable global setting to use plugin as team-vs-team or player-vs-player (beta).
+* Refactor - Use 3-letter FIFA country codes with fallback for 2-letter codes.
+* Refactor - Merge scrollable and responsive settings.
+* Tweak - Make AJAX shortcodes hookable for extensions and modules.
+* Tweak - Mode maps setting to events tab.
+* Tweak - Highlight jobs link in admin menu when editing a job.
+* Tweak - Hide theme notice from welcome pages.
+* Tweak - Prepend prefix to frontend CSS selectors.
+* Tweak - Change Team Results to Event Results.
+* Tweak - Display result rows only for teams that have been selected.
+* Fix - League table displaying zeroes when competition is selected and season is set to all.
+* Fix - Notice when players don't exist in event.
+* Fix - Player performance displaying rows when no team is selected.
+* Fix - Events linking in countdown widget and event list when option is turned off.
+* Fix - Option to hide event blocks title.
+* Fix - Event logos displaying different images when teams are not selected.
+* Preset - Add default labels for overtime in baseball and basketball presets.
+* Preset - Add Counter-Strike: Global Offensive preset.
+* Localization - Update list of countries for nationality selection.
+
 = 1.5 =
 * Feature - New inline quick result editing for events.
 * Feature - Automatically detect event outcome based on user-defined conditions.

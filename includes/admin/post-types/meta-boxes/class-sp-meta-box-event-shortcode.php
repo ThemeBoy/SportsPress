@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     0.7.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,7 +20,7 @@ class SP_Meta_Box_Event_Shortcode {
 	 */
 	public static function output( $post ) {
 		$shortcodes = apply_filters( 'sportspress_event_shortcodes', array(
-			'event_results' => __( 'Event Results', 'sportspress' ),
+			'event_results' => __( 'Results', 'sportspress' ),
 			'event_details' => __( 'Details', 'sportspress' ),
 			'event_performance' => __( 'Player Performance', 'sportspress' ),
 		) );
