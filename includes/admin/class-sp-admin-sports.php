@@ -228,7 +228,7 @@ class SP_Admin_Sports {
 		$post_array['post_type'] = $post_type;
 
 		// Add post excerpt
-		if ( array_key_exists( 'description', $post ) ) {
+		if ( is_array( $post ) && array_key_exists( 'description', $post ) ) {
 			$post_array['post_excerpt'] = $post['description'];
 		}
 
