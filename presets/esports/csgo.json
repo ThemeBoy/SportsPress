@@ -1,0 +1,21 @@
+{
+	"name":				"Counter-Strike: Global Offensive",
+	"outcomes": [
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" }
+	],
+	"results": [
+						"Map Score",
+						{ "name" : "Round Score", "primary" : 1 }
+	],
+	"performance": [
+						"Kills",
+						"Deaths",
+						"Assists"
+	],
+	"metrics": [
+	],
+	"statistics": [
+						{ "name" : "KDA Ratio", "equation" : "( $kills + $assists ) / $deaths", "precision" : 2, "description" : "Kills/deaths/assists ratio" }
+	]
+}

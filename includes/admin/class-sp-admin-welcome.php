@@ -319,12 +319,31 @@ class SP_Admin_Welcome {
 	public function credits_screen() {
 		?>
 		<div class="wrap about-wrap about-sportspress-wrap">
-
 			<?php $this->intro(); ?>
-
+			
 			<p class="about-description"><?php printf( __( 'SportsPress is developed and maintained by a worldwide team of passionate individuals and backed by an awesome developer community. Want to see your name? <a href="%s">Contribute to SportsPress</a>.', 'sportspress' ), 'https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md' ); ?></p>
 
-			<?php echo $this->contributors(); ?>
+			<div class="sp-feature feature-section col one-col">
+				<h4><?php _e( 'Developers', 'sportspress' ); ?></h4>
+				<?php echo $this->contributors(); ?>
+			</div>
+			
+			<p class="about-description"><?php printf( __( 'Some presets have been submitted by our helpful and generous users. Want to see your name? <a href="%s">Add a Sport Preset</a>.', 'sportspress' ), 'http://themeboy.com/add-sport-preset/' ); ?></p>
+
+			<div class="sp-feature feature-section col one-col">
+				<h4><?php _e( 'Presets', 'sportspress' ); ?></h4>
+				<?php
+				$preset_credits = array(
+					__( 'Counter-Strike: Global Offensive', 'sportspress' ) => 'Oscar Wong',
+				);
+				?>
+				<dl class="sp-presets">
+					<?php foreach ( $preset_credits as $preset => $name ) { ?>
+					<dt><?php echo $preset; ?></dt>
+					<dd><em><?php echo $name; ?></em></dd>
+					<?php } ?>
+				</dl>
+			</div>
 		</div>
 		<?php
 	}
