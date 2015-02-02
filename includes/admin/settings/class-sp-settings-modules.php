@@ -117,10 +117,19 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					</thead>
 					<tbody>
 						<tr><td>
-							<p><?php _e( 'Post your ★★★★★ review on WordPress.org and get the Birthdays module for free.','sportspress' ); ?></p>
+							<p><?php echo str_replace(
+								array( '[stars]', '[link]', '[/link]' ),
+								array( '<a target="_blank" href="http://tboy.co/review">&#9733;&#9733;&#9733;&#9733;&#9733;</a>', '<a target="_blank" href="http://tboy.co/review">', '</a>' ),
+								__( 'Add your [stars] on [link]wordpress.org[/link] and get the Birthdays module for free.','sportspress' )
+							); ?></p>
+							<p><?php echo str_replace(
+								array( '[link]', '[/link]' ),
+								array( '<a href="mailto:reviews@themeboy.com">', '</a>' ),
+								__( 'Already posted a review? [link]Email us[/link] for the download link.', 'sportspress' )
+							); ?></p>
 							<p class="sp-module-actions">
 								<span><?php _e( 'Free with review', 'sportspress' ); ?></span>
-								<a class="button" href="http://wordpress.org/support/view/plugin-reviews/sportspress#postform" target="_blank"><?php _e( 'Post Review', 'sportspress' ); ?></a>
+								<a class="button" href="http://tboy.co/review" target="_blank"><?php _e( 'Post Review', 'sportspress' ); ?></a>
 							</p>
 						</td></tr>
 					</tbody>
@@ -167,24 +176,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 								<img src="<?php echo $theme->get_screenshot(); ?>" class="sp-theme-screenshot">
 								<p><?php _e( '<strong>Your theme does not declare SportsPress support</strong> &#8211; if you encounter layout issues please read our integration guide or choose a SportsPress theme :)', 'sportspress' ); ?></p>
 								<p class="sp-module-actions">
-									<span><?php _e( 'Free', 'sportspress' ); ?></span>
-									<a class="button" href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), admin_url( 'theme-install.php' ) ); ?>" target="_blank"><?php _e( 'Install Rookie Theme', 'sportspress' ); ?></a>
-								</p>
-							</td></tr>
-						</tbody>
-					</table>
-				<?php } elseif ( 'rookie' == $theme->stylesheet ) { ?>
-					<table class="widefat" cellspacing="0">
-						<thead>
-							<tr><th>
-								<strong><?php _e( 'Current Theme', 'sportspress' ); ?></strong>
-							</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>
-								<img src="<?php echo $theme->get_screenshot(); ?>" class="sp-theme-screenshot">
-								<p><?php _e( '<strong>Rookie</strong> is a free starter theme designed for SportsPress.', 'sportspress' ); ?></p>
-								<p class="sp-module-actions">
 									<a class="button" href="http://tboy.co/themes" target="_blank"><?php _e( 'Need a Better Theme?', 'sportspress' ); ?></a>
 								</p>
 							</td></tr>
@@ -203,7 +194,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					</thead>
 					<tbody>
 						<?php foreach ( $modules as $id => $module ) { ?>
-							<?php if ( isset( $module['class'] ) && ! class_exists( '.'.$module['class'] ) ) { ?>
+							<?php if ( isset( $module['class'] ) && ! class_exists( $module['class'] ) ) { ?>
 							<tr class="sp-module-unavailable"><td>
 								<input type="checkbox" disabled="disabled">
 								<span<?php if ( array_key_exists( 'tip', $module ) ) { ?> class="sp-desc-tip" title="<?php echo $module['tip']; ?>"<?php } ?>>
