@@ -63,7 +63,11 @@ class SP_Modules {
 					'class' => 'SportsPress_Birthdays',
 					'action' => __( 'Review on WP.org', 'sportspress' ),
 					'link' => 'http://tboy.co/review',
-					'tip' => __( 'Post your ★★★★★ review on WordPress.org and get the Birthdays module for free.', 'sportspress' ),
+					'tip' => str_replace(
+						array( '[stars]', '[link]', '[/link]' ),
+						array( '&#9733;&#9733;&#9733;&#9733;&#9733;', '', '' ),
+						__( 'Add your [stars] on [link]wordpress.org[/link] and get the Birthdays module for free.','sportspress' )
+					),
 					'icon' => 'sp-icon-cake',
 				),
 			),

@@ -26,12 +26,12 @@ class SP_Settings_Modules extends SP_Settings_Page {
 		$this->theme = wp_get_theme();
 
 		$this->sections = apply_filters( 'sportspress_module_sections', array(
-			'general' => __( 'General' ),
-			'event' => __( 'Events' ),
-			'team' => __( 'Teams' ),
-			'player' => __( 'Players' ),
-			'staff' => __( 'Staff' ),
-			'other' => __( 'Other' ),
+			'general' => __( 'General', 'sportspress' ),
+			'event' => __( 'Events', 'sportspress' ),
+			'team' => __( 'Teams', 'sportspress' ),
+			'player' => __( 'Players', 'sportspress' ),
+			'staff' => __( 'Staff', 'sportspress' ),
+			'other' => __( 'Other', 'sportspress' ),
 		));
 
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
@@ -152,7 +152,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							</ul>
 							<p><strong><i class="dashicons dashicons-groups"></i> <?php _e( 'Support', 'sportspress' ); ?></strong></p>
 							<ul class="sp-community-links">
-								<li><a href="https://wordpress.org/support/plugin/sportspress" target="_blank"><?php _e( 'Plugin Forums', 'sportspress' ); ?></a></li>
+								<li><a href="http://tboy.co/forums" target="_blank"><?php _e( 'Plugin Forums', 'sportspress' ); ?></a></li>
 								<?php if ( class_exists( 'SportsPress_Pro' ) ) { ?>
 								<li><a href="<?php echo apply_filters( 'sportspress_support_url', 'http://sportspresspro.com/support/' ); ?>" target="_blank"><?php _e( 'Premium Support', 'sportspress' ); ?></a></li>
 								<?php } else { ?>
