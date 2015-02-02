@@ -120,7 +120,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				endforeach;
 
 				// Update nationality
-				$nationality = trim( strtoupper( sp_array_value( $meta, 'sp_nationality' ) ) );
+				$nationality = trim( strtolower( sp_array_value( $meta, 'sp_nationality' ) ) );
 				if ( $nationality == '*' ) $nationality = '';
 				update_post_meta( $id, 'sp_nationality', $nationality );
 

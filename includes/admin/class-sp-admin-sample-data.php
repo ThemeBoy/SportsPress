@@ -336,7 +336,7 @@ class SP_Admin_Sample_Data {
 			// Update meta
 			update_post_meta( $id, 'sp_columns', $columns );
 			update_post_meta( $id, 'sp_number', $index + 1 );
-			update_post_meta( $id, 'sp_nationality', 'AU' );
+			update_post_meta( $id, 'sp_nationality', 'aus' );
 			update_post_meta( $id, 'sp_current_team', $current_team );
 			sp_update_post_meta_recursive( $id, 'sp_past_team', $past_teams );
 			sp_update_post_meta_recursive( $id, 'sp_team', $inserted_ids['sp_team'] );

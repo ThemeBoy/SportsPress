@@ -32,8 +32,13 @@ $metrics_after = $player->metrics( false );
 
 $common = array();
 if ( $nationality ):
+	if ( 2 == strlen( $nationality ) ):
+		$legacy = SP()->countries->legacy;
+		$nationality = strtolower( $nationality );
+		$nationality = sp_array_value( $legacy, $nationality, null );
+	endif;
 	$country_name = sp_array_value( $countries, $nationality, null );
-	$common[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
+	$common[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 endif;
 
 $position_names = array();

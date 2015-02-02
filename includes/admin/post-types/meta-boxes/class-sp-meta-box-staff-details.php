@@ -23,6 +23,11 @@ class SP_Meta_Box_Staff_Details {
 		$continents = SP()->countries->continents;
 
 		$nationality = get_post_meta( $post->ID, 'sp_nationality', true );
+		if ( 2 == strlen( $nationality ) ):
+			$legacy = SP()->countries->legacy;
+			$nationality = strtolower( $nationality );
+			$nationality = sp_array_value( $legacy, $nationality, null );
+		endif;
 
 		$leagues = get_the_terms( $post->ID, 'sp_league' );
 		$league_ids = array();
