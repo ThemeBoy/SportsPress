@@ -4,12 +4,14 @@ Plugin Name: SportsPress Team Colors
 Plugin URI: http://sportspresspro.com/
 Description: Add team colors to SportsPress.
 Author: ThemeBoy
-Author URI: http://sportspresspro.com
-Version: 1.4
+Author URI: http://themeboy.com
+Version: 1.6
 */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! class_exists( 'SportsPress_Team_Colors' ) ) :
 
 /**
  * Main SportsPress Team Colors Class
@@ -39,7 +41,7 @@ class SportsPress_Team_Colors {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_TEAM_COLORS_VERSION' ) )
-			define( 'SP_TEAM_COLORS_VERSION', '1.4' );
+			define( 'SP_TEAM_COLORS_VERSION', '1.6' );
 
 		if ( !defined( 'SP_TEAM_COLORS_URL' ) )
 			define( 'SP_TEAM_COLORS_URL', plugin_dir_url( __FILE__ ) );
@@ -86,11 +88,13 @@ class SportsPress_Team_Colors {
 		$options = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
 
 		// Defaults
-		if ( empty( $options['primary'] ) ) $options['primary'] = '#363f48';
-		if ( empty( $options['background'] ) ) $options['background'] = '#f4f4f4';
-		if ( empty( $options['text'] ) ) $options['text'] = '#363f48';
-		if ( empty( $options['heading'] ) ) $options['heading'] = '#ffffff';
-        if ( empty( $options['link'] ) ) $options['link'] = '#00a69c';
+		$options = array_intersect_key( $options, array(
+			'primary' => '#2b353e',
+			'background' => '#f4f4f4',
+			'text' => '#222222',
+			'heading' => '#ffffff',
+			'link' => '#00a69c',
+		) );
 
         // Team settings
 		$colors = (array) get_post_meta( $post->ID, 'sp_colors', true );
@@ -198,4 +202,8 @@ class SportsPress_Team_Colors {
 	}
 }
 
-new SportsPress_Team_Colors();
+endif;
+
+if ( get_option( 'sportspress_load_team_colors_module', 'yes' ) == 'yes' ) {
+	new SportsPress_Team_Colors();
+}
