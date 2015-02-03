@@ -9,10 +9,12 @@
       <key name="Details"/>
       <key name="Email"/>
       <key name="Event"/>
+      <key name="Event Results"/>
       <key name="Job"/>
       <key name="Nationality"/>
       <key name="Outcome"/>
       <key name="Past Teams"/>
+      <key name="Performance"/>
       <key name="Phone"/>
       <key name="Played"/>
       <key name="Player"/>
@@ -26,7 +28,6 @@
       <key name="Staff"/>
       <key name="Substitutes"/>
       <key name="Team"/>
-      <key name="Team Results"/>
       <key name="Teams"/>
       <key name="Time"/>
       <key name="Time/Results"/>
