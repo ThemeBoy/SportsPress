@@ -27,13 +27,13 @@ extract( $defaults, EXTR_SKIP );
 
 if ( ! isset( $highlight ) ) $highlight = get_post_meta( $id, 'sp_highlight', true );
 
+$table = new SP_League_Table( $id );
+
 $output = '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
 
 $output .= '<div class="sp-table-wrapper">';
 
 $output .= '<table class="sp-league-table sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
-
-$table = new SP_League_Table( $id );
 
 $data = $table->data();
 
