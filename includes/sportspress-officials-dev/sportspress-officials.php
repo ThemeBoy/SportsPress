@@ -4,12 +4,14 @@ Plugin Name: SportsPress Officials
 Plugin URI: http://sportspresspro.com/
 Description: Add officials to SportsPress.
 Author: ThemeBoy
-Author URI: http://sportspresspro.com
+Author URI: http://themeboy.com
 Version: 1.0
 */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! class_exists( 'SportsPress_Officials' ) ) :
 
 /**
  * Main SportsPress Officials Class
@@ -163,7 +165,7 @@ class SportsPress_Officials {
 	 * Add menu item
 	 */
 	public function register_importer() {
-		register_importer( 'sportspress_sponsor_csv', __( 'SportsPress Officials (CSV)', 'sportspress' ), __( 'Import <strong>officials</strong> from a csv file.', 'sportspress'), array( $this, 'officials_importer' ) );
+		register_importer( 'sp_sponsor_csv', __( 'SportsPress Officials (CSV)', 'sportspress' ), __( 'Import <strong>officials</strong> from a csv file.', 'sportspress'), array( $this, 'officials_importer' ) );
 	}
 
 	/**
@@ -472,5 +474,7 @@ class SportsPress_Officials {
 		include_once( 'includes/class-sp-widget-officials.php' );
 	}
 }
+
+endif;
 
 new SportsPress_Officials();
