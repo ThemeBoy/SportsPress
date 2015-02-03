@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.5
+Stable tag: 1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -234,6 +234,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Tweak - Display result rows only for teams that have been selected.
 * Fix - League table displaying zeroes when competition is selected and season is set to all.
 * Fix - Notice when players don't exist in event.
+* Fix - Career totals not displaying in player profiles.
 * Fix - Player performance displaying rows when no team is selected.
 * Fix - Events linking in countdown widget and event list when option is turned off.
 * Fix - Option to hide event blocks title.
