@@ -4,18 +4,20 @@ Plugin Name: SportsPress Staff Directories
 Plugin URI: http://sportspresspro.com/
 Description: Adds staff directories to SportsPress.
 Author: ThemeBoy
-Author URI: http://sportspresspro.com
-Version: 1.4
+Author URI: http://themeboy.com
+Version: 1.6
 */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+if ( ! class_exists( 'SportsPress_Staff_Directories' ) ) :
+
 /**
  * Main SportsPress Staff Directories Class
  *
  * @class SportsPress_Staff_Directories
- * @version	1.4
+ * @version	1.6
  */
 class SportsPress_Staff_Directories {
 
@@ -28,6 +30,11 @@ class SportsPress_Staff_Directories {
 
 		// Include required files
 		$this->includes();
+
+		// Include required ajax files
+		if ( defined( 'DOING_AJAX' ) ) {
+			$this->ajax_includes();
+		}
 
 		// Hooks
 		register_activation_hook( __FILE__, array( $this, 'install' ) );
@@ -49,6 +56,8 @@ class SportsPress_Staff_Directories {
 		add_action( 'sportspress_single_team_content', array( $this, 'output_team_directories' ), 25 );
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
 		add_action( 'sportspress_register_post_type_staff', array( $this, 'add_staff_attributes_support' ) );
+		add_filter( 'sportspress_shortcodes', array( $this, 'add_shortcodes' ) );
+		add_filter( 'sportspress_tinymce_strings', array( $this, 'add_tinymce_strings' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
 		if ( defined( 'SP_PRO_PLUGIN_FILE' ) )
@@ -60,7 +69,7 @@ class SportsPress_Staff_Directories {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_STAFF_DIRECTORIES_VERSION' ) )
-			define( 'SP_STAFF_DIRECTORIES_VERSION', '1.4' );
+			define( 'SP_STAFF_DIRECTORIES_VERSION', '1.6' );
 
 		if ( !defined( 'SP_STAFF_DIRECTORIES_URL' ) )
 			define( 'SP_STAFF_DIRECTORIES_URL', plugin_dir_url( __FILE__ ) );
@@ -78,6 +87,13 @@ class SportsPress_Staff_Directories {
 		if ( ! is_admin() || defined( 'DOING_AJAX' ) ) {
 			$this->frontend_includes();
 		}
+	}
+
+	/**
+	 * Include required ajax files.
+	 */
+	public function ajax_includes() {
+		include_once( 'includes/class-sp-directory-ajax.php' );
 	}
 
 	/**
@@ -402,6 +418,28 @@ class SportsPress_Staff_Directories {
 		include_once( 'includes/class-sp-widget-staff-list.php' );
 		include_once( 'includes/class-sp-widget-staff-gallery.php' );
 	}
+
+	/**
+	 * Add shortcodes to TinyMCE
+	 */
+	public static function add_shortcodes( $shortcodes ) {
+		$shortcodes['staff'][] = 'list';
+		$shortcodes['staff'][] = 'gallery';
+		return $shortcodes;
+	}
+
+	/**
+	 * Add strings to TinyMCE
+	 */
+	public static function add_tinymce_strings( $strings ) {
+		$strings['staff'] = __( 'Staff', 'sportspress' );
+		$strings['directory'] = __( 'Directory', 'sportspress' );
+		return $strings;
+	}
 }
 
-new SportsPress_Staff_Directories();
+endif;
+
+if ( get_option( 'sportspress_load_staff_directories_module', 'yes' ) == 'yes' ) {
+	new SportsPress_Staff_Directories();
+}

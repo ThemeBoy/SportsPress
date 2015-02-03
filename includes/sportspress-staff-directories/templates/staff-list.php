@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress_Staff_Directories
- * @version     1.0
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -18,7 +18,7 @@ $defaults = array(
 	'link_phone' => get_option( 'sportspress_staff_link_phone', 'yes' ) == 'yes' ? true : false,
 	'link_email' => get_option( 'sportspress_staff_link_email', 'yes' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
-	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
+	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_directory_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_directory_rows', 10 ),
 );
@@ -39,8 +39,8 @@ unset( $data[0] );
 
 $output = '';
 
-$output .= '<div class="sp-table-wrapper sp-scrollable-table-wrapper">' .
-	'<table class="sp-staff-directory sp-data-table' . ( $responsive ? ' sp-responsive-table' : '' ) . ( $sortable ? ' sp-sortable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
+$output .= '<div class="sp-table-wrapper">' .
+	'<table class="sp-staff-directory sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
 foreach( $labels as $key => $label ):
 	if ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) )

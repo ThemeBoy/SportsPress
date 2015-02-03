@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress_Staff_Directories
- * @version     1.0
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -22,7 +22,9 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 // Add staff role to caption if available
-$staff_role = get_post_meta( $id, 'sp_role', true );
+$roles = get_the_terms( $id, 'sp_role' );
+if ( $roles && ! is_wp_error( $roles ) ):
+	$staff_role = array_shift( $roles );
 if ( $staff_role )
 	$caption = '<strong>' . $staff_role . '</strong> ' . $caption;
 

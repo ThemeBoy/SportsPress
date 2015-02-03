@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress_Staff_Directories
- * @version     1.0
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -148,7 +148,7 @@ class SP_Admin_CPT_Directory extends SP_Admin_CPT {
 	public function menu_highlight() {
 		global $typenow, $menu_file, $submenu_file;
 		if ( 'sp_directory' == $typenow ):
-			$menu_file = 'edit.php?post_type=sp_player';
+			$menu_file = 'edit.php?post_type=sp_staff';
 			$submenu_file  = 'edit.php?post_type=sp_directory';
 		endif;
 	}
