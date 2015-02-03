@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress_Branding
- * @version     1.0.1
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -165,8 +165,18 @@ class SP_Settings_Branding extends SP_Settings_Page {
 					<input name="sportspress_enable_branding_css" id="sportspress_enable_branding_css" type="checkbox" value="1" <?php checked( get_option( 'sportspress_enable_branding_css', 'no' ), 'yes' ); ?>>
 					<?php _e( 'Enable', 'sportspress' ); ?>
 				</label>
+
+				<input type="hidden" name="sportspress_update_branding" value="1">
+				<?php if ( isset( $_POST[ 'sportspress_update_branding' ] ) ) { ?>
+				<script type="text/javascript">
+				window.onload = function() {
+					window.location = window.location.href;
+				}
+				</script>
+				<?php } ?>
 			</td>
-		</tr><?php
+		</tr>
+		<?php
 	}
 
 	/**

@@ -4,18 +4,20 @@ Plugin Name: SportsPress Branding
 Plugin URI: http://sportspresspro.com/
 Description: White label SportsPress branding.
 Author: ThemeBoy
-Author URI: http://sportspresspro.com
-Version: 1.4
+Author URI: http://themeboy.com
+Version: 1.6
 */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+if ( ! class_exists( 'SportsPress_Branding' ) ) :
+
 /**
  * Main SportsPress Branding Class
  *
  * @class SportsPress_Branding
- * @version	1.4
+ * @version	1.6
  */
 class SportsPress_Branding {
 
@@ -37,6 +39,7 @@ class SportsPress_Branding {
 		add_filter( 'gettext', array( $this, 'gettext' ), 20, 3 );
 		add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 		add_filter( 'admin_init', array( $this, 'rename_color_scheme' ) );
+		add_filter( 'sportspress_logo', array( $this, 'settings_branding' ) );
 
 		add_action( 'login_enqueue_scripts', array( $this, 'login_logo' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -52,7 +55,7 @@ class SportsPress_Branding {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_BRANDING_VERSION' ) )
-			define( 'SP_BRANDING_VERSION', '1.4' );
+			define( 'SP_BRANDING_VERSION', '1.6' );
 
 		if ( !defined( 'SP_BRANDING_URL' ) )
 			define( 'SP_BRANDING_URL', plugin_dir_url( __FILE__ ) );
@@ -84,6 +87,17 @@ class SportsPress_Branding {
 		endif;
 		
 		return $translated_text;
+	}
+
+	/** 
+	 * Settings branding.
+	 */
+	public function settings_branding( $logo ) {
+		if ( ! empty( $this->label ) ):
+			return $this->label;
+		endif;
+		
+		return $logo;
 	}
 
 	/**
@@ -655,4 +669,8 @@ class SportsPress_Branding {
 	}
 }
 
-new SportsPress_Branding();
+endif;
+
+if ( get_option( 'sportspress_load_branding_module', 'yes' ) == 'yes' ) {
+	new SportsPress_Branding();
+}
