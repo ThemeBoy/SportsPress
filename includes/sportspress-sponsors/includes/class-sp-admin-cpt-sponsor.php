@@ -67,7 +67,7 @@ class SP_Admin_CPT_Sponsor extends SP_Admin_CPT {
 			'sp_impressions' => __( 'Impressions', 'sportspress' ),
 			'sp_clicks' => __( 'Clicks', 'sportspress' ),
 		), $existing_columns, array(
-			'sp_icon' => '<span class="dashicons sp-icon-megaphone tips" title="' . __( 'Logo', 'sportspress' ) . '"></span>',
+			'sp_icon' => '<span class="dashicons sp-icon-megaphone sp-tip" title="' . __( 'Logo', 'sportspress' ) . '"></span>',
 			'title' => __( 'Sponsor', 'sportspress' ),
 		) );
 		return apply_filters( 'sportspress_sponsor_admin_columns', $columns );

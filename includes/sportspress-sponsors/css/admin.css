@@ -1,7 +1,14 @@
-#adminmenu #menu-posts-sp_sponsor .menu-icon-sp_sponsor div.wp-menu-image:before {
+#adminmenu #menu-posts-sp_sponsor .menu-icon-sp_sponsor div.wp-menu-image:before,
+#dashboard_right_now .sp_sponsor-count a:before,
+#dashboard_right_now .sp_sponsor-count span:before {
 	font-family: sportspress, dashicons !important;
 	width: 20px;
 	text-align: center;
+}
+
+#dashboard_right_now .sp_sponsor-count a:before,
+#dashboard_right_now .sp_sponsor-count span:before {
+	content: "\f488";
 }
 
 .fixed .column-sp_clicks {

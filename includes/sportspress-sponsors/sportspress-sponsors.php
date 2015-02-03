@@ -4,18 +4,20 @@ Plugin Name: SportsPress Sponsors
 Plugin URI: http://sportspresspro.com/
 Description: Add sponsors to SportsPress.
 Author: ThemeBoy
-Author URI: http://sportspresspro.com
-Version: 1.4
+Author URI: http://themeboy.com
+Version: 1.6
 */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+if ( ! class_exists( 'SportsPress_Sponsors' ) ) :
+
 /**
  * Main SportsPress Sponsors Class
  *
  * @class SportsPress_Sponsors
- * @version	1.4
+ * @version	1.6
  */
 class SportsPress_Sponsors {
 
@@ -45,6 +47,8 @@ class SportsPress_Sponsors {
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
 		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ), 20 );
+	    add_filter( 'sportspress_glance_items', array( $this, 'add_glance_item' ) );
+	    add_filter( 'sportspress_enable_header', '__return_true' );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -63,7 +67,7 @@ class SportsPress_Sponsors {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_SPONSORS_VERSION' ) )
-			define( 'SP_SPONSORS_VERSION', '1.4' );
+			define( 'SP_SPONSORS_VERSION', '1.6' );
 
 		if ( !defined( 'SP_SPONSORS_URL' ) )
 			define( 'SP_SPONSORS_URL', plugin_dir_url( __FILE__ ) );
@@ -167,7 +171,7 @@ class SportsPress_Sponsors {
 	 * Add menu item
 	 */
 	public function register_importer() {
-		register_importer( 'sportspress_sponsor_csv', __( 'SportsPress Sponsors (CSV)', 'sportspress' ), __( 'Import <strong>sponsors</strong> from a csv file.', 'sportspress'), array( $this, 'sponsors_importer' ) );
+		register_importer( 'sp_sponsor_csv', __( 'SportsPress Sponsors (CSV)', 'sportspress' ), __( 'Import <strong>sponsors</strong> from a csv file.', 'sportspress'), array( $this, 'sponsors_importer' ) );
 	}
 
 	/**
@@ -410,6 +414,14 @@ class SportsPress_Sponsors {
 		return $items;
 	}
 
+	/**
+	 * Add glance item
+	 */
+	public function add_glance_item( $items ) {
+		$items[] = 'sp_sponsor';
+		return $items;
+	}
+
 	public static function admin_enqueue_scripts() {
 		wp_enqueue_style( 'sportspress-sponsors-admin', SP_SPONSORS_URL . 'css/admin.css', array( 'sportspress-admin-menu-styles' ), time() );
 	}
@@ -477,4 +489,9 @@ class SportsPress_Sponsors {
 	}
 }
 
-new SportsPress_Sponsors();
+endif;
+
+if ( get_option( 'sportspress_load_sponsors_module', 'yes' ) == 'yes' ) {
+	new SportsPress_Sponsors();
+}
+
