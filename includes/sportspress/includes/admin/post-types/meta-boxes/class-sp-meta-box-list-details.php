@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -25,6 +25,11 @@ class SP_Meta_Box_List_Details {
 		$grouping = get_post_meta( $post->ID, 'sp_grouping', true );
 		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
+		$select = get_post_meta( $post->ID, 'sp_select', true );
+		if ( ! $select ) {
+			global $pagenow;
+			$select = ( 'post-new.php' == $pagenow ? 'auto' : 'manual' );
+		}
 		?>
 		<div>
 			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
@@ -57,6 +62,7 @@ class SP_Meta_Box_List_Details {
 				endif;
 				?>
 			</p>
+			<?php if ( apply_filters( 'sportspress_list_team_selector', true ) ) { ?>
 			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
 			<p class="sp-tab-select">
 				<?php
@@ -72,6 +78,7 @@ class SP_Meta_Box_List_Details {
 				endif;
 				?>
 			</p>
+			<?php } ?>
 			<p><strong><?php _e( 'Grouping', 'sportspress' ); ?></strong></p>
 			<p>
 			<select name="sp_grouping">
@@ -103,8 +110,14 @@ class SP_Meta_Box_List_Details {
 				</select>
 			</p>
 			<p><strong><?php _e( 'Players', 'sportspress' ); ?></strong></p>
+			<p class="sp-select-setting">
+				<select name="sp_select">
+					<option value="auto" <?php selected( 'auto', $select ); ?>><?php _e( 'Auto', 'sportspress' ); ?></option>
+					<option value="manual" <?php selected( 'manual', $select ); ?>><?php _e( 'Manual', 'sportspress' ); ?></option>
+				</select>
+			</p>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_player', 'block', array( 'sp_league', 'sp_season', 'sp_current_team' ) );
+			sp_post_checklist( $post->ID, 'sp_player', ( 'auto' == $select ? 'none' : 'block' ), array( 'sp_league', 'sp_season', 'sp_current_team' ) );
 			sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
 			?>
 		</div>
@@ -121,6 +134,7 @@ class SP_Meta_Box_List_Details {
 		update_post_meta( $post_id, 'sp_grouping', sp_array_value( $_POST, 'sp_grouping', array() ) );
 		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', array() ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
+		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
 	}
 }

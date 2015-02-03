@@ -6,28 +6,35 @@
 }
 
 
-#dashboard_right_now .sp-event-count a:before,
-#dashboard_right_now .sp-event-count span:before,
-#dashboard_right_now .sp-team-count a:before,
-#dashboard_right_now .sp-team-count span:before,
-#dashboard_right_now .sp-player-count a:before,
-#dashboard_right_now .sp-player-count span:before {
+#dashboard_right_now .sp_event-count a:before,
+#dashboard_right_now .sp_event-count span:before,
+#dashboard_right_now .sp_team-count a:before,
+#dashboard_right_now .sp_team-count span:before,
+#dashboard_right_now .sp_player-count a:before,
+#dashboard_right_now .sp_player-count span:before,
+#dashboard_right_now .sp_staff-count a:before,
+#dashboard_right_now .sp_staff-count span:before {
 	font-family: 'sportspress';
 }
 
-#dashboard_right_now .sp-event-count a:before,
-#dashboard_right_now .sp-event-count span:before {
+#dashboard_right_now .sp_event-count a:before,
+#dashboard_right_now .sp_event-count span:before {
 	content: "\f145";
 }
 
-#dashboard_right_now .sp-team-count a:before,
-#dashboard_right_now .sp-team-count span:before {
+#dashboard_right_now .sp_team-count a:before,
+#dashboard_right_now .sp_team-count span:before {
 	content: "\f334";
 }
 
-#dashboard_right_now .sp-player-count a:before,
-#dashboard_right_now .sp-player-count span:before {
+#dashboard_right_now .sp_player-count a:before,
+#dashboard_right_now .sp_player-count span:before {
 	content: "\f307";
+}
+
+#dashboard_right_now .sp_staff-count a:before,
+#dashboard_right_now .sp_staff-count span:before {
+	content: "\f338";
 }
 
 #sportspress_dashboard_status .sp_status_list {

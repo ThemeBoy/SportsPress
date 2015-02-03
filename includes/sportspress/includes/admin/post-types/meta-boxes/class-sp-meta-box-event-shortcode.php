@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     0.7.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,22 +19,23 @@ class SP_Meta_Box_Event_Shortcode {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
+		$shortcodes = apply_filters( 'sportspress_event_shortcodes', array(
+			'event_results' => __( 'Results', 'sportspress' ),
+			'event_details' => __( 'Details', 'sportspress' ),
+			'event_performance' => __( 'Player Performance', 'sportspress' ),
+		) );
+		if ( $shortcodes ) {
 		?>
 		<p class="howto">
 			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
 		</p>
+		<?php foreach ( $shortcodes as $id => $label ) { ?>
 		<p>
-			<strong><?php _e( 'Team Results', 'sportspress' ); ?></strong>
+			<strong><?php echo $label; ?></strong>
 		</p>
-		<p><input type="text" value="[event_results <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
-		<p>
-			<strong><?php _e( 'Details', 'sportspress' ); ?></strong>
-		</p>
-		<p><input type="text" value="[event_details <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
-		<p>
-			<strong><?php _e( 'Player Performance', 'sportspress' ); ?></strong>
-		</p>
-		<p><input type="text" value="[event_performance <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
+		<p><input type="text" value="[<?php echo $id; ?> <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
+		<?php } ?>
 		<?php
+		}
 	}
 }

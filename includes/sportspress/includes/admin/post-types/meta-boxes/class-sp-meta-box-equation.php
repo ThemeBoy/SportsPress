@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.4.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -49,7 +49,7 @@ class SP_Meta_Box_Equation {
 					$options[ 'Performance' ] = self::optgroup( 'sp_performance' );
 					break;
 				case 'metric':
-					$options[ 'Metric' ] = self::optgroup( 'sp_metric' );
+					$options[ 'Metrics' ] = self::optgroup( 'sp_metric' );
 					break;
 			endswitch;
 		endforeach;

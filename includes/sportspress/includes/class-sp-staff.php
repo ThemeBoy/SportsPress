@@ -5,7 +5,7 @@
  * The SportsPress staff class handles individual staff data.
  *
  * @class 		SP_Staff
- * @version		1.3
+ * @version		1.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -30,7 +30,7 @@ class SP_Staff extends SP_Custom_Post {
 	 */
 	public function role() {
 		$roles = get_the_terms( $this->ID, 'sp_role' );
-		if ( $roles ):
+		if ( $roles && ! is_wp_error( $roles ) ):
 			return array_shift( $roles );
 		else:
 			return false;

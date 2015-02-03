@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -30,20 +30,17 @@ class SP_Admin_Post_Types {
 	 * Conditonally load classes and functions only needed when viewing a post type.
 	 */
 	public function include_post_type_handlers() {
-		include( 'post-types/class-sp-admin-meta-boxes.php' );
-		include( 'post-types/class-sp-admin-cpt-result.php' );
-		include( 'post-types/class-sp-admin-cpt-outcome.php' );
-		include( 'post-types/class-sp-admin-cpt-performance.php' );
-		include( 'post-types/class-sp-admin-cpt-column.php' );
-		include( 'post-types/class-sp-admin-cpt-metric.php' );
-		include( 'post-types/class-sp-admin-cpt-statistic.php' );
-		include( 'post-types/class-sp-admin-cpt-event.php' );
-		include( 'post-types/class-sp-admin-cpt-calendar.php' );
-		include( 'post-types/class-sp-admin-cpt-team.php' );
-		include( 'post-types/class-sp-admin-cpt-table.php' );
-		include( 'post-types/class-sp-admin-cpt-player.php' );
-		include( 'post-types/class-sp-admin-cpt-list.php' );
-		include( 'post-types/class-sp-admin-cpt-staff.php' );
+		include_once( 'post-types/class-sp-admin-meta-boxes.php' );
+		include_once( 'post-types/class-sp-admin-cpt-result.php' );
+		include_once( 'post-types/class-sp-admin-cpt-outcome.php' );
+		include_once( 'post-types/class-sp-admin-cpt-performance.php' );
+		include_once( 'post-types/class-sp-admin-cpt-column.php' );
+		include_once( 'post-types/class-sp-admin-cpt-metric.php' );
+		include_once( 'post-types/class-sp-admin-cpt-statistic.php' );
+		include_once( 'post-types/class-sp-admin-cpt-event.php' );
+		include_once( 'post-types/class-sp-admin-cpt-team.php' );
+		include_once( 'post-types/class-sp-admin-cpt-player.php' );
+		include_once( 'post-types/class-sp-admin-cpt-staff.php' );
 		do_action( 'sportspress_include_post_type_handlers' );
 	}
 

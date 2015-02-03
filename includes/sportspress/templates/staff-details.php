@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,8 +29,13 @@ $past_teams = $staff->past_teams();
 
 $data = array();
 if ( $nationality ):
+	if ( 2 == strlen( $nationality ) ):
+		$legacy = SP()->countries->legacy;
+		$nationality = strtolower( $nationality );
+		$nationality = sp_array_value( $legacy, $nationality, null );
+	endif;
 	$country_name = sp_array_value( $countries, $nationality, null );
-	$data[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . '/assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
+	$data[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 endif;
 
 if ( $current_team )
@@ -43,6 +48,8 @@ if ( $past_teams ):
 	endforeach;
 	$data[ __( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
 endif;
+
+$data = apply_filters( 'sportspress_staff_details', $data, $id );
 
 $output = '<div class="sp-list-wrapper">' .
 	'<dl class="sp-staff-details">';

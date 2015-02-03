@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -22,6 +22,11 @@ class SP_Meta_Box_Table_Details {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
 		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
+		$select = get_post_meta( $post->ID, 'sp_select', true );
+		if ( ! $select ) {
+			global $pagenow;
+			$select = ( 'post-new.php' ? 'auto' : 'manual' );
+		}
 		?>
 		<div>
 			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
@@ -54,9 +59,17 @@ class SP_Meta_Box_Table_Details {
 				endif;
 				?>
 			</p>
-			<p><strong><?php _e( 'Teams', 'sportspress' ); ?></strong></p>
+			<p><strong>
+				<?php _e( 'Teams', 'sportspress' ); ?>
+			</strong></p>
+			<p class="sp-select-setting">
+				<select name="sp_select">
+					<option value="auto" <?php selected( 'auto', $select ); ?>><?php _e( 'Auto', 'sportspress' ); ?></option>
+					<option value="manual" <?php selected( 'manual', $select ); ?>><?php _e( 'Manual', 'sportspress' ); ?></option>
+				</select>
+			</p>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_team', 'block', array( 'sp_league', 'sp_season' ) );
+			sp_post_checklist( $post->ID, 'sp_team', ( 'auto' == $select ? 'none' : 'block' ), array( 'sp_league', 'sp_season' ) );
 			sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
 			?>
 		</div>
@@ -69,6 +82,7 @@ class SP_Meta_Box_Table_Details {
 	public static function save( $post_id, $post ) {
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
+		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 	}
 }

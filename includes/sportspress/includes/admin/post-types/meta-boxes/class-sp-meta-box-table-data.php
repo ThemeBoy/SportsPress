@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     0.7
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -53,7 +53,7 @@ class SP_Meta_Box_Table_Data {
 			<table class="widefat sp-data-table sp-league-table">
 				<thead>
 					<tr>
-						<th class="radio"><span class="dashicons sp-icon-shield tips" title="<?php _e( 'Highlight', 'sportspress' ); ?>"></span></th>
+						<th class="radio"><span class="dashicons sp-icon-shield sp-tip" title="<?php _e( 'Highlight', 'sportspress' ); ?>"></span></th>
 						<th><?php _e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
@@ -103,7 +103,7 @@ class SP_Meta_Box_Table_Data {
 					?>
 					<tr class="sp-row alternate">
 						<td colspan="<?php $colspan = sizeof( $columns ) + 2; echo $colspan; ?>">
-							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ); ?>
+							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Data', 'sportspress' ) ); ?>
 						</td>
 					</tr>
 					<?php
@@ -147,7 +147,7 @@ class SP_Meta_Box_Table_Data {
 					?>
 					<tr class="sp-row alternate">
 						<td colspan="<?php $colspan = sizeof( $columns ) + 1; echo $colspan; ?>">
-							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ); ?>
+							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Data', 'sportspress' ) ); ?>
 						</td>
 					</tr>
 					<?php

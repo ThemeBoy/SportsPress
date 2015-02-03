@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.5
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -32,8 +32,8 @@ add_action( 'get_the_generator_xhtml', 'sp_generator_tag', 10, 2 );
  * @see sportspress_output_event_performance()
  */
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_logos', 0 );
-add_action( 'sportspress_single_event_content', 'sportspress_output_event_video', 10 );
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_results', 20 );
+add_action( 'sportspress_single_event_content', 'sportspress_output_event_video', 10 );
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_details', 30 );
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_venue', 40 );
 add_action( 'sportspress_single_event_content', 'sportspress_output_event_performance', 50 );

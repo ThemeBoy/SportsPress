@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.5
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -60,21 +60,26 @@ class SP_Meta_Box_Event_Teams {
 					'name' => 'sp_team[]',
 					'class' => 'sportspress-pages',
 					'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
-					'show_option_all' => __( '&mdash; Individual &mdash;', 'sportspress' ),
 					'values' => 'ID',
 					'selected' => $team,
+					'chosen' => true,
 				);
 				sp_dropdown_pages( $args );
 				?>
 				</p>
+				<?php $tabs = apply_filters( 'sportspress_event_team_tabs', array( 'sp_player', 'sp_staff' ) ); ?>
+				<?php if ( $tabs ) { ?>
 				<ul id="sp_team-tabs" class="wp-tab-bar sp-tab-bar">
-					<li class="wp-tab-active"><a href="#sp_player-all"><?php _e( 'Players', 'sportspress' ); ?></a></li>
-					<li class="wp-tab"><a href="#sp_staff-all"><?php _e( 'Staff', 'sportspress' ); ?></a></li>
+					<?php foreach ( $tabs as $index => $post_type ) { $object = get_post_type_object( $post_type ); ?>
+					<li class="wp-tab<?php if ( 0 == $index ) { ?>-active<?php } ?>"><a href="#<?php echo $post_type; ?>-all"><?php echo $object->labels->name; ?></a></li>
+					<?php } ?>
 				</ul>
 				<?php
-				sp_post_checklist( $post->ID, 'sp_player', 'block', array( 'sp_league', 'sp_season', 'sp_current_team' ), $i );
-				sp_post_checklist( $post->ID, 'sp_staff', 'none', array( 'sp_league', 'sp_season', 'sp_current_team' ), $i );
+					foreach ( $tabs as $index => $post_type ) {
+						sp_post_checklist( $post->ID, $post_type, ( 0 == $index ? 'block' : 'none' ), array( 'sp_league', 'sp_season', 'sp_current_team' ), $i );
+					}
 				?>
+				<?php } ?>
 			</div>
 			<?php
 		endfor;
@@ -85,7 +90,11 @@ class SP_Meta_Box_Event_Teams {
 	 */
 	public static function save( $post_id, $post ) {
 		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
-		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
-		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
+		$tabs = apply_filters( 'sportspress_event_team_tabs', array( 'sp_player', 'sp_staff' ) );
+		if ( $tabs ) {
+			foreach ( $tabs as $post_type ) {
+				sp_update_post_meta_recursive( $post_id, $post_type, sp_array_value( $_POST, $post_type, array() ) );
+			}
+		}
 	}
 }

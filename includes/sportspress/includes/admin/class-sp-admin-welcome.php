@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.5
+ * @version     1.6
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -85,82 +85,6 @@ class SP_Admin_Welcome {
 		remove_submenu_page( 'index.php', 'sp-about' );
 		remove_submenu_page( 'index.php', 'sp-credits' );
 		remove_submenu_page( 'index.php', 'sp-translators' );
-
-		// Badge for welcome page
-		$badge_url = SP()->plugin_url() . '/assets/images/welcome/sp-badge.png';
-		?>
-		<style type="text/css">
-			/*<![CDATA[*/
-			.about-sportspress-wrap .sp-about-text {
-				min-height: 0;
-			}
-			.about-sportspress-wrap .sp-badge {
-				position: absolute;
-				top: 0;
-				right: 0;
-				background: #00cac4 url(<?php echo $badge_url; ?>) no-repeat center top;
-				text-rendering: optimizeLegibility;
-				padding-top: 10px;
-				height: 150px;
-				width: 150px;
-				font-size: 14px;
-				line-height: 1.75;
-				text-align: center;
-				font-weight: 600;
-				color: #c4fffc;
-				margin: 5px 0 0 0;
-				-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2);
-				box-shadow: 0 1px 3px rgba(0,0,0,.2);
-			}
-			.about-sportspress-wrap .sportspress-actions .twitter-share-button {
-				margin-top: -3px;
-				margin-left: 3px;
-				vertical-align: middle;
-			}
-			.about-sportspress-wrap .sp-feature {
-				overflow: visible !important;
-				*zoom:1;
-			}
-			.about-sportspress-wrap .sp-feature:before,
-			.about-sportspress-wrap .sp-feature:after {
-				content: " ";
-				display: table;
-			}
-			.about-sportspress-wrap .sp-feature:after {
-				clear: both;
-			}
-			.about-sportspress-wrap div.icon {
-				width: 0 !important;
-				padding: 0;
-				margin: 0;
-			}
-			.about-sportspress-wrap .sp-feature div.icon:before {
-				font-family: sportspress !important;
-				font-weight: normal;
-				width: 100%;
-				font-size: 170px;
-				line-height: 125px;
-				color: #9c5d90;
-				display: inline-block;
-				position: relative;
-				text-align: center;
-				speak: none;
-				margin: <?php echo is_rtl() ? '0 -100px 0 0' : '0 0 0 -100px'; ?>;
-				content: "\f111";
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
-			}
-			.about-sportspress-wrap .form-table th {
-				width: auto;
-			}
-			@media only screen and (max-width: 500px) {
-				.about-sportspress-wrap h1 {
-					padding-top: 240px;
-				}
-			}
-			/*]]>*/
-		</style>
-		<?php
 	}
 
 	/**
@@ -178,7 +102,9 @@ class SP_Admin_Welcome {
 		// Drop minor version if 0
 		$major_version = substr( SP()->version, 0, 3 );
 		?>
-		<h1><?php printf( __( 'Welcome to SportsPress %s', 'sportspress' ), $major_version ); ?></h1>
+		<h2 class="sp-welcome-logo"><?php echo apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . __( 'SportsPress', 'sportspress' ) . '">' ); ?></h2>
+
+		<div class="sp-badge"><?php printf( __( 'Version %s', 'sportspress' ), SP()->version ); ?></div>
 
 		<div class="about-text sp-about-text">
 			<?php
@@ -193,11 +119,9 @@ class SP_Admin_Welcome {
 			?>
 		</div>
 
-		<div class="sp-badge"><?php printf( __( 'Version %s', 'sportspress' ), SP()->version ); ?></div>
-
 		<p class="sportspress-actions">
-			<a href="<?php echo admin_url('admin.php?page=sportspress'); ?>" class="button button-primary"><?php _e( 'Settings', 'sportspress' ); ?></a>
-			<a href="<?php echo esc_url( apply_filters( 'sportspress_docs_url', 'http://sportspresspro.com/docs/', 'sportspress' ) ); ?>" class="docs button button-primary"><?php _e( 'Docs', 'sportspress' ); ?></a>
+			<a href="<?php echo admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ); ?>" class="button button-primary"><?php _e( 'Settings', 'sportspress' ); ?></a>
+			<a href="<?php echo esc_url( apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs', 'sportspress' ) ); ?>" class="docs button button-primary"><?php _e( 'Docs', 'sportspress' ); ?></a>
 			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wordpress.org/plugins/sportspress" data-text="An open-source (free) #WordPress plugin that helps you build professional league websites." data-via="ThemeBoy" data-size="large" data-hashtags="SportsPress">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		</p>
@@ -242,6 +166,9 @@ class SP_Admin_Welcome {
 				</div>
 			<?php
 			endif;
+	    	if ( isset( $_POST['sportspress_load_individual_mode_module'] ) ):
+	    		update_option( 'sportspress_load_individual_mode_module', $_POST['sportspress_load_individual_mode_module'] );
+	    	endif;
 			if ( isset( $_POST['add_sample_data'] ) ):
 				SP_Admin_Sample_Data::delete_posts();
 				SP_Admin_Sample_Data::insert_posts();
@@ -264,18 +191,44 @@ class SP_Admin_Welcome {
 						endforeach;
 						echo $sport;
 						?>
-						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'admin.php' ) ) ); ?>"><div class="dashicons dashicons-edit"></div><?php _e( 'Change', 'sportspress' ); ?></a>
+						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><i class="dashicons dashicons-edit"></i> <?php _e( 'Change', 'sportspress' ); ?></a>
+
+						<h4><?php _e( 'Mode', 'sportspress' ); ?></h4>
+						<?php echo ( 'yes' == get_option( 'sportspress_load_individual_mode_module', 'no' ) ? __( 'Player vs player', 'sportspress' ) : __( 'Team vs team', 'sportspress' ) ); ?>
+						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><i class="dashicons dashicons-edit"></i> <?php _e( 'Change', 'sportspress' ); ?></a>
+
 						<h4><?php _e( 'Next Steps', 'sportspress' ); ?></h4>
 						<p><?php _e( 'We&#8217;ve assembled some links to get you started:', 'sportspress' ); ?></p>
+						<?php
+						$steps = apply_filters( 'sportspress_next_steps', array(
+							'teams' => array(
+								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'edit.php' ) ),
+								'icon' => 'dashicons-shield-alt',
+								'label' => __( 'Add New Team', 'sportspress' ),
+							),
+							'players' => array(
+								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'edit.php' ) ),
+								'icon' => 'dashicons-groups',
+								'label' => __( 'Add New Player', 'sportspress' ),
+							),
+							'events' => array(
+								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ),
+								'icon' => 'dashicons-calendar',
+								'label' => __( 'Add New Event', 'sportspress' ),
+							),
+						) );
+						?>
+						<?php if ( sizeof ( $steps ) ) { ?>
 						<div class="sportspress-steps">
 							<ul>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-shield-alt"><?php _e( 'Add New Team', 'sportspress' ); ?></a></li>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-groups"><?php _e( 'Add New Player', 'sportspress' ); ?></a></li>
-								<li><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ) ); ?>" class="welcome-icon sp-welcome-icon dashicons-calendar"><?php _e( 'Add New Event', 'sportspress' ); ?></a></li>
+								<?php foreach ( $steps as $step ) { ?>
+									<li><a href="<?php echo esc_url( $step['link'] ); ?>" class="welcome-icon sp-welcome-icon <?php echo sp_array_value( $step, 'icon' ); ?>"><?php echo $step['label']; ?></a></li>
+								<?php } ?>
 							</ul>
 						</div>
+						<?php } ?>
 						<div class="return-to-dashboard">
-							<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
+							<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
 						</div>
 					<?php } else { ?>
 						<form method="post" id="mainform" action="" enctype="multipart/form-data">
@@ -285,7 +238,7 @@ class SP_Admin_Welcome {
 								<tbody>
 									<tr valign="top">
 										<th scope="row" class="titledesc">
-											<label for="timezone_string"><?php _e( 'Timezone', 'sportspress' ); ?></label>
+											<label for="timezone_string"><?php _e( 'Timezone', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Choose a city in the same timezone as you.', 'sportspress' ); ?>"></i></label>
 										</th>
 										<td>
 											<select id="timezone_string" name="timezone_string" class="<?php echo $class; ?>">
@@ -315,21 +268,35 @@ class SP_Admin_Welcome {
 									</tr>
 									<?php
 									$sport_options = SP_Admin_Sports::get_preset_options();
-									$settings = array( array(
-										'id'        => 'sportspress_sport',
-										'default'   => 'custom',
-										'type'      => 'sport',
-										'title'		=> __( 'Sport', 'sportspress' ),
-										'welcome' 	=> true,
-										'class' 	=> $class,
-										'options'   => $sport_options,
-									));
+									$settings = array(
+										array(
+											'id'        => 'sportspress_sport',
+											'default'   => 'custom',
+											'type'      => 'sport',
+											'title'		=> __( 'Sport', 'sportspress' ),
+											'welcome' 	=> true,
+											'class' 	=> $class,
+											'options'   => $sport_options,
+										),
+
+										array(
+											'title'     => __( 'Mode', 'sportspress' ),
+											'id'        => 'sportspress_load_individual_mode_module',
+											'default'   => 'no',
+											'type'      => 'radio',
+											'options'   => array(
+												'no' => __( 'Team vs team', 'sportspress' ),
+												'yes' => __( 'Player vs player', 'sportspress' ),
+											),
+											'desc_tip'	=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
+										),
+									);
 									SP_Admin_Settings::output_fields( $settings );
 									?>
 								</tbody>
 							</table>
 					        <p class="submit sportspress-actions">
-					        	<input name="save" class="button-primary" type="submit" value="<?php _e( 'Save changes', 'sportspress' ); ?>" />
+					        	<input name="save" class="button-primary" type="submit" value="<?php _e( 'Save Changes', 'sportspress' ); ?>" />
 					        	<input type="hidden" name="subtab" id="last_tab" />
 					        	<?php wp_nonce_field( 'sportspress-settings' ); ?>
 					        </p>
@@ -352,12 +319,31 @@ class SP_Admin_Welcome {
 	public function credits_screen() {
 		?>
 		<div class="wrap about-wrap about-sportspress-wrap">
-
 			<?php $this->intro(); ?>
-
+			
 			<p class="about-description"><?php printf( __( 'SportsPress is developed and maintained by a worldwide team of passionate individuals and backed by an awesome developer community. Want to see your name? <a href="%s">Contribute to SportsPress</a>.', 'sportspress' ), 'https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md' ); ?></p>
 
-			<?php echo $this->contributors(); ?>
+			<div class="sp-feature feature-section col one-col">
+				<h4><?php _e( 'Developers', 'sportspress' ); ?></h4>
+				<?php echo $this->contributors(); ?>
+			</div>
+			
+			<p class="about-description"><?php printf( __( 'Some presets have been submitted by our helpful and generous users. Want to see your name? <a href="%s">Add a Sport Preset</a>.', 'sportspress' ), 'http://themeboy.com/add-sport-preset/' ); ?></p>
+
+			<div class="sp-feature feature-section col one-col">
+				<h4><?php _e( 'Presets', 'sportspress' ); ?></h4>
+				<?php
+				$preset_credits = array(
+					__( 'Counter-Strike: Global Offensive', 'sportspress' ) => 'Oscar Wong',
+				);
+				?>
+				<dl class="sp-presets">
+					<?php foreach ( $preset_credits as $preset => $name ) { ?>
+					<dt><?php echo $preset; ?></dt>
+					<dd><em><?php echo $name; ?></em></dd>
+					<?php } ?>
+				</dl>
+			</div>
 		</div>
 		<?php
 	}
@@ -373,7 +359,63 @@ class SP_Admin_Welcome {
 
 			<p class="about-description"><?php printf( __( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ), 'https://www.transifex.com/projects/p/sportspress/' ); ?></p>
 			<?php
-			$translator_handles = array( 'Abdulelah', 'albertone', 'alisiddique', 'ALooNeBoy87', 'Andrew_Melim', 'ArtakEVN', 'aylaview', 'Bhelpful2', 'bizover', 'BOCo', 'den_zlateva', 'dic_2008', 'doncer', 'elrawys', 'EmiDelCaz', 'eNnvi', 'etcloki', 'Ferenan', 'fredodq', 'GhiMax', 'GuneshGamza95', 'hanro', 'hushiea', 'i__k', 'JensZ', 'jenymoen', 'joegalaxy66', 'JuKi', 'karimjarro', 'King3R', 'krisop', 'latixns', 'massimo.marra', 'MohamedZ', 'overbite', 'poelie', 'popeosorio', 'rochester', 'sashaCZ', 'Selskei', 'sijo', 'SilverXp', 'SmilyCarrot', 'Spirossmil', 'Taurus', 'ThemeBoy', 'tyby94', 'valentijnreza', 'violaud', 'vlinicx', 'xFrAx', 'Xyteton', 'zzcs' );
+			$translator_handles = array(
+				'Abdulelah',
+				'albertone',
+				'alisiddique',
+				'ALooNeBoy87',
+				'Andrew_Melim',
+				'ArtakEVN',
+				'aylaview',
+				'Bhelpful2',
+				'bizover',
+				'BOCo',
+				'den_zlateva',
+				'dic_2008',
+				'doncer',
+				'elrawys',
+				'EmiDelCaz',
+				'eNnvi',
+				'etcloki',
+				'Ferenan',
+				'fredodq',
+				'GhiMax',
+				'GuneshGamza95',
+				'hanro',
+				'hushiea',
+				'i__k',
+				'JensZ',
+				'jenymoen',
+				'joegalaxy66',
+				'JuKi',
+				'kanakoff',
+				'karimjarro',
+				'King3R',
+				'krisop',
+				'latixns',
+				'massimo.marra',
+				'matiqos',
+				'MohamedZ',
+				'overbite',
+				'poelie',
+				'popeosorio',
+				'rochester',
+				'sashaCZ',
+				'Selskei',
+				'sijo',
+				'SilverXp',
+				'SmilyCarrot',
+				'Spirossmil',
+				'Taurus',
+				'ThemeBoy',
+				'tyby94',
+				'valentijnreza',
+				'violaud',
+				'vlinicx',
+				'xFrAx',
+				'Xyteton',
+				'zzcs',
+			);
 			$translator_links = array();
 			foreach ( $translator_handles as $handle ):
 				$translator_links[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';

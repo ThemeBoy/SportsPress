@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -61,6 +61,17 @@ function sp_array_overlay( $a1, $a2 ) {
         }
     }
     return $a1;
+}
+
+/**
+ * Array filter returns positive values only.
+ *
+ * @access public
+ * @param int $var
+ * @return bool
+ */
+function sp_filter_positive( $var = 0 ) {
+	return $var > 0;
 }
 
 /**

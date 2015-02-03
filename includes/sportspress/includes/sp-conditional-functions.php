@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.3
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -78,7 +78,7 @@ if ( ! function_exists( 'sp_config_types' ) ) {
  */
 if ( ! function_exists( 'sp_taxonomies' ) ) {
 	function sp_taxonomies() {
-		return apply_filters( 'sportspress_terms', array( 'sp_league', 'sp_season', 'sp_venue', 'sp_position' ) );
+		return apply_filters( 'sportspress_taxonomies', array( 'sp_league', 'sp_season', 'sp_venue', 'sp_position' ) );
 	}
 }
 

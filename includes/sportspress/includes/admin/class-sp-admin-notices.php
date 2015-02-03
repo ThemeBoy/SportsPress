@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -55,7 +55,7 @@ class SP_Admin_Notices {
 			update_option( 'sportspress_admin_notices', $notices );
 		}
 
-		if ( in_array( 'theme_support', $notices ) && ! current_theme_supports( 'sportspress' ) ) {
+		if ( in_array( 'theme_support', $notices ) && ! current_theme_supports( 'sportspress' ) && ! in_array( $screen->id, array( 'toplevel_page_sportspress', 'dashboard_page_sp-about', 'dashboard_page_sp-credits', 'dashboard_page_sp-translators' ) ) ) {
 			$template = get_option( 'template' );
 
 			if ( ! in_array( $template, array( 'twentyfourteen', 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten' ) ) ) {

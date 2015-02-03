@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -69,7 +69,7 @@ class SP_Meta_Box_Team_Details {
 			'name' => 'tax_input[sp_season][]',
 			'selected' => $season_ids,
 			'values' => 'term_id',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Competitions', 'sportspress' ) ),
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
 			'class' => 'widefat',
 			'property' => 'multiple',
 			'chosen' => true,

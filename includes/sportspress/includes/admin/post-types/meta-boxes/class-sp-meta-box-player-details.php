@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -24,6 +24,11 @@ class SP_Meta_Box_Player_Details {
 
 		$number = get_post_meta( $post->ID, 'sp_number', true );
 		$nationality = get_post_meta( $post->ID, 'sp_nationality', true );
+		if ( 2 == strlen( $nationality ) ):
+			$legacy = SP()->countries->legacy;
+			$nationality = strtolower( $nationality );
+			$nationality = sp_array_value( $legacy, $nationality, null );
+		endif;
 
 		$leagues = get_the_terms( $post->ID, 'sp_league' );
 		$league_ids = array();
@@ -83,6 +88,7 @@ class SP_Meta_Box_Player_Details {
 		sp_dropdown_taxonomies( $args );
 		?></p>
 
+		<?php if ( apply_filters( 'sportspress_player_teams', true ) ) { ?>
 		<p><strong><?php _e( 'Current Teams', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -112,6 +118,7 @@ class SP_Meta_Box_Player_Details {
 		);
 		sp_dropdown_pages( $args );
 		?></p>
+		<?php } ?>
 
 		<p><strong><?php _e( 'Competitions', 'sportspress' ); ?></strong></p>
 		<p><?php

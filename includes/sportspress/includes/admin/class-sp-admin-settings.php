@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -31,6 +31,7 @@ class SP_Admin_Settings {
 			include_once( 'class-sp-admin-sports.php' );
 			include_once( 'settings/class-sp-settings-page.php' );
 
+			$settings[] = include( 'settings/class-sp-settings-modules.php' );
 			$settings[] = include( 'settings/class-sp-settings-general.php' );
 			$settings[] = include( 'settings/class-sp-settings-events.php' );
 			$settings[] = include( 'settings/class-sp-settings-teams.php' );
@@ -119,7 +120,7 @@ class SP_Admin_Settings {
 		self::get_settings_pages();
 
 		// Get current tab/section
-		$current_tab     = empty( $_GET['tab'] ) ? 'general' : sanitize_title( $_GET['tab'] );
+		$current_tab     = empty( $_GET['tab'] ) ? 'modules' : sanitize_title( $_GET['tab'] );
 		$current_section = empty( $_REQUEST['section'] ) ? '' : sanitize_title( $_REQUEST['section'] );
 
 	    // Save settings if data has been posted
@@ -223,7 +224,9 @@ class SP_Admin_Settings {
 			if ( $description && in_array( $value['type'], array( 'textarea', 'radio' ) ) ) {
 				$description = '<p style="margin-top:0">' . wp_kses_post( $description ) . '</p>';
 			} elseif ( $description && in_array( $value['type'], array( 'checkbox' ) ) ) {
-				$description =  wp_kses_post( $description );
+				$description = wp_kses_post( $description );
+			} elseif ( $description && in_array( $value['type'], array( 'select' ) ) ) {
+				$description = '<p class="description">' . wp_kses_post( $description ) . '</p>';
 			} elseif ( $description ) {
 				$description = '<span class="description">' . wp_kses_post( $description ) . '</span>';
 			}
@@ -234,7 +237,7 @@ class SP_Admin_Settings {
 
 			} elseif ( $tip ) {
 
-				$tip = '<img class="help_tip" data-tip="' . esc_attr( $tip ) . '" src="' . SP()->plugin_url() . '/assets/images/help.png" height="16" width="16" />';
+				$tip = '<i class="dashicons dashicons-editor-help sp-desc-tip" title="' . esc_attr( $tip ) . '" />';
 
 			}
 

@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version     1.5
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -61,7 +61,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 		unset( $existing_columns['author'], $existing_columns['date'] );
 		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
-			'sp_number' => '<span class="dashicons sp-icon-tshirt tips" title="' . __( 'Number', 'sportspress' ) . '"></span>',
+			'sp_number' => '<span class="dashicons sp-icon-tshirt sp-tip" title="' . __( 'Number', 'sportspress' ) . '"></span>',
 			'title' => null,
 			'sp_position' => __( 'Positions', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),

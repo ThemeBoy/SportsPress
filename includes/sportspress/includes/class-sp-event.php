@@ -5,7 +5,7 @@
  * The SportsPress event class handles individual event data.
  *
  * @class 		SP_Event
- * @version		1.5
+ * @version		1.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -106,13 +106,6 @@ class SP_Event extends SP_Custom_Post{
 					endif;
 				endforeach;
 			endif;
-
-			// Move individual players to top level of array
-			if ( array_key_exists( 0, $performance ) && is_array( $performance[0] ) ) {
-				foreach ( $performance[ 0 ] as $player_id => $player_performance ) {
-					$performance[ $player_id ] = array( $player_id => $player_performance );
-				}
-			}
 			$performance[0] = $labels;
 			return $performance;
 		endif;

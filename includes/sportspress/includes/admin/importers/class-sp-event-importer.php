@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Importers
- * @version     1.5
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,7 +20,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		public function __construct() {
-			$this->import_page = 'sportspress_event_csv';
+			$this->import_page = 'sp_event_csv';
 			$this->import_label = __( 'Import Events', 'sportspress' );
 			$this->columns = array(
 				'post_date' => __( 'Date', 'sportspress' ),
@@ -449,7 +449,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
 			echo '<p>' . sprintf( __( 'Events need to be defined with columns in a specific order (3+ columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/events-sample.csv' ) . '</p>';
-			wp_import_upload_form( 'admin.php?import=sportspress_event_csv&step=1' );
+			wp_import_upload_form( 'admin.php?import=sp_event_csv&step=1' );
 			echo '</div>';
 		}
 
@@ -481,7 +481,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 							'taxonomy' => 'sp_league',
 							'name' => 'sp_league',
 							'values' => 'slug',
-							'show_option_none' => __( '-- Not set --', 'sportspress' ),
+							'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
 						);
 						if ( ! sp_dropdown_taxonomies( $args ) ):
 							echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
@@ -496,7 +496,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 							'taxonomy' => 'sp_season',
 							'name' => 'sp_season',
 							'values' => 'slug',
-							'show_option_none' => __( '-- Not set --', 'sportspress' ),
+							'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
 						);
 						if ( ! sp_dropdown_taxonomies( $args ) ):
 							echo '<p>' . __( 'None', 'sportspress' ) . '</p>';

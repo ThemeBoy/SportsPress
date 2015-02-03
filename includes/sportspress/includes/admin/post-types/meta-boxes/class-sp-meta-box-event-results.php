@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.5
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -122,7 +122,9 @@ class SP_Meta_Box_Event_Results {
 			<table class="widefat sp-data-table">
 				<thead>
 					<tr>
-						<th class="column-team"><?php _e( 'Team', 'sportspress' ); ?></th>
+						<th class="column-team">
+							<?php _e( 'Team', 'sportspress' ); ?>
+						</th>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<th class="column-<?php echo $key; ?>">
 								<label for="sp_result_columns_<?php echo $key; ?>">
@@ -143,7 +145,7 @@ class SP_Meta_Box_Event_Results {
 					<?php
 					$i = 0;
 					foreach ( $data as $team_id => $team_results ):
-						if ( !$team_id ) continue;
+						if ( ! $team_id || -1 == $team_id ) continue;
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>

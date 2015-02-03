@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * AJAX Event Handler
  *
  * @class 		SP_AJAX
- * @version		1.5
+ * @version		1.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -23,14 +23,14 @@ class SP_AJAX {
 
 		// sportspress_EVENT => nopriv
 		$ajax_events = array(
-			'countdown_shortcode' => false,
+			'event_countdown_shortcode' => false,
 			'event_details_shortcode' => false,
 			'event_results_shortcode' => false,
 			'event_performance_shortcode' => false,
 			'event_calendar_shortcode' => false,
 			'event_list_shortcode' => false,
 			'event_blocks_shortcode' => false,
-			'league_table_shortcode' => false,
+			'table_table_shortcode' => false,
 			'player_details_shortcode' => false,
 			'player_statistics_shortcode' => false,
 			'player_list_shortcode' => false,
@@ -47,9 +47,9 @@ class SP_AJAX {
 	}
 
 	/**
-	 * AJAX countdown shortcode
+	 * AJAX event_countdown shortcode
 	 */
-	public function countdown_shortcode() {
+	public function event_countdown_shortcode() {
 		?>
 		<div class="wrap sp-thickbox-content" id="sp-thickbox-event_calendar">
 			<p>
@@ -393,7 +393,7 @@ class SP_AJAX {
 	/**
 	 * AJAX league_table shortcode
 	 */
-	public function league_table_shortcode() {
+	public function table_table_shortcode() {
 		?>
 		<div class="wrap sp-thickbox-content" id="sp-thickbox-league_table">
 			<p>

@@ -21,7 +21,7 @@
 						{ "name" : "7", "description" : "7th inning runs" },
 						{ "name" : "8", "description" : "8th inning runs" },
 						{ "name" : "9", "description" : "9th inning runs" },
-						{ "name" : "", "id" : "extra", "description" : "Extra inning runs" },
+						{ "name" : "X", "id" : "extra", "description" : "Extra inning runs" },
 						{ "name" : "R", "description" : "Total runs", "primary" : 1 },
 						{ "name" : "H", "description" : "Hits" },
 						{ "name" : "E", "description" : "Errors" }

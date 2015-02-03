@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -23,6 +23,11 @@ class SP_Meta_Box_Staff_Details {
 		$continents = SP()->countries->continents;
 
 		$nationality = get_post_meta( $post->ID, 'sp_nationality', true );
+		if ( 2 == strlen( $nationality ) ):
+			$legacy = SP()->countries->legacy;
+			$nationality = strtolower( $nationality );
+			$nationality = sp_array_value( $legacy, $nationality, null );
+		endif;
 
 		$leagues = get_the_terms( $post->ID, 'sp_league' );
 		$league_ids = array();
@@ -81,6 +86,7 @@ class SP_Meta_Box_Staff_Details {
 			<?php endforeach; ?>
 		</select></p>
 
+		<?php if ( apply_filters( 'sportspress_staff_teams', true ) ) { ?>
 		<p><strong><?php _e( 'Current Teams', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -110,6 +116,7 @@ class SP_Meta_Box_Staff_Details {
 		);
 		sp_dropdown_pages( $args );
 		?></p>
+		<?php } ?>
 
 		<p><strong><?php _e( 'Competitions', 'sportspress' ); ?></strong></p>
 		<p><?php
@@ -149,6 +156,7 @@ class SP_Meta_Box_Staff_Details {
 	public static function save( $post_id, $post ) {
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_role', null ), 'sp_role', false );
 		update_post_meta( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', '' ) );
+		
 		sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_past_team', sp_array_value( $_POST, 'sp_past_team', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_team', array_merge( array( sp_array_value( $_POST, 'sp_current_team', array() ) ), sp_array_value( $_POST, 'sp_past_team', array() ) ) );

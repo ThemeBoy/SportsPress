@@ -16,7 +16,7 @@
 						{ "name" : "2", "description" : "2nd quarter points" },
 						{ "name" : "3", "description" : "3rd quarter points" },
 						{ "name" : "4", "description" : "4th quarter points" },
-						{ "name" : "", "id" : "ot", "description" : "Overtime points" },
+						{ "name" : "OT", "id" : "ot", "description" : "Overtime points" },
 						{ "name" : "T", "id" : "points", "description" : "Total points", "primary" : 1 }
 	],
 	"performance": [

@@ -9,11 +9,15 @@
 }
 
 /* Pagination */
-.sp-pagination tfoot tr td.prev {
-	text-align: right;
+.sp-table-wrapper .dataTables_paginate .previous {
+	float: right;
+	margin-left: 0.5em;
+	margin-right: 0;
 }
-.sp-pagination tfoot tr td.next {
-	text-align: left;
+.sp-table-wrapper .dataTables_paginate .next {
+	float: left;
+	margin-right: 0.5em;
+	margin-left: 0;
 }
 
 /* League Table and Player List */
@@ -50,9 +54,5 @@
 	.sp-pinned-table {
 		left: auto;
 		right: 0;
-	}
-	.sp-responsive-table-wrapper .scrollable {
-		margin-left: 0;
-		margin-right: 50%;
 	}
 }

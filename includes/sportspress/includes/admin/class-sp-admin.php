@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.3
+ * @version     1.6
  */
 class SP_Admin {
 
@@ -21,6 +21,11 @@ class SP_Admin {
 		add_action( 'init', array( $this, 'includes' ) );
 		add_action( 'current_screen', array( $this, 'conditonal_includes' ) );
 		add_action( 'admin_init', array( $this, 'prevent_admin_access' ) );
+
+		// Action buttons
+		add_action( 'admin_print_footer_scripts', array( $this, 'action_links' ) );
+
+		// Review link
 		add_action( 'sportspress_settings_page', 'sp_review_link' );
 		add_action( 'sportspress_config_page', 'sp_review_link' );
 		add_action( 'sportspress_overview_page', 'sp_review_link' );
@@ -32,7 +37,6 @@ class SP_Admin {
 	public function includes() {
 		// Functions
 		include_once( 'sp-admin-functions.php' );
-//		include_once( 'sp-meta-box-functions.php' );
 
 		// Classes
 		include_once( 'class-sp-admin-post-types.php' );
@@ -50,10 +54,6 @@ class SP_Admin {
 			if ( get_option( 'sportspress_rich_editing', true ) ):
 				include( 'class-sp-admin-editor.php' );
 			endif;
-
-			// Help
-//			if ( apply_filters( 'sportspress_enable_admin_help_tab', true ) )
-//				include( 'class-sp-admin-help.php' );
 		}
 
 		// Importers
@@ -70,13 +70,7 @@ class SP_Admin {
 		switch ( $screen->id ) {
 			case 'dashboard' :
 				include( 'class-sp-admin-dashboard.php' );
-			break;
-			case 'users' :
-			case 'user' :
-			case 'profile' :
-			case 'user-edit' :
-//				include( 'class-sp-admin-profile.php' );
-			break;
+				break;
 		}
 	}
 
@@ -95,6 +89,25 @@ class SP_Admin {
 		if ( $prevent_access ) {
 			wp_safe_redirect( get_permalink( sp_get_page_id( 'myaccount' ) ) );
 			exit;
+		}
+	}
+
+	/**
+	 * Add action link after post list title
+	 */
+	public function action_links() {
+		global $pagenow, $typenow;
+		if ( 'edit.php' == $pagenow && in_array( $typenow, sp_primary_post_types() ) ) {
+			?>
+			<script type="text/javascript">
+			(function($) {
+				$(".wrap h2 .add-new-h2:first-child").after(
+					" ",
+					$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => $typenow . '_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import', 'sportspress' ); ?></a>")
+				);
+			})(jQuery);
+			</script>
+			<?php
 		}
 	}
 }

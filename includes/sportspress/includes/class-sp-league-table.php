@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version     1.4.6
+ * @version     1.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -31,16 +31,57 @@ class SP_League_Table extends SP_Custom_Post{
 	public function data( $admin = false ) {
 		$league_id = sp_get_the_term_id( $this->ID, 'sp_league', 0 );
 		$div_id = sp_get_the_term_id( $this->ID, 'sp_season', 0 );
-		$team_ids = (array)get_post_meta( $this->ID, 'sp_team', false );
 		$table_stats = (array)get_post_meta( $this->ID, 'sp_teams', true );
 		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
+		$select = get_post_meta( $this->ID, 'sp_select', true );
 
 		// Get labels from result variables
 		$result_labels = (array)sp_get_var_labels( 'sp_result' );
 
 		// Get labels from outcome variables
 		$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
+
+		// Get teams automatically if set to auto
+		if ( 'auto' == $select ) {
+			$team_ids = array();
+
+			$args = array(
+				'post_type' => 'sp_team',
+				'numberposts' => -1,
+				'posts_per_page' => -1,
+				'order' => 'ASC',
+				'tax_query' => array(
+					'relation' => 'AND',
+				),
+			);
+
+			if ( $league_id ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_league',
+					'field' => 'id',
+					'terms' => $league_id
+				);
+			endif;
+
+			if ( $div_id ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_season',
+					'field' => 'id',
+					'terms' => $div_id
+				);
+			endif;
+
+			$teams = get_posts( $args );
+
+			if ( $teams && is_array( $teams ) ) {
+				foreach ( $teams as $team ) {
+					$team_ids[] = $team->ID;
+				}
+			}
+		} else {
+			$team_ids = (array)get_post_meta( $this->ID, 'sp_team', false );
+		}
 
 		// Get all leagues populated with stats where available
 		$tempdata = sp_array_combine( $team_ids, $table_stats );

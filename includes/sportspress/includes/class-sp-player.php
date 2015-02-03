@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		1.5
+ * @version		1.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -338,7 +338,7 @@ class SP_Player extends SP_Custom_Post {
 					$team_name = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
 				endif;
 			else:
-				$team_name = '&mdash;';
+				$team_name = __( 'Total', 'sportspress' );
 			endif;
 
 			// Add season name to row

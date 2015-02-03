@@ -3,11 +3,11 @@
  * Plugin Name: SportsPress
  * Plugin URI: http://themeboy.com/sportspress/
  * Description: Manage your club and its players, staff, events, league tables, and player lists.
- * Version: 1.5
+ * Version: 1.6
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
- * Tested up to: 4.0
+ * Tested up to: 4.1
  *
  * Text Domain: sportspress
  * Domain Path: /languages/
@@ -26,20 +26,25 @@ if ( ! class_exists( 'SportsPress' ) ) :
  * Main SportsPress Class
  *
  * @class SportsPress
- * @version	1.5
+ * @version	1.6
  */
 final class SportsPress {
 
 	/**
 	 * @var string
 	 */
-	public $version = '1.5';
+	public $version = '1.6';
 
 	/**
 	 * @var SporsPress The single instance of the class
 	 * @since 0.7
 	 */
 	protected static $_instance = null;
+
+	/**
+	 * @var SP_Modules $modules
+	 */
+	public $modules = null;
 
 	/**
 	 * @var SP_Countries $countries
@@ -117,6 +122,9 @@ final class SportsPress {
 		add_action( 'init', array( 'SP_Shortcodes', 'init' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup_environment' ) );
 
+		// Include core modules
+		$this->include_modules();
+
 		// Loaded action
 		do_action( 'sportspress_loaded' );
 	}
@@ -130,8 +138,8 @@ final class SportsPress {
 	public function action_links( $links ) {
 		return array_merge( array(
 			'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
-			'<a href="' . apply_filters( 'sportspress_docs_url', 'http://sportspresspro.com/docs/' ) . '">' . __( 'Docs', 'sportspress' ) . '</a>',
-			'<a href="' . apply_filters( 'sportspress_pro_url', 'http://sportspresspro.com/pricing/' ) . '">' . __( 'Upgrade', 'sportspress' ) . '</a>',
+			'<a href="' . apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs' ) . '">' . __( 'Docs', 'sportspress' ) . '</a>',
+			'<a href="' . apply_filters( 'sportspress_pro_url', 'http://tboy.co/pricing' ) . '">' . __( 'Upgrade', 'sportspress' ) . '</a>',
 		), $links );
 	}
 
@@ -212,6 +220,7 @@ final class SportsPress {
 		include_once( 'includes/abstracts/abstract-sp-custom-post.php' );		// Custom posts
 
 		// Classes (used on all pages)
+		include_once( 'includes/class-sp-modules.php' );						// Defines available modules
 		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
 		include_once( 'includes/class-sp-formats.php' );						// Defines custom post type formats
 		include_once( 'includes/class-sp-feeds.php' );							// Adds feeds
@@ -243,16 +252,19 @@ final class SportsPress {
 	}
 
 	/**
-	 * Include core widgets
+	 * Include core modules.
+	 */
+	private function include_modules() {
+		foreach ( glob( $this->plugin_path() . '/modules/*.php' ) as $filename ) {
+			include $filename;
+		}
+	}
+
+	/**
+	 * Include core widgets.
 	 */
 	public function include_widgets() {
 		include_once( 'includes/widgets/class-sp-widget-countdown.php' );
-		include_once( 'includes/widgets/class-sp-widget-event-calendar.php' );
-		include_once( 'includes/widgets/class-sp-widget-event-list.php' );
-		include_once( 'includes/widgets/class-sp-widget-event-blocks.php' );
-		include_once( 'includes/widgets/class-sp-widget-league-table.php' );
-		include_once( 'includes/widgets/class-sp-widget-player-list.php' );
-		include_once( 'includes/widgets/class-sp-widget-player-gallery.php' );
 		include_once( 'includes/widgets/class-sp-widget-staff.php' );
 
 		do_action( 'sportspress_widgets' );
@@ -269,6 +281,7 @@ final class SportsPress {
 		$this->load_plugin_textdomain();
 
 		// Load class instances
+		$this->modules = new SP_Modules();		// Modules class
 		$this->countries = new SP_Countries();	// Countries class
 		$this->formats = new SP_Formats();		// Formats class
 		$this->feeds = new SP_Feeds(); 			// Feeds class
@@ -351,6 +364,6 @@ function SP() {
 	return SportsPress::instance();
 }
 
-SP();
-
 endif;
+
+SP();

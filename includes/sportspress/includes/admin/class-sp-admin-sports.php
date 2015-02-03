@@ -5,7 +5,7 @@
  * The SportsPress admin sports class stores preset sport data.
  *
  * @class 		SP_Admin_Sports
- * @version		1.5
+ * @version		1.6
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
@@ -110,7 +110,7 @@ class SP_Admin_Sports {
 		$positions = sp_array_value( $preset, 'positions', array() );
 		foreach ( $positions as $index => $term ) {
 			$slug = $index . '-' . sanitize_title( $term );
-			wp_insert_term( $term, 'sp_position', array( 'description' => $term, 'slug' => $slug ) );
+			wp_insert_term( $term, 'sp_position', array( 'slug' => $slug ) );
 		}
 
 		// Outcomes
@@ -228,7 +228,9 @@ class SP_Admin_Sports {
 		$post_array['post_type'] = $post_type;
 
 		// Add post excerpt
-		$post_array['post_excerpt'] = sp_array_value( $post, 'description', $post_array['post_title'] );
+		if ( is_array( $post ) && array_key_exists( 'description', $post ) ) {
+			$post_array['post_excerpt'] = $post['description'];
+		}
 
 		return $post_array;
 	}
@@ -271,5 +273,6 @@ class SP_Admin_Sports {
 		__( 'Water Polo', 'sportspress' );
 		__( 'Dota 2', 'sportspress' );
 		__( 'League of Legends', 'sportspress' );
+		__( 'Counter-Strike: Global Offensive', 'sportspress' );
 	}
 }

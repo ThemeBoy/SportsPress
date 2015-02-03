@@ -1,10 +1,10 @@
 === SportsPress - Manage Leagues & Sports Clubs ===
 Contributors: ThemeBoy, brianmiyaji, aylaview
-Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@themeboy.com&item_name=Donation+for+SportsPress
+Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
+Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.5
+Stable tag: 1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,7 +18,7 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 [youtube http://www.youtube.com/watch?v=KQyga_C5a6M]
 
 = Industry Reviews =
-> "*The SportsPress plugin brings in some amazing features to your WordPress site and league management capabilities. If you are looking forward to create a sports related website on WordPress, you must have a look at SportsPress plugin.*" — [Indexwp](http://www.indexwp.com/sportspress-plugin-review/)
+> "*There are number of professional sports club who likes to maintain their information and statistics online, SportsPress plugin makes this process really easy, cost effective and quick.*" — [Indexwp](http://www.indexwp.com/sportspress-plugin-review/)
 >
 > "*Script of the Day: While the WordPress repository holds various team and sports-related plugins, few of them come close to what you can achieve with SportsPress.*" — [Softpedia](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml)
 >
@@ -39,16 +39,17 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 * Venue Information & Maps
 * Statistics & League Table Columns Configuration
 * Sport Presets
-* Import Events, Teams, Players, and Staff from CSV Files
+* Switch Between Club vs Club and Player vs Player Mode.
+* Import Events, Clubs, Players, and Staff from CSV Files
 * Easy Shortcodes Menu in Editor
 * Events Integrate with iCal
 * Certified compatibility with [WPML](http://wpml.org/plugin/sportspress/)
 
-More details about each feature are available on the [SportsPress Website](http://sportspresspro.com/).
+More details about each feature are available on the [SportsPress Website](http://tboy.co/pro).
 
 = SportsPress Pro =
 
-Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://sportspresspro.com/pricing/) to get access to more advanced features for your team, club, or league website.
+Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://tboy.co/pricing) to get access to more advanced features for your team, club, or league website.
 
 = Available Languages =
 * English – English ( en_US )
@@ -102,21 +103,21 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Volleyball
 * Water Polo
 
-= Themes =
-* [Football Club](https://themeboy.com/products/footballclub/)
-* [Premier](https://themeboy.com/products/premier/)
+= SportsPress Themes for Clubs =
+* [Football Club](http://tboy.co/fc)
+* [Premier](http://tboy.co/premier)
 
 = Documentation =
-* [Getting Started](https://sportspresspro.com/docs/installation/)
-* [User Roles](https://sportspresspro.com/docs/section/user-roles/)
-* [Integration Guide](https://sportspresspro.com/docs/theme-integration-guide/)
-* [Actions](https://sportspresspro.com/docs/action-reference/)
-* [Filters](https://sportspresspro.com/docs/filter-reference/)
-* [Shortcodes](https://sportspresspro.com/docs/shortcode-reference/)
+* [Getting Started](http://tboy.co/installation)
+* [User Roles](http://tboy.co/roles)
+* [Integration Guide](http://tboy.co/integration)
+* [Actions](http://tboy.co/actionref)
+* [Filters](http://tboy.co/filterref)
+* [Shortcodes](http://tboy.co/shortcoderef)
 
 = Get Involved =
 
-Feel free to share your suggestions with us so we can continue to develop awesome sports features for you guys!
+Feel free to share your suggestions with us so we can continue to develop awesome sports club features for you guys!
 
 Developers can contribute via the [SportsPress GitHub Repository](https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md).
 
@@ -125,10 +126,9 @@ Translators can contribute to SportsPress translations through [Transifex](https
 = Stay Current =
 To keep up with the latest updates and new features, be sure to do the following:
 
-* Visit the [SportsPress Pro homepage](http://sportspresspro.com/).
-* Subscribe to our [YouTube channel](https://www.youtube.com/user/themeboyteam).
-* Follow ThemeBoy on [Facebook](https://facebook.com/themeboy) & [Twitter](http://twitter.com/themeboy).
-
+* Visit the [SportsPress Pro homepage](http://tboy.co/pro).
+* Subscribe to our [YouTube channel](http://tboy.co/youtube).
+* Follow ThemeBoy on [Facebook](http://tboy.co/facebook) & [Twitter](http://tboy.co/twitter).
 
 = Please Rate, Vote, and Enjoy! =
 Your feedback is much appreciated and makes all the difference in improving SportsPress.
@@ -142,16 +142,16 @@ Your feedback is much appreciated and makes all the difference in improving Spor
 
 = Automatic Installation =
 
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t even need to leave your web browser. To do an automatic install of SportsPress, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you don't even need to leave your web browser. To do an automatic install of SportsPress, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
 
-In the search field type “SportsPress” and click Search Plugins. Once you’ve found our sports plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking Install Now. After clicking that link you will be asked if you’re sure you want to install the plugin. Click yes and WordPress will automatically complete the installation.
+In the search field type "SportsPress" and click Search Plugins. Once you've found our sports plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking Install Now. After clicking that link you will be asked if you're sure you want to install the plugin. Click yes and WordPress will automatically complete the installation.
 
 = Manual Installation =
 
 The manual installation method involves downloading our sports plugin and uploading it to your webserver via your favorite FTP application.
 
 1. Download the plugin file to your computer and unzip it
-2. Using an FTP program, or your hosting control panel, upload the unzipped plugin folder to your WordPress installation’s wp-content/plugins/ directory.
+2. Using an FTP program, or your hosting control panel, upload the unzipped plugin folder to your WordPress installation's wp-content/plugins/ directory.
 3. Activate the plugin from the Plugins menu within the WordPress admin.
 
 = Upgrading =
@@ -183,11 +183,65 @@ Yes; SportsPress will work with any theme, but may require some styling to make 
 
 Bugs can be reported either in our support forum or preferably on the [SportsPress GitHub repository](https://github.com/ThemeBoy/SportsPress/issues).
 
-= Can I import teams/players/events from a CSV file? =
+= Will SportsPress work with my sport? =
+
+The plugin comes preinstalled with several different sports presets to help you get started quickly, but is also flexible enough to be customized to fit the need of any team or individual sport. Please [let us know](http://wordpress.org/support/plugin/sportspress) if you'd like to work with us to get your preset added the plugin.
+
+= Can I import teams/players/staff/matches? =
 
 Yes, CSV importers are included with the plugin. Go to Tools > Import and choose from one of the SportsPress CSV importers.
 
+= What's the difference between the free and Pro plugin? =
+
+SportsPress is a free plugin developed to give sports organizations the functionality needed to run a team, club, or league website. The plugin allows you to schedule your upcoming matches and enter the results after you've played a game. Your league tables, team and player statistics will automatically update once you've published the result to reflect the new standings.
+
+Limitations? Don't worry, there are no limitations to the number of events, players, staff members, teams, clubs, or leagues you can add to the free plugin.
+
+[SportsPress Pro](http://tboy.co/pro) is a premium plugin made for serious teams who are looking for additional sports functionality in their website. By upgrading to SportsPress Pro, you will be given instant access to a suite of sports modules that will appear in your dashboard.
+
+The current modules that are available exclusively to SportsPress Pro are:
+
+* Tournaments: Create and display tournaments in a bracket/knockout cup format.
+* Sponsors: Add your sponsors on your website and track each of their clicks and impressions.
+* Staff Directories: Show contact information of your key personnel so people know who to get in touch with.
+* Team Colors: Make each team's profile page unique by displaying their team colors.
+* League Menu: Display a global navigation bar at the top of your website for easy navigation from one team to the next.
+* Branding: Instantly rebrands your admin panel to reflect your organization's brand.
+
+There are [3 different licenses](http://tboy.co/pricing) that you can choose from (Social, Club, and League), each with a [specified set of modules](http://sportspresspro.com/features/).
+
+When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
+
 == Changelog ==
+
+= 1.6 =
+* Feature - New modules page to quickly toggle additional features.
+* Feature - Option to automatically populate player list and league table based on criteria.
+* Feature - Display link to CSV importer at the top of admin list pages.
+* Feature - Update jQuery dataTables to version 1.10.4.
+* Feature - Wrap responsive tables via script.
+* Feature - New API functions for team abbreviations.
+* Feature - Enable searching team names in event edit screen.
+* Refactor - Enable global setting to use plugin as team-vs-team or player-vs-player (beta).
+* Refactor - Use 3-letter FIFA country codes with fallback for 2-letter codes.
+* Refactor - Merge scrollable and responsive settings.
+* Tweak - Make AJAX shortcodes hookable for extensions and modules.
+* Tweak - Mode maps setting to events tab.
+* Tweak - Highlight jobs link in admin menu when editing a job.
+* Tweak - Hide theme notice from welcome pages.
+* Tweak - Prepend prefix to frontend CSS selectors.
+* Tweak - Change Team Results to Event Results.
+* Tweak - Display result rows only for teams that have been selected.
+* Fix - League table displaying zeroes when competition is selected and season is set to all.
+* Fix - Notice when players don't exist in event.
+* Fix - Career totals not displaying in player profiles.
+* Fix - Player performance displaying rows when no team is selected.
+* Fix - Events linking in countdown widget and event list when option is turned off.
+* Fix - Option to hide event blocks title.
+* Fix - Event logos displaying different images when teams are not selected.
+* Preset - Add default labels for overtime in baseball and basketball presets.
+* Preset - Add Counter-Strike: Global Offensive preset.
+* Localization - Update list of countries for nationality selection.
 
 = 1.5 =
 * Feature - New inline quick result editing for events.

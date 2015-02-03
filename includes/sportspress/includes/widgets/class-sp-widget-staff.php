@@ -3,7 +3,7 @@ class SP_Widget_Staff extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_staff widget_sp_staff', 'description' => __( 'Display a single staff member.', 'sportspress' ) );
-		parent::__construct('sp_staff', __( 'Staff', 'sportspress' ) . ' (' . __( 'SportsPress', 'sportspress' ) . ')', $widget_ops);
+		parent::__construct('sportspress-staff', __( 'Staff', 'sportspress' ), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {

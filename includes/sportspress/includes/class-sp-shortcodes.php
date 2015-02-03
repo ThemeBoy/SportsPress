@@ -3,7 +3,7 @@
  * SP_Shortcodes class.
  *
  * @class 		SP_Shortcodes
- * @version		1.2
+ * @version		1.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -20,15 +20,15 @@ class SP_Shortcodes {
 			'event_details'			=> __CLASS__ . '::event_details',
 			'event_performance'		=> __CLASS__ . '::event_performance',
 			'countdown'      		=> __CLASS__ . '::countdown',
-			'event_calendar' 		=> __CLASS__ . '::event_calendar',
-			'event_list'     		=> __CLASS__ . '::event_list',
-			'event_blocks'     		=> __CLASS__ . '::event_blocks',
-			'league_table'   		=> __CLASS__ . '::league_table',
 			'player_details'   		=> __CLASS__ . '::player_details',
 			'player_statistics'		=> __CLASS__ . '::player_statistics',
+			'staff' 				=> __CLASS__ . '::staff',
+			'event_calendar' 		=> __CLASS__ . '::event_calendar',
+			'event_list'     		=> __CLASS__ . '::event_list',
+			'event_blocks'    	 	=> __CLASS__ . '::event_blocks',
+			'league_table'   		=> __CLASS__ . '::league_table',
 			'player_list'    		=> __CLASS__ . '::player_list',
 			'player_gallery' 		=> __CLASS__ . '::player_gallery',
-			'staff' 				=> __CLASS__ . '::staff',
 		);
 
 		foreach ( $shortcodes as $shortcode => $function ) {

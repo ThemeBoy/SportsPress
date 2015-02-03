@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.5
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -1154,10 +1154,12 @@ function sp_get_text_options() {
 		__( 'Date', 'sportspress' ),
 		__( 'Details', 'sportspress' ),
 		__( 'Event', 'sportspress' ),
+		__( 'Event Results', 'sportspress' ),
 		__( 'Competition', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
 		__( 'Outcome', 'sportspress' ),
 		__( 'Past Teams', 'sportspress' ),
+		__( 'Performance', 'sportspress' ),
 		__( 'Played', 'sportspress' ),
 		__( 'Player', 'sportspress' ),
 		__( 'Pos', 'sportspress' ),
@@ -1165,7 +1167,6 @@ function sp_get_text_options() {
 		__( 'Preview', 'sportspress' ),
 		__( 'Rank', 'sportspress' ),
 		__( 'Recap', 'sportspress' ),
-		__( 'Team Results', 'sportspress' ),
 		__( 'Season', 'sportspress' ),
 		__( 'Staff', 'sportspress' ),
 		__( 'Substitutes', 'sportspress' ),
@@ -1188,7 +1189,7 @@ function sp_get_text_options() {
 function sp_review_link() {
 	?>
 	<p>
-		<a href="http://wordpress.org/support/view/plugin-reviews/sportspress?rate=5#postform">
+		<a href="http://wordpress.org/support/view/plugin-reviews/sportspress#postform">
 			<?php _e( 'Love SportsPress? Help spread the word by rating us 5★ on WordPress.org', 'sportspress' ); ?>
 		</a>
 	</p>

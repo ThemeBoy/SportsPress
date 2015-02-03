@@ -5,7 +5,7 @@
  * The SportsPress admin sample data class stores demo content.
  *
  * @class 		SP_Admin_Sample_Data
- * @version		1.5
+ * @version		1.6
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
@@ -128,6 +128,37 @@ class SP_Admin_Sample_Data {
 			),
 		);
 
+		// Define players
+		$players = array(
+			'Mario Bellucci',
+			'Aiden Leggatt',
+			'Seth Clemens',
+			'Mitchell Childe',
+			'Daniel Benn',
+			'Archie Stead',
+			'Finn Rosetta',
+			'Koby Brough',
+			'Blake Bannan',
+			'Hugo Stones',
+			'Tristian Holme',
+			'Mason Ewing',
+		);
+
+		// Define staff
+		$staff = array(
+			'Bobby Brown',
+		);
+
+		// Define event videos
+		$event_videos = array(
+			'https://www.youtube.com/watch?v=xNkf2LYckI0',
+			'https://www.youtube.com/watch?v=sIrjQyuwteM',
+			'https://www.youtube.com/watch?v=xSGxuTGVQYE',
+		);
+
+		// Get countries
+		$countries = new SP_Countries();
+
 		/*
 		 * Insert teams
 		 */
@@ -159,37 +190,6 @@ class SP_Admin_Sample_Data {
 			update_post_meta( $id, 'sp_abbreviation', $team['abbreviation'] );
 			update_post_meta( $id, 'sp_url', $team['url'] );
 		}
-
-		// Define players
-		$players = array(
-			'Mario Bellucci',
-			'Aiden Leggatt',
-			'Seth Clemens',
-			'Mitchell Childe',
-			'Daniel Benn',
-			'Archie Stead',
-			'Finn Rosetta',
-			'Koby Brough',
-			'Blake Bannan',
-			'Hugo Stones',
-			'Tristian Holme',
-			'Mason Ewing',
-		);
-
-		// Define staff
-		$staff = array(
-			'Bobby Brown',
-		);
-
-		// Define event videos
-		$event_videos = array(
-			'https://www.youtube.com/watch?v=xNkf2LYckI0',
-			'https://www.youtube.com/watch?v=sIrjQyuwteM',
-			'https://www.youtube.com/watch?v=xSGxuTGVQYE',
-		);
-
-		// Get countries
-		$countries = new SP_Countries();
 
 		// Get columns
 		$columns = array( 'team' );
@@ -336,7 +336,7 @@ class SP_Admin_Sample_Data {
 			// Update meta
 			update_post_meta( $id, 'sp_columns', $columns );
 			update_post_meta( $id, 'sp_number', $index + 1 );
-			update_post_meta( $id, 'sp_nationality', 'AU' );
+			update_post_meta( $id, 'sp_nationality', 'aus' );
 			update_post_meta( $id, 'sp_current_team', $current_team );
 			sp_update_post_meta_recursive( $id, 'sp_past_team', $past_teams );
 			sp_update_post_meta_recursive( $id, 'sp_team', $inserted_ids['sp_team'] );

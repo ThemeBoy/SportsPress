@@ -71,11 +71,11 @@
 			?>
 			<tr valign="top">
 				<th scope="row" class="titledesc">
-					<?php _e( 'Team Results', 'sportspress' ) ?>
+					<?php _e( 'Event Results', 'sportspress' ) ?>
 					<p class="description"><?php _e( 'Used for events.', 'sportspress' ); ?></p>
 				</th>
 			    <td class="forminp">
-					<legend class="screen-reader-text"><span><?php _e( 'Team Results', 'sportspress' ) ?></span></legend>
+					<legend class="screen-reader-text"><span><?php _e( 'Event Results', 'sportspress' ) ?></span></legend>
 					<form>
 						<?php wp_nonce_field( 'sp-save-primary-result', 'sp-config-nonce', false ); ?>
 						<table class="widefat sp-admin-config-table">

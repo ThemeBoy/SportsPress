@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Core
  * @package     SportsPress/Admin/Functions
- * @version     1.3
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,6 +21,8 @@ function sp_get_screen_ids() {
         'widgets',
         'dashboard',
         'dashboard_page_sp-about',
+        'dashboard_page_sp-credits',
+        'dashboard_page_sp-translators',
         'toplevel_page_sportspress',
     	'edit-sp_result',
     	'sp_result',

@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.5
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -35,85 +35,61 @@ class SP_Settings_Players extends SP_Settings_Page {
 	 * @return array
 	 */
 	public function get_settings() {
-		$settings = array(
-			array(	'title' => __( 'Player Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'player_options' ),
+
+		$settings = array_merge(
 
 			array(
-				'title'     => __( 'Link', 'sportspress' ),
-				'desc' 		=> __( 'Link players', 'sportspress' ),
-				'id' 		=> 'sportspress_link_players',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
+				array(	'title' => __( 'Player Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'player_options' ),
 			),
 
-			array(
-				'title'     => __( 'Templates', 'sportspress' ),
-				'desc' 		=> __( 'Photo', 'sportspress' ),
-				'id' 		=> 'sportspress_player_show_photo',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> 'start',
-			),
-
-			array(
-				'desc' 		=> __( 'Details', 'sportspress' ),
-				'id' 		=> 'sportspress_player_show_details',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> '',
-			),
-
-			array(
-				'desc' 		=> __( 'Career Total', 'sportspress' ),
-				'id' 		=> 'sportspress_player_show_total',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox',
-				'checkboxgroup'		=> 'end',
-			),
-
-			array(
-				'title'     => __( 'Nationality', 'sportspress' ),
-				'desc' 		=> __( 'Display national flags', 'sportspress' ),
-				'id' 		=> 'sportspress_player_show_flags',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-			),
-
-			array( 'type' => 'sectionend', 'id' => 'player_options' ),
-
-			array( 'title' => __( 'Player Lists', 'sportspress' ), 'type' => 'title', 'id' => 'list_options' ),
-
-			array(
-				'title'     => __( 'Players', 'sportspress' ),
-				'desc' 		=> __( 'Display photos', 'sportspress' ),
-				'id' 		=> 'sportspress_list_show_photos',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox',
-			),
-
-			array(
-				'title'     => __( 'Pagination', 'sportspress' ),
-				'desc' 		=> __( 'Paginate', 'sportspress' ),
-				'id' 		=> 'sportspress_list_paginated',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-			),
-			
-			array(
-				'title' 	=> __( 'Limit', 'sportspress' ),
-				'id' 		=> 'sportspress_list_rows',
-				'class' 	=> 'small-text',
-				'default'	=> '10',
-				'desc' 		=> __( 'players', 'sportspress' ),
-				'type' 		=> 'number',
-				'custom_attributes' => array(
-					'min' 	=> 1,
-					'step' 	=> 1
+			apply_filters( 'sportspress_player_options', array(
+				array(
+					'title'     => __( 'Link', 'sportspress' ),
+					'desc' 		=> __( 'Link players', 'sportspress' ),
+					'id' 		=> 'sportspress_link_players',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
 				),
-			),
 
-			array( 'type' => 'sectionend', 'id' => 'list_options' ),
-		); // End player settings
+				array(
+					'title'     => __( 'Templates', 'sportspress' ),
+					'desc' 		=> __( 'Photo', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_photo',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'start',
+				),
+
+				array(
+					'desc' 		=> __( 'Details', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_details',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+
+				array(
+					'desc' 		=> __( 'Career Total', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_total',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'end',
+				),
+
+				array(
+					'title'     => __( 'Nationality', 'sportspress' ),
+					'desc' 		=> __( 'Display national flags', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_flags',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+			) ),
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'player_options' ),
+			)
+
+		);
 
 		return apply_filters( 'sportspress_player_settings', $settings );
 	}

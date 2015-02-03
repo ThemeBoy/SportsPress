@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.5
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -149,7 +149,7 @@ class SP_Meta_Box_Calendar_Data {
 														$main_results[] = $team_result;
 														unset( $team_results['outcome'] );
 														$team_results = implode( ' | ', $team_results );
-														echo '<a class="result tips" title="' . $team_results . '" href="' . get_edit_post_link( $event->ID ) . '">' . $team_result . '</a> ';
+														echo '<a class="result sp-tip" title="' . $team_results . '" href="' . get_edit_post_link( $event->ID ) . '">' . $team_result . '</a> ';
 													endif;
 
 													echo $name . '<br>';
