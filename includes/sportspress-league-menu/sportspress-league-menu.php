@@ -4,18 +4,20 @@ Plugin Name: SportsPress League Menu
 Plugin URI: http://sportspresspro.com/
 Description: Add a league menu to SportsPress.
 Author: ThemeBoy
-Author URI: http://sportspresspro.com
-Version: 1.4
+Author URI: http://themeboy.com
+Version: 1.6
 */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+if ( ! class_exists( 'SportsPress_League_Menu' ) ) :
+
 /**
  * Main SportsPress League Menu Class
  *
  * @class SportsPress_League_Menu
- * @version	1.4
+ * @version	1.6
  */
 class SportsPress_League_Menu {
 
@@ -31,6 +33,7 @@ class SportsPress_League_Menu {
 
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 	    add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
+	    add_filter( 'sportspress_enable_header', '__return_true' );
 
 		add_action( 'wp_footer', array( $this, 'menu' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -41,7 +44,7 @@ class SportsPress_League_Menu {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_LEAGUE_MENU_VERSION' ) )
-			define( 'SP_LEAGUE_MENU_VERSION', '1.4' );
+			define( 'SP_LEAGUE_MENU_VERSION', '1.6' );
 
 		if ( !defined( 'SP_LEAGUE_MENU_URL' ) )
 			define( 'SP_LEAGUE_MENU_URL', plugin_dir_url( __FILE__ ) );
@@ -199,4 +202,8 @@ class SportsPress_League_Menu {
 	}
 }
 
-new SportsPress_League_Menu();
+endif;
+
+if ( get_option( 'sportspress_load_league_menu_module', 'yes' ) == 'yes' ) {
+	new SportsPress_League_Menu();
+}
