@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Tournaments
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -14,14 +14,13 @@ $defaults = array(
 	'id' => get_the_ID(),
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 );
-
 extract( $defaults, EXTR_SKIP );
 
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $winner = get_post_meta( $id, 'sp_winner', true );
-if ( ! $winner ) return;
+if ( ! $winner || -1 == $winner ) return;
 
 $before = $after = '';
 if ( $link_teams ) {

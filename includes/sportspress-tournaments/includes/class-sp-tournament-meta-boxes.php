@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress_Tournaments
- * @version     1.4
+ * @version     1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -41,7 +41,14 @@ class SP_Tournament_Meta_Boxes {
 		<p class="howto">
 			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
 		</p>
+		<p>
+			<strong><?php _e( 'Bracket', 'sportspress' ); ?></strong>
+		</p>
 		<p><input type="text" value="[tournament_bracket <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
+		<p>
+			<strong><?php _e( 'Winner', 'sportspress' ); ?></strong>
+		</p>
+		<p><input type="text" value="[tournament_winner <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
 		<?php
 	}
 
@@ -93,7 +100,7 @@ class SP_Tournament_Meta_Boxes {
 			<p>
 				<?php
 				$args = array(
-					'show_option_none' => __( '-- Not set --', 'sportspress' ),
+					'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
 					'post_type' => 'sp_team',
 					'name' => 'sp_winner',
 					'selected' => $winner,

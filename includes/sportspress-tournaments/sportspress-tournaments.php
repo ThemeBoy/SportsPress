@@ -4,18 +4,20 @@ Plugin Name: SportsPress Tournaments
 Plugin URI: http://sportspresspro.com/
 Description: Adds tournament groups and brackets to SportsPress.
 Author: ThemeBoy
-Author URI: http://sportspresspro.com
-Version: 1.4
+Author URI: http://themeboy.com
+Version: 1.6
 */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+if ( ! class_exists( 'SportsPress_Tournaments' ) ) :
+
 /**
  * Main SportsPress Tournaments Class
  *
  * @class SportsPress_Tournaments
- * @version	1.4
+ * @version	1.6
  */
 class SportsPress_Tournaments {
 
@@ -58,7 +60,7 @@ class SportsPress_Tournaments {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_TOURNAMENTS_VERSION' ) )
-			define( 'SP_TOURNAMENTS_VERSION', '1.4' );
+			define( 'SP_TOURNAMENTS_VERSION', '1.6' );
 
 		if ( !defined( 'SP_TOURNAMENTS_URL' ) )
 			define( 'SP_TOURNAMENTS_URL', plugin_dir_url( __FILE__ ) );
@@ -83,6 +85,8 @@ class SportsPress_Tournaments {
 	 */
 	public function frontend_includes() {
 		include_once( 'includes/class-sp-tournament-template-loader.php' );
+		include_once( 'includes/class-sp-shortcode-tournament-winner.php' );
+		include_once( 'includes/class-sp-shortcode-tournament-bracket.php' );
 	}
 
 	/**
@@ -197,6 +201,23 @@ class SportsPress_Tournaments {
 				'id' 		=> 'sportspress_tournament_show_logos',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
+			),
+
+			array(
+				'title'     => __( 'Details', 'sportspress' ),
+				'desc' 		=> __( 'Display venue', 'sportspress' ),
+				'id' 		=> 'sportspress_tournament_show_venue',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+				'checkboxgroup' => 'start',
+			),
+
+			array(
+				'desc' 		=> __( 'Display winner', 'sportspress' ),
+				'id' 		=> 'sportspress_tournament_show_winner',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup' => 'end',
 			),
 
 			array( 'type' => 'sectionend', 'id' => 'tournament_options' ),
@@ -348,6 +369,8 @@ class SportsPress_Tournaments {
 
 		if ( in_array( $screen->id, array( 'sp_tournament', 'edit-sp_tournament' ) ) ) {
 			wp_enqueue_script( 'sportspress-tournaments-admin', SP_TOURNAMENTS_URL . 'js/admin.js', array( 'jquery' ), SP_TOURNAMENTS_VERSION );
+		    wp_enqueue_style( 'jquery-ui-style' , '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css' ); 
+			wp_enqueue_style( 'sportspress-admin-datepicker-styles', SP()->plugin_url() . '/assets/css/datepicker.css', array( 'jquery-ui-style' ), SP_VERSION );
 		}
 	}
 
@@ -365,4 +388,8 @@ class SportsPress_Tournaments {
 	}
 }
 
-new SportsPress_Tournaments();
+endif;
+
+if ( get_option( 'sportspress_load_tournaments_module', 'yes' ) == 'yes' ) {
+	new SportsPress_Tournaments();
+}
