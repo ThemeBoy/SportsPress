@@ -1085,12 +1085,22 @@ if ( !function_exists( 'sp_solve' ) ) {
 		// Remove space between equation parts
 		$equation = str_replace( ' ', '', $equation );
 
-		// Check if denominator is zero
-		$pos = strpos( $equation, '/' );
-		if ( $pos ):
-			if ( $eos->solveIF( substr( $equation, $pos + 1 ), $vars ) == 0 )
-				return 0;
-		endif;
+		// Initialize subequation
+		$subequation = $equation;
+
+		// Check each subequation separated by division
+		while ( $pos = strpos( $subequation, '/' ) ) {
+			$subequation = substr( $subequation, $pos + 1 );
+
+			// Make sure paretheses match
+			if ( substr_count( $subequation, '(' ) === substr_count( $subequation, ')' ) ) {
+
+				// Return zero if denominator is zero
+				if ( $eos->solveIF( $subequation, $vars ) == 0 ) {
+					return 0;
+				}
+			}
+		}
 
 		// Return solution
 		return number_format( $eos->solveIF( str_replace( ' ', '', $equation ), $vars ), $precision, '.', '' );
