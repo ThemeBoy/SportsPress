@@ -85,7 +85,7 @@ class SP_Modules {
 					'label' => __( 'Twitter', 'sportspress' ),
 					'class' => 'SportsPress_Twitter',
 					'action' => __( 'Tweet #SportsPress', 'sportspress' ),
-					'link' => 'http://ctt.ec/d0sCF',
+					'link' => 'http://tboy.co/tweet',
 					'tip' => __( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.', 'sportspress' ),
 					'icon' => 'dashicons dashicons-twitter',
 				),
