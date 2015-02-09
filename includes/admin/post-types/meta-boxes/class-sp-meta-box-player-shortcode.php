@@ -26,11 +26,11 @@ class SP_Meta_Box_Player_Shortcode {
 		<p>
 			<strong><?php _e( 'Details', 'sportspress' ); ?></strong>
 		</p>
-		<p><input type="text" value="[player_details <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
+		<p><input type="text" value="<?php sp_shortcode_template( 'player_details', $post->ID ); ?>" readonly="readonly" class="code widefat"></p>
 		<p>
 			<strong><?php _e( 'Statistics', 'sportspress' ); ?></strong>
 		</p>
-		<p><input type="text" value="[player_statistics <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
+		<p><input type="text" value="<?php sp_shortcode_template( 'player_statistics', $post->ID ); ?>" readonly="readonly" class="code widefat"></p>
 		<?php
 	}
 }

@@ -33,7 +33,7 @@ class SP_Meta_Box_Event_Shortcode {
 		<p>
 			<strong><?php echo $label; ?></strong>
 		</p>
-		<p><input type="text" value="[<?php echo $id; ?> <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
+		<p><input type="text" value="<?php sp_shortcode_template( $id, $post->ID ); ?>" readonly="readonly" class="code widefat"></p>
 		<?php } ?>
 		<?php
 		}
