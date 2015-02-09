@@ -98,10 +98,25 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					</thead>
 					<tbody>
 						<tr><td>
-							<p><?php _e( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.','sportspress' ); ?></p>
+							<ol>
+								<li><?php echo str_replace(
+								array( '[link]', '[/link]' ),
+								array( '<a target="_blank" href="http://twitter.com/themeboy">', '</a>' ),
+								__( 'Follow [link]@ThemeBoy[/link] on Twitter.','sportspress' )
+							); ?></li>
+								<li><?php echo str_replace(
+								array( '[link]', '[/link]' ),
+								array( '<a target="_blank" href="http://tboy.co/tweet">', '</a>' ),
+								__( 'Help spread the word by tweeting with [link]#SportsPress[/link] and get the Twitter module for free.','sportspress' )
+							); ?></li>
+							<li><?php echo str_replace(
+								array( '[link]', '[/link]' ),
+								array( '<a href="mailto:tweets@themeboy.com?subject=SportsPress+Twitter+Module+Request&body=I+tweeted+about+your+plugin!">', '</a>' ),
+								__( '[link]Email us[/link] for the download link.', 'sportspress' )
+							); ?></li></ol>
 							<p class="sp-module-actions">
 								<span><?php _e( 'Free with tweet', 'sportspress' ); ?></span>
-								<a class="button" href="http://ctt.ec/d0sCF" target="_blank"><?php _e( 'Tweet', 'sportspress' ); ?></a>
+								<a class="button" href="http://tboy.co/tweet" target="_blank"><?php _e( 'Tweet', 'sportspress' ); ?></a>
 							</p>
 						</td></tr>
 					</tbody>
@@ -117,16 +132,16 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					</thead>
 					<tbody>
 						<tr><td>
-							<p><?php echo str_replace(
+							<ol><li><?php echo str_replace(
 								array( '[stars]', '[link]', '[/link]' ),
 								array( '<a target="_blank" href="http://tboy.co/review">&#9733;&#9733;&#9733;&#9733;&#9733;</a>', '<a target="_blank" href="http://tboy.co/review">', '</a>' ),
 								__( 'Add your [stars] on [link]wordpress.org[/link] and get the Birthdays module for free.','sportspress' )
-							); ?></p>
-							<p><?php echo str_replace(
+							); ?></li>
+							<li><?php echo str_replace(
 								array( '[link]', '[/link]' ),
-								array( '<a href="mailto:reviews@themeboy.com">', '</a>' ),
-								__( 'Already posted a review? [link]Email us[/link] for the download link.', 'sportspress' )
-							); ?></p>
+								array( '<a href="mailto:reviews@themeboy.com?subject=SportsPress+Birthdays+Module+Request&body=I+reviewed+your+plugin+on+WordPress.org!">', '</a>' ),
+								__( '[link]Email us[/link] for the download link.', 'sportspress' )
+							); ?></li></ol>
 							<p class="sp-module-actions">
 								<span><?php _e( 'Free with review', 'sportspress' ); ?></span>
 								<a class="button" href="http://tboy.co/review" target="_blank"><?php _e( 'Post Review', 'sportspress' ); ?></a>

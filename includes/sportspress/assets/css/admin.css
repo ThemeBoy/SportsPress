@@ -548,6 +548,11 @@ table.widefat.sp-sortable-table tbody tr .icon {
 	margin-bottom: 0;
 }
 
+.sp-modules-sidebar table td ol {
+	margin: 2px 0 0.8em;
+	list-style-position: inside;
+}
+
 .sp-modules-sidebar table td span {
 	color: #aaa;
 }
