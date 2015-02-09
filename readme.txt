@@ -35,6 +35,7 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 * Player Profiles & Statistics
 * Player Lists
 * Staff Profiles
+* Select Current Club and Previous Clubs
 * Season Archives
 * Venue Information & Maps
 * Statistics & League Table Columns Configuration
@@ -89,7 +90,6 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Basketball
 * Cricket
 * Darts
-* Esports (Dota 2, League of Legends)
 * Handball
 * Ice Hockey
 * Netball
@@ -102,6 +102,11 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Tennis
 * Volleyball
 * Water Polo
+
+= Esports Presets =
+* Counter-Strike: Global Offensive
+* Dota 2
+* League of Legends
 
 = SportsPress Themes for Clubs =
 * [Football Club](http://tboy.co/fc)
@@ -122,6 +127,8 @@ Feel free to share your suggestions with us so we can continue to develop awesom
 Developers can contribute via the [SportsPress GitHub Repository](https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md).
 
 Translators can contribute to SportsPress translations through [Transifex](https://www.transifex.com/projects/p/sportspress/).
+
+Couldn't find a preset for your sport? Help us [add it to SportsPress](http://themeboy.com/add-sport-preset/).
 
 = Stay Current =
 To keep up with the latest updates and new features, be sure to do the following:
