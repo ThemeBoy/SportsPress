@@ -261,6 +261,7 @@ class SP_Admin_Sports {
 		__( 'Australian Rules Football', 'sportspress' );
 		__( 'Handball', 'sportspress' );
 		__( 'Ice Hockey', 'sportspress' );
+		__( 'Lacrosse', 'sportspress' );
 		__( 'Netball', 'sportspress' );
 		__( 'Rugby League', 'sportspress' );
 		__( 'Rugby Union', 'sportspress' );

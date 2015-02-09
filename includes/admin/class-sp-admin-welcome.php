@@ -335,6 +335,7 @@ class SP_Admin_Welcome {
 				<?php
 				$preset_credits = array(
 					__( 'Counter-Strike: Global Offensive', 'sportspress' ) => 'Oscar Wong',
+					__( 'Lacrosse', 'sportspress' ) => 'Jamie',
 				);
 				?>
 				<dl class="sp-presets">
