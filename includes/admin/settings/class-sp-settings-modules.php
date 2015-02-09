@@ -98,14 +98,20 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					</thead>
 					<tbody>
 						<tr><td>
-							<ol><li><?php echo str_replace(
+							<ol>
+								<li><?php echo str_replace(
+								array( '[link]', '[/link]' ),
+								array( '<a target="_blank" href="http://twitter.com/themeboy">', '</a>' ),
+								__( 'Follow [link]@ThemeBoy[/link] on Twitter.','sportspress' )
+							); ?></li>
+								<li><?php echo str_replace(
 								array( '[link]', '[/link]' ),
 								array( '<a target="_blank" href="http://tboy.co/tweet">', '</a>' ),
 								__( 'Help spread the word by tweeting with [link]#SportsPress[/link] and get the Twitter module for free.','sportspress' )
 							); ?></li>
 							<li><?php echo str_replace(
 								array( '[link]', '[/link]' ),
-								array( '<a href="mailto:tweets@themeboy.com">', '</a>' ),
+								array( '<a href="mailto:tweets@themeboy.com?subject=SportsPress+Twitter+Module+Request&body=I+tweeted+about+your+plugin!">', '</a>' ),
 								__( '[link]Email us[/link] for the download link.', 'sportspress' )
 							); ?></li></ol>
 							<p class="sp-module-actions">
@@ -133,7 +139,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							); ?></li>
 							<li><?php echo str_replace(
 								array( '[link]', '[/link]' ),
-								array( '<a href="mailto:reviews@themeboy.com">', '</a>' ),
+								array( '<a href="mailto:reviews@themeboy.com?subject=SportsPress+Birthdays+Module+Request&body=I+reviewed+your+plugin+on+WordPress.org!">', '</a>' ),
 								__( '[link]Email us[/link] for the download link.', 'sportspress' )
 							); ?></li></ol>
 							<p class="sp-module-actions">
