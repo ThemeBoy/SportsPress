@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.6
+ * @version     1.6.1
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -379,6 +379,7 @@ class SP_Admin_Welcome {
 				'eNnvi',
 				'etcloki',
 				'Ferenan',
+				'fiiz',
 				'fredodq',
 				'GhiMax',
 				'GuneshGamza95',
@@ -398,6 +399,7 @@ class SP_Admin_Welcome {
 				'matiqos',
 				'MohamedZ',
 				'overbite',
+				'Paramamithra',
 				'poelie',
 				'popeosorio',
 				'rochester',
@@ -408,6 +410,7 @@ class SP_Admin_Welcome {
 				'SmilyCarrot',
 				'Spirossmil',
 				'Taurus',
+				'thegreat',
 				'ThemeBoy',
 				'tyby94',
 				'valentijnreza',
