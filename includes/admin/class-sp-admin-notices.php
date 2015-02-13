@@ -58,7 +58,7 @@ class SP_Admin_Notices {
 		if ( in_array( 'theme_support', $notices ) && ! current_theme_supports( 'sportspress' ) && ! in_array( $screen->id, array( 'toplevel_page_sportspress', 'dashboard_page_sp-about', 'dashboard_page_sp-credits', 'dashboard_page_sp-translators' ) ) ) {
 			$template = get_option( 'template' );
 
-			if ( ! in_array( $template, array( 'twentyfourteen', 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten' ) ) ) {
+			if ( ! in_array( $template, array( 'twentyfifteen', 'twentyfourteen', 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten' ) ) ) {
 				wp_enqueue_style( 'sportspress-activation', plugins_url(  '/assets/css/activation.css', SP_PLUGIN_FILE ) );
 				add_action( 'admin_notices', array( $this, 'theme_check_notice' ) );
 			}
