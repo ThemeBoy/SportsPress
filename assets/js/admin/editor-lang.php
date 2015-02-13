@@ -4,7 +4,7 @@ $shortcodes = '';
 
 $options = array(
     'event' => array(
-        'details', 'results', 'performance', 'countdown'
+        'details', 'results', 'performance'
     ),
     'player' => array(
         'details', 'statistics'

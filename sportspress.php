@@ -264,7 +264,6 @@ final class SportsPress {
 	 * Include core widgets.
 	 */
 	public function include_widgets() {
-		include_once( 'includes/widgets/class-sp-widget-countdown.php' );
 		include_once( 'includes/widgets/class-sp-widget-staff.php' );
 
 		do_action( 'sportspress_widgets' );
