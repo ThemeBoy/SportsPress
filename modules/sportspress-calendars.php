@@ -192,6 +192,14 @@ class SportsPress_Calendars {
 
 			apply_filters( 'sportspress_event_list_options', array(
 				array(
+					'title'     => __( 'Title', 'sportspress' ),
+					'desc' 		=> __( 'Display calendar title', 'sportspress' ),
+					'id' 		=> 'sportspress_event_list_show_title',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
 					'title'     => __( 'Teams', 'sportspress' ),
 					'desc' 		=> __( 'Display logos', 'sportspress' ),
 					'id' 		=> 'sportspress_event_list_show_logos',
