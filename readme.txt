@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.6
+Stable tag: 1.6.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -92,6 +92,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Darts
 * Handball
 * Ice Hockey
+* Lacrosse
 * Netball
 * Rugby League
 * Rugby Union
