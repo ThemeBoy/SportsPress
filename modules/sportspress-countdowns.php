@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Countdowns' ) ) :
  * Main SportsPress Countdowns Class
  *
  * @class SportsPress_Countdowns
- * @version	1.6
+ * @version	1.6.1
  */
 class SportsPress_Countdowns {
 

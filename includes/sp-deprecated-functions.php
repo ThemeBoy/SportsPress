@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	ThemeBoy/Functions
- * @version     0.7.4
+ * @version     1.6.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
