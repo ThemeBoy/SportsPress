@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.4
+ * @version     1.6.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -25,7 +25,7 @@ class SP_Meta_Box_Calendar_Shortcode {
 		<p class="howto">
 			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
 		</p>
-		<p><input type="text" value="[event_<?php echo $the_format; ?> <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
+		<p><input type="text" value="<?php sp_shortcode_template( 'event_' . $the_format, $post->ID ); ?>" readonly="readonly" class="code widefat"></p>
 		<?php
 	}
 }

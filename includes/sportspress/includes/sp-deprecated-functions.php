@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	ThemeBoy/Functions
- * @version     0.7.4
+ * @version     1.6.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -18,6 +18,17 @@ add_shortcode( 'events-list', 'SP_Shortcodes::event_list' );
 add_shortcode( 'league-table', 'SP_Shortcodes::league_table' );
 add_shortcode( 'player-list', 'SP_Shortcodes::player_list' );
 add_shortcode( 'player-gallery', 'SP_Shortcodes::player_gallery' );
+
+/* Actions */
+function sportspress_before_template_part_action( $template_name, $template_path, $located, $args ) {
+	do_action( 'sportspress_before_template_part', $template_name, $template_path, $located, $args );
+}
+add_action( 'sportspress_before_template', 'sportspress_before_template_part_action', 10, 4 );
+
+function sportspress_after_template_part_action( $template_name, $template_path, $located, $args ) {
+	do_action( 'sportspress_after_template_part', $template_name, $template_path, $located, $args );
+}
+add_action( 'sportspress_after_template', 'sportspress_after_template_part_action', 10, 4 );
 
 /* Functions */
 function sportspress_flush_rewrite_rules() {

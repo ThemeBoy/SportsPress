@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.6
+ * @version     1.6.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -74,11 +74,11 @@ function sp_get_template( $template_name, $args = array(), $template_path = '', 
 		return;
 	}
 
-	do_action( 'sportspress_before_template_part', $template_name, $template_path, $located, $args );
+	do_action( 'sportspress_before_template', $template_name, $template_path, $located, $args );
 
 	include( $located );
 
-	do_action( 'sportspress_after_template_part', $template_name, $template_path, $located, $args );
+	do_action( 'sportspress_after_template', $template_name, $template_path, $located, $args );
 }
 
 /**
@@ -1196,6 +1196,10 @@ function sp_get_text_options() {
 	return array_unique( $strings );
 }
 
+/**
+ * Display a link to review SportsPress
+ * @return null
+ */
 function sp_review_link() {
 	?>
 	<p>
@@ -1204,4 +1208,31 @@ function sp_review_link() {
 		</a>
 	</p>
 	<?php
+}
+
+/**
+ * Return shortcode template for meta boxes
+ * @return null
+ */
+function sp_get_shortcode_template( $shortcode, $id = null, $args = array() ) {
+	$args = apply_filters( 'sportspress_shortcode_template_args', $args );
+	$output = '[' . $shortcode;
+	if ( $id ) {
+		$output .= ' ' . $id;
+	}
+	if ( sizeof( $args ) ) {
+		foreach ( $args as $key => $value ) {
+			$output .= ' ' . $key . '="' . $value . '"';
+		}
+	}
+	$output .= ']';
+	return esc_attr( $output );
+}
+
+/**
+ * Display shortcode template for meta boxes
+ * @return null
+ */
+function sp_shortcode_template( $shortcode, $id = null, $args = array() ) {
+	echo sp_get_shortcode_template( $shortcode, $id, $args );
 }

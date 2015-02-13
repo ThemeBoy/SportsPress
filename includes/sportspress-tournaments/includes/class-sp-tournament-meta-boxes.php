@@ -44,11 +44,11 @@ class SP_Tournament_Meta_Boxes {
 		<p>
 			<strong><?php _e( 'Bracket', 'sportspress' ); ?></strong>
 		</p>
-		<p><input type="text" value="[tournament_bracket <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
+		<p><input type="text" value="<?php sp_shortcode_template( 'tournament_bracket', $post->ID ); ?>" readonly="readonly" class="code widefat"></p>
 		<p>
 			<strong><?php _e( 'Winner', 'sportspress' ); ?></strong>
 		</p>
-		<p><input type="text" value="[tournament_winner <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
+		<p><input type="text" value="<?php sp_shortcode_template( 'tournament_winner', $post->ID ); ?>" readonly="readonly" class="code widefat"></p>
 		<?php
 	}
 

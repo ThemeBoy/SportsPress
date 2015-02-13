@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.6
+Stable tag: 1.6.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -92,6 +92,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Darts
 * Handball
 * Ice Hockey
+* Lacrosse
 * Netball
 * Rugby League
 * Rugby Union
@@ -220,6 +221,15 @@ There are [3 different licenses](http://tboy.co/pricing) that you can choose fro
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.6.1 =
+* Feature - Countdown moved to module and now able to display team logos.
+* Feature - Add option to show or hide event list titles.
+* Tweak - Display latitude and longitude fields when adding venues.
+* Fix - Calculating equations with nested parentheses.
+* Fix - Minor meta box mislabeling.
+* Preset - Add Lacrosse preset.
+* Localization - Update Polish, French, Czech, Dutch, Kannada, Finnish, and Swedish translations.
 
 = 1.6 =
 * Feature - New modules page to quickly toggle additional features.

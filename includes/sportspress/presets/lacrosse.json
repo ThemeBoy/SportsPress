@@ -1,0 +1,49 @@
+{
+	"name":				"Lacrosse",
+	"positions": [
+						"Goalie",
+						"Defense",
+						"Midfield",
+						"Attack"
+	],
+	"outcomes": [
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
+						{ "name" : "Tie", "condition" : "=" },
+						"Overtime"
+	],
+	"results": [
+						{ "name" : "1", "description" : "1st quarter goals" },
+						{ "name" : "2", "description" : "2nd quarter goals" },
+						{ "name" : "3", "description" : "3rd quarter goals" },
+						{ "name" : "4", "description" : "4th quarter goals" },
+						{ "name" : "OT", "id" : "ot", "description" : "Overtime goals" },
+						{ "name" : "T", "id" : "goals", "description" : "Total goals", "primary" : 1 }
+	],
+	"performance": [
+						"Goals",
+						"Assists",
+						"Shots",
+						{ "name" : "SoG", "description" : "Shots on goal" },
+						"Penalties"
+	],
+	"columns": [
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Games played" },
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "T", "equation" : "$tie", "description" : "Ties" },
+						{ "name" : "F", "equation" : "$goalsfor", "priority" : 3, "description" : "Goals for" },
+						{ "name" : "A", "equation" : "$goalsagainst", "description" : "Goals against" },
+						{ "name" : "+/-", "equation" : "$goalsfor - $goalsagainst", "priority" : 2, "description" : "Goal difference" },
+						{ "name" : "Pts", "equation" : "$win * 2 + $tie", "priority" : 1, "description" : "Team points" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "Games", "equation" : "$eventsplayed", "description" : "Games played" },
+						{ "name" : "Shooting %", "equation" : "$goals / $shots", "precision" : 1, "description" : "Shooting percentage" },
+						{ "name" : "SoG %", "equation" : "$sog / $shots", "precision" : 1, "description" : "Shots on goal percentage" }
+	]
+}

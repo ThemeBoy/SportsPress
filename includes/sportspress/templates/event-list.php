@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.6
+ * @version     1.6.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -27,6 +27,7 @@ $defaults = array(
 	'order' => 'default',
 	'columns' => null,
 	'show_all_events_link' => false,
+	'show_title' => get_option( 'sportspress_event_list_show_title', 'yes' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -54,7 +55,7 @@ if ( isset( $columns ) ):
 		$usecolumns = explode( ',', $columns );
 endif;
 
-if ( $id ) {
+if ( $show_title && $id ) {
 	echo '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
 }
 ?>

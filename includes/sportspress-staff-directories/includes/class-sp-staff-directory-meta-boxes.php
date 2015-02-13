@@ -65,7 +65,7 @@ class SP_Staff_Directory_Meta_Boxes {
 		<p class="howto">
 			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
 		</p>
-		<p><input type="text" value="[staff_<?php echo $the_format; ?> <?php echo $post->ID; ?>]" readonly="readonly" class="code widefat"></p>
+		<p><input type="text" value="<?php sp_shortcode_template( 'staff_' . $the_format, $post->ID ); ?>" readonly="readonly" class="code widefat"></p>
 		<?php
 	}
 

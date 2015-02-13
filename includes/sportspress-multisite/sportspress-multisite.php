@@ -34,12 +34,17 @@ class SportsPress_Multisite {
 			add_filter( 'post_type_link', array( $this, 'fix_permalink' ) );
 
 			// Widgets
-			add_filter( 'sportspress_widget_update', array( $this, 'multisite_widget_update' ), 10, 4 );
-			add_filter( 'sportspress_widget_defaults', array( $this, 'multisite_widget_defaults' ) );
-			add_action( 'sportspress_before_widget_template', array( $this, 'multisite_before_widget'), 10, 3 );
-			add_action( 'sportspress_after_widget_template', array( $this, 'multisite_after_widget'), 10, 3 );
-			add_action( 'sportspress_before_widget_template_form', array( $this, 'multisite_before_widget_form' ), 10, 3 );
-			add_action( 'sportspress_after_widget_template_form', array( $this, 'multisite_after_widget_form' ), 10, 3 );
+			add_filter( 'sportspress_widget_update', array( $this, 'widget_update' ), 10, 4 );
+			add_filter( 'sportspress_widget_defaults', array( $this, 'widget_defaults' ) );
+			add_action( 'sportspress_before_widget_template', array( $this, 'before_widget'), 10, 3 );
+			add_action( 'sportspress_after_widget_template', array( $this, 'after_widget') );
+			add_action( 'sportspress_before_widget_template_form', array( $this, 'before_widget_form' ), 10, 3 );
+			add_action( 'sportspress_after_widget_template_form', array( $this, 'after_widget_form' ) );
+
+			// Templates
+			add_filter( 'sportspress_shortcode_template_args', array( $this, 'shortcode_template_args' ) );
+			add_action( 'sportspress_before_template', array( $this, 'before_template' ), 10, 4 );
+			add_action( 'sportspress_after_template', array( $this, 'after_template' ), 10, 4 );
 		endif;
 	}
 
@@ -67,7 +72,7 @@ class SportsPress_Multisite {
 	/**
 	 * Before widget
 	 */
-	function multisite_before_widget( $args, $instance, $widget = 'default' ) {
+	function before_widget( $args, $instance, $widget = 'default' ) {
 		$id = intval( $instance['site_id'] );
 		if ( $id ) {
 			switch_to_blog( $id );
@@ -77,14 +82,14 @@ class SportsPress_Multisite {
 	/**
 	 * After widget
 	 */
-	function multisite_after_widget( $args, $instance, $widget = 'default' ) {
+	function after_widget() {
 		restore_current_blog();
 	}
 
 	/**
 	 * Widget update
 	 */
-	function multisite_widget_update( $instance, $new_instance, $old_instance, $widget = 'default' ) {
+	function widget_update( $instance, $new_instance, $old_instance, $widget = 'default' ) {
 		$instance['site_id'] = intval( $new_instance['site_id'] );
 		return $instance;
 	}
@@ -92,7 +97,7 @@ class SportsPress_Multisite {
 	/**
 	 * Widget defaults
 	 */
-	function multisite_widget_defaults( $defaults, $widget = 'default' ) {
+	function widget_defaults( $defaults, $widget = 'default' ) {
 		global $blog_id;
 		$defaults['site_id'] = $blog_id;
 		return $defaults;
@@ -101,14 +106,14 @@ class SportsPress_Multisite {
 	/**
 	 * Before widget forms
 	 */
-	function multisite_before_widget_form( $object, $instance, $widget = 'default' ) {
+	function before_widget_form( $object, $instance, $widget = 'default' ) {
 		?>
 		<p><label for="<?php echo $object->get_field_id('site_id'); ?>"><?php printf( __( 'Site: %s', 'sportspress' ), '' ); ?></label>
 			<select name="<?php echo $object->get_field_name('site_id'); ?>" id="<?php echo $object->get_field_id('site_id'); ?>" onchange="jQuery(this).closest('form').find('input[type=submit]').trigger('click')">
 				<?php
 				$id = intval( $instance['site_id'] );
 				if ( $id ) {
-					switch_to_blog( $id);
+					switch_to_blog( $id );
 				}
 
 				global $wpdb, $blog_id;
@@ -123,10 +128,10 @@ class SportsPress_Multisite {
 			    ");
 			 
 			    $sites = array();
-			    foreach ($blogs as $blog) {
-			        $sites[$blog->blog_id] = get_blog_option($blog->blog_id, 'blogname');
+			    foreach ( $blogs as $blog ) {
+			        $sites[ $blog->blog_id ] = get_blog_option( $blog->blog_id, 'blogname' );
 			    }
-			    natsort($sites);
+			    natsort( $sites );
 
 			    foreach ( $sites as $site_id => $site_title ) {
 			        printf( '<option value="%d" %s>%s</option>', $site_id, ( $site_id == $blog_id ? 'selected' : '' ), $site_title );
@@ -140,8 +145,37 @@ class SportsPress_Multisite {
 	/**
 	 * After widget forms
 	 */
-	function multisite_after_widget_form( $object, $instance, $widget = 'default' ) {
+	function after_widget_form() {
 		restore_current_blog();
+	}
+
+	/**
+	 * Add site_id to shortcode template
+	 * @return array
+	 */
+	function shortcode_template_args( $args ) {
+		global $blog_id;
+		$args['site_id'] = $blog_id;
+		return $args;
+	}
+
+	/**
+	 * Before template
+	 */
+	function before_template( $template_name, $template_path = '', $located = null, $args = array() ) {
+		if ( isset( $args['site_id'] ) ) {
+			$id = intval( $args['site_id'] );
+			switch_to_blog( $id );
+		}
+	}
+
+	/**
+	 * After template
+	 */
+	function after_template( $template_name, $template_path = '', $located = null, $args = array() ) {
+		if ( isset( $args['site_id'] ) ) {
+			restore_current_blog();
+		}
 	}
 }
 

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Handles taxonomies in admin
  *
  * @class 		SP_Admin_Taxonomies
- * @version		1.4
+ * @version		1.6.1
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
@@ -70,10 +70,16 @@ class SP_Admin_Taxonomies {
 		<div class="form-field">
 			<label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label>
 			<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="">
-			<input type="hidden" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo $latitude; ?>">
-			<input type="hidden" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo $longitude; ?>">
 			<p><div class="sp-location-picker"></div></p>
 			<p><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+		</div>
+		<div class="form-field">
+			<label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label>
+			<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo $latitude; ?>">
+		</div>
+		<div class="form-field">
+			<label for="term_meta[sp_longitude]"><?php _e( 'Longitude', 'sportspress' ); ?></label>
+			<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo $longitude; ?>">
 		</div>
 	<?php
 	}
