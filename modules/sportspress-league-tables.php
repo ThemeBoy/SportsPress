@@ -149,7 +149,7 @@ class SportsPress_League_Tables {
 				'priority' => 'default',
 			),
 			'data' => array(
-				'title' => __( 'Events', 'sportspress' ),
+				'title' => __( 'League Table', 'sportspress' ),
 				'save' => 'SP_Meta_Box_Table_Data::save',
 				'output' => 'SP_Meta_Box_Table_Data::output',
 				'context' => 'normal',
