@@ -222,6 +222,15 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 == Changelog ==
 
+= 1.6.1 =
+* Feature - Countdown moved to module and now able to display team logos.
+* Feature - Add option to show or hide event list titles.
+* Tweak - Display latitude and longitude fields when adding venues.
+* Fix - Calculating equations with nested parentheses.
+* Fix - Minor meta box mislabeling.
+* Preset - Add Lacrosse preset.
+* Localization - Update Polish, French, Czech, Dutch, Kannada, Finnish, and Swedish translations.
+
 = 1.6 =
 * Feature - New modules page to quickly toggle additional features.
 * Feature - Option to automatically populate player list and league table based on criteria.
