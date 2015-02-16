@@ -133,14 +133,6 @@ jQuery(document).ready(function($){
 	// Activate self-cloning
 	$(".sp-clone:last").find("select").change();
 
-	// Dummy controller
-	$(".sp-has-dummy").change(function() {
-		val = $(this).val();
-		if ( val == -1 ) val = 0;
-		name = $(this).attr("name");
-		$(".sp-dummy."+name+"-dummy").val(val).trigger("change");
-	});
-
 	// Custom value editor
 	$(".sp-data-table .sp-default-value").click(function() {
 		$(this).hide().siblings(".sp-custom-value").show().find(".sp-custom-value-input").focus();
@@ -422,11 +414,11 @@ jQuery(document).ready(function($){
 	$(".post-type-sp_event #post-formats-select input.post-format").change(function() {
 		layout = $(".post-type-sp_event #post-formats-select input:checked").val();
 		if ( layout == "friendly" ) {
-			$(".sp-event-sp_league-field").hide().find("select").prop("disabled", true);
-			$(".sp-event-sp_season-field").show().find("select").prop("disabled", false);
+			$(".sp_event-sp_league-field").hide().find("select").prop("disabled", true);
+			$(".sp_event-sp_season-field").show().find("select").prop("disabled", false);
 		} else {
-			$(".sp-event-sp_league-field").show().find("select").prop("disabled", false);
-			$(".sp-event-sp_season-field").show().find("select").prop("disabled", false);
+			$(".sp_event-sp_league-field").show().find("select").prop("disabled", false);
+			$(".sp_event-sp_season-field").show().find("select").prop("disabled", false);
 		}
 	});
 

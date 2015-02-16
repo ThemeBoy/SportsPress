@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.6.1
+ * @version     1.6.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -1148,6 +1148,46 @@ if ( !function_exists( 'sp_get_next_event' ) ) {
 			$posts = get_posts( $options );
 			if ( $posts && is_array( $posts ) ) return array_pop( $posts );
 			else return false;
+	}
+}
+
+if ( !function_exists( 'sp_taxonomy_field' ) ) {
+	function sp_taxonomy_field( $taxonomy = 'category', $post = null, $multiple = false ) {
+		$obj = get_taxonomy( $taxonomy );
+		if ( $obj ) {
+			$post_type = get_post_type( $post );
+			?>
+			<div class="<?php echo $post_type; ?>-<?php echo $taxonomy; ?>-field">
+				<p><strong><?php echo $obj->labels->singular_name; ?></strong></p>
+				<p>
+					<?php
+					$terms = get_the_terms( $post->ID, $taxonomy );
+					$term_ids = array();
+					if ( $terms ):
+						foreach ( $terms as $term ):
+							$term_ids[] = $term->term_id;
+						endforeach;
+					endif;
+					$args = array(
+						'taxonomy' => $taxonomy,
+						'name' => 'tax_input[' . $taxonomy . '][]',
+						'selected' => $term_ids,
+						'values' => 'term_id',
+						'class' => 'sp-has-dummy widefat',
+						'chosen' => true,
+						'placeholder' => __( 'All', 'sportspress' ),
+					);
+					if ( $multiple ) {
+						$args['property'] = 'multiple';
+					}
+					if ( ! sp_dropdown_taxonomies( $args ) ):
+						sp_taxonomy_adder( $taxonomy, $post_type, $obj->labels->add_new_item );
+					endif;
+					?>
+				</p>
+			</div>
+			<?php
+		}
 	}
 }
 
