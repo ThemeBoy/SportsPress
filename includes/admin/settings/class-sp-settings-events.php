@@ -234,9 +234,17 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 
 				array(
+					'desc' 		=> __( 'Split players by team', 'sportspress' ),
+					'id' 		=> 'sportspress_event_split_players_by_team',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+
+				array(
 					'desc' 		=> __( 'Split players by position', 'sportspress' ),
 					'id' 		=> 'sportspress_event_split_players_by_position',
-					'default'	=> 'false',
+					'default'	=> 'no',
 					'type' 		=> 'checkbox',
 					'checkboxgroup'		=> 'end',
 				),
