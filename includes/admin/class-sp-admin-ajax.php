@@ -19,6 +19,7 @@ class SP_Admin_AJAX {
 	 */
 	public function __construct() {
 		add_action( 'wp_ajax_sp-save-primary-result', array( $this, 'save_primary_result' ), 1 );
+		add_action( 'wp_ajax_sp-save-primary-performance', array( $this, 'save_primary_performance' ), 1 );
 		add_action( 'wp_ajax_sp-save-inline-results', array( $this, 'save_inline_results' ) );
 	}
 
@@ -33,6 +34,20 @@ class SP_Admin_AJAX {
 		$primary_result = sanitize_key( $_POST['primary_result'] );
 
 		update_option( 'sportspress_primary_result', $primary_result );
+		wp_send_json_success();
+	}
+
+	/**
+	 * Auto-save the selected primary performance.
+	 *
+	 * @since  1.7
+	 */
+	function save_primary_performance() {
+		check_ajax_referer( 'sp-save-primary-performance', 'nonce' );
+
+		$primary_performance = sanitize_key( $_POST['primary_performance'] );
+
+		update_option( 'sportspress_primary_performance', $primary_performance );
 		wp_send_json_success();
 	}
 

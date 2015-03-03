@@ -468,7 +468,16 @@ jQuery(document).ready(function($){
 		$.post( ajaxurl, {
 			action:         "sp-save-primary-result",
 			primary_result: $(this).val(),
-			nonce:          $("#sp-config-nonce").val()
+			nonce:          $("#sp-primary-result-nonce").val()
+		});
+	});
+
+	// Configure primary performance option (Ajax)
+	$(".sp-admin-config-table").on("click", ".sp-primary-performance-option", function() {
+		$.post( ajaxurl, {
+			action:              "sp-save-primary-performance",
+			primary_performance: $(this).val(),
+			nonce:               $("#sp-primary-performance-nonce").val()
 		});
 	});
 
@@ -547,6 +556,14 @@ jQuery(document).ready(function($){
 		}
 	});
 	$(".sp-date-selector select").trigger("change");
+
+	// Apply color scheme
+	$(".sp-color-option").on("click", function() {
+		colors = $(this).find("label").data("sp-colors").split(",");
+		$(".sp-custom-colors").find(".sp-color-box").each(function(index) {
+			$(this).find("input").val("#"+colors[index]).css("background-color", "#"+colors[index]);
+		});;
+	});
 
 	// Edit inline results
 	$("#the-list").on("click, focus", ".sp-result, .sp-edit-results", function(){

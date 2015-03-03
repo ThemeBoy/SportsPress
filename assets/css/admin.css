@@ -150,6 +150,18 @@
 	text-align: right;
 }
 
+.sportspress table.form-table .sp-color-option {
+	max-width: 225px;
+}
+
+.sportspress table.form-table .sp-color-option table {
+	outline: 1px solid #ddd;
+}
+
+.sportspress table.form-table .sp-custom-colors {
+	padding: 5px 15px 15px;
+}
+
 .sportspress table.form-table .sp-color-box {
 	border: 1px solid #ccc;
 	box-shadow: 1px 1px 3px rgba(0,0,0,.2);
@@ -208,7 +220,8 @@ table.widefat.sp-data-table img {
 	vertical-align: top;
 }
 
-table.widefat.sp-data-table th.column-outcome {
+table.widefat.sp-data-table th.column-outcome,
+table.widefat.sp-data-table th.column-position {
 	width: 10em;
 }
 
@@ -284,7 +297,12 @@ table.widefat.sp-data-table tfoot td {
 	border-top: 1px solid #e1e1e1;
 }
 
-table.widefat select.sp-outcome {
+table.widefat.sp-data-table tfoot tr.sp-total {
+	background: #f9f9f9;
+}
+
+table.widefat select.sp-outcome,
+table.widefat select.sp-position {
 	width: 100%;
 }
 
