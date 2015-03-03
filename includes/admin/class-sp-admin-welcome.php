@@ -363,6 +363,7 @@ class SP_Admin_Welcome {
 			$translator_handles = array(
 				'Abdulelah',
 				'albertone',
+				'alexander.salomon99',
 				'alisiddique',
 				'ALooNeBoy87',
 				'Andrew_Melim',
@@ -380,6 +381,7 @@ class SP_Admin_Welcome {
 				'etcloki',
 				'Ferenan',
 				'fiiz',
+				'francois53',
 				'fredodq',
 				'GhiMax',
 				'GuneshGamza95',
