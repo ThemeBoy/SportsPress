@@ -30,9 +30,11 @@
 /* Data Tables */
 .sp-scrollable-table-wrapper {
 	overflow: auto;
+	position: relative;
 }
 .sp-data-table {
 	width: 100%;
+	table-layout: auto;
     border-spacing: 0;
 	border-collapse: separate;
 }
@@ -248,6 +250,7 @@
 .widget .sp-event-blocks .sp-event-title {
 	margin: 10px;
 	padding: 0;
+	clear: both;
 }
 
 /* Countdowns */
