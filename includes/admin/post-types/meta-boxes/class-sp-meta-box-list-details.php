@@ -65,7 +65,7 @@ class SP_Meta_Box_List_Details {
 			<?php
 			$args = array(
 				'prepend_options' => array(
-					'number' => __( 'Number', 'sportspress' ),
+					'number' => __( 'Squad Number', 'sportspress' ),
 					'name' => __( 'Name', 'sportspress' ),
 				),
 				'post_type' => array( 'sp_performance', 'sp_metric', 'sp_statistic' ),

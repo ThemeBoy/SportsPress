@@ -58,7 +58,7 @@ class SP_Meta_Box_Player_Details {
 		$past_teams = array_filter( get_post_meta( $post->ID, 'sp_past_team', false ) );
 		$current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
 		?>
-		<p><strong><?php _e( 'Number', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Squad Number', 'sportspress' ); ?></strong></p>
 		<p><input type="text" size="4" id="sp_number" name="sp_number" value="<?php echo $number; ?>"></p>
 
 		<p><strong><?php _e( 'Nationality', 'sportspress' ); ?></strong></p>

@@ -93,7 +93,7 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 		$args = array(
 			'prepend_options' => array(
 				'default' => __( 'Default', 'sportspress' ),
-				'number' => __( 'Number', 'sportspress' ),
+				'number' => __( 'Squad Number', 'sportspress' ),
 				'name' => __( 'Name', 'sportspress' ),
 				'eventsplayed' => __( 'Played', 'sportspress' )
 			),
