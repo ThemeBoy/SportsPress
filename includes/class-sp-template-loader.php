@@ -121,43 +121,13 @@ class SP_Template_Loader {
 
 		if ( is_single() ):
 
-			switch( get_post_type() ):
-				case 'sp_event':
-					$file 	= 'single-event.php';
-					$find[] = $file;
-					$find[] = SP_TEMPLATE_PATH . $file;
-					break;
-				case 'sp_calendar':
-					$file 	= 'single-calendar.php';
-					$find[] = $file;
-					$find[] = SP_TEMPLATE_PATH . $file;
-					break;
-				case 'sp_team':
-					$file 	= 'single-team.php';
-					$find[] = $file;
-					$find[] = SP_TEMPLATE_PATH . $file;
-					break;
-				case 'sp_table':
-					$file 	= 'single-table.php';
-					$find[] = $file;
-					$find[] = SP_TEMPLATE_PATH . $file;
-					break;
-				case 'sp_player':
-					$file 	= 'single-player.php';
-					$find[] = $file;
-					$find[] = SP_TEMPLATE_PATH . $file;
-					break;
-				case 'sp_list':
-					$file 	= 'single-list.php';
-					$find[] = $file;
-					$find[] = SP_TEMPLATE_PATH . $file;
-					break;
-				case 'sp_staff':
-					$file 	= 'single-staff.php';
-					$find[] = $file;
-					$find[] = SP_TEMPLATE_PATH . $file;
-					break;
-			endswitch;
+			$post_type = get_post_type();
+		
+			if ( is_sp_post_type( $post_type ) ):
+				$file = 'single-' . str_replace( 'sp_', '', $post_type ) . '.php';
+				$find[] = $file;
+				$find[] = SP_TEMPLATE_PATH . $file;
+			endif;
 
 		elseif ( is_tax() ):
 
