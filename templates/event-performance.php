@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.6
+ * @version     1.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -179,8 +179,8 @@ if ( is_array( $teams ) ):
 	} else {
 		// Combined table
 		?>
+		<h4 class="sp-table-caption"><?php _e( 'Performance', 'sportspress' ); ?></h4>
 		<div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?>">
-			<h4 class="sp-table-caption"><?php _e( 'Performance', 'sportspress' ); ?></h4>
 			<div class="sp-table-wrapper">
 				<table class="sp-event-performance sp-data-table <?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
 					<thead>

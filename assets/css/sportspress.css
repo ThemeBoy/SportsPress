@@ -149,6 +149,11 @@
 	cursor: pointer;
 }
 
+/* Event Venue */
+.sp-event-venue thead th {
+	white-space: normal;
+}
+
 /* Event Performance */
 .sp-event-performance .sub-in,
 .sp-event-performance .sub-out {
