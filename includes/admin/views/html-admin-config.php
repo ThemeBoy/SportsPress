@@ -77,7 +77,7 @@
 			    <td class="forminp">
 					<legend class="screen-reader-text"><span><?php _e( 'Event Results', 'sportspress' ) ?></span></legend>
 					<form>
-						<?php wp_nonce_field( 'sp-save-primary-result', 'sp-config-nonce', false ); ?>
+						<?php wp_nonce_field( 'sp-save-primary-result', 'sp-primary-result-nonce', false ); ?>
 						<table class="widefat sp-admin-config-table">
 							<thead>
 								<tr>
@@ -131,6 +131,8 @@
 	<table class="form-table">
 		<tbody>
 			<?php
+			$selection = get_option( 'sportspress_primary_performance', 0 );
+
 			$args = array(
 				'post_type' => 'sp_performance',
 				'numberposts' => -1,
@@ -146,30 +148,61 @@
 					<p class="description"><?php _e( 'Used for events.', 'sportspress' ); ?></p>
 				</th>
 			    <td class="forminp">
-					<table class="widefat sp-admin-config-table">
-						<thead>
-							<tr>
-								<th class="icon" scope="col"><?php _e( 'Icon', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
-								<th scope="col" class="edit"></th>
-							</tr>
-						</thead>
-						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
-							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
-								<td class="icon"><?php if ( has_post_thumbnail( $row->ID ) ) echo get_the_post_thumbnail( $row->ID, 'sportspress-fit-mini' ); ?></td>
-								<td class="row-title"><?php echo $row->post_title; ?></td>
-								<td><?php echo $row->post_name; ?></td>
-								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
-								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
-							</tr>
-						<?php $i++; endforeach; else: ?>
-							<tr class="alternate">
-								<td colspan="5"><?php _e( 'No results found.', 'sportspress' ); ?></td>
-							</tr>
-						<?php endif; ?>
-					</table>
+					<legend class="screen-reader-text"><span><?php _e( 'Event Results', 'sportspress' ) ?></span></legend>
+					<form>
+						<?php wp_nonce_field( 'sp-save-primary-performance', 'sp-primary-performance-nonce', false ); ?>
+						<table class="widefat sp-admin-config-table">
+							<thead>
+								<tr>
+									<th class="radio" scope="col"><?php _e( 'Primary', 'sportspress' ); ?></th>
+									<th class="icon" scope="col"><?php _e( 'Icon', 'sportspress' ); ?></th>
+									<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
+									<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
+									<th scope="col"><?php _e( 'Position', 'sportspress' ); ?></th>
+									<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
+									<th scope="col" class="edit"></th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th class="radio"><input type="radio" class="sp-primary-performance-option" id="sportspress_primary_performance_0" name="sportspress_primary_performance" value="0" <?php checked( $selection, 0 ); ?>></th>
+									<th class="icon">&nbsp;</td>
+									<th colspan="5"><label for="sportspress_primary_performance_0">
+										<?php
+										if ( sizeof( $data ) > 0 ):
+											$default = reset( $data );
+											printf( __( 'Default (%s)', 'sportspress' ), $default->post_title );
+										else:
+											_e( 'Default', 'sportspress' );
+										endif;
+										?>
+									</label></th>
+								</tr>
+							</tfoot>
+							<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
+								<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
+									<td class="radio"><input type="radio" class="sp-primary-performance-option" id="sportspress_primary_performance_<?php echo $row->post_name; ?>" name="sportspress_primary_performance" value="<?php echo $row->post_name; ?>" <?php checked( $selection, $row->post_name ); ?>></td>
+									<td class="icon">
+										<?php
+										if ( has_post_thumbnail( $row->ID ) )
+											echo get_the_post_thumbnail( $row->ID, 'sportspress-fit-mini' );
+										else
+											echo '&nbsp;';
+										?>
+									</td>
+									<td class="row-title"><?php echo $row->post_title; ?></td>
+									<td><?php echo $row->post_name; ?></td>
+									<td><?php echo get_the_terms ( $row->ID, 'sp_position' ) ? the_terms( $row->ID, 'sp_position' ) : __( 'All', 'sportspress' );; ?></td>
+									<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
+									<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
+								</tr>
+							<?php $i++; endforeach; else: ?>
+								<tr class="alternate">
+									<td colspan="7"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+								</tr>
+							<?php endif; ?>
+						</table>
+					</form>
 					<div class="tablenav bottom">
 						<a class="button alignleft" href="<?php echo admin_url( 'edit.php?post_type=sp_performance' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
 						<a class="button button-primary alignright" href="<?php echo admin_url( 'post-new.php?post_type=sp_performance' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>

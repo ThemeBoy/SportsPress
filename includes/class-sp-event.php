@@ -99,7 +99,7 @@ class SP_Event extends SP_Custom_Post{
 		else:
 			// Add position to performance labels
 			$labels = array_merge( array( 'position' => __( 'Position', 'sportspress' )  ), $labels );
-			if ( is_array( $columns ) ):
+			if ( 'manual' == get_option( 'sportspress_event_performance_columns', 'auto' ) && is_array( $columns ) ):
 				foreach ( $labels as $key => $label ):
 					if ( ! in_array( $key, $columns ) ):
 						unset( $labels[ $key ] );

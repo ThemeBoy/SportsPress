@@ -13,6 +13,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // Include core functions
+include( 'sp-option-filters.php' );
 include( 'sp-conditional-functions.php' );
 include( 'sp-formatting-functions.php' );
 include( 'sp-deprecated-functions.php' );
