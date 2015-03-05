@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.6
+ * @version     1.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -13,11 +13,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $totals = array();
 ?>
 <div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?>">
+	<?php if ( $caption ): ?>
+		<h4 class="sp-table-caption"><?php echo $caption; ?></h4>
+	<?php endif; ?>
 	<div class="sp-table-wrapper">
-		<table class="sp-event-performance sp-data-table <?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
+		<table class="sp-event-performance sp-data-table<?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?><?php if ( $sortable ) { ?> sp-sortable-table<?php } ?>">
 			<thead>
 				<tr>
-					<?php if ( $show_team_players ): ?>
+					<?php if ( $show_players ): ?>
 						<?php if ( $show_numbers ) { ?>
 							<th class="data-number">#</th>
 						<?php } ?>
@@ -37,7 +40,7 @@ $totals = array();
 					<?php endif; ?>
 				</tr>
 			</thead>
-			<?php if ( $show_team_players ): ?>
+			<?php if ( $show_players ): ?>
 				<tbody>
 					<?php
 
@@ -145,7 +148,7 @@ $totals = array();
 				</tbody>
 			<?php endif; ?>
 			<?php if ( $show_total || $show_extras ): ?>
-				<<?php echo ( $show_team_players ? 'tfoot' : 'tbody' ); ?>>
+				<<?php echo ( $show_players ? 'tfoot' : 'tbody' ); ?>>
 					<?php
 					if ( $show_extras ) {
 						$row = sp_array_value( $data, -1, array() );
@@ -155,7 +158,7 @@ $totals = array();
 							?>
 							<tr class="sp-extras-row <?php echo ( $i % 2 == 0 ? 'odd' : 'even' ); ?>">
 								<?php
-								if ( $show_team_players ):
+								if ( $show_players ):
 									if ( $show_numbers ) {
 										echo '<td class="data-number">&nbsp;</td>';
 									}
@@ -201,7 +204,7 @@ $totals = array();
 							?>
 							<tr class="sp-total-row <?php echo ( $i % 2 == 0 ? 'odd' : 'even' ); ?>">
 								<?php
-								if ( $show_team_players ):
+								if ( $show_players ):
 									if ( $show_numbers ) {
 										echo '<td class="data-number">&nbsp;</td>';
 									}
@@ -247,7 +250,7 @@ $totals = array();
 							</tr>
 						<?php } ?>
 					<?php } ?>
-				</<?php echo ( $show_team_players ? 'tfoot' : 'tbody' ); ?>>
+				</<?php echo ( $show_players ? 'tfoot' : 'tbody' ); ?>>
 			<?php endif; ?>
 		</table>
 	</div>
