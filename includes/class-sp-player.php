@@ -13,6 +13,16 @@
 class SP_Player extends SP_Custom_Post {
 
 	/**
+	 * Returns positions
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function positions() {
+		return get_the_terms( $this->ID, 'sp_position' );
+	}
+
+	/**
 	 * Returns current teams
 	 *
 	 * @access public
