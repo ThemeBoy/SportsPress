@@ -260,7 +260,7 @@
 
 /* Countdowns */
 .sp-template-countdown .event-name {
-	overflow: auto;
+	overflow: visible;
 }
 .sp-template-countdown .team-logo {
 	width: 20%;
