@@ -65,6 +65,21 @@ function sp_the_main_results_or_time( $post = 0, $delimiter = '-' ) {
 	echo implode( $delimiter, sp_get_main_results_or_time( $post ) );
 }
 
+function sp_get_outcome( $post = 0 ) {
+	$event = new SP_Event( $post );
+	return $event->outcome( true );
+}
+
+function sp_get_outcomes( $post = 0 ) {
+	$event = new SP_Event( $post );
+	return $event->outcome( false );
+}
+
+function sp_get_winner( $post = 0 ) {
+	$event = new SP_Event( $post );
+	return $event->winner();
+}
+
 function sp_get_performance( $post = 0 ) {
 	$event = new SP_Event( $post );
 	return $event->performance();
