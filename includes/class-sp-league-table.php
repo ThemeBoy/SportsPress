@@ -175,6 +175,8 @@ class SP_League_Table extends SP_Custom_Post{
 				'terms' => $div_id
 			);
 		endif;
+
+		$args = apply_filters( 'sportspress_table_data_event_args', $args );
 		
 		$events = get_posts( $args );
 

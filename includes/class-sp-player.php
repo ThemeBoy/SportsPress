@@ -146,8 +146,9 @@ class SP_Player extends SP_Custom_Post {
 					),
 					array(
 						'key' => 'sp_format',
-						'value' => 'league'
-					)
+						'value' => apply_filters( 'sportspress_competitive_event_formats', array( 'league' ) ),
+						'compare' => 'IN',
+					),
 				),
 				'tax_query' => array(
 					'relation' => 'AND',
@@ -169,6 +170,8 @@ class SP_Player extends SP_Custom_Post {
 					'terms' => $div_id
 				);
 			endif;
+
+			$args = apply_filters( 'sportspress_player_data_event_args', $args );
 
 			$events = get_posts( $args );
 
