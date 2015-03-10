@@ -230,7 +230,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				'link' 			=> $link,
 			);
 
-			update_option( 'sportspress_frontend_css_colors', $colors );
+			update_option( 'themeboy', $colors );
 		}
 	}
 
@@ -293,7 +293,7 @@ class SP_Settings_General extends SP_Settings_Page {
 			'Carbon' => array( '353535', '191919', 'ededed', 'ffffff', 'f67f17' ),
 			'Avocado' => array( '00241e', '013832', 'ffffff', 'ffffff', 'efb11e' ),
 		) );
-		?><tr valign="top" class="sportspress_frontend_css_colors">
+		?><tr valign="top" class="themeboy">
 			<th scope="row" class="titledesc">
 				<?php _e( 'Frontend Styles', 'sportspress' ); ?>
 			</th>
@@ -319,7 +319,7 @@ class SP_Settings_General extends SP_Settings_Page {
 						<label data-sp-colors="<?php echo implode( ',', $colors ); ?>"><?php _e( 'Customize', 'sportspress' ); ?></label><br>
 			    		<?php
 						// Get settings
-						$colors = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
+						$colors = array_map( 'esc_attr', (array) get_option( 'themeboy', array() ) );
 
 						// Defaults
 						if ( empty( $colors['primary'] ) ) $colors['primary'] = '#2b353e';

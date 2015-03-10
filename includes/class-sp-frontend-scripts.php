@@ -148,7 +148,7 @@ class SP_Frontend_Scripts {
 			$offset = ( 'twentyfourteen' == $template ? 48 : 0 );
 		}
 
-		$colors = (array) get_option( 'sportspress_frontend_css_colors', array() );
+		$colors = (array) get_option( 'themeboy', array() );
 
 		// Defaults
 		if ( empty( $colors['primary'] ) ) $colors['primary'] = '#2b353e';
