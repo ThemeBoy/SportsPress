@@ -203,17 +203,17 @@ class SP_Admin_Welcome {
 						$steps = apply_filters( 'sportspress_next_steps', array(
 							'teams' => array(
 								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'edit.php' ) ),
-								'icon' => 'dashicons-shield-alt',
+								'icon' => 'sp-icon-shield',
 								'label' => __( 'Add New Team', 'sportspress' ),
 							),
 							'players' => array(
 								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'edit.php' ) ),
-								'icon' => 'dashicons-groups',
+								'icon' => 'sp-icon-tshirt',
 								'label' => __( 'Add New Player', 'sportspress' ),
 							),
 							'events' => array(
 								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ),
-								'icon' => 'dashicons-calendar',
+								'icon' => 'sp-icon-calendar',
 								'label' => __( 'Add New Event', 'sportspress' ),
 							),
 						) );
@@ -222,14 +222,14 @@ class SP_Admin_Welcome {
 						<div class="sportspress-steps">
 							<ul>
 								<?php foreach ( $steps as $step ) { ?>
-									<li><a href="<?php echo esc_url( $step['link'] ); ?>" class="welcome-icon sp-welcome-icon <?php echo sp_array_value( $step, 'icon' ); ?>"><?php echo $step['label']; ?></a></li>
+									<li><a href="<?php echo esc_url( $step['link'] ); ?>" class="welcome-icon sp-welcome-icon"><i class="<?php echo sp_array_value( $step, 'icon' ); ?>"></i> <?php echo $step['label']; ?></a></li>
 								<?php } ?>
 							</ul>
 						</div>
 						<?php } ?>
-						<div class="return-to-dashboard">
-							<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
-						</div>
+
+						<h4><?php _e( 'Settings', 'sportspress' ); ?></h4>
+						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
 					<?php } else { ?>
 						<form method="post" id="mainform" action="" enctype="multipart/form-data">
 							<h4><?php _e( 'Basic Setup', 'sportspress' ); ?></h4>

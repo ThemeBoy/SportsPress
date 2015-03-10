@@ -79,20 +79,6 @@ div.sportspress-message a.button-secondary {
     *zoom: 1;
 }
 
-.sportspress-steps .welcome-icon:before {
-	font: 400 20px/1 dashicons;
-	speak: none;
-	display: inline-block;
-	padding: 0 10px 0 0;
-	top: -1px;
-	position: relative;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-decoration: none!important;
-	vertical-align: top;
+.sportspress-steps .welcome-icon i:before {
 	color: #888;
-}
-
-.sportspress-steps .sp-welcome-icon:before {
-	font-family: sportspress;
 }
