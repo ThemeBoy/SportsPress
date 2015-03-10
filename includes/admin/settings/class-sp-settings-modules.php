@@ -18,6 +18,11 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 class SP_Settings_Modules extends SP_Settings_Page {
 
 	/**
+	 * @var array
+	 */
+	public $sections = array();
+
+	/**
 	 * Constructor
 	 */
 	public function __construct() {
@@ -82,7 +87,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<p><?php _e( 'Offer premium news & highlights from leading globals sports. SportsPress TV will keep your visitors entertained for hours.','sportspress' ); ?></p>
 							<p class="sp-module-actions">
 								<span><?php _e( 'Free', 'sportspress' ); ?></span>
-								<a class="button" href="<?php echo add_query_arg( array( 'tab' => 'search', 's' => 'sportspress+tv' ), admin_url( 'plugin-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
+								<a class="button" href="<?php echo add_query_arg( array( 'tab' => 'search', 's' => 'sportspress+tv' ), network_admin_url( 'plugin-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
 							</p>
 						</td></tr>
 					</tbody>
@@ -98,20 +103,19 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					</thead>
 					<tbody>
 						<tr><td>
-							<ol>
-								<li><?php echo str_replace(
+							<ol><li><?php echo str_replace(
 								array( '[link]', '[/link]' ),
 								array( '<a target="_blank" href="http://twitter.com/themeboy">', '</a>' ),
 								__( 'Follow [link]@ThemeBoy[/link] on Twitter.','sportspress' )
 							); ?></li>
-								<li><?php echo str_replace(
+							<li><?php echo str_replace(
 								array( '[link]', '[/link]' ),
 								array( '<a target="_blank" href="http://tboy.co/tweet">', '</a>' ),
 								__( 'Help spread the word by tweeting with [link]#SportsPress[/link] and get the Twitter module for free.','sportspress' )
 							); ?></li>
 							<li><?php echo str_replace(
 								array( '[link]', '[/link]' ),
-								array( '<a href="mailto:tweets@themeboy.com?subject=SportsPress+Twitter+Module+Request&body=I+tweeted+about+your+plugin!">', '</a>' ),
+								array( '<a href="mailto:tweets@themeboy.com?subject=SportsPress%20Twitter%20Module%20Request&body=I%20tweeted%20about%20your%20plugin!">', '</a>' ),
 								__( '[link]Email us[/link] for the download link.', 'sportspress' )
 							); ?></li></ol>
 							<p class="sp-module-actions">
@@ -139,7 +143,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							); ?></li>
 							<li><?php echo str_replace(
 								array( '[link]', '[/link]' ),
-								array( '<a href="mailto:reviews@themeboy.com?subject=SportsPress+Birthdays+Module+Request&body=I+reviewed+your+plugin+on+WordPress.org!">', '</a>' ),
+								array( '<a href="mailto:reviews@themeboy.com?subject=SportsPress%20Birthdays%20Module%20Request&body=I%20reviewed%20your%20plugin%20on%20WordPress.org!">', '</a>' ),
 								__( '[link]Email us[/link] for the download link.', 'sportspress' )
 							); ?></li></ol>
 							<p class="sp-module-actions">
@@ -212,7 +216,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<?php if ( isset( $module['class'] ) && ! class_exists( $module['class'] ) ) { ?>
 							<tr class="sp-module-unavailable"><td>
 								<input type="checkbox" disabled="disabled">
-								<span<?php if ( array_key_exists( 'tip', $module ) ) { ?> class="sp-desc-tip" title="<?php echo $module['tip']; ?>"<?php } ?>>
+								<span class="sp-desc-tip" title="<?php echo sp_array_value( $module, 'tip', __( 'Upgrade to Pro', 'sportspress' ) ); ?>">
 									<i class="<?php echo sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ); ?>"></i>
 									<?php echo sp_array_value( $module, 'label', $id ); ?>
 								</span>
