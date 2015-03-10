@@ -776,6 +776,41 @@ table.sp-status-table td mark.yes {
 	width: auto;
 }
 
+/* Tutorials */
+.sp-tutorials-list {
+	margin: -6px;
+	width: 100%;
+}
+.sp-tutorials-list li {
+	display: inline-block;
+	width: 342px;
+	max-width: 100%;
+	margin: 6px;
+}
+.sp-tutorials-list li strong {
+	background: #aaa;
+	display: inline-block;
+	color: #ffffff;
+	padding: 0 6px;
+	border-radius: 3px;
+	text-align: center;
+	font-size: 12px;
+	margin-right: 3px;
+}
+.sp-tutorials-list li:hover strong {
+	background: #00a69c;
+}
+.sp-tutorials-list li .sp-popup {
+	float: right;
+	color: #aaa;
+}
+.sp-tutorials-list li:hover .sp-popup {
+	color: #00a69c;
+}
+.sp-tutorials-list li iframe {
+	display: block;
+}
+
 /* Media Queries */
 @media only screen and (max-width: 850px) {
 	.sp-modules-wrapper {
