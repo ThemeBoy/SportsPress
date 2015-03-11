@@ -5,7 +5,7 @@ Plugin URI: http://sportspresspro.com/
 Description: Adds staff directories to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.6
+Version: 1.6.2
 */
 
 // Exit if accessed directly
@@ -182,9 +182,9 @@ class SportsPress_Staff_Directories {
         $id = get_the_ID();
         $format = get_post_meta( $id, 'sp_format', true );
         if ( array_key_exists( $format, SP()->formats->directory ) )
-			sp_get_template( 'staff-' . $format . '.php', array( 'id' => $id ), 'staff-' . $format, SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+			sp_get_template( 'staff-' . $format . '.php', array( 'id' => $id ), '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
         else
-			sp_get_template( 'staff-list.php', array( 'id' => $id ), 'staff-list', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+			sp_get_template( 'staff-list.php', array( 'id' => $id ), '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 	}
 
 	/**
@@ -396,7 +396,7 @@ class SportsPress_Staff_Directories {
 	 * @return void
 	 */
 	public function output_staff_contacts() {
-		sp_get_template( 'staff-contacts.php', array(), 'staff-contacts', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+		sp_get_template( 'staff-contacts.php', array(), '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 	}
 
 	/**
@@ -407,7 +407,7 @@ class SportsPress_Staff_Directories {
 	 * @return void
 	 */
 	public function output_team_directories() {
-		sp_get_template( 'team-directories.php', array(), 'team-directories', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+		sp_get_template( 'team-directories.php', array(), '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 	}
 
 
