@@ -119,7 +119,7 @@ class SportsPress_Twitter {
 	 * @return void
 	 */
 	public function output_tweets() {
-		sp_get_template( 'tweets.php', array(), 'tweets', SP_TWITTER_DIR . 'templates/' );
+		sp_get_template( 'tweets.php', array(), '', SP_TWITTER_DIR . 'templates/' );
 	}
 
 	/**
