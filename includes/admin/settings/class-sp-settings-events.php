@@ -165,6 +165,35 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
+				array( 'title' => __( 'Event Results', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'result_options' ),
+			),
+
+			apply_filters( 'sportspress_result_options', array(
+				array(
+					'title' 	=> __( 'Columns', 'sportspress' ),
+					'id' 		=> 'sportspress_event_result_columns',
+					'default'	=> 'auto',
+					'type' 		=> 'radio',
+					'options' => array(
+						'auto'		=> __( 'Auto', 'sportspress' ),
+						'manual'	=> __( 'Manual', 'sportspress' ),
+					),
+				),
+				
+				array(
+					'title'     => __( 'Outcome', 'sportspress' ),
+					'desc' 		=> __( 'Display outcome', 'sportspress' ),
+					'id' 		=> 'sportspress_event_show_outcome',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
+			) ),
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'result_options' ),
+			),
+
+			array(
 				array( 'title' => __( 'Player Performance', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'performance_options' ),
 			),
 

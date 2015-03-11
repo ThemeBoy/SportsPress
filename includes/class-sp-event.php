@@ -45,11 +45,27 @@ class SP_Event extends SP_Custom_Post{
 			// Add outcome to result columns
 			$columns['outcome'] = __( 'Outcome', 'sportspress' );
 			if ( is_array( $usecolumns ) ):
-				foreach ( $columns as $key => $label ):
-					if ( ! in_array( $key, $usecolumns ) ):
-						unset( $columns[ $key ] );
-					endif;
-				endforeach;
+				if ( 'manual' == get_option( 'sportspress_event_result_columns', 'auto' ) ):
+					foreach ( $columns as $key => $label ):
+						if ( ! in_array( $key, $usecolumns ) ):
+							unset( $columns[ $key ] );
+						endif;
+					endforeach;
+				else:
+					$active_columns = array();
+					foreach ( $data as $team_results ):
+						foreach ( $team_results as $key => $result ):
+							if ( is_string( $result ) && strlen( $result ) ):
+								$active_columns[ $key ] = $key;
+							endif;
+						endforeach;
+					endforeach;
+					$columns = array_intersect_key( $columns, $active_columns );
+				endif;
+
+				if ( 'yes' == get_option( 'sportspress_event_show_outcome', 'no' ) ):
+					$columns[ 'outcome' ] = __( 'Outcome', 'sportspress' );
+				endif;
 			endif;
 			$data[0] = $columns;
 			return $data;
