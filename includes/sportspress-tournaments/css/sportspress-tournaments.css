@@ -41,6 +41,18 @@
 	font-weight: bold;
 }
 
+.sp-tournament-bracket .sp-event .sp-event-main {
+	color: #222222 !important;
+}
+
+.sp-tournament-bracket .sp-home-team {
+	vertical-align: bottom;
+}
+
+.sp-tournament-bracket .sp-away-team {
+	vertical-align: top;
+}
+
 .sp-tournament-bracket .sp-team .sp-team-name {
 	position: relative;
 	padding: 8px;

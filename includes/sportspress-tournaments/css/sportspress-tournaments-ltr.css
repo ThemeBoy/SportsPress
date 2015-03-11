@@ -3,7 +3,7 @@
 }
 
 .sp-tournament-bracket .sp-event {
-	border-right: 8px solid #fff;
+	border-right: 8px solid #fff !important;
 }
 
 .sp-tournament-bracket .sp-team {
@@ -20,5 +20,5 @@
 }
 
 .sp-tournament-bracket .sp-event.sp-last-round {
-	border-right: 0;
+	border-right: 0 !important;
 }

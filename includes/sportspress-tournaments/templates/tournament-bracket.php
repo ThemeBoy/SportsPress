@@ -49,10 +49,10 @@ list( $labels, $data, $rounds, $rows ) = $tournament->data();
 						if ( $cell === null ) continue;
 
 						$index = sp_array_value( $cell, 'index' );
-						$event = sp_array_value( $cell, 'event', 0 );
+						$event = sp_array_value( $cell, 'id', 0 );
 
 						if ( sp_array_value( $cell, 'type', null ) === 'event' ):
-							echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="' . ( $event ? ' sp-event' : '' ) . ( $round === 0 ? ' sp-first-round' : '' ) . ( $round === $rounds - 1 ? ' sp-last-round' : '' ) . '">';
+							echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="sp-event' . ( $round === 0 ? ' sp-first-round' : '' ) . ( $round === $rounds - 1 ? ' sp-last-round' : '' ) . ' ' . sp_array_value( $cell, 'class', '' ) . '">';
 							if ( $event ) {
 								$event_name = '<span class="sp-result">' . implode( '</span>-<span class="sp-result">', sp_get_main_results_or_time( $event ) ) . '</span>';
 
@@ -109,19 +109,19 @@ list( $labels, $data, $rounds, $rows ) = $tournament->data();
 								
 								echo $event_name;
 							} else {
-								echo '&nbsp;';
+								echo '<span class="sp-event-title" title="' . __( 'Event', 'sportspress' ) . '">&nbsp;</span>';
 							}
 							echo '</td>';
 						elseif ( sp_array_value( $cell, 'type', null ) === 'team' ):
-							$team = sp_array_value( $cell, 'team', 0 );
-							echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="sp-team' . ( $round === 0 ? ' sp-first-round' : '' ) . ( $round === $rounds - 1 ? ' sp-last-round' : '' ) . '">';
+							$team = sp_array_value( $cell, 'id', 0 );
+							echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="sp-team' . ( $round === 0 ? ' sp-first-round' : '' ) . ( $round === $rounds - 1 ? ' sp-last-round' : '' ) . ' ' . sp_array_value( $cell, 'class', '' ) . '">';
 							if ( $team ) {
 								$team_name = get_the_title( $team );
 								if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '" class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</a>';
 								else $team_name = '<span class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</span>';;
 								echo $team_name;
 							} else {
-								echo '&nbsp;';
+								echo '<span class="sp-team-name sp-highlight">&nbsp;</span>';
 							}
 							echo '</td>';
 						else:

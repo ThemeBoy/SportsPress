@@ -1,5 +1,7 @@
 jQuery(document).ready(function($){
 
+	/*
+
 	// Insert teams on event change
 	$(".sp-tournament-container .sp-event-selector").on("change", function() {
 		$self = $(this);
@@ -10,4 +12,5 @@ jQuery(document).ready(function($){
 
 	// Trigger event change
 	$(".sp-tournament-container .sp-event-selector").trigger("change");
+	*/
 });

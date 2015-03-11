@@ -84,20 +84,42 @@ class SP_Tournament {
 		// Get events
 		$events = get_post_meta( $this->ID, 'sp_event', false );
 
-		// Get event posts if frontend
-		$posts = get_posts(
-			array(
-				'post_type' => 'sp_event',
-				'posts_per_page' => -1,
-				'post_status' => 'any',
-				'meta_key' => 'sp_format',
-				'meta_value' => 'tournament',
-			)
-		);
+		// Get raw data
+		$raw = get_post_meta( $this->ID, 'sp_events', true );
 		
 		// Get number of rounds
 		$rounds = get_post_meta( $this->ID, 'sp_rounds', true );
 		if ( $rounds === '' ) $rounds = 3;
+
+		// Determine teams proceeding to next round
+		if ( sizeof( $events ) !== sizeof( array_filter( $events ) ) ) {
+			$offset = pow( 2, $rounds - 1 );
+			for ( $i = $offset; $i < sizeof( $events ); $i++ ) {
+				// Get the event
+				$event = $events[ $i ];
+
+				// If event is set, nothing to see here
+				if ( $event ) continue;
+
+				// Initialize event array
+				$events[ $i ] = array();
+
+				// Look at previous events
+				for ( $h = 0; $h < 2; $h++ ) {
+					// Get previous event
+					$j = ( $i - $offset ) * 2 + $h;
+					$prev = $events[ $j ];
+
+					// If no previous event, move right along
+					if ( ! $prev ) continue;
+
+					// Get winner of previous event
+					$winner = sp_get_winner( $prev );
+
+					$events[ $i ][] = $winner;
+				}
+			}
+		}
 
 		// Initialize counter
 		$counter = array_fill( 0, $rounds, 0 );
@@ -153,9 +175,15 @@ class SP_Tournament {
 				$event = sp_array_value( $events, $index, 0 );
 
 				// Get teams if frontend
-				if ( ! $admin ) {
-					if ( $event ) $teams = get_post_meta( $event, 'sp_team', array() );
-					else $teams = array();
+				if ( $event ) {
+					if ( is_array( $event ) ) {
+						$teams = $event;
+						$event = null;
+					} else {
+						$teams = get_post_meta( $event, 'sp_team', array() );
+					}
+				} else {
+					$teams = array();
 				}
 
 				// Add event, team, or spacer
@@ -164,28 +192,40 @@ class SP_Tournament {
 						'type' => 'event',
 						'rows' => $height,
 						'index' => $index,
-						'event' => $event,
+						'id' => $event,
 					);
 					$counter[ $col ] ++;
 				elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin ):
+					$select = false;
+					$team = sp_array_value( $teams, 0, 0 );
+					if ( ! $team ) {
+						$select = true;
+						$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), 0, 0 );
+					}
 					$data[ $row ][ $col ] = array(
 						'type' => 'team',
 						'rows' => 1,
 						'index' => $index,
+						'class' => 'sp-home-team',
+						'id' => $team,
+						'select' => $select,
 					);
-					if ( ! $admin ) {
-						$data[ $row ][ $col ]['team'] = sp_array_value( $teams, 0, 0 );
-					}
 					$counter[ $col ] ++;
 				elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin + $height + 1 ):
+					$select = false;
+					$team = sp_array_value( $teams, 1, 0 );
+					if ( ! $team ) {
+						$select = true;
+						$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), 1, 0 );
+					}
 					$data[ $row ][ $col ] = array(
 						'type' => 'team',
 						'rows' => 1,
 						'index' => $index,
+						'class' => 'sp-away-team',
+						'id' => $team,
+						'select' => $select,
 					);
-					if ( ! $admin ) {
-						$data[ $row ][ $col ]['team'] = sp_array_value( $teams, 1, 0 );
-					}
 					$counter[ $col ] ++;
 				elseif ( $row === 0 ):
 					$data[ $row ][ $col ] = array(

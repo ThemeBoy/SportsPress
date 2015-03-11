@@ -41,7 +41,10 @@ class SportsPress_Tournaments {
 		add_action( 'sportspress_single_tournament_content', array( $this, 'output_tournament_winner' ), 0 );
 		add_action( 'sportspress_single_tournament_content', array( $this, 'output_tournament_bracket' ), 10 );
 		add_action( 'sportspress_after_single_tournament', 'sportspress_output_br_tag', 100 );
+		add_filter( 'sportspress_league_object_types', array( $this, 'add_taxonomy_object' ) );
+		add_filter( 'sportspress_season_object_types', array( $this, 'add_taxonomy_object' ) );
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
+		add_filter( 'sportspress_competitive_event_formats', array( $this, 'competitive_event_formats' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ), 30 );
@@ -57,7 +60,7 @@ class SportsPress_Tournaments {
 
 	/**
 	 * Define constants.
-	*/
+	 */
 	private function define_constants() {
 		if ( !defined( 'SP_TOURNAMENTS_VERSION' ) )
 			define( 'SP_TOURNAMENTS_VERSION', '1.6' );
@@ -71,7 +74,7 @@ class SportsPress_Tournaments {
 
 	/**
 	 * Include required files.
-	*/
+	 */
 	private function includes() {
 		include_once( 'includes/class-sp-tournament.php' );
 
@@ -154,7 +157,7 @@ class SportsPress_Tournaments {
 	 */
 	public static function output_tournament_winner() {
 		$id = get_the_ID();
-		sp_get_template( 'tournament-winner.php', array( 'id' => $id ), 'tournament-winner', SP_TOURNAMENTS_DIR . 'templates/' );
+		sp_get_template( 'tournament-winner.php', array( 'id' => $id ), '', SP_TOURNAMENTS_DIR . 'templates/' );
 	}
 
 	/**
@@ -165,7 +168,17 @@ class SportsPress_Tournaments {
 	 */
 	public static function output_tournament_bracket() {
 		$id = get_the_ID();
-		sp_get_template( 'tournament-bracket.php', array( 'id' => $id ), 'tournament-bracket', SP_TOURNAMENTS_DIR . 'templates/' );
+		sp_get_template( 'tournament-bracket.php', array( 'id' => $id ), '', SP_TOURNAMENTS_DIR . 'templates/' );
+	}
+
+	/**
+	 * Add object to taxonomy.
+	 *
+	 * @return array
+	 */
+	public function add_taxonomy_object( $object_types ) {
+		$object_types[] = 'sp_tournament';
+		return $object_types;
 	}
 
 	/**
@@ -230,6 +243,14 @@ class SportsPress_Tournaments {
 	 */
 	public function add_formats( $formats ) {
 		$formats['event']['tournament'] = __( 'Tournament', 'sportspress' );
+		return $formats;
+	}
+
+	/**
+	 * Add format to competitive event formats. 
+	 */
+	public function competitive_event_formats( $formats = array() ) {
+		$formats[] = 'tournament';
 		return $formats;
 	}
 
@@ -380,7 +401,7 @@ class SportsPress_Tournaments {
 			echo '.sp-tournament-bracket .sp-team .sp-team-name:before{border-left-color:' . $colors['highlight'] . ' !important}';
 		}
 		if ( isset( $colors['text'] ) ) {
-			echo '.sp-tournament-bracket .sp-team .sp-team-name{color:' . $colors['text'] . ' !important}';
+			echo '.sp-tournament-bracket .sp-event .sp-event-main, .sp-tournament-bracket .sp-team .sp-team-name{color:' . $colors['text'] . ' !important}';
 		}
 		if ( isset( $colors['heading'] ) ) {
 			echo '.sp-tournament-bracket .sp-team .sp-team-name.sp-heading{color:' . $colors['heading'] . ' !important}';

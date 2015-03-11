@@ -49,11 +49,23 @@ table.sp-tournament-container .sp-first-round:before {
 
 table.sp-tournament-container .sp-event {
 	border-right: 1px solid #e5e5e5;
-	text-align: center;
 	vertical-align: middle;
 	padding-top: 0;
 	padding-bottom: 0;
 	padding-right: 10px;
+	position: relative;
+}
+
+table.sp-tournament-container .sp-event .sp-edit {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	display: none;
+	cursor: pointer;
+}
+
+table.sp-tournament-container .sp-event:hover .sp-edit {
+	display: block;
 }
 
 table.sp-tournament-container .sp-last-round {
@@ -61,8 +73,6 @@ table.sp-tournament-container .sp-last-round {
 	border-right: 0;
 }
 
-table.sp-tournament-container .sp-event select {
-	display: block;
-	width: 100%;
-	height: auto;
+table.sp-tournament-container select {
+	width: 99%;
 }
