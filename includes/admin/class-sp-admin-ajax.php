@@ -59,92 +59,14 @@ class SP_Admin_AJAX {
 	function save_inline_results() {
 		check_ajax_referer( 'sp-save-inline-results', 'nonce' );
 
-		$post_id = sp_array_value( $_POST, 'post_id' );
+		$id = sp_array_value( $_POST, 'post_id' );
 		$results = sp_array_value( $_POST, 'results' );
-		$main_result = get_option( 'sportspress_primary_result', null );
 
-		if ( ! $post_id || ! is_array( $results ) ) {
-			// Return error
+		if ( sp_update_main_results ( $id, $results ) ) {
+			wp_send_json_success();
+		} else {
 			wp_send_json_error();
 		}
-
-		// Get current results meta
-		$meta = get_post_meta( $post_id, 'sp_results', true );
-
-		$primary_results = array();
-		foreach ( $results as $result ) {
-			$id = sp_array_value( $result, 'id' );
-			$key = sp_array_value( $result, 'key' );
-
-			$primary_results[ $id ] = sp_array_value( $result, 'result', null );
-
-			if ( ! $id || ! $key ) continue;
-
-			$meta[ $id ][ $key ] = sp_array_value( $result, 'result' );
-		}
-
-		arsort( $primary_results );
-
-		if ( count( $primary_results ) && ! in_array( null, $primary_results ) ) {
-			if ( count( array_unique( $primary_results ) ) === 1 ) {
-				$args = array(
-					'post_type' => 'sp_outcome',
-					'numberposts' => -1,
-					'posts_per_page' => -1,
-					'meta_key' => 'sp_condition',
-					'meta_value' => '=',
-				);
-				$outcomes = get_posts( $args );
-				foreach ( $meta as $team => $team_results ) {
-					if ( $outcomes ) {
-						$meta[ $team ][ 'outcome' ] = array();
-						foreach ( $outcomes as $outcome ) {
-							$meta[ $team ][ 'outcome' ][] = $outcome->post_name;
-						}
-					}
-				}
-			} else {
-				reset( $primary_results );
-				$max = key( $primary_results );
-				$args = array(
-					'post_type' => 'sp_outcome',
-					'numberposts' => -1,
-					'posts_per_page' => -1,
-					'meta_key' => 'sp_condition',
-					'meta_value' => '>',
-				);
-				$outcomes = get_posts( $args );
-				if ( $outcomes ) {
-					$meta[ $max ][ 'outcome' ] = array();
-					foreach ( $outcomes as $outcome ) {
-						$meta[ $max ][ 'outcome' ][] = $outcome->post_name;
-					}
-				}
-
-				end( $primary_results );
-				$min = key( $primary_results );
-				$args = array(
-					'post_type' => 'sp_outcome',
-					'numberposts' => -1,
-					'posts_per_page' => -1,
-					'meta_key' => 'sp_condition',
-					'meta_value' => '<',
-				);
-				$outcomes = get_posts( $args );
-				if ( $outcomes ) {
-					$meta[ $min ][ 'outcome' ] = array();
-					foreach ( $outcomes as $outcome ) {
-						$meta[ $min ][ 'outcome' ][] = $outcome->post_name;
-					}
-				}
-			}
-		}
-
-		// Update results
-		update_post_meta( $post_id, 'sp_results', $meta );
-
-		// Return success
-		wp_send_json_success();
 	}
 }
 

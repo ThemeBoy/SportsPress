@@ -16,8 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * General functions
  */
 
-function sp_get_time( $post = 0 ) {
-	return get_post_time( get_option( 'time_format' ), false, $post, true );
+function sp_get_time( $post = 0, $format = null ) {
+	if ( null == $format ) $format = get_option( 'time_format' );
+	return get_post_time( $format, false, $post, true );
 }
 
 function sp_the_time( $post = 0 ) {
@@ -42,6 +43,16 @@ function sp_get_teams( $post = 0 ) {
 	return get_post_meta( $post, 'sp_team' );
 }
 
+function sp_get_main_result_option() {
+	$main_result = get_option( 'sportspress_primary_result', null );
+	if ( $main_result ) return $main_result;
+	$results = get_posts( array( 'post_type' => 'sp_result', 'posts_per_page' => 1, 'orderby' => 'menu_order', 'order' => 'DESC' ) );
+	if ( ! $results ) return null;
+	$result = reset( $results );
+	$slug = $result->post_name;
+	return $slug;
+}
+
 function sp_get_main_results( $post = 0 ) {
 	$event = new SP_Event( $post );
 	return $event->main_results();
@@ -50,6 +61,11 @@ function sp_get_main_results( $post = 0 ) {
 function sp_the_main_results( $post = 0, $delimiter = '-' ) {
 	$results = sp_get_main_results( $post );
 	echo implode( $delimiter, $results );
+}
+
+function sp_update_main_results( $post = 0, $results = array() ) {
+	$event = new SP_Event( $post );
+	return $event->update_main_results ( $results );
 }
 
 function sp_get_main_results_or_time( $post = 0 ) {

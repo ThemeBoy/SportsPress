@@ -236,6 +236,86 @@ class SP_Event extends SP_Custom_Post{
 		return null;
 	}
 
+	public function update_main_results( $results ) {
+		$main_result = sp_get_main_result_option();
+
+		if ( ! $this->ID || ! is_array( $results ) || null === $main_result ) {
+			return false;
+		}
+
+		// Get current results meta
+		$meta = get_post_meta( $this->ID, 'sp_results', true );
+
+		$primary_results = array();
+		foreach ( $results as $id => $result ) {
+			$primary_results[ $id ] = $result;
+
+			if ( ! $id ) continue;
+
+			$meta[ $id ][ $main_result ] = $result;
+		}
+
+		arsort( $primary_results );
+
+		if ( count( $primary_results ) && ! in_array( null, $primary_results ) ) {
+			if ( count( array_unique( $primary_results ) ) === 1 ) {
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => '=',
+				);
+				$outcomes = get_posts( $args );
+				foreach ( $meta as $team => $team_results ) {
+					if ( $outcomes ) {
+						$meta[ $team ][ 'outcome' ] = array();
+						foreach ( $outcomes as $outcome ) {
+							$meta[ $team ][ 'outcome' ][] = $outcome->post_name;
+						}
+					}
+				}
+			} else {
+				reset( $primary_results );
+				$max = key( $primary_results );
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => '>',
+				);
+				$outcomes = get_posts( $args );
+				if ( $outcomes ) {
+					$meta[ $max ][ 'outcome' ] = array();
+					foreach ( $outcomes as $outcome ) {
+						$meta[ $max ][ 'outcome' ][] = $outcome->post_name;
+					}
+				}
+
+				end( $primary_results );
+				$min = key( $primary_results );
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => '<',
+				);
+				$outcomes = get_posts( $args );
+				if ( $outcomes ) {
+					$meta[ $min ][ 'outcome' ] = array();
+					foreach ( $outcomes as $outcome ) {
+						$meta[ $min ][ 'outcome' ][] = $outcome->post_name;
+					}
+				}
+			}
+		}
+
+		// Update results
+		update_post_meta( $this->ID, 'sp_results', $meta );
+	}
+
 	public function lineup_filter( $v ) {
 		return sp_array_value( $v, 'status', 'lineup' ) == 'lineup';
 	}

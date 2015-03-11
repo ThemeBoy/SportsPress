@@ -588,13 +588,11 @@ jQuery(document).ready(function($){
 	// Save inline results
 	$("#the-list").on("click", ".sp-inline-edit-save .save", function(){
 		$column = $(this).closest(".column-sp_team");
-		results = [];
+		results = {};
 		$column.find(".sp-edit-result").each(function() {
-			team = {};
-			team.id = $(this).data("team");
-			team.key = $(this).data("key");
-			team.result = $(this).val();
-			results.push( team );
+			id = $(this).data("team");
+			result = $(this).val();
+			results[id] = result;
 		});
 		$.post( ajaxurl, {
 			action:         "sp-save-inline-results",
