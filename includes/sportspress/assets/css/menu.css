@@ -63,7 +63,7 @@
 	content: "\f182";
 }
 .sp-icon-league:before {
-	content: "\f313";
+	content: "\f481";
 }
 .sp-icon-friendly:before {
 	content: "\f328";
@@ -106,6 +106,12 @@
 }
 .sp-icon-availability:before {
 	content: "\f508";
+}
+.sp-icon-tutorials:before {
+	content: "\f118";
+}
+.sp-icon-popup:before {
+	content: "\f504";
 }
 
 #adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,

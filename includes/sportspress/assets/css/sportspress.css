@@ -30,9 +30,11 @@
 /* Data Tables */
 .sp-scrollable-table-wrapper {
 	overflow: auto;
+	position: relative;
 }
 .sp-data-table {
 	width: 100%;
+	table-layout: auto;
     border-spacing: 0;
 	border-collapse: separate;
 }
@@ -147,6 +149,11 @@
 	cursor: pointer;
 }
 
+/* Event Venue */
+.sp-event-venue thead th {
+	white-space: normal;
+}
+
 /* Event Performance */
 .sp-event-performance .sub-in,
 .sp-event-performance .sub-out {
@@ -248,11 +255,12 @@
 .widget .sp-event-blocks .sp-event-title {
 	margin: 10px;
 	padding: 0;
+	clear: both;
 }
 
 /* Countdowns */
 .sp-template-countdown .event-name {
-	overflow: auto;
+	overflow: visible;
 }
 .sp-template-countdown .team-logo {
 	width: 20%;

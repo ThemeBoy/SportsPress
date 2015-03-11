@@ -167,6 +167,13 @@ class SP_Player_List extends SP_Custom_Post {
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'order' => 'ASC',
+			'meta_query' => array(
+				array(
+					'key' => 'sp_format',
+					'value' => apply_filters( 'sportspress_competitive_event_formats', array( 'league' ) ),
+					'compare' => 'IN',
+				),
+			),
 			'tax_query' => array(
 				'relation' => 'AND',
 			),
@@ -187,6 +194,8 @@ class SP_Player_List extends SP_Custom_Post {
 				'terms' => $div_id
 			);
 		endif;
+
+		$args = apply_filters( 'sportspress_list_data_event_args', $args );
 		
 		$events = get_posts( $args );
 

@@ -142,7 +142,7 @@ class SP_Post_types {
 			'hierarchical' => true,
 			'rewrite' => array( 'slug' => get_option( 'sportspress_position_slug', 'position' ) ),
 		);
-		$object_types = apply_filters( 'sportspress_position_object_types', array( 'sp_player' ) );
+		$object_types = apply_filters( 'sportspress_position_object_types', array( 'sp_player', 'sp_performance' ) );
 		register_taxonomy( 'sp_position', $object_types, $args );
 		foreach ( $object_types as $object_type ):
 			register_taxonomy_for_object_type( 'sp_position', $object_type );

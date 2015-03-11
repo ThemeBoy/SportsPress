@@ -148,6 +148,9 @@ class SP_Admin_Sports {
 			$post = self::get_post_array( $performance, $post_type );
 			if ( empty( $post ) ) continue;
 			$id = self::insert_preset_post( $post, $index );
+			if ( isset( $performance['position'] ) ) {
+				wp_set_object_terms( $id, $performance['position'], 'sp_position', false );
+			}
 			$i ++;
 		}
 
@@ -187,6 +190,15 @@ class SP_Admin_Sports {
 			update_post_meta( $id, 'sp_equation', sp_array_value( $statistic, 'equation', null ) );
 			update_post_meta( $id, 'sp_precision', sp_array_value( $statistic, 'precision', 0 ) );
 		}
+
+
+		// Options
+		$options = sp_array_value( $preset, 'options', array() );
+		foreach ( $options as $option => $value ) {
+			update_option( 'sportspress_' . $option, $value );
+		}
+
+		// Primary Result
 		update_option( 'sportspress_primary_result', $primary_result );
 	}
 

@@ -255,7 +255,10 @@ final class SportsPress {
 	 * Include core modules.
 	 */
 	private function include_modules() {
-		foreach ( glob( $this->plugin_path() . '/modules/*.php' ) as $filename ) {
+		$l1 = glob( $this->plugin_path() . '/modules/sportspress-?*.php', GLOB_NOSORT );
+		$l2 = glob( $this->plugin_path() . '/modules/sportspress-?*/sportspress-?*.php', GLOB_NOSORT );
+		$files = array_merge( $l1, $l2 );
+		foreach ( $files as $filename ) {
 			include $filename;
 		}
 	}

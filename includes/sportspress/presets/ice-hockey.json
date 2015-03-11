@@ -1,8 +1,7 @@
 {
 	"name":				"Ice Hockey",
 	"positions": [
-						"Forward",
-						"Defenseman",
+						"Skater",
 						"Goalie"
 	],
 	"outcomes": [
@@ -20,14 +19,14 @@
 						{ "name" : "T", "id" : "goals", "description" : "Total goals", "primary" : 1 }
 	],
 	"performance": [
-						{ "name" : "G", "description" : "Goals" },
-						{ "name" : "A", "description" : "Assists" },
-						{ "name" : "H", "description" : "Hits" },
-						{ "name" : "SOG", "id" : "s", "description" : "Shots on goal" },
-						{ "name" : "PIM", "description" : "Penalty in minutes" },
-						{ "name" : "SA", "description" : "Shots against" },
-						{ "name" : "GA", "description" : "Goals against" },
-						{ "name" : "SV", "description" : "Saves" }
+						{ "name" : "G", "position" : "Skater", "description" : "Goals" },
+						{ "name" : "A", "position" : "Skater", "description" : "Assists" },
+						{ "name" : "H", "position" : "Skater", "description" : "Hits" },
+						{ "name" : "SOG", "position" : "Skater", "id" : "s", "description" : "Shots on goal" },
+						{ "name" : "PIM", "position" : "Skater", "description" : "Penalty in minutes" },
+						{ "name" : "SA", "position" : "Goalie", "description" : "Shots against" },
+						{ "name" : "GA", "position" : "Goalie", "description" : "Goals against" },
+						{ "name" : "SV", "position" : "Goalie", "description" : "Saves" }
 	],
 	"columns": [
 						{ "name" : "GP", "equation" : "$eventsplayed", "description" : "Games played" },
@@ -56,5 +55,11 @@
 						{ "name" : "P", "equation" : "$g + $assists", "description" : "Points" },
 						{ "name" : "S%", "equation" : "$g / $s * 100", "precision" : 2, "description" : "Shot percentage" },
 						{ "name" : "SV%", "equation" : "$sv / $sa * 100", "precision" : 2, "description" : "Save percentage" }
+	],
+	"options": [
+						{ "load_individual_mode_module" : "no" },
+						{ "event_show_total" : "no" },
+						{ "event_show_player_numbers" : "yes" },
+						{ "event_split_players_by_position" : "yes" }
 	]
 }

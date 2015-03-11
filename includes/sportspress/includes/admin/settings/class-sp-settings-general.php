@@ -230,7 +230,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				'link' 			=> $link,
 			);
 
-			update_option( 'sportspress_frontend_css_colors', $colors );
+			update_option( 'themeboy', $colors );
 		}
 	}
 
@@ -282,36 +282,69 @@ class SP_Settings_General extends SP_Settings_Page {
 	 * @return void
 	 */
 	public function frontend_styles_setting() {
-		?><tr valign="top" class="sportspress_frontend_css_colors">
+		// Define color schemes each with 5 colors: Primary, Background, Text, Heading, Link
+		$color_schemes = apply_filters( 'sportspress_color_schemes', array(
+			'ThemeBoy' => array( '2b353e', 'f4f4f4', '222222', 'ffffff', '00a69c' ),
+			'Gold' => array( '333333', 'f7f7f7', '333333', 'd8bf94', '9f8958' ),
+			'Denim' => array( '0e2440', 'eae5e0', '0e2440', 'ffffff', '2b6291' ),
+			'Freedom' => array( '0d4785', 'ecedee', '333333', 'ffffff', 'c51d27' ),
+			'Metro' => array( '3a7895', '223344', 'ffffff', 'ffffff', 'ffa800' ),
+			'Stellar' => array( '313150', '050528', 'ffffff', 'ffffff', 'e00034' ),
+			'Carbon' => array( '353535', '191919', 'ededed', 'ffffff', 'f67f17' ),
+			'Avocado' => array( '00241e', '013832', 'ffffff', 'ffffff', 'efb11e' ),
+		) );
+		?><tr valign="top" class="themeboy">
 			<th scope="row" class="titledesc">
 				<?php _e( 'Frontend Styles', 'sportspress' ); ?>
 			</th>
-		    <td class="forminp"><?php
+		    <td class="forminp">
+		    	<fieldset>
+			    	<?php foreach ( $color_schemes as $name => $colors ) { ?>
+				    	<div class="color-option sp-color-option">
+							<label data-sp-colors="<?php echo implode( ',', $colors ); ?>"><?php echo $name; ?></label>
+							<table class="color-palette">
+								<tbody>
+									<tr>
+										<td style="background-color: #<?php echo $colors[0]; ?>">&nbsp;</td>
+										<td style="background-color: #<?php echo $colors[0]; ?>">&nbsp;</td>
+										<td style="background-color: #<?php echo $colors[4]; ?>">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					<?php } ?>
+		    	</fieldset>
+		    	<fieldset>
+				    <div class="sp-custom-colors">
+						<label data-sp-colors="<?php echo implode( ',', $colors ); ?>"><?php _e( 'Customize', 'sportspress' ); ?></label><br>
+			    		<?php
+						// Get settings
+						$colors = array_map( 'esc_attr', (array) get_option( 'themeboy', array() ) );
+						if ( empty( $colors ) ) $colors = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
 
-				// Get settings
-				$colors = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
+						// Defaults
+						if ( empty( $colors['primary'] ) ) $colors['primary'] = '#2b353e';
+						if ( empty( $colors['background'] ) ) $colors['background'] = '#f4f4f4';
+						if ( empty( $colors['text'] ) ) $colors['text'] = '#222222';
+						if ( empty( $colors['heading'] ) ) $colors['heading'] = '#ffffff';
+			            if ( empty( $colors['link'] ) ) $colors['link'] = '#00a69c';
 
-				// Defaults
-				if ( empty( $colors['primary'] ) ) $colors['primary'] = '#2b353e';
-				if ( empty( $colors['background'] ) ) $colors['background'] = '#f4f4f4';
-				if ( empty( $colors['text'] ) ) $colors['text'] = '#222222';
-				if ( empty( $colors['heading'] ) ) $colors['heading'] = '#ffffff';
-	            if ( empty( $colors['link'] ) ) $colors['link'] = '#00a69c';
+						// Show inputs
+			    		$this->color_picker( __( 'Primary', 'sportspress' ), 'sportspress_frontend_css_primary', $colors['primary'] );
+			    		$this->color_picker( __( 'Background', 'sportspress' ), 'sportspress_frontend_css_background', $colors['background'] );
+			    		$this->color_picker( __( 'Text', 'sportspress' ), 'sportspress_frontend_css_text', $colors['text'] );
+			    		$this->color_picker( __( 'Heading', 'sportspress' ), 'sportspress_frontend_css_heading', $colors['heading'] );
+			    		$this->color_picker( __( 'Link', 'sportspress' ), 'sportspress_frontend_css_link', $colors['link'] );
 
-				// Show inputs
-	    		$this->color_picker( __( 'Primary', 'sportspress' ), 'sportspress_frontend_css_primary', $colors['primary'] );
-	    		$this->color_picker( __( 'Background', 'sportspress' ), 'sportspress_frontend_css_background', $colors['background'] );
-	    		$this->color_picker( __( 'Text', 'sportspress' ), 'sportspress_frontend_css_text', $colors['text'] );
-	    		$this->color_picker( __( 'Heading', 'sportspress' ), 'sportspress_frontend_css_heading', $colors['heading'] );
-	    		$this->color_picker( __( 'Link', 'sportspress' ), 'sportspress_frontend_css_link', $colors['link'] );
-
-				if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && ! current_theme_supports( 'sportspress' ) && array_key_exists( 'sportspress-general', $styles ) ):
-				    ?><br>
-				    <label for="sportspress_enable_frontend_css">
-						<input name="sportspress_enable_frontend_css" id="sportspress_enable_frontend_css" type="checkbox" value="1" <?php checked( get_option( 'sportspress_enable_frontend_css', 'yes' ), 'yes' ); ?>>
-						<?php _e( 'Enable', 'sportspress' ); ?>
-					</label>
-				<?php endif; ?>
+						if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) ):
+						    ?><br>
+						    <label for="sportspress_enable_frontend_css">
+								<input name="sportspress_enable_frontend_css" id="sportspress_enable_frontend_css" type="checkbox" value="1" <?php checked( get_option( 'sportspress_enable_frontend_css', 'yes' ), 'yes' ); ?>>
+								<?php _e( 'Enable', 'sportspress' ); ?>
+							</label>
+						<?php endif; ?>
+					</div>
+		    	</fieldset>
 			</td>
 		</tr><?php
 	}

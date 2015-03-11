@@ -565,7 +565,7 @@ class SP_AJAX {
 					$args = array(
 						'prepend_options' => array(
 							'default' => __( 'Default', 'sportspress' ),
-							'number' => __( 'Number', 'sportspress' ),
+							'number' => __( 'Squad Number', 'sportspress' ),
 							'name' => __( 'Name', 'sportspress' ),
 							'eventsplayed' => __( 'Played', 'sportspress' )
 						),
@@ -636,7 +636,7 @@ class SP_AJAX {
 					$args = array(
 						'prepend_options' => array(
 							'default' => __( 'Default', 'sportspress' ),
-							'number' => __( 'Number', 'sportspress' ),
+							'number' => __( 'Squad Number', 'sportspress' ),
 							'name' => __( 'Name', 'sportspress' ),
 							'eventsplayed' => __( 'Played', 'sportspress' )
 						),

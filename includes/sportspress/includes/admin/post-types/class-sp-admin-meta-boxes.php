@@ -27,15 +27,6 @@ class SP_Admin_Meta_Boxes {
 	 */
 	public function __construct() {
 		$meta_boxes = array(
-			'sp_result' => array(
-				'details' => array(
-					'title' => __( 'Details', 'sportspress' ),
-					'save' => 'SP_Meta_Box_Result_Details::save',
-					'output' => 'SP_Meta_Box_Result_Details::output',
-					'context' => 'normal',
-					'priority' => 'high',
-				),
-			),
 			'sp_outcome' => array(
 				'details' => array(
 					'title' => __( 'Details', 'sportspress' ),
@@ -45,20 +36,11 @@ class SP_Admin_Meta_Boxes {
 					'priority' => 'high',
 				),
 			),
-			'sp_metric' => array(
+			'sp_result' => array(
 				'details' => array(
 					'title' => __( 'Details', 'sportspress' ),
-					'save' => 'SP_Meta_Box_Metric_Details::save',
-					'output' => 'SP_Meta_Box_Metric_Details::output',
-					'context' => 'normal',
-					'priority' => 'high',
-				),
-			),
-			'sp_outcome' => array(
-				'details' => array(
-					'title' => __( 'Details', 'sportspress' ),
-					'save' => 'SP_Meta_Box_Metric_Details::save',
-					'output' => 'SP_Meta_Box_Metric_Details::output',
+					'save' => 'SP_Meta_Box_Result_Details::save',
+					'output' => 'SP_Meta_Box_Result_Details::output',
 					'context' => 'normal',
 					'priority' => 'high',
 				),
@@ -68,22 +50,6 @@ class SP_Admin_Meta_Boxes {
 					'title' => __( 'Details', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Performance_Details::save',
 					'output' => 'SP_Meta_Box_Performance_Details::output',
-					'context' => 'normal',
-					'priority' => 'high',
-				),
-			),
-			'sp_statistic' => array(
-				'details' => array(
-					'title' => __( 'Details', 'sportspress' ),
-					'save' => 'SP_Meta_Box_Statistic_Details::save',
-					'output' => 'SP_Meta_Box_Statistic_Details::output',
-					'context' => 'side',
-					'priority' => 'default',
-				),
-				'equation' => array(
-					'title' => __( 'Equation', 'sportspress' ),
-					'save' => 'SP_Meta_Box_Statistic_Equation::save',
-					'output' => 'SP_Meta_Box_Statistic_Equation::output',
 					'context' => 'normal',
 					'priority' => 'high',
 				),
@@ -100,6 +66,31 @@ class SP_Admin_Meta_Boxes {
 					'title' => __( 'Equation', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Column_Equation::save',
 					'output' => 'SP_Meta_Box_Column_Equation::output',
+					'context' => 'normal',
+					'priority' => 'high',
+				),
+			),
+			'sp_metric' => array(
+				'details' => array(
+					'title' => __( 'Details', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Metric_Details::save',
+					'output' => 'SP_Meta_Box_Metric_Details::output',
+					'context' => 'normal',
+					'priority' => 'high',
+				),
+			),
+			'sp_statistic' => array(
+				'details' => array(
+					'title' => __( 'Details', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Statistic_Details::save',
+					'output' => 'SP_Meta_Box_Statistic_Details::output',
+					'context' => 'side',
+					'priority' => 'default',
+				),
+				'equation' => array(
+					'title' => __( 'Equation', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Statistic_Equation::save',
+					'output' => 'SP_Meta_Box_Statistic_Equation::output',
 					'context' => 'normal',
 					'priority' => 'high',
 				),

@@ -133,14 +133,6 @@ jQuery(document).ready(function($){
 	// Activate self-cloning
 	$(".sp-clone:last").find("select").change();
 
-	// Dummy controller
-	$(".sp-has-dummy").change(function() {
-		val = $(this).val();
-		if ( val == -1 ) val = 0;
-		name = $(this).attr("name");
-		$(".sp-dummy."+name+"-dummy").val(val).trigger("change");
-	});
-
 	// Custom value editor
 	$(".sp-data-table .sp-default-value").click(function() {
 		$(this).hide().siblings(".sp-custom-value").show().find(".sp-custom-value-input").focus();
@@ -422,11 +414,11 @@ jQuery(document).ready(function($){
 	$(".post-type-sp_event #post-formats-select input.post-format").change(function() {
 		layout = $(".post-type-sp_event #post-formats-select input:checked").val();
 		if ( layout == "friendly" ) {
-			$(".sp-event-sp_league-field").hide().find("select").prop("disabled", true);
-			$(".sp-event-sp_season-field").show().find("select").prop("disabled", false);
+			$(".sp_event-sp_league-field").hide().find("select").prop("disabled", true);
+			$(".sp_event-sp_season-field").show().find("select").prop("disabled", false);
 		} else {
-			$(".sp-event-sp_league-field").show().find("select").prop("disabled", false);
-			$(".sp-event-sp_season-field").show().find("select").prop("disabled", false);
+			$(".sp_event-sp_league-field").show().find("select").prop("disabled", false);
+			$(".sp_event-sp_season-field").show().find("select").prop("disabled", false);
 		}
 	});
 
@@ -476,7 +468,16 @@ jQuery(document).ready(function($){
 		$.post( ajaxurl, {
 			action:         "sp-save-primary-result",
 			primary_result: $(this).val(),
-			nonce:          $("#sp-config-nonce").val()
+			nonce:          $("#sp-primary-result-nonce").val()
+		});
+	});
+
+	// Configure primary performance option (Ajax)
+	$(".sp-admin-config-table").on("click", ".sp-primary-performance-option", function() {
+		$.post( ajaxurl, {
+			action:              "sp-save-primary-performance",
+			primary_performance: $(this).val(),
+			nonce:               $("#sp-primary-performance-nonce").val()
 		});
 	});
 
@@ -556,6 +557,14 @@ jQuery(document).ready(function($){
 	});
 	$(".sp-date-selector select").trigger("change");
 
+	// Apply color scheme
+	$(".sp-color-option").on("click", function() {
+		colors = $(this).find("label").data("sp-colors").split(",");
+		$(".sp-custom-colors").find(".sp-color-box").each(function(index) {
+			$(this).find("input").val("#"+colors[index]).css("background-color", "#"+colors[index]);
+		});;
+	});
+
 	// Edit inline results
 	$("#the-list").on("click, focus", ".sp-result, .sp-edit-results", function(){
 		team = $(this).data("team");
@@ -579,13 +588,11 @@ jQuery(document).ready(function($){
 	// Save inline results
 	$("#the-list").on("click", ".sp-inline-edit-save .save", function(){
 		$column = $(this).closest(".column-sp_team");
-		results = [];
+		results = {};
 		$column.find(".sp-edit-result").each(function() {
-			team = {};
-			team.id = $(this).data("team");
-			team.key = $(this).data("key");
-			team.result = $(this).val();
-			results.push( team );
+			id = $(this).data("team");
+			result = $(this).val();
+			results[id] = result;
 		});
 		$.post( ajaxurl, {
 			action:         "sp-save-inline-results",

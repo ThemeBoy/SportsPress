@@ -25,6 +25,7 @@ $countries = SP()->countries->countries;
 $player = new SP_Player( $id );
 
 $nationality = $player->nationality;
+$positions = $player->positions();
 $current_teams = $player->current_teams();
 $past_teams = $player->past_teams();
 $metrics_before = $player->metrics( true );
@@ -41,13 +42,13 @@ if ( $nationality ):
 	$common[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 endif;
 
-$position_names = array();
-$positions = get_the_terms( $id, 'sp_position' );
-if ( $positions ): foreach ( $positions as $position ):
-	$position_names[] = $position->name;
-endforeach; endif;
-
-$common[ __( 'Position', 'sportspress' ) ] = implode( ', ', $position_names );
+if ( $positions ):
+	$position_names = array();
+	foreach ( $positions as $position ):
+		$position_names[] = $position->name;
+	endforeach;
+	$common[ __( 'Position', 'sportspress' ) ] = implode( ', ', $position_names );
+endif;
 
 $data = array_merge( $metrics_before, $common, $metrics_after );
 
@@ -74,14 +75,16 @@ endif;
 
 $data = apply_filters( 'sportspress_player_details', $data, $id );
 
-$output = '<div class="sp-template sp-template-player-details sp-template-details"><div class="sp-list-wrapper"><dl class="sp-player-details">';
+if ( sizeof( $data ) ) {
+	$output = '<div class="sp-template sp-template-player-details sp-template-details"><div class="sp-list-wrapper"><dl class="sp-player-details">';
 
-foreach( $data as $label => $value ):
+	foreach( $data as $label => $value ):
 
-	$output .= '<dt>' . $label . '</dt><dd>' . $value . '</dd>';
+		$output .= '<dt>' . $label . '</dt><dd>' . $value . '</dd>';
 
-endforeach;
+	endforeach;
 
-$output .= '</dl></div></div>';
+	$output .= '</dl></div></div>';
 
-echo $output;
+	echo $output;
+}

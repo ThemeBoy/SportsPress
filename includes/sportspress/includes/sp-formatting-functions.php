@@ -75,6 +75,17 @@ function sp_filter_positive( $var = 0 ) {
 }
 
 /**
+ * Array filter returns non-empty array values.
+ *
+ * @access public
+ * @param str $var
+ * @return bool
+ */
+function sp_filter_non_empty( $var = '' ) {
+	return strlen( $var ) > 0;
+}
+
+/**
  * let_to_num function.
  *
  * This function transforms the php.ini notation for numbers (like '2M') to an integer.

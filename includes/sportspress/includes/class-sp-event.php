@@ -5,7 +5,7 @@
  * The SportsPress event class handles individual event data.
  *
  * @class 		SP_Event
- * @version		1.6
+ * @version		1.7
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -99,7 +99,7 @@ class SP_Event extends SP_Custom_Post{
 		else:
 			// Add position to performance labels
 			$labels = array_merge( array( 'position' => __( 'Position', 'sportspress' )  ), $labels );
-			if ( is_array( $columns ) ):
+			if ( 'manual' == get_option( 'sportspress_event_performance_columns', 'auto' ) && is_array( $columns ) ):
 				foreach ( $labels as $key => $label ):
 					if ( ! in_array( $key, $columns ) ):
 						unset( $labels[ $key ] );
@@ -162,6 +162,158 @@ class SP_Event extends SP_Custom_Post{
 		}
 
 		return $output;
+	}
+
+	public function outcome( $single = true ) {
+		// Get teams from event
+		$teams = get_post_meta( $this->ID, 'sp_team', false );
+		
+		// Initialize output
+		$output = array();
+
+		// Return empty array if there are no teams
+		if ( ! $teams ) return $output;
+
+		// Get results from event
+		$results = get_post_meta( $this->ID, 'sp_results', true );
+
+		// Loop through teams			
+		foreach ( $teams as $team_id ) {
+
+			// Skip if not a team
+			if ( ! $team_id ) continue;
+
+			// Get team results from all results
+			$team_results = sp_array_value( $results, $team_id, null );
+
+			// Get outcome from team results
+			$team_outcome = sp_array_value( $team_results, 'outcome', null );
+
+			if ( null != $team_outcome ) {
+
+				// Make sure that we have an array of outcomes
+				$team_outcome = (array) $team_outcome;
+
+				// Use only first outcome if single
+				if ( $single ) {
+					$team_outcome = reset( $team_outcome );
+				}
+
+				// Add outcome to output
+				$output[ $team_id ] = $team_outcome;
+			}
+		}
+
+		return $output;
+	}
+
+	public function winner() {
+		// Get the first configured outcome
+		$outcome = get_posts( array(
+			'post_type' => 'sp_outcome',
+			'post_status' => 'publish',
+			'posts_per_page' => 1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		) );
+
+		// Return if no outcomes available
+		if ( ! $outcome ) return null;
+
+		$outcome = reset( $outcome );
+
+		// Get event outcomes
+		$outcomes = self::outcome( false );
+
+		// Look for a team that meets the criteria
+		foreach ( $outcomes as $team_id => $team_outcomes ) {
+			if ( in_array( $outcome->post_name, $team_outcomes ) ) {
+				return $team_id;
+			}
+		}
+
+		// Return if no teams meet criteria
+		return null;
+	}
+
+	public function update_main_results( $results ) {
+		$main_result = sp_get_main_result_option();
+
+		if ( ! $this->ID || ! is_array( $results ) || null === $main_result ) {
+			return false;
+		}
+
+		// Get current results meta
+		$meta = get_post_meta( $this->ID, 'sp_results', true );
+
+		$primary_results = array();
+		foreach ( $results as $id => $result ) {
+			$primary_results[ $id ] = $result;
+
+			if ( ! $id ) continue;
+
+			$meta[ $id ][ $main_result ] = $result;
+		}
+
+		arsort( $primary_results );
+
+		if ( count( $primary_results ) && ! in_array( null, $primary_results ) ) {
+			if ( count( array_unique( $primary_results ) ) === 1 ) {
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => '=',
+				);
+				$outcomes = get_posts( $args );
+				foreach ( $meta as $team => $team_results ) {
+					if ( $outcomes ) {
+						$meta[ $team ][ 'outcome' ] = array();
+						foreach ( $outcomes as $outcome ) {
+							$meta[ $team ][ 'outcome' ][] = $outcome->post_name;
+						}
+					}
+				}
+			} else {
+				reset( $primary_results );
+				$max = key( $primary_results );
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => '>',
+				);
+				$outcomes = get_posts( $args );
+				if ( $outcomes ) {
+					$meta[ $max ][ 'outcome' ] = array();
+					foreach ( $outcomes as $outcome ) {
+						$meta[ $max ][ 'outcome' ][] = $outcome->post_name;
+					}
+				}
+
+				end( $primary_results );
+				$min = key( $primary_results );
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => '<',
+				);
+				$outcomes = get_posts( $args );
+				if ( $outcomes ) {
+					$meta[ $min ][ 'outcome' ] = array();
+					foreach ( $outcomes as $outcome ) {
+						$meta[ $min ][ 'outcome' ][] = $outcome->post_name;
+					}
+				}
+			}
+		}
+
+		// Update results
+		update_post_meta( $this->ID, 'sp_results', $meta );
 	}
 
 	public function lineup_filter( $v ) {

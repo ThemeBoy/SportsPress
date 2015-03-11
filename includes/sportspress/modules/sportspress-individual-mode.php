@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Modify SportsPress to work with individual (player vs player) sports.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.6
+Version: 1.7
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Individual_Mode' ) ) :
  * Main SportsPress Individual Mode Class
  *
  * @class SportsPress_Individual_Mode
- * @version	1.6
+ * @version	1.7
  */
 class SportsPress_Individual_Mode {
 
@@ -38,6 +38,7 @@ class SportsPress_Individual_Mode {
 		add_filter( 'sportspress_register_post_type_table', array( $this, 'move_table_post_type' ), 99 );
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'remove_team_settings_tab' ), 99 );
 		add_filter( 'sportspress_get_settings_pages', array( $this, 'remove_team_settings' ), 99 );
+		add_filter( 'sportspress_performance_options', array( $this, 'remove_performance_options' ), 99 );
 		add_filter( 'sportspress_player_options', array( $this, 'add_player_options' ), 99 );
 		add_filter( 'sportspress_player_settings', array( $this, 'add_player_settings' ), 99 );
 		add_filter( 'sportspress_next_steps', array( $this, 'remove_team_step' ), 99 );
@@ -56,7 +57,7 @@ class SportsPress_Individual_Mode {
 		add_filter( 'sportspress_player_teams', '__return_false' );
 		add_filter( 'sportspress_staff_teams', '__return_false' );
 		add_filter( 'sportspress_list_team_selector', '__return_false' );
-		add_filter( 'sportspress_split_performance_tables', '__return_false' );
+		add_filter( 'option_sportspress_event_split_players_by_team', '__return_false' );
 	
 		// Remove templates
 		//remove_action( 'sportspress_single_event_content', 'sportspress_output_event_performance', 50 );
@@ -67,7 +68,7 @@ class SportsPress_Individual_Mode {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_INDIVIDUAL_MODE_VERSION' ) )
-			define( 'SP_INDIVIDUAL_MODE_VERSION', '1.6' );
+			define( 'SP_INDIVIDUAL_MODE_VERSION', '1.7' );
 
 		if ( !defined( 'SP_INDIVIDUAL_MODE_URL' ) )
 			define( 'SP_INDIVIDUAL_MODE_URL', plugin_dir_url( __FILE__ ) );
@@ -169,6 +170,18 @@ class SportsPress_Individual_Mode {
 			}
 		}
 		return $settings;
+	}
+
+	/**
+	 * Remove option to split players by team.
+	 */
+	public function remove_performance_options( $options ) {
+		foreach ( $options as $index => $option ) {
+			if ( 'sportspress_event_split_players_by_team' == sp_array_value( $option, 'id' ) ) {
+				unset( $options[ $index ] );
+			}
+		}
+		return $options;
 	}
 
 	/**

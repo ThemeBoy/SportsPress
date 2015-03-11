@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.6
+ * @version     1.6.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,8 +19,8 @@ class SP_Meta_Box_Event_Details {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
+		$taxonomies = get_object_taxonomies( 'sp_event' );
 		$minutes = get_post_meta( $post->ID, 'sp_minutes', true );
-		$taxonomies = apply_filters( 'sportspress_event_taxonomies', array( 'sp_league' => null, 'sp_season' => null, 'sp_venue' => 'sp_event' ) );
 		?>
 		<div class="sp-event-minutes-field">
 			<p><strong><?php _e( 'Full Time', 'sportspress' ); ?></strong></p>
@@ -30,34 +30,35 @@ class SP_Meta_Box_Event_Details {
 			</p>
 		</div>
 		<?php
-		foreach ( $taxonomies as $taxonomy => $post_type ) {
-			$obj = get_taxonomy( $taxonomy ); if ( $obj ) {
-				?>
-				<div class="sp-event-<?php echo $taxonomy; ?>-field">
-					<p><strong><?php echo $obj->labels->singular_name; ?></strong></p>
-					<p>
-						<?php
-						$args = array(
-							'taxonomy' => $taxonomy,
-							'name' => $taxonomy,
-							'class' => 'sp-has-dummy',
-							'selected' => sp_get_the_term_id_or_meta( $post->ID, $taxonomy ),
-							'values' => 'term_id',
-							'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
-							'chosen' => true,
-						);
-						if ( in_array( $taxonomy, apply_filters( 'sportspress_event_auto_taxonomies', array( 'sp_venue' ) ) ) ) {
-							$args['show_option_all'] = __( '(Auto)', 'sportspress' );
-						}
-						if ( ! sp_dropdown_taxonomies( $args ) ) {
-							sp_taxonomy_adder( $taxonomy, $post_type, $obj->labels->add_new_item );
-						}
-						?>
-					</p>
-				</div>
-			<?php
-			}
+		foreach ( $taxonomies as $taxonomy ) {
+			if ( 'sp_venue' == $taxonomy ) continue;
+			sp_taxonomy_field( $taxonomy, $post, true );
 		}
+		?>
+		<div class="sp-event-sp_venue-field">
+			<p><strong><?php _e( 'Venue', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$terms = get_the_terms( $post->ID, 'sp_venue' );
+				$args = array(
+					'taxonomy' => 'sp_venue',
+					'name' => 'tax_input[sp_venue][]',
+					'class' => 'sp-has-dummy',
+					'selected' => sp_get_the_term_id_or_meta( $post->ID, 'sp_venue' ),
+					'values' => 'term_id',
+					'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
+					'chosen' => true,
+				);
+				if ( in_array( 'sp_venue', apply_filters( 'sportspress_event_auto_taxonomies', array( 'sp_venue' ) ) ) ) {
+					$args['show_option_all'] = __( '(Auto)', 'sportspress' );
+				}
+				if ( ! sp_dropdown_taxonomies( $args ) ) {
+					sp_taxonomy_adder( 'sp_venue', 'sp_event', __( 'Add New', 'sportspress' ) );
+				}
+				?>
+			</p>
+		</div>
+		<?php
 	}
 
 	/**
@@ -65,16 +66,12 @@ class SP_Meta_Box_Event_Details {
 	 */
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_minutes', sp_array_value( $_POST, 'sp_minutes', get_option( 'sportspress_event_minutes', 90 ) ) );
-		$taxonomies = apply_filters( 'sportspress_event_taxonomies', array( 'sp_league' => null, 'sp_season' => null, 'sp_venue' => 'sp_event' ) );
-		foreach ( $taxonomies as $taxonomy => $post_type ) {
-			$value = sp_array_value( $_POST, $taxonomy, -1 );
-			if ( 0 == $value) {
-				$teams = sp_array_value( $_POST, 'sp_team', array() );
-				$team = reset( $teams );
-				$value = sp_get_the_term_id( $team, $taxonomy );
-			}
-			wp_set_post_terms( $post_id, $value, $taxonomy );
-			update_post_meta( $post_id, $taxonomy, $value );
+   		$venues = array_filter( sp_array_value( sp_array_value( $_POST, 'tax_input', array() ), 'sp_venue', array() ) );
+		if ( empty( $venues ) ) {
+			$teams = sp_array_value( $_POST, 'sp_team', array() );
+			$team = reset( $teams );
+			$venue = sp_get_the_term_id( $team, 'sp_venue' );
+			wp_set_post_terms( $post_id, $venue, 'sp_venue' );
 		}
 	}
 }

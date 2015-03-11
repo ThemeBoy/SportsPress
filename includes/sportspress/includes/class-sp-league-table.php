@@ -91,8 +91,11 @@ class SP_League_Table extends SP_Custom_Post{
 		$placeholders = array();
 
 		// Initialize incremental counter
-		$this->pos = array( 1 );
-		$this->counter = 1;
+		$this->pos = 0;
+		$this->counter = 0;
+
+		// Initialize team compare
+		$this->compare = null;
 
 		// Initialize streaks counter
 		$streaks = array();
@@ -145,6 +148,13 @@ class SP_League_Table extends SP_Custom_Post{
 			'posts_per_page' => -1,
 			'orderby' => 'post_date',
 			'order' => 'DESC',
+			'meta_query' => array(
+				array(
+					'key' => 'sp_format',
+					'value' => apply_filters( 'sportspress_competitive_event_formats', array( 'league' ) ),
+					'compare' => 'IN',
+				),
+			),
 			'tax_query' => array(
 				'relation' => 'AND',
 			),
@@ -165,6 +175,8 @@ class SP_League_Table extends SP_Custom_Post{
 				'terms' => $div_id
 			);
 		endif;
+
+		$args = apply_filters( 'sportspress_table_data_event_args', $args );
 		
 		$events = get_posts( $args );
 
@@ -371,12 +383,9 @@ class SP_League_Table extends SP_Custom_Post{
 
 		uasort( $merged, array( $this, 'sort' ) );
 
-		// Create temp array and calculate position of teams for ties
-		$temp = $merged;
-		uasort( $temp, array( $this, 'calculate_pos' ) );
-
+		// Calculate position of teams for ties
 		foreach ( $merged as $team_id => $team_columns ) {
-			$merged[ $team_id ]['pos'] = array_shift( $this->pos );
+			$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns );
 		}
 
 		// Rearrange data array to reflect values
@@ -434,26 +443,28 @@ class SP_League_Table extends SP_Custom_Post{
 	 * @param array $b
 	 * @return int
 	 */
-	public function calculate_pos( $a, $b ) {
-		$this->counter ++;
+	public function calculate_pos( $columns ) {
+		$this->counter++;
+
+		// Replace compare data and use last set
+		$compare = $this->compare;
+		$this->compare = $columns;
 
 		// Loop through priorities
 		foreach( $this->priorities as $priority ):
 
 			// Proceed if columns are not equal
-			if ( sp_array_value( $a, $priority['column'], 0 ) != sp_array_value( $b, $priority['column'], 0 ) ):
+			if ( sp_array_value( $columns, $priority['column'], 0 ) !== sp_array_value( $compare, $priority['column'], 0 ) ):
 
 				// Increment if not equal
-				$this->pos[] = $this->counter;
-
-				return 0;
+				$this->pos = $this->counter;
+				return $this->counter;
 
 			endif;
 
 		endforeach;
 
 		// Repeat position if equal
-		$this->pos[] = end( $this->pos );
-		return 0;
+		return $this->pos;
 	}
 }

@@ -2,9 +2,7 @@
 	"name":				"Cricket",
 	"positions": [
 						"Batsman",
-						"Bowler",
-						"Keeper",
-						"All-rounder"
+						"Bowler"
 	],
 	"outcomes": [
 						{ "name" : "Win", "condition" : ">" },
@@ -21,8 +19,14 @@
 						{ "name" : "Points", "description" : "Total points", "primary" : 1 }
 	],
 	"performance": [
-						"Runs",
-						"Wickets taken"
+						{  "name" : "R", "id" : "runs", "position" : "Batsman", "description" : "Runs" },
+						{  "name" : "B", "position" : "Batsman", "description" : "Balls" },
+						{  "name" : "4s", "position" : "Batsman", "description" : "Fours" },
+						{  "name" : "6s", "position" : "Batsman", "description" : "Sixes" },
+						{  "name" : "O", "position" : "Bowler", "description" : "Overs Bowled" },
+						{  "name" : "M", "position" : "Bowler", "description" : "Maidens" },
+						{  "name" : "R", "position" : "Bowler", "description" : "Runs" },
+						{  "name" : "W", "position" : "Bowler", "description" : "Wickets" }
 	],
 	"columns": [
 						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
@@ -36,9 +40,22 @@
 	"metrics": [
 						"Height",
 						"Weight",
-						"Bat brand"
+						"Bat Brand"
 	],
 	"statistics": [
-						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" }
-	]
+						{ "name" : "Mat", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "Avg", "equation" : "$eventsplayed", "description" : "Average" },
+						{ "name" : "SR", "equation" : "$runs / $b * 100", "precision" : 2, "description" : "Strike Rate" }
+	],
+	"options": {
+						"load_individual_mode_module" : "no",
+						"event_teams" : "2",
+						"event_show_players" : "yes",
+						"event_show_extras" : "yes",
+						"event_show_total" : "yes",
+						"sportspress_event_performance_mode" : "values",
+						"event_show_player_numbers" : "no",
+						"event_split_players_by_position" : "yes",
+						"sportspress_event_total_performance" : "primary"
+	}
 }

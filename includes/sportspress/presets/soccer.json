@@ -8,8 +8,8 @@
 	],
 	"outcomes": [
 						{ "name" : "Win", "condition" : ">" },
-						{ "name" : "Loss", "condition" : "<" },
-						{ "name" : "Draw", "condition" : "=" }
+						{ "name" : "Draw", "condition" : "=" },
+						{ "name" : "Loss", "condition" : "<" }
 	],
 	"results": [
 						{ "name" : "1st Half", "description" : "1st half goals" },

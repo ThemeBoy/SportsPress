@@ -41,16 +41,16 @@ foreach( $venues as $venue ):
 					<th><?php echo $name; ?></th>
 				</tr>
 			</thead>
-			<?php if ( $address != null || ( $show_maps && $latitude != null && $longitude != null ) ): ?>
+			<?php if ( $show_maps && $latitude != null && $longitude != null ): ?>
 				<tbody>
-					<tr class="sp-event-venue-address-row">
-						<td><?php echo $address; ?></td>
+					<tr class="sp-event-venue-map-row">
+						<td<?php if ( $address != null ) { ?> colspan="2"<?php } ?>><?php sp_get_template( 'venue-map.php', array( 'meta' => $meta ) ); ?></td>
 					</tr>
-					<?php if ( $show_maps && $latitude != null && $longitude != null ): ?>
-						<tr class="sp-event-venue-map-row">
-							<td><?php sp_get_template( 'venue-map.php', array( 'meta' => $meta ) ); ?></td>
+					<?php if ( $address != null ) { ?>
+						<tr>
+							<td class="sp-event-venue-address-row"><?php echo $address; ?></td>
 						</tr>
-					<?php endif; ?>
+					<?php } ?>
 				</tbody>
 			<?php endif; ?>
 		</table>

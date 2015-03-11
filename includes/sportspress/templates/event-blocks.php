@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.6
+ * @version     1.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,6 +19,7 @@ $defaults = array(
 	'date_to' => 'default',
 	'number' => -1,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
+	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_event_blocks_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_event_blocks_rows', 10 ),
 	'order' => 'default',
@@ -119,7 +120,14 @@ if ( $show_title && $id ) {
 							<?php if ( $show_venue ): $venues = get_the_terms( $event, 'sp_venue' ); if ( $venues ): $venue = array_shift( $venues ); ?>
 								<div class="sp-event-venue"><?php echo $venue->name; ?></div>
 							<?php endif; endif; ?>
-							<h4 class="sp-event-title"><a href="<?php echo get_post_permalink( $event ); ?>"><?php echo $event->post_title; ?></a></h4>
+							<h4 class="sp-event-title">
+								<?php if ( $link_events ): ?>
+									<a href="<?php echo get_post_permalink( $event ); ?>"><?php echo $event->post_title; ?></a>
+								<?php else: ?>
+									<?php echo $event->post_title; ?>
+								<?php endif; ?>
+							</h4>
+
 						</td>
 					</tr>
 					<?php
