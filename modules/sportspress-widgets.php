@@ -49,7 +49,6 @@ class SportsPress_Widgets {
 	 * Include widgets.
 	 */
 	public function includes() {
-		include_once( SP()->plugin_path() . '/includes/widgets/class-sp-widget-sportspress.php' );
 		include_once( SP()->plugin_path()  . '/includes/widgets/class-sp-widget-staff.php' );
 
 		do_action( 'sportspress_widgets' );
