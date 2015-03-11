@@ -97,7 +97,7 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 	    	'caption' => $caption,
 	    	'size' => $size,
 	    	'link_posts' => $link_posts,
-	    ), 'staff-gallery-thumbnail', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+	    ), '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 
 		$i++;
 

@@ -88,41 +88,11 @@ class SP_Staff_Directory_Meta_Boxes {
 	 * Output the details metabox
 	 */
 	public static function details( $post ) {
-		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
-		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
+		$taxonomies = get_object_taxonomies( 'sp_directory' );
 		$team_id = get_post_meta( $post->ID, 'sp_team', true );
 		?>
 		<div>
-			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
-			<p>
-				<?php
-				$args = array(
-					'taxonomy' => 'sp_league',
-					'name' => 'sp_league',
-					'show_option_all' => __( 'All', 'sportspress' ),
-					'selected' => $league_id,
-					'values' => 'term_id',
-				);
-				if ( ! sp_dropdown_taxonomies( $args ) ):
-					sp_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' )  );
-				endif;
-				?>
-			</p>
-			<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
-			<p class="sp-tab-select">
-				<?php
-				$args = array(
-					'taxonomy' => 'sp_season',
-					'name' => 'sp_season',
-					'show_option_all' => __( 'All', 'sportspress' ),
-					'selected' => $season_id,
-					'values' => 'term_id',
-				);
-				if ( ! sp_dropdown_taxonomies( $args ) ):
-					sp_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' )  );
-				endif;
-				?>
-			</p>
+		$taxonomies = get_object_taxonomies( 'sp_tournament' );
 			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
 			<p class="sp-tab-select">
 				<?php

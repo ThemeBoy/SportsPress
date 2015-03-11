@@ -20,7 +20,7 @@ class SP_Widget_Staff_List extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'staff-list' );
 
-		sp_get_template( 'staff-list.php', array( 'id' => $id, 'number' => $number, 'show_all_staff_link' => $show_all_staff_link ), 'staff-list', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+		sp_get_template( 'staff-list.php', array( 'id' => $id, 'number' => $number, 'show_all_staff_link' => $show_all_staff_link ), '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'staff-list' );

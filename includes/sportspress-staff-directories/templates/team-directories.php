@@ -34,7 +34,7 @@ foreach ( $directories as $directory ):
 	<?php
 	$format = get_post_meta( $id, 'sp_format', true );
 	if ( array_key_exists( $format, SP()->formats->directory ) )
-		sp_get_template( 'staff-' . $format . '.php', array( 'id' => $id ), 'staff-' . $format, SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+		sp_get_template( 'staff-' . $format . '.php', array( 'id' => $id ), '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 	else
-		sp_get_template( 'staff-list.php', array( 'id' => $id ), 'staff-list', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+		sp_get_template( 'staff-list.php', array( 'id' => $id ), '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 endforeach;

@@ -37,7 +37,7 @@ class SP_Shortcode_Staff_Gallery {
 		ob_start();
 
 		echo '<div class="sportspress">';
-		sp_get_template( 'staff-gallery.php', $atts, 'staff-gallery', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+		sp_get_template( 'staff-gallery.php', $atts, '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 		echo '</div>';
 
 		return ob_get_clean();
