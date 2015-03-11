@@ -29,7 +29,7 @@ class SportsPress_Team_Colors {
 		$this->define_constants();
 
 		// Hooks
-		add_filter( 'option_sportspress_frontend_css_colors', array( $this, 'css' ) );
+		add_filter( 'option_themeboy', array( $this, 'css' ) );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'sportspress_process_sp_team_meta', array( $this, 'meta_box_save' ), 15, 2 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
@@ -85,7 +85,8 @@ class SportsPress_Team_Colors {
     	wp_enqueue_script( 'sp_team_colors_admin', SP_TEAM_COLORS_URL . '/js/admin.js', array( 'jquery', 'wp-color-picker', 'iris' ), SP_TEAM_COLORS_VERSION, true );
 
 		// Global settings
-		$options = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
+		$options = array_map( 'esc_attr', (array) get_option( 'themeboy', array() ) );
+		if ( empty( $options ) ) $options = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
 
 		// Defaults
 		$options = array_intersect_key( $options, array(
