@@ -156,6 +156,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 
 								if ( is_array( $team_results ) ):
 									unset( $team_results['outcome'] );
+									$team_results = array_filter( $team_results, 'sp_filter_non_empty' );
 									$team_results = implode( ' | ', $team_results );
 								endif;
 
