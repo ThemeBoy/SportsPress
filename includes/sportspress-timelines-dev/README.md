@@ -1,2 +1,0 @@
-SportsPress-Highlights
-======================
