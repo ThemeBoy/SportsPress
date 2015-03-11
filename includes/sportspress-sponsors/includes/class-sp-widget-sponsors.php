@@ -21,7 +21,7 @@ class SP_Widget_Sponsors extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'sponsors' );
 
-		sp_get_template( 'sponsors.php', array( 'limit' => $limit, 'width' => $width, 'height' => $height, 'orderby' => $orderby, 'order' => $order ), 'sponsors', SP_SPONSORS_DIR . 'templates/' );
+		sp_get_template( 'sponsors.php', array( 'limit' => $limit, 'width' => $width, 'height' => $height, 'orderby' => $orderby, 'order' => $order ), '', SP_SPONSORS_DIR . 'templates/' );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'sponsors' );

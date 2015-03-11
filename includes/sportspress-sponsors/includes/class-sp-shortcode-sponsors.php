@@ -33,7 +33,7 @@ class SP_Shortcode_Sponsors {
 		ob_start();
 
 		echo '<div class="sportspress">';
-		sp_get_template( 'sponsors.php', $atts, 'sponsors', SP_SPONSORS_DIR . 'templates/' );
+		sp_get_template( 'sponsors.php', $atts, '', SP_SPONSORS_DIR . 'templates/' );
 		echo '</div>';
 
 		return ob_get_clean();
