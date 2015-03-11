@@ -55,10 +55,6 @@ class SP_Admin {
 				include( 'class-sp-admin-editor.php' );
 			endif;
 		}
-
-		// Importers
-		if ( defined( 'WP_LOAD_IMPORTERS' ) )
-			include( 'class-sp-admin-importers.php' );
 	}
 
 	/**

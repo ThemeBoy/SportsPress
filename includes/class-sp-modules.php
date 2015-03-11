@@ -86,6 +86,14 @@ class SP_Modules {
 					'label' => __( 'Tutorials', 'sportspress' ),
 					'icon' => 'dashicons dashicons-video-alt3',
 				),
+				'widgets' => array(
+					'label' => __( 'Widgets', 'sportspress' ),
+					'icon' => 'dashicons dashicons-welcome-widgets-menus',
+				),
+				'importers' => array(
+					'label' => __( 'Importers', 'sportspress' ),
+					'icon' => 'sp-icon-import',
+				),
 				'twitter' => array(
 					'label' => __( 'Twitter', 'sportspress' ),
 					'class' => 'SportsPress_Twitter',
