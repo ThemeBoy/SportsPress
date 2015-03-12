@@ -328,7 +328,7 @@ class SP_Admin_Welcome {
 				<?php echo $this->contributors(); ?>
 			</div>
 			
-			<p class="about-description"><?php printf( __( 'Some presets have been submitted by our helpful and generous users. Want to see your name? <a href="%s">Add a Sport Preset</a>.', 'sportspress' ), 'http://themeboy.com/add-sport-preset/' ); ?></p>
+			<p class="about-description"><?php printf( __( 'Some presets have been submitted by our helpful and generous users. Want to see your name? <a href="%s">Add a Sport Preset</a>.', 'sportspress' ), 'http://tboy.co/preset' ); ?></p>
 
 			<div class="sp-feature feature-section col one-col">
 				<h4><?php _e( 'Presets', 'sportspress' ); ?></h4>
