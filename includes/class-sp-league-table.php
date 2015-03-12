@@ -137,7 +137,7 @@ class SP_League_Table extends SP_Custom_Post{
 			$static = get_post_meta( $team_id, 'sp_columns', true );
 
 			// Add static stats to placeholders
-			$placeholders[ $team_id ] = sp_array_value( sp_array_value( $static, $league_id, array() ), $div_id, array() );
+			$placeholders[ $team_id ] = (array) sp_array_value( sp_array_value( $static, $league_id, array() ), $div_id, array() );
 
 		endforeach;
 
@@ -368,7 +368,7 @@ class SP_League_Table extends SP_Custom_Post{
 
 			$team_data['name'] = get_the_title( $team_id );
 
-			foreach( $team_data as $key => $value ):
+			foreach ( $team_data as $key => $value ):
 
 				// Use static data if key exists and value is not empty, else use placeholder
 				if ( array_key_exists( $team_id, $tempdata ) && array_key_exists( $key, $tempdata[ $team_id ] ) && $tempdata[ $team_id ][ $key ] != '' ):
