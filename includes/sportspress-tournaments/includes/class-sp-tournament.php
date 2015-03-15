@@ -174,16 +174,20 @@ class SP_Tournament {
 				// Get selected event id
 				$event = sp_array_value( $events, $index, 0 );
 
-				// Get teams if frontend
+				// Get teams
+				$teams = array();
 				if ( $event ) {
-					if ( is_array( $event ) ) {
-						$teams = $event;
-						$event = null;
+					$post_status = get_post_status( $event );
+					if ( is_string( $post_status ) && 'trash' !== $post_status ) {
+						if ( is_array( $event ) ) {
+							$teams = $event;
+							$event = null;
+						} else {
+							$teams = get_post_meta( $event, 'sp_team', array() );
+						}
 					} else {
-						$teams = get_post_meta( $event, 'sp_team', array() );
+						$event = null;
 					}
-				} else {
-					$teams = array();
 				}
 
 				// Add event, team, or spacer
