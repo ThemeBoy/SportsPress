@@ -34,7 +34,6 @@ class SportsPress_Sponsors {
 		// Hooks
 		add_action( 'init', array( $this, 'init' ), 15 );
 		add_action( 'admin_init', array( $this, 'check_version' ), 5 );
-		add_action( 'admin_init', array( $this, 'register_importer' ) );
 
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
 		add_action( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
@@ -49,6 +48,7 @@ class SportsPress_Sponsors {
 		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ), 20 );
 	    add_filter( 'sportspress_glance_items', array( $this, 'add_glance_item' ) );
 	    add_filter( 'sportspress_enable_header', '__return_true' );
+		add_filter( 'sportspress_importers', array( $this, 'register_importer' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -168,10 +168,15 @@ class SportsPress_Sponsors {
 	}
 
 	/**
-	 * Add menu item
+	 * Register importer
 	 */
-	public function register_importer() {
-		register_importer( 'sp_sponsor_csv', __( 'SportsPress Sponsors (CSV)', 'sportspress' ), __( 'Import <strong>sponsors</strong> from a csv file.', 'sportspress'), array( $this, 'sponsors_importer' ) );
+	public function register_importer( $importers = array() ) {
+		$importers['sp_sponsor_csv'] = array(
+			'name' => __( 'SportsPress Sponsors (CSV)', 'sportspress' ),
+			'description' => __( 'Import <strong>sponsors</strong> from a csv file.', 'sportspress'),
+			'callback' => array( $this, 'sponsors_importer' ),
+		);
+		return $importers;
 	}
 
 	/**
