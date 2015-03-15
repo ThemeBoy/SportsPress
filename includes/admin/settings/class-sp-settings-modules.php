@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.6.1
+ * @version     1.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -180,12 +180,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 								<li><a href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pricing/' ); ?>" target="_blank"><span class="sp-desc-tip" title="<?php _e( 'Upgrade to Pro', 'sportspress' ); ?>"><?php _e( 'Premium Support', 'sportspress' ); ?></span></a></li>
 								<?php } ?>
 							</ul>
-							<p><strong><i class="dashicons dashicons-groups"></i> <?php _e( 'Get Involved', 'sportspress' ); ?></strong></p>
-							<ul class="sp-community-links">
-								<li><a href="http://tboy.co/transifex" target="_blank"><?php _e( 'Translators', 'sportspress' ); ?></a></li>
-								<li><a href="http://tboy.co/github" target="_blank"><?php _e( 'Developers', 'sportspress' ); ?></a></li>
-							</ul>
-							<p><strong><i class="dashicons dashicons-share"></i> <?php _e( 'Connect With Us', 'sportspress' ); ?></strong></p>
+							<p><strong><i class="dashicons dashicons-share"></i> <?php _e( 'Connect', 'sportspress' ); ?></strong></p>
 							<ul class="sp-community-links">
 								<li><a href="http://tboy.co/twitter" target="_blank"><?php _e( 'Twitter', 'sportspress' ); ?></a></li>
 								<li><a href="http://tboy.co/facebook" target="_blank"><?php _e( 'Facebook', 'sportspress' ); ?></a></li>
