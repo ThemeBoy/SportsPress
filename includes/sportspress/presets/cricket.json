@@ -48,13 +48,13 @@
 						{ "name" : "SR", "equation" : "$runs / $b * 100", "precision" : 2, "description" : "Strike Rate" }
 	],
 	"options": {
-						"load_individual_mode_module" : "no",
 						"event_teams" : "2",
 						"event_show_players" : "yes",
 						"event_show_extras" : "yes",
 						"event_show_total" : "yes",
 						"sportspress_event_performance_mode" : "values",
 						"event_show_player_numbers" : "no",
+						"event_split_players_by_team" : "yes",
 						"event_split_players_by_position" : "yes",
 						"sportspress_event_total_performance" : "primary"
 	}

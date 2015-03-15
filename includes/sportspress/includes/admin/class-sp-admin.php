@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.6
+ * @version     1.7
  */
 class SP_Admin {
 
@@ -55,10 +55,6 @@ class SP_Admin {
 				include( 'class-sp-admin-editor.php' );
 			endif;
 		}
-
-		// Importers
-		if ( defined( 'WP_LOAD_IMPORTERS' ) )
-			include( 'class-sp-admin-importers.php' );
 	}
 
 	/**

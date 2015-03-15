@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.6.1
+ * @version     1.7
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -328,7 +328,7 @@ class SP_Admin_Welcome {
 				<?php echo $this->contributors(); ?>
 			</div>
 			
-			<p class="about-description"><?php printf( __( 'Some presets have been submitted by our helpful and generous users. Want to see your name? <a href="%s">Add a Sport Preset</a>.', 'sportspress' ), 'http://themeboy.com/add-sport-preset/' ); ?></p>
+			<p class="about-description"><?php printf( __( 'Some presets have been submitted by our helpful and generous users. Want to see your name? <a href="%s">Add a Sport Preset</a>.', 'sportspress' ), 'http://tboy.co/preset' ); ?></p>
 
 			<div class="sp-feature feature-section col one-col">
 				<h4><?php _e( 'Presets', 'sportspress' ); ?></h4>
@@ -386,6 +386,7 @@ class SP_Admin_Welcome {
 				'GhiMax',
 				'GuneshGamza95',
 				'hanro',
+				'HuguesD',
 				'hushiea',
 				'i__k',
 				'JensZ',
@@ -401,6 +402,7 @@ class SP_Admin_Welcome {
 				'matiqos',
 				'MohamedZ',
 				'overbite',
+				'Ozias',
 				'Paramamithra',
 				'poelie',
 				'popeosorio',

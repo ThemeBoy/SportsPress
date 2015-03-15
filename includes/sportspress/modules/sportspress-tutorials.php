@@ -34,7 +34,7 @@ class SportsPress_Tutorials {
 		$this->define_constants();
 
 		add_action( 'init', array( $this, 'get_video_ids' ) );
-		add_action( 'admin_menu', array( $this, 'admin_menu' ), 8 );
+		add_action( 'admin_menu', array( $this, 'admin_menu' ), 10 );
 		add_action( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_filter( 'sportspress_next_steps', array( $this, 'next_steps' ) );
 	}
@@ -150,7 +150,7 @@ class SportsPress_Tutorials {
 			'tutorials' => array(
 				'link' => admin_url( add_query_arg( array( 'page' => 'sportspress-tutorials' ), 'admin.php' ) ),
 				'icon' => 'dashicons dashicons-video-alt3',
-				'label' => __( 'Tutorials', 'sportspress' ),
+				'label' => __( 'Watch Tutorials', 'sportspress' ),
 			) ) + $steps;
 		return $steps;
 	}

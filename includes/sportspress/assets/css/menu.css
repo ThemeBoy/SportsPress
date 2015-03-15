@@ -113,6 +113,12 @@
 .sp-icon-popup:before {
 	content: "\f504";
 }
+.sp-icon-import:before {
+	content: "\f316";
+}
+.sp-icon-export:before {
+	content: "\f317";
+}
 
 #adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_event .menu-icon-sp_event div.wp-menu-image:before,

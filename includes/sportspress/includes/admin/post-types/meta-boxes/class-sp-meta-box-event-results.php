@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.6
+ * @version     1.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,9 +19,15 @@ class SP_Meta_Box_Event_Results {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
+		// Determine if we need checkboxes
+		if ( 'manual' == get_option( 'sportspress_event_result_columns', 'auto' ) )
+			$has_checkboxes = true;
+		else
+			$has_checkboxes = false;
+
 		$event = new SP_Event( $post );
 		list( $columns, $usecolumns, $data ) = $event->results( true );
-		self::table( $columns, $usecolumns, $data );
+		self::table( $columns, $usecolumns, $data, $has_checkboxes );
 	}
 
 	/**
@@ -116,7 +122,7 @@ class SP_Meta_Box_Event_Results {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $columns = array(), $usecolumns = array(), $data = array() ) {
+	public static function table( $columns = array(), $usecolumns = array(), $data = array(), $has_checkboxes = false ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
@@ -127,17 +133,18 @@ class SP_Meta_Box_Event_Results {
 						</th>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<th class="column-<?php echo $key; ?>">
-								<label for="sp_result_columns_<?php echo $key; ?>">
-									<input type="checkbox" name="sp_result_columns[]" value="<?php echo $key; ?>" id="sp_result_columns_<?php echo $key; ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
+								<?php if ( $has_checkboxes ): ?>
+									<label for="sp_result_columns_<?php echo $key; ?>">
+										<input type="checkbox" name="sp_result_columns[]" value="<?php echo $key; ?>" id="sp_result_columns_<?php echo $key; ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
+										<?php echo $label; ?>
+									</label>
+								<?php else: ?>
 									<?php echo $label; ?>
-								</label>
+								<?php endif; ?>
 							</th>
 						<?php endforeach; ?>
 						<th class="column-outcome">
-							<label for="sp_result_columns_outcome">
-								<input type="checkbox" name="sp_result_columns[]" value="outcome" id="sp_result_columns_outcome" <?php checked( ! is_array( $usecolumns ) || in_array( 'outcome', $usecolumns ) ); ?>>
-								<?php _e( 'Outcome', 'sportspress' ); ?>
-							</label>
+							<?php _e( 'Outcome', 'sportspress' ); ?>
 						</th>
 					</tr>
 				</thead>
