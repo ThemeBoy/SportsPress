@@ -173,7 +173,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<p><strong><i class="dashicons dashicons-heart"></i> <?php _e( 'Help', 'sportspress' ); ?></strong></p>
 							<ul class="sp-community-links">
 								<li><a href="http://tboy.co/forums" target="_blank"><?php _e( 'Support Forums', 'sportspress' ); ?></a></li>
-								<li><a href="http://tboy.co/uservoice" target="_blank"><?php _e( 'Feature Requests', 'sportspress' ); ?></a></li>
+								<li><a href="http://tboy.co/ideas" target="_blank"><?php _e( 'Feature Requests', 'sportspress' ); ?></a></li>
 								<?php if ( class_exists( 'SportsPress_Pro' ) ) { ?>
 								<li><a href="<?php echo apply_filters( 'sportspress_support_url', 'http://sportspresspro.com/support/' ); ?>" target="_blank"><?php _e( 'Premium Support', 'sportspress' ); ?></a></li>
 								<?php } else { ?>
