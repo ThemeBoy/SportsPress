@@ -148,6 +148,8 @@ Your feedback is much appreciated and makes all the difference in improving Spor
 * PHP version 5.2.4 or greater
 * MySQL version 5.0 or greater
 
+[vimeo http://vimeo.com/121430679]
+
 = Automatic Installation =
 
 Automatic installation is the easiest option as WordPress handles the file transfers itself and you don't even need to leave your web browser. To do an automatic install of SportsPress, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
@@ -221,6 +223,31 @@ There are [3 different licenses](http://tboy.co/pricing) that you can choose fro
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.7 =
+* Feature - Enable multiple seasons and competitions to be selected for events, calendars, player lists, and league tables.
+* Feature - Enable primary performance selection.
+* Feature - Enable event result columns to be displayed automatically.
+* Feature - Enable switching overview, widgets, and importers on and off via modules.
+* Feature - New color scheme selector.
+* Feature - New video tutorials module.
+* Feature - Allow event performance tables to be split by team and by player position.
+* Feature - Allow extras row to be displayed in event performance.
+* Tweak - Display event venue address below map.
+* Tweak - Display plugin and theme recommendations only to network admins.
+* Tweak - Hide player details section if none available.
+* Tweak - Link module request to form instead of email.
+* Fix - Responsive table scrollbar causing horizontal page scrolling.
+* Fix - Misplaced config meta boxes.
+* Fix - Scrollbar appearing in countdown widget.
+* Fix - Event blocks template not honoring link events setting.
+* Fix - League table position calculations for tied teams.
+* Fix - Filter out empty results when viewing events in admin list view.
+* Fix - Invalid array issue when viewing league tables.
+* Preset - Enable sport presets to define plugin options.
+* Preset - Update cricket and ice hockey presets.
+* Localization - Number changed to Squad Number.
+* Localization - Update Polish, French, Czech, Dutch, Kannada, Finnish, Swedish, German, Russian, Greek, Portuguese, and Japanese translations.
 
 = 1.6.1 =
 * Feature - Countdown moved to module and now able to display team logos.
