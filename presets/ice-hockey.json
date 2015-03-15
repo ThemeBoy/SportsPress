@@ -56,10 +56,15 @@
 						{ "name" : "S%", "equation" : "$g / $s * 100", "precision" : 2, "description" : "Shot percentage" },
 						{ "name" : "SV%", "equation" : "$sv / $sa * 100", "precision" : 2, "description" : "Save percentage" }
 	],
-	"options": [
-						{ "load_individual_mode_module" : "no" },
-						{ "event_show_total" : "no" },
-						{ "event_show_player_numbers" : "yes" },
-						{ "event_split_players_by_position" : "yes" }
-	]
+	"options": {
+						"event_teams" : "2",
+						"event_show_players" : "yes",
+						"event_show_extras" : "no",
+						"event_show_total" : "yes",
+						"sportspress_event_performance_mode" : "values",
+						"event_show_player_numbers" : "yes",
+						"event_split_players_by_team" : "yes",
+						"event_split_players_by_position" : "yes",
+						"sportspress_event_total_performance" : "all"
+	}
 }
