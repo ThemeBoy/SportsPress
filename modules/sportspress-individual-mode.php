@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Modify SportsPress to work with individual (player vs player) sports.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.7
+Version: 1.7.2
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Individual_Mode' ) ) :
  * Main SportsPress Individual Mode Class
  *
  * @class SportsPress_Individual_Mode
- * @version	1.7
+ * @version	1.7.2
  */
 class SportsPress_Individual_Mode {
 
@@ -68,7 +68,7 @@ class SportsPress_Individual_Mode {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_INDIVIDUAL_MODE_VERSION' ) )
-			define( 'SP_INDIVIDUAL_MODE_VERSION', '1.7' );
+			define( 'SP_INDIVIDUAL_MODE_VERSION', '1.7.2' );
 
 		if ( !defined( 'SP_INDIVIDUAL_MODE_URL' ) )
 			define( 'SP_INDIVIDUAL_MODE_URL', plugin_dir_url( __FILE__ ) );
@@ -278,6 +278,6 @@ class SportsPress_Individual_Mode {
 
 endif;
 
-if ( get_option( 'sportspress_load_individual_mode_module', 'yes' ) == 'yes' ) {
+if ( get_option( 'sportspress_load_individual_mode_module', 'no' ) == 'yes' ) {
 	new SportsPress_Individual_Mode();
 }
