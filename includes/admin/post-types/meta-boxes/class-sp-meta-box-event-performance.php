@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.7
+ * @version     1.7.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -85,14 +85,7 @@ class SP_Meta_Box_Event_Performance {
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
 						<th class="column-position">
-							<?php if ( $has_checkboxes ): ?>
-								<label for="sp_columns_position">
-									<input type="checkbox" name="sp_columns[]" value="position" id="sp_columns_position" <?php checked( ! is_array( $columns ) || in_array( 'position', $columns ) ); ?>>
-									<?php _e( 'Position', 'sportspress' ); ?>
-								</label>
-							<?php else: ?>
-								<?php _e( 'Position', 'sportspress' ); ?>
-							<?php endif; ?>
+							<?php _e( 'Position', 'sportspress' ); ?>
 						</th>
 						<?php foreach ( $labels as $key => $label ): ?>
 							<th>
