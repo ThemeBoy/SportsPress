@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.6.1
+Stable tag: 1.7.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -223,6 +223,10 @@ There are [3 different licenses](http://tboy.co/pricing) that you can choose fro
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.7.1 =
+* Fix - Activation error related to server limitations.
+* Localization - Update Greek translation.
 
 = 1.7 =
 * Feature - Enable multiple seasons and competitions to be selected for events, calendars, player lists, and league tables.
