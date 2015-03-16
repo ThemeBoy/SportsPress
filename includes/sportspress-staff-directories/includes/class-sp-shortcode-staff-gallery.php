@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Shortcodes
  * @package 	SportsPress_Staff_Directories
- * @version     1.0
+ * @version     1.7
  */
 class SP_Shortcode_Staff_Gallery {
 

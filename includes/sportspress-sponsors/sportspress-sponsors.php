@@ -5,7 +5,7 @@ Plugin URI: http://sportspresspro.com/
 Description: Add sponsors to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.6
+Version: 1.7
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Sponsors' ) ) :
  * Main SportsPress Sponsors Class
  *
  * @class SportsPress_Sponsors
- * @version	1.6
+ * @version	1.7
  */
 class SportsPress_Sponsors {
 
@@ -67,7 +67,7 @@ class SportsPress_Sponsors {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_SPONSORS_VERSION' ) )
-			define( 'SP_SPONSORS_VERSION', '1.6' );
+			define( 'SP_SPONSORS_VERSION', '1.7' );
 
 		if ( !defined( 'SP_SPONSORS_URL' ) )
 			define( 'SP_SPONSORS_URL', plugin_dir_url( __FILE__ ) );

@@ -5,7 +5,7 @@ Plugin URI: http://sportspresspro.com/
 Description: Adds tournament groups and brackets to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.6
+Version: 1.7
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Tournaments' ) ) :
  * Main SportsPress Tournaments Class
  *
  * @class SportsPress_Tournaments
- * @version	1.6
+ * @version	1.7
  */
 class SportsPress_Tournaments {
 
@@ -63,7 +63,7 @@ class SportsPress_Tournaments {
 	 */
 	private function define_constants() {
 		if ( !defined( 'SP_TOURNAMENTS_VERSION' ) )
-			define( 'SP_TOURNAMENTS_VERSION', '1.6' );
+			define( 'SP_TOURNAMENTS_VERSION', '1.7' );
 
 		if ( !defined( 'SP_TOURNAMENTS_URL' ) )
 			define( 'SP_TOURNAMENTS_URL', plugin_dir_url( __FILE__ ) );
