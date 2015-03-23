@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		1.7
+ * @version		1.7.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -184,7 +184,7 @@ class SP_Player extends SP_Custom_Post {
 
 				// Add all team performance
 				foreach ( $team_performance as $team_id => $players ):
-					if ( array_key_exists( $this->ID, $players ) ):
+					if ( is_array( $players ) && array_key_exists( $this->ID, $players ) ):
 
 						$player_performance = sp_array_value( $players, $this->ID, array() );
 
