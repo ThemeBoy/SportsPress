@@ -4,10 +4,11 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.6
+ * @version     1.7.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( get_option( 'sportspress_player_show_statistics', 'yes' ) === 'no' ) return;
 
 if ( ! isset( $id ) )
 	$id = get_the_ID();
