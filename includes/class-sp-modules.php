@@ -23,32 +23,6 @@ class SP_Modules {
 	 */
 	public function __construct() {
 		$this->data = apply_filters( 'sportspress_modules', array(
-			'general' => array(
-				'tutorials' => array(
-					'label' => __( 'Tutorials', 'sportspress' ),
-					'icon' => 'dashicons dashicons-video-alt3',
-				),
-				'overview' => array(
-					'label' => __( 'Overview', 'sportspress' ),
-					'icon' => 'dashicons dashicons-networking',
-				),
-				'widgets' => array(
-					'label' => __( 'Widgets', 'sportspress' ),
-					'icon' => 'dashicons dashicons-admin-generic',
-				),
-				'importers' => array(
-					'label' => __( 'Importers', 'sportspress' ),
-					'icon' => 'sp-icon-import',
-				),
-				'twitter' => array(
-					'label' => __( 'Twitter', 'sportspress' ),
-					'class' => 'SportsPress_Twitter',
-					'action' => __( 'Tweet #SportsPress', 'sportspress' ),
-					'link' => 'http://tboy.co/tweet',
-					'tip' => __( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.', 'sportspress' ),
-					'icon' => 'dashicons dashicons-twitter',
-				),
-			),
 			'event' => array(
 				'calendars' => array(
 					'label' => __( 'Calendars', 'sportspress' ),
@@ -108,6 +82,18 @@ class SP_Modules {
 				),
 			),
 			'other' => array(
+				'tutorials' => array(
+					'label' => __( 'Tutorials', 'sportspress' ),
+					'icon' => 'dashicons dashicons-video-alt3',
+				),
+				'twitter' => array(
+					'label' => __( 'Twitter', 'sportspress' ),
+					'class' => 'SportsPress_Twitter',
+					'action' => __( 'Tweet #SportsPress', 'sportspress' ),
+					'link' => 'http://tboy.co/tweet',
+					'tip' => __( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.', 'sportspress' ),
+					'icon' => 'dashicons dashicons-twitter',
+				),
 				'branding' => array(
 					'label' => __( 'Branding', 'sportspress' ),
 					'class' => 'SportsPress_Branding',

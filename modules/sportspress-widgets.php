@@ -57,6 +57,4 @@ class SportsPress_Widgets {
 
 endif;
 
-if ( get_option( 'sportspress_load_widgets_module', 'yes' ) == 'yes' ) {
-	new SportsPress_Widgets();
-}
+new SportsPress_Widgets();

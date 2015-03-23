@@ -57,6 +57,4 @@ class SportsPress_Importers {
 
 endif;
 
-if ( get_option( 'sportspress_load_importers_module', 'yes' ) == 'yes' ) {
-	new SportsPress_Importers();
-}
+new SportsPress_Importers();

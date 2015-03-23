@@ -98,20 +98,3 @@ class SP_Settings_Players extends SP_Settings_Page {
 endif;
 
 return new SP_Settings_Players();
-
-/*
-array(
-	'title' 	=> __( 'Templates', 'sportspress' ),
-	'type' 		=> 'templates',
-	'options' 	=> array(
-		'details' 		=> array(
-			'title' 	=> __( 'Details', 'sportspress' ),
-			'default' 	=> 'yes',
-		),
-		'statistics' 	=> array(
-			'title' 	=> __( 'Statistics', 'sportspress' ),
-			'default' 	=> 'yes',
-		),
-	),
-),
-*/

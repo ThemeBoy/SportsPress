@@ -399,6 +399,4 @@ class SportsPress_Overview {
 
 endif;
 
-if ( get_option( 'sportspress_load_overview_module', 'yes' ) == 'yes' ) {
-	new SportsPress_Overview();
-}
+new SportsPress_Overview();
