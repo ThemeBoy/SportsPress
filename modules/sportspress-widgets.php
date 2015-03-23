@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add widgets to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.7
+Version: 1.7.3
 */
 
 // Exit if accessed directly
