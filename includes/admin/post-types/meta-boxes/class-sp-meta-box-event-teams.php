@@ -55,10 +55,6 @@ class SP_Meta_Box_Event_Teams {
 				</p>
 				<p class="sp-tab-select sp-title-generator">
 				<?php
-				$league = get_term( $league_id, 'sp_league' );
-				$league_slug = $league->slug;
-				$season = get_term( $season_id, 'sp_season' );
-				$season_slug = $season->slug;
 				$args = array(
 					'post_type' => 'sp_team',
 					'name' => 'sp_team[]',
@@ -67,9 +63,20 @@ class SP_Meta_Box_Event_Teams {
 					'values' => 'ID',
 					'selected' => $team,
 					'chosen' => true,
-					'sp_league' => $league_slug,
-					'sp-season' => $season_slug,
+					'tax_query' => array(),
 				);
+				if ( $league_id ) {
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_league',
+						'terms' => $league_id,
+					);
+				}
+				if ( $season_id ) {
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_season',
+						'terms' => $season_id,
+					);
+				}
 				sp_dropdown_pages( $args );
 				?>
 				</p>
