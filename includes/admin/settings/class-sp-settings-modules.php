@@ -85,7 +85,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 						</thead>
 						<tbody>
 							<tr><td>
-								<p><?php _e( 'Offer premium news & highlights from leading globals sports. SportsPress TV will keep your visitors entertained for hours.','sportspress' ); ?></p>
+								<p><?php _e( 'Offer premium news & highlights from leading global sports. SportsPress TV will keep your visitors entertained for hours.','sportspress' ); ?></p>
 								<p class="sp-module-actions">
 									<span><?php _e( 'Free', 'sportspress' ); ?></span>
 									<a class="button" href="<?php echo add_query_arg( array( 'tab' => 'search', 's' => 'sportspress+tv' ), network_admin_url( 'plugin-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
