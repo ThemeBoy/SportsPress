@@ -24,6 +24,7 @@ function sp_get_screen_ids() {
         'dashboard_page_sp-credits',
         'dashboard_page_sp-translators',
         'toplevel_page_sportspress',
+        'toplevel_page_themeboy',
     	'edit-sp_result',
     	'sp_result',
     	'edit-sp_outcome',

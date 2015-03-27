@@ -811,6 +811,22 @@ table.sp-status-table td mark.yes {
 	display: block;
 }
 
+/* ThemeBoy */
+.toplevel_page_themeboy #wpbody {
+	margin-left: -20px;
+	padding-bottom: 100%;
+}
+.toplevel_page_themeboy .themeboy-container {
+	padding-bottom: 100%;
+}
+.toplevel_page_themeboy .themeboy-container iframe {
+	border: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: block;
+}
+
 /* Media Queries */
 @media only screen and (max-width: 850px) {
 	.sp-modules-wrapper {
