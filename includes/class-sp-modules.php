@@ -112,12 +112,6 @@ class SP_Modules {
 					'icon' => 'sp-icon-megaphone',
 					'link' => 'http://tboy.co/sponsors',
 				),
-				'multisite' => array(
-					'label' => __( 'Multisite', 'sportspress' ),
-					'class' => 'SportsPress_Multisite',
-					'icon' => 'sp-icon-globe',
-					'link' => 'http://tboy.co/multisite',
-				),
 			),
 		));
 	}
