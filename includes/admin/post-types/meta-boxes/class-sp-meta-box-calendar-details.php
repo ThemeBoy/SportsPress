@@ -25,6 +25,7 @@ class SP_Meta_Box_Calendar_Details {
 		$date_from = get_post_meta( $post->ID, 'sp_date_from', true );
 		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
 		$team_id = get_post_meta( $post->ID, 'sp_team', true );
+		$table_id = get_post_meta( $post->ID, 'sp_table', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
 		?>
 		<div>
@@ -77,6 +78,21 @@ class SP_Meta_Box_Calendar_Details {
 				endif;
 				?>
 			</p>
+			<p><strong><?php _e( 'League Table', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$args = array(
+					'show_option_all' => __( 'All', 'sportspress' ),
+					'post_type' => 'sp_table',
+					'name' => 'sp_table',
+					'selected' => $table_id,
+					'values' => 'ID'
+				);
+				if ( ! sp_dropdown_pages( $args ) ):
+					sp_post_adder( 'sp_table', __( 'Add New', 'sportspress' )  );
+				endif;
+				?>
+			</p>
 			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
 			<p>
 				<select name="sp_order">
@@ -98,5 +114,6 @@ class SP_Meta_Box_Calendar_Details {
 		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', 0 ) );
+		update_post_meta( $post_id, 'sp_table', sp_array_value( $_POST, 'sp_table', 0 ) );
 	}
 }
