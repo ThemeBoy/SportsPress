@@ -63,36 +63,40 @@ class SP_Meta_Box_Calendar_Details {
 				sp_taxonomy_field( $taxonomy, $post, true );
 			}
 			?>
-			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
-			<p>
-				<?php
-				$args = array(
-					'show_option_all' => __( 'All', 'sportspress' ),
-					'post_type' => 'sp_team',
-					'name' => 'sp_team',
-					'selected' => $team_id,
-					'values' => 'ID'
-				);
-				if ( ! sp_dropdown_pages( $args ) ):
-					sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' )  );
-				endif;
-				?>
-			</p>
-			<p><strong><?php _e( 'League Table', 'sportspress' ); ?></strong></p>
-			<p>
-				<?php
-				$args = array(
-					'show_option_all' => __( 'All', 'sportspress' ),
-					'post_type' => 'sp_table',
-					'name' => 'sp_table',
-					'selected' => $table_id,
-					'values' => 'ID'
-				);
-				if ( ! sp_dropdown_pages( $args ) ):
-					sp_post_adder( 'sp_table', __( 'Add New', 'sportspress' )  );
-				endif;
-				?>
-			</p>
+			<div class="sp-team-selector">
+				<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
+				<p class="sp-team-picker">
+					<?php
+					$args = array(
+						'show_option_all' => __( 'All', 'sportspress' ),
+						'post_type' => 'sp_team',
+						'name' => 'sp_team',
+						'selected' => $team_id,
+						'values' => 'ID',
+						'append_options' => array(
+							'table' => sprintf( __( 'Select %s:', 'sportspress' ), __( 'League Table', 'sportspress' ) ),
+						),
+					);
+					if ( ! sp_dropdown_pages( $args ) ):
+						sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' )  );
+					endif;
+					?>
+				</p>
+				<p class="sp-league-table-picker">
+					<?php
+					$args = array(
+						'show_option_all' => __( 'All', 'sportspress' ),
+						'post_type' => 'sp_table',
+						'name' => 'sp_table',
+						'selected' => $table_id,
+						'values' => 'ID',
+					);
+					if ( ! sp_dropdown_pages( $args ) ):
+						sp_post_adder( 'sp_table', __( 'Add New', 'sportspress' )  );
+					endif;
+					?>
+				</p>
+			</div>
 			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
 			<p>
 				<select name="sp_order">

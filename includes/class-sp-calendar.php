@@ -143,25 +143,25 @@ class SP_Calendar extends SP_Custom_Post {
 				endif;
 
 				if ( $team ):
-					$args['meta_query']	= array(
-						array(
-							'key' => 'sp_team',
-							'value' => $team,
-						),
-					);
-				endif;
-
-				if ( $table ) :
-					$teams = get_post_meta( $table, 'sp_team' );
-					$teams = array_filter( $teams );
-					
-					$args['meta_query']	= array(
-						array(
-							'key'		=> 'sp_team',
-							'value'		=> $teams,
-							'compare' 	=> 'IN'
-						),
-					);
+					if ( 'table' !== $team ):
+						$args['meta_query']	= array(
+							array(
+								'key' => 'sp_team',
+								'value' => $team,
+							),
+						);
+					elseif ( $table ) :
+						$teams = get_post_meta( $table, 'sp_team' );
+						$teams = array_filter( $teams );
+						
+						$args['meta_query']	= array(
+							array(
+								'key'		=> 'sp_team',
+								'value'		=> $teams,
+								'compare' 	=> 'IN'
+							),
+						);
+					endif;
 				endif;
 
 			endif;
