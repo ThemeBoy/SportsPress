@@ -557,16 +557,6 @@ jQuery(document).ready(function($){
 	});
 	$(".sp-date-selector select").trigger("change");
 
-	// Show or hide league table selector
-	$(".sp-team-selector .sp-team-picker select").change(function() {
-		console.log( $(this) );
-		if ( $(this).val() == "table" ) {
-			$(this).closest(".sp-team-selector").find(".sp-league-table-picker").show();
-		} else {
-			$(this).closest(".sp-team-selector").find(".sp-league-table-picker").hide();
-		}
-	}).trigger("change");
-
 	// Apply color scheme
 	$(".sp-color-option").on("click", function() {
 		colors = $(this).find("label").data("sp-colors").split(",");

@@ -103,7 +103,7 @@ class SP_Calendar extends SP_Custom_Post {
 				$leagues = get_the_terms( $this->ID, 'sp_league' );
 				$seasons = get_the_terms( $this->ID, 'sp_season' );
 				$venues = get_the_terms( $this->ID, 'sp_venue' );
-				$team = get_post_meta( $this->ID, 'sp_team', true );
+				$teams = get_post_meta( $this->ID, 'sp_team', false );
 				$table = get_post_meta( $this->ID, 'sp_table', true );
 
 				if ( $leagues ):
@@ -142,26 +142,14 @@ class SP_Calendar extends SP_Custom_Post {
 					);
 				endif;
 
-				if ( $team ):
-					if ( 'table' !== $team ):
-						$args['meta_query']	= array(
-							array(
-								'key' => 'sp_team',
-								'value' => $team,
-							),
-						);
-					elseif ( $table ) :
-						$teams = get_post_meta( $table, 'sp_team' );
-						$teams = array_filter( $teams );
-						
-						$args['meta_query']	= array(
-							array(
-								'key'		=> 'sp_team',
-								'value'		=> $teams,
-								'compare' 	=> 'IN'
-							),
-						);
-					endif;
+				if ( ! empty( $teams ) ):
+					$args['meta_query']	= array(
+						array(
+							'key' => 'sp_team',
+							'value' => $teams,
+							'compare' => 'IN',
+						),
+					);
 				endif;
 
 			endif;
