@@ -28,7 +28,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 	public function __construct() {
 		$this->id    = 'modules';
 		$this->label = __( 'Modules', 'sportspress' );
-		$this->theme = wp_get_theme();
 
 		$this->sections = apply_filters( 'sportspress_module_sections', array(
 			'general' => __( 'General', 'sportspress' ),
@@ -169,7 +168,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<tbody>
 								<tr><td>
 									<img src="<?php echo $theme->get_screenshot(); ?>" class="sp-theme-screenshot">
-									<p><?php _e( 'Rookie is a free starter theme for SportsPress.', 'sportspress' ); ?></p>
+									<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
 									<p class="sp-module-actions">
 										<a class="button" href="http://tboy.co/themes" target="_blank"><?php _e( 'Need a Better Theme?', 'sportspress' ); ?></a>
 									</p>
@@ -186,7 +185,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<tbody>
 								<tr><td>
 									<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/rookie.png" class="sp-theme-screenshot">
-									<p><?php _e( 'Rookie is a free starter theme for SportsPress.', 'sportspress' ); ?></p>
+									<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
 									<p class="sp-module-actions">
 										<span><?php _e( 'Free', 'sportspress' ); ?></span>
 										<a class="button" href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
