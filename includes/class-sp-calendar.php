@@ -5,7 +5,7 @@
  * The SportsPress calendar class handles individual calendar data.
  *
  * @class 		SP_Calendar
- * @version     1.7.4
+ * @version     1.7.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -103,7 +103,7 @@ class SP_Calendar extends SP_Custom_Post {
 				$leagues = get_the_terms( $this->ID, 'sp_league' );
 				$seasons = get_the_terms( $this->ID, 'sp_season' );
 				$venues = get_the_terms( $this->ID, 'sp_venue' );
-				$teams = get_post_meta( $this->ID, 'sp_team', false );
+				$teams = array_filter( get_post_meta( $this->ID, 'sp_team', false ) );
 				$table = get_post_meta( $this->ID, 'sp_table', true );
 
 				if ( $leagues ):
