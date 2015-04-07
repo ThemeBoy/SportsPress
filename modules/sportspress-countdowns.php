@@ -100,6 +100,4 @@ class SportsPress_Countdowns {
 
 endif;
 
-if ( get_option( 'sportspress_load_countdowns_module', 'yes' ) == 'yes' ) {
-	new SportsPress_Countdowns();
-}
+new SportsPress_Countdowns();

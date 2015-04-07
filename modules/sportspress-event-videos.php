@@ -65,6 +65,4 @@ class SportsPress_Event_Videos {
 
 endif;
 
-if ( get_option( 'sportspress_load_event_videos_module', 'yes' ) == 'yes' ) {
-	new SportsPress_Event_Videos();
-}
+new SportsPress_Event_Videos();

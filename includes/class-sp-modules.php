@@ -28,14 +28,6 @@ class SP_Modules {
 					'label' => __( 'Calendars', 'sportspress' ),
 					'icon' => 'sp-icon-calendar',
 				),
-				'event_videos' => array(
-					'label' => __( 'Videos', 'sportspress' ),
-					'icon' => 'dashicons dashicons-video-alt',
-				),
-				'countdowns' => array(
-					'label' => __( 'Countdowns', 'sportspress' ),
-					'icon' => 'sp-icon-clock',
-				),
 				'tournaments' => array(
 					'label' => __( 'Tournaments', 'sportspress' ),
 					'class' => 'SportsPress_Tournaments',
