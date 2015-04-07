@@ -5,7 +5,7 @@
  * The SportsPress tournament class handles individual tournament data.
  *
  * @class 		SP_Tournament
- * @version		1.7
+ * @version		1.7.4
  * @package		SportsPress_Tournaments
  * @category	Class
  * @author 		ThemeBoy
@@ -108,7 +108,7 @@ class SP_Tournament {
 				for ( $h = 0; $h < 2; $h++ ) {
 					// Get previous event
 					$j = ( $i - $offset ) * 2 + $h;
-					$prev = $events[ $j ];
+					$prev = sp_array_value( $events, $j, 0 );
 
 					// If no previous event, move right along
 					if ( ! $prev ) continue;

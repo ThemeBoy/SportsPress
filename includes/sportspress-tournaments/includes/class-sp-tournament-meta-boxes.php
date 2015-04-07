@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress_Tournaments
- * @version     1.7
+ * @version     1.7.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -66,6 +66,7 @@ class SP_Tournament_Meta_Boxes {
 	 */
 	public static function details( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
+		$limit = get_option( 'sportspress_tournament_rounds', '6' );
 		$taxonomies = get_object_taxonomies( 'sp_tournament' );
 		$rounds = get_post_meta( $post->ID, 'sp_rounds', true );
 		if ( $rounds === '' ) $rounds = 3;
@@ -78,7 +79,7 @@ class SP_Tournament_Meta_Boxes {
 			}
 			?>
 			<p><strong><?php _e( 'Rounds', 'sportspress' ); ?></strong></p>
-			<p><input name="sp_rounds" type="number" min="1" max="6" value="<?php echo $rounds; ?>" placeholder="0" class="small-text sp-autosave"></p>
+			<p><input name="sp_rounds" type="number" min="1" max="<?php echo esc_attr( $limit ); ?>" value="<?php echo $rounds; ?>" placeholder="0" class="small-text sp-autosave"></p>
 			<p><strong><?php _e( 'Winner', 'sportspress' ); ?></strong></p>
 			<p>
 				<?php
@@ -117,9 +118,10 @@ class SP_Tournament_Meta_Boxes {
 	 */
 	public static function save( $post_id ) {
 		// Rounds
+		$limit = intval( get_option( 'sportspress_tournament_rounds', '6' ) );
 		$rounds = sp_array_value( $_POST, 'sp_rounds', 1 );
 		if ( $rounds < 1 ) $rounds = 1;
-		elseif ( $rounds > 6 ) $rounds = 6;
+		elseif ( $rounds > $limit ) $rounds = $limit;
 		update_post_meta( $post_id, 'sp_rounds', $rounds );
 
 		// Winner

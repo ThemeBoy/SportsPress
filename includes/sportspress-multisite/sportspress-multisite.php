@@ -5,7 +5,7 @@ Plugin URI: http://sportspresspro.com/
 Description: Add multisite network support to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.6
+Version: 1.7.4
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Multisite' ) ) :
  * Main SportsPress Multisite Class
  *
  * @class SportsPress_Multisite
- * @version	1.6
+ * @version	1.7.4
  */
 class SportsPress_Multisite {
 
@@ -53,7 +53,7 @@ class SportsPress_Multisite {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_MULTISITE_VERSION' ) )
-			define( 'SP_MULTISITE_VERSION', '1.6' );
+			define( 'SP_MULTISITE_VERSION', '1.7.4' );
 
 		if ( !defined( 'SP_MULTISITE_URL' ) )
 			define( 'SP_MULTISITE_URL', plugin_dir_url( __FILE__ ) );
@@ -62,6 +62,10 @@ class SportsPress_Multisite {
 			define( 'SP_MULTISITE_DIR', plugin_dir_path( __FILE__ ) );
 	}
 
+
+	/**
+	 * Fix permalink
+	*/
 	function fix_permalink( $url, $post = null ) {
 	    if ( is_sp_post_type( get_post_type( $post ) ) && 1 !== get_current_blog_id() ) {
 	    	return str_replace( get_site_url() . '/blog', get_site_url(), $url );
@@ -183,4 +187,20 @@ endif;
 
 if ( get_option( 'sportspress_load_multisite_module', 'yes' ) == 'yes' ) {
 	new SportsPress_Multisite();
+}
+
+/**
+ * Add option to SportsPress settings
+*/
+if ( ! function_exists( 'sportspress_add_multisite_option' ) ) {
+	function sportspress_add_multisite_option( $settings ) {
+		$settings['other']['multisite'] = array(
+			'label' => __( 'Multisite', 'sportspress' ),
+			'class' => 'SportsPress_Multisite',
+			'icon' => 'sp-icon-globe',
+			'link' => 'http://tboy.co/multisite',
+		);
+		return $settings;
+	}
+	add_filter( 'sportspress_modules', 'sportspress_add_multisite_option', 100 );
 }
