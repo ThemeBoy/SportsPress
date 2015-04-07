@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.7
+ * @version     1.7.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -28,7 +28,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 	public function __construct() {
 		$this->id    = 'modules';
 		$this->label = __( 'Modules', 'sportspress' );
-		$this->theme = wp_get_theme();
 
 		$this->sections = apply_filters( 'sportspress_module_sections', array(
 			'general' => __( 'General', 'sportspress' ),
@@ -85,10 +84,10 @@ class SP_Settings_Modules extends SP_Settings_Page {
 						</thead>
 						<tbody>
 							<tr><td>
-								<p><?php _e( 'Offer premium news & highlights from leading globals sports. SportsPress TV will keep your visitors entertained for hours.','sportspress' ); ?></p>
+								<p><?php _e( 'Offer premium news & highlights from leading global sports. SportsPress TV will keep your visitors entertained for hours.','sportspress' ); ?></p>
 								<p class="sp-module-actions">
 									<span><?php _e( 'Free', 'sportspress' ); ?></span>
-									<a class="button" href="<?php echo add_query_arg( array( 'tab' => 'search', 's' => 'sportspress+tv' ), network_admin_url( 'plugin-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
+									<a class="button" href="<?php echo add_query_arg( array( 'tab' => 'search', 's' => 'SportsPress+TV' ), network_admin_url( 'plugin-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
 								</p>
 							</td></tr>
 						</tbody>
@@ -157,6 +156,46 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					<?php } ?>
 				<?php } ?>
 
+				<?php if ( current_user_can( 'manage_network_themes' ) ) { ?>
+					<?php $theme = wp_get_theme(); ?>
+					<?php if ( 'rookie' == $theme->stylesheet ) { ?>
+						<table class="widefat" cellspacing="0">
+							<thead>
+								<tr><th>
+									<strong><?php _e( 'Current Theme', 'sportspress' ); ?></strong>
+								</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>
+									<img src="<?php echo $theme->get_screenshot(); ?>" class="sp-theme-screenshot">
+									<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
+									<p class="sp-module-actions">
+										<a class="button" href="http://tboy.co/themes" target="_blank"><?php _e( 'Need a Better Theme?', 'sportspress' ); ?></a>
+									</p>
+								</td></tr>
+							</tbody>
+						</table>
+					<?php } elseif ( ! current_theme_supports( 'sportspress' ) ) { ?>
+						<table class="widefat" cellspacing="0">
+							<thead>
+								<tr><th>
+									<strong><?php _e( 'Free SportsPress Theme', 'sportspress' ); ?></strong>
+								</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>
+									<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/rookie.png" class="sp-theme-screenshot">
+									<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
+									<p class="sp-module-actions">
+										<span><?php _e( 'Free', 'sportspress' ); ?></span>
+										<a class="button" href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
+									</p>
+								</td></tr>
+							</tbody>
+						</table>
+					<?php } ?>
+				<?php } ?>
+
 				<table class="widefat" cellspacing="0">
 					<thead>
 						<tr><th>
@@ -190,28 +229,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 						</td></tr>
 					</tbody>
 				</table>
-
-				<?php if ( current_user_can( 'manage_network_themes' ) ) { ?>
-					<?php $theme = wp_get_theme(); ?>
-					<?php if ( ! current_theme_supports( 'sportspress' ) ) { ?>
-						<table class="widefat" cellspacing="0">
-							<thead>
-								<tr><th>
-									<strong><?php _e( 'Current Theme', 'sportspress' ); ?></strong>
-								</th></tr>
-							</thead>
-							<tbody>
-								<tr><td>
-									<img src="<?php echo $theme->get_screenshot(); ?>" class="sp-theme-screenshot">
-									<p><?php _e( '<strong>Your theme does not declare SportsPress support</strong> &#8211; if you encounter layout issues please read our integration guide or choose a SportsPress theme :)', 'sportspress' ); ?></p>
-									<p class="sp-module-actions">
-										<a class="button" href="http://tboy.co/themes" target="_blank"><?php _e( 'Need a Better Theme?', 'sportspress' ); ?></a>
-									</p>
-								</td></tr>
-							</tbody>
-						</table>
-					<?php } ?>
-				<?php } ?>
 			</div>
 
 			<div class="sp-modules-main">

@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.7.1
+Stable tag: 1.7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -223,6 +223,24 @@ There are [3 different licenses](http://tboy.co/pricing) that you can choose fro
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.7.4 =
+* Feature - Filter teams by competition and season on page load when editing event.
+* Feature - Enable multiple team selection in calendars.
+* Feature - Ability to install free starter theme from modules page.
+* Tweak - Use YouTube for tutorials instead of Vimeo.
+* Localization - Update Finnish, Dutch, Czech, Italian, and Polish translations.
+
+= 1.7.3 =
+* Tweak - Add option to hide/show player statistics.
+* Tweak - Always load overview, widgets, and importers.
+* Fix - Notice displaying in player statistics when no players available.
+* Localization - Update Greek, Polish, Finnish, Dutch, and Icelandic translations.
+
+= 1.7.2 =
+* Fix - Player positions disappearing in event page.
+* Fix - Individual mode automatically loading by default.
+* Localization - Update Polish translation.
 
 = 1.7.1 =
 * Fix - Activation error related to server limitations.

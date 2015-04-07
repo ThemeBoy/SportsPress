@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.7
+ * @version     1.7.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -240,6 +240,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'auto'		=> __( 'Auto', 'sportspress' ),
 						'manual'	=> __( 'Manual', 'sportspress' ),
 					),
+				),
+				
+				array(
+					'title'     => __( 'Position', 'sportspress' ),
+					'desc' 		=> __( 'Display position', 'sportspress' ),
+					'id' 		=> 'sportspress_event_show_position',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
 				),
 
 				array(

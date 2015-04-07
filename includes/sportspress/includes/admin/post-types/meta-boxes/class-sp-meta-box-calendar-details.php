@@ -1,11 +1,11 @@
 <?php
 /**
- * Calendar Data
+ * Calendar Details
  *
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.7
+ * @version     1.7.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -24,7 +24,8 @@ class SP_Meta_Box_Calendar_Details {
 		$date = get_post_meta( $post->ID, 'sp_date', true );
 		$date_from = get_post_meta( $post->ID, 'sp_date_from', true );
 		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
-		$team_id = get_post_meta( $post->ID, 'sp_team', true );
+		$teams = get_post_meta( $post->ID, 'sp_team', false );
+		$table_id = get_post_meta( $post->ID, 'sp_table', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
 		?>
 		<div>
@@ -66,11 +67,14 @@ class SP_Meta_Box_Calendar_Details {
 			<p>
 				<?php
 				$args = array(
-					'show_option_all' => __( 'All', 'sportspress' ),
 					'post_type' => 'sp_team',
-					'name' => 'sp_team',
-					'selected' => $team_id,
-					'values' => 'ID'
+					'name' => 'sp_team[]',
+					'selected' => $teams,
+					'values' => 'ID',
+					'class' => 'widefat',
+					'property' => 'multiple',
+					'chosen' => true,
+					'placeholder' => __( 'All', 'sportspress' ),
 				);
 				if ( ! sp_dropdown_pages( $args ) ):
 					sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' )  );
@@ -97,6 +101,6 @@ class SP_Meta_Box_Calendar_Details {
 		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null ) );
 		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
-		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', 0 ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 	}
 }

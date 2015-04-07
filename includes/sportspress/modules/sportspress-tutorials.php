@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Display SportsPress video tutorials.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.7
+Version: 1.7.4
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
  * Main SportsPress Tutorials Class
  *
  * @class SportsPress_Tutorials
- * @version	1.7
+ * @version	1.7.4
  */
 class SportsPress_Tutorials {
 
@@ -44,7 +44,7 @@ class SportsPress_Tutorials {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_TUTORIALS_VERSION' ) )
-			define( 'SP_TUTORIALS_VERSION', '1.7' );
+			define( 'SP_TUTORIALS_VERSION', '1.7.4' );
 
 		if ( !defined( 'SP_TUTORIALS_URL' ) )
 			define( 'SP_TUTORIALS_URL', plugin_dir_url( __FILE__ ) );
@@ -59,27 +59,27 @@ class SportsPress_Tutorials {
 	public function get_video_ids() {
 		$this->ids = apply_filters( 'sportspress_tutorial_videos', array(
 			__( 'Get Started', 'sportspress' ) => apply_filters( 'sportspress_get_started_tutorial_videos', array(
-				__( 'Installation', 'sportspress' ) => '121430679',
-				__( 'Competitions', 'sportspress' ) . ' &amp; ' . __( 'Seasons', 'sportspress' ) => '121438196',
-				__( 'Venues', 'sportspress' ) => '121438615',
-				__( 'Positions', 'sportspress' ) . ' &amp; ' . __( 'Jobs', 'sportspress' ) => '121438826',
+				__( 'Installation', 'sportspress' ) => '//www.youtube-nocookie.com/embed/nE8-RlbotmU?rel=0&amp;showinfo=0',
+				__( 'Competitions', 'sportspress' ) . ' &amp; ' . __( 'Seasons', 'sportspress' ) => '//www.youtube-nocookie.com/embed/XAf2EsDrf8M?rel=0&amp;showinfo=0',
+				__( 'Venues', 'sportspress' ) => '//www.youtube-nocookie.com/embed/iTZnC_7VvYk?rel=0&amp;showinfo=0',
+				__( 'Positions', 'sportspress' ) . ' &amp; ' . __( 'Jobs', 'sportspress' ) => '//www.youtube-nocookie.com/embed/g6QKbDH05n0?rel=0&amp;showinfo=0',
 			) ),
 			__( 'Teams', 'sportspress' ) => apply_filters( 'sportspress_team_tutorial_videos', array(
-				__( 'Add New Team', 'sportspress' ) => '121439873',
-				__( 'League Tables', 'sportspress' ) => '121592514',
+				__( 'Add New Team', 'sportspress' ) => '//www.youtube-nocookie.com/embed/x8GoxaHwC9U?rel=0&amp;showinfo=0',
+				__( 'League Tables', 'sportspress' ) => '//www.youtube-nocookie.com/embed/8AXh399Vstc?rel=0&amp;showinfo=0',
 			) ),
 			__( 'Players', 'sportspress' ) . ' &amp; ' . __( 'Staff', 'sportspress' ) => array_merge(
 				apply_filters( 'sportspress_player_tutorial_videos', array(
-					__( 'Add New Player', 'sportspress' ) => '121440032',
+					__( 'Add New Player', 'sportspress' ) => '//www.youtube-nocookie.com/embed/wWYQNHITz-g?rel=0&amp;showinfo=0',
 				) ),
 				apply_filters( 'sportspress_staff_tutorial_videos', array(
-					__( 'Add New Staff', 'sportspress' ) => '121440185',
+					__( 'Add New Staff', 'sportspress' ) => '//www.youtube-nocookie.com/embed/cxm2S7qYSL4?rel=0&amp;showinfo=0',
 				) )
 			),
 			__( 'Events', 'sportspress' ) => apply_filters( 'sportspress_event_tutorial_videos', array(
-				__( 'Add New Event', 'sportspress' ) => '121524233',
-				__( 'Edit Event', 'sportspress' ) => '121590015',
-				__( 'Calendars', 'sportspress' ) => '121591259',
+				__( 'Add New Event', 'sportspress' ) => '//www.youtube-nocookie.com/embed/UA25lgqgnSc?rel=0&amp;showinfo=0',
+				__( 'Edit Event', 'sportspress' ) => '//www.youtube-nocookie.com/embed/nL0ObdPMyBM?rel=0&amp;showinfo=0',
+				__( 'Calendars', 'sportspress' ) => '//www.youtube-nocookie.com/embed/NIHBKMMqN0s?rel=0&amp;showinfo=0',
 			) ),
 		) );
 	}
@@ -102,24 +102,24 @@ class SportsPress_Tutorials {
 				<?php _e( 'Tutorials', 'sportspress' ); ?>
 			</h2>
 			<div class="sp-tutorials-main">
-				<?php foreach ( $this->ids as $section => $ids ) { ?>
+				<?php foreach ( $this->ids as $section => $urls ) { ?>
 					<h3><?php echo $section; ?></h3>
 					<ul class="sp-tutorials-list">
-						<?php foreach ( $ids as $label => $id ) { $i++; ?>
+						<?php foreach ( $urls as $label => $url ) { $i++; ?>
 							<li>
 								<table class="widefat" cellspacing="0">
 									<thead>
 										<tr><th>
 											<strong><?php echo $i; ?></strong> 
 											<?php echo $label; ?>
-											<a href="#" class="sp-popup sp-icon-popup" title="<?php _e( 'Pop-out', 'sportspress' ); ?>" onclick="window.open('//player.vimeo.com/video/<?php echo $id; ?>?color=00a69c&amp;portrait=0&amp;title=0&amp;byline=0&amp;autoplay=1', '_blank', 'width=640, height=360');return false;"></a>
+											<a href="#" class="sp-popup sp-icon-popup" title="<?php _e( 'Pop-out', 'sportspress' ); ?>" onclick="window.open('<?php echo esc_url( add_query_arg( 'autoplay', 1, $url ) ); ?>', '_blank', 'width=640, height=360');return false;"></a>
 										</th></tr>
 									</thead>
 									<tbody>
 										<tr>
 											<td>
 												<div class="sp-fitvids">
-													<iframe src="//player.vimeo.com/video/<?php echo $id; ?>?color=00a69c&amp;portrait=0&amp;title=0&amp;byline=0" width="320" height="180" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+													<iframe width="320" height="180" src="<?php echo $url; ?>" frameborder="0" allowfullscreen></iframe>
 												</div>
 											</td>
 										</tr>

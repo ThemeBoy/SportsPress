@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.6
+ * @version     1.7.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -63,7 +63,20 @@ class SP_Meta_Box_Event_Teams {
 					'values' => 'ID',
 					'selected' => $team,
 					'chosen' => true,
+					'tax_query' => array(),
 				);
+				if ( $league_id ) {
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_league',
+						'terms' => $league_id,
+					);
+				}
+				if ( $season_id ) {
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_season',
+						'terms' => $season_id,
+					);
+				}
 				sp_dropdown_pages( $args );
 				?>
 				</p>

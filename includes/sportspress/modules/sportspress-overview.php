@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Display a visual overview of SportsPress data.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.7
+Version: 1.7.3
 */
 
 // Exit if accessed directly
@@ -399,6 +399,4 @@ class SportsPress_Overview {
 
 endif;
 
-if ( get_option( 'sportspress_load_overview_module', 'yes' ) == 'yes' ) {
-	new SportsPress_Overview();
-}
+new SportsPress_Overview();

@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add importers to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.7
+Version: 1.7.3
 */
 
 // Exit if accessed directly
@@ -57,6 +57,4 @@ class SportsPress_Importers {
 
 endif;
 
-if ( get_option( 'sportspress_load_importers_module', 'yes' ) == 'yes' ) {
-	new SportsPress_Importers();
-}
+new SportsPress_Importers();
