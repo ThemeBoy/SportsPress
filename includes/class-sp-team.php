@@ -235,7 +235,11 @@ class SP_Team extends SP_Custom_Post {
 			// Generate array of placeholder values for each league
 			$placeholders[ $div_id ] = array();
 			foreach ( $equations as $key => $value ):
-				$placeholders[ $div_id ][ $key ] = sp_solve( $value['equation'], $totals, $value['precision'] );
+				if ( '$gamesback' == $value['equation'] ) {
+					$placeholders[ $div_id ][ $key ] = __( '(Auto)', 'sportspress' );
+				} else {
+					$placeholders[ $div_id ][ $key ] = sp_solve( $value['equation'], $totals, $value['precision'] );
+				}
 			endforeach;
 
 		endforeach;

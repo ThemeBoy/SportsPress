@@ -325,6 +325,9 @@ class SP_League_Table extends SP_Custom_Post{
 		// Sort priorities in descending order
 		ksort( $this->priorities );
 
+		// Initialize games back column variable
+		$gb_column = null;
+
 		// Fill in empty placeholder values for each team
 		foreach ( $team_ids as $team_id ):
 			if ( ! $team_id )
@@ -342,7 +345,10 @@ class SP_League_Table extends SP_Custom_Post{
 						// Solve
 						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $team_id, array() ), $stat->precision );
 
-						if ( ! in_array( $stat->equation, array( '$streak', '$last5', '$last10' ) ) ):
+						if ( '$gamesback' == $stat->equation )
+							$gb_column = $stat->post_name;
+
+						if ( ! in_array( $stat->equation, array( '$gamesback', '$streak', '$last5', '$last10' ) ) ):
 							// Adjustments
 							$adjustment = sp_array_value( $adjustments, $team_id, array() );
 
@@ -357,6 +363,59 @@ class SP_League_Table extends SP_Custom_Post{
 				endif;
 			endforeach;
 		endforeach;
+
+		// Find win and loss variables for games back
+		$w = $l = null;
+		if ( $gb_column ) {
+			$args = array(
+				'post_type' => 'sp_outcome',
+				'numberposts' => 1,
+				'posts_per_page' => 1,
+				'meta_query' => array(
+					array(
+						'key' => 'sp_condition',
+						'value' => '>',
+					),
+				),
+			);
+			$outcomes = get_posts( $args );
+
+			if ( $outcomes ) {
+				$outcome = reset( $outcomes );
+				if ( is_array( $stats ) ) {
+					foreach ( $stats as $stat ) {
+						if ( '$' . $outcome->post_name == $stat->equation ) {
+							$w = $stat->post_name;
+						}
+					}
+				}
+			}
+
+			// Calculate games back
+			$args = array(
+				'post_type' => 'sp_outcome',
+				'numberposts' => 1,
+				'posts_per_page' => 1,
+				'meta_query' => array(
+					array(
+						'key' => 'sp_condition',
+						'value' => '<',
+					),
+				),
+			);
+			$outcomes = get_posts( $args );
+
+			if ( $outcomes ) {
+				$outcome = reset( $outcomes );
+				if ( is_array( $stats ) ) {
+					foreach ( $stats as $stat ) {
+						if ( '$' . $outcome->post_name == $stat->equation ) {
+							$l = $stat->post_name;
+						}
+					}
+				}
+			}
+		}
 
 		// Merge the data and placeholders arrays
 		$merged = array();
@@ -395,8 +454,10 @@ class SP_League_Table extends SP_Custom_Post{
 		endforeach;
 		
 		if ( $admin ):
+			$this->add_gb( $placeholders, $w, $l, $gb_column );
 			return array( $columns, $usecolumns, $data, $placeholders, $merged );
 		else:
+			$this->add_gb( $merged, $w, $l, $gb_column );
 			if ( ! is_array( $usecolumns ) )
 				$usecolumns = array();
 			$labels = array_merge( array( 'pos' => __( 'Pos', 'sportspress' ), 'name' => __( 'Team', 'sportspress' ) ), $columns );
@@ -466,5 +527,31 @@ class SP_League_Table extends SP_Custom_Post{
 
 		// Repeat position if equal
 		return $this->pos;
+	}
+
+
+	/**
+	 * Calculate and add games back.
+	 *
+	 * @param array $a
+	 * @param string $w
+	 * @param string $l
+	 * @param string $column
+	 * @return null
+	 */
+	public function add_gb( &$a, $w = null, $l = null, $column ) {
+		if ( ! is_array( $a ) ) return;
+		if ( ! $w && ! $l ) return;
+
+		foreach ( $a as $team_id => $values ) {
+			if ( isset( $leader ) ) {
+				$gb = ( sp_array_value( $leader, $w, 0 ) - sp_array_value( $values, $w, 0 ) + sp_array_value( $values, $l, 0 ) - sp_array_value( $leader, $l, 0 ) ) / 2;
+				if ( '-' == sp_array_value( $values, $column ) ) {
+					$a[ $team_id ][ $column ] = $gb;
+				}
+			} else {
+				$leader = $values;
+			}
+		}
 	}
 }

@@ -1029,7 +1029,12 @@ if ( !function_exists( 'sp_solve' ) ) {
 		if ( $equation == null )
 			return '-';
 
-		if ( strpos( $equation, '$streak' ) !== false ):
+		if ( strpos( $equation, '$gamesback' ) !== false ):
+
+			// Return placeholder
+			return '-';
+
+		elseif ( strpos( $equation, '$streak' ) !== false ):
 
 			// Return direct value
 			return sp_array_value( $vars, 'streak', '-' );
@@ -1057,6 +1062,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 		endif;
 
 		// Remove unnecessary variables from vars before calculating
+		unset( $vars['gamesback'] );
 		unset( $vars['streak'] );
 		unset( $vars['last5'] );
 		unset( $vars['last10'] );
