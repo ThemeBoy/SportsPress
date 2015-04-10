@@ -546,7 +546,7 @@ class SP_League_Table extends SP_Custom_Post{
 		foreach ( $a as $team_id => $values ) {
 			if ( isset( $leader ) ) {
 				$gb = ( sp_array_value( $leader, $w, 0 ) - sp_array_value( $values, $w, 0 ) + sp_array_value( $values, $l, 0 ) - sp_array_value( $leader, $l, 0 ) ) / 2;
-				if ( '-' == sp_array_value( $values, $column ) ) {
+				if ( '-' == sp_array_value( $values, $column ) && 0 !== $gb ) {
 					$a[ $team_id ][ $column ] = $gb;
 				}
 			} else {
