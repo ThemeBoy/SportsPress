@@ -41,7 +41,7 @@ class SP_Meta_Box_Equation {
 					break;
 				case 'outcome':
 					$options[ 'Outcomes' ] = self::optgroup( 'sp_outcome' );
-					$options[ 'Outcomes' ]['$gb'] = __( 'Games Back', 'sportspress' );
+					$options[ 'Outcomes' ]['$gamesback'] = __( 'Games Back', 'sportspress' );
 					$options[ 'Outcomes' ]['$streak'] = __( 'Streak', 'sportspress' );
 					$options[ 'Outcomes' ]['$last5'] = __( 'Last 5', 'sportspress' );
 					$options[ 'Outcomes' ]['$last10'] = __( 'Last 10', 'sportspress' );
