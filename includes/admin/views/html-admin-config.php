@@ -9,8 +9,8 @@
 				'post_type' => 'sp_outcome',
 				'numberposts' => -1,
 				'posts_per_page' => -1,
-					'orderby' => 'menu_order',
-					'order' => 'ASC'
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
 			);
 			$data = get_posts( $args );
 			?>
@@ -64,8 +64,8 @@
 				'post_type' => 'sp_result',
 				'numberposts' => -1,
 				'posts_per_page' => -1,
-					'orderby' => 'menu_order',
-					'order' => 'ASC'
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
 			);
 			$data = get_posts( $args );
 			?>
@@ -219,8 +219,8 @@
 				'post_type' => 'sp_column',
 				'numberposts' => -1,
 				'posts_per_page' => -1,
-					'orderby' => 'menu_order',
-					'order' => 'ASC'
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
 			);
 			$data = get_posts( $args );
 			?>
@@ -275,8 +275,8 @@
 				'post_type' => 'sp_metric',
 				'numberposts' => -1,
 				'posts_per_page' => -1,
-					'orderby' => 'menu_order',
-					'order' => 'ASC'
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
 			);
 			$data = get_posts( $args );
 			?>
