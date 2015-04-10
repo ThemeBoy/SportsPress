@@ -612,12 +612,9 @@ table.sp-modules-table td .button {
 	top: 9px;
 }
 
-table.sp-modules-table .button-primary {
-	display: none;
-}
-
-table.sp-modules-table td:hover .button-primary {
-	display: inline-block;
+table.sp-modules-table .sp-desc {
+	color: #aaa;
+	float: right;
 }
 
 table.sp-modules-table [class^="sp-icon-"],
@@ -629,7 +626,7 @@ table.sp-modules-table .dashicons {
 	line-height: 1;
 }
 
-table.sp-modules-table .sp-module-unavailable span {
+table.sp-modules-table .sp-module-unavailable .sp-desc-tip {
 	vertical-align: middle;
 	color: #aaa;
 }

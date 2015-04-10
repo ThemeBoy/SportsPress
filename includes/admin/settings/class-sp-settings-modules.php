@@ -248,8 +248,16 @@ class SP_Settings_Modules extends SP_Settings_Page {
 									<i class="<?php echo sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ); ?>"></i>
 									<?php echo sp_array_value( $module, 'label', $id ); ?>
 								</span>
-								<?php if ( array_key_exists( 'link', $module ) ) { ?>
-								<a class="button<?php if ( ! array_key_exists( 'action', $module ) ) { ?> button-primary<?php } ?>" href="<?php echo $module['link']; ?>" target="_blank"><?php echo sp_array_value( $module, 'action', __( 'Learn More', 'sportspress' ) ); ?></a>
+								<?php if ( isset( $module['desc'] ) && ! array_key_exists( 'action', $module ) ) { ?>
+									<span class="sp-desc">
+										<?php echo $module['desc']; ?>
+										<?php if ( array_key_exists( 'link', $module ) && ! array_key_exists( 'action', $module ) ) { ?>
+											<a href="<?php echo $module['link']; ?>" target="_blank"><?php echo sp_array_value( $module, 'action', __( 'Learn more', 'sportspress' ) ); ?></a>
+										<?php } ?>
+									</span>
+								<?php } ?>
+								<?php if ( array_key_exists( 'link', $module ) && array_key_exists( 'action', $module ) ) { ?>
+									<a class="button" href="<?php echo $module['link']; ?>" target="_blank"><?php echo sp_array_value( $module, 'action', __( 'Learn more', 'sportspress' ) ); ?></a>
 								<?php } ?>
 							</td></tr>
 							<?php } else { ?>
@@ -259,6 +267,9 @@ class SP_Settings_Modules extends SP_Settings_Page {
 									<i class="<?php echo sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ); ?>"></i>
 									<?php echo sp_array_value( $module, 'label', $id ); ?>
 								</label>
+								<?php if ( isset( $module['desc'] ) ) { ?>
+									<span class="sp-desc"><?php echo $module['desc']; ?></span>
+								<?php } ?>
 							</td></tr>
 							<?php } ?>
 						<?php } ?>

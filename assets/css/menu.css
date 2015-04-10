@@ -102,7 +102,7 @@
 	content: "\f330";
 }
 .sp-icon-stopwatch:before {
-	content: "\f503";
+	content: "\f469";
 }
 .sp-icon-availability:before {
 	content: "\f508";
@@ -118,6 +118,12 @@
 }
 .sp-icon-export:before {
 	content: "\f317";
+}
+.sp-icon-box:before {
+	content: "\f480";
+}
+.sp-icon-branding:before {
+	content: "\f332";
 }
 
 #adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,
