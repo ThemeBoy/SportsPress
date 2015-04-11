@@ -236,7 +236,7 @@
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Decimal Places', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Sort Order', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
@@ -341,7 +341,7 @@
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Decimal Places', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
 							</tr>
