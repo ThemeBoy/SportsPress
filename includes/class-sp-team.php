@@ -77,7 +77,7 @@ class SP_Team extends SP_Custom_Post {
 
 		foreach ( $div_ids as $div_id ):
 
-			$totals = array( 'eventsplayed' => 0, 'eventminutes' => 0, 'streak' => 0, 'last5' => null, 'last10' => null );
+			$totals = array( 'eventsplayed' => 0, 'eventminutes' => 0, 'streak' => 0, 'last5' => null, 'last10' => null, 'homerecord' => null, 'awayrecord' => null );
 
 			foreach ( $result_labels as $key => $value ):
 				$totals[ $key . 'for' ] = 0;
@@ -95,10 +95,16 @@ class SP_Team extends SP_Custom_Post {
 			$last5 = array();
 			$last10 = array();
 
-			// Add outcome types to last counters
+			// Initialize record counters
+			$homerecord = array();
+			$awayrecord = array();
+
+			// Add outcome types to last and record counters
 			foreach( $outcome_labels as $key => $value ):
 				$last5[ $key ] = 0;
 				$last10[ $key ] = 0;
+				$homerecord[ $key ] = 0;
+				$awayrecord[ $key ] = 0;
 			endforeach;
 
 			// Get all events involving the team in current season
@@ -150,6 +156,8 @@ class SP_Team extends SP_Custom_Post {
 				$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
 				if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
+				$i = 0;
+
 				foreach ( $results as $team_id => $team_result ):
 					if ( is_array( $team_result ) ): foreach ( $team_result as $key => $value ):
 						if ( $team_id == $this->ID ):
@@ -189,6 +197,17 @@ class SP_Team extends SP_Custom_Post {
 											$last10[ $outcome ] ++;
 										endif;
 
+										// Add to home or away record
+										if ( 0 === $i ) {
+											if ( array_key_exists( $outcome, $homerecord ) ) {
+												$homerecord[ $outcome ] ++;
+											}
+										} else {
+											if ( array_key_exists( $outcome, $awayrecord ) ) {
+												$awayrecord[ $outcome ] ++;
+											}
+										}
+
 									endif;
 
 								endforeach;
@@ -206,6 +225,7 @@ class SP_Team extends SP_Custom_Post {
 							endif;
 						endif;
 					endforeach; endif;
+					$i++;
 				endforeach;
 			endforeach;
 
@@ -228,9 +248,11 @@ class SP_Team extends SP_Custom_Post {
 				$totals['streak'] = $abbreviation . $streak['count'];
 			endif;
 
-			// Add last counters to totals
+			// Add last and record counters to totals
 			$totals['last5'] = $last5;
 			$totals['last10'] = $last10;
+			$totals['homerecord'] = $homerecord;
+			$totals['awayrecord'] = $awayrecord;
 
 			// Generate array of placeholder values for each league
 			$placeholders[ $div_id ] = array();

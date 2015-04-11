@@ -104,6 +104,10 @@ class SP_League_Table extends SP_Custom_Post{
 		$last5s = array();
 		$last10s = array();
 
+		// Initialize record counters
+		$homerecords = array();
+		$awayrecords = array();
+
 		foreach ( $team_ids as $team_id ):
 			if ( ! $team_id )
 				continue;
@@ -115,10 +119,16 @@ class SP_League_Table extends SP_Custom_Post{
 			$last5s[ $team_id ] = array();
 			$last10s[ $team_id ] = array();
 
-			// Add outcome types to team last counters
+			// Initialize team record counters
+			$homerecords[ $team_id ] = array();
+			$awayrecords[ $team_id ] = array();
+
+			// Add outcome types to team last and record counters
 			foreach( $outcome_labels as $key => $value ):
 				$last5s[ $team_id ][ $key ] = 0;
 				$last10s[ $team_id ][ $key ] = 0;
+				$homerecords[ $team_id ][ $key ] = 0;
+				$awayrecords[ $team_id ][ $key ] = 0;
 			endforeach;
 
 			// Initialize team totals
@@ -187,6 +197,8 @@ class SP_League_Table extends SP_Custom_Post{
 			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
 			if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
+			$i = 0;
+
 			foreach ( $results as $team_id => $team_result ):
 
 				if ( ! in_array( $team_id, $team_ids ) )
@@ -229,6 +241,17 @@ class SP_League_Table extends SP_Custom_Post{
 									$last10s[ $team_id ][ $outcome ] ++;
 								endif;
 
+								// Add to home or away record
+								if ( 0 === $i ) {
+									if ( array_key_exists( $team_id, $homerecords ) && array_key_exists( $outcome, $homerecords[ $team_id ] ) ) {
+										$homerecords[ $team_id ][ $outcome ] ++;
+									}
+								} else {
+									if ( array_key_exists( $team_id, $awayrecords ) && array_key_exists( $outcome, $awayrecords[ $team_id ] ) ) {
+										$awayrecords[ $team_id ][ $outcome ] ++;
+									}
+								}
+
 							endif;
 
 						endforeach;
@@ -245,6 +268,8 @@ class SP_League_Table extends SP_Custom_Post{
 					endif;
 
 				endforeach; endif;
+
+				$i++;
 
 			endforeach;
 
@@ -285,6 +310,16 @@ class SP_League_Table extends SP_Custom_Post{
 		foreach ( $last10s as $team_id => $last10 ):
 			// Add last 10 to totals
 			$totals[ $team_id ]['last10'] = $last10;
+		endforeach;
+
+		foreach ( $homerecords as $team_id => $homerecord ):
+			// Add home record to totals
+			$totals[ $team_id ]['homerecord'] = $homerecord;
+		endforeach;
+
+		foreach ( $awayrecords as $team_id => $awayrecord ):
+			// Add away record to totals
+			$totals[ $team_id ]['awayrecord'] = $awayrecord;
 		endforeach;
 
 		$args = array(
@@ -348,7 +383,7 @@ class SP_League_Table extends SP_Custom_Post{
 						if ( '$gamesback' == $stat->equation )
 							$gb_column = $stat->post_name;
 
-						if ( ! in_array( $stat->equation, array( '$gamesback', '$streak', '$last5', '$last10' ) ) ):
+						if ( ! in_array( $stat->equation, array( '$gamesback', '$streak', '$last5', '$last10', '$homerecord', '$awayrecord' ) ) ):
 							// Adjustments
 							$adjustment = sp_array_value( $adjustments, $team_id, array() );
 

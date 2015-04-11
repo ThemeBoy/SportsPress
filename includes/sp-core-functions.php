@@ -1059,6 +1059,18 @@ if ( !function_exists( 'sp_solve' ) ) {
 				return '-';
 			endif;
 
+		elseif ( strpos( $equation, '$homerecord' ) !== false ):
+
+			// Return imploded string
+			$homerecord = sp_array_value( $vars, 'homerecord', array( 0 ) );
+			return implode( '-', $homerecord );
+
+		elseif ( strpos( $equation, '$awayrecord' ) !== false ):
+
+			// Return imploded string
+			$awayrecord = sp_array_value( $vars, 'awayrecord', array( 0 ) );
+			return implode( '-', $awayrecord );
+
 		endif;
 
 		// Remove unnecessary variables from vars before calculating
