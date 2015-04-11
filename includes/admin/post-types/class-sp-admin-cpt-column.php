@@ -43,7 +43,7 @@ class SP_Admin_CPT_Column extends SP_Admin_CPT {
 			'title' => __( 'Label', 'sportspress' ),
 			'sp_key' => __( 'Key', 'sportspress' ),
 			'sp_equation' => __( 'Equation', 'sportspress' ),
-			'sp_precision' => __( 'Rounding', 'sportspress' ),
+			'sp_precision' => __( 'Decimal Places', 'sportspress' ),
 			'sp_order' => __( 'Sort Order', 'sportspress' ),
 			'sp_description' => __( 'Description', 'sportspress' ),
 		);
