@@ -462,8 +462,8 @@ class SP_Post_types {
 			apply_filters( 'sportspress_register_post_type_staff',
 				array(
 					'labels' => array(
-						'name' 					=> _n( 'Staff', 'Staff', 2, 'sportspress' ),
-						'singular_name' 		=> _n( 'Staff', 'Staff', 1, 'sportspress' ),
+						'name' 					=> __( 'Staff', 'sportspress' ),
+						'singular_name' 		=> __( 'Staff', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Staff', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Staff', 'sportspress' ),
 						'new_item' 				=> __( 'New', 'sportspress' ),
