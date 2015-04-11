@@ -179,6 +179,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'manual'	=> __( 'Manual', 'sportspress' ),
 					),
 				),
+
+				array(
+					'title'     => __( 'Teams', 'sportspress' ),
+					'desc' 		=> __( 'Reverse order', 'sportspress' ),
+					'id' 		=> 'sportspress_event_results_reverse_teams',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
 				
 				array(
 					'title'     => __( 'Outcome', 'sportspress' ),
@@ -241,14 +249,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'manual'	=> __( 'Manual', 'sportspress' ),
 					),
 				),
-				
-				array(
-					'title'     => __( 'Position', 'sportspress' ),
-					'desc' 		=> __( 'Display position', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_position',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-				),
 
 				array(
 					'title' 	=> __( 'Mode', 'sportspress' ),
@@ -262,12 +262,28 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 
 				array(
+					'title'     => __( 'Teams', 'sportspress' ),
+					'desc' 		=> __( 'Reverse order', 'sportspress' ),
+					'id' 		=> 'sportspress_event_performance_reverse_teams',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
 					'title'     => __( 'Players', 'sportspress' ),
 					'desc' 		=> __( 'Display squad numbers', 'sportspress' ),
 					'id' 		=> 'sportspress_event_show_player_numbers',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
 					'checkboxgroup' 	=> 'start',
+				),
+				
+				array(
+					'desc' 		=> __( 'Display positions', 'sportspress' ),
+					'id' 		=> 'sportspress_event_show_position',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
 				),
 
 				array(

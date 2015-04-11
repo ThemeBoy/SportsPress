@@ -10,6 +10,8 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( get_option( 'sportspress_event_show_results', 'yes' ) === 'no' ) return;
 
+$reverse_teams = get_option( 'sportspress_event_results_reverse_teams', 'no' ) === 'yes' ? true : false;
+
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 
@@ -40,6 +42,10 @@ $show_outcomes = array_key_exists( 'outcome', $labels );
 $output = '';
 $table_rows = '';
 $i = 0;
+
+if ( $reverse_teams ) {
+	$data = array_reverse( $data, true );
+}
 
 foreach( $data as $team_id => $result ):
 	if ( $show_outcomes ):

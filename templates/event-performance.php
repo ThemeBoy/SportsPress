@@ -16,6 +16,7 @@ $show_total = get_option( 'sportspress_event_show_total', 'yes' ) === 'yes' ? tr
 $show_numbers = get_option( 'sportspress_event_show_player_numbers', 'yes' ) === 'yes' ? true : false;
 $split_positions = get_option( 'sportspress_event_split_players_by_position', 'no' ) === 'yes' ? true : false;
 $split_teams = get_option( 'sportspress_event_split_players_by_team', 'yes' ) === 'yes' ? true : false;
+$reverse_teams = get_option( 'sportspress_event_performance_reverse_teams', 'no' ) === 'yes' ? true : false;
 $primary = get_option( 'sportspress_primary_performance', null );
 $total = get_option( 'sportspress_event_total_performance', 'all');
 
@@ -54,6 +55,10 @@ if ( is_array( $teams ) ):
 			$performance_ids[ $post->post_name ] = $post->ID;
 		endforeach;
 	endif;
+
+	if ( $reverse_teams ) {
+		$teams = array_reverse( $teams, true );
+	}
 
 	if ( $split_teams ) {
 		// Split tables
