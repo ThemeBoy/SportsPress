@@ -620,4 +620,9 @@ jQuery(document).ready(function($){
 
 	// Fitvids
 	$(".sp-fitvids").fitVids();
+
+	// Display configure sport button
+	$(".sp-select-sport").change(function() {
+		$(".sp-configure-sport").hide();
+	});
 });

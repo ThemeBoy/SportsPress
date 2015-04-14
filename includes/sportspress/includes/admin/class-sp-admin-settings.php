@@ -246,6 +246,8 @@ class SP_Admin_Settings {
 
 	        	// Section Titles
 	            case 'title':
+	            	echo '<div class="sp-settings-section sp-settings-section-' . sanitize_title( sp_array_value( $value, 'id' ) ) . '">';
+	            	echo '<a name="sp-settings-section-' . sanitize_title( sp_array_value( $value, 'id' ) ) . '"></a>';
 	            	if ( ! empty( $value['title'] ) ) {
 	            		echo '<h3>' . esc_html( $value['title'] ) . '</h3>';
 	            	}
@@ -267,6 +269,7 @@ class SP_Admin_Settings {
 	            	if ( ! empty( $value['id'] ) ) {
 	            		do_action( 'sportspress_settings_' . sanitize_title( $value['id'] ) . '_after' );
 	            	}
+	            	echo '</div>';
 	            break;
 
 	            // Standard text inputs and subtypes like 'number'
@@ -419,6 +422,7 @@ class SP_Admin_Settings {
 	            case 'sport' :
 
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] );
+	            	$categories = SP_Admin_Sports::sport_category_names();
 
 	            	?><tr valign="top">
 						<th scope="row" class="titledesc">
@@ -430,14 +434,14 @@ class SP_Admin_Settings {
 	                    		name="<?php echo esc_attr( $value['id'] ); ?><?php if ( $value['type'] == 'multiselect' ) echo '[]'; ?>"
 	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
 	                    		style="<?php echo esc_attr( $value['css'] ); ?>"
-	                    		class="chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?> <?php echo esc_attr( $value['class'] ); ?>"
+	                    		class="sp-select-sport chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?> <?php echo esc_attr( $value['class'] ); ?>"
 	                    		<?php echo implode( ' ', $custom_attributes ); ?>
 	                    		<?php if ( $value['type'] == 'multiselect' ) echo 'multiple="multiple"'; ?>
 	                    		>
 		                    	<?php
 	                    		foreach ( $value['options'] as $group => $options ) {
 	                    			?>
-	                    			<optgroup label="<?php _e( $group, 'sportspress' ); ?>">
+	                    			<optgroup label="<?php echo sp_array_value( $categories, $group, $group ); ?>">
 	                    				<?php
 				                        foreach ( $options as $key => $val ) {
 				                        	?>
@@ -456,7 +460,7 @@ class SP_Admin_Settings {
 				                  	<?php
 				                }
 			                    ?>
-							</select> <?php echo $description; ?>
+							</select> <?php echo $description; ?> <a class="button button-small sp-configure-sport" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress-config' ), 'admin.php' ) ) ); ?>"><?php _e( 'Configure', 'sportspress' ); ?></a>
 							<p>
 								<label>
 									<input type="checkbox" name="add_sample_data" id="add_sample_data" <?php checked( sp_array_value( $value, 'welcome' ) ); ?>>

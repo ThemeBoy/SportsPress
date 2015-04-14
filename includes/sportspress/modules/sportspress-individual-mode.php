@@ -210,12 +210,12 @@ class SportsPress_Individual_Mode {
 	 * Rearrange modules.
 	 */
 	public function rearrange_modules( $modules ) {
-		$modules['player'] = array_merge(
+		$modules['player_staff'] = array_merge(
 			sp_array_value( $modules, 'team', array() ),
-			sp_array_value( $modules, 'player' )
+			sp_array_value( $modules, 'player_staff', array() )
 		);
 		unset( $modules['team'] );
-		unset( $modules['player']['team_colors'] );
+		unset( $modules['player_staff']['team_colors'] );
 		return $modules;
 	}
 

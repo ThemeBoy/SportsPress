@@ -166,9 +166,6 @@ class SP_Admin_Welcome {
 				</div>
 			<?php
 			endif;
-	    	if ( isset( $_POST['sportspress_load_individual_mode_module'] ) ):
-	    		update_option( 'sportspress_load_individual_mode_module', $_POST['sportspress_load_individual_mode_module'] );
-	    	endif;
 			if ( isset( $_POST['add_sample_data'] ) ):
 				SP_Admin_Sample_Data::delete_posts();
 				SP_Admin_Sample_Data::insert_posts();
@@ -191,10 +188,6 @@ class SP_Admin_Welcome {
 						endforeach;
 						echo $sport;
 						?>
-						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><i class="dashicons dashicons-edit"></i> <?php _e( 'Change', 'sportspress' ); ?></a>
-
-						<h4><?php _e( 'Mode', 'sportspress' ); ?></h4>
-						<?php echo ( 'yes' == get_option( 'sportspress_load_individual_mode_module', 'no' ) ? __( 'Player vs player', 'sportspress' ) : __( 'Team vs team', 'sportspress' ) ); ?>
 						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><i class="dashicons dashicons-edit"></i> <?php _e( 'Change', 'sportspress' ); ?></a>
 
 						<h4><?php _e( 'Next Steps', 'sportspress' ); ?></h4>
@@ -278,18 +271,6 @@ class SP_Admin_Welcome {
 											'class' 	=> $class,
 											'options'   => $sport_options,
 										),
-
-										array(
-											'title'     => __( 'Mode', 'sportspress' ),
-											'id'        => 'sportspress_load_individual_mode_module',
-											'default'   => 'no',
-											'type'      => 'radio',
-											'options'   => array(
-												'no' => __( 'Team vs team', 'sportspress' ),
-												'yes' => __( 'Player vs player', 'sportspress' ),
-											),
-											'desc_tip'	=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
-										),
 									);
 									SP_Admin_Settings::output_fields( $settings );
 									?>
@@ -303,11 +284,17 @@ class SP_Admin_Welcome {
 						</form>
 					<?php } ?>
 				</div>
-				<div class="last-feature">
-					<h4><?php _e( 'What is SportsPress?', 'sportspress' ); ?></h4>
-					<?php $hl = substr( get_locale(), 0, 2 ); ?>
-					<div class="sp-welcome-video sp-fitvids"><iframe width="500" height="281" src="//www.youtube.com/embed/KQyga_C5a6M?rel=0&amp;controls=2&amp;showinfo=0&amp;hl=<?php echo $hl; ?>" frameborder="0" allowfullscreen></iframe></div>
-				</div>
+				<?php if ( current_user_can( 'install_themes' ) && ! current_theme_supports( 'sportspress' ) ) { ?>
+					<div class="last-feature">
+						<h4><?php _e( 'Free SportsPress Theme', 'sportspress' ); ?></h4>
+						<a href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>" class="sp-theme-screenshot"><img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/rookie.png"></a>
+						<p><?php _e( 'Have you tried the free Rookie theme yet?', 'sportspress' ); ?></p>
+						<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
+						<p class="sp-module-actions">
+							<a class="button button-large" href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
+						</p>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
 		<?php

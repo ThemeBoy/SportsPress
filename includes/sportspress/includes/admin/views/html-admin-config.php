@@ -9,8 +9,8 @@
 				'post_type' => 'sp_outcome',
 				'numberposts' => -1,
 				'posts_per_page' => -1,
-					'orderby' => 'menu_order',
-					'order' => 'ASC'
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
 			);
 			$data = get_posts( $args );
 			?>
@@ -64,8 +64,8 @@
 				'post_type' => 'sp_result',
 				'numberposts' => -1,
 				'posts_per_page' => -1,
-					'orderby' => 'menu_order',
-					'order' => 'ASC'
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
 			);
 			$data = get_posts( $args );
 			?>
@@ -219,8 +219,8 @@
 				'post_type' => 'sp_column',
 				'numberposts' => -1,
 				'posts_per_page' => -1,
-					'orderby' => 'menu_order',
-					'order' => 'ASC'
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
 			);
 			$data = get_posts( $args );
 			?>
@@ -236,7 +236,7 @@
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Decimal Places', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Sort Order', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
@@ -275,8 +275,8 @@
 				'post_type' => 'sp_metric',
 				'numberposts' => -1,
 				'posts_per_page' => -1,
-					'orderby' => 'menu_order',
-					'order' => 'ASC'
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
 			);
 			$data = get_posts( $args );
 			?>
@@ -341,7 +341,7 @@
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Key', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Rounding', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Decimal Places', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
 							</tr>

@@ -21,38 +21,10 @@ class SP_Meta_Box_Event_Teams {
 	public static function output( $post ) {
 		$limit = get_option( 'sportspress_event_teams', 2 );
 		$teams = (array) get_post_meta( $post->ID, 'sp_team', false );
-		$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
-		$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
 		for ( $i = 0; $i < $limit; $i ++ ):
 			$team = array_shift( $teams );
 			?>
 			<div class="sp-instance">
-				<p class="sp-tab-select sp-tab-select-dummy">
-					<?php
-					$args = array(
-						'taxonomy' => 'sp_league',
-						'name' => 'sp_league_dummy',
-						'class' => 'sp-dummy sp_league-dummy',
-						'show_option_all' => __( 'All', 'sportspress' ),
-						'selected' => $league_id,
-						'values' => 'term_id',
-					);
-					sp_dropdown_taxonomies( $args );
-					?>
-				</p>
-				<p class="sp-tab-select sp-tab-select-dummy">
-					<?php
-					$args = array(
-						'taxonomy' => 'sp_season',
-						'name' => 'sp_season_dummy',
-						'class' => 'sp-dummy sp_season-dummy',
-						'show_option_all' => __( 'All', 'sportspress' ),
-						'selected' => $season_id,
-						'values' => 'term_id',
-					);
-					sp_dropdown_taxonomies( $args );
-					?>
-				</p>
 				<p class="sp-tab-select sp-title-generator">
 				<?php
 				$args = array(
@@ -65,17 +37,23 @@ class SP_Meta_Box_Event_Teams {
 					'chosen' => true,
 					'tax_query' => array(),
 				);
-				if ( $league_id ) {
-					$args['tax_query'][] = array(
-						'taxonomy' => 'sp_league',
-						'terms' => $league_id,
-					);
+				if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_league', 'no' ) ) {
+					$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
+					if ( $league_id ) {
+						$args['tax_query'][] = array(
+							'taxonomy' => 'sp_league',
+							'terms' => $league_id,
+						);
+					}
 				}
-				if ( $season_id ) {
-					$args['tax_query'][] = array(
-						'taxonomy' => 'sp_season',
-						'terms' => $season_id,
-					);
+				if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_season', 'no' ) ) {
+					$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
+					if ( $season_id ) {
+						$args['tax_query'][] = array(
+							'taxonomy' => 'sp_season',
+							'terms' => $season_id,
+						);
+					}
 				}
 				sp_dropdown_pages( $args );
 				?>

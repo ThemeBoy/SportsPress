@@ -199,6 +199,7 @@ if ( ! function_exists( 'sportspress_add_multisite_option' ) ) {
 			'class' => 'SportsPress_Multisite',
 			'icon' => 'sp-icon-globe',
 			'link' => 'http://tboy.co/multisite',
+			'desc' => __( 'Manage multiple sports and display different widgets all on one site.', 'sportspress' ),
 		);
 		return $settings;
 	}

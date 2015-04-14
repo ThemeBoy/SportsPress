@@ -318,6 +318,11 @@ table.widefat.sp-sortable-table tbody tr .icon {
 	cursor: move;
 }
 
+.sp-settings-bar {
+	float: none;
+	clear: both;
+}
+
 .sp-admin-config-table th,
 .sp-admin-config-table td {
 	padding: 8px 10px;
@@ -612,12 +617,9 @@ table.sp-modules-table td .button {
 	top: 9px;
 }
 
-table.sp-modules-table .button-primary {
-	display: none;
-}
-
-table.sp-modules-table td:hover .button-primary {
-	display: inline-block;
+table.sp-modules-table .sp-desc {
+	color: #aaa;
+	float: right;
 }
 
 table.sp-modules-table [class^="sp-icon-"],
@@ -629,7 +631,7 @@ table.sp-modules-table .dashicons {
 	line-height: 1;
 }
 
-table.sp-modules-table .sp-module-unavailable span {
+table.sp-modules-table .sp-module-unavailable .sp-desc-tip {
 	vertical-align: middle;
 	color: #aaa;
 }
@@ -739,6 +741,9 @@ table.sp-status-table td mark.yes {
 	margin-left: 3px;
 	vertical-align: middle;
 }
+.about-sportspress-wrap .nav-tab-wrapper {
+	clear: both;
+}
 .about-sportspress-wrap .sp-feature {
 	overflow: visible !important;
 	*zoom:1;
@@ -771,6 +776,10 @@ table.sp-status-table td mark.yes {
 	content: "\f111";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+.about-sportspress-wrap .sp-theme-screenshot {
+	float: left;
+	margin-right: 15px;
 }
 .about-sportspress-wrap .form-table th {
 	width: auto;

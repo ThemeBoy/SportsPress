@@ -41,6 +41,7 @@
 						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
 						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
 						{ "name" : "PCT", "equation" : "$win / $eventsplayed", "precision" : 3, "priority" : 1, "description" : "Win percentage" },
+						{ "name" : "GB", "equation" : "$gamesback", "precision" : 1, "description" : "Games back" },
 						{ "name" : "PF", "equation" : "$pointsfor / $eventsplayed", "priority" : 3, "description" : "Average points for" },
 						{ "name" : "PA", "equation" : "$pointsagainst / $eventsplayed", "description" : "Average points against" },
 						{ "name" : "DIFF", "equation" : "( $pointsfor - $pointsagainst ) / $eventsplayed", "priority" : 2, "description" : "Average point differential" },
