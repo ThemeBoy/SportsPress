@@ -166,9 +166,6 @@ class SP_Admin_Welcome {
 				</div>
 			<?php
 			endif;
-	    	if ( isset( $_POST['sportspress_load_individual_mode_module'] ) ):
-	    		update_option( 'sportspress_load_individual_mode_module', $_POST['sportspress_load_individual_mode_module'] );
-	    	endif;
 			if ( isset( $_POST['add_sample_data'] ) ):
 				SP_Admin_Sample_Data::delete_posts();
 				SP_Admin_Sample_Data::insert_posts();
@@ -191,10 +188,6 @@ class SP_Admin_Welcome {
 						endforeach;
 						echo $sport;
 						?>
-						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><i class="dashicons dashicons-edit"></i> <?php _e( 'Change', 'sportspress' ); ?></a>
-
-						<h4><?php _e( 'Mode', 'sportspress' ); ?></h4>
-						<?php echo ( 'yes' == get_option( 'sportspress_load_individual_mode_module', 'no' ) ? __( 'Player vs player', 'sportspress' ) : __( 'Team vs team', 'sportspress' ) ); ?>
 						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><i class="dashicons dashicons-edit"></i> <?php _e( 'Change', 'sportspress' ); ?></a>
 
 						<h4><?php _e( 'Next Steps', 'sportspress' ); ?></h4>
@@ -277,18 +270,6 @@ class SP_Admin_Welcome {
 											'welcome' 	=> true,
 											'class' 	=> $class,
 											'options'   => $sport_options,
-										),
-
-										array(
-											'title'     => __( 'Mode', 'sportspress' ),
-											'id'        => 'sportspress_load_individual_mode_module',
-											'default'   => 'no',
-											'type'      => 'radio',
-											'options'   => array(
-												'no' => __( 'Team vs team', 'sportspress' ),
-												'yes' => __( 'Player vs player', 'sportspress' ),
-											),
-											'desc_tip'	=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
 										),
 									);
 									SP_Admin_Settings::output_fields( $settings );

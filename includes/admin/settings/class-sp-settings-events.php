@@ -26,6 +26,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
+		add_action( 'sportspress_admin_field_current_mode', array( $this, 'current_mode_setting' ) );
 		add_action( 'sportspress_admin_field_delimiter', array( $this, 'delimiter_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
 	}
@@ -86,12 +87,26 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 
 				array(
-					'desc' 		=> __( 'Player Performance', 'sportspress' ),
+					'desc' 		=> __( 'Box Score', 'sportspress' ),
 					'id' 		=> 'sportspress_event_show_performance',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
 					'checkboxgroup'		=> 'end',
 				),
+				
+				array(
+					'title'     => __( 'Mode', 'sportspress' ),
+					'id'        => 'sportspress_load_individual_mode_module',
+					'default'   => 'no',
+					'type'      => 'radio',
+					'options'   => array(
+						'no' => __( 'Team vs team', 'sportspress' ),
+						'yes' => __( 'Player vs player', 'sportspress' ),
+					),
+					'desc_tip' 		=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
+				),
+
+				array( 'type' => 'current_mode' ),
 				
 				array(
 					'title' 	=> __( 'Limit', 'sportspress' ),
@@ -107,6 +122,23 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 				
 				array( 'type' => 'delimiter' ),
+
+				array(
+					'title'     => __( 'Teams', 'sportspress' ),
+					'desc' 		=> __( 'Filter by competition', 'sportspress' ),
+					'id' 		=> 'sportspress_event_filter_teams_by_league',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'	=> 'start',
+				),
+
+				array(
+					'desc' 		=> __( 'Filter by season', 'sportspress' ),
+					'id' 		=> 'sportspress_event_filter_teams_by_season',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'	=> 'end',
+				),
 
 				array(
 					'title'     => __( 'Venues', 'sportspress' ),
@@ -202,7 +234,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
-				array( 'title' => __( 'Player Performance', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'performance_options' ),
+				array( 'title' => __( 'Box Score', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'performance_options' ),
 			),
 
 			apply_filters( 'sportspress_performance_options', array(
@@ -363,6 +395,21 @@ class SP_Settings_Events extends SP_Settings_Page {
 			</td>
 		</tr>
 		<?php
+	}
+
+	/**
+	 * Output script to refresh page when mode is changed.
+	 */
+	function current_mode_setting() {
+		?>
+		<input type="hidden" name="sportspress_individual_mode_module_loaded" value="<?php echo get_option( 'sportspress_load_individual_mode_module', 'no' ); ?>">
+		<?php if ( sp_array_value( $_POST, 'sportspress_load_individual_mode_module', 'no' ) !== sp_array_value( $_POST, 'sportspress_individual_mode_module_loaded', 'no' ) ) { ?>
+			<script type="text/javascript">
+			window.onload = function() {
+				window.location = window.location.href;
+			}
+			</script>
+		<?php }
 	}
 }
 
