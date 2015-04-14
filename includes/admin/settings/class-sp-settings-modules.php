@@ -33,8 +33,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 			'general' => __( 'General', 'sportspress' ),
 			'event' => __( 'Events', 'sportspress' ),
 			'team' => __( 'Teams', 'sportspress' ),
-			'player' => __( 'Players', 'sportspress' ),
-			'staff' => __( 'Staff', 'sportspress' ),
+			'player_staff' => __( 'Players', 'sportspress' ) . ' &amp; ' . __( 'Staff', 'sportspress' ),
 			'other' => __( 'Other', 'sportspress' ),
 		));
 
@@ -55,108 +54,106 @@ class SP_Settings_Modules extends SP_Settings_Page {
 
 		<div class="sp-modules-wrapper">
 			<div class="sp-modules-sidebar">
-				<?php if ( current_user_can( 'manage_network_plugins' ) ) { ?>
-					<?php if ( ! class_exists( 'SportsPress_Pro' ) ) { ?>
-					<table class="widefat" cellspacing="0">
-						<thead>
-							<tr><th>
-								<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/sportspress-pro-sidebar.png" alt="<?php _e( 'SportsPress Pro', 'sportspress' ); ?>">
-							</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>
-								<p><?php _e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.','sportspress' ); ?></p>
-								<p class="sp-module-actions">
-									<span><?php _e( 'Premium', 'sportspress' ); ?></span>
-									<a class="button button-primary" href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pricing' ); ?>" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
-								</p>
-							</td></tr>
-						</tbody>
-					</table>
-					<?php } ?>
-
-					<?php if ( ! class_exists( 'SportsPress_TV' ) ) { ?>
-					<table class="widefat" cellspacing="0">
-						<thead>
-							<tr><th>
-								<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/sportspress-tv-sidebar.png" alt="<?php _e( 'SportsPress TV', 'sportspress' ); ?>">
-							</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>
-								<p><?php _e( 'Offer premium news & highlights from leading global sports. SportsPress TV will keep your visitors entertained for hours.','sportspress' ); ?></p>
-								<p class="sp-module-actions">
-									<span><?php _e( 'Free', 'sportspress' ); ?></span>
-									<a class="button" href="<?php echo add_query_arg( array( 'tab' => 'search', 's' => 'SportsPress+TV' ), network_admin_url( 'plugin-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
-								</p>
-							</td></tr>
-						</tbody>
-					</table>
-					<?php } ?>
-
-					<?php if ( ! class_exists( 'SportsPress_Twitter' ) ) { ?>
-					<table class="widefat" cellspacing="0">
-						<thead>
-							<tr><th>
-								<strong><?php _e( 'Twitter Module', 'sportspress' ); ?></strong>
-							</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>
-								<ol><li><?php echo str_replace(
-									array( '[link]', '[/link]' ),
-									array( '<a target="_blank" href="http://twitter.com/themeboy">', '</a>' ),
-									__( 'Follow [link]@ThemeBoy[/link] on Twitter.','sportspress' )
-								); ?></li>
-								<li><?php echo str_replace(
-									array( '[link]', '[/link]' ),
-									array( '<a target="_blank" href="http://tboy.co/tweet">', '</a>' ),
-									__( 'Help spread the word by tweeting with [link]#SportsPress[/link] and get the Twitter module for free.','sportspress' )
-								); ?></li>
-								<li><?php echo str_replace(
-									array( '[link]', '[/link]' ),
-									array( '<a target="_blank" href="http://tboy.co/twittermodule">', '</a>' ),
-									__( '[link]Get the download link[/link].', 'sportspress' )
-								); ?></li></ol>
-								<p class="sp-module-actions">
-									<span><?php _e( 'Free with tweet', 'sportspress' ); ?></span>
-									<a class="button" href="http://tboy.co/tweet" target="_blank"><?php _e( 'Tweet', 'sportspress' ); ?></a>
-								</p>
-							</td></tr>
-						</tbody>
-					</table>
-					<?php } ?>
-
-					<?php if ( ! class_exists( 'SportsPress_Birthdays' ) ) { ?>
-					<table class="widefat" cellspacing="0">
-						<thead>
-							<tr><th>
-								<strong><?php _e( 'Birthdays Module', 'sportspress' ); ?></strong>
-							</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>
-								<ol><li><?php echo str_replace(
-									array( '[stars]', '[link]', '[/link]' ),
-									array( '<a target="_blank" href="http://tboy.co/review">&#9733;&#9733;&#9733;&#9733;&#9733;</a>', '<a target="_blank" href="http://tboy.co/review">', '</a>' ),
-									__( 'Add your [stars] on [link]wordpress.org[/link] and get the Birthdays module for free.','sportspress' )
-								); ?></li>
-								<li><?php echo str_replace(
-									array( '[link]', '[/link]' ),
-									array( '<a target="_blank" href="http://tboy.co/birthdaysmodule">', '</a>' ),
-									__( '[link]Get the download link[/link].', 'sportspress' )
-								); ?></li></ol>
-								<p class="sp-module-actions">
-									<span><?php _e( 'Free with review', 'sportspress' ); ?></span>
-									<a class="button" href="http://tboy.co/review" target="_blank"><?php _e( 'Post Review', 'sportspress' ); ?></a>
-								</p>
-							</td></tr>
-						</tbody>
-					</table>
-					<?php } ?>
+				<?php if ( ! class_exists( 'SportsPress_Pro' ) ) { ?>
+				<table class="widefat" cellspacing="0">
+					<thead>
+						<tr><th>
+							<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/sportspress-pro-sidebar.png" alt="<?php _e( 'SportsPress Pro', 'sportspress' ); ?>">
+						</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>
+							<p><?php _e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.','sportspress' ); ?></p>
+							<p class="sp-module-actions">
+								<span><?php _e( 'Premium', 'sportspress' ); ?></span>
+								<a class="button button-primary" href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pricing' ); ?>" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
+							</p>
+						</td></tr>
+					</tbody>
+				</table>
 				<?php } ?>
 
-				<?php if ( current_user_can( 'manage_network_themes' ) ) { ?>
+				<?php if ( current_user_can( 'install_plugins' ) && ! class_exists( 'SportsPress_TV' ) ) { ?>
+				<table class="widefat" cellspacing="0">
+					<thead>
+						<tr><th>
+							<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/sportspress-tv-sidebar.png" alt="<?php _e( 'SportsPress TV', 'sportspress' ); ?>">
+						</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>
+							<p><?php _e( 'Offer premium news & highlights from leading global sports. SportsPress TV will keep your visitors entertained for hours.','sportspress' ); ?></p>
+							<p class="sp-module-actions">
+								<span><?php _e( 'Free', 'sportspress' ); ?></span>
+								<a class="button" href="<?php echo add_query_arg( array( 'tab' => 'search', 's' => 'SportsPress+TV' ), network_admin_url( 'plugin-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
+							</p>
+						</td></tr>
+					</tbody>
+				</table>
+				<?php } ?>
+
+				<?php if ( ! class_exists( 'SportsPress_Twitter' ) ) { ?>
+				<table class="widefat" cellspacing="0">
+					<thead>
+						<tr><th>
+							<strong><?php _e( 'Twitter Module', 'sportspress' ); ?></strong>
+						</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>
+							<ol><li><?php echo str_replace(
+								array( '[link]', '[/link]' ),
+								array( '<a target="_blank" href="http://twitter.com/themeboy">', '</a>' ),
+								__( 'Follow [link]@ThemeBoy[/link] on Twitter.','sportspress' )
+							); ?></li>
+							<li><?php echo str_replace(
+								array( '[link]', '[/link]' ),
+								array( '<a target="_blank" href="http://tboy.co/tweet">', '</a>' ),
+								__( 'Help spread the word by tweeting with [link]#SportsPress[/link] and get the Twitter module for free.','sportspress' )
+							); ?></li>
+							<li><?php echo str_replace(
+								array( '[link]', '[/link]' ),
+								array( '<a target="_blank" href="http://tboy.co/twittermodule">', '</a>' ),
+								__( '[link]Get the download link[/link].', 'sportspress' )
+							); ?></li></ol>
+							<p class="sp-module-actions">
+								<span><?php _e( 'Free with tweet', 'sportspress' ); ?></span>
+								<a class="button" href="http://tboy.co/tweet" target="_blank"><?php _e( 'Tweet', 'sportspress' ); ?></a>
+							</p>
+						</td></tr>
+					</tbody>
+				</table>
+				<?php } ?>
+
+				<?php if ( ! class_exists( 'SportsPress_Birthdays' ) ) { ?>
+				<table class="widefat" cellspacing="0">
+					<thead>
+						<tr><th>
+							<strong><?php _e( 'Birthdays Module', 'sportspress' ); ?></strong>
+						</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>
+							<ol><li><?php echo str_replace(
+								array( '[stars]', '[link]', '[/link]' ),
+								array( '<a target="_blank" href="http://tboy.co/review">&#9733;&#9733;&#9733;&#9733;&#9733;</a>', '<a target="_blank" href="http://tboy.co/review">', '</a>' ),
+								__( 'Add your [stars] on [link]wordpress.org[/link] and get the Birthdays module for free.','sportspress' )
+							); ?></li>
+							<li><?php echo str_replace(
+								array( '[link]', '[/link]' ),
+								array( '<a target="_blank" href="http://tboy.co/birthdaysmodule">', '</a>' ),
+								__( '[link]Get the download link[/link].', 'sportspress' )
+							); ?></li></ol>
+							<p class="sp-module-actions">
+								<span><?php _e( 'Free with review', 'sportspress' ); ?></span>
+								<a class="button" href="http://tboy.co/review" target="_blank"><?php _e( 'Post Review', 'sportspress' ); ?></a>
+							</p>
+						</td></tr>
+					</tbody>
+				</table>
+				<?php } ?>
+
+				<?php if ( current_user_can( 'install_themes' ) ) { ?>
 					<?php $theme = wp_get_theme(); ?>
 					<?php if ( 'rookie' == $theme->stylesheet ) { ?>
 						<table class="widefat" cellspacing="0">
