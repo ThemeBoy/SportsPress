@@ -246,6 +246,8 @@ class SP_Admin_Settings {
 
 	        	// Section Titles
 	            case 'title':
+	            	echo '<div class="sp-settings-section sp-settings-section-' . sanitize_title( sp_array_value( $value, 'id' ) ) . '">';
+	            	echo '<a name="sp-settings-section-' . sanitize_title( sp_array_value( $value, 'id' ) ) . '"></a>';
 	            	if ( ! empty( $value['title'] ) ) {
 	            		echo '<h3>' . esc_html( $value['title'] ) . '</h3>';
 	            	}
@@ -267,6 +269,7 @@ class SP_Admin_Settings {
 	            	if ( ! empty( $value['id'] ) ) {
 	            		do_action( 'sportspress_settings_' . sanitize_title( $value['id'] ) . '_after' );
 	            	}
+	            	echo '</div>';
 	            break;
 
 	            // Standard text inputs and subtypes like 'number'
