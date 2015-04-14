@@ -94,6 +94,7 @@ if ( is_array( $teams ) ):
 				if ( $split_positions ) {
 					$positions = get_terms( 'sp_position', array(
 						'orderby' => 'slug',
+						'hide_empty' => 0,
 					) );
 
 					foreach ( $positions as $position_index => $position ) {
@@ -112,6 +113,7 @@ if ( is_array( $teams ) ):
 						// Initialize Sublabels
 						$sublabels = $labels;
 
+						// Get performance with position
 						$performance_labels = get_posts( array(
 							'post_type' => 'sp_performance',
 							'posts_per_page' => -1,
@@ -195,6 +197,7 @@ if ( is_array( $teams ) ):
 		if ( $split_positions ) {
 			$positions = get_terms( 'sp_position', array(
 				'orderby' => 'slug',
+				'hide_empty' => 0,
 			) );
 
 			foreach ( $positions as $position_index => $position ) {
