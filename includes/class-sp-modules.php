@@ -51,7 +51,7 @@ class SP_Modules {
 					'desc' => __( 'Create a custom color palette for each team.', 'sportspress' ),
 				),
 			),
-			'player' => array(
+			'player_staff' => array(
 				'player_lists' => array(
 					'label' => __( 'Player Lists', 'sportspress' ),
 					'icon' => 'sp-icon-list',
@@ -70,8 +70,6 @@ class SP_Modules {
 					'icon' => 'sp-icon-cake',
 					'desc' => __( "Display each player's birthday and their current age.", 'sportspress' ),
 				),
-			),
-			'staff' => array(
 				'staff_directories' => array(
 					'label' => __( 'Directories', 'sportspress' ),
 					'class' => 'SportsPress_Staff_Directories',
@@ -98,7 +96,7 @@ class SP_Modules {
 				'branding' => array(
 					'label' => __( 'Branding', 'sportspress' ),
 					'class' => 'SportsPress_Branding',
-					'icon' => 'sp-icon-branding',
+					'icon' => 'sp-icon-sportspress',
 					'link' => 'http://tboy.co/branding',
 					'desc' => __( 'Instantly rebrand the dashboard with your own logo and colors.', 'sportspress' ),
 				),
