@@ -318,6 +318,11 @@ table.widefat.sp-sortable-table tbody tr .icon {
 	cursor: move;
 }
 
+.sp-settings-bar {
+	float: none;
+	clear: both;
+}
+
 .sp-admin-config-table th,
 .sp-admin-config-table td {
 	padding: 8px 10px;
