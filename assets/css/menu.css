@@ -122,8 +122,8 @@
 .sp-icon-box:before {
 	content: "\f480";
 }
-.sp-icon-branding:before {
-	content: "\f332";
+.sp-icon-edit:before {
+	content: "\f464";
 }
 
 #adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,
