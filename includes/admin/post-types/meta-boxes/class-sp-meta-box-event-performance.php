@@ -170,6 +170,7 @@ class SP_Meta_Box_Event_Performance {
 									'class' => 'sp-position',
 									'property' => 'multiple',
 									'chosen' => true,
+									'include_children' => false,
 								);
 								sp_dropdown_taxonomies( $args );
 								?>
