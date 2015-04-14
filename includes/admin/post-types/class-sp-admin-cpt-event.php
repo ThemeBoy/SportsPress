@@ -167,14 +167,16 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 							endif;
 						endforeach;
 					echo '</div>';
-					?>
-					<div class="row-actions sp-row-actions"><span class="inline hide-if-no-js"><a href="#" class="sp-edit-results"><?php _e( 'Edit Results', 'sportspress' ); ?></a></span></div>
-					<p class="inline-edit-save sp-inline-edit-save hidden">
-						<a href="#inline-edit" class="button-secondary cancel alignleft"><?php _e( 'Cancel' ); ?></a>
-						<?php wp_nonce_field( 'sp-save-inline-results', 'sp-inline-nonce', false ); ?>
-						<a href="#inline-edit" class="button-primary save alignright"><?php _e( 'Update' ); ?></a>
-					</p>
-					<?php
+					if ( current_user_can( 'edit_others_sp_events' ) ) {
+						?>
+						<div class="row-actions sp-row-actions"><span class="inline hide-if-no-js"><a href="#" class="sp-edit-results"><?php _e( 'Edit Results', 'sportspress' ); ?></a></span></div>
+						<p class="inline-edit-save sp-inline-edit-save hidden">
+							<a href="#inline-edit" class="button-secondary cancel alignleft"><?php _e( 'Cancel' ); ?></a>
+							<?php wp_nonce_field( 'sp-save-inline-results', 'sp-inline-nonce', false ); ?>
+							<a href="#inline-edit" class="button-primary save alignright"><?php _e( 'Update' ); ?></a>
+						</p>
+						<?php
+					}
 				endif;
 				break;
 			case 'sp_league':
