@@ -509,6 +509,7 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 			'placeholder' => null,
 			'chosen' => false,
 			'parent' => 0,
+			'include_children' => true,
 		);
 		$args = array_merge( $defaults, $args ); 
 		if ( ! $args['taxonomy'] ) return false;
@@ -568,25 +569,27 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 
 				printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, $term->name );
 
-				$term_children = get_term_children( $term->term_id, $args['taxonomy'] );
+				if ( $args['include_children'] ):
+					$term_children = get_term_children( $term->term_id, $args['taxonomy'] );
 
-				foreach ( $term_children as $term_child_id ):
-					$term_child = get_term_by( 'id', $term_child_id, $args['taxonomy'] );
+					foreach ( $term_children as $term_child_id ):
+						$term_child = get_term_by( 'id', $term_child_id, $args['taxonomy'] );
 
-					if ( $args['values'] == 'term_id' ):
-						$this_value = $term_child->term_id;
-					else:
-						$this_value = $term_child->slug;
-					endif;
+						if ( $args['values'] == 'term_id' ):
+							$this_value = $term_child->term_id;
+						else:
+							$this_value = $term_child->slug;
+						endif;
 
-					if ( strpos( $property, 'multiple' ) !== false ):
-						$selected_prop = in_array( $this_value, $selected ) ? 'selected' : '';
-					else:
-						$selected_prop = selected( $this_value, $selected, false );
-					endif;
+						if ( strpos( $property, 'multiple' ) !== false ):
+							$selected_prop = in_array( $this_value, $selected ) ? 'selected' : '';
+						else:
+							$selected_prop = selected( $this_value, $selected, false );
+						endif;
 
-					printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, '— ' . $term_child->name );
-				endforeach;
+						printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, '— ' . $term_child->name );
+					endforeach;
+				endif;
 			endforeach;
 			print( '</select>' );
 			return true;
@@ -1009,7 +1012,7 @@ if ( !function_exists( 'sp_get_eos_safe_slug' ) ) {
 		$title = sp_numbers_to_words( $title );
 
 		// Remove all other non-alphabet characters
-		$title = preg_replace( "/[^a-z]/", '', $title );
+		$title = preg_replace( "/[^a-z_]/", '', $title );
 
 		// Convert post ID to words if title is empty
 		if ( $title == '' ):
