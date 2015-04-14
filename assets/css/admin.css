@@ -736,6 +736,9 @@ table.sp-status-table td mark.yes {
 	margin-left: 3px;
 	vertical-align: middle;
 }
+.about-sportspress-wrap .nav-tab-wrapper {
+	clear: both;
+}
 .about-sportspress-wrap .sp-feature {
 	overflow: visible !important;
 	*zoom:1;
@@ -768,6 +771,10 @@ table.sp-status-table td mark.yes {
 	content: "\f111";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+.about-sportspress-wrap .sp-theme-screenshot {
+	float: left;
+	margin-right: 15px;
 }
 .about-sportspress-wrap .form-table th {
 	width: auto;

@@ -303,11 +303,17 @@ class SP_Admin_Welcome {
 						</form>
 					<?php } ?>
 				</div>
-				<div class="last-feature">
-					<h4><?php _e( 'What is SportsPress?', 'sportspress' ); ?></h4>
-					<?php $hl = substr( get_locale(), 0, 2 ); ?>
-					<div class="sp-welcome-video sp-fitvids"><iframe width="500" height="281" src="//www.youtube.com/embed/KQyga_C5a6M?rel=0&amp;controls=2&amp;showinfo=0&amp;hl=<?php echo $hl; ?>" frameborder="0" allowfullscreen></iframe></div>
-				</div>
+				<?php if ( current_user_can( 'install_themes' ) && ! current_theme_supports( 'sportspress' ) ) { ?>
+					<div class="last-feature">
+						<h4><?php _e( 'Free SportsPress Theme', 'sportspress' ); ?></h4>
+						<a href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>" class="sp-theme-screenshot"><img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/rookie.png"></a>
+						<p><?php _e( 'Have you tried the free Rookie theme yet?', 'sportspress' ); ?></p>
+						<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
+						<p class="sp-module-actions">
+							<a class="button button-large" href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
+						</p>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
 		<?php
