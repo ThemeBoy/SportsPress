@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2015-03-15 22:25+1000\n"
-"PO-Revision-Date: 2015-03-15 22:25+1000\n"
+"POT-Creation-Date: 2015-04-11 01:36+1000\n"
+"PO-Revision-Date: 2015-04-11 01:36+1000\n"
 "Last-Translator: Brian Miyaji <brian@themeboy.com>\n"
 "Language-Team: ThemeBoy <support@themeboy.com>\n"
 "Language: en_US\n"
@@ -53,7 +53,7 @@ msgstr ""
 #: includes/sportspress-branding/includes/class-sp-settings-branding.php:126
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:206
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:347
-#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:339
+#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:341
 #, php-format
 msgid "Select %s"
 msgstr ""
@@ -327,7 +327,7 @@ msgstr ""
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:94
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:146
 #: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:68
-#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:299
+#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:301
 msgid "Date"
 msgstr ""
 
@@ -484,7 +484,7 @@ msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:54
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:96
-#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:339
+#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:341
 msgid "Team"
 msgstr ""
 
@@ -673,6 +673,7 @@ msgid "Paginate"
 msgstr ""
 
 #: includes/sportspress-staff-directories/sportspress-staff-directories.php:279
+#: includes/sportspress-tournaments/sportspress-tournaments.php:237
 msgid "Limit"
 msgstr ""
 
@@ -695,13 +696,13 @@ msgid "Team Colors"
 msgstr ""
 
 #: includes/sportspress-tournaments/includes/class-sp-admin-cpt-tournament.php:47
-#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:80
+#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:81
 msgid "Rounds"
 msgstr ""
 
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:33
 #: includes/sportspress-tournaments/sportspress-tournaments.php:109
-#: includes/sportspress-tournaments/sportspress-tournaments.php:245
+#: includes/sportspress-tournaments/sportspress-tournaments.php:258
 msgid "Tournament"
 msgstr ""
 
@@ -710,31 +711,31 @@ msgid "Bracket"
 msgstr ""
 
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:58
-#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:82
-#: includes/sportspress-tournaments/sportspress-tournaments.php:262
+#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:83
+#: includes/sportspress-tournaments/sportspress-tournaments.php:275
 #: includes/sportspress-tournaments/templates/tournament-winner.php:33
 msgid "Winner"
 msgstr ""
 
-#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:86
+#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:87
 msgid "&mdash; Not set &mdash;"
 msgstr ""
 
-#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:274
+#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:276
 #: includes/sportspress-tournaments/templates/tournament-bracket.php:34
 #, php-format
 msgid "Round %s"
 msgstr ""
 
-#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:301
+#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:303
 msgid "Edit Event"
 msgstr ""
 
-#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:304
+#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:306
 msgid "Time"
 msgstr ""
 
-#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:308
+#: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:310
 msgid "Results"
 msgstr ""
 
@@ -762,6 +763,10 @@ msgstr ""
 
 #: includes/sportspress-tournaments/sportspress-tournaments.php:229
 msgid "Display winner"
+msgstr ""
+
+#: includes/sportspress-tournaments/sportspress-tournaments.php:241
+msgid "rounds"
 msgstr ""
 
 #: includes/sportspress-tournaments/templates/tournament-bracket.php:101
