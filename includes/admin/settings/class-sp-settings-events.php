@@ -302,6 +302,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 
 				array(
+					'title'     => __( 'Positions', 'sportspress' ),
+					'desc' 		=> __( 'Top-level only', 'sportspress' ),
+					'id' 		=> 'sportspress_event_hide_child_positions',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
 					'title'     => __( 'Players', 'sportspress' ),
 					'desc' 		=> __( 'Display squad numbers', 'sportspress' ),
 					'id' 		=> 'sportspress_event_show_player_numbers',
