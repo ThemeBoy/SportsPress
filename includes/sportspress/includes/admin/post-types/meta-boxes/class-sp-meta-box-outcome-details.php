@@ -43,7 +43,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 			<select name="sp_condition">
 				<?php
 				$options = array(
-					'0' => __( '&mdash;', 'sportspress' ),
+					'0' => '&mdash;',
 					'>' => sprintf( __( 'Most %s', 'sportspress' ), $label ),
 					'<' => sprintf( __( 'Least %s', 'sportspress' ), $label ),
 					'=' => sprintf( __( 'Equal %s', 'sportspress' ), $label ),

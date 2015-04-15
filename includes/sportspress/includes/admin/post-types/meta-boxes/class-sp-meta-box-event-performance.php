@@ -170,7 +170,7 @@ class SP_Meta_Box_Event_Performance {
 									'class' => 'sp-position',
 									'property' => 'multiple',
 									'chosen' => true,
-									'include_children' => false,
+									'include_children' => ( 'no' == get_option( 'sportspress_event_hide_child_positions', 'no' ) ),
 								);
 								sp_dropdown_taxonomies( $args );
 								?>

@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.7.2
+ * @version     1.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -297,6 +297,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 					'title'     => __( 'Teams', 'sportspress' ),
 					'desc' 		=> __( 'Reverse order', 'sportspress' ),
 					'id' 		=> 'sportspress_event_performance_reverse_teams',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
+					'title'     => __( 'Positions', 'sportspress' ),
+					'desc' 		=> __( 'Top-level only', 'sportspress' ),
+					'id' 		=> 'sportspress_event_hide_child_positions',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
 				),

@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.7.5
+Stable tag: 1.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -228,11 +228,22 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Feature - Games Behind calculation added to equation builder.
 * Feature - Home Record and Away Record calculation added to equation builder.
 * Feature - Add option to reverse team order in events.
-* Feature - Use ajax to get players in events to improve admin page load time.
+* Tweak - Allow inline results editing only if user has permissions.
+* Tweak - Allow underscore in equation variable names.
+* Tweak - Update welcome page with free Rookie theme link.
+* Tweak - Group sport presets into more descriptive categories.
 * Tweak - Display module descriptions in admin.
+* Tweak - Combine player and staff modules.
+* Tweak - Move mode setting to event page.
+* Tweak - Add option to show only top-level positions in events.
 * Tweak - Change Rounding to Decimal Places for clarity.
+* Tweak - Change Player Performance to Box Score.
+* Tweak - Add proper editing capabilities to Team Manager role.
+* Fix - Empty positions hidden in box score.
 * Preset - Update baseball preset.
+* Localization - Add Kosovo to countries list.
 * Localization - Use standard localization functions to improve translatability.
+* Localization - Update Spanish and Japanese translations.
 
 = 1.7.7 =
 * Tweak - Add option to filter teams in event by competition and season with no filter as default setting.
