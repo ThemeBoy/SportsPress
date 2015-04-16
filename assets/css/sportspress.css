@@ -105,6 +105,23 @@
 	cursor: default;
 }
 
+/* Widget Alignment */
+.sp-widget-align-none {
+	clear: both;
+	overflow: auto;
+	zoom: 1;
+}
+.sp-widget-align-left {
+	width: 48.387%;
+	float: left;
+	clear: left;
+}
+.sp-widget-align-right {
+	width: 48.387%;
+	float: right;
+	clear: right;
+}
+
 /* League Table */
 .sp-league-table td {
 	line-height: 2em;

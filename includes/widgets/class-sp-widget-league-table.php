@@ -15,7 +15,10 @@ class SP_Widget_League_Table extends WP_Widget {
 		$columns = empty($instance['columns']) ? array() : $instance['columns'];
 		$show_team_logo = empty($instance['show_team_logo']) ? false : $instance['show_team_logo'];
 		$show_full_table_link = empty($instance['show_full_table_link']) ? false : $instance['show_full_table_link'];
+
+		do_action( 'sportspress_before_widget', $args, $instance, 'league-table' );
 		echo $before_widget;
+
 		if ( $title )
 			echo $before_title . $title . $after_title;
 
@@ -28,6 +31,7 @@ class SP_Widget_League_Table extends WP_Widget {
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'league-table' );
 
 		echo $after_widget;
+		do_action( 'sportspress_after_widget', $args, $instance, 'league-table' );
 	}
 
 	function update( $new_instance, $old_instance ) {

@@ -16,7 +16,10 @@ class SP_Widget_Player_list extends WP_Widget {
 		$orderby = empty($instance['orderby']) ? 'default' : $instance['orderby'];
 		$order = empty($instance['order']) ? 'ASC' : $instance['order'];
 		$show_all_players_link = empty($instance['show_all_players_link']) ? false : $instance['show_all_players_link'];
+
+		do_action( 'sportspress_before_widget', $args, $instance, 'player-list' );
 		echo $before_widget;
+
 		if ( $title )
 			echo $before_title . $title . $after_title;
 
@@ -29,6 +32,7 @@ class SP_Widget_Player_list extends WP_Widget {
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'player-list' );
 
 		echo $after_widget;
+		do_action( 'sportspress_after_widget', $args, $instance, 'player-list' );
 	}
 
 	function update( $new_instance, $old_instance ) {

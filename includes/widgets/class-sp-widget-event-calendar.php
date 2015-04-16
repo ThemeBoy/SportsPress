@@ -15,7 +15,10 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 		$date_from = empty($instance['date_from']) ? 'default' : $instance['date_from'];
 		$date_to = empty($instance['date_to']) ? 'default' : $instance['date_to'];
 		$show_all_events_link = empty($instance['show_all_events_link']) ? false : $instance['show_all_events_link'];
+
+		do_action( 'sportspress_before_widget', $args, $instance, 'event-calendar' );
 		echo $before_widget;
+
 		if ( $title )
 			echo $before_title . $title . $after_title;
 
@@ -28,6 +31,7 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'event-calendar' );
 
 		echo $after_widget;
+		do_action( 'sportspress_after_widget', $args, $instance, 'event-calendar' );
 	}
 
 	function update( $new_instance, $old_instance ) {

@@ -17,7 +17,10 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		$number = empty($instance['number']) ? null : $instance['number'];
 		$order = empty($instance['order']) ? 'default' : $instance['order'];
 		$show_all_events_link = empty($instance['show_all_events_link']) ? false : $instance['show_all_events_link'];
+
+		do_action( 'sportspress_before_widget', $args, $instance, 'event-blocks' );
 		echo $before_widget;
+
 		if ( $title )
 			echo $before_title . $title . $after_title;
 
@@ -30,6 +33,7 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'event-blocks' );
 
 		echo $after_widget;
+		do_action( 'sportspress_after_widget', $args, $instance, 'event-blocks' );
 	}
 
 	function update( $new_instance, $old_instance ) {

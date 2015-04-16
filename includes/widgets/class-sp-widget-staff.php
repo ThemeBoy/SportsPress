@@ -10,7 +10,10 @@ class SP_Widget_Staff extends WP_Widget {
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? null : $instance['title'], $instance, $this->id_base);
 		$id = empty($instance['id']) ? null : $instance['id'];
+
+		do_action( 'sportspress_before_widget', $args, $instance, 'staff' );
 		echo $before_widget;
+
 		if ( $title )
 			echo $before_title . $title . $after_title;
 
@@ -24,6 +27,7 @@ class SP_Widget_Staff extends WP_Widget {
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'staff' );
 
 		echo $after_widget;
+		do_action( 'sportspress_after_widget', $args, $instance, 'staff' );
 	}
 
 	function update( $new_instance, $old_instance ) {
