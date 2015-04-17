@@ -105,23 +105,6 @@
 	cursor: default;
 }
 
-/* Widget Alignment */
-.sp-widget-align-none {
-	clear: both;
-	overflow: auto;
-	zoom: 1;
-}
-.sp-widget-align-left {
-	width: 48.387%;
-	float: left;
-	clear: left;
-}
-.sp-widget-align-right {
-	width: 48.387%;
-	float: right;
-	clear: right;
-}
-
 /* League Table */
 .sp-league-table td {
 	line-height: 2em;
@@ -313,7 +296,7 @@
 	margin-bottom: 4em;
 }
 
-/* View all */
+/* View All */
 .sp-view-all-link {
 	display: block;
 	margin-top: 0.5em;
@@ -328,4 +311,24 @@
 .sp-highlight,
 .sp-heading {
 	font-weight: bold;
+}
+
+/* Media Queries */
+@media screen and (min-width: 783px) {
+	/* Widget Alignment */
+	.sp-widget-align-none {
+		clear: both;
+		overflow: auto;
+		zoom: 1;
+	}
+	.sp-widget-align-left {
+		width: 48.387%;
+		float: left;
+		clear: left;
+	}
+	.sp-widget-align-right {
+		width: 48.387%;
+		float: right;
+		clear: right;
+	}
 }
