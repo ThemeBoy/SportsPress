@@ -106,7 +106,7 @@
 }
 
 /* League Table */
-.sp-league-table td {
+.sp-league-table td.has-logo {
 	line-height: 2em;
 }
 .sp-league-table .data-name .team-logo {
