@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add alignment options to SportsPress widgets.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.8
+Version: 1.8.1
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Widget_Alignment' ) ) :
  * Main SportsPress Widget Alignment Class
  *
  * @class SportsPress_Widget_Alignment
- * @version	1.8
+ * @version	1.8.1
  */
 class SportsPress_Widget_Alignment {
 
@@ -49,7 +49,7 @@ class SportsPress_Widget_Alignment {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_WIDGET_ALIGNMENT_VERSION' ) )
-			define( 'SP_WIDGET_ALIGNMENT_VERSION', '1.8' );
+			define( 'SP_WIDGET_ALIGNMENT_VERSION', '1.8.1' );
 
 		if ( !defined( 'SP_WIDGET_ALIGNMENT_URL' ) )
 			define( 'SP_WIDGET_ALIGNMENT_URL', plugin_dir_url( __FILE__ ) );

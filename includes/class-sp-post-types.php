@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registers post types and taxonomies
  *
  * @class 		SP_Post_types
- * @version		1.8
+ * @version		1.8.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
