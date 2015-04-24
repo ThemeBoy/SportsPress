@@ -13,7 +13,10 @@ class SP_Widget_Staff_List extends WP_Widget {
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$number = empty($instance['number']) ? null : $instance['number'];
 		$show_all_staff_link = empty($instance['show_all_staff_link']) ? false : $instance['show_all_staff_link'];
+
+		do_action( 'sportspress_before_widget', $args, $instance, 'staff-list' );
 		echo $before_widget;
+
 		if ( $title )
 			echo $before_title . $title . $after_title;
 
@@ -26,6 +29,7 @@ class SP_Widget_Staff_List extends WP_Widget {
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'staff-list' );
 
 		echo $after_widget;
+		do_action( 'sportspress_after_widget', $args, $instance, 'staff-list' );
 	}
 
 	function update( $new_instance, $old_instance ) {

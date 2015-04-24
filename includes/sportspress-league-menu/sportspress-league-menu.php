@@ -156,7 +156,6 @@ class SportsPress_League_Menu {
 			}
 			.sp-league-menu .sp-league-menu-title {
 				color: <?php echo $text_color; ?>;
-				line-height: <?php echo $height; ?>px;
 			}
 			.sp-league-menu .sp-team-logo {
 				max-height: <?php echo $height; ?>px;

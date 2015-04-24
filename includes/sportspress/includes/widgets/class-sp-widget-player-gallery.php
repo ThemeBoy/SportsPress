@@ -17,7 +17,10 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 		$order = empty($instance['order']) ? 'ASC' : $instance['order'];
 		$show_all_players_link = empty($instance['show_all_players_link']) ? false : $instance['show_all_players_link'];
 		$show_names_on_hover = empty($instance['show_names_on_hover']) ? false : $instance['show_names_on_hover'];
+
+		do_action( 'sportspress_before_widget', $args, $instance, 'player-gallery' );
 		echo $before_widget;
+
 		if ( $title )
 			echo $before_title . $title . $after_title;
 
@@ -30,6 +33,7 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'player-gallery' );
 
 		echo $after_widget;
+		do_action( 'sportspress_after_widget', $args, $instance, 'player-gallery' );
 	}
 
 	function update( $new_instance, $old_instance ) {

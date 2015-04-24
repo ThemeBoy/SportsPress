@@ -9,7 +9,7 @@
 
 .sp-league-menu .sp-inner {
 	width: 94%;
-	padding: 8px 0;
+	padding: 4px 0;
 	text-align: center;
 	margin: 0 auto;
 	position: relative;
@@ -20,6 +20,7 @@
 	margin-right: 8px;
 	color: #ffffff;
 	line-height: 32px;
+	vertical-align: middle;
 }
 
 .sp-league-menu .sp-league-menu-logo {
@@ -30,6 +31,7 @@
 .sp-league-menu .sp-team-link {
 	padding: 4px 2px;
 	display: inline-block;
+	vertical-align: middle;
 }
 
 .sp-league-menu .sp-team-logo {

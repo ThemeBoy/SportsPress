@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.8
+ * @version     1.8.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -514,7 +514,6 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 		$args = array_merge( $defaults, $args ); 
 		if ( ! $args['taxonomy'] ) return false;
 
-		$terms = get_terms( $args['taxonomy'], $args );
 		$name = ( $args['name'] ) ? $args['name'] : $args['taxonomy'];
 		$id = ( $args['id'] ) ? $args['id'] : $name;
 
@@ -535,6 +534,8 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 
 		$chosen = $args['chosen'];
 		unset( $args['chosen'] );
+		
+		$terms = get_terms( $args['taxonomy'], $args );
 
 		printf( '<input type="hidden" name="tax_input[%s][]" value="0">', $args['taxonomy'] );
 

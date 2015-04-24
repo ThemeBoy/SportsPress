@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.8
+Stable tag: 1.8.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -22,7 +22,7 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 >
 > "*Script of the Day: While the WordPress repository holds various team and sports-related plugins, few of them come close to what you can achieve with SportsPress.*" — [Softpedia](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml)
 >
-> "*SportsPress is our number 1 WordPress plugin for sport!*" — [GBSport](http://www.gbsport.org.uk/5-great-wordpress-plugins-for-sport/)
+> "*SportsPress is our number 1 WordPress plugin for sport!*" — [GBSport](http://gbcoach.org.uk/5-great-wordpress-plugins-for-sport/)
 >
 > "*The freely available and highly impressive SportsPress plugin offers terrific functionality including a fixtures listing, league table, player & staff profiles, customizable point system and a built-in translation system for 36 different languages.*" — [Club Themes](http://clubthemes.com/awesome-sporting-templates-themes-wordpress-joomla/)
 
@@ -223,6 +223,13 @@ There are [3 different licenses](http://tboy.co/pricing) that you can choose fro
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.8.1 =
+* Feature - Ability to display multiple widgets on one line by aligning left and right.
+* Tweak - Increase league table row height only when logos are displayed.
+* Fix - Taxonomy selection not displaying in admin after WordPress 4.2 update.
+* Localization - Add nagashitw, jikji96, and edesl to translation team.
+* Localization - Update Czech, German, Finnish, Portuguese, Korean, Italian, and Spanish translations.
 
 = 1.8 =
 * Feature - Games Behind calculation added to equation builder.

@@ -14,7 +14,10 @@ class SP_Widget_Sponsors extends WP_Widget {
 		$height = empty($instance['height']) ? null : $instance['height'];
 		$orderby = empty($instance['orderby']) ? 'default' : $instance['orderby'];
 		$order = empty($instance['order']) ? 'ASC' : $instance['order'];
+
+		do_action( 'sportspress_before_widget', $args, $instance, 'sponsors' );
 		echo $before_widget;
+
 		if ( $title )
 			echo $before_title . $title . $after_title;
 
@@ -27,6 +30,7 @@ class SP_Widget_Sponsors extends WP_Widget {
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'sponsors' );
 
 		echo $after_widget;
+		do_action( 'sportspress_after_widget', $args, $instance, 'sponsors' );
 	}
 
 	function update( $new_instance, $old_instance ) {
