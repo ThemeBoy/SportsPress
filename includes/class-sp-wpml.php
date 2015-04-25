@@ -5,7 +5,7 @@
  * The SportsPress WPML class handles all WPML-related localization hooks.
  *
  * @class 		SP_WPML
- * @version		1.3.2
+ * @version		1.8.2
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
