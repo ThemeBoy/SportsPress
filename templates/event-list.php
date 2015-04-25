@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.6.1
+ * @version     1.8.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -184,7 +184,7 @@ if ( $show_title && $id ) {
 
 						$date_html = '<date>' . get_post_time( 'Y-m-d H:i:s', false, $event ) . '</date>' . get_post_time( get_option( 'date_format' ), false, $event, true );
 
-						if ( $link_events ) $date_html = '<a href="' . get_permalink( $event->ID ) . '">' . $date_html . '</a>';
+						if ( $link_events ) $date_html = '<a href="' . get_post_permalink( $event->ID, false, true ) . '">' . $date_html . '</a>';
 
 						echo '<td class="data-date">' . $date_html . '</td>';
 
@@ -196,7 +196,7 @@ if ( $show_title && $id ) {
 
 									if ( 'combined' == $time_format && sp_column_active( $usecolumns, 'time' ) ) {
 										echo '<td class="data-time">';
-										if ( $link_events ) echo '<a href="' . get_permalink( $event->ID ) . '">';
+										if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
 										if ( ! empty( $main_results ) ):
 											echo implode( ' - ', $main_results );
 										else:
@@ -206,7 +206,7 @@ if ( $show_title && $id ) {
 										echo '</td>';
 									} elseif ( in_array( $time_format, array( 'separate', 'results' ) ) && sp_column_active( $usecolumns, 'results' ) ) {
 										echo '<td class="data-results">';
-										if ( $link_events ) echo '<a href="' . get_permalink( $event->ID ) . '">';
+										if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
 										if ( ! empty( $main_results ) ):
 											echo implode( ' - ', $main_results );
 										else:
@@ -221,7 +221,7 @@ if ( $show_title && $id ) {
 
 									if ( in_array( $time_format, array( 'separate', 'time' ) ) && sp_column_active( $usecolumns, 'time' ) ) {
 										echo '<td class="data-time">';
-										if ( $link_events ) echo '<a href="' . get_permalink( $event->ID ) . '">';
+										if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
 										echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
 										if ( $link_events ) echo '</a>';
 										echo '</td>';
@@ -234,7 +234,7 @@ if ( $show_title && $id ) {
 										echo '<td class="data-event data-teams">' . $teams_output . '</td>';
 									} else {
 										$title_html = implode( ' ', $team_logos ) . ' ' . $event->post_title;
-										if ( $link_events ) $title_html = '<a href="' . get_permalink( $event->ID ) . '">' . $title_html . '</a>';
+										if ( $link_events ) $title_html = '<a href="' . get_post_permalink( $event->ID, false, true ) . '">' . $title_html . '</a>';
 										echo '<td class="data-event">' . $title_html . '</td>';
 									}
 								}
@@ -243,14 +243,14 @@ if ( $show_title && $id ) {
 									case 'separate':
 										if ( sp_column_active( $usecolumns, 'time' ) ) {
 											echo '<td class="data-time">';
-											if ( $link_events ) echo '<a href="' . get_permalink( $event->ID ) . '">';
+											if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
 											echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
 											if ( $link_events ) echo '</a>';
 											echo '</td>';
 										}
 										if ( sp_column_active( $usecolumns, 'results' ) ) {
 											echo '<td class="data-results">';
-											if ( $link_events ) echo '<a href="' . get_permalink( $event->ID ) . '">';
+											if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
 											if ( ! empty( $main_results ) ):
 												echo implode( ' - ', $main_results );
 											else:
@@ -263,7 +263,7 @@ if ( $show_title && $id ) {
 									case 'time':
 										if ( sp_column_active( $usecolumns, 'time' ) ) {
 											echo '<td class="data-time">';
-											if ( $link_events ) echo '<a href="' . get_permalink( $event->ID ) . '">';
+											if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
 											echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
 											if ( $link_events ) echo '</a>';
 											echo '</td>';
@@ -272,7 +272,7 @@ if ( $show_title && $id ) {
 									case 'results':
 										if ( sp_column_active( $usecolumns, 'results' ) ) {
 											echo '<td class="data-results">';
-											if ( $link_events ) echo '<a href="' . get_permalink( $event->ID ) . '">';
+											if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
 											if ( ! empty( $main_results ) ):
 												echo implode( ' - ', $main_results );
 											else:
@@ -285,7 +285,7 @@ if ( $show_title && $id ) {
 									default:
 										if ( sp_column_active( $usecolumns, 'time' ) ) {
 											echo '<td class="data-time">';
-											if ( $link_events ) echo '<a href="' . get_permalink( $event->ID ) . '">';
+											if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
 											if ( ! empty( $main_results ) ):
 												echo implode( ' - ', $main_results );
 											else:
@@ -330,7 +330,7 @@ if ( $show_title && $id ) {
 
 						if ( sp_column_active( $usecolumns, 'article' ) ):
 							echo '<td class="data-article">';
-								if ( $link_events ) echo '<a href="' . get_permalink( $event->ID ) . '">';
+								if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
 
 								if ( $video ):
 									echo '<div class="dashicons dashicons-video-alt"></div>';

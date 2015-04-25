@@ -201,7 +201,7 @@ for ( $day = 1; $day <= $daysinmonth; ++$day ) {
 		$calendar_output .= '<td>';
 
 	if ( array_key_exists($day, $daywithpost) ) // any posts today?
-		$calendar_output .= '<a data-tooltip data-options="disable_for_touch:true" class="has-tip" href="' . ( sizeof( $daywithpost[ $day ] ) > 1 ? add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) . '" title="' . sprintf( '%s events', ( sizeof( $daywithpost[ $day ] ) ) ) : get_permalink( $daywithpost[ $day ][0] ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) ) . "\">$day</a>";
+		$calendar_output .= '<a data-tooltip data-options="disable_for_touch:true" class="has-tip" href="' . ( sizeof( $daywithpost[ $day ] ) > 1 ? add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) . '" title="' . sprintf( '%s events', ( sizeof( $daywithpost[ $day ] ) ) ) : get_post_permalink( $daywithpost[ $day ][0], false, true ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) ) . "\">$day</a>";
 	else
 		$calendar_output .= $day;
 	$calendar_output .= '</td>';
