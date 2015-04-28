@@ -18,11 +18,31 @@ if ( ! class_exists( 'SP_Settings_License' ) ) :
 class SP_Settings_License extends SP_Settings_Page {
 
 	/**
+	 * @var string
+	 */
+	public $file;
+
+	/**
+	 * @var string
+	 */
+	public $title;
+
+	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		$this->id    = 'license';
 		$this->label = __( 'License', 'sportspress' );
+		if ( class_exists( 'SportsPress_Multisite' ) ) {
+			$this->file = 'RJ';
+			$this->title = __( 'League Package', 'sportspress' );
+		} elseif ( class_exists( 'SportsPress_Tournaments' ) ) {
+			$this->file = 'RL';
+			$this->title = __( 'Club Package', 'sportspress' );
+		} else {
+			$this->file = 'RM';
+			$this->title = __( 'Social Package', 'sportspress' );
+		}
 
 		if ( current_user_can( 'manage_options' ) ):
 			add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 100 );
@@ -41,7 +61,7 @@ class SP_Settings_License extends SP_Settings_Page {
 		$GLOBALS['hide_save_button'] = true;
 		return apply_filters( 'sportspress_license_settings', array(
 
-			array( 'title' => __( 'License', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'license_options' ),
+			array( 'title' => $this->title, 'type' => 'title', 'desc' => '', 'id' => 'license_options' ),
 
 			array( 'type' => 'license_key' ),
 
@@ -97,7 +117,7 @@ class SP_Settings_License extends SP_Settings_Page {
 				$url = 'https://app.sellwire.net/api/1/deactivate_license';
 				$args = array(
 					'license' => $key,
-					'file' => 'RJ',
+					'file' => $this->file,
 				);
 				$response = wp_remote_get( add_query_arg( $args, $url ), array( 'timeout' => 15, 'sslverify' => false ) );
 
@@ -126,7 +146,7 @@ class SP_Settings_License extends SP_Settings_Page {
 			$url = 'https://app.sellwire.net/api/1/activate_license';
 			$args = array(
 				'license' => $key,
-				'file' => 'RJ',
+				'file' => $this->file,
 			);
 			$response = wp_remote_get( add_query_arg( $args, $url ), array( 'timeout' => 15, 'sslverify' => false ) );
 
