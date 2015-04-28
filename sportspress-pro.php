@@ -7,7 +7,7 @@
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
- * Tested up to: 4.1
+ * Tested up to: 4.2
  *
  * Text Domain: sportspress
  * Domain Path: /languages/
@@ -46,6 +46,9 @@ final class SportsPress_Pro {
 
 		// Include required files
 		$this->includes();
+
+		// Check for updates
+		$this->check_for_updates();
 
 		// Install
 		if ( class_exists( 'SP_Install' ) ):
@@ -96,6 +99,17 @@ final class SportsPress_Pro {
 					}
 				}
 			}
+		}
+	}
+
+	/**
+	 * Check for updates.
+	 */
+	private function check_for_updates() {
+		$license_key = get_option( 'sportspress_pro_license_key' );
+		if ( $license_key ) {
+			require_once( 'updater.php' );
+			new SportsPress_Pro_Updater( 'http://wp-updates.com/api/2/plugin', plugin_basename( __FILE__ ), $license_key );
 		}
 	}
 

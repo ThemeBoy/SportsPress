@@ -424,6 +424,10 @@ table.widefat.sp-sortable-table tbody tr .icon {
 	color: #aaa;
 }
 
+.sp-desc-active:before {
+	color: #7ad03a;
+}
+
 #tiptip_holder {
 	display: none;
 	position: absolute;

@@ -3,22 +3,26 @@
 WPUpdates Plugin Updater Class
 http://wp-updates.com
 v2.0
-
-Example Usage:
-require_once('wp-updates-plugin.php');
-new WPUpdatesPluginUpdater_1013( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__) );
+Modified for SportsPress Pro
 */
 
-if( !class_exists('WPUpdatesPluginUpdater_1013') ) {
-    class WPUpdatesPluginUpdater_1013 {
+if( !class_exists('SportsPress_Pro_Updater') ) {
+    class SportsPress_Pro_Updater {
     
     	var $api_url;
-    	var $plugin_id = 1013;
+    	var $plugin_id;
     	var $plugin_path;
     	var $plugin_slug;
     	var $license_key;
     
     	function __construct( $api_url, $plugin_path, $license_key = null ) {
+            if ( class_exists( 'SportsPress_Multisite' ) ) {
+                $this->plugin_id = 1013;
+            } elseif ( class_exists( 'SportsPress_Tournaments' ) ) {
+                $this->plugin_id = 1017;
+            } else {
+                $this->plugin_id = 1018;
+            }
     		$this->api_url = $api_url;
     		$this->plugin_path = $plugin_path;
     		$this->license_key = $license_key;
@@ -28,12 +32,6 @@ if( !class_exists('WPUpdatesPluginUpdater_1013') ) {
     
     		add_filter( 'pre_set_site_transient_update_plugins', array(&$this, 'check_for_update') );
     		add_filter( 'plugins_api', array(&$this, 'plugin_api_call'), 10, 3 );
-    		
-    		// This is for testing only!
-    		set_site_transient( 'update_plugins', null );
-    
-    		// Show which variables are being requested when query plugin API
-    		//add_filter( 'plugins_api_result', array(&$this, 'debug_result'), 10, 3 );
     	}
     
     	function check_for_update( $transient ) {
