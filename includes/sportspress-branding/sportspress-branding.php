@@ -523,7 +523,13 @@ class SportsPress_Branding {
 			#adminmenu a:hover,
 			#adminmenu li.menu-top > a:focus,
 			#adminmenu .wp-submenu a:hover,
-			#adminmenu .wp-submenu a:focus {
+			#adminmenu .wp-submenu a:focus,
+			#adminmenu li.menu-top:hover,
+			#adminmenu li.opensub > a.menu-top,
+			#adminmenu li > a.menu-top:focus,
+			#adminmenu li a:focus div.wp-menu-image:before,
+			#adminmenu li.opensub div.wp-menu-image:before,
+			#adminmenu li:hover div.wp-menu-image:before {
 				color: #<?php echo $actions->getHex(); ?>;
 			}
 
