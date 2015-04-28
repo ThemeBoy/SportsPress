@@ -6,8 +6,8 @@ v2.0
 Modified for SportsPress Pro
 */
 
-if( !class_exists('SportsPress_Pro_Updater') ) {
-    class SportsPress_Pro_Updater {
+if ( !class_exists('SP_Pro_Updater') ) {
+    class SP_Pro_Updater {
     
     	var $api_url;
     	var $plugin_id;
