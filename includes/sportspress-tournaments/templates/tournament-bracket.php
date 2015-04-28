@@ -104,7 +104,7 @@ list( $labels, $data, $rounds, $rows ) = $tournament->data();
 									}
 								}
 
-								if ( $link_events ) $event_name = '<a href="' . get_post_permalink( $event ) . '" class="sp-event-title" title="' . get_the_title( $event ) . '">' . $event_name . '</a>';
+								if ( $link_events ) $event_name = '<a href="' . get_post_permalink( $event, false, true ) . '" class="sp-event-title" title="' . get_the_title( $event ) . '">' . $event_name . '</a>';
 								else $event_name = '<span class="sp-event-title" title="' . get_the_title( $event ) . '">' . $event_name . '</span>';
 								
 								echo $event_name;
