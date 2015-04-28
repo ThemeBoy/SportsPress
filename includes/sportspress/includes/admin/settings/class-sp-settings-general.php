@@ -215,7 +215,9 @@ class SP_Settings_General extends SP_Settings_Page {
 				'link' 			=> $link,
 			);
 
-			update_option( 'themeboy', $colors );
+			$options = get_option( 'themeboy' );
+			$options = array_merge( $options, $colors );
+			update_option( 'themeboy', $options );
 		}
 	}
 
@@ -226,8 +228,8 @@ class SP_Settings_General extends SP_Settings_Page {
 	 * @return void
 	 */
 	public function timezone_setting() {
-		$current_offset = get_option('gmt_offset');
-		$tzstring = get_option('timezone_string');
+		$current_offset = get_option( 'gmt_offset' );
+		$tzstring = get_option( 'timezone_string' );
 
 		$check_zone_info = true;
 

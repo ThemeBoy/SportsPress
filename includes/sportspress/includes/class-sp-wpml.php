@@ -5,7 +5,7 @@
  * The SportsPress WPML class handles all WPML-related localization hooks.
  *
  * @class 		SP_WPML
- * @version		1.3.2
+ * @version		1.8.2
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -51,7 +51,7 @@ class SP_WPML {
 		return $title;
 	}
 
-	public static function post_type_link( $url, $post = null, $leavename = false ) {
+	public static function post_type_link( $url, $post = null, $leavename = false, $sample = false ) {
 		if ( self::can_localize( $post ) ):
 			if ( ! $post ) global $post;
 
@@ -62,7 +62,7 @@ class SP_WPML {
 			$translated_id = icl_object_id( $id, 'any', false, ICL_LANGUAGE_CODE );
 
 			if ( $translated_id && $translated_id != $id && get_the_ID() != $translated_id ):
-				return get_permalink( $translated_id, $leavename );
+				return get_post_permalink( $translated_id, $leavename, $sample );
 			endif;
 		endif;
 
@@ -88,7 +88,7 @@ class SP_WPML {
         	// Get URL
 			$translated_id = icl_object_id( $id, 'any', false, $code );
 			if ( ! $translated_id ) continue;
-			$url = get_permalink( $translated_id );
+			$url = get_post_permalink( $translated_id, false, true );
 
 			// Get native name;
         	$native_name = sp_array_value( $v, 'native_name' );

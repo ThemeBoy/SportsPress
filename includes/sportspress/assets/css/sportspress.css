@@ -29,6 +29,7 @@
 
 /* Data Tables */
 .sp-scrollable-table-wrapper {
+	width: 100%;
 	overflow: auto;
 	position: relative;
 }
@@ -82,7 +83,6 @@
 	text-align: center;
 }
 .sp-table-wrapper .dataTables_paginate .paginate_button {
-	color: #00a69c;
 	margin: 0.5em;
 	cursor: pointer;
 	display: inline-block;
@@ -322,12 +322,12 @@
 		zoom: 1;
 	}
 	.sp-widget-align-left {
-		width: 48.387%;
+		width: 48.3871%;
 		float: left;
 		clear: left;
 	}
 	.sp-widget-align-right {
-		width: 48.387%;
+		width: 48.3871%;
 		float: right;
 		clear: right;
 	}

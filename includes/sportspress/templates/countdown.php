@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.6.1
+ * @version     1.8.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -32,7 +32,7 @@ extract( $defaults, EXTR_SKIP );
 if ( ! isset( $post ) ) return;
 
 $title = $post->post_title;
-if ( $link_events ) $title = '<a href="' . get_permalink( $post->ID ) . '">' . $title . '</a>';
+if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false, true ) . '">' . $title . '</a>';
 ?>
 <div class="sp-template sp-template-countdown">
 	<div class="sp-countdown-wrapper">
