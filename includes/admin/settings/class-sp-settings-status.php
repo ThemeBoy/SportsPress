@@ -24,7 +24,7 @@ class SP_Settings_Status extends SP_Settings_Page {
 		$this->id    = 'status';
 		$this->label = __( 'System Status', 'sportspress' );
 
-		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
+		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 99 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
 	}
 
