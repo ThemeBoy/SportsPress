@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Tournaments
+Plugin Name: SportsPress: Tournaments
 Plugin URI: http://sportspresspro.com/
 Description: Adds tournament groups and brackets to SportsPress.
 Author: ThemeBoy

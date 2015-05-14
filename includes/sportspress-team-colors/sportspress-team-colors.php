@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Team Colors
+Plugin Name: SportsPress: Team Colors
 Plugin URI: http://sportspresspro.com/
 Description: Add team colors to SportsPress.
 Author: ThemeBoy

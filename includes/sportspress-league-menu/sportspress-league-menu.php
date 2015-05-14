@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress League Menu
+Plugin Name: SportsPress: League Menu
 Plugin URI: http://sportspresspro.com/
 Description: Add a league menu to SportsPress.
 Author: ThemeBoy

@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Birthdays
+Plugin Name: SportsPress: Birthdays
 Plugin URI: http://themeboy.com/
 Description: Add birthdays to players and staff.
 Author: ThemeBoy

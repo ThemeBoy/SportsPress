@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Branding
+Plugin Name: SportsPress: Branding
 Plugin URI: http://sportspresspro.com/
 Description: White label SportsPress branding.
 Author: ThemeBoy

@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Sponsors
+Plugin Name: SportsPress: Sponsors
 Plugin URI: http://sportspresspro.com/
 Description: Add sponsors to SportsPress.
 Author: ThemeBoy

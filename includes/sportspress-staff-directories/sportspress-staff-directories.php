@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Staff Directories
+Plugin Name: SportsPress: Staff Directories
 Plugin URI: http://sportspresspro.com/
 Description: Adds staff directories to SportsPress.
 Author: ThemeBoy
