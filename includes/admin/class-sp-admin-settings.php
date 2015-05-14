@@ -20,6 +20,7 @@ class SP_Admin_Settings {
 	private static $settings = array();
 	private static $errors   = array();
 	private static $messages = array();
+	private static $overrides = array();
 
 	/**
 	 * Include the settings page classes
@@ -77,6 +78,14 @@ class SP_Admin_Settings {
 	}
 
 	/**
+	 * Add an override
+	 * @param string $text
+	 */
+	public static function add_override( $text ) {
+		self::$overrides[] = $text;
+	}
+
+	/**
 	 * Add an error
 	 * @param string $text
 	 */
@@ -85,12 +94,15 @@ class SP_Admin_Settings {
 	}
 
 	/**
-	 * Output messages + errors
+	 * Output messages + overrides + errors
 	 */
 	public static function show_messages() {
 		if ( sizeof( self::$errors ) > 0 ) {
 			foreach ( self::$errors as $error )
 				echo '<div id="message" class="error fade"><p><strong>' . esc_html( $error ) . '</strong></p></div>';
+		} elseif ( sizeof( self::$overrides ) > 0 ) {
+			foreach ( self::$overrides as $override )
+				echo '<div id="message" class="updated fade"><p><strong>' . esc_html( $override ) . '</strong></p></div>';
 		} elseif ( sizeof( self::$messages ) > 0 ) {
 			foreach ( self::$messages as $message )
 				echo '<div id="message" class="updated fade"><p><strong>' . esc_html( $message ) . '</strong></p></div>';
