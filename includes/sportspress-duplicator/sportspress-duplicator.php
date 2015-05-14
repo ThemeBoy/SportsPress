@@ -32,6 +32,7 @@ class SportsPress_Duplicator {
 
 		// Hooks
 		add_filter( 'post_row_actions', array( $this, 'post_row_action' ), 10, 2 );
+		add_filter( 'page_row_actions', array( $this, 'post_row_action' ), 10, 2 );
 		add_action( 'admin_action_sportspress_duplicate', array( $this, 'duplicate' ) );
 	}
 
@@ -50,9 +51,9 @@ class SportsPress_Duplicator {
 	}
 
 	function post_row_action( $actions, $post ) {
-		if ( $this->allowed() && is_sp_post_type( $post->post_type ) ) {
+		if ( $this->allowed( $post->post_type ) && is_sp_post_type( $post->post_type ) ) {
 			$actions = array_slice( $actions, 0, 2, true ) +
-            array( 'duplicate' => '<a href="' . $this->link( $post->ID ) . '" title="'
+            array( 'duplicate' => '<a href="' . $this->link( $post ) . '" title="'
 			. esc_attr__( 'Duplicate this item', 'sportspress' )
 			. '">' .  __( 'Duplicate', 'sportspress' ) . '</a>' ) +
             array_slice( $actions, 2, NULL, true );
@@ -60,14 +61,14 @@ class SportsPress_Duplicator {
 		return $actions;
 	}
 
-	function link( $id = 0 ) {
-		if ( ! $this->allowed() )
+	function link( $post ) {
+		if ( ! $this->allowed( $post->post_type ) )
 			return;
 
-		if ( ! $post = get_post( $id ) )
+		if ( ! $post = get_post( $post->ID ) )
 			return;
 
-		$action = '?action=sportspress_duplicate&amp;post='.$post->ID;
+		$action = '?action=sportspress_duplicate&amp;post=' . $post->ID;
 
 		$post_type_object = get_post_type_object( $post->post_type );
 		
@@ -179,8 +180,10 @@ class SportsPress_Duplicator {
 		}
 	}
 
-	function allowed() {
-		return current_user_can( 'edit_posts' );
+	function allowed( $post_type ) {
+		$object = get_post_type_object( $post_type );
+		$capability_type = $object->capability_type;
+		return current_user_can( "publish_{$capability_type}s" );
 	}
 }
 
