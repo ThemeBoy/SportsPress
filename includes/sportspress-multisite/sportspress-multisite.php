@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Multisite
+Plugin Name: SportsPress: Multisite
 Plugin URI: http://sportspresspro.com/
 Description: Add multisite network support to SportsPress.
 Author: ThemeBoy
@@ -77,7 +77,7 @@ class SportsPress_Multisite {
 	 * Before widget
 	 */
 	function before_widget( $args, $instance, $widget = 'default' ) {
-		$id = intval( $instance['site_id'] );
+		$id = intval( sp_array_value( $instance, 'site_id', 0 ) );
 		if ( $id ) {
 			switch_to_blog( $id );
 		}
