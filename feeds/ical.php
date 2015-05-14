@@ -24,6 +24,9 @@ $locale = substr( get_locale(), 0, 2 );
 // Get main result setting
 $main_result = get_option( 'sportspress_primary_result', null );
 
+// Get the timezone setting
+$timezone = sanitize_option( 'timezone_string', get_option( 'timezone_string' ) );
+
 // Initialize output. Max line length is 75 chars.
 $output =
 "BEGIN:VCALENDAR\n" .
@@ -38,7 +41,9 @@ $output =
 "DESCRIPTION:" . $post->post_title . "\n" .
 "X-WR-CALDESC:" . $post->post_title . "\n" .
 "REFRESH-INTERVAL;VALUE=DURATION:PT2M\n" .
-"X-PUBLISHED-TTL:PT2M\n";
+"X-PUBLISHED-TTL:PT2M\n" .
+"TZID:" . $timezone . "\n" .
+"X-WR-TIMEZONE:" . $timezone . "\n";
 
 // Loop through each event
 foreach ( $events as $event):
@@ -47,7 +52,7 @@ foreach ( $events as $event):
 	$date_format = 'Ymd\THis\Z';
 
 	// Initialize end time	
-	$end = new DateTime( $event->post_date_gmt );
+	$end = new DateTime( $event->post_date );
 
 	// Get full time minutes
 	$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
@@ -128,7 +133,7 @@ foreach ( $events as $event):
 	"SUMMARY:" . $summary . "\n" .
 	"UID:$event->ID\n" .
 	"STATUS:CONFIRMED\n" .
-	"DTSTART:" . mysql2date( $date_format, $event->post_date_gmt ) . "\n" .
+	"DTSTART:" . mysql2date( $date_format, $event->post_date ) . "\n" .
 	"DTEND:" . $end->format( $date_format ) . "\n" .
 	"LAST-MODIFIED:" . mysql2date( $date_format, $event->post_modified_gmt ) . "\n";
 
