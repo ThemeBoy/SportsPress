@@ -1,25 +1,25 @@
 <?php
 /*
-Plugin Name: SportsPress: License
+Plugin Name: SportsPress: Updater
 Plugin URI: http://sportspresspro.com/
 Description: Allow SportsPress Pro to be updated directly from the dashboard.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.8.3
+Version: 1.9
 */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'SportsPress_License' ) ) :
+if ( ! class_exists( 'SportsPress_Updater' ) ) :
 
 /**
- * Main SportsPress License Class
+ * Main SportsPress Updater Class
  *
- * @class SportsPress_License
- * @version	1.8.3
+ * @class SportsPress_Updater
+ * @version	1.9
  */
-class SportsPress_License {
+class SportsPress_Updater {
 
 	/**
 	 * Constructor
@@ -39,14 +39,14 @@ class SportsPress_License {
 	 * Define constants
 	*/
 	private function define_constants() {
-		if ( !defined( 'SP_LICENSE_VERSION' ) )
-			define( 'SP_LICENSE_VERSION', '1.8.3' );
+		if ( !defined( 'SP_UPDATER_VERSION' ) )
+			define( 'SP_UPDATER_VERSION', '1.8.3' );
 
-		if ( !defined( 'SP_LICENSE_URL' ) )
-			define( 'SP_LICENSE_URL', plugin_dir_url( __FILE__ ) );
+		if ( !defined( 'SP_UPDATER_URL' ) )
+			define( 'SP_UPDATER_URL', plugin_dir_url( __FILE__ ) );
 
-		if ( !defined( 'SP_LICENSE_DIR' ) )
-			define( 'SP_LICENSE_DIR', plugin_dir_path( __FILE__ ) );
+		if ( !defined( 'SP_UPDATER_DIR' ) )
+			define( 'SP_UPDATER_DIR', plugin_dir_path( __FILE__ ) );
 	}
 
 	/**
@@ -71,4 +71,4 @@ class SportsPress_License {
 
 endif;
 
-new SportsPress_License();
+new SportsPress_Updater();

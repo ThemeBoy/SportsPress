@@ -3,7 +3,7 @@
 WPUpdates Plugin Updater Class
 http://wp-updates.com
 v2.0
-Modified for SportsPress Pro
+Modified for SportsPress
 */
 
 if ( !class_exists('SP_Updater') ) {
