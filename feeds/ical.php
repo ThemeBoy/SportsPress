@@ -49,7 +49,7 @@ $output =
 foreach ( $events as $event):
 
 	// Define date format
-	$date_format = 'Ymd\THis\Z';
+	$date_format = 'Ymd\THis';
 
 	// Initialize end time	
 	$end = new DateTime( $event->post_date );
