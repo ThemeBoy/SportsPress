@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Countdowns
+Plugin Name: SportsPress: Countdowns
 Plugin URI: http://themeboy.com/
 Description: Add countdown widgets to SportsPress.
 Author: ThemeBoy

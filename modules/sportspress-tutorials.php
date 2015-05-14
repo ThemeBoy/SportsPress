@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Tutorials
+Plugin Name: SportsPress: Tutorials
 Plugin URI: http://themeboy.com/
 Description: Display SportsPress video tutorials.
 Author: ThemeBoy

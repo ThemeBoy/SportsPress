@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Overview
+Plugin Name: SportsPress: Overview
 Plugin URI: http://themeboy.com/
 Description: Display a visual overview of SportsPress data.
 Author: ThemeBoy
