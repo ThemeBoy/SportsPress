@@ -824,23 +824,13 @@ table.sp-status-table td mark.yes {
 	display: block;
 }
 
-/* ThemeBoy */
-.toplevel_page_themeboy #wpbody {
-	margin-left: -20px;
-	padding-bottom: 100%;
-}
-.toplevel_page_themeboy .themeboy-container {
-	padding-bottom: 100%;
-}
-.toplevel_page_themeboy .themeboy-container iframe {
-	border: 0;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	display: block;
+/* Media Queries */
+@media only screen and (max-width: 960px) {
+	.sportspress_page_sportspress-more iframe {
+		/*padding-left: 36px;*/
+	}
 }
 
-/* Media Queries */
 @media only screen and (max-width: 850px) {
 	.sp-modules-wrapper {
 		margin-right: 0;
@@ -874,6 +864,10 @@ table.sp-status-table td mark.yes {
 
 	table.sp-modules-table td .button {
 		margin: -3px -7px -3px 10px;
+	}
+
+	.sportspress_page_sportspress-more iframe {
+		/*padding-left: 0;*/
 	}
 }
 

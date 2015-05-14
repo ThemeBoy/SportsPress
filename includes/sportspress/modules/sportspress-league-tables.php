@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress League Tables
+Plugin Name: SportsPress: League Tables
 Plugin URI: http://themeboy.com/
 Description: Add league tables to SportsPress.
 Author: ThemeBoy

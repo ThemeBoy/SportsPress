@@ -125,6 +125,9 @@
 .sp-icon-edit:before {
 	content: "\f464";
 }
+.sp-icon-copy:before {
+	content: "\f105";
+}
 
 #adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,
 #adminmenu #toplevel_page_themeboy .toplevel_page_themeboy div.wp-menu-image:before,

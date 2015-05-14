@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Calendars
+Plugin Name: SportsPress: Calendars
 Plugin URI: http://themeboy.com/
 Description: Add event calendars to SportsPress.
 Author: ThemeBoy

@@ -114,6 +114,13 @@ class SP_Modules {
 					'link' => 'http://tboy.co/sponsors',
 					'desc' => __( 'Attract sponsors by offering them advertising space on your website.', 'sportspress' ),
 				),
+				'duplicator' => array(
+					'label' => __( 'Duplicator', 'sportspress' ),
+					'class' => 'SportsPress_Duplicator',
+					'icon' => 'sp-icon-copy',
+					'link' => 'http://tboy.co/menu',
+					'desc' => __( 'Add a global navigation bar to display logos that link to each team.', 'sportspress' ),
+				),
 			),
 		));
 	}

@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Event Videos
+Plugin Name: SportsPress: Event Videos
 Plugin URI: http://themeboy.com/
 Description: Add videos to SportsPress events.
 Author: ThemeBoy
