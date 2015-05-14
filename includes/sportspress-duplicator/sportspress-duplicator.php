@@ -50,10 +50,12 @@ class SportsPress_Duplicator {
 	}
 
 	function post_row_action( $actions, $post ) {
-		if ( $this->allowed() ) {
-			$actions['duplicate'] = '<a href="' .  $this->link( $post->ID ) . '" title="'
+		if ( $this->allowed() && is_sp_post_type( $post->post_type ) ) {
+			$actions = array_slice( $actions, 0, 2, true ) +
+            array( 'duplicate' => '<a href="' . $this->link( $post->ID ) . '" title="'
 			. esc_attr__( 'Duplicate this item', 'sportspress' )
-			. '">' .  __( 'Duplicate', 'sportspress' ) . '</a>';
+			. '">' .  __( 'Duplicate', 'sportspress' ) . '</a>' ) +
+            array_slice( $actions, 2, NULL, true );
 		}
 		return $actions;
 	}
