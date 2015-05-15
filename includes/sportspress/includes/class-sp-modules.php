@@ -71,19 +71,35 @@ class SP_Modules {
 					'desc' => __( "Display each player's birthday and their current age.", 'sportspress' ),
 				),
 				'staff_directories' => array(
-					'label' => __( 'Directories', 'sportspress' ),
+					'label' => __( 'Staff Directories', 'sportspress' ),
 					'class' => 'SportsPress_Staff_Directories',
 					'icon' => 'sp-icon-archive',
 					'link' => 'http://tboy.co/directories',
 					'desc' => __( 'Organize and display staff in list and gallery layouts.', 'sportspress' ),
 				),
 			),
-			'other' => array(
+			'admin' => array(
 				'tutorials' => array(
 					'label' => __( 'Tutorials', 'sportspress' ),
 					'icon' => 'dashicons dashicons-video-alt3',
 					'desc' => __( 'Display a dashboard page with SportsPress video tutorials.', 'sportspress' ),
 				),
+				'branding' => array(
+					'label' => __( 'Branding', 'sportspress' ),
+					'class' => 'SportsPress_Branding',
+					'icon' => 'sp-icon-sportspress',
+					'link' => 'http://tboy.co/branding',
+					'desc' => __( 'Instantly rebrand the dashboard with your own logo and colors.', 'sportspress' ),
+				),
+				'duplicator' => array(
+					'label' => __( 'Duplicator', 'sportspress' ),
+					'class' => 'SportsPress_Duplicator',
+					'icon' => 'sp-icon-copy',
+					'link' => 'http://tboy.co/features',
+					'desc' => __( 'Clone anything with just one click. Great for creating multiple events.', 'sportspress' ),
+				),
+			),
+			'other' => array(
 				'twitter' => array(
 					'label' => __( 'Twitter', 'sportspress' ),
 					'class' => 'SportsPress_Twitter',
@@ -92,13 +108,6 @@ class SP_Modules {
 					'tip' => __( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.', 'sportspress' ),
 					'icon' => 'dashicons dashicons-twitter',
 					'desc' => __( 'Add a Twitter feed to team, player, and staff pages.', 'sportspress' ),
-				),
-				'branding' => array(
-					'label' => __( 'Branding', 'sportspress' ),
-					'class' => 'SportsPress_Branding',
-					'icon' => 'sp-icon-sportspress',
-					'link' => 'http://tboy.co/branding',
-					'desc' => __( 'Instantly rebrand the dashboard with your own logo and colors.', 'sportspress' ),
 				),
 				'league_menu' => array(
 					'label' => __( 'League Menu', 'sportspress' ),
@@ -114,12 +123,12 @@ class SP_Modules {
 					'link' => 'http://tboy.co/sponsors',
 					'desc' => __( 'Attract sponsors by offering them advertising space on your website.', 'sportspress' ),
 				),
-				'duplicator' => array(
-					'label' => __( 'Duplicator', 'sportspress' ),
-					'class' => 'SportsPress_Duplicator',
-					'icon' => 'sp-icon-copy',
-					'link' => 'http://tboy.co/menu',
-					'desc' => __( 'Add a global navigation bar to display logos that link to each team.', 'sportspress' ),
+				'officials' => array(
+					'label' => __( 'Officials', 'sportspress' ),
+					'class' => 'SportsPress_Officials',
+					'icon' => 'sp-icon-whistle',
+					'link' => 'http://tboy.co/features',
+					'desc' => __( 'Create dynamic profiles for referees, umpires, and other officials.', 'sportspress' ),
 				),
 			),
 		));

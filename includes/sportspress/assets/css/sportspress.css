@@ -316,11 +316,6 @@
 /* Media Queries */
 @media screen and (min-width: 783px) {
 	/* Widget Alignment */
-	.sp-widget-align-none {
-		clear: both;
-		overflow: auto;
-		zoom: 1;
-	}
 	.sp-widget-align-left {
 		width: 48.3871%;
 		float: left;
