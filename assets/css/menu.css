@@ -107,9 +107,6 @@
 .sp-icon-availability:before {
 	content: "\f508";
 }
-.sp-icon-tutorials:before {
-	content: "\f118";
-}
 .sp-icon-popup:before {
 	content: "\f504";
 }
@@ -124,6 +121,9 @@
 }
 .sp-icon-edit:before {
 	content: "\f464";
+}
+.sp-icon-copy:before {
+	content: "\f105";
 }
 
 #adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,
