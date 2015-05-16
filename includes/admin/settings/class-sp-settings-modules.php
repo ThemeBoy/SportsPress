@@ -34,6 +34,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 			'event' => __( 'Events', 'sportspress' ),
 			'team' => __( 'Teams', 'sportspress' ),
 			'player_staff' => __( 'Players', 'sportspress' ) . ' &amp; ' . __( 'Staff', 'sportspress' ),
+			'admin' => __( 'Dashboard', 'sportspress' ),
 			'other' => __( 'Other', 'sportspress' ),
 		));
 

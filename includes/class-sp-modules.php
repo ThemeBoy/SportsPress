@@ -5,7 +5,7 @@
  * The SportsPress modules class stores available modules.
  *
  * @class 		SP_Modules
- * @version     1.8
+ * @version     1.8.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -78,12 +78,21 @@ class SP_Modules {
 					'desc' => __( 'Organize and display staff in list and gallery layouts.', 'sportspress' ),
 				),
 			),
-			'other' => array(
+			'admin' => array(
 				'tutorials' => array(
 					'label' => __( 'Tutorials', 'sportspress' ),
 					'icon' => 'dashicons dashicons-video-alt3',
 					'desc' => __( 'Display a dashboard page with SportsPress video tutorials.', 'sportspress' ),
 				),
+				'branding' => array(
+					'label' => __( 'Branding', 'sportspress' ),
+					'class' => 'SportsPress_Branding',
+					'icon' => 'sp-icon-sportspress',
+					'link' => 'http://tboy.co/branding',
+					'desc' => __( 'Instantly rebrand the dashboard with your own logo and colors.', 'sportspress' ),
+				),
+			),
+			'other' => array(
 				'twitter' => array(
 					'label' => __( 'Twitter', 'sportspress' ),
 					'class' => 'SportsPress_Twitter',
@@ -92,13 +101,6 @@ class SP_Modules {
 					'tip' => __( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.', 'sportspress' ),
 					'icon' => 'dashicons dashicons-twitter',
 					'desc' => __( 'Add a Twitter feed to team, player, and staff pages.', 'sportspress' ),
-				),
-				'branding' => array(
-					'label' => __( 'Branding', 'sportspress' ),
-					'class' => 'SportsPress_Branding',
-					'icon' => 'sp-icon-sportspress',
-					'link' => 'http://tboy.co/branding',
-					'desc' => __( 'Instantly rebrand the dashboard with your own logo and colors.', 'sportspress' ),
 				),
 				'league_menu' => array(
 					'label' => __( 'League Menu', 'sportspress' ),
