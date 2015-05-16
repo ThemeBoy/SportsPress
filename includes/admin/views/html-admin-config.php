@@ -42,7 +42,7 @@
 							</tr>
 						<?php $i++; endforeach; else: ?>
 							<tr class="alternate">
-								<td colspan="5"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+								<td colspan="6"><?php _e( 'No results found.', 'sportspress' ); ?></td>
 							</tr>
 						<?php endif; ?>
 					</table>
