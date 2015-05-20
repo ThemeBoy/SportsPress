@@ -51,8 +51,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 	 */
 	public function output() {
 		?>
-		<h3><?php _e( 'Modules', 'sportspress' ); ?></h3>
-
 		<div class="sp-modules-wrapper">
 			<div class="sp-modules-sidebar">
 				<?php if ( ! class_exists( 'SportsPress_Pro' ) ) { ?>

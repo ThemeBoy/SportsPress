@@ -568,6 +568,7 @@ table.widefat.sp-sortable-table tbody tr .icon {
 }
 
 .sp-modules-wrapper {
+	margin-top: 20px;
 	margin-right: 300px;
 	max-width: 750px;
 }
@@ -642,6 +643,10 @@ table.widefat.sp-sortable-table tbody tr .icon {
 
 .sp-modules-wrapper table {
 	margin-bottom: 20px;
+}
+
+table.sp-modules-table th {
+	font-weight: 600;
 }
 
 table.sp-modules-table td {
@@ -847,6 +852,9 @@ table.sp-status-table td mark.yes {
 	width: 342px;
 	max-width: 100%;
 	margin: 6px;
+}
+.sp-tutorials-list li th {
+	font-weight: 600;
 }
 .sp-tutorials-list li strong {
 	background: #aaa;
