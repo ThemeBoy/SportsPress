@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add videos to SportsPress events.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.7.4
+Version: 1.8.3
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Event_Videos' ) ) :
  * Main SportsPress Event Videos Class
  *
  * @class SportsPress_Event_Videos
- * @version	1.7.4
+ * @version	1.8.3
  */
 class SportsPress_Event_Videos {
 
@@ -37,7 +37,7 @@ class SportsPress_Event_Videos {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_EVENT_VIDEOS_VERSION' ) )
-			define( 'SP_EVENT_VIDEOS_VERSION', '1.7.4' );
+			define( 'SP_EVENT_VIDEOS_VERSION', '1.8.3' );
 
 		if ( !defined( 'SP_EVENT_VIDEOS_URL' ) )
 			define( 'SP_EVENT_VIDEOS_URL', plugin_dir_url( __FILE__ ) );
