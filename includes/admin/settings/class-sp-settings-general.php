@@ -215,7 +215,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				'link' 			=> $link,
 			);
 
-			$options = get_option( 'themeboy' );
+			$options = (array) get_option( 'themeboy', array() );
 			$options = array_merge( $options, $colors );
 			update_option( 'themeboy', $options );
 		}
