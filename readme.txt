@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 1.8.3
+Stable tag: 1.8.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -224,6 +224,11 @@ There are [3 different licenses](http://tboy.co/pricing) that you can choose fro
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.8.4 =
+* Fix - Installation screen notice related to default color scheme.
+* Localization - Add vetsmi, ceyhunulas, pgbenini, paulcoppen, fernandori, wolforg, and chr86 to translation team.
+* Localization - Update Dutch, Spanish, Portuguese (Brazil), French, and German translations.
 
 = 1.8.3 =
 * Tweak - Settings page styling updated.
