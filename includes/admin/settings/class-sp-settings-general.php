@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.8.4
+ * @version     1.8.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -215,9 +215,12 @@ class SP_Settings_General extends SP_Settings_Page {
 				'link' 			=> $link,
 			);
 
-			$options = (array) get_option( 'themeboy', array() );
-			$options = array_merge( $options, $colors );
-			update_option( 'themeboy', $options );
+			$options = get_option( 'themeboy', array() );
+			if ( is_array( $options ) ) {
+				$colors = array_merge( $options, $colors );
+			}
+
+			update_option( 'themeboy', $colors );
 		}
 	}
 
