@@ -392,6 +392,7 @@ class SP_Admin_Welcome {
 				'King3R',
 				'krisop',
 				'latixns',
+				'm4rsal',
 				'massimo.marra',
 				'matiqos',
 				'MohamedZ',
