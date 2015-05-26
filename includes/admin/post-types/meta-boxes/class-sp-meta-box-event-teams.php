@@ -55,7 +55,10 @@ class SP_Meta_Box_Event_Teams {
 						);
 					}
 				}
-				sp_dropdown_pages( $args );
+				if ( ! sp_dropdown_pages( $args ) ) {
+					unset( $args['tax_query'] );
+					sp_dropdown_pages( $args );
+				}
 				?>
 				</p>
 				<?php $tabs = apply_filters( 'sportspress_event_team_tabs', array( 'sp_player', 'sp_staff' ) ); ?>
