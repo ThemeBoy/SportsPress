@@ -5,7 +5,7 @@
  * The SportsPress modules class stores available modules.
  *
  * @class 		SP_Modules
- * @version     1.8.3
+ * @version     1.8.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -60,14 +60,8 @@ class SP_Modules {
 				'birthdays' => array(
 					'label' => __( 'Birthdays', 'sportspress' ),
 					'class' => 'SportsPress_Birthdays',
-					'action' => __( 'Review on WP.org', 'sportspress' ),
-					'link' => 'http://tboy.co/review',
-					'tip' => str_replace(
-						array( '[stars]', '[link]', '[/link]' ),
-						array( '&#9733;&#9733;&#9733;&#9733;&#9733;', '', '' ),
-						__( 'Add your [stars] on [link]wordpress.org[/link] and get the Birthdays module for free.','sportspress' )
-					),
 					'icon' => 'sp-icon-cake',
+					'link' => 'http://tboy.co/features',
 					'desc' => __( "Display each player's birthday and their current age.", 'sportspress' ),
 				),
 				'staff_directories' => array(

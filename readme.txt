@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.8.5
+Stable tag: 1.8.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -224,6 +224,11 @@ There are [3 different licenses](http://tboy.co/pricing) that you can choose fro
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.8.6 =
+* Tweak - Update modules page to reflect a change in offered features.
+* Fix - Team dropdowns disappearing when none found in the competition and season assigned to an event.
+* Localization - Update Russian translations.
 
 = 1.8.5 =
 * Fix - Error merging option arrays.
