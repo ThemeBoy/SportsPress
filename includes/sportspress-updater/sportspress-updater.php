@@ -5,7 +5,7 @@ Plugin URI: http://sportspresspro.com/
 Description: Allow SportsPress Pro to be updated directly from the dashboard.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.9
+Version: 1.8.6
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Updater' ) ) :
  * Main SportsPress Updater Class
  *
  * @class SportsPress_Updater
- * @version	1.9
+ * @version	1.8.6
  */
 class SportsPress_Updater {
 
@@ -40,7 +40,7 @@ class SportsPress_Updater {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_UPDATER_VERSION' ) )
-			define( 'SP_UPDATER_VERSION', '1.8.3' );
+			define( 'SP_UPDATER_VERSION', '1.8.6' );
 
 		if ( !defined( 'SP_UPDATER_URL' ) )
 			define( 'SP_UPDATER_URL', plugin_dir_url( __FILE__ ) );

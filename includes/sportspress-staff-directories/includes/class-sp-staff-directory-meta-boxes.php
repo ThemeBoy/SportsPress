@@ -92,7 +92,6 @@ class SP_Staff_Directory_Meta_Boxes {
 		$team_id = get_post_meta( $post->ID, 'sp_team', true );
 		?>
 		<div>
-		$taxonomies = get_object_taxonomies( 'sp_tournament' );
 			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
 			<p class="sp-tab-select">
 				<?php

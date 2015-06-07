@@ -316,14 +316,21 @@
 /* Media Queries */
 @media screen and (min-width: 783px) {
 	/* Widget Alignment */
+	.sp-widget-align-none {
+		clear: both;
+	}
 	.sp-widget-align-left {
-		width: 48.3871%;
+		width: 50%;
 		float: left;
 		clear: left;
+		padding-right: 10px;
+		box-sizing: border-box;
 	}
 	.sp-widget-align-right {
-		width: 48.3871%;
+		width: 50%;
 		float: right;
 		clear: right;
+		padding-left: 10px;
+		box-sizing: border-box;
 	}
 }

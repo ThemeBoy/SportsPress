@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 4.2
-Stable tag: 1.8.2
+Tested up to: 4.2.2
+Stable tag: 1.8.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -69,6 +69,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Hungarian – Magyar ( hu_HU )
 * Italian – Italiano ( it_IT )
 * Japanese – 日本語 ( ja )
+* Korean – 한국어 ( ko_KR )
 * Macedonian – македонски ( mk_MK )
 * Norwegian Bokmål – Norsk bokmål ( nb_NO )
 * Polish – Polski ( pl_PL )
@@ -223,6 +224,29 @@ There are [3 different licenses](http://tboy.co/pricing) that you can choose fro
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.8.6 =
+* Tweak - Update modules page to reflect a change in offered features.
+* Fix - Team dropdowns disappearing when none found in the competition and season assigned to an event.
+* Localization - Update Russian translations.
+
+= 1.8.5 =
+* Fix - Error merging option arrays.
+* Localization - Add m4rsal to translation team.
+* Localization - Update Polish, Spanish, German, Norwegian, Dutch, and Finnish translations.
+
+= 1.8.4 =
+* Fix - Installation screen notice related to default color scheme.
+* Localization - Add vetsmi, ceyhunulas, pgbenini, paulcoppen, fernandori, wolforg, and chr86 to translation team.
+* Localization - Update Dutch, Spanish, Portuguese (Brazil), French, and German translations.
+
+= 1.8.3 =
+* Tweak - Settings page styling updated.
+* Tweak - New modules category added for admin-related dashboard modules.
+* Fix - Widget floating issue in some themes.
+* Fix - Timezones added to calendar feeds using blog timezone setting.
+* Fix - Event filters generating redundant queries.
+* Localization - Update Finnish, Norwegian, Turkish, Polish, Portuguese (Brazil), and Portuguese (Portugal) translations.
 
 = 1.8.2 =
 * Tweak - Make scrollable tables fill content width.

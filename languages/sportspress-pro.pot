@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2015-04-11 01:36+1000\n"
-"PO-Revision-Date: 2015-04-11 01:36+1000\n"
+"POT-Creation-Date: 2015-05-20 13:29+1000\n"
+"PO-Revision-Date: 2015-05-20 13:30+1000\n"
 "Last-Translator: Brian Miyaji <brian@themeboy.com>\n"
 "Language-Team: ThemeBoy <support@themeboy.com>\n"
 "Language: en_US\n"
@@ -16,12 +16,45 @@ msgstr ""
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-SearchPath-0: ./includes/sportspress-branding\n"
-"X-Poedit-SearchPath-1: ./includes/sportspress-league-menu\n"
-"X-Poedit-SearchPath-2: ./includes/sportspress-sponsors\n"
-"X-Poedit-SearchPath-3: ./includes/sportspress-staff-directories\n"
-"X-Poedit-SearchPath-4: ./includes/sportspress-team-colors\n"
-"X-Poedit-SearchPath-5: ./includes/sportspress-tournaments\n"
+"X-Poedit-SearchPath-0: ./includes/sportspress-birthdays\n"
+"X-Poedit-SearchPath-1: ./includes/sportspress-branding\n"
+"X-Poedit-SearchPath-2: ./includes/sportspress-duplicator\n"
+"X-Poedit-SearchPath-3: ./includes/sportspress-league-menu\n"
+"X-Poedit-SearchPath-4: ./includes/sportspress-multisite\n"
+"X-Poedit-SearchPath-5: ./includes/sportspress-sponsors\n"
+"X-Poedit-SearchPath-6: ./includes/sportspress-staff-directories\n"
+"X-Poedit-SearchPath-7: ./includes/sportspress-team-colors\n"
+"X-Poedit-SearchPath-8: ./includes/sportspress-tournaments\n"
+"X-Poedit-SearchPath-9: ./includes/sportspress-twitter\n"
+"X-Poedit-SearchPath-10: ./includes/sportspress-updater\n"
+
+#: includes/sportspress-birthdays/sportspress-birthdays.php:77
+#, php-format
+msgid "Birthday: <b>%1$s</b>"
+msgstr ""
+
+#: includes/sportspress-birthdays/sportspress-birthdays.php:79
+#: includes/sportspress-birthdays/sportspress-birthdays.php:100
+#: includes/sportspress-birthdays/sportspress-birthdays.php:128
+#: includes/sportspress-birthdays/sportspress-birthdays.php:155
+#: includes/sportspress-birthdays/sportspress-birthdays.php:172
+msgid "Birthday"
+msgstr ""
+
+#: includes/sportspress-birthdays/sportspress-birthdays.php:101
+#: includes/sportspress-birthdays/sportspress-birthdays.php:129
+msgid "Display birthday"
+msgstr ""
+
+#: includes/sportspress-birthdays/sportspress-birthdays.php:109
+#: includes/sportspress-birthdays/sportspress-birthdays.php:137
+msgid "Display age"
+msgstr ""
+
+#: includes/sportspress-birthdays/sportspress-birthdays.php:159
+#: includes/sportspress-birthdays/sportspress-birthdays.php:176
+msgid "Age"
+msgstr ""
 
 #: includes/sportspress-branding/includes/class-sp-settings-branding.php:25
 #: includes/sportspress-branding/includes/class-sp-settings-branding.php:44
@@ -86,6 +119,23 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
+#: includes/sportspress-duplicator/sportspress-duplicator.php:57
+msgid "Duplicate this item"
+msgstr ""
+
+#: includes/sportspress-duplicator/sportspress-duplicator.php:58
+msgid "Duplicate"
+msgstr ""
+
+#: includes/sportspress-duplicator/sportspress-duplicator.php:83
+#: includes/sportspress-duplicator/sportspress-duplicator.php:98
+msgid "ERROR: Duplication failed."
+msgstr ""
+
+#: includes/sportspress-duplicator/sportspress-duplicator.php:123
+msgid "Copy"
+msgstr ""
+
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:25
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:44
 msgid "League Menu"
@@ -107,7 +157,7 @@ msgstr ""
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:63
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:93
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:145
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:67
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:71
 msgid "Menu Order"
 msgstr ""
 
@@ -116,7 +166,7 @@ msgstr ""
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:95
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:147
 #: includes/sportspress-sponsors/includes/class-sp-sponsor-importer.php:26
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:69
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:73
 #: includes/sportspress-sponsors/sportspress-sponsors.php:378
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:164
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory.php:210
@@ -126,7 +176,7 @@ msgstr ""
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:65
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:96
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:148
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:70
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:74
 msgid "Random"
 msgstr ""
 
@@ -139,14 +189,14 @@ msgstr ""
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:75
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:106
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:158
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:75
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:79
 msgid "Ascending"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:76
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:107
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:159
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:76
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:80
 msgid "Descending"
 msgstr ""
 
@@ -250,6 +300,19 @@ msgstr ""
 msgid "Teams"
 msgstr ""
 
+#: includes/sportspress-multisite/sportspress-multisite.php:115
+#, php-format
+msgid "Site: %s"
+msgstr ""
+
+#: includes/sportspress-multisite/sportspress-multisite.php:198
+msgid "Multisite"
+msgstr ""
+
+#: includes/sportspress-multisite/sportspress-multisite.php:202
+msgid "Manage multiple sports and display different widgets all on one site."
+msgstr ""
+
 #: includes/sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:66
 #: includes/sportspress-sponsors/includes/class-sp-sponsor-importer.php:27
 msgid "URL"
@@ -326,7 +389,7 @@ msgstr ""
 
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:94
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:146
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:68
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:72
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:301
 msgid "Date"
 msgstr ""
@@ -376,29 +439,29 @@ msgstr ""
 msgid "A list of sponsors."
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:59
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:54
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:54
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:63
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:58
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:58
 msgid "Title:"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:62
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:66
 msgid "Number of sponsors to show:"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:65
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:69
 msgid "Sort by:"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:73
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:77
 msgid "Sort Order:"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:79
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:83
 msgid "Max Width:"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:82
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:86
 msgid "Max Height:"
 msgstr ""
 
@@ -513,8 +576,8 @@ msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:47
 #: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:88
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:57
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:57
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:61
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:61
 #, php-format
 msgid "Select %s:"
 msgstr ""
@@ -528,15 +591,15 @@ msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:60
 #: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:101
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:73
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:73
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:77
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:77
 msgid "Number of staff to show:"
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:67
 #: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:108
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:77
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:77
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:81
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:81
 msgid "Display link to view all staff"
 msgstr ""
 
@@ -564,8 +627,8 @@ msgid "Layout"
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:38
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:57
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:57
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:61
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:61
 #: includes/sportspress-staff-directories/sportspress-staff-directories.php:122
 msgid "Staff Directory"
 msgstr ""
@@ -593,8 +656,8 @@ msgid ""
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:107
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:68
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:68
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:72
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:72
 msgid "Add New"
 msgstr ""
 
@@ -674,6 +737,7 @@ msgstr ""
 
 #: includes/sportspress-staff-directories/sportspress-staff-directories.php:279
 #: includes/sportspress-tournaments/sportspress-tournaments.php:237
+#: includes/sportspress-twitter/sportspress-twitter.php:99
 msgid "Limit"
 msgstr ""
 
@@ -779,4 +843,97 @@ msgstr ""
 
 #: includes/sportspress-tournaments/templates/tournament-bracket.php:112
 msgid "Event"
+msgstr ""
+
+#: includes/sportspress-twitter/sportspress-twitter.php:85
+#: includes/sportspress-twitter/sportspress-twitter.php:129
+#: includes/sportspress-twitter/sportspress-twitter.php:130
+#: includes/sportspress-twitter/sportspress-twitter.php:131
+msgid "Twitter"
+msgstr ""
+
+#: includes/sportspress-twitter/sportspress-twitter.php:88
+msgid "Theme"
+msgstr ""
+
+#: includes/sportspress-twitter/sportspress-twitter.php:93
+msgid "Light"
+msgstr ""
+
+#: includes/sportspress-twitter/sportspress-twitter.php:94
+msgid "Dark"
+msgstr ""
+
+#: includes/sportspress-twitter/sportspress-twitter.php:103
+msgid "tweets"
+msgstr ""
+
+#: includes/sportspress-twitter/sportspress-twitter.php:140
+#: includes/sportspress-twitter/sportspress-twitter.php:141
+msgid "Username"
+msgstr ""
+
+#: includes/sportspress-twitter/templates/tweets.php:25
+msgid "Tweets"
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:35
+msgid "License"
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:38
+msgid "League Package"
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:41
+msgid "Club Package"
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:44
+msgid "Social Package"
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:86
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:95
+msgid "License Key"
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:90
+msgid "Enter the license key from your purchase receipt."
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:99
+msgid "Deactivate"
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:103
+msgid "Activate"
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:131
+msgid "License deactivated."
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:136
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:166
+msgid "Sorry, there has been an error."
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:142
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:169
+msgid "License invalid."
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-settings-license.php:160
+msgid "License activated."
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-updater.php:85
+msgid ""
+"An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?"
+"\" onclick=\"document.location.reload(); return false;\">Try again</a>"
+msgstr ""
+
+#: includes/sportspress-updater/includes/class-sp-updater.php:89
+msgid "An unknown error occurred"
 msgstr ""

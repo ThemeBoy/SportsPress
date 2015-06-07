@@ -35,13 +35,13 @@ class SP_Settings_License extends SP_Settings_Page {
 		$this->label = __( 'License', 'sportspress' );
 		if ( class_exists( 'SportsPress_Multisite' ) ) {
 			$this->file = 'RJ';
-			$this->title = __( 'League Package', 'sportspress' );
+			$this->title = __( 'League License', 'sportspress' );
 		} elseif ( class_exists( 'SportsPress_Tournaments' ) ) {
 			$this->file = 'RL';
-			$this->title = __( 'Club Package', 'sportspress' );
+			$this->title = __( 'Club License', 'sportspress' );
 		} else {
 			$this->file = 'RM';
-			$this->title = __( 'Social Package', 'sportspress' );
+			$this->title = __( 'Social License', 'sportspress' );
 		}
 
 		if ( current_user_can( 'manage_options' ) ):

@@ -5,7 +5,7 @@
  * The SportsPress modules class stores available modules.
  *
  * @class 		SP_Modules
- * @version     1.8
+ * @version     1.8.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -60,18 +60,12 @@ class SP_Modules {
 				'birthdays' => array(
 					'label' => __( 'Birthdays', 'sportspress' ),
 					'class' => 'SportsPress_Birthdays',
-					'action' => __( 'Review on WP.org', 'sportspress' ),
-					'link' => 'http://tboy.co/review',
-					'tip' => str_replace(
-						array( '[stars]', '[link]', '[/link]' ),
-						array( '&#9733;&#9733;&#9733;&#9733;&#9733;', '', '' ),
-						__( 'Add your [stars] on [link]wordpress.org[/link] and get the Birthdays module for free.','sportspress' )
-					),
 					'icon' => 'sp-icon-cake',
+					'link' => 'http://tboy.co/features',
 					'desc' => __( "Display each player's birthday and their current age.", 'sportspress' ),
 				),
 				'staff_directories' => array(
-					'label' => __( 'Staff Directories', 'sportspress' ),
+					'label' => __( 'Directories', 'sportspress' ),
 					'class' => 'SportsPress_Staff_Directories',
 					'icon' => 'sp-icon-archive',
 					'link' => 'http://tboy.co/directories',
@@ -90,13 +84,6 @@ class SP_Modules {
 					'icon' => 'sp-icon-sportspress',
 					'link' => 'http://tboy.co/branding',
 					'desc' => __( 'Instantly rebrand the dashboard with your own logo and colors.', 'sportspress' ),
-				),
-				'duplicator' => array(
-					'label' => __( 'Duplicator', 'sportspress' ),
-					'class' => 'SportsPress_Duplicator',
-					'icon' => 'sp-icon-copy',
-					'link' => 'http://tboy.co/features',
-					'desc' => __( 'Clone anything with just one click. Great for creating multiple events.', 'sportspress' ),
 				),
 			),
 			'other' => array(
@@ -122,13 +109,6 @@ class SP_Modules {
 					'icon' => 'sp-icon-megaphone',
 					'link' => 'http://tboy.co/sponsors',
 					'desc' => __( 'Attract sponsors by offering them advertising space on your website.', 'sportspress' ),
-				),
-				'officials' => array(
-					'label' => __( 'Officials', 'sportspress' ),
-					'class' => 'SportsPress_Officials',
-					'icon' => 'sp-icon-whistle',
-					'link' => 'http://tboy.co/features',
-					'desc' => __( 'Create dynamic profiles for referees, umpires, and other officials.', 'sportspress' ),
 				),
 			),
 		));

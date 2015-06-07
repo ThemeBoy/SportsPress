@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add widgets to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.7.3
+Version: 1.8.3
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Widgets' ) ) :
  * Main SportsPress Widgets Class
  *
  * @class SportsPress_Widgets
- * @version	1.7
+ * @version	1.8.3
  */
 class SportsPress_Widgets {
 
@@ -36,7 +36,7 @@ class SportsPress_Widgets {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_WIDGETS_VERSION' ) )
-			define( 'SP_WIDGETS_VERSION', '1.7' );
+			define( 'SP_WIDGETS_VERSION', '1.8.3' );
 
 		if ( !defined( 'SP_WIDGETS_URL' ) )
 			define( 'SP_WIDGETS_URL', plugin_dir_url( __FILE__ ) );

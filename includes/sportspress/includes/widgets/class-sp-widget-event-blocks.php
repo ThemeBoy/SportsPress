@@ -21,13 +21,10 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		do_action( 'sportspress_before_widget', $args, $instance, 'event-blocks' );
 		echo $before_widget;
 
-		if ( $title )
-			echo $before_title . $title . $after_title;
-
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'event-blocks' );
 
-		sp_get_template( 'event-blocks.php', array( 'id' => $id, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'number' => $number, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
+		sp_get_template( 'event-blocks.php', array( 'id' => $id, 'title' => $title, 'show_title' => true, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'number' => $number, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'event-blocks' );

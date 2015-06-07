@@ -68,7 +68,7 @@ class SportsPress_Team_Colors {
 		}
 		$team_colors = (array) get_post_meta( $team, 'sp_colors', true );
 
-		return array_merge( $colors, $team_colors );
+		return array_merge( (array) $colors, $team_colors );
 	}
 
 	/**

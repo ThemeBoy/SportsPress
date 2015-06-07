@@ -474,7 +474,7 @@ class SportsPress_Sponsors {
 			$text_color = get_option( 'sportspress_footer_sponsors_css_text', '#363f48' );
 			?>
 			<style type="text/css">
-			.sp-footer-sponsors .sp-sponsors {
+			.sp-footer-sponsors {
 				background: <?php echo $background_color; ?>;
 				color: <?php echo $text_color; ?>;
 			}

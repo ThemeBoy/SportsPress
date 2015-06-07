@@ -19,13 +19,10 @@ class SP_Widget_League_Table extends WP_Widget {
 		do_action( 'sportspress_before_widget', $args, $instance, 'league-table' );
 		echo $before_widget;
 
-		if ( $title )
-			echo $before_title . $title . $after_title;
-
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'league-table' );
 
-		sp_get_template( 'league-table.php', array( 'id' => $id, 'number' => $number, 'columns' => $columns, 'show_full_table_link' => $show_full_table_link, 'show_team_logo' => $show_team_logo ) );
+		sp_get_template( 'league-table.php', array( 'id' => $id, 'title' => $title, 'number' => $number, 'columns' => $columns, 'show_full_table_link' => $show_full_table_link, 'show_team_logo' => $show_team_logo ) );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'league-table' );

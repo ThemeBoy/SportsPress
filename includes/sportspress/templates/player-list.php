@@ -79,6 +79,9 @@ endif;
 $output = '';
 
 foreach ( $groups as $group ):
+
+	$output .= '<div class="sp-template sp-template-player-list">';
+
 	if ( ! empty( $group->name ) ):
 		$output .= '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
 		$output .= '<' . $grouptag . ' class="sp-table-caption player-group-name player-list-group-name">' . $group->name . '</' . $grouptag . '>';
@@ -164,12 +167,10 @@ foreach ( $groups as $group ):
 
 	endif; endforeach;
 
-	$output .= '</tbody>' . '</table>' . '</div>';
+	$output .= '</tbody>' . '</table>' . '</div>' . '</div>';
 endforeach;
 
 if ( $show_all_players_link )
 	$output .= '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
 ?>
-<div class="sp-template sp-template-player-list">
-	<?php echo $output; ?>
-</div>
+<?php echo $output; ?>

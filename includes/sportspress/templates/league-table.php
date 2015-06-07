@@ -15,6 +15,7 @@ $defaults = array(
 	'columns' => null,
 	'highlight' => null,
 	'show_full_table_link' => false,
+	'title' => null,
 	'show_team_logo' => get_option( 'sportspress_table_show_logos', 'yes' ) == 'yes' ? true : false,
 	'link_posts' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
@@ -29,7 +30,10 @@ if ( ! isset( $highlight ) ) $highlight = get_post_meta( $id, 'sp_highlight', tr
 
 $table = new SP_League_Table( $id );
 
-$output = '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
+if ( empty( $title ) )
+	$title = get_the_title( $id );
+
+$output = '<h4 class="sp-table-caption">' . $title . '</h4>';
 
 $output .= '<div class="sp-table-wrapper">';
 

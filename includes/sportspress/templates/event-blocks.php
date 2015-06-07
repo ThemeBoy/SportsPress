@@ -24,6 +24,7 @@ $defaults = array(
 	'rows' => get_option( 'sportspress_event_blocks_rows', 10 ),
 	'order' => 'default',
 	'show_all_events_link' => false,
+	'title' => null,
 	'show_title' => get_option( 'sportspress_event_blocks_show_title', 'no' ) == 'yes' ? true : false,
 	'show_league' => get_option( 'sportspress_event_blocks_show_league', 'no' ) == 'yes' ? true : false,
 	'show_season' => get_option( 'sportspress_event_blocks_show_season', 'no' ) == 'yes' ? true : false,
@@ -46,12 +47,15 @@ if ( $order != 'default' )
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
 
+if ( empty( $title ) && $id )
+	$title = get_the_title( $id );
+
 if ( isset( $columns ) ) {
 	$usecolumns = $columns;
 }
 
-if ( $show_title && $id ) {
-	echo '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
+if ( $show_title && $title ) {
+	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
 }
 ?>
 <div class="sp-template sp-template-event-blocks">
@@ -71,6 +75,7 @@ if ( $show_title && $id ) {
 					$results = get_post_meta( $event->ID, 'sp_results', true );
 
 					$teams = array_unique( get_post_meta( $event->ID, 'sp_team' ) );
+					$teams = array_filter( $teams, 'sp_filter_positive' );
 					$logos = array();
 					$main_results = array();
 
@@ -79,7 +84,7 @@ if ( $show_title && $id ) {
 						$j++;
 						if ( has_post_thumbnail ( $team ) ):
 							if ( $link_teams ):
-								$logo = '<a class="team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) . '" href="' . get_post_permalink( $team, false, true ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</a>';
+								$logo = '<a class="team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) . '" href="' . get_permalink( $team, false, true ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</a>';
 							else:
 								$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) ) );
 							endif;

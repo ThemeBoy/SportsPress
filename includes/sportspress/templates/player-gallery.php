@@ -94,8 +94,7 @@ $size_class = sanitize_html_class( $size );
 $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
 echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 ?>
-<div class="sp-template sp-template-player-gallery">
-	<?php echo $gallery_div; ?>
+<?php echo $gallery_div; ?>
 	<?php
 	if ( intval( $number ) > 0 )
 		$limit = $number;
@@ -112,6 +111,8 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 
 	foreach ( $groups as $group ):
 		$i = 0;
+
+		echo '<div class="sp-template sp-template-player-gallery">';
 
 		if ( ! empty( $group->name ) ):
 			echo '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
@@ -144,6 +145,8 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 			echo '<br style="clear: both" />';
 		}
 
+		echo '</div>';
+
 	endforeach;
 
 	if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
@@ -154,6 +157,5 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 		echo '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
 	}
 		
-	echo "</div>\n";
-	?>
-</div>
+echo "</div>\n";
+?>

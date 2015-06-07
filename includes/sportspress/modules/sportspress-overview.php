@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Display a visual overview of SportsPress data.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.7.3
+Version: 1.8.3
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Overview' ) ) :
  * Main SportsPress Overview Class
  *
  * @class SportsPress_Overview
- * @version	1.7
+ * @version	1.8.3
  */
 class SportsPress_Overview {
 
@@ -36,7 +36,7 @@ class SportsPress_Overview {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_OVERVIEW_VERSION' ) )
-			define( 'SP_OVERVIEW_VERSION', '1.7' );
+			define( 'SP_OVERVIEW_VERSION', '1.8.3' );
 
 		if ( !defined( 'SP_OVERVIEW_URL' ) )
 			define( 'SP_OVERVIEW_URL', plugin_dir_url( __FILE__ ) );

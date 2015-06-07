@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.8
+ * @version     1.8.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -51,8 +51,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 	 */
 	public function output() {
 		?>
-		<h3><?php _e( 'Modules', 'sportspress' ); ?></h3>
-
 		<div class="sp-modules-wrapper">
 			<div class="sp-modules-sidebar">
 				<?php if ( ! class_exists( 'SportsPress_Pro' ) ) { ?>
@@ -120,34 +118,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<p class="sp-module-actions">
 								<span><?php _e( 'Free with tweet', 'sportspress' ); ?></span>
 								<a class="button" href="http://tboy.co/tweet" target="_blank"><?php _e( 'Tweet', 'sportspress' ); ?></a>
-							</p>
-						</td></tr>
-					</tbody>
-				</table>
-				<?php } ?>
-
-				<?php if ( ! class_exists( 'SportsPress_Birthdays' ) ) { ?>
-				<table class="widefat" cellspacing="0">
-					<thead>
-						<tr><th>
-							<strong><?php _e( 'Birthdays Module', 'sportspress' ); ?></strong>
-						</th></tr>
-					</thead>
-					<tbody>
-						<tr><td>
-							<ol><li><?php echo str_replace(
-								array( '[stars]', '[link]', '[/link]' ),
-								array( '<a target="_blank" href="http://tboy.co/review">&#9733;&#9733;&#9733;&#9733;&#9733;</a>', '<a target="_blank" href="http://tboy.co/review">', '</a>' ),
-								__( 'Add your [stars] on [link]wordpress.org[/link] and get the Birthdays module for free.','sportspress' )
-							); ?></li>
-							<li><?php echo str_replace(
-								array( '[link]', '[/link]' ),
-								array( '<a target="_blank" href="http://tboy.co/birthdaysmodule">', '</a>' ),
-								__( '[link]Get the download link[/link].', 'sportspress' )
-							); ?></li></ol>
-							<p class="sp-module-actions">
-								<span><?php _e( 'Free with review', 'sportspress' ); ?></span>
-								<a class="button" href="http://tboy.co/review" target="_blank"><?php _e( 'Post Review', 'sportspress' ); ?></a>
 							</p>
 						</td></tr>
 					</tbody>
