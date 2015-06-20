@@ -59,6 +59,8 @@ endif;
 if ( $orderby == 'default' ):
 	$orderby = $list->orderby;
 	$order = $list->order;
+elseif ( $orderby == 'rand' ):
+	uasort( $data, 'sp_sort_random' );
 else:
 	$list->priorities = array(
 		array(
