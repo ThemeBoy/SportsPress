@@ -86,6 +86,17 @@ function sp_filter_non_empty( $var = '' ) {
 }
 
 /**
+ * Sort array randomly and maintain index association.
+ *
+ * @access public
+ * @param array $array
+ * @return bool
+ */
+function sp_sort_random() {
+	return mt_rand( 0, 1 );
+}
+
+/**
  * let_to_num function.
  *
  * This function transforms the php.ini notation for numbers (like '2M') to an integer.

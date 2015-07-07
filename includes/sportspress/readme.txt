@@ -91,6 +91,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Basketball
 * Cricket
 * Darts
+* Football (Soccer)
 * Handball
 * Ice Hockey
 * Lacrosse
@@ -98,7 +99,6 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Rugby League
 * Rugby Union
 * Snooker
-* Soccer (Association Football)
 * Squash
 * Table Tennis
 * Tennis
@@ -219,7 +219,7 @@ The current modules that are available exclusively to SportsPress Pro are:
 * League Menu: Display a global navigation bar at the top of your website for easy navigation from one team to the next.
 * Branding: Instantly rebrands your admin panel to reflect your organization's brand.
 
-There are [3 different licenses](http://tboy.co/pricing) that you can choose from (Social, Club, and League), each with a [specified set of modules](http://sportspresspro.com/features/).
+There are [4 different licenses](http://tboy.co/pricing) that you can choose from (Social, Club, and League), each with a [specified set of modules](http://sportspresspro.com/features/).
 
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 

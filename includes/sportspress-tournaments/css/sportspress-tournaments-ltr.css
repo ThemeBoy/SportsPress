@@ -2,9 +2,27 @@
 	padding-right: 0;
 }
 
+/* Event */
+
 .sp-tournament-bracket .sp-event {
 	border-right: 8px solid #fff !important;
 }
+
+/* Event (Flip) */
+
+.sp-tournament-bracket .sp-event-flip {
+	border-right: none !important;
+	border-left: 8px solid #fff !important;
+}
+
+/* Event (Final) */
+
+.sp-tournament-bracket .sp-event-final {
+	border-right: none !important;
+	border-left: none !important;
+}
+
+/* Team */
 
 .sp-tournament-bracket .sp-team {
 	padding: 0 0 0 8px !important;
@@ -21,4 +39,32 @@
 
 .sp-tournament-bracket .sp-event.sp-last-round {
 	border-right: 0 !important;
+}
+
+/* Team (Flip) */
+
+.sp-tournament-bracket .sp-team-flip {
+	padding: 0 8px 0 0 !important;
+}
+
+.sp-tournament-bracket .sp-team-flip .sp-team-name:before {
+	left: auto;
+	border-left: none;
+	right: -8px;
+	border-right: 5px solid #fff;
+}
+
+.sp-tournament-bracket .sp-team-flip.sp-last-round {
+	padding-right: 0 !important;
+}
+
+.sp-tournament-bracket .sp-team-flip.sp-last-round .sp-team-name:before {
+	right: auto;
+	border-right: none;
+}
+
+/* Team (Final) */
+
+.sp-tournament-bracket .sp-team-final {
+	padding: 0 8px !important;
 }

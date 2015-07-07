@@ -35,6 +35,7 @@
 }
 
 .sp-league-menu .sp-team-logo {
+	display: block;
 	max-width: 32px;
 	max-height: 32px;
 	width: auto;

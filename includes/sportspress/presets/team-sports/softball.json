@@ -1,0 +1,90 @@
+{
+	"name":				"Softball",
+	"positions": {
+						"Batter" : [],
+						"Pitcher" : [],
+						"Fielder" : [
+							"Catcher",
+							"First base",
+							"Second base",
+							"Third base",
+							"Shortstop",
+							"Left field",
+							"Center field",
+							"Right field"
+						]
+	},
+	"outcomes": [
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" }
+	],
+	"results": [
+						{ "name" : "1", "description" : "1st inning runs" },
+						{ "name" : "2", "description" : "2nd inning runs" },
+						{ "name" : "3", "description" : "3rd inning runs" },
+						{ "name" : "4", "description" : "4th inning runs" },
+						{ "name" : "5", "description" : "5th inning runs" },
+						{ "name" : "6", "description" : "6th inning runs" },
+						{ "name" : "7", "description" : "7th inning runs" },
+						{ "name" : "&nbsp;", "id" : "extra", "description" : "Extra inning runs" },
+						{ "name" : "R", "description" : "Total runs", "primary" : 1 },
+						{ "name" : "H", "description" : "Hits" },
+						{ "name" : "E", "description" : "Errors" }
+	],
+	"performance": [
+						{ "name" : "AB", "position" : "Batter", "description" : "At bat" },
+						{ "name" : "R", "position" : "Batter", "description" : "Runs" },
+						{ "name" : "H", "position" : "Batter", "description" : "Hits" },
+						{ "name" : "RBI", "position" : "Batter", "description" : "Runs batted in" },
+						{ "name" : "2B", "id" : "doubles", "position" : "Batter", "description" : "Doubles" },
+						{ "name" : "3B", "id" : "triples", "position" : "Batter", "description" : "Triples" },
+						{ "name" : "HR", "position" : "Batter", "description" : "Home runs" },
+						{ "name" : "SB", "position" : "Batter", "description" : "Stolen bases" },
+						{ "name" : "BB", "position" : "Batter", "description" : "Base on balls" },
+						{ "name" : "SO", "position" : "Batter", "description" : "Strike outs" },
+						{ "name" : "LOB", "position" : "Batter", "description" : "Left on base" },
+						{ "name" : "IP", "id" : "pitcher_ip", "position" : "Pitcher", "description" : "Innings pitched" },
+						{ "name" : "H", "id" : "pitcher_h", "position" : "Pitcher", "description" : "Hits allowed" },
+						{ "name" : "R", "id" : "pitcher_r", "position" : "Pitcher", "description" : "Runs allowed" },
+						{ "name" : "ER", "id" : "pitcher_er", "position" : "Pitcher", "description" : "Earned runs allowed" },
+						{ "name" : "BB", "id" : "pitcher_bb", "position" : "Pitcher", "description" : "Base on balls allowed" },
+						{ "name" : "SO", "id" : "pitcher_so", "position" : "Pitcher", "description" : "Strike outs pitched" },
+						{ "name" : "HR", "id" : "pitcher_hr", "position" : "Pitcher", "description" : "Home runs allowed" }
+	],
+	"columns": [
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "Pct", "equation" : "$win / $eventsplayed", "precision" : 3, "priority" : 1, "description" : "Win percentage" },
+						{ "name" : "GB", "equation" : "$gamesback", "precision" : 1, "description" : "Games back" },
+						{ "name" : "RS", "equation" : "$rfor", "description" : "Runs scored" },
+						{ "name" : "RA", "equation" : "$ragainst", "description" : "Runs allowed" },
+						{ "name" : "Diff", "equation" : "$rfor - $ragainst", "description" : "Run differential" },
+						{ "name" : "Home", "equation" : "$homerecord", "description" : "Home record" },
+						{ "name" : "Road", "equation" : "$awayrecord", "description" : "Road record" },
+						{ "name" : "L10", "equation" : "$last10", "description" : "Last 10 games" },
+						{ "name" : "Strk", "equation" : "$streak", "description" : "Current streak" }
+	],
+	"metrics": [
+						{ "name" : "B/T", "description": "Bats / Throws" },
+						{ "name" : "Ht", "description": "Height" },
+						{ "name" : "Wt", "description": "Weight" }
+	],
+	"statistics": [
+						{ "name" : "G", "equation" : "$eventsplayed", "description" : "Games played" },
+						{ "name" : "AVG", "equation" : "$h / $ab", "precision" : 3, "description" : "Batting average" }
+	],
+	"options": {
+						"event_teams" : "2",
+						"sportspress_event_hide_child_positions" : "yes",
+						"event_show_players" : "yes",
+						"event_show_extras" : "no",
+						"event_show_total" : "yes",
+						"sportspress_event_results_reverse_teams" : "yes",
+						"sportspress_event_performance_mode" : "values",
+						"sportspress_event_performance_reverse_teams" : "yes",
+						"event_show_player_numbers" : "no",
+						"event_split_players_by_team" : "yes",
+						"event_split_players_by_position" : "yes",
+						"sportspress_event_total_performance" : "all"
+	}
+}

@@ -101,6 +101,9 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 				'name' => __( 'Name', 'sportspress' ),
 				'eventsplayed' => __( 'Played', 'sportspress' )
 			),
+			'append_options' => array(
+				'rand' => __( 'Random', 'sportspress' ),
+			),
 			'post_type' => 'sp_performance',
 			'name' => $this->get_field_name('orderby'),
 			'id' => $this->get_field_id('orderby'),

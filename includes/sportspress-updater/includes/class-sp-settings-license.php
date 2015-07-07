@@ -31,25 +31,30 @@ class SP_Settings_License extends SP_Settings_Page {
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->id    = 'license';
-		$this->label = __( 'License', 'sportspress' );
-		if ( class_exists( 'SportsPress_Multisite' ) ) {
-			$this->file = 'RJ';
-			$this->title = __( 'League License', 'sportspress' );
-		} elseif ( class_exists( 'SportsPress_Tournaments' ) ) {
-			$this->file = 'RL';
-			$this->title = __( 'Club License', 'sportspress' );
-		} else {
-			$this->file = 'RM';
-			$this->title = __( 'Social License', 'sportspress' );
-		}
-
-		if ( current_user_can( 'manage_options' ) ):
+		if (
+			( ! is_multisite() && current_user_can( 'manage_options' ) ) ||
+			( is_multisite() && current_user_can( 'manage_network_options' ) )
+		) {
+			$this->id    = 'license';
+			$this->label = __( 'License', 'sportspress' );
+			if ( class_exists( 'SportsPress_Agency' ) ) {
+				$this->file = 'TG';
+				$this->title = __( 'Agency License', 'sportspress' );
+			} elseif ( class_exists( 'SportsPress_Multisite' ) ) {
+				$this->file = 'RJ';
+				$this->title = __( 'League License', 'sportspress' );
+			} elseif ( class_exists( 'SportsPress_Tournaments' ) ) {
+				$this->file = 'RL';
+				$this->title = __( 'Club License', 'sportspress' );
+			} else {
+				$this->file = 'RM';
+				$this->title = __( 'Social License', 'sportspress' );
+			}
 			add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 100 );
 			add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
 			add_action( 'sportspress_admin_field_license_key', array( $this, 'license_key_setting' ) );
 			add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
-		endif;
+		}
 	}
 
 	/**
@@ -78,8 +83,8 @@ class SP_Settings_License extends SP_Settings_Page {
 	 * @return void
 	 */
 	public function license_key_setting() {
-		$key = get_option( 'sportspress_pro_license_key' );
-		$status = get_option( 'sportspress_pro_license_status' );
+		$key = get_site_option( 'sportspress_pro_license_key' );
+		$status = get_site_option( 'sportspress_pro_license_status' );
 		?>
 		<tr valign="top">
 			<th scope="row" class="titledesc">
@@ -130,8 +135,8 @@ class SP_Settings_License extends SP_Settings_Page {
 					} elseif ( array_key_exists( 'license', $json ) ) {
 						SP_Admin_Settings::add_override( __( 'License deactivated.', 'sportspress' ) );
 					}
-					delete_option( 'sportspress_pro_license_key' );
-					update_option( 'sportspress_pro_license_status', 'deactivated' );
+					delete_site_option( 'sportspress_pro_license_key' );
+					update_site_option( 'sportspress_pro_license_status', 'deactivated' );
 				} else {
 					SP_Admin_Settings::add_error( __( 'Sorry, there has been an error.', 'sportspress' ) );
 				}
@@ -159,8 +164,8 @@ class SP_Settings_License extends SP_Settings_Page {
 				} elseif ( array_key_exists( 'license', $json ) ) {
 					SP_Admin_Settings::add_override( __( 'License activated.', 'sportspress' ) );
 
-					update_option( 'sportspress_pro_license_key', $_POST['sportspress_pro_license_key'] );
-					update_option( 'sportspress_pro_license_status', 'valid' );
+					update_site_option( 'sportspress_pro_license_key', $_POST['sportspress_pro_license_key'] );
+					update_site_option( 'sportspress_pro_license_status', 'valid' );
 				}
 			} else {
 				SP_Admin_Settings::add_error( __( 'Sorry, there has been an error.', 'sportspress' ) );
