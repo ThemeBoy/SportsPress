@@ -149,6 +149,16 @@
 	cursor: pointer;
 }
 
+/* Event Logos */
+.sp-event-logos a {
+	text-decoration: none;
+}
+
+.sp-event-logos img {
+	display: inline !important;
+	vertical-align: middle;
+}
+
 /* Event Venue */
 .sp-event-venue thead th {
 	white-space: normal;
@@ -171,6 +181,20 @@
 }
 .sp-event-performance .sp-performance-icons {
 	width: 25%;
+}
+
+/* Event Performance (Icons) */
+.sp-template-event-performance-icons {
+	box-sizing: border-box;
+	width: 50%;
+	float: left;
+	padding-right: 10px;
+}
+
+.sp-template-event-performance-icons:nth-child(2n) {
+	float: right;
+	padding-right: 0;
+	padding-left: 10px;
 }
 
 /* Event Calendar */
