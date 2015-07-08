@@ -4,8 +4,16 @@
 	text-align: center;
 }
 
-.post-state-format.post-format-tournament:before, .post-format-icon.post-format-tournament:before, a.post-state-format.format-tournament:before {
+.post-state-format.post-format-bracket:before, .post-format-icon.post-format-bracket:before, a.post-state-format.format-bracket:before {
 	content: "\f325";
+}
+
+.post-state-format.post-format-bracket2:before, .post-format-icon.post-format-bracket2:before, a.post-state-format.format-bracket2:before {
+	content: "\f181";
+}
+
+.post-state-format.post-format-tournament:before, .post-format-icon.post-format-tournament:before, a.post-state-format.format-tournament:before {
+	content: "\f313";
 }
 
 table.sp-tournament-container tbody {

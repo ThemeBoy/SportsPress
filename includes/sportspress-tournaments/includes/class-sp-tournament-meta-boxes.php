@@ -29,6 +29,7 @@ class SP_Tournament_Meta_Boxes {
 	 */
 	public function add_meta_boxes() {
 		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), array( $this, 'shortcode' ), 'sp_tournament', 'side', 'default' );
+		add_meta_box( 'sp_formatdiv', __( 'Layout', 'sportspress' ), array( $this, 'format' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), array( $this, 'details' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_datadiv', __( 'Tournament', 'sportspress' ), array( $this, 'data' ), 'sp_tournament', 'normal', 'high' );
 		add_meta_box( 'sp_editordiv', __( 'Description', 'sportspress' ), array( $this, 'editor' ), 'sp_tournament', 'normal', 'low' );
@@ -58,6 +59,20 @@ class SP_Tournament_Meta_Boxes {
 			<strong><?php _e( 'Winner', 'sportspress' ); ?></strong>
 		</p>
 		<p><input type="text" value="<?php sp_shortcode_template( 'tournament_winner', $post->ID ); ?>" readonly="readonly" class="code widefat"></p>
+		<?php
+	}
+
+	/**
+	 * Output the format metabox
+	 */
+	public static function format( $post ) {
+		$the_format = get_post_meta( $post->ID, 'sp_format', true );
+		?>
+		<div id="post-formats-select">
+			<?php foreach ( SP()->formats->tournament as $key => $format ): ?>
+				<input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo $key; ?>" value="<?php echo $key; ?>" <?php checked( true, ( $key == 'bracket' && ! $the_format ) || $the_format == $key ); ?>> <label for="post-format-<?php echo $key; ?>" class="post-format-icon post-format-<?php echo $key; ?>"><?php echo $format; ?></label><br>
+			<?php endforeach; ?>
+		</div>
 		<?php
 	}
 
@@ -117,6 +132,9 @@ class SP_Tournament_Meta_Boxes {
 	 * Save meta boxes data
 	 */
 	public static function save( $post_id ) {
+		// Format
+		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'default' ) );
+
 		// Rounds
 		$limit = intval( get_option( 'sportspress_tournament_rounds', '6' ) );
 		$rounds = sp_array_value( $_POST, 'sp_rounds', 1 );

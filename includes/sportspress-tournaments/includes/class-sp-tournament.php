@@ -78,10 +78,10 @@ class SP_Tournament {
 	 */
 	public function data( $admin = false ) {
 
-		if ( $admin )
-			$layout = 'default';
-		else
-			$layout = get_option( 'sportspress_tournament_bracket_layout', 'center' );
+		// Get layout
+		$layout = get_post_meta( $this->ID, 'sp_format', true );
+		if ( $admin || ! $layout )
+			$layout = 'bracket';
 
 		// Get labels
 		$labels = get_post_meta( $this->ID, 'sp_labels', true );
@@ -95,6 +95,9 @@ class SP_Tournament {
 		// Get number of rounds
 		$rounds = get_post_meta( $this->ID, 'sp_rounds', true );
 		if ( $rounds === '' ) $rounds = 3;
+
+		if ( $rounds < 2 )
+			$layout = 'bracket';
 
 		// Determine teams proceeding to next round
 		if ( sizeof( $events ) !== sizeof( array_filter( $events ) ) ) {
@@ -138,314 +141,201 @@ class SP_Tournament {
 			)
 		);
 
-		switch ( $layout ) {
+		// Initialize rows
+		$rows = 5;
 
-			case 'centear':
+		// Loop through rounds
+		for ( $i = 1; $i < $rounds; $i++ ):
 
-				// define columns for centered layout
-				$columns = $rounds;
-				
-				// Initialize rows
-				$rows = 3;
+			// Add margin, spacing, and height to reference array
+			$margin = pow( 2, $i ) + pow( 2, $i - 1 ) - 1;
+			$spacing = pow( 2, $i + 1 ) + pow( 2, $i ) - 1;
+			$reference[ $i ] = array(
+				'margin' => $margin,
+				'spacing' => $spacing,
+				'height' => $spacing,
+			);
 
-				// Loop through columns
-				for ( $i = 1; $i < $columns; $i++ ):
+		endfor;
 
-					// Add margin, spacing, and height to reference array
-					$margin = pow( 2, $i ) + pow( 2, $i - 1 ) - 1;
-					$spacing = pow( 2, $i + 1 ) + pow( 2, $i ) - 1;
-					$reference[ $i ] = array(
-						'margin' => $margin,
-						'spacing' => $spacing,
-						'height' => $spacing,
-					);
+		// Update total rows
+		$rows = pow( 2, $rounds + 1 ) + pow( 2, $rounds ) - 1;
+		$maxrows = $rows;
 
-				endfor;
+		// Adjust for centered layout
+		if ( 'bracket2' == $layout ) {
+			$columns = $rounds * 2 - 1;
 
-
-				// Update total rows
-				$rows = pow( 2, $rounds ) + pow( 2, $rounds - 1 ) - 1;
-
-				// Initialize data
-				$data = array();
-
-				// Loop through rows
-				for ( $row = 0; $row < $rows; $row++ ):
-
-					// Loop through columns
-					for ( $col = 0; $col < $columns; $col++ ):
-
-						// Get measurements from reference
-						$measurements = sp_array_value( $reference, $col, array() );
-						$margin = sp_array_value( $measurements, 'margin', 0 );
-						$spacing = sp_array_value( $measurements, 'spacing', 0 );
-						$height = sp_array_value( $measurements, 'height', 0 );
-
-						// Get event index
-						$index = ( pow( 2, $columns ) - pow( 2, ( $columns - $col ) ) + floor( $counter[ $col ] / 3 ) );
-
-						// Get selected event id
-						$event = sp_array_value( $events, $index, 0 );
-
-						// Get teams
-						$teams = array();
-						if ( $event ) {
-							$post_status = get_post_status( $event );
-							if ( is_string( $post_status ) && 'trash' !== $post_status ) {
-								if ( is_array( $event ) ) {
-									$teams = $event;
-									$event = null;
-								} else {
-									$teams = get_post_meta( $event, 'sp_team', array() );
-								}
-							} else {
-								$event = null;
-							}
-						}
-
-						// Add event, team, or spacer
-						if ( $row % ( 6 * pow( 2, $col ) ) === $margin + 1 ):
-							$data[ $row ][ $col ] = array(
-								'type' => 'event',
-								'rows' => $height,
-								'index' => $index,
-								'id' => $event,
-							);
-							$counter[ $col ] ++;
-						elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin ):
-							$select = false;
-							$team = sp_array_value( $teams, 0, 0 );
-							if ( ! $team ) {
-								$select = true;
-								$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), 0, 0 );
-							}
-							$data[ $row ][ $col ] = array(
-								'type' => 'team',
-								'rows' => 1,
-								'index' => $index,
-								'class' => 'sp-home-team',
-								'id' => $team,
-								'select' => $select,
-							);
-							$counter[ $col ] ++;
-						elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin + $height + 1 ):
-							$select = false;
-							$team = sp_array_value( $teams, 1, 0 );
-							if ( ! $team ) {
-								$select = true;
-								$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), 1, 0 );
-							}
-							$data[ $row ][ $col ] = array(
-								'type' => 'team',
-								'rows' => 1,
-								'index' => $index,
-								'class' => 'sp-away-team',
-								'id' => $team,
-								'select' => $select,
-							);
-							$counter[ $col ] ++;
-						elseif ( $row === 0 ):
-							$data[ $row ][ $col ] = array(
-								'type' => 'spacer',
-								'rows' => $margin,
-							);
-						elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin + $height + 2 ):
-							$data[ $row ][ $col ] = array(
-								'type' => 'spacer',
-								'rows' => min( $spacing, $rows - $row ),
-							);
-						endif;
-
-					endfor;
-
-				endfor;
-
-				break;
-
-			default:
-
-				// Initialize rows
-				$rows = 5;
-
-				// Loop through rounds
-				for ( $i = 1; $i < $rounds; $i++ ):
-
-					// Add margin, spacing, and height to reference array
-					$margin = pow( 2, $i ) + pow( 2, $i - 1 ) - 1;
-					$spacing = pow( 2, $i + 1 ) + pow( 2, $i ) - 1;
-					$reference[ $i ] = array(
-						'margin' => $margin,
-						'spacing' => $spacing,
-						'height' => $spacing,
-					);
-
-				endfor;
-
-				// Update total rows
-				$rows = pow( 2, $rounds + 1 ) + pow( 2, $rounds ) - 1;
-				$maxrows = $rows;
-
-				// Adjust for centered layout
-				if ( 'center' == $layout ) {
-					$columns = $rounds * 2 - 1;
-
-					// Adjust middle column reference
-					$reference[ $rounds - 1 ]['margin'] = $reference[ $rounds - 3 ]['margin'] + $reference[ $rounds - 3 ]['height'] + 1;
-					$reference[ $rounds - 1 ]['height'] = $reference[ $rounds - 3 ]['spacing'];
-
-					$maxrows = ( $rows - 1 ) / 2;
+			// Repeat column labels
+			for ( $l = 0; $l < $rounds - 1; $l++ ) {
+				$label = $labels[ $l ];
+				if ( $label == null ) {
+					$labels[ 2 * $rounds - 2 - $l ] = sprintf( __( 'Round %s', 'sportspress' ), $l + 1 );
 				} else {
-					$columns = $rounds;
+					$labels[ 2 * $rounds - 2 - $l ] = $label;
+				}
+			}
+
+			// Adjust middle column reference
+			if ( $rounds < 3 ) {
+				$reference[ $rounds - 1 ]['margin'] = $reference[0]['margin'] + 1;
+				$reference[ $rounds - 1 ]['height'] = $reference[0]['spacing'];
+			} else {
+				$reference[ $rounds - 1 ]['margin'] = $reference[ $rounds - 3 ]['margin'] + $reference[ $rounds - 3 ]['height'] + 1;
+				$reference[ $rounds - 1 ]['height'] = $reference[ $rounds - 3 ]['spacing'];
+			}
+
+			$maxrows = ( $rows - 1 ) / 2;
+		} else {
+			$columns = $rounds;
+		}
+
+		// Initialize data
+		$data = array();
+
+		// Initialize rows
+		$row = 0;
+
+		// Loop through rows
+		while ( $row < $rows ):
+
+			// Loop through columns
+			for ( $col = 0; $col < $rounds; $col++ ):
+
+				// Get measurements from reference
+				$measurements = sp_array_value( $reference, $col, array() );
+				$margin = sp_array_value( $measurements, 'margin', 0 );
+				$spacing = sp_array_value( $measurements, 'spacing', 0 );
+				$height = sp_array_value( $measurements, 'height', 0 );
+
+				// Get event index
+				$index = ( pow( 2, $rounds ) - pow( 2, ( $rounds - $col ) ) + floor( $counter[ $col ] / 3 ) );
+
+				// Get selected event id
+				$event = sp_array_value( $events, $index, 0 );
+
+				// Get teams
+				$teams = array();
+				if ( $event ) {
+					$post_status = get_post_status( $event );
+					if ( is_string( $post_status ) && 'trash' !== $post_status ) {
+						if ( is_array( $event ) ) {
+							$teams = $event;
+							$event = null;
+						} else {
+							$teams = get_post_meta( $event, 'sp_team', array() );
+						}
+					} else {
+						$event = null;
+					}
 				}
 
-				// Initialize data
-				$data = array();
+				// Determine if we are on the other side
+				if ( 'bracket2' == $layout && $row >= $maxrows ):
+					$flip = true;
+				else:
+					$flip = false;
+				endif;
 
-				// Initialize rows
-				$row = 0;
+				if ( $flip ):
+					if ( $col + 1 == $rounds ):
+						continue;
+					endif;
 
-				// Loop through rows
-				while ( $row < $rows ):
+					$cellrow = $row - $maxrows - 1;
+					$cellcol = 2 * $rounds - $col - 2;
+				else:
+					$cellrow = $row;
+					$cellcol = $col;
+				endif;
 
-					// Loop through columns
-					for ( $col = 0; $col < $rounds; $col++ ):
+				// Add event, team, or spacer
+				if ( $row % ( 6 * pow( 2, $col ) ) === $margin + 1 ):
+					$cell = array(
+						'type' => 'event',
+						'rows' => $height,
+						'index' => $index,
+						'id' => $event,
+					);
 
-						// Get measurements from reference
-						$measurements = sp_array_value( $reference, $col, array() );
-						$margin = sp_array_value( $measurements, 'margin', 0 );
-						$spacing = sp_array_value( $measurements, 'spacing', 0 );
-						$height = sp_array_value( $measurements, 'height', 0 );
+					if ( $rounds - 1 == $col ):
+						$cell['class'] = 'sp-event-final';
+					elseif ( $flip ):
+						$cell['class'] = 'sp-event-flip';
+					endif;
 
-						// Get event index
-						$index = ( pow( 2, $rounds ) - pow( 2, ( $rounds - $col ) ) + floor( $counter[ $col ] / 3 ) );
+					$data[ $cellrow ][ $cellcol ] = $cell;
 
-						// Get selected event id
-						$event = sp_array_value( $events, $index, 0 );
+					$counter[ $col ] ++;
+				elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin ):
+					$select = false;
+					$team = sp_array_value( $teams, 0, 0 );
+					if ( ! $team ) {
+						$select = true;
+						$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), 0, 0 );
+					}
 
-						// Get teams
-						$teams = array();
-						if ( $event ) {
-							$post_status = get_post_status( $event );
-							if ( is_string( $post_status ) && 'trash' !== $post_status ) {
-								if ( is_array( $event ) ) {
-									$teams = $event;
-									$event = null;
-								} else {
-									$teams = get_post_meta( $event, 'sp_team', array() );
-								}
-							} else {
-								$event = null;
-							}
-						}
+					$cell = array(
+						'type' => 'team',
+						'rows' => 1,
+						'index' => $index,
+						'class' => 'sp-home-team',
+						'id' => $team,
+						'select' => $select,
+					);
 
-						// Determine if we are on the other side
-						if ( 'center' == $layout && $row >= $maxrows ):
-							$flip = true;
-						else:
-							$flip = false;
-						endif;
+					if ( 'bracket2' == $layout && $rounds - 1 == $col ):
+						$cell['class'] = 'sp-team-final';
+					elseif ( $flip ):
+						$cell['class'] = 'sp-team-flip';
+					endif;
 
-						if ( $flip ):
-							if ( $col + 1 == $rounds ):
-								continue;
-							endif;
+					$data[ $cellrow ][ $cellcol ] = $cell;
 
-							$cellrow = $row - $maxrows - 1;
-							$cellcol = $rounds - $col + 1;
-						else:
-							$cellrow = $row;
-							$cellcol = $col;
-						endif;
+					$counter[ $col ] ++;
+				elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin + $height + 1 ):
+					$select = false;
+					$team = sp_array_value( $teams, 1, 0 );
+					if ( ! $team ) {
+						$select = true;
+						$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), 1, 0 );
+					}
 
-						// Add event, team, or spacer
-						if ( $row % ( 6 * pow( 2, $col ) ) === $margin + 1 ):
-							$cell = array(
-								'type' => 'event',
-								'rows' => $height,
-								'index' => $index,
-								'id' => $event,
-							);
+					$cell = array(
+						'type' => 'team',
+						'rows' => 1,
+						'index' => $index,
+						'class' => 'sp-away-team',
+						'id' => $team,
+						'select' => $select,
+					);
 
-							if ( $rounds - 1 == $col ):
-								$cell['class'] = 'sp-event-final';
-							elseif ( $flip ):
-								$cell['class'] = 'sp-event-flip';
-							endif;
+					if ( 'bracket2' == $layout && $rounds - 1 == $col ):
+						$cell['class'] = 'sp-team-flip sp-team-final';
+					elseif ( $flip ):
+						$cell['class'] = 'sp-team-flip';
+					endif;
 
-							$data[ $cellrow ][ $cellcol ] = $cell;
+					$data[ $cellrow ][ $cellcol ] = $cell;
 
-							$counter[ $col ] ++;
-						elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin ):
-							$select = false;
-							$team = sp_array_value( $teams, 0, 0 );
-							if ( ! $team ) {
-								$select = true;
-								$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), 0, 0 );
-							}
+					$counter[ $col ] ++;
+				elseif ( $cellrow === 0 ):
+					$data[ $cellrow ][ $cellcol ] = array(
+						'type' => 'spacer',
+						'rows' => $margin,
+					);
+				elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin + $height + 2 ):
+					$data[ $cellrow ][ $cellcol ] = array(
+						'type' => 'spacer',
+						'rows' => min( $spacing, $maxrows - $cellrow ),
+					);
+				endif;
 
-							$cell = array(
-								'type' => 'team',
-								'rows' => 1,
-								'index' => $index,
-								'class' => 'sp-home-team',
-								'id' => $team,
-								'select' => $select,
-							);
+			endfor;
 
-							if ( $rounds - 1 == $col ):
-								$cell['class'] = 'sp-team-final';
-							elseif( $flip ):
-								$cell['class'] = 'sp-team-flip';
-							endif;
+			$row++;
 
-							$data[ $cellrow ][ $cellcol ] = $cell;
-
-							$counter[ $col ] ++;
-						elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin + $height + 1 ):
-							$select = false;
-							$team = sp_array_value( $teams, 1, 0 );
-							if ( ! $team ) {
-								$select = true;
-								$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), 1, 0 );
-							}
-
-							$cell = array(
-								'type' => 'team',
-								'rows' => 1,
-								'index' => $index,
-								'class' => 'sp-away-team',
-								'id' => $team,
-								'select' => $select,
-							);
-
-							if ( $rounds - 1 == $col ):
-								$cell['class'] = 'sp-team-flip sp-team-final';
-							elseif ( $flip ):
-								$cell['class'] = 'sp-team-flip';
-							endif;
-
-							$data[ $cellrow ][ $cellcol ] = $cell;
-
-							$counter[ $col ] ++;
-						elseif ( $cellrow === 0 ):
-							$data[ $cellrow ][ $cellcol ] = array(
-								'type' => 'spacer',
-								'rows' => $margin,
-							);
-						elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin + $height + 2 ):
-							$data[ $cellrow ][ $cellcol ] = array(
-								'type' => 'spacer',
-								'rows' => min( $spacing, $maxrows - $cellrow ),
-							);
-						endif;
-
-					endfor;
-
-					$row++;
-
-				endwhile;
-
-		}
+		endwhile;
 
 		return array( $labels, $data, $columns, $maxrows );
 	}

@@ -227,7 +227,6 @@ class SportsPress_Staff_Directories {
 		return $slugs;
 	}
 
-
 	/** 
 	 * Add formats.
 	 */
