@@ -117,6 +117,9 @@
 .sp-icon-staff:before {
 	content: "\f338";
 }
+.sp-icon-statistics:before {
+	content: "\f489";
+}
 .sp-icon-stopwatch:before {
 	content: "\f469";
 }

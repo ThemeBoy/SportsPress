@@ -313,6 +313,11 @@
 	font-weight: bold;
 }
 
+/* Hidden Responsive Element */
+.sp-desktop {
+	display: none;
+}
+
 /* Media Queries */
 @media screen and (min-width: 783px) {
 	/* Widget Alignment */
@@ -332,5 +337,13 @@
 		clear: right;
 		padding-left: 10px;
 		box-sizing: border-box;
+	}
+
+	/* Hidden Responsive Element */
+	.sp-desktop {
+		display: block;
+	}
+	.sp-mobile {
+		display: none;
 	}
 }

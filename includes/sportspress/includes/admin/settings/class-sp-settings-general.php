@@ -128,10 +128,18 @@ class SP_Settings_General extends SP_Settings_Page {
 			array(
 				'title'     => __( 'Tables', 'sportspress' ),
 				'desc' 		=> __( 'Responsive', 'sportspress' ),
-				'id' 		=> 'sportspress_enable_scrollable_tables',
+				'id' 		=> 'sportspress_enable_responsive_tables',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'	=> 'start',
+			),
+
+			array(
+				'desc' 		=> __( 'Scrollable', 'sportspress' ),
+				'id' 		=> 'sportspress_enable_scrollable_tables',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'	=> '',
 			),
 
 			array(
@@ -278,7 +286,7 @@ class SP_Settings_General extends SP_Settings_Page {
 			'ThemeBoy' => array( '2b353e', 'f4f4f4', '222222', 'ffffff', '00a69c' ),
 			'Gold' => array( '333333', 'f7f7f7', '333333', 'd8bf94', '9f8958' ),
 			'Denim' => array( '0e2440', 'eae5e0', '0e2440', 'ffffff', '2b6291' ),
-			'Freedom' => array( '0d4785', 'ecedee', '333333', 'ffffff', 'c51d27' ),
+			'Patriot' => array( '0d4785', 'ecedee', '333333', 'ffffff', 'c51d27' ),
 			'Metro' => array( '3a7895', '223344', 'ffffff', 'ffffff', 'ffa800' ),
 			'Stellar' => array( '313150', '050528', 'ffffff', 'ffffff', 'e00034' ),
 			'Carbon' => array( '353535', '191919', 'ededed', 'ffffff', 'f67f17' ),
