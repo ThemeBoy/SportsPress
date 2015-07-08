@@ -52,6 +52,7 @@ class SP_Admin_CPT_Directory extends SP_Admin_CPT {
 			'sp_league' => __( 'Competition', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_team' => __( 'Team', 'sportspress' ),
+			'sp_layout' => __( 'Layout', 'sportspress' ),
 		), $existing_columns );
 		return apply_filters( 'sportspress_directory_admin_columns', $columns );
 	}
@@ -80,6 +81,9 @@ class SP_Admin_CPT_Directory extends SP_Admin_CPT {
 						if ( $team ) echo $team->post_title . '<br>';
 					endforeach;
 				endif;
+				break;
+			case 'sp_layout':
+				echo sp_array_value( SP()->formats->directory, get_post_meta( $post_id, 'sp_format', true ), '&mdash;' );
 				break;
 		endswitch;
 	}
