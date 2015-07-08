@@ -28,6 +28,9 @@ if ( ! isset( $id ) )
 $teams = get_post_meta( $id, 'sp_team', false );
 
 if ( is_array( $teams ) ):
+	?>
+	<div class="sp-event-performance-tables">
+	<?php
 
 	$event = new SP_Event( $id );
 	$performance = $event->performance();
@@ -251,4 +254,7 @@ if ( is_array( $teams ) ):
 			) );
 		}
 	}
+	?>
+	</div><!-- .sp-event-performance-tables -->
+	<?php
 endif;

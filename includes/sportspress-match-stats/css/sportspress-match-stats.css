@@ -22,11 +22,15 @@
 
 @media screen and (min-width: 801px) {
 	.sp-inline-statistics .sp-template-event-performance {
+		box-sizing: border-box;
 		width: 30%;
 	}
 
 	.sp-inline-statistics .sp-template-event-statistics {
+		box-sizing: border-box;
 		display: inline-block;
 		width: 40%;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 }

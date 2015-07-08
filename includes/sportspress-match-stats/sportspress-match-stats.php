@@ -28,19 +28,10 @@ class SportsPress_Match_Stats {
 		// Define constants
 		$this->define_constants();
 
-		// Include required files
-		$this->includes();
-
-		add_filter( 'gettext', array( $this, 'gettext' ), 20, 3 );
 		add_action( 'sportspress_single_event_content', array( $this, 'template' ), 60 );
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
-		add_filter('body_class', array( $this, 'body_class' ) );
+		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_filter( 'sportspress_event_template_options', array( $this, 'add_options' ) );
-		//add_filter( 'sportspress_staff_options', array( $this, 'add_staff_options' ) );
-		//add_filter( 'sportspress_player_details', array( $this, 'add_player_details' ), 20, 2 );
-		//add_filter( 'sportspress_staff_details', array( $this, 'add_staff_details' ), 20, 2 );
-
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 	}
 
 	/**
@@ -55,41 +46,6 @@ class SportsPress_Match_Stats {
 
 		if ( !defined( 'SP_MATCH_STATS_DIR' ) )
 			define( 'SP_MATCH_STATS_DIR', plugin_dir_path( __FILE__ ) );
-	}
-
-	/**
-	 * Include required files.
-	*/
-	private function includes() {
-	}
-
-	/** 
-	 * Text filter.
-	 */
-	public function gettext( $translated_text, $untranslated_text, $domain ) {
-		if ( ! is_admin() ) return $translated_text;
-
-		global $typenow;
-		
-		if ( 'default' == $domain && in_array( $typenow, array( 'sp_player', 'sp_staff' ) ) ):
-			switch ( $untranslated_text ):
-				case 'Scheduled for: <b>%1$s</b>':
-				case 'Published on: <b>%1$s</b>':
-				case 'Schedule for: <b>%1$s</b>':
-				case 'Publish on: <b>%1$s</b>':
-					return __( 'Birthday: <b>%1$s</b>', 'sportspress' );
-				case 'Publish <b>immediately</b>':
-					return __( 'Birthday', 'sportspress' );
-				case 'M j, Y @ G:i':
-					return 'M j, Y';
-				case '%1$s %2$s, %3$s @ %4$s : %5$s':
-					$hour = '<input type="hidden" id="hh" name="hh" value="00" readonly />';
-					$minute = '<input type="hidden" id="mn" name="mn" value="00" readonly />';
-					return '%1$s %2$s, %3$s' . $hour . $minute;
-			endswitch;
-		endif;
-		
-		return $translated_text;
 	}
 
 	/**
@@ -129,7 +85,7 @@ class SportsPress_Match_Stats {
 	 */
 	public function add_styles( $styles = array() ) {
 		$styles['sportspress-event-statistics'] = array(
-			'src'     => str_replace( array( 'http:', 'https:' ), '', SP_MATCH_STATS_URL ) . 'css/sportspress-event-statistics.css',
+			'src'     => str_replace( array( 'http:', 'https:' ), '', SP_MATCH_STATS_URL ) . 'css/sportspress-match-stats.css',
 			'deps'    => 'sportspress-general',
 			'version' => SP_MATCH_STATS_VERSION,
 			'media'   => 'all'
@@ -145,59 +101,6 @@ class SportsPress_Match_Stats {
 			$classes[] = 'sp-inline-statistics';
 		}
 		return $classes;
-	}
-
-
-	/**
-	 * Add data to player details template.
-	 *
-	 * @return array
-	 */
-	public function add_player_details( $data, $post_id ) {
-		if ( 'yes' == get_option( 'sportspress_player_show_birthday', 'no' ) ) {
-			$data[ __( 'Birthday', 'sportspress' ) ] = get_the_date( get_option( 'date_format' ), $post_id );
-		}
-
-		if ( 'yes' == get_option( 'sportspress_player_show_age', 'no' ) ) {
-			$data[ __( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y' ) );
-		}
-
-		return $data;
-	}
-
-	/**
-	 * Add data to staff details template.
-	 *
-	 * @return array
-	 */
-	public function add_staff_details( $data, $post_id ) {
-		if ( 'yes' == get_option( 'sportspress_staff_show_birthday', 'no' ) ) {
-			$data[ __( 'Birthday', 'sportspress' ) ] = get_the_date( get_option( 'date_format' ), $post_id );
-		}
-
-		if ( 'yes' == get_option( 'sportspress_staff_show_age', 'no' ) ) {
-			$data[ __( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y' ) );
-		}
-
-		return $data;
-	}
-
-	public static function admin_enqueue_scripts() {
-		wp_enqueue_style( 'sportspress-birthdays-admin', SP_MATCH_STATS_URL . 'css/admin.css', array( 'sportspress-admin-menu-styles' ), time() );
-	}
-
-	/**
-	 * Get age from date.
- 	 * Adapted from http://stackoverflow.com/questions/3776682/php-calculate-age.
-	 *
-	 * @return int
-	 */
-	public static function get_age( $date ) {
-		$date = explode( '-', $date );
-		$age = ( date( 'md', date( 'U', mktime( 0, 0, 0, $date[0], $date[1], $date[2] ) ) ) > date('md')
-			? ( ( date( 'Y' ) - $date[2] ) - 1 )
-			: ( date( 'Y' ) - $date[2] ) );
-		return $age;
 	}
 }
 
