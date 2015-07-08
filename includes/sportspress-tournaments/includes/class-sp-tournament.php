@@ -76,12 +76,7 @@ class SP_Tournament {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $admin = false ) {
-
-		// Get layout
-		$layout = get_post_meta( $this->ID, 'sp_format', true );
-		if ( $admin || ! $layout )
-			$layout = 'bracket';
+	public function data( $layout = 'bracket', $admin = false ) {
 
 		// Get labels
 		$labels = get_post_meta( $this->ID, 'sp_labels', true );
@@ -163,7 +158,7 @@ class SP_Tournament {
 		$maxrows = $rows;
 
 		// Adjust for centered layout
-		if ( 'bracket2' == $layout ) {
+		if ( 'center' == $layout ) {
 			$columns = $rounds * 2 - 1;
 
 			// Repeat column labels
@@ -231,7 +226,7 @@ class SP_Tournament {
 				}
 
 				// Determine if we are on the other side
-				if ( 'bracket2' == $layout && $row >= $maxrows ):
+				if ( 'center' == $layout && $row >= $maxrows ):
 					$flip = true;
 				else:
 					$flip = false;
@@ -284,7 +279,7 @@ class SP_Tournament {
 						'select' => $select,
 					);
 
-					if ( 'bracket2' == $layout && $rounds - 1 == $col ):
+					if ( 'center' == $layout && $rounds - 1 == $col ):
 						$cell['class'] = 'sp-team-final';
 					elseif ( $flip ):
 						$cell['class'] = 'sp-team-flip';
@@ -310,7 +305,7 @@ class SP_Tournament {
 						'select' => $select,
 					);
 
-					if ( 'bracket2' == $layout && $rounds - 1 == $col ):
+					if ( 'center' == $layout && $rounds - 1 == $col ):
 						$cell['class'] = 'sp-team-flip sp-team-final';
 					elseif ( $flip ):
 						$cell['class'] = 'sp-team-flip';

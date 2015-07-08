@@ -257,7 +257,7 @@ class SportsPress_Tournaments {
 	public function add_formats( $formats ) {
 		$formats['tournament'] = array(
 			'bracket' => __( 'Default', 'sportspress' ),
-			'bracket2' => __( 'Center', 'sportspress' ),
+			'center' => __( 'Center', 'sportspress' ),
 		);
 
 		$formats['event']['tournament'] = __( 'Tournament', 'sportspress' );

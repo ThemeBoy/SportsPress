@@ -117,7 +117,7 @@ class SP_Tournament_Meta_Boxes {
 	 */
 	public static function data( $post ) {
 		$tournament = new SP_Tournament( $post );
-		list( $labels, $data, $rounds, $rows ) = $tournament->data( true );
+		list( $labels, $data, $rounds, $rows ) = $tournament->data( 'bracket', true );
 		self::table( $labels, $data, $rounds, $rows, $post->ID );
 	}
 
@@ -133,7 +133,7 @@ class SP_Tournament_Meta_Boxes {
 	 */
 	public static function save( $post_id ) {
 		// Format
-		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'default' ) );
+		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'bracket' ) );
 
 		// Rounds
 		$limit = intval( get_option( 'sportspress_tournament_rounds', '6' ) );

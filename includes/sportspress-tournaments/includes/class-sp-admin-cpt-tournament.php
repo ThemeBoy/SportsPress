@@ -45,6 +45,7 @@ class SP_Admin_CPT_Tournament extends SP_Admin_CPT {
 			'sp_league' => __( 'Competition', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_rounds' => __( 'Rounds', 'sportspress' ),
+			'sp_layout' => __( 'Layout', 'sportspress' ),
 		), $existing_columns );
 		return apply_filters( 'sportspress_tournament_admin_columns', $columns );
 	}
@@ -63,6 +64,9 @@ class SP_Admin_CPT_Tournament extends SP_Admin_CPT {
 				break;
 			case 'sp_rounds':
 				echo get_post_meta ( $post_id, 'sp_rounds', true );
+				break;
+			case 'sp_layout':
+				echo sp_array_value( SP()->formats->tournament, get_post_meta( $post_id, 'sp_format', true ), '&mdash;' );
 				break;
 		endswitch;
 	}
