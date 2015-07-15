@@ -2,7 +2,7 @@
 class SP_Widget_Staff_Gallery extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'widget_staff_gallery widget_sp_staff_gallery', 'description' => __( 'A gallery of staff.', 'sportspress' ) );
+		$widget_ops = array('classname' => 'widget_sportspress widget_staff_gallery widget_sp_staff_gallery', 'description' => __( 'A gallery of staff.', 'sportspress' ) );
 		parent::__construct('sportspress-staff-gallery', __( 'Staff Gallery', 'sportspress' ), $widget_ops);
 	}
 

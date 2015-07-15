@@ -105,7 +105,7 @@ endforeach;
 $output .= '</tbody>' . '</table>' . '</div>';
 
 if ( $show_all_staff_link )
-	$output .= '<a class="sp-staff-directory-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all staff', 'sportspress' ) . '</a>';
+	$output .= '<div class="sp-staff-directory-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all staff', 'sportspress' ) . '</a></div>';
 
 ?>
 <div class="sp-template sp-template-staff-list">

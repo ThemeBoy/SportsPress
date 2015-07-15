@@ -108,6 +108,6 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 	echo "</div>\n";
 
 	if ( $show_all_staff_link )
-		echo '<a class="sp-staff-directory-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all staff', 'sportspress' ) . '</a>';
+		echo '<div class="sp-staff-directory-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all staff', 'sportspress' ) . '</a></div>';
 	?>
 </div>
