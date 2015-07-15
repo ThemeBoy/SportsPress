@@ -258,9 +258,9 @@ class SP_Settings_Modules extends SP_Settings_Page {
 			window.location = window.location.href;
 		}
 		</script>
-		<?php } ?>
-
 		<?php
+		}
+		flush_rewrite_rules();
 	}
 
 	/**

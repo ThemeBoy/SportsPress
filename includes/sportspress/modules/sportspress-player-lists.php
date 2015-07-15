@@ -197,6 +197,14 @@ class SportsPress_Player_Lists {
 
 			apply_filters( 'sportspress_player_list_options', array(
 				array(
+					'title'     => __( 'Title', 'sportspress' ),
+					'desc' 		=> __( 'Display title', 'sportspress' ),
+					'id' 		=> 'sportspress_list_show_title',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
 					'title'     => __( 'Players', 'sportspress' ),
 					'desc' 		=> __( 'Display photos', 'sportspress' ),
 					'id' 		=> 'sportspress_list_show_photos',

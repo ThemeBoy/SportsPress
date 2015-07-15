@@ -343,7 +343,7 @@
 }
 
 /* Media Queries */
-@media screen and (min-width: 783px) {
+@media screen and (min-width: 801px) {
 	/* Widget Alignment */
 	.sp-widget-align-none {
 		clear: both;

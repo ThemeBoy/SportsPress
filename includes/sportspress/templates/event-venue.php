@@ -47,8 +47,8 @@ foreach( $venues as $venue ):
 						<td<?php if ( $address != null ) { ?> colspan="2"<?php } ?>><?php sp_get_template( 'venue-map.php', array( 'meta' => $meta ) ); ?></td>
 					</tr>
 					<?php if ( $address != null ) { ?>
-						<tr>
-							<td class="sp-event-venue-address-row"><?php echo $address; ?></td>
+						<tr class="sp-event-venue-address-row">
+							<td><?php echo $address; ?></td>
 						</tr>
 					<?php } ?>
 				</tbody>

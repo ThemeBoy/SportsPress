@@ -217,7 +217,7 @@ if ( $pad != 0 && $pad != 7 )
 $calendar_output .= "\n\t</tr>\n\t</tbody>\n\t</table>\n\t</div>";
 
 if ( $id && $show_all_events_link )
-	$calendar_output .= '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
+	$calendar_output .= '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a></div>';
 ?>
 <div class="sp-template sp-template-event-calendar">
 	<?php echo $calendar_output; ?>

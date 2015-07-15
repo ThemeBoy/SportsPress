@@ -2,13 +2,14 @@
 class SP_Widget_Countdown extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'widget_countdown widget_sp_countdown', 'description' => __( 'A clock that counts down to an upcoming event.', 'sportspress' ) );
+		$widget_ops = array('classname' => 'widget_sportspress widget_countdown widget_sp_countdown', 'description' => __( 'A clock that counts down to an upcoming event.', 'sportspress' ) );
 		parent::__construct('sportspress-countdown', __( 'Countdown', 'sportspress' ), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? null : $instance['title'], $instance, $this->id_base);
+		$caption = empty($instance['caption']) ? null : $instance['caption'];
 		$team = empty($instance['team']) ? null : $instance['team'];
 		$id = empty($instance['id']) ? null : $instance['id'];
 		$show_venue = empty($instance['show_venue']) ? false : $instance['show_venue'];
@@ -23,7 +24,7 @@ class SP_Widget_Countdown extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'countdown' );
 
-		sp_get_template( 'countdown.php', array( 'team' => $team, 'id' => $id, 'show_venue' => $show_venue, 'show_league' => $show_league ) );
+		sp_get_template( 'countdown.php', array( 'team' => $team, 'id' => $id, 'title' => $caption, 'show_venue' => $show_venue, 'show_league' => $show_league ) );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'countdown' );
@@ -36,6 +37,7 @@ class SP_Widget_Countdown extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['team'] = intval($new_instance['team']);
+		$instance['caption'] = strip_tags($new_instance['caption']);
 		$instance['id'] = intval($new_instance['id']);
 		$instance['show_venue'] = intval($new_instance['show_venue']);
 		$instance['show_league'] = intval($new_instance['show_league']);
@@ -47,8 +49,9 @@ class SP_Widget_Countdown extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'team' => '', 'id' => '', 'show_venue' => false, 'show_league' => false ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'team' => '', 'id' => '', 'caption' => '', 'show_venue' => false, 'show_league' => false ) );
 		$title = strip_tags($instance['title']);
+		$caption = strip_tags($instance['caption']);
 		$team = intval($instance['team']);
 		$id = intval($instance['id']);
 		$show_venue = intval($instance['show_venue']);
@@ -59,6 +62,9 @@ class SP_Widget_Countdown extends WP_Widget {
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('caption'); ?>"><?php _e( 'Heading:', 'sportspress' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('caption'); ?>" name="<?php echo $this->get_field_name('caption'); ?>" type="text" value="<?php echo esc_attr($caption); ?>" /></p>
 
 		<p class="sp-dropdown-filter"><label for="<?php echo $this->get_field_id('team'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Team', 'sportspress' ) ); ?></label>
 		<?php

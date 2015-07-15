@@ -13,6 +13,7 @@ $primary_result = get_option( 'sportspress_primary_result', null );
 
 $defaults = array(
 	'id' => null,
+	'title' => false,
 	'status' => 'default',
 	'date' => 'default',
 	'date_from' => 'default',
@@ -24,7 +25,6 @@ $defaults = array(
 	'rows' => get_option( 'sportspress_event_blocks_rows', 10 ),
 	'order' => 'default',
 	'show_all_events_link' => false,
-	'title' => null,
 	'show_title' => get_option( 'sportspress_event_blocks_show_title', 'no' ) == 'yes' ? true : false,
 	'show_league' => get_option( 'sportspress_event_blocks_show_league', 'no' ) == 'yes' ? true : false,
 	'show_season' => get_option( 'sportspress_event_blocks_show_season', 'no' ) == 'yes' ? true : false,
@@ -47,16 +47,16 @@ if ( $order != 'default' )
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
 
-if ( empty( $title ) && $id )
+
+if ( $show_title && false === $title && $id )
 	$title = get_the_title( $id );
 
 if ( isset( $columns ) ) {
 	$usecolumns = $columns;
 }
 
-if ( $show_title && $title ) {
+if ( $title )
 	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
-}
 ?>
 <div class="sp-template sp-template-event-blocks">
 	<div class="sp-table-wrapper">
@@ -111,11 +111,7 @@ if ( $show_title && $title ) {
 						<td>
 							<?php echo implode( $logos, ' ' ); ?>
 							<time class="sp-event-date" datetime="<?php echo $event->post_date; ?>"><?php echo get_the_time( get_option( 'date_format' ), $event ); ?></time>
-							<?php if ( ! empty( $main_results ) ): ?>
-								<h5 class="sp-event-results"><?php echo implode( $main_results, ' - ' ); ?></h5>
-							<?php else: ?>
-								<h5 class="sp-event-time"><?php echo get_the_time( get_option( 'time_format' ), $event ); ?></h5>
-							<?php endif; ?>
+							<h5 class="sp-event-results"><span class="sp-result"><?php echo implode( '</span>-<span class="sp-result">', sp_get_main_results_or_time( $event ) ); ?></span></h5>
 							<?php if ( $show_league ): $leagues = get_the_terms( $event, 'sp_league' ); if ( $leagues ): $league = array_shift( $leagues ); ?>
 								<div class="sp-event-league"><?php echo $league->name; ?></div>
 							<?php endif; endif; ?>
@@ -144,6 +140,6 @@ if ( $show_title && $title ) {
 	</div>
 	<?php
 	if ( $id && $show_all_events_link )
-		echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
+		echo '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a></div>';
 	?>
 </div>

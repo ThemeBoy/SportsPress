@@ -2,7 +2,7 @@
 class SP_Widget_League_Table extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'widget_league_table widget_sp_league_table', 'description' => __( 'Display a league table.', 'sportspress' ) );
+		$widget_ops = array('classname' => 'widget_sportspress widget_league_table widget_sp_league_table', 'description' => __( 'Display a league table.', 'sportspress' ) );
 		parent::__construct('sportspress-league-table', __( 'League Table', 'sportspress' ), $widget_ops);
 	}
 
@@ -11,6 +11,7 @@ class SP_Widget_League_Table extends WP_Widget {
 		$id = empty($instance['id']) ? 0 : $instance['id'];
 		if ( $id <= 0 ) return;
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
+		$caption = empty($instance['caption']) ? null : $instance['caption'];
 		$number = empty($instance['number']) ? null : $instance['number'];
 		$columns = empty($instance['columns']) ? array() : $instance['columns'];
 		$show_team_logo = empty($instance['show_team_logo']) ? false : $instance['show_team_logo'];
@@ -19,10 +20,13 @@ class SP_Widget_League_Table extends WP_Widget {
 		do_action( 'sportspress_before_widget', $args, $instance, 'league-table' );
 		echo $before_widget;
 
+		if ( $title )
+			echo $before_title . $title . $after_title;
+
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'league-table' );
 
-		sp_get_template( 'league-table.php', array( 'id' => $id, 'title' => $title, 'number' => $number, 'columns' => $columns, 'show_full_table_link' => $show_full_table_link, 'show_team_logo' => $show_team_logo ) );
+		sp_get_template( 'league-table.php', array( 'id' => $id, 'title' => $caption, 'number' => $number, 'columns' => $columns, 'show_full_table_link' => $show_full_table_link, 'show_team_logo' => $show_team_logo ) );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'league-table' );
@@ -35,6 +39,7 @@ class SP_Widget_League_Table extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['id'] = intval($new_instance['id']);
+		$instance['caption'] = strip_tags($new_instance['caption']);
 		$instance['number'] = intval($new_instance['number']);
 		$instance['columns'] = (array)$new_instance['columns'];
 		$instance['show_team_logo'] = $new_instance['show_team_logo'];
@@ -47,10 +52,11 @@ class SP_Widget_League_Table extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$defaults = apply_filters( 'sportspress_widget_defaults', array( 'title' => '', 'id' => '', 'number' => 5, 'columns' => null, 'show_team_logo' => false, 'show_full_table_link' => true ) );
+		$defaults = apply_filters( 'sportspress_widget_defaults', array( 'title' => '', 'id' => '', 'caption' => '', 'number' => 5, 'columns' => null, 'show_team_logo' => false, 'show_full_table_link' => true ) );
 		$instance = wp_parse_args( (array) $instance, $defaults );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
+		$caption = strip_tags($instance['caption']);
 		$number = intval($instance['number']);
 		$columns = $instance['columns'];
 		$show_team_logo = $instance['show_team_logo'];
@@ -61,6 +67,9 @@ class SP_Widget_League_Table extends WP_Widget {
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('caption'); ?>"><?php _e( 'Heading:', 'sportspress' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('caption'); ?>" name="<?php echo $this->get_field_name('caption'); ?>" type="text" value="<?php echo esc_attr($caption); ?>" /></p>
 
 		<p><label for="<?php echo $this->get_field_id('id'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'League Table', 'sportspress' ) ); ?></label>
 		<?php

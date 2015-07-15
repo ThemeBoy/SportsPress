@@ -188,6 +188,14 @@ class SportsPress_League_Tables {
 
 			apply_filters( 'sportspress_table_options', array(
 				array(
+					'title'     => __( 'Title', 'sportspress' ),
+					'desc' 		=> __( 'Display title', 'sportspress' ),
+					'id' 		=> 'sportspress_table_show_title',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
 					'title'     => __( 'Teams', 'sportspress' ),
 					'desc' 		=> __( 'Display logos', 'sportspress' ),
 					'id' 		=> 'sportspress_table_show_logos',
