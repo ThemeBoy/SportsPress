@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'id' => null,
+	'title' => false,
 	'status' => 'default',
 	'date' => 'default',
 	'date_from' => 'default',
@@ -55,9 +56,11 @@ if ( isset( $columns ) ):
 		$usecolumns = explode( ',', $columns );
 endif;
 
-if ( $show_title && $id ) {
-	echo '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
-}
+if ( $show_title && false === $title && $id )
+	$title = get_the_title( $id );
+
+if ( $title )
+	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
 ?>
 <div class="sp-template sp-template-event-list">
 	<div class="sp-table-wrapper">
@@ -359,6 +362,6 @@ if ( $show_title && $id ) {
 	</div>
 	<?php
 	if ( $id && $show_all_events_link )
-		echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
+		echo '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a></div>';
 	?>
 </div>

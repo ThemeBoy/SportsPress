@@ -2,7 +2,7 @@
 class SP_Widget_Staff extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'widget_staff widget_sp_staff', 'description' => __( 'Display a single staff member.', 'sportspress' ) );
+		$widget_ops = array('classname' => 'widget_sportspress widget_staff widget_sp_staff', 'description' => __( 'Display a single staff member.', 'sportspress' ) );
 		parent::__construct('sportspress-staff', __( 'Staff', 'sportspress' ), $widget_ops);
 	}
 
@@ -19,6 +19,8 @@ class SP_Widget_Staff extends WP_Widget {
 
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'staff' );
+
+		echo '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
 
 		sp_get_template( 'staff-photo.php', array( 'id' => $id ) );
 		sp_get_template( 'staff-details.php', array( 'id' => $id ) );

@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $html5 = current_theme_supports( 'html5', 'gallery' );
 $defaults = array(
 	'id' => get_the_ID(),
+	'title' => false,
 	'number' => -1,
 	'grouping' => null,
 	'orderby' => 'default',
@@ -70,6 +71,9 @@ else:
 	);
 	uasort( $data, array( $list, 'sort' ) );
 endif;
+
+if ( $title )
+	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
 
 $gallery_style = $gallery_div = '';
 if ( apply_filters( 'use_default_gallery_style', ! $html5 ) )
@@ -156,7 +160,7 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 	}
 
 	if ( $show_all_players_link ) {
-		echo '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
+		echo '<div class="sp-player-list-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a></div>';
 	}
 		
 echo "</div>\n";

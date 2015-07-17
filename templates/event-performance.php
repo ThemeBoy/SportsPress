@@ -28,6 +28,9 @@ if ( ! isset( $id ) )
 $teams = get_post_meta( $id, 'sp_team', false );
 
 if ( is_array( $teams ) ):
+	?>
+	<div class="sp-event-performance-tables sp-event-performance-<?php echo $split_positions ? 'positions' : 'teams'; ?>">
+	<?php
 
 	$event = new SP_Event( $id );
 	$performance = $event->performance();
@@ -140,7 +143,7 @@ if ( is_array( $teams ) ):
 							}
 
 							sp_get_template( 'event-performance-table.php', array(
-								'position' => $position->name,
+								'position' => sp_get_position_caption( $position->term_id ),
 								'scrollable' => $scrollable,
 								'sortable' => $sortable,
 								'show_players' => $show_team_players,
@@ -221,7 +224,7 @@ if ( is_array( $teams ) ):
 						'show_numbers' => $show_numbers,
 						'show_extras' => $show_extras,
 						'show_total' => $show_total,
-						'caption' => $position->name,
+						'caption' => sp_get_position_caption( $position->term_id ),
 						'labels' => $labels,
 						'mode' => $mode,
 						'data' => $subdata,
@@ -251,4 +254,9 @@ if ( is_array( $teams ) ):
 			) );
 		}
 	}
+
+	do_action( 'sportspress_event_performance' );
+	?>
+	</div><!-- .sp-event-performance-tables -->
+	<?php
 endif;

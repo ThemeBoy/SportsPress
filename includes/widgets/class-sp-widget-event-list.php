@@ -2,7 +2,7 @@
 class SP_Widget_Event_List extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'widget_sp_event_list', 'description' => __( 'A list of events.', 'sportspress' ) );
+		$widget_ops = array('classname' => 'widget_sportspress widget_sp_event_list', 'description' => __( 'A list of events.', 'sportspress' ) );
 		parent::__construct('sportspress-event-list', __( 'Event List', 'sportspress' ), $widget_ops);
 	}
 
@@ -10,6 +10,7 @@ class SP_Widget_Event_List extends WP_Widget {
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$id = empty($instance['id']) ? null : $instance['id'];
+		$caption = empty($instance['caption']) ? null : $instance['caption'];
 		$status = empty($instance['status']) ? 'default' : $instance['status'];
 		$date = empty($instance['date']) ? 'default' : $instance['date'];
 		$date_from = empty($instance['date_from']) ? 'default' : $instance['date_from'];
@@ -28,7 +29,7 @@ class SP_Widget_Event_List extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'event-list' );
 
-		sp_get_template( 'event-list.php', array( 'id' => $id, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'number' => $number, 'columns' => $columns, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
+		sp_get_template( 'event-list.php', array( 'id' => $id, 'title' => $caption, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'number' => $number, 'columns' => $columns, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'event-list' );
@@ -41,6 +42,7 @@ class SP_Widget_Event_List extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['id'] = intval($new_instance['id']);
+		$instance['caption'] = strip_tags($new_instance['caption']);
 		$instance['status'] = $new_instance['status'];
 		$instance['date'] = $new_instance['date'];
 		$instance['date_from'] = $new_instance['date_from'];
@@ -57,9 +59,10 @@ class SP_Widget_Event_List extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'status' => 'default', 'date' => 'default', 'date_from' => date_i18n( 'Y-m-d' ), 'date_to' => date_i18n( 'Y-m-d' ), 'number' => 5, 'columns' => null, 'order' => 'default', 'show_all_events_link' => true ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'caption' => '', 'status' => 'default', 'date' => 'default', 'date_from' => date_i18n( 'Y-m-d' ), 'date_to' => date_i18n( 'Y-m-d' ), 'number' => 5, 'columns' => null, 'order' => 'default', 'show_all_events_link' => true ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
+		$caption = strip_tags($instance['caption']);
 		$status = $instance['status'];
 		$date = $instance['date'];
 		$date_from = $instance['date_from'];
@@ -74,6 +77,9 @@ class SP_Widget_Event_List extends WP_Widget {
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('caption'); ?>"><?php _e( 'Heading:', 'sportspress' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('caption'); ?>" name="<?php echo $this->get_field_name('caption'); ?>" type="text" value="<?php echo esc_attr($caption); ?>" /></p>
 
 		<p><label for="<?php echo $this->get_field_id('id'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Calendar', 'sportspress' ) ); ?></label>
 		<?php

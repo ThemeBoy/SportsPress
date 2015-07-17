@@ -15,6 +15,8 @@ $defaults = array(
 	'columns' => null,
 	'highlight' => null,
 	'show_full_table_link' => false,
+	'title' => false,
+	'show_title' => get_option( 'sportspress_table_show_title', 'yes' ) == 'yes' ? true : false,
 	'show_team_logo' => get_option( 'sportspress_table_show_logos', 'yes' ) == 'yes' ? true : false,
 	'link_posts' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
@@ -29,7 +31,13 @@ if ( ! isset( $highlight ) ) $highlight = get_post_meta( $id, 'sp_highlight', tr
 
 $table = new SP_League_Table( $id );
 
-$output = '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
+if ( $show_title && false === $title && $id )
+	$title = get_the_title( $id );
+
+$output = '';
+
+if ( $title )
+	$output .= '<h4 class="sp-table-caption">' . $title . '</h4>';
 
 $output .= '<div class="sp-table-wrapper">';
 
@@ -149,7 +157,7 @@ $output .= '</tbody>' . '</table>';
 $output .= '</div>';
 
 if ( $show_full_table_link )
-	$output .= '<a class="sp-league-table-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View full table', 'sportspress' ) . '</a>';
+	$output .= '<div class="sp-league-table-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View full table', 'sportspress' ) . '</a></div>';
 
 ?>
 <div class="sp-template sp-template-league-table">

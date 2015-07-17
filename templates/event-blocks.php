@@ -13,6 +13,7 @@ $primary_result = get_option( 'sportspress_primary_result', null );
 
 $defaults = array(
 	'id' => null,
+	'title' => false,
 	'status' => 'default',
 	'date' => 'default',
 	'date_from' => 'default',
@@ -46,13 +47,16 @@ if ( $order != 'default' )
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
 
+
+if ( $show_title && false === $title && $id )
+	$title = get_the_title( $id );
+
 if ( isset( $columns ) ) {
 	$usecolumns = $columns;
 }
 
-if ( $show_title && $id ) {
-	echo '<h4 class="sp-table-caption">' . get_the_title( $id ) . '</h4>';
-}
+if ( $title )
+	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
 ?>
 <div class="sp-template sp-template-event-blocks">
 	<div class="sp-table-wrapper">
@@ -71,6 +75,7 @@ if ( $show_title && $id ) {
 					$results = get_post_meta( $event->ID, 'sp_results', true );
 
 					$teams = array_unique( get_post_meta( $event->ID, 'sp_team' ) );
+					$teams = array_filter( $teams, 'sp_filter_positive' );
 					$logos = array();
 					$main_results = array();
 
@@ -79,7 +84,7 @@ if ( $show_title && $id ) {
 						$j++;
 						if ( has_post_thumbnail ( $team ) ):
 							if ( $link_teams ):
-								$logo = '<a class="team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) . '" href="' . get_post_permalink( $team, false, true ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</a>';
+								$logo = '<a class="team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) . '" href="' . get_permalink( $team, false, true ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</a>';
 							else:
 								$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) ) );
 							endif;
@@ -106,11 +111,7 @@ if ( $show_title && $id ) {
 						<td>
 							<?php echo implode( $logos, ' ' ); ?>
 							<time class="sp-event-date" datetime="<?php echo $event->post_date; ?>"><?php echo get_the_time( get_option( 'date_format' ), $event ); ?></time>
-							<?php if ( ! empty( $main_results ) ): ?>
-								<h5 class="sp-event-results"><?php echo implode( $main_results, ' - ' ); ?></h5>
-							<?php else: ?>
-								<h5 class="sp-event-time"><?php echo get_the_time( get_option( 'time_format' ), $event ); ?></h5>
-							<?php endif; ?>
+							<h5 class="sp-event-results"><span class="sp-result"><?php echo implode( '</span>-<span class="sp-result">', sp_get_main_results_or_time( $event ) ); ?></span></h5>
 							<?php if ( $show_league ): $leagues = get_the_terms( $event, 'sp_league' ); if ( $leagues ): $league = array_shift( $leagues ); ?>
 								<div class="sp-event-league"><?php echo $league->name; ?></div>
 							<?php endif; endif; ?>
@@ -139,6 +140,6 @@ if ( $show_title && $id ) {
 	</div>
 	<?php
 	if ( $id && $show_all_events_link )
-		echo '<a class="sp-calendar-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a>';
+		echo '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a></div>';
 	?>
 </div>

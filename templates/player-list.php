@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'id' => get_the_ID(),
+	'title' => false,
 	'number' => -1,
 	'grouptag' => 'h4',
 	'columns' => null,
@@ -18,6 +19,7 @@ $defaults = array(
 	'orderby' => 'default',
 	'order' => 'ASC',
 	'show_all_players_link' => false,
+	'show_title' => get_option( 'sportspress_list_show_title', 'yes' ) == 'yes' ? true : false,
 	'show_player_photo' => get_option( 'sportspress_list_show_photos', 'yes' ) == 'yes' ? true : false,
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
@@ -66,9 +68,15 @@ else:
 	uasort( $data, array( $list, 'sort' ) );
 endif;
 
+$output = '';
+
 if ( $grouping === 'position' ):
 	$groups = get_terms( 'sp_position', array( 'orderby' => 'slug' ) );
 else:
+	if ( $show_title && false === $title && $id )
+		get_the_title( $id );
+	if ( $title )
+		$output .= '<' . $grouptag . ' class="sp-table-caption">' . $title . '</' . $grouptag . '>';
 	$group = new stdClass();
 	$group->term_id = null;
 	$group->name = null;
@@ -76,9 +84,10 @@ else:
 	$groups = array( $group );
 endif;
 
-$output = '';
-
 foreach ( $groups as $group ):
+
+	$output .= '<div class="sp-template sp-template-player-list">';
+
 	if ( ! empty( $group->name ) ):
 		$output .= '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
 		$output .= '<' . $grouptag . ' class="sp-table-caption player-group-name player-list-group-name">' . $group->name . '</' . $grouptag . '>';
@@ -165,11 +174,12 @@ foreach ( $groups as $group ):
 	endif; endforeach;
 
 	$output .= '</tbody>' . '</table>' . '</div>';
-endforeach;
 
-if ( $show_all_players_link )
-	$output .= '<a class="sp-player-list-link sp-view-all-link" href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a>';
+	if ( $show_all_players_link ):
+		$output .= '<div class="sp-player-list-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a></div>';
+	endif;
+
+	$output .= '</div>';
+endforeach;
 ?>
-<div class="sp-template sp-template-player-list">
-	<?php echo $output; ?>
-</div>
+<?php echo $output; ?>

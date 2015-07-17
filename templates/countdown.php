@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $defaults = array(
 	'team' => null,
 	'id' => null,
+	'title' => null,
 	'live' => get_option( 'sportspress_enable_live_countdowns', 'yes' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
@@ -30,6 +31,9 @@ endif;
 extract( $defaults, EXTR_SKIP );
 
 if ( ! isset( $post ) ) return;
+
+if ( $title )
+	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
 
 $title = $post->post_title;
 if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false, true ) . '">' . $title . '</a>';
