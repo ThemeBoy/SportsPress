@@ -5,7 +5,7 @@
  * The SportsPress admin sports class stores preset sport data.
  *
  * @class 		SP_Admin_Sports
- * @version		1.8
+ * @version		1.8.7
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
@@ -286,7 +286,7 @@ class SP_Admin_Sports {
 		__( 'Cricket', 'sportspress' );
 		__( 'Darts', 'sportspress' );
 		__( 'Floorball', 'sportspress' );
-		__( 'Football (Soccer)', 'sportspress' );
+		__( 'Football', 'sportspress' );
 		__( 'American Football', 'sportspress' );
 		__( 'Australian Rules Football', 'sportspress' );
 		__( 'Handball', 'sportspress' );
@@ -296,6 +296,7 @@ class SP_Admin_Sports {
 		__( 'Rugby League', 'sportspress' );
 		__( 'Rugby Union', 'sportspress' );
 		__( 'Snooker', 'sportspress' );
+		__( 'Softball', 'sportspress' );
 		__( 'Squash', 'sportspress' );
 		__( 'Table Tennis', 'sportspress' );
 		__( 'Tennis', 'sportspress' );

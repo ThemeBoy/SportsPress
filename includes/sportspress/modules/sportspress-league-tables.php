@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add league tables to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.8.3
+Version: 1.8.7
 */
 
 // Exit if accessed directly

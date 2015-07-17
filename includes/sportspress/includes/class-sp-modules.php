@@ -5,7 +5,7 @@
  * The SportsPress modules class stores available modules.
  *
  * @class 		SP_Modules
- * @version     1.8.6
+ * @version     1.8.7
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -33,14 +33,14 @@ class SP_Modules {
 					'label' => __( 'Match Stats', 'sportspress' ),
 					'class' => 'SportsPress_Match_Stats',
 					'icon' => 'sp-icon-statistics',
-					'link' => 'http://tboy.co/stats',
+					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Display head-to-head team comparison charts in events.', 'sportspress' ),
 				),
 				'tournaments' => array(
 					'label' => __( 'Tournaments', 'sportspress' ),
 					'class' => 'SportsPress_Tournaments',
 					'icon' => 'sp-icon-tournament',
-					'link' => 'http://tboy.co/tournaments',
+					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Schedule tournaments and create interactive playoff brackets.', 'sportspress' ),
 				),
 			),
@@ -54,7 +54,7 @@ class SP_Modules {
 					'label' => __( 'Team Colors', 'sportspress' ),
 					'class' => 'SportsPress_Team_Colors',
 					'icon' => 'sp-icon-color',
-					'link' => 'http://tboy.co/colors',
+					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Create a custom color palette for each team.', 'sportspress' ),
 				),
 			),
@@ -68,14 +68,14 @@ class SP_Modules {
 					'label' => __( 'Birthdays', 'sportspress' ),
 					'class' => 'SportsPress_Birthdays',
 					'icon' => 'sp-icon-cake',
-					'link' => 'http://tboy.co/features',
+					'link' => 'http://tboy.co/pro',
 					'desc' => __( "Display each player's birthday and their current age.", 'sportspress' ),
 				),
 				'staff_directories' => array(
 					'label' => __( 'Directories', 'sportspress' ),
 					'class' => 'SportsPress_Staff_Directories',
 					'icon' => 'sp-icon-archive',
-					'link' => 'http://tboy.co/directories',
+					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Organize and display staff in list and gallery layouts.', 'sportspress' ),
 				),
 			),
@@ -89,8 +89,15 @@ class SP_Modules {
 					'label' => __( 'Branding', 'sportspress' ),
 					'class' => 'SportsPress_Branding',
 					'icon' => 'sp-icon-sportspress',
-					'link' => 'http://tboy.co/branding',
+					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Instantly rebrand the dashboard with your own logo and colors.', 'sportspress' ),
+				),
+				'duplicator' => array(
+					'label' => __( 'Duplicator', 'sportspress' ),
+					'class' => 'SportsPress_Duplicator',
+					'icon' => 'sp-icon-copy',
+					'link' => 'http://tboy.co/pro',
+					'desc' => __( 'Clone anything with just one click. Great for creating multiple events.', 'sportspress' ),
 				),
 			),
 			'other' => array(
@@ -98,7 +105,7 @@ class SP_Modules {
 					'label' => __( 'Twitter', 'sportspress' ),
 					'class' => 'SportsPress_Twitter',
 					'action' => __( 'Tweet #SportsPress', 'sportspress' ),
-					'link' => 'http://tboy.co/tweet',
+					'link' => 'http://tboy.co/pro',
 					'tip' => __( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.', 'sportspress' ),
 					'icon' => 'dashicons dashicons-twitter',
 					'desc' => __( 'Add a Twitter feed to team, player, and staff pages.', 'sportspress' ),
@@ -107,18 +114,28 @@ class SP_Modules {
 					'label' => __( 'League Menu', 'sportspress' ),
 					'class' => 'SportsPress_League_Menu',
 					'icon' => 'sp-icon-menu',
-					'link' => 'http://tboy.co/menu',
+					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Add a global navigation bar to display logos that link to each team.', 'sportspress' ),
 				),
 				'sponsors' => array(
 					'label' => __( 'Sponsors', 'sportspress' ),
 					'class' => 'SportsPress_Sponsors',
 					'icon' => 'sp-icon-megaphone',
-					'link' => 'http://tboy.co/sponsors',
+					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Attract sponsors by offering them advertising space on your website.', 'sportspress' ),
 				),
 			),
 		));
+
+		if ( is_multisite() ) {
+			$this->data['other']['multisite'] = array(
+				'label' => __( 'Multisite', 'sportspress' ),
+				'class' => 'SportsPress_Multisite',
+				'icon' => 'sp-icon-globe',
+				'link' => 'http://tboy.co/pro',
+				'desc' => __( 'Manage multiple sports and display different widgets all on one site.', 'sportspress' ),
+			);
+		}
 	}
 
 	public function __set( $key, $value ){
