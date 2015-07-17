@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: SportsPress: Duplicator
-Plugin URI: http://sportspresspro.com/
+Plugin URI: http://tboy.co/pro
 Description: Add a duplicate button to SportsPress post types.
 Author: ThemeBoy
 Author URI: http://themeboy.com

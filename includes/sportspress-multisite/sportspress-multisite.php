@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: SportsPress: Multisite
-Plugin URI: http://sportspresspro.com/
+Plugin URI: http://tboy.co/pro
 Description: Add multisite network support to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com
@@ -187,21 +187,4 @@ endif;
 
 if ( get_option( 'sportspress_load_multisite_module', 'yes' ) == 'yes' ) {
 	new SportsPress_Multisite();
-}
-
-/**
- * Add option to SportsPress settings
-*/
-if ( ! function_exists( 'sportspress_add_multisite_option' ) ) {
-	function sportspress_add_multisite_option( $settings ) {
-		$settings['other']['multisite'] = array(
-			'label' => __( 'Multisite', 'sportspress' ),
-			'class' => 'SportsPress_Multisite',
-			'icon' => 'sp-icon-globe',
-			'link' => 'http://tboy.co/multisite',
-			'desc' => __( 'Manage multiple sports and display different widgets all on one site.', 'sportspress' ),
-		);
-		return $settings;
-	}
-	add_filter( 'sportspress_modules', 'sportspress_add_multisite_option', 100 );
 }

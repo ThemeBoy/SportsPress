@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: SportsPress: Updater
-Plugin URI: http://sportspresspro.com/
+Plugin URI: http://tboy.co/pro
 Description: Allow SportsPress Pro to be updated directly from the dashboard.
 Author: ThemeBoy
 Author URI: http://themeboy.com

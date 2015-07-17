@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: SportsPress: Sponsors
-Plugin URI: http://sportspresspro.com/
+Plugin URI: http://tboy.co/pro
 Description: Add sponsors to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com

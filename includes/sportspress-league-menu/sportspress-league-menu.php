@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: SportsPress: League Menu
-Plugin URI: http://sportspresspro.com/
+Plugin URI: http://tboy.co/pro
 Description: Add a league menu to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com

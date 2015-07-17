@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: SportsPress: Staff Directories
-Plugin URI: http://sportspresspro.com/
+Plugin URI: http://tboy.co/pro
 Description: Adds staff directories to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com
