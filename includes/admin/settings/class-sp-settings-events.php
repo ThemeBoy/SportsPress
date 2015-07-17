@@ -44,152 +44,175 @@ class SP_Settings_Events extends SP_Settings_Page {
 				array( 'title' => __( 'Event Options', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'event_options' ),
 			),
 
-			apply_filters( 'sportspress_event_options', array(
+			apply_filters( 'sportspress_event_options', array_merge(
 				array(
-					'title'     => __( 'Link', 'sportspress' ),
-					'desc' 		=> __( 'Link events', 'sportspress' ),
-					'id' 		=> 'sportspress_link_events',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-				),
-
-				array(
-					'title'     => __( 'Templates', 'sportspress' ),
-					'desc' 		=> __( 'Logos', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_logos',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> 'start',
-				),
-
-				array(
-					'desc' 		=> __( 'Results', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_results',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> '',
-				),
-
-				array(
-					'desc' 		=> __( 'Details', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_details',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> '',
-				),
-
-				array(
-					'desc' 		=> __( 'Venue', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_venue',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> '',
-				),
-
-				array(
-					'desc' 		=> __( 'Box Score', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_performance',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> 'end',
-				),
-				
-				array(
-					'title'     => __( 'Mode', 'sportspress' ),
-					'id'        => 'sportspress_load_individual_mode_module',
-					'default'   => 'no',
-					'type'      => 'radio',
-					'options'   => array(
-						'no' => __( 'Team vs team', 'sportspress' ),
-						'yes' => __( 'Player vs player', 'sportspress' ),
-					),
-					'desc_tip' 		=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
-				),
-
-				array( 'type' => 'current_mode' ),
-				
-				array(
-					'title' 	=> __( 'Limit', 'sportspress' ),
-					'id' 		=> 'sportspress_event_teams',
-					'class' 	=> 'small-text',
-					'default'	=> '2',
-					'desc' 		=> __( 'teams', 'sportspress' ),
-					'type' 		=> 'number',
-					'custom_attributes' => array(
-						'min' 	=> 1,
-						'step' 	=> 1
-					),
-				),
-				
-				array( 'type' => 'delimiter' ),
-
-				array(
-					'title'     => __( 'Teams', 'sportspress' ),
-					'desc' 		=> __( 'Filter by competition', 'sportspress' ),
-					'id' 		=> 'sportspress_event_filter_teams_by_league',
-					'default'	=> 'no',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'	=> 'start',
-				),
-
-				array(
-					'desc' 		=> __( 'Filter by season', 'sportspress' ),
-					'id' 		=> 'sportspress_event_filter_teams_by_season',
-					'default'	=> 'no',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'	=> 'end',
-				),
-
-				array(
-					'title'     => __( 'Venues', 'sportspress' ),
-					'desc' 		=> __( 'Display maps', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_maps',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'	=> 'start',
-				),
-
-				array(
-					'desc' 		=> __( 'Link venues', 'sportspress' ),
-					'id' 		=> 'sportspress_link_venues',
-					'default'	=> 'no',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'	=> 'end',
-				),
-
-				array(
-					'title'     => __( 'Google Maps', 'sportspress' ),
-					'id'        => 'sportspress_map_type',
-					'default'   => 'ROADMAP',
-					'type'      => 'radio',
-					'options'   => array(
-						'ROADMAP' => __( 'Default', 'sportspress' ),
-						'SATELLITE' => __( 'Satellite', 'sportspress' ),
-						'HYBRID' => __( 'Hybrid', 'sportspress' ),
-						'TERRAIN' => __( 'Terrain', 'sportspress' ),
-					),
-				),
-				
-				array(
-					'title' 	=> __( 'Full Time', 'sportspress' ),
-					'id' 		=> 'sportspress_event_minutes',
-					'class' 	=> 'small-text',
-					'default'	=> '90',
-					'desc' 		=> __( 'mins', 'sportspress' ),
-					'type' 		=> 'number',
-					'custom_attributes' => array(
-						'min' 	=> 0,
-						'step' 	=> 1
+					array(
+						'title'     => __( 'Link', 'sportspress' ),
+						'desc' 		=> __( 'Link events', 'sportspress' ),
+						'id' 		=> 'sportspress_link_events',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
 					),
 				),
 
+				apply_filters( 'sportspress_event_template_options', array(
+					array(
+						'title'     => __( 'Templates', 'sportspress' ),
+						'desc' 		=> __( 'Logos', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_logos',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> 'start',
+					),
+
+					array(
+						'desc' 		=> __( 'Results', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_results',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> '',
+					),
+
+					array(
+						'desc' 		=> __( 'Details', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_details',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> '',
+					),
+
+					array(
+						'desc' 		=> __( 'Venue', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_venue',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> '',
+					),
+
+					array(
+						'desc' 		=> __( 'Box Score', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_performance',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> 'end',
+					),
+				) ),
+
 				array(
-					'title'     => __( 'Comments', 'sportspress' ),
-					'desc' 		=> __( 'Allow people to post comments on new articles', 'sportspress' ),
-					'id' 		=> 'sportspress_event_comment_status',
-					'default'	=> 'no',
-					'type' 		=> 'checkbox',
-				),
+					array(
+						'title'     => __( 'Mode', 'sportspress' ),
+						'id'        => 'sportspress_load_individual_mode_module',
+						'default'   => 'no',
+						'type'      => 'radio',
+						'options'   => array(
+							'no' => __( 'Team vs team', 'sportspress' ),
+							'yes' => __( 'Player vs player', 'sportspress' ),
+						),
+						'desc_tip' 		=> _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
+					),
+
+					array( 'type' => 'current_mode' ),
+					
+					array(
+						'title' 	=> __( 'Limit', 'sportspress' ),
+						'id' 		=> 'sportspress_event_teams',
+						'class' 	=> 'small-text',
+						'default'	=> '2',
+						'desc' 		=> __( 'teams', 'sportspress' ),
+						'type' 		=> 'number',
+						'custom_attributes' => array(
+							'min' 	=> 1,
+							'step' 	=> 1
+						),
+					),
+					
+					array( 'type' => 'delimiter' ),
+
+					array(
+						'title'     => __( 'Logos', 'sportspress' ),
+						'desc' 		=> __( 'Display team names', 'sportspress' ),
+						'id' 		=> 'sportspress_event_logos_show_team_names',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'	=> 'start',
+					),
+
+					array(
+						'desc' 		=> __( 'Display results', 'sportspress' ),
+						'id' 		=> 'sportspress_event_logos_show_results',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'	=> 'end',
+					),
+
+					array(
+						'title'     => __( 'Teams', 'sportspress' ),
+						'desc' 		=> __( 'Filter by competition', 'sportspress' ),
+						'id' 		=> 'sportspress_event_filter_teams_by_league',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'	=> 'start',
+					),
+
+					array(
+						'desc' 		=> __( 'Filter by season', 'sportspress' ),
+						'id' 		=> 'sportspress_event_filter_teams_by_season',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'	=> 'end',
+					),
+
+					array(
+						'title'     => __( 'Venues', 'sportspress' ),
+						'desc' 		=> __( 'Display maps', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_maps',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'	=> 'start',
+					),
+
+					array(
+						'desc' 		=> __( 'Link venues', 'sportspress' ),
+						'id' 		=> 'sportspress_link_venues',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'	=> 'end',
+					),
+
+					array(
+						'title'     => __( 'Google Maps', 'sportspress' ),
+						'id'        => 'sportspress_map_type',
+						'default'   => 'ROADMAP',
+						'type'      => 'radio',
+						'options'   => array(
+							'ROADMAP' => __( 'Default', 'sportspress' ),
+							'SATELLITE' => __( 'Satellite', 'sportspress' ),
+							'HYBRID' => __( 'Hybrid', 'sportspress' ),
+							'TERRAIN' => __( 'Terrain', 'sportspress' ),
+						),
+					),
+					
+					array(
+						'title' 	=> __( 'Full Time', 'sportspress' ),
+						'id' 		=> 'sportspress_event_minutes',
+						'class' 	=> 'small-text',
+						'default'	=> '90',
+						'desc' 		=> __( 'mins', 'sportspress' ),
+						'type' 		=> 'number',
+						'custom_attributes' => array(
+							'min' 	=> 0,
+							'step' 	=> 1
+						),
+					),
+
+					array(
+						'title'     => __( 'Comments', 'sportspress' ),
+						'desc' 		=> __( 'Allow people to post comments on new articles', 'sportspress' ),
+						'id' 		=> 'sportspress_event_comment_status',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+					),
+				)
 			) ),
 
 			array(
