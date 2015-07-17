@@ -149,6 +149,16 @@
 	cursor: pointer;
 }
 
+/* Event Logos */
+.sp-event-logos a {
+	text-decoration: none;
+}
+
+.sp-event-logos img {
+	display: inline !important;
+	vertical-align: middle;
+}
+
 /* Event Venue */
 .sp-event-venue thead th {
 	white-space: normal;
@@ -171,6 +181,20 @@
 }
 .sp-event-performance .sp-performance-icons {
 	width: 25%;
+}
+
+/* Event Performance (Icons) */
+.sp-event-performance-teams .sp-template-event-performance-icons {
+	box-sizing: border-box;
+	width: 50%;
+	float: left;
+	padding-right: 10px;
+}
+
+.sp-event-performance-teams .sp-template-event-performance-icons:nth-child(2n) {
+	float: right;
+	padding-right: 0;
+	padding-left: 10px;
 }
 
 /* Event Calendar */
@@ -313,17 +337,37 @@
 	font-weight: bold;
 }
 
+/* Hidden Responsive Element */
+.sp-desktop {
+	display: none;
+}
+
 /* Media Queries */
-@media screen and (min-width: 783px) {
+@media screen and (min-width: 801px) {
 	/* Widget Alignment */
+	.sp-widget-align-none {
+		clear: both;
+	}
 	.sp-widget-align-left {
-		width: 48.3871%;
+		width: 50%;
 		float: left;
 		clear: left;
+		padding-right: 10px;
+		box-sizing: border-box;
 	}
 	.sp-widget-align-right {
-		width: 48.3871%;
+		width: 50%;
 		float: right;
 		clear: right;
+		padding-left: 10px;
+		box-sizing: border-box;
+	}
+
+	/* Hidden Responsive Element */
+	.sp-desktop {
+		display: block;
+	}
+	.sp-mobile {
+		display: none;
 	}
 }
