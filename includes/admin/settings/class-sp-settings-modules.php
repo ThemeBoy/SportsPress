@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.8.6
+ * @version     1.8.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -65,7 +65,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<p><?php _e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.','sportspress' ); ?></p>
 							<p class="sp-module-actions">
 								<span><?php _e( 'Premium', 'sportspress' ); ?></span>
-								<a class="button button-primary" href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pricing' ); ?>" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
+								<a class="button button-primary" href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ); ?>" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
 							</p>
 						</td></tr>
 					</tbody>
@@ -182,9 +182,9 @@ class SP_Settings_Modules extends SP_Settings_Page {
 								<li><a href="http://tboy.co/forums" target="_blank"><?php _e( 'Support Forums', 'sportspress' ); ?></a></li>
 								<li><a href="http://tboy.co/ideas" target="_blank"><?php _e( 'Feature Requests', 'sportspress' ); ?></a></li>
 								<?php if ( class_exists( 'SportsPress_Pro' ) ) { ?>
-								<li><a href="<?php echo apply_filters( 'sportspress_support_url', 'http://sportspresspro.com/support/' ); ?>" target="_blank"><?php _e( 'Premium Support', 'sportspress' ); ?></a></li>
+								<li><a href="<?php echo apply_filters( 'sportspress_support_url', 'http://support.themeboy.com/' ); ?>" target="_blank"><?php _e( 'Premium Support', 'sportspress' ); ?></a></li>
 								<?php } else { ?>
-								<li><a href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pricing/' ); ?>" target="_blank"><span class="sp-desc-tip" title="<?php _e( 'Upgrade to Pro', 'sportspress' ); ?>"><?php _e( 'Premium Support', 'sportspress' ); ?></span></a></li>
+								<li><a href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ); ?>" target="_blank"><span class="sp-desc-tip" title="<?php _e( 'Upgrade to Pro', 'sportspress' ); ?>"><?php _e( 'Premium Support', 'sportspress' ); ?></span></a></li>
 								<?php } ?>
 							</ul>
 							<p><strong><i class="dashicons dashicons-share"></i> <?php _e( 'Connect', 'sportspress' ); ?></strong></p>

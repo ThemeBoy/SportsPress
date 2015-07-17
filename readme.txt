@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.8.6
+Stable tag: 1.8.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -50,7 +50,7 @@ More details about each feature are available on the [SportsPress Website](http:
 
 = SportsPress Pro =
 
-Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://tboy.co/pricing) to get access to more advanced features for your team, club, or league website.
+Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](http://tboy.co/pro) to get access to more advanced features for your team, club, or league website.
 
 = Available Languages =
 * English – English ( en_US )
@@ -99,6 +99,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Rugby League
 * Rugby Union
 * Snooker
+* Softball
 * Squash
 * Table Tennis
 * Tennis
@@ -219,11 +220,25 @@ The current modules that are available exclusively to SportsPress Pro are:
 * League Menu: Display a global navigation bar at the top of your website for easy navigation from one team to the next.
 * Branding: Instantly rebrands your admin panel to reflect your organization's brand.
 
-There are [4 different licenses](http://tboy.co/pricing) that you can choose from (Social, Club, and League), each with a [specified set of modules](http://sportspresspro.com/features/).
+There are [4 different licenses](http://tboy.co/pro) that you can choose from (Social, Club, and League), each with a [specified set of modules](http://tboy.co/pro).
 
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.8.7 =
+* Feature - Add custom table heading option to widgets.
+* Feature - Add random sorting to player gallery.
+* Feature - Add option to hide player list and league table titles.
+* Feature - Add heading option to player positions.
+* Tweak - Display Soccer (Association Football) as Football.
+* Tweak - Flush permalinks automatically when saving modules.
+* Tweak - Separate scrollable and responsive table options.
+* Tweak - Display event performance icon tables in 2 columns.
+* Fix - Duplicate league table captions in team page.
+* Preset - Add softball preset.
+* Localization - Add FollowCandyPanda to translation team.
+* Localization - Update Polish, Spanish, German, Norwegian, Dutch, Finnish, Russian, Armenian, and Czech translations.
 
 = 1.8.6 =
 * Tweak - Update modules page to reflect a change in offered features.
