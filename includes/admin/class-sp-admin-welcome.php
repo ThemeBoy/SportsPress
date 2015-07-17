@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.8.4
+ * @version     1.8.7
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -373,6 +373,7 @@ class SP_Admin_Welcome {
 				'fernandori',
 				'fiiz',
 				'filippos.sdr',
+				'FollowCandyPanda',
 				'francois53',
 				'fredodq',
 				'GhiMax',
