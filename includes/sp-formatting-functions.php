@@ -93,7 +93,7 @@ function sp_filter_non_empty( $var = '' ) {
  * @return bool
  */
 function sp_sort_random() {
-	return rand() > rand();
+	return mt_rand( 0, 1 );
 }
 
 /**
