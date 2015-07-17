@@ -28,7 +28,7 @@ class SportsPress_Match_Stats {
 		// Define constants
 		$this->define_constants();
 
-		add_action( 'sportspress_single_event_content', array( $this, 'template' ), 60 );
+		add_action( 'sportspress_event_performance', array( $this, 'template' ) );
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_filter( 'sportspress_event_template_options', array( $this, 'add_options' ) );
