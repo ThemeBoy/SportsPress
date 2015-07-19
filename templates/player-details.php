@@ -14,6 +14,10 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $defaults = array(
+	'show_nationality' => get_option( 'sportspress_player_show_nationality', 'yes' ) == 'yes' ? true : false,
+	'show_positions' => get_option( 'sportspress_player_show_positions', 'yes' ) == 'yes' ? true : false,
+	'show_current_teams' => get_option( 'sportspress_player_show_current_teams', 'yes' ) == 'yes' ? true : false,
+	'show_past_teams' => get_option( 'sportspress_player_show_past_teams', 'yes' ) == 'yes' ? true : false,
 	'show_nationality_flags' => get_option( 'sportspress_player_show_flags', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 );
@@ -32,7 +36,7 @@ $metrics_before = $player->metrics( true );
 $metrics_after = $player->metrics( false );
 
 $common = array();
-if ( $nationality ):
+if ( $show_nationality && $nationality ):
 	if ( 2 == strlen( $nationality ) ):
 		$legacy = SP()->countries->legacy;
 		$nationality = strtolower( $nationality );
@@ -42,7 +46,7 @@ if ( $nationality ):
 	$common[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 endif;
 
-if ( $positions ):
+if ( $show_positions && $positions ):
 	$position_names = array();
 	foreach ( $positions as $position ):
 		$position_names[] = $position->name;
@@ -52,7 +56,7 @@ endif;
 
 $data = array_merge( $metrics_before, $common, $metrics_after );
 
-if ( $current_teams ):
+if ( $show_current_teams && $current_teams ):
 	$teams = array();
 	foreach ( $current_teams as $team ):
 		$team_name = get_the_title( $team );
@@ -62,7 +66,7 @@ if ( $current_teams ):
 	$data[ __( 'Current Team', 'sportspress' ) ] = implode( ', ', $teams );
 endif;
 
-if ( $past_teams ):
+if ( $show_past_teams && $past_teams ):
 	$teams = array();
 	foreach ( $past_teams as $team ):
 		$team_name = get_the_title( $team );
@@ -74,16 +78,17 @@ endif;
 
 $data = apply_filters( 'sportspress_player_details', $data, $id );
 
-if ( sizeof( $data ) ) {
-	$output = '<div class="sp-template sp-template-player-details sp-template-details"><div class="sp-list-wrapper"><dl class="sp-player-details">';
+if ( empty( $data ) )
+	return;
 
-	foreach( $data as $label => $value ):
+$output = '<div class="sp-template sp-template-player-details sp-template-details"><div class="sp-list-wrapper"><dl class="sp-player-details">';
 
-		$output .= '<dt>' . $label . '</dt><dd>' . $value . '</dd>';
+foreach( $data as $label => $value ):
 
-	endforeach;
+	$output .= '<dt>' . $label . '</dt><dd>' . $value . '</dd>';
 
-	$output .= '</dl></div></div>';
+endforeach;
 
-	echo $output;
-}
+$output .= '</dl></div></div>';
+
+echo $output;
