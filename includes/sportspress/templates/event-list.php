@@ -58,11 +58,11 @@ endif;
 
 if ( $show_title && false === $title && $id )
 	$title = get_the_title( $id );
-
-if ( $title )
-	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
 ?>
 <div class="sp-template sp-template-event-list">
+	<?php if ( $title ) { ?>
+		<h4 class="sp-table-caption"><?php echo $title; ?></h4>
+	<?php } ?>
 	<div class="sp-table-wrapper">
 		<table class="sp-event-list sp-data-table<?php if ( $paginated ) { ?> sp-paginated-table<?php } if ( $sortable ) { ?> sp-sortable-table<?php } if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
 			<thead>

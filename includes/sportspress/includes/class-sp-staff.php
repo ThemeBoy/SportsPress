@@ -13,6 +13,16 @@
 class SP_Staff extends SP_Custom_Post {
 
 	/**
+	 * Returns current teams
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function current_teams() {
+		return get_post_meta( $this->ID, 'sp_current_team', false );
+	}
+
+	/**
 	 * Returns past teams
 	 *
 	 * @access public

@@ -14,7 +14,11 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $defaults = array(
+	'show_nationality' => get_option( 'sportspress_staff_show_nationality', 'yes' ) == 'yes' ? true : false,
+	'show_current_teams' => get_option( 'sportspress_staff_show_current_teams', 'yes' ) == 'yes' ? true : false,
+	'show_past_teams' => get_option( 'sportspress_staff_show_past_teams', 'yes' ) == 'yes' ? true : false,
 	'show_nationality_flags' => get_option( 'sportspress_staff_show_flags', 'yes' ) == 'yes' ? true : false,
+	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -24,11 +28,11 @@ $countries = SP()->countries->countries;
 $staff = new SP_Staff( $id );
 
 $nationality = $staff->nationality;
-$current_team = $staff->current_team;
+$current_teams = $staff->current_teams();
 $past_teams = $staff->past_teams();
 
 $data = array();
-if ( $nationality ):
+if ( $show_nationality && $nationality ):
 	if ( 2 == strlen( $nationality ) ):
 		$legacy = SP()->countries->legacy;
 		$nationality = strtolower( $nationality );
@@ -38,18 +42,30 @@ if ( $nationality ):
 	$data[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 endif;
 
-if ( $current_team )
-	$data[ __( 'Current Team', 'sportspress' ) ] = '<a href="' . get_post_permalink( $current_team ) . '">' . get_the_title( $current_team ) . '</a>';
+if ( $show_current_teams && $current_teams ):
+	$teams = array();
+	foreach ( $current_teams as $team ):
+		$team_name = get_the_title( $team );
+		if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
+		$teams[] = $team_name;
+	endforeach;
+	$data[ __( 'Current Team', 'sportspress' ) ] = implode( ', ', $teams );
+endif;
 
-if ( $past_teams ):
+if ( $show_past_teams && $past_teams ):
 	$teams = array();
 	foreach ( $past_teams as $team ):
-		$teams[] = '<a href="' . get_post_permalink( $team ) . '">' . get_the_title( $team ) . '</a>';
+		$team_name = get_the_title( $team );
+		if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
+		$teams[] = $team_name;
 	endforeach;
 	$data[ __( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
 endif;
 
 $data = apply_filters( 'sportspress_staff_details', $data, $id );
+
+if ( empty( $data ) )
+	return;
 
 $output = '<div class="sp-list-wrapper">' .
 	'<dl class="sp-staff-details">';

@@ -68,6 +68,31 @@ class SP_Settings_Staff extends SP_Settings_Page {
 				),
 
 				array(
+					'title'     => __( 'Details', 'sportspress' ),
+					'desc' 		=> __( 'Nationality', 'sportspress' ),
+					'id' 		=> 'sportspress_staff_show_nationality',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'start',
+				),
+
+				array(
+					'desc' 		=> __( 'Current Team', 'sportspress' ),
+					'id' 		=> 'sportspress_staff_show_current_teams',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+
+				array(
+					'desc' 		=> __( 'Past Teams', 'sportspress' ),
+					'id' 		=> 'sportspress_staff_show_past_teams',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'end',
+				),
+
+				array(
 					'title'     => __( 'Nationality', 'sportspress' ),
 					'desc' 		=> __( 'Display national flags', 'sportspress' ),
 					'id' 		=> 'sportspress_staff_show_flags',
