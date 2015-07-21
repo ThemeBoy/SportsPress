@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.8.7
+Stable tag: 1.8.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -225,6 +225,10 @@ There are [4 different licenses](http://tboy.co/pro) that you can choose from (S
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.8.8 =
+* Feature - Add option to hide player and staff details.
+* Tweak - Ability to multiple current teams in staff profile.
 
 = 1.8.7 =
 * Feature - Add custom table heading option to widgets.
