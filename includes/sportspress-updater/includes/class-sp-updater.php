@@ -16,7 +16,9 @@ if ( !class_exists('SP_Updater') ) {
     	var $license_key;
     
     	function __construct( $api_url, $plugin_path, $license_key = null ) {
-            if ( class_exists( 'SportsPress_Multisite' ) ) {
+            if ( class_exists( 'SportsPress_Agency' ) ) {
+                $this->plugin_id = 1208;
+            } elseif ( class_exists( 'SportsPress_Multisite' ) ) {
                 $this->plugin_id = 1013;
             } elseif ( class_exists( 'SportsPress_Tournaments' ) ) {
                 $this->plugin_id = 1017;
