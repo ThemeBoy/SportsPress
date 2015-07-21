@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.5
+ * @version     1.8.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -15,6 +15,7 @@ $defaults = array(
 	'show_venue' => get_option( 'sportspress_tournament_show_venue', 'no' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
+	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'layout' => 'bracket',
 );
 
@@ -23,7 +24,7 @@ extract( $defaults, EXTR_SKIP );
 $tournament = new SP_Tournament( $id );
 list( $labels, $data, $rounds, $rows ) = $tournament->data( $layout );
 ?>
-<table class="sp-data-table sp-tournament-bracket">
+<table class="sp-data-table sp-tournament-bracket<?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
 	<thead>
 		<tr>
 			<?php for ( $round = 0; $round < $rounds; $round++ ): ?>
