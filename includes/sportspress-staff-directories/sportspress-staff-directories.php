@@ -49,6 +49,7 @@ class SportsPress_Staff_Directories {
 		add_action( 'sportspress_after_single_directory', 'sportspress_output_br_tag', 100 );
 		add_filter( 'sportspress_league_object_types', array( $this, 'add_taxonomy_object' ) );
 		add_filter( 'sportspress_season_object_types', array( $this, 'add_taxonomy_object' ) );
+		add_filter( 'sportspress_role_object_types', array( $this, 'add_taxonomy_object' ) );
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_filter( 'sportspress_staff_settings', array( $this, 'add_options' ) );

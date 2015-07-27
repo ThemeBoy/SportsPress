@@ -53,6 +53,7 @@ class SP_Staff_Directory_Meta_Boxes {
 	public function remove_meta_boxes() {
 		remove_meta_box( 'sp_seasondiv', 'sp_directory', 'side' );
 		remove_meta_box( 'sp_leaguediv', 'sp_directory', 'side' );
+		remove_meta_box( 'sp_rolediv', 'sp_directory', 'side' );
 	}
 
 	/**
@@ -92,6 +93,11 @@ class SP_Staff_Directory_Meta_Boxes {
 		$team_id = get_post_meta( $post->ID, 'sp_team', true );
 		?>
 		<div>
+			<?php
+			foreach ( $taxonomies as $taxonomy ) {
+				sp_taxonomy_field( $taxonomy, $post, true );
+			}
+			?>
 			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
 			<p class="sp-tab-select">
 				<?php
@@ -142,6 +148,7 @@ class SP_Staff_Directory_Meta_Boxes {
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
+		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_job', 0 ), 'sp_job' );
 		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
 
 		// Data
@@ -301,6 +308,9 @@ class SP_Staff_Directory_Meta_Boxes {
 						<th class="column-season">
 							<?php _e( 'Season', 'sportspress' ); ?>
 						</th>
+						<th class="column-role">
+							<?php _e( 'Job', 'sportspress' ); ?>
+						</th>
 						<th class="column-layout">
 							<?php _e( 'Layout', 'sportspress' ); ?>
 						</th>
@@ -325,6 +335,7 @@ class SP_Staff_Directory_Meta_Boxes {
 									</td>
 									<td><?php echo get_the_terms ( $directory->ID, 'sp_league' ) ? the_terms( $directory->ID, 'sp_league' ) : __( 'All', 'sportspress' ); ?></td>
 									<td><?php echo get_the_terms ( $directory->ID, 'sp_season' ) ? the_terms( $directory->ID, 'sp_season' ) : __( 'All', 'sportspress' ); ?></td>
+									<td><?php echo get_the_terms ( $directory->ID, 'sp_role' ) ? the_terms( $directory->ID, 'sp_role' ) : __( 'All', 'sportspress' ); ?></td>
 									<td><?php echo sp_array_value( SP()->formats->directory, $format, '&mdash;' ); ?></td>
 								</tr>
 								<?php
@@ -333,7 +344,7 @@ class SP_Staff_Directory_Meta_Boxes {
 						else:
 							?>
 							<tr class="sp-row alternate">
-								<td colspan="6">
+								<td colspan="7">
 									<?php _e( 'No results found.', 'sportspress' ); ?>
 								</td>
 							</tr>
@@ -342,7 +353,7 @@ class SP_Staff_Directory_Meta_Boxes {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="6">
+						<td colspan="7">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) ); ?>
 						</td>
 					</tr>

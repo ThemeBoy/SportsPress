@@ -100,8 +100,6 @@ class SP_Staff_Directory {
 	public function data( $admin = false ) {
 		global $pagenow;
 
-		$league_id = sp_get_the_term_id( $this->ID, 'sp_league', 0 );
-		$season_id = sp_get_the_term_id( $this->ID, 'sp_season', 0 );
 		$staffs = get_post_meta( $this->ID, 'sp_staffs', true );
 
 		$args = array(
@@ -119,6 +117,7 @@ class SP_Staff_Directory {
 			if ( $this->ID ):
 				$leagues = get_the_terms( $this->ID, 'sp_league' );
 				$seasons = get_the_terms( $this->ID, 'sp_season' );
+				$roles = get_the_terms( $this->ID, 'sp_role' );
 				$team = get_post_meta( $this->ID, 'sp_team', true );
 
 				if ( $leagues ):
@@ -142,6 +141,18 @@ class SP_Staff_Directory {
 						'taxonomy' => 'sp_season',
 						'field' => 'id',
 						'terms' => $season_ids
+					);
+				endif;
+
+				if ( $roles ):
+					$role_ids = array();
+					foreach( $roles as $role ):
+						$role_ids[] = $role->term_id;
+					endforeach;
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_role',
+						'field' => 'id',
+						'terms' => $role_ids
 					);
 				endif;
 
