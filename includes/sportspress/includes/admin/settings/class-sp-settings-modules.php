@@ -53,6 +53,8 @@ class SP_Settings_Modules extends SP_Settings_Page {
 		?>
 		<div class="sp-modules-wrapper">
 			<div class="sp-modules-sidebar">
+				<?php do_action( 'sportspress_modules_sidebar' ); ?>
+
 				<?php if ( ! class_exists( 'SportsPress_Pro' ) ) { ?>
 				<table class="widefat" cellspacing="0">
 					<thead>
@@ -197,6 +199,8 @@ class SP_Settings_Modules extends SP_Settings_Page {
 						</td></tr>
 					</tbody>
 				</table>
+
+				<?php do_action( 'sportspress_modules_after_sidebar' ); ?>
 			</div>
 
 			<div class="sp-modules-main">

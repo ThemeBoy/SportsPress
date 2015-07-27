@@ -86,12 +86,12 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 
 = Sport Presets Included =
 * American Football
+* Association Football (Soccer)
 * Australian Rules Football
 * Baseball
 * Basketball
 * Cricket
 * Darts
-* Football (Soccer)
 * Handball
 * Ice Hockey
 * Lacrosse

@@ -37,7 +37,6 @@
 	width: 100%;
 	table-layout: auto;
     border-spacing: 0;
-	border-collapse: separate;
 }
 .sp-paginated-table {
 	margin-bottom: 0;
@@ -200,7 +199,6 @@
 /* Event Calendar */
 .sp-event-calendar {
     border-spacing: 0;
-	border-collapse: separate;
 }
 .sp-event-calendar a {
 	text-decoration: none;

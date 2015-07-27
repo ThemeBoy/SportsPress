@@ -26,6 +26,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
+		add_action( 'sportspress_admin_field_templates', array( $this, 'templates_setting' ) );
 		add_action( 'sportspress_admin_field_current_mode', array( $this, 'current_mode_setting' ) );
 		add_action( 'sportspress_admin_field_delimiter', array( $this, 'delimiter_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
@@ -41,7 +42,15 @@ class SP_Settings_Events extends SP_Settings_Page {
 		$settings = array_merge(
 
 			array(
-				array( 'title' => __( 'Event Options', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'event_options' ),
+				array( 'title' => __( 'Templates', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'event_template_options' ),
+
+				array( 'type' => 'templates' ),
+
+				array( 'type' => 'sectionend', 'id' => 'event_template_options' ),
+			),
+
+			array(
+				array( 'title' => __( 'Events', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'event_options' ),
 			),
 
 			apply_filters( 'sportspress_event_options', array_merge(
@@ -53,52 +62,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'default'	=> 'yes',
 						'type' 		=> 'checkbox',
 					),
-				),
 
-				apply_filters( 'sportspress_event_template_options', array(
-					array(
-						'title'     => __( 'Templates', 'sportspress' ),
-						'desc' 		=> __( 'Logos', 'sportspress' ),
-						'id' 		=> 'sportspress_event_show_logos',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'		=> 'start',
-					),
-
-					array(
-						'desc' 		=> __( 'Results', 'sportspress' ),
-						'id' 		=> 'sportspress_event_show_results',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'		=> '',
-					),
-
-					array(
-						'desc' 		=> __( 'Details', 'sportspress' ),
-						'id' 		=> 'sportspress_event_show_details',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'		=> '',
-					),
-
-					array(
-						'desc' 		=> __( 'Venue', 'sportspress' ),
-						'id' 		=> 'sportspress_event_show_venue',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'		=> '',
-					),
-
-					array(
-						'desc' 		=> __( 'Box Score', 'sportspress' ),
-						'id' 		=> 'sportspress_event_show_performance',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'		=> 'end',
-					),
-				) ),
-
-				array(
 					array(
 						'title'     => __( 'Mode', 'sportspress' ),
 						'id'        => 'sportspress_load_individual_mode_module',
@@ -395,6 +359,79 @@ class SP_Settings_Events extends SP_Settings_Page {
 		
 		if ( isset( $_POST['sportspress_event_teams_delimiter'] ) )
 	    	update_option( 'sportspress_event_teams_delimiter', $_POST['sportspress_event_teams_delimiter'] );
+	}
+
+	/**
+	 * Templates settings
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function templates_setting() {
+		//$selection = get_option( 'sportspress_event_teams_delimiter', 'vs' );
+		$options = apply_filters( 'sportspress_event_template_options', array(
+			array(
+				'title'     => __( 'Templates', 'sportspress' ),
+				'desc' 		=> __( 'Logos', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_logos',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'start',
+			),
+
+			array(
+				'desc' 		=> __( 'Results', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_results',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Details', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_details',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Venue', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_venue',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Box Score', 'sportspress' ),
+				'id' 		=> 'sportspress_event_show_performance',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'end',
+			),
+		) );
+		?>
+		<tr>
+			<th>
+				<?php foreach ( $options as $option ) { ?>
+					<label>
+						<input type="checkbox">
+						<?php echo $option['desc']; ?>
+					</label>
+					<br>
+				<?php } ?>
+			</th>
+			<td>
+				<?php foreach ( $options as $option ) { ?>
+					<div class="button">
+						<span class="dashicons dashicons-menu post-state-format"></span>
+						<?php echo $option['desc']; ?>
+					</div>
+				<?php } ?>
+			</td>
+		</tr>
+		<?php
 	}
 
 	/**
