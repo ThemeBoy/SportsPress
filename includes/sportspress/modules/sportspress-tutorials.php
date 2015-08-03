@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress: Tutorials
+Plugin Name: SportsPress Tutorials
 Plugin URI: http://themeboy.com/
 Description: Display SportsPress video tutorials.
 Author: ThemeBoy
@@ -134,7 +134,7 @@ class SportsPress_Tutorials {
 		if ( isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], $tabs ) ) {
 			$current_tab = $_GET['tab'];
 		} else {
-			$current_tab = 'tutorials';
+			$current_tab = key( $tabs );
 		}
 		$i = 0;
 		?>
