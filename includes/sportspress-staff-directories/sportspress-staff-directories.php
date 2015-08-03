@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress: Staff Directories
+Plugin Name: SportsPress Staff Directories
 Plugin URI: http://tboy.co/pro
 Description: Adds staff directories to SportsPress.
 Author: ThemeBoy
@@ -249,7 +249,7 @@ class SportsPress_Staff_Directories {
 			array(
 				'title'     => __( 'Contact Info', 'sportspress' ),
 				'desc' 		=> __( 'Link phone', 'sportspress' ),
-				'id' 		=> 'sportspress_link_phone',
+				'id' 		=> 'sportspress_staff_link_phone',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'start',
@@ -257,7 +257,7 @@ class SportsPress_Staff_Directories {
 
 			array(
 				'desc' 		=> __( 'Link email', 'sportspress' ),
-				'id' 		=> 'sportspress_link_email',
+				'id' 		=> 'sportspress_staff_link_email',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',
