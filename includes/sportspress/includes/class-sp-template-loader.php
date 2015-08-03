@@ -32,15 +32,15 @@ class SP_Template_Loader {
 
 		ob_start();
 
-		if ( $position <= 0 )
-			echo $content;
-
-		do_action( 'sportspress_before_single_' . $template );
-
 		if ( post_password_required() ) {
 			echo get_the_password_form();
 			return;
 		}
+
+		if ( $position <= 0 )
+			echo $content;
+
+		do_action( 'sportspress_before_single_' . $template );
 
 		if ( $position > 0 && $position <= 5 )
 			echo $content;
