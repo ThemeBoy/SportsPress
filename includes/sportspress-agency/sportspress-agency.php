@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress: Agency
+Plugin Name: SportsPress Agency
 Plugin URI: http://tboy.co/pro
 Description: Tells SportsPress that it's an Agency License.
 Author: ThemeBoy

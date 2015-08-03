@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress: Multisite
+Plugin Name: SportsPress Multisite
 Plugin URI: http://tboy.co/pro
 Description: Add multisite network support to SportsPress.
 Author: ThemeBoy

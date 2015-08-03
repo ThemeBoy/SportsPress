@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress: Match Stats
+Plugin Name: SportsPress Match Stats
 Plugin URI: http://themeboy.com/
 Description: Display head-to-head team comparison charts in events.
 Author: ThemeBoy
