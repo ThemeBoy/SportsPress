@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress: Twitter
+Plugin Name: SportsPress Twitter
 Plugin URI: http://themeboy.com/
 Description: Add twitter feed to teams, players, and staff.
 Author: ThemeBoy
