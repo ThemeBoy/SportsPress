@@ -31,7 +31,6 @@
 .sp-scrollable-table-wrapper {
 	width: 100%;
 	overflow: auto;
-	position: relative;
 }
 .sp-data-table {
 	width: 100%;
