@@ -603,8 +603,12 @@ table.widefat.sp-sortable-table tbody tr .icon {
 	clear: both;
 	border-top: 1px solid #ddd;
 	background: #f9f9f9;
-	margin: 0 -14px -10px;
+	margin: 0 -14px;
 	text-align: right;
+}
+
+.sp-modules-sidebar table td .sp-module-actions:last-child {
+	margin-bottom: -10px;
 }
 
 .sp-modules-sidebar table td .sp-module-actions span {
