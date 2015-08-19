@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress: Tutorials
+Plugin Name: SportsPress Tutorials
 Plugin URI: http://themeboy.com/
 Description: Display SportsPress video tutorials.
 Author: ThemeBoy
@@ -57,29 +57,60 @@ class SportsPress_Tutorials {
 	 * Get video IDs.
 	*/
 	public function get_video_ids() {
-		$this->ids = apply_filters( 'sportspress_tutorial_videos', array(
-			__( 'Get Started', 'sportspress' ) => apply_filters( 'sportspress_get_started_tutorial_videos', array(
-				__( 'Installation', 'sportspress' ) => '//www.youtube-nocookie.com/embed/nE8-RlbotmU?rel=0&amp;showinfo=0',
-				__( 'Competitions', 'sportspress' ) . ' &amp; ' . __( 'Seasons', 'sportspress' ) => '//www.youtube-nocookie.com/embed/XAf2EsDrf8M?rel=0&amp;showinfo=0',
-				__( 'Venues', 'sportspress' ) => '//www.youtube-nocookie.com/embed/iTZnC_7VvYk?rel=0&amp;showinfo=0',
-				__( 'Positions', 'sportspress' ) . ' &amp; ' . __( 'Jobs', 'sportspress' ) => '//www.youtube-nocookie.com/embed/g6QKbDH05n0?rel=0&amp;showinfo=0',
-			) ),
-			__( 'Teams', 'sportspress' ) => apply_filters( 'sportspress_team_tutorial_videos', array(
-				__( 'Add New Team', 'sportspress' ) => '//www.youtube-nocookie.com/embed/x8GoxaHwC9U?rel=0&amp;showinfo=0',
-				__( 'League Tables', 'sportspress' ) => '//www.youtube-nocookie.com/embed/8AXh399Vstc?rel=0&amp;showinfo=0',
-			) ),
-			__( 'Players', 'sportspress' ) . ' &amp; ' . __( 'Staff', 'sportspress' ) => array_merge(
-				apply_filters( 'sportspress_player_tutorial_videos', array(
-					__( 'Add New Player', 'sportspress' ) => '//www.youtube-nocookie.com/embed/wWYQNHITz-g?rel=0&amp;showinfo=0',
+		$this->ids = apply_filters( 'sportspress_videos', array(
+			'tutorials' => apply_filters( 'sportspress_tutorial_videos', array(
+				__( 'Get Started', 'sportspress' ) => apply_filters( 'sportspress_get_started_tutorial_videos', array(
+					__( 'Installation', 'sportspress' ) => '//www.youtube-nocookie.com/embed/nE8-RlbotmU?rel=0&amp;showinfo=0',
+					__( 'Competitions', 'sportspress' ) . ' &amp; ' . __( 'Seasons', 'sportspress' ) => '//www.youtube-nocookie.com/embed/XAf2EsDrf8M?rel=0&amp;showinfo=0',
+					__( 'Venues', 'sportspress' ) => '//www.youtube-nocookie.com/embed/iTZnC_7VvYk?rel=0&amp;showinfo=0',
+					__( 'Positions', 'sportspress' ) . ' &amp; ' . __( 'Jobs', 'sportspress' ) => '//www.youtube-nocookie.com/embed/g6QKbDH05n0?rel=0&amp;showinfo=0',
 				) ),
-				apply_filters( 'sportspress_staff_tutorial_videos', array(
-					__( 'Add New Staff', 'sportspress' ) => '//www.youtube-nocookie.com/embed/cxm2S7qYSL4?rel=0&amp;showinfo=0',
-				) )
-			),
-			__( 'Events', 'sportspress' ) => apply_filters( 'sportspress_event_tutorial_videos', array(
-				__( 'Add New Event', 'sportspress' ) => '//www.youtube-nocookie.com/embed/UA25lgqgnSc?rel=0&amp;showinfo=0',
-				__( 'Edit Event', 'sportspress' ) => '//www.youtube-nocookie.com/embed/nL0ObdPMyBM?rel=0&amp;showinfo=0',
-				__( 'Calendars', 'sportspress' ) => '//www.youtube-nocookie.com/embed/NIHBKMMqN0s?rel=0&amp;showinfo=0',
+				__( 'Teams', 'sportspress' ) => apply_filters( 'sportspress_team_tutorial_videos', array(
+					__( 'Add New Team', 'sportspress' ) => '//www.youtube-nocookie.com/embed/x8GoxaHwC9U?rel=0&amp;showinfo=0',
+					__( 'League Tables', 'sportspress' ) => '//www.youtube-nocookie.com/embed/8AXh399Vstc?rel=0&amp;showinfo=0',
+				) ),
+				__( 'Players', 'sportspress' ) . ' &amp; ' . __( 'Staff', 'sportspress' ) => array_merge(
+					apply_filters( 'sportspress_player_tutorial_videos', array(
+						__( 'Add New Player', 'sportspress' ) => '//www.youtube-nocookie.com/embed/wWYQNHITz-g?rel=0&amp;showinfo=0',
+					) ),
+					apply_filters( 'sportspress_staff_tutorial_videos', array(
+						__( 'Add New Staff', 'sportspress' ) => '//www.youtube-nocookie.com/embed/cxm2S7qYSL4?rel=0&amp;showinfo=0',
+					) )
+				),
+				__( 'Events', 'sportspress' ) => apply_filters( 'sportspress_event_tutorial_videos', array(
+					__( 'Add New Event', 'sportspress' ) => '//www.youtube-nocookie.com/embed/UA25lgqgnSc?rel=0&amp;showinfo=0',
+					__( 'Edit Event', 'sportspress' ) => '//www.youtube-nocookie.com/embed/nL0ObdPMyBM?rel=0&amp;showinfo=0',
+					__( 'Calendars', 'sportspress' ) => '//www.youtube-nocookie.com/embed/NIHBKMMqN0s?rel=0&amp;showinfo=0',
+				) ),
+			) ),
+			'advanced' => apply_filters( 'sportspress_advanced_videos', array(
+				__( 'Settings', 'sportspress' ) => apply_filters( 'sportspress_settings_advanced_videos', array(
+					__( 'Text', 'sportspress' ) => '//www.youtube-nocookie.com/embed/qEucgVVsDcE?rel=0&amp;showinfo=0',
+					__( 'Permalinks', 'sportspress' ) => '//www.youtube-nocookie.com/embed/QuHmsdVyjU8?rel=0&amp;showinfo=0',
+				) ),
+				__( 'Events', 'sportspress' ) => apply_filters( 'sportspress_event_advanced_videos', array(
+					__( 'Event Outcomes', 'sportspress' ) . ' ' . __( '(Auto)', 'sportspress' ) => '//www.youtube-nocookie.com/embed/pCVfPv2O5yY?rel=0&amp;showinfo=0',
+					__( 'Box Score', 'sportspress' ) => '//www.youtube-nocookie.com/embed/rERU6X7vjTc?rel=0&amp;showinfo=0',
+				) ),
+				__( 'Calendars', 'sportspress' ) => apply_filters( 'sportspress_calendar_advanced_videos', array(
+					__( 'Layout', 'sportspress' ) => '//www.youtube-nocookie.com/embed/aLx_5D0Xgnc?rel=0&amp;showinfo=0',
+				) ),
+				__( 'Teams', 'sportspress' ) => apply_filters( 'sportspress_team_advanced_videos', array(
+					__( 'Logo', 'sportspress' ) => '//www.youtube-nocookie.com/embed/tLJZKB0fnXw?rel=0&amp;showinfo=0',
+					__( 'Adjustments', 'sportspress' ) => '//www.youtube-nocookie.com/embed/VJkhn9Or0jA?rel=0&amp;showinfo=0',
+					__( 'Highlight', 'sportspress' ) => '//www.youtube-nocookie.com/embed/1rKRmRzVWoU?rel=0&amp;showinfo=0',
+				) ),
+				__( 'Players', 'sportspress' ) => apply_filters( 'sportspress_player_advanced_videos', array(
+					__( 'Player Metrics', 'sportspress' ) => '//www.youtube-nocookie.com/embed/dGXYgi8esPc?rel=0&amp;showinfo=0',
+					__( 'Player Ranking', 'sportspress' ) => '//www.youtube-nocookie.com/embed/xAQRZf7VOTg?rel=0&amp;showinfo=0',
+				) ),
+				__( 'Other', 'sportspress' ) => apply_filters( 'sportspress_other_advanced_videos', array(
+					__( 'Demo Content', 'sportspress' ) => '//www.youtube-nocookie.com/embed/sARiHQJqSBw?rel=0&amp;showinfo=0',
+					__( 'Overview', 'sportspress' ) => '//www.youtube-nocookie.com/embed/osXGpBJDMpY?rel=0&amp;showinfo=0',
+					__( 'User Roles', 'sportspress' ) => '//www.youtube-nocookie.com/embed/UancX-33NE4?rel=0&amp;showinfo=0',
+					__( 'Shortcodes', 'sportspress' ) => '//www.youtube-nocookie.com/embed/czrhafIcLaM?rel=0&amp;showinfo=0',
+					__( 'Page not found', 'sportspress' ) => '//www.youtube-nocookie.com/embed/2rss9qfMubw?rel=0&amp;showinfo=0',
+				) ),
 			) ),
 		) );
 	}
@@ -95,14 +126,23 @@ class SportsPress_Tutorials {
 	 * Init the tutorials page
 	 */
 	public function tutorials_page() {
+		$tabs = apply_filters( 'sportspress_tutorial_tabs', array(
+			'tutorials' => __( 'Tutorials', 'sportspress' ),
+			'advanced' => __( 'Advanced', 'sportspress' ),
+		) );
+		if ( isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], $tabs ) ) {
+			$current_tab = $_GET['tab'];
+		} else {
+			$current_tab = key( $tabs );
+		}
 		$i = 0;
 		?>
+		<h2 class="nav-tab-wrapper">
+			<?php foreach ( $tabs as $name => $label ): ?><a href="<?php echo admin_url( 'admin.php?page=sportspress-tutorials&tab=' . $name ); ?>" class="nav-tab <?php echo ( $current_tab == $name ? 'nav-tab-active' : '' ); ?>"><?php echo $label; ?></a><?php endforeach; ?>
+		</h2>
 		<div class="wrap sportspress sportspress-tutorials-wrap">
-			<h2>
-				<?php _e( 'Tutorials', 'sportspress' ); ?>
-			</h2>
 			<div class="sp-tutorials-main">
-				<?php foreach ( $this->ids as $section => $urls ) { ?>
+				<?php foreach ( $this->ids[$current_tab] as $section => $urls ) { ?>
 					<h3><?php echo $section; ?></h3>
 					<ul class="sp-tutorials-list">
 						<?php foreach ( $urls as $label => $url ) { $i++; ?>
