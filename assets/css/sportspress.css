@@ -31,13 +31,11 @@
 .sp-scrollable-table-wrapper {
 	width: 100%;
 	overflow: auto;
-	position: relative;
 }
 .sp-data-table {
 	width: 100%;
 	table-layout: auto;
     border-spacing: 0;
-	border-collapse: separate;
 }
 .sp-paginated-table {
 	margin-bottom: 0;
@@ -200,7 +198,6 @@
 /* Event Calendar */
 .sp-event-calendar {
     border-spacing: 0;
-	border-collapse: separate;
 }
 .sp-event-calendar a {
 	text-decoration: none;
