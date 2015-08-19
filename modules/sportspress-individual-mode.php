@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress: Individual Mode
+Plugin Name: SportsPress Individual Mode
 Plugin URI: http://themeboy.com/
 Description: Modify SportsPress to work with individual (player vs player) sports.
 Author: ThemeBoy

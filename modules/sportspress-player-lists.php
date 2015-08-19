@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress: Player Lists
+Plugin Name: SportsPress Player Lists
 Plugin URI: http://themeboy.com/
 Description: Add player lists to SportsPress.
 Author: ThemeBoy

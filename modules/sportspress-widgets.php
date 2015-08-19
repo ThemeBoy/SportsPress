@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress: Widgets
+Plugin Name: SportsPress Widgets
 Plugin URI: http://themeboy.com/
 Description: Add widgets to SportsPress.
 Author: ThemeBoy

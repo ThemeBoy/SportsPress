@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress: Importers
+Plugin Name: SportsPress Importers
 Plugin URI: http://themeboy.com/
 Description: Add importers to SportsPress.
 Author: ThemeBoy
