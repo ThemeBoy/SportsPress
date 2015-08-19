@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 4.2.2
-Stable tag: 1.8.7
+Tested up to: 4.3
+Stable tag: 1.8.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -86,12 +86,12 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 
 = Sport Presets Included =
 * American Football
+* Association Football (Soccer)
 * Australian Rules Football
 * Baseball
 * Basketball
 * Cricket
 * Darts
-* Football (Soccer)
 * Handball
 * Ice Hockey
 * Lacrosse
@@ -130,8 +130,6 @@ Feel free to share your suggestions with us so we can continue to develop awesom
 Developers can contribute via the [SportsPress GitHub Repository](https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md).
 
 Translators can contribute to SportsPress translations through [Transifex](https://www.transifex.com/projects/p/sportspress/).
-
-Couldn't find a preset for your sport? Help us [add it to SportsPress](http://themeboy.com/add-sport-preset/).
 
 = Stay Current =
 To keep up with the latest updates and new features, be sure to do the following:
@@ -225,6 +223,10 @@ There are [4 different licenses](http://tboy.co/pro) that you can choose from (S
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.8.8 =
+* Feature - Add option to hide player and staff details.
+* Tweak - Ability to multiple current teams in staff profile.
 
 = 1.8.7 =
 * Feature - Add custom table heading option to widgets.
