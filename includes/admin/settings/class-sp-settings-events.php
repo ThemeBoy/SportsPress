@@ -39,7 +39,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 	public function get_settings() {
 
 		$settings = array_merge(
-
 			array(
 				array( 'title' => __( 'Event Options', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'event_options' ),
 			),
@@ -64,7 +63,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'type' 		=> 'checkbox',
 						'checkboxgroup'		=> 'start',
 					),
-
 					array(
 						'desc' 		=> __( 'Results', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_results',
@@ -72,7 +70,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'type' 		=> 'checkbox',
 						'checkboxgroup'		=> '',
 					),
-
 					array(
 						'desc' 		=> __( 'Details', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_details',
@@ -80,7 +77,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'type' 		=> 'checkbox',
 						'checkboxgroup'		=> '',
 					),
-
 					array(
 						'desc' 		=> __( 'Venue', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_venue',
@@ -88,7 +84,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'type' 		=> 'checkbox',
 						'checkboxgroup'		=> '',
 					),
-
 					array(
 						'desc' 		=> __( 'Box Score', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_performance',
