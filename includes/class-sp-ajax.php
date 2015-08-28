@@ -80,8 +80,9 @@ class SP_AJAX {
 					<?php _e( 'Display competition', 'sportspress' ); ?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'countdown' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('countdown');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('countdown');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -109,8 +110,9 @@ class SP_AJAX {
 					?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-details' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('event_details');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_details');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -138,8 +140,9 @@ class SP_AJAX {
 					?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-results' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('event_results');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_results');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -167,8 +170,9 @@ class SP_AJAX {
 					?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-performance' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('event_performance');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_performance');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -215,8 +219,9 @@ class SP_AJAX {
 					<input type="checkbox" name="show_all_events_link" id="show_all_events_link">
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-calendar' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('event_calendar');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_calendar');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -231,6 +236,12 @@ class SP_AJAX {
 	public function event_list_shortcode() {
 		?>
 		<div class="wrap sp-thickbox-content" id="sp-thickbox-event_list">
+			<p>
+				<label>
+					<?php _e( 'Title:', 'sportspress' ); ?>
+					<input class="regular-text" type="text" name="title">
+				</label>
+			</p>
 			<p>
 				<label>
 					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Calendar', 'sportspress' ) ); ?>
@@ -306,8 +317,9 @@ class SP_AJAX {
 					<?php _e( 'Display link to view all events', 'sportspress' ); ?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-list' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('event_list');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_list');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -322,6 +334,12 @@ class SP_AJAX {
 	public function event_blocks_shortcode() {
 		?>
 		<div class="wrap sp-thickbox-content" id="sp-thickbox-event_blocks">
+			<p>
+				<label>
+					<?php _e( 'Title:', 'sportspress' ); ?>
+					<input class="regular-text" type="text" name="title">
+				</label>
+			</p>
 			<p>
 				<label>
 					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Calendar', 'sportspress' ) ); ?>
@@ -380,8 +398,9 @@ class SP_AJAX {
 					<?php _e( 'Display link to view all events', 'sportspress' ); ?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-blocks' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('event_blocks');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_blocks');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -396,6 +415,12 @@ class SP_AJAX {
 	public function table_table_shortcode() {
 		?>
 		<div class="wrap sp-thickbox-content" id="sp-thickbox-league_table">
+			<p>
+				<label>
+					<?php _e( 'Title:', 'sportspress' ); ?>
+					<input class="regular-text" type="text" name="title">
+				</label>
+			</p>
 			<p>
 				<label>
 					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'League Table', 'sportspress' ) ); ?>
@@ -446,8 +471,9 @@ class SP_AJAX {
 					<?php _e( 'Display link to view full table', 'sportspress' ); ?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'league-table' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('league_table');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('league_table');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -475,8 +501,9 @@ class SP_AJAX {
 					?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'player-details' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('player_details');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('player_details');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -504,8 +531,9 @@ class SP_AJAX {
 					?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'player-statistics' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('player_statistics');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('player_statistics');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -520,6 +548,12 @@ class SP_AJAX {
 	public function player_list_shortcode() {
 		?>
 		<div class="wrap sp-thickbox-content" id="sp-thickbox-player_list">
+			<p>
+				<label>
+					<?php _e( 'Title:', 'sportspress' ); ?>
+					<input class="regular-text" type="text" name="title">
+				</label>
+			</p>
 			<p>
 				<label>
 					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Player List', 'sportspress' ) ); ?>
@@ -594,8 +628,9 @@ class SP_AJAX {
 					<?php _e( 'Display link to view all players', 'sportspress' ); ?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'player-list' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('player_list');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('player_list');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -610,6 +645,12 @@ class SP_AJAX {
 	public function player_gallery_shortcode() {
 		?>
 		<div class="wrap sp-thickbox-content" id="sp-thickbox-player_gallery">
+			<p>
+				<label>
+					<?php _e( 'Title:', 'sportspress' ); ?>
+					<input class="regular-text" type="text" name="title">
+				</label>
+			</p>
 			<p>
 				<label>
 					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Player List', 'sportspress' ) ); ?>
@@ -671,8 +712,9 @@ class SP_AJAX {
 					<?php _e( 'Display player names on hover', 'sportspress' ); ?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'player-gallery' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('player_gallery');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('player_gallery');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -702,6 +744,7 @@ class SP_AJAX {
                     args.status = $div.find('[name=status]').val();
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'event_list' == type ) {
+                    args.title = $div.find('[name=title]').val();
                     args.status = $div.find('[name=status]').val();
                     args.date = $div.find('[name=date]').val();
                     args.number = $div.find('[name=number]').val();
@@ -709,29 +752,35 @@ class SP_AJAX {
                     args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'event_blocks' == type ) {
+                    args.title = $div.find('[name=title]').val();
                     args.status = $div.find('[name=status]').val();
                     args.date = $div.find('[name=date]').val();
                     args.number = $div.find('[name=number]').val();
                     args.order = $div.find('[name=order]').val();
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'league_table' == type ) {
+                    args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
                     args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
                     args.show_team_logo = $div.find('[name=show_team_logo]:checked').length;
                     args.show_full_table_link = $div.find('[name=show_full_table_link]:checked').length;
                 } else if ( 'player_list' == type ) {
+                    args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
                     args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
                     args.orderby = $div.find('[name=orderby]').val();
                     args.order = $div.find('[name=order]').val();
                     args.show_all_players_link = $div.find('[name=show_all_players_link]:checked').length;
                 } else if ( 'player_gallery' == type ) {
+                    args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
                     args.orderby = $div.find('[name=orderby]').val();
                     args.order = $div.find('[name=order]').val();
                     args.show_all_players_link = $div.find('[name=show_all_players_link]:checked').length;
                     args.show_names_on_hover = $div.find('[name=show_names_on_hover]:checked').length;
                 }
+
+                <?php do_action( 'sportspress_ajax_scripts_before_shortcode' ); ?>
 
                 // Generate the shortcode
 				var shortcode = '[' + type;
