@@ -62,7 +62,7 @@ class SP_Admin_Editor {
 	 * @return array
 	 */
 	public function register_shortcode_button( $buttons ) {
-		array_push( $buttons, '|', 'sp_shortcodes_button' );
+		array_push( $buttons, 'sp_shortcodes_button' );
 		return $buttons;
 	}
 
