@@ -124,7 +124,7 @@ class SP_Admin_Meta_Boxes {
 					'priority' => 'default',
 				),
 				'results' => array(
-					'title' => __( 'Event Results', 'sportspress' ),
+					'title' => __( 'Results', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Event_Results::save',
 					'output' => 'SP_Meta_Box_Event_Results::output',
 					'context' => 'normal',
