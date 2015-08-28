@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.8
+ * @version     1.8.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -22,12 +22,15 @@ class SP_Meta_Box_Staff_Details {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$continents = SP()->countries->continents;
 
-		$nationality = get_post_meta( $post->ID, 'sp_nationality', true );
-		if ( 2 == strlen( $nationality ) ):
-			$legacy = SP()->countries->legacy;
-			$nationality = strtolower( $nationality );
-			$nationality = sp_array_value( $legacy, $nationality, null );
-		endif;
+		$nationalities = get_post_meta( $post->ID, 'sp_nationality', false );
+		foreach ( $nationalities as $index => $nationality ):
+			if ( 2 == strlen( $nationality ) ):
+				$legacy = SP()->countries->legacy;
+				$nationality = strtolower( $nationality );
+				$nationality = sp_array_value( $legacy, $nationality, null );
+				$nationalities[ $index ] = $nationality;
+			endif;
+		endforeach;
 
 		$leagues = get_the_terms( $post->ID, 'sp_league' );
 		$league_ids = array();
@@ -75,12 +78,12 @@ class SP_Meta_Box_Staff_Details {
 		?></p>
 
 		<p><strong><?php _e( 'Nationality', 'sportspress' ); ?></strong></p>
-		<p><select id="sp_nationality" name="sp_nationality" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>">
+		<p><select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" multiple="multiple">
 			<option value=""></option>
 			<?php foreach ( $continents as $continent => $countries ): ?>
 				<optgroup label="<?php echo $continent; ?>">
 					<?php foreach ( $countries as $code => $country ): ?>
-						<option value="<?php echo $code; ?>" <?php selected ( $nationality, $code ); ?>><?php echo $country; ?></option>
+						<option value="<?php echo $code; ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo $country; ?></option>
 					<?php endforeach; ?>
 				</optgroup>
 			<?php endforeach; ?>
@@ -155,8 +158,8 @@ class SP_Meta_Box_Staff_Details {
 	 */
 	public static function save( $post_id, $post ) {
 		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_role', null ), 'sp_role', false );
-		update_post_meta( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', '' ) );
 		
+		sp_update_post_meta_recursive( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_past_team', sp_array_value( $_POST, 'sp_past_team', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_team', array_merge( array( sp_array_value( $_POST, 'sp_current_team', array() ) ), sp_array_value( $_POST, 'sp_past_team', array() ) ) );
