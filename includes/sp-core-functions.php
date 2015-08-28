@@ -319,6 +319,17 @@ if ( !function_exists( 'sp_get_the_term_id' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_the_term_ids' ) ) {
+	function sp_get_the_term_ids( $post_id, $taxonomy ) {
+		$terms = get_the_terms( $post_id, $taxonomy );
+		if ( is_array( $terms ) && sizeof( $terms ) > 0 ):
+			return wp_list_pluck( $terms, 'term_id' );
+		else:
+			return array();
+		endif;
+	}
+}
+
 if ( !function_exists( 'sp_get_the_term_id_or_meta' ) ) {
 	function sp_get_the_term_id_or_meta( $post_id, $taxonomy ) {
 		$terms = get_the_terms( $post_id, $taxonomy );
@@ -1227,7 +1238,6 @@ function sp_get_text_options() {
 		__( 'Date', 'sportspress' ),
 		__( 'Details', 'sportspress' ),
 		__( 'Event', 'sportspress' ),
-		__( 'Event Results', 'sportspress' ),
 		__( 'Competition', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
 		__( 'Outcome', 'sportspress' ),
@@ -1240,6 +1250,7 @@ function sp_get_text_options() {
 		__( 'Preview', 'sportspress' ),
 		__( 'Rank', 'sportspress' ),
 		__( 'Recap', 'sportspress' ),
+		__( 'Results', 'sportspress' ),
 		__( 'Season', 'sportspress' ),
 		__( 'Staff', 'sportspress' ),
 		__( 'Substitutes', 'sportspress' ),
