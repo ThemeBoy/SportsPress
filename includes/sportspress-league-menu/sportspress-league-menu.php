@@ -35,8 +35,10 @@ class SportsPress_League_Menu {
 	    add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 	    add_filter( 'sportspress_enable_header', '__return_true' );
 
-		add_action( 'wp_footer', array( $this, 'menu' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+
+		add_action( 'sportspress_header', array( $this, 'menu' ), 20 );
+		add_action( 'wp_footer', array( $this, 'footer' ), 20 );
 	}
 
 	/**
@@ -189,15 +191,27 @@ class SportsPress_League_Menu {
 							?>
 						</a>
 					<?php endforeach; endif; ?>
+					<?php do_action( 'sportspress_league_menu' ); ?>
 				</div>
 			</div>
-			<script type="text/javascript">
-			jQuery(document).ready( function($) {
-				$('.sp-header').prepend( $('.sp-league-menu') );
-			} );
-			</script>
 			<?php
 		endif;
+	}
+
+	public static function menu_scripts() {
+		?>
+			<script type="text/javascript">
+			jQuery(document).ready( function($) {
+				$('.sp-header-loaded').prepend( $('.sp-league-menu') );
+			} );
+			</script>
+		<?php
+	}
+
+	public static function footer() {
+		if ( did_action( 'sportspress_header' ) ) return;
+		self::menu();
+		self::menu_scripts();
 	}
 }
 
