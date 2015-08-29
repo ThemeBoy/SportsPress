@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.3
-Stable tag: 1.8.8
+Stable tag: 1.8.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -224,9 +224,21 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 == Changelog ==
 
+= 1.8.9 =
+* Feature - Enable multiple nationalities for players and staff.
+* Feature - Enable multiple seasons and competitions for league tables.
+* Feature - Enable multiple seasons, competitions, and positions for player lists.
+* Feature - Add custom title field and widget alignment option to shortcodes.
+* Feature - Add option to always increment league table position.
+* Fix - Import button on admin pages.
+* Fix - Update jQuery DataTables to version 1.10.8 props devilsaces.
+* Localization - Group translation team by language and display stats.
+* Localization - Add albpower, elgolden, mobking, wah826, iojvan, eifelstudio, deckerweb, denkuhn, green_big_frog, Flubber89, sododesign, webby1973, Laislebai, slappfiskene.no, AugustoNeto, lfrodines, GonerSTUDIO, cofeman.sl, i1m3a7n92, opticadeharo, and ViktoriaRuzhylo to translation team.
+* Localization - Update Polish, Finnish, Armenian, German, Slovenian, Italian, Czech, Dutch, Spanish, Romanian, and French translations.
+
 = 1.8.8 =
 * Feature - Add option to hide player and staff details.
-* Tweak - Ability to multiple current teams in staff profile.
+* Tweak - Ability to display multiple current teams in staff profile.
 
 = 1.8.7 =
 * Feature - Add custom table heading option to widgets.
