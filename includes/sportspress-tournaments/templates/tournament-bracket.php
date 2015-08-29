@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'id' => get_the_ID(),
+	'title' => false,
 	'show_logos' => get_option( 'sportspress_tournament_show_logos', 'yes' ) == 'yes' ? true : false,
 	'show_venue' => get_option( 'sportspress_tournament_show_venue', 'no' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
@@ -25,6 +26,9 @@ $post_layout = get_post_meta( $id, 'sp_format', true );
 
 if ( $post_layout )
 	$layout = $post_layout;
+
+if ( $title )
+	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
 
 if ( $responsive && 'center' == $layout ) {
 	?>

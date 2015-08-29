@@ -414,7 +414,13 @@ class SportsPress_Tournaments {
 		}
 	}
 
+	/**
+	 * Frontend CSS
+	 */
 	public static function frontend_css( $colors ) {
+		if ( current_theme_supports( 'sportspress' ) )
+			return;
+
 		if ( isset( $colors['highlight'] ) ) {
 			echo '.sp-tournament-bracket .sp-event{border-color:' . $colors['highlight'] . ' !important}';
 			echo '.sp-tournament-bracket .sp-team .sp-team-name:before{border-left-color:' . $colors['highlight'] . ' !important}';
