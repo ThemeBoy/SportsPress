@@ -32,6 +32,7 @@ class SportsPress_Match_Stats {
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_filter( 'sportspress_event_template_options', array( $this, 'add_options' ) );
+		add_action( 'sportspress_frontend_css', array( $this, 'frontend_css' ) );
 	}
 
 	/**
@@ -101,6 +102,18 @@ class SportsPress_Match_Stats {
 			$classes[] = 'sp-inline-statistics';
 		}
 		return $classes;
+	}
+
+	/**
+	 * Frontend CSS
+	 */
+	public static function frontend_css( $colors ) {
+		if ( isset( $colors['primary'] ) ) {
+			echo '.sp-statistic-bar{background:' . $colors['primary'] . '}';
+		}
+		if ( isset( $colors['link'] ) ) {
+			echo '.sp-statistic-bar-fill{background:' . $colors['link'] . '}';
+		}
 	}
 }
 
