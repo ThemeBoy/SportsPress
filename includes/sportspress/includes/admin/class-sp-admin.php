@@ -97,8 +97,7 @@ class SP_Admin {
 			?>
 			<script type="text/javascript">
 			(function($) {
-				$(".wrap h2 .add-new-h2:first-child").after(
-					" ",
+				$(".wrap .page-title-action:first-child").after(
 					$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => $typenow . '_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import', 'sportspress' ); ?></a>")
 				);
 			})(jQuery);

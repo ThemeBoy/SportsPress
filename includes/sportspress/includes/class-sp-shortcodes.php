@@ -52,6 +52,8 @@ class SP_Shortcodes {
 			'after'  => null
 		)
 	) {
+		$wrapper = apply_filters( 'sportspress_shortcode_wrapper', $wrapper, $function, $atts );
+
 		ob_start();
 
 		$before 	= empty( $wrapper['before'] ) ? '<div class="' . esc_attr( $wrapper['class'] ) . '">' : $wrapper['before'];

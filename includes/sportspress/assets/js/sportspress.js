@@ -10,7 +10,9 @@ function viewport() {
 (function($) {
 
 	/* Header */
-	$('body').prepend( '<div class="sp-header"></div>' );
+	if ( ! $('.sp-header').size() ) {
+		$('body').prepend( '<div class="sp-header sp-header-loaded"></div>' );
+	}
 
 	/* Countdown */
 	$("[data-countdown]").each(function() {

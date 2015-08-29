@@ -115,10 +115,12 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 		$groups = array( $group );
 	endif;
 
+	$j = 0;
+
 	foreach ( $groups as $group ):
 		$i = 0;
 
-		echo '<div class="sp-template sp-template-player-gallery">';
+		echo '<div class="sp-template sp-template-player-gallery sp-template-gallery">';
 
 		if ( ! empty( $group->name ) ):
 			echo '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
@@ -147,8 +149,14 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 
 		endif; endforeach;
 
+		$j++;
+
 		if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
 			echo '<br style="clear: both" />';
+		}
+
+		if ( $show_all_players_link && ( 'position' !== $grouping || $j == count( $groups ) ) ) {
+			echo '<div class="sp-player-gallery-link sp-gallery-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a></div>';
 		}
 
 		echo '</div>';
@@ -157,10 +165,6 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 
 	if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
 		echo '<br style="clear: both" />';
-	}
-
-	if ( $show_all_players_link ) {
-		echo '<div class="sp-player-list-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all players', 'sportspress' ) . '</a></div>';
 	}
 		
 echo "</div>\n";

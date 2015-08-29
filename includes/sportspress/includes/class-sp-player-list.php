@@ -35,8 +35,9 @@ class SP_Player_List extends SP_Custom_Post {
 	 * @return array
 	 */
 	public function data( $admin = false ) {
-		$league_id = sp_get_the_term_id( $this->ID, 'sp_league', 0 );
-		$div_id = sp_get_the_term_id( $this->ID, 'sp_season', 0 );
+		$league_ids = sp_get_the_term_ids( $this->ID, 'sp_league' );
+		$season_ids = sp_get_the_term_ids( $this->ID, 'sp_season' );
+		$position_ids = sp_get_the_term_ids( $this->ID, 'sp_position' );
 		$team = get_post_meta( $this->ID, 'sp_team', true );
 		$list_stats = (array)get_post_meta( $this->ID, 'sp_players', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
@@ -64,19 +65,27 @@ class SP_Player_List extends SP_Custom_Post {
 				),
 			);
 
-			if ( $league_id ):
+			if ( $league_ids ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
 					'field' => 'id',
-					'terms' => $league_id
+					'terms' => $league_ids
 				);
 			endif;
 
-			if ( $div_id ):
+			if ( $season_ids ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
 					'field' => 'id',
-					'terms' => $div_id
+					'terms' => $season_ids
+				);
+			endif;
+
+			if ( $position_ids ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_position',
+					'field' => 'id',
+					'terms' => $position_ids
 				);
 			endif;
 
@@ -158,8 +167,13 @@ class SP_Player_List extends SP_Custom_Post {
 			$static = get_post_meta( $player_id, 'sp_statistics', true );
 
 			// Add metrics and static stats to placeholders
-			$placeholders[ $player_id ] = array_merge( $metrics, sp_array_value( sp_array_value( $static, $league_id, array() ), $div_id, array() ) );
-
+			if ( $league_ids && $season_ids ):
+				foreach ( $league_ids as $league_id ):
+					foreach ( $season_ids as $season_id ):
+						$placeholders[ $player_id ] = array_merge( $metrics, sp_array_value( sp_array_value( $static, $league_id, array() ), $season_id, array() ) );
+					endforeach;
+				endforeach;
+			endif;
 		endforeach;
 
 		$args = array(
@@ -179,19 +193,19 @@ class SP_Player_List extends SP_Custom_Post {
 			),
 		);
 
-		if ( $league_id ):
+		if ( $league_ids ):
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_league',
 				'field' => 'id',
-				'terms' => $league_id
+				'terms' => $league_ids
 			);
 		endif;
 
-		if ( $div_id ):
+		if ( $season_ids ):
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_season',
 				'field' => 'id',
-				'terms' => $div_id
+				'terms' => $season_ids
 			);
 		endif;
 

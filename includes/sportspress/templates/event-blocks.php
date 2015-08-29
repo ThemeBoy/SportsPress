@@ -47,7 +47,6 @@ if ( $order != 'default' )
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
 
-
 if ( $show_title && false === $title && $id )
 	$title = get_the_title( $id );
 

@@ -29,8 +29,8 @@ class SP_League_Table extends SP_Custom_Post{
 	 * @return array
 	 */
 	public function data( $admin = false ) {
-		$league_id = sp_get_the_term_id( $this->ID, 'sp_league', 0 );
-		$div_id = sp_get_the_term_id( $this->ID, 'sp_season', 0 );
+		$league_ids = sp_get_the_term_ids( $this->ID, 'sp_league' );
+		$season_ids = sp_get_the_term_ids( $this->ID, 'sp_season' );
 		$table_stats = (array)get_post_meta( $this->ID, 'sp_teams', true );
 		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
@@ -56,19 +56,19 @@ class SP_League_Table extends SP_Custom_Post{
 				),
 			);
 
-			if ( $league_id ):
+			if ( $league_ids ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
 					'field' => 'id',
-					'terms' => $league_id
+					'terms' => $league_ids
 				);
 			endif;
 
-			if ( $div_id ):
+			if ( $season_ids ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
 					'field' => 'id',
-					'terms' => $div_id
+					'terms' => $season_ids
 				);
 			endif;
 
@@ -146,8 +146,14 @@ class SP_League_Table extends SP_Custom_Post{
 			// Get static stats
 			$static = get_post_meta( $team_id, 'sp_columns', true );
 
-			// Add static stats to placeholders
-			$placeholders[ $team_id ] = (array) sp_array_value( sp_array_value( $static, $league_id, array() ), $div_id, array() );
+			if ( 'yes' == get_option( 'sportspress_team_column_editing', 'no' ) && $league_ids && $season_ids ):
+				// Add static stats to placeholders
+				foreach ( $league_ids as $league_id ):
+					foreach ( $season_ids as $season_id ):
+						$placeholders[ $team_id ] = (array) sp_array_value( sp_array_value( $static, $league_id, array() ), $season_id, array() );
+					endforeach;
+				endforeach;
+			endif;
 
 		endforeach;
 
@@ -170,19 +176,19 @@ class SP_League_Table extends SP_Custom_Post{
 			),
 		);
 
-		if ( $league_id ):
+		if ( $league_ids ):
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_league',
 				'field' => 'id',
-				'terms' => $league_id
+				'terms' => $league_ids
 			);
 		endif;
 
-		if ( $div_id ):
+		if ( $season_ids ):
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_season',
 				'field' => 'id',
-				'terms' => $div_id
+				'terms' => $season_ids
 			);
 		endif;
 
@@ -541,6 +547,10 @@ class SP_League_Table extends SP_Custom_Post{
 	 */
 	public function calculate_pos( $columns ) {
 		$this->counter++;
+
+		if ( 'yes' == get_option( 'sportspress_table_increment', 'no' ) ) {
+			return $this->counter;
+		}
 
 		// Replace compare data and use last set
 		$compare = $this->compare;

@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		1.7.3
+ * @version		1.8.9
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -40,6 +40,16 @@ class SP_Player extends SP_Custom_Post {
 	 */
 	public function past_teams() {
 		return get_post_meta( $this->ID, 'sp_past_team', false );
+	}
+
+	/**
+	 * Returns nationalities
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function nationalities() {
+		return get_post_meta( $this->ID, 'sp_nationality', false );
 	}
 
 	/**

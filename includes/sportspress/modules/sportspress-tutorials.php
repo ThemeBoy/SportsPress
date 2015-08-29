@@ -129,7 +129,6 @@ class SportsPress_Tutorials {
 		$tabs = apply_filters( 'sportspress_tutorial_tabs', array(
 			'tutorials' => __( 'Tutorials', 'sportspress' ),
 			'advanced' => __( 'Advanced', 'sportspress' ),
-			'troubleshooting' => __( 'Troubleshooting', 'sportspress' ),
 		) );
 		if ( isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], $tabs ) ) {
 			$current_tab = $_GET['tab'];

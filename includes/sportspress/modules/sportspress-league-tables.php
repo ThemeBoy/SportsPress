@@ -38,6 +38,7 @@ class SportsPress_League_Tables {
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_filter( 'sportspress_shortcodes', array( $this, 'add_shortcodes' ) );
 		add_filter( 'sportspress_team_settings', array( $this, 'add_settings' ) );
+		add_filter( 'sportspress_team_options', array( $this, 'add_options' ) );
 	}
 
 	/**
@@ -120,13 +121,15 @@ class SportsPress_League_Tables {
 	 * @return array
 	 */
 	public function add_meta_boxes( $meta_boxes ) {
-		$meta_boxes['sp_team']['columns'] = array(
-			'title' => __( 'Table Columns', 'sportspress' ),
-			'output' => 'SP_Meta_Box_Team_Columns::output',
-			'save' => 'SP_Meta_Box_Team_Columns::save',
-			'context' => 'normal',
-			'priority' => 'high',
-		);
+		if ( 'yes' == get_option( 'sportspress_team_column_editing', 'no' ) ) {
+			$meta_boxes['sp_team']['columns'] = array(
+				'title' => __( 'Table Columns', 'sportspress' ),
+				'output' => 'SP_Meta_Box_Team_Columns::output',
+				'save' => 'SP_Meta_Box_Team_Columns::save',
+				'context' => 'normal',
+				'priority' => 'high',
+			);
+		}
 		$meta_boxes['sp_team']['tables'] = array(
 			'title' => __( 'League Tables', 'sportspress' ),
 			'output' => 'SP_Meta_Box_Team_Tables::output',
@@ -223,10 +226,37 @@ class SportsPress_League_Tables {
 						'step' 	=> 1
 					),
 				),
+
+				array(
+					'title'     => __( 'Pos', 'sportspress' ),
+					'desc' 		=> __( 'Always increment', 'sportspress' ),
+					'id' 		=> 'sportspress_table_increment',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
 			) ),
 
 			array(
 				array( 'type' => 'sectionend', 'id' => 'table_options' ),
+			)
+		);
+	}
+
+	/**
+	 * Add options.
+	 *
+	 * @return array
+	 */
+	public function add_options( $options ) {
+		return array_merge( $options,
+			array(
+				array(
+					'title'     => __( 'Table Columns', 'sportspress' ),
+					'desc' 		=> __( 'Enable column editing', 'sportspress' ),
+					'id' 		=> 'sportspress_team_column_editing',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
 			)
 		);
 	}

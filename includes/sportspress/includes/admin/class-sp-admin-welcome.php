@@ -346,94 +346,207 @@ class SP_Admin_Welcome {
 			<?php $this->intro(); ?>
 
 			<p class="about-description"><?php printf( __( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ), 'https://www.transifex.com/projects/p/sportspress/' ); ?></p>
-			<?php
-			$translator_handles = array(
-				'Abdulelah',
-				'albertone',
-				'alexander.salomon99',
-				'alisiddique',
-				'ALooNeBoy87',
-				'Andrew_Melim',
-				'ArtakEVN',
-				'aylaview',
-				'Bhelpful2',
-				'bizover',
-				'BOCo',
-				'ceyhunulas',
-				'chr86',
-				'den_zlateva',
-				'dic_2008',
-				'doncer',
-				'edesl',
-				'elrawys',
-				'EmiDelCaz',
-				'eNnvi',
-				'etcloki',
-				'Ferenan',
-				'fernandori',
-				'fiiz',
-				'filippos.sdr',
-				'FollowCandyPanda',
-				'francois53',
-				'fredodq',
-				'GhiMax',
-				'GuneshGamza95',
-				'hanro',
-				'Hermanni',
-				'HuguesD',
-				'hushiea',
-				'i__k',
-				'JensZ',
-				'jenymoen',
-				'jikji96',
-				'joegalaxy66',
-				'JuKi',
-				'kanakoff',
-				'karimjarro',
-				'King3R',
-				'krisop',
-				'latixns',
-				'm4rsal',
-				'massimo.marra',
-				'matiqos',
-				'MohamedZ',
-				'nagashitw',
-				'overbite',
-				'Ozias',
-				'paulcoppen',
-				'Paramamithra',
-				'pgbenini',
-				'poelie',
-				'popeosorio',
-				'rochester',
-				'sashaCZ',
-				'Selskei',
-				'sijo',
-				'SilverXp',
-				'SmilyCarrot',
-				'Spirossmil',
-				'Taurus',
-				'thegreat',
-				'ThemeBoy',
-				'tyby94',
-				'valentijnreza',
-				'ValliFudd',
-				'vetsmi',
-				'violaud',
-				'vlinicx',
-				'wolforg',
-				'xFrAx',
-				'Xyteton',
-				'zzcs',
-			);
-			$translator_links = array();
-			foreach ( $translator_handles as $handle ):
-				$translator_links[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';
-			endforeach;
-			?>
 			<p class="wp-credits-list">
-				<?php echo implode( ', ', $translator_links ); ?>
+			<?php
+			$translators = array(
+				'Shqip' => array(
+					'albpower',
+				),
+				'العربية' => array(
+					'Abdulelah',
+					'elgolden',
+					'hushiea',
+				),
+				'Հայերեն' => array(
+					'ArtakEVN',
+				),
+				'বাংলা' => array(
+					'alisiddique',
+				),
+				'Bosanski' => array(
+					'etcloki',
+				),
+				'Български' => array(
+					'alltimecams',
+					'den_zlateva',
+				),
+				'简体中文' => array(
+					'dic_2008',
+					'mobking',
+				),
+				'繁體中文' => array(
+					'wah826',
+				),
+				'Hrvatski' => array(
+					'etcloki',
+					'i__k',
+					'iojvan',
+					'vlinicx',
+				),
+				'Čeština' => array(
+					'eifelstudio',
+					'thegreat',
+				),
+				'Nederlands' => array(
+					'SilverXp',
+					'paulcoppen',
+					'poelie',
+					'valentijnreza',
+				),
+				'Suomi' => array(
+					'Taurus',
+					'Hermanni',
+					'JuKi',
+					'hanro',
+				),
+				'Français' => array(
+					'francois53',
+					'fredodq',
+					'HuguesD',
+					'MohamedZ',
+					'wolforg',
+				),
+				'Deutsch' => array(
+					'alexander.salomon99',
+					'Bhelpful2',
+					'chr86',
+					'deckerweb',
+					'denkuhn',
+					'FollowCandyPanda',
+					'green_big_frog',
+					'King3R',
+				),
+				'Ελληνικά' => array(
+					'filippos.sdr',
+					'Spirossmil',
+				),
+				'Íslenska' => array(
+					'ValliFudd',
+				),
+				'Italiano' => array(
+					'Flubber89',
+					'GhiMax',
+					'eNnvi',
+					'joegalaxy66',
+					'massimo.marra',
+					'sododesign',
+					'violaud',
+					'webby1973',
+					'xFrAx',
+				),
+				'日本語' => array(
+					'aylaview',
+				),
+				'한국어' => array(
+					'jikji96',
+				),
+				'Македонски' => array(
+					'doncer',
+				),
+				'Norsk bokmål' => array(
+					'sijo',
+					'Laislebai',
+					'jenymoen',
+					'm4rsal',
+					'slappfiskene.no',
+					'vetsmi',
+				),
+				'Polski' => array(
+					'karimjarro',
+					'krisop',
+				),
+				'Português do Brasil' => array(
+					'Ferenan',
+					'AugustoNeto',
+					'Ozias',
+					'lfrodines',
+					'pgbenini',
+					'rochester',
+				),
+				'Português' => array(
+					'Andrew_Melim',
+					'nagashitw',
+				),
+				'Română' => array(
+					'GonerSTUDIO',
+					'tyby94',
+				),
+				'Русский' => array(
+					'elrawys',
+					'kanakoff',
+					'sashaCZ',
+					'Selskei',
+					'SmilyCarrot',
+					'zzcs',
+				),
+				'Српски језик' => array(
+					'etcloki',
+				),
+				'Slovenčina' => array(
+					'matiqos',
+				),
+				'Slovenščina' => array(
+					'BOCo',
+					'cofeman.sl',
+				),
+				'Español' => array(
+					'albertone',
+					'EmiDelCaz',
+					'GonerSTUDIO',
+					'edesl',
+					'fernandori',
+					'i1m3a7n92',
+					'latixns',
+					'opticadeharo',
+					'popeosorio',
+				),
+				'Svenska' => array(
+					'JensZ',
+					'fiiz',
+				),
+				'Türkçe' => array(
+					'ALooNeBoy87',
+					'GuneshGamza95',
+					'ceyhunulas',
+					'overbite',
+				),
+				'Українська' => array(
+					'ViktoriaRuzhylo',
+				),
+				'Tiếng Việt' => array(
+					'bizover',
+				),
+				'ಕನ್ನಡ' => array(
+					'Paramamithra',
+				),
+				'ไทย' => array(
+					'Xyteton',
+				),
+			);
+			$languages = array_keys( $translators );
+			shuffle( $languages );
+			$translation_teams = array();
+			foreach ( $languages as $language ):
+				$handles = $translators[ $language ];
+				$team = '<strong>' . $language . '</strong> ' . __( 'by', 'sportspress' ) . ' ';
+				$team_members = array();
+				foreach ( $handles as $handle ):
+					$team_members[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';
+				endforeach;
+				$members = implode( ', ', $team_members );
+				$team .= $members;
+				$team .= '';
+				$translation_teams[] = $team;
+			endforeach;
+			echo implode( '<br>', $translation_teams );
+			?>
 			</p>
+			<div class="postbox sp-top-translations">
+				<h3 class="hndle"><span><?php _e( 'Top Translations', 'sportspress' ); ?></span></h3>
+				<p class="sp-transifex-chart">
+					<a target="_blank" href="https://www.transifex.com/projects/p/sportspress"><img border="0" src="https://www.transifex.com/projects/p/sportspress/resource/sportspress/chart/image_png"/></a>
+				</p>
+			</div>
 		</div>
 		<?php
 	}

@@ -86,7 +86,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<p><?php _e( 'Offer premium news & highlights from leading global sports. SportsPress TV will keep your visitors entertained for hours.','sportspress' ); ?></p>
 							<p class="sp-module-actions">
 								<span><?php _e( 'Free', 'sportspress' ); ?></span>
-								<a class="button" href="<?php echo add_query_arg( array( 'tab' => 'search', 's' => 'SportsPress+TV' ), network_admin_url( 'plugin-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
+								<a class="button thickbox" href="<?php echo add_query_arg( array( 'tab' => 'plugin-information', 'plugin' => 'sportspress-tv', 'TB_iframe' => 'true', 'width' => '80%', 'height' => '500' ), network_admin_url( 'plugin-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
 							</p>
 						</td></tr>
 					</tbody>
@@ -140,7 +140,8 @@ class SP_Settings_Modules extends SP_Settings_Page {
 									<img src="<?php echo $theme->get_screenshot(); ?>" class="sp-theme-screenshot">
 									<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
 									<p class="sp-module-actions">
-										<a class="button" href="http://tboy.co/themes" target="_blank"><?php _e( 'Need a Better Theme?', 'sportspress' ); ?></a>
+										<span><?php _e( 'Need a better theme?', 'sportspress' ); ?></span>
+										<a class="button" href="http://tboy.co/themes" target="_blank"><?php _e( 'Upgrade', 'sportspress' ); ?></a>
 									</p>
 								</td></tr>
 							</tbody>

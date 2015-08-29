@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.6
+ * @version     1.8.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -27,19 +27,23 @@ $countries = SP()->countries->countries;
 
 $staff = new SP_Staff( $id );
 
-$nationality = $staff->nationality;
+$nationalities = $staff->nationalities();
 $current_teams = $staff->current_teams();
 $past_teams = $staff->past_teams();
 
 $data = array();
-if ( $show_nationality && $nationality ):
-	if ( 2 == strlen( $nationality ) ):
-		$legacy = SP()->countries->legacy;
-		$nationality = strtolower( $nationality );
-		$nationality = sp_array_value( $legacy, $nationality, null );
-	endif;
-	$country_name = sp_array_value( $countries, $nationality, null );
-	$data[ __( 'Nationality', 'sportspress' ) ] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
+if ( $show_nationality && $nationalities && is_array( $nationalities ) ):
+	$values = array();
+	foreach ( $nationalities as $nationality ):
+		if ( 2 == strlen( $nationality ) ):
+			$legacy = SP()->countries->legacy;
+			$nationality = strtolower( $nationality );
+			$nationality = sp_array_value( $legacy, $nationality, null );
+		endif;
+		$country_name = sp_array_value( $countries, $nationality, null );
+		$values[] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
+	endforeach;
+	$data[ __( 'Nationality', 'sportspress' ) ] = implode( '<br>', $values );
 endif;
 
 if ( $show_current_teams && $current_teams ):

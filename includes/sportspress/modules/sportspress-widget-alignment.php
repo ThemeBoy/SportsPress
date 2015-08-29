@@ -39,9 +39,12 @@ class SportsPress_Widget_Alignment {
 		// Widgets
 		add_filter( 'sportspress_widget_update', array( $this, 'widget_update' ), 10, 2 );
 		add_filter( 'sportspress_widget_defaults', array( $this, 'widget_defaults' ) );
+		add_filter( 'sportspress_shortcode_wrapper', array( $this, 'shortcode_wrapper' ), 10, 3 );
 		add_action( 'sportspress_before_widget_template_form', array( $this, 'before_widget_form' ), 10, 2 );
 		add_action( 'sportspress_before_widget', array( $this, 'before_widget'), 10, 2 );
 		add_action( 'sportspress_after_widget', array( $this, 'after_widget') );
+		add_action( 'sportspress_ajax_shortcode_form', array( $this, 'ajax_shortcode_form' ) );
+		add_action( 'sportspress_ajax_scripts_before_shortcode', array( $this, 'ajax_scripts' ) );
 	}
 
 	/**
@@ -86,6 +89,17 @@ class SportsPress_Widget_Alignment {
 	}
 
 	/**
+	 * Shortcode wrapper
+	 */
+	function shortcode_wrapper( $wrapper = array(), $function = null, $atts = array() ) {
+		if ( isset( $atts['align'] ) ) {
+			$wrapper['class'] = sp_array_value( $wrapper, 'class', '' ) . ' ' . 'sp-widget-align-' . $atts['align'];
+		}
+
+		return $wrapper;
+	}
+
+	/**
 	 * Before widget forms
 	 */
 	function before_widget_form( $object, $instance ) {
@@ -115,6 +129,35 @@ class SportsPress_Widget_Alignment {
 	 */
 	function after_widget() {
 		echo '</div>';
+	}
+
+	/**
+	 * Ajax shortcode form
+	 */
+	function ajax_shortcode_form() {
+		?>
+		<p>
+			<label>
+				<?php printf( __( 'Alignment: %s', 'sportspress' ), '' ); ?>
+				<select id="align" name="align">
+					<?php
+					foreach ( $this->options as $value => $label ) {
+						printf( '<option value="%s">%s</option>', $value, $label );
+					}
+					?>
+				</select>
+			</label>
+		</p>
+		<?php
+	}
+
+	/**
+	 * Ajax scripts
+	 */
+	function ajax_scripts() {
+		?>
+		args.align = $div.find('[name=align]').val();
+		<?php
 	}
 }
 
