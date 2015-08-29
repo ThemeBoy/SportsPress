@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'id' => get_the_ID(),
+	'title' => false,
 	'number' => -1,
 	'itemtag' => 'dl',
 	'icontag' => 'dt',
@@ -48,8 +49,11 @@ $data = $directory->data();
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
 
+if ( $title )
+	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
+
 $gallery_style = $gallery_div = '';
-if ( apply_filters( 'use_default_gallery_style', true ) )
+if ( apply_filters( 'use_default_gallery_style', ! $html5 ) )
 	$gallery_style = "
 	<style type='text/css'>
 		#{$selector} {
@@ -73,7 +77,7 @@ $size_class = sanitize_html_class( $size );
 $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
 echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 ?>
-<div class="sp-template sp-template-staff-gallery">
+<div class="sp-template sp-template-staff-gallery sp-template-gallery">
 	<?php echo $gallery_div; ?>
 	<?php
 	if ( is_int( $number ) && $number > 0 )
@@ -108,6 +112,6 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 	echo "</div>\n";
 
 	if ( $show_all_staff_link )
-		echo '<div class="sp-staff-directory-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all staff', 'sportspress' ) . '</a></div>';
+		echo '<div class="sp-staff-gallery-link sp-gallery-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all staff', 'sportspress' ) . '</a></div>';
 	?>
 </div>

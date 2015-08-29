@@ -44,6 +44,12 @@ class SP_Directory_AJAX {
 		<div class="wrap sp-thickbox-content" id="sp-thickbox-staff_list">
 			<p>
 				<label>
+					<?php _e( 'Title:', 'sportspress' ); ?>
+					<input class="regular-text" type="text" name="title">
+				</label>
+			</p>
+			<p>
+				<label>
 					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Directory', 'sportspress' ) ); ?>
 					<?php
 					$args = array(
@@ -67,8 +73,9 @@ class SP_Directory_AJAX {
 					<?php _e( 'Display link to view all staff', 'sportspress' ); ?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'staff-list' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('staff_list');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('staff_list');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -85,6 +92,12 @@ class SP_Directory_AJAX {
 		<div class="wrap sp-thickbox-content" id="sp-thickbox-staff_gallery">
 			<p>
 				<label>
+					<?php _e( 'Title:', 'sportspress' ); ?>
+					<input class="regular-text" type="text" name="title">
+				</label>
+			</p>
+			<p>
+				<label>
 					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Directory', 'sportspress' ) ); ?>
 					<?php
 					$args = array(
@@ -108,8 +121,9 @@ class SP_Directory_AJAX {
 					<?php _e( 'Display link to view all staff', 'sportspress' ); ?>
 				</label>
 			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'staff-gallery' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php echo sprintf( __( 'Insert %s', 'sportspress' ), __( 'Shortcode', 'sportspress' ) ); ?>" onclick="insertSportsPress('staff_gallery');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('staff_gallery');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -133,12 +147,16 @@ class SP_Directory_AJAX {
 
                 // Extract args based on type
                 if ( 'staff_list' == type ) {
+                    args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
                     args.show_all_staff_link = $div.find('[name=show_all_staff_link]:checked').length;
                 } else if ( 'staff_gallery' == type ) {
+                    args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
                     args.show_all_staff_link = $div.find('[name=show_all_staff_link]:checked').length;
                 }
+
+                <?php do_action( 'sportspress_ajax_scripts_before_shortcode' ); ?>
 
                 // Generate the shortcode
 				var shortcode = '[' + type;

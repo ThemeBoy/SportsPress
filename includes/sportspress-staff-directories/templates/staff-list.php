@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'id' => get_the_ID(),
+	'title' => false,
 	'number' => -1,
 	'columns' => null,
 	'show_all_staff_link' => false,
@@ -107,6 +108,8 @@ $output .= '</tbody>' . '</table>' . '</div>';
 if ( $show_all_staff_link )
 	$output .= '<div class="sp-staff-directory-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all staff', 'sportspress' ) . '</a></div>';
 
+if ( $title )
+	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
 ?>
 <div class="sp-template sp-template-staff-list">
 	<?php echo $output; ?>
