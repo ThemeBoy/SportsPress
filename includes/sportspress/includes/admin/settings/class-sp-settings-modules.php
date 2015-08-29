@@ -178,6 +178,9 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<p><strong><i class="sp-icon-book"></i> <?php _e( 'Documentation', 'sportspress' ); ?></strong></p>
 							<ul class="sp-documentation-links">
 								<li><a href="http://tboy.co/installation" target="_blank"><?php _e( 'Getting Started', 'sportspress' ); ?></a></li>
+								<li><a href="http://tboy.co/manuals" target="_blank"><?php _e( 'Manuals', 'sportspress' ); ?></a></li>
+								<li><a href="http://tboy.co/videos" target="_blank"><?php _e( 'Videos', 'sportspress' ); ?></a></li>
+								<li><a href="http://tboy.co/developers" target="_blank"><?php _e( 'Developers', 'sportspress' ); ?></a></li>
 								<li><a href="http://tboy.co/integration" target="_blank"><?php _e( 'Theme Integration Guide', 'sportspress' ); ?></a></li>
 							</ul>
 							<p><strong><i class="dashicons dashicons-heart"></i> <?php _e( 'Help', 'sportspress' ); ?></strong></p>

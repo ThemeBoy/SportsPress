@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 4.2.2
-Stable tag: 1.8.8
+Tested up to: 4.3
+Stable tag: 1.8.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,6 +23,8 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 > "*Script of the Day: While the WordPress repository holds various team and sports-related plugins, few of them come close to what you can achieve with SportsPress.*" — [Softpedia](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml)
 >
 > "*SportsPress is our number 1 WordPress plugin for sport!*" — [GBSport](http://gbcoach.org.uk/5-great-wordpress-plugins-for-sport/)
+>
+> "*The freely available and highly impressive SportsPress plugin offers terrific functionality including a fixtures listing, league table, player & staff profiles, customizable point system and a built-in translation system for 36 different languages.*" — [Club Themes](http://clubthemes.com/awesome-sporting-templates-themes-wordpress-joomla/)
 
 = Features =
 * Equation Builder
@@ -222,9 +224,21 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 == Changelog ==
 
+= 1.8.9 =
+* Feature - Enable multiple nationalities for players and staff.
+* Feature - Enable multiple seasons and competitions for league tables.
+* Feature - Enable multiple seasons, competitions, and positions for player lists.
+* Feature - Add custom title field and widget alignment option to shortcodes.
+* Feature - Add option to always increment league table position.
+* Fix - Import button on admin pages.
+* Fix - Update jQuery DataTables to version 1.10.8 props devilsaces.
+* Localization - Group translation team by language and display stats.
+* Localization - Add albpower, elgolden, mobking, wah826, iojvan, eifelstudio, deckerweb, denkuhn, green_big_frog, Flubber89, sododesign, webby1973, Laislebai, slappfiskene.no, AugustoNeto, lfrodines, GonerSTUDIO, cofeman.sl, i1m3a7n92, opticadeharo, and ViktoriaRuzhylo to translation team.
+* Localization - Update Polish, Finnish, Armenian, German, Slovenian, Italian, Czech, Dutch, Spanish, Romanian, and French translations.
+
 = 1.8.8 =
 * Feature - Add option to hide player and staff details.
-* Tweak - Ability to multiple current teams in staff profile.
+* Tweak - Ability to display multiple current teams in staff profile.
 
 = 1.8.7 =
 * Feature - Add custom table heading option to widgets.
