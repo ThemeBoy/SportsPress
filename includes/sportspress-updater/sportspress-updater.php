@@ -118,6 +118,22 @@ class SportsPress_Updater {
 						<p>
 							<input name="sp_save_license" class="button button-secondary" type="submit" value="<?php _e( 'Deactivate', 'sportspress' ); ?>" />
 						</p>
+						<?php if ( 'RM' == $this->file ) { ?>
+						<p class="sp-module-actions">
+							<span><?php _e( 'Club License', 'sportspress' ); ?></span>
+							<a class="button" href="http://tboy.co/club" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
+						</p>
+						<?php } if ( in_array( $this->file, array( 'RM', 'RL' ) ) ) { ?>
+						<p class="sp-module-actions">
+							<span><?php _e( 'League License', 'sportspress' ); ?></span>
+							<a class="button" href="http://tboy.co/league" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
+						</p>
+						<?php } if ( in_array( $this->file, array( 'RM', 'RL', 'RJ' ) ) ) { ?>
+						<p class="sp-module-actions">
+							<span><?php _e( 'Agency License', 'sportspress' ); ?></span>
+							<a class="button" href="http://tboy.co/agency" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
+						</p>
+						<?php } ?>
 					<?php } else { ?>
 						<p>
 							<input type="text" name="sportspress_pro_license_key" class="widefat">
@@ -126,22 +142,10 @@ class SportsPress_Updater {
 						<p>
 							<input name="sp_save_license" class="button button-primary" type="submit" value="<?php _e( 'Activate', 'sportspress' ); ?>" />
 						</p>
-					<?php } ?>
-					<?php if ( 'RM' == $this->file ) { ?>
-					<p class="sp-module-actions">
-						<span><?php _e( 'Club License', 'sportspress' ); ?></span>
-						<a class="button" href="http://tboy.co/club" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
-					</p>
-					<?php } if ( in_array( $this->file, array( 'RM', 'RL' ) ) ) { ?>
-					<p class="sp-module-actions">
-						<span><?php _e( 'League License', 'sportspress' ); ?></span>
-						<a class="button" href="http://tboy.co/league" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
-					</p>
-					<?php } if ( in_array( $this->file, array( 'RM', 'RL', 'RJ' ) ) ) { ?>
-					<p class="sp-module-actions">
-						<span><?php _e( 'Agency License', 'sportspress' ); ?></span>
-						<a class="button" href="http://tboy.co/agency" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
-					</p>
+						<p class="sp-module-actions">
+							<span><?php _e( 'Need a license key?', 'sportspress' ); ?></span>
+							<a class="button" href="http://tboy.co/pro" target="_blank"><?php _e( 'Purchase', 'sportspress' ); ?></a>
+						</p>
 					<?php } ?>
 				</td></tr>
 			</tbody>
