@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Classes
- * @version     1.8
+ * @version     2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -237,6 +237,7 @@ class SP_Install {
 		            'delete_posts' 					=> true,
 		            'edit_posts' 					=> true,
 		            'upload_files' 					=> true,
+					'manage_categories' 			=> true,
 
 		            'edit_sp_event'					=> true,
 		            'read_sp_event'					=> true,
@@ -247,6 +248,9 @@ class SP_Install {
 		            'delete_sp_events' 				=> true,
 		            'delete_published_sp_events' 	=> true,
 		            'edit_published_sp_events' 		=> true,
+					'manage_sp_event_terms' 		=> true,
+					'edit_sp_event_terms' 			=> true,
+					'delete_sp_event_terms' 		=> true,
 					'assign_sp_event_terms' 		=> true,
 
 		            'edit_sp_team'					=> true,
