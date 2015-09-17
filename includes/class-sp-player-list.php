@@ -51,6 +51,9 @@ class SP_Player_List extends SP_Custom_Post {
 		// Get labels from outcome variables
 		$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
 
+		// Get labels from result variables
+		$result_labels = (array)sp_get_var_labels( 'sp_result' );
+
 		// Get players automatically if set to auto
 		if ( 'auto' == $select ) {
 			$player_ids = array();
@@ -148,11 +151,15 @@ class SP_Player_List extends SP_Custom_Post {
 
 			foreach ( $performance_labels as $key => $value ):
 				$totals[ $player_id ][ $key ] = 0;
-				$totals[ $player_id ][ $key ] = 0;
 			endforeach;
 
 			foreach ( $outcome_labels as $key => $value ):
 				$totals[ $player_id ][ $key ] = 0;
+			endforeach;
+
+			foreach ( $result_labels as $key => $value ):
+				$totals[ $player_id ][ $key . 'for' ] = 0;
+				$totals[ $player_id ][ $key . 'against' ] = 0;
 			endforeach;
 
 			// Get metrics
@@ -274,60 +281,79 @@ class SP_Player_List extends SP_Custom_Post {
 						endforeach;
 
 						$team_results = sp_array_value( $results, $team_id, array() );
+						unset( $results[ $team_id ] );
 
-						// Find the outcome
-						if ( array_key_exists( 'outcome', $team_results ) ):
+						// Loop through home team
+						foreach ( $team_results as $result_slug => $team_result ):
+							if ( 'outcome' == $result_slug ):
 
-							// Increment events attended
-							$totals[ $player_id ]['eventsattended'] ++;
+								// Increment events attended
+								$totals[ $player_id ]['eventsattended'] ++;
 
-							// Continue with incrementing values if active in event
-							if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
-								$totals[ $player_id ]['eventsplayed'] ++;
-								$totals[ $player_id ]['eventminutes'] += $minutes;
+								// Continue with incrementing values if active in event
+								if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
+									$totals[ $player_id ]['eventsplayed'] ++;
+									$totals[ $player_id ]['eventminutes'] += $minutes;
 
-								if ( sp_array_value( $player_performance, 'status' ) == 'lineup' ):
-									$totals[ $player_id ]['eventsstarted'] ++;
-								elseif ( sp_array_value( $player_performance, 'status' ) == 'sub' && sp_array_value( $player_performance, 'sub', 0 ) ):
-									$totals[ $player_id ]['eventssubbed'] ++;
-								endif;
-
-								$value = $team_results['outcome'];
-
-								// Convert to array
-								if ( ! is_array( $value ) ):
-									$value = array( $value );
-								endif;
-
-								foreach ( $value as $outcome ):
-
-									if ( $outcome && $outcome != '-1' ):
-
-										// Increment events attended and outcome count
-										if ( array_key_exists( $outcome, $totals[ $player_id ] ) ):
-											$totals[ $player_id ][ $outcome ] ++;
-										endif;
-
-										// Add to streak counter
-										if ( $streaks[ $player_id ]['fire'] && ( $streaks[ $player_id ]['name'] == '' || $streaks[ $player_id ]['name'] == $outcome ) ):
-											$streaks[ $player_id ]['name'] = $outcome;
-											$streaks[ $player_id ]['count'] ++;
-										else:
-											$streaks[ $player_id ]['fire'] = 0;
-										endif;
-
-										// Add to last 5 counter if sum is less than 5
-										if ( array_key_exists( $player_id, $last5s ) && array_key_exists( $outcome, $last5s[ $player_id ] ) && array_sum( $last5s[ $player_id ] ) < 5 ):
-											$last5s[ $player_id ][ $outcome ] ++;
-										endif;
-
-										// Add to last 10 counter if sum is less than 10
-										if ( array_key_exists( $player_id, $last10s ) && array_key_exists( $outcome, $last10s[ $player_id ] ) && array_sum( $last10s[ $player_id ] ) < 10 ):
-											$last10s[ $player_id ][ $outcome ] ++;
-										endif;
+									if ( sp_array_value( $player_performance, 'status' ) == 'lineup' ):
+										$totals[ $player_id ]['eventsstarted'] ++;
+									elseif ( sp_array_value( $player_performance, 'status' ) == 'sub' && sp_array_value( $player_performance, 'sub', 0 ) ):
+										$totals[ $player_id ]['eventssubbed'] ++;
 									endif;
-								endforeach;
+
+									$value = $team_result;
+
+									// Convert to array
+									if ( ! is_array( $value ) ):
+										$value = array( $value );
+									endif;
+
+									foreach ( $value as $outcome ):
+
+										if ( $outcome && $outcome != '-1' ):
+
+											// Increment events attended and outcome count
+											if ( array_key_exists( $outcome, $totals[ $player_id ] ) ):
+												$totals[ $player_id ][ $outcome ] ++;
+											endif;
+
+											// Add to streak counter
+											if ( $streaks[ $player_id ]['fire'] && ( $streaks[ $player_id ]['name'] == '' || $streaks[ $player_id ]['name'] == $outcome ) ):
+												$streaks[ $player_id ]['name'] = $outcome;
+												$streaks[ $player_id ]['count'] ++;
+											else:
+												$streaks[ $player_id ]['fire'] = 0;
+											endif;
+
+											// Add to last 5 counter if sum is less than 5
+											if ( array_key_exists( $player_id, $last5s ) && array_key_exists( $outcome, $last5s[ $player_id ] ) && array_sum( $last5s[ $player_id ] ) < 5 ):
+												$last5s[ $player_id ][ $outcome ] ++;
+											endif;
+
+											// Add to last 10 counter if sum is less than 10
+											if ( array_key_exists( $player_id, $last10s ) && array_key_exists( $outcome, $last10s[ $player_id ] ) && array_sum( $last10s[ $player_id ] ) < 10 ):
+												$last10s[ $player_id ][ $outcome ] ++;
+											endif;
+										endif;
+									endforeach;
+								endif;
+							else:
+								$value = sp_array_value( $totals[ $player_id ], $result_slug . 'for', 0 );
+								$value += $team_result;
+								$totals[ $player_id ][ $result_slug . 'for' ] = $value;
 							endif;
+						endforeach;
+
+						// Loop through away teams
+						if ( sizeof( $results ) ):
+							foreach ( $results as $team_results ):
+								unset( $team_results['outcome'] );
+								foreach ( $team_results as $result_slug => $team_result ):
+									$value = sp_array_value( $totals[ $player_id ], $result_slug . 'against', 0 );
+									$value += $team_result;
+									$totals[ $player_id ][ $result_slug . 'against' ] = $value;
+								endforeach;
+							endforeach;
 						endif;
 					endif;
 				endforeach; endif;
@@ -347,7 +373,9 @@ class SP_Player_List extends SP_Custom_Post {
 
 				if ( $outcomes ):
 					$outcome = reset( $outcomes );
-					$totals[ $player_id ]['streak'] = $outcome->post_title . $streak['count'];
+					$abbreviation = sp_get_abbreviation( $outcome->ID );
+					if ( empty( $abbreviation ) ) $abbreviation = strtoupper( substr( $outcome->post_title, 0, 1 ) );
+					$totals[ $player_id ]['streak'] = $abbreviation . $streak['count'];
 				else:
 					$totals[ $player_id ]['streak'] = null;
 				endif;
