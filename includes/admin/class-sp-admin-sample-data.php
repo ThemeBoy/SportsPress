@@ -112,17 +112,17 @@ class SP_Admin_Sample_Data {
 		// Define teams
 		$teams = array(
 			array(
-				'name' => 'Bentleigh Bluebirds',
+				'name' => 'Bluebirds',
 				'abbreviation' => 'BENT',
 				'url' => 'http://tboy.co/bluebirds',
 			),
 			array(
-				'name' => 'Essendon Eagles',
+				'name' => 'Eagles',
 				'abbreviation' => 'ESS',
 				'url' => 'http://tboy.co/eagles',
 			),
 			array(
-				'name' => 'Kensington Kangaroos',
+				'name' => 'Kangaroos',
 				'abbreviation' => 'KENS',
 				'url' => 'http://tboy.co/kangaroos',
 			),
