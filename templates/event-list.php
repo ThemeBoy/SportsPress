@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.8.7
+ * @version     1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -76,9 +76,9 @@ if ( $show_title && false === $title && $id )
 								echo '<th class="data-home">' . __( 'Home', 'sportspress' ) . '</th>';
 
 								if ( 'combined' == $time_format && sp_column_active( $usecolumns, 'time' ) ) {
-									echo '<th class="data-time">&nbsp;</th>';
+									echo '<th class="data-time">' . __( 'Time/Results', 'sportspress' ) . '</th>';
 								} elseif ( in_array( $time_format, array( 'separate', 'results' ) ) && sp_column_active( $usecolumns, 'results' ) ) {
-									echo '<th class="data-results">&nbsp;</th>';
+									echo '<th class="data-results">' . __( 'Results', 'sportspress' ) . '</th>';
 								}
 
 								echo '<th class="data-away">' . __( 'Away', 'sportspress' ) . '</th>';
