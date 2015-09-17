@@ -22,6 +22,17 @@ class SP_Meta_Box_Event_Performance {
 		$event = new SP_Event( $post );
 		list( $labels, $columns, $stats, $teams ) = $event->performance( true );
 
+		// Determine if we are splitting positions
+		if ( 'yes' == get_option( 'sportspress_event_split_players_by_position', 'no' ) )
+			$split_positions = true;
+		else
+			$split_positions = false;
+
+		if ( 'manual' == get_option( 'sportspress_event_performance_columns', 'auto' ) )
+			$manual = true;
+		else
+			$manual = false;
+
 		$i = 0;
 
 		foreach ( $teams as $key => $team_id ):
@@ -33,32 +44,24 @@ class SP_Meta_Box_Event_Performance {
 			$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
 
 			// Determine if we need checkboxes
-			if ( 'manual' == get_option( 'sportspress_event_performance_columns', 'auto' ) && $i == 0 )
+			if ( $manual && $i == 0 )
 				$has_checkboxes = true;
 			else
 				$has_checkboxes = false;
 
-			// Determine if we need extras
-			if ( 'yes' == get_option( 'sportspress_event_show_extras', 'no' ) )
-				$show_extras = true;
-			else
-				$show_extras = false;
-
-			// Determine if we are splitting positions
-			if ( 'yes' == get_option( 'sportspress_event_split_players_by_position', 'no' ) )
-				$split_positions = true;
-			else
-				$split_positions = false;
-
 			?>
-			<div>
-				<?php if ( $team_id ): ?>
-					<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-				<?php elseif ( $i ): ?>
-					<br>
-				<?php endif; ?>
-				<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $show_extras, $split_positions ); ?>
-			</div>
+			<?php if ( get_option( 'sportspress_event_split_players_by_team' ) ) { ?>
+				<div>
+					<?php if ( $team_id ): ?>
+						<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
+					<?php elseif ( $i ): ?>
+						<br>
+					<?php endif; ?>
+					<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $split_positions ); ?>
+				</div>
+			<?php } else { ?>
+				<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $split_positions ); ?>
+			<?php } ?>
 			<?php
 			$i ++;
 		endforeach;
@@ -75,7 +78,7 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $show_extras = false, $split_positions = false ) {
+	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $split_positions = false ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
@@ -111,22 +114,7 @@ class SP_Meta_Box_Event_Performance {
 					</tr>
 				</thead>
 				<tfoot>
-					<?php if ( $show_extras ) { ?>
-						<tr class="sp-row sp-post sp-extras">
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<td><strong><?php _e( 'Extras', 'sportspress' ); ?></strong></td>
-							<td>&nbsp;</td>
-							<?php foreach( $labels as $column => $label ):
-								$player_id = -1;
-								$player_performance = sp_array_value( $data, $player_id, array() );
-								$value = sp_array_value( $player_performance, $column, '' );
-								?>
-								<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" /></td>
-							<?php endforeach; ?>
-							<td>&nbsp;</td>
-						</tr>
-					<?php } ?>
+					<?php do_action( 'sportspress_event_performance_meta_box_table_footer', $data, $labels, $team_id ); ?>
 					<tr class="sp-row sp-total">
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
@@ -145,78 +133,86 @@ class SP_Meta_Box_Event_Performance {
 				<tbody>
 					<?php
 					foreach ( $data as $player_id => $player_performance ):
-						if ( $player_id <= 0 ) continue;
-						$number = get_post_meta( $player_id, 'sp_number', true );
-						$value = sp_array_value( $player_performance, 'number', '' );
-						?>
-						<tr class="sp-row sp-post" data-player="<?php echo $player_id; ?>">
-							<td class="icon"><span class="dashicons dashicons-menu post-state-format"></span></td>
-							<td>
-								<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo $value; ?>" />
-							</td>
-							<td><?php echo get_the_title( $player_id ); ?></td>
-							<td>
-								<?php
-								$selected = (array) sp_array_value( $player_performance, 'position', null );
-								if ( $selected == null ):
-									$selected = (array) sp_get_the_term_id( $player_id, 'sp_position', 0 );
-								endif;
-								$args = array(
-									'taxonomy' => 'sp_position',
-									'name' => 'sp_players[' . $team_id . '][' . $player_id . '][position][]',
-									'values' => 'term_id',
-									'orderby' => 'slug',
-									'selected' => $selected,
-									'class' => 'sp-position',
-									'property' => 'multiple',
-									'chosen' => true,
-									'include_children' => ( 'no' == get_option( 'sportspress_event_hide_child_positions', 'no' ) ),
-								);
-								sp_dropdown_taxonomies( $args );
-								?>
-							</td>
-							<?php foreach( $labels as $column => $label ):
-								$value = sp_array_value( $player_performance, $column, '' );
-								?>
-								<td>
-									<input class="sp-player-<?php echo $column; ?>-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" />
-								</td>
-							<?php endforeach; ?>
-							<?php if ( $team_id ): ?>
-								<td class="sp-status-selector">
-									<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?>
-									<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?>
-								</td>
-							<?php else: ?>
-								<td>
-									<?php
-									$values = sp_array_value( $player_performance, 'outcome', '' );
-									if ( ! is_array( $values ) )
-										$values = array( $values );
-
-									$args = array(
-										'post_type' => 'sp_outcome',
-										'name' => 'sp_players[' . $team_id . '][' . $player_id . '][outcome][]',
-										'option_none_value' => '',
-									    'sort_order'   => 'ASC',
-									    'sort_column'  => 'menu_order',
-										'selected' => $values,
-										'class' => 'sp-outcome',
-										'property' => 'multiple',
-										'chosen' => true,
-										'placeholder' => __( 'None', 'sportspress' ),
-									);
-									sp_dropdown_pages( $args );
-									?>
-								</td>
-							<?php endif; ?>
-						</tr>
-						<?php
+						self::row( $labels, $player_id, $player_performance, $team_id, $data );
 					endforeach;
 					?>
 				</tbody>
 			</table>
 		</div>
+		<?php
+	}
+
+	/**
+	 * Admin edit table row
+	 */
+	public static function row( $labels = array(), $player_id = 0, $player_performance = array(), $team_id = 0, $data = array() ) {
+		if ( $player_id <= 0 ) return;
+
+		$number = get_post_meta( $player_id, 'sp_number', true );
+		$value = sp_array_value( $player_performance, 'number', '' );
+		?>
+		<tr class="sp-row sp-post" data-player="<?php echo $player_id; ?>">
+			<td class="icon"><span class="dashicons dashicons-menu post-state-format"></span></td>
+			<td>
+				<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo $value; ?>" />
+			</td>
+			<td><?php echo get_the_title( $player_id ); ?></td>
+			<td>
+				<?php
+				$selected = (array) sp_array_value( $player_performance, 'position', null );
+				if ( $selected == null ):
+					$selected = (array) sp_get_the_term_id( $player_id, 'sp_position', 0 );
+				endif;
+				$args = array(
+					'taxonomy' => 'sp_position',
+					'name' => 'sp_players[' . $team_id . '][' . $player_id . '][position][]',
+					'values' => 'term_id',
+					'orderby' => 'slug',
+					'selected' => $selected,
+					'class' => 'sp-position',
+					'property' => 'multiple',
+					'chosen' => true,
+					'include_children' => ( 'no' == get_option( 'sportspress_event_hide_child_positions', 'no' ) ),
+				);
+				sp_dropdown_taxonomies( $args );
+				?>
+			</td>
+			<?php foreach( $labels as $column => $label ):
+				$value = sp_array_value( $player_performance, $column, '' );
+				?>
+				<td>
+					<input class="sp-player-<?php echo $column; ?>-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" />
+				</td>
+			<?php endforeach; ?>
+			<?php if ( $team_id ): ?>
+				<td class="sp-status-selector">
+					<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?>
+					<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?>
+				</td>
+			<?php else: ?>
+				<td>
+					<?php
+					$values = sp_array_value( $player_performance, 'outcome', '' );
+					if ( ! is_array( $values ) )
+						$values = array( $values );
+
+					$args = array(
+						'post_type' => 'sp_outcome',
+						'name' => 'sp_players[' . $team_id . '][' . $player_id . '][outcome][]',
+						'option_none_value' => '',
+					    'sort_order'   => 'ASC',
+					    'sort_column'  => 'menu_order',
+						'selected' => $values,
+						'class' => 'sp-outcome',
+						'property' => 'multiple',
+						'chosen' => true,
+						'placeholder' => __( 'None', 'sportspress' ),
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</td>
+			<?php endif; ?>
+		</tr>
 		<?php
 	}
 
@@ -228,10 +224,10 @@ class SP_Meta_Box_Event_Performance {
 		if ( ! $team_id || ! $player_id )
 			return '&mdash;';
 
-		$options = array(
+		$options = apply_filters( 'sportspress_event_performance_status_options', array(
 			'lineup' => __( 'Starting Lineup', 'sportspress' ),
 			'sub' => __( 'Substitute', 'sportspress' ),
-		);
+		) );
 
 		$output = '<select name="sp_players[' . $team_id . '][' . $player_id . '][status]">';
 
