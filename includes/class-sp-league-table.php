@@ -163,7 +163,7 @@ class SP_League_Table extends SP_Custom_Post{
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'post_date',
-			'order' => 'DESC',
+			'order' => 'ASC',
 			'meta_query' => array(
 				array(
 					'key' => 'sp_format',
@@ -195,6 +195,8 @@ class SP_League_Table extends SP_Custom_Post{
 		$args = apply_filters( 'sportspress_table_data_event_args', $args );
 		
 		$events = get_posts( $args );
+
+		$e = 0;
 
 		// Event loop
 		foreach ( $events as $event ):
@@ -265,9 +267,11 @@ class SP_League_Table extends SP_Custom_Post{
 					else:
 						if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $key . 'for', $totals[ $team_id ] ) ):
 							$totals[ $team_id ][ $key . 'for' ] += $value;
+							$totals[ $team_id ][ $key . 'for' . ( $e + 1 ) ] = $value;
 							foreach( $results as $other_team_id => $other_result ):
 								if ( $other_team_id != $team_id && array_key_exists( $key . 'against', $totals[ $team_id ] ) ):
 									$totals[ $team_id ][ $key . 'against' ] += sp_array_value( $other_result, $key, 0 );
+									$totals[ $team_id ][ $key . 'against' . ( $e + 1 ) ] = sp_array_value( $other_result, $key, 0 );
 								endif;
 							endforeach;
 						endif;
@@ -278,6 +282,8 @@ class SP_League_Table extends SP_Custom_Post{
 				$i++;
 
 			endforeach;
+
+			$e++;
 
 		endforeach;
 

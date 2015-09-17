@@ -92,7 +92,7 @@ class SP_Player_List extends SP_Custom_Post {
 				);
 			endif;
 
-			if ( $team ):
+			if ( $team && apply_filters( 'sportspress_has_teams', true ) ):
 				$args['meta_query'] = array(
 					array(
 						'key' => 'sp_team',
@@ -158,8 +158,7 @@ class SP_Player_List extends SP_Custom_Post {
 			endforeach;
 
 			foreach ( $result_labels as $key => $value ):
-				$totals[ $player_id ][ $key . 'for' ] = 0;
-				$totals[ $player_id ][ $key . 'against' ] = 0;
+				$totals[ $player_id ][ $key . 'for' ] = $totals[ $player_id ][ $key . 'against' ] = 0;
 			endforeach;
 
 			// Get metrics
@@ -221,7 +220,7 @@ class SP_Player_List extends SP_Custom_Post {
 		$events = get_posts( $args );
 
 		// Event loop
-		foreach ( $events as $event ):
+		foreach ( $events as $i => $event ):
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			$team_performance = get_post_meta( $event->ID, 'sp_players', true );
 			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
@@ -338,9 +337,14 @@ class SP_Player_List extends SP_Custom_Post {
 									endforeach;
 								endif;
 							else:
+
+								// Add to total
 								$value = sp_array_value( $totals[ $player_id ], $result_slug . 'for', 0 );
 								$value += $team_result;
 								$totals[ $player_id ][ $result_slug . 'for' ] = $value;
+
+								// Add subset
+								$totals[ $player_id ][ $result_slug . 'for' . ( $i + 1 ) ] = $team_result;
 							endif;
 						endforeach;
 
@@ -349,15 +353,21 @@ class SP_Player_List extends SP_Custom_Post {
 							foreach ( $results as $team_results ):
 								unset( $team_results['outcome'] );
 								foreach ( $team_results as $result_slug => $team_result ):
+
+									// Add to total
 									$value = sp_array_value( $totals[ $player_id ], $result_slug . 'against', 0 );
 									$value += $team_result;
 									$totals[ $player_id ][ $result_slug . 'against' ] = $value;
+
+									// Add subset
+									$totals[ $player_id ][ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
 								endforeach;
 							endforeach;
 						endif;
 					endif;
 				endforeach; endif;
 			endforeach; endif;
+			$i++;
 		endforeach;
 
 		foreach ( $streaks as $player_id => $streak ):
@@ -501,7 +511,7 @@ class SP_Player_List extends SP_Custom_Post {
 			foreach( $this->columns as $key ):
 				if ( $key == 'number' ):
 					$labels[ $key ] = '#';
-				elseif ( $key == 'team' ):
+				elseif ( $key == 'team' && apply_filters( 'sportspress_has_teams', true ) ):
 					$labels[ $key ] = __( 'Team', 'sportspress' );
 				elseif ( array_key_exists( $key, $columns ) ):
 					$labels[ $key ] = $columns[ $key ];
@@ -520,7 +530,7 @@ class SP_Player_List extends SP_Custom_Post {
 			$labels = array();
 			if ( in_array( 'number', $this->columns ) ) $labels['number'] = '#';
 			$labels['name'] = __( 'Player', 'sportspress' );
-			if ( in_array( 'team', $this->columns ) ) $labels['team'] = __( 'Team', 'sportspress' );
+			if ( in_array( 'team', $this->columns ) && apply_filters( 'sportspress_has_teams', true ) ) $labels['team'] = __( 'Team', 'sportspress' );
 
 			$merged[0] = array_merge( $labels, $columns );
 			return $merged;

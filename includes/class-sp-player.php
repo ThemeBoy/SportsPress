@@ -93,6 +93,9 @@ class SP_Player extends SP_Custom_Post {
 		// Get labels from outcome variables
 		$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
 
+		// Get labels from result variables
+		$result_labels = (array)sp_get_var_labels( 'sp_result' );
+
 		// Generate array of all season ids and season names
 		$div_ids = array();
 		$season_names = array();
@@ -127,6 +130,10 @@ class SP_Player extends SP_Custom_Post {
 
 			foreach ( $outcome_labels as $key => $value ):
 				$totals[ $key ] = 0;
+			endforeach;
+
+			foreach ( $result_labels as $key => $value ):
+				$totals[ $key . 'for' ] = $totals[ $key . 'against' ] = 0;
 			endforeach;
 
 			// Initialize streaks counter
@@ -186,7 +193,7 @@ class SP_Player extends SP_Custom_Post {
 			$events = get_posts( $args );
 
 			// Event loop
-			foreach( $events as $event ):
+			foreach( $events as $i => $event ):
 				$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 				$team_performance = (array)get_post_meta( $event->ID, 'sp_players', true );
 				$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
@@ -300,9 +307,14 @@ class SP_Player extends SP_Custom_Post {
 									endforeach;
 								endif;
 							else:
+
+								// Add to total
 								$value = sp_array_value( $totals, $result_slug . 'for', 0 );
 								$value += $team_result;
 								$totals[ $result_slug . 'for' ] = $value;
+
+								// Add subset
+								$totals[ $result_slug . 'for' . ( $i + 1 ) ] = $team_result;
 							endif;
 						endforeach;
 
@@ -311,14 +323,20 @@ class SP_Player extends SP_Custom_Post {
 							foreach ( $results as $team_results ):
 								unset( $team_results['outcome'] );
 								foreach ( $team_results as $result_slug => $team_result ):
+
+									// Add to total
 									$value = sp_array_value( $totals, $result_slug . 'against', 0 );
 									$value += $team_result;
 									$totals[ $result_slug . 'against' ] = $value;
+
+									// Add subset
+									$totals[ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
 								endforeach;
 							endforeach;
 						endif;
 					endif;
 				endforeach;
+				$i++;
 			endforeach;
 
 			// Compile streaks counter and add to totals
