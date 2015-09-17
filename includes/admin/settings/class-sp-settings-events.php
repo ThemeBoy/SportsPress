@@ -56,7 +56,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 				apply_filters( 'sportspress_event_template_options', array(
 					array(
-						'title'     => __( 'Templates', 'sportspress' ),
+						'title'     => __( 'Display', 'sportspress' ),
 						'desc' 		=> __( 'Logos', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_logos',
 						'default'	=> 'yes',
@@ -271,14 +271,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
 					'checkboxgroup'	=> '',
-				),
-
-				array(
-					'desc' 		=> __( 'Extras', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_extras',
-					'default'	=> 'no',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> '',
 				),
 
 				array(

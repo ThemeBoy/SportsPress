@@ -52,7 +52,7 @@ class SP_Settings_Teams extends SP_Settings_Page {
 				),
 
 				array(
-					'title'     => __( 'Templates', 'sportspress' ),
+					'title'     => __( 'Display', 'sportspress' ),
 					'desc' 		=> __( 'Logo', 'sportspress' ),
 					'id' 		=> 'sportspress_team_show_logo',
 					'default'	=> 'yes',
