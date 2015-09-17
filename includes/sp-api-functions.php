@@ -96,6 +96,16 @@ function sp_get_winner( $post = 0 ) {
 	return $event->winner();
 }
 
+function sp_get_main_performance_option() {
+	$main_performance = get_option( 'sportspress_primary_performance', null );
+	if ( $main_performance ) return $main_performance;
+	$options = get_posts( array( 'post_type' => 'sp_performance', 'posts_per_page' => 1, 'orderby' => 'menu_order', 'order' => 'ASC' ) );
+	if ( ! $options ) return null;
+	$performance = reset( $options );
+	$slug = $performance->post_name;
+	return $slug;
+}
+
 function sp_get_performance( $post = 0 ) {
 	$event = new SP_Event( $post );
 	return $event->performance();
