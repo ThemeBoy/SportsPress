@@ -414,11 +414,12 @@ if ( !function_exists( 'sp_get_post_equation' ) ) {
 	function sp_get_post_equation( $post_id ) {
 		$equation = get_post_meta ( $post_id, 'sp_equation', true );
 		if ( $equation ):
-			return str_replace(
+			$equation = str_replace(
 				array( '/', '(', ')', '+', '-', '*', '$' ),
-				array( '<code>&divide;</code>', '<code>(</code>', '<code>)</code>', '<code>&plus;</code>', '<code>&minus;</code>', '<code>&times;</code>', '' ),
+				array( '&divide;', '(', ')', '&plus;', '&minus;', '&times;', '' ),
 				trim( $equation )
 			);
+			return '<code>' . implode( '</code> <code>', explode( ' ', $equation ) ) . '</code>';
 		else:
 			return '&mdash;';
 		endif;
@@ -1104,14 +1105,17 @@ if ( !function_exists( 'sp_solve' ) ) {
             include_once( SP()->plugin_path() . '/includes/libraries/class-eqeos.php' );
 		$eos = new eqEOS();
 
-		// Clearance to begin calculating remains true if all equation variables are in vars
-		$clearance = true;
+		// Remove spaces from equation
+		$equation = str_replace( ' ', '', $equation );
+
+		// Create temporary equation replacing operators with spaces
+		$temp = str_replace( array( '+', '-', '*', '/', '(', ')' ), ' ', $equation );
 
 		// Check if each variable part is in vars
-		$parts = explode( ' ', $equation );
+		$parts = explode( ' ', $temp );
 		foreach( $parts as $key => $value ):
 			if ( substr( $value, 0, 1 ) == '$' ):
-				if ( ! array_key_exists( preg_replace( "/[^a-z]/", '', $value ), $vars ) )
+				if ( ! array_key_exists( preg_replace( "/[^a-z0-9]/", '', $value ), $vars ) )
 					return 0;
 			endif;
 		endforeach;
