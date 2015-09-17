@@ -79,6 +79,14 @@ class SP_Meta_Box_Event_Performance {
 	 * Admin edit table
 	 */
 	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $split_positions = false ) {
+		if ( taxonomy_exists( 'sp_position' ) ) {
+			$args = array(
+				'hide_empty' => false,
+				'parent' => 0,
+				'include_children' => true,
+			);
+			$positions = get_terms( 'sp_position', $args );
+		}
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
@@ -87,9 +95,11 @@ class SP_Meta_Box_Event_Performance {
 						<th class="icon">&nbsp;</th>
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
-						<th class="column-position">
-							<?php _e( 'Position', 'sportspress' ); ?>
-						</th>
+						<?php if ( ! empty( $positions ) ) { ?>
+							<th class="column-position">
+								<?php _e( 'Position', 'sportspress' ); ?>
+							</th>
+						<?php } ?>
 						<?php foreach ( $labels as $key => $label ): ?>
 							<th>
 								<?php if ( $has_checkboxes ): ?>
@@ -119,7 +129,9 @@ class SP_Meta_Box_Event_Performance {
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 						<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
-						<td>&nbsp;</td>
+						<?php if ( ! empty( $positions ) ) { ?>
+							<td>&nbsp;</td>
+						<?php } ?>
 						<?php foreach( $labels as $column => $label ):
 							$player_id = 0;
 							$player_performance = sp_array_value( $data, $player_id, array() );
@@ -133,7 +145,7 @@ class SP_Meta_Box_Event_Performance {
 				<tbody>
 					<?php
 					foreach ( $data as $player_id => $player_performance ):
-						self::row( $labels, $player_id, $player_performance, $team_id, $data );
+						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ) );
 					endforeach;
 					?>
 				</tbody>
@@ -145,7 +157,7 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table row
 	 */
-	public static function row( $labels = array(), $player_id = 0, $player_performance = array(), $team_id = 0, $data = array() ) {
+	public static function row( $labels = array(), $player_id = 0, $player_performance = array(), $team_id = 0, $data = array(), $positions = true ) {
 		if ( $player_id <= 0 ) return;
 
 		$number = get_post_meta( $player_id, 'sp_number', true );
@@ -157,26 +169,28 @@ class SP_Meta_Box_Event_Performance {
 				<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo $value; ?>" />
 			</td>
 			<td><?php echo get_the_title( $player_id ); ?></td>
-			<td>
-				<?php
-				$selected = (array) sp_array_value( $player_performance, 'position', null );
-				if ( $selected == null ):
-					$selected = (array) sp_get_the_term_id( $player_id, 'sp_position', 0 );
-				endif;
-				$args = array(
-					'taxonomy' => 'sp_position',
-					'name' => 'sp_players[' . $team_id . '][' . $player_id . '][position][]',
-					'values' => 'term_id',
-					'orderby' => 'slug',
-					'selected' => $selected,
-					'class' => 'sp-position',
-					'property' => 'multiple',
-					'chosen' => true,
-					'include_children' => ( 'no' == get_option( 'sportspress_event_hide_child_positions', 'no' ) ),
-				);
-				sp_dropdown_taxonomies( $args );
-				?>
-			</td>
+			<?php if ( $positions ) { ?>
+				<td>
+					<?php
+					$selected = (array) sp_array_value( $player_performance, 'position', null );
+					if ( $selected == null ):
+						$selected = (array) sp_get_the_term_id( $player_id, 'sp_position', 0 );
+					endif;
+					$args = array(
+						'taxonomy' => 'sp_position',
+						'name' => 'sp_players[' . $team_id . '][' . $player_id . '][position][]',
+						'values' => 'term_id',
+						'orderby' => 'slug',
+						'selected' => $selected,
+						'class' => 'sp-position',
+						'property' => 'multiple',
+						'chosen' => true,
+						'include_children' => ( 'no' == get_option( 'sportspress_event_hide_child_positions', 'no' ) ),
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</td>
+			<?php } ?>
 			<?php foreach( $labels as $column => $label ):
 				$value = sp_array_value( $player_performance, $column, '' );
 				?>

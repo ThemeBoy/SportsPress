@@ -114,7 +114,9 @@ class SP_Event extends SP_Custom_Post{
 			return array( $labels, $columns, $performance, $teams );
 		else:
 			// Add position to performance labels
-			$labels = array_merge( array( 'position' => __( 'Position', 'sportspress' )  ), $labels );
+			if ( taxonomy_exists( 'sp_position' ) ):
+				$labels = array_merge( array( 'position' => __( 'Position', 'sportspress' )  ), $labels );
+			endif;
 			if ( 'manual' == get_option( 'sportspress_event_performance_columns', 'auto' ) && is_array( $columns ) ):
 				foreach ( $labels as $key => $label ):
 					if ( ! in_array( $key, $columns ) ):
