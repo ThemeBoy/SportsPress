@@ -58,6 +58,7 @@ class SportsPress_Individual_Mode {
 		add_filter( 'sportspress_staff_teams', '__return_false' );
 		add_filter( 'sportspress_list_team_selector', '__return_false' );
 		add_filter( 'option_sportspress_event_split_players_by_team', '__return_false' );
+		add_filter( 'sportspress_has_teams', '__return_false' );
 	
 		// Remove templates
 		//remove_action( 'sportspress_single_event_content', 'sportspress_output_event_performance', 50 );
