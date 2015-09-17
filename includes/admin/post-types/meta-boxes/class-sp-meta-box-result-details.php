@@ -33,7 +33,7 @@ class SP_Meta_Box_Result_Details extends SP_Meta_Box_Config {
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
 			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo $post->post_name; ?>">
-			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>"<?php if ( $readonly ) { ?> readonly="readonly"<?php } ?>> (for/against)
+			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>"<?php if ( $readonly ) { ?> readonly="readonly"<?php } ?>> <span class="description">(for, against)</span>
 		</p>
 		<?php
 	}
