@@ -311,9 +311,9 @@ class SP_Player extends SP_Custom_Post {
 							foreach ( $results as $team_results ):
 								unset( $team_results['outcome'] );
 								foreach ( $team_results as $result_slug => $team_result ):
-									$val = sp_array_value( $totals, $result_slug . 'against', 0 );
-									$val += $team_result;
-									$totals[ $result_slug . 'against' ] = $val;
+									$value = sp_array_value( $totals, $result_slug . 'against', 0 );
+									$value += $team_result;
+									$totals[ $result_slug . 'against' ] = $value;
 								endforeach;
 							endforeach;
 						endif;
