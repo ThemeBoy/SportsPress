@@ -50,6 +50,13 @@ class SP_Modules {
 					'icon' => 'sp-icon-chart',
 					'desc' => __( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
 				),
+				'league_menu' => array(
+					'label' => __( 'League Menu', 'sportspress' ),
+					'class' => 'SportsPress_League_Menu',
+					'icon' => 'sp-icon-menu',
+					'link' => 'http://tboy.co/pro',
+					'desc' => __( 'Add a global navigation bar to display logos that link to each team.', 'sportspress' ),
+				),
 				'team_colors' => array(
 					'label' => __( 'Team Colors', 'sportspress' ),
 					'class' => 'SportsPress_Team_Colors',
@@ -109,13 +116,6 @@ class SP_Modules {
 					'tip' => __( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.', 'sportspress' ),
 					'icon' => 'dashicons dashicons-twitter',
 					'desc' => __( 'Add a Twitter feed to team, player, and staff pages.', 'sportspress' ),
-				),
-				'league_menu' => array(
-					'label' => __( 'League Menu', 'sportspress' ),
-					'class' => 'SportsPress_League_Menu',
-					'icon' => 'sp-icon-menu',
-					'link' => 'http://tboy.co/pro',
-					'desc' => __( 'Add a global navigation bar to display logos that link to each team.', 'sportspress' ),
 				),
 				'sponsors' => array(
 					'label' => __( 'Sponsors', 'sportspress' ),
