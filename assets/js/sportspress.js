@@ -1,4 +1,4 @@
-function viewport() {
+function sp_viewport() {
     var e = window, a = 'inner';
     if (!('innerWidth' in window )) {
         a = 'client';
@@ -43,7 +43,7 @@ function viewport() {
 
 	/* Data Tables */
 	$(".sp-data-table").each(function() {
-		sortable = viewport().width > 640 && $(this).hasClass("sp-sortable-table");
+		sortable = sp_viewport().width > 640 && $(this).hasClass("sp-sortable-table");
 		paginated = $(this).hasClass("sp-paginated-table");
 		display_length = parseInt($(this).attr("data-sp-rows"));
 		if ( display_length == undefined || isNaN( display_length ) ) display_length = 10;
