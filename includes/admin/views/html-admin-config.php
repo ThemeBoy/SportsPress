@@ -185,9 +185,11 @@
 									<td class="icon">
 										<?php
 										if ( has_post_thumbnail( $row->ID ) )
-											echo get_the_post_thumbnail( $row->ID, 'sportspress-fit-mini' );
+											$icon = get_the_post_thumbnail( $row->ID, 'sportspress-fit-mini' );
 										else
-											echo '&nbsp;';
+											$icon = '&nbsp;';
+
+										echo apply_filters( 'sportspress_performance_icon', $icon, $row->ID );
 										?>
 									</td>
 									<td class="row-title"><?php echo $row->post_title; ?></td>

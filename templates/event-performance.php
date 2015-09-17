@@ -11,16 +11,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $show_players = get_option( 'sportspress_event_show_players', 'yes' ) === 'yes' ? true : false;
 $show_staff = get_option( 'sportspress_event_show_staff', 'yes' ) === 'yes' ? true : false;
-$show_extras = get_option( 'sportspress_event_show_extras', 'no' ) === 'yes' ? true : false;
 $show_total = get_option( 'sportspress_event_show_total', 'yes' ) === 'yes' ? true : false;
 $show_numbers = get_option( 'sportspress_event_show_player_numbers', 'yes' ) === 'yes' ? true : false;
 $split_positions = get_option( 'sportspress_event_split_players_by_position', 'no' ) === 'yes' ? true : false;
 $split_teams = get_option( 'sportspress_event_split_players_by_team', 'yes' ) === 'yes' ? true : false;
 $reverse_teams = get_option( 'sportspress_event_performance_reverse_teams', 'no' ) === 'yes' ? true : false;
-$primary = get_option( 'sportspress_primary_performance', null );
+$primary = sp_get_main_performance_option();
 $total = get_option( 'sportspress_event_total_performance', 'all');
 
-if ( ! $show_players && ! $show_staff && ! $show_extras && ! $show_total ) return;
+if ( ! $show_players && ! $show_staff && ! $show_total ) return;
 
 if ( ! isset( $id ) )
 	$id = get_the_ID();
@@ -72,9 +71,7 @@ if ( is_array( $teams ) ):
 			$players = sp_array_between( (array)get_post_meta( $id, 'sp_player', false ), 0, $index );
 			$has_players = sizeof( $players ) > 1;
 
-			if ( $show_extras ) {
-				$players[] = -1;
-			}
+			$players = apply_filters( 'sportspress_event_performance_split_team_players', $players );
 
 			$show_team_players = $show_players && $has_players;
 
@@ -91,9 +88,9 @@ if ( is_array( $teams ) ):
 				$data = sp_array_value( array_values( $performance ), $index );
 			}
 
-			if ( ! $show_team_players && ! $show_staff && ! $show_extras && ! $show_total ) continue;
+			if ( ! $show_team_players && ! $show_staff && ! $show_total ) continue;
 
-			if ( $show_team_players || $show_extras || $show_total ) {
+			if ( $show_team_players || $show_total ) {
 				if ( $split_positions ) {
 					$positions = get_terms( 'sp_position', array(
 						'orderby' => 'slug',
@@ -138,9 +135,7 @@ if ( is_array( $teams ) ):
 						}
 
 						if ( sizeof( $subdata ) ) {
-							if ( $show_extras ) {
-								$subdata[-1] = sp_array_value( $data, -1 );
-							}
+							$subdata = apply_filters( 'sportspress_event_performance_split_team_split_position_subdata', $subdata, $data );
 
 							sp_get_template( 'event-performance-table.php', array(
 								'position' => sp_get_position_caption( $position->term_id ),
@@ -148,7 +143,6 @@ if ( is_array( $teams ) ):
 								'sortable' => $sortable,
 								'show_players' => $show_team_players,
 								'show_numbers' => $show_numbers,
-								'show_extras' => $show_extras,
 								'show_total' => $show_total,
 								'caption' => 0 == $position_index && $team_id ? get_the_title( $team_id ) : null,
 								'labels' => $sublabels,
@@ -158,6 +152,7 @@ if ( is_array( $teams ) ):
 								'link_posts' => $link_posts,
 								'performance_ids' => isset( $performance_ids ) ? $performance_ids : null,
 								'primary' => 'primary' == $total ? $primary : null,
+								'class' => 'sp-template-event-performance-team-' . $index . '-position-' . $position_index,
 							) );
 						}
 					}
@@ -167,7 +162,6 @@ if ( is_array( $teams ) ):
 						'sortable' => $sortable,
 						'show_players' => $show_team_players,
 						'show_numbers' => $show_numbers,
-						'show_extras' => $show_extras,
 						'show_total' => $show_total,
 						'caption' => $team_id ? get_the_title( $team_id ) : null,
 						'labels' => $labels,
@@ -222,7 +216,6 @@ if ( is_array( $teams ) ):
 						'sortable' => $sortable,
 						'show_players' => $show_players,
 						'show_numbers' => $show_numbers,
-						'show_extras' => $show_extras,
 						'show_total' => $show_total,
 						'caption' => sp_get_position_caption( $position->term_id ),
 						'labels' => $labels,
@@ -241,9 +234,8 @@ if ( is_array( $teams ) ):
 				'sortable' => $sortable,
 				'show_players' => $show_players,
 				'show_numbers' => $show_numbers,
-				'show_extras' => $show_extras,
 				'show_total' => $show_total,
-				'caption' => __( 'Performance', 'sportspress' ),
+				'caption' => __( 'Box Score', 'sportspress' ),
 				'labels' => $labels,
 				'mode' => $mode,
 				'data' => $data,

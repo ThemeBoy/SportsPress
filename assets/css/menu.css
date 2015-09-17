@@ -1,12 +1,12 @@
 /* SportsPress menu styles */
 @font-face {
 	font-family: 'sportspress';
-	src:url('../fonts/sportspress.eot?gvy36n');
-	src:url('../fonts/sportspress.eot?#iefixgvy36n') format('embedded-opentype'),
-		url('../fonts/sportspress.woff2?gvy36n') format('woff2'),
-		url('../fonts/sportspress.ttf?gvy36n') format('truetype'),
-		url('../fonts/sportspress.woff?gvy36n') format('woff'),
-		url('../fonts/sportspress.svg?gvy36n#sportspress') format('svg');
+	src:url('../fonts/sportspress.eot?-76nsup');
+	src:url('../fonts/sportspress.eot?#iefix-76nsup') format('embedded-opentype'),
+		url('../fonts/sportspress.woff2?-76nsup') format('woff2'),
+		url('../fonts/sportspress.ttf?-76nsup') format('truetype'),
+		url('../fonts/sportspress.woff?-76nsup') format('woff'),
+		url('../fonts/sportspress.svg?-76nsup#sportspress') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -138,6 +138,27 @@
 .sp-icon-whistle:before {
 	content: "\f227";
 }
+.sp-icon-baseball:before {
+	content: "\e701";
+}
+.sp-icon-basketball:before {
+	content: "\e602";
+}
+.sp-icon-golfball:before {
+	content: "\e603";
+}
+.sp-icon-cricketball:before {
+	content: "\e604";
+}
+.sp-icon-soccerball:before {
+	content: "\e700";
+}
+.sp-icon-shoe:before {
+	content: "\e800";
+}
+.sp-icon-card:before {
+	content: "\e801";
+}
 
 #adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,
 #adminmenu #toplevel_page_themeboy .toplevel_page_themeboy div.wp-menu-image:before,
@@ -200,6 +221,30 @@
 	-moz-osx-font-smoothing: grayscale;
 	margin: -3px 0 0 -4px;
 	color: #ccc;
+}
+
+/* Icons */
+.sp-icons .button {
+	margin: 0 3px 4px 0;
+	padding: 0 7px 1px 5px;
+}
+
+.sp-icons .button i {
+	margin: 3px 0;
+}
+
+.sp-icon-color-box input[type=text] {
+	color: #fff;
+}
+
+.wp-admin .sp-icons label input[type=radio] {
+	margin-top: -3px;
+}
+
+@media screen and (max-width: 782px) {
+	.wp-admin .sp-icons label input[type=radio] {
+		margin-top: 1px;
+	}
 }
 
 /* TinyMCE */

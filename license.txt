@@ -25,8 +25,9 @@ permission notices:
   SportsPress includes icons from WebHostingHub Glyphs, released under the
   SIL Open Font License; 80 Shades of White Icons by Victor Erixon; Entypo
   and Entypo+ by Daniel Bruce, released under CC BY-SA 3.0; Font Awesome by
-  Dave Gancy, released under the GPL. The custom designed icons included in
-  SportsPress are released under the GPL.
+  Dave Gancy, released under the GPL; Flaticon by Freepick, released under
+  CC BY 3.0. The custom designed icons included in SportsPress are released
+  under the GPL.
 
   Wherever third party code has been used, credit has been given in the code's
   comments.

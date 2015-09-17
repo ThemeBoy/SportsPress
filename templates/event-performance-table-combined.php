@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 // Initialize totals
 $totals = array();
 ?>
-<div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?>">
+<div class="sp-template sp-template-event-performance sp-template-event-performance-combined sp-template-event-performance-<?php echo $mode; ?>">
 	<?php if ( $caption ): ?>
 		<h4 class="sp-table-caption"><?php echo $caption; ?></h4>
 	<?php endif; ?>
@@ -94,9 +94,11 @@ $totals = array();
 								echo '<td class="data-' . $key . '">' . $value . '</td>';
 							elseif ( intval( $value ) && $mode == 'icons' ):
 								$performance_id = sp_array_value( $performance_ids, $key, null );
+								$icons = '';
 								if ( $performance_id && has_post_thumbnail( $performance_id ) ):
-									echo str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini' ) . ' ', $value );
+									$icons = str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini' ) . ' ', $value );
 								endif;
+								echo apply_filters( 'sportspress_event_performance_icons', $icons, $performance_id, $value );
 							endif;
 						endforeach;
 						
@@ -142,9 +144,11 @@ $totals = array();
 										echo '<td class="data-' . $key . '">' . $value . '</td>';
 									elseif ( intval( $value ) && $mode == 'icons' ):
 										$performance_id = sp_array_value( $performance_ids, $key, null );
+										$icons = '';
 										if ( $performance_id && has_post_thumbnail( $performance_id ) ):
-											echo str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini' ) . ' ', $value );
+											$icons = str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini' ) . ' ', $value );
 										endif;
+										echo apply_filters( 'sportspress_event_performance_icons', $icons, $performance_id, $value );
 									endif;
 								endforeach;
 

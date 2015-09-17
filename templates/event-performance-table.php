@@ -11,8 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // Initialize totals
 $totals = array();
+
+// Set null
+if ( ! isset( $position ) ) $position = null;
+if ( ! isset( $class ) ) $class = null;
 ?>
-<div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?>">
+<div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?><?php if ( isset( $class ) ) { echo ' ' . $class; } ?>">
 	<?php if ( $caption ): ?>
 		<h4 class="sp-table-caption"><?php echo $caption; ?></h4>
 	<?php endif; ?>
@@ -53,6 +57,8 @@ $totals = array();
 							continue;
 						$lineup_sub_relation[ sp_array_value( $sub, 'sub', 0 ) ] = $sub_id;
 					endforeach;
+
+					$data = apply_filters( 'sportspress_event_performance_players', $data, $lineups, $subs );
 
 					$i = 0;
 					foreach ( $data as $player_id => $row ):
@@ -131,9 +137,11 @@ $totals = array();
 								echo '<td class="data-' . $key . '">' . $value . '</td>';
 							elseif ( intval( $value ) && $mode == 'icons' ):
 								$performance_id = sp_array_value( $performance_ids, $key, null );
+								$icons = '';
 								if ( $performance_id && has_post_thumbnail( $performance_id ) ):
-									echo str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini' ) . ' ', $value );
+									$icons = str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini' ) . ' ', $value );
 								endif;
+								echo apply_filters( 'sportspress_event_performance_icons', $icons, $performance_id, $value );
 							endif;
 						endforeach;
 						
@@ -147,111 +155,62 @@ $totals = array();
 					?>
 				</tbody>
 			<?php endif; ?>
-			<?php if ( $show_total || $show_extras ): ?>
+			<?php if ( $show_total ): ?>
 				<<?php echo ( $show_players ? 'tfoot' : 'tbody' ); ?>>
 					<?php
-					if ( $show_extras ) {
-						$row = sp_array_value( $data, -1, array() );
-						$row = array_filter( $row );
-						$row = array_intersect_key( $row, $labels );
-						if ( ! empty( $row ) ) {
-							?>
-							<tr class="sp-extras-row <?php echo ( $i % 2 == 0 ? 'odd' : 'even' ); ?>">
-								<?php
-								if ( $show_players ):
-									if ( $show_numbers ) {
-										echo '<td class="data-number">&nbsp;</td>';
-									}
-									echo '<td class="data-name">' . __( 'Extras', 'sportspress' ) . '</td>';
-								endif;
+					do_action( 'sportspress_event_performance_table_footer', $data, $labels, $position, $performance_ids );
+					if ( ! $primary || sizeof( array_intersect_key( $totals, array_flip( (array) $primary ) ) ) ) {
+						?>
+						<tr class="sp-total-row <?php echo ( $i % 2 == 0 ? 'odd' : 'even' ); ?>">
+							<?php
+							if ( $show_players ):
+								if ( $show_numbers ) {
+									echo '<td class="data-number">&nbsp;</td>';
+								}
+								echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
+							endif;
 
-								$row = sp_array_value( $data, -1, array() );
+							$row = sp_array_value( $data, 0, array() );
 
-								if ( $mode == 'icons' ) echo '<td class="sp-performance-icons">';
+							if ( $mode == 'icons' ) echo '<td class="sp-performance-icons">';
 
-								foreach ( $labels as $key => $label ):
-									if ( 'name' == $key )
-										continue;
-									if ( isset( $position ) && 'position' == $key )
-										continue;
-									if ( $key == 'position' ):
+							foreach ( $labels as $key => $label ):
+								if ( 'name' == $key )
+									continue;
+								if ( isset( $position ) && 'position' == $key )
+									continue;
+								if ( $key == 'position' ):
+									$value = '&nbsp;';
+								else:
+									if ( $primary && $key !== $primary ):
 										$value = '&nbsp;';
 									elseif ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
 										$value = $row[ $key ];
 									else:
-										$value = '&nbsp;';
+										$value = apply_filters( 'sportspress_event_performance_table_total_value', sp_array_value( $totals, $key, 0 ), $data, $key );
 									endif;
-
-									if ( $mode == 'values' ):
-										echo '<td class="data-' . $key . '">' . $value . '</td>';
-									elseif ( intval( $value ) && $mode == 'icons' ):
-										$performance_id = sp_array_value( $performance_ids, $key, null );
-										if ( $performance_id && has_post_thumbnail( $performance_id ) ):
-											echo str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini' ) . ' ', $value );
-										endif;
-									endif;
-								endforeach;
-
-								if ( $mode == 'icons' ) echo '</td>';
-								?>
-							</tr>
-							<?php
-							$i++;
-						}
-					}
-					if ( $show_total ) {
-						if ( ! $primary || sizeof( array_intersect_key( $totals, array_flip( (array) $primary ) ) ) ) {
-							?>
-							<tr class="sp-total-row <?php echo ( $i % 2 == 0 ? 'odd' : 'even' ); ?>">
-								<?php
-								if ( $show_players ):
-									if ( $show_numbers ) {
-										echo '<td class="data-number">&nbsp;</td>';
-									}
-									echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
 								endif;
 
-								$row = sp_array_value( $data, 0, array() );
-
-								if ( $mode == 'icons' ) echo '<td class="sp-performance-icons">';
-
-								foreach ( $labels as $key => $label ):
-									if ( 'name' == $key )
-										continue;
-									if ( isset( $position ) && 'position' == $key )
-										continue;
-									if ( $key == 'position' ):
-										$value = '&nbsp;';
-									else:
-										if ( $primary && $key !== $primary ):
-											$value = '&nbsp;';
-										elseif ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
-											$value = $row[ $key ];
-										else:
-											$value = sp_array_value( $totals, $key, 0 );
-											if ( $show_extras ) {
-												$value += sp_array_value( sp_array_value( $data, -1, array() ), $key, 0 );
-											}
-										endif;
+								if ( $mode == 'values' ):
+									echo '<td class="data-' . $key . '">' . $value . '</td>';
+								elseif ( intval( $value ) && $mode == 'icons' ):
+									$performance_id = sp_array_value( $performance_ids, $key, null );
+									$icons = '';
+									if ( $performance_id && has_post_thumbnail( $performance_id ) ):
+										$icons = str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini' ) . ' ', $value );
 									endif;
+									echo apply_filters( 'sportspress_event_performance_icons', $icons, $performance_id, $value );
+								endif;
+							endforeach;
 
-									if ( $mode == 'values' ):
-										echo '<td class="data-' . $key . '">' . $value . '</td>';
-									elseif ( intval( $value ) && $mode == 'icons' ):
-										$performance_id = sp_array_value( $performance_ids, $key, null );
-										if ( $performance_id && has_post_thumbnail( $performance_id ) ):
-											echo str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini' ) . ' ', $value );
-										endif;
-									endif;
-								endforeach;
-
-								if ( $mode == 'icons' ) echo '</td>';
-								?>
-							</tr>
-						<?php } ?>
+							if ( $mode == 'icons' ) echo '</td>';
+							?>
+						</tr>
 					<?php } ?>
 				</<?php echo ( $show_players ? 'tfoot' : 'tbody' ); ?>>
 			<?php endif; ?>
 		</table>
 	</div>
 </div>
+
+<?php do_action( 'sportspress_after_event_performance_table', $data, $lineups, $subs, $class ); ?>
