@@ -34,7 +34,7 @@
 						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
-								<td><?php echo $row->post_name; ?></td>
+								<td><code><?php echo $row->post_name; ?></code></td>
 								<td><?php echo sp_get_post_abbreviation( $row->ID ); ?></td>
 								<td><?php echo sp_get_post_condition( $row->ID ); ?></td>
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
@@ -108,7 +108,7 @@
 								<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 									<td class="radio"><input type="radio" class="sp-primary-result-option" id="sportspress_primary_result_<?php echo $row->post_name; ?>" name="sportspress_primary_result" value="<?php echo $row->post_name; ?>" <?php checked( $selection, $row->post_name ); ?>></td>
 									<td class="row-title"><label for="sportspress_primary_result_<?php echo $row->post_name; ?>"><?php echo $row->post_title; ?></label></td>
-									<td><?php echo $row->post_name; ?>for, <?php echo $row->post_name; ?>against</td>
+									<td><code><?php echo $row->post_name; ?>for</code>, <code><?php echo $row->post_name; ?>against</code></td>
 									<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 									<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 								</tr>
@@ -193,7 +193,7 @@
 										?>
 									</td>
 									<td class="row-title"><?php echo $row->post_title; ?></td>
-									<td><?php echo $row->post_name; ?></td>
+									<td><code><?php echo $row->post_name; ?></code></td>
 									<td><?php echo get_the_terms ( $row->ID, 'sp_position' ) ? the_terms( $row->ID, 'sp_position' ) : __( 'All', 'sportspress' );; ?></td>
 									<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 									<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
@@ -300,7 +300,7 @@
 						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
-								<td><?php echo $row->post_name; ?></td>
+								<td><code><?php echo $row->post_name; ?></code></td>
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
