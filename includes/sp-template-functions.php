@@ -44,6 +44,16 @@ function sp_body_class( $classes ) {
 		$classes[] = 'sportspress-page';
 	}
 
+	if ( 'sp_event' == get_post_type() ) {
+		$id = get_the_ID();
+		if ( get_option( 'sportspress_event_show_maps', 'yes' ) == 'yes' && get_the_terms( $id, 'sp_venue' ) ) {
+			$classes[] = 'sp-has-venue';
+		}
+		if ( 'results' == sp_get_status( $id ) ) {
+			$classes[] = 'sp-has-results';
+		}
+	}
+
 	return array_unique( $classes );
 }
 
@@ -65,6 +75,22 @@ if ( ! function_exists( 'sportspress_taxonomy_archive_description' ) ) {
 				echo '<div class="term-description">' . $description . '</div>';
 			}
 		}
+	}
+}
+
+/** Single Post ********************************************************/
+
+if ( ! function_exists( 'sportspress_output_post_excerpt' ) ) {
+
+	/**
+	 * Output the post excerpt.
+	 *
+	 * @access public
+	 * @subpackage	Excerpt
+	 * @return void
+	 */
+	function sportspress_output_post_excerpt() {
+		sp_get_template( 'post-excerpt.php' );
 	}
 }
 
@@ -121,6 +147,19 @@ if ( ! function_exists( 'sportspress_output_event_details' ) ) {
 	 */
 	function sportspress_output_event_details() {
 		sp_get_template( 'event-details.php' );
+	}
+}
+if ( ! function_exists( 'sportspress_output_event_overview' ) ) {
+
+	/**
+	 * Output the event details, venue, and results.
+	 *
+	 * @access public
+	 * @subpackage	Event/Overview
+	 * @return void
+	 */
+	function sportspress_output_event_overview() {
+		sp_get_template( 'event-overview.php' );
 	}
 }
 if ( ! function_exists( 'sportspress_output_event_venue' ) ) {
