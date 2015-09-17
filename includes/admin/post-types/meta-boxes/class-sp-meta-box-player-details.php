@@ -33,28 +33,34 @@ class SP_Meta_Box_Player_Details {
 			endif;
 		endforeach;
 
-		$leagues = get_the_terms( $post->ID, 'sp_league' );
-		$league_ids = array();
-		if ( $leagues ):
-			foreach ( $leagues as $league ):
-				$league_ids[] = $league->term_id;
-			endforeach;
+		if ( taxonomy_exists( 'sp_league' ) ):
+			$leagues = get_the_terms( $post->ID, 'sp_league' );
+			$league_ids = array();
+			if ( $leagues ):
+				foreach ( $leagues as $league ):
+					$league_ids[] = $league->term_id;
+				endforeach;
+			endif;
 		endif;
 
-		$seasons = get_the_terms( $post->ID, 'sp_season' );
-		$season_ids = array();
-		if ( $seasons ):
-			foreach ( $seasons as $season ):
-				$season_ids[] = $season->term_id;
-			endforeach;
+		if ( taxonomy_exists( 'sp_season' ) ):
+			$seasons = get_the_terms( $post->ID, 'sp_season' );
+			$season_ids = array();
+			if ( $seasons ):
+				foreach ( $seasons as $season ):
+					$season_ids[] = $season->term_id;
+				endforeach;
+			endif;
 		endif;
 
-		$positions = get_the_terms( $post->ID, 'sp_position' );
-		$position_ids = array();
-		if ( $positions ):
-			foreach ( $positions as $position ):
-				$position_ids[] = $position->term_id;
-			endforeach;
+		if ( taxonomy_exists( 'sp_position' ) ):
+			$positions = get_the_terms( $post->ID, 'sp_position' );
+			$position_ids = array();
+			if ( $positions ):
+				foreach ( $positions as $position ):
+					$position_ids[] = $position->term_id;
+				endforeach;
+			endif;
 		endif;
 		
 		$teams = get_posts( array( 'post_type' => 'sp_team', 'posts_per_page' => -1 ) );
@@ -76,20 +82,22 @@ class SP_Meta_Box_Player_Details {
 			<?php endforeach; ?>
 		</select></p>
 
-		<p><strong><?php _e( 'Positions', 'sportspress' ); ?></strong></p>
-		<p><?php
-		$args = array(
-			'taxonomy' => 'sp_position',
-			'name' => 'tax_input[sp_position][]',
-			'selected' => $position_ids,
-			'values' => 'term_id',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Positions', 'sportspress' ) ),
-			'class' => 'widefat',
-			'property' => 'multiple',
-			'chosen' => true,
-		);
-		sp_dropdown_taxonomies( $args );
-		?></p>
+		<?php if ( taxonomy_exists( 'sp_position' ) ) { ?>
+			<p><strong><?php _e( 'Positions', 'sportspress' ); ?></strong></p>
+			<p><?php
+			$args = array(
+				'taxonomy' => 'sp_position',
+				'name' => 'tax_input[sp_position][]',
+				'selected' => $position_ids,
+				'values' => 'term_id',
+				'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Positions', 'sportspress' ) ),
+				'class' => 'widefat',
+				'property' => 'multiple',
+				'chosen' => true,
+			);
+			sp_dropdown_taxonomies( $args );
+			?></p>
+		<?php } ?>
 
 		<?php if ( apply_filters( 'sportspress_player_teams', true ) ) { ?>
 		<p><strong><?php _e( 'Current Teams', 'sportspress' ); ?></strong></p>
@@ -123,6 +131,7 @@ class SP_Meta_Box_Player_Details {
 		?></p>
 		<?php } ?>
 
+		<?php if ( taxonomy_exists( 'sp_league' ) ) { ?>
 		<p><strong><?php _e( 'Competitions', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -137,7 +146,9 @@ class SP_Meta_Box_Player_Details {
 		);
 		sp_dropdown_taxonomies( $args );
 		?></p>
+		<?php } ?>
 
+		<?php if ( taxonomy_exists( 'sp_season' ) ) { ?>
 		<p><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -152,6 +163,7 @@ class SP_Meta_Box_Player_Details {
 		);
 		sp_dropdown_taxonomies( $args );
 		?></p>
+		<?php } ?>
 		<?php
 	}
 
