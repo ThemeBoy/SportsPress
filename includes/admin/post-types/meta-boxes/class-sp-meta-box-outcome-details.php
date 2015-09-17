@@ -23,6 +23,12 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 	 */
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
+		global $pagenow;
+		if ( 'post.php' == $pagenow && 'draft' !== get_post_status() ) {
+			$readonly = true;
+		} else {
+			$readonly = false;
+		}
 		$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
 		$condition = get_post_meta( $post->ID, 'sp_condition', true );
 		$main_result = get_option( 'sportspress_primary_result', null );
@@ -32,7 +38,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
 			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo $post->post_name; ?>">
-			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
+			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>"<?php if ( $readonly ) { ?> readonly="readonly"<?php } ?>>
 		</p>
 		<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 		<p>
