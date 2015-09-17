@@ -1232,6 +1232,7 @@ if ( !function_exists( 'sp_taxonomy_field' ) ) {
 function sp_get_text_options() {
 	$strings = apply_filters( 'sportspress_text', array(
 		__( 'Article', 'sportspress' ),
+		__( 'Box Score', 'sportspress' ),
 		__( 'Career Total', 'sportspress' ),
 		__( 'Current Team', 'sportspress' ),
 		__( 'Current Teams', 'sportspress' ),
@@ -1242,7 +1243,6 @@ function sp_get_text_options() {
 		__( 'Nationality', 'sportspress' ),
 		__( 'Outcome', 'sportspress' ),
 		__( 'Past Teams', 'sportspress' ),
-		__( 'Performance', 'sportspress' ),
 		__( 'Played', 'sportspress' ),
 		__( 'Player', 'sportspress' ),
 		__( 'Pos', 'sportspress' ),
