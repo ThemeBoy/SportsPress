@@ -3,6 +3,8 @@
 	"positions": [
 	],
 	"outcomes": [
+						{ "name" : "Win", "condition" : ">", "description" : "Won" },
+						{ "name" : "Finish", "condition" : "=", "description" : "Finished" },
 	],
 	"results": [
 						{ "name" : "Par", "description" : "Reported score", "primary" : 1 },
@@ -34,22 +36,20 @@
 	],
 	"columns": [
 						{ "name" : "Par", "equation" : "$parfor", "priority" : 1, "order" : "ASC", "description" : "Reported score" },
-						{ "name" : "R1", "equation" : "$scorefor_0", "description" : "Round 1 Score" },
-						{ "name" : "R2", "equation" : "$scorefor_1", "description" : "Round 2 Score" },
-						{ "name" : "R3", "equation" : "$scorefor_2", "description" : "Round 3 Score" },
-						{ "name" : "R4", "equation" : "$scorefor_3", "description" : "Round 4 Score" },
+						{ "name" : "R1", "equation" : "$scorefor 1", "description" : "Round 1 Score" },
+						{ "name" : "R2", "equation" : "$scorefor 2", "description" : "Round 2 Score" },
+						{ "name" : "R3", "equation" : "$scorefor 3", "description" : "Round 3 Score" },
+						{ "name" : "R4", "equation" : "$scorefor 4", "description" : "Round 4 Score" },
 						{ "name" : "Total", "equation" : "$scorefor", "priority" : 2, "order" : "ASC", "description" : "Total Score" }
 	],
 	"metrics": [
-						"Height",
-						"Weight"
+						{ "name" : "Height", "description" : "Player height" },
+						{ "name" : "Weight", "description" : "Player weight" }
 	],
 	"statistics": [
 						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Events played" },
-						{ "name" : "Max. Yards", "equation" : "$avgdrivefor_max", "description" : "Longest average drive (yards)" },
 						{ "name" : "FH", "equation" : "$fhfor", "description" : "Fairways hit" },
-						{ "name" : "GIR", "equation" : "$girfor", "description" : "Greens in regulation" },
-						{ "name" : "Min. Putts", "equation" : "$puttsfor_min", "description" : "Fewest number of putts" }
+						{ "name" : "GIR", "equation" : "$girfor", "description" : "Greens in regulation" }
 	],
 	"options": {
 						"event_teams" : "2",
