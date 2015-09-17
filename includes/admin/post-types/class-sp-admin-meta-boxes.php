@@ -287,6 +287,18 @@ class SP_Admin_Meta_Boxes {
 	public function rename_meta_boxes() {
 		remove_meta_box( 'submitdiv', 'sp_event', 'side' );
 		add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
+
+		remove_meta_box( 'postimagediv', 'sp_team', 'side' );
+		add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'low' );
+
+		remove_meta_box( 'postimagediv', 'sp_player', 'side' );
+		add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_player', 'side', 'low' );
+
+		remove_meta_box( 'postimagediv', 'sp_staff', 'side' );
+		add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_staff', 'side', 'low' );
+
+		remove_meta_box( 'postimagediv', 'sp_performance', 'side' );
+		add_meta_box( 'postimagediv', __( 'Icon', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_performance', 'side', 'low' );
 	}
 
 	/**
