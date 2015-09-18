@@ -215,6 +215,30 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
+				array( 'title' => __( 'Venues', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'venue_options' ),
+			),
+
+			apply_filters( 'sportspress_venue_options', array(
+				array(
+					'title' 	=> __( 'Zoom', 'sportspress' ),
+					'id' 		=> 'sportspress_map_zoom',
+					'class' 	=> 'small-text',
+					'default'	=> '15',
+					'desc' 		=> '0 - 21',
+					'type' 		=> 'number',
+					'custom_attributes' => array(
+						'min' 	=> 0,
+						'max' 	=> 21,
+						'step' 	=> 1
+					),
+				),
+			) ),
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'venue_options' ),
+			),
+
+			array(
 				array( 'title' => __( 'Event Results', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'result_options' ),
 			),
 
