@@ -57,6 +57,7 @@ class SportsPress_Individual_Mode {
 		add_filter( 'sportspress_list_team_selector', '__return_false' );
 		add_filter( 'pre_option_sportspress_event_split_players_by_team', array( $this, 'no' ) );
 		add_filter( 'pre_option_sportspress_event_show_status', array( $this, 'no' ) );
+		add_filter( 'pre_option_sportspress_link_teams', array( $this, 'link_players' ) );
 		add_filter( 'sportspress_has_teams', '__return_false' );
 		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
 	}
@@ -80,6 +81,13 @@ class SportsPress_Individual_Mode {
 	 */
 	public function no() {
 		return 'no';
+	}
+
+	/**
+	 * Return link players instead of teams.
+	 */
+	public function link_players() {
+		return get_option( 'sportspress_link_players', 'yes' );
 	}
 
 	public function save_player_meta( $post_id, $post ) {
