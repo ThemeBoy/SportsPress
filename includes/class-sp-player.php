@@ -23,6 +23,26 @@ class SP_Player extends SP_Custom_Post {
 	}
 
 	/**
+	 * Returns leagues
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function leagues() {
+		return get_the_terms( $this->ID, 'sp_league' );
+	}
+
+	/**
+	 * Returns seasons
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function seasons() {
+		return get_the_terms( $this->ID, 'sp_season' );
+	}
+
+	/**
 	 * Returns current teams
 	 *
 	 * @access public

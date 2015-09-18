@@ -18,6 +18,8 @@ $defaults = array(
 	'show_positions' => get_option( 'sportspress_player_show_positions', 'yes' ) == 'yes' ? true : false,
 	'show_current_teams' => get_option( 'sportspress_player_show_current_teams', 'yes' ) == 'yes' ? true : false,
 	'show_past_teams' => get_option( 'sportspress_player_show_past_teams', 'yes' ) == 'yes' ? true : false,
+	'show_leagues' => get_option( 'sportspress_player_show_leagues', 'no' ) == 'yes' ? true : false,
+	'show_seasons' => get_option( 'sportspress_player_show_seasons', 'no' ) == 'yes' ? true : false,
 	'show_nationality_flags' => get_option( 'sportspress_player_show_flags', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 );
@@ -32,6 +34,8 @@ $nationalities = $player->nationalities();
 $positions = $player->positions();
 $current_teams = $player->current_teams();
 $past_teams = $player->past_teams();
+$leagues = $player->leagues();
+$seasons = $player->seasons();
 $metrics_before = $player->metrics( true );
 $metrics_after = $player->metrics( false );
 
@@ -50,7 +54,7 @@ if ( $show_nationality && $nationalities && is_array( $nationalities ) ):
 	$common[ __( 'Nationality', 'sportspress' ) ] = implode( '<br>', $values );
 endif;
 
-if ( $show_positions && $positions ):
+if ( $show_positions && $positions && is_array( $positions ) ):
 	$position_names = array();
 	foreach ( $positions as $position ):
 		$position_names[] = $position->name;
@@ -78,6 +82,22 @@ if ( $show_past_teams && $past_teams ):
 		$teams[] = $team_name;
 	endforeach;
 	$data[ __( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
+endif;
+
+if ( $show_leagues && $leagues && ! is_wp_error( $leagues ) ):
+	$terms = array();
+	foreach ( $leagues as $league ) {
+		$terms[] = $league->name;
+	}
+	$data[ __( 'Competitions', 'sportspress' ) ] = implode( ', ', $terms );
+endif;
+
+if ( $show_seasons && $seasons && ! is_wp_error( $seasons ) ):
+	$terms = array();
+	foreach ( $seasons as $season ) {
+		$terms[] = $season->name;
+	}
+	$data[ __( 'Seasons', 'sportspress' ) ] = implode( ', ', $terms );
 endif;
 
 $data = apply_filters( 'sportspress_player_details', $data, $id );
