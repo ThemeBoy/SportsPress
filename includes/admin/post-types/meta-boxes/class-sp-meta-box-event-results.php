@@ -74,40 +74,54 @@ class SP_Meta_Box_Event_Results {
 					}
 				}
 			} else {
-				reset( $primary_results );
-				$max = key( $primary_results );
-				if ( ! array_key_exists( 'outcome', $results[ $max ] ) ) {
-					$args = array(
-						'post_type' => 'sp_outcome',
-						'numberposts' => -1,
-						'posts_per_page' => -1,
-						'meta_key' => 'sp_condition',
-						'meta_value' => '>',
-					);
-					$outcomes = get_posts( $args );
-					if ( $outcomes ) {
-						$results[ $max ][ 'outcome' ] = array();
-						foreach ( $outcomes as $outcome ) {
-							$results[ $max ][ 'outcome' ][] = $outcome->post_name;
-						}
-					}
-				}
+				// Get default outcomes
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => 'else',
+				);
+				$default_outcomes = get_posts( $args );
 
-				end( $primary_results );
-				$min = key( $primary_results );
-				if ( ! array_key_exists( 'outcome', $results[ $min ] ) ) {
-					$args = array(
-						'post_type' => 'sp_outcome',
-						'numberposts' => -1,
-						'posts_per_page' => -1,
-						'meta_key' => 'sp_condition',
-						'meta_value' => '<',
-					);
-					$outcomes = get_posts( $args );
-					if ( $outcomes ) {
-						$results[ $min ][ 'outcome' ] = array();
+				// Get greater than outcomes
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => '>',
+				);
+				$gt_outcomes = get_posts( $args );
+				if ( empty ( $gt_outcomes ) ) $gt_outcomes = $default_outcomes;
+
+				// Get less than outcomes
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => '<',
+				);
+				$lt_outcomes = get_posts( $args );
+				if ( empty ( $lt_outcomes ) ) $lt_outcomes = $default_outcomes;
+
+				// Get min and max values
+				$min = min( $primary_results );
+				$max = max( $primary_results );
+
+				foreach ( $primary_results as $key => $value ) {
+					if ( ! array_key_exists( 'outcome', $results[ $key ] ) ) {
+						if ( $min == $value ) {
+							$outcomes = $lt_outcomes;
+						} elseif ( $max == $value ) {
+							$outcomes = $gt_outcomes;
+						} else {
+							$outcomes = $default_outcomes;
+						}
+						$results[ $key ][ 'outcome' ] = array();
 						foreach ( $outcomes as $outcome ) {
-							$results[ $min ][ 'outcome' ][] = $outcome->post_name;
+							$results[ $key ][ 'outcome' ][] = $outcome->post_name;
 						}
 					}
 				}

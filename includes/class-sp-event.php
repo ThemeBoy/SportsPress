@@ -298,8 +298,17 @@ class SP_Event extends SP_Custom_Post{
 					}
 				}
 			} else {
-				reset( $primary_results );
-				$max = key( $primary_results );
+				// Get default outcomes
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => 'else',
+				);
+				$default_outcomes = get_posts( $args );
+
+				// Get greater than outcomes
 				$args = array(
 					'post_type' => 'sp_outcome',
 					'numberposts' => -1,
@@ -307,16 +316,10 @@ class SP_Event extends SP_Custom_Post{
 					'meta_key' => 'sp_condition',
 					'meta_value' => '>',
 				);
-				$outcomes = get_posts( $args );
-				if ( $outcomes ) {
-					$meta[ $max ][ 'outcome' ] = array();
-					foreach ( $outcomes as $outcome ) {
-						$meta[ $max ][ 'outcome' ][] = $outcome->post_name;
-					}
-				}
+				$gt_outcomes = get_posts( $args );
+				if ( empty ( $gt_outcomes ) ) $gt_outcomes = $default_outcomes;
 
-				end( $primary_results );
-				$min = key( $primary_results );
+				// Get less than outcomes
 				$args = array(
 					'post_type' => 'sp_outcome',
 					'numberposts' => -1,
@@ -324,11 +327,24 @@ class SP_Event extends SP_Custom_Post{
 					'meta_key' => 'sp_condition',
 					'meta_value' => '<',
 				);
-				$outcomes = get_posts( $args );
-				if ( $outcomes ) {
-					$meta[ $min ][ 'outcome' ] = array();
+				$lt_outcomes = get_posts( $args );
+				if ( empty ( $lt_outcomes ) ) $lt_outcomes = $default_outcomes;
+
+				// Get min and max values
+				$min = min( $primary_results );
+				$max = max( $primary_results );
+
+				foreach ( $primary_results as $key => $value ) {
+					if ( $min == $value ) {
+						$outcomes = $lt_outcomes;
+					} elseif ( $max == $value ) {
+						$outcomes = $gt_outcomes;
+					} else {
+						$outcomes = $default_outcomes;
+					}
+					$meta[ $key ][ 'outcome' ] = array();
 					foreach ( $outcomes as $outcome ) {
-						$meta[ $min ][ 'outcome' ][] = $outcome->post_name;
+						$meta[ $key ][ 'outcome' ][] = $outcome->post_name;
 					}
 				}
 			}

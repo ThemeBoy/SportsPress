@@ -53,6 +53,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 					'>' => sprintf( __( 'Most %s', 'sportspress' ), $label ),
 					'<' => sprintf( __( 'Least %s', 'sportspress' ), $label ),
 					'=' => sprintf( __( 'Equal %s', 'sportspress' ), $label ),
+					'else' => sprintf( __( 'Default', 'sportspress' ), $label ),
 				);
 				for( $i = 1; $i <= $count->publish; $i++ ):
 					$options[ $i ] = $i;

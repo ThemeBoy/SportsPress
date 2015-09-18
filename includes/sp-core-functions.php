@@ -376,6 +376,7 @@ if ( !function_exists( 'sp_get_post_condition' ) ) {
 				'>' => sprintf( __( 'Most %s', 'sportspress' ), $label ),
 				'<' => sprintf( __( 'Least %s', 'sportspress' ), $label ),
 				'=' => sprintf( __( 'Equal %s', 'sportspress' ), $label ),
+				'else' => sprintf( __( 'Default', 'sportspress' ), $label ),
 			);
 			return sp_array_value( $conditions, $condition, '&mdash;' );
 		else:
