@@ -22,6 +22,7 @@ class SP_Meta_Box_Event_Details {
 		$taxonomies = get_object_taxonomies( 'sp_event' );
 		$minutes = get_post_meta( $post->ID, 'sp_minutes', true );
 		?>
+		<?php do_action( 'sportspress_event_details_meta_box', $post ); ?>
 		<div class="sp-event-minutes-field">
 			<p><strong><?php _e( 'Full Time', 'sportspress' ); ?></strong></p>
 			<p>

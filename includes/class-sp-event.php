@@ -75,7 +75,7 @@ class SP_Event extends SP_Custom_Post{
 	public function performance( $admin = false ) {
 		$teams = get_post_meta( $this->ID, 'sp_team', false );
 		$performance = (array)get_post_meta( $this->ID, 'sp_players', true );
-		$labels = sp_get_var_labels( 'sp_performance' );
+		$labels = apply_filters( 'sportspress_event_performance_labels', sp_get_var_labels( 'sp_performance' ), $this );
 		$columns = get_post_meta( $this->ID, 'sp_columns', true );
 		if ( is_array( $teams ) ):
 			foreach( $teams as $i => $team_id ):

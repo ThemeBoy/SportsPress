@@ -29,6 +29,8 @@ foreach ( $taxonomies as $taxonomy => $post_type ):
 		$data[ $obj->labels->singular_name ] = $term->name;
 	endif;
 endforeach;
+
+$data = apply_filters( 'sportspress_event_details', $data, $id );
 ?>
 <div class="sp-template sp-template-event-details">
 	<h4 class="sp-table-caption"><?php _e( 'Details', 'sportspress' ); ?></h4>
