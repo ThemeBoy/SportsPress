@@ -54,11 +54,11 @@
 	"options": {
 						"event_teams" : "20",
 						"event_show_players" : "yes",
-						"event_show_total" : "yes",
+						"event_show_total" : "no",
 						"sportspress_event_performance_mode" : "values",
 						"event_show_player_numbers" : "no",
 						"event_split_players_by_team" : "no",
 						"event_split_players_by_position" : "no",
-						"oad_individual_mode_module" : "yes"
+						"load_individual_mode_module" : "yes"
 	}
 }
