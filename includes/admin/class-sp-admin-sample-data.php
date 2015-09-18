@@ -222,7 +222,9 @@ class SP_Admin_Sample_Data {
 			$taxonomies = array( 'sp_position' );
 			foreach ( $taxonomies as $taxonomy ) {
 				$terms = get_terms( $taxonomy, array( 'hide_empty' => 0, 'fields' => 'ids', 'orderby' => 'slug', 'number' => 1, 'offset' => $index % 4 ) );
-				$post['tax_input'][ $taxonomy ] = $terms;
+				if ( $terms && ! is_wp_error( $terms ) ) {
+					$post['tax_input'][ $taxonomy ] = $terms;
+				}
 			};
 
 			// Insert post
