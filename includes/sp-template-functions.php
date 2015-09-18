@@ -44,7 +44,9 @@ function sp_body_class( $classes ) {
 		$classes[] = 'sportspress-page';
 	}
 
-	if ( 'sp_event' == get_post_type() ) {
+	$post_type = get_post_type();
+
+	if ( 'sp_event' == $post_type ) {
 		$id = get_the_ID();
 		if ( get_option( 'sportspress_event_show_maps', 'yes' ) == 'yes' && get_the_terms( $id, 'sp_venue' ) ) {
 			$classes[] = 'sp-has-venue';
@@ -52,6 +54,12 @@ function sp_body_class( $classes ) {
 		if ( 'results' == sp_get_status( $id ) ) {
 			$classes[] = 'sp-has-results';
 		}
+	} elseif ( 'sp_team' == $post_type && 'yes' == get_option( 'sportspress_team_show_logo', 'yes' ) ) {
+		$classes[] = 'sp-show-image';
+	} elseif ( 'sp_player' == $post_type && 'yes' == get_option( 'sportspress_player_show_photo', 'yes' ) ) {
+		$classes[] = 'sp-show-image';
+	} elseif ( 'sp_staff' == $post_type && 'yes' == get_option( 'sportspress_staff_show_photo', 'yes' ) ) {
+		$classes[] = 'sp-show-image';
 	}
 
 	return array_unique( $classes );
@@ -290,7 +298,7 @@ if ( ! function_exists( 'sportspress_output_league_table' ) ) {
 	 * @return void
 	 */
 	function sportspress_output_league_table() {
-		sp_get_template( 'league-table.php' );
+		sp_get_template( 'league-table.php', array( 'title' => __( 'League Table', 'sportspress' ) ) );
 	}
 }
 
