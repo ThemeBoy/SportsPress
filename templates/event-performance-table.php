@@ -155,11 +155,11 @@ if ( ! isset( $class ) ) $class = null;
 					?>
 				</tbody>
 			<?php endif; ?>
-			<?php if ( $show_total ): ?>
+			<?php if ( apply_filters( 'sportspress_event_performance_show_footer', $show_total ) ): ?>
 				<<?php echo ( $show_players ? 'tfoot' : 'tbody' ); ?>>
 					<?php
 					do_action( 'sportspress_event_performance_table_footer', $data, $labels, $position, $performance_ids );
-					if ( ! $primary || sizeof( array_intersect_key( $totals, array_flip( (array) $primary ) ) ) ) {
+					if ( $show_total && ( ! $primary || sizeof( array_intersect_key( $totals, array_flip( (array) $primary ) ) ) ) ) {
 						?>
 						<tr class="sp-total-row <?php echo ( $i % 2 == 0 ? 'odd' : 'even' ); ?>">
 							<?php

@@ -11,8 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // Initialize totals
 $totals = array();
+
+// Set null
+if ( ! isset( $position ) ) $position = null;
+if ( ! isset( $class ) ) $class = null;
 ?>
-<div class="sp-template sp-template-event-performance sp-template-event-performance-combined sp-template-event-performance-<?php echo $mode; ?>">
+<div class="sp-template sp-template-event-performance sp-template-event-performance-combined sp-template-event-performance-<?php echo $mode; ?><?php if ( isset( $class ) ) { echo ' ' . $class; } ?>">
 	<?php if ( $caption ): ?>
 		<h4 class="sp-table-caption"><?php echo $caption; ?></h4>
 	<?php endif; ?>
@@ -113,9 +117,10 @@ $totals = array();
 				}
 				?>
 				</tbody>
-				<?php if ( $show_total ): ?>
-					<?php if ( ! $primary || sizeof( array_intersect_key( $totals, array_flip( (array) $primary ) ) ) ): ?>
-						<tfoot>
+				<?php if ( apply_filters( 'sportspress_event_performance_show_footer', $show_total ) ): ?>
+					<tfoot>
+						<?php do_action( 'sportspress_event_performance_table_footer', $data, $labels, $position, $performance_ids ); ?>
+						<?php if ( $show_total && ( ! $primary || sizeof( array_intersect_key( $totals, array_flip( (array) $primary ) ) ) ) ): ?>
 							<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">
 								<?php
 								if ( isset( $labels['number'] ) ):
@@ -123,7 +128,7 @@ $totals = array();
 								endif;
 								echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
 
-								$row = sp_array_value( $data, 0, array() );
+								$row = sp_array_value( $data, 1, array() );
 
 								if ( $mode == 'icons' ) echo '<td class="sp-performance-icons">';
 
@@ -155,8 +160,8 @@ $totals = array();
 								if ( $mode == 'icons' ) echo '</td>';
 								?>
 							</tr>
-						</tfoot>
-					<?php endif; ?>
+						<?php endif; ?>
+					</tfoot>
 				<?php endif; ?>
 		</table>
 	</div>
