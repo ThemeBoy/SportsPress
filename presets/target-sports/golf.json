@@ -4,7 +4,7 @@
 	],
 	"outcomes": [
 						{ "name" : "Win", "condition" : ">", "description" : "Won" },
-						{ "name" : "Finish", "condition" : "=", "description" : "Finished" },
+						{ "name" : "Finish", "condition" : "else", "description" : "Finished" }
 	],
 	"results": [
 						{ "name" : "Par", "description" : "Reported score", "primary" : 1 },
@@ -52,13 +52,13 @@
 						{ "name" : "GIR", "equation" : "$girfor", "description" : "Greens in regulation" }
 	],
 	"options": {
-						"event_teams" : "2",
+						"event_teams" : "20",
 						"event_show_players" : "yes",
 						"event_show_total" : "yes",
 						"sportspress_event_performance_mode" : "values",
 						"event_show_player_numbers" : "no",
 						"event_split_players_by_team" : "no",
 						"event_split_players_by_position" : "no",
-						"sportspress_load_individual_mode_module" : "yes"
+						"oad_individual_mode_module" : "yes"
 	}
 }
