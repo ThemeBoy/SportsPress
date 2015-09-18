@@ -186,7 +186,7 @@ if ( is_array( $teams ) ):
 		$data = array();
 		foreach ( $performance as $players ) {
 			foreach ( $players as $player_id => $player ) {
-				if ( $player_id <= 0 ) continue;
+				if ( $player_id == 0 ) continue;
 				$data[ $player_id ] = $player;
 			}
 		}
