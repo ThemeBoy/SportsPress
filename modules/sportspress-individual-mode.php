@@ -29,6 +29,7 @@ class SportsPress_Individual_Mode {
 		$this->define_constants();
 
 		// Actions
+		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
 		add_action( 'sportspress_process_sp_event_meta', array( $this, 'save_player_meta' ), 99, 2 );
 
 		// Filters
@@ -61,7 +62,6 @@ class SportsPress_Individual_Mode {
 		add_filter( 'pre_option_sportspress_event_show_status', array( $this, 'no' ) );
 		add_filter( 'pre_option_sportspress_link_teams', array( $this, 'link_players' ) );
 		add_filter( 'sportspress_has_teams', '__return_false' );
-		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
 	}
 
 	/**
@@ -92,6 +92,9 @@ class SportsPress_Individual_Mode {
 		return get_option( 'sportspress_link_players', 'yes' );
 	}
 
+	/**
+	 * Save teams as players in events.
+	 */
 	public function save_player_meta( $post_id, $post ) {
 		if ( isset( $_POST['sp_team'] ) && is_array( $_POST['sp_team'] ) ) {
 			$players = array();
