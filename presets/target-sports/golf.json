@@ -3,7 +3,7 @@
 	"positions": [
 	],
 	"outcomes": [
-						{ "name" : "Win", "condition" : ">", "description" : "Won" },
+						{ "name" : "Win", "condition" : "<", "description" : "Won" },
 						{ "name" : "Finish", "condition" : "else", "description" : "Finished" }
 	],
 	"results": [
