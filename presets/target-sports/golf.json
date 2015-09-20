@@ -52,7 +52,7 @@
 						{ "name" : "GIR", "equation" : "$girfor", "description" : "Greens in regulation" }
 	],
 	"options": {
-						"event_teams" : "20",
+						"event_teams" : "0",
 						"event_show_players" : "yes",
 						"event_show_total" : "no",
 						"sportspress_event_performance_mode" : "values",
