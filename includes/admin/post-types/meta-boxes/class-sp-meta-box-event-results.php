@@ -215,6 +215,20 @@ class SP_Meta_Box_Event_Results {
 	 * Admin edit table
 	 */
 	public static function table( $columns = array(), $usecolumns = array(), $data = array(), $has_checkboxes = false ) {
+		// Get results with equations
+		$args = array(
+			'post_type' => 'sp_result',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'meta_query' => array(
+				array(
+					'key' => 'sp_equation',
+					'compare' => 'EXISTS',
+				),
+			),
+		);
+		$dynamic_results = get_posts( $args );
+		$auto_columns = wp_list_pluck( $dynamic_results, 'post_name' );
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
@@ -253,7 +267,7 @@ class SP_Meta_Box_Event_Results {
 							<?php foreach( $columns as $column => $label ):
 								$value = sp_array_value( $team_results, $column, '' );
 								?>
-								<td><input type="text" name="sp_results[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" /></td>
+								<td><input type="text" name="sp_results[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>"<?php if ( in_array( $column, $auto_columns ) ) { ?> placeholder="<?php _e( '(Auto)', 'sportspress' ); ?>"<?php } ?> /></td>
 							<?php endforeach; ?>
 							<td>
 								<?php
