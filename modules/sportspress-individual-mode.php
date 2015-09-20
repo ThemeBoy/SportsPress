@@ -50,6 +50,8 @@ class SportsPress_Individual_Mode {
 		add_filter( 'sportspress_directory_admin_columns', array( $this, 'remove_team_column' ), 99 );
 		add_filter( 'sportspress_importers', array( $this, 'remove_teams_importer' ), 99 );
 		add_filter( 'sportspress_permalink_slugs', array( $this, 'remove_team_permalink_slug' ), 99 );
+		add_filter( 'sportspress_primary_post_types', array( $this, 'primary_post_types' ) );
+		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'post_type_hierarchy' ) );
 		add_filter( 'sportspress_event_team_tabs', '__return_false' );
 		add_filter( 'sportspress_player_team_statistics', '__return_false' );
 		add_filter( 'sportspress_player_teams', '__return_false' );
@@ -266,6 +268,25 @@ class SportsPress_Individual_Mode {
 			unset( $slugs[ $index ] );
 		}
 		return $slugs;
+	}
+
+	/**
+	 * Remove the team primary post type.
+	 */
+	public function primary_post_types( $post_types ) {
+		if ( ( $key = array_search( 'sp_team', $post_types ) ) !== false ) {
+			unset( $post_types[ $key ] );
+		}
+		return $post_types;
+	}
+
+	/**
+	 * Adjust post type hierarchy.
+	 */
+	public function post_type_hierarchy( $hierarchy ) {
+		$hierarchy['sp_player'] = array_merge( sp_array_value( $hierarchy, 'sp_player', array() ),  sp_array_value( $hierarchy, 'sp_team', array() ) );
+		unset( $hierarchy['sp_team'] );
+		return $hierarchy;
 	}
 
 	/**
