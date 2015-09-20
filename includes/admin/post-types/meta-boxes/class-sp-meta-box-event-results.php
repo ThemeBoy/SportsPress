@@ -86,10 +86,10 @@ class SP_Meta_Box_Event_Results {
 			$dynamic_results = get_posts( $args );
 
 			$equations = array();
-			$precisions = array();
+			$precision = array();
 			foreach ( $dynamic_results as $result ) {
 				$equations[ $result->post_name ] = get_post_meta( $result->ID, 'sp_equation', true );
-				$precisions[ $result->post_name ] = (int) get_post_meta( $result->ID, 'sp_precision', true );
+				$precision[ $result->post_name ] = (int) get_post_meta( $result->ID, 'sp_precision', true );
 			}
 
 
@@ -109,7 +109,7 @@ class SP_Meta_Box_Event_Results {
 						}
 						$totals[ 'eventsplayed' ] = 1;
 						$totals = apply_filters( 'sportspress_event_result_equation_vars', $totals, $performance, $team );
-					 	$results[ $team ][ $key ] = sp_solve( $equation, $totals, sp_array_value( $precisions, $key, 0 ), '' );
+					 	$results[ $team ][ $key ] = sp_solve( $equation, $totals, sp_array_value( $precision, $key, 0 ), '' );
 					 }
 				}
 			}
