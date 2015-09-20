@@ -46,13 +46,15 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 				$teams = array_unique( get_post_meta( $post->ID, 'sp_team' ) );
 				$i = 0;
 
-				foreach ( $teams as $team ) {
-					$i++;
-					if ( has_post_thumbnail ( $team ) ) {
-						if ( $link_teams ) {
-							echo '<a class="team-logo logo-' . ( $i % 2 ? 'odd' : 'even' ) . '" href="' . get_post_permalink( $team ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</a>';
-						} else {
-							echo get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $i % 2 ? 'odd' : 'even' ) ) );
+				if ( is_array( $teams ) ) {
+					foreach ( $teams as $team ) {
+						$i++;
+						if ( has_post_thumbnail ( $team ) ) {
+							if ( $link_teams ) {
+								echo '<a class="team-logo logo-' . ( $i % 2 ? 'odd' : 'even' ) . '" href="' . get_post_permalink( $team ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</a>';
+							} else {
+								echo get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $i % 2 ? 'odd' : 'even' ) ) );
+							}
 						}
 					}
 				}
