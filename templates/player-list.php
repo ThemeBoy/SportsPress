@@ -20,7 +20,8 @@ $defaults = array(
 	'order' => 'ASC',
 	'show_all_players_link' => false,
 	'show_title' => get_option( 'sportspress_list_show_title', 'yes' ) == 'yes' ? true : false,
-	'show_player_photo' => get_option( 'sportspress_list_show_photos', 'yes' ) == 'yes' ? true : false,
+	'show_player_photo' => get_option( 'sportspress_list_show_photos', 'no' ) == 'yes' ? true : false,
+	'show_player_flag' => get_option( 'sportspress_list_show_flags', 'no' ) == 'yes' ? true : false,
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
@@ -140,6 +141,17 @@ foreach ( $groups as $group ):
 			if ( has_post_thumbnail( $player_id ) ):
 				$logo = get_the_post_thumbnail( $player_id, 'sportspress-fit-icon' );
 				$name = '<span class="player-photo">' . $logo . '</span>' . $name;
+				$name_class .= ' has-photo';
+			endif;
+		endif;
+
+		if ( $show_player_flag ):
+			$player = new SP_Player( $player_id );
+			$nationalities = $player->nationalities();
+			if ( ! empty( $nationalities ) ):
+				foreach ( $nationalities as $nationality ):
+					$name = '<span class="player-flag"><img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"></span>' . $name;
+				endforeach;
 				$name_class .= ' has-photo';
 			endif;
 		endif;

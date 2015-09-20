@@ -69,7 +69,16 @@ class SP_Player extends SP_Custom_Post {
 	 * @return array
 	 */
 	public function nationalities() {
-		return get_post_meta( $this->ID, 'sp_nationality', false );
+		$nationalities = get_post_meta( $this->ID, 'sp_nationality', false );
+		if ( empty ( $nationalities ) ) return array();
+		foreach ( $nationalities as $nationality ):
+			if ( 2 == strlen( $nationality ) ):
+				$legacy = SP()->countries->legacy;
+				$nationality = strtolower( $nationality );
+				$nationality = sp_array_value( $legacy, $nationality, null );
+			endif;
+		endforeach;
+		return $nationalities;
 	}
 
 	/**

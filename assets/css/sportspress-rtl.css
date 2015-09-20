@@ -22,7 +22,8 @@
 
 /* League Table and Player List */
 .sp-league-table .data-name .team-logo,
-.sp-player-list .data-name .player-photo {
+.sp-player-list .data-name .player-photo,
+.sp-player-list .data-name .player-flag {
 	margin-right: 0;
 	margin-left: 0.25em;
 	float: right;

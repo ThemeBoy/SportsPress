@@ -158,7 +158,8 @@
 .sp-player-list td {
 	line-height: 2em;
 }
-.sp-player-list .data-name .player-photo {
+.sp-player-list .data-name .player-photo,
+.sp-player-list .data-name .player-flag {
 	width: 2em;
 	height: 2em;
 	margin-right: 0.25em;
@@ -166,7 +167,8 @@
 	float: left;
 	text-align: center;
 }
-.sp-player-list .data-name .player-photo img {
+.sp-player-list .data-name .player-photo img,
+.sp-player-list .data-name .player-flag img {
 	width: auto;
 	height: auto;
 	max-width: 2em;

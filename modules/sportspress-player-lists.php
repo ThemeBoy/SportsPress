@@ -210,6 +210,15 @@ class SportsPress_Player_Lists {
 					'id' 		=> 'sportspress_list_show_photos',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'start',
+				),
+
+				array(
+					'desc' 		=> __( 'Display national flags', 'sportspress' ),
+					'id' 		=> 'sportspress_list_show_flags',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'end',
 				),
 
 				array(
