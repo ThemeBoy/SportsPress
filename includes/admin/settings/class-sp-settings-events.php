@@ -116,7 +116,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'desc' 		=> __( 'teams', 'sportspress' ),
 						'type' 		=> 'number',
 						'custom_attributes' => array(
-							'min' 	=> 1,
+							'min' 	=> 0,
 							'step' 	=> 1
 						),
 					),
