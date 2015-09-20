@@ -1041,20 +1041,20 @@ if ( !function_exists( 'sp_get_eos_safe_slug' ) ) {
 }
 
 if ( !function_exists( 'sp_solve' ) ) {
-	function sp_solve( $equation, $vars, $precision = 0 ) {
+	function sp_solve( $equation, $vars, $precision = 0, $default = '-' ) {
 
 		if ( $equation == null )
-			return '-';
+			return $default;
 
 		if ( strpos( $equation, '$gamesback' ) !== false ):
 
 			// Return placeholder
-			return '-';
+			return $default;
 
 		elseif ( strpos( $equation, '$streak' ) !== false ):
 
 			// Return direct value
-			return sp_array_value( $vars, 'streak', '-' );
+			return sp_array_value( $vars, 'streak', $default );
 
 		elseif ( strpos( $equation, '$last5' ) !== false ):
 
@@ -1063,7 +1063,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 			if ( array_sum( $last5 ) > 0 ):
 				return implode( '-', $last5 );
 			else:
-				return '-';
+				return $default;
 			endif;
 
 		elseif ( strpos( $equation, '$last10' ) !== false ):
@@ -1073,7 +1073,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 			if ( array_sum( $last10 ) > 0 ):
 				return implode( '-', $last10 );
 			else:
-				return '-';
+				return $default;
 			endif;
 
 		elseif ( strpos( $equation, '$homerecord' ) !== false ):
@@ -1097,7 +1097,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 		unset( $vars['last10'] );
 
 		if ( sp_array_value( $vars, 'eventsplayed', 0 ) <= 0 )
-			return '-';
+			return $default;
 
 		// Equation Operating System
         if ( ! class_exists( 'phpStack' ) )
