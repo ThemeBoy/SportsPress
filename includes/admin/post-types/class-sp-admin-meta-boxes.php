@@ -41,6 +41,13 @@ class SP_Admin_Meta_Boxes {
 					'title' => __( 'Details', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Result_Details::save',
 					'output' => 'SP_Meta_Box_Result_Details::output',
+					'context' => 'side',
+					'priority' => 'default',
+				),
+				'equation' => array(
+					'title' => __( 'Equation', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Result_Equation::save',
+					'output' => 'SP_Meta_Box_Result_Equation::output',
 					'context' => 'normal',
 					'priority' => 'high',
 				),

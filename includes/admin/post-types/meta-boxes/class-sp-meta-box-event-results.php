@@ -37,6 +37,84 @@ class SP_Meta_Box_Event_Results {
 		$results = (array)sp_array_value( $_POST, 'sp_results', array() );
 		$main_result = get_option( 'sportspress_primary_result', null );
 
+		// Get player performance
+		$performance = sp_array_value( $_POST, 'sp_players', array() );
+
+		// Initialize finished
+		$finished = false;
+
+		// Check if any results are recorded
+		if ( ! $finished ) {
+			foreach ( $results as $team => $team_results ) {
+				foreach ( $team_results as $result ) {
+					if ( '' !== $result ) {
+						$finished = true;
+						break;
+					}
+				}
+			}
+		}
+
+		// Check if any performance is recorded
+		if ( ! $finished ) {
+			foreach ( $performance as $team => $players ) {
+				foreach ( $players as $player => $pp ) {
+					if ( 0 >= $player ) continue;
+					foreach ( $pp as $pv ) {
+						if ( '' !== trim( $pv ) ) {
+							$finished = true;
+							break;
+						}
+					}
+				}
+			}
+		}
+		
+		if ( $finished ) {
+			// Get results with equations
+			$args = array(
+				'post_type' => 'sp_result',
+				'numberposts' => -1,
+				'posts_per_page' => -1,
+				'meta_query' => array(
+					array(
+						'key' => 'sp_equation',
+						'compare' => 'EXISTS',
+					),
+				),
+			);
+			$dynamic_results = get_posts( $args );
+
+			$equations = array();
+			$precisions = array();
+			foreach ( $dynamic_results as $result ) {
+				$equations[ $result->post_name ] = get_post_meta( $result->ID, 'sp_equation', true );
+				$precisions[ $result->post_name ] = (int) get_post_meta( $result->ID, 'sp_precision', true );
+			}
+
+
+			// Apply equations to empty results
+			foreach ( $equations as $key => $equation ) {
+				if ( '' == $equation ) continue;
+				foreach ( $results as $team => $team_results ) {
+					 if ( '' === sp_array_value( $team_results, $key, '' ) ) {
+					 	$totals = array();
+						$players = sp_array_value( $performance, $team, array() );
+						foreach ( $players as $player => $pp ) {
+							foreach ( $pp as $pk => $pv ) {
+								$value = sp_array_value( $totals, $pk, 0 );
+								$value += floatval( $pv );
+								$totals[ $pk ] = $value;
+							}
+						}
+						$totals[ 'eventsplayed' ] = 1;
+						$totals = apply_filters( 'sportspress_event_result_equation_vars', $totals, $performance, $team );
+					 	$results[ $team ][ $key ] = sp_solve( $equation, $totals, sp_array_value( $precisions, $key, 0 ), '' );
+					 }
+				}
+			}
+		}
+
 		// Auto outcome
 		$primary_results = array();
 		foreach ( $results as $team => $team_results ) {
