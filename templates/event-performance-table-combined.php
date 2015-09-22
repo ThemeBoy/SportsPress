@@ -39,6 +39,9 @@ if ( ! isset( $class ) ) $class = null;
 			<tbody>
 				<?php
 				if ( $show_players ) {
+
+					$data = apply_filters( 'sportspress_event_performance_players', $data, $data, array(), $mode );
+
 					$i = 0;
 					foreach ( $data as $player_id => $row ):
 

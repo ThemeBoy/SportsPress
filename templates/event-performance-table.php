@@ -58,7 +58,7 @@ if ( ! isset( $class ) ) $class = null;
 						$lineup_sub_relation[ sp_array_value( $sub, 'sub', 0 ) ] = $sub_id;
 					endforeach;
 
-					$data = apply_filters( 'sportspress_event_performance_players', $data, $lineups, $subs );
+					$data = apply_filters( 'sportspress_event_performance_players', $data, $lineups, $subs, $mode );
 
 					$i = 0;
 					foreach ( $data as $player_id => $row ):

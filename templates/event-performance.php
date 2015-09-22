@@ -34,8 +34,13 @@ if ( is_array( $teams ) ):
 	$event = new SP_Event( $id );
 	$performance = $event->performance();
 
+	$link_posts = get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false;
+	$scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
+	$sortable = get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false;
+	$mode = get_option( 'sportspress_event_performance_mode', 'values' );
+
 	// The first row should be column labels
-	$labels = $performance[0];
+	$labels =  apply_filters( 'sportspress_event_box_score_labels', $performance[0], $event, $mode );
 
 	// Remove the first row to leave us with the actual data
 	unset( $performance[0] );
@@ -43,11 +48,6 @@ if ( is_array( $teams ) ):
 	$performance = array_filter( $performance );
 
 	$status = $event->status();
-
-	$link_posts = get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false;
-	$scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
-	$sortable = get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false;
-	$mode = get_option( 'sportspress_event_performance_mode', 'values' );
 
 	// Get performance ids for icons
 	if ( $mode == 'icons' ):
