@@ -28,6 +28,12 @@ class SP_Calendar extends SP_Custom_Post {
 	/** @var string The date to range to. */
 	public $to;
 
+	/** @var int The competition ID. */
+	public $league;
+
+	/** @var int The season ID. */
+	public $season;
+
 	/**
 	 * __construct function.
 	 *
@@ -59,9 +65,8 @@ class SP_Calendar extends SP_Custom_Post {
 		if ( ! $this->from )
 			$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
 
-		if ( ! $this->to ):
+		if ( ! $this->to )
 			$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
-		endif;
 	}
 
 	/**
@@ -98,6 +103,14 @@ class SP_Calendar extends SP_Custom_Post {
 			endif;
 		endif;
 
+		if ( $this->league ):
+			$league_ids = array( $this->league );
+		endif;
+
+		if ( $this->season ):
+			$season_ids = array( $this->season );
+		endif;
+
 		if ( $pagenow != 'post-new.php' ):
 			if ( $this->ID ):
 				$leagues = get_the_terms( $this->ID, 'sp_league' );
@@ -106,29 +119,35 @@ class SP_Calendar extends SP_Custom_Post {
 				$teams = array_filter( get_post_meta( $this->ID, 'sp_team', false ) );
 				$table = get_post_meta( $this->ID, 'sp_table', true );
 
-				if ( $leagues ):
+				if ( ! isset( $league_ids ) && $leagues ):
 					$league_ids = array();
 					foreach( $leagues as $league ):
 						$league_ids[] = $league->term_id;
 					endforeach;
+				endif;
+
+				if ( isset( $league_ids ) ) {
 					$args['tax_query'][] = array(
 						'taxonomy' => 'sp_league',
 						'field' => 'id',
 						'terms' => $league_ids
 					);
-				endif;
+				}
 
-				if ( $seasons ):
+				if ( ! isset( $season_ids ) && $seasons ):
 					$season_ids = array();
 					foreach( $seasons as $season ):
 						$season_ids[] = $season->term_id;
 					endforeach;
+				endif;
+
+				if ( isset( $season_ids ) ) {
 					$args['tax_query'][] = array(
 						'taxonomy' => 'sp_season',
 						'field' => 'id',
 						'terms' => $season_ids
 					);
-				endif;
+				}
 
 				if ( $venues ):
 					$venue_ids = array();
