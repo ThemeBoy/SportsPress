@@ -417,6 +417,9 @@ class SP_Settings_Events extends SP_Settings_Page {
 	public function delimiter_setting() {
 		$selection = get_option( 'sportspress_event_teams_delimiter', 'vs' );
 		$limit = get_option( 'sportspress_event_teams', 2 );
+		if ( 0 == $limit ) {
+			$limit = 2;
+		}
 		if ( 3 >= $limit ) {
 			$example = str_repeat( __( 'Team', 'sportspress' ) . ' %1$s ', $limit );
 		} else {
