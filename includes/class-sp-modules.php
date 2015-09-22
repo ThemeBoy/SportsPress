@@ -64,6 +64,13 @@ class SP_Modules {
 					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Create a custom color palette for each team.', 'sportspress' ),
 				),
+				'team_access' => array(
+					'label' => __( 'Team Access', 'sportspress' ),
+					'class' => 'SportsPress_Team_Access',
+					'icon' => 'sp-icon-key',
+					'link' => 'http://tboy.co/pro',
+					'desc' => __( 'Limit user access to data that is related to their team.', 'sportspress' ),
+				),
 			),
 			'player_staff' => array(
 				'player_lists' => array(
