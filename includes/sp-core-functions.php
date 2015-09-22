@@ -1016,6 +1016,16 @@ if ( !function_exists( 'sp_update_post_meta_recursive' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_update_user_meta_recursive' ) ) {
+	function sp_update_user_meta_recursive( $user_id, $meta_key, $meta_value ) {
+		delete_user_meta( $user_id, $meta_key );
+		$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $meta_value ) );
+		foreach ( $values as $value ):
+			add_user_meta( $user_id, $meta_key, $value, false );
+		endforeach;
+	}
+}
+
 if ( !function_exists( 'sp_get_eos_safe_slug' ) ) {
 	function sp_get_eos_safe_slug( $title, $post_id = 'var' ) {
 
