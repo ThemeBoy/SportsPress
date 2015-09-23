@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version     1.9
+ * @version     1.9.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -172,14 +172,29 @@ class SP_Player_List extends SP_Custom_Post {
 			// Get static stats
 			$static = get_post_meta( $player_id, 'sp_statistics', true );
 
-			// Add metrics and static stats to placeholders
+			// Fill in empty arrays
+			if ( empty( $league_ids ) ) $league_ids = array( 0 );
+			if ( empty( $season_ids ) ) $season_ids = array( 0 );
+
+			// Add static stats to placeholders
 			if ( $league_ids && $season_ids ):
 				foreach ( $league_ids as $league_id ):
 					foreach ( $season_ids as $season_id ):
-						$placeholders[ $player_id ] = array_merge( $metrics, sp_array_value( sp_array_value( $static, $league_id, array() ), $season_id, array() ) );
+						$player_league_season_stats = sp_array_value( sp_array_value( $static, $league_id, array() ), $season_id, array() );
+						if ( is_array( $player_league_season_stats ) ):
+							foreach ( $player_league_season_stats as $key => $value ):
+								$current_value = sp_array_value( sp_array_value( $placeholders, $player_id, array() ), $key, 0 );
+								$placeholders[ $player_id ][ $key ] = $current_value + $value;
+							endforeach;
+						endif;
 					endforeach;
 				endforeach;
+			else:
+				$placeholders[ $player_id ] = sp_array_value( sp_array_value( $static, 0, array() ), 0, array() );
 			endif;
+
+			// Add metrics to placeholders
+			$placeholders[ $player_id ] = array_merge( $metrics, sp_array_value( $placeholders, $player_id, array() ) );
 		endforeach;
 
 		$args = array(
