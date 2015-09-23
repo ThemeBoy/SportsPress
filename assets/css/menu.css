@@ -141,6 +141,9 @@
 .sp-icon-key:before {
 	content: "\f112";
 }
+.sp-icon-moon:before {
+	content: "\f503";
+}
 .sp-icon-baseball:before {
 	content: "\e701";
 }
