@@ -5,7 +5,7 @@
  * The SportsPress calendar class handles individual calendar data.
  *
  * @class 		SP_Calendar
- * @version     1.7.5
+ * @version     1.9
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

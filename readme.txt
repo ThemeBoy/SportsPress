@@ -1,10 +1,10 @@
 === SportsPress - Manage Leagues & Sports Clubs ===
 Contributors: ThemeBoy, brianmiyaji, aylaview
-Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends
+Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends, golf
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.3
-Stable tag: 1.8.9
+Stable tag: 1.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -92,6 +92,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Basketball
 * Cricket
 * Darts
+* Golf
 * Handball
 * Ice Hockey
 * Lacrosse
@@ -223,6 +224,42 @@ There are [4 different licenses](http://tboy.co/pro) that you can choose from (S
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.9 =
+* Feature - New Icons module containing vector icon options for player performance.
+* Feature - Add event results to equation builder.
+* Feature - Allow different page templates to be selected for each post type.
+* Feature - Add equation builder to automate event results based on player performance.
+* Feature - Allow Event Managers to edit venues.
+* Feature - Display post excerpts in templates.
+* Feature - Hide featured image if photo or logo is displayed.
+* Feature - Add default outcome condition for events with more than 2 teams.
+* Feature - Add option to display competition and season in player details.
+* Feature - Add Google map zoom option.
+* Feature - Add national flag option to player list.
+* Feature - Add competition and season filter to manually inserted calendar shortcodes.
+* Refactor - Move cricket functionality to free extension.
+* Tweak - Improve individual mode admin screens and functionality.
+* Tweak - Add styling to default event teams template.
+* Tweak - Add cell padding to admin edit table.
+* Tweak - Display position column only if positions exist.
+* Tweak - Display Performance as Box Score in all occurrences.
+* Tweak - Simplify sample data team names.
+* Tweak - Move League Table module to Teams section.
+* Tweak - Display column labels for time and results in split team mode.
+* Tweak - Lock variable names once published to prevent equations from breaking.
+* Tweak - Rename featured image meta boxes to reflect image type.
+* Tweak - Improve readability of equations in admin.
+* Tweak - Trim delimiter example when limit is more than 3 teams.
+* Tweak - Allow a team limit of 0 for unlimited teams per event.
+* Fix - Sample data generator for individual mode.
+* Fix - Overview hierarchy in individual mode.
+* Fix - Event delimiter sample output.
+* Fix - Error in league table when stats are empty.
+* Fix - Check if teams exist in countdown.
+* Preset - Add golf preset.
+* Preset - Recommend sport-specific extensions for cricket, golf, and football (soccer).
+* Localization - Update Greek and French translations.
 
 = 1.8.9 =
 * Feature - Enable multiple nationalities for players and staff.
