@@ -25,6 +25,15 @@ function sp_the_time( $post = 0 ) {
 	echo sp_get_time( $post );
 }
 
+function sp_get_posts( $post_type = 'post', $args = array() ) {
+	$args = array_merge( array(
+		'post_type' => $post_type,
+		'numberposts' => -1,
+		'posts_per_page' => -1,
+	), $args );
+	return get_posts( $args );
+}
+
 /*
  * Event functions
  */
