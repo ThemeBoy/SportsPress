@@ -783,7 +783,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		?>
-		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
+		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-tab-filter-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
 			<input type="hidden" value="0" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
@@ -1201,7 +1201,7 @@ if ( !function_exists( 'sp_get_next_event' ) ) {
 }
 
 if ( !function_exists( 'sp_taxonomy_field' ) ) {
-	function sp_taxonomy_field( $taxonomy = 'category', $post = null, $multiple = false ) {
+	function sp_taxonomy_field( $taxonomy = 'category', $post = null, $multiple = false, $trigger = false ) {
 		$obj = get_taxonomy( $taxonomy );
 		if ( $obj ) {
 			$post_type = get_post_type( $post );
@@ -1222,7 +1222,7 @@ if ( !function_exists( 'sp_taxonomy_field' ) ) {
 						'name' => 'tax_input[' . $taxonomy . '][]',
 						'selected' => $term_ids,
 						'values' => 'term_id',
-						'class' => 'sp-has-dummy widefat',
+						'class' => 'sp-has-dummy widefat' . ( $trigger ? ' sp-ajax-trigger' : '' ),
 						'chosen' => true,
 						'placeholder' => __( 'All', 'sportspress' ),
 					);

@@ -71,7 +71,10 @@ class SP_Meta_Box_Event_Teams {
 					</ul>
 					<?php
 						foreach ( $tabs as $index => $post_type ) {
-							sp_post_checklist( $post->ID, $post_type, ( 0 == $index ? 'block' : 'none' ), array( 'sp_league', 'sp_season', 'sp_current_team' ), $i );
+							do_action( 'sportspress_event_teams_meta_box_checklist', $post->ID, $post_type, ( 0 == $index ? 'block' : 'none' ), $team, $i );
+							if ( apply_filters( 'sportspress_event_teams_meta_box_default_checklist', true ) ) {
+								sp_post_checklist( $post->ID, $post_type, ( 0 == $index ? 'block' : 'none' ), array( 'sp_league', 'sp_season', 'sp_current_team' ), $i );
+							}
 						}
 					?>
 					<?php } ?>
@@ -96,6 +99,7 @@ class SP_Meta_Box_Event_Teams {
 				sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' )  );
 			endif;
 		}
+		wp_nonce_field( 'sp-get-players', 'sp-get-players-nonce', false );
 	}
 
 	/**

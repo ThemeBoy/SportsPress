@@ -54,7 +54,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Tab filter
-	$(".sp-tab-panel").siblings(".sp-tab-select").find("select").change(function() {
+	$(".sp-tab-filter-panel").siblings(".sp-tab-select").find("select").change(function() {
 		var val = $(this).val();
 		var filter = ".sp-filter-"+val;
 		var $filters = $(this).closest(".sp-tab-select").siblings(".sp-tab-select");
@@ -86,7 +86,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Trigger tab filter
-	$(".sp-tab-panel").siblings(".sp-tab-select").find("select").change();
+	$(".sp-tab-filter-panel").siblings(".sp-tab-select").find("select").change();
 
 	// Dropdown filter
 	$(".sp-dropdown-target").siblings(".sp-dropdown-filter").find("select").change(function() {
