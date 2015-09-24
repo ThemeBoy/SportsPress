@@ -295,7 +295,6 @@ class SP_Player_List extends SP_Custom_Post {
 						endforeach;
 
 						$team_results = sp_array_value( $results, $team_id, array() );
-						unset( $results[ $team_id ] );
 
 						// Loop through home team
 						foreach ( $team_results as $result_slug => $team_result ):
@@ -365,7 +364,8 @@ class SP_Player_List extends SP_Custom_Post {
 
 						// Loop through away teams
 						if ( sizeof( $results ) ):
-							foreach ( $results as $team_results ):
+							foreach ( $results as $id => $team_results ):
+								if ( $team_id == $id ) continue;
 								unset( $team_results['outcome'] );
 								foreach ( $team_results as $result_slug => $team_result ):
 
