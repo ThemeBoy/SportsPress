@@ -505,15 +505,14 @@ class SP_Player_List extends SP_Custom_Post {
 			endforeach;
 		endforeach;
 
-		if ( $orderby != 'number' || $order != 'ASC' ):
-			$this->priorities = array(
-				array(
-					'key' => $orderby,
-					'order' => $order,
-				),
-			);
-			uasort( $merged, array( $this, 'sort' ) );
-		endif;
+		// Sort the list
+		$this->priorities = array(
+			array(
+				'key' => $orderby,
+				'order' => $order,
+			),
+		);
+		uasort( $merged, array( $this, 'sort' ) );
 
 		// Rearrange data array to reflect values
 		$data = array();
