@@ -172,14 +172,14 @@ class SP_Player_List extends SP_Custom_Post {
 			// Get static stats
 			$static = get_post_meta( $player_id, 'sp_statistics', true );
 
-			// Fill in empty arrays
-			if ( empty( $league_ids ) ) $league_ids = array( 0 );
-			if ( empty( $season_ids ) ) $season_ids = array( 0 );
+			// Get league and season arrays for static stats
+			$static_league_ids = ( empty( $league_ids ) ? array( 0 ) : $league_ids );
+			$static_season_ids = ( empty( $season_ids ) ? array( 0 ) : $season_ids );
 
 			// Add static stats to placeholders
-			if ( $league_ids && $season_ids ):
-				foreach ( $league_ids as $league_id ):
-					foreach ( $season_ids as $season_id ):
+			if ( $static_league_ids && $static_season_ids ):
+				foreach ( $static_league_ids as $league_id ):
+					foreach ( $static_season_ids as $season_id ):
 						$player_league_season_stats = sp_array_value( sp_array_value( $static, $league_id, array() ), $season_id, array() );
 						if ( is_array( $player_league_season_stats ) ):
 							foreach ( $player_league_season_stats as $key => $value ):
