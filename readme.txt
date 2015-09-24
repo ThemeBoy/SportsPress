@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.3
-Stable tag: 1.9
+Stable tag: 1.9.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -215,11 +215,16 @@ The current modules that are available exclusively to SportsPress Pro are:
 * Tournaments: Create and display tournaments in a bracket/knockout cup format.
 * Sponsors: Add your sponsors on your website and track each of their clicks and impressions.
 * Staff Directories: Show contact information of your key personnel so people know who to get in touch with.
+* Team Access: Assign users to a specific team and limit their access to data related to that team.
 * Team Colors: Make each team's profile page unique by displaying their team colors.
 * League Menu: Display a global navigation bar at the top of your website for easy navigation from one team to the next.
+* Birthdays: Display each player's birthday and their current age.
+* Twitter: Add a Twitter feed to team, player, and staff pages.
 * Branding: Instantly rebrands your admin panel to reflect your organization's brand.
+* Duplicator: Clone anything with just one click. Great for creating multiple events.
+* Lazy Loading: Load players using Ajax to speed up the event edit screen.
 
-There are [4 different licenses](http://tboy.co/pro) that you can choose from (Social, Club, and League), each with a [specified set of modules](http://tboy.co/pro).
+There are [4 different licenses](http://tboy.co/pro) that you can choose from: Social, Club, League, and Agency.
 
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
