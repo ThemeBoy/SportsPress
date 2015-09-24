@@ -225,6 +225,11 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 == Changelog ==
 
+= 1.9.1 =
+* Fix - Add up statistics from multiple competitions and seasons in player list.
+* Fix - Use player metrics as default in player list.
+* Localization - Update Spanish translation.
+
 = 1.9 =
 * Feature - New Icons module containing vector icon options for player performance.
 * Feature - Add event results to equation builder.
