@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2015-09-23 21:57+1000\n"
-"PO-Revision-Date: 2015-09-23 21:57+1000\n"
+"POT-Creation-Date: 2015-09-27 15:40+1000\n"
+"PO-Revision-Date: 2015-09-27 15:41+1000\n"
 "Last-Translator: Brian Miyaji <brian@themeboy.com>\n"
 "Language-Team: ThemeBoy <support@themeboy.com>\n"
 "Language: en_US\n"
@@ -17,6 +17,7 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: includes/libraries\n"
 
 #: assets/js/admin/editor-lang.php:22
 msgid "SportsPress Shortcodes"
@@ -151,7 +152,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:54
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:151
 #: includes/class-sp-ajax.php:493 includes/class-sp-ajax.php:523
-#: includes/class-sp-install.php:161 includes/class-sp-player-list.php:532
+#: includes/class-sp-install.php:161 includes/class-sp-player-list.php:547
 #: includes/class-sp-post-types.php:446 includes/sp-core-functions.php:1262
 #: modules/sportspress-individual-mode.php:119
 #: templates/event-performance-table-combined.php:30
@@ -361,10 +362,10 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:57
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-teams.php:99
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:51
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:95
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-details.php:96
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-player-metrics.php:42
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-staff-details.php:76
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:47
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-details.php:48
 #: includes/admin/views/html-admin-config.php:51
 #: includes/admin/views/html-admin-config.php:128
 #: includes/admin/views/html-admin-config.php:214
@@ -608,8 +609,8 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:119
 #: includes/admin/settings/class-sp-settings-events.php:424
 #: includes/admin/settings/class-sp-settings-events.php:426
-#: includes/class-sp-league-table.php:510
-#: includes/class-sp-player-list.php:515 includes/class-sp-player-list.php:533
+#: includes/class-sp-league-table.php:549
+#: includes/class-sp-player-list.php:530 includes/class-sp-player-list.php:548
 #: includes/class-sp-player.php:460 includes/class-sp-player.php:483
 #: includes/class-sp-post-types.php:416 includes/sp-core-functions.php:1272
 #: includes/widgets/class-sp-widget-countdown.php:69
@@ -974,6 +975,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin/class-sp-admin-welcome.php:321
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:154
 msgid "Presets"
 msgstr ""
 
@@ -985,17 +987,17 @@ msgid ""
 "SportsPress</a>."
 msgstr ""
 
-#: includes/admin/class-sp-admin-welcome.php:531
+#: includes/admin/class-sp-admin-welcome.php:534
 #: includes/admin/settings/class-sp-settings-status.php:237
 #: includes/admin/views/html-admin-page-status.php:201
 msgid "by"
 msgstr ""
 
-#: includes/admin/class-sp-admin-welcome.php:545
+#: includes/admin/class-sp-admin-welcome.php:548
 msgid "Top Translations"
 msgstr ""
 
-#: includes/admin/class-sp-admin-welcome.php:573
+#: includes/admin/class-sp-admin-welcome.php:576
 #, php-format
 msgid "View %s"
 msgstr ""
@@ -1109,18 +1111,8 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-tables.php:61
 #: includes/class-sp-post-types.php:38 includes/sp-core-functions.php:1257
 #: templates/event-list.php:127
-#, fuzzy
 msgid "Competition"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: includes/admin/importers/class-sp-event-importer.php:484
 #: includes/admin/importers/class-sp-event-importer.php:499
@@ -1291,6 +1283,7 @@ msgstr ""
 
 #: includes/admin/importers/class-sp-team-importer.php:31
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:57
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:49
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:93
 #: modules/sportspress-calendars.php:218 templates/event-list.php:82
 #: templates/team-details.php:39 templates/team-details.php:45
@@ -1377,18 +1370,8 @@ msgstr ""
 #: includes/admin/post-types/class-sp-admin-cpt-staff.php:134
 #: includes/admin/post-types/class-sp-admin-cpt-table.php:86
 #: includes/admin/post-types/class-sp-admin-cpt-team.php:111
-#, fuzzy
 msgid "Show all competitions"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:124
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:223
@@ -1484,7 +1467,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:54
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:270
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:288
-#: includes/class-sp-ajax.php:63 includes/class-sp-team.php:261
+#: includes/class-sp-ajax.php:63 includes/class-sp-team.php:308
 #: includes/widgets/class-sp-widget-countdown.php:93
 #: modules/sportspress-tutorials.php:92
 msgid "(Auto)"
@@ -1620,6 +1603,7 @@ msgid "Photo"
 msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:57
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:49
 #: modules/sportspress-calendars.php:218 templates/event-list.php:90
 msgid "Away"
 msgstr ""
@@ -1785,11 +1769,11 @@ msgstr ""
 msgid "against"
 msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:44
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:46
 msgid "Games Back"
 msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:45
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:46
 msgid "Home Record"
 msgstr ""
 
@@ -1797,23 +1781,27 @@ msgstr ""
 msgid "Away Record"
 msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:47
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:46
 msgid "Streak"
 msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:48
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:46
 msgid "Last 5"
 msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:49
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:46
 msgid "Last 10"
 msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:154
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:155
 msgid "Operators"
 msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:155
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:156
+msgid "Subsets"
+msgstr ""
+
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:157
 msgid "Constants"
 msgstr ""
 
@@ -1950,18 +1938,8 @@ msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-outcome-details.php:47
 #: includes/admin/views/html-admin-config.php:29
-#, fuzzy
 msgid "Condition"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-outcome-details.php:53
 #: includes/sp-core-functions.php:376
@@ -2051,18 +2029,8 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-players.php:55
 #: includes/admin/settings/class-sp-settings-staff.php:54
 #: includes/admin/settings/class-sp-settings-teams.php:55
-#, fuzzy
 msgid "Display"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: includes/admin/settings/class-sp-settings-events.php:60
 #: includes/admin/settings/class-sp-settings-events.php:127
@@ -2100,46 +2068,16 @@ msgid "teams"
 msgstr ""
 
 #: includes/admin/settings/class-sp-settings-events.php:128
-#, fuzzy
 msgid "Display team names"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: includes/admin/settings/class-sp-settings-events.php:136
-#, fuzzy
 msgid "Display results"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: includes/admin/settings/class-sp-settings-events.php:145
-#, fuzzy
 msgid "Filter by competition"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: includes/admin/settings/class-sp-settings-events.php:153
 msgid "Filter by season"
@@ -2198,18 +2136,8 @@ msgid "Reverse order"
 msgstr ""
 
 #: includes/admin/settings/class-sp-settings-events.php:267
-#, fuzzy
 msgid "Display outcome"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: includes/admin/settings/class-sp-settings-events.php:284
 msgid "Rows"
@@ -2228,18 +2156,8 @@ msgid "Display squad numbers"
 msgstr ""
 
 #: includes/admin/settings/class-sp-settings-events.php:356
-#, fuzzy
 msgid "Display positions"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: includes/admin/settings/class-sp-settings-events.php:364
 msgid "Split players by team"
@@ -2443,18 +2361,8 @@ msgid "Upgrade"
 msgstr ""
 
 #: includes/admin/settings/class-sp-settings-modules.php:178
-#, fuzzy
 msgid "Documentation"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: includes/admin/settings/class-sp-settings-modules.php:180
 msgid "Getting Started"
@@ -2923,18 +2831,8 @@ msgstr ""
 #: includes/class-sp-ajax.php:80
 #: includes/widgets/class-sp-widget-countdown.php:110
 #: modules/sportspress-calendars.php:273
-#, fuzzy
 msgid "Display competition"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: includes/class-sp-ajax.php:85 includes/class-sp-ajax.php:115
 #: includes/class-sp-ajax.php:145 includes/class-sp-ajax.php:175
@@ -3995,7 +3893,7 @@ msgstr ""
 msgid "What's new:"
 msgstr ""
 
-#: includes/class-sp-league-table.php:510 includes/sp-core-functions.php:1263
+#: includes/class-sp-league-table.php:549 includes/sp-core-functions.php:1263
 #: modules/sportspress-league-tables.php:231 templates/league-table.php:60
 msgid "Pos"
 msgstr ""
@@ -4486,18 +4384,8 @@ msgid "Feeds"
 msgstr ""
 
 #: modules/sportspress-calendars.php:196 modules/sportspress-calendars.php:265
-#, fuzzy
 msgid "Display calendar title"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: modules/sportspress-calendars.php:211
 msgid "Title Format"
@@ -4570,18 +4458,8 @@ msgstr ""
 
 #: modules/sportspress-league-tables.php:195
 #: modules/sportspress-player-lists.php:201
-#, fuzzy
 msgid "Display title"
 msgstr ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  2extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  3extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  4extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  7extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  8extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  9extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: modules/sportspress-league-tables.php:232
 msgid "Always increment"

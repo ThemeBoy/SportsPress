@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.8
+ * @version     1.9.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -41,12 +41,12 @@ class SP_Meta_Box_Equation {
 					break;
 				case 'outcome':
 					$options[ 'Outcomes' ] = self::optgroup( 'sp_outcome' );
-					$options[ 'Outcomes' ]['$gamesback'] = __( 'Games Back', 'sportspress' );
-					$options[ 'Outcomes' ]['$homerecord'] = __( 'Home Record', 'sportspress' );
-					$options[ 'Outcomes' ]['$awayrecord'] = __( 'Away Record', 'sportspress' );
-					$options[ 'Outcomes' ]['$streak'] = __( 'Streak', 'sportspress' );
-					$options[ 'Outcomes' ]['$last5'] = __( 'Last 5', 'sportspress' );
-					$options[ 'Outcomes' ]['$last10'] = __( 'Last 10', 'sportspress' );
+					break;
+				case 'preset':
+					$options[ 'Presets' ] = array( '$gamesback' => __( 'Games Back', 'sportspress' ), '$homerecord' => __( 'Home Record', 'sportspress' ), '$awayrecord' => __( 'Away Record', 'sportspress' ), '$streak' => __( 'Streak', 'sportspress' ), '$last5' => __( 'Last 5', 'sportspress' ), '$last10' => __( 'Last 10', 'sportspress' ) );
+					break;
+				case 'subset':
+					$options[ 'Subsets' ] = array( '_home' => '@' . __( 'Home', 'sportspress' ), '_away' => '@' . __( 'Away', 'sportspress' ) );
 					break;
 				case 'performance':
 					$options[ 'Performance' ] = self::optgroup( 'sp_performance' );
@@ -151,7 +151,9 @@ class SP_Meta_Box_Equation {
 	 * @return null
 	 */
 	public static function equation_part_labels() {
+		__( 'Presets', 'sportspress' );
 		__( 'Operators', 'sportspress' );
+		__( 'Subsets', 'sportspress' );
 		__( 'Constants', 'sportspress' );
 	}
 }

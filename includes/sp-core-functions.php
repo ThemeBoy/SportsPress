@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.9
+ * @version     1.9.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -416,8 +416,8 @@ if ( !function_exists( 'sp_get_post_equation' ) ) {
 		$equation = get_post_meta ( $post_id, 'sp_equation', true );
 		if ( $equation ):
 			$equation = str_replace(
-				array( '/', '(', ')', '+', '-', '*', '$' ),
-				array( '&divide;', '(', ')', '&plus;', '&minus;', '&times;', '' ),
+				array( '/', '(', ')', '+', '-', '*', '_', '$' ),
+				array( '&divide;', '(', ')', '&plus;', '&minus;', '&times;', '@', '' ),
 				trim( $equation )
 			);
 			return '<code>' . implode( '</code> <code>', explode( ' ', $equation ) ) . '</code>';
@@ -838,7 +838,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
 							<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
-							<?php echo sp_draft_or_post_title( $post ); ?>
+							<?php echo sp_get_player_name_with_number( $post->ID ); ?>
 						</label>
 						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
 					</li>
@@ -1126,7 +1126,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 		$parts = explode( ' ', $temp );
 		foreach( $parts as $key => $value ):
 			if ( substr( $value, 0, 1 ) == '$' ):
-				if ( ! array_key_exists( preg_replace( "/[^a-z0-9]/", '', $value ), $vars ) )
+				if ( ! array_key_exists( preg_replace( "/[^a-z0-9_]/", '', $value ), $vars ) )
 					return 0;
 			endif;
 		endforeach;

@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.9
+ * @version     1.9.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -185,6 +185,22 @@ function sp_get_abbreviation( $post = 0 ) {
 	return get_post_meta ( $post, 'sp_abbreviation', true );
 }
 
+function sp_get_venues( $post = 0, $ids = true ) {
+	$terms = get_the_terms( $post, 'sp_venue' );
+	if ( $terms && $ids ) $terms = wp_list_pluck( $terms, 'term_id' );
+	return $terms;
+}
+
+function sp_is_home_venue( $post = 0, $event = 0 ) {
+	$pv = sp_get_venues( $post );
+	$ev = sp_get_venues( $event );
+	if ( is_array( $pv ) && is_array( $ev ) && sizeof( array_intersect( $pv, $ev ) ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function sp_the_abbreviation( $post = 0 ) {
 	echo sp_get_abbreviation( $post );
 }
@@ -229,6 +245,19 @@ function sp_league_table( $post = 0 ) {
 /*
  * Player functions
  */
+
+function sp_get_player_number( $post = 0 ) {
+	return get_post_meta( $post, 'sp_number', true );
+}
+
+function sp_get_player_name_with_number( $post = 0, $prepend = '', $append = '. ' ) {
+	$number = sp_get_player_number( $post );
+	if ( isset( $number ) && '' !== $number ) {
+		return $prepend . $number . $append . get_the_title( $post );
+	} else {
+		return get_the_title( $post );
+	}
+}
 
 function sp_player_details( $post = 0 ) {
 	sp_get_template( 'player-details.php', array( 'id' => $post ) );
