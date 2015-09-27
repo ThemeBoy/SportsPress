@@ -38,6 +38,7 @@ class SportsPress_Birthdays {
 		add_filter( 'sportspress_staff_details', array( $this, 'add_staff_details' ), 20, 2 );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
 	}
 
 	/**
@@ -181,6 +182,14 @@ class SportsPress_Birthdays {
 
 	public static function admin_enqueue_scripts() {
 		wp_enqueue_style( 'sportspress-birthdays-admin', SP_BIRTHDAYS_URL . 'css/admin.css', array( 'sportspress-admin-menu-styles' ), time() );
+	}
+
+
+	/**
+	 * Register widgets
+	 */
+	public static function widgets() {
+		include_once( 'includes/class-sp-widget-birthdays.php' );
 	}
 
 	/**
