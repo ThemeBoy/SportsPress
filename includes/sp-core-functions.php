@@ -416,8 +416,8 @@ if ( !function_exists( 'sp_get_post_equation' ) ) {
 		$equation = get_post_meta ( $post_id, 'sp_equation', true );
 		if ( $equation ):
 			$equation = str_replace(
-				array( '/', '(', ')', '+', '-', '*', '$' ),
-				array( '&divide;', '(', ')', '&plus;', '&minus;', '&times;', '' ),
+				array( '/', '(', ')', '+', '-', '*', '_', '$' ),
+				array( '&divide;', '(', ')', '&plus;', '&minus;', '&times;', '@', '' ),
 				trim( $equation )
 			);
 			return '<code>' . implode( '</code> <code>', explode( ' ', $equation ) ) . '</code>';
@@ -1126,7 +1126,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 		$parts = explode( ' ', $temp );
 		foreach( $parts as $key => $value ):
 			if ( substr( $value, 0, 1 ) == '$' ):
-				if ( ! array_key_exists( preg_replace( "/[^a-z0-9]/", '', $value ), $vars ) )
+				if ( ! array_key_exists( preg_replace( "/[^a-z0-9_]/", '', $value ), $vars ) )
 					return 0;
 			endif;
 		endforeach;
