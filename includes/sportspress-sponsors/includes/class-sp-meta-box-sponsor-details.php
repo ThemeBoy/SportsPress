@@ -28,6 +28,9 @@ class SP_Meta_Box_Sponsor_Details {
 	 */
 	public function add_meta_box() {
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), array( $this, 'output' ), 'sp_sponsor', 'side', 'default' );
+
+		remove_meta_box( 'postimagediv', 'sp_sponsor', 'side' );
+		add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_sponsor', 'side', 'low' );
 	}
 
 	/**
