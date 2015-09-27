@@ -29,7 +29,7 @@ if ( 'results' !== $status )
 $performance = $event->performance();
 
 // The first row should be column labels
-$labels = $performance[0];
+$labels = apply_filters( 'sportspress_match_stats_labels', $performance[0] );
 
 // Remove position column label
 unset( $labels['position'] );
@@ -100,7 +100,7 @@ foreach ( $performance as $team => $players ) {
 		endif;
 		$percentage = round( $ratio * 100 );
 		?>
-		<h4 class="sp-statistic-label"><?php echo $label; ?></h4>
+		<strong class="sp-statistic-label"><?php echo $label; ?></strong>
 		<table class="sp-event-statistics sp-data-table">
 			<tbody>
 				<tr>
