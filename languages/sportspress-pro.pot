@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2015-07-17 15:12+1000\n"
-"PO-Revision-Date: 2015-07-17 15:12+1000\n"
+"POT-Creation-Date: 2015-09-27 19:44+1000\n"
+"PO-Revision-Date: 2015-09-27 19:45+1000\n"
 "Last-Translator: Brian Miyaji <brian@themeboy.com>\n"
 "Language-Team: ThemeBoy <support@themeboy.com>\n"
 "Language: en_US\n"
@@ -28,31 +28,60 @@ msgstr ""
 "X-Poedit-SearchPath-9: ./includes/sportspress-twitter\n"
 "X-Poedit-SearchPath-10: ./includes/sportspress-updater\n"
 
-#: includes/sportspress-birthdays/sportspress-birthdays.php:77
+#: includes/sportspress-birthdays/includes/class-sp-widget-birthdays.php:5
+msgid "Display players and staff on their birthday."
+msgstr ""
+
+#: includes/sportspress-birthdays/includes/class-sp-widget-birthdays.php:6
+msgid "Birthdays"
+msgstr ""
+
+#: includes/sportspress-birthdays/includes/class-sp-widget-birthdays.php:48
+msgid "Today"
+msgstr ""
+
+#: includes/sportspress-birthdays/includes/class-sp-widget-birthdays.php:49
+msgid "This month"
+msgstr ""
+
+#: includes/sportspress-birthdays/includes/class-sp-widget-birthdays.php:55
+#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:63
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:47
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:95
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:58
+#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:58
+msgid "Title:"
+msgstr ""
+
+#: includes/sportspress-birthdays/includes/class-sp-widget-birthdays.php:59
+msgid "Birthday:"
+msgstr ""
+
+#: includes/sportspress-birthdays/sportspress-birthdays.php:78
 #, php-format
 msgid "Birthday: <b>%1$s</b>"
 msgstr ""
 
-#: includes/sportspress-birthdays/sportspress-birthdays.php:79
-#: includes/sportspress-birthdays/sportspress-birthdays.php:100
-#: includes/sportspress-birthdays/sportspress-birthdays.php:128
-#: includes/sportspress-birthdays/sportspress-birthdays.php:155
-#: includes/sportspress-birthdays/sportspress-birthdays.php:172
+#: includes/sportspress-birthdays/sportspress-birthdays.php:80
+#: includes/sportspress-birthdays/sportspress-birthdays.php:101
+#: includes/sportspress-birthdays/sportspress-birthdays.php:129
+#: includes/sportspress-birthdays/sportspress-birthdays.php:156
+#: includes/sportspress-birthdays/sportspress-birthdays.php:173
 msgid "Birthday"
 msgstr ""
 
-#: includes/sportspress-birthdays/sportspress-birthdays.php:101
-#: includes/sportspress-birthdays/sportspress-birthdays.php:129
+#: includes/sportspress-birthdays/sportspress-birthdays.php:102
+#: includes/sportspress-birthdays/sportspress-birthdays.php:130
 msgid "Display birthday"
 msgstr ""
 
-#: includes/sportspress-birthdays/sportspress-birthdays.php:109
-#: includes/sportspress-birthdays/sportspress-birthdays.php:137
+#: includes/sportspress-birthdays/sportspress-birthdays.php:110
+#: includes/sportspress-birthdays/sportspress-birthdays.php:138
 msgid "Display age"
 msgstr ""
 
-#: includes/sportspress-birthdays/sportspress-birthdays.php:159
-#: includes/sportspress-birthdays/sportspress-birthdays.php:176
+#: includes/sportspress-birthdays/sportspress-birthdays.php:160
+#: includes/sportspress-birthdays/sportspress-birthdays.php:177
 msgid "Age"
 msgstr ""
 
@@ -84,8 +113,8 @@ msgid "Remove %s"
 msgstr ""
 
 #: includes/sportspress-branding/includes/class-sp-settings-branding.php:126
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:205
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:346
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:212
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:357
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:358
 #, php-format
 msgid "Select %s"
@@ -142,60 +171,60 @@ msgid "League Menu"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:47
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:120
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:124
 #: includes/sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:51
 #: includes/sportspress-tournaments/includes/class-sp-admin-cpt-tournament.php:44
 msgid "Title"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:58
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:88
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:140
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:92
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:144
 msgid "Sort by"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:63
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:93
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:145
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:97
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:149
 #: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:71
 msgid "Menu Order"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:64
 #: includes/sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:52
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:95
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:147
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:99
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:151
 #: includes/sportspress-sponsors/includes/class-sp-sponsor-importer.php:26
 #: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:73
 #: includes/sportspress-sponsors/sportspress-sponsors.php:378
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:163
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory.php:210
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:170
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory.php:221
 msgid "Name"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:65
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:96
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:148
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:100
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:152
 #: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:74
 msgid "Random"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:70
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:101
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:153
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:105
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:157
 msgid "Sort Order"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:75
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:106
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:158
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:110
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:162
 #: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:79
 msgid "Ascending"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:76
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:107
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:159
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:111
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:163
 #: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:80
 msgid "Descending"
 msgstr ""
@@ -205,12 +234,12 @@ msgid "Width"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:97
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:166
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:170
 msgid "Text Color"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:106
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:175
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:179
 msgid "Background Color"
 msgstr ""
 
@@ -224,44 +253,45 @@ msgid "Left"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:121
-#: includes/sportspress-tournaments/sportspress-tournaments.php:260
+#: includes/sportspress-tournaments/sportspress-tournaments.php:267
 msgid "Center"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:122
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:244
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:249
 msgid "Right"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:184
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:187
 #: includes/sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:70
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:213
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:216
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:263
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:266
+#: includes/sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:33
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:218
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:221
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:268
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:271
 #: includes/sportspress-sponsors/sportspress-sponsors.php:393
 msgid "Logo"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:191
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:287
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:217
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:267
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:222
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:272
 msgid "Max Width"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:193
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:289
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:219
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:269
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:224
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:274
 msgid "Max Height"
 msgstr ""
 
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:199
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:202
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:238
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:241
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:243
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:246
 msgid "Position"
 msgstr ""
 
@@ -297,7 +327,7 @@ msgstr ""
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:261
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:283
 #: includes/sportspress-league-menu/includes/class-sp-settings-league-menu.php:286
-#: includes/sportspress-tournaments/sportspress-tournaments.php:212
+#: includes/sportspress-tournaments/sportspress-tournaments.php:216
 msgid "Teams"
 msgstr ""
 
@@ -306,28 +336,20 @@ msgstr ""
 msgid "Site: %s"
 msgstr ""
 
-#: includes/sportspress-multisite/sportspress-multisite.php:198
-msgid "Multisite"
-msgstr ""
-
-#: includes/sportspress-multisite/sportspress-multisite.php:202
-msgid "Manage multiple sports and display different widgets all on one site."
-msgstr ""
-
 #: includes/sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:66
 #: includes/sportspress-sponsors/includes/class-sp-sponsor-importer.php:27
 msgid "URL"
 msgstr ""
 
 #: includes/sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:67
-#: includes/sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:48
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:47
+#: includes/sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:51
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:49
 msgid "Impressions"
 msgstr ""
 
 #: includes/sportspress-sponsors/includes/class-sp-admin-cpt-sponsor.php:68
-#: includes/sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:51
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:55
+#: includes/sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:54
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:57
 msgid "Clicks"
 msgstr ""
 
@@ -339,19 +361,19 @@ msgstr ""
 
 #: includes/sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:30
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:37
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:205
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:346
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:212
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:357
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:33
-#: includes/sportspress-tournaments/sportspress-tournaments.php:220
+#: includes/sportspress-tournaments/sportspress-tournaments.php:224
 msgid "Details"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:42
+#: includes/sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:45
 msgid "Site URL"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:45
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:63
+#: includes/sportspress-sponsors/includes/class-sp-meta-box-sponsor-details.php:48
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:65
 #: includes/sportspress-sponsors/includes/sp-sponsor-functions.php:25
 #: includes/sportspress-sponsors/sportspress-sponsors.php:438
 msgid "Visit Site"
@@ -365,41 +387,41 @@ msgstr ""
 msgid "Sponsors"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:48
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:56
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:50
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:58
 msgid "Exclude logged-in users"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:64
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:66
 msgid "Open link in a new window/tab"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:72
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:76
 msgid "Header"
-msgstr ""
-
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:75
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:127
-msgid "Display"
 msgstr ""
 
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:79
 #: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:131
+msgid "Display"
+msgstr ""
+
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:83
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:135
 msgid "sponsors"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:94
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:146
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:98
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:150
 #: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:72
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:318
 msgid "Date"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:117
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:121
 msgid "Footer"
 msgstr ""
 
-#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:242
+#: includes/sportspress-sponsors/includes/class-sp-settings-sponsors.php:247
 msgid "Top"
 msgstr ""
 
@@ -438,12 +460,6 @@ msgstr ""
 
 #: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:5
 msgid "A list of sponsors."
-msgstr ""
-
-#: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:63
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:58
-#: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:58
-msgid "Title:"
 msgstr ""
 
 #: includes/sportspress-sponsors/includes/class-sp-widget-sponsors.php:66
@@ -489,32 +505,32 @@ msgid "Edit Sponsor"
 msgstr ""
 
 #: includes/sportspress-sponsors/sportspress-sponsors.php:118
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:125
-#: includes/sportspress-tournaments/sportspress-tournaments.php:112
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:127
+#: includes/sportspress-tournaments/sportspress-tournaments.php:113
 msgid "New"
 msgstr ""
 
 #: includes/sportspress-sponsors/sportspress-sponsors.php:119
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:126
-#: includes/sportspress-tournaments/sportspress-tournaments.php:113
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:128
+#: includes/sportspress-tournaments/sportspress-tournaments.php:114
 msgid "View"
 msgstr ""
 
 #: includes/sportspress-sponsors/sportspress-sponsors.php:120
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:127
-#: includes/sportspress-tournaments/sportspress-tournaments.php:114
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:129
+#: includes/sportspress-tournaments/sportspress-tournaments.php:115
 msgid "Search"
 msgstr ""
 
 #: includes/sportspress-sponsors/sportspress-sponsors.php:121
 #: includes/sportspress-sponsors/sportspress-sponsors.php:122
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:206
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:280
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:337
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:128
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:129
-#: includes/sportspress-tournaments/sportspress-tournaments.php:115
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:213
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:287
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:348
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:130
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:131
 #: includes/sportspress-tournaments/sportspress-tournaments.php:116
+#: includes/sportspress-tournaments/sportspress-tournaments.php:117
 msgid "No results found."
 msgstr ""
 
@@ -535,26 +551,26 @@ msgid "User"
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:52
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:299
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:306
 #: includes/sportspress-tournaments/includes/class-sp-admin-cpt-tournament.php:45
 msgid "Competition"
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:53
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:302
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:309
 #: includes/sportspress-tournaments/includes/class-sp-admin-cpt-tournament.php:46
 msgid "Season"
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:54
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:95
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:101
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:358
 msgid "Team"
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:55
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:36
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:305
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:315
 #: includes/sportspress-tournaments/includes/class-sp-admin-cpt-tournament.php:48
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:32
 msgid "Layout"
@@ -563,9 +579,10 @@ msgstr ""
 #: includes/sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:67
 #: includes/sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:70
 #: includes/sportspress-staff-directories/includes/class-sp-admin-cpt-directory.php:76
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:101
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:326
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:327
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:107
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:336
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:337
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:338
 #: includes/sportspress-tournaments/includes/class-sp-admin-cpt-tournament.php:60
 #: includes/sportspress-tournaments/includes/class-sp-admin-cpt-tournament.php:63
 msgid "All"
@@ -583,57 +600,54 @@ msgstr ""
 msgid "Show all teams"
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:47
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:88
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:53
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:101
 #: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:61
 #: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:61
 #, php-format
 msgid "Select %s:"
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:47
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:88
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:296
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:435
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:53
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:101
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:303
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:442
 msgid "Directory"
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:60
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:101
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:66
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:114
 #: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:77
 #: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:77
 msgid "Number of staff to show:"
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:67
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:108
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:73
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:121
 #: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:81
 #: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:81
 msgid "Display link to view all staff"
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:71
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:112
-#, php-format
-msgid "Insert %s"
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:78
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:126
+msgid "Insert Shortcode"
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:71
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:112
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:79
+#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:127
+msgid "Cancel"
+msgstr ""
+
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:35
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:31
 msgid "Shortcode"
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:72
-#: includes/sportspress-staff-directories/includes/class-sp-directory-ajax.php:113
-msgid "Cancel"
-msgstr ""
-
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:38
 #: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:61
 #: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:61
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:122
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:124
 msgid "Staff Directory"
 msgstr ""
 
@@ -643,46 +657,47 @@ msgid "Description"
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:42
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:249
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:251
 msgid "Contact Info"
 msgstr ""
 
 #: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:46
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:226
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:267
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:228
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:270
 msgid "Staff Directories"
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:66
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:67
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:52
 msgid ""
 "Copy this code and paste it into your post, page or text widget content."
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:106
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:112
 #: includes/sportspress-staff-directories/includes/class-sp-widget-staff-gallery.php:72
 #: includes/sportspress-staff-directories/includes/class-sp-widget-staff-list.php:72
 msgid "Add New"
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:162
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory.php:210
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:299
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:169
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:312
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory.php:221
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:307
 msgid "Job"
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:227
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:229
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory.php:195
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:300
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:234
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:236
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory.php:206
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:308
 #: includes/sportspress-staff-directories/templates/staff-contacts.php:31
 msgid "Phone"
 msgstr ""
 
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:235
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:237
-#: includes/sportspress-staff-directories/includes/class-sp-staff-directory.php:196
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:301
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:242
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory-meta-boxes.php:244
+#: includes/sportspress-staff-directories/includes/class-sp-staff-directory.php:207
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:309
 #: includes/sportspress-staff-directories/templates/staff-contacts.php:36
 msgid "Email"
 msgstr ""
@@ -703,59 +718,59 @@ msgstr ""
 msgid "Staff List"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:121
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:123
 msgid "Directories"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:123
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:125
 msgid "Add New Staff Directory"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:124
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:126
 msgid "Edit Staff Directory"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:235
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:237
 msgid "List"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:236
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:238
 msgid "Gallery"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:250
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:252
 msgid "Link phone"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:258
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:260
 msgid "Link email"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:270
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:275
 msgid "Pagination"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:271
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:276
 msgid "Paginate"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:278
-#: includes/sportspress-tournaments/sportspress-tournaments.php:237
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:283
+#: includes/sportspress-tournaments/sportspress-tournaments.php:241
 #: includes/sportspress-twitter/sportspress-twitter.php:99
 msgid "Limit"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:282
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:287
 msgid "staff"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:302
-#: includes/sportspress-staff-directories/templates/staff-gallery.php:111
-#: includes/sportspress-staff-directories/templates/staff-list.php:108
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:310
+#: includes/sportspress-staff-directories/templates/staff-gallery.php:115
+#: includes/sportspress-staff-directories/templates/staff-list.php:109
 msgid "View all staff"
 msgstr ""
 
-#: includes/sportspress-staff-directories/sportspress-staff-directories.php:434
+#: includes/sportspress-staff-directories/sportspress-staff-directories.php:441
 msgid "Staff"
 msgstr ""
 
@@ -769,8 +784,8 @@ msgid "Rounds"
 msgstr ""
 
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:34
-#: includes/sportspress-tournaments/sportspress-tournaments.php:109
-#: includes/sportspress-tournaments/sportspress-tournaments.php:263
+#: includes/sportspress-tournaments/sportspress-tournaments.php:110
+#: includes/sportspress-tournaments/sportspress-tournaments.php:270
 msgid "Tournament"
 msgstr ""
 
@@ -780,7 +795,7 @@ msgstr ""
 
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:59
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:98
-#: includes/sportspress-tournaments/sportspress-tournaments.php:281
+#: includes/sportspress-tournaments/sportspress-tournaments.php:288
 #: includes/sportspress-tournaments/templates/tournament-winner.php:33
 msgid "Winner"
 msgstr ""
@@ -791,7 +806,7 @@ msgstr ""
 
 #: includes/sportspress-tournaments/includes/class-sp-tournament-meta-boxes.php:293
 #: includes/sportspress-tournaments/includes/class-sp-tournament.php:168
-#: includes/sportspress-tournaments/templates/tournament-bracket-table.php:34
+#: includes/sportspress-tournaments/templates/tournament-bracket-table.php:35
 #, php-format
 msgid "Round %s"
 msgstr ""
@@ -808,49 +823,49 @@ msgstr ""
 msgid "Results"
 msgstr ""
 
-#: includes/sportspress-tournaments/sportspress-tournaments.php:108
-#: includes/sportspress-tournaments/sportspress-tournaments.php:198
-#: includes/sportspress-tournaments/sportspress-tournaments.php:209
+#: includes/sportspress-tournaments/sportspress-tournaments.php:109
+#: includes/sportspress-tournaments/sportspress-tournaments.php:199
+#: includes/sportspress-tournaments/sportspress-tournaments.php:211
 msgid "Tournaments"
 msgstr ""
 
-#: includes/sportspress-tournaments/sportspress-tournaments.php:110
+#: includes/sportspress-tournaments/sportspress-tournaments.php:111
 msgid "Add New Tournament"
 msgstr ""
 
-#: includes/sportspress-tournaments/sportspress-tournaments.php:111
+#: includes/sportspress-tournaments/sportspress-tournaments.php:112
 msgid "Edit Tournament"
 msgstr ""
 
-#: includes/sportspress-tournaments/sportspress-tournaments.php:213
+#: includes/sportspress-tournaments/sportspress-tournaments.php:217
 msgid "Display logos"
 msgstr ""
 
-#: includes/sportspress-tournaments/sportspress-tournaments.php:221
+#: includes/sportspress-tournaments/sportspress-tournaments.php:225
 msgid "Display venue"
 msgstr ""
 
-#: includes/sportspress-tournaments/sportspress-tournaments.php:229
+#: includes/sportspress-tournaments/sportspress-tournaments.php:233
 msgid "Display winner"
 msgstr ""
 
-#: includes/sportspress-tournaments/sportspress-tournaments.php:241
+#: includes/sportspress-tournaments/sportspress-tournaments.php:245
 msgid "rounds"
 msgstr ""
 
-#: includes/sportspress-tournaments/sportspress-tournaments.php:259
+#: includes/sportspress-tournaments/sportspress-tournaments.php:266
 msgid "Default"
 msgstr ""
 
-#: includes/sportspress-tournaments/templates/tournament-bracket-table.php:101
+#: includes/sportspress-tournaments/templates/tournament-bracket-table.php:102
 msgid "Recap"
 msgstr ""
 
-#: includes/sportspress-tournaments/templates/tournament-bracket-table.php:103
+#: includes/sportspress-tournaments/templates/tournament-bracket-table.php:104
 msgid "Preview"
 msgstr ""
 
-#: includes/sportspress-tournaments/templates/tournament-bracket-table.php:112
+#: includes/sportspress-tournaments/templates/tournament-bracket-table.php:113
 msgid "Event"
 msgstr ""
 
@@ -886,67 +901,79 @@ msgstr ""
 msgid "Tweets"
 msgstr ""
 
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:39
-msgid "License"
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:42
-msgid "Agency License"
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:45
-msgid "League License"
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:48
-msgid "Club License"
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:51
-msgid "Social License"
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:91
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:100
-msgid "License Key"
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:95
-msgid "Enter the license key from your purchase receipt."
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:104
-msgid "Deactivate"
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:108
-msgid "Activate"
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:136
-msgid "License deactivated."
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:141
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:171
-msgid "Sorry, there has been an error."
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:147
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:174
-msgid "License invalid."
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-settings-license.php:165
-msgid "License activated."
-msgstr ""
-
-#: includes/sportspress-updater/includes/class-sp-updater.php:85
+#: includes/sportspress-updater/includes/class-sp-updater.php:87
 msgid ""
 "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?"
 "\" onclick=\"document.location.reload(); return false;\">Try again</a>"
 msgstr ""
 
-#: includes/sportspress-updater/includes/class-sp-updater.php:89
+#: includes/sportspress-updater/includes/class-sp-updater.php:91
 msgid "An unknown error occurred"
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:69
+#: includes/sportspress-updater/sportspress-updater.php:133
+msgid "Agency License"
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:72
+#: includes/sportspress-updater/sportspress-updater.php:128
+msgid "League License"
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:75
+#: includes/sportspress-updater/sportspress-updater.php:123
+msgid "Club License"
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:78
+msgid "Social License"
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:106
+msgid "License Key"
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:110
+msgid "Enter the license key from your purchase receipt."
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:119
+msgid "Deactivate"
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:124
+#: includes/sportspress-updater/sportspress-updater.php:129
+#: includes/sportspress-updater/sportspress-updater.php:134
+msgid "Upgrade Now"
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:143
+msgid "Activate"
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:146
+msgid "Need a license key?"
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:147
+msgid "Purchase"
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:198
+msgid "License deactivated."
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:203
+#: includes/sportspress-updater/sportspress-updater.php:233
+msgid "Sorry, there has been an error."
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:209
+#: includes/sportspress-updater/sportspress-updater.php:236
+msgid "License invalid."
+msgstr ""
+
+#: includes/sportspress-updater/sportspress-updater.php:227
+msgid "License activated."
 msgstr ""
