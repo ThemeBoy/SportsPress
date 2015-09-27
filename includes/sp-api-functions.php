@@ -230,6 +230,20 @@ function sp_league_table( $post = 0 ) {
  * Player functions
  */
 
+function sp_get_player_number( $post = 0 ) {
+	$player = new SP_Player( $post );
+	return $player->number;
+}
+
+function sp_get_player_name_with_number( $post = 0, $prepend = '', $append = '. ' ) {
+	$number = sp_get_player_number( $post );
+	if ( isset( $number ) && '' !== $number ) {
+		return $prepend . $number . $append . get_the_title( $post );
+	} else {
+		return get_the_title( $post );
+	}
+}
+
 function sp_player_details( $post = 0 ) {
 	sp_get_template( 'player-details.php', array( 'id' => $post ) );
 }

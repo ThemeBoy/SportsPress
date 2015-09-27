@@ -838,7 +838,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
 							<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
-							<?php echo sp_draft_or_post_title( $post ); ?>
+							<?php echo sp_get_player_name_with_number( $post->ID ); ?>
 						</label>
 						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
 					</li>
