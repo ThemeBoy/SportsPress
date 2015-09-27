@@ -39,148 +39,153 @@ class SP_Settings_Sponsors extends SP_Settings_Page {
 	 */
 	public function get_settings() {
 
-		return apply_filters( 'sportspress_sponsor_settings', array(
-
-			array( 'title' => __( 'Sponsors', 'sportspress' ), 'type' => 'title', 'id' => 'sponsor_options' ),
-
+		return apply_filters( 'sportspress_sponsor_settings', array_merge(
 			array(
-				'title' 	=> __( 'Impressions', 'sportspress' ),
-				'desc' 		=> __( 'Exclude logged-in users', 'sportspress' ),
-				'id' 		=> 'sportspress_exclude_authenticated_sponsor_impressions',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox',
+				array( 'title' => __( 'Sponsors', 'sportspress' ), 'type' => 'title', 'id' => 'sponsor_options' ),
 			),
 
-			array(
-				'title' 	=> __( 'Clicks', 'sportspress' ),
-				'desc' 		=> __( 'Exclude logged-in users', 'sportspress' ),
-				'id' 		=> 'sportspress_exclude_authenticated_sponsor_clicks',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox',
-			),
-
-			array(
-				'title'     => __( 'Visit Site', 'sportspress' ),
-				'desc' 		=> __( 'Open link in a new window/tab', 'sportspress' ),
-				'id' 		=> 'sportspress_sponsor_site_target_blank',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox',
-			),
-
-			array( 'type' => 'sectionend', 'id' => 'sponsor_options' ),
-
-			array( 'title' => __( 'Header', 'sportspress' ), 'type' => 'title', 'id' => 'header_sponsor_options' ),
-			
-			array(
-				'title' 	=> __( 'Display', 'sportspress' ),
-				'id' 		=> 'sportspress_header_sponsors_limit',
-				'class' 	=> 'small-text',
-				'default'	=> '3',
-				'desc' 		=> __( 'sponsors', 'sportspress' ),
-				'type' 		=> 'number',
-				'custom_attributes' => array(
-					'min' 	=> 0,
-					'step' 	=> 1
+			apply_filters( 'sportspress_post_type_options', array(
+				array(
+					'title' 	=> __( 'Impressions', 'sportspress' ),
+					'desc' 		=> __( 'Exclude logged-in users', 'sportspress' ),
+					'id' 		=> 'sportspress_exclude_authenticated_sponsor_impressions',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
 				),
-			),
 
-			array(
-				'title' 	=> __( 'Sort by', 'sportspress' ),
-				'id' 		=> 'sportspress_header_sponsors_orderby',
-				'default'	=> 'menu_order',
-				'type' 		=> 'select',
-				'options'	=> array(
-					'menu_order' 	=> __( 'Menu Order', 'sportspress' ),
-					'date' 			=> __( 'Date', 'sportspress' ),
-					'title' 		=> __( 'Name', 'sportspress' ),
-					'rand' 			=> __( 'Random', 'sportspress' ),
+				array(
+					'title' 	=> __( 'Clicks', 'sportspress' ),
+					'desc' 		=> __( 'Exclude logged-in users', 'sportspress' ),
+					'id' 		=> 'sportspress_exclude_authenticated_sponsor_clicks',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
 				),
-			),
 
-			array(
-				'title' 	=> __( 'Sort Order', 'sportspress' ),
-				'id' 		=> 'sportspress_header_sponsors_order',
-				'default'	=> 'ASC',
-				'type' 		=> 'select',
-				'options'	=> array(
-					'ASC' 			=> __( 'Ascending', 'sportspress' ),
-					'DESC' 			=> __( 'Descending', 'sportspress' ),
+				array(
+					'title'     => __( 'Visit Site', 'sportspress' ),
+					'desc' 		=> __( 'Open link in a new window/tab', 'sportspress' ),
+					'id' 		=> 'sportspress_sponsor_site_target_blank',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
 				),
-			),
-
-			array( 'type' => 'header_sponsor_size' ),
-
-			array( 'type' => 'header_sponsor_position' ),
-
-			array( 'type' => 'sectionend', 'id' => 'header_sponsor_options' ),
-
-			array( 'title' => __( 'Footer', 'sportspress' ), 'type' => 'title', 'id' => 'footer_sponsor_options' ),
-			
-			array(
-				'title' => __( 'Title', 'sportspress' ),
-				'id' => 'sportspress_footer_sponsors_title',
-				'default' => '',
-				'type' => 'text',
-			),
+			), 'sponsor' ),
 
 			array(
-				'title' 	=> __( 'Display', 'sportspress' ),
-				'id' 		=> 'sportspress_footer_sponsors_limit',
-				'class' 	=> 'small-text',
-				'default'	=> '20',
-				'desc' 		=> __( 'sponsors', 'sportspress' ),
-				'type' 		=> 'number',
-				'custom_attributes' => array(
-					'min' 	=> 0,
-					'step' 	=> 1
+				array( 'type' => 'sectionend', 'id' => 'sponsor_options' ),
+
+				array( 'title' => __( 'Header', 'sportspress' ), 'type' => 'title', 'id' => 'header_sponsor_options' ),
+				
+				array(
+					'title' 	=> __( 'Display', 'sportspress' ),
+					'id' 		=> 'sportspress_header_sponsors_limit',
+					'class' 	=> 'small-text',
+					'default'	=> '3',
+					'desc' 		=> __( 'sponsors', 'sportspress' ),
+					'type' 		=> 'number',
+					'custom_attributes' => array(
+						'min' 	=> 0,
+						'step' 	=> 1
+					),
 				),
-			),
 
-			array(
-				'title' 	=> __( 'Sort by', 'sportspress' ),
-				'id' 		=> 'sportspress_footer_sponsors_orderby',
-				'default'	=> 'menu_order',
-				'type' 		=> 'select',
-				'options'	=> array(
-					'menu_order' 	=> __( 'Menu Order', 'sportspress' ),
-					'date' 			=> __( 'Date', 'sportspress' ),
-					'title' 		=> __( 'Name', 'sportspress' ),
-					'rand' 			=> __( 'Random', 'sportspress' ),
+				array(
+					'title' 	=> __( 'Sort by', 'sportspress' ),
+					'id' 		=> 'sportspress_header_sponsors_orderby',
+					'default'	=> 'menu_order',
+					'type' 		=> 'select',
+					'options'	=> array(
+						'menu_order' 	=> __( 'Menu Order', 'sportspress' ),
+						'date' 			=> __( 'Date', 'sportspress' ),
+						'title' 		=> __( 'Name', 'sportspress' ),
+						'rand' 			=> __( 'Random', 'sportspress' ),
+					),
 				),
-			),
 
-			array(
-				'title' 	=> __( 'Sort Order', 'sportspress' ),
-				'id' 		=> 'sportspress_footer_sponsors_order',
-				'default'	=> 'ASC',
-				'type' 		=> 'select',
-				'options'	=> array(
-					'ASC' 			=> __( 'Ascending', 'sportspress' ),
-					'DESC' 			=> __( 'Descending', 'sportspress' ),
+				array(
+					'title' 	=> __( 'Sort Order', 'sportspress' ),
+					'id' 		=> 'sportspress_header_sponsors_order',
+					'default'	=> 'ASC',
+					'type' 		=> 'select',
+					'options'	=> array(
+						'ASC' 			=> __( 'Ascending', 'sportspress' ),
+						'DESC' 			=> __( 'Descending', 'sportspress' ),
+					),
 				),
-			),
 
-			array( 'type' => 'footer_sponsor_size' ),
+				array( 'type' => 'header_sponsor_size' ),
 
-			array(
-				'title' => __( 'Text Color', 'sportspress' ),
-				'id' 		=> 'sportspress_footer_sponsors_css_text',
-				'type' 		=> 'color',
-				'css' 		=> 'width:6em;',
-				'default'	=> '#363f48',
-				'autoload'  => false
-			),
+				array( 'type' => 'header_sponsor_position' ),
 
-			array(
-				'title' => __( 'Background Color', 'sportspress' ),
-				'id' 		=> 'sportspress_footer_sponsors_css_background',
-				'type' 		=> 'color',
-				'css' 		=> 'width:6em;',
-				'default'	=> '#f4f4f4',
-				'autoload'  => false
-			),
+				array( 'type' => 'sectionend', 'id' => 'header_sponsor_options' ),
 
-			array( 'type' => 'sectionend', 'id' => 'footer_sponsor_options' ),
+				array( 'title' => __( 'Footer', 'sportspress' ), 'type' => 'title', 'id' => 'footer_sponsor_options' ),
+				
+				array(
+					'title' => __( 'Title', 'sportspress' ),
+					'id' => 'sportspress_footer_sponsors_title',
+					'default' => '',
+					'type' => 'text',
+				),
+
+				array(
+					'title' 	=> __( 'Display', 'sportspress' ),
+					'id' 		=> 'sportspress_footer_sponsors_limit',
+					'class' 	=> 'small-text',
+					'default'	=> '20',
+					'desc' 		=> __( 'sponsors', 'sportspress' ),
+					'type' 		=> 'number',
+					'custom_attributes' => array(
+						'min' 	=> 0,
+						'step' 	=> 1
+					),
+				),
+
+				array(
+					'title' 	=> __( 'Sort by', 'sportspress' ),
+					'id' 		=> 'sportspress_footer_sponsors_orderby',
+					'default'	=> 'menu_order',
+					'type' 		=> 'select',
+					'options'	=> array(
+						'menu_order' 	=> __( 'Menu Order', 'sportspress' ),
+						'date' 			=> __( 'Date', 'sportspress' ),
+						'title' 		=> __( 'Name', 'sportspress' ),
+						'rand' 			=> __( 'Random', 'sportspress' ),
+					),
+				),
+
+				array(
+					'title' 	=> __( 'Sort Order', 'sportspress' ),
+					'id' 		=> 'sportspress_footer_sponsors_order',
+					'default'	=> 'ASC',
+					'type' 		=> 'select',
+					'options'	=> array(
+						'ASC' 			=> __( 'Ascending', 'sportspress' ),
+						'DESC' 			=> __( 'Descending', 'sportspress' ),
+					),
+				),
+
+				array( 'type' => 'footer_sponsor_size' ),
+
+				array(
+					'title' => __( 'Text Color', 'sportspress' ),
+					'id' 		=> 'sportspress_footer_sponsors_css_text',
+					'type' 		=> 'color',
+					'css' 		=> 'width:6em;',
+					'default'	=> '#363f48',
+					'autoload'  => false
+				),
+
+				array(
+					'title' => __( 'Background Color', 'sportspress' ),
+					'id' 		=> 'sportspress_footer_sponsors_css_background',
+					'type' 		=> 'color',
+					'css' 		=> 'width:6em;',
+					'default'	=> '#f4f4f4',
+					'autoload'  => false
+				),
+
+				array( 'type' => 'sectionend', 'id' => 'footer_sponsor_options' ),
+			)
 
 		)); // End sponsor settings
 	}
