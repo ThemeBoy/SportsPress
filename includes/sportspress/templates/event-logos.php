@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.8.7
+ * @version     1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -32,9 +32,11 @@ if ( $teams ):
 		if ( ! has_post_thumbnail( $team ) ) continue;
 		$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon' );
 
+		$alt = sizeof( $teams ) == 2 && $i % 2;
+
 		// Add team name
 		if ( $show_team_names ) {
-			if ( $i % 2 ) {
+			if ( $alt ) {
 				$logo .= ' <strong class="sp-team-name">' . get_the_title( $team ) . '</strong>';
 			} else {
 				$logo = '<strong class="sp-team-name">' . get_the_title( $team ) . '</strong> ' . $logo;
@@ -46,7 +48,7 @@ if ( $teams ):
 
 		// Add result
 		if ( $show_results ) {
-			if ( $i % 2 ) {
+			if ( $alt ) {
 				$logo = '<strong class="sp-team-result">' . array_shift( $results ) . '</strong> ' . $logo;
 			} else {
 				$logo .= ' <strong class="sp-team-result">' . array_shift( $results ) . '</strong>';
@@ -58,7 +60,7 @@ if ( $teams ):
 	endforeach;
 	$team_logos = array_filter( $team_logos );
 	if ( ! empty( $team_logos ) ):
-		echo '<div class="sp-template sp-template-event-logos"><div class="sp-event-logos">';
+		echo '<div class="sp-template sp-template-event-logos"><div class="sp-event-logos sp-event-logos-' . sizeof( $teams ) . '">';
 		$delimiter = get_option( 'sportspress_event_teams_delimiter', 'vs' );
 		echo implode( ' ' . $delimiter . ' ', $team_logos );
 		echo '</div></div>';

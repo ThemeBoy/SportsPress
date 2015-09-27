@@ -1,0 +1,64 @@
+{
+	"name":				"Golf",
+	"positions": [
+	],
+	"outcomes": [
+						{ "name" : "Win", "condition" : "<", "description" : "Won" },
+						{ "name" : "Finish", "condition" : "else", "description" : "Finished" }
+	],
+	"results": [
+						{ "name" : "Par", "equation" : "$strokes - $par", "description" : "Reported score", "primary" : 1 },
+						{ "name" : "FH", "description" : "Fairways hit" },
+						{ "name" : "GIR", "description" : "Greens in regulation" },
+						{ "name" : "Avg. Drive", "id" : "avgdrive", "description" : "Average drive (yards)" },
+						{ "name" : "Putts", "description" : "Number of putts" },
+						{ "name" : "Score", "equation" : "$strokes", "description" : "Total score" }
+	],
+	"performance": [
+						{  "name" : "1", "id" : "one", "description" : "Hole 1" },
+						{  "name" : "2", "id" : "two", "description" : "Hole 2" },
+						{  "name" : "3", "id" : "three", "description" : "Hole 3" },
+						{  "name" : "4", "id" : "four", "description" : "Hole 4" },
+						{  "name" : "5", "id" : "five", "description" : "Hole 5" },
+						{  "name" : "6", "id" : "six", "description" : "Hole 6" },
+						{  "name" : "7", "id" : "seven", "description" : "Hole 7" },
+						{  "name" : "8", "id" : "eight", "description" : "Hole 8" },
+						{  "name" : "9", "id" : "nine", "description" : "Hole 9" },
+						{  "name" : "10", "id" : "ten", "description" : "Hole 10" },
+						{  "name" : "11", "id" : "eleven", "description" : "Hole 11" },
+						{  "name" : "12", "id" : "twelve", "description" : "Hole 12" },
+						{  "name" : "13", "id" : "thirteen", "description" : "Hole 13" },
+						{  "name" : "14", "id" : "fourteen", "description" : "Hole 14" },
+						{  "name" : "15", "id" : "fifteen", "description" : "Hole 15" },
+						{  "name" : "16", "id" : "sixteen", "description" : "Hole 16" },
+						{  "name" : "17", "id" : "seventeen", "description" : "Hole 17" },
+						{  "name" : "18", "id" : "eighteen", "description" : "Hole 18" }
+	],
+	"columns": [
+						{ "name" : "Par", "equation" : "$parfor", "priority" : 1, "order" : "ASC", "description" : "Reported score" },
+						{ "name" : "R1", "equation" : "$scorefor 1", "description" : "Round 1 Score" },
+						{ "name" : "R2", "equation" : "$scorefor 2", "description" : "Round 2 Score" },
+						{ "name" : "R3", "equation" : "$scorefor 3", "description" : "Round 3 Score" },
+						{ "name" : "R4", "equation" : "$scorefor 4", "description" : "Round 4 Score" },
+						{ "name" : "Total", "equation" : "$scorefor", "priority" : 2, "order" : "ASC", "description" : "Total Score" }
+	],
+	"metrics": [
+						{ "name" : "Height", "description" : "Player height" },
+						{ "name" : "Weight", "description" : "Player weight" }
+	],
+	"statistics": [
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Events played" },
+						{ "name" : "FH", "equation" : "$fhfor", "description" : "Fairways hit" },
+						{ "name" : "GIR", "equation" : "$girfor", "description" : "Greens in regulation" }
+	],
+	"options": {
+						"event_teams" : "0",
+						"event_show_players" : "yes",
+						"event_show_total" : "no",
+						"sportspress_event_performance_mode" : "values",
+						"event_show_player_numbers" : "no",
+						"event_split_players_by_team" : "no",
+						"event_split_players_by_position" : "no",
+						"load_individual_mode_module" : "yes"
+	}
+}

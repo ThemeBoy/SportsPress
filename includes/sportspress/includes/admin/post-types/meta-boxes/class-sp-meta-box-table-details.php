@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.7
+ * @version     1.9.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -43,8 +43,10 @@ class SP_Meta_Box_Table_Details {
 				</select>
 			</p>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_team', ( 'auto' == $select ? 'none' : 'block' ), array( 'sp_league', 'sp_season' ) );
-			sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
+			if ( 'manual' == $select ) {
+				sp_post_checklist( $post->ID, 'sp_team', ( 'auto' == $select ? 'none' : 'block' ), array( 'sp_league', 'sp_season' ) );
+				sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
+			}
 			?>
 		</div>
 		<?php

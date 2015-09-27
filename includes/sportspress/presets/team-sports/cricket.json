@@ -50,7 +50,6 @@
 	"options": {
 						"event_teams" : "2",
 						"event_show_players" : "yes",
-						"event_show_extras" : "yes",
 						"event_show_total" : "yes",
 						"sportspress_event_performance_mode" : "values",
 						"event_show_player_numbers" : "no",

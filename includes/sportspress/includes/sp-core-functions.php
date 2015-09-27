@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.8.1
+ * @version     1.9.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -376,6 +376,7 @@ if ( !function_exists( 'sp_get_post_condition' ) ) {
 				'>' => sprintf( __( 'Most %s', 'sportspress' ), $label ),
 				'<' => sprintf( __( 'Least %s', 'sportspress' ), $label ),
 				'=' => sprintf( __( 'Equal %s', 'sportspress' ), $label ),
+				'else' => sprintf( __( 'Default', 'sportspress' ), $label ),
 			);
 			return sp_array_value( $conditions, $condition, '&mdash;' );
 		else:
@@ -414,11 +415,12 @@ if ( !function_exists( 'sp_get_post_equation' ) ) {
 	function sp_get_post_equation( $post_id ) {
 		$equation = get_post_meta ( $post_id, 'sp_equation', true );
 		if ( $equation ):
-			return str_replace(
-				array( '/', '(', ')', '+', '-', '*', '$' ),
-				array( '<code>&divide;</code>', '<code>(</code>', '<code>)</code>', '<code>&plus;</code>', '<code>&minus;</code>', '<code>&times;</code>', '' ),
+			$equation = str_replace(
+				array( '/', '(', ')', '+', '-', '*', '_', '$' ),
+				array( '&divide;', '(', ')', '&plus;', '&minus;', '&times;', '@', '' ),
 				trim( $equation )
 			);
+			return '<code>' . implode( '</code> <code>', explode( ' ', $equation ) ) . '</code>';
 		else:
 			return '&mdash;';
 		endif;
@@ -781,7 +783,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		?>
-		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
+		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-tab-filter-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
 			<input type="hidden" value="0" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
@@ -836,7 +838,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
 							<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
-							<?php echo sp_draft_or_post_title( $post ); ?>
+							<?php echo sp_get_player_name_with_number( $post->ID ); ?>
 						</label>
 						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
 					</li>
@@ -1014,6 +1016,16 @@ if ( !function_exists( 'sp_update_post_meta_recursive' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_update_user_meta_recursive' ) ) {
+	function sp_update_user_meta_recursive( $user_id, $meta_key, $meta_value ) {
+		delete_user_meta( $user_id, $meta_key );
+		$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $meta_value ) );
+		foreach ( $values as $value ):
+			add_user_meta( $user_id, $meta_key, $value, false );
+		endforeach;
+	}
+}
+
 if ( !function_exists( 'sp_get_eos_safe_slug' ) ) {
 	function sp_get_eos_safe_slug( $title, $post_id = 'var' ) {
 
@@ -1039,20 +1051,20 @@ if ( !function_exists( 'sp_get_eos_safe_slug' ) ) {
 }
 
 if ( !function_exists( 'sp_solve' ) ) {
-	function sp_solve( $equation, $vars, $precision = 0 ) {
+	function sp_solve( $equation, $vars, $precision = 0, $default = '-' ) {
 
 		if ( $equation == null )
-			return '-';
+			return $default;
 
 		if ( strpos( $equation, '$gamesback' ) !== false ):
 
 			// Return placeholder
-			return '-';
+			return $default;
 
 		elseif ( strpos( $equation, '$streak' ) !== false ):
 
 			// Return direct value
-			return sp_array_value( $vars, 'streak', '-' );
+			return sp_array_value( $vars, 'streak', $default );
 
 		elseif ( strpos( $equation, '$last5' ) !== false ):
 
@@ -1061,7 +1073,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 			if ( array_sum( $last5 ) > 0 ):
 				return implode( '-', $last5 );
 			else:
-				return '-';
+				return $default;
 			endif;
 
 		elseif ( strpos( $equation, '$last10' ) !== false ):
@@ -1071,7 +1083,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 			if ( array_sum( $last10 ) > 0 ):
 				return implode( '-', $last10 );
 			else:
-				return '-';
+				return $default;
 			endif;
 
 		elseif ( strpos( $equation, '$homerecord' ) !== false ):
@@ -1095,7 +1107,7 @@ if ( !function_exists( 'sp_solve' ) ) {
 		unset( $vars['last10'] );
 
 		if ( sp_array_value( $vars, 'eventsplayed', 0 ) <= 0 )
-			return '-';
+			return $default;
 
 		// Equation Operating System
         if ( ! class_exists( 'phpStack' ) )
@@ -1104,14 +1116,17 @@ if ( !function_exists( 'sp_solve' ) ) {
             include_once( SP()->plugin_path() . '/includes/libraries/class-eqeos.php' );
 		$eos = new eqEOS();
 
-		// Clearance to begin calculating remains true if all equation variables are in vars
-		$clearance = true;
+		// Remove spaces from equation
+		$equation = str_replace( ' ', '', $equation );
+
+		// Create temporary equation replacing operators with spaces
+		$temp = str_replace( array( '+', '-', '*', '/', '(', ')' ), ' ', $equation );
 
 		// Check if each variable part is in vars
-		$parts = explode( ' ', $equation );
+		$parts = explode( ' ', $temp );
 		foreach( $parts as $key => $value ):
 			if ( substr( $value, 0, 1 ) == '$' ):
-				if ( ! array_key_exists( preg_replace( "/[^a-z]/", '', $value ), $vars ) )
+				if ( ! array_key_exists( preg_replace( "/[^a-z0-9_]/", '', $value ), $vars ) )
 					return 0;
 			endif;
 		endforeach;
@@ -1186,7 +1201,7 @@ if ( !function_exists( 'sp_get_next_event' ) ) {
 }
 
 if ( !function_exists( 'sp_taxonomy_field' ) ) {
-	function sp_taxonomy_field( $taxonomy = 'category', $post = null, $multiple = false ) {
+	function sp_taxonomy_field( $taxonomy = 'category', $post = null, $multiple = false, $trigger = false ) {
 		$obj = get_taxonomy( $taxonomy );
 		if ( $obj ) {
 			$post_type = get_post_type( $post );
@@ -1207,7 +1222,7 @@ if ( !function_exists( 'sp_taxonomy_field' ) ) {
 						'name' => 'tax_input[' . $taxonomy . '][]',
 						'selected' => $term_ids,
 						'values' => 'term_id',
-						'class' => 'sp-has-dummy widefat',
+						'class' => 'sp-has-dummy widefat' . ( $trigger ? ' sp-ajax-trigger' : '' ),
 						'chosen' => true,
 						'placeholder' => __( 'All', 'sportspress' ),
 					);
@@ -1232,6 +1247,7 @@ if ( !function_exists( 'sp_taxonomy_field' ) ) {
 function sp_get_text_options() {
 	$strings = apply_filters( 'sportspress_text', array(
 		__( 'Article', 'sportspress' ),
+		__( 'Box Score', 'sportspress' ),
 		__( 'Career Total', 'sportspress' ),
 		__( 'Current Team', 'sportspress' ),
 		__( 'Current Teams', 'sportspress' ),
@@ -1242,7 +1258,6 @@ function sp_get_text_options() {
 		__( 'Nationality', 'sportspress' ),
 		__( 'Outcome', 'sportspress' ),
 		__( 'Past Teams', 'sportspress' ),
-		__( 'Performance', 'sportspress' ),
 		__( 'Played', 'sportspress' ),
 		__( 'Player', 'sportspress' ),
 		__( 'Pos', 'sportspress' ),

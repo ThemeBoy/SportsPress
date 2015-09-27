@@ -3,7 +3,7 @@
  * Template Loader
  *
  * @class 		SP_Template_Loader
- * @version		1.7
+ * @version		1.9
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -24,11 +24,17 @@ class SP_Template_Loader {
 		add_filter( 'the_content', array( $this, 'staff_content' ) );
 	}
 
-	public function add_content( $content, $template, $position = 10 ) {
+	public function add_content( $content, $template, $position = 10, $caption = null ) {
 		if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		if ( ! in_the_loop() ) return; // Return if not in main loop
 
-		$content = '<div class="sp-post-content">' . $content . '</div>';
+		if ( $content ) {
+			if ( $caption ) {
+				$content = '<h3 class="sp-post-caption">' . $caption . '</h3>' . $content;
+			}
+
+			$content = '<div class="sp-post-content">' . $content . '</div>';
+		}
 
 		ob_start();
 
@@ -59,8 +65,15 @@ class SP_Template_Loader {
 	}
 
 	public function event_content( $content ) {
-		if ( is_singular( 'sp_event' ) )
-			$content = self::add_content( $content, 'event', apply_filters( 'sportspress_event_content_priority', 10 ) );
+		if ( is_singular( 'sp_event' ) ) {
+			$status = sp_get_status( get_the_ID() );
+			if ( 'results' == $status ) {
+				$caption = __( 'Recap', 'sportspress' );
+			} else {
+				$caption = __( 'Preview', 'sportspress' );
+			}
+			$content = self::add_content( $content, 'event', apply_filters( 'sportspress_event_content_priority', 10 ), $caption );
+		}
 		return $content;
 	}
 
@@ -72,7 +85,7 @@ class SP_Template_Loader {
 
 	public function team_content( $content ) {
 		if ( is_singular( 'sp_team' ) )
-			$content = self::add_content( $content, 'team', apply_filters( 'sportspress_team_content_priority', 10 ) );
+			$content = self::add_content( $content, 'team', apply_filters( 'sportspress_team_content_priority', 10 ), __( 'Profile', 'sportspress' ) );
 		return $content;
 	}
 
@@ -84,7 +97,7 @@ class SP_Template_Loader {
 
 	public function player_content( $content ) {
 		if ( is_singular( 'sp_player' ) )
-			$content = self::add_content( $content, 'player', apply_filters( 'sportspress_player_content_priority', 10 ) );
+			$content = self::add_content( $content, 'player', apply_filters( 'sportspress_player_content_priority', 10 ), __( 'Profile', 'sportspress' ) );
 		return $content;
 	}
 
@@ -96,7 +109,7 @@ class SP_Template_Loader {
 
 	public function staff_content( $content ) {
 		if ( is_singular( 'sp_staff' ) )
-			$content = self::add_content( $content, 'staff', apply_filters( 'sportspress_staff_content_priority', 10 ) );
+			$content = self::add_content( $content, 'staff', apply_filters( 'sportspress_staff_content_priority', 10 ), __( 'Profile', 'sportspress' ) );
 		return $content;
 	}
 

@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.6
+ * @version     1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -52,7 +52,7 @@ class SP_Settings_Teams extends SP_Settings_Page {
 				),
 
 				array(
-					'title'     => __( 'Templates', 'sportspress' ),
+					'title'     => __( 'Display', 'sportspress' ),
 					'desc' 		=> __( 'Logo', 'sportspress' ),
 					'id' 		=> 'sportspress_team_show_logo',
 					'default'	=> 'yes',

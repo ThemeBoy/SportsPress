@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.6
+ * @version     1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,33 +20,42 @@ class SP_Meta_Box_Team_Details {
 	 */
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
-		$leagues = get_the_terms( $post->ID, 'sp_league' );
-		$league_ids = array();
-		if ( $leagues ):
-			foreach ( $leagues as $league ):
-				$league_ids[] = $league->term_id;
-			endforeach;
+
+		if ( taxonomy_exists( 'sp_league' ) ):
+			$leagues = get_the_terms( $post->ID, 'sp_league' );
+			$league_ids = array();
+			if ( $leagues ):
+				foreach ( $leagues as $league ):
+					$league_ids[] = $league->term_id;
+				endforeach;
+			endif;
 		endif;
 
-		$seasons = get_the_terms( $post->ID, 'sp_season' );
-		$season_ids = array();
-		if ( $seasons ):
-			foreach ( $seasons as $season ):
-				$season_ids[] = $season->term_id;
-			endforeach;
+		if ( taxonomy_exists( 'sp_season' ) ):
+			$seasons = get_the_terms( $post->ID, 'sp_season' );
+			$season_ids = array();
+			if ( $seasons ):
+				foreach ( $seasons as $season ):
+					$season_ids[] = $season->term_id;
+				endforeach;
+			endif;
 		endif;
 
-		$venues = get_the_terms( $post->ID, 'sp_venue' );
-		$venue_ids = array();
-		if ( $venues ):
-			foreach ( $venues as $venue ):
-				$venue_ids[] = $venue->term_id;
-			endforeach;
+		if ( taxonomy_exists( 'sp_venue' ) ):
+			$venues = get_the_terms( $post->ID, 'sp_venue' );
+			$venue_ids = array();
+			if ( $venues ):
+				foreach ( $venues as $venue ):
+					$venue_ids[] = $venue->term_id;
+				endforeach;
+			endif;
 		endif;
 
 		$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
 		$url = get_post_meta( $post->ID, 'sp_url', true );
 		?>
+
+		<?php if ( taxonomy_exists( 'sp_league' ) ) { ?>
 		<p><strong><?php _e( 'Competitions', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -61,7 +70,9 @@ class SP_Meta_Box_Team_Details {
 		);
 		sp_dropdown_taxonomies( $args );
 		?></p>
+		<?php } ?>
 
+		<?php if ( taxonomy_exists( 'sp_season' ) ) { ?>
 		<p><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -76,7 +87,9 @@ class SP_Meta_Box_Team_Details {
 		);
 		sp_dropdown_taxonomies( $args );
 		?></p>
+		<?php } ?>
 
+		<?php if ( taxonomy_exists( 'sp_venue' ) ) { ?>
 		<p><strong><?php _e( 'Home', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -91,6 +104,7 @@ class SP_Meta_Box_Team_Details {
 		);
 		sp_dropdown_taxonomies( $args );
 		?></p>
+		<?php } ?>
 
 		<p><strong><?php _e( 'Site URL', 'sportspress' ); ?></strong></p>
 		<p><input type="text" class="widefat" id="sp_url" name="sp_url" value="<?php echo $url; ?>"></p>

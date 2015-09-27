@@ -79,7 +79,6 @@
 						"event_teams" : "2",
 						"sportspress_event_hide_child_positions" : "yes",
 						"event_show_players" : "yes",
-						"event_show_extras" : "no",
 						"event_show_total" : "yes",
 						"sportspress_event_results_reverse_teams" : "yes",
 						"sportspress_event_performance_mode" : "values",

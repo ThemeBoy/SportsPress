@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.8.7
+ * @version     1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -44,7 +44,7 @@ foreach( $venues as $venue ):
 			<?php if ( $show_maps && $latitude != null && $longitude != null ): ?>
 				<tbody>
 					<tr class="sp-event-venue-map-row">
-						<td<?php if ( $address != null ) { ?> colspan="2"<?php } ?>><?php sp_get_template( 'venue-map.php', array( 'meta' => $meta ) ); ?></td>
+						<td><?php sp_get_template( 'venue-map.php', array( 'meta' => $meta ) ); ?></td>
 					</tr>
 					<?php if ( $address != null ) { ?>
 						<tr class="sp-event-venue-address-row">

@@ -5,7 +5,7 @@
  * The SportsPress modules class stores available modules.
  *
  * @class 		SP_Modules
- * @version     1.8.7
+ * @version     1.9
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -50,12 +50,26 @@ class SP_Modules {
 					'icon' => 'sp-icon-chart',
 					'desc' => __( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
 				),
+				'league_menu' => array(
+					'label' => __( 'League Menu', 'sportspress' ),
+					'class' => 'SportsPress_League_Menu',
+					'icon' => 'sp-icon-menu',
+					'link' => 'http://tboy.co/pro',
+					'desc' => __( 'Add a global navigation bar to display logos that link to each team.', 'sportspress' ),
+				),
 				'team_colors' => array(
 					'label' => __( 'Team Colors', 'sportspress' ),
 					'class' => 'SportsPress_Team_Colors',
 					'icon' => 'sp-icon-color',
 					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Create a custom color palette for each team.', 'sportspress' ),
+				),
+				'team_access' => array(
+					'label' => __( 'Team Access', 'sportspress' ),
+					'class' => 'SportsPress_Team_Access',
+					'icon' => 'sp-icon-key',
+					'link' => 'http://tboy.co/pro',
+					'desc' => __( 'Limit user access to data that is related to their team.', 'sportspress' ),
 				),
 			),
 			'player_staff' => array(
@@ -99,6 +113,13 @@ class SP_Modules {
 					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Clone anything with just one click. Great for creating multiple events.', 'sportspress' ),
 				),
+				'lazy_loading' => array(
+					'label' => __( 'Lazy Loading', 'sportspress' ),
+					'class' => 'SportsPress_Lazy_Loading',
+					'icon' => 'sp-icon-moon',
+					'link' => 'http://tboy.co/pro',
+					'desc' => __( 'Load players using Ajax to speed up the event edit screen.', 'sportspress' ),
+				),
 			),
 			'other' => array(
 				'twitter' => array(
@@ -109,13 +130,6 @@ class SP_Modules {
 					'tip' => __( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.', 'sportspress' ),
 					'icon' => 'dashicons dashicons-twitter',
 					'desc' => __( 'Add a Twitter feed to team, player, and staff pages.', 'sportspress' ),
-				),
-				'league_menu' => array(
-					'label' => __( 'League Menu', 'sportspress' ),
-					'class' => 'SportsPress_League_Menu',
-					'icon' => 'sp-icon-menu',
-					'link' => 'http://tboy.co/pro',
-					'desc' => __( 'Add a global navigation bar to display logos that link to each team.', 'sportspress' ),
 				),
 				'sponsors' => array(
 					'label' => __( 'Sponsors', 'sportspress' ),

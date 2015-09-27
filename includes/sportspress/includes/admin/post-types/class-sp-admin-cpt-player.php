@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version     1.7
+ * @version     1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -126,14 +126,16 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_player' )
 	    	return;
 
-		$selected = isset( $_REQUEST['sp_position'] ) ? $_REQUEST['sp_position'] : null;
-		$args = array(
-			'show_option_all' =>  __( 'Show all positions', 'sportspress' ),
-			'taxonomy' => 'sp_position',
-			'name' => 'sp_position',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
+	    if ( taxonomy_exists( 'sp_position' ) ):
+			$selected = isset( $_REQUEST['sp_position'] ) ? $_REQUEST['sp_position'] : null;
+			$args = array(
+				'show_option_all' =>  __( 'Show all positions', 'sportspress' ),
+				'taxonomy' => 'sp_position',
+				'name' => 'sp_position',
+				'selected' => $selected
+			);
+			sp_dropdown_taxonomies( $args );
+		endif;
 
 		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
 		$args = array(
@@ -145,23 +147,27 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 		);
 		wp_dropdown_pages( $args );
 
-		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
-		$args = array(
-			'show_option_all' =>  __( 'Show all competitions', 'sportspress' ),
-			'taxonomy' => 'sp_league',
-			'name' => 'sp_league',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
+	    if ( taxonomy_exists( 'sp_league' ) ):
+			$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
+			$args = array(
+				'show_option_all' =>  __( 'Show all competitions', 'sportspress' ),
+				'taxonomy' => 'sp_league',
+				'name' => 'sp_league',
+				'selected' => $selected
+			);
+			sp_dropdown_taxonomies( $args );
+		endif;
 
-		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
-		$args = array(
-			'show_option_all' =>  __( 'Show all seasons', 'sportspress' ),
-			'taxonomy' => 'sp_season',
-			'name' => 'sp_season',
-			'selected' => $selected
-		);
-		sp_dropdown_taxonomies( $args );
+	    if ( taxonomy_exists( 'sp_season' ) ):
+			$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
+			$args = array(
+				'show_option_all' =>  __( 'Show all seasons', 'sportspress' ),
+				'taxonomy' => 'sp_season',
+				'name' => 'sp_season',
+				'selected' => $selected
+			);
+			sp_dropdown_taxonomies( $args );
+		endif;
 	}
 
 	/**

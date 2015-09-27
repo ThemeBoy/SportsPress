@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.7.3
+ * @version     1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -52,7 +52,7 @@ class SP_Settings_Players extends SP_Settings_Page {
 				),
 
 				array(
-					'title'     => __( 'Templates', 'sportspress' ),
+					'title'     => __( 'Display', 'sportspress' ),
 					'desc' 		=> __( 'Photo', 'sportspress' ),
 					'id' 		=> 'sportspress_player_show_photo',
 					'default'	=> 'yes',
@@ -105,6 +105,22 @@ class SP_Settings_Players extends SP_Settings_Page {
 					'desc' 		=> __( 'Past Teams', 'sportspress' ),
 					'id' 		=> 'sportspress_player_show_past_teams',
 					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+
+				array(
+					'desc' 		=> __( 'Competitions', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_leagues',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+
+				array(
+					'desc' 		=> __( 'Seasons', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_seasons',
+					'default'	=> 'no',
 					'type' 		=> 'checkbox',
 					'checkboxgroup'		=> 'end',
 				),

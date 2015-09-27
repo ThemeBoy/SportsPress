@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.5
+ * @version     1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -55,7 +55,7 @@ class SP_Admin_Assets {
 			wp_enqueue_style( 'sportspress-admin-customize-styles', SP()->plugin_url() . '/assets/css/customize.css', array(), SP_VERSION );
 		}
 
-		if ( in_array( $screen->id, array( 'sp_column', 'sp_statistic' ) ) ) {
+		if ( in_array( $screen->id, array( 'sp_result', 'sp_column', 'sp_statistic' ) ) ) {
 			wp_enqueue_style( 'sportspress-admin-equation-styles', SP()->plugin_url() . '/assets/css/equation.css', array(), SP_VERSION );
 		}
 
@@ -110,7 +110,7 @@ class SP_Admin_Assets {
 	    	wp_enqueue_script( 'jquery-fitvids' );
 	    	wp_enqueue_script( 'sportspress-admin', SP()->plugin_url() . '/assets/js/admin/sportspress-admin.js', array( 'jquery', 'chosen', 'jquery-ui-core', 'jquery-ui-datepicker', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-tiptip', 'jquery-caret', 'jquery-countdown', 'jquery-fitvids' ), SP_VERSION, true );
 	    	
-	    	$strings = array(
+	    	$strings = apply_filters( 'sportspress_localized_strings', array(
 				'none' => __( 'None', 'sportspress' ),
 				'remove_text' => __( '&mdash; Remove &mdash;', 'sportspress' ),
 				'days' => __( 'days', 'sportspress' ),
@@ -118,7 +118,7 @@ class SP_Admin_Assets {
 				'mins' => __( 'mins', 'sportspress' ),
 				'secs' => __( 'secs', 'sportspress' ),
 				'displaying_posts' => html_entity_decode( __( 'Displaying %s&#8211;%s of %s', 'sportspress' ) ),
-	    	);
+	    	) );
 
 	    	// Localize scripts
 			wp_localize_script( 'sportspress-admin', 'localized_strings', $strings );
@@ -136,7 +136,7 @@ class SP_Admin_Assets {
 		}
 
 		// Edit equation
-		if ( in_array( $screen->id, array( 'sp_column', 'sp_statistic' ) ) ) {
+		if ( in_array( $screen->id, array( 'sp_result', 'sp_column', 'sp_statistic' ) ) ) {
 	    	wp_enqueue_script( 'sportspress-admin-equationbuilder' );
 		}
 	}

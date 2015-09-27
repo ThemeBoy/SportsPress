@@ -3,7 +3,7 @@
  * Handle frontend forms
  *
  * @class 		SP_Frontend_Scripts
- * @version		1.7
+ * @version		1.9
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -78,7 +78,7 @@ class SP_Frontend_Scripts {
 		if ( is_singular( 'sp_event' ) || is_tax( 'sp_venue' ) ):
 			wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array(), '3.exp', true );
 			wp_enqueue_script( 'sp-maps', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/sp-maps.js', array( 'jquery', 'google-maps' ), time(), true );
-			wp_localize_script( 'sp-maps', 'vars', array( 'map_type' => strtoupper( get_option( 'sportspress_map_type', 'ROADMAP' ) ) ) );
+			wp_localize_script( 'sp-maps', 'vars', array( 'map_type' => strtoupper( get_option( 'sportspress_map_type', 'ROADMAP' ) ), 'zoom' => get_option( 'sportspress_map_zoom', 15 ) ) );
 		endif;
 
 		// Localize scripts

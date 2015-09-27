@@ -5,7 +5,7 @@
  * The SportsPress event class handles individual event data.
  *
  * @class 		SP_Event
- * @version		1.7.2
+ * @version		1.9
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -75,7 +75,7 @@ class SP_Event extends SP_Custom_Post{
 	public function performance( $admin = false ) {
 		$teams = get_post_meta( $this->ID, 'sp_team', false );
 		$performance = (array)get_post_meta( $this->ID, 'sp_players', true );
-		$labels = sp_get_var_labels( 'sp_performance' );
+		$labels = apply_filters( 'sportspress_event_performance_labels', sp_get_var_labels( 'sp_performance' ), $this );
 		$columns = get_post_meta( $this->ID, 'sp_columns', true );
 		if ( is_array( $teams ) ):
 			foreach( $teams as $i => $team_id ):
@@ -114,7 +114,9 @@ class SP_Event extends SP_Custom_Post{
 			return array( $labels, $columns, $performance, $teams );
 		else:
 			// Add position to performance labels
-			$labels = array_merge( array( 'position' => __( 'Position', 'sportspress' )  ), $labels );
+			if ( taxonomy_exists( 'sp_position' ) ):
+				$labels = array_merge( array( 'position' => __( 'Position', 'sportspress' )  ), $labels );
+			endif;
 			if ( 'manual' == get_option( 'sportspress_event_performance_columns', 'auto' ) && is_array( $columns ) ):
 				foreach ( $labels as $key => $label ):
 					if ( ! in_array( $key, $columns ) ):
@@ -296,8 +298,17 @@ class SP_Event extends SP_Custom_Post{
 					}
 				}
 			} else {
-				reset( $primary_results );
-				$max = key( $primary_results );
+				// Get default outcomes
+				$args = array(
+					'post_type' => 'sp_outcome',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'meta_key' => 'sp_condition',
+					'meta_value' => 'else',
+				);
+				$default_outcomes = get_posts( $args );
+
+				// Get greater than outcomes
 				$args = array(
 					'post_type' => 'sp_outcome',
 					'numberposts' => -1,
@@ -305,16 +316,10 @@ class SP_Event extends SP_Custom_Post{
 					'meta_key' => 'sp_condition',
 					'meta_value' => '>',
 				);
-				$outcomes = get_posts( $args );
-				if ( $outcomes ) {
-					$meta[ $max ][ 'outcome' ] = array();
-					foreach ( $outcomes as $outcome ) {
-						$meta[ $max ][ 'outcome' ][] = $outcome->post_name;
-					}
-				}
+				$gt_outcomes = get_posts( $args );
+				if ( empty ( $gt_outcomes ) ) $gt_outcomes = $default_outcomes;
 
-				end( $primary_results );
-				$min = key( $primary_results );
+				// Get less than outcomes
 				$args = array(
 					'post_type' => 'sp_outcome',
 					'numberposts' => -1,
@@ -322,11 +327,24 @@ class SP_Event extends SP_Custom_Post{
 					'meta_key' => 'sp_condition',
 					'meta_value' => '<',
 				);
-				$outcomes = get_posts( $args );
-				if ( $outcomes ) {
-					$meta[ $min ][ 'outcome' ] = array();
+				$lt_outcomes = get_posts( $args );
+				if ( empty ( $lt_outcomes ) ) $lt_outcomes = $default_outcomes;
+
+				// Get min and max values
+				$min = min( $primary_results );
+				$max = max( $primary_results );
+
+				foreach ( $primary_results as $key => $value ) {
+					if ( $min == $value ) {
+						$outcomes = $lt_outcomes;
+					} elseif ( $max == $value ) {
+						$outcomes = $gt_outcomes;
+					} else {
+						$outcomes = $default_outcomes;
+					}
+					$meta[ $key ][ 'outcome' ] = array();
 					foreach ( $outcomes as $outcome ) {
-						$meta[ $min ][ 'outcome' ][] = $outcome->post_name;
+						$meta[ $key ][ 'outcome' ][] = $outcome->post_name;
 					}
 				}
 			}

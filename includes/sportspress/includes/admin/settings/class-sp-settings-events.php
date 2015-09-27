@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.8.7
+ * @version     1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -56,7 +56,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 				apply_filters( 'sportspress_event_template_options', array(
 					array(
-						'title'     => __( 'Templates', 'sportspress' ),
+						'title'     => __( 'Display', 'sportspress' ),
 						'desc' 		=> __( 'Logos', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_logos',
 						'default'	=> 'yes',
@@ -116,7 +116,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'desc' 		=> __( 'teams', 'sportspress' ),
 						'type' 		=> 'number',
 						'custom_attributes' => array(
-							'min' 	=> 1,
+							'min' 	=> 0,
 							'step' 	=> 1
 						),
 					),
@@ -215,6 +215,30 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
+				array( 'title' => __( 'Venues', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'venue_options' ),
+			),
+
+			apply_filters( 'sportspress_venue_options', array(
+				array(
+					'title' 	=> __( 'Zoom', 'sportspress' ),
+					'id' 		=> 'sportspress_map_zoom',
+					'class' 	=> 'small-text',
+					'default'	=> '15',
+					'desc' 		=> '0 - 21',
+					'type' 		=> 'number',
+					'custom_attributes' => array(
+						'min' 	=> 0,
+						'max' 	=> 21,
+						'step' 	=> 1
+					),
+				),
+			) ),
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'venue_options' ),
+			),
+
+			array(
 				array( 'title' => __( 'Event Results', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'result_options' ),
 			),
 
@@ -271,14 +295,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
 					'checkboxgroup'	=> '',
-				),
-
-				array(
-					'desc' 		=> __( 'Extras', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_extras',
-					'default'	=> 'no',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> '',
 				),
 
 				array(
@@ -401,7 +417,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 	public function delimiter_setting() {
 		$selection = get_option( 'sportspress_event_teams_delimiter', 'vs' );
 		$limit = get_option( 'sportspress_event_teams', 2 );
-		$example = str_repeat( __( 'Team', 'sportspress' ) . ' %1$s ', $limit );
+		if ( 0 == $limit ) {
+			$limit = 2;
+		}
+		if ( 3 >= $limit ) {
+			$example = str_repeat( __( 'Team', 'sportspress' ) . ' %1$s ', $limit );
+		} else {
+			$example = str_repeat( __( 'Team', 'sportspress' ) . ' %1$s ', 3 ) . '&hellip;';
+		}
 		$example = rtrim( $example, ' %1$s ' );
 		?>
 		<tr valign="top">

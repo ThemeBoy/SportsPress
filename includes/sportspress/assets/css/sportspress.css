@@ -1,5 +1,17 @@
 /* SportsPress */
 
+.sp-align-left {
+	text-align: left;
+}
+
+.sp-align-right {
+	text-align: right;
+}
+
+.sp-align-center {
+	text-align: center;
+}
+
 /* Header */
 .sp-header {
 	position: relative;
@@ -30,7 +42,9 @@
 /* Data Tables */
 .sp-scrollable-table-wrapper {
 	width: 100%;
-	overflow: auto;
+	overflow: hidden;
+	overflow-x: auto;
+	position: relative;
 }
 .sp-data-table {
 	width: 100%;
@@ -103,6 +117,24 @@
 	cursor: default;
 }
 
+/* Post Excerpt */
+.sp-excerpt {
+	display: block;
+	margin-bottom: 1em;
+}
+
+/* Featured Image */
+.single-sp_team.sp-show-image .wp-post-image,
+.single-sp_player.sp-show-image .wp-post-image,
+.single-sp_staff.sp-show-image .wp-post-image {
+	display: none;
+}
+.single-sp_team.sp-show-image .sp-template .wp-post-image,
+.single-sp_player.sp-show-image .sp-template .wp-post-image,
+.single-sp_staff.sp-show-image .sp-template .wp-post-image {
+	display: block;
+}
+
 /* League Table */
 .sp-league-table td.has-logo {
 	line-height: 2em;
@@ -126,7 +158,8 @@
 .sp-player-list td {
 	line-height: 2em;
 }
-.sp-player-list .data-name .player-photo {
+.sp-player-list .data-name .player-photo,
+.sp-player-list .data-name .player-flag {
 	width: 2em;
 	height: 2em;
 	margin-right: 0.25em;
@@ -134,7 +167,8 @@
 	float: left;
 	text-align: center;
 }
-.sp-player-list .data-name .player-photo img {
+.sp-player-list .data-name .player-photo img,
+.sp-player-list .data-name .player-flag img {
 	width: auto;
 	height: auto;
 	max-width: 2em;
@@ -155,6 +189,28 @@
 .sp-event-logos img {
 	display: inline !important;
 	vertical-align: middle;
+}
+
+/* Events */
+.sp-event-overview,
+.sp-event-performance-tables {
+	overflow: hidden;
+	clear: both;
+}
+
+/* Event Logos */
+.sp-event-logos .sp-team-logo {
+	white-space: nowrap;
+	display: block;
+}
+
+.sp-event-logos .sp-team-logo .sp-team-result {
+	display: block;
+	margin: 0 0 1em;
+}
+
+.sp-event-logos .sp-team-logo:last-child .sp-team-result {
+	margin-bottom: 0;
 }
 
 /* Event Venue */
@@ -366,5 +422,20 @@
 	}
 	.sp-mobile {
 		display: none;
+	}
+}
+
+@media screen and (min-width: 601px) {
+	.sp-event-logos .sp-team-logo {
+		display: inline-block;
+	}
+
+	.sp-event-logos-2 .sp-team-logo {
+		display: inline;
+	}
+
+	.sp-event-logos-2 .sp-team-logo .sp-team-result {
+		display: inline-block;
+		margin: 0 0.25em;
 	}
 }

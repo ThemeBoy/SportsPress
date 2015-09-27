@@ -5,7 +5,7 @@
  * The SportsPress admin sample data class stores demo content.
  *
  * @class 		SP_Admin_Sample_Data
- * @version		1.6
+ * @version		1.9
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
@@ -112,17 +112,17 @@ class SP_Admin_Sample_Data {
 		// Define teams
 		$teams = array(
 			array(
-				'name' => 'Bentleigh Bluebirds',
+				'name' => 'Bluebirds',
 				'abbreviation' => 'BENT',
 				'url' => 'http://tboy.co/bluebirds',
 			),
 			array(
-				'name' => 'Essendon Eagles',
+				'name' => 'Eagles',
 				'abbreviation' => 'ESS',
 				'url' => 'http://tboy.co/eagles',
 			),
 			array(
-				'name' => 'Kensington Kangaroos',
+				'name' => 'Kangaroos',
 				'abbreviation' => 'KENS',
 				'url' => 'http://tboy.co/kangaroos',
 			),
@@ -222,7 +222,9 @@ class SP_Admin_Sample_Data {
 			$taxonomies = array( 'sp_position' );
 			foreach ( $taxonomies as $taxonomy ) {
 				$terms = get_terms( $taxonomy, array( 'hide_empty' => 0, 'fields' => 'ids', 'orderby' => 'slug', 'number' => 1, 'offset' => $index % 4 ) );
-				$post['tax_input'][ $taxonomy ] = $terms;
+				if ( $terms && ! is_wp_error( $terms ) ) {
+					$post['tax_input'][ $taxonomy ] = $terms;
+				}
 			};
 
 			// Insert post

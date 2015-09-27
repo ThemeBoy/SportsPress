@@ -9,7 +9,7 @@
 			var ll = new google.maps.LatLng(latitude,longitude);
 			var mapOptions = {
 				scrollwheel: false,
-				zoom: 12,
+				zoom: parseInt(vars.zoom),
 				center: ll,
 				mapTypeId: google.maps.MapTypeId[vars.map_type]
 			};

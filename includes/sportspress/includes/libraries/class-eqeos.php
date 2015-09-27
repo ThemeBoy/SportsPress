@@ -21,6 +21,8 @@
  * developer.  It is a safe way to evaluate expressions without putting
  * the system at risk.
  *
+ * Modified as per https://github.com/jlawrence11/eos/issues/2
+ *
  * 2013/04 UPDATE:
  * - Moved to native class functions for PHP5
  * - Removed deprecated `eregi` calls to `preg_match`
@@ -350,7 +352,7 @@ class eqEOS {
 		preg_replace("/\s/", "", $infix);
 
 		//Find all the variables that were passed and replaces them
-		while((preg_match('/(.){0,1}[&$]([a-zA-Z_]+)(.){0,1}/', $infix, $match)) != 0) {
+		while((preg_match('/(.){0,1}[&$]([a-zA-Z0-9_]+)(.){0,1}/', $infix, $match)) != 0) {
 
 			//remove notices by defining if undefined.
 			if(!isset($match[3])) {

@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.7
+ * @version     1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -41,6 +41,13 @@ class SP_Admin_Meta_Boxes {
 					'title' => __( 'Details', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Result_Details::save',
 					'output' => 'SP_Meta_Box_Result_Details::output',
+					'context' => 'side',
+					'priority' => 'default',
+				),
+				'equation' => array(
+					'title' => __( 'Equation', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Result_Equation::save',
+					'output' => 'SP_Meta_Box_Result_Equation::output',
 					'context' => 'normal',
 					'priority' => 'high',
 				),
@@ -287,6 +294,18 @@ class SP_Admin_Meta_Boxes {
 	public function rename_meta_boxes() {
 		remove_meta_box( 'submitdiv', 'sp_event', 'side' );
 		add_meta_box( 'submitdiv', __( 'Event', 'sportspress' ), 'post_submit_meta_box', 'sp_event', 'side', 'high' );
+
+		remove_meta_box( 'postimagediv', 'sp_team', 'side' );
+		add_meta_box( 'postimagediv', __( 'Logo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_team', 'side', 'low' );
+
+		remove_meta_box( 'postimagediv', 'sp_player', 'side' );
+		add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_player', 'side', 'low' );
+
+		remove_meta_box( 'postimagediv', 'sp_staff', 'side' );
+		add_meta_box( 'postimagediv', __( 'Photo', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_staff', 'side', 'low' );
+
+		remove_meta_box( 'postimagediv', 'sp_performance', 'side' );
+		add_meta_box( 'postimagediv', __( 'Icon', 'sportspress' ), 'post_thumbnail_meta_box', 'sp_performance', 'side', 'low' );
 	}
 
 	/**
@@ -301,7 +320,7 @@ class SP_Admin_Meta_Boxes {
 		if ( is_int( wp_is_post_revision( $post ) ) ) return;
 		if ( is_int( wp_is_post_autosave( $post ) ) ) return;
 		if ( empty( $_POST['sportspress_meta_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_meta_nonce'], 'sportspress_save_data' ) ) return;
-		if ( ! current_user_can( 'edit_post', $post_id  ) ) return;
+		if ( ! apply_filters( 'sportspress_user_can', current_user_can( 'edit_post', $post_id  ), $post_id ) ) return;
 		if ( ! is_sp_post_type( $post->post_type ) && ! is_sp_config_type( $post->post_type ) ) return;
 
 		do_action( 'sportspress_process_' . $post->post_type . '_meta', $post_id, $post );

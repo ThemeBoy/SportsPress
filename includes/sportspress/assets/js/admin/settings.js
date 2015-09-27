@@ -57,7 +57,7 @@ jQuery(document).ready(function($){
 		val = $(this).val();
 		if ( val === undefined ) return true;
 		format = $(this).attr("data-example-format");
-		example = format.replace("__val__", val);
+		example = format.replace(/__val__/g, val);
 		$(this).siblings(".example").html(example);
 	});
 

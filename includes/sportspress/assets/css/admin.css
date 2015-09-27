@@ -257,6 +257,8 @@ table.widefat.sp-data-table input[type="text"],
 table.widefat.sp-data-table input[type="number"] {
 	min-width: 1.25em;
 	width: 100%;
+    margin: 1px;
+    padding: 3px 5px;
 }
 
 table.widefat.sp-data-table input.small-text {
@@ -460,6 +462,11 @@ table.widefat.sp-sortable-table tbody tr .icon {
 .chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
 	transition: none;
 	-webkit-transition: none;
+}
+
+/* Paragraph */
+.sp-para {
+	margin: 1em 0;
 }
 
 /* TipTip */

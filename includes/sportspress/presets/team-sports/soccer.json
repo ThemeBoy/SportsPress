@@ -7,9 +7,9 @@
 						"Forward"
 	],
 	"outcomes": [
-						{ "name" : "Win", "condition" : ">" },
-						{ "name" : "Draw", "condition" : "=" },
-						{ "name" : "Loss", "condition" : "<" }
+						{ "name" : "Win", "condition" : ">", "description" : "Wins" },
+						{ "name" : "Draw", "condition" : "=", "description" : "Draws" },
+						{ "name" : "Loss", "condition" : "<", "description" : "Losses" }
 	],
 	"results": [
 						{ "name" : "1st Half", "description" : "1st half goals" },
@@ -17,10 +17,10 @@
 						{ "name" : "Goals", "description" : "Total goals", "primary" : 1 }
 	],
 	"performance": [
-						"Goals",
-						"Assists",
-						"Yellow Cards",
-						"Red Cards"
+						{ "name" : "Goals", "description" : "Goals", "icon" : "soccerball", "color" : "#222222" },
+						{ "name" : "Assists", "description" : "Assists", "icon" : "shoe", "color" : "#222222" },
+						{ "name" : "Yellow Cards", "description" : "Yellow cards", "icon" : "card", "color" : "#f4d014" },
+						{ "name" : "Red Cards", "description" : "Red cards", "icon" : "card", "color" : "#d4000f" }
 	],
 	"columns": [
 						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
@@ -33,13 +33,23 @@
 						{ "name" : "Pts", "equation" : "$win * 3 + $draw", "priority" : 1, "description" : "Team points" }
 	],
 	"metrics": [
-						"Height",
-						"Weight"
+						{ "name" : "Height", "description" : "Player height" },
+						{ "name" : "Weight", "description" : "Player weight" }
 	],
 	"statistics": [
 						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" },
-						{ "name" : "Win Ratio", "equation" : "$win / $eventsplayed * 100", "precision" : 2 },
-						{ "name" : "Draw Ratio", "equation" : "$draw / $eventsplayed * 100", "precision" : 2 },
-						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 100", "precision" : 2 }
-	]
+						{ "name" : "Win Ratio", "equation" : "$win / $eventsplayed * 100", "precision" : 2, "description" : "Win ratio" },
+						{ "name" : "Draw Ratio", "equation" : "$draw / $eventsplayed * 100", "precision" : 2, "description" : "Draw ratio" },
+						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 100", "precision" : 2, "description" : "Loss ratio" }
+	],
+	"options": {
+						"event_teams" : "2",
+						"event_show_players" : "yes",
+						"event_show_total" : "no",
+						"sportspress_event_performance_mode" : "icons",
+						"event_show_player_numbers" : "yes",
+						"event_split_players_by_team" : "yes",
+						"event_split_players_by_position" : "no",
+						"sportspress_event_total_performance" : "all"
+	}
 }
