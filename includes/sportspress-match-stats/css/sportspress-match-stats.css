@@ -3,15 +3,18 @@
 }
 
 .sp-statistic-label {
+	display: block;
 	text-align: center;
+	clear: both;
 }
 
 .sp-statistic-value {
 	vertical-align: middle;
+	width: 10%;
 }
 
 .sp-statistic-ratio {
-	width: 100%;
+	width: 80%;
 }
 
 .sp-statistic-bar {
@@ -28,6 +31,10 @@
 	.sp-inline-statistics .sp-event-performance-teams .sp-template-event-performance {
 		box-sizing: border-box;
 		width: 30%;
+	}
+
+	.sp-inline-statistics .sp-event-performance-teams .sp-template-event-performance-combined {
+		width: 60%;
 	}
 
 	.sp-inline-statistics .sp-event-performance-teams .sp-template-event-statistics {

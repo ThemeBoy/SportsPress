@@ -99,6 +99,9 @@ class SportsPress_Match_Stats {
 	 */
 	public function body_class( $classes = array() ) {
 		if ( 'sp_event' == get_post_type() && 'yes' == get_option( 'sportspress_event_show_statistics', 'yes' ) && 'icons' == get_option( 'sportspress_event_performance_mode', 'values' ) ) {
+			$event = new SP_Event( get_the_ID() );
+			$status = $event->status();
+			if ( 'results' !== $status ) return $classes;
 			$classes[] = 'sp-inline-statistics';
 		}
 		return $classes;
