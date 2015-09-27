@@ -262,7 +262,7 @@ jQuery(document).ready(function($){
 	$(".sp-data-table .sp-total input").trigger("updateTotal");
 
 	// Select all checkboxes
-	$(".sp-select-all").change(function() {
+	$(".sp-select-all-range").on("change", ".sp-select-all", function() {
 		$range = $(this).closest(".sp-select-all-range");
 		$range.find("input[type=checkbox]").prop("checked", $(this).prop("checked"));
 	});
