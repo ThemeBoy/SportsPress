@@ -91,8 +91,10 @@ class SP_Meta_Box_List_Details {
 				</select>
 			</p>
 			<?php
-			sp_post_checklist( $post->ID, 'sp_player', ( 'auto' == $select ? 'none' : 'block' ), array( 'sp_league', 'sp_season', 'sp_current_team' ) );
-			sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
+			if ( 'manual' == $select ) {
+				sp_post_checklist( $post->ID, 'sp_player', ( 'auto' == $select ? 'none' : 'block' ), array( 'sp_league', 'sp_season', 'sp_current_team' ) );
+				sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
+			}
 			?>
 		</div>
 		<?php
