@@ -49,6 +49,7 @@ class SportsPress_Tournaments {
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ), 30 );
 		add_filter( 'sportspress_event_settings', array( $this, 'add_options' ) );
+		add_filter( 'sportspress_team_access_post_types', array( $this, 'add_post_type' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -205,49 +206,55 @@ class SportsPress_Tournaments {
 	 * @return array
 	 */
 	public function add_options( $settings ) {
-		return array_merge( $settings, array(
-			array( 'title' => __( 'Tournaments', 'sportspress' ), 'type' => 'title', 'id' => 'tournament_options' ),
-
+		return array_merge( $settings,
 			array(
-				'title'     => __( 'Teams', 'sportspress' ),
-				'desc' 		=> __( 'Display logos', 'sportspress' ),
-				'id' 		=> 'sportspress_tournament_show_logos',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
+				array( 'title' => __( 'Tournaments', 'sportspress' ), 'type' => 'title', 'id' => 'tournament_options' ),
 			),
 
-			array(
-				'title'     => __( 'Details', 'sportspress' ),
-				'desc' 		=> __( 'Display venue', 'sportspress' ),
-				'id' 		=> 'sportspress_tournament_show_venue',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox',
-				'checkboxgroup' => 'start',
-			),
-
-			array(
-				'desc' 		=> __( 'Display winner', 'sportspress' ),
-				'id' 		=> 'sportspress_tournament_show_winner',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-				'checkboxgroup' => 'end',
-			),
-				
-			array(
-				'title' 	=> __( 'Limit', 'sportspress' ),
-				'id' 		=> 'sportspress_tournament_rounds',
-				'class' 	=> 'small-text',
-				'default'	=> '6',
-				'desc' 		=> __( 'rounds', 'sportspress' ),
-				'type' 		=> 'number',
-				'custom_attributes' => array(
-					'min' 	=> 1,
-					'step' 	=> 1
+			apply_filters( 'sportspress_post_type_options', array(
+				array(
+					'title'     => __( 'Teams', 'sportspress' ),
+					'desc' 		=> __( 'Display logos', 'sportspress' ),
+					'id' 		=> 'sportspress_tournament_show_logos',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
 				),
-			),
 
-			array( 'type' => 'sectionend', 'id' => 'tournament_options' ),
-		) );
+				array(
+					'title'     => __( 'Details', 'sportspress' ),
+					'desc' 		=> __( 'Display venue', 'sportspress' ),
+					'id' 		=> 'sportspress_tournament_show_venue',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup' => 'start',
+				),
+
+				array(
+					'desc' 		=> __( 'Display winner', 'sportspress' ),
+					'id' 		=> 'sportspress_tournament_show_winner',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup' => 'end',
+				),
+					
+				array(
+					'title' 	=> __( 'Limit', 'sportspress' ),
+					'id' 		=> 'sportspress_tournament_rounds',
+					'class' 	=> 'small-text',
+					'default'	=> '6',
+					'desc' 		=> __( 'rounds', 'sportspress' ),
+					'type' 		=> 'number',
+					'custom_attributes' => array(
+						'min' 	=> 1,
+						'step' 	=> 1
+					),
+				),
+			), 'tournament' ),
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'tournament_options' ),
+			)
+		);
 	}
 
 
