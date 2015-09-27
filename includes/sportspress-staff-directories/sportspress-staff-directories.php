@@ -60,6 +60,7 @@ class SportsPress_Staff_Directories {
 		add_filter( 'sportspress_shortcodes', array( $this, 'add_shortcodes' ) );
 		add_filter( 'sportspress_tinymce_strings', array( $this, 'add_tinymce_strings' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_filter( 'sportspress_team_access_post_types', array( $this, 'add_post_type' ) );
 
 		if ( defined( 'SP_PRO_PLUGIN_FILE' ) )
 			register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
@@ -264,32 +265,38 @@ class SportsPress_Staff_Directories {
 			),
 		) );
 
-		return array_merge( $settings, array(
-			array( 'title' => __( 'Staff Directories', 'sportspress' ), 'type' => 'title', 'id' => 'directory_options' ),
-
+		return array_merge( $settings,
 			array(
-				'title'     => __( 'Pagination', 'sportspress' ),
-				'desc' 		=> __( 'Paginate', 'sportspress' ),
-				'id' 		=> 'sportspress_directory_paginated',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
+				array( 'title' => __( 'Staff Directories', 'sportspress' ), 'type' => 'title', 'id' => 'directory_options' ),
 			),
-			
-			array(
-				'title' 	=> __( 'Limit', 'sportspress' ),
-				'id' 		=> 'sportspress_directory_rows',
-				'class' 	=> 'small-text',
-				'default'	=> '10',
-				'desc' 		=> __( 'staff', 'sportspress' ),
-				'type' 		=> 'number',
-				'custom_attributes' => array(
-					'min' 	=> 1,
-					'step' 	=> 1
+
+			apply_filters( 'sportspress_post_type_options', array(
+				array(
+					'title'     => __( 'Pagination', 'sportspress' ),
+					'desc' 		=> __( 'Paginate', 'sportspress' ),
+					'id' 		=> 'sportspress_directory_paginated',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
 				),
-			),
+				
+				array(
+					'title' 	=> __( 'Limit', 'sportspress' ),
+					'id' 		=> 'sportspress_directory_rows',
+					'class' 	=> 'small-text',
+					'default'	=> '10',
+					'desc' 		=> __( 'staff', 'sportspress' ),
+					'type' 		=> 'number',
+					'custom_attributes' => array(
+						'min' 	=> 1,
+						'step' 	=> 1
+					),
+				),
+			), 'directory' ),
 
-			array( 'type' => 'sectionend', 'id' => 'directory_options' ),
-		) );
+			array(
+				array( 'type' => 'sectionend', 'id' => 'directory_options' ),
+			)
+		);
 	}
 
 	/**
@@ -409,7 +416,6 @@ class SportsPress_Staff_Directories {
 	public function output_team_directories() {
 		sp_get_template( 'team-directories.php', array(), '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 	}
-
 
 	/**
 	 * Register widgets
