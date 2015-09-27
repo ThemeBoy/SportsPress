@@ -451,6 +451,9 @@ class SP_Admin_Welcome {
 					'slappfiskene.no',
 					'vetsmi',
 				),
+				'فارسی' => array(
+					'mahdi12',
+				),
 				'Polski' => array(
 					'karimjarro',
 					'krisop',

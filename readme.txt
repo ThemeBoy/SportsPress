@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.3
-Stable tag: 1.9.3
+Stable tag: 1.9.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,11 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 * Certified compatibility with [WPML](http://wpml.org/plugin/sportspress/)
 
 More details about each feature are available on the [SportsPress Website](http://tboy.co/pro).
+
+= Free Extensions =
+* [SportsPress for Cricket](https://wordpress.org/plugins/sportspress-for-cricket/)
+* [SportsPress for Football (Soccer)](https://wordpress.org/plugins/sportspress-for-soccer/)
+* [SportsPress for Golf](https://wordpress.org/plugins/sportspress-for-golf/)
 
 = SportsPress Pro =
 
@@ -229,6 +234,12 @@ There are [4 different licenses](http://tboy.co/pro) that you can choose from: S
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.9.4 =
+* Feature - Add Home and Away subset options to table column equation builder.
+* Tweak - Display player and team checklists in admin only when Manual mode is enabled to improve performance.
+* Localization - Add mahdi12 to translation team.
+* Localization - Update Persian and Polish translation.
 
 = 1.9.3 =
 * Fix - Event results skipping some players in player list.
