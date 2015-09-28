@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.3
-Stable tag: 1.9.4
+Stable tag: 1.9.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -234,6 +234,9 @@ There are [4 different licenses](http://tboy.co/pro) that you can choose from: S
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.9.5 =
+* Fix - Streaks calculation in league tables.
 
 = 1.9.4 =
 * Feature - Add Home and Away subset options to table column equation builder.
