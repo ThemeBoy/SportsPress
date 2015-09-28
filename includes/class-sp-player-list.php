@@ -201,7 +201,7 @@ class SP_Player_List extends SP_Custom_Post {
 			'post_type' => 'sp_event',
 			'numberposts' => -1,
 			'posts_per_page' => -1,
-			'order' => 'ASC',
+			'order' => 'DESC',
 			'meta_query' => array(
 				array(
 					'key' => 'sp_format',

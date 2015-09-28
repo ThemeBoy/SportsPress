@@ -179,7 +179,7 @@ class SP_League_Table extends SP_Custom_Post{
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'post_date',
-			'order' => 'ASC',
+			'order' => 'DESC',
 			'meta_query' => array(
 				array(
 					'key' => 'sp_format',
