@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version     1.9.4
+ * @version     1.9.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -179,7 +179,7 @@ class SP_League_Table extends SP_Custom_Post{
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'post_date',
-			'order' => 'ASC',
+			'order' => 'DESC',
 			'meta_query' => array(
 				array(
 					'key' => 'sp_format',
