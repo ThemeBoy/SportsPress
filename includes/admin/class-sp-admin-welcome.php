@@ -455,6 +455,7 @@ class SP_Admin_Welcome {
 					'mahdi12',
 				),
 				'Polski' => array(
+					'Elmister',
 					'karimjarro',
 					'krisop',
 				),
@@ -485,12 +486,11 @@ class SP_Admin_Welcome {
 				'Српски језик' => array(
 					'etcloki',
 				),
-				'Slovenčina' => array(
-					'matiqos',
-				),
 				'Slovenščina' => array(
+					'Ales70',
 					'BOCo',
 					'cofeman.sl',
+					'matiqos',
 				),
 				'Español' => array(
 					'albertone',
@@ -506,6 +506,9 @@ class SP_Admin_Welcome {
 				'Svenska' => array(
 					'JensZ',
 					'fiiz',
+				),
+				'தமிழ்' => array(
+					'chinnz25',
 				),
 				'Türkçe' => array(
 					'ALooNeBoy87',
