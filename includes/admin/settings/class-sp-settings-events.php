@@ -85,7 +85,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'checkboxgroup'		=> '',
 					),
 					array(
-						'desc' 		=> __( 'Box Score', 'sportspress' ),
+						'desc' 		=> __( 'Scorecard', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_performance',
 						'default'	=> 'yes',
 						'type' 		=> 'checkbox',
@@ -276,7 +276,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
-				array( 'title' => __( 'Box Score', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'performance_options' ),
+				array( 'title' => __( 'Scorecard', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'performance_options' ),
 			),
 
 			apply_filters( 'sportspress_performance_options', array(

@@ -138,7 +138,7 @@ class SP_Admin_Meta_Boxes {
 					'priority' => 'high',
 				),
 				'performance' => array(
-					'title' => __( 'Box Score', 'sportspress' ),
+					'title' => __( 'Scorecard', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Event_Performance::save',
 					'output' => 'SP_Meta_Box_Event_Performance::output',
 					'context' => 'normal',

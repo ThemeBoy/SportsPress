@@ -90,7 +90,7 @@ class SportsPress_Tutorials {
 				) ),
 				__( 'Events', 'sportspress' ) => apply_filters( 'sportspress_event_advanced_videos', array(
 					__( 'Event Outcomes', 'sportspress' ) . ' ' . __( '(Auto)', 'sportspress' ) => '//www.youtube-nocookie.com/embed/pCVfPv2O5yY?rel=0&amp;showinfo=0',
-					__( 'Box Score', 'sportspress' ) => '//www.youtube-nocookie.com/embed/rERU6X7vjTc?rel=0&amp;showinfo=0',
+					__( 'Scorecard', 'sportspress' ) => '//www.youtube-nocookie.com/embed/rERU6X7vjTc?rel=0&amp;showinfo=0',
 				) ),
 				__( 'Calendars', 'sportspress' ) => apply_filters( 'sportspress_calendar_advanced_videos', array(
 					__( 'Layout', 'sportspress' ) => '//www.youtube-nocookie.com/embed/aLx_5D0Xgnc?rel=0&amp;showinfo=0',
