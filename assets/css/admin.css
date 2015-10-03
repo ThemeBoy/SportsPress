@@ -320,6 +320,10 @@ table.widefat.sp-sortable-table tbody tr .icon {
 	cursor: move;
 }
 
+.sp-not-found-container {
+	display: none;
+}
+
 .sp-settings-bar {
 	float: none;
 	clear: both;
