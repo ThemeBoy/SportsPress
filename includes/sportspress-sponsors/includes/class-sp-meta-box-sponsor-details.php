@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress Sponsors
- * @version     1.0
+ * @version     1.9.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -43,16 +43,16 @@ class SP_Meta_Box_Sponsor_Details {
 		$clicks = get_post_meta( $post->ID, 'sp_clicks', true );
 		?>
 		<p><strong><?php _e( 'Site URL', 'sportspress' ); ?></strong></p>
-		<p><input type="text" class="widefat" id="sp_url" name="sp_url" value="<?php echo $url; ?>"></p>
+		<p><input type="text" class="widefat" id="sp_url" name="sp_url" value="<?php echo esc_attr( $url ); ?>"></p>
 		<?php if ( $url ): ?>
-			<p><a class="sp-link" title="<?php _e( 'Visit Site', 'sportspress' ); ?>" href="<?php echo $url; ?>" target="_blank"><?php _e( 'Visit Site', 'sportspress' ); ?></a></p>
+			<p><a class="sp-link" title="<?php _e( 'Visit Site', 'sportspress' ); ?>" href="<?php echo esc_url( $url ); ?>" target="_blank"><?php _e( 'Visit Site', 'sportspress' ); ?></a></p>
 		<?php endif; ?>
 
 		<p><strong><?php _e( 'Impressions', 'sportspress' ); ?></strong></p>
-		<p><input type="text" class="widefat" id="sp_impressions" name="sp_impressions" value="<?php echo $impressions; ?>" readonly="readonly"></p>
+		<p><input type="text" class="widefat" id="sp_impressions" name="sp_impressions" value="<?php echo esc_attr( $impressions ); ?>" readonly="readonly"></p>
 
 		<p><strong><?php _e( 'Clicks', 'sportspress' ); ?></strong></p>
-		<p><input type="text" class="widefat" id="sp_clicks" name="sp_clicks" value="<?php echo $clicks; ?>" readonly="readonly"></p>
+		<p><input type="text" class="widefat" id="sp_clicks" name="sp_clicks" value="<?php echo esc_attr( $clicks ); ?>" readonly="readonly"></p>
 		<?php
 	}
 

@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Allow SportsPress Pro to be updated directly from the dashboard.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.8.6
+Version: 1.9.7
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Updater' ) ) :
  * Main SportsPress Updater Class
  *
  * @class SportsPress_Updater
- * @version	1.8.6
+ * @version	1.9.7
  */
 class SportsPress_Updater {
 
@@ -51,7 +51,7 @@ class SportsPress_Updater {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_UPDATER_VERSION' ) )
-			define( 'SP_UPDATER_VERSION', '1.8.6' );
+			define( 'SP_UPDATER_VERSION', '1.9.7' );
 
 		if ( !defined( 'SP_UPDATER_URL' ) )
 			define( 'SP_UPDATER_URL', plugin_dir_url( __FILE__ ) );
@@ -116,7 +116,7 @@ class SportsPress_Updater {
 							<input type="hidden" name="sportspress_pro_license_key_deactivate" value="1">
 						</p>
 						<p>
-							<input name="sp_save_license" class="button button-secondary" type="submit" value="<?php _e( 'Deactivate', 'sportspress' ); ?>" />
+							<input name="sp_save_license" class="button button-secondary" type="submit" value="<?php esc_attr_e( 'Deactivate', 'sportspress' ); ?>" />
 						</p>
 						<?php if ( 'RM' == $this->file ) { ?>
 						<p class="sp-module-actions">
@@ -140,7 +140,7 @@ class SportsPress_Updater {
 							<input type="hidden" name="sportspress_pro_license_key_activate" value="1">
 						</p>
 						<p>
-							<input name="sp_save_license" class="button button-primary" type="submit" value="<?php _e( 'Activate', 'sportspress' ); ?>" />
+							<input name="sp_save_license" class="button button-primary" type="submit" value="<?php esc_attr_e( 'Activate', 'sportspress' ); ?>" />
 						</p>
 						<p class="sp-module-actions">
 							<span><?php _e( 'Need a license key?', 'sportspress' ); ?></span>

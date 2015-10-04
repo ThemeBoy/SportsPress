@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress_Staff_Directories
- * @version     1.7
+ * @version     1.9.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -236,7 +236,7 @@ class SP_Staff_Directory_Meta_Boxes {
 				<a class="sp-link" href="tel:<?php echo $phone; ?>" title="<?php _e( 'Phone', 'sportspress' ); ?>"></a>
 			<?php endif; ?>
 		</p>
-		<p><input type="text" id="sp_phone" name="sp_phone" value="<?php echo $phone; ?>"></p>
+		<p><input type="text" id="sp_phone" name="sp_phone" value="<?php echo esc_attr( $phone ); ?>"></p>
 
 		<p>
 			<strong><?php _e( 'Email', 'sportspress' ); ?></strong>
@@ -244,7 +244,7 @@ class SP_Staff_Directory_Meta_Boxes {
 				<a class="sp-link" href="mailto:<?php echo $email; ?>" title="<?php _e( 'Email', 'sportspress' ); ?>"></a>
 			<?php endif; ?>
 		</p>
-		<p><input type="text" id="sp_email" name="sp_email" value="<?php echo $email; ?>"></p>
+		<p><input type="text" id="sp_email" name="sp_email" value="<?php echo esc_attr( $email ); ?>"></p>
 		<?php
 	}
 

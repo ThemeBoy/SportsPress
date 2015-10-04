@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress_Tournaments
- * @version     1.7.4
+ * @version     1.9.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -290,7 +290,7 @@ class SP_Tournament_Meta_Boxes {
 				<tr>
 					<?php for ( $round = 0; $round < $rounds; $round++ ): ?>
 						<th>
-							<input type="text" class="widefat" name="sp_labels[]" value="<?php echo sp_array_value( $labels, $round, '' ); ?>" placeholder="<?php printf( __( 'Round %s', 'sportspress' ), $round + 1 ); ?>">
+							<input type="text" class="widefat" name="sp_labels[]" value="<?php echo esc_attr( sp_array_value( $labels, $round, '' ) ); ?>" placeholder="<?php printf( esc_attr__( 'Round %s', 'sportspress' ), $round + 1 ); ?>">
 						</th>
 					<?php endfor; ?>
 				</tr>
