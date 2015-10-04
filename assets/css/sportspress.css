@@ -123,18 +123,6 @@
 	margin-bottom: 1em;
 }
 
-/* Featured Image */
-.single-sp_team.sp-show-image .wp-post-image,
-.single-sp_player.sp-show-image .wp-post-image,
-.single-sp_staff.sp-show-image .wp-post-image {
-	display: none;
-}
-.single-sp_team.sp-show-image .sp-template .wp-post-image,
-.single-sp_player.sp-show-image .sp-template .wp-post-image,
-.single-sp_staff.sp-show-image .sp-template .wp-post-image {
-	display: block;
-}
-
 /* League Table */
 .sp-league-table td.has-logo {
 	line-height: 2em;

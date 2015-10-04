@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.3
-Stable tag: 1.9.6
+Stable tag: 1.9.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -236,6 +236,15 @@ There are [4 different licenses](http://tboy.co/pro) that you can choose from: S
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.9.8 =
+* Feature - Option to add custom table headings to calendars, league tables, and player lists.
+* Tweak - Revert automatically hiding featured images when viewing teams, players, and staff.
+* Fix - Team site URL escaping links in admin.
+
+= 1.9.7 =
+* Fix - Escape text inputs in admin.
+* Localization - Update German translation.
 
 = 1.9.6 =
 * Feature - Venue subset to reflect statistics from a team's home venue.

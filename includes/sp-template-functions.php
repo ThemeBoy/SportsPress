@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     1.9
+ * @version     1.9.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -298,7 +298,7 @@ if ( ! function_exists( 'sportspress_output_league_table' ) ) {
 	 * @return void
 	 */
 	function sportspress_output_league_table() {
-		sp_get_template( 'league-table.php', array( 'title' => __( 'League Table', 'sportspress' ) ) );
+		sp_get_template( 'league-table.php' );
 	}
 }
 

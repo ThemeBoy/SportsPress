@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.9
+ * @version     1.9.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -74,8 +74,13 @@ $output = '';
 if ( $grouping === 'position' ):
 	$groups = get_terms( 'sp_position', array( 'orderby' => 'slug' ) );
 else:
-	if ( $show_title && false === $title && $id )
-		get_the_title( $id );
+	if ( $show_title && false === $title && $id ):
+		$caption = $list->caption;
+		if ( $caption )
+			$title = $caption;
+		else
+			$title = get_the_title( $id );
+	endif;
 	if ( $title )
 		$output .= '<' . $grouptag . ' class="sp-table-caption">' . $title . '</' . $grouptag . '>';
 	$group = new stdClass();
