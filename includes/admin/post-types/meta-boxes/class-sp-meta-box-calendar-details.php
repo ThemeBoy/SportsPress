@@ -20,6 +20,7 @@ class SP_Meta_Box_Calendar_Details {
 	 */
 	public static function output( $post ) {
 		$taxonomies = get_object_taxonomies( 'sp_calendar' );
+		$caption = get_post_meta( $post->ID, 'sp_caption', true );
 		$status = get_post_meta( $post->ID, 'sp_status', true );
 		$date = get_post_meta( $post->ID, 'sp_date', true );
 		$date_from = get_post_meta( $post->ID, 'sp_date_from', true );
@@ -29,6 +30,9 @@ class SP_Meta_Box_Calendar_Details {
 		$order = get_post_meta( $post->ID, 'sp_order', true );
 		?>
 		<div>
+			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
+			<p><input type="text" id="sp_caption" name="sp_caption" value="<?php echo esc_attr( $caption ); ?>" placeholder="<?php echo esc_attr( get_the_title() ); ?>"></p>
+
 			<p><strong><?php _e( 'Status', 'sportspress' ); ?></strong></p>
 			<p>
 				<?php
@@ -96,6 +100,7 @@ class SP_Meta_Box_Calendar_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0 ) ) );
 		update_post_meta( $post_id, 'sp_status', sp_array_value( $_POST, 'sp_status', 0 ) );
 		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0 ) );
 		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null ) );

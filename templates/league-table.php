@@ -31,8 +31,13 @@ if ( ! isset( $highlight ) ) $highlight = get_post_meta( $id, 'sp_highlight', tr
 
 $table = new SP_League_Table( $id );
 
-if ( $show_title && false === $title && $id )
-	$title = get_the_title( $id );
+if ( $show_title && false === $title && $id ):
+	$caption = $table->caption;
+	if ( $caption )
+		$title = $caption;
+	else
+		$title = get_the_title( $id );
+endif;
 
 $output = '';
 

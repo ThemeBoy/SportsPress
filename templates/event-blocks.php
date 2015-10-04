@@ -53,8 +53,13 @@ if ( $order != 'default' )
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
 
-if ( $show_title && false === $title && $id )
-	$title = get_the_title( $id );
+if ( $show_title && false === $title && $id ):
+	$caption = $calendar->caption;
+	if ( $caption )
+		$title = $caption;
+	else
+		$title = get_the_title( $id );
+endif;
 
 if ( isset( $columns ) ) {
 	$usecolumns = $columns;
