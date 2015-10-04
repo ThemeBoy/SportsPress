@@ -320,6 +320,10 @@ table.widefat.sp-sortable-table tbody tr .icon {
 	cursor: move;
 }
 
+.sp-not-found-container {
+	display: none;
+}
+
 .sp-settings-bar {
 	float: none;
 	clear: both;
@@ -859,6 +863,10 @@ table.sp-status-table td mark.yes {
 .about-sportspress-wrap .form-table th {
 	width: auto;
 }
+.about-sportspress-wrap .sp-top-translations {
+	float: right;
+	margin-left: 20px;
+}
 .about-sportspress-wrap .sp-top-translations .hndle {
 	font-size: 14px;
 	padding: 8px 12px;
@@ -968,8 +976,9 @@ table.sp-status-table td mark.yes {
 		margin: -3px -7px -3px 10px;
 	}
 
-	.sportspress_page_sportspress-more iframe {
-		/*padding-left: 0;*/
+	.about-sportspress-wrap .sp-top-translations {
+		float: none;
+		margin-left: 0;
 	}
 }
 
@@ -981,6 +990,7 @@ table.sp-status-table td mark.yes {
 		margin-right: 0;
 		padding-right: 0;
 	}
+	
 	.about-sportspress-wrap .sp-badge {
 		float: none;
 		margin: 20px auto 10px;

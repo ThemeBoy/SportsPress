@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.9
+ * @version     1.9.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -97,7 +97,7 @@ class SP_Meta_Box_List_Data {
 										<a class="dashicons dashicons-edit sp-edit" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>
 									</span>
 									<span class="hidden sp-custom-value">
-										<input type="text" name="sp_players[<?php echo $player_id; ?>][name]" class="name sp-custom-value-input" value="<?php echo sp_array_value( $player_stats, 'name', '' ); ?>" placeholder="<?php echo get_the_title( $player_id ); ?>" size="6">
+										<input type="text" name="sp_players[<?php echo $player_id; ?>][name]" class="name sp-custom-value-input" value="<?php echo esc_attr( sp_array_value( $player_stats, 'name', '' ) ); ?>" placeholder="<?php echo esc_attr( get_the_title( $player_id ) ); ?>" size="6">
 										<a class="button button-secondary sp-cancel"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 										<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
 									</span>
@@ -124,7 +124,7 @@ class SP_Meta_Box_List_Data {
 									$value = sp_array_value( $player_stats, $column, '' );
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $player_id, array() ), $column, 0 );
 									?>
-									<td><input type="text" name="sp_players[<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="<?php echo $placeholder; ?>" data-placeholder="<?php echo $placeholder; ?>" data-matrix="<?php echo $player_id; ?>_<?php echo $column; ?>" data-adjustment="<?php echo sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $column, 0 ); ?>" /></td>
+									<td><input type="text" name="sp_players[<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>" data-matrix="<?php echo $player_id; ?>_<?php echo $column; ?>" data-adjustment="<?php echo sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $column, 0 ); ?>" /></td>
 								<?php endforeach; ?>
 							</tr>
 							<?php
@@ -172,7 +172,7 @@ class SP_Meta_Box_List_Data {
 									if ( $column == 'team' ) continue;
 									$value = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $column, '' );
 									?>
-									<td><input type="text" name="sp_adjustments[<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" data-matrix="<?php echo $player_id; ?>_<?php echo $column; ?>" /></td>
+									<td><input type="text" name="sp_adjustments[<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="0" data-matrix="<?php echo $player_id; ?>_<?php echo $column; ?>" /></td>
 								<?php endforeach; ?>
 							</tr>
 							<?php

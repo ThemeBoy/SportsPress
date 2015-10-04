@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     0.7
+ * @version     1.9.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,6 +19,7 @@ class SP_Meta_Box_Player_Metrics {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
+
 		$metrics = get_post_meta( $post->ID, 'sp_metrics', true );
 
 		$args = array(
@@ -35,7 +36,7 @@ class SP_Meta_Box_Player_Metrics {
 			foreach ( $vars as $var ):
 			?>
 			<p><strong><?php echo $var->post_title; ?></strong></p>
-			<p><input type="text" name="sp_metrics[<?php echo $var->post_name; ?>]" value="<?php echo sp_array_value( $metrics, $var->post_name, '' ); ?>" /></p>
+			<p><input type="text" name="sp_metrics[<?php echo $var->post_name; ?>]" value="<?php echo esc_attr( sp_array_value( $metrics, $var->post_name, '' ) ); ?>" /></p>
 			<?php
 			endforeach;
 		else:

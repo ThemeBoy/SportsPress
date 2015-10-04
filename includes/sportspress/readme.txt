@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.3
-Stable tag: 1.9.4
+Stable tag: 1.9.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,6 +77,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Korean – 한국어 ( ko_KR )
 * Macedonian – македонски ( mk_MK )
 * Norwegian Bokmål – Norsk bokmål ( nb_NO )
+* Persian – فارسی ( fa_IR )
 * Polish – Polski ( pl_PL )
 * Portuguese (Brazil) – Português do Brasil ( pt_BR )
 * Portuguese (Portugal) – Português ( pt_PT )
@@ -86,6 +87,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Slovenian – Slovenija ( sl_SI )
 * Spanish – Español ( es_ES )
 * Swedish – Svenska ( sv_SE )
+* Tamil – தமிழ் ( ta_IN )
 * Thai – ไทย ( th )
 * Turkish – Türkçe ( tr_TR )
 
@@ -234,6 +236,23 @@ There are [4 different licenses](http://tboy.co/pro) that you can choose from: S
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.9.7 =
+* Fix - Escape text inputs in admin.
+* Localization - Update German translation.
+
+= 1.9.6 =
+* Feature - Venue subset to reflect statistics from a team's home venue.
+* Tweak - Use team order instead of venue to get home and away subset.
+* Tweak - Allow special HTML characters in player list fields.
+* Tweak - Relabel box score to scorecard.
+* Fix - Player list sorting by ascending squad number.
+* Localization - Add Ales70, Elmister, and chinnz25 to translation team.
+* Localization - Add Tamil (India) translations.
+* Localization - Update Persian, Finnish, Italian, Czech, Greek, Slovenian, and Polish translations.
+
+= 1.9.5 =
+* Fix - Streaks calculation in league tables.
 
 = 1.9.4 =
 * Feature - Add Home and Away subset options to table column equation builder.

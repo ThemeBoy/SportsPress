@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SportsPress\n"
-"POT-Creation-Date: 2015-09-27 15:40+1000\n"
-"PO-Revision-Date: 2015-09-27 15:41+1000\n"
+"POT-Creation-Date: 2015-10-03 14:38+1000\n"
+"PO-Revision-Date: 2015-10-03 14:39+1000\n"
 "Last-Translator: Brian Miyaji <brian@themeboy.com>\n"
 "Language-Team: ThemeBoy <support@themeboy.com>\n"
 "Language: en_US\n"
@@ -113,7 +113,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-events.php:279
 #: includes/sp-core-functions.php:1250 modules/sportspress-tutorials.php:93
 #: templates/event-performance.php:238
-msgid "Box Score"
+msgid "Scorecard"
 msgstr ""
 
 #: assets/js/admin/editor-lang.php:31
@@ -152,7 +152,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:54
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-list-data.php:151
 #: includes/class-sp-ajax.php:493 includes/class-sp-ajax.php:523
-#: includes/class-sp-install.php:161 includes/class-sp-player-list.php:547
+#: includes/class-sp-install.php:161 includes/class-sp-player-list.php:549
 #: includes/class-sp-post-types.php:446 includes/sp-core-functions.php:1262
 #: modules/sportspress-individual-mode.php:119
 #: templates/event-performance-table-combined.php:30
@@ -609,8 +609,8 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-table-data.php:119
 #: includes/admin/settings/class-sp-settings-events.php:424
 #: includes/admin/settings/class-sp-settings-events.php:426
-#: includes/class-sp-league-table.php:549
-#: includes/class-sp-player-list.php:530 includes/class-sp-player-list.php:548
+#: includes/class-sp-league-table.php:575
+#: includes/class-sp-player-list.php:532 includes/class-sp-player-list.php:550
 #: includes/class-sp-player.php:460 includes/class-sp-player.php:483
 #: includes/class-sp-post-types.php:416 includes/sp-core-functions.php:1272
 #: includes/widgets/class-sp-widget-countdown.php:69
@@ -987,17 +987,17 @@ msgid ""
 "SportsPress</a>."
 msgstr ""
 
-#: includes/admin/class-sp-admin-welcome.php:534
+#: includes/admin/class-sp-admin-welcome.php:537
 #: includes/admin/settings/class-sp-settings-status.php:237
 #: includes/admin/views/html-admin-page-status.php:201
 msgid "by"
 msgstr ""
 
-#: includes/admin/class-sp-admin-welcome.php:548
+#: includes/admin/class-sp-admin-welcome.php:551
 msgid "Top Translations"
 msgstr ""
 
-#: includes/admin/class-sp-admin-welcome.php:576
+#: includes/admin/class-sp-admin-welcome.php:579
 #, php-format
 msgid "View %s"
 msgstr ""
@@ -1032,6 +1032,7 @@ msgstr ""
 #: includes/admin/post-types/class-sp-admin-cpt-calendar.php:51
 #: includes/admin/post-types/class-sp-admin-cpt-event.php:103
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-calendar-data.php:103
+#: includes/admin/post-types/meta-boxes/class-sp-meta-box-equation.php:49
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:40
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-team-details.php:100
 #: includes/admin/settings/class-sp-settings-events.php:81
@@ -1467,7 +1468,7 @@ msgstr ""
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-details.php:54
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:270
 #: includes/admin/post-types/meta-boxes/class-sp-meta-box-event-results.php:288
-#: includes/class-sp-ajax.php:63 includes/class-sp-team.php:308
+#: includes/class-sp-ajax.php:63 includes/class-sp-team.php:334
 #: includes/widgets/class-sp-widget-countdown.php:93
 #: modules/sportspress-tutorials.php:92
 msgid "(Auto)"
@@ -3893,7 +3894,7 @@ msgstr ""
 msgid "What's new:"
 msgstr ""
 
-#: includes/class-sp-league-table.php:549 includes/sp-core-functions.php:1263
+#: includes/class-sp-league-table.php:575 includes/sp-core-functions.php:1263
 #: modules/sportspress-league-tables.php:231 templates/league-table.php:60
 msgid "Pos"
 msgstr ""

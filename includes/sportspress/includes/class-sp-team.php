@@ -5,7 +5,7 @@
  * The SportsPress team class handles individual team data.
  *
  * @class 		SP_Team
- * @version		1.9.4
+ * @version		1.9.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -17,7 +17,7 @@ class SP_Team extends SP_Custom_Post {
 			'post_type' => 'sp_event',
 			'numberposts' => 1,
 			'posts_per_page' => 1,
-			'order' => 'ASC',
+			'order' => 'DESC',
 			'post_status' => 'future',
 			'meta_query' => array(
 				array(
@@ -81,12 +81,15 @@ class SP_Team extends SP_Custom_Post {
 				'eventsplayed' => 0,
 				'eventsplayed_home' => 0,
 				'eventsplayed_away' => 0,
+				'eventsplayed_venue' => 0,
 				'eventminutes' => 0,
 				'eventminutes_home' => 0,
 				'eventminutes_away' => 0,
+				'eventminutes_venue' => 0,
 				'streak' => 0,
 				'streak_home' => 0,
 				'streak_away' => 0,
+				'streak_venue' => 0,
 				'last5' => null,
 				'last10' => null,
 				'homerecord' => null,
@@ -97,15 +100,18 @@ class SP_Team extends SP_Custom_Post {
 				$totals[ $key . 'for' ] = 0;
 				$totals[ $key . 'for_home' ] = 0;
 				$totals[ $key . 'for_away' ] = 0;
+				$totals[ $key . 'for_venue' ] = 0;
 				$totals[ $key . 'against' ] = 0;
 				$totals[ $key . 'against_home' ] = 0;
 				$totals[ $key . 'against_away' ] = 0;
+				$totals[ $key . 'against_venue' ] = 0;
 			endforeach;
 
 			foreach ( $outcome_labels as $key => $value ):
 				$totals[ $key ] = 0;
 				$totals[ $key . '_home' ] = 0;
 				$totals[ $key . '_away' ] = 0;
+				$totals[ $key . '_venue' ] = 0;
 			endforeach;
 
 			// Initialize streaks counter
@@ -198,7 +204,8 @@ class SP_Team extends SP_Custom_Post {
 										$totals['eventminutes'] += $minutes;
 										$totals[ $outcome ] ++;
 
-										if ( sp_is_home_venue( $team_id, $event->ID ) ):
+										// Add to home or away stats
+										if ( 0 === $i ):
 											$totals['eventsplayed_home'] ++;
 											$totals['eventminutes_home'] += $minutes;
 											$totals[ $outcome . '_home' ] ++;
@@ -206,6 +213,13 @@ class SP_Team extends SP_Custom_Post {
 											$totals['eventsplayed_away'] ++;
 											$totals['eventminutes_away'] += $minutes;
 											$totals[ $outcome . '_away' ] ++;
+										endif;
+
+										// Add to venue stats
+										if ( sp_is_home_venue( $team_id, $event->ID ) ):
+											$totals['eventsplayed_venue'] ++;
+											$totals['eventminutes_venue'] += $minutes;
+											$totals[ $outcome . '_venue' ] ++;
 										endif;
 									endif;
 
@@ -249,10 +263,16 @@ class SP_Team extends SP_Custom_Post {
 									$totals[ $key . 'for' ] += $value;
 									$totals[ $key . 'for' . ( $e + 1 ) ] = $value;
 
-									if ( sp_is_home_venue( $team_id, $event->ID ) ):
+									// Add to home or away stats
+									if ( 0 === $i ):
 										$totals[ $key . 'for_home' ] += $value;
 									else:
 										$totals[ $key . 'for_away' ] += $value;
+									endif;
+
+									// Add to venue stats
+									if ( sp_is_home_venue( $team_id, $event->ID ) ):
+										$totals[ $key . 'for_venue' ] += $value;
 									endif;
 								endif;
 							endif;
@@ -262,10 +282,16 @@ class SP_Team extends SP_Custom_Post {
 									$totals[ $key . 'against' ] += $value;
 									$totals[ $key . 'against' . ( $e + 1 ) ] = $value;
 
-									if ( sp_is_home_venue( $team_id, $event->ID ) ):
+									// Add to home or away stats
+									if ( 0 === $i ):
 										$totals[ $key . 'against_home' ] += $value;
 									else:
 										$totals[ $key . 'against_away' ] += $value;
+									endif;
+
+									// Add to venue stats
+									if ( sp_is_home_venue( $team_id, $event->ID ) ):
+										$totals[ $key . 'against_venue' ] += $value;
 									endif;
 								endif;
 							endif;

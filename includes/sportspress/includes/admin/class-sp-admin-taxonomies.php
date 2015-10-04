@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Handles taxonomies in admin
  *
  * @class 		SP_Admin_Taxonomies
- * @version		1.8.7
+ * @version		1.9.7
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
@@ -82,11 +82,11 @@ class SP_Admin_Taxonomies {
 		</div>
 		<div class="form-field">
 			<label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label>
-			<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo $latitude; ?>">
+			<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo esc_attr( $latitude ); ?>">
 		</div>
 		<div class="form-field">
 			<label for="term_meta[sp_longitude]"><?php _e( 'Longitude', 'sportspress' ); ?></label>
-			<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo $longitude; ?>">
+			<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo esc_attr( $longitude ); ?>">
 		</div>
 	<?php
 	}

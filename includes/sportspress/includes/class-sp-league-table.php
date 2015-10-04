@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version     1.9.4
+ * @version     1.9.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -136,27 +136,33 @@ class SP_League_Table extends SP_Custom_Post{
 				'eventsplayed' => 0,
 				'eventsplayed_home' => 0,
 				'eventsplayed_away' => 0,
+				'eventsplayed_venue' => 0,
 				'eventminutes' => 0,
 				'eventminutes_home' => 0,
 				'eventminutes_away' => 0,
+				'eventminutes_venue' => 0,
 				'streak' => 0,
 				'streak_home' => 0,
 				'streak_away' => 0,
+				'streak_venue' => 0,
 			);
 
 			foreach ( $result_labels as $key => $value ):
 				$totals[ $team_id ][ $key . 'for' ] = 0;
 				$totals[ $team_id ][ $key . 'for_home' ] = 0;
 				$totals[ $team_id ][ $key . 'for_away' ] = 0;
+				$totals[ $team_id ][ $key . 'for_venue' ] = 0;
 				$totals[ $team_id ][ $key . 'against' ] = 0;
 				$totals[ $team_id ][ $key . 'against_home' ] = 0;
 				$totals[ $team_id ][ $key . 'against_away' ] = 0;
+				$totals[ $team_id ][ $key . 'against_venue' ] = 0;
 			endforeach;
 
 			foreach ( $outcome_labels as $key => $value ):
 				$totals[ $team_id ][ $key ] = 0;
 				$totals[ $team_id ][ $key . '_home' ] = 0;
 				$totals[ $team_id ][ $key . '_away' ] = 0;
+				$totals[ $team_id ][ $key . '_venue' ] = 0;
 			endforeach;
 
 			// Get static stats
@@ -179,7 +185,7 @@ class SP_League_Table extends SP_Custom_Post{
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'post_date',
-			'order' => 'ASC',
+			'order' => 'DESC',
 			'meta_query' => array(
 				array(
 					'key' => 'sp_format',
@@ -244,7 +250,8 @@ class SP_League_Table extends SP_Custom_Post{
 								$totals[ $team_id ]['eventminutes'] += $minutes;
 								$totals[ $team_id ][ $outcome ] ++;
 
-								if ( sp_is_home_venue( $team_id, $event->ID ) ):
+								// Add to home or away stats
+								if ( 0 === $i ):
 									$totals[ $team_id ]['eventsplayed_home'] ++;
 									$totals[ $team_id ]['eventminutes_home'] += $minutes;
 									$totals[ $team_id ][ $outcome . '_home' ] ++;
@@ -252,6 +259,13 @@ class SP_League_Table extends SP_Custom_Post{
 									$totals[ $team_id ]['eventsplayed_away'] ++;
 									$totals[ $team_id ]['eventminutes_away'] += $minutes;
 									$totals[ $team_id ][ $outcome . '_away' ] ++;
+								endif;
+
+								// Add to venue stats
+								if ( sp_is_home_venue( $team_id, $event->ID ) ):
+									$totals[ $team_id ]['eventsplayed_venue'] ++;
+									$totals[ $team_id ]['eventminutes_venue'] += $minutes;
+									$totals[ $team_id ][ $outcome . '_venue' ] ++;
 								endif;
 							endif;
 
@@ -295,10 +309,16 @@ class SP_League_Table extends SP_Custom_Post{
 							$totals[ $team_id ][ $key . 'for' ] += $value;
 							$totals[ $team_id ][ $key . 'for' . ( $e + 1 ) ] = $value;
 
-							if ( sp_is_home_venue( $team_id, $event->ID ) ):
+							// Add to home or away stats
+							if ( 0 === $i ):
 								$totals[ $team_id ][ $key . 'for_home' ] += $value;
 							else:
 								$totals[ $team_id ][ $key . 'for_away' ] += $value;
+							endif;
+
+							// Add to venue stats
+							if ( sp_is_home_venue( $team_id, $event->ID ) ):
+								$totals[ $team_id ][ $key . 'for_venue' ] += $value;
 							endif;
 
 							foreach( $results as $other_team_id => $other_result ):
@@ -306,10 +326,16 @@ class SP_League_Table extends SP_Custom_Post{
 									$totals[ $team_id ][ $key . 'against' ] += sp_array_value( $other_result, $key, 0 );
 									$totals[ $team_id ][ $key . 'against' . ( $e + 1 ) ] = sp_array_value( $other_result, $key, 0 );
 
-									if ( sp_is_home_venue( $team_id, $event->ID ) ):
+									// Add to home or away stats
+									if ( 0 === $i ):
 										$totals[ $team_id ][ $key . 'against_home' ] += sp_array_value( $other_result, $key, 0 );
 									else:
 										$totals[ $team_id ][ $key . 'against_away' ] += sp_array_value( $other_result, $key, 0 );
+									endif;
+
+									// Add to venue stats
+									if ( sp_is_home_venue( $team_id, $event->ID ) ):
+										$totals[ $team_id ][ $key . 'against_venue' ] += sp_array_value( $other_result, $key, 0 );
 									endif;
 								endif;
 							endforeach;
