@@ -151,7 +151,7 @@ class SP_Meta_Box_Player_Statistics {
 									if ( $readonly )
 										echo $value ? $value : $placeholder;
 									else
-										echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . $value . '" placeholder="' . $placeholder . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+										echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
 								?></td>
 							<?php endforeach; ?>
 						</tr>

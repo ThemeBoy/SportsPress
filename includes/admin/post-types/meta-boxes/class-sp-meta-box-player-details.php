@@ -171,7 +171,7 @@ class SP_Meta_Box_Player_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_number', sp_array_value( $_POST, 'sp_number', '' ) );
+		update_post_meta( $post_id, 'sp_number', esc_attr( sp_array_value( $_POST, 'sp_number', '' ) ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_past_team', sp_array_value( $_POST, 'sp_past_team', array() ) );

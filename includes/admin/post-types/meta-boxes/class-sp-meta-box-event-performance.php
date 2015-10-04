@@ -214,7 +214,7 @@ class SP_Meta_Box_Event_Performance {
 						$player_performance = sp_array_value( $data, $player_id, array() );
 						$value = sp_array_value( $player_performance, $column, '' );
 						?>
-						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" placeholder="0" <?php if ( $split_positions ) { ?>readonly="readonly"<?php } else { ?>value="<?php echo $value; ?>"<?php } ?> /></td>
+						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" placeholder="0" <?php if ( $split_positions ) { ?>readonly="readonly"<?php } else { ?>value="<?php echo esc_attr( $value ); ?>"<?php } ?> /></td>
 					<?php endforeach; ?>
 					<?php if ( $status ) { ?>
 						<td>&nbsp;</td>
@@ -240,7 +240,7 @@ class SP_Meta_Box_Event_Performance {
 			<?php } ?>
 			<?php if ( $numbers ) { ?>
 				<td>
-					<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo $value; ?>" />
+					<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo esc_attr( $value ); ?>" />
 				</td>
 			<?php } ?>
 			<td><?php echo get_the_title( $player_id ); ?></td>
@@ -270,7 +270,7 @@ class SP_Meta_Box_Event_Performance {
 				$value = sp_array_value( $player_performance, $column, '' );
 				?>
 				<td>
-					<input class="sp-player-<?php echo $column; ?>-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo $value; ?>" placeholder="0" />
+					<input class="sp-player-<?php echo $column; ?>-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="0" />
 				</td>
 			<?php endforeach; ?>
 			<?php if ( $status ) { ?>
