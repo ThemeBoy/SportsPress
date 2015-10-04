@@ -2,7 +2,6 @@
   <admin-texts>
     <key name="sportspress_text">
       <key name="Article"/>
-      <key name="Box Score"/>
       <key name="Competition"/>
       <key name="Current Team"/>
       <key name="Current Teams"/>
@@ -21,6 +20,7 @@
       <key name="Preview"/>
       <key name="Rank"/>
       <key name="Recap"/>
+      <key name="Scorecard"/>
       <key name="Season"/>
       <key name="Staff"/>
       <key name="Substitutes"/>

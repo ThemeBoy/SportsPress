@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.9
+ * @version     1.9.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -138,7 +138,7 @@ class SP_Admin_Meta_Boxes {
 					'priority' => 'high',
 				),
 				'performance' => array(
-					'title' => __( 'Box Score', 'sportspress' ),
+					'title' => __( 'Scorecard', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Event_Performance::save',
 					'output' => 'SP_Meta_Box_Event_Performance::output',
 					'context' => 'normal',

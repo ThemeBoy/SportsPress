@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.8.7
+ * @version     1.9.6
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -346,6 +346,12 @@ class SP_Admin_Welcome {
 			<?php $this->intro(); ?>
 
 			<p class="about-description"><?php printf( __( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ), 'https://www.transifex.com/projects/p/sportspress/' ); ?></p>
+			<div class="postbox sp-top-translations">
+				<h3 class="hndle"><span><?php _e( 'Top Translations', 'sportspress' ); ?></span></h3>
+				<p class="sp-transifex-chart">
+					<a target="_blank" href="https://www.transifex.com/projects/p/sportspress"><img border="0" src="https://www.transifex.com/projects/p/sportspress/resource/sportspress/chart/image_png"/></a>
+				</p>
+			</div>
 			<p class="wp-credits-list">
 			<?php
 			$translators = array(
@@ -455,6 +461,7 @@ class SP_Admin_Welcome {
 					'mahdi12',
 				),
 				'Polski' => array(
+					'Elmister',
 					'karimjarro',
 					'krisop',
 				),
@@ -485,12 +492,11 @@ class SP_Admin_Welcome {
 				'Српски језик' => array(
 					'etcloki',
 				),
-				'Slovenčina' => array(
-					'matiqos',
-				),
 				'Slovenščina' => array(
+					'Ales70',
 					'BOCo',
 					'cofeman.sl',
+					'matiqos',
 				),
 				'Español' => array(
 					'albertone',
@@ -506,6 +512,9 @@ class SP_Admin_Welcome {
 				'Svenska' => array(
 					'JensZ',
 					'fiiz',
+				),
+				'தமிழ்' => array(
+					'chinnz25',
 				),
 				'Türkçe' => array(
 					'ALooNeBoy87',
@@ -544,12 +553,6 @@ class SP_Admin_Welcome {
 			echo implode( '<br>', $translation_teams );
 			?>
 			</p>
-			<div class="postbox sp-top-translations">
-				<h3 class="hndle"><span><?php _e( 'Top Translations', 'sportspress' ); ?></span></h3>
-				<p class="sp-transifex-chart">
-					<a target="_blank" href="https://www.transifex.com/projects/p/sportspress"><img border="0" src="https://www.transifex.com/projects/p/sportspress/resource/sportspress/chart/image_png"/></a>
-				</p>
-			</div>
 		</div>
 		<?php
 	}

@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Display SportsPress video tutorials.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.8.3
+Version: 1.9.6
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
  * Main SportsPress Tutorials Class
  *
  * @class SportsPress_Tutorials
- * @version	1.8.3
+ * @version	1.9.6
  */
 class SportsPress_Tutorials {
 
@@ -44,7 +44,7 @@ class SportsPress_Tutorials {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_TUTORIALS_VERSION' ) )
-			define( 'SP_TUTORIALS_VERSION', '1.8.3' );
+			define( 'SP_TUTORIALS_VERSION', '1.9.6' );
 
 		if ( !defined( 'SP_TUTORIALS_URL' ) )
 			define( 'SP_TUTORIALS_URL', plugin_dir_url( __FILE__ ) );
@@ -90,7 +90,7 @@ class SportsPress_Tutorials {
 				) ),
 				__( 'Events', 'sportspress' ) => apply_filters( 'sportspress_event_advanced_videos', array(
 					__( 'Event Outcomes', 'sportspress' ) . ' ' . __( '(Auto)', 'sportspress' ) => '//www.youtube-nocookie.com/embed/pCVfPv2O5yY?rel=0&amp;showinfo=0',
-					__( 'Box Score', 'sportspress' ) => '//www.youtube-nocookie.com/embed/rERU6X7vjTc?rel=0&amp;showinfo=0',
+					__( 'Scorecard', 'sportspress' ) => '//www.youtube-nocookie.com/embed/rERU6X7vjTc?rel=0&amp;showinfo=0',
 				) ),
 				__( 'Calendars', 'sportspress' ) => apply_filters( 'sportspress_calendar_advanced_videos', array(
 					__( 'Layout', 'sportspress' ) => '//www.youtube-nocookie.com/embed/aLx_5D0Xgnc?rel=0&amp;showinfo=0',

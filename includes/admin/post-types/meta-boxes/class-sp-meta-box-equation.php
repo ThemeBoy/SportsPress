@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.9.4
+ * @version     1.9.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -46,7 +46,7 @@ class SP_Meta_Box_Equation {
 					$options[ 'Presets' ] = array( '$gamesback' => __( 'Games Back', 'sportspress' ), '$homerecord' => __( 'Home Record', 'sportspress' ), '$awayrecord' => __( 'Away Record', 'sportspress' ), '$streak' => __( 'Streak', 'sportspress' ), '$last5' => __( 'Last 5', 'sportspress' ), '$last10' => __( 'Last 10', 'sportspress' ) );
 					break;
 				case 'subset':
-					$options[ 'Subsets' ] = array( '_home' => '@' . __( 'Home', 'sportspress' ), '_away' => '@' . __( 'Away', 'sportspress' ) );
+					$options[ 'Subsets' ] = array( '_home' => '@' . __( 'Home', 'sportspress' ), '_away' => '@' . __( 'Away', 'sportspress' ), '_venue' => '@' . __( 'Venue', 'sportspress' ) );
 					break;
 				case 'performance':
 					$options[ 'Performance' ] = self::optgroup( 'sp_performance' );

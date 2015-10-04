@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.9
+ * @version     1.9.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -235,7 +235,7 @@ if ( is_array( $teams ) ):
 				'show_players' => $show_players,
 				'show_numbers' => $show_numbers,
 				'show_total' => $show_total,
-				'caption' => __( 'Box Score', 'sportspress' ),
+				'caption' => __( 'Scorecard', 'sportspress' ),
 				'labels' => $labels,
 				'mode' => $mode,
 				'data' => $data,
