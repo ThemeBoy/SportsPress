@@ -152,7 +152,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 									<tr>
 										<?php $index = 0; foreach ( $this->columns as $key => $label ): $value = sp_array_value( $row, $index ); ?>
 											<td>
-												<input type="text" class="widefat" value="<?php echo $value; ?>" name="sp_import[]">
+												<input type="text" class="widefat" value="<?php echo esc_attr( $value ); ?>" name="sp_import[]">
 											</td>
 										<?php $index ++; endforeach; ?>
 										<td class="sp-actions-column">
