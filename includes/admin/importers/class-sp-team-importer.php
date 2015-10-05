@@ -70,7 +70,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					continue;
 				endif;
 
-				$args = array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => $name );
+				$args = array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $name ) );
 
 				$id = wp_insert_post( $args );
 

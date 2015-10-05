@@ -70,7 +70,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					continue;
 				endif;
 
-				$args = array( 'post_type' => 'sp_staff', 'post_status' => 'publish', 'post_title' => $name );
+				$args = array( 'post_type' => 'sp_staff', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $name ) );
 
 				$id = wp_insert_post( $args );
 
@@ -101,7 +101,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						endif;
 						$team_id = $team_object->ID;
 					else:
-						$team_id = wp_insert_post( array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => $team ) );
+						$team_id = wp_insert_post( array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $team ) ) );
 						// Flag as import
 						update_post_meta( $team_id, '_sp_import', 1 );
 						wp_set_object_terms( $team_id, $leagues, 'sp_league', false );

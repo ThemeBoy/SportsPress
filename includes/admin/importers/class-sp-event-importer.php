@@ -204,7 +204,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					else:
 
 						// Insert team
-						$team_id = wp_insert_post( array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => $team_name ) );
+						$team_id = wp_insert_post( array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $team_name ) ) );
 
 						// Flag as import
 						update_post_meta( $team_id, '_sp_import', 1 );
@@ -272,7 +272,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 							else:
 
 								// Insert outcome
-								$outcome_id = wp_insert_post( array( 'post_type' => 'sp_outcome', 'post_status' => 'publish', 'post_title' => $outcome ) );
+								$outcome_id = wp_insert_post( array( 'post_type' => 'sp_outcome', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $outcome ) ) );
 
 								// Get outcome slug
 							    $post_data = get_post( $outcome_id, ARRAY_A );
@@ -351,7 +351,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					else:
 
 						// Insert player
-						$player_id = wp_insert_post( array( 'post_type' => 'sp_player', 'post_status' => 'publish', 'post_title' => $player_name ) );
+						$player_id = wp_insert_post( array( 'post_type' => 'sp_player', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $player_name ) ) );
 
 						// Flag as import
 						update_post_meta( $player_id, '_sp_import', 1 );
