@@ -15,6 +15,10 @@ $totals = array();
 // Set null
 if ( ! isset( $position ) ) $position = null;
 if ( ! isset( $class ) ) $class = null;
+
+// Initialize arrays
+if ( ! isset( $lineups ) ) $lineups = array();
+if ( ! isset( $subs ) ) $subs = array();
 ?>
 <div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?><?php if ( isset( $class ) ) { echo ' ' . $class; } ?>">
 	<?php if ( $caption ): ?>
@@ -83,9 +87,6 @@ if ( ! isset( $class ) ) $class = null;
 						if ( $link_posts ):
 							$permalink = get_post_permalink( $player_id );
 							$name =  '<a href="' . $permalink . '">' . $name . '</a>';
-							if ( isset( $row['status'] ) && $row['status'] == 'sub' ):
-								$name = '(' . $name . ')';
-							endif;
 						endif;
 
 						if ( array_key_exists( $player_id, $lineup_sub_relation ) ):
