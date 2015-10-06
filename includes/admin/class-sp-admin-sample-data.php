@@ -113,17 +113,14 @@ class SP_Admin_Sample_Data {
 		$teams = array(
 			array(
 				'name' => 'Bluebirds',
-				'abbreviation' => 'BENT',
 				'url' => 'http://tboy.co/bluebirds',
 			),
 			array(
 				'name' => 'Eagles',
-				'abbreviation' => 'ESS',
 				'url' => 'http://tboy.co/eagles',
 			),
 			array(
 				'name' => 'Kangaroos',
-				'abbreviation' => 'KENS',
 				'url' => 'http://tboy.co/kangaroos',
 			),
 		);
@@ -187,7 +184,6 @@ class SP_Admin_Sample_Data {
 			update_post_meta( $id, '_sp_sample', 1 );
 
 			// Update meta
-			update_post_meta( $id, 'sp_abbreviation', $team['abbreviation'] );
 			update_post_meta( $id, 'sp_url', $team['url'] );
 		}
 
