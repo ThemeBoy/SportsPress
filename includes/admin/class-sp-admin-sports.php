@@ -147,6 +147,7 @@ class SP_Admin_Sports {
 			if ( empty( $post ) ) continue;
 			$id = self::insert_preset_post( $post, $index );
 			if ( is_array( $result ) && array_key_exists( 'primary', $result ) ) $primary_result = $post['post_name'];
+			update_post_meta( $id, 'sp_equation', sp_array_value( $result, 'equation', null ) );
 		}
 
 		// Make sure statistics and metrics have greater menu order than performance
