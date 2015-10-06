@@ -63,6 +63,9 @@ class SP_Meta_Box_Event_Performance {
 		else
 			$status = false;
 
+		// Apply filters to labels
+		$labels = apply_filters( 'sportspress_event_performance_labels_admin', $labels );
+
 		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $split_positions, $split_teams, $positions, $status );
 	}
 
@@ -88,14 +91,39 @@ class SP_Meta_Box_Event_Performance {
 				$players = sp_array_between( (array)get_post_meta( $post_id, 'sp_player', false ), 0, $key );
 				$players[] = -1;
 				$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
+
+				$tabs = array();
+
+				if ( $team_id ):
+					$tabs['values'] = get_the_title( $team_id );
+				elseif ( $i ):
+					echo '<br>';
+				endif;
+
+				$tabs = apply_filters( 'sportspress_event_performance_tabs_admin', $tabs );
 				?>
 				<div>
-					<?php if ( $team_id ): ?>
-						<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-					<?php elseif ( $i ): ?>
-						<br>
+					<?php if ( sizeof( $tabs ) ): ?>
+						<?php if ( sizeof( $tabs ) > 1 ): ?>
+							<ul class="subsubsub sp-performance-table-bar">
+								<?php $t = 0; ?>
+								<?php foreach ( $tabs as $key => $label ): ?>
+									<li>
+										<a href="#"<?php if ( 0 == $t ): ?> class="current"<?php endif; ?>>
+											<?php echo $label; ?>
+										</a>
+									</li>
+									<?php if ( sizeof( $tabs ) > $t + 1 ): ?> | <?php endif; ?>
+								<?php $t++; ?>
+								<?php endforeach; ?>
+							</ul>
+						<?php else: ?>
+							<?php $label = reset( $tabs ); ?>
+							<p><strong><?php echo $label; ?></strong></p>
+						<?php endif; ?>
 					<?php endif; ?>
 					<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $split_positions, $positions, $status ); ?>
+					<?php do_action( 'sportspress_after_event_performance_table_admin', $labels, $columns, $data, $team_id ); ?>
 				</div>
 				<?php
 				$i ++;
