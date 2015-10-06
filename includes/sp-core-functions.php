@@ -225,6 +225,13 @@ if ( !function_exists( 'sp_flush_rewrite_rules' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_add_link' ) ) {
+	function sp_add_link( $string, $link = false, $active = true ) {
+		if ( empty( $link ) || ! $active ) return $string;
+		return '<a href="' . $link . '">' . $string . '</a>';
+	}
+}
+
 if ( !function_exists( 'sp_nonce' ) ) {
 	function sp_nonce() {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
@@ -1134,19 +1141,33 @@ if ( !function_exists( 'sp_solve' ) ) {
 		// Remove space between equation parts
 		$equation = str_replace( ' ', '', $equation );
 
+		// Initialize Subequations
+		$subequations = array( $equation );
+
+		// Find all equation parts contained in parentheses
+		if ( preg_match_all( '~\((.*?)\)~', $equation, $results ) ) {
+			foreach ( sp_array_value( $results, 1, array() ) as $result ) {
+				if ( ! empty( $result ) ) {
+					$subequations[] = $result;
+				}
+			}
+		}
+
 		// Initialize subequation
 		$subequation = $equation;
 
 		// Check each subequation separated by division
-		while ( $pos = strpos( $subequation, '/' ) ) {
-			$subequation = substr( $subequation, $pos + 1 );
+		foreach ( $subequations as $subequation ) {
+			while ( $pos = strpos( $subequation, '/' ) ) {
+				$subequation = substr( $subequation, $pos + 1 );
 
-			// Make sure paretheses match
-			if ( substr_count( $subequation, '(' ) === substr_count( $subequation, ')' ) ) {
+				// Make sure paretheses match
+				if ( substr_count( $subequation, '(' ) === substr_count( $subequation, ')' ) ) {
 
-				// Return zero if denominator is zero
-				if ( $eos->solveIF( $subequation, $vars ) == 0 ) {
-					return 0;
+					// Return zero if denominator is zero
+					if ( $eos->solveIF( $subequation, $vars ) == 0 ) {
+						return 0;
+					}
 				}
 			}
 		}
