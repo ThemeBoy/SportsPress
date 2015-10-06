@@ -146,6 +146,7 @@ class SP_Meta_Box_Calendar_Data {
 													endif;
 
 													if ( $team_result != null ):
+														$team_result = apply_filters( 'sportspress_calendar_team_result_admin', $team_result, $event->ID, $team );
 														$main_results[] = $team_result;
 														unset( $team_results['outcome'] );
 														$team_results = implode( ' | ', $team_results );

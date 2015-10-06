@@ -155,7 +155,7 @@ endif;
 					$teams = get_post_meta( $event->ID, 'sp_team' );
 					$video = get_post_meta( $event->ID, 'sp_video', true );
 
-					$main_results = sp_get_main_results( $event );
+					$main_results = apply_filters( 'sportspress_event_list_main_results', sp_get_main_results( $event ), $event->ID );
 
 					$teams_output = '';
 					$teams_array = array();
