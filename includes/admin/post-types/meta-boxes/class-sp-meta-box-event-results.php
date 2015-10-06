@@ -223,7 +223,8 @@ class SP_Meta_Box_Event_Results {
 			'meta_query' => array(
 				array(
 					'key' => 'sp_equation',
-					'compare' => 'EXISTS',
+					'compare' => 'NOT IN',
+					'value' => null
 				),
 			),
 		);
