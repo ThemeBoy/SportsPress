@@ -338,7 +338,7 @@ class SP_Settings_General extends SP_Settings_Page {
 						if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) ):
 						    ?><br>
 						    <label for="sportspress_enable_frontend_css">
-								<input name="sportspress_enable_frontend_css" id="sportspress_enable_frontend_css" type="checkbox" value="1" <?php checked( get_option( 'sportspress_enable_frontend_css', 'yes' ), 'yes' ); ?>>
+								<input name="sportspress_enable_frontend_css" id="sportspress_enable_frontend_css" type="checkbox" value="1" <?php checked( get_option( 'sportspress_enable_frontend_css', 'no' ), 'yes' ); ?>>
 								<?php _e( 'Enable', 'sportspress' ); ?>
 							</label>
 						<?php endif; ?>
