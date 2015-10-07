@@ -73,7 +73,7 @@ class SP_Frontend_Scripts {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'jquery-datatables', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/jquery.dataTables.min.js', array( 'jquery' ), '1.10.4', true );
 		wp_enqueue_script( 'jquery-countdown', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/jquery.countdown.min.js', array( 'jquery' ), '2.0.2', true );
-		wp_enqueue_script( 'sportspress', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/sportspress.js', array( 'jquery' ), time(), true );
+		wp_enqueue_script( 'sportspress', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/sportspress.js', array( 'jquery' ), SP()->version, true );
 
 		if ( is_singular( 'sp_event' ) || is_tax( 'sp_venue' ) ):
 			wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array(), '3.exp', true );
@@ -136,7 +136,7 @@ class SP_Frontend_Scripts {
 	 * @return void
 	 */
 	public function custom_css() {
-		$enabled = get_option( 'sportspress_enable_frontend_css', 'yes' );
+		$enabled = get_option( 'sportspress_enable_frontend_css', 'no' );
 		$custom = get_option( 'sportspress_custom_css', null );
 
 		$align = get_option( 'sportspress_table_text_align', 'default' );

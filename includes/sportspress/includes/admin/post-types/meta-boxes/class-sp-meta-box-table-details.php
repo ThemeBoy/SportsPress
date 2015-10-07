@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.9.4
+ * @version     1.9.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,6 +21,7 @@ class SP_Meta_Box_Table_Details {
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$taxonomies = get_object_taxonomies( 'sp_table' );
+		$caption = get_post_meta( $post->ID, 'sp_caption', true );
 		$select = get_post_meta( $post->ID, 'sp_select', true );
 		if ( ! $select ) {
 			global $pagenow;
@@ -28,6 +29,9 @@ class SP_Meta_Box_Table_Details {
 		}
 		?>
 		<div>
+			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
+			<p><input type="text" id="sp_caption" name="sp_caption" value="<?php echo esc_attr( $caption ); ?>" placeholder="<?php echo esc_attr( get_the_title() ); ?>"></p>
+
 			<?php
 			foreach ( $taxonomies as $taxonomy ) {
 				sp_taxonomy_field( $taxonomy, $post, true );
@@ -56,6 +60,7 @@ class SP_Meta_Box_Table_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0 ) ) );
 		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 	}

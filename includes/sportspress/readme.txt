@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.3
-Stable tag: 1.9.7
+Stable tag: 1.9.10
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -236,6 +236,27 @@ There are [4 different licenses](http://tboy.co/pro) that you can choose from: S
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.9.10 =
+* Fix - Automatic event results calculating without player performance.
+* Localization - Update Turkish translation.
+
+= 1.9.9 =
+* Feature - Enable presets to define result equations.
+* Tweak - Move event logo settings to new section in admin.
+* Tweak - Disable custom colors by default.
+* Tweak - Display league tables and player lists as auto when not manual.
+* Fix - Prevent teams containing quotes to duplicate during import.
+* Fix - Enable importing with special characters in team and player names.
+* Fix - Check for zero in equation denominator contained within parenthesis.
+* Fix - Placeholder in admin indicating automatic result.
+* Preset - Update cricket preset.
+* Localization - Update Tamil translation.
+
+= 1.9.8 =
+* Feature - Option to add custom table headings to calendars, league tables, and player lists.
+* Tweak - Revert automatically hiding featured images when viewing teams, players, and staff.
+* Fix - Team site URL escaping links in admin.
 
 = 1.9.7 =
 * Fix - Escape text inputs in admin.

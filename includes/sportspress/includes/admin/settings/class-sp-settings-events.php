@@ -124,23 +124,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 					array( 'type' => 'delimiter' ),
 
 					array(
-						'title'     => __( 'Logos', 'sportspress' ),
-						'desc' 		=> __( 'Display team names', 'sportspress' ),
-						'id' 		=> 'sportspress_event_logos_show_team_names',
-						'default'	=> 'no',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'	=> 'start',
-					),
-
-					array(
-						'desc' 		=> __( 'Display results', 'sportspress' ),
-						'id' 		=> 'sportspress_event_logos_show_results',
-						'default'	=> 'no',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'	=> 'end',
-					),
-
-					array(
 						'title'     => __( 'Teams', 'sportspress' ),
 						'desc' 		=> __( 'Filter by competition', 'sportspress' ),
 						'id' 		=> 'sportspress_event_filter_teams_by_league',
@@ -236,6 +219,33 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 			array(
 				array( 'type' => 'sectionend', 'id' => 'venue_options' ),
+			),
+
+			array(
+				array( 'title' => __( 'Logos', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'event_logo_options' ),
+			),
+
+			apply_filters( 'sportspress_event_logo_options', array(
+				array(
+					'title'     => __( 'Display', 'sportspress' ),
+					'desc' 		=> __( 'Display team names', 'sportspress' ),
+					'id' 		=> 'sportspress_event_logos_show_team_names',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'	=> 'start',
+				),
+
+				array(
+					'desc' 		=> __( 'Display results', 'sportspress' ),
+					'id' 		=> 'sportspress_event_logos_show_results',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'	=> 'end',
+				),
+			) ),
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'event_logo_options' ),
 			),
 
 			array(

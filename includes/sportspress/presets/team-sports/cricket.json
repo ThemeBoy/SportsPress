@@ -8,25 +8,24 @@
 						{ "name" : "Win", "condition" : ">" },
 						{ "name" : "Loss", "condition" : "<" },
 						"Draw",
-						{ "name" : "Tie", "condition" : "=" }
+						{ "name" : "Tie", "condition" : "=" },
+						"No Result"
 	],
 	"results": [
-						{ "name" : "1st", "description" : "1st inning runs" },
-						{ "name" : "2nd", "description" : "2nd inning runs" },
-						{ "name" : "3rd", "description" : "3rd inning runs" },
-						{ "name" : "4th", "description" : "4th inning runs" },
-						{ "name" : "BP", "description" : "Bonus points" },
-						{ "name" : "Points", "description" : "Total points", "primary" : 1 }
+						{ "name" : "Runs", "equation" : "$runs", "description" : "Runs", "primary" : 1 },
+						{ "name" : "Wickets Lost", "description" : "Wickets lost" },
+						{ "name" : "Overs", "equation" : "$o", "description" : "Overs" },
+						{ "name" : "BP", "description" : "Bonus points"}
 	],
 	"performance": [
-						{  "name" : "R", "id" : "runs", "position" : "Batsman", "description" : "Runs" },
-						{  "name" : "B", "position" : "Batsman", "description" : "Balls" },
-						{  "name" : "4s", "position" : "Batsman", "description" : "Fours" },
-						{  "name" : "6s", "position" : "Batsman", "description" : "Sixes" },
-						{  "name" : "O", "position" : "Bowler", "description" : "Overs Bowled" },
-						{  "name" : "M", "position" : "Bowler", "description" : "Maidens" },
-						{  "name" : "R", "position" : "Bowler", "description" : "Runs" },
-						{  "name" : "W", "position" : "Bowler", "description" : "Wickets" }
+						{ "name" : "R", "id" : "runs", "position" : "Batsman", "description" : "Runs" },
+						{ "name" : "B", "position" : "Batsman", "description" : "Balls" },
+						{ "name" : "4s", "position" : "Batsman", "description" : "Fours" },
+						{ "name" : "6s", "position" : "Batsman", "description" : "Sixes" },
+						{ "name" : "O", "position" : "Bowler", "description" : "Overs bowled" },
+						{ "name" : "M", "position" : "Bowler", "description" : "Maidens" },
+						{ "name" : "R", "position" : "Bowler", "description" : "Runs" },
+						{ "name" : "W", "position" : "Bowler", "description" : "Wickets taken" }
 	],
 	"columns": [
 						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
@@ -34,8 +33,10 @@
 						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
 						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
 						{ "name" : "T", "equation" : "$tie", "description" : "Ties" },
-						{ "name" : "BP", "equation" : "$bp", "description" : "Bonus points" },
-						{ "name" : "Points", "equation" : "$points", "priority" : 1, "description" : "Total points" }
+						{ "name" : "NR", "equation" : "$noresult", "description" : "No results" },
+						{ "name" : "BP", "equation" : "$bpfor", "description" : "Bonus points" },
+						{ "name" : "Points", "equation" : "$win * 2 + $draw", "priority" : 1, "description" : "Total points" },
+						{ "name" : "NRR", "equation" : "( $runsfor / $oversfor ) - ( $runsagainst / $oversagainst )", "priority" : 2, "precision" : 3, "description" : "Net run rate" }
 	],
 	"metrics": [
 						"Height",
@@ -44,17 +45,22 @@
 	],
 	"statistics": [
 						{ "name" : "Mat", "equation" : "$eventsplayed", "description" : "Matches played" },
-						{ "name" : "Avg", "equation" : "$eventsplayed", "description" : "Average" },
-						{ "name" : "SR", "equation" : "$runs / $b * 100", "precision" : 2, "description" : "Strike Rate" }
+						{ "name" : "SR", "equation" : "( $runs / $b ) * 100", "precision" : 2, "description" : "Strike Rate" }
 	],
 	"options": {
+						"load_individual_mode_module" : "no",
 						"event_teams" : "2",
+						"event_logos_show_team_names" : "no",
+						"event_logos_show_results" : "yes",
+						"event_results_reverse_teams" : "no",
+						"event_show_outcome" : "yes",
 						"event_show_players" : "yes",
 						"event_show_total" : "yes",
-						"sportspress_event_performance_mode" : "values",
+						"event_performance_mode" : "values",
 						"event_show_player_numbers" : "no",
+						"event_show_position" : "no",
 						"event_split_players_by_team" : "yes",
 						"event_split_players_by_position" : "yes",
-						"sportspress_event_total_performance" : "primary"
+						"event_total_performance" : "primary"
 	}
 }

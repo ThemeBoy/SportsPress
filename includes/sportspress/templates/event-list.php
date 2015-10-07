@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.9
+ * @version     1.9.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -62,8 +62,13 @@ if ( isset( $columns ) ):
 		$usecolumns = explode( ',', $columns );
 endif;
 
-if ( $show_title && false === $title && $id )
-	$title = get_the_title( $id );
+if ( $show_title && false === $title && $id ):
+	$caption = $calendar->caption;
+	if ( $caption )
+		$title = $caption;
+	else
+		$title = get_the_title( $id );
+endif;
 ?>
 <div class="sp-template sp-template-event-list">
 	<?php if ( $title ) { ?>
@@ -150,7 +155,7 @@ if ( $show_title && false === $title && $id )
 					$teams = get_post_meta( $event->ID, 'sp_team' );
 					$video = get_post_meta( $event->ID, 'sp_video', true );
 
-					$main_results = sp_get_main_results( $event );
+					$main_results = apply_filters( 'sportspress_event_list_main_results', sp_get_main_results( $event ), $event->ID );
 
 					$teams_output = '';
 					$teams_array = array();

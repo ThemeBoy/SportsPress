@@ -160,7 +160,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 									$team_results = implode( ' | ', $team_results );
 								endif;
 
-								echo '<a class="sp-result sp-tip" tabindex="10" title="' . $team_results . '" data-team="' . $team_id . '" href="#">' . ( $team_result == '' ? '-' : $team_result ) . '</a>';
+								echo '<a class="sp-result sp-tip" tabindex="10" title="' . $team_results . '" data-team="' . $team_id . '" href="#">' . ( $team_result == '' ? '-' : apply_filters( 'sportspress_event_team_result_admin', $team_result, $post_id, $team_id ) ) . '</a>';
 								echo '<input type="text" tabindex="10" class="sp-edit-result hidden small-text" data-team="' . $team_id . '" data-key="' . $main_result . '" value="' . $team_result . '"> ';
 								echo $team->post_title;
 								echo '<br>';

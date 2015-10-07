@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version     1.9.7
+ * @version     1.9.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -82,7 +82,7 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 				echo has_post_thumbnail( $post_id ) ? edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-mini' ), '', '', $post_id ) : '';
 				break;
 			case 'sp_url':
-	        	echo esc_html( sp_get_url( $post_id ) );
+	        	echo strip_tags( sp_get_url( $post_id ), '<a>' );
 				break;
 			case 'sp_abbreviation':
 				$abbreviation = get_post_meta ( $post_id, 'sp_abbreviation', true );

@@ -188,7 +188,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					list( $team_name, $result, $outcome ) = $team;
 
 					// Find out if team exists
-					$team_object = get_page_by_title( $team_name, OBJECT, 'sp_team' );
+					$team_object = get_page_by_title( stripslashes( $team_name ), OBJECT, 'sp_team' );
 
 					// Get or insert team
 					if ( $team_object ):
@@ -204,7 +204,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					else:
 
 						// Insert team
-						$team_id = wp_insert_post( array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => $team_name ) );
+						$team_id = wp_insert_post( array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $team_name ) ) );
 
 						// Flag as import
 						update_post_meta( $team_id, '_sp_import', 1 );
@@ -257,7 +257,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 							$outcome = trim( $outcome );
 
 							// Get or insert outcome
-							$outcome_object = get_page_by_title( $outcome, OBJECT, 'sp_outcome' );
+							$outcome_object = get_page_by_title( stripslashes( $outcome ), OBJECT, 'sp_outcome' );
 
 							if ( $outcome_object ):
 
@@ -272,7 +272,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 							else:
 
 								// Insert outcome
-								$outcome_id = wp_insert_post( array( 'post_type' => 'sp_outcome', 'post_status' => 'publish', 'post_title' => $outcome ) );
+								$outcome_id = wp_insert_post( array( 'post_type' => 'sp_outcome', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $outcome ) ) );
 
 								// Get outcome slug
 							    $post_data = get_post( $outcome_id, ARRAY_A );
@@ -332,7 +332,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					unset( $player[0] );
 
 					// Find out if player exists
-					$player_object = get_page_by_title( $player_name, OBJECT, 'sp_player' );
+					$player_object = get_page_by_title( stripslashes( $player_name ), OBJECT, 'sp_player' );
 
 					// Get or insert player
 					if ( $player_object ):
@@ -351,7 +351,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					else:
 
 						// Insert player
-						$player_id = wp_insert_post( array( 'post_type' => 'sp_player', 'post_status' => 'publish', 'post_title' => $player_name ) );
+						$player_id = wp_insert_post( array( 'post_type' => 'sp_player', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $player_name ) ) );
 
 						// Flag as import
 						update_post_meta( $player_id, '_sp_import', 1 );

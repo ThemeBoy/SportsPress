@@ -48,10 +48,12 @@ if ( $teams ):
 
 		// Add result
 		if ( $show_results ) {
+			$team_result = array_shift( $results );
+			$team_result = apply_filters( 'sportspress_event_logos_team_result', $team_result, $id, $team );
 			if ( $alt ) {
-				$logo = '<strong class="sp-team-result">' . array_shift( $results ) . '</strong> ' . $logo;
+				$logo = '<strong class="sp-team-result">' . $team_result . '</strong> ' . $logo;
 			} else {
-				$logo .= ' <strong class="sp-team-result">' . array_shift( $results ) . '</strong>';
+				$logo .= ' <strong class="sp-team-result">' . $team_result . '</strong>';
 			}
 		}
 

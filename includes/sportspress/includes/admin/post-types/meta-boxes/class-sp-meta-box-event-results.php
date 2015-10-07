@@ -44,13 +44,11 @@ class SP_Meta_Box_Event_Results {
 		$finished = false;
 
 		// Check if any results are recorded
-		if ( ! $finished ) {
-			foreach ( $results as $team => $team_results ) {
-				foreach ( $team_results as $result ) {
-					if ( '' !== $result ) {
-						$finished = true;
-						break;
-					}
+		foreach ( $results as $team => $team_results ) {
+			foreach ( $team_results as $result ) {
+				if ( '' !== $result ) {
+					$finished = true;
+					break;
 				}
 			}
 		}
@@ -60,11 +58,17 @@ class SP_Meta_Box_Event_Results {
 			foreach ( $performance as $team => $players ) {
 				foreach ( $players as $player => $pp ) {
 					if ( 0 >= $player ) continue;
-					foreach ( $pp as $pv ) {
-						if ( '' !== trim( $pv ) ) {
-							$finished = true;
-							break;
-						}
+					foreach ( $pp as $pk => $pv ) {
+						if ( in_array( $pk, apply_filters( 'sportspress_event_auto_result_bypass_keys', array( 'number', 'status', 'sub' ) ) ) ) continue;
+
+						if ( is_array( $pv ) ) continue;
+
+						$pv = trim( $pv );
+						if ( '' == $pv ) continue;
+						if ( ! ctype_digit( $pv ) ) continue;
+
+						$finished = true;
+						break;
 					}
 				}
 			}
@@ -223,7 +227,8 @@ class SP_Meta_Box_Event_Results {
 			'meta_query' => array(
 				array(
 					'key' => 'sp_equation',
-					'compare' => 'EXISTS',
+					'compare' => 'NOT IN',
+					'value' => null
 				),
 			),
 		);

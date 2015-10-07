@@ -129,7 +129,7 @@ class SP_Event extends SP_Custom_Post{
 				unset( $labels['position'] );
 			endif;
 			$performance[0] = $labels;
-			return $performance;
+			return apply_filters( 'sportspress_get_event_performance', $performance );
 		endif;
 	}
 

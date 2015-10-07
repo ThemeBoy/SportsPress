@@ -131,11 +131,13 @@ if ( is_array( $teams ) ):
 								$allowed_labels[ $label->post_name ] = $label->post_title;
 							}
 
+							$allowed_labels = apply_filters( 'sportspress_event_performance_allowed_labels', $allowed_labels, $position_index );
+
 							$sublabels = array_intersect_key( $sublabels, $allowed_labels );
 						}
 
 						if ( sizeof( $subdata ) ) {
-							$subdata = apply_filters( 'sportspress_event_performance_split_team_split_position_subdata', $subdata, $data );
+							$subdata = apply_filters( 'sportspress_event_performance_split_team_split_position_subdata', $subdata, $data, $position_index );
 
 							sp_get_template( 'event-performance-table.php', array(
 								'position' => sp_get_position_caption( $position->term_id ),
@@ -209,6 +211,8 @@ if ( is_array( $teams ) ):
 						$subdata[ $player_id ] = $data[ $player_id ];
 					}
 				}
+				
+				$subdata = apply_filters( 'sportspress_event_performance_split_position_subdata', $subdata, $data, $position_index );
 
 				if ( sizeof( $subdata ) ) {
 					sp_get_template( 'event-performance-table-combined.php', array(

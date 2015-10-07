@@ -62,8 +62,13 @@ class SP_Admin_CPT_List extends SP_Admin_CPT {
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
 			case 'sp_player':
-				$players = array_filter( get_post_meta( $post_id, 'sp_player' ) );
-				echo sizeof( $players );
+				$select = get_post_meta( $post_id, 'sp_select', true );
+				if ( 'manual' == $select ):
+					$players = array_filter( get_post_meta( $post_id, 'sp_player' ) );
+					echo sizeof( $players );
+				else:
+					_e( 'Auto', 'sportspress' );
+				endif;
 				break;
 			case 'sp_league':
 				echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : __( 'All', 'sportspress' );
