@@ -13,7 +13,7 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $username = get_post_meta( $id, 'sp_twitter', true );
-$css_enabled = get_option( 'sportspress_enable_frontend_css', 'yes' );
+$css_enabled = get_option( 'sportspress_enable_frontend_css', 'no' );
 $colors = array_map( 'esc_attr', (array) get_option( 'themeboy', array() ) );
 if ( empty( $colors ) ) $colors = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
 $limit = get_option( 'sportspress_twitter_limit', '3' );
