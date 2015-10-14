@@ -77,6 +77,7 @@ class SP_Admin_Menus {
 	public function menu_highlight() {
 		global $typenow;
 		$screen = get_current_screen();
+		if ( ! is_object( $screen ) ) return;
 		if ( $screen->id == 'sp_role' ) {
 			$this->highlight_admin_menu( 'edit.php?post_type=sp_staff', 'edit-tags.php?taxonomy=sp_role&post_type=sp_staff' );
 		} elseif ( is_sp_config_type( $typenow ) ) {

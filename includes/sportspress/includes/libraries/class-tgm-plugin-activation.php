@@ -582,7 +582,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
          * @since 2.1.0
          */
         public function thickbox() {
-            if ( ! get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice_' . $this->id, true ) ) {
+            if ( ! get_user_meta( get_current_user_id(), 'sp_dismissed_notice_' . $this->id, true ) ) {
                 add_thickbox();
             }
         }
@@ -1021,7 +1021,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
          */
         public function notices() {
             // Remove nag on the install page / Return early if the nag message has been dismissed.
-            if ( $this->is_tgmpa_page() || get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice_' . $this->id, true ) ) {
+            if ( $this->is_tgmpa_page() || get_user_meta( get_current_user_id(), 'sp_dismissed_notice_' . $this->id, true ) ) {
                 return;
             }
 
@@ -1216,7 +1216,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
          */
         public function dismiss() {
             if ( isset( $_GET['tgmpa-dismiss'] ) ) {
-                update_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice_' . $this->id, 1 );
+                update_user_meta( get_current_user_id(), 'sp_dismissed_notice_' . $this->id, 1 );
             }
         }
 
@@ -1821,7 +1821,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
          * @since 2.1.1
          */
         public function update_dismiss() {
-            delete_metadata( 'user', null, 'tgmpa_dismissed_notice_' . $this->id, null, true );
+            delete_metadata( 'user', null, 'sp_dismissed_notice_' . $this->id, null, true );
         }
 
         /**

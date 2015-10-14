@@ -88,6 +88,9 @@ foreach ( $performance as $team => $players ) {
 	foreach ( $labels as $key => $label ):
 		if ( ! isset( $home[ $key ] ) || ! isset( $away[ $key ] ) )
 			continue;
+		
+		if ( ! is_numeric( $home[ $key ] ) || ! is_numeric( $away[ $key ] ) )
+			continue;
 
 		$first = empty( $home[ $key ] ) ? 0 : $home[ $key ];
 		$last = empty( $away[ $key ] ) ? 0 : $away[ $key ];
