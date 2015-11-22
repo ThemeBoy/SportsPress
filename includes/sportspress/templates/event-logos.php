@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.9
+ * @version     1.9.12
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,8 +29,11 @@ if ( $teams ):
 	$team_logos = array();
 	$i = 0;
 	foreach ( $teams as $team ):
-		if ( ! has_post_thumbnail( $team ) ) continue;
-		$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon' );
+		if ( ! has_post_thumbnail( $team ) ) {
+			$logo = '';
+		} else {
+			$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon' );
+		}
 
 		$alt = sizeof( $teams ) == 2 && $i % 2;
 

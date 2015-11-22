@@ -8,14 +8,8 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract($args);
-
-		$id = empty($instance['id']) ? null : $instance['id'];
-		if ( get_the_ID() === $id ) {
-			$format = get_post_meta( $id, 'sp_format', true );
-			if ( 'calendar' == $format ) return;
-		}
-
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
+		$id = empty($instance['id']) ? null : $instance['id'];
 		$status = empty($instance['status']) ? 'default' : $instance['status'];
 		$date = empty($instance['date']) ? 'default' : $instance['date'];
 		$date_from = empty($instance['date_from']) ? 'default' : $instance['date_from'];

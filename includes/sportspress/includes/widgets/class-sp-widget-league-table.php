@@ -8,10 +8,8 @@ class SP_Widget_League_Table extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract($args);
-
 		$id = empty($instance['id']) ? 0 : $instance['id'];
-		if ( $id <= 0 || get_the_ID() === $id ) return;
-
+		if ( $id <= 0 ) return;
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$caption = empty($instance['caption']) ? null : $instance['caption'];
 		$number = empty($instance['number']) ? null : $instance['number'];

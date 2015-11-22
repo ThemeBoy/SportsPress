@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends, golf
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 4.3
-Stable tag: 1.9.10
+Tested up to: 4.4
+Stable tag: 1.9.12
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -236,6 +236,15 @@ There are [4 different licenses](http://tboy.co/pro) that you can choose from: S
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.9.12 =
+* Tweak - Display team names and score template without logos.
+* Tweak - Validate hex color input.
+* Tweak - Add sp prefix to TGMPA notice to avoid conflict with other plugins.
+* Fix - Empty seasons displaying in player profiles.
+* Fix - Error on pages with no screen objects.
+* Localization - Add Tandor, muhahmetkara, elarequi, diego.battistella, and tkausch to translation team.
+* Localization - Update Polish, Tamil, German, Turkish, Spanish, Dutch, and Portuguese translations.
 
 = 1.9.10 =
 * Fix - Automatic event results calculating without player performance.
