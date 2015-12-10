@@ -121,7 +121,7 @@ foreach ( $data as $team_id => $row ):
 		$td_class = ' sp-highlight';
 	endif;
 
-	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . $tr_class . '">';
+	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . $tr_class . ' row-no-' . $i . '">';
 
 	// Rank
 	$output .= '<td class="data-rank' . $td_class . '">' . sp_array_value( $row, 'pos' ) . '</td>';
