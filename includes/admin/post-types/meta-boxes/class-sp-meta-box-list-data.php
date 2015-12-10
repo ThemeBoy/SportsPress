@@ -47,19 +47,18 @@ class SP_Meta_Box_List_Data {
 			<table class="widefat sp-data-table sp-player-list-table">
 				<thead>
 					<tr>
-						<th><label for="sp_columns_number">
-							<input type="checkbox" name="sp_columns[]" value="number" id="sp_columns_number" <?php checked( ! is_array( $columns ) || array_key_exists( 'number', $columns ) ); ?>>
-							<?php echo 'number' == $orderby ? '#' : __( 'Rank', 'sportspress' ); ?>
-						</label></th>
+						<?php if ( array_key_exists( 'number', $columns ) ) { ?>
+							<th><?php echo in_array( $orderby, array( 'number', 'name' ) ) ? '#' : __( 'Rank', 'sportspress' ); ?></th>
+						<?php } ?>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
-						<?php if ( apply_filters( 'sportspress_has_teams', true ) ) { ?>
-							<th><label for="sp_columns_team">
-								<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
-								<?php _e( 'Team', 'sportspress' ); ?>
-							</label></th>
+						<?php if ( array_key_exists( 'team', $columns ) && apply_filters( 'sportspress_has_teams', true ) ) { ?>
+							<th><?php _e( 'Team', 'sportspress' ); ?></th>
+						<?php } ?>
+						<?php if ( array_key_exists( 'position', $columns ) ) { ?>
+							<th><?php _e( 'Position', 'sportspress' ); ?></th>
 						<?php } ?>
 						<?php foreach ( $columns as $key => $label ): ?>
-							<?php if ( in_array( $key, array( 'number', 'team' ) ) ) continue; ?>
+							<?php if ( in_array( $key, array( 'number', 'team', 'position' ) ) ) continue; ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
 								<?php echo $label; ?>
 							</label></th>
@@ -81,15 +80,17 @@ class SP_Meta_Box_List_Data {
 								$default_name = get_the_title( $player_id );
 							?>
 							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-								<td>
-									<?php
-									if ( 'number' == $orderby ) {
-										echo ( $number ? $number : '&nbsp;' );
-									} else {
-										echo $i + 1;
-									}
-									?>
-								</td>
+								<?php if ( array_key_exists( 'number', $columns ) ) { ?>
+									<td>
+										<?php
+										if ( 'number' == $orderby ) {
+											echo ( $number ? $number : '&nbsp;' );
+										} else {
+											echo $i + 1;
+										}
+										?>
+									</td>
+								<?php } ?>
 								<td>
 									<?php if ( $show_player_photo ) echo get_the_post_thumbnail( $player_id, 'sportspress-fit-mini' ); ?>
 									<span class="sp-default-value">
@@ -102,7 +103,7 @@ class SP_Meta_Box_List_Data {
 										<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
 									</span>
 								</td>
-								<?php if ( apply_filters( 'sportspress_has_teams', true ) ) { ?>
+								<?php if ( array_key_exists( 'team', $columns ) && apply_filters( 'sportspress_has_teams', true ) ) { ?>
 									<td>
 										<?php
 										$selected = sp_array_value( $player_stats, 'team', get_post_meta( get_the_ID(), 'sp_team', true ) );
@@ -119,8 +120,25 @@ class SP_Meta_Box_List_Data {
 										?>
 									</td>
 								<?php } ?>
+								<?php if ( array_key_exists( 'position', $columns ) ) { ?>
+									<td>
+										<?php
+										$selected = sp_array_value( $player_stats, 'position', null );
+										$args = array(
+											'taxonomy' => 'sp_position',
+											'name' => 'sp_players[' . $player_id . '][position]',
+											'show_option_blank' => __( '(Auto)', 'sportspress' ),
+											'values' => 'term_id',
+											'orderby' => 'slug',
+											'selected' => $selected,
+											'include_children' => ( 'no' == get_option( 'sportspress_event_hide_child_positions', 'no' ) ),
+										);
+										sp_dropdown_taxonomies( $args );
+										?>
+									</td>
+								<?php } ?>
 								<?php foreach( $columns as $column => $label ):
-									if ( in_array( $column, array( 'number', 'team' ) ) ) continue;
+									if ( in_array( $column, array( 'number', 'team', 'position' ) ) ) continue;
 									$value = sp_array_value( $player_stats, $column, '' );
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $player_id, array() ), $column, 0 );
 									?>

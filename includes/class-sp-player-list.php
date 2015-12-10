@@ -491,9 +491,19 @@ class SP_Player_List extends SP_Custom_Post {
 
 			// Add player number and name to row
 			$merged[ $player_id ] = array();
-			$player_data['number'] = get_post_meta( $player_id, 'sp_number', true );
+			if ( in_array( 'number', $this->columns ) ):
+				$player_data['number'] = get_post_meta( $player_id, 'sp_number', true );
+			endif;
+			
 			$player_data['name'] = get_the_title( $player_id );
-			$player_data['team'] = get_post_meta( $player_id, 'sp_team', true );
+			
+			if ( in_array( 'team', $this->columns ) ):
+				$player_data['team'] = get_post_meta( $player_id, 'sp_team', true );
+			endif;
+			
+			if ( in_array( 'position', $this->columns ) ):
+				$player_data['position'] = null;
+			endif;
 
 			foreach( $player_data as $key => $value ):
 
@@ -530,6 +540,8 @@ class SP_Player_List extends SP_Custom_Post {
 					$labels[ $key ] = '#';
 				elseif ( $key == 'team' && apply_filters( 'sportspress_has_teams', true ) ):
 					$labels[ $key ] = __( 'Team', 'sportspress' );
+				elseif ( $key == 'position' ):
+					$labels[ $key ] = __( 'Position', 'sportspress' );
 				elseif ( array_key_exists( $key, $columns ) ):
 					$labels[ $key ] = $columns[ $key ];
 				endif;
@@ -548,6 +560,7 @@ class SP_Player_List extends SP_Custom_Post {
 			if ( in_array( 'number', $this->columns ) ) $labels['number'] = '#';
 			$labels['name'] = __( 'Player', 'sportspress' );
 			if ( in_array( 'team', $this->columns ) && apply_filters( 'sportspress_has_teams', true ) ) $labels['team'] = __( 'Team', 'sportspress' );
+			if ( in_array( 'position', $this->columns ) ) $labels['position'] = __( 'Position', 'sportspress' );
 
 			$merged[0] = array_merge( $labels, $columns );
 			return $merged;

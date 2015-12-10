@@ -176,9 +176,20 @@ foreach ( $groups as $group ):
 			endif;
 			$output .= '<td class="data-team">' . $team_name . '</td>';
 		endif;
+		
+		if ( array_key_exists( 'position', $labels ) ):
+			$position = sp_array_value( $row, 'position', null );
+			if ( null === $position || ! $position ):
+				$positions = wp_strip_all_tags( get_the_term_list( $player_id, 'sp_position', '', ', ' ) );
+			else:
+				$position_term = get_term_by( 'id', $position, 'sp_position', ARRAY_A );
+				$positions = sp_array_value( $position_term, 'name', '&mdash;' );
+			endif;
+			$output .= '<td class="data-position">' . $positions . '</td>';
+		endif;
 
 		foreach( $labels as $key => $value ):
-			if ( in_array( $key, array( 'number', 'name', 'team' ) ) )
+			if ( in_array( $key, array( 'number', 'name', 'team', 'position' ) ) )
 				continue;
 			if ( ! is_array( $columns ) || in_array( $key, $columns ) )
 			$output .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
