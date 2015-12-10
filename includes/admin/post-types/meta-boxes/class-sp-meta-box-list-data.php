@@ -167,7 +167,7 @@ class SP_Meta_Box_List_Data {
 					<tr>
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
-						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
+						<?php foreach ( $columns as $key => $label ): if ( in_array( $key, array( 'number', 'team', 'position' ) ) ) continue; ?>
 							<th><?php echo $label; ?></th>
 						<?php endforeach; ?>
 					</tr>
@@ -187,7 +187,7 @@ class SP_Meta_Box_List_Data {
 									<?php echo get_the_title( $player_id ); ?>
 								</td>
 								<?php foreach( $columns as $column => $label ):
-									if ( $column == 'team' ) continue;
+									if ( in_array( $column, array( 'number', 'team', 'position' ) ) ) continue;
 									$value = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $column, '' );
 									?>
 									<td><input type="text" name="sp_adjustments[<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="0" data-matrix="<?php echo $player_id; ?>_<?php echo $column; ?>" /></td>
