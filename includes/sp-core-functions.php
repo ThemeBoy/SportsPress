@@ -564,7 +564,7 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 
 			if ( strpos( $property, 'multiple' ) === false ):
 				if ( $args['show_option_blank'] ):
-					echo '<option></option>';
+					echo '<option value="">' . ( is_bool( $args['show_option_blank'] ) ? '' : $args['show_option_blank'] ) . '</option>';
 				endif;
 				if ( $args['show_option_all'] ):
 					printf( '<option value="0" ' . selected( '0', $selected, false ) . '>%s</option>', $args['show_option_all'] );
