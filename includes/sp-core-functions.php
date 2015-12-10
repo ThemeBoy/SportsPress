@@ -1284,6 +1284,7 @@ function sp_get_text_options() {
 		__( 'Pos', 'sportspress' ),
 		__( 'Position', 'sportspress' ),
 		__( 'Preview', 'sportspress' ),
+		__( 'Profile', 'sportspress' ),
 		__( 'Rank', 'sportspress' ),
 		__( 'Recap', 'sportspress' ),
 		__( 'Results', 'sportspress' ),
