@@ -17,7 +17,6 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 		$orderby = empty($instance['orderby']) ? 'default' : $instance['orderby'];
 		$order = empty($instance['order']) ? 'ASC' : $instance['order'];
 		$show_all_players_link = empty($instance['show_all_players_link']) ? false : $instance['show_all_players_link'];
-		$show_names_on_hover = empty($instance['show_names_on_hover']) ? false : $instance['show_names_on_hover'];
 
 		do_action( 'sportspress_before_widget', $args, $instance, 'player-gallery' );
 		echo $before_widget;
@@ -28,7 +27,7 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'player-gallery' );
 
-		sp_get_template( 'player-gallery.php', array( 'id' => $id, 'title' => $caption, 'number' => $number, 'columns' => $columns, 'orderby' => $orderby , 'order' => $order, 'grouping' => 0, 'show_all_players_link' => $show_all_players_link, 'show_names_on_hover' => $show_names_on_hover ) );
+		sp_get_template( 'player-gallery.php', array( 'id' => $id, 'title' => $caption, 'number' => $number, 'columns' => $columns, 'orderby' => $orderby , 'order' => $order, 'grouping' => 0, 'show_all_players_link' => $show_all_players_link ) );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'player-gallery' );
@@ -47,7 +46,6 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 		$instance['orderby'] = strip_tags($new_instance['orderby']);
 		$instance['order'] = strip_tags($new_instance['order']);
 		$instance['show_all_players_link'] = $new_instance['show_all_players_link'];
-		$instance['show_names_on_hover'] = $new_instance['show_names_on_hover'];
 
 		// Filter to hook into
 		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'player-gallery' );
@@ -56,7 +54,7 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'caption' => '', 'number' => 5, 'columns' => 2, 'orderby' => 'default', 'order' => 'ASC', 'show_all_players_link' => true, 'show_names_on_hover' => false ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => '', 'caption' => '', 'number' => 5, 'columns' => 2, 'orderby' => 'default', 'order' => 'ASC', 'show_all_players_link' => true ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
 		$caption = strip_tags($instance['caption']);
@@ -65,7 +63,6 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 		$orderby = strip_tags($instance['orderby']);
 		$order = strip_tags($instance['order']);
 		$show_all_players_link = $instance['show_all_players_link'];
-		$show_names_on_hover = $instance['show_names_on_hover'];
 
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'player-gallery' );
@@ -131,9 +128,6 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 
 		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_all_players_link'); ?>" name="<?php echo $this->get_field_name('show_all_players_link'); ?>" value="1" <?php checked( $show_all_players_link, 1 ); ?>>
 		<label for="<?php echo $this->get_field_id('show_all_players_link'); ?>"><?php _e( 'Display link to view all players', 'sportspress' ); ?></label></p>
-
-		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_names_on_hover'); ?>" name="<?php echo $this->get_field_name('show_names_on_hover'); ?>" value="1" <?php checked( $show_names_on_hover, 1 ); ?>>
-		<label for="<?php echo $this->get_field_id('show_names_on_hover'); ?>"><?php _e( 'Display player names on hover', 'sportspress' ); ?></label></p>
 
 		<?php
 		// Action to hook into
