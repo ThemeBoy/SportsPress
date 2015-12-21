@@ -387,6 +387,12 @@ class SP_Team extends SP_Custom_Post {
 	 */
 	public function tables( $admin = false ) {
 		if ( ! $this->ID ) return null;
+		
+		$leagues = get_the_terms( $this->ID, 'sp_league' );
+		$league_ids = wp_list_pluck( $leagues, 'term_id' );
+		
+		$seasons = get_the_terms( $this->ID, 'sp_season' );
+		$season_ids = wp_list_pluck( $seasons, 'term_id' );
 
 		$args = array(
 			'post_type' => 'sp_table',
@@ -394,10 +400,49 @@ class SP_Team extends SP_Custom_Post {
 			'posts_per_page' => -1,
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
-			'meta_key' => 'sp_team',
-			'meta_value' => $this->ID,
+			'meta_query' => array(
+				'relation' => 'AND',
+				array(
+					'key' => 'sp_select',
+					'value' => 'manual',
+				),
+				array(
+					'key' => 'sp_team',
+					'value' => $this->ID,
+				),
+			),
 		);
-		$tables = get_posts( $args );
+		$tables_by_id = get_posts( $args );
+
+		$args = array(
+			'post_type' => 'sp_table',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'meta_query' => array(
+				array(
+					'key' => 'sp_select',
+					'value' => 'auto',
+				),
+			),
+			'tax_query' => array(
+				'relation' => 'AND',
+				array(
+					'taxonomy' => 'sp_league',
+					'field' => 'term_id',
+					'terms' => $league_ids,
+				),
+				array(
+					'taxonomy' => 'sp_season',
+					'field' => 'term_id',
+					'terms' => $season_ids,
+				),
+			),
+		);
+		$tables_by_terms = get_posts( $args );
+		
+		$tables = array_merge( $tables_by_id, $tables_by_terms );
 
 		$checked = (array) get_post_meta( $this->ID, 'sp_table' );
 
