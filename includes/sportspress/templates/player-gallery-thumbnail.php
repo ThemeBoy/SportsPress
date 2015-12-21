@@ -15,7 +15,7 @@ $defaults = array(
 	'icontag' => 'dt',
 	'captiontag' => 'dd',
 	'caption' => null,
-	'size' => 'thumbnail',
+	'size' => 'gallery',
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 );
 

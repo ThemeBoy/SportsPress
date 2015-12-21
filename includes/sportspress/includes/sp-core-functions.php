@@ -564,7 +564,7 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 
 			if ( strpos( $property, 'multiple' ) === false ):
 				if ( $args['show_option_blank'] ):
-					echo '<option></option>';
+					echo '<option value="">' . ( is_bool( $args['show_option_blank'] ) ? '' : $args['show_option_blank'] ) . '</option>';
 				endif;
 				if ( $args['show_option_all'] ):
 					printf( '<option value="0" ' . selected( '0', $selected, false ) . '>%s</option>', $args['show_option_all'] );
@@ -1284,6 +1284,7 @@ function sp_get_text_options() {
 		__( 'Pos', 'sportspress' ),
 		__( 'Position', 'sportspress' ),
 		__( 'Preview', 'sportspress' ),
+		__( 'Profile', 'sportspress' ),
 		__( 'Rank', 'sportspress' ),
 		__( 'Recap', 'sportspress' ),
 		__( 'Results', 'sportspress' ),
