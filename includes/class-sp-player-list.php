@@ -53,6 +53,24 @@ class SP_Player_List extends SP_Custom_Post {
 
 		// Get labels from result variables
 		$result_labels = (array)sp_get_var_labels( 'sp_result' );
+		
+		// Get prepend and append from metric variables
+		$args = array(
+			'post_type' => 'sp_metric',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		$vars = get_posts( $args );
+		
+		$pa = array();
+		foreach ( $vars as $var ) {
+			$prepend = get_post_meta( $var->ID, 'sp_prepend', true );
+			$append = get_post_meta( $var->ID, 'sp_append', true );
+			$pa[ $var->post_name ] = array( $prepend, $append );
+		}
 
 		// Get players automatically if set to auto
 		if ( 'auto' == $select ) {
@@ -169,6 +187,13 @@ class SP_Player_List extends SP_Custom_Post {
 				$adjustment = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $key, null );
 				if ( $adjustment != null )
 					$metrics[ $key ] += $adjustment;
+			
+				if ( '' !== $metrics[ $key ] ) {
+					$prepend = sp_array_value( sp_array_value( $pa, $key, array() ), 0, null );
+					$append = sp_array_value( sp_array_value( $pa, $key, array() ), 1, null );
+					
+					$metrics[ $key ] = ( $prepend ? '<span class="sp-prepend">' . $prepend . '</span> ' : '' ) . $metrics[ $key ] . ( $append ? ' <span class="sp-append">' . $append . '</span>' : '' );
+				}
 			endforeach;
 
 			// Get static stats

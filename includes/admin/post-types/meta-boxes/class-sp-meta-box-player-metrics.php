@@ -34,9 +34,15 @@ class SP_Meta_Box_Player_Metrics {
 
 		if ( $vars ):
 			foreach ( $vars as $var ):
+			$prepend = get_post_meta( $var->ID, 'sp_prepend', true );
+			$append = get_post_meta( $var->ID, 'sp_append', true );
 			?>
 			<p><strong><?php echo $var->post_title; ?></strong></p>
-			<p><input type="text" name="sp_metrics[<?php echo $var->post_name; ?>]" value="<?php echo esc_attr( sp_array_value( $metrics, $var->post_name, '' ) ); ?>" /></p>
+			<p>
+				<?php echo ( $prepend ? '<span class="description">' . $prepend . '</span>' : '' ); ?>
+				<input type="text" name="sp_metrics[<?php echo $var->post_name; ?>]" value="<?php echo esc_attr( sp_array_value( $metrics, $var->post_name, '' ) ); ?>" />
+				<?php echo ( $append ? '<span class="description">' . $append . '</span>' : '' ); ?>
+			</p>
 			<?php
 			endforeach;
 		else:
