@@ -39,9 +39,9 @@ class SP_Meta_Box_Player_Metrics {
 			?>
 			<p><strong><?php echo $var->post_title; ?></strong></p>
 			<p>
-				<?php echo $prepend; ?>
+				<?php echo ( $prepend ? '<span class="description">' . $prepend . '</span>' : '' ); ?>
 				<input type="text" name="sp_metrics[<?php echo $var->post_name; ?>]" value="<?php echo esc_attr( sp_array_value( $metrics, $var->post_name, '' ) ); ?>" />
-				<?php echo $append; ?>
+				<?php echo ( $append ? '<span class="description">' . $append . '</span>' : '' ); ?>
 			</p>
 			<?php
 			endforeach;

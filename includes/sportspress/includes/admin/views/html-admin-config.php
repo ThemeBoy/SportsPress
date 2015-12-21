@@ -295,6 +295,8 @@
 							<tr>
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Prepend', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Append', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
 							</tr>
@@ -303,12 +305,14 @@
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
 								<td><code><?php echo $row->post_name; ?></code></td>
+								<td><?php echo sp_get_post_prepend( $row->ID ); ?></td>
+								<td><?php echo sp_get_post_append( $row->ID ); ?></td>
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
 						<?php $i++; endforeach; else: ?>
 							<tr class="alternate">
-								<td colspan="4"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+								<td colspan="6"><?php _e( 'No results found.', 'sportspress' ); ?></td>
 							</tr>
 						<?php endif; ?>
 					</table>
