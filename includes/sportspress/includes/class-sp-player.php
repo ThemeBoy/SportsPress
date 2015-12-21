@@ -88,14 +88,39 @@ class SP_Player extends SP_Custom_Post {
 	 * @return array
 	 */
 	public function metrics( $neg = null ) {
+		$args = array(
+			'post_type' => 'sp_metric',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		$vars = get_posts( $args );
+		
+		$data = array();
+		
+		if ( ! $vars ) return $data;
+		
+		$pa = array();
+		foreach ( $vars as $var ) {
+			$prepend = get_post_meta( $var->ID, 'sp_prepend', true );
+			$append = get_post_meta( $var->ID, 'sp_append', true );
+			$pa[ $var->post_name ] = array( $prepend, $append );
+		}
+		
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$metric_labels = (array)sp_get_var_labels( 'sp_metric', $neg );
-		$data = array();
+		
 		foreach( $metric_labels as $key => $value ):
 			$metric = sp_array_value( $metrics, $key, null );
 			if ( $metric == null )
 				continue;
-			$data[ $value ] = sp_array_value( $metrics, $key, '&nbsp;' );
+			
+			$prepend = sp_array_value( sp_array_value( $pa, $key, array() ), 0, null );
+			$append = sp_array_value( sp_array_value( $pa, $key, array() ), 1, null );
+			
+			$data[ $value ] = ( $prepend ? '<span class="sp-prepend">' . $prepend . '</span> ' : '' ) . sp_array_value( $metrics, $key, '&nbsp;' ) . ( $append ? ' <span class="sp-append">' . $append . '</span>' : '' );
 		endforeach;
 		return $data;
 	}
