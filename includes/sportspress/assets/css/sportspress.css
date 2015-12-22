@@ -296,9 +296,9 @@
 	padding: 0 20px;
 }
 .sp-event-blocks .team-logo {
-	width: 20%;
-	height: auto;
 	margin: 10px;
+	width: 20%;
+	height: 4em;
 	max-width: 6em;
 }
 .sp-event-blocks .logo-odd {
