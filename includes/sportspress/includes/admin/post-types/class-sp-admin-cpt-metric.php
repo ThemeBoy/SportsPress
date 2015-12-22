@@ -42,8 +42,6 @@ class SP_Admin_CPT_Metric extends SP_Admin_CPT {
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Label', 'sportspress' ),
 			'sp_key' => __( 'Variable', 'sportspress' ),
-			'sp_prepend' => __( 'Prepend', 'sportspress' ),
-			'sp_append' => __( 'Append', 'sportspress' ),
 			'sp_description' => __( 'Description', 'sportspress' ),
 		);
 		return apply_filters( 'sportspress_metric_admin_columns', $columns );
@@ -58,12 +56,6 @@ class SP_Admin_CPT_Metric extends SP_Admin_CPT {
 			case 'sp_key':
 				global $post;
 				echo $post->post_name;
-				break;
-			case 'sp_prepend':
-				echo sp_get_post_prepend( $post_id );
-				break;
-			case 'sp_append':
-				echo sp_get_post_append( $post_id );
 				break;
 			case 'sp_description':
 				global $post;

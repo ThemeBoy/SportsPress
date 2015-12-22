@@ -25,8 +25,8 @@
 						{ "name" : "Pts", "equation" : "$pointsfor - $pointsagainst", "priority" : 2, "description" : "Total points" }
 	],
 	"metrics": [
-						"Height",
-						"Weight"
+						{ "name" : "Height", "description" : "Player height" },
+						{ "name" : "Weight", "description" : "Player weight" }
 	],
 	"statistics": [
 	]

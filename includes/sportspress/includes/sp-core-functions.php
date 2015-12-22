@@ -449,28 +449,6 @@ if ( !function_exists( 'sp_get_post_order' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_get_post_prepend' ) ) {
-	function sp_get_post_prepend( $post_id ) {
-		$prepend = get_post_meta ( $post_id, 'sp_prepend', true );
-		if ( $prepend ):
-			return $prepend;
-		else:
-			return '&mdash;';
-		endif;
-	}
-}
-
-if ( !function_exists( 'sp_get_post_append' ) ) {
-	function sp_get_post_append( $post_id ) {
-		$append = get_post_meta ( $post_id, 'sp_append', true );
-		if ( $append ):
-			return $append;
-		else:
-			return '&mdash;';
-		endif;
-	}
-}
-
 if ( !function_exists( 'sp_dropdown_statuses' ) ) {
 	function sp_dropdown_statuses( $args = array() ) {
 		$defaults = array(
