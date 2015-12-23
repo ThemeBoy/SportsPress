@@ -11,11 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'id' => null,
-	'performance' => array(),
 	'icontag' => 'dt',
 	'captiontag' => 'dd',
 	'caption' => null,
-	'size' => 'gallery',
+	'size' => 'medium',
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 );
 

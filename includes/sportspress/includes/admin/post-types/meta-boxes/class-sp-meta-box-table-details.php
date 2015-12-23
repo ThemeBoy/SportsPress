@@ -19,7 +19,6 @@ class SP_Meta_Box_Table_Details {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$taxonomies = get_object_taxonomies( 'sp_table' );
 		$caption = get_post_meta( $post->ID, 'sp_caption', true );
 		$select = get_post_meta( $post->ID, 'sp_select', true );
