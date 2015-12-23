@@ -107,7 +107,7 @@ if ( $title )
 								<?php echo sp_add_link( get_the_time( get_option( 'date_format' ), $event ), $permalink, $link_events ); ?>
 							</time>
 							<h5 class="sp-event-results">
-								<?php echo sp_add_link( '<span class="sp-result">' . implode( '</span>-<span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', sp_get_main_results_or_time( $event ), $event->ID ) ), $permalink, $link_events . '</span>' ); ?>
+								<?php echo sp_add_link( '<span class="sp-result">' . implode( '</span> - <span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', sp_get_main_results_or_time( $event ), $event->ID ) ), $permalink, $link_events . '</span>' ); ?>
 							</h5>
 							<?php if ( $show_league ): $leagues = get_the_terms( $event, 'sp_league' ); if ( $leagues ): $league = array_shift( $leagues ); ?>
 								<div class="sp-event-league"><?php echo $league->name; ?></div>
