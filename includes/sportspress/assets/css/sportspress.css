@@ -146,6 +146,7 @@
 }
 .sp-template-league-gallery .gallery-item {
 	display: inline-block;
+	vertical-align: middle;
 	width: 9.375em;
 	padding: 0.9375em;
 }
