@@ -8,8 +8,14 @@ class SP_Widget_Event_List extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract($args);
-		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
+		
 		$id = empty($instance['id']) ? null : $instance['id'];
+		if ( $id && 'yes' == get_option( 'sportspress_widget_unique', 'no' ) && get_the_ID() === $id ) {
+			$format = get_post_meta( $id, 'sp_format', true );
+			if ( 'list' == $format ) return;
+		}
+		
+		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$caption = empty($instance['caption']) ? null : $instance['caption'];
 		$status = empty($instance['status']) ? 'default' : $instance['status'];
 		$date = empty($instance['date']) ? 'default' : $instance['date'];

@@ -8,8 +8,16 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract($args);
+		
 		$id = empty($instance['id']) ? 0 : $instance['id'];
+		
 		if ( $id <= 0 ) return;
+		
+		if ( 'yes' == get_option( 'sportspress_widget_unique', 'no' ) && get_the_ID() === $id ) {
+			$format = get_post_meta( $id, 'sp_format', true );
+			if ( 'gallery' == $format ) return;
+		}
+
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$caption = empty($instance['caption']) ? null : $instance['caption'];
 		$number = empty($instance['number']) ? null : $instance['number'];
