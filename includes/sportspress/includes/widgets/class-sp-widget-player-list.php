@@ -115,6 +115,17 @@ class SP_Widget_Player_list extends WP_Widget {
 			$field_name = $this->get_field_name('columns') . '[]';
 			$field_id = $this->get_field_id('columns');
 			?>
+			<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id; ?>-number" value="number" <?php if ( $columns === null || in_array( 'number', $columns ) ): ?>checked="checked"<?php endif; ?>><?php
+				if ( 'default' == $orderby ) {
+					_e( 'Rank', 'sportspress' );
+					echo '/';
+					_e( 'Squad Number', 'sportspress' );
+				} elseif ( in_array( $orderby, array( 'number', 'name' ) ) ) {
+					_e( 'Squad Number', 'sportspress' );
+				} else {
+					_e( 'Rank', 'sportspress' );
+				}
+			?></label>
 			<?php foreach ( $the_columns as $column ): ?>
 				<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . $column->post_name; ?>" value="<?php echo $column->post_name; ?>" <?php if ( $columns === null || in_array( $column->post_name, $columns ) ): ?>checked="checked"<?php endif; ?>><?php echo $column->post_title; ?></label>
 			<?php endforeach; ?>
