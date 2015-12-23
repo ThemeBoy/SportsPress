@@ -141,6 +141,15 @@
 	max-width: 2em;
 	max-height: 2em;
 }
+.sp-league-gallery-wrapper {
+	text-align: center;
+}
+.sp-template-league-gallery .gallery-item {
+	display: inline-block;
+}
+.sp-template-league-gallery .gallery-item img {
+	width: 9.375em;
+}
 
 /* Player List */
 .sp-player-list td {
