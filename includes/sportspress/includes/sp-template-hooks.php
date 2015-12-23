@@ -70,19 +70,15 @@ add_action( 'sportspress_before_single_team', 'sportspress_output_post_excerpt',
 /**
  * Single Team Content
  *
+ * @see sportspress_output_team_link()
  * @see sportspress_output_team_details()
  * @see sportspress_output_team_lists()
  * @see sportspress_output_team_tables()
  */
+add_action( 'sportspress_single_team_content', 'sportspress_output_team_link', 0 );
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_details', 10 );
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_lists', 20 );
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_tables', 30 );
-
-/**
- * After Single Team
- * @see sportspress_output_team_link()
- */
-add_action( 'sportspress_after_single_team', 'sportspress_output_team_link', 10 );
 
 /**
  * Before Single Table
