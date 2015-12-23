@@ -284,8 +284,7 @@
 .sp-event-blocks .sp-event-title {
 	text-align: center;
 	display: block;
-	margin: 10px 20%;
-	padding: 0 20px;
+	margin: 10px 0;
 	clear: none;
 }
 .sp-event-blocks .sp-event-league,
