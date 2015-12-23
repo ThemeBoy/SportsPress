@@ -146,9 +146,8 @@
 }
 .sp-template-league-gallery .gallery-item {
 	display: inline-block;
-}
-.sp-template-league-gallery .gallery-item img {
 	width: 9.375em;
+	padding: 0.9375em;
 }
 
 /* Player List */
