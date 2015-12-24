@@ -23,10 +23,6 @@
 	content: "\f163";
 }
 
-.post-state-format.post-format-table:before, .post-format-icon.post-format-table:before, a.post-state-format.format-table:before {
-	content: "\f163";
-}
-
 .post-state-format.post-format-blocks:before, .post-format-icon.post-format-blocks:before, a.post-state-format.format-blocks:before {
 	content: "\f164";
 }
