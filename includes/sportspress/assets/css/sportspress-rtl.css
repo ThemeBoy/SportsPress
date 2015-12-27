@@ -8,6 +8,11 @@
 	margin-left: 2em;
 }
 
+/* Data Tables */
+.sp-data-table .data-name {
+	text-align: right;
+}
+
 /* Pagination */
 .sp-table-wrapper .dataTables_paginate .previous {
 	float: right;

@@ -84,6 +84,9 @@
 	content: "\f140";
 	position: absolute;
 }
+.sp-data-table .data-name {
+	text-align: left;
+}
 .sp-data-table .data-number,
 .sp-data-table .data-rank {
 	width: 1px;
