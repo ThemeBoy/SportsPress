@@ -32,9 +32,6 @@ if ( $captiontag && $caption )
 if ( $link_posts )
 	$caption = '<a href="' . get_permalink( $id ) . '">' . $caption . '</a>';
 
-if ( isset( $limit ) && $i >= $limit )
-	continue;
-
 if ( has_post_thumbnail( $id ) )
 	$thumbnail = get_the_post_thumbnail( $id, $size );
 else
