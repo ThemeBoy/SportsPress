@@ -132,7 +132,7 @@
 .sp-league-table .data-name .team-logo {
 	width: 2em;
 	height: 2em;
-	margin-right: 0.25em;
+	margin-right: 0.5em;
 	display: block;
 	float: left;
 	text-align: center;
@@ -152,7 +152,7 @@
 .sp-player-list .data-name .player-flag {
 	width: 2em;
 	height: 2em;
-	margin-right: 0.25em;
+	margin-right: 0.5em;
 	display: block;
 	float: left;
 	text-align: center;
