@@ -355,6 +355,7 @@ class SportsPress_Tournaments {
 			);
 
 			foreach ( $capabilities as $cap ):
+				$wp_roles->add_cap( 'sp_event_manager', $cap );
 				$wp_roles->add_cap( 'sp_team_manager', $cap );
 			endforeach;
 
