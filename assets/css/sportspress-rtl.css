@@ -8,6 +8,11 @@
 	margin-left: 2em;
 }
 
+/* Data Tables */
+.sp-data-table .data-name {
+	text-align: right;
+}
+
 /* Pagination */
 .sp-table-wrapper .dataTables_paginate .previous {
 	float: right;
@@ -25,7 +30,7 @@
 .sp-player-list .data-name .player-photo,
 .sp-player-list .data-name .player-flag {
 	margin-right: 0;
-	margin-left: 0.25em;
+	margin-left: 0.5em;
 	float: right;
 }
 

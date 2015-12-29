@@ -44,7 +44,6 @@
 	width: 100%;
 	overflow: hidden;
 	overflow-x: auto;
-	position: relative;
 }
 .sp-data-table {
 	width: 100%;
@@ -84,6 +83,9 @@
 .sp-data-table .sorting_desc:after {
 	content: "\f140";
 	position: absolute;
+}
+.sp-data-table .data-name {
+	text-align: left;
 }
 .sp-data-table .data-number,
 .sp-data-table .data-rank {
@@ -130,7 +132,7 @@
 .sp-league-table .data-name .team-logo {
 	width: 2em;
 	height: 2em;
-	margin-right: 0.25em;
+	margin-right: 0.5em;
 	display: block;
 	float: left;
 	text-align: center;
@@ -150,7 +152,7 @@
 .sp-player-list .data-name .player-flag {
 	width: 2em;
 	height: 2em;
-	margin-right: 0.25em;
+	margin-right: 0.5em;
 	display: block;
 	float: left;
 	text-align: center;
@@ -194,11 +196,7 @@
 
 .sp-event-logos .sp-team-logo .sp-team-result {
 	display: block;
-	margin: 0 0 1em;
-}
-
-.sp-event-logos .sp-team-logo:last-child .sp-team-result {
-	margin-bottom: 0;
+	margin: 0.5em 0;
 }
 
 /* Event Venue */
@@ -288,8 +286,7 @@
 .sp-event-blocks .sp-event-title {
 	text-align: center;
 	display: block;
-	margin: 10px 20%;
-	padding: 0 20px;
+	margin: 10px 0;
 	clear: none;
 }
 .sp-event-blocks .sp-event-league,
@@ -300,9 +297,9 @@
 	padding: 0 20px;
 }
 .sp-event-blocks .team-logo {
-	width: 20%;
-	height: auto;
 	margin: 10px;
+	width: 20%;
+	height: 4em;
 	max-width: 6em;
 }
 .sp-event-blocks .logo-odd {
