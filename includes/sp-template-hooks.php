@@ -284,7 +284,7 @@ add_filter( 'the_title', 'sportspress_abbreviate_team', 10, 2 );
 
 function sportspress_no_terms_links( $term_list, $taxonomy ) {
 
-    if ( in_array( $taxonomy, array( 'sp_league', 'sp_season' ) ) )
+    if ( in_array( $taxonomy, array( 'sp_league', 'sp_season', 'sp_position', 'sp_role' ) ) )
         return wp_filter_nohtml_kses( $term_list );
 
     return $term_list;
