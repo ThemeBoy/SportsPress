@@ -149,6 +149,15 @@ class SP_Settings_General extends SP_Settings_Page {
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',
 			),
+
+			array(
+				'title'     => __( 'Widgets', 'sportspress' ),
+				'desc' 		=> __( 'Unique', 'sportspress' ),
+				'id' 		=> 'sportspress_widget_unique',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox',
+				'desc_tip' 	=> __( 'Hide widget when same as content.', 'sportspress' ),
+			),
 		));
 
 		if ( apply_filters( 'sportspress_enable_header', false ) ) {
