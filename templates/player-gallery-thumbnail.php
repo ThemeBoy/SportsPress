@@ -11,11 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'id' => null,
-	'performance' => array(),
 	'icontag' => 'dt',
 	'captiontag' => 'dd',
 	'caption' => null,
-	'size' => 'gallery',
+	'size' => 'medium',
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 );
 
@@ -32,9 +31,6 @@ if ( $captiontag && $caption )
 
 if ( $link_posts )
 	$caption = '<a href="' . get_permalink( $id ) . '">' . $caption . '</a>';
-
-if ( isset( $limit ) && $i >= $limit )
-	continue;
 
 if ( has_post_thumbnail( $id ) )
 	$thumbnail = get_the_post_thumbnail( $id, $size );
