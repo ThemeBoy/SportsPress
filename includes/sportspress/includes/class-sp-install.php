@@ -320,6 +320,9 @@ class SP_Install {
 		            'delete_sp_events' 				=> true,
 		            'delete_published_sp_events' 	=> true,
 		            'edit_published_sp_events' 		=> true,
+					'manage_sp_event_terms' 		=> true,
+					'edit_sp_event_terms' 			=> true,
+					'delete_sp_event_terms' 		=> true,
 					'assign_sp_event_terms' 		=> true,
 
 		            'edit_sp_team'					=> true,

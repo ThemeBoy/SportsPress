@@ -165,6 +165,13 @@ class SP_Admin_Meta_Boxes {
 					'context' => 'normal',
 					'priority' => 'low',
 				),
+				'staff' => array(
+					'title' => __( 'Staff', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Team_Staff::save',
+					'output' => 'SP_Meta_Box_Team_Staff::output',
+					'context' => 'normal',
+					'priority' => 'high',
+				),
 			),
 			'sp_player' => array(
 				'shortcode' => array(

@@ -132,8 +132,8 @@ class SP_Meta_Box_Event_Performance {
 			?>
 			<div class="sp-data-table-container">
 				<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
-					<?php self::header( $columns, $labels, $positions, $labels, $has_checkboxes, $status, false, false ); ?>
-					<?php self::footer( sp_array_value( $stats, -1 ), $labels, 0, $positions, $labels, $split_positions, $status, false, false ); ?>
+					<?php self::header( $columns, $labels, $positions, $has_checkboxes, $status, false, false ); ?>
+					<?php self::footer( sp_array_value( $stats, -1 ), $labels, 0, $positions, $split_positions, $status, false, false ); ?>
 					<tbody>
 						<?php
 						foreach ( $teams as $key => $team_id ):
@@ -163,8 +163,8 @@ class SP_Meta_Box_Event_Performance {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
-				<?php self::header( $columns, $labels, $positions, $labels, $has_checkboxes, $status ); ?>
-				<?php self::footer( $data, $labels, $team_id, $positions, $labels, $split_positions, $status ); ?>
+				<?php self::header( $columns, $labels, $positions, $has_checkboxes, $status ); ?>
+				<?php self::footer( $data, $labels, $team_id, $positions, $split_positions, $status ); ?>
 				<tbody>
 					<?php
 					foreach ( $data as $player_id => $player_performance ):
@@ -180,7 +180,7 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table header
 	 */
-	public static function header( $columns = array(), $labels = array(), $positions = array(), $labels = array(), $has_checkboxes = false, $status = true, $sortable = true, $numbers = true ) {
+	public static function header( $columns = array(), $labels = array(), $positions = array(), $has_checkboxes = false, $status = true, $sortable = true, $numbers = true ) {
 		?>
 		<thead>
 			<tr>
@@ -221,7 +221,7 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table footer
 	 */
-	public static function footer( $data = array(), $labels = array(), $team_id = 0, $positions = array(), $labels = array(), $split_positions = false, $status = true, $sortable = true, $numbers = true ) {
+	public static function footer( $data = array(), $labels = array(), $team_id = 0, $positions = array(), $split_positions = false, $status = true, $sortable = true, $numbers = true ) {
 		?>
 		<tfoot>
 			<?php do_action( 'sportspress_event_performance_meta_box_table_footer', $data, $labels, $team_id, $positions, $status, $sortable, $numbers ); ?>

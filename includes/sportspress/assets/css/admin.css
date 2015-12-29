@@ -289,6 +289,10 @@ table.widefat.sp-data-table tr:hover a.sp-edit {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
+table.widefat.sp-data-table th.check-column {
+	padding: 10px 0 6px 2px;
+}
+
 table.widefat.sp-data-table th:not(.check-column) input[type=checkbox] {
 	margin: -4px 1px 0;
 	vertical-align: middle;

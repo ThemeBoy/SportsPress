@@ -179,7 +179,7 @@
 }
 
 /* Widgets */
-[id*="sportspress-"] .widget-title h4:before {
+[id*="sportspress-"] .widget-title h3:before {
 	font-family: sportspress, dashicons;
 	color: #aaa;
 	font-size: 20px;

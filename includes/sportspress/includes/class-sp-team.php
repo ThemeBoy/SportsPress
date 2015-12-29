@@ -346,6 +346,40 @@ class SP_Team extends SP_Custom_Post {
 	}
 
 	/**
+	 * Returns staff members
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function staff( $admin = false ) {
+		if ( ! $this->ID ) return null;
+
+		$args = array(
+			'post_type' => 'sp_staff',
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'meta_key' => 'sp_team',
+			'meta_value' => $this->ID,
+		);
+		$members = get_posts( $args );
+
+		$checked = (array) get_post_meta( $this->ID, 'sp_staff' );
+
+		if ( $admin ):
+			return array( $members, $checked );
+		else:
+			foreach ( $members as $key => $member ):
+				if ( ! in_array( $member->ID, $checked ) ):
+					unset( $members[ $key ] );
+				endif;
+			endforeach;
+			return $members;
+		endif;
+	}
+
+	/**
 	 * Returns player lists
 	 *
 	 * @access public

@@ -259,6 +259,19 @@ if ( ! function_exists( 'sportspress_output_team_details' ) ) {
 		sp_get_template( 'team-details.php' );
 	}
 }
+if ( ! function_exists( 'sportspress_output_team_staff' ) ) {
+
+	/**
+	 * Output the team staff.
+	 *
+	 * @access public
+	 * @subpackage	Team/Staff
+	 * @return void
+	 */
+	function sportspress_output_team_staff() {
+		sp_get_template( 'team-staff.php' );
+	}
+}
 if ( ! function_exists( 'sportspress_output_team_tables' ) ) {
 
 	/**
