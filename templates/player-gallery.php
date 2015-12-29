@@ -138,7 +138,6 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 
 		    sp_get_template( 'player-gallery-thumbnail.php', array(
 		    	'id' => $player_id,
-		    	'performance' => $performance,
 		    	'itemtag' => $itemtag,
 		    	'icontag' => $icontag,
 		    	'captiontag' => $captiontag,
