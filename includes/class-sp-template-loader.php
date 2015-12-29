@@ -48,17 +48,17 @@ class SP_Template_Loader {
 
 		do_action( 'sportspress_before_single_' . $template );
 
-		if ( $position > 0 && $position <= 5 )
+		if ( $position > 0 && $position <= 10 )
 			echo $content;
 
 		do_action( 'sportspress_single_' . $template . '_content' );
 
-		if ( $position > 5 && $position <= 10 )
+		if ( $position > 10 && $position <= 20 )
 			echo $content;
 
 		do_action( 'sportspress_after_single_' . $template );
 
-		if ( $position > 10 )
+		if ( $position > 20 )
 			echo $content;
 
 		return ob_get_clean();
@@ -85,7 +85,7 @@ class SP_Template_Loader {
 
 	public function team_content( $content ) {
 		if ( is_singular( 'sp_team' ) )
-			$content = self::add_content( $content, 'team', apply_filters( 'sportspress_team_content_priority', 10 ), __( 'Profile', 'sportspress' ) );
+			$content = self::add_content( $content, 'team', apply_filters( 'sportspress_team_content_priority', 10 ) );
 		return $content;
 	}
 
@@ -97,7 +97,7 @@ class SP_Template_Loader {
 
 	public function player_content( $content ) {
 		if ( is_singular( 'sp_player' ) )
-			$content = self::add_content( $content, 'player', apply_filters( 'sportspress_player_content_priority', 10 ), __( 'Profile', 'sportspress' ) );
+			$content = self::add_content( $content, 'player', apply_filters( 'sportspress_player_content_priority', 10 ) );
 		return $content;
 	}
 
@@ -109,7 +109,7 @@ class SP_Template_Loader {
 
 	public function staff_content( $content ) {
 		if ( is_singular( 'sp_staff' ) )
-			$content = self::add_content( $content, 'staff', apply_filters( 'sportspress_staff_content_priority', 10 ), __( 'Profile', 'sportspress' ) );
+			$content = self::add_content( $content, 'staff', apply_filters( 'sportspress_staff_content_priority', 10 ) );
 		return $content;
 	}
 
