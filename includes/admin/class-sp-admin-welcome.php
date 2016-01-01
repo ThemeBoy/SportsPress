@@ -394,6 +394,7 @@ class SP_Admin_Welcome {
 					'thegreat',
 				),
 				'Nederlands' => array(
+					'demoyer',
 					'paulcoppen',
 					'poelie',
 					'SilverXp',
