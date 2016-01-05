@@ -988,7 +988,7 @@ table.sp-status-table td mark.yes {
 	.wp-list-table tr:not(.inline-edit-row):not(.no-items) td.column-sp_format,
 	.wp-list-table tr:not(.inline-edit-row):not(.no-items) td.column-sp_icon,
 	.wp-list-table tr:not(.inline-edit-row):not(.no-items) td.column-sp_number {
-		display: table-cell;
+		display: table-cell!important;
 	}
 }
 
