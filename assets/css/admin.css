@@ -984,6 +984,12 @@ table.sp-status-table td mark.yes {
 		float: none;
 		margin-left: 0;
 	}
+	
+	.wp-list-table tr:not(.inline-edit-row):not(.no-items) td.column-sp_format,
+	.wp-list-table tr:not(.inline-edit-row):not(.no-items) td.column-sp_icon,
+	.wp-list-table tr:not(.inline-edit-row):not(.no-items) td.column-sp_number {
+		display: table-cell;
+	}
 }
 
 @media only screen and (max-width: 600px) {
