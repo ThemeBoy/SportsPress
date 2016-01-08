@@ -137,10 +137,10 @@ class SportsPress_Tutorials {
 		}
 		$i = 0;
 		?>
-		<h2 class="nav-tab-wrapper">
-			<?php foreach ( $tabs as $name => $label ): ?><a href="<?php echo admin_url( 'admin.php?page=sportspress-tutorials&tab=' . $name ); ?>" class="nav-tab <?php echo ( $current_tab == $name ? 'nav-tab-active' : '' ); ?>"><?php echo $label; ?></a><?php endforeach; ?>
-		</h2>
 		<div class="wrap sportspress sportspress-tutorials-wrap">
+			<h2 class="nav-tab-wrapper">
+				<?php foreach ( $tabs as $name => $label ): ?><a href="<?php echo admin_url( 'admin.php?page=sportspress-tutorials&tab=' . $name ); ?>" class="nav-tab <?php echo ( $current_tab == $name ? 'nav-tab-active' : '' ); ?>"><?php echo $label; ?></a><?php endforeach; ?>
+			</h2>
 			<div class="sp-tutorials-main">
 				<?php foreach ( $this->ids[$current_tab] as $section => $urls ) { ?>
 					<h3><?php echo $section; ?></h3>
