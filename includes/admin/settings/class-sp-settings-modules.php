@@ -74,25 +74,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 				</table>
 				<?php } ?>
 
-				<?php if ( current_user_can( 'install_plugins' ) && ! class_exists( 'SportsPress_TV' ) ) { ?>
-				<table class="widefat" cellspacing="0">
-					<thead>
-						<tr><th>
-							<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/sportspress-tv-sidebar.png" alt="<?php _e( 'SportsPress TV', 'sportspress' ); ?>">
-						</th></tr>
-					</thead>
-					<tbody>
-						<tr><td>
-							<p><?php _e( 'Offer premium news & highlights from leading global sports. SportsPress TV will keep your visitors entertained for hours.','sportspress' ); ?></p>
-							<p class="sp-module-actions">
-								<span><?php _e( 'Free', 'sportspress' ); ?></span>
-								<a class="button thickbox" href="<?php echo add_query_arg( array( 'tab' => 'plugin-information', 'plugin' => 'sportspress-tv', 'TB_iframe' => 'true', 'width' => '80%', 'height' => '500' ), network_admin_url( 'plugin-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
-							</p>
-						</td></tr>
-					</tbody>
-				</table>
-				<?php } ?>
-
 				<?php if ( ! class_exists( 'SportsPress_Twitter' ) ) { ?>
 				<table class="widefat" cellspacing="0">
 					<thead>
