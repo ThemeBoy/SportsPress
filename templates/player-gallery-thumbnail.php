@@ -14,7 +14,7 @@ $defaults = array(
 	'icontag' => 'dt',
 	'captiontag' => 'dd',
 	'caption' => null,
-	'size' => 'medium',
+	'size' => 'sportspress-crop-medium',
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 );
 

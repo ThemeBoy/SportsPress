@@ -316,6 +316,7 @@ final class SportsPress {
 		}
 
 		// Add image sizes
+		add_image_size( 'sportspress-crop-medium',  300, 300, true );
 		add_image_size( 'sportspress-fit-medium',  300, 300, false );
 		add_image_size( 'sportspress-fit-icon',  128, 128, false );
 		add_image_size( 'sportspress-fit-mini',  32, 32, false );
