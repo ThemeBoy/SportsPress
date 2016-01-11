@@ -136,9 +136,9 @@ class SP_Frontend_Scripts {
 	 * @return void
 	 */
 	public function custom_css() {
-		$enabled = get_option( 'sportspress_enable_frontend_css', 'no' );
-		$custom = get_option( 'sportspress_custom_css', null );
+		$colors = array_map( 'esc_attr', (array) get_option( 'themeboy', array() ) );
 
+		$custom = get_option( 'sportspress_custom_css', null );
 		$align = get_option( 'sportspress_table_text_align', 'default' );
 		$padding = get_option( 'sportspress_table_padding', null );
 
@@ -148,8 +148,12 @@ class SP_Frontend_Scripts {
 			$offset = ( 'twentyfourteen' == $template ? 48 : 0 );
 		}
 
-		$colors = array_map( 'esc_attr', (array) get_option( 'themeboy', array() ) );
 		if ( empty( $colors ) ) $colors = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
+
+		// Fallback
+		if ( ! isset( $colors['customize'] ) ) {
+			$colors['customize'] = ( 'yes' == get_option( 'sportspress_enable_frontend_css', 'no' ) );
+		}
 
 		// Defaults
 		if ( empty( $colors['primary'] ) ) $colors['primary'] = '#2b353e';
@@ -163,7 +167,7 @@ class SP_Frontend_Scripts {
 		
 		echo '<style type="text/css">';
 
-		if ( $enabled == 'yes' && ! current_theme_supports( 'sportspress' ) && sizeof( $colors ) > 0 ) {
+		if ( $colors['customize'] && ! current_theme_supports( 'sportspress' ) && sizeof( $colors ) > 0 ) {
 			echo ' /* SportsPress Frontend CSS */ ';
 
 			echo '.sp-event-calendar tbody td a,.sp-event-calendar tbody td a:hover{background: none;}';
