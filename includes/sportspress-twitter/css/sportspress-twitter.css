@@ -1,4 +1,4 @@
 .sp-template-tweets .twitter-timeline {
-	max-width: 620px;
+	max-width: 100% !important;
 	width: 100% !important;
 }
