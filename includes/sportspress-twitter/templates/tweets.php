@@ -13,9 +13,14 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $username = get_post_meta( $id, 'sp_twitter', true );
-$css_enabled = get_option( 'sportspress_enable_frontend_css', 'no' );
 $colors = array_map( 'esc_attr', (array) get_option( 'themeboy', array() ) );
 if ( empty( $colors ) ) $colors = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
+
+// Fallback
+if ( ! isset( $colors['customize'] ) ) {
+	$colors['customize'] = ( 'yes' == get_option( 'sportspress_enable_frontend_css', 'no' ) );
+}
+
 $limit = get_option( 'sportspress_twitter_limit', '3' );
 $theme = get_option( 'sportspress_twitter_theme', 'light' );
 
@@ -28,7 +33,7 @@ if ( $username ) {
 			data-widget-id="345224689221771264"
 			data-screen-name="<?php echo $username; ?>"
 			data-chrome="noheader"
-			<?php if ( $css_enabled && array_key_exists( 'link', $colors ) ) { ?>
+			<?php if ( $colors['customize'] && array_key_exists( 'link', $colors ) ) { ?>
 			data-link-color="<?php echo $colors['link']; ?>"
 			<?php } ?>
 			data-theme="<?php echo $theme; ?>"
