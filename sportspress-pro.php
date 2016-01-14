@@ -2,7 +2,7 @@
 /**
  * Plugin Name: SportsPress Pro
  * Plugin URI: http://tboy.co/pro
- * Description: Manage your club and its players, staff, events, league tables, and player lists.
+ * Description: Advanced club & league management.
  * Version: 1.9.15
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
