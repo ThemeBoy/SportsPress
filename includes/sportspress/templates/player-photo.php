@@ -16,7 +16,7 @@ if ( ! isset( $id ) )
 if ( has_post_thumbnail( $id ) ):
 	?>
 	<div class="sp-template sp-template-player-photo sp-template-photo sp-player-photo">
-		<?php echo get_the_post_thumbnail( $id, 'medium' ); ?>
+		<?php echo get_the_post_thumbnail( $id, 'sportspress-fit-medium' ); ?>
 	</div>
 	<?php
 endif;

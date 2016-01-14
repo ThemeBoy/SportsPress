@@ -380,6 +380,16 @@
 	display: none;
 }
 
+/* Admin Bar */
+#wpadminbar #wp-admin-bar-sportspress>.ab-item:before {
+	font-family: sportspress, dashicons;
+}
+
+#wpadminbar #wp-admin-bar-sportspress>.ab-item:before {
+	content: "\f111";
+	top: 2px;
+}
+
 /* Media Queries */
 @media screen and (min-width: 801px) {
 	/* Widget Alignment */

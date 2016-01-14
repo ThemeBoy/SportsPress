@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Classes
- * @version     1.9
+ * @version     1.9.13
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

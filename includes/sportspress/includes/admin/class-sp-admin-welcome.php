@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.9.12
+ * @version     1.9.13
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -394,6 +394,7 @@ class SP_Admin_Welcome {
 					'thegreat',
 				),
 				'Nederlands' => array(
+					'demoyer',
 					'paulcoppen',
 					'poelie',
 					'SilverXp',

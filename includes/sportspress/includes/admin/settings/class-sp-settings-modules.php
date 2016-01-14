@@ -74,25 +74,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 				</table>
 				<?php } ?>
 
-				<?php if ( current_user_can( 'install_plugins' ) && ! class_exists( 'SportsPress_TV' ) ) { ?>
-				<table class="widefat" cellspacing="0">
-					<thead>
-						<tr><th>
-							<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/sportspress-tv-sidebar.png" alt="<?php _e( 'SportsPress TV', 'sportspress' ); ?>">
-						</th></tr>
-					</thead>
-					<tbody>
-						<tr><td>
-							<p><?php _e( 'Offer premium news & highlights from leading global sports. SportsPress TV will keep your visitors entertained for hours.','sportspress' ); ?></p>
-							<p class="sp-module-actions">
-								<span><?php _e( 'Free', 'sportspress' ); ?></span>
-								<a class="button thickbox" href="<?php echo add_query_arg( array( 'tab' => 'plugin-information', 'plugin' => 'sportspress-tv', 'TB_iframe' => 'true', 'width' => '80%', 'height' => '500' ), network_admin_url( 'plugin-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
-							</p>
-						</td></tr>
-					</tbody>
-				</table>
-				<?php } ?>
-
 				<?php if ( ! class_exists( 'SportsPress_Twitter' ) ) { ?>
 				<table class="widefat" cellspacing="0">
 					<thead>
@@ -167,42 +148,55 @@ class SP_Settings_Modules extends SP_Settings_Page {
 					<?php } ?>
 				<?php } ?>
 
-				<table class="widefat" cellspacing="0">
-					<thead>
-						<tr><th>
-							<strong><?php _e( 'Welcome to SportsPress', 'sportspress' ); ?></strong>
-						</th></tr>
-					</thead>
-					<tbody>
-						<tr><td>
-							<p><strong><i class="sp-icon-book"></i> <?php _e( 'Documentation', 'sportspress' ); ?></strong></p>
-							<ul class="sp-documentation-links">
-								<li><a href="http://tboy.co/installation" target="_blank"><?php _e( 'Getting Started', 'sportspress' ); ?></a></li>
-								<li><a href="http://tboy.co/manuals" target="_blank"><?php _e( 'Manuals', 'sportspress' ); ?></a></li>
-								<li><a href="http://tboy.co/videos" target="_blank"><?php _e( 'Videos', 'sportspress' ); ?></a></li>
-								<li><a href="http://tboy.co/developers" target="_blank"><?php _e( 'Developers', 'sportspress' ); ?></a></li>
-								<li><a href="http://tboy.co/integration" target="_blank"><?php _e( 'Theme Integration Guide', 'sportspress' ); ?></a></li>
-							</ul>
-							<p><strong><i class="dashicons dashicons-heart"></i> <?php _e( 'Help', 'sportspress' ); ?></strong></p>
-							<ul class="sp-community-links">
-								<li><a href="http://tboy.co/forums" target="_blank"><?php _e( 'Support Forums', 'sportspress' ); ?></a></li>
-								<li><a href="http://tboy.co/ideas" target="_blank"><?php _e( 'Feature Requests', 'sportspress' ); ?></a></li>
-								<?php if ( class_exists( 'SportsPress_Pro' ) ) { ?>
-								<li><a href="<?php echo apply_filters( 'sportspress_support_url', 'http://support.themeboy.com/' ); ?>" target="_blank"><?php _e( 'Premium Support', 'sportspress' ); ?></a></li>
-								<?php } else { ?>
-								<li><a href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ); ?>" target="_blank"><span class="sp-desc-tip" title="<?php _e( 'Upgrade to Pro', 'sportspress' ); ?>"><?php _e( 'Premium Support', 'sportspress' ); ?></span></a></li>
+				<?php
+				$documentation_links = ( 'yes' == get_option( 'sportspress_show_documentation_links', 'yes' ) );
+				$help_links = ( 'yes' == get_option( 'sportspress_show_help_links', 'yes' ) );
+				$social_links = ( 'yes' == get_option( 'sportspress_show_social_links', 'yes' ) );
+				if ( $documentation_links || $help_links || $social_links ) {
+					?>
+					<table class="widefat" cellspacing="0">
+						<thead>
+							<tr><th>
+								<strong><?php _e( 'Welcome to SportsPress', 'sportspress' ); ?></strong>
+							</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>
+								<?php if ( $documentation_links ) { ?>
+									<p><strong><i class="sp-icon-book"></i> <?php _e( 'Documentation', 'sportspress' ); ?></strong></p>
+									<ul class="sp-documentation-links">
+										<li><a href="http://tboy.co/installation" target="_blank"><?php _e( 'Getting Started', 'sportspress' ); ?></a></li>
+										<li><a href="http://tboy.co/manuals" target="_blank"><?php _e( 'Manuals', 'sportspress' ); ?></a></li>
+										<li><a href="http://tboy.co/videos" target="_blank"><?php _e( 'Videos', 'sportspress' ); ?></a></li>
+										<li><a href="http://tboy.co/developers" target="_blank"><?php _e( 'Developers', 'sportspress' ); ?></a></li>
+										<li><a href="http://tboy.co/integration" target="_blank"><?php _e( 'Theme Integration Guide', 'sportspress' ); ?></a></li>
+									</ul>
 								<?php } ?>
-							</ul>
-							<p><strong><i class="dashicons dashicons-share"></i> <?php _e( 'Connect', 'sportspress' ); ?></strong></p>
-							<ul class="sp-community-links">
-								<li><a href="http://tboy.co/twitter" target="_blank"><?php _e( 'Twitter', 'sportspress' ); ?></a></li>
-								<li><a href="http://tboy.co/facebook" target="_blank"><?php _e( 'Facebook', 'sportspress' ); ?></a></li>
-								<li><a href="http://tboy.co/youtube" target="_blank"><?php _e( 'YouTube', 'sportspress' ); ?></a></li>
-								<li><a href="http://tboy.co/gplus" target="_blank"><?php _e( 'Google+', 'sportspress' ); ?></a></li>
-							</ul>
-						</td></tr>
-					</tbody>
-				</table>
+								<?php if ( $help_links ) { ?>
+									<p><strong><i class="dashicons dashicons-heart"></i> <?php _e( 'Help', 'sportspress' ); ?></strong></p>
+									<ul class="sp-community-links">
+										<li><a href="http://tboy.co/forums" target="_blank"><?php _e( 'Support Forums', 'sportspress' ); ?></a></li>
+										<li><a href="http://tboy.co/ideas" target="_blank"><?php _e( 'Feature Requests', 'sportspress' ); ?></a></li>
+										<?php if ( class_exists( 'SportsPress_Pro' ) ) { ?>
+										<li><a href="<?php echo apply_filters( 'sportspress_support_url', 'http://support.themeboy.com/' ); ?>" target="_blank"><?php _e( 'Premium Support', 'sportspress' ); ?></a></li>
+										<?php } else { ?>
+										<li><a href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ); ?>" target="_blank"><span class="sp-desc-tip" title="<?php _e( 'Upgrade to Pro', 'sportspress' ); ?>"><?php _e( 'Premium Support', 'sportspress' ); ?></span></a></li>
+										<?php } ?>
+									</ul>
+								<?php } ?>
+								<?php if ( $social_links ) { ?>
+									<p><strong><i class="dashicons dashicons-share"></i> <?php _e( 'Connect', 'sportspress' ); ?></strong></p>
+									<ul class="sp-community-links">
+										<li><a href="http://tboy.co/twitter" target="_blank"><?php _e( 'Twitter', 'sportspress' ); ?></a></li>
+										<li><a href="http://tboy.co/facebook" target="_blank"><?php _e( 'Facebook', 'sportspress' ); ?></a></li>
+										<li><a href="http://tboy.co/youtube" target="_blank"><?php _e( 'YouTube', 'sportspress' ); ?></a></li>
+										<li><a href="http://tboy.co/gplus" target="_blank"><?php _e( 'Google+', 'sportspress' ); ?></a></li>
+									</ul>
+								<?php } ?>
+							</td></tr>
+						</tbody>
+					</table>
+				<?php } ?>
 
 				<?php do_action( 'sportspress_modules_after_sidebar' ); ?>
 			</div>

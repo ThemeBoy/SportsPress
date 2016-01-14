@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.4
-Stable tag: 1.9.12
+Stable tag: 1.9.15
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -236,6 +236,38 @@ There are [4 different licenses](http://tboy.co/pro) that you can choose from: S
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 1.9.15 =
+* Tweak - Add medium crop image size to ensure gallery images are square.
+* Tweak - Add shortcut icon to admin bar.
+* Fix - Mobile admin table cell width.
+* Fix - Tutorial tab styling.
+* Localization - Update Norwegian Bokmål and Turkish translations.
+
+= 1.9.14 =
+* Fix - Error appearing on team page in some cases when there are no competitions or seasons.
+* Localization - Update source language file.
+
+= 1.9.13 =
+* Feature - Add option to display positions in player lists.
+* Feature - Add option to show or hide player squad number and rank column.
+* Feature - Add ability to display staff members in team page.
+* Feature - Unique widget option added to hide widget when same as content.
+* Tweak - Get auto and manual league tables in team page.
+* Tweak - Add row numbers to league table and event list.
+* Tweak - Allow searching from middle of sport preset names.
+* Tweak - Remove deprecated settings from admin.
+* Tweak - Prevent unnecessary scrollbar from appearing under scrollable tables.
+* Tweak - Add spaces between results in event blocks widget.
+* Tweak - Default template positions adjusted to render main content first.
+* Tweak - Adjust checkbox column padding in admin.
+* Tweak - Prevent positions and jobs from automatically linking to archives.
+* Tweak - Adjust capabilities to allow team managers to edit venues.
+* Fix - Player gallery thumbnail size too small in some cases.
+* Fix - Competitive event icon in edit screen.
+* Fix - SportsPress widget icons not appearing in 4.4 admin.
+* Localization - Add demoyer to translation team.
+* Localization - Update Dutch translations.
 
 = 1.9.12 =
 * Tweak - Display team names and score template without logos.

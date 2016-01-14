@@ -5,7 +5,7 @@
  * The SportsPress team class handles individual team data.
  *
  * @class 		SP_Team
- * @version		1.9.6
+ * @version		1.9.14
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -421,12 +421,9 @@ class SP_Team extends SP_Custom_Post {
 	 */
 	public function tables( $admin = false ) {
 		if ( ! $this->ID ) return null;
-		
-		$leagues = get_the_terms( $this->ID, 'sp_league' );
-		$league_ids = wp_list_pluck( $leagues, 'term_id' );
-		
-		$seasons = get_the_terms( $this->ID, 'sp_season' );
-		$season_ids = wp_list_pluck( $seasons, 'term_id' );
+
+		$league_ids = sp_get_the_term_ids( $this->ID, 'sp_league' );
+		$season_ids = sp_get_the_term_ids( $this->ID, 'sp_season' );
 
 		$args = array(
 			'post_type' => 'sp_table',

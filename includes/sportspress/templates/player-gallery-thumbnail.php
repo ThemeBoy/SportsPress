@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.5
+ * @version     1.9.13
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -14,7 +14,7 @@ $defaults = array(
 	'icontag' => 'dt',
 	'captiontag' => 'dd',
 	'caption' => null,
-	'size' => 'medium',
+	'size' => 'sportspress-crop-medium',
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 );
 

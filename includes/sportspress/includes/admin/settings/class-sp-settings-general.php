@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.8.7
+ * @version     1.9.13
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -213,8 +213,6 @@ class SP_Settings_General extends SP_Settings_Page {
 		if ( isset( $_POST['gmt_offset'] ) )
 			update_option( 'gmt_offset', $_POST['gmt_offset'] );
 
-	    update_option( 'sportspress_enable_frontend_css', isset( $_POST['sportspress_enable_frontend_css'] ) ? 'yes' : 'no' );
-
 		if ( isset( $_POST['sportspress_frontend_css_primary'] ) ) {
 
 			// Save settings
@@ -223,6 +221,7 @@ class SP_Settings_General extends SP_Settings_Page {
 			$text 			= ( ! empty( $_POST['sportspress_frontend_css_text'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_text'] ) : '';
 			$heading 		= ( ! empty( $_POST['sportspress_frontend_css_heading'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_heading'] ) : '';
 			$link 			= ( ! empty( $_POST['sportspress_frontend_css_link'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_link'] ) : '';
+			$customize 		= ( ! empty( $_POST['sportspress_frontend_css_customize'] ) ) ? 1 : '';
 
 			$colors = array(
 				'primary' 		=> $primary,
@@ -230,6 +229,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				'text' 			=> $text,
 				'heading' 		=> $heading,
 				'link' 			=> $link,
+				'customize' 	=> $customize,
 			);
 
 			// Merge with existing options if available
@@ -330,6 +330,11 @@ class SP_Settings_General extends SP_Settings_Page {
 						$colors = array_map( 'esc_attr', (array) get_option( 'themeboy', array() ) );
 						if ( empty( $colors ) ) $colors = array_map( 'esc_attr', (array) get_option( 'sportspress_frontend_css_colors', array() ) );
 
+						// Fallback
+						if ( ! isset( $colors['customize'] ) ) {
+							$colors['customize'] = ( 'yes' == get_option( 'sportspress_enable_frontend_css', 'no' ) );
+						}
+
 						// Defaults
 						if ( empty( $colors['primary'] ) ) $colors['primary'] = '#2b353e';
 						if ( empty( $colors['background'] ) ) $colors['background'] = '#f4f4f4';
@@ -346,8 +351,8 @@ class SP_Settings_General extends SP_Settings_Page {
 
 						if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) ):
 						    ?><br>
-						    <label for="sportspress_enable_frontend_css">
-								<input name="sportspress_enable_frontend_css" id="sportspress_enable_frontend_css" type="checkbox" value="1" <?php checked( get_option( 'sportspress_enable_frontend_css', 'no' ), 'yes' ); ?>>
+						    <label for="sportspress_frontend_css_customize">
+								<input name="sportspress_frontend_css_customize" id="sportspress_frontend_css_customize" type="checkbox" value="1" <?php checked( $colors['customize'] ); ?>>
 								<?php _e( 'Enable', 'sportspress' ); ?>
 							</label>
 						<?php endif; ?>
