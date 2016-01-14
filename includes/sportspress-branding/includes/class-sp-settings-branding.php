@@ -55,6 +55,31 @@ class SP_Settings_Branding extends SP_Settings_Page {
 
 			array( 'type' => 'branding_colors' ),
 
+			array(
+				'title'     => __( 'Welcome to SportsPress', 'sportspress' ),
+				'desc' 		=> __( 'Documentation', 'sportspress' ),
+				'id' 		=> 'sportspress_show_documentation_links',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'	=> 'start',
+			),
+
+			array(
+				'desc' 		=> __( 'Help', 'sportspress' ),
+				'id' 		=> 'sportspress_show_help_links',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'	=> '',
+			),
+
+			array(
+				'desc' 		=> __( 'Connect', 'sportspress' ),
+				'id' 		=> 'sportspress_show_social_links',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'		=> 'end',
+			),
+
 			array( 'type' => 'sectionend', 'id' => 'branding_options' ),
 
 		)); // End branding settings
