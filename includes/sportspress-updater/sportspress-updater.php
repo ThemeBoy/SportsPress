@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Allow SportsPress Pro to be updated directly from the dashboard.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.9.15
+Version: 1.9.7
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Updater' ) ) :
  * Main SportsPress Updater Class
  *
  * @class SportsPress_Updater
- * @version	1.9.15
+ * @version	1.9.7
  */
 class SportsPress_Updater {
 
@@ -25,11 +25,6 @@ class SportsPress_Updater {
 	 * @var string
 	 */
 	public $file;
-
-	/**
-	 * @var string
-	 */
-	public $type;
 
 	/**
 	 * @var string
@@ -44,8 +39,7 @@ class SportsPress_Updater {
 		$this->define_constants();
 
 		// Check for updates
-		$this->check_for_updates();
-		//add_action( 'sportspress_pro_loaded', array( $this, 'check_for_updates' ) );
+		add_action( 'sportspress_pro_loaded', array( $this, 'check_for_updates' ) );
 
 		// Display on settings page
 		add_action( 'sportspress_modules_sidebar', array( $this, 'sidebar' ) );
@@ -57,7 +51,7 @@ class SportsPress_Updater {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_UPDATER_VERSION' ) )
-			define( 'SP_UPDATER_VERSION', '1.9.15' );
+			define( 'SP_UPDATER_VERSION', '1.9.7' );
 
 		if ( !defined( 'SP_UPDATER_URL' ) )
 			define( 'SP_UPDATER_URL', plugin_dir_url( __FILE__ ) );
@@ -69,35 +63,19 @@ class SportsPress_Updater {
 	/**
 	 * Define constants
 	*/
-	public function detect( $type = null, $status = 'valid' ) {
-		if ( 'valid' !== $status ) {
-			$this->title = __( 'License', 'sportspress' );
-			return;
-		}
-		
-		if ( $type ) {
-			$this->type = $type;
+	public function detect() {
+		if ( class_exists( 'SportsPress_Agency' ) ) {
+			$this->file = 'TG';
+			$this->title = __( 'Agency License', 'sportspress' );
+		} elseif ( class_exists( 'SportsPress_Multisite' ) ) {
+			$this->file = 'RJ';
+			$this->title = __( 'League License', 'sportspress' );
+		} elseif ( class_exists( 'SportsPress_Tournaments' ) ) {
+			$this->file = 'RL';
+			$this->title = __( 'Club License', 'sportspress' );
 		} else {
-			$this->type = get_option( 'sportspress_pro_license_type', null );
-		}
-		
-		switch ( $this->type ) {
-			case 'agency':
-				$this->file = 'TG';
-				$this->title = __( 'Agency License', 'sportspress' );
-				break;
-			case 'league':
-				$this->file = 'RJ';
-				$this->title = __( 'League License', 'sportspress' );
-				break;
-			case 'club':
-				$this->file = 'RL';
-				$this->title = __( 'Club License', 'sportspress' );
-				break;
-			case 'social':
-				$this->file = 'RM';
-				$this->title = __( 'Social License', 'sportspress' );
-				break;
+			$this->file = 'RM';
+			$this->title = __( 'Social License', 'sportspress' );
 		}
 	}
 
@@ -111,11 +89,10 @@ class SportsPress_Updater {
 		) {
 			$key = get_site_option( 'sportspress_pro_license_key' );
 			$status = get_site_option( 'sportspress_pro_license_status' );
+			$this->detect();
 		} else {
 			return;
 		}
-		
-		$this->detect( null, $status );
 		?>
 		<table class="widefat" cellspacing="0">
 			<thead>
@@ -137,22 +114,21 @@ class SportsPress_Updater {
 						<p>
 							<input type="text" name="sportspress_pro_license_key" class="widefat" value="<?php esc_attr_e( $key ); ?>" readonly="readonly">
 							<input type="hidden" name="sportspress_pro_license_key_deactivate" value="1">
-							<input type="hidden" name="sportspress_pro_license_type" value="<?php echo $this->type; ?>">
 						</p>
 						<p>
 							<input name="sp_save_license" class="button button-secondary" type="submit" value="<?php esc_attr_e( 'Deactivate', 'sportspress' ); ?>" />
 						</p>
-						<?php if ( 'social' == $this->type ) { ?>
+						<?php if ( 'RM' == $this->file ) { ?>
 						<p class="sp-module-actions">
 							<span><?php _e( 'Club License', 'sportspress' ); ?></span>
 							<a class="button" href="http://tboy.co/club" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
 						</p>
-						<?php } if ( in_array( $this->type, array( 'social', 'club' ) ) ) { ?>
+						<?php } if ( in_array( $this->file, array( 'RM', 'RL' ) ) ) { ?>
 						<p class="sp-module-actions">
 							<span><?php _e( 'League License', 'sportspress' ); ?></span>
 							<a class="button" href="http://tboy.co/league" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
 						</p>
-						<?php } if ( in_array( $this->type, array( 'social', 'club', 'league' ) ) ) { ?>
+						<?php } if ( in_array( $this->file, array( 'RM', 'RL', 'RJ' ) ) ) { ?>
 						<p class="sp-module-actions">
 							<span><?php _e( 'Agency License', 'sportspress' ); ?></span>
 							<a class="button" href="http://tboy.co/agency" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
@@ -162,14 +138,6 @@ class SportsPress_Updater {
 						<p>
 							<input type="text" name="sportspress_pro_license_key" class="widefat">
 							<input type="hidden" name="sportspress_pro_license_key_activate" value="1">
-						</p>
-						<p>
-							<select name="sportspress_pro_license_type">
-								<option value="social"><?php _e( 'Social License', 'sportspress' ); ?></option>
-								<option value="club"><?php _e( 'Club License', 'sportspress' ); ?></option>
-								<option value="league"><?php _e( 'League License', 'sportspress' ); ?></option>
-								<option value="agency"><?php _e( 'Agency License', 'sportspress' ); ?></option>
-							</select>
 						</p>
 						<p>
 							<input name="sp_save_license" class="button button-primary" type="submit" value="<?php esc_attr_e( 'Activate', 'sportspress' ); ?>" />
@@ -190,12 +158,10 @@ class SportsPress_Updater {
 	 */
 	public function check_for_updates() {
 		$license_key = get_site_option( 'sportspress_pro_license_key' );
-		require 'includes/plugin-update-checker.php';
-		PucFactory::buildUpdateChecker(
-		    'http://localhost/updates/?action=get_metadata&slug=sportspress-pro',
-		    SP_PRO_PLUGIN_FILE,
-		    'sportspress-pro'
-		);
+		if ( $license_key ) {
+			require_once( 'includes/class-sp-updater.php' );
+			new SP_Updater( 'http://wp-updates.com/api/2/plugin', plugin_basename( SP_PRO_PLUGIN_FILE ), $license_key );
+		}
 	}
 
 	/**
@@ -203,15 +169,13 @@ class SportsPress_Updater {
 	 */
 	public function save() {
 		if ( ! isset( $_POST['sp_save_license'] ) ) return;
-		if ( ! isset( $_POST['sportspress_pro_license_type'] ) ) return;
 
 		// Prevent default module saving
 		remove_all_actions( 'sportspress_settings_save_modules' );
 		unset( $_POST['sportspress_update_modules'] );
 
 		// Detect license type
-		$this->detect( $_POST['sportspress_pro_license_type'] );
-		if ( ! isset( $this->file ) ) return;
+		$this->detect();
 
 		// Activate or deactivate license
 		if ( isset( $_POST['sportspress_pro_license_key_deactivate'] ) ) {
@@ -234,7 +198,6 @@ class SportsPress_Updater {
 						SP_Admin_Settings::add_override( __( 'License deactivated.', 'sportspress' ) );
 					}
 					delete_site_option( 'sportspress_pro_license_key' );
-					delete_site_option( 'sportspress_pro_license_type' );
 					update_site_option( 'sportspress_pro_license_status', 'deactivated' );
 				} else {
 					SP_Admin_Settings::add_error( __( 'Sorry, there has been an error.', 'sportspress' ) );
@@ -264,7 +227,6 @@ class SportsPress_Updater {
 					SP_Admin_Settings::add_override( __( 'License activated.', 'sportspress' ) );
 
 					update_site_option( 'sportspress_pro_license_key', $_POST['sportspress_pro_license_key'] );
-					update_site_option( 'sportspress_pro_license_type', $this->type );
 					update_site_option( 'sportspress_pro_license_status', 'valid' );
 				}
 			} else {
