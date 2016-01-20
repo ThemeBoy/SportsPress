@@ -291,6 +291,8 @@ class SportsPress_Updater {
 			if ( $license_data->license == 'deactivated' ) {
 				delete_option( 'sportspress_pro_license_status' );
 				SP_Admin_Settings::add_override( __( 'License deactivated.', 'sportspress' ) );
+			} else {
+				SP_Admin_Settings::add_error( __( 'Sorry, there has been an error.', 'sportspress' ) );
 			}
 		}
 	}
