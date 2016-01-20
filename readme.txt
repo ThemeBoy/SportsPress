@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends, golf
 Requires at least: 3.8
 Tested up to: 4.4
-Stable tag: 1.9.15
+Stable tag: 1.9.16
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -115,7 +115,12 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 
 == Changelog ==
 
+= 1.9.16 =
+* Refactor - Deliver automatic updates via account.themeboy.com due to 3rd-party downtime.
+
 = 1.9.15 =
+* Tweak - Center align labels in match stats.
+* Tweak - Allow Event Manager role to edit tournaments.
 * Tweak - Add medium crop image size to ensure gallery images are square.
 * Tweak - Add shortcut icon to admin bar.
 * Fix - Mobile admin table cell width.
@@ -195,7 +200,11 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Fix - Streaks calculation in league tables.
 
 = 1.9.4 =
+* Feature - Team Access module for limiting user access to dashboard.
+* Feature - Lazy Loading module for quicker event editing.
+* Feature - Birthdays widget.
 * Feature - Add Home and Away subset options to table column equation builder.
+* Tweak - Add filters to tournaments module.
 * Tweak - Display player and team checklists in admin only when Manual mode is enabled to improve performance.
 * Localization - Add mahdi12 to translation team.
 * Localization - Update Persian and Polish translation.
@@ -248,11 +257,15 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Localization - Update Greek and French translations.
 
 = 1.8.9 =
+* Feature - Add taxonomy selectors to staff directories.
+* Feature - Add custom styling to match stats.
 * Feature - Enable multiple nationalities for players and staff.
 * Feature - Enable multiple seasons and competitions for league tables.
 * Feature - Enable multiple seasons, competitions, and positions for player lists.
 * Feature - Add custom title field and widget alignment option to shortcodes.
 * Feature - Add option to always increment league table position.
+* Tweak - Enable static league menu defined by theme.
+* Tweak - Add table caption option to tournament bracket template.
 * Fix - Import button on admin pages.
 * Fix - Update jQuery DataTables to version 1.10.8 props devilsaces.
 * Localization - Group translation team by language and display stats.
@@ -261,18 +274,25 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 
 = 1.8.8 =
 * Feature - Add option to hide player and staff details.
+* Tweak - Enable scrollable tournament brackets.
 * Tweak - Ability to display multiple current teams in staff profile.
 
 = 1.8.7 =
+* Feature - Match Stafs module for displaying chart of statistics in event.
+* Feature - Post Duplicator module for cloning SportsPress data.
+* Feature - New centered layout for tournament brackets.
+* Feature - New automatic plugin updater.
 * Feature - Add custom table heading option to widgets.
 * Feature - Add random sorting to player gallery.
 * Feature - Add option to hide player list and league table titles.
 * Feature - Add heading option to player positions.
+* Tweak - Display staff directory layout in admin table.
 * Tweak - Display Soccer (Association Football) as Football.
 * Tweak - Flush permalinks automatically when saving modules.
 * Tweak - Separate scrollable and responsive table options.
 * Tweak - Display event performance icon tables in 2 columns.
 * Fix - Duplicate league table captions in team page.
+* Fix - Tournament bracket event link.
 * Preset - Add softball preset.
 * Localization - Add FollowCandyPanda to translation team.
 * Localization - Update Polish, Spanish, German, Norwegian, Dutch, Finnish, Russian, Armenian, and Czech translations.
@@ -366,6 +386,7 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Localization - Update Greek translation.
 
 = 1.7 =
+* Feature - Enable inline editing for tournaments.
 * Feature - Enable multiple seasons and competitions to be selected for events, calendars, player lists, and league tables.
 * Feature - Enable primary performance selection.
 * Feature - Enable event result columns to be displayed automatically.
@@ -378,6 +399,7 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Tweak - Display plugin and theme recommendations only to network admins.
 * Tweak - Hide player details section if none available.
 * Tweak - Link module request to form instead of email.
+* Fix - Template loader for sponsors and staff directories.
 * Fix - Responsive table scrollbar causing horizontal page scrolling.
 * Fix - Misplaced config meta boxes.
 * Fix - Scrollbar appearing in countdown widget.
@@ -400,6 +422,8 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Localization - Update Polish, French, Czech, Dutch, Kannada, Finnish, and Swedish translations.
 
 = 1.6 =
+* Feature - Birthdays module for displaying player and staff birthday and age.
+* Feature - Twitter module for displaying feed of tweets by team, player, or staff.
 * Feature - New modules page to quickly toggle additional features.
 * Feature - Option to automatically populate player list and league table based on criteria.
 * Feature - Display link to CSV importer at the top of admin list pages.
@@ -410,6 +434,8 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Refactor - Enable global setting to use plugin as team-vs-team or player-vs-player (beta).
 * Refactor - Use 3-letter FIFA country codes with fallback for 2-letter codes.
 * Refactor - Merge scrollable and responsive settings.
+* Tweak - League menu styling for better theme compatibility.
+* Tweak - Allow sponsors to be inserted into predefined element of a compatible theme.
 * Tweak - Make AJAX shortcodes hookable for extensions and modules.
 * Tweak - Mode maps setting to events tab.
 * Tweak - Highlight jobs link in admin menu when editing a job.
@@ -482,6 +508,8 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Localization - Update Finnish and Armenian translations.
 
 = 1.4.3 =
+* Feature - Add winner setting to tournaments.
+* Tweak - Display staff role as job.
 * Tweak - Update API functions for events and teams.
 * Tweak - Update sample video links.
 * Fix - Remove calendar link background color for more consistent styling.
@@ -494,6 +522,13 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Fix - League table positions not sorting by sort order.
 
 = 1.4 =
+* Feature - Tournaments module for creating brackets.
+* Feature - Add job column to staff directories.
+* Feature - Automatically trigger staff directory layout change in admin.
+* Feature - Allow sorting staff by manual order.
+* Feature - Add multisite support.
+* Feature - Bypass league menu if no teams.
+* Feature - Add option to open sponsor in new window.
 * Feature - New welcome page with intro video and separate tabs.
 * Feature - New iCal feeds for event calendars.
 * Feature - Add date range selector to event calendars.
@@ -595,7 +630,10 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Localization - Update Finnish & German translations.
 
 = 1.2.6 =
+* Feature - Add login logo customization for branding.
+* Fix - Branding color setting.
 * Fix - Number format rounding issue.
+* Localization - Update translations.
 
 = 1.2.5 =
 * Fix - Data calculations for values above 1000.
@@ -613,6 +651,7 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Localization - Update German, Greek, & Norwegian translations.
 
 = 1.2.2 =
+* Feature - Automatically load premium modules.
 * Tweak - Display link to docs instead of themes.
 * Fix - Enable hide theme support notice.
 * Fix - Typo in table caption classes.
