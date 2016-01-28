@@ -40,6 +40,7 @@ class SportsPress_Branding {
 		add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 		add_filter( 'admin_init', array( $this, 'rename_color_scheme' ) );
 		add_filter( 'sportspress_logo', array( $this, 'settings_branding' ) );
+		add_filter( 'sportspress_modules_welcome_links', array( $this, 'welcome_links' ) );
 
 		add_action( 'login_enqueue_scripts', array( $this, 'login_logo' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -106,6 +107,25 @@ class SportsPress_Branding {
 	public function add_settings_page( $settings = array() ) {
 		$settings[] = include( 'includes/class-sp-settings-branding.php' );
 		return $settings;
+	}
+
+	/**
+	 * Filter welcome links
+	 */
+	public function welcome_links( $categories = array() ) {
+		if ( 'yes' !== get_option( 'sportspress_show_documentation_links', 'yes' ) ) {
+			unset( $categories['documentation'] );
+		}
+		
+		if ( 'yes' !== get_option( 'sportspress_show_help_links', 'yes' ) ) {
+			unset( $categories['help'] );
+		}
+		
+		if ( 'yes' !== get_option( 'sportspress_show_social_links', 'yes' ) ) {
+			unset( $categories['social'] );
+		}
+		
+		return $categories;
 	}
 
 	/**
