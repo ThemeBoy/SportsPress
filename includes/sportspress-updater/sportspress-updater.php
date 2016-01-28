@@ -22,21 +22,6 @@ if ( ! class_exists( 'SportsPress_Updater' ) ) :
 class SportsPress_Updater {
 
 	/**
-	 * @var string
-	 */
-	public $file;
-
-	/**
-	 * @var string
-	 */
-	public $type;
-
-	/**
-	 * @var string
-	 */
-	public $title;
-
-	/**
 	 * Constructor
 	 */
 	public function __construct() {
@@ -86,41 +71,6 @@ class SportsPress_Updater {
 	}
 
 	/**
-	 * Define constants
-	*/
-	public function detect( $type = null, $status = 'valid' ) {
-		if ( 'valid' !== $status ) {
-			$this->title = __( 'License', 'sportspress' );
-			return;
-		}
-		
-		if ( $type ) {
-			$this->type = $type;
-		} else {
-			$this->type = get_option( 'sportspress_pro_license_type', null );
-		}
-		
-		switch ( $this->type ) {
-			case 'agency':
-				$this->file = 'TG';
-				$this->title = __( 'Agency License', 'sportspress' );
-				break;
-			case 'league':
-				$this->file = 'RJ';
-				$this->title = __( 'League License', 'sportspress' );
-				break;
-			case 'club':
-				$this->file = 'RL';
-				$this->title = __( 'Club License', 'sportspress' );
-				break;
-			case 'social':
-				$this->file = 'RM';
-				$this->title = __( 'Social License', 'sportspress' );
-				break;
-		}
-	}
-
-	/**
 	 * Add license to sidebar
 	*/
 	public function sidebar() {
@@ -130,11 +80,14 @@ class SportsPress_Updater {
 		) {
 			$key 	= get_option( 'sportspress_pro_license_key' );
 			$status = get_option( 'sportspress_pro_license_status' );
+			
+			if ( strlen( $key ) > 35 ) {
+				$key 	= '';
+				$status = false;
+			}
 		} else {
 			return;
 		}
-		
-		$this->detect( null, $status );
 		?>
 		<table class="widefat" cellspacing="0">
 			<thead>
