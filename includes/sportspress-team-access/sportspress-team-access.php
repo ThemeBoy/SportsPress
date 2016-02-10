@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Assign users to a specific team and limit their access to data related to that team.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.9
+Version: 1.9.16
 */
 
 // Exit if accessed directly
@@ -159,6 +159,7 @@ class SportsPress_Team_Access {
 			} else {
 				$meta = get_post_meta( $id, $key, false );
 			}
+			if ( empty( $meta ) ) return $can;
 			$intersect = array_intersect( $meta, $teams );
 			return 0 < sizeof( $intersect );
 		}
@@ -224,6 +225,14 @@ class SportsPress_Team_Access {
 
 			// Get current meta query
 			$meta = sp_array_value( $query->query_vars, 'meta_query', array() );
+			
+			$meta['relation'] = 'OR';
+
+			// Add no teams set to meta query
+			$meta[] = array(
+				'key' => $key,
+				'compare' => 'NOT EXISTS',
+			);
 
 			// Add teams to meta query
 			$meta[] = array(
