@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Assign users to a specific team and limit their access to data related to that team.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.9.16
+Version: 1.9.17
 */
 
 // Exit if accessed directly

@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add player lists to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.9.16
+Version: 1.9.17
 */
 
 // Exit if accessed directly
