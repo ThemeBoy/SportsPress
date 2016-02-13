@@ -387,6 +387,18 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 
 				array(
+					'title' 	=> __( 'Performance', 'sportspress' ),
+					'id' 		=> 'sportspress_event_performance_sections',
+					'default'	=> -1,
+					'type' 		=> 'radio',
+					'options' => array(
+						-1	  => __( 'Combined', 'sportspress' ),
+						0	  => __( 'Offense', 'sportspress' ) . ' &rarr; ' . __( 'Defense', 'sportspress' ),
+						1	  => __( 'Defense', 'sportspress' ) . ' &rarr; ' . __( 'Offense', 'sportspress' ),
+					),
+				),
+
+				array(
 					'title' 	=> __( 'Total', 'sportspress' ),
 					'id' 		=> 'sportspress_event_total_performance',
 					'default'	=> 'all',

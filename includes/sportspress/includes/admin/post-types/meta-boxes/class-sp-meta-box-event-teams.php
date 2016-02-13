@@ -62,19 +62,58 @@ class SP_Meta_Box_Event_Teams {
 					}
 					?>
 					</p>
-					<?php $tabs = apply_filters( 'sportspress_event_team_tabs', array( 'sp_player', 'sp_staff' ) ); ?>
+					<?php
+					$tabs = array();
+					$sections = get_option( 'sportspress_event_performance_sections', -1 );
+					if ( 0 == $sections ) {
+						$tabs['sp_offense'] = array(
+							'label' => __( 'Offense', 'sportspress' ),
+							'post_type' => 'sp_player',
+						);
+						$tabs['sp_defense'] = array(
+							'label' => __( 'Defense', 'sportspress' ),
+							'post_type' => 'sp_player',
+						);
+					} elseif ( 1 == $sections ) {
+						$tabs['sp_defense'] = array(
+							'label' => __( 'Defense', 'sportspress' ),
+							'post_type' => 'sp_player',
+						);
+						$tabs['sp_offense'] = array(
+							'label' => __( 'Offense', 'sportspress' ),
+							'post_type' => 'sp_player',
+						);
+					} else {
+						$tabs['sp_players'] = array(
+							'label' => __( 'Players', 'sportspress' ),
+							'post_type' => 'sp_player',
+						);
+					}
+					$tabs['sp_staff'] = array(
+						'label' => __( 'Staff', 'sportspress' ),
+						'post_type' => 'sp_staff',
+					);
+					?>
 					<?php if ( $tabs ) { ?>
 					<ul id="sp_team-tabs" class="wp-tab-bar sp-tab-bar">
-						<?php foreach ( $tabs as $index => $post_type ) { $object = get_post_type_object( $post_type ); ?>
-						<li class="wp-tab<?php if ( 0 == $index ) { ?>-active<?php } ?>"><a href="#<?php echo $post_type; ?>-all"><?php echo $object->labels->name; ?></a></li>
-						<?php } ?>
+						<?php
+							$j = 0;
+							foreach ( $tabs as $slug => $tab ) {
+								?>
+								<li class="wp-tab<?php if ( 0 == $j ) { ?>-active<?php } ?>"><a href="#<?php echo $slug; ?>-all"><?php echo $tab['label']; ?></a></li>
+								<?php
+								$j++;
+							}
+						?>
 					</ul>
 					<?php
-						foreach ( $tabs as $index => $post_type ) {
-							do_action( 'sportspress_event_teams_meta_box_checklist', $post->ID, $post_type, ( 0 == $index ? 'block' : 'none' ), $team, $i );
+						$j = 0;
+						foreach ( $tabs as $slug => $tab ) {
+							do_action( 'sportspress_event_teams_meta_box_checklist', $post->ID, $tab['post_type'], ( 0 == $j ? 'block' : 'none' ), $team, $i, $slug );
 							if ( apply_filters( 'sportspress_event_teams_meta_box_default_checklist', true ) ) {
-								sp_post_checklist( $post->ID, $post_type, ( 0 == $index ? 'block' : 'none' ), array( 'sp_league', 'sp_season', 'sp_current_team' ), $i );
+								sp_post_checklist( $post->ID, $tab['post_type'], ( 0 == $j ? 'block' : 'none' ), array( 'sp_league', 'sp_season', 'sp_current_team' ), $i, $slug );
 							}
+							$j++;
 						}
 					?>
 					<?php } ?>
@@ -107,11 +146,16 @@ class SP_Meta_Box_Event_Teams {
 	 */
 	public static function save( $post_id, $post ) {
 		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
-		$tabs = apply_filters( 'sportspress_event_team_tabs', array( 'sp_player', 'sp_staff' ) );
-		if ( $tabs ) {
-			foreach ( $tabs as $post_type ) {
-				sp_update_post_meta_recursive( $post_id, $post_type, sp_array_value( $_POST, $post_type, array() ) );
-			}
+		$tabs = array();
+		$sections = get_option( 'sportspress_event_performance_sections', -1 );
+		if ( -1 == $sections ) {
+			sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
+		} else {
+			$players = array_merge( sp_array_value( $_POST, 'sp_offense', array() ), sp_array_value( $_POST, 'sp_defense', array() ) );
+			sp_update_post_meta_recursive( $post_id, 'sp_offense', sp_array_value( $_POST, 'sp_offense', array() ) );
+			sp_update_post_meta_recursive( $post_id, 'sp_defense', sp_array_value( $_POST, 'sp_defense', array() ) );
+			sp_update_post_meta_recursive( $post_id, 'sp_player', $players );
 		}
+		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
 	}
 }

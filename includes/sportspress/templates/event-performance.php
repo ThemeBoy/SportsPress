@@ -13,8 +13,8 @@ $show_players = get_option( 'sportspress_event_show_players', 'yes' ) === 'yes' 
 $show_staff = get_option( 'sportspress_event_show_staff', 'yes' ) === 'yes' ? true : false;
 $show_total = get_option( 'sportspress_event_show_total', 'yes' ) === 'yes' ? true : false;
 $show_numbers = get_option( 'sportspress_event_show_player_numbers', 'yes' ) === 'yes' ? true : false;
-$split_positions = get_option( 'sportspress_event_split_players_by_position', 'no' ) === 'yes' ? true : false;
 $split_teams = get_option( 'sportspress_event_split_players_by_team', 'yes' ) === 'yes' ? true : false;
+$sections = get_option( 'sportspress_event_performance_sections', -1 );
 $reverse_teams = get_option( 'sportspress_event_performance_reverse_teams', 'no' ) === 'yes' ? true : false;
 $primary = sp_get_main_performance_option();
 $total = get_option( 'sportspress_event_total_performance', 'all');
@@ -61,8 +61,51 @@ if ( is_array( $teams ) ):
 	if ( $reverse_teams ) {
 		$teams = array_reverse( $teams, true );
 	}
+	
+	// Prepare for offense and defense sections
+	if ( -1 != $sections ) {
+		
+		// Determine order of sections
+		if ( 1 == $sections ) {
+			$section_order = array( __( 'Defense', 'sportspress' ), __( 'Offense', 'sportspress' ) );
+		} else {
+			$section_order = array( __( 'Offense', 'sportspress' ), __( 'Defense', 'sportspress' ) );
+		}
+		
+		// Initialize labels
+		$labels = array( array(), array() );
 
-	if ( $split_teams ) {
+		// Get labels by section
+		$args = array(
+			'post_type' => 'sp_performance',
+			'numberposts' => 100,
+			'posts_per_page' => 100,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		$columns = get_posts( $args );
+
+		foreach ( $columns as $column ):
+			$section = get_post_meta( $column->ID, 'sp_section', true );
+			if ( '' === $section ) {
+				$section = -1;
+			}
+			switch ( $section ):
+				case 1:
+					$labels[1][ $column->post_name ] = $column->post_title;
+					break;
+				case 0:
+					$labels[0][ $column->post_name ] = $column->post_title;
+					break;
+				default:
+					$labels[0][ $column->post_name ] = $column->post_title;
+					$labels[1][ $column->post_name ] = $column->post_title;
+			endswitch;
+		endforeach;
+	}
+
+	if ( true || $split_teams ) {
 		// Split tables
 		foreach( $teams as $index => $team_id ):
 			if ( -1 == $team_id ) continue;
@@ -75,90 +118,56 @@ if ( is_array( $teams ) ):
 
 			$show_team_players = $show_players && $has_players;
 
-			if ( 0 < $team_id ) {
-				$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
-			} elseif ( 0 == $team_id ) {
-				$data = array();
-				foreach ( $players as $player_id ) {
-					if ( isset( $performance[ $player_id ][ $player_id ] ) ) {
-						$data[ $player_id ] = $performance[ $player_id ][ $player_id ];
-					}
-				}
-			} else {
-				$data = sp_array_value( array_values( $performance ), $index );
-			}
-
 			if ( ! $show_team_players && ! $show_staff && ! $show_total ) continue;
 
 			if ( $show_team_players || $show_total ) {
-				if ( $split_positions ) {
-					$positions = get_terms( 'sp_position', array(
-						'orderby' => 'slug',
-						'hide_empty' => 0,
-					) );
-
-					foreach ( $positions as $position_index => $position ) {
-						$subdata = array();
-						foreach ( $data as $player_id => $player ) {
-							$player_positions = (array) sp_array_value( $player, 'position' );
-							$player_positions = array_filter( $player_positions );
-							if ( empty( $player_positions ) ) {
-								$player_positions = (array) sp_get_the_term_id( $player_id, 'sp_position' );
-							}
-							if ( in_array( $position->term_id, $player_positions ) ) {
-								$subdata[ $player_id ] = $data[ $player_id ];
-							}
-						}
-
-						// Initialize Sublabels
-						$sublabels = $labels;
-
-						// Get performance with position
-						$performance_labels = get_posts( array(
-							'post_type' => 'sp_performance',
-							'posts_per_page' => -1,
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'sp_position',
-									'terms' => $position->term_id,
-								),
-							),
-						) );
-
-						$allowed_labels = array();
-						if ( ! empty( $performance_labels ) ) {
-							foreach ( $performance_labels as $label ) {
-								$allowed_labels[ $label->post_name ] = $label->post_title;
-							}
-
-							$allowed_labels = apply_filters( 'sportspress_event_performance_allowed_labels', $allowed_labels, $position_index );
-
-							$sublabels = array_intersect_key( $sublabels, $allowed_labels );
-						}
-
-						if ( sizeof( $subdata ) ) {
-							$subdata = apply_filters( 'sportspress_event_performance_split_team_split_position_subdata', $subdata, $data, $position_index );
-
+				if ( -1 != $sections ) {
+					
+					$data = array();
+					
+					// Get results for offensive players in the team
+					$offense = sp_array_between( (array)get_post_meta( $id, 'sp_offense', false ), 0, $index );
+					$data[0] = sp_array_combine( $offense, sp_array_value( $performance, $team_id, array() ) );
+					
+					// Get results for defensive players in the team
+					$defense = sp_array_between( (array)get_post_meta( $id, 'sp_defense', false ), 0, $index );
+					$data[1] = sp_array_combine( $defense, sp_array_value( $performance, $team_id, array() ) );
+					
+					foreach ( $section_order as $section_id => $section_label ) {
+						if ( sizeof( $data[ $section_id ] ) ) {
 							sp_get_template( 'event-performance-table.php', array(
-								'position' => sp_get_position_caption( $position->term_id ),
+								'section' => $section_label,
 								'scrollable' => $scrollable,
 								'sortable' => $sortable,
 								'show_players' => $show_team_players,
 								'show_numbers' => $show_numbers,
 								'show_total' => $show_total,
-								'caption' => 0 == $position_index && $team_id ? get_the_title( $team_id ) : null,
-								'labels' => $sublabels,
+								'caption' => 0 == $section_id && $team_id ? get_the_title( $team_id ) : null,
+								'labels' => $labels[ $section_id ],
 								'mode' => $mode,
-								'data' => $subdata,
+								'data' => $data[ $section_id ],
 								'event' => $event,
 								'link_posts' => $link_posts,
 								'performance_ids' => isset( $performance_ids ) ? $performance_ids : null,
 								'primary' => 'primary' == $total ? $primary : null,
-								'class' => 'sp-template-event-performance-team-' . $index . '-position-' . $position_index,
+								'class' => 'sp-template-event-performance-team-' . $index . '-section-' . $section_id,
 							) );
 						}
 					}
 				} else {
+					if ( 0 < $team_id ) {
+						$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
+					} elseif ( 0 == $team_id ) {
+						$data = array();
+						foreach ( $players as $player_id ) {
+							if ( isset( $performance[ $player_id ][ $player_id ] ) ) {
+								$data[ $player_id ] = $performance[ $player_id ][ $player_id ];
+							}
+						}
+					} else {
+						$data = sp_array_value( array_values( $performance ), $index );
+					}
+					
 					sp_get_template( 'event-performance-table.php', array(
 						'scrollable' => $scrollable,
 						'sortable' => $sortable,
@@ -184,44 +193,16 @@ if ( is_array( $teams ) ):
 			<?php
 		endforeach;
 	} else {
-		// Combined table
-		$data = array();
-		foreach ( $performance as $players ) {
-			foreach ( $players as $player_id => $player ) {
-				if ( $player_id == 0 ) continue;
-				$data[ $player_id ] = $player;
-			}
-		}
-
-		if ( $split_positions ) {
-			$positions = get_terms( 'sp_position', array(
-				'orderby' => 'slug',
-				'hide_empty' => 0,
-			) );
-
-			foreach ( $positions as $position_index => $position ) {
-				$subdata = array();
-				foreach ( $data as $player_id => $player ) {
-					$player_positions = (array) sp_array_value( $player, 'position' );
-					$player_positions = array_filter( $player_positions );
-					if ( empty( $player_positions ) ) {
-						$player_positions = (array) sp_get_the_term_id( $player_id, 'sp_position' );
-					}
-					if ( in_array( $position->term_id, $player_positions ) ) {
-						$subdata[ $player_id ] = $data[ $player_id ];
-					}
-				}
-				
-				$subdata = apply_filters( 'sportspress_event_performance_split_position_subdata', $subdata, $data, $position_index );
-
-				if ( sizeof( $subdata ) ) {
+		if ( -1 != $sections ) {
+			foreach ( $section_order as $section_id => $section_label ) {
+				if ( sizeof( $data[ $section_id ] ) ) {
 					sp_get_template( 'event-performance-table-combined.php', array(
 						'scrollable' => $scrollable,
 						'sortable' => $sortable,
 						'show_players' => $show_players,
 						'show_numbers' => $show_numbers,
 						'show_total' => $show_total,
-						'caption' => sp_get_position_caption( $position->term_id ),
+						'caption' => $section_label,
 						'labels' => $labels,
 						'mode' => $mode,
 						'data' => $subdata,
@@ -233,6 +214,14 @@ if ( is_array( $teams ) ):
 				}
 			}
 		} else {
+			$data = array();
+			foreach ( $performance as $players ) {
+				foreach ( $players as $player_id => $player ) {
+					if ( $player_id == 0 ) continue;
+					$data[ $player_id ] = $player;
+				}
+			}
+			
 			sp_get_template( 'event-performance-table-combined.php', array(
 				'scrollable' => $scrollable,
 				'sortable' => $sortable,

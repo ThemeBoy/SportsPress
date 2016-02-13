@@ -162,7 +162,7 @@
 									<th class="icon" scope="col"><?php _e( 'Icon', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
-									<th scope="col"><?php _e( 'Position', 'sportspress' ); ?></th>
+									<th scope="col"><?php _e( 'Category', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 									<th scope="col" class="edit"></th>
 								</tr>
@@ -198,7 +198,7 @@
 									</td>
 									<td class="row-title"><?php echo $row->post_title; ?></td>
 									<td><code><?php echo $row->post_name; ?></code></td>
-									<td><?php echo get_the_terms ( $row->ID, 'sp_position' ) ? the_terms( $row->ID, 'sp_position' ) : __( 'All', 'sportspress' );; ?></td>
+									<td><?php echo sp_get_post_section( $row->ID ); ?></td>
 									<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 									<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 								</tr>
