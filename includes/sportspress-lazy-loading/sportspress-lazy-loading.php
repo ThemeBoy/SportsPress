@@ -31,7 +31,7 @@ class SportsPress_Lazy_Loading {
 		// Hooks
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'wp_ajax_sp-get-players', array( $this, 'get_players' ) );
-		add_action( 'sportspress_event_teams_meta_box_checklist', array( $this, 'checklist' ), 10, 5 );
+		add_action( 'sportspress_event_teams_meta_box_checklist', array( $this, 'checklist' ), 10, 6 );
 		add_filter( 'sportspress_localized_strings', array( $this, 'strings' ) );
 		add_filter( 'sportspress_event_teams_meta_box_default_checklist', '__return_false' );
 	}
@@ -123,8 +123,12 @@ class SportsPress_Lazy_Loading {
 	/**
 	 * Ajax checklist.
 	 */
-	public function checklist( $post_id = null, $post_type = 'post', $display = 'block', $team = null, $index = null ) {
-		$selected = sp_array_between( (array)get_post_meta( $post_id, $post_type, false ), 0, $index );
+	public function checklist( $post_id = null, $post_type = 'post', $display = 'block', $team = null, $index = null, $slug = null ) {
+		if ( ! isset( $slug ) ):
+			$slug = $post_type;
+		endif;
+		
+		$selected = sp_array_between( (array)get_post_meta( $post_id, $slug, false ), 0, $index );
 
 		$leagues = get_the_terms( $post_id, 'sp_league' );
 		$seasons = get_the_terms( $post_id, 'sp_season' );
@@ -171,8 +175,8 @@ class SportsPress_Lazy_Loading {
 		$diff = array_diff( $post_ids, $selected );
 		$selected = array_flip( $selected );
 		?>
-		<div id="<?php echo $post_type; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-ajax-checklist sp-select-all-range" style="display: <?php echo $display; ?>;">
-			<input type="hidden" value="0" name="<?php echo $post_type; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
+		<div id="<?php echo $slug; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-ajax-checklist sp-select-all-range" style="display: <?php echo $display; ?>;">
+			<input type="hidden" value="0" name="<?php echo $slug; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<?php if ( is_array( $posts ) && sizeof( $posts ) ) { ?>
 					<li class="sp-select-all-container">
@@ -184,7 +188,7 @@ class SportsPress_Lazy_Loading {
 					<?php foreach ( $posts as $post ) { ?>
 						<li>
 							<label class="selectit">
-								<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $post_type; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" <?php checked( array_key_exists( $post->ID, $selected ) ); ?>>
+								<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $slug; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" <?php checked( array_key_exists( $post->ID, $selected ) ); ?>>
 								<?php echo sp_get_player_name_with_number( $post->ID ); ?>
 							</label>
 						</li>
@@ -194,15 +198,15 @@ class SportsPress_Lazy_Loading {
 						<?php if ( ! $post_id ) continue; ?>
 						<li>
 							<label class="selectit">
-								<input type="checkbox" value="<?php echo $post_id; ?>" name="<?php echo $post_type; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" <?php checked( true ); ?>>
+								<input type="checkbox" value="<?php echo $post_id; ?>" name="<?php echo $slug; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" <?php checked( true ); ?>>
 								<?php echo sp_get_player_name_with_number( $post_id ); ?>
 							</label>
 						</li>
 					<?php } } ?>
-					<li class="sp-ajax-show-all-container"><a class="sp-ajax-show-all" href="#show-all-<?php echo $post_type; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
+					<li class="sp-ajax-show-all-container"><a class="sp-ajax-show-all" href="#show-all-<?php echo $slug; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
 				<?php } else { ?>
 					<li class="sp-ajax-show-all-container"><?php _e( 'No results found.', 'sportspress' ); ?>
-					<a class="sp-ajax-show-all" href="#show-all-<?php echo $post_type; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
+					<a class="sp-ajax-show-all" href="#show-all-<?php echo $slug; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
 				<?php } ?>
 			</ul>
 		</div>
