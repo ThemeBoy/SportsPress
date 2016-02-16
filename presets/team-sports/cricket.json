@@ -18,14 +18,15 @@
 						{ "name" : "BP", "description" : "Bonus points"}
 	],
 	"performance": [
-						{ "name" : "R", "id" : "runs", "position" : "Batsman", "description" : "Runs" },
-						{ "name" : "B", "position" : "Batsman", "description" : "Balls" },
-						{ "name" : "4s", "position" : "Batsman", "description" : "Fours" },
-						{ "name" : "6s", "position" : "Batsman", "description" : "Sixes" },
-						{ "name" : "O", "position" : "Bowler", "description" : "Overs bowled" },
-						{ "name" : "M", "position" : "Bowler", "description" : "Maidens" },
-						{ "name" : "R", "position" : "Bowler", "description" : "Runs" },
-						{ "name" : "W", "position" : "Bowler", "description" : "Wickets taken" }
+						{ "name" : "&nbsp;", "id" : "notes", "section" : 0, "description" : "Notes" },
+						{ "name" : "R", "id" : "runs", "section" : 0, "description" : "Runs" },
+						{ "name" : "B", "section" : 0, "description" : "Balls" },
+						{ "name" : "4s", "section" : 0, "description" : "Fours" },
+						{ "name" : "6s", "section" : 0, "description" : "Sixes" },
+						{ "name" : "O", "section" : 1, "description" : "Overs bowled" },
+						{ "name" : "M", "section" : 1, "description" : "Maidens" },
+						{ "name" : "R", "section" : 1, "description" : "Runs" },
+						{ "name" : "W", "section" : 1, "description" : "Wickets taken" }
 	],
 	"columns": [
 						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
