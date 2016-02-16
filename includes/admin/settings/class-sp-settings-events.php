@@ -64,6 +64,20 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'checkboxgroup'		=> 'start',
 					),
 					array(
+						'desc' 		=> __( 'Date', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_date',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> '',
+					),
+					array(
+						'desc' 		=> __( 'Time', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_time',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> '',
+					),
+					array(
 						'desc' 		=> __( 'Results', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_results',
 						'default'	=> 'yes',
