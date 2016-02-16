@@ -51,7 +51,7 @@ class SP_Admin {
 			include( 'class-sp-admin-assets.php' );
 			include( 'class-sp-admin-permalink-settings.php' );
 
-			if ( get_option( 'sportspress_rich_editing', true ) ):
+			if ( 'yes' == get_option( 'sportspress_rich_editing', 'yes' ) ):
 				include( 'class-sp-admin-editor.php' );
 			endif;
 		}
