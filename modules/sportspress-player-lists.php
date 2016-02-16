@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add player lists to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.9
+Version: 1.9.17
 */
 
 // Exit if accessed directly
@@ -94,6 +94,7 @@ class SportsPress_Player_Lists {
 	 * Remove meta boxes.
 	 */
 	public function remove_meta_boxes() {
+		remove_meta_box( 'sp_positiondiv', 'sp_list', 'side' );
 		remove_meta_box( 'sp_seasondiv', 'sp_list', 'side' );
 		remove_meta_box( 'sp_leaguediv', 'sp_list', 'side' );
 	}

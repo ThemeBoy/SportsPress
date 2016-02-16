@@ -449,6 +449,41 @@ if ( !function_exists( 'sp_get_post_order' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_post_section' ) ) {
+	function sp_get_post_section( $post_id ) {
+		$section = get_post_meta ( $post_id, 'sp_section', true );
+		if ( isset( $section ) ):
+			$options = apply_filters( 'sportspress_performance_sections', array( -1 => __( 'All', 'sportspress' ), 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
+			return sp_array_value( $options, $section, __( 'All', 'sportspress' ) );
+		else:
+			return __( 'All', 'sportspress' );
+		endif;
+	}
+}
+
+if ( !function_exists( 'sp_get_post_format' ) ) {
+	function sp_get_post_format( $post_id ) {
+		$format = get_post_meta ( $post_id, 'sp_format', true );
+		if ( isset( $format ) ):
+			$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ) ) );
+			return sp_array_value( $options, $format, __( 'Number', 'sportspress' ) );
+		else:
+			return __( 'Number', 'sportspress' );
+		endif;
+	}
+}
+
+if ( !function_exists( 'sp_get_format_placeholder' ) ) {
+	function sp_get_format_placeholder( $key = 'number' ) {
+		$placeholders = apply_filters( 'sportspress_format_placeholders', array(
+			'number' => 0,
+			'time' => '0:00',
+			'text' => '',
+		) );
+		return sp_array_value( $placeholders, $key, 0 );
+	}
+} 
+
 if ( !function_exists( 'sp_dropdown_statuses' ) ) {
 	function sp_dropdown_statuses( $args = array() ) {
 		$defaults = array(
@@ -786,12 +821,14 @@ if ( !function_exists( 'sp_posts' ) ) {
 }
 
 if ( !function_exists( 'sp_post_checklist' ) ) {
-	function sp_post_checklist( $post_id = null, $meta = 'post', $display = 'block', $filters = null, $index = null ) {
+	function sp_post_checklist( $post_id = null, $meta = 'post', $display = 'block', $filters = null, $index = null, $slug = null ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
+		if ( ! isset( $slug ) )
+			$slug = $meta;
 		?>
-		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-tab-filter-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
-			<input type="hidden" value="0" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
+		<div id="<?php echo $slug; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-tab-filter-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
+			<input type="hidden" value="0" name="<?php echo $slug; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
 				<?php
@@ -844,7 +881,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 					?>">
 						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
-							<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $meta; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
+							<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $slug; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
 							<?php echo sp_get_player_name_with_number( $post->ID ); ?>
 						</label>
 						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
@@ -854,10 +891,10 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 				?>
 				<li class="sp-not-found-container">
 					<?php _e( 'No results found.', 'sportspress' ); ?>
-					<?php if ( sizeof( $posts ) ): ?><a class="sp-show-all" href="#show-all-<?php echo $meta; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a><?php endif; ?>
+					<?php if ( sizeof( $posts ) ): ?><a class="sp-show-all" href="#show-all-<?php echo $slug; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a><?php endif; ?>
 				</li>
 				<?php if ( sizeof( $posts ) ): ?>
-					<li class="sp-show-all-container"><a class="sp-show-all" href="#show-all-<?php echo $meta; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
+					<li class="sp-show-all-container"><a class="sp-show-all" href="#show-all-<?php echo $slug; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
 				<?php endif; ?>
 			</ul>
 		</div>
@@ -882,6 +919,10 @@ if ( !function_exists( 'sp_column_checklist' ) ) {
 				endif;
 				if ( sizeof( $posts ) ):
 					foreach ( $posts as $post ):
+						if ( 'sp_performance' == $meta ) {
+							$format = get_post_meta( $post->ID, 'sp_format', true );
+							if ( 'text' === $format ) continue;
+						}
 						?>
 						<li class="sp-post">
 							<label class="selectit">
