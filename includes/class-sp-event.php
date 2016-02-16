@@ -96,6 +96,8 @@ class SP_Event extends SP_Custom_Post{
 			$formats[ $var->post_name ] = $format;
 		}
 		
+		$order = (array)get_post_meta( $this->ID, 'sp_order', true );
+		
 		$labels = apply_filters( 'sportspress_event_performance_labels', $labels, $this );
 		$columns = get_post_meta( $this->ID, 'sp_columns', true );
 		if ( is_array( $teams ) ):
@@ -132,7 +134,7 @@ class SP_Event extends SP_Custom_Post{
 		endif;
 
 		if ( $admin ):
-			return array( $labels, $columns, $performance, $teams, $formats );
+			return array( $labels, $columns, $performance, $teams, $formats, $order );
 		else:
 			// Add position to performance labels
 			if ( taxonomy_exists( 'sp_position' ) ):

@@ -150,6 +150,16 @@ if ( is_array( $teams ) ):
 				
 				foreach ( $section_order as $section_id => $section_label ) {
 					if ( sizeof( $data[ $section_id ] ) ) {
+						if ( 1 == $section_id ) {
+							$order = (array)get_post_meta( $id, 'sp_order', true );
+							if ( is_array( $order ) && sizeof( $order ) ) {
+								$player_order = sp_array_value( $order, $team_id, array() );
+								if ( is_array( $player_order ) ) {
+									$data[1] = sp_array_combine( $player_order, $data[1], true );
+								}
+							}
+						}
+						
 						sp_get_template( 'event-performance-table.php', array(
 							'section' => $section_label,
 							'scrollable' => $scrollable,
