@@ -75,7 +75,28 @@ class SP_Event extends SP_Custom_Post{
 	public function performance( $admin = false ) {
 		$teams = get_post_meta( $this->ID, 'sp_team', false );
 		$performance = (array)get_post_meta( $this->ID, 'sp_players', true );
-		$labels = apply_filters( 'sportspress_event_performance_labels', sp_get_var_labels( 'sp_performance' ), $this );
+		
+		$args = array(
+			'post_type' => 'sp_performance',
+			'numberposts' => 100,
+			'posts_per_page' => 100,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		$vars = get_posts( $args );
+		
+		$labels = array();
+		foreach ( $vars as $var ) {
+			$labels[ $var->post_name ] = $var->post_title;
+			$format = get_post_meta( $var->ID, 'sp_format', true );
+			if ( '' === $format ) {
+				$format = 'number';
+			}
+			$formats[ $var->post_name ] = $format;
+		}
+		
+		$labels = apply_filters( 'sportspress_event_performance_labels', $labels, $this );
 		$columns = get_post_meta( $this->ID, 'sp_columns', true );
 		if ( is_array( $teams ) ):
 			foreach( $teams as $i => $team_id ):
@@ -111,7 +132,7 @@ class SP_Event extends SP_Custom_Post{
 		endif;
 
 		if ( $admin ):
-			return array( $labels, $columns, $performance, $teams );
+			return array( $labels, $columns, $performance, $teams, $formats );
 		else:
 			// Add position to performance labels
 			if ( taxonomy_exists( 'sp_position' ) ):
