@@ -110,9 +110,6 @@ class SP_Meta_Box_Event_Teams {
 						$j = 0;
 						foreach ( $tabs as $slug => $tab ) {
 							do_action( 'sportspress_event_teams_meta_box_checklist', $post->ID, $tab['post_type'], ( 0 == $j ? 'block' : 'none' ), $team, $i, $slug );
-							if ( apply_filters( 'sportspress_event_teams_meta_box_default_checklist', true ) ) {
-								sp_post_checklist( $post->ID, $tab['post_type'], ( 0 == $j ? 'block' : 'none' ), array( 'sp_league', 'sp_season', 'sp_current_team' ), $i, $slug );
-							}
 							$j++;
 						}
 					?>

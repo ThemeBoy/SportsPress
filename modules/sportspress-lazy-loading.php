@@ -28,7 +28,6 @@ class SportsPress_Lazy_Loading {
 		add_action( 'wp_ajax_sp-get-players', array( $this, 'get_players' ) );
 		add_action( 'sportspress_event_teams_meta_box_checklist', array( $this, 'checklist' ), 10, 6 );
 		add_filter( 'sportspress_localized_strings', array( $this, 'strings' ) );
-		add_filter( 'sportspress_event_teams_meta_box_default_checklist', '__return_false' );
 	}
 
 	/**
