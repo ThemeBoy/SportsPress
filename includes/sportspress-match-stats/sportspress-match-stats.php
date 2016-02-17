@@ -111,6 +111,9 @@ class SportsPress_Match_Stats {
 	 * Frontend CSS
 	 */
 	public static function frontend_css( $colors ) {
+		if ( current_theme_supports( 'sportspress' ) )
+			return;
+			
 		if ( isset( $colors['primary'] ) ) {
 			echo '.sp-statistic-bar{background:' . $colors['primary'] . '}';
 		}
