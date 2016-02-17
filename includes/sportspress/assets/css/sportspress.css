@@ -205,6 +205,9 @@
 }
 
 /* Event Performance */
+.sp-event-performance .sub {
+	background: rgba(0,0,0,0.05);
+}
 .sp-event-performance .sub-in,
 .sp-event-performance .sub-out {
 	cursor: default;

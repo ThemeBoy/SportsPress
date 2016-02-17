@@ -14,10 +14,18 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
-$date = get_the_time( get_option('date_format'), $id );
-$time = get_the_time( get_option('time_format'), $id );
 
-$data = array( __( 'Date', 'sportspress' ) => $date, __( 'Time', 'sportspress' ) => $time );
+$data = array();
+
+if ( 'yes' === get_option( 'sportspress_event_show_date', 'yes' ) ) {
+	$date = get_the_time( get_option('date_format'), $id );
+	$data[ __( 'Date', 'sportspress' ) ] = $date;
+}
+
+if ( 'yes' === get_option( 'sportspress_event_show_time', 'yes' ) ) {
+	$time = get_the_time( get_option('time_format'), $id );
+	$data[ __( 'Time', 'sportspress' ) ] = $time;
+}
 
 $taxonomies = apply_filters( 'sportspress_event_taxonomies', array( 'sp_league' => null, 'sp_season' => null ) );
 
@@ -31,6 +39,8 @@ foreach ( $taxonomies as $taxonomy => $post_type ):
 endforeach;
 
 $data = apply_filters( 'sportspress_event_details', $data, $id );
+
+if ( ! sizeof( $data ) ) return;
 ?>
 <div class="sp-template sp-template-event-details">
 	<h4 class="sp-table-caption"><?php _e( 'Details', 'sportspress' ); ?></h4>

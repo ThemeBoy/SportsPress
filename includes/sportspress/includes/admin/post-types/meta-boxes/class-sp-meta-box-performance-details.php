@@ -33,6 +33,10 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		if ( '' === $section ) {
 			$section = -1;
 		}
+		$format = get_post_meta( $post->ID, 'sp_format', true );
+		if ( '' === $format ) {
+			$format = 'number';
+		}
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
@@ -50,6 +54,17 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 				?>
 			</select>
 		</p>
+		<p><strong><?php _e( 'Format', 'sportspress' ); ?></strong></p>
+		<p class="sp-format-selector">
+			<select name="sp_format">
+				<?php
+				$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ) ) );
+				foreach ( $options as $key => $value ):
+					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $format ), $value );
+				endforeach;
+				?>
+			</select>
+		</p>
 		<?php
 	}
 
@@ -59,5 +74,6 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 	public static function save( $post_id, $post ) {
 		self::delete_duplicate( $_POST );
 		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1 ) );
+		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number' ) );
 	}
 }

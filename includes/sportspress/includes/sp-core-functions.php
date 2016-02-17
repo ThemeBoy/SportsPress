@@ -453,13 +453,36 @@ if ( !function_exists( 'sp_get_post_section' ) ) {
 	function sp_get_post_section( $post_id ) {
 		$section = get_post_meta ( $post_id, 'sp_section', true );
 		if ( isset( $section ) ):
-			$options = apply_filters( 'sportspress_performance_categories', array( -1 => __( 'All', 'sportspress' ), 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
+			$options = apply_filters( 'sportspress_performance_sections', array( -1 => __( 'All', 'sportspress' ), 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
 			return sp_array_value( $options, $section, __( 'All', 'sportspress' ) );
 		else:
 			return __( 'All', 'sportspress' );
 		endif;
 	}
 }
+
+if ( !function_exists( 'sp_get_post_format' ) ) {
+	function sp_get_post_format( $post_id ) {
+		$format = get_post_meta ( $post_id, 'sp_format', true );
+		if ( isset( $format ) ):
+			$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ) ) );
+			return sp_array_value( $options, $format, __( 'Number', 'sportspress' ) );
+		else:
+			return __( 'Number', 'sportspress' );
+		endif;
+	}
+}
+
+if ( !function_exists( 'sp_get_format_placeholder' ) ) {
+	function sp_get_format_placeholder( $key = 'number' ) {
+		$placeholders = apply_filters( 'sportspress_format_placeholders', array(
+			'number' => 0,
+			'time' => '0:00',
+			'text' => '',
+		) );
+		return sp_array_value( $placeholders, $key, 0 );
+	}
+} 
 
 if ( !function_exists( 'sp_dropdown_statuses' ) ) {
 	function sp_dropdown_statuses( $args = array() ) {
@@ -809,7 +832,11 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 			<ul class="categorychecklist form-no-clear">
 				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
 				<?php
-				$selected = sp_array_between( (array)get_post_meta( $post_id, $meta, false ), 0, $index );
+				$selected = (array)get_post_meta( $post_id, $slug, false );
+				if ( ! sizeof( $selected ) ) {
+					$selected = (array)get_post_meta( $post_id, $meta, false );
+				}
+				$selected = sp_array_between( $selected, 0, $index );
 				if ( empty( $posts ) ):
 					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1, 'orderby' => 'menu_order' );
 					if ( $meta == 'sp_player' ):
@@ -896,6 +923,10 @@ if ( !function_exists( 'sp_column_checklist' ) ) {
 				endif;
 				if ( sizeof( $posts ) ):
 					foreach ( $posts as $post ):
+						if ( 'sp_performance' == $meta ) {
+							$format = get_post_meta( $post->ID, 'sp_format', true );
+							if ( 'text' === $format ) continue;
+						}
 						?>
 						<li class="sp-post">
 							<label class="selectit">

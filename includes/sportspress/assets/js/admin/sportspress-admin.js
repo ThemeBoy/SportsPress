@@ -620,4 +620,132 @@ jQuery(document).ready(function($){
 	$(".sp-select-sport").change(function() {
 		$(".sp-configure-sport").hide();
 	});
+
+	// Ajax checklist
+	$(".sp-ajax-checklist").siblings(".sp-tab-select").find("select").change(function() {
+		$(this).closest(".sp-tab-select").siblings(".sp-ajax-checklist").find("ul").html("<li>" + localized_strings.loading + "</li>");
+		$.post( ajaxurl, {
+			action:         "sp-get-players",
+			team: 			$(this).val(),
+			league: 		('yes' == localized_strings.option_filter_by_league) ? $("select[name=\"tax_input[sp_league][]\"]").val() : null,
+			season: 		('yes' == localized_strings.option_filter_by_season) ? $("select[name=\"tax_input[sp_season][]\"]").val() : null,
+			index: 			$(this).closest(".sp-instance").index(),
+			nonce:          $("#sp-get-players-nonce").val()
+		}).done(function( response ) {
+			index = response.data.index;
+			$target = $(".sp-instance").eq(index).find(".sp-ajax-checklist ul");
+			if ( response.success ) {
+				$target.html("");
+				i = 0;
+				if(-1 == response.data.sections) {
+					if(response.data.players.length) {
+						$target.eq(0).append("<li class=\"sp-select-all-container\"><label class=\"selectit\"><input type=\"checkbox\" class=\"sp-select-all\"><strong>" + localized_strings.select_all + "</strong></li>");
+						$(response.data.players).each(function( key, value ) {
+							$target.eq(0).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_player[" + index + "][]\">" + value.post_title + "</li>");
+						});
+						$target.eq(0).append("<li class=\"sp-ajax-show-all-container\"><a class=\"sp-ajax-show-all\" href=\"#show-all-sp_players\">" + localized_strings.show_all + "</a></li>");
+					} else {
+						$target.eq(0).html("<li>" + localized_strings.no_results_found + " <a class=\"sp-ajax-show-all\" href=\"#show-all-sp_players\">" + localized_strings.show_all + "</a></li>");
+					}
+				} else {
+					if ( 1 == response.data.sections ) {
+						defense = i;
+						offense = i+1;
+					} else {
+						offense = i;
+						defense = i+1;
+					}
+					if(response.data.players.length) {
+						$target.eq(offense).append("<li class=\"sp-select-all-container\"><label class=\"selectit\"><input type=\"checkbox\" class=\"sp-select-all\"><strong>" + localized_strings.select_all + "</strong></li>");
+						$target.eq(defense).append("<li class=\"sp-select-all-container\"><label class=\"selectit\"><input type=\"checkbox\" class=\"sp-select-all\"><strong>" + localized_strings.select_all + "</strong></li>");
+						$(response.data.players).each(function( key, value ) {
+							$target.eq(offense).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_offense[" + index + "][]\">" + value.post_title + "</li>");
+							$target.eq(defense).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_defense[" + index + "][]\">" + value.post_title + "</li>");
+						});
+						$target.eq(offense).append("<li class=\"sp-ajax-show-all-container\"><a class=\"sp-ajax-show-all\" href=\"#show-all-sp_offense\">" + localized_strings.show_all + "</a></li>");
+						$target.eq(defense).append("<li class=\"sp-ajax-show-all-container\"><a class=\"sp-ajax-show-all\" href=\"#show-all-sp_defense\">" + localized_strings.show_all + "</a></li>");
+					} else {
+						$target.eq(offense).html("<li>" + localized_strings.no_results_found + " <a class=\"sp-ajax-show-all\" href=\"#show-all-sp_offense\">" + localized_strings.show_all + "</a></li>");
+						$target.eq(defense).html("<li>" + localized_strings.no_results_found + " <a class=\"sp-ajax-show-all\" href=\"#show-all-sp_defense\">" + localized_strings.show_all + "</a></li>");
+					}
+					i++;
+				}
+				i++;
+				if(response.data.staff.length) {
+					$target.eq(i).append("<li class=\"sp-select-all-container\"><label class=\"selectit\"><input type=\"checkbox\" class=\"sp-select-all\"><strong>" + localized_strings.select_all + "</strong></li>");
+					$(response.data.staff).each(function( key, value ) {
+						$target.eq(i).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_staff[" + index + "][]\">" + value.post_title + "</li>");
+					});
+					$target.eq(i).append("<li class=\"sp-ajax-show-all-container\"><a class=\"sp-ajax-show-all\" href=\"#show-all-sp_staffs\">" + localized_strings.show_all + "</a></li>");
+				} else {
+					$target.eq(i).html("<li>" + localized_strings.no_results_found + " <a class=\"sp-ajax-show-all\" href=\"#show-all-sp_staffs\">" + localized_strings.show_all + "</a></li>");
+				}
+			} else {
+				$target.html("<li>" + localized_strings.no_results_found + "</li>");
+			}
+		});
+	});
+
+	// Activate Ajax trigger
+	$(".sp-ajax-trigger").change(function() {
+		$(".sp-ajax-checklist").siblings(".sp-tab-select").find("select").change();
+	});
+
+	// Ajax show all filter
+	$(".sp-tab-panel").on("click", ".sp-ajax-show-all", function() {
+		index = $(this).closest(".sp-instance").index();
+		$(this).parent().html(localized_strings.loading);
+		$.post( ajaxurl, {
+			action:         "sp-get-players",
+			index: 			index,
+			nonce:          $("#sp-get-players-nonce").val()
+		}).done(function( response ) {
+			index = response.data.index;
+			console.log(index);
+			$target = $(".sp-instance").eq(index).find(".sp-ajax-checklist ul");
+			$target.find(".sp-ajax-show-all-container").hide();
+			if ( response.success ) {
+				i = 0;
+				console.log(response.data.sections);
+				if ( -1 == response.data.sections ) {
+					if(response.data.players.length) {
+						$(response.data.players).each(function( key, value ) {
+							//if($target.eq(i).find("input[value=" + value.ID + "]").length) return true;
+							$target.eq(i).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_player[" + index + "][]\">" + value.post_title + "</li>");
+						});
+					} else {
+						$target.eq(i).html("<li>" + localized_strings.no_results_found + "</li>");
+					}
+				} else {
+					if(response.data.players.length) {
+						if ( 1 == response.data.sections ) {
+							defense = i;
+							offense = i+1;
+						} else {
+							offense = i;
+							defense = i+1;
+						}
+						$(response.data.players).each(function( key, value ) {
+							$target.eq(offense).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_offense[" + index + "][]\">" + value.post_title + "</li>");
+							$target.eq(defense).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_defense[" + index + "][]\">" + value.post_title + "</li>");
+						});
+					} else {
+						$target.eq(offense).html("<li>" + localized_strings.no_results_found + "</li>");
+						$target.eq(defense).html("<li>" + localized_strings.no_results_found + "</li>");
+					}
+					i++;
+				}
+				i++;
+				if(response.data.staff.length) {
+					$(response.data.staff).each(function( key, value ) {
+						$target.eq(i).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_staff[" + index + "][]\">" + value.post_title + "</li>");
+					});
+				} else {
+					$target.eq(i).html("<li>" + localized_strings.no_results_found + "</li>");
+				}
+			} else {
+				$target.html("<li>" + localized_strings.no_results_found + "</li>");
+			}
+		});
+	});
 });

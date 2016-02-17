@@ -113,13 +113,6 @@ class SP_Modules {
 					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Clone anything with just one click. Great for creating multiple events.', 'sportspress' ),
 				),
-				'lazy_loading' => array(
-					'label' => __( 'Lazy Loading', 'sportspress' ),
-					'class' => 'SportsPress_Lazy_Loading',
-					'icon' => 'sp-icon-moon',
-					'link' => 'http://tboy.co/pro',
-					'desc' => __( 'Load players using Ajax to speed up the event edit screen.', 'sportspress' ),
-				),
 			),
 			'other' => array(
 				'twitter' => array(

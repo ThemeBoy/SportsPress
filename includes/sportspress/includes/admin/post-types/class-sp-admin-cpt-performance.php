@@ -43,6 +43,8 @@ class SP_Admin_CPT_Performance extends SP_Admin_CPT {
 			'sp_icon' => __( 'Icon', 'sportspress' ),
 			'title' => __( 'Label', 'sportspress' ),
 			'sp_key' => __( 'Variable', 'sportspress' ),
+			'sp_section' => __( 'Category', 'sportspress' ),
+			'sp_config_format' => __( 'Format', 'sportspress' ),
 			'sp_description' => __( 'Description', 'sportspress' ),
 		);
 		return apply_filters( 'sportspress_performance_admin_columns', $columns );
@@ -60,6 +62,14 @@ class SP_Admin_CPT_Performance extends SP_Admin_CPT {
 			case 'sp_key':
 				global $post;
 				echo $post->post_name;
+				break;
+			case 'sp_section':
+				global $post;
+				echo sp_get_post_section( $post->ID );
+				break;
+			case 'sp_config_format':
+				global $post;
+				echo sp_get_post_format( $post->ID );
 				break;
 			case 'sp_description':
 				global $post;

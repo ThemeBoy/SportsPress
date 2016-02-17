@@ -163,6 +163,7 @@
 									<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Category', 'sportspress' ); ?></th>
+									<th scope="col"><?php _e( 'Format', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 									<th scope="col" class="edit"></th>
 								</tr>
@@ -171,7 +172,7 @@
 								<tr>
 									<th class="radio"><input type="radio" class="sp-primary-performance-option" id="sportspress_primary_performance_0" name="sportspress_primary_performance" value="0" <?php checked( $selection, 0 ); ?>></th>
 									<th class="icon">&nbsp;</td>
-									<th colspan="5"><label for="sportspress_primary_performance_0">
+									<th colspan="6"><label for="sportspress_primary_performance_0">
 										<?php
 										if ( sizeof( $data ) > 0 ):
 											$default = reset( $data );
@@ -199,12 +200,13 @@
 									<td class="row-title"><?php echo $row->post_title; ?></td>
 									<td><code><?php echo $row->post_name; ?></code></td>
 									<td><?php echo sp_get_post_section( $row->ID ); ?></td>
+									<td><?php echo sp_get_post_format( $row->ID ); ?></td>
 									<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 									<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 								</tr>
 							<?php $i++; endforeach; else: ?>
 								<tr class="alternate">
-									<td colspan="7"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+									<td colspan="8"><?php _e( 'No results found.', 'sportspress' ); ?></td>
 								</tr>
 							<?php endif; ?>
 						</table>
