@@ -90,6 +90,8 @@ class SportsPress_Lazy_Loading {
 
 		$data['players'] = $players;
 		$data['staff'] = $staff;
+		$data['sections'] = get_option( 'sportspress_event_performance_sections', -1 );
+		
 		wp_send_json_success( $data );
 	}
 
