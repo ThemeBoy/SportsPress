@@ -51,6 +51,11 @@ table.sp-tournament-container .sp-team:before {
 	border-bottom: 7px solid transparent;
 }
 
+table.sp-tournament-container .sp-team-hidden select {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
 table.sp-tournament-container .sp-first-round:before {
 	border: none;
 }
@@ -72,7 +77,33 @@ table.sp-tournament-container .sp-event .sp-edit {
 	cursor: pointer;
 }
 
-table.sp-tournament-container .sp-event:hover .sp-edit {
+table.sp-tournament-container .sp-event .sp-hide {
+	position: absolute;
+	bottom: 5px;
+	right: 10px;
+	display: none;
+	cursor: pointer;
+}
+
+table.sp-tournament-container .sp-event-hidden label {
+	opacity: 0.5;
+}
+
+table.sp-tournament-container .sp-event-hidden input {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+table.sp-tournament-container .sp-event-hidden .sp-hide {
+	display: block;
+}
+
+table.sp-tournament-container .sp-event-hidden .sp-hide:before {
+	color: #888;
+}
+
+table.sp-tournament-container .sp-event:hover .sp-edit,
+table.sp-tournament-container .sp-event:hover .sp-hide {
 	display: block;
 }
 

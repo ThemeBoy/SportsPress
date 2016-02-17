@@ -206,6 +206,9 @@ class SP_Tournament {
 				// Get event index
 				$index = ( pow( 2, $rounds ) - pow( 2, ( $rounds - $col ) ) + floor( $counter[ $col ] / 3 ) );
 
+				// Check if event is hidden
+				$hidden = sp_array_value( sp_array_value( $raw, $index, array() ), 'hidden', 0 );
+				
 				// Get selected event id
 				$event = sp_array_value( $events, $index, 0 );
 
@@ -251,6 +254,7 @@ class SP_Tournament {
 						'rows' => $height,
 						'index' => $index,
 						'id' => $event,
+						'hidden' => $hidden,
 					);
 
 					if ( $rounds - 1 == $col ):
@@ -262,51 +266,28 @@ class SP_Tournament {
 					$data[ $cellrow ][ $cellcol ] = $cell;
 
 					$counter[ $col ] ++;
-				elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin ):
+				elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin || $row % ( 6 * pow( 2, $col ) ) === $margin + $height + 1 ):
+					$ti = ( $row % ( 6 * pow( 2, $col ) ) === $margin ? 0 : 1 );
 					$select = false;
-					$team = sp_array_value( $teams, 0, 0 );
+					$team = sp_array_value( $teams, $ti, 0 );
 					if ( ! $team ) {
 						$select = true;
-						$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), 0, 0 );
+						$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), $ti, 0 );
 					}
 
 					$cell = array(
 						'type' => 'team',
 						'rows' => 1,
 						'index' => $index,
-						'class' => 'sp-home-team',
+						'class' => ( $ti ? 'sp-away-team' : 'sp-home-team' ),
 						'id' => $team,
+						'hidden' => $hidden,
+						'pos' => $ti,
 						'select' => $select,
 					);
 
 					if ( 'center' == $layout && $rounds - 1 == $col ):
-						$cell['class'] = 'sp-team-final';
-					elseif ( $flip ):
-						$cell['class'] = 'sp-team-flip';
-					endif;
-
-					$data[ $cellrow ][ $cellcol ] = $cell;
-
-					$counter[ $col ] ++;
-				elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin + $height + 1 ):
-					$select = false;
-					$team = sp_array_value( $teams, 1, 0 );
-					if ( ! $team ) {
-						$select = true;
-						$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), 1, 0 );
-					}
-
-					$cell = array(
-						'type' => 'team',
-						'rows' => 1,
-						'index' => $index,
-						'class' => 'sp-away-team',
-						'id' => $team,
-						'select' => $select,
-					);
-
-					if ( 'center' == $layout && $rounds - 1 == $col ):
-						$cell['class'] = 'sp-team-flip sp-team-final';
+						$cell['class'] = ( $ti ? 'sp-team-flip sp-team-final' : 'sp-team-final' );
 					elseif ( $flip ):
 						$cell['class'] = 'sp-team-flip';
 					endif;
@@ -332,6 +313,6 @@ class SP_Tournament {
 
 		endwhile;
 
-		return array( $labels, $data, $columns, $maxrows );
+		return array( $labels, $data, $columns, $maxrows, $rounds, $raw );
 	}
 }

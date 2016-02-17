@@ -22,17 +22,17 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 $tournament = new SP_Tournament( $id );
-list( $labels, $data, $rounds, $rows ) = $tournament->data( $layout );
+list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout );
 ?>
 <table class="sp-data-table sp-tournament-bracket<?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
 	<thead>
 		<tr>
-			<?php for ( $round = 0; $round < $rounds; $round++ ): ?>
+			<?php for ( $col = 0; $col < $cols; $col++ ): ?>
 				<th>
 					<?php
-					$label = sp_array_value( $labels, $round, null );
+					$label = sp_array_value( $labels, $col, null );
 					if ( $label == null ) {
-						printf( __( 'Round %s', 'sportspress' ), $round + 1 );
+						printf( __( 'Round %s', 'sportspress' ), $col + 1 );
 					} else {
 						echo $label;
 					}
@@ -45,15 +45,22 @@ list( $labels, $data, $rounds, $rows ) = $tournament->data( $layout );
 		<?php for ( $row = 0; $row < $rows; $row++ ): ?>
 			<tr>
 				<?php
-				for ( $round = 0; $round < $rounds; $round++ ):
-					$cell = sp_array_value( sp_array_value( $data, $row, array() ), $round, null );
+				for ( $col = 0; $col < $cols; $col++ ):
+					$cell = sp_array_value( sp_array_value( $data, $row, array() ), $col, null );
 					if ( $cell === null ) continue;
+
+					$hidden = sp_array_value( $cell, 'hidden' );
+
+					if ( $hidden ) {	
+						echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '">&nbsp;</td>';
+						continue;
+					}
 
 					$index = sp_array_value( $cell, 'index' );
 					$event = sp_array_value( $cell, 'id', 0 );
-
+					
 					if ( sp_array_value( $cell, 'type', null ) === 'event' ):
-						echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="sp-event' . ( $round === 0 ? ' sp-first-round' : '' ) . ( $round === $rounds - 1 ? ' sp-last-round' : '' ) . ' ' . sp_array_value( $cell, 'class', '' ) . '">';
+						echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="sp-event' . ( $col === 0 ? ' sp-first-round' : '' ) . ( $col === $cols - 1 ? ' sp-last-round' : '' ) . ' ' . sp_array_value( $cell, 'class', '' ) . '">';
 						if ( $event ) {
 							$event_name = '<span class="sp-result">' . implode( '</span>-<span class="sp-result">', sp_get_main_results_or_time( $event ) ) . '</span>';
 
@@ -115,7 +122,30 @@ list( $labels, $data, $rounds, $rows ) = $tournament->data( $layout );
 						echo '</td>';
 					elseif ( sp_array_value( $cell, 'type', null ) === 'team' ):
 						$team = sp_array_value( $cell, 'id', 0 );
-						echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="sp-team' . ( $round === 0 ? ' sp-first-round' : '' ) . ( $round === $rounds - 1 ? ' sp-last-round' : '' ) . ' ' . sp_array_value( $cell, 'class', '' ) . '">';
+						$pos = sp_array_value( $cell, 'pos', 0 );
+					
+						// Initialize classes
+						$classes = array( 'sp-team', sp_array_value( $cell, 'class', '' ) );
+						
+						// Add first and last round classes if applicable
+						if ( $col === 0 ) {
+							$classes[] = 'sp-first-round';
+						}
+						if ( $col === $cols - 1 ) {
+							$classes[] = 'sp-last-round';
+						}
+					
+						// Check if previous event is hidden
+						$offset = pow( 2, $rounds - 1 );
+						$prev = ( $index - $offset ) * 2 + $pos;
+						if ( 0 <= $prev && sp_array_value( sp_array_value( $raw, $prev, array() ), 'hidden', 0 ) ) {
+							$classes[] = 'sp-first-round';
+						}
+						
+						// Remove duplicate classes
+						$classes = array_unique( $classes );
+					
+						echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="' . implode( ' ', $classes ) . '">';
 						if ( $team ) {
 							$team_name = get_the_title( $team );
 							if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '" class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</a>';

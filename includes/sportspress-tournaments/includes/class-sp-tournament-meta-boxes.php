@@ -304,6 +304,7 @@ class SP_Tournament_Meta_Boxes {
 							if ( $cell === null ) continue;
 
 							$index = sp_array_value( $cell, 'index' );
+							$hidden = sp_array_value( $cell, 'hidden', 0 );
 
 							if ( sp_array_value( $cell, 'type', null ) === 'event' ) {
 								$event = sp_array_value( $cell, 'id', 0 );
@@ -313,12 +314,14 @@ class SP_Tournament_Meta_Boxes {
 									$results = null;
 								}
 								?>
-								<td rowspan="<?php echo sp_array_value( $cell, 'rows', 1 ); ?>" class="sp-event<?php if ( 0 === $round ) { ?> sp-first-round<?php } if ( $rounds - 1 === $round ) { ?> sp-last-round<?php } ?>">
+								<td rowspan="<?php echo sp_array_value( $cell, 'rows', 1 ); ?>" class="sp-event<?php if ( 0 === $round ) { ?> sp-first-round<?php } if ( $rounds - 1 === $round ) { ?> sp-last-round<?php } ?><?php if ( $hidden ) { ?> sp-event-hidden<?php } ?>" data-event="<?php echo $index; ?>">
 									<input type="hidden" name="sp_event[<?php echo $index; ?>][id]" value="<?php echo $event ? $event : 0; ?>">
 									<label><?php _e( 'Date', 'sportspress' ); ?>:</label>
 									<?php if ( $event ) { ?>
 										<a title="<?php _e( 'Edit Event', 'sportspress' ); ?>" class="sp-edit sp-desc-tip dashicons dashicons-edit" href="<?php echo get_edit_post_link( $event, '' ); ?>" target="_blank"></a>
 									<?php } ?>
+									<a title="<?php _e( 'Hide Event' ); ?>" class="sp-hide sp-desc-tip dashicons dashicons-hidden" href="#"></a>
+									<input type="hidden" class="sp-hidden" name="sp_event[<?php echo $index; ?>][hidden]" value="<?php echo $hidden ? 1 : 0; ?>">
 									<input type="text" class="sp-datepicker" name="sp_event[<?php echo $index; ?>][date]" value="<?php if ( $event ) echo sp_get_time( $event, 'Y-m-d' ); ?>" size="10" autocomplete="off"><hr>
 									<label><?php _e( 'Time', 'sportspress' ); ?>:</label>
 									<input type="text" size="2" maxlength="2" name="sp_event[<?php echo $index; ?>][hh]" autocomplete="off" value="<?php if ( $event ) echo sp_get_time( $event, 'H' ); ?>">
@@ -333,7 +336,7 @@ class SP_Tournament_Meta_Boxes {
 							} elseif ( sp_array_value( $cell, 'type', null ) === 'team' ) {
 								$select = sp_array_value( $cell, 'select', false );
 								$team = sp_array_value( $cell, 'id', 0 );
-								echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="sp-team' . ( $round === 0 ? ' sp-first-round' : '' ) . ( $round === $rounds - 1 ? ' sp-last-round' : '' ) . '">';
+								echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="sp-team' . ( $round === 0 ? ' sp-first-round' : '' ) . ( $round === $rounds - 1 ? ' sp-last-round' : '' ) . ( $hidden ? ' sp-team-hidden' : '' ) . '" data-event="' . $index . '">';
 									if ( $select ) {
 										self::dropdown( $teams, $index, $team );
 									} else {
