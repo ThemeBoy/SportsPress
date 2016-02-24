@@ -252,8 +252,10 @@ class SP_Meta_Box_Event_Performance {
 						$player_id = 0;
 						$player_performance = sp_array_value( $data, $player_id, array() );
 						$value = sp_array_value( $player_performance, $column, '' );
+						$format = sp_array_value( $formats, $column, 'number' );
+						$placeholder = sp_get_format_placeholder( $format );
 						?>
-						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" placeholder="0" value="<?php echo esc_attr( $value ); ?>" /></td>
+						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" placeholder="<?php echo trim( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" data-sp-format="<?php echo $format; ?>" /></td>
 					<?php endforeach; ?>
 					<?php if ( $status ) { ?>
 						<td>&nbsp;</td>
