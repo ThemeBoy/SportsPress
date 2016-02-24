@@ -74,6 +74,10 @@ if ( ! isset( $class ) ) $class = null;
 						foreach ( $labels as $key => $label ):
 							if ( in_array( $key, array( 'number', 'name' ) ) )
 								continue;
+							
+							$format = sp_array_value( $formats, $key, 'number' );
+							$placeholder = sp_get_format_placeholder( $format );
+							
 							$value = '&mdash;';
 							if ( $key == 'position' ):
 								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
@@ -89,13 +93,16 @@ if ( ! isset( $class ) ) $class = null;
 								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
 									$value = $row[ $key ];
 								else:
-									$value = 0;
+									$value = $placeholder;
 								endif;
 							endif;
 							if ( ! array_key_exists( $key, $totals ) ):
-								$totals[ $key ] = 0;
+								$totals[ $key ] = $placeholder;
 							endif;
-							$totals[ $key ] += $value;
+							
+							if ( 'text' !== $format ) {
+								$totals[ $key ] += $value;
+							}
 
 							if ( $mode == 'values' ):
 								echo '<td class="data-' . $key . '">' . $value . '</td>';
