@@ -86,7 +86,7 @@ class SP_Event extends SP_Custom_Post{
 
 		$vars = get_posts( $args );
 		
-		$labels = array();
+		$labels = array( 'number' => '#' );
 		foreach ( $vars as $var ) {
 			$labels[ $var->post_name ] = $var->post_title;
 			$format = get_post_meta( $var->ID, 'sp_format', true );
@@ -150,6 +150,9 @@ class SP_Event extends SP_Custom_Post{
 
 			if ( 'no' == get_option( 'sportspress_event_show_position', 'yes' ) ):
 				unset( $labels['position'] );
+			endif;
+			if ( 'no' == get_option( 'sportspress_event_show_player_numbers', 'yes' ) ):
+				unset( $labels['number'] );
 			endif;
 			$performance[0] = $labels;
 			return apply_filters( 'sportspress_get_event_performance', $performance );
