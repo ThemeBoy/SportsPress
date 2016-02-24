@@ -140,9 +140,6 @@ class SP_Meta_Box_Event_Performance {
 							case 1:
 								$labels[1][ $column->post_name ] = $column->post_title;
 								break;
-							case 0:
-								$labels[0][ $column->post_name ] = $column->post_title;
-								break;
 							default:
 								$labels[0][ $column->post_name ] = $column->post_title;
 						endswitch;
