@@ -86,7 +86,7 @@ class SP_Event extends SP_Custom_Post{
 
 		$vars = get_posts( $args );
 		
-		$labels = array( 'number' => '#' );
+		$labels = array();
 		foreach ( $vars as $var ) {
 			$labels[ $var->post_name ] = $var->post_title;
 			$format = get_post_meta( $var->ID, 'sp_format', true );

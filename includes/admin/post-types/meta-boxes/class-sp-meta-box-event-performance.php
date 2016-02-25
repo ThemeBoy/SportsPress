@@ -33,6 +33,9 @@ class SP_Meta_Box_Event_Performance {
 			$has_checkboxes = true;
 		else
 			$has_checkboxes = false;
+		
+		// Get player number option
+		$numbers = 'yes' == get_option( 'sportspress_event_show_player_numbers', 'yes' ) ? true : false;
 
 		// Get positions
 		$positions = array();
@@ -57,7 +60,7 @@ class SP_Meta_Box_Event_Performance {
 		// Check if individual mode
 		$is_individual = get_option( 'sportspress_load_individual_mode_module', 'no' ) === 'yes' ? true : false;
 
-		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $positions, $status, $formats, $order, $is_individual );
+		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $positions, $status, $formats, $order, $numbers, $is_individual );
 	}
 
 	/**
@@ -72,15 +75,15 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit tables
 	 */
-	public static function tables( $post_id, $stats = array(), $labels = array(), $columns = array(), $teams = array(), $has_checkboxes = false, $positions = array(), $status = true, $formats = array(), $order = array(), $is_individual = false ) {
+	public static function tables( $post_id, $stats = array(), $labels = array(), $columns = array(), $teams = array(), $has_checkboxes = false, $positions = array(), $status = true, $formats = array(), $order = array(), $numbers = true, $is_individual = false ) {
 		$sections = get_option( 'sportspress_event_performance_sections', -1 );
 		
 		if ( $is_individual ) {
 			?>
 			<div class="sp-data-table-container">
 				<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
-					<?php self::header( $columns, $labels, $positions, $has_checkboxes, $status, false, false, -1, $formats ); ?>
-					<?php self::footer( sp_array_value( $stats, -1 ), $labels, 0, $positions, $status, false, false, -1, $formats ); ?>
+					<?php self::header( $columns, $labels, $positions, $has_checkboxes, $status, false, $numbers, -1, $formats ); ?>
+					<?php self::footer( sp_array_value( $stats, -1 ), $labels, 0, $positions, $status, false, $numbers, -1, $formats ); ?>
 					<tbody>
 						<?php
 						foreach ( $teams as $key => $team_id ):
@@ -92,7 +95,7 @@ class SP_Meta_Box_Event_Performance {
 							$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
 
 							foreach ( $data as $player_id => $player_performance ):
-								self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, false, false, -1, $formats );
+								self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, false, $numbers, -1, $formats );
 							endforeach;
 						endforeach;
 						?>
@@ -114,7 +117,7 @@ class SP_Meta_Box_Event_Performance {
 					?>
 					<div>
 						<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-						<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $positions, $status, -1, $formats, $order ); ?>
+						<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $positions, $status, -1, $formats, $order, $numbers ); ?>
 						<?php do_action( 'sportspress_after_event_performance_table_admin', $labels, $columns, $data, $team_id ); ?>
 					</div>
 				<?php } else { ?>
@@ -176,7 +179,7 @@ class SP_Meta_Box_Event_Performance {
 						?>
 						<div>
 							<p><strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo $section_label; ?></strong></p>
-							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, $has_checkboxes, $positions, $status, $section_id, $formats, $order ); ?>
+							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, $has_checkboxes, $positions, $status, $section_id, $formats, $order, $numbers ); ?>
 							<?php do_action( 'sportspress_after_event_performance_table_admin', $labels[ $section_id ], $columns, $data[ $section_id ], $team_id ); ?>
 						</div>
 						<?php
@@ -190,12 +193,12 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array() ) {
+	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array(), $numbers = true ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
-				<?php self::header( $columns, $labels, $positions, $has_checkboxes, $status, true, true, $section, $formats ); ?>
-				<?php self::footer( $data, $labels, $team_id, $positions, $status, true, true, $section, $formats ); ?>
+				<?php self::header( $columns, $labels, $positions, $has_checkboxes, $status, true, $numbers, $section, $formats ); ?>
+				<?php self::footer( $data, $labels, $team_id, $positions, $status, true, $numbers, $section, $formats ); ?>
 				<tbody>
 					<?php
 					if ( 1 == $section && is_array( $order ) && sizeof( $order ) ) {
@@ -205,7 +208,7 @@ class SP_Meta_Box_Event_Performance {
 						}
 					}
 					foreach ( $data as $player_id => $player_performance ):
-						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, true, true, $section, $formats );
+						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, true, $numbers, $section, $formats );
 					endforeach;
 					?>
 				</tbody>
