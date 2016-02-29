@@ -202,10 +202,16 @@ class SP_Meta_Box_Event_Performance {
 				<tbody>
 					<?php
 					if ( 1 == $section && is_array( $order ) && sizeof( $order ) ) {
+						$players = array();
 						$player_order = sp_array_value( $order, $team_id, array() );
 						if ( is_array( $player_order ) && sizeof( $player_order ) ) {
-							$data = sp_array_combine( $player_order, $data, true );
+							foreach ( $player_order as $key ) {
+								if ( array_key_exists( $key, $data ) ):
+									$players[ $key ] = $data[ $key ];
+								endif;
+							}
 						}
+						$data = $players;
 					}
 					foreach ( $data as $player_id => $player_performance ):
 						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, true, $numbers, $section, $formats );
