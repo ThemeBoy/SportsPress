@@ -254,7 +254,7 @@ class SP_Meta_Box_Event_Performance {
 						<?php endif; ?>
 					</th>
 				<?php endforeach; ?>
-				<?php if ( $status ) { ?>
+				<?php if ( $status && 1 !== $section ) { ?>
 					<th>
 						<?php _e( 'Status', 'sportspress' ); ?>
 					</th>
@@ -292,7 +292,7 @@ class SP_Meta_Box_Event_Performance {
 						?>
 						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" placeholder="<?php echo trim( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" data-sp-format="<?php echo $format; ?>" /></td>
 					<?php endforeach; ?>
-					<?php if ( $status ) { ?>
+					<?php if ( $status && 1 !== $section ) { ?>
 						<td>&nbsp;</td>
 					<?php } ?>
 				</tr>
@@ -355,7 +355,7 @@ class SP_Meta_Box_Event_Performance {
 					<input class="sp-player-<?php echo $column; ?>-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo $placeholder; ?>" />
 				</td>
 			<?php endforeach; ?>
-			<?php if ( $status ) { ?>
+			<?php if ( $status && 1 !== $section ) { ?>
 				<td class="sp-status-selector">
 					<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?>
 					<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?>
