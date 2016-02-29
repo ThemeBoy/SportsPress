@@ -48,6 +48,11 @@
 	background: #fdfdfd;
 }
 
+.post-type-sp_player .curtime #timestamp:before {
+	font-family: sportspress, dashicons;
+	content: "\f453";
+}
+
 .sp-link:before {
 	font: normal 20px/1 dashicons;
 	speak: none;

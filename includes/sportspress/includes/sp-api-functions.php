@@ -34,6 +34,18 @@ function sp_get_posts( $post_type = 'post', $args = array() ) {
 	return get_posts( $args );
 }
 
+function sp_get_leagues( $post = 0, $ids = true ) {
+	$terms = get_the_terms( $post, 'sp_league' );
+	if ( $terms && $ids ) $terms = wp_list_pluck( $terms, 'term_id' );
+	return $terms;
+}
+
+function sp_get_seasons( $post = 0, $ids = true ) {
+	$terms = get_the_terms( $post, 'sp_season' );
+	if ( $terms && $ids ) $terms = wp_list_pluck( $terms, 'term_id' );
+	return $terms;
+}
+
 /*
  * Event functions
  */
@@ -179,6 +191,12 @@ function sp_has_logo( $post = 0 ) {
 
 function sp_get_logo( $post = 0, $size = 'icon', $attr = array() ) {
 	return get_the_post_thumbnail( $post, 'sportspress-fit-' . $size, $attr );
+}
+
+function sp_get_logo_url( $post = 0, $size = 'icon' ) {
+	$thumbnail_id = get_post_thumbnail_id( $post );
+	$src = wp_get_attachment_image_src( $thumbnail_id, $size, false );
+	return $src[0];
 }
 
 function sp_get_abbreviation( $post = 0 ) {

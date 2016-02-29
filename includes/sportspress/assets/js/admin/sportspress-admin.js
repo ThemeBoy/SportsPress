@@ -237,7 +237,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Total stats calculator
-	$(".sp-data-table .sp-total input").on("updateTotal", function() {
+	$(".sp-data-table .sp-total input[data-sp-format=number]").on("updateTotal", function() {
 		index = $(this).parent().index();
 		var sum = 0;
 		$(this).closest(".sp-data-table").find(".sp-post").each(function() {

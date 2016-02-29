@@ -60,8 +60,7 @@
 						"event_performance_mode" : "values",
 						"event_show_player_numbers" : "no",
 						"event_show_position" : "no",
-						"event_split_players_by_team" : "yes",
-						"event_split_players_by_position" : "yes",
-						"event_total_performance" : "primary"
+						"event_total_performance" : "primary",
+						"event_performance_sections" : 0
 	}
 }

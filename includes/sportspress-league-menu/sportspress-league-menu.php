@@ -100,7 +100,7 @@ class SportsPress_League_Menu {
 
 	public static function menu() {
 		$teams = get_option( 'sportspress_league_menu_teams' );
-		if ( is_array( $teams ) && empty( $teams ) )
+		if ( empty( $teams ) )
 			return;
 
 		$title = get_option( 'sportspress_league_menu_title', null );

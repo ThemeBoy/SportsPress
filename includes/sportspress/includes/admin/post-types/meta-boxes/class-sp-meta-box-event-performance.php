@@ -33,6 +33,9 @@ class SP_Meta_Box_Event_Performance {
 			$has_checkboxes = true;
 		else
 			$has_checkboxes = false;
+		
+		// Get player number option
+		$numbers = 'yes' == get_option( 'sportspress_event_show_player_numbers', 'yes' ) ? true : false;
 
 		// Get positions
 		$positions = array();
@@ -53,8 +56,11 @@ class SP_Meta_Box_Event_Performance {
 
 		// Apply filters to labels
 		$labels = apply_filters( 'sportspress_event_performance_labels_admin', $labels );
+		
+		// Check if individual mode
+		$is_individual = get_option( 'sportspress_load_individual_mode_module', 'no' ) === 'yes' ? true : false;
 
-		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $positions, $status, $formats, $order );
+		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $positions, $status, $formats, $order, $numbers, $is_individual );
 	}
 
 	/**
@@ -69,107 +75,130 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit tables
 	 */
-	public static function tables( $post_id, $stats = array(), $labels = array(), $columns = array(), $teams = array(), $has_checkboxes = false, $positions = array(), $status = true, $formats = array(), $order = array() ) {
+	public static function tables( $post_id, $stats = array(), $labels = array(), $columns = array(), $teams = array(), $has_checkboxes = false, $positions = array(), $status = true, $formats = array(), $order = array(), $numbers = true, $is_individual = false ) {
 		$sections = get_option( 'sportspress_event_performance_sections', -1 );
 		
-		$i = 0;
+		if ( $is_individual ) {
+			?>
+			<div class="sp-data-table-container">
+				<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
+					<?php self::header( $columns, $labels, $positions, $has_checkboxes, $status, false, $numbers, -1, $formats ); ?>
+					<?php self::footer( sp_array_value( $stats, -1 ), $labels, 0, $positions, $status, false, $numbers, -1, $formats ); ?>
+					<tbody>
+						<?php
+						foreach ( $teams as $key => $team_id ):
+							if ( -1 == $team_id ) continue;
 
-		foreach ( $teams as $key => $team_id ):
-			if ( -1 == $team_id ) continue;
-			
-			if ( -1 == $sections ) {
-				// Get results for players in the team
-				$players = sp_array_between( (array)get_post_meta( $post_id, 'sp_player', false ), 0, $key );
-				$players[] = -1;
-				$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
-				?>
-				<div>
-					<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-					<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $positions, $status, -1, $formats, $order ); ?>
-					<?php do_action( 'sportspress_after_event_performance_table_admin', $labels, $columns, $data, $team_id ); ?>
-				</div>
-			<?php } else { ?>
-				<?php
-				// Get labels by section
-				$args = array(
-					'post_type' => 'sp_performance',
-					'numberposts' => 100,
-					'posts_per_page' => 100,
-					'orderby' => 'menu_order',
-					'order' => 'ASC',
-				);
+							// Get results for players in the team
+							$players = sp_array_between( (array)get_post_meta( $post_id, 'sp_player', false ), 0, $key );
+							$players[] = -1;
+							$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
 
-				$columns = get_posts( $args );
-
-				$labels = array( array(), array() );
-				foreach ( $columns as $column ):
-					$section = get_post_meta( $column->ID, 'sp_section', true );
-					if ( '' === $section ) {
-						$section = -1;
-					}
-					switch ( $section ):
-						case 1:
-							$labels[1][ $column->post_name ] = $column->post_title;
-							break;
-						case 0:
-							$labels[0][ $column->post_name ] = $column->post_title;
-							break;
-						default:
-							$labels[1][ $column->post_name ] = $column->post_title;
-							$labels[0][ $column->post_name ] = $column->post_title;
-					endswitch;
-				endforeach;
+							foreach ( $data as $player_id => $player_performance ):
+								self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, false, $numbers, -1, $formats );
+							endforeach;
+						endforeach;
+						?>
+					</tbody>
+				</table>
+			</div>
+			<?php
+		} else {
+			$i = 0;
+		
+			foreach ( $teams as $key => $team_id ):
+				if ( -1 == $team_id ) continue;
 				
-				$offense = (array)get_post_meta( $post_id, 'sp_offense', false );
-				$defense = (array)get_post_meta( $post_id, 'sp_defense', false );
-				$data = array();
-				if ( sizeof( $offense ) || sizeof( $defense ) ) {
-					// Get results for offensive players in the team
-					$offense = sp_array_between( $offense, 0, $key );
-					$offense[] = -1;
-					$data[0] = sp_array_combine( $offense, sp_array_value( $stats, $team_id, array() ) );
-					
-					// Get results for defensive players in the team
-					$defense = sp_array_between( $defense, 0, $key );
-					$defense[] = -1;
-					$data[1] = sp_array_combine( $defense, sp_array_value( $stats, $team_id, array() ) );
-				} else {
-					// Get results for all players in the team
+				if ( -1 == $sections ) {
+					// Get results for players in the team
 					$players = sp_array_between( (array)get_post_meta( $post_id, 'sp_player', false ), 0, $key );
 					$players[] = -1;
-					$data[0] = $data[1] = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
-				}
-		
-				// Determine order of sections
-				if ( 1 == $sections ) {
-					$section_order = array( 1 => __( 'Defense', 'sportspress' ), 0 => __( 'Offense', 'sportspress' ) );
-				} else {
-					$section_order = array( __( 'Offense', 'sportspress' ), __( 'Defense', 'sportspress' ) );
-				}
-				
-				foreach ( $section_order as $section_id => $section_label ) {
+					$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
 					?>
 					<div>
-						<p><strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo $section_label; ?></strong></p>
-						<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, $has_checkboxes, $positions, $status, $section_id, $formats, $order ); ?>
-						<?php do_action( 'sportspress_after_event_performance_table_admin', $labels[ $section_id ], $columns, $data[ $section_id ], $team_id ); ?>
+						<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
+						<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $positions, $status, -1, $formats, $order, $numbers ); ?>
+						<?php do_action( 'sportspress_after_event_performance_table_admin', $labels, $columns, $data, $team_id ); ?>
 					</div>
+				<?php } else { ?>
 					<?php
+					// Get labels by section
+					$args = array(
+						'post_type' => 'sp_performance',
+						'numberposts' => 100,
+						'posts_per_page' => 100,
+						'orderby' => 'menu_order',
+						'order' => 'ASC',
+					);
+
+					$columns = get_posts( $args );
+
+					$labels = array( array(), array() );
+					foreach ( $columns as $column ):
+						$section = get_post_meta( $column->ID, 'sp_section', true );
+						if ( '' === $section ) {
+							$section = -1;
+						}
+						switch ( $section ):
+							case 1:
+								$labels[1][ $column->post_name ] = $column->post_title;
+								break;
+							default:
+								$labels[0][ $column->post_name ] = $column->post_title;
+						endswitch;
+					endforeach;
+					
+					$offense = (array)get_post_meta( $post_id, 'sp_offense', false );
+					$defense = (array)get_post_meta( $post_id, 'sp_defense', false );
+					$data = array();
+					if ( sizeof( $offense ) || sizeof( $defense ) ) {
+						// Get results for offensive players in the team
+						$offense = sp_array_between( $offense, 0, $key );
+						$offense[] = -1;
+						$data[0] = sp_array_combine( $offense, sp_array_value( $stats, $team_id, array() ) );
+						
+						// Get results for defensive players in the team
+						$defense = sp_array_between( $defense, 0, $key );
+						$defense[] = -1;
+						$data[1] = sp_array_combine( $defense, sp_array_value( $stats, $team_id, array() ) );
+					} else {
+						// Get results for all players in the team
+						$players = sp_array_between( (array)get_post_meta( $post_id, 'sp_player', false ), 0, $key );
+						$players[] = -1;
+						$data[0] = $data[1] = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
+					}
+			
+					// Determine order of sections
+					if ( 1 == $sections ) {
+						$section_order = array( 1 => __( 'Defense', 'sportspress' ), 0 => __( 'Offense', 'sportspress' ) );
+					} else {
+						$section_order = array( __( 'Offense', 'sportspress' ), __( 'Defense', 'sportspress' ) );
+					}
+					
+					foreach ( $section_order as $section_id => $section_label ) {
+						?>
+						<div>
+							<p><strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo $section_label; ?></strong></p>
+							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, $has_checkboxes, $positions, $status, $section_id, $formats, $order, $numbers ); ?>
+							<?php do_action( 'sportspress_after_event_performance_table_admin', $labels[ $section_id ], $columns, $data[ $section_id ], $team_id ); ?>
+						</div>
+						<?php
+					}
 				}
-			}
-			$i ++;
-		endforeach;
+				$i ++;
+			endforeach;
+		}
 	}
 
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array() ) {
+	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array(), $numbers = true ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
-				<?php self::header( $columns, $labels, $positions, $has_checkboxes, $status, true, true, $section, $formats ); ?>
-				<?php self::footer( $data, $labels, $team_id, $positions, $status, true, true, $section, $formats ); ?>
+				<?php self::header( $columns, $labels, $positions, $has_checkboxes, $status, true, $numbers, $section, $formats ); ?>
+				<?php self::footer( $data, $labels, $team_id, $positions, $status, true, $numbers, $section, $formats ); ?>
 				<tbody>
 					<?php
 					if ( 1 == $section && is_array( $order ) && sizeof( $order ) ) {
@@ -179,7 +208,7 @@ class SP_Meta_Box_Event_Performance {
 						}
 					}
 					foreach ( $data as $player_id => $player_performance ):
-						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, true, true, $section, $formats );
+						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, true, $numbers, $section, $formats );
 					endforeach;
 					?>
 				</tbody>
@@ -252,8 +281,10 @@ class SP_Meta_Box_Event_Performance {
 						$player_id = 0;
 						$player_performance = sp_array_value( $data, $player_id, array() );
 						$value = sp_array_value( $player_performance, $column, '' );
+						$format = sp_array_value( $formats, $column, 'number' );
+						$placeholder = sp_get_format_placeholder( $format );
 						?>
-						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" placeholder="0" value="<?php echo esc_attr( $value ); ?>" /></td>
+						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" placeholder="<?php echo trim( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" data-sp-format="<?php echo $format; ?>" /></td>
 					<?php endforeach; ?>
 					<?php if ( $status ) { ?>
 						<td>&nbsp;</td>

@@ -37,8 +37,19 @@ class SportsPress_Lazy_Loading {
 		check_ajax_referer( 'sp-get-players', 'nonce' );
 
 		$team = sp_array_value( $_POST, 'team' );
-		$league = sp_array_value( $_POST, 'league' );
-		$season = sp_array_value( $_POST, 'season' );
+		
+		if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_league', 'no' ) ) {
+			$league = sp_array_value( $_POST, 'league' );
+		} else {
+			$league = false;
+		}
+		
+		if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_season', 'no' ) ) {
+			$season = sp_array_value( $_POST, 'season' );
+		} else {
+			$season = false;
+		}
+		
 		$index = sp_array_value( $_POST, 'index', 1 );
 		$selected = sp_array_value( $_POST, 'selected', array() );
 
@@ -109,9 +120,18 @@ class SportsPress_Lazy_Loading {
 		} else {
 			$selected = sp_array_between( (array)get_post_meta( $post_id, $post_type, false ), 0, $index );
 		}
-
-		$leagues = get_the_terms( $post_id, 'sp_league' );
-		$seasons = get_the_terms( $post_id, 'sp_season' );
+		
+		if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_league', 'no' ) ) {
+			$leagues = get_the_terms( $post_id, 'sp_league' );
+		} else {
+			$leagues = false;
+		}
+		
+		if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_season', 'no' ) ) {
+			$seasons = get_the_terms( $post_id, 'sp_season' );
+		} else {
+			$seasons = false;
+		}
 
 		$args = array(
 			'orderby' => 'menu_order',

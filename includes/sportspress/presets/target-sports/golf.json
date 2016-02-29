@@ -59,6 +59,7 @@
 						"event_show_player_numbers" : "no",
 						"event_split_players_by_team" : "no",
 						"event_split_players_by_position" : "no",
+						"event_performance_sections" : -1,
 						"load_individual_mode_module" : "yes"
 	}
 }

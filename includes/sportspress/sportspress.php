@@ -234,6 +234,9 @@ final class SportsPress {
 		// WPML-related localization hooks
 		include_once( 'includes/class-sp-wpml.php' );
 
+		// REST API
+		include_once( 'includes/class-sp-rest-api.php' );
+
 		// TGMPA
 		require_once dirname( __FILE__ ) . '/includes/libraries/class-tgm-plugin-activation.php';
 	}
@@ -337,6 +340,7 @@ final class SportsPress {
 					'name'        => 'SportsPress for Cricket',
 					'slug'        => 'sportspress-for-cricket',
 					'required'    => false,
+					'version'     => '1.0',
 				);
 				break;
 			case 'golf':

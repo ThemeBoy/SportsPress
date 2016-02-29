@@ -85,6 +85,11 @@ table.sp-tournament-container .sp-event .sp-hide {
 	cursor: pointer;
 }
 
+table.sp-tournament-container .sp-event .sp-hide:focus {
+	outline: none;
+	box-shadow: none;
+}
+
 table.sp-tournament-container .sp-event-hidden label {
 	opacity: 0.5;
 }

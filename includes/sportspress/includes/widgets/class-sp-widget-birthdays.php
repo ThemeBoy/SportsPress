@@ -20,7 +20,7 @@ class SP_Widget_Birthdays extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'birthdays' );
 
-		sp_get_template( 'birthdays.php', array( 'date' => $date ), '', SP_BIRTHDAYS_DIR . 'templates/' );
+		sp_get_template( 'birthdays.php', array( 'date' => $date ) );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'birthdays' );

@@ -28,9 +28,6 @@ class SportsPress_Birthdays {
 		// Define constants
 		$this->define_constants();
 
-		// Include required files
-		$this->includes();
-
 		add_filter( 'gettext', array( $this, 'gettext' ), 20, 3 );
 		add_filter( 'sportspress_player_options', array( $this, 'add_player_options' ) );
 		add_filter( 'sportspress_staff_options', array( $this, 'add_staff_options' ) );
@@ -53,12 +50,6 @@ class SportsPress_Birthdays {
 
 		if ( !defined( 'SP_BIRTHDAYS_DIR' ) )
 			define( 'SP_BIRTHDAYS_DIR', plugin_dir_path( __FILE__ ) );
-	}
-
-	/**
-	 * Include required files.
-	*/
-	private function includes() {
 	}
 
 	/** 
@@ -189,7 +180,7 @@ class SportsPress_Birthdays {
 	 * Register widgets
 	 */
 	public static function widgets() {
-		include_once( 'includes/class-sp-widget-birthdays.php' );
+		include_once( SP()->plugin_path() . '/includes/widgets/class-sp-widget-birthdays.php' );
 	}
 
 	/**
@@ -209,6 +200,4 @@ class SportsPress_Birthdays {
 
 endif;
 
-if ( get_option( 'sportspress_load_birthdays_module', 'yes' ) == 'yes' ) {
-	new SportsPress_Birthdays();
-}
+new SportsPress_Birthdays();
