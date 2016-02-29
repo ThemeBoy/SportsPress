@@ -235,7 +235,7 @@ final class SportsPress {
 		include_once( 'includes/class-sp-wpml.php' );
 
 		// REST API
-		include_once( 'includes/class-sp-rest-api.php' );
+		//include_once( 'includes/class-sp-rest-api.php' );
 
 		// TGMPA
 		require_once dirname( __FILE__ ) . '/includes/libraries/class-tgm-plugin-activation.php';
