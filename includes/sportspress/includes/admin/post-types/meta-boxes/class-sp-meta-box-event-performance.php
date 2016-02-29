@@ -211,6 +211,11 @@ class SP_Meta_Box_Event_Performance {
 								endif;
 							}
 						}
+						foreach ( $data as $key => $player ) {
+							if ( ! array_key_exists( $key, $players ) ) {
+								$players[ $key ] = $player;
+							}
+						}
 						$data = $players;
 					}
 					foreach ( $data as $player_id => $player_performance ):
