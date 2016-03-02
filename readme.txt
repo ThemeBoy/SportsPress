@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends, golf
 Requires at least: 3.8
 Tested up to: 4.4
-Stable tag: 1.9.18
+Stable tag: 1.9.19
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,17 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 1.9.19 =
+* Feature - Add separate offense and defense categories to player performance and box score.
+* Feature - Add format setting to player performance with the options Number and Text.
+* Feature - Add option to show and hide date and time in events.
+* Tweak - Improve compatibility between custom color settings and theme options.
+* Tweak - Add light shade to substitute rows in box score.
+* Tweak - Prevent box score section from appearing when event is set in the future.
+* Fix - Display icon setting in editor.
+* Fix - Empty variable button appearing in equation builder when equation is empty.
+* Preset - Update cricket preset with batting and bowling categories.
 
 = 1.9.18 =
 * Feature - Add ability to hide events in tournament bracket.
