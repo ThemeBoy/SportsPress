@@ -49,7 +49,7 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 				<?php
 				$options = apply_filters( 'sportspress_performance_sections', array( -1 => __( 'All', 'sportspress' ), 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
 				foreach ( $options as $key => $value ):
-					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $section ), $value );
+					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $section, true, false ), $value );
 				endforeach;
 				?>
 			</select>
@@ -60,7 +60,7 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 				<?php
 				$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ) ) );
 				foreach ( $options as $key => $value ):
-					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $format ), $value );
+					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $format, true, false ), $value );
 				endforeach;
 				?>
 			</select>
