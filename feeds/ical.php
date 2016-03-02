@@ -21,7 +21,6 @@ function escapeString($string) {
 
 // Get events in calendar
 $calendar = new SP_Calendar( $post );
-$postcontent = "$post->post_content";
 $events = $calendar->data();
 
 // Get blog locale
