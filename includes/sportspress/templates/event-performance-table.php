@@ -13,7 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $totals = array();
 
 // Set null
-if ( ! isset( $section ) ) $section = null;
+if ( ! isset( $section ) ) $section = -1;
+if ( ! isset( $section_label ) ) $section_label = null;
 if ( ! isset( $class ) ) $class = null;
 
 // Initialize arrays
@@ -33,8 +34,8 @@ if ( ! isset( $subs ) ) $subs = array();
 							<th class="data-number">#</th>
 						<?php } ?>
 						<th class="data-name">
-							<?php if ( isset( $section ) ) { ?>
-								<?php echo $section; ?>
+							<?php if ( isset( $section_label ) ) { ?>
+								<?php echo $section_label; ?>
 							<?php } else { ?>
 								<?php _e( 'Player', 'sportspress' ); ?>
 							<?php } ?>

@@ -48,6 +48,10 @@ if ( is_array( $teams ) ):
 	$performance = array_filter( $performance );
 
 	$status = $event->status();
+	
+	if ( 'future' == $status ) {
+		$show_total = false;
+	}
 
 	// Get performance ids for icons
 	if ( $mode == 'icons' ):
@@ -201,7 +205,8 @@ if ( is_array( $teams ) ):
 							}
 							
 							sp_get_template( 'event-performance-table.php', array(
-								'section' => $section_label,
+								'section' => $section_id,
+								'section_label' => $section_label,
 								'scrollable' => $scrollable,
 								'sortable' => $sortable,
 								'show_players' => $show_team_players,
@@ -216,7 +221,7 @@ if ( is_array( $teams ) ):
 								'link_posts' => $link_posts,
 								'performance_ids' => isset( $performance_ids ) ? $performance_ids : null,
 								'primary' => 'primary' == $total ? $primary : null,
-								'class' => 'sp-template-event-performance-team-' . $index . '-section-' . $section_id,
+								'class' => 'sp-template-event-performance-team-' . $index . ' sp-template-event-performance-section-' . $section_id . ' sp-template-event-performance-team-' . $index . '-section-' . $section_id,
 							) );
 						}
 						

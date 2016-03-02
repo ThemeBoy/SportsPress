@@ -18,7 +18,7 @@
 						{ "name" : "BP", "description" : "Bonus points"}
 	],
 	"performance": [
-						{ "name" : "&nbsp;", "id" : "notes", "section" : 0, "description" : "Notes" },
+						{ "name" : "&nbsp;", "id" : "notes", "section" : 0, "format" : "text", "description" : "Notes" },
 						{ "name" : "R", "id" : "runs", "section" : 0, "description" : "Runs" },
 						{ "name" : "B", "section" : 0, "description" : "Balls" },
 						{ "name" : "4s", "section" : 0, "description" : "Fours" },
