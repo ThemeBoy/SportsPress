@@ -14,8 +14,14 @@ if ( 'sp_calendar' !== get_post_type( $post ) ) {
 	wp_die( __( 'ERROR: This is not a valid feed template.', 'sportspress' ), '', array( 'response' => 404 ) );
 }
 
+// Escapes a string of characters
+function escapeString($string) {
+  return preg_replace('/([\,;])/','\\\$1', $string);
+}
+
 // Get events in calendar
 $calendar = new SP_Calendar( $post );
+$postcontent = "$post->post_content";
 $events = $calendar->data();
 
 // Get blog locale
@@ -77,7 +83,7 @@ foreach ( $events as $event):
 		// Add details to location
 		$address = sp_array_value( $meta, 'sp_address', false );
 		if ( false !== $address ) {
-			$location = $address;
+			$location = $venue->name . '\, ' . escapeString($address);
 		}
 
 		// Generate geo tag
@@ -130,7 +136,8 @@ foreach ( $events as $event):
 	// Append to output string
 	$output .=
 	"BEGIN:VEVENT\n" .
-	"SUMMARY:" . $summary . "\n" .
+	"SUMMARY:" . escapeString($summary) . "\n" .
+	"DESCRIPTION:" . escapeString($event->post_content) . "\n" .
 	"UID:$event->ID\n" .
 	"STATUS:CONFIRMED\n" .
 	"DTSTART:" . mysql2date( $date_format, $event->post_date ) . "\n" .
