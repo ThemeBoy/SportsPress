@@ -5,7 +5,7 @@
  * The SportsPress admin sports class stores preset sport data.
  *
  * @class 		SP_Admin_Sports
- * @version		1.9
+ * @version		1.9.19
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy

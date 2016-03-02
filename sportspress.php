@@ -3,7 +3,7 @@
  * Plugin Name: SportsPress
  * Plugin URI: http://themeboy.com/sportspress/
  * Description: Manage your club and its players, staff, events, league tables, and player lists.
- * Version: 1.9.17
+ * Version: 1.9.19
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress' ) ) :
  * Main SportsPress Class
  *
  * @class SportsPress
- * @version	1.9.17
+ * @version	1.9.19
  */
 final class SportsPress {
 
 	/**
 	 * @var string
 	 */
-	public $version = '1.9.17';
+	public $version = '1.9.19';
 
 	/**
 	 * @var SportsPress The single instance of the class
@@ -234,6 +234,9 @@ final class SportsPress {
 		// WPML-related localization hooks
 		include_once( 'includes/class-sp-wpml.php' );
 
+		// REST API
+		//include_once( 'includes/class-sp-rest-api.php' );
+
 		// TGMPA
 		require_once dirname( __FILE__ ) . '/includes/libraries/class-tgm-plugin-activation.php';
 	}
@@ -337,6 +340,7 @@ final class SportsPress {
 					'name'        => 'SportsPress for Cricket',
 					'slug'        => 'sportspress-for-cricket',
 					'required'    => false,
+					'version'     => '1.0',
 				);
 				break;
 			case 'golf':
