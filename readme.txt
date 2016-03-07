@@ -122,6 +122,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 = SportsPress Themes for Clubs =
 * [Football Club](http://tboy.co/fc)
 * [Premier](http://tboy.co/premier)
+* [Emblem](http://tboy.co/emblem)
 
 = Documentation =
 * [Getting Started](http://tboy.co/installation)
