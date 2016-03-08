@@ -26,7 +26,7 @@ $theme = get_option( 'sportspress_twitter_theme', 'light' );
 
 if ( $username ) {
 	?>
-	<div class="sp-template sp-template-tweets">
+	<div class="sp-template sp-template-tweets sp-template-tweets-<?php echo $theme; ?>-theme">
 		<h4 class="sp-table-caption"><?php _e( 'Tweets', 'sportspress' ); ?></h4>
 		<a class="twitter-timeline"
 			href="https://twitter.com/<?php echo $username; ?>"
