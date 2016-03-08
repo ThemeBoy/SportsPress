@@ -78,8 +78,9 @@ class SportsPress_Updater {
 			( ! is_multisite() && current_user_can( 'manage_options' ) ) ||
 			( is_multisite() && current_user_can( 'manage_network_options' ) )
 		) {
-			$key 	= get_option( 'sportspress_pro_license_key' );
-			$status = get_option( 'sportspress_pro_license_status' );
+			$key 	= get_site_option( 'sportspress_pro_license_key' );
+			$key 	= trim( $key );
+			$status = get_site_option( 'sportspress_pro_license_status' );
 			
 			if ( strlen( $key ) > 35 ) {
 				$key 	= '';
@@ -137,12 +138,12 @@ class SportsPress_Updater {
 	 */
 	public function check_for_updates() {
 		// retrieve our license key from the DB
-		$license_key = trim( get_option( 'sportspress_pro_license_key' ) );
+		$license_key = trim( get_site_option( 'sportspress_pro_license_key' ) );
 
 		// setup the updater
 		$edd_updater = new SP_Plugin_Updater( SP_UPDATER_STORE_URL, SP_PRO_PLUGIN_FILE, array(
 				'version' 	=> SP_PRO_VERSION, 			// current version number
-				'license' 	=> $license_key, 			// license key (used get_option above to retrieve from DB)
+				'license' 	=> $license_key, 			// license key (used get_site_option above to retrieve from DB)
 				'item_name' => SP_UPDATER_ITEM_NAME, 	// name of this plugin
 				'author' 	=> 'ThemeBoy' 				// author of this plugin
 			)
@@ -193,7 +194,7 @@ class SportsPress_Updater {
 			
 			// Update License or display error
 			if ( 'valid' == $license_data->license ) {
-				update_site_option( 'sportspress_pro_license_key', $_POST['sportspress_pro_license_key'] );
+				update_site_option( 'sportspress_pro_license_key', $license );
 				SP_Admin_Settings::add_override( __( 'License activated.', 'sportspress' ) );
 			} else {
 				SP_Admin_Settings::add_error( __( 'License invalid.', 'sportspress' ) );
@@ -242,7 +243,7 @@ class SportsPress_Updater {
 
 			// $license_data->license will be either "deactivated" or "failed"
 			if ( $license_data->license == 'deactivated' ) {
-				delete_option( 'sportspress_pro_license_status' );
+				delete_site_option( 'sportspress_pro_license_status' );
 				SP_Admin_Settings::add_override( __( 'License deactivated.', 'sportspress' ) );
 			} else {
 				SP_Admin_Settings::add_error( __( 'Sorry, there has been an error.', 'sportspress' ) );
