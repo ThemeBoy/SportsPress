@@ -484,7 +484,7 @@ class SP_Countries {
 			'vin' => __( "Saint Vincent and the Grenadines", 'sportspress' ),
 			'vir' => __( "US Virgin Islands", 'sportspress' ),
 			'wal' => __( "Wales", 'sportspress' ),
-			'wif' => __( "West Indies Federation", 'sportspress' ),
+			'wif' => __( "West Indies", 'sportspress' ),
 			'yem' => __( "Yemen", 'sportspress' ),
 			'zam' => __( "Zambia", 'sportspress' ),
 			'zim' => __( "Zimbabwe", 'sportspress' ),
