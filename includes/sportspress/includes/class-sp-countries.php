@@ -224,6 +224,7 @@ class SP_Countries {
 				'vgb',
 				'vin',
 				'vir',
+				'wif',
 			),
 			__( 'Oceania', 'sportspress' ) => array(
 				'asa',
@@ -483,6 +484,7 @@ class SP_Countries {
 			'vin' => __( "Saint Vincent and the Grenadines", 'sportspress' ),
 			'vir' => __( "US Virgin Islands", 'sportspress' ),
 			'wal' => __( "Wales", 'sportspress' ),
+			'wif' => __( "West Indies Federation", 'sportspress' ),
 			'yem' => __( "Yemen", 'sportspress' ),
 			'zam' => __( "Zambia", 'sportspress' ),
 			'zim' => __( "Zimbabwe", 'sportspress' ),
