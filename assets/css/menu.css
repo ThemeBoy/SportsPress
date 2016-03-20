@@ -1,12 +1,12 @@
 /* SportsPress menu styles */
 @font-face {
 	font-family: 'sportspress';
-	src:url('../fonts/sportspress.eot?ix7ag5');
-	src:url('../fonts/sportspress.eot?#iefixix7ag5') format('embedded-opentype'),
-		url('../fonts/sportspress.woff2?ix7ag5') format('woff2'),
-		url('../fonts/sportspress.ttf?ix7ag5') format('truetype'),
-		url('../fonts/sportspress.woff?ix7ag5') format('woff'),
-		url('../fonts/sportspress.svg?ix7ag5#sportspress') format('svg');
+	src:url('../fonts/sportspress.eot?med5x8');
+	src:url('../fonts/sportspress.eot?#iefixmed5x8') format('embedded-opentype'),
+		url('../fonts/sportspress.woff2?med5x8') format('woff2'),
+		url('../fonts/sportspress.ttf?med5x8') format('truetype'),
+		url('../fonts/sportspress.woff?med5x8') format('woff'),
+		url('../fonts/sportspress.svg?med5x8#sportspress') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
