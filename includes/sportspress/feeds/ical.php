@@ -77,7 +77,7 @@ foreach ( $events as $event):
 		// Add details to location
 		$address = sp_array_value( $meta, 'sp_address', false );
 		if ( false !== $address ) {
-			$location = $address;
+			$location = $venue->name . '\, ' . preg_replace('/([\,;])/','\\\$1', $address);
 		}
 
 		// Generate geo tag
@@ -130,7 +130,8 @@ foreach ( $events as $event):
 	// Append to output string
 	$output .=
 	"BEGIN:VEVENT\n" .
-	"SUMMARY:" . $summary . "\n" .
+	"SUMMARY:" . preg_replace('/([\,;])/','\\\$1', $summary) . "\n" .
+	"DESCRIPTION:" . preg_replace('/([\,;])/','\\\$1', $event->post_content) . "\n" .
 	"UID:$event->ID\n" .
 	"STATUS:CONFIRMED\n" .
 	"DTSTART:" . mysql2date( $date_format, $event->post_date ) . "\n" .

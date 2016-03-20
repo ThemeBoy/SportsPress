@@ -16,7 +16,8 @@
 	},
 	"outcomes": [
 						{ "name" : "Win", "condition" : ">" },
-						{ "name" : "Loss", "condition" : "<" }
+						{ "name" : "Loss", "condition" : "<" },
+						{ "name" : "Tie", "condition" : "=" }
 	],
 	"results": [
 						{ "name" : "1", "description" : "1st inning runs" },
@@ -34,24 +35,24 @@
 						{ "name" : "E", "description" : "Errors" }
 	],
 	"performance": [
-						{ "name" : "AB", "position" : "Batter", "description" : "At bat" },
-						{ "name" : "R", "position" : "Batter", "description" : "Runs" },
-						{ "name" : "H", "position" : "Batter", "description" : "Hits" },
-						{ "name" : "RBI", "position" : "Batter", "description" : "Runs batted in" },
-						{ "name" : "2B", "id" : "doubles", "position" : "Batter", "description" : "Doubles" },
-						{ "name" : "3B", "id" : "triples", "position" : "Batter", "description" : "Triples" },
-						{ "name" : "HR", "position" : "Batter", "description" : "Home runs" },
-						{ "name" : "SB", "position" : "Batter", "description" : "Stolen bases" },
-						{ "name" : "BB", "position" : "Batter", "description" : "Base on balls" },
-						{ "name" : "SO", "position" : "Batter", "description" : "Strike outs" },
-						{ "name" : "LOB", "position" : "Batter", "description" : "Left on base" },
-						{ "name" : "IP", "id" : "pitcher_ip", "position" : "Pitcher", "description" : "Innings pitched" },
-						{ "name" : "H", "id" : "pitcher_h", "position" : "Pitcher", "description" : "Hits allowed" },
-						{ "name" : "R", "id" : "pitcher_r", "position" : "Pitcher", "description" : "Runs allowed" },
-						{ "name" : "ER", "id" : "pitcher_er", "position" : "Pitcher", "description" : "Earned runs allowed" },
-						{ "name" : "BB", "id" : "pitcher_bb", "position" : "Pitcher", "description" : "Base on balls allowed" },
-						{ "name" : "SO", "id" : "pitcher_so", "position" : "Pitcher", "description" : "Strike outs pitched" },
-						{ "name" : "HR", "id" : "pitcher_hr", "position" : "Pitcher", "description" : "Home runs allowed" }
+						{ "name" : "AB", "section" : 0, "description" : "At bat" },
+						{ "name" : "R", "section" : 0, "description" : "Runs" },
+						{ "name" : "H", "section" : 0, "description" : "Hits" },
+						{ "name" : "RBI", "section" : 0, "description" : "Runs batted in" },
+						{ "name" : "2B", "id" : "doubles", "section" : 0, "description" : "Doubles" },
+						{ "name" : "3B", "id" : "triples", "section" : 0, "description" : "Triples" },
+						{ "name" : "HR", "section" : 0, "description" : "Home runs" },
+						{ "name" : "SB", "section" : 0, "description" : "Stolen bases" },
+						{ "name" : "BB", "section" : 0, "description" : "Base on balls" },
+						{ "name" : "SO", "section" : 0, "description" : "Strike outs" },
+						{ "name" : "LOB", "section" : 0, "description" : "Left on base" },
+						{ "name" : "IP", "id" : "pitcher_ip", "section" : 1, "description" : "Innings pitched" },
+						{ "name" : "H", "id" : "pitcher_h", "section" : 1, "description" : "Hits allowed" },
+						{ "name" : "R", "id" : "pitcher_r", "section" : 1, "description" : "Runs allowed" },
+						{ "name" : "ER", "id" : "pitcher_er", "section" : 1, "description" : "Earned runs allowed" },
+						{ "name" : "BB", "id" : "pitcher_bb", "section" : 1, "description" : "Base on balls allowed" },
+						{ "name" : "SO", "id" : "pitcher_so", "section" : 1, "description" : "Strike outs pitched" },
+						{ "name" : "HR", "id" : "pitcher_hr", "section" : 1, "description" : "Home runs allowed" }
 	],
 	"columns": [
 						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
@@ -86,6 +87,7 @@
 						"event_show_player_numbers" : "no",
 						"event_split_players_by_team" : "yes",
 						"event_split_players_by_position" : "yes",
-						"sportspress_event_total_performance" : "all"
+						"sportspress_event_total_performance" : "all",
+						"event_performance_sections" : 0
 	}
 }
