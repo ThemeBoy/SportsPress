@@ -9,7 +9,7 @@ unset( $data[0] );
 if ( empty( $data ) )
 	return;
 
-$output = '<h4 class="sp-table-caption">' . $league->name . '</h4>' .
+$output = '<h4 class="sp-table-caption">' . $caption . '</h4>' .
 	'<div class="sp-table-wrapper">' .
 	'<table class="sp-player-statistics sp-data-table' . ( $scrollable ? ' sp-scrollable-table' : '' ) . '">' . '<thead>' . '<tr>';
 

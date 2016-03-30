@@ -73,6 +73,14 @@ class SP_Settings_Players extends SP_Settings_Page {
 					'id' 		=> 'sportspress_player_show_statistics',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+
+				array(
+					'desc' 		=> __( 'Total', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_total',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
 					'checkboxgroup'		=> 'end',
 				),
 

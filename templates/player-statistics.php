@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-if ( get_option( 'sportspress_player_show_statistics', 'yes' ) === 'no' ) return;
+if ( 'no' === get_option( 'sportspress_player_show_statistics', 'yes' ) && 'no' === get_option( 'sportspress_player_show_total', 'no' ) ) return;
 
 if ( ! isset( $id ) )
 	$id = get_the_ID();
@@ -40,18 +40,19 @@ if ( is_array( $leagues ) ):
 		
 		foreach ( $leagues as $league ):
 			if ( null !== $section_label ) {
-				printf( '<h3 class="sp-post-caption sp-player-statistics-section">%s</h3>', $section_label );
+				if ( sizeof( $leagues ) > 1 ) {
+					printf( '<h3 class="sp-post-caption sp-player-statistics-section">%s</h3>', $section_label );
+					$caption = $league->name;
+				} else {
+					$caption = $section_label;
+				}
 			}
 			sp_get_template( 'player-statistics-league.php', array(
 				'data' => $player->data( $league->term_id, false, $section_id ),
 				'league' => $league,
+				'caption' => $caption,
 				'scrollable' => $scrollable,
 			) );
 		endforeach;
-		
-		sp_get_template( 'player-statistics-total.php', array(
-			'data' => $player->data( 0, false, $section_id ),
-			'scrollable' => $scrollable,
-		) );
 	}
 endif;

@@ -539,10 +539,29 @@ class SP_Player extends SP_Custom_Post {
 					unset( $columns[ $key ] );
 				endif;
 			endforeach;
-			$labels = array( 'name' => __( 'Season', 'sportspress' ) );
-			if ( in_array( 'team', $this->columns ) )
-				$labels['team'] = __( 'Team', 'sportspress' );
+			
+			$labels = array();
+			
+			if ( 'no' === get_option( 'sportspress_player_show_statistics', 'yes' ) ) {
+				$merged = array();
+			} else {
+				$labels['name'] = __( 'Season', 'sportspress' );
+				if ( in_array( 'team', $this->columns ) ) {
+					$labels['team'] = __( 'Team', 'sportspress' );
+				}
+			}
+			
+			if ( 'yes' === get_option( 'sportspress_player_show_total', 'no' ) ) {
+				$total_placeholders = sp_array_value( $placeholders, 0, array() );
+				$total_data = sp_array_value( $data, 0, array() );
+				$total_data = array_filter( $total_data );
+				$total = array_merge( $total_placeholders, $total_data );
+				$merged[-1] = $total;
+				$merged[-1]['name'] = __( 'Total', 'sportspress' );
+			}
+			
 			$merged[0] = array_merge( $labels, $columns );
+				
 			return $merged;
 		endif;
 	}
