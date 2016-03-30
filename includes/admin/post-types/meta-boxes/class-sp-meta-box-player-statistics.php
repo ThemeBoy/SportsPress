@@ -109,11 +109,32 @@ class SP_Meta_Box_Player_Statistics {
 						<?php endforeach; ?>
 					</tr>
 				</thead>
+				<tfoot>
+					<?php $div_stats = sp_array_value( $data, 0, array() ); ?>
+					<tr class="sp-row sp-total">
+						<td>
+							<label><strong><?php _e( 'Total', 'sportspress' ); ?></strong></label>
+						</td>
+						<td>&nbsp;</td>
+						<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
+							?>
+							<td><?php
+								$value = sp_array_value( sp_array_value( $data, 0, array() ), $column, null );
+								$placeholder = sp_array_value( sp_array_value( $placeholders, 0, array() ), $column, 0 );
+								if ( $readonly )
+									echo $value ? $value : $placeholder;
+								else
+									echo '<input type="text" name="sp_statistics[' . $league_id . '][0][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-sp-format="number" />';
+							?></td>
+						<?php endforeach; ?>
+					</tr>
+				</tfoot>
 				<tbody>
 					<?php
 					$i = 0;
 					foreach ( $data as $div_id => $div_stats ):
 						if ( $div_id === 'statistics' ) continue;
+						if ( $div_id === 0 ) continue;
 						$div = get_term( $div_id, 'sp_season' );
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
