@@ -30,7 +30,7 @@ if ( ! isset( $subs ) ) $subs = array();
 			<thead>
 				<tr>
 					<?php if ( $show_players ): ?>
-						<?php if ( $show_numbers ) { ?>
+						<?php if ( $show_numbers && 1 !== $section ) { ?>
 							<th class="data-number">#</th>
 						<?php } ?>
 						<th class="data-name">
@@ -77,7 +77,7 @@ if ( ! isset( $subs ) ) $subs = array();
 
 						echo '<tr class="' . sp_array_value( $row, 'status', 'lineup' ) . ' ' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
-						if ( $show_numbers ) {
+						if ( $show_numbers && 1 !== $section ) {
 							$number = sp_array_value( $row, 'number', '&nbsp;' );
 
 							// Player number
@@ -171,7 +171,7 @@ if ( ! isset( $subs ) ) $subs = array();
 						<tr class="sp-total-row <?php echo ( $i % 2 == 0 ? 'odd' : 'even' ); ?>">
 							<?php
 							if ( $show_players ):
-								if ( $show_numbers ) {
+								if ( $show_numbers && 1 !== $section ) {
 									echo '<td class="data-number">&nbsp;</td>';
 								}
 								echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';

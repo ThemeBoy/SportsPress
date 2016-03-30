@@ -10,8 +10,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( get_option( 'sportspress_event_show_results', 'yes' ) === 'no' ) return;
 
-$reverse_teams = get_option( 'sportspress_event_results_reverse_teams', 'no' ) === 'yes' ? true : false;
-
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 
@@ -43,9 +41,7 @@ $output = '';
 $table_rows = '';
 $i = 0;
 
-if ( $reverse_teams ) {
-	$data = array_reverse( $data, true );
-}
+//$data = array_reverse( $data, true );
 
 foreach( $data as $team_id => $result ):
 	if ( $show_outcomes ):
@@ -81,7 +77,7 @@ foreach( $data as $team_id => $result ):
 		if ( array_key_exists( $key, $result ) && $result[ $key ] != '' ):
 			$value = $result[ $key ];
 		else:
-			$value = '&mdash;';
+			$value = apply_filters( 'sportspress_event_empty_result_string', '&mdash;' );
 		endif;
 		$table_rows .= '<td class="data-' . $key . '">' . $value . '</td>';
 	endforeach;

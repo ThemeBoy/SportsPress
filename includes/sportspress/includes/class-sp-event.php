@@ -38,6 +38,10 @@ class SP_Event extends SP_Custom_Post{
 
 		// Get results for all teams
 		$data = sp_array_combine( $teams, $results, true );
+		
+		if ( 'yes' === get_option( 'sportspress_event_results_reverse_teams', 'no' ) ) {
+			$data = array_reverse( $data, true );
+		}
 
 		if ( $admin ):
 			return array( $columns, $usecolumns, $data );
@@ -117,7 +121,7 @@ class SP_Event extends SP_Custom_Post{
 						endif;
 					endforeach;
 					if ( ! array_key_exists( 'number', $player_performance ) ):
-						$performance[ $team_id ][ $player_id ]['number'] = get_post_meta( $player_id, 'sp_number', true );
+						$performance[ $team_id ][ $player_id ]['number'] = apply_filters( 'sportspress_event_performance_default_squad_number', get_post_meta( $player_id, 'sp_number', true ) );
 					endif;
 					if ( ! array_key_exists( 'position', $player_performance ) || $player_performance['position'] == null ):
 						$performance[ $team_id ][ $player_id ]['position'] = sp_get_the_term_id( $player_id, 'sp_position', null );

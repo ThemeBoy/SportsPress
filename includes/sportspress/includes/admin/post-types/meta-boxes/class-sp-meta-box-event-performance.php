@@ -238,7 +238,7 @@ class SP_Meta_Box_Event_Performance {
 				<?php if ( $sortable ) { ?>
 					<th class="icon">&nbsp;</th>
 				<?php } ?>
-				<?php if ( $numbers ) { ?>
+				<?php if ( $numbers && 1 !== $section ) { ?>
 					<th>#</th>
 				<?php } ?>
 				<th><?php _e( 'Player', 'sportspress' ); ?></th>
@@ -281,7 +281,7 @@ class SP_Meta_Box_Event_Performance {
 					<?php if ( $sortable ) { ?>
 						<td>&nbsp;</td>
 					<?php } ?>
-					<?php if ( $numbers ) { ?>
+					<?php if ( $numbers && 1 !== $section ) { ?>
 						<td>&nbsp;</td>
 					<?php } ?>
 					<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
@@ -312,14 +312,13 @@ class SP_Meta_Box_Event_Performance {
 	public static function row( $labels = array(), $player_id = 0, $player_performance = array(), $team_id = 0, $data = array(), $positions = true, $status = true, $sortable = true, $numbers = true, $section = -1, $formats = array() ) {
 		if ( $player_id <= 0 ) return;
 
-		$number = get_post_meta( $player_id, 'sp_number', true );
 		$value = sp_array_value( $player_performance, 'number', '' );
 		?>
 		<tr class="sp-row sp-post" data-player="<?php echo $player_id; ?>">
 			<?php if ( $sortable ) { ?>
 				<td class="icon"><span class="dashicons dashicons-menu post-state-format"></span></td>
 			<?php } ?>
-			<?php if ( $numbers ) { ?>
+			<?php if ( $numbers && 1 !== $section ) { ?>
 				<td>
 					<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo esc_attr( $value ); ?>" />
 				</td>
