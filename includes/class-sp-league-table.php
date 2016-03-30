@@ -449,7 +449,7 @@ class SP_League_Table extends SP_Custom_Post{
 				if ( sp_array_value( sp_array_value( $placeholders, $team_id, array() ), $stat->post_name, '' ) == '' ):
 
 					if ( $stat->equation == null ):
-						$placeholder += sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $stat->post_name, null );
+						$placeholder = sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $stat->post_name, null );
 						if ( $placeholder == null ):
 							$placeholder = '-';
 						endif;
