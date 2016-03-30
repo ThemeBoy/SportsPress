@@ -347,6 +347,7 @@
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Decimal Places', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Category', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
 							</tr>
@@ -356,6 +357,7 @@
 								<td class="row-title"><?php echo $row->post_title; ?></td>
 								<td><?php echo sp_get_post_equation( $row->ID ); ?></td>
 								<td><?php echo sp_get_post_precision( $row->ID ); ?></td>
+								<td><?php echo sp_get_post_section( $row->ID ); ?></td>
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>

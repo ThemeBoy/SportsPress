@@ -126,6 +126,18 @@ class SP_Settings_Players extends SP_Settings_Page {
 				),
 
 				array(
+					'title' 	=> __( 'Statistics', 'sportspress' ),
+					'id' 		=> 'sportspress_player_performance_sections',
+					'default'	=> -1,
+					'type' 		=> 'radio',
+					'options' => array(
+						-1	  => __( 'Combined', 'sportspress' ),
+						0	  => __( 'Offense', 'sportspress' ) . ' &rarr; ' . __( 'Defense', 'sportspress' ),
+						1	  => __( 'Defense', 'sportspress' ) . ' &rarr; ' . __( 'Offense', 'sportspress' ),
+					),
+				),
+
+				array(
 					'title'     => __( 'Nationality', 'sportspress' ),
 					'desc' 		=> __( 'Display national flags', 'sportspress' ),
 					'id' 		=> 'sportspress_player_show_flags',

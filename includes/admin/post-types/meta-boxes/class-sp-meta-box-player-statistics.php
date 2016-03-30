@@ -22,24 +22,63 @@ class SP_Meta_Box_Player_Statistics {
 		$player = new SP_Player( $post );
 		$leagues = get_the_terms( $post->ID, 'sp_league' );
 		$league_num = sizeof( $leagues );
+		$sections = get_option( 'sportspress_player_performance_sections', -1 );
 
-		// Loop through statistics for each league
-		if ( $leagues ):
-			$i = 0;
-			foreach ( $leagues as $league ):
+		if ( $leagues ) {
+			if ( -1 == $sections ) {
+				// Loop through statistics for each league
+				$i = 0;
+				foreach ( $leagues as $league ):
+					?>
+					<p><strong><?php echo $league->name; ?></strong></p>
+					<?php
+					list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( $league->term_id, true );
+					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $i == 0 );
+					$i ++;
+				endforeach;
 				?>
-				<p><strong><?php echo $league->name; ?></strong></p>
+				<p><strong><?php _e( 'Career Total', 'sportspress' ); ?></strong></p>
 				<?php
-				list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( $league->term_id, true );
-				self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $i == 0 );
-				$i ++;
-			endforeach;
-		endif;
-		?>
-		<p><strong><?php _e( 'Career Total', 'sportspress' ); ?></strong></p>
-		<?php
-		list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true );
-		self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams );
+				list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true );
+				self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams );
+			} else {
+				// Determine order of sections
+				if ( 1 == $sections ) {
+					$section_order = array( 1 => __( 'Defense', 'sportspress' ), 0 => __( 'Offense', 'sportspress' ) );
+				} else {
+					$section_order = array( __( 'Offense', 'sportspress' ), __( 'Defense', 'sportspress' ) );
+				}
+
+				// Get labels by section
+				$args = array(
+					'post_type' => 'sp_performance',
+					'numberposts' => 100,
+					'posts_per_page' => 100,
+					'orderby' => 'menu_order',
+					'order' => 'ASC',
+				);
+
+				$columns = get_posts( $args );
+				
+				foreach ( $section_order as $section_id => $section_label ) {
+					// Loop through statistics for each league
+					$i = 0;
+					foreach ( $leagues as $league ):
+						?>
+						<p><strong><?php echo $league->name; ?> &mdash; <?php echo $section_label; ?></strong></p>
+						<?php
+						list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( $league->term_id, true, $section_id );
+						self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $i == 0 );
+						$i ++;
+					endforeach;
+					?>
+					<p><strong><?php _e( 'Career Total', 'sportspress' ); ?> &mdash; <?php echo $section_label; ?></strong></p>
+					<?php
+					list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true, $section_id );
+					self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams );
+				}
+			}
+		}
 	}
 
 	/**

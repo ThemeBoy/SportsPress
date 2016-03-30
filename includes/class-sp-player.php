@@ -109,7 +109,7 @@ class SP_Player extends SP_Custom_Post {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $league_id, $admin = false ) {
+	public function data( $league_id, $admin = false, $section = -1 ) {
 
 		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
@@ -117,8 +117,35 @@ class SP_Player extends SP_Custom_Post {
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
 		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 
-		// Get labels from performance variables
-		$performance_labels = (array)sp_get_var_labels( 'sp_performance' );
+		// Get labels by section
+		$args = array(
+			'post_type' => 'sp_performance',
+			'numberposts' => 100,
+			'posts_per_page' => 100,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		$posts = get_posts( $args );
+		
+		$performance_labels = array();
+
+		foreach ( $posts as $post ):
+			if ( -1 === $section ) {
+				$performance_labels[ $post->post_name ] = $post->post_title;
+			} else {
+				$post_section = get_post_meta( $post->ID, 'sp_section', true );
+				
+				if ( '' === $post_section ) {
+					$post_section = -1;
+				}
+				
+				if ( $section == $post_section || -1 == $post_section ) {
+					$performance_labels[ $post->post_name ] = $post->post_title;
+				}
+			}
+			
+		endforeach;
 
 		// Get labels from outcome variables
 		$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
@@ -404,8 +431,44 @@ class SP_Player extends SP_Custom_Post {
 
 		endforeach;
 
-		// Get stats from statistic variables
-		$stats = sp_get_var_labels( 'sp_statistic' );
+		// Get labels by section
+		$args = array(
+			'post_type' => 'sp_statistic',
+			'numberposts' => 100,
+			'posts_per_page' => 100,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		$posts = get_posts( $args );
+		
+		$stats = array();
+
+		foreach ( $posts as $post ):
+			if ( -1 === $section ) {
+				$stats[ $post->post_name ] = $post->post_title;
+			} else {
+				$post_section = get_post_meta( $post->ID, 'sp_section', true );
+				
+				if ( '' === $post_section ) {
+					$post_section = -1;
+				}
+				
+				if ( $admin ) {
+					if ( 1 == $section ) {
+						if ( 1 == $post_section ) {
+							$stats[ $post->post_name ] = $post->post_title;
+						}
+					} else {
+						if ( 1 != $post_section ) {
+							$stats[ $post->post_name ] = $post->post_title;
+						}
+					}
+				} elseif ( $section == $post_section || -1 == $post_section ) {
+					$stats[ $post->post_name ] = $post->post_title;
+				}
+			}
+		endforeach;
 
 		// Merge the data and placeholders arrays
 		$merged = array();
