@@ -29,7 +29,7 @@
 						{ "name" : "7", "description" : "7th inning runs" },
 						{ "name" : "8", "description" : "8th inning runs" },
 						{ "name" : "9", "description" : "9th inning runs" },
-						{ "name" : "&nbsp;", "id" : "extra", "description" : "Extra inning runs" },
+						{ "name" : "10", "description" : "10th inning runs" },
 						{ "name" : "R", "description" : "Total runs", "primary" : 1 },
 						{ "name" : "H", "description" : "Hits" },
 						{ "name" : "E", "description" : "Errors" }
@@ -78,16 +78,16 @@
 	],
 	"options": {
 						"event_teams" : "2",
-						"sportspress_event_hide_child_positions" : "yes",
+						"event_hide_child_positions" : "yes",
 						"event_show_players" : "yes",
 						"event_show_total" : "yes",
-						"sportspress_event_results_reverse_teams" : "yes",
-						"sportspress_event_performance_mode" : "values",
-						"sportspress_event_performance_reverse_teams" : "yes",
+						"event_results_reverse_teams" : "yes",
+						"event_performance_mode" : "values",
+						"event_performance_reverse_teams" : "yes",
 						"event_show_player_numbers" : "no",
 						"event_split_players_by_team" : "yes",
 						"event_split_players_by_position" : "yes",
-						"sportspress_event_total_performance" : "all",
+						"event_total_performance" : "all",
 						"event_performance_sections" : 0
 	}
 }
