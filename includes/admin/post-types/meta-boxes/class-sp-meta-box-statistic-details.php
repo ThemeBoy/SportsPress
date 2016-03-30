@@ -24,9 +24,11 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$precision = get_post_meta( $post->ID, 'sp_precision', true );
+		$section = get_post_meta( $post->ID, 'sp_section', true );
 
 		// Defaults
-		if ( $precision == '' ) $precision = 0;
+		if ( '' === $precision ) $precision = 0;
+		if ( '' === $section ) $section = -1;
 		?>
 		<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
 		<p>
@@ -37,6 +39,17 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		<p class="sp-precision-selector">
 			<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>" placeholder="0">
 		</p>
+		<p><strong><?php _e( 'Category', 'sportspress' ); ?></strong></p>
+		<p class="sp-section-selector">
+			<select name="sp_section">
+				<?php
+				$options = apply_filters( 'sportspress_performance_sections', array( -1 => __( 'All', 'sportspress' ), 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
+				foreach ( $options as $key => $value ):
+					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $section, true, false ), $value );
+				endforeach;
+				?>
+			</select>
+		</p>
 		<?php
 	}
 
@@ -45,6 +58,7 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 	 */
 	public static function save( $post_id, $post ) {
 		self::delete_duplicate( $_POST );
+		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1 ) );
 		update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
 	}
 
