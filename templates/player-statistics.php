@@ -39,14 +39,16 @@ if ( is_array( $leagues ) ):
 		if ( -1 !== $section_id && ! in_array( $section_id, $player_sections ) ) continue;
 		
 		foreach ( $leagues as $league ):
+			$caption = $league->name;
+		
 			if ( null !== $section_label ) {
 				if ( sizeof( $leagues ) > 1 ) {
 					printf( '<h3 class="sp-post-caption sp-player-statistics-section">%s</h3>', $section_label );
-					$caption = $league->name;
 				} else {
 					$caption = $section_label;
 				}
 			}
+
 			sp_get_template( 'player-statistics-league.php', array(
 				'data' => $player->data( $league->term_id, false, $section_id ),
 				'league' => $league,
