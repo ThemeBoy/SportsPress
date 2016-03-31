@@ -43,17 +43,6 @@ class SP_Meta_Box_Player_Statistics {
 				} else {
 					$section_order = array( __( 'Offense', 'sportspress' ), __( 'Defense', 'sportspress' ) );
 				}
-
-				// Get labels by section
-				$args = array(
-					'post_type' => 'sp_performance',
-					'numberposts' => 100,
-					'posts_per_page' => 100,
-					'orderby' => 'menu_order',
-					'order' => 'ASC',
-				);
-
-				$columns = get_posts( $args );
 				
 				$s = 0;
 				foreach ( $section_order as $section_id => $section_label ) {

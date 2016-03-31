@@ -134,6 +134,17 @@ class SP_Settings_Players extends SP_Settings_Page {
 				),
 
 				array(
+					'title' 	=> __( 'Columns', 'sportspress' ),
+					'id' 		=> 'sportspress_player_columns',
+					'default'	=> 'auto',
+					'type' 		=> 'radio',
+					'options' => array(
+						'auto'		=> __( 'Auto', 'sportspress' ),
+						'manual'	=> __( 'Manual', 'sportspress' ),
+					),
+				),
+
+				array(
 					'title' 	=> __( 'Statistics', 'sportspress' ),
 					'id' 		=> 'sportspress_player_performance_sections',
 					'default'	=> -1,

@@ -115,11 +115,9 @@ class SP_Player extends SP_Custom_Post {
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
-		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
-
-		// Get labels by section
+		
 		$args = array(
-			'post_type' => 'sp_performance',
+			'post_type' => array( 'sp_performance', 'sp_statistic' ),
 			'numberposts' => 100,
 			'posts_per_page' => 100,
 			'orderby' => 'menu_order',
@@ -128,6 +126,22 @@ class SP_Player extends SP_Custom_Post {
 
 		$posts = get_posts( $args );
 		
+		if ( 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ) {
+			$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
+		} else {
+			$usecolumns = array();
+			if ( is_array( $posts ) ) {
+				foreach ( $posts as $post ) {
+					// Get visibility
+					$visibility = get_post_meta( $post->ID, 'sp_visibility', true );
+					if ( ! is_array( $visibility ) || in_array( 'sp_player', $visibility ) ) {
+						$usecolumns[] = $post->post_name;
+					}
+				}
+			}
+		}
+
+		// Get labels by section
 		$performance_labels = array();
 
 		foreach ( $posts as $post ):
@@ -144,7 +158,6 @@ class SP_Player extends SP_Custom_Post {
 					$performance_labels[ $post->post_name ] = $post->post_title;
 				}
 			}
-			
 		endforeach;
 
 		// Get labels from outcome variables
@@ -525,20 +538,13 @@ class SP_Player extends SP_Custom_Post {
 			endforeach; endif;
 			return array( $labels, $data, $placeholders, $merged, $leagues );
 		else:
-			if ( ! is_array( $this->columns ) )
-				$this->columns = array();
-			foreach ( $columns as $key => $label ):
-				if ( ! in_array( $key, $this->columns ) ):
-					unset( $columns[ $key ] );
-				endif;
-			endforeach;
-			if ( ! is_array( $usecolumns ) )
-				$usecolumns = array();
-			foreach ( $columns as $key => $label ):
-				if ( ! in_array( $key, $usecolumns ) ):
-					unset( $columns[ $key ] );
-				endif;
-			endforeach;
+			if ( is_array( $usecolumns ) ):
+				foreach ( $columns as $key => $label ):
+					if ( ! in_array( $key, $usecolumns ) ):
+						unset( $columns[ $key ] );
+					endif;
+				endforeach;
+			endif;
 			
 			$labels = array();
 			
