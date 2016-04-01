@@ -29,6 +29,11 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		} else {
 			$readonly = false;
 		}
+
+		// Options
+		$visibility_options = apply_filters( 'sportspress_statistic_visibility_options', array( 'sp_event', 'sp_player' ) );
+		
+		// Post Meta
 		$section = get_post_meta( $post->ID, 'sp_section', true );
 		if ( '' === $section ) {
 			$section = -1;
@@ -36,6 +41,10 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		$format = get_post_meta( $post->ID, 'sp_format', true );
 		if ( '' === $format ) {
 			$format = 'number';
+		}
+		$visibility = get_post_meta( $post->ID, 'sp_visibility', true );
+		if ( ! is_array( $visibility ) ) {
+			$visibility = $visibility_options;
 		}
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
@@ -65,6 +74,17 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 				?>
 			</select>
 		</p>
+		<p><strong><?php _e( 'Visibility', 'sportspress' ); ?></strong></p>
+		<ul class="categorychecklist form-no-clear">
+			<?php foreach ( $visibility_options as $option ) { $object = get_post_type_object( $option ); ?>
+			<li>
+				<label class="selectit">
+					<input name="sp_visibility[]" id="sp_visibility_<?php echo $option; ?>" type="checkbox" value="<?php echo $option; ?>" <?php checked( in_array( $option, $visibility ) ); ?>>
+					<?php echo $object->labels->singular_name; ?>
+				</label>
+			</li>
+			<?php } ?>
+		</ul>
 		<?php
 	}
 
@@ -75,5 +95,6 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		self::delete_duplicate( $_POST );
 		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1 ) );
 		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number' ) );
+		update_post_meta( $post_id, 'sp_visibility', (array) sp_array_value( $_POST, 'sp_visibility', array() ) );
 	}
 }

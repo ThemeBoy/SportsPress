@@ -28,7 +28,7 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		$visibility = get_post_meta( $post->ID, 'sp_visibility', true );
 
 		// Options
-		$visibility_options = apply_filters( 'sportspress_statistic_visibility_options', array( 'sp_event', 'sp_player', 'sp_list' ) );
+		$visibility_options = apply_filters( 'sportspress_statistic_visibility_options', array( 'sp_event', 'sp_player' ) );
 
 		// Defaults
 		if ( '' === $precision ) $precision = 0;

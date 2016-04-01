@@ -155,6 +155,14 @@
 	text-align: right;
 }
 
+.sp-admin-config-table .sp-visibility-icon {
+	color: #ddd;
+}
+
+.sp-admin-config-table .sp-visibility-icon-visible {
+	color: #555;
+}
+
 .sportspress table.form-table .sp-color-option {
 	max-width: 225px;
 }

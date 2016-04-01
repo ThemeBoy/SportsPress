@@ -1,3 +1,12 @@
+<?php
+$visibility_options = apply_filters( 'sportspress_statistic_visibility_options', array( 'sp_event', 'sp_player' ) );
+$visibility_labels = array();
+foreach ( $visibility_options as $option ) {
+	$object = get_post_type_object( $option );
+	$visibility_labels[ $option ] = $object->labels->singular_name;
+}
+?>
+
 <div class="wrap sportspress sportspress-config-wrap">
 	<h2>
 		<?php _e( 'Configure', 'sportspress' ); ?>
@@ -152,7 +161,7 @@
 					<p class="description"><?php _e( 'Used for events.', 'sportspress' ); ?></p>
 				</th>
 			    <td class="forminp">
-					<legend class="screen-reader-text"><span><?php _e( 'Event Results', 'sportspress' ) ?></span></legend>
+					<legend class="screen-reader-text"><span><?php _e( 'Player Performance', 'sportspress' ) ?></span></legend>
 					<form>
 						<?php wp_nonce_field( 'sp-save-primary-performance', 'sp-primary-performance-nonce', false ); ?>
 						<table class="widefat sp-admin-config-table">
@@ -164,6 +173,7 @@
 									<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Category', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Format', 'sportspress' ); ?></th>
+									<th scope="col"><?php _e( 'Visibility', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 									<th scope="col" class="edit"></th>
 								</tr>
@@ -185,6 +195,10 @@
 								</tr>
 							</tfoot>
 							<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
+								<?php
+								$visibility = get_post_meta( $row->ID, 'sp_visibility', true );
+								if ( ! is_array( $visibility ) ) $visibility = $visibility_options;
+								?>
 								<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 									<td class="radio"><input type="radio" class="sp-primary-performance-option" id="sportspress_primary_performance_<?php echo $row->post_name; ?>" name="sportspress_primary_performance" value="<?php echo $row->post_name; ?>" <?php checked( $selection, $row->post_name ); ?>></td>
 									<td class="icon">
@@ -201,6 +215,11 @@
 									<td><code><?php echo $row->post_name; ?></code></td>
 									<td><?php echo sp_get_post_section( $row->ID ); ?></td>
 									<td><?php echo sp_get_post_format( $row->ID ); ?></td>
+									<td>
+										<?php foreach ( $visibility_options as $option ) { ?>
+											<span class="sp-icon-<?php echo $option; ?> sp-tip sp-visibility-icon<?php if ( in_array( $option, $visibility ) ) { ?> sp-visibility-icon-visible<?php } ?>" title="<?php echo sp_array_value( $visibility_labels, $option, $option ); ?>"></span>
+										<?php } ?>
+									</td>
 									<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 									<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 								</tr>
@@ -348,22 +367,32 @@
 								<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Decimal Places', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Category', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Visibility', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
 							</tr>
 						</thead>
 						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
+							<?php
+							$visibility = get_post_meta( $row->ID, 'sp_visibility', true );
+							if ( ! is_array( $visibility ) ) $visibility = $visibility_options;
+							?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
 								<td><?php echo sp_get_post_equation( $row->ID ); ?></td>
 								<td><?php echo sp_get_post_precision( $row->ID ); ?></td>
 								<td><?php echo sp_get_post_section( $row->ID ); ?></td>
+								<td>
+									<?php foreach ( $visibility_options as $option ) { ?>
+										<span class="sp-icon-<?php echo $option; ?> sp-tip sp-visibility-icon<?php if ( in_array( $option, $visibility ) ) { ?> sp-visibility-icon-visible<?php } ?>" title="<?php echo sp_array_value( $visibility_labels, $option, $option ); ?>"></span>
+									<?php } ?>
+								</td>
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
 						<?php $i++; endforeach; else: ?>
 							<tr class="alternate">
-								<td colspan="6"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+								<td colspan="7"><?php _e( 'No results found.', 'sportspress' ); ?></td>
 							</tr>
 						<?php endif; ?>
 					</table>
