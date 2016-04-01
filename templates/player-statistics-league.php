@@ -26,7 +26,7 @@ foreach( $data as $season_id => $row ):
 	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 	foreach( $labels as $key => $value ):
-		$output .= '<td class="data-' . $key . ( -1 === $season_id ? ' sp-highlight' : '' ) . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+		$output .= '<td class="data-' . $key . ( -1 === $season_id ? ' sp-highlight' : '' ) . '">' . sp_array_value( $row, $key, '' ) . '</td>';
 	endforeach;
 
 	$output .= '</tr>';

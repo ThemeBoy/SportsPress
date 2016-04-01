@@ -128,6 +128,7 @@ class SP_Player extends SP_Custom_Post {
 		
 		if ( 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ) {
 			$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
+			$has_checkboxes = true;
 		} else {
 			$usecolumns = array();
 			if ( is_array( $posts ) ) {
@@ -139,6 +140,7 @@ class SP_Player extends SP_Custom_Post {
 					}
 				}
 			}
+			$has_checkboxes = false;
 		}
 
 		// Get labels by section
@@ -536,7 +538,7 @@ class SP_Player extends SP_Custom_Post {
 					$labels[ $key ] = $columns[ $key ];
 				endif;
 			endforeach; endif;
-			return array( $labels, $data, $placeholders, $merged, $leagues );
+			return array( $labels, $data, $placeholders, $merged, $leagues, $has_checkboxes );
 		else:
 			if ( is_array( $usecolumns ) ):
 				foreach ( $columns as $key => $label ):
@@ -552,9 +554,7 @@ class SP_Player extends SP_Custom_Post {
 				$merged = array();
 			} else {
 				$labels['name'] = __( 'Season', 'sportspress' );
-				if ( in_array( 'team', $this->columns ) ) {
-					$labels['team'] = __( 'Team', 'sportspress' );
-				}
+				$labels['team'] = __( 'Team', 'sportspress' );
 			}
 			
 			if ( 'yes' === get_option( 'sportspress_player_show_total', 'no' ) ) {

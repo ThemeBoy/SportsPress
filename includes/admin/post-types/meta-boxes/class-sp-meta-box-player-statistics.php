@@ -32,8 +32,8 @@ class SP_Meta_Box_Player_Statistics {
 					?>
 					<p><strong><?php echo $league->name; ?></strong></p>
 					<?php
-					list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( $league->term_id, true );
-					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $i == 0 );
+					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes ) = $player->data( $league->term_id, true );
+					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 );
 					$i ++;
 				endforeach;
 			} else {
@@ -52,8 +52,8 @@ class SP_Meta_Box_Player_Statistics {
 						?>
 						<p><strong><?php echo $league->name; ?> &mdash; <?php echo $section_label; ?></strong></p>
 						<?php
-						list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( $league->term_id, true, $section_id );
-						self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $i == 0 && $s == 0 );
+						list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes ) = $player->data( $league->term_id, true, $section_id );
+						self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0 );
 						$i ++;
 					endforeach;
 					$s ++;
@@ -73,7 +73,8 @@ class SP_Meta_Box_Player_Statistics {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $readonly = false ) {
+	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false ) {
+		$readonly = false;
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
 		?>
 		<div class="sp-data-table-container">
@@ -81,7 +82,7 @@ class SP_Meta_Box_Player_Statistics {
 				<thead>
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
-						<?php if ( apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
+						<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
 							<th>
 								<?php if ( $has_checkboxes ): ?>
 									<label for="sp_columns_team">
@@ -104,7 +105,9 @@ class SP_Meta_Box_Player_Statistics {
 						<td>
 							<label><strong><?php _e( 'Total', 'sportspress' ); ?></strong></label>
 						</td>
-						<td>&nbsp;</td>
+						<?php if ( $team_select ) { ?>
+							<td>&nbsp;</td>
+						<?php } ?>
 						<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
 							?>
 							<td><?php
@@ -140,7 +143,7 @@ class SP_Meta_Box_Player_Statistics {
 									?>
 								</label>
 							</td>
-							<?php if ( apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
+							<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
 								<?php if ( $div_id == 0 ): ?>
 									<td>&nbsp;</td>
 								<?php else: ?>
