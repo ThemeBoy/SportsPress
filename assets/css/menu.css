@@ -51,7 +51,8 @@
 .sp-icon-calculator:before {
 	content: "\f108";
 }
-.sp-icon-calendar:before {
+.sp-icon-calendar:before,
+.sp-icon-sp_event:before {
 	content: "\f145";
 }
 .sp-icon-cake:before {
@@ -129,7 +130,8 @@
 .sp-icon-tournament:before {
 	content: "\f313";
 }
-.sp-icon-tshirt:before {
+.sp-icon-tshirt:before,
+.sp-icon-sp_player:before {
 	content: "\f307";
 }
 .sp-icon-trash:before {
