@@ -38,13 +38,15 @@ if ( is_array( $leagues ) ):
 	foreach ( $section_order as $section_id => $section_label ) {
 		if ( -1 !== $section_id && ! in_array( $section_id, $player_sections ) ) continue;
 		
+		if ( sizeof( $leagues ) > 1 ) {
+			printf( '<h3 class="sp-post-caption sp-player-statistics-section">%s</h3>', $section_label );
+		}
+		
 		foreach ( $leagues as $league ):
 			$caption = $league->name;
 		
 			if ( null !== $section_label ) {
-				if ( sizeof( $leagues ) > 1 ) {
-					printf( '<h3 class="sp-post-caption sp-player-statistics-section">%s</h3>', $section_label );
-				} else {
+				if ( sizeof( $leagues ) === 1 ) {
 					$caption = $section_label;
 				}
 			}
