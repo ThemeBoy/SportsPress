@@ -291,6 +291,12 @@ jQuery(document).ready(function($){
 		handle: ".icon",
 		axis: "y"
 	});
+	
+	// Sortable lists
+    $( ".sp-sortable-list" ).sortable({
+    	handle: ".sp-item-handle",
+		placeholder: "sp-item-placeholder"
+    });
 
 	// Autosave
 	$(".sp-autosave").change(function() {

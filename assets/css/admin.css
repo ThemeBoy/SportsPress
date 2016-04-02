@@ -595,6 +595,129 @@ table.widefat.sp-sortable-table tbody tr .icon {
 	border-left-color: #464646;
 }
 
+/* Toggle switches */
+.sp-toggle-switch {
+	display: none !important;
+}
+
+.sp-toggle-switch + label {
+	width: 40px;
+	height: 20px;
+	border-radius: 20px;
+	position: absolute;
+	right: 10px;
+	top: 11px;
+}
+
+.sp-toggle-switch + label:before,
+.sp-toggle-switch + label:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    content: "";
+}
+
+.sp-toggle-switch + label:before {
+    right: 1px;
+    background-color: #e4e4e4;
+    border-radius: 20px;
+    transition: background 0.4s;
+}
+
+.sp-toggle-switch + label:after {
+    width: 20px;
+    background-color: #fff;
+    border-radius: 100%;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: margin 0.4s;
+}
+
+.sp-toggle-switch:checked + label:before {
+  background-color: #00a0d2;
+}
+
+.sp-toggle-switch:checked + label:after {
+  margin-left: 20px;
+}
+
+.sp-toggle-switch:checked + label:hover:before {
+  background-color: #00b9eb;
+}
+
+/* Sortable lists */
+.sp-sortable-list li {
+	float: left;
+	clear: both;
+	max-width: 382px;
+	width: 100%;
+    box-sizing: border-box;
+}
+
+.sp-sortable-list .sp-item-float + .sp-item-float {
+	padding-right: 0;
+}
+
+.sp-item-bar {
+    clear: both;
+    line-height: 1.5em;
+    position: relative;
+    margin: 9px 0 0;
+}
+
+.sp-item-bar .sp-item-handle {
+	background: #fafafa;
+	color: #23282d;
+    border: 1px solid #dfdfdf;
+    position: relative;
+    padding: 10px 15px;
+    height: auto;
+    min-height: 20px;
+    line-height: 30px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.sp-item-bar .sp-item-handle:hover {
+    border-color: #999;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.sp-item-bar .sp-item-title {
+	font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    display: block;
+    margin-right: 13em;
+}
+
+.sp-item-settings {
+    display: block;
+    padding: 10px 0 10px 15px;
+    position: relative;
+    z-index: 10;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-top: none;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.js .sp-item-handle {
+	cursor: move;
+}
+
+.sp-sortable-list .sp-item-placeholder {
+    border: 1px dashed #b4b9be;
+    margin: 9px auto 6px;
+    height: 42px;
+}
+
+/* Modules */
+
 .sp-modules-wrapper {
 	margin-top: 20px;
 	margin-right: 300px;
