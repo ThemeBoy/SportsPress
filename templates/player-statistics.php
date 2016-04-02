@@ -20,8 +20,10 @@ $sections = get_option( 'sportspress_player_performance_sections', -1 );
 $leagues = get_the_terms( $id, 'sp_league' );
 $positions = $player->positions();
 $player_sections = array();
-foreach ( $positions as $position ) {
-	$player_sections = array_merge( $player_sections, sp_get_term_sections( $position->term_id ) );
+if ( $positions ) {
+	foreach ( $positions as $position ) {
+		$player_sections = array_merge( $player_sections, sp_get_term_sections( $position->term_id ) );
+	}
 }
 
 // Determine order of sections
@@ -36,7 +38,7 @@ if ( 1 == $sections ) {
 // Loop through statistics for each league
 if ( is_array( $leagues ) ):
 	foreach ( $section_order as $section_id => $section_label ) {
-		if ( -1 !== $section_id && ! in_array( $section_id, $player_sections ) ) continue;
+		if ( -1 !== $section_id && ! empty( $player_sections ) && ! in_array( $section_id, $player_sections ) ) continue;
 		
 		if ( sizeof( $leagues ) > 1 ) {
 			printf( '<h3 class="sp-post-caption sp-player-statistics-section">%s</h3>', $section_label );
