@@ -16,6 +16,7 @@ $defaults = array(
 	'live' => get_option( 'sportspress_enable_live_countdowns', 'yes' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
+	'link_venues' => get_option( 'sportspress_link_venues', 'no' ) == 'yes' ? true : false,
 	'show_logos' => get_option( 'sportspress_countdown_show_logos', 'no' ) == 'yes' ? true : false,
 );
 
@@ -67,7 +68,19 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 			$venues = get_the_terms( $post->ID, 'sp_venue' );
 			if ( $venues ):
 				?>
-				<h5 class="event-venue"><?php the_terms( $post->ID, 'sp_venue' ); ?></h5>
+				<h5 class="event-venue">
+					<?php
+					if ( $link_venues ) {
+						the_terms( $post->ID, 'sp_venue' );
+					} else {
+						$venue_names = array();
+						foreach ( $venues as $venue ) {
+							$venue_names[] = $venue->name;
+						}
+						echo implode( '/', $venue_names );
+					}
+					?>
+				</h5>
 				<?php
 			endif;
 		endif;
