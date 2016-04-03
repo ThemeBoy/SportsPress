@@ -24,6 +24,7 @@ class SP_Admin_Post_Types {
 		add_action( 'admin_init', array( $this, 'include_post_type_handlers' ) );
 		add_action( 'save_post', array( $this, 'unflag_post' ) );
 		add_filter( 'post_updated_messages', array( $this, 'post_updated_messages' ) );
+		add_filter( 'sportspress_meta_boxes', array( $this, 'meta_boxes' ) );
 	}
 
 	/**
@@ -104,6 +105,16 @@ class SP_Admin_Post_Types {
 		endif;
 
 		return $messages;
+	}
+
+	/**
+	 * Remove meta boxes as needed
+	 */
+	public static function meta_boxes( $meta_boxes ) {
+		if ( 'manual' != get_option( 'sportspress_player_columns', 'auto' ) ) {
+			unset( $meta_boxes['sp_player']['columns'] );
+		}
+		return $meta_boxes;
 	}
 }
 

@@ -23,11 +23,15 @@ class SP_Settings_Events extends SP_Settings_Page {
 	public function __construct() {
 		$this->id    = 'events';
 		$this->label = __( 'Events', 'sportspress' );
+		
+		$this->template  = 'event';
+		$this->templates = SP()->templates->event;
 
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
 		add_action( 'sportspress_admin_field_current_mode', array( $this, 'current_mode_setting' ) );
 		add_action( 'sportspress_admin_field_delimiter', array( $this, 'delimiter_setting' ) );
+		add_action( 'sportspress_admin_field_event_layout', array( $this, 'layout_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
 	}
 
@@ -55,20 +59,15 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 
 				apply_filters( 'sportspress_event_template_options', array(
+					array( 'type' 	=> 'event_layout' ),
+
 					array(
 						'title'     => __( 'Display', 'sportspress' ),
-						'desc' 		=> __( 'Logos', 'sportspress' ),
-						'id' 		=> 'sportspress_event_show_logos',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'		=> 'start',
-					),
-					array(
 						'desc' 		=> __( 'Date', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_date',
 						'default'	=> 'yes',
 						'type' 		=> 'checkbox',
-						'checkboxgroup'		=> '',
+						'checkboxgroup'		=> 'start',
 					),
 					array(
 						'desc' 		=> __( 'Time', 'sportspress' ),
@@ -76,34 +75,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'default'	=> 'yes',
 						'type' 		=> 'checkbox',
 						'checkboxgroup'		=> '',
-					),
-					array(
-						'desc' 		=> __( 'Results', 'sportspress' ),
-						'id' 		=> 'sportspress_event_show_results',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'		=> '',
-					),
-					array(
-						'desc' 		=> __( 'Details', 'sportspress' ),
-						'id' 		=> 'sportspress_event_show_details',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'		=> '',
-					),
-					array(
-						'desc' 		=> __( 'Venue', 'sportspress' ),
-						'id' 		=> 'sportspress_event_show_venue',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'		=> '',
-					),
-					array(
-						'desc' 		=> __( 'Scorecard', 'sportspress' ),
-						'id' 		=> 'sportspress_event_show_performance',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'		=> 'end',
 					),
 				) ),
 
@@ -421,8 +392,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 	 * Save settings
 	 */
 	public function save() {
-		$settings = $this->get_settings();
-		SP_Admin_Settings::save_fields( $settings );
+		parent::save();
 		
 		if ( isset( $_POST['sportspress_event_teams_delimiter'] ) )
 	    	update_option( 'sportspress_event_teams_delimiter', $_POST['sportspress_event_teams_delimiter'] );

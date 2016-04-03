@@ -321,6 +321,7 @@ class SP_Post_types {
 				array(
 					'labels' => array(
 						'name' 					=> __( 'Player Performance', 'sportspress' ),
+						'menu_name' 			=> __( 'Performance', 'sportspress' ),
 						'singular_name' 		=> __( 'Player Performance', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Performance', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Performance', 'sportspress' ),
@@ -351,6 +352,7 @@ class SP_Post_types {
 				array(
 					'labels' => array(
 						'name' 					=> __( 'Player Statistics', 'sportspress' ),
+						'menu_name' 			=> __( 'Statistics', 'sportspress' ),
 						'singular_name' 		=> __( 'Statistic', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Statistic', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Statistic', 'sportspress' ),

@@ -57,6 +57,11 @@ final class SportsPress {
 	public $formats = null;
 
 	/**
+	 * @var SP_Templates $templates
+	 */
+	public $templates = null;
+
+	/**
 	 * @var array
 	 */
 	public $text = array();
@@ -223,6 +228,7 @@ final class SportsPress {
 		include_once( 'includes/class-sp-modules.php' );						// Defines available modules
 		include_once( 'includes/class-sp-countries.php' );						// Defines continents and countries
 		include_once( 'includes/class-sp-formats.php' );						// Defines custom post type formats
+		include_once( 'includes/class-sp-templates.php' );						// Defines custom post type templates
 		include_once( 'includes/class-sp-feeds.php' );							// Adds feeds
 		
 		// Include template functions making them pluggable by plugins and themes.
@@ -288,6 +294,7 @@ final class SportsPress {
 		$this->modules = new SP_Modules();		// Modules class
 		$this->countries = new SP_Countries();	// Countries class
 		$this->formats = new SP_Formats();		// Formats class
+		$this->templates = new SP_Templates();	// Templates class
 		$this->feeds = new SP_Feeds(); 			// Feeds class
 
 		// Load string options

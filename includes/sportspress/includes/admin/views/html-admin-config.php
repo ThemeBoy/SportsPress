@@ -1,3 +1,7 @@
+<?php
+$columns = get_option( 'sportspress_player_columns', 'auto' );
+?>
+
 <div class="wrap sportspress sportspress-config-wrap">
 	<h2>
 		<?php _e( 'Configure', 'sportspress' ); ?>
@@ -136,6 +140,11 @@
 		<tbody>
 			<?php
 			$selection = get_option( 'sportspress_primary_performance', 0 );
+			$mode = get_option( 'sportspress_event_performance_mode', 'values' );
+			$colspan = 7;
+			
+			if ( 'icons' === $mode ) $colspan ++;
+			if ( 'auto' === $columns ) $colspan ++;
 
 			$args = array(
 				'post_type' => 'sp_performance',
@@ -152,18 +161,26 @@
 					<p class="description"><?php _e( 'Used for events.', 'sportspress' ); ?></p>
 				</th>
 			    <td class="forminp">
-					<legend class="screen-reader-text"><span><?php _e( 'Event Results', 'sportspress' ) ?></span></legend>
+					<legend class="screen-reader-text"><span><?php _e( 'Player Performance', 'sportspress' ) ?></span></legend>
 					<form>
 						<?php wp_nonce_field( 'sp-save-primary-performance', 'sp-primary-performance-nonce', false ); ?>
 						<table class="widefat sp-admin-config-table">
 							<thead>
 								<tr>
 									<th class="radio" scope="col"><?php _e( 'Primary', 'sportspress' ); ?></th>
-									<th class="icon" scope="col"><?php _e( 'Icon', 'sportspress' ); ?></th>
+									<?php if ( 'icons' === $mode ) { ?>
+										<th class="icon" scope="col"><?php _e( 'Icon', 'sportspress' ); ?></th>
+									<?php } ?>
 									<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Category', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Format', 'sportspress' ); ?></th>
+									<?php if ( 'auto' === $columns ) { ?>
+										<th scope="col">
+											<?php _e( 'Visible', 'sportspress' ); ?>
+											<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Display in player profile?', 'sportspress' ); ?>"></i>
+										</th>
+									<?php } ?>
 									<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 									<th scope="col" class="edit"></th>
 								</tr>
@@ -171,8 +188,10 @@
 							<tfoot>
 								<tr>
 									<th class="radio"><input type="radio" class="sp-primary-performance-option" id="sportspress_primary_performance_0" name="sportspress_primary_performance" value="0" <?php checked( $selection, 0 ); ?>></th>
-									<th class="icon">&nbsp;</td>
-									<th colspan="6"><label for="sportspress_primary_performance_0">
+									<?php if ( 'icons' === $mode ) { ?>
+										<th class="icon">&nbsp;</td>
+									<?php } ?>
+									<th colspan="<?php echo $colspan - 1; ?>"><label for="sportspress_primary_performance_0">
 										<?php
 										if ( sizeof( $data ) > 0 ):
 											$default = reset( $data );
@@ -185,28 +204,39 @@
 								</tr>
 							</tfoot>
 							<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
+								<?php
+								$visible = get_post_meta( $row->ID, 'sp_visible', true );
+								if ( '' === $visible ) $visible = 1;
+								?>
 								<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 									<td class="radio"><input type="radio" class="sp-primary-performance-option" id="sportspress_primary_performance_<?php echo $row->post_name; ?>" name="sportspress_primary_performance" value="<?php echo $row->post_name; ?>" <?php checked( $selection, $row->post_name ); ?>></td>
-									<td class="icon">
-										<?php
-										if ( has_post_thumbnail( $row->ID ) )
-											$icon = get_the_post_thumbnail( $row->ID, 'sportspress-fit-mini' );
-										else
-											$icon = '&nbsp;';
+									<?php if ( 'icons' === $mode ) { ?>
+										<td class="icon">
+											<?php
+											if ( has_post_thumbnail( $row->ID ) )
+												$icon = get_the_post_thumbnail( $row->ID, 'sportspress-fit-mini' );
+											else
+												$icon = '&nbsp;';
 
-										echo apply_filters( 'sportspress_performance_icon', $icon, $row->ID );
-										?>
-									</td>
+											echo apply_filters( 'sportspress_performance_icon', $icon, $row->ID );
+											?>
+										</td>
+									<?php } ?>
 									<td class="row-title"><?php echo $row->post_title; ?></td>
 									<td><code><?php echo $row->post_name; ?></code></td>
 									<td><?php echo sp_get_post_section( $row->ID ); ?></td>
 									<td><?php echo sp_get_post_format( $row->ID ); ?></td>
+									<?php if ( 'auto' === $columns ) { ?>
+										<td>
+											<?php if ( $visible ) { ?><i class="dashicons dashicons-yes"></i><?php } else { ?>&nbsp;<?php } ?>
+										</td>
+									<?php } ?>
 									<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 									<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 								</tr>
 							<?php $i++; endforeach; else: ?>
 								<tr class="alternate">
-									<td colspan="8"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+									<td colspan="<?php echo $colspan; ?>"><?php _e( 'No results found.', 'sportspress' ); ?></td>
 								</tr>
 							<?php endif; ?>
 						</table>
@@ -334,6 +364,10 @@
 				'order' => 'ASC'
 			);
 			$data = get_posts( $args );
+			
+			$colspan = 6;
+
+			if ( 'auto' === $columns ) $colspan ++;
 			?>
 			<tr valign="top">
 				<th scope="row" class="titledesc">
@@ -347,21 +381,38 @@
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Decimal Places', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Category', 'sportspress' ); ?></th>
+								<?php if ( 'auto' === $columns ) { ?>
+									<th scope="col">
+										<?php _e( 'Visible', 'sportspress' ); ?>
+										<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Display in player profile?', 'sportspress' ); ?>"></i>
+									</th>
+								<?php } ?>
 								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
 							</tr>
 						</thead>
 						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
+							<?php
+							$visible = get_post_meta( $row->ID, 'sp_visible', true );
+							if ( '' === $visible ) $visible = 1;
+							?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
 								<td><?php echo sp_get_post_equation( $row->ID ); ?></td>
 								<td><?php echo sp_get_post_precision( $row->ID ); ?></td>
+								<td><?php echo sp_get_post_section( $row->ID ); ?></td>
+								<?php if ( 'auto' === $columns ) { ?>
+									<td>
+										<?php if ( $visible ) { ?><i class="dashicons dashicons-yes"></i><?php } else { ?>&nbsp;<?php } ?>
+									</td>
+								<?php } ?>
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
 						<?php $i++; endforeach; else: ?>
 							<tr class="alternate">
-								<td colspan="6"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+								<td colspan="<?php echo $colspan; ?>"><?php _e( 'No results found.', 'sportspress' ); ?></td>
 							</tr>
 						<?php endif; ?>
 					</table>

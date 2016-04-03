@@ -83,12 +83,6 @@ add_action( 'sportspress_single_team_content', 'sportspress_output_team_lists', 
 add_action( 'sportspress_single_team_content', 'sportspress_output_team_tables', 30 );
 
 /**
- * Before Single Table
- * @see sportspress_output_post_excerpt()
- */
-add_action( 'sportspress_before_single_table', 'sportspress_output_post_excerpt', 20 );
-
-/**
  * Single Table Content
  *
  * @see sportspress_output_league_table()

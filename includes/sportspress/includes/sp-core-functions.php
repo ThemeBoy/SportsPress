@@ -482,7 +482,25 @@ if ( !function_exists( 'sp_get_format_placeholder' ) ) {
 		) );
 		return sp_array_value( $placeholders, $key, 0 );
 	}
-} 
+}
+
+if ( !function_exists( 'sp_get_term_sections' ) ) {
+	function sp_get_term_sections( $t_id ) {
+		$term_meta = get_option( "taxonomy_$t_id" );
+		if ( isset( $term_meta['sp_sections'] ) ) {
+			$sections = $term_meta['sp_sections'];
+		} else {
+			$sections = apply_filters( 'sportspress_performance_sections', array( 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
+			$sections = array_keys( $sections );
+		}
+		
+		if ( '' === $sections ) {
+			$sections = array();
+		}
+		
+		return $sections;
+	}
+}
 
 if ( !function_exists( 'sp_dropdown_statuses' ) ) {
 	function sp_dropdown_statuses( $args = array() ) {

@@ -23,9 +23,13 @@ class SP_Settings_Players extends SP_Settings_Page {
 	public function __construct() {
 		$this->id    = 'players';
 		$this->label = __( 'Players', 'sportspress' );
+		
+		$this->template  = 'player';
+		$this->templates = SP()->templates->player;
 
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
+		add_action( 'sportspress_admin_field_player_layout', array( $this, 'layout_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
 	}
 
@@ -37,43 +41,19 @@ class SP_Settings_Players extends SP_Settings_Page {
 	public function get_settings() {
 
 		$settings = array_merge(
-
 			array(
 				array(	'title' => __( 'Player Options', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'player_options' ),
 			),
 
 			apply_filters( 'sportspress_player_options', array(
+				array( 'type' 	=> 'player_layout' ),
+
 				array(
 					'title'     => __( 'Link', 'sportspress' ),
 					'desc' 		=> __( 'Link players', 'sportspress' ),
 					'id' 		=> 'sportspress_link_players',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
-				),
-
-				array(
-					'title'     => __( 'Display', 'sportspress' ),
-					'desc' 		=> __( 'Photo', 'sportspress' ),
-					'id' 		=> 'sportspress_player_show_photo',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> 'start',
-				),
-
-				array(
-					'desc' 		=> __( 'Details', 'sportspress' ),
-					'id' 		=> 'sportspress_player_show_details',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> '',
-				),
-
-				array(
-					'desc' 		=> __( 'Statistics', 'sportspress' ),
-					'id' 		=> 'sportspress_player_show_statistics',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> 'end',
 				),
 
 				array(
@@ -123,6 +103,37 @@ class SP_Settings_Players extends SP_Settings_Page {
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
 					'checkboxgroup'		=> 'end',
+				),
+
+				array(
+					'title' 	=> __( 'Columns', 'sportspress' ),
+					'id' 		=> 'sportspress_player_columns',
+					'default'	=> 'auto',
+					'type' 		=> 'radio',
+					'options' => array(
+						'auto'		=> __( 'Auto', 'sportspress' ),
+						'manual'	=> __( 'Manual', 'sportspress' ),
+					),
+				),
+
+				array(
+					'title' 	=> __( 'Statistics', 'sportspress' ),
+					'id' 		=> 'sportspress_player_performance_sections',
+					'default'	=> -1,
+					'type' 		=> 'radio',
+					'options' => array(
+						-1	  => __( 'Combined', 'sportspress' ),
+						0	  => __( 'Offense', 'sportspress' ) . ' &rarr; ' . __( 'Defense', 'sportspress' ),
+						1	  => __( 'Defense', 'sportspress' ) . ' &rarr; ' . __( 'Offense', 'sportspress' ),
+					),
+				),
+
+				array(
+					'title'     => __( 'Total', 'sportspress' ),
+					'desc' 		=> __( 'Display total', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_total',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
 				),
 
 				array(

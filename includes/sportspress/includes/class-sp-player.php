@@ -109,16 +109,58 @@ class SP_Player extends SP_Custom_Post {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $league_id, $admin = false ) {
+	public function data( $league_id, $admin = false, $section = -1 ) {
 
 		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
-		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
+		
+		$args = array(
+			'post_type' => array( 'sp_performance', 'sp_statistic' ),
+			'numberposts' => 100,
+			'posts_per_page' => 100,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
 
-		// Get labels from performance variables
-		$performance_labels = (array)sp_get_var_labels( 'sp_performance' );
+		$posts = get_posts( $args );
+		
+		if ( 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ) {
+			$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
+			$has_checkboxes = true;
+		} else {
+			$usecolumns = array();
+			if ( is_array( $posts ) ) {
+				foreach ( $posts as $post ) {
+					// Get visibility
+					$visible = get_post_meta( $post->ID, 'sp_visible', true );
+					if ( '' === $visible || $visible ) {
+						$usecolumns[] = $post->post_name;
+					}
+				}
+			}
+			$has_checkboxes = false;
+		}
+
+		// Get labels by section
+		$performance_labels = array();
+
+		foreach ( $posts as $post ):
+			if ( -1 === $section ) {
+				$performance_labels[ $post->post_name ] = $post->post_title;
+			} else {
+				$post_section = get_post_meta( $post->ID, 'sp_section', true );
+				
+				if ( '' === $post_section ) {
+					$post_section = -1;
+				}
+				
+				if ( $section == $post_section || -1 == $post_section ) {
+					$performance_labels[ $post->post_name ] = $post->post_title;
+				}
+			}
+		endforeach;
 
 		// Get labels from outcome variables
 		$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
@@ -404,8 +446,44 @@ class SP_Player extends SP_Custom_Post {
 
 		endforeach;
 
-		// Get stats from statistic variables
-		$stats = sp_get_var_labels( 'sp_statistic' );
+		// Get labels by section
+		$args = array(
+			'post_type' => 'sp_statistic',
+			'numberposts' => 100,
+			'posts_per_page' => 100,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		$posts = get_posts( $args );
+		
+		$stats = array();
+
+		foreach ( $posts as $post ):
+			if ( -1 === $section ) {
+				$stats[ $post->post_name ] = $post->post_title;
+			} else {
+				$post_section = get_post_meta( $post->ID, 'sp_section', true );
+				
+				if ( '' === $post_section ) {
+					$post_section = -1;
+				}
+				
+				if ( $admin ) {
+					if ( 1 == $section ) {
+						if ( 1 == $post_section ) {
+							$stats[ $post->post_name ] = $post->post_title;
+						}
+					} else {
+						if ( 1 != $post_section ) {
+							$stats[ $post->post_name ] = $post->post_title;
+						}
+					}
+				} elseif ( $section == $post_section || -1 == $post_section ) {
+					$stats[ $post->post_name ] = $post->post_title;
+				}
+			}
+		endforeach;
 
 		// Merge the data and placeholders arrays
 		$merged = array();
@@ -460,26 +538,36 @@ class SP_Player extends SP_Custom_Post {
 					$labels[ $key ] = $columns[ $key ];
 				endif;
 			endforeach; endif;
-			return array( $labels, $data, $placeholders, $merged, $leagues );
+			return array( $labels, $data, $placeholders, $merged, $leagues, $has_checkboxes );
 		else:
-			if ( ! is_array( $this->columns ) )
-				$this->columns = array();
-			foreach ( $columns as $key => $label ):
-				if ( ! in_array( $key, $this->columns ) ):
-					unset( $columns[ $key ] );
-				endif;
-			endforeach;
-			if ( ! is_array( $usecolumns ) )
-				$usecolumns = array();
-			foreach ( $columns as $key => $label ):
-				if ( ! in_array( $key, $usecolumns ) ):
-					unset( $columns[ $key ] );
-				endif;
-			endforeach;
-			$labels = array( 'name' => __( 'Season', 'sportspress' ) );
-			if ( in_array( 'team', $this->columns ) )
+			if ( is_array( $usecolumns ) ):
+				foreach ( $columns as $key => $label ):
+					if ( ! in_array( $key, $usecolumns ) ):
+						unset( $columns[ $key ] );
+					endif;
+				endforeach;
+			endif;
+			
+			$labels = array();
+			
+			if ( 'no' === get_option( 'sportspress_player_show_statistics', 'yes' ) ) {
+				$merged = array();
+			} else {
+				$labels['name'] = __( 'Season', 'sportspress' );
 				$labels['team'] = __( 'Team', 'sportspress' );
+			}
+			
+			if ( 'yes' === get_option( 'sportspress_player_show_total', 'no' ) ) {
+				$total_placeholders = sp_array_value( $placeholders, 0, array() );
+				$total_data = sp_array_value( $data, 0, array() );
+				$total_data = array_filter( $total_data );
+				$total = array_merge( $total_placeholders, $total_data );
+				$merged[-1] = $total;
+				$merged[-1]['name'] = __( 'Total', 'sportspress' );
+			}
+			
 			$merged[0] = array_merge( $labels, $columns );
+				
 			return $merged;
 		endif;
 	}

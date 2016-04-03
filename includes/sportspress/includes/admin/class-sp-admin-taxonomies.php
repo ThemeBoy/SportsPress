@@ -132,9 +132,15 @@ class SP_Admin_Taxonomies {
 	public function add_position_fields() {
 		?>
 		<div class="form-field">
-			<label for="term_meta[sp_caption]"><?php _e( 'Heading', 'sportspress' ); ?></label>
-			<input type="text" name="term_meta[sp_caption]" id="term_meta[sp_caption]" value="">
-			<p class="description"><?php _e( 'Used for events.', 'sportspress' ); ?></p>
+			<label><?php _e( 'Statistics', 'sportspress' ); ?></label>
+			<select name="term_meta[sp_sections][]" id="term_meta[sp_sections][]" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" multiple="multiple">
+				<?php
+				$options = apply_filters( 'sportspress_performance_sections', array( 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
+				foreach ( $options as $key => $value ):
+					printf( '<option value="%s" %s>%s</option>', $key, selected( true ), $value );
+				endforeach;
+				?>
+			</select>
 		</div>
 	<?php
 	}
@@ -147,14 +153,24 @@ class SP_Admin_Taxonomies {
 	 */
 	public function edit_position_fields( $term ) {
 	 	$t_id = $term->term_id;
-		$term_meta = get_option( "taxonomy_$t_id" ); ?>
+		$sections = sp_get_term_sections( $t_id );
+		?>
 		<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_meta[sp_caption]"><?php _e( 'Heading', 'sportspress' ); ?></label></th>
+			<th scope="row" valign="top"><label for="term_meta[sp_sections]"><?php _e( 'Statistics', 'sportspress' ); ?></label></th>
+			<input type="hidden" name="term_meta[sp_sections]" value="">
 			<td>
-				<input type="text" name="term_meta[sp_caption]" id="term_meta[sp_caption]" value="<?php echo esc_attr( $term_meta['sp_caption'] ) ? esc_attr( $term_meta['sp_caption'] ) : ''; ?>">
-				<p class="description"><?php _e( 'Used for events.', 'sportspress' ); ?></p>
+				<select name="term_meta[sp_sections][]" id="term_meta[sp_sections][]" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" multiple="multiple">
+					<?php
+					$options = apply_filters( 'sportspress_performance_sections', array( 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
+					foreach ( $options as $key => $value ):
+						printf( '<option value="%s" %s>%s</option>', $key, selected( in_array( $key, $sections ), true, false ), $value );
+					endforeach;
+					?>
+				</select>
 			</td>
 		</tr>
+		
+		</div>
 	<?php
 	}
 
@@ -219,7 +235,7 @@ class SP_Admin_Taxonomies {
 	 */
 	public function position_columns( $columns ) {
 		$new_columns = array();
-		$new_columns['sp_caption'] = __( 'Heading', 'sportspress' );
+		$new_columns['sp_sections'] = __( 'Statistics', 'sportspress' );
 		$new_columns['posts'] = __( 'Players', 'sportspress' );
 
 		unset( $columns['description'] );
@@ -260,13 +276,23 @@ class SP_Admin_Taxonomies {
 
 			$columns .= $address;
 
-		} elseif ( $column == 'sp_caption' ) {
+		} elseif ( $column == 'sp_sections' ) {
+			
+			$options = apply_filters( 'sportspress_performance_sections', array( 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
 
-			$term_meta = get_option( "taxonomy_$id" );
-
-			$caption = ( isset( $term_meta['sp_caption'] ) ? $term_meta['sp_caption'] : '&mdash;' );
-
-			$columns .= $caption;
+			$sections = sp_get_term_sections( $id );
+			
+			$section_names = array();
+			
+			if ( is_array( $sections ) ) {
+				foreach ( $sections as $section ) {
+					if ( array_key_exists( $section, $options ) ) {
+						$section_names[] = $options[ $section ];
+					}
+				}
+			}
+			
+			$columns .= implode( ', ', $section_names );
 
 		}
 

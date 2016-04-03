@@ -41,8 +41,6 @@ $output = '';
 $table_rows = '';
 $i = 0;
 
-//$data = array_reverse( $data, true );
-
 foreach( $data as $team_id => $result ):
 	if ( $show_outcomes ):
 		$outcomes = array();

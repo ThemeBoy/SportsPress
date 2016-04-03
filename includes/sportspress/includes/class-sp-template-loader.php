@@ -24,10 +24,17 @@ class SP_Template_Loader {
 		add_filter( 'the_content', array( $this, 'staff_content' ) );
 	}
 
-	public function add_content( $content, $template, $position = 10, $caption = null ) {
+	public function add_content( $content, $type, $position = 10, $caption = null ) {
 		if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		if ( ! in_the_loop() ) return; // Return if not in main loop
 
+		// Return password form if required
+		if ( post_password_required() ) {
+			echo get_the_password_form();
+			return;
+		}
+
+		// Prepend caption to content if given
 		if ( $content ) {
 			if ( $caption ) {
 				$content = '<h3 class="sp-post-caption">' . $caption . '</h3>' . $content;
@@ -36,30 +43,51 @@ class SP_Template_Loader {
 			$content = '<div class="sp-post-content">' . $content . '</div>';
 		}
 
-		ob_start();
-
-		if ( post_password_required() ) {
-			echo get_the_password_form();
-			return;
+		global $wp_filter;
+		
+		// Array of hooks associated with this post type
+		$hooks = array(
+			'sportspress_before_single_' . $type,
+			'sportspress_single_' . $type . '_content',
+			'sportspress_after_single_' . $type,
+		);
+		
+		$actions = array();
+		
+		// Find all actions associated with those hooks
+		foreach ( $hooks as $hook ) {
+			$priorities = sp_array_value( $wp_filter, $hook, array() );
+			
+			foreach ( $priorities as $priority => $action ) {
+				$a = reset( $action );
+				$function = sp_array_value( $a, 'function', false );
+				remove_action( $hook, $function, $priority );
+				$actions[] = $function;
+			}
 		}
+		
+		// Get layout setting
+		$layout = (array) get_option( 'sportspress_' . $type . '_template_order', array() );
+		
+		// Combine layout setting with available templates
+		$templates = array_merge( array_flip( $layout ), SP()->templates->$type );
 
-		if ( $position <= 0 )
-			echo $content;
-
-		do_action( 'sportspress_before_single_' . $template );
-
-		if ( $position > 0 && $position <= 10 )
-			echo $content;
-
-		do_action( 'sportspress_single_' . $template . '_content' );
-
-		if ( $position > 10 && $position <= 20 )
-			echo $content;
-
-		do_action( 'sportspress_after_single_' . $template );
-
-		if ( $position > 20 )
-			echo $content;
+		ob_start();
+		
+		// Loop through templates
+		foreach ( $templates as $key => $template ) {
+			// Ignore templates that are unavailable or that have been turned off
+			if ( ! is_array( $template ) ) continue;
+			if ( ! isset( $template['option'] ) ) continue;
+			if ( 'yes' !== get_option( $template['option'], sp_array_value( $template, 'default', 'yes' ) ) ) continue;
+			
+			// Render the template
+			if ( 'content' === $key ) {
+				echo $content;
+			} else {
+				call_user_func( $template['action'] );
+			}
+		}
 
 		return ob_get_clean();
 	}

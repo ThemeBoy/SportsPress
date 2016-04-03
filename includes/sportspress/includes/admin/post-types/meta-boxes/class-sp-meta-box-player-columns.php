@@ -26,7 +26,7 @@ class SP_Meta_Box_Player_Columns {
 			<?php if ( $tabs ) { ?>
 			<ul id="sp_column-tabs" class="wp-tab-bar sp-tab-bar">
 				<?php foreach ( $tabs as $index => $post_type ) { $object = get_post_type_object( $post_type ); ?>
-				<li class="wp-tab<?php if ( 0 == $index ) { ?>-active<?php } ?>"><a href="#<?php echo $post_type; ?>-all"><?php echo $object->labels->name; ?></a></li>
+				<li class="wp-tab<?php if ( 0 == $index ) { ?>-active<?php } ?>"><a href="#<?php echo $post_type; ?>-all"><?php echo $object->labels->menu_name; ?></a></li>
 				<?php } ?>
 			</ul>
 			<?php
