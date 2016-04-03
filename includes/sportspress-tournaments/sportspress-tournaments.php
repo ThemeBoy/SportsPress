@@ -404,7 +404,7 @@ class SportsPress_Tournaments {
 	 * @return void
 	 */
 	public function load_scripts() {
-		wp_enqueue_script( 'sportspress-tournaments', SP_TOURNAMENTS_URL .'js/sportspress-tournaments.js', array( 'jquery' ), time(), true );
+		wp_enqueue_script( 'sportspress-tournaments', SP_TOURNAMENTS_URL .'js/sportspress-tournaments.js', array( 'jquery' ), SP_TOURNAMENTS_VERSION, true );
 	}
 
 	/**
