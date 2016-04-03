@@ -48,11 +48,16 @@ function sp_body_class( $classes ) {
 
 	if ( 'sp_event' == $post_type ) {
 		$id = get_the_ID();
-		if ( get_option( 'sportspress_event_show_maps', 'yes' ) == 'yes' && get_the_terms( $id, 'sp_venue' ) ) {
-			$classes[] = 'sp-has-venue';
+		$show_venue = get_option( 'sportspress_event_show_venue', 'yes' ) == 'yes' ? true : false;
+		if ( $show_venue && get_the_terms( $id, 'sp_venue' ) ) {
+			if ( get_option( 'sportspress_event_show_maps', 'yes' ) == 'yes' ) {
+				$classes[] = 'sp-has-venue';
+			}
 		}
 		if ( 'results' == sp_get_status( $id ) ) {
-			$classes[] = 'sp-has-results';
+			if ( get_option( 'sportspress_event_show_results', 'yes' ) == 'yes' ) {
+				$classes[] = 'sp-has-results';
+			}
 		}
 	} elseif ( 'sp_team' == $post_type && 'yes' == get_option( 'sportspress_team_show_logo', 'yes' ) ) {
 		$classes[] = 'sp-show-image';
