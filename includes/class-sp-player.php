@@ -134,8 +134,8 @@ class SP_Player extends SP_Custom_Post {
 			if ( is_array( $posts ) ) {
 				foreach ( $posts as $post ) {
 					// Get visibility
-					$visibility = get_post_meta( $post->ID, 'sp_visibility', true );
-					if ( ! is_array( $visibility ) || in_array( 'sp_player', $visibility ) ) {
+					$visible = get_post_meta( $post->ID, 'sp_visible', true );
+					if ( '' === $visible || $visible ) {
 						$usecolumns[] = $post->post_name;
 					}
 				}

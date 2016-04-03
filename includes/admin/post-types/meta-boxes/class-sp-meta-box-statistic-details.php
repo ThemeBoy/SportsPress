@@ -25,15 +25,12 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$precision = get_post_meta( $post->ID, 'sp_precision', true );
 		$section = get_post_meta( $post->ID, 'sp_section', true );
-		$visibility = get_post_meta( $post->ID, 'sp_visibility', true );
-
-		// Options
-		$visibility_options = apply_filters( 'sportspress_statistic_visibility_options', array( 'sp_event', 'sp_player' ) );
+		$visible = get_post_meta( $post->ID, 'sp_visible', true );
 
 		// Defaults
 		if ( '' === $precision ) $precision = 0;
 		if ( '' === $section ) $section = -1;
-		if ( ! is_array( $visibility ) ) $visibility = $visibility_options;
+		if ( '' === $visible ) $visible = 1;
 		?>
 		<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
 		<p>
@@ -55,16 +52,23 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 				?>
 			</select>
 		</p>
-		<p><strong><?php _e( 'Visibility', 'sportspress' ); ?></strong></p>
-		<ul class="categorychecklist form-no-clear">
-			<?php foreach ( $visibility_options as $option ) { $object = get_post_type_object( $option ); ?>
+		<p>
+			<strong><?php _e( 'Visible', 'sportspress' ); ?></strong>
+			<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Display in player profile?', 'sportspress' ); ?>"></i>
+		</p>
+		<ul class="sp-visible-selector">
 			<li>
 				<label class="selectit">
-					<input name="sp_visibility[]" id="sp_visibility_<?php echo $option; ?>" type="checkbox" value="<?php echo $option; ?>" <?php checked( in_array( $option, $visibility ) ); ?>>
-					<?php echo $object->labels->singular_name; ?>
+					<input name="sp_visible" id="sp_visible_yes" type="radio" value="1" <?php checked( $visible ); ?>>
+					<?php _e( 'Yes', 'sportspress' ); ?>
 				</label>
 			</li>
-			<?php } ?>
+			<li>
+				<label class="selectit">
+					<input name="sp_visible" id="sp_visible_no" type="radio" value="0" <?php checked( ! $visible ); ?>>
+					<?php _e( 'No', 'sportspress' ); ?>
+				</label>
+			</li>
 		</ul>
 		<?php
 	}
@@ -76,7 +80,7 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		self::delete_duplicate( $_POST );
 		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1 ) );
 		update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
-		update_post_meta( $post_id, 'sp_visibility', (array) sp_array_value( $_POST, 'sp_visibility', array() ) );
+		update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1 ) );
 	}
 
 }
