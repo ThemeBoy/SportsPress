@@ -136,7 +136,7 @@ class SportsPress_Scoreboards {
 					'title' 	=> __( 'Limit', 'sportspress' ),
 					'id' 		=> 'sportspress_scoreboard_limit',
 					'class' 	=> 'small-text',
-					'default'	=> '20',
+					'default'	=> '8',
 					'desc' 		=> __( 'events', 'sportspress' ),
 					'type' 		=> 'number',
 					'custom_attributes' => array(
@@ -149,7 +149,7 @@ class SportsPress_Scoreboards {
 					'title' 	=> __( 'Width', 'sportspress' ),
 					'id' 		=> 'sportspress_scoreboard_width',
 					'class' 	=> 'small-text',
-					'default'	=> '100',
+					'default'	=> '120',
 					'desc' 		=> 'px',
 					'type' 		=> 'number',
 					'custom_attributes' => array(

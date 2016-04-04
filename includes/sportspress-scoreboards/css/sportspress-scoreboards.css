@@ -1,5 +1,4 @@
 .sp-scoreboard-wrapper {
-	overflow: hidden;
 	padding: 0 35px;
 	position: relative;
 }
@@ -42,9 +41,7 @@
 }
 
 .sp-scoreboard-nav-disabled {
-	opacity: 0.25;
-	cursor: default;
-	pointer-events: none;
+	display: none;
 }
 
 .sp-scoreboard-content {
