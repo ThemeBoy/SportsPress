@@ -29,6 +29,13 @@ class SP_Modules {
 					'icon' => 'sp-icon-calendar',
 					'desc' => __( 'Organize and publish calendars using different layouts.', 'sportspress' ),
 				),
+				'scoreboards' => array(
+					'label' => __( 'Scoreboards', 'sportspress' ),
+					'class' => 'SportsPress_Scoreboards',
+					'icon' => 'sp-icon-scoreboard',
+					'link' => 'http://tboy.co/pro',
+					'desc' => __( 'Display multiple event results in a horizontal scoreboard.', 'sportspress' ),
+				),
 				'match_stats' => array(
 					'label' => __( 'Match Stats', 'sportspress' ),
 					'class' => 'SportsPress_Match_Stats',
