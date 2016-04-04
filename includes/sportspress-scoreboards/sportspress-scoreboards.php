@@ -144,7 +144,7 @@ class SportsPress_Scoreboards {
 				),
 
 				array(
-					'title' 	=> __( 'Pagination', 'sportspress' ),
+					'title' 	=> __( 'Scroll', 'sportspress' ),
 					'id' 		=> 'sportspress_scoreboard_step',
 					'class' 	=> 'small-text',
 					'default'	=> '2',
