@@ -77,7 +77,7 @@ class SportsPress_Countdowns {
 	public function add_settings( $settings ) {
 		$settings = array_merge( $settings,
 			array(
-				array( 'title' => __( 'Countdowns', 'sportspress' ), 'type' => 'title', 'id' => 'countdown_options' ),
+				array( 'title' => __( 'Countdown', 'sportspress' ), 'type' => 'title', 'id' => 'countdown_options' ),
 			),
 
 			apply_filters( 'sportspress_countdown_options', array(
