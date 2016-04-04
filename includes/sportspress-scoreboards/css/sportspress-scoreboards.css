@@ -13,14 +13,11 @@
 	width: 35px;
 	height: 100%;
 	cursor: pointer;
+	padding: 0;
 }
 
-.sp-scoreboard-prev {
-	left: 0;
-}
-	
-.sp-scoreboard-next {
-	right: 0;
+.sp-scoreboard-nav:focus {
+	outline: none;
 }
 
 .sp-scoreboard-prev:before,
@@ -30,14 +27,6 @@
 	top: 50%;
 	margin-left: -10px;
 	margin-top: -10px;
-}
-
-.sp-scoreboard-prev:before {
-	content: "\f341";
-}
-
-.sp-scoreboard-next:before {
-	content: "\f345";
 }
 
 .sp-scoreboard-nav-disabled {
@@ -55,7 +44,7 @@
 }
 
 .sp-scoreboard td {
-	width: 100px;
+	width: 125px;
 	padding: 0;
 }
 
@@ -82,8 +71,4 @@
 .sp-scoreboard-team img {
 	width: 16px;
 	vertical-align: middle;
-}
-
-.sp-scoreboard-result {
-	float: right;
 }

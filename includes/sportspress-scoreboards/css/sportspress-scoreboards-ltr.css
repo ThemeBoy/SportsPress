@@ -1,23 +1,23 @@
 .sp-scoreboard-prev {
-	right: 0;
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-}
-
-.sp-scoreboard-next {
 	left: 0;
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 }
 
-.sp-scoreboard-prev:before {
-	content: "\f345";
+.sp-scoreboard-next {
+	right: 0;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
 }
 
-.sp-scoreboard-next:before {
+.sp-scoreboard-prev:before {
 	content: "\f341";
 }
 
+.sp-scoreboard-next:before {
+	content: "\f345";
+}
+
 .sp-scoreboard-result {
-	float: left;
+	float: right;
 }

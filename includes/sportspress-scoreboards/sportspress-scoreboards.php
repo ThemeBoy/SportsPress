@@ -28,15 +28,16 @@ class SportsPress_Scoreboards {
 		// Define constants
 		$this->define_constants();
 
-		// Include required files
-		//$this->includes();
-
 		// Hooks
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_event_settings', array( $this, 'add_settings' ) );
 	    add_filter( 'sportspress_locate_template', array( $this, 'locate_template' ), 20, 3 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
+		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
+		add_shortcode( 'event_scoreboard', array( $this, 'shortcode' ) );
+		add_filter( 'sportspress_shortcodes', array( $this, 'add_shortcodes' ) );
+		add_filter( 'sportspress_tinymce_strings', array( $this, 'add_tinymce_strings' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'sportspress_frontend_css', array( $this, 'frontend_css' ) );
 	}
@@ -53,22 +54,6 @@ class SportsPress_Scoreboards {
 
 		if ( !defined( 'SP_SCOREBOARDS_DIR' ) )
 			define( 'SP_SCOREBOARDS_DIR', plugin_dir_path( __FILE__ ) );
-	}
-
-	/**
-	 * Include required files.
-	*/
-	private function includes() {
-		if ( ! is_admin() || defined( 'DOING_AJAX' ) ) {
-			$this->frontend_includes();
-		}
-	}
-
-	/**
-	 * Include required frontend files.
-	 */
-	public function frontend_includes() {
-		include_once( 'includes/class-sp-scoreboard-template-loader.php' );
 	}
 
 	/**
@@ -149,7 +134,7 @@ class SportsPress_Scoreboards {
 					'title' 	=> __( 'Width', 'sportspress' ),
 					'id' 		=> 'sportspress_scoreboard_width',
 					'class' 	=> 'small-text',
-					'default'	=> '120',
+					'default'	=> '125',
 					'desc' 		=> 'px',
 					'type' 		=> 'number',
 					'custom_attributes' => array(
@@ -232,6 +217,13 @@ class SportsPress_Scoreboards {
 				'version' => SP_SCOREBOARDS_VERSION,
 				'media'   => 'all'
 			);
+		} else {
+			$styles['sportspress-scoreboards-ltr'] = array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', SP_SCOREBOARDS_URL ) . 'css/sportspress-scoreboards-ltr.css',
+				'deps'    => 'sportspress-scoreboards',
+				'version' => SP_SCOREBOARDS_VERSION,
+				'media'   => 'all'
+			);
 		}
 		return $styles;
 	}
@@ -244,6 +236,48 @@ class SportsPress_Scoreboards {
 	 */
 	public function load_scripts() {
 		wp_enqueue_script( 'sportspress-scoreboards', SP_SCOREBOARDS_URL .'js/sportspress-scoreboards.js', array( 'jquery' ), time(), true );
+	}
+
+	/**
+	 * Register widgets
+	 */
+	public static function widgets() {
+		include_once( 'includes/class-sp-widget-event-scoreboard.php' );
+	}
+
+	/**
+	 * Add scoreboard shortcode.
+	 *
+	 * @param array $atts
+	 */
+	public static function shortcode( $atts ) {
+
+		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
+			$atts['id'] = $atts[0];
+
+		ob_start();
+
+		echo '<div class="sportspress">';
+		sp_get_template( 'event-scoreboard.php', $atts, '', trailingslashit( SP_SCOREBOARDS_DIR ) . 'templates/' );
+		echo '</div>';
+
+		return ob_get_clean();
+	}
+
+	/**
+	 * Add shortcodes to TinyMCE
+	 */
+	public static function add_shortcodes( $shortcodes ) {
+		$shortcodes['event'][] = 'scoreboard';
+		return $shortcodes;
+	}
+
+	/**
+	 * Add strings to TinyMCE
+	 */
+	public static function add_tinymce_strings( $strings ) {
+		$strings['scoreboard'] = __( 'Scoreboard', 'sportspress' );
+		return $strings;
 	}
 
 	/**

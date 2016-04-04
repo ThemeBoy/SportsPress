@@ -18,7 +18,7 @@ $defaults = array(
 	'league' => null,
 	'season' => null,
 	'number' => get_option( 'sportspress_scoreboard_limit', 20 ),
-	'width' => get_option( 'sportspress_scoreboard_width', 120 ),
+	'width' => get_option( 'sportspress_scoreboard_width', 125 ),
 	'step' => get_option( 'sportspress_scoreboard_step', 2 ),
 	'show_team_logo' => get_option( 'sportspress_scoreboard_show_logos', 'no' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
@@ -49,14 +49,16 @@ if ( $season )
 if ( $order != 'default' )
 	$calendar->order = $order;
 $data = $calendar->data();
+
+$post_id = get_the_ID();
 ?>
 <div class="sp-template sp-template-scoreboard">
 	<div class="sp-scoreboard-wrapper">
-		<a href="#prev" class="sp-scoreboard-prev sp-scoreboard-nav sp-scoreboard-nav-disabled sp-highlight" data-sp-step="<?php echo $width * $step; ?>"></a>
+		<button href="#" class="sp-scoreboard-prev sp-scoreboard-nav sp-scoreboard-nav-disabled" data-sp-step="<?php echo $width * $step; ?>"></button>
 		<div class="sp-scoreboard-content">
 			<table class="sp-scoreboard sp-data-table">
 				<tbody>
-					<tr class="sp-row">
+					<tr class="sp-row alternate">
 						<?php
 						$i = 0;
 
@@ -73,7 +75,7 @@ $data = $calendar->data();
 							$permalink = get_post_permalink( $event, false, true );
 							$status = sp_get_status( $event->ID );
 							?>
-							<td class="data-name" style="width:<?php echo $width; ?>px;">
+							<td class="data-name<?php if ( $post_id === $event->ID ) { ?> sp-highlight<?php } ?>" style="width:<?php echo $width; ?>px;">
 								<a href="<?php echo $permalink; ?>" class="sp-scoreboard-event">
 									<?php if ( $show_date ) { ?>
 										<span class="sp-scoreboard-date"><?php sp_the_date( $event->ID, 'M j' ); ?></span>
@@ -140,7 +142,7 @@ $data = $calendar->data();
 				</tbody>
 			</table>
 		</div>
-		<a href="#next" class="sp-scoreboard-next sp-scoreboard-nav sp-highlight" data-sp-step="<?php echo $width * $step; ?>"></a>
+		<button href="#" class="sp-scoreboard-next sp-scoreboard-nav" data-sp-step="<?php echo $width * $step; ?>"></button>
 	</div>
 	<?php
 	if ( $id && $show_all_events_link )
