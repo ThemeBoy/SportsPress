@@ -18,6 +18,8 @@ $status = $event->status();
 
 if ( 'results' != $status ) return;
 
+if ( ! isset( $caption ) ) $caption = __( 'Results', 'sportspress' );
+
 // Get event result data
 $data = $event->results();
 
@@ -95,7 +97,7 @@ if ( empty( $table_rows ) ):
 
 else:
 
-	$output .= '<h4 class="sp-table-caption">' . __( 'Results', 'sportspress' ) . '</h4>';
+	$output .= '<h4 class="sp-table-caption">' . $caption . '</h4>';
 
 	$output .= '<div class="sp-table-wrapper">' .
 		'<table class="sp-event-results sp-data-table' . ( $scrollable ? ' sp-scrollable-table' : '' ) . '"><thead>' .

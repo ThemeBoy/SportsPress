@@ -22,7 +22,7 @@ class SP_Meta_Box_Event_Shortcode {
 		$shortcodes = apply_filters( 'sportspress_event_shortcodes', array(
 			'event_results' => __( 'Results', 'sportspress' ),
 			'event_details' => __( 'Details', 'sportspress' ),
-			'event_performance' => __( 'Scorecard', 'sportspress' ),
+			'event_performance' => __( 'Box Score', 'sportspress' ),
 		) );
 		if ( $shortcodes ) {
 		?>

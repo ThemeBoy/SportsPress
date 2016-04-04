@@ -21,8 +21,17 @@ function sp_get_time( $post = 0, $format = null ) {
 	return get_post_time( $format, false, $post, true );
 }
 
-function sp_the_time( $post = 0 ) {
-	echo sp_get_time( $post );
+function sp_the_time( $post = 0, $format = null ) {
+	echo sp_get_time( $post, $format );
+}
+
+function sp_get_date( $post = 0, $format = null ) {
+	if ( null == $format ) $format = get_option( 'date_format' );
+	return get_post_time( $format, false, $post, true );
+}
+
+function sp_the_date( $post = 0, $format = null ) {
+	echo sp_get_date( $post, $format );
 }
 
 function sp_get_posts( $post_type = 'post', $args = array() ) {
@@ -44,6 +53,28 @@ function sp_get_seasons( $post = 0, $ids = true ) {
 	$terms = get_the_terms( $post, 'sp_season' );
 	if ( $terms && $ids ) $terms = wp_list_pluck( $terms, 'term_id' );
 	return $terms;
+}
+
+function sp_the_leagues( $post = 0, $delimiter = ', ' ) {
+	$terms = sp_get_leagues( $post, false );
+	$arr = array();
+	if ( $terms ) {
+		foreach ( $terms as $term ):
+			$arr[] = $term->name;
+		endforeach;
+	}
+	echo implode( $delimiter, $arr ); 
+}
+
+function sp_the_seasons( $post = 0, $delimiter = ', ' ) {
+	$terms = sp_get_seasons( $post, false );
+	$arr = array();
+	if ( $terms ) {
+		foreach ( $terms as $term ):
+			$arr[] = $term->name;
+		endforeach;
+	}
+	echo implode( $delimiter, $arr ); 
 }
 
 /*
@@ -209,6 +240,17 @@ function sp_get_venues( $post = 0, $ids = true ) {
 	return $terms;
 }
 
+function sp_the_venues( $post = 0, $delimiter = ', ' ) {
+	$terms = sp_get_venues( $post, false );
+	$arr = array();
+	if ( $terms ) {
+		foreach ( $terms as $term ):
+			$arr[] = $term->name;
+		endforeach;
+	}
+	echo implode( $delimiter, $arr ); 
+}
+
 function sp_is_home_venue( $post = 0, $event = 0 ) {
 	$pv = sp_get_venues( $post );
 	$ev = sp_get_venues( $event );
@@ -229,6 +271,19 @@ function sp_the_logo( $post = 0, $size = 'icon', $attr = array() ) {
 
 function sp_team_logo( $post = 0 ) {
 	sp_get_template( 'team-logo.php', array( 'id' => $post ) );
+}
+
+function sp_get_short_name( $post = 0 ) {
+	$abbreviation = sp_get_abbreviation( $post, 'sp_abbreviation', true );
+	if ( $abbreviation ) {
+		return $abbreviation;
+	} else {
+		return get_the_title( $post );
+	}
+}
+
+function sp_short_name( $post = 0 ) {
+	echo sp_get_short_name( $post );
 }
 
 function sp_team_details( $post = 0 ) {
