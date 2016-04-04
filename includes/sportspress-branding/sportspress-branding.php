@@ -252,7 +252,8 @@ class SportsPress_Branding {
 				border-color: #<?php echo $highlight->darken(6.5); ?>;
 				-webkit-box-shadow: inset 0 1px 0 #<?php echo $highlight->lighten(7); ?>, 0 1px 0 rgba(0, 0, 0, 0.15);
 				box-shadow: inset 0 1px 0 #<?php echo $highlight->lighten(7); ?>, 0 1px 0 rgba(0, 0, 0, 0.15);
-			}
+				text-shadow: 0 -1px 1px #<?php echo $highlight->darken(6.5); ?>, 1px 0 1px #<?php echo $highlight->darken(6.5); ?>, 0 1px 1px #<?php echo $highlight->darken(6.5); ?>, -1px 0 1px #<?php echo $highlight->darken(6.5); ?>;
+ 			}
 
 			.wp-core-ui .button-primary:hover, .wp-core-ui .button-primary:focus {
 				background: #<?php echo $highlight->darken(3) ?>;
@@ -275,6 +276,11 @@ class SportsPress_Branding {
 				background: #<?php echo $highlight->darken(10); ?> !important;
 				border-color: #<?php echo $highlight->darken(20); ?> !important;
 				text-shadow: none !important;
+			}
+			
+			.wp-core-ui .button.button-primary.button-hero {
+				-webkit-box-shadow: 0 2px 0 #<?php echo $highlight->darken(6.5); ?>;
+				box-shadow: 0 2px 0 #<?php echo $highlight->darken(6.5); ?>;
 			}
 
 			.wp-core-ui .wp-ui-primary {
