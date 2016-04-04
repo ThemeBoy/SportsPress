@@ -130,6 +130,9 @@
 .sp-icon-tournament:before {
 	content: "\f313";
 }
+.sp-icon-scoreboard:before {
+	content: "\f509";
+}
 .sp-icon-tshirt:before,
 .sp-icon-sp_player:before {
 	content: "\f307";
