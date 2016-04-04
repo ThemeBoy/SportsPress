@@ -1331,7 +1331,7 @@ if ( !function_exists( 'sp_taxonomy_field' ) ) {
 function sp_get_text_options() {
 	$strings = apply_filters( 'sportspress_text', array(
 		__( 'Article', 'sportspress' ),
-		__( 'Scorecard', 'sportspress' ),
+		__( 'Box Score', 'sportspress' ),
 		__( 'Career Total', 'sportspress' ),
 		__( 'Current Team', 'sportspress' ),
 		__( 'Current Teams', 'sportspress' ),

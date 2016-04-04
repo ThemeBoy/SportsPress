@@ -74,7 +74,7 @@ class SP_Templates {
 						'default' => 'yes',
 					),
 					'performance' => array(
-						'title' => __( 'Scorecard', 'sportspress' ),
+						'title' => __( 'Box Score', 'sportspress' ),
 						'option' => 'sportspress_event_show_performance',
 						'action' => 'sportspress_output_event_performance',
 						'default' => 'yes',

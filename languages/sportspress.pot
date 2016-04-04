@@ -116,7 +116,7 @@ msgstr ""
 #: includes/admin/settings/class-sp-settings-events.php:303
 #: includes/sp-core-functions.php:1316 modules/sportspress-tutorials.php:93
 #: templates/event-performance.php:108
-msgid "Scorecard"
+msgid "Box Score"
 msgstr ""
 
 #: assets/js/admin/editor-lang.php:31

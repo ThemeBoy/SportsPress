@@ -105,7 +105,7 @@ if ( is_array( $teams ) ):
 			'show_players' => $show_players,
 			'show_numbers' => $show_numbers,
 			'show_total' => $show_total,
-			'caption' => __( 'Scorecard', 'sportspress' ),
+			'caption' => __( 'Box Score', 'sportspress' ),
 			'labels' => $labels,
 			'formats' => $formats,
 			'mode' => $mode,
