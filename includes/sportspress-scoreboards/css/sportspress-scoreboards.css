@@ -1,0 +1,92 @@
+.sp-scoreboard-wrapper {
+	overflow: hidden;
+	padding: 0 35px;
+	position: relative;
+}
+
+.sp-scoreboard-nav {
+	font-family: dashicons;
+	font-size: 20px;
+	line-height: 20px;
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 35px;
+	height: 100%;
+	cursor: pointer;
+}
+
+.sp-scoreboard-prev {
+	left: 0;
+}
+	
+.sp-scoreboard-next {
+	right: 0;
+}
+
+.sp-scoreboard-prev:before,
+.sp-scoreboard-next:before {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -10px;
+	margin-top: -10px;
+}
+
+.sp-scoreboard-prev:before {
+	content: "\f341";
+}
+
+.sp-scoreboard-next:before {
+	content: "\f345";
+}
+
+.sp-scoreboard-nav-disabled {
+	opacity: 0.25;
+	cursor: default;
+	pointer-events: none;
+}
+
+.sp-scoreboard-content {
+	overflow: hidden;
+}
+	
+.sp-scoreboard {
+    table-layout: fixed;
+    margin: 0 !important;
+    position: relative;
+}
+
+.sp-scoreboard td {
+	width: 100px;
+	padding: 0;
+}
+
+.sp-scoreboard a {
+	color: inherit;
+}
+
+.sp-scoreboard-event {
+	display: block;
+	padding: 5px 10px 0;
+	overflow: hidden;
+}
+
+.sp-scoreboard-date,
+.sp-scoreboard-time,
+.sp-scoreboard-league,
+.sp-scoreboard-season,
+.sp-scoreboard-venue,
+.sp-scoreboard-team {
+	display: block;
+	margin: 0 0 5px;
+}
+
+.sp-scoreboard-team img {
+	width: 16px;
+	vertical-align: middle;
+}
+
+.sp-scoreboard-result {
+	float: right;
+}

@@ -1,0 +1,108 @@
+.post-state-format.post-format-scoreboard:before, .post-format-icon.post-format-scoreboard:before, a.post-state-format.format-scoreboard:before {
+	content: "\f509";
+}
+
+table.sp-tournament-container tbody {
+	background: #f9f9f9;
+}
+
+table.sp-tournament-container td {
+	padding-right: 0;
+}
+
+table.sp-tournament-container th {
+	padding-right: 0;
+}
+
+table.sp-tournament-container th:last-child {
+	padding-right: 10px;
+}
+
+table.sp-tournament-container th input {
+	padding: 3px 5px;
+	margin: 0;
+}
+
+table.sp-tournament-container .sp-team {
+	position: relative;
+}
+
+table.sp-tournament-container .sp-team:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 14px;
+	border-left: 7px solid #e5e5e5;
+	border-top: 7px solid transparent;
+	border-bottom: 7px solid transparent;
+}
+
+table.sp-tournament-container .sp-team-hidden select {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+table.sp-tournament-container .sp-first-round:before {
+	border: none;
+}
+
+table.sp-tournament-container .sp-event {
+	border-right: 1px solid #e5e5e5;
+	vertical-align: middle;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-right: 10px;
+	position: relative;
+}
+
+table.sp-tournament-container .sp-event .sp-edit {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	display: none;
+	cursor: pointer;
+}
+
+table.sp-tournament-container .sp-event .sp-hide {
+	position: absolute;
+	bottom: 5px;
+	right: 10px;
+	display: none;
+	cursor: pointer;
+}
+
+table.sp-tournament-container .sp-event .sp-hide:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+table.sp-tournament-container .sp-event-hidden label {
+	opacity: 0.5;
+}
+
+table.sp-tournament-container .sp-event-hidden input {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+table.sp-tournament-container .sp-event-hidden .sp-hide {
+	display: block;
+}
+
+table.sp-tournament-container .sp-event-hidden .sp-hide:before {
+	color: #888;
+}
+
+table.sp-tournament-container .sp-event:hover .sp-edit,
+table.sp-tournament-container .sp-event:hover .sp-hide {
+	display: block;
+}
+
+table.sp-tournament-container .sp-last-round {
+	padding-right: 10px;
+	border-right: 0;
+}
+
+table.sp-tournament-container select {
+	width: 99%;
+}
