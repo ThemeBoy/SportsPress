@@ -25,6 +25,15 @@ function sp_the_time( $post = 0 ) {
 	echo sp_get_time( $post );
 }
 
+function sp_get_date( $post = 0, $format = null ) {
+	if ( null == $format ) $format = get_option( 'date_format' );
+	return get_post_time( $format, false, $post, true );
+}
+
+function sp_the_date( $post = 0 ) {
+	echo sp_get_date( $post );
+}
+
 function sp_get_posts( $post_type = 'post', $args = array() ) {
 	$args = array_merge( array(
 		'post_type' => $post_type,
@@ -229,6 +238,19 @@ function sp_the_logo( $post = 0, $size = 'icon', $attr = array() ) {
 
 function sp_team_logo( $post = 0 ) {
 	sp_get_template( 'team-logo.php', array( 'id' => $post ) );
+}
+
+function sp_get_short_name( $post = 0 ) {
+	$abbreviation = sp_get_abbreviation( $post, 'sp_abbreviation', true );
+	if ( $abbreviation ) {
+		return $abbreviation;
+	} else {
+		return get_the_title( $post );
+	}
+}
+
+function sp_short_name( $post = 0 ) {
+	echo sp_get_short_name( $post );
 }
 
 function sp_team_details( $post = 0 ) {
