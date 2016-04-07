@@ -14,31 +14,63 @@ jQuery(document).ready(function($){
 		$parent = $(this).siblings(".sp-scoreboard-content");
 		$el = $parent.find(".sp-scoreboard");
 		if ( $el.is(":animated") ) return false;
-		left = $el.position().left;
-		if ( $(this).hasClass("sp-scoreboard-prev") ) {
-			$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-next").removeClass("sp-scoreboard-nav-disabled");
-			if ( left >= $wrapper.innerWidth() - $parent.outerWidth() - step - $(this).outerWidth() ) {
-				$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-prev").addClass("sp-scoreboard-nav-disabled");
-				$el.animate({
-					left : 0
-				});
+		
+		if ("rtl" === $("html").attr("dir")) {
+			left = $el.position().left;
+			
+			if ( $(this).hasClass("sp-scoreboard-prev") ) {
+				overflow = $el.outerWidth() - $parent.innerWidth() + left;
+				$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-next").removeClass("sp-scoreboard-nav-disabled");
+				if ( overflow <= step + $(this).outerWidth() ) {
+					$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-prev").addClass("sp-scoreboard-nav-disabled");
+					$el.animate({
+						right : 0
+					});
+				} else {
+					$el.animate({
+						right : "+=" + step
+					});
+				}
 			} else {
-				$el.animate({
-					left : "+=" + step
-				});
+				$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-prev").removeClass("sp-scoreboard-nav-disabled");
+				if ( left >= $(this).outerWidth() - step ) {
+					$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-next").addClass("sp-scoreboard-nav-disabled");
+					$el.animate({
+						right : $parent.innerWidth() - $el.outerWidth()
+					});
+				} else {
+					$el.animate({
+						right : "-=" + step
+					});
+				}
 			}
 		} else {
-			$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-prev").removeClass("sp-scoreboard-nav-disabled");
-			overflow = $el.outerWidth() - $parent.innerWidth() + left;
-			if ( overflow <= step + $(this).outerWidth() ) {
-				$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-next").addClass("sp-scoreboard-nav-disabled");
-				$el.animate({
-					left : $parent.innerWidth() - $el.outerWidth()
-				});
+			left = $el.position().left;
+			if ( $(this).hasClass("sp-scoreboard-prev") ) {
+				$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-next").removeClass("sp-scoreboard-nav-disabled");
+				if ( left >= $wrapper.innerWidth() - $parent.outerWidth() - step - $(this).outerWidth() ) {
+					$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-prev").addClass("sp-scoreboard-nav-disabled");
+					$el.animate({
+						left : 0
+					});
+				} else {
+					$el.animate({
+						left : "+=" + step
+					});
+				}
 			} else {
-				$el.animate({
-					left : "-=" + step
-				});
+				$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-prev").removeClass("sp-scoreboard-nav-disabled");
+				overflow = $el.outerWidth() - $parent.innerWidth() + left;
+				if ( overflow <= step + $(this).outerWidth() ) {
+					$(this).closest(".sp-scoreboard-wrapper").find(".sp-scoreboard-next").addClass("sp-scoreboard-nav-disabled");
+					$el.animate({
+						left : $parent.innerWidth() - $el.outerWidth()
+					});
+				} else {
+					$el.animate({
+						left : "-=" + step
+					});
+				}
 			}
 		}
 		return false;
