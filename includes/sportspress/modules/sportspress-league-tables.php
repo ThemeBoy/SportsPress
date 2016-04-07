@@ -39,6 +39,7 @@ class SportsPress_League_Tables {
 		add_filter( 'sportspress_shortcodes', array( $this, 'add_shortcodes' ) );
 		add_filter( 'sportspress_team_settings', array( $this, 'add_settings' ) );
 		add_filter( 'sportspress_team_options', array( $this, 'add_options' ) );
+		add_filter( 'sportspress_after_team_template', array( $this, 'add_team_template' ), 30 );
 	}
 
 	/**
@@ -259,6 +260,22 @@ class SportsPress_League_Tables {
 				),
 			)
 		);
+	}
+
+	/**
+	 * Add team template.
+	 *
+	 * @return array
+	 */
+	public function add_team_template( $templates ) {
+		return array_merge( $templates, array(
+			'tables' => array(
+				'title' => __( 'League Tables', 'sportspress' ),
+				'option' => 'sportspress_team_show_tables',
+				'action' => 'sportspress_output_team_tables',
+				'default' => 'yes',
+			),
+		) );
 	}
 }
 

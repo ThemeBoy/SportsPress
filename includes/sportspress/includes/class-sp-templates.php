@@ -146,18 +146,6 @@ class SP_Templates {
 						'action' => 'sportspress_output_team_staff',
 						'default' => 'yes',
 					),
-					'lists' => array(
-						'title' => __( 'Player Lists', 'sportspress' ),
-						'option' => 'sportspress_team_show_lists',
-						'action' => 'sportspress_output_team_lists',
-						'default' => 'yes',
-					),
-					'tables' => array(
-						'title' => __( 'League Tables', 'sportspress' ),
-						'option' => 'sportspress_team_show_tables',
-						'action' => 'sportspress_output_team_tables',
-						'default' => 'yes',
-					),
 				) )
 			),
 			'table' => array_merge(

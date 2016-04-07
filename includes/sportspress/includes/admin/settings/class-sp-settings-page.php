@@ -100,6 +100,7 @@ class SP_Settings_Page {
 		    	
 		    	<ul class="sp-layout sp-sortable-list ui-sortable">
 		    		<?php foreach ( $templates as $template => $details ) {
+		    			if ( ! is_array( $details ) ) continue;
 		    			$option = sp_array_value( $details, 'option', 'sportspress_' . $this->template . '_show_' . $template );
 		    			$visibility = get_option( $option, sp_array_value( $details, 'default', 'yes' ) );
 		    			?>

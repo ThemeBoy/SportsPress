@@ -29,7 +29,7 @@ class SP_Modules {
 					'icon' => 'sp-icon-calendar',
 					'desc' => __( 'Organize and publish calendars using different layouts.', 'sportspress' ),
 				),
-				'scoreboards' => array(
+				'scoreboard' => array(
 					'label' => __( 'Scoreboards', 'sportspress' ),
 					'class' => 'SportsPress_Scoreboards',
 					'icon' => 'sp-icon-scoreboard',

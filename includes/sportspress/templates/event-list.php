@@ -18,6 +18,7 @@ $defaults = array(
 	'date_to' => 'default',
 	'league' => null,
 	'season' => null,
+	'team' => null,
 	'number' => -1,
 	'show_team_logo' => get_option( 'sportspress_event_list_show_logos', 'no' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
@@ -48,6 +49,8 @@ if ( $league )
 	$calendar->league = $league;
 if ( $season )
 	$calendar->season = $season;
+if ( $team )
+	$calendar->team = $team;
 if ( $order != 'default' )
 	$calendar->order = $order;
 $data = $calendar->data();

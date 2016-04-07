@@ -34,6 +34,9 @@ class SP_Calendar extends SP_Custom_Post {
 	/** @var int The season ID. */
 	public $season;
 
+	/** @var int The team ID. */
+	public $team;
+
 	/**
 	 * __construct function.
 	 *
@@ -109,6 +112,16 @@ class SP_Calendar extends SP_Custom_Post {
 
 		if ( $this->season ):
 			$season_ids = array( $this->season );
+		endif;
+
+		if ( $this->team ):
+			$args['meta_query']	= array(
+				array(
+					'key' => 'sp_team',
+					'value' => array( $this->team ),
+					'compare' => 'IN',
+				),
+			);
 		endif;
 
 		if ( $pagenow != 'post-new.php' ):

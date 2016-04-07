@@ -37,7 +37,9 @@ class SportsPress_Calendars {
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_filter( 'sportspress_shortcodes', array( $this, 'add_shortcodes' ) );
-		add_filter( 'sportspress_event_settings', array( $this, 'add_settings' ) );
+		add_filter( 'sportspress_event_settings', array( $this, 'add_event_settings' ) );
+		add_filter( 'sportspress_team_options', array( $this, 'add_team_options' ) );
+		add_filter( 'sportspress_after_team_template', array( $this, 'add_team_template' ), 40 );
 	}
 
 	/**
@@ -180,11 +182,11 @@ class SportsPress_Calendars {
 	}
 
 	/**
-	 * Add settings.
+	 * Add event settings.
 	 *
 	 * @return array
 	 */
-	public function add_settings( $settings ) {
+	public function add_event_settings( $settings ) {
 		$settings = array_merge( $settings,
 			array(
 				array( 'title' => __( 'Event List', 'sportspress' ), 'type' => 'title', 'id' => 'event_list_options' ),
@@ -305,7 +307,7 @@ class SportsPress_Calendars {
 					'title' 	=> __( 'Limit', 'sportspress' ),
 					'id' 		=> 'sportspress_event_blocks_rows',
 					'class' 	=> 'small-text',
-					'default'	=> '10',
+					'default'	=> '5',
 					'desc' 		=> __( 'events', 'sportspress' ),
 					'type' 		=> 'number',
 					'custom_attributes' => array(
@@ -320,6 +322,44 @@ class SportsPress_Calendars {
 			)
 		);
 		return $settings;
+	}
+
+	/**
+	 * Add team options.
+	 *
+	 * @return array
+	 */
+	public function add_team_options( $options ) {
+		return array_merge( $options,
+			array(
+				array(
+					'title'     => __( 'Events', 'sportspress' ),
+					'id'        => 'sportspress_team_events_format',
+					'default'   => 'title',
+					'type'      => 'select',
+					'options'   => array(
+						'blocks' 	=> __( 'Blocks', 'sportspress' ),
+						'calendar' 	=> __( 'Calendar', 'sportspress' ),
+					),
+				),
+			)
+		);
+	}
+
+	/**
+	 * Add team template.
+	 *
+	 * @return array
+	 */
+	public function add_team_template( $templates ) {
+		return array_merge( $templates, array(
+			'events' => array(
+				'title' => __( 'Events', 'sportspress' ),
+				'option' => 'sportspress_team_show_events',
+				'action' => 'sportspress_output_team_events',
+				'default' => 'no',
+			),
+		) );
 	}
 }
 
