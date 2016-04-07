@@ -56,9 +56,8 @@
 	float: left;
 }
 
-@media only screen and (max-width: 40em) {
-	.sp-pinned-table {
-		left: auto;
-		right: 0;
+@media only screen and (min-width: 601px) {
+	.sp-template-logo + .sp-post-content {
+		clear: right;
 	}
 }

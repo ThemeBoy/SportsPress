@@ -67,6 +67,8 @@ $args = array(
 	'hide_if_empty' => true,
 );
 
+echo '<div class="sp-fixtures-results">';
+
 echo '<div class="sp-widget-align-left">';
 sp_get_template( 'event-blocks.php', $args );
 echo '</div>';
@@ -77,4 +79,6 @@ $args['order'] = 'DESC';
 
 echo '<div class="sp-widget-align-right">';
 sp_get_template( 'event-blocks.php', $args );
+echo '</div>';
+
 echo '</div>';
