@@ -213,7 +213,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 			apply_filters( 'sportspress_event_logo_options', array(
 				array(
 					'title'     => __( 'Display', 'sportspress' ),
-					'desc' 		=> __( 'Display team names', 'sportspress' ),
+					'desc' 		=> __( 'Name', 'sportspress' ),
 					'id' 		=> 'sportspress_event_logos_show_team_names',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
@@ -221,7 +221,15 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 
 				array(
-					'desc' 		=> __( 'Display results', 'sportspress' ),
+					'desc' 		=> __( 'Time', 'sportspress' ),
+					'id' 		=> 'sportspress_event_logos_show_time',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'	=> '',
+				),
+
+				array(
+					'desc' 		=> __( 'Results', 'sportspress' ),
 					'id' 		=> 'sportspress_event_logos_show_results',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
