@@ -307,7 +307,8 @@ function sportspress_pre_get_posts( $query ) {
 		endif;
 	else:
 		if ( isset( $query->query[ 'sp_venue' ] ) ):
-        	$GLOBALS[ 'wp_post_statuses' ][ 'future' ]->public = true;
+			$query->set( 'post_type', 'sp_event' );
+			$GLOBALS[ 'wp_post_statuses' ][ 'future' ]->public = true;
 		endif;
 	endif;
 
