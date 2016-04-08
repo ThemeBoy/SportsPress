@@ -18,17 +18,19 @@ $defaults = array(
 	'date_to' => 'default',
 	'league' => null,
 	'season' => null,
+	'team' => null,
 	'number' => -1,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_event_blocks_paginated', 'yes' ) == 'yes' ? true : false,
-	'rows' => get_option( 'sportspress_event_blocks_rows', 10 ),
+	'rows' => get_option( 'sportspress_event_blocks_rows', 5 ),
 	'order' => 'default',
 	'show_all_events_link' => false,
 	'show_title' => get_option( 'sportspress_event_blocks_show_title', 'no' ) == 'yes' ? true : false,
 	'show_league' => get_option( 'sportspress_event_blocks_show_league', 'no' ) == 'yes' ? true : false,
 	'show_season' => get_option( 'sportspress_event_blocks_show_season', 'no' ) == 'yes' ? true : false,
 	'show_venue' => get_option( 'sportspress_event_blocks_show_venue', 'no' ) == 'yes' ? true : false,
+	'hide_if_empty' => false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -46,10 +48,13 @@ if ( $league )
 	$calendar->league = $league;
 if ( $season )
 	$calendar->season = $season;
+if ( $team )
+	$calendar->team = $team;
 if ( $order != 'default' )
 	$calendar->order = $order;
 $data = $calendar->data();
-$usecolumns = $calendar->columns;
+
+if ( $hide_if_empty && empty( $data ) ) return;
 
 if ( $show_title && false === $title && $id ):
 	$caption = $calendar->caption;
@@ -58,10 +63,6 @@ if ( $show_title && false === $title && $id ):
 	else
 		$title = get_the_title( $id );
 endif;
-
-if ( isset( $columns ) ) {
-	$usecolumns = $columns;
-}
 
 if ( $title )
 	echo '<h4 class="sp-table-caption">' . $title . '</h4>';

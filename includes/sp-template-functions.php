@@ -303,6 +303,19 @@ if ( ! function_exists( 'sportspress_output_team_lists' ) ) {
 		sp_get_template( 'team-lists.php' );
 	}
 }
+if ( ! function_exists( 'sportspress_output_team_events' ) ) {
+
+	/**
+	 * Output the team events.
+	 *
+	 * @access public
+	 * @subpackage	Team/Events
+	 * @return void
+	 */
+	function sportspress_output_team_events() {
+		sp_get_template( 'team-events.php' );
+	}
+}
 
 /** Single League Table ********************************************************/
 
