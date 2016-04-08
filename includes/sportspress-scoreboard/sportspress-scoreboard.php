@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Scoreboards
+Plugin Name: SportsPress Scoreboard
 Plugin URI: http://tboy.co/pro
 Description: Adds a scoreboard layout to SportsPress event calendars.
 Author: ThemeBoy
@@ -11,15 +11,15 @@ Version: 2.0
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'SportsPress_Scoreboards' ) ) :
+if ( ! class_exists( 'SportsPress_Scoreboard' ) ) :
 
 /**
- * Main SportsPress Scoreboards Class
+ * Main SportsPress Scoreboard Class
  *
- * @class SportsPress_Scoreboards
+ * @class SportsPress_Scoreboard
  * @version	2.0
  */
-class SportsPress_Scoreboards {
+class SportsPress_Scoreboard {
 
 	/**
 	 * Constructor
@@ -46,14 +46,14 @@ class SportsPress_Scoreboards {
 	 * Define constants.
 	 */
 	private function define_constants() {
-		if ( !defined( 'SP_SCOREBOARDS_VERSION' ) )
-			define( 'SP_SCOREBOARDS_VERSION', '2.0' );
+		if ( !defined( 'SP_SCOREBOARD_VERSION' ) )
+			define( 'SP_SCOREBOARD_VERSION', '2.0' );
 
-		if ( !defined( 'SP_SCOREBOARDS_URL' ) )
-			define( 'SP_SCOREBOARDS_URL', plugin_dir_url( __FILE__ ) );
+		if ( !defined( 'SP_SCOREBOARD_URL' ) )
+			define( 'SP_SCOREBOARD_URL', plugin_dir_url( __FILE__ ) );
 
-		if ( !defined( 'SP_SCOREBOARDS_DIR' ) )
-			define( 'SP_SCOREBOARDS_DIR', plugin_dir_path( __FILE__ ) );
+		if ( !defined( 'SP_SCOREBOARD_DIR' ) )
+			define( 'SP_SCOREBOARD_DIR', plugin_dir_path( __FILE__ ) );
 	}
 
 	/**
@@ -171,7 +171,7 @@ class SportsPress_Scoreboards {
 		if ( 'event-scoreboard.php' !== $template_name )
 			return $template;
 		
-		$default_path = trailingslashit( SP_SCOREBOARDS_DIR ) . 'templates/';
+		$default_path = trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/';
 
 		// Look within passed path within the theme - this is priority
 		$template = locate_template(
@@ -203,25 +203,25 @@ class SportsPress_Scoreboards {
 	 * Add styles to SP frontend
 	 */
 	public function add_styles( $styles = array() ) {
-		$styles['sportspress-scoreboards'] = array(
-			'src'     => str_replace( array( 'http:', 'https:' ), '', SP_SCOREBOARDS_URL ) . 'css/sportspress-scoreboards.css',
+		$styles['sportspress-scoreboard'] = array(
+			'src'     => str_replace( array( 'http:', 'https:' ), '', SP_SCOREBOARD_URL ) . 'css/sportspress-scoreboard.css',
 			'deps'    => 'sportspress-general',
-			'version' => SP_SCOREBOARDS_VERSION,
+			'version' => SP_SCOREBOARD_VERSION,
 			'media'   => 'all'
 		);
 
 		if ( is_rtl() ) {
-			$styles['sportspress-scoreboards-rtl'] = array(
-				'src'     => str_replace( array( 'http:', 'https:' ), '', SP_SCOREBOARDS_URL ) . 'css/sportspress-scoreboards-rtl.css',
-				'deps'    => 'sportspress-scoreboards',
-				'version' => SP_SCOREBOARDS_VERSION,
+			$styles['sportspress-scoreboard-rtl'] = array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', SP_SCOREBOARD_URL ) . 'css/sportspress-scoreboard-rtl.css',
+				'deps'    => 'sportspress-scoreboard',
+				'version' => SP_SCOREBOARD_VERSION,
 				'media'   => 'all'
 			);
 		} else {
-			$styles['sportspress-scoreboards-ltr'] = array(
-				'src'     => str_replace( array( 'http:', 'https:' ), '', SP_SCOREBOARDS_URL ) . 'css/sportspress-scoreboards-ltr.css',
-				'deps'    => 'sportspress-scoreboards',
-				'version' => SP_SCOREBOARDS_VERSION,
+			$styles['sportspress-scoreboard-ltr'] = array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', SP_SCOREBOARD_URL ) . 'css/sportspress-scoreboard-ltr.css',
+				'deps'    => 'sportspress-scoreboard',
+				'version' => SP_SCOREBOARD_VERSION,
 				'media'   => 'all'
 			);
 		}
@@ -235,7 +235,7 @@ class SportsPress_Scoreboards {
 	 * @return void
 	 */
 	public function load_scripts() {
-		wp_enqueue_script( 'sportspress-scoreboards', SP_SCOREBOARDS_URL .'js/sportspress-scoreboards.js', array( 'jquery' ), time(), true );
+		wp_enqueue_script( 'sportspress-scoreboard', SP_SCOREBOARD_URL .'js/sportspress-scoreboard.js', array( 'jquery' ), time(), true );
 	}
 
 	/**
@@ -258,7 +258,7 @@ class SportsPress_Scoreboards {
 		ob_start();
 
 		echo '<div class="sportspress">';
-		sp_get_template( 'event-scoreboard.php', $atts, '', trailingslashit( SP_SCOREBOARDS_DIR ) . 'templates/' );
+		sp_get_template( 'event-scoreboard.php', $atts, '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' );
 		echo '</div>';
 
 		return ob_get_clean();
@@ -286,7 +286,7 @@ class SportsPress_Scoreboards {
 	public function admin_enqueue_scripts() {
 		$screen = get_current_screen();
 
-		wp_enqueue_style( 'sportspress-scoreboards-admin', SP_SCOREBOARDS_URL . 'css/admin.css', array( 'sportspress-admin-menu-styles' ), time() );
+		wp_enqueue_style( 'sportspress-scoreboard-admin', SP_SCOREBOARD_URL . 'css/admin.css', array( 'sportspress-admin-menu-styles' ), time() );
 	}
 
 	/**
@@ -311,6 +311,6 @@ class SportsPress_Scoreboards {
 
 endif;
 
-if ( get_option( 'sportspress_load_scoreboards_module', 'yes' ) == 'yes' ) {
-	new SportsPress_Scoreboards();
+if ( get_option( 'sportspress_load_scoreboard_module', 'yes' ) == 'yes' ) {
+	new SportsPress_Scoreboard();
 }

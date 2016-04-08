@@ -33,7 +33,7 @@ class SP_Widget_Event_Scoreboard extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'event-scoreboard' );
 
-		sp_get_template( 'event-scoreboard.php', array( 'id' => $id, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'number' => $number, 'order' => $order, 'show_all_events_link' => $show_all_events_link ), '', trailingslashit( SP_SCOREBOARDS_DIR ) . 'templates/' );
+		sp_get_template( 'event-scoreboard.php', array( 'id' => $id, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'number' => $number, 'order' => $order, 'show_all_events_link' => $show_all_events_link ), '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'event-scoreboard' );
