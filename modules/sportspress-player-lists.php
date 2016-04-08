@@ -38,6 +38,7 @@ class SportsPress_Player_Lists {
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_filter( 'sportspress_shortcodes', array( $this, 'add_shortcodes' ) );
 		add_filter( 'sportspress_player_settings', array( $this, 'add_settings' ) );
+		add_filter( 'sportspress_after_team_template', array( $this, 'add_team_template' ), 20 );
 	}
 
 	/**
@@ -247,6 +248,22 @@ class SportsPress_Player_Lists {
 			array(
 				array( 'type' => 'sectionend', 'id' => 'list_options' ),
 			)
+		) );
+	}
+
+	/**
+	 * Add team template.
+	 *
+	 * @return array
+	 */
+	public function add_team_template( $templates ) {
+		return array_merge( $templates, array(
+			'lists' => array(
+				'title' => __( 'Player Lists', 'sportspress' ),
+				'option' => 'sportspress_team_show_lists',
+				'action' => 'sportspress_output_team_lists',
+				'default' => 'yes',
+			),
 		) );
 	}
 }
