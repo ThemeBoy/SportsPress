@@ -1271,16 +1271,16 @@ if ( !function_exists( 'sp_sort_table_teams' ) ) {
 
 if ( !function_exists( 'sp_get_next_event' ) ) {
 	function sp_get_next_event( $args = array() ) {
-			$options = array(
-				'post_type' => 'sp_event',
-				'posts_per_page' => 1,
-				'order' => 'ASC',
-				'post_status' => 'future',
-				'meta_query' => $args,
-			);
-			$posts = get_posts( $options );
-			if ( $posts && is_array( $posts ) ) return array_pop( $posts );
-			else return false;
+		$options = array(
+			'post_type' => 'sp_event',
+			'posts_per_page' => 1,
+			'order' => 'ASC',
+			'post_status' => 'future',
+		);
+		$options = array_merge( $options, $args );
+		$posts = get_posts( $options );
+		if ( $posts && is_array( $posts ) ) return array_pop( $posts );
+		else return false;
 	}
 }
 

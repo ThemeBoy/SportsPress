@@ -25,7 +25,7 @@ if ( isset( $id ) ):
 else:
 	$args = array();
 	if ( isset( $team ) )
-		$args = array( array( 'key' => 'sp_team', 'value' => $team ) );
+		$args = array( 'meta_query' => array( array( 'key' => 'sp_team', 'value' => $team ) ) );
 	$post = sp_get_next_event( $args );
 endif;
 
