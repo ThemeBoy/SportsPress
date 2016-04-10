@@ -30,6 +30,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.sp-icon-api:before {
+	content: "\f237";
+}
 .sp-icon-archive:before {
 	content: "\f322";
 }
