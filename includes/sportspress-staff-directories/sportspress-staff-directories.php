@@ -61,6 +61,9 @@ class SportsPress_Staff_Directories {
 		add_filter( 'sportspress_tinymce_strings', array( $this, 'add_tinymce_strings' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_filter( 'sportspress_team_access_post_types', array( $this, 'add_post_type' ) );
+		
+		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
+		add_action( 'sportspress_register_rest_fields', array( $this, 'register_rest_fields' ) );
 
 		if ( defined( 'SP_PRO_PLUGIN_FILE' ) )
 			register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
@@ -138,11 +141,14 @@ class SportsPress_Staff_Directories {
 					'exclude_from_search' 	=> false,
 					'hierarchical' 			=> false,
 					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_directory_slug', 'directory' ) ),
-					'supports' 				=> array( 'title', 'author', 'thumbnail' ),
+					'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' 			=> 'edit.php?post_type=sp_staff',
 					'show_in_admin_bar' 	=> true,
+					'show_in_rest' 			=> true,
+					'rest_controller_class' => 'SP_REST_Posts_Controller',
+					'rest_base' 			=> 'directories',
 				)
 			)
 		);
@@ -442,10 +448,92 @@ class SportsPress_Staff_Directories {
 		$strings['directory'] = __( 'Directory', 'sportspress' );
 		return $strings;
 	}
+
+	/**
+	 * Create REST API routes.
+	 */
+	public function create_rest_routes() {
+		$controller = new SP_REST_Posts_Controller( 'sp_directory' );
+		$controller->register_routes();
+	}
+
+	/**
+	 * Register REST API fields.
+	 */
+	public function register_rest_fields() {
+		register_rest_field( 'sp_directory',
+			'format',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Layout', 'sportspress' ),
+					'type'            => 'string',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_directory',
+			'columns',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Columns', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_directory',
+			'teams',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Team', 'sportspress' ),
+					'type'            => 'integer',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_directory',
+			'data',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_data',
+				'schema'          => array(
+					'description'     => __( 'Staff Directory', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+	}
 }
 
 endif;
 
 if ( get_option( 'sportspress_load_staff_directories_module', 'yes' ) == 'yes' ) {
 	new SportsPress_Staff_Directories();
+
+	/**
+	 * Create alias of SP_Staff_Directory class for REST API.
+	 * Note: class_alias is not supported in PHP < 5.3 so extend the original class instead.
+	*/
+	class SP_Directory extends SP_Staff_Directory {}
 }

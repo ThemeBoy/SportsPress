@@ -36,7 +36,6 @@ class SP_Staff_Directory_Meta_Boxes {
 		add_meta_box( 'sp_formatdiv', __( 'Layout', 'sportspress' ), array( $this, 'format' ), 'sp_directory', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), array( $this, 'details' ), 'sp_directory', 'side', 'default' );
 		add_meta_box( 'sp_datadiv', __( 'Staff Directory', 'sportspress' ), array( $this, 'data' ), 'sp_directory', 'normal', 'high' );
-		add_meta_box( 'sp_editordiv', __( 'Description', 'sportspress' ), array( $this, 'editor' ), 'sp_directory', 'normal', 'high' );
 
 		// Add contact info meta box to staff
 		add_meta_box( 'sp_contactdiv', __( 'Contact Info', 'sportspress' ), array( $this, 'staff_contact' ), 'sp_staff', 'side', 'default' );
@@ -125,13 +124,6 @@ class SP_Staff_Directory_Meta_Boxes {
 		list( $labels, $columns, $data ) = $directory->data( true );
 		$staff = get_post_meta( $post->ID, 'sp_staff', true );
 		self::table( $labels, $columns, $data, $staff );
-	}
-
-	/**
-	 * Output the editor metabox
-	 */
-	public static function editor( $post ) {
-		wp_editor( $post->post_content, 'content' );
 	}
 
 	/**
