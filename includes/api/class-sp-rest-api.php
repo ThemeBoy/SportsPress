@@ -145,7 +145,7 @@ class SP_REST_API {
 				'get_callback'    => 'SP_REST_API::get_post_data',
 				'schema'          => array(
 					'description'     => __( 'Winner', 'sportspress' ),
-					'type'            => 'array',
+					'type'            => 'integer',
 					'context'         => array( 'view', 'embed' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
@@ -456,7 +456,7 @@ class SP_REST_API {
 	public static function get_post_meta_recursive( $object, $field_name, $request ) {
 		$meta = get_post_meta( $object['id'], self::meta_key( $field_name ), false );
 		
-		return array_map( 'absint', $meta );
+		return array_map( 'intval', $meta );
 	}
 
 	/**
