@@ -33,6 +33,8 @@ class SportsPress_Calendars {
 		add_action( 'add_meta_boxes', array( $this, 'remove_meta_boxes' ), 10 );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
 		add_action( 'sportspress_widgets', array( $this, 'include_widgets' ) );
+		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
+		add_action( 'sportspress_register_rest_fields', array( $this, 'register_rest_fields' ) );
 
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
@@ -82,11 +84,14 @@ class SportsPress_Calendars {
 					'exclude_from_search' 	=> false,
 					'hierarchical' 			=> false,
 					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_calendar_slug', 'calendar' ) ),
-					'supports' 				=> array( 'title', 'author', 'thumbnail' ),
+					'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
-					'show_in_menu' => 'edit.php?post_type=sp_event',
+					'show_in_menu' 			=> 'edit.php?post_type=sp_event',
 					'show_in_admin_bar' 	=> true,
+					'show_in_rest' 			=> true,
+					'rest_controller_class' => 'SP_REST_Posts_Controller',
+					'rest_base' 			=> 'calendars',
 				)
 			)
 		);
@@ -110,13 +115,55 @@ class SportsPress_Calendars {
 
 	/**
 	 * Add widgets.
-	 *
-	 * @return array
 	 */
 	public function include_widgets() {
 		include_once( SP()->plugin_path() . '/includes/widgets/class-sp-widget-event-calendar.php' );
 		include_once( SP()->plugin_path() . '/includes/widgets/class-sp-widget-event-list.php' );
 		include_once( SP()->plugin_path() . '/includes/widgets/class-sp-widget-event-blocks.php' );
+	}
+
+	/**
+	 * Create REST API routes.
+	 */
+	public function create_rest_routes() {
+		$controller = new SP_REST_Posts_Controller( 'sp_calendar' );
+		$controller->register_routes();
+	}
+
+	/**
+	 * Register REST API fields.
+	 */
+	public function register_rest_fields() {
+		register_rest_field( 'sp_calendar',
+			'format',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Layout', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_calendar',
+			'data',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_data',
+				'schema'          => array(
+					'description'     => __( 'Events', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
 	}
 
 	/**
@@ -158,12 +205,6 @@ class SportsPress_Calendars {
 				'output' => 'SP_Meta_Box_Calendar_Data::output',
 				'context' => 'normal',
 				'priority' => 'high',
-			),
-			'editor' => array(
-				'title' => __( 'Description', 'sportspress' ),
-				'output' => 'SP_Meta_Box_Calendar_Editor::output',
-				'context' => 'normal',
-				'priority' => 'low',
 			),
 		);
 		return $meta_boxes;

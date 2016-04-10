@@ -572,4 +572,26 @@ class SP_Player extends SP_Custom_Post {
 		endif;
 	}
 
+	/**
+	 * Returns formatted data for all competitions
+	 *
+	 * @access public
+	 * @param int $league_id
+	 * @param bool $admin
+	 * @return array
+	 */
+	public function statistics() {
+		$terms = get_the_terms( $this->ID, 'sp_league' );
+		
+		$statistics = array();
+		
+		if ( is_array( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$statistics[ $term->term_id ] = $this->data( $term->term_id );
+			}
+		}
+		
+		return $statistics;
+	}
+
 }

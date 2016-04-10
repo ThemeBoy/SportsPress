@@ -144,12 +144,6 @@ class SP_Admin_Meta_Boxes {
 					'context' => 'normal',
 					'priority' => 'high',
 				),
-				'editor' => array(
-					'title' => __( 'Article', 'sportspress' ),
-					'output' => 'SP_Meta_Box_Event_Editor::output',
-					'context' => 'normal',
-					'priority' => 'low',
-				),
 			),
 			'sp_team' => array(
 				'details' => array(
@@ -158,12 +152,6 @@ class SP_Admin_Meta_Boxes {
 					'output' => 'SP_Meta_Box_Team_Details::output',
 					'context' => 'side',
 					'priority' => 'default',
-				),
-				'editor' => array(
-					'title' => __( 'Profile', 'sportspress' ),
-					'output' => 'SP_Meta_Box_Team_Editor::output',
-					'context' => 'normal',
-					'priority' => 'low',
 				),
 				'staff' => array(
 					'title' => __( 'Staff', 'sportspress' ),
@@ -208,12 +196,6 @@ class SP_Admin_Meta_Boxes {
 					'context' => 'normal',
 					'priority' => 'high',
 				),
-				'editor' => array(
-					'title' => __( 'Profile', 'sportspress' ),
-					'output' => 'SP_Meta_Box_Player_Editor::output',
-					'context' => 'normal',
-					'priority' => 'low',
-				),
 			),
 			'sp_staff' => array(
 				'shortcode' => array(
@@ -228,12 +210,6 @@ class SP_Admin_Meta_Boxes {
 					'output' => 'SP_Meta_Box_Staff_Details::output',
 					'context' => 'side',
 					'priority' => 'default',
-				),
-				'editor' => array(
-					'title' => __( 'Profile', 'sportspress' ),
-					'output' => 'SP_Meta_Box_Staff_Editor::output',
-					'context' => 'normal',
-					'priority' => 'low',
 				),
 			),
 		);
