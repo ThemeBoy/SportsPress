@@ -518,7 +518,7 @@ class SportsPress_Sponsors {
 				'update_callback' => 'SP_REST_API::update_post_meta',
 				'schema'          => array(
 					'description'     => __( 'Site URL', 'sportspress' ),
-					'type'            => 'integer',
+					'type'            => 'string',
 					'context'         => array( 'view', 'edit', 'embed' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'sanitize_text_field',
