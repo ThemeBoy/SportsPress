@@ -54,6 +54,9 @@ class SportsPress_Tournaments {
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'sportspress_frontend_css', array( $this, 'frontend_css' ) );
+		
+		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
+		add_action( 'sportspress_register_rest_fields', array( $this, 'register_rest_fields' ) );
 
 		if ( defined( 'SP_PRO_PLUGIN_FILE' ) )
 			register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
@@ -124,11 +127,14 @@ class SportsPress_Tournaments {
 					'exclude_from_search' 	=> false,
 					'hierarchical' 			=> false,
 					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_tournament_slug', 'tournament' ) ),
-					'supports' 				=> array( 'title', 'author', 'thumbnail' ),
+					'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' 			=> 'edit.php?post_type=sp_event',
 					'show_in_admin_bar' 	=> true,
+					'show_in_rest' 			=> true,
+					'rest_controller_class' => 'SP_REST_Posts_Controller',
+					'rest_base' 			=> 'tournaments',
 				)
 			)
 		);
@@ -439,6 +445,98 @@ class SportsPress_Tournaments {
 		if ( isset( $colors['heading'] ) ) {
 			echo '.sp-tournament-bracket .sp-team .sp-team-name.sp-heading{color:' . $colors['heading'] . ' !important}';
 		}
+	}
+
+	/**
+	 * Create REST API routes.
+	 */
+	public function create_rest_routes() {
+		$controller = new SP_REST_Posts_Controller( 'sp_tournament' );
+		$controller->register_routes();
+	}
+
+	/**
+	 * Register REST API fields.
+	 */
+	public function register_rest_fields() {
+		register_rest_field( 'sp_tournament',
+			'format',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Layout', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_tournament',
+			'rounds',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Rounds', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_tournament',
+			'winner',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Winner', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_tournament',
+			'labels',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_data',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Labels', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_tournament',
+			'data',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_data',
+				'schema'          => array(
+					'description'     => __( 'Tournament', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
 	}
 }
 

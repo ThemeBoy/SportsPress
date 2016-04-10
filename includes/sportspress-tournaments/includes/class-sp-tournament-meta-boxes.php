@@ -32,7 +32,6 @@ class SP_Tournament_Meta_Boxes {
 		add_meta_box( 'sp_formatdiv', __( 'Layout', 'sportspress' ), array( $this, 'format' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), array( $this, 'details' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_datadiv', __( 'Tournament', 'sportspress' ), array( $this, 'data' ), 'sp_tournament', 'normal', 'high' );
-		add_meta_box( 'sp_editordiv', __( 'Description', 'sportspress' ), array( $this, 'editor' ), 'sp_tournament', 'normal', 'low' );
 	}
 
 	/**
@@ -119,13 +118,6 @@ class SP_Tournament_Meta_Boxes {
 		$tournament = new SP_Tournament( $post );
 		list( $labels, $data, $rounds, $rows ) = $tournament->data( 'bracket', true );
 		self::table( $labels, $data, $rounds, $rows, $post->ID );
-	}
-
-	/**
-	 * Output the editor metabox
-	 */
-	public static function editor( $post ) {
-		wp_editor( $post->post_content, 'content' );
 	}
 
 	/**

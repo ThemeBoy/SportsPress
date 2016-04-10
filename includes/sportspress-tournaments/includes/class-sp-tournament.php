@@ -68,18 +68,36 @@ class SP_Tournament {
 	public function get_post_data() {
 		return $this->post;
 	}
+	
+	/**
+	 * Returns labels.
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function labels() {
+		$labels = get_post_meta( $this->ID, 'sp_labels', true );
+		
+		// Assign default labels
+		for ( $i = 0; $i < sizeof( $labels ); $i++ ) {
+			if ( '' === $labels[ $i ] ) {
+				$labels[ $i ] = sprintf( __( 'Round %s', 'sportspress' ), $i + 1 );
+			}
+		}
+		
+		return $labels;
+	}
 
 	/**
-	 * Returns formatted data
+	 * Returns formatted data.
 	 *
 	 * @access public
 	 * @param bool $admin
 	 * @return array
 	 */
 	public function data( $layout = 'bracket', $admin = false ) {
-
-		// Get labels
-		$labels = get_post_meta( $this->ID, 'sp_labels', true );
+		
+		$labels = $this->labels();
 
 		// Get events
 		$events = get_post_meta( $this->ID, 'sp_event', false );
@@ -313,6 +331,10 @@ class SP_Tournament {
 
 		endwhile;
 
-		return array( $labels, $data, $columns, $maxrows, $rounds, $raw );
+		if ( $admin ) {
+			return array( $labels, $data, $columns, $maxrows, $rounds, $raw );
+		} else {
+			return $data;
+		}
 	}
 }
