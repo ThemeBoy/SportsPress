@@ -85,6 +85,8 @@ class SP_REST_API {
 
 		$controller = new SP_REST_Posts_Controller( 'sp_staff' );
 		$controller->register_routes();
+		
+		do_action( 'sportspress_create_rest_routes' );
 	}
 
 	/**
@@ -402,6 +404,8 @@ class SP_REST_API {
 				),
 			)
 		);
+		
+		do_action( 'sportspress_register_rest_fields' );
 	}
 
 	/**
