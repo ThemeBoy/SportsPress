@@ -82,7 +82,7 @@ class SportsPress_Calendars {
 					'exclude_from_search' 	=> false,
 					'hierarchical' 			=> false,
 					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_calendar_slug', 'calendar' ) ),
-					'supports' 				=> array( 'title', 'author', 'thumbnail' ),
+					'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' => 'edit.php?post_type=sp_event',
@@ -158,12 +158,6 @@ class SportsPress_Calendars {
 				'output' => 'SP_Meta_Box_Calendar_Data::output',
 				'context' => 'normal',
 				'priority' => 'high',
-			),
-			'editor' => array(
-				'title' => __( 'Description', 'sportspress' ),
-				'output' => 'SP_Meta_Box_Calendar_Editor::output',
-				'context' => 'normal',
-				'priority' => 'low',
 			),
 		);
 		return $meta_boxes;

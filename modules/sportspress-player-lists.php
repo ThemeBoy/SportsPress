@@ -81,7 +81,7 @@ class SportsPress_Player_Lists {
 					'exclude_from_search' 	=> false,
 					'hierarchical' 			=> false,
 					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_list_slug', 'list' ) ),
-					'supports' 				=> array( 'title', 'page-attributes', 'author', 'thumbnail' ),
+					'supports' 				=> array( 'title', 'editor', 'page-attributes', 'author', 'thumbnail' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' 			=> 'edit.php?post_type=sp_player',
@@ -164,12 +164,6 @@ class SportsPress_Player_Lists {
 				'output' => 'SP_Meta_Box_List_Data::output',
 				'context' => 'normal',
 				'priority' => 'high',
-			),
-			'editor' => array(
-				'title' => __( 'Description', 'sportspress' ),
-				'output' => 'SP_Meta_Box_List_Editor::output',
-				'context' => 'normal',
-				'priority' => 'low',
 			),
 		);
 		return $meta_boxes;

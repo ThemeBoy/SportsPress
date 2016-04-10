@@ -82,7 +82,7 @@ class SportsPress_League_Tables {
 					'exclude_from_search' 	=> false,
 					'hierarchical' 			=> false,
 					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_table_slug', 'table' ) ),
-					'supports' 				=> array( 'title', 'page-attributes', 'thumbnail' ),
+					'supports' 				=> array( 'title', 'editor', 'page-attributes', 'thumbnail' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' 			=> 'edit.php?post_type=sp_team',
@@ -158,12 +158,6 @@ class SportsPress_League_Tables {
 				'output' => 'SP_Meta_Box_Table_Data::output',
 				'context' => 'normal',
 				'priority' => 'high',
-			),
-			'editor' => array(
-				'title' => __( 'Description', 'sportspress' ),
-				'output' => 'SP_Meta_Box_Table_Editor::output',
-				'context' => 'normal',
-				'priority' => 'low',
 			),
 		);
 		return $meta_boxes;
