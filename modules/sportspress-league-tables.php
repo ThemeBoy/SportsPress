@@ -33,6 +33,8 @@ class SportsPress_League_Tables {
 		add_action( 'add_meta_boxes', array( $this, 'remove_meta_boxes' ), 10 );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
 		add_action( 'sportspress_widgets', array( $this, 'include_widgets' ) );
+		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
+		add_action( 'sportspress_register_rest_fields', array( $this, 'register_rest_fields' ) );
 
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
@@ -87,6 +89,9 @@ class SportsPress_League_Tables {
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' 			=> 'edit.php?post_type=sp_team',
 					'show_in_admin_bar' 	=> true,
+					'show_in_rest' 			=> true,
+					'rest_controller_class' => 'SP_REST_Posts_Controller',
+					'rest_base' 			=> 'tables',
 				)
 			)
 		);
@@ -114,6 +119,35 @@ class SportsPress_League_Tables {
 	 */
 	public function include_widgets() {
 		include_once( SP()->plugin_path() . '/includes/widgets/class-sp-widget-league-table.php' );
+	}
+
+	/**
+	 * Create REST API routes.
+	 */
+	public function create_rest_routes() {
+		$controller = new SP_REST_Posts_Controller( 'sp_table' );
+		$controller->register_routes();
+	}
+
+	/**
+	 * Register REST API fields.
+	 */
+	public function register_rest_fields() {
+		register_rest_field( 'sp_table',
+			'data',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_data',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'League Table', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
 	}
 
 	/**
@@ -277,4 +311,10 @@ endif;
 
 if ( get_option( 'sportspress_load_league_tables_module', 'yes' ) == 'yes' ) {
 	new SportsPress_League_Tables();
+
+	/**
+	 * Create alias of SP_League_Table class for REST API.
+	 * Note: class_alias is not supported in PHP < 5.3 so extend the original class instead.
+	*/
+	class SP_Table extends SP_League_Table {}
 }
