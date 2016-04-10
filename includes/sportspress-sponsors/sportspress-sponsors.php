@@ -56,6 +56,9 @@ class SportsPress_Sponsors {
 		add_action( 'get_footer', array( $this, 'footer' ) );
 		add_filter( 'manage_edit-sp_sponsor_columns', array( $this, 'edit_columns' ) );
 		add_filter( 'gettext', array( $this, 'gettext' ), 20, 3 );
+		
+		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
+		add_action( 'sportspress_register_rest_fields', array( $this, 'register_rest_fields' ) );
 
 		if ( is_admin() ) {
 			add_action( 'wp_ajax_nopriv_sp_clicks', array( $this, 'sp_clicks' ) );
@@ -133,6 +136,9 @@ class SportsPress_Sponsors {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-megaphone',
+					'show_in_rest' 			=> true,
+					'rest_controller_class' => 'SP_REST_Posts_Controller',
+					'rest_base' 			=> 'sponsors',
 				)
 			)
 		);
@@ -491,6 +497,65 @@ class SportsPress_Sponsors {
 
 	public static function widgets() {
 		include_once( 'includes/class-sp-widget-sponsors.php' );
+	}
+
+	/**
+	 * Create REST API routes.
+	 */
+	public function create_rest_routes() {
+		$controller = new SP_REST_Posts_Controller( 'sp_sponsor' );
+		$controller->register_routes();
+	}
+
+	/**
+	 * Register REST API fields.
+	 */
+	public function register_rest_fields() {
+		register_rest_field( 'sp_sponsor',
+			'url',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Site URL', 'sportspress' ),
+					'type'            => 'integer',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'sanitize_text_field',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_sponsor',
+			'impressions',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Impressions', 'sportspress' ),
+					'type'            => 'integer',
+					'context'         => array( 'view', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'absint',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_sponsor',
+			'clicks',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Clicks', 'sportspress' ),
+					'type'            => 'integer',
+					'context'         => array( 'view', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'absint',
+					),
+				),
+			)
+		);
 	}
 }
 
