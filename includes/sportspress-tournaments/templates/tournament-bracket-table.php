@@ -1,9 +1,9 @@
 <?php
 /**
- * Player Gallery Thumbnail
+ * Tournament Bracket Table
  *
  * @author 		ThemeBoy
- * @package 	SportsPress/Templates
+ * @package 	SportsPress/Tournaments
  * @version     1.8.8
  */
 
