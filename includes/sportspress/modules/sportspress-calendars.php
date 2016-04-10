@@ -141,7 +141,7 @@ class SportsPress_Calendars {
 				'update_callback' => 'SP_REST_API::update_post_meta',
 				'schema'          => array(
 					'description'     => __( 'Layout', 'sportspress' ),
-					'type'            => 'array',
+					'type'            => 'string',
 					'context'         => array( 'view', 'edit', 'embed' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
