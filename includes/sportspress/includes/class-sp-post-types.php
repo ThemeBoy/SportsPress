@@ -55,6 +55,9 @@ class SP_Post_types {
 				'show_tagcloud' => false,
 				'hierarchical' => true,
 				'rewrite' => array( 'slug' => get_option( 'sportspress_league_slug', 'league' ) ),
+				'show_in_rest' => true,
+				'rest_controller_class' => 'SP_REST_Posts_Controller',
+				'rest_base' => 'leagues',
 			) );
 			$object_types = apply_filters( 'sportspress_league_object_types', array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) );
 			register_taxonomy( 'sp_league', $object_types, $args );
@@ -86,6 +89,9 @@ class SP_Post_types {
 				'show_tagcloud' => false,
 				'hierarchical' => true,
 				'rewrite' => array( 'slug' => get_option( 'sportspress_season_slug', 'season' ) ),
+				'show_in_rest' => true,
+				'rest_controller_class' => 'SP_REST_Posts_Controller',
+				'rest_base' => 'seasons',
 			) );
 			$object_types = apply_filters( 'sportspress_season_object_types', array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) );
 			register_taxonomy( 'sp_season', $object_types, $args );
@@ -117,6 +123,9 @@ class SP_Post_types {
 				'show_tagcloud' => false,
 				'hierarchical' => true,
 				'rewrite' => array( 'slug' => get_option( 'sportspress_venue_slug', 'venue' ) ),
+				'show_in_rest' => true,
+				'rest_controller_class' => 'SP_REST_Posts_Controller',
+				'rest_base' => 'venues',
 			) );
 			$object_types = apply_filters( 'sportspress_event_object_types', array( 'sp_event', 'sp_calendar', 'sp_team' ) );
 			register_taxonomy( 'sp_venue', $object_types, $args );
@@ -148,6 +157,9 @@ class SP_Post_types {
 				'show_tagcloud' => false,
 				'hierarchical' => true,
 				'rewrite' => array( 'slug' => get_option( 'sportspress_position_slug', 'position' ) ),
+				'show_in_rest' => true,
+				'rest_controller_class' => 'SP_REST_Posts_Controller',
+				'rest_base' => 'positions',
 			) );
 			$object_types = apply_filters( 'sportspress_position_object_types', array( 'sp_player', 'sp_list' ) );
 			register_taxonomy( 'sp_position', $object_types, $args );
@@ -179,6 +191,9 @@ class SP_Post_types {
 				'show_tagcloud' => false,
 				'hierarchical' => true,
 				'rewrite' => array( 'slug' => get_option( 'sportspress_role_slug', 'role' ) ),
+				'show_in_rest' => true,
+				'rest_controller_class' => 'SP_REST_Posts_Controller',
+				'rest_base' => 'roles',
 			) );
 			$object_types = apply_filters( 'sportspress_role_object_types', array( 'sp_staff' ) );
 			register_taxonomy( 'sp_role', $object_types, $args );
@@ -221,7 +236,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => false,
+					'show_in_menu' 			=> false,
 				)
 			)
 		);
@@ -251,7 +266,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => false,
+					'show_in_menu' 			=> false,
 				)
 			)
 		);
@@ -281,7 +296,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => false,
+					'show_in_menu' 			=> false,
 				)
 			)
 		);
@@ -311,7 +326,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => false,
+					'show_in_menu' 			=> false,
 				)
 			)
 		);
@@ -342,7 +357,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => false,
+					'show_in_menu' 			=> false,
 				)
 			)
 		);
@@ -373,7 +388,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
-					'show_in_menu' => false,
+					'show_in_menu' 			=> false,
 				)
 			)
 		);
@@ -402,6 +417,9 @@ class SP_Post_types {
 			'has_archive' 			=> false,
 			'show_in_nav_menus' 	=> true,
 			'menu_icon' 			=> 'dashicons-calendar',
+			'show_in_rest' 			=> true,
+			'rest_controller_class' => 'SP_REST_Posts_Controller',
+			'rest_base' 			=> 'events',
 		);
 
 		if ( get_option( 'sportspress_event_comment_status', 'no' ) == 'yes' ):
@@ -436,6 +454,9 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-shield-alt',
+					'show_in_rest' 			=> true,
+					'rest_controller_class' => 'SP_REST_Posts_Controller',
+					'rest_base' 			=> 'teams',
 				)
 			)
 		);
@@ -466,6 +487,9 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-groups',
+					'show_in_rest' 			=> true,
+					'rest_controller_class' => 'SP_REST_Posts_Controller',
+					'rest_base' 			=> 'players',
 				)
 			)
 		);
@@ -496,6 +520,9 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-businessman',
+					'show_in_rest' 			=> true,
+					'rest_controller_class' => 'SP_REST_Posts_Controller',
+					'rest_base' 			=> 'staff',
 				)
 			)
 		);

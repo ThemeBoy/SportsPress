@@ -28,42 +28,6 @@ class SP_REST_API {
 		// Create REST routes
 		add_action( 'rest_api_init', array( $this, 'create_routes' ) );
 		add_action( 'rest_api_init', array( $this, 'register_fields' ), 0 );
-		
-		// Add extra league arguments
-		add_filter( 'sportspress_register_taxonomy_league', array( $this, 'add_args' ), 11 );
-		add_filter( 'sportspress_register_taxonomy_league', array( $this, 'add_league_args' ), 11 );
-		
-		// Add extra season arguments
-		add_filter( 'sportspress_register_taxonomy_season', array( $this, 'add_args' ), 11 );
-		add_filter( 'sportspress_register_taxonomy_season', array( $this, 'add_season_args' ), 11 );
-		
-		// Add extra venue arguments
-		add_filter( 'sportspress_register_taxonomy_venue', array( $this, 'add_args' ), 11 );
-		add_filter( 'sportspress_register_taxonomy_venue', array( $this, 'add_venue_args' ), 11 );
-		
-		// Add extra position arguments
-		add_filter( 'sportspress_register_taxonomy_position', array( $this, 'add_args' ), 11 );
-		add_filter( 'sportspress_register_taxonomy_position', array( $this, 'add_position_args' ), 11 );
-		
-		// Add extra role arguments
-		add_filter( 'sportspress_register_taxonomy_role', array( $this, 'add_args' ), 11 );
-		add_filter( 'sportspress_register_taxonomy_role', array( $this, 'add_role_args' ), 11 );
-		
-		// Add extra event arguments
-		add_filter( 'sportspress_register_post_type_event', array( $this, 'add_args' ), 11 );
-		add_filter( 'sportspress_register_post_type_event', array( $this, 'add_event_args' ), 11 );
-		
-		// Add extra team arguments
-		add_filter( 'sportspress_register_post_type_team', array( $this, 'add_args' ), 11 );
-		add_filter( 'sportspress_register_post_type_team', array( $this, 'add_team_args' ), 11 );
-		
-		// Add extra player arguments
-		add_filter( 'sportspress_register_post_type_player', array( $this, 'add_args' ), 11 );
-		add_filter( 'sportspress_register_post_type_player', array( $this, 'add_player_args' ), 11 );
-		
-		// Add extra staff arguments
-		add_filter( 'sportspress_register_post_type_staff', array( $this, 'add_args' ), 11 );
-		add_filter( 'sportspress_register_post_type_staff', array( $this, 'add_staff_args' ), 11 );
 	}
 
 	/**
@@ -145,7 +109,7 @@ class SP_REST_API {
 				'get_callback'    => 'SP_REST_API::get_post_data',
 				'schema'          => array(
 					'description'     => __( 'Winner', 'sportspress' ),
-					'type'            => 'array',
+					'type'            => 'integer',
 					'context'         => array( 'view', 'embed' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
@@ -581,96 +545,6 @@ class SP_REST_API {
 		}
 		
 		return $field_name;
-	}
-
-	/**
-	 * Convert string to integer if it contains only digits
-	 */
-	public static function string_to_int( &$value ) {
-		if ( ctype_digit( $value ) ) {
-			$value = intval( $value );
-		}
-	}
-
-	/**
-	 * Add extra arguments
-	 */
-	public static function add_args( $args = array() ) {
-		$args['show_in_rest'] = true;
-		$args['rest_controller_class'] = 'SP_REST_Posts_Controller';
-		return $args;
-	}
-
-	/**
-	 * Add extra league arguments
-	 */
-	public static function add_league_args( $args = array() ) {
-		$args['rest_base'] = 'leagues';
-		return $args;
-	}
-
-	/**
-	 * Add extra season arguments
-	 */
-	public static function add_season_args( $args = array() ) {
-		$args['rest_base'] = 'seasons';
-		return $args;
-	}
-
-	/**
-	 * Add extra venue arguments
-	 */
-	public static function add_venue_args( $args = array() ) {
-		$args['rest_base'] = 'venues';
-		return $args;
-	}
-
-	/**
-	 * Add extra position arguments
-	 */
-	public static function add_position_args( $args = array() ) {
-		$args['rest_base'] = 'positions';
-		return $args;
-	}
-
-	/**
-	 * Add extra role arguments
-	 */
-	public static function add_role_args( $args = array() ) {
-		$args['rest_base'] = 'roles';
-		return $args;
-	}
-
-	/**
-	 * Add extra event arguments
-	 */
-	public static function add_event_args( $args = array() ) {
-		$args['rest_base'] = 'events';
-		return $args;
-	}
-
-	/**
-	 * Add extra team arguments
-	 */
-	public static function add_team_args( $args = array() ) {
-		$args['rest_base'] = 'teams';
-		return $args;
-	}
-
-	/**
-	 * Add extra player arguments
-	 */
-	public static function add_player_args( $args = array() ) {
-		$args['rest_base'] = 'players';
-		return $args;
-	}
-
-	/**
-	 * Add extra staff arguments
-	 */
-	public static function add_staff_args( $args = array() ) {
-		$args['rest_base'] = 'staff';
-		return $args;
 	}
 }
 
