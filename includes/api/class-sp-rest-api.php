@@ -119,6 +119,22 @@ class SP_REST_API {
 		);
 		
 		register_rest_field( 'sp_event',
+			'minutes',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_data',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Full Time', 'sportspress' ),
+					'type'            => 'integer',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'absint',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_event',
 			'players',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
@@ -154,7 +170,7 @@ class SP_REST_API {
 			'results',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_data',
-				'update_callback' => 'SP_REST_API::update_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta_arrays',
 				'schema'          => array(
 					'description'     => __( 'Results', 'sportspress' ),
 					'type'            => 'array',
@@ -170,7 +186,7 @@ class SP_REST_API {
 			'performance',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_data',
-				'update_callback' => 'SP_REST_API::update_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta_arrays_multi',
 				'schema'          => array(
 					'description'     => __( 'Box Score', 'sportspress' ),
 					'type'            => 'array',
@@ -341,7 +357,7 @@ class SP_REST_API {
 			'metrics',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_data',
-				'update_callback' => 'SP_REST_API::update_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta_array',
 				'schema'          => array(
 					'description'     => __( 'Metrics', 'sportspress' ),
 					'type'            => 'array',
@@ -357,7 +373,7 @@ class SP_REST_API {
 			'statistics',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_data',
-				'update_callback' => 'SP_REST_API::update_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta_arrays_multi',
 				'schema'          => array(
 					'description'     => __( 'Statistics', 'sportspress' ),
 					'type'            => 'array',
@@ -401,11 +417,100 @@ class SP_REST_API {
 	 * @return bool|int
 	 */
 	public static function update_post_meta( $value, $object, $field_name ) {
-		if ( ! $value || ! is_string( $value ) ) {
-			return;
-		}
-
 		return update_post_meta( $object->ID, self::meta_key( $field_name ), strip_tags( $value ) );
+	}
+
+	/**
+	 * Handler for updating array values by merging with the existing array.
+	 *
+	 * @param mixed $value The value of the field
+	 * @param object $object The object from the response
+	 * @param string $field_name Name of field
+	 *
+	 * @return bool|int
+	 */
+	public static function update_post_meta_array( $value, $object, $field_name ) {
+		if ( ! is_array( $value ) ) return false;
+		
+		$type = $object->post_type;
+		
+		$meta = get_post_meta( $object->ID, self::meta_key( $field_name, $type ), true );
+		
+		if ( ! is_array( $meta ) ) $meta = array();
+		
+		$meta = array_merge( $meta, $value );
+		
+		return update_post_meta( $object->ID, self::meta_key( $field_name, $type ), $meta );
+	}
+
+	/**
+	 * Handler for updating array values by merging with the existing multidimentional array.
+	 *
+	 * @param mixed $value The value of the field
+	 * @param object $object The object from the response
+	 * @param string $field_name Name of field
+	 *
+	 * @return bool|int
+	 */
+	public static function update_post_meta_arrays( $value, $object, $field_name ) {
+		if ( ! is_array( $value ) ) return false;
+		
+		$type = $object->post_type;
+		
+		$meta = get_post_meta( $object->ID, self::meta_key( $field_name, $type ), true );
+		
+		if ( ! is_array( $meta ) ) $meta = array();
+		
+		foreach ( $value as $index => $array ) {
+			if ( ! is_array( $array ) ) continue;
+			
+			if ( ! isset( $meta[ $index ] ) || ! is_array( $meta[ $index ] ) ) {
+				$meta[ $index ] = array();
+			}
+			
+			$meta[ $index ] = array_merge( $meta[ $index ], $array );
+		}
+		
+		return update_post_meta( $object->ID, self::meta_key( $field_name, $type ), $meta );
+	}
+
+	/**
+	 * Handler for updating array values by merging with existing multidimensional arrays.
+	 *
+	 * @param mixed $value The value of the field
+	 * @param object $object The object from the response
+	 * @param string $field_name Name of field
+	 *
+	 * @return bool|int
+	 */
+	public static function update_post_meta_arrays_multi( $value, $object, $field_name ) {
+		if ( ! is_array( $value ) ) return false;
+		
+		$type = $object->post_type;
+		
+		$meta = get_post_meta( $object->ID, self::meta_key( $field_name, $type ), true );
+		
+		if ( ! is_array( $meta ) ) $meta = array();
+		
+		foreach ( $value as $key => $arrays ) {
+			if ( ! is_array( $arrays ) ) continue;
+			
+			if ( ! isset( $meta[ $key ] ) || ! is_array( $meta[ $key ] ) ) {
+				$meta[ $key ] = array();
+			}
+			
+			foreach ( $arrays as $index => $array ) {
+				if ( ! is_array( $array ) ) continue;
+				
+				if ( ! isset( $meta[ $key ][ $index ] ) || ! is_array( $meta[ $key ][ $index ] ) ) {
+					$meta[ $key ][ $index ] = array();
+				}
+				
+				$meta[ $key ][ $index ] = array_merge( $meta[ $key ][ $index ], $array );
+			}
+		}
+		
+		return update_post_meta( $object->ID, self::meta_key( $field_name, $type ), $meta );
 	}
 
 	/**
@@ -526,7 +631,7 @@ class SP_REST_API {
 	/**
 	 * Get meta key of a field
 	 */
-	public static function meta_key( $field_name ) {
+	public static function meta_key( $field_name, $type = null ) {
 		$names = array(
 			'current_teams' => 'sp_current_team',
 			'events' => 'sp_event',
@@ -534,9 +639,23 @@ class SP_REST_API {
 			'past_teams' => 'sp_past_team',
 			'performance' => 'sp_players',
 			'players' => 'sp_player',
+			'table' => 'sp_teams',
 			'tables' => 'sp_table',
 			'teams' => 'sp_team',
 		);
+		
+		if ( isset( $type ) ) {
+			switch ( $type ) {
+				case 'sp_table':
+					$names['data'] = 'sp_teams';
+					break;
+				case 'sp_list':
+					$names['data'] = 'sp_players';
+					break;
+			}
+		}
+		
+		$names = apply_filters( 'sportspress_rest_meta_keys', $names, $type );
 		
 		if ( array_key_exists( $field_name, $names ) ) {
 			$field_name = $names[ $field_name ];
