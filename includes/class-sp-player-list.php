@@ -509,10 +509,10 @@ class SP_Player_List extends SP_Custom_Post {
 
 				// Use static data if key exists and value is not empty, else use placeholder
 				if ( array_key_exists( $player_id, $tempdata ) && array_key_exists( $key, $tempdata[ $player_id ] ) && $tempdata[ $player_id ][ $key ] != '' ):
-					$merged[ $player_id ][ $key ] = $tempdata[ $player_id ][ $key ];
-				else:
-					$merged[ $player_id ][ $key ] = $value;
+					$value = $tempdata[ $player_id ][ $key ];
 				endif;
+				
+				$merged[ $player_id ][ $key ] = $value;
 
 			endforeach;
 		endforeach;
@@ -605,5 +605,4 @@ class SP_Player_List extends SP_Custom_Post {
 		// Default sort by number
 		return sp_array_value( $a, 'number', 0 ) - sp_array_value( $b, 'number', 0 );
 	}
-
 }
