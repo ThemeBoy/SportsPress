@@ -329,6 +329,7 @@
 
 /* Countdowns */
 .sp-template-countdown .event-name {
+	clear: both;
 	overflow: hidden;
 }
 .sp-template-countdown .team-logo {
