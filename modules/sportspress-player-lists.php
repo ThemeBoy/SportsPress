@@ -154,7 +154,7 @@ class SportsPress_Player_Lists {
 			'data',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_data',
-				'update_callback' => 'SP_REST_API::update_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta_arrays',
 				'schema'          => array(
 					'description'     => __( 'Player List', 'sportspress' ),
 					'type'            => 'array',
