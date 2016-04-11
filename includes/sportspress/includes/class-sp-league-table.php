@@ -543,10 +543,10 @@ class SP_League_Table extends SP_Custom_Post{
 
 				// Use static data if key exists and value is not empty, else use placeholder
 				if ( array_key_exists( $team_id, $tempdata ) && array_key_exists( $key, $tempdata[ $team_id ] ) && $tempdata[ $team_id ][ $key ] != '' ):
-					$merged[ $team_id ][ $key ] = $tempdata[ $team_id ][ $key ];
-				else:
-					$merged[ $team_id ][ $key ] = $value;
+					$value = $tempdata[ $team_id ][ $key ];
 				endif;
+				
+				$merged[ $team_id ][ $key ] = $value;
 
 			endforeach;
 
@@ -644,7 +644,6 @@ class SP_League_Table extends SP_Custom_Post{
 		// Repeat position if equal
 		return $this->pos;
 	}
-
 
 	/**
 	 * Calculate and add games back.

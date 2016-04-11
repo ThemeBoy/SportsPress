@@ -137,7 +137,7 @@ class SportsPress_League_Tables {
 			'data',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_data',
-				'update_callback' => 'SP_REST_API::update_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta_arrays',
 				'schema'          => array(
 					'description'     => __( 'League Table', 'sportspress' ),
 					'type'            => 'array',

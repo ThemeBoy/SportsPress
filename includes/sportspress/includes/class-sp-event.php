@@ -25,6 +25,12 @@ class SP_Event extends SP_Custom_Post{
 		}
 		return $post_status;
 	}
+	
+	public function minutes() {
+		$minutes = get_post_meta( $this->ID, 'sp_minutes', true );
+		if ( '' === $minutes ) $minutes = 90;
+		return $minutes;
+	}
 
 	public function results( $admin = false ) {
 		$teams = (array)get_post_meta( $this->ID, 'sp_team', false );
