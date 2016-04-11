@@ -384,8 +384,8 @@ class SP_REST_API {
 	public static function get_post_meta( $object, $field_name, $request ) {
 		$meta = get_post_meta( $object['id'], self::meta_key( $field_name ), true );
 		
-		if ( ctype_digit( $value ) ) {
-			$value = intval( $value );
+		if ( ctype_digit( $meta ) ) {
+			$meta = intval( $meta );
 		}
 		
 		return $meta;
@@ -484,8 +484,8 @@ class SP_REST_API {
 			'post_type' => $meta_key,
 			'posts_per_page' => 2000,
 			'meta_query' => array(
-				'key' => $object->type,
-				'value' => $object->id,
+				'key' => $object['type'],
+				'value' => $object['id'],
 				'compare' => 'IN',
 			),
 		);
