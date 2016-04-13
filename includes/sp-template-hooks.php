@@ -289,6 +289,20 @@ function sportspress_no_terms_links( $term_list, $taxonomy ) {
 }
 add_filter( 'the_terms', 'sportspress_no_terms_links', 10, 2 );
 
+function sportspress_strcmp_term_slug( $a, $b ) {
+    return strcmp( $a->slug, $b->slug );
+}
+
+function sportspress_term_order( $terms, $post_id, $taxonomy ) {
+
+    if ( is_sp_taxonomy( $taxonomy ) ) {
+    	uasort( $terms, 'sportspress_strcmp_term_slug' );
+    }
+
+    return $terms;
+}
+add_filter( 'get_the_terms', 'sportspress_term_order', 10, 3 );
+
 function sportspress_pre_get_posts( $query ) {
 	$post_type = sp_array_value( $query->query, 'post_type', null );
 
