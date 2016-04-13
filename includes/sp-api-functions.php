@@ -231,7 +231,7 @@ function sp_get_logo_url( $post = 0, $size = 'icon' ) {
 }
 
 function sp_get_abbreviation( $post = 0 ) {
-	return get_post_meta ( $post, 'sp_abbreviation', true );
+	return get_post_meta( $post, 'sp_abbreviation', true );
 }
 
 function sp_get_venues( $post = 0, $ids = true ) {
@@ -284,6 +284,14 @@ function sp_get_short_name( $post = 0 ) {
 
 function sp_short_name( $post = 0 ) {
 	echo sp_get_short_name( $post );
+}
+
+function sp_get_team_name( $post = 0, $short = true ) {
+	if ( $short ) {
+		return sp_get_short_name( $post );
+	} else {
+		return get_the_title( $post );
+	}
 }
 
 function sp_team_details( $post = 0 ) {

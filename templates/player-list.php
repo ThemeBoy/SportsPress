@@ -24,6 +24,7 @@ $defaults = array(
 	'show_player_flag' => get_option( 'sportspress_list_show_flags', 'no' ) == 'yes' ? true : false,
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
+	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_list_paginated', 'yes' ) == 'yes' ? true : false,
@@ -170,7 +171,7 @@ foreach ( $groups as $group ):
 		
 		if ( array_key_exists( 'team', $labels ) ):
 			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_team', true ) );
-			$team_name = get_the_title( $team );
+			$team_name = sp_get_team_name( $team, $abbreviate_teams );
 			if ( $link_teams ):
 				$team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
 			endif;

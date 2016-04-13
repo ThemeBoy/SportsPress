@@ -115,6 +115,7 @@ class SP_Player extends SP_Custom_Post {
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
+		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 		
 		$args = array(
 			'post_type' => array( 'sp_performance', 'sp_statistic' ),
@@ -498,7 +499,7 @@ class SP_Player extends SP_Custom_Post {
 			$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
 
 			if ( $team_id ):
-				$team_name = get_the_title( $team_id );
+				$team_name = sp_get_team_name( $team_id, $abbreviate_teams );
 				
 				if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
 					$team_permalink = get_permalink( $team_id );
