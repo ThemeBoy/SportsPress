@@ -558,9 +558,28 @@ class SP_Player extends SP_Custom_Post {
 			}
 			
 			if ( 'yes' === get_option( 'sportspress_player_show_total', 'no' ) ) {
+				// Get totals calculated from events
 				$total_placeholders = sp_array_value( $placeholders, 0, array() );
+				
+				// Get totals as entered directly and filter out the empty values
 				$total_data = sp_array_value( $data, 0, array() );
-				$total_data = array_filter( $total_data );
+				
+				// Get totals of all seasons as entered manually
+				$totals = array();
+				foreach ( $merged as $season => $stats ) {
+					foreach ( $stats as $key => $value ) {
+						$totals[ $key ] = sp_array_value( $totals, $key, 0 ) + $value;
+					}
+				}
+				
+				// Merge with direct values
+				foreach ( $total_data as $key => $value ) {
+					if ( '' === $value ) {
+						$total_data[ $key ] = sp_array_value( $totals, $key, 0 );
+					}
+				}
+				
+				// Then merge with placeholder values
 				$total = array_merge( $total_placeholders, $total_data );
 				$merged[-1] = $total;
 				$merged[-1]['name'] = __( 'Total', 'sportspress' );
