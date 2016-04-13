@@ -92,6 +92,11 @@
 	width: 1px;
 }
 
+/* Post Content */
+.sp-post-content {
+	clear: both;
+}
+
 /* Pagination */
 .sp-table-wrapper .dataTables_paginate {
 	text-align: center;
@@ -444,5 +449,9 @@
 	
 	.sp-template-logo + .sp-post-content {
 		clear: left;
+	}
+	
+	.sp-template-photo + .sp-post-content {
+		clear: none;
 	}
 }
