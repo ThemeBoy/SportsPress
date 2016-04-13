@@ -109,7 +109,7 @@ class SP_Player extends SP_Custom_Post {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $league_id, $admin = false, $section = -1, $context = null ) {
+	public function data( $league_id, $admin = false, $section = -1 ) {
 
 		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
@@ -500,7 +500,7 @@ class SP_Player extends SP_Custom_Post {
 			if ( $team_id ):
 				$team_name = get_the_title( $team_id );
 				
-				if ( 'api' !== $context && get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
+				if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
 					$team_permalink = get_permalink( $team_id );
 					$team_name = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
 				endif;
@@ -587,7 +587,7 @@ class SP_Player extends SP_Custom_Post {
 		
 		if ( is_array( $terms ) ) {
 			foreach ( $terms as $term ) {
-				$statistics[ $term->term_id ] = $this->data( $term->term_id, false, -1, 'api' );
+				$statistics[ $term->term_id ] = $this->data( $term->term_id );
 			}
 		}
 		
