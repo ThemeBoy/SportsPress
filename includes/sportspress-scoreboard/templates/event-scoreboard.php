@@ -22,6 +22,7 @@ $defaults = array(
 	'step' => get_option( 'sportspress_scoreboard_step', 2 ),
 	'show_team_logo' => get_option( 'sportspress_scoreboard_show_logos', 'no' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
+	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
 	'order' => 'default',
 	'show_all_events_link' => false,
 	'show_date' => get_option( 'sportspress_scoreboard_show_date', 'no' ) == 'yes' ? true : false,
@@ -103,7 +104,7 @@ $post_id = get_the_ID();
 											$results = apply_filters( 'sportspress_scoreboard_main_results', sp_get_main_results( $event->ID ), $event->ID );
 
 											foreach ( $teams as $index => $team ) {
-												$name = sp_get_short_name( $team );
+												$name = sp_get_team_name( $team, $abbreviate_teams );
 												if ( ! $name ) continue;
 
 												if ( $show_team_logo ) {
@@ -120,7 +121,7 @@ $post_id = get_the_ID();
 											}
 										} else {
 											foreach ( $teams as $index => $team ) {
-												$name = sp_get_short_name( $team );
+												$name = sp_get_team_name( $team, $abbreviate_teams );
 												if ( ! $name ) continue;
 
 												if ( $show_team_logo ) {
