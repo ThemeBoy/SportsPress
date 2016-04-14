@@ -15,6 +15,7 @@ $defaults = array(
 	'show_venue' => get_option( 'sportspress_tournament_show_venue', 'no' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
+	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'layout' => 'bracket',
 );
@@ -22,7 +23,7 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 $tournament = new SP_Tournament( $id );
-list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout );
+list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout, true );
 ?>
 <table class="sp-data-table sp-tournament-bracket<?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
 	<thead>
@@ -70,15 +71,15 @@ list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout
 									$home = reset( $teams );
 									if ( sp_has_logo( $home ) ) {
 										$event_name = sp_get_logo( $home, 'mini' ) . ' ' . $event_name;
-									} elseif ( sp_get_abbreviation( $home ) ) {
-										$event_name = sp_get_abbreviation( $home ) . ' ' . $event_name;
+									} else {
+										$event_name = sp_get_team_name( $home, $abbreviate_teams ) . ' ' . $event_name;
 									}
 
 									$away = end( $teams );
 									if ( sp_has_logo( $away ) ) {
 										$event_name .= ' ' . sp_get_logo( $away, 'mini' );
-									} elseif ( sp_get_abbreviation( $away ) ) {
-										$event_name .= ' ' . sp_get_abbreviation( $away );
+									} else {
+										$event_name .= ' ' . sp_get_team_name( $away, $abbreviate_teams );
 									}
 								}
 							}
@@ -147,7 +148,7 @@ list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout
 					
 						echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="' . implode( ' ', $classes ) . '">';
 						if ( $team ) {
-							$team_name = get_the_title( $team );
+							$team_name = sp_get_team_name( $team, $abbreviate_teams );
 							if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '" class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</a>';
 							else $team_name = '<span class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</span>';;
 							echo $team_name;

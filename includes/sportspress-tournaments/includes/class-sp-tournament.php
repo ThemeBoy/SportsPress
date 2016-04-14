@@ -80,7 +80,7 @@ class SP_Tournament {
 		
 		// Assign default labels
 		for ( $i = 0; $i < sizeof( $labels ); $i++ ) {
-			if ( '' === $labels[ $i ] ) {
+			if ( isset( $labels[ $i ] ) && '' === $labels[ $i ] ) {
 				$labels[ $i ] = sprintf( __( 'Round %s', 'sportspress' ), $i + 1 );
 			}
 		}
