@@ -168,10 +168,6 @@ class SportsPress_Duplicator {
 	function get_current_user() {
 		if ( function_exists( 'wp_get_current_user' ) ) {
 			return wp_get_current_user();
-		} else if ( function_exists( 'get_currentuserinfo' ) ) {
-			global $userdata;
-			get_currentuserinfo();
-			return $userdata;
 		} else {
 			$user_login = $_COOKIE[ USER_COOKIE ];
 			$sql = $wpdb->prepare( "SELECT * FROM $wpdb->users WHERE user_login=%s", $user_login );
