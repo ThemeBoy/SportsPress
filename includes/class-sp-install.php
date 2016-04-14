@@ -88,6 +88,9 @@ class SP_Install {
 		// Queue upgrades
 		$current_version = get_option( 'sportspress_version', null );
 
+		// Do upgrades
+		$this->upgrades( $current_version );
+
 		// Update version
 		update_option( 'sportspress_version', SP()->version );
 
@@ -398,6 +401,20 @@ class SP_Install {
 				endforeach;
 			endforeach;
 		endif;
+	}
+
+	/**
+	 * Make adjustments based on current version of the plugin
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function upgrades( $version = null ) {
+		if ( null === $version ) return;
+		
+		if ( version_compare( $version, '2.0', '<' ) ) {
+			update_option( 'sportspress_player_columns', 'manual' );
+		}
 	}
 
 	/**
