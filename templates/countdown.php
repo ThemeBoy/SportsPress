@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'team' => null,
+	'league' => null,
+	'season' => null,
 	'id' => null,
 	'title' => null,
 	'live' => get_option( 'sportspress_enable_live_countdowns', 'yes' ) == 'yes' ? true : false,
@@ -24,8 +26,31 @@ if ( isset( $id ) ):
 	$post = get_post( $id );
 else:
 	$args = array();
-	if ( isset( $team ) )
-		$args = array( 'meta_query' => array( array( 'key' => 'sp_team', 'value' => $team ) ) );
+	if ( isset( $team ) ) {
+		$args['meta_query'] = array(
+			array(
+				'key' => 'sp_team',
+				'value' => $team,
+			)
+		);
+	}
+	if ( isset( $league ) || isset( $season ) ) {
+		$args['tax_query'] = array( 'relation' => 'AND' );
+		
+		if ( isset( $league ) ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'sp_league',
+				'terms' => $league,
+			);
+		}
+		
+		if ( isset( $season ) ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'sp_season',
+				'terms' => $season,
+			);
+		}
+	}
 	$post = sp_get_next_event( $args );
 endif;
 
