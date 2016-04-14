@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, rochesterj
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends, golf
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 4.4
-Stable tag: 1.9.20
+Tested up to: 4.5
+Stable tag: 2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -138,7 +138,7 @@ Feel free to share your suggestions with us so we can continue to develop awesom
 
 Developers can contribute via the [SportsPress GitHub Repository](https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md).
 
-Translators can contribute to SportsPress translations through [Transifex](https://www.transifex.com/projects/p/sportspress/).
+Translators can contribute to SportsPress translations through [GlotPress](https://translate.wordpress.org/projects/wp-plugins/sportspress).
 
 = Stay Current =
 To keep up with the latest updates and new features, be sure to do the following:
@@ -237,6 +237,34 @@ There are [4 different licenses](http://tboy.co/pro) that you can choose from: S
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.0 =
+* Feature - Integration with [WP REST API](https://wordpress.org/plugins/rest-api/) by adding endpoints for viewing, creating, editing, and deleting SportsPress data.
+* Feature - New drag-and-drop layout designer for customizing events, teams, players, and staff pages.
+* Feature - Allow player biography to float next to photo in profile.
+* Feature - Add option to display separate offensive and defensive statistics in player profiles.
+* Feature - Add option to display career totals as a footer row in player statistics tables.
+* Feature - Add option to display event calendar or fixtures & results on team pages.
+* Feature - Add option to display time in event logos section when results are not ready.
+* Feature - Add global visibility settings to player statistic columns.
+* Feature - Automatically re-order competitions, seasons, venues, positions, and jobs by slug.
+* Refactor - Change parameter for sp_get_next_event function to allow custom templating.
+* Tweak - Reverse team order also applies to admin.
+* Tweak - Hide squad number from defense box score.
+* Tweak - Use more compact labeling in player columns admin meta box.
+* Tweak - Update modules page to reflect new premium scoreboard module.
+* Tweak - Remove hardcoded protocol for calls to Google Maps scripts.
+* Tweak - Limit venue archives to events.
+* Tweak - Float team profile next to logo on team pages.
+* Tweak - Display league table and player list option in teams only when modules are active.
+* Tweak - Load profile and description meta boxes as native editors instead of custom methods.
+* Tweak - Load team abbreviations independent of post title filter.
+* Fix - Error when league table column has no equation.
+* Fix - Error when displaying checkboxes for manual event statistics.
+* Fix - Venues linking automatically in countdown widgets.
+* Fix - Styling issue where countdown widgets were pushed off-screen in some themes.
+* Fix - Avoid loading countdown widget if no events are available.
+* Preset - Update baseball preset with 10th inning label and option fixes.
 
 = 1.9.20 =
 * Tweak - Expand event title section for team logos in countdown widget.

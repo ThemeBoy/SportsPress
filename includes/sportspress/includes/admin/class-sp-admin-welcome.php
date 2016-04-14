@@ -173,7 +173,7 @@ class SP_Admin_Welcome {
 			?>
 			<div class="sp-feature feature-section col two-col">
 				<div>
-					<?php if ( get_option( 'sportspress_basic_setup' ) ) { ?>
+					<?php if ( false !== get_option( 'sportspress_sport' ) ) { ?>
 						<h4><?php _e( 'Sport', 'sportspress' ); ?></h4>
 						<?php
 						$sport = get_option( 'sportspress_sport' );

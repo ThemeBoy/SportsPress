@@ -31,7 +31,7 @@ endif;
 
 extract( $defaults, EXTR_SKIP );
 
-if ( ! isset( $post ) ) return;
+if ( ! isset( $post ) || ! $post ) return;
 
 if ( $title )
 	echo '<h4 class="sp-table-caption">' . $title . '</h4>';

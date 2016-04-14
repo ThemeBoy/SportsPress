@@ -142,7 +142,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'Players', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -158,7 +158,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'Staff', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -174,7 +174,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'Results', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -190,7 +190,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'Box Score', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -206,7 +206,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'Staff', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -222,7 +222,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'League Tables', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -238,7 +238,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'Player Lists', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -253,7 +253,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'Events', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'embed' ),
+					'context'         => array( 'view' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -300,7 +300,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'Teams', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'embed' ),
+					'context'         => array( 'view' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -330,7 +330,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'Past Teams', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'embed' ),
+					'context'         => array( 'view' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -361,7 +361,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'Metrics', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -377,7 +377,7 @@ class SP_REST_API {
 				'schema'          => array(
 					'description'     => __( 'Statistics', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),

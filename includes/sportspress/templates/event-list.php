@@ -24,6 +24,7 @@ $defaults = array(
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_venues' => get_option( 'sportspress_link_venues', 'yes' ) == 'yes' ? true : false,
+	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_event_list_paginated', 'yes' ) == 'yes' ? true : false,
@@ -166,7 +167,7 @@ endif;
 
 					if ( $teams ):
 						foreach ( $teams as $team ):
-							$name = get_the_title( $team );
+							$name = sp_get_team_name( $team, $abbreviate_teams );
 							if ( $name ):
 
 								if ( $show_team_logo ):

@@ -39,10 +39,6 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		if ( '' === $format ) {
 			$format = 'number';
 		}
-		$visible = get_post_meta( $post->ID, 'sp_visible', true );
-		if ( '' === $visible ) {
-			$visible = 1;
-		}
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
@@ -71,25 +67,33 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 				?>
 			</select>
 		</p>
-		<p>
-			<strong><?php _e( 'Visible', 'sportspress' ); ?></strong>
-			<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Display in player profile?', 'sportspress' ); ?>"></i>
-		</p>
-		<ul class="sp-visible-selector">
-			<li>
-				<label class="selectit">
-					<input name="sp_visible" id="sp_visible_yes" type="radio" value="1" <?php checked( $visible ); ?>>
-					<?php _e( 'Yes', 'sportspress' ); ?>
-				</label>
-			</li>
-			<li>
-				<label class="selectit">
-					<input name="sp_visible" id="sp_visible_no" type="radio" value="0" <?php checked( ! $visible ); ?>>
-					<?php _e( 'No', 'sportspress' ); ?>
-				</label>
-			</li>
-		</ul>
 		<?php
+		if ( 'auto' === get_option( 'sportspress_player_columns', 'auto' ) ) {
+			$visible = get_post_meta( $post->ID, 'sp_visible', true );
+			if ( '' === $visible ) {
+				$visible = 1;
+			}
+			?>
+			<p>
+				<strong><?php _e( 'Visible', 'sportspress' ); ?></strong>
+				<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Display in player profile?', 'sportspress' ); ?>"></i>
+			</p>
+			<ul class="sp-visible-selector">
+				<li>
+					<label class="selectit">
+						<input name="sp_visible" id="sp_visible_yes" type="radio" value="1" <?php checked( $visible ); ?>>
+						<?php _e( 'Yes', 'sportspress' ); ?>
+					</label>
+				</li>
+				<li>
+					<label class="selectit">
+						<input name="sp_visible" id="sp_visible_no" type="radio" value="0" <?php checked( ! $visible ); ?>>
+						<?php _e( 'No', 'sportspress' ); ?>
+					</label>
+				</li>
+			</ul>
+			<?php
+		}
 	}
 
 	/**
@@ -99,6 +103,8 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		self::delete_duplicate( $_POST );
 		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1 ) );
 		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number' ) );
-		update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1 ) );
+		if ( 'auto' === get_option( 'sportspress_player_columns', 'auto' ) ) {
+			update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1 ) );
+		}
 	}
 }

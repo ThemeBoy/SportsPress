@@ -109,12 +109,13 @@ class SP_Player extends SP_Custom_Post {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $league_id, $admin = false, $section = -1, $context = null ) {
+	public function data( $league_id, $admin = false, $section = -1 ) {
 
 		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
+		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 		
 		$args = array(
 			'post_type' => array( 'sp_performance', 'sp_statistic' ),
@@ -498,9 +499,9 @@ class SP_Player extends SP_Custom_Post {
 			$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
 
 			if ( $team_id ):
-				$team_name = get_the_title( $team_id );
+				$team_name = sp_get_team_name( $team_id, $abbreviate_teams );
 				
-				if ( 'api' !== $context && get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
+				if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
 					$team_permalink = get_permalink( $team_id );
 					$team_name = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
 				endif;
@@ -558,9 +559,28 @@ class SP_Player extends SP_Custom_Post {
 			}
 			
 			if ( 'yes' === get_option( 'sportspress_player_show_total', 'no' ) ) {
+				// Get totals calculated from events
 				$total_placeholders = sp_array_value( $placeholders, 0, array() );
+				
+				// Get totals as entered directly and filter out the empty values
 				$total_data = sp_array_value( $data, 0, array() );
-				$total_data = array_filter( $total_data );
+				
+				// Get totals of all seasons as entered manually
+				$totals = array();
+				foreach ( $merged as $season => $stats ) {
+					foreach ( $stats as $key => $value ) {
+						$totals[ $key ] = sp_array_value( $totals, $key, 0 ) + $value;
+					}
+				}
+				
+				// Merge with direct values
+				foreach ( $total_data as $key => $value ) {
+					if ( '' === $value ) {
+						$total_data[ $key ] = sp_array_value( $totals, $key, 0 );
+					}
+				}
+				
+				// Then merge with placeholder values
 				$total = array_merge( $total_placeholders, $total_data );
 				$merged[-1] = $total;
 				$merged[-1]['name'] = __( 'Total', 'sportspress' );
@@ -587,7 +607,7 @@ class SP_Player extends SP_Custom_Post {
 		
 		if ( is_array( $terms ) ) {
 			foreach ( $terms as $term ) {
-				$statistics[ $term->term_id ] = $this->data( $term->term_id, false, -1, 'api' );
+				$statistics[ $term->term_id ] = $this->data( $term->term_id );
 			}
 		}
 		

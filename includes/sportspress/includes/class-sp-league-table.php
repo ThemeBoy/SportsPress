@@ -35,6 +35,7 @@ class SP_League_Table extends SP_Custom_Post{
 		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
+		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 
 		// Get labels from result variables
 		$result_labels = (array)sp_get_var_labels( 'sp_result' );
@@ -537,7 +538,7 @@ class SP_League_Table extends SP_Custom_Post{
 			// Add team name to row
 			$merged[ $team_id ] = array();
 
-			$team_data['name'] = get_the_title( $team_id );
+			$team_data['name'] = sp_get_team_name( $team_id, $abbreviate_teams );
 
 			foreach ( $team_data as $key => $value ):
 

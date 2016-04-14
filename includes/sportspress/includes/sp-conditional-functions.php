@@ -78,7 +78,7 @@ if ( ! function_exists( 'sp_config_types' ) ) {
  */
 if ( ! function_exists( 'sp_taxonomies' ) ) {
 	function sp_taxonomies() {
-		return apply_filters( 'sportspress_taxonomies', array( 'sp_league', 'sp_season', 'sp_venue', 'sp_position' ) );
+		return apply_filters( 'sportspress_taxonomies', array( 'sp_league', 'sp_season', 'sp_venue', 'sp_position', 'sp_role' ) );
 	}
 }
 
@@ -133,6 +133,24 @@ if ( ! function_exists( 'is_sp_config_type' ) ) {
 		$post_types = sp_config_types();
 
 		if ( in_array( $typenow, $post_types ) )
+			return true;
+		return false;
+	}
+}
+
+/**
+ * is_sp_taxonomy - Returns true if post is SportsPress taxonomy
+ *
+ * @access public
+ * @return bool
+ */
+if ( ! function_exists( 'is_sp_taxonomy' ) ) {
+	function is_sp_taxonomy( $typenow = null ) {
+		if ( $typenow == null ) global $typenow;
+		
+		$taxonomies = sp_taxonomies();
+
+		if ( in_array( $typenow, $taxonomies ) )
 			return true;
 		return false;
 	}

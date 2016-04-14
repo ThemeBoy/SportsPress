@@ -13,6 +13,7 @@ if ( get_option( 'sportspress_event_show_logos', 'yes' ) === 'no' ) return;
 $show_team_names = get_option( 'sportspress_event_logos_show_team_names', 'no' ) === 'yes' ? true : false;
 $show_time = get_option( 'sportspress_event_logos_show_time', 'no' ) === 'yes' ? true : false;
 $show_results = get_option( 'sportspress_event_logos_show_results', 'no' ) === 'yes' ? true : false;
+$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 
 if ( ! isset( $id ) )
 	$id = get_the_ID();
@@ -43,9 +44,9 @@ if ( $teams ):
 		// Add team name
 		if ( $show_team_names ) {
 			if ( $alt ) {
-				$logo .= ' <strong class="sp-team-name">' . get_the_title( $team ) . '</strong>';
+				$logo .= ' <strong class="sp-team-name">' . sp_get_team_name( $team, $abbreviate_teams ) . '</strong>';
 			} else {
-				$logo = '<strong class="sp-team-name">' . get_the_title( $team ) . '</strong> ' . $logo;
+				$logo = '<strong class="sp-team-name">' . sp_get_team_name( $team, $abbreviate_teams ) . '</strong> ' . $logo;
 			}
 		}
 
