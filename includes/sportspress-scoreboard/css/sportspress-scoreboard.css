@@ -41,6 +41,7 @@
     table-layout: fixed;
     margin: 0 !important;
     position: relative;
+    line-height: 1.5em;
 }
 
 .sp-scoreboard td {
@@ -68,7 +69,13 @@
 	margin: 0 0 5px;
 }
 
-.sp-scoreboard-team img {
-	width: 16px;
+.sp-scoreboard-team-logo {
+	width: 1.5em;
+	display: inline-block;
+}
+
+.sp-scoreboard-team-logo img {
+	height: 1.5em;
+	width: auto;
 	vertical-align: middle;
 }
