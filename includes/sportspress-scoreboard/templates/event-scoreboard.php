@@ -17,8 +17,8 @@ $defaults = array(
 	'date_to' => 'default',
 	'league' => null,
 	'season' => null,
-	'number' => get_option( 'sportspress_scoreboard_limit', 20 ),
-	'width' => get_option( 'sportspress_scoreboard_width', 125 ),
+	'number' => get_option( 'sportspress_scoreboard_limit', 10 ),
+	'width' => get_option( 'sportspress_scoreboard_width', 180 ),
 	'step' => get_option( 'sportspress_scoreboard_step', 2 ),
 	'show_team_logo' => get_option( 'sportspress_scoreboard_show_logos', 'no' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
@@ -106,6 +106,8 @@ $post_id = get_the_ID();
 											foreach ( $teams as $index => $team ) {
 												$name = sp_get_team_name( $team, $abbreviate_teams );
 												if ( ! $name ) continue;
+												
+												$name = '<span class="sp-scoreboard-team-name">' . $name . '</span>';
 
 												if ( $show_team_logo ) {
 													$name = '<span class="sp-scoreboard-team-logo">' . sp_get_logo( $team, 'mini' ) . '</span> ' . $name;
@@ -117,7 +119,7 @@ $post_id = get_the_ID();
 														$name .= ' <span class="sp-scoreboard-result">' . $result . '</span>';
 												endif;
 
-												echo '<span class="sp-scoreboard-team">' . $name . '<span>';
+												echo '<span class="sp-scoreboard-team">' . $name . '</span>';
 											}
 										} else {
 											foreach ( $teams as $index => $team ) {

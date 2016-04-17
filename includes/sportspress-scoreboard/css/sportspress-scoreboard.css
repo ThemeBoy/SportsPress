@@ -45,7 +45,7 @@
 }
 
 .sp-scoreboard td {
-	width: 125px;
+	width: 180px;
 	padding: 0;
 }
 
@@ -78,4 +78,8 @@
 	height: 1.5em;
 	width: auto;
 	vertical-align: middle;
+}
+
+.sp-header-scoreboard .sp-scoreboard-nav {
+	border-radius: 0;
 }

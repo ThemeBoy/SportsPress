@@ -9,7 +9,7 @@ jQuery(document).ready(function($){
 	
 	$(".sp-scoreboard-nav").click(function() {
 		step = $(this).data("sp-step");
-		if ( ! step ) step = 125;
+		if ( ! step ) step = 180;
 		$wrapper = $(this).closest(".sp-scoreboard-wrapper");
 		$parent = $(this).siblings(".sp-scoreboard-content");
 		$el = $parent.find(".sp-scoreboard");

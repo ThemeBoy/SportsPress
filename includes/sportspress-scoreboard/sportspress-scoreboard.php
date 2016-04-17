@@ -40,6 +40,9 @@ class SportsPress_Scoreboard {
 		add_filter( 'sportspress_tinymce_strings', array( $this, 'add_tinymce_strings' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'sportspress_frontend_css', array( $this, 'frontend_css' ) );
+		add_action( 'sportspress_header', array( $this, 'header' ), 30 );
+		add_action( 'wp_footer', array( $this, 'footer' ), 30 );
+	    add_filter( 'sportspress_enable_header', '__return_true' );
 	}
 
 	/**
@@ -121,7 +124,7 @@ class SportsPress_Scoreboard {
 					'title' 	=> __( 'Limit', 'sportspress' ),
 					'id' 		=> 'sportspress_scoreboard_limit',
 					'class' 	=> 'small-text',
-					'default'	=> '8',
+					'default'	=> '10',
 					'desc' 		=> __( 'events', 'sportspress' ),
 					'type' 		=> 'number',
 					'custom_attributes' => array(
@@ -134,7 +137,7 @@ class SportsPress_Scoreboard {
 					'title' 	=> __( 'Width', 'sportspress' ),
 					'id' 		=> 'sportspress_scoreboard_width',
 					'class' 	=> 'small-text',
-					'default'	=> '125',
+					'default'	=> '180',
 					'desc' 		=> 'px',
 					'type' 		=> 'number',
 					'custom_attributes' => array(
@@ -307,9 +310,42 @@ class SportsPress_Scoreboard {
 			echo '.sp-tournament-bracket .sp-team .sp-team-name.sp-heading{color:' . $colors['heading'] . ' !important}';
 		}
 	}
+
+	/**
+	 * Header scoreboard
+	 */
+	public static function header() {
+		$limit = get_option( 'sportspress_scoreboard_limit', 10 );
+		
+		if ( ! $limit )
+			return;
+		?>
+		<div class="sp-header-scoreboard">
+			<?php sp_get_template( 'event-scoreboard.php', array(), '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' ); ?>
+		</div>
+		<?php
+	}
+
+	public static function inline_scripts() {
+		?>
+			<script type="text/javascript">
+			jQuery(document).ready( function($) {
+				$('.sp-header-loaded').prepend( $('.sp-header-scoreboard') );
+			} );
+			</script>
+		<?php
+	}
+
+	public static function footer() {
+		if ( did_action( 'sportspress_header' ) ) return;
+		self::header();
+		self::inline_scripts();
+	}
 }
 
 endif;
+
+add_filter( 'default_option_sportspress_load_scoreboard_module', '__return_false' );
 
 if ( get_option( 'sportspress_load_scoreboard_module', 'yes' ) == 'yes' ) {
 	new SportsPress_Scoreboard();
