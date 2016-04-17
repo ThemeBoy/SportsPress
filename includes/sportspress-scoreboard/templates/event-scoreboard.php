@@ -17,7 +17,8 @@ $defaults = array(
 	'date_to' => 'default',
 	'league' => null,
 	'season' => null,
-	'number' => get_option( 'sportspress_scoreboard_limit', 12 ),
+	'date_format' => get_option( 'sportspress_scoreboard_date_format', 'M j' ),
+	'number' => get_option( 'sportspress_scoreboard_limit', 0 ),
 	'width' => get_option( 'sportspress_scoreboard_width', 180 ),
 	'step' => get_option( 'sportspress_scoreboard_step', 2 ),
 	'show_team_logo' => get_option( 'sportspress_scoreboard_show_logos', 'no' ) == 'yes' ? true : false,
@@ -35,6 +36,8 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 $calendar = new SP_Calendar( $id );
+$calendar->date = 'auto';
+$calendar->number = $number;
 if ( $status != 'default' )
 	$calendar->status = $status;
 if ( $date != 'default' )
@@ -79,7 +82,7 @@ $post_id = get_the_ID();
 							<td class="data-name<?php if ( $post_id === $event->ID ) { ?> sp-highlight<?php } ?>" style="width:<?php echo $width; ?>px;">
 								<a href="<?php echo $permalink; ?>" class="sp-scoreboard-event">
 									<?php if ( $show_date ) { ?>
-										<span class="sp-scoreboard-date"><?php sp_the_date( $event->ID, 'M j' ); ?></span>
+										<span class="sp-scoreboard-date"><?php sp_the_date( $event->ID, $date_format ); ?></span>
 									<?php } ?>
 
 									<?php if ( $show_time ) { ?>

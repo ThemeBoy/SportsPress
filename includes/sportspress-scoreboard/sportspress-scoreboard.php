@@ -81,17 +81,9 @@ class SportsPress_Scoreboard {
 				array( 'title' => __( 'Scoreboard', 'sportspress' ), 'type' => 'title', 'id' => 'scoreboard_options' ),
 			),
 
-			apply_filters( 'sportspress_scoreboard_options', array(
+			apply_filters( 'sportspress_scoreboard_options', array(				
 				array(
-					'title' 	=> __( 'Calendar', 'sportspress' ),
-					'id' 		=> 'sportspress_scoreboard_calendar',
-					'default'	=> 0,
-					'type' 		=> 'select',
-					'options'	=> $options,
-				),
-				
-				array(
-					'title'     => __( 'Display', 'sportspress' ),
+					'title'     => __( 'Details', 'sportspress' ),
 					'desc' 		=> __( 'Date', 'sportspress' ),
 					'id' 		=> 'sportspress_scoreboard_show_date',
 					'default'	=> 'no',
@@ -132,6 +124,14 @@ class SportsPress_Scoreboard {
 				),
 
 				array(
+					'title' 	=> __( 'Date Format', 'sportspress' ),
+					'id' 		=> 'sportspress_scoreboard_date_format',
+					'class' 	=> 'small-text',
+					'default'	=> 'M j',
+					'type' 		=> 'text',
+				),
+
+				array(
 					'title'     => __( 'Teams', 'sportspress' ),
 					'desc' 		=> __( 'Display logos', 'sportspress' ),
 					'id' 		=> 'sportspress_scoreboard_show_logos',
@@ -140,14 +140,14 @@ class SportsPress_Scoreboard {
 				),
 
 				array(
-					'title' 	=> __( 'Limit', 'sportspress' ),
+					'title' 	=> __( 'Display', 'sportspress' ),
 					'id' 		=> 'sportspress_scoreboard_limit',
 					'class' 	=> 'small-text',
-					'default'	=> '12',
+					'default'	=> '0',
 					'desc' 		=> __( 'events', 'sportspress' ),
 					'type' 		=> 'number',
 					'custom_attributes' => array(
-						'min' 	=> 1,
+						'min' 	=> 0,
 						'step' 	=> 1
 					),
 				),
@@ -334,13 +334,13 @@ class SportsPress_Scoreboard {
 	 * Header scoreboard
 	 */
 	public static function header() {
-		$id = get_option( 'sportspress_scoreboard_calendar', 0 );
+		$limit = get_option( 'sportspress_scoreboard_limit', 0 );
 		
-		if ( ! $id )
+		if ( ! $limit )
 			return;
 		?>
 		<div class="sp-header-scoreboard">
-			<?php sp_get_template( 'event-scoreboard.php', array( 'id' => $id ), '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' ); ?>
+			<?php sp_get_template( 'event-scoreboard.php', array( 'number' => $limit ), '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' ); ?>
 		</div>
 		<?php
 	}
