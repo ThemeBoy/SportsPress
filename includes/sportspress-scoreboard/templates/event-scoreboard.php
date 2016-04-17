@@ -17,7 +17,7 @@ $defaults = array(
 	'date_to' => 'default',
 	'league' => null,
 	'season' => null,
-	'number' => get_option( 'sportspress_scoreboard_limit', 10 ),
+	'number' => get_option( 'sportspress_scoreboard_limit', 12 ),
 	'width' => get_option( 'sportspress_scoreboard_width', 180 ),
 	'step' => get_option( 'sportspress_scoreboard_step', 2 ),
 	'show_team_logo' => get_option( 'sportspress_scoreboard_show_logos', 'no' ) == 'yes' ? true : false,
@@ -127,7 +127,7 @@ $post_id = get_the_ID();
 												if ( ! $name ) continue;
 
 												if ( $show_team_logo ) {
-													$name = sp_get_logo( $team, 'mini' ) . ' ' . $name;
+													$name = '<span class="sp-scoreboard-team-logo">' . sp_get_logo( $team, 'mini' ) . '</span> ' . $name;
 												}
 
 												echo '<span class="sp-scoreboard-team">' . $name . '<span>';

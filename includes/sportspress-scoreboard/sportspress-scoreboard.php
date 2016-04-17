@@ -65,12 +65,31 @@ class SportsPress_Scoreboard {
 	 * @return array
 	 */
 	public function add_settings( $settings ) {
+		$options = array(
+			0 => __( '&mdash; None &mdash;', 'sportspress' ),
+		);
+		
+		$calendars = get_posts( array( 'post_type' => 'sp_calendar', 'posts_per_page' => 500 ) );
+		if ( $calendars ) {
+			foreach ( $calendars as $calendar ) {
+				$options[ $calendar->ID ] = $calendar->post_title;
+			}
+		}
+		
 		$settings = array_merge( $settings,
 			array(
 				array( 'title' => __( 'Scoreboard', 'sportspress' ), 'type' => 'title', 'id' => 'scoreboard_options' ),
 			),
 
 			apply_filters( 'sportspress_scoreboard_options', array(
+				array(
+					'title' 	=> __( 'Calendar', 'sportspress' ),
+					'id' 		=> 'sportspress_scoreboard_calendar',
+					'default'	=> 0,
+					'type' 		=> 'select',
+					'options'	=> $options,
+				),
+				
 				array(
 					'title'     => __( 'Display', 'sportspress' ),
 					'desc' 		=> __( 'Date', 'sportspress' ),
@@ -124,7 +143,7 @@ class SportsPress_Scoreboard {
 					'title' 	=> __( 'Limit', 'sportspress' ),
 					'id' 		=> 'sportspress_scoreboard_limit',
 					'class' 	=> 'small-text',
-					'default'	=> '10',
+					'default'	=> '12',
 					'desc' 		=> __( 'events', 'sportspress' ),
 					'type' 		=> 'number',
 					'custom_attributes' => array(
@@ -315,13 +334,13 @@ class SportsPress_Scoreboard {
 	 * Header scoreboard
 	 */
 	public static function header() {
-		$limit = get_option( 'sportspress_scoreboard_limit', 10 );
+		$id = get_option( 'sportspress_scoreboard_calendar', 0 );
 		
-		if ( ! $limit )
+		if ( ! $id )
 			return;
 		?>
 		<div class="sp-header-scoreboard">
-			<?php sp_get_template( 'event-scoreboard.php', array(), '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' ); ?>
+			<?php sp_get_template( 'event-scoreboard.php', array( 'id' => $id ), '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' ); ?>
 		</div>
 		<?php
 	}
@@ -344,8 +363,6 @@ class SportsPress_Scoreboard {
 }
 
 endif;
-
-add_filter( 'default_option_sportspress_load_scoreboard_module', '__return_false' );
 
 if ( get_option( 'sportspress_load_scoreboard_module', 'yes' ) == 'yes' ) {
 	new SportsPress_Scoreboard();
