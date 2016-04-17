@@ -6,7 +6,7 @@ class SP_REST_Posts_Controller extends WP_REST_Posts_Controller {
 
 	public function __construct( $post_type ) {
 		$this->post_type = $post_type;
-		$this->namespace = 'sportspress/v1';
+		$this->namespace = 'sportspress/v2';
 		$obj = get_post_type_object( $post_type );
 		$this->rest_base = ! empty( $obj->rest_base ) ? $obj->rest_base : $obj->name;
 	}
