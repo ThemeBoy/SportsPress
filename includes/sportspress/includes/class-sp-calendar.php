@@ -37,6 +37,9 @@ class SP_Calendar extends SP_Custom_Post {
 	/** @var int The team ID. */
 	public $team;
 
+	/** @var int Number of events. */
+	public $number;
+
 	/**
 	 * __construct function.
 	 *
@@ -55,6 +58,7 @@ class SP_Calendar extends SP_Custom_Post {
 		$this->status = $this->__get( 'status' );
 		$this->date = $this->__get( 'date' );
 		$this->order = $this->__get( 'order' );
+		$this->number = $this->__get( 'number' );
 
 		if ( ! $this->status )
 			$this->status = 'any';
@@ -70,6 +74,9 @@ class SP_Calendar extends SP_Custom_Post {
 
 		if ( ! $this->to )
 			$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
+
+		if ( false === $this->number )
+			$this->number = 500;
 	}
 
 	/**
@@ -83,8 +90,7 @@ class SP_Calendar extends SP_Custom_Post {
 
 		$args = array(
 			'post_type' => 'sp_event',
-			'numberposts' => -1,
-			'posts_per_page' => -1,
+			'posts_per_page' => $this->number,
 			'orderby' => 'date',
 			'order' => $this->order,
 			'post_status' => $this->status,
@@ -186,7 +192,24 @@ class SP_Calendar extends SP_Custom_Post {
 
 			endif;
 			
-			$events = get_posts( $args );
+			if ( 'auto' === $this->date ) {
+				if ( 'any' === $this->status ) {
+					$args['post_status'] = 'publish';
+					$args['order'] = 'DESC';
+					$args['posts_per_page'] = ceil( $this->number / 2 );
+					$results = get_posts( $args );
+					$results = array_reverse( $results, true );
+					
+					$args['post_status'] = 'future';
+					$args['order'] = 'ASC';
+					$args['posts_per_page'] = floor( $this->number / 2 );
+					$fixtures = get_posts( $args );
+					
+					$events = array_merge_recursive( $results, $fixtures );
+				}
+			} else {
+				$events = get_posts( $args );
+			}
 
 		else:
 			$events = null;
