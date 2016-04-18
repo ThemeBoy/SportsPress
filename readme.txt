@@ -2,8 +2,8 @@
 Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends, golf
 Requires at least: 3.8
-Tested up to: 4.4
-Stable tag: 1.9.20
+Tested up to: 4.5
+Stable tag: 2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,38 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.0 =
+* Feature - Scoreboard module for displaying multiple events in a horizontal scoreboard layout.
+* Feature - Add waypoint animations to match stats.
+* Feature - Integration with [WP REST API](https://wordpress.org/plugins/rest-api/) by adding endpoints for viewing, creating, editing, and deleting SportsPress data.
+* Feature - New drag-and-drop layout designer for customizing events, teams, players, and staff pages.
+* Feature - Allow player biography to float next to photo in profile.
+* Feature - Add option to display separate offensive and defensive statistics in player profiles.
+* Feature - Add option to display career totals as a footer row in player statistics tables.
+* Feature - Add option to display event calendar or fixtures & results on team pages.
+* Feature - Add option to display time in event logos section when results are not ready.
+* Feature - Add global visibility settings to player statistic columns.
+* Feature - Automatically re-order competitions, seasons, venues, positions, and jobs by slug.
+* Refactor - Change parameter for sp_get_next_event function to allow custom templating.
+* Tweak - Branding colors in admin to reflect new WordPress styles.
+* Tweak - Reverse team order also applies to admin.
+* Tweak - Hide squad number from defense box score.
+* Tweak - Use more compact labeling in player columns admin meta box.
+* Tweak - Update modules page to reflect new premium scoreboard module.
+* Tweak - Remove hardcoded protocol for calls to Google Maps scripts.
+* Tweak - Limit venue archives to events.
+* Tweak - Float team profile next to logo on team pages.
+* Tweak - Display league table and player list option in teams only when modules are active.
+* Tweak - Load profile and description meta boxes as native editors instead of custom methods.
+* Tweak - Load team abbreviations independent of post title filter.
+* Fix - Deprecated function notice in Duplicator module.
+* Fix - Error when league table column has no equation.
+* Fix - Error when displaying checkboxes for manual event statistics.
+* Fix - Venues linking automatically in countdown widgets.
+* Fix - Styling issue where countdown widgets were pushed off-screen in some themes.
+* Fix - Avoid loading countdown widget if no events are available.
+* Preset - Update baseball preset with 10th inning label and option fixes.
 
 = 1.9.20 =
 * Tweak - Expand event title section for team logos in countdown widget.
