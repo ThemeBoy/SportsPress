@@ -75,7 +75,7 @@ class SP_Calendar extends SP_Custom_Post {
 		if ( ! $this->to )
 			$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
 
-		if ( false === $this->number )
+		if ( ! $this->number )
 			$this->number = 500;
 	}
 
