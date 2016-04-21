@@ -84,10 +84,13 @@
 						"event_results_reverse_teams" : "yes",
 						"event_performance_mode" : "values",
 						"event_performance_reverse_teams" : "yes",
-						"event_show_player_numbers" : "no",
+						"event_show_player_numbers" : "yes",
+						"event_show_position" : "no",
 						"event_split_players_by_team" : "yes",
 						"event_split_players_by_position" : "yes",
 						"event_total_performance" : "all",
-						"event_performance_sections" : 0
+						"event_performance_sections" : 0,
+						"player_performance_sections" : 0,
+						"player_show_total" : "yes"
 	}
 }
