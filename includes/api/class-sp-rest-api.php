@@ -294,13 +294,30 @@ class SP_REST_API {
 		);
 		
 		register_rest_field( 'sp_player',
+			'number',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Squad Number', 'sportspress' ),
+					'type'            => 'integer',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'absint',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_player',
 			'teams',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
+				'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 				'schema'          => array(
 					'description'     => __( 'Teams', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -312,10 +329,11 @@ class SP_REST_API {
 			'current_teams',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
+				'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 				'schema'          => array(
 					'description'     => __( 'Current Teams', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -327,10 +345,11 @@ class SP_REST_API {
 			'past_teams',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
+				'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 				'schema'          => array(
 					'description'     => __( 'Past Teams', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -342,6 +361,7 @@ class SP_REST_API {
 			'nationalities',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_data',
+				'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 				'schema'          => array(
 					'description'     => __( 'Nationalities', 'sportspress' ),
 					'type'            => 'array',
@@ -378,6 +398,70 @@ class SP_REST_API {
 					'description'     => __( 'Statistics', 'sportspress' ),
 					'type'            => 'array',
 					'context'         => array( 'view', 'edit' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_staff',
+			'teams',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
+				'update_callback' => 'SP_REST_API::update_post_meta_recursive',
+				'schema'          => array(
+					'description'     => __( 'Teams', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_staff',
+			'current_teams',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
+				'update_callback' => 'SP_REST_API::update_post_meta_recursive',
+				'schema'          => array(
+					'description'     => __( 'Current Teams', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_staff',
+			'past_teams',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
+				'update_callback' => 'SP_REST_API::update_post_meta_recursive',
+				'schema'          => array(
+					'description'     => __( 'Past Teams', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_staff',
+			'nationalities',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_data',
+				'update_callback' => 'SP_REST_API::update_post_meta_recursive',
+				'schema'          => array(
+					'description'     => __( 'Nationalities', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'embed' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -636,6 +720,7 @@ class SP_REST_API {
 			'current_teams' => 'sp_current_team',
 			'events' => 'sp_event',
 			'lists' => 'sp_list',
+			'nationalities' => 'sp_nationality',
 			'past_teams' => 'sp_past_team',
 			'performance' => 'sp_players',
 			'players' => 'sp_player',
