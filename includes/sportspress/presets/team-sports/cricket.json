@@ -1,8 +1,8 @@
 {
 	"name":				"Cricket",
 	"positions": [
-						"Batsman",
-						"Bowler"
+						{ "name" : "Batsman", "sections" : [ 0 ] },
+						{ "name" : "Bowler", "sections" : [ 0, 1 ] }
 	],
 	"outcomes": [
 						{ "name" : "Win", "condition" : ">" },

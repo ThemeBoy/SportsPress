@@ -142,7 +142,7 @@ class SportsPress_Player_Lists {
 				'schema'          => array(
 					'description'     => __( 'Layout', 'sportspress' ),
 					'type'            => 'string',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -158,7 +158,7 @@ class SportsPress_Player_Lists {
 				'schema'          => array(
 					'description'     => __( 'Player List', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),

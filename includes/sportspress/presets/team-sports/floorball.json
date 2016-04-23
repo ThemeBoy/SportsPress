@@ -1,9 +1,9 @@
 {
 	"name":				"Floorball",
 	"positions": [
-						"Forward",
-						"Defenseman",
-						"Goalkeeper"
+						{ "name" : "Forward", "sections" : [ 0 ] },
+						{ "name" : "Defenseman", "sections" : [ 0 ] },
+						{ "name" : "Goalkeeper", "sections" : [ 0, 1 ] }
 	],
 	"outcomes": [
 						{ "name" : "Win", "condition" : ">" },

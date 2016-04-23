@@ -1,13 +1,13 @@
 {
 	"name":				"Handball",
 	"positions": [
-						"Goalkeeper",
-						"Center back",
-						"Left back",
-						"Right back",
-						"Pivot",
-						"Left wing",
-						"Right wing"
+						{ "name" : "Goalkeeper", "sections" : [ 0, 1 ] },
+						{ "name" : "Center back", "sections" : [ 0 ] },
+						{ "name" : "Left back", "sections" : [ 0 ] },
+						{ "name" : "Right back", "sections" : [ 0 ] },
+						{ "name" : "Pivot", "sections" : [ 0 ] },
+						{ "name" : "Left wing", "sections" : [ 0 ] },
+						{ "name" : "Right wing", "sections" : [ 0 ] }
 	],
 	"outcomes": [
 						{ "name" : "Win", "condition" : ">" },

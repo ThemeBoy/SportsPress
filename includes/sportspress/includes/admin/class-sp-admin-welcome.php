@@ -93,7 +93,7 @@ class SP_Admin_Welcome {
 	 * @access private
 	 * @return void
 	 */
-	private function intro( $is_installed = false ) {
+	private function intro() {
 
 		// Flush after upgrades
 		if ( ! empty( $_GET['sp-updated'] ) || ! empty( $_GET['sp-installed'] ) )
@@ -130,13 +130,7 @@ class SP_Admin_Welcome {
 
 		<h2 class="nav-tab-wrapper">
 			<a class="nav-tab <?php if ( $_GET['page'] == 'sp-about' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-about' ), 'index.php' ) ) ); ?>">
-				<?php
-				if ( $is_installed ) {
-					_e( 'What&#8217;s New', 'sportspress' );
-				} else {
-					_e( 'Get Started', 'sportspress' );
-				}
-				?>
+				<?php _e( 'Welcome', 'sportspress' ); ?>
 			</a><a class="nav-tab <?php if ( $_GET['page'] == 'sp-credits' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-credits' ), 'index.php' ) ) ); ?>">
 				<?php _e( 'Credits', 'sportspress' ); ?>
 			</a><a class="nav-tab <?php if ( $_GET['page'] == 'sp-translators' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-translators' ), 'index.php' ) ) ); ?>">
@@ -152,11 +146,10 @@ class SP_Admin_Welcome {
 	public function about_screen() {
 		include_once( 'class-sp-admin-settings.php' );
 		$class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
-		$is_installed = false !== get_option( 'sportspress_sport' );
 		?>
 		<div class="wrap about-wrap about-sportspress-wrap">
 
-			<?php $this->intro( $is_installed ); ?>
+			<?php $this->intro(); ?>
 
 			<?php
 			// Save settings
@@ -180,7 +173,7 @@ class SP_Admin_Welcome {
 				SP_Admin_Sample_Data::insert_posts();
 			endif;
 			?>
-			<?php if ( $is_installed ) { ?>
+			<?php if ( false !== get_option( 'sportspress_sport' ) ) { ?>
 
 				<div class="headline-feature feature-video sp-fitvids" style="background-color:#191E23;">
 					<iframe width="990" height="557" src="https://www.youtube.com/embed/KQyga_C5a6M?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
@@ -205,7 +198,7 @@ class SP_Admin_Welcome {
 				<hr />
 
 				<div class="changelog">
-					<h2>Under the Hood</h2>
+					<h2>Take Control of Your Data</h2>
 					<div class="under-the-hood three-col">
 						<div class="col">
 							<h3>Taxonomy Ordering</h3>
