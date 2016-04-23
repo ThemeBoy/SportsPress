@@ -33,7 +33,7 @@ class SP_Meta_Box_Player_Statistics {
 					<p><strong><?php echo $league->name; ?></strong></p>
 					<?php
 					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes ) = $player->data( $league->term_id, true );
-					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 );
+					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0, true );
 					$i ++;
 				endforeach;
 			} else {
