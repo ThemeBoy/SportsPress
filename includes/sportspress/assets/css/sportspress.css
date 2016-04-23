@@ -16,6 +16,7 @@
 .sp-header {
 	position: relative;
 	overflow: visible;
+	z-index: 10000;
 }
 
 /* Templates */

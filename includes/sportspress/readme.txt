@@ -264,7 +264,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Fix - Venues linking automatically in countdown widgets.
 * Fix - Styling issue where countdown widgets were pushed off-screen in some themes.
 * Fix - Avoid loading countdown widget if no events are available.
-* Preset - Update baseball preset with 10th inning label and option fixes.
+* Preset - Update baseball preset.
 
 = 1.9.20 =
 * Tweak - Expand event title section for team logos in countdown widget.

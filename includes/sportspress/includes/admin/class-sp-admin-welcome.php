@@ -93,16 +93,18 @@ class SP_Admin_Welcome {
 	 * @access private
 	 * @return void
 	 */
-	private function intro() {
+	private function intro( $is_installed = false ) {
 
 		// Flush after upgrades
 		if ( ! empty( $_GET['sp-updated'] ) || ! empty( $_GET['sp-installed'] ) )
 			flush_rewrite_rules();
 
-		// Drop minor version if 0
-		$major_version = substr( SP()->version, 0, 3 );
+		// Get major version number
+		$version = explode( '.', SP()->version, 3 );
+		unset( $version[2] );
+		$display_version = implode( '.', $version );
 		?>
-		<h2 class="sp-welcome-logo"><?php echo apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . __( 'SportsPress', 'sportspress' ) . '">' ); ?></h2>
+		<h1 class="sp-welcome-logo"><?php echo apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . __( 'SportsPress', 'sportspress' ) . '">' ); ?></h1>
 
 		<div class="sp-badge"><?php printf( __( 'Version %s', 'sportspress' ), SP()->version ); ?></div>
 
@@ -115,7 +117,7 @@ class SP_Admin_Welcome {
 				else
 					$message = __( 'Thanks for installing!', 'sportspress' );
 
-				printf( __( '%s SportsPress %s has lots of refinements we think you&#8217;ll love.', 'sportspress' ), $message, $major_version );
+				printf( __( '%s SportsPress %s has lots of refinements we think you&#8217;ll love.', 'sportspress' ), $message, $display_version );
 			?>
 		</div>
 
@@ -128,7 +130,13 @@ class SP_Admin_Welcome {
 
 		<h2 class="nav-tab-wrapper">
 			<a class="nav-tab <?php if ( $_GET['page'] == 'sp-about' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-about' ), 'index.php' ) ) ); ?>">
-				<?php _e( 'Get Started', 'sportspress' ); ?>
+				<?php
+				if ( $is_installed ) {
+					_e( 'What&#8217;s New', 'sportspress' );
+				} else {
+					_e( 'Get Started', 'sportspress' );
+				}
+				?>
 			</a><a class="nav-tab <?php if ( $_GET['page'] == 'sp-credits' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-credits' ), 'index.php' ) ) ); ?>">
 				<?php _e( 'Credits', 'sportspress' ); ?>
 			</a><a class="nav-tab <?php if ( $_GET['page'] == 'sp-translators' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-translators' ), 'index.php' ) ) ); ?>">
@@ -144,10 +152,11 @@ class SP_Admin_Welcome {
 	public function about_screen() {
 		include_once( 'class-sp-admin-settings.php' );
 		$class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
+		$is_installed = false !== get_option( 'sportspress_sport' );
 		?>
 		<div class="wrap about-wrap about-sportspress-wrap">
 
-			<?php $this->intro(); ?>
+			<?php $this->intro( $is_installed ); ?>
 
 			<?php
 			// Save settings
@@ -171,59 +180,54 @@ class SP_Admin_Welcome {
 				SP_Admin_Sample_Data::insert_posts();
 			endif;
 			?>
-			<div class="sp-feature feature-section col two-col">
-				<div>
-					<?php if ( false !== get_option( 'sportspress_sport' ) ) { ?>
-						<h4><?php _e( 'Sport', 'sportspress' ); ?></h4>
-						<?php
-						$sport = get_option( 'sportspress_sport' );
-						$sport_options = SP_Admin_Sports::get_preset_options();
-						foreach ( $sport_options as $options ):
-							foreach ( $options as $slug => $name ):
-								if ( $sport === $slug ):
-									$sport = $name;
-									break;
-								endif;
-							endforeach;
-						endforeach;
-						echo $sport;
-						?>
-						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><i class="dashicons dashicons-edit"></i> <?php _e( 'Change', 'sportspress' ); ?></a>
+			<?php if ( $is_installed ) { ?>
 
-						<h4><?php _e( 'Next Steps', 'sportspress' ); ?></h4>
-						<p><?php _e( 'We&#8217;ve assembled some links to get you started:', 'sportspress' ); ?></p>
-						<?php
-						$steps = apply_filters( 'sportspress_next_steps', array(
-							'teams' => array(
-								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_team' ), 'edit.php' ) ),
-								'icon' => 'sp-icon-shield',
-								'label' => __( 'Add New Team', 'sportspress' ),
-							),
-							'players' => array(
-								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_player' ), 'edit.php' ) ),
-								'icon' => 'sp-icon-tshirt',
-								'label' => __( 'Add New Player', 'sportspress' ),
-							),
-							'events' => array(
-								'link' => admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ),
-								'icon' => 'sp-icon-calendar',
-								'label' => __( 'Add New Event', 'sportspress' ),
-							),
-						) );
-						?>
-						<?php if ( sizeof ( $steps ) ) { ?>
-						<div class="sportspress-steps">
-							<ul>
-								<?php foreach ( $steps as $step ) { ?>
-									<li><a href="<?php echo esc_url( $step['link'] ); ?>" class="welcome-icon sp-welcome-icon"><i class="<?php echo sp_array_value( $step, 'icon' ); ?>"></i> <?php echo $step['label']; ?></a></li>
-								<?php } ?>
-							</ul>
+				<div class="headline-feature feature-video sp-fitvids" style="background-color:#191E23;">
+					<iframe width="990" height="557" src="https://www.youtube.com/embed/KQyga_C5a6M?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+				</div>
+
+				<hr>
+
+				<div class="feature-section two-col">
+					<h2>Customization Improvements</h2>
+					<div class="col">
+						<img src="https://cdn-themeboy.netdna-ssl.com/wp-content/uploads/layout-designer.gif" alt=""/>
+						<h3>Layout Designer</h3>
+						<p>You can now choose to show or hide specific elements and reorder them as you like. Design your own unique layouts for event, team, player, and staff pages.</p>
+					</div>
+					<div class="col">
+						<img src="https://cdn-themeboy.netdna-ssl.com/wp-content/uploads/smart-statistics.png" alt=""/>
+						<h3>Smarter Statistics</h3>
+						<p>Offensive and defensive statistics can now be displayed separately in events and player profiles. A global visibility option lets you choose whether to show or hide each column.</p>
+					</div>
+				</div>
+
+				<hr />
+
+				<div class="changelog">
+					<h2>Under the Hood</h2>
+					<div class="under-the-hood three-col">
+						<div class="col">
+							<h3>Taxonomy Ordering</h3>
+							<p>The order of competitions, seasons, venues, positions, and roles can now be changed by editing the slug of each term.</p>
 						</div>
-						<?php } ?>
+						<div class="col">
+							<h3>Career Totals</h3>
+							<p>Display career totals in player statistics tables. This row is added as a footer below the list of seasons.</p>
+						</div>
+						<div class="col">
+							<h3>REST API Support</h3>
+							<p>SportsPress now integrates with the WP REST API with custom endpoints for retrieving and updating sports data.</p>
+						</div>
+					</div>
+				</div>
 
-						<h4><?php _e( 'Settings', 'sportspress' ); ?></h4>
-						<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
-					<?php } else { ?>
+				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
+
+			<?php } else { ?>
+
+				<div class="sp-feature feature-section col two-col">
+					<div>
 						<form method="post" id="mainform" action="" enctype="multipart/form-data">
 							<h4><?php _e( 'Basic Setup', 'sportspress' ); ?></h4>
 							<p><?php _e( 'Select your timezone and sport to get started.', 'sportspress' ); ?></p>
@@ -282,20 +286,22 @@ class SP_Admin_Welcome {
 					        	<?php wp_nonce_field( 'sportspress-settings' ); ?>
 					        </p>
 						</form>
+					</div>
+					<?php if ( current_user_can( 'install_themes' ) && ! current_theme_supports( 'sportspress' ) ) { ?>
+						<div class="last-feature">
+							<h4><?php _e( 'Free SportsPress Theme', 'sportspress' ); ?></h4>
+							<a href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>" class="sp-theme-screenshot"><img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/rookie.png"></a>
+							<p><?php _e( 'Have you tried the free Rookie theme yet?', 'sportspress' ); ?></p>
+							<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
+							<p class="sp-module-actions">
+								<a class="button button-large" href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
+							</p>
+						</div>
 					<?php } ?>
 				</div>
-				<?php if ( current_user_can( 'install_themes' ) && ! current_theme_supports( 'sportspress' ) ) { ?>
-					<div class="last-feature">
-						<h4><?php _e( 'Free SportsPress Theme', 'sportspress' ); ?></h4>
-						<a href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>" class="sp-theme-screenshot"><img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/rookie.png"></a>
-						<p><?php _e( 'Have you tried the free Rookie theme yet?', 'sportspress' ); ?></p>
-						<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
-						<p class="sp-module-actions">
-							<a class="button button-large" href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
-						</p>
-					</div>
-				<?php } ?>
-			</div>
+			
+			<?php } ?>
+
 		</div>
 		<?php
 	}
