@@ -1,8 +1,8 @@
 {
 	"name":				"Ice Hockey",
 	"positions": [
-						"Skater",
-						"Goalie"
+						{ "name" : "Skater", "sections" : [ 0 ] },
+						{ "name" : "Goalie", "sections" : [ 0, 1 ] }
 	],
 	"outcomes": [
 						{ "name" : "Win", "condition" : ">" },

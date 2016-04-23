@@ -1,19 +1,16 @@
 {
 	"name":				"Baseball",
-	"positions": {
-						"Batter" : [],
-						"Pitcher" : [],
-						"Fielder" : [
-							"Catcher",
-							"First base",
-							"Second base",
-							"Third base",
-							"Shortstop",
-							"Left field",
-							"Center field",
-							"Right field"
-						]
-	},
+	"positions": [
+						{ "name" : "Pitcher", "sections" : [ 0, 1 ] },
+						{ "name" : "Catcher", "sections" : [ 0 ] },
+						{ "name" : "First base", "sections" : [ 0 ] },
+						{ "name" : "Second base", "sections" : [ 0 ] },
+						{ "name" : "Third base", "sections" : [ 0 ] },
+						{ "name" : "Shortstop", "sections" : [ 0 ] },
+						{ "name" : "Left field", "sections" : [ 0 ] },
+						{ "name" : "Center field", "sections" : [ 0 ] },
+						{ "name" : "Right field", "sections" : [ 0 ] }
+	],
 	"outcomes": [
 						{ "name" : "Win", "condition" : ">" },
 						{ "name" : "Loss", "condition" : "<" },
@@ -84,10 +81,13 @@
 						"event_results_reverse_teams" : "yes",
 						"event_performance_mode" : "values",
 						"event_performance_reverse_teams" : "yes",
-						"event_show_player_numbers" : "no",
+						"event_show_player_numbers" : "yes",
+						"event_show_position" : "no",
 						"event_split_players_by_team" : "yes",
 						"event_split_players_by_position" : "yes",
 						"event_total_performance" : "all",
-						"event_performance_sections" : 0
+						"event_performance_sections" : 0,
+						"player_performance_sections" : 0,
+						"player_show_total" : "yes"
 	}
 }
