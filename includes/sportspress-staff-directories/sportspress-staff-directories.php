@@ -469,7 +469,7 @@ class SportsPress_Staff_Directories {
 				'schema'          => array(
 					'description'     => __( 'Layout', 'sportspress' ),
 					'type'            => 'string',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -485,7 +485,7 @@ class SportsPress_Staff_Directories {
 				'schema'          => array(
 					'description'     => __( 'Columns', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -501,7 +501,7 @@ class SportsPress_Staff_Directories {
 				'schema'          => array(
 					'description'     => __( 'Team', 'sportspress' ),
 					'type'            => 'integer',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
@@ -516,7 +516,7 @@ class SportsPress_Staff_Directories {
 				'schema'          => array(
 					'description'     => __( 'Staff Directory', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'embed' ),
+					'context'         => array( 'view' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
