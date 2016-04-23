@@ -526,36 +526,6 @@ class SportsPress_Sponsors {
 				),
 			)
 		);
-		
-		register_rest_field( 'sp_sponsor',
-			'impressions',
-			array(
-				'get_callback'    => 'SP_REST_API::get_post_meta',
-				'schema'          => array(
-					'description'     => __( 'Impressions', 'sportspress' ),
-					'type'            => 'integer',
-					'context'         => array( 'view', 'embed' ),
-					'arg_options'     => array(
-						'sanitize_callback' => 'absint',
-					),
-				),
-			)
-		);
-		
-		register_rest_field( 'sp_sponsor',
-			'clicks',
-			array(
-				'get_callback'    => 'SP_REST_API::get_post_meta',
-				'schema'          => array(
-					'description'     => __( 'Clicks', 'sportspress' ),
-					'type'            => 'integer',
-					'context'         => array( 'view', 'embed' ),
-					'arg_options'     => array(
-						'sanitize_callback' => 'absint',
-					),
-				),
-			)
-		);
 	}
 }
 
