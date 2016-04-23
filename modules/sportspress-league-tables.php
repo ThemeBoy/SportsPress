@@ -141,7 +141,7 @@ class SportsPress_League_Tables {
 				'schema'          => array(
 					'description'     => __( 'League Table', 'sportspress' ),
 					'type'            => 'array',
-					'context'         => array( 'view', 'edit', 'embed' ),
+					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
 					),
