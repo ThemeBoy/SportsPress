@@ -100,28 +100,21 @@ class SP_Admin_Sports {
 		// Positions
 		$positions = sp_array_value( $preset, 'positions', array() );
 		$i = 0;
-		foreach ( $positions as $parent => $position ) {
-			if ( is_array( $position ) ) {
-
-				if ( ! term_exists( $parent, 'sp_position' ) ) {
-					// Insert parent position
-					$slug = $i . '-' . sanitize_title( $parent );
-					wp_insert_term( $parent, 'sp_position', array( 'slug' => $slug ) );
-				}
-
-				// Insert positions with parent
-				foreach ( $position as $index => $child ) {
-					$parent_term = term_exists( $parent, 'sp_position' );
-					$parent_id = $parent_term['term_id'];
-					$slug = $index . '-' . sanitize_title( $child );
-					wp_insert_term( $child, 'sp_position', array( 'slug' => $slug, 'parent' => $parent_id ) );
-				}
+		foreach ( $positions as $position ) {
+			if ( is_string( $position ) ) {
+				$name = $position;
+				$sections = array( 0, 1 );
 			} else {
-
-				// Insert single position
-				$slug = $i . '-' . sanitize_title( $position );
-				wp_insert_term( $position, 'sp_position', array( 'slug' => $slug ) );
+				$name = sp_array_value( $position, 'name', __( 'Position', 'sportspress' ) );
+				$sections = sp_array_value( $position, 'sections', array( 0, 1 ) );
 			}
+			$slug = $i . '-' . sanitize_title( $name );
+			$term = wp_insert_term( $name, 'sp_position', array( 'slug' => $slug ) );
+			if ( is_wp_error( $term ) ) continue;
+			$t_id = $term['term_id'];
+			$term_meta = get_option( "taxonomy_$t_id" );
+			$term_meta['sp_sections'] = $sections;
+			update_option( "taxonomy_$t_id", $term_meta );
 			$i++;
 		}
 
