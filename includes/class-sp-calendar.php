@@ -5,7 +5,7 @@
  * The SportsPress calendar class handles individual calendar data.
  *
  * @class 		SP_Calendar
- * @version     1.9
+ * @version     2.0
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -33,6 +33,9 @@ class SP_Calendar extends SP_Custom_Post {
 
 	/** @var int The season ID. */
 	public $season;
+
+	/** @var int The venue ID. */
+	public $venue;
 
 	/** @var int The team ID. */
 	public $team;
@@ -120,6 +123,10 @@ class SP_Calendar extends SP_Custom_Post {
 			$season_ids = array( $this->season );
 		endif;
 
+		if ( $this->venue ):
+			$venue_ids = array( $this->venue );
+		endif;
+
 		if ( $this->team ):
 			$args['meta_query']	= array(
 				array(
@@ -145,14 +152,6 @@ class SP_Calendar extends SP_Custom_Post {
 					endforeach;
 				endif;
 
-				if ( isset( $league_ids ) ) {
-					$args['tax_query'][] = array(
-						'taxonomy' => 'sp_league',
-						'field' => 'id',
-						'terms' => $league_ids
-					);
-				}
-
 				if ( ! isset( $season_ids ) && $seasons ):
 					$season_ids = array();
 					foreach( $seasons as $season ):
@@ -160,37 +159,48 @@ class SP_Calendar extends SP_Custom_Post {
 					endforeach;
 				endif;
 
-				if ( isset( $season_ids ) ) {
-					$args['tax_query'][] = array(
-						'taxonomy' => 'sp_season',
-						'field' => 'id',
-						'terms' => $season_ids
-					);
-				}
-
-				if ( $venues ):
+				if ( ! isset( $venue_ids ) && $venues ):
 					$venue_ids = array();
 					foreach( $venues as $venue ):
 						$venue_ids[] = $venue->term_id;
 					endforeach;
-					$args['tax_query'][] = array(
-						'taxonomy' => 'sp_venue',
-						'field' => 'id',
-						'terms' => $venue_ids
-					);
 				endif;
-
-				if ( ! empty( $teams ) ):
-					$args['meta_query']	= array(
-						array(
-							'key' => 'sp_team',
-							'value' => $teams,
-							'compare' => 'IN',
-						),
-					);
-				endif;
-
 			endif;
+			
+
+			if ( isset( $league_ids ) ) {
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_league',
+					'field' => 'id',
+					'terms' => $league_ids
+				);
+			}
+
+			if ( isset( $season_ids ) ) {
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_season',
+					'field' => 'id',
+					'terms' => $season_ids
+				);
+			}
+
+			if ( isset( $venue_ids ) ) {
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_venue',
+					'field' => 'id',
+					'terms' => $venue_ids
+				);
+			}
+
+			if ( ! empty( $teams ) ) {
+				$args['meta_query']	= array(
+					array(
+						'key' => 'sp_team',
+						'value' => $teams,
+						'compare' => 'IN',
+					),
+				);
+			}
 			
 			if ( 'auto' === $this->date ) {
 				if ( 'any' === $this->status ) {

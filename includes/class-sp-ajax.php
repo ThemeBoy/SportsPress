@@ -203,6 +203,62 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
+					<?php _e( 'Team:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_team',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'team',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Competition:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_league',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'league',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Season:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_season',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'season',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Venue:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_venue',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'venue',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
 					<?php _e( 'Status:', 'sportspress' ); ?>
 					<?php
 					$args = array(
@@ -248,10 +304,67 @@ class SP_AJAX {
 					<?php
 					$args = array(
 						'post_type' => 'sp_calendar',
+						'show_option_all' => __( 'All', 'sportspress' ),
 						'name' => 'id',
 						'values' => 'ID',
 					);
 					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Team:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_team',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'team',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Competition:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_league',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'league',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Season:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_season',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'season',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Venue:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_venue',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'venue',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
 					?>
 				</label>
 			</p>
@@ -301,6 +414,8 @@ class SP_AJAX {
 					'event' => __( 'Event', 'sportspress' ),
 					'teams' => __( 'Teams', 'sportspress' ),
 					'time' => __( 'Time', 'sportspress' ),
+					'league' => __( 'Competition', 'sportspress' ),
+					'season' => __( 'Season', 'sportspress' ),
 					'venue' => __( 'Venue', 'sportspress' ),
 					'article' => __( 'Article', 'sportspress' ),
 				);
@@ -346,10 +461,67 @@ class SP_AJAX {
 					<?php
 					$args = array(
 						'post_type' => 'sp_calendar',
+						'show_option_all' => __( 'All', 'sportspress' ),
 						'name' => 'id',
 						'values' => 'ID',
 					);
 					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Team:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_team',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'team',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Competition:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_league',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'league',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Season:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_season',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'season',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Venue:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_venue',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'venue',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
 					?>
 				</label>
 			</p>
@@ -735,10 +907,18 @@ class SP_AJAX {
                     args.show_venue = $div.find('[name=show_venue]:checked').length;
                     args.show_league = $div.find('[name=show_league]:checked').length;
                 } else if ( 'event_calendar' == type ) {
+                    args.team = $div.find('[name=team]').val();
+                    args.league = $div.find('[name=league]').val();
+                    args.season = $div.find('[name=season]').val();
+                    args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'event_list' == type ) {
                     args.title = $div.find('[name=title]').val();
+                    args.team = $div.find('[name=team]').val();
+                    args.league = $div.find('[name=league]').val();
+                    args.season = $div.find('[name=season]').val();
+                    args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
                     args.date = $div.find('[name=date]').val();
                     args.number = $div.find('[name=number]').val();
@@ -747,6 +927,10 @@ class SP_AJAX {
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'event_blocks' == type ) {
                     args.title = $div.find('[name=title]').val();
+                    args.team = $div.find('[name=team]').val();
+                    args.league = $div.find('[name=league]').val();
+                    args.season = $div.find('[name=season]').val();
+                    args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
                     args.date = $div.find('[name=date]').val();
                     args.number = $div.find('[name=number]').val();
