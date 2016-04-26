@@ -5,7 +5,7 @@
  * The SportsPress REST API class handles all API-related hooks.
  *
  * @class 		SP_REST_API
- * @version		1.9.19
+ * @version		2.0
  * @package		SportsPress/Classes
  * @category	Class
  * @package 	SportsPress/API

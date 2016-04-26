@@ -247,7 +247,9 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Feature - Add option to display event calendar or fixtures & results on team pages.
 * Feature - Add option to display time in event logos section when results are not ready.
 * Feature - Add global visibility settings to player statistic columns.
+* Feature - Add team, competition, league, and venue filter to event calendar, event list, and event blocks shortcodes.
 * Feature - Automatically re-order competitions, seasons, venues, positions, and jobs by slug.
+* Feature - New welcome page outlining notable changes to major plugin version.
 * Refactor - Change parameter for sp_get_next_event function to allow custom templating.
 * Tweak - Reverse team order also applies to admin.
 * Tweak - Hide squad number from defense box score.
@@ -259,12 +261,13 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Tweak - Display league table and player list option in teams only when modules are active.
 * Tweak - Load profile and description meta boxes as native editors instead of custom methods.
 * Tweak - Load team abbreviations independent of post title filter.
+* Tweak - Add z-index to make header float above other elements.
 * Fix - Error when league table column has no equation.
 * Fix - Error when displaying checkboxes for manual event statistics.
 * Fix - Venues linking automatically in countdown widgets.
 * Fix - Styling issue where countdown widgets were pushed off-screen in some themes.
 * Fix - Avoid loading countdown widget if no events are available.
-* Preset - Update baseball preset.
+* Preset - Update baseball, cricket, floorball, handball, ice hockey, and softball presets.
 
 = 1.9.20 =
 * Tweak - Expand event title section for team logos in countdown widget.

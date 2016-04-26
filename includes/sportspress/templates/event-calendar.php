@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.9
+ * @version     2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,6 +19,7 @@ $defaults = array(
 	'date_to' => 'default',
 	'league' => null,
 	'season' => null,
+	'venue' => null,
 	'team' => null,
 	'initial' => true,
 	'caption_tag' => 'h4',
@@ -40,6 +41,8 @@ if ( $league )
 	$calendar->league = $league;
 if ( $season )
 	$calendar->season = $season;
+if ( $venue )
+	$calendar->venue = $venue;
 if ( $team )
 	$calendar->team = $team;
 $events = $calendar->data();
