@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		2.0
+ * @version		2.0.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -116,9 +116,11 @@ class SP_Player extends SP_Custom_Post {
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
 		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
+		$manual_columns = 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ? true : false;
 		
+		// Get performance labels
 		$args = array(
-			'post_type' => array( 'sp_performance', 'sp_statistic' ),
+			'post_type' => array( 'sp_performance' ),
 			'numberposts' => 100,
 			'posts_per_page' => 100,
 			'orderby' => 'menu_order',
@@ -127,7 +129,7 @@ class SP_Player extends SP_Custom_Post {
 
 		$posts = get_posts( $args );
 		
-		if ( 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ) {
+		if ( $manual_columns ) {
 			$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 			$has_checkboxes = true;
 		} else {
@@ -144,7 +146,6 @@ class SP_Player extends SP_Custom_Post {
 			$has_checkboxes = false;
 		}
 
-		// Get labels by section
 		$performance_labels = array();
 
 		foreach ( $posts as $post ):
@@ -162,6 +163,31 @@ class SP_Player extends SP_Custom_Post {
 				}
 			}
 		endforeach;
+		
+		// Get statistic labels
+		$args = array(
+			'post_type' => array( 'sp_statistic' ),
+			'numberposts' => 100,
+			'posts_per_page' => 100,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		$posts = get_posts( $args );
+		
+		if ( $manual_columns ) {
+			$usecolumns += get_post_meta( $this->ID, 'sp_columns', true );
+		} else {
+			if ( is_array( $posts ) ) {
+				foreach ( $posts as $post ) {
+					// Get visibility
+					$visible = get_post_meta( $post->ID, 'sp_visible', true );
+					if ( '' === $visible || $visible ) {
+						$usecolumns[] = $post->post_name;
+					}
+				}
+			}
+		}
 
 		// Get labels from outcome variables
 		$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
