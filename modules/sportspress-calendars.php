@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add event calendars to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.8.3
+Version: 2.0
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
  * Main SportsPress Calendars Class
  *
  * @class SportsPress_Calendars
- * @version	1.8.3
+ * @version	2.0
  */
 class SportsPress_Calendars {
 
@@ -49,7 +49,7 @@ class SportsPress_Calendars {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_CALENDARS_VERSION' ) )
-			define( 'SP_CALENDARS_VERSION', '1.8.3' );
+			define( 'SP_CALENDARS_VERSION', '2.0' );
 
 		if ( !defined( 'SP_CALENDARS_URL' ) )
 			define( 'SP_CALENDARS_URL', plugin_dir_url( __FILE__ ) );

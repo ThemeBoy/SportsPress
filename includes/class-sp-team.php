@@ -5,7 +5,7 @@
  * The SportsPress team class handles individual team data.
  *
  * @class 		SP_Team
- * @version		1.9.14
+ * @version		2.0
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

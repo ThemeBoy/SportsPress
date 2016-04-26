@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, rochesterj
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends, golf
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 4.4
-Stable tag: 1.9.20
+Tested up to: 4.5
+Stable tag: 2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,6 +49,7 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 More details about each feature are available on the [SportsPress Website](http://tboy.co/pro).
 
 = Free Extensions =
+* [SportsPress for Baseball](https://wordpress.org/plugins/sportspress-for-baseball/)
 * [SportsPress for Cricket](https://wordpress.org/plugins/sportspress-for-cricket/)
 * [SportsPress for Football (Soccer)](https://wordpress.org/plugins/sportspress-for-soccer/)
 * [SportsPress for Golf](https://wordpress.org/plugins/sportspress-for-golf/)
@@ -123,6 +124,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * [Football Club](http://tboy.co/fc)
 * [Premier](http://tboy.co/premier)
 * [Emblem](http://tboy.co/emblem)
+* [Marquee](http://tboy.co/marquee)
 
 = Documentation =
 * [Getting Started](http://tboy.co/installation)
@@ -138,7 +140,7 @@ Feel free to share your suggestions with us so we can continue to develop awesom
 
 Developers can contribute via the [SportsPress GitHub Repository](https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md).
 
-Translators can contribute to SportsPress translations through [Transifex](https://www.transifex.com/projects/p/sportspress/).
+Translators can contribute to SportsPress translations through [GlotPress](https://translate.wordpress.org/projects/wp-plugins/sportspress).
 
 = Stay Current =
 To keep up with the latest updates and new features, be sure to do the following:
@@ -221,22 +223,52 @@ Limitations? Don't worry, there are no limitations to the number of events, play
 The current modules that are available exclusively to SportsPress Pro are:
 
 * Tournaments: Create and display tournaments in a bracket/knockout cup format.
+* Scoreboard: Display multiple event results in a horizontal scoreboard.
 * Sponsors: Add your sponsors on your website and track each of their clicks and impressions.
 * Staff Directories: Show contact information of your key personnel so people know who to get in touch with.
 * Team Access: Assign users to a specific team and limit their access to data related to that team.
 * Team Colors: Make each team's profile page unique by displaying their team colors.
 * League Menu: Display a global navigation bar at the top of your website for easy navigation from one team to the next.
-* Birthdays: Display each player's birthday and their current age.
 * Twitter: Add a Twitter feed to team, player, and staff pages.
 * Branding: Instantly rebrands your admin panel to reflect your organization's brand.
 * Duplicator: Clone anything with just one click. Great for creating multiple events.
-* Lazy Loading: Load players using Ajax to speed up the event edit screen.
 
-There are [4 different licenses](http://tboy.co/pro) that you can choose from: Social, Club, League, and Agency.
+There are [3 different licenses](http://tboy.co/pro) that you can choose from: Club, League, and Agency.
 
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.0 =
+* Feature - Integration with [WP REST API](https://wordpress.org/plugins/rest-api/) by adding endpoints for viewing, creating, editing, and deleting SportsPress data.
+* Feature - New drag-and-drop layout designer for customizing events, teams, players, and staff pages.
+* Feature - Allow player biography to float next to photo in profile.
+* Feature - Add option to display separate offensive and defensive statistics in player profiles.
+* Feature - Add option to display career totals as a footer row in player statistics tables.
+* Feature - Add option to display event calendar or fixtures & results on team pages.
+* Feature - Add option to display time in event logos section when results are not ready.
+* Feature - Add global visibility settings to player statistic columns.
+* Feature - Add team, competition, league, and venue filter to event calendar, event list, and event blocks shortcodes.
+* Feature - Automatically re-order competitions, seasons, venues, positions, and jobs by slug.
+* Feature - New welcome page outlining notable changes to major plugin version.
+* Refactor - Change parameter for sp_get_next_event function to allow custom templating.
+* Tweak - Reverse team order also applies to admin.
+* Tweak - Hide squad number from defense box score.
+* Tweak - Use more compact labeling in player columns admin meta box.
+* Tweak - Update modules page to reflect new premium scoreboard module.
+* Tweak - Remove hardcoded protocol for calls to Google Maps scripts.
+* Tweak - Limit venue archives to events.
+* Tweak - Float team profile next to logo on team pages.
+* Tweak - Display league table and player list option in teams only when modules are active.
+* Tweak - Load profile and description meta boxes as native editors instead of custom methods.
+* Tweak - Load team abbreviations independent of post title filter.
+* Tweak - Add z-index to make header float above other elements.
+* Fix - Error when league table column has no equation.
+* Fix - Error when displaying checkboxes for manual event statistics.
+* Fix - Venues linking automatically in countdown widgets.
+* Fix - Styling issue where countdown widgets were pushed off-screen in some themes.
+* Fix - Avoid loading countdown widget if no events are available.
+* Preset - Update baseball, cricket, floorball, handball, ice hockey, and softball presets.
 
 = 1.9.20 =
 * Tweak - Expand event title section for team logos in countdown widget.

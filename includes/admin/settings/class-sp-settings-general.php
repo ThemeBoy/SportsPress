@@ -98,14 +98,17 @@ class SP_Settings_General extends SP_Settings_Page {
 			));
 		endif;
 
-		$options = array_merge( $options, array(
+		$options = array_merge( $options,
+		array(
 			array(
 				'title' 	=> __( 'Custom CSS', 'sportspress' ),
 				'id' 		=> 'sportspress_custom_css',
 				'css' 		=> 'width:100%; height: 130px;',
 				'type' 		=> 'textarea',
 			),
-
+		),
+		
+		apply_filters( 'sportspress_general_script_options', array(
 			array(
 				'title'     => __( 'Scripts', 'sportspress' ),
 				'desc' 		=> __( 'Live countdowns', 'sportspress' ),
@@ -124,7 +127,9 @@ class SP_Settings_General extends SP_Settings_Page {
 				'checkboxgroup'		=> 'end',
 				'desc_tip'	=> __( 'This will enable a shortcode menu to be displayed in the visual editor.', 'sportspress' ),
 			),
-
+		) ),
+		
+		array(
 			array(
 				'title'     => __( 'Tables', 'sportspress' ),
 				'desc' 		=> __( 'Responsive', 'sportspress' ),
@@ -158,7 +163,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				'type' 		=> 'checkbox',
 				'desc_tip' 	=> __( 'Hide widget when same as content.', 'sportspress' ),
 			),
-		));
+		) );
 
 		if ( apply_filters( 'sportspress_enable_header', false ) ) {
 			$options[] = array(
