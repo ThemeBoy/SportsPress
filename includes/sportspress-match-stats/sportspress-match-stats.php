@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Display head-to-head team comparison charts in events.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.6
+Version: 2.0
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Match_Stats' ) ) :
  * Main SportsPress Match Stats Class
  *
  * @class SportsPress_Match_Stats
- * @version	1.6
+ * @version	2.0
  */
 class SportsPress_Match_Stats {
 
@@ -32,6 +32,7 @@ class SportsPress_Match_Stats {
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_filter( 'sportspress_event_template_options', array( $this, 'add_options' ) );
+		add_filter( 'sportspress_general_script_options', array( $this, 'add_script_options' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'sportspress_frontend_css', array( $this, 'frontend_css' ) );
 	}
@@ -41,7 +42,7 @@ class SportsPress_Match_Stats {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_MATCH_STATS_VERSION' ) )
-			define( 'SP_MATCH_STATS_VERSION', '1.6' );
+			define( 'SP_MATCH_STATS_VERSION', '2.0' );
 
 		if ( !defined( 'SP_MATCH_STATS_URL' ) )
 			define( 'SP_MATCH_STATS_URL', plugin_dir_url( __FILE__ ) );
@@ -66,6 +67,30 @@ class SportsPress_Match_Stats {
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'		=> 'end',
+			),
+		) );
+
+		return $options;
+	}
+
+	/**
+	 * Add options to the scripts section on the general settings page.
+	 *
+	 * @return array
+	 */
+	public function add_script_options( $options = array() ) {
+		end( $options );
+		$key = key( $options );
+		reset( $options );
+		$options[ $key ]['checkboxgroup'] = '';
+		$options = array_merge( $options, array(
+			array(
+				'desc' 		=> __( 'Match Stats', 'sportspress' ),
+				'id' 		=> 'sportspress_enable_animated_match_stats',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+				'checkboxgroup'	=> 'end',
+				'desc_tip'	=> __( 'This will enable a script allowing the match stats to be animated.', 'sportspress' ),
 			),
 		) );
 
@@ -115,8 +140,10 @@ class SportsPress_Match_Stats {
 	 * @return void
 	 */
 	public function load_scripts() {
-		wp_enqueue_script( 'jquery-waypoints', SP_MATCH_STATS_URL .'js/jquery.waypoints.min.js', array( 'jquery' ), '4.0.0', true );
-		wp_enqueue_script( 'sportspress-match-stats', SP_MATCH_STATS_URL .'js/sportspress-match-stats.js', array( 'jquery', 'jquery-waypoints' ), SP_MATCH_STATS_VERSION, true );
+		if ( 'yes' === get_option( 'sportspress_enable_animated_match_stats', 'yes' ) ) {
+			wp_enqueue_script( 'jquery-waypoints', SP_MATCH_STATS_URL .'js/jquery.waypoints.min.js', array( 'jquery' ), '4.0.0', true );
+			wp_enqueue_script( 'sportspress-match-stats', SP_MATCH_STATS_URL .'js/sportspress-match-stats.js', array( 'jquery', 'jquery-waypoints' ), SP_MATCH_STATS_VERSION, true );
+		}
 	}
 
 	/**
