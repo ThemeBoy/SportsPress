@@ -2,7 +2,7 @@
 /**
  * Plugin Name: SportsPress Pro
  * Plugin URI: http://tboy.co/pro
- * Description: Advanced club & league management.
+ * Description: Advanced club & league management from ThemeBoy.
  * Version: 2.0
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
