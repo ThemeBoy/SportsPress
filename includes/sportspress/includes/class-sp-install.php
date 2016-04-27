@@ -22,6 +22,9 @@ class SP_Install {
 	 */
 	public function __construct() {
 		register_activation_hook( SP_PLUGIN_FILE, array( $this, 'install' ) );
+		
+		if ( defined( 'SP_PRO_PLUGIN_FILE' ) )
+			register_activation_hook( SP_PRO_PLUGIN_FILE, array( $this, 'install' ) );
 
 		add_action( 'admin_init', array( $this, 'install_actions' ) );
 		add_action( 'admin_init', array( $this, 'check_version' ), 5 );
@@ -94,11 +97,6 @@ class SP_Install {
 		// Update version
 		update_option( 'sportspress_version', SP()->version );
 
-		// Check if pages are needed
-		if ( ! get_option( 'sportspress_sport' ) ) {
-			update_option( '_sp_needs_welcome', 1 );
-		}
-
 		// Flush rules after install
 		flush_rewrite_rules();
 
@@ -134,15 +132,6 @@ class SP_Install {
 	    add_option( 'sportspress_frontend_css_text', '#222222' );
 	    add_option( 'sportspress_frontend_css_heading', '#ffffff' );
 	    add_option( 'sportspress_frontend_css_link', '#00a69c' );
-
-		if ( ! get_option( 'sportspress_installed' ) ) {
-			// Configure default sport
-			$sport = 'custom';
-		    update_option( 'sportspress_sport', $sport );
-
-			// Flag as installed
-			update_option( 'sportspress_installed', 1 );
-		}
 	}
 
 	/**

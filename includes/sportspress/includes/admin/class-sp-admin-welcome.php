@@ -161,7 +161,7 @@ class SP_Admin_Welcome {
 				$sport = $_POST['sportspress_sport'];
 				SP_Admin_Sports::apply_preset( $sport );
 				update_option( 'sportspress_sport', $_POST['sportspress_sport'] );
-	    		update_option( '_sportspress_needs_welcome', 1 );
+	    		update_option( 'sportspress_installed', 1 );
 				?>
 				<div id="message" class="updated sportspress-message">
 					<p><strong><?php _e( 'Your settings have been saved.', 'sportspress' ); ?></strong></p>
@@ -173,7 +173,7 @@ class SP_Admin_Welcome {
 				SP_Admin_Sample_Data::insert_posts();
 			endif;
 			?>
-			<?php if ( false !== get_option( 'sportspress_sport' ) ) { ?>
+			<?php if ( get_option( 'sportspress_installed' ) ) { ?>
 
 				<div class="headline-feature feature-video sp-fitvids" style="background-color:#191E23;">
 					<iframe width="990" height="557" src="https://www.youtube.com/embed/KQyga_C5a6M?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
