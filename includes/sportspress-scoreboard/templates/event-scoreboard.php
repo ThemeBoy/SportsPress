@@ -54,6 +54,8 @@ if ( $order != 'default' )
 	$calendar->order = $order;
 $data = $calendar->data();
 
+if ( ! $data ) return;
+
 $post_id = get_the_ID();
 ?>
 <div class="sp-template sp-template-scoreboard">
