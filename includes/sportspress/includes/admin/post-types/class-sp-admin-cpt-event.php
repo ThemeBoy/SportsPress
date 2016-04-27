@@ -61,13 +61,14 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	}
 
 	/**
-	 * Auto-generate an event title based on the team playing if left blank.
+	 * Mark as not empty when saving event if teams are selected for auto title.
 	 *
-	 * @param array $data
-	 * @return array
+	 * @param array $maybe_empty
+	 * @param array $postarr
+	 * @return bool
 	 */
 	public function wp_insert_post_empty_content( $maybe_empty, $postarr ) {
-		if ( $maybe_empty ):
+		if ( $maybe_empty && 'sp_event' === sp_array_value( $postarr, 'post_type' ) ):
 			$teams = sp_array_value( $postarr, 'sp_team', array() );
 			$teams = array_filter( $teams );
 			if ( sizeof( $teams ) ) return false;
@@ -80,6 +81,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	 * Auto-generate an event title based on the team playing if left blank.
 	 *
 	 * @param array $data
+	 * @param array $postarr
 	 * @return array
 	 */
 	public function wp_insert_post_data( $data, $postarr ) {
