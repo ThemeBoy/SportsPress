@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version     1.8.3
+ * @version     2.0.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -28,6 +28,9 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 
 		// Post title fields
 		add_filter( 'enter_title_here', array( $this, 'enter_title_here' ), 1, 2 );
+
+		// Empty data filter
+		add_filter( 'wp_insert_post_empty_content', array( $this, 'wp_insert_post_empty_content' ), 99, 2 );
 
 		// Before data updates
 		add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 99, 2 );
@@ -55,6 +58,22 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			return __( '(Auto)', 'sportspress' );
 
 		return $text;
+	}
+
+	/**
+	 * Auto-generate an event title based on the team playing if left blank.
+	 *
+	 * @param array $data
+	 * @return array
+	 */
+	public function wp_insert_post_empty_content( $maybe_empty, $postarr ) {
+		if ( $maybe_empty ):
+			$teams = sp_array_value( $postarr, 'sp_team', array() );
+			$teams = array_filter( $teams );
+			if ( sizeof( $teams ) ) return false;
+		endif;
+
+		return $maybe_empty;
 	}
 
 	/**
