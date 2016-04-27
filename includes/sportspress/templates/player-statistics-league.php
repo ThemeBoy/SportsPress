@@ -14,6 +14,8 @@ $output = '<h4 class="sp-table-caption">' . $caption . '</h4>' .
 	'<table class="sp-player-statistics sp-data-table' . ( $scrollable ? ' sp-scrollable-table' : '' ) . '">' . '<thead>' . '<tr>';
 
 foreach( $labels as $key => $label ):
+	if ( isset( $hide_teams ) && 'team' == $key )
+		continue;
 	$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 endforeach;
 
@@ -26,6 +28,8 @@ foreach( $data as $season_id => $row ):
 	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 	foreach( $labels as $key => $value ):
+		if ( isset( $hide_teams ) && 'team' == $key )
+			continue;
 		$output .= '<td class="data-' . $key . ( -1 === $season_id ? ' sp-highlight' : '' ) . '">' . sp_array_value( $row, $key, '' ) . '</td>';
 	endforeach;
 
