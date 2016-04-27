@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Importers
- * @version     1.6
+ * @version     2.0.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -147,7 +147,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					endif;
 
 					// Define post type args
-					$args = array( 'post_type' => 'sp_event', 'post_status' => 'publish', 'post_date' => $date );
+					$args = array( 'post_type' => 'sp_event', 'post_status' => 'publish', 'post_date' => $date, 'post_title' => __( 'Event', 'sportspress' ) );
 
 					// Insert event
 					$id = wp_insert_post( $args );
@@ -317,6 +317,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						$post = array(
 							'ID' => $id,
 							'post_title' => $title,
+							'post_name' => $id,
 						);
 						wp_update_post( $post );
 
