@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Importers
- * @version     2.0.2
+ * @version     2.0.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -305,10 +305,12 @@ if ( class_exists( 'WP_Importer' ) ) {
 						// Get event name
 						$title = get_the_title( $id );
 
-						// Add delimiter if event name is set
-						if ( $title ):
+						// Initialize event name
+						if ( __( 'Event', 'sportspress' ) === $title ) {
+							$title = '';
+						} else {
 							$title .= ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ';
-						endif;
+						}
 
 						// Append team name to event name
 						$title .= $team_name;
