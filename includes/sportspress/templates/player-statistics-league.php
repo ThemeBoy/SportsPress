@@ -1,4 +1,13 @@
 <?php
+/**
+ * Player Statistics for Single Competition
+ *
+ * @author 		ThemeBoy
+ * @category 	Admin
+ * @package 	SportsPress/Admin/Meta_Boxes
+ * @version     2.0.5
+ */
+
 // The first row should be column labels
 $labels = $data[0];
 
