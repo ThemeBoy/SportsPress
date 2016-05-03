@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     2.0.3
+ * @version     2.0.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -94,14 +94,7 @@ class SP_Meta_Box_Player_Statistics {
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
 						<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
 							<th>
-								<?php if ( $has_checkboxes ): ?>
-									<label for="sp_columns_team">
-										<input type="checkbox" name="sp_columns[]" value="team" id="sp_columns_team" <?php checked( ! is_array( $columns ) || array_key_exists( 'team', $columns ) ); ?>>
-										<?php _e( 'Team', 'sportspress' ); ?>
-									</label>
-								<?php else: ?>
-									<?php _e( 'Team', 'sportspress' ); ?>
-								<?php endif; ?>
+								<?php _e( 'Team', 'sportspress' ); ?>
 							</th>
 						<?php endif; ?>
 						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
@@ -115,7 +108,7 @@ class SP_Meta_Box_Player_Statistics {
 						<td>
 							<label><strong><?php _e( 'Total', 'sportspress' ); ?></strong></label>
 						</td>
-						<?php if ( $team_select ) { ?>
+						<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', true ) ) { ?>
 							<td>&nbsp;</td>
 						<?php } ?>
 						<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;

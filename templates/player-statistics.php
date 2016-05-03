@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.0.3
+ * @version     2.0.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -17,6 +17,7 @@ $player = new SP_Player( $id );
 
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 $sections = get_option( 'sportspress_player_performance_sections', -1 );
+$show_teams = apply_filters( 'sportspress_player_team_statistics', true );
 $leagues = get_the_terms( $id, 'sp_league' );
 $positions = $player->positions();
 $player_sections = array();
@@ -53,11 +54,15 @@ if ( is_array( $leagues ) ):
 				}
 			}
 
-			sp_get_template( 'player-statistics-league.php', array(
+			$args = array(
 				'data' => $player->data( $league->term_id, false, $section_id ),
 				'caption' => $caption,
 				'scrollable' => $scrollable,
-			) );
+			);
+			if ( ! $show_teams ) {
+				$args['hide_teams'] = true;
+			}
+			sp_get_template( 'player-statistics-league.php', $args );
 		endforeach;
 
 		sp_get_template( 'player-statistics-league.php', array(
