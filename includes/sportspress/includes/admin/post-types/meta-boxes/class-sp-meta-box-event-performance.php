@@ -238,7 +238,7 @@ class SP_Meta_Box_Event_Performance {
 				<?php if ( $sortable ) { ?>
 					<th class="icon">&nbsp;</th>
 				<?php } ?>
-				<?php if ( $numbers && 1 !== $section ) { ?>
+				<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $numbers, $section ) ) { ?>
 					<th>#</th>
 				<?php } ?>
 				<th><?php _e( 'Player', 'sportspress' ); ?></th>
@@ -259,7 +259,7 @@ class SP_Meta_Box_Event_Performance {
 						<?php endif; ?>
 					</th>
 				<?php endforeach; ?>
-				<?php if ( $status && 1 !== $section ) { ?>
+				<?php if ( apply_filters( 'sportspress_event_performance_show_status', $status, $section ) ) { ?>
 					<th>
 						<?php _e( 'Status', 'sportspress' ); ?>
 					</th>
@@ -281,7 +281,7 @@ class SP_Meta_Box_Event_Performance {
 					<?php if ( $sortable ) { ?>
 						<td>&nbsp;</td>
 					<?php } ?>
-					<?php if ( $numbers && 1 !== $section ) { ?>
+					<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $numbers, $section ) ) { ?>
 						<td>&nbsp;</td>
 					<?php } ?>
 					<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
@@ -297,7 +297,7 @@ class SP_Meta_Box_Event_Performance {
 						?>
 						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" placeholder="<?php echo trim( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" data-sp-format="<?php echo $format; ?>" /></td>
 					<?php endforeach; ?>
-					<?php if ( $status && 1 !== $section ) { ?>
+					<?php if ( apply_filters( 'sportspress_event_performance_show_status', $status, $section ) ) { ?>
 						<td>&nbsp;</td>
 					<?php } ?>
 				</tr>
@@ -318,9 +318,9 @@ class SP_Meta_Box_Event_Performance {
 			<?php if ( $sortable ) { ?>
 				<td class="icon"><span class="dashicons dashicons-menu post-state-format"></span></td>
 			<?php } ?>
-			<?php if ( $numbers && 1 !== $section ) { ?>
+			<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $numbers, $section ) ) { ?>
 				<td>
-					<input class="small-text sp-player-number-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo esc_attr( $value ); ?>" />
+					<input class="small-text sp-player-number-input sp-sync-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo esc_attr( $value ); ?>" />
 				</td>
 			<?php } ?>
 			<td>
@@ -356,10 +356,10 @@ class SP_Meta_Box_Event_Performance {
 				$placeholder = sp_get_format_placeholder( sp_array_value( $formats, $column, 'number' ) );
 				?>
 				<td>
-					<input class="sp-player-<?php echo $column; ?>-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo $placeholder; ?>" />
+					<input class="sp-player-<?php echo $column; ?>-input sp-sync-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo $placeholder; ?>" />
 				</td>
 			<?php endforeach; ?>
-			<?php if ( $status && 1 !== $section ) { ?>
+			<?php if ( apply_filters( 'sportspress_event_performance_show_status', $status, $section ) ) { ?>
 				<td class="sp-status-selector">
 					<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?>
 					<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?>
@@ -382,7 +382,7 @@ class SP_Meta_Box_Event_Performance {
 			'sub' => __( 'Substitute', 'sportspress' ),
 		) );
 
-		$output = '<select name="sp_players[' . $team_id . '][' . $player_id . '][status]">';
+		$output = '<select class="sp-sync-select" name="sp_players[' . $team_id . '][' . $player_id . '][status]">';
 
 		foreach( $options as $key => $name ):
 			$output .= '<option value="' . $key . '"' . ( $key == $value ? ' selected' : '' ) . '>' . $name . '</option>';
@@ -402,7 +402,7 @@ class SP_Meta_Box_Event_Performance {
 		if ( ! $team_id || ! $player_id )
 			return '&mdash;';
 
-		$output = '<select name="sp_players[' . $team_id . '][' . $player_id . '][sub]" style="display: none;">';
+		$output = '<select class="sp-sync-select" name="sp_players[' . $team_id . '][' . $player_id . '][sub]" style="display: none;">';
 
 		$output .= '<option value="0">' . __( 'None', 'sportspress' ) . '</option>';
 
