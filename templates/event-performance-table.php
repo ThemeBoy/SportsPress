@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.0
+ * @version     2.0.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -30,7 +30,7 @@ if ( ! isset( $subs ) ) $subs = array();
 			<thead>
 				<tr>
 					<?php if ( $show_players ): ?>
-						<?php if ( $show_numbers && 1 !== $section ) { ?>
+						<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ) { ?>
 							<th class="data-number">#</th>
 						<?php } ?>
 						<th class="data-name">
@@ -77,7 +77,7 @@ if ( ! isset( $subs ) ) $subs = array();
 
 						echo '<tr class="' . sp_array_value( $row, 'status', 'lineup' ) . ' ' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
-						if ( $show_numbers && 1 !== $section ) {
+						if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ) {
 							$number = sp_array_value( $row, 'number', '&nbsp;' );
 
 							// Player number
@@ -171,7 +171,7 @@ if ( ! isset( $subs ) ) $subs = array();
 						<tr class="sp-total-row <?php echo ( $i % 2 == 0 ? 'odd' : 'even' ); ?>">
 							<?php
 							if ( $show_players ):
-								if ( $show_numbers && 1 !== $section ) {
+								if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ) {
 									echo '<td class="data-number">&nbsp;</td>';
 								}
 								echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';

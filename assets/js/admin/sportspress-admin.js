@@ -262,6 +262,26 @@ jQuery(document).ready(function($){
 	// Trigger total stats calculator
 	$(".sp-data-table .sp-total input").trigger("updateTotal");
 
+	// Sync inputs
+	$(".sp-sync-input").on("keyup", function() {
+		name = $(this).attr("name");
+		$el = $("input[name='"+name+"']");
+		if ( $el.length > 1 ) {
+			val = $(this).val();
+			$el.val(val);
+		}
+	});
+
+	// Sync selects
+	$(".sp-sync-select").on("change", function() {
+		name = $(this).attr("name");
+		$el = $("select[name='"+name+"']")
+		if ( $el.length > 1 ) {
+			val = $(this).val();
+			$el.val(val);
+		}
+	});
+
 	// Select all checkboxes
 	$(".sp-select-all-range").on("change", ".sp-select-all", function() {
 		$range = $(this).closest(".sp-select-all-range");
