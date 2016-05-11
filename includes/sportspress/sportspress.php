@@ -347,6 +347,7 @@ final class SportsPress {
 					'name'        => 'SportsPress for Baseball',
 					'slug'        => 'sportspress-for-baseball',
 					'required'    => false,
+					'version'     => '0.9.1',
 				);
 				break;
 			case 'cricket':

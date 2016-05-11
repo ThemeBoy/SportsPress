@@ -45,7 +45,7 @@ class SP_Event extends SP_Custom_Post{
 		// Get results for all teams
 		$data = sp_array_combine( $teams, $results, true );
 		
-		if ( 'yes' === get_option( 'sportspress_event_results_reverse_teams', 'no' ) ) {
+		if ( 'yes' === get_option( 'sportspress_event_reverse_teams', 'no' ) ) {
 			$data = array_reverse( $data, true );
 		}
 

@@ -240,7 +240,8 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 == Changelog ==
 
 = 2.0.6 =
-* Tweak - Display squad numbers in defense section and sync statistics when editing event.
+* Tweak - Display squad numbers in defense section.
+* Tweak - Display shared values in both offense and defense sections and sync when editing event.
 
 = 2.0.5 =
 * Fix - Hide team column in player statistics for player-vs-player sports.

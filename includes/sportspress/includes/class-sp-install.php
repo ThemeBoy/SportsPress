@@ -404,6 +404,11 @@ class SP_Install {
 		if ( version_compare( $version, '2.0', '<' ) ) {
 			update_option( 'sportspress_player_columns', 'manual' );
 		}
+		
+		if ( version_compare( $version, '2.1', '<' ) ) {
+			$option = get_option( 'sportspress_event_results_reverse_teams', 'no' );
+			update_option( 'sportspress_event_reverse_teams', $option );
+		}
 	}
 
 	/**
