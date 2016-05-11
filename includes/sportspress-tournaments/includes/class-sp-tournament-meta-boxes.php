@@ -147,12 +147,15 @@ class SP_Tournament_Meta_Boxes {
 		$tax_input = sp_array_value( $_POST, 'tax_input', array() );
 		$leagues = array_map( 'intval', sp_array_value( $tax_input, 'sp_league', array() ) );
 		$seasons = array_map( 'intval', sp_array_value( $tax_input, 'sp_season', array() ) );
+		
+		// Reverse teams option
+		$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
 
 		// Events
 		$events = sp_array_value( $_POST, 'sp_event', array() );
 		ksort( $events );
 		$event_ids = array();
-		foreach ( $events as $event ) {
+		foreach ( $events as $i => $event ) {
 			// Get details
 			$id = sp_array_value( $event, 'id', 0 );
 			$teams = sp_array_value( $event, 'teams', array() );
@@ -160,6 +163,12 @@ class SP_Tournament_Meta_Boxes {
 			$date = sp_array_value( $event, 'date', '' );
 			$h = sp_array_value( $event, 'hh', '' );
 			$m = sp_array_value( $event, 'mm', '00' );
+
+			// Reverse teams if needed
+			if ( $reverse_teams ) {
+				$teams = array_reverse( $teams );
+				$events[ $i ][ 'teams' ] = $teams;
+			}
 
 			// Update or add new event
 			if ( strlen( $date ) ) {

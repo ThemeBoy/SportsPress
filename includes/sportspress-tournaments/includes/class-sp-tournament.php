@@ -96,6 +96,8 @@ class SP_Tournament {
 	 * @return array
 	 */
 	public function data( $layout = 'bracket', $admin = false ) {
+	
+		$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
 		
 		$labels = $this->labels();
 
@@ -286,10 +288,16 @@ class SP_Tournament {
 					$counter[ $col ] ++;
 				elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin || $row % ( 6 * pow( 2, $col ) ) === $margin + $height + 1 ):
 					$ti = ( $row % ( 6 * pow( 2, $col ) ) === $margin ? 0 : 1 );
-					$select = false;
+					
+					// Reverse teams if needed
+					if ( $reverse_teams ) {
+						$ti = ( $ti ? 0 : 1 );
+					}
+					
+					$select = 0;
 					$team = sp_array_value( $teams, $ti, 0 );
 					if ( ! $team ) {
-						$select = true;
+						$select = 1;
 						$team = sp_array_value( sp_array_value( sp_array_value( $raw, $index, array() ), 'teams', array() ), $ti, 0 );
 					}
 
