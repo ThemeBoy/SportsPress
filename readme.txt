@@ -117,6 +117,7 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 
 = 2.0.7 =
 * Feature - Apply reverse team order setting to tournament brackets.
+* Feature - Add option to show or hide logos or photos in event blocks.
 * Tweak - Combine reverse teams option for results and box score.
 * Fix - Add filter to template output for extensions.
 * Fix - Load tweets and staff directories templates in layout designer.

@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.0
+ * @version     2.0.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,6 +21,7 @@ $defaults = array(
 	'venue' => null,
 	'team' => null,
 	'number' => -1,
+	'show_team_logo' => get_option( 'sportspress_event_blocks_show_logos', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_event_blocks_paginated', 'yes' ) == 'yes' ? true : false,
@@ -91,18 +92,20 @@ if ( $title )
 					$teams = array_filter( $teams, 'sp_filter_positive' );
 					$logos = array();
 
-					$j = 0;
-					foreach( $teams as $team ):
-						$j++;
-						if ( has_post_thumbnail ( $team ) ):
-							if ( $link_teams ):
-								$logo = '<a class="team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) . '" href="' . get_permalink( $team, false, true ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</a>';
-							else:
-								$logo = '<span class="team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</span>';
+					if ( $show_team_logo ):
+						$j = 0;
+						foreach( $teams as $team ):
+							$j++;
+							if ( has_post_thumbnail ( $team ) ):
+								if ( $link_teams ):
+									$logo = '<a class="team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) . '" href="' . get_permalink( $team, false, true ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</a>';
+								else:
+									$logo = '<span class="team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</span>';
+								endif;
+								$logos[] = $logo;
 							endif;
-							$logos[] = $logo;
-						endif;
-					endforeach;
+						endforeach;
+					endif;
 					?>
 					<tr class="sp-row sp-post<?php echo ( $i % 2 == 0 ? ' alternate' : '' ); ?>">
 						<td>
