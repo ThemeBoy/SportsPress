@@ -28,17 +28,19 @@ if ( $username ) {
 	?>
 	<div class="sp-template sp-template-tweets sp-template-tweets-<?php echo $theme; ?>-theme">
 		<h4 class="sp-table-caption"><?php _e( 'Tweets', 'sportspress' ); ?></h4>
-		<a class="twitter-timeline"
-			href="https://twitter.com/<?php echo $username; ?>"
-			data-widget-id="345224689221771264"
-			data-screen-name="<?php echo $username; ?>"
-			data-chrome="noheader"
-			<?php if ( $colors['customize'] && array_key_exists( 'link', $colors ) ) { ?>
-			data-link-color="<?php echo $colors['link']; ?>"
-			<?php } ?>
-			data-theme="<?php echo $theme; ?>"
-			data-tweet-limit="<?php echo $limit; ?>">
-		</a>
+		<div class="sp-tweets">
+			<a class="twitter-timeline"
+				href="https://twitter.com/<?php echo $username; ?>"
+				data-widget-id="345224689221771264"
+				data-screen-name="<?php echo $username; ?>"
+				data-chrome="noheader"
+				<?php if ( $colors['customize'] && array_key_exists( 'link', $colors ) ) { ?>
+				data-link-color="<?php echo $colors['link']; ?>"
+				<?php } ?>
+				data-theme="<?php echo $theme; ?>"
+				data-tweet-limit="<?php echo $limit; ?>">
+			</a>
+		</div>
 		<script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
 	</div>
 	<?php
