@@ -71,6 +71,8 @@ class SP_Template_Loader {
 		
 		// Combine layout setting with available templates
 		$templates = array_merge( array_flip( $layout ), SP()->templates->$type );
+		
+		$templates = apply_filters( 'sportspress_' . $type . '_templates', $templates );
 
 		ob_start();
 		
