@@ -122,6 +122,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'id' 		=> 'sportspress_event_filter_teams_by_season',
 						'default'	=> 'no',
 						'type' 		=> 'checkbox',
+						'checkboxgroup'	=> '',
+					),
+
+					array(
+						'desc' 		=> __( 'Reverse order', 'sportspress' ),
+						'id' 		=> 'sportspress_event_reverse_teams',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
 						'checkboxgroup'	=> 'end',
 					),
 
@@ -256,14 +264,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'manual'	=> __( 'Manual', 'sportspress' ),
 					),
 				),
-
-				array(
-					'title'     => __( 'Teams', 'sportspress' ),
-					'desc' 		=> __( 'Reverse order', 'sportspress' ),
-					'id' 		=> 'sportspress_event_results_reverse_teams',
-					'default'	=> 'no',
-					'type' 		=> 'checkbox',
-				),
 				
 				array(
 					'title'     => __( 'Outcome', 'sportspress' ),
@@ -328,14 +328,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'values'	=> __( 'Values', 'sportspress' ),
 						'icons'		=> __( 'Icons', 'sportspress' ),
 					),
-				),
-
-				array(
-					'title'     => __( 'Teams', 'sportspress' ),
-					'desc' 		=> __( 'Reverse order', 'sportspress' ),
-					'id' 		=> 'sportspress_event_performance_reverse_teams',
-					'default'	=> 'no',
-					'type' 		=> 'checkbox',
 				),
 
 				array(

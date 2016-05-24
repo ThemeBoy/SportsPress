@@ -16,7 +16,7 @@ $show_total = get_option( 'sportspress_event_show_total', 'yes' ) === 'yes' ? tr
 $show_numbers = get_option( 'sportspress_event_show_player_numbers', 'yes' ) === 'yes' ? true : false;
 $sections = get_option( 'sportspress_event_performance_sections', -1 );
 $abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
-$reverse_teams = get_option( 'sportspress_event_performance_reverse_teams', 'no' ) === 'yes' ? true : false;
+$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
 $primary = sp_get_main_performance_option();
 $total = get_option( 'sportspress_event_total_performance', 'all');
 
