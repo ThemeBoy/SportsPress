@@ -240,6 +240,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 == Changelog ==
 
 = 2.0.7 =
+* Feature - Add option to show or hide logos or photos in event blocks.
 * Tweak - Combine reverse teams option for results and box score.
 * Fix - Add filter to template output for extensions.
 
