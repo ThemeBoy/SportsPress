@@ -53,6 +53,7 @@ class SportsPress_Staff_Directories {
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_filter( 'sportspress_staff_settings', array( $this, 'add_options' ) );
+		add_filter( 'sportspress_team_templates', array( $this, 'templates' ) );
 		add_action( 'sportspress_single_staff_content', array( $this, 'output_staff_contacts' ), 20 );
 		add_action( 'sportspress_single_team_content', array( $this, 'output_team_directories' ), 25 );
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
@@ -315,6 +316,22 @@ class SportsPress_Staff_Directories {
 			__( 'Email', 'sportspress' ),
 			__( 'View all staff', 'sportspress' ),
 		) );
+	}
+
+	/**
+	 * Add templates to layout.
+	 *
+	 * @return array
+	 */
+	public function templates( $templates = array() ) {
+		$templates['directories'] = array(
+			'title' => __( 'Directories', 'sportspress' ),
+			'option' => 'sportspress_team_show_directories',
+			'action' => array( $this, 'output_team_directories' ),
+			'default' => 'yes',
+		);
+		
+		return $templates;
 	}
 
 	/**

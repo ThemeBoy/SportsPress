@@ -33,6 +33,9 @@ class SportsPress_Twitter {
 
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_general_settings', array( $this, 'add_options' ) );
+		add_filter( 'sportspress_team_templates', array( $this, 'team_templates' ) );
+		add_filter( 'sportspress_player_templates', array( $this, 'player_templates' ) );
+		add_filter( 'sportspress_staff_templates', array( $this, 'staff_templates' ) );
 		add_action( 'sportspress_single_team_content', array( $this, 'output_tweets' ), 50 );
 		add_action( 'sportspress_single_player_content', array( $this, 'output_tweets' ), 50 );
 		add_action( 'sportspress_single_staff_content', array( $this, 'output_tweets' ), 50 );
@@ -110,6 +113,49 @@ class SportsPress_Twitter {
 
 			array( 'type' => 'sectionend', 'id' => 'twitter_options' ),
 		) );
+	}
+
+	/**
+	 * Add templates to layout.
+	 *
+	 * @return array
+	 */
+	public function templates( $templates = array(), $type = 'team' ) {
+		$templates['tweets'] = array(
+			'title' => __( 'Tweets', 'sportspress' ),
+			'option' => 'sportspress_' . $type . '_show_tweets',
+			'action' => array( $this, 'output_tweets' ),
+			'default' => 'yes',
+		);
+		
+		return $templates;
+	}
+
+	/**
+	 * Add templates to team layout.
+	 *
+	 * @return array
+	 */
+	public function team_templates( $templates = array() ) {
+		return self::templates( $templates, 'team' );
+	}
+
+	/**
+	 * Add templates to player layout.
+	 *
+	 * @return array
+	 */
+	public function player_templates( $templates = array() ) {
+		return self::templates( $templates, 'player' );
+	}
+
+	/**
+	 * Add templates to staff layout.
+	 *
+	 * @return array
+	 */
+	public function staff_templates( $templates = array() ) {
+		return self::templates( $templates, 'staff' );
 	}
 
 	/**
