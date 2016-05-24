@@ -53,7 +53,7 @@
 						"event_teams" : "2",
 						"event_logos_show_team_names" : "no",
 						"event_logos_show_results" : "yes",
-						"event_results_reverse_teams" : "no",
+						"event_reverse_teams" : "no",
 						"event_show_outcome" : "yes",
 						"event_show_players" : "yes",
 						"event_show_total" : "yes",
