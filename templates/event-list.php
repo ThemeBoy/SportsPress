@@ -20,6 +20,7 @@ $defaults = array(
 	'season' => null,
 	'venue' => null,
 	'team' => null,
+	'player' => null,
 	'number' => -1,
 	'show_team_logo' => get_option( 'sportspress_event_list_show_logos', 'no' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
@@ -55,6 +56,8 @@ if ( $venue )
 	$calendar->venue = $venue;
 if ( $team )
 	$calendar->team = $team;
+if ( $player )
+	$calendar->player = $player;
 if ( $order != 'default' )
 	$calendar->order = $order;
 $data = $calendar->data();

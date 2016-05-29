@@ -21,6 +21,7 @@ $defaults = array(
 	'season' => null,
 	'venue' => null,
 	'team' => null,
+	'player' => null,
 	'initial' => true,
 	'caption_tag' => 'h4',
 	'show_all_events_link' => false,
@@ -45,6 +46,8 @@ if ( $venue )
 	$calendar->venue = $venue;
 if ( $team )
 	$calendar->team = $team;
+if ( $player )
+	$calendar->player = $player;
 $events = $calendar->data();
 
 if ( empty( $events ) ) {

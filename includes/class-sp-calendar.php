@@ -40,6 +40,9 @@ class SP_Calendar extends SP_Custom_Post {
 	/** @var int The team ID. */
 	public $team;
 
+	/** @var int The player ID. */
+	public $player;
+
 	/** @var int Number of events. */
 	public $number;
 
@@ -97,6 +100,9 @@ class SP_Calendar extends SP_Custom_Post {
 			'orderby' => 'date',
 			'order' => $this->order,
 			'post_status' => $this->status,
+			'meta_query' => array(
+				'relation' => 'AND'
+			),
 			'tax_query' => array(
 				'relation' => 'AND'
 			),
@@ -128,12 +134,18 @@ class SP_Calendar extends SP_Custom_Post {
 		endif;
 
 		if ( $this->team ):
-			$args['meta_query']	= array(
-				array(
-					'key' => 'sp_team',
-					'value' => array( $this->team ),
-					'compare' => 'IN',
-				),
+			$args['meta_query'][] = array(
+				'key' => 'sp_team',
+				'value' => array( $this->team ),
+				'compare' => 'IN',
+			);
+		endif;
+
+		if ( $this->player ):
+			$args['meta_query'][] = array(
+				'key' => 'sp_player',
+				'value' => array( $this->player ),
+				'compare' => 'IN',
 			);
 		endif;
 
