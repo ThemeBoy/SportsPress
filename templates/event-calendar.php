@@ -25,6 +25,7 @@ $defaults = array(
 	'initial' => true,
 	'caption_tag' => 'h4',
 	'show_all_events_link' => false,
+	'override_global_date' => false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -48,6 +49,10 @@ if ( $team )
 	$calendar->team = $team;
 if ( $player )
 	$calendar->player = $player;
+if ($override_global_date) {
+	$year = gmdate('Y', current_time('timestamp'));
+	$monthnum = gmdate('m', current_time('timestamp'));
+}
 $events = $calendar->data();
 
 if ( empty( $events ) ) {
