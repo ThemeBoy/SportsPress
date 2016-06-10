@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add birthdays to players and staff.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.9.19
+Version: 2.0.8
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
  * Main SportsPress Birthdays Class
  *
  * @class SportsPress_Birthdays
- * @version	1.9.19
+ * @version	2.0.8
  */
 class SportsPress_Birthdays {
 
@@ -29,6 +29,7 @@ class SportsPress_Birthdays {
 		$this->define_constants();
 
 		add_filter( 'gettext', array( $this, 'gettext' ), 20, 3 );
+		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_filter( 'sportspress_player_options', array( $this, 'add_player_options' ) );
 		add_filter( 'sportspress_staff_options', array( $this, 'add_staff_options' ) );
 		add_filter( 'sportspress_player_details', array( $this, 'add_player_details' ), 20, 2 );
@@ -42,7 +43,7 @@ class SportsPress_Birthdays {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_BIRTHDAYS_VERSION' ) )
-			define( 'SP_BIRTHDAYS_VERSION', '1.9.19' );
+			define( 'SP_BIRTHDAYS_VERSION', '2.0.8' );
 
 		if ( !defined( 'SP_BIRTHDAYS_URL' ) )
 			define( 'SP_BIRTHDAYS_URL', plugin_dir_url( __FILE__ ) );
@@ -78,6 +79,16 @@ class SportsPress_Birthdays {
 		endif;
 		
 		return $translated_text;
+	}
+
+	/**
+	 * Add text options 
+	 */
+	public function add_text_options( $options = array() ) {
+		return array_merge( $options, array(
+			__( 'Age', 'sportspress' ),
+			__( 'Birthday', 'sportspress' ),
+		) );
 	}
 
 	/**

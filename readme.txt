@@ -241,6 +241,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 = 2.0.8 =
 * Feature - Add shortcode parameter to filter event calendars by player.
+* Feature - Add text options to change age and birthday labels.
 
 = 2.0.7 =
 * Feature - Add option to show or hide logos or photos in event blocks.
