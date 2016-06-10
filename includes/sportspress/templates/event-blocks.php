@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.0.7
+ * @version     2.0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,6 +20,7 @@ $defaults = array(
 	'season' => null,
 	'venue' => null,
 	'team' => null,
+	'player' => null,
 	'number' => -1,
 	'show_team_logo' => get_option( 'sportspress_event_blocks_show_logos', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
@@ -54,6 +55,8 @@ if ( $venue )
 	$calendar->venue = $venue;
 if ( $team )
 	$calendar->team = $team;
+if ( $player )
+	$calendar->player = $player;
 if ( $order != 'default' )
 	$calendar->order = $order;
 $data = $calendar->data();
