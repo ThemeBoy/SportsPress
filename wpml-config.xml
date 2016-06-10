@@ -1,7 +1,9 @@
 <wpml-config>
   <admin-texts>
     <key name="sportspress_text">
+      <key name="Age"/>
       <key name="Article"/>
+      <key name="Birthday"/>
       <key name="Box Score"/>
       <key name="Competition"/>
       <key name="Current Team"/>
