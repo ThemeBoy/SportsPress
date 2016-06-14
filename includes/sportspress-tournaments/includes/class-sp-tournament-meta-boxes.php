@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress_Tournaments
- * @version     2.0.7
+ * @version     2.0.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -31,7 +31,7 @@ class SP_Tournament_Meta_Boxes {
 		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), array( $this, 'shortcode' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_formatdiv', __( 'Layout', 'sportspress' ), array( $this, 'format' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), array( $this, 'details' ), 'sp_tournament', 'side', 'default' );
-		add_meta_box( 'sp_datadiv', __( 'Tournament', 'sportspress' ), array( $this, 'data' ), 'sp_tournament', 'normal', 'high' );
+		add_meta_box( 'sp_datadiv', __( 'Bracket', 'sportspress' ), array( $this, 'data' ), 'sp_tournament', 'normal', 'high' );
 	}
 
 	/**

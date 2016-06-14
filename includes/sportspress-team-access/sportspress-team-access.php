@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Assign users to a specific team and limit their access to data related to that team.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.9.17
+Version: 2.0.9
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Team_Access' ) ) :
  * Main SportsPress Team Access Class
  *
  * @class SportsPress_Team_Access
- * @version	1.9
+ * @version	2.0.9
  */
 class SportsPress_Team_Access {
 
@@ -33,7 +33,6 @@ class SportsPress_Team_Access {
 		add_action( 'show_user_profile', array( $this, 'profile' ) );
 		add_action( 'edit_user_profile', array( $this, 'profile' ) );
 		add_action( 'edit_user_profile_update', array( $this, 'save' ) );
-		add_filter( 'pre_get_posts', array( $this, 'filter' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_filter( 'sportspress_user_can', array( $this, 'user_can' ), 10, 2 );
 	}
@@ -43,7 +42,7 @@ class SportsPress_Team_Access {
 	 */
 	private function define_constants() {
 		if ( !defined( 'SP_TEAM_ACCESS_VERSION' ) )
-			define( 'SP_TEAM_ACCESS_VERSION', '1.9' );
+			define( 'SP_TEAM_ACCESS_VERSION', '2.0.9' );
 
 		if ( !defined( 'SP_TEAM_ACCESS_URL' ) )
 			define( 'SP_TEAM_ACCESS_URL', plugin_dir_url( __FILE__ ) );
@@ -104,35 +103,6 @@ class SportsPress_Team_Access {
 		if ( current_user_can( 'edit_user', $user_id ) ) {
 			sp_update_user_meta_recursive( $user_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 		}
-	}
-
-	/**
-	 * Filter admin access by team.
-	 *
-	 * @param mixed $query
-	 */
-	public function filter( $query ) {
-		// Return if not admin
-		if ( ! is_admin() ) return $query;
-
-		// Return if not SportsPress post type
-		if ( ! is_sp_post_type() ) return $query;
-
-		// Return if limit doesn't apply to user and post type
-		global $current_user;
-		$post_type = sp_array_value( $query->query_vars, 'post_type', 'post' );
-		$roles = $current_user->roles;
-		$role = array_shift( $roles );
-		if ( ! $this->role_is_limited( $role ) || ! $this->limit_applies( $post_type ) ) return $query;
-
-		// Get current user team setting and return if not set
-		$user = wp_get_current_user();
-		$teams = get_user_meta( $user->ID, 'sp_team', false );
-		if ( ! $teams || ! is_array( $teams ) ) return $query;
-
-		$query = $this->query( $query, $teams, $post_type );
-
-		return $query;
 	}
 
 	/**
