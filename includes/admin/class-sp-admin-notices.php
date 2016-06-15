@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     1.6.1
+ * @version     2.0.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -45,6 +45,13 @@ class SP_Admin_Notices {
 			add_action( 'admin_notices', array( $this, 'install_notice' ) );
 		}
 
+		if ( 'post' == $screen->base ) {
+			$post_id = get_the_ID();
+			if ( ! apply_filters( 'sportspress_user_can', current_user_can( 'edit_post', $post_id  ), $post_id ) ) {
+				add_action( 'admin_notices', array( $this, 'no_access_notice' ) );
+			}
+		}
+
 		if ( ! empty( $_GET['hide_theme_support_notice'] ) ) {
 			$notices = array_diff( $notices, array( 'theme_support' ) );
 			update_option( 'sportspress_admin_notices', $notices );
@@ -75,6 +82,13 @@ class SP_Admin_Notices {
 	 */
 	public function install_notice() {
 		include( 'views/html-notice-install.php' );
+	}
+
+	/**
+	 * Displays a notice when the user doesn't have access to edit a post type
+	 */
+	public function no_access_notice() {
+		include( 'views/html-notice-no-access.php' );
 	}
 
 	/**
