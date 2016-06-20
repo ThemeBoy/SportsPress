@@ -43,7 +43,6 @@ class SportsPress_Sponsors {
 		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
 	    add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
-		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
 		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ), 20 );
 	    add_filter( 'sportspress_glance_items', array( $this, 'add_glance_item' ) );
@@ -227,15 +226,6 @@ class SportsPress_Sponsors {
 	 */
 	public function load_scripts() {
 		wp_enqueue_script( 'sportspress-sponsors', SP_SPONSORS_URL .'js/sportspress-sponsors.js', array( 'jquery' ), time(), true );
-	}
-
-	/**
-	 * Add text options 
-	 */
-	public function add_text_options( $options = array() ) {
-		return array_merge( $options, array(
-			__( 'Sponsors', 'sportspress' ),
-		) );
 	}
 
 	/**
