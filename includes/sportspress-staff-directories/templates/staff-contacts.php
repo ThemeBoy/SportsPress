@@ -36,8 +36,9 @@ if ( $email !== '' ):
 	$data[ __( 'Email', 'sportspress' ) ] = $email;
 endif;
 
-$output = '<div class="sp-list-wrapper">' .
-	'<dl class="sp-staff-details sp-staff-contact">';
+$output = '<div class="sp-template sp-template-staff-contacts sp-template-details">' .
+    '<div class="sp-list-wrapper">' .
+	   '<dl class="sp-staff-details sp-staff-contact">';
 
 foreach( $data as $label => $value ):
 
@@ -45,6 +46,6 @@ foreach( $data as $label => $value ):
 
 endforeach;
 
-$output .= '</dl></div>';
+$output .= '</dl></div></div>';
 ?>
 <?php echo $output; ?>
