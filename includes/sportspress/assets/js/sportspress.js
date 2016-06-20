@@ -43,7 +43,7 @@ function sp_viewport() {
 
 	/* Data Tables */
 	$(".sp-data-table").each(function() {
-		sortable = sp_viewport().width > 640 && $(this).hasClass("sp-sortable-table");
+		sortable = $(this).hasClass("sp-sortable-table");
 		paginated = $(this).hasClass("sp-paginated-table");
 		display_length = parseInt($(this).attr("data-sp-rows"));
 		if ( display_length == undefined || isNaN( display_length ) ) display_length = 10;
