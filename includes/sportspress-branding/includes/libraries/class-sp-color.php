@@ -37,7 +37,7 @@ class SP_Color {
         if( strlen($color) === 3 ) {
             $color = $color[0].$color[0].$color[1].$color[1].$color[2].$color[2];
         } else if( strlen($color) != 6 ) {
-            throw new Exception("HEX color needs to be 6 or 3 digits long");
+            $color = str_pad( $color, 6, '0', STR_PAD_LEFT );
         }
 
         $this->_hsl = self::hexToHsl( $color );

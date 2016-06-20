@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: White label SportsPress branding.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.6
+Version: 2.0.10
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Branding' ) ) :
  * Main SportsPress Branding Class
  *
  * @class SportsPress_Branding
- * @version	1.6
+ * @version	2.0.10
  */
 class SportsPress_Branding {
 
@@ -56,7 +56,7 @@ class SportsPress_Branding {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_BRANDING_VERSION' ) )
-			define( 'SP_BRANDING_VERSION', '1.6' );
+			define( 'SP_BRANDING_VERSION', '2.0.10' );
 
 		if ( !defined( 'SP_BRANDING_URL' ) )
 			define( 'SP_BRANDING_URL', plugin_dir_url( __FILE__ ) );
