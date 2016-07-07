@@ -119,7 +119,7 @@ class SP_Modules {
 					'label' => __( 'Twitter', 'sportspress' ),
 					'class' => 'SportsPress_Twitter',
 					'action' => __( 'Tweet #SportsPress', 'sportspress' ),
-					'link' => 'http://tboy.co/pro',
+					'link' => 'http://tboy.co/tweet',
 					'tip' => __( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.', 'sportspress' ),
 					'icon' => 'dashicons dashicons-twitter',
 					'desc' => __( 'Add a Twitter feed to team, player, and staff pages.', 'sportspress' ),
