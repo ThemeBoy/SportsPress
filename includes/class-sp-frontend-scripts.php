@@ -75,12 +75,6 @@ class SP_Frontend_Scripts {
 		wp_enqueue_script( 'jquery-countdown', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/jquery.countdown.min.js', array( 'jquery' ), '2.0.2', true );
 		wp_enqueue_script( 'sportspress', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/sportspress.js', array( 'jquery' ), SP()->version, true );
 
-		if ( is_singular( 'sp_event' ) || is_tax( 'sp_venue' ) ):
-			wp_enqueue_script( 'google-maps', '//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array(), '3.exp', true );
-			wp_enqueue_script( 'sp-maps', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/sp-maps.js', array( 'jquery', 'google-maps' ), time(), true );
-			wp_localize_script( 'sp-maps', 'vars', array( 'map_type' => strtoupper( get_option( 'sportspress_map_type', 'ROADMAP' ) ), 'zoom' => get_option( 'sportspress_map_zoom', 15 ) ) );
-		endif;
-
 		// Localize scripts
 		wp_localize_script( 'sportspress', 'localized_strings', array( 'days' => __( 'days', 'sportspress' ), 'hrs' => __( 'hrs', 'sportspress' ), 'mins' => __( 'mins', 'sportspress' ), 'secs' => __( 'secs', 'sportspress' ), 'previous' => __( 'Previous', 'sportspress' ), 'next' => __( 'Next', 'sportspress' ) ) );
 
