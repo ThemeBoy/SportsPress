@@ -363,6 +363,7 @@
 
 /* Google Maps */
 .sp-google-map {
+	width: 100%;
 	height: 320px;
 }
 .sp-google-map img {

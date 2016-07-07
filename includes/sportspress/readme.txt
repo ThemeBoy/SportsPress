@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.5
-Stable tag: 2.0.9
+Stable tag: 2.0.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,9 +239,14 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 == Changelog ==
 
-= 2.0.9 =
+= 2.0.11 =
+* Tweak - Embed code to reflect change in Google Maps API.
+
+= 2.0.10 =
 * Tweak - Enable sortable tables on all devices.
-* Fix - Remove redundant staff settings.
+
+= 2.0.9 =
+* Feature - Display admin notice when user is not allowed to edit an item.
 
 = 2.0.8 =
 * Feature - Add shortcode parameter to filter event calendars by player.
