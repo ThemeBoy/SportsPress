@@ -4,7 +4,7 @@
  *
  * @author      ThemeBoy
  * @package     SportsPress/Templates
- * @version     0.8
+ * @version     2.0.11
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

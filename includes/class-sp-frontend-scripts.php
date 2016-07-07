@@ -3,7 +3,7 @@
  * Handle frontend forms
  *
  * @class 		SP_Frontend_Scripts
- * @version		2.0
+ * @version		2.0.11
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
