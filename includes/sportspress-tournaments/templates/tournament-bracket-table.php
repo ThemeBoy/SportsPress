@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Tournaments
- * @version     1.8.8
+ * @version     2.0.12
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -69,17 +69,21 @@ list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout
 								$teams = sp_get_teams( $event );
 								if ( $teams && sizeof( $teams ) >= 2 ) {
 									$home = reset( $teams );
-									if ( sp_has_logo( $home ) ) {
-										$event_name = sp_get_logo( $home, 'mini' ) . ' ' . $event_name;
-									} else {
-										$event_name = sp_get_team_name( $home, $abbreviate_teams ) . ' ' . $event_name;
+									if ( $home ) {
+										if ( sp_has_logo( $home ) ) {
+											$event_name = sp_get_logo( $home, 'mini' ) . ' ' . $event_name;
+										} else {
+											$event_name = sp_get_team_name( $home, $abbreviate_teams ) . ' ' . $event_name;
+										}
 									}
 
 									$away = end( $teams );
-									if ( sp_has_logo( $away ) ) {
-										$event_name .= ' ' . sp_get_logo( $away, 'mini' );
-									} else {
-										$event_name .= ' ' . sp_get_team_name( $away, $abbreviate_teams );
+									if ( $away ) {
+										if ( sp_has_logo( $away ) ) {
+											$event_name .= ' ' . sp_get_logo( $away, 'mini' );
+										} else {
+											$event_name .= ' ' . sp_get_team_name( $away, $abbreviate_teams );
+										}
 									}
 								}
 							}
@@ -150,7 +154,7 @@ list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout
 						if ( $team ) {
 							$team_name = sp_get_team_name( $team, $abbreviate_teams );
 							if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '" class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</a>';
-							else $team_name = '<span class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</span>';;
+							else $team_name = '<span class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</span>';
 							echo $team_name;
 						} else {
 							echo '<span class="sp-team-name sp-highlight">&nbsp;</span>';
