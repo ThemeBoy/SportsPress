@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Adds a scoreboard layout to SportsPress event calendars.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.0
+Version: 2.0.12
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Scoreboard' ) ) :
  * Main SportsPress Scoreboard Class
  *
  * @class SportsPress_Scoreboard
- * @version	2.0
+ * @version	2.0.12
  */
 class SportsPress_Scoreboard {
 
@@ -27,6 +27,11 @@ class SportsPress_Scoreboard {
 	public function __construct() {
 		// Define constants
 		$this->define_constants();
+
+		// Include required ajax files
+		if ( defined( 'DOING_AJAX' ) ) {
+			$this->ajax_includes();
+		}
 
 		// Hooks
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
@@ -50,13 +55,20 @@ class SportsPress_Scoreboard {
 	 */
 	private function define_constants() {
 		if ( !defined( 'SP_SCOREBOARD_VERSION' ) )
-			define( 'SP_SCOREBOARD_VERSION', '2.0' );
+			define( 'SP_SCOREBOARD_VERSION', '2.0.12' );
 
 		if ( !defined( 'SP_SCOREBOARD_URL' ) )
 			define( 'SP_SCOREBOARD_URL', plugin_dir_url( __FILE__ ) );
 
 		if ( !defined( 'SP_SCOREBOARD_DIR' ) )
 			define( 'SP_SCOREBOARD_DIR', plugin_dir_path( __FILE__ ) );
+	}
+
+	/**
+	 * Include required ajax files.
+	 */
+	public function ajax_includes() {
+		include_once( 'includes/class-sp-scoreboard-ajax.php' );
 	}
 
 	/**
