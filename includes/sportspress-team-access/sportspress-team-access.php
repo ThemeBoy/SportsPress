@@ -33,6 +33,8 @@ class SportsPress_Team_Access {
 		add_action( 'show_user_profile', array( $this, 'profile' ) );
 		add_action( 'edit_user_profile', array( $this, 'profile' ) );
 		add_action( 'edit_user_profile_update', array( $this, 'save' ) );
+		add_action( 'pre_post_update', array( $this, 'pre_post_update' ) );
+		add_filter( 'pre_get_posts', array( $this, 'filter' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_filter( 'sportspress_user_can', array( $this, 'user_can' ), 10, 2 );
 	}
@@ -99,10 +101,55 @@ class SportsPress_Team_Access {
 	/**
 	 * Save team to user profile.
 	 */
-	function save( $user_id ) {
+	public function save( $user_id ) {
 		if ( current_user_can( 'edit_user', $user_id ) ) {
 			sp_update_user_meta_recursive( $user_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 		}
+	}
+
+	/**
+	 * Prevent saving if not allowed by user.
+	 */
+	public function pre_post_update( $post_id ) {
+		if ( ! $this->user_can( current_user_can( 'edit_post', $post_id ), $post_id ) ) {
+			wp_die( 'You are not allowed to edit this item.', 'sportspress' );
+		}
+	}
+
+	/**
+	 * Filter admin access by team.
+	 *
+	 * @param mixed $query
+	 */
+	public function filter( $query ) {
+		// Return if not admin
+		if ( ! is_admin() ) return $query;
+
+		// Return if not main query
+		if ( ! is_main_query() ) return $query;
+
+		// Return if not SportsPress post type
+		if ( ! is_sp_post_type() ) return $query;
+		
+		// Return if not edit screen
+		$screen = get_current_screen();
+		if ( 'edit' !== $screen->base ) return $query;
+
+		// Return if limit doesn't apply to user and post type
+		global $current_user;
+		$post_type = sp_array_value( $query->query_vars, 'post_type', 'post' );
+		$roles = $current_user->roles;
+		$role = array_shift( $roles );
+		if ( ! $this->role_is_limited( $role ) || ! $this->limit_applies( $post_type ) ) return $query;
+
+		// Get current user team setting and return if not set
+		$user = wp_get_current_user();
+		$teams = get_user_meta( $user->ID, 'sp_team', false );
+		if ( ! $teams || ! is_array( $teams ) ) return $query;
+
+		$query = $this->query( $query, $teams, $post_type );
+
+		return $query;
 	}
 
 	/**
@@ -124,6 +171,7 @@ class SportsPress_Team_Access {
 			$key = $this->key();
 			$user = wp_get_current_user();
 			$teams = get_user_meta( $user->ID, 'sp_team', false );
+			if ( empty( $teams ) ) return $can;
 			if ( 'sp_team' == $post_type ) {
 				$meta = array( $id );
 			} else {
