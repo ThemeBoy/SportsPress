@@ -158,8 +158,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'options'   => array(
 							'ROADMAP' => __( 'Default', 'sportspress' ),
 							'SATELLITE' => __( 'Satellite', 'sportspress' ),
-							'HYBRID' => __( 'Hybrid', 'sportspress' ),
-							'TERRAIN' => __( 'Terrain', 'sportspress' ),
 						),
 					),
 					
