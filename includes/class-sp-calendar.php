@@ -183,7 +183,7 @@ class SP_Calendar extends SP_Custom_Post {
 			if ( isset( $league_ids ) ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $league_ids
 				);
 			}
@@ -191,7 +191,7 @@ class SP_Calendar extends SP_Custom_Post {
 			if ( isset( $season_ids ) ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $season_ids
 				);
 			}
@@ -199,7 +199,7 @@ class SP_Calendar extends SP_Custom_Post {
 			if ( isset( $venue_ids ) ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_venue',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $venue_ids
 				);
 			}

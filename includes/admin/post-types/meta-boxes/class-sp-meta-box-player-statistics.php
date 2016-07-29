@@ -167,12 +167,12 @@ class SP_Meta_Box_Player_Statistics {
 												array(
 													'taxonomy' => 'sp_league',
 													'terms' => $league_id,
-													'field' => 'id',
+													'field' => 'term_id',
 												),
 												array(
 													'taxonomy' => 'sp_season',
 													'terms' => $div_id,
-													'field' => 'id',
+													'field' => 'term_id',
 												),
 											),
 										);

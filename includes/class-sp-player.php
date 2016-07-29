@@ -274,7 +274,7 @@ class SP_Player extends SP_Custom_Post {
 			if ( $league_id ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $league_id
 				);
 			endif;
@@ -282,7 +282,7 @@ class SP_Player extends SP_Custom_Post {
 			if ( $div_id ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $div_id
 				);
 			endif;
