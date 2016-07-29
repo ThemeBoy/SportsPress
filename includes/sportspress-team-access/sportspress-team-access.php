@@ -126,7 +126,7 @@ class SportsPress_Team_Access {
 		if ( ! is_admin() ) return $query;
 
 		// Return if not main query
-		if ( ! is_main_query() ) return $query;
+		if ( ! $query->is_main_query() ) return $query;
 
 		// Return if not SportsPress post type
 		if ( ! is_sp_post_type() ) return $query;
