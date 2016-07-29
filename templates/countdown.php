@@ -69,7 +69,7 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 		<h3 class="event-name">
 			<?php
 			if ( $show_logos ) {
-				$teams = array_unique( get_post_meta( $post->ID, 'sp_team' ) );
+				$teams = array_unique( (array) get_post_meta( $post->ID, 'sp_team' ) );
 				$i = 0;
 
 				if ( is_array( $teams ) ) {
