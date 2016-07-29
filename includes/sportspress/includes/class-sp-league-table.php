@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version     2.0
+ * @version     2.0.13
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -60,7 +60,7 @@ class SP_League_Table extends SP_Custom_Post{
 			if ( $league_ids ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $league_ids
 				);
 			endif;
@@ -68,7 +68,7 @@ class SP_League_Table extends SP_Custom_Post{
 			if ( $season_ids ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $season_ids
 				);
 			endif;
@@ -202,7 +202,7 @@ class SP_League_Table extends SP_Custom_Post{
 		if ( $league_ids ):
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_league',
-				'field' => 'id',
+				'field' => 'term_id',
 				'terms' => $league_ids
 			);
 		endif;
@@ -210,7 +210,7 @@ class SP_League_Table extends SP_Custom_Post{
 		if ( $season_ids ):
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_season',
-				'field' => 'id',
+				'field' => 'term_id',
 				'terms' => $season_ids
 			);
 		endif;

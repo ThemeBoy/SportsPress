@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     2.0.5
+ * @version     2.0.13
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -167,12 +167,12 @@ class SP_Meta_Box_Player_Statistics {
 												array(
 													'taxonomy' => 'sp_league',
 													'terms' => $league_id,
-													'field' => 'id',
+													'field' => 'term_id',
 												),
 												array(
 													'taxonomy' => 'sp_season',
 													'terms' => $div_id,
-													'field' => 'id',
+													'field' => 'term_id',
 												),
 											),
 										);

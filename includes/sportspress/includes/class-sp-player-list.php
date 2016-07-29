@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version     2.0
+ * @version     2.0.13
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -73,7 +73,7 @@ class SP_Player_List extends SP_Custom_Post {
 			if ( $league_ids ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $league_ids
 				);
 			endif;
@@ -81,7 +81,7 @@ class SP_Player_List extends SP_Custom_Post {
 			if ( $season_ids ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $season_ids
 				);
 			endif;
@@ -89,7 +89,7 @@ class SP_Player_List extends SP_Custom_Post {
 			if ( $position_ids ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_position',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $position_ids
 				);
 			endif;
@@ -219,7 +219,7 @@ class SP_Player_List extends SP_Custom_Post {
 		if ( $league_ids ):
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_league',
-				'field' => 'id',
+				'field' => 'term_id',
 				'terms' => $league_ids
 			);
 		endif;
@@ -227,7 +227,7 @@ class SP_Player_List extends SP_Custom_Post {
 		if ( $season_ids ):
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_season',
-				'field' => 'id',
+				'field' => 'term_id',
 				'terms' => $season_ids
 			);
 		endif;

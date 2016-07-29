@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Load players using Ajax to speed up the event edit screen.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.9.19
+Version: 2.0.13
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Lazy_Loading' ) ) :
  * Main SportsPress Lazy Loading Class
  *
  * @class SportsPress_Lazy_Loading
- * @version	1.9.19
+ * @version	2.0.13
  */
 class SportsPress_Lazy_Loading {
 
@@ -72,7 +72,7 @@ class SportsPress_Lazy_Loading {
 			if ( $league ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $league,
 				);
 			}
@@ -80,7 +80,7 @@ class SportsPress_Lazy_Loading {
 			if ( $season ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $season,
 				);
 			}
@@ -156,7 +156,7 @@ class SportsPress_Lazy_Loading {
 			if ( $leagues ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => wp_list_pluck( $leagues, 'term_id' ),
 				);
 			}
@@ -164,7 +164,7 @@ class SportsPress_Lazy_Loading {
 			if ( $seasons ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => wp_list_pluck( $seasons, 'term_id' ),
 				);
 			}

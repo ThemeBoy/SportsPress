@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		2.0.1
+ * @version		2.0.13
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -274,7 +274,7 @@ class SP_Player extends SP_Custom_Post {
 			if ( $league_id ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $league_id
 				);
 			endif;
@@ -282,7 +282,7 @@ class SP_Player extends SP_Custom_Post {
 			if ( $div_id ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $div_id
 				);
 			endif;

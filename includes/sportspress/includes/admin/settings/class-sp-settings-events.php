@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.0.7
+ * @version     2.0.13
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -158,8 +158,6 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'options'   => array(
 							'ROADMAP' => __( 'Default', 'sportspress' ),
 							'SATELLITE' => __( 'Satellite', 'sportspress' ),
-							'HYBRID' => __( 'Hybrid', 'sportspress' ),
-							'TERRAIN' => __( 'Terrain', 'sportspress' ),
 						),
 					),
 					
