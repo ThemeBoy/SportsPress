@@ -262,7 +262,7 @@ class SP_Tournament_Meta_Boxes {
 
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_league',
-				'field' => 'id',
+				'field' => 'term_id',
 				'terms' => $league_ids,
 			);
 		}
@@ -278,7 +278,7 @@ class SP_Tournament_Meta_Boxes {
 
 			$args['tax_query'][] = array(
 				'taxonomy' => 'sp_season',
-				'field' => 'id',
+				'field' => 'term_id',
 				'terms' => $season_ids,
 			);
 		}

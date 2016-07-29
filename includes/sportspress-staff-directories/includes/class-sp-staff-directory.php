@@ -127,7 +127,7 @@ class SP_Staff_Directory {
 					endforeach;
 					$args['tax_query'][] = array(
 						'taxonomy' => 'sp_league',
-						'field' => 'id',
+						'field' => 'term_id',
 						'terms' => $league_ids
 					);
 				endif;
@@ -139,7 +139,7 @@ class SP_Staff_Directory {
 					endforeach;
 					$args['tax_query'][] = array(
 						'taxonomy' => 'sp_season',
-						'field' => 'id',
+						'field' => 'term_id',
 						'terms' => $season_ids
 					);
 				endif;
@@ -151,7 +151,7 @@ class SP_Staff_Directory {
 					endforeach;
 					$args['tax_query'][] = array(
 						'taxonomy' => 'sp_role',
-						'field' => 'id',
+						'field' => 'term_id',
 						'terms' => $role_ids
 					);
 				endif;
