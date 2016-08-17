@@ -2,8 +2,8 @@
 Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends, golf
 Requires at least: 3.8
-Tested up to: 4.5
-Stable tag: 2.0.13
+Tested up to: 4.6
+Stable tag: 2.0.16
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,15 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.0.16 =
+* Tweak - Add shortcode parameter to override global date in event calendar.
+
+= 2.0.15 =
+* Fix - Subversion issues.
+
+= 2.0.14 =
+* Fix - Use search mode in maps to prevent invalid parameter error.
 
 = 2.0.13 =
 * Fix - Team access to only filter main query.
