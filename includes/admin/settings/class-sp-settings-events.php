@@ -218,6 +218,17 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 			apply_filters( 'sportspress_event_logo_options', array(
 				array(
+					'title'     => __( 'Layout', 'sportspress' ),
+					'id'        => 'sportspress_event_logos_format',
+					'default'   => 'inline',
+					'type'      => 'radio',
+					'options'   => array(
+						'inline' => __( 'Inline', 'sportspress' ),
+						'block' => __( 'Block', 'sportspress' ),
+					),
+				),
+
+				array(
 					'title'     => __( 'Display', 'sportspress' ),
 					'desc' 		=> __( 'Name', 'sportspress' ),
 					'id' 		=> 'sportspress_event_logos_show_team_names',
