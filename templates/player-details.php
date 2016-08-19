@@ -14,6 +14,8 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $defaults = array(
+	'show_number' => get_option( 'sportspress_player_show_number', 'no' ) == 'yes' ? true : false,
+	'show_name' => get_option( 'sportspress_player_show_name', 'no' ) == 'yes' ? true : false,
 	'show_nationality' => get_option( 'sportspress_player_show_nationality', 'yes' ) == 'yes' ? true : false,
 	'show_positions' => get_option( 'sportspress_player_show_positions', 'yes' ) == 'yes' ? true : false,
 	'show_current_teams' => get_option( 'sportspress_player_show_current_teams', 'yes' ) == 'yes' ? true : false,
@@ -35,6 +37,14 @@ $metrics_before = $player->metrics( true );
 $metrics_after = $player->metrics( false );
 
 $common = array();
+
+if ( $show_number ):
+	$common[ '#' ] = $player->number;
+endif;
+
+if ( $show_name ):
+	$common[ __( 'Name', 'sportspress' ) ] = $player->post->post_title;
+endif;
 
 if ( $show_nationality ):
 	$nationalities = $player->nationalities();

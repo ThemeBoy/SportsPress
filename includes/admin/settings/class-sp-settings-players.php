@@ -58,11 +58,27 @@ class SP_Settings_Players extends SP_Settings_Page {
 
 				array(
 					'title'     => __( 'Details', 'sportspress' ),
+					'desc' 		=> __( 'Squad Number', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_number',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'start',
+				),
+
+				array(
+					'desc' 		=> __( 'Name', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_name',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+
+				array(
 					'desc' 		=> __( 'Nationality', 'sportspress' ),
 					'id' 		=> 'sportspress_player_show_nationality',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> 'start',
+					'checkboxgroup'		=> '',
 				),
 
 				array(
