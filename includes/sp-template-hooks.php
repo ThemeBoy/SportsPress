@@ -173,18 +173,6 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain = nu
 			case 'Slug':
 				$translated_text = ( in_array( $typenow, array( 'sp_column', 'sp_statistic' ) ) ) ? __( 'Key', 'sportspress' ) : __( 'Variable', 'sportspress' );
 				break;
-			case 'Featured Image':
-				$translated_text = __( 'Icon', 'sportspress' );
-				break;
-			case 'Set Featured Image':
-				$translated_text = __( 'Select Icon', 'sportspress' );
-				break;
-			case 'Set featured image':
-				$translated_text = __( 'Add icon', 'sportspress' );
-				break;
-			case 'Remove featured image':
-				$translated_text = __( 'Remove icon', 'sportspress' );
-				break;
 			endswitch;
 		endif;
 
@@ -192,40 +180,6 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain = nu
 			switch ( $untranslated_text ):
 			case 'Author':
 				$translated_text = __( 'User', 'sportspress' );
-				break;
-			endswitch;
-		endif;
-
-		if ( in_array( $typenow, array( 'sp_player', 'sp_staff' ) ) ):
-			switch ( $untranslated_text ):
-			case 'Featured Image':
-				$translated_text = __( 'Photo', 'sportspress' );
-				break;
-			case 'Set Featured Image':
-				$translated_text = __( 'Select Photo', 'sportspress' );
-				break;
-			case 'Set featured image':
-				$translated_text = __( 'Add photo', 'sportspress' );
-				break;
-			case 'Remove featured image':
-				$translated_text = __( 'Remove photo', 'sportspress' );
-				break;
-			endswitch;
-		endif;
-
-		if ( in_array( $typenow, array( 'sp_team' ) ) ):
-			switch ( $untranslated_text ):
-			case 'Featured Image':
-				$translated_text = __( 'Logo', 'sportspress' );
-				break;
-			case 'Set Featured Image':
-				$translated_text = __( 'Select Logo', 'sportspress' );
-				break;
-			case 'Set featured image':
-				$translated_text = __( 'Add logo', 'sportspress' );
-				break;
-			case 'Remove featured image':
-				$translated_text = __( 'Remove logo', 'sportspress' );
 				break;
 			endswitch;
 		endif;
