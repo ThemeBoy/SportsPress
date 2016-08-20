@@ -640,6 +640,13 @@ table.widefat.sp-sortable-table tbody tr .icon {
 }
 
 /* Sortable lists */
+.sp-sortable-list {
+	margin: 0;
+	overflow: hidden;
+	padding-top: 5px;
+	min-height: 50px;
+}
+
 .sp-sortable-list li {
 	float: left;
 	clear: both;

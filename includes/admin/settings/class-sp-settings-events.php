@@ -32,6 +32,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 		add_action( 'sportspress_admin_field_current_mode', array( $this, 'current_mode_setting' ) );
 		add_action( 'sportspress_admin_field_delimiter', array( $this, 'delimiter_setting' ) );
 		add_action( 'sportspress_admin_field_event_layout', array( $this, 'layout_setting' ) );
+		add_action( 'sportspress_admin_field_event_tabs', array( $this, 'tabs_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
 	}
 
@@ -60,6 +61,8 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 				apply_filters( 'sportspress_event_template_options', array(
 					array( 'type' 	=> 'event_layout' ),
+
+					array( 'type' 	=> 'event_tabs' ),
 
 					array(
 						'title'     => __( 'Display', 'sportspress' ),

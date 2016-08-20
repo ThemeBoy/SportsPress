@@ -40,6 +40,37 @@
 	overflow: hidden;
 }
 
+/* Tabs */
+.sp-tab-menu {
+	display: block;
+	clear: both;
+	padding: 0 5px;
+	margin: 0 0 1.5em;
+	list-style: none;
+}
+.sp-tab-menu-item {
+	display: inline-block;
+	margin: 0;
+}
+.sp-tab-menu-item a {
+	display: block;
+	margin: 0 10px;
+	color: inherit;
+	opacity: 0.5;
+    transition: all .3s;
+}
+.sp-tab-menu-item a:focus {
+    outline: none;
+}
+.sp-tab-menu-item-active a,
+.sp-tab-menu-item a:hover {
+	color: inherit;
+	opacity: 1;
+}
+.sp-tab-content {
+	display: none;
+}
+
 /* Data Tables */
 .sp-scrollable-table-wrapper {
 	width: 100%;
@@ -339,6 +370,7 @@
 	max-width: none;
 	width: 100%;
 	height: auto;
+	color: inherit;
 }
 
 .sp-template-event-logos-block .team-logo img {

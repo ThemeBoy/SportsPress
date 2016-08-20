@@ -79,4 +79,12 @@ function sp_viewport() {
 	/* Scrollable Tables */
 	$(".sp-scrollable-table").wrap("<div class=\"sp-scrollable-table-wrapper\"></div>");
 
+	/* Template tabs */
+	$(".sp-tab-menu-item a").click(function() {
+		$template = $(this).data("sp-tab");
+		$(this).closest(".sp-tab-menu-item").addClass("sp-tab-menu-item-active").siblings(".sp-tab-menu-item").removeClass("sp-tab-menu-item-active");
+		$(this).closest(".sp-tab-group").find(".sp-tab-content-"+$template).show().siblings(".sp-tab-content").hide();
+		return false;
+	});
+
 })(jQuery);

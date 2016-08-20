@@ -30,6 +30,7 @@ class SP_Settings_Players extends SP_Settings_Page {
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
 		add_action( 'sportspress_admin_field_player_layout', array( $this, 'layout_setting' ) );
+		add_action( 'sportspress_admin_field_player_tabs', array( $this, 'tabs_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
 	}
 
@@ -47,6 +48,8 @@ class SP_Settings_Players extends SP_Settings_Page {
 
 			apply_filters( 'sportspress_player_options', array(
 				array( 'type' 	=> 'player_layout' ),
+
+				array( 'type' 	=> 'player_tabs' ),
 
 				array(
 					'title'     => __( 'Link', 'sportspress' ),

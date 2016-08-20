@@ -315,7 +315,8 @@ jQuery(document).ready(function($){
 	// Sortable lists
     $( ".sp-sortable-list" ).sortable({
     	handle: ".sp-item-handle",
-		placeholder: "sp-item-placeholder"
+		placeholder: "sp-item-placeholder",
+		connectWith: ".sp-connected-list"
     });
 
 	// Autosave

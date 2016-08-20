@@ -30,6 +30,7 @@ class SP_Settings_Staff extends SP_Settings_Page {
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
 		add_action( 'sportspress_admin_field_staff_layout', array( $this, 'layout_setting' ) );
+		add_action( 'sportspress_admin_field_staff_tabs', array( $this, 'tabs_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
 	}
 
@@ -47,6 +48,8 @@ class SP_Settings_Staff extends SP_Settings_Page {
 
 			apply_filters( 'sportspress_staff_options', array(
 				array( 'type' 	=> 'staff_layout' ),
+
+				array( 'type' 	=> 'staff_tabs' ),
 
 				array(
 					'title'     => __( 'Link', 'sportspress' ),
