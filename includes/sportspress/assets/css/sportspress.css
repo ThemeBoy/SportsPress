@@ -333,6 +333,29 @@
 	clear: both;
 }
 
+/* Event Logos Block */
+.sp-template-event-logos-block .team-logo {
+	float: none;
+	max-width: none;
+	width: 100%;
+	height: auto;
+}
+
+.sp-template-event-logos-block .team-logo img {
+	vertical-align: middle;
+}
+
+.sp-template-event-logos-block .sp-team-name {
+	display: block;
+	clear: both;
+	vertical-align: middle;
+	font-size: 28px;
+}
+
+.sp-template-event-logos-block .sp-event-results {
+	font-size: 36px;
+}
+
 /* Countdowns */
 .sp-template-countdown .event-name {
 	clear: both;
@@ -454,6 +477,40 @@
 	}
 	
 	.sp-template-photo + .sp-post-content {
+		clear: none;
+	}
+
+	.sp-template-event-logos-block .team-logo {
+		width: 33%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.sp-template-event-logos-block .team-logo img {
+		height: 100px;
+	}
+
+	.sp-template-event-logos-block .logo-odd {
+		text-align: left;
+		float: left;
+	}
+
+	.sp-template-event-logos-block .logo-even {
+		text-align: right;
+		float: right;
+	}
+	
+	.sp-template-event-logos-block .logo-odd img {
+		margin-right: 10px;
+	}
+	
+	.sp-template-event-logos-block .logo-even img {
+		margin-left: 10px;
+	}
+	
+	.sp-template-event-logos-block .sp-team-name {
+		display: inline;
 		clear: none;
 	}
 }

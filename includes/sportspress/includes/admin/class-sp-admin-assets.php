@@ -64,7 +64,7 @@ class SP_Admin_Assets {
 			wp_enqueue_style( 'sportspress-admin-datepicker-styles', SP()->plugin_url() . '/assets/css/datepicker.css', array( 'jquery-ui-style' ), SP_VERSION );
 		}
 
-		do_action( 'sportspress_admin_css' );
+		do_action( 'sportspress_admin_css', $screen );
 	}
 
 	/**
