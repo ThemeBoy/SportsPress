@@ -35,8 +35,18 @@ class SportsPress_Tutorials {
 
 		add_action( 'init', array( $this, 'get_video_ids' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 10 );
+		add_action( 'sportspress_admin_css', array( $this, 'admin_styles' ) );
 		add_action( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_filter( 'sportspress_next_steps', array( $this, 'next_steps' ) );
+	}
+
+	/**
+	 * Enqueue styles
+	 */
+	public function admin_styles( $screen ) {
+		if ( strpos( $screen->id, 'sportspress-tutorials' ) !== false ) {
+			wp_enqueue_style( 'sportspress-admin', SP()->plugin_url() . '/assets/css/admin.css', array(), SP_VERSION );
+		}
 	}
 
 	/**
@@ -119,7 +129,11 @@ class SportsPress_Tutorials {
 	 * Add menu item
 	 */
 	public function admin_menu() {
-		add_submenu_page( 'sportspress', __( 'Tutorials', 'sportspress' ), __( 'Tutorials', 'sportspress' ), 'manage_sportspress', 'sportspress-tutorials', array( $this, 'tutorials_page' ) );
+		if ( current_user_can( 'manage_sportspress' ) ) {
+			add_submenu_page( 'sportspress', __( 'Tutorials', 'sportspress' ), __( 'Tutorials', 'sportspress' ), 'manage_sportspress', 'sportspress-tutorials', array( $this, 'tutorials_page' ) );
+		} else {
+			add_menu_page( __( 'Tutorials', 'sportspress' ), __( 'Tutorials', 'sportspress' ), 'edit_sp_players', 'sportspress-tutorials', array( $this, 'tutorials_page' ), 'dashicons-video-alt3' );
+		}
 	}
 
 	/**
