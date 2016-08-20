@@ -248,6 +248,8 @@ class SP_Tournament_Meta_Boxes {
 		$args = array(
 			'post_type' => 'sp_team',
 			'posts_per_page' => -1,
+			'orderby' => 'title',
+			'order' => 'ASC',
 			'tax_query' => array(),
 		);
 		
