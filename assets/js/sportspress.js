@@ -78,8 +78,13 @@ function sp_viewport() {
 
 	/* Scrollable Tables */
 	$(".sp-scrollable-table").wrap("<div class=\"sp-scrollable-table-wrapper\"></div>");
+	
+	/* Selector Redirect */
+	$(".sp-selector-redirect").change(function() {
+		window.location = $(this).val();
+	});
 
-	/* Template tabs */
+	/* Template Tabs */
 	$(".sp-tab-menu-item a").click(function() {
 		$template = $(this).data("sp-tab");
 		$(this).closest(".sp-tab-menu-item").addClass("sp-tab-menu-item-active").siblings(".sp-tab-menu-item").removeClass("sp-tab-menu-item-active");

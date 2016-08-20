@@ -71,6 +71,11 @@
 	display: none;
 }
 
+/* Profile selector */
+.sp-profile-selector {
+	float: right;
+}
+
 /* Data Tables */
 .sp-scrollable-table-wrapper {
 	width: 100%;

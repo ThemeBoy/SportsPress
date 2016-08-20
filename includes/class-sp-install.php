@@ -406,8 +406,7 @@ class SP_Install {
 		}
 		
 		if ( version_compare( $version, '2.1', '<' ) ) {
-			$option = get_option( 'sportspress_event_results_reverse_teams', 'no' );
-			update_option( 'sportspress_event_reverse_teams', $option );
+			update_option( 'sportspress_player_show_selector', 'no' );
 		}
 	}
 

@@ -60,6 +60,14 @@ class SP_Settings_Players extends SP_Settings_Page {
 				),
 
 				array(
+					'title'     => __( 'Dropdown', 'sportspress' ),
+					'desc' 		=> __( 'Display dropdown', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_selector',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
 					'title'     => __( 'Details', 'sportspress' ),
 					'desc' 		=> __( 'Squad Number', 'sportspress' ),
 					'id' 		=> 'sportspress_player_show_number',
