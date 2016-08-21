@@ -1340,6 +1340,7 @@ function sp_get_text_options() {
 		__( 'Details', 'sportspress' ),
 		__( 'Event', 'sportspress' ),
 		__( 'Fixtures', 'sportspress' ),
+		__( 'Match Day', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
 		__( 'Offense', 'sportspress' ),
 		__( 'Outcome', 'sportspress' ),
