@@ -28,6 +28,9 @@ class SP_REST_API {
 		// Create REST routes
 		add_action( 'rest_api_init', array( $this, 'create_routes' ) );
 		add_action( 'rest_api_init', array( $this, 'register_fields' ), 0 );
+		
+		// Add filter for post meta query
+		add_filter( 'rest_query_vars', array( $this, 'meta_query' ) );
 	}
 
 	/**
@@ -749,6 +752,14 @@ class SP_REST_API {
 		}
 		
 		return $field_name;
+	}
+	
+	/**
+	 * Enable meta query vars
+	 */
+	public static function meta_query( $valid_vars ) {
+		$valid_vars = array_merge( $valid_vars, array( 'meta_key', 'meta_value', 'meta_query' ) );
+		return $valid_vars;
 	}
 }
 
