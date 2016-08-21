@@ -556,6 +556,16 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
+					<?php _e( 'Sort by:', 'sportspress' ); ?>
+					<select id="orderby" name="orderby">
+						<option value="default"><?php _e( 'Default', 'sportspress' ); ?></option>
+						<option value="date"><?php _e( 'Date', 'sportspress' ); ?></option>
+						<option value="day"><?php _e( 'Match Day', 'sportspress' ); ?></option>
+					</select>
+				</label>
+			</p>
+			<p>
+				<label>
 					<?php _e( 'Sort Order:', 'sportspress' ); ?>
 					<select id="order" name="order">
 						<option value="default"><?php _e( 'Default', 'sportspress' ); ?></option>
@@ -934,6 +944,7 @@ class SP_AJAX {
                     args.status = $div.find('[name=status]').val();
                     args.date = $div.find('[name=date]').val();
                     args.number = $div.find('[name=number]').val();
+                    args.orderby = $div.find('[name=orderby]').val();
                     args.order = $div.find('[name=order]').val();
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'league_table' == type ) {

@@ -16,6 +16,7 @@ $defaults = array(
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
+	'day' => 'default',
 	'league' => null,
 	'season' => null,
 	'venue' => null,
@@ -27,6 +28,7 @@ $defaults = array(
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_event_blocks_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_event_blocks_rows', 5 ),
+	'orderby' => 'default',
 	'order' => 'default',
 	'show_all_events_link' => false,
 	'show_title' => get_option( 'sportspress_event_blocks_show_title', 'no' ) == 'yes' ? true : false,
@@ -59,6 +61,10 @@ if ( $player )
 	$calendar->player = $player;
 if ( $order != 'default' )
 	$calendar->order = $order;
+if ( $orderby != 'default' )
+	$calendar->orderby = $orderby;
+if ( $day != 'default' )
+	$calendar->day = $day;
 $data = $calendar->data();
 
 if ( $hide_if_empty && empty( $data ) ) return;
@@ -108,6 +114,14 @@ if ( $title )
 								$logos[] = $logo;
 							endif;
 						endforeach;
+					endif;
+					
+					if ( 'day' === $calendar->orderby ):
+						$event_group = get_post_meta( $event->ID, 'sp_day', true );
+						if ( ! isset( $group ) || $event_group !== $group ):
+							$group = $event_group;
+							echo '<tr><th><strong class="sp-event-group-name">', __( 'Match Day', 'sportspress' ), ' ', $group, '</strong></th></tr>';
+						endif;
 					endif;
 					?>
 					<tr class="sp-row sp-post<?php echo ( $i % 2 == 0 ? ' alternate' : '' ); ?>">

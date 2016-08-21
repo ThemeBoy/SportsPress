@@ -22,11 +22,17 @@ class SP_Calendar extends SP_Custom_Post {
 	/** @var string The events order. */
 	public $order;
 
+	/** @var string The events orderby. */
+	public $orderby;
+
 	/** @var string The date to range from. */
 	public $from;
 
 	/** @var string The date to range to. */
 	public $to;
+
+	/** @var string The match day. */
+	public $day;
 
 	/** @var int The competition ID. */
 	public $league;
@@ -63,6 +69,7 @@ class SP_Calendar extends SP_Custom_Post {
 
 		$this->status = $this->__get( 'status' );
 		$this->date = $this->__get( 'date' );
+		$this->orderby = $this->__get( 'orderby' );
 		$this->order = $this->__get( 'order' );
 		$this->number = $this->__get( 'number' );
 
@@ -75,11 +82,17 @@ class SP_Calendar extends SP_Custom_Post {
 		if ( ! $this->order )
 			$this->order = 'ASC';
 
+		if ( ! $this->orderby )
+			$this->orderby = get_post_meta( $this->ID, 'sp_orderby', true );
+
 		if ( ! $this->from )
 			$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
 
 		if ( ! $this->to )
 			$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
+
+		if ( ! $this->day )
+			$this->day = get_post_meta( $this->ID, 'sp_day', true );
 
 		if ( ! $this->number )
 			$this->number = 500;
@@ -97,7 +110,7 @@ class SP_Calendar extends SP_Custom_Post {
 		$args = array(
 			'post_type' => 'sp_event',
 			'posts_per_page' => $this->number,
-			'orderby' => 'date',
+			'orderby' => $this->orderby,
 			'order' => $this->order,
 			'post_status' => $this->status,
 			'meta_query' => array(
@@ -149,6 +162,18 @@ class SP_Calendar extends SP_Custom_Post {
 			);
 		endif;
 
+		if ( $this->day ):
+			$args['meta_query'][] = array(
+				'key' => 'sp_day',
+				'value' => $this->day,
+			);
+		endif;
+
+		if ( 'day' == $this->orderby ):
+			$args['orderby'] = 'meta_value_num';
+			$args['meta_key'] = 'sp_day';
+		endif;
+
 		if ( $pagenow != 'post-new.php' ):
 			if ( $this->ID ):
 				$leagues = get_the_terms( $this->ID, 'sp_league' );
@@ -178,7 +203,6 @@ class SP_Calendar extends SP_Custom_Post {
 					endforeach;
 				endif;
 			endif;
-			
 
 			if ( isset( $league_ids ) ) {
 				$args['tax_query'][] = array(

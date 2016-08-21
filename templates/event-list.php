@@ -16,6 +16,7 @@ $defaults = array(
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
+	'day' => 'default',
 	'league' => null,
 	'season' => null,
 	'venue' => null,
@@ -60,6 +61,8 @@ if ( $player )
 	$calendar->player = $player;
 if ( $order != 'default' )
 	$calendar->order = $order;
+if ( $day != 'default' )
+	$calendar->day = $day;
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
 $title_format = get_option( 'sportspress_event_list_title_format', 'title' );

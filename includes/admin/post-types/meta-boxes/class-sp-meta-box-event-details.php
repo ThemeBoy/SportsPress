@@ -19,10 +19,17 @@ class SP_Meta_Box_Event_Details {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
+		$day = get_post_meta( $post->ID, 'sp_day', true );
 		$taxonomies = get_object_taxonomies( 'sp_event' );
 		$minutes = get_post_meta( $post->ID, 'sp_minutes', true );
 		?>
 		<?php do_action( 'sportspress_event_details_meta_box', $post ); ?>
+		<div class="sp-event-day-field">
+			<p><strong><?php _e( 'Match Day', 'sportspress' ); ?></strong></p>
+			<p>
+				<input name="sp_day" type="text" class="medium-text" placeholder="<?php _e( 'Default', 'sportspress' ); ?>" value="<?php echo esc_attr( $day ); ?>">
+			</p>
+		</div>
 		<div class="sp-event-minutes-field">
 			<p><strong><?php _e( 'Full Time', 'sportspress' ); ?></strong></p>
 			<p>
@@ -66,6 +73,7 @@ class SP_Meta_Box_Event_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		update_post_meta( $post_id, 'sp_day', sp_array_value( $_POST, 'sp_day', null ) );
 		update_post_meta( $post_id, 'sp_minutes', sp_array_value( $_POST, 'sp_minutes', get_option( 'sportspress_event_minutes', 90 ) ) );
    		$venues = array_filter( sp_array_value( sp_array_value( $_POST, 'tax_input', array() ), 'sp_venue', array() ) );
 		if ( empty( $venues ) ) {

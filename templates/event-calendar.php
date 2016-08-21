@@ -17,6 +17,7 @@ $defaults = array(
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
+	'day' => 'default',
 	'league' => null,
 	'season' => null,
 	'venue' => null,
@@ -39,6 +40,8 @@ if ( $date_from != 'default' )
 	$calendar->from = $date_from;
 if ( $date_to != 'default' )
 	$calendar->to = $date_to;
+if ( $day != 'default' )
+	$calendar->day = $day;
 if ( $league )
 	$calendar->league = $league;
 if ( $season )
