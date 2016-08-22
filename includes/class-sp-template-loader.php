@@ -75,7 +75,7 @@ class SP_Template_Loader {
 		$templates = apply_filters( 'sportspress_' . $type . '_templates', $templates );
 
 		// Split templates into sections and tabs
-		$slice = array_search( 'tabs', array_flip( $templates ) );
+		$slice = array_search( 'tabs', array_keys( $templates ) );
 		if ( $slice ) {
 			$section_templates = array_slice( $templates, 0, $slice );
 			$tab_templates = array_slice( $templates, $slice );

@@ -91,7 +91,7 @@ class SP_Settings_Page {
 		
 		$templates = array_merge( array_flip( $layout ), $templates );
 
-		$slice = array_search( 'tabs', array_flip( $templates ) );
+		$slice = array_search( 'tabs', array_keys( $templates ) );
 		if ( $slice ) {
 			$templates = array_slice( $templates, 0, $slice );
 		}
@@ -144,7 +144,7 @@ class SP_Settings_Page {
 		
 		$templates = array_merge( array_flip( $layout ), $templates );
 
-		$slice = array_search( 'tabs', array_flip( $templates ) );
+		$slice = array_search( 'tabs', array_keys( $templates ) );
 		if ( $slice ) {
 			$templates = array_slice( $templates, $slice );
 		} else {
