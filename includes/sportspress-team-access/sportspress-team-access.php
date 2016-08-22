@@ -111,6 +111,10 @@ class SportsPress_Team_Access {
 	 * Prevent saving if not allowed by user.
 	 */
 	public function pre_post_update( $post_id ) {
+		if ( ! $post_id || ! $this->limit_applies( get_post_type( $post_id ) ) ) {
+			return;
+		}
+		
 		if ( ! $this->user_can( current_user_can( 'edit_post', $post_id ), $post_id ) ) {
 			wp_die( 'You are not allowed to edit this item.', 'sportspress' );
 		}
