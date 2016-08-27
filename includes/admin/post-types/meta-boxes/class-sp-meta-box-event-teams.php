@@ -95,12 +95,12 @@ class SP_Meta_Box_Event_Teams {
 					);
 					?>
 					<?php if ( $tabs ) { ?>
-					<ul id="sp_team-tabs" class="wp-tab-bar sp-tab-bar">
+					<ul id="sp_team-tabs" class="sp-tab-bar category-tabs">
 						<?php
 							$j = 0;
 							foreach ( $tabs as $slug => $tab ) {
 								?>
-								<li class="wp-tab<?php if ( 0 == $j ) { ?>-active<?php } ?>"><a href="#<?php echo $slug; ?>-all"><?php echo $tab['label']; ?></a></li>
+								<li class="<?php if ( 0 == $j ) { ?>tabs<?php } ?>"><a href="#<?php echo $slug; ?>-all"><?php echo $tab['label']; ?></a></li>
 								<?php
 								$j++;
 							}
