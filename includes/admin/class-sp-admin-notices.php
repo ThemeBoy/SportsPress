@@ -45,7 +45,7 @@ class SP_Admin_Notices {
 			add_action( 'admin_notices', array( $this, 'install_notice' ) );
 		}
 
-		if ( 'post' == $screen->base ) {
+		if ( is_object( $screen ) && 'post' == $screen->base ) {
 			$post_id = get_the_ID();
 			if ( ! apply_filters( 'sportspress_user_can', current_user_can( 'edit_post', $post_id  ), $post_id ) ) {
 				add_action( 'admin_notices', array( $this, 'no_access_notice' ) );
