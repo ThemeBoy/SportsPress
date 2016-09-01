@@ -28,7 +28,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 				'sp_venue' => __( 'Venue', 'sportspress' ),
 				'sp_home' => __( 'Home', 'sportspress' ),
 				'sp_away' => __( 'Away', 'sportspress' ),
+				'sp_day' => __( 'Match Day', 'sportspress' ),
 			);
+			$this->optionals = array( 'sp_day' );
 		}
 
 		/**
@@ -72,6 +74,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					sp_array_value( $meta, 'post_date' ),
 					sp_array_value( $meta, 'post_time' ),
 					sp_array_value( $meta, 'sp_venue' ),
+					sp_array_value( $meta, 'sp_day' ),
 				);
 
 				$teams = array(
@@ -83,7 +86,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				if ( sizeof( $event ) > 0 && ! empty( $event[0] ) ):
 
 					// List event columns
-					list( $date, $time, $venue ) = $event;
+					list( $date, $time, $venue, $day ) = $event;
 
 					// Format date
 					$date = str_replace( '/', '-', trim( $date ) );
@@ -136,6 +139,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 					// Update venue
 					wp_set_object_terms( $id, $venue, 'sp_venue', false );
+
+					// Update match day
+					if ( '' !== $day ) {
+						update_post_meta( $id, 'sp_day', $day );
+					}
 
 					// Increment
 					$this->imported ++;
