@@ -122,6 +122,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			'sp_league' => __( 'Competition', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_venue' => __( 'Venue', 'sportspress' ),
+			'sp_day' => __( 'Match Day', 'sportspress' ),
 		), $existing_columns, array(
 			'title' => __( 'Event', 'sportspress' ),
 		) );
@@ -207,6 +208,11 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				break;
 			case 'sp_venue':
 				echo get_the_terms ( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
+				break;
+			case 'sp_day':
+				$day = get_post_meta ( $post_id, 'sp_day', true );
+				if ( '' === $day ) $day = __( 'Default', 'sportspress' );
+				echo $day;
 				break;
 		endswitch;
 	}
