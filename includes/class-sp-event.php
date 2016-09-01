@@ -165,7 +165,7 @@ class SP_Event extends SP_Custom_Post{
 				unset( $labels['number'] );
 			endif;
 
-			if ( 'yes' == get_option( 'sportspress_event_performance_show_time', 'yes' ) ):
+			if ( 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'yes' ) ):
 				$timeline = $this->timeline();
 				if ( ! empty( $timeline ) ):
 					foreach ( $performance as $team => $players ):

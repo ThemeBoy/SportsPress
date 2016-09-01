@@ -407,7 +407,7 @@ class SP_Install {
 		
 		if ( version_compare( $version, '2.1', '<' ) ) {
 			update_option( 'sportspress_player_show_selector', 'no' );
-			update_option( 'sportspress_event_performance_show_time', 'no' );
+			update_option( 'sportspress_event_performance_show_minutes', 'no' );
 		}
 	}
 
