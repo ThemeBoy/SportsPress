@@ -45,6 +45,14 @@ if ( 'yes' === get_option( 'sportspress_event_show_day', 'yes' ) ) {
 	}
 }
 
+if ( 'yes' === get_option( 'sportspress_event_show_full_time', 'yes' ) ) {
+	$full_time = get_post_meta( $id, 'sp_minutes', true );
+	if ( '' === $full_time ) {
+		$full_time = get_option( 'sportspress_minutes', 90 );
+	}
+	$data[ __( 'Full Time', 'sportspress' ) ] = $full_time . '\'';
+}
+
 $data = apply_filters( 'sportspress_event_details', $data, $id );
 
 if ( ! sizeof( $data ) ) return;

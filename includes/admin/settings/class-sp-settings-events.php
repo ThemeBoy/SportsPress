@@ -65,7 +65,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 					array( 'type' 	=> 'event_tabs' ),
 
 					array(
-						'title'     => __( 'Display', 'sportspress' ),
+						'title'     => __( 'Details', 'sportspress' ),
 						'desc' 		=> __( 'Date', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_date',
 						'default'	=> 'yes',
@@ -84,6 +84,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 					array(
 						'desc' 		=> __( 'Match Day', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_day',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> '',
+					),
+
+					array(
+						'desc' 		=> __( 'Full Time', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_full_time',
 						'default'	=> 'no',
 						'type' 		=> 'checkbox',
 						'checkboxgroup'		=> 'end',
@@ -380,8 +388,8 @@ class SP_Settings_Events extends SP_Settings_Page {
 					),
 					
 					array(
-						'desc' 		=> __( 'Time', 'sportspress' ),
-						'id' 		=> 'sportspress_event_performance_show_time',
+						'desc' 		=> __( 'Minutes', 'sportspress' ),
+						'id' 		=> 'sportspress_event_performance_show_minutes',
 						'default'	=> 'yes',
 						'type' 		=> 'checkbox',
 						'checkboxgroup'		=> 'end',
