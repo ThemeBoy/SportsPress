@@ -271,6 +271,12 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
+					<?php _e( 'Match Day:', 'sportspress' ); ?>
+					<input type="text" size="3" name="day" id="day" placeholder="<?php _e( 'All', 'sportspress' ); ?>">
+				</label>
+			</p>
+			<p>
+				<label>
 					<?php _e( 'Display link to view all events', 'sportspress' ); ?>
 					<input type="checkbox" name="show_all_events_link" id="show_all_events_link">
 				</label>
@@ -389,6 +395,12 @@ class SP_AJAX {
 						<option value="w"><?php _e( 'This week', 'sportspress' ); ?></option>
 						<option value="day"><?php _e( 'Today', 'sportspress' ); ?></option>
 					</select>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Match Day:', 'sportspress' ); ?>
+					<input type="text" size="3" name="day" id="day" placeholder="<?php _e( 'All', 'sportspress' ); ?>">
 				</label>
 			</p>
 			<p>
@@ -546,6 +558,12 @@ class SP_AJAX {
 						<option value="w"><?php _e( 'This week', 'sportspress' ); ?></option>
 						<option value="day"><?php _e( 'Today', 'sportspress' ); ?></option>
 					</select>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Match Day:', 'sportspress' ); ?>
+					<input type="text" size="3" name="day" id="day" placeholder="<?php _e( 'All', 'sportspress' ); ?>">
 				</label>
 			</p>
 			<p>
@@ -922,6 +940,7 @@ class SP_AJAX {
                     args.season = $div.find('[name=season]').val();
                     args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
+                    args.day = $div.find('[name=day]').val();
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'event_list' == type ) {
                     args.title = $div.find('[name=title]').val();
@@ -931,6 +950,7 @@ class SP_AJAX {
                     args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
                     args.date = $div.find('[name=date]').val();
+                    args.day = $div.find('[name=day]').val();
                     args.number = $div.find('[name=number]').val();
                     args.order = $div.find('[name=order]').val();
                     args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
@@ -943,6 +963,7 @@ class SP_AJAX {
                     args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
                     args.date = $div.find('[name=date]').val();
+                    args.day = $div.find('[name=day]').val();
                     args.number = $div.find('[name=number]').val();
                     args.orderby = $div.find('[name=orderby]').val();
                     args.order = $div.find('[name=order]').val();
