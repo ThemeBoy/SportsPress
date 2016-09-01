@@ -117,6 +117,7 @@
 .post-type-sp_calendar .fixed .column-sp_season,
 .post-type-sp_event .fixed .column-sp_venue,
 .post-type-sp_calendar .fixed .column-sp_venue,
+.post-type-sp_event .fixed .column-sp_day,
 .post-type-sp_player .fixed .column-sp_position {
 	width: 10%;
 }
