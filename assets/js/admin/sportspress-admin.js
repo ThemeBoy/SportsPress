@@ -220,7 +220,7 @@ jQuery(document).ready(function($){
 			if(event.keyCode == 40){
 				row += 1;
 			}
-			$el.closest("tbody").find("tr:nth-child("+row+") td:nth-child("+col+") input:text").focus();
+			$el.closest("tbody").find("tr:nth-child("+row+") td:nth-child("+col+") input:text").first().focus();
 		}
 	});
 

@@ -351,8 +351,8 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 
 				array(
-					'title'     => __( 'Players', 'sportspress' ),
-					'desc' 		=> __( 'Display squad numbers', 'sportspress' ),
+					'title'     => __( 'Display', 'sportspress' ),
+					'desc' 		=> __( 'Squad Number', 'sportspress' ),
 					'id' 		=> 'sportspress_event_show_player_numbers',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
@@ -360,11 +360,19 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 				
 				array(
-					'desc' 		=> __( 'Display positions', 'sportspress' ),
+					'desc' 		=> __( 'Position', 'sportspress' ),
 					'id' 		=> 'sportspress_event_show_position',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
 					'checkboxgroup'		=> '',
+				),
+				
+				array(
+					'desc' 		=> __( 'Time', 'sportspress' ),
+					'id' 		=> 'sportspress_event_performance_show_time',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'end',
 				),
 
 				array(

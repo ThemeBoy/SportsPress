@@ -164,9 +164,46 @@ class SP_Event extends SP_Custom_Post{
 			if ( 'no' == get_option( 'sportspress_event_show_player_numbers', 'yes' ) ):
 				unset( $labels['number'] );
 			endif;
+
+			if ( 'yes' == get_option( 'sportspress_event_performance_show_time', 'yes' ) ):
+				$timeline = $this->timeline();
+				if ( ! empty( $timeline ) ):
+					foreach ( $performance as $team => $players ):
+
+						// Get team timeline
+						$team_timeline = sp_array_value( $timeline, $team, array() );
+						if ( empty( $team_timeline ) ) continue;
+
+						foreach ( $players as $player => $player_performance ):
+							if ( ! $player_id ) continue;
+
+							// Get player timeline
+							$player_timeline = sp_array_value( $team_timeline, $player, array() );
+							if ( empty( $player_timeline ) ) continue;
+
+							foreach ( $player_performance as $performance_key => $performance_value ):
+
+								// Get performance times
+								$times = sp_array_value( $player_timeline, $performance_key, array() );
+								$times = array_filter( $times );
+								if ( empty( $times ) ) continue;
+
+								$performance[ $team ][ $player ][ $performance_key ] .= ' (' . implode( '\', ', $times ) . '\')';
+							endforeach;
+						endforeach;
+					endforeach;
+				endif;
+			endif;
+
+			// Add labels to box score
 			$performance[0] = $labels;
+			
 			return apply_filters( 'sportspress_get_event_performance', $performance );
 		endif;
+	}
+	
+	public function timeline( $admin = false) {
+		return (array) get_post_meta( $this->ID, 'sp_timeline', true );
 	}
 
 	public function main_results() {
