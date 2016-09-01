@@ -72,12 +72,21 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'type' 		=> 'checkbox',
 						'checkboxgroup'		=> 'start',
 					),
+
 					array(
 						'desc' 		=> __( 'Time', 'sportspress' ),
 						'id' 		=> 'sportspress_event_show_time',
 						'default'	=> 'yes',
 						'type' 		=> 'checkbox',
 						'checkboxgroup'		=> '',
+					),
+
+					array(
+						'desc' 		=> __( 'Match Day', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_day',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> 'end',
 					),
 				) ),
 
@@ -294,109 +303,115 @@ class SP_Settings_Events extends SP_Settings_Page {
 				array( 'title' => __( 'Box Score', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'performance_options' ),
 			),
 
-			apply_filters( 'sportspress_performance_options', array(
+			apply_filters( 'sportspress_performance_options', array_merge(
 				array(
-					'title'     => __( 'Rows', 'sportspress' ),
-					'desc' 		=> __( 'Staff', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_staff',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> 'start',
-				),
+					array(
+						'title'     => __( 'Rows', 'sportspress' ),
+						'desc' 		=> __( 'Staff', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_staff',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> 'start',
+					),
 
-				array(
-					'desc' 		=> __( 'Players', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_players',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'	=> '',
-				),
+					array(
+						'desc' 		=> __( 'Players', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_players',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'	=> '',
+					),
 
-				array(
-					'desc' 		=> __( 'Total', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_total',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> 'end',
-				),
+					array(
+						'desc' 		=> __( 'Total', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_total',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> 'end',
+					),
 
-				array(
-					'title' 	=> __( 'Columns', 'sportspress' ),
-					'id' 		=> 'sportspress_event_performance_columns',
-					'default'	=> 'auto',
-					'type' 		=> 'radio',
-					'options' => array(
-						'auto'		=> __( 'Auto', 'sportspress' ),
-						'manual'	=> __( 'Manual', 'sportspress' ),
+					array(
+						'title' 	=> __( 'Columns', 'sportspress' ),
+						'id' 		=> 'sportspress_event_performance_columns',
+						'default'	=> 'auto',
+						'type' 		=> 'radio',
+						'options' => array(
+							'auto'		=> __( 'Auto', 'sportspress' ),
+							'manual'	=> __( 'Manual', 'sportspress' ),
+						),
+					),
+
+					array(
+						'title' 	=> __( 'Mode', 'sportspress' ),
+						'id' 		=> 'sportspress_event_performance_mode',
+						'default'	=> 'values',
+						'type' 		=> 'radio',
+						'options' => array(
+							'values'	=> __( 'Values', 'sportspress' ),
+							'icons'		=> __( 'Icons', 'sportspress' ),
+						),
+					),
+
+					array(
+						'title'     => __( 'Positions', 'sportspress' ),
+						'desc' 		=> __( 'Top-level only', 'sportspress' ),
+						'id' 		=> 'sportspress_event_hide_child_positions',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
 					),
 				),
 
-				array(
-					'title' 	=> __( 'Mode', 'sportspress' ),
-					'id' 		=> 'sportspress_event_performance_mode',
-					'default'	=> 'values',
-					'type' 		=> 'radio',
-					'options' => array(
-						'values'	=> __( 'Values', 'sportspress' ),
-						'icons'		=> __( 'Icons', 'sportspress' ),
+				apply_filters( 'sportspress_event_performance_display_options', array(
+					array(
+						'title'     => __( 'Display', 'sportspress' ),
+						'desc' 		=> __( 'Squad Number', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_player_numbers',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup' 	=> 'start',
 					),
-				),
-
-				array(
-					'title'     => __( 'Positions', 'sportspress' ),
-					'desc' 		=> __( 'Top-level only', 'sportspress' ),
-					'id' 		=> 'sportspress_event_hide_child_positions',
-					'default'	=> 'no',
-					'type' 		=> 'checkbox',
-				),
-
-				array(
-					'title'     => __( 'Display', 'sportspress' ),
-					'desc' 		=> __( 'Squad Number', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_player_numbers',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup' 	=> 'start',
-				),
-				
-				array(
-					'desc' 		=> __( 'Position', 'sportspress' ),
-					'id' 		=> 'sportspress_event_show_position',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> '',
-				),
-				
-				array(
-					'desc' 		=> __( 'Time', 'sportspress' ),
-					'id' 		=> 'sportspress_event_performance_show_time',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-					'checkboxgroup'		=> 'end',
-				),
-
-				array(
-					'title' 	=> __( 'Performance', 'sportspress' ),
-					'id' 		=> 'sportspress_event_performance_sections',
-					'default'	=> -1,
-					'type' 		=> 'radio',
-					'options' => array(
-						-1	  => __( 'Combined', 'sportspress' ),
-						0	  => __( 'Offense', 'sportspress' ) . ' &rarr; ' . __( 'Defense', 'sportspress' ),
-						1	  => __( 'Defense', 'sportspress' ) . ' &rarr; ' . __( 'Offense', 'sportspress' ),
+					
+					array(
+						'desc' 		=> __( 'Position', 'sportspress' ),
+						'id' 		=> 'sportspress_event_show_position',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> '',
 					),
-				),
+					
+					array(
+						'desc' 		=> __( 'Time', 'sportspress' ),
+						'id' 		=> 'sportspress_event_performance_show_time',
+						'default'	=> 'yes',
+						'type' 		=> 'checkbox',
+						'checkboxgroup'		=> 'end',
+					),
+				) ),
 
 				array(
-					'title' 	=> __( 'Total', 'sportspress' ),
-					'id' 		=> 'sportspress_event_total_performance',
-					'default'	=> 'all',
-					'type' 		=> 'radio',
-					'options' => array(
-						'all'		=> __( 'All', 'sportspress' ),
-						'primary'	=> __( 'Primary', 'sportspress' ),
+					array(
+						'title' 	=> __( 'Performance', 'sportspress' ),
+						'id' 		=> 'sportspress_event_performance_sections',
+						'default'	=> -1,
+						'type' 		=> 'radio',
+						'options' => array(
+							-1	  => __( 'Combined', 'sportspress' ),
+							0	  => __( 'Offense', 'sportspress' ) . ' &rarr; ' . __( 'Defense', 'sportspress' ),
+							1	  => __( 'Defense', 'sportspress' ) . ' &rarr; ' . __( 'Offense', 'sportspress' ),
+						),
 					),
-				),
+
+					array(
+						'title' 	=> __( 'Total', 'sportspress' ),
+						'id' 		=> 'sportspress_event_total_performance',
+						'default'	=> 'all',
+						'type' 		=> 'radio',
+						'options' => array(
+							'all'		=> __( 'All', 'sportspress' ),
+							'primary'	=> __( 'Primary', 'sportspress' ),
+						),
+					),
+				)
 			) ),
 
 			array(

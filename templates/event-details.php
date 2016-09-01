@@ -38,6 +38,13 @@ foreach ( $taxonomies as $taxonomy => $post_type ):
 	endif;
 endforeach;
 
+if ( 'yes' === get_option( 'sportspress_event_show_day', 'yes' ) ) {
+	$day = get_post_meta( $id, 'sp_day', true );
+	if ( '' !== $day ) {
+		$data[ __( 'Match Day', 'sportspress' ) ] = $day;
+	}
+}
+
 $data = apply_filters( 'sportspress_event_details', $data, $id );
 
 if ( ! sizeof( $data ) ) return;
