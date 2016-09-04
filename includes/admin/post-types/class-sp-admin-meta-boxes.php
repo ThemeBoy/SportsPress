@@ -76,6 +76,13 @@ class SP_Admin_Meta_Boxes {
 					'context' => 'normal',
 					'priority' => 'high',
 				),
+				'examples' => array(
+					'title' => __( 'Examples', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Column_Equation_Examples::save',
+					'output' => 'SP_Meta_Box_Column_Equation_Examples::output',
+					'context' => 'normal',
+					'priority' => 'low',
+				),
 			),
 			'sp_metric' => array(
 				'details' => array(
@@ -100,6 +107,13 @@ class SP_Admin_Meta_Boxes {
 					'output' => 'SP_Meta_Box_Statistic_Equation::output',
 					'context' => 'normal',
 					'priority' => 'high',
+				),
+				'examples' => array(
+					'title' => __( 'Examples', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Statistic_Equation_Examples::save',
+					'output' => 'SP_Meta_Box_Statistic_Equation_Examples::output',
+					'context' => 'normal',
+					'priority' => 'low',
 				),
 			),
 			'sp_event' => array(
