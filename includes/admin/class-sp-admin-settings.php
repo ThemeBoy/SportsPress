@@ -42,6 +42,13 @@ class SP_Admin_Settings {
 			$settings = apply_filters( 'sportspress_get_settings_pages', $settings );
 
 			$settings[] = include( 'settings/class-sp-settings-text.php' );
+
+			if (
+				( ! is_multisite() && current_user_can( 'manage_options' ) ) ||
+				( is_multisite() && current_user_can( 'manage_network_options' ) )
+			) {
+				$settings[] = include( 'settings/class-sp-settings-licenses.php' );
+			}
 			
 			if ( current_user_can( 'manage_options' ) ) $settings[] = include( 'settings/class-sp-settings-status.php' );
 

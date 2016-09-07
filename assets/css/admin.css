@@ -856,6 +856,17 @@ table.sp-modules-table .sp-module-unavailable span .dashicons {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 }
 
+/* Licenses */
+
+.sp-licenses-wrapper {
+	max-width: 750px;
+}
+
+.sp-licenses-table th,
+.sp-licenses-table input {
+	vertical-align: middle;
+}
+
 #debug-report {
 	display: none;
 	margin: 10px 0;
