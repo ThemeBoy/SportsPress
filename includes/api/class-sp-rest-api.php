@@ -37,6 +37,8 @@ class SP_REST_API {
 	 * Create REST routes.
 	 */
 	public static function create_routes() {
+		if ( ! class_exists( 'WP_REST_Posts_Controller' ) ) return;
+
 		if ( ! class_exists( 'SP_REST_Posts_Controller' ) ) {
 			require_once dirname( __FILE__ ) . '/class-sp-rest-posts-controller.php';
 		}
@@ -60,6 +62,8 @@ class SP_REST_API {
 	 * Register REST fields.
 	 */
 	public static function register_fields() {
+		if ( ! function_exists( 'register_rest_field' ) ) return;
+		
 		register_rest_field( 'sp_event',
 			'teams',
 			array(
