@@ -53,44 +53,46 @@ class SP_Settings_Licenses extends SP_Settings_Page {
 	public function output() {
 		?>
 		<?php wp_nonce_field( 'sp_license_nonce', 'sp_license_nonce' ); ?>
-		<div class="sp-licenses-wrapper">
-			<?php
-			foreach ( $this->licenses as $id => $license ) {
-				$key 	= get_site_option( 'sportspress_' . $id . '_license_key' );
-				$key 	= trim( $key );
-				$status = get_site_option( 'sportspress_' . $id . '_license_status', false );
-				?>
-				<div class="sp-settings-section sp-settings-section-license_options">
-					<h3><?php echo $license['name']; ?></h3>
-					<table class="form-table sp-licenses-table">
-						<tbody>
-							<tr>
-								<th scope="row" class="titledesc">
-									<?php _e( 'License Key', 'sportspress' ); ?>
-									<?php if ( $key && $status && 'valid' == $status ) { ?>
-										<i class="dashicons dashicons-yes sp-desc-active"></i>
-									<?php } else { ?>
-										<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Enter the license key from your purchase receipt.', 'sportspress' ); ?>"></i>
-									<?php } ?>
-								</th>
-								<td>
-									<?php if ( false !== $status && 'valid' == $status ) { ?>
-										<p>
-											<input type="text" name="sp_license_key_<?php echo $id; ?>" size="40" value="<?php esc_attr_e( $key ); ?>" readonly="readonly">
-											<input name="sp_license_deactivate_<?php echo $id; ?>" class="button button-secondary button-small" type="submit" value="<?php esc_attr_e( 'Deactivate', 'sportspress' ); ?>" />
-										</p>
-									<?php } else { ?>
-										<p>
-											<input type="text" name="sp_license_key_<?php echo $id; ?>" size="40">
-											<input name="sp_license_activate_<?php echo $id; ?>" class="button button-primary button-small" type="submit" value="<?php esc_attr_e( 'Activate', 'sportspress' ); ?>" />
-										</p>
-									<?php } ?>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			<?php } ?>
+		<div class="sp-modules-wrapper">
+			<div class="sp-modules-main">
+				<?php
+				foreach ( $this->licenses as $id => $license ) {
+					$key 	= get_site_option( 'sportspress_' . $id . '_license_key' );
+					$key 	= trim( $key );
+					$status = get_site_option( 'sportspress_' . $id . '_license_status', false );
+					?>
+					<div class="sp-settings-section sp-settings-section-license_options">
+						<h3><?php echo $license['name']; ?></h3>
+						<table class="form-table sp-licenses-table">
+							<tbody>
+								<tr>
+									<th scope="row" class="titledesc">
+										<?php _e( 'License Key', 'sportspress' ); ?>
+										<?php if ( $key && $status && 'valid' == $status ) { ?>
+											<i class="dashicons dashicons-yes sp-desc-active"></i>
+										<?php } else { ?>
+											<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Enter the license key from your purchase receipt.', 'sportspress' ); ?>"></i>
+										<?php } ?>
+									</th>
+									<td>
+										<?php if ( false !== $status && 'valid' == $status ) { ?>
+											<p>
+												<input type="text" name="sp_license_key_<?php echo $id; ?>" size="40" value="<?php esc_attr_e( $key ); ?>" readonly="readonly">
+												<input name="sp_license_deactivate_<?php echo $id; ?>" class="button button-secondary button-small" type="submit" value="<?php esc_attr_e( 'Deactivate', 'sportspress' ); ?>" />
+											</p>
+										<?php } else { ?>
+											<p>
+												<input type="text" name="sp_license_key_<?php echo $id; ?>" size="40">
+												<input name="sp_license_activate_<?php echo $id; ?>" class="button button-primary button-small" type="submit" value="<?php esc_attr_e( 'Activate', 'sportspress' ); ?>" />
+											</p>
+										<?php } ?>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				<?php } ?>
+			</div>
 		</div>
 		<?php
 
