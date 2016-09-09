@@ -74,10 +74,3 @@
 .sp-equation-formula .button .remove:hover {
 	color: #d00;
 }
-
-.sp-equation-examples .button {
-	color: #555 !important;
-	border-color: #ccc !important;
-	-webkit-box-shadow: 0 1px 0 #ccc !important;
-	box-shadow: 0 1px 0 #ccc !important;
-}
