@@ -157,8 +157,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							'http://tboy.co/installation' => __( 'Getting Started', 'sportspress' ),
 							'http://tboy.co/manuals' => __( 'Manuals', 'sportspress' ),
 							'http://tboy.co/videos' => __( 'Videos', 'sportspress' ),
-							'http://tboy.co/developers' => __( 'Developers', 'sportspress' ),
-							'http://tboy.co/integration' => __( 'Theme Integration Guide', 'sportspress' ),
 						),
 					),
 					'help' => array(
@@ -177,6 +175,15 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							'http://tboy.co/facebook' => __( 'Facebook', 'sportspress' ),
 							'http://tboy.co/youtube' => __( 'YouTube', 'sportspress' ),
 							'http://tboy.co/gplus' => __( 'Google+', 'sportspress' ),
+						),
+					),
+					'developers' => array(
+						'icon' => 'dashicons dashicons-editor-code',
+						'label' => __( 'Developers', 'sportspress' ),
+						'links' => array(
+							'http://tboy.co/developers' => __( 'Reference', 'sportspress' ),
+							'http://tboy.co/slack' => __( 'Slack', 'sportspress' ),
+							'http://tboy.co/github' => __( 'GitHub', 'sportspress' ),
 						),
 					),
 				);
@@ -261,8 +268,10 @@ class SP_Settings_Modules extends SP_Settings_Page {
 				</table>
 				<?php } ?>
 
-			    <input name="save" class="button-primary" type="submit" value="<?php _e( 'Save Changes', 'sportspress' ); ?>" />
-			    <?php $GLOBALS['hide_save_button'] = true; ?>
+				<p class="submit">
+			    	<input name="save" class="button button-primary" type="submit" value="<?php _e( 'Save Changes', 'sportspress' ); ?>" />
+			    	<?php $GLOBALS['hide_save_button'] = true; ?>
+			    </p>
 			</div>
 		</div>
 
