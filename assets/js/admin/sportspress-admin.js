@@ -775,4 +775,33 @@ jQuery(document).ready(function($){
 			}
 		});
 	});
+
+	// Event status selector
+	$('.sp-edit-event-status').click(function(e) {
+		e.preventDefault();
+		$select = $(this).siblings('.sp-event-status-select');
+		if ( $select.is(':hidden') ) {
+			$select.slideDown( 'fast', function() {
+				$select.find( 'input[type="radio"]' ).first().focus();
+			} );
+			$(this).hide();
+		}
+	});
+
+	$('.sp-save-event-status').click(function(e) {
+		e.preventDefault();
+		$select = $(this).closest('.sp-event-status-select');
+		$input = $select.find('input[name=sp_status]:checked');
+		val = $input.val();
+		label = $input.data('sp-event-status');
+		$select.slideUp('fast').siblings('.sp-edit-event-status').show().siblings('.sp-event-status').find('.sp-event-status-display').data('sp-event-status', val).html(label);
+	});
+
+	$('.sp-cancel-event-status').click(function(e) {
+		e.preventDefault();
+		$select = $(this).closest('.sp-event-status-select');
+		val = $select.siblings('.sp-event-status').find('.sp-event-status-display').data('sp-event-status');
+		$select.find('input[value='+val+']').attr('checked', true);
+		$select.slideUp('fast').siblings('.sp-edit-event-status').show();
+	});
 });

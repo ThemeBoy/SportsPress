@@ -53,6 +53,27 @@
 	content: "\f453";
 }
 
+.post-type-sp_event .sp-event-status:before {
+	color: #82878c;
+	font: 400 20px/1 dashicons;
+	speak: none;
+	display: inline-block;
+	padding: 0 2px 0 0;
+	top: 0;
+	left: -1px;
+	position: relative;
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none!important;
+	content: "\f469";
+}
+
+.post-type-sp_event .sp-event-status-select {
+	line-height: 1.5em;
+	margin-top: 3px;
+}
+
 .sp-link:before {
 	font: normal 20px/1 dashicons;
 	speak: none;
