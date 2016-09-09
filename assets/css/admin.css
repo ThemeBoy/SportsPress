@@ -132,6 +132,7 @@
 	width: 6%;
 }
 
+.post-type-sp_event .fixed .column-sp_time,
 .post-type-sp_event .fixed .column-sp_league,
 .post-type-sp_calendar .fixed .column-sp_league,
 .post-type-sp_event .fixed .column-sp_season,
