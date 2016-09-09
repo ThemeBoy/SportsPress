@@ -24,7 +24,7 @@ if ( 'yes' === get_option( 'sportspress_event_show_date', 'yes' ) ) {
 
 if ( 'yes' === get_option( 'sportspress_event_show_time', 'yes' ) ) {
 	$time = get_the_time( get_option('time_format'), $id );
-	$data[ __( 'Time', 'sportspress' ) ] = $time;
+	$data[ __( 'Time', 'sportspress' ) ] = apply_filters( 'sportspress_event_time', $time, $id );
 }
 
 $taxonomies = apply_filters( 'sportspress_event_taxonomies', array( 'sp_league' => null, 'sp_season' => null ) );

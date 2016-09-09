@@ -191,7 +191,7 @@ if ( $ak_post_titles ) {
 	foreach ( (array) $ak_post_titles as $ak_post_title ) {
 
 			/** This filter is documented in wp-includes/post-template.php */
-			$post_title = esc_attr( apply_filters( 'the_title', $ak_post_title->post_title, $ak_post_title->ID ) . ' @ ' . date_i18n( get_option( 'time_format' ), strtotime( $ak_post_title->post_date ) ) );
+			$post_title = esc_attr( apply_filters( 'the_title', $ak_post_title->post_title, $ak_post_title->ID ) . ' @ ' . apply_filters( 'sportspress_event_time', date_i18n( get_option( 'time_format' ), strtotime( $ak_post_title->post_date ) ), $ak_post_title->ID ) );
 
 			if ( empty($ak_titles_for_day['day_'.$ak_post_title->dom]) )
 				$ak_titles_for_day['day_'.$ak_post_title->dom] = '';

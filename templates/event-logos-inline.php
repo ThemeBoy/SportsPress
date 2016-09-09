@@ -53,7 +53,7 @@ if ( ! empty( $team_logos ) ):
 
 	// Assign delimiter
 	if ( $show_time && sizeof( $teams ) <= 2 ) {
-		$delimiter = '<strong class="sp-event-logos-time sp-team-result">' . get_the_time( get_option('time_format'), $id ) . '</strong>';
+		$delimiter = '<strong class="sp-event-logos-time sp-team-result">' . apply_filters( 'sportspress_event_time', get_the_time( get_option('time_format'), $id ), $id ) . '</strong>';
 	} else {
 		$delimiter = get_option( 'sportspress_event_teams_delimiter', 'vs' );
 	}

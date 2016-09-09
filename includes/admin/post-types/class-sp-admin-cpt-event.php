@@ -144,7 +144,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				endif;
 				break;
 			case 'sp_time':
-				echo get_post_time( 'H:i', false, $post_id, true );
+				echo apply_filters( 'sportspress_event_time_admin', get_post_time( 'H:i', false, $post_id, true ) );
 				break;
 			case 'sp_team':
 				$teams = (array)get_post_meta( $post_id, 'sp_team', false );

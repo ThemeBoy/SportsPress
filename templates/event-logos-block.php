@@ -50,7 +50,7 @@
 						if ( $show_time ) {
 							?>
 							<h5 class="sp-event-results">
-								<?php echo '<span class="sp-result">' . apply_filters( 'sportspress_event_blocks_team_result_or_time', sp_get_time( $id ), $id ) . '</span>'; ?>
+								<?php echo '<span class="sp-result">' . apply_filters( 'sportspress_event_time', sp_get_time( $id ), $id ) . '</span>'; ?>
 							</h5>
 							<span class="sp-event-status">
 								<?php _e( 'Preview', 'sportspress' ); ?>

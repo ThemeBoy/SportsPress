@@ -36,6 +36,10 @@ class SportsPress_Event_Status {
 		add_action( 'init', array( $this, 'get_statuses' ) );
 		add_action( 'post_submitbox_misc_actions', array( $this, 'section' ) );
 		add_action( 'sportspress_process_sp_event_meta', array( $this, 'save' ), 10, 1 );
+		add_filter( 'sportspress_event_time', array( $this, 'filter' ), 10, 2 );
+		add_filter( 'sportspress_event_time_admin', array( $this, 'filter' ), 10, 2 );
+		add_filter( 'sportspress_main_results_or_time', array( $this, 'filter_array' ), 10, 2 );
+		add_filter( 'sportspress_event_blocks_team_result_or_time', array( $this, 'filter_array' ), 10, 2 );
 	}
 
 	/**
@@ -58,9 +62,9 @@ class SportsPress_Event_Status {
 	public function get_statuses() {
 		$this->statuses = apply_filters( 'sportspress_event_statuses', array(
 			'ok' => __( 'On time', 'sportspress' ),
-			'tbd' => __( 'To be determined', 'sportspress' ) . ' (' . __( 'TBD', 'sportspress' ) . ')',
-			'cancelled' => __( 'Cancelled', 'sportspress' ),
+			'tbd' => __( 'TBD', 'sportspress' ),
 			'postponed' => __( 'Postponed', 'sportspress' ),
+			'cancelled' => __( 'Cancelled', 'sportspress' ),
 		) );
 	}
 
@@ -84,12 +88,6 @@ class SportsPress_Event_Status {
 					<a href="#" class="sp-cancel-event-status hide-if-no-js button-cancel">Cancel</a>
 				</p>
 			</div>
-			<?php if ( false ) { ?>
-			<label>
-				<input type="checkbox" name="sp_tbd" value="1" <?php checked( $checked ); ?>></input>
-				<?php _e( 'To be determined', 'sportspress' ); ?> (<?php _e( 'TBD', 'sportspress' ); ?>)
-			</label>
-			<?php } ?>
 		</div>
 		<?php
 	}
@@ -99,6 +97,26 @@ class SportsPress_Event_Status {
 	 */
 	public function save( $post_id ) {
 		update_post_meta( $post_id, 'sp_status', sp_array_value( $_POST, 'sp_status', 'ok' ) );
+	}
+
+	/**
+	 * Event time filter.
+	 */
+	public function filter( $time, $post_id = 0 ) {
+		if ( ! $post_id ) $post_id = get_the_ID();
+		$status = get_post_meta( $post_id, 'sp_status', true );
+		if ( ! $status || 'ok' === $status || ! array_key_exists( $status, $this->statuses ) ) return $time;
+		return $this->statuses[ $status ];
+	}
+
+	/**
+	 * Event time array filter.
+	 */
+	public function filter_array( $array, $post_id = 0 ) {
+		if ( ! $post_id ) $post_id = get_the_ID();
+		$status = get_post_meta( $post_id, 'sp_status', true );
+		if ( ! $status || 'ok' === $status || ! array_key_exists( $status, $this->statuses ) ) return $array;
+		return array( $this->statuses[ $status ] );
 	}
 }
 
