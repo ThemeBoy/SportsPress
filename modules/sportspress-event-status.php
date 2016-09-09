@@ -33,9 +33,7 @@ class SportsPress_Event_Status {
 		// Define constants
 		$this->define_constants();
 
-		// Define statuses
-		$this->get_statuses();
-
+		add_action( 'init', array( $this, 'get_statuses' ) );
 		add_action( 'post_submitbox_misc_actions', array( $this, 'section' ) );
 		add_action( 'sportspress_process_sp_event_meta', array( $this, 'save' ), 10, 1 );
 	}
@@ -57,7 +55,7 @@ class SportsPress_Event_Status {
 	/**
 	 * Define statuses.
 	*/
-	private function get_statuses() {
+	public function get_statuses() {
 		$this->statuses = apply_filters( 'sportspress_event_statuses', array(
 			'ok' => __( 'On time', 'sportspress' ),
 			'tbd' => __( 'To be determined', 'sportspress' ) . ' (' . __( 'TBD', 'sportspress' ) . ')',
