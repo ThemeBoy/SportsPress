@@ -5,6 +5,7 @@
       <key name="Article"/>
       <key name="Birthday"/>
       <key name="Box Score"/>
+      <key name="Cancelled"/>
       <key name="Competition"/>
       <key name="Current Team"/>
       <key name="Current Teams"/>
@@ -25,6 +26,7 @@
       <key name="Player"/>
       <key name="Pos"/>
       <key name="Position"/>
+      <key name="Postponed"/>
       <key name="Preview"/>
       <key name="Rank"/>
       <key name="Recap"/>
@@ -32,6 +34,7 @@
       <key name="Sponsors"/>
       <key name="Staff"/>
       <key name="Substitutes"/>
+      <key name="TBD"/>
       <key name="Team"/>
       <key name="Teams"/>
       <key name="Time"/>
