@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends, golf
 Requires at least: 3.8
 Tested up to: 4.6
-Stable tag: 2.0.17
+Stable tag: 2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,32 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.1 =
+* Feature - New simplified fixtures importer compatible with [LeagueLobster](http://tboy.co/leaguelobster).
+* Feature - Add match day field to events.
+* Feature - Add box score minutes to events.
+* Feature - Add option to display full time in event details.
+* Feature - Add inline and block option to event logos.
+* Feature - Add squad number and name option to player details.
+* Feature - Add tab options to layout designer.
+* Feature - Add option to display player and staff dropdowns in profiles.
+* Feature - Add option to select TBA, postponed, and cancelled event status.
+* Feature - Licenses tab for third-party extensions.
+* Tweak - Sort teams alphabetically in tournament edit screen.
+* Tweak - Move match stats option to box score section.
+* Tweak - Get player data only when needed.
+* Tweak - Add capabilities to taxonomies.
+* Tweak - Display tutorials in main menu if user role is not admin or league manager.
+* Tweak - Use contextual strings for featured images.
+* Tweak - Enable meta query vars in REST API.
+* Tweak - Adopt new tab class names in admin.
+* Tweak - Inherit text color for event logo team text.
+* Tweak - New developers section on modules page with link to join [Slack community](http://tboy.co/slack).
+* Fix - Team access conflict with WooCommerce checkout.
+* Fix - Taxonomy links appearing in admin for users that can't edit events.
+* Fix - Debug error on non-standard admin pages.
+* Fix - REST API notice in Jetpack.
 
 = 2.0.17 =
 * Fix - Team Access module conflict with WooCommerce during checkout.
