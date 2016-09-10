@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Display SportsPress video tutorials.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.0
+Version: 2.1
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
  * Main SportsPress Tutorials Class
  *
  * @class SportsPress_Tutorials
- * @version	2.0
+ * @version	2.1
  */
 class SportsPress_Tutorials {
 
@@ -54,7 +54,7 @@ class SportsPress_Tutorials {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_TUTORIALS_VERSION' ) )
-			define( 'SP_TUTORIALS_VERSION', '2.0' );
+			define( 'SP_TUTORIALS_VERSION', '2.1' );
 
 		if ( !defined( 'SP_TUTORIALS_URL' ) )
 			define( 'SP_TUTORIALS_URL', plugin_dir_url( __FILE__ ) );
