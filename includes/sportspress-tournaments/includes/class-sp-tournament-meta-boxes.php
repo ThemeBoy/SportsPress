@@ -268,7 +268,7 @@ class SP_Tournament_Meta_Boxes {
 				'terms' => $league_ids,
 			);
 		}
-		
+
 		// Filter by season if selected
 		$seasons = get_the_terms( $post_id, 'sp_season', 0 );
 		if ( $seasons && ! is_wp_error( $seasons ) ) {

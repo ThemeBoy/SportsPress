@@ -63,7 +63,7 @@ list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout
 					if ( sp_array_value( $cell, 'type', null ) === 'event' ):
 						echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="sp-event' . ( $col === 0 ? ' sp-first-round' : '' ) . ( $col === $cols - 1 ? ' sp-last-round' : '' ) . ' ' . sp_array_value( $cell, 'class', '' ) . '">';
 						if ( $event ) {
-							$event_name = '<span class="sp-result">' . implode( '</span>-<span class="sp-result">', sp_get_main_results_or_time( $event ) ) . '</span>';
+							$event_name = '<span class="sp-result">' . implode( '</span>-<span class="sp-result">', apply_filters( 'sportspress_main_results_or_time', sp_get_main_results_or_time( $event ), $event ) ) . '</span>';
 
 							if ( $show_logos ) {
 								$teams = sp_get_teams( $event );
