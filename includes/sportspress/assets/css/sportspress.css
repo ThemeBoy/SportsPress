@@ -216,6 +216,7 @@
 /* Event Logos */
 .sp-event-logos a {
 	text-decoration: none;
+	color: inherit;
 }
 
 .sp-event-logos img {

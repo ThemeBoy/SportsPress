@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.0.16
+ * @version     2.1
  */
 ?>
 <div class="sp-template sp-template-event-blocks sp-template-event-logos-block">

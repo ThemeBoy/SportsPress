@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Load players using Ajax to speed up the event edit screen.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.0.13
+Version: 2.1
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Lazy_Loading' ) ) :
  * Main SportsPress Lazy Loading Class
  *
  * @class SportsPress_Lazy_Loading
- * @version	2.0.13
+ * @version	2.1
  */
 class SportsPress_Lazy_Loading {
 
