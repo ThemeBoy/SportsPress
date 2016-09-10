@@ -1332,6 +1332,7 @@ function sp_get_text_options() {
 	$strings = apply_filters( 'sportspress_text', array(
 		__( 'Article', 'sportspress' ),
 		__( 'Box Score', 'sportspress' ),
+		__( 'Cancelled', 'sportspress' ),
 		__( 'Career Total', 'sportspress' ),
 		__( 'Competition', 'sportspress' ),
 		__( 'Current Team', 'sportspress' ),
@@ -1348,12 +1349,14 @@ function sp_get_text_options() {
 		__( 'Player', 'sportspress' ),
 		__( 'Pos', 'sportspress' ),
 		__( 'Position', 'sportspress' ),
+		__( 'Postponed', 'sportspress' ),
 		__( 'Preview', 'sportspress' ),
 		__( 'Rank', 'sportspress' ),
 		__( 'Recap', 'sportspress' ),
 		__( 'Results', 'sportspress' ),
 		__( 'Season', 'sportspress' ),
 		__( 'Staff', 'sportspress' ),
+		__( 'TBD', 'sportspress' ),
 		__( 'Team', 'sportspress' ),
 		__( 'Teams', 'sportspress' ),
 		__( 'Time', 'sportspress' ),
@@ -1377,7 +1380,7 @@ function sp_get_text_options() {
 function sp_review_link() {
 	?>
 	<p>
-		<a href="http://wordpress.org/support/view/plugin-reviews/sportspress#postform">
+		<a href="https://wordpress.org/support/plugin/sportspress/reviews/?rate=5#new-post">
 			<?php _e( 'Love SportsPress? Help spread the word by rating us 5★ on WordPress.org', 'sportspress' ); ?>
 		</a>
 	</p>
