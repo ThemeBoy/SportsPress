@@ -16,6 +16,7 @@ $defaults = array(
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
+	'day' => 'default',
 	'league' => null,
 	'season' => null,
 	'venue' => null,
@@ -60,6 +61,8 @@ if ( $player )
 	$calendar->player = $player;
 if ( $order != 'default' )
 	$calendar->order = $order;
+if ( $day != 'default' )
+	$calendar->day = $day;
 $data = $calendar->data();
 $usecolumns = $calendar->columns;
 $title_format = get_option( 'sportspress_event_list_title_format', 'title' );
@@ -206,7 +209,7 @@ endif;
 
 					echo '<tr class="sp-row sp-post' . ( $i % 2 == 0 ? ' alternate' : '' ) . ' sp-row-no-' . $i . '">';
 
-						$date_html = '<date>' . get_post_time( 'Y-m-d H:i:s', false, $event ) . '</date>' . get_post_time( get_option( 'date_format' ), false, $event, true );
+						$date_html = '<date>' . get_post_time( 'Y-m-d H:i:s', false, $event ) . '</date>' . apply_filters( 'sportspress_event_time', get_post_time( get_option( 'date_format' ), false, $event, true ), $event->ID );
 
 						if ( $link_events ) $date_html = '<a href="' . get_post_permalink( $event->ID, false, true ) . '">' . $date_html . '</a>';
 
@@ -224,7 +227,7 @@ endif;
 										if ( ! empty( $main_results ) ):
 											echo implode( ' - ', $main_results );
 										else:
-											echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
+											echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . apply_filters( 'sportspress_event_time', sp_get_time( $event ), $event->ID );
 										endif;
 										if ( $link_events ) echo '</a>';
 										echo '</td>';
@@ -246,7 +249,7 @@ endif;
 									if ( in_array( $time_format, array( 'separate', 'time' ) ) && sp_column_active( $usecolumns, 'time' ) ) {
 										echo '<td class="data-time">';
 										if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
-										echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
+										echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . apply_filters( 'sportspress_event_time', sp_get_time( $event ), $event->ID );
 										if ( $link_events ) echo '</a>';
 										echo '</td>';
 									}
@@ -268,7 +271,7 @@ endif;
 										if ( sp_column_active( $usecolumns, 'time' ) ) {
 											echo '<td class="data-time">';
 											if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
-											echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
+											echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . apply_filters( 'sportspress_event_time', sp_get_time( $event ), $event->ID );
 											if ( $link_events ) echo '</a>';
 											echo '</td>';
 										}
@@ -288,7 +291,7 @@ endif;
 										if ( sp_column_active( $usecolumns, 'time' ) ) {
 											echo '<td class="data-time">';
 											if ( $link_events ) echo '<a href="' . get_post_permalink( $event->ID, false, true ) . '">';
-											echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
+											echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . apply_filters( 'sportspress_event_time', sp_get_time( $event ), $event->ID );
 											if ( $link_events ) echo '</a>';
 											echo '</td>';
 										}
@@ -313,7 +316,7 @@ endif;
 											if ( ! empty( $main_results ) ):
 												echo implode( ' - ', $main_results );
 											else:
-												echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . sp_get_time( $event );
+												echo '<date>&nbsp;' . get_post_time( 'H:i:s', false, $event ) . '</date>' . apply_filters( 'sportspress_event_time', sp_get_time( $event ), $event->ID );
 											endif;
 											if ( $link_events ) echo '</a>';
 											echo '</td>';

@@ -845,7 +845,7 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 		if ( ! isset( $slug ) )
 			$slug = $meta;
 		?>
-		<div id="<?php echo $slug; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-tab-filter-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
+		<div id="<?php echo $slug; ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-tab-filter-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
 			<input type="hidden" value="0" name="<?php echo $slug; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
@@ -929,7 +929,7 @@ if ( !function_exists( 'sp_column_checklist' ) ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		?>
-		<div id="<?php echo $meta; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
+		<div id="<?php echo $meta; ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
 			<input type="hidden" value="0" name="sp_columns[]" />
 			<ul class="categorychecklist form-no-clear">
 				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
@@ -1340,6 +1340,7 @@ function sp_get_text_options() {
 		__( 'Details', 'sportspress' ),
 		__( 'Event', 'sportspress' ),
 		__( 'Fixtures', 'sportspress' ),
+		__( 'Match Day', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
 		__( 'Offense', 'sportspress' ),
 		__( 'Outcome', 'sportspress' ),
@@ -1376,7 +1377,7 @@ function sp_get_text_options() {
 function sp_review_link() {
 	?>
 	<p>
-		<a href="http://wordpress.org/support/view/plugin-reviews/sportspress#postform">
+		<a href="https://wordpress.org/support/plugin/sportspress/reviews/?rate=5#new-post">
 			<?php _e( 'Love SportsPress? Help spread the word by rating us 5★ on WordPress.org', 'sportspress' ); ?>
 		</a>
 	</p>

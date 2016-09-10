@@ -24,7 +24,7 @@ if ( 'yes' === get_option( 'sportspress_event_show_date', 'yes' ) ) {
 
 if ( 'yes' === get_option( 'sportspress_event_show_time', 'yes' ) ) {
 	$time = get_the_time( get_option('time_format'), $id );
-	$data[ __( 'Time', 'sportspress' ) ] = $time;
+	$data[ __( 'Time', 'sportspress' ) ] = apply_filters( 'sportspress_event_time', $time, $id );
 }
 
 $taxonomies = apply_filters( 'sportspress_event_taxonomies', array( 'sp_league' => null, 'sp_season' => null ) );
@@ -37,6 +37,21 @@ foreach ( $taxonomies as $taxonomy => $post_type ):
 		$data[ $obj->labels->singular_name ] = $term->name;
 	endif;
 endforeach;
+
+if ( 'yes' === get_option( 'sportspress_event_show_day', 'yes' ) ) {
+	$day = get_post_meta( $id, 'sp_day', true );
+	if ( '' !== $day ) {
+		$data[ __( 'Match Day', 'sportspress' ) ] = $day;
+	}
+}
+
+if ( 'yes' === get_option( 'sportspress_event_show_full_time', 'yes' ) ) {
+	$full_time = get_post_meta( $id, 'sp_minutes', true );
+	if ( '' === $full_time ) {
+		$full_time = get_option( 'sportspress_minutes', 90 );
+	}
+	$data[ __( 'Full Time', 'sportspress' ) ] = $full_time . '\'';
+}
 
 $data = apply_filters( 'sportspress_event_details', $data, $id );
 

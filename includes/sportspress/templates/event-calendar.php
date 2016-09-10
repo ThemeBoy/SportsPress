@@ -17,6 +17,7 @@ $defaults = array(
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
+	'day' => 'default',
 	'league' => null,
 	'season' => null,
 	'venue' => null,
@@ -39,6 +40,8 @@ if ( $date_from != 'default' )
 	$calendar->from = $date_from;
 if ( $date_to != 'default' )
 	$calendar->to = $date_to;
+if ( $day != 'default' )
+	$calendar->day = $day;
 if ( $league )
 	$calendar->league = $league;
 if ( $season )
@@ -188,7 +191,7 @@ if ( $ak_post_titles ) {
 	foreach ( (array) $ak_post_titles as $ak_post_title ) {
 
 			/** This filter is documented in wp-includes/post-template.php */
-			$post_title = esc_attr( apply_filters( 'the_title', $ak_post_title->post_title, $ak_post_title->ID ) . ' @ ' . date_i18n( get_option( 'time_format' ), strtotime( $ak_post_title->post_date ) ) );
+			$post_title = esc_attr( apply_filters( 'the_title', $ak_post_title->post_title, $ak_post_title->ID ) . ' @ ' . apply_filters( 'sportspress_event_time', date_i18n( get_option( 'time_format' ), strtotime( $ak_post_title->post_date ) ), $ak_post_title->ID ) );
 
 			if ( empty($ak_titles_for_day['day_'.$ak_post_title->dom]) )
 				$ak_titles_for_day['day_'.$ak_post_title->dom] = '';

@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Assign users to a specific team and limit their access to data related to that team.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.0.9
+Version: 2.0.17
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Team_Access' ) ) :
  * Main SportsPress Team Access Class
  *
  * @class SportsPress_Team_Access
- * @version	2.0.9
+ * @version	2.0.17
  */
 class SportsPress_Team_Access {
 
@@ -44,7 +44,7 @@ class SportsPress_Team_Access {
 	 */
 	private function define_constants() {
 		if ( !defined( 'SP_TEAM_ACCESS_VERSION' ) )
-			define( 'SP_TEAM_ACCESS_VERSION', '2.0.9' );
+			define( 'SP_TEAM_ACCESS_VERSION', '2.0.17' );
 
 		if ( !defined( 'SP_TEAM_ACCESS_URL' ) )
 			define( 'SP_TEAM_ACCESS_URL', plugin_dir_url( __FILE__ ) );

@@ -90,6 +90,11 @@ class SP_Settings_Page {
 		}
 		
 		$templates = array_merge( array_flip( $layout ), $templates );
+
+		$slice = array_search( 'tabs', array_keys( $templates ) );
+		if ( $slice ) {
+			$templates = array_slice( $templates, 0, $slice );
+		}
 		?>
 		<tr valign="top">
 			<th>
@@ -97,8 +102,64 @@ class SP_Settings_Page {
 			</th>
 		    <td class="sp-sortable-list-container">
 		    	<p class="description"><?php _e( 'Drag each item into the order you prefer.', 'sportspress' ); ?></p>
-		    	
-		    	<ul class="sp-layout sp-sortable-list ui-sortable">
+
+		    	<ul class="sp-layout sp-sortable-list sp-connected-list ui-sortable">
+		    		<?php foreach ( $templates as $template => $details ) {
+		    			if ( ! is_array( $details ) ) continue;
+		    			$option = sp_array_value( $details, 'option', 'sportspress_' . $this->template . '_show_' . $template );
+		    			$visibility = get_option( $option, sp_array_value( $details, 'default', 'yes' ) );
+		    			?>
+			    		<li>
+							<div class="sp-item-bar sp-layout-item-bar">
+								<div class="sp-item-handle sp-layout-item-handle ui-sortable-handle">
+									<span class="sp-item-title item-title"><?php echo sp_array_value( $details, 'title', ucfirst( $template ) ); ?></span>
+									<input type="hidden" name="sportspress_<?php echo $this->template; ?>_template_order[]" value="<?php echo $template; ?>">
+								</div>
+								
+								<input type="hidden" name="sportspress_template_visibility[<?php echo $option; ?>]" value="0">
+								<input class="sp-toggle-switch" type="checkbox" name="sportspress_template_visibility[<?php echo $option; ?>]" id="<?php echo $option; ?>" value="1" <?php checked( $visibility, 'yes' ); ?>>
+								<label for="sportspress_<?php echo $this->template; ?>_show_<?php echo $template; ?>"></label>
+							</div>
+						</li>
+					<?php } ?>
+ 				</ul>
+			</td>
+		</tr>
+		<?php
+	}
+
+	/**
+	 * Tabs settings
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function tabs_setting() {
+		$templates = apply_filters( 'sportspress_' . $this->template . '_templates', $this->templates );
+		
+		$layout = get_option( 'sportspress_' . $this->template . '_template_order' );
+		if ( false === $layout ) {
+			$layout = array_keys( $templates );
+		}
+		
+		$templates = array_merge( array_flip( $layout ), $templates );
+
+		$slice = array_search( 'tabs', array_keys( $templates ) );
+		if ( $slice ) {
+			$templates = array_slice( $templates, $slice );
+		} else {
+			$templates = array();
+		}
+		?>
+		<tr valign="top">
+			<th>
+				<?php _e( 'Tabs', 'sportspress' ); ?>
+			</th>
+		    <td class="sp-sortable-list-container">
+		    	<p class="description"><?php _e( 'Drag items here to display them as tabs.', 'sportspress' ); ?></p>
+				<input type="hidden" name="sportspress_<?php echo $this->template; ?>_template_order[]" value="tabs">
+
+		    	<ul class="sp-layout sp-sortable-list sp-connected-list ui-sortable">
 		    		<?php foreach ( $templates as $template => $details ) {
 		    			if ( ! is_array( $details ) ) continue;
 		    			$option = sp_array_value( $details, 'option', 'sportspress_' . $this->template . '_show_' . $template );

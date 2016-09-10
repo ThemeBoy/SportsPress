@@ -50,7 +50,7 @@ jQuery(document).ready(function($){
 
 	// Tab switcher
 	$(".sp-tab-panel").siblings(".sp-tab-bar").find("a").click(function() {
-		$(this).closest("li").removeClass("wp-tab").addClass("wp-tab-active").siblings().removeClass("wp-tab-active").addClass("wp-tab").closest(".wp-tab-bar").siblings($(this).attr("href")).show().trigger('checkCheck').siblings(".wp-tab-panel").hide();
+		$(this).closest("li").addClass("tabs").siblings().removeClass("tabs").closest(".sp-tab-bar").siblings($(this).attr("href")).show().trigger('checkCheck').siblings(".sp-tab-panel").hide();
 		return false;
 	});
 
@@ -220,7 +220,7 @@ jQuery(document).ready(function($){
 			if(event.keyCode == 40){
 				row += 1;
 			}
-			$el.closest("tbody").find("tr:nth-child("+row+") td:nth-child("+col+") input:text").focus();
+			$el.closest("tbody").find("tr:nth-child("+row+") td:nth-child("+col+") input:text").first().focus();
 		}
 	});
 
@@ -315,7 +315,8 @@ jQuery(document).ready(function($){
 	// Sortable lists
     $( ".sp-sortable-list" ).sortable({
     	handle: ".sp-item-handle",
-		placeholder: "sp-item-placeholder"
+		placeholder: "sp-item-placeholder",
+		connectWith: ".sp-connected-list"
     });
 
 	// Autosave
@@ -773,5 +774,34 @@ jQuery(document).ready(function($){
 				$target.html("<li>" + localized_strings.no_results_found + "</li>");
 			}
 		});
+	});
+
+	// Event status selector
+	$('.sp-edit-event-status').click(function(e) {
+		e.preventDefault();
+		$select = $(this).siblings('.sp-event-status-select');
+		if ( $select.is(':hidden') ) {
+			$select.slideDown( 'fast', function() {
+				$select.find( 'input[type="radio"]' ).first().focus();
+			} );
+			$(this).hide();
+		}
+	});
+
+	$('.sp-save-event-status').click(function(e) {
+		e.preventDefault();
+		$select = $(this).closest('.sp-event-status-select');
+		$input = $select.find('input[name=sp_status]:checked');
+		val = $input.val();
+		label = $input.data('sp-event-status');
+		$select.slideUp('fast').siblings('.sp-edit-event-status').show().siblings('.sp-event-status').find('.sp-event-status-display').data('sp-event-status', val).html(label);
+	});
+
+	$('.sp-cancel-event-status').click(function(e) {
+		e.preventDefault();
+		$select = $(this).closest('.sp-event-status-select');
+		val = $select.siblings('.sp-event-status').find('.sp-event-status-display').data('sp-event-status');
+		$select.find('input[value='+val+']').attr('checked', true);
+		$select.slideUp('fast').siblings('.sp-edit-event-status').show();
 	});
 });

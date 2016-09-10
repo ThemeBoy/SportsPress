@@ -145,11 +145,129 @@ function sportspress_the_title( $title, $id = null ) {
 			if ( $number != null ):
 				$title = '<strong class="sp-player-number">' . $number . '</strong> ' . $title;
 			endif;
+			
+			if ( 'yes' === get_option( 'sportspress_player_show_selector', 'yes' ) ):
+				$league_ids = sp_get_the_term_ids( $id, 'sp_league' );
+				$season_ids = sp_get_the_term_ids( $id, 'sp_season' );
+				$team = get_post_meta( $id, 'sp_current_team', true );
+
+				$args = array(
+					'post_type' => 'sp_player',
+					'numberposts' => 500,
+					'posts_per_page' => 500,
+					'meta_key' => 'sp_number',
+					'orderby' => 'meta_value_num',
+					'order' => 'ASC',
+					'tax_query' => array(
+						'relation' => 'AND',
+					),
+				);
+
+				if ( $league_ids ):
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_league',
+						'field' => 'term_id',
+						'terms' => $league_ids
+					);
+				endif;
+
+				if ( $season_ids ):
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_season',
+						'field' => 'term_id',
+						'terms' => $season_ids
+					);
+				endif;
+
+				if ( $team && apply_filters( 'sportspress_has_teams', true ) ):
+					$args['meta_query'] = array(
+						array(
+							'key' => 'sp_team',
+							'value' => $team
+						),
+					);
+				endif;
+				
+				$players = get_posts( $args );
+				
+				$options = array();
+				
+				if ( $players && is_array( $players ) ):
+					foreach ( $players as $player ):
+						$name = $player->post_title;
+						$number = get_post_meta( $player->ID, 'sp_number', true );
+						if ( isset( $number ) && '' !== $number ):
+							$name = $number . '. ' . $name;
+						endif;
+						$options[] = '<option value="' . get_post_permalink( $player->ID ) . '" ' . selected( $player->ID, $id, false ) . '>' . $name . '</option>';
+					endforeach;
+				endif;
+
+				if ( sizeof( $options ) > 1 ):
+					$title .= '<select class="sp-profile-selector sp-player-selector sp-selector-redirect">' . implode( $options ) . '</select>';
+				endif;
+			endif;
 		elseif ( is_singular( 'sp_staff' ) ):
 			$staff = new SP_Staff( $id );
 			$role = $staff->role();
 			if ( $role ):
 				$title = '<strong class="sp-staff-role">' . $role->name . '</strong> ' . $title;
+			endif;
+			
+			if ( 'yes' === get_option( 'sportspress_staff_show_selector', 'yes' ) ):
+				$league_ids = sp_get_the_term_ids( $id, 'sp_league' );
+				$season_ids = sp_get_the_term_ids( $id, 'sp_season' );
+				$team = get_post_meta( $id, 'sp_current_team', true );
+
+				$args = array(
+					'post_type' => 'sp_staff',
+					'numberposts' => 500,
+					'posts_per_page' => 500,
+					'orderby' => 'title',
+					'order' => 'ASC',
+					'tax_query' => array(
+						'relation' => 'AND',
+					),
+				);
+
+				if ( $league_ids ):
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_league',
+						'field' => 'term_id',
+						'terms' => $league_ids
+					);
+				endif;
+
+				if ( $season_ids ):
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_season',
+						'field' => 'term_id',
+						'terms' => $season_ids
+					);
+				endif;
+
+				if ( $team && apply_filters( 'sportspress_has_teams', true ) ):
+					$args['meta_query'] = array(
+						array(
+							'key' => 'sp_team',
+							'value' => $team
+						),
+					);
+				endif;
+				
+				$staffs = get_posts( $args );
+				
+				$options = array();
+				
+				if ( $staffs && is_array( $staffs ) ):
+					foreach ( $staffs as $staff ):
+						$options[] = '<option value="' . get_post_permalink( $staff->ID ) . '" ' . selected( $staff->ID, $id, false ) . '>' . $staff->post_title . '</option>';
+					endforeach;
+				endif;
+
+				if ( sizeof( $options ) > 1 ):
+					$title .= '<select class="sp-profile-selector sp-staff-selector sp-selector-redirect">' . implode( $options ) . '</select>';
+				endif;
 			endif;
 		endif;
 	endif;
@@ -173,18 +291,6 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain = nu
 			case 'Slug':
 				$translated_text = ( in_array( $typenow, array( 'sp_column', 'sp_statistic' ) ) ) ? __( 'Key', 'sportspress' ) : __( 'Variable', 'sportspress' );
 				break;
-			case 'Featured Image':
-				$translated_text = __( 'Icon', 'sportspress' );
-				break;
-			case 'Set Featured Image':
-				$translated_text = __( 'Select Icon', 'sportspress' );
-				break;
-			case 'Set featured image':
-				$translated_text = __( 'Add icon', 'sportspress' );
-				break;
-			case 'Remove featured image':
-				$translated_text = __( 'Remove icon', 'sportspress' );
-				break;
 			endswitch;
 		endif;
 
@@ -192,40 +298,6 @@ function sportspress_gettext( $translated_text, $untranslated_text, $domain = nu
 			switch ( $untranslated_text ):
 			case 'Author':
 				$translated_text = __( 'User', 'sportspress' );
-				break;
-			endswitch;
-		endif;
-
-		if ( in_array( $typenow, array( 'sp_player', 'sp_staff' ) ) ):
-			switch ( $untranslated_text ):
-			case 'Featured Image':
-				$translated_text = __( 'Photo', 'sportspress' );
-				break;
-			case 'Set Featured Image':
-				$translated_text = __( 'Select Photo', 'sportspress' );
-				break;
-			case 'Set featured image':
-				$translated_text = __( 'Add photo', 'sportspress' );
-				break;
-			case 'Remove featured image':
-				$translated_text = __( 'Remove photo', 'sportspress' );
-				break;
-			endswitch;
-		endif;
-
-		if ( in_array( $typenow, array( 'sp_team' ) ) ):
-			switch ( $untranslated_text ):
-			case 'Featured Image':
-				$translated_text = __( 'Logo', 'sportspress' );
-				break;
-			case 'Set Featured Image':
-				$translated_text = __( 'Select Logo', 'sportspress' );
-				break;
-			case 'Set featured image':
-				$translated_text = __( 'Add logo', 'sportspress' );
-				break;
-			case 'Remove featured image':
-				$translated_text = __( 'Remove logo', 'sportspress' );
 				break;
 			endswitch;
 		endif;

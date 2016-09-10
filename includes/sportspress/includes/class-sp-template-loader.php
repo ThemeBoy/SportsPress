@@ -74,24 +74,79 @@ class SP_Template_Loader {
 		
 		$templates = apply_filters( 'sportspress_' . $type . '_templates', $templates );
 
-		ob_start();
-		
-		// Loop through templates
-		foreach ( $templates as $key => $template ) {
-			// Ignore templates that are unavailable or that have been turned off
-			if ( ! is_array( $template ) ) continue;
-			if ( ! isset( $template['option'] ) ) continue;
-			if ( 'yes' !== get_option( $template['option'], sp_array_value( $template, 'default', 'yes' ) ) ) continue;
-			
-			// Render the template
-			if ( 'content' === $key ) {
-				echo $content;
-			} else {
-				call_user_func( $template['action'] );
-			}
+		// Split templates into sections and tabs
+		$slice = array_search( 'tabs', array_keys( $templates ) );
+		if ( $slice ) {
+			$section_templates = array_slice( $templates, 0, $slice );
+			$tab_templates = array_slice( $templates, $slice );
+		} else {
+			$section_templates = $templates;
+			$tab_templates = array();
 		}
 
-		return ob_get_clean();
+		ob_start();
+		
+		// Loop through sections
+		if ( ! empty( $section_templates ) ) {
+			foreach ( $section_templates as $key => $template ) {
+				// Ignore templates that are unavailable or that have been turned off
+				if ( ! is_array( $template ) ) continue;
+				if ( ! isset( $template['option'] ) ) continue;
+				if ( 'yes' !== get_option( $template['option'], sp_array_value( $template, 'default', 'yes' ) ) ) continue;
+				
+				// Render the template
+				echo '<div class="sp-section-content sp-section-content-' . $key . '">';
+				if ( 'content' === $key ) {
+					echo $content;
+				} else {
+					call_user_func( $template['action'] );
+				}
+				echo '</div>';
+			}
+		}
+		
+		$ob = ob_get_clean();
+
+		ob_start();
+		
+		$tabs = '';
+		
+		if ( ! empty( $tab_templates ) ) {
+			$i = 0;
+
+			foreach ( $tab_templates as $key => $template ) {
+				// Ignore templates that are unavailable or that have been turned off
+				if ( ! is_array( $template ) ) continue;
+				if ( ! isset( $template['option'] ) ) continue;
+				if ( 'yes' !== get_option( $template['option'], sp_array_value( $template, 'default', 'yes' ) ) ) continue;
+				
+				// Add to tabs
+				$tabs .= '<li class="sp-tab-menu-item' . ( 0 === $i ? ' sp-tab-menu-item-active' : '' ) . '"><a href="#sp-tab-content-' . $key . '" data-sp-tab="' . $key . '">' . apply_filters( 'gettext', $template['title'], $template['title'], 'sportspress' ) . '</a></li>';
+				
+				// Render the template
+				echo '<div class="sp-tab-content sp-tab-content-' . $key . '" id="sp-tab-content-' . $key . '"' . ( 0 === $i ? ' style="display: block;"' : '' ) . '>';
+				if ( 'content' === $key ) {
+					echo $content;
+				} else {
+					call_user_func( $template['action'] );
+				}
+				echo '</div>';
+
+				$i++;
+			}
+			
+			$ob .= '<div class="sp-tab-group">';
+		
+			if ( ! empty( $tabs ) ) {
+				$ob .= '<ul class="sp-tab-menu">' . $tabs . '</ul>';
+			}
+
+			$ob .= ob_get_clean();
+			
+			$ob .= '</div>';
+		}
+		
+		return $ob;
 	}
 
 	public function event_content( $content ) {

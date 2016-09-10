@@ -53,6 +53,27 @@
 	content: "\f453";
 }
 
+.post-type-sp_event .sp-event-status:before {
+	color: #82878c;
+	font: 400 20px/1 dashicons;
+	speak: none;
+	display: inline-block;
+	padding: 0 2px 0 0;
+	top: 0;
+	left: -1px;
+	position: relative;
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none!important;
+	content: "\f469";
+}
+
+.post-type-sp_event .sp-event-status-select {
+	line-height: 1.5em;
+	margin-top: 3px;
+}
+
 .sp-link:before {
 	font: normal 20px/1 dashicons;
 	speak: none;
@@ -111,12 +132,14 @@
 	width: 6%;
 }
 
+.post-type-sp_event .fixed .column-sp_time,
 .post-type-sp_event .fixed .column-sp_league,
 .post-type-sp_calendar .fixed .column-sp_league,
 .post-type-sp_event .fixed .column-sp_season,
 .post-type-sp_calendar .fixed .column-sp_season,
 .post-type-sp_event .fixed .column-sp_venue,
 .post-type-sp_calendar .fixed .column-sp_venue,
+.post-type-sp_event .fixed .column-sp_day,
 .post-type-sp_player .fixed .column-sp_position {
 	width: 10%;
 }
@@ -640,6 +663,13 @@ table.widefat.sp-sortable-table tbody tr .icon {
 }
 
 /* Sortable lists */
+.sp-sortable-list {
+	margin: 0;
+	overflow: hidden;
+	padding-top: 5px;
+	min-height: 50px;
+}
+
 .sp-sortable-list li {
 	float: left;
 	clear: both;
@@ -711,7 +741,6 @@ table.widefat.sp-sortable-table tbody tr .icon {
 /* Modules */
 
 .sp-modules-wrapper {
-	margin-top: 20px;
 	margin-right: 300px;
 	max-width: 750px;
 }
@@ -789,7 +818,7 @@ table.widefat.sp-sortable-table tbody tr .icon {
 }
 
 .sp-modules-wrapper table {
-	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
 table.sp-modules-table th {
@@ -846,6 +875,17 @@ table.sp-modules-table .sp-module-unavailable span .dashicons {
 	-moz-opacity: 0.8;
 	opacity: 0.8;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+}
+
+/* Licenses */
+
+.sp-licenses-wrapper {
+	max-width: 750px;
+}
+
+.sp-licenses-table th,
+.sp-licenses-table input {
+	vertical-align: middle;
 }
 
 #debug-report {

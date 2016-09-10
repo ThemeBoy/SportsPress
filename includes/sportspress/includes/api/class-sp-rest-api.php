@@ -28,12 +28,17 @@ class SP_REST_API {
 		// Create REST routes
 		add_action( 'rest_api_init', array( $this, 'create_routes' ) );
 		add_action( 'rest_api_init', array( $this, 'register_fields' ), 0 );
+		
+		// Add filter for post meta query
+		add_filter( 'rest_query_vars', array( $this, 'meta_query' ) );
 	}
 
 	/**
 	 * Create REST routes.
 	 */
 	public static function create_routes() {
+		if ( ! class_exists( 'WP_REST_Posts_Controller' ) ) return;
+
 		if ( ! class_exists( 'SP_REST_Posts_Controller' ) ) {
 			require_once dirname( __FILE__ ) . '/class-sp-rest-posts-controller.php';
 		}
@@ -57,6 +62,8 @@ class SP_REST_API {
 	 * Register REST fields.
 	 */
 	public static function register_fields() {
+		if ( ! function_exists( 'register_rest_field' ) ) return;
+		
 		register_rest_field( 'sp_event',
 			'teams',
 			array(
@@ -749,6 +756,14 @@ class SP_REST_API {
 		}
 		
 		return $field_name;
+	}
+	
+	/**
+	 * Enable meta query vars
+	 */
+	public static function meta_query( $valid_vars ) {
+		$valid_vars = array_merge( $valid_vars, array( 'meta_key', 'meta_value', 'meta_query' ) );
+		return $valid_vars;
 	}
 }
 

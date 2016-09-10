@@ -163,7 +163,7 @@ class SP_Meta_Box_Calendar_Data {
 									</td>
 									<?php if ( 'separate' == $time_format ) { ?>
 										<td>
-											<?php echo get_post_time( get_option( 'time_format' ), false, $event, true ); ?>
+											<?php echo apply_filters( 'sportspress_event_time_admin', get_post_time( get_option( 'time_format' ), false, $event, true ), $event->ID ); ?>
 										</td>
 										<td>
 											<?php
@@ -180,7 +180,7 @@ class SP_Meta_Box_Calendar_Data {
 												if ( ! empty( $main_results ) ):
 													echo implode( ' - ', $main_results );
 												else:
-													echo get_post_time( get_option( 'time_format' ), false, $event, true );
+													echo apply_filters( 'sportspress_event_time_admin', get_post_time( get_option( 'time_format' ), false, $event, true ), $event->ID );
 												endif;
 											?>
 										</td>

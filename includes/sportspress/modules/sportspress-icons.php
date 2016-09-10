@@ -106,7 +106,12 @@ class SportsPress_Icons {
 		if ( null !== $icon && in_array( $icon, $this->icons ) ) {
 			$title = get_the_title( $id );
 			$color = get_post_meta( $id, 'sp_color', true );
-			$icons = str_repeat( '<i class="sp-icon-' . $icon . '" title="' . $title . '" style="color:' . $color . '"></i>' . ' ', $value );
+			preg_match( '#\((.*?)\)#', $value, $match );
+			if ( ! empty( $match ) && isset( $match[1] ) ) {
+				$icons = '<i class="sp-icon-' . $icon . '" title="' . $title . '" style="color:' . $color . '"></i> ' . $match[1] . '<br>';
+			} else {
+				$icons = str_repeat( '<i class="sp-icon-' . $icon . '" title="' . $title . '" style="color:' . $color . '"></i> ', intval( $value ) );
+			}
 		}
 		return $icons;
 	}

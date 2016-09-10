@@ -21,6 +21,7 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		$date = empty($instance['date']) ? 'default' : $instance['date'];
 		$date_from = empty($instance['date_from']) ? 'default' : $instance['date_from'];
 		$date_to = empty($instance['date_to']) ? 'default' : $instance['date_to'];
+		$day = empty($instance['day']) ? 'default' : $instance['day'];
 		$number = empty($instance['number']) ? null : $instance['number'];
 		$order = empty($instance['order']) ? 'default' : $instance['order'];
 		$show_all_events_link = empty($instance['show_all_events_link']) ? false : $instance['show_all_events_link'];
@@ -34,7 +35,7 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'event-blocks' );
 
-		sp_get_template( 'event-blocks.php', array( 'id' => $id, 'title' => $caption, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'number' => $number, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
+		sp_get_template( 'event-blocks.php', array( 'id' => $id, 'title' => $caption, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'day' => $day, 'number' => $number, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'event-blocks' );
@@ -52,6 +53,7 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		$instance['date'] = $new_instance['date'];
 		$instance['date_from'] = $new_instance['date_from'];
 		$instance['date_to'] = $new_instance['date_to'];
+		$instance['day'] = $new_instance['day'];
 		$instance['number'] = intval($new_instance['number']);
 		$instance['order'] = strip_tags($new_instance['order']);
 		$instance['show_all_events_link'] = $new_instance['show_all_events_link'];
@@ -63,7 +65,7 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'caption' => '', 'status' => 'default', 'date' => 'default', 'date_from' => date_i18n( 'Y-m-d' ), 'date_to' => date_i18n( 'Y-m-d' ), 'number' => 5, 'order' => 'default', 'show_all_events_link' => true ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'caption' => '', 'status' => 'default', 'date' => 'default', 'date_from' => date_i18n( 'Y-m-d' ), 'date_to' => date_i18n( 'Y-m-d' ), 'day' => '', 'number' => 5, 'order' => 'default', 'show_all_events_link' => true ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
 		$caption = strip_tags($instance['caption']);
@@ -71,6 +73,7 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		$date = $instance['date'];
 		$date_from = $instance['date_from'];
 		$date_to = $instance['date_to'];
+		$day = $instance['day'];
 		$number = intval($instance['number']);
 		$order = strip_tags($instance['order']);
 		$show_all_events_link = $instance['show_all_events_link'];
@@ -133,6 +136,9 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 				<input type="text" name="<?php echo $this->get_field_name( 'date_to' ); ?>" value="<?php echo $date_to; ?>" placeholder="yyyy-mm-dd" size="10">
 			</p>
 		</div>
+
+		<p><label for="<?php echo $this->get_field_id('day'); ?>"><?php _e( 'Match Day:', 'sportspress' ); ?></label>
+		<input id="<?php echo $this->get_field_id('day'); ?>" name="<?php echo $this->get_field_name('day'); ?>" type="text" placeholder="<?php _e( 'All', 'sportspress' ); ?>" value="<?php echo esc_attr($day); ?>" size="10"></p>
 
 		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of events to show:', 'sportspress' ); ?></label>
 		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" size="3"></p>

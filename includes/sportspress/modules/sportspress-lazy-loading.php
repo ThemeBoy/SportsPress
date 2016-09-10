@@ -175,7 +175,7 @@ class SportsPress_Lazy_Loading {
 		$diff = array_diff( $post_ids, $selected );
 		$selected = array_flip( $selected );
 		?>
-		<div id="<?php echo $slug; ?>-all" class="posttypediv wp-tab-panel sp-tab-panel sp-ajax-checklist sp-select-all-range" style="display: <?php echo $display; ?>;">
+		<div id="<?php echo $slug; ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-ajax-checklist sp-select-all-range" style="display: <?php echo $display; ?>;">
 			<input type="hidden" value="0" name="<?php echo $slug; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<?php if ( is_array( $posts ) && sizeof( $posts ) ) { ?>

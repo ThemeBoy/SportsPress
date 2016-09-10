@@ -51,10 +51,10 @@ class SP_Meta_Box_List_Columns {
 		</ul>
 		<p><strong><?php _e( 'Data', 'sportspress' ); ?></strong></p>
 		<div class="sp-instance">
-			<ul id="sp_column-tabs" class="wp-tab-bar sp-tab-bar">
-				<li class="wp-tab-active"><a href="#sp_performance-all"><?php _e( 'Performance', 'sportspress' ); ?></a></li>
-				<li class="wp-tab"><a href="#sp_metric-all"><?php _e( 'Metrics', 'sportspress' ); ?></a></li>
-				<li class="wp-tab"><a href="#sp_statistic-all"><?php _e( 'Statistics', 'sportspress' ); ?></a></li>
+			<ul id="sp_column-tabs" class="sp-tab-bar category-tabs">
+				<li class="tabs"><a href="#sp_performance-all"><?php _e( 'Performance', 'sportspress' ); ?></a></li>
+				<li><a href="#sp_metric-all"><?php _e( 'Metrics', 'sportspress' ); ?></a></li>
+				<li><a href="#sp_statistic-all"><?php _e( 'Statistics', 'sportspress' ); ?></a></li>
 			</ul>
 			<?php
 			sp_column_checklist( $post->ID, 'sp_performance', 'block', $selected );

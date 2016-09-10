@@ -22,6 +22,11 @@ class SP_Meta_Box_Event_Performance {
 		$event = new SP_Event( $post );
 		list( $labels, $columns, $stats, $teams, $formats, $order ) = $event->performance( true );
 
+		if ( 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'yes' ) )
+			$timeline = $event->timeline( true );
+		else
+			$timeline = false;
+
 		// Determine if columns are auto or manual
 		if ( 'manual' == get_option( 'sportspress_event_performance_columns', 'auto' ) )
 			$manual = true;
@@ -60,7 +65,7 @@ class SP_Meta_Box_Event_Performance {
 		// Check if individual mode
 		$is_individual = get_option( 'sportspress_load_individual_mode_module', 'no' ) === 'yes' ? true : false;
 
-		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $positions, $status, $formats, $order, $numbers, $is_individual );
+		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $positions, $status, $formats, $order, $numbers, $is_individual, $timeline );
 	}
 
 	/**
@@ -70,12 +75,13 @@ class SP_Meta_Box_Event_Performance {
 		update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array() ) );
 		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
+		update_post_meta( $post_id, 'sp_timeline', sp_array_value( $_POST, 'sp_timeline', array() ) );
 	}
 
 	/**
 	 * Admin edit tables
 	 */
-	public static function tables( $post_id, $stats = array(), $labels = array(), $columns = array(), $teams = array(), $has_checkboxes = false, $positions = array(), $status = true, $formats = array(), $order = array(), $numbers = true, $is_individual = false ) {
+	public static function tables( $post_id, $stats = array(), $labels = array(), $columns = array(), $teams = array(), $has_checkboxes = false, $positions = array(), $status = true, $formats = array(), $order = array(), $numbers = true, $is_individual = false, $timeline = array() ) {
 		$sections = get_option( 'sportspress_event_performance_sections', -1 );
 		
 		if ( $is_individual ) {
@@ -94,8 +100,23 @@ class SP_Meta_Box_Event_Performance {
 							$players[] = -1;
 							$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
 
+							// Get team timeline
+							if ( is_array( $timeline ) ):
+								$team_timeline = (array) sp_array_value( $timeline, $team_id, array() );
+							else:
+								$team_timeline = false;
+							endif;
+
 							foreach ( $data as $player_id => $player_performance ):
-								self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, false, $numbers, -1, $formats );
+
+								// Get player timeline
+								if ( is_array( $team_timeline ) ):
+									$player_timeline = (array) sp_array_value( $team_timeline, $player_id, array() );
+								else:
+									$player_timeline = false;
+								endif;
+
+								self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, false, $numbers, -1, $formats, $player_timeline );
 							endforeach;
 						endforeach;
 						?>
@@ -114,10 +135,17 @@ class SP_Meta_Box_Event_Performance {
 					$players = sp_array_between( (array)get_post_meta( $post_id, 'sp_player', false ), 0, $key );
 					$players[] = -1;
 					$data = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
+
+					// Get team timeline
+					if ( is_array( $timeline ) ):
+						$team_timeline = (array) sp_array_value( $timeline, $team_id, array() );
+					else:
+						$team_timeline = false;
+					endif;
 					?>
 					<div>
 						<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-						<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $positions, $status, -1, $formats, $order, $numbers ); ?>
+						<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $positions, $status, -1, $formats, $order, $numbers, $team_timeline ); ?>
 						<?php do_action( 'sportspress_after_event_performance_table_admin', $labels, $columns, $data, $team_id ); ?>
 					</div>
 				<?php } else { ?>
@@ -167,6 +195,13 @@ class SP_Meta_Box_Event_Performance {
 						$players[] = -1;
 						$data[0] = $data[1] = sp_array_combine( $players, sp_array_value( $stats, $team_id, array() ) );
 					}
+
+					// Get team timeline
+					if ( is_array( $timeline ) ):
+						$team_timeline = (array) sp_array_value( $timeline, $team_id, array() );
+					else:
+						$team_timeline = false;
+					endif;
 			
 					// Determine order of sections
 					if ( 1 == $sections ) {
@@ -179,7 +214,7 @@ class SP_Meta_Box_Event_Performance {
 						?>
 						<div>
 							<p><strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo $section_label; ?></strong></p>
-							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, ( $has_checkboxes && 0 === $i ), $positions, $status, $section_id, $formats, $order, $numbers ); ?>
+							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, ( $has_checkboxes && 0 === $i ), $positions, $status, $section_id, $formats, $order, $numbers, $team_timeline ); ?>
 							<?php do_action( 'sportspress_after_event_performance_table_admin', $labels[ $section_id ], $columns, $data[ $section_id ], $team_id ); ?>
 						</div>
 						<?php
@@ -193,7 +228,7 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array(), $numbers = true ) {
+	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array(), $numbers = true, $team_timeline = array() ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
@@ -218,8 +253,18 @@ class SP_Meta_Box_Event_Performance {
 						}
 						$data = $players;
 					}
+
 					foreach ( $data as $player_id => $player_performance ):
-						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, true, $numbers, $section, $formats );
+
+						// Get player timeline
+						if ( is_array( $team_timeline ) ):
+							$player_timeline = (array) sp_array_value( $team_timeline, $player_id, array() );
+						else:
+							$player_timeline = false;
+						endif;
+
+						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, true, $numbers, $section, $formats, $player_timeline );
+
 					endforeach;
 					?>
 				</tbody>
@@ -309,7 +354,7 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table row
 	 */
-	public static function row( $labels = array(), $player_id = 0, $player_performance = array(), $team_id = 0, $data = array(), $positions = true, $status = true, $sortable = true, $numbers = true, $section = -1, $formats = array() ) {
+	public static function row( $labels = array(), $player_id = 0, $player_performance = array(), $team_id = 0, $data = array(), $positions = true, $status = true, $sortable = true, $numbers = true, $section = -1, $formats = array(), $player_timeline = array() ) {
 		if ( $player_id <= 0 ) return;
 
 		$value = sp_array_value( $player_performance, 'number', '' );
@@ -353,10 +398,29 @@ class SP_Meta_Box_Event_Performance {
 			<?php } ?>
 			<?php foreach( $labels as $column => $label ):
 				$value = sp_array_value( $player_performance, $column, '' );
+				$intval = intval( $value );
 				$placeholder = sp_get_format_placeholder( sp_array_value( $formats, $column, 'number' ) );
 				?>
 				<td>
 					<input class="sp-player-<?php echo $column; ?>-input sp-sync-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo $placeholder; ?>" />
+					<?php if ( $intval ) { ?>
+						<?php
+						// Get performance times
+						if ( is_array( $player_timeline ) ) {
+							$times = sp_array_value( $player_timeline, $column, array() );
+						} else {
+							$times = false;
+						}
+						
+						if ( is_array( $times ) ) {
+							?>
+							<hr>
+							<?php for ( $i = 0; $i < $intval; $i++ ) { ?><input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>][<?php echo $i; ?>]" value="<?php echo esc_attr( sp_array_value( $times, $i, '' ) ); ?>" placeholder="-" /><?php } ?>
+							<span class="description"><?php _e( 'mins', 'sportspress' ); ?></span>
+							<?php
+						}
+					}
+					?>
 				</td>
 			<?php endforeach; ?>
 			<?php if ( apply_filters( 'sportspress_event_performance_show_status', $status, $section ) ) { ?>
