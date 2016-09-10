@@ -122,6 +122,10 @@ class SportsPress_Sponsors {
 						'search_items' 			=> __( 'Search', 'sportspress' ),
 						'not_found' 			=> __( 'No results found.', 'sportspress' ),
 						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
+						'featured_image'		=> __( 'Logo', 'sportspress' ),
+ 						'set_featured_image' 	=> __( 'Select Logo', 'sportspress' ),
+ 						'remove_featured_image' => __( 'Remove Logo', 'sportspress' ),
+ 						'use_featured_image' 	=> __( 'Select Logo', 'sportspress' ),
 					),
 					'public' 				=> true,
 					'show_ui' 				=> true,
@@ -382,18 +386,6 @@ class SportsPress_Sponsors {
 		if ( is_admin() ):
 			if ( in_array( $typenow, array( 'sp_sponsor' ) ) ):
 				switch ( $untranslated_text ):
-				case 'Set featured image':
-					$translated_text = __( 'Select Logo', 'sportspress' );
-					break;
-				case 'Featured Image':
-					$translated_text = __( 'Logo', 'sportspress' );
-					break;
-				case 'Set Featured Image':
-					$translated_text = __( 'Select Logo', 'sportspress' );
-					break;
-				case 'Remove featured image':
-					$translated_text = __( 'Remove Logo', 'sportspress' );
-					break;
 				case 'Author':
 					$translated_text = __( 'User', 'sportspress' );
 					break;
