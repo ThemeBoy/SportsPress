@@ -31,7 +31,7 @@ class SportsPress_Match_Stats {
 		add_action( 'sportspress_event_performance', array( $this, 'template' ) );
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'body_class', array( $this, 'body_class' ) );
-		add_filter( 'sportspress_event_template_options', array( $this, 'add_options' ) );
+		add_filter( 'sportspress_event_performance_display_options', array( $this, 'add_options' ) );
 		add_filter( 'sportspress_general_script_options', array( $this, 'add_script_options' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'sportspress_frontend_css', array( $this, 'frontend_css' ) );
