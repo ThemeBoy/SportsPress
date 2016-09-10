@@ -15,6 +15,7 @@ $defaults = array(
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
+	'day' => 'default',
 	'league' => null,
 	'season' => null,
 	'date_format' => get_option( 'sportspress_scoreboard_date_format', 'M j' ),
@@ -52,6 +53,8 @@ if ( $season )
 	$calendar->season = $season;
 if ( $order != 'default' )
 	$calendar->order = $order;
+if ( $day != 'default' )
+	$calendar->day = $day;
 $data = $calendar->data();
 
 if ( ! $data ) return;
@@ -88,7 +91,7 @@ $post_id = get_the_ID();
 									<?php } ?>
 
 									<?php if ( $show_time ) { ?>
-										<span class="sp-scoreboard-time"><?php sp_the_time( $event->ID ); ?></span>
+										<span class="sp-scoreboard-time"><?php echo apply_filters( 'sportspress_event_time', sp_get_time( $event->ID ), $event->ID ); ?></span>
 									<?php } ?>
 
 									<?php if ( $show_league ) { ?>
