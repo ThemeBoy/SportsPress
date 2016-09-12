@@ -425,8 +425,18 @@ class SP_Meta_Box_Event_Performance {
 			<?php endforeach; ?>
 			<?php if ( apply_filters( 'sportspress_event_performance_show_status', $status, $section ) ) { ?>
 				<td class="sp-status-selector">
+					<?php
+					// Get substitute times
+					if ( is_array( $player_timeline ) ) {
+						$times = sp_array_value( $player_timeline, 'sub', array() );
+					} else {
+						$times = false;
+					}
+					?>
 					<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?>
 					<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?>
+					<input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo $team_id; ?>][<?php echo $player_id; ?>][sub][]" value="<?php echo esc_attr( sp_array_value( $times, 0, '' ) ); ?>" placeholder="-" />
+					<span class="description"><?php _e( 'mins', 'sportspress' ); ?></span>
 				</td>
 			<?php } ?>
 		</tr>
