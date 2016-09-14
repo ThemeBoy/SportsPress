@@ -7,32 +7,42 @@
       <key name="Box Score"/>
       <key name="Cancelled"/>
       <key name="Competition"/>
+      <key name="Contact Info"/>
       <key name="Current Team"/>
       <key name="Current Teams"/>
       <key name="Date"/>
       <key name="Details"/>
+      <key name="Directories"/>
       <key name="Email"/>
       <key name="Event"/>
       <key name="Event Results"/>
       <key name="Fixtures"/>
       <key name="Job"/>
+      <key name="League Tables"/>
+      <key name="Logos"/>
       <key name="Match Day"/>
+      <key name="Matches"/>
+      <key name="Name"/>
       <key name="Nationality"/>
       <key name="Outcome"/>
       <key name="Past Teams"/>
       <key name="Performance"/>
       <key name="Phone"/>
+      <key name="Photo"/>
       <key name="Played"/>
       <key name="Player"/>
+      <key name="Player Lists"/>
       <key name="Pos"/>
       <key name="Position"/>
       <key name="Postponed"/>
       <key name="Preview"/>
+      <key name="Profile"/>
       <key name="Rank"/>
       <key name="Recap"/>
       <key name="Season"/>
       <key name="Sponsors"/>
       <key name="Staff"/>
+      <key name="Statistics"/>
       <key name="Substitutes"/>
       <key name="TBD"/>
       <key name="Team"/>
@@ -40,12 +50,14 @@
       <key name="Time"/>
       <key name="Time/Results"/>
       <key name="Total"/>
+      <key name="Tweets"/>
       <key name="Venue"/>
       <key name="Video"/>
       <key name="View all events"/>
       <key name="View all players"/>
       <key name="View all staff"/>
       <key name="View full table"/>
+      <key name="Visit Site"/>
     </key>
   </admin-texts>
 </wpml-config>

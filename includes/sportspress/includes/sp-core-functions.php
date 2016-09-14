@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     2.1
+ * @version     2.1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -1341,21 +1341,28 @@ function sp_get_text_options() {
 		__( 'Details', 'sportspress' ),
 		__( 'Event', 'sportspress' ),
 		__( 'Fixtures', 'sportspress' ),
+		__( 'League Tables', 'sportspress' ),
+		__( 'Logos', 'sportspress' ),
 		__( 'Match Day', 'sportspress' ),
+		__( 'Matches', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
 		__( 'Offense', 'sportspress' ),
 		__( 'Outcome', 'sportspress' ),
 		__( 'Past Teams', 'sportspress' ),
+		__( 'Photo', 'sportspress' ),
 		__( 'Player', 'sportspress' ),
+		__( 'Player Lists', 'sportspress' ),
 		__( 'Pos', 'sportspress' ),
 		__( 'Position', 'sportspress' ),
 		__( 'Postponed', 'sportspress' ),
 		__( 'Preview', 'sportspress' ),
+		__( 'Profile', 'sportspress' ),
 		__( 'Rank', 'sportspress' ),
 		__( 'Recap', 'sportspress' ),
 		__( 'Results', 'sportspress' ),
 		__( 'Season', 'sportspress' ),
 		__( 'Staff', 'sportspress' ),
+		__( 'Statistics', 'sportspress' ),
 		__( 'TBD', 'sportspress' ),
 		__( 'Team', 'sportspress' ),
 		__( 'Teams', 'sportspress' ),
@@ -1367,6 +1374,7 @@ function sp_get_text_options() {
 		__( 'View all events', 'sportspress' ),
 		__( 'View all players', 'sportspress' ),
 		__( 'View full table', 'sportspress' ),
+		__( 'Visit Site', 'sportspress' ),
 	));
 	
 	asort( $strings );

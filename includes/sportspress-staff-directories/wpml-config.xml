@@ -1,7 +1,11 @@
 <wpml-config>
   <admin-texts>
     <key name="sportspress_text">
+      <key name="Contact Info"/>
+      <key name="Directories"/>
       <key name="Email"/>
+      <key name="Job"/>
+      <key name="Name"/>
       <key name="Phone"/>
       <key name="View all staff"/>
     </key>
