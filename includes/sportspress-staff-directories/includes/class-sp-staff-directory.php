@@ -218,7 +218,7 @@ class SP_Staff_Directory {
 				endif;
 			endforeach;
 
-			$data[0] = array_merge( array( 'role' => __( 'Job', 'sportspress' ), 'name' => __( 'Name', 'sportspress' ) ), $labels );
+			$data[0] = array_merge( array( 'name' => __( 'Name', 'sportspress' ), 'role' => __( 'Job', 'sportspress' ) ), $labels );
 			return $data;
 		endif;
 	}

@@ -70,10 +70,10 @@ foreach( $data as $staff_id => $row ):
 		$name = '<a href="' . $permalink . '">' . $name . '</a>';
 	endif;
 
+	$output .= '<td class="data-name">' . $name . '</td>';
+
 	if ( ! is_array( $columns ) || in_array( 'role', $columns ) )
 		$output .= '<td class="data-role">' . sp_array_value( $row, 'role', '&mdash;' ) . '</td>';
-
-	$output .= '<td class="data-name">' . $name . '</td>';
 	
 	if ( array_key_exists( 'team', $labels ) ):
 		$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_team', true ) );

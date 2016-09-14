@@ -158,8 +158,8 @@ class SP_Staff_Directory_Meta_Boxes {
 				<thead>
 					<tr>
 						<th class="icon">&nbsp;</th>
-						<th><?php _e( 'Job', 'sportspress' ); ?></th>
 						<th><?php _e( 'Name', 'sportspress' ); ?></th>
+						<th><?php _e( 'Job', 'sportspress' ); ?></th>
 						<?php foreach ( $labels as $key => $label ): ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
 								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! is_array( $columns ) || in_array( $key, $columns ) ); ?>>
@@ -188,8 +188,8 @@ class SP_Staff_Directory_Meta_Boxes {
 									<span class="dashicons dashicons-menu post-state-format"></span>
 									<input type="hidden" name="sp_staffs[]" value="<?php echo $staff_id; ?>">
 								</td>
-								<td><?php echo $role; ?></td>
 								<td><?php echo $default_name; ?></span></td>
+								<td><?php echo $role; ?></td>
 								<td><?php echo $phone; ?></td>
 								<td><?php echo $email; ?></td>
 							</tr>
