@@ -315,11 +315,24 @@
 .sp-event-list .data-results {
 	white-space: nowrap;
 }
-.sp-event-list .data-teams img,
+.sp-event-list .data-home {
+	text-align: right;
+}
+.sp-event-list .data-away {
+	text-align: left;
+}
 .sp-event-list .data-home img,
 .sp-event-list .data-away img {
 	display: inline-block;
 	vertical-align: middle;
+}
+.sp-event-list .data-home img {
+	float: right;
+	margin-left: 8px;
+}
+.sp-event-list .data-away img {
+	float: left;
+	margin-right: 8px;
 }
 
 /* Event Blocks */
