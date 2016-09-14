@@ -33,6 +33,7 @@ class SportsPress_Twitter {
 
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_general_settings', array( $this, 'add_options' ) );
+		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_filter( 'sportspress_team_templates', array( $this, 'team_templates' ) );
 		add_filter( 'sportspress_player_templates', array( $this, 'player_templates' ) );
 		add_filter( 'sportspress_staff_templates', array( $this, 'staff_templates' ) );
@@ -112,6 +113,15 @@ class SportsPress_Twitter {
 			),
 
 			array( 'type' => 'sectionend', 'id' => 'twitter_options' ),
+		) );
+	}
+
+	/**
+	 * Add text options 
+	 */
+	public function add_text_options( $options = array() ) {
+		return array_merge( $options, array(
+			__( 'Tweets', 'sportspress' ),
 		) );
 	}
 
