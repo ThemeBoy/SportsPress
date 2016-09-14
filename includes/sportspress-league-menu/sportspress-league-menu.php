@@ -126,10 +126,10 @@ class SportsPress_League_Menu {
 		$logo_height = (int) get_option( 'sportspress_league_menu_logo_height', 32 );
 		$logo_bottom = (int) get_option( 'sportspress_league_menu_logo_bottom', 0 );
 		$logo_left = (int) get_option( 'sportspress_league_menu_logo_left', 0 );
-		if ( $logo_height > 32 || $logo_width > 32 ) {
-			$logo_size = 'sportspress-fit-icon';
-		} elseif ( $logo_height <= 128 && $logo_width <= 128 ) {
+		if ( $logo_height <= 32 && $logo_width <= 32 ) {
 			$logo_size = 'sportspress-fit-mini';
+		} elseif ( $logo_height <= 128 && $logo_width <= 128 ) {
+			$logo_size = 'sportspress-fit-icon';
 		} else {
 			$logo_size = 'sportspress-fit-medium';
 		}
