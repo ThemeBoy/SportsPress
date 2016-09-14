@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.0.6
+ * @version     2.1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -59,7 +59,9 @@ if ( ! isset( $subs ) ) $subs = array();
 					foreach ( $subs as $sub_id => $sub ):
 						if ( ! $sub_id )
 							continue;
-						$lineup_sub_relation[ sp_array_value( $sub, 'sub', 0 ) ] = $sub_id;
+						$index = sp_array_value( $sub, 'sub', 0 );
+						$index = substr( $index, 0, strpos( $index, ' ' ) );
+						$lineup_sub_relation[ $index ] = $sub_id;
 					endforeach;
 
 					$data = apply_filters( 'sportspress_event_performance_players', $data, $lineups, $subs, $mode );
@@ -91,8 +93,21 @@ if ( ! isset( $subs ) ) $subs = array();
 
 						if ( array_key_exists( $player_id, $lineup_sub_relation ) ):
 							$name .= ' <span class="sub-in" title="' . get_the_title( $lineup_sub_relation[ $player_id ] ) . '">' . sp_array_value( sp_array_value( $data, $lineup_sub_relation[ $player_id ], array() ), 'number', null ) . '</span>';
+							$sub = sp_array_value( sp_array_value( $data, $lineup_sub_relation[ $player_id ], array() ), 'sub', null );
+							if ( $show_minutes && ! empty( $sub ) ):
+								preg_match( '#\((.*?)\)#', $data[ $lineup_sub_relation[ $player_id ] ]['sub'], $match );
+								if ( ! empty( $match ) && isset( $match[1] ) ):
+									$name .= $match[1];
+								endif;
+							endif;
 						elseif ( isset( $row['sub'] ) && $row['sub'] ):
 							$name .= ' <span class="sub-out" title="' . get_the_title( $row[ 'sub' ] ) . '">' . sp_array_value( sp_array_value( $data, $row['sub'], array() ), 'number', null ) . '</span>';
+							if ( $show_minutes && ! empty( $row['sub'] ) ):
+								preg_match( '#\((.*?)\)#', $row['sub'], $match );
+								if ( ! empty( $match ) && isset( $match[1] ) ):
+									$name .= $match[1];
+								endif;
+							endif;
 						endif;
 
 						echo '<td class="data-name">' . $name . '</td>';

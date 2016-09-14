@@ -47,6 +47,22 @@
 	padding-right: 0;
 	padding-left: 3px;
 }
+.sp-event-list .data-home {
+	text-align: left;
+}
+.sp-event-list .data-away {
+	text-align: right;
+}
+.sp-event-list .data-home img {
+	float: left;
+	margin-left: 0;
+	margin-right: 8px;
+}
+.sp-event-list .data-away img {
+	float: right;
+	margin-right: 0;
+	margin-left: 8px;
+}
 
 /* Event Blocks */
 .sp-event-blocks .logo-odd {

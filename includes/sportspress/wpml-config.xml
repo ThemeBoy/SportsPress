@@ -14,21 +14,28 @@
       <key name="Event"/>
       <key name="Event Results"/>
       <key name="Fixtures"/>
+      <key name="League Tables"/>
+      <key name="Logos"/>
       <key name="Match Day"/>
+      <key name="Matches"/>
       <key name="Nationality"/>
       <key name="Outcome"/>
       <key name="Past Teams"/>
       <key name="Performance"/>
+      <key name="Photo"/>
       <key name="Played"/>
       <key name="Player"/>
+      <key name="Player Lists"/>
       <key name="Pos"/>
       <key name="Position"/>
       <key name="Postponed"/>
       <key name="Preview"/>
+      <key name="Profile"/>
       <key name="Rank"/>
       <key name="Recap"/>
       <key name="Season"/>
       <key name="Staff"/>
+      <key name="Statistics"/>
       <key name="Substitutes"/>
       <key name="TBD"/>
       <key name="Team"/>
@@ -41,6 +48,7 @@
       <key name="View all events"/>
       <key name="View all players"/>
       <key name="View full table"/>
+      <key name="Visit Site"/>
     </key>
   </admin-texts>
 </wpml-config>

@@ -5,7 +5,7 @@
  * The SportsPress event class handles individual event data.
  *
  * @class 		SP_Event
- * @version		2.1
+ * @version		2.1.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -175,7 +175,7 @@ class SP_Event extends SP_Custom_Post{
 						if ( empty( $team_timeline ) ) continue;
 
 						foreach ( $players as $player => $player_performance ):
-							if ( ! $player_id ) continue;
+							if ( ! $player ) continue;
 
 							// Get player timeline
 							$player_timeline = sp_array_value( $team_timeline, $player, array() );
