@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Add a league menu to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 1.6
+Version: 2.1.1
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_League_Menu' ) ) :
  * Main SportsPress League Menu Class
  *
  * @class SportsPress_League_Menu
- * @version	1.6
+ * @version	2.1.1
  */
 class SportsPress_League_Menu {
 
@@ -46,7 +46,7 @@ class SportsPress_League_Menu {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_LEAGUE_MENU_VERSION' ) )
-			define( 'SP_LEAGUE_MENU_VERSION', '1.6' );
+			define( 'SP_LEAGUE_MENU_VERSION', '2.1.1' );
 
 		if ( !defined( 'SP_LEAGUE_MENU_URL' ) )
 			define( 'SP_LEAGUE_MENU_URL', plugin_dir_url( __FILE__ ) );

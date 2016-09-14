@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add twitter feed to teams, players, and staff.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.0.7
+Version: 2.1.1
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Twitter' ) ) :
  * Main SportsPress Twitter Class
  *
  * @class SportsPress_Twitter
- * @version	2.0.7
+ * @version	2.1.1
  */
 class SportsPress_Twitter {
 
@@ -51,7 +51,7 @@ class SportsPress_Twitter {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_TWITTER_VERSION' ) )
-			define( 'SP_TWITTER_VERSION', '2.0.7' );
+			define( 'SP_TWITTER_VERSION', '2.1.1' );
 
 		if ( !defined( 'SP_TWITTER_URL' ) )
 			define( 'SP_TWITTER_URL', plugin_dir_url( __FILE__ ) );
