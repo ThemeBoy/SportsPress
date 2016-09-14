@@ -20,12 +20,12 @@
 	margin-right: 8px;
 	color: #ffffff;
 	line-height: 32px;
-	vertical-align: middle;
 }
 
 .sp-league-menu .sp-league-menu-logo {
 	width: auto;
 	height: auto;
+	vertical-align: middle;
 }
 
 .sp-league-menu .sp-team-link {
