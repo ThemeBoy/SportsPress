@@ -18,8 +18,17 @@ $args = array(
 	'posts_per_page' => -1,
 	'orderby' => 'menu_order',
 	'order' => 'ASC',
-	'meta_key' => 'sp_team',
-	'meta_value' => $id,
+	'meta_query' => array(
+		'relation' => 'OR',
+		array(
+			'key' => 'sp_team',
+			'value' => $id,
+		),
+		array(
+			'key' => 'sp_team',
+			'value' => 0,
+		),
+	),
 );
 $directories = get_posts( $args );
 
