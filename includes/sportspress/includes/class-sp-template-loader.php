@@ -106,13 +106,12 @@ class SP_Template_Loader {
 		}
 		
 		$ob = ob_get_clean();
-
-		ob_start();
 		
 		$tabs = '';
 		
 		if ( ! empty( $tab_templates ) ) {
 			$i = 0;
+			$tab_content = '';
 
 			foreach ( $tab_templates as $key => $template ) {
 				// Ignore templates that are unavailable or that have been turned off
@@ -120,17 +119,23 @@ class SP_Template_Loader {
 				if ( ! isset( $template['option'] ) ) continue;
 				if ( 'yes' !== get_option( $template['option'], sp_array_value( $template, 'default', 'yes' ) ) ) continue;
 				
-				// Add to tabs
-				$tabs .= '<li class="sp-tab-menu-item' . ( 0 === $i ? ' sp-tab-menu-item-active' : '' ) . '"><a href="#sp-tab-content-' . $key . '" data-sp-tab="' . $key . '">' . apply_filters( 'gettext', $template['title'], $template['title'], 'sportspress' ) . '</a></li>';
-				
-				// Render the template
-				echo '<div class="sp-tab-content sp-tab-content-' . $key . '" id="sp-tab-content-' . $key . '"' . ( 0 === $i ? ' style="display: block;"' : '' ) . '>';
+				// Put tab content into buffer
+				ob_start();
 				if ( 'content' === $key ) {
 					echo $content;
 				} else {
 					call_user_func( $template['action'] );
 				}
-				echo '</div>';
+				$buffer = ob_get_clean();
+				
+				// Continue if tab content is empty
+				if ( empty( $buffer ) ) continue;
+				
+				// Add to tabs
+				$tabs .= '<li class="sp-tab-menu-item' . ( 0 === $i ? ' sp-tab-menu-item-active' : '' ) . '"><a href="#sp-tab-content-' . $key . '" data-sp-tab="' . $key . '">' . apply_filters( 'gettext', $template['title'], $template['title'], 'sportspress' ) . '</a></li>';
+				
+				// Render the template
+				$tab_content .= '<div class="sp-tab-content sp-tab-content-' . $key . '" id="sp-tab-content-' . $key . '"' . ( 0 === $i ? ' style="display: block;"' : '' ) . '>' . $buffer . '</div>';
 
 				$i++;
 			}
@@ -141,7 +146,7 @@ class SP_Template_Loader {
 				$ob .= '<ul class="sp-tab-menu">' . $tabs . '</ul>';
 			}
 
-			$ob .= ob_get_clean();
+			$ob .= $tab_content;
 			
 			$ob .= '</div>';
 		}
