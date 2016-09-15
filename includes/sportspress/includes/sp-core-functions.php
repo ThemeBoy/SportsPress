@@ -1341,6 +1341,7 @@ function sp_get_text_options() {
 		__( 'Details', 'sportspress' ),
 		__( 'Event', 'sportspress' ),
 		__( 'Events', 'sportspress' ),
+		__( 'Excerpt', 'sportspress' ),
 		__( 'Fixtures', 'sportspress' ),
 		__( 'League Tables', 'sportspress' ),
 		__( 'Logos', 'sportspress' ),
