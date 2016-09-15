@@ -442,15 +442,14 @@ class SP_Team extends SP_Custom_Post {
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
 			'meta_query' => array(
-				'relation' => 'OR',
+				'relation' => 'AND',
 				array(
-					'key' => 'sp_team',
-					'value' => $this->ID,
+					'key' => 'sp_select',
+					'value' => 'manual',
 				),
 				array(
 					'key' => 'sp_team',
-					'value' => '',
-					'compare' => 'NOT EXISTS',
+					'value' => $this->ID,
 				),
 			),
 		);
