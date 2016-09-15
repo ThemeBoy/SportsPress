@@ -270,8 +270,7 @@ class SP_Staff_Directory_Meta_Boxes {
 					),
 					array(
 						'key' => 'sp_team',
-						'value' => '',
-						'compare' => 'NOT EXISTS',
+						'value' => 0,
 					),
 				),
 			);
