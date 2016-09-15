@@ -158,6 +158,38 @@ class SP_REST_API {
 		);
 		
 		register_rest_field( 'sp_event',
+			'offense',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
+				'update_callback' => 'SP_REST_API::update_post_meta_recursive',
+				'schema'          => array(
+					'description'     => __( 'Offense', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+				
+		register_rest_field( 'sp_event',
+			'defense',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
+				'update_callback' => 'SP_REST_API::update_post_meta_recursive',
+				'schema'          => array(
+					'description'     => __( 'Defense', 'sportspress' ),
+					'type'            => 'array',
+					'context'         => array( 'view', 'edit' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'rest_sanitize_request_arg',
+					),
+				),
+			)
+		);
+		
+		register_rest_field( 'sp_event',
 			'staff',
 			array(
 				'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
@@ -731,6 +763,8 @@ class SP_REST_API {
 			'past_teams' => 'sp_past_team',
 			'performance' => 'sp_players',
 			'players' => 'sp_player',
+			'offense' => 'sp_offense',
+			'defense' => 'sp_defense',
 			'table' => 'sp_teams',
 			'tables' => 'sp_table',
 			'teams' => 'sp_team',
