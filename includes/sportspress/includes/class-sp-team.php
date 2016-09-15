@@ -402,7 +402,8 @@ class SP_Team extends SP_Custom_Post {
 				),
 				array(
 					'key' => 'sp_team',
-					'value' => '0',
+					'value' => '',
+					'compare' => 'NOT EXISTS',
 				),
 			),
 		);
@@ -441,14 +442,15 @@ class SP_Team extends SP_Custom_Post {
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
 			'meta_query' => array(
-				'relation' => 'AND',
-				array(
-					'key' => 'sp_select',
-					'value' => 'manual',
-				),
+				'relation' => 'OR',
 				array(
 					'key' => 'sp_team',
 					'value' => $this->ID,
+				),
+				array(
+					'key' => 'sp_team',
+					'value' => '',
+					'compare' => 'NOT EXISTS',
 				),
 			),
 		);
