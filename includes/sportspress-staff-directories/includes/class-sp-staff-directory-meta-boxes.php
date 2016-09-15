@@ -138,9 +138,6 @@ class SP_Staff_Directory_Meta_Boxes {
 
 		// Details
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
-		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_league', 0 ), 'sp_league' );
-		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_season', 0 ), 'sp_season' );
-		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_job', 0 ), 'sp_job' );
 		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
 
 		// Data
@@ -265,8 +262,18 @@ class SP_Staff_Directory_Meta_Boxes {
 				'posts_per_page' => -1,
 				'orderby' => 'menu_order',
 				'order' => 'ASC',
-				'meta_key' => 'sp_team',
-				'meta_value' => $post->ID,
+				'meta_query' => array(
+					'relation' => 'OR',
+					array(
+						'key' => 'sp_team',
+						'value' => $post->ID,
+					),
+					array(
+						'key' => 'sp_team',
+						'value' => '',
+						'compare' => 'NOT EXISTS',
+					),
+				),
 			);
 			$data = get_posts( $args );
 
