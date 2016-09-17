@@ -199,8 +199,8 @@ class SP_Tournament_Meta_Boxes {
 					$title = get_the_title( $id );
 					if ( ! strlen( $title ) ) {
 						$post['post_title'] = $new_title;
-						wp_update_post( $post );
 					}
+					wp_update_post( $post );
 				} else {
 					$args = array( 'post_type' => 'sp_event', 'post_title' => $new_title, 'post_status' => 'publish', 'post_date' => $date );
 					$id = wp_insert_post( $args );
