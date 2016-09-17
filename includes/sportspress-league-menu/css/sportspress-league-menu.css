@@ -8,7 +8,8 @@
 }
 
 .sp-league-menu .sp-inner {
-	width: 94%;
+	width: 1000px;
+	max-width: 100%;
 	padding: 4px 0;
 	text-align: center;
 	margin: 0 auto;

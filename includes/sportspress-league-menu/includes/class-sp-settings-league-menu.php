@@ -81,8 +81,8 @@ class SP_Settings_League_Menu extends SP_Settings_Page {
 				'title' 	=> __( 'Width', 'sportspress' ),
 				'id' 		=> 'sportspress_league_menu_width',
 				'class' 	=> 'small-text',
-				'default'	=> '970',
-				'placeholder' => '970',
+				'default'	=> '1000',
+				'placeholder' => '1000',
 				'desc' 		=> 'px',
 				'type' 		=> 'number',
 				'custom_attributes' => array(

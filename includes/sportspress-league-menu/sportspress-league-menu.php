@@ -110,6 +110,8 @@ class SportsPress_League_Menu {
 			$align = 'default';
 		}
 
+		$menu_width = get_option( 'sportspress_league_menu_width', 1000 );
+
 		$height = (int) get_option( 'sportspress_league_menu_team_height', 32 );
 		$width = (int) get_option( 'sportspress_league_menu_team_width', 32 );
 		if ( $height > 32 || $width > 32 ) {
@@ -155,6 +157,9 @@ class SportsPress_League_Menu {
 			.sp-league-menu {
 				background: <?php echo $background_color; ?>;
 				color: <?php echo $text_color; ?>;
+			}
+			.sp-league-menu .sp-inner {
+				width: <?php echo $menu_width; ?>px;
 			}
 			.sp-league-menu .sp-league-menu-title {
 				color: <?php echo $text_color; ?>;
