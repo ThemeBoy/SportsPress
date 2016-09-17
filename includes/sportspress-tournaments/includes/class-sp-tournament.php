@@ -287,10 +287,11 @@ class SP_Tournament {
 
 					$counter[ $col ] ++;
 				elseif ( $row % ( 6 * pow( 2, $col ) ) === $margin || $row % ( 6 * pow( 2, $col ) ) === $margin + $height + 1 ):
-					$ti = ( $row % ( 6 * pow( 2, $col ) ) === $margin ? 0 : 1 );
+					$ti = $oi = ( $row % ( 6 * pow( 2, $col ) ) === $margin ? 0 : 1 );
 					
 					// Reverse teams if needed
 					if ( $reverse_teams ) {
+						$oi = $ti;
 						$ti = ( $ti ? 0 : 1 );
 					}
 					
@@ -308,7 +309,7 @@ class SP_Tournament {
 						'class' => ( $ti ? 'sp-away-team' : 'sp-home-team' ),
 						'id' => $team,
 						'hidden' => $hidden,
-						'pos' => $ti,
+						'pos' => $oi,
 						'select' => $select,
 					);
 
