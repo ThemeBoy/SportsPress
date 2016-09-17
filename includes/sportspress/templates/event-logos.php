@@ -45,3 +45,5 @@ sp_get_template( 'event-logos-' . $layout . '.php', array(
 	'abbreviate_teams' => $abbreviate_teams,
 	'link_teams' => $link_teams,
 ) );
+
+do_action( 'sportspress_after_event_logos', $id );
