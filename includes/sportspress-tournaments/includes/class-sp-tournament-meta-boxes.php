@@ -124,6 +124,8 @@ class SP_Tournament_Meta_Boxes {
 	 * Save meta boxes data
 	 */
 	public static function save( $post_id ) {
+		global $wpdb;
+
 		// Format
 		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'bracket' ) );
 
@@ -190,17 +192,13 @@ class SP_Tournament_Meta_Boxes {
 
 				// Update or add new event
 				if ( $id ) {
-					$post = array(
-						'ID' => $id,
-						'post_date' => $date,
-					);
-
-					// Update title if not set
 					$title = get_the_title( $id );
 					if ( ! strlen( $title ) ) {
-						$post['post_title'] = $new_title;
+						$wpdb->update( $wpdb->posts, array( 'post_date' => $date, 'post_title' => $new_title ), array( 'ID' => $id ) );
+					} else {
+						$wpdb->update( $wpdb->posts, array( 'post_date' => $date ), array( 'ID' => $id ) );
 					}
-					wp_update_post( $post );
+
 				} else {
 					$args = array( 'post_type' => 'sp_event', 'post_title' => $new_title, 'post_status' => 'publish', 'post_date' => $date );
 					$id = wp_insert_post( $args );
