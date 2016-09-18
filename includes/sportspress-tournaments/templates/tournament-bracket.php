@@ -27,6 +27,12 @@ $post_layout = get_post_meta( $id, 'sp_format', true );
 if ( $post_layout )
 	$layout = $post_layout;
 
+if ( false === $title && $id ):
+	$caption = get_post_meta( $id, 'sp_caption', true );
+	if ( $caption )
+		$title = $caption;
+endif;
+
 if ( $title )
 	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
 

@@ -80,6 +80,7 @@ class SP_Tournament_Meta_Boxes {
 	 */
 	public static function details( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
+		$caption = get_post_meta( $post->ID, 'sp_caption', true );
 		$limit = get_option( 'sportspress_tournament_rounds', '6' );
 		$taxonomies = get_object_taxonomies( 'sp_tournament' );
 		$rounds = get_post_meta( $post->ID, 'sp_rounds', true );
@@ -87,6 +88,8 @@ class SP_Tournament_Meta_Boxes {
 		$winner = get_post_meta( $post->ID, 'sp_winner', true );
 		?>
 		<div>
+			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
+			<p><input type="text" id="sp_caption" name="sp_caption" value="<?php echo esc_attr( $caption ); ?>"></p>
 			<?php
 			foreach ( $taxonomies as $taxonomy ) {
 				sp_taxonomy_field( $taxonomy, $post, true );
@@ -128,6 +131,9 @@ class SP_Tournament_Meta_Boxes {
 
 		// Format
 		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'bracket' ) );
+
+		// Heading
+		update_post_meta( $post_id, 'sp_caption', sp_array_value( $_POST, 'sp_caption', '' ) );
 
 		// Rounds
 		$limit = intval( get_option( 'sportspress_tournament_rounds', '6' ) );
