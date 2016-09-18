@@ -662,6 +662,11 @@ table.widefat.sp-sortable-table tbody tr .icon {
   background-color: #00b9eb;
 }
 
+/* Tab panels */
+.sp-tab-panel {
+	max-height: 500px;
+}
+
 /* Sortable lists */
 .sp-sortable-list {
 	margin: 0;
@@ -739,7 +744,6 @@ table.widefat.sp-sortable-table tbody tr .icon {
 }
 
 /* Modules */
-
 .sp-modules-wrapper {
 	margin-right: 300px;
 	max-width: 750px;
@@ -1108,6 +1112,10 @@ table.sp-status-table td mark.yes {
 	.sp-modules-sidebar {
 		margin-right: 0;
 		width: 100%;
+	}
+
+	.sp-tab-panel {
+		max-height: 200px;
 	}
 }
 
