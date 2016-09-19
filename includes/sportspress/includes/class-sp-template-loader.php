@@ -127,6 +127,9 @@ class SP_Template_Loader {
 					call_user_func( $template['action'] );
 				}
 				$buffer = ob_get_clean();
+
+				// Trim whitespace from buffer
+				$buffer = trim( $buffer );
 				
 				// Continue if tab content is empty
 				if ( empty( $buffer ) ) continue;
