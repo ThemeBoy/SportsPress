@@ -29,9 +29,7 @@ if ( ! isset( $id ) )
 $teams = get_post_meta( $id, 'sp_team', false );
 
 if ( is_array( $teams ) ):
-	?>
-	<div class="sp-event-performance-tables sp-event-performance-teams">
-	<?php
+	ob_start();
 
 	$event = new SP_Event( $id );
 	$performance = $event->performance();
@@ -275,7 +273,16 @@ if ( is_array( $teams ) ):
 	}
 
 	do_action( 'sportspress_event_performance' );
-	?>
-	</div><!-- .sp-event-performance-tables -->
-	<?php
+
+	$content = ob_get_clean();
+
+	$content = trim( $content );
+
+	if ( ! empty( $content ) ):
+		?>
+		<div class="sp-event-performance-tables sp-event-performance-teams">
+			<?php echo $content; ?>
+		</div><!-- .sp-event-performance-tables -->
+		<?php
+	endif;
 endif;
