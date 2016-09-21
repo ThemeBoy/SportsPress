@@ -109,7 +109,7 @@ $post_id = get_the_ID();
 									<span class="sp-scoreboard-teams">
 										<?php
 										if ( 'results' === $status ) {
-											$results = apply_filters( 'sportspress_scoreboard_main_results', sp_get_main_results( $event->ID ), $event->ID );
+											$results = apply_filters( 'sportspress_main_results', sp_get_main_results( $event->ID ), $event->ID );
 
 											foreach ( $teams as $index => $team ) {
 												$name = sp_get_team_name( $team, $abbreviate_teams );
