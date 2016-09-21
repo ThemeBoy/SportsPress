@@ -334,6 +334,9 @@
 	float: left;
 	margin-right: 8px;
 }
+.sp-event-list-format-homeaway .data-time {
+	text-align: center;
+}
 
 /* Event Blocks */
 .sp-event-blocks thead {

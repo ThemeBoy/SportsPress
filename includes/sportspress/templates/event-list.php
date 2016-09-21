@@ -88,7 +88,7 @@ endif;
 		<h4 class="sp-table-caption"><?php echo $title; ?></h4>
 	<?php } ?>
 	<div class="sp-table-wrapper">
-		<table class="sp-event-list sp-data-table<?php if ( $paginated ) { ?> sp-paginated-table<?php } if ( $sortable ) { ?> sp-sortable-table<?php } if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
+		<table class="sp-event-list sp-event-list-format-<?php echo $title_format; ?> sp-data-table<?php if ( $paginated ) { ?> sp-paginated-table<?php } if ( $sortable ) { ?> sp-sortable-table<?php } if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
 			<thead>
 				<tr>
 					<?php
