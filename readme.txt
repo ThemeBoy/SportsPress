@@ -4,7 +4,7 @@ Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtu
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.6
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,16 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.1.2 =
+* Feature - Add offense and defense statistics to REST API.
+* Tweak - Hide template tabs with no content.
+* Tweak - Allow selection of player lists without teams.
+* Tweak - Center-align time/results when between home and away teams in event list.
+* Tweak - Increase checklist panel height in admin.
+* Tweak - Update text options.
+* Fix - Hidden box score columns still displaying when in offense/defense mode.
+* Preset - Update cricket preset.
 
 = 2.1.1 =
 * Feature - Add substitution times in box score.
