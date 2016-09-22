@@ -238,21 +238,19 @@ class SP_Calendar extends SP_Custom_Post {
 				);
 			}
 			
-			if ( 'auto' === $this->date ) {
-				if ( 'any' === $this->status ) {
-					$args['post_status'] = 'publish';
-					$args['order'] = 'DESC';
-					$args['posts_per_page'] = ceil( $this->number / 2 );
-					$results = get_posts( $args );
-					$results = array_reverse( $results, true );
-					
-					$args['post_status'] = 'future';
-					$args['order'] = 'ASC';
-					$args['posts_per_page'] = floor( $this->number / 2 );
-					$fixtures = get_posts( $args );
-					
-					$events = array_merge_recursive( $results, $fixtures );
-				}
+			if ( 'auto' === $this->date && 'any' === $this->status ) {
+				$args['post_status'] = 'publish';
+				$args['order'] = 'DESC';
+				$args['posts_per_page'] = ceil( $this->number / 2 );
+				$results = get_posts( $args );
+				$results = array_reverse( $results, true );
+				
+				$args['post_status'] = 'future';
+				$args['order'] = 'ASC';
+				$args['posts_per_page'] = floor( $this->number / 2 );
+				$fixtures = get_posts( $args );
+				
+				$events = array_merge_recursive( $results, $fixtures );
 			} else {
 				$events = get_posts( $args );
 			}
