@@ -52,10 +52,8 @@
 							<h5 class="sp-event-results">
 								<?php echo '<span class="sp-result">' . apply_filters( 'sportspress_event_time', sp_get_time( $id ), $id ) . '</span>'; ?>
 							</h5>
-							<span class="sp-event-status">
-								<?php _e( 'Preview', 'sportspress' ); ?>
-							</span>
 							<?php
+							$status = __( 'Preview', 'sportspress' );
 						}
 						
 						if ( $show_results ) {
@@ -63,12 +61,13 @@
 							<h5 class="sp-event-results">
 								<?php echo '<span class="sp-result">' . implode( '</span> - <span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', $results, $id ) ) . '</span>'; ?>
 							</h5>
-							<span class="sp-event-status">
-								<?php _e( 'Full Time', 'sportspress' ); ?>
-							</span>
 							<?php
+							$status = __( 'Full Time', 'sportspress' );
 						}
 						?>
+						<span class="sp-event-status">
+							<?php echo apply_filters( 'sportspress_event_logos_status', $status, $id ); ?>
+						</span>
 					</td>
 				</tr>
 			</tbody>
