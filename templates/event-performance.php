@@ -129,6 +129,7 @@ if ( is_array( $teams ) ):
 			}
 			
 			// Initialize labels
+			$selected = $labels;
 			$labels = array( array(), array() );
 			
 			// Add positions if applicable
@@ -138,6 +139,7 @@ if ( is_array( $teams ) ):
 
 			// Get labels by section
 			foreach ( $columns as $column ):
+				if ( ! array_key_exists( $column->post_name, $selected ) ) continue;
 				$section = get_post_meta( $column->ID, 'sp_section', true );
 				if ( '' === $section ) {
 					$section = -1;
