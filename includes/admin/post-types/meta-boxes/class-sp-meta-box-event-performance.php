@@ -159,20 +159,20 @@ class SP_Meta_Box_Event_Performance {
 						'order' => 'ASC',
 					);
 
-					$columns = get_posts( $args );
+					$performances = get_posts( $args );
 
 					$labels = array( array(), array() );
-					foreach ( $columns as $column ):
-						$section = get_post_meta( $column->ID, 'sp_section', true );
+					foreach ( $performances as $performance ):
+						$section = get_post_meta( $performance->ID, 'sp_section', true );
 						if ( '' === $section ) {
 							$section = -1;
 						}
 						switch ( $section ):
 							case 1:
-								$labels[1][ $column->post_name ] = $column->post_title;
+								$labels[1][ $performance->post_name ] = $performance->post_title;
 								break;
 							default:
-								$labels[0][ $column->post_name ] = $column->post_title;
+								$labels[0][ $performance->post_name ] = $performance->post_title;
 						endswitch;
 					endforeach;
 					
