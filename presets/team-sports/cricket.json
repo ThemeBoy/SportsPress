@@ -37,7 +37,7 @@
 						{ "name" : "NR", "equation" : "$noresult", "description" : "No results" },
 						{ "name" : "BP", "equation" : "$bpfor", "description" : "Bonus points" },
 						{ "name" : "Points", "equation" : "$win * 2 + $draw", "priority" : 1, "description" : "Total points" },
-						{ "name" : "NRR", "equation" : "( $runsfor / $oversfor ) - ( $runsagainst / $oversagainst )", "priority" : 2, "precision" : 3, "description" : "Net run rate" }
+						{ "name" : "NRR", "equation" : "( $runsfor / $oversfor ) - ( $runsagainst / $oversagainst )", "priority" : 3, "precision" : 3, "description" : "Net run rate" }
 	],
 	"metrics": [
 						"Height",
