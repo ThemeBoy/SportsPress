@@ -402,7 +402,8 @@ class SP_Team extends SP_Custom_Post {
 				),
 				array(
 					'key' => 'sp_team',
-					'value' => '0',
+					'value' => '',
+					'compare' => 'NOT EXISTS',
 				),
 			),
 		);
