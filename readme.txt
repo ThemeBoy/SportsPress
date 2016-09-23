@@ -1,6 +1,6 @@
 === SportsPress - Sports Club & League Manager ===
 Contributors: ThemeBoy, brianmiyaji, aylaview, rochesterj
-Tags: sport, sports, club, clubs, teams, statistics, stats, metrics, data, fixtures, results, standings, league tables, leagues, shortcodes, sports data, sports club, themeboy, esports, wordpress sports, equations, calculations, events, calendars, players, profiles, staff, seasons, countdowns, club management, football, nfl, footy, afl, baseball, basketball, cricket, darts, handball, hockey, netball, rugby, snooker, soccer, squash, tennis, volleyball, dota 2, league of legends, golf
+Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.6
