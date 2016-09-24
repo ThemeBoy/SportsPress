@@ -108,7 +108,7 @@ class SP_Meta_Box_Player_Statistics {
 						<td>
 							<label><strong><?php _e( 'Total', 'sportspress' ); ?></strong></label>
 						</td>
-						<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', true ) ) { ?>
+						<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ) { ?>
 							<td>&nbsp;</td>
 						<?php } ?>
 						<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
