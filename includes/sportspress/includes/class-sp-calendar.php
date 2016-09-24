@@ -83,7 +83,7 @@ class SP_Calendar extends SP_Custom_Post {
 			$this->order = 'ASC';
 
 		if ( ! $this->orderby )
-			$this->orderby = get_post_meta( $this->ID, 'sp_orderby', true );
+			$this->orderby = 'post_date';
 
 		if ( ! $this->from )
 			$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
