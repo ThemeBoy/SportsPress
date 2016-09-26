@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * AJAX Event Handler
  *
  * @class 		SP_AJAX
- * @version		2.1
+ * @version		2.1.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -788,6 +788,9 @@ class SP_AJAX {
 				$field_name = 'columns[]';
 				$field_id = 'columns';
 				?>
+				<label class="button"><input name="columns[]" type="checkbox" id="columns-number" value="number" checked="checked"><?php _e( '#', 'sportspress' ); ?></label>
+				<label class="button"><input name="columns[]" type="checkbox" id="columns-team" value="team" checked="checked"><?php _e( 'Team', 'sportspress' ); ?></label>
+				<label class="button"><input name="columns[]" type="checkbox" id="columns-position" value="position" checked="checked"><?php _e( 'Position', 'sportspress' ); ?></label>
 				<?php foreach ( $the_columns as $column ): ?>
 					<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . $column->post_name; ?>" value="<?php echo $column->post_name; ?>" checked="checked"><?php echo $column->post_title; ?></label>
 				<?php endforeach; ?>

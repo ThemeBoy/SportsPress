@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.1.2
+ * @version     2.1.3
  */
 ?>
 <div class="sp-template sp-template-event-blocks sp-template-event-logos-block">
@@ -56,7 +56,7 @@
 							$status = __( 'Preview', 'sportspress' );
 						}
 						
-						if ( $show_results ) {
+						if ( $show_results && ! empty( $results ) ) {
 							?>
 							<h5 class="sp-event-results">
 								<?php echo '<span class="sp-result">' . implode( '</span> - <span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', $results, $id ) ) . '</span>'; ?>

@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.1.2
+ * @version     2.1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -33,6 +33,8 @@ if ( $show_results ) {
 	} else {
 		$show_time = false;
 	}
+} else {
+	$results = array();
 }
 
 sp_get_template( 'event-logos-' . $layout . '.php', array(

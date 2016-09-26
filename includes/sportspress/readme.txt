@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.6
-Stable tag: 2.1.2
+Stable tag: 2.1.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,16 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.1.3 =
+* Tweak - Add options to select number, team, and position columns to player list shortcode.
+* Fix - Totals row offset in player statistics admin.
+* Fix - Events not automatically ordered by date in some cases.
+* Fix - Google Maps error when address is empty.
+* Fix - Player lists for all teams not appearing in team edit screen.
+* Fix - Error in player list when team no longer exists.
+* Fix - Error in event logos when results are empty.
+* Fix - Issue with link to future event from daily archive when multiple events are scheduled for a single day.
 
 = 2.1.2 =
 * Feature - Add offense and defense statistics to REST API.
