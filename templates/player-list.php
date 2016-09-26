@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.0
+ * @version     2.1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -172,7 +172,7 @@ foreach ( $groups as $group ):
 		if ( array_key_exists( 'team', $labels ) ):
 			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_team', true ) );
 			$team_name = sp_get_team_name( $team, $abbreviate_teams );
-			if ( $link_teams && false !== get_post_status( $team )):
+			if ( $link_teams && false !== get_post_status( $team ) ):
 				$team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
 			endif;
 			$output .= '<td class="data-team">' . $team_name . '</td>';
