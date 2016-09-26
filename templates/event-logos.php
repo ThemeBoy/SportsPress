@@ -33,6 +33,8 @@ if ( $show_results ) {
 	} else {
 		$show_time = false;
 	}
+} else {
+	$results = array();
 }
 
 sp_get_template( 'event-logos-' . $layout . '.php', array(

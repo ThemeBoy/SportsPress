@@ -56,7 +56,7 @@
 							$status = __( 'Preview', 'sportspress' );
 						}
 						
-						if ( $show_results ) {
+						if ( $show_results && ! empty( $results ) ) {
 							?>
 							<h5 class="sp-event-results">
 								<?php echo '<span class="sp-result">' . implode( '</span> - <span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', $results, $id ) ) . '</span>'; ?>
