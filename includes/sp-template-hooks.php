@@ -398,6 +398,20 @@ function sportspress_show_future_posts( $where, $that ) {
 }
 add_filter( 'posts_where', 'sportspress_show_future_posts', 2, 10 );
 
+function sportspress_fix_future_posts_permalink( $post_link, $post = null ) {
+	if ( is_admin() ) return $post_link;
+	if ( ! $post ) return $post_link;
+	if ( 'sp_event' !== get_post_type( $post ) ) return $post_link;
+	if ( 'future' !== $post->post_status ) return $post_link;
+	
+	$post_type = get_post_type_object( 'sp_event' );
+	$slug = sp_array_value( $post_type->rewrite, 'slug', 'event' );
+	$post_link = home_url( user_trailingslashit( '/' . $slug . '/' . $post->post_name ) );
+	
+	return $post_link;
+}
+add_filter( 'post_type_link', 'sportspress_fix_future_posts_permalink', 10, 2 );
+
 function sportspress_sanitize_title( $title ) {
 
 	if ( isset( $_POST ) && array_key_exists( 'taxonomy', $_POST ) ):
