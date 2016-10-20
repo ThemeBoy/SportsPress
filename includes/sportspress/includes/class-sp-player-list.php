@@ -97,7 +97,7 @@ class SP_Player_List extends SP_Custom_Post {
 			if ( $team && apply_filters( 'sportspress_has_teams', true ) ):
 				$args['meta_query'] = array(
 					array(
-						'key' => 'sp_team',
+						'key' => 'sp_current_team',
 						'value' => $team
 					),
 				);
