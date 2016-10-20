@@ -60,14 +60,6 @@ class SP_Settings_Staff extends SP_Settings_Page {
 				),
 
 				array(
-					'title'     => __( 'Dropdown', 'sportspress' ),
-					'desc' 		=> __( 'Display dropdown', 'sportspress' ),
-					'id' 		=> 'sportspress_staff_show_selector',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-				),
-
-				array(
 					'title'     => __( 'Details', 'sportspress' ),
 					'desc' 		=> __( 'Nationality', 'sportspress' ),
 					'id' 		=> 'sportspress_staff_show_nationality',

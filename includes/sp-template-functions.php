@@ -335,7 +335,20 @@ if ( ! function_exists( 'sportspress_output_league_table' ) ) {
 
 /** Single Player ********************************************************/
 
-if ( ! function_exists( 'sportspress_output_player_photo' ) ) {
+if ( ! function_exists( 'sportspress_output_player_selector' ) ) {
+
+	/**
+	 * Output the player dropdown.
+	 *
+	 * @access public
+	 * @subpackage	Player/Dropdown
+	 * @return void
+	 */
+	function sportspress_output_player_selector() {
+		sp_get_template( 'player-selector.php' );
+	}
+}
+if ( ! function_exists( 'sportspress_output_player_selector' ) ) {
 
 	/**
 	 * Output the player photo.
@@ -398,6 +411,19 @@ if ( ! function_exists( 'sportspress_output_player_list' ) ) {
 
 /** Single Staff ********************************************************/
 
+if ( ! function_exists( 'sportspress_output_staff_selector' ) ) {
+
+	/**
+	 * Output the staff dropdown.
+	 *
+	 * @access public
+	 * @subpackage	Staff/Dropdown
+	 * @return void
+	 */
+	function sportspress_output_staff_selector() {
+		sp_get_template( 'staff-selector.php' );
+	}
+}
 if ( ! function_exists( 'sportspress_output_staff_photo' ) ) {
 
 	/**

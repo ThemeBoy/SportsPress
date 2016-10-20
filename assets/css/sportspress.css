@@ -23,6 +23,10 @@
 .sp-template {
 	margin-bottom: 1.5em;
 }
+.sp-template-dropdown {
+	clear: both;
+	overflow: hidden;
+}
 .sp-template-logo,
 .sp-template-photo {
 	float: left;
