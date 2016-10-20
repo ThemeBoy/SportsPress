@@ -71,7 +71,7 @@ endif;
 
 if ( sizeof( $options ) > 1 ):
 	?>
-	<div class="sp-template sp-template-player-selector sp-template-dropdown">
+	<div class="sp-template sp-template-player-selector sp-template-profile-selector">
 		<select class="sp-profile-selector sp-player-selector sp-selector-redirect">
 			<?php echo implode( $options ); ?>
 		</select>
