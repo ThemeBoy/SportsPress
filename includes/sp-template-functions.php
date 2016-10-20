@@ -348,7 +348,7 @@ if ( ! function_exists( 'sportspress_output_player_selector' ) ) {
 		sp_get_template( 'player-selector.php' );
 	}
 }
-if ( ! function_exists( 'sportspress_output_player_selector' ) ) {
+if ( ! function_exists( 'sportspress_output_player_photo' ) ) {
 
 	/**
 	 * Output the player photo.
