@@ -69,8 +69,11 @@ class SP_Template_Loader {
 		// Get layout setting
 		$layout = (array) get_option( 'sportspress_' . $type . '_template_order', array() );
 		
+		// Get templates
+		$templates = SP()->templates->$type;
+		
 		// Combine layout setting with available templates
-		$templates = array_merge( array_flip( $layout ), SP()->templates->$type );
+		$templates = array_merge( array_flip( $layout ), $templates );
 		
 		$templates = apply_filters( 'sportspress_' . $type . '_templates', $templates );
 
@@ -134,8 +137,11 @@ class SP_Template_Loader {
 				// Continue if tab content is empty
 				if ( empty( $buffer ) ) continue;
 				
+				// Get template label
+				$label = sp_array_value( $template, 'label', $template['title'] );
+				
 				// Add to tabs
-				$tabs .= '<li class="sp-tab-menu-item' . ( 0 === $i ? ' sp-tab-menu-item-active' : '' ) . '"><a href="#sp-tab-content-' . $key . '" data-sp-tab="' . $key . '">' . apply_filters( 'gettext', $template['title'], $template['title'], 'sportspress' ) . '</a></li>';
+				$tabs .= '<li class="sp-tab-menu-item' . ( 0 === $i ? ' sp-tab-menu-item-active' : '' ) . '"><a href="#sp-tab-content-' . $key . '" data-sp-tab="' . $key . '">' . apply_filters( 'gettext', $label, $label, 'sportspress' ) . '</a></li>';
 				
 				// Render the template
 				$tab_content .= '<div class="sp-tab-content sp-tab-content-' . $key . '" id="sp-tab-content-' . $key . '"' . ( 0 === $i ? ' style="display: block;"' : '' ) . '>' . $buffer . '</div>';
