@@ -171,6 +171,12 @@ class SP_Templates {
 			),
 			'player' => array_merge(
 				apply_filters( 'sportspress_before_player_template', array(
+					'selector' => array(
+						'title' => __( 'Dropdown', 'sportspress' ),
+						'option' => 'sportspress_player_show_selector',
+						'action' => 'sportspress_output_player_selector',
+						'default' => 'yes',
+					),
 					'photo' => array(
 						'title' => __( 'Photo', 'sportspress' ),
 						'option' => 'sportspress_player_show_photo',
@@ -232,6 +238,12 @@ class SP_Templates {
 			),
 			'staff' => array_merge(
 				apply_filters( 'sportspress_before_staff_template', array(
+					'selector' => array(
+						'title' => __( 'Dropdown', 'sportspress' ),
+						'option' => 'sportspress_staff_show_selector',
+						'action' => 'sportspress_output_staff_selector',
+						'default' => 'yes',
+					),
 					'photo' => array(
 						'title' => __( 'Photo', 'sportspress' ),
 						'option' => 'sportspress_staff_show_photo',
