@@ -8,6 +8,11 @@
 	margin-left: 2em;
 }
 
+/* Profile selector */
+.sp-template-profile-selector {
+	text-align: left;
+}
+
 /* Data Tables */
 .sp-data-table .data-name {
 	text-align: right;
