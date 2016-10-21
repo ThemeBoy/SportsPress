@@ -158,7 +158,7 @@ class SportsPress_Birthdays {
 		}
 
 		if ( 'yes' == get_option( 'sportspress_player_show_age', 'no' ) ) {
-			$data[ __( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y' ) );
+			$data[ __( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y', $post_id ) );
 		}
 
 		return $data;
@@ -175,7 +175,7 @@ class SportsPress_Birthdays {
 		}
 
 		if ( 'yes' == get_option( 'sportspress_staff_show_age', 'no' ) ) {
-			$data[ __( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y' ) );
+			$data[ __( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y', $post_id ) );
 		}
 
 		return $data;
