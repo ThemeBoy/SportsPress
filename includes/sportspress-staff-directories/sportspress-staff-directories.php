@@ -346,6 +346,7 @@ class SportsPress_Staff_Directories {
 	public function team_templates( $templates = array() ) {
 		$templates['directories'] = array(
 			'title' => __( 'Directories', 'sportspress' ),
+			'label' => __( 'Staff', 'sportspress' ),
 			'option' => 'sportspress_team_show_directories',
 			'action' => array( $this, 'output_team_directories' ),
 			'default' => 'yes',
