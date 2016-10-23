@@ -130,6 +130,7 @@ class SP_Templates {
 				apply_filters( 'sportspress_after_team_template', array(
 					'link' => array(
 						'title' => __( 'Visit Site', 'sportspress' ),
+						'label' => __( 'Link', 'sportspress' ),
 						'option' => 'sportspress_team_show_link',
 						'action' => 'sportspress_output_team_link',
 						'default' => 'no',
@@ -173,6 +174,7 @@ class SP_Templates {
 				apply_filters( 'sportspress_before_player_template', array(
 					'selector' => array(
 						'title' => __( 'Dropdown', 'sportspress' ),
+						'label' => __( 'Players', 'sportspress' ),
 						'option' => 'sportspress_player_show_selector',
 						'action' => 'sportspress_output_player_selector',
 						'default' => 'yes',
@@ -240,6 +242,7 @@ class SP_Templates {
 				apply_filters( 'sportspress_before_staff_template', array(
 					'selector' => array(
 						'title' => __( 'Dropdown', 'sportspress' ),
+						'label' => __( 'Staff', 'sportspress' ),
 						'option' => 'sportspress_staff_show_selector',
 						'action' => 'sportspress_output_staff_selector',
 						'default' => 'yes',

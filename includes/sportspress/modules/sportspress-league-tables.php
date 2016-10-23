@@ -299,6 +299,7 @@ class SportsPress_League_Tables {
 		return array_merge( $templates, array(
 			'tables' => array(
 				'title' => __( 'League Tables', 'sportspress' ),
+				'label' => __( 'League Table', 'sportspress' ),
 				'option' => 'sportspress_team_show_tables',
 				'action' => 'sportspress_output_team_tables',
 				'default' => 'yes',

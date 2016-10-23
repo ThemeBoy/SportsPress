@@ -76,8 +76,9 @@
 }
 
 /* Profile selector */
-.sp-profile-selector {
-	float: right;
+.sp-template-profile-selector {
+	text-align: right;
+	margin-bottom: 0.5em;
 }
 
 /* Data Tables */

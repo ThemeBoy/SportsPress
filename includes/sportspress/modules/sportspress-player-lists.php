@@ -304,6 +304,7 @@ class SportsPress_Player_Lists {
 		return array_merge( $templates, array(
 			'lists' => array(
 				'title' => __( 'Player Lists', 'sportspress' ),
+				'label' => __( 'Players', 'sportspress' ),
 				'option' => 'sportspress_team_show_lists',
 				'action' => 'sportspress_output_team_lists',
 				'default' => 'yes',

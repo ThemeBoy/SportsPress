@@ -1331,6 +1331,7 @@ if ( !function_exists( 'sp_taxonomy_field' ) ) {
 function sp_get_text_options() {
 	$strings = apply_filters( 'sportspress_text', array(
 		__( 'Article', 'sportspress' ),
+		__( 'Away', 'sportspress' ),
 		__( 'Box Score', 'sportspress' ),
 		__( 'Cancelled', 'sportspress' ),
 		__( 'Career Total', 'sportspress' ),
@@ -1343,6 +1344,7 @@ function sp_get_text_options() {
 		__( 'Events', 'sportspress' ),
 		__( 'Excerpt', 'sportspress' ),
 		__( 'Fixtures', 'sportspress' ),
+		__( 'Home', 'sportspress' ),
 		__( 'League Tables', 'sportspress' ),
 		__( 'Logos', 'sportspress' ),
 		__( 'Match Day', 'sportspress' ),
