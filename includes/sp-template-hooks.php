@@ -312,15 +312,6 @@ function sportspress_sanitize_title( $title ) {
 
 		$title = sp_get_eos_safe_slug( $key, $id );
 
-	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && $_POST['post_type'] == 'sp_event' ):
-
-		// Auto slug generation
-		if ( $_POST['post_title'] == '' && ( $_POST['post_name'] == '' || is_int( $_POST['post_name'] ) ) ):
-
-			$title = '';
-
-		endif;
-
 	endif;
 
 	return $title;
