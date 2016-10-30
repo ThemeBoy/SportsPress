@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.6
-Stable tag: 2.1.3
+Stable tag: 2.1.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,18 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.1.4 =
+* Feature - Player and staff dropdown templates added to layout designer.
+* Tweak - Default tab labels from layout designer.
+* Tweak - Add "Home" and "Away" to text options.
+* Tweak - Add horizontal padding to centered event list columns.
+* Fix - Disable numeric slug generation for events due to permalink issues in some cases.
+* Fix - Permalink issues caused by filter for scheduled events.
+* Fix - Scheduled events being ignored by REST API.
+* Fix - Inconsistent styling of player and staff dropdowns.
+* Fix - Only include current players in player lists.
+* Fix - Age calculation in BuddyPress context.
 
 = 2.1.3 =
 * Tweak - Add options to select number, team, and position columns to player list shortcode.
