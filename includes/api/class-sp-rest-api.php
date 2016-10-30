@@ -33,8 +33,8 @@ class SP_REST_API {
 		add_filter( 'rest_query_vars', array( $this, 'meta_query' ) );
 		
 		// Add filters to query scheduled events
-		add_filter( 'rest_sp_event_query', array( $this, 'query_event_status' ) );
-		add_filter( 'query_vars', array( $this, 'query_vars' ) );
+		add_filter( 'rest_sp_event_query', array( $this, 'event_query' ) );
+		add_filter( 'rest_query_vars', array( $this, 'query_vars' ) );
 	}
 
 	/**
@@ -807,7 +807,7 @@ class SP_REST_API {
 	/**
 	 * Add scheduled events to query
 	 */
-	public static function query_event_status( $args ) {
+	public static function event_query( $args ) {
 		$args['post_status'] = array( 'publish', 'future' );
 		return $args;
 	}
