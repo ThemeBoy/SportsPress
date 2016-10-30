@@ -409,6 +409,20 @@ class SP_Install {
 			update_option( 'sportspress_player_show_selector', 'no' );
 			update_option( 'sportspress_event_performance_show_minutes', 'no' );
 		}
+		
+		if ( version_compare( $version, '2.1.3', '<' ) ) {
+			$layout = get_option( 'sportspress_player_template_order' );
+			if ( is_array( $layout ) ) {
+				array_unshift( $layout, 'selector' );
+				update_option( 'sportspress_player_template_order', $layout );
+			}
+
+			$layout = get_option( 'sportspress_staff_template_order' );
+			if ( is_array( $layout ) ) {
+				array_unshift( $layout, 'selector' );
+				update_option( 'sportspress_staff_template_order', $layout );
+			}
+		}
 	}
 
 	/**
