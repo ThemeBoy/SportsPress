@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     2.1.3
+ * @version     2.1.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -280,19 +280,27 @@ function sportspress_show_future_posts( $where, $that ) {
 }
 add_filter( 'posts_where', 'sportspress_show_future_posts', 2, 10 );
 
-function sportspress_fix_future_posts_permalink( $post_link, $post = null ) {
-	if ( is_admin() ) return $post_link;
-	if ( ! $post ) return $post_link;
-	if ( 'sp_event' !== get_post_type( $post ) ) return $post_link;
-	if ( 'future' !== $post->post_status ) return $post_link;
-	
-	$post_type = get_post_type_object( 'sp_event' );
-	$slug = sp_array_value( $post_type->rewrite, 'slug', 'event' );
-	$post_link = home_url( user_trailingslashit( '/' . $slug . '/' . $post->post_name ) );
-	
-	return $post_link;
+function sportspress_give_event_read_permissions( $allcaps, $caps, $args ) {
+
+	// Bail out if we're not asking about viewing an event
+	if ( 'read_sp_event' !== $args[0] )
+		return $allcaps;
+
+	// Load the post data
+	$post = get_post( $args[2] );
+
+	// Bail out if the event isn't scheduled
+	if ( 'future' != $post->post_status )
+		return $allcaps;
+
+	// Add post capabilities
+	foreach ( $caps as $cap ) {
+		$allcaps[ $cap ] = true;
+	}
+
+	return $allcaps;
 }
-add_filter( 'post_type_link', 'sportspress_fix_future_posts_permalink', 10, 2 );
+add_filter( 'user_has_cap', 'sportspress_give_event_read_permissions', 10, 3 );
 
 function sportspress_sanitize_title( $title ) {
 
@@ -311,15 +319,6 @@ function sportspress_sanitize_title( $title ) {
 		$id = sp_array_value( $_POST, 'post_ID', 'var' );
 
 		$title = sp_get_eos_safe_slug( $key, $id );
-
-	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && $_POST['post_type'] == 'sp_event' ):
-
-		// Auto slug generation
-		if ( $_POST['post_title'] == '' && ( $_POST['post_name'] == '' || is_int( $_POST['post_name'] ) ) ):
-
-			$title = '';
-
-		endif;
 
 	endif;
 

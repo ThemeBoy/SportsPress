@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add player lists to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.0
+Version: 2.1.4
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
  * Main SportsPress Player Lists Class
  *
  * @class SportsPress_Player_Lists
- * @version	2.0
+ * @version	2.1.4
  */
 class SportsPress_Player_Lists {
 
@@ -48,7 +48,7 @@ class SportsPress_Player_Lists {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_PLAYER_LISTS_VERSION' ) )
-			define( 'SP_PLAYER_LISTS_VERSION', '2.0' );
+			define( 'SP_PLAYER_LISTS_VERSION', '2.1.4' );
 
 		if ( !defined( 'SP_PLAYER_LISTS_URL' ) )
 			define( 'SP_PLAYER_LISTS_URL', plugin_dir_url( __FILE__ ) );

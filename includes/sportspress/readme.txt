@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.6
-Stable tag: 2.1.3
+Stable tag: 2.1.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,18 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.1.4 =
+* Feature - Player and staff dropdown templates added to layout designer.
+* Tweak - Default tab labels from layout designer.
+* Tweak - Add "Home" and "Away" to text options.
+* Tweak - Add horizontal padding to centered event list columns.
+* Fix - Disable numeric slug generation for events due to permalink issues in some cases.
+* Fix - Permalink issues caused by filter for scheduled events.
+* Fix - Scheduled events being ignored by REST API.
+* Fix - Inconsistent styling of player and staff dropdowns.
+* Fix - Only include current players in player lists.
+* Fix - Age calculation in BuddyPress context.
 
 = 2.1.3 =
 * Tweak - Add options to select number, team, and position columns to player list shortcode.
