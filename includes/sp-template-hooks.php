@@ -280,6 +280,28 @@ function sportspress_show_future_posts( $where, $that ) {
 }
 add_filter( 'posts_where', 'sportspress_show_future_posts', 2, 10 );
 
+function sportspress_give_event_read_permissions( $allcaps, $caps, $args ) {
+
+	// Bail out if we're not asking about viewing an event
+	if ( 'read_sp_event' !== $args[0] )
+		return $allcaps;
+
+	// Load the post data
+	$post = get_post( $args[2] );
+
+	// Bail out if the event isn't scheduled
+	if ( 'future' != $post->post_status )
+		return $allcaps;
+
+	// Add post capabilities
+	foreach ( $caps as $cap ) {
+		$allcaps[ $cap ] = true;
+	}
+
+	return $allcaps;
+}
+add_filter( 'user_has_cap', 'sportspress_give_event_read_permissions', 10, 3 );
+
 function sportspress_sanitize_title( $title ) {
 
 	if ( isset( $_POST ) && array_key_exists( 'taxonomy', $_POST ) ):
