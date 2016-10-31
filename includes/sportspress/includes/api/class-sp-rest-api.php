@@ -31,6 +31,10 @@ class SP_REST_API {
 		
 		// Add filter for post meta query
 		add_filter( 'rest_query_vars', array( $this, 'meta_query' ) );
+		
+		// Add filters to query scheduled events
+		add_filter( 'rest_sp_event_query', array( $this, 'event_query' ) );
+		add_filter( 'rest_query_vars', array( $this, 'query_vars' ) );
 	}
 
 	/**
@@ -798,6 +802,23 @@ class SP_REST_API {
 	public static function meta_query( $valid_vars ) {
 		$valid_vars = array_merge( $valid_vars, array( 'meta_key', 'meta_value', 'meta_query' ) );
 		return $valid_vars;
+	}
+	
+	/**
+	 * Add scheduled events to query
+	 */
+	public static function event_query( $args ) {
+		$args['post_status'] = array( 'publish', 'future' );
+		return $args;
+	}
+	
+	/**
+	 * Enable post status in events query
+	 */
+	public static function query_vars( $vars ) {
+		global $wp;
+		$vars[] = 'post_status';
+		return $vars;
 	}
 }
 
