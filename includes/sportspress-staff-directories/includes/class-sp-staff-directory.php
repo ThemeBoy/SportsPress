@@ -119,6 +119,7 @@ class SP_Staff_Directory {
 				$seasons = get_the_terms( $this->ID, 'sp_season' );
 				$roles = get_the_terms( $this->ID, 'sp_role' );
 				$team = get_post_meta( $this->ID, 'sp_team', true );
+				$era = get_post_meta( $this->ID, 'sp_era', true );
 
 				if ( $leagues ):
 					$league_ids = array();
@@ -157,10 +158,19 @@ class SP_Staff_Directory {
 				endif;
 
 				if ( $team ):
-					$args['meta_query']	= array(
+					$team_key = 'sp_team';
+					switch ( $era ):
+						case 'current':
+							$team_key = 'sp_current_team';
+							break;
+						case 'past':
+							$team_key = 'sp_past_team';
+							break;
+					endswitch;
+					$args['meta_query'] = array(
 						array(
-							'key' => 'sp_current_team',
-							'value' => $team,
+							'key' => $team_key,
+							'value' => $team
 						),
 					);
 				endif;

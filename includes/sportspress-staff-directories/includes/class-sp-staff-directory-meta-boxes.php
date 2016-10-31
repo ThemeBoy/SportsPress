@@ -90,6 +90,7 @@ class SP_Staff_Directory_Meta_Boxes {
 	public static function details( $post ) {
 		$taxonomies = get_object_taxonomies( 'sp_directory' );
 		$team_id = get_post_meta( $post->ID, 'sp_team', true );
+		$era = get_post_meta( $post->ID, 'sp_era', true );
 		?>
 		<div>
 			<?php
@@ -98,7 +99,7 @@ class SP_Staff_Directory_Meta_Boxes {
 			}
 			?>
 			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
-			<p class="sp-tab-select">
+			<p class="sp-tab-select sp-team-era-selector">
 				<?php
 				$args = array(
 					'post_type' => 'sp_team',
@@ -111,6 +112,11 @@ class SP_Staff_Directory_Meta_Boxes {
 					sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
 				endif;
 				?>
+				<select name="sp_era">
+					<option value="all" <?php selected( 'all', $era ); ?>><?php _e( 'All', 'sportspress' ); ?></option>
+					<option value="current" <?php selected( 'current', $era ); ?>><?php _e( 'Current', 'sportspress' ); ?></option>
+					<option value="past" <?php selected( 'past', $era ); ?>><?php _e( 'Past', 'sportspress' ); ?></option>
+				</select>
 			</p>
 		</div>
 		<?php
@@ -138,6 +144,7 @@ class SP_Staff_Directory_Meta_Boxes {
 
 		// Details
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+		update_post_meta( $post_id, 'sp_era', sp_array_value( $_POST, 'sp_era', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
 
 		// Data
