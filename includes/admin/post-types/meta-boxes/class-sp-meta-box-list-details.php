@@ -22,6 +22,7 @@ class SP_Meta_Box_List_Details {
 		$taxonomies = get_object_taxonomies( 'sp_list' );
 		$caption = get_post_meta( $post->ID, 'sp_caption', true );
 		$team_id = get_post_meta( $post->ID, 'sp_team', true );
+		$era = get_post_meta( $post->ID, 'sp_era', true );
 		$grouping = get_post_meta( $post->ID, 'sp_grouping', true );
 		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
@@ -42,7 +43,7 @@ class SP_Meta_Box_List_Details {
 			?>
 			<?php if ( apply_filters( 'sportspress_list_team_selector', true ) ) { ?>
 			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
-			<p class="sp-tab-select">
+			<p class="sp-tab-select sp-team-era-selector">
 				<?php
 				$args = array(
 					'post_type' => 'sp_team',
@@ -55,6 +56,11 @@ class SP_Meta_Box_List_Details {
 					sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
 				endif;
 				?>
+				<select name="sp_era">
+					<option value="all" <?php selected( 'all', $era ); ?>><?php _e( 'All', 'sportspress' ); ?></option>
+					<option value="current" <?php selected( 'current', $era ); ?>><?php _e( 'Current', 'sportspress' ); ?></option>
+					<option value="past" <?php selected( 'past', $era ); ?>><?php _e( 'Past', 'sportspress' ); ?></option>
+				</select>
 			</p>
 			<?php } ?>
 			<p><strong><?php _e( 'Grouping', 'sportspress' ); ?></strong></p>
@@ -110,6 +116,7 @@ class SP_Meta_Box_List_Details {
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0 ) ) );
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+		update_post_meta( $post_id, 'sp_era', sp_array_value( $_POST, 'sp_era', array() ) );
 		update_post_meta( $post_id, 'sp_grouping', sp_array_value( $_POST, 'sp_grouping', array() ) );
 		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', array() ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );

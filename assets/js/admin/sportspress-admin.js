@@ -386,6 +386,23 @@ jQuery(document).ready(function($){
 	// Trigger format selector
 	$(".sp-format-selector select:first").change();
 
+	// Team era selector
+	$(".sp-team-era-selector select:first-child").change(function() {
+
+		$subselector = $(this).siblings();
+
+		// Sub settings
+		if($(this).val() == 0) {
+			$subselector.hide();
+		} else {
+			$subselector.show();
+		}
+
+	});
+
+	// Trigger team era selector
+	$(".sp-team-era-selector select:first-child").change();
+
 	// Status selector
 	$(".sp-status-selector select:first-child").change(function() {
 

@@ -39,6 +39,7 @@ class SP_Player_List extends SP_Custom_Post {
 		$season_ids = sp_get_the_term_ids( $this->ID, 'sp_season' );
 		$position_ids = sp_get_the_term_ids( $this->ID, 'sp_position' );
 		$team = get_post_meta( $this->ID, 'sp_team', true );
+		$era = get_post_meta( $this->ID, 'sp_era', true );
 		$list_stats = (array)get_post_meta( $this->ID, 'sp_players', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$orderby = get_post_meta( $this->ID, 'sp_orderby', true );
@@ -95,9 +96,18 @@ class SP_Player_List extends SP_Custom_Post {
 			endif;
 
 			if ( $team && apply_filters( 'sportspress_has_teams', true ) ):
+				$team_key = 'sp_team';
+				switch ( $era ):
+					case 'current':
+						$team_key = 'sp_current_team';
+						break;
+					case 'past':
+						$team_key = 'sp_past_team';
+						break;
+				endswitch;
 				$args['meta_query'] = array(
 					array(
-						'key' => 'sp_current_team',
+						'key' => $team_key,
 						'value' => $team
 					),
 				);
