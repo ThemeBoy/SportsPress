@@ -121,7 +121,7 @@ if ( ! isset( $subs ) ) $subs = array();
 							$format = sp_array_value( $formats, $key, 'number' );
 							$placeholder = sp_get_format_placeholder( $format );
 							
-							$value = '&mdash;';
+							$value = '-';
 							if ( $key == 'position' ):
 								$positions = array();
 								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
@@ -151,7 +151,7 @@ if ( ! isset( $subs ) ) $subs = array();
 								$totals[ $key ] = $placeholder;
 							endif;
 							
-							if ( 'text' !== $format ) {
+							if ( 'number' === $format ) {
 								$totals[ $key ] += $value;
 							}
 
@@ -174,6 +174,22 @@ if ( ! isset( $subs ) ) $subs = array();
 						$i++;
 
 					endforeach;
+
+					if ( sizeof( $equations ) ):
+
+						// Prepare total values for equation calculation
+						$vars = $totals;
+						foreach ( $vars as $key => $var ):
+							if ( empty( $var ) ) $vars[ $key ] = 0;
+						endforeach;
+						$vars = array_merge( $vars, array( 'eventsplayed' => 1 ) );
+						
+						// Calculate equation-based totals
+						foreach ( $equations as $key => $equation ):
+							$totals[ $key ] = sp_solve( $equation['equation'], $vars, $equation['precision'] );
+						endforeach;
+
+					endif;
 					?>
 				</tbody>
 			<?php endif; ?>

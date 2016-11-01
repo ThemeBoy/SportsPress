@@ -55,7 +55,7 @@ class SP_Admin_Assets {
 			wp_enqueue_style( 'sportspress-admin-customize-styles', SP()->plugin_url() . '/assets/css/customize.css', array(), SP_VERSION );
 		}
 
-		if ( in_array( $screen->id, array( 'sp_result', 'sp_column', 'sp_statistic' ) ) ) {
+		if ( in_array( $screen->id, array( 'sp_result', 'sp_performance', 'sp_column', 'sp_statistic' ) ) ) {
 			wp_enqueue_style( 'sportspress-admin-equation-styles', SP()->plugin_url() . '/assets/css/equation.css', array(), SP_VERSION );
 		}
 
@@ -136,7 +136,7 @@ class SP_Admin_Assets {
 		}
 
 		// Edit equation
-		if ( in_array( $screen->id, array( 'sp_result', 'sp_column', 'sp_statistic' ) ) ) {
+		if ( in_array( $screen->id, array( 'sp_result', 'sp_performance', 'sp_column', 'sp_statistic' ) ) ) {
 	    	wp_enqueue_script( 'sportspress-admin-equationbuilder' );
 		}
 	}

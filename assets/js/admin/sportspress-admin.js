@@ -365,7 +365,7 @@ jQuery(document).ready(function($){
 	$(".sp-format-selector select:first").change(function() {
 
 		$precisionselector = $(".sp-precision-selector input:first");
-		$equationselector = $(".sp-equation-selector select");
+		$equationdiv = $("#sp_equationdiv");
 
 		// Precision settings
 		if($(this).val() == "decimal" || $(this).val() == "time") {
@@ -375,10 +375,10 @@ jQuery(document).ready(function($){
 		}
 
 		// Equation settings
-		if($(this).val() == "custom") {
-			$equationselector.prop( "disabled", true );
+		if($(this).val() == "equation") {
+			$equationdiv.show();
 		} else {
-			$equationselector.prop( "disabled", false );
+			$equationdiv.hide();
 		}
 
 	});

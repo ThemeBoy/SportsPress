@@ -60,6 +60,13 @@ class SP_Admin_Meta_Boxes {
 					'context' => 'normal',
 					'priority' => 'high',
 				),
+				'equation' => array(
+					'title' => __( 'Equation', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Performance_Equation::save',
+					'output' => 'SP_Meta_Box_Performance_Equation::output',
+					'context' => 'normal',
+					'priority' => 'high',
+				),
 			),
 			'sp_column' => array(
 				'details' => array(

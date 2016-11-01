@@ -161,6 +161,8 @@ class SP_Admin_Sports {
 			update_post_meta( $id, 'sp_color', sp_array_value( $performance, 'color', null ) );
 			update_post_meta( $id, 'sp_section', sp_array_value( $performance, 'section', -1 ) );
 			update_post_meta( $id, 'sp_format', sp_array_value( $performance, 'format', 'number' ) );
+			update_post_meta( $id, 'sp_equation', sp_array_value( $performance, 'equation', null ) );
+			update_post_meta( $id, 'sp_precision', sp_array_value( $performance, 'precision', 0 ) );
 			$i ++;
 		}
 

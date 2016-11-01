@@ -77,16 +77,30 @@ if ( is_array( $teams ) ):
 
 	$columns = get_posts( $args );
 	
-	// Get formats
+	// Get formats and equations
 	$formats = array();
+	$equations = array();
 	
-	// Add to formats
+	// Add to formats and equations
 	foreach ( $columns as $column ) {
 		$format = get_post_meta( $column->ID, 'sp_format', true );
 		if ( '' === $format ) {
 			$format = 'number';
 		}
 		$formats[ $column->post_name ] = $format;
+		
+		if ( 'equation' === $format ) {
+			$equation = get_post_meta( $column->ID, 'sp_equation', true );
+			$precision = get_post_meta( $column->ID, 'sp_precision', true );
+			
+			if ( empty( $equation ) ) $equation = 0;
+			if ( empty( $precision ) ) $precision = 0;
+			
+			$equations[ $column->post_name ] = array(
+				'equation' => $equation,
+				'precision' => $precision,
+			);
+		}
 	}
 	
 	if ( $is_individual ) {
@@ -109,6 +123,7 @@ if ( is_array( $teams ) ):
 			'caption' => __( 'Box Score', 'sportspress' ),
 			'labels' => $labels,
 			'formats' => $formats,
+			'equations' => $equations,
 			'mode' => $mode,
 			'data' => $data,
 			'event' => $event,
@@ -219,6 +234,7 @@ if ( is_array( $teams ) ):
 								'caption' => 0 == $s && $team_id ? sp_get_team_name( $team_id, $abbreviate_teams ) : null,
 								'labels' => $labels[ $section_id ],
 								'formats' => $formats,
+								'equations' => $equations,
 								'mode' => $mode,
 								'data' => $data[ $section_id ],
 								'event' => $event,
@@ -255,6 +271,7 @@ if ( is_array( $teams ) ):
 						'caption' => $team_id ? sp_get_team_name( $team_id, $abbreviate_teams ) : null,
 						'labels' => $labels,
 						'formats' => $formats,
+						'equations' => $equations,
 						'mode' => $mode,
 						'data' => $data,
 						'event' => $event,
