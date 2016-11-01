@@ -78,7 +78,7 @@ if ( ! isset( $class ) ) $class = null;
 							$format = sp_array_value( $formats, $key, 'number' );
 							$placeholder = sp_get_format_placeholder( $format );
 							
-							$value = '&mdash;';
+							$value = '-';
 							if ( $key == 'position' ):
 								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
 									$positions = array();

@@ -157,6 +157,13 @@ class SP_Meta_Box_Event_Performance {
 						'posts_per_page' => 100,
 						'orderby' => 'menu_order',
 						'order' => 'ASC',
+						'meta_query' => array(
+							array(
+								'key' => 'sp_format',
+								'value' => 'equation',
+								'compare' => '!=',
+							),
+						),
 					);
 
 					$performances = get_posts( $args );
@@ -293,6 +300,7 @@ class SP_Meta_Box_Event_Performance {
 					</th>
 				<?php } ?>
 				<?php foreach ( $labels as $key => $label ): ?>
+					<?php if ( 'equation' === sp_array_value( $formats, $key, 'number' ) ) continue; ?>
 					<th>
 						<?php if ( $has_checkboxes ): ?>
 							<label for="sp_columns_<?php echo $key; ?>">
@@ -334,6 +342,7 @@ class SP_Meta_Box_Event_Performance {
 						<td>&nbsp;</td>
 					<?php } ?>
 					<?php foreach( $labels as $column => $label ):
+						if ( 'equation' === sp_array_value( $formats, $column, 'number' ) ) continue;
 						$player_id = 0;
 						$player_performance = sp_array_value( $data, $player_id, array() );
 						$value = sp_array_value( $player_performance, $column, '' );
@@ -397,6 +406,7 @@ class SP_Meta_Box_Event_Performance {
 				</td>
 			<?php } ?>
 			<?php foreach( $labels as $column => $label ):
+				if ( 'equation' === sp_array_value( $formats, $column, 'number' ) ) continue;
 				$value = sp_array_value( $player_performance, $column, '' );
 				$intval = intval( $value );
 				$placeholder = sp_get_format_placeholder( sp_array_value( $formats, $column, 'number' ) );

@@ -39,6 +39,7 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		if ( '' === $format ) {
 			$format = 'number';
 		}
+		$precision = get_post_meta( $post->ID, 'sp_precision', true );
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
@@ -60,12 +61,16 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		<p class="sp-format-selector">
 			<select name="sp_format">
 				<?php
-				$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ) ) );
+				$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ), 'equation' => __( 'Equation', 'sportspress' ) ) );
 				foreach ( $options as $key => $value ):
 					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $format, true, false ), $value );
 				endforeach;
 				?>
 			</select>
+		</p>
+		<p><strong><?php _e( 'Decimal Places', 'sportspress' ); ?></strong></p>
+		<p>
+			<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>" placeholder="0">
 		</p>
 		<?php
 		if ( 'auto' === get_option( 'sportspress_player_columns', 'auto' ) ) {
@@ -103,6 +108,7 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		self::delete_duplicate( $_POST );
 		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1 ) );
 		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number' ) );
+		update_post_meta( $post_id, 'sp_precision', sp_array_value( $_POST, 'sp_precision', 0 ) );
 		if ( 'auto' === get_option( 'sportspress_player_columns', 'auto' ) ) {
 			update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1 ) );
 		}

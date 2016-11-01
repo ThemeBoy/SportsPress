@@ -120,6 +120,13 @@ class SP_Meta_Box_Equation {
 			'posts_per_page' => -1,
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
+			'meta_query' => array(
+				array(
+					'key' => 'sp_format',
+					'value' => 'equation',
+					'compare' => '!=',
+				),
+			),
 		);
 		$vars = get_posts( $args );
 

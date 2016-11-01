@@ -97,6 +97,8 @@ class SP_Event extends SP_Custom_Post{
 		$vars = get_posts( $args );
 		
 		$labels = array();
+		$formats = array();
+		$equations = array();
 		foreach ( $vars as $var ) {
 			$labels[ $var->post_name ] = $var->post_title;
 			$format = get_post_meta( $var->ID, 'sp_format', true );
@@ -104,6 +106,19 @@ class SP_Event extends SP_Custom_Post{
 				$format = 'number';
 			}
 			$formats[ $var->post_name ] = $format;
+			
+			if ( 'equation' === $format ) {
+				$equation = get_post_meta( $var->ID, 'sp_equation', true );
+				$precision = get_post_meta( $var->ID, 'sp_precision', true );
+				
+				if ( empty( $equation ) ) $equation = 0;
+				if ( empty( $precision ) ) $precision = 0;
+				
+				$equations[ $var->post_name ] = array(
+					'equation' => $equation,
+					'precision' => $precision,
+				);
+			}
 		}
 		
 		$order = (array)get_post_meta( $this->ID, 'sp_order', true );
@@ -165,6 +180,27 @@ class SP_Event extends SP_Custom_Post{
 				unset( $labels['number'] );
 			endif;
 
+			// Calculate equation-based performance
+			if ( sizeof( $equations ) ):
+				foreach ( $performance as $team => $players ):
+					foreach ( $players as $player => $player_performance ):
+						if ( ! $player ) continue;
+
+						// Prepare existing values for equation calculation
+						$vars = $player_performance;
+						foreach ( $vars as $key => $var ):
+							if ( empty( $var ) ) $vars[ $key ] = 0;
+						endforeach;
+						$vars = array_merge( $vars, array( 'eventsplayed' => 1 ) );
+
+						foreach ( $equations as $key => $equation ):
+							$performance[ $team ][ $player ][ $key ] = sp_solve( $equation['equation'], $vars, $equation['precision'] );
+						endforeach;
+					endforeach;
+				endforeach;
+			endif;
+
+			// Add minutes to box score values
 			if ( 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'yes' ) ):
 				$timeline = $this->timeline();
 				if ( ! empty( $timeline ) ):
