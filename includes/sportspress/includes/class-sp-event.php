@@ -136,6 +136,8 @@ class SP_Event extends SP_Custom_Post{
 				endforeach;
 
 				foreach( $data as $player_id => $player_performance ):
+					if ( ! $player_id ) continue;
+
 					foreach( $labels as $key => $label ):
 						if ( array_key_exists( $key, $totals ) ):
 							$totals[ $key ] += sp_array_value( $player_performance, $key, 0 );
@@ -155,6 +157,7 @@ class SP_Event extends SP_Custom_Post{
 						$totals[ $key ] = $manual_total;
 					endif;
 				endforeach;
+				$performance[ $team_id ][0] = array_merge( $totals, sp_array_value( sp_array_value( $performance, $team_id, array() ), 0, array() ) );
 			endforeach;
 		endif;
 
@@ -184,8 +187,6 @@ class SP_Event extends SP_Custom_Post{
 			if ( sizeof( $equations ) ):
 				foreach ( $performance as $team => $players ):
 					foreach ( $players as $player => $player_performance ):
-						if ( ! $player ) continue;
-
 						// Prepare existing values for equation calculation
 						$vars = $player_performance;
 						foreach ( $vars as $key => $var ):

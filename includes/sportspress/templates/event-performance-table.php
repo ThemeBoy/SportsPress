@@ -174,22 +174,6 @@ if ( ! isset( $subs ) ) $subs = array();
 						$i++;
 
 					endforeach;
-
-					if ( sizeof( $equations ) ):
-
-						// Prepare total values for equation calculation
-						$vars = $totals;
-						foreach ( $vars as $key => $var ):
-							if ( empty( $var ) ) $vars[ $key ] = 0;
-						endforeach;
-						$vars = array_merge( $vars, array( 'eventsplayed' => 1 ) );
-						
-						// Calculate equation-based totals
-						foreach ( $equations as $key => $equation ):
-							$totals[ $key ] = sp_solve( $equation['equation'], $vars, $equation['precision'] );
-						endforeach;
-
-					endif;
 					?>
 				</tbody>
 			<?php endif; ?>
