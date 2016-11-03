@@ -23,9 +23,7 @@ class SP_Settings_Players extends SP_Settings_Page {
 	public function __construct() {
 		$this->id    = 'players';
 		$this->label = __( 'Players', 'sportspress' );
-		
 		$this->template  = 'player';
-		$this->templates = SP()->templates->player;
 
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );

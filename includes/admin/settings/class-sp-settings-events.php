@@ -23,9 +23,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 	public function __construct() {
 		$this->id    = 'events';
 		$this->label = __( 'Events', 'sportspress' );
-		
 		$this->template  = 'event';
-		$this->templates = SP()->templates->event;
 
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );

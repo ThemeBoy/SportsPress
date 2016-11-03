@@ -20,7 +20,6 @@ class SP_Settings_Page {
 	protected $id    = '';
 	protected $label = '';
 	protected $template = '';
-	public $templates = array();
 	/**
 	 * Add this page to settings
 	 */
@@ -37,6 +36,17 @@ class SP_Settings_Page {
 	 */
 	public function get_settings() {
 		return array();
+	}
+
+	/**
+	 * Templates
+	 *
+	 * @return array
+	 */
+	public function templates() {
+		if ( ! isset( $this->template ) ) return array();
+		$template = $this->template;
+		return SP()->templates->$template;
 	}
 
 	/**
@@ -60,7 +70,7 @@ class SP_Settings_Page {
 		if ( $current_section )
 	    	do_action( 'sportspress_update_options_' . $this->template . '_' . $current_section );
 
-		if ( ! empty( $this->templates ) )
+		if ( ! empty( $this->templates() ) )
 			update_option( 'sportspress_' . $this->template . '_template_order', sp_array_value( $_POST, 'sportspress_' . $this->template . '_template_order', false ) );
 
 		if ( isset( $_POST['sportspress_template_visibility'] ) && is_array( $_POST['sportspress_template_visibility'] ) ) {
@@ -82,7 +92,7 @@ class SP_Settings_Page {
 	 * @return void
 	 */
 	public function layout_setting() {
-		$templates = apply_filters( 'sportspress_' . $this->template . '_templates', $this->templates );
+		$templates = apply_filters( 'sportspress_' . $this->template . '_templates', $this->templates() );
 		
 		$layout = get_option( 'sportspress_' . $this->template . '_template_order' );
 		if ( false === $layout ) {
@@ -135,7 +145,7 @@ class SP_Settings_Page {
 	 * @return void
 	 */
 	public function tabs_setting() {
-		$templates = apply_filters( 'sportspress_' . $this->template . '_templates', $this->templates );
+		$templates = apply_filters( 'sportspress_' . $this->template . '_templates', $this->templates() );
 		
 		$layout = get_option( 'sportspress_' . $this->template . '_template_order' );
 		if ( false === $layout ) {
