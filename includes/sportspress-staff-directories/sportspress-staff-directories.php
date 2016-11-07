@@ -313,7 +313,6 @@ class SportsPress_Staff_Directories {
 	public function add_text_options( $options = array() ) {
 		return array_merge( $options, array(
 			__( 'Contact Info', 'sportspress' ),
-			__( 'Directories', 'sportspress' ),
 			__( 'Email', 'sportspress' ),
 			__( 'Job', 'sportspress' ),
 			__( 'Name', 'sportspress' ),
