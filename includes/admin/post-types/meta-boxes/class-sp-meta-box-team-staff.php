@@ -92,7 +92,7 @@ class SP_Meta_Box_Team_Staff {
 						else:
 							?>
 							<tr class="sp-row alternate">
-								<td colspan="4">
+								<td colspan="5">
 									<?php _e( 'No results found.', 'sportspress' ); ?>
 								</td>
 							</tr>
@@ -101,7 +101,7 @@ class SP_Meta_Box_Team_Staff {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="4">
+						<td colspan="5">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) ); ?>
 						</td>
 					</tr>
