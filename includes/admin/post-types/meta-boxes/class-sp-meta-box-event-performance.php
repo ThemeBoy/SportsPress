@@ -158,6 +158,12 @@ class SP_Meta_Box_Event_Performance {
 						'orderby' => 'menu_order',
 						'order' => 'ASC',
 						'meta_query' => array(
+			        		'relation' => 'OR',
+							array(
+								'key' => 'sp_format',
+								'value' => 'number',
+								'compare' => 'NOT EXISTS',
+							),
 							array(
 								'key' => 'sp_format',
 								'value' => 'equation',

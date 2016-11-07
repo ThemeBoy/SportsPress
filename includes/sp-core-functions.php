@@ -936,7 +936,26 @@ if ( !function_exists( 'sp_column_checklist' ) ) {
 				<?php
 				$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
 				if ( empty( $posts ) ):
-					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1, 'order' => 'ASC', 'orderby' => 'menu_order' );
+					$query = array(
+						'post_type' => $meta,
+						'numberposts' => -1,
+						'post_per_page' => -1,
+						'order' => 'ASC',
+						'orderby' => 'menu_order',
+						'meta_query' => array(
+			        		'relation' => 'OR',
+							array(
+								'key' => 'sp_format',
+								'value' => 'number',
+								'compare' => 'NOT EXISTS',
+							),
+							array(
+								'key' => 'sp_format',
+								'value' => array( 'equation', 'text' ),
+								'compare' => 'NOT IN',
+							),
+						),
+					);
 					$posts = get_posts( $query );
 				endif;
 				if ( sizeof( $posts ) ):

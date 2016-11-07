@@ -121,10 +121,16 @@ class SP_Meta_Box_Equation {
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
 			'meta_query' => array(
+        		'relation' => 'OR',
 				array(
 					'key' => 'sp_format',
-					'value' => 'equation',
-					'compare' => '!=',
+					'value' => 'number',
+					'compare' => 'NOT EXISTS',
+				),
+				array(
+					'key' => 'sp_format',
+					'value' => array( 'equation', 'text' ),
+					'compare' => 'NOT IN',
 				),
 			),
 		);
