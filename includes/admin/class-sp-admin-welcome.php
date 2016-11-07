@@ -184,17 +184,17 @@ class SP_Admin_Welcome {
 				<div class="feature-section three-col">
 					<h2>Event Organization</h2>
 					<div class="col">
-						<img src="https://cdn-themeboy.netdna-ssl.com/wp-content/uploads/match-days.png" alt="Match Days"/>
+						<img src="https://www.themeboy.com/wp-content/uploads/match-days.png" alt="Match Days"/>
 						<h3>Match Days</h3>
 						<p>A match day can be added to any event and displayed directly inside the event details section. It can also be used as a filter for shortcodes and widgets.</p>
 					</div>
 					<div class="col">
-						<img src="https://cdn-themeboy.netdna-ssl.com/wp-content/uploads/event-status.gif" alt="Event Status"/>
+						<img src="https://www.themeboy.com/wp-content/uploads/event-status.gif" alt="Event Status"/>
 						<h3>Event Status</h3>
 						<p>For undecided, postponed, and cancelled events, a status can be displayed in place of the time. Leave the status alone to display the actual time of the event.</p>
 					</div>
 					<div class="col">
-						<img src="https://cdn-themeboy.netdna-ssl.com/wp-content/uploads/box-score-minutes.png" alt="Box Score Minutes"/>
+						<img src="https://www.themeboy.com/wp-content/uploads/box-score-minutes.png" alt="Box Score Minutes"/>
 						<h3>Box Score Minutes</h3>
 						<p>You can now can enter the time of goals or any other statistic for each player, and display them directly within the box score section of event pages.</p>
 					</div>
@@ -205,17 +205,17 @@ class SP_Admin_Welcome {
 				<div class="feature-section three-col">
 					<h2>Layout Enhancements</h2>
 					<div class="col">
-						<img src="https://cdn-themeboy.netdna-ssl.com/wp-content/uploads/template-tabs.gif" alt=""/>
+						<img src="https://www.themeboy.com/wp-content/uploads/template-tabs.gif" alt=""/>
 						<h3>Template Tabs</h3>
 						<p>Simply drag and drop any of the layout items to automatically group them into tabs. This will make your templates more compact and intuitive.</p>
 					</div>
 					<div class="col">
-						<img src="https://cdn-themeboy.netdna-ssl.com/wp-content/uploads/event-logo-options.png" alt=""/>
+						<img src="https://www.themeboy.com/wp-content/uploads/event-logo-options.png" alt=""/>
 						<h3>Event Logo Options</h3>
 						<p>Display the teams playing using an inline layout or as a block section, with logos on either side and the date and time/results in the middle.</p>
 					</div>
 					<div class="col">
-						<img src="https://cdn-themeboy.netdna-ssl.com/wp-content/uploads/player-profile-switching.png" alt=""/>
+						<img src="https://www.themeboy.com/wp-content/uploads/player-profile-switching.png" alt=""/>
 						<h3>Player Profile Switching</h3>
 						<p>We also added a dropdown above the player details box which allows your visitors to quickly switch to another player's profile.</p>
 					</div>
