@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     2.1.4
+ * @version     2.1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -936,7 +936,26 @@ if ( !function_exists( 'sp_column_checklist' ) ) {
 				<?php
 				$posts = get_pages( array( 'post_type' => $meta, 'number' => 0 ) );
 				if ( empty( $posts ) ):
-					$query = array( 'post_type' => $meta, 'numberposts' => -1, 'post_per_page' => -1, 'order' => 'ASC', 'orderby' => 'menu_order' );
+					$query = array(
+						'post_type' => $meta,
+						'numberposts' => -1,
+						'post_per_page' => -1,
+						'order' => 'ASC',
+						'orderby' => 'menu_order',
+						'meta_query' => array(
+			        		'relation' => 'OR',
+							array(
+								'key' => 'sp_format',
+								'value' => 'number',
+								'compare' => 'NOT EXISTS',
+							),
+							array(
+								'key' => 'sp_format',
+								'value' => array( 'equation', 'text' ),
+								'compare' => 'NOT IN',
+							),
+						),
+					);
 					$posts = get_posts( $query );
 				endif;
 				if ( sizeof( $posts ) ):
@@ -1345,7 +1364,7 @@ function sp_get_text_options() {
 		__( 'Excerpt', 'sportspress' ),
 		__( 'Fixtures', 'sportspress' ),
 		__( 'Home', 'sportspress' ),
-		__( 'League Tables', 'sportspress' ),
+		__( 'League Table', 'sportspress' ),
 		__( 'Logos', 'sportspress' ),
 		__( 'Match Day', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
@@ -1354,7 +1373,7 @@ function sp_get_text_options() {
 		__( 'Past Teams', 'sportspress' ),
 		__( 'Photo', 'sportspress' ),
 		__( 'Player', 'sportspress' ),
-		__( 'Player Lists', 'sportspress' ),
+		__( 'Players', 'sportspress' ),
 		__( 'Pos', 'sportspress' ),
 		__( 'Position', 'sportspress' ),
 		__( 'Postponed', 'sportspress' ),

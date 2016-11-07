@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.1.4
+ * @version     2.1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -23,9 +23,7 @@ class SP_Settings_Staff extends SP_Settings_Page {
 	public function __construct() {
 		$this->id    = 'staff';
 		$this->label = __( 'Staff', 'sportspress' );
-		
 		$this->template  = 'staff';
-		$this->templates = SP()->templates->staff;
 
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );

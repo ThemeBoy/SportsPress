@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.6
-Stable tag: 2.1.5
+Stable tag: 2.1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,13 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.1.6 =
+* Feature - Add equation format option to player performance.
+* Tweak - Add text options to change tab labels.
+* Fix - Activation errors using TGMPA.
+* Fix - Empty footer column in team staff table.
+* Preset - Update basketball preset.
 
 = 2.1.5 =
 * Feature - Add option to filter players by current or past team in player lists.

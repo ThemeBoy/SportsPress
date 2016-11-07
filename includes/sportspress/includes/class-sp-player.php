@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		2.0.13
+ * @version		2.1.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -125,6 +125,19 @@ class SP_Player extends SP_Custom_Post {
 			'posts_per_page' => 100,
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
+			'meta_query' => array(
+        		'relation' => 'OR',
+				array(
+					'key' => 'sp_format',
+					'value' => 'number',
+					'compare' => 'NOT EXISTS',
+				),
+				array(
+					'key' => 'sp_format',
+					'value' => array( 'equation', 'text' ),
+					'compare' => 'NOT IN',
+				),
+			),
 		);
 
 		$posts = get_posts( $args );

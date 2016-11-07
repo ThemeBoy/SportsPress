@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.9.13
+ * @version     2.1.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -92,7 +92,7 @@ class SP_Meta_Box_Team_Staff {
 						else:
 							?>
 							<tr class="sp-row alternate">
-								<td colspan="4">
+								<td colspan="5">
 									<?php _e( 'No results found.', 'sportspress' ); ?>
 								</td>
 							</tr>
@@ -101,7 +101,7 @@ class SP_Meta_Box_Team_Staff {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="4">
+						<td colspan="5">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) ); ?>
 						</td>
 					</tr>
