@@ -57,7 +57,7 @@
 						"Weight"
 	],
 	"statistics": [
-						{ "name" : "G", "equation" : "$eventsplayed", "description" : "Games played" },
+						{ "name" : "G", "equation" : "$eventsattended", "description" : "Games played" },
 						{ "name" : "GS", "equation" : "$eventsstarted", "description" : "Games started" },
 						{ "name" : "FG%", "equation" : "( $fgm / $fga ) * 100", "precision" : 3, "description" : "Field goal percentage" },
 						{ "name" : "FT%", "equation" : "( $ftm / $fta ) * 100", "precision" : 3, "description" : "Free throw percentage" },
