@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.1.6
+ * @version     2.1.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -70,7 +70,8 @@ class SP_Settings_Page {
 		if ( $current_section )
 	    	do_action( 'sportspress_update_options_' . $this->template . '_' . $current_section );
 
-		if ( ! empty( $this->templates() ) )
+	    $templates = $this->templates();
+		if ( ! empty( $templates ) )
 			update_option( 'sportspress_' . $this->template . '_template_order', sp_array_value( $_POST, 'sportspress_' . $this->template . '_template_order', false ) );
 
 		if ( isset( $_POST['sportspress_template_visibility'] ) && is_array( $_POST['sportspress_template_visibility'] ) ) {
@@ -92,7 +93,8 @@ class SP_Settings_Page {
 	 * @return void
 	 */
 	public function layout_setting() {
-		$templates = apply_filters( 'sportspress_' . $this->template . '_templates', $this->templates() );
+		$templates = $this->templates();
+		$templates = apply_filters( 'sportspress_' . $this->template . '_templates', $templates );
 		
 		$layout = get_option( 'sportspress_' . $this->template . '_template_order' );
 		if ( false === $layout ) {
@@ -145,7 +147,8 @@ class SP_Settings_Page {
 	 * @return void
 	 */
 	public function tabs_setting() {
-		$templates = apply_filters( 'sportspress_' . $this->template . '_templates', $this->templates() );
+		$templates = $this->templates();
+		$templates = apply_filters( 'sportspress_' . $this->template . '_templates', $templates );
 		
 		$layout = get_option( 'sportspress_' . $this->template . '_template_order' );
 		if ( false === $layout ) {
