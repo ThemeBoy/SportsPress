@@ -466,7 +466,7 @@ class SP_Player_List extends SP_Custom_Post {
 			endif;
 
 			// Add precision to object
-			$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 );
+			$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 ) + 0;
 
 			// Add column name to columns
 			$columns[ $stat->post_name ] = $stat->post_title;
