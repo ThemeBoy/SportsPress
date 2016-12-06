@@ -481,27 +481,26 @@ class SP_Player_List extends SP_Custom_Post {
 			$placeholders[ $player_id ] = array_merge( sp_array_value( $totals, $player_id, array() ), array_filter( sp_array_value( $placeholders, $player_id, array() ) ) );
 
 			foreach ( $stats as $stat ):
-				if ( sp_array_value( $placeholders[ $player_id ], $stat->post_name, '' ) == '' ):
-
-					if ( $stat->equation === null ):
-						$placeholder = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, null );
-						if ( $placeholder == null ):
-							$placeholder = '-';
-						endif;
-					else:
-						// Solve
-						$placeholder = sp_solve( $stat->equation, $placeholders[ $player_id ], $stat->precision );
-
-						// Adjustments
-						$adjustment = sp_array_value( $adjustments, $player_id, array() );
-
-						if ( $adjustment != 0 ):
-							$placeholder += sp_array_value( $adjustment, $stat->post_name, 0 );
-							$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
-						endif;
+				if ( $stat->equation === null ):
+					$placeholder = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, null );
+					if ( $placeholder == null ):
+						$placeholder = '-';
 					endif;
+				else:
+					// Solve
+					$placeholder = sp_solve( $stat->equation, $placeholders[ $player_id ], $stat->precision );
 
-					$placeholders[ $player_id ][ $stat->post_name ] = $placeholder;
+					// Adjustments
+					$adjustment = sp_array_value( $adjustments, $player_id, array() );
+
+					if ( $adjustment != 0 ):
+						$placeholder += sp_array_value( $adjustment, $stat->post_name, 0 );
+						$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
+					endif;
+				endif;
+
+				if ( $placeholder ):
+					$placeholders[ $player_id ][ $stat->post_name ] = sp_array_value( $placeholders[ $player_id ], $stat->post_name, '' ) + $placeholder;
 				endif;
 			endforeach;
 
