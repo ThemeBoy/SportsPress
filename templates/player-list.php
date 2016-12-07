@@ -98,36 +98,12 @@ else:
 endif;
 
 foreach ( $groups as $group ):
-
-	$output .= '<div class="sp-template sp-template-player-list">';
-
-	if ( ! empty( $group->name ) ):
-		$output .= '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
-		$output .= '<' . $grouptag . ' class="sp-table-caption player-group-name player-list-group-name">' . $group->name . '</' . $grouptag . '>';
-	endif;
-
-	$output .= '<div class="sp-table-wrapper">' .
-		'<table class="sp-player-list sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
-
-	if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
-		if ( in_array( $orderby, array( 'number', 'name' ) ) ):
-			$output .= '<th class="data-number">#</th>';
-		else:
-			$output .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
-		endif;
-	endif;
-
-	foreach( $labels as $key => $label ):
-		if ( $key !== 'number' && ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) ) )
-		$output .= '<th class="data-' . $key . '">'. $label . '</th>';
-	endforeach;
-
-	$output .= '</tr>' . '</thead>' . '<tbody>';
-
 	$i = 0;
 
 	if ( intval( $number ) > 0 )
 		$limit = $number;
+	
+	$tbody = '';
 
 	foreach( $data as $player_id => $row ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):
 
@@ -136,14 +112,14 @@ foreach ( $groups as $group ):
 		$name = sp_array_value( $row, 'name', null );
 		if ( ! $name ) continue;
 
-		$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
+		$tbody .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 		// Rank or number
 		if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
 			if ( isset( $orderby ) && $orderby != 'number' ):
-				$output .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
+				$tbody .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
 			else:
-				$output .= '<td class="data-number">' . sp_array_value( $row, 'number', '&nbsp;' ) . '</td>';
+				$tbody .= '<td class="data-number">' . sp_array_value( $row, 'number', '&nbsp;' ) . '</td>';
 			endif;
 		endif;
 		
@@ -173,7 +149,7 @@ foreach ( $groups as $group ):
 			$name = '<a href="' . $permalink . '">' . $name . '</a>';
 		endif;
 
-		$output .= '<td class="data-name' . $name_class . '">' . $name . '</td>';
+		$tbody .= '<td class="data-name' . $name_class . '">' . $name . '</td>';
 		
 		if ( array_key_exists( 'team', $labels ) ):
 			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_team', true ) );
@@ -181,7 +157,7 @@ foreach ( $groups as $group ):
 			if ( $link_teams && false !== get_post_status( $team ) ):
 				$team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
 			endif;
-			$output .= '<td class="data-team">' . $team_name . '</td>';
+			$tbody .= '<td class="data-team">' . $team_name . '</td>';
 		endif;
 		
 		if ( array_key_exists( 'position', $labels ) ):
@@ -192,21 +168,50 @@ foreach ( $groups as $group ):
 				$position_term = get_term_by( 'id', $position, 'sp_position', ARRAY_A );
 				$positions = sp_array_value( $position_term, 'name', '&mdash;' );
 			endif;
-			$output .= '<td class="data-position">' . $positions . '</td>';
+			$tbody .= '<td class="data-position">' . $positions . '</td>';
 		endif;
 
 		foreach( $labels as $key => $value ):
 			if ( in_array( $key, array( 'number', 'name', 'team', 'position' ) ) )
 				continue;
 			if ( ! is_array( $columns ) || in_array( $key, $columns ) )
-			$output .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+			$tbody .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
 		endforeach;
 
-		$output .= '</tr>';
+		$tbody .= '</tr>';
 
 		$i++;
 
 	endif; endforeach;
+	
+	if ( $i === 0 ) continue;
+
+	$output .= '<div class="sp-template sp-template-player-list">';
+
+	if ( ! empty( $group->name ) ):
+		$output .= '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
+		$output .= '<' . $grouptag . ' class="sp-table-caption player-group-name player-list-group-name">' . $group->name . '</' . $grouptag . '>';
+	endif;
+
+	$output .= '<div class="sp-table-wrapper">' .
+		'<table class="sp-player-list sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
+
+	if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
+		if ( in_array( $orderby, array( 'number', 'name' ) ) ):
+			$output .= '<th class="data-number">#</th>';
+		else:
+			$output .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
+		endif;
+	endif;
+
+	foreach( $labels as $key => $label ):
+		if ( $key !== 'number' && ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) ) )
+		$output .= '<th class="data-' . $key . '">'. $label . '</th>';
+	endforeach;
+
+	$output .= '</tr>' . '</thead>' . '<tbody>';
+	
+	$output .= $tbody;
 
 	$output .= '</tbody>' . '</table>' . '</div>';
 
