@@ -29,6 +29,12 @@ $defaults = array(
 
 extract( $defaults, EXTR_SKIP );
 
+// Determine number of players to display
+if ( -1 === $number ):
+	$number = (int) get_post_meta( $id, 'sp_number', true );
+	if ( $number <= 0 ) $number = -1;
+endif;
+
 $itemtag = tag_escape( $itemtag );
 $captiontag = tag_escape( $captiontag );
 $icontag = tag_escape( $icontag );
