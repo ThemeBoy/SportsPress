@@ -37,6 +37,12 @@ extract( $defaults, EXTR_SKIP );
 if ( isset( $performance ) )
 	$columns = $performance;
 
+// Determine number of players to display
+if ( -1 === $number ):
+	$number = (int) get_post_meta( $id, 'sp_number', true );
+	if ( $number <= 0 ) $number = -1;
+endif;
+
 // Explode into array
 if ( null !== $columns && ! is_array( $columns ) )
 	$columns = explode( ',', $columns );
