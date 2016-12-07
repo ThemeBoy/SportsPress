@@ -1363,6 +1363,7 @@ function sp_get_text_options() {
 		__( 'Events', 'sportspress' ),
 		__( 'Excerpt', 'sportspress' ),
 		__( 'Fixtures', 'sportspress' ),
+		__( 'Full Time', 'sportspress' ),
 		__( 'Home', 'sportspress' ),
 		__( 'League Table', 'sportspress' ),
 		__( 'Logos', 'sportspress' ),
