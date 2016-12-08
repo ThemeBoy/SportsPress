@@ -67,7 +67,7 @@ if ( $day != 'default' )
 	$calendar->day = $day;
 $data = $calendar->data();
 
-if ( $hide_if_empty && empty( $data ) ) return;
+if ( $hide_if_empty && empty( $data ) ) return false;
 
 if ( $show_title && false === $title && $id ):
 	$caption = $calendar->caption;

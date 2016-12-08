@@ -17,6 +17,7 @@ $defaults = array(
 	'league' => null,
 	'season' => null,
 	'team' => null,
+	'player' => null,
 	'number' => -1,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
@@ -42,6 +43,8 @@ if ( $season )
 	$calendar->season = $season;
 if ( $team )
 	$calendar->team = $team;
+if ( $player )
+	$calendar->player = $player;
 
 $args = array(
 	'id' => $id,
@@ -53,6 +56,7 @@ $args = array(
 	'league' => $league,
 	'season' => $season,
 	'team' => $team,
+	'player' => $player,
 	'number' => $number,
 	'link_teams' => $link_teams,
 	'link_events' => $link_events,
@@ -69,16 +73,32 @@ $args = array(
 
 echo '<div class="sp-fixtures-results">';
 
-echo '<div class="sp-widget-align-left">';
+ob_start();
 sp_get_template( 'event-blocks.php', $args );
-echo '</div>';
+$fixtures = ob_get_clean();
 
 $args['title'] = __( 'Results', 'sportspress' );
 $args['status'] = 'publish';
 $args['order'] = 'DESC';
 
-echo '<div class="sp-widget-align-right">';
+ob_start();
 sp_get_template( 'event-blocks.php', $args );
-echo '</div>';
+$results = ob_get_clean();
+
+if ( false == $fixtures || false == $results ) {
+
+	echo $fixtures;
+	echo $results;
+	
+} else {
+
+	echo '<div class="sp-widget-align-left">';
+	echo $fixtures;
+	echo '</div>';
+
+	echo '<div class="sp-widget-align-right">';
+	echo $results;
+	echo '</div>';
+}
 
 echo '</div>';

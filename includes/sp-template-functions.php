@@ -387,6 +387,19 @@ if ( ! function_exists( 'sportspress_output_player_statistics' ) ) {
 		sp_get_template( 'player-statistics.php' );
 	}
 }
+if ( ! function_exists( 'sportspress_output_player_events' ) ) {
+
+	/**
+	 * Output the player events.
+	 *
+	 * @access public
+	 * @subpackage	Player/Events
+	 * @return void
+	 */
+	function sportspress_output_player_events() {
+		sp_get_template( 'player-events.php' );
+	}
+}
 
 /** Single Player List ********************************************************/
 

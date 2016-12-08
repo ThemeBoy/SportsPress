@@ -42,6 +42,8 @@ class SportsPress_Calendars {
 		add_filter( 'sportspress_event_settings', array( $this, 'add_event_settings' ) );
 		add_filter( 'sportspress_team_options', array( $this, 'add_team_options' ) );
 		add_filter( 'sportspress_after_team_template', array( $this, 'add_team_template' ), 40 );
+		add_filter( 'sportspress_player_options', array( $this, 'add_player_options' ) );
+		add_filter( 'sportspress_after_player_template', array( $this, 'add_player_template' ), 40 );
 	}
 
 	/**
@@ -384,6 +386,44 @@ class SportsPress_Calendars {
 				array(
 					'title'     => __( 'Events', 'sportspress' ),
 					'id'        => 'sportspress_team_events_format',
+					'default'   => 'title',
+					'type'      => 'select',
+					'options'   => array(
+						'blocks' 	=> __( 'Blocks', 'sportspress' ),
+						'calendar' 	=> __( 'Calendar', 'sportspress' ),
+					),
+				),
+			)
+		);
+	}
+
+	/**
+	 * Add player template.
+	 *
+	 * @return array
+	 */
+	public function add_player_template( $templates ) {
+		return array_merge( $templates, array(
+			'events' => array(
+				'title' => __( 'Events', 'sportspress' ),
+				'option' => 'sportspress_player_show_events',
+				'action' => 'sportspress_output_player_events',
+				'default' => 'no',
+			),
+		) );
+	}
+
+	/**
+	 * Add player options.
+	 *
+	 * @return array
+	 */
+	public function add_player_options( $options ) {
+		return array_merge( $options,
+			array(
+				array(
+					'title'     => __( 'Events', 'sportspress' ),
+					'id'        => 'sportspress_player_events_format',
 					'default'   => 'title',
 					'type'      => 'select',
 					'options'   => array(
