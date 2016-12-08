@@ -569,6 +569,31 @@ class SP_Player extends SP_Custom_Post {
 
 		$columns = array_merge( $performance_labels, $stats );
 
+		$args = array(
+			'post_type' => array( 'sp_performance', 'sp_statistic' ),
+			'numberposts' => 100,
+			'posts_per_page' => 100,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		$posts = get_posts( $args );
+
+		if ( $posts ) {
+			$column_order = array();
+			$usecolumn_order = array();
+			foreach ( $posts as $post ) {
+				if ( array_key_exists( $post->post_name, $columns ) ) {
+					$column_order[ $post->post_name ] = $columns[ $post->post_name ];
+				}
+				if ( in_array( $post->post_name, $usecolumns ) ) {
+					$usecolumn_order[] = $post->post_name;
+				}
+			}
+			$columns = array_merge( $column_order, $columns );
+			$usecolumns = array_merge( $usecolumn_order, $usecolumns );
+		}
+
 		if ( $admin ):
 			$labels = array();
 			if ( is_array( $usecolumns ) ): foreach ( $usecolumns as $key ):
