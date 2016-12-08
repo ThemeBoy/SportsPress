@@ -1095,13 +1095,19 @@ if ( !function_exists( 'sp_update_post_meta' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_update_post_meta_recursive' ) ) {
-	function sp_update_post_meta_recursive( $post_id, $meta_key, $meta_value ) {
-		delete_post_meta( $post_id, $meta_key );
+if ( !function_exists( 'sp_add_post_meta_recursive' ) ) {
+	function sp_add_post_meta_recursive( $post_id, $meta_key, $meta_value ) {
 		$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $meta_value ) );
 		foreach ( $values as $value ):
 			add_post_meta( $post_id, $meta_key, $value, false );
 		endforeach;
+	}
+}
+
+if ( !function_exists( 'sp_update_post_meta_recursive' ) ) {
+	function sp_update_post_meta_recursive( $post_id, $meta_key, $meta_value ) {
+		delete_post_meta( $post_id, $meta_key );
+		sp_add_post_meta_recursive( $post_id, $meta_key, $meta_value );
 	}
 }
 
