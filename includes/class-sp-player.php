@@ -261,7 +261,7 @@ class SP_Player extends SP_Custom_Post {
 				$last10[ $key ] = 0;
 			endforeach;
 
-			// Get all events involving the team in current season
+			// Get all events involving the player in current season
 			$args = array(
 				'post_type' => 'sp_event',
 				'numberposts' => -1,
@@ -283,20 +283,41 @@ class SP_Player extends SP_Custom_Post {
 					'relation' => 'AND',
 				),
 			);
+			
+			if ( -1 !== $section ):
+				$args['meta_query'][] = array(
+					'key' => ( 1 === $section ? 'sp_defense' : 'sp_offense' ),
+					'value' => $this->ID
+				);
+			endif;
 
 			if ( $league_id ):
 				$args['tax_query'][] = array(
-					'taxonomy' => 'sp_league',
-					'field' => 'term_id',
-					'terms' => $league_id
+					'relation' => 'OR',
+					array(
+						'taxonomy' => 'sp_league',
+						'field' => 'term_id',
+						'terms' => $league_id
+					),
+					array(
+						'taxonomy' => 'sp_league',
+						'operator' => 'NOT EXISTS',
+					),
 				);
 			endif;
 
 			if ( $div_id ):
 				$args['tax_query'][] = array(
-					'taxonomy' => 'sp_season',
-					'field' => 'term_id',
-					'terms' => $div_id
+					'relation' => 'OR',
+					array(
+						'taxonomy' => 'sp_season',
+						'field' => 'term_id',
+						'terms' => $div_id
+					),
+					array(
+						'taxonomy' => 'sp_season',
+						'operator' => 'NOT EXISTS',
+					),
 				);
 			endif;
 
