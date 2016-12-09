@@ -409,7 +409,8 @@ class SP_League_Table extends SP_Custom_Post{
 			if ( $streak['name'] ):
 				$outcome = sp_array_value( $outcomes, $streak['name'], false );
 				if ( $outcome ):
-					$totals[ $team_id ]['streak'] = $outcome['abbreviation'] . $streak['count'];
+					$color = $outcome['color'];
+					$totals[ $team_id ]['streak'] = '<span style="color:' . $color . '">' . $outcome['abbreviation'] . $streak['count'] . '</span>';
 				else:
 					$totals[ $team_id ]['streak'] = null;
 				endif;
