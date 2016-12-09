@@ -36,6 +36,8 @@ class SP_League_Table extends SP_Custom_Post{
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
 		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
+		$link_events = get_option( 'sportspress_link_events', 'yes' ) === 'yes' ? true : false;
+		$form_limit = (int) get_option( 'sportspress_form_limit', 5 );
 
 		// Get labels from result variables
 		$result_labels = (array)sp_get_var_labels( 'sp_result' );
@@ -101,6 +103,9 @@ class SP_League_Table extends SP_Custom_Post{
 		// Initialize streaks counter
 		$streaks = array();
 
+		// Initialize form counter
+		$forms = array();
+
 		// Initialize last counters
 		$last5s = array();
 		$last10s = array();
@@ -115,6 +120,9 @@ class SP_League_Table extends SP_Custom_Post{
 
 			// Initialize team streaks counter
 			$streaks[ $team_id ] = array( 'name' => '', 'count' => 0, 'fire' => 1 );
+
+			// Initialize team form counter
+			$forms[ $team_id ] = array();
 
 			// Initialize team last counters
 			$last5s[ $team_id ] = array();
@@ -280,6 +288,12 @@ class SP_League_Table extends SP_Custom_Post{
 									$streaks[ $team_id ]['fire'] = 0;
 								endif;
 
+								// Add to form counter
+								$forms[ $team_id ][] = array(
+									'id' => $event->ID,
+									'outcome' => $outcome,
+								);
+
 								// Add to last 5 counter if sum is less than 5
 								if ( array_key_exists( $team_id, $last5s ) && array_key_exists( $outcome, $last5s[ $team_id ] ) && array_sum( $last5s[ $team_id ] ) < 5 ):
 									$last5s[ $team_id ][ $outcome ] ++;
@@ -352,31 +366,91 @@ class SP_League_Table extends SP_Custom_Post{
 			$e++;
 
 		endforeach;
+		
+		// Get outcomes
+		$outcomes = array();
+
+		$args = array(
+			'post_type' => 'sp_outcome',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+		);
+		$posts = get_posts( $args );
+		
+		if ( $posts ):
+			foreach ( $posts as $post ):
+				// Get ID
+				$id = $post->ID;
+
+				// Get title
+				$title = $post->post_title;
+
+				// Get abbreviation
+				$abbreviation = get_post_meta( $id, 'sp_abbreviation', true );
+				if ( ! $abbreviation ):
+					$abbreviation = substr( $title, 0, 1 );
+				endif;
+
+				// Get color
+				$color = get_post_meta( $id, 'sp_color', true );
+				if ( '' === $color ) $color = '#888888';
+
+				$outcomes[ $post->post_name ] = array(
+					'id' => $id,
+					'title' => $title,
+					'abbreviation' => $abbreviation,
+					'color' => $color,
+				);
+			endforeach;
+		endif;
 
 		foreach ( $streaks as $team_id => $streak ):
 			// Compile streaks counter and add to totals
 			if ( $streak['name'] ):
-				$args = array(
-					'name' => $streak['name'],
-					'post_type' => 'sp_outcome',
-					'post_status' => 'publish',
-					'posts_per_page' => 1,
-					'orderby' => 'menu_order',
-					'order' => 'ASC',
-				);
-				$outcomes = get_posts( $args );
-
-				if ( $outcomes ):
-					$outcome = reset( $outcomes );
-					$abbreviation = get_post_meta( $outcome->ID, 'sp_abbreviation', true );
-					if ( ! $abbreviation )
-						$abbreviation = substr( $outcome->post_title, 0, 1 );
-					$totals[ $team_id ]['streak'] = $abbreviation . $streak['count'];
+				$outcome = sp_array_value( $outcomes, $streak['name'], false );
+				if ( $outcome ):
+					$totals[ $team_id ]['streak'] = $outcome['abbreviation'] . $streak['count'];
 				else:
 					$totals[ $team_id ]['streak'] = null;
 				endif;
 			else:
 				$totals[ $team_id ]['streak'] = null;
+			endif;
+		endforeach;
+
+		foreach ( $forms as $team_id => $form ):
+			// Apply form limit
+			if ( $form_limit && sizeof( $form ) > $form_limit ):
+				$form = array_slice( $form, 0, $form_limit );
+			endif;
+
+			// Initialize team form array
+			$team_form = array();
+			
+			// Loop through event form
+			foreach ( $form as $form_event ):
+				if ( $form_event['id'] ):
+					$outcome = sp_array_value( $outcomes, $form_event['outcome'], false );
+					if ( $outcome ):
+						$abbreviation = $outcome['abbreviation'];
+						$color = $outcome['color'];
+						if ( $link_events ):
+							$abbreviation = '<a class="sp-form-event-link" href="' . get_post_permalink( $form_event['id'], false, true ) . '" style="background-color:' . $color . '">' . $abbreviation . '</a>';
+						else:
+							$abbreviation = '<span class="sp-form-event-link" style="background-color:' . $color . '">' . $abbreviation . '</span>';
+						endif;
+					
+						// Add to team form
+						$team_form[] = $abbreviation;
+					endif;
+				endif;
+			endforeach;
+
+			// Append to totals
+			if ( sizeof( $team_form ) ):
+				$totals[ $team_id ]['form'] = '<div class="sp-form-events">' . implode( ' ', $team_form ) . '</div>';
+			else:
+				$totals[ $team_id ]['form'] = null;
 			endif;
 		endforeach;
 
@@ -461,7 +535,7 @@ class SP_League_Table extends SP_Custom_Post{
 						if ( '$gamesback' == $stat->equation )
 							$gb_column = $stat->post_name;
 
-						if ( ! in_array( $stat->equation, array( '$gamesback', '$streak', '$last5', '$last10', '$homerecord', '$awayrecord' ) ) ):
+						if ( ! in_array( $stat->equation, array( '$gamesback', '$streak', '$form', '$last5', '$last10', '$homerecord', '$awayrecord' ) ) ):
 							// Adjustments
 							$adjustment = sp_array_value( $adjustments, $team_id, array() );
 

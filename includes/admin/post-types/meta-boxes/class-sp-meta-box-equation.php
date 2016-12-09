@@ -43,7 +43,7 @@ class SP_Meta_Box_Equation {
 					$options[ 'Outcomes' ] = self::optgroup( 'sp_outcome' );
 					break;
 				case 'preset':
-					$options[ 'Presets' ] = array( '$gamesback' => __( 'Games Back', 'sportspress' ), '$homerecord' => __( 'Home Record', 'sportspress' ), '$awayrecord' => __( 'Away Record', 'sportspress' ), '$streak' => __( 'Streak', 'sportspress' ), '$last5' => __( 'Last 5', 'sportspress' ), '$last10' => __( 'Last 10', 'sportspress' ) );
+					$options[ 'Presets' ] = array( '$gamesback' => __( 'Games Back', 'sportspress' ), '$homerecord' => __( 'Home Record', 'sportspress' ), '$awayrecord' => __( 'Away Record', 'sportspress' ), '$streak' => __( 'Streak', 'sportspress' ), '$form' => __( 'Form', 'sportspress' ), '$last5' => __( 'Last 5', 'sportspress' ), '$last10' => __( 'Last 10', 'sportspress' ) );
 					break;
 				case 'subset':
 					$options[ 'Subsets' ] = array( '_home' => '@' . __( 'Home', 'sportspress' ), '_away' => '@' . __( 'Away', 'sportspress' ), '_venue' => '@' . __( 'Venue', 'sportspress' ) );

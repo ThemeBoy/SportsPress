@@ -1161,6 +1161,11 @@ if ( !function_exists( 'sp_solve' ) ) {
 			// Return direct value
 			return sp_array_value( $vars, 'streak', $default );
 
+		elseif ( strpos( $equation, '$form' ) !== false ):
+
+			// Return direct value
+			return sp_array_value( $vars, 'form', $default );
+
 		elseif ( strpos( $equation, '$last5' ) !== false ):
 
 			// Return imploded string

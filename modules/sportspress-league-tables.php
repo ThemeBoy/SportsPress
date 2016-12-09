@@ -255,6 +255,19 @@ class SportsPress_League_Tables {
 						'step' 	=> 1
 					),
 				),
+				
+				array(
+					'title' 	=> __( 'Form', 'sportspress' ),
+					'id' 		=> 'sportspress_form_limit',
+					'class' 	=> 'small-text',
+					'default'	=> '5',
+					'desc' 		=> __( 'events', 'sportspress' ),
+					'type' 		=> 'number',
+					'custom_attributes' => array(
+						'min' 	=> 1,
+						'step' 	=> 1
+					),
+				),
 
 				array(
 					'title'     => __( 'Pos', 'sportspress' ),

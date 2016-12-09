@@ -94,6 +94,8 @@ class SP_Admin_Assets {
 
 		wp_register_script( 'sportspress-admin-equationbuilder', SP()->plugin_url() . '/assets/js/admin/equationbuilder.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable' ), SP_VERSION, true );
 
+		wp_register_script( 'sportspress-admin-colorpicker', SP()->plugin_url() . '/assets/js/admin/colorpicker.js', array( 'jquery', 'wp-color-picker', 'iris' ), SP_VERSION, true );
+
 		wp_register_script( 'sportspress-admin-widgets', SP()->plugin_url() . '/assets/js/admin/widgets.js', array( 'jquery' ), SP_VERSION, true );
 
 		wp_register_script( 'sportspress-admin-quickeditor', SP()->plugin_url() . '/assets/js/admin/quickeditor.js', array( 'jquery' ), SP_VERSION, true );
@@ -135,6 +137,11 @@ class SP_Admin_Assets {
 	    	wp_enqueue_script( 'google-maps' );
 	    	wp_enqueue_script( 'jquery-locationpicker' );
 	    	wp_enqueue_script( 'sportspress-admin-locationpicker' );
+		}
+
+		// Edit color
+		if ( in_array( $screen->id, array( 'sp_outcome' ) ) ) {
+	    	wp_enqueue_script( 'sportspress-admin-colorpicker' );
 		}
 
 		// Edit equation
