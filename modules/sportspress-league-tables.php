@@ -276,6 +276,17 @@ class SportsPress_League_Tables {
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
 				),
+
+				array(
+					'title'     => __( 'Tiebreaker', 'sportspress' ),
+					'id'        => 'sportspress_table_tiebreaker',
+					'default'   => 'none',
+					'type'      => 'select',
+					'options'   => array(
+						'none' => __( 'None', 'sportspress' ),
+						'h2h' => __( 'Head to head', 'sportspress' ),
+					),
+				),
 			) ),
 
 			array(
