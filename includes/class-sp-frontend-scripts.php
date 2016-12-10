@@ -167,7 +167,7 @@ class SP_Frontend_Scripts {
 			echo '.sp-event-calendar tbody td a,.sp-event-calendar tbody td a:hover{background: none;}';
 
 			if ( isset( $colors['primary'] ) )
-				echo '.sp-data-table th,.sp-calendar th,.sp-data-table tfoot,.sp-calendar tfoot,.sp-button,.sp-heading{background:' . $colors['primary'] . ' !important}.sp-data-table tbody a,.sp-calendar tbody a{color:' . $colors['primary'] . ' !important}';
+				echo '.sp-data-table th,.sp-calendar th,.sp-data-table tfoot,.sp-calendar tfoot,.sp-button,.sp-heading{background:' . $colors['primary'] . ' !important}.sp-calendar tbody a{color:' . $colors['primary'] . ' !important}';
 
 			if ( isset( $colors['background'] ) )
 				echo '.sp-data-table tbody,.sp-calendar tbody{background: ' . $colors['background'] . ' !important}';
