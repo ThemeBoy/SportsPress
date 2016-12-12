@@ -126,6 +126,7 @@
 .sp-template-gallery .sp-gallery-wrapper {
     border: 1px solid #e5e5e5 !important;
     display: table;
+    width: 100% !important;
 }
 
 .sp-template-gallery .gallery-item {
