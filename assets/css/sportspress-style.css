@@ -235,7 +235,6 @@
     line-height: 1.5 !important;
     font-weight: 500 !important;
     color: #999 !important;
-    color: #999 !important;
     display: block !important;
 }
 
@@ -384,6 +383,69 @@
 .sp-tweets {
     border: 1px solid #e5e5e5 !important;
     border-top: none !important;
+}
+
+/* Tournaments */
+
+.sp-tournament-bracket {
+    color: #333 !important;
+    background: transparent !important;
+    width: 100% !important;
+}
+
+.sp-tournament-bracket a,
+.sp-tournament-bracket a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.sp-tournament-bracket th {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+    text-align: center !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+}
+
+.sp-tournament-bracket .sp-team-name {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    border: 1px solid #e5e5e5 !important;
+}
+
+.sp-tournament-bracket .sp-heading,
+.sp-tournament-bracket .sp-heading:hover {
+    color: #fff !important;
+    background: #00a69c !important;
+    border-color: #00a69c !important;
+}
+
+.sp-tournament-bracket .sp-team-name:before {
+    border-left-color: #e5e5e5 !important;
+    border-right-color: #e5e5e5 !important;
+    left: -10px !important;
+}
+
+.sp-tournament-bracket .sp-team-flip .sp-team-name:before {
+    left: auto !important;
+    right: -10px !important;
+}
+
+.sp-tournament-bracket .sp-event {
+    border-color: #e5e5e5 !important;
+    border-width: 1px !important;
+}
+
+.sp-tournament-bracket .sp-event .sp-event-title {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #999 !important;
+    text-align: center !important;
+}
+
+.sp-tournament-bracket .sp-event .sp-event-title:hover {
+    color: #333 !important;
 }
 
 /* Tabs */
