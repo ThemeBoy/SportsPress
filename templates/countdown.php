@@ -66,7 +66,7 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 ?>
 <div class="sp-template sp-template-countdown">
 	<div class="sp-countdown-wrapper">
-		<h3 class="event-name">
+		<h3 class="event-name sp-event-name">
 			<?php
 			if ( $show_logos ) {
 				$teams = array_unique( (array) get_post_meta( $post->ID, 'sp_team' ) );
@@ -93,7 +93,7 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 			$venues = get_the_terms( $post->ID, 'sp_venue' );
 			if ( $venues ):
 				?>
-				<h5 class="event-venue">
+				<h5 class="event-venue sp-event-venue">
 					<?php
 					if ( $link_venues ) {
 						the_terms( $post->ID, 'sp_venue' );
@@ -116,7 +116,7 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 				foreach( $leagues as $league ):
 					$term = get_term( $league->term_id, 'sp_league' );
 					?>
-					<h5 class="event-league"><?php echo $term->name; ?></h5>
+					<h5 class="event-league sp-event-league"><?php echo $term->name; ?></h5>
 					<?php
 				endforeach;
 			endif;
