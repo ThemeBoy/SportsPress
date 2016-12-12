@@ -299,6 +299,40 @@
     font-weight: 400 !important;
 }
 
+/* Tabs */
+
+.sp-tab-menu {
+    display: block !important;
+    clear: both !important;
+    margin: 0 0 20px !important;
+    padding: 0 !important;
+    list-style: none !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+}
+
+.sp-tab-menu-item {
+    display: inline-block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.sp-tab-menu-item a {
+    margin: 0 0 -1px !important;
+    padding: 5px 10px;
+    border-bottom: 2px solid transparent !important;
+    box-shadow: none !important;
+}
+
+.sp-tab-menu-item a:hover {
+    color: #333 !important;
+}
+
+.sp-tab-menu-item-active a,
+.sp-tab-menu-item-active a:hover {
+    color: #00a69c !important;
+    border-bottom-color: #00a69c !important;
+}
+
 /* Media Queries */
 
 @media screen and (min-width: 801px) {
