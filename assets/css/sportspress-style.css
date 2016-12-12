@@ -1,7 +1,11 @@
 /* SportsPress Templates */
 
-.sp-template {
+.sp-template,
+.sp-data-table {
     font-family: "Roboto", "Helvetica", sans-serif !important;
+}
+
+.sp-template {
     margin-bottom: 20px !important;
 }
 
@@ -62,6 +66,7 @@
 
 .sp-view-all-link a:hover {
     color: #333 !important;
+    text-decoration: none !important;
 }
 
 .sp-form-event-link:hover {
@@ -154,8 +159,9 @@
 
 /* Countdowns */
 
-.sp-template-countdown h3,
-.sp-template-countdown h5 {
+.sp-template-countdown .sp-event-name,
+.sp-template-countdown .sp-event-venue,
+.sp-template-countdown .sp-event-league {
     margin: 0 !important;
     padding: 5px 10px !important;
     text-align: center !important;
@@ -166,19 +172,21 @@
     border-bottom: none !important;
 }
 
-.sp-template-countdown h3 {
+.sp-template-countdown .sp-event-name {
     font-size: 13px !important;
     font-weight: 400 !important;
     color: #333 !important;
 }
 
-.sp-template-countdown h5 {
+.sp-template-countdown .sp-event-venue,
+.sp-template-countdown .sp-event-league {
     font-size: 12px !important;
     font-weight: 500 !important;
     color: #999 !important;
 }
 
-.sp-template-countdown h5 a {
+.sp-template-countdown .sp-event-venue a,
+.sp-template-countdown .sp-event-league a {
     color: inherit !important;
 }
 
@@ -207,6 +215,43 @@
     color: #999 !important;
     color: #999 !important;
     display: block !important;
+}
+
+/* Event Blocks */
+
+.sp-template-event-blocks td {
+    padding: 0 !important;
+}
+
+.sp-template-event-blocks .sp-event-date {
+    color: #999 !important;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+}
+
+.sp-template-event-blocks .sp-event-date a {
+    color: inherit !important;
+}
+
+.sp-template-event-blocks .sp-event-results {
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #333 !important;
+}
+
+.sp-template-event-blocks .sp-event-results a {
+    color: inherit !important;
+}
+
+.sp-template-event-blocks .sp-event-results a:hover {
+    text-decoration: none !important;
+}
+
+.sp-template-event-blocks .sp-event-title {
+    font-size: 13px !important;
+    font-weight: 400 !important;
 }
 
 /* Media Queries */
