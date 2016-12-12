@@ -418,6 +418,28 @@
     border-top: none !important;
 }
 
+/* Scoreboards */
+
+.sp-header-scoreboard .sp-template-scoreboard {
+    margin-bottom: 0 !important;
+}
+
+.sp-template-scoreboard a:hover {
+    text-decoration: none !important;
+    color: #333 !important;
+}
+
+.sp-template-scoreboard .sp-scoreboard-date {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+}
+
+.sp-template-scoreboard .sp-scoreboard-nav {
+    color: #fff !important;
+    background: #00a69c !important;
+}
+
 /* Tournaments */
 
 .sp-tournament-bracket {
