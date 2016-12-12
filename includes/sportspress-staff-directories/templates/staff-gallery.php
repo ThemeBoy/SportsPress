@@ -9,6 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+$html5 = current_theme_supports( 'html5', 'gallery' );
 $defaults = array(
 	'id' => get_the_ID(),
 	'title' => false,
@@ -18,7 +19,7 @@ $defaults = array(
 	'captiontag' => 'dd',
 	'grouptag' => 'h4',
 	'columns' => 3,
-	'size' => 'thumbnail',
+	'size' => 'sportspress-crop-medium',
 	'show_all_staff_link' => false,
 	'link_posts' => get_option( 'sportspress_link_staff', 'yes' ) == 'yes' ? true : false,
 );
@@ -77,41 +78,42 @@ $size_class = sanitize_html_class( $size );
 $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
 echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 ?>
-<div class="sp-template sp-template-staff-gallery sp-template-gallery">
-	<?php echo $gallery_div; ?>
-	<?php
-	if ( is_int( $number ) && $number > 0 )
-		$limit = $number;
+<?php echo $gallery_div; ?>
+	<div class="sp-template sp-template-staff-gallery sp-template-gallery">
+		<div class="sp-staff-gallery-wrapper sp-gallery-wrapper">
+		<?php
+		if ( is_int( $number ) && $number > 0 )
+			$limit = $number;
 
-	$i = 0;
+		$i = 0;
 
-	foreach( $data as $staff_id => $row ):
+		foreach( $data as $staff_id => $row ):
 
-		if ( isset( $limit ) && $i >= $limit ) continue;
+			if ( isset( $limit ) && $i >= $limit ) continue;
 
-		$caption = get_the_title( $staff_id );
-		$caption = trim( $caption );
+			$caption = get_the_title( $staff_id );
+			$caption = trim( $caption );
 
-	    sp_get_template( 'staff-gallery-thumbnail.php', array(
-	    	'id' => $staff_id,
-	    	'row' => $row,
-	    	'itemtag' => $itemtag,
-	    	'icontag' => $icontag,
-	    	'captiontag' => $captiontag,
-	    	'caption' => $caption,
-	    	'size' => $size,
-	    	'link_posts' => $link_posts,
-	    ), '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
+		    sp_get_template( 'staff-gallery-thumbnail.php', array(
+		    	'id' => $staff_id,
+		    	'row' => $row,
+		    	'itemtag' => $itemtag,
+		    	'icontag' => $icontag,
+		    	'captiontag' => $captiontag,
+		    	'caption' => $caption,
+		    	'size' => $size,
+		    	'link_posts' => $link_posts,
+		    ), '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
 
-		$i++;
+			$i++;
 
-	endforeach;
+		endforeach;
 
-	echo '<br style="clear: both;" />';
-		
-	echo "</div>\n";
+		echo '<br style="clear: both;" />';
 
-	if ( $show_all_staff_link )
-		echo '<div class="sp-staff-gallery-link sp-gallery-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all staff', 'sportspress' ) . '</a></div>';
-	?>
+		if ( $show_all_staff_link )
+			echo '<div class="sp-staff-gallery-link sp-gallery-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all staff', 'sportspress' ) . '</a></div>';
+		?>
+		</div>
+	</div>
 </div>
