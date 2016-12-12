@@ -241,6 +241,10 @@
     display: table-caption !important;
 }
 
+.sp-template-event-calendar td {
+    padding: 10px 5px !important;
+}
+
 .sp-template-event-calendar tfoot td {
     padding: 10px 15px !important;
     border: none !important;
@@ -372,8 +376,22 @@
 
 /* Media Queries */
 
-@media screen and (min-width: 801px) {
+@media screen and (min-width: 601px) {
+    .sp-template-event-calendar tbody td {
+        padding: 15px 5px !important;
+    }
+
+    .widget .sp-template-event-calendar tbody td {
+        padding: 10px 5px !important;
+    }
 }
 
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 801px) {
+    .sp-template-event-calendar tbody td {
+        padding: 20px 5px !important;
+    }
+
+    .widget .sp-template-event-calendar tbody td {
+        padding: 10px 5px !important;
+    }
 }
