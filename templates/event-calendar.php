@@ -24,7 +24,7 @@ $defaults = array(
 	'team' => null,
 	'player' => null,
 	'initial' => true,
-	'caption_tag' => 'h4',
+	'caption_tag' => 'caption',
 	'show_all_events_link' => false,
 	'override_global_date' => false,
 );
