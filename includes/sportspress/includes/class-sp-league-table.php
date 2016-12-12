@@ -21,6 +21,9 @@ class SP_League_Table extends SP_Custom_Post{
 	/** @var array Inremental value for team position. */
 	public $counter;
 
+	/** @var array Teams to check for tiebreakers. */
+	public $tiebreakers = array();
+
 	/**
 	 * Returns formatted data
 	 *
@@ -28,7 +31,7 @@ class SP_League_Table extends SP_Custom_Post{
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $admin = false ) {
+	public function data( $admin = false, $team_ids = null ) {
 		$league_ids = sp_get_the_term_ids( $this->ID, 'sp_league' );
 		$season_ids = sp_get_the_term_ids( $this->ID, 'sp_season' );
 		$table_stats = (array)get_post_meta( $this->ID, 'sp_teams', true );
@@ -36,52 +39,64 @@ class SP_League_Table extends SP_Custom_Post{
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
 		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
+		$link_events = get_option( 'sportspress_link_events', 'yes' ) === 'yes' ? true : false;
+		$form_limit = (int) get_option( 'sportspress_form_limit', 5 );
 
 		// Get labels from result variables
 		$result_labels = (array)sp_get_var_labels( 'sp_result' );
 
 		// Get labels from outcome variables
 		$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
+		
+		// Determine if main loop
+		if ( $team_ids ) {
 
-		// Get teams automatically if set to auto
-		if ( 'auto' == $select ) {
-			$team_ids = array();
+			$is_main_loop = false;
 
-			$args = array(
-				'post_type' => 'sp_team',
-				'numberposts' => -1,
-				'posts_per_page' => -1,
-				'order' => 'ASC',
-				'tax_query' => array(
-					'relation' => 'AND',
-				),
-			);
-
-			if ( $league_ids ):
-				$args['tax_query'][] = array(
-					'taxonomy' => 'sp_league',
-					'field' => 'term_id',
-					'terms' => $league_ids
-				);
-			endif;
-
-			if ( $season_ids ):
-				$args['tax_query'][] = array(
-					'taxonomy' => 'sp_season',
-					'field' => 'term_id',
-					'terms' => $season_ids
-				);
-			endif;
-
-			$teams = get_posts( $args );
-
-			if ( $teams && is_array( $teams ) ) {
-				foreach ( $teams as $team ) {
-					$team_ids[] = $team->ID;
-				}
-			}
 		} else {
-			$team_ids = (array)get_post_meta( $this->ID, 'sp_team', false );
+
+			// Get teams automatically if set to auto
+			if ( 'auto' == $select ) {
+				$team_ids = array();
+
+				$args = array(
+					'post_type' => 'sp_team',
+					'numberposts' => -1,
+					'posts_per_page' => -1,
+					'order' => 'ASC',
+					'tax_query' => array(
+						'relation' => 'AND',
+					),
+				);
+
+				if ( $league_ids ):
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_league',
+						'field' => 'term_id',
+						'terms' => $league_ids
+					);
+				endif;
+
+				if ( $season_ids ):
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_season',
+						'field' => 'term_id',
+						'terms' => $season_ids
+					);
+				endif;
+
+				$teams = get_posts( $args );
+
+				if ( $teams && is_array( $teams ) ) {
+					foreach ( $teams as $team ) {
+						$team_ids[] = $team->ID;
+					}
+				}
+			} else {
+				$team_ids = (array)get_post_meta( $this->ID, 'sp_team', false );
+			}
+
+			$is_main_loop = true;
 		}
 
 		// Get all leagues populated with stats where available
@@ -101,6 +116,9 @@ class SP_League_Table extends SP_Custom_Post{
 		// Initialize streaks counter
 		$streaks = array();
 
+		// Initialize form counter
+		$forms = array();
+
 		// Initialize last counters
 		$last5s = array();
 		$last10s = array();
@@ -115,6 +133,9 @@ class SP_League_Table extends SP_Custom_Post{
 
 			// Initialize team streaks counter
 			$streaks[ $team_id ] = array( 'name' => '', 'count' => 0, 'fire' => 1 );
+
+			// Initialize team form counter
+			$forms[ $team_id ] = array();
 
 			// Initialize team last counters
 			$last5s[ $team_id ] = array();
@@ -217,6 +238,21 @@ class SP_League_Table extends SP_Custom_Post{
 
 		$args = apply_filters( 'sportspress_table_data_event_args', $args );
 		
+		if ( ! $is_main_loop ):
+			$args['meta_query']['relation'] = 'AND';
+			$meta_args = array(
+				'relation' => 'AND',
+			);
+			foreach ( $team_ids as $team_id ):
+				$meta_args[] = array(
+					'key' => 'sp_team',
+					'value' => $team_id,
+					'compare' => 'IN',
+				);
+			endforeach;
+			$args['meta_query'][] = $meta_args;
+		endif;
+		
 		$events = get_posts( $args );
 
 		$e = 0;
@@ -279,6 +315,12 @@ class SP_League_Table extends SP_Custom_Post{
 								else:
 									$streaks[ $team_id ]['fire'] = 0;
 								endif;
+
+								// Add to form counter
+								$forms[ $team_id ][] = array(
+									'id' => $event->ID,
+									'outcome' => $outcome,
+								);
 
 								// Add to last 5 counter if sum is less than 5
 								if ( array_key_exists( $team_id, $last5s ) && array_key_exists( $outcome, $last5s[ $team_id ] ) && array_sum( $last5s[ $team_id ] ) < 5 ):
@@ -352,31 +394,92 @@ class SP_League_Table extends SP_Custom_Post{
 			$e++;
 
 		endforeach;
+		
+		// Get outcomes
+		$outcomes = array();
+
+		$args = array(
+			'post_type' => 'sp_outcome',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+		);
+		$posts = get_posts( $args );
+		
+		if ( $posts ):
+			foreach ( $posts as $post ):
+				// Get ID
+				$id = $post->ID;
+
+				// Get title
+				$title = $post->post_title;
+
+				// Get abbreviation
+				$abbreviation = get_post_meta( $id, 'sp_abbreviation', true );
+				if ( ! $abbreviation ):
+					$abbreviation = substr( $title, 0, 1 );
+				endif;
+
+				// Get color
+				$color = get_post_meta( $id, 'sp_color', true );
+				if ( '' === $color ) $color = '#888888';
+
+				$outcomes[ $post->post_name ] = array(
+					'id' => $id,
+					'title' => $title,
+					'abbreviation' => $abbreviation,
+					'color' => $color,
+				);
+			endforeach;
+		endif;
 
 		foreach ( $streaks as $team_id => $streak ):
 			// Compile streaks counter and add to totals
 			if ( $streak['name'] ):
-				$args = array(
-					'name' => $streak['name'],
-					'post_type' => 'sp_outcome',
-					'post_status' => 'publish',
-					'posts_per_page' => 1,
-					'orderby' => 'menu_order',
-					'order' => 'ASC',
-				);
-				$outcomes = get_posts( $args );
-
-				if ( $outcomes ):
-					$outcome = reset( $outcomes );
-					$abbreviation = get_post_meta( $outcome->ID, 'sp_abbreviation', true );
-					if ( ! $abbreviation )
-						$abbreviation = substr( $outcome->post_title, 0, 1 );
-					$totals[ $team_id ]['streak'] = $abbreviation . $streak['count'];
+				$outcome = sp_array_value( $outcomes, $streak['name'], false );
+				if ( $outcome ):
+					$color = $outcome['color'];
+					$totals[ $team_id ]['streak'] = '<span style="color:' . $color . '">' . $outcome['abbreviation'] . $streak['count'] . '</span>';
 				else:
 					$totals[ $team_id ]['streak'] = null;
 				endif;
 			else:
 				$totals[ $team_id ]['streak'] = null;
+			endif;
+		endforeach;
+
+		foreach ( $forms as $team_id => $form ):
+			// Apply form limit
+			if ( $form_limit && sizeof( $form ) > $form_limit ):
+				$form = array_slice( $form, 0, $form_limit );
+			endif;
+
+			// Initialize team form array
+			$team_form = array();
+			
+			// Loop through event form
+			foreach ( $form as $form_event ):
+				if ( $form_event['id'] ):
+					$outcome = sp_array_value( $outcomes, $form_event['outcome'], false );
+					if ( $outcome ):
+						$abbreviation = $outcome['abbreviation'];
+						$color = $outcome['color'];
+						if ( $link_events ):
+							$abbreviation = '<a class="sp-form-event-link" href="' . get_post_permalink( $form_event['id'], false, true ) . '" style="background-color:' . $color . '">' . $abbreviation . '</a>';
+						else:
+							$abbreviation = '<span class="sp-form-event-link" style="background-color:' . $color . '">' . $abbreviation . '</span>';
+						endif;
+					
+						// Add to team form
+						$team_form[] = $abbreviation;
+					endif;
+				endif;
+			endforeach;
+
+			// Append to totals
+			if ( sizeof( $team_form ) ):
+				$totals[ $team_id ]['form'] = '<div class="sp-form-events">' . implode( ' ', $team_form ) . '</div>';
+			else:
+				$totals[ $team_id ]['form'] = null;
 			endif;
 		endforeach;
 
@@ -461,7 +564,7 @@ class SP_League_Table extends SP_Custom_Post{
 						if ( '$gamesback' == $stat->equation )
 							$gb_column = $stat->post_name;
 
-						if ( ! in_array( $stat->equation, array( '$gamesback', '$streak', '$last5', '$last10', '$homerecord', '$awayrecord' ) ) ):
+						if ( ! in_array( $stat->equation, array( '$gamesback', '$streak', '$form', '$last5', '$last10', '$homerecord', '$awayrecord' ) ) ):
 							// Adjustments
 							$adjustment = sp_array_value( $adjustments, $team_id, array() );
 
@@ -557,7 +660,36 @@ class SP_League_Table extends SP_Custom_Post{
 
 		// Calculate position of teams for ties
 		foreach ( $merged as $team_id => $team_columns ) {
-			$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns );
+			$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns, $team_id );
+		}
+
+		// Head to head table sorting
+		if ( $is_main_loop && 'h2h' == get_option( 'sportspress_table_tiebreaker', 'none' ) ) {
+			$order = array();
+			foreach ( $this->tiebreakers as $pos => $teams ) {
+				if ( sizeof( $teams ) === 1 ) {
+					$order[] = reset( $teams );
+				} elseif ( sizeof( $teams ) >= 2 ) {
+					$standings = $this->data( false, $teams );
+					$teams = array_keys( $standings );
+					foreach( $teams as $team ) {
+						$order[] = $team;
+					}
+				}
+			}
+
+			$head_to_head = array();
+			foreach ( $order as $team ) {
+				$head_to_head[ $team ] = sp_array_value( $merged, $team, array() );
+			}
+			$merged = $head_to_head;
+
+			// Recalculate position of teams after head to head
+			$this->pos = 0;
+			$this->counter = 0;
+			foreach ( $merged as $team_id => $team_columns ) {
+				$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns, $team_id );
+			}
 		}
 
 		// Rearrange data array to reflect values
@@ -566,7 +698,9 @@ class SP_League_Table extends SP_Custom_Post{
 			$data[ $key ] = $tempdata[ $key ];
 		endforeach;
 		
-		if ( $admin ):
+		if ( ! $is_main_loop ):
+			return $merged;
+		elseif ( $admin ):
 			$this->add_gb( $placeholders, $w, $l, $gb_column );
 			return array( $columns, $usecolumns, $data, $placeholders, $merged );
 		else:
@@ -613,17 +747,33 @@ class SP_League_Table extends SP_Custom_Post{
 	/**
 	 * Find accurate position of teams.
 	 *
-	 * @param array $a
-	 * @param array $b
+	 * @param array $columns
+	 * @param int $id
 	 * @return int
 	 */
-	public function calculate_pos( $columns ) {
+	public function calculate_pos( $columns, $id = 0 ) {
 		$this->counter++;
-
-		if ( 'yes' == get_option( 'sportspress_table_increment', 'no' ) ) {
-			return $this->counter;
+		
+		$pos = $this->increment( $columns );
+		
+		// Initialize tiebreaker position
+		if ( ! array_key_exists( $this->pos, $this->tiebreakers ) ) {
+			$this->tiebreakers[ $this->pos ] = array();
 		}
+		
+		// Add to tiebreakers
+		$this->tiebreakers[ $this->pos ][] = $id;
+		
+		return $pos;
+	}
 
+	/**
+	 * Increment position as needed.
+	 *
+	 * @param array $columns
+	 * @return int
+	 */
+	public function increment( $columns ) {
 		// Replace compare data and use last set
 		$compare = $this->compare;
 		$this->compare = $columns;
@@ -641,6 +791,10 @@ class SP_League_Table extends SP_Custom_Post{
 			endif;
 
 		endforeach;
+
+		if ( 'yes' == get_option( 'sportspress_table_increment', 'no' ) ) {
+			return $this->counter;
+		}
 
 		// Repeat position if equal
 		return $this->pos;

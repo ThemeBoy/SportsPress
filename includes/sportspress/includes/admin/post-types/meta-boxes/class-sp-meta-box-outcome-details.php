@@ -30,10 +30,13 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 			$readonly = false;
 		}
 		$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
+		$color = get_post_meta( $post->ID, 'sp_color', true );
 		$condition = get_post_meta( $post->ID, 'sp_condition', true );
 		$main_result = get_option( 'sportspress_primary_result', null );
 		$result = get_page_by_path( $main_result, ARRAY_A, 'sp_result' );
 		$label = sp_array_value( $result, 'post_title', __( 'Primary', 'sportspress' ) );
+		
+		if ( '' === $color ) $color = '#888888';
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
@@ -43,6 +46,13 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 		<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 		<p>
 			<input name="sp_abbreviation" type="text" id="sp_abbreviation" value="<?php echo $abbreviation; ?>" placeholder="<?php echo substr( $post->post_title, 0, 1 ); ?>">
+		</p>
+		<p><strong><?php _e( 'Color', 'sportspress' ); ?></strong></p>
+		<p>
+			<div class="sp-color-box">
+				<input name="sp_color" id="sp_color" type="text" value="<?php echo $color; ?>" class="colorpick">
+				<div id="sp_color" class="colorpickdiv"></div>
+		    </div>
 		</p>
 		<p><strong><?php _e( 'Condition', 'sportspress' ); ?></strong></p>
 		<p>
@@ -72,6 +82,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 	 */
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', array() ) );
+		update_post_meta( $post_id, 'sp_color', sp_array_value( $_POST, 'sp_color', array() ) );
 		update_post_meta( $post_id, 'sp_condition', sp_array_value( $_POST, 'sp_condition', array() ) );
 	}
 }

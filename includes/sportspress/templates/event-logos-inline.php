@@ -49,7 +49,7 @@ foreach ( $teams as $team ):
 endforeach;
 $team_logos = array_filter( $team_logos );
 if ( ! empty( $team_logos ) ):
-	echo '<div class="sp-template sp-template-event-logos"><div class="sp-event-logos sp-event-logos-' . sizeof( $teams ) . '">';
+	echo '<div class="sp-template sp-template-event-logos sp-template-event-logos-inline"><div class="sp-event-logos sp-event-logos-' . sizeof( $teams ) . '">';
 
 	// Assign delimiter
 	if ( $show_time && sizeof( $teams ) <= 2 ) {

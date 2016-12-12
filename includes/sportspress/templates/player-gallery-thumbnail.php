@@ -22,12 +22,12 @@ extract( $defaults, EXTR_SKIP );
 
 // Add player number to caption if available
 $player_number = get_post_meta( $id, 'sp_number', true );
-if ( $player_number )
+if ( '' !== $player_number )
 	$caption = '<strong>' . $player_number . '</strong> ' . $caption;
 
 // Add caption tag if has caption
 if ( $captiontag && $caption )
-	$caption = '<' . $captiontag . ' class="wp-caption-text gallery-caption small-3 columns' . ( $player_number ? ' has-number' : '' ) . '">' . wptexturize( $caption ) . '</' . $captiontag . '>';
+	$caption = '<' . $captiontag . ' class="wp-caption-text gallery-caption small-3 columns' . ( '' !== $player_number ? ' has-number' : '' ) . '">' . wptexturize( $caption ) . '</' . $captiontag . '>';
 
 if ( $link_posts )
 	$caption = '<a href="' . get_permalink( $id ) . '">' . $caption . '</a>';

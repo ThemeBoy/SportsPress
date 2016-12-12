@@ -261,7 +261,7 @@ class SP_Player extends SP_Custom_Post {
 				$last10[ $key ] = 0;
 			endforeach;
 
-			// Get all events involving the team in current season
+			// Get all events involving the player in current season
 			$args = array(
 				'post_type' => 'sp_event',
 				'numberposts' => -1,
@@ -283,20 +283,41 @@ class SP_Player extends SP_Custom_Post {
 					'relation' => 'AND',
 				),
 			);
+			
+			if ( -1 !== $section ):
+				$args['meta_query'][] = array(
+					'key' => ( 1 === $section ? 'sp_defense' : 'sp_offense' ),
+					'value' => $this->ID
+				);
+			endif;
 
 			if ( $league_id ):
 				$args['tax_query'][] = array(
-					'taxonomy' => 'sp_league',
-					'field' => 'term_id',
-					'terms' => $league_id
+					'relation' => 'OR',
+					array(
+						'taxonomy' => 'sp_league',
+						'field' => 'term_id',
+						'terms' => $league_id
+					),
+					array(
+						'taxonomy' => 'sp_league',
+						'operator' => 'NOT EXISTS',
+					),
 				);
 			endif;
 
 			if ( $div_id ):
 				$args['tax_query'][] = array(
-					'taxonomy' => 'sp_season',
-					'field' => 'term_id',
-					'terms' => $div_id
+					'relation' => 'OR',
+					array(
+						'taxonomy' => 'sp_season',
+						'field' => 'term_id',
+						'terms' => $div_id
+					),
+					array(
+						'taxonomy' => 'sp_season',
+						'operator' => 'NOT EXISTS',
+					),
 				);
 			endif;
 
@@ -568,6 +589,31 @@ class SP_Player extends SP_Custom_Post {
 		endforeach;
 
 		$columns = array_merge( $performance_labels, $stats );
+
+		$args = array(
+			'post_type' => array( 'sp_performance', 'sp_statistic' ),
+			'numberposts' => 100,
+			'posts_per_page' => 100,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		$posts = get_posts( $args );
+
+		if ( $posts ) {
+			$column_order = array();
+			$usecolumn_order = array();
+			foreach ( $posts as $post ) {
+				if ( array_key_exists( $post->post_name, $columns ) ) {
+					$column_order[ $post->post_name ] = $columns[ $post->post_name ];
+				}
+				if ( in_array( $post->post_name, $usecolumns ) ) {
+					$usecolumn_order[] = $post->post_name;
+				}
+			}
+			$columns = array_merge( $column_order, $columns );
+			$usecolumns = array_merge( $usecolumn_order, $usecolumns );
+		}
 
 		if ( $admin ):
 			$labels = array();

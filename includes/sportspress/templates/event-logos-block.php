@@ -7,7 +7,7 @@
  * @version     2.1.3
  */
 ?>
-<div class="sp-template sp-template-event-blocks sp-template-event-logos-block">
+<div class="sp-template sp-template-event-logos sp-template-event-blocks sp-template-event-logos-block">
 	<div class="sp-table-wrapper">
 		<table class="sp-event-blocks sp-data-table" data-sp-rows="1">
 			<thead><tr><th></th></tr></thead> <?php # Required for DataTables ?>

@@ -29,6 +29,12 @@ $defaults = array(
 
 extract( $defaults, EXTR_SKIP );
 
+// Determine number of players to display
+if ( -1 === $number ):
+	$number = (int) get_post_meta( $id, 'sp_number', true );
+	if ( $number <= 0 ) $number = -1;
+endif;
+
 $itemtag = tag_escape( $itemtag );
 $captiontag = tag_escape( $captiontag );
 $icontag = tag_escape( $icontag );
@@ -120,13 +126,11 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 	foreach ( $groups as $group ):
 		$i = 0;
 
-		echo '<div class="sp-template sp-template-player-gallery sp-template-gallery">';
-		
-		echo '<div class="sp-player-gallery-wrapper">';
+		$gallery = '';
 
 		if ( ! empty( $group->name ) ):
-			echo '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
-			echo '<' . $grouptag . ' class="player-group-name player-gallery-group-name">' . $group->name . '</' . $grouptag . '>';
+			$gallery .= '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
+			$gallery .= '<' . $grouptag . ' class="sp-gallery-group-name player-group-name player-gallery-group-name">' . $group->name . '</' . $grouptag . '>';
 		endif;
 
 		foreach( $data as $player_id => $performance ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):
@@ -135,6 +139,8 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 
 			$caption = get_the_title( $player_id );
 			$caption = trim( $caption );
+
+			ob_start();
 
 		    sp_get_template( 'player-gallery-thumbnail.php', array(
 		    	'id' => $player_id,
@@ -146,11 +152,21 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 		    	'link_posts' => $link_posts,
 		    ) );
 
+			$gallery .= ob_get_clean();
+
 			$i++;
 
 		endif; endforeach;
 
 		$j++;
+	
+		if ( $i === 0 ) continue;
+
+		echo '<div class="sp-template sp-template-player-gallery sp-template-gallery">';
+		
+		echo '<div class="sp-player-gallery-wrapper sp-gallery-wrapper">';
+		
+		echo $gallery;
 
 		if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
 			echo '<br style="clear: both" />';

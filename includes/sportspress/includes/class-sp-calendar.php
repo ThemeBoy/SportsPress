@@ -95,7 +95,7 @@ class SP_Calendar extends SP_Custom_Post {
 			$this->day = get_post_meta( $this->ID, 'sp_day', true );
 
 		if ( ! $this->number )
-			$this->number = 500;
+			$this->number = -1;
 	}
 
 	/**

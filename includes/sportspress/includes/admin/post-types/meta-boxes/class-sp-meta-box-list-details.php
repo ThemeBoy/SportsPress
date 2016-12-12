@@ -27,6 +27,7 @@ class SP_Meta_Box_List_Details {
 		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
 		$select = get_post_meta( $post->ID, 'sp_select', true );
+		$number = get_post_meta( $post->ID, 'sp_number', true );
 		if ( ! $select ) {
 			global $pagenow;
 			$select = ( 'post-new.php' == $pagenow ? 'auto' : 'manual' );
@@ -104,6 +105,11 @@ class SP_Meta_Box_List_Details {
 			if ( 'manual' == $select ) {
 				sp_post_checklist( $post->ID, 'sp_player', ( 'auto' == $select ? 'none' : 'block' ), array( 'sp_league', 'sp_season', 'sp_current_team' ) );
 				sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
+			} else {
+				?>
+				<p><strong><?php _e( 'Display', 'sportspress' ); ?></strong></p>
+				<p><input name="sp_number" id="sp_number" type="number" step="1" min="0" class="small-text" placeholder="<?php _e( 'All', 'sportspress' ); ?>" value="<?php echo $number; ?>"> <?php _e( 'Players', 'sportspress' ); ?></p>
+				<?php
 			}
 			?>
 		</div>
@@ -121,6 +127,7 @@ class SP_Meta_Box_List_Details {
 		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', array() ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
 		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array() ) );
+		update_post_meta( $post_id, 'sp_number', sp_array_value( $_POST, 'sp_number', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
 	}
 }

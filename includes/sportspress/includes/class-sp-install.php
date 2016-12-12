@@ -423,6 +423,10 @@ class SP_Install {
 				update_option( 'sportspress_staff_template_order', $layout );
 			}
 		}
+		
+		if ( version_compare( $version, '2.2', '<' ) ) {
+			update_option( 'sportspress_frontend_styles', 'no' );
+		}
 	}
 
 	/**

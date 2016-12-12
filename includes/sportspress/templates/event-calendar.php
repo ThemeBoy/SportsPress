@@ -24,7 +24,7 @@ $defaults = array(
 	'team' => null,
 	'player' => null,
 	'initial' => true,
-	'caption_tag' => 'h4',
+	'caption_tag' => 'caption',
 	'show_all_events_link' => false,
 	'override_global_date' => false,
 );
@@ -115,7 +115,7 @@ $next = $wpdb->get_row("SELECT MONTH(post_date) AS month, YEAR(post_date) AS yea
 $calendar_caption = _x('%1$s %2$s', 'calendar caption', 'sportspress');
 $calendar_output = '
 <div class="sp-calendar-wrapper">
-<table id="wp-calendar" class="sp-calendar sp-event-calendar">
+<table id="wp-calendar" class="sp-calendar sp-event-calendar sp-data-table">
 <caption class="sp-table-caption">' . ( $caption_tag == 'caption' ? '' : '<' . $caption_tag . '>' ) . sprintf($calendar_caption, $wp_locale->get_month($thismonth), date('Y', $unixmonth)) . ( $caption_tag == 'caption' ? '' : '</' . $caption_tag . '>' ) . '</caption>
 <thead>
 <tr>';
@@ -140,7 +140,7 @@ $calendar_output .= '
 <tr>';
 
 if ( $previous ) {
-	$calendar_output .= "\n\t\t".'<td colspan="3" id="prev"><a data-tooltip data-options="disable_for_touch:true" class="has-tooltip tip-right" href="' . add_query_arg( array( 'sp_year' => $previous->year, 'sp_month' => $previous->month ) ) . '" title="' . esc_attr( sprintf(_x('%1$s %2$s', 'calendar caption', 'sportspress'), $wp_locale->get_month($previous->month), date('Y', mktime(0, 0 , 0, $previous->month, 1, $previous->year)))) . '">&laquo; ' . $wp_locale->get_month_abbrev($wp_locale->get_month($previous->month)) . '</a></td>';
+	$calendar_output .= "\n\t\t".'<td colspan="3" id="prev" class="sp-previous-month"><a data-tooltip data-options="disable_for_touch:true" class="has-tooltip tip-right" href="' . add_query_arg( array( 'sp_year' => $previous->year, 'sp_month' => $previous->month ) ) . '" title="' . esc_attr( sprintf(_x('%1$s %2$s', 'calendar caption', 'sportspress'), $wp_locale->get_month($previous->month), date('Y', mktime(0, 0 , 0, $previous->month, 1, $previous->year)))) . '">&laquo; ' . $wp_locale->get_month_abbrev($wp_locale->get_month($previous->month)) . '</a></td>';
 } else {
 	$calendar_output .= "\n\t\t".'<td colspan="3" id="prev" class="pad">&nbsp;</td>';
 }
@@ -148,7 +148,7 @@ if ( $previous ) {
 $calendar_output .= "\n\t\t".'<td class="pad">&nbsp;</td>';
 
 if ( $next ) {
-	$calendar_output .= "\n\t\t".'<td colspan="3" id="next"><a data-tooltip data-options="disable_for_touch:true" class="has-tooltip tip-left" href="' . add_query_arg( array( 'sp_year' => $next->year, 'sp_month' => $next->month ) ) . '" title="' . esc_attr( sprintf(_x('%1$s %2$s', 'calendar caption', 'sportspress'), $wp_locale->get_month($next->month), date('Y', mktime(0, 0 , 0, $next->month, 1, $next->year))) ) . '">' . $wp_locale->get_month_abbrev($wp_locale->get_month($next->month)) . ' &raquo;</a></td>';
+	$calendar_output .= "\n\t\t".'<td colspan="3" id="next" class="sp-next-month"><a data-tooltip data-options="disable_for_touch:true" class="has-tooltip tip-left" href="' . add_query_arg( array( 'sp_year' => $next->year, 'sp_month' => $next->month ) ) . '" title="' . esc_attr( sprintf(_x('%1$s %2$s', 'calendar caption', 'sportspress'), $wp_locale->get_month($next->month), date('Y', mktime(0, 0 , 0, $next->month, 1, $next->year))) ) . '">' . $wp_locale->get_month_abbrev($wp_locale->get_month($next->month)) . ' &raquo;</a></td>';
 } else {
 	$calendar_output .= "\n\t\t".'<td colspan="3" id="next" class="pad">&nbsp;</td>';
 }
@@ -214,7 +214,7 @@ for ( $day = 1; $day <= $daysinmonth; ++$day ) {
 	$newrow = false;
 
 	if ( $day == gmdate('j', current_time('timestamp')) && $thismonth == gmdate('m', current_time('timestamp')) && $thisyear == gmdate('Y', current_time('timestamp')) )
-		$calendar_output .= '<td id="today">';
+		$calendar_output .= '<td id="today" class="sp-highlight">';
 	else
 		$calendar_output .= '<td>';
 

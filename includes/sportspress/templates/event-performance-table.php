@@ -97,15 +97,16 @@ if ( ! isset( $subs ) ) $subs = array();
 							if ( $show_minutes && ! empty( $sub ) ):
 								preg_match( '#\((.*?)\)#', $data[ $lineup_sub_relation[ $player_id ] ]['sub'], $match );
 								if ( ! empty( $match ) && isset( $match[1] ) ):
-									$name .= $match[1];
+									$name .= ' (' . $match[1] . ')';
 								endif;
 							endif;
 						elseif ( isset( $row['sub'] ) && $row['sub'] ):
-							$name .= ' <span class="sub-out" title="' . get_the_title( $row[ 'sub' ] ) . '">' . sp_array_value( sp_array_value( $data, $row['sub'], array() ), 'number', null ) . '</span>';
+							$subbed = (int) $row['sub'];
+							$name .= ' <span class="sub-out" title="' . get_the_title( $row[ 'sub' ] ) . '">' . sp_array_value( sp_array_value( $data, $subbed, array() ), 'number', null ) . '</span>';
 							if ( $show_minutes && ! empty( $row['sub'] ) ):
 								preg_match( '#\((.*?)\)#', $row['sub'], $match );
 								if ( ! empty( $match ) && isset( $match[1] ) ):
-									$name .= $match[1];
+									$name .= ' (' . $match[1] . ')';
 								endif;
 							endif;
 						endif;

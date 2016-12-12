@@ -1095,13 +1095,19 @@ if ( !function_exists( 'sp_update_post_meta' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_update_post_meta_recursive' ) ) {
-	function sp_update_post_meta_recursive( $post_id, $meta_key, $meta_value ) {
-		delete_post_meta( $post_id, $meta_key );
+if ( !function_exists( 'sp_add_post_meta_recursive' ) ) {
+	function sp_add_post_meta_recursive( $post_id, $meta_key, $meta_value ) {
 		$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $meta_value ) );
 		foreach ( $values as $value ):
 			add_post_meta( $post_id, $meta_key, $value, false );
 		endforeach;
+	}
+}
+
+if ( !function_exists( 'sp_update_post_meta_recursive' ) ) {
+	function sp_update_post_meta_recursive( $post_id, $meta_key, $meta_value ) {
+		delete_post_meta( $post_id, $meta_key );
+		sp_add_post_meta_recursive( $post_id, $meta_key, $meta_value );
 	}
 }
 
@@ -1154,6 +1160,11 @@ if ( !function_exists( 'sp_solve' ) ) {
 
 			// Return direct value
 			return sp_array_value( $vars, 'streak', $default );
+
+		elseif ( strpos( $equation, '$form' ) !== false ):
+
+			// Return direct value
+			return sp_array_value( $vars, 'form', $default );
 
 		elseif ( strpos( $equation, '$last5' ) !== false ):
 
@@ -1363,6 +1374,7 @@ function sp_get_text_options() {
 		__( 'Events', 'sportspress' ),
 		__( 'Excerpt', 'sportspress' ),
 		__( 'Fixtures', 'sportspress' ),
+		__( 'Full Time', 'sportspress' ),
 		__( 'Home', 'sportspress' ),
 		__( 'League Table', 'sportspress' ),
 		__( 'Logos', 'sportspress' ),
