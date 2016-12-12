@@ -340,6 +340,14 @@
     margin: 0 !important;
 }
 
+/* Teams */
+
+.sp-template-logo {
+    float: right !important;
+    margin: 0 0 20px 20px !important;
+    clear: none !important;
+}
+
 /* Profiles */
 
 .sp-template-details dl {
@@ -410,6 +418,12 @@
 .sp-tab-menu-item-active a:hover {
     color: #00a69c !important;
     border-bottom-color: #00a69c !important;
+}
+
+/* Post Content */
+
+.sp-post-content {
+    clear: none;
 }
 
 /* Media Queries */
