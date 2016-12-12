@@ -426,6 +426,7 @@
 .sp-form-events .sp-form-event-link {
 	display: inline-block;
 	text-align: center;
+	vertical-align: text-top;
 	line-height: 1.5em;
 	width: 1.5em;
 	margin: 0 0 0.25em;
