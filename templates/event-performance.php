@@ -265,11 +265,11 @@ if ( is_array( $teams ) ):
 					) );
 				}
 			}
-		}
 		
-		if ( $show_staff ):
-			sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
-		endif;
+			if ( $show_staff ):
+				sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
+			endif;
+		}
 		?>
 		<?php
 	}
