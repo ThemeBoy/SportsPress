@@ -316,7 +316,8 @@
     font-weight: 400 !important;
 }
 
-.sp-template-event-logos-block .sp-team-name {
+.sp-template-event-logos .sp-team-name,
+.sp-template-event-logos .sp-team-result {
     font-size: 20px !important;
     font-weight: 400 !important;
     padding: 0 !important;
@@ -324,7 +325,7 @@
     color: #333 !important;
 }
 
-.sp-template-event-logos-block a:hover {
+.sp-template-event-logos a:hover {
     text-decoration: none !important;
 }
 
