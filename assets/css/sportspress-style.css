@@ -111,6 +111,10 @@
     border: none !important;
 }
 
+.sp-data-table th a {
+    color: inherit !important;
+}
+
 .sp-data-table .data-name {
     text-align: left !important;
 }
@@ -303,10 +307,25 @@
     text-decoration: none !important;
 }
 
-.sp-template-event-blocks .sp-event-title {
+.sp-template-event-blocks .sp-event-title,
+.sp-template-event-blocks .sp-event-status {
+    display: block !important;
     padding: 0 !important;
+    margin: 10px !important;
     font-size: 13px !important;
     font-weight: 400 !important;
+}
+
+.sp-template-event-logos-block .sp-team-name {
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #333 !important;
+}
+
+.sp-template-event-logos-block a:hover {
+    text-decoration: none !important;
 }
 
 /* Profiles */
@@ -338,6 +357,13 @@
 
 .sp-template-details dd:last-child {
     margin-bottom: 0 !important;
+}
+
+/* Twitter */
+
+.sp-tweets {
+    border: 1px solid #e5e5e5 !important;
+    border-top: none !important;
 }
 
 /* Tabs */
