@@ -22,6 +22,7 @@
 /* Templates */
 .sp-template {
 	margin-bottom: 1.5em;
+	overflow: hidden;
 }
 .sp-template-profile-selector {
 	clear: both;
@@ -180,8 +181,8 @@
 	width: 2em;
 	height: 2em;
 	margin-right: 0.5em;
-	display: block;
-	float: left;
+	display: inline-block;
+	vertical-align: middle;
 	text-align: center;
 }
 .sp-league-table .data-name .team-logo img {
@@ -200,8 +201,8 @@
 	width: 2em;
 	height: 2em;
 	margin-right: 0.5em;
-	display: block;
-	float: left;
+	display: inline-block;
+	vertical-align: middle;
 	text-align: center;
 }
 .sp-player-list .data-name .player-photo img,
@@ -422,17 +423,18 @@
 	text-align: left;
 }
 
-.sp-form-event-link {
+.sp-form-events .sp-form-event-link {
 	display: inline-block;
 	text-align: center;
+	line-height: 1.5em;
 	width: 1.5em;
 	margin: 0 0 0.25em;
-	color: #fff;
+	color: #fff !important;
 	font-weight: normal;
 }
 
-.sp-form-event-link:hover {
-	color: #fff;
+.sp-form-events .sp-form-event-link:hover {
+	color: #fff !important;
 }
 
 /* Countdowns */
@@ -479,11 +481,6 @@
 .sp-view-all-link {
 	display: block;
 	margin-top: 0.5em;
-}
-
-/* Alternate */
-.sp-data-table tbody tr.odd {
-	background: rgba(0, 0, 0, 0.02);
 }
 
 /* Highlight & Heading */

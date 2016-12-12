@@ -1,0 +1,218 @@
+/* SportsPress Templates */
+
+.sp-template {
+    font-family: "Roboto", "Helvetica", sans-serif !important;
+    margin-bottom: 20px !important;
+}
+
+.sp-template *,
+.sp-data-table * {
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
+/* Headings */
+
+.sp-table-caption {
+    margin: 0 !important;
+    padding: 15px !important;
+    background: #fff !important;
+    border: 1px solid #e5e5e5 !important;
+    border-bottom: none !important;
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    display: table !important;
+    width: 100% !important;
+}
+
+/* Links */
+
+.sp-template a,
+.sp-data-table a {
+    box-shadow: none !important;
+    text-decoration: none !important;
+    color: #00a69c !important;
+}
+
+.sp-template a:hover,
+.sp-data-table a:hover {
+    text-decoration: underline !important;
+}
+
+.sp-view-all-link {
+    padding: 10px 15px !important;
+    margin: 0 !important;
+    background: #fff !important;
+    border: 1px solid #e5e5e5 !important;
+    border-top: none !important;
+    overflow: hidden !important;
+    display: table !important;
+    width: 100% !important;
+    text-align: right !important;
+}
+
+.sp-view-all-link a {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    text-decoration: none !important;
+    color: #999 !important;
+}
+
+.sp-view-all-link a:hover {
+    color: #333 !important;
+}
+
+.sp-form-event-link:hover {
+    text-decoration: none !important;
+}
+
+/* Images */
+
+.sp-template img {
+    box-shadow: none !important;
+}
+
+/* Tables */
+
+.sp-data-table {
+    color: #333 !important;
+    background: #fff !important;
+    border-collapse: collapse !important;
+    border: 1px solid #e5e5e5 !important;
+    width: 100% !important;
+}
+
+.sp-data-table th,
+.sp-data-table td {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    border: 1px solid #e5e5e5 !important;
+    padding: 5px 10px !important;
+    text-align: center !important;
+}
+
+.sp-data-table th {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+    border: none !important;
+}
+
+.sp-data-table .data-name {
+    text-align: left !important;
+}
+
+.sp-data-table .sp-highlight,
+.sp-data-table .highlighted td {
+    font-weight: 500 !important;
+    background: #f9f9f9 !important;
+}
+
+/* Galleries */
+
+.sp-template-gallery .sp-gallery-wrapper {
+    border: 1px solid #e5e5e5 !important;
+    display: table;
+}
+
+.sp-template-gallery .gallery-item {
+    padding: 0 !important;
+    margin: 0 !important;
+    position: relative !important;
+}
+
+.sp-template-gallery .gallery-item a {
+    display: block !important;
+}
+
+.sp-template-gallery .gallery-caption {
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 12px !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    color: #999 !important;
+    line-height: 1.5 !important;
+    padding: 5px 10px !important;
+}
+
+.sp-template-gallery .gallery-caption strong {
+    color: #fff !important;
+    background: #00a69c !important;
+    display: block !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    padding: 5px 10px !important;
+}
+
+/* Countdowns */
+
+.sp-template-countdown h3,
+.sp-template-countdown h5 {
+    margin: 0 !important;
+    padding: 5px 10px !important;
+    text-align: center !important;
+    line-height: 1.5 !important;
+    display: table !important;
+    width: 100% !important;
+    border: 1px solid #e5e5e5 !important;
+    border-bottom: none !important;
+}
+
+.sp-template-countdown h3 {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: #333 !important;
+}
+
+.sp-template-countdown h5 {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+}
+
+.sp-template-countdown h5 a {
+    color: inherit !important;
+}
+
+.sp-countdown time {
+    display: table !important;
+    border: 1px solid #e5e5e5 !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+}
+
+.sp-countdown span {
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    display: table-cell !important;
+    border: 1px solid #e5e5e5 !important;
+    padding: 10px 5px !important;
+    text-align: center !important;
+}
+
+.sp-countdown span small {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+    color: #999 !important;
+    display: block !important;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 801px) {
+}
+
+@media screen and (min-width: 601px) {
+}

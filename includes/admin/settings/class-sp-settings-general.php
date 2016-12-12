@@ -27,7 +27,7 @@ class SP_Settings_General extends SP_Settings_Page {
 		add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
 		add_action( 'sportspress_admin_field_timezone', array( $this, 'timezone_setting' ) );
-		add_action( 'sportspress_admin_field_frontend_styles', array( $this, 'frontend_styles_setting' ) );
+		add_action( 'sportspress_admin_field_colors', array( $this, 'colors_setting' ) );
 		add_action( 'sportspress_settings_save_' . $this->id, array( $this, 'save' ) );
 	}
 
@@ -65,7 +65,7 @@ class SP_Settings_General extends SP_Settings_Page {
 		);
 		
 		$options = array(
-			array( 'type' => 'frontend_styles' ),
+			array( 'type' => 'colors' ),
 		);
 
 		if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) ):
@@ -294,7 +294,7 @@ class SP_Settings_General extends SP_Settings_Page {
 	 * @access public
 	 * @return void
 	 */
-	public function frontend_styles_setting() {
+	public function colors_setting() {
 		// Define color schemes each with 5 colors: Primary, Background, Text, Heading, Link
 		$color_schemes = apply_filters( 'sportspress_color_schemes', array(
 			'ThemeBoy' => array( '2b353e', 'f4f4f4', '222222', 'ffffff', '00a69c' ),
@@ -308,7 +308,7 @@ class SP_Settings_General extends SP_Settings_Page {
 		) );
 		?><tr valign="top" class="themeboy">
 			<th scope="row" class="titledesc">
-				<?php _e( 'Frontend Styles', 'sportspress' ); ?>
+				<?php _e( 'Color Scheme', 'sportspress' ); ?>
 			</th>
 		    <td class="forminp">
 		    	<fieldset>
