@@ -6,7 +6,12 @@
 }
 
 .sp-template {
+    overflow: hidden !important;
     margin-bottom: 20px !important;
+}
+
+.sp-data-table {
+    margin: 0 !important;
 }
 
 .sp-template *,
@@ -297,6 +302,37 @@
     padding: 0 !important;
     font-size: 13px !important;
     font-weight: 400 !important;
+}
+
+/* Profiles */
+
+.sp-template-details dl {
+    margin: 0 0 20px !important;
+    padding: 15px !important;
+    border: 1px solid #e5e5e5 !important;
+}
+
+.sp-template-details dt,
+.sp-template-details dd {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.sp-template-details dt {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+}
+
+.sp-template-details dd {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    color: #333 !important;
+    margin-bottom: 10px !important;
+}
+
+.sp-template-details dd:last-child {
+    margin-bottom: 0 !important;
 }
 
 /* Tabs */
