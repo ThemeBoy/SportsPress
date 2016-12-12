@@ -164,7 +164,7 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 
 		echo '<div class="sp-template sp-template-player-gallery sp-template-gallery">';
 		
-		echo '<div class="sp-player-gallery-wrapper">';
+		echo '<div class="sp-player-gallery-wrapper sp-gallery-wrapper">';
 		
 		echo $gallery;
 
