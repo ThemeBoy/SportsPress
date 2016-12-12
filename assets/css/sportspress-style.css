@@ -158,6 +158,17 @@
     padding: 5px 10px !important;
 }
 
+.sp-template-gallery .sp-gallery-group-name {
+    margin: 0 !important;
+    padding: 15px !important;
+    background: #fff !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    display: block !important;
+}
+
 /* Countdowns */
 
 .sp-template-countdown .sp-event-name,
