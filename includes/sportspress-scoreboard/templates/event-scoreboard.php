@@ -63,7 +63,7 @@ $post_id = get_the_ID();
 ?>
 <div class="sp-template sp-template-scoreboard">
 	<div class="sp-scoreboard-wrapper">
-		<button href="#" class="sp-scoreboard-prev sp-scoreboard-nav sp-scoreboard-nav-disabled" data-sp-step="<?php echo $width * $step; ?>"></button>
+		<button class="sp-scoreboard-prev sp-scoreboard-nav sp-scoreboard-nav-disabled" data-sp-step="<?php echo $width * $step; ?>"></button>
 		<div class="sp-scoreboard-content">
 			<table class="sp-scoreboard sp-data-table">
 				<tbody>
@@ -153,7 +153,7 @@ $post_id = get_the_ID();
 				</tbody>
 			</table>
 		</div>
-		<button href="#" class="sp-scoreboard-next sp-scoreboard-nav" data-sp-step="<?php echo $width * $step; ?>"></button>
+		<button class="sp-scoreboard-next sp-scoreboard-nav" data-sp-step="<?php echo $width * $step; ?>"></button>
 	</div>
 	<?php
 	if ( $id && $show_all_events_link )
