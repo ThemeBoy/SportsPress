@@ -328,6 +328,12 @@
     text-decoration: none !important;
 }
 
+/* Event Performance */
+
+.sp-template-event-performance-icons td {
+    border: none !important;
+}
+
 /* Venues */
 
 .sp-event-venue-map-row td {
