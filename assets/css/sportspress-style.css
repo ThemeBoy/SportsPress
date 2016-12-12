@@ -334,6 +334,33 @@
     border: none !important;
 }
 
+/*  Match Stats */
+
+.sp-template-event-statistics .sp-statistic-label {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+}
+
+.sp-event-statistics {
+    margin: 0 0 10px !important;
+}
+
+.sp-event-statistics,
+.sp-event-statistics tr,
+.sp-event-statistics td {
+    border: none !important;
+}
+
+.sp-event-statistics .sp-statistic-ratio {
+    padding: 0 !important;
+}
+
+.sp-event-statistics .sp-statistic-bar {
+    border: 1px solid #e5e5e5 !important;
+    background: #f9f9f9 !important;
+}
+
 /* Venues */
 
 .sp-event-venue-map-row td {
