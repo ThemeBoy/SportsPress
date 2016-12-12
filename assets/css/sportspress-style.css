@@ -131,6 +131,7 @@
 
 .sp-template-gallery .gallery-item a {
     display: block !important;
+    color: #999 !important;
 }
 
 .sp-template-gallery .gallery-caption {
@@ -217,6 +218,38 @@
     display: block !important;
 }
 
+/* Event Calendars */
+
+.sp-template-event-calendar .sp-table-caption {
+    display: table-caption !important;
+}
+
+.sp-template-event-calendar tfoot td {
+    padding: 10px 15px !important;
+    border: none !important;
+}
+
+.sp-template-event-calendar .sp-previous-month {
+    text-align: left !important;
+}
+
+.sp-template-event-calendar .sp-next-month {
+    text-align: right !important;
+}
+
+.sp-template-event-calendar tfoot a {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    text-decoration: none !important;
+    color: #999 !important;
+}
+
+.sp-template-event-calendar tfoot a:hover {
+    color: #333 !important;
+    text-decoration: none !important;
+}
+
 /* Event Blocks */
 
 .sp-template-event-blocks td {
@@ -250,6 +283,7 @@
 }
 
 .sp-template-event-blocks .sp-event-title {
+    padding: 0 !important;
     font-size: 13px !important;
     font-weight: 400 !important;
 }
