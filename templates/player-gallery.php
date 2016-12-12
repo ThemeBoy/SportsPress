@@ -130,7 +130,7 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 
 		if ( ! empty( $group->name ) ):
 			$gallery .= '<a name="group-' . $group->slug . '" id="group-' . $group->slug . '"></a>';
-			$gallery .= '<' . $grouptag . ' class="player-group-name player-gallery-group-name">' . $group->name . '</' . $grouptag . '>';
+			$gallery .= '<' . $grouptag . ' class="sp-gallery-group-name player-group-name player-gallery-group-name">' . $group->name . '</' . $grouptag . '>';
 		endif;
 
 		foreach( $data as $player_id => $performance ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):
