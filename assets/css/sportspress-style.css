@@ -328,6 +328,17 @@
     text-decoration: none !important;
 }
 
+/* Venues */
+
+.sp-event-venue-map-row td {
+    padding: 0 !important;
+}
+
+.sp-event-venue-map-row .sp-google-map {
+    display: block !important;
+    margin: 0 !important;
+}
+
 /* Profiles */
 
 .sp-template-details dl {
