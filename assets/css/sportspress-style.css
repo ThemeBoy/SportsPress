@@ -44,6 +44,7 @@
 .sp-data-table a {
     box-shadow: none !important;
     text-decoration: none !important;
+    font-weight: inherit !important;
     color: #00a69c !important;
 }
 
