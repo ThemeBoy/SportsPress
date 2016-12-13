@@ -2,24 +2,17 @@
 
 .sp-template *,
 .sp-data-table *,
+.sp-tab-menu *,
 .sp-table-caption {
     box-sizing: border-box !important;
-}
-
-.sp-template,
-.sp-data-table,
-.sp-table-caption,
-.sp-template a,
-.sp-template h1,
-.sp-template h2,
-.sp-template h3,
-.sp-template h4,
-.sp-template h5,
-.sp-template h6 {
     font-family: "Roboto", "Helvetica", sans-serif !important;
     font-weight: 400 !important;
     text-transform: none !important;
     letter-spacing: normal !important;
+}
+
+.sp-template .dashicons {
+    font-family: dashicons !important;
 }
 
 .sp-template {
@@ -170,7 +163,7 @@
     background: #00a69c !important;
     display: block !important;
     font-weight: 400 !important;
-    font-size: 16px !important;
+    font-size: 13px !important;
     line-height: 1.5 !important;
     position: absolute !important;
     left: 0 !important;
@@ -536,7 +529,6 @@
     margin: 0 0 20px !important;
     padding: 0 !important;
     list-style: none !important;
-    border-bottom: 1px solid #e5e5e5 !important;
 }
 
 .sp-tab-menu-item {
@@ -546,7 +538,7 @@
 }
 
 .sp-tab-menu-item a {
-    margin: 0 0 -1px !important;
+    margin: 0 !important;
     padding: 5px 10px;
     border-bottom: 2px solid transparent !important;
     box-shadow: none !important;
