@@ -171,17 +171,27 @@ endif;
 					$main_results = apply_filters( 'sportspress_event_list_main_results', sp_get_main_results( $event ), $event->ID );
 
 					$teams_output = '';
+					$team_class = '';
 					$teams_array = array();
 					$team_logos = array();
 
 					if ( $teams ):
-						foreach ( $teams as $team ):
+						foreach ( $teams as $t => $team ):
 							$name = sp_get_team_name( $team, $abbreviate_teams );
 							if ( $name ):
 
 								if ( $show_team_logo ):
-									$name = sp_get_logo( $team, 'mini' ) . ' ' . $name;
-									$team_logos[] = sp_get_logo( $team, 'mini' );
+									if ( has_post_thumbnail( $team ) ):
+										$logo = '<span class="team-logo">' . sp_get_logo( $team, 'mini' ) . '</span>';
+										$team_logos[] = $logo;
+										$team_class .= ' has-logo';
+										
+										if ( $t ):
+											$name = $logo . ' ' . $name;
+										else:
+											$name .= ' ' . $logo;
+										endif;
+									endif;
 								endif;
 
 								if ( $link_teams ):
@@ -219,7 +229,7 @@ endif;
 							case 'homeaway':
 								if ( sp_column_active( $usecolumns, 'event' ) ) {
 									$team = array_shift( $teams_array );
-									echo '<td class="data-home">' . $team . '</td>';
+									echo '<td class="data-home' . $team_class . '">' . $team . '</td>';
 
 									if ( 'combined' == $time_format && sp_column_active( $usecolumns, 'time' ) ) {
 										echo '<td class="data-time">';
@@ -244,7 +254,7 @@ endif;
 									}
 
 									$team = array_shift( $teams_array );
-									echo '<td class="data-away">' . $team . '</td>';
+									echo '<td class="data-away' . $team_class . '">' . $team . '</td>';
 
 									if ( in_array( $time_format, array( 'separate', 'time' ) ) && sp_column_active( $usecolumns, 'time' ) ) {
 										echo '<td class="data-time">';
