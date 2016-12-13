@@ -74,6 +74,13 @@ class SportsPress_Style {
 	public static function add_styles( $styles = array() ) {
 		if ( current_theme_supports( 'sportspress' ) ) return $styles;
 		if ( 'no' === get_option( 'sportspress_styles', 'yes' ) ) return $styles;
+		
+		$styles['sportspress-roboto'] = array(
+			'src'     => '//fonts.googleapis.com/css?family=Roboto:400,500&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese',
+			'deps'    => '',
+			'version' => SP_STYLE_VERSION,
+			'media'   => 'all'
+		);
 
 		$styles['sportspress-style'] = array(
 			'src'     => str_replace( array( 'http:', 'https:' ), '', SP()->plugin_url() ) . '/assets/css/sportspress-style.css',
@@ -81,6 +88,7 @@ class SportsPress_Style {
 			'version' => SP_STYLE_VERSION,
 			'media'   => 'all'
 		);
+
 		return $styles;
 	}
 
