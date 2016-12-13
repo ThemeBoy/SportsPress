@@ -1,8 +1,15 @@
 /* SportsPress Templates */
 
+.sp-template *,
+.sp-data-table *,
+.sp-table-caption {
+    box-sizing: border-box !important;
+}
+
 .sp-template,
 .sp-data-table,
 .sp-table-caption,
+.sp-template a,
 .sp-template h1,
 .sp-template h2,
 .sp-template h3,
@@ -10,6 +17,7 @@
 .sp-template h5,
 .sp-template h6 {
     font-family: "Roboto", "Helvetica", sans-serif !important;
+    font-weight: 400 !important;
     text-transform: none !important;
     letter-spacing: normal !important;
 }
@@ -542,10 +550,12 @@
     padding: 5px 10px;
     border-bottom: 2px solid transparent !important;
     box-shadow: none !important;
+    color: #333 !important;
 }
 
 .sp-tab-menu-item a:hover {
     color: #333 !important;
+    text-decoration: none !important;
 }
 
 .sp-tab-menu-item-active a,
