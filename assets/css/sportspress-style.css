@@ -1,14 +1,19 @@
 /* SportsPress Templates */
 
+/*
+ * Note: !important everything to enforce overrides.
+ * This stylesheet can be disabled via SportsPress General Settings.
+ */
+
 .sp-template *,
 .sp-data-table *,
-.sp-tab-menu *,
 .sp-table-caption {
     box-sizing: border-box !important;
     font-family: "Roboto", "Helvetica", sans-serif !important;
     font-weight: 400 !important;
     text-transform: none !important;
     letter-spacing: normal !important;
+    color: #333 !important;
 }
 
 .sp-template .dashicons {
@@ -18,10 +23,6 @@
 .sp-template {
     overflow: hidden !important;
     margin-bottom: 20px !important;
-}
-
-.sp-data-table {
-    margin: 0 !important;
 }
 
 .sp-table-caption {
@@ -68,7 +69,7 @@
     font-weight: 400 !important;
     line-height: 1.5 !important;
     text-decoration: none !important;
-    color: #999 !important;
+    color: rgba(51,51,51,0.5) !important;
 }
 
 .sp-view-all-link a:hover {
@@ -76,7 +77,8 @@
     text-decoration: none !important;
 }
 
-.sp-form-event-link:hover {
+.sp-form-events a:hover {
+    color: #fff !important;
     text-decoration: none !important;
 }
 
@@ -89,7 +91,7 @@
 /* Tables */
 
 .sp-data-table {
-    color: #333 !important;
+    margin: 0 !important;
     background: #fff !important;
     border-collapse: collapse !important;
     border: 1px solid #e5e5e5 !important;
@@ -109,6 +111,7 @@
 .sp-data-table th {
     font-size: 12px !important;
     font-weight: 500 !important;
+    background: #fff !important;
     color: #999 !important;
     border: none !important;
 }
@@ -131,6 +134,7 @@
 
 .sp-template-gallery .sp-gallery-wrapper {
     border: 1px solid #e5e5e5 !important;
+    background: #fff !important;
     display: table !important;
     width: 100% !important;
 }
@@ -193,6 +197,7 @@
     line-height: 1.5 !important;
     display: table !important;
     width: 100% !important;
+    background: #fff !important;
     border: 1px solid #e5e5e5 !important;
     border-bottom: none !important;
 }
@@ -207,6 +212,7 @@
 .sp-template-countdown .sp-event-league {
     font-size: 12px !important;
     font-weight: 500 !important;
+    background: #fff !important;
     color: #999 !important;
 }
 
@@ -217,6 +223,7 @@
 
 .sp-countdown time {
     display: table !important;
+    background: #fff !important;
     border: 1px solid #e5e5e5 !important;
     border-collapse: collapse !important;
     width: 100% !important;
@@ -237,7 +244,7 @@
     font-weight: 400 !important;
     line-height: 1.5 !important;
     font-weight: 500 !important;
-    color: #999 !important;
+    color: rgba(51,51,51,0.5) !important;
     display: block !important;
 }
 
@@ -269,7 +276,7 @@
     font-weight: 400 !important;
     line-height: 1.5 !important;
     text-decoration: none !important;
-    color: #999 !important;
+    color: rgba(51,51,51,0.5) !important;
 }
 
 .sp-template-event-calendar tfoot a:hover {
@@ -294,12 +301,13 @@
 }
 
 .sp-template-event-blocks .sp-event-date {
-    color: #999 !important;
+    color: rgba(51,51,51,0.5) !important;
     font-weight: 500 !important;
     font-size: 12px !important;
 }
 
-.sp-template-event-blocks .sp-event-date a {
+.sp-template-event-blocks .sp-event-date a,
+.sp-template-event-blocks .sp-event-date a:hover {
     color: inherit !important;
 }
 
@@ -316,6 +324,7 @@
 }
 
 .sp-template-event-blocks .sp-event-results a:hover {
+    color: inherit !important;
     text-decoration: none !important;
 }
 
@@ -327,6 +336,8 @@
     font-size: 13px !important;
     font-weight: 400 !important;
 }
+
+/* Event Logos */
 
 .sp-template-event-logos .sp-team-name,
 .sp-template-event-logos .sp-team-result {
@@ -352,10 +363,12 @@
 .sp-template-event-statistics .sp-statistic-label {
     font-size: 12px !important;
     font-weight: 500 !important;
-    color: #999 !important;
+    color: inherit !important;
+    opacity: 0.5 !important;
 }
 
 .sp-event-statistics {
+    background: transparent !important;
     margin: 0 0 10px !important;
 }
 
@@ -399,6 +412,7 @@
     margin: 0 0 20px !important;
     padding: 15px !important;
     border: 1px solid #e5e5e5 !important;
+    background: #fff !important;
 }
 
 .sp-template-details dt,
@@ -410,7 +424,7 @@
 .sp-template-details dt {
     font-size: 12px !important;
     font-weight: 500 !important;
-    color: #999 !important;
+    color: rgba(51,51,51,0.5) !important;
 }
 
 .sp-template-details dd {
@@ -450,7 +464,7 @@
 .sp-template-scoreboard .sp-scoreboard-date {
     font-size: 12px !important;
     font-weight: 500 !important;
-    color: #999 !important;
+    color: rgba(51,51,51,0.5) !important;
 }
 
 .sp-template-scoreboard .sp-scoreboard-nav {
@@ -475,15 +489,16 @@
 .sp-tournament-bracket th {
     font-size: 12px !important;
     font-weight: 500 !important;
-    color: #999 !important;
+    color: rgba(51,51,51,0.5) !important;
     text-align: center !important;
-    border-bottom: 1px solid #e5e5e5 !important;
+    border: none !important;
 }
 
 .sp-tournament-bracket .sp-team-name {
     font-size: 13px !important;
     font-weight: 400 !important;
     text-align: center !important;
+    background: #fff !important;
     border: 1px solid #e5e5e5 !important;
 }
 
@@ -494,7 +509,7 @@
     border-color: #00a69c !important;
 }
 
-.sp-tournament-bracket .sp-team-name:before {
+.sp-tournament-bracket .sp-team .sp-team-name:before {
     border-left-color: #e5e5e5 !important;
     border-right-color: #e5e5e5 !important;
     left: -10px !important;
@@ -513,7 +528,7 @@
 .sp-tournament-bracket .sp-event .sp-event-title {
     font-size: 12px !important;
     font-weight: 400 !important;
-    color: #999 !important;
+    color: rgba(51,51,51,0.5) !important;
     text-align: center !important;
 }
 
@@ -542,11 +557,9 @@
     padding: 5px 10px;
     border-bottom: 2px solid transparent !important;
     box-shadow: none !important;
-    color: #333 !important;
 }
 
 .sp-tab-menu-item a:hover {
-    color: #333 !important;
     text-decoration: none !important;
 }
 
