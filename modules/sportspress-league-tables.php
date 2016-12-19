@@ -40,7 +40,6 @@ class SportsPress_League_Tables {
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_filter( 'sportspress_shortcodes', array( $this, 'add_shortcodes' ) );
 		add_filter( 'sportspress_team_settings', array( $this, 'add_settings' ) );
-		add_filter( 'sportspress_team_options', array( $this, 'add_options' ) );
 		add_filter( 'sportspress_after_team_template', array( $this, 'add_team_template' ), 30 );
 	}
 
@@ -291,25 +290,6 @@ class SportsPress_League_Tables {
 
 			array(
 				array( 'type' => 'sectionend', 'id' => 'table_options' ),
-			)
-		);
-	}
-
-	/**
-	 * Add options.
-	 *
-	 * @return array
-	 */
-	public function add_options( $options ) {
-		return array_merge( $options,
-			array(
-				array(
-					'title'     => __( 'Table Columns', 'sportspress' ),
-					'desc' 		=> __( 'Enable column editing', 'sportspress' ),
-					'id' 		=> 'sportspress_team_column_editing',
-					'default'	=> 'no',
-					'type' 		=> 'checkbox',
-				),
 			)
 		);
 	}
