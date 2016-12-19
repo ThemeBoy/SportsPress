@@ -391,6 +391,7 @@ class SportsPress_Calendars {
 					'options'   => array(
 						'blocks' 	=> __( 'Blocks', 'sportspress' ),
 						'calendar' 	=> __( 'Calendar', 'sportspress' ),
+						'list' 		=> __( 'List', 'sportspress' ),
 					),
 				),
 			)
@@ -429,6 +430,7 @@ class SportsPress_Calendars {
 					'options'   => array(
 						'blocks' 	=> __( 'Blocks', 'sportspress' ),
 						'calendar' 	=> __( 'Calendar', 'sportspress' ),
+						'list' 		=> __( 'List', 'sportspress' ),
 					),
 				),
 			)
