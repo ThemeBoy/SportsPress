@@ -40,6 +40,13 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 			$format = 'number';
 		}
 		$precision = get_post_meta( $post->ID, 'sp_precision', true );
+		if ( '' === $precision ) {
+			$precision = 0;
+		}
+		$timed = get_post_meta( $post->ID, 'sp_timed', true );
+		if ( '' === $timed ) {
+			$timed = false;
+		}
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
@@ -68,10 +75,32 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 				?>
 			</select>
 		</p>
-		<p><strong><?php _e( 'Decimal Places', 'sportspress' ); ?></strong></p>
-		<p>
-			<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>" placeholder="0">
-		</p>
+		<div id="sp_precisiondiv">
+			<p><strong><?php _e( 'Decimal Places', 'sportspress' ); ?></strong></p>
+			<p>
+				<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>" placeholder="0">
+			</p>
+		</div>
+		<div id="sp_timeddiv">
+			<p>
+				<strong><?php _e( 'Timed', 'sportspress' ); ?></strong>
+				<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Record minutes?', 'sportspress' ); ?>"></i>
+			</p>
+			<ul class="sp-timed-selector">
+				<li>
+					<label class="selectit">
+						<input name="sp_timed" id="sp_timed_yes" type="radio" value="1" <?php checked( $timed ); ?>>
+						<?php _e( 'Yes', 'sportspress' ); ?>
+					</label>
+				</li>
+				<li>
+					<label class="selectit">
+						<input name="sp_timed" id="sp_timed_no" type="radio" value="0" <?php checked( ! $timed ); ?>>
+						<?php _e( 'No', 'sportspress' ); ?>
+					</label>
+				</li>
+			</ul>
+		</div>
 		<?php
 		if ( 'auto' === get_option( 'sportspress_player_columns', 'auto' ) ) {
 			$visible = get_post_meta( $post->ID, 'sp_visible', true );
@@ -109,6 +138,7 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1 ) );
 		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number' ) );
 		update_post_meta( $post_id, 'sp_precision', sp_array_value( $_POST, 'sp_precision', 0 ) );
+		update_post_meta( $post_id, 'sp_timed', sp_array_value( $_POST, 'sp_timed', 0 ) );
 		if ( 'auto' === get_option( 'sportspress_player_columns', 'auto' ) ) {
 			update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1 ) );
 		}

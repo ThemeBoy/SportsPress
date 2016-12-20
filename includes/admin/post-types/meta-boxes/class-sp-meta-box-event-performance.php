@@ -20,7 +20,7 @@ class SP_Meta_Box_Event_Performance {
 	 */
 	public static function output( $post ) {
 		$event = new SP_Event( $post );
-		list( $labels, $columns, $stats, $teams, $formats, $order ) = $event->performance( true );
+		list( $labels, $columns, $stats, $teams, $formats, $order, $timed ) = $event->performance( true );
 
 		if ( 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'yes' ) )
 			$timeline = $event->timeline( true );
@@ -65,7 +65,7 @@ class SP_Meta_Box_Event_Performance {
 		// Check if individual mode
 		$is_individual = get_option( 'sportspress_load_individual_mode_module', 'no' ) === 'yes' ? true : false;
 
-		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $positions, $status, $formats, $order, $numbers, $is_individual, $timeline );
+		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $positions, $status, $formats, $order, $numbers, $is_individual, $timeline, $timed );
 	}
 
 	/**
@@ -81,7 +81,7 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit tables
 	 */
-	public static function tables( $post_id, $stats = array(), $labels = array(), $columns = array(), $teams = array(), $has_checkboxes = false, $positions = array(), $status = true, $formats = array(), $order = array(), $numbers = true, $is_individual = false, $timeline = array() ) {
+	public static function tables( $post_id, $stats = array(), $labels = array(), $columns = array(), $teams = array(), $has_checkboxes = false, $positions = array(), $status = true, $formats = array(), $order = array(), $numbers = true, $is_individual = false, $timeline = array(), $timed = array() ) {
 		$sections = get_option( 'sportspress_event_performance_sections', -1 );
 		
 		if ( $is_individual ) {
@@ -116,7 +116,7 @@ class SP_Meta_Box_Event_Performance {
 									$player_timeline = false;
 								endif;
 
-								self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, false, $numbers, -1, $formats, $player_timeline );
+								self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, false, $numbers, -1, $formats, $player_timeline, $timed );
 							endforeach;
 						endforeach;
 						?>
@@ -145,7 +145,7 @@ class SP_Meta_Box_Event_Performance {
 					?>
 					<div>
 						<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-						<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $positions, $status, -1, $formats, $order, $numbers, $team_timeline ); ?>
+						<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $positions, $status, -1, $formats, $order, $numbers, $team_timeline, $timed ); ?>
 						<?php do_action( 'sportspress_after_event_performance_table_admin', $labels, $columns, $data, $team_id ); ?>
 					</div>
 				<?php } else { ?>
@@ -227,7 +227,7 @@ class SP_Meta_Box_Event_Performance {
 						?>
 						<div>
 							<p><strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo $section_label; ?></strong></p>
-							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, ( $has_checkboxes && 0 === $i ), $positions, $status, $section_id, $formats, $order, $numbers, $team_timeline ); ?>
+							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, ( $has_checkboxes && 0 === $i ), $positions, $status, $section_id, $formats, $order, $numbers, $team_timeline, $timed ); ?>
 							<?php do_action( 'sportspress_after_event_performance_table_admin', $labels[ $section_id ], $columns, $data[ $section_id ], $team_id ); ?>
 						</div>
 						<?php
@@ -241,7 +241,7 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array(), $numbers = true, $team_timeline = array() ) {
+	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array(), $numbers = true, $team_timeline = array(), $timed = array() ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
@@ -276,7 +276,7 @@ class SP_Meta_Box_Event_Performance {
 							$player_timeline = false;
 						endif;
 
-						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, true, $numbers, $section, $formats, $player_timeline );
+						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, true, $numbers, $section, $formats, $player_timeline, $timed );
 
 					endforeach;
 					?>
@@ -369,7 +369,7 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table row
 	 */
-	public static function row( $labels = array(), $player_id = 0, $player_performance = array(), $team_id = 0, $data = array(), $positions = true, $status = true, $sortable = true, $numbers = true, $section = -1, $formats = array(), $player_timeline = array() ) {
+	public static function row( $labels = array(), $player_id = 0, $player_performance = array(), $team_id = 0, $data = array(), $positions = true, $status = true, $sortable = true, $numbers = true, $section = -1, $formats = array(), $player_timeline = array(), $timed = array() ) {
 		if ( $player_id <= 0 ) return;
 
 		$value = sp_array_value( $player_performance, 'number', '' );
@@ -419,7 +419,7 @@ class SP_Meta_Box_Event_Performance {
 				?>
 				<td>
 					<input class="sp-player-<?php echo $column; ?>-input sp-sync-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo $placeholder; ?>" />
-					<?php if ( $intval ) { ?>
+					<?php if ( $intval && in_array( $column, $timed ) ) { ?>
 						<?php
 						// Get performance times
 						if ( is_array( $player_timeline ) ) {

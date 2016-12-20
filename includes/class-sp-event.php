@@ -98,15 +98,24 @@ class SP_Event extends SP_Custom_Post{
 		
 		$labels = array();
 		$formats = array();
+		$timed = array();
 		$equations = array();
 		foreach ( $vars as $var ) {
 			$labels[ $var->post_name ] = $var->post_title;
+
 			$format = get_post_meta( $var->ID, 'sp_format', true );
 			if ( '' === $format ) {
 				$format = 'number';
 			}
 			$formats[ $var->post_name ] = $format;
-			
+
+			if ( 'number' === $format ) {
+				$is_timed = get_post_meta( $var->ID, 'sp_timed', true );
+				if ( $is_timed ) {
+					$timed[] = $var->post_name;
+				}
+			}
+
 			if ( 'equation' === $format ) {
 				$equation = get_post_meta( $var->ID, 'sp_equation', true );
 				$precision = get_post_meta( $var->ID, 'sp_precision', true );
@@ -162,7 +171,7 @@ class SP_Event extends SP_Custom_Post{
 		endif;
 
 		if ( $admin ):
-			return array( $labels, $columns, $performance, $teams, $formats, $order );
+			return array( $labels, $columns, $performance, $teams, $formats, $order, $timed );
 		else:
 			// Add position to performance labels
 			if ( taxonomy_exists( 'sp_position' ) ):
@@ -219,6 +228,9 @@ class SP_Event extends SP_Custom_Post{
 							if ( empty( $player_timeline ) ) continue;
 
 							foreach ( $player_performance as $performance_key => $performance_value ):
+
+								// Continue if not timed
+								if ( ! in_array( $performance_key, $timed ) ) continue;
 
 								// Get performance times
 								$times = sp_array_value( $player_timeline, $performance_key, array() );
