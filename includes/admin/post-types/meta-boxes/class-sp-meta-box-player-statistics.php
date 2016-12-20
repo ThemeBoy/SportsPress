@@ -32,8 +32,8 @@ class SP_Meta_Box_Player_Statistics {
 					?>
 					<p><strong><?php echo $league->name; ?></strong></p>
 					<?php
-					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes ) = $player->data( $league->term_id, true );
-					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0, true );
+					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats ) = $player->data( $league->term_id, true );
+					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0, true, $formats );
 					$i ++;
 				endforeach;
 				?>
@@ -83,7 +83,7 @@ class SP_Meta_Box_Player_Statistics {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false ) {
+	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array() ) {
 		$readonly = false;
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
 		?>
@@ -188,10 +188,41 @@ class SP_Meta_Box_Player_Statistics {
 								<td><?php
 									$value = sp_array_value( sp_array_value( $data, $div_id, array() ), $column, null );
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $div_id, array() ), $column, 0 );
-									if ( $readonly )
-										echo $value ? $value : $placeholder;
-									else
-										echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+
+									// Convert value and placeholder to time format
+									if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
+
+										// Convert value
+										$intval = intval( $value );
+										$timeval = gmdate( 'i:s', $intval );
+										$hours = gmdate( 'H', $intval );
+
+										if ( '00' != $hours )
+											$timeval = $hours . ':' . $timeval;
+
+										$timeval = ereg_replace( '^0', '', $timeval );
+
+										// Convert placeholder
+										$intval = intval( $placeholder );
+										$placeholder = gmdate( 'i:s', $intval );
+										$hours = gmdate( 'H', $intval );
+
+										if ( '00' != $hours )
+											$placeholder = $hours . ':' . $placeholder;
+
+										$placeholder = ereg_replace( '^0', '', $placeholder );
+									}
+
+									if ( $readonly ) {
+										echo $timeval ? $timeval : $placeholder;
+									} else {
+										if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
+											echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+											echo '<input class="sp-convert-time-output" type="hidden" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" />';
+										} else {
+											echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+										}
+									}
 								?></td>
 							<?php endforeach; ?>
 						</tr>

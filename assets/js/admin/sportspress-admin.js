@@ -832,6 +832,10 @@ jQuery(document).ready(function($){
 	$('.sp-convert-time-input').change(function() {
 		var s = 0;
 		var val = $(this).val();
+		if (val === '') {
+			$(this).siblings('.sp-convert-time-output').val('');
+			return;
+		}
 		var a = val.split(':').reverse();
 		$.each(a, function( index, value ) {
 			s += parseInt(value) * Math.pow(60, index);
