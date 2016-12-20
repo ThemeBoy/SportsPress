@@ -827,4 +827,18 @@ jQuery(document).ready(function($){
 		$select.find('input[value='+val+']').attr('checked', true);
 		$select.slideUp('fast').siblings('.sp-edit-event-status').show();
 	});
+
+	// Box score time converter
+	$('.sp-convert-time-input').change(function() {
+		var s = 0;
+		var val = $(this).val();
+		var a = val.split(':').reverse();
+		$.each(a, function( index, value ) {
+			s += parseInt(value) * Math.pow(60, index);
+		});
+		$(this).siblings('.sp-convert-time-output').val(s);
+	});
+
+	// Trigger box score time converter
+	$('.sp-convert-time-input').change();
 });

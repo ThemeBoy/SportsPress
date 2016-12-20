@@ -418,7 +418,24 @@ class SP_Meta_Box_Event_Performance {
 				$placeholder = sp_get_format_placeholder( sp_array_value( $formats, $column, 'number' ) );
 				?>
 				<td>
-					<input class="sp-player-<?php echo $column; ?>-input sp-sync-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo $placeholder; ?>" />
+					<?php if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) { ?>
+						<?php
+							$intval = intval( $value );
+							$timeval = gmdate( 'i:s', $intval );
+							$hours = gmdate( 'H', $intval );
+
+							if ( '00' != $hours )
+								$timeval = $hours . ':' . $timeval;
+
+							$timeval = ereg_replace( '^0', '', $timeval );
+						?>
+
+						<input class="sp-player-<?php echo $column; ?>-input sp-convert-time-input sp-sync-input" type="text" name="sp_times[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $timeval ); ?>" placeholder="<?php echo $placeholder; ?>" />
+						<input class="sp-convert-time-output" type="hidden" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" />
+					<?php } else { ?>
+						<input class="sp-player-<?php echo $column; ?>-input sp-sync-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo $placeholder; ?>" />
+					<?php } ?>
+
 					<?php if ( $intval && in_array( $column, $timed ) ) { ?>
 						<?php
 						// Get performance times

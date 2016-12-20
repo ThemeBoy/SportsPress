@@ -114,9 +114,7 @@ class SP_Event extends SP_Custom_Post{
 				if ( $is_timed ) {
 					$timed[] = $var->post_name;
 				}
-			}
-
-			if ( 'equation' === $format ) {
+			} elseif ( 'equation' === $format ) {
 				$equation = get_post_meta( $var->ID, 'sp_equation', true );
 				$precision = get_post_meta( $var->ID, 'sp_precision', true );
 				
@@ -210,8 +208,34 @@ class SP_Event extends SP_Custom_Post{
 				endforeach;
 			endif;
 
+			// Convert to time notation
+			if ( in_array( 'time', $formats ) ):
+				foreach ( $performance as $team => $players ):
+					foreach ( $players as $player => $player_performance ):
+						if ( ! $player ) continue;
+
+						foreach ( $player_performance as $performance_key => $performance_value ):
+
+							// Continue if not time format
+							if ( 'time' !== sp_array_value( $formats, $performance_key ) ) continue;
+
+							$intval = intval( $performance_value );
+							$timeval = gmdate( 'i:s', $intval );
+							$hours = gmdate( 'H', $intval );
+
+							if ( '00' != $hours )
+								$timeval = $hours . ':' . $timeval;
+
+							$timeval = ereg_replace( '^0', '', $timeval );
+
+							$performance[ $team ][ $player ][ $performance_key ] = $timeval;
+						endforeach;
+					endforeach;
+				endforeach;
+			endif;
+
 			// Add minutes to box score values
-			if ( 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'yes' ) ):
+			if ( in_array( 'number', $formats ) && 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'yes' ) ):
 				$timeline = $this->timeline();
 				if ( ! empty( $timeline ) ):
 					foreach ( $performance as $team => $players ):
