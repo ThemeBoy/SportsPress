@@ -422,7 +422,7 @@ class SP_Meta_Box_Event_Performance {
 						<?php
 							$intval = intval( $value );
 							$timeval = gmdate( 'i:s', $intval );
-							$hours = gmdate( 'H', $intval );
+							$hours = floor( $intval / 3600 );
 
 							if ( '00' != $hours )
 								$timeval = $hours . ':' . $timeval;

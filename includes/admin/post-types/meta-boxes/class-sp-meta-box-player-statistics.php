@@ -195,7 +195,7 @@ class SP_Meta_Box_Player_Statistics {
 										// Convert value
 										$intval = intval( $value );
 										$timeval = gmdate( 'i:s', $intval );
-										$hours = gmdate( 'H', $intval );
+										$hours = floor( $intval / 3600 );
 
 										if ( '00' != $hours )
 											$timeval = $hours . ':' . $timeval;
@@ -205,7 +205,7 @@ class SP_Meta_Box_Player_Statistics {
 										// Convert placeholder
 										$intval = intval( $placeholder );
 										$placeholder = gmdate( 'i:s', $intval );
-										$hours = gmdate( 'H', $intval );
+										$hours = floor( $intval / 3600 );
 
 										if ( '00' != $hours )
 											$placeholder = $hours . ':' . $placeholder;
