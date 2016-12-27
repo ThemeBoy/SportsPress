@@ -137,19 +137,9 @@ class SP_Event extends SP_Custom_Post{
 				$players = sp_array_between( (array)get_post_meta( $this->ID, 'sp_player', false ), 0, $i );
 				$data = sp_array_combine( $players, sp_array_value( $performance, $team_id, array() ) );
 
-				$totals = array();
-				foreach( $labels as $key => $label ):
-					$totals[ $key ] = 0;
-				endforeach;
-
 				foreach( $data as $player_id => $player_performance ):
 					if ( ! $player_id ) continue;
 
-					foreach( $labels as $key => $label ):
-						if ( array_key_exists( $key, $totals ) ):
-							$totals[ $key ] += sp_array_value( $player_performance, $key, 0 );
-						endif;
-					endforeach;
 					if ( ! array_key_exists( 'number', $player_performance ) ):
 						$performance[ $team_id ][ $player_id ]['number'] = apply_filters( 'sportspress_event_performance_default_squad_number', get_post_meta( $player_id, 'sp_number', true ) );
 					endif;
@@ -157,14 +147,6 @@ class SP_Event extends SP_Custom_Post{
 						$performance[ $team_id ][ $player_id ]['position'] = sp_get_the_term_id( $player_id, 'sp_position', null );
 					endif;
 				endforeach;
-
-				foreach( $totals as $key => $value ):
-					$manual_total = sp_array_value( sp_array_value( $performance, 0, array() ), $key, null );
-					if ( $manual_total != null ):
-						$totals[ $key ] = $manual_total;
-					endif;
-				endforeach;
-				$performance[ $team_id ][0] = array_merge( $totals, sp_array_value( sp_array_value( $performance, $team_id, array() ), 0, array() ) );
 			endforeach;
 		endif;
 
