@@ -211,12 +211,20 @@ add_filter( 'gettext', 'sportspress_gettext', 20, 3 );
 
 function sportspress_team_permalink( $permalink, $post ) {
     if ( ! is_admin() && 'sp_team' == get_post_type( $post ) ):
-    	if ( empty( $post->post_content ) ):
-    		$url = get_post_meta( $post->ID, 'sp_url', true );
-    		if ( ! empty( $url ) ):
-    			return $url;
-    		endif;
-    	endif;
+
+    	$url = get_post_meta( $post->ID, 'sp_url', true );
+
+    	if ( ! empty( $url ) ):
+	    	$redirect = get_post_meta( $post->ID, 'sp_redirect', true );
+
+	    	if ( $redirect === '' ):
+		    	$redirect = ( empty( $post->post_content ) ) ? 1 : 0;
+		    endif;
+
+		    if ( $redirect ):
+		    	return $url;
+		    endif;
+	    endif;
     endif;
     return $permalink;
 }
