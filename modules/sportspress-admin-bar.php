@@ -2,7 +2,7 @@
 /*
 Plugin Name: SportsPress Admin Bar
 Plugin URI: http://themeboy.com/
-Description: Add widgets to SportsPress.
+Description: Add an admin bar link to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
 Version: 1.9.14
