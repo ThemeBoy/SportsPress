@@ -128,8 +128,7 @@ class eqEOS {
 	 */
 	private function checkInfix($infix) {
 		if(trim($infix) == "") {
-			throw new Exception("No Equation given", EQEOS_E_NO_EQ);
-			return false;
+			return 0;
 		}
 		//Make sure we have the same number of '(' as we do ')'
 		// and the same # of '[' as we do ']'
@@ -301,8 +300,7 @@ class eqEOS {
 						break;
 					case '/':
 						if($temp[$hold-1] == 0) {
-							throw new Exception("Division by 0 on: '{$temp[$hold-2]} / {$temp[$hold-1]}' in {$this->inFix}", EQEOS_E_DIV_ZERO);
-							return false;
+							return 0;
 						}
 						$temp[$hold-2] = $temp[$hold-2] / $temp[$hold-1];
 						break;
@@ -311,8 +309,7 @@ class eqEOS {
 						break;
 					case '%':
 						if($temp[$hold-1] == 0) {
-							throw new Exception("Division by 0 on: '{$temp[$hold-2]} % {$temp[$hold-1]}' in {$this->inFix}", EQEOS_E_DIV_ZERO);
-							return false;
+							return 0;
 						}
 						$temp[$hold-2] = bcmod($temp[$hold-2], $temp[$hold-1]);
 						break;
@@ -398,24 +395,21 @@ class eqEOS {
 				case "sec":
 					$tmp = cos($func);
 					if($tmp == 0) {
-						throw new Exception("Division by 0 on: 'sec({$func}) = 1/cos({$func})' in {$this->inFix}", EQEOS_E_DIV_ZERO);
-						return false;
+						return 0;
 					}
 					$ans = 1/$tmp;
 					break;
 				case "csc":
 					$tmp = sin($func);
 					if($tmp == 0) {
-						throw new Exception("Division by 0 on: 'csc({$func}) = 1/sin({$func})' in {$this->inFix}", EQEOS_E_DIV_ZERO);
-						return false;
+						return 0;
 					}
 					$ans = 1/$tmp;
 					break;
 				case "cot":
 					$tmp = tan($func);
 					if($tmp == 0) {
-						throw new Exception("Division by 0 on: 'cot({$func}) = 1/tan({$func})' in {$this->inFix}", EQEOS_E_DIV_ZERO);
-						return false;
+						return 0;
 					}
 					$ans = 1/$tmp;
 					break;
