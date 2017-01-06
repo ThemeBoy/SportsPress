@@ -40,7 +40,7 @@ $previous = 0;
 
 			$permalink = get_post_permalink( $details['id'] );
 
-			$offset = floor( $time / $minutes * 100 );
+			$offset = floor( $time / ( $minutes + 2 )* 100 );
 			if ( $offset - $previous <= 2 ) $offset = $previous + 2;
 			$previous = $offset;
 			?>

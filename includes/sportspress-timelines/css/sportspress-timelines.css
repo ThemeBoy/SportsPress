@@ -1,5 +1,6 @@
 .sp-template-timeline {
 	overflow: visible;
+	clear: both;
 }
 
 .sp-timeline {
