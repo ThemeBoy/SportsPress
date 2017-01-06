@@ -20,7 +20,7 @@ if ( ! $teams ) return;
 
 $layout = get_option( 'sportspress_event_logos_format', 'inline' );
 
-$show_team_names = get_option( 'sportspress_event_logos_show_team_names', 'no' ) === 'yes' ? true : false;
+$show_team_names = get_option( 'sportspress_event_logos_show_team_names', 'yes' ) === 'yes' ? true : false;
 $show_time = get_option( 'sportspress_event_logos_show_time', 'no' ) === 'yes' ? true : false;
 $show_results = get_option( 'sportspress_event_logos_show_results', 'no' ) === 'yes' ? true : false;
 $abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
