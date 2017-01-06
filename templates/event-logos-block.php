@@ -46,6 +46,8 @@
 							<?php echo get_the_time( get_option( 'date_format' ) ); ?>
 						</time>
 						<?php
+
+						$status = __( 'Preview', 'sportspress' );
 						
 						if ( $show_time ) {
 							?>
@@ -53,7 +55,6 @@
 								<?php echo '<span class="sp-result">' . apply_filters( 'sportspress_event_time', sp_get_time( $id ), $id ) . '</span>'; ?>
 							</h5>
 							<?php
-							$status = __( 'Preview', 'sportspress' );
 						}
 						
 						if ( $show_results && ! empty( $results ) ) {
