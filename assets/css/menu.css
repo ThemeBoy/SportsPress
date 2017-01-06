@@ -1,12 +1,12 @@
 /* SportsPress menu styles */
 @font-face {
 	font-family: 'sportspress';
-	src:url('../fonts/sportspress.eot?med5x8');
-	src:url('../fonts/sportspress.eot?#iefixmed5x8') format('embedded-opentype'),
-		url('../fonts/sportspress.woff2?med5x8') format('woff2'),
-		url('../fonts/sportspress.ttf?med5x8') format('truetype'),
-		url('../fonts/sportspress.woff?med5x8') format('woff'),
-		url('../fonts/sportspress.svg?med5x8#sportspress') format('svg');
+	src:url('../fonts/sportspress.eot?ow30gn');
+	src:url('../fonts/sportspress.eot?#iefixow30gn') format('embedded-opentype'),
+		url('../fonts/sportspress.woff2?ow30gn') format('woff2'),
+		url('../fonts/sportspress.ttf?ow30gn') format('truetype'),
+		url('../fonts/sportspress.woff?ow30gn') format('woff'),
+		url('../fonts/sportspress.svg?ow30gn#sportspress') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -127,6 +127,9 @@
 .sp-icon-time:before {
 	content: "\f469";
 }
+.sp-icon-timeline:before {
+	content: "\f203";
+}
 .sp-icon-ticket:before {
 	content: "\f524";
 }
@@ -149,7 +152,7 @@
 .sp-icon-key:before {
 	content: "\f112";
 }
-.sp-icon-moon:before {
+.sp-icon-sub:before {
 	content: "\f503";
 }
 .sp-icon-baseball:before {

@@ -92,7 +92,7 @@ class SportsPress_Icons {
 		$meta = get_post_meta( $id, 'sp_icon', true );
 		if ( null !== $meta && in_array( $meta, $this->icons ) ) {
 			$color = get_post_meta( $id, 'sp_color', true );
-			$icon = '<i class="sp-icon-' . $meta . '" style="color:' . $color . '"></i>';
+			$icon = '<i class="sp-icon-' . $meta . '" style="color:' . $color . ' !important"></i>';
 		}
 		return $icon;
 	}
@@ -108,9 +108,9 @@ class SportsPress_Icons {
 			$color = get_post_meta( $id, 'sp_color', true );
 			preg_match( '#\((.*?)\)#', $value, $match );
 			if ( ! empty( $match ) && isset( $match[1] ) ) {
-				$icons = '<i class="sp-icon-' . $icon . '" title="' . $title . '" style="color:' . $color . '"></i> ' . $match[1] . '<br>';
+				$icons = '<i class="sp-icon-' . $icon . '" title="' . $title . '" style="color:' . $color . ' !important"></i> ' . $match[1] . '<br>';
 			} else {
-				$icons = str_repeat( '<i class="sp-icon-' . $icon . '" title="' . $title . '" style="color:' . $color . '"></i> ', intval( $value ) );
+				$icons = str_repeat( '<i class="sp-icon-' . $icon . '" title="' . $title . '" style="color:' . $color . ' !important"></i> ', intval( $value ) );
 			}
 		}
 		return $icons;

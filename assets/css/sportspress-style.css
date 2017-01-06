@@ -20,6 +20,11 @@
     font-family: dashicons !important;
 }
 
+.sp-template [class^="sp-icon-"],
+.sp-template [class*=" sp-icon-"] {
+    font-family: sportspress, dashicons !important;
+}
+
 .sp-template {
     overflow: hidden !important;
     margin-bottom: 20px !important;
