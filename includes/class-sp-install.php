@@ -426,6 +426,8 @@ class SP_Install {
 		
 		if ( version_compare( $version, '2.2', '<' ) ) {
 			update_option( 'sportspress_frontend_styles', 'no' );
+			update_option( 'sportspress_event_show_timeline', 'no' );
+			update_option( 'sportspress_event_logos_show_team_names', 'no' );
 		}
 	}
 
