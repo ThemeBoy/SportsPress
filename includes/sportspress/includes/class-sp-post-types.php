@@ -60,7 +60,7 @@ class SP_Post_types {
 				'hierarchical' => true,
 				'rewrite' => array( 'slug' => get_option( 'sportspress_league_slug', 'league' ) ),
 				'show_in_rest' => true,
-				'rest_controller_class' => 'SP_REST_Posts_Controller',
+				'rest_controller_class' => 'SP_REST_Terms_Controller',
 				'rest_base' => 'leagues',
 			) );
 			$object_types = apply_filters( 'sportspress_league_object_types', array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) );
@@ -96,7 +96,7 @@ class SP_Post_types {
 				'hierarchical' => true,
 				'rewrite' => array( 'slug' => get_option( 'sportspress_season_slug', 'season' ) ),
 				'show_in_rest' => true,
-				'rest_controller_class' => 'SP_REST_Posts_Controller',
+				'rest_controller_class' => 'SP_REST_Terms_Controller',
 				'rest_base' => 'seasons',
 			) );
 			$object_types = apply_filters( 'sportspress_season_object_types', array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) );
@@ -132,7 +132,7 @@ class SP_Post_types {
 				'hierarchical' => true,
 				'rewrite' => array( 'slug' => get_option( 'sportspress_venue_slug', 'venue' ) ),
 				'show_in_rest' => true,
-				'rest_controller_class' => 'SP_REST_Posts_Controller',
+				'rest_controller_class' => 'SP_REST_Terms_Controller',
 				'rest_base' => 'venues',
 			) );
 			$object_types = apply_filters( 'sportspress_event_object_types', array( 'sp_event', 'sp_calendar', 'sp_team' ) );
@@ -168,7 +168,7 @@ class SP_Post_types {
 				'hierarchical' => true,
 				'rewrite' => array( 'slug' => get_option( 'sportspress_position_slug', 'position' ) ),
 				'show_in_rest' => true,
-				'rest_controller_class' => 'SP_REST_Posts_Controller',
+				'rest_controller_class' => 'SP_REST_Terms_Controller',
 				'rest_base' => 'positions',
 			) );
 			$object_types = apply_filters( 'sportspress_position_object_types', array( 'sp_player', 'sp_list' ) );
@@ -204,7 +204,7 @@ class SP_Post_types {
 				'hierarchical' => true,
 				'rewrite' => array( 'slug' => get_option( 'sportspress_role_slug', 'role' ) ),
 				'show_in_rest' => true,
-				'rest_controller_class' => 'SP_REST_Posts_Controller',
+				'rest_controller_class' => 'SP_REST_Terms_Controller',
 				'rest_base' => 'roles',
 			) );
 			$object_types = apply_filters( 'sportspress_role_object_types', array( 'sp_staff' ) );

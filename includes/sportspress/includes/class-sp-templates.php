@@ -26,7 +26,7 @@ class SP_Templates {
 			'event' => array_merge(
 				apply_filters( 'sportspress_before_event_template', array(
 					'logos' => array(
-						'title' => __( 'Logos', 'sportspress' ),
+						'title' => __( 'Teams', 'sportspress' ),
 						'option' => 'sportspress_event_show_logos',
 						'action' => 'sportspress_output_event_logos',
 						'default' => 'yes',

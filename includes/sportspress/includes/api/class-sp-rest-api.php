@@ -41,23 +41,14 @@ class SP_REST_API {
 	 * Create REST routes.
 	 */
 	public static function create_routes() {
-		if ( ! class_exists( 'WP_REST_Posts_Controller' ) ) return;
 
 		if ( ! class_exists( 'SP_REST_Posts_Controller' ) ) {
 			require_once dirname( __FILE__ ) . '/class-sp-rest-posts-controller.php';
 		}
 
-		$controller = new SP_REST_Posts_Controller( 'sp_event' );
-		$controller->register_routes();
-
-		$controller = new SP_REST_Posts_Controller( 'sp_team' );
-		$controller->register_routes();
-
-		$controller = new SP_REST_Posts_Controller( 'sp_player' );
-		$controller->register_routes();
-
-		$controller = new SP_REST_Posts_Controller( 'sp_staff' );
-		$controller->register_routes();
+		if ( ! class_exists( 'SP_REST_Terms_Controller' ) ) {
+			require_once dirname( __FILE__ ) . '/class-sp-rest-terms-controller.php';
+		}
 		
 		do_action( 'sportspress_create_rest_routes' );
 	}

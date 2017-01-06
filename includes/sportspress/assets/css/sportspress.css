@@ -327,17 +327,32 @@
 .sp-event-list .data-away {
 	text-align: left;
 }
+.sp-event-list td.has-logo {
+	line-height: 2em;
+}
+.sp-event-list .team-logo {
+	width: 2em;
+	height: 2em;
+	margin-right: 0.5em;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+.sp-event-list .team-logo img {
+	width: auto;
+	height: auto;
+	max-width: 2em;
+	max-height: 2em;
+}
 .sp-event-list .data-home img,
 .sp-event-list .data-away img {
 	display: inline-block;
 	vertical-align: middle;
 }
 .sp-event-list .data-home img {
-	float: right;
 	margin-left: 8px;
 }
 .sp-event-list .data-away img {
-	float: left;
 	margin-right: 8px;
 }
 .sp-event-list-format-homeaway .data-time {

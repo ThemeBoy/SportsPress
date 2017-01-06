@@ -364,21 +364,27 @@ jQuery(document).ready(function($){
 	// Format selector
 	$(".sp-format-selector select:first").change(function() {
 
-		$precisionselector = $(".sp-precision-selector input:first");
+		$precisiondiv = $("#sp_precisiondiv");
+		$precisioninput = $("#sp_precision");
+		$timeddiv = $("#sp_timeddiv");
 		$equationdiv = $("#sp_equationdiv");
 
-		// Precision settings
-		if($(this).val() == "decimal" || $(this).val() == "time") {
-			$precisionselector.prop( "disabled", false );
-		} else {
-			$precisionselector.prop( "disabled", true )
-		}
-
 		// Equation settings
-		if($(this).val() == "equation") {
+		if ($(this).val() == "equation") {
 			$equationdiv.show();
+			$precisiondiv.show();
+			$timeddiv.hide();
+			$precisioninput.prop( "disabled", false );
+		} else if ($(this).val() == "number") {
+			$equationdiv.hide();
+			$precisiondiv.hide();
+			$timeddiv.show();
+			$precisioninput.prop( "disabled", true );
 		} else {
 			$equationdiv.hide();
+			$precisiondiv.hide();
+			$timeddiv.hide();
+			$precisioninput.prop( "disabled", true );
 		}
 
 	});
@@ -821,4 +827,22 @@ jQuery(document).ready(function($){
 		$select.find('input[value='+val+']').attr('checked', true);
 		$select.slideUp('fast').siblings('.sp-edit-event-status').show();
 	});
+
+	// Box score time converter
+	$('.sp-convert-time-input').change(function() {
+		var s = 0;
+		var val = $(this).val();
+		if (val === '') {
+			$(this).siblings('.sp-convert-time-output').val('');
+			return;
+		}
+		var a = val.split(':').reverse();
+		$.each(a, function( index, value ) {
+			s += parseInt(value) * Math.pow(60, index);
+		});
+		$(this).siblings('.sp-convert-time-output').val(s);
+	});
+
+	// Trigger box score time converter
+	$('.sp-convert-time-input').change();
 });

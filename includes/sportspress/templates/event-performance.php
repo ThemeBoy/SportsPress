@@ -88,6 +88,8 @@ if ( is_array( $teams ) ):
 		}
 		$formats[ $column->post_name ] = $format;
 	}
+
+	do_action( 'sportspress_before_event_performance' );
 	
 	if ( $is_individual ) {
 		// Combined table

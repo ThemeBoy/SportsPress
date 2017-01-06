@@ -81,6 +81,8 @@ class SP_Widget_Event_List extends WP_Widget {
 		$order = strip_tags($instance['order']);
 		$show_all_events_link = $instance['show_all_events_link'];
 
+		$time_format = get_option( 'sportspress_event_list_time_format', 'combined' );
+
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'event-list' );
 		?>
@@ -155,13 +157,28 @@ class SP_Widget_Event_List extends WP_Widget {
 
 		<p class="sp-prefs">
 			<?php _e( 'Columns:', 'sportspress' ); ?><br>
-			<?php 
-			$the_columns = array(
-				'event' => __( 'Event', 'sportspress' ),
-				'time' => __( 'Time/Results', 'sportspress' ),
-				'venue' => __( 'Venue', 'sportspress' ),
-				'article' => __( 'Article', 'sportspress' ),
-			);
+			<?php
+			$the_columns = array();
+			$the_columns['event'] = __( 'Event', 'sportspress' );
+
+			if ( 'combined' === $time_format ) {
+
+				$the_columns['time'] = __( 'Time/Results', 'sportspress' );
+
+			} else {
+
+				if ( in_array( $time_format, array( 'time', 'separate' ) ) ) {
+					$the_columns['time'] = __( 'Time', 'sportspress' );
+				}
+
+				if ( in_array( $time_format, array( 'results', 'separate' ) ) ) {
+					$the_columns['results'] = __( 'Results', 'sportspress' );
+				}
+			}
+
+			$the_columns['venue'] = __( 'Venue', 'sportspress' );
+			$the_columns['article'] = __( 'Article', 'sportspress' );
+
 			$field_name = $this->get_field_name('columns') . '[]';
 			$field_id = $this->get_field_id('columns');
 			?>

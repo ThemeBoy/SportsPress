@@ -231,7 +231,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
-				array( 'title' => __( 'Logos', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'event_logo_options' ),
+				array( 'title' => __( 'Teams', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'event_logo_options' ),
 			),
 
 			apply_filters( 'sportspress_event_logo_options', array(
@@ -250,7 +250,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 					'title'     => __( 'Display', 'sportspress' ),
 					'desc' 		=> __( 'Name', 'sportspress' ),
 					'id' 		=> 'sportspress_event_logos_show_team_names',
-					'default'	=> 'no',
+					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
 					'checkboxgroup'	=> 'start',
 				),

@@ -48,3 +48,6 @@
 .sp-icon-card:before {
 	content: "\e801";
 }
+.sp-icon-sub:before {
+	content: "\f503";
+}

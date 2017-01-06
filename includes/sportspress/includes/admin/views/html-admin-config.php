@@ -140,10 +140,8 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 		<tbody>
 			<?php
 			$selection = get_option( 'sportspress_primary_performance', 0 );
-			$mode = get_option( 'sportspress_event_performance_mode', 'values' );
-			$colspan = 7;
-			
-			if ( 'icons' === $mode ) $colspan ++;
+			$colspan = 8;
+
 			if ( 'auto' === $columns ) $colspan ++;
 
 			$args = array(
@@ -168,9 +166,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 							<thead>
 								<tr>
 									<th class="radio" scope="col"><?php _e( 'Primary', 'sportspress' ); ?></th>
-									<?php if ( 'icons' === $mode ) { ?>
-										<th class="icon" scope="col"><?php _e( 'Icon', 'sportspress' ); ?></th>
-									<?php } ?>
+									<th class="icon" scope="col"><?php _e( 'Icon', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 									<th scope="col"><?php _e( 'Category', 'sportspress' ); ?></th>
@@ -188,9 +184,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 							<tfoot>
 								<tr>
 									<th class="radio"><input type="radio" class="sp-primary-performance-option" id="sportspress_primary_performance_0" name="sportspress_primary_performance" value="0" <?php checked( $selection, 0 ); ?>></th>
-									<?php if ( 'icons' === $mode ) { ?>
-										<th class="icon">&nbsp;</td>
-									<?php } ?>
+									<th class="icon">&nbsp;</td>
 									<th colspan="<?php echo $colspan - 1; ?>"><label for="sportspress_primary_performance_0">
 										<?php
 										if ( sizeof( $data ) > 0 ):
@@ -210,18 +204,16 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 								?>
 								<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 									<td class="radio"><input type="radio" class="sp-primary-performance-option" id="sportspress_primary_performance_<?php echo $row->post_name; ?>" name="sportspress_primary_performance" value="<?php echo $row->post_name; ?>" <?php checked( $selection, $row->post_name ); ?>></td>
-									<?php if ( 'icons' === $mode ) { ?>
-										<td class="icon">
-											<?php
-											if ( has_post_thumbnail( $row->ID ) )
-												$icon = get_the_post_thumbnail( $row->ID, 'sportspress-fit-mini' );
-											else
-												$icon = '&nbsp;';
+									<td class="icon">
+										<?php
+										if ( has_post_thumbnail( $row->ID ) )
+											$icon = get_the_post_thumbnail( $row->ID, 'sportspress-fit-mini' );
+										else
+											$icon = '&nbsp;';
 
-											echo apply_filters( 'sportspress_performance_icon', $icon, $row->ID );
-											?>
-										</td>
-									<?php } ?>
+										echo apply_filters( 'sportspress_performance_icon', $icon, $row->ID );
+										?>
+									</td>
 									<td class="row-title"><?php echo $row->post_title; ?></td>
 									<td><code><?php echo $row->post_name; ?></code></td>
 									<td><?php echo sp_get_post_section( $row->ID ); ?></td>

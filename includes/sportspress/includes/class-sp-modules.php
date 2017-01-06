@@ -43,6 +43,13 @@ class SP_Modules {
 					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Display head-to-head team comparison charts in events.', 'sportspress' ),
 				),
+				'timelines' => array(
+					'label' => __( 'Timelines', 'sportspress' ),
+					'class' => 'SportsPress_Timelines',
+					'icon' => 'sp-icon-timeline',
+					'link' => 'http://tboy.co/pro',
+					'desc' => __( 'Display a timeline of player performance in events.', 'sportspress' ),
+				),
 				'tournaments' => array(
 					'label' => __( 'Tournaments', 'sportspress' ),
 					'class' => 'SportsPress_Tournaments',
@@ -130,6 +137,13 @@ class SP_Modules {
 					'icon' => 'sp-icon-megaphone',
 					'link' => 'http://tboy.co/pro',
 					'desc' => __( 'Attract sponsors by offering them advertising space on your website.', 'sportspress' ),
+				),
+				'referees' => array(
+					'label' => __( 'Referees', 'sportspress' ),
+					'class' => 'SportsPress_Referees',
+					'icon' => 'sp-icon-whistle',
+					'link' => 'http://tboy.co/pro',
+					'desc' => __( 'Manage referees, umpires, judges, timekeepers, and other officials.', 'sportspress' ),
 				),
 			),
 		));

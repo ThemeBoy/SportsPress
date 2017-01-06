@@ -160,6 +160,7 @@ class SP_Player extends SP_Custom_Post {
 		}
 
 		$performance_labels = array();
+		$formats = array();
 
 		foreach ( $posts as $post ):
 			if ( -1 === $section ) {
@@ -175,6 +176,12 @@ class SP_Player extends SP_Custom_Post {
 					$performance_labels[ $post->post_name ] = $post->post_title;
 				}
 			}
+
+			$format = get_post_meta( $post->ID, 'sp_format', true );
+			if ( '' === $format ) {
+				$format = 'number';
+			}
+			$formats[ $post->post_name ] = $format;
 		endforeach;
 		
 		// Get statistic labels
@@ -590,6 +597,8 @@ class SP_Player extends SP_Custom_Post {
 
 		$columns = array_merge( $performance_labels, $stats );
 
+		$formats = array();
+
 		$args = array(
 			'post_type' => array( 'sp_performance', 'sp_statistic' ),
 			'numberposts' => 100,
@@ -610,6 +619,12 @@ class SP_Player extends SP_Custom_Post {
 				if ( in_array( $post->post_name, $usecolumns ) ) {
 					$usecolumn_order[] = $post->post_name;
 				}
+
+				$format = get_post_meta( $post->ID, 'sp_format', true );
+				if ( '' === $format ) {
+					$format = 'number';
+				}
+				$formats[ $post->post_name ] = $format;
 			}
 			$columns = array_merge( $column_order, $columns );
 			$usecolumns = array_merge( $usecolumn_order, $usecolumns );
@@ -624,7 +639,7 @@ class SP_Player extends SP_Custom_Post {
 					$labels[ $key ] = $columns[ $key ];
 				endif;
 			endforeach; endif;
-			return array( $labels, $data, $placeholders, $merged, $leagues, $has_checkboxes );
+			return array( $labels, $data, $placeholders, $merged, $leagues, $has_checkboxes, $formats );
 		else:
 			if ( is_array( $usecolumns ) ):
 				foreach ( $columns as $key => $label ):
@@ -670,6 +685,30 @@ class SP_Player extends SP_Custom_Post {
 				$merged[-1] = $total;
 				$merged[-1]['name'] = __( 'Total', 'sportspress' );
 			}
+
+			// Convert to time notation
+			if ( in_array( 'time', $formats ) ):
+				foreach ( $merged as $season => $season_performance ):
+					if ( $season <= 0 ) continue;
+
+					foreach ( $season_performance as $performance_key => $performance_value ):
+
+						// Continue if not time format
+						if ( 'time' !== sp_array_value( $formats, $performance_key ) ) continue;
+
+						$intval = intval( $performance_value );
+						$timeval = gmdate( 'i:s', $intval );
+						$hours = floor( $intval / 3600 );
+
+						if ( '00' != $hours )
+							$timeval = $hours . ':' . $timeval;
+
+						$timeval = ereg_replace( '^0', '', $timeval );
+
+						$merged[ $season ][ $performance_key ] = $timeval;
+					endforeach;
+				endforeach;
+			endif;
 			
 			$merged[0] = array_merge( $labels, $columns );
 				
