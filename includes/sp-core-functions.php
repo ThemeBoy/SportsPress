@@ -1377,7 +1377,6 @@ function sp_get_text_options() {
 		__( 'Full Time', 'sportspress' ),
 		__( 'Home', 'sportspress' ),
 		__( 'League Table', 'sportspress' ),
-		__( 'Logos', 'sportspress' ),
 		__( 'Match Day', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
 		__( 'Offense', 'sportspress' ),
