@@ -111,7 +111,7 @@ class SP_Event extends SP_Custom_Post{
 
 			if ( 'number' === $format ) {
 				$is_timed = get_post_meta( $var->ID, 'sp_timed', true );
-				if ( $is_timed ) {
+				if ( '' === $is_timed || $is_timed ) {
 					$timed[] = $var->post_name;
 				}
 			} elseif ( 'equation' === $format ) {
@@ -257,8 +257,139 @@ class SP_Event extends SP_Custom_Post{
 		endif;
 	}
 	
-	public function timeline( $admin = false) {
-		return (array) get_post_meta( $this->ID, 'sp_timeline', true );
+	public function timeline( $admin = false, $linear = false ) {
+		$timeline = (array) get_post_meta( $this->ID, 'sp_timeline', true );
+
+		if ( ! $linear ) return $timeline;
+
+		$performance = (array) get_post_meta( $this->ID, 'sp_players', true );
+		if ( empty( $timeline ) ) return array();
+
+		$stats = array();
+		$player_ids = array();
+		$performance_keys = array();
+
+		// Clean up timeline
+		foreach ( $timeline as $team => $players ) {
+			if ( ! $team ) continue;
+
+			// Set home team
+			if ( ! isset( $home_team ) ) $home_team = $team;
+
+			// Determine side
+			if ( $home_team === $team ) {
+				$side = 'home';
+			} else {
+				$side = 'away';
+			}
+
+			if ( ! is_array( $players ) ) continue;
+
+			foreach ( $players as $player => $keys ) {
+				if ( ! $player ) continue;
+				if ( ! is_array( $keys ) ) continue;
+
+				$player_ids[] = $player;
+
+				foreach ( $keys as $key => $times ) {
+					if ( ! is_array( $times ) || empty( $times ) ) continue;
+
+					foreach ( $times as $time ) {
+						if ( '' === $time ) continue;
+
+						$entry = array(
+							'time' => $time,
+							'id' => $player,
+							'team' => $team,
+							'side' => $side,
+							'key' => $key,
+						);
+
+						if ( 'sub' === $key ) {
+							$sub = sp_array_value( sp_array_value( sp_array_value( $performance, $team ), $player ), 'sub', 0 );
+							$entry['sub'] = $sub;
+							$player_ids[] = $sub;
+						}
+
+						$stats[] = $entry;
+					}
+
+					$performance_keys[] = $key;
+				}
+			}
+		}
+
+		// Filter out duplicate player IDs and performance keys
+		$player_ids = array_unique( $player_ids );
+		$performance_keys = array_unique( $performance_keys );
+
+		// Get player names and numbers
+		$posts = get_posts( array(
+			'post_type' => 'sp_player',
+			'posts_per_page' => -1,
+			'post__in' => $player_ids
+		) );
+
+		$player_names = array();
+		$player_numbers = array();
+
+		if ( $posts ) {
+			foreach ( $posts as $post ) {
+				$player_names[ $post->ID ] = $post->post_title;
+				$player_numbers[ $post->ID ] = get_post_meta( $post->ID, 'sp_number', true );
+			}
+		}
+
+		// Get performance labels and icons
+		$posts = get_posts( array(
+			'post_type' => 'sp_performance',
+			'posts_per_page' => -1,
+			'post_name__in' => $performance_keys
+		) );
+
+		$performance_labels = array();
+		$performance_icons = array();
+
+		if ( $posts ) {
+			foreach ( $posts as $post ) {
+				$performance_labels[ $post->post_name ] = $post->post_title;
+
+				$icon = '';
+				if ( has_post_thumbnail( $post->ID ) ) {
+					$icon = get_the_post_thumbnail( $post->ID, 'sportspress-fit-mini' );
+				}
+				$performance_icons[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $post->ID, 1 );
+			}
+		}
+
+		// Add missing info to stats
+		foreach ( $stats as $index => $details ) {
+			$stats[ $index ]['name'] = sp_array_value( $player_names, $details['id'] );
+			$stats[ $index ]['number'] = sp_array_value( $player_numbers, $details['id'] );
+
+			if ( 'sub' === $details['key'] ) {
+				$sub_name = sp_array_value( $player_names, $details['sub'], __( 'Substitute', 'sportspress' ) );
+				$sub_number = sp_array_value( $player_numbers, $details['sub'] );
+
+				if ( '' !== $sub_number ) {
+					$icon_title = $sub_number . '. ' . $sub_name;
+				} else {
+					$icon_title = $sub_name;
+				}
+
+				$stats[ $index ]['sub_name'] = $sub_name;
+				$stats[ $index ]['sub_number'] = $sub_number;
+				$stats[ $index ]['label'] = __( 'Substite', 'sportspress' );
+				$stats[ $index ]['icon'] = '<i class="sp-icon-sub" title="' . $icon_title . '"></i>';
+			} else {
+				$stats[ $index ]['label'] = sp_array_value( $performance_labels, $details['key'] );
+				$stats[ $index ]['icon'] = sp_array_value( $performance_icons, $details['key'] );
+			}
+		}
+
+		usort( $stats, array( $this, 'sort_timeline' ) );
+
+		return $stats;
 	}
 
 	public function main_results() {
@@ -488,5 +619,9 @@ class SP_Event extends SP_Custom_Post{
 
 	public function sub_filter( $v ) {
 		return sp_array_value( $v, 'status', 'lineup' ) == 'sub';
+	}
+
+	public function sort_timeline( $a, $b ) {
+		return $a['time'] - $b['time'];
 	}
 }

@@ -45,7 +45,7 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		}
 		$timed = get_post_meta( $post->ID, 'sp_timed', true );
 		if ( '' === $timed ) {
-			$timed = false;
+			$timed = true;
 		}
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
