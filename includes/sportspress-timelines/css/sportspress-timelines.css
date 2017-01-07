@@ -29,6 +29,10 @@
 	cursor: default;
 }
 
+.sp-timeline-kickoff-away {
+	visibility: hidden;
+} 
+
 .sp-timeline-icon {
 	position: absolute;
 	bottom: 1.5em;
@@ -40,4 +44,11 @@
 .sp-timeline-icon-away {
 	bottom: auto;
 	top: 2.5em;
+}
+
+.sp-timeline-icon img {
+	height: auto;
+	width: auto;
+	max-height: 2.5em;
+	max-width: 1.5em;
 }
