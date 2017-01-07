@@ -13,7 +13,7 @@ if ( get_option( 'sportspress_event_show_logos', 'yes' ) === 'no' ) return;
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 
-$teams = get_post_meta( $id, 'sp_team' );
+$teams = (array) get_post_meta( $id, 'sp_team' );
 $teams = array_filter( $teams, 'sp_filter_positive' );
 
 if ( ! $teams ) return;

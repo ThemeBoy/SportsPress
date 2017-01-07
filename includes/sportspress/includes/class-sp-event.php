@@ -283,6 +283,14 @@ class SP_Event extends SP_Custom_Post{
 				$side = 'away';
 			}
 
+			$stats[] = array(
+				'time' => -2,
+				'id' => $team,
+				'team' => $team,
+				'side' => $side,
+				'key' => 'team',
+			);
+
 			if ( ! is_array( $players ) ) continue;
 
 			foreach ( $players as $player => $keys ) {
@@ -367,7 +375,12 @@ class SP_Event extends SP_Custom_Post{
 			$stats[ $index ]['name'] = sp_array_value( $player_names, $details['id'] );
 			$stats[ $index ]['number'] = sp_array_value( $player_numbers, $details['id'] );
 
-			if ( 'sub' === $details['key'] ) {
+			if ( 'team' === $details['key'] ) {
+				$name = sp_get_team_name( $details['team'] );
+				$stats[ $index ]['name'] = $name;
+				$stats[ $index ]['label'] = $name;
+				$stats[ $index ]['icon'] = sp_get_logo( $details['team'] );
+			} elseif ( 'sub' === $details['key'] ) {
 				$sub_name = sp_array_value( $player_names, $details['sub'], __( 'Substitute', 'sportspress' ) );
 				$sub_number = sp_array_value( $player_numbers, $details['sub'] );
 
