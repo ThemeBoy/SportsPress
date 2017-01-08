@@ -163,6 +163,15 @@ function sp_get_performance( $post = 0 ) {
 	return $event->performance();
 }
 
+function sp_get_single_name( $post = 0 ) {
+	$single = get_post_meta( $post, 'sp_single', true );
+	if ( '' !== $single ) {
+		return $single;
+	} else {
+		return get_the_title( $post );
+	}
+}
+
 function sp_event_logos( $post = 0 ) {
 	sp_get_template( 'event-logos.php', array( 'id' => $post ) );
 }

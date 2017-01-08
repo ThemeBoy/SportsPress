@@ -104,7 +104,7 @@ class SportsPress_Icons {
 		if ( ! $id || ! $value ) return $icons;
 		$icon = get_post_meta( $id, 'sp_icon', true );
 		if ( null !== $icon && in_array( $icon, $this->icons ) ) {
-			$title = get_the_title( $id );
+			$title = sp_get_single_name( $id );
 			$color = get_post_meta( $id, 'sp_color', true );
 			preg_match( '#\((.*?)\)#', $value, $match );
 			if ( ! empty( $match ) && isset( $match[1] ) ) {
