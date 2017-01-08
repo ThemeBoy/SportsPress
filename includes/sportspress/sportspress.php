@@ -350,12 +350,20 @@ final class SportsPress {
 					'version'     => '0.9.1',
 				);
 				break;
+			case 'basketball':
+				$plugins[] = array(
+					'name'        => 'SportsPress for Basketball',
+					'slug'        => 'sportspress-for-basketball',
+					'required'    => false,
+					'version'     => '0.9',
+				);
+				break;
 			case 'cricket':
 				$plugins[] = array(
 					'name'        => 'SportsPress for Cricket',
 					'slug'        => 'sportspress-for-cricket',
 					'required'    => false,
-					'version'     => '1.0',
+					'version'     => '1.1',
 				);
 				break;
 			case 'golf':
@@ -363,6 +371,7 @@ final class SportsPress {
 					'name'        => 'SportsPress for Golf',
 					'slug'        => 'sportspress-for-golf',
 					'required'    => false,
+					'version'     => '0.9',
 				);
 				break;
 			case 'soccer':
@@ -370,6 +379,7 @@ final class SportsPress {
 					'name'        => 'SportsPress for Football (Soccer)',
 					'slug'        => 'sportspress-for-soccer',
 					'required'    => false,
+					'version'     => '0.9.4',
 				);
 				break;
 		endswitch;
