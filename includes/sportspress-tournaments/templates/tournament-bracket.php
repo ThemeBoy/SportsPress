@@ -23,6 +23,7 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 $post_layout = get_post_meta( $id, 'sp_format', true );
+$tournament_type = get_post_meta( $id, 'sp_type', true );
 
 if ( $post_layout )
 	$layout = $post_layout;
@@ -33,49 +34,67 @@ if ( false === $title && $id ):
 		$title = $caption;
 endif;
 
-if ( $title )
-	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
-
-if ( $responsive && 'center' == $layout ) {
-	?>
-	<div class="sp-template sp-template-tournament-bracket sp-mobile">
-		<?php
-		sp_get_template( 'tournament-bracket-table.php', array(
-			'id' => $id,
-			'show_logos' => $show_logos,
-			'show_venue' => $show_venue,
-			'link_teams' => $link_teams,
-			'link_events' => $link_events,
-			'layout' => 'bracket',
-		), '', SP_TOURNAMENTS_DIR . 'templates/' );
-		?>
-	</div>
-	<div class="sp-template sp-template-tournament-bracket sp-desktop">
-		<?php
-		sp_get_template( 'tournament-bracket-table.php', array(
-			'id' => $id,
-			'show_logos' => $show_logos,
-			'show_venue' => $show_venue,
-			'link_teams' => $link_teams,
-			'link_events' => $link_events,
-			'layout' => $layout,
-		), '', SP_TOURNAMENTS_DIR . 'templates/' );
-		?>
-	</div>
-	<?php
+if ( 'double' === $tournament_type ) {
+	$types = array(
+		'winners' => __( "Winner's Bracket", 'sportspress' ),
+		'losers' => __( "Loser's Bracket", 'sportspress' ),
+		'champions' => __( "Championship Bracket", 'sportspress' ),
+	);
 } else {
-	?>
-	<div class="sp-template sp-template-tournament-bracket">
-		<?php
-		sp_get_template( 'tournament-bracket-table.php', array(
-			'id' => $id,
-			'show_logos' => $show_logos,
-			'show_venue' => $show_venue,
-			'link_teams' => $link_teams,
-			'link_events' => $link_events,
-			'layout' => $layout,
-		), '', SP_TOURNAMENTS_DIR . 'templates/' );
+	$types = array(
+		'single' => $title,
+	);
+}
+
+foreach ( $types as $type => $name ) {
+	if ( $name ) {
+		echo '<h4 class="sp-table-caption">' . $name . '</h4>';
+	}
+
+	if ( $responsive && 'center' == $layout ) {
 		?>
-	</div>
-	<?php
+		<div class="sp-template sp-template-tournament-bracket sp-mobile">
+			<?php
+			sp_get_template( 'tournament-bracket-table.php', array(
+				'id' => $id,
+				'show_logos' => $show_logos,
+				'show_venue' => $show_venue,
+				'link_teams' => $link_teams,
+				'link_events' => $link_events,
+				'layout' => 'bracket',
+				'type' => $type,
+			), '', SP_TOURNAMENTS_DIR . 'templates/' );
+			?>
+		</div>
+		<div class="sp-template sp-template-tournament-bracket sp-desktop">
+			<?php
+			sp_get_template( 'tournament-bracket-table.php', array(
+				'id' => $id,
+				'show_logos' => $show_logos,
+				'show_venue' => $show_venue,
+				'link_teams' => $link_teams,
+				'link_events' => $link_events,
+				'layout' => $layout,
+				'type' => $type,
+			), '', SP_TOURNAMENTS_DIR . 'templates/' );
+			?>
+		</div>
+		<?php
+	} else {
+		?>
+		<div class="sp-template sp-template-tournament-bracket">
+			<?php
+			sp_get_template( 'tournament-bracket-table.php', array(
+				'id' => $id,
+				'show_logos' => $show_logos,
+				'show_venue' => $show_venue,
+				'link_teams' => $link_teams,
+				'link_events' => $link_events,
+				'layout' => $layout,
+				'type' => $type,
+			), '', SP_TOURNAMENTS_DIR . 'templates/' );
+			?>
+		</div>
+		<?php
+	}
 }

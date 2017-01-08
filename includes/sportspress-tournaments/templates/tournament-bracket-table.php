@@ -18,12 +18,13 @@ $defaults = array(
 	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'layout' => 'bracket',
+	'type' => 'single',
 );
 
 extract( $defaults, EXTR_SKIP );
 
 $tournament = new SP_Tournament( $id );
-list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout, true );
+list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout, true, $type );
 ?>
 <table class="sp-data-table sp-tournament-bracket<?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
 	<thead>

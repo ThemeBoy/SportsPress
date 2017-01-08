@@ -95,21 +95,36 @@ class SP_Tournament {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $layout = 'bracket', $admin = false ) {
+	public function data( $layout = 'bracket', $admin = false, $type = 'single' ) {
 	
 		$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
 		
 		$labels = $this->labels();
+		
+		// Get post meta key for raw data based on type
+		switch ( $type ) {
+			case 'losers':
+				$key = 'sp_loser';
+				break;
+			case 'champions':
+				$key = 'sp_champion';
+				break;
+			default:
+				$key = 'sp_event';
+		}
 
 		// Get events
-		$events = get_post_meta( $this->ID, 'sp_event', false );
+		$events = get_post_meta( $this->ID, $key, false );
 
 		// Get raw data
-		$raw = get_post_meta( $this->ID, 'sp_events', true );
+		$raw = get_post_meta( $this->ID, $key . 's', true );
 		
 		// Get number of rounds
 		$rounds = get_post_meta( $this->ID, 'sp_rounds', true );
 		if ( $rounds === '' ) $rounds = 3;
+		
+		// Maximum number of rounds for double elimination is 3
+		if ( 'single' !== $type ) $rounds = min( $rounds, 3 );
 
 		if ( $rounds < 2 )
 			$layout = 'bracket';
@@ -229,6 +244,22 @@ class SP_Tournament {
 				// Check if event is hidden
 				$hidden = sp_array_value( sp_array_value( $raw, $index, array() ), 'hidden', 0 );
 				
+				// Initialize forced
+				$forced = 0;
+				
+				// Hide odd events in double elimination
+				if ( 'losers' === $type ) {
+					if ( 0 === $col && 0 === $index % 2 ) {
+						$hidden = 1;
+						$forced = 1;
+					}
+				} elseif ( 'champions' === $type ) {
+					if ( $rounds - 1 !== $col && 1 !== $index % $rounds ) {
+						$hidden = 1;
+						$forced = 1;
+					}
+				}
+				
 				// Get selected event id
 				$event = sp_array_value( $events, $index, 0 );
 
@@ -275,6 +306,7 @@ class SP_Tournament {
 						'index' => $index,
 						'id' => $event,
 						'hidden' => $hidden,
+						'forced' => $forced,
 					);
 
 					if ( $rounds - 1 == $col ):
@@ -309,6 +341,7 @@ class SP_Tournament {
 						'class' => ( $ti ? 'sp-away-team' : 'sp-home-team' ),
 						'id' => $team,
 						'hidden' => $hidden,
+						'forced' => $forced,
 						'pos' => $oi,
 						'select' => $select,
 					);

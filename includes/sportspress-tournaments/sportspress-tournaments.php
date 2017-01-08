@@ -242,19 +242,6 @@ class SportsPress_Tournaments {
 					'type' 		=> 'checkbox',
 					'checkboxgroup' => 'end',
 				),
-					
-				array(
-					'title' 	=> __( 'Limit', 'sportspress' ),
-					'id' 		=> 'sportspress_tournament_rounds',
-					'class' 	=> 'small-text',
-					'default'	=> '6',
-					'desc' 		=> __( 'rounds', 'sportspress' ),
-					'type' 		=> 'number',
-					'custom_attributes' => array(
-						'min' 	=> 1,
-						'step' 	=> 1
-					),
-				),
 			), 'tournament' ),
 
 			array(
