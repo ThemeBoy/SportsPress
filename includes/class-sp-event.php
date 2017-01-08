@@ -217,7 +217,7 @@ class SP_Event extends SP_Custom_Post{
 			endif;
 
 			// Add minutes to box score values
-			if ( in_array( 'number', $formats ) && 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'yes' ) ):
+			if ( in_array( 'number', $formats ) && 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'no' ) ):
 				$timeline = $this->timeline();
 				if ( ! empty( $timeline ) ):
 					foreach ( $performance as $team => $players ):
