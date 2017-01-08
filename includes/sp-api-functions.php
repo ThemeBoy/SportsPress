@@ -163,10 +163,10 @@ function sp_get_performance( $post = 0 ) {
 	return $event->performance();
 }
 
-function sp_get_single_name( $post = 0 ) {
-	$single = get_post_meta( $post, 'sp_single', true );
-	if ( '' !== $single ) {
-		return $single;
+function sp_get_singular_name( $post = 0 ) {
+	$singular = get_post_meta( $post, 'sp_singular', true );
+	if ( '' !== $singular ) {
+		return $singular;
 	} else {
 		return get_the_title( $post );
 	}
