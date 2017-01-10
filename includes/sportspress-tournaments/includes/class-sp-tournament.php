@@ -347,7 +347,7 @@ class SP_Tournament {
 					);
 
 					if ( 'center' == $layout && $rounds - 1 == $col ):
-						$cell['class'] = ( $ti ? 'sp-team-flip sp-team-final' : 'sp-team-final' );
+						$cell['class'] = ( $ti ? 'sp-team-final' : 'sp-team-flip sp-team-final' );
 					elseif ( $flip ):
 						$cell['class'] = 'sp-team-flip';
 					endif;
