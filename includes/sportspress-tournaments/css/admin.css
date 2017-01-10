@@ -12,10 +12,6 @@
 	content: "\f181";
 }
 
-.post-state-format.post-format-minimal:before, .post-format-icon.post-format-minimal:before, a.post-state-format.format-minimal:before {
-	content: "\f237";
-}
-
 .post-state-format.post-format-tournament:before, .post-format-icon.post-format-tournament:before, a.post-state-format.format-tournament:before {
 	content: "\f313";
 }

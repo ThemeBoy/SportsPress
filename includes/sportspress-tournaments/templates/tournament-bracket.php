@@ -28,24 +28,6 @@ $tournament_type = get_post_meta( $id, 'sp_type', true );
 if ( $post_layout )
 	$layout = $post_layout;
 
-if ( 'minimal' == $layout ) {
-	?>
-	<div class="sp-template sp-template-tournament-bracket">
-		<?php
-		sp_get_template( 'tournament-bracket-minimal.php', array(
-			'id' => $id,
-			'show_logos' => $show_logos,
-			'show_venue' => $show_venue,
-			'link_teams' => $link_teams,
-			'link_events' => $link_events,
-			'type' => $tournament_type,
-		), '', SP_TOURNAMENTS_DIR . 'templates/' );
-		?>
-	</div>
-	<?php
-	return;
-}
-
 if ( false === $title && $id ):
 	$caption = get_post_meta( $id, 'sp_caption', true );
 	if ( $caption )

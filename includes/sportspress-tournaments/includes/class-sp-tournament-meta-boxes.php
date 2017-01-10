@@ -32,9 +32,9 @@ class SP_Tournament_Meta_Boxes {
 		add_meta_box( 'sp_formatdiv', __( 'Layout', 'sportspress' ), array( $this, 'format' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), array( $this, 'details' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_datadiv', __( 'Bracket', 'sportspress' ), array( $this, 'data' ), 'sp_tournament', 'normal', 'high' );
-		add_meta_box( 'sp_winnersdiv', __( "Winner Bracket", 'sportspress' ), array( $this, 'winners' ), 'sp_tournament', 'normal', 'high' );
-		add_meta_box( 'sp_losersdiv', __( "Loser Bracket", 'sportspress' ), array( $this, 'losers' ), 'sp_tournament', 'normal', 'high' );
-		add_meta_box( 'sp_finalsdiv', __( "Final Bracket", 'sportspress' ), array( $this, 'finals' ), 'sp_tournament', 'normal', 'high' );
+		add_meta_box( 'sp_winnersdiv', __( 'Winner Bracket', 'sportspress' ), array( $this, 'winners' ), 'sp_tournament', 'normal', 'high' );
+		add_meta_box( 'sp_losersdiv', __( 'Loser Bracket', 'sportspress' ), array( $this, 'losers' ), 'sp_tournament', 'normal', 'high' );
+		add_meta_box( 'sp_finalsdiv', __( 'Final Bracket', 'sportspress' ), array( $this, 'finals' ), 'sp_tournament', 'normal', 'high' );
 	}
 
 	/**

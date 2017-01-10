@@ -258,7 +258,6 @@ class SportsPress_Tournaments {
 		$formats['tournament'] = array(
 			'bracket' => __( 'Default', 'sportspress' ),
 			'center' => __( 'Center', 'sportspress' ),
-			'minimal' => __( 'Minimal', 'sportspress' ),
 		);
 
 		$formats['event']['tournament'] = __( 'Tournament', 'sportspress' );
