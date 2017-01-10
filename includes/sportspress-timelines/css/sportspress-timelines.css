@@ -35,7 +35,7 @@
 
 .sp-timeline-icon {
 	position: absolute;
-	bottom: 1.5em;
+	top: -1.5em;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
     transform: translateX(-50%);
