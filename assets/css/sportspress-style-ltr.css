@@ -1,0 +1,25 @@
+/* SportsPress Templates LTR */
+
+/*
+ * Note: !important everything to enforce overrides.
+ * This stylesheet can be disabled via SportsPress General Settings.
+ */
+
+.sp-tournament-bracket .sp-team .sp-team-name:before {
+    border-left-color: #e5e5e5 !important;
+    border-right-color: #e5e5e5 !important;
+    left: -10px !important;
+}
+
+.sp-tournament-bracket .sp-team-flip .sp-team-name:before {
+    left: auto !important;
+    right: -10px !important;
+}
+
+.sp-tournament-bracket .sp-team.sp-first-round .sp-team-name {
+    margin-left: -1px !important;
+}
+
+.sp-tournament-bracket .sp-team.sp-last-round .sp-team-name {
+    margin-right: -1px !important;
+}
