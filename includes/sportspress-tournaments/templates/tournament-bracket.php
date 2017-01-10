@@ -54,9 +54,9 @@ endif;
 
 if ( 'double' === $tournament_type ) {
 	$types = array(
-		'winners' => __( "Winner's Bracket", 'sportspress' ),
-		'losers' => __( "Loser's Bracket", 'sportspress' ),
-		'champions' => __( "Championship Bracket", 'sportspress' ),
+		'winners' => __( "Winner Bracket", 'sportspress' ),
+		'losers' => __( "Loser Bracket", 'sportspress' ),
+		'finals' => __( "Final Bracket", 'sportspress' ),
 	);
 } else {
 	$types = array(

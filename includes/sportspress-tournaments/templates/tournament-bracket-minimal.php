@@ -23,7 +23,7 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 $tournament = new SP_Tournament( $id );
-list( $teams, $results ) = $tournament->data( 'minimal', false, $type );
+list( $teams, $results ) = $tournament->minimal( $type );
 ?>
 <div id="sp-tournament-bracket-minimal-<?php echo $id; ?>"></div>
 <script type="text/javascript">

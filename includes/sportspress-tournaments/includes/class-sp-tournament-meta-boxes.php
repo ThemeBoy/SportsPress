@@ -32,9 +32,9 @@ class SP_Tournament_Meta_Boxes {
 		add_meta_box( 'sp_formatdiv', __( 'Layout', 'sportspress' ), array( $this, 'format' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), array( $this, 'details' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_datadiv', __( 'Bracket', 'sportspress' ), array( $this, 'data' ), 'sp_tournament', 'normal', 'high' );
-		add_meta_box( 'sp_winnersdiv', __( "Winner's Bracket", 'sportspress' ), array( $this, 'winners' ), 'sp_tournament', 'normal', 'high' );
-		add_meta_box( 'sp_losersdiv', __( "Loser's Bracket", 'sportspress' ), array( $this, 'losers' ), 'sp_tournament', 'normal', 'high' );
-		add_meta_box( 'sp_championsdiv', __( "Championship Bracket", 'sportspress' ), array( $this, 'champions' ), 'sp_tournament', 'normal', 'high' );
+		add_meta_box( 'sp_winnersdiv', __( "Winner Bracket", 'sportspress' ), array( $this, 'winners' ), 'sp_tournament', 'normal', 'high' );
+		add_meta_box( 'sp_losersdiv', __( "Loser Bracket", 'sportspress' ), array( $this, 'losers' ), 'sp_tournament', 'normal', 'high' );
+		add_meta_box( 'sp_finalsdiv', __( "Final Bracket", 'sportspress' ), array( $this, 'finals' ), 'sp_tournament', 'normal', 'high' );
 	}
 
 	/**
@@ -142,7 +142,7 @@ class SP_Tournament_Meta_Boxes {
 			default:
 				remove_meta_box( 'sp_winnersdiv', 'sp_tournament', 'normal' );
 				remove_meta_box( 'sp_losersdiv', 'sp_tournament', 'normal' );
-				remove_meta_box( 'sp_championsdiv', 'sp_tournament', 'normal' );
+				remove_meta_box( 'sp_finalsdiv', 'sp_tournament', 'normal' );
 		}
 	}
 
@@ -184,15 +184,15 @@ class SP_Tournament_Meta_Boxes {
 	}
 
 	/**
-	 * Output the champions metabox
+	 * Output the finals metabox
 	 */
-	public static function champions( $post ) {
+	public static function finals( $post ) {
 		$type = get_post_meta( $post->ID, 'sp_type', true );
 		if ( 'double' !== $type ) return;
 
 		$tournament = new SP_Tournament( $post );
-		list( $labels, $data, $rounds, $rows ) = $tournament->data( 'bracket', true, 'champions' );
-		self::table( $labels, $data, $rounds, $rows, $post->ID, 'champions' );
+		list( $labels, $data, $rounds, $rows ) = $tournament->data( 'bracket', true, 'finals' );
+		self::table( $labels, $data, $rounds, $rows, $post->ID, 'finals' );
 	}
 
 	/**
@@ -243,7 +243,7 @@ class SP_Tournament_Meta_Boxes {
 		$keys = array( 'sp_event' );
 		if ( 'double' === $type ) {
 			$keys[] = 'sp_loser';
-			$keys[] = 'sp_champion';
+			$keys[] = 'sp_final';
 		}
 		foreach ( $keys as $key ) {
 			$events = sp_array_value( $_POST, $key, array() );
@@ -349,8 +349,8 @@ class SP_Tournament_Meta_Boxes {
 			case 'losers':
 				$key = 'sp_loser';
 				break;
-			case 'champions':
-				$key = 'sp_champion';
+			case 'finals':
+				$key = 'sp_final';
 				break;
 			default:
 				$key = 'sp_event';

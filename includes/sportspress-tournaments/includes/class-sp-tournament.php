@@ -106,8 +106,8 @@ class SP_Tournament {
 			case 'losers':
 				$key = 'sp_loser';
 				break;
-			case 'champions':
-				$key = 'sp_champion';
+			case 'finals':
+				$key = 'sp_final';
 				break;
 			default:
 				$key = 'sp_event';
@@ -122,54 +122,6 @@ class SP_Tournament {
 		// Get number of rounds
 		$rounds = get_post_meta( $this->ID, 'sp_rounds', true );
 		if ( $rounds === '' ) $rounds = 3;
-
-		// Return minimal data
-		if ( ! $admin && 'minimal' === $layout ) {
-			$teams = array();
-			$results = array();
-
-			// Deterine size
-			$size = pow( 2, $rounds - 1 );
-
-			// Determine chunks
-			$chunks = array();
-			$chunk = $size;
-			for ( $i = 0; $i < $rounds; $i++ ) {
-				$chunks[] = $chunk;
-				$chunk = floor( $chunk / 2 );
-			}
-
-			for ( $i = 0; $i < $size; $i++ ) {
-				$event = sp_array_value( $raw, $i );
-
-				$home = sp_array_value( sp_array_value( $event, 'teams' ), 0 );
-				$away = sp_array_value( sp_array_value( $event, 'teams' ), 1 );
-				$teams[ $i ] = array(
-					$home ? sp_get_short_name( $home ) : null,
-					$away ? sp_get_short_name( $away ) : null,
-				);
-
-				$results[ $i ] = array(
-					floatval( sp_array_value( sp_array_value( $event, 'results' ), 0, null ) ),
-					floatval( sp_array_value( sp_array_value( $event, 'results' ), 1, null ) ),
-				);
-
-				$event_id = sp_array_value( $events, $i, false );
-				if ( $event_id ) {
-					$results[ $i ][] = get_post_permalink( $event_id, false, true );
-				}
-			}
-
-			$team_output = array_slice( $teams, 0, $size );
-
-			$result_output = array();
-
-			foreach ( $chunks as $chunk ) {
-				$result_output[] = array_splice( $results, 0, $chunk );
-			}
-
-			return array( $team_output, $result_output );
-		}
 
 		if ( $rounds < 2 )
 			$layout = 'bracket';
@@ -271,8 +223,8 @@ class SP_Tournament {
 		// Initialize rows
 		$row = 0;
 
-		// Generate sequence for champions bracket
-		if ( 'champions' === $type ) {
+		// Generate sequence for finals bracket
+		if ( 'finals' === $type ) {
 			$last = 2 * ( $rounds - 2 ) - 1;
 			$adjustment = pow( 2, $rounds - 1 ) - $rounds + 2;
 			for ( $i = 0; $i < $rounds; $i++ ) {
@@ -310,7 +262,7 @@ class SP_Tournament {
 						$forced = 1;
 						$raw[ $index ]['hidden'] = 1;
 					}
-				} elseif ( 'champions' === $type ) {
+				} elseif ( 'finals' === $type ) {
 					if ( ! in_array( $index, $sequence ) ) {
 						$hidden = 1;
 						$forced = 1;
@@ -436,5 +388,70 @@ class SP_Tournament {
 		} else {
 			return $data;
 		}
+	}
+
+	/**
+	 * Returns minimal data.
+	 *
+	 * @access public
+	 * @param bool $admin
+	 * @return array
+	 */
+	public function minimal( $type = 'single' ) {
+
+		// Get events
+		$events = get_post_meta( $this->ID, 'sp_event', false );
+
+		// Get raw data
+		$raw = (array) get_post_meta( $this->ID, 'sp_events', true );
+		
+		// Get number of rounds
+		$rounds = get_post_meta( $this->ID, 'sp_rounds', true );
+		if ( $rounds === '' ) $rounds = 3;
+
+		$teams = array();
+		$results = array();
+
+		// Determine size
+		$size = pow( 2, $rounds - 1 );
+
+		// Determine chunks
+		$chunks = array();
+		$chunk = $size;
+		for ( $i = 0; $i < $rounds; $i++ ) {
+			$chunks[] = $chunk;
+			$chunk = floor( $chunk / 2 );
+		}
+
+		for ( $i = 0; $i < $size; $i++ ) {
+			$event = sp_array_value( $raw, $i );
+
+			$home = sp_array_value( sp_array_value( $event, 'teams' ), 0 );
+			$away = sp_array_value( sp_array_value( $event, 'teams' ), 1 );
+			$teams[ $i ] = array(
+				$home ? sp_get_short_name( $home ) : null,
+				$away ? sp_get_short_name( $away ) : null,
+			);
+
+			$results[ $i ] = array(
+				floatval( sp_array_value( sp_array_value( $event, 'results' ), 0, null ) ),
+				floatval( sp_array_value( sp_array_value( $event, 'results' ), 1, null ) ),
+			);
+
+			$event_id = sp_array_value( $events, $i, false );
+			if ( $event_id ) {
+				$results[ $i ][] = get_post_permalink( $event_id, false, true );
+			}
+		}
+
+		$team_output = array_slice( $teams, 0, $size );
+
+		$result_output = array();
+
+		foreach ( $chunks as $chunk ) {
+			$result_output[] = array_splice( $results, 0, $chunk );
+		}
+
+		return array( $team_output, array( $result_output, $result_output ) );
 	}
 }

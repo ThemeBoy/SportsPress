@@ -279,7 +279,10 @@ class SportsPress_Tournaments {
 	 */
 	public function add_text_options( $options = array() ) {
 		return array_merge( $options, array(
+			__( 'Final Bracket', 'sportspress' ),
+			__( 'Loser Bracket', 'sportspress' ),
 			__( 'Winner', 'sportspress' ),
+			__( 'Winner Bracket', 'sportspress' ),
 		) );
 	}
 
