@@ -95,11 +95,6 @@ class SP_Tournament_Meta_Boxes {
 		$type = get_post_meta( $post->ID, 'sp_type', true );
 		if ( $type === '' ) $type = 'single';
 		$winner = get_post_meta( $post->ID, 'sp_winner', true );
-		
-		if ( 'single' !== $type ) {
-			$limit = min( $limit, 3 );
-			$rounds = min( $rounds, 3 );
-		}
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -221,8 +216,6 @@ class SP_Tournament_Meta_Boxes {
 
 		if ( $rounds < 1 ) $rounds = 1;
 		elseif ( $rounds > $limit ) $rounds = $limit;
-
-		$rounds = min( $rounds, 3 );
 
 		update_post_meta( $post_id, 'sp_rounds', $rounds );
 

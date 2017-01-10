@@ -122,9 +122,6 @@ class SP_Tournament {
 		// Get number of rounds
 		$rounds = get_post_meta( $this->ID, 'sp_rounds', true );
 		if ( $rounds === '' ) $rounds = 3;
-		
-		// Maximum number of rounds for double elimination is 3
-		if ( 'single' !== $type ) $rounds = min( $rounds, 3 );
 
 		if ( $rounds < 2 )
 			$layout = 'bracket';
@@ -226,6 +223,17 @@ class SP_Tournament {
 		// Initialize rows
 		$row = 0;
 
+		// Generate sequence for champions bracket
+		if ( 'champions' === $type ) {
+			$last = 2 * ( $rounds - 2 ) - 1;
+			$adjustment = pow( 2, $rounds - 1 ) - $rounds + 2;
+			for ( $i = 0; $i < $rounds; $i++ ) {
+				$sequence[] = $last;
+				$last = $last + $adjustment;
+				$adjustment = ceil( $adjustment / 2 );
+			}
+		}
+
 		// Loop through rows
 		while ( $row < $rows ):
 
@@ -252,11 +260,13 @@ class SP_Tournament {
 					if ( 0 === $col && 0 === $index % 2 ) {
 						$hidden = 1;
 						$forced = 1;
+						$raw[ $index ]['hidden'] = 1;
 					}
 				} elseif ( 'champions' === $type ) {
-					if ( $rounds - 1 !== $col && 1 !== $index % $rounds ) {
+					if ( ! in_array( $index, $sequence ) ) {
 						$hidden = 1;
 						$forced = 1;
+						$raw[ $index ]['hidden'] = 1;
 					}
 				}
 				
