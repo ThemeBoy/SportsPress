@@ -175,6 +175,8 @@ class SP_Event extends SP_Custom_Post{
 			// Calculate equation-based performance
 			if ( sizeof( $equations ) ):
 				foreach ( $performance as $team => $players ):
+					if ( ! is_array( $players ) ) continue;
+
 					foreach ( $players as $player => $player_performance ):
 						// Prepare existing values for equation calculation
 						$vars = $player_performance;
@@ -193,6 +195,8 @@ class SP_Event extends SP_Custom_Post{
 			// Convert to time notation
 			if ( in_array( 'time', $formats ) ):
 				foreach ( $performance as $team => $players ):
+					if ( ! is_array( $players ) ) continue;
+
 					foreach ( $players as $player => $player_performance ):
 						if ( ! $player ) continue;
 
