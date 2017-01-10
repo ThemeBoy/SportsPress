@@ -117,11 +117,59 @@ class SP_Tournament {
 		$events = get_post_meta( $this->ID, $key, false );
 
 		// Get raw data
-		$raw = get_post_meta( $this->ID, $key . 's', true );
+		$raw = (array) get_post_meta( $this->ID, $key . 's', true );
 		
 		// Get number of rounds
 		$rounds = get_post_meta( $this->ID, 'sp_rounds', true );
 		if ( $rounds === '' ) $rounds = 3;
+
+		// Return minimal data
+		if ( ! $admin && 'minimal' === $layout ) {
+			$teams = array();
+			$results = array();
+
+			// Deterine size
+			$size = pow( 2, $rounds - 1 );
+
+			// Determine chunks
+			$chunks = array();
+			$chunk = $size;
+			for ( $i = 0; $i < $rounds; $i++ ) {
+				$chunks[] = $chunk;
+				$chunk = floor( $chunk / 2 );
+			}
+
+			for ( $i = 0; $i < $size; $i++ ) {
+				$event = sp_array_value( $raw, $i );
+
+				$home = sp_array_value( sp_array_value( $event, 'teams' ), 0 );
+				$away = sp_array_value( sp_array_value( $event, 'teams' ), 1 );
+				$teams[ $i ] = array(
+					$home ? sp_get_short_name( $home ) : null,
+					$away ? sp_get_short_name( $away ) : null,
+				);
+
+				$results[ $i ] = array(
+					floatval( sp_array_value( sp_array_value( $event, 'results' ), 0, null ) ),
+					floatval( sp_array_value( sp_array_value( $event, 'results' ), 1, null ) ),
+				);
+
+				$event_id = sp_array_value( $events, $i, false );
+				if ( $event_id ) {
+					$results[ $i ][] = get_post_permalink( $event_id, false, true );
+				}
+			}
+
+			$team_output = array_slice( $teams, 0, $size );
+
+			$result_output = array();
+
+			foreach ( $chunks as $chunk ) {
+				$result_output[] = array_splice( $results, 0, $chunk );
+			}
+
+			return array( $team_output, $result_output );
+		}
 
 		if ( $rounds < 2 )
 			$layout = 'bracket';

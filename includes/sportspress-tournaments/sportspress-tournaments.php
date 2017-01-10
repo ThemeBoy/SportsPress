@@ -258,6 +258,7 @@ class SportsPress_Tournaments {
 		$formats['tournament'] = array(
 			'bracket' => __( 'Default', 'sportspress' ),
 			'center' => __( 'Center', 'sportspress' ),
+			'minimal' => __( 'Minimal', 'sportspress' ),
 		);
 
 		$formats['event']['tournament'] = __( 'Tournament', 'sportspress' );
@@ -308,6 +309,14 @@ class SportsPress_Tournaments {
 				'media'   => 'all'
 			);
 		}
+
+		$styles['jquery-bracket'] = array(
+			'src'     => str_replace( array( 'http:', 'https:' ), '', SP_TOURNAMENTS_URL ) . 'css/jquery.bracket.min.css',
+			'deps'    => '',
+			'version' => '0.11.0',
+			'media'   => 'all'
+		);
+
 		return $styles;
 	}
 
@@ -398,6 +407,7 @@ class SportsPress_Tournaments {
 	 */
 	public function load_scripts() {
 		wp_enqueue_script( 'sportspress-tournaments', SP_TOURNAMENTS_URL .'js/sportspress-tournaments.js', array( 'jquery' ), SP_TOURNAMENTS_VERSION, true );
+		wp_enqueue_script( 'jquery-bracket', SP_TOURNAMENTS_URL .'js/jquery.bracket.min.js', array( 'jquery' ), '0.11.0', false );
 	}
 
 	/**
