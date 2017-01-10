@@ -14,7 +14,7 @@ $show_players = get_option( 'sportspress_event_show_players', 'yes' ) === 'yes' 
 $show_staff = get_option( 'sportspress_event_show_staff', 'yes' ) === 'yes' ? true : false;
 $show_total = get_option( 'sportspress_event_show_total', 'yes' ) === 'yes' ? true : false;
 $show_numbers = get_option( 'sportspress_event_show_player_numbers', 'yes' ) === 'yes' ? true : false;
-$show_minutes = get_option( 'sportspress_event_performance_show_minutes', 'yes' ) === 'yes' ? true : false;
+$show_minutes = get_option( 'sportspress_event_performance_show_minutes', 'no' ) === 'yes' ? true : false;
 $sections = get_option( 'sportspress_event_performance_sections', -1 );
 $abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 $reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;

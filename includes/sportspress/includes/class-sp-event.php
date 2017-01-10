@@ -217,7 +217,7 @@ class SP_Event extends SP_Custom_Post{
 			endif;
 
 			// Add minutes to box score values
-			if ( in_array( 'number', $formats ) && 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'yes' ) ):
+			if ( in_array( 'number', $formats ) && 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'no' ) ):
 				$timeline = $this->timeline();
 				if ( ! empty( $timeline ) ):
 					foreach ( $performance as $team => $players ):
@@ -364,7 +364,7 @@ class SP_Event extends SP_Custom_Post{
 
 				$icon = '';
 				if ( has_post_thumbnail( $post->ID ) ) {
-					$icon = get_the_post_thumbnail( $post->ID, 'sportspress-fit-mini', array( 'title' => sp_get_single_name( $post->ID ) ) );
+					$icon = get_the_post_thumbnail( $post->ID, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $post->ID ) ) );
 				}
 				$performance_icons[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $post->ID, 1 );
 			}

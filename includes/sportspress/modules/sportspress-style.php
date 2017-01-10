@@ -89,6 +89,22 @@ class SportsPress_Style {
 			'media'   => 'all'
 		);
 
+		if ( is_rtl() ) {
+			$styles['sportspress-style-rtl'] = array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', SP()->plugin_url() ) . '/assets/css/sportspress-style-rtl.css',
+				'deps'    => 'sportspress-style',
+				'version' => SP_STYLE_VERSION,
+				'media'   => 'all'
+			);
+		} else {
+			$styles['sportspress-style-ltr'] = array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', SP()->plugin_url() ) . '/assets/css/sportspress-style-ltr.css',
+				'deps'    => 'sportspress-style',
+				'version' => SP_STYLE_VERSION,
+				'media'   => 'all'
+			);
+		}
+
 		return $styles;
 	}
 

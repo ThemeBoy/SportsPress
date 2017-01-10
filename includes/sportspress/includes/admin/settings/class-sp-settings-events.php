@@ -388,7 +388,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 					array(
 						'desc' 		=> __( 'Minutes', 'sportspress' ),
 						'id' 		=> 'sportspress_event_performance_show_minutes',
-						'default'	=> 'yes',
+						'default'	=> 'no',
 						'type' 		=> 'checkbox',
 						'checkboxgroup'		=> 'end',
 					),

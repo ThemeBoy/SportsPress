@@ -22,7 +22,7 @@ class SP_Meta_Box_Event_Performance {
 		$event = new SP_Event( $post );
 		list( $labels, $columns, $stats, $teams, $formats, $order, $timed ) = $event->performance( true );
 
-		if ( 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'yes' ) )
+		if ( 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'no' ) )
 			$timeline = $event->timeline( true );
 		else
 			$timeline = false;
