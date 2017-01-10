@@ -228,6 +228,11 @@ class SP_Tournament_Meta_Boxes {
 		// Labels
 		update_post_meta( $post_id, 'sp_labels', sp_array_value( $_POST, 'sp_labels', array() ) );
 
+		if ( 'double' === $type ) {
+			update_post_meta( $post_id, 'sp_loser_labels', sp_array_value( $_POST, 'sp_loser_labels', array() ) );
+			update_post_meta( $post_id, 'sp_final_labels', sp_array_value( $_POST, 'sp_final_labels', array() ) );
+		}
+
 		// Get main result option
 		$main_result = sp_get_main_result_option();
 
@@ -348,12 +353,15 @@ class SP_Tournament_Meta_Boxes {
 		switch ( $type ) {
 			case 'losers':
 				$key = 'sp_loser';
+				$label_key = 'sp_loser_labels';
 				break;
 			case 'finals':
 				$key = 'sp_final';
+				$label_key = 'sp_final_labels';
 				break;
 			default:
 				$key = 'sp_event';
+				$label_key = 'sp_labels';
 		}
 		
 		// Filter by league if selected
@@ -396,7 +404,7 @@ class SP_Tournament_Meta_Boxes {
 				<tr>
 					<?php for ( $round = 0; $round < $rounds; $round++ ): ?>
 						<th>
-							<input type="text" class="widefat" name="sp_labels[]" value="<?php echo esc_attr( sp_array_value( $labels, $round, '' ) ); ?>" placeholder="<?php printf( esc_attr__( 'Round %s', 'sportspress' ), $round + 1 ); ?>">
+							<input type="text" class="widefat" name="<?php echo $label_key; ?>[]" value="<?php echo esc_attr( sp_array_value( $labels, $round, '' ) ); ?>" placeholder="<?php printf( esc_attr__( 'Round %s', 'sportspress' ), $round + 1 ); ?>">
 						</th>
 					<?php endfor; ?>
 				</tr>

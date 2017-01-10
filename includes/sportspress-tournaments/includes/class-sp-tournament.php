@@ -75,8 +75,21 @@ class SP_Tournament {
 	 * @access public
 	 * @return array
 	 */
-	public function labels() {
-		$labels = get_post_meta( $this->ID, 'sp_labels', true );
+	public function labels( $type = 'single' ) {
+		
+		// Get post meta key for labels based on type
+		switch ( $type ) {
+			case 'losers':
+				$key = 'sp_loser_labels';
+				break;
+			case 'finals':
+				$key = 'sp_final_labels';
+				break;
+			default:
+				$key = 'sp_labels';
+		}
+
+		$labels = get_post_meta( $this->ID, $key, true );
 		
 		// Assign default labels
 		for ( $i = 0; $i < sizeof( $labels ); $i++ ) {
@@ -99,7 +112,7 @@ class SP_Tournament {
 	
 		$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
 		
-		$labels = $this->labels();
+		$labels = $this->labels( $type );
 		
 		// Get post meta key for raw data based on type
 		switch ( $type ) {
@@ -225,8 +238,8 @@ class SP_Tournament {
 
 		// Generate sequence for finals bracket
 		if ( 'finals' === $type ) {
-			$last = 2 * ( $rounds - 2 ) - 1;
-			$adjustment = pow( 2, $rounds - 1 ) - $rounds + 2;
+			$last = pow( 2, $rounds - 1 ) / 2 - 1;
+			$adjustment = pow( 2, $rounds - 1 ) / 2 + pow( 2, $rounds - 2 ) / 2;
 			for ( $i = 0; $i < $rounds; $i++ ) {
 				$sequence[] = $last;
 				$last = $last + $adjustment;
