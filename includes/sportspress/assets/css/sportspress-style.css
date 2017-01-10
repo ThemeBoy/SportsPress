@@ -354,7 +354,13 @@
     color: #333 !important;
 }
 
+.sp-template-event-logos-block .team-logo img {
+    display: inline !important;
+}
+
+.sp-template-event-logos a,
 .sp-template-event-logos a:hover {
+    border: none !important;
     text-decoration: none !important;
 }
 
@@ -478,6 +484,12 @@
     background: #00a69c !important;
 }
 
+/* Timelines */
+
+.sp-template-timeline .sp-timeline * {
+    color: initial !important;
+}
+
 /* Tournaments */
 
 .sp-tournament-bracket {
@@ -515,8 +527,8 @@
     border: 1px solid #e5e5e5 !important;
 }
 
-.sp-tournament-bracket .sp-team-name:hover,
-.sp-tournament-bracket .sp-heading {
+.sp-tournament-bracket .sp-heading,
+.sp-tournament-bracket .sp-heading:hover {
     color: #fff !important;
     background: #00a69c !important;
     border-color: #00a69c !important;
