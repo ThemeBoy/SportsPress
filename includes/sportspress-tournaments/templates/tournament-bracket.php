@@ -53,7 +53,7 @@ foreach ( $types as $type => $name ) {
 
 	if ( $responsive && 'center' == $layout ) {
 		?>
-		<div class="sp-template sp-template-tournament-bracket sp-mobile">
+		<div class="sp-template sp-template-tournament-bracket sp-tournament-bracket-<?php echo $tournament_type; ?> sp-mobile">
 			<?php
 			sp_get_template( 'tournament-bracket-table.php', array(
 				'id' => $id,
@@ -66,7 +66,7 @@ foreach ( $types as $type => $name ) {
 			), '', SP_TOURNAMENTS_DIR . 'templates/' );
 			?>
 		</div>
-		<div class="sp-template sp-template-tournament-bracket sp-desktop">
+		<div class="sp-template sp-template-tournament-bracket sp-tournament-bracket-<?php echo $tournament_type; ?> sp-desktop">
 			<?php
 			sp_get_template( 'tournament-bracket-table.php', array(
 				'id' => $id,
@@ -82,7 +82,7 @@ foreach ( $types as $type => $name ) {
 		<?php
 	} else {
 		?>
-		<div class="sp-template sp-template-tournament-bracket">
+		<div class="sp-template sp-template-tournament-bracket sp-tournament-bracket-<?php echo $tournament_type; ?>">
 			<?php
 			sp_get_template( 'tournament-bracket-table.php', array(
 				'id' => $id,
