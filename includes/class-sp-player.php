@@ -647,6 +647,30 @@ class SP_Player extends SP_Custom_Post {
 			$usecolumns = array_merge( $usecolumn_order, $usecolumns );
 		}
 
+		// Convert to time notation
+		if ( in_array( 'time', $formats ) ):
+			foreach ( $placeholders as $season => $stats ):
+				if ( ! is_array( $stats ) ) continue;
+
+				foreach ( $stats as $key => $value ):
+
+					// Continue if not time format
+					if ( 'time' !== sp_array_value( $formats, $key ) ) continue;
+
+					$intval = intval( $value );
+					$timeval = gmdate( 'i:s', $intval );
+					$hours = floor( $intval / 3600 );
+
+					if ( '00' != $hours )
+						$timeval = $hours . ':' . $timeval;
+
+					$timeval = ereg_replace( '^0', '', $timeval );
+
+					$placeholders[ $season ][ $key ] = $timeval;
+				endforeach;
+			endforeach;
+		endif;
+
 		if ( $admin ):
 			$labels = array();
 			if ( is_array( $usecolumns ) ): foreach ( $usecolumns as $key ):
