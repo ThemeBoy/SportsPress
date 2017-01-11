@@ -250,6 +250,7 @@ class SP_Player_List extends SP_Custom_Post {
 		foreach ( $events as $i => $event ):
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			$team_performance = get_post_meta( $event->ID, 'sp_players', true );
+			$timeline = (array)get_post_meta( $event->ID, 'sp_timeline', true );
 			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
 			if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
@@ -319,6 +320,22 @@ class SP_Player_List extends SP_Custom_Post {
 								if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
 									$totals[ $player_id ]['eventsplayed'] ++;
 									$totals[ $player_id ]['eventminutes'] += $minutes;
+
+									// Adjust for substitution time
+									if ( sp_array_value( $player_performance, 'status' ) === 'sub' ):
+										$totals[ $player_id ]['eventminutes'] -= sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), 'sub' ), 0, 0 );
+									else:
+										foreach ( $timeline as $timeline_team => $timeline_players ):
+											foreach ( $timeline_players as $timeline_player => $timeline_performance ):
+												if ( 'sub' === sp_array_value( sp_array_value( $players, $timeline_player, array() ), 'status' ) && $player_id === (int) sp_array_value( sp_array_value( $players, $timeline_player, array() ), 'sub', 0 ) ):
+													$substitution_time = sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $timeline_player ), 'sub' ), 0, 0 );
+													if ( $substitution_time ):
+														$totals[ $player_id ]['eventminutes'] += $substitution_time - $minutes;
+													endif;
+												endif;
+											endforeach;
+										endforeach;
+									endif;
 
 									if ( sp_array_value( $player_performance, 'status' ) == 'lineup' ):
 										$totals[ $player_id ]['eventsstarted'] ++;
