@@ -194,6 +194,13 @@ class SportsPress_Calendars {
 				'context' => 'side',
 				'priority' => 'default',
 			),
+			'columns' => array(
+				'title' => __( 'Columns', 'sportspress' ),
+				'save' => 'SP_Meta_Box_Calendar_Columns::save',
+				'output' => 'SP_Meta_Box_Calendar_Columns::output',
+				'context' => 'side',
+				'priority' => 'default',
+			),
 			'details' => array(
 				'title' => __( 'Details', 'sportspress' ),
 				'save' => 'SP_Meta_Box_Calendar_Details::save',

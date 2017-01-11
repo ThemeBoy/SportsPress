@@ -154,6 +154,9 @@ endif;
 
 					if ( sp_column_active( $usecolumns, 'article' ) )
 						echo '<th class="data-article">' . __( 'Article', 'sportspress' ) . '</th>';
+
+					if ( sp_column_active( $usecolumns, 'day' ) )
+						echo '<th class="data-day">' . __( 'Match Day', 'sportspress' ) . '</th>';
 					?>
 				</tr>
 			</thead>
@@ -387,6 +390,17 @@ endif;
 								endif;
 
 								if ( $link_events ) echo '</a>';
+							echo '</td>';
+						endif;
+
+						if ( sp_column_active( $usecolumns, 'day' ) ):
+							echo '<td class="data-day">';
+							$day = get_post_meta( $event->ID, 'sp_day', true );
+							if ( '' == $day ) {
+								echo '-';
+							} else {
+								echo $day;
+							}
 							echo '</td>';
 						endif;
 
