@@ -584,7 +584,7 @@
 
 /* Post Content */
 
-.sp-post-content {
+.single-sp_team .has-post-thumbnail .sp-post-content {
     clear: none;
 }
 
@@ -607,5 +607,9 @@
 
     .widget .sp-template-event-calendar tbody td {
         padding: 10px 5px !important;
+    }
+
+    .sp-template-event-performance-icons.sp-template-event-performance-section:nth-child(2n) {
+        padding-top: 61px !important;
     }
 }
