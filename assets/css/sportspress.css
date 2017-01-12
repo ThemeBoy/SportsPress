@@ -23,6 +23,7 @@
 .sp-template {
 	margin-bottom: 1.5em;
 	overflow: hidden;
+	clear: both;
 }
 .sp-template-profile-selector {
 	clear: both;
@@ -280,11 +281,13 @@
 	box-sizing: border-box;
 	width: 50%;
 	float: left;
+	clear: left;
 	padding-right: 10px;
 }
 
 .sp-event-performance-teams .sp-template-event-performance-icons:nth-child(2n) {
 	float: right;
+	clear: right;
 	padding-right: 0;
 	padding-left: 10px;
 }
