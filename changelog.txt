@@ -1,5 +1,90 @@
 == SportsPress Changelog ==
 
+= 2.2.1 =
+* Fix - Empty timeline error when calculating substitution time.
+
+= 2.2 =
+* Feature - New frontend stylesheet for third-party themes.
+* Feature - New chronological streak format in league tables.
+* Feature - Head to head tiebreaker option in league tables.
+* Feature - Add option to select number of players in player lists.
+* Feature - Quick edit player's team and squad number.
+* Feature - Bulk edit players' past and current teams.
+* Feature - Taxonomies added to REST API.
+* Feature - Ability to display event history in player profiles.
+* Feature - Event list format option added to player and team events.
+* Feature - Option to record minutes for specific statistics.
+* Feature - Time format added for racing and timed sports.
+* Feature - Dedicated option to redirect team pages to site URL.
+* Feature - Bulk action to generate team calendars.
+* Feature - Automatically adjust played minutes based on substitution times.
+* Feature - Match day column option added to event lists.
+* Tweak - Remove event limit in calendars.
+* Tweak - Allow player squad number to be zero.
+* Tweak - Enable mixing performance and statistic column order.
+* Tweak - Filter player statistic equations by offense and defense.
+* Tweak - System status hidden unless in debug mode.
+* Tweak - Move event list column options to sidebar.
+* Tweak - Return zero instead of error if dividing by zero.
+* Tweak - Always display performance icons in admin.
+* Tweak - Add preview notation in event blocks by default.
+* Tweak - Single player performance name option added for hover text in icons mode.
+* Fix - Player list precision number format error.
+* Fix - Player list adjustments for existing values.
+* Fix - Hide empty positions in player lists and galleries.
+* Fix - Import button selectors disappeared in WordPress 4.7.
+* Fix - Substitution time missing parentheses.
+* Fix - Staff for home team not being displayed in events.
+* Fix - Enable output of time and results without team names in home/away mode.
+* Fix - Prevent totals override in box scores.
+* Localization - Add Gibraltar nationality option and flag.
+
+= 2.1.7 =
+* Fix - Activation error on older versions of PHP.
+
+= 2.1.6 =
+* Feature - Add equation format option to player performance.
+* Tweak - Add text options to change tab labels.
+* Fix - Activation errors using TGMPA.
+* Fix - Empty footer column in team staff table.
+* Preset - Update basketball preset.
+
+= 2.1.5 =
+* Feature - Add option to filter players by current or past team in player lists.
+* Fix - Scheduled events not queried in REST API.
+
+= 2.1.4 =
+* Feature - Player and staff dropdown templates added to layout designer.
+* Tweak - Default tab labels from layout designer.
+* Tweak - Add "Home" and "Away" to text options.
+* Tweak - Add horizontal padding to centered event list columns.
+* Fix - Disable numeric slug generation for events due to permalink issues in some cases.
+* Fix - Permalink issues caused by filter for scheduled events.
+* Fix - Scheduled events being ignored by REST API.
+* Fix - Inconsistent styling of player and staff dropdowns.
+* Fix - Only include current players in player lists.
+* Fix - Age calculation in BuddyPress context.
+
+= 2.1.3 =
+* Tweak - Add options to select number, team, and position columns to player list shortcode.
+* Fix - Totals row offset in player statistics admin.
+* Fix - Events not automatically ordered by date in some cases.
+* Fix - Google Maps error when address is empty.
+* Fix - Player lists for all teams not appearing in team edit screen.
+* Fix - Error in player list when team no longer exists.
+* Fix - Error in event logos when results are empty.
+* Fix - Issue with link to future event from daily archive when multiple events are scheduled for a single day.
+
+= 2.1.2 =
+* Feature - Add offense and defense statistics to REST API.
+* Tweak - Hide template tabs with no content.
+* Tweak - Allow selection of player lists without teams.
+* Tweak - Center-align time/results when between home and away teams in event list.
+* Tweak - Increase checklist panel height in admin.
+* Tweak - Update text options.
+* Fix - Hidden box score columns still displaying when in offense/defense mode.
+* Preset - Update cricket preset.
+
 = 2.1.1 =
 * Feature - Add substitution times in box score.
 * Feature - Add text options to change template tab names.
