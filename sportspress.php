@@ -379,7 +379,7 @@ final class SportsPress {
 					'name'        => 'SportsPress for Football (Soccer)',
 					'slug'        => 'sportspress-for-soccer',
 					'required'    => false,
-					'version'     => '0.9.4',
+					'version'     => '0.9.5',
 				);
 				break;
 		endswitch;
