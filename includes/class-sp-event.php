@@ -178,8 +178,11 @@ class SP_Event extends SP_Custom_Post{
 					if ( ! is_array( $players ) ) continue;
 
 					foreach ( $players as $player => $player_performance ):
+						if ( ! is_array( $player_performance ) ) continue;
+
 						// Prepare existing values for equation calculation
 						$vars = $player_performance;
+
 						foreach ( $vars as $key => $var ):
 							if ( empty( $var ) ) $vars[ $key ] = 0;
 						endforeach;
