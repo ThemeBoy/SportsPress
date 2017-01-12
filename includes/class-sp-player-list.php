@@ -526,7 +526,7 @@ class SP_Player_List extends SP_Custom_Post {
 					endif;
 				endif;
 
-				if ( $placeholder ):
+				if ( $placeholder !== '' ):
 					$placeholders[ $player_id ][ $stat->post_name ] = sp_array_value( $placeholders[ $player_id ], $stat->post_name, 0 ) + $placeholder;
 				endif;
 			endforeach;
