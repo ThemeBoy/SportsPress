@@ -48,7 +48,7 @@ class SP_Modules {
 					'class' => 'SportsPress_Timelines',
 					'icon' => 'sp-icon-timeline',
 					'link' => 'http://tboy.co/pro',
-					'desc' => __( 'Display a timeline of player performance in events.', 'sportspress' ),
+					'desc' => __( 'Display a visual timeline of player performance in events.', 'sportspress' ),
 				),
 				'tournaments' => array(
 					'label' => __( 'Tournaments', 'sportspress' ),
