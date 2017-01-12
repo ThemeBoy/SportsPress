@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version     2.2
+ * @version     2.2.2
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -455,6 +455,9 @@ class SP_League_Table extends SP_Custom_Post{
 
 			// Initialize team form array
 			$team_form = array();
+
+			// Reverse form array to display in chronological order
+			$form = array_reverse( $form );
 			
 			// Loop through event form
 			foreach ( $form as $form_event ):
