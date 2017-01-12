@@ -327,6 +327,7 @@ class SP_Player_List extends SP_Custom_Post {
 									else:
 										foreach ( $timeline as $timeline_team => $timeline_players ):
 											foreach ( $timeline_players as $timeline_player => $timeline_performance ):
+												if ( ! is_array( $timeline_performance ) ) continue;
 												if ( 'sub' === sp_array_value( sp_array_value( $players, $timeline_player, array() ), 'status' ) && $player_id === (int) sp_array_value( sp_array_value( $players, $timeline_player, array() ), 'sub', 0 ) ):
 													$substitution_time = sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $timeline_player ), 'sub' ), 0, 0 );
 													if ( $substitution_time ):
