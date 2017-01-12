@@ -5,7 +5,7 @@
  * The SportsPress templates class stores template layout data.
  *
  * @class 		SP_Templates
- * @version     2.1.4
+ * @version     2.2
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

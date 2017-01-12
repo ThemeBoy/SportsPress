@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add bulk actions to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.1.7
+Version: 2.2
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Bulk_Actions' ) ) :
  * Main SportsPress Bulk Actions Class
  *
  * @class SportsPress_Bulk_Actions
- * @version	2.1.7
+ * @version	2.2
  */
 class SportsPress_Bulk_Actions {
 
@@ -39,7 +39,7 @@ class SportsPress_Bulk_Actions {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_BULK_ACTIONS_VERSION' ) )
-			define( 'SP_BULK_ACTIONS_VERSION', '2.1.7' );
+			define( 'SP_BULK_ACTIONS_VERSION', '2.2' );
 
 		if ( !defined( 'SP_BULK_ACTIONS_URL' ) )
 			define( 'SP_BULK_ACTIONS_URL', plugin_dir_url( __FILE__ ) );

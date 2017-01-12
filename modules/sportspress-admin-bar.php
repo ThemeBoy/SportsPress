@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add an admin bar link to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 1.9.14
+Version: 2.2
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Admin_Bar' ) ) :
  * Main SportsPress Admin Bar Class
  *
  * @class SportsPress_Admin_Bar
- * @version	1.9.14
+ * @version	2.2
  */
 class SportsPress_Admin_Bar {
 
@@ -36,7 +36,7 @@ class SportsPress_Admin_Bar {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_ADMIN_BAR_VERSION' ) )
-			define( 'SP_ADMIN_BAR_VERSION', '1.9.14' );
+			define( 'SP_ADMIN_BAR_VERSION', '2.2' );
 
 		if ( !defined( 'SP_ADMIN_BAR_URL' ) )
 			define( 'SP_ADMIN_BAR_URL', plugin_dir_url( __FILE__ ) );

@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version     2.0.13
+ * @version     2.2
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

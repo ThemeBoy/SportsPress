@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 4.6
-Stable tag: 2.1.7
+Tested up to: 4.7
+Stable tag: 2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -50,6 +50,7 @@ More details about each feature are available on the [SportsPress Website](http:
 
 = Free Extensions =
 * [SportsPress for Baseball](https://wordpress.org/plugins/sportspress-for-baseball/)
+* [SportsPress for Basketball](https://wordpress.org/plugins/sportspress-for-basketball/)
 * [SportsPress for Cricket](https://wordpress.org/plugins/sportspress-for-cricket/)
 * [SportsPress for Football (Soccer)](https://wordpress.org/plugins/sportspress-for-soccer/)
 * [SportsPress for Golf](https://wordpress.org/plugins/sportspress-for-golf/)
@@ -223,6 +224,7 @@ Limitations? Don't worry, there are no limitations to the number of events, play
 The current modules that are available exclusively to SportsPress Pro are:
 
 * Tournaments: Create and display tournaments in a bracket/knockout cup format.
+* Timelines: Display a visual timeline of player performance in events.
 * Scoreboard: Display multiple event results in a horizontal scoreboard.
 * Sponsors: Add your sponsors on your website and track each of their clicks and impressions.
 * Staff Directories: Show contact information of your key personnel so people know who to get in touch with.
@@ -238,6 +240,42 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.2 =
+* Feature - New frontend stylesheet for third-party themes.
+* Feature - New chronological streak format in league tables.
+* Feature - Head to head tiebreaker option in league tables.
+* Feature - Add option to select number of players in player lists.
+* Feature - Quick edit player's team and squad number.
+* Feature - Bulk edit players' past and current teams.
+* Feature - Taxonomies added to REST API.
+* Feature - Ability to display event history in player profiles.
+* Feature - Event list format option added to player and team events.
+* Feature - Option to record minutes for specific statistics.
+* Feature - Time format added for racing and timed sports.
+* Feature - Dedicated option to redirect team pages to site URL.
+* Feature - Bulk action to generate team calendars.
+* Feature - Automatically adjust played minutes based on substitution times.
+* Feature - Match day column option added to event lists.
+* Tweak - Remove event limit in calendars.
+* Tweak - Allow player squad number to be zero.
+* Tweak - Enable mixing performance and statistic column order.
+* Tweak - Filter player statistic equations by offense and defense.
+* Tweak - System status hidden unless in debug mode.
+* Tweak - Move event list column options to sidebar.
+* Tweak - Return zero instead of error if dividing by zero.
+* Tweak - Always display performance icons in admin.
+* Tweak - Add preview notation in event blocks by default.
+* Tweak - Single player performance name option added for hover text in icons mode.
+* Fix - Player list precision number format error.
+* Fix - Player list adjustments for existing values.
+* Fix - Hide empty positions in player lists and galleries.
+* Fix - Import button selectors disappeared in WordPress 4.7.
+* Fix - Substitution time missing parentheses.
+* Fix - Staff for home team not being displayed in events.
+* Fix - Enable output of time and results without team names in home/away mode.
+* Fix - Prevent totals override in box scores.
+* Localization - Add Gibraltar nationality option and flag.
 
 = 2.1.7 =
 * Fix - Activation error on older versions of PHP.
