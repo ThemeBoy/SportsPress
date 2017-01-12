@@ -1,5 +1,8 @@
 == SportsPress Changelog ==
 
+= 2.2.3 =
+* Fix - Placeholders for non-numeric values in player list displaying as zero.
+
 = 2.2.2 =
 * Tweak - Center align form events.
 * Fix - Reverse form array to display events in chronological order.
