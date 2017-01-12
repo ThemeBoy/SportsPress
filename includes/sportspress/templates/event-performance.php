@@ -227,7 +227,7 @@ if ( is_array( $teams ) ):
 								'link_posts' => $link_posts,
 								'performance_ids' => isset( $performance_ids ) ? $performance_ids : null,
 								'primary' => 'primary' == $total ? $primary : null,
-								'class' => 'sp-template-event-performance-team-' . $index . ' sp-template-event-performance-section-' . $section_id . ' sp-template-event-performance-team-' . $index . '-section-' . $section_id,
+								'class' => 'sp-template-event-performance-team-' . $index . ' sp-template-event-performance-section sp-template-event-performance-section-' . $section_id . ' sp-template-event-performance-team-' . $index . '-section-' . $section_id,
 							) );
 						}
 						

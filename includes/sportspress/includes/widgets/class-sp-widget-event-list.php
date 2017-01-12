@@ -178,6 +178,7 @@ class SP_Widget_Event_List extends WP_Widget {
 
 			$the_columns['venue'] = __( 'Venue', 'sportspress' );
 			$the_columns['article'] = __( 'Article', 'sportspress' );
+			$the_columns['day'] = __( 'Match Day', 'sportspress' );
 
 			$field_name = $this->get_field_name('columns') . '[]';
 			$field_id = $this->get_field_id('columns');

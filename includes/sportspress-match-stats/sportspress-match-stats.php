@@ -33,6 +33,7 @@ class SportsPress_Match_Stats {
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_filter( 'sportspress_event_performance_display_options', array( $this, 'add_options' ) );
 		add_filter( 'sportspress_general_script_options', array( $this, 'add_script_options' ) );
+		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'sportspress_frontend_css', array( $this, 'frontend_css' ) );
 	}
@@ -95,6 +96,15 @@ class SportsPress_Match_Stats {
 		) );
 
 		return $options;
+	}
+
+	/**
+	 * Add text options 
+	 */
+	public function add_text_options( $options = array() ) {
+		return array_merge( $options, array(
+			__( 'Match Stats', 'sportspress' ),
+		) );
 	}
 
 	/**

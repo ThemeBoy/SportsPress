@@ -250,6 +250,7 @@ class SP_Player_List extends SP_Custom_Post {
 		foreach ( $events as $i => $event ):
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			$team_performance = get_post_meta( $event->ID, 'sp_players', true );
+			$timeline = (array)get_post_meta( $event->ID, 'sp_timeline', true );
 			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
 			if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
@@ -319,6 +320,22 @@ class SP_Player_List extends SP_Custom_Post {
 								if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
 									$totals[ $player_id ]['eventsplayed'] ++;
 									$totals[ $player_id ]['eventminutes'] += $minutes;
+
+									// Adjust for substitution time
+									if ( sp_array_value( $player_performance, 'status' ) === 'sub' ):
+										$totals[ $player_id ]['eventminutes'] -= sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), 'sub' ), 0, 0 );
+									else:
+										foreach ( $timeline as $timeline_team => $timeline_players ):
+											foreach ( $timeline_players as $timeline_player => $timeline_performance ):
+												if ( 'sub' === sp_array_value( sp_array_value( $players, $timeline_player, array() ), 'status' ) && $player_id === (int) sp_array_value( sp_array_value( $players, $timeline_player, array() ), 'sub', 0 ) ):
+													$substitution_time = sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $timeline_player ), 'sub' ), 0, 0 );
+													if ( $substitution_time ):
+														$totals[ $player_id ]['eventminutes'] += $substitution_time - $minutes;
+													endif;
+												endif;
+											endforeach;
+										endforeach;
+									endif;
 
 									if ( sp_array_value( $player_performance, 'status' ) == 'lineup' ):
 										$totals[ $player_id ]['eventsstarted'] ++;
@@ -453,6 +470,8 @@ class SP_Player_List extends SP_Custom_Post {
 		);
 		$stats = get_posts( $args );
 
+		$formats = array();
+
 		foreach ( $stats as $stat ):
 
 			// Get post meta
@@ -470,6 +489,13 @@ class SP_Player_List extends SP_Custom_Post {
 
 			// Add column name to columns
 			$columns[ $stat->post_name ] = $stat->post_title;
+
+			// Add format
+			$format = get_post_meta( $stat->ID, 'sp_format', true );
+			if ( '' === $format ) {
+				$format = 'number';
+			}
+			$formats[ $stat->post_name ] = $format;
 
 		endforeach;
 
@@ -556,6 +582,31 @@ class SP_Player_List extends SP_Custom_Post {
 		endforeach;
 		
 		if ( $admin ):
+
+			// Convert to time notation
+			if ( in_array( 'time', $formats ) ):
+				foreach ( $placeholders as $player => $stats ):
+					if ( ! is_array( $stats ) ) continue;
+
+					foreach ( $stats as $key => $value ):
+
+						// Continue if not time format
+						if ( 'time' !== sp_array_value( $formats, $key ) ) continue;
+
+						$intval = intval( $value );
+						$timeval = gmdate( 'i:s', $intval );
+						$hours = floor( $intval / 3600 );
+
+						if ( '00' != $hours )
+							$timeval = $hours . ':' . $timeval;
+
+						$timeval = ereg_replace( '^0', '', $timeval );
+
+						$placeholders[ $player ][ $key ] = $timeval;
+					endforeach;
+				endforeach;
+			endif;
+
 			$labels = array();
 			foreach( $this->columns as $key ):
 				if ( $key == 'number' ):
@@ -570,6 +621,31 @@ class SP_Player_List extends SP_Custom_Post {
 			endforeach;
 			return array( $labels, $data, $placeholders, $merged, $orderby );
 		else:
+
+			// Convert to time notation
+			if ( in_array( 'time', $formats ) ):
+				foreach ( $merged as $player => $stats ):
+					if ( ! is_array( $stats ) ) continue;
+
+					foreach ( $stats as $key => $value ):
+
+						// Continue if not time format
+						if ( 'time' !== sp_array_value( $formats, $key ) ) continue;
+
+						$intval = intval( $value );
+						$timeval = gmdate( 'i:s', $intval );
+						$hours = floor( $intval / 3600 );
+
+						if ( '00' != $hours )
+							$timeval = $hours . ':' . $timeval;
+
+						$timeval = ereg_replace( '^0', '', $timeval );
+
+						$merged[ $player ][ $key ] = $timeval;
+					endforeach;
+				endforeach;
+			endif;
+
 			if ( ! is_array( $this->columns ) )
 				$this->columns = array();
 			foreach ( $columns as $key => $label ):

@@ -1,5 +1,6 @@
 .sp-template.sp-template-event-statistics {
 	color: inherit;
+	clear: both;
 }
 
 .sp-statistic-label {
@@ -29,18 +30,19 @@
 }
 
 @media screen and (min-width: 801px) {
-	.sp-inline-statistics .sp-event-performance-tables .sp-template-event-performance {
+	.sp-inline-statistics.sp-performance-sections--1 .sp-event-performance-tables .sp-template-event-performance {
 		box-sizing: border-box;
 		width: 30%;
 	}
 
-	.sp-inline-statistics .sp-event-performance-tables .sp-template-event-performance-combined {
+	.sp-inline-statistics.sp-performance-sections--1 .sp-event-performance-tables .sp-template-event-performance-combined {
 		width: 60%;
 	}
 
-	.sp-inline-statistics .sp-event-performance-tables .sp-template-event-statistics {
+	.sp-inline-statistics.sp-performance-sections--1 .sp-event-performance-tables .sp-template-event-statistics {
 		box-sizing: border-box;
 		display: inline-block;
+		clear: none;
 		width: 40%;
 		padding-left: 10px;
 		padding-right: 10px;

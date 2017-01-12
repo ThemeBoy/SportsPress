@@ -964,6 +964,9 @@ table.sp-status-table td mark.yes {
 .about-sportspress-wrap .sp-welcome-logo {
 	display: inline;
 }
+.about-sportspress-wrap .sp-welcome-logo img {
+	border: none;
+}
 .about-sportspress-wrap .sp-about-text {
 	min-height: 0;
 	margin-right: 165px;

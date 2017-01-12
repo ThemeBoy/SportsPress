@@ -59,6 +59,7 @@ function sp_body_class( $classes ) {
 				$classes[] = 'sp-has-results';
 			}
 		}
+		$classes[] = 'sp-performance-sections-' . get_option( 'sportspress_event_performance_sections', -1 );
 	} elseif ( 'sp_team' == $post_type && 'yes' == get_option( 'sportspress_team_show_logo', 'yes' ) ) {
 		$classes[] = 'sp-show-image';
 	} elseif ( 'sp_player' == $post_type && 'yes' == get_option( 'sportspress_player_show_photo', 'yes' ) ) {

@@ -48,6 +48,7 @@
 .sp-template a,
 .sp-data-table a {
     box-shadow: none !important;
+    border: none !important;
     text-decoration: none !important;
     font-weight: inherit !important;
     color: #00a69c !important;
@@ -91,6 +92,7 @@
 /* Images */
 
 .sp-template img {
+    display: inline-block !important;
     box-shadow: none !important;
 }
 
@@ -354,10 +356,6 @@
     color: #333 !important;
 }
 
-.sp-template-event-logos-block .team-logo img {
-    display: inline !important;
-}
-
 .sp-template-event-logos a,
 .sp-template-event-logos a:hover {
     border: none !important;
@@ -503,6 +501,7 @@
 .sp-tournament-bracket a:hover {
     text-decoration: none !important;
     color: inherit !important;
+    border: none! important;
 }
 
 .sp-tournament-bracket tr,
@@ -585,7 +584,7 @@
 
 /* Post Content */
 
-.sp-post-content {
+.single-sp_team .has-post-thumbnail .sp-post-content {
     clear: none;
 }
 
@@ -608,5 +607,9 @@
 
     .widget .sp-template-event-calendar tbody td {
         padding: 10px 5px !important;
+    }
+
+    .sp-template-event-performance-icons.sp-template-event-performance-section:nth-child(2n) {
+        padding-top: 61px !important;
     }
 }

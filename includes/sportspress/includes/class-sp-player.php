@@ -336,6 +336,7 @@ class SP_Player extends SP_Custom_Post {
 			foreach( $events as $i => $event ):
 				$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 				$team_performance = (array)get_post_meta( $event->ID, 'sp_players', true );
+				$timeline = (array)get_post_meta( $event->ID, 'sp_timeline', true );
 				$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
 				if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
@@ -404,6 +405,22 @@ class SP_Player extends SP_Custom_Post {
 								if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
 									$totals['eventsplayed'] ++;
 									$totals['eventminutes'] += $minutes;
+
+									// Adjust for substitution time
+									if ( sp_array_value( $player_performance, 'status' ) === 'sub' ):
+										$totals['eventminutes'] -= sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $this->ID ), 'sub' ), 0, 0 );
+									else:
+										foreach ( $timeline as $timeline_team => $timeline_players ):
+											foreach ( $timeline_players as $timeline_player => $timeline_performance ):
+												if ( 'sub' === sp_array_value( sp_array_value( $players, $timeline_player, array() ), 'status' ) && $this->ID === (int) sp_array_value( sp_array_value( $players, $timeline_player, array() ), 'sub', 0 ) ):
+													$substitution_time = sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $timeline_player ), 'sub' ), 0, 0 );
+													if ( $substitution_time ):
+														$totals['eventminutes'] += $substitution_time - $minutes;
+													endif;
+												endif;
+											endforeach;
+										endforeach;
+									endif;
 
 									if ( sp_array_value( $player_performance, 'status' ) == 'lineup' ):
 										$totals['eventsstarted'] ++;
@@ -629,6 +646,30 @@ class SP_Player extends SP_Custom_Post {
 			$columns = array_merge( $column_order, $columns );
 			$usecolumns = array_merge( $usecolumn_order, $usecolumns );
 		}
+
+		// Convert to time notation
+		if ( in_array( 'time', $formats ) ):
+			foreach ( $placeholders as $season => $stats ):
+				if ( ! is_array( $stats ) ) continue;
+
+				foreach ( $stats as $key => $value ):
+
+					// Continue if not time format
+					if ( 'time' !== sp_array_value( $formats, $key ) ) continue;
+
+					$intval = intval( $value );
+					$timeval = gmdate( 'i:s', $intval );
+					$hours = floor( $intval / 3600 );
+
+					if ( '00' != $hours )
+						$timeval = $hours . ':' . $timeval;
+
+					$timeval = ereg_replace( '^0', '', $timeval );
+
+					$placeholders[ $season ][ $key ] = $timeval;
+				endforeach;
+			endforeach;
+		endif;
 
 		if ( $admin ):
 			$labels = array();
