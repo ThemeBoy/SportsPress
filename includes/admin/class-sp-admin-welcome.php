@@ -175,49 +175,95 @@ class SP_Admin_Welcome {
 			?>
 			<?php if ( get_option( 'sportspress_installed' ) ) { ?>
 
-				<div class="headline-feature feature-video sp-fitvids" style="background-color:#191E23;">
-					<iframe width="990" height="557" src="https://www.youtube.com/embed/KQyga_C5a6M?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+				<?php do_action( 'sportspress_before_welcome_features' ); ?>
+
+				<?php if ( ! current_theme_supports( 'sportspress' ) ) { ?>
+
+					<div class="feature-section two-col">
+						<h2>New Frontend Stylesheet</h2>
+						<div class="col">
+							<img src="https://www.themeboy.com/wp-content/uploads/player-profile-style.jpg" alt="Templates">
+							<h3>Templates</h3>
+							<p>An optional default stylesheet has been added to enhance the design of SportsPress template elements in third-party themes.</p>
+						</div>
+						<div class="col">
+							<img src="https://www.themeboy.com/wp-content/uploads/event-blocks-style.png" alt="Widgets">
+							<h3>Widgets</h3>
+							<p>All related content including widgets can be styled instantly by enabling <strong>Frontend Styles</strong> in <a href="<?php echo add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), admin_url( 'admin.php' ) ); ?>">General Options</a>.</p>
+						</div>
+					</div>
+
+					<hr>
+
+				<?php } ?>
+
+				<div class="feature-section three-col">
+					<h2>More Advanced Statistics</h2>
+					<div class="col">
+						<img src="https://www.themeboy.com/wp-content/uploads/chronological-streaks.png" alt="Chronological Streaks">
+						<h3>Chronological Streaks</h3>
+						<p>A new <strong>Form</strong> preset variable has been added to the equation builder for table columns. Use this variable to display the most recent outcomes with each outcome linking to that event.</p>
+					</div>
+					<div class="col">
+						<img src="https://www.themeboy.com/wp-content/uploads/tiebreaker-setting.gif" alt="Head to Head Tiebreakers">
+						<h3>Head to Head Tiebreakers</h3>
+						<p>When two or more teams are tied in the general standings, SportsPress can now automatically analyze the events between those teams to determine who comes out on top.</p>
+					</div>
+					<div class="col">
+						<img src="https://www.themeboy.com/wp-content/uploads/time-format.png" alt="Time Format">
+						<h3>Time Format</h3>
+						<p>A new <strong>Time</strong> format has been added to player performance settings. Times are saved as minutes, and displayed using time format with <em>0:00</em> as the default.</p>
+					</div>
 				</div>
 
 				<hr>
 
-				<div class="feature-section three-col">
-					<h2>Event Organization</h2>
+				<div class="feature-section two-col">
+					<h2>Bulk Actions</h2>
 					<div class="col">
-						<img src="https://www.themeboy.com/wp-content/uploads/match-days.png" alt="Match Days"/>
-						<h3>Match Days</h3>
-						<p>A match day can be added to any event and displayed directly inside the event details section. It can also be used as a filter for shortcodes and widgets.</p>
+						<img src="https://www.themeboy.com/wp-content/uploads/bulk-team-calendars.gif" alt="Generate Team Calendars">
+						<h3>Generate Team Calendars</h3>
+						<p>Bulk actions has been added to instantly generate team calendars. Simply select the checkboxes next to each team, then choose <strong>Generate Calendars</strong> from the <strong>Bulk Actions</strong> dropdown and voilà!</p>
 					</div>
 					<div class="col">
-						<img src="https://www.themeboy.com/wp-content/uploads/event-status.gif" alt="Event Status"/>
-						<h3>Event Status</h3>
-						<p>For undecided, postponed, and cancelled events, a status can be displayed in place of the time. Leave the status alone to display the actual time of the event.</p>
-					</div>
-					<div class="col">
-						<img src="https://www.themeboy.com/wp-content/uploads/box-score-minutes.png" alt="Box Score Minutes"/>
-						<h3>Box Score Minutes</h3>
-						<p>You can now can enter the time of goals or any other statistic for each player, and display them directly within the box score section of event pages.</p>
+						<img src="https://www.themeboy.com/wp-content/uploads/bulk-player-teams.png" alt="Assign Teams to Players">
+						<h3>Assign Teams to Players</h3>
+						<p>Quickly add players to teams using the <strong>Bulk Edit</strong> feature. New sections have been added to select the current teams and past teams for multiple players at once.</p>
 					</div>
 				</div>
 
-				<hr>
+				<hr />
 
-				<div class="feature-section three-col">
-					<h2>Layout Enhancements</h2>
-					<div class="col">
-						<img src="https://www.themeboy.com/wp-content/uploads/template-tabs.gif" alt=""/>
-						<h3>Template Tabs</h3>
-						<p>Simply drag and drop any of the layout items to automatically group them into tabs. This will make your templates more compact and intuitive.</p>
+				<div class="changelog">
+					<h2>Admin Improvements</h2>
+					<div class="under-the-hood three-col">
+						<div class="col">
+							<h3>Player List Limits</h3>
+							<p>A limit option has been added to player lists when automatically adding players, enabling speedier queries.</p>
+						</div>
+						<div class="col">
+							<h3>Mixed Statistic Columns</h3>
+							<p>The order of player performance and statistics can now be mixed together by editing the order of each variable.</p>
+						</div>
+						<div class="col">
+							<h3>Explicit Team URL Redirect</h3>
+							<p>Decide whether to use native team pages or to redirect teams to their external URLs using the new <strong>Redirect</strong> option.</p>
+						</div>
 					</div>
-					<div class="col">
-						<img src="https://www.themeboy.com/wp-content/uploads/event-logo-options.png" alt=""/>
-						<h3>Event Logo Options</h3>
-						<p>Display the teams playing using an inline layout or as a block section, with logos on either side and the date and time/results in the middle.</p>
-					</div>
-					<div class="col">
-						<img src="https://www.themeboy.com/wp-content/uploads/player-profile-switching.png" alt=""/>
-						<h3>Player Profile Switching</h3>
-						<p>We also added a dropdown above the player details box which allows your visitors to quickly switch to another player's profile.</p>
+
+					<div class="under-the-hood three-col">
+						<div class="col">
+							<h3>Quick Edit Players</h3>
+							<p>In addition to editing the teams a player belongs to, squad numbers can also be updated via the <strong>Quick Edit</strong> menu</p>
+						</div>
+						<div class="col">
+							<h3>Independent Timed Option</h3>
+							<p>Choose which values in the box score need minutes recorded, with an independent setting for each column.</p>
+						</div>
+						<div class="col">
+							<h3>Taxonomies in REST API</h3>
+							<p>New endpoints have been added for taxonomies including seasons, competitions, venues, positions, and jobs.</p>
+						</div>
 					</div>
 				</div>
 
@@ -227,19 +273,21 @@ class SP_Admin_Welcome {
 					<h2>Under the Hood</h2>
 					<div class="under-the-hood three-col">
 						<div class="col">
-							<h3>Fixtures Importer</h3>
-							<p>A new, simpler importer has been added for quickly scheduling events. Supports CSV files generated by <a href="http://tboy.co/leaguelobster" target="_blank">LeagueLobster</a>.</p>
+							<h3>Variables Filtered by Offense and Defense</h3>
+							<p>Offense and defense statistics are now calculated using only the player performance from the same category.</p>
 						</div>
 						<div class="col">
-							<h3>Tutorials for Everyone</h3>
-							<p>If you've enabled the Tutorials module, all SportsPress users will now be able to access them from the dashboard.</p>
+							<h3>Account for Substitution Time</h3>
+							<p>The <strong>Minutes</strong> equation variable is now automatically adjusted by subtracting substitution time.</p>
 						</div>
 						<div class="col">
-							<h3>REST API Improvements</h3>
-							<p>The REST API has been updated to support meta query vars, allowing you to retrieve data for a specific team or player.</p>
+							<h3>Division by Zero</h3>
+							<p>No more errors when dividing by zero. Equations with undefined solutions now simply return zero for that value.</p>
 						</div>
 					</div>
 				</div>
+
+				<?php do_action( 'sportspress_after_welcome_features' ); ?>
 
 				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
 
