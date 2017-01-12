@@ -2,8 +2,8 @@
 Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
-Tested up to: 4.6
-Stable tag: 2.1.7
+Tested up to: 4.7
+Stable tag: 2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,47 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.2 =
+* Feature - Timelines module for displaying player performance sequence in events.
+* Feature - New frontend stylesheet for third-party themes.
+* Feature - New chronological streak format in league tables.
+* Feature - Head to head tiebreaker option in league tables.
+* Feature - Add option to select number of players in player lists.
+* Feature - Quick edit player's team and squad number.
+* Feature - Bulk edit players' past and current teams.
+* Feature - Taxonomies added to REST API.
+* Feature - Ability to display event history in player profiles.
+* Feature - Event list format option added to player and team events.
+* Feature - Option to record minutes for specific statistics.
+* Feature - Time format added for racing and timed sports.
+* Feature - Dedicated option to redirect team pages to site URL.
+* Feature - Bulk action to generate team calendars.
+* Feature - Automatically adjust played minutes based on substitution times.
+* Feature - Match day column option added to event lists.
+* Tweak - Staff gallery markup for consistency with player gallery.
+* Tweak - Split brackets for double elimination tournaments.
+* Tweak - Update RTL stylesheet for tournaments.
+* Tweak - Remove event limit in calendars.
+* Tweak - Allow player squad number to be zero.
+* Tweak - Enable mixing performance and statistic column order.
+* Tweak - Filter player statistic equations by offense and defense.
+* Tweak - System status hidden unless in debug mode.
+* Tweak - Move event list column options to sidebar.
+* Tweak - Return zero instead of error if dividing by zero.
+* Tweak - Always display performance icons in admin.
+* Tweak - Add preview notation in event blocks by default.
+* Tweak - Single player performance name option added for hover text in icons mode.
+* Fix - Scoreboard buttons not working on iOS.
+* Fix - Player list precision number format error.
+* Fix - Player list adjustments for existing values.
+* Fix - Hide empty positions in player lists and galleries.
+* Fix - Import button selectors disappeared in WordPress 4.7.
+* Fix - Substitution time missing parentheses.
+* Fix - Staff for home team not being displayed in events.
+* Fix - Enable output of time and results without team names in home/away mode.
+* Fix - Prevent totals override in box scores.
+* Localization - Add Gibraltar nationality option and flag.
 
 = 2.1.7 =
 * Fix - Activation error on older versions of PHP.

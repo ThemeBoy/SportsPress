@@ -5,7 +5,7 @@
  * The SportsPress tournament class handles individual tournament data.
  *
  * @class 		SP_Tournament
- * @version		2.1.2
+ * @version		2.2
  * @package		SportsPress_Tournaments
  * @category	Class
  * @author 		ThemeBoy

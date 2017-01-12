@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress_Timelines
- * @version     2.1.7
+ * @version     2.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

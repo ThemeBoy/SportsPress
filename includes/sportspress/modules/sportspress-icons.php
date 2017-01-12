@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add vector performance icons to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.1
+Version: 2.2
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Icons' ) ) :
  * Main SportsPress Icons Class
  *
  * @class SportsPress_Icons
- * @version	2.1
+ * @version	2.2
  */
 class SportsPress_Icons {
 
@@ -48,7 +48,7 @@ class SportsPress_Icons {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_ICONS_VERSION' ) )
-			define( 'SP_ICONS_VERSION', '2.1' );
+			define( 'SP_ICONS_VERSION', '2.2' );
 
 		if ( !defined( 'SP_ICONS_URL' ) )
 			define( 'SP_ICONS_URL', plugin_dir_url( __FILE__ ) );

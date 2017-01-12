@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Display head-to-head team comparison charts in events.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.0
+Version: 2.2
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Match_Stats' ) ) :
  * Main SportsPress Match Stats Class
  *
  * @class SportsPress_Match_Stats
- * @version	2.0
+ * @version	2.2
  */
 class SportsPress_Match_Stats {
 
@@ -43,7 +43,7 @@ class SportsPress_Match_Stats {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_MATCH_STATS_VERSION' ) )
-			define( 'SP_MATCH_STATS_VERSION', '2.0' );
+			define( 'SP_MATCH_STATS_VERSION', '2.2' );
 
 		if ( !defined( 'SP_MATCH_STATS_URL' ) )
 			define( 'SP_MATCH_STATS_URL', plugin_dir_url( __FILE__ ) );
