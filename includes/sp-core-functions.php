@@ -1206,9 +1206,6 @@ if ( !function_exists( 'sp_solve' ) ) {
 		unset( $vars['last5'] );
 		unset( $vars['last10'] );
 
-		if ( sp_array_value( $vars, 'eventsplayed', 0 ) <= 0 )
-			return $default;
-
 		// Equation Operating System
         if ( ! class_exists( 'phpStack' ) )
             include_once( SP()->plugin_path() . '/includes/libraries/class-phpstack.php' );
