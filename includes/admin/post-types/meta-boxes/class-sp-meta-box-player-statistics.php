@@ -200,7 +200,7 @@ class SP_Meta_Box_Player_Statistics {
 										if ( '00' != $hours )
 											$timeval = $hours . ':' . $timeval;
 
-										$timeval = ereg_replace( '^0', '', $timeval );
+										$timeval = preg_replace( '/^0/', '', $timeval );
 
 										// Convert placeholder
 										$intval = intval( $placeholder );
@@ -210,7 +210,7 @@ class SP_Meta_Box_Player_Statistics {
 										if ( '00' != $hours )
 											$placeholder = $hours . ':' . $placeholder;
 
-										$placeholder = ereg_replace( '^0', '', $placeholder );
+										$placeholder = preg_replace( '/^0/', '', $placeholder );
 									}
 
 									if ( $readonly ) {

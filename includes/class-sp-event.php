@@ -215,7 +215,7 @@ class SP_Event extends SP_Custom_Post{
 							if ( '00' != $hours )
 								$timeval = $hours . ':' . $timeval;
 
-							$timeval = ereg_replace( '^0', '', $timeval );
+							$timeval = preg_replace( '/^0/', '', $timeval );
 
 							$performance[ $team ][ $player ][ $performance_key ] = $timeval;
 						endforeach;

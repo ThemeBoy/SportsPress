@@ -612,7 +612,7 @@ class SP_Player extends SP_Custom_Post {
 					if ( '00' != $hours )
 						$timeval = $hours . ':' . $timeval;
 
-					$timeval = ereg_replace( '^0', '', $timeval );
+					$timeval = preg_replace( '/^0/', '', $timeval );
 
 					$placeholders[ $season ][ $key ] = $timeval;
 				endforeach;
@@ -692,7 +692,7 @@ class SP_Player extends SP_Custom_Post {
 						if ( '00' != $hours )
 							$timeval = $hours . ':' . $timeval;
 
-						$timeval = ereg_replace( '^0', '', $timeval );
+						$timeval = preg_replace( '/^0/', '', $timeval );
 
 						$merged[ $season ][ $performance_key ] = $timeval;
 					endforeach;

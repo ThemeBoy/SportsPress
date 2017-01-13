@@ -603,7 +603,7 @@ class SP_Player_List extends SP_Custom_Post {
 						if ( '00' != $hours )
 							$timeval = $hours . ':' . $timeval;
 
-						$timeval = ereg_replace( '^0', '', $timeval );
+						$timeval = preg_replace( '/^0/', '', $timeval );
 
 						$placeholders[ $player ][ $key ] = $timeval;
 					endforeach;
@@ -642,7 +642,7 @@ class SP_Player_List extends SP_Custom_Post {
 						if ( '00' != $hours )
 							$timeval = $hours . ':' . $timeval;
 
-						$timeval = ereg_replace( '^0', '', $timeval );
+						$timeval = preg_replace( '/^0/', '', $timeval );
 
 						$merged[ $player ][ $key ] = $timeval;
 					endforeach;
