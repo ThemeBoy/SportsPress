@@ -40,7 +40,7 @@ class SP_Meta_Box_Event_Details {
 		<?php
 		foreach ( $taxonomies as $taxonomy ) {
 			if ( 'sp_venue' == $taxonomy ) continue;
-			sp_taxonomy_field( $taxonomy, $post, true, true );
+			sp_taxonomy_field( $taxonomy, $post, true, true, __( 'None', 'sportspress' ) );
 		}
 		?>
 		<div class="sp-event-sp_venue-field">
