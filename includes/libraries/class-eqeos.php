@@ -35,7 +35,7 @@
  * - Add factorial support. (ie 5! = 120)
  *
  * @author Jon Lawrence <jlawrence11@gmail.com>
- * @copyright Copyright ©2005-2013, Jon Lawrence
+ * @copyright Copyright Â©2005-2013, Jon Lawrence
  * @license http://opensource.org/licenses/LGPL-2.1 LGPL 2.1 License
  * @package EOS
  * @version 2.0
@@ -73,7 +73,7 @@ if(!defined('DEBUG'))
  * This class was created for PHP4 in 2005, updated to fully PHP5 in 2013.
  * 
  * @author Jon Lawrence <jlawrence11@gmail.com>
- * @copyright Copyright ©2005-2013, Jon Lawrence
+ * @copyright Copyright Â©2005-2013, Jon Lawrence
  * @license http://opensource.org/licenses/LGPL-2.1 LGPL 2.1 License
  * @package Math
  * @subpackage EOS
