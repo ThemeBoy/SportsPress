@@ -300,31 +300,17 @@ class SP_Player extends SP_Custom_Post {
 
 			if ( $league_id ):
 				$args['tax_query'][] = array(
-					'relation' => 'OR',
-					array(
-						'taxonomy' => 'sp_league',
-						'field' => 'term_id',
-						'terms' => $league_id
-					),
-					array(
-						'taxonomy' => 'sp_league',
-						'operator' => 'NOT EXISTS',
-					),
+					'taxonomy' => 'sp_league',
+					'field' => 'term_id',
+					'terms' => $league_id
 				);
 			endif;
 
 			if ( $div_id ):
 				$args['tax_query'][] = array(
-					'relation' => 'OR',
-					array(
-						'taxonomy' => 'sp_season',
-						'field' => 'term_id',
-						'terms' => $div_id
-					),
-					array(
-						'taxonomy' => 'sp_season',
-						'operator' => 'NOT EXISTS',
-					),
+					'taxonomy' => 'sp_season',
+					'field' => 'term_id',
+					'terms' => $div_id
 				);
 			endif;
 
@@ -347,46 +333,7 @@ class SP_Player extends SP_Custom_Post {
 						$player_performance = sp_array_value( $players, $this->ID, array() );
 
 						foreach ( $player_performance as $key => $value ):
-							if ( 'outcome' == $key ):
-								// Increment events attended, played, and started
-								$totals['eventsattended'] ++;
-								$totals['eventsplayed'] ++;
-								$totals['eventsstarted'] ++;
-								$totals['eventminutes'] += $minutes;
-
-								// Convert to array
-								if ( ! is_array( $value ) ):
-									$value = array( $value );
-								endif;
-
-								foreach ( $value as $outcome ):
-									if ( $outcome && $outcome != '-1' ):
-
-										// Increment outcome count
-										if ( array_key_exists( $outcome, $totals ) ):
-											$totals[ $outcome ] ++;
-										endif;
-
-										// Add to streak counter
-										if ( $streak['fire'] && ( $streak['name'] == '' || $streak['name'] == $outcome ) ):
-											$streak['name'] = $outcome;
-											$streak['count'] ++;
-										else:
-											$streak['fire'] = 0;
-										endif;
-
-										// Add to last 5 counter if sum is less than 5
-										if ( array_key_exists( $outcome, $last5 ) && array_sum( $last5 ) < 5 ):
-											$last5[ $outcome ] ++;
-										endif;
-
-										// Add to last 10 counter if sum is less than 10
-										if ( array_key_exists( $outcome, $last10 ) && array_sum( $last10 ) < 10 ):
-											$last10[ $outcome ] ++;
-										endif;
-									endif;
-								endforeach;
-							elseif ( array_key_exists( $key, $totals ) ):
+							if ( array_key_exists( $key, $totals ) ):
 								$totals[ $key ] += $value;
 							endif;
 						endforeach;
