@@ -66,7 +66,7 @@ foreach( $data as $team_id => $result ):
 
 	$team_name = sp_get_team_name( $team_id, $abbreviate_teams );
 
-	if ( $link_teams ):
+	if ( $link_teams && sp_post_exists( $team_id ) ):
 		$team_name = '<a href="' . get_post_permalink( $team_id ) . '">' . $team_name . '</a>';
 	endif;
 

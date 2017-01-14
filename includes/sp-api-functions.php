@@ -16,6 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * General functions
  */
 
+function sp_post_exists( $post = 0 ) {
+	return is_string( get_post_status( $post ) );
+}
+
 function sp_get_time( $post = 0, $format = null ) {
 	if ( null == $format ) $format = get_option( 'time_format' );
 	return get_post_time( $format, false, $post, true );
