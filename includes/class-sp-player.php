@@ -143,7 +143,7 @@ class SP_Player extends SP_Custom_Post {
 		$posts = get_posts( $args );
 		
 		if ( $manual_columns ) {
-			$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
+			$usecolumns = (array)get_post_meta( $this->ID, 'sp_columns', true );
 			$has_checkboxes = true;
 		} else {
 			$usecolumns = array();
@@ -196,7 +196,8 @@ class SP_Player extends SP_Custom_Post {
 		$posts = get_posts( $args );
 		
 		if ( $manual_columns ) {
-			$usecolumns += get_post_meta( $this->ID, 'sp_columns', true );
+			$usecolumns = array_merge( $usecolumns, (array) get_post_meta( $this->ID, 'sp_columns', true ) );
+			$usecolumns = array_filter( $usecolumns );
 		} else {
 			if ( is_array( $posts ) ) {
 				foreach ( $posts as $post ) {
