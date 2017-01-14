@@ -335,6 +335,7 @@ class SP_Player extends SP_Custom_Post {
 
 						foreach ( $player_performance as $key => $value ):
 							if ( array_key_exists( $key, $totals ) ):
+								$value = floatval( $value );
 								$totals[ $key ] += $value;
 							endif;
 						endforeach;
@@ -416,7 +417,7 @@ class SP_Player extends SP_Custom_Post {
 
 								// Add to total
 								$value = sp_array_value( $totals, $result_slug . 'for', 0 );
-								$value += $team_result;
+								$value += floatval( $team_result );
 								$totals[ $result_slug . 'for' ] = $value;
 
 								// Add subset
@@ -432,7 +433,7 @@ class SP_Player extends SP_Custom_Post {
 
 									// Add to total
 									$value = sp_array_value( $totals, $result_slug . 'against', 0 );
-									$value += $team_result;
+									$value += floatval( $team_result );
 									$totals[ $result_slug . 'against' ] = $value;
 
 									// Add subset
@@ -659,6 +660,7 @@ class SP_Player extends SP_Custom_Post {
 				$totals = array();
 				foreach ( $merged as $season => $stats ) {
 					foreach ( $stats as $key => $value ) {
+						$value = floatval( $value );
 						$totals[ $key ] = sp_array_value( $totals, $key, 0 ) + $value;
 					}
 				}
