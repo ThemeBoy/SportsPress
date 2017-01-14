@@ -1,14 +1,19 @@
 /* SportsPress Templates */
 
+.sp-template,
+.sp-data-table,
+.sp-table-caption {
+    font-family: "Roboto", "Helvetica", sans-serif;
+}
+
 /*
- * Note: !important everything except font-family to enforce overrides.
+ * Note: !important everything to enforce overrides.
  * This stylesheet can be disabled via SportsPress General Settings.
  */
 
 .sp-template *,
 .sp-data-table *,
 .sp-table-caption {
-    font-family: "Roboto", "Helvetica", sans-serif;
     box-sizing: border-box !important;
     font-weight: 400 !important;
     text-transform: none !important;
