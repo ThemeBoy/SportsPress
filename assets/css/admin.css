@@ -244,6 +244,22 @@
 	clear: both;
 }
 
+.sp-data-table-container {
+	overflow-x: scroll;
+}
+
+.sp-data-table-container > div::-webkit-scrollbar {
+	height:12px;
+}
+.sp-data-table-container > div::-webkit-scrollbar-track {
+	box-shadow:0 0 2px rgba(0,0,0,0.15) inset;
+	background:#f0f0f0;
+}
+.sp-data-table-container > div::-webkit-scrollbar-thumb {
+	border-radius:6px;
+	background:#ccc;
+}
+
 table.widefat.sp-data-table img {
 	vertical-align: top;
 }
