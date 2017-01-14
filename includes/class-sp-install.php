@@ -429,6 +429,11 @@ class SP_Install {
 			update_option( 'sportspress_event_show_timeline', 'no' );
 			update_option( 'sportspress_event_logos_show_team_names', 'no' );
 		}
+		
+		if ( version_compare( $version, '2.2.3', '<' ) ) {
+			$option = get_option( 'sportspress_player_show_total', 'no' );
+			update_option( 'sportspress_player_show_career_total', $option );
+		}
 	}
 
 	/**
