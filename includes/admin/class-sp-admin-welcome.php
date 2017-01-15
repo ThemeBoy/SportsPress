@@ -335,7 +335,7 @@ class SP_Admin_Welcome {
 									$settings = array(
 										array(
 											'id'        => 'sportspress_sport',
-											'default'   => 'custom',
+											'default'   => get_option( 'sportspress_sport', 'custom' ),
 											'type'      => 'sport',
 											'title'		=> __( 'Sport', 'sportspress' ),
 											'welcome' 	=> true,
