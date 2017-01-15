@@ -125,7 +125,7 @@ final class SportsPress {
 		add_action( 'init', array( $this, 'init' ), 0 );
 		add_action( 'init', array( 'SP_Shortcodes', 'init' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup_environment' ) );
-		add_action( 'tgmpa_register', array( $this, 'edition' ) );
+		add_action( 'tgmpa_register', array( $this, 'extension' ) );
 
 		// Include core modules
 		$this->include_modules();
@@ -333,9 +333,9 @@ final class SportsPress {
 	}
 
 	/**
-	 * Recommend SportsPress edition for available sports.
+	 * Recommend SportsPress extension for available sports.
 	*/
-	public static function edition() {
+	public static function extension() {
 		$sport = sp_array_value( $_POST, 'sportspress_sport', get_option( 'sportspress_sport', null ) );
 		if ( ! $sport ) return;
 
