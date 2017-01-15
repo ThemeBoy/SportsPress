@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.2
+ * @version     2.2.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -191,7 +191,7 @@ class SP_Settings_General extends SP_Settings_Page {
 	 * Save settings
 	 */
 	public function save() {
-		if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) != $_POST['sportspress_sport'] ):
+		if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) !== $_POST['sportspress_sport'] ):
 			$sport = $_POST['sportspress_sport'];
 			SP_Admin_Sports::apply_preset( $sport );
     		update_option( '_sp_needs_welcome', 0 );

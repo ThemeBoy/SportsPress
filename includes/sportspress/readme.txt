@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.7
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -240,6 +240,20 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.2.4 =
+* Feature - Option to show or hide career totals in player profiles.
+* Fix - Equations returning zero when no events played.
+* Fix - Player lists and player profiles showing different statistics when filtered by competition or season.
+* Fix - Substitution icon not rendering for starting lineup players.
+* Fix - Manual player performance errors in profile.
+* Fix - Error in event results if team was deleted.
+* Fix - Remove deprecated function in PHP 7.0.
+* Fix - Non-numeric errors in PHP 7.1.
+* Tweak - Icons not rendering when frontend stylesheet is active.
+* Tweak - Remove underline from icon links in frontend stylesheet.
+* Tweak - Change competition and season placeholders in events to "None".
+* Tweak - Enable horizontal scrolling on large tables in admin.
 
 = 2.2.3 =
 * Fix - Placeholders for non-numeric values in player list displaying as zero.

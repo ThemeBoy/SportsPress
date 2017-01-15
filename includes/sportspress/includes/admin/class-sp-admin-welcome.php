@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.2
+ * @version     2.2.4
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -335,7 +335,7 @@ class SP_Admin_Welcome {
 									$settings = array(
 										array(
 											'id'        => 'sportspress_sport',
-											'default'   => 'custom',
+											'default'   => get_option( 'sportspress_sport', 'custom' ),
 											'type'      => 'sport',
 											'title'		=> __( 'Sport', 'sportspress' ),
 											'welcome' 	=> true,

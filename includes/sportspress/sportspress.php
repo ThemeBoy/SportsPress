@@ -3,7 +3,7 @@
  * Plugin Name: SportsPress
  * Plugin URI: http://themeboy.com/sportspress/
  * Description: Manage your club and its players, staff, events, league tables, and player lists.
- * Version: 2.2.3
+ * Version: 2.2.4
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress' ) ) :
  * Main SportsPress Class
  *
  * @class SportsPress
- * @version	2.2.3
+ * @version	2.2.4
  */
 final class SportsPress {
 
 	/**
 	 * @var string
 	 */
-	public $version = '2.2.3';
+	public $version = '2.2.4';
 
 	/**
 	 * @var SportsPress The single instance of the class
@@ -125,7 +125,7 @@ final class SportsPress {
 		add_action( 'init', array( $this, 'init' ), 0 );
 		add_action( 'init', array( 'SP_Shortcodes', 'init' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup_environment' ) );
-		add_action( 'tgmpa_register', array( $this, 'edition' ) );
+		add_action( 'tgmpa_register', array( $this, 'extension' ) );
 
 		// Include core modules
 		$this->include_modules();
@@ -333,9 +333,9 @@ final class SportsPress {
 	}
 
 	/**
-	 * Recommend SportsPress edition for available sports.
+	 * Recommend SportsPress extension for available sports.
 	*/
-	public static function edition() {
+	public static function extension() {
 		$sport = sp_array_value( $_POST, 'sportspress_sport', get_option( 'sportspress_sport', null ) );
 		if ( ! $sport ) return;
 
