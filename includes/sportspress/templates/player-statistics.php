@@ -16,6 +16,7 @@ if ( ! isset( $id ) )
 $player = new SP_Player( $id );
 
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
+$show_career_totals = 'yes' === get_option( 'sportspress_player_show_career_total', 'no' ) ? true : false;
 $sections = get_option( 'sportspress_player_performance_sections', -1 );
 $show_teams = apply_filters( 'sportspress_player_team_statistics', true );
 $leagues = get_the_terms( $id, 'sp_league' );
@@ -65,11 +66,13 @@ if ( is_array( $leagues ) ):
 			sp_get_template( 'player-statistics-league.php', $args );
 		endforeach;
 
-		sp_get_template( 'player-statistics-league.php', array(
-			'data' => $player->data( 0, false, $section_id ),
-			'caption' => __( 'Career Total', 'sportspress' ),
-			'scrollable' => $scrollable,
-			'hide_teams' => true,
-		) );
+		if ( $show_career_totals ) {
+			sp_get_template( 'player-statistics-league.php', array(
+				'data' => $player->data( 0, false, $section_id ),
+				'caption' => __( 'Career Total', 'sportspress' ),
+				'scrollable' => $scrollable,
+				'hide_teams' => true,
+			) );
+		}
 	}
 endif;

@@ -259,6 +259,9 @@ class SP_Team extends SP_Custom_Post {
 								endforeach;
 
 							else:
+
+								$value = floatval( $value );
+
 								if ( array_key_exists( $key . 'for', $totals ) ):
 									$totals[ $key . 'for' ] += $value;
 									$totals[ $key . 'for' . ( $e + 1 ) ] = $value;
@@ -278,6 +281,9 @@ class SP_Team extends SP_Custom_Post {
 							endif;
 						else:
 							if ( $key != 'outcome' ):
+
+								$value = floatval( $value );
+
 								if ( array_key_exists( $key . 'against', $totals ) ):
 									$totals[ $key . 'against' ] += $value;
 									$totals[ $key . 'against' . ( $e + 1 ) ] = $value;

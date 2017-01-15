@@ -123,6 +123,22 @@ class SP_Settings_Players extends SP_Settings_Page {
 				),
 
 				array(
+					'title'     => __( 'Nationality', 'sportspress' ),
+					'desc' 		=> __( 'Display national flags', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_flags',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+			) ),
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'player_options' ),
+			),
+
+			array(
+				array(	'title' => __( 'Statistics', 'sportspress' ), 'type' => 'title','desc' => '', 'id' => 'player_statistic_options' ),
+
+				array(
 					'title' 	=> __( 'Columns', 'sportspress' ),
 					'id' 		=> 'sportspress_player_columns',
 					'default'	=> 'auto',
@@ -134,7 +150,7 @@ class SP_Settings_Players extends SP_Settings_Page {
 				),
 
 				array(
-					'title' 	=> __( 'Statistics', 'sportspress' ),
+					'title' 	=> __( 'Categories', 'sportspress' ),
 					'id' 		=> 'sportspress_player_performance_sections',
 					'default'	=> -1,
 					'type' 		=> 'radio',
@@ -146,24 +162,28 @@ class SP_Settings_Players extends SP_Settings_Page {
 				),
 
 				array(
-					'title'     => __( 'Total', 'sportspress' ),
-					'desc' 		=> __( 'Display total', 'sportspress' ),
+					'title'     => __( 'Display', 'sportspress' ),
+					'desc' 		=> __( 'Total', 'sportspress' ),
 					'id' 		=> 'sportspress_player_show_total',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'start',
 				),
 
 				array(
-					'title'     => __( 'Nationality', 'sportspress' ),
-					'desc' 		=> __( 'Display national flags', 'sportspress' ),
-					'id' 		=> 'sportspress_player_show_flags',
-					'default'	=> 'yes',
+					'desc' 		=> __( 'Career Total', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_career_total',
+					'default'	=> 'no',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'end',
 				),
+			),
+
+			apply_filters( 'sportspress_player_statistic_options', array(
 			) ),
 
 			array(
-				array( 'type' => 'sectionend', 'id' => 'player_options' ),
+				array( 'type' => 'sectionend', 'id' => 'player_statistic_options' ),
 			)
 
 		);

@@ -196,6 +196,7 @@ class SP_Player_List extends SP_Custom_Post {
 						if ( is_array( $player_league_season_stats ) ):
 							foreach ( $player_league_season_stats as $key => $value ):
 								$current_value = sp_array_value( sp_array_value( $placeholders, $player_id, array() ), $key, 0 );
+								$value = floatval( $value );
 								$placeholders[ $player_id ][ $key ] = $current_value + $value;
 							endforeach;
 						endif;
@@ -303,6 +304,7 @@ class SP_Player_List extends SP_Custom_Post {
 									endif;
 								endforeach;
 							elseif ( array_key_exists( $key, $totals[ $player_id ] ) ):
+								$value = floatval( $value );
 								$totals[ $player_id ][ $key ] += $value;
 							endif;
 						endforeach;
@@ -384,7 +386,7 @@ class SP_Player_List extends SP_Custom_Post {
 
 								// Add to total
 								$value = sp_array_value( $totals[ $player_id ], $result_slug . 'for', 0 );
-								$value += $team_result;
+								$value += floatval( $team_result );
 								$totals[ $player_id ][ $result_slug . 'for' ] = $value;
 
 								// Add subset
@@ -401,7 +403,7 @@ class SP_Player_List extends SP_Custom_Post {
 
 									// Add to total
 									$value = sp_array_value( $totals[ $player_id ], $result_slug . 'against', 0 );
-									$value += $team_result;
+									$value += floatval( $team_result );
 									$totals[ $player_id ][ $result_slug . 'against' ] = $value;
 
 									// Add subset
@@ -603,7 +605,7 @@ class SP_Player_List extends SP_Custom_Post {
 						if ( '00' != $hours )
 							$timeval = $hours . ':' . $timeval;
 
-						$timeval = ereg_replace( '^0', '', $timeval );
+						$timeval = preg_replace( '/^0/', '', $timeval );
 
 						$placeholders[ $player ][ $key ] = $timeval;
 					endforeach;
@@ -642,7 +644,7 @@ class SP_Player_List extends SP_Custom_Post {
 						if ( '00' != $hours )
 							$timeval = $hours . ':' . $timeval;
 
-						$timeval = ereg_replace( '^0', '', $timeval );
+						$timeval = preg_replace( '/^0/', '', $timeval );
 
 						$merged[ $player ][ $key ] = $timeval;
 					endforeach;

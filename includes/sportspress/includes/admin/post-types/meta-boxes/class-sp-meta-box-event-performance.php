@@ -427,7 +427,7 @@ class SP_Meta_Box_Event_Performance {
 							if ( '00' != $hours )
 								$timeval = $hours . ':' . $timeval;
 
-							$timeval = ereg_replace( '^0', '', $timeval );
+							$timeval = preg_replace( '/^0/', '', $timeval );
 						?>
 
 						<input class="sp-player-<?php echo $column; ?>-input sp-convert-time-input sp-sync-input" type="text" name="sp_times[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $timeval ); ?>" placeholder="<?php echo $placeholder; ?>" />

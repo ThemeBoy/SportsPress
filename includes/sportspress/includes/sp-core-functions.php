@@ -1206,9 +1206,6 @@ if ( !function_exists( 'sp_solve' ) ) {
 		unset( $vars['last5'] );
 		unset( $vars['last10'] );
 
-		if ( sp_array_value( $vars, 'eventsplayed', 0 ) <= 0 )
-			return $default;
-
 		// Equation Operating System
         if ( ! class_exists( 'phpStack' ) )
             include_once( SP()->plugin_path() . '/includes/libraries/class-phpstack.php' );
@@ -1315,7 +1312,7 @@ if ( !function_exists( 'sp_get_next_event' ) ) {
 }
 
 if ( !function_exists( 'sp_taxonomy_field' ) ) {
-	function sp_taxonomy_field( $taxonomy = 'category', $post = null, $multiple = false, $trigger = false ) {
+	function sp_taxonomy_field( $taxonomy = 'category', $post = null, $multiple = false, $trigger = false, $placeholder = null ) {
 		$obj = get_taxonomy( $taxonomy );
 		if ( $obj ) {
 			$post_type = get_post_type( $post );
@@ -1338,7 +1335,7 @@ if ( !function_exists( 'sp_taxonomy_field' ) ) {
 						'values' => 'term_id',
 						'class' => 'sp-has-dummy widefat' . ( $trigger ? ' sp-ajax-trigger' : '' ),
 						'chosen' => true,
-						'placeholder' => __( 'All', 'sportspress' ),
+						'placeholder' => $placeholder ? $placeholder : __( 'All', 'sportspress' ),
 					);
 					if ( $multiple ) {
 						$args['property'] = 'multiple';

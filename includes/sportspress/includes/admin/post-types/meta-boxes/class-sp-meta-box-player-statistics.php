@@ -23,6 +23,7 @@ class SP_Meta_Box_Player_Statistics {
 		$leagues = get_the_terms( $post->ID, 'sp_league' );
 		$league_num = sizeof( $leagues );
 		$sections = get_option( 'sportspress_player_performance_sections', -1 );
+		$show_career_totals = 'yes' === get_option( 'sportspress_player_show_career_total', 'no' ) ? true : false;
 
 		if ( $leagues ) {
 			if ( -1 == $sections ) {
@@ -36,11 +37,13 @@ class SP_Meta_Box_Player_Statistics {
 					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0, true, $formats );
 					$i ++;
 				endforeach;
-				?>
-				<p><strong><?php _e( 'Career Total', 'sportspress' ); ?></strong></p>
-				<?php
-				list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true );
-				self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams );
+				if ( $show_career_totals ) {
+					?>
+					<p><strong><?php _e( 'Career Total', 'sportspress' ); ?></strong></p>
+					<?php
+					list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true );
+					self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams );
+				}
 			} else {
 				// Determine order of sections
 				if ( 1 == $sections ) {
@@ -61,11 +64,13 @@ class SP_Meta_Box_Player_Statistics {
 						self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0 );
 						$i ++;
 					endforeach;
-					?>
-					<p><strong><?php _e( 'Career Total', 'sportspress' ); ?> &mdash; <?php echo $section_label; ?></strong></p>
-					<?php
-					list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true, $section_id );
-					self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0  );
+					if ( $show_career_totals ) {
+						?>
+						<p><strong><?php _e( 'Career Total', 'sportspress' ); ?> &mdash; <?php echo $section_label; ?></strong></p>
+						<?php
+						list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true, $section_id );
+						self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0 );
+					}
 					$s ++;
 				}
 			}
@@ -200,7 +205,7 @@ class SP_Meta_Box_Player_Statistics {
 										if ( '00' != $hours )
 											$timeval = $hours . ':' . $timeval;
 
-										$timeval = ereg_replace( '^0', '', $timeval );
+										$timeval = preg_replace( '/^0/', '', $timeval );
 
 										// Convert placeholder
 										$intval = intval( $placeholder );
@@ -210,7 +215,7 @@ class SP_Meta_Box_Player_Statistics {
 										if ( '00' != $hours )
 											$placeholder = $hours . ':' . $placeholder;
 
-										$placeholder = ereg_replace( '^0', '', $placeholder );
+										$placeholder = preg_replace( '/^0/', '', $placeholder );
 									}
 
 									if ( $readonly ) {

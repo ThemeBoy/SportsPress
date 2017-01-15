@@ -60,7 +60,6 @@ if ( ! isset( $subs ) ) $subs = array();
 						if ( ! $sub_id )
 							continue;
 						$index = sp_array_value( $sub, 'sub', 0 );
-						$index = substr( $index, 0, strpos( $index, ' ' ) );
 						$lineup_sub_relation[ $index ] = $sub_id;
 					endforeach;
 
@@ -93,22 +92,9 @@ if ( ! isset( $subs ) ) $subs = array();
 
 						if ( array_key_exists( $player_id, $lineup_sub_relation ) ):
 							$name .= ' <span class="sub-in" title="' . get_the_title( $lineup_sub_relation[ $player_id ] ) . '">' . sp_array_value( sp_array_value( $data, $lineup_sub_relation[ $player_id ], array() ), 'number', null ) . '</span>';
-							$sub = sp_array_value( sp_array_value( $data, $lineup_sub_relation[ $player_id ], array() ), 'sub', null );
-							if ( $show_minutes && ! empty( $sub ) ):
-								preg_match( '#\((.*?)\)#', $data[ $lineup_sub_relation[ $player_id ] ]['sub'], $match );
-								if ( ! empty( $match ) && isset( $match[1] ) ):
-									$name .= ' (' . $match[1] . ')';
-								endif;
-							endif;
 						elseif ( isset( $row['sub'] ) && $row['sub'] ):
 							$subbed = (int) $row['sub'];
 							$name .= ' <span class="sub-out" title="' . get_the_title( $row[ 'sub' ] ) . '">' . sp_array_value( sp_array_value( $data, $subbed, array() ), 'number', null ) . '</span>';
-							if ( $show_minutes && ! empty( $row['sub'] ) ):
-								preg_match( '#\((.*?)\)#', $row['sub'], $match );
-								if ( ! empty( $match ) && isset( $match[1] ) ):
-									$name .= ' (' . $match[1] . ')';
-								endif;
-							endif;
 						endif;
 
 						echo '<td class="data-name">' . $name . '</td>';
@@ -153,6 +139,7 @@ if ( ! isset( $subs ) ) $subs = array();
 							endif;
 							
 							if ( 'number' === $format ) {
+								$value = floatval( $value );
 								$totals[ $key ] += $value;
 							}
 

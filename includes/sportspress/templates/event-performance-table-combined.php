@@ -101,6 +101,7 @@ if ( ! isset( $class ) ) $class = null;
 							endif;
 							
 							if ( 'text' !== $format ) {
+								$value = floatval( $value );
 								$totals[ $key ] += $value;
 							}
 

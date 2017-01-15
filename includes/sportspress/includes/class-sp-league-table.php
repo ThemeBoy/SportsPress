@@ -349,6 +349,10 @@ class SP_League_Table extends SP_Custom_Post{
 
 					else:
 						if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $key . 'for', $totals[ $team_id ] ) ):
+
+							// Get numeric value
+							$value = floatval( $value );
+
 							$totals[ $team_id ][ $key . 'for' ] += $value;
 							$totals[ $team_id ][ $key . 'for' . ( $e + 1 ) ] = $value;
 
@@ -366,19 +370,23 @@ class SP_League_Table extends SP_Custom_Post{
 
 							foreach( $results as $other_team_id => $other_result ):
 								if ( $other_team_id != $team_id && array_key_exists( $key . 'against', $totals[ $team_id ] ) ):
-									$totals[ $team_id ][ $key . 'against' ] += sp_array_value( $other_result, $key, 0 );
-									$totals[ $team_id ][ $key . 'against' . ( $e + 1 ) ] = sp_array_value( $other_result, $key, 0 );
+
+									// Get numeric value of other team's result
+									$value = floatval( sp_array_value( $other_result, $key, 0 ) );
+
+									$totals[ $team_id ][ $key . 'against' ] += $value;
+									$totals[ $team_id ][ $key . 'against' . ( $e + 1 ) ] = $value;
 
 									// Add to home or away stats
 									if ( 0 === $i ):
-										$totals[ $team_id ][ $key . 'against_home' ] += sp_array_value( $other_result, $key, 0 );
+										$totals[ $team_id ][ $key . 'against_home' ] += $value;
 									else:
-										$totals[ $team_id ][ $key . 'against_away' ] += sp_array_value( $other_result, $key, 0 );
+										$totals[ $team_id ][ $key . 'against_away' ] += $value;
 									endif;
 
 									// Add to venue stats
 									if ( sp_is_home_venue( $team_id, $event->ID ) ):
-										$totals[ $team_id ][ $key . 'against_venue' ] += sp_array_value( $other_result, $key, 0 );
+										$totals[ $team_id ][ $key . 'against_venue' ] += $value;
 									endif;
 								endif;
 							endforeach;
@@ -572,7 +580,8 @@ class SP_League_Table extends SP_Custom_Post{
 							$adjustment = sp_array_value( $adjustments, $team_id, array() );
 
 							if ( $adjustment != 0 ):
-								$placeholder += sp_array_value( $adjustment, $stat->post_name, 0 );
+								$value = floatval( sp_array_value( $adjustment, $stat->post_name, 0 ) );
+								$placeholder += $value;
 								$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
 							endif;
 						endif;

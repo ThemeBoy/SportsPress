@@ -1,5 +1,11 @@
 /* SportsPress Templates */
 
+.sp-template,
+.sp-data-table,
+.sp-table-caption {
+    font-family: "Roboto", "Helvetica", sans-serif;
+}
+
 /*
  * Note: !important everything to enforce overrides.
  * This stylesheet can be disabled via SportsPress General Settings.
@@ -9,20 +15,10 @@
 .sp-data-table *,
 .sp-table-caption {
     box-sizing: border-box !important;
-    font-family: "Roboto", "Helvetica", sans-serif !important;
     font-weight: 400 !important;
     text-transform: none !important;
     letter-spacing: normal !important;
     color: #333 !important;
-}
-
-.sp-template .dashicons {
-    font-family: dashicons !important;
-}
-
-.sp-template [class^="sp-icon-"],
-.sp-template [class*=" sp-icon-"] {
-    font-family: sportspress, dashicons !important;
 }
 
 .sp-template {
