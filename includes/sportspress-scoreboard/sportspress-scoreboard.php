@@ -330,15 +330,11 @@ class SportsPress_Scoreboard {
 		if ( current_theme_supports( 'sportspress' ) )
 			return;
 
-		if ( isset( $colors['highlight'] ) ) {
-			echo '.sp-tournament-bracket .sp-event{border-color:' . $colors['highlight'] . ' !important}';
-			echo '.sp-tournament-bracket .sp-team .sp-team-name:before{border-left-color:' . $colors['highlight'] . ' !important}';
-		}
-		if ( isset( $colors['text'] ) ) {
-			echo '.sp-tournament-bracket .sp-event .sp-event-main, .sp-tournament-bracket .sp-team .sp-team-name{color:' . $colors['text'] . ' !important}';
-		}
 		if ( isset( $colors['heading'] ) ) {
-			echo '.sp-tournament-bracket .sp-team .sp-team-name.sp-heading{color:' . $colors['heading'] . ' !important}';
+			echo '.sp-template-scoreboard .sp-scoreboard-nav{color:' . $colors['heading'] . ' !important}';
+		}
+		if ( isset( $colors['link'] ) ) {
+			echo '.sp-template-scoreboard .sp-scoreboard-nav{background-color:' . $colors['link'] . ' !important}';
 		}
 	}
 
