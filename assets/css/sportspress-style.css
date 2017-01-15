@@ -55,6 +55,13 @@
     text-decoration: underline !important;
 }
 
+.sp-template a:hover .dashicons,
+.sp-template a:hover [class^="sp-icon-"], [class*=" sp-icon-"],
+.sp-data-table a:hover .dashicons,
+.sp-data-table a:hover [class^="sp-icon-"], [class*=" sp-icon-"] {
+    text-decoration: none !important;
+}
+
 .sp-view-all-link {
     padding: 10px 15px !important;
     margin: 0 !important;
