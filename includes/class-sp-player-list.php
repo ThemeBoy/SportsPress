@@ -509,9 +509,12 @@ class SP_Player_List extends SP_Custom_Post {
 
 			$placeholders[ $player_id ] = array_merge( sp_array_value( $totals, $player_id, array() ), array_filter( sp_array_value( $placeholders, $player_id, array() ) ) );
 
+			// Player adjustments
+			$player_adjustments = sp_array_value( $adjustments, $player_id, array() );
+
 			foreach ( $stats as $stat ):
 				if ( $stat->equation === null ):
-					$placeholder = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, null );
+					$placeholder = sp_array_value( $player_adjustments, $stat->post_name, null );
 					if ( $placeholder == null ):
 						$placeholder = '-';
 					endif;
@@ -519,11 +522,12 @@ class SP_Player_List extends SP_Custom_Post {
 					// Solve
 					$placeholder = sp_solve( $stat->equation, $placeholders[ $player_id ], $stat->precision );
 
-					// Adjustments
-					$adjustment = sp_array_value( $adjustments, $player_id, array() );
+					// Adjustment
+					$adjustment = sp_array_value( $player_adjustments, $stat->post_name, 0 );
 
+					// Apply adjustment
 					if ( $adjustment != 0 ):
-						$placeholder += sp_array_value( $adjustment, $stat->post_name, 0 );
+						$placeholder += $adjustment;
 						$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
 					endif;
 				endif;
