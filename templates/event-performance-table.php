@@ -107,6 +107,14 @@ if ( ! isset( $subs ) ) $subs = array();
 							
 							$format = sp_array_value( $formats, $key, 'number' );
 							$placeholder = sp_get_format_placeholder( $format );
+
+							if ( ! array_key_exists( $key, $totals ) ):
+								$totals[ $key ] = $placeholder;
+							endif;
+
+							if ( 'time' === $format ):
+								$totals[ $key ] = '&nbsp;';
+							endif;
 							
 							$value = '-';
 							if ( $key == 'position' ):
@@ -132,10 +140,6 @@ if ( ! isset( $subs ) ) $subs = array();
 									$value = $row[ $key ];
 								else:
 									$value = $placeholder;
-								endif;
-
-								if ( ! array_key_exists( $key, $totals ) ):
-									$totals[ $key ] = $placeholder;
 								endif;
 								
 								if ( 'number' === $format ):
