@@ -292,6 +292,10 @@
 	padding-left: 10px;
 }
 
+.sp-template-event-performance-icons .sp-player-position {
+    display: block;
+}
+
 /* Event Calendar */
 .sp-event-calendar {
     border-spacing: 0;

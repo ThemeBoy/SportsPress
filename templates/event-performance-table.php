@@ -97,9 +97,8 @@ if ( ! isset( $subs ) ) $subs = array();
 							$name .= ' <span class="sub-out" title="' . get_the_title( $row[ 'sub' ] ) . '">' . sp_array_value( sp_array_value( $data, $subbed, array() ), 'number', null ) . '</span>';
 						endif;
 
-						echo '<td class="data-name">' . $name . '</td>';
-						
-						if ( $mode == 'icons' ) echo '<td class="sp-performance-icons">';
+						$content = '';
+						$position = null;
 
 						foreach ( $labels as $key => $label ):
 							if ( 'name' == $key )
@@ -133,7 +132,7 @@ if ( ! isset( $subs ) ) $subs = array();
 								$positions = array_unique( $positions );
 
 								if ( sizeof( $positions ) ):
-									$value = implode( ', ', $positions );
+									$value = $position = implode( ', ', $positions );
 								endif;
 							else:
 								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
@@ -149,18 +148,28 @@ if ( ! isset( $subs ) ) $subs = array();
 							endif;
 
 							if ( $mode == 'values' ):
-								echo '<td class="data-' . $key . '">' . $value . '</td>';
+								$content .= '<td class="data-' . $key . '">' . $value . '</td>';
 							elseif ( intval( $value ) && $mode == 'icons' ):
 								$performance_id = sp_array_value( $performance_ids, $key, null );
 								$icons = '';
 								if ( $performance_id && has_post_thumbnail( $performance_id ) ):
 									$icons = str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $performance_id ) ) ) . ' ', $value );
 								endif;
-								echo apply_filters( 'sportspress_event_performance_icons', $icons, $performance_id, $value );
+								$content .= apply_filters( 'sportspress_event_performance_icons', $icons, $performance_id, $value );
 							endif;
 						endforeach;
-						
-						if ( $mode == 'icons' ) echo '</td>';
+
+						if ( isset( $position ) && $mode == 'icons' ):
+							$name .= ' <small class="sp-player-position">' . $position . '</small>';
+						endif;
+
+						echo '<td class="data-name">' . $name . '</td>';
+
+						if ( $mode == 'icons' ):
+							echo '<td class="sp-performance-icons">' . $content . '</td>';
+						else:
+							echo $content;
+						endif;
 
 						echo '</tr>';
 
