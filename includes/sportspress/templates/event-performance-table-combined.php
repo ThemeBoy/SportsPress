@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.2.4
+ * @version     2.2.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -100,9 +100,9 @@ if ( ! isset( $class ) ) $class = null;
 								$totals[ $key ] = $placeholder;
 							endif;
 							
-							if ( 'text' !== $format ) {
-								$value = floatval( $value );
-								$totals[ $key ] += $value;
+							if ( 'number' === $format ) {
+								$add = floatval( $value );
+								$totals[ $key ] += $add;
 							}
 
 							if ( $mode == 'values' ):

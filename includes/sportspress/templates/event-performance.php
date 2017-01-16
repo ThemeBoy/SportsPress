@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.2
+ * @version     2.2.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -14,6 +14,7 @@ $show_players = get_option( 'sportspress_event_show_players', 'yes' ) === 'yes' 
 $show_staff = get_option( 'sportspress_event_show_staff', 'yes' ) === 'yes' ? true : false;
 $show_total = get_option( 'sportspress_event_show_total', 'yes' ) === 'yes' ? true : false;
 $show_numbers = get_option( 'sportspress_event_show_player_numbers', 'yes' ) === 'yes' ? true : false;
+$show_position = get_option( 'sportspress_event_show_position', 'yes' ) === 'yes' ? true : false;
 $show_minutes = get_option( 'sportspress_event_performance_show_minutes', 'no' ) === 'yes' ? true : false;
 $sections = get_option( 'sportspress_event_performance_sections', -1 );
 $abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
@@ -41,6 +42,11 @@ if ( is_array( $teams ) ):
 
 	// The first row should be column labels
 	$labels =  apply_filters( 'sportspress_event_box_score_labels', $performance[0], $event, $mode );
+
+	// Add position to labels if selected
+	if ( $show_position ) {
+		$labels = array_merge( array( 'position' => __( 'Position', 'sportspress' ) ), $labels );
+	}
 
 	// Remove the first row to leave us with the actual data
 	unset( $performance[0] );
@@ -135,7 +141,7 @@ if ( is_array( $teams ) ):
 			$labels = array( array(), array() );
 			
 			// Add positions if applicable
-			if ( 'yes' == get_option( 'sportspress_event_show_position', 'yes' ) ) {
+			if ( $show_position ) {
 				$labels[0]['position'] = $labels[1]['position'] = __( 'Position', 'sportspress' );
 			}
 

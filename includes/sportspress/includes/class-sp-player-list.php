@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version     2.2.4
+ * @version     2.2.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -24,7 +24,8 @@ class SP_Player_List extends SP_Custom_Post {
 	public function __construct( $post ) {
 		parent::__construct( $post );
 		$this->columns = get_post_meta( $this->ID, 'sp_columns', true );
-		if ( ! is_array( $this->columns ) ) $this->columns = array();
+		if ( is_array( $this->columns ) ) $this->columns = array_filter( $this->columns );
+		else $this->columns = array();
 	}
 
 	/**
@@ -474,117 +475,142 @@ class SP_Player_List extends SP_Custom_Post {
 		$stats = get_posts( $args );
 
 		$formats = array();
+		$data = array();
+		$merged = array();
+		$ordered_columns = array();
 
-		foreach ( $stats as $stat ):
+		if ( $stats ):
 
-			// Get post meta
-			$meta = get_post_meta( $stat->ID );
-
-			// Add equation to object
-			if ( $stat->post_type == 'sp_metric' ):
-				$stat->equation = null;
-			else:
-				$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
-			endif;
-
-			// Add precision to object
-			$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 ) + 0;
-
-			// Add column name to columns
-			$columns[ $stat->post_name ] = $stat->post_title;
-
-			// Add format
-			$format = get_post_meta( $stat->ID, 'sp_format', true );
-			if ( '' === $format ) {
-				$format = 'number';
-			}
-			$formats[ $stat->post_name ] = $format;
-
-		endforeach;
-
-		// Fill in empty placeholder values for each player
-		foreach ( $player_ids as $player_id ):
-			if ( ! $player_id )
-				continue;
-
-			$placeholders[ $player_id ] = array_merge( sp_array_value( $totals, $player_id, array() ), array_filter( sp_array_value( $placeholders, $player_id, array() ) ) );
+			$column_order = array();
 
 			foreach ( $stats as $stat ):
-				if ( $stat->equation === null ):
-					$placeholder = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $stat->post_name, null );
-					if ( $placeholder == null ):
-						$placeholder = '-';
-					endif;
+
+				// Get post meta
+				$meta = get_post_meta( $stat->ID );
+
+				// Add equation to object
+				if ( $stat->post_type == 'sp_metric' ):
+					$stat->equation = null;
 				else:
-					// Solve
-					$placeholder = sp_solve( $stat->equation, $placeholders[ $player_id ], $stat->precision );
-
-					// Adjustments
-					$adjustment = sp_array_value( $adjustments, $player_id, array() );
-
-					if ( $adjustment != 0 ):
-						$placeholder += sp_array_value( $adjustment, $stat->post_name, 0 );
-						$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
-					endif;
+					$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
 				endif;
 
-				if ( $placeholder !== '' && is_numeric( $placeholder ) ):
-					$placeholders[ $player_id ][ $stat->post_name ] = sp_array_value( $placeholders[ $player_id ], $stat->post_name, 0 ) + $placeholder;
-				else:
-					$placeholders[ $player_id ][ $stat->post_name ] = sp_array_value( $placeholders[ $player_id ], $stat->post_name, '-' );
-				endif;
+				// Add precision to object
+				$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 ) + 0;
+
+				// Add column name to columns
+				$columns[ $stat->post_name ] = $stat->post_title;
+
+				// Add format
+				$format = get_post_meta( $stat->ID, 'sp_format', true );
+				if ( '' === $format ) {
+					$format = 'number';
+				}
+				$formats[ $stat->post_name ] = $format;
+
+				$column_order[] = $stat->post_name;
+
 			endforeach;
 
-		endforeach;
+			foreach ( $column_order as $slug ):
 
-		// Merge the data and placeholders arrays
-		$merged = array();
+				if ( ! in_array( $slug, $this->columns ) ) continue;
 
-		foreach( $placeholders as $player_id => $player_data ):
+				$ordered_columns[] = $slug;
 
-			// Add player number and name to row
-			$merged[ $player_id ] = array();
-			if ( in_array( 'number', $this->columns ) ):
-				$player_data['number'] = get_post_meta( $player_id, 'sp_number', true );
-			endif;
-			
-			$player_data['name'] = get_the_title( $player_id );
-			
-			if ( in_array( 'team', $this->columns ) ):
-				$player_data['team'] = get_post_meta( $player_id, 'sp_team', true );
-			endif;
-			
-			if ( in_array( 'position', $this->columns ) ):
-				$player_data['position'] = null;
-			endif;
+			endforeach;
 
-			foreach( $player_data as $key => $value ):
+			$diff = array_diff( $this->columns, $ordered_columns );
+			$this->columns = array_merge( $diff, $ordered_columns );
 
-				// Use static data if key exists and value is not empty, else use placeholder
-				if ( array_key_exists( $player_id, $tempdata ) && array_key_exists( $key, $tempdata[ $player_id ] ) && $tempdata[ $player_id ][ $key ] != '' ):
-					$value = $tempdata[ $player_id ][ $key ];
+			// Fill in empty placeholder values for each player
+			foreach ( $player_ids as $player_id ):
+				if ( ! $player_id )
+					continue;
+
+				$placeholders[ $player_id ] = array_merge( sp_array_value( $totals, $player_id, array() ), array_filter( sp_array_value( $placeholders, $player_id, array() ) ) );
+
+				// Player adjustments
+				$player_adjustments = sp_array_value( $adjustments, $player_id, array() );
+
+				foreach ( $stats as $stat ):
+					if ( $stat->equation === null ):
+						$placeholder = sp_array_value( $player_adjustments, $stat->post_name, null );
+						if ( $placeholder == null ):
+							$placeholder = '-';
+						endif;
+					else:
+						// Solve
+						$placeholder = sp_solve( $stat->equation, $placeholders[ $player_id ], $stat->precision );
+
+						// Adjustment
+						$adjustment = sp_array_value( $player_adjustments, $stat->post_name, 0 );
+
+						// Apply adjustment
+						if ( $adjustment != 0 ):
+							$placeholder += $adjustment;
+							$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
+						endif;
+					endif;
+
+					if ( $placeholder !== '' && is_numeric( $placeholder ) ):
+						$placeholders[ $player_id ][ $stat->post_name ] = sp_array_value( $placeholders[ $player_id ], $stat->post_name, 0 ) + $placeholder;
+					else:
+						$placeholders[ $player_id ][ $stat->post_name ] = sp_array_value( $placeholders[ $player_id ], $stat->post_name, '-' );
+					endif;
+				endforeach;
+
+			endforeach;
+
+			// Merge the data and placeholders arrays
+			foreach( $placeholders as $player_id => $player_data ):
+
+				$player_data = array_merge( $column_order, $player_data );
+				$placeholders[ $player_id ] = $player_data;
+
+				// Add player number and name to row
+				$merged[ $player_id ] = array();
+				if ( in_array( 'number', $this->columns ) ):
+					$player_data['number'] = get_post_meta( $player_id, 'sp_number', true );
 				endif;
 				
-				$merged[ $player_id ][ $key ] = $value;
+				$player_data['name'] = get_the_title( $player_id );
+				
+				if ( in_array( 'team', $this->columns ) ):
+					$player_data['team'] = get_post_meta( $player_id, 'sp_team', true );
+				endif;
+				
+				if ( in_array( 'position', $this->columns ) ):
+					$player_data['position'] = null;
+				endif;
 
+				foreach( $player_data as $key => $value ):
+
+					// Use static data if key exists and value is not empty, else use placeholder
+					if ( array_key_exists( $player_id, $tempdata ) && array_key_exists( $key, $tempdata[ $player_id ] ) && $tempdata[ $player_id ][ $key ] != '' ):
+						$value = $tempdata[ $player_id ][ $key ];
+					endif;
+					
+					$merged[ $player_id ][ $key ] = $value;
+
+				endforeach;
 			endforeach;
-		endforeach;
 
-		if ( $orderby != 'number' || $order != 'ASC' ):
-			$this->priorities = array(
-				array(
-					'key' => $orderby,
-					'order' => $order,
-				),
-			);
-			uasort( $merged, array( $this, 'sort' ) );
+			if ( $orderby != 'number' || $order != 'ASC' ):
+				$this->priorities = array(
+					array(
+						'key' => $orderby,
+						'order' => $order,
+					),
+				);
+				uasort( $merged, array( $this, 'sort' ) );
+			endif;
+
+			// Rearrange data array to reflect values
+			foreach( $merged as $key => $value ):
+				$data[ $key ] = $tempdata[ $key ];
+			endforeach;
 		endif;
-
-		// Rearrange data array to reflect values
-		$data = array();
-		foreach( $merged as $key => $value ):
-			$data[ $key ] = $tempdata[ $key ];
-		endforeach;
 		
 		if ( $admin ):
 
@@ -624,6 +650,7 @@ class SP_Player_List extends SP_Custom_Post {
 					$labels[ $key ] = $columns[ $key ];
 				endif;
 			endforeach;
+
 			return array( $labels, $data, $placeholders, $merged, $orderby );
 		else:
 

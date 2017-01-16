@@ -198,7 +198,7 @@ jQuery(document).ready(function($){
 			placeholder += adjustment - current_adjustment;
 		}
 		$el.attr("placeholder", placeholder);
-	});
+	}).change();
 
 	// Data table keyboard navigation
 	$(".sp-data-table tbody tr td input:text").keydown(function(event) {
