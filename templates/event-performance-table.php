@@ -133,15 +133,16 @@ if ( ! isset( $subs ) ) $subs = array();
 								else:
 									$value = $placeholder;
 								endif;
+
+								if ( ! array_key_exists( $key, $totals ) ):
+									$totals[ $key ] = $placeholder;
+								endif;
+								
+								if ( 'number' === $format ):
+									$value = floatval( $value );
+									$totals[ $key ] += $value;
+								endif;
 							endif;
-							if ( ! array_key_exists( $key, $totals ) ):
-								$totals[ $key ] = $placeholder;
-							endif;
-							
-							if ( 'number' === $format ) {
-								$value = floatval( $value );
-								$totals[ $key ] += $value;
-							}
 
 							if ( $mode == 'values' ):
 								echo '<td class="data-' . $key . '">' . $value . '</td>';
