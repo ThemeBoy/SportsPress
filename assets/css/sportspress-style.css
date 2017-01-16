@@ -109,6 +109,10 @@
     width: 100% !important;
 }
 
+.sp-data-table tr {
+    border: none !important;
+}
+
 .sp-data-table th,
 .sp-data-table td {
     font-size: 13px !important;
