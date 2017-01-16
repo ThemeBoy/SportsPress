@@ -15,10 +15,6 @@
 .sp-data-table *,
 .sp-table-caption {
     box-sizing: border-box !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
     font-weight: 400 !important;
     text-transform: none !important;
     letter-spacing: normal !important;
@@ -171,6 +167,10 @@
 
 .sp-template-gallery .gallery-item img {
     display: block !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
 }
 
 .sp-template-gallery .gallery-caption {
