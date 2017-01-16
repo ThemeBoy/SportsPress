@@ -100,9 +100,9 @@ if ( ! isset( $class ) ) $class = null;
 								$totals[ $key ] = $placeholder;
 							endif;
 							
-							if ( 'text' !== $format ) {
-								$value = floatval( $value );
-								$totals[ $key ] += $value;
+							if ( 'number' === $format ) {
+								$add = floatval( $value );
+								$totals[ $key ] += $add;
 							}
 
 							if ( $mode == 'values' ):

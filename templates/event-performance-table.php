@@ -143,8 +143,8 @@ if ( ! isset( $subs ) ) $subs = array();
 								endif;
 								
 								if ( 'number' === $format ):
-									$value = floatval( $value );
-									$totals[ $key ] += $value;
+									$add = floatval( $value );
+									$totals[ $key ] += $add;
 								endif;
 							endif;
 
