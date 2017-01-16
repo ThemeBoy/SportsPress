@@ -11,6 +11,27 @@
  * This stylesheet can be disabled via SportsPress General Settings.
  */
 
+.sp-template h1,
+.sp-template h2,
+.sp-template h3,
+.sp-template h4,
+.sp-template h5,
+.sp-template h6,
+.sp-data-table h1,
+.sp-data-table h2,
+.sp-data-table h3,
+.sp-data-table h4,
+.sp-data-table h5,
+.sp-data-table h6,
+.sp-table-caption h1,
+.sp-table-caption h2,
+.sp-table-caption h3,
+.sp-table-caption h4,
+.sp-table-caption h5,
+.sp-table-caption h6 {
+    font-family: "Roboto", "Helvetica", sans-serif !important;
+}
+
 .sp-template *,
 .sp-data-table *,
 .sp-table-caption {
