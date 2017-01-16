@@ -219,6 +219,10 @@
     padding: 5px 10px !important;
 }
 
+.sp-template-staff-gallery .gallery-caption strong {
+    display: none !important;
+}
+
 .sp-template-gallery .sp-gallery-group-name {
     margin: 0 !important;
     padding: 15px !important;
@@ -407,6 +411,11 @@
 
 .sp-template-event-performance-icons tr:first-child td {
     border-top: 1px solid #e5e5e5 !important;
+}
+
+/* Videos */
+.sp-template-event-video iframe {
+    width: 100% !important;
 }
 
 /*  Match Stats */
