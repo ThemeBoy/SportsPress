@@ -182,12 +182,14 @@ if ( ! isset( $subs ) ) $subs = array();
 								if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ) {
 									echo '<td class="data-number">&nbsp;</td>';
 								}
-								echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
+								if ( $mode == 'values' ):
+									echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
+								endif;
 							endif;
 
 							$row = sp_array_value( $data, 0, array() );
 
-							if ( $mode == 'icons' ) echo '<td class="sp-performance-icons">';
+							if ( $mode == 'icons' ) echo '<td class="sp-performance-icons" colspan="2">';
 
 							foreach ( $labels as $key => $label ):
 								if ( 'name' == $key )
@@ -210,9 +212,9 @@ if ( ! isset( $subs ) ) $subs = array();
 									$performance_id = sp_array_value( $performance_ids, $key, null );
 									$icons = '';
 									if ( $performance_id && has_post_thumbnail( $performance_id ) ):
-										$icons = str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $performance_id ) ) ) . ' ', $value );
+										$icons = get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $performance_id ) ) );
 									endif;
-									echo apply_filters( 'sportspress_event_performance_icons', $icons, $performance_id, $value );
+									echo apply_filters( 'sportspress_event_performance_icons', $icons, $performance_id, 1 ) . $value . ' ';
 								endif;
 							endforeach;
 
