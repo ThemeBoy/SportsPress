@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.7
-Stable tag: 2.2.4
+Stable tag: 2.2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -115,9 +115,24 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 
 == Changelog ==
 
+= 2.2.5 =
+* Feature - Enable positions to be displayed in icons mode box score.
+* Tweak - Reflect mixed column order in player list admin.
+* Tweak - Remove table row border in frontend stylesheet.
+* Tweak - Automatically apply table adjustments on admin page load.
+* Tweak - Simplify box score icon totals.
+* Fix - Adjustments not applying to player list values.
+* Fix - Minutes not displaying in box score.
+* Fix - Player positions displaying not displaying in box score.
+* Fix - Total time displaying as 0:00.
+
 = 2.2.4 =
 * Feature - Custom colors applied to scoreboard.
 * Feature - Option to show or hide career totals in player profiles.
+* Tweak - Icons not rendering when frontend stylesheet is active.
+* Tweak - Remove underline from icon links in frontend stylesheet.
+* Tweak - Change competition and season placeholders in events to "None".
+* Tweak - Enable horizontal scrolling on large tables in admin.
 * Fix - Equations returning zero when no events played.
 * Fix - Player lists and player profiles showing different statistics when filtered by competition or season.
 * Fix - Substitution icon not rendering for starting lineup players.
@@ -125,10 +140,6 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Fix - Error in event results if team was deleted.
 * Fix - Remove deprecated function in PHP 7.0.
 * Fix - Non-numeric errors in PHP 7.1.
-* Tweak - Icons not rendering when frontend stylesheet is active.
-* Tweak - Remove underline from icon links in frontend stylesheet.
-* Tweak - Change competition and season placeholders in events to "None".
-* Tweak - Enable horizontal scrolling on large tables in admin.
 
 = 2.2.3 =
 * Fix - Placeholders for non-numeric values in player list displaying as zero.
