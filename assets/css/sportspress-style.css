@@ -481,6 +481,10 @@
     margin-bottom: 0 !important;
 }
 
+.sp-template-scoreboard td {
+    padding: 0 !important;
+}
+
 .sp-template-scoreboard td:hover {
     background: #f9f9f9 !important;
 }
