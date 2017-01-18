@@ -11,6 +11,27 @@
  * This stylesheet can be disabled via SportsPress General Settings.
  */
 
+.sp-template h1,
+.sp-template h2,
+.sp-template h3,
+.sp-template h4,
+.sp-template h5,
+.sp-template h6,
+.sp-data-table h1,
+.sp-data-table h2,
+.sp-data-table h3,
+.sp-data-table h4,
+.sp-data-table h5,
+.sp-data-table h6,
+.sp-table-caption h1,
+.sp-table-caption h2,
+.sp-table-caption h3,
+.sp-table-caption h4,
+.sp-table-caption h5,
+.sp-table-caption h6 {
+    font-family: "Roboto", "Helvetica", sans-serif !important;
+}
+
 .sp-template *,
 .sp-data-table *,
 .sp-table-caption {
@@ -165,6 +186,14 @@
     color: #999 !important;
 }
 
+.sp-template-gallery .gallery-item img {
+    display: block !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
 .sp-template-gallery .gallery-caption {
     padding: 0 !important;
     margin: 0 !important;
@@ -188,6 +217,10 @@
     left: 0 !important;
     top: 0 !important;
     padding: 5px 10px !important;
+}
+
+.sp-template-staff-gallery .gallery-caption strong {
+    display: none !important;
 }
 
 .sp-template-gallery .sp-gallery-group-name {
@@ -319,6 +352,7 @@
     color: rgba(51,51,51,0.5) !important;
     font-weight: 500 !important;
     font-size: 12px !important;
+    margin: 10px !important;
 }
 
 .sp-template-event-blocks .sp-event-date a,
@@ -373,6 +407,15 @@
 
 .sp-template-event-performance-icons td {
     border: none !important;
+}
+
+.sp-template-event-performance-icons tr:first-child td {
+    border-top: 1px solid #e5e5e5 !important;
+}
+
+/* Videos */
+.sp-template-event-video iframe {
+    width: 100% !important;
 }
 
 /*  Match Stats */
@@ -466,6 +509,10 @@
 
 .sp-header-scoreboard .sp-template-scoreboard {
     margin-bottom: 0 !important;
+}
+
+.sp-template-scoreboard td {
+    padding: 0 !important;
 }
 
 .sp-template-scoreboard td:hover {

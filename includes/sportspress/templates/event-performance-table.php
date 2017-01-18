@@ -29,22 +29,22 @@ if ( ! isset( $subs ) ) $subs = array();
 		<table class="sp-event-performance sp-data-table<?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?><?php if ( $sortable ) { ?> sp-sortable-table<?php } ?>">
 			<thead>
 				<tr>
-					<?php if ( $show_players ): ?>
-						<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ) { ?>
-							<th class="data-number">#</th>
-						<?php } ?>
-						<th class="data-name">
-							<?php if ( isset( $section_label ) ) { ?>
-								<?php echo $section_label; ?>
-							<?php } else { ?>
-								<?php _e( 'Player', 'sportspress' ); ?>
+					<?php if ( $mode == 'values' ): ?>
+						<?php if ( $show_players ): ?>
+							<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ) { ?>
+								<th class="data-number">#</th>
 							<?php } ?>
-						</th>
-					<?php endif; ?>
-					<?php if ( $mode == 'values' ): foreach ( $labels as $key => $label ): ?>
-						<th class="data-<?php echo $key; ?>"><?php echo $label; ?></th>
-					<?php endforeach; else: ?>
-						<th class="sp-performance-icons">&nbsp;</th>
+							<th class="data-name">
+								<?php if ( isset( $section_label ) ) { ?>
+									<?php echo $section_label; ?>
+								<?php } else { ?>
+									<?php _e( 'Player', 'sportspress' ); ?>
+								<?php } ?>
+							</th>
+						<?php endif; ?>
+						<?php foreach ( $labels as $key => $label ): ?>
+							<th class="data-<?php echo $key; ?>"><?php echo $label; ?></th>
+						<?php endforeach; ?>
 					<?php endif; ?>
 				</tr>
 			</thead>
