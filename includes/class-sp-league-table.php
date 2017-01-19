@@ -268,8 +268,10 @@ class SP_League_Table extends SP_Custom_Post{
 
 			foreach ( $results as $team_id => $team_result ):
 
-				if ( ! in_array( $team_id, $team_ids ) )
+				if ( ! in_array( $team_id, $team_ids ) ) {
+					$i++;
 					continue;
+				}
 
 				if ( $team_result ): foreach ( $team_result as $key => $value ):
 
