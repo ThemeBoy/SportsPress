@@ -560,6 +560,8 @@ class SP_League_Table extends SP_Custom_Post{
 			if ( ! $team_id )
 				continue;
 
+			$placeholders[ $team_id ] = array();
+
 			foreach ( $stats as $stat ):
 				if ( sp_array_value( sp_array_value( $placeholders, $team_id, array() ), $stat->post_name, '' ) == '' ):
 
