@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.7
-Stable tag: 2.2.5
+Stable tag: 2.2.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -240,6 +240,15 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.2.6 =
+* Tweak - Hide box score table header row in icon mode.
+* Tweak - Adjust frontend stylesheet.
+* Fix - Empty league tables when no columns are selected.
+* Fix - Empty player lists when no columns are selected.
+* Fix - Link events setting not applied to box score time.
+* Fix - Player list sorting error with non-numeric values.
+* Fix - Home and away records being combined when opponent not in league table.
 
 = 2.2.5 =
 * Feature - Enable positions to be displayed in icons mode box score.
