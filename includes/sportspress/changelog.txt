@@ -1,5 +1,14 @@
 == SportsPress Changelog ==
 
+= 2.2.6 =
+* Tweak - Hide box score table header row in icon mode.
+* Tweak - Adjust frontend stylesheet.
+* Fix - Empty league tables when no columns are selected.
+* Fix - Empty player lists when no columns are selected.
+* Fix - Link events setting not applied to box score time.
+* Fix - Player list sorting error with non-numeric values.
+* Fix - Home and away records being combined when opponent not in league table.
+
 = 2.2.5 =
 * Feature - Enable positions to be displayed in icons mode box score.
 * Tweak - Reflect mixed column order in player list admin.

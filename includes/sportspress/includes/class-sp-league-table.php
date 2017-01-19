@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version     2.2.4
+ * @version     2.2.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -268,8 +268,10 @@ class SP_League_Table extends SP_Custom_Post{
 
 			foreach ( $results as $team_id => $team_result ):
 
-				if ( ! in_array( $team_id, $team_ids ) )
+				if ( ! in_array( $team_id, $team_ids ) ) {
+					$i++;
 					continue;
+				}
 
 				if ( $team_result ): foreach ( $team_result as $key => $value ):
 
@@ -559,6 +561,8 @@ class SP_League_Table extends SP_Custom_Post{
 		foreach ( $team_ids as $team_id ):
 			if ( ! $team_id )
 				continue;
+
+			$placeholders[ $team_id ] = array();
 
 			foreach ( $stats as $stat ):
 				if ( sp_array_value( sp_array_value( $placeholders, $team_id, array() ), $stat->post_name, '' ) == '' ):
