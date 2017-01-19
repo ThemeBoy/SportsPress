@@ -719,7 +719,7 @@ class SP_Player_List extends SP_Custom_Post {
 				else:
 
 					// Compare performance values
-					$output = sp_array_value( $a, $priority['key'], 0 ) - sp_array_value( $b, $priority['key'], 0 );
+					$output = floatval( sp_array_value( $a, $priority['key'], 0 ) ) - floatval( sp_array_value( $b, $priority['key'], 0 ) );
 
 				endif;
 
