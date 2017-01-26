@@ -107,6 +107,34 @@ class SP_Settings_Modules extends SP_Settings_Page {
 				</table>
 				<?php } ?>
 
+				<?php if ( ! class_exists( 'SportsPress_Facebook' ) ) { ?>
+				<table class="widefat" cellspacing="0">
+					<thead>
+						<tr><th>
+							<strong><?php _e( 'Facebook Module', 'sportspress' ); ?></strong>
+						</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>
+							<ol><li><?php echo str_replace(
+								array( '[link]', '[/link]' ),
+								array( '<a target="_blank" href="https://www.facebook.com/themeboy">', '</a>' ),
+								__( 'Like [link]ThemeBoy[/link] on Facebook.','sportspress' )
+							); ?></li>
+							<li><?php echo str_replace(
+								array( '[link]', '[/link]' ),
+								array( '<a target="_blank" href="http://tboy.co/facebookmodule">', '</a>' ),
+								__( '[link]Get the download link[/link].', 'sportspress' )
+							); ?></li></ol>
+							<p class="sp-module-actions">
+								<span><?php _e( 'Free with Like', 'sportspress' ); ?></span>
+								<a class="button" href="http://tboy.co/facebook" target="_blank"><?php _e( 'Visit Page', 'sportspress' ); ?></a>
+							</p>
+						</td></tr>
+					</tbody>
+				</table>
+				<?php } ?>
+
 				<?php if ( current_user_can( 'install_themes' ) ) { ?>
 					<?php $theme = wp_get_theme(); ?>
 					<?php if ( 'rookie' == $theme->stylesheet ) { ?>
