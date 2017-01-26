@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add Facebook Page widget to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.2.6
+Version: 2.2.7
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Facebook' ) ) :
  * Main SportsPress Facebook Class
  *
  * @class SportsPress_Facebook
- * @version	2.2.6
+ * @version	2.2.7
  */
 class SportsPress_Facebook {
 
@@ -42,7 +42,7 @@ class SportsPress_Facebook {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_FACEBOOK_VERSION' ) )
-			define( 'SP_FACEBOOK_VERSION', '2.2.6' );
+			define( 'SP_FACEBOOK_VERSION', '2.2.7' );
 
 		if ( !defined( 'SP_FACEBOOK_URL' ) )
 			define( 'SP_FACEBOOK_URL', plugin_dir_url( __FILE__ ) );

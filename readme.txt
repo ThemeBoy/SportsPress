@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.7
-Stable tag: 2.2.6
+Stable tag: 2.2.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,14 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.2.7 =
+* Feature - Facebook module for displaying each team's facebook page as widget.
+* Tweak - Adjust frontend styles to allow some overrides.
+* Tweak - Update modules page with new module options.
+* Fix - Javascript error in icon mode box scores.
+* Fix - Player list default sorting issue.
+* Fix - Empty team checkboxes in player quick edit.
 
 = 2.2.6 =
 * Tweak - Hide box score table header row in icon mode.
