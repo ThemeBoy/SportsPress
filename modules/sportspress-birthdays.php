@@ -181,7 +181,6 @@ class SportsPress_Birthdays {
 		return $data;
 	}
 
-
 	/**
 	 * Register widgets
 	 */
