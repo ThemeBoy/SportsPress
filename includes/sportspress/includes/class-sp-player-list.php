@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version     2.2.6
+ * @version   2.2.7
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -733,6 +733,6 @@ class SP_Player_List extends SP_Custom_Post {
 		endforeach; endif; 
 
 		// Default sort by number
-		return sp_array_value( $a, 'number', 0 ) - sp_array_value( $b, 'number', 0 );
+		return floatval( sp_array_value( $a, 'number', 0 ) ) - floatval( sp_array_value( $b, 'number', 0 ) );
 	}
 }

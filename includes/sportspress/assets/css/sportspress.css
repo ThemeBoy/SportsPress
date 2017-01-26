@@ -253,6 +253,9 @@
 }
 
 /* Event Performance */
+.sp-event-performance thead {
+	display: none;
+}
 .sp-event-performance .sub {
 	background: rgba(0,0,0,0.05);
 }

@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.2.6
+ * @version     2.2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -45,6 +45,12 @@ if ( ! isset( $subs ) ) $subs = array();
 						<?php foreach ( $labels as $key => $label ): ?>
 							<th class="data-<?php echo $key; ?>"><?php echo $label; ?></th>
 						<?php endforeach; ?>
+					<?php else: ?>
+						<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ): ?>
+							<th></th>
+						<?php endif; ?>
+						<th></th>
+						<th></th>
 					<?php endif; ?>
 				</tr>
 			</thead>

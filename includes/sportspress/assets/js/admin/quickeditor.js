@@ -25,9 +25,17 @@
 
 			// get the data
 			var $number = $( '.column-sp_number', $post_row ).text();
+			var $current_teams = String( $( '.column-sp_team', $post_row ).find( '.sp-player-teams' ).data( 'current-teams' ) ).split(',');
+			var $past_teams = String( $( '.column-sp_team', $post_row ).find( '.sp-player-teams' ).data( 'past-teams' ) ).split(',');
 
 			// populate the data
 			$( ':input[name="sp_number"]', $edit_row ).val( $number );
+			$( ':input[name="sp_current_team[]"]', $edit_row ).each(function() {
+				$(this).prop("checked", ($.inArray($(this).val(), $current_teams ) != -1));
+			});
+			$( ':input[name="sp_past_team[]"]', $edit_row ).each(function() {
+				$(this).prop("checked", ($.inArray($(this).val(), $past_teams ) != -1));
+			});
 		}
 	};
 

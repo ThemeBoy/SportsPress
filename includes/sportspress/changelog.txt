@@ -1,5 +1,12 @@
 == SportsPress Changelog ==
 
+= 2.2.7 =
+* Tweak - Adjust frontend styles to allow some overrides.
+* Tweak - Update modules page with new module options.
+* Fix - Javascript error in icon mode box scores.
+* Fix - Player list default sorting issue.
+* Fix - Empty team checkboxes in player quick edit.
+
 = 2.2.6 =
 * Tweak - Hide box score table header row in icon mode.
 * Tweak - Adjust frontend stylesheet.

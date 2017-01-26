@@ -5,7 +5,7 @@
  * The SportsPress modules class stores available modules.
  *
  * @class 		SP_Modules
- * @version     2.2
+ * @version   2.2.7
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -130,6 +130,15 @@ class SP_Modules {
 					'tip' => __( 'Help spread the word by tweeting with #SportsPress and get the Twitter module for free.', 'sportspress' ),
 					'icon' => 'dashicons dashicons-twitter',
 					'desc' => __( 'Add a Twitter feed to team, player, and staff pages.', 'sportspress' ),
+				),
+				'facebook' => array(
+					'label' => __( 'Facebook', 'sportspress' ),
+					'class' => 'SportsPress_Facebook',
+					'action' => __( 'Like Us on Facebook', 'sportspress' ),
+					'link' => 'http://tboy.co/facebook',
+					'tip' => __( 'Help spread the word by liking our Page and get the Facebook module for free.', 'sportspress' ),
+					'icon' => 'dashicons dashicons-facebook',
+					'desc' => __( 'Add a Facebook Page widget to embed and promote each team.', 'sportspress' ),
 				),
 				'sponsors' => array(
 					'label' => __( 'Sponsors', 'sportspress' ),
