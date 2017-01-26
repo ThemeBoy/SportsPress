@@ -2,7 +2,7 @@
 /*
 Plugin Name: SportsPress Twitter
 Plugin URI: http://themeboy.com/
-Description: Add twitter feed to teams, players, and staff.
+Description: Add Twitter feed to teams, players, and staff.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
 Version: 2.1.1
