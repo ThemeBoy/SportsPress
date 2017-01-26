@@ -95,13 +95,17 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 				echo get_the_terms( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '&mdash;';
 				break;
 			case 'sp_team':
+				$current_teams = get_post_meta( $post_id, 'sp_current_team', false );
+				$past_teams = get_post_meta( $post_id, 'sp_past_team', false );
+				$current_teams = array_filter( $current_teams );
+				$past_teams = array_filter( $past_teams );
+				echo '<span class="hidden sp-player-teams" data-current-teams="' . implode( ',', $current_teams ) . '" data-past-teams="' . implode( ',', $past_teams ) . '"></span>';
 				$teams = (array)get_post_meta( $post_id, 'sp_team', false );
 				$teams = array_filter( $teams );
 				$teams = array_unique( $teams );
 				if ( empty( $teams ) ):
 					echo '&mdash;';
 				else:
-					$current_teams = get_post_meta( $post_id, 'sp_current_team', false );
 					foreach( $teams as $team_id ):
 						if ( ! $team_id ) continue;
 						$team = get_post( $team_id );
@@ -212,14 +216,12 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 			$print_nonce = false;
 			wp_nonce_field( plugin_basename( __FILE__ ), 'sp_player_edit_nonce' );
 		}
-
-		$number = get_post_meta( get_the_ID(), 'sp_number', true );
 		?>
 		<fieldset class="inline-edit-col-right">
 			<div class="inline-edit-col">
 				<label>
 					<span class="title"><?php _e( 'Squad Number', 'sportspress' ); ?></span>
-					<span class="input-text-wrap"><input type="text" name="sp_number" class="inline-edit-menu-order-input" value="<?php echo $number; ?>"></span>
+					<span class="input-text-wrap"><input type="text" name="sp_number" class="inline-edit-menu-order-input"></span>
 				</label>
 			</div>
 		</fieldset>
@@ -243,11 +245,6 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 		) );
 		
 		if ( ! $teams ) return;
-		
-		$post_id = get_the_ID();
-
-		$current_teams = array_filter( get_post_meta( $post_id, 'sp_current_team', false ) );
-		$past_teams = array_filter( get_post_meta( $post_id, 'sp_past_team', false ) );
 		?>
 		<fieldset class="inline-edit-col-right">
 			<div class="inline-edit-col">
@@ -255,14 +252,14 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 				<input type="hidden" name="sp_current_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
-					<li><label class="selectit"><input value="<?php echo $team->ID; ?>" type="checkbox" name="sp_current_team[]" <?php checked( in_array( $team->ID, $current_teams ) ); ?>> <?php echo $team->post_title; ?></label></li>
+					<li><label class="selectit"><input value="<?php echo $team->ID; ?>" type="checkbox" name="sp_current_team[]"> <?php echo $team->post_title; ?></label></li>
 					<?php } ?>
 				</ul>
 				<span class="title inline-edit-categories-label"><?php _e( 'Past Teams', 'sportspress' ); ?></span>
 				<input type="hidden" name="sp_past_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
-					<li><label class="selectit"><input value="<?php echo $team->ID; ?>" type="checkbox" name="sp_past_team[]" <?php checked( in_array( $team->ID, $past_teams ) ); ?>> <?php echo $team->post_title; ?></label></li>
+					<li><label class="selectit"><input value="<?php echo $team->ID; ?>" type="checkbox" name="sp_past_team[]"> <?php echo $team->post_title; ?></label></li>
 					<?php } ?>
 				</ul>
 			</div>
