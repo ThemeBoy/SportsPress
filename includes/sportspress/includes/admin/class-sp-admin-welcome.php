@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.2.4
+ * @version     2.2.8
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -161,6 +161,7 @@ class SP_Admin_Welcome {
 				$sport = $_POST['sportspress_sport'];
 				SP_Admin_Sports::apply_preset( $sport );
 				update_option( 'sportspress_sport', $_POST['sportspress_sport'] );
+    			delete_option( '_sp_needs_welcome' );
 	    		update_option( 'sportspress_installed', 1 );
 				?>
 				<div id="message" class="updated sportspress-message">

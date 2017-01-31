@@ -1,5 +1,10 @@
 == SportsPress Changelog ==
 
+= 2.2.8 =
+* Fix - Hidden box score header in values mode.
+* Fix - Welcome page displaying after upgrade if preset was saved from settings.
+* Fix - Decimal places being dropped from player list statistics.
+
 = 2.2.7 =
 * Tweak - Adjust frontend styles to allow some overrides.
 * Tweak - Update modules page with new module options.

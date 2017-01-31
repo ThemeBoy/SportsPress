@@ -253,7 +253,7 @@
 }
 
 /* Event Performance */
-.sp-event-performance thead {
+.sp-template-event-performance-icons thead {
 	display: none;
 }
 .sp-event-performance .sub {

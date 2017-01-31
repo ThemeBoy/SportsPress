@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Classes
- * @version     2.2.4
+ * @version     2.2.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -54,6 +54,7 @@ class SP_Install {
 
 			// We no longer need to install pages
 			delete_option( '_sp_needs_welcome' );
+	    update_option( 'sportspress_installed', 1 );
 			delete_transient( '_sp_activation_redirect' );
 
 			// What's new redirect
@@ -65,6 +66,7 @@ class SP_Install {
 
 			// We no longer need to install configs
 			delete_option( '_sp_needs_welcome' );
+	    update_option( 'sportspress_installed', 1 );
 			delete_transient( '_sp_activation_redirect' );
 
 			// What's new redirect
