@@ -54,6 +54,7 @@ class SP_Install {
 
 			// We no longer need to install pages
 			delete_option( '_sp_needs_welcome' );
+	    update_option( 'sportspress_installed', 1 );
 			delete_transient( '_sp_activation_redirect' );
 
 			// What's new redirect
@@ -65,6 +66,7 @@ class SP_Install {
 
 			// We no longer need to install configs
 			delete_option( '_sp_needs_welcome' );
+	    update_option( 'sportspress_installed', 1 );
 			delete_transient( '_sp_activation_redirect' );
 
 			// What's new redirect
