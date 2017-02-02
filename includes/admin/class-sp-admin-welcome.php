@@ -358,7 +358,7 @@ class SP_Admin_Welcome {
 					<?php if ( current_user_can( 'install_themes' ) && ! current_theme_supports( 'sportspress' ) ) { ?>
 						<div class="last-feature">
 							<h4><?php _e( 'Free SportsPress Theme', 'sportspress' ); ?></h4>
-							<a href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>" class="sp-theme-screenshot"><img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/rookie.png"></a>
+							<a href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>" class="sp-theme-screenshot"><img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/welcome/rookie.png"></a>
 							<p><?php _e( 'Have you tried the free Rookie theme yet?', 'sportspress' ); ?></p>
 							<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
 							<p class="sp-module-actions">
