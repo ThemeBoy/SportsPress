@@ -67,6 +67,7 @@ class SP_League_Table extends SP_Custom_Post{
 					'tax_query' => array(
 						'relation' => 'AND',
 					),
+					'fields' => 'ids',
 				);
 
 				if ( $league_ids ):
@@ -85,13 +86,7 @@ class SP_League_Table extends SP_Custom_Post{
 					);
 				endif;
 
-				$teams = get_posts( $args );
-
-				if ( $teams && is_array( $teams ) ) {
-					foreach ( $teams as $team ) {
-						$team_ids[] = $team->ID;
-					}
-				}
+				$team_ids = get_posts( $args );
 			} else {
 				$team_ids = (array)get_post_meta( $this->ID, 'sp_team', false );
 			}
@@ -260,6 +255,7 @@ class SP_League_Table extends SP_Custom_Post{
 		// Event loop
 		foreach ( $events as $event ):
 
+			$teams = (array)get_post_meta( $event->ID, 'sp_team', false );
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
 			if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
@@ -267,6 +263,8 @@ class SP_League_Table extends SP_Custom_Post{
 			$i = 0;
 
 			foreach ( $results as $team_id => $team_result ):
+
+				if ( ! in_array( $team_id, $teams ) ) continue;
 
 				if ( ! in_array( $team_id, $team_ids ) ) {
 					$i++;
