@@ -1,5 +1,13 @@
 == SportsPress Changelog ==
 
+= 2.2.10 =
+* Tweak - Update modules page.
+* Fix - League table discrepancy due to change in number of teams setting.
+* Fix - JavaScript error caused by box score displaying icons without players.
+
+= 2.2.9 =
+* Fix - Warning message above player list template.
+
 = 2.2.8 =
 * Fix - Hidden box score header in values mode.
 * Fix - Welcome page displaying after upgrade if preset was saved from settings.

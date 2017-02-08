@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.7
-Stable tag: 2.2.8
+Stable tag: 2.2.10
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -184,12 +184,16 @@ If on the off-chance you do encounter issues with the event/team/player/staff pa
 
 == Screenshots ==
 
-1. Select your sport to automatically install presets and sample data.
-2. Each team has a unique logo and website URL. Optionally link teams from your blog to their official websites.
-3. The overview page provides a birds-eye view of your entire sports network.
-4. Configure variables used throughout the plugin to fit your sport. Presets are provided for some sports, and will automatically populate these options.
-5. Design your own points system using the custom drag-and-drop equation builder.
-6. Twenty Fourteen theme showcasing the dynamic league table and some of the included widgets.
+1. Add a suite of widgets to your site to display your own sports data.
+2. Generate automated standings that update whenever results are published.
+3. Schedule matches and display details, results, box scores, and a map to the venue.
+4. Register teams and players on your site and create lineups for each team.
+5. Display player profiles with configurable details and career stats.
+6. Select your sport to automatically install presets and sample data.
+7. Each team has a unique logo and website URL. Optionally link teams from your blog to their official websites.
+8. The overview page provides a birds-eye view of your entire sports network.
+9. Configure variables used throughout the plugin to fit your sport. Presets are provided for some sports, and will automatically populate these options.
+10. Design your own points system using the custom drag-and-drop equation builder.
 
 == Frequently Asked Questions ==
 
@@ -240,6 +244,14 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.2.10 =
+* Tweak - Update modules page.
+* Fix - League table discrepancy due to change in number of teams setting.
+* Fix - JavaScript error caused by box score displaying icons without players.
+
+= 2.2.9 =
+* Fix - Warning message above player list template.
 
 = 2.2.8 =
 * Fix - Hidden box score header in values mode.
