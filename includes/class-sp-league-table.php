@@ -683,7 +683,7 @@ class SP_League_Table extends SP_Custom_Post{
 			foreach ( $this->tiebreakers as $pos => $teams ) {
 				if ( sizeof( $teams ) === 1 ) {
 					$order[] = reset( $teams );
-				} elseif ( sizeof( $teams ) >= 2 ) {
+				} else {
 					$standings = $this->data( false, $teams );
 					$teams = array_keys( $standings );
 					foreach( $teams as $team ) {
@@ -702,7 +702,7 @@ class SP_League_Table extends SP_Custom_Post{
 			$this->pos = 0;
 			$this->counter = 0;
 			foreach ( $merged as $team_id => $team_columns ) {
-				$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns, $team_id );
+				$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns, $team_id, false );
 			}
 		}
 
@@ -765,18 +765,22 @@ class SP_League_Table extends SP_Custom_Post{
 	 * @param int $id
 	 * @return int
 	 */
-	public function calculate_pos( $columns, $id = 0 ) {
+	public function calculate_pos( $columns, $id = 0, $add_tiebreakers = true ) {
 		$this->counter++;
 		
 		$pos = $this->increment( $columns );
 		
-		// Initialize tiebreaker position
-		if ( ! array_key_exists( $this->pos, $this->tiebreakers ) ) {
-			$this->tiebreakers[ $this->pos ] = array();
+		if ( $add_tiebreakers ) {
+			// Initialize tiebreaker position
+			if ( ! array_key_exists( $this->pos, $this->tiebreakers ) ) {
+				$this->tiebreakers[ $this->pos ] = array();
+			}
+			
+			// Add to tiebreakers
+			if ( ! in_array( $id, $this->tiebreakers[ $this->pos ] ) ) {
+				$this->tiebreakers[ $this->pos ][] = $id;
+			}
 		}
-		
-		// Add to tiebreakers
-		$this->tiebreakers[ $this->pos ][] = $id;
 		
 		return $pos;
 	}
