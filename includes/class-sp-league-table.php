@@ -252,7 +252,7 @@ class SP_League_Table extends SP_Custom_Post{
 
 			$teams = (array)get_post_meta( $event->ID, 'sp_team', false );
 			$teams = array_filter( $teams );
-			if ( sizeof( array_diff( $teams, $team_ids ) ) ) continue;
+			if ( ! $is_main_loop && sizeof( array_diff( $teams, $team_ids ) ) ) continue;
 
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
