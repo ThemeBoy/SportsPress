@@ -234,18 +234,13 @@ class SP_League_Table extends SP_Custom_Post{
 		$args = apply_filters( 'sportspress_table_data_event_args', $args );
 		
 		if ( ! $is_main_loop ):
-			$args['meta_query']['relation'] = 'AND';
-			$meta_args = array(
-				'relation' => 'AND',
-			);
-			foreach ( $team_ids as $team_id ):
-				$meta_args[] = array(
+			if ( sizeof( $team_ids ) ):
+				$args['meta_query'][] = array(
 					'key' => 'sp_team',
-					'value' => $team_id,
+					'value' => $team_ids,
 					'compare' => 'IN',
 				);
-			endforeach;
-			$args['meta_query'][] = $meta_args;
+			endif;
 		endif;
 		
 		$events = get_posts( $args );
@@ -256,6 +251,9 @@ class SP_League_Table extends SP_Custom_Post{
 		foreach ( $events as $event ):
 
 			$teams = (array)get_post_meta( $event->ID, 'sp_team', false );
+			$teams = array_filter( $teams );
+			if ( sizeof( array_diff( $teams, $team_ids ) ) ) continue;
+
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
 			if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
@@ -680,6 +678,7 @@ class SP_League_Table extends SP_Custom_Post{
 		// Head to head table sorting
 		if ( $is_main_loop && 'h2h' == get_option( 'sportspress_table_tiebreaker', 'none' ) ) {
 			$order = array();
+
 			foreach ( $this->tiebreakers as $pos => $teams ) {
 				if ( sizeof( $teams ) === 1 ) {
 					$order[] = reset( $teams );
