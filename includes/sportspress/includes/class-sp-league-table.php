@@ -234,18 +234,13 @@ class SP_League_Table extends SP_Custom_Post{
 		$args = apply_filters( 'sportspress_table_data_event_args', $args );
 		
 		if ( ! $is_main_loop ):
-			$args['meta_query']['relation'] = 'AND';
-			$meta_args = array(
-				'relation' => 'AND',
-			);
-			foreach ( $team_ids as $team_id ):
-				$meta_args[] = array(
+			if ( sizeof( $team_ids ) ):
+				$args['meta_query'][] = array(
 					'key' => 'sp_team',
-					'value' => $team_id,
+					'value' => $team_ids,
 					'compare' => 'IN',
 				);
-			endforeach;
-			$args['meta_query'][] = $meta_args;
+			endif;
 		endif;
 		
 		$events = get_posts( $args );
@@ -256,6 +251,9 @@ class SP_League_Table extends SP_Custom_Post{
 		foreach ( $events as $event ):
 
 			$teams = (array)get_post_meta( $event->ID, 'sp_team', false );
+			$teams = array_filter( $teams );
+			if ( ! $is_main_loop && sizeof( array_diff( $teams, $team_ids ) ) ) continue;
+
 			$results = (array)get_post_meta( $event->ID, 'sp_results', true );
 			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
 			if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
@@ -680,10 +678,11 @@ class SP_League_Table extends SP_Custom_Post{
 		// Head to head table sorting
 		if ( $is_main_loop && 'h2h' == get_option( 'sportspress_table_tiebreaker', 'none' ) ) {
 			$order = array();
+
 			foreach ( $this->tiebreakers as $pos => $teams ) {
 				if ( sizeof( $teams ) === 1 ) {
 					$order[] = reset( $teams );
-				} elseif ( sizeof( $teams ) >= 2 ) {
+				} else {
 					$standings = $this->data( false, $teams );
 					$teams = array_keys( $standings );
 					foreach( $teams as $team ) {
@@ -702,7 +701,7 @@ class SP_League_Table extends SP_Custom_Post{
 			$this->pos = 0;
 			$this->counter = 0;
 			foreach ( $merged as $team_id => $team_columns ) {
-				$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns, $team_id );
+				$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns, $team_id, false );
 			}
 		}
 
@@ -765,18 +764,22 @@ class SP_League_Table extends SP_Custom_Post{
 	 * @param int $id
 	 * @return int
 	 */
-	public function calculate_pos( $columns, $id = 0 ) {
+	public function calculate_pos( $columns, $id = 0, $add_tiebreakers = true ) {
 		$this->counter++;
 		
 		$pos = $this->increment( $columns );
 		
-		// Initialize tiebreaker position
-		if ( ! array_key_exists( $this->pos, $this->tiebreakers ) ) {
-			$this->tiebreakers[ $this->pos ] = array();
+		if ( $add_tiebreakers ) {
+			// Initialize tiebreaker position
+			if ( ! array_key_exists( $this->pos, $this->tiebreakers ) ) {
+				$this->tiebreakers[ $this->pos ] = array();
+			}
+			
+			// Add to tiebreakers
+			if ( ! in_array( $id, $this->tiebreakers[ $this->pos ] ) ) {
+				$this->tiebreakers[ $this->pos ][] = $id;
+			}
 		}
-		
-		// Add to tiebreakers
-		$this->tiebreakers[ $this->pos ][] = $id;
 		
 		return $pos;
 	}

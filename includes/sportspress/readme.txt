@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.7
-Stable tag: 2.2.10
+Stable tag: 2.2.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -122,18 +122,11 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * League of Legends
 
 = SportsPress Themes for Clubs =
-* [Football Club](http://tboy.co/fc)
-* [Premier](http://tboy.co/premier)
+* [Courtside](http://tboy.co/courtside)
 * [Emblem](http://tboy.co/emblem)
+* [Football Club](http://tboy.co/fc)
 * [Marquee](http://tboy.co/marquee)
-
-= Documentation =
-* [Getting Started](http://tboy.co/installation)
-* [User Roles](http://tboy.co/roles)
-* [Integration Guide](http://tboy.co/integration)
-* [Actions](http://tboy.co/actionref)
-* [Filters](http://tboy.co/filterref)
-* [Shortcodes](http://tboy.co/shortcoderef)
+* [Premier](http://tboy.co/premier)
 
 = Get Involved =
 
@@ -244,6 +237,10 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.2.11 =
+* Fix - Timeout issue when tiebreaker checks for head-to-head standings.
+* Fix - Check for REST API controllers to prevent errors when using Jetpack.
 
 = 2.2.10 =
 * Tweak - Update modules page.
