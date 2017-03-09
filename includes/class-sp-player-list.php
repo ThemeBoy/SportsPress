@@ -550,7 +550,7 @@ class SP_Player_List extends SP_Custom_Post {
 					// Apply adjustment
 					if ( $adjustment != 0 ):
 						$placeholder += $adjustment;
-						$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
+						$placeholder = number_format( $placeholder, $stat->precision ? $stat->precision : 0, '.', '' );
 					endif;
 				endif;
 
