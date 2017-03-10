@@ -122,7 +122,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							</thead>
 							<tbody>
 								<tr><td>
-									<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/rookie.png" class="sp-theme-screenshot">
+									<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/welcome/rookie.png" class="sp-theme-screenshot">
 									<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
 									<p class="sp-module-actions">
 										<span><?php _e( 'Free', 'sportspress' ); ?></span>
