@@ -422,6 +422,8 @@ class SP_Install {
 		
 		if ( version_compare( $version, '2.2.11', '<' ) ) {
 			update_option( 'sportspress_completed_setup', 1 );
+			update_option( 'sportspress_registration_name_inputs', 'no' );
+			update_option( 'sportspress_registration_add_player', 'no' );
 		}
 	}
 
