@@ -759,6 +759,14 @@ table.widefat.sp-sortable-table tbody tr .icon {
     height: 42px;
 }
 
+/* Logo */
+.sp-settings-logo {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 35px;
+}
+
 /* Modules */
 .sp-modules-wrapper {
 	margin-right: 300px;
