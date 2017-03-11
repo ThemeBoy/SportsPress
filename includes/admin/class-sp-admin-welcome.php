@@ -336,7 +336,7 @@ class SP_Admin_Welcome {
 									$settings = array(
 										array(
 											'id'        => 'sportspress_sport',
-											'default'   => get_option( 'sportspress_sport', 'custom' ),
+											'default'   => get_option( 'sportspress_sport', 'soccer' ),
 											'type'      => 'sport',
 											'title'		=> __( 'Sport', 'sportspress' ),
 											'welcome' 	=> true,
@@ -723,7 +723,7 @@ class SP_Admin_Welcome {
 		if ( ( isset( $_GET['action'] ) && 'upgrade-plugin' == $_GET['action'] ) && ( isset( $_GET['plugin'] ) && strstr( $_GET['plugin'], 'sportspress.php' ) ) )
 			return;
 
-		wp_redirect( admin_url( 'index.php?page=sp-about' ) );
+		wp_redirect( admin_url( 'admin.php?page=sp-setup' ) );
 		exit;
 	}
 }

@@ -46,33 +46,16 @@ class SP_Install {
 	}
 
 	/**
-	 * Install actions such as installing pages when a button is clicked.
+	 * Basic setup when a button is clicked.
 	 */
 	public function install_actions() {
-		// Install - Add pages button
-		if ( ! empty( $_GET['install_sportspress'] ) ) {
-
-			// We no longer need to install pages
-			delete_option( '_sp_needs_welcome' );
-	    update_option( 'sportspress_installed', 1 );
-			delete_transient( '_sp_activation_redirect' );
-
-			// What's new redirect
-			//wp_redirect( admin_url( 'index.php?page=sp-about&sp-installed=true' ) );
-			//exit;
-
-		// Skip button
-		} elseif ( ! empty( $_GET['skip_install_sportspress'] ) ) {
+		if ( ! empty( $_GET['skip_install_sportspress'] ) ) {
 
 			// We no longer need to install configs
 			delete_option( '_sp_needs_welcome' );
 	    update_option( 'sportspress_installed', 1 );
+	    update_option( 'sportspress_completed_setup', 1 );
 			delete_transient( '_sp_activation_redirect' );
-
-			// What's new redirect
-			wp_redirect( admin_url( 'index.php?page=sp-about' ) );
-			exit;
-			
 		}
 	}
 
@@ -401,7 +384,7 @@ class SP_Install {
 	 * @return void
 	 */
 	public function upgrades( $version = null ) {
-		if ( null === $version ) return;
+		if ( empty( $version ) ) return;
 		
 		if ( version_compare( $version, '2.0', '<' ) ) {
 			update_option( 'sportspress_player_columns', 'manual' );
@@ -435,6 +418,10 @@ class SP_Install {
 		if ( version_compare( $version, '2.2.3', '<' ) ) {
 			$option = get_option( 'sportspress_player_show_total', 'no' );
 			update_option( 'sportspress_player_show_career_total', $option );
+		}
+		
+		if ( version_compare( $version, '2.2.11', '<' ) ) {
+			update_option( 'sportspress_completed_setup', 1 );
 		}
 	}
 

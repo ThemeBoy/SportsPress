@@ -1,0 +1,694 @@
+<?php
+/**
+ * Setup Wizard Class
+ *
+ * Takes new users through some basic steps to setup their club website.
+ *
+ * Adapted from code in WooCommerce (Copyright (c) 2017, Automattic).
+ *
+ * @author      WooThemes
+ * @category    Admin
+ * @package     SportsPress/Admin
+ * @version     2.6.0
+*/
+if ( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
+
+/**
+ * WC_Admin_Setup_Wizard class.
+ */
+class WC_Admin_Setup_Wizard {
+
+  /** @var string Currenct Step */
+  private $step   = '';
+
+  /** @var array Steps for the setup wizard */
+  private $steps  = array();
+
+  /** @var array Tweets user can optionally send after install */
+  private $tweets = array(
+    'Someone give me woo-t, I just set up a new store with #WordPress and @SportsPress!',
+    'Someone give me high five, I just set up a new store with #WordPress and @SportsPress!'
+  );
+
+  /**
+   * Hook in tabs.
+   */
+  public function __construct() {
+    if ( apply_filters( 'sportspress_enable_setup_wizard', true ) && current_user_can( 'manage_sportspress' ) ) {
+      add_action( 'admin_menu', array( $this, 'admin_menus' ) );
+      add_action( 'admin_init', array( $this, 'setup_wizard' ) );
+    }
+  }
+
+  /**
+   * Add admin menus/screens.
+   */
+  public function admin_menus() {
+    add_dashboard_page( '', '', 'manage_options', 'sp-setup', '' );
+  }
+
+  /**
+   * Show the setup wizard.
+   */
+  public function setup_wizard() {
+    if ( empty( $_GET['page'] ) || 'sp-setup' !== $_GET['page'] ) {
+      return;
+    }
+    $this->steps = array(
+      'introduction' => array(
+        'name'    =>  __( 'Introduction', 'sportspress' ),
+        'view'    => array( $this, 'sp_setup_introduction' ),
+        'handler' => ''
+      ),
+      'basics' => array(
+        'name'    =>  __( 'Basic Setup', 'sportspress' ),
+        'view'    => array( $this, 'sp_setup_basics' ),
+        'handler' => array( $this, 'sp_setup_basics_save' )
+      ),
+      'teams' => array(
+        'name'    =>  __( 'Teams', 'sportspress' ),
+        'view'    => array( $this, 'sp_setup_teams' ),
+        'handler' => array( $this, 'sp_setup_teams_save' )
+      ),
+      'players_staff' => array(
+        'name'    =>  __( 'Players', 'sportspress' ) . ' &amp; ' . __( 'Staff', 'sportspress' ),
+        'view'    => array( $this, 'sp_setup_players_staff' ),
+        'handler' => array( $this, 'sp_setup_players_staff_save' ),
+      ),
+      'venue' => array(
+        'name'    =>  __( 'Venue', 'sportspress' ),
+        'view'    => array( $this, 'sp_venue' ),
+        'handler' => array( $this, 'sp_venue_save' ),
+      ),
+      'next_steps' => array(
+        'name'    =>  __( 'Ready!', 'sportspress' ),
+        'view'    => array( $this, 'sp_setup_ready' ),
+        'handler' => ''
+      )
+    );
+    $this->step = isset( $_GET['step'] ) ? sanitize_key( $_GET['step'] ) : current( array_keys( $this->steps ) );
+    $suffix     = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+    wp_enqueue_style( 'jquery-chosen', SP()->plugin_url() . '/assets/css/chosen.css', array(), '1.1.0' );
+    wp_enqueue_style( 'sportspress-admin', SP()->plugin_url() . '/assets/css/admin.css', array(), SP_VERSION );
+    wp_enqueue_style( 'sportspress-setup', SP()->plugin_url() . '/assets/css/setup.css', array( 'dashicons', 'install' ), SP_VERSION );
+
+    wp_register_script( 'chosen', SP()->plugin_url() . '/assets/js/chosen.jquery.min.js', array( 'jquery' ), '1.1.0', true );
+    wp_register_script( 'jquery-tiptip', SP()->plugin_url() . '/assets/js/jquery.tipTip.min.js', array( 'jquery' ), '1.3', true );
+    wp_register_script( 'google-maps', '//maps.googleapis.com/maps/api/js?key=AIzaSyAWyt_AG0k_Pgz4LuegtHwesA_OMRnSSAE&libraries=places' );
+    wp_register_script( 'sportspress-setup', SP()->plugin_url() . '/assets/js/admin/sportspress-setup.js', array( 'jquery', 'chosen', 'jquery-tiptip' ), SP_VERSION, true );
+
+    wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
+    wp_register_script( 'sportspress-admin-locationpicker', SP()->plugin_url() . '/assets/js/admin/locationpicker.js', array( 'jquery', 'jquery-locationpicker' ), SP_VERSION, true );
+
+    $strings = apply_filters( 'sportspress_localized_strings', array(
+      'none' => __( 'None', 'sportspress' ),
+      'remove_text' => __( '&mdash; Remove &mdash;', 'sportspress' ),
+    ) );
+
+    // Localize scripts
+    wp_localize_script( 'sportspress-setup', 'localized_strings', $strings );
+
+    wp_enqueue_script( 'google-maps' );
+
+    if ( ! empty( $_POST['save_step'] ) && isset( $this->steps[ $this->step ]['handler'] ) ) {
+      call_user_func( $this->steps[ $this->step ]['handler'] );
+    }
+
+    ob_start();
+    $this->setup_wizard_header();
+    $this->setup_wizard_steps();
+    $this->setup_wizard_content();
+    $this->setup_wizard_footer();
+    exit;
+  }
+
+  public function get_next_step_link() {
+    $keys = array_keys( $this->steps );
+    return add_query_arg( 'step', $keys[ array_search( $this->step, array_keys( $this->steps ) ) + 1 ] );
+  }
+
+  /**
+   * Setup Wizard Header.
+   */
+  public function setup_wizard_header() {
+    ?>
+    <!DOCTYPE html>
+    <html <?php language_attributes(); ?>>
+    <head>
+      <meta name="viewport" content="width=device-width" />
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title><?php _e( 'SportsPress', 'sportspress' ); ?> &rsaquo; <?php echo $this->steps[ $this->step ]['name']; ?></title>
+      <?php do_action( 'admin_print_styles' ); ?>
+      <?php do_action( 'admin_head' ); ?>
+    </head>
+    <body class="sp-setup wp-core-ui">
+      <h1 id="sp-logo"><img src="<?php echo SP()->plugin_url(); ?>/assets/images/modules/sportspress<?php if ( class_exists( 'SportsPress_Pro' ) ) echo '-pro'; ?>.png" alt="<?php _e( 'SportsPress', 'sportspress' ); ?>" /></h1>
+    <?php
+  }
+
+  /**
+   * Setup Wizard Footer.
+   */
+  public function setup_wizard_footer() {
+    ?>
+      <?php if ( 'next_steps' === $this->step ) : ?>
+        <a class="sp-return-to-dashboard" href="<?php echo esc_url( admin_url() ); ?>"><?php _e( 'Return to the WordPress Dashboard', 'sportspress' ); ?></a>
+      <?php endif; ?>
+      <?php wp_print_scripts( 'sportspress-setup' ); ?>
+      </body>
+    </html>
+    <?php
+  }
+
+  /**
+   * Output the steps.
+   */
+  public function setup_wizard_steps() {
+    $ouput_steps = $this->steps;
+    array_shift( $ouput_steps );
+    ?>
+    <ol class="sp-setup-steps">
+      <?php foreach ( $ouput_steps as $step_key => $step ) : ?>
+        <li class="<?php
+          if ( $step_key === $this->step ) {
+            echo 'active';
+          } elseif ( array_search( $this->step, array_keys( $this->steps ) ) > array_search( $step_key, array_keys( $this->steps ) ) ) {
+            echo 'done';
+          }
+        ?>"><?php echo esc_html( $step['name'] ); ?></li>
+      <?php endforeach; ?>
+    </ol>
+    <?php
+  }
+
+  /**
+   * Output the content for the current step.
+   */
+  public function setup_wizard_content() {
+    echo '<div class="sp-setup-content">';
+    call_user_func( $this->steps[ $this->step ]['view'] );
+    echo '</div>';
+  }
+
+  /**
+   * Introduction Step.
+   */
+  public function sp_setup_introduction() {
+    ?>
+    <h1><?php _e( 'Welcome to SportsPress', 'sportspress' ); ?></h1>
+    <p><?php _e( 'Thank you for choosing SportsPress to power your sports website! This quick setup wizard will help you configure the basic settings. <strong>It’s completely optional and shouldn’t take longer than five minutes.</strong>', 'sportspress' ); ?></p>
+    <p><?php _e( 'No time right now? If you don’t want to go through the wizard, you can skip and return to the WordPress dashboard. Come back anytime if you change your mind!', 'sportspress' ); ?></p>
+    <p class="sp-setup-actions step">
+      <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button-primary button button-large button-next"><?php _e( 'Let\'s Go!', 'sportspress' ); ?></a>
+      <a href="<?php echo esc_url( admin_url() ); ?>" class="button button-large button-muted"><?php _e( 'Not right now', 'sportspress' ); ?></a>
+    </p>
+    <?php
+  }
+
+  /**
+   * Basic Setup.
+   */
+  public function sp_setup_basics() {
+    $class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
+    ?>
+    <h1><?php _e( 'Basic Setup', 'sportspress' ); ?></h1>
+    <form method="post">
+      <p><?php _e( 'Select your timezone and sport to get started.', 'sportspress' ); ?></p>
+      <table class="form-table" cellspacing="0">
+        <tr>
+          <th scope="row"><?php _e( 'Timezone', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Choose a city in the same timezone as you.', 'sportspress' ); ?>"></i></th>
+          <td>
+            <select id="timezone_string" name="timezone_string" class="<?php echo esc_attr( $class ); ?>">
+              <?php
+              $current_offset = get_option('gmt_offset');
+              $tzstring = get_option('timezone_string');
+
+              $check_zone_info = true;
+
+              // Remove old Etc mappings. Fallback to gmt_offset.
+              if ( false !== strpos($tzstring,'Etc/GMT') )
+                $tzstring = '';
+
+              if ( empty($tzstring) ) { // Create a UTC+- zone if no timezone string exists
+                $check_zone_info = false;
+                if ( 0 == $current_offset )
+                  $tzstring = 'UTC+0';
+                elseif ($current_offset < 0)
+                  $tzstring = 'UTC' . $current_offset;
+                else
+                  $tzstring = 'UTC+' . $current_offset;
+              }
+              echo wp_timezone_choice( $tzstring );
+              ?>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><?php echo _x( 'Sport', 'Page title', 'sportspress' ); ?></th>
+          <td>
+            <?php
+            $options = SP_Admin_Sports::get_preset_options();
+            $default = get_option( 'sportspress_sport', 'soccer' );
+            $categories = SP_Admin_Sports::sport_category_names();
+            ?>
+            <select name="sport" id="sport" class="sp-select-sport <?php echo esc_attr( $class ); ?>">
+              <?php
+              foreach ( $options as $group => $options ) {
+                ?>
+                <optgroup label="<?php echo sp_array_value( $categories, $group, $group ); ?>">
+                  <?php
+                  foreach ( $options as $key => $val ) {
+                    ?>
+                    <option value="<?php echo esc_attr( $key ); ?>" <?php selected( $default, $key ); ?>><?php echo $val ?></option>
+                    <?php
+                  }
+                  ?>
+                </optgroup>
+                <?php
+                }
+              ?>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><?php _e( 'Main Competition', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'The name of a league or division.', 'sportspress' ); ?>"></i></th>
+          <td>
+            <input name="league" type="text" class="widefat" value="<?php _ex( 'Primary League', 'example', 'sportspress' ); ?>">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><?php _e( 'Current Season', 'sportspress' ); ?></th>
+          <td>
+            <input name="season" type="text" class="widefat" value="<?php echo date( 'Y' ); ?>">
+          </td>
+        </tr>
+      </table>
+
+      <p class="sp-setup-actions step">
+        <input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
+        <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+        <?php wp_nonce_field( 'sp-setup' ); ?>
+      </p>
+    </form>
+    <?php
+    echo get_option( 'sportspress_sport', null );
+  }
+
+  /**
+   * Save Basic Settings.
+   */
+  public function sp_setup_basics_save() {
+    check_admin_referer( 'sp-setup' );
+
+    // Update timezone
+    $timezone_string = $_POST['timezone_string'];
+    if ( ! empty( $timezone_string ) && preg_match( '/^UTC[+-]/', $timezone_string ) ) {
+      $gmt_offset = $timezone_string;
+      $gmt_offset = preg_replace( '/UTC\+?/', '', $gmt_offset );
+      $timezone_string = '';
+    }
+
+    if ( isset( $timezone_string ) )
+      update_option( 'timezone_string', $timezone_string );
+
+    if ( isset( $gmt_offset ) )
+      update_option( 'gmt_offset', $gmt_offset );
+
+    // Update sport
+    $sport = sanitize_text_field( $_POST['sport'] );
+    if ( ! empty( $sport ) && get_option( 'sportspress_sport', null ) !== $sport ) {
+      SP_Admin_Sports::apply_preset( $sport );
+    }
+    update_option( 'sportspress_sport', $sport );
+
+    // Insert competition
+    $league = sanitize_text_field( $_POST['league'] );
+    if ( ! is_string( $league ) || empty( $league ) ) {
+      $league = _x( 'Primary League', 'example', 'sportspress' ); 
+    }
+    wp_insert_term( $league, 'sp_league' );
+
+    // Insert season
+    $season = sanitize_text_field( $_POST['season'] );
+    if ( ! is_string( $season ) || empty( $season ) ) {
+      $season = date( 'Y' ); 
+    }
+    wp_insert_term( $season, 'sp_season' );
+
+    wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+    exit;
+  }
+
+  /**
+   * Team Setup.
+   */
+  public function sp_setup_teams() {
+    $class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
+    ?>
+    <h1><?php _e( 'Team Setup', 'sportspress' ); ?></h1>
+    <form method="post">
+      <p><?php _e( "Great! Now let's add some teams.", 'sportspress' ); ?></p>
+      <table class="form-table" cellspacing="0">
+        <tr>
+          <th scope="row"><label for="home_team"><?php _e( 'Home Team', 'sportspress' ); ?></th>
+          <td>
+            <input name="home_team" type="text" class="widefat" placeholder="<?php _e( 'What is your team called?', 'sportspress' ); ?>">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><label for="away_team"><?php _e( 'Rival Team', 'sportspress' ); ?></th>
+          <td>
+            <input name="away_team" type="text" class="widefat" placeholder="<?php _e( 'Who are you playing against next?', 'sportspress' ); ?>">
+            <p class="description"><?php _e( "You can add more teams later.", 'sportspress' ); ?></p>
+          </td>
+        </tr>
+      </table>
+
+      <p class="sp-setup-actions step">
+        <input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
+        <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+        <?php wp_nonce_field( 'sp-setup' ); ?>
+      </p>
+    </form>
+    <?php
+  }
+
+  /**
+   * Save Team Settings.
+   */
+  public function sp_setup_teams_save() {
+    check_admin_referer( 'sp-setup' );
+
+    // Add away team
+    $post['post_title'] = $_POST['away_team'];
+    $post['post_type'] = 'sp_team';
+    $post['post_status'] = 'publish';
+    $post['tax_input'] = array();
+    $taxonomies = array( 'sp_league', 'sp_season' );
+    foreach ( $taxonomies as $taxonomy ) {
+      $post['tax_input'][ $taxonomy ] = get_terms( $taxonomy, array( 'hide_empty' => 0, 'fields' => 'ids' ) );
+    };
+    wp_insert_post( $post );
+
+    // Add home team
+    $post['post_title'] = $_POST['home_team'];
+    wp_insert_post( $post );
+
+    wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+    exit;
+  }
+
+  /**
+   * Players & Staff Setup.
+   */
+  public function sp_setup_players_staff() {
+    $positions = get_terms( 'sp_position', array( 'hide_empty' => 0, 'orderby' => 'slug', 'fields' => 'names' ) )
+    ?>
+    <h1><?php esc_html_e( 'Player & Staff Setup', 'sportspress' ); ?></h1>
+    <form method="post">
+      <p><?php _e( "Let's add players and a staff member.", 'sportspress' ); ?></p>
+      <table class="form-table" cellspacing="0">
+        <tr>
+          <th scope="row"><label for="home_team"><?php _e( 'Players', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Enter a squad number, name, and position for each player.', 'sportspress' ); ?>"></i></th>
+          <td>
+            <ul>
+              <?php for ( $i = 0; $i < 3; $i++ ) { ?>
+                <li class="player"><input name="players[<?php echo $i; ?>][number]" type="text" class="player-number" placeholder="#" value="<?php echo $i + 1; ?>"> <input name="players[<?php echo $i; ?>][name]" type="text" placeholder="<?php _e( 'Name', 'sportspress' ); ?>"> <input name="players[<?php echo $i; ?>][position]" type="text" placeholder="<?php _e( 'Position', 'sportspress' ); ?>" <?php if ( sizeof( $positions ) ) { ?> value="<?php echo $positions[ $i % sizeof( $positions ) ]; ?>"<?php } ?>></li>
+              <?php } ?>
+            </ul>
+            <p class="description"><?php _e( "You can add more players later.", 'sportspress' ); ?></p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><label for="home_team"><?php _e( 'Staff', 'sportspress' ); ?></th>
+          <td>
+            <ul>
+              <li class="staff"><input name="staff" type="text" class="staff-name" placeholder="<?php _e( 'Name', 'sportspress' ); ?>"> <input name="role" type="text" placeholder="<?php _e( 'Job', 'sportspress' ); ?>" value="Coach"></li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+
+      <p class="sp-setup-actions step">
+        <input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
+        <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+        <?php wp_nonce_field( 'sp-setup' ); ?>
+      </p>
+    </form>
+    <?php
+  }
+
+  /**
+   * Save Player & Staff Settings.
+   */
+  public function sp_setup_players_staff_save() {
+    check_admin_referer( 'sp-setup' );
+
+    // Get home team
+    $teams = (array) get_posts( array( 'posts_per_page' => 1, 'post_type' => 'sp_team', 'fields' => 'ids' ) );
+    $team = reset( $teams );
+
+    // Add players
+    $post['post_type'] = 'sp_player';
+    $post['post_status'] = 'publish';
+    $post['tax_input'] = array();
+    $taxonomies = array( 'sp_league', 'sp_season' );
+    foreach ( $taxonomies as $taxonomy ) {
+      $post['tax_input'][ $taxonomy ] = get_terms( $taxonomy, array( 'hide_empty' => 0, 'fields' => 'ids' ) );
+    };
+    if ( is_array( $_POST['players'] ) ) {
+      foreach ( $_POST['players'] as $i => $player ) {
+        if ( empty( $player['name'] ) ) continue;
+
+        $post['post_title'] = $player['name'];
+        $id = wp_insert_post( $post );
+
+        // Add squad number
+        $number = sp_array_value( $player, 'number' );
+        update_post_meta( $id, 'sp_number', $number );
+
+        // Add position
+        wp_set_object_terms( $id, sp_array_value( $player, 'position', __( 'Position', 'sportspress' ) ), 'sp_position', false );
+
+        // Add team
+        if ( $team ) {
+          update_post_meta( $id, 'sp_team', $team );
+          update_post_meta( $id, 'sp_current_team', $team );
+        }
+      }
+    }
+
+    // Add staff
+    if ( ! empty( $_POST['staff'] ) ) {
+
+      $post['post_type'] = 'sp_staff';
+      $post['post_title'] = $_POST['staff'];
+      $id = wp_insert_post( $post );
+
+      // Add role
+      wp_set_object_terms( $id, sp_array_value( $_POST, 'role', 'Coach' ), 'sp_role', false );
+
+      // Add team
+      if ( $team ) {
+        update_post_meta( $id, 'sp_team', $team );
+        update_post_meta( $id, 'sp_current_team', $team );
+      }
+    }
+
+    wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+    exit;
+  }
+
+  /**
+   * Venue Step.
+   */
+  public function sp_venue() {
+    ?>
+    <h1><?php _e( 'Venue Setup', 'sportspress' ); ?></h1>
+    <form method="post">
+      <p><?php _e( "Enter the details of your home venue.", 'sportspress' ); ?></p>
+      <table class="form-table" cellspacing="0">
+        <tr>
+          <th scope="row"><label for="home_team"><?php _e( 'Name', 'sportspress' ); ?></th>
+          <td>
+            <input name="venue" type="text" placeholder="<?php _e( 'Venue', 'sportspress' ); ?>">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><label for="sp-address"><?php _e( 'Address', 'sportspress' ); ?></th>
+          <td>
+            <input name="address" class="sp-address" type="text">
+            <div class="sp-location-picker"></div>
+            <p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+            <input name="latitude" class="sp-latitude" type="hidden" value="40.7324319">
+            <input name="longitude" class="sp-longitude" type="hidden" value="-73.82480799999996">
+          </td>
+        </tr>
+      </table>
+
+      <p class="sp-setup-actions step">
+        <input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
+        <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+        <?php wp_nonce_field( 'sp-setup' ); ?>
+      </p>
+    </form>
+    <?php wp_print_scripts( 'sportspress-admin-locationpicker' ); ?>
+    <?php
+  }
+
+  /**
+   * Venue Settings.
+   */
+  public function sp_venue_save() {
+    check_admin_referer( 'sp-setup' );
+
+    // Get home team
+    $teams = (array) get_posts( array( 'posts_per_page' => 1, 'post_type' => 'sp_team', 'fields' => 'ids' ) );
+    $team = reset( $teams );
+
+    // Insert venue
+    $venue = sanitize_text_field( $_POST['venue'] );
+    if ( ! is_string( $venue ) || empty( $venue ) ) {
+      $venue = sp_array_value( $_POST, 'address', __( 'Venue', 'sportspress' ) );
+    }
+    $inserted = wp_insert_term( $venue, 'sp_venue' );
+
+    // Add address and coordinates to venue
+    if ( ! is_wp_error( $inserted ) ) {
+      $t_id = sp_array_value( $inserted, 'term_id', 1 );
+
+      wp_set_object_terms( $team, $t_id, 'sp_venue', true );
+
+      $meta = array(
+        'sp_address' => sp_array_value( $_POST, 'address' ),
+        'sp_latitude' => sp_array_value( $_POST, 'latitude' ),
+        'sp_longitude' => sp_array_value( $_POST, 'longitude' ),
+      );
+      update_option( "taxonomy_$t_id", $meta );
+    }
+
+    wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+    exit;
+  }
+
+  /**
+   * Actions on the final step.
+   */
+  private function sp_setup_ready_actions() {
+    delete_option( '_sp_needs_welcome' );
+    update_option( 'sportspress_installed', 1 );
+    update_option( 'sportspress_completed_setup', 1 );
+    delete_transient( '_sp_activation_redirect' );
+
+    // Check if first event already exists
+    $events = get_posts(
+      array(
+        'post_type' => 'sp_event',
+        'posts_per_page' => 11,
+        'post_status' => 'draft',
+        'meta_query' => array(
+          array(
+            'key' => '_sp_first',
+            'value' => 1
+          )
+        )
+      )
+    );
+
+    if ( $events ) {
+      $event = reset( $events );
+      return $event->ID;
+    }
+
+    // Get teams
+    $teams = get_posts( array( 'posts_per_page' => 2, 'post_type' => 'sp_team' ) );
+
+    // Get players
+    $players = (array) get_posts( array( 'posts_per_page' => 3, 'post_type' => 'sp_player', 'fields' => 'ids' ) );
+
+    // Get staff
+    $staff = (array) get_posts( array( 'posts_per_page' => 1, 'post_type' => 'sp_staff', 'fields' => 'ids' ) );
+
+    // Initialize post
+    $post['post_type'] = 'sp_event';
+    $post['post_status'] = 'draft';
+    $post['tax_input'] = array();
+
+    // Add taxonomies
+    $taxonomies = array( 'sp_league', 'sp_season', 'sp_venue' );
+    foreach ( $taxonomies as $taxonomy ) {
+      $post['tax_input'][ $taxonomy ] = get_terms( $taxonomy, array( 'hide_empty' => 0, 'fields' => 'ids', 'number' => 1 ) );
+    };
+
+    // Add post title
+    if ( is_array( $teams ) && sizeof( $teams ) ) {
+      $team_names = array();
+      foreach ( $teams as $team ) {
+        if ( ! $team ) continue;
+        $team_names[] = $team->post_title;
+      }
+      $post['post_title'] = implode( ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ', $team_names );
+    } else {
+      $post['post_title'] = __( 'Event', 'sportspress' );
+    }
+
+    // Insert event
+    $id = wp_insert_post( $post );
+
+    // Add teams
+    if ( is_array( $teams ) && sizeof( $teams ) ) {
+      foreach ( $teams as $team ) {
+        if ( ! $team ) continue;
+        add_post_meta( $id, 'sp_team', $team->ID );
+      }
+    }
+
+    // Add players
+    add_post_meta( $id, 'sp_player', 0 );
+    foreach ( $players as $player ) {
+      if ( ! $player ) continue;
+      add_post_meta( $id, 'sp_player', $player );
+    }
+    add_post_meta( $id, 'sp_player', 0 );
+
+    update_post_meta( $id, '_sp_first', 1 );
+
+    return $id;
+  }
+
+  /**
+   * Final step.
+   */
+  public function sp_setup_ready() {
+    $id = $this->sp_setup_ready_actions();
+    shuffle( $this->tweets );
+    ?>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://sportspress.com/" data-text="<?php echo esc_attr( $this->tweets[0] ); ?>" data-via="SportsPress" data-size="large">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    <h1><?php _e( 'Thanks for installing!', 'sportspress' ); ?></h1>
+
+    <div class="sp-banner"><img src="//ps.w.org/sportspress/assets/banner-772x250.png"></div>
+
+    <div class="sp-setup-next-steps">
+      <div class="sp-setup-next-steps-first">
+        <h2><?php _e( 'Next Steps', 'sportspress' ); ?></h2>
+        <ul>
+          <li class="setup-product"><a class="button button-primary button-large" href="<?php echo esc_url( admin_url( 'post.php?post=' . $id . '&action=edit' ) ); ?>"><?php _e( 'Schedule your first event!', 'sportspress' ); ?></a></li>
+        </ul>
+      </div>
+      <div class="sp-setup-next-steps-last">
+        <h2><?php _e( 'Upgrade to Pro', 'sportspress' ); ?></h2>
+        <ul>
+          <li><?php _e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.', 'sportspress' ); ?> <a href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ); ?>" target="_blank"><?php _e( 'Learn more', 'sportspress' ); ?></a></li>
+        </ul>
+      </div>
+    </div>
+    <?php
+  }
+}
+
+new WC_Admin_Setup_Wizard();
