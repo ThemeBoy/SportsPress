@@ -244,10 +244,6 @@
 	clear: both;
 }
 
-.sp-data-table-container {
-	overflow-x: scroll;
-}
-
 .sp-data-table-container::-webkit-scrollbar {
 	height:12px;
 }
