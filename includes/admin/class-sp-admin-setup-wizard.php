@@ -294,7 +294,6 @@ class WC_Admin_Setup_Wizard {
       </p>
     </form>
     <?php
-    echo get_option( 'sportspress_sport', null );
   }
 
   /**
