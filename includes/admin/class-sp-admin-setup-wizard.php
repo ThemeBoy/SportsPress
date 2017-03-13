@@ -28,8 +28,7 @@ class WC_Admin_Setup_Wizard {
 
   /** @var array Tweets user can optionally send after install */
   private $tweets = array(
-    'Someone give me woo-t, I just set up a new store with #WordPress and @SportsPress!',
-    'Someone give me high five, I just set up a new store with #WordPress and @SportsPress!'
+    'Someone give me high five, I just set up a new sports data website with #WordPress and @SportsPress!'
   );
 
   /**
@@ -155,7 +154,7 @@ class WC_Admin_Setup_Wizard {
   public function setup_wizard_footer() {
     ?>
       <?php if ( 'next_steps' === $this->step ) : ?>
-        <a class="sp-return-to-dashboard" href="<?php echo esc_url( admin_url() ); ?>"><?php _e( 'Return to the WordPress Dashboard', 'sportspress' ); ?></a>
+        <a class="sp-return-to-dashboard" href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>"><?php _e( 'Return to the WordPress Dashboard', 'sportspress' ); ?></a>
       <?php endif; ?>
       <?php wp_print_scripts( 'sportspress-setup' ); ?>
       </body>
@@ -203,7 +202,7 @@ class WC_Admin_Setup_Wizard {
     <p><?php _e( 'No time right now? If you don’t want to go through the wizard, you can skip and return to the WordPress dashboard. Come back anytime if you change your mind!', 'sportspress' ); ?></p>
     <p class="sp-setup-actions step">
       <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button-primary button button-large button-next"><?php _e( 'Let\'s Go!', 'sportspress' ); ?></a>
-      <a href="<?php echo esc_url( admin_url() ); ?>" class="button button-large button-muted"><?php _e( 'Not right now', 'sportspress' ); ?></a>
+      <a href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>" class="button button-large button-muted"><?php _e( 'Not right now', 'sportspress' ); ?></a>
     </p>
     <?php
   }
@@ -252,6 +251,7 @@ class WC_Admin_Setup_Wizard {
             <?php
             $options = SP_Admin_Sports::get_preset_options();
             $default = get_option( 'sportspress_sport', 'soccer' );
+            if ( 'none' === $default ) $default = 'soccer';
             $categories = SP_Admin_Sports::sport_category_names();
             ?>
             <select name="sport" id="sport" class="sp-select-sport <?php echo esc_attr( $class ); ?>">
@@ -665,7 +665,7 @@ class WC_Admin_Setup_Wizard {
     $id = $this->sp_setup_ready_actions();
     shuffle( $this->tweets );
     ?>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://sportspress.com/" data-text="<?php echo esc_attr( $this->tweets[0] ); ?>" data-via="SportsPress" data-size="large">Tweet</a>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tboy.co/sp" data-text="<?php echo esc_attr( $this->tweets[0] ); ?>" data-via="ThemeBoy" data-size="large">Tweet</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
     <h1><?php _e( 'Thanks for installing!', 'sportspress' ); ?></h1>

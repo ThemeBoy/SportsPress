@@ -443,6 +443,8 @@ class SP_Admin_Settings {
 	            case 'sport' :
 
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] );
+	            	if ( 'none' === $option_value ) $option_value = 'soccer';
+
 	            	$categories = SP_Admin_Sports::sport_category_names();
 
 	            	?><tr valign="top">
