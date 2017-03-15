@@ -502,6 +502,12 @@ if ( !function_exists( 'sp_get_term_sections' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_default_mode' ) ) {
+	function sp_get_default_mode() {
+		return get_option( 'sportspress_load_individual_mode_module', 'no' ) === 'yes' ? 'player' : 'team';
+	}
+}
+
 if ( !function_exists( 'sp_dropdown_statuses' ) ) {
 	function sp_dropdown_statuses( $args = array() ) {
 		$defaults = array(
