@@ -49,13 +49,11 @@ class SP_Admin_Sports {
 					$name = array_key_exists( 'name', $data ) ? __( $data['name'], 'sportspress' ) : $id;
 
 					// Conditionally append filename in parentheses for clarity
-					if ( $display ) {
-						if ( false === strpos( str_replace( ' ', '', strtolower( $data['name'] ) ), str_replace( '-', '', $id ) ) ) {
-							if ( 4 < strlen( $id ) ) {
-								$name .= ' (' . ucfirst( $id ) . ')';
-							} else {
-								$name .= ' (' . strtoupper( $id ) . ')';
-							}
+					if ( false === strpos( str_replace( ' ', '', strtolower( $data['name'] ) ), str_replace( '-', '', $id ) ) ) {
+						if ( 4 < strlen( $id ) ) {
+							$name .= ' (' . ucfirst( $id ) . ')';
+						} else {
+							$name .= ' (' . strtoupper( $id ) . ')';
 						}
 					}
 
