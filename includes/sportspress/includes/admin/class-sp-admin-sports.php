@@ -18,7 +18,7 @@ class SP_Admin_Sports {
 	/**
 	 * Include the preset classes
 	 */
-	public static function get_presets( $display = true ) {
+	public static function get_presets() {
 		if ( empty( self::$presets ) ) {
 			$presets = array();
 			self::$options = array(
@@ -85,8 +85,8 @@ class SP_Admin_Sports {
 		}
 	}
 
-	public static function get_preset_options( $display = true ) {
-		$presets = self::get_presets( $display );
+	public static function get_preset_options() {
+		$presets = self::get_presets();
 		return self::$options;
 	}
 
