@@ -244,10 +244,6 @@
 	clear: both;
 }
 
-.sp-data-table-container {
-	overflow-x: scroll;
-}
-
 .sp-data-table-container::-webkit-scrollbar {
 	height:12px;
 }
@@ -757,6 +753,14 @@ table.widefat.sp-sortable-table tbody tr .icon {
     border: 1px dashed #b4b9be;
     margin: 9px auto 6px;
     height: 42px;
+}
+
+/* Logo */
+.sp-settings-logo {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 35px;
 }
 
 /* Modules */

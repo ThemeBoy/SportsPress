@@ -55,6 +55,15 @@ class SP_Admin {
 				include( 'class-sp-admin-editor.php' );
 			endif;
 		}
+
+		// Setup/welcome
+		if ( ! empty( $_GET['page'] ) ) {
+			switch ( $_GET['page'] ) {
+				case 'sp-setup' :
+					include_once( 'class-sp-admin-setup-wizard.php' );
+				break;
+			}
+		}
 	}
 
 	/**

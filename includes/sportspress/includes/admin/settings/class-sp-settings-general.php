@@ -52,7 +52,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				array(
 					'title'     => __( 'Sport', 'sportspress' ),
 					'id'        => 'sportspress_sport',
-					'default'   => 'custom',
+					'default'   => 'none',
 					'type'      => 'sport',
 					'options'   => $presets,
 				),

@@ -24,3 +24,4 @@ $installer->remove_roles();
 $wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE 'sportspress_%';");
 
 delete_option( 'sportspress_installed' );
+delete_option( 'sportspress_completed_setup' );

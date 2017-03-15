@@ -18,7 +18,7 @@ class SP_Admin_Sports {
 	/**
 	 * Include the preset classes
 	 */
-	public static function get_presets() {
+	public static function get_presets( $display = true ) {
 		if ( empty( self::$presets ) ) {
 			$presets = array();
 			self::$options = array(
@@ -49,11 +49,13 @@ class SP_Admin_Sports {
 					$name = array_key_exists( 'name', $data ) ? __( $data['name'], 'sportspress' ) : $id;
 
 					// Conditionally append filename in parentheses for clarity
-					if ( false === strpos( str_replace( ' ', '', strtolower( $data['name'] ) ), str_replace( '-', '', $id ) ) ) {
-						if ( 4 < strlen( $id ) ) {
-							$name .= ' (' . ucfirst( $id ) . ')';
-						} else {
-							$name .= ' (' . strtoupper( $id ) . ')';
+					if ( $display ) {
+						if ( false === strpos( str_replace( ' ', '', strtolower( $data['name'] ) ), str_replace( '-', '', $id ) ) ) {
+							if ( 4 < strlen( $id ) ) {
+								$name .= ' (' . ucfirst( $id ) . ')';
+							} else {
+								$name .= ' (' . strtoupper( $id ) . ')';
+							}
 						}
 					}
 
@@ -83,8 +85,8 @@ class SP_Admin_Sports {
 		}
 	}
 
-	public static function get_preset_options() {
-		$presets = self::get_presets();
+	public static function get_preset_options( $display = true ) {
+		$presets = self::get_presets( $display );
 		return self::$options;
 	}
 
