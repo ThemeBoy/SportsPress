@@ -25,7 +25,7 @@ class SP_Meta_Box_Event_Details {
 		?>
 		<?php do_action( 'sportspress_event_details_meta_box', $post ); ?>
 		<div class="sp-event-day-field">
-			<p><strong><?php _e( 'Match Day', 'sportspress' ); ?></strong></p>
+			<p><strong><?php _e( 'Match Day', 'sportspress' ); ?></strong> <span class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Optional', 'sportspress' ); ?>"></span></p>
 			<p>
 				<input name="sp_day" type="text" class="medium-text" placeholder="<?php _e( 'Default', 'sportspress' ); ?>" value="<?php echo esc_attr( $day ); ?>">
 			</p>
