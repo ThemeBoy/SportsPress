@@ -42,6 +42,9 @@ class SP_League_Table extends SP_Custom_Post{
 		$link_events = get_option( 'sportspress_link_events', 'yes' ) === 'yes' ? true : false;
 		$form_limit = (int) get_option( 'sportspress_form_limit', 5 );
 
+		// Apply defaults
+		if ( empty( $select ) ) $select = 'auto';
+
 		// Get labels from result variables
 		$result_labels = (array)sp_get_var_labels( 'sp_result' );
 

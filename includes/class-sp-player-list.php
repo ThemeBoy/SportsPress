@@ -25,7 +25,7 @@ class SP_Player_List extends SP_Custom_Post {
 		parent::__construct( $post );
 		$this->columns = get_post_meta( $this->ID, 'sp_columns', true );
 		if ( is_array( $this->columns ) ) $this->columns = array_filter( $this->columns );
-		else $this->columns = array();
+		else $this->columns = array( 'number', 'team', 'position' );
 	}
 
 	/**
@@ -46,6 +46,11 @@ class SP_Player_List extends SP_Custom_Post {
 		$orderby = get_post_meta( $this->ID, 'sp_orderby', true );
 		$order = get_post_meta( $this->ID, 'sp_order', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
+
+		// Apply defaults
+		if ( empty( $orderby ) ) $orderby = 'number';
+		if ( empty( $order ) ) $order = 'ASC';
+		if ( empty( $select ) ) $select = 'auto';
 
 		// Get labels from performance variables
 		$performance_labels = (array)sp_get_var_labels( 'sp_performance' );
@@ -96,21 +101,23 @@ class SP_Player_List extends SP_Custom_Post {
 				);
 			endif;
 
-			$team_key = 'sp_team';
-			switch ( $era ):
-				case 'current':
-					$team_key = 'sp_current_team';
-					break;
-				case 'past':
-					$team_key = 'sp_past_team';
-					break;
-			endswitch;
-			$args['meta_query'] = array(
-				array(
-					'key' => $team_key,
-					'value' => $team
-				),
-			);
+			if ( $team ):
+				$team_key = 'sp_team';
+				switch ( $era ):
+					case 'current':
+						$team_key = 'sp_current_team';
+						break;
+					case 'past':
+						$team_key = 'sp_past_team';
+						break;
+				endswitch;
+				$args['meta_query'] = array(
+					array(
+						'key' => $team_key,
+						'value' => $team
+					),
+				);
+			endif;
 
 			$players = get_posts( $args );
 
