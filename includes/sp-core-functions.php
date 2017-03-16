@@ -504,7 +504,13 @@ if ( !function_exists( 'sp_get_term_sections' ) ) {
 
 if ( !function_exists( 'sp_get_default_mode' ) ) {
 	function sp_get_default_mode() {
-		return get_option( 'sportspress_mode', 'team' );
+		$mode = get_option( 'sportspress_mode', 'team' );
+
+		if ( empty( $mode ) ) {
+			$mode = 'team';
+		}
+
+		return $mode;
 	}
 }
 
