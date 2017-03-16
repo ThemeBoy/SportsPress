@@ -73,10 +73,7 @@ class SportsPress_Template_Selector {
 	 * Add option to team post type.
 	*/
 	public function team_options( $options ) {
-		if ( apply_filters( 'sportspress_has_teams', true ) ) {
-			return $this->options( $options, 'team' );
-		}
-		return $options;
+		return $this->options( $options, 'team' );
 	}
 
 	/**

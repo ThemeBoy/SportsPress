@@ -51,7 +51,7 @@ class SP_Meta_Box_List_Data {
 							<th><?php echo in_array( $orderby, array( 'number', 'name' ) ) ? '#' : __( 'Rank', 'sportspress' ); ?></th>
 						<?php } ?>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
-						<?php if ( array_key_exists( 'team', $columns ) && apply_filters( 'sportspress_has_teams', true ) ) { ?>
+						<?php if ( array_key_exists( 'team', $columns ) ) { ?>
 							<th><?php _e( 'Team', 'sportspress' ); ?></th>
 						<?php } ?>
 						<?php if ( array_key_exists( 'position', $columns ) ) { ?>
@@ -103,7 +103,7 @@ class SP_Meta_Box_List_Data {
 										<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
 									</span>
 								</td>
-								<?php if ( array_key_exists( 'team', $columns ) && apply_filters( 'sportspress_has_teams', true ) ) { ?>
+								<?php if ( array_key_exists( 'team', $columns ) ) { ?>
 									<td>
 										<?php
 										$selected = sp_array_value( $player_stats, 'team', get_post_meta( get_the_ID(), 'sp_team', true ) );

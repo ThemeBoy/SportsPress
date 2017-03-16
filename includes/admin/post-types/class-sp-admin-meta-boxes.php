@@ -123,6 +123,13 @@ class SP_Admin_Meta_Boxes {
 					'context' => 'side',
 					'priority' => 'default',
 				),
+				'mode' => array(
+					'title' => __( 'Mode', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Event_Mode::save',
+					'output' => 'SP_Meta_Box_Event_Mode::output',
+					'context' => 'side',
+					'priority' => 'default',
+				),
 				'details' => array(
 					'title' => __( 'Details', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Event_Details::save',

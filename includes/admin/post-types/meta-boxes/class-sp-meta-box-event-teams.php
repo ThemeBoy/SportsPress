@@ -21,7 +21,8 @@ class SP_Meta_Box_Event_Teams {
 	public static function output( $post ) {
 		$limit = get_option( 'sportspress_event_teams', 2 );
 		$teams = (array) get_post_meta( $post->ID, 'sp_team', false );
-		if ( $limit ) {
+		$post_type = sp_get_post_mode_type( $post->ID );
+		if ( $limit && 'sp_player' !== $post_type ) {
 			for ( $i = 0; $i < $limit; $i ++ ):
 				$team = array_shift( $teams );
 				?>
@@ -29,7 +30,7 @@ class SP_Meta_Box_Event_Teams {
 					<p class="sp-tab-select sp-title-generator">
 					<?php
 					$args = array(
-						'post_type' => 'sp_team',
+						'post_type' => $post_type,
 						'name' => 'sp_team[]',
 						'class' => 'sportspress-pages',
 						'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
@@ -119,10 +120,10 @@ class SP_Meta_Box_Event_Teams {
 			endfor;
 		} else {
 			?>
-			<p><strong><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Teams', 'sportspress' ) ); ?></strong></p>
+			<p><strong><?php printf( __( 'Select %s:', 'sportspress' ), sp_get_post_mode_label( $post->ID ) ); ?></strong></p>
 			<?php
 			$args = array(
-				'post_type' => 'sp_team',
+				'post_type' => $post_type,
 				'name' => 'sp_team[]',
 				'selected' => $teams,
 				'values' => 'ID',
@@ -132,7 +133,7 @@ class SP_Meta_Box_Event_Teams {
 				'placeholder' => __( 'None', 'sportspress' ),
 			);
 			if ( ! sp_dropdown_pages( $args ) ):
-				sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' )  );
+				sp_post_adder( $post_type, __( 'Add New', 'sportspress' )  );
 			endif;
 		}
 		wp_nonce_field( 'sp-get-players', 'sp-get-players-nonce', false );
@@ -142,17 +143,30 @@ class SP_Meta_Box_Event_Teams {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
-		$tabs = array();
-		$sections = get_option( 'sportspress_event_performance_sections', -1 );
-		if ( -1 == $sections ) {
-			sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
-		} else {
-			$players = array_merge( sp_array_value( $_POST, 'sp_offense', array() ), sp_array_value( $_POST, 'sp_defense', array() ) );
-			sp_update_post_meta_recursive( $post_id, 'sp_offense', sp_array_value( $_POST, 'sp_offense', array() ) );
-			sp_update_post_meta_recursive( $post_id, 'sp_defense', sp_array_value( $_POST, 'sp_defense', array() ) );
+		$teams = sp_array_value( $_POST, 'sp_team', array() );
+
+		sp_update_post_meta_recursive( $post_id, 'sp_team', $teams );
+
+		$post_type = sp_get_post_mode_type( $post->ID );
+
+		if ( 'sp_player' === $post_type ) {
+			$players = array();
+			foreach ( $teams as $player ) {
+				$players[] = array( 0, $player );
+			}
 			sp_update_post_meta_recursive( $post_id, 'sp_player', $players );
+		} else {
+			$tabs = array();
+			$sections = get_option( 'sportspress_event_performance_sections', -1 );
+			if ( -1 == $sections ) {
+				sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
+			} else {
+				$players = array_merge( sp_array_value( $_POST, 'sp_offense', array() ), sp_array_value( $_POST, 'sp_defense', array() ) );
+				sp_update_post_meta_recursive( $post_id, 'sp_offense', sp_array_value( $_POST, 'sp_offense', array() ) );
+				sp_update_post_meta_recursive( $post_id, 'sp_defense', sp_array_value( $_POST, 'sp_defense', array() ) );
+				sp_update_post_meta_recursive( $post_id, 'sp_player', $players );
+			}
+			sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
 		}
-		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
 	}
 }

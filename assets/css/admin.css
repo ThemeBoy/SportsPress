@@ -15,8 +15,13 @@
 	content: "\f328";
 }
 
+.post-state-format.post-format-player:before, .post-format-icon.post-format-player:before, a.post-state-format.format-player:before,
 .post-state-format.post-format-roster:before, .post-format-icon.post-format-roster:before, a.post-state-format.format-roster:before {
 	content: "\f307";
+}
+
+.post-state-format.post-format-team:before, .post-format-icon.post-format-team:before, a.post-state-format.format-team:before {
+	content: "\f334";
 }
 
 .post-state-format.post-format-list:before, .post-format-icon.post-format-list:before, a.post-state-format.format-list:before {

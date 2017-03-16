@@ -172,6 +172,13 @@ class SportsPress_League_Tables {
 			'priority' => 'high',
 		);
 		$meta_boxes['sp_table'] = array(
+			'mode' => array(
+				'title' => __( 'Mode', 'sportspress' ),
+				'save' => 'SP_Meta_Box_Table_Mode::save',
+				'output' => 'SP_Meta_Box_Table_Mode::output',
+				'context' => 'side',
+				'priority' => 'default',
+			),
 			'shortcode' => array(
 				'title' => __( 'Shortcode', 'sportspress' ),
 				'output' => 'SP_Meta_Box_Table_Shortcode::output',

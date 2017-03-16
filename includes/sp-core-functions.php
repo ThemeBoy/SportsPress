@@ -502,6 +502,63 @@ if ( !function_exists( 'sp_get_term_sections' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_get_default_mode' ) ) {
+	function sp_get_default_mode() {
+		return get_option( 'sportspress_mode', 'team' );
+	}
+}
+
+if ( !function_exists( 'sp_get_post_mode' ) ) {
+	function sp_get_post_mode( $post_id ) {
+    $mode = get_post_meta( $post_id, 'sp_mode', true );
+
+    if ( empty( $mode ) ) {
+    	$mode = sp_get_default_mode();
+    }
+
+    return $mode;
+  }
+}
+
+if ( !function_exists( 'sp_get_post_mode_type' ) ) {
+	function sp_get_post_mode_type( $post_id ) {
+		$mode = sp_get_post_mode( $post_id );
+
+		$post_type = "sp_$mode";
+
+		if ( ! in_array( $post_type, sp_primary_post_types() ) ) {
+			$post_type = sp_get_default_mode();
+		}
+
+		return $post_type;
+  }
+}
+
+if ( !function_exists( 'sp_get_post_mode_label' ) ) {
+	function sp_get_post_mode_label( $post_id, $singular = false ) {
+		$labels = array(
+			'team' => array(
+				__( 'Teams', 'sportspress' ),
+				__( 'Team', 'sportspress' ),
+			),
+			'player' => array(
+				__( 'Players', 'sportspress' ),
+				__( 'Player', 'sportspress' ),
+			),
+		);
+
+		$mode = sp_get_post_mode( $post_id );
+
+		if ( ! array_key_exists( $mode, $labels ) ) {
+			$mode = 'team';
+		}
+
+		$index = boolval( $singular );
+
+		return $labels[ $mode ][ $index ];
+  }
+}
+
 if ( !function_exists( 'sp_dropdown_statuses' ) ) {
 	function sp_dropdown_statuses( $args = array() ) {
 		$defaults = array(

@@ -23,7 +23,7 @@ class SP_Meta_Box_Table_Data {
 		list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );
 		$adjustments = $table->adjustments;
 		$highlight = get_post_meta( $table->ID, 'sp_highlight', true );
-		self::table( $columns, $usecolumns, $data, $placeholders, $adjustments, $highlight );
+		self::table( $table->ID, $columns, $usecolumns, $data, $placeholders, $adjustments, $highlight );
 	}
 
 	/**
@@ -39,10 +39,19 @@ class SP_Meta_Box_Table_Data {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $columns = array(), $usecolumns = null, $data = array(), $placeholders = array(), $adjustments = array(), $highlight = null ) {
+	public static function table( $id, $columns = array(), $usecolumns = null, $data = array(), $placeholders = array(), $adjustments = array(), $highlight = null ) {
 		if ( is_array( $usecolumns ) )
 			$usecolumns = array_filter( $usecolumns );
+
+		$mode = sp_get_post_mode( $id );
+
+		if ( 'player' === $mode ) {
+			$show_team_logo = get_option( 'sportspress_list_show_photos', 'no' ) == 'yes' ? true : false;
+			$icon_class = 'sp-icon-tshirt';
+		} else {
 			$show_team_logo = get_option( 'sportspress_table_show_logos', 'no' ) == 'yes' ? true : false;
+			$icon_class = 'sp-icon-shield';
+		}
 		?>
 		<input type="hidden" name="sp_highlight" value="0">
 		<ul class="subsubsub sp-table-bar">
@@ -53,7 +62,7 @@ class SP_Meta_Box_Table_Data {
 			<table class="widefat sp-data-table sp-league-table">
 				<thead>
 					<tr>
-						<th class="radio"><span class="dashicons sp-icon-shield sp-tip" title="<?php _e( 'Highlight', 'sportspress' ); ?>"></span></th>
+						<th class="radio"><span class="dashicons <?php echo $icon_class; ?> sp-tip" title="<?php _e( 'Highlight', 'sportspress' ); ?>"></span></th>
 						<th><?php _e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">

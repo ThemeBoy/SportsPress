@@ -185,7 +185,8 @@
 #adminmenu #menu-posts-sp_team .menu-icon-sp_team div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_player .menu-icon-sp_player div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_staff .menu-icon-sp_staff div.wp-menu-image:before,
-#sp_formatdiv #post-formats-select .post-format-icon:before {
+#sp_formatdiv #post-formats-select .post-format-icon:before,
+#sp_modediv #post-formats-select .post-format-icon:before {
 	font-family: sportspress, dashicons;
 	width: 20px;
 	text-align: center;
