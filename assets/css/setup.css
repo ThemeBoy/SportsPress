@@ -206,7 +206,7 @@ body {
     padding: 0 0 .75em;
 }
 
-.sp-setup-content .sp-setup-next-steps ul .setup-product a {
+.sp-setup-content .sp-setup-next-steps ul li .button-first-event {
     background-color: #3bbab3;
     border-color: #15a29a;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 0 #15a29a;
@@ -221,9 +221,9 @@ body {
     text-align: center;
 }
 
-.sp-setup-content .sp-setup-next-steps ul .setup-product a:active,
-.sp-setup-content .sp-setup-next-steps ul .setup-product a:focus,
-.sp-setup-content .sp-setup-next-steps ul .setup-product a:hover {
+.sp-setup-content .sp-setup-next-steps ul li .button-first-event:active,
+.sp-setup-content .sp-setup-next-steps ul li .button-first-event:focus,
+.sp-setup-content .sp-setup-next-steps ul li .button-first-event:hover {
     background: #15a29a;
     border-color: #15a29a;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 0 #15a29a;

@@ -144,7 +144,7 @@ class WC_Admin_Setup_Wizard {
       <?php do_action( 'admin_head' ); ?>
     </head>
     <body class="sp-setup wp-core-ui">
-      <h1 id="sp-logo"><img src="<?php echo SP()->plugin_url(); ?>/assets/images/modules/sportspress<?php if ( class_exists( 'SportsPress_Pro' ) ) echo '-pro'; ?>.png" alt="<?php _e( 'SportsPress', 'sportspress' ); ?>" /></h1>
+      <h1 id="sp-logo"><?php echo apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/modules/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . __( 'SportsPress', 'sportspress' ) . '">' ); ?></h1>
     <?php
   }
 
@@ -664,6 +664,17 @@ class WC_Admin_Setup_Wizard {
   public function sp_setup_ready() {
     $id = $this->sp_setup_ready_actions();
     shuffle( $this->tweets );
+
+    $steps = apply_filters( 'sportspress_setup_wizard_next_steps', array(
+      'first' => array(
+        'label' => __( 'Next Steps', 'sportspress' ),
+        'content' => '<a class="button button-primary button-large button-first-event" href="' . esc_url( admin_url( 'post.php?post=' . $id . '&action=edit' ) ) . '">' . __( 'Schedule your first event!', 'sportspress' ) . '</a>',
+      ),
+      'last' => array(
+        'label' => __( 'Upgrade to Pro', 'sportspress' ),
+        'content' => __( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.', 'sportspress' ) . ' <a href="' . apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) . '" target="_blank">' . __( 'Learn more', 'sportspress' ) . '</a>',
+      ),
+    ) );
     ?>
     <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tboy.co/sp" data-text="<?php echo esc_attr( $this->tweets[0] ); ?>" data-via="ThemeBoy" data-size="large">Tweet</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -673,18 +684,14 @@ class WC_Admin_Setup_Wizard {
     <div class="sp-banner"><img src="//ps.w.org/sportspress/assets/banner-772x250.png"></div>
 
     <div class="sp-setup-next-steps">
-      <div class="sp-setup-next-steps-first">
-        <h2><?php _e( 'Next Steps', 'sportspress' ); ?></h2>
-        <ul>
-          <li class="setup-product"><a class="button button-primary button-large" href="<?php echo esc_url( admin_url( 'post.php?post=' . $id . '&action=edit' ) ); ?>"><?php _e( 'Schedule your first event!', 'sportspress' ); ?></a></li>
-        </ul>
-      </div>
-      <div class="sp-setup-next-steps-last">
-        <h2><?php _e( 'Upgrade to Pro', 'sportspress' ); ?></h2>
-        <ul>
-          <li><?php _e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.', 'sportspress' ); ?> <a href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ); ?>" target="_blank"><?php _e( 'Learn more', 'sportspress' ); ?></a></li>
-        </ul>
-      </div>
+      <?php foreach ( $steps as $class => $step ) { ?>
+        <div class="sp-setup-next-steps-<?php echo $class; ?>">
+          <h2><?php echo $step['label']; ?></h2>
+          <ul>
+            <li><?php echo $step['content']; ?></li>
+          </ul>
+        </div>
+      <?php } ?>
     </div>
     <?php
   }
