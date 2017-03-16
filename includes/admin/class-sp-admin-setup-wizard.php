@@ -78,8 +78,13 @@ class WC_Admin_Setup_Wizard {
       ),
       'venue' => array(
         'name'    =>  __( 'Venue', 'sportspress' ),
-        'view'    => array( $this, 'sp_venue' ),
-        'handler' => array( $this, 'sp_venue_save' ),
+        'view'    => array( $this, 'sp_setup_venue' ),
+        'handler' => array( $this, 'sp_setup_venue_save' ),
+      ),
+      'pages' => array(
+        'name'    =>  __( 'Pages', 'sportspress' ),
+        'view'    => array( $this, 'sp_setup_pages' ),
+        'handler' => array( $this, 'sp_setup_pages_save' )
       ),
       'next_steps' => array(
         'name'    =>  __( 'Ready!', 'sportspress' ),
@@ -352,13 +357,13 @@ class WC_Admin_Setup_Wizard {
       <p><?php _e( "Great! Now let's add some teams.", 'sportspress' ); ?></p>
       <table class="form-table" cellspacing="0">
         <tr>
-          <th scope="row"><label for="home_team"><?php _e( 'Home Team', 'sportspress' ); ?></th>
+          <th scope="row"><?php _e( 'Home Team', 'sportspress' ); ?></th>
           <td>
             <input name="home_team" type="text" class="widefat" placeholder="<?php _e( 'What is your team called?', 'sportspress' ); ?>">
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="away_team"><?php _e( 'Rival Team', 'sportspress' ); ?></th>
+          <th scope="row"><?php _e( 'Rival Team', 'sportspress' ); ?></th>
           <td>
             <input name="away_team" type="text" class="widefat" placeholder="<?php _e( 'Who are you playing against next?', 'sportspress' ); ?>">
             <p class="description"><?php _e( "You can add more teams later.", 'sportspress' ); ?></p>
@@ -411,7 +416,7 @@ class WC_Admin_Setup_Wizard {
       <p><?php _e( "Let's add players and a staff member.", 'sportspress' ); ?></p>
       <table class="form-table" cellspacing="0">
         <tr>
-          <th scope="row"><label for="home_team"><?php _e( 'Players', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Enter a squad number, name, and position for each player.', 'sportspress' ); ?>"></i></th>
+          <th scope="row"><?php _e( 'Players', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Enter a squad number, name, and position for each player.', 'sportspress' ); ?>"></i></th>
           <td>
             <ul>
               <?php for ( $i = 0; $i < 3; $i++ ) { ?>
@@ -422,7 +427,7 @@ class WC_Admin_Setup_Wizard {
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="home_team"><?php _e( 'Staff', 'sportspress' ); ?></th>
+          <th scope="row"><?php _e( 'Staff', 'sportspress' ); ?></th>
           <td>
             <ul>
               <li class="staff"><input name="staff" type="text" class="staff-name" placeholder="<?php _e( 'Name', 'sportspress' ); ?>"> <input name="role" type="text" placeholder="<?php _e( 'Job', 'sportspress' ); ?>" value="Coach"></li>
@@ -504,20 +509,20 @@ class WC_Admin_Setup_Wizard {
   /**
    * Venue Step.
    */
-  public function sp_venue() {
+  public function sp_setup_venue() {
     ?>
     <h1><?php _e( 'Venue Setup', 'sportspress' ); ?></h1>
     <form method="post">
       <p><?php _e( "Enter the details of your home venue.", 'sportspress' ); ?></p>
       <table class="form-table" cellspacing="0">
         <tr>
-          <th scope="row"><label for="home_team"><?php _e( 'Name', 'sportspress' ); ?></th>
+          <th scope="row"><?php _e( 'Name', 'sportspress' ); ?></th>
           <td>
             <input name="venue" type="text" placeholder="<?php _e( 'Venue', 'sportspress' ); ?>">
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="sp-address"><?php _e( 'Address', 'sportspress' ); ?></th>
+          <th scope="row"><?php _e( 'Address', 'sportspress' ); ?></th>
           <td>
             <input name="address" class="sp-address" type="text">
             <div class="sp-location-picker"></div>
@@ -541,7 +546,7 @@ class WC_Admin_Setup_Wizard {
   /**
    * Venue Settings.
    */
-  public function sp_venue_save() {
+  public function sp_setup_venue_save() {
     check_admin_referer( 'sp-setup' );
 
     // Get home team
@@ -567,6 +572,82 @@ class WC_Admin_Setup_Wizard {
         'sp_longitude' => sp_array_value( $_POST, 'longitude' ),
       );
       update_option( "taxonomy_$t_id", $meta );
+    }
+
+    wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+    exit;
+  }
+
+  /**
+   * Pages Step.
+   */
+  public function sp_setup_pages() {
+    $pages = apply_filters( 'sportspress_setup_pages', array(
+      'sp_calendar' => __( 'Organize and publish calendars using different layouts.', 'sportspress' ),
+      'sp_table' => __( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
+      'sp_list' => __( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
+    ) );
+    ?>
+    <h1><?php _e( 'Pages', 'sportspress' ); ?></h1>
+    <form method="post">
+      <p><?php printf( __( 'The following will be created automatically (if they do not already exist):', 'sportspress' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=page' ) ) . '" target="_blank">', '</a>' ); ?></p>
+      <table class="form-table" cellspacing="0">
+        <?php foreach ( $pages as $post_type => $description ) { ?>
+          <?php
+          $obj = get_post_type_object( $post_type );
+          if ( ! is_object( $obj ) ) continue;
+          ?>
+          <tr>
+            <th scope="row"><?php echo $obj->labels->singular_name; ?></th>
+            <td><?php echo $description; ?></td>
+          </tr>
+        <?php } ?>
+      </table>
+
+      <p><?php printf( __( 'Once created, these pages can be managed from your admin dashboard.', 'sportspress' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=page' ) ) . '" target="_blank">', '</a>', '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" target="_blank">', '</a>' ); ?></p>
+
+      <p class="sp-setup-actions step">
+        <input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
+        <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+        <?php wp_nonce_field( 'sp-setup' ); ?>
+      </p>
+    </form>
+    <?php
+  }
+
+  /**
+   * Pages Settings.
+   */
+  public function sp_setup_pages_save() {
+    check_admin_referer( 'sp-setup' );
+
+    $pages = apply_filters( 'sportspress_setup_pages', array(
+      'sp_calendar' => __( 'Organize and publish calendars using different layouts.', 'sportspress' ),
+      'sp_table' => __( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
+      'sp_list' => __( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
+    ) );
+
+    // Initialize post
+    $post = array( 'post_status' => 'publish' );
+
+    // Insert posts
+    foreach ( $pages as $post_type => $description ) {
+      $obj = get_post_type_object( $post_type );
+      if ( ! is_object( $obj ) ) continue;
+
+      // Skip if post exists
+      $posts = get_posts( array( 'posts_per_page' => 1, 'post_type' => $post_type ) );
+      if ( $posts ) continue;
+
+      // Add post args
+      $post['post_title'] = $obj->labels->singular_name;
+      $post['post_type'] = $post_type;
+
+      // Insert post
+      $id = wp_insert_post( $post );
+
+      // Flag as sample
+      update_post_meta( $id, '_sp_sample', 1 );
     }
 
     wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
