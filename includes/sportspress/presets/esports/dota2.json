@@ -21,5 +21,8 @@
 						{ "name" : "Wins", "equation" : "$win" },
 						{ "name" : "Losses", "equation" : "$loss" },
 						{ "name" : "Winrate", "equation" : "$win / $eventsplayed * 100" }
-	]
+	],
+	"options": {
+						"mode" : "team"
+	}
 }

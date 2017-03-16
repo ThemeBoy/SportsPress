@@ -18,7 +18,7 @@ $defaults = array(
 	'title' => false,
 	'show_title' => get_option( 'sportspress_table_show_title', 'yes' ) == 'yes' ? true : false,
 	'show_team_logo' => get_option( 'sportspress_table_show_logos', 'yes' ) == 'yes' ? true : false,
-	'link_posts' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
+	'link_posts' => null,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_table_paginated', 'yes' ) == 'yes' ? true : false,
@@ -26,6 +26,14 @@ $defaults = array(
 );
 
 extract( $defaults, EXTR_SKIP );
+
+if ( ! isset( $link_posts ) ) {
+	if ( 'player' === sp_get_post_mode( $id ) ) {
+		$link_posts = get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false;
+	} else {
+		$link_posts = get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false;
+	}
+}
 
 if ( ! isset( $highlight ) ) $highlight = get_post_meta( $id, 'sp_highlight', true );
 

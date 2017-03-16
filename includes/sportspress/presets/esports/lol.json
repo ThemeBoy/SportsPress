@@ -26,5 +26,8 @@
 						{ "name" : "Avg. KDA Ratio", "equation" : "( $kills + $assists ) / $deaths", "precision" : 1, "description" : "Average kills/deaths/assists ratio" },
 						{ "name" : "Avg. Gold per Min", "equation" : "$gold / $eventminutes", "description" : "Average gold per minute" },
 						{ "name" : "Avg. Total Gold", "equation" : "$gold / $eventsplayed", "description" : "Average total gold" }
-	]
+	],
+	"options": {
+						"mode" : "team"
+	}
 }

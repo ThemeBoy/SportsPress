@@ -39,5 +39,8 @@
 	],
 	"statistics": [
 						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" }
-	]
+	],
+	"options": {
+						"mode" : "team"
+	}
 }

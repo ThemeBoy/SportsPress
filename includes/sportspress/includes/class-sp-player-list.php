@@ -96,23 +96,21 @@ class SP_Player_List extends SP_Custom_Post {
 				);
 			endif;
 
-			if ( $team && apply_filters( 'sportspress_has_teams', true ) ):
-				$team_key = 'sp_team';
-				switch ( $era ):
-					case 'current':
-						$team_key = 'sp_current_team';
-						break;
-					case 'past':
-						$team_key = 'sp_past_team';
-						break;
-				endswitch;
-				$args['meta_query'] = array(
-					array(
-						'key' => $team_key,
-						'value' => $team
-					),
-				);
-			endif;
+			$team_key = 'sp_team';
+			switch ( $era ):
+				case 'current':
+					$team_key = 'sp_current_team';
+					break;
+				case 'past':
+					$team_key = 'sp_past_team';
+					break;
+			endswitch;
+			$args['meta_query'] = array(
+				array(
+					'key' => $team_key,
+					'value' => $team
+				),
+			);
 
 			$players = get_posts( $args );
 
@@ -648,7 +646,7 @@ class SP_Player_List extends SP_Custom_Post {
 			foreach( $this->columns as $key ):
 				if ( $key == 'number' ):
 					$labels[ $key ] = '#';
-				elseif ( $key == 'team' && apply_filters( 'sportspress_has_teams', true ) ):
+				elseif ( $key == 'team' ):
 					$labels[ $key ] = __( 'Team', 'sportspress' );
 				elseif ( $key == 'position' ):
 					$labels[ $key ] = __( 'Position', 'sportspress' );
@@ -695,7 +693,7 @@ class SP_Player_List extends SP_Custom_Post {
 			$labels = array();
 			if ( in_array( 'number', $this->columns ) ) $labels['number'] = '#';
 			$labels['name'] = __( 'Player', 'sportspress' );
-			if ( in_array( 'team', $this->columns ) && apply_filters( 'sportspress_has_teams', true ) ) $labels['team'] = __( 'Team', 'sportspress' );
+			if ( in_array( 'team', $this->columns ) ) $labels['team'] = __( 'Team', 'sportspress' );
 			if ( in_array( 'position', $this->columns ) ) $labels['position'] = __( 'Position', 'sportspress' );
 
 			$merged[0] = array_merge( $labels, $columns );

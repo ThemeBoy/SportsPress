@@ -55,6 +55,7 @@ final class SportsPress_Pro {
 
 		// Hooks
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
+		add_filter( 'sportspress_setup_wizard_next_steps', array( $this, 'next_steps' ) );
 		add_action( 'sportspress_before_welcome_features', array( $this, 'welcome_features' ) );
 		add_action( 'admin_init', array( $this, 'deactivate_core' ) );
 		add_action( 'before_sportspress_init', array( $this, 'load_module_translations' ), 0 );
@@ -111,6 +112,18 @@ final class SportsPress_Pro {
 			'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
 			'<a href="' . apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs' ) . '">' . __( 'Docs', 'sportspress' ) . '</a>',
 		), $links );
+	}
+
+	/**
+	 * Final step in setup wizard.
+	 */
+	public function next_steps( $steps ) {
+		$steps['last'] = array(
+      'label' => __( 'SportsPress Themes', 'sportspress' ),
+      'content' => __( 'Install an official SportsPress theme for 100% guaranteed compatibility with SportsPress Pro features.', 'sportspress' ) . ' <a href="http://tboy.co/themes" target="_blank">' . __( 'Learn more', 'sportspress' ) . '</a>',
+    );
+
+    return $steps;
 	}
 
 	/**

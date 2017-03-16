@@ -68,5 +68,8 @@
 						{ "name" : "BPG", "equation" : "$blk / $eventsplayed", "precision" : 1, "description" : "Blocks per game" },
 						{ "name" : "PPG", "equation" : "$pts / $eventsplayed", "precision" : 1, "description" : "Points per game" },
 						{ "name" : "EFF", "equation" : "$pts + $off + $def + $ast + $stl + $blk - $fga + $fgm - $fta + $ftm + $to", "description" : "Efficiency rating" }
-	]
+	],
+	"options": {
+						"mode" : "team"
+	}
 }

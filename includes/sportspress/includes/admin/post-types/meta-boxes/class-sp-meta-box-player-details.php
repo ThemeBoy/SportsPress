@@ -99,7 +99,6 @@ class SP_Meta_Box_Player_Details {
 			?></p>
 		<?php } ?>
 
-		<?php if ( apply_filters( 'sportspress_player_teams', true ) ) { ?>
 		<p><strong><?php _e( 'Current Teams', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -129,7 +128,6 @@ class SP_Meta_Box_Player_Details {
 		);
 		sp_dropdown_pages( $args );
 		?></p>
-		<?php } ?>
 
 		<?php if ( taxonomy_exists( 'sp_league' ) ) { ?>
 		<p><strong><?php _e( 'Competitions', 'sportspress' ); ?></strong></p>

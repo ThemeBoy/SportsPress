@@ -53,17 +53,14 @@ class SP_Meta_Box_Event_Performance {
 			$positions = get_terms( 'sp_position', $args );
 		endif;
 
-		// Get status option
-		if ( 'yes' == get_option( 'sportspress_event_show_status', 'yes' ) )
-			$status = true;
-		else
-			$status = false;
-
 		// Apply filters to labels
 		$labels = apply_filters( 'sportspress_event_performance_labels_admin', $labels );
 		
 		// Check if individual mode
-		$is_individual = get_option( 'sportspress_load_individual_mode_module', 'no' ) === 'yes' ? true : false;
+		$is_individual = 'player' === sp_get_post_mode( $post->ID );
+
+		// Get status option
+		$status = ! $is_individual;
 
 		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $positions, $status, $formats, $order, $numbers, $is_individual, $timeline, $timed );
 	}

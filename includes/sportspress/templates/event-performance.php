@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-$is_individual = get_option( 'sportspress_load_individual_mode_module', 'no' ) === 'yes' ? true : false;
+$is_individual = get_option( 'sportspress_mode', 'team' ) === 'player' ? true : false;
 $show_players = get_option( 'sportspress_event_show_players', 'yes' ) === 'yes' ? true : false;
 $show_staff = get_option( 'sportspress_event_show_staff', 'yes' ) === 'yes' ? true : false;
 $show_total = get_option( 'sportspress_event_show_total', 'yes' ) === 'yes' ? true : false;

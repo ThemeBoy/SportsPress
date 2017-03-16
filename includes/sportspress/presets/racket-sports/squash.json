@@ -29,5 +29,8 @@
 						{ "name" : "Weight", "description" : "Player weight" }
 	],
 	"statistics": [
-	]
+	],
+	"options": {
+						"mode" : "player"
+	}
 }

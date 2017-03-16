@@ -47,6 +47,9 @@ class SP_League_Table extends SP_Custom_Post{
 
 		// Get labels from outcome variables
 		$outcome_labels = (array)sp_get_var_labels( 'sp_outcome' );
+
+		// Get post type
+		$post_type = sp_get_post_mode_type( $this->ID );
 		
 		// Determine if main loop
 		if ( $team_ids ) {
@@ -60,7 +63,7 @@ class SP_League_Table extends SP_Custom_Post{
 				$team_ids = array();
 
 				$args = array(
-					'post_type' => 'sp_team',
+					'post_type' => $post_type,
 					'numberposts' => -1,
 					'posts_per_page' => -1,
 					'order' => 'ASC',

@@ -424,6 +424,13 @@ class SP_Install {
 			update_option( 'sportspress_completed_setup', 1 );
 			update_option( 'sportspress_registration_name_inputs', 'no' );
 			update_option( 'sportspress_registration_add_player', 'no' );
+
+			$individual_mode = get_option( 'sportspress_load_individual_mode_module', 'no' );
+			if ( 'yes' === $individual_mode ) {
+				update_option( 'sportspress_mode', 'player' );
+			} else {
+				update_option( 'sportspress_mode', 'team' );
+			}
 		}
 	}
 
