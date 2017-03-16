@@ -14,13 +14,21 @@ $defaults = array(
 	'title' => false,
 	'show_logos' => get_option( 'sportspress_tournament_show_logos', 'yes' ) == 'yes' ? true : false,
 	'show_venue' => get_option( 'sportspress_tournament_show_venue', 'no' ) == 'yes' ? true : false,
-	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
+	'link_teams' => null,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'layout' => 'bracket',
 );
 
 extract( $defaults, EXTR_SKIP );
+
+if ( ! isset( $link_teams ) ) {
+	if ( 'player' === sp_get_post_mode( $id ) ) {
+		$link_teams = get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false;
+	} else {
+		$link_teams = get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false;
+	}
+}
 
 $post_layout = get_post_meta( $id, 'sp_format', true );
 $tournament_type = get_post_meta( $id, 'sp_type', true );

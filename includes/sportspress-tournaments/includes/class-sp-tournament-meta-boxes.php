@@ -30,6 +30,7 @@ class SP_Tournament_Meta_Boxes {
 	public function add_meta_boxes() {
 		add_meta_box( 'sp_shortcodediv', __( 'Shortcode', 'sportspress' ), array( $this, 'shortcode' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_formatdiv', __( 'Layout', 'sportspress' ), array( $this, 'format' ), 'sp_tournament', 'side', 'default' );
+		add_meta_box( 'sp_modediv', __( 'Mode', 'sportspress' ), array( $this, 'mode' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_detailsdiv', __( 'Details', 'sportspress' ), array( $this, 'details' ), 'sp_tournament', 'side', 'default' );
 		add_meta_box( 'sp_datadiv', __( 'Bracket', 'sportspress' ), array( $this, 'data' ), 'sp_tournament', 'normal', 'high' );
 		add_meta_box( 'sp_winnersdiv', __( 'Winner Bracket', 'sportspress' ), array( $this, 'winners' ), 'sp_tournament', 'normal', 'high' );
@@ -78,8 +79,20 @@ class SP_Tournament_Meta_Boxes {
 		<?php
 		$type = get_post_meta( $post->ID, 'sp_type', true );
 		if ( $type === '' ) $type = 'single';
-		
-		//remove_meta_box( 'sp_datadiv', 'sp_tournament', 'normal' );
+	}
+
+	/**
+	 * Output the mode metabox
+	 */
+	public static function mode( $post ) {
+    $the_mode = sp_get_post_mode( $post->ID );
+    ?>
+    <div id="post-formats-select">
+      <?php foreach ( array( 'team' => __( 'Team vs team', 'sportspress' ), 'player' => __( 'Player vs player', 'sportspress' ) ) as $key => $mode ): ?>
+        <input type="radio" name="sp_mode" class="post-format" id="post-format-<?php echo $key; ?>" value="<?php echo $key; ?>" <?php checked( $the_mode, $key ); ?>> <label for="post-format-<?php echo $key; ?>" class="post-format-icon post-format-<?php echo $key; ?>"><?php echo $mode; ?></label><br>
+      <?php endforeach; ?>
+    </div>
+    <?php
 	}
 
 	/**
@@ -90,6 +103,7 @@ class SP_Tournament_Meta_Boxes {
 		$caption = get_post_meta( $post->ID, 'sp_caption', true );
 		$limit = 6;
 		$taxonomies = get_object_taxonomies( 'sp_tournament' );
+		$post_type = sp_get_post_mode_type( $post->ID );
 		$rounds = get_post_meta( $post->ID, 'sp_rounds', true );
 		if ( $rounds === '' ) $rounds = 3;
 		$type = get_post_meta( $post->ID, 'sp_type', true );
@@ -124,7 +138,7 @@ class SP_Tournament_Meta_Boxes {
 				<?php
 				$args = array(
 					'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
-					'post_type' => 'sp_team',
+					'post_type' => $post_type,
 					'name' => 'sp_winner',
 					'selected' => $winner,
 					'values' => 'ID'
@@ -203,6 +217,9 @@ class SP_Tournament_Meta_Boxes {
 
 		// Format
 		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'bracket' ) );
+
+		// Mode
+		update_post_meta( $post_id, 'sp_mode', sp_array_value( $_POST, 'sp_mode', 'team' ) );
 
 		// Heading
 		update_post_meta( $post_id, 'sp_caption', sp_array_value( $_POST, 'sp_caption', '' ) );
@@ -341,8 +358,10 @@ class SP_Tournament_Meta_Boxes {
 	 * Admin edit table
 	 */
 	public static function table( $labels = array(), $data = null, $rounds = 3, $rows = 23, $post_id = null, $type = 'single' ) {
+		$post_type = sp_get_post_mode_type( $post_id );
+
 		$args = array(
-			'post_type' => 'sp_team',
+			'post_type' => $post_type,
 			'posts_per_page' => -1,
 			'orderby' => 'title',
 			'order' => 'ASC',
