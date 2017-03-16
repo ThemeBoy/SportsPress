@@ -43,6 +43,7 @@
 						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 100", "precision" : 2, "description" : "Loss ratio" }
 	],
 	"options": {
+						"mode" : "team",
 						"event_teams" : "2",
 						"event_show_players" : "yes",
 						"event_show_total" : "no",

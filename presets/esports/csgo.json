@@ -17,5 +17,8 @@
 	],
 	"statistics": [
 						{ "name" : "KDA Ratio", "equation" : "( $kills + $assists ) / $deaths", "precision" : 2, "description" : "Kills/deaths/assists ratio" }
-	]
+	],
+	"options": {
+						"mode" : "team"
+	}
 }

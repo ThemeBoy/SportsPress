@@ -49,7 +49,7 @@
 						{ "name" : "SR", "equation" : "( $runs / $b ) * 100", "precision" : 2, "description" : "Strike Rate" }
 	],
 	"options": {
-						"load_individual_mode_module" : "no",
+						"mode" : "team",
 						"event_teams" : "2",
 						"event_logos_show_team_names" : "no",
 						"event_logos_show_results" : "yes",

@@ -74,6 +74,7 @@
 						{ "name" : "AVG", "equation" : "$h / $ab", "precision" : 3, "description" : "Batting average" }
 	],
 	"options": {
+						"mode" : "team",
 						"event_teams" : "2",
 						"event_hide_child_positions" : "yes",
 						"event_show_players" : "yes",

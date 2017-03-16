@@ -48,5 +48,8 @@
 						{ "name" : "Pct", "equation" : "( $k - $e ) / $ta", "description" : "Hitting percentage" },
 						{ "name" : "B/S", "equation" : "$b / $sets", "description" : "Blocks per set" },
 						{ "name" : "A/S", "equation" : "$a / $sets", "description" : "Assists per set" }
-	]
+	],
+	"options": {
+						"mode" : "team"
+	}
 }

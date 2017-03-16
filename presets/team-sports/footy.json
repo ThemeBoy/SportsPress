@@ -51,5 +51,8 @@
 						{ "name" : "HO", "equation" : "$hitouts / $eventsplayed", "precision" : 1, "description" : "Average hitouts per game" },
 						{ "name" : "T", "equation" : "$tackles / $eventsplayed", "precision" : 1, "description" : "Average tackles per game" },
 						{ "name" : "G", "equation" : "$goals / $eventsplayed", "precision" : 1, "description" : "Average goals per game" }
-	]
+	],
+	"options": {
+						"mode" : "team"
+	}
 }

@@ -29,5 +29,8 @@
 						"Weight"
 	],
 	"statistics": [
-	]
+	],
+	"options": {
+						"mode" : "player"
+	}
 }

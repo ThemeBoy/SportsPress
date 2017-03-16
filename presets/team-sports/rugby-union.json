@@ -47,5 +47,8 @@
 	"statistics": [
 						{ "name" : "A", "equation" : "$eventsplayed", "description" : "Appearances" },
 						{ "name" : "Pts", "equation" : "$t * 5 + $c * 2 + $p * 3 + $dg * 3", "description" : "Points" }
-	]
+	],
+	"options": {
+						"mode" : "team"
+	}
 }

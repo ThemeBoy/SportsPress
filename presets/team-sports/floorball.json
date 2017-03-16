@@ -53,5 +53,8 @@
 						{ "name" : "GAA", "equation" : "$ga / $eventsplayed", "precision" : 2, "description" : "Goals against average" },
 						{ "name" : "S%", "equation" : "$g / $s * 100", "precision" : 2, "description" : "Shot percentage" },
 						{ "name" : "SV%", "equation" : "$sv / $sa * 100", "precision" : 2, "description" : "Save percentage" }
-	]
+	],
+	"options": {
+						"mode" : "team"
+	}
 }

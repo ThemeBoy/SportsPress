@@ -50,5 +50,8 @@
 						{ "name" : "Win Ratio", "equation" : "$win / $eventsplayed * 100", "precision" : 2 },
 						{ "name" : "Draw Ratio", "equation" : "$draw / $eventsplayed * 100", "precision" : 2 },
 						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 100", "precision" : 2 }
-	]
+	],
+	"options": {
+						"mode" : "team"
+	}
 }

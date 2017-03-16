@@ -61,5 +61,8 @@
 						{ "name" : "GS", "equation" : "$eventsstarted", "description" : "Games started" },
 						{ "name" : "Avg", "equation" : "$yds / $att", "precision" : 1, "description" : "Average yards per carry" },
 						{ "name" : "Rec Avg", "equation" : "$recyds / $rec", "precision" : 1, "description" : "Average yards per reception" }
-	]
+	],
+	"options": {
+						"mode" : "team"
+	}
 }
