@@ -629,6 +629,7 @@ class WC_Admin_Setup_Wizard {
 
     // Initialize post
     $post = array( 'post_status' => 'publish' );
+    $sample_content = _x( 'This is an example %1$s. As a new SportsPress user, you should go to <a href=\"%3$s\">your dashboard</a> to delete this %1$s and create new %2$s for your content. Have fun!', 'example', 'sportspress' );
 
     // Insert posts
     foreach ( $pages as $post_type => $description ) {
@@ -642,6 +643,7 @@ class WC_Admin_Setup_Wizard {
       // Add post args
       $post['post_title'] = $obj->labels->singular_name;
       $post['post_type'] = $post_type;
+      $post['post_content'] = sprintf( $sample_content, $obj->labels->singular_name, $obj->labels->name, add_query_arg( 'post_type', $post_type, admin_url( 'edit.php' ) ) );
 
       // Insert post
       $id = wp_insert_post( $post );
