@@ -584,6 +584,10 @@
     border: 1px solid #e5e5e5 !important;
 }
 
+.sp-tournament-bracket .sp-team-name:hover {
+    border: 1px solid #e5e5e5 !important;
+}
+
 .sp-tournament-bracket .sp-heading,
 .sp-tournament-bracket .sp-heading:hover {
     color: #fff !important;
