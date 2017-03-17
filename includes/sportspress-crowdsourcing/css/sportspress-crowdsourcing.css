@@ -1,0 +1,54 @@
+.sp-template-crowdsourcing {
+	overflow: visible;
+	clear: both;
+}
+
+.sp-crowdsourcing {
+	height: 1px;
+	width: 100%;
+	float: left;
+	clear: both;
+	position: relative;
+	overflow: visible;
+	margin: 3em 0 4.5em;
+}
+
+.sp-crowdsourcing hr {
+	margin: 0 !important;
+	padding: 0 !important;
+	opacity: 0.5;
+}
+
+.sp-crowdsourcing-minute {
+	line-height: 3em;
+	top: 50%;
+	margin-top: -1.5em;
+	position: absolute;
+	font-size: 11px;
+	font-weight: bold;
+	cursor: default;
+}
+
+.sp-crowdsourcing-kickoff-away {
+	visibility: hidden;
+} 
+
+.sp-crowdsourcing-icon {
+	position: absolute;
+	top: -1.5em;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.sp-crowdsourcing-icon-away {
+	bottom: auto;
+	top: 2.5em;
+}
+
+.sp-crowdsourcing-icon img {
+	height: auto;
+	width: auto;
+	max-height: 2.5em;
+	max-width: 1.5em;
+}
