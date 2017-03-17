@@ -43,7 +43,11 @@ class SP_Staff_Directory {
 		$this->orderby = $this->__get( 'orderby' );
 		$this->order = $this->__get( 'order' );
 
-		if ( is_array( $this->columns) ) $this->columns = array_filter( $this->columns );
+		if ( is_array( $this->columns) ) {
+			$this->columns = array_filter( $this->columns );
+		} else {
+			$this->columns = array( 'phone', 'email' );
+		}
 
 		if ( ! $this->orderby )
 			$this->orderby = 'menu_order';
