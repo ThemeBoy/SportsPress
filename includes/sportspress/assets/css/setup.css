@@ -381,10 +381,17 @@ body {
 
 .sp-return-to-dashboard {
     font-size: .85em;
-    color: #b5b5b5;
     margin: 1.18em 0;
     display: block;
     text-align: center;
+}
+
+.sp-return-to-dashboard a {
+    color: #b5b5b5;
+}
+
+.sp-return-to-dashboard a:hover {
+    color: #888;
 }
 
 /* Media Queries */
