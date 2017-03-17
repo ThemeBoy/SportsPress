@@ -159,7 +159,7 @@ class WC_Admin_Setup_Wizard {
   public function setup_wizard_footer() {
     ?>
       <?php if ( 'next_steps' === $this->step ) : ?>
-        <a class="sp-return-to-dashboard" href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>"><?php _e( 'Return to the WordPress Dashboard', 'sportspress' ); ?></a>
+        <p class="sp-return-to-dashboard"><a href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>"><?php _e( 'Return to the WordPress Dashboard', 'sportspress' ); ?></a></p>
       <?php endif; ?>
       <?php wp_print_scripts( 'sportspress-setup' ); ?>
       </body>
