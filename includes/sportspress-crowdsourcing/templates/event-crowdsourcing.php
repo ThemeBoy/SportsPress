@@ -12,69 +12,109 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 
-// Get linear crowdsourcing from event
-$event = new SP_Event( $id );
-$crowdsourcing = $event->crowdsourcing( false, true );
+// Get players from event
+$players = (array) get_post_meta( $id, 'sp_player', false );
 
-// Return if crowdsourcing is empty
-if ( empty( $crowdsourcing ) ) return;
+// Return if there are no players
+if ( empty( $players ) ) return;
 
-// Get team link option
-$link_teams = get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false;
+// Get current user ID
+$user_id = get_current_user_id();
 
-// Get full time of event
-$minutes = $event->minutes();
+if ( isset( $_POST['sp_crowdsourcing'] ) && wp_verify_nonce( $_POST['sp_crowdsourcing'], 'submit_score' ) ) {
+	if ( isset( $_POST['sp_scores'] ) ) {
+		$scores = (array) $_POST['sp_scores'];
 
-// Initialize spacer
-$previous = 0;
+		$meta = (array) get_post_meta( $id, 'sp_crowdsourcing', true );
 
-?>
-<div class="sp-template sp-template-crowdsourcing sp-template-event-crowdsourcing">
-	<div class="sp-crowdsourcing">
-		<hr>
-		<?php foreach ( $crowdsourcing as $minute => $details ) { ?>
-			<?php
-			$time = sp_array_value( $details, 'time', false );
-			if ( false === $time ) continue;
+		foreach ( $scores as $player => $stats ) {
+			$stats = array_filter( $stats );
+			if ( empty( $stats ) ) continue;
 
-			$icon = sp_array_value( $details, 'icon', '' );
-			$side = sp_array_value( $details, 'side', 'home' );
-
-			if ( $time < 0 ) {
-				$name = sp_array_value( $details, 'name', __( 'Team', 'sportspress' ) );
-				?>
-				<span class="sp-crowdsourcing-minute sp-crowdsourcing-minute-<?php echo $side; ?>" title="<?php _e( 'Kick Off', 'sportspress' ); ?>" style="left: 0;">
-					<?php if ( $icon ) { ?>
-						<?php if ( $link_teams ) { ?>
-							<?php $team = sp_array_value( $details, 'id' ); ?>
-							<a class="sp-crowdsourcing-icon sp-crowdsourcing-icon-<?php echo $side; ?>" title="<?php echo $name; ?>" href="<?php echo get_post_permalink( $team ); ?>"><?php echo $icon; ?></a>
-						<?php } else { ?>
-							<span class="sp-crowdsourcing-icon sp-crowdsourcing-icon-<?php echo $side; ?>" title="<?php echo $name; ?>"><?php echo $icon; ?></span>
-						<?php } ?>
-					<?php } ?>
-					<span class="sp-crowdsourcing-kickoff sp-crowdsourcing-kickoff-<?php echo $side; ?>"><?php _e( 'KO', 'sportspress' ); ?></span>
-				</span>
-				<?php
-			} else {
-				$name = sp_array_value( $details, 'name', __( 'Player', 'sportspress' ) );
-				$number = sp_array_value( $details, 'number', '' );
-
-				if ( '' !== $number ) $name = $number . '. ' . $name;
-
-				$offset = floor( $time / ( $minutes + 4 )* 100 );
-				if ( $offset - $previous <= 2 ) $offset = $previous + 2;
-				$previous = $offset;
-				?>
-				<span class="sp-crowdsourcing-minute sp-crowdsourcing-minute-<?php echo $side; ?>" title="<?php echo $name; ?>" style="left: <?php echo $offset + 1; ?>%;">
-					<span class="sp-crowdsourcing-icon sp-crowdsourcing-icon-<?php echo $side; ?>"><?php echo $icon; ?></span>
-					<?php echo $time; ?>
-				</span>
-				<?php
-			}
+			$stats['_timestamp'] = date('Y-m-d H:i:s');
+			$stats['_player_id'] = $player;
+			$meta[ $user_id ][] = $stats;
 		}
-		?>
-		<span class="sp-crowdsourcing-minute" title="<?php _e( 'Full Time', 'sportspress' ); ?>" style="right: 0;">
-			<span class="sp-crowdsourcing-fulltime"><?php _e( 'FT', 'sportspress' ); ?></span>
-		</span>
+
+		update_post_meta( $id, 'sp_crowdsourcing', $meta );
+
+		echo '<div class="sp-template sp-template-thank-you"><p class="sp-thank-you">' . __( 'Thank you!', 'sportspress'  ) . '</p></div>';
+		return;
+	}
+}
+
+// Get options
+$scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
+
+// Filter out players that belong to other users
+if ( ! current_user_can( 'edit_sp_staffs' ) ) {
+	foreach ( $players as $i => $player ) {
+		if ( get_post_field( 'post_author', $player ) != $user_id ) {
+			unset( $players[ $i ] );
+		}
+	}
+} elseif ( ! current_user_can( 'edit_others_sp_events' ) ) {
+	$staff = (array) get_post_meta( $id, 'sp_staff', false );
+	$i = -1;
+	$staff_players = array();
+	foreach ( $staff as $member ) {
+		if ( 0 == $member ) {
+			$i++;
+		} elseif ( get_post_field( 'post_author', $member ) == $user_id ) {
+			$staff_players = array_merge( $staff_players, (array) sp_array_between( $players, 0, $i ) );
+		}
+	}
+
+	$players = $staff_players;
+}
+
+// Filter out blanks
+$players = array_filter( $players );
+
+// Filter out duplicates
+$players = array_unique( $players );
+
+// Return if no players are left
+if ( ! sizeof( $players ) ) return;
+
+// Get event performance data
+$event = new SP_Event( $id );
+list( $labels, $columns, $stats, $teams, $formats, $order, $timed ) = $event->performance( true );
+?>
+<form method="post">
+	<div class="sp-template sp-template-crowdsourcing sp-template-event-crowdsourcing">
+		<h4 class="sp-table-caption"><?php _e( 'Submit Your Scores', 'sportspress' ); ?></h4>
+		<div class="sp-table-wrapper">
+			<table class="sp-event-crowdsourcing sp-data-table<?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
+				<thead>
+					<tr>
+						<th class="data-name">
+							<?php _e( 'Player', 'sportspress' ); ?>
+						</th>
+						<?php foreach ( $labels as $key => $label ): ?>
+							<th class="data-<?php echo $key; ?>"><?php echo $label; ?></th>
+						<?php endforeach; ?>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ( $players as $player ) { ?>
+						<tr>
+							<td class="data-name">
+								<?php echo get_the_title( $player ); ?>
+							</td>
+							<?php foreach ( $labels as $key => $label ): ?>
+								<td class="data-<?php echo $key; ?>">
+									<input type="text" name="sp_scores[<?php echo $player; ?>][<?php echo $key; ?>]">
+								</td>
+							<?php endforeach; ?>
+						</tr>
+					<?php } ?>
+				</tbody>
+			</table>
+		</div>
 	</div>
-</div>
+	<p class="form-submit">
+		<input name="submit" type="submit" id="submit" class="submit" value="<?php _e( 'Submit', 'sportspress' ); ?>">
+		<?php wp_nonce_field( 'submit_score', 'sp_crowdsourcing' ); ?>
+	</p>
+</form>

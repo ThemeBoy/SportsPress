@@ -32,6 +32,7 @@ class SportsPress_Crowdsourcing {
 		// Hooks
 		add_filter( 'sportspress_event_templates', array( $this, 'templates' ) );
 	  add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
+		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handlers' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 	}
@@ -73,6 +74,7 @@ class SportsPress_Crowdsourcing {
 	 * @return void
 	 */
 	public function output() {
+		if ( ! current_user_can( 'edit_sp_players' ) ) return;
 		sp_get_template( 'event-crowdsourcing.php', array(), '', SP_CROWDSOURCING_DIR . 'templates/' );
 	}
 
@@ -87,6 +89,16 @@ class SportsPress_Crowdsourcing {
 			'media'   => 'all'
 		);
 		return $styles;
+	}
+
+	/**
+	 * Add text options 
+	 */
+	public function add_text_options( $options = array() ) {
+		return array_merge( $options, array(
+			__( 'Crowdsourcing', 'sportspress' ),
+			__( 'Submit Your Scores', 'sportspress' ),
+		) );
 	}
 
 	/**
