@@ -48,6 +48,7 @@ class SportsPress_Sponsors {
 	    add_filter( 'sportspress_glance_items', array( $this, 'add_glance_item' ) );
 	    add_filter( 'sportspress_enable_header', '__return_true' );
 		add_filter( 'sportspress_importers', array( $this, 'register_importer' ) );
+		add_filter( 'sportspress_setup_pages', array( $this, 'setup_pages' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -221,6 +222,14 @@ class SportsPress_Sponsors {
 		);
 		return $styles;
 	}
+
+	/**
+	 * Add pages to setup wizard.
+	 */
+	public function setup_pages( $pages = array() ) {
+    $pages['sp_sponsor'] = __( 'Attract sponsors by offering them advertising space on your website.', 'sportspress' );
+    return $pages;
+  }
 
 	/**
 	 * Register/queue frontend scripts.

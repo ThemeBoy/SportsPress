@@ -46,10 +46,11 @@ class SportsPress_Tournaments {
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
 		add_filter( 'sportspress_competitive_event_formats', array( $this, 'competitive_event_formats' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
-	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
+	  add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ), 30 );
 		add_filter( 'sportspress_event_settings', array( $this, 'add_options' ) );
 		add_filter( 'sportspress_team_access_post_types', array( $this, 'add_post_type' ) );
+		add_filter( 'sportspress_setup_pages', array( $this, 'setup_pages' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -400,6 +401,14 @@ class SportsPress_Tournaments {
 		$taxonomies = array_merge( array( 'sp_group' => 'sp_tournament' ), $taxonomies );
 		return $taxonomies;
 	}
+
+	/**
+	 * Add pages to setup wizard.
+	 */
+	public function setup_pages( $pages = array() ) {
+    $pages['sp_tournament'] = __( 'Schedule tournaments and create interactive playoff brackets.', 'sportspress' );
+    return $pages;
+  }
 
 	/**
 	 * Register/queue frontend scripts.

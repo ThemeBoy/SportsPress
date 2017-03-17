@@ -63,6 +63,7 @@ class SportsPress_Staff_Directories {
 		add_filter( 'sportspress_tinymce_strings', array( $this, 'add_tinymce_strings' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_filter( 'sportspress_team_access_post_types', array( $this, 'add_post_type' ) );
+		add_filter( 'sportspress_setup_pages', array( $this, 'setup_pages' ) );
 		
 		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
 		add_action( 'sportspress_register_rest_fields', array( $this, 'register_rest_fields' ) );
@@ -180,6 +181,14 @@ class SportsPress_Staff_Directories {
 		$screen_ids[] = 'sp_directory';
 		return $screen_ids;
 	}
+
+	/**
+	 * Add pages to setup wizard.
+	 */
+	public function setup_pages( $pages = array() ) {
+    $pages['sp_directory'] = __( 'Organize and display staff in list and gallery layouts.', 'sportspress' );
+    return $pages;
+  }
 
 	/**
 	 * Output the staff directory.
