@@ -762,8 +762,8 @@ jQuery(document).ready(function($){
 				if ( -1 == response.data.sections ) {
 					if(response.data.players.length) {
 						$(response.data.players).each(function( key, value ) {
-							//if($target.eq(i).find("input[value=" + value.ID + "]").length) return true;
-							$target.eq(i).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_player[" + index + "][]\">" + value.post_title + "</li>");
+							if($target.eq(i).find("input[value=" + value.ID + "]").length) return true;
+							$target.eq(i).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_player[" + index + "][]\"> " + value.post_title + "</li>");
 						});
 					} else {
 						$target.eq(i).html("<li>" + localized_strings.no_results_found + "</li>");
@@ -778,8 +778,8 @@ jQuery(document).ready(function($){
 							defense = i+1;
 						}
 						$(response.data.players).each(function( key, value ) {
-							$target.eq(offense).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_offense[" + index + "][]\">" + value.post_title + "</li>");
-							$target.eq(defense).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_defense[" + index + "][]\">" + value.post_title + "</li>");
+							$target.eq(offense).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_offense[" + index + "][]\"> " + value.post_title + "</li>");
+							$target.eq(defense).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_defense[" + index + "][]\"> " + value.post_title + "</li>");
 						});
 					} else {
 						$target.eq(offense).html("<li>" + localized_strings.no_results_found + "</li>");
@@ -790,7 +790,7 @@ jQuery(document).ready(function($){
 				i++;
 				if(response.data.staff.length) {
 					$(response.data.staff).each(function( key, value ) {
-						$target.eq(i).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_staff[" + index + "][]\">" + value.post_title + "</li>");
+						$target.eq(i).append("<li><label class=\"selectit\"><input type=\"checkbox\" value=\"" + value.ID + "\" name=\"sp_staff[" + index + "][]\"> " + value.post_title + "</li>");
 					});
 				} else {
 					$target.eq(i).html("<li>" + localized_strings.no_results_found + "</li>");
