@@ -36,11 +36,11 @@ class SP_Modules {
 					'link' => 'https://www.themeboy.com/sportspress-extensions/scoreboard/',
 					'desc' => __( 'Display multiple event results in a horizontal scoreboard.', 'sportspress' ),
 				),
-				'crowdsourcing' => array(
-					'label' => __( 'Crowdsourcing', 'sportspress' ),
-					'class' => 'SportsPress_Crowdsourcing',
-					'icon' => 'sp-icon-crowdsourcing',
-					'link' => 'https://www.themeboy.com/sportspress-extensions/crowdsourcing/',
+				'user_scores' => array(
+					'label' => __( 'User Scores', 'sportspress' ),
+					'class' => 'SportsPress_User_Scores',
+					'icon' => 'sp-icon-user-scores',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/user-scores/',
 					'desc' => __( 'Let players, staff, and visitors submit event scores for review.', 'sportspress' ),
 				),
 				'match_stats' => array(
