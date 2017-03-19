@@ -48,6 +48,10 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		if ( '' === $timed ) {
 			$timed = true;
 		}
+		$sendoff = get_post_meta( $post->ID, 'sp_sendoff', true );
+		if ( '' === $sendoff ) {
+			$sendoff = false;
+		}
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
@@ -106,6 +110,26 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 				</li>
 			</ul>
 		</div>
+		<div id="sp_sendoffdiv">
+			<p>
+				<strong><?php _e( 'Send Off', 'sportspress' ); ?></strong>
+				<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( "Don't count minutes after?", 'sportspress' ); ?>"></i>
+			</p>
+			<ul class="sp-sendoff-selector">
+				<li>
+					<label class="selectit">
+						<input name="sp_sendoff" id="sp_sendoff_yes" type="radio" value="1" <?php checked( $sendoff ); ?>>
+						<?php _e( 'Yes', 'sportspress' ); ?>
+					</label>
+				</li>
+				<li>
+					<label class="selectit">
+						<input name="sp_sendoff" id="sp_sendoff_no" type="radio" value="0" <?php checked( ! $sendoff ); ?>>
+						<?php _e( 'No', 'sportspress' ); ?>
+					</label>
+				</li>
+			</ul>
+		</div>
 		<?php
 		if ( 'auto' === get_option( 'sportspress_player_columns', 'auto' ) ) {
 			$visible = get_post_meta( $post->ID, 'sp_visible', true );
@@ -145,6 +169,7 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number' ) );
 		update_post_meta( $post_id, 'sp_precision', sp_array_value( $_POST, 'sp_precision', 0 ) );
 		update_post_meta( $post_id, 'sp_timed', sp_array_value( $_POST, 'sp_timed', 0 ) );
+		update_post_meta( $post_id, 'sp_sendoff', sp_array_value( $_POST, 'sp_sendoff', 0 ) );
 		if ( 'auto' === get_option( 'sportspress_player_columns', 'auto' ) ) {
 			update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1 ) );
 		}

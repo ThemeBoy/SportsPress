@@ -147,6 +147,85 @@ class SP_Player_List extends SP_Custom_Post {
 		$last5s = array();
 		$last10s = array();
 
+		$args = array(
+			'post_type' => array( 'sp_performance', 'sp_metric', 'sp_statistic' ),
+			'numberposts' => -1,
+			'posts_per_page' => -1,
+	  		'orderby' => 'menu_order',
+	  		'order' => 'ASC',
+			'meta_query' => array(
+        		'relation' => 'OR',
+				array(
+					'key' => 'sp_format',
+					'value' => 'number',
+					'compare' => 'NOT EXISTS',
+				),
+				array(
+					'key' => 'sp_format',
+					'value' => array( 'equation', 'text' ),
+					'compare' => 'NOT IN',
+				),
+			),
+		);
+		$stats = get_posts( $args );
+
+		$formats = array();
+		$sendoffs = array();
+		$data = array();
+		$merged = array();
+		$column_order = array();
+		$ordered_columns = array();
+
+		if ( $stats ):
+
+			foreach ( $stats as $stat ):
+
+				// Get post meta
+				$meta = get_post_meta( $stat->ID );
+
+				// Add equation to object
+				if ( $stat->post_type == 'sp_metric' ):
+					$stat->equation = null;
+				else:
+					$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
+				endif;
+
+				// Add precision to object
+				$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 ) + 0;
+
+				// Add column name to columns
+				$columns[ $stat->post_name ] = $stat->post_title;
+
+				// Add format
+				$format = get_post_meta( $stat->ID, 'sp_format', true );
+				if ( '' === $format ) {
+					$format = 'number';
+				}
+				$formats[ $stat->post_name ] = $format;
+
+				// Add sendoffs
+				$sendoff = get_post_meta( $stat->ID, 'sp_sendoff', true );
+				if ( $sendoff ) {
+					$sendoffs[] = $stat->post_name;
+				}
+
+				$column_order[] = $stat->post_name;
+
+			endforeach;
+
+		endif;
+
+		foreach ( $column_order as $slug ):
+
+			if ( ! in_array( $slug, $this->columns ) ) continue;
+
+			$ordered_columns[] = $slug;
+
+		endforeach;
+
+		$diff = array_diff( $this->columns, $ordered_columns );
+		$this->columns = array_merge( $diff, $ordered_columns );
+
 		foreach ( $player_ids as $player_id ):
 			if ( ! $player_id )
 				continue;
@@ -332,7 +411,19 @@ class SP_Player_List extends SP_Custom_Post {
 									// Adjust for substitution time
 									if ( sp_array_value( $player_performance, 'status' ) === 'sub' ):
 										$totals[ $player_id ]['eventminutes'] -= sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), 'sub' ), 0, 0 );
+
+										$timeline_performance = sp_array_value( sp_array_value( $timeline, $team_id, array() ), $player_id, array() );
+										if ( empty( $timeline_performance ) ) continue;
+										foreach ( $sendoffs as $sendoff_key ):
+											if ( ! array_key_exists( $sendoff_key, $timeline_performance ) ) continue;
+											$sendoff_times = sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), $sendoff_key );
+											$sendoff_times = array_filter( $sendoff_times );
+											$sendoff_time = end( $sendoff_times );
+											if ( ! $sendoff_time ) $sendoff_time = 0;
+											$totals[ $player_id ]['eventminutes'] += $sendoff_time - $minutes;
+										endforeach;
 									else:
+										$subbed_out = false;
 										foreach ( $timeline as $timeline_team => $timeline_players ):
 											if ( ! is_array( $timeline_players ) ) continue;
 											foreach ( $timeline_players as $timeline_player => $timeline_performance ):
@@ -340,8 +431,21 @@ class SP_Player_List extends SP_Custom_Post {
 													$substitution_time = sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $timeline_player ), 'sub' ), 0, 0 );
 													if ( $substitution_time ):
 														$totals[ $player_id ]['eventminutes'] += $substitution_time - $minutes;
+														$subbed_out = true;
 													endif;
 												endif;
+											endforeach;
+
+											if ( $subbed_out ) continue;
+											$timeline_performance = sp_array_value( $timeline_players, $player_id, array() );
+											if ( empty( $timeline_performance ) ) continue;
+											foreach ( $sendoffs as $sendoff_key ):
+												if ( ! array_key_exists( $sendoff_key, $timeline_performance ) ) continue;
+												$sendoff_times = sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), $sendoff_key );
+												$sendoff_times = array_filter( $sendoff_times );
+												$sendoff_time = end( $sendoff_times );
+												if ( ! $sendoff_time ) $sendoff_time = 0;
+												$totals[ $player_id ]['eventminutes'] += $sendoff_time - $minutes;
 											endforeach;
 										endforeach;
 									endif;
@@ -456,78 +560,6 @@ class SP_Player_List extends SP_Custom_Post {
 			// Add last 10 to totals
 			$totals[ $player_id ]['last10'] = $last10;
 		endforeach;
-
-		$args = array(
-			'post_type' => array( 'sp_performance', 'sp_metric', 'sp_statistic' ),
-			'numberposts' => -1,
-			'posts_per_page' => -1,
-	  		'orderby' => 'menu_order',
-	  		'order' => 'ASC',
-			'meta_query' => array(
-        		'relation' => 'OR',
-				array(
-					'key' => 'sp_format',
-					'value' => 'number',
-					'compare' => 'NOT EXISTS',
-				),
-				array(
-					'key' => 'sp_format',
-					'value' => array( 'equation', 'text' ),
-					'compare' => 'NOT IN',
-				),
-			),
-		);
-		$stats = get_posts( $args );
-
-		$formats = array();
-		$data = array();
-		$merged = array();
-		$column_order = array();
-		$ordered_columns = array();
-
-		if ( $stats ):
-
-			foreach ( $stats as $stat ):
-
-				// Get post meta
-				$meta = get_post_meta( $stat->ID );
-
-				// Add equation to object
-				if ( $stat->post_type == 'sp_metric' ):
-					$stat->equation = null;
-				else:
-					$stat->equation = sp_array_value( sp_array_value( $meta, 'sp_equation', array() ), 0, 0 );
-				endif;
-
-				// Add precision to object
-				$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 ) + 0;
-
-				// Add column name to columns
-				$columns[ $stat->post_name ] = $stat->post_title;
-
-				// Add format
-				$format = get_post_meta( $stat->ID, 'sp_format', true );
-				if ( '' === $format ) {
-					$format = 'number';
-				}
-				$formats[ $stat->post_name ] = $format;
-
-				$column_order[] = $stat->post_name;
-
-			endforeach;
-
-		endif;
-
-		foreach ( $column_order as $slug ):
-
-			if ( ! in_array( $slug, $this->columns ) ) continue;
-
-			$ordered_columns[] = $slug;
-
-		endforeach;
-
-		$diff = array_diff( $this->columns, $ordered_columns );
-		$this->columns = array_merge( $diff, $ordered_columns );
 
 		// Fill in empty placeholder values for each player
 		foreach ( $player_ids as $player_id ):
