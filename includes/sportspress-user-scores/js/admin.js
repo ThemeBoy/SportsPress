@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-	$(".sp-crowdsourcing-table").on("click", ".sp-row-actions a", function(event) {
+	$(".sp-user-scores-table").on("click", ".sp-row-actions a", function(event) {
 		$row = $(this).closest(".sp-row");
 		user_id = $row.data("sp-user");
 		player_id = $row.data("sp-player");
@@ -19,15 +19,15 @@ jQuery(document).ready(function($){
 		} else if ( "reject" == $(this).data("sp-action") ) {
 			$row.css("background-color", "#FFEBE8");
 		}
-		$(this).after("<input type=\"hidden\" name=\"sp_crowdsourcing_remove["+user_id+"][]\" value=\""+player_id+"\">");
+		$(this).after("<input type=\"hidden\" name=\"sp_user-scores_remove["+user_id+"][]\" value=\""+player_id+"\">");
 		$siblings = $row.siblings(".sp-row-unapproved");
 		if (!$siblings.length) {
-			$el = $(this).closest(".sp-crowdsourcing-user-container");
+			$el = $(this).closest(".sp-user-scores-user-container");
 		} else {
 			$el = $row.removeClass("sp-row-unapproved");
 		}
 		$el.fadeOut(function() {
-			$(".sp-crowdsourcing-save").fadeIn();
+			$(".sp-user-scores-save").fadeIn();
 		});
 		event.preventDefault();
 		return false;

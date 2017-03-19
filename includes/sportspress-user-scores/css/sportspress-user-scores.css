@@ -1,0 +1,8 @@
+.sp-event-user-scores td {
+	position: relative;
+}
+
+.sp-event-user-scores td input[type="text"] {
+	display: block;
+	width: 100%;
+}

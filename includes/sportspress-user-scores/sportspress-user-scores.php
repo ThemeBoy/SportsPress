@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Crowdsourcing
+Plugin Name: SportsPress User Scores
 Plugin URI: http://tboy.co/pro
 Description: Allow players, staff, and visitors to submit event scores.
 Author: ThemeBoy
@@ -11,16 +11,16 @@ Version: 2.2.11
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'SportsPress_Crowdsourcing' ) ) :
+if ( ! class_exists( 'SportsPress_User_Scores' ) ) :
 
 /**
- * Main SportsPress Crowdsourcing Class
+ * Main SportsPress User Scores Class
  *
- * @class SportsPress_Crowdsourcing
+ * @class SportsPress_User_Scores
  * @version	2.2
  *
  */
-class SportsPress_Crowdsourcing {
+class SportsPress_User_Scores {
 
 	/**
 	 * Constructor
@@ -41,14 +41,14 @@ class SportsPress_Crowdsourcing {
 	 * Define constants
 	 */
 	private function define_constants() {
-		if ( !defined( 'SP_CROWDSOURCING_VERSION' ) )
-			define( 'SP_CROWDSOURCING_VERSION', '2.2' );
+		if ( !defined( 'SP_USER_SCORES_VERSION' ) )
+			define( 'SP_USER_SCORES_VERSION', '2.2' );
 
-		if ( !defined( 'SP_CROWDSOURCING_URL' ) )
-			define( 'SP_CROWDSOURCING_URL', plugin_dir_url( __FILE__ ) );
+		if ( !defined( 'SP_USER_SCORES_URL' ) )
+			define( 'SP_USER_SCORES_URL', plugin_dir_url( __FILE__ ) );
 
-		if ( !defined( 'SP_CROWDSOURCING_DIR' ) )
-			define( 'SP_CROWDSOURCING_DIR', plugin_dir_path( __FILE__ ) );
+		if ( !defined( 'SP_USER_SCORES_DIR' ) )
+			define( 'SP_USER_SCORES_DIR', plugin_dir_path( __FILE__ ) );
 	}
 
 	/**
@@ -57,10 +57,10 @@ class SportsPress_Crowdsourcing {
 	 * @return array
 	 */
 	public function templates( $templates = array() ) {
-		$templates['crowdsourcing'] = array(
-			'title' => __( 'Crowdsourcing', 'sportspress' ),
+		$templates['user_scores'] = array(
+			'title' => __( 'User Scores', 'sportspress' ),
 			'label' => __( 'My Scores', 'sportspress' ),
-			'option' => 'sportspress_event_show_crowdsourcing',
+			'option' => 'sportspress_event_show_user_scores',
 			'action' => array( $this, 'output' ),
 			'default' => 'no',
 		);
@@ -69,24 +69,24 @@ class SportsPress_Crowdsourcing {
 	}
 
 	/**
-	 * Output crowdsourcing.
+	 * Output user scores.
 	 *
 	 * @access public
 	 * @return void
 	 */
 	public function output() {
 		if ( ! current_user_can( 'edit_sp_players' ) ) return;
-		sp_get_template( 'event-crowdsourcing.php', array(), '', SP_CROWDSOURCING_DIR . 'templates/' );
+		sp_get_template( 'event-user-scores.php', array(), '', SP_USER_SCORES_DIR . 'templates/' );
 	}
 
 	/**
 	 * Add styles to SP frontend
 	 */
 	public function add_styles( $styles = array() ) {
-		$styles['sportspress-crowdsourcing'] = array(
-			'src'     => str_replace( array( 'http:', 'https:' ), '', SP_CROWDSOURCING_URL ) . 'css/sportspress-crowdsourcing.css',
+		$styles['sportspress-user-scores'] = array(
+			'src'     => str_replace( array( 'http:', 'https:' ), '', SP_USER_SCORES_URL ) . 'css/sportspress-user-scores.css',
 			'deps'    => 'sportspress-general',
-			'version' => SP_CROWDSOURCING_VERSION,
+			'version' => SP_USER_SCORES_VERSION,
 			'media'   => 'all'
 		);
 		return $styles;
@@ -97,7 +97,7 @@ class SportsPress_Crowdsourcing {
 	 */
 	public function add_text_options( $options = array() ) {
 		return array_merge( $options, array(
-			__( 'Crowdsourcing', 'sportspress' ),
+			__( 'User Scores', 'sportspress' ),
 			__( 'Submit Your Scores', 'sportspress' ),
 		) );
 	}
@@ -106,7 +106,7 @@ class SportsPress_Crowdsourcing {
 	 * Conditonally load classes and functions only needed when viewing the post type.
 	 */
 	public function include_post_type_handlers() {
-		include_once( 'includes/class-sp-crowdsourcing-meta-boxes.php' );
+		include_once( 'includes/class-sp-user-scores-meta-boxes.php' );
 	}
 
 	/**
@@ -116,14 +116,14 @@ class SportsPress_Crowdsourcing {
 		$screen = get_current_screen();
 
 		if ( in_array( $screen->id, array( 'sp_event', 'edit-sp_event' ) ) ) {
-			wp_enqueue_style( 'sportspress-crowdsourcing-admin', SP_CROWDSOURCING_URL . 'css/admin.css', array(), SP_CROWDSOURCING_VERSION );
-			wp_enqueue_script( 'sportspress-crowdsourcing-admin', SP_CROWDSOURCING_URL . 'js/admin.js', array( 'jquery' ), SP_CROWDSOURCING_VERSION );
+			wp_enqueue_style( 'sportspress-user-scores-admin', SP_USER_SCORES_URL . 'css/admin.css', array(), SP_USER_SCORES_VERSION );
+			wp_enqueue_script( 'sportspress-user-scores-admin', SP_USER_SCORES_URL . 'js/admin.js', array( 'jquery' ), SP_USER_SCORES_VERSION );
 		}
 	}
 }
 
 endif;
 
-if ( get_option( 'sportspress_load_crowdsourcing_module', 'yes' ) == 'yes' ) {
-	new SportsPress_Crowdsourcing();
+if ( get_option( 'sportspress_load_user_scores_module', 'yes' ) == 'yes' ) {
+	new SportsPress_User_Scores();
 }

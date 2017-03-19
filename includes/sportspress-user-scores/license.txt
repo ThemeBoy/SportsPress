@@ -1,4 +1,4 @@
-SportsPress Crowdsourcing
+SportsPress User Scores
 
 Copyright 2017 by ThemeBoy
 
@@ -26,7 +26,7 @@ and
 
   ThemeBoy
 
-  SportsPress Crowdsourcing is released under the GPL
+  SportsPress User Scores is released under the GPL
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

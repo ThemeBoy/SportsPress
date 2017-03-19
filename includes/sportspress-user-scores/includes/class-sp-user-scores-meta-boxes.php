@@ -1,19 +1,19 @@
 <?php
 /**
- * Crowdsourcing Meta Boxes
+ * User Scores Meta Boxes
  *
  * @author    ThemeBoy
  * @category  Admin
- * @package   SportsPress_Crowdsourcings
+ * @package   SportsPress_User_Scoress
  * @version   2.2.11
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * SP_Crowdsourcing_Meta_Boxes
+ * SP_User_Scores_Meta_Boxes
  */
-class SP_Crowdsourcing_Meta_Boxes {
+class SP_User_Scores_Meta_Boxes {
 
   /**
    * Constructor
@@ -27,18 +27,18 @@ class SP_Crowdsourcing_Meta_Boxes {
    * Add Meta boxes
    */
   public function add_meta_boxes() {
-    add_meta_box( 'sp_crowdsourcingdiv', __( 'Crowdsourcing', 'sportspress' ), array( $this, 'crowdsourcing' ), 'sp_event', 'normal', 'high' );
+    add_meta_box( 'sp_user_scoresdiv', __( 'User Scores', 'sportspress' ), array( $this, 'user_scores' ), 'sp_event', 'normal', 'high' );
   }
 
   /**
-   * Output the crowdsourcing metabox
+   * Output the user scores metabox
    */
-  public static function crowdsourcing( $post ) {
+  public static function user_scores( $post ) {
     $event = new SP_Event( $post );
     list( $labels, $columns, $stats, $teams, $formats, $order, $timed ) = $event->performance( true );
 
     $i = 0;
-    $scores = (array) get_post_meta( $post->ID, 'sp_crowdsourcing', true );
+    $scores = (array) get_post_meta( $post->ID, 'sp_user_scores', true );
     ?>
     <?php foreach ( $scores as $user_id => $players ) { ?>
       <?php
@@ -46,7 +46,7 @@ class SP_Crowdsourcing_Meta_Boxes {
       $players = array_filter( $players );
       if ( ! sizeof( $players ) ) continue;
       ?>
-      <div class="sp-crowdsourcing-user-container">
+      <div class="sp-user-scores-user-container">
         <p><strong>
           <?php
           if ( $user_id ) {
@@ -63,7 +63,7 @@ class SP_Crowdsourcing_Meta_Boxes {
           <?php printf( __( 'Submitted by %s', 'sportspress' ), $display_name ); ?>
         </strong></p>
         <div class="sp-data-table-container">
-          <table class="widefat sp-data-table sp-crowdsourcing-table">
+          <table class="widefat sp-data-table sp-user-scores-table">
             <thead>
               <tr>
                 <th><?php _e( 'Player', 'sportspress' ); ?></th>
@@ -75,8 +75,9 @@ class SP_Crowdsourcing_Meta_Boxes {
               </tr>
             </thead>
             <tbody>
+              <?php $r = 0; ?>
               <?php foreach ( $players as $player_id => $player ) { ?>
-                <tr class="sp-row sp-post sp-row-unapproved unapproved" data-sp-player="<?php echo $player_id; ?>" data-sp-user="<?php echo $user_id; ?>">
+                <tr class="sp-row sp-post sp-row-unapproved unapproved<?php if ( $r % 2 == 0 ) { ?> alternate<?php } ?>" data-sp-player="<?php echo $player_id; ?>" data-sp-user="<?php echo $user_id; ?>">
                   <td><?php echo get_the_title( $player_id ); ?></td>
                   <?php foreach ( $labels as $key => $label ): ?>
                     <?php if ( 'equation' === sp_array_value( $formats, $key, 'number' ) ) continue; ?>
@@ -90,7 +91,7 @@ class SP_Crowdsourcing_Meta_Boxes {
                     </div>
                   </td>
                 </tr>
-              <?php } ?>
+              <?php $r++; } ?>
             </tbody>
           </table>
         </div>
@@ -98,7 +99,7 @@ class SP_Crowdsourcing_Meta_Boxes {
     <?php $i++; } ?>
 
     <?php if ( $i ) { ?>
-      <p class="sp-crowdsourcing-save">
+      <p class="sp-user-scores-save">
         <input name="save" type="submit" class="button button-primary button-large" value="<?php _e( 'Save Changes', 'sportspress' ); ?>">
       </p>
     <?php } else { ?>
@@ -111,10 +112,10 @@ class SP_Crowdsourcing_Meta_Boxes {
    * Save meta boxes data
    */
   public static function save( $post_id ) {
-    if ( ! isset( $_POST['sp_crowdsourcing_remove'] ) ) return;
+    if ( ! isset( $_POST['sp_user_scores_remove'] ) ) return;
 
-    $meta = (array) get_post_meta( $post_id, 'sp_crowdsourcing', true );
-    $entries = $_POST['sp_crowdsourcing_remove'];
+    $meta = (array) get_post_meta( $post_id, 'sp_user_scores', true );
+    $entries = $_POST['sp_user_scores_remove'];
 
     if ( ! is_array( $entries ) ) return;
 
@@ -125,8 +126,8 @@ class SP_Crowdsourcing_Meta_Boxes {
         unset( $meta[ $user_id ][ $player_id ] );
       }
     }
-    update_post_meta( $post_id, 'sp_crowdsourcing', $meta );
+    update_post_meta( $post_id, 'sp_user_scores', $meta );
   }
 }
 
-new SP_Crowdsourcing_Meta_Boxes();
+new SP_User_Scores_Meta_Boxes();
