@@ -59,9 +59,10 @@ class SportsPress_Crowdsourcing {
 	public function templates( $templates = array() ) {
 		$templates['crowdsourcing'] = array(
 			'title' => __( 'Crowdsourcing', 'sportspress' ),
+			'label' => __( 'My Scores', 'sportspress' ),
 			'option' => 'sportspress_event_show_crowdsourcing',
 			'action' => array( $this, 'output' ),
-			'default' => 'yes',
+			'default' => 'no',
 		);
 		
 		return $templates;
