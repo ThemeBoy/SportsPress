@@ -21,25 +21,27 @@ if ( empty( $players ) ) return;
 // Get current user ID
 $user_id = get_current_user_id();
 
+// Get existing submissions
+$meta = (array) get_post_meta( $id, 'sp_crowdsourcing', true );
+
 if ( isset( $_POST['sp_crowdsourcing'] ) && wp_verify_nonce( $_POST['sp_crowdsourcing'], 'submit_score' ) ) {
 	if ( isset( $_POST['sp_scores'] ) ) {
 		$scores = (array) $_POST['sp_scores'];
 
-		$meta = (array) get_post_meta( $id, 'sp_crowdsourcing', true );
-
 		foreach ( $scores as $player => $stats ) {
-			$stats = array_filter( $stats );
-			if ( empty( $stats ) ) continue;
-
-			$stats['_timestamp'] = date('Y-m-d H:i:s');
-			$stats['_player_id'] = $player;
-			$meta[ $user_id ][] = $stats;
+			$stats = array_filter( $stats, 'sp_filter_non_empty' );
+			if ( empty( $stats ) ) {
+				unset( $scores[ $player ] );
+			} else {
+				$meta[ $user_id ][ $player ] = array_merge( sp_array_value( sp_array_value( $meta, $user_id, array() ), $player, array() ), $stats );
+			}
 		}
 
-		update_post_meta( $id, 'sp_crowdsourcing', $meta );
+		if ( ! empty( $scores ) ) {
+			update_post_meta( $id, 'sp_crowdsourcing', $meta );
 
-		echo '<div class="sp-template sp-template-thank-you"><p class="sp-thank-you">' . __( 'Thank you!', 'sportspress'  ) . '</p></div>';
-		return;
+			echo '<div class="sp-template sp-template-thank-you"><p class="sp-thank-you">' . __( 'Thank you!', 'sportspress'  ) . '</p></div>';
+		}
 	}
 }
 
@@ -77,13 +79,16 @@ $players = array_unique( $players );
 // Return if no players are left
 if ( ! sizeof( $players ) ) return;
 
+// Get user submitted scores
+$user_scores = sp_array_value( $meta, $user_id, array() );
+
 // Get event performance data
 $event = new SP_Event( $id );
 list( $labels, $columns, $stats, $teams, $formats, $order, $timed ) = $event->performance( true );
 ?>
 <form method="post">
 	<div class="sp-template sp-template-crowdsourcing sp-template-event-crowdsourcing">
-		<h4 class="sp-table-caption"><?php _e( 'Submit Your Scores', 'sportspress' ); ?></h4>
+		<h4 class="sp-table-caption"><?php empty( $user_scores ) ? _e( 'Submit Your Scores', 'sportspress' ) :  _e( 'Update Your Scores', 'sportspress' ); ?></h4>
 		<div class="sp-table-wrapper">
 			<table class="sp-event-crowdsourcing sp-data-table<?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>">
 				<thead>
@@ -92,6 +97,7 @@ list( $labels, $columns, $stats, $teams, $formats, $order, $timed ) = $event->pe
 							<?php _e( 'Player', 'sportspress' ); ?>
 						</th>
 						<?php foreach ( $labels as $key => $label ): ?>
+              <?php if ( 'equation' === sp_array_value( $formats, $key, 'number' ) ) continue; ?>
 							<th class="data-<?php echo $key; ?>"><?php echo $label; ?></th>
 						<?php endforeach; ?>
 					</tr>
@@ -103,8 +109,10 @@ list( $labels, $columns, $stats, $teams, $formats, $order, $timed ) = $event->pe
 								<?php echo get_the_title( $player ); ?>
 							</td>
 							<?php foreach ( $labels as $key => $label ): ?>
+              	<?php if ( 'equation' === sp_array_value( $formats, $key, 'number' ) ) continue; ?>
+								<?php $placeholder = sp_array_value( sp_array_value( $user_scores, $player, array() ), $key, '' ); ?>
 								<td class="data-<?php echo $key; ?>">
-									<input type="text" name="sp_scores[<?php echo $player; ?>][<?php echo $key; ?>]">
+									<input type="text" name="sp_scores[<?php echo $player; ?>][<?php echo $key; ?>]" placeholder="<?php echo $placeholder; ?>">
 								</td>
 							<?php endforeach; ?>
 						</tr>

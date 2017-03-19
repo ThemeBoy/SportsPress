@@ -38,9 +38,9 @@ class SP_Crowdsourcing_Meta_Boxes {
     list( $labels, $columns, $stats, $teams, $formats, $order, $timed ) = $event->performance( true );
 
     $i = 0;
-    $crowdsourcing = (array) get_post_meta( $post->ID, 'sp_crowdsourcing', true );
+    $scores = (array) get_post_meta( $post->ID, 'sp_crowdsourcing', true );
     ?>
-    <?php foreach ( $crowdsourcing as $user_id => $players ) { ?>
+    <?php foreach ( $scores as $user_id => $players ) { ?>
       <?php
       if ( ! is_array( $players ) ) continue;
       $players = array_filter( $players );
@@ -51,7 +51,11 @@ class SP_Crowdsourcing_Meta_Boxes {
           <?php
           if ( $user_id ) {
             $user_data = get_userdata( $user_id );
-            $display_name = '<a href="' . get_edit_user_link( $user_id ) . '">' . $user_data->display_name . '</a>';
+            if ( is_object( $user_data ) ) {
+              $display_name = '<a href="' . get_edit_user_link( $user_id ) . '">' . $user_data->display_name . '</a>';
+            } else {
+              $display_name = __( 'User', 'sportspress' );
+            }
           } else {
             $display_name = __( 'Guest', 'sportspress' );
           }
@@ -62,7 +66,6 @@ class SP_Crowdsourcing_Meta_Boxes {
           <table class="widefat sp-data-table sp-crowdsourcing-table">
             <thead>
               <tr>
-                <th><?php _e( 'Submitted on', 'sportspress' ); ?></th>
                 <th><?php _e( 'Player', 'sportspress' ); ?></th>
                 <?php foreach ( $labels as $key => $label ): ?>
                   <?php if ( 'equation' === sp_array_value( $formats, $key, 'number' ) ) continue; ?>
@@ -72,10 +75,9 @@ class SP_Crowdsourcing_Meta_Boxes {
               </tr>
             </thead>
             <tbody>
-              <?php foreach ( $players as $i => $player ) { ?>
-                <tr class="sp-row sp-post sp-row-unapproved unapproved" data-sp-player="<?php echo $player['_player_id']; ?>" data-sp-user="<?php echo $user_id; ?>" data-sp-index="<?php echo $i; ?>">
-                  <td><?php echo date_i18n( 'M j, Y @ H:i', strtotime( $player['_timestamp'] ) ); ?></td>
-                  <td><?php echo get_the_title( $player['_player_id'] ); ?></td>
+              <?php foreach ( $players as $player_id => $player ) { ?>
+                <tr class="sp-row sp-post sp-row-unapproved unapproved" data-sp-player="<?php echo $player_id; ?>" data-sp-user="<?php echo $user_id; ?>">
+                  <td><?php echo get_the_title( $player_id ); ?></td>
                   <?php foreach ( $labels as $key => $label ): ?>
                     <?php if ( 'equation' === sp_array_value( $formats, $key, 'number' ) ) continue; ?>
                     <?php $value = sp_array_value( $player, $key, '' ); ?>
@@ -116,11 +118,11 @@ class SP_Crowdsourcing_Meta_Boxes {
 
     if ( ! is_array( $entries ) ) return;
 
-    foreach ( $entries as $user_id => $indexes ) {
-      if ( ! is_array( $indexes ) ) continue;
+    foreach ( $entries as $user_id => $players ) {
+      if ( ! is_array( $players ) ) continue;
 
-      foreach ( $indexes as $index ) {
-        unset( $meta[ $user_id ][ $index ] );
+      foreach ( $players as $player_id ) {
+        unset( $meta[ $user_id ][ $player_id ] );
       }
     }
     update_post_meta( $post_id, 'sp_crowdsourcing', $meta );
