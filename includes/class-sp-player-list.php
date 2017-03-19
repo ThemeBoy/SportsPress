@@ -404,14 +404,16 @@ class SP_Player_List extends SP_Custom_Post {
 								$totals[ $player_id ]['eventsattended'] ++;
 
 								// Continue with incrementing values if active in event
-								if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ): 
+								if ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ):
 									$totals[ $player_id ]['eventsplayed'] ++;
-									$totals[ $player_id ]['eventminutes'] += $minutes;
 
-									// Adjust for substitution time
+									// Initialize played minutes
+									$played_minutes = $minutes;
+
+									// Adjust for sendoffs and substitution time
 									if ( sp_array_value( $player_performance, 'status' ) === 'sub' ):
-										$totals[ $player_id ]['eventminutes'] -= sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), 'sub' ), 0, 0 );
 
+										// Substituted for another player
 										$timeline_performance = sp_array_value( sp_array_value( $timeline, $team_id, array() ), $player_id, array() );
 										if ( empty( $timeline_performance ) ) continue;
 										foreach ( $sendoffs as $sendoff_key ):
@@ -420,9 +422,17 @@ class SP_Player_List extends SP_Custom_Post {
 											$sendoff_times = array_filter( $sendoff_times );
 											$sendoff_time = end( $sendoff_times );
 											if ( ! $sendoff_time ) $sendoff_time = 0;
-											$totals[ $player_id ]['eventminutes'] += $sendoff_time - $minutes;
+
+											// Count minutes until being sent off
+											$played_minutes = $sendoff_time;
 										endforeach;
+
+										// Subtract minutes prior to substitution
+										$substitution_time = sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), 'sub' ), 0, 0 );
+										$played_minutes -= $substitution_time;
 									else:
+
+										// Starting lineup with possible substitution
 										$subbed_out = false;
 										foreach ( $timeline as $timeline_team => $timeline_players ):
 											if ( ! is_array( $timeline_players ) ) continue;
@@ -430,25 +440,35 @@ class SP_Player_List extends SP_Custom_Post {
 												if ( 'sub' === sp_array_value( sp_array_value( $players, $timeline_player, array() ), 'status' ) && $player_id === (int) sp_array_value( sp_array_value( $players, $timeline_player, array() ), 'sub', 0 ) ):
 													$substitution_time = sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $timeline_player ), 'sub' ), 0, 0 );
 													if ( $substitution_time ):
-														$totals[ $player_id ]['eventminutes'] += $substitution_time - $minutes;
+
+														// Count minutes until substitution
+														$played_minutes = $substitution_time;
 														$subbed_out = true;
 													endif;
 												endif;
 											endforeach;
 
+											// No need to check for sendoffs if subbed out
 											if ( $subbed_out ) continue;
+
+											// Check for sendoffs
 											$timeline_performance = sp_array_value( $timeline_players, $player_id, array() );
 											if ( empty( $timeline_performance ) ) continue;
 											foreach ( $sendoffs as $sendoff_key ):
 												if ( ! array_key_exists( $sendoff_key, $timeline_performance ) ) continue;
+												if ( ! sp_array_value( $player_performance, $sendoff_key, 0 ) ) continue;
 												$sendoff_times = sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), $sendoff_key );
 												$sendoff_times = array_filter( $sendoff_times );
 												$sendoff_time = end( $sendoff_times );
-												if ( ! $sendoff_time ) $sendoff_time = 0;
-												$totals[ $player_id ]['eventminutes'] += $sendoff_time - $minutes;
+												if ( false === $sendoff_time ) continue;
+
+												// Count minutes until being sent off
+												$played_minutes = $sendoff_time;
 											endforeach;
 										endforeach;
 									endif;
+
+									$totals[ $player_id ]['eventminutes'] += max( 0, $played_minutes );
 
 									if ( sp_array_value( $player_performance, 'status' ) == 'lineup' ):
 										$totals[ $player_id ]['eventsstarted'] ++;
