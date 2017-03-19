@@ -506,6 +506,7 @@ class SP_Install {
 				foreach ( $cap_group as $cap ) {
 					$wp_roles->remove_cap( 'sp_player', $cap );
 					$wp_roles->remove_cap( 'sp_staff', $cap );
+					$wp_roles->remove_cap( 'sp_event_manager', $cap );
 					$wp_roles->remove_cap( 'sp_team_manager', $cap );
 					$wp_roles->remove_cap( 'sp_league_manager', $cap );
 					$wp_roles->remove_cap( 'administrator', $cap );
