@@ -181,8 +181,13 @@ class SportsPress_User_Scores {
 	 */
 	public function add_text_options( $options = array() ) {
 		return array_merge( $options, array(
-			__( 'User Scores', 'sportspress' ),
+			__( 'My Results', 'sportspress' ),
+			__( 'Submit Your Results', 'sportspress' ),
+			__( 'Update Your Results', 'sportspress' ),
+			__( 'My Scores', 'sportspress' ),
 			__( 'Submit Your Scores', 'sportspress' ),
+			__( 'Update Your Scores', 'sportspress' ),
+			__( 'Submit', 'sportspress' ),
 		) );
 	}
 
