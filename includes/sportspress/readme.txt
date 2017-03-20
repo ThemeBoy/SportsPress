@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.7
-Stable tag: 2.2.11
+Stable tag: 2.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,9 +238,15 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 == Changelog ==
 
-= 2.2.11 =
-* Fix - Timeout issue when tiebreaker checks for head-to-head standings.
-* Fix - Check for REST API controllers to prevent errors when using Jetpack.
+= 2.3 =
+* Feature - New setup wizard for first-time installs.
+* Feature - Option to automatically create player profiles during user registration.
+* Feature - Choose team or individual mode for each event.
+* Feature - Send Off setting for player statistics to suspend minute count for that player.
+* Tweak - Remove horizontal scrolling in dashboard to fix hidden dropdowns.
+* Tweak - Revert text color overrides for dark color schemes in frontend styles.
+* Fix - Borrowed players not automatically loading on event edit.
+* Fix - Played minutes calculation and player profile statistics.
 
 = 2.2.10 =
 * Tweak - Update modules page.
