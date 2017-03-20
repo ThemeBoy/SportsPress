@@ -200,11 +200,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 										<?php } ?>
 									</ul>
 								<?php } ?>
-
-								<p class="sp-module-actions">
-									<span><?php _e( 'Basic Setup', 'sportspress' ); ?></span>
-									<a class="button" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-setup', 'install_sportspress' => 'true' ), 'admin.php' ) ) ); ?>"><?php _e( 'Run the Setup Wizard', 'sportspress' ); ?></a>
-								</p>
 							</td></tr>
 						</tbody>
 					</table>

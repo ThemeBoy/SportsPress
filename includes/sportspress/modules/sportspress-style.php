@@ -144,16 +144,16 @@ class SportsPress_Style {
 		echo '.sp-data-table .sp-highlight,.sp-data-table .highlighted td,.sp-template-scoreboard td:hover{background:' . $colors['background_highlight'] . ' !important}';
 
 		// Text
-		echo '.sp-template *,.sp-data-table *,.sp-table-caption,.sp-data-table tfoot a:hover,.sp-template .sp-view-all-link a:hover,.sp-template-gallery .sp-gallery-group-name,.sp-template-details dd,.sp-template-event-logos .sp-team-name,.sp-template-event-logos .sp-team-result,.sp-template-event-blocks .sp-event-results,.sp-template-scoreboard a,.sp-template-scoreboard a:hover,.sp-tournament-bracket,.sp-tournament-bracket .sp-event .sp-event-title:hover,.sp-tournament-bracket .sp-event .sp-event-title:hover *{color:' . $colors['text'] . ' !important}';
+		echo '.sp-template *,.sp-data-table *,.sp-table-caption,.sp-data-table tfoot a:hover,.sp-template .sp-view-all-link a:hover,.sp-template-gallery .sp-gallery-group-name,.sp-template-details dd,.sp-template-event-logos .sp-team-result,.sp-template-event-blocks .sp-event-results,.sp-template-scoreboard a,.sp-template-scoreboard a:hover,.sp-tournament-bracket,.sp-tournament-bracket .sp-event .sp-event-title:hover,.sp-tournament-bracket .sp-event .sp-event-title:hover *{color:' . $colors['text'] . ' !important}';
 		echo '.sp-template .sp-view-all-link a,.sp-countdown span small,.sp-template-event-calendar tfoot a,.sp-template-event-blocks .sp-event-date,.sp-template-details dt,.sp-template-scoreboard .sp-scoreboard-date,.sp-tournament-bracket th,.sp-tournament-bracket .sp-event .sp-event-title,.sp-template-scoreboard .sp-scoreboard-date,.sp-tournament-bracket .sp-event .sp-event-title *{color:' . $colors['text_muted'] . ' !important}';
 
 		// Heading
 		echo '.sp-data-table th,.sp-template-countdown .sp-event-venue,.sp-template-countdown .sp-event-league,.sp-template-gallery .gallery-item a,.sp-template-gallery .gallery-caption,.sp-template-scoreboard .sp-scoreboard-nav,.sp-tournament-bracket .sp-team-name:hover,.sp-tournament-bracket thead th,.sp-tournament-bracket .sp-heading{color:' . $colors['heading'] . ' !important}';
 
 		// Link
-		echo '.sp-template a,.sp-data-table a,.sp-tab-menu-item-active a, .sp-tab-menu-item-active a:hover{color:' . $colors['link'] . ' !important}';
+		echo '.sp-template a,.sp-data-table a,.sp-tab-menu-item-active a, .sp-tab-menu-item-active a:hover,.sp-template .sp-message{color:' . $colors['link'] . ' !important}';
 		echo '.sp-template-gallery .gallery-caption strong,.sp-tournament-bracket .sp-team-name:hover,.sp-template-scoreboard .sp-scoreboard-nav,.sp-tournament-bracket .sp-heading{background:' . $colors['link'] . ' !important}';
-		echo '.sp-tournament-bracket .sp-team-name:hover,.sp-tournament-bracket .sp-heading,.sp-tab-menu-item-active a, .sp-tab-menu-item-active a:hover{border-color:' . $colors['link'] . ' !important}';
+		echo '.sp-tournament-bracket .sp-team-name:hover,.sp-tournament-bracket .sp-heading,.sp-tab-menu-item-active a, .sp-tab-menu-item-active a:hover,.sp-template .sp-message{border-color:' . $colors['link'] . ' !important}';
 	}
 }
 

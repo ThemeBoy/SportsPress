@@ -24,10 +24,6 @@ class SP_Meta_Box_Table_Details {
 		$caption = get_post_meta( $post->ID, 'sp_caption', true );
 		$select = get_post_meta( $post->ID, 'sp_select', true );
 		$post_type = sp_get_post_mode_type( $post->ID );
-		if ( ! $select ) {
-			global $pagenow;
-			$select = ( 'post-new.php' ? 'auto' : 'manual' );
-		}
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>

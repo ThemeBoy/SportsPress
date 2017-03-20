@@ -236,7 +236,7 @@ class SP_Meta_Box_Event_Results {
 		$auto_columns = wp_list_pluck( $dynamic_results, 'post_name' );
 		?>
 		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table">
+			<table class="widefat sp-data-table sp-results-table">
 				<thead>
 					<tr>
 						<th class="column-team">
@@ -265,14 +265,14 @@ class SP_Meta_Box_Event_Results {
 					foreach ( $data as $team_id => $team_results ):
 						if ( ! $team_id || -1 == $team_id ) continue;
 						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>" data-team="<?php echo $team_id; ?>">
 							<td>
 								<?php echo get_the_title( $team_id ); ?>
 							</td>
 							<?php foreach( $columns as $column => $label ):
 								$value = sp_array_value( $team_results, $column, '' );
 								?>
-								<td><input type="text" name="sp_results[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>"<?php if ( in_array( $column, $auto_columns ) ) { ?> placeholder="<?php _e( '(Auto)', 'sportspress' ); ?>"<?php } ?> /></td>
+								<td><input class="sp-team-<?php echo $column; ?>-input" type="text" name="sp_results[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>"<?php if ( in_array( $column, $auto_columns ) ) { ?> placeholder="<?php _e( '(Auto)', 'sportspress' ); ?>"<?php } ?> /></td>
 							<?php endforeach; ?>
 							<td>
 								<?php

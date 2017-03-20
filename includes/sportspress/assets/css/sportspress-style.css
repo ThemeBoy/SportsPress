@@ -64,6 +64,15 @@
     width: 100% !important;
 }
 
+/* Color Resets */
+
+.sp-template input,
+.sp-data-table input,
+.sp-template .sp-event-logos,
+.sp-template .sp-event-staff {
+    color: initial !important;
+}
+
 /* Links */
 
 .sp-template a,
@@ -642,6 +651,12 @@
 .sp-tab-menu-item-active a:hover {
     color: #00a69c !important;
     border-bottom-color: #00a69c !important;
+}
+
+/* Messages */
+.sp-template .sp-message {
+    color: #00a69c !important;
+    border-color: #00a69c !important;
 }
 
 /* Post Content */

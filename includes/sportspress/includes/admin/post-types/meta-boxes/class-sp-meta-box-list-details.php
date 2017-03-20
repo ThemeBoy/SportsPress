@@ -28,10 +28,6 @@ class SP_Meta_Box_List_Details {
 		$order = get_post_meta( $post->ID, 'sp_order', true );
 		$select = get_post_meta( $post->ID, 'sp_select', true );
 		$number = get_post_meta( $post->ID, 'sp_number', true );
-		if ( ! $select ) {
-			global $pagenow;
-			$select = ( 'post-new.php' == $pagenow ? 'auto' : 'manual' );
-		}
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>

@@ -59,7 +59,7 @@ class SportsPress_User_Registration {
         'title'     => __( 'User Registration', 'sportspress' ),
         'desc'     => __( 'Add name fields to signup form', 'sportspress' ),
         'id'     => 'sportspress_registration_name_inputs',
-        'default'  => 'yes',
+        'default'  => 'no',
         'type'     => 'checkbox',
         'checkboxgroup'    => 'start',
       ),
@@ -67,7 +67,7 @@ class SportsPress_User_Registration {
       array(
         'desc'     => __( 'Create player profiles for new users', 'sportspress' ),
         'id'     => 'sportspress_registration_add_player',
-        'default'  => 'yes',
+        'default'  => 'no',
         'type'     => 'checkbox',
         'checkboxgroup'    => 'end',
       ),
@@ -80,7 +80,7 @@ class SportsPress_User_Registration {
    * Add name fields to user registration form.
    */
   public static function register_form() {
-    if ( 'yes' === get_option( 'sportspress_registration_name_inputs', 'yes' ) ) {
+    if ( 'yes' === get_option( 'sportspress_registration_name_inputs', 'no' ) ) {
       $first_name = ( ! empty( $_POST['first_name'] ) ) ? trim( $_POST['first_name'] ) : '';
       $last_name = ( ! empty( $_POST['last_name'] ) ) ? trim( $_POST['last_name'] ) : '';
       ?>
@@ -104,7 +104,7 @@ class SportsPress_User_Registration {
     $parts = array();
 
     // Save first and last name
-    if ( 'yes' === get_option( 'sportspress_registration_name_inputs', 'yes' ) ) {
+    if ( 'yes' === get_option( 'sportspress_registration_name_inputs', 'no' ) ) {
       if ( ! empty( $_POST['first_name'] ) ) {
         $meta = trim( $_POST['first_name'] );
         $parts[] = $meta;
@@ -119,7 +119,7 @@ class SportsPress_User_Registration {
     }
 
     // Add player
-    if ( 'yes' === get_option( 'sportspress_registration_add_player', 'yes' ) ) {
+    if ( 'yes' === get_option( 'sportspress_registration_add_player', 'no' ) ) {
       if ( ! sizeof( $parts ) && ! empty( $_POST['user_login'] ) ) {
         $parts[] = trim( $_POST['user_login'] );
       }
