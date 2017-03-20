@@ -25,6 +25,8 @@
       <key name="Logos"/>
       <key name="Match Day"/>
       <key name="Match Stats"/>
+      <key name="My Scores"/>
+      <key name="My Results"/>
       <key name="Name"/>
       <key name="Nationality"/>
       <key name="Outcome"/>
@@ -47,6 +49,9 @@
       <key name="Staff"/>
       <key name="Statistics"/>
       <key name="Substitutes"/>
+      <key name="Submit"/>
+      <key name="Submit Your Results"/>
+      <key name="Submit Your Scores"/>
       <key name="TBD"/>
       <key name="Team"/>
       <key name="Teams"/>
@@ -54,6 +59,8 @@
       <key name="Time/Results"/>
       <key name="Total"/>
       <key name="Tweets"/>
+      <key name="Update Your Results"/>
+      <key name="Update Your Scores"/>
       <key name="Venue"/>
       <key name="Video"/>
       <key name="View all events"/>
