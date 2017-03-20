@@ -218,6 +218,13 @@
 	cursor: pointer;
 }
 
+/* Messages */
+.sp-message {
+	padding: 1em;
+	border: 1px solid transparent;
+	text-align: center;
+}
+
 /* Event Logos */
 .sp-event-logos a {
 	text-decoration: none;
