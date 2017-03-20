@@ -123,43 +123,49 @@ class SportsPress_User_Scores {
 
 			apply_filters( 'sportspress_user_scores_options', array(
 				array(
-					'title'     => __( 'League Manager', 'sportspress' ),
-					'desc' 		=> __( 'League managers can submit scores for any player.', 'sportspress' ),
+					'title'     => __( 'Role', 'sportspress' ),
+					'desc'     => __( 'League Manager', 'sportspress' ),
 					'id' 		=> 'sportspress_user_scores_league_manager_status',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'	=> 'start',
+					'desc_tip' 		=> __( 'League managers can submit scores for any player.', 'sportspress' ),
 				),
 
 				array(
-					'title'     => __( 'Event Manager', 'sportspress' ),
-					'desc' 		=> __( 'Event managers can submit scores for any player.', 'sportspress' ),
+					'desc'     => __( 'Event Manager', 'sportspress' ),
 					'id' 		=> 'sportspress_user_scores_event_manager_status',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'	=> '',
+					'desc_tip' 		=> __( 'Event managers can submit scores for any player.', 'sportspress' ),
 				),
 
 				array(
-					'title'     => __( 'Team Manager', 'sportspress' ),
-					'desc' 		=> __( 'Team managers can submit scores for their own team.', 'sportspress' ),
+					'desc'     => __( 'Team Manager', 'sportspress' ),
 					'id' 		=> 'sportspress_user_scores_team_manager_status',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'	=> '',
+					'desc_tip' 		=> __( 'Team managers can submit scores for their own team.', 'sportspress' ),
 				),
 
 				array(
-					'title'     => __( 'Staff', 'sportspress' ),
-					'desc' 		=> __( 'Staff can submit scores for their own team.', 'sportspress' ),
+					'desc'     => __( 'Staff', 'sportspress' ),
 					'id' 		=> 'sportspress_user_scores_staff_status',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'	=> '',
+					'desc_tip' 		=> __( 'Staff can submit scores for their own team.', 'sportspress' ),
 				),
 
 				array(
-					'title'     => __( 'Players', 'sportspress' ),
-					'desc' 		=> __( 'Players can submit individual scores.', 'sportspress' ),
+					'desc'     => __( 'Players', 'sportspress' ),
 					'id' 		=> 'sportspress_user_scores_player_status',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'end',
+					'desc_tip' 		=> __( 'Players can submit individual scores.', 'sportspress' ),
 				),
 			)),
 
