@@ -32,6 +32,7 @@ class SportsPress_User_Scores {
 		// Hooks
 		add_filter( 'sportspress_event_templates', array( $this, 'templates' ) );
 	  add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
+		add_filter( 'sportspress_event_settings', array( $this, 'add_settings' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handlers' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -57,11 +58,19 @@ class SportsPress_User_Scores {
 	 * @return array
 	 */
 	public function templates( $templates = array() ) {
+		$templates['user_results'] = array(
+			'title' => __( 'User Results', 'sportspress' ),
+			'label' => __( 'My Results', 'sportspress' ),
+			'option' => 'sportspress_event_show_user_results',
+			'action' => array( $this, 'results_form' ),
+			'default' => 'no',
+		);
+
 		$templates['user_scores'] = array(
 			'title' => __( 'User Scores', 'sportspress' ),
 			'label' => __( 'My Scores', 'sportspress' ),
 			'option' => 'sportspress_event_show_user_scores',
-			'action' => array( $this, 'output' ),
+			'action' => array( $this, 'scores_form' ),
 			'default' => 'no',
 		);
 		
@@ -69,13 +78,22 @@ class SportsPress_User_Scores {
 	}
 
 	/**
-	 * Output user scores.
+	 * Output user results submission form.
 	 *
 	 * @access public
 	 * @return void
 	 */
-	public function output() {
-		if ( ! current_user_can( 'edit_sp_players' ) ) return;
+	public function results_form() {
+		sp_get_template( 'event-user-results.php', array(), '', SP_USER_SCORES_DIR . 'templates/' );
+	}
+
+	/**
+	 * Output user scores submission form.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function scores_form() {
 		sp_get_template( 'event-user-scores.php', array(), '', SP_USER_SCORES_DIR . 'templates/' );
 	}
 
@@ -90,6 +108,66 @@ class SportsPress_User_Scores {
 			'media'   => 'all'
 		);
 		return $styles;
+	}
+
+	/**
+	 * Add event settings.
+	 *
+	 * @return array
+	 */
+	public function add_settings( $settings ) {
+		$settings = array_merge( $settings,
+			array(
+				array( 'title' => __( 'User Scores', 'sportspress' ), 'type' => 'title', 'id' => 'user_scores_options' ),
+			),
+
+			apply_filters( 'sportspress_user_scores_options', array(
+				array(
+					'title'     => __( 'League Manager', 'sportspress' ),
+					'desc' 		=> __( 'League managers can submit scores for any player.', 'sportspress' ),
+					'id' 		=> 'sportspress_user_scores_league_manager_status',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
+					'title'     => __( 'Event Manager', 'sportspress' ),
+					'desc' 		=> __( 'Event managers can submit scores for any player.', 'sportspress' ),
+					'id' 		=> 'sportspress_user_scores_event_manager_status',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
+					'title'     => __( 'Team Manager', 'sportspress' ),
+					'desc' 		=> __( 'Team managers can submit scores for their own team.', 'sportspress' ),
+					'id' 		=> 'sportspress_user_scores_team_manager_status',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
+					'title'     => __( 'Staff', 'sportspress' ),
+					'desc' 		=> __( 'Staff can submit scores for their own team.', 'sportspress' ),
+					'id' 		=> 'sportspress_user_scores_staff_status',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
+					'title'     => __( 'Players', 'sportspress' ),
+					'desc' 		=> __( 'Players can submit individual scores.', 'sportspress' ),
+					'id' 		=> 'sportspress_user_scores_player_status',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+			)),
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'user_scores_options' ),
+			)
+		);
+		return $settings;
 	}
 
 	/**

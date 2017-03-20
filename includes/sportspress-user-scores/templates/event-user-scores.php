@@ -33,8 +33,14 @@ $user_roles = (array) $user->roles;
 // Filter out players that belong to other users
 if ( current_user_can( 'manage_sportspress' ) || in_array( 'sp_event_manager', $user_roles ) ) {
 	// Admin, League Manager, or Event Manager
+	if ( in_array( 'sp_league_manager', $user_roles ) ) {
+		if ( 'no' === get_option( 'sportspress_user_scores_league_manager_status', 'yes' ) ) return;
+	} elseif ( in_array( 'sp_event_manager', $user_roles ) ) {
+		if ( 'no' === get_option( 'sportspress_user_scores_event_manager_status', 'yes' ) ) return;
+	}
 } elseif ( in_array( 'sp_team_manager', $user_roles ) ) {
 	// Team Manager
+	if ( 'no' === get_option( 'sportspress_user_scores_team_manager_status', 'yes' ) ) return;
 	$teams = (array) get_post_meta( $id, 'sp_team', false );
 	$i = -1;
 	$team_players = array();
@@ -48,6 +54,7 @@ if ( current_user_can( 'manage_sportspress' ) || in_array( 'sp_event_manager', $
 	$players = $team_players;
 } elseif ( in_array( 'sp_staff', $user_roles ) ) {
 	// Staff
+	if ( 'no' === get_option( 'sportspress_user_scores_staff_status', 'yes' ) ) return;
 	$staff = (array) get_post_meta( $id, 'sp_staff', false );
 	$i = -1;
 	$staff_players = array();
@@ -62,6 +69,7 @@ if ( current_user_can( 'manage_sportspress' ) || in_array( 'sp_event_manager', $
 	$players = $staff_players;
 } elseif ( in_array( 'sp_player', $user_roles ) ) {
 	// Player
+	if ( 'no' === get_option( 'sportspress_user_scores_player_status', 'yes' ) ) return;
 	foreach ( $players as $i => $player ) {
 		if ( get_post_field( 'post_author', $player ) != $user_id ) {
 			unset( $players[ $i ] );

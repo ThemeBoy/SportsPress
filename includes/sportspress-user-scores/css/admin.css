@@ -1,8 +1,10 @@
-.sp-user-scores-table .row-actions .vim-a {
+.sp-user-scores-table .row-actions .vim-a,
+.sp-user-results-table .row-actions .vim-a {
 	color: #006505;
 }
 
-.sp-user-scores-save {
+.sp-user-scores-save,
+.sp-user-results-save {
 	display: none;
 	text-align: right;
 }
