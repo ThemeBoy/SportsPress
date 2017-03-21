@@ -442,8 +442,9 @@ class SP_Admin_Settings {
 	            // Select sport
 	            case 'sport' :
 
+            		$default = apply_filters( 'sportspress_default_sport', 'soccer' );
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] );
-	            	if ( 'none' === $option_value ) $option_value = 'soccer';
+	            	if ( 'none' === $option_value ) $option_value = $default;
 
 	            	$categories = SP_Admin_Sports::sport_category_names();
 
