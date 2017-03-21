@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SportsPress Style
+Plugin Name: SportsPress Styles
 Plugin URI: http://themeboy.com/
 Description: Add frontend styles to SportsPress.
 Author: ThemeBoy
@@ -11,15 +11,15 @@ Version: 2.2.4
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'SportsPress_Style' ) ) :
+if ( ! class_exists( 'SportsPress_Styles' ) ) :
 
 /**
- * Main SportsPress Style Class
+ * Main SportsPress Styles Class
  *
- * @class SportsPress_Style
+ * @class SportsPress_Styles
  * @version	2.2.4
  */
-class SportsPress_Style {
+class SportsPress_Styles {
 
 	/**
 	 * Constructor
@@ -56,15 +56,16 @@ class SportsPress_Style {
 	 * Add option.
 	*/
 	public static function add_option( $options = array() ) {
-		if ( ! current_theme_supports( 'sportspress' ) ):
-			array_unshift( $options, array(
-				'title'     => __( 'Frontend Styles', 'sportspress' ),
-				'desc' 		=> __( 'Enable', 'sportspress' ),
-				'id' 		=> 'sportspress_styles',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox',
-			) );
-		endif;
+		if ( current_theme_supports( 'sportspress' ) && ! current_theme_supports( 'sportspress-styles' ) ) return $options;
+
+		array_unshift( $options, array(
+			'title'     => __( 'Frontend Styles', 'sportspress' ),
+			'desc' 		=> __( 'Enable', 'sportspress' ),
+			'id' 		=> 'sportspress_styles',
+			'default'	=> 'yes',
+			'type' 		=> 'checkbox',
+		) );
+
 		return $options;
 	}
 
@@ -72,7 +73,7 @@ class SportsPress_Style {
 	 * Add stylesheet.
 	*/
 	public static function add_styles( $styles = array() ) {
-		if ( current_theme_supports( 'sportspress' ) ) return $styles;
+		if ( current_theme_supports( 'sportspress' ) && ! current_theme_supports( 'sportspress-styles' ) ) return $styles;
 		if ( 'no' === get_option( 'sportspress_styles', 'yes' ) ) return $styles;
 		
 		$styles['sportspress-roboto'] = array(
@@ -112,7 +113,7 @@ class SportsPress_Style {
 	 * Output custom CSS.
 	 */
 	public function custom_css( $colors = array() ) {
-		if ( current_theme_supports( 'sportspress' ) ) return $styles;
+		if ( current_theme_supports( 'sportspress' ) && ! current_theme_supports( 'sportspress-styles' ) ) return $styles;
 		if ( 'no' === get_option( 'sportspress_styles', 'yes' ) ) return $styles;
 
 		// Defaults
@@ -159,4 +160,4 @@ class SportsPress_Style {
 
 endif;
 
-new SportsPress_Style();
+new SportsPress_Styles();
