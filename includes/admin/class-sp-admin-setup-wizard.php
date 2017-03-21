@@ -565,7 +565,9 @@ class WC_Admin_Setup_Wizard {
     if ( ! is_wp_error( $inserted ) ) {
       $t_id = sp_array_value( $inserted, 'term_id', 1 );
 
-      wp_set_object_terms( $team, $t_id, 'sp_venue', true );
+      if ( $team ) {
+        wp_set_object_terms( $team, $t_id, 'sp_venue', true );
+      }
 
       $meta = array(
         'sp_address' => sp_array_value( $_POST, 'address' ),
@@ -687,7 +689,11 @@ class WC_Admin_Setup_Wizard {
     }
 
     // Get teams
-    $teams = get_posts( array( 'posts_per_page' => 2, 'post_type' => 'sp_team' ) );
+    $team_post_type = 'sp_team';
+    if ( 'player' === get_option( 'sportspress_mode', 'team' ) ) {
+      $team_post_type = 'sp_player';
+    }
+    $teams = get_posts( array( 'posts_per_page' => 2, 'post_type' => $team_post_type ) );
 
     // Get players
     $players = (array) get_posts( array( 'posts_per_page' => 3, 'post_type' => 'sp_player', 'fields' => 'ids' ) );
