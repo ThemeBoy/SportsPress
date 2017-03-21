@@ -1423,7 +1423,7 @@ function sp_get_text_options() {
 		__( 'Article', 'sportspress' ),
 		__( 'Away', 'sportspress' ),
 		__( 'Box Score', 'sportspress' ),
-		__( 'Cancelled', 'sportspress' ),
+		__( 'Canceled', 'sportspress' ),
 		__( 'Career Total', 'sportspress' ),
 		__( 'Competition', 'sportspress' ),
 		__( 'Current Team', 'sportspress' ),

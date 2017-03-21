@@ -64,7 +64,7 @@ class SportsPress_Event_Status {
 			'ok' => __( 'On time', 'sportspress' ),
 			'tbd' => __( 'TBD', 'sportspress' ),
 			'postponed' => __( 'Postponed', 'sportspress' ),
-			'cancelled' => __( 'Cancelled', 'sportspress' ),
+			'cancelled' => __( 'Canceled', 'sportspress' ),
 		) );
 	}
 
