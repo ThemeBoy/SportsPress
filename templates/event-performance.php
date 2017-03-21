@@ -9,7 +9,6 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-$is_individual = get_option( 'sportspress_mode', 'team' ) === 'player' ? true : false;
 $show_players = get_option( 'sportspress_event_show_players', 'yes' ) === 'yes' ? true : false;
 $show_staff = get_option( 'sportspress_event_show_staff', 'yes' ) === 'yes' ? true : false;
 $show_total = get_option( 'sportspress_event_show_total', 'yes' ) === 'yes' ? true : false;
@@ -28,6 +27,8 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $teams = get_post_meta( $id, 'sp_team', false );
+
+$is_individual = sp_get_post_mode( $id ) === 'player' ? true : false;
 
 if ( is_array( $teams ) ):
 	ob_start();
@@ -107,7 +108,7 @@ if ( is_array( $teams ) ):
 			}
 		}
 	
-		sp_get_template( 'event-performance-table-combined.php', array(
+		sp_get_template( 'event-performance-table.php', array(
 			'scrollable' => $scrollable,
 			'sortable' => $sortable,
 			'show_players' => $show_players,
@@ -125,7 +126,6 @@ if ( is_array( $teams ) ):
 			'primary' => 'primary' == $total ? $primary : null,
 		) );
 	} else {
-
 		// Prepare for offense and defense sections
 		if ( -1 != $sections ) {
 			
