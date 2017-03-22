@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.2
+ * @version     2.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -442,8 +442,9 @@ class SP_Admin_Settings {
 	            // Select sport
 	            case 'sport' :
 
+            		$default = apply_filters( 'sportspress_default_sport', 'soccer' );
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] );
-	            	if ( 'none' === $option_value ) $option_value = 'soccer';
+	            	if ( 'none' === $option_value ) $option_value = $default;
 
 	            	$categories = SP_Admin_Sports::sport_category_names();
 

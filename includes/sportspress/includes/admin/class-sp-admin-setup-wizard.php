@@ -9,7 +9,7 @@
  * @author      WooThemes
  * @category    Admin
  * @package     SportsPress/Admin
- * @version     2.6.0
+ * @version     2.3
 */
 if ( ! defined( 'ABSPATH' ) ) {
   exit;
@@ -255,8 +255,9 @@ class WC_Admin_Setup_Wizard {
           <td>
             <?php
             $options = SP_Admin_Sports::get_preset_options();
-            $default = get_option( 'sportspress_sport', 'soccer' );
-            if ( 'none' === $default ) $default = 'soccer';
+            $default = apply_filters( 'sportspress_default_sport', 'soccer' );
+            $sport = get_option( 'sportspress_sport', $default );
+            if ( 'none' === $sport ) $sport = $default;
             $categories = SP_Admin_Sports::sport_category_names();
             ?>
             <select name="sport" id="sport" class="sp-select-sport <?php echo esc_attr( $class ); ?>">
@@ -267,7 +268,7 @@ class WC_Admin_Setup_Wizard {
                   <?php
                   foreach ( $options as $key => $val ) {
                     ?>
-                    <option value="<?php echo esc_attr( $key ); ?>" <?php selected( $default, $key ); ?>><?php echo $val ?></option>
+                    <option value="<?php echo esc_attr( $key ); ?>" <?php selected( $sport, $key ); ?>><?php echo $val ?></option>
                     <?php
                   }
                   ?>
@@ -409,7 +410,7 @@ class WC_Admin_Setup_Wizard {
    * Players & Staff Setup.
    */
   public function sp_setup_players_staff() {
-    $positions = get_terms( 'sp_position', array( 'hide_empty' => 0, 'orderby' => 'slug', 'fields' => 'names' ) )
+    $positions = (array) get_terms( 'sp_position', array( 'hide_empty' => 0, 'orderby' => 'slug', 'fields' => 'names' ) )
     ?>
     <h1><?php esc_html_e( 'Player & Staff Setup', 'sportspress' ); ?></h1>
     <form method="post">
@@ -564,7 +565,9 @@ class WC_Admin_Setup_Wizard {
     if ( ! is_wp_error( $inserted ) ) {
       $t_id = sp_array_value( $inserted, 'term_id', 1 );
 
-      wp_set_object_terms( $team, $t_id, 'sp_venue', true );
+      if ( $team ) {
+        wp_set_object_terms( $team, $t_id, 'sp_venue', true );
+      }
 
       $meta = array(
         'sp_address' => sp_array_value( $_POST, 'address' ),
@@ -686,7 +689,11 @@ class WC_Admin_Setup_Wizard {
     }
 
     // Get teams
-    $teams = get_posts( array( 'posts_per_page' => 2, 'post_type' => 'sp_team' ) );
+    $team_post_type = 'sp_team';
+    if ( 'player' === get_option( 'sportspress_mode', 'team' ) ) {
+      $team_post_type = 'sp_player';
+    }
+    $teams = get_posts( array( 'posts_per_page' => 2, 'post_type' => $team_post_type ) );
 
     // Get players
     $players = (array) get_posts( array( 'posts_per_page' => 3, 'post_type' => 'sp_player', 'fields' => 'ids' ) );

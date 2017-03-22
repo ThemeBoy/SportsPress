@@ -247,6 +247,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Tweak - Revert text color overrides for dark color schemes in frontend styles.
 * Fix - Borrowed players not automatically loading on event edit.
 * Fix - Played minutes calculation and player profile statistics.
+* Preset - Update all presets to support new mode switching feature.
 
 = 2.2.10 =
 * Tweak - Update modules page.
@@ -411,7 +412,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Feature - Add squad number and name option to player details.
 * Feature - Add tab options to layout designer.
 * Feature - Add option to display player and staff dropdowns in profiles.
-* Feature - Add option to select TBA, postponed, and cancelled event status.
+* Feature - Add option to select TBA, postponed, and canceled event status.
 * Feature - Licenses tab for third-party extensions.
 * Tweak - Get player data only when needed.
 * Tweak - Add capabilities to taxonomies.

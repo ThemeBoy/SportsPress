@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.2.10
+ * @version   2.3
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -176,94 +176,54 @@ class SP_Admin_Welcome {
 
 			do_action( 'sportspress_before_welcome_features' );
 			?>
-
-			<?php if ( ! current_theme_supports( 'sportspress' ) ) { ?>
-
-				<div class="feature-section two-col">
-					<h2>New Frontend Stylesheet</h2>
-					<div class="col">
-						<img src="https://www.themeboy.com/wp-content/uploads/player-profile-style.jpg" alt="Templates">
-						<h3>Templates</h3>
-						<p>An optional default stylesheet has been added to enhance the design of SportsPress template elements in third-party themes.</p>
-					</div>
-					<div class="col">
-						<img src="https://www.themeboy.com/wp-content/uploads/event-blocks-style.png" alt="Widgets">
-						<h3>Widgets</h3>
-						<p>All related content including widgets can be styled instantly by enabling <strong>Frontend Styles</strong> in <a href="<?php echo add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), admin_url( 'admin.php' ) ); ?>">General Options</a>.</p>
-					</div>
+			<div class="feature-section two-col">
+				<h2>Mode Switching</h2>
+				<div class="col">
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-team-vs-team.png" alt="Team vs Team">
+					<h3>Team vs Team</h3>
+					<p>Switch between team and individual mode per event. By default, events are held between teams with multiple players on each side.</p>
 				</div>
+				<div class="col">
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-player-vs-player.png" alt="Player vs Player">
+					<h3>Player vs Player</h3>
+					<p>Select this mode to remove team selectors in events. Instead, players compete with each other. Select a default mode in <a href="<?php echo add_query_arg( array( 'page' => 'sportspress', 'tab' => 'events' ), admin_url( 'admin.php' ) ); ?>">Event Options</a>.</p>
+				</div>
+			</div>
 
-				<hr>
-
-			<?php } ?>
+			<hr>
 
 			<div class="feature-section three-col">
-				<h2>More Advanced Statistics</h2>
+				<h2>Time-Saving Features</h2>
 				<div class="col">
-					<img src="https://www.themeboy.com/wp-content/uploads/chronological-streaks.png" alt="Chronological Streaks">
-					<h3>Chronological Streaks</h3>
-					<p>A new <strong>Form</strong> preset variable has been added to the equation builder for table columns. Use this variable to display the most recent outcomes with each outcome linking to that event.</p>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-user-registration.png" alt="User Registration">
+					<h3>User Registration</h3>
+					<p>Automatically create player profiles for new users by enabling <strong>User Registration</strong> in <a href="<?php echo add_query_arg( array( 'page' => 'sportspress', 'tab' => 'players' ), admin_url( 'admin.php' ) ); ?>">Player Options</a> and <strong>Membership</strong> in <a href="<?php echo admin_url( 'options-general.php' ); ?>">General Settings</a>.</p>
 				</div>
 				<div class="col">
-					<img src="https://www.themeboy.com/wp-content/uploads/tiebreaker-setting.gif" alt="Head to Head Tiebreakers">
-					<h3>Head to Head Tiebreakers</h3>
-					<p>When two or more teams are tied in the general standings, SportsPress can now automatically analyze the events between those teams to determine who comes out on top.</p>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-setup-wizard.png" alt="Setup Wizard">
+					<h3>Setup Wizard</h3>
+					<p>A guided <a href="<?php echo add_query_arg( array( 'page' => 'sp-setup' ), admin_url( 'admin.php' ) ); ?>">Setup Wizard</a> can help you get started by adding basic details, teams, players, staff, venues, and your first event.</p>
 				</div>
 				<div class="col">
-					<img src="https://www.themeboy.com/wp-content/uploads/time-format.png" alt="Time Format">
-					<h3>Time Format</h3>
-					<p>A new <strong>Time</strong> format has been added to player performance settings. Times are saved as minutes, and displayed using time format with <em>0:00</em> as the default.</p>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-send-offs.png" alt="Send Offs">
+					<h3>Send Offs</h3>
+					<p>A new <strong>Send Off</strong> option has been added to player performance settings, limiting the played minutes for sent off players.</p>
 				</div>
 			</div>
 
 			<hr>
 
 			<div class="feature-section two-col">
-				<h2>Bulk Actions</h2>
+				<h2>New in SportsPress Pro</h2>
 				<div class="col">
-					<img src="https://www.themeboy.com/wp-content/uploads/bulk-team-calendars.gif" alt="Generate Team Calendars">
-					<h3>Generate Team Calendars</h3>
-					<p>Bulk actions has been added to instantly generate team calendars. Simply select the checkboxes next to each team, then choose <strong>Generate Calendars</strong> from the <strong>Bulk Actions</strong> dropdown and voilà!</p>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-user-scores-frontend.png" alt="Frontend Submissions">
+					<h3>Frontend Submissions</h3>
+					<p>Display a frontend section for logged in players to submit their own scores. Optionally, registered staff and team managers can also submit scores for their entire team.</p>
 				</div>
 				<div class="col">
-					<img src="https://www.themeboy.com/wp-content/uploads/bulk-player-teams.png" alt="Assign Teams to Players">
-					<h3>Assign Teams to Players</h3>
-					<p>Quickly add players to teams using the <strong>Bulk Edit</strong> feature. New sections have been added to select the current teams and past teams for multiple players at once.</p>
-				</div>
-			</div>
-
-			<hr />
-
-			<div class="changelog">
-				<h2>Admin Improvements</h2>
-				<div class="under-the-hood three-col">
-					<div class="col">
-						<h3>Player List Limits</h3>
-						<p>A limit option has been added to player lists when automatically adding players, enabling speedier queries.</p>
-					</div>
-					<div class="col">
-						<h3>Mixed Statistic Columns</h3>
-						<p>The order of player performance and statistics can now be mixed together by editing the order of each variable.</p>
-					</div>
-					<div class="col">
-						<h3>Explicit Team URL Redirect</h3>
-						<p>Decide whether to use native team pages or to redirect teams to their external URLs using the new <strong>Redirect</strong> option.</p>
-					</div>
-				</div>
-
-				<div class="under-the-hood three-col">
-					<div class="col">
-						<h3>Quick Edit Players</h3>
-						<p>In addition to editing the teams a player belongs to, squad numbers can also be updated via the <strong>Quick Edit</strong> menu</p>
-					</div>
-					<div class="col">
-						<h3>Independent Timed Option</h3>
-						<p>Choose which values in the box score need minutes recorded, with an independent setting for each column.</p>
-					</div>
-					<div class="col">
-						<h3>Taxonomies in REST API</h3>
-						<p>New endpoints have been added for taxonomies including seasons, competitions, venues, positions, and jobs.</p>
-					</div>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-user-scores-admin.png" alt="Admin Approval">
+					<h3>Admin Approval</h3>
+					<p>Once the scores are received, the owner of the event or an admin user can approve or reject each submission. Logged in users can amend their submissions at any time. Only approved scores are published.</p>
 				</div>
 			</div>
 
@@ -273,16 +233,16 @@ class SP_Admin_Welcome {
 				<h2>Under the Hood</h2>
 				<div class="under-the-hood three-col">
 					<div class="col">
-						<h3>Variables Filtered by Offense and Defense</h3>
-						<p>Offense and defense statistics are now calculated using only the player performance from the same category.</p>
+						<h3>Loading Borrowed Players</h3>
+						<p>Players borrowed from other teams are now automatically loaded when editing events in the dashboard.</p>
 					</div>
 					<div class="col">
-						<h3>Account for Substitution Time</h3>
-						<p>The <strong>Minutes</strong> equation variable is now automatically adjusted by subtracting substitution time.</p>
+						<h3>Frontend Style Overrides</h3>
+						<p>Text colors have been adjusted to improve readability when using color schemes with dark backgrounds and light text.</p>
 					</div>
 					<div class="col">
-						<h3>Division by Zero</h3>
-						<p>No more errors when dividing by zero. Equations with undefined solutions now simply return zero for that value.</p>
+						<h3>Shared Box Score Template</h3>
+						<p>The templates used for rendering team and individual box scores have been combined into a single template.</p>
 					</div>
 				</div>
 			</div>
