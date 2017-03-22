@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Uninstaller
- * @version     0.7
+ * @version     2.3
  */
 if( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) 
 	exit();

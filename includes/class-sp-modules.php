@@ -5,7 +5,7 @@
  * The SportsPress modules class stores available modules.
  *
  * @class 		SP_Modules
- * @version   2.2.10
+ * @version   2.3
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
