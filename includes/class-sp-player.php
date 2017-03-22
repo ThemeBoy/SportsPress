@@ -669,6 +669,21 @@ class SP_Player extends SP_Custom_Post {
 			endforeach;
 		endif;
 
+		// Calculate total statistics
+		$totals = array(
+			'name' => __( 'Total', 'sportspress' ),
+			'team' => 0,
+		);
+		foreach ( $merged as $season => $stats ):
+			if ( ! is_array( $stats ) ) continue;
+			foreach ( $stats as $key => $value ):
+				if ( in_array( $key, array( 'name', 'team' ) ) ) continue;
+				$value = floatval( $value );
+				$totals[ $key ] = sp_array_value( $totals, $key, 0 ) + $value;
+			endforeach;
+		endforeach;
+		$merged[-1] = $totals;
+
 		if ( $admin ):
 			$labels = array();
 			if ( is_array( $usecolumns ) ): foreach ( $usecolumns as $key ):
@@ -678,6 +693,7 @@ class SP_Player extends SP_Custom_Post {
 					$labels[ $key ] = $columns[ $key ];
 				endif;
 			endforeach; endif;
+			$placeholders[0] = $merged[-1];
 			return array( $labels, $data, $placeholders, $merged, $leagues, $has_checkboxes, $formats );
 		else:
 			if ( is_array( $usecolumns ) ):
@@ -696,35 +712,9 @@ class SP_Player extends SP_Custom_Post {
 				$labels['name'] = __( 'Season', 'sportspress' );
 				$labels['team'] = __( 'Team', 'sportspress' );
 			}
-			
-			if ( 'yes' === get_option( 'sportspress_player_show_total', 'no' ) ) {
-				// Get totals calculated from events
-				$total_placeholders = sp_array_value( $placeholders, 0, array() );
-				
-				// Get totals as entered directly and filter out the empty values
-				$total_data = sp_array_value( $data, 0, array() );
-				$total_data = array_filter( $total_data, 'sp_filter_non_empty' );
-				
-				// Get totals of all seasons as entered manually
-				$totals = array();
-				foreach ( $merged as $season => $stats ) {
-					foreach ( $stats as $key => $value ) {
-						$value = floatval( $value );
-						$totals[ $key ] = sp_array_value( $totals, $key, 0 ) + $value;
-					}
-				}
-				
-				// Merge with direct values
-				foreach ( $total_data as $key => $value ) {
-					if ( '' === $value ) {
-						$total_data[ $key ] = sp_array_value( $totals, $key, 0 );
-					}
-				}
-				
-				// Then merge with placeholder values
-				$total = array_merge( $total_placeholders, $total_data );
-				$merged[-1] = $total;
-				$merged[-1]['name'] = __( 'Total', 'sportspress' );
+
+			if ( 'no' === get_option( 'sportspress_player_show_total', 'no' ) ) {
+				unset( $merged[-1] );
 			}
 
 			// Convert to time notation
@@ -752,7 +742,7 @@ class SP_Player extends SP_Custom_Post {
 			endif;
 			
 			$merged[0] = array_merge( $labels, $columns );
-				
+
 			return $merged;
 		endif;
 	}
