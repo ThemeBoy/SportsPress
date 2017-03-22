@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.7
-Stable tag: 2.2.11
+Stable tag: 2.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,20 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.3 =
+* Feature - User Scores module for allowing users to submit event scores from the frontend.
+* Feature - Add custom post types to sample data generator in wizard.
+* Feature - Choose team or individual mode for tournaments.
+* Feature - New setup wizard for first-time installs.
+* Feature - Option to automatically create player profiles during user registration.
+* Feature - Choose team or individual mode for each event.
+* Feature - Send Off setting for player statistics to suspend minute count for that player.
+* Tweak - Remove horizontal scrolling in dashboard to fix hidden dropdowns.
+* Tweak - Revert text color overrides for dark color schemes in frontend styles.
+* Fix - Sponsors background color overflowing on some themes.
+* Fix - Borrowed players not automatically loading on event edit.
+* Fix - Played minutes calculation and player profile statistics.
 
 = 2.2.11 =
 * Fix - Timeout issue when tiebreaker checks for head-to-head standings.
@@ -299,7 +313,7 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 * Feature - Add squad number and name option to player details.
 * Feature - Add tab options to layout designer.
 * Feature - Add option to display player and staff dropdowns in profiles.
-* Feature - Add option to select TBA, postponed, and cancelled event status.
+* Feature - Add option to select TBA, postponed, and canceled event status.
 * Feature - Licenses tab for third-party extensions.
 * Tweak - Sort teams alphabetically in tournament edit screen.
 * Tweak - Move match stats option to box score section.

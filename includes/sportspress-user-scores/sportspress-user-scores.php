@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Allow players, staff, and visitors to submit event scores.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.2.11
+Version: 2.3
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_User_Scores' ) ) :
  * Main SportsPress User Scores Class
  *
  * @class SportsPress_User_Scores
- * @version	2.2
+ * @version	2.3
  *
  */
 class SportsPress_User_Scores {
@@ -43,7 +43,7 @@ class SportsPress_User_Scores {
 	 */
 	private function define_constants() {
 		if ( !defined( 'SP_USER_SCORES_VERSION' ) )
-			define( 'SP_USER_SCORES_VERSION', '2.2' );
+			define( 'SP_USER_SCORES_VERSION', '2.3' );
 
 		if ( !defined( 'SP_USER_SCORES_URL' ) )
 			define( 'SP_USER_SCORES_URL', plugin_dir_url( __FILE__ ) );

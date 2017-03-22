@@ -3,7 +3,7 @@
  * Plugin Name: SportsPress Pro
  * Plugin URI: http://tboy.co/pro
  * Description: Advanced club & league management from ThemeBoy.
- * Version: 2.2.11
+ * Version: 2.3
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress_Pro' ) ) :
  * Main SportsPress Pro Class
  *
  * @class SportsPress_Pro
- * @version	2.2.11
+ * @version	2.3
  */
 final class SportsPress_Pro {
 
 	/**
 	 * @var string
 	 */
-	public $version = '2.2.11';
+	public $version = '2.3';
 
 	/**
 	 * SportsPress Pro Constructor.
@@ -56,7 +56,6 @@ final class SportsPress_Pro {
 		// Hooks
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 		add_filter( 'sportspress_setup_wizard_next_steps', array( $this, 'next_steps' ) );
-		add_action( 'sportspress_before_welcome_features', array( $this, 'welcome_features' ) );
 		add_action( 'admin_init', array( $this, 'deactivate_core' ) );
 		add_action( 'before_sportspress_init', array( $this, 'load_module_translations' ), 0 );
 		add_action( 'get_the_generator_html', array( $this, 'generator_tag' ), 10, 2 );
@@ -124,28 +123,6 @@ final class SportsPress_Pro {
     );
 
     return $steps;
-	}
-
-	/**
-	 * Displayed features on welcome screen.
-	 */
-	public function welcome_features() {
-		?>
-		<div class="feature-section two-col">
-			<h2>Timelines</h2>
-			<img src="https://www.themeboy.com/wp-content/uploads/timelines.png" alt="Templates">
-			<div class="col">
-				<h3>Visualize Minutes</h3>
-				<p>Introducing a new way to visualize timed statistics by displaying them in a horizontal timeline across the top of event pages. Icons can be customized for each statistic via the <a href="<?php echo add_query_arg( array( 'page' => 'sportspress-config' ), admin_url( 'admin.php' ) ); ?>">Configure</a> screen.</p>
-			</div>
-			<div class="col">
-				<h3>Accurate Timestamps</h3>
-				<p>The <strong>Full Time</strong> setting in each event will automatically determine where each icon is placed in the timeline. Activate <strong>Timelines</strong> in <a href="<?php echo add_query_arg( array( 'page' => 'sportspress' ), admin_url( 'admin.php' ) ); ?>">SportsPress Settings</a> to start using this new module.</p>
-			</div>
-		</div>
-
-		<hr>
-		<?php
 	}
 
 	/**
