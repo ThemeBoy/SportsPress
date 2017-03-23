@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.7
-Stable tag: 2.3
+Stable tag: 2.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,12 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.3.1 =
+* Tweak - Update version numbers of recommended sport-specific extensions.
+* Fix - Manually entered statistics not reflected in player profile totals.
+* Fix - Template hooks not callable for third-party integration.
+* Fix - Error when editing league tables in PHP versions earlier than 5.5.
 
 = 2.3 =
 * Feature - User Scores module for allowing users to submit event scores from the frontend.
