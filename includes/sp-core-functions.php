@@ -559,7 +559,7 @@ if ( !function_exists( 'sp_get_post_mode_label' ) ) {
 			$mode = 'team';
 		}
 
-		$index = boolval( $singular );
+		$index = intval( $singular );
 
 		return $labels[ $mode ][ $index ];
   }
