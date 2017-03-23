@@ -42,29 +42,6 @@ class SP_Template_Loader {
 
 			$content = '<div class="sp-post-content">' . $content . '</div>';
 		}
-
-		global $wp_filter;
-		
-		// Array of hooks associated with this post type
-		$hooks = array(
-			'sportspress_before_single_' . $type,
-			'sportspress_single_' . $type . '_content',
-			'sportspress_after_single_' . $type,
-		);
-		
-		$actions = array();
-		
-		// Find all actions associated with those hooks
-		foreach ( $hooks as $hook ) {
-			$priorities = sp_array_value( $wp_filter, $hook, array() );
-			
-			foreach ( $priorities as $priority => $action ) {
-				$a = reset( $action );
-				$function = sp_array_value( $a, 'function', false );
-				remove_action( $hook, $function, $priority );
-				$actions[] = $function;
-			}
-		}
 		
 		// Get layout setting
 		$layout = (array) get_option( 'sportspress_' . $type . '_template_order', array() );
@@ -88,6 +65,9 @@ class SP_Template_Loader {
 		}
 
 		ob_start();
+
+		// Before template hook
+		do_action( 'sportspress_before_single_' . $type );
 		
 		// Loop through sections
 		if ( ! empty( $section_templates ) ) {
@@ -101,12 +81,17 @@ class SP_Template_Loader {
 				echo '<div class="sp-section-content sp-section-content-' . $key . '">';
 				if ( 'content' === $key ) {
 					echo $content;
+					// Template content hook
+					do_action( 'sportspress_single_' . $type . '_content' );
 				} else {
 					call_user_func( $template['action'] );
 				}
 				echo '</div>';
 			}
 		}
+
+		// After template hook
+		do_action( 'sportspress_after_single_' . $type );
 		
 		$ob = ob_get_clean();
 		
