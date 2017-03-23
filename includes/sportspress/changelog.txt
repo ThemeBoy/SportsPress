@@ -1,5 +1,11 @@
 == SportsPress Changelog ==
 
+= 2.3.1 =
+* Tweak - Update version numbers of recommended sport-specific extensions.
+* Fix - Manually entered statistics not reflected in player profile totals.
+* Fix - Template hooks not callable for third-party integration.
+* Fix - Error when editing league tables in PHP versions earlier than 5.5.
+
 = 2.3 =
 * Feature - New setup wizard for first-time installs.
 * Feature - Option to automatically create player profiles during user registration.
