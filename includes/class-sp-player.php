@@ -407,7 +407,7 @@ class SP_Player extends SP_Custom_Post {
 											if ( empty( $timeline_performance ) ) continue;
 											foreach ( $sendoffs as $sendoff_key ):
 												if ( ! array_key_exists( $sendoff_key, $timeline_performance ) ) continue;
-												$sendoff_times = sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $this->ID ), $sendoff_key );
+												$sendoff_times = (array) sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $this->ID ), $sendoff_key, array() );
 												$sendoff_times = array_filter( $sendoff_times );
 												$sendoff_time = end( $sendoff_times );
 												if ( false === $sendoff_time ) continue;
