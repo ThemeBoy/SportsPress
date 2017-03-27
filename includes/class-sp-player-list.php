@@ -266,33 +266,8 @@ class SP_Player_List extends SP_Custom_Post {
 					$metrics[ $key ] += $adjustment;
 			endforeach;
 
-			// Get static stats
-			$static = get_post_meta( $player_id, 'sp_statistics', true );
-
-			// Get league and season arrays for static stats
-			$static_league_ids = ( empty( $league_ids ) ? array( 0 ) : $league_ids );
-			$static_season_ids = ( empty( $season_ids ) ? array( 0 ) : $season_ids );
-
-			// Add static stats to placeholders
-			if ( $static_league_ids && $static_season_ids ):
-				foreach ( $static_league_ids as $league_id ):
-					foreach ( $static_season_ids as $season_id ):
-						$player_league_season_stats = sp_array_value( sp_array_value( $static, $league_id, array() ), $season_id, array() );
-						if ( is_array( $player_league_season_stats ) ):
-							foreach ( $player_league_season_stats as $key => $value ):
-								$current_value = sp_array_value( sp_array_value( $placeholders, $player_id, array() ), $key, 0 );
-								$value = floatval( $value );
-								$placeholders[ $player_id ][ $key ] = $current_value + $value;
-							endforeach;
-						endif;
-					endforeach;
-				endforeach;
-			else:
-				$placeholders[ $player_id ] = sp_array_value( sp_array_value( $static, 0, array() ), 0, array() );
-			endif;
-
 			// Add metrics to placeholders
-			$placeholders[ $player_id ] = array_merge( $metrics, sp_array_value( $placeholders, $player_id, array() ) );
+			$placeholders[ $player_id ] = $metrics;
 		endforeach;
 
 		$args = array(
@@ -586,7 +561,8 @@ class SP_Player_List extends SP_Custom_Post {
 			if ( ! $player_id )
 				continue;
 
-			$placeholders[ $player_id ] = array_merge( sp_array_value( $totals, $player_id, array() ), array_filter( sp_array_value( $placeholders, $player_id, array() ) ) );
+			// Add calculated totals to placeholders
+			$placeholders[ $player_id ] = array_merge( sp_array_value( $placeholders, $player_id, array() ), sp_array_value( $totals, $player_id, array() ), array() );
 
 			// Player adjustments
 			$player_adjustments = sp_array_value( $adjustments, $player_id, array() );
