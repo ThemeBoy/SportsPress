@@ -672,7 +672,7 @@ class SP_Player extends SP_Custom_Post {
 		// Calculate total statistics
 		$totals = array(
 			'name' => __( 'Total', 'sportspress' ),
-			'team' => 0,
+			'team' => '-',
 		);
 		foreach ( $merged as $season => $stats ):
 			if ( ! is_array( $stats ) ) continue;
