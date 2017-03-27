@@ -1,5 +1,9 @@
 == SportsPress Changelog ==
 
+= 2.3.2 =
+* Fix - Team in player statistics total row displaying as zero.
+* Fix - Notice when no sendoffs are available during minutes played calculation.
+
 = 2.3.1 =
 * Tweak - Update version numbers of recommended sport-specific extensions.
 * Fix - Manually entered statistics not reflected in player profile totals.
