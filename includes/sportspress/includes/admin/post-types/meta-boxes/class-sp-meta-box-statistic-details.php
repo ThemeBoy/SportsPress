@@ -25,6 +25,7 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$precision = get_post_meta( $post->ID, 'sp_precision', true );
 		$section = get_post_meta( $post->ID, 'sp_section', true );
+		$format = get_post_meta( $post->ID, 'sp_format', true );
 		$visible = get_post_meta( $post->ID, 'sp_visible', true );
 
 		// Defaults
