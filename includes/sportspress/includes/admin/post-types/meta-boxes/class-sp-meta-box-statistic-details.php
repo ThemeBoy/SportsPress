@@ -31,6 +31,7 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		// Defaults
 		if ( '' === $precision ) $precision = 0;
 		if ( '' === $section ) $section = -1;
+		if ( '' === $format ) $format = 'number';
 		if ( '' === $visible ) $visible = 1;
 		?>
 		<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
