@@ -55,8 +55,6 @@ class SportsPress_Staff_Directories {
 		add_filter( 'sportspress_staff_settings', array( $this, 'add_options' ) );
 		add_filter( 'sportspress_staff_templates', array( $this, 'staff_templates' ) );
 		add_filter( 'sportspress_team_templates', array( $this, 'team_templates' ) );
-		add_action( 'sportspress_single_staff_content', array( $this, 'output_staff_contacts' ), 20 );
-		add_action( 'sportspress_single_team_content', array( $this, 'output_team_directories' ), 25 );
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
 		add_action( 'sportspress_register_post_type_staff', array( $this, 'add_staff_attributes_support' ) );
 		add_filter( 'sportspress_shortcodes', array( $this, 'add_shortcodes' ) );

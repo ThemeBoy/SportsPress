@@ -37,9 +37,6 @@ class SportsPress_Twitter {
 		add_filter( 'sportspress_team_templates', array( $this, 'team_templates' ) );
 		add_filter( 'sportspress_player_templates', array( $this, 'player_templates' ) );
 		add_filter( 'sportspress_staff_templates', array( $this, 'staff_templates' ) );
-		add_action( 'sportspress_single_team_content', array( $this, 'output_tweets' ), 50 );
-		add_action( 'sportspress_single_player_content', array( $this, 'output_tweets' ), 50 );
-		add_action( 'sportspress_single_staff_content', array( $this, 'output_tweets' ), 50 );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 30 );
 		add_action( 'sportspress_process_sp_team_meta', array( $this, 'save' ), 15, 2 );
 		add_action( 'sportspress_process_sp_player_meta', array( $this, 'save' ), 15, 2 );
