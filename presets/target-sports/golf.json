@@ -7,12 +7,12 @@
 						{ "name" : "Finish", "condition" : "else", "description" : "Finished" }
 	],
 	"results": [
-						{ "name" : "Par", "equation" : "$strokes - $par", "description" : "Reported score", "primary" : 1 },
+						{ "name" : "Score", "equation" : "$strokes", "description" : "Total score" },
 						{ "name" : "FH", "description" : "Fairways hit" },
 						{ "name" : "GIR", "description" : "Greens in regulation" },
 						{ "name" : "Avg. Drive", "id" : "avgdrive", "description" : "Average drive (yards)" },
 						{ "name" : "Putts", "description" : "Number of putts" },
-						{ "name" : "Score", "equation" : "$strokes", "description" : "Total score" }
+						{ "name" : "Par", "equation" : "$strokes - $par", "description" : "Reported score", "primary" : 1 }
 	],
 	"performance": [
 						{  "name" : "1", "id" : "one", "description" : "Hole 1" },

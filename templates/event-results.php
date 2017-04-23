@@ -23,6 +23,9 @@ if ( ! isset( $caption ) ) $caption = __( 'Results', 'sportspress' );
 // Get event result data
 $data = $event->results();
 
+// Apply filters to results data
+$data = apply_filters( 'sportspress_event_results', $data, $id );
+
 // The first row should be column labels
 $labels = $data[0];
 
