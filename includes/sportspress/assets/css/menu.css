@@ -155,6 +155,9 @@
 .sp-icon-user-scores:before {
   content: "\f101";
 }
+.sp-icon-wordpay:before {
+  content: "\f526";
+}
 
 /* Performance Icons */
 .sp-icon-card:before {
