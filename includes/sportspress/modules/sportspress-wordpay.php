@@ -28,13 +28,18 @@ class SportsPress_WordPay {
 		// Define constants
 		$this->define_constants();
 
-		// Actions
+		// Shortcode
 		add_action( 'init', array( $this, 'add_shortcodes' ) );
 		add_action( 'wpay_register_form_after_fields', array( $this, 'form_field' ) );
 
-		// Filters
+		// Editor
 		add_filter( 'wordpay_shortcodes', array( $this, 'editor_shortcodes' ) );
 		add_filter( 'wordpay_tinymce_strings', array( $this, 'editor_strings' ) );
+
+		// Widgets
+		add_action( 'wordpay_after_widget_register_form', array( $this, 'widget_form' ), 10, 2 );
+		add_filter( 'wordpay_widget_register_update', array( $this, 'widget_update' ), 10, 2 );
+		add_filter( 'wordpay_widget_register_shortcode', array( $this, 'widget_shortcode' ), 10, 2 );
 	}
 
 	/**
@@ -148,6 +153,45 @@ class SportsPress_WordPay {
 		$strings['register_team'] = __( 'Register Team', 'sportspress' );
 		$strings['register_player'] = __( 'Register Player', 'sportspress' );
 		return $strings;
+	}
+
+	/**
+	 * Add selector to widget form.
+	 */
+	public static function widget_form( $widget, $instance = array() ) {
+		$contexts = array(
+			'' => __( 'Members', 'sportspress' ),
+			'team' => __( 'Teams', 'sportspress' ),
+			'player' => __( 'Players', 'sportspress' ),
+		);
+		?>
+		<p>
+			<label for="<?php echo $widget->get_field_id('context'); ?>"><?php _e( 'For:', 'sportspress' ); ?></label>
+				<select id="<?php echo $widget->get_field_id('context'); ?>" name="<?php echo $widget->get_field_name('context'); ?>">
+					<?php foreach ( $contexts as $value => $label ) { ?>
+						<option value="<?php echo $value; ?>" <?php selected( $value, sp_array_value( $instance, 'context' ) ); ?>><?php echo $label; ?></option>
+					<?php } ?>
+				</select>
+		</p>
+		<?php
+	}
+
+	/**
+	 * Update widget form.
+	 */
+	public static function widget_update( $instance = array(), $new_instance = array() ) {
+		$instance['context'] = strip_tags($new_instance['context']);
+		return $instance;
+	}
+
+	/**
+	 * Modify widget shortcode.
+	 */
+	public static function widget_shortcode( $shortcode = '[wpay-register]', $instance = array() ) {
+		if ( ! empty( $instance['context'] ) && in_array( $instance['context'], array( 'team', 'player' ) ) ) {
+			$shortcode = str_replace( 'wpay-register', 'wpay-register-' . $instance['context'], $shortcode );
+		}
+		return $shortcode;
 	}
 }
 
