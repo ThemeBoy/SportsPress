@@ -65,8 +65,16 @@ class SportsPress_User_Registration {
       ),
 
       array(
-        'desc'     => __( 'Add a team selector to signup form', 'sportspress' ),
+        'desc'     => __( 'Add a team name field to signup form', 'sportspress' ),
         'id'     => 'sportspress_registration_team_input',
+        'default'  => 'no',
+        'type'     => 'checkbox',
+        'checkboxgroup'    => '',
+      ),
+
+      array(
+        'desc'     => __( 'Add a team selector to signup form', 'sportspress' ),
+        'id'     => 'sportspress_registration_team_select',
         'default'  => 'no',
         'type'     => 'checkbox',
         'checkboxgroup'    => '',
@@ -94,18 +102,17 @@ class SportsPress_User_Registration {
       ?>
       <p>
           <label for="first_name"><?php _e( 'First Name', 'sportspress' ) ?><br />
-              <input type="text" name="first_name" id="first_name" class="input" value="<?php echo esc_attr( wp_unslash( $first_name ) ); ?>" size="25" /></label>
+          <input type="text" name="first_name" id="first_name" class="input" value="<?php echo esc_attr( wp_unslash( $first_name ) ); ?>" size="25" /></label>
       </p>
 
       <p>
           <label for="last_name"><?php _e( 'Last Name', 'sportspress' ) ?><br />
-              <input type="text" name="last_name" id="last_name" class="input" value="<?php echo esc_attr( wp_unslash( $last_name ) ); ?>" size="25" /></label>
+          <input type="text" name="last_name" id="last_name" class="input" value="<?php echo esc_attr( wp_unslash( $last_name ) ); ?>" size="25" /></label>
       </p>
       <?php
     }
 
-    if ( 'yes' === get_option( 'sportspress_registration_team_input', 'no' ) ) {
-      $sp_team = ( ! empty( $_POST['sp_team'] ) ) ? trim( $_POST['sp_team'] ) : '';
+    if ( 'yes' === get_option( 'sportspress_registration_team_select', 'no' ) ) {
       ?>
       <p>
           <label for="sp_team"><?php _e( 'Team', 'sportspress' ) ?><br />
@@ -121,6 +128,7 @@ class SportsPress_User_Registration {
           ?>
       </p>
       <?php
+      wp_nonce_field( 'submit_team', 'sp_register_form_player' );
     }
   }
 
@@ -145,8 +153,20 @@ class SportsPress_User_Registration {
       }
     }
 
+    // Add team from team name
+    if ( isset( $_POST['sp_register_form_team'] ) && wp_verify_nonce( $_POST['sp_register_form_team'], 'submit_team_name' ) ) {
+      if ( ! empty( $_POST['team_name'] ) ) {
+        $team_name = trim( $_POST['team_name'] );
+        $post['post_type'] = 'sp_team';
+        $post['post_title'] = $team_name;
+        $post['post_author'] = $user_id;
+        $post['post_status'] = 'publish';
+        $id = wp_insert_post( $post );
+      }
+    }
+
     // Save team
-    if ( 'yes' === get_option( 'sportspress_registration_team_input', 'no' ) ) {
+    if ( isset( $_POST['sp_register_form_player'] ) && wp_verify_nonce( $_POST['sp_register_form_player'], 'submit_team' ) ) {
       if ( ! empty( $_POST['sp_team'] ) ) {
         $team = trim( $_POST['sp_team'] );
         if ( $team <= 0 ) $team = 0;
