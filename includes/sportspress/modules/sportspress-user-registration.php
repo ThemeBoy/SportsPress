@@ -160,7 +160,7 @@ class SportsPress_User_Registration {
         $post['post_type'] = 'sp_team';
         $post['post_title'] = $team_name;
         $post['post_author'] = $user_id;
-        $post['post_status'] = 'publish';
+        $post['post_status'] = 'draft';
         $id = wp_insert_post( $post );
       }
     }
@@ -185,7 +185,7 @@ class SportsPress_User_Registration {
         $post['post_type'] = 'sp_player';
         $post['post_title'] = trim( $name );
         $post['post_author'] = $user_id;
-        $post['post_status'] = 'publish';
+        $post['post_status'] = 'draft';
         $id = wp_insert_post( $post );
 
         if ( isset( $team ) && $team ) {

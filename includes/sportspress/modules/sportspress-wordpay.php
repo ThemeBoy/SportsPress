@@ -67,30 +67,67 @@ class SportsPress_WordPay {
 	 * Team registration shortcode.
 	 */
 	public static function register_team( $atts = array() ) {
-		return self::register_form( $atts, 'team' );
+    $args = array(
+    	'post_type' => 'wpay-subscription',
+    	'post_status' => 'active',
+    	'posts_per_page' => 500,
+    	'meta_query' => array(
+    		array(
+    			'key' => 'wpay_subscription_plan_user_role',
+    			'value' => 'sp_team_manager',
+    		),
+    	),
+    	'fields' => 'ids',
+    );
+
+    $plans = get_posts( $args );
+
+    if ( empty( $plans ) ) {
+    	_e( 'There are no plans associated with the Team Manager role.', 'sportspress' );
+    	return;
+    }
+
+		return self::register_form( $atts, 'team', $plans );
 	}
 
 	/**
 	 * Player registration shortcode.
 	 */
 	public static function register_player( $atts = array() ) {
-		return self::register_form( $atts, 'player' );
+    $args = array(
+    	'post_type' => 'wpay-subscription',
+    	'post_status' => 'active',
+    	'posts_per_page' => 500,
+    	'meta_query' => array(
+    		array(
+    			'key' => 'wpay_subscription_plan_user_role',
+    			'value' => 'sp_player',
+    		),
+    	),
+    	'fields' => 'ids',
+    );
+
+    $plans = get_posts( $args );
+
+    if ( empty( $plans ) ) {
+    	_e( 'There are no plans associated with the Player role.', 'sportspress' );
+    	return;
+    }
+
+		return self::register_form( $atts, 'player', $plans );
 	}
 
 	/**
 	 * Registration form template.
 	 */
-	public static function register_form( $atts = array(), $context = '' ) {
+	public static function register_form( $atts = array(), $context = '', $plans = array() ) {
 
     $atts = shortcode_atts( array(
-        'subscription_plans' => array(),
         'plans_position'     => 'bottom',
         'selected'           => '',
     ), $atts );
 
-    if ( is_array( $atts['subscription_plans'] ) ) {
-    	$atts['subscription_plans'] = implode( ',', $atts['subscription_plans'] );
-    }
+    $atts['subscription_plans'] = implode( ',', $plans );
 
     $atts['context'] = $context;
 
