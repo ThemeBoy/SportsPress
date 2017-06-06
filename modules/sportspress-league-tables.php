@@ -118,6 +118,7 @@ class SportsPress_League_Tables {
 	 */
 	public function include_widgets() {
 		include_once( SP()->plugin_path() . '/includes/widgets/class-sp-widget-league-table.php' );
+		include_once( SP()->plugin_path() . '/includes/widgets/class-sp-widget-team-gallery.php' );
 	}
 
 	/**
