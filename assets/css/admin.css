@@ -24,6 +24,10 @@
 	content: "\f334";
 }
 
+.post-state-format.post-format-standings:before, .post-format-icon.post-format-standings:before, a.post-state-format.format-standings:before {
+	content: "\f185";
+}
+
 .post-state-format.post-format-list:before, .post-format-icon.post-format-list:before, a.post-state-format.format-list:before {
 	content: "\f163";
 }

@@ -191,6 +191,11 @@
 	max-height: 2em;
 }
 
+/* Team Gallery */
+.sp-template-team-gallery img {
+  padding: 1em;
+}
+
 /* Player List */
 .sp-player-list td {
 	line-height: 2em;

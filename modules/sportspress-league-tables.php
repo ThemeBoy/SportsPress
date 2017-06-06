@@ -185,6 +185,13 @@ class SportsPress_League_Tables {
 				'context' => 'side',
 				'priority' => 'default',
 			),
+			'format' => array(
+				'title' => __( 'Layout', 'sportspress' ),
+				'save' => 'SP_Meta_Box_Table_Format::save',
+				'output' => 'SP_Meta_Box_Table_Format::output',
+				'context' => 'side',
+				'priority' => 'default',
+			),
 			'details' => array(
 				'title' => __( 'Details', 'sportspress' ),
 				'save' => 'SP_Meta_Box_Table_Details::save',
@@ -209,7 +216,8 @@ class SportsPress_League_Tables {
 	 * @return array
 	 */
 	public function add_shortcodes( $shortcodes ) {
-		$shortcodes['table'] = array( 'table' );
+		$shortcodes['team'][] = 'standings';
+		$shortcodes['team'][] = 'gallery';
 		return $shortcodes;
 	}
 

@@ -30,7 +30,7 @@ class SP_AJAX {
 			'event_calendar_shortcode' => false,
 			'event_list_shortcode' => false,
 			'event_blocks_shortcode' => false,
-			'table_table_shortcode' => false,
+			'team_standings_shortcode' => false,
 			'player_details_shortcode' => false,
 			'player_statistics_shortcode' => false,
 			'player_list_shortcode' => false,
@@ -610,11 +610,11 @@ class SP_AJAX {
 	}
 
 	/**
-	 * AJAX league_table shortcode
+	 * AJAX team_standings shortcode
 	 */
-	public function table_table_shortcode() {
+	public function team_standings_shortcode() {
 		?>
-		<div class="wrap sp-thickbox-content" id="sp-thickbox-league_table">
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-team_standings">
 			<p>
 				<label>
 					<?php _e( 'Title:', 'sportspress' ); ?>
@@ -673,7 +673,7 @@ class SP_AJAX {
 			</p>
 			<?php do_action( 'sportspress_ajax_shortcode_form', 'league-table' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('league_table');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('team_standings');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -971,7 +971,7 @@ class SP_AJAX {
                     args.orderby = $div.find('[name=orderby]').val();
                     args.order = $div.find('[name=order]').val();
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
-                } else if ( 'league_table' == type ) {
+                } else if ( 'team_standings' == type ) {
                     args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
                     args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
