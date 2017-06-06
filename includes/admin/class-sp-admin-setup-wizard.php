@@ -16,11 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WC_Admin_Setup_Wizard class.
+ * SP_Admin_Setup_Wizard class.
  */
-class WC_Admin_Setup_Wizard {
+class SP_Admin_Setup_Wizard {
 
-  /** @var string Currenct Step */
+  /** @var string Current Step */
   private $step   = '';
 
   /** @var array Steps for the setup wizard */
@@ -672,7 +672,7 @@ class WC_Admin_Setup_Wizard {
     $events = get_posts(
       array(
         'post_type' => 'sp_event',
-        'posts_per_page' => 11,
+        'posts_per_page' => 1,
         'post_status' => 'draft',
         'meta_query' => array(
           array(
@@ -787,4 +787,4 @@ class WC_Admin_Setup_Wizard {
   }
 }
 
-new WC_Admin_Setup_Wizard();
+new SP_Admin_Setup_Wizard();
