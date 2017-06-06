@@ -18,13 +18,11 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 [youtube http://www.youtube.com/watch?v=KQyga_C5a6M]
 
 = Industry Reviews =
-> "*There are number of professional sports club who likes to maintain their information and statistics online, SportsPress plugin makes this process really easy, cost effective and quick.*" — [Indexwp](http://www.indexwp.com/sportspress-plugin-review/)
+> "*There are number of professional sports club who likes to maintain their information and statistics online, SportsPress plugin makes this process really easy, cost effective and quick.*" — [IndexWP](http://www.indexwp.com/sportspress-plugin-review/)
 >
 > "*Script of the Day: While the WordPress repository holds various team and sports-related plugins, few of them come close to what you can achieve with SportsPress.*" — [Softpedia](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml)
 >
-> "*SportsPress is our number 1 WordPress plugin for sport!*" — [GBSport](http://gbcoach.org.uk/5-great-wordpress-plugins-for-sport/)
->
-> "*The freely available and highly impressive SportsPress plugin offers terrific functionality including a fixtures listing, league table, player & staff profiles, customizable point system and a built-in translation system for 36 different languages.*" — [Club Themes](http://clubthemes.com/awesome-sporting-templates-themes-wordpress-joomla/)
+> "*SportsPress is probably one of the most complete WordPress sports plugins out there. If you have a sports website and you’re looking to showcase your team, or even your entire league, then give this plugin a try.*" — [HostGator](https://www.hostgator.com/blog/best-wordpress-plugins-themes-sports-websites/)
 
 = Features =
 * Equation Builder
