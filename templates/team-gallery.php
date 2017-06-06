@@ -15,7 +15,6 @@ $defaults = array(
 	'title' => false,
 	'number' => -1,
 	'orderby' => 'default',
-	'order' => 'ASC',
 	'itemtag' => 'dl',
 	'icontag' => 'dt',
 	'captiontag' => 'dd',
@@ -57,19 +56,10 @@ $data = $table->data();
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
 
-if ( $orderby == 'default' ):
-	$orderby = $table->orderby;
-	$order = $table->order;
+if ( $orderby == 'name' ):
+	uasort( $data, 'sp_sort_by_name' );
 elseif ( $orderby == 'rand' ):
 	uasort( $data, 'sp_sort_random' );
-else:
-	$table->priorities = array(
-		array(
-			'key' => $orderby,
-			'order' => $order,
-		),
-	);
-	uasort( $data, array( $table, 'sort' ) );
 endif;
 
 if ( $title )

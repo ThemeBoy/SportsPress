@@ -97,6 +97,17 @@ function sp_sort_random() {
 }
 
 /**
+ * Sort array by name field.
+ *
+ * @access public
+ * @param array $array
+ * @return bool
+ */
+function sp_sort_by_name( $a, $b ) {
+	return strcmp( $a['name'], $b['name'] );
+}
+
+/**
  * let_to_num function.
  *
  * This function transforms the php.ini notation for numbers (like '2M') to an integer.

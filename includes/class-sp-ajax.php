@@ -31,6 +31,7 @@ class SP_AJAX {
 			'event_list_shortcode' => false,
 			'event_blocks_shortcode' => false,
 			'team_standings_shortcode' => false,
+			'team_gallery_shortcode' => false,
 			'player_details_shortcode' => false,
 			'player_statistics_shortcode' => false,
 			'player_list_shortcode' => false,
@@ -683,6 +684,64 @@ class SP_AJAX {
 	}
 
 	/**
+	 * AJAX team_gallery shortcode
+	 */
+	public function team_gallery_shortcode() {
+		?>
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-team_gallery">
+			<p>
+				<label>
+					<?php _e( 'Title:', 'sportspress' ); ?>
+					<input class="regular-text" type="text" name="title">
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'League Table', 'sportspress' ) ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_table',
+						'name' => 'id',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Number of teams to show:', 'sportspress' ); ?>
+					<input type="text" size="3" name="number" id="number" value="5">
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Order by', 'sportspress' ); ?>:
+					<select name="orderby">
+						<option value="default"><?php _e( 'Rank', 'sportspress' ); ?></option>
+						<option value="name"><?php _e( 'Alphabetical', 'sportspress' ); ?></option>
+						<option value="rand"><?php _e( 'Random', 'sportspress' ); ?></option>
+					</select>
+				</label>
+			</p>
+			<p>
+				<label>
+					<input type="checkbox" name="show_full_table_link" id="show_full_table_link">
+					<?php _e( 'Display link to view full table', 'sportspress' ); ?>
+				</label>
+			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'league-table' ); ?>
+			<p class="submit">
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('team_gallery');" />
+				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+			</p>
+		</div>
+		<?php
+		self::scripts();
+		die();
+	}
+
+	/**
 	 * AJAX player_details shortcode
 	 */
 	public function player_details_shortcode() {
@@ -976,6 +1035,11 @@ class SP_AJAX {
                     args.number = $div.find('[name=number]').val();
                     args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
                     args.show_team_logo = $div.find('[name=show_team_logo]:checked').length;
+                    args.show_full_table_link = $div.find('[name=show_full_table_link]:checked').length;
+                } else if ( 'team_gallery' == type ) {
+                    args.title = $div.find('[name=title]').val();
+                    args.number = $div.find('[name=number]').val();
+                    args.orderby = $div.find('[name=orderby]').val();
                     args.show_full_table_link = $div.find('[name=show_full_table_link]:checked').length;
                 } else if ( 'player_list' == type ) {
                     args.title = $div.find('[name=title]').val();
