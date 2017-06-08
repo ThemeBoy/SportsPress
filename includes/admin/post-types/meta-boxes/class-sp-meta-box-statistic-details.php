@@ -26,6 +26,7 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		$precision = get_post_meta( $post->ID, 'sp_precision', true );
 		$section = get_post_meta( $post->ID, 'sp_section', true );
 		$format = get_post_meta( $post->ID, 'sp_format', true );
+		$total = get_post_meta( $post->ID, 'sp_total_type', true );
 		$visible = get_post_meta( $post->ID, 'sp_visible', true );
 
 		// Defaults
@@ -65,6 +66,17 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 				?>
 			</select>
 		</p>
+		<p><strong><?php _e( 'Career Total', 'sportspress' ); ?></strong></p>
+		<p>
+			<select name="sp_total_type">
+				<?php
+				$options = apply_filters( 'sportspress_statistic_totals', array( 'total' => __( 'Total', 'sportspress' ), 'average' => __( 'Average', 'sportspress' ) ) );
+				foreach ( $options as $key => $value ):
+					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $total, true, false ), $value );
+				endforeach;
+				?>
+			</select>
+		</p>
 		<p>
 			<strong><?php _e( 'Visible', 'sportspress' ); ?></strong>
 			<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Display in player profile?', 'sportspress' ); ?>"></i>
@@ -92,6 +104,7 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 	public static function save( $post_id, $post ) {
 		self::delete_duplicate( $_POST );
 		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1 ) );
+		update_post_meta( $post_id, 'sp_total_type', sp_array_value( $_POST, 'sp_total_type', 'total' ) );
 		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number' ) );
 		update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
 		update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1 ) );

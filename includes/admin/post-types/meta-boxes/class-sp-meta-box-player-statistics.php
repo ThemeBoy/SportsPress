@@ -33,16 +33,16 @@ class SP_Meta_Box_Player_Statistics {
 					?>
 					<p><strong><?php echo $league->name; ?></strong></p>
 					<?php
-					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats ) = $player->data( $league->term_id, true );
-					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0, true, $formats );
+					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( $league->term_id, true );
+					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0, true, $formats, $total_types );
 					$i ++;
 				endforeach;
 				if ( $show_career_totals ) {
 					?>
 					<p><strong><?php _e( 'Career Total', 'sportspress' ); ?></strong></p>
 					<?php
-					list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true );
-					self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams );
+					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( 0, true );
+					self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams, false, false, $formats, $total_types );
 				}
 			} else {
 				// Determine order of sections
@@ -60,16 +60,16 @@ class SP_Meta_Box_Player_Statistics {
 						?>
 						<p><strong><?php echo $league->name; ?> &mdash; <?php echo $section_label; ?></strong></p>
 						<?php
-						list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes ) = $player->data( $league->term_id, true, $section_id );
-						self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0 );
+						list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( $league->term_id, true, $section_id );
+						self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0, $formats, $total_types );
 						$i ++;
 					endforeach;
 					if ( $show_career_totals ) {
 						?>
 						<p><strong><?php _e( 'Career Total', 'sportspress' ); ?> &mdash; <?php echo $section_label; ?></strong></p>
 						<?php
-						list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true, $section_id );
-						self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0 );
+						list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( 0, true, $section_id );
+						self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0, $formats, $total_types );
 					}
 					$s ++;
 				}
@@ -88,7 +88,7 @@ class SP_Meta_Box_Player_Statistics {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array() ) {
+	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array(), $total_types = array() ) {
 		$readonly = false;
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
 		?>
@@ -124,7 +124,7 @@ class SP_Meta_Box_Player_Statistics {
 								if ( $readonly )
 									echo $value ? $value : $placeholder;
 								else
-									echo '<input type="text" name="sp_statistics[' . $league_id . '][0][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-sp-format="number" />';
+									echo '<input type="text" name="sp_statistics[' . $league_id . '][0][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-sp-format="number" data-sp-total-type="' . sp_array_value( $total_types, $column, 'total' ) . '" />';
 							?></td>
 						<?php endforeach; ?>
 					</tr>
