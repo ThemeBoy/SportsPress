@@ -16,19 +16,21 @@ class SP_Shortcodes {
 	public static function init() {
 		// Define shortcodes
 		$shortcodes = array(
-			'event_results'			=> __CLASS__ . '::event_results',
-			'event_details'			=> __CLASS__ . '::event_details',
-			'event_performance'		=> __CLASS__ . '::event_performance',
-			'countdown'      		=> __CLASS__ . '::countdown',
-			'player_details'   		=> __CLASS__ . '::player_details',
-			'player_statistics'		=> __CLASS__ . '::player_statistics',
-			'staff' 				=> __CLASS__ . '::staff',
-			'event_calendar' 		=> __CLASS__ . '::event_calendar',
-			'event_list'     		=> __CLASS__ . '::event_list',
-			'event_blocks'    	 	=> __CLASS__ . '::event_blocks',
-			'league_table'   		=> __CLASS__ . '::league_table',
-			'player_list'    		=> __CLASS__ . '::player_list',
-			'player_gallery' 		=> __CLASS__ . '::player_gallery',
+			'event_results'     => __CLASS__ . '::event_results',
+			'event_details'     => __CLASS__ . '::event_details',
+			'event_performance' => __CLASS__ . '::event_performance',
+			'countdown'         => __CLASS__ . '::countdown',
+			'player_details'    => __CLASS__ . '::player_details',
+			'player_statistics' => __CLASS__ . '::player_statistics',
+			'staff'             => __CLASS__ . '::staff',
+			'event_calendar'    => __CLASS__ . '::event_calendar',
+			'event_list'        => __CLASS__ . '::event_list',
+			'event_blocks'      => __CLASS__ . '::event_blocks',
+			'league_table'      => __CLASS__ . '::league_table',
+			'team_standings'    => __CLASS__ . '::league_table',
+			'team_gallery'      => __CLASS__ . '::team_gallery',
+			'player_list'       => __CLASS__ . '::player_list',
+			'player_gallery'    => __CLASS__ . '::player_gallery',
 		);
 
 		foreach ( $shortcodes as $shortcode => $function ) {
@@ -144,7 +146,7 @@ class SP_Shortcodes {
 	}
 
 	/**
-	 * League table shortcode.
+	 * League table (team standings) shortcode.
 	 *
 	 * @access public
 	 * @param mixed $atts
@@ -152,6 +154,17 @@ class SP_Shortcodes {
 	 */
 	public static function league_table( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_League_Table', 'output' ), $atts );
+	}
+
+	/**
+	 * Team gallery shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function team_gallery( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Team_Gallery', 'output' ), $atts );
 	}
 
 	/**

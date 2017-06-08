@@ -613,6 +613,7 @@ class SP_Player extends SP_Custom_Post {
 		$columns = array_merge( $performance_labels, $stats );
 
 		$formats = array();
+		$total_types = array();
 
 		$args = array(
 			'post_type' => array( 'sp_performance', 'sp_statistic' ),
@@ -640,49 +641,49 @@ class SP_Player extends SP_Custom_Post {
 					$format = 'number';
 				}
 				$formats[ $post->post_name ] = $format;
+
+				$total_type = get_post_meta( $post->ID, 'sp_total_type', true );
+				if ( '' === $total_type ) {
+					$total_type = 'total';
+				}
+				$total_types[ $post->post_name ] = $total_type;
 			}
 			$columns = array_merge( $column_order, $columns );
 			$usecolumns = array_merge( $usecolumn_order, $usecolumns );
 		}
 
-		// Convert to time notation
-		if ( in_array( 'time', $formats ) ):
-			foreach ( $placeholders as $season => $stats ):
-				if ( ! is_array( $stats ) ) continue;
-
-				foreach ( $stats as $key => $value ):
-
-					// Continue if not time format
-					if ( 'time' !== sp_array_value( $formats, $key ) ) continue;
-
-					$intval = intval( $value );
-					$timeval = gmdate( 'i:s', $intval );
-					$hours = floor( $intval / 3600 );
-
-					if ( '00' != $hours )
-						$timeval = $hours . ':' . $timeval;
-
-					$timeval = preg_replace( '/^0/', '', $timeval );
-
-					$placeholders[ $season ][ $key ] = $timeval;
-				endforeach;
-			endforeach;
-		endif;
-
 		// Calculate total statistics
-		$totals = array(
+		$career = array(
 			'name' => __( 'Total', 'sportspress' ),
 			'team' => '-',
 		);
+
+		// Add values from all seasons for total-based statistics
 		foreach ( $merged as $season => $stats ):
 			if ( ! is_array( $stats ) ) continue;
 			foreach ( $stats as $key => $value ):
 				if ( in_array( $key, array( 'name', 'team' ) ) ) continue;
 				$value = floatval( $value );
-				$totals[ $key ] = sp_array_value( $totals, $key, 0 ) + $value;
+				$career[ $key ] = sp_array_value( $career, $key, 0 ) + $value;
 			endforeach;
 		endforeach;
-		$merged[-1] = $totals;
+
+		// Calculate average-based statistics from performance
+		foreach ( $posts as $post ) {
+			$type = get_post_meta( $post->ID, 'sp_total_type', 'total' );
+			if ( 'average' !== $type ) continue;
+			$value = sp_array_value( $equations, $post->post_name, null );
+			if ( null === $value || ! isset( $value['equation'] ) ) continue;
+			$precision = sp_array_value( $value, 'precision', 0 );
+			$career[ $post->post_name ] = sp_solve( $value['equation'], $totals, $precision );
+		}
+
+		// Get manually entered career totals
+		$manual_career = sp_array_value( $data, 0, array() );
+		$manual_career = array_filter( $manual_career, 'sp_filter_non_empty' );
+
+		// Add career totals to merged array
+		$merged[-1] = array_merge( $career, $manual_career );
 
 		if ( $admin ):
 			$labels = array();
@@ -694,7 +695,7 @@ class SP_Player extends SP_Custom_Post {
 				endif;
 			endforeach; endif;
 			$placeholders[0] = $merged[-1];
-			return array( $labels, $data, $placeholders, $merged, $leagues, $has_checkboxes, $formats );
+			return array( $labels, $data, $placeholders, $merged, $leagues, $has_checkboxes, $formats, $total_types );
 		else:
 			if ( is_array( $usecolumns ) ):
 				foreach ( $columns as $key => $label ):
@@ -720,23 +721,13 @@ class SP_Player extends SP_Custom_Post {
 			// Convert to time notation
 			if ( in_array( 'time', $formats ) ):
 				foreach ( $merged as $season => $season_performance ):
-					if ( $season <= 0 ) continue;
-
 					foreach ( $season_performance as $performance_key => $performance_value ):
 
 						// Continue if not time format
 						if ( 'time' !== sp_array_value( $formats, $performance_key ) ) continue;
 
-						$intval = intval( $performance_value );
-						$timeval = gmdate( 'i:s', $intval );
-						$hours = floor( $intval / 3600 );
+						$merged[ $season ][ $performance_key ] = sp_time_value( $performance_value );
 
-						if ( '00' != $hours )
-							$timeval = $hours . ':' . $timeval;
-
-						$timeval = preg_replace( '/^0/', '', $timeval );
-
-						$merged[ $season ][ $performance_key ] = $timeval;
 					endforeach;
 				endforeach;
 			endif;

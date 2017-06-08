@@ -30,7 +30,8 @@ class SP_AJAX {
 			'event_calendar_shortcode' => false,
 			'event_list_shortcode' => false,
 			'event_blocks_shortcode' => false,
-			'table_table_shortcode' => false,
+			'team_standings_shortcode' => false,
+			'team_gallery_shortcode' => false,
 			'player_details_shortcode' => false,
 			'player_statistics_shortcode' => false,
 			'player_list_shortcode' => false,
@@ -610,11 +611,11 @@ class SP_AJAX {
 	}
 
 	/**
-	 * AJAX league_table shortcode
+	 * AJAX team_standings shortcode
 	 */
-	public function table_table_shortcode() {
+	public function team_standings_shortcode() {
 		?>
-		<div class="wrap sp-thickbox-content" id="sp-thickbox-league_table">
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-team_standings">
 			<p>
 				<label>
 					<?php _e( 'Title:', 'sportspress' ); ?>
@@ -673,7 +674,65 @@ class SP_AJAX {
 			</p>
 			<?php do_action( 'sportspress_ajax_shortcode_form', 'league-table' ); ?>
 			<p class="submit">
-				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('league_table');" />
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('team_standings');" />
+				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+			</p>
+		</div>
+		<?php
+		self::scripts();
+		die();
+	}
+
+	/**
+	 * AJAX team_gallery shortcode
+	 */
+	public function team_gallery_shortcode() {
+		?>
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-team_gallery">
+			<p>
+				<label>
+					<?php _e( 'Title:', 'sportspress' ); ?>
+					<input class="regular-text" type="text" name="title">
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'League Table', 'sportspress' ) ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_table',
+						'name' => 'id',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Number of teams to show:', 'sportspress' ); ?>
+					<input type="text" size="3" name="number" id="number" value="5">
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Order by', 'sportspress' ); ?>:
+					<select name="orderby">
+						<option value="default"><?php _e( 'Rank', 'sportspress' ); ?></option>
+						<option value="name"><?php _e( 'Alphabetical', 'sportspress' ); ?></option>
+						<option value="rand"><?php _e( 'Random', 'sportspress' ); ?></option>
+					</select>
+				</label>
+			</p>
+			<p>
+				<label>
+					<input type="checkbox" name="show_full_table_link" id="show_full_table_link">
+					<?php _e( 'Display link to view full table', 'sportspress' ); ?>
+				</label>
+			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'league-table' ); ?>
+			<p class="submit">
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('team_gallery');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
@@ -971,11 +1030,16 @@ class SP_AJAX {
                     args.orderby = $div.find('[name=orderby]').val();
                     args.order = $div.find('[name=order]').val();
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
-                } else if ( 'league_table' == type ) {
+                } else if ( 'team_standings' == type ) {
                     args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
                     args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
                     args.show_team_logo = $div.find('[name=show_team_logo]:checked').length;
+                    args.show_full_table_link = $div.find('[name=show_full_table_link]:checked').length;
+                } else if ( 'team_gallery' == type ) {
+                    args.title = $div.find('[name=title]').val();
+                    args.number = $div.find('[name=number]').val();
+                    args.orderby = $div.find('[name=orderby]').val();
                     args.show_full_table_link = $div.find('[name=show_full_table_link]:checked').length;
                 } else if ( 'player_list' == type ) {
                     args.title = $div.find('[name=title]').val();

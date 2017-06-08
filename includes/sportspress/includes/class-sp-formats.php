@@ -32,6 +32,10 @@ class SP_Formats {
 				'list' => __( 'List', 'sportspress' ),
 				'blocks' => __( 'Blocks', 'sportspress' ),
 			),
+			'table' => array(
+				'standings' => __( 'Standings', 'sportspress' ),
+				'gallery' => __( 'Gallery', 'sportspress' ),
+			),
 			'list' => array(
 				'list' => __( 'List', 'sportspress' ),
 				'gallery' => __( 'Gallery', 'sportspress' ),

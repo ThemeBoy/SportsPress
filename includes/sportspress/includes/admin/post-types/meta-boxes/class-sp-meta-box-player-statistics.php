@@ -33,16 +33,16 @@ class SP_Meta_Box_Player_Statistics {
 					?>
 					<p><strong><?php echo $league->name; ?></strong></p>
 					<?php
-					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats ) = $player->data( $league->term_id, true );
-					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0, true, $formats );
+					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( $league->term_id, true );
+					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0, true, $formats, $total_types );
 					$i ++;
 				endforeach;
 				if ( $show_career_totals ) {
 					?>
 					<p><strong><?php _e( 'Career Total', 'sportspress' ); ?></strong></p>
 					<?php
-					list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true );
-					self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams );
+					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( 0, true );
+					self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams, false, false, $formats, $total_types );
 				}
 			} else {
 				// Determine order of sections
@@ -60,16 +60,16 @@ class SP_Meta_Box_Player_Statistics {
 						?>
 						<p><strong><?php echo $league->name; ?> &mdash; <?php echo $section_label; ?></strong></p>
 						<?php
-						list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes ) = $player->data( $league->term_id, true, $section_id );
-						self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0 );
+						list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( $league->term_id, true, $section_id );
+						self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0, $formats, $total_types );
 						$i ++;
 					endforeach;
 					if ( $show_career_totals ) {
 						?>
 						<p><strong><?php _e( 'Career Total', 'sportspress' ); ?> &mdash; <?php echo $section_label; ?></strong></p>
 						<?php
-						list( $columns, $data, $placeholders, $merged, $seasons_teams ) = $player->data( 0, true, $section_id );
-						self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0 );
+						list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( 0, true, $section_id );
+						self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0, $formats, $total_types );
 					}
 					$s ++;
 				}
@@ -88,7 +88,7 @@ class SP_Meta_Box_Player_Statistics {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array() ) {
+	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array(), $total_types = array() ) {
 		$readonly = false;
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
 		?>
@@ -121,10 +121,23 @@ class SP_Meta_Box_Player_Statistics {
 							<td><?php
 								$value = sp_array_value( sp_array_value( $data, 0, array() ), $column, null );
 								$placeholder = sp_array_value( sp_array_value( $placeholders, 0, array() ), $column, 0 );
-								if ( $readonly )
+
+								// Convert value and placeholder to time format
+								if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
+									$timeval = sp_time_value( $value );
+									$placeholder = sp_time_value( $placeholder );
+								}
+
+								if ( $readonly ) {
 									echo $value ? $value : $placeholder;
-								else
-									echo '<input type="text" name="sp_statistics[' . $league_id . '][0][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-sp-format="number" />';
+								} else {
+									if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
+										echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][0][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+										echo '<input class="sp-convert-time-output" type="hidden" name="sp_statistics[' . $league_id . '][0][' . $column . ']" value="' . esc_attr( $value ) . '" data-sp-format="' . sp_array_value( $formats, $column, 'number' ) . '" data-sp-total-type="' . sp_array_value( $total_types, $column, 'total' ) . '" />';
+									} else {
+										echo '<input type="text" name="sp_statistics[' . $league_id . '][0][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-sp-format="' . sp_array_value( $formats, $column, 'number' ) . '" data-sp-total-type="' . sp_array_value( $total_types, $column, 'total' ) . '" />';
+									}
+								}
 							?></td>
 						<?php endforeach; ?>
 					</tr>
@@ -196,26 +209,8 @@ class SP_Meta_Box_Player_Statistics {
 
 									// Convert value and placeholder to time format
 									if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
-
-										// Convert value
-										$intval = intval( $value );
-										$timeval = gmdate( 'i:s', $intval );
-										$hours = floor( $intval / 3600 );
-
-										if ( '00' != $hours )
-											$timeval = $hours . ':' . $timeval;
-
-										$timeval = preg_replace( '/^0/', '', $timeval );
-
-										// Convert placeholder
-										$intval = intval( $placeholder );
-										$placeholder = gmdate( 'i:s', $intval );
-										$hours = floor( $intval / 3600 );
-
-										if ( '00' != $hours )
-											$placeholder = $hours . ':' . $placeholder;
-
-										$placeholder = preg_replace( '/^0/', '', $placeholder );
+										$timeval = sp_time_value( $value );
+										$placeholder = sp_time_value( $placeholder );
 									}
 
 									if ( $readonly ) {

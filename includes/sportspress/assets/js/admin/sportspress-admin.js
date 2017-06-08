@@ -239,7 +239,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Total stats calculator
-	$(".sp-data-table .sp-total input[data-sp-format=number]").on("updateTotal", function() {
+	$(".sp-data-table .sp-total input[data-sp-format=number][data-sp-total-type!=average]").on("updateTotal", function() {
 		index = $(this).parent().index();
 		var sum = 0;
 		$(this).closest(".sp-data-table").find(".sp-post").each(function() {
@@ -248,7 +248,7 @@ jQuery(document).ready(function($){
 				val = $(this).find("td").eq(index).find("input").attr("placeholder");
 			}
 			if($.isNumeric(val)) {
-				sum += parseInt(val, 10);
+				sum += parseFloat(val, 10);
 			}
 		});
 		$(this).attr("placeholder", sum);
@@ -257,12 +257,12 @@ jQuery(document).ready(function($){
 	// Activate total stats calculator
 	if($(".sp-data-table .sp-total").size()) {
 		$(".sp-data-table .sp-post td input").on("keyup", function() {
-			$(this).closest(".sp-data-table").find(".sp-total td").eq($(this).parent().index()).find("input").trigger("updateTotal");
+			$(this).closest(".sp-data-table").find(".sp-total td").eq($(this).parent().index()).find("input[data-sp-format=number][data-sp-total-type!=average]").trigger("updateTotal");
 		});
 	}
 
 	// Trigger total stats calculator
-	$(".sp-data-table .sp-total input").trigger("updateTotal");
+	$(".sp-data-table .sp-total input[data-sp-format=number][data-sp-total-type!=average]").trigger("updateTotal");
 
 	// Sync inputs
 	$(".sp-sync-input").on("keyup", function() {
@@ -467,7 +467,7 @@ jQuery(document).ready(function($){
 	$(".post-type-sp_event #post-formats-select input.post-format").change(function() {
 		layout = $(".post-type-sp_event #post-formats-select input:checked").val();
 		if ( layout == "friendly" ) {
-			$(".sp_event-sp_league-field").hide().find("select").prop("disabled", true);
+			$(".sp_event-sp_league-field").show().find("select").prop("disabled", false);
 			$(".sp_event-sp_season-field").show().find("select").prop("disabled", false);
 		} else {
 			$(".sp_event-sp_league-field").show().find("select").prop("disabled", false);

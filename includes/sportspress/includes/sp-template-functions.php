@@ -330,7 +330,12 @@ if ( ! function_exists( 'sportspress_output_league_table' ) ) {
 	 * @return void
 	 */
 	function sportspress_output_league_table() {
-		sp_get_template( 'league-table.php' );
+		$id = get_the_ID();
+		$format = get_post_meta( $id, 'sp_format', true );
+		if ( array_key_exists( $format, SP()->formats->table ) && 'standings' !== $format )
+			sp_get_template( 'team-' . $format . '.php', array( 'id' => $id ) );
+		else
+			sp_get_template( 'league-table.php', array( 'id' => $id ) );
 	}
 }
 

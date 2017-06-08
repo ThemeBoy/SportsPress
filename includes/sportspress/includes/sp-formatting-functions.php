@@ -97,6 +97,17 @@ function sp_sort_random() {
 }
 
 /**
+ * Sort array by name field.
+ *
+ * @access public
+ * @param array $array
+ * @return bool
+ */
+function sp_sort_by_name( $a, $b ) {
+	return strcmp( $a['name'], $b['name'] );
+}
+
+/**
  * let_to_num function.
  *
  * This function transforms the php.ini notation for numbers (like '2M') to an integer.
@@ -141,6 +152,27 @@ function sp_date_format() {
  */
 function sp_time_format() {
 	return apply_filters( 'sportspress_time_format', get_option( 'time_format' ) );
+}
+
+if ( ! function_exists( 'sp_time_from_int' ) ) {
+
+	/**
+	 * Convert number of seconds to formatted time
+	 *
+	 * @access public
+	 * @param mixed $value
+	 * @return string
+	 */
+	function sp_time_value( $value = 0 ) {
+		$intval = intval( $value );
+		$timeval = gmdate( 'i:s', $intval );
+		$hours = floor( $intval / 3600 );
+
+		if ( '00' != $hours )
+			$timeval = $hours . ':' . $timeval;
+
+		return preg_replace( '/^0/', '', $timeval );
+	}
 }
 
 if ( ! function_exists( 'sp_rgb_from_hex' ) ) {
