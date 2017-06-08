@@ -66,11 +66,11 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 				?>
 			</select>
 		</p>
-		<p><strong><?php _e( 'Career Total', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Type', 'sportspress' ); ?></strong></p>
 		<p>
 			<select name="sp_total_type">
 				<?php
-				$options = apply_filters( 'sportspress_statistic_totals', array( 'total' => __( 'Total', 'sportspress' ), 'average' => __( 'Average', 'sportspress' ) ) );
+				$options = apply_filters( 'sportspress_statistic_total_types', array( 'total' => __( 'Total', 'sportspress' ), 'average' => __( 'Average', 'sportspress' ) ) );
 				foreach ( $options as $key => $value ):
 					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $total, true, false ), $value );
 				endforeach;

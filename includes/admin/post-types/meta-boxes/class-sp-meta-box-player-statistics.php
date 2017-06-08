@@ -121,10 +121,23 @@ class SP_Meta_Box_Player_Statistics {
 							<td><?php
 								$value = sp_array_value( sp_array_value( $data, 0, array() ), $column, null );
 								$placeholder = sp_array_value( sp_array_value( $placeholders, 0, array() ), $column, 0 );
-								if ( $readonly )
+
+								// Convert value and placeholder to time format
+								if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
+									$timeval = sp_time_value( $value );
+									$placeholder = sp_time_value( $placeholder );
+								}
+
+								if ( $readonly ) {
 									echo $value ? $value : $placeholder;
-								else
-									echo '<input type="text" name="sp_statistics[' . $league_id . '][0][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-sp-format="number" data-sp-total-type="' . sp_array_value( $total_types, $column, 'total' ) . '" />';
+								} else {
+									if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
+										echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][0][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+										echo '<input class="sp-convert-time-output" type="hidden" name="sp_statistics[' . $league_id . '][0][' . $column . ']" value="' . esc_attr( $value ) . '" data-sp-format="' . sp_array_value( $formats, $column, 'number' ) . '" data-sp-total-type="' . sp_array_value( $total_types, $column, 'total' ) . '" />';
+									} else {
+										echo '<input type="text" name="sp_statistics[' . $league_id . '][0][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-sp-format="' . sp_array_value( $formats, $column, 'number' ) . '" data-sp-total-type="' . sp_array_value( $total_types, $column, 'total' ) . '" />';
+									}
+								}
 							?></td>
 						<?php endforeach; ?>
 					</tr>
@@ -196,26 +209,8 @@ class SP_Meta_Box_Player_Statistics {
 
 									// Convert value and placeholder to time format
 									if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
-
-										// Convert value
-										$intval = intval( $value );
-										$timeval = gmdate( 'i:s', $intval );
-										$hours = floor( $intval / 3600 );
-
-										if ( '00' != $hours )
-											$timeval = $hours . ':' . $timeval;
-
-										$timeval = preg_replace( '/^0/', '', $timeval );
-
-										// Convert placeholder
-										$intval = intval( $placeholder );
-										$placeholder = gmdate( 'i:s', $intval );
-										$hours = floor( $intval / 3600 );
-
-										if ( '00' != $hours )
-											$placeholder = $hours . ':' . $placeholder;
-
-										$placeholder = preg_replace( '/^0/', '', $placeholder );
+										$timeval = sp_time_value( $value );
+										$placeholder = sp_time_value( $placeholder );
 									}
 
 									if ( $readonly ) {

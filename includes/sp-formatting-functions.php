@@ -154,6 +154,27 @@ function sp_time_format() {
 	return apply_filters( 'sportspress_time_format', get_option( 'time_format' ) );
 }
 
+if ( ! function_exists( 'sp_time_from_int' ) ) {
+
+	/**
+	 * Convert number of seconds to formatted time
+	 *
+	 * @access public
+	 * @param mixed $value
+	 * @return string
+	 */
+	function sp_time_value( $value = 0 ) {
+		$intval = intval( $value );
+		$timeval = gmdate( 'i:s', $intval );
+		$hours = floor( $intval / 3600 );
+
+		if ( '00' != $hours )
+			$timeval = $hours . ':' . $timeval;
+
+		return preg_replace( '/^0/', '', $timeval );
+	}
+}
+
 if ( ! function_exists( 'sp_rgb_from_hex' ) ) {
 
 	/**

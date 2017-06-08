@@ -652,30 +652,6 @@ class SP_Player extends SP_Custom_Post {
 			$usecolumns = array_merge( $usecolumn_order, $usecolumns );
 		}
 
-		// Convert to time notation
-		if ( in_array( 'time', $formats ) ):
-			foreach ( $placeholders as $season => $stats ):
-				if ( ! is_array( $stats ) ) continue;
-
-				foreach ( $stats as $key => $value ):
-
-					// Continue if not time format
-					if ( 'time' !== sp_array_value( $formats, $key ) ) continue;
-
-					$intval = intval( $value );
-					$timeval = gmdate( 'i:s', $intval );
-					$hours = floor( $intval / 3600 );
-
-					if ( '00' != $hours )
-						$timeval = $hours . ':' . $timeval;
-
-					$timeval = preg_replace( '/^0/', '', $timeval );
-
-					$placeholders[ $season ][ $key ] = $timeval;
-				endforeach;
-			endforeach;
-		endif;
-
 		// Calculate total statistics
 		$career = array(
 			'name' => __( 'Total', 'sportspress' ),
@@ -702,9 +678,11 @@ class SP_Player extends SP_Custom_Post {
 			$career[ $post->post_name ] = sp_solve( $value['equation'], $totals, $precision );
 		}
 
-		// Add career totals to merged array
+		// Get manually entered career totals
 		$manual_career = sp_array_value( $data, 0, array() );
 		$manual_career = array_filter( $manual_career, 'sp_filter_non_empty' );
+
+		// Add career totals to merged array
 		$merged[-1] = array_merge( $career, $manual_career );
 
 		if ( $admin ):
@@ -743,23 +721,13 @@ class SP_Player extends SP_Custom_Post {
 			// Convert to time notation
 			if ( in_array( 'time', $formats ) ):
 				foreach ( $merged as $season => $season_performance ):
-					if ( $season <= 0 ) continue;
-
 					foreach ( $season_performance as $performance_key => $performance_value ):
 
 						// Continue if not time format
 						if ( 'time' !== sp_array_value( $formats, $performance_key ) ) continue;
 
-						$intval = intval( $performance_value );
-						$timeval = gmdate( 'i:s', $intval );
-						$hours = floor( $intval / 3600 );
+						$merged[ $season ][ $performance_key ] = sp_time_value( $performance_value );
 
-						if ( '00' != $hours )
-							$timeval = $hours . ':' . $timeval;
-
-						$timeval = preg_replace( '/^0/', '', $timeval );
-
-						$merged[ $season ][ $performance_key ] = $timeval;
 					endforeach;
 				endforeach;
 			endif;
