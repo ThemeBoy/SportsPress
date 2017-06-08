@@ -53,8 +53,8 @@
 	"statistics": [
 						{ "name" : "GP", "equation" : "$eventsplayed", "description" : "Games played" },
 						{ "name" : "P", "equation" : "$g + $assists", "description" : "Points" },
-						{ "name" : "S%", "equation" : "$g / $s * 100", "precision" : 2, "description" : "Shot percentage" },
-						{ "name" : "SV%", "equation" : "$sv / $sa * 100", "precision" : 2, "description" : "Save percentage" }
+						{ "name" : "S%", "equation" : "$g / $s * 100", "precision" : 2, "type" : "average", "description" : "Shot percentage" },
+						{ "name" : "SV%", "equation" : "$sv / $sa * 100", "precision" : 2, "type" : "average", "description" : "Save percentage" }
 	],
 	"options": {
 						"mode" : "team",

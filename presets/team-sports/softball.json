@@ -68,7 +68,7 @@
 	],
 	"statistics": [
 						{ "name" : "G", "equation" : "$eventsplayed", "description" : "Games played" },
-						{ "name" : "AVG", "equation" : "$h / $ab", "precision" : 3, "description" : "Batting average" }
+						{ "name" : "AVG", "equation" : "$h / $ab", "precision" : 3, "type" : "average", "description" : "Batting average" }
 	],
 	"options": {
 						"mode" : "team",

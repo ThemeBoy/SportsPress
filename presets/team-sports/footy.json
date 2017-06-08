@@ -44,13 +44,13 @@
 	],
 	"statistics": [
 						{ "name" : "Games played", "equation" : "$eventsplayed" },
-						{ "name" : "K", "equation" : "$kicks / $eventsplayed", "precision" : 1, "description" : "Average kicks per game" },
-						{ "name" : "H", "equation" : "$handballs / $eventsplayed", "precision" : 1, "description" : "Average handballs per game" },
-						{ "name" : "D", "equation" : "$disposals / $eventsplayed", "precision" : 1, "description" : "Average disposals per game" },
-						{ "name" : "M", "equation" : "$marks / $eventsplayed", "precision" : 1, "description" : "Average marks per game" },
-						{ "name" : "HO", "equation" : "$hitouts / $eventsplayed", "precision" : 1, "description" : "Average hitouts per game" },
-						{ "name" : "T", "equation" : "$tackles / $eventsplayed", "precision" : 1, "description" : "Average tackles per game" },
-						{ "name" : "G", "equation" : "$goals / $eventsplayed", "precision" : 1, "description" : "Average goals per game" }
+						{ "name" : "K", "equation" : "$kicks / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Average kicks per game" },
+						{ "name" : "H", "equation" : "$handballs / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Average handballs per game" },
+						{ "name" : "D", "equation" : "$disposals / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Average disposals per game" },
+						{ "name" : "M", "equation" : "$marks / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Average marks per game" },
+						{ "name" : "HO", "equation" : "$hitouts / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Average hitouts per game" },
+						{ "name" : "T", "equation" : "$tackles / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Average tackles per game" },
+						{ "name" : "G", "equation" : "$goals / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Average goals per game" }
 	],
 	"options": {
 						"mode" : "team"

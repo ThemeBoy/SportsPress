@@ -59,15 +59,15 @@
 	"statistics": [
 						{ "name" : "G", "equation" : "$eventsattended", "description" : "Games played" },
 						{ "name" : "GS", "equation" : "$eventsstarted", "description" : "Games started" },
-						{ "name" : "FG%", "equation" : "( $fgm / $fga ) * 100", "precision" : 3, "description" : "Field goal percentage" },
-						{ "name" : "FT%", "equation" : "( $ftm / $fta ) * 100", "precision" : 3, "description" : "Free throw percentage" },
-						{ "name" : "3P%", "equation" : "( $threepm / $threepa ) * 100", "precision" : 3, "description" : "3-pointer percentage" },
-						{ "name" : "RPG", "equation" : "( $off + $def ) / $eventsplayed", "precision" : 1, "description" : "Rebounds per game" },
-						{ "name" : "APG", "equation" : "$ast / $eventsplayed", "precision" : 1, "description" : "Assists per game" },
-						{ "name" : "SPG", "equation" : "$stl / $eventsplayed", "precision" : 1, "description" : "Steals per game" },
-						{ "name" : "BPG", "equation" : "$blk / $eventsplayed", "precision" : 1, "description" : "Blocks per game" },
-						{ "name" : "PPG", "equation" : "$pts / $eventsplayed", "precision" : 1, "description" : "Points per game" },
-						{ "name" : "EFF", "equation" : "$pts + $off + $def + $ast + $stl + $blk - $fga + $fgm - $fta + $ftm + $to", "description" : "Efficiency rating" }
+						{ "name" : "FG%", "equation" : "( $fgm / $fga ) * 100", "precision" : 3, "type" : "average", "description" : "Field goal percentage" },
+						{ "name" : "FT%", "equation" : "( $ftm / $fta ) * 100", "precision" : 3, "type" : "average", "description" : "Free throw percentage" },
+						{ "name" : "3P%", "equation" : "( $threepm / $threepa ) * 100", "precision" : 3, "type" : "average", "description" : "3-pointer percentage" },
+						{ "name" : "RPG", "equation" : "( $off + $def ) / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Rebounds per game" },
+						{ "name" : "APG", "equation" : "$ast / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Assists per game" },
+						{ "name" : "SPG", "equation" : "$stl / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Steals per game" },
+						{ "name" : "BPG", "equation" : "$blk / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Blocks per game" },
+						{ "name" : "PPG", "equation" : "$pts / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Points per game" },
+						{ "name" : "EFF", "equation" : "$pts + $off + $def + $ast + $stl + $blk - $fga + $fgm - $fta + $ftm + $to", "type" : "average", "description" : "Efficiency rating" }
 	],
 	"options": {
 						"mode" : "team"

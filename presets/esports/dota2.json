@@ -20,7 +20,7 @@
 	"statistics": [
 						{ "name" : "Wins", "equation" : "$win" },
 						{ "name" : "Losses", "equation" : "$loss" },
-						{ "name" : "Winrate", "equation" : "$win / $eventsplayed * 100" }
+						{ "name" : "Winrate", "equation" : "$win / $eventsplayed * 100", "type" : "average" }
 	],
 	"options": {
 						"mode" : "team"

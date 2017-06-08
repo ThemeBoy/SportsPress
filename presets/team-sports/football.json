@@ -59,8 +59,8 @@
 	"statistics": [
 						{ "name" : "G", "equation" : "$eventsplayed", "description" : "Games played" },
 						{ "name" : "GS", "equation" : "$eventsstarted", "description" : "Games started" },
-						{ "name" : "Avg", "equation" : "$yds / $att", "precision" : 1, "description" : "Average yards per carry" },
-						{ "name" : "Rec Avg", "equation" : "$recyds / $rec", "precision" : 1, "description" : "Average yards per reception" }
+						{ "name" : "Avg", "equation" : "$yds / $att", "precision" : 1, "type" : "average", "description" : "Average yards per carry" },
+						{ "name" : "Rec Avg", "equation" : "$recyds / $rec", "precision" : 1, "type" : "average", "description" : "Average yards per reception" }
 	],
 	"options": {
 						"mode" : "team"

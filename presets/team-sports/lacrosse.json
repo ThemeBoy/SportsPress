@@ -43,8 +43,8 @@
 	],
 	"statistics": [
 						{ "name" : "Games", "equation" : "$eventsplayed", "description" : "Games played" },
-						{ "name" : "Shooting %", "equation" : "$goals / $shots", "precision" : 1, "description" : "Shooting percentage" },
-						{ "name" : "SoG %", "equation" : "$sog / $shots", "precision" : 1, "description" : "Shots on goal percentage" }
+						{ "name" : "Shooting %", "equation" : "$goals / $shots", "precision" : 1, "type" : "average", "description" : "Shooting percentage" },
+						{ "name" : "SoG %", "equation" : "$sog / $shots", "precision" : 1, "type" : "average", "description" : "Shots on goal percentage" }
 	],
 	"options": {
 						"mode" : "team"

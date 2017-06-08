@@ -16,7 +16,7 @@
 	"metrics": [
 	],
 	"statistics": [
-						{ "name" : "KDA Ratio", "equation" : "( $kills + $assists ) / $deaths", "precision" : 2, "description" : "Kills/deaths/assists ratio" }
+						{ "name" : "KDA Ratio", "equation" : "( $kills + $assists ) / $deaths", "precision" : 2, "type" : "average", "description" : "Kills/deaths/assists ratio" }
 	],
 	"options": {
 						"mode" : "team"
