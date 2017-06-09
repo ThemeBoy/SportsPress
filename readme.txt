@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 4.7
-Stable tag: 2.3.2
+Tested up to: 4.8
+Stable tag: 2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -235,6 +235,17 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.4 =
+* Feature - Integration with WordPay to allow paid team and player registrations.
+* Feature - New team gallery shortcode and widget for displaying a gallery of team logos.
+* Feature - Added support for player career totals based on calculated averages.
+* Tweak - Allow competitions to be selected for friendly matches.
+* Fix - Full time defaulting to 90 minutes.
+* Fix - Statistic format not reflected in meta box.
+* Fix - Shortcode button hook timing conflicts.
+* Preset - Swap par and score in golf preset.
+* Preset - Update all presets to reflect new career total type.
 
 = 2.3.2 =
 * Fix - Team in player statistics total row displaying as zero.
