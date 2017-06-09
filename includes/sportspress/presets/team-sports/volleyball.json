@@ -45,9 +45,9 @@
 						"Height"
 	],
 	"statistics": [
-						{ "name" : "Pct", "equation" : "( $k - $e ) / $ta", "description" : "Hitting percentage" },
-						{ "name" : "B/S", "equation" : "$b / $sets", "description" : "Blocks per set" },
-						{ "name" : "A/S", "equation" : "$a / $sets", "description" : "Assists per set" }
+						{ "name" : "Pct", "equation" : "( $k - $e ) / $ta", "type" : "average", "description" : "Hitting percentage" },
+						{ "name" : "B/S", "equation" : "$b / $sets", "type" : "average", "description" : "Blocks per set" },
+						{ "name" : "A/S", "equation" : "$a / $sets", "type" : "average", "description" : "Assists per set" }
 	],
 	"options": {
 						"mode" : "team"

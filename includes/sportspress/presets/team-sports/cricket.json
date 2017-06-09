@@ -46,7 +46,7 @@
 	],
 	"statistics": [
 						{ "name" : "Mat", "equation" : "$eventsplayed", "description" : "Matches played" },
-						{ "name" : "SR", "equation" : "( $runs / $b ) * 100", "precision" : 2, "description" : "Strike Rate" }
+						{ "name" : "SR", "equation" : "( $runs / $b ) * 100", "precision" : 2, "type" : "average", "description" : "Strike Rate" }
 	],
 	"options": {
 						"mode" : "team",

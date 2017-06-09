@@ -642,7 +642,7 @@ class SP_Player extends SP_Custom_Post {
 				}
 				$formats[ $post->post_name ] = $format;
 
-				$total_type = get_post_meta( $post->ID, 'sp_total_type', true );
+				$total_type = get_post_meta( $post->ID, 'sp_type', true );
 				if ( '' === $total_type ) {
 					$total_type = 'total';
 				}
@@ -670,7 +670,7 @@ class SP_Player extends SP_Custom_Post {
 
 		// Calculate average-based statistics from performance
 		foreach ( $posts as $post ) {
-			$type = get_post_meta( $post->ID, 'sp_total_type', 'total' );
+			$type = get_post_meta( $post->ID, 'sp_type', 'total' );
 			if ( 'average' !== $type ) continue;
 			$value = sp_array_value( $equations, $post->post_name, null );
 			if ( null === $value || ! isset( $value['equation'] ) ) continue;

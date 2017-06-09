@@ -203,6 +203,7 @@ class SP_Admin_Sports {
 			$id = self::insert_preset_post( $post, $i + $index );
 			update_post_meta( $id, 'sp_equation', sp_array_value( $statistic, 'equation', null ) );
 			update_post_meta( $id, 'sp_precision', sp_array_value( $statistic, 'precision', 0 ) );
+			update_post_meta( $id, 'sp_type', sp_array_value( $statistic, 'type', 'total' ) );
 		}
 
 

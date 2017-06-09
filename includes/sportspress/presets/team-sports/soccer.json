@@ -38,9 +38,9 @@
 	],
 	"statistics": [
 						{ "name" : "Appearances", "equation" : "$eventsplayed", "description" : "Matches played" },
-						{ "name" : "Win Ratio", "equation" : "$win / $eventsplayed * 100", "precision" : 2, "description" : "Win ratio" },
-						{ "name" : "Draw Ratio", "equation" : "$draw / $eventsplayed * 100", "precision" : 2, "description" : "Draw ratio" },
-						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 100", "precision" : 2, "description" : "Loss ratio" }
+						{ "name" : "Win Ratio", "equation" : "$win / $eventsplayed * 100", "precision" : 2, "type" : "average", "description" : "Win ratio" },
+						{ "name" : "Draw Ratio", "equation" : "$draw / $eventsplayed * 100", "precision" : 2, "type" : "average", "description" : "Draw ratio" },
+						{ "name" : "Loss Ratio", "equation" : "$loss / $eventsplayed * 100", "precision" : 2, "type" : "average", "description" : "Loss ratio" }
 	],
 	"options": {
 						"mode" : "team",

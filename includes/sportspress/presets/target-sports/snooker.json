@@ -25,7 +25,7 @@
 	"statistics": [
 						{ "name" : "Games Played", "equation" : "$eventsplayed" },
 						{ "name" : "Games Won", "equation" : "$win" },
-						{ "name" : "Win Percentage", "equation" : "$win / $eventsplayed * 100", "precision" : 2 }
+						{ "name" : "Win Percentage", "equation" : "$win / $eventsplayed * 100", "precision" : 2, "type" : "average" }
 	],
 	"options": {
 						"mode" : "player"
