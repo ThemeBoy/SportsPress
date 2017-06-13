@@ -69,6 +69,12 @@ class SP_Directory_AJAX {
 			</p>
 			<p>
 				<label>
+					<?php _e( 'Columns:', 'sportspress' ); ?>
+					<input type="text" size="3" name="columns" id="columns" value="3">
+				</label>
+			</p>
+			<p>
+				<label>
 					<input type="checkbox" name="show_all_staff_link" id="show_all_staff_link">
 					<?php _e( 'Display link to view all staff', 'sportspress' ); ?>
 				</label>
@@ -153,6 +159,7 @@ class SP_Directory_AJAX {
                 } else if ( 'staff_gallery' == type ) {
                     args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
+                    args.columns = $div.find('[name=columns]').val();
                     args.show_all_staff_link = $div.find('[name=show_all_staff_link]:checked').length;
                 }
 

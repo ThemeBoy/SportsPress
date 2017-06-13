@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version   2.3
+ * @version   2.4
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -124,7 +124,7 @@ class SP_Admin_Welcome {
 		<p class="sportspress-actions">
 			<a href="<?php echo admin_url( add_query_arg( array( 'page' => 'sportspress', 'tab' => 'general' ), 'admin.php' ) ); ?>" class="button button-primary"><?php _e( 'Settings', 'sportspress' ); ?></a>
 			<a href="<?php echo esc_url( apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs', 'sportspress' ) ); ?>" class="docs button button-primary"><?php _e( 'Docs', 'sportspress' ); ?></a>
-			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wordpress.org/plugins/sportspress" data-text="An open-source (free) #WordPress plugin that helps you build professional league websites." data-via="ThemeBoy" data-size="large" data-hashtags="SportsPress">Tweet</a>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wordpress.org/plugins/sportspress" data-text="An open-source (free) #WordPress plugin that helps you build professional league websites" data-via="ThemeBoy" data-size="large" data-hashtags="SportsPress">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		</p>
 
@@ -176,74 +176,38 @@ class SP_Admin_Welcome {
 
 			do_action( 'sportspress_before_welcome_features' );
 			?>
-			<div class="feature-section two-col">
-				<h2>Mode Switching</h2>
-				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-team-vs-team.png" alt="Team vs Team">
-					<h3>Team vs Team</h3>
-					<p>Switch between team and individual mode per event. By default, events are held between teams with multiple players on each side.</p>
-				</div>
-				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-player-vs-player.png" alt="Player vs Player">
-					<h3>Player vs Player</h3>
-					<p>Select this mode to remove team selectors in events. Instead, players compete with each other. Select a default mode in <a href="<?php echo add_query_arg( array( 'page' => 'sportspress', 'tab' => 'events' ), admin_url( 'admin.php' ) ); ?>">Event Options</a>.</p>
-				</div>
-			</div>
-
-			<hr>
-
+			<h2>New Features</h2>
 			<div class="feature-section three-col">
-				<h2>Time-Saving Features</h2>
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-user-registration.png" alt="User Registration">
-					<h3>User Registration</h3>
-					<p>Automatically create player profiles for new users by enabling <strong>User Registration</strong> in <a href="<?php echo add_query_arg( array( 'page' => 'sportspress', 'tab' => 'players' ), admin_url( 'admin.php' ) ); ?>">Player Options</a> and <strong>Membership</strong> in <a href="<?php echo admin_url( 'options-general.php' ); ?>">General Settings</a>.</p>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-team-galleries.png" alt="Team Galleries">
+					<h3>Team Galleries</h3>
+					<p>Display a gallery of logos that link to each team using the new <strong>[team_gallery]</strong> shortcode, or by adding a <strong>Team Gallery</strong> widget to your sidebar.</p>
 				</div>
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-setup-wizard.png" alt="Setup Wizard">
-					<h3>Setup Wizard</h3>
-					<p>A guided <a href="<?php echo add_query_arg( array( 'page' => 'sp-setup' ), admin_url( 'admin.php' ) ); ?>">Setup Wizard</a> can help you get started by adding basic details, teams, players, staff, venues, and your first event.</p>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-better-career-totals.png" alt="Better Career Totals">
+					<h3>Better Career Totals</h3>
+					<p><strong>Player Statistics</strong> can be configured to display career totals by adding season totals or calculating averages using the <strong>Type</strong> option.</p>
 				</div>
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-send-offs.png" alt="Send Offs">
-					<h3>Send Offs</h3>
-					<p>A new <strong>Send Off</strong> option has been added to player performance settings, limiting the played minutes for sent off players.</p>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-friendly-competitions.png" alt="Friendly Competitions">
+					<h3>Friendly Competitions</h3>
+					<p><strong>Competitions</strong> can now be assigned to any event, making it easier to organize and display <strong>Friendly</strong> events into custom calendars.</p>
 				</div>
 			</div>
 
 			<hr>
 
+			<h2>WordPay Integration</h2>
 			<div class="feature-section two-col">
-				<h2>New in SportsPress Pro</h2>
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-user-scores-frontend.png" alt="Frontend Submissions">
-					<h3>Frontend Submissions</h3>
-					<p>Display a frontend section for logged in players to submit their own scores. Optionally, registered staff and team managers can also submit scores for their entire team.</p>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-team-player-registration.png" alt="Team & Player Registration">
+					<h3>Team &amp; Player Registration</h3>
+					<p>Automatically create teams and players when new members sign up to your site using <a href="https://wordpay.org/sportspress/" target="_blank">WordPay</a>. Once installed, don't forget to activate the <strong>WordPay</strong> module from <a href="<?php echo add_query_arg( array( 'page' => 'sportspress' ), admin_url( 'admin.php' ) ); ?>">SportsPress Settings</a>.</p>
 				</div>
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-user-scores-admin.png" alt="Admin Approval">
-					<h3>Admin Approval</h3>
-					<p>Once the scores are received, the owner of the event or an admin user can approve or reject each submission. Logged in users can amend their submissions at any time. Only approved scores are published.</p>
-				</div>
-			</div>
-
-			<hr />
-
-			<div class="changelog">
-				<h2>Under the Hood</h2>
-				<div class="under-the-hood three-col">
-					<div class="col">
-						<h3>Loading Borrowed Players</h3>
-						<p>Players borrowed from other teams are now automatically loaded when editing events in the dashboard.</p>
-					</div>
-					<div class="col">
-						<h3>Frontend Style Overrides</h3>
-						<p>Text colors have been adjusted to improve readability when using color schemes with dark backgrounds and light text.</p>
-					</div>
-					<div class="col">
-						<h3>Shared Box Score Template</h3>
-						<p>The templates used for rendering team and individual box scores have been combined into a single template.</p>
-					</div>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-membership-payments.png" alt="Membership Payments">
+					<h3>Collect Membership Payments</h3>
+					<p>By using <strong>WordPay</strong>, you can create different membership levels and start accepting recurring fees directly on your website using <strong>PayPal</strong> or <strong>Stripe</strong> with seamless credit card processing. <a href="https://wordpay.org/sportspress/" target="_blank">Learn more</a></p>
 				</div>
 			</div>
 
@@ -265,26 +229,7 @@ class SP_Admin_Welcome {
 			<p class="about-description"><?php printf( __( 'SportsPress is developed and maintained by a worldwide team of passionate individuals and backed by an awesome developer community. Want to see your name? <a href="%s">Contribute to SportsPress</a>.', 'sportspress' ), 'https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md' ); ?></p>
 
 			<div class="sp-feature feature-section col one-col">
-				<h4><?php _e( 'Developers', 'sportspress' ); ?></h4>
 				<?php echo $this->contributors(); ?>
-			</div>
-			
-			<p class="about-description"><?php printf( __( 'Some presets have been submitted by our helpful and generous users. Want to see your name? <a href="%s">Add a Sport Preset</a>.', 'sportspress' ), 'http://tboy.co/preset' ); ?></p>
-
-			<div class="sp-feature feature-section col one-col">
-				<h4><?php _e( 'Presets', 'sportspress' ); ?></h4>
-				<?php
-				$preset_credits = array(
-					__( 'Counter-Strike: Global Offensive', 'sportspress' ) => 'Oscar Wong',
-					__( 'Lacrosse', 'sportspress' ) => 'Jamie',
-				);
-				?>
-				<dl class="sp-presets">
-					<?php foreach ( $preset_credits as $preset => $name ) { ?>
-					<dt><?php echo $preset; ?></dt>
-					<dd><em><?php echo $name; ?></em></dd>
-					<?php } ?>
-				</dl>
 			</div>
 		</div>
 		<?php
@@ -299,220 +244,7 @@ class SP_Admin_Welcome {
 
 			<?php $this->intro(); ?>
 
-			<p class="about-description"><?php printf( __( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ), 'https://www.transifex.com/projects/p/sportspress/' ); ?></p>
-			<div class="postbox sp-top-translations">
-				<h3 class="hndle"><span><?php _e( 'Top Translations', 'sportspress' ); ?></span></h3>
-				<p class="sp-transifex-chart">
-					<a target="_blank" href="https://www.transifex.com/projects/p/sportspress"><img border="0" src="https://www.transifex.com/projects/p/sportspress/resource/sportspress/chart/image_png"/></a>
-				</p>
-			</div>
-			<p class="wp-credits-list">
-			<?php
-			$translators = array(
-				'Shqip' => array(
-					'albpower',
-				),
-				'العربية' => array(
-					'Abdulelah',
-					'elgolden',
-					'hushiea',
-				),
-				'Հայերեն' => array(
-					'ArtakEVN',
-				),
-				'বাংলা' => array(
-					'alisiddique',
-				),
-				'Bosanski' => array(
-					'etcloki',
-				),
-				'Български' => array(
-					'alltimecams',
-					'den_zlateva',
-				),
-				'简体中文' => array(
-					'dic_2008',
-					'mobking',
-				),
-				'繁體中文' => array(
-					'wah826',
-				),
-				'Hrvatski' => array(
-					'etcloki',
-					'i__k',
-					'iojvan',
-					'vlinicx',
-				),
-				'Čeština' => array(
-					'eifelstudio',
-					'thegreat',
-				),
-				'Nederlands' => array(
-					'demoyer',
-					'paulcoppen',
-					'poelie',
-					'SilverXp',
-					'valentijnreza',
-				),
-				'Suomi' => array(
-					'hanro',
-					'Hermanni',
-					'JuKi',
-					'Taurus',
-				),
-				'Français' => array(
-					'francois53',
-					'fredodq',
-					'HuguesD',
-					'MohamedZ',
-					'wolforg',
-				),
-				'Deutsch' => array(
-					'alexander.salomon99',
-					'Bhelpful2',
-					'chr86',
-					'deckerweb',
-					'denkuhn',
-					'FollowCandyPanda',
-					'green_big_frog',
-					'King3R',
-					'Tandor',
-					'tkausch',
-				),
-				'Ελληνικά' => array(
-					'filippos.sdr',
-					'Spirossmil',
-				),
-				'Íslenska' => array(
-					'ValliFudd',
-				),
-				'Italiano' => array(
-					'eNnvi',
-					'Flubber89',
-					'GhiMax',
-					'joegalaxy66',
-					'massimo.marra',
-					'sododesign',
-					'violaud',
-					'webby1973',
-					'xFrAx',
-				),
-				'日本語' => array(
-					'aylaview',
-				),
-				'한국어' => array(
-					'jikji96',
-				),
-				'Македонски' => array(
-					'doncer',
-				),
-				'Norsk bokmål' => array(
-					'jenymoen',
-					'Laislebai',
-					'm4rsal',
-					'sijo',
-					'slappfiskene.no',
-					'vetsmi',
-				),
-				'فارسی' => array(
-					'mahdi12',
-				),
-				'Polski' => array(
-					'Elmister',
-					'karimjarro',
-					'krisop',
-				),
-				'Português do Brasil' => array(
-					'AugustoNeto',
-					'Ferenan',
-					'lfrodines',
-					'Ozias',
-					'pgbenini',
-					'rochester',
-				),
-				'Português' => array(
-					'Andrew_Melim',
-					'nagashitw',
-				),
-				'Română' => array(
-					'GonerSTUDIO',
-					'tyby94',
-				),
-				'Русский' => array(
-					'elrawys',
-					'kanakoff',
-					'sashaCZ',
-					'Selskei',
-					'SmilyCarrot',
-					'zzcs',
-				),
-				'Српски језик' => array(
-					'etcloki',
-				),
-				'Slovenščina' => array(
-					'Ales70',
-					'BOCo',
-					'cofeman.sl',
-					'matiqos',
-				),
-				'Español' => array(
-					'albertone',
-					'diego.battistella',
-					'elarequi',
-					'EmiDelCaz',
-					'edesl',
-					'fernandori',
-					'GonerSTUDIO',
-					'i1m3a7n92',
-					'latixns',
-					'opticadeharo',
-					'popeosorio',
-				),
-				'Svenska' => array(
-					'fiiz',
-					'JensZ',
-				),
-				'தமிழ்' => array(
-					'chinnz25',
-				),
-				'Türkçe' => array(
-					'ALooNeBoy87',
-					'ceyhunulas',
-					'GuneshGamza95',
-					'muhahmetkara',
-					'overbite',
-				),
-				'Українська' => array(
-					'ViktoriaRuzhylo',
-				),
-				'Tiếng Việt' => array(
-					'bizover',
-				),
-				'ಕನ್ನಡ' => array(
-					'Paramamithra',
-				),
-				'ไทย' => array(
-					'Xyteton',
-				),
-			);
-			$languages = array_keys( $translators );
-			shuffle( $languages );
-			$translation_teams = array();
-			foreach ( $languages as $language ):
-				$handles = $translators[ $language ];
-				$team = '<strong>' . $language . '</strong> ' . __( 'by', 'sportspress' ) . ' ';
-				$team_members = array();
-				foreach ( $handles as $handle ):
-					$team_members[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';
-				endforeach;
-				$members = implode( ', ', $team_members );
-				$team .= $members;
-				$team .= '';
-				$translation_teams[] = $team;
-			endforeach;
-			echo implode( '<br>', $translation_teams );
-			?>
-			</p>
+			<p class="about-description"><?php printf( __( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ), 'https://translate.wordpress.org/projects/wp-plugins/sportspress' ); ?></p>
 		</div>
 		<?php
 	}

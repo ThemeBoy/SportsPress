@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 4.7
-Stable tag: 2.3.2
+Tested up to: 4.8
+Stable tag: 2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add team and player registration shortcodes to WordPay.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.3
+Version: 2.4
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_WordPay' ) ) :
  * Main SportsPress WordPay Class
  *
  * @class SportsPress_WordPay
- * @version	2.3
+ * @version	2.4
  */
 class SportsPress_WordPay {
 
@@ -47,7 +47,7 @@ class SportsPress_WordPay {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_WORDPAY_VERSION' ) )
-			define( 'SP_WORDPAY_VERSION', '2.3' );
+			define( 'SP_WORDPAY_VERSION', '2.4' );
 
 		if ( !defined( 'SP_WORDPAY_URL' ) )
 			define( 'SP_WORDPAY_URL', plugin_dir_url( __FILE__ ) );
@@ -83,8 +83,7 @@ class SportsPress_WordPay {
     $plans = get_posts( $args );
 
     if ( empty( $plans ) ) {
-    	_e( 'There are no plans associated with the Team Manager role.', 'sportspress' );
-    	return;
+    	return '<p>' . __( 'There are no plans associated with the Team Manager role.', 'sportspress' ) . '<p>';
     }
 
 		return self::register_form( $atts, 'team', $plans );
@@ -110,8 +109,7 @@ class SportsPress_WordPay {
     $plans = get_posts( $args );
 
     if ( empty( $plans ) ) {
-    	_e( 'There are no plans associated with the Player role.', 'sportspress' );
-    	return;
+    	return '<p>' . __( 'There are no plans associated with the Player role.', 'sportspress' ) . '<p>';
     }
 
 		return self::register_form( $atts, 'player', $plans );

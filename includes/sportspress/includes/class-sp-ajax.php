@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * AJAX Event Handler
  *
  * @class 		SP_AJAX
- * @version		2.1.3
+ * @version		2.4
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -716,6 +716,12 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
+					<?php _e( 'Columns:', 'sportspress' ); ?>
+					<input type="text" size="3" name="columns" id="columns" value="3">
+				</label>
+			</p>
+			<p>
+				<label>
 					<?php _e( 'Order by', 'sportspress' ); ?>:
 					<select name="orderby">
 						<option value="default"><?php _e( 'Rank', 'sportspress' ); ?></option>
@@ -934,6 +940,12 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
+					<?php _e( 'Columns:', 'sportspress' ); ?>
+					<input type="text" size="3" name="columns" id="columns" value="3">
+				</label>
+			</p>
+			<p>
+				<label>
 					<?php _e( 'Sort by:', 'sportspress' ); ?>
 					<?php
 					$args = array(
@@ -1039,6 +1051,7 @@ class SP_AJAX {
                 } else if ( 'team_gallery' == type ) {
                     args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
+                    args.columns = $div.find('[name=columns]').val();
                     args.orderby = $div.find('[name=orderby]').val();
                     args.show_full_table_link = $div.find('[name=show_full_table_link]:checked').length;
                 } else if ( 'player_list' == type ) {
@@ -1051,6 +1064,7 @@ class SP_AJAX {
                 } else if ( 'player_gallery' == type ) {
                     args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
+                    args.columns = $div.find('[name=columns]').val();
                     args.orderby = $div.find('[name=orderby]').val();
                     args.order = $div.find('[name=order]').val();
                     args.show_all_players_link = $div.find('[name=show_all_players_link]:checked').length;
