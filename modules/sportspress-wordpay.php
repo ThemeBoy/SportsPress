@@ -83,8 +83,7 @@ class SportsPress_WordPay {
     $plans = get_posts( $args );
 
     if ( empty( $plans ) ) {
-    	_e( 'There are no plans associated with the Team Manager role.', 'sportspress' );
-    	return;
+    	return '<p>' . __( 'There are no plans associated with the Team Manager role.', 'sportspress' ) . '<p>';
     }
 
 		return self::register_form( $atts, 'team', $plans );
@@ -110,8 +109,7 @@ class SportsPress_WordPay {
     $plans = get_posts( $args );
 
     if ( empty( $plans ) ) {
-    	_e( 'There are no plans associated with the Player role.', 'sportspress' );
-    	return;
+    	return '<p>' . __( 'There are no plans associated with the Player role.', 'sportspress' ) . '<p>';
     }
 
 		return self::register_form( $atts, 'player', $plans );
