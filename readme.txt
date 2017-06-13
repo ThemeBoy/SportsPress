@@ -241,6 +241,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Feature - New team gallery shortcode and widget for displaying a gallery of team logos.
 * Feature - Added support for player career totals based on calculated averages.
 * Tweak - Allow competitions to be selected for friendly matches.
+* Tweak - Added columns selector to gallery shortcodes.
 * Fix - Full time defaulting to 90 minutes.
 * Fix - Statistic format not reflected in meta box.
 * Fix - Shortcode button hook timing conflicts.
