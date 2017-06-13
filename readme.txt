@@ -2,8 +2,8 @@
 Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
-Tested up to: 4.7
-Stable tag: 2.3.2
+Tested up to: 4.8
+Stable tag: 2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,18 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.4 =
+* Feature - Integration with WordPay to allow paid team and player registrations.
+* Feature - New team gallery shortcode and widget for displaying a gallery of team logos.
+* Feature - Added support for player career totals based on calculated averages.
+* Tweak - Allow competitions to be selected for friendly matches.
+* Fix - Duplicate staff directory and Twitter templates.
+* Fix - Full time defaulting to 90 minutes.
+* Fix - Statistic format not reflected in meta box.
+* Fix - Shortcode button hook timing conflicts.
+* Preset - Swap par and score in golf preset.
+* Preset - Update all presets to reflect new career total type.
 
 = 2.3.2 =
 * Fix - Team in player statistics total row displaying as zero.
