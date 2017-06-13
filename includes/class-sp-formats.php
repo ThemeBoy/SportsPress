@@ -5,7 +5,7 @@
  * The SportsPress formats class stores preset sport data.
  *
  * @class 		SP_Formats
- * @version     1.4
+ * @version   2.4
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

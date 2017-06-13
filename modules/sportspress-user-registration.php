@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Create a new player during user registration.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.3
+Version: 2.4
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_User_Registration' ) ) :
  * Main SportsPress User Registration Class
  *
  * @class SportsPress_User_Registration
- * @version  2.3
+ * @version  2.4
  */
 class SportsPress_User_Registration {
 
@@ -39,7 +39,7 @@ class SportsPress_User_Registration {
   */
   private function define_constants() {
     if ( !defined( 'SP_USER_REGISTRATION_VERSION' ) )
-      define( 'SP_USER_REGISTRATION_VERSION', '2.3' );
+      define( 'SP_USER_REGISTRATION_VERSION', '2.4' );
 
     if ( !defined( 'SP_USER_REGISTRATION_URL' ) )
       define( 'SP_USER_REGISTRATION_URL', plugin_dir_url( __FILE__ ) );

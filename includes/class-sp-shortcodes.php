@@ -3,7 +3,7 @@
  * SP_Shortcodes class.
  *
  * @class 		SP_Shortcodes
- * @version		1.6
+ * @version		2.4
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

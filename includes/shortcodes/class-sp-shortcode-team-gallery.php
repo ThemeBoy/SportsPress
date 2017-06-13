@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Shortcodes
  * @package 	SportsPress/Shortcodes/Team_Gallery
- * @version   2.3.2
+ * @version   2.4
  */
 class SP_Shortcode_Team_Gallery {
 
