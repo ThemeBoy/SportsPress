@@ -78,7 +78,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 				<table class="widefat" cellspacing="0">
 					<thead>
 						<tr><th>
-							<a href="https://wordpay.org" target="_blank"><img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/wordpay.png" alt="<?php _e( 'WordPay', 'sportspress' ); ?>" width="150"></a>
+							<a href="https://wordpay.org/sportspress/" target="_blank"><img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/wordpay.png" alt="<?php _e( 'WordPay', 'sportspress' ); ?>" width="150"></a>
 						</th></tr>
 					</thead>
 					<tbody>
@@ -86,7 +86,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<p><?php _e( 'Start collecting club membership payments with WordPay.','sportspress' ); ?></p>
 							<p class="sp-module-actions">
 								<span><?php _e( 'Premium', 'sportspress' ); ?></span>
-								<a class="button" href="https://wordpay.org" target="_blank"><?php _e( 'Get WordPay', 'sportspress' ); ?></a>
+								<a class="button" href="https://wordpay.org/sportspress/" target="_blank"><?php _e( 'Get WordPay', 'sportspress' ); ?></a>
 							</p>
 						</td></tr>
 					</tbody>
