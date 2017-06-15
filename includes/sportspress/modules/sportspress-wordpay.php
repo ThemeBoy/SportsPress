@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add team and player registration shortcodes to WordPay.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.4
+Version: 2.4.1
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_WordPay' ) ) :
  * Main SportsPress WordPay Class
  *
  * @class SportsPress_WordPay
- * @version	2.4
+ * @version	2.4.1
  */
 class SportsPress_WordPay {
 
@@ -47,7 +47,7 @@ class SportsPress_WordPay {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_WORDPAY_VERSION' ) )
-			define( 'SP_WORDPAY_VERSION', '2.4' );
+			define( 'SP_WORDPAY_VERSION', '2.4.1' );
 
 		if ( !defined( 'SP_WORDPAY_URL' ) )
 			define( 'SP_WORDPAY_URL', plugin_dir_url( __FILE__ ) );
@@ -58,7 +58,7 @@ class SportsPress_WordPay {
 	/**
 	 * Add team and player registration shortcodes.
 	 */
-	public static function add_shortcodes() {
+	public function add_shortcodes() {
 		add_shortcode( 'wpay-register-team', array( $this, 'register_team' ) );
 		add_shortcode( 'wpay-register-player', array( $this, 'register_player' ) );
 	}

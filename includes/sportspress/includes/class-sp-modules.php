@@ -156,7 +156,7 @@ class SP_Modules {
 					'label' => __( 'WordPay', 'sportspress' ),
 					'class' => 'WordPay',
 					'icon' => 'sp-icon-wordpay',
-					'link' => 'https://wordpay.org/',
+					'link' => 'https://wordpay.org/sportspress/',
 					'desc' => __( 'Start collecting club membership payments with WordPay.', 'sportspress' ),
 					'tip' => __( 'Get WordPay', 'sportspress' ),
 				),
