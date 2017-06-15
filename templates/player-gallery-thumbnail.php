@@ -35,7 +35,7 @@ if ( $link_posts )
 if ( has_post_thumbnail( $id ) )
 	$thumbnail = get_the_post_thumbnail( $id, $size );
 else
-	$thumbnail = '<img width="150" height="150" src="http://www.gravatar.com/avatar/?s=150&d=mm&f=y" class="attachment-thumbnail wp-post-image">';
+	$thumbnail = '<img width="150" height="150" src="//www.gravatar.com/avatar/?s=150&d=mm&f=y" class="attachment-thumbnail wp-post-image">';
 
 echo "<{$itemtag} class='gallery-item'>";
 echo "
