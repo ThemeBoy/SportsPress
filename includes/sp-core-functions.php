@@ -1067,7 +1067,7 @@ if ( !function_exists( 'sp_draft_or_post_title' ) ) {
 }
 
 if ( !function_exists( 'sp_get_var_labels' ) ) {
-	function sp_get_var_labels( $post_type, $neg = null ) {
+	function sp_get_var_labels( $post_type, $neg = null, $all = true ) {
 		$args = array(
 			'post_type' => $post_type,
 			'numberposts' => -1,
@@ -1075,6 +1075,21 @@ if ( !function_exists( 'sp_get_var_labels' ) ) {
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
 		);
+
+		if ( ! $all ) {
+			$args['meta_query'] = array(
+				array(
+					'key' => 'sp_visible',
+					'value' => 1,
+				),
+				array(
+					'key' => 'sp_visible',
+					'value' => 1,
+					'compare' => 'NOT EXISTS',
+				),
+				'relation' => 'OR',
+			);
+		}
 
 		$vars = get_posts( $args );
 

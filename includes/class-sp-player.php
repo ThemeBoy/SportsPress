@@ -89,7 +89,7 @@ class SP_Player extends SP_Custom_Post {
 	 */
 	public function metrics( $neg = null ) {
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
-		$metric_labels = (array)sp_get_var_labels( 'sp_metric', $neg );
+		$metric_labels = (array)sp_get_var_labels( 'sp_metric', $neg, false );
 		$data = array();
 		
 		foreach ( $metric_labels as $key => $value ):
