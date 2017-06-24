@@ -290,15 +290,15 @@ class SP_Tournament {
 				$teams = array();
 				if ( $event ) {
 					$post_status = get_post_status( $event );
-					if ( is_string( $post_status ) && 'trash' !== $post_status ) {
-						if ( is_array( $event ) ) {
-							$teams = $event;
-							$event = null;
-						} else {
-							$teams = get_post_meta( $event, 'sp_team', array() );
-						}
-					} else {
+					if ( is_array( $event ) ) {
+						$teams = $event;
 						$event = null;
+					} else {
+						if ( is_string( $post_status ) && 'trash' !== $post_status ) {
+							$teams = get_post_meta( $event, 'sp_team', array() );
+						} else {
+							$event = null;
+						}
 					}
 				}
 
