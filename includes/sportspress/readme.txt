@@ -238,6 +238,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 = 2.4.2 =
 * Feature - Add visibility option to player metrics.
+* Fix - Tournament winners not proceeding to next round.
 * Fix - Remove protocol from default Gravatar images to prevent mix content warnings.
 
 = 2.4.1 =
