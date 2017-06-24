@@ -117,6 +117,7 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 
 = 2.4.2 =
 * Feature - Add visibility option to player metrics.
+* Fix - Tournament winners not proceeding to next round.
 * Fix - Remove protocol from default Gravatar images to prevent mix content warnings.
 
 = 2.4.1 =
