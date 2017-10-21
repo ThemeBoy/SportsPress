@@ -399,7 +399,7 @@ class SP_Event extends SP_Custom_Post{
 
 				$stats[ $index ]['sub_name'] = $sub_name;
 				$stats[ $index ]['sub_number'] = $sub_number;
-				$stats[ $index ]['label'] = __( 'Substite', 'sportspress' );
+				$stats[ $index ]['label'] = __( 'Substitute', 'sportspress' );
 				$stats[ $index ]['icon'] = '<i class="sp-icon-sub" title="' . $icon_title . '"></i>';
 			} else {
 				$stats[ $index ]['label'] = sp_array_value( $performance_labels, $details['key'] );
