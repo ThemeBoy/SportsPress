@@ -87,6 +87,7 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * Slovenian – Slovenija ( sl_SI )
 * Spanish – Español ( es_ES )
 * Swedish – Svenska ( sv_SE )
+* Tagalog - Tagalog ( tl )
 * Tamil – தமிழ் ( ta_IN )
 * Thai – ไทย ( th )
 * Turkish – Türkçe ( tr_TR )
