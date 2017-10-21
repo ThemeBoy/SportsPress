@@ -44,6 +44,7 @@ class SP_Player_List extends SP_Custom_Post {
 		$list_stats = (array)get_post_meta( $this->ID, 'sp_players', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$orderby = get_post_meta( $this->ID, 'sp_orderby', true );
+		$crop = get_post_meta( $this->ID, 'sp_crop', true );
 		$order = get_post_meta( $this->ID, 'sp_order', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
 
@@ -672,7 +673,13 @@ class SP_Player_List extends SP_Custom_Post {
 
 		// Rearrange data array to reflect values
 		foreach( $merged as $key => $value ):
-			$data[ $key ] = $tempdata[ $key ];
+			if ( $crop && ! sp_array_value( $value, $orderby, 0 ) ) {
+				// Crop
+				unset( $merged[ $key ] );
+			} else {
+				// Add to main data array
+				$data[ $key ] = $tempdata[ $key ];
+			}
 		endforeach;
 		
 		if ( $admin ):

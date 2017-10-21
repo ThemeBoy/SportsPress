@@ -28,6 +28,7 @@ class SP_Meta_Box_List_Details {
 		$order = get_post_meta( $post->ID, 'sp_order', true );
 		$select = get_post_meta( $post->ID, 'sp_select', true );
 		$number = get_post_meta( $post->ID, 'sp_number', true );
+		$crop = get_post_meta( $post->ID, 'sp_crop', true );
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -81,6 +82,12 @@ class SP_Meta_Box_List_Details {
 			sp_dropdown_pages( $args );
 			?>
 			</p>
+			<p>
+				<label class="selectit">
+					<input type="checkbox" name="sp_crop" value="1" <?php checked( $crop ); ?>>
+					<?php _e( 'Skip if zero?', 'sportspress' ); ?>
+				</label>
+			</p>
 			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
 			<p>
 				<select name="sp_order">
@@ -102,7 +109,7 @@ class SP_Meta_Box_List_Details {
 			} else {
 				?>
 				<p><strong><?php _e( 'Display', 'sportspress' ); ?></strong></p>
-				<p><input name="sp_number" id="sp_number" type="number" step="1" min="0" class="small-text" placeholder="<?php _e( 'All', 'sportspress' ); ?>" value="<?php echo $number; ?>"> <?php _e( 'Players', 'sportspress' ); ?></p>
+				<p><input name="sp_number" id="sp_number" type="number" step="1" min="0" class="small-text" placeholder="<?php _e( 'All', 'sportspress' ); ?>" value="<?php echo $number; ?>"> <?php _e( 'players', 'sportspress' ); ?></p>
 				<?php
 			}
 			?>
@@ -119,6 +126,7 @@ class SP_Meta_Box_List_Details {
 		update_post_meta( $post_id, 'sp_era', sp_array_value( $_POST, 'sp_era', array() ) );
 		update_post_meta( $post_id, 'sp_grouping', sp_array_value( $_POST, 'sp_grouping', array() ) );
 		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', array() ) );
+		update_post_meta( $post_id, 'sp_crop', sp_array_value( $_POST, 'sp_crop', 0 ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
 		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array() ) );
 		update_post_meta( $post_id, 'sp_number', sp_array_value( $_POST, 'sp_number', array() ) );
