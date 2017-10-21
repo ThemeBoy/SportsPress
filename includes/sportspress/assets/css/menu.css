@@ -91,6 +91,9 @@
 .sp-icon-import:before {
 	content: "\f316";
 }
+.sp-icon-instagram:before {
+  content: "\f306";
+}
 .sp-icon-league:before {
 	content: "\f332";
 }

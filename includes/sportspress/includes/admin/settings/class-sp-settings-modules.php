@@ -78,7 +78,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 				<table class="widefat" cellspacing="0">
 					<thead>
 						<tr><th>
-							<a href="https://wordpay.org/sportspress/" target="_blank"><img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/wordpay.png" alt="<?php _e( 'WordPay', 'sportspress' ); ?>" width="150"></a>
+							<a href="https://wordpay.org/sportspress/" target="_blank"><img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/modules/wordpay.png" alt="<?php _e( 'WordPay', 'sportspress' ); ?>" width="150"></a>
 						</th></tr>
 					</thead>
 					<tbody>
