@@ -154,6 +154,13 @@ $output .= "END:VCALENDAR";
 
 // Print headers
 header('Content-type: text/calendar; charset=utf-8');
+
+// The E-Tag is not being changed when the output file is generated – Some Webdav clients do not like this and
+// do not then 'see' that the file has changed – updates to the calendars are then not displayed to the user.
+// Props @garygomm https://wordpress.org/support/topic/calendar-feed-issue-not-updating-after-change/
+$etag = md5($output);
+header('Etag:' . '"'.$etag.'"');
+
 header('Content-Disposition: inline; filename=' . $post->post_name . '.ics');
 
 // Print content
