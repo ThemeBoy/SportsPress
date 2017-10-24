@@ -175,6 +175,9 @@
 .sp-icon-golfball:before {
 	content: "\e603";
 }
+.sp-icon-football:before {
+	content: "\e607";
+}
 .sp-icon-shoe:before {
 	content: "\e800";
 }

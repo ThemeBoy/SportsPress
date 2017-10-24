@@ -79,6 +79,7 @@ class SportsPress_Icons {
 			'baseball',
 			'basketball',
 			'cricketball',
+			'football',
 			'shoe',
 			'card',
 		) );
