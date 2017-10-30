@@ -141,13 +141,6 @@ class SP_Player_List extends SP_Custom_Post {
 		// Initialize columns
 		$columns = array();
 
-		// Initialize streaks counter
-		$streaks = array();
-
-		// Initialize last counters
-		$last5s = array();
-		$last10s = array();
-
 		$args = array(
 			'post_type' => array( 'sp_performance', 'sp_metric', 'sp_statistic' ),
 			'numberposts' => -1,
@@ -231,21 +224,8 @@ class SP_Player_List extends SP_Custom_Post {
 			if ( ! $player_id )
 				continue;
 
-			// Initialize player streaks counter
-			$streaks[ $player_id ] = array( 'name' => '', 'count' => 0, 'fire' => 1 );
-
-			// Initialize player last counters
-			$last5s[ $player_id ] = array();
-			$last10s[ $player_id ] = array();
-
-			// Add outcome types to player last counters
-			foreach( $outcome_labels as $key => $value ):
-				$last5s[ $player_id ][ $key ] = 0;
-				$last10s[ $player_id ][ $key ] = 0;
-			endforeach;
-
 			// Initialize player totals
-			$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0, 'eventsstarted' => 0, 'eventssubbed' => 0, 'eventminutes' => 0, 'streak' => 0 );
+			$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0, 'eventsstarted' => 0, 'eventssubbed' => 0, 'eventminutes' => 0 );
 
 			foreach ( $performance_labels as $key => $value ):
 				$totals[ $player_id ][ $key ] = 0;
@@ -369,24 +349,6 @@ class SP_Player_List extends SP_Custom_Post {
 										if ( array_key_exists( $outcome, $totals[ $player_id ] ) ):
 											$totals[ $player_id ][ $outcome ] ++;
 										endif;
-
-										// Add to streak counter
-										if ( $streaks[ $player_id ]['fire'] && ( $streaks[ $player_id ]['name'] == '' || $streaks[ $player_id ]['name'] == $outcome ) ):
-											$streaks[ $player_id ]['name'] = $outcome;
-											$streaks[ $player_id ]['count'] ++;
-										else:
-											$streaks[ $player_id ]['fire'] = 0;
-										endif;
-
-										// Add to last 5 counter if sum is less than 5
-										if ( array_key_exists( $player_id, $last5s ) && array_key_exists( $outcome, $last5s[ $player_id ] ) && array_sum( $last5s[ $player_id ] ) < 5 ):
-											$last5s[ $player_id ][ $outcome ] ++;
-										endif;
-
-										// Add to last 10 counter if sum is less than 10
-										if ( array_key_exists( $player_id, $last10s ) && array_key_exists( $outcome, $last10s[ $player_id ] ) && array_sum( $last10s[ $player_id ] ) < 10 ):
-											$last10s[ $player_id ][ $outcome ] ++;
-										endif;
 									endif;
 								endforeach;
 							elseif ( array_key_exists( $key, $totals[ $player_id ] ) ):
@@ -492,24 +454,6 @@ class SP_Player_List extends SP_Custom_Post {
 											if ( array_key_exists( $outcome, $totals[ $player_id ] ) ):
 												$totals[ $player_id ][ $outcome ] ++;
 											endif;
-
-											// Add to streak counter
-											if ( $streaks[ $player_id ]['fire'] && ( $streaks[ $player_id ]['name'] == '' || $streaks[ $player_id ]['name'] == $outcome ) ):
-												$streaks[ $player_id ]['name'] = $outcome;
-												$streaks[ $player_id ]['count'] ++;
-											else:
-												$streaks[ $player_id ]['fire'] = 0;
-											endif;
-
-											// Add to last 5 counter if sum is less than 5
-											if ( array_key_exists( $player_id, $last5s ) && array_key_exists( $outcome, $last5s[ $player_id ] ) && array_sum( $last5s[ $player_id ] ) < 5 ):
-												$last5s[ $player_id ][ $outcome ] ++;
-											endif;
-
-											// Add to last 10 counter if sum is less than 10
-											if ( array_key_exists( $player_id, $last10s ) && array_key_exists( $outcome, $last10s[ $player_id ] ) && array_sum( $last10s[ $player_id ] ) < 10 ):
-												$last10s[ $player_id ][ $outcome ] ++;
-											endif;
 										endif;
 									endforeach;
 								endif;
@@ -546,40 +490,6 @@ class SP_Player_List extends SP_Custom_Post {
 				endforeach; endif;
 			endforeach; endif;
 			$i++;
-		endforeach;
-
-		foreach ( $streaks as $player_id => $streak ):
-			// Compile streaks counter and add to totals
-			if ( $streak['name'] ):
-				$args = array(
-					'name' => $streak['name'],
-					'post_type' => 'sp_outcome',
-					'post_status' => 'publish',
-					'posts_per_page' => 1
-				);
-				$outcomes = get_posts( $args );
-
-				if ( $outcomes ):
-					$outcome = reset( $outcomes );
-					$abbreviation = sp_get_abbreviation( $outcome->ID );
-					if ( empty( $abbreviation ) ) $abbreviation = strtoupper( substr( $outcome->post_title, 0, 1 ) );
-					$totals[ $player_id ]['streak'] = $abbreviation . $streak['count'];
-				else:
-					$totals[ $player_id ]['streak'] = null;
-				endif;
-			else:
-				$totals[ $player_id ]['streak'] = null;
-			endif;
-		endforeach;
-
-		foreach ( $last5s as $player_id => $last5 ):
-			// Add last 5 to totals
-			$totals[ $player_id ]['last5'] = $last5;
-		endforeach;
-
-		foreach ( $last10s as $player_id => $last10 ):
-			// Add last 10 to totals
-			$totals[ $player_id ]['last10'] = $last10;
 		endforeach;
 
 		// Fill in empty placeholder values for each player
