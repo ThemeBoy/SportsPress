@@ -115,3 +115,36 @@ endif;
 <div class="sp-template sp-template-event-results">
 	<?php echo $output; ?>
 </div>
+<?php
+	$officials = get_the_terms( $post->ID, 'sp_officials' );
+	$official_ids = array();
+	if ( $officials ):
+		foreach ( $officials as $official ):
+			$official_ids[] = $official->term_id;
+		endforeach;
+	endif;
+	if(sizeof($official_ids) > 0 ){
+?>
+	<h4 class="sp-table-caption">Umpires</h4>
+	<div class="sp-template sp-template-event-results">
+		<?php
+		$i=0;
+		echo '<table class="sp-event-results sp-data-table sp-scrollable-table">';
+		echo '<thead><th class="data-name"></th></thead>';
+		echo '<tbody>';
+		foreach($officials as $official) {
+			echo '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
+			echo '<td class="data-name">' . $official->name . '</td>';
+			echo '</tr>';
+			$i++;
+		}
+		echo '</tbody>';
+		echo '</table>';
+		?>
+	</div>
+<?php
+
+	}
+?>
+
+</div>
