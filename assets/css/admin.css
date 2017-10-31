@@ -315,6 +315,11 @@ table.widefat.sp-data-table input.small-text {
 	min-width: 0;
 }
 
+table.widefat.sp-data-table input.tiny-text {
+	width: 25px;
+	min-width: 0;
+}
+
 table.widefat.sp-data-table input.name {
 	min-width: 0;
 	width: auto;

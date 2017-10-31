@@ -99,6 +99,7 @@ class SP_Event extends SP_Custom_Post{
 		$labels = array();
 		$formats = array();
 		$timed = array();
+		$stars = array();
 		$equations = array();
 		foreach ( $vars as $var ) {
 			$labels[ $var->post_name ] = $var->post_title;
@@ -129,6 +130,10 @@ class SP_Event extends SP_Custom_Post{
 		}
 		
 		$order = (array)get_post_meta( $this->ID, 'sp_order', true );
+
+		if ( get_option( 'sportspress_event_performance_stars_type', 0 ) ) {
+			$stars = (array)get_post_meta( $this->ID, 'sp_stars', true );
+		}
 		
 		$labels = apply_filters( 'sportspress_event_performance_labels', $labels, $this );
 		$columns = get_post_meta( $this->ID, 'sp_columns', true );
@@ -151,7 +156,7 @@ class SP_Event extends SP_Custom_Post{
 		endif;
 
 		if ( $admin ):
-			return array( $labels, $columns, $performance, $teams, $formats, $order, $timed );
+			return array( $labels, $columns, $performance, $teams, $formats, $order, $timed, $stars );
 		else:
 			// Add position to performance labels
 			if ( taxonomy_exists( 'sp_position' ) ):
@@ -631,6 +636,10 @@ class SP_Event extends SP_Custom_Post{
 
 		// Update results
 		update_post_meta( $this->ID, 'sp_results', $meta );
+	}
+
+	public function stars() {
+		return get_post_meta( $this->ID, 'sp_stars', true );
 	}
 
 	public function lineup_filter( $v ) {

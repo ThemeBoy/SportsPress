@@ -1459,6 +1459,7 @@ function sp_get_text_options() {
 		__( 'Past Teams', 'sportspress' ),
 		__( 'Photo', 'sportspress' ),
 		__( 'Player', 'sportspress' ),
+		__( 'Player of the Match', 'sportspress' ),
 		__( 'Players', 'sportspress' ),
 		__( 'Pos', 'sportspress' ),
 		__( 'Position', 'sportspress' ),

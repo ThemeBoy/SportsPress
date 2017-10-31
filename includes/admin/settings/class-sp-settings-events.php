@@ -356,6 +356,18 @@ class SP_Settings_Events extends SP_Settings_Page {
 					),
 
 					array(
+						'title' 	=> __( 'Awards', 'sportspress' ),
+						'id' 		=> 'sportspress_event_performance_stars_type',
+						'default'	=> 0,
+						'type' 		=> 'radio',
+						'options' => array(
+							__( 'None', 'sportspress' ),
+							__( 'Player of the Match', 'sportspress' ),
+							__( 'Number of Stars', 'sportspress' ),
+						),
+					),
+
+					array(
 						'title'     => __( 'Positions', 'sportspress' ),
 						'desc' 		=> __( 'Top-level only', 'sportspress' ),
 						'id' 		=> 'sportspress_event_hide_child_positions',

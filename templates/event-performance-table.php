@@ -90,6 +90,11 @@ if ( ! isset( $subs ) ) $subs = array();
 							$name =  '<a href="' . $permalink . '">' . $name . '</a>';
 						endif;
 
+						$player_stars = sp_array_value( $stars, $player_id, 0 );
+						if ( $player_stars ):
+							$name .= ' <span class="sp-event-stars">' . str_repeat( '<i class="sp-event-star dashicons dashicons-star-filled" title="' . __( 'Player of the Match', 'sportspress' ) . '"></i>', $player_stars ) . '<span>';
+						endif;
+
 						if ( array_key_exists( $player_id, $lineup_sub_relation ) ):
 							$name .= ' <span class="sub-in" title="' . get_the_title( $lineup_sub_relation[ $player_id ] ) . '">' . sp_array_value( sp_array_value( $data, $lineup_sub_relation[ $player_id ], array() ), 'number', null ) . '</span>';
 						elseif ( isset( $row['sub'] ) && $row['sub'] ):

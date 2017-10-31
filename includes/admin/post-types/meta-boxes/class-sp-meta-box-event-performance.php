@@ -20,7 +20,7 @@ class SP_Meta_Box_Event_Performance {
 	 */
 	public static function output( $post ) {
 		$event = new SP_Event( $post );
-		list( $labels, $columns, $stats, $teams, $formats, $order, $timed ) = $event->performance( true );
+		list( $labels, $columns, $stats, $teams, $formats, $order, $timed, $stars ) = $event->performance( true );
 
 		if ( 'yes' == get_option( 'sportspress_event_performance_show_minutes', 'no' ) )
 			$timeline = $event->timeline( true );
@@ -62,7 +62,7 @@ class SP_Meta_Box_Event_Performance {
 		// Get status option
 		$status = ! $is_individual;
 
-		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $positions, $status, $formats, $order, $numbers, $is_individual, $timeline, $timed );
+		self::tables( $post->ID, $stats, $labels, $columns, $teams, $has_checkboxes, $positions, $status, $formats, $order, $numbers, $is_individual, $timeline, $timed, $stars );
 	}
 
 	/**
@@ -73,12 +73,13 @@ class SP_Meta_Box_Event_Performance {
 		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
 		update_post_meta( $post_id, 'sp_timeline', sp_array_value( $_POST, 'sp_timeline', array() ) );
+		update_post_meta( $post_id, 'sp_stars', sp_array_value( $_POST, 'sp_stars', array() ) );
 	}
 
 	/**
 	 * Admin edit tables
 	 */
-	public static function tables( $post_id, $stats = array(), $labels = array(), $columns = array(), $teams = array(), $has_checkboxes = false, $positions = array(), $status = true, $formats = array(), $order = array(), $numbers = true, $is_individual = false, $timeline = array(), $timed = array() ) {
+	public static function tables( $post_id, $stats = array(), $labels = array(), $columns = array(), $teams = array(), $has_checkboxes = false, $positions = array(), $status = true, $formats = array(), $order = array(), $numbers = true, $is_individual = false, $timeline = array(), $timed = array(), $stars = array() ) {
 		$sections = get_option( 'sportspress_event_performance_sections', -1 );
 		
 		if ( $is_individual ) {
@@ -113,7 +114,7 @@ class SP_Meta_Box_Event_Performance {
 									$player_timeline = false;
 								endif;
 
-								self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, false, $numbers, -1, $formats, $player_timeline, $timed );
+								self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, false, $numbers, -1, $formats, $player_timeline, $timed, $stars );
 							endforeach;
 						endforeach;
 						?>
@@ -142,7 +143,7 @@ class SP_Meta_Box_Event_Performance {
 					?>
 					<div>
 						<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
-						<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $positions, $status, -1, $formats, $order, $numbers, $team_timeline, $timed ); ?>
+						<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $positions, $status, -1, $formats, $order, $numbers, $team_timeline, $timed, $stars ); ?>
 						<?php do_action( 'sportspress_after_event_performance_table_admin', $labels, $columns, $data, $team_id ); ?>
 					</div>
 				<?php } else { ?>
@@ -224,7 +225,7 @@ class SP_Meta_Box_Event_Performance {
 						?>
 						<div>
 							<p><strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo $section_label; ?></strong></p>
-							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, ( $has_checkboxes && 0 === $i ), $positions, $status, $section_id, $formats, $order, $numbers, $team_timeline, $timed ); ?>
+							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, ( $has_checkboxes && 0 === $i ), $positions, $status, $section_id, $formats, $order, $numbers, $team_timeline, $timed, $stars ); ?>
 							<?php do_action( 'sportspress_after_event_performance_table_admin', $labels[ $section_id ], $columns, $data[ $section_id ], $team_id ); ?>
 						</div>
 						<?php
@@ -238,7 +239,7 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array(), $numbers = true, $team_timeline = array(), $timed = array() ) {
+	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array(), $numbers = true, $team_timeline = array(), $timed = array(), $stars = array() ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
@@ -273,7 +274,7 @@ class SP_Meta_Box_Event_Performance {
 							$player_timeline = false;
 						endif;
 
-						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, true, $numbers, $section, $formats, $player_timeline, $timed );
+						self::row( $labels, $player_id, $player_performance, $team_id, $data, ! empty( $positions ), $status, true, $numbers, $section, $formats, $player_timeline, $timed, $stars );
 
 					endforeach;
 					?>
@@ -287,6 +288,7 @@ class SP_Meta_Box_Event_Performance {
 	 * Admin edit table header
 	 */
 	public static function header( $columns = array(), $labels = array(), $positions = array(), $has_checkboxes = false, $status = true, $sortable = true, $numbers = true, $section = -1, $formats = array() ) {
+		$stars_type = get_option( 'sportspress_event_performance_stars_type', 0 )
 		?>
 		<thead>
 			<tr>
@@ -319,6 +321,9 @@ class SP_Meta_Box_Event_Performance {
 					<th>
 						<?php _e( 'Status', 'sportspress' ); ?>
 					</th>
+				<?php } ?>
+				<?php if ( $stars_type ) { ?>
+					<th><i class="dashicons dashicons-star-filled" title="<?php 2 == $stars_type ? _e( 'Number of Stars', 'sportspress' ) : _e( 'Player of the Match', 'sportspress' ); ?>"></i></th>
 				<?php } ?>
 			</tr>
 		</thead>
@@ -357,6 +362,9 @@ class SP_Meta_Box_Event_Performance {
 					<?php if ( apply_filters( 'sportspress_event_performance_show_status', $status, $section ) ) { ?>
 						<td>&nbsp;</td>
 					<?php } ?>
+					<?php if ( get_option( 'sportspress_event_performance_stars_type', 0 ) ) { ?>
+						<td>&nbsp;</td>
+					<?php } ?>
 				</tr>
 			<?php } ?>
 		</tfoot>
@@ -366,9 +374,10 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table row
 	 */
-	public static function row( $labels = array(), $player_id = 0, $player_performance = array(), $team_id = 0, $data = array(), $positions = true, $status = true, $sortable = true, $numbers = true, $section = -1, $formats = array(), $player_timeline = array(), $timed = array() ) {
+	public static function row( $labels = array(), $player_id = 0, $player_performance = array(), $team_id = 0, $data = array(), $positions = true, $status = true, $sortable = true, $numbers = true, $section = -1, $formats = array(), $player_timeline = array(), $timed = array(), $stars = array() ) {
 		if ( $player_id <= 0 ) return;
 
+		$stars_type = get_option( 'sportspress_event_performance_stars_type', 0 );
 		$value = sp_array_value( $player_performance, 'number', '' );
 		?>
 		<tr class="sp-row sp-post" data-player="<?php echo $player_id; ?>">
@@ -467,6 +476,20 @@ class SP_Meta_Box_Event_Performance {
 					<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?>
 					<input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo $team_id; ?>][<?php echo $player_id; ?>][sub][]" value="<?php echo esc_attr( sp_array_value( $times, 0, '' ) ); ?>" placeholder="-" />
 					<span class="description"><?php _e( 'mins', 'sportspress' ); ?></span>
+				</td>
+			<?php } ?>
+			<?php if ( $stars_type ) { ?>
+				<td>
+					<?php
+					switch ( $stars_type ) {
+						case 1:
+							echo '<input type="checkbox" name="sp_stars[' . $player_id . ']" value="1" ' . checked( sp_array_value( $stars, $player_id, '' ) == '', false, false ) . '>';
+							break;
+						case 2:
+							echo '<input type="text" name="sp_stars[' . $player_id . ']" class="tiny-text sp-player-stars-input sp-sync-input" value="' . sp_array_value( $stars, $player_id, '' ) . '">';
+							break;
+					}
+					?>
 				</td>
 			<?php } ?>
 		</tr>
