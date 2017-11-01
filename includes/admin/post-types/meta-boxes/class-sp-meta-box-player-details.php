@@ -68,22 +68,6 @@ class SP_Meta_Box_Player_Details {
 		$current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
 		?>
 
-		<p><strong><?php _e( 'Current Teams', 'sportspress' ); ?></strong></p>
-		<p><?php
-		$args = array(
-			'post_type' => 'sp_team',
-			'name' => 'sp_current_team[]',
-			'selected' => $current_teams,
-			'values' => 'ID',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
-			'class' => 'sp-current-teams widefat',
-			'property' => 'multiple',
-			'chosen' => true,
-		);
-		sp_dropdown_pages( $args );
-		?></p>
-
-
 		<p><strong><?php _e( 'Squad Number', 'sportspress' ); ?></strong></p>
 		<p><input type="text" size="4" id="sp_number" name="sp_number" value="<?php echo $number; ?>"></p>
 
@@ -116,6 +100,20 @@ class SP_Meta_Box_Player_Details {
 			?></p>
 		<?php } ?>
 
+		<p><strong><?php _e( 'Current Teams', 'sportspress' ); ?></strong></p>
+		<p><?php
+		$args = array(
+			'post_type' => 'sp_team',
+			'name' => 'sp_current_team[]',
+			'selected' => $current_teams,
+			'values' => 'ID',
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
+			'class' => 'sp-current-teams widefat',
+			'property' => 'multiple',
+			'chosen' => true,
+		);
+		sp_dropdown_pages( $args );
+		?></p>
 
 		<p><strong><?php _e( 'Past Teams', 'sportspress' ); ?></strong></p>
 		<p><?php
