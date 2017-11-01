@@ -255,7 +255,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							</td></tr>
 							<?php } else { ?>
 							<tr><td>
-								<input type="checkbox" name="sportspress_load_<?php echo $id; ?>_module" id="sportspress_load_<?php echo $id; ?>_module" <?php checked( 'yes' == get_option( 'sportspress_load_' . $id . '_module', 'yes' ) ); ?>>
+								<input type="checkbox" name="sportspress_load_<?php echo $id; ?>_module" id="sportspress_load_<?php echo $id; ?>_module" <?php checked( 'yes' == get_option( 'sportspress_load_' . $id . '_module', sp_array_value( $module, 'default', 'yes' ) ) ); ?>>
 								<label for="sportspress_load_<?php echo $id; ?>_module">
 									<i class="<?php echo sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ); ?>"></i>
 									<?php echo sp_array_value( $module, 'label', $id ); ?>

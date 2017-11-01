@@ -26,7 +26,6 @@ class SP_Admin_Menus {
 		add_action( 'admin_menu', array( $this, 'config_menu' ), 7 );
 		add_action( 'admin_menu', array( $this, 'leagues_menu' ), 20 );
 		add_action( 'admin_menu', array( $this, 'seasons_menu' ), 21 );
-		add_action( 'admin_menu', array( $this, 'officials_menu' ), 22 );
 
 		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
 		add_action( 'admin_head', array( $this, 'menu_rename' ) );
@@ -67,13 +66,6 @@ class SP_Admin_Menus {
 	 */
 	public function seasons_menu() {
 		add_submenu_page( 'sportspress', __( 'Seasons', 'sportspress' ), __( 'Seasons', 'sportspress' ), 'manage_sportspress', 'edit-tags.php?taxonomy=sp_season');
-	}
-
-	/**
-	 * Add menu item
-	 */
-	public function officials_menu() {
-		add_submenu_page( 'sportspress', __( 'Officials', 'sportspress' ), __( 'Officials', 'sportspress' ), 'manage_sportspress', 'edit-tags.php?taxonomy=sp_officials');
 	}
 
 	/**
@@ -226,11 +218,6 @@ class SP_Admin_Menus {
 		if ( isset( $submenu['edit.php?post_type=sp_staff'] ) ):
 			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_seasons' ) );
-		endif;
-
-		if ( isset( $submenu['edit.php?post_type=sp_official'] ) ):
-			$submenu['edit.php?post_type=sp_official'] = array_filter( $submenu['edit.php?post_type=sp_official'], array( $this, 'remove_leagues' ) );
-			$submenu['edit.php?post_type=sp_official'] = array_filter( $submenu['edit.php?post_type=sp_official'], array( $this, 'remove_seasons' ) );
 		endif;
 
 		$user_roles = $current_user->roles;

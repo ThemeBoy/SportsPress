@@ -178,43 +178,6 @@ class SP_Post_types {
 			endforeach;
 		endif;
 
-		if ( apply_filters( 'sportspress_has_officials', true ) ):
-			$labels = array(
-				'name' => __( 'Officials', 'sportspress' ),
-				'singular_name' => __( 'Official', 'sportspress' ),
-				'all_items' => __( 'All', 'sportspress' ),
-				'edit_item' => __( 'Edit Official', 'sportspress' ),
-				'view_item' => __( 'View', 'sportspress' ),
-				'update_item' => __( 'Update', 'sportspress' ),
-				'add_new_item' => __( 'Add New', 'sportspress' ),
-				'new_item_name' => __( 'Name', 'sportspress' ),
-				'parent_item' => __( 'Parent', 'sportspress' ),
-				'parent_item_colon' => __( 'Parent:', 'sportspress' ),
-				'search_items' =>  __( 'Search', 'sportspress' ),
-				'not_found' => __( 'No results found.', 'sportspress' ),
-			);
-			$args = apply_filters( 'sportspress_register_taxonomy_role', array(
-				'label' => __( 'Officials', 'sportspress' ),
-				'labels' => $labels,
-				'public' => true,
-				'show_ui' => $show,
-				'show_in_menu' => $show,
-				'show_in_nav_menus' => false,
-				'show_tagcloud' => false,
-				'hierarchical' => true,
-				'rewrite' => array( 'slug' => get_option( 'sportspress_official_slug', 'official' ) ),
-				'show_in_rest' => true,
-				'rest_controller_class' => 'SP_REST_Terms_Controller',
-				'rest_base' => 'officials',
-			) );
-			$object_types = apply_filters( 'sportspress_official_object_types', array( 'sp_officials' ) );
-			register_taxonomy( 'sp_officials', $object_types, $args );
-			foreach ( $object_types as $object_type ):
-				register_taxonomy_for_object_type( 'sp_official', $object_type );
-			endforeach;
-
-
-		endif;
 		if ( apply_filters( 'sportspress_has_roles', true ) ):
 			$labels = array(
 				'name' => __( 'Jobs', 'sportspress' ),

@@ -106,6 +106,12 @@ class SP_Modules {
 					'link' => 'https://www.themeboy.com/sportspress-extensions/directories/',
 					'desc' => __( 'Organize and display staff in list and gallery layouts.', 'sportspress' ),
 				),
+				'officials' => array(
+					'label' => __( 'Officials', 'sportspress' ),
+					'icon' => 'sp-icon-whistle',
+					'desc' => __( 'Manage referees, umpires, judges, timekeepers, and other officials.', 'sportspress' ),
+					'default' => 'no',
+				),
 			),
 			'admin' => array(
 				'tutorials' => array(

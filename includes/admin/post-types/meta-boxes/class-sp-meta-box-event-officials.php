@@ -2,10 +2,11 @@
 /**
  * Event Officials
  *
- * @author     Rob Tucker <rtucker-scs>
- * @category   Admin
+ * @author    Rob Tucker <rtucker-scs>
+ * @author    ThemeBoy
+ * @category  Admin
  * @package   SportsPress/Admin/Meta_Boxes
- * @version   2.3
+ * @version   2.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,43 +20,37 @@ class SP_Meta_Box_Event_Officials {
    * Output the metabox
    */
   public static function output( $post ) {
-	wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
-	$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
-        $redirect = get_post_meta( $post->ID, 'sp_redirect', true );
-        $url = get_post_meta( $post->ID, 'sp_url', true );
-	if ( taxonomy_exists( 'sp_officials' ) ):
-		$officials = get_the_terms( $post->ID, 'sp_officials' );
-		$official_ids = array();
-		if ( $officials ):
-			foreach ( $officials as $official ):
-				$official_ids[] = $official->term_id;
-			endforeach;
-		endif;
-	endif;
-  ?>
-       <?php if ( taxonomy_exists( 'sp_officials' ) ) { ?>
-	<p><strong><?php _e( 'Officials', 'sportspress' ); ?></strong></p>
-	<p><?php
-	$args = array(
-		'taxonomy' => 'sp_officials',
-		'name' => 'tax_input[sp_officials][]',
-		'selected' => $official_ids,
-		'values' => 'term_id',
-		'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Officials', 'sportspress' ) ),
-		'class' => 'widefat',
-		'property' => 'multiple',
-		'chosen' => true,
-	);
-	sp_dropdown_taxonomies( $args );
-	?></p>
-	<?php } ?>
-    <?php
+    $duties = get_terms( array(
+      'taxonomy' => 'sp_duty',
+      'hide_empty' => false,
+    ) );
+
+    $officials = (array) get_post_meta( $post->ID, 'sp_officials', true );
+
+    foreach ( $duties as $duty ) {
+      ?>
+    	<p><strong><?php echo $duty->name; ?></strong></p>
+      <p><?php
+      $args = array(
+        'post_type' => 'sp_official',
+        'name' => 'sp_officials[' . $duty->term_id . '][]',
+        'selected' => sp_array_value( $officials, $duty->term_id, array() ),
+        'values' => 'ID',
+        'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Officials', 'sportspress' ) ),
+        'class' => 'widefat',
+        'property' => 'multiple',
+        'chosen' => true,
+      );
+      sp_dropdown_pages( $args );
+      ?></p>
+      <?php
+    }
   }
 
   /**
    * Save meta box data
    */
   public static function save( $post_id, $post ) {
-    update_post_meta( $post_id, 'sp_officials', sp_array_value( $_POST, 'sp_officials', 'official' ) );
+    update_post_meta( $post_id, 'sp_officials', sp_array_value( $_POST, 'sp_officials', array() ) );
   }
 }
