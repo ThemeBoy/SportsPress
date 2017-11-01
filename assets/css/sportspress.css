@@ -291,6 +291,14 @@
 .sp-event-performance .sp-event-star {
 	color: #f4d014;
 }
+.sp-event-performance .sp-event-star-number {
+    margin-left: -20px;
+    width: 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: smaller;
+    line-height: 20px;
+}
 
 /* Event Performance (Icons) */
 .sp-event-performance-teams .sp-template-event-performance-icons {

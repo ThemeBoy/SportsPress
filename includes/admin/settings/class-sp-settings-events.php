@@ -363,7 +363,8 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'options' => array(
 							__( 'None', 'sportspress' ),
 							__( 'Player of the Match', 'sportspress' ),
-							__( 'Number of Stars', 'sportspress' ),
+							__( 'Stars', 'sportspress' ),
+							__( 'Star Number', 'sportspress' ),
 						),
 					),
 

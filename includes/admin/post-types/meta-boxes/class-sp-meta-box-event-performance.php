@@ -323,7 +323,7 @@ class SP_Meta_Box_Event_Performance {
 					</th>
 				<?php } ?>
 				<?php if ( $stars_type ) { ?>
-					<th><i class="dashicons dashicons-star-filled" title="<?php 2 == $stars_type ? _e( 'Number of Stars', 'sportspress' ) : _e( 'Player of the Match', 'sportspress' ); ?>"></i></th>
+					<th><i class="dashicons dashicons-star-filled" title="<?php 1 == $stars_type ? _e( 'Player of the Match', 'sportspress' ) : _e( 'Stars', 'sportspress' ); ?>"></i></th>
 				<?php } ?>
 			</tr>
 		</thead>
@@ -485,9 +485,8 @@ class SP_Meta_Box_Event_Performance {
 						case 1:
 							echo '<input type="checkbox" name="sp_stars[' . $player_id . ']" value="1" ' . checked( sp_array_value( $stars, $player_id, '' ) == '', false, false ) . '>';
 							break;
-						case 2:
+						default:
 							echo '<input type="text" name="sp_stars[' . $player_id . ']" class="tiny-text sp-player-stars-input sp-sync-input" value="' . sp_array_value( $stars, $player_id, '' ) . '">';
-							break;
 					}
 					?>
 				</td>
