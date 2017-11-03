@@ -228,7 +228,7 @@ if ( !function_exists( 'sp_flush_rewrite_rules' ) ) {
 if ( !function_exists( 'sp_add_link' ) ) {
 	function sp_add_link( $string, $link = false, $active = true ) {
 		if ( empty( $link ) || ! $active ) return $string;
-		return '<a href="' . $link . '">' . $string . '</a>';
+		return '<a href="' . $link . '" itemprop="url" content="' . $link . '">' . $string . '</a>';
 	}
 }
 

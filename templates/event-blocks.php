@@ -105,14 +105,21 @@ if ( $title )
 						$j = 0;
 						foreach( $teams as $team ):
 							$j++;
+							$team_name = get_the_title( $team );
 							if ( has_post_thumbnail ( $team ) ):
+								$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'itemprop' => 'logo' ) );
+
 								if ( $link_teams ):
-									$logo = '<a class="team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) . '" href="' . get_permalink( $team, false, true ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</a>';
-								else:
-									$logo = '<span class="team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</span>';
+									$team_permalink = get_permalink( $team, false, true );
+									$logo = '<a href="' . $team_permalink . '" itemprop="url" content="' . $team_permalink . '">' . $logo . '</a>';
 								endif;
-								$logos[] = $logo;
+
+								$logo = '<span class="team-logo logo-' . ( $j % 2 ? 'odd' : 'even' ) . '" title="' . $team_name . '" itemprop="competitor" itemscope itemtype="http://schema.org/SportsTeam"><meta itemprop="name" content="' . $team_name . '" />' . $logo . '</span>';
+							else:
+								$logo = '<meta itemprop="competitor" itemscope itemtype="http://schema.org/SportsTeam"><meta itemprop="name" content="' . $team_name . '" /></meta>';
 							endif;
+
+							$logos[] = $logo;
 						endforeach;
 					endif;
 					
@@ -124,10 +131,10 @@ if ( $title )
 						endif;
 					endif;
 					?>
-					<tr class="sp-row sp-post<?php echo ( $i % 2 == 0 ? ' alternate' : '' ); ?>">
+					<tr class="sp-row sp-post<?php echo ( $i % 2 == 0 ? ' alternate' : '' ); ?>" itemscope itemtype="http://schema.org/SportsEvent">
 						<td>
 							<?php echo implode( $logos, ' ' ); ?>
-							<time class="sp-event-date" datetime="<?php echo $event->post_date; ?>">
+							<time class="sp-event-date" datetime="<?php echo $event->post_date; ?>" itemprop="startDate" content="<?php echo mysql2date( 'Y-m-d\TH:iP', $event->post_date ); ?>">
 								<?php echo sp_add_link( get_the_time( get_option( 'date_format' ), $event ), $permalink, $link_events ); ?>
 							</time>
 							<h5 class="sp-event-results">
@@ -142,7 +149,7 @@ if ( $title )
 							<?php if ( $show_venue ): $venues = get_the_terms( $event, 'sp_venue' ); if ( $venues ): $venue = array_shift( $venues ); ?>
 								<div class="sp-event-venue"><?php echo $venue->name; ?></div>
 							<?php endif; endif; ?>
-							<h4 class="sp-event-title">
+							<h4 class="sp-event-title" itemprop="name">
 								<?php echo sp_add_link( $event->post_title, $permalink, $link_events ); ?>
 							</h4>
 
