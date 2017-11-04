@@ -1,6 +1,6 @@
 <?php
 /**
- * Player Statistics for Single Competition
+ * Player Statistics for Single League
  *
  * @author 		ThemeBoy
  * @category 	Admin

@@ -119,7 +119,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			'date' => __( 'Date', 'sportspress' ),
 			'sp_time' => __( 'Time', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),
-			'sp_league' => __( 'Competition', 'sportspress' ),
+			'sp_league' => __( 'League', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_venue' => __( 'Venue', 'sportspress' ),
 			'sp_day' => __( 'Match Day', 'sportspress' ),

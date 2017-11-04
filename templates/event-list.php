@@ -144,7 +144,7 @@ endif;
 					}
 
 					if ( sp_column_active( $usecolumns, 'league' ) )
-						echo '<th class="data-league">' . __( 'Competition', 'sportspress' ) . '</th>';
+						echo '<th class="data-league">' . __( 'League', 'sportspress' ) . '</th>';
 
 					if ( sp_column_active( $usecolumns, 'season' ) )
 						echo '<th class="data-season">' . __( 'Season', 'sportspress' ) . '</th>';

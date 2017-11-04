@@ -104,7 +104,7 @@ if ( $show_leagues ):
 		foreach ( $leagues as $league ) {
 			$terms[] = $league->name;
 		}
-		$data[ __( 'Competitions', 'sportspress' ) ] = implode( ', ', $terms );
+		$data[ __( 'Leagues', 'sportspress' ) ] = implode( ', ', $terms );
 	endif;
 endif;
 

@@ -58,7 +58,7 @@ class SP_Meta_Box_Team_Staff {
 							<?php _e( 'Job', 'sportspress' ); ?>
 						</th>
 						<th class="column-league">
-							<?php _e( 'Competition', 'sportspress' ); ?>
+							<?php _e( 'League', 'sportspress' ); ?>
 						</th>
 						<th class="column-season">
 							<?php _e( 'Season', 'sportspress' ); ?>

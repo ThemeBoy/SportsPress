@@ -74,7 +74,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 			'title' => null,
 			'sp_position' => __( 'Positions', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),
-			'sp_league' => __( 'Competitions', 'sportspress' ),
+			'sp_league' => __( 'Leagues', 'sportspress' ),
 			'sp_season' => __( 'Seasons', 'sportspress' ),
 		), $existing_columns, array(
 			'title' => __( 'Name', 'sportspress' )

@@ -107,7 +107,7 @@ class SP_Settings_Players extends SP_Settings_Page {
 				),
 
 				array(
-					'desc' 		=> __( 'Competitions', 'sportspress' ),
+					'desc' 		=> __( 'Leagues', 'sportspress' ),
 					'id' 		=> 'sportspress_player_show_leagues',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',

@@ -87,7 +87,7 @@ class SP_Meta_Box_Calendar_Data {
 						<?php if ( ! is_array( $usecolumns ) || in_array( 'league', $usecolumns ) ) { ?>
 							<th class="column-league">
 								<label for="sp_columns_league">
-									<?php _e( 'Competition', 'sportspress' ); ?>
+									<?php _e( 'League', 'sportspress' ); ?>
 								</label>
 							</th>
 						<?php } ?>

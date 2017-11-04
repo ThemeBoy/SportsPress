@@ -21,7 +21,7 @@ if ( $terms ):
 	foreach ( $terms as $term ):
 		$leagues[] = $term->name;
 	endforeach;
-	$data[ __( 'Competitions', 'sportspress' ) ] = implode( ', ', $leagues );
+	$data[ __( 'Leagues', 'sportspress' ) ] = implode( ', ', $leagues );
 endif;
 
 $terms = get_the_terms( $id, 'sp_season' );

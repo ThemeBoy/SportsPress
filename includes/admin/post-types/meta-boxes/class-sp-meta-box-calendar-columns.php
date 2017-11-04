@@ -47,7 +47,7 @@ class SP_Meta_Box_Calendar_Columns {
 			$columns['results'] = __( 'Results', 'sportspress' );
 		}
 
-		$columns['league'] = __( 'Competition', 'sportspress' );
+		$columns['league'] = __( 'League', 'sportspress' );
 		$columns['season'] = __( 'Season', 'sportspress' );
 		$columns['venue'] = __( 'Venue', 'sportspress' );
 		$columns['article'] = __( 'Article', 'sportspress' );

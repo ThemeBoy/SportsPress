@@ -26,7 +26,7 @@ class SP_Admin_Permalink_Settings {
 			array( 'venue', __( 'Venues', 'sportspress' ) ),
 			array( 'calendar', __( 'Calendars', 'sportspress' ) ),
 			array( 'team', __( 'Teams', 'sportspress' ) ),
-			array( 'league', __( 'Competitions', 'sportspress' ) ),
+			array( 'league', __( 'Leagues', 'sportspress' ) ),
 			array( 'season', __( 'Seasons', 'sportspress' ) ),
 			array( 'table', __( 'League Tables', 'sportspress' ) ),
 			array( 'player', __( 'Players', 'sportspress' ) ),
