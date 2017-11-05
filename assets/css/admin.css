@@ -278,6 +278,7 @@ table.widefat.sp-data-table th,
 table.widefat.sp-data-table td {
 	padding-right: 0;
 }
+
 table.widefat.sp-data-table th:last-child,
 table.widefat.sp-data-table td:last-child {
 	padding-right: 10px;
@@ -286,9 +287,6 @@ table.widefat.sp-data-table td:last-child {
 table.widefat.sp-data-table td {
 	line-height: 2;
 	overflow: visible;
-}
-
-table.widefat.sp-data-table td:first-child {
 	white-space: nowrap;
 }
 
