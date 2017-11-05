@@ -37,6 +37,8 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 
 		// Admin Columns
 		add_filter( 'manage_edit-sp_event_columns', array( $this, 'edit_columns' ) );
+		add_filter( 'manage_edit-sp_event_sortable_columns', array( $this, 'sortable_columns' ) );
+		add_action( 'pre_get_posts', array( $this, 'orderby_columns' ) );
 		add_action( 'manage_sp_event_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
 
 		// Filtering
@@ -127,6 +129,28 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			'title' => __( 'Event', 'sportspress' ),
 		) );
 		return apply_filters( 'sportspress_event_admin_columns', $columns );
+	}
+
+	/**
+	 * Change the sortable columns in admin.
+	 */
+	public function sortable_columns( $columns ) {
+    $columns['sp_day'] = 'sp_day';
+    return $columns;
+	}
+
+	/**
+	 * Define the sortable columns in admin.
+	 */
+	public function orderby_columns( $query ) {
+		if ( ! is_admin() ) return;
+
+		$orderby = $query->get( 'orderby');
+
+		if ( 'sp_day' == $orderby ) {
+		  $query->set( 'meta_key','sp_day' );
+		  $query->set( 'orderby','meta_value_num' );
+		}
 	}
 
 	/**
