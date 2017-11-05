@@ -550,7 +550,7 @@ class SP_Event extends SP_Custom_Post{
 		}
 
 		// Get current results meta
-		$meta = get_post_meta( $this->ID, 'sp_results', true );
+		$meta =(array) get_post_meta( $this->ID, 'sp_results', true );
 
 		$primary_results = array();
 		foreach ( $results as $id => $result ) {
