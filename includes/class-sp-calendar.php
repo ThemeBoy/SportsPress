@@ -3,6 +3,9 @@
  * Calendar Class
  *
  * The SportsPress calendar class handles individual calendar data.
+ * Props @_drg_ for adjustments to range and timezone handling.
+ * https://wordpress.org/support/topic/suggestion-for-schedule-list-range-option/
+ * https://wordpress.org/support/topic/timezone-issues-with-schedule-calendar-list/
  *
  * @class 		SP_Calendar
  * @version     2.2
@@ -265,9 +268,9 @@ class SP_Calendar extends SP_Custom_Post {
 	}
 
 	public function range( $where = '' ) {
-		$to = new DateTime( $this->to );
-		$to->modify( '+1 day' );
-		$where .= " AND post_date BETWEEN '" . $this->from . "' AND '" . $to->format( 'Y-m-d' ) . "'";
+		$to = new DateTime( $this->to, new DateTimeZone( get_option( 'timezone_string' ) ) );
+		$from = new DateTime( $this->from, new DateTimeZone( get_option( 'timezone_string' ) ) );
+		$where .= " AND post_date BETWEEN '" . $from->format( 'Y-m-d' ) . "' AND '" . $to->format( 'Y-m-d' ) . "'";
 		return $where;
 	}
 }
