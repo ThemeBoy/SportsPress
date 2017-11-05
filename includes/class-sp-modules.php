@@ -169,6 +169,39 @@ class SP_Modules {
 			),
 		));
 
+		if ( class_exists( 'BuddyPress' ) ) {
+			$this->data['other']['buddypress'] = array(
+				'label' => __( 'BuddyPress', 'sportspress' ),
+				'class' => 'BP_SportsPress_Component',
+				'icon' => 'sp-icon-buddypress',
+				'link' => 'https://www.themeboy.com/sportspress-extensions/buddypress/',
+				'desc' => __( 'Easily display SportsPress player information in BuddyPress profiles.', 'sportspress' ),
+				'tip' => __( 'Premium', 'sportspress' ),
+			);
+		}
+
+		if ( class_exists( 'WooCommerce' ) ) {
+			$this->data['other']['woocommerce'] = array(
+				'label' => __( 'WooCommerce', 'sportspress' ),
+				'class' => 'WooCommerce_SportsPress',
+				'icon' => 'sp-icon-woo',
+				'link' => 'https://www.themeboy.com/sportspress-extensions/woocommerce/',
+				'desc' => __( 'Sell team merchandise by integrating WooCommerce with SportsPress.', 'sportspress' ),
+				'tip' => __( 'Premium', 'sportspress' ),
+			);
+		}
+
+		if ( defined( 'WPSEO_FILE' ) ) {
+			$this->data['other']['yoast_seo'] = array(
+				'label' => __( 'Yoast SEO', 'sportspress' ),
+				'class' => 'Yoast_SEO_SportsPress',
+				'icon' => 'sp-icon-yoast',
+				'link' => 'https://www.themeboy.com/sportspress-extensions/yoast-seo/',
+				'desc' => __( 'Generate custom titles for SportsPress pages using Yoast SEO.', 'sportspress' ),
+				'tip' => __( 'Free', 'sportspress' ),
+			);
+		}
+
 		if ( is_multisite() ) {
 			$this->data['other']['multisite'] = array(
 				'label' => __( 'Multisite', 'sportspress' ),

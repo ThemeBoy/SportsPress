@@ -48,6 +48,9 @@
 .sp-icon-bracket-center:before {
 	content: "\f181"
 }
+.sp-icon-buddypress:before {
+	content: "\f507";
+}
 .sp-icon-calculator:before {
 	content: "\f108";
 }
@@ -155,8 +158,14 @@
 .sp-icon-user-scores:before {
   content: "\f101";
 }
+.sp-icon-woo:before {
+  content: "\f174";
+}
 .sp-icon-wordpay:before {
   content: "\f526";
+}
+.sp-icon-yoast:before {
+	content: "\f179";
 }
 
 /* Performance Icons */
