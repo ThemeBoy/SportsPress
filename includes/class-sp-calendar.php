@@ -123,12 +123,12 @@ class SP_Calendar extends SP_Custom_Post {
 
 		if ( $this->date !== 0 ):
 			if ( $this->date == 'w' ):
-				$args['year'] = date('Y');
-				$args['w'] = date('W');
+				$args['year'] = date_i18n('Y');
+				$args['w'] = date_i18n('W');
 			elseif ( $this->date == 'day' ):
-				$args['year'] = date('Y');
-				$args['day'] = date('j');
-				$args['monthnum'] = date('n');
+				$args['year'] = date_i18n('Y');
+				$args['day'] = date_i18n('j');
+				$args['monthnum'] = date_i18n('n');
 			elseif ( $this->date == 'range' ):
 				add_filter( 'posts_where', array( $this, 'range' ) );
 			endif;
