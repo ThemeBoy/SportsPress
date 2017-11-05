@@ -190,15 +190,18 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 	 * @param mixed $query
 	 */
 	public function filters_query( $query ) {
+		if ( $query->query_vars['post_type'] !== 'sp_player' ) return $query;
 		global $typenow, $wp_query;
 
-	    if ( $typenow == 'sp_player' ) {
+    if ( $typenow == 'sp_player' ) {
 
-	    	if ( ! empty( $_GET['team'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['team'];
-		        $query->query_vars['meta_key'] 		= 'sp_team';
-		    }
+    	if ( ! empty( $_GET['team'] ) ) {
+	    	$query->query_vars['meta_value'] 	= $_GET['team'];
+	        $query->query_vars['meta_key'] 		= 'sp_team';
+	    }
 		}
+
+		return $query;
 	}
 
 	/**
