@@ -70,10 +70,14 @@ class SP_Meta_Box_Event_Performance {
 	 */
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array() ) );
-		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
 		update_post_meta( $post_id, 'sp_timeline', sp_array_value( $_POST, 'sp_timeline', array() ) );
 		update_post_meta( $post_id, 'sp_stars', sp_array_value( $_POST, 'sp_stars', array() ) );
+
+		if ( isset( $_POST['sp_columns'] ) ) {
+			$columns = array_filter( (array) $_POST['sp_columns'] );
+			update_post_meta( $post_id, 'sp_columns', $columns );
+		}
 	}
 
 	/**
@@ -81,8 +85,9 @@ class SP_Meta_Box_Event_Performance {
 	 */
 	public static function tables( $post_id, $stats = array(), $labels = array(), $columns = array(), $teams = array(), $has_checkboxes = false, $positions = array(), $status = true, $formats = array(), $order = array(), $numbers = true, $is_individual = false, $timeline = array(), $timed = array(), $stars = array() ) {
 		$sections = get_option( 'sportspress_event_performance_sections', -1 );
-		
-		if ( $is_individual ) {
+		global $pagenow;
+
+		if ( $pagenow === 'post-new.php' || $is_individual ) {
 			?>
 			<div class="sp-data-table-container">
 				<table class="widefat sp-data-table sp-performance-table sp-sortable-table">
@@ -288,7 +293,7 @@ class SP_Meta_Box_Event_Performance {
 	 * Admin edit table header
 	 */
 	public static function header( $columns = array(), $labels = array(), $positions = array(), $has_checkboxes = false, $status = true, $sortable = true, $numbers = true, $section = -1, $formats = array() ) {
-		$stars_type = get_option( 'sportspress_event_performance_stars_type', 0 )
+		$stars_type = get_option( 'sportspress_event_performance_stars_type', 0 );
 		?>
 		<thead>
 			<tr>
@@ -304,10 +309,13 @@ class SP_Meta_Box_Event_Performance {
 						<?php _e( 'Position', 'sportspress' ); ?>
 					</th>
 				<?php } ?>
-				<?php foreach ( $labels as $key => $label ): ?>
+				<?php $i = 0; foreach ( $labels as $key => $label ): ?>
 					<?php if ( 'equation' === sp_array_value( $formats, $key, 'number' ) ) continue; ?>
 					<th>
 						<?php if ( $has_checkboxes ): ?>
+							<?php if ( 0 == $i ): ?>
+								<input type="hidden" name="sp_columns[]" value="">
+							<?php endif; ?>
 							<label for="sp_columns_<?php echo $key; ?>">
 								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! is_array( $columns ) || in_array( $key, $columns ) ); ?>>
 								<?php echo $label; ?>
@@ -316,7 +324,7 @@ class SP_Meta_Box_Event_Performance {
 							<?php echo $label; ?>
 						<?php endif; ?>
 					</th>
-				<?php endforeach; ?>
+				<?php $i++; endforeach; ?>
 				<?php if ( apply_filters( 'sportspress_event_performance_show_status', $status, $section ) ) { ?>
 					<th>
 						<?php _e( 'Status', 'sportspress' ); ?>
