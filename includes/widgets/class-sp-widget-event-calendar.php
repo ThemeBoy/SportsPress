@@ -114,7 +114,7 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 			?>
 		</p>
 
-		<div class="sp-date-selector sp-event-calendar-show-all-toggle<?php if ( ! $id ): ?> hidden<?php endif; ?>">
+		<div class="sp-date-selector">
 			<p><label for="<?php echo $this->get_field_id('date'); ?>"><?php _e( 'Date:', 'sportspress' ); ?></label>
 				<?php
 				$args = array(
