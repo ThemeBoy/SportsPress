@@ -615,8 +615,12 @@ if ( !function_exists( 'sp_dropdown_dates' ) ) {
 
 		$dates = apply_filters( 'sportspress_dates', array(
 			0 => __( 'All', 'sportspress' ),
-			'w' => __( 'This week', 'sportspress' ),
+			'-day' => __( 'Yesterday', 'sportspress' ),
 			'day' => __( 'Today', 'sportspress' ),
+			'+day' => __( 'Tomorrow', 'sportspress' ),
+			'-w' => __( 'Last week', 'sportspress' ),
+			'w' => __( 'This week', 'sportspress' ),
+			'+w' => __( 'Next week', 'sportspress' ),
 			'range' => __( 'Date range:', 'sportspress' ),
 		));
 

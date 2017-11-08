@@ -134,21 +134,53 @@ class SP_Calendar extends SP_Secondary_Post {
 		);
 
 		if ( $this->date !== 0 ):
-			if ( $this->date == 'w' ):
-				$args['year'] = date_i18n('Y');
-				$args['w'] = date_i18n('W');
-			elseif ( $this->date == 'day' ):
-				$args['year'] = date_i18n('Y');
-				$args['day'] = date_i18n('j');
-				$args['monthnum'] = date_i18n('n');
-			elseif ( $this->date == 'range' ):
-				if ( $this->relative ):
-					add_filter( 'posts_where', array( $this, 'relative' ) );
-				else:
-					add_filter( 'posts_where', array( $this, 'range' ) );
-				endif;
-			endif;
+			switch ( $this->date ):
+				case '-day':
+					$date = new DateTime( date_i18n('Y-m-d') );
+			    $date->modify( '-1 day' );
+					$args['year'] = $date->format('Y');
+					$args['day'] = $date->format('j');
+					$args['monthnum'] = $date->format('n');
+					break;
+				case 'day':
+					$args['year'] = date_i18n('Y');
+					$args['day'] = date_i18n('j');
+					$args['monthnum'] = date_i18n('n');
+					break;
+				case '+day':
+					$date = new DateTime( date_i18n('Y-m-d') );
+			    $date->modify( '+1 day' );
+					$args['year'] = $date->format('Y');
+					$args['day'] = $date->format('j');
+					$args['monthnum'] = $date->format('n');
+					break;
+				case '-w':
+					$date = new DateTime( date_i18n('Y-m-d') );
+			    $date->modify( '-1 week' );
+					$args['year'] = $date->format('Y');
+					$args['w'] = $date->format('W');
+					break;
+				case 'w':
+					$args['year'] = date_i18n('Y');
+					$args['w'] = date_i18n('W');
+					break;
+				case '+w':
+					$date = new DateTime( date_i18n('Y-m-d') );
+			    $date->modify( '+1 week' );
+					$args['year'] = $date->format('Y');
+					$args['w'] = $date->format('W');
+					break;
+				case 'range':
+					if ( $this->relative ):
+						add_filter( 'posts_where', array( $this, 'relative' ) );
+					else:
+						add_filter( 'posts_where', array( $this, 'range' ) );
+					endif;
+					break;
+			endswitch;
 		endif;
+
+		pr( $args );
 
 		if ( $this->league ):
 			$league_ids = array( $this->league );

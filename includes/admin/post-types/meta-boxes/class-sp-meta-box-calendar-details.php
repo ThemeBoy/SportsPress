@@ -71,6 +71,7 @@ class SP_Meta_Box_Calendar_Details {
 					<p class="sp-date-range-relative">
 						<?php _e( 'Past', 'sportspress' ); ?>
 						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_past" value="<?php echo '' !== $date_past ? $date_past : 7; ?>">
+						<?php _e( 'days', 'sportspress' ); ?>
 						&rarr;
 						<?php _e( 'Next', 'sportspress' ); ?>
 						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_future" value="<?php echo '' !== $date_future ? $date_future : 7; ?>">
