@@ -61,7 +61,7 @@ class SP_Meta_Box_Calendar_Details {
 					sp_dropdown_dates( $args );
 					?>
 				</p>
-				<p class="sp-date-range">
+				<div class="sp-date-range">
 					<p class="sp-date-range-absolute">
 						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? $date_from : date_i18n( 'Y-m-d' ); ?>" size="10">
 						:
@@ -83,7 +83,7 @@ class SP_Meta_Box_Calendar_Details {
 							<?php _e( 'Relative', 'sportspress' ); ?>
 						</label>
 					</p>
-				</p>
+				</div>
 			</div>
 			<div class="sp-event-day-field">
 				<p><strong><?php _e( 'Match Day', 'sportspress' ); ?></strong></p>
