@@ -16,6 +16,9 @@ $defaults = array(
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
+	'date_past' => 'default',
+	'date_future' => 'default',
+	'date_relative' => 'default',
 	'day' => 'default',
 	'league' => null,
 	'season' => null,
@@ -49,6 +52,12 @@ if ( $date_from != 'default' )
 	$calendar->from = $date_from;
 if ( $date_to != 'default' )
 	$calendar->to = $date_to;
+if ( $date_past != 'default' )
+	$calendar->past = $date_past;
+if ( $date_future != 'default' )
+	$calendar->future = $date_future;
+if ( $date_relative != 'default' )
+	$calendar->relative = $date_relative;
 if ( $league )
 	$calendar->league = $league;
 if ( $season )

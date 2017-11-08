@@ -25,6 +25,9 @@ class SP_Meta_Box_Calendar_Details {
 		$date = get_post_meta( $post->ID, 'sp_date', true );
 		$date_from = get_post_meta( $post->ID, 'sp_date_from', true );
 		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
+		$date_past = get_post_meta( $post->ID, 'sp_date_past', true );
+		$date_future = get_post_meta( $post->ID, 'sp_date_future', true );
+		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
 		$day = get_post_meta( $post->ID, 'sp_day', true );
 		$teams = get_post_meta( $post->ID, 'sp_team', false );
 		$table_id = get_post_meta( $post->ID, 'sp_table', true );
@@ -59,9 +62,27 @@ class SP_Meta_Box_Calendar_Details {
 					?>
 				</p>
 				<p class="sp-date-range">
-					<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? $date_from : date_i18n( 'Y-m-d' ); ?>" size="10">
-					:
-					<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? $date_to : date_i18n( 'Y-m-d' ); ?>" size="10">
+					<p class="sp-date-range-absolute">
+						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? $date_from : date_i18n( 'Y-m-d' ); ?>" size="10">
+						:
+						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? $date_to : date_i18n( 'Y-m-d' ); ?>" size="10">
+					</p>
+
+					<p class="sp-date-range-relative">
+						<?php _e( 'Past', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_past" value="<?php echo '' !== $date_past ? $date_past : 7; ?>">
+						&rarr;
+						<?php _e( 'Next', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_future" value="<?php echo '' !== $date_future ? $date_future : 7; ?>">
+						<?php _e( 'days', 'sportspress' ); ?>
+					</p>
+
+					<p class="sp-date-relative">
+						<label>
+							<input type="checkbox" name="sp_date_relative" value="1" id="sp_date_relative" <?php checked( $date_relative ); ?>>
+							<?php _e( 'Relative', 'sportspress' ); ?>
+						</label>
+					</p>
 				</p>
 			</div>
 			<div class="sp-event-day-field">
@@ -120,6 +141,9 @@ class SP_Meta_Box_Calendar_Details {
 		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0 ) );
 		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null ) );
 		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null ) );
+		update_post_meta( $post_id, 'sp_date_past', sp_array_value( $_POST, 'sp_date_past', 0 ) );
+		update_post_meta( $post_id, 'sp_date_future', sp_array_value( $_POST, 'sp_date_future', 0 ) );
+		update_post_meta( $post_id, 'sp_date_relative', sp_array_value( $_POST, 'sp_date_relative', 0 ) );
 		update_post_meta( $post_id, 'sp_day', sp_array_value( $_POST, 'sp_day', null ) );
 		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', null ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', null ) );

@@ -23,4 +23,19 @@ jQuery(document).ready(function($){
 		}
 	});
 	$(".sp-date-selector select").trigger("change");
+
+	// Toggle date range selectors
+	$("body").on("change", ".sp-date-relative input", function() {
+		$relative = $(this).closest(".sp-date-relative").siblings(".sp-date-range-relative").toggle(0, $(this).attr("checked"));
+		$absolute = $(this).closest(".sp-date-relative").siblings(".sp-date-range-absolute").toggle(0, $(this).attr("checked"));
+
+		if ($(this).attr("checked")) {
+			$relative.show();
+			$absolute.hide();
+		} else {
+			$absolute.show();
+			$relative.hide();
+		}
+	});
+	$(".sp-date-selector input").trigger("change");
 });
