@@ -19,29 +19,11 @@ class SP_Calendar extends SP_Secondary_Post {
 	/** @var string The events status. */
 	public $status;
 
-	/** @var string The date filter for events. */
-	public $date;
-
 	/** @var string The events order. */
 	public $order;
 
 	/** @var string The events orderby. */
 	public $orderby;
-
-	/** @var string The date to range from. */
-	public $from;
-
-	/** @var string The date to range to. */
-	public $to;
-
-	/** @var string The number of days to query in the past. */
-	public $past;
-
-	/** @var string The number of days to query in the future. */
-	public $future;
-
-	/** @var boolean Determines whether the date range is relative. */
-	public $relative;
 
 	/** @var string The match day. */
 	public $day;

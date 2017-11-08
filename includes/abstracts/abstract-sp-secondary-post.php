@@ -11,6 +11,25 @@
  * @author 		ThemeBoy
  */
 abstract class SP_Secondary_Post extends SP_Custom_Post {
+
+  /** @var string The date filter for events. */
+  public $date = 0;
+
+  /** @var string The date to range from. */
+  public $from = 'now';
+
+  /** @var string The date to range to. */
+  public $to = 'now';
+
+  /** @var string The number of days to query in the past. */
+  public $past = 0;
+
+  /** @var string The number of days to query in the future. */
+  public $future = 0;
+
+  /** @var boolean Determines whether the date range is relative. */
+  public $relative = false;
+
   public function range( $where = '', $format = 'Y-m-d' ) {
     $from = new DateTime( $this->from, new DateTimeZone( get_option( 'timezone_string' ) ) );
     $to = new DateTime( $this->to, new DateTimeZone( get_option( 'timezone_string' ) ) );
