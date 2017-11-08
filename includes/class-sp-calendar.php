@@ -180,8 +180,6 @@ class SP_Calendar extends SP_Secondary_Post {
 			endswitch;
 		endif;
 
-		pr( $args );
-
 		if ( $this->league ):
 			$league_ids = array( $this->league );
 		endif;
