@@ -14,7 +14,7 @@
  * @author 		ThemeBoy
  */
 
-class SP_Calendar extends SP_Custom_Post {
+class SP_Calendar extends SP_Secondary_Post {
 
 	/** @var string The events status. */
 	public $status;
@@ -71,7 +71,7 @@ class SP_Calendar extends SP_Custom_Post {
 	 * @param mixed $post
 	 */
 	public function __construct( $post ) {
-		if ( $post instanceof WP_Post || $post instanceof SP_Custom_Post ):
+		if ( $post instanceof WP_Post || $post instanceof SP_Secondary_Post ):
 			$this->ID   = absint( $post->ID );
 			$this->post = $post;
 		else:
@@ -298,28 +298,5 @@ class SP_Calendar extends SP_Custom_Post {
 		remove_filter( 'posts_where', array( $this, 'relative' ) );
 
 		return $events;
-	}
-
-	public function range( $where = '', $format = 'Y-m-d' ) {
-		$from = new DateTime( $this->from, new DateTimeZone( get_option( 'timezone_string' ) ) );
-		$to = new DateTime( $this->to, new DateTimeZone( get_option( 'timezone_string' ) ) );
-		$to->modify( '+1 day' );
-		$where .= " AND post_date BETWEEN '" . $from->format( $format ) . "' AND '" . $to->format( $format ) . "'";
-		return $where;
-	}
-
-	public function relative( $where = '', $format = 'Y-m-d' ) {
-		$datetimezone = new DateTimeZone( get_option( 'timezone_string' ) );
-		$from = new DateTime( 'now', $datetimezone );
-		$to = new DateTime( 'now', $datetimezone );
-
-		$from->modify( '-' . abs( (int) $this->past ) . ' day' );
-		$to->modify( '+' . abs( (int) $this->future ) . ' day' );
-
-		$to->modify( '+1 day' );
-
-		$where .= " AND post_date BETWEEN '" . $from->format( $format ) . "' AND '" . $to->format( $format ) . "'";
-
-		return $where;
 	}
 }

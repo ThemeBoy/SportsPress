@@ -222,7 +222,8 @@ final class SportsPress {
 		include_once( 'includes/class-sp-post-types.php' );						// Registers post types
 
 		// Include abstract classes
-		include_once( 'includes/abstracts/abstract-sp-custom-post.php' );		// Custom posts
+		include_once( 'includes/abstracts/abstract-sp-custom-post.php' );     // Custom posts
+		include_once( 'includes/abstracts/abstract-sp-secondary-post.php' );  // Secondary posts
 
 		// Classes (used on all pages)
 		include_once( 'includes/class-sp-modules.php' );						// Defines available modules
