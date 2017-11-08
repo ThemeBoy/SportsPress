@@ -30,6 +30,22 @@ abstract class SP_Secondary_Post extends SP_Custom_Post {
   /** @var boolean Determines whether the date range is relative. */
   public $relative = false;
 
+  /**
+   * __construct function.
+   *
+   * @access public
+   * @param mixed $post
+   */
+  public function __construct( $post ) {
+    if ( $post instanceof WP_Post || $post instanceof SP_Secondary_Post ):
+      $this->ID   = absint( $post->ID );
+      $this->post = $post;
+    else:
+      $this->ID  = absint( $post );
+      $this->post = get_post( $this->ID );
+    endif;
+  }
+
   public function range( $where = '', $format = 'Y-m-d' ) {
     $from = new DateTime( $this->from, new DateTimeZone( get_option( 'timezone_string' ) ) );
     $to = new DateTime( $this->to, new DateTimeZone( get_option( 'timezone_string' ) ) );
