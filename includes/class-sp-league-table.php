@@ -10,7 +10,7 @@
  * @category	Class
  * @author 		ThemeBoy
  */
-class SP_League_Table extends SP_Custom_Post{
+class SP_League_Table extends SP_Secondary_Post {
 
 	/** @var array The sort priorities array. */
 	public $priorities;
@@ -42,8 +42,34 @@ class SP_League_Table extends SP_Custom_Post{
 		$link_events = get_option( 'sportspress_link_events', 'yes' ) === 'yes' ? true : false;
 		$form_limit = (int) get_option( 'sportspress_form_limit', 5 );
 
+		$this->date = $this->__get( 'date' );
+
+		if ( ! $this->date )
+			$this->date = 0;
+
 		// Apply defaults
 		if ( empty( $select ) ) $select = 'auto';
+
+		if ( 'range' == $this->date ) {
+
+			$this->relative = get_post_meta( $this->ID, 'sp_date_relative', true );
+
+			if ( $this->relative ) {
+
+				if ( ! $this->past )
+					$this->past = get_post_meta( $this->ID, 'sp_date_past', true );
+
+			} else {
+
+				if ( ! $this->from )
+					$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
+
+				if ( ! $this->to )
+					$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
+
+			}
+
+		}
 
 		// Get labels from result variables
 		$result_labels = (array)sp_get_var_labels( 'sp_result' );
@@ -237,6 +263,23 @@ class SP_League_Table extends SP_Custom_Post{
 			);
 		endif;
 
+		if ( $this->date !== 0 ):
+			if ( $this->date == 'w' ):
+				$args['year'] = date_i18n('Y');
+				$args['w'] = date_i18n('W');
+			elseif ( $this->date == 'day' ):
+				$args['year'] = date_i18n('Y');
+				$args['day'] = date_i18n('j');
+				$args['monthnum'] = date_i18n('n');
+			elseif ( $this->date == 'range' ):
+				if ( $this->relative ):
+					add_filter( 'posts_where', array( $this, 'relative' ) );
+				else:
+					add_filter( 'posts_where', array( $this, 'range' ) );
+				endif;
+			endif;
+		endif;
+
 		$args = apply_filters( 'sportspress_table_data_event_args', $args );
 		
 		if ( ! $is_main_loop ):
@@ -250,6 +293,10 @@ class SP_League_Table extends SP_Custom_Post{
 		endif;
 		
 		$events = get_posts( $args );
+
+		// Remove range filters
+		remove_filter( 'posts_where', array( $this, 'range' ) );
+		remove_filter( 'posts_where', array( $this, 'relative' ) );
 
 		$e = 0;
 

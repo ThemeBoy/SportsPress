@@ -29,10 +29,49 @@ class SP_Meta_Box_List_Details {
 		$select = get_post_meta( $post->ID, 'sp_select', true );
 		$number = get_post_meta( $post->ID, 'sp_number', true );
 		$crop = get_post_meta( $post->ID, 'sp_crop', true );
+		$date = get_post_meta( $post->ID, 'sp_date', true );
+		$date_from = get_post_meta( $post->ID, 'sp_date_from', true );
+		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
+		$date_past = get_post_meta( $post->ID, 'sp_date_past', true );
+		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
 			<p><input type="text" id="sp_caption" name="sp_caption" value="<?php echo esc_attr( $caption ); ?>" placeholder="<?php echo esc_attr( get_the_title() ); ?>"></p>
+
+			<div class="sp-date-selector">
+				<p><strong><?php _e( 'Date', 'sportspress' ); ?></strong></p>
+				<p>
+					<?php
+					$args = array(
+						'name' => 'sp_date',
+						'id' => 'sp_date',
+						'selected' => $date,
+					);
+					sp_dropdown_dates( $args );
+					?>
+				</p>
+				<div class="sp-date-range">
+					<p class="sp-date-range-absolute">
+						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? $date_from : date_i18n( 'Y-m-d' ); ?>" size="10">
+						:
+						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? $date_to : date_i18n( 'Y-m-d' ); ?>" size="10">
+					</p>
+
+					<p class="sp-date-range-relative">
+						<?php _e( 'Past', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_past" value="<?php echo '' !== $date_past ? $date_past : 7; ?>">
+						<?php _e( 'days', 'sportspress' ); ?>
+					</p>
+
+					<p class="sp-date-relative">
+						<label>
+							<input type="checkbox" name="sp_date_relative" value="1" id="sp_date_relative" <?php checked( $date_relative ); ?>>
+							<?php _e( 'Relative', 'sportspress' ); ?>
+						</label>
+					</p>
+				</div>
+			</div>
 
 			<?php
 			foreach ( $taxonomies as $taxonomy ) {
@@ -122,6 +161,11 @@ class SP_Meta_Box_List_Details {
 	 */
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0 ) ) );
+		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0 ) );
+		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null ) );
+		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null ) );
+		update_post_meta( $post_id, 'sp_date_past', sp_array_value( $_POST, 'sp_date_past', 0 ) );
+		update_post_meta( $post_id, 'sp_date_relative', sp_array_value( $_POST, 'sp_date_relative', 0 ) );
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 		update_post_meta( $post_id, 'sp_era', sp_array_value( $_POST, 'sp_era', array() ) );
 		update_post_meta( $post_id, 'sp_grouping', sp_array_value( $_POST, 'sp_grouping', array() ) );

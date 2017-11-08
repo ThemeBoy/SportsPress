@@ -10,7 +10,7 @@
  * @category	Class
  * @author 		ThemeBoy
  */
-class SP_Player_List extends SP_Custom_Post {
+class SP_Player_List extends SP_Secondary_Post {
 
 	/** @var array The columns array. */
 	public $columns;
@@ -48,10 +48,36 @@ class SP_Player_List extends SP_Custom_Post {
 		$order = get_post_meta( $this->ID, 'sp_order', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
 
+		$this->date = $this->__get( 'date' );
+
+		if ( ! $this->date )
+			$this->date = 0;
+
 		// Apply defaults
 		if ( empty( $orderby ) ) $orderby = 'number';
 		if ( empty( $order ) ) $order = 'ASC';
 		if ( empty( $select ) ) $select = 'auto';
+
+		if ( 'range' == $this->date ) {
+
+			$this->relative = get_post_meta( $this->ID, 'sp_date_relative', true );
+
+			if ( $this->relative ) {
+
+				if ( ! $this->past )
+					$this->past = get_post_meta( $this->ID, 'sp_date_past', true );
+
+			} else {
+
+				if ( ! $this->from )
+					$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
+
+				if ( ! $this->to )
+					$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
+
+			}
+
+		}
 
 		// Get labels from performance variables
 		$performance_labels = (array)sp_get_var_labels( 'sp_performance' );
@@ -309,9 +335,30 @@ class SP_Player_List extends SP_Custom_Post {
 			);
 		endif;
 
+		if ( $this->date !== 0 ):
+			if ( $this->date == 'w' ):
+				$args['year'] = date_i18n('Y');
+				$args['w'] = date_i18n('W');
+			elseif ( $this->date == 'day' ):
+				$args['year'] = date_i18n('Y');
+				$args['day'] = date_i18n('j');
+				$args['monthnum'] = date_i18n('n');
+			elseif ( $this->date == 'range' ):
+				if ( $this->relative ):
+					add_filter( 'posts_where', array( $this, 'relative' ) );
+				else:
+					add_filter( 'posts_where', array( $this, 'range' ) );
+				endif;
+			endif;
+		endif;
+
 		$args = apply_filters( 'sportspress_list_data_event_args', $args );
 		
 		$events = get_posts( $args );
+
+		// Remove range filters
+		remove_filter( 'posts_where', array( $this, 'range' ) );
+		remove_filter( 'posts_where', array( $this, 'relative' ) );
 
 		// Event loop
 		foreach ( $events as $i => $event ):
