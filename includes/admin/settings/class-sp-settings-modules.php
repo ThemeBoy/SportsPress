@@ -196,7 +196,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 				if ( class_exists( 'SportsPress_Pro' ) ) {
 					$categories['help']['links']['http://support.themeboy.com/'] = __( 'Premium Support', 'sportspress' );
 				} else {
-					$categories['help']['links']['http://tboy.co/pro'] = '<span class="sp-desc-tip" title="' . __( 'Upgrade to Pro', 'sportspress' ) . '">' . __( 'Premium Support', 'sportspress' ) . '</span>';
+					$categories['help']['links'][ apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ] = '<span class="sp-desc-tip" title="' . __( 'Upgrade to Pro', 'sportspress' ) . '">' . __( 'Premium Support', 'sportspress' ) . '</span>';
 				}
 				
 				$categories = apply_filters( 'sportspress_modules_welcome_links', $categories );
@@ -248,7 +248,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 									<span class="sp-desc">
 										<?php echo $module['desc']; ?>
 										<?php if ( array_key_exists( 'link', $module ) ) { ?>
-											<a href="<?php echo $module['link']; ?>" target="_blank"><?php echo sp_array_value( $module, 'action', __( 'Learn more', 'sportspress' ) ); ?></a>
+											<a href="<?php echo apply_filters( 'sportspress_pro_url', $module['link'] ); ?>" target="_blank"><?php echo sp_array_value( $module, 'action', __( 'Learn more', 'sportspress' ) ); ?></a>
 										<?php } ?>
 									</span>
 								<?php } ?>
