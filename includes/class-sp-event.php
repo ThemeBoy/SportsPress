@@ -541,6 +541,42 @@ class SP_Event extends SP_Custom_Post{
 		// Return if no teams meet criteria
 		return null;
 	}
+	
+	public function appointments() {
+		$officials = (array) get_post_meta( $this->ID, 'sp_officials', true );
+		$officials = array_filter( $officials );
+
+		if ( empty( $officials ) ) return null;
+
+		$duties = get_terms( array(
+		  'taxonomy' => 'sp_duty',
+		  'hide_empty' => false,
+		  'orderby' => 'slug',
+		) );
+
+		if ( empty( $duties ) ) return null;
+
+		$labels = array();
+		$appointments = array();
+
+		foreach ( $duties as $duty ) {
+			$duty_appointments = sp_array_value( $officials, $duty->term_id, null );
+
+			if ( empty( $duty_appointments ) ) continue;
+
+			$appointed_officials = array();
+			foreach ( $duty_appointments as $duty_appointment ) {
+				$appointed_officials[ $duty_appointment ] = get_the_title( $duty_appointment );
+			}
+
+			$appointments[ $duty->slug ] = $appointed_officials;
+			$labels[ $duty->slug ] = $duty->name;
+		}
+
+		$appointments[0] = $labels;
+
+		return $appointments;
+	}
 
 	public function update_main_results( $results ) {
 		$main_result = sp_get_main_result_option();
