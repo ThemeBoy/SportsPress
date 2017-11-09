@@ -542,11 +542,11 @@ class SP_Event extends SP_Custom_Post{
 		return null;
 	}
 	
-	public function appointments() {
+	public function appointments( $include_empty = false, $placeholder = '-' ) {
 		$officials = (array) get_post_meta( $this->ID, 'sp_officials', true );
 		$officials = array_filter( $officials );
 
-		if ( empty( $officials ) ) return null;
+		if ( ! $include_empty && empty( $officials ) ) return null;
 
 		$duties = get_terms( array(
 		  'taxonomy' => 'sp_duty',
@@ -554,7 +554,7 @@ class SP_Event extends SP_Custom_Post{
 		  'orderby' => 'slug',
 		) );
 
-		if ( empty( $duties ) ) return null;
+		if ( ! $include_empty && empty( $duties ) ) return null;
 
 		$labels = array();
 		$appointments = array();
@@ -562,12 +562,14 @@ class SP_Event extends SP_Custom_Post{
 		foreach ( $duties as $duty ) {
 			$duty_appointments = sp_array_value( $officials, $duty->term_id, null );
 
-			if ( empty( $duty_appointments ) ) continue;
+			if ( ! $include_empty && empty( $duty_appointments ) ) continue;
 
 			$appointed_officials = array();
 			foreach ( $duty_appointments as $duty_appointment ) {
 				$appointed_officials[ $duty_appointment ] = get_the_title( $duty_appointment );
 			}
+
+			if ( $include_empty && empty( $appointed_officials ) ) $appointed_officials[] = $placeholder;
 
 			$appointments[ $duty->slug ] = $appointed_officials;
 			$labels[ $duty->slug ] = $duty->name;

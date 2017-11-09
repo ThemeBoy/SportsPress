@@ -51,7 +51,7 @@ $link_officials = get_option( 'sportspress_link_officials', 'no' ) == 'yes' ? tr
 								$appointed_officials[ $official_id ] = '<a href="' . get_post_permalink( $official_id ) . '">' . $official_name . '</a>';
 							}
 						}
-						echo '<td class="data-name">' . implode( ', ', $appointed_officials ) . '</td>';
+						echo '<td class="data-name">' . implode( '<br>', $appointed_officials ) . '</td>';
 					}
 					?>
 				</tr>

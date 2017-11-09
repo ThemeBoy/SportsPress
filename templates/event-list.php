@@ -166,6 +166,8 @@ endif;
 
 					if ( sp_column_active( $usecolumns, 'day' ) )
 						echo '<th class="data-day">' . __( 'Match Day', 'sportspress' ) . '</th>';
+
+					do_action( 'sportspress_event_list_head_row', $usecolumns );
 					?>
 				</tr>
 			</thead>
@@ -412,6 +414,8 @@ endif;
 							}
 							echo '</td>';
 						endif;
+
+						do_action( 'sportspress_event_list_row', $event, $usecolumns );
 
 					echo '</tr>';
 

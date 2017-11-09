@@ -35,9 +35,14 @@ class SportsPress_Officials {
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
 		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
 		add_action( 'sportspress_register_rest_fields', array( $this, 'register_rest_fields' ) );
+		add_action( 'sportspress_event_list_head_row', array( $this, 'event_list_head_row' ) );
+		add_action( 'sportspress_event_list_row', array( $this, 'event_list_row' ), 10, 2 );
+		add_action( 'sportspress_calendar_data_meta_box_table_head_row', array( $this, 'calendar_meta_head_row' ) );
+		add_action( 'sportspress_calendar_data_meta_box_table_row', array( $this, 'calendar_meta_row' ), 10, 2 );
 
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_filter( 'sportspress_calendar_columns', array( $this, 'calendar_columns' ) );
 		add_filter( 'sportspress_after_event_template', array( $this, 'add_event_template' ), 30 );
 		add_filter( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
@@ -184,6 +189,92 @@ class SportsPress_Officials {
 	}
 
 	/**
+	 * Event list head row.
+	 */
+	public function event_list_head_row( $usecolumns = array() ) {
+		if ( is_array( $usecolumns ) && in_array( 'officials', $usecolumns ) ) {
+			$duties = get_terms( array(
+			  'taxonomy' => 'sp_duty',
+			  'hide_empty' => false,
+			  'orderby' => 'slug',
+			) );
+
+			if ( empty( $duties ) ) return;
+
+			foreach ( $duties as $duty ) {
+				?>
+				<th class="data-officials">
+					<?php echo $duty->name; ?>
+				</th>
+				<?php
+			}
+		}
+	}
+
+	/**
+	 * Event list row.
+	 */
+	public function event_list_row( $event, $usecolumns = array() ) {
+		if ( is_array( $usecolumns ) && in_array( 'officials', $usecolumns ) ) {
+			$event = new SP_Event( $event );
+			$appointments = $event->appointments( true );
+			unset( $appointments[0] );
+
+			foreach ( $appointments as $officials ) {
+				?>
+				<td class="data-officials">
+					<?php echo implode( '<br>', $officials ); ?>
+				</td>
+				<?php
+			}
+		}
+	}
+
+	/**
+	 * Calendar meta box table head row.
+	 */
+	public function calendar_meta_head_row( $usecolumns = array() ) {
+		if ( is_array( $usecolumns ) && in_array( 'officials', $usecolumns ) ) {
+			$duties = get_terms( array(
+			  'taxonomy' => 'sp_duty',
+			  'hide_empty' => false,
+			  'orderby' => 'slug',
+			) );
+
+			if ( empty( $duties ) ) return;
+
+			foreach ( $duties as $duty ) {
+				?>
+				<th class="column-officials">
+					<label for="sp_columns_officials">
+						<?php echo $duty->name; ?>
+					</label>
+				</th>
+				<?php
+			}
+		}
+	}
+
+	/**
+	 * Calendar meta box table row.
+	 */
+	public function calendar_meta_row( $event, $usecolumns = array() ) {
+		if ( is_array( $usecolumns ) && in_array( 'officials', $usecolumns ) ) {
+			$event = new SP_Event( $event );
+			$appointments = $event->appointments( true, '&mdash;' );
+			unset( $appointments[0] );
+
+			foreach ( $appointments as $officials ) {
+				?>
+				<td>
+					<?php echo implode( '<br>', $officials ); ?>
+				</td>
+				<?php
+			}
+		}
+	}
+
+	/**
 	 * Add meta boxes.
 	 *
 	 * @return array
@@ -206,6 +297,16 @@ class SportsPress_Officials {
 			),
 		);
 		return $meta_boxes;
+	}
+
+	/**
+	 * Add calendar columns.
+	 *
+	 * @return array
+	 */
+	public function calendar_columns( $columns = array() ) {
+		$columns['officials'] = __( 'Officials', 'sportspress' );
+		return $columns;
 	}
 
 	/**
