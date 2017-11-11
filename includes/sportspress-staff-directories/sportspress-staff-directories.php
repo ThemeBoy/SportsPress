@@ -45,6 +45,7 @@ class SportsPress_Staff_Directories {
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'add_screen_ids' ) );
+		add_filter( 'sportspress_admin_datepicker_screen_ids', array( $this, 'add_datepicker_screen_ids' ) );
 		add_action( 'sportspress_single_directory_content', array( $this, 'output_directory' ), 10 );
 		add_action( 'sportspress_after_single_directory', 'sportspress_output_br_tag', 100 );
 		add_filter( 'sportspress_league_object_types', array( $this, 'add_taxonomy_object' ) );
@@ -176,6 +177,14 @@ class SportsPress_Staff_Directories {
 	 */
 	public static function add_screen_ids( $screen_ids = array() ) {
 		$screen_ids[] = 'edit-sp_directory';
+		$screen_ids[] = 'sp_directory';
+		return $screen_ids;
+	}
+
+	/**
+	 * Add datepicker screen ids
+	 */
+	public static function add_datepicker_screen_ids( $screen_ids = array() ) {
 		$screen_ids[] = 'sp_directory';
 		return $screen_ids;
 	}

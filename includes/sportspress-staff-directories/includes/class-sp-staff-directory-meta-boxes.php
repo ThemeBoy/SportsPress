@@ -308,7 +308,7 @@ class SP_Staff_Directory_Meta_Boxes {
 							<?php _e( 'Directory', 'sportspress' ); ?>
 						</th>
 						<th class="column-league">
-							<?php _e( 'Competition', 'sportspress' ); ?>
+							<?php _e( 'League', 'sportspress' ); ?>
 						</th>
 						<th class="column-season">
 							<?php _e( 'Season', 'sportspress' ); ?>

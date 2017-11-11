@@ -10,13 +10,7 @@
  * @category	Class
  * @author 		ThemeBoy
  */
-class SP_Staff_Directory {
-
-	/** @var int The post ID. */
-	public $ID;
-
-	/** @var object The actual post object. */
-	public $post;
+class SP_Staff_Directory extends SP_Custom_Post {
 
 	/** @var array The columns array. */
 	public $columns;
@@ -31,14 +25,7 @@ class SP_Staff_Directory {
 	 * Constructor
 	 */
 	public function __construct( $post ) {
-		if ( $post instanceof WP_Post || $post instanceof SP_Custom_Post ):
-			$this->ID   = absint( $post->ID );
-			$this->post = $post;
-		else:
-			$this->ID  = absint( $post );
-			$this->post = get_post( $this->ID );
-		endif;
-		
+		parent::__construct( $post );
 		$this->columns = $this->__get( 'columns' );
 		$this->orderby = $this->__get( 'orderby' );
 		$this->order = $this->__get( 'order' );
@@ -54,44 +41,6 @@ class SP_Staff_Directory {
 
 		if ( ! $this->order )
 			$this->order = 'ASC';
-	}
-
-	/**
-	 * __isset function.
-	 *
-	 * @access public
-	 * @param mixed $key
-	 * @return bool
-	 */
-	public function __isset( $key ) {
-		return metadata_exists( 'post', $this->ID, 'sp_' . $key );
-	}
-
-	/**
-	 * __get function.
-	 *
-	 * @access public
-	 * @param mixed $key
-	 * @return bool
-	 */
-	public function __get( $key ) {
-		if ( ! isset( $key ) ):
-			return $this->post;
-		else:
-			$value = get_post_meta( $this->ID, 'sp_' . $key, true );
-		endif;
-
-		return $value;
-	}
-
-	/**
-	 * Get the post data.
-	 *
-	 * @access public
-	 * @return object
-	 */
-	public function get_post_data() {
-		return $this->post;
 	}
 
 	/**
