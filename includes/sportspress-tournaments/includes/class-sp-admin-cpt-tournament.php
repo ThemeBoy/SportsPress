@@ -42,7 +42,7 @@ class SP_Admin_CPT_Tournament extends SP_Admin_CPT {
 		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Title', 'sportspress' ),
-			'sp_league' => __( 'Competition', 'sportspress' ),
+			'sp_league' => __( 'League', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_rounds' => __( 'Rounds', 'sportspress' ),
 			'sp_layout' => __( 'Layout', 'sportspress' ),

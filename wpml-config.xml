@@ -6,7 +6,7 @@
       <key name="Birthday"/>
       <key name="Box Score"/>
       <key name="Canceled"/>
-      <key name="Competition"/>
+      <key name="Career Total"/>
       <key name="Contact Info"/>
       <key name="Current Team"/>
       <key name="Current Teams"/>
@@ -21,6 +21,7 @@
       <key name="Fixtures"/>
       <key name="Full Time"/>
       <key name="Job"/>
+      <key name="League"/>
       <key name="League Tables"/>
       <key name="Logos"/>
       <key name="Match Day"/>
