@@ -112,7 +112,7 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 		$limit = $number;
 
 	if ( $grouping === 'position' ):
-		$groups = get_terms( 'sp_position', array( 'orderby' => 'slug' ) );
+		$groups = get_terms( 'sp_position', array( 'orderby' => 'sp_order', 'meta_key' => 'sp_order' ) );
 	else:
 		$group = new stdClass();
 		$group->term_id = null;

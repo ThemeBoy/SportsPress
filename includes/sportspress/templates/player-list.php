@@ -79,7 +79,7 @@ endif;
 $output = '';
 
 if ( $grouping === 'position' ):
-	$groups = get_terms( 'sp_position', array( 'orderby' => 'slug' ) );
+	$groups = get_terms( 'sp_position', array( 'orderby' => 'sp_order', 'meta_key' => 'sp_order' ) );
 else:
 	if ( $show_title && false === $title && $id ):
 		$caption = $list->caption;

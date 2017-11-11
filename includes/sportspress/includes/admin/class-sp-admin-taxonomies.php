@@ -19,6 +19,14 @@ class SP_Admin_Taxonomies {
 	 */
 	public function __construct() {
 
+		// Add league field
+		add_action( 'sp_league_edit_form_fields', array( $this, 'edit_taxonomy_fields' ), 10, 1 );
+		add_action( 'edited_sp_league', array( $this, 'save_fields' ), 10, 1 );
+
+		// Add season field
+		add_action( 'sp_season_edit_form_fields', array( $this, 'edit_taxonomy_fields' ), 10, 1 );
+		add_action( 'edited_sp_season', array( $this, 'save_fields' ), 10, 1 );
+
 		// Add venue field
 		add_action( 'sp_venue_add_form_fields', array( $this, 'add_venue_fields' ) );
 		add_action( 'sp_venue_edit_form_fields', array( $this, 'edit_venue_fields' ), 10, 1 );
@@ -31,9 +39,13 @@ class SP_Admin_Taxonomies {
 		add_action( 'edited_sp_position', array( $this, 'save_fields' ), 10, 1 );
 		add_action( 'create_sp_position', array( $this, 'save_fields' ), 10, 1 );
 
-		// Change league and season columns
+		// Change league columns
 		add_filter( 'manage_edit-sp_league_columns', array( $this, 'taxonomy_columns' ) );
+		add_filter( 'manage_sp_league_custom_column', array( $this, 'column_value' ), 10, 3 );
+
+		// Change league columns
 		add_filter( 'manage_edit-sp_season_columns', array( $this, 'taxonomy_columns' ) );
+		add_filter( 'manage_sp_season_custom_column', array( $this, 'column_value' ), 10, 3 );
 
 		// Change venue columns
 		add_filter( 'manage_edit-sp_venue_columns', array( $this, 'venue_columns' ) );
@@ -45,6 +57,27 @@ class SP_Admin_Taxonomies {
 
 		// Change role columns
 		add_filter( 'manage_edit-sp_role_columns', array( $this, 'role_columns' ) );
+	}
+
+
+
+	/**
+	 * Edit league/season fields.
+	 *
+	 * @access public
+	 * @param mixed $term Term (category) being edited
+	 */
+	public function edit_taxonomy_fields( $term ) {
+	 	$t_id = $term->term_id;
+		?>
+		<?php if ( function_exists( 'get_term_meta' ) ) { ?>
+			<?php $order = get_term_meta( $t_id, 'sp_order', true ); ?>
+			<tr class="form-field">
+				<th scope="row" valign="top"><label for="sp_order"><?php _e( 'Order', 'sportspress' ); ?></label></th>
+				<td><input name="sp_order" class="sp-number-input" type="text" step="1" size="4" id="sp_order" value="<?php echo (int) $order; ?>"></td>
+			</tr>
+		<?php } ?>
+	<?php
 	}
 
 	/**
@@ -169,8 +202,13 @@ class SP_Admin_Taxonomies {
 				</select>
 			</td>
 		</tr>
-		
-		</div>
+		<?php if ( function_exists( 'get_term_meta' ) ) { ?>
+			<?php $order = get_term_meta( $t_id, 'sp_order', true ); ?>
+			<tr class="form-field">
+				<th scope="row" valign="top"><label for="sp_order"><?php _e( 'Order', 'sportspress' ); ?></label></th>
+				<td><input name="sp_order" class="sp-number-input" type="text" step="1" size="4" id="sp_order" value="<?php echo (int) $order; ?>"></td>
+			</tr>
+		<?php } ?>
 	<?php
 	}
 
@@ -193,6 +231,9 @@ class SP_Admin_Taxonomies {
 			}
 			update_option( "taxonomy_$t_id", $term_meta );
 		}
+		if ( function_exists( 'add_term_meta' ) ) {
+			update_term_meta( $term_id, 'sp_order', (int) sp_array_value( $_POST, 'sp_order', 0 ) );
+		}
 	}
 
 	/**
@@ -203,8 +244,15 @@ class SP_Admin_Taxonomies {
 	 * @return array
 	 */
 	public function taxonomy_columns( $columns ) {
-		$columns['posts'] = __( 'Events', 'sportspress' );
-		return $columns;
+		$new_columns = array();
+		
+		if ( function_exists( 'get_term_meta' ) ) $new_columns['sp_order'] = __( 'Order', 'sportspress' );
+		
+		$new_columns['posts'] = __( 'Events', 'sportspress' );
+
+		unset( $columns['posts'] );
+
+		return array_merge( $columns, $new_columns );
 	}
 
 	/**
@@ -236,6 +284,8 @@ class SP_Admin_Taxonomies {
 	public function position_columns( $columns ) {
 		$new_columns = array();
 		$new_columns['sp_sections'] = __( 'Statistics', 'sportspress' );
+
+		if ( function_exists( 'get_term_meta' ) ) $new_columns['sp_order'] = __( 'Order', 'sportspress' );
 		$new_columns['posts'] = __( 'Players', 'sportspress' );
 
 		unset( $columns['description'] );
@@ -293,6 +343,10 @@ class SP_Admin_Taxonomies {
 			}
 			
 			$columns .= implode( ', ', $section_names );
+
+		} elseif ( $column == 'sp_order' ) {
+
+			$columns = (int) get_term_meta( $id, 'sp_order', true );
 
 		}
 

@@ -157,6 +157,10 @@
 	color: #888;
 }
 
+.form-table td input.sp-number-input {
+	width: auto;
+}
+
 /* Settings */
 .sportspress table.form-table, .sportspress table.form-table .forminp-radio ul {
 	margin: 0;
