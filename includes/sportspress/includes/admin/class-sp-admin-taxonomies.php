@@ -54,12 +54,7 @@ class SP_Admin_Taxonomies {
 		// Change position columns
 		add_filter( 'manage_edit-sp_position_columns', array( $this, 'position_columns' ) );
 		add_filter( 'manage_sp_position_custom_column', array( $this, 'column_value' ), 10, 3 );
-
-		// Change role columns
-		add_filter( 'manage_edit-sp_role_columns', array( $this, 'role_columns' ) );
 	}
-
-
 
 	/**
 	 * Edit league/season fields.
@@ -247,8 +242,8 @@ class SP_Admin_Taxonomies {
 		$new_columns = array();
 		
 		if ( function_exists( 'get_term_meta' ) ) $new_columns['sp_order'] = __( 'Order', 'sportspress' );
-		
-		$new_columns['posts'] = __( 'Events', 'sportspress' );
+
+		$new_columns['posts'] = $columns['posts'];
 
 		unset( $columns['posts'] );
 
@@ -265,7 +260,7 @@ class SP_Admin_Taxonomies {
 	public function venue_columns( $columns ) {
 		$new_columns = array();
 		$new_columns['sp_address'] = __( 'Address', 'sportspress' );
-		$new_columns['posts'] = __( 'Events', 'sportspress' );
+		$new_columns['posts'] = $columns['posts'];
 
 		unset( $columns['description'] );
 		unset( $columns['slug'] );
@@ -286,25 +281,13 @@ class SP_Admin_Taxonomies {
 		$new_columns['sp_sections'] = __( 'Statistics', 'sportspress' );
 
 		if ( function_exists( 'get_term_meta' ) ) $new_columns['sp_order'] = __( 'Order', 'sportspress' );
-		$new_columns['posts'] = __( 'Players', 'sportspress' );
+		$new_columns['posts'] = $columns['posts'];
 
 		unset( $columns['description'] );
 		unset( $columns['slug'] );
 		unset( $columns['posts'] );
 
 		return array_merge( $columns, $new_columns );
-	}
-
-	/**
-	 * Posts column changed to Staff in admin.
-	 *
-	 * @access public
-	 * @param mixed $columns
-	 * @return array
-	 */
-	public function role_columns( $columns ) {
-		$columns['posts'] = __( 'Staff', 'sportspress' );
-		return $columns;
 	}
 
 	/**
