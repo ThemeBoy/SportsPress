@@ -202,6 +202,19 @@ if ( ! function_exists( 'sportspress_output_event_performance' ) ) {
 		sp_get_template( 'event-performance.php' );
 	}
 }
+if ( ! function_exists( 'sportspress_output_event_officials' ) ) {
+
+	/**
+	 * Output the event officials.
+	 *
+	 * @access public
+	 * @subpackage	Event/Officials
+	 * @return void
+	 */
+	function sportspress_output_event_officials() {
+		sp_get_template( 'event-officials.php' );
+	}
+}
 
 /** Single Calendar ********************************************************/
 

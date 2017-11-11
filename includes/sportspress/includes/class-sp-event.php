@@ -99,6 +99,7 @@ class SP_Event extends SP_Custom_Post{
 		$labels = array();
 		$formats = array();
 		$timed = array();
+		$stars = array();
 		$equations = array();
 		foreach ( $vars as $var ) {
 			$labels[ $var->post_name ] = $var->post_title;
@@ -129,6 +130,10 @@ class SP_Event extends SP_Custom_Post{
 		}
 		
 		$order = (array)get_post_meta( $this->ID, 'sp_order', true );
+
+		if ( get_option( 'sportspress_event_performance_stars_type', 0 ) ) {
+			$stars = (array)get_post_meta( $this->ID, 'sp_stars', true );
+		}
 		
 		$labels = apply_filters( 'sportspress_event_performance_labels', $labels, $this );
 		$columns = get_post_meta( $this->ID, 'sp_columns', true );
@@ -151,7 +156,7 @@ class SP_Event extends SP_Custom_Post{
 		endif;
 
 		if ( $admin ):
-			return array( $labels, $columns, $performance, $teams, $formats, $order, $timed );
+			return array( $labels, $columns, $performance, $teams, $formats, $order, $timed, $stars );
 		else:
 			// Add position to performance labels
 			if ( taxonomy_exists( 'sp_position' ) ):
@@ -399,7 +404,7 @@ class SP_Event extends SP_Custom_Post{
 
 				$stats[ $index ]['sub_name'] = $sub_name;
 				$stats[ $index ]['sub_number'] = $sub_number;
-				$stats[ $index ]['label'] = __( 'Substite', 'sportspress' );
+				$stats[ $index ]['label'] = __( 'Substitute', 'sportspress' );
 				$stats[ $index ]['icon'] = '<i class="sp-icon-sub" title="' . $icon_title . '"></i>';
 			} else {
 				$stats[ $index ]['label'] = sp_array_value( $performance_labels, $details['key'] );
@@ -536,6 +541,44 @@ class SP_Event extends SP_Custom_Post{
 		// Return if no teams meet criteria
 		return null;
 	}
+	
+	public function appointments( $include_empty = false, $placeholder = '-' ) {
+		$officials = (array) get_post_meta( $this->ID, 'sp_officials', true );
+		$officials = array_filter( $officials );
+
+		if ( ! $include_empty && empty( $officials ) ) return null;
+
+		$duties = get_terms( array(
+		  'taxonomy' => 'sp_duty',
+		  'hide_empty' => false,
+		  'orderby' => 'slug',
+		) );
+
+		if ( ! $include_empty && empty( $duties ) ) return null;
+
+		$labels = array();
+		$appointments = array();
+
+		foreach ( $duties as $duty ) {
+			$duty_appointments = sp_array_value( $officials, $duty->term_id, null );
+
+			if ( ! $include_empty && empty( $duty_appointments ) ) continue;
+
+			$appointed_officials = array();
+			foreach ( $duty_appointments as $duty_appointment ) {
+				$appointed_officials[ $duty_appointment ] = get_the_title( $duty_appointment );
+			}
+
+			if ( $include_empty && empty( $appointed_officials ) ) $appointed_officials[] = $placeholder;
+
+			$appointments[ $duty->slug ] = $appointed_officials;
+			$labels[ $duty->slug ] = $duty->name;
+		}
+
+		$appointments[0] = $labels;
+
+		return $appointments;
+	}
 
 	public function update_main_results( $results ) {
 		$main_result = sp_get_main_result_option();
@@ -545,7 +588,7 @@ class SP_Event extends SP_Custom_Post{
 		}
 
 		// Get current results meta
-		$meta = get_post_meta( $this->ID, 'sp_results', true );
+		$meta =(array) get_post_meta( $this->ID, 'sp_results', true );
 
 		$primary_results = array();
 		foreach ( $results as $id => $result ) {
@@ -631,6 +674,10 @@ class SP_Event extends SP_Custom_Post{
 
 		// Update results
 		update_post_meta( $this->ID, 'sp_results', $meta );
+	}
+
+	public function stars() {
+		return get_post_meta( $this->ID, 'sp_stars', true );
 	}
 
 	public function lineup_filter( $v ) {

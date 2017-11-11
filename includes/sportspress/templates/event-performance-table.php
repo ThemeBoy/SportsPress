@@ -65,6 +65,8 @@ if ( ! isset( $subs ) ) $subs = array();
 
 					$data = apply_filters( 'sportspress_event_performance_players', $data, $lineups, $subs, $mode );
 
+					$stars_type = get_option( 'sportspress_event_performance_stars_type', 0 );
+
 					$i = 0;
 					foreach ( $data as $player_id => $row ):
 
@@ -88,6 +90,23 @@ if ( ! isset( $subs ) ) $subs = array();
 						if ( $link_posts ):
 							$permalink = get_post_permalink( $player_id );
 							$name =  '<a href="' . $permalink . '">' . $name . '</a>';
+						endif;
+
+						if ( $stars_type ):
+							$player_stars = sp_array_value( $stars, $player_id, 0 );
+							if ( $player_stars ):
+								switch ( $stars_type ):
+									case 1:
+										$name .= ' <span class="sp-event-stars"><i class="sp-event-star dashicons dashicons-star-filled" title="' . __( 'Player of the Match', 'sportspress' ) . '"></i><span>';
+										break;
+									case 2:
+										$name .= ' <span class="sp-event-stars">' . str_repeat( '<i class="sp-event-star dashicons dashicons-star-filled" title="' . __( 'Stars', 'sportspress' ) . '"></i>', $player_stars ) . '<span>';
+										break;
+									case 3:
+										$name .= ' <span class="sp-event-stars"><i class="sp-event-star sp-event-star-' . $player_stars . '  dashicons dashicons-star-filled" title="' . __( 'Stars', 'sportspress' ) . '"></i><span class="sp-event-star-number">' . $player_stars . '</span><span>';
+										break;
+								endswitch;
+							endif;
 						endif;
 
 						if ( array_key_exists( $player_id, $lineup_sub_relation ) ):

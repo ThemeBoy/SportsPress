@@ -59,7 +59,7 @@ class SP_Admin_Assets {
 			wp_enqueue_style( 'sportspress-admin-equation-styles', SP()->plugin_url() . '/assets/css/equation.css', array(), SP_VERSION );
 		}
 
-		if ( in_array( $screen->id, array( 'sp_calendar', 'widgets' ) ) ) {
+		if ( in_array( $screen->id, apply_filters( 'sportspress_admin_datepicker_screen_ids', array( 'sp_calendar', 'sp_table', 'sp_list', 'widgets' ) ) ) ) {
 		    wp_enqueue_style( 'jquery-ui-style' , '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css' ); 
 			wp_enqueue_style( 'sportspress-admin-datepicker-styles', SP()->plugin_url() . '/assets/css/datepicker.css', array( 'jquery-ui-style' ), SP_VERSION );
 		}

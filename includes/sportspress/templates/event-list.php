@@ -16,6 +16,9 @@ $defaults = array(
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
+	'date_past' => 'default',
+	'date_future' => 'default',
+	'date_relative' => 'default',
 	'day' => 'default',
 	'league' => null,
 	'season' => null,
@@ -51,6 +54,12 @@ if ( $date_from != 'default' )
 	$calendar->from = $date_from;
 if ( $date_to != 'default' )
 	$calendar->to = $date_to;
+if ( $date_past != 'default' )
+	$calendar->past = $date_past;
+if ( $date_future != 'default' )
+	$calendar->future = $date_future;
+if ( $date_relative != 'default' )
+	$calendar->relative = $date_relative;
 if ( $league )
 	$calendar->league = $league;
 if ( $season )
@@ -144,7 +153,7 @@ endif;
 					}
 
 					if ( sp_column_active( $usecolumns, 'league' ) )
-						echo '<th class="data-league">' . __( 'Competition', 'sportspress' ) . '</th>';
+						echo '<th class="data-league">' . __( 'League', 'sportspress' ) . '</th>';
 
 					if ( sp_column_active( $usecolumns, 'season' ) )
 						echo '<th class="data-season">' . __( 'Season', 'sportspress' ) . '</th>';
@@ -157,6 +166,8 @@ endif;
 
 					if ( sp_column_active( $usecolumns, 'day' ) )
 						echo '<th class="data-day">' . __( 'Match Day', 'sportspress' ) . '</th>';
+
+					do_action( 'sportspress_event_list_head_row', $usecolumns );
 					?>
 				</tr>
 			</thead>
@@ -403,6 +414,8 @@ endif;
 							}
 							echo '</td>';
 						endif;
+
+						do_action( 'sportspress_event_list_row', $event, $usecolumns );
 
 					echo '</tr>';
 

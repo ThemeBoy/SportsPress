@@ -49,7 +49,7 @@ class SP_Meta_Box_Calendar_Data {
 						<th class="column-date">
 							<?php _e( 'Date', 'sportspress' ); ?>
 						</th>
-						<?php if ( ! is_array( $usecolumns ) || in_array( 'event', $usecolumns ) ) { ?>
+						<?php if ( is_array( $usecolumns ) && in_array( 'event', $usecolumns ) ) { ?>
 						<th class="column-event">
 							<label for="sp_columns_event">
 								<?php
@@ -64,7 +64,7 @@ class SP_Meta_Box_Calendar_Data {
 							</label>
 						</th>
 						<?php } ?>
-						<?php if ( ( ! is_array( $usecolumns ) || in_array( 'time', $usecolumns ) ) && in_array( $time_format, array( 'combined', 'separate', 'time' ) ) ) { ?>
+						<?php if ( ( is_array( $usecolumns ) && in_array( 'time', $usecolumns ) ) && in_array( $time_format, array( 'combined', 'separate', 'time' ) ) ) { ?>
 							<th class="column-time">
 								<label for="sp_columns_time">
 									<?php
@@ -77,48 +77,49 @@ class SP_Meta_Box_Calendar_Data {
 								</label>
 							</th>
 						<?php } ?>
-						<?php if ( ( ! is_array( $usecolumns ) || in_array( 'results', $usecolumns ) ) && in_array( $time_format, array( 'separate', 'results' ) ) ) { ?>
+						<?php if ( ( is_array( $usecolumns ) && in_array( 'results', $usecolumns ) ) && in_array( $time_format, array( 'separate', 'results' ) ) ) { ?>
 							<th class="column-results">
 								<label for="sp_columns_results">
 									<?php _e( 'Results', 'sportspress' ); ?>
 								</label>
 							</th>
 						<?php } ?>
-						<?php if ( ! is_array( $usecolumns ) || in_array( 'league', $usecolumns ) ) { ?>
+						<?php if ( is_array( $usecolumns ) && in_array( 'league', $usecolumns ) ) { ?>
 							<th class="column-league">
 								<label for="sp_columns_league">
-									<?php _e( 'Competition', 'sportspress' ); ?>
+									<?php _e( 'League', 'sportspress' ); ?>
 								</label>
 							</th>
 						<?php } ?>
-						<?php if ( ! is_array( $usecolumns ) || in_array( 'season', $usecolumns ) ) { ?>
+						<?php if ( is_array( $usecolumns ) && in_array( 'season', $usecolumns ) ) { ?>
 							<th class="column-season">
 								<label for="sp_columns_season">
 									<?php _e( 'Season', 'sportspress' ); ?>
 								</label>
 							</th>
 						<?php } ?>
-						<?php if ( ! is_array( $usecolumns ) || in_array( 'venue', $usecolumns ) ) { ?>
+						<?php if ( is_array( $usecolumns ) && in_array( 'venue', $usecolumns ) ) { ?>
 							<th class="column-venue">
 								<label for="sp_columns_venue">
 									<?php _e( 'Venue', 'sportspress' ); ?>
 								</label>
 							</th>
 						<?php } ?>
-						<?php if ( ! is_array( $usecolumns ) || in_array( 'article', $usecolumns ) ) { ?>
+						<?php if ( is_array( $usecolumns ) && in_array( 'article', $usecolumns ) ) { ?>
 							<th class="column-article">
 								<label for="sp_columns_article">
 									<?php _e( 'Article', 'sportspress' ); ?>
 								</label>
 							</th>
 						<?php } ?>
-						<?php if ( ! is_array( $usecolumns ) || in_array( 'day', $usecolumns ) ) { ?>
+						<?php if ( is_array( $usecolumns ) && in_array( 'day', $usecolumns ) ) { ?>
 							<th class="column-day">
 								<label for="sp_columns_day">
 									<?php _e( 'Match Day', 'sportspress' ); ?>
 								</label>
 							</th>
 						<?php } ?>
+						<?php do_action( 'sportspress_calendar_data_meta_box_table_head_row', $usecolumns ); ?>
 					</tr>
 				</thead>
 				<tbody>
@@ -135,7 +136,7 @@ class SP_Meta_Box_Calendar_Data {
 								?>
 								<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 									<td><?php echo get_post_time( get_option( 'date_format' ), false, $event, true ); ?></td>
-									<?php if ( ! is_array( $usecolumns ) || in_array( 'event', $usecolumns ) ) { ?>
+									<?php if ( is_array( $usecolumns ) && in_array( 'event', $usecolumns ) ) { ?>
 										<td>
 											<div class="sp-title-format sp-title-format-title<?php if ( $title_format && $title_format != 'title' ): ?> hidden<?php endif; ?>"><?php echo $event->post_title; ?></div>
 											<div class="sp-title-format sp-title-format-teams sp-title-format-homeaway<?php if ( ! in_array( $title_format, array( 'teams', 'homeaway' ) ) ): ?> hidden<?php endif; ?>">
@@ -173,7 +174,7 @@ class SP_Meta_Box_Calendar_Data {
 											</div>
 										</td>
 									<?php } ?>
-									<?php if ( ( ! is_array( $usecolumns ) || in_array( 'time', $usecolumns ) ) && in_array( $time_format, array( 'combined', 'separate', 'time' ) ) ) { ?>
+									<?php if ( ( is_array( $usecolumns ) && in_array( 'time', $usecolumns ) ) && in_array( $time_format, array( 'combined', 'separate', 'time' ) ) ) { ?>
 										<?php if ( 'time' == $time_format || 'separate' == $time_format ) { ?>
 											<td>
 												<?php echo apply_filters( 'sportspress_event_time_admin', get_post_time( get_option( 'time_format' ), false, $event, true ), $event->ID ); ?>
@@ -190,7 +191,7 @@ class SP_Meta_Box_Calendar_Data {
 											</td>
 										<?php } ?>
 									<?php } ?>
-									<?php if ( ( ! is_array( $usecolumns ) || in_array( 'results', $usecolumns ) ) && in_array( $time_format, array( 'separate', 'results' ) ) ) { ?>
+									<?php if ( ( is_array( $usecolumns ) && in_array( 'results', $usecolumns ) ) && in_array( $time_format, array( 'separate', 'results' ) ) ) { ?>
 										<td>
 											<?php
 												if ( ! empty( $main_results ) ):
@@ -201,16 +202,16 @@ class SP_Meta_Box_Calendar_Data {
 											?>
 										</td>
 									<?php } ?>
-									<?php if ( ! is_array( $usecolumns ) || in_array( 'league', $usecolumns ) ) { ?>
+									<?php if ( is_array( $usecolumns ) && in_array( 'league', $usecolumns ) ) { ?>
 										<td><?php the_terms( $event->ID, 'sp_league' ); ?></td>
 									<?php } ?>
-									<?php if ( ! is_array( $usecolumns ) || in_array( 'season', $usecolumns ) ) { ?>
+									<?php if ( is_array( $usecolumns ) && in_array( 'season', $usecolumns ) ) { ?>
 										<td><?php the_terms( $event->ID, 'sp_season' ); ?></td>
 									<?php } ?>
-									<?php if ( ! is_array( $usecolumns ) || in_array( 'venue', $usecolumns ) ) { ?>
+									<?php if ( is_array( $usecolumns ) && in_array( 'venue', $usecolumns ) ) { ?>
 										<td><?php the_terms( $event->ID, 'sp_venue' ); ?></td>
 									<?php } ?>
-									<?php if ( ! is_array( $usecolumns ) || in_array( 'article', $usecolumns ) ) { ?>
+									<?php if ( is_array( $usecolumns ) && in_array( 'article', $usecolumns ) ) { ?>
 										<td>
 											<a href="<?php echo get_edit_post_link( $event->ID ); ?>#sp_articlediv">
 												<?php if ( $video ): ?>
@@ -230,7 +231,7 @@ class SP_Meta_Box_Calendar_Data {
 											</a>
 										</td>
 									<?php } ?>
-									<?php if ( ! is_array( $usecolumns ) || in_array( 'day', $usecolumns ) ) { ?>
+									<?php if ( is_array( $usecolumns ) && in_array( 'day', $usecolumns ) ) { ?>
 										<td>
 											<?php
 											$day = get_post_meta( $event->ID, 'sp_day', true );
@@ -242,6 +243,7 @@ class SP_Meta_Box_Calendar_Data {
 											?>
 										</td>
 									<?php } ?>
+									<?php do_action( 'sportspress_calendar_data_meta_box_table_row', $event, $usecolumns ); ?>
 								</tr>
 								<?php
 								$i++;
@@ -249,7 +251,7 @@ class SP_Meta_Box_Calendar_Data {
 						else:
 							?>
 							<tr class="sp-row alternate">
-								<td colspan="7">
+								<td colspan="<?php echo sizeof( $usecolumns ); ?>">
 									<?php _e( 'No results found.', 'sportspress' ); ?>
 								</td>
 							</tr>
@@ -258,7 +260,7 @@ class SP_Meta_Box_Calendar_Data {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="7">
+						<td colspan="<?php echo sizeof( $usecolumns ); ?>">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) ); ?>
 						</td>
 					</tr>

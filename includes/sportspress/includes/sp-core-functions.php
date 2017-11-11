@@ -228,7 +228,7 @@ if ( !function_exists( 'sp_flush_rewrite_rules' ) ) {
 if ( !function_exists( 'sp_add_link' ) ) {
 	function sp_add_link( $string, $link = false, $active = true ) {
 		if ( empty( $link ) || ! $active ) return $string;
-		return '<a href="' . $link . '">' . $string . '</a>';
+		return '<a href="' . $link . '" itemprop="url" content="' . $link . '">' . $string . '</a>';
 	}
 }
 
@@ -615,8 +615,12 @@ if ( !function_exists( 'sp_dropdown_dates' ) ) {
 
 		$dates = apply_filters( 'sportspress_dates', array(
 			0 => __( 'All', 'sportspress' ),
-			'w' => __( 'This week', 'sportspress' ),
+			'-day' => __( 'Yesterday', 'sportspress' ),
 			'day' => __( 'Today', 'sportspress' ),
+			'+day' => __( 'Tomorrow', 'sportspress' ),
+			'-w' => __( 'Last week', 'sportspress' ),
+			'w' => __( 'This week', 'sportspress' ),
+			'+w' => __( 'Next week', 'sportspress' ),
 			'range' => __( 'Date range:', 'sportspress' ),
 		));
 
@@ -1440,7 +1444,6 @@ function sp_get_text_options() {
 		__( 'Box Score', 'sportspress' ),
 		__( 'Canceled', 'sportspress' ),
 		__( 'Career Total', 'sportspress' ),
-		__( 'Competition', 'sportspress' ),
 		__( 'Current Team', 'sportspress' ),
 		__( 'Date', 'sportspress' ),
 		__( 'Defense', 'sportspress' ),
@@ -1451,6 +1454,7 @@ function sp_get_text_options() {
 		__( 'Fixtures', 'sportspress' ),
 		__( 'Full Time', 'sportspress' ),
 		__( 'Home', 'sportspress' ),
+		__( 'League', 'sportspress' ),
 		__( 'League Table', 'sportspress' ),
 		__( 'Match Day', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
@@ -1459,6 +1463,7 @@ function sp_get_text_options() {
 		__( 'Past Teams', 'sportspress' ),
 		__( 'Photo', 'sportspress' ),
 		__( 'Player', 'sportspress' ),
+		__( 'Player of the Match', 'sportspress' ),
 		__( 'Players', 'sportspress' ),
 		__( 'Pos', 'sportspress' ),
 		__( 'Position', 'sportspress' ),

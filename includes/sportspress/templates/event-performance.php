@@ -35,6 +35,7 @@ if ( is_array( $teams ) ):
 
 	$event = new SP_Event( $id );
 	$performance = $event->performance();
+	$stars = $event->stars();
 
 	$link_posts = get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false;
 	$scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
@@ -121,6 +122,7 @@ if ( is_array( $teams ) ):
 			'mode' => $mode,
 			'data' => $data,
 			'event' => $event,
+			'stars' => $stars,
 			'link_posts' => $link_posts,
 			'performance_ids' => isset( $performance_ids ) ? $performance_ids : null,
 			'primary' => 'primary' == $total ? $primary : null,
@@ -230,6 +232,7 @@ if ( is_array( $teams ) ):
 								'mode' => $mode,
 								'data' => $data[ $section_id ],
 								'event' => $event,
+								'stars' => $stars,
 								'link_posts' => $link_posts,
 								'performance_ids' => isset( $performance_ids ) ? $performance_ids : null,
 								'primary' => 'primary' == $total ? $primary : null,
@@ -266,6 +269,7 @@ if ( is_array( $teams ) ):
 						'mode' => $mode,
 						'data' => $data,
 						'event' => $event,
+						'stars' => $stars,
 						'link_posts' => $link_posts,
 						'performance_ids' => isset( $performance_ids ) ? $performance_ids : null,
 						'primary' => 'primary' == $total ? $primary : null,

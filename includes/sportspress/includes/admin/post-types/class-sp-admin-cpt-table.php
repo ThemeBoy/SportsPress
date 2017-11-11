@@ -46,7 +46,7 @@ class SP_Admin_CPT_Table extends SP_Admin_CPT {
 		$columns = array_merge( array(
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Title', 'sportspress' ),
-			'sp_league' => __( 'Competition', 'sportspress' ),
+			'sp_league' => __( 'League', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),
 		), $existing_columns );

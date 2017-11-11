@@ -36,10 +36,10 @@ class SP_Post_types {
 
 		if ( apply_filters( 'sportspress_has_leagues', true ) ):
 			$labels = array(
-				'name' => __( 'Competitions', 'sportspress' ),
-				'singular_name' => __( 'Competition', 'sportspress' ),
+				'name' => __( 'Leagues', 'sportspress' ),
+				'singular_name' => __( 'League', 'sportspress' ),
 				'all_items' => __( 'All', 'sportspress' ),
-				'edit_item' => __( 'Edit Competition', 'sportspress' ),
+				'edit_item' => __( 'Edit League', 'sportspress' ),
 				'view_item' => __( 'View', 'sportspress' ),
 				'update_item' => __( 'Update', 'sportspress' ),
 				'add_new_item' => __( 'Add New', 'sportspress' ),
@@ -50,7 +50,7 @@ class SP_Post_types {
 				'not_found' => __( 'No results found.', 'sportspress' ),
 			);
 			$args = apply_filters( 'sportspress_register_taxonomy_league', array(
-				'label' => __( 'Competitions', 'sportspress' ),
+				'label' => __( 'Leagues', 'sportspress' ),
 				'labels' => $labels,
 				'public' => true,
 				'show_ui' => $show,

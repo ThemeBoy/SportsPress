@@ -10,7 +10,7 @@
  * @category	Class
  * @author 		ThemeBoy
  */
-class SP_Player_List extends SP_Custom_Post {
+class SP_Player_List extends SP_Secondary_Post {
 
 	/** @var array The columns array. */
 	public $columns;
@@ -44,13 +44,40 @@ class SP_Player_List extends SP_Custom_Post {
 		$list_stats = (array)get_post_meta( $this->ID, 'sp_players', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$orderby = get_post_meta( $this->ID, 'sp_orderby', true );
+		$crop = get_post_meta( $this->ID, 'sp_crop', true );
 		$order = get_post_meta( $this->ID, 'sp_order', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
+
+		$this->date = $this->__get( 'date' );
+
+		if ( ! $this->date )
+			$this->date = 0;
 
 		// Apply defaults
 		if ( empty( $orderby ) ) $orderby = 'number';
 		if ( empty( $order ) ) $order = 'ASC';
 		if ( empty( $select ) ) $select = 'auto';
+
+		if ( 'range' == $this->date ) {
+
+			$this->relative = get_post_meta( $this->ID, 'sp_date_relative', true );
+
+			if ( $this->relative ) {
+
+				if ( ! $this->past )
+					$this->past = get_post_meta( $this->ID, 'sp_date_past', true );
+
+			} else {
+
+				if ( ! $this->from )
+					$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
+
+				if ( ! $this->to )
+					$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
+
+			}
+
+		}
 
 		// Get labels from performance variables
 		$performance_labels = (array)sp_get_var_labels( 'sp_performance' );
@@ -140,13 +167,6 @@ class SP_Player_List extends SP_Custom_Post {
 		// Initialize columns
 		$columns = array();
 
-		// Initialize streaks counter
-		$streaks = array();
-
-		// Initialize last counters
-		$last5s = array();
-		$last10s = array();
-
 		$args = array(
 			'post_type' => array( 'sp_performance', 'sp_metric', 'sp_statistic' ),
 			'numberposts' => -1,
@@ -230,21 +250,8 @@ class SP_Player_List extends SP_Custom_Post {
 			if ( ! $player_id )
 				continue;
 
-			// Initialize player streaks counter
-			$streaks[ $player_id ] = array( 'name' => '', 'count' => 0, 'fire' => 1 );
-
-			// Initialize player last counters
-			$last5s[ $player_id ] = array();
-			$last10s[ $player_id ] = array();
-
-			// Add outcome types to player last counters
-			foreach( $outcome_labels as $key => $value ):
-				$last5s[ $player_id ][ $key ] = 0;
-				$last10s[ $player_id ][ $key ] = 0;
-			endforeach;
-
 			// Initialize player totals
-			$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0, 'eventsstarted' => 0, 'eventssubbed' => 0, 'eventminutes' => 0, 'streak' => 0 );
+			$totals[ $player_id ] = array( 'eventsattended' => 0, 'eventsplayed' => 0, 'eventsstarted' => 0, 'eventssubbed' => 0, 'eventminutes' => 0 );
 
 			foreach ( $performance_labels as $key => $value ):
 				$totals[ $player_id ][ $key ] = 0;
@@ -328,9 +335,30 @@ class SP_Player_List extends SP_Custom_Post {
 			);
 		endif;
 
+		if ( $this->date !== 0 ):
+			if ( $this->date == 'w' ):
+				$args['year'] = date_i18n('Y');
+				$args['w'] = date_i18n('W');
+			elseif ( $this->date == 'day' ):
+				$args['year'] = date_i18n('Y');
+				$args['day'] = date_i18n('j');
+				$args['monthnum'] = date_i18n('n');
+			elseif ( $this->date == 'range' ):
+				if ( $this->relative ):
+					add_filter( 'posts_where', array( $this, 'relative' ) );
+				else:
+					add_filter( 'posts_where', array( $this, 'range' ) );
+				endif;
+			endif;
+		endif;
+
 		$args = apply_filters( 'sportspress_list_data_event_args', $args );
 		
 		$events = get_posts( $args );
+
+		// Remove range filters
+		remove_filter( 'posts_where', array( $this, 'range' ) );
+		remove_filter( 'posts_where', array( $this, 'relative' ) );
 
 		// Event loop
 		foreach ( $events as $i => $event ):
@@ -367,24 +395,6 @@ class SP_Player_List extends SP_Custom_Post {
 										// Increment events attended and outcome count
 										if ( array_key_exists( $outcome, $totals[ $player_id ] ) ):
 											$totals[ $player_id ][ $outcome ] ++;
-										endif;
-
-										// Add to streak counter
-										if ( $streaks[ $player_id ]['fire'] && ( $streaks[ $player_id ]['name'] == '' || $streaks[ $player_id ]['name'] == $outcome ) ):
-											$streaks[ $player_id ]['name'] = $outcome;
-											$streaks[ $player_id ]['count'] ++;
-										else:
-											$streaks[ $player_id ]['fire'] = 0;
-										endif;
-
-										// Add to last 5 counter if sum is less than 5
-										if ( array_key_exists( $player_id, $last5s ) && array_key_exists( $outcome, $last5s[ $player_id ] ) && array_sum( $last5s[ $player_id ] ) < 5 ):
-											$last5s[ $player_id ][ $outcome ] ++;
-										endif;
-
-										// Add to last 10 counter if sum is less than 10
-										if ( array_key_exists( $player_id, $last10s ) && array_key_exists( $outcome, $last10s[ $player_id ] ) && array_sum( $last10s[ $player_id ] ) < 10 ):
-											$last10s[ $player_id ][ $outcome ] ++;
 										endif;
 									endif;
 								endforeach;
@@ -491,24 +501,6 @@ class SP_Player_List extends SP_Custom_Post {
 											if ( array_key_exists( $outcome, $totals[ $player_id ] ) ):
 												$totals[ $player_id ][ $outcome ] ++;
 											endif;
-
-											// Add to streak counter
-											if ( $streaks[ $player_id ]['fire'] && ( $streaks[ $player_id ]['name'] == '' || $streaks[ $player_id ]['name'] == $outcome ) ):
-												$streaks[ $player_id ]['name'] = $outcome;
-												$streaks[ $player_id ]['count'] ++;
-											else:
-												$streaks[ $player_id ]['fire'] = 0;
-											endif;
-
-											// Add to last 5 counter if sum is less than 5
-											if ( array_key_exists( $player_id, $last5s ) && array_key_exists( $outcome, $last5s[ $player_id ] ) && array_sum( $last5s[ $player_id ] ) < 5 ):
-												$last5s[ $player_id ][ $outcome ] ++;
-											endif;
-
-											// Add to last 10 counter if sum is less than 10
-											if ( array_key_exists( $player_id, $last10s ) && array_key_exists( $outcome, $last10s[ $player_id ] ) && array_sum( $last10s[ $player_id ] ) < 10 ):
-												$last10s[ $player_id ][ $outcome ] ++;
-											endif;
 										endif;
 									endforeach;
 								endif;
@@ -545,40 +537,6 @@ class SP_Player_List extends SP_Custom_Post {
 				endforeach; endif;
 			endforeach; endif;
 			$i++;
-		endforeach;
-
-		foreach ( $streaks as $player_id => $streak ):
-			// Compile streaks counter and add to totals
-			if ( $streak['name'] ):
-				$args = array(
-					'name' => $streak['name'],
-					'post_type' => 'sp_outcome',
-					'post_status' => 'publish',
-					'posts_per_page' => 1
-				);
-				$outcomes = get_posts( $args );
-
-				if ( $outcomes ):
-					$outcome = reset( $outcomes );
-					$abbreviation = sp_get_abbreviation( $outcome->ID );
-					if ( empty( $abbreviation ) ) $abbreviation = strtoupper( substr( $outcome->post_title, 0, 1 ) );
-					$totals[ $player_id ]['streak'] = $abbreviation . $streak['count'];
-				else:
-					$totals[ $player_id ]['streak'] = null;
-				endif;
-			else:
-				$totals[ $player_id ]['streak'] = null;
-			endif;
-		endforeach;
-
-		foreach ( $last5s as $player_id => $last5 ):
-			// Add last 5 to totals
-			$totals[ $player_id ]['last5'] = $last5;
-		endforeach;
-
-		foreach ( $last10s as $player_id => $last10 ):
-			// Add last 10 to totals
-			$totals[ $player_id ]['last10'] = $last10;
 		endforeach;
 
 		// Fill in empty placeholder values for each player
@@ -672,7 +630,13 @@ class SP_Player_List extends SP_Custom_Post {
 
 		// Rearrange data array to reflect values
 		foreach( $merged as $key => $value ):
-			$data[ $key ] = $tempdata[ $key ];
+			if ( $crop && ! sp_array_value( $value, $orderby, 0 ) ) {
+				// Crop
+				unset( $merged[ $key ] );
+			} else {
+				// Add to main data array
+				$data[ $key ] = $tempdata[ $key ];
+			}
 		endforeach;
 		
 		if ( $admin ):

@@ -3,6 +3,9 @@
  * Calendar Class
  *
  * The SportsPress calendar class handles individual calendar data.
+ * Props @_drg_ for adjustments to range and timezone handling.
+ * https://wordpress.org/support/topic/suggestion-for-schedule-list-range-option/
+ * https://wordpress.org/support/topic/timezone-issues-with-schedule-calendar-list/
  *
  * @class 		SP_Calendar
  * @version     2.2
@@ -11,25 +14,16 @@
  * @author 		ThemeBoy
  */
 
-class SP_Calendar extends SP_Custom_Post {
+class SP_Calendar extends SP_Secondary_Post {
 
 	/** @var string The events status. */
 	public $status;
-
-	/** @var string The date filter for events. */
-	public $date;
 
 	/** @var string The events order. */
 	public $order;
 
 	/** @var string The events orderby. */
 	public $orderby;
-
-	/** @var string The date to range from. */
-	public $from;
-
-	/** @var string The date to range to. */
-	public $to;
 
 	/** @var string The match day. */
 	public $day;
@@ -59,7 +53,7 @@ class SP_Calendar extends SP_Custom_Post {
 	 * @param mixed $post
 	 */
 	public function __construct( $post ) {
-		if ( $post instanceof WP_Post || $post instanceof SP_Custom_Post ):
+		if ( $post instanceof WP_Post || $post instanceof SP_Secondary_Post ):
 			$this->ID   = absint( $post->ID );
 			$this->post = $post;
 		else:
@@ -85,11 +79,29 @@ class SP_Calendar extends SP_Custom_Post {
 		if ( ! $this->orderby )
 			$this->orderby = 'post_date';
 
-		if ( ! $this->from )
-			$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
+		if ( 'range' == $this->date ) {
 
-		if ( ! $this->to )
-			$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
+			$this->relative = get_post_meta( $this->ID, 'sp_date_relative', true );
+
+			if ( $this->relative ) {
+
+				if ( ! $this->past )
+					$this->past = get_post_meta( $this->ID, 'sp_date_past', true );
+
+				if ( ! $this->future )
+					$this->future = get_post_meta( $this->ID, 'sp_date_future', true );
+
+			} else {
+
+				if ( ! $this->from )
+					$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
+
+				if ( ! $this->to )
+					$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
+
+			}
+
+		}
 
 		if ( ! $this->day )
 			$this->day = get_post_meta( $this->ID, 'sp_day', true );
@@ -122,16 +134,50 @@ class SP_Calendar extends SP_Custom_Post {
 		);
 
 		if ( $this->date !== 0 ):
-			if ( $this->date == 'w' ):
-				$args['year'] = date('Y');
-				$args['w'] = date('W');
-			elseif ( $this->date == 'day' ):
-				$args['year'] = date('Y');
-				$args['day'] = date('j');
-				$args['monthnum'] = date('n');
-			elseif ( $this->date == 'range' ):
-				add_filter( 'posts_where', array( $this, 'range' ) );
-			endif;
+			switch ( $this->date ):
+				case '-day':
+					$date = new DateTime( date_i18n('Y-m-d') );
+			    $date->modify( '-1 day' );
+					$args['year'] = $date->format('Y');
+					$args['day'] = $date->format('j');
+					$args['monthnum'] = $date->format('n');
+					break;
+				case 'day':
+					$args['year'] = date_i18n('Y');
+					$args['day'] = date_i18n('j');
+					$args['monthnum'] = date_i18n('n');
+					break;
+				case '+day':
+					$date = new DateTime( date_i18n('Y-m-d') );
+			    $date->modify( '+1 day' );
+					$args['year'] = $date->format('Y');
+					$args['day'] = $date->format('j');
+					$args['monthnum'] = $date->format('n');
+					break;
+				case '-w':
+					$date = new DateTime( date_i18n('Y-m-d') );
+			    $date->modify( '-1 week' );
+					$args['year'] = $date->format('Y');
+					$args['w'] = $date->format('W');
+					break;
+				case 'w':
+					$args['year'] = date_i18n('Y');
+					$args['w'] = date_i18n('W');
+					break;
+				case '+w':
+					$date = new DateTime( date_i18n('Y-m-d') );
+			    $date->modify( '+1 week' );
+					$args['year'] = $date->format('Y');
+					$args['w'] = $date->format('W');
+					break;
+				case 'range':
+					if ( $this->relative ):
+						add_filter( 'posts_where', array( $this, 'relative' ) );
+					else:
+						add_filter( 'posts_where', array( $this, 'range' ) );
+					endif;
+					break;
+			endswitch;
 		endif;
 
 		if ( $this->league ):
@@ -237,19 +283,19 @@ class SP_Calendar extends SP_Custom_Post {
 					),
 				);
 			}
-			
+
 			if ( 'auto' === $this->date && 'any' === $this->status ) {
 				$args['post_status'] = 'publish';
 				$args['order'] = 'DESC';
 				$args['posts_per_page'] = ceil( $this->number / 2 );
 				$results = get_posts( $args );
 				$results = array_reverse( $results, true );
-				
+
 				$args['post_status'] = 'future';
 				$args['order'] = 'ASC';
 				$args['posts_per_page'] = floor( $this->number / 2 );
 				$fixtures = get_posts( $args );
-				
+
 				$events = array_merge_recursive( $results, $fixtures );
 			} else {
 				$events = get_posts( $args );
@@ -259,15 +305,10 @@ class SP_Calendar extends SP_Custom_Post {
 			$events = null;
 		endif;
 
+		// Remove any calendar selection filters
 		remove_filter( 'posts_where', array( $this, 'range' ) );
+		remove_filter( 'posts_where', array( $this, 'relative' ) );
 
 		return $events;
-	}
-
-	public function range( $where = '' ) {
-		$to = new DateTime( $this->to );
-		$to->modify( '+1 day' );
-		$where .= " AND post_date BETWEEN '" . $this->from . "' AND '" . $to->format( 'Y-m-d' ) . "'";
-		return $where;
 	}
 }

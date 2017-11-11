@@ -218,7 +218,7 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
-					<?php _e( 'Competition:', 'sportspress' ); ?>
+					<?php _e( 'League:', 'sportspress' ); ?>
 					<?php
 					$args = array(
 						'taxonomy' => 'sp_league',
@@ -335,7 +335,7 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
-					<?php _e( 'Competition:', 'sportspress' ); ?>
+					<?php _e( 'League:', 'sportspress' ); ?>
 					<?php
 					$args = array(
 						'taxonomy' => 'sp_league',
@@ -427,7 +427,7 @@ class SP_AJAX {
 					'event' => __( 'Event', 'sportspress' ),
 					'teams' => __( 'Teams', 'sportspress' ),
 					'time' => __( 'Time', 'sportspress' ),
-					'league' => __( 'Competition', 'sportspress' ),
+					'league' => __( 'League', 'sportspress' ),
 					'season' => __( 'Season', 'sportspress' ),
 					'venue' => __( 'Venue', 'sportspress' ),
 					'article' => __( 'Article', 'sportspress' ),
@@ -498,7 +498,7 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
-					<?php _e( 'Competition:', 'sportspress' ); ?>
+					<?php _e( 'League:', 'sportspress' ); ?>
 					<?php
 					$args = array(
 						'taxonomy' => 'sp_league',

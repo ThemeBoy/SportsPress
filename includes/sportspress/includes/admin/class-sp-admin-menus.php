@@ -58,7 +58,7 @@ class SP_Admin_Menus {
 	 * Add menu item
 	 */
 	public function leagues_menu() {
-		add_submenu_page( 'sportspress', __( 'Competitions', 'sportspress' ), __( 'Competitions', 'sportspress' ), 'manage_sportspress', 'edit-tags.php?taxonomy=sp_league');
+		add_submenu_page( 'sportspress', __( 'Leagues', 'sportspress' ), __( 'Leagues', 'sportspress' ), 'manage_sportspress', 'edit-tags.php?taxonomy=sp_league');
 	}
 
 	/**
@@ -130,6 +130,7 @@ class SP_Admin_Menus {
 		$sportspress_team = array_search( 'edit.php?post_type=sp_team', $menu_order );
 		$sportspress_player = array_search( 'edit.php?post_type=sp_player', $menu_order );
 		$sportspress_staff = array_search( 'edit.php?post_type=sp_staff', $menu_order );
+		$sportspress_official = array_search( 'edit.php?post_type=sp_official', $menu_order );
 
 		// Loop through menu order and do some rearranging
 		foreach ( $menu_order as $index => $item ):
@@ -141,11 +142,13 @@ class SP_Admin_Menus {
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_team';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_player';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_staff';
+				$sportspress_menu_order[] = 'edit.php?post_type=sp_official';
 				unset( $menu_order[ $sportspress_separator ] );
 				unset( $menu_order[ $sportspress_event ] );
 				unset( $menu_order[ $sportspress_team ] );
 				unset( $menu_order[ $sportspress_player ] );
 				unset( $menu_order[ $sportspress_staff ] );
+				unset( $menu_order[ $sportspress_official ] );
 
 				// Apply to added menu items
 				$menu_items = apply_filters( 'sportspress_menu_items', array() );
@@ -192,26 +195,26 @@ class SP_Admin_Menus {
 			$menu[ $separator_position ] = array( '', 'read', 'separator-sportspress', '', 'wp-menu-separator sportspress' );
 		endif;
 
-	    // Remove "Competitions" and "Seasons" links from Events submenu
+	    // Remove "Leagues" and "Seasons" links from Events submenu
 		if ( isset( $submenu['edit.php?post_type=sp_event'] ) ):
 			$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_event'] = array_filter( $submenu['edit.php?post_type=sp_event'], array( $this, 'remove_seasons' ) );
 		endif;
 
-	    // Remove "Venues", "Competitions" and "Seasons" links from Teams submenu
+	    // Remove "Venues", "Leagues" and "Seasons" links from Teams submenu
 		if ( isset( $submenu['edit.php?post_type=sp_team'] ) ):
 			$submenu['edit.php?post_type=sp_team'] = array_filter( $submenu['edit.php?post_type=sp_team'], array( $this, 'remove_venues' ) );
 			$submenu['edit.php?post_type=sp_team'] = array_filter( $submenu['edit.php?post_type=sp_team'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_team'] = array_filter( $submenu['edit.php?post_type=sp_team'], array( $this, 'remove_seasons' ) );
 		endif;
 
-	    // Remove "Competitions" and "Seasons" links from Players submenu
+	    // Remove "Leagues" and "Seasons" links from Players submenu
 		if ( isset( $submenu['edit.php?post_type=sp_player'] ) ):
 			$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_player'] = array_filter( $submenu['edit.php?post_type=sp_player'], array( $this, 'remove_seasons' ) );
 		endif;
 
-	    // Remove "Competitions" and "Seasons" links from Staff submenu
+	    // Remove "Leagues" and "Seasons" links from Staff submenu
 		if ( isset( $submenu['edit.php?post_type=sp_staff'] ) ):
 			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_seasons' ) );
@@ -247,7 +250,7 @@ class SP_Admin_Menus {
 	}
 
 	public function remove_leagues( $arr = array() ) {
-		return $arr[0] != __( 'Competitions', 'sportspress' );
+		return $arr[0] != __( 'Leagues', 'sportspress' );
 	}
 
 	public function remove_positions( $arr = array() ) {

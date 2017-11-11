@@ -604,6 +604,21 @@ jQuery(document).ready(function($){
 	});
 	$(".sp-date-selector select").trigger("change");
 
+	// Toggle date range selectors
+	$(".sp-date-relative input").change(function() {
+		$relative = $(this).closest(".sp-date-relative").siblings(".sp-date-range-relative").toggle(0, $(this).attr("checked"));
+		$absolute = $(this).closest(".sp-date-relative").siblings(".sp-date-range-absolute").toggle(0, $(this).attr("checked"));
+
+		if ($(this).attr("checked")) {
+			$relative.show();
+			$absolute.hide();
+		} else {
+			$absolute.show();
+			$relative.hide();
+		}
+	});
+	$(".sp-date-selector input").trigger("change");
+
 	// Apply color scheme
 	$(".sp-color-option").on("click", function() {
 		colors = $(this).find("label").data("sp-colors").split(",");

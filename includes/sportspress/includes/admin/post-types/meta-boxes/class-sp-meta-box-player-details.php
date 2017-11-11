@@ -67,6 +67,7 @@ class SP_Meta_Box_Player_Details {
 		$past_teams = array_filter( get_post_meta( $post->ID, 'sp_past_team', false ) );
 		$current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
 		?>
+
 		<p><strong><?php _e( 'Squad Number', 'sportspress' ); ?></strong></p>
 		<p><input type="text" size="4" id="sp_number" name="sp_number" value="<?php echo $number; ?>"></p>
 
@@ -130,14 +131,14 @@ class SP_Meta_Box_Player_Details {
 		?></p>
 
 		<?php if ( taxonomy_exists( 'sp_league' ) ) { ?>
-		<p><strong><?php _e( 'Competitions', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
 			'taxonomy' => 'sp_league',
 			'name' => 'tax_input[sp_league][]',
 			'selected' => $league_ids,
 			'values' => 'term_id',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Competitions', 'sportspress' ) ),
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
 			'class' => 'widefat',
 			'property' => 'multiple',
 			'chosen' => true,

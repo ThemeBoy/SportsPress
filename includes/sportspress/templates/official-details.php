@@ -1,28 +1,28 @@
 <?php
 /**
- * Player Details
+ * Official Details
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.1
+ * @version     2.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-if ( get_option( 'sportspress_player_show_details', 'yes' ) === 'no' ) return;
+if ( get_option( 'sportspress_official_show_details', 'yes' ) === 'no' ) return;
 
 if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $defaults = array(
-	'show_number' => get_option( 'sportspress_player_show_number', 'no' ) == 'yes' ? true : false,
-	'show_name' => get_option( 'sportspress_player_show_name', 'no' ) == 'yes' ? true : false,
-	'show_nationality' => get_option( 'sportspress_player_show_nationality', 'yes' ) == 'yes' ? true : false,
-	'show_positions' => get_option( 'sportspress_player_show_positions', 'yes' ) == 'yes' ? true : false,
-	'show_current_teams' => get_option( 'sportspress_player_show_current_teams', 'yes' ) == 'yes' ? true : false,
-	'show_past_teams' => get_option( 'sportspress_player_show_past_teams', 'yes' ) == 'yes' ? true : false,
-	'show_leagues' => get_option( 'sportspress_player_show_leagues', 'no' ) == 'yes' ? true : false,
-	'show_seasons' => get_option( 'sportspress_player_show_seasons', 'no' ) == 'yes' ? true : false,
-	'show_nationality_flags' => get_option( 'sportspress_player_show_flags', 'yes' ) == 'yes' ? true : false,
+	'show_number' => get_option( 'sportspress_official_show_number', 'no' ) == 'yes' ? true : false,
+	'show_name' => get_option( 'sportspress_official_show_name', 'no' ) == 'yes' ? true : false,
+	'show_nationality' => get_option( 'sportspress_official_show_nationality', 'yes' ) == 'yes' ? true : false,
+	'show_positions' => get_option( 'sportspress_official_show_positions', 'yes' ) == 'yes' ? true : false,
+	'show_current_teams' => get_option( 'sportspress_official_show_current_teams', 'yes' ) == 'yes' ? true : false,
+	'show_past_teams' => get_option( 'sportspress_official_show_past_teams', 'yes' ) == 'yes' ? true : false,
+	'show_leagues' => get_option( 'sportspress_official_show_leagues', 'no' ) == 'yes' ? true : false,
+	'show_seasons' => get_option( 'sportspress_official_show_seasons', 'no' ) == 'yes' ? true : false,
+	'show_nationality_flags' => get_option( 'sportspress_official_show_flags', 'yes' ) == 'yes' ? true : false,
 	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 );
@@ -31,23 +31,23 @@ extract( $defaults, EXTR_SKIP );
 
 $countries = SP()->countries->countries;
 
-$player = new SP_Player( $id );
+$official = new SP_Official( $id );
 
-$metrics_before = $player->metrics( true );
-$metrics_after = $player->metrics( false );
+$metrics_before = $official->metrics( true );
+$metrics_after = $official->metrics( false );
 
 $common = array();
 
 if ( $show_number ):
-	$common[ '#' ] = $player->number;
+	$common[ '#' ] = $official->number;
 endif;
 
 if ( $show_name ):
-	$common[ __( 'Name', 'sportspress' ) ] = $player->post->post_title;
+	$common[ __( 'Name', 'sportspress' ) ] = $official->post->post_title;
 endif;
 
 if ( $show_nationality ):
-	$nationalities = $player->nationalities();
+	$nationalities = $official->nationalities();
 	if ( $nationalities && is_array( $nationalities ) ):
 		$values = array();
 		foreach ( $nationalities as $nationality ):
@@ -59,7 +59,7 @@ if ( $show_nationality ):
 endif;
 
 if ( $show_positions ):
-	$positions = $player->positions();
+	$positions = $official->positions();
 	if ( $positions && is_array( $positions ) ):
 		$position_names = array();
 		foreach ( $positions as $position ):
@@ -72,7 +72,7 @@ endif;
 $data = array_merge( $metrics_before, $common, $metrics_after );
 
 if ( $show_current_teams ):
-	$current_teams = $player->current_teams();
+	$current_teams = $official->current_teams();
 	if ( $current_teams ):
 		$teams = array();
 		foreach ( $current_teams as $team ):
@@ -85,7 +85,7 @@ if ( $show_current_teams ):
 endif;
 
 if ( $show_past_teams ):
-	$past_teams = $player->past_teams();
+	$past_teams = $official->past_teams();
 	if ( $past_teams ):
 		$teams = array();
 		foreach ( $past_teams as $team ):
@@ -98,7 +98,7 @@ if ( $show_past_teams ):
 endif;
 
 if ( $show_leagues ):
-	$leagues = $player->leagues();
+	$leagues = $official->leagues();
 	if ( $leagues && ! is_wp_error( $leagues ) ):
 		$terms = array();
 		foreach ( $leagues as $league ) {
@@ -109,7 +109,7 @@ if ( $show_leagues ):
 endif;
 
 if ( $show_seasons ):
-	$seasons = $player->seasons();
+	$seasons = $official->seasons();
 	if ( $seasons && ! is_wp_error( $seasons ) ):
 		$terms = array();
 		foreach ( $seasons as $season ) {
@@ -119,12 +119,12 @@ if ( $show_seasons ):
 	endif;
 endif;
 
-$data = apply_filters( 'sportspress_player_details', $data, $id );
+$data = apply_filters( 'sportspress_official_details', $data, $id );
 
 if ( empty( $data ) )
 	return;
 
-$output = '<div class="sp-template sp-template-player-details sp-template-details"><div class="sp-list-wrapper"><dl class="sp-player-details">';
+$output = '<div class="sp-template sp-template-official-details sp-template-details"><div class="sp-list-wrapper"><dl class="sp-official-details">';
 
 foreach( $data as $label => $value ):
 

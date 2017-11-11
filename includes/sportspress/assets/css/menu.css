@@ -48,6 +48,9 @@
 .sp-icon-bracket-center:before {
 	content: "\f181"
 }
+.sp-icon-buddypress:before {
+	content: "\f507";
+}
 .sp-icon-calculator:before {
 	content: "\f108";
 }
@@ -90,9 +93,6 @@
 }
 .sp-icon-import:before {
 	content: "\f316";
-}
-.sp-icon-instagram:before {
-  content: "\f306";
 }
 .sp-icon-league:before {
 	content: "\f332";
@@ -158,8 +158,14 @@
 .sp-icon-user-scores:before {
   content: "\f101";
 }
+.sp-icon-woo:before {
+  content: "\f174";
+}
 .sp-icon-wordpay:before {
   content: "\f526";
+}
+.sp-icon-yoast:before {
+	content: "\f179";
 }
 
 /* Performance Icons */
@@ -178,6 +184,9 @@
 .sp-icon-golfball:before {
 	content: "\e603";
 }
+.sp-icon-football:before {
+	content: "\e607";
+}
 .sp-icon-shoe:before {
 	content: "\e800";
 }
@@ -194,6 +203,7 @@
 #adminmenu #menu-posts-sp_team .menu-icon-sp_team div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_player .menu-icon-sp_player div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_staff .menu-icon-sp_staff div.wp-menu-image:before,
+#adminmenu #menu-posts-sp_official .menu-icon-sp_official div.wp-menu-image:before,
 #sp_formatdiv #post-formats-select .post-format-icon:before,
 #sp_modediv #post-formats-select .post-format-icon:before {
 	font-family: sportspress, dashicons;

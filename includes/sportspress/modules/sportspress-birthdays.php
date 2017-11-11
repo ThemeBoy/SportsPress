@@ -60,7 +60,7 @@ class SportsPress_Birthdays {
 
 		global $typenow;
 		
-		if ( 'default' == $domain && in_array( $typenow, array( 'sp_player', 'sp_staff' ) ) ):
+		if ( 'default' == $domain && in_array( $typenow, array( 'sp_player', 'sp_staff', 'sp_official' ) ) ):
 			switch ( $untranslated_text ):
 				case 'Scheduled for: <b>%1$s</b>':
 				case 'Published on: <b>%1$s</b>':

@@ -280,7 +280,7 @@ class SP_Admin_Setup_Wizard {
           </td>
         </tr>
         <tr>
-          <th scope="row"><?php _e( 'Main Competition', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'The name of a league or division.', 'sportspress' ); ?>"></i></th>
+          <th scope="row"><?php _e( 'Main League', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'The name of a league or division.', 'sportspress' ); ?>"></i></th>
           <td>
             <input name="league" type="text" class="widefat" value="<?php _ex( 'Primary League', 'example', 'sportspress' ); ?>">
           </td>
