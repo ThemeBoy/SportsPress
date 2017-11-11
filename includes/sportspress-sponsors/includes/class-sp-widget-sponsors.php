@@ -9,6 +9,7 @@ class SP_Widget_Sponsors extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
+		$level = empty($instance['level']) ? null : $instance['level'];
 		$limit = empty($instance['limit']) ? null : $instance['limit'];
 		$width = empty($instance['width']) ? null : $instance['width'];
 		$height = empty($instance['height']) ? null : $instance['height'];
@@ -24,7 +25,7 @@ class SP_Widget_Sponsors extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'sponsors' );
 
-		sp_get_template( 'sponsors.php', array( 'limit' => $limit, 'width' => $width, 'height' => $height, 'orderby' => $orderby, 'order' => $order ), '', SP_SPONSORS_DIR . 'templates/' );
+		sp_get_template( 'sponsors.php', array( 'level' => $level, 'limit' => $limit, 'width' => $width, 'height' => $height, 'orderby' => $orderby, 'order' => $order ), '', SP_SPONSORS_DIR . 'templates/' );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'sponsors' );
@@ -36,6 +37,7 @@ class SP_Widget_Sponsors extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['level'] = intval($new_instance['level']);
 		$instance['limit'] = intval($new_instance['limit']);
 		$instance['width'] = intval($new_instance['width']);
 		$instance['height'] = intval($new_instance['height']);
@@ -49,8 +51,9 @@ class SP_Widget_Sponsors extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'limit' => 5, 'width' => 256, 'height' => 128, 'orderby' => 'menu_order', 'order' => 'ASC' ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'level' => 0, 'limit' => 5, 'width' => 256, 'height' => 128, 'orderby' => 'menu_order', 'order' => 'ASC' ) );
 		$title = strip_tags($instance['title']);
+		$level = intval($instance['level']);
 		$limit = intval($instance['limit']);
 		$width = intval($instance['width']);
 		$height = intval($instance['height']);
@@ -62,6 +65,20 @@ class SP_Widget_Sponsors extends WP_Widget {
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Level', 'sportspress' ); ?>:</label>
+		<?php
+		$args = array(
+			'taxonomy' => 'sp_level',
+			'name' => $this->get_field_name('level'),
+			'id' => $this->get_field_id('level'),
+			'selected' => $level,
+			'values' => 'term_id',
+			'show_option_all' => __( 'All', 'sportspress' ),
+			'class' => 'widefat',
+		);
+		sp_dropdown_taxonomies( $args );
+		?></p>
 
 		<p><label for="<?php echo $this->get_field_id('limit'); ?>"><?php _e( 'Number of sponsors to show:', 'sportspress' ); ?></label>
 		<input id="<?php echo $this->get_field_id('limit'); ?>" name="<?php echo $this->get_field_name('limit'); ?>" type="text" value="<?php echo esc_attr($limit); ?>" size="3"></p>

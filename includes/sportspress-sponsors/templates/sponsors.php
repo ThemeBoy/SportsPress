@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'title' => null,
+	'level' => 0,
 	'limit' => -1,
 	'width' => 256,
 	'height' => 128,
@@ -31,6 +32,16 @@ $args = array(
 	'orderby' => $orderby,
 	'order' => $order,
 );
+
+if ( $level ) {
+	$args['tax_query'] = array(
+		array(
+			'taxonomy' => 'sp_level',
+			'field' => 'term_id',
+			'terms' => array( $level ),
+		),
+	);
+}
 
 $sponsors = get_posts( $args );
 

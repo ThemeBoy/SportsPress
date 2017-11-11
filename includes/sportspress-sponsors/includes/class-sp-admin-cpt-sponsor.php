@@ -33,9 +33,6 @@ class SP_Admin_CPT_Sponsor extends SP_Admin_CPT {
 		add_filter( 'manage_edit-sp_sponsor_columns', array( $this, 'edit_columns' ) );
 		add_action( 'manage_sp_sponsor_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
 		add_filter( 'manage_edit-sp_sponsor_sortable_columns', array( $this, 'custom_columns_sort' ) );
-
-		// Highlight menu
-		add_action( 'admin_head', array( $this, 'menu_highlight' ) );
 		
 		// Call SP_Admin_CPT constructor
 		parent::__construct();
@@ -63,6 +60,7 @@ class SP_Admin_CPT_Sponsor extends SP_Admin_CPT {
 			'cb' => '<input type="checkbox" />',
 			'sp_icon' => null,
 			'title' => null,
+			'sp_level' => __( 'Level', 'sportspress' ),
 			'sp_url' => __( 'URL', 'sportspress' ),
 			'sp_impressions' => __( 'Impressions', 'sportspress' ),
 			'sp_clicks' => __( 'Clicks', 'sportspress' ),
@@ -81,6 +79,9 @@ class SP_Admin_CPT_Sponsor extends SP_Admin_CPT {
 		switch ( $column ):
 			case 'sp_icon':
 				echo has_post_thumbnail( $post_id ) ? edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-mini' ), '', '', $post_id ) : '';
+				break;
+			case 'sp_level':
+				echo get_the_terms( $post_id, 'sp_level' ) ? the_terms( $post_id, 'sp_level' ) : '&mdash;';
 				break;
 			case 'sp_url':
 	        	echo strip_tags( sp_get_url( $post_id ), '<a>' );
@@ -109,18 +110,6 @@ class SP_Admin_CPT_Sponsor extends SP_Admin_CPT {
 			'sp_clicks'			=> 'sp_clicks',
 		);
 		return wp_parse_args( $custom, $columns );
-	}
-
-	/**
-	 * Highlights the correct top level admin menu item for post type add screens.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function menu_highlight() {
-		global $typenow, $submenu_file;
-		if ( 'sp_sponsor' == $typenow )
-			$submenu_file = 'edit.php?post_type=sp_sponsor';
 	}
 }
 

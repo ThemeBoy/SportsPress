@@ -39,6 +39,7 @@ class SportsPress_Sponsors {
 		add_action( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_action( 'sportspress_after_single_sponsor', array( $this, 'sponsor_link' ), 10 );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
+		add_filter( 'sportspress_taxonomies', array( $this, 'add_taxonomy' ) );
 		add_filter( 'sportspress_primary_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
 	    add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
@@ -54,9 +55,13 @@ class SportsPress_Sponsors {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'wp_footer', array( $this, 'header' ) );
 		add_action( 'get_footer', array( $this, 'footer' ) );
+		add_filter( 'manage_edit-sp_level_columns', array( $this, 'taxonomy_columns' ) );
+		add_action( 'sp_level_edit_form_fields', array( $this, 'edit_taxonomy_fields' ), 10, 1 );
+		add_action( 'edited_sp_level', array( $this, 'save_taxonomy_fields' ), 10, 1 );
+		add_filter( 'manage_sp_level_custom_column', array( $this, 'taxonomy_column_value' ), 10, 3 );
 		add_filter( 'manage_edit-sp_sponsor_columns', array( $this, 'edit_columns' ) );
 		add_filter( 'gettext', array( $this, 'gettext' ), 20, 3 );
-		
+
 		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
 		add_action( 'sportspress_register_rest_fields', array( $this, 'register_rest_fields' ) );
 
@@ -102,8 +107,52 @@ class SportsPress_Sponsors {
 	 * Init plugin when WordPress Initialises.
 	 */
 	public function init() {
+		// Register taxonomy
+		$this->register_taxonomy();
+
 		// Register post type
 		$this->register_post_type();
+	}
+
+	/**
+	 * Register sponsorship level taxonomy
+	 */
+	public static function register_taxonomy() {
+		if ( apply_filters( 'sportspress_has_levels', true ) ):
+			$labels = array(
+				'name' => __( 'Levels', 'sportspress' ),
+				'singular_name' => __( 'Level', 'sportspress' ),
+				'all_items' => __( 'All', 'sportspress' ),
+				'edit_item' => __( 'Edit Level', 'sportspress' ),
+				'view_item' => __( 'View', 'sportspress' ),
+				'update_item' => __( 'Update', 'sportspress' ),
+				'add_new_item' => __( 'Add New', 'sportspress' ),
+				'new_item_name' => __( 'Name', 'sportspress' ),
+				'parent_item' => __( 'Parent', 'sportspress' ),
+				'parent_item_colon' => __( 'Parent:', 'sportspress' ),
+				'search_items' =>  __( 'Search', 'sportspress' ),
+				'not_found' => __( 'No results found.', 'sportspress' ),
+			);
+			$args = apply_filters( 'sportspress_register_taxonomy_level', array(
+				'label' => __( 'Levels', 'sportspress' ),
+				'labels' => $labels,
+				'public' => true,
+				'show_ui' => $show,
+				'show_in_menu' => $show,
+				'show_in_nav_menus' => false,
+				'show_tagcloud' => false,
+				'hierarchical' => true,
+				'rewrite' => array( 'slug' => get_option( 'sportspress_level_slug', 'level' ) ),
+				'show_in_rest' => true,
+				'rest_controller_class' => 'SP_REST_Terms_Controller',
+				'rest_base' => 'levels',
+			) );
+			$object_types = apply_filters( 'sportspress_level_object_types', array( 'sp_sponsor' ) );
+			register_taxonomy( 'sp_level', $object_types, $args );
+			foreach ( $object_types as $object_type ):
+				register_taxonomy_for_object_type( 'sp_level', $object_type );
+			endforeach;
+		endif;
 	}
 
 	/**
@@ -174,6 +223,8 @@ class SportsPress_Sponsors {
 	public function screen_ids( $ids = array() ) {
 		$ids[] = 'edit-sp_sponsor';
 		$ids[] = 'sp_sponsor';
+		$ids[] = 'edit-sp_level';
+		$ids[] = 'sp_level';
 		return $ids;
 	}
 
@@ -375,9 +426,65 @@ class SportsPress_Sponsors {
 		return $post_types;
 	}
 
+	public static function add_taxonomy( $taxonomies = array() ) {
+		$taxonomies[] = 'sp_level';
+		return $taxonomies;
+	}
+
 	public static function add_to_hierarchy( $hierarchy = array() ) {
-		$hierarchy['sp_sponsor'] = array();
+		$hierarchy['sp_sponsor'] = array( 'sp_level' );
 		return $hierarchy;
+	}
+
+	/**
+	 * Taxonomy columns.
+	 *
+	 * @access public
+	 * @param mixed $columns
+	 * @return array
+	 */
+	public function taxonomy_columns( $columns ) {
+		$new_columns = array();
+		
+		if ( function_exists( 'get_term_meta' ) ) $new_columns['sp_order'] = __( 'Order', 'sportspress' );
+
+		$new_columns['posts'] = $columns['posts'];
+
+		unset( $columns['posts'] );
+
+		return array_merge( $columns, $new_columns );
+	}
+
+	/**
+	 * Edit taxonomy fields.
+	 *
+	 * @access public
+	 * @param mixed $term Term (category) being edited
+	 */
+	public function edit_taxonomy_fields( $term ) {
+	 	$t_id = $term->term_id;
+		?>
+		<?php if ( function_exists( 'get_term_meta' ) ) { ?>
+			<?php $order = get_term_meta( $t_id, 'sp_order', true ); ?>
+			<tr class="form-field">
+				<th scope="row" valign="top"><label for="sp_order"><?php _e( 'Order', 'sportspress' ); ?></label></th>
+				<td><input name="sp_order" class="sp-number-input" type="text" step="1" size="4" id="sp_order" value="<?php echo (int) $order; ?>"></td>
+			</tr>
+		<?php } ?>
+	<?php
+	}
+
+	/**
+	 * Save taxonomy fields.
+	 *
+	 * @access public
+	 * @param mixed $term_id Term ID being saved
+	 * @return void
+	 */
+	public function save_taxonomy_fields( $term_id ) {
+		if ( function_exists( 'add_term_meta' ) ) {
+			update_term_meta( $term_id, 'sp_order', (int) sp_array_value( $_POST, 'sp_order', 0 ) );
+		}
 	}
 
 	public static function edit_columns() {
@@ -386,6 +493,52 @@ class SportsPress_Sponsors {
 			'sp_icon' => '&nbsp;',
 			'title' => __( 'Name', 'sportspress' ),
 		);
+		return $columns;
+	}
+
+	/**
+	 * Column value added to category admin.
+	 *
+	 * @access public
+	 * @param mixed $columns
+	 * @param mixed $column
+	 * @param mixed $id
+	 * @return array
+	 */
+	public function taxonomy_column_value( $columns, $column, $id ) {
+
+		if ( $column == 'sp_address' ) {
+
+			$term_meta = get_option( "taxonomy_$id" );
+
+			$address = ( isset( $term_meta['sp_address'] ) ? $term_meta['sp_address'] : '&mdash;' );
+
+			$columns .= $address;
+
+		} elseif ( $column == 'sp_sections' ) {
+			
+			$options = apply_filters( 'sportspress_performance_sections', array( 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
+
+			$sections = sp_get_term_sections( $id );
+			
+			$section_names = array();
+			
+			if ( is_array( $sections ) ) {
+				foreach ( $sections as $section ) {
+					if ( array_key_exists( $section, $options ) ) {
+						$section_names[] = $options[ $section ];
+					}
+				}
+			}
+			
+			$columns .= implode( ', ', $section_names );
+
+		} elseif ( $column == 'sp_order' ) {
+
+			$columns = (int) get_term_meta( $id, 'sp_order', true );
+
+		}
+
 		return $columns;
 	}
 
