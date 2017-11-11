@@ -112,7 +112,7 @@ class SportsPress_Scoreboard {
 				),
 
 				array(
-					'desc' 		=> __( 'Competition', 'sportspress' ),
+					'desc' 		=> __( 'League', 'sportspress' ),
 					'id' 		=> 'sportspress_scoreboard_show_league',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',

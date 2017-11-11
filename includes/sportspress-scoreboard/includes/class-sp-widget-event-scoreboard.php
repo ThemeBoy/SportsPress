@@ -20,6 +20,9 @@ class SP_Widget_Event_Scoreboard extends WP_Widget {
 		$date = empty($instance['date']) ? 'default' : $instance['date'];
 		$date_from = empty($instance['date_from']) ? 'default' : $instance['date_from'];
 		$date_to = empty($instance['date_to']) ? 'default' : $instance['date_to'];
+		$date_past = empty($instance['date_past']) ? 'default' : $instance['date_past'];
+		$date_future = empty($instance['date_future']) ? 'default' : $instance['date_future'];
+		$date_relative = empty($instance['date_relative']) ? 'default' : $instance['date_relative'];
 		$day = empty($instance['day']) ? 'default' : $instance['day'];
 		$number = empty($instance['number']) ? null : $instance['number'];
 		$order = empty($instance['order']) ? 'default' : $instance['order'];
@@ -34,7 +37,7 @@ class SP_Widget_Event_Scoreboard extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'event-scoreboard' );
 
-		sp_get_template( 'event-scoreboard.php', array( 'id' => $id, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'day' => $day, 'number' => $number, 'order' => $order, 'show_all_events_link' => $show_all_events_link ), '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' );
+		sp_get_template( 'event-scoreboard.php', array( 'id' => $id, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'date_past' => $date_past, 'date_future' => $date_future, 'date_relative' => $date_relative, 'day' => $day, 'number' => $number, 'order' => $order, 'show_all_events_link' => $show_all_events_link ), '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'event-scoreboard' );
@@ -51,6 +54,9 @@ class SP_Widget_Event_Scoreboard extends WP_Widget {
 		$instance['date'] = $new_instance['date'];
 		$instance['date_from'] = $new_instance['date_from'];
 		$instance['date_to'] = $new_instance['date_to'];
+		$instance['date_past'] = $new_instance['date_past'];
+		$instance['date_future'] = $new_instance['date_future'];
+		$instance['date_relative'] = $new_instance['date_relative'];
 		$instance['day'] = $new_instance['day'];
 		$instance['number'] = intval($new_instance['number']);
 		$instance['order'] = strip_tags($new_instance['order']);
@@ -63,13 +69,16 @@ class SP_Widget_Event_Scoreboard extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'status' => 'default', 'date' => 'default', 'date_from' => date_i18n( 'Y-m-d' ), 'date_to' => date_i18n( 'Y-m-d' ), 'day' => '', 'number' => 20, 'order' => 'default', 'show_all_events_link' => false ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'status' => 'default', 'date' => 'default', 'date_from' => date_i18n( 'Y-m-d' ), 'date_to' => date_i18n( 'Y-m-d' ), 'date_past' => 7, 'date_future' => 7, 'date_relative' => false, 'day' => '', 'number' => 20, 'order' => 'default', 'show_all_events_link' => false ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
 		$status = $instance['status'];
 		$date = $instance['date'];
 		$date_from = $instance['date_from'];
 		$date_to = $instance['date_to'];
+		$date_past = $instance['date_past'];
+		$date_future = $instance['date_future'];
+		$date_relative = $instance['date_relative'];
 		$day = $instance['day'];
 		$number = intval($instance['number']);
 		$order = strip_tags($instance['order']);
@@ -124,11 +133,29 @@ class SP_Widget_Event_Scoreboard extends WP_Widget {
 				sp_dropdown_dates( $args );
 				?>
 			</p>
-			<p class="sp-date-range<?php if ( 'range' !== $date ): ?> hidden<?php endif; ?>">
-				<input type="text" name="<?php echo $this->get_field_name( 'date_from' ); ?>" value="<?php echo $date_from; ?>" placeholder="yyyy-mm-dd" size="10">
-				:
-				<input type="text" name="<?php echo $this->get_field_name( 'date_to' ); ?>" value="<?php echo $date_to; ?>" placeholder="yyyy-mm-dd" size="10">
-			</p>
+			<div class="sp-date-range<?php if ( 'range' !== $date ): ?> hidden<?php endif; ?>">
+				<p class="sp-date-range-absolute<?php if ( $date_relative ): ?> hidden<?php endif; ?>">
+					<input type="text" name="<?php echo $this->get_field_name( 'date_from' ); ?>" value="<?php echo $date_from; ?>" placeholder="yyyy-mm-dd" size="10">
+					:
+					<input type="text" name="<?php echo $this->get_field_name( 'date_to' ); ?>" value="<?php echo $date_to; ?>" placeholder="yyyy-mm-dd" size="10">
+				</p>
+
+				<p class="sp-date-range-relative<?php if ( ! $date_relative ): ?> hidden<?php endif; ?>">
+					<?php _e( 'Past', 'sportspress' ); ?>
+					<input type="number" min="0" step="1" class="tiny-text" name="<?php echo $this->get_field_name( 'date_past' ); ?>" value="<?php echo $date_past; ?>">
+					&rarr;
+					<?php _e( 'Next', 'sportspress' ); ?>
+					<input type="number" min="0" step="1" class="tiny-text" name="<?php echo $this->get_field_name( 'date_future' ); ?>" value="<?php echo $date_future; ?>">
+					<?php _e( 'days', 'sportspress' ); ?>
+				</p>
+
+				<p class="sp-date-relative">
+					<label>
+						<input type="checkbox" name="<?php echo $this->get_field_name( 'date_relative' ); ?>" value="1" id="<?php echo $this->get_field_id( 'date_relative' ); ?>" <?php checked( $date_relative ); ?>>
+						<?php _e( 'Relative', 'sportspress' ); ?>
+					</label>
+				</p>
+			</div>
 		</div>
 
 		<p><label for="<?php echo $this->get_field_id('day'); ?>"><?php _e( 'Match Day:', 'sportspress' ); ?></label>
