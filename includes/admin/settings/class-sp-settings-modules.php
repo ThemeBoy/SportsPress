@@ -127,7 +127,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 									<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
 									<p class="sp-module-actions">
 										<span><?php _e( 'Need a better theme?', 'sportspress' ); ?></span>
-										<a class="button" href="http://tboy.co/themes" target="_blank"><?php _e( 'Upgrade', 'sportspress' ); ?></a>
+										<a class="button" href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/themes' ); ?>" target="_blank"><?php _e( 'Upgrade', 'sportspress' ); ?></a>
 									</p>
 								</td></tr>
 							</tbody>
