@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add Facebook Page widget to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.2.7
+Version: 2.5
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Facebook' ) ) :
  * Main SportsPress Facebook Class
  *
  * @class SportsPress_Facebook
- * @version	2.2.7
+ * @version	2.5
  */
 class SportsPress_Facebook {
 
@@ -34,7 +34,7 @@ class SportsPress_Facebook {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 30 );
 		add_action( 'sportspress_process_sp_team_meta', array( $this, 'save_meta' ), 15, 2 );
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
-		add_action( 'wp_head', array( $this, 'sdk' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 	}
 
 	/**
@@ -42,7 +42,7 @@ class SportsPress_Facebook {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_FACEBOOK_VERSION' ) )
-			define( 'SP_FACEBOOK_VERSION', '2.2.7' );
+			define( 'SP_FACEBOOK_VERSION', '2.5' );
 
 		if ( !defined( 'SP_FACEBOOK_URL' ) )
 			define( 'SP_FACEBOOK_URL', plugin_dir_url( __FILE__ ) );
@@ -83,19 +83,13 @@ class SportsPress_Facebook {
 	}
 
 	/**
-	 * Add Facebook SDK.
+	 * Register/queue frontend scripts.
+	 *
+	 * @access public
+	 * @return void
 	 */
-	public static function sdk() {
-		?>
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=818713328266556";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-		<?php
+	public function load_scripts() {
+		wp_enqueue_script( 'sportspress-facebook-sdk', SP_FACEBOOK_URL .'js/sportspress-facebook-sdk.js', array(), '2.11' );
 	}
 
 	/**
