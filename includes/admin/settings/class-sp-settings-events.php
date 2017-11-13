@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.3
+ * @version     2.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -137,43 +137,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'id' 		=> 'sportspress_event_filter_teams_by_season',
 						'default'	=> 'no',
 						'type' 		=> 'checkbox',
-						'checkboxgroup'	=> '',
-					),
-
-					array(
-						'desc' 		=> __( 'Reverse order', 'sportspress' ),
-						'id' 		=> 'sportspress_event_reverse_teams',
-						'default'	=> 'no',
-						'type' 		=> 'checkbox',
 						'checkboxgroup'	=> 'end',
-					),
-
-					array(
-						'title'     => __( 'Venues', 'sportspress' ),
-						'desc' 		=> __( 'Display maps', 'sportspress' ),
-						'id' 		=> 'sportspress_event_show_maps',
-						'default'	=> 'yes',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'	=> 'start',
-					),
-
-					array(
-						'desc' 		=> __( 'Link venues', 'sportspress' ),
-						'id' 		=> 'sportspress_link_venues',
-						'default'	=> 'no',
-						'type' 		=> 'checkbox',
-						'checkboxgroup'	=> 'end',
-					),
-
-					array(
-						'title'     => __( 'Google Maps', 'sportspress' ),
-						'id'        => 'sportspress_map_type',
-						'default'   => 'ROADMAP',
-						'type'      => 'radio',
-						'options'   => array(
-							'ROADMAP' => __( 'Default', 'sportspress' ),
-							'SATELLITE' => __( 'Satellite', 'sportspress' ),
-						),
 					),
 					
 					array(
@@ -209,6 +173,33 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 			apply_filters( 'sportspress_venue_options', array(
 				array(
+					'title'     => __( 'Link', 'sportspress' ),
+					'desc' 		=> __( 'Link venues', 'sportspress' ),
+					'id' 		=> 'sportspress_link_venues',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
+					'title'     => __( 'Google Maps', 'sportspress' ),
+					'desc' 		=> __( 'Display maps', 'sportspress' ),
+					'id' 		=> 'sportspress_event_show_maps',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
+					'title'     => __( 'Type', 'sportspress' ),
+					'id'        => 'sportspress_map_type',
+					'default'   => 'ROADMAP',
+					'type'      => 'radio',
+					'options'   => array(
+						'ROADMAP' => __( 'Default', 'sportspress' ),
+						'SATELLITE' => __( 'Satellite', 'sportspress' ),
+					),
+				),
+
+				array(
 					'title' 	=> __( 'Zoom', 'sportspress' ),
 					'id' 		=> 'sportspress_map_zoom',
 					'class' 	=> 'small-text',
@@ -232,6 +223,14 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			apply_filters( 'sportspress_event_logo_options', array(
+				array(
+					'title'     => __( 'Order', 'sportspress' ),
+					'desc' 		=> __( 'Reverse order', 'sportspress' ),
+					'id' 		=> 'sportspress_event_reverse_teams',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
+
 				array(
 					'title'     => __( 'Layout', 'sportspress' ),
 					'id'        => 'sportspress_event_logos_format',
