@@ -414,7 +414,18 @@ class SP_Meta_Box_Event_Performance {
 						'taxonomy' => 'sp_position',
 						'name' => 'sp_players[' . $team_id . '][' . $player_id . '][position][]',
 						'values' => 'term_id',
-						'orderby' => 'slug',
+						'orderby' => 'meta_value_num',
+						'meta_query' => array(
+							'relation' => 'OR',
+							array(
+								'key' => 'sp_order',
+								'compare' => 'NOT EXISTS'
+							),
+							array(
+								'key' => 'sp_order',
+								'compare' => 'EXISTS'
+							),
+						),
 						'selected' => $selected,
 						'class' => 'sp-position',
 						'property' => 'multiple',

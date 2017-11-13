@@ -78,7 +78,7 @@ class SportsPress_Overview {
 						<li class="sp-home"><a class="button disabled"><?php _e( 'SportsPress', 'sportspress' ); ?></a></li>
 						<?php foreach ( $taxonomies as $taxonomy ): $object = get_taxonomy( $taxonomy ); $post_types = apply_filters( 'sportspress_sitemap_taxonomy_post_types', $object->object_type, $taxonomy ); ?>
 							<li><a class="button button-primary" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress-overview', 'taxonomy' => $taxonomy ), 'admin.php' ) ) ); ?>"><?php echo $object->labels->name; ?></a>
-								<?php $terms = get_terms( $taxonomy, array( 'hide_empty' => false, 'parent' => 0, 'orderby' => 'slug' ) ); ?>
+								<?php $terms = get_terms( $taxonomy, array( 'hide_empty' => false, 'parent' => 0, 'orderby' => 'slug', ) ); ?>
 								<ul>
 									<?php if ( sizeof( $terms ) > 0 ): ?>
 										<?php foreach ( $terms as $term ): ?>

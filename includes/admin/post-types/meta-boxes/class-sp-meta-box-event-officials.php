@@ -23,7 +23,18 @@ class SP_Meta_Box_Event_Officials {
     $duties = get_terms( array(
       'taxonomy' => 'sp_duty',
       'hide_empty' => false,
-      'orderby' => 'slug',
+      'orderby' => 'meta_value_num',
+      'meta_query' => array(
+        'relation' => 'OR',
+        array(
+          'key' => 'sp_order',
+          'compare' => 'NOT EXISTS'
+        ),
+        array(
+          'key' => 'sp_order',
+          'compare' => 'EXISTS'
+        ),
+      ),
     ) );
 
     $officials = (array) get_post_meta( $post->ID, 'sp_officials', true );

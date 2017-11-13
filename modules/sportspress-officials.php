@@ -39,6 +39,8 @@ class SportsPress_Officials {
 		add_action( 'sportspress_event_list_row', array( $this, 'event_list_row' ), 10, 2 );
 		add_action( 'sportspress_calendar_data_meta_box_table_head_row', array( $this, 'calendar_meta_head_row' ) );
 		add_action( 'sportspress_calendar_data_meta_box_table_row', array( $this, 'calendar_meta_row' ), 10, 2 );
+		add_action( 'sp_duty_edit_form_fields', array( $this, 'edit_taxonomy_fields' ), 10, 1 );
+		add_action( 'edited_sp_duty', array( $this, 'save_taxonomy_fields' ), 10, 1 );
 
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
@@ -49,6 +51,8 @@ class SportsPress_Officials {
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_primary_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
+		add_filter( 'manage_edit-sp_duty_columns', array( $this, 'taxonomy_columns' ) );
+		add_filter( 'manage_sp_duty_custom_column', array( $this, 'taxonomy_column_value' ), 10, 3 );
 	}
 
 	/**
@@ -197,7 +201,18 @@ class SportsPress_Officials {
 			$duties = get_terms( array(
 			  'taxonomy' => 'sp_duty',
 			  'hide_empty' => false,
-			  'orderby' => 'slug',
+				'orderby' => 'meta_value_num',
+				'meta_query' => array(
+					'relation' => 'OR',
+					array(
+						'key' => 'sp_order',
+						'compare' => 'NOT EXISTS'
+					),
+					array(
+						'key' => 'sp_order',
+						'compare' => 'EXISTS'
+					),
+				),
 			) );
 
 			if ( empty( $duties ) ) return;
@@ -239,7 +254,18 @@ class SportsPress_Officials {
 			$duties = get_terms( array(
 			  'taxonomy' => 'sp_duty',
 			  'hide_empty' => false,
-			  'orderby' => 'slug',
+				'orderby' => 'meta_value_num',
+				'meta_query' => array(
+					'relation' => 'OR',
+					array(
+						'key' => 'sp_order',
+						'compare' => 'NOT EXISTS'
+					),
+					array(
+						'key' => 'sp_order',
+						'compare' => 'EXISTS'
+					),
+				),
 			) );
 
 			if ( empty( $duties ) ) return;
@@ -442,6 +468,8 @@ class SportsPress_Officials {
 		return array_merge( $ids, array(
 			'sp_official',
 			'edit-sp_official',
+			'sp_duty',
+			'edit-sp_duty',
 		) );
 	}
 
@@ -453,6 +481,103 @@ class SportsPress_Officials {
 	public static function add_to_hierarchy( $hierarchy = array() ) {
 		$hierarchy['sp_official'] = array();
 		return $hierarchy;
+	}
+
+	/**
+	 * Taxonomy columns.
+	 *
+	 * @access public
+	 * @param mixed $columns
+	 * @return array
+	 */
+	public function taxonomy_columns( $columns ) {
+		$new_columns = array();
+		
+		if ( function_exists( 'get_term_meta' ) ) $new_columns['sp_order'] = __( 'Order', 'sportspress' );
+
+		$new_columns['posts'] = $columns['posts'];
+
+		unset( $columns['posts'] );
+
+		return array_merge( $columns, $new_columns );
+	}
+
+	/**
+	 * Edit taxonomy fields.
+	 *
+	 * @access public
+	 * @param mixed $term Term (category) being edited
+	 */
+	public function edit_taxonomy_fields( $term ) {
+	 	$t_id = $term->term_id;
+		?>
+		<?php if ( function_exists( 'get_term_meta' ) ) { ?>
+			<?php $order = get_term_meta( $t_id, 'sp_order', true ); ?>
+			<tr class="form-field">
+				<th scope="row" valign="top"><label for="sp_order"><?php _e( 'Order', 'sportspress' ); ?></label></th>
+				<td><input name="sp_order" class="sp-number-input" type="text" step="1" size="4" id="sp_order" value="<?php echo (int) $order; ?>"></td>
+			</tr>
+		<?php } ?>
+	<?php
+	}
+
+	/**
+	 * Save taxonomy fields.
+	 *
+	 * @access public
+	 * @param mixed $term_id Term ID being saved
+	 * @return void
+	 */
+	public function save_taxonomy_fields( $term_id ) {
+		if ( function_exists( 'add_term_meta' ) ) {
+			update_term_meta( $term_id, 'sp_order', (int) sp_array_value( $_POST, 'sp_order', 0 ) );
+		}
+	}
+
+	/**
+	 * Column value added to category admin.
+	 *
+	 * @access public
+	 * @param mixed $columns
+	 * @param mixed $column
+	 * @param mixed $id
+	 * @return array
+	 */
+	public function taxonomy_column_value( $columns, $column, $id ) {
+
+		if ( $column == 'sp_address' ) {
+
+			$term_meta = get_option( "taxonomy_$id" );
+
+			$address = ( isset( $term_meta['sp_address'] ) ? $term_meta['sp_address'] : '&mdash;' );
+
+			$columns .= $address;
+
+		} elseif ( $column == 'sp_sections' ) {
+			
+			$options = apply_filters( 'sportspress_performance_sections', array( 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
+
+			$sections = sp_get_term_sections( $id );
+			
+			$section_names = array();
+			
+			if ( is_array( $sections ) ) {
+				foreach ( $sections as $section ) {
+					if ( array_key_exists( $section, $options ) ) {
+						$section_names[] = $options[ $section ];
+					}
+				}
+			}
+			
+			$columns .= implode( ', ', $section_names );
+
+		} elseif ( $column == 'sp_order' ) {
+
+			$columns = (int) get_term_meta( $id, 'sp_order', true );
+
+		}
+
+		return $columns;
 	}
 }
 
