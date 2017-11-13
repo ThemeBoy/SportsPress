@@ -222,13 +222,19 @@ for ( $day = 1; $day <= $daysinmonth; ++$day ) {
 		$calendar_output .= "\n\t</tr>\n\t<tr>\n\t\t";
 	$newrow = false;
 
-	if ( $day == gmdate('j', current_time('timestamp')) && $thismonth == gmdate('m', current_time('timestamp')) && $thisyear == gmdate('Y', current_time('timestamp')) )
-		$calendar_output .= '<td id="today" class="sp-highlight">';
-	else
-		$calendar_output .= '<td>';
+	$day_has_posts = array_key_exists($day, $daywithpost);
+	$td_properties = '';
 
-	if ( array_key_exists($day, $daywithpost) ) // any posts today?
-		$calendar_output .= '<a data-tooltip data-options="disable_for_touch:true" class="has-tip" href="' . ( sizeof( $daywithpost[ $day ] ) > 1 ? add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) . '" title="' . sprintf( '%s events', ( sizeof( $daywithpost[ $day ] ) ) ) : get_post_permalink( $daywithpost[ $day ][0], false, true ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) ) . "\">$day</a>";
+	if ( $day == gmdate('j', current_time('timestamp')) && $thismonth == gmdate('m', current_time('timestamp')) && $thisyear == gmdate('Y', current_time('timestamp')) )
+		$td_properties .= ' id="today" class="sp-highlight"';
+
+	if ( $day_has_posts )
+		$td_properties .= ' itemscope itemtype="http://schema.org/SportsEvent"';
+
+	$calendar_output .= '<td' . $td_properties . '>';
+
+	if ( $day_has_posts ) // any posts today?
+		$calendar_output .= '<a data-tooltip data-options="disable_for_touch:true" class="has-tip" href="' . ( sizeof( $daywithpost[ $day ] ) > 1 ? add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) . '" title="' . sprintf( '%s events', ( sizeof( $daywithpost[ $day ] ) ) ) : get_post_permalink( $daywithpost[ $day ][0], false, true ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) ) . "\" itemprop=\"url\">$day</a>";
 	else
 		$calendar_output .= $day;
 	$calendar_output .= '</td>';
