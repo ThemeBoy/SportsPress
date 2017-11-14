@@ -551,7 +551,18 @@ class SP_Event extends SP_Custom_Post{
 		$duties = get_terms( array(
 		  'taxonomy' => 'sp_duty',
 		  'hide_empty' => false,
-		  'orderby' => 'slug',
+			'orderby' => 'meta_value_num',
+			'meta_query' => array(
+				'relation' => 'OR',
+				array(
+					'key' => 'sp_order',
+					'compare' => 'NOT EXISTS'
+				),
+				array(
+					'key' => 'sp_order',
+					'compare' => 'EXISTS'
+				),
+			),
 		) );
 
 		if ( ! $include_empty && empty( $duties ) ) return null;

@@ -129,7 +129,18 @@ class SP_Meta_Box_List_Data {
 											'name' => 'sp_players[' . $player_id . '][position]',
 											'show_option_blank' => __( '(Auto)', 'sportspress' ),
 											'values' => 'term_id',
-											'orderby' => 'slug',
+											'orderby' => 'meta_value_num',
+											'meta_query' => array(
+												'relation' => 'OR',
+												array(
+													'key' => 'sp_order',
+													'compare' => 'NOT EXISTS'
+												),
+												array(
+													'key' => 'sp_order',
+													'compare' => 'EXISTS'
+												),
+											),
 											'selected' => $selected,
 											'include_children' => ( 'no' == get_option( 'sportspress_event_hide_child_positions', 'no' ) ),
 										);

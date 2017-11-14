@@ -76,12 +76,29 @@ class SportsPress_Icons {
 	private function get_icons() {
 		$this->icons = apply_filters( 'sportspress_icons', array(
 			'soccerball',
+			'soccerball-alt',
 			'baseball',
+			'baseball-alt',
 			'basketball',
+			'golfball',
 			'cricketball',
+			'bowling',
+			'ice-hockey',
 			'football',
+			'poolball',
+			'table-tennis',
+			'tennis',
+			'racing-flag',
 			'shoe',
 			'card',
+			'sub',
+			'update',
+			'undo',
+			'redo',
+			'marker',
+			'no',
+			'heart',
+			'star-filled',
 		) );
 	}
 

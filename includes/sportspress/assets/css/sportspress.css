@@ -217,6 +217,11 @@
 	max-height: 2em;
 }
 
+/* Staff */
+.sp-staff-role-delimiter {
+	margin: 0 0.125em;
+}
+
 /* Button */
 .sp-button {
 	border: none;
@@ -327,7 +332,8 @@
 .sp-event-calendar a {
 	text-decoration: none;
 }
-.sp-event-calendar tbody td, .sp-event-calendar thead th {
+.sp-event-calendar tbody td,
+.sp-event-calendar thead th {
 	text-align: center;
 }
 .sp-event-calendar #next {

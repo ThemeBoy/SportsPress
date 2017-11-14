@@ -110,6 +110,7 @@ class SP_Meta_Box_Event_Teams {
 					<?php
 						$j = 0;
 						foreach ( $tabs as $slug => $tab ) {
+							do_action( 'sportspress_event_teams_meta_box_checklist', $post->ID, $tab['post_type'], ( 0 == $j ? 'block' : 'none' ), $team, $i, $slug );
 							$j++;
 						}
 					?>

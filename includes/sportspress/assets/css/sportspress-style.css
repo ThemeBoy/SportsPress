@@ -345,6 +345,20 @@
     text-decoration: none !important;
 }
 
+.sp-template-event-calendar tbody td {
+    position: relative !important;
+}
+
+.sp-template-event-calendar tbody td a:before {
+    content: '•' !important;
+    position: absolute !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    width: 1em !important;
+    top: 0 !important;
+    right: 0 !important;
+}
+
 /* Event Lists */
 
 .sp-template-event-list .data-home {
@@ -672,8 +686,16 @@
         padding: 15px 5px !important;
     }
 
+    .sp-template-event-calendar tbody td a:before {
+        font-size: 25px !important;
+    }
+
     .widget .sp-template-event-calendar tbody td {
         padding: 10px 5px !important;
+    }
+
+    .widget .sp-template-event-calendar tbody td a:before {
+        font-size: 20px !important;
     }
 }
 
@@ -682,8 +704,16 @@
         padding: 20px 5px !important;
     }
 
+    .sp-template-event-calendar tbody td a:before {
+        font-size: 30px !important;
+    }
+
     .widget .sp-template-event-calendar tbody td {
         padding: 10px 5px !important;
+    }
+
+    .widget .sp-template-event-calendar tbody td a:before {
+        font-size: 20px !important;
     }
 
     .sp-template-event-performance-icons.sp-template-event-performance-section:nth-child(2n) {

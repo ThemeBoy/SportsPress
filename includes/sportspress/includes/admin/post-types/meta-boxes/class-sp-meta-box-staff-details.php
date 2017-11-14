@@ -49,31 +49,26 @@ class SP_Meta_Box_Staff_Details {
 		endif;
 
 		$roles = get_the_terms( $post->ID, 'sp_role' );
-		if ( $roles ):
-			$term = array_shift( $roles );
-			$role = $term->term_id;
-		else:
-			$role = null;
-		endif;
+		$role_ids = wp_list_pluck( $roles, 'term_id' );
 		
 		$teams = get_posts( array( 'post_type' => 'sp_team', 'posts_per_page' => -1 ) );
 		$past_teams = array_filter( get_post_meta( $post->ID, 'sp_past_team', false ) );
 		$current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
 		?>
-		<p><strong><?php _e( 'Job', 'sportspress' ); ?></strong></p>
+		<p><strong><?php _e( 'Jobs', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
 			'taxonomy' => 'sp_role',
-			'name' => 'sp_role',
-			'selected' => $role,
+			'name' => 'tax_input[sp_role][]',
+			'selected' => $role_ids,
 			'values' => 'term_id',
-			'show_option_blank' => true,
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Job', 'sportspress' ) ),
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Jobs', 'sportspress' ) ),
 			'class' => 'widefat',
+			'property' => 'multiple',
 			'chosen' => true,
 		);
 		if ( ! sp_dropdown_taxonomies( $args ) ):
-			sp_taxonomy_adder( 'sp_role', 'sp_player', __( 'Add New', 'sportspress' )  );
+			sp_taxonomy_adder( 'sp_role', 'sp_staff', __( 'Add New', 'sportspress' )  );
 		endif;
 		?></p>
 
@@ -155,8 +150,6 @@ class SP_Meta_Box_Staff_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		wp_set_post_terms( $post_id, sp_array_value( $_POST, 'sp_role', null ), 'sp_role', false );
-		
 		sp_update_post_meta_recursive( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_past_team', sp_array_value( $_POST, 'sp_past_team', array() ) );

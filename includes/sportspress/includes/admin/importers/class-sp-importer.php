@@ -157,7 +157,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 											</td>
 										<?php $index ++; endforeach; ?>
 										<td class="sp-actions-column">
-											<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="sp-icon-trash sp-delete-row"></a>
+											<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row"></a>
 											<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
 										</td>
 									</tr>

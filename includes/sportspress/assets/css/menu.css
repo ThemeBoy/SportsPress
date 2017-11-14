@@ -1,12 +1,12 @@
 /* SportsPress menu styles */
 @font-face {
 	font-family: 'sportspress';
-	src:url('../fonts/sportspress.eot?wwkd2y');
-	src:url('../fonts/sportspress.eot?#iefixwwkd2y') format('embedded-opentype'),
-		url('../fonts/sportspress.woff2?wwkd2y') format('woff2'),
-		url('../fonts/sportspress.ttf?wwkd2y') format('truetype'),
-		url('../fonts/sportspress.woff?wwkd2y') format('woff'),
-		url('../fonts/sportspress.svg?wwkd2y#sportspress') format('svg');
+	src:url('../fonts/sportspress.eot?ddphik');
+	src:url('../fonts/sportspress.eot?#iefixddphik') format('embedded-opentype'),
+		url('../fonts/sportspress.woff2?ddphik') format('woff2'),
+		url('../fonts/sportspress.ttf?ddphik') format('truetype'),
+		url('../fonts/sportspress.woff?ddphik') format('woff'),
+		url('../fonts/sportspress.svg?ddphik#sportspress') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -167,10 +167,34 @@
 .sp-icon-yoast:before {
 	content: "\f179";
 }
+.sp-icon-sub:before {
+	content: "\f503";
+}
+.sp-icon-star-filled:before {
+	content: "\f155";
+}
+.sp-icon-update:before {
+	content: "\f113";
+}
+.sp-icon-undo:before {
+	content: "\f171";
+}
+.sp-icon-redo:before {
+	content: "\f172";
+}
+.sp-icon-marker:before {
+	content: "\f159";
+}
+.sp-icon-no:before {
+	content: "\f158";
+}
+.sp-icon-heart:before {
+	content: "\f487";
+}
 
-/* Performance Icons */
-.sp-icon-card:before {
-	content: "\e801";
+/* Performance Icons - Sports */
+.sp-icon-soccerball:before {
+	content: "\e700";
 }
 .sp-icon-baseball:before {
 	content: "\e701";
@@ -178,23 +202,51 @@
 .sp-icon-basketball:before {
 	content: "\e602";
 }
+.sp-icon-golfball:before {
+	content: "\e603";
+}
 .sp-icon-cricketball:before {
 	content: "\e604";
 }
-.sp-icon-golfball:before {
-	content: "\e603";
+.sp-icon-bowling:before {
+	content: "\e605";
+}
+.sp-icon-ice-hockey:before {
+	content: "\e606";
 }
 .sp-icon-football:before {
 	content: "\e607";
 }
+.sp-icon-poolball:before {
+	content: "\e608";
+}
+.sp-icon-table-tennis:before {
+	content: "\e609";
+}
+.sp-icon-tennis:before {
+	content: "\e610";
+}
+.sp-icon-racing-flag:before {
+	content: "\e611";
+}
+
+/* Performance Icons - Sports (Alt) */
+.sp-icon-soccerball-alt:before {
+	content: "\e600";
+}
+.sp-icon-baseball-alt:before {
+	content: "\e601";
+}
+
+/* Performance Icons - Misc */
 .sp-icon-shoe:before {
 	content: "\e800";
 }
-.sp-icon-soccerball:before {
-	content: "\e700";
+.sp-icon-card:before {
+	content: "\e801";
 }
-.sp-icon-sub:before {
-	content: "\f503";
+.sp-icon-card:before {
+	content: "\e801";
 }
 
 #adminmenu #toplevel_page_sportspress .toplevel_page_sportspress div.wp-menu-image:before,

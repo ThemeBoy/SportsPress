@@ -147,7 +147,10 @@ class SP_Meta_Box_Event_Performance {
 					endif;
 					?>
 					<div>
-						<p><strong><?php echo get_the_title( $team_id ); ?></strong></p>
+						<p>
+							<strong><?php echo get_the_title( $team_id ); ?></strong>
+							<a class="add-new-h2 sp-add-new-h2" href="<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_performance_csv', 'event' => $post_id, 'team' => $team_id, 'teams' => sizeof( $teams ), 'index' => $key ), 'admin.php' ) ) ); ?>"><?php _e( 'Import', 'sportspress' ); ?></a>
+						</p>
 						<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes, $positions, $status, -1, $formats, $order, $numbers, $team_timeline, $timed, $stars ); ?>
 						<?php do_action( 'sportspress_after_event_performance_table_admin', $labels, $columns, $data, $team_id ); ?>
 					</div>
@@ -229,7 +232,10 @@ class SP_Meta_Box_Event_Performance {
 					foreach ( $section_order as $section_id => $section_label ) {
 						?>
 						<div>
-							<p><strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo $section_label; ?></strong></p>
+							<p>
+								<strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo $section_label; ?></strong>
+								<a class="add-new-h2 sp-add-new-h2" href="<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_performance_csv', 'event' => $post_id, 'team' => $team_id ), 'admin.php' ) ) ); ?>"><?php _e( 'Import', 'sportspress' ); ?></a>
+							</p>
 							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, ( $has_checkboxes && 0 === $i ), $positions, $status, $section_id, $formats, $order, $numbers, $team_timeline, $timed, $stars ); ?>
 							<?php do_action( 'sportspress_after_event_performance_table_admin', $labels[ $section_id ], $columns, $data[ $section_id ], $team_id ); ?>
 						</div>
@@ -414,7 +420,18 @@ class SP_Meta_Box_Event_Performance {
 						'taxonomy' => 'sp_position',
 						'name' => 'sp_players[' . $team_id . '][' . $player_id . '][position][]',
 						'values' => 'term_id',
-						'orderby' => 'slug',
+						'orderby' => 'meta_value_num',
+						'meta_query' => array(
+							'relation' => 'OR',
+							array(
+								'key' => 'sp_order',
+								'compare' => 'NOT EXISTS'
+							),
+							array(
+								'key' => 'sp_order',
+								'compare' => 'EXISTS'
+							),
+						),
 						'selected' => $selected,
 						'class' => 'sp-position',
 						'property' => 'multiple',

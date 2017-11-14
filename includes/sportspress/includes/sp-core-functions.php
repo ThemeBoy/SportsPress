@@ -1136,14 +1136,14 @@ if ( !function_exists( 'sp_get_var_equations' ) ) {
 }
 
 if ( !function_exists( 'sp_post_adder' ) ) {
-	function sp_post_adder( $post_type = 'post', $label = null ) {
+	function sp_post_adder( $post_type = 'post', $label = null, $attributes = array() ) {
 		$obj = get_post_type_object( $post_type );
 		if ( $label == null )
 			$label = __( 'Add New', 'sportspress' );
 		?>
 		<div id="<?php echo $post_type; ?>-adder">
 			<h4>
-				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( 'post-new.php?post_type=' . $post_type ); ?>" target="_blank">
+				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( add_query_arg( $attributes, 'post-new.php?post_type=' . $post_type ) ); ?>" target="_blank">
 					+ <?php echo $label; ?>
 				</a>
 			</h4>

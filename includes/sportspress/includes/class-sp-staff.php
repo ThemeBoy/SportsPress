@@ -56,4 +56,19 @@ class SP_Staff extends SP_Custom_Post {
 			return false;
 		endif;
 	}
+
+	/**
+	 * Returns roles
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function roles() {
+		$roles = get_the_terms( $this->ID, 'sp_role' );
+		if ( $roles && ! is_wp_error( $roles ) ):
+			return (array) $roles;
+		else:
+			return array();
+		endif;
+	}
 }
