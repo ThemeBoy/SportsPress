@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.8
-Stable tag: 2.4.3
+Stable tag: 2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -236,6 +236,25 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.5 =
+* Feature - Player of the match and star numbers added to box scores.
+* Feature - Officials module for displaying referee appointments in matches.
+* Feature - New player performance icons to choose from.
+* Feature - Schema microdata added to event calendars, lists, and blocks.
+* Feature - Box score importer for updating existing events.
+* Feature - Order setting added to taxonomies for custom sorting.
+* Feature - New relative date range options in event calendars.
+* Feature - Option to hide players with zero statistics in player list.
+* Tweak - Allow staff members to have multiple jobs.
+* Tweak - Indicator dots added to calendars with events in frontend stylesheet.
+* Tweak - Box score columns are now selected by default when adding new events.
+* Tweak - Events made sortable by match day in admin.
+* Tweak - Competitions renamed to leagues.
+* Fix - Quick edit teams not showing when filtering players by team.
+* Fix - Calendar feeds not updating without E-tag.
+* Fix - Admin table cells wrapping.
+* Fix - Timezone issues in calendars.
 
 = 2.4.3 =
 * Fix - Substitute Typo.

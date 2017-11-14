@@ -9,7 +9,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version   2.4
+ * @version   2.5
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -177,37 +177,88 @@ class SP_Admin_Welcome {
 			do_action( 'sportspress_before_welcome_features' );
 			?>
 			<h2>New Features</h2>
+			<div class="feature-section two-col">
+				<div class="col">
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-placeholder.png" alt="Team & Player Registration">
+					<h3>Player of the Match</h3>
+					<p>Select player(s) or a star number for certain players in events. Stars can be displayed as icons or with a number. To enable this feature, choose an <strong>Awards</strong> type from the <strong>Box Score</strong> section in <a href="<?php echo add_query_arg( array( 'page' => 'sportspress' ), admin_url( 'admin.php' ) ); ?>">Event Settings</a>.</p>
+				</div>
+				<div class="col">
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-placeholder.png" alt="Membership Payments">
+					<h3>Officials Module</h3>
+					<p>Manage referees, umpires, judges, timekeepers, and other officials. Don't forget to enable the <strong>Officials</strong> module from <a href="<?php echo add_query_arg( array( 'page' => 'sportspress' ), admin_url( 'admin.php' ) ); ?>">SportsPress Settings</a> to start using this feature.</p>
+				</div>
+			</div>
+
 			<div class="feature-section three-col">
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-team-galleries.png" alt="Team Galleries">
-					<h3>Team Galleries</h3>
-					<p>Display a gallery of logos that link to each team using the new <strong>[team_gallery]</strong> shortcode, or by adding a <strong>Team Gallery</strong> widget to your sidebar.</p>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-placeholder.png" alt="Team Galleries">
+					<h3>Box Score Importer</h3>
+					<p>A new importer has been added to each event. Upload a CSV file and instantly update the player performance for the selected team.</p>
 				</div>
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-better-career-totals.png" alt="Better Career Totals">
-					<h3>Better Career Totals</h3>
-					<p><strong>Player Statistics</strong> can be configured to display career totals by adding season totals or calculating averages using the <strong>Type</strong> option.</p>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-placeholder.png" alt="Friendly Competitions">
+					<h3>New Performance Icons</h3>
+					<p>A set of new icons have been added to <strong>Player Performance</strong>, giving you more options to choose from.<p>
 				</div>
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-friendly-competitions.png" alt="Friendly Competitions">
-					<h3>Friendly Competitions</h3>
-					<p><strong>Competitions</strong> can now be assigned to any event, making it easier to organize and display <strong>Friendly</strong> events into custom calendars.</p>
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-placeholder.png" alt="Better Career Totals">
+					<h3>Event Calendar Indicators</h3>
+					<p>With the frontend stylesheet enabled, days with events will now be displayed with an indication.</p>
 				</div>
 			</div>
 
 			<hr>
 
-			<h2>WordPay Integration</h2>
-			<div class="feature-section two-col">
+			<h2>Better Control</h2>
+			<div class="feature-section three-col">
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-team-player-registration.png" alt="Team & Player Registration">
-					<h3>Team &amp; Player Registration</h3>
-					<p>Automatically create teams and players when new members sign up to your site using <a href="https://wordpay.org/sportspress/" target="_blank">WordPay</a>. Once installed, don't forget to activate the <strong>WordPay</strong> module from <a href="<?php echo add_query_arg( array( 'page' => 'sportspress' ), admin_url( 'admin.php' ) ); ?>">SportsPress Settings</a>.</p>
+					<h3>Custom Taxonomy Order</h3>
+					<p>A new setting has been added to leagues, seasons, and positions, allowing you to define a customer order of terms.</p>
 				</div>
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-membership-payments.png" alt="Membership Payments">
-					<h3>Collect Membership Payments</h3>
-					<p>By using <strong>WordPay</strong>, you can create different membership levels and start accepting recurring fees directly on your website using <strong>PayPal</strong> or <strong>Stripe</strong> with seamless credit card processing. <a href="https://wordpay.org/sportspress/" target="_blank">Learn more</a></p>
+					<h3>Filtering Player Lists</h3>
+					<p>Player lists can now be configured to skip players that don't have a particular statistic, allowing you to create more specific lists.</p>
+				</div>
+				<div class="col">
+					<h3>Multiple Jobs</h3>
+					<p>Staff members can now be assigned multiple jobs, which are displayed consecutively in their profiles.</p>
+				</div>
+			</div>
+
+			<hr>
+
+			<h2>Usability Improvements</h2>
+			<div class="feature-section three-col">
+				<div class="col">
+					<h3>Box Score Columns</h3>
+					<p>If you're selecting box score columns manually, these will now be automatically checked when creating new events.</p>
+				</div>
+				<div class="col">
+					<h3>Relative Ranges</h3>
+					<p>Additional options now allow you to select events within a particular range, from last week, next week, yesterday, or tomorrow.</p>
+				</div>
+				<div class="col">
+					<h3>Sort by Match Day</h3>
+					<p>Use the columns in the admin to sort events by match day.</p>
+				</div>
+			</div>
+
+			<hr>
+
+			<h2>Other Notes</h2>
+			<div class="feature-section three-col">
+				<div class="col">
+					<h3>Schema Microdata</h3>
+					<p>We've complied with schema.org's microdata formats by adding these attributes to event calendars, blocks, and lists throughout.</p>
+				</div>
+				<div class="col">
+					<h3>Competitions Are Now Leagues</h3>
+					<p>The competitions taxonomy has been renamed to leagues, which still work in the exact same way.</p>
+				</div>
+				<div class="col">
+					<h3>Calendar Caching</h3>
+					<p>To prevent event calendars from caching in third-party apps, an E-Tag header has been added to these feeds.</p>
 				</div>
 			</div>
 
