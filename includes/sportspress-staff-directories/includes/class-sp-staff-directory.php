@@ -142,8 +142,13 @@ class SP_Staff_Directory extends SP_Custom_Post {
 				$staff = array( 'name' => get_the_title( $post->ID ) );
 				
 				$staff_object = new SP_Staff( $post->ID );
-				$role = $staff_object->role();
-				if ( ! empty( $role ) ) $staff['role'] = $role->name;
+
+				$staff_roles = $staff_object->roles();
+				if ( ! empty( $staff_roles ) ):
+					$staff_roles = wp_list_pluck( $staff_roles, 'name' );
+					$staff['role'] = implode( '<span class="sp-staff-role-delimiter">/</span>', $staff_roles );
+				endif;
+
 				$phone = get_post_meta( $post->ID, 'sp_phone', true );
 				if ( ! empty( $phone ) ) $staff['phone'] = $phone;
 				$email = get_post_meta( $post->ID, 'sp_email', true );
