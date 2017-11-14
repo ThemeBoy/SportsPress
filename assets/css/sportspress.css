@@ -217,6 +217,11 @@
 	max-height: 2em;
 }
 
+/* Staff */
+.sp-staff-role-delimiter {
+	margin: 0 0.125em;
+}
+
 /* Button */
 .sp-button {
 	border: none;

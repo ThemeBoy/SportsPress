@@ -44,9 +44,10 @@ function sportspress_the_title( $title, $id = null ) {
 			endif;
 		elseif ( is_singular( 'sp_staff' ) ):
 			$staff = new SP_Staff( $id );
-			$role = $staff->role();
-			if ( $role ):
-				$title = '<strong class="sp-staff-role">' . $role->name . '</strong> ' . $title;
+			$roles = $staff->roles();
+			if ( ! empty( $roles ) ):
+				$roles = wp_list_pluck( $roles, 'name' );
+				$title = '<strong class="sp-staff-role">' . implode( '<span class="sp-staff-role-delimiter">/</span>', $roles ) . '</strong> ' . $title;
 			endif;
 		endif;
 	endif;

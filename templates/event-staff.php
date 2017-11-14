@@ -36,12 +36,13 @@ extract( $defaults, EXTR_SKIP );
 
 		$staff = new SP_Staff( $staff_id );
 
-		$role = $staff->role();
-
-		if ( $role )
-			echo $role->name;
-		else
+		$roles = $staff->roles();
+		if ( ! empty( $roles ) ):
+			$roles = wp_list_pluck( $roles, 'name' );
+			echo implode( '<span class="sp-staff-role-delimiter">/</span>', $roles );
+		else:
 			_e( 'Staff', 'sportspress' );
+		endif;
 
 		echo ': ';
 
