@@ -327,7 +327,8 @@
 .sp-event-calendar a {
 	text-decoration: none;
 }
-.sp-event-calendar tbody td, .sp-event-calendar thead th {
+.sp-event-calendar tbody td,
+.sp-event-calendar thead th {
 	text-align: center;
 }
 .sp-event-calendar #next {
