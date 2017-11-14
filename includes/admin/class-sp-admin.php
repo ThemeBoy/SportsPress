@@ -102,29 +102,43 @@ class SP_Admin {
 	 */
 	public function action_links() {
 		global $pagenow, $typenow;
-		if ( 'edit.php' == $pagenow && in_array( $typenow, sp_primary_post_types() ) ) {
+		if ( in_array( $typenow, sp_primary_post_types() ) ) {
 			if ( 'sp_event' === $typenow ) {
-				?>
-				<script type="text/javascript">
-				(function($) {
-					$(".wrap .page-title-action").first().after(
-						$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_fixture_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import Fixtures', 'sportspress' ); ?></a>")
-					).after(
-						$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import Events', 'sportspress' ); ?></a>")
-					);
-				})(jQuery);
-				</script>
-				<?php
+				if ( 'edit.php' === $pagenow ) {
+					?>
+					<script type="text/javascript">
+					(function($) {
+						$(".wrap .page-title-action").first().after(
+							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_fixture_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import Fixtures', 'sportspress' ); ?></a>")
+						).after(
+							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import Events', 'sportspress' ); ?></a>")
+						);
+					})(jQuery);
+					</script>
+					<?php
+				} elseif ( 'post.php' === $pagenow ) {
+					?>
+					<script type="text/javascript">
+					(function($) {
+						$(".wrap .page-title-action").first().after(
+							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_performance_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import Box Score', 'sportspress' ); ?></a>")
+						);
+					})(jQuery);
+					</script>
+					<?php
+				}
 			} else {
-				?>
-				<script type="text/javascript">
-				(function($) {
-					$(".wrap .page-title-action").first().after(
-						$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => $typenow . '_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import', 'sportspress' ); ?></a>")
-					);
-				})(jQuery);
-				</script>
-				<?php
+				if ( 'edit.php' === $pagenow ) {
+					?>
+					<script type="text/javascript">
+					(function($) {
+						$(".wrap .page-title-action").first().after(
+							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => $typenow . '_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import', 'sportspress' ); ?></a>")
+						);
+					})(jQuery);
+					</script>
+					<?php
+				}
 			}
 		}
 	}

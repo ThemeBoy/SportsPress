@@ -36,8 +36,13 @@ class SP_Admin_Importers {
 			),
 			'sp_fixture_csv' => array(
 				'name' => __( 'SportsPress Fixtures (CSV)', 'sportspress' ),
-				'description' => __( 'Import <strong>fixtures</strong> from a csv file.', 'sportspress'),
+				'description' => __( 'Import <strong>upcoming events</strong> from a csv file.', 'sportspress'),
 				'callback' => array( $this, 'fixtures_importer' ),
+			),
+			'sp_event_performance_csv' => array(
+				'name' => __( 'SportsPress Box Score (CSV)', 'sportspress' ),
+				'description' => __( 'Import <strong>event box scores</strong> from a csv file.', 'sportspress'),
+				'callback' => array( $this, 'event_performance_importer' ),
 			),
 			'sp_team_csv' => array(
 				'name' => __( 'SportsPress Teams (CSV)', 'sportspress' ),
@@ -71,6 +76,19 @@ class SP_Admin_Importers {
 
 	    // Dispatch
 	    $importer = new SP_Event_Importer();
+	    $importer->dispatch();
+	}
+
+	/**
+	 * Add menu item
+	 */
+	public function event_performance_importer() {
+		$this->includes();
+		
+	    require 'importers/class-sp-event-performance-importer.php';
+
+	    // Dispatch
+	    $importer = new SP_Event_Performance_Importer();
 	    $importer->dispatch();
 	}
 
