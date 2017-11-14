@@ -40,6 +40,11 @@
 	display: none;
 }
 
+.sp-add-new-h2 {
+	top: 0;
+	float: right;
+}
+
 #sp_videodiv .inside > fieldset > p:first-child {
 	margin-top: 7px !important;
 }
@@ -988,8 +993,6 @@ table.sp-status-table td mark.yes {
 	line-height: 1.5;
 }
 .sp-import-table .sp-delete-row {
-	font-size: 16px;
-	line-height: 1.5;
 	color: #a00;
 }
 .sp-import-table .sp-delete-row:hover {
