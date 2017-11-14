@@ -40,11 +40,14 @@ class SportsPress_Tournaments {
 		add_filter( 'sportspress_screen_ids', array( $this, 'add_screen_ids' ) );
 		add_action( 'sportspress_single_tournament_content', array( $this, 'output_tournament_winner' ), 0 );
 		add_action( 'sportspress_single_tournament_content', array( $this, 'output_tournament_bracket' ), 10 );
+		add_action( 'sportspress_single_tournament_content', array( $this, 'output_tournament_tables' ), 20 );
 		add_action( 'sportspress_after_single_tournament', 'sportspress_output_br_tag', 100 );
 		add_filter( 'sportspress_league_object_types', array( $this, 'add_taxonomy_object' ) );
 		add_filter( 'sportspress_season_object_types', array( $this, 'add_taxonomy_object' ) );
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
 		add_filter( 'sportspress_competitive_event_formats', array( $this, 'competitive_event_formats' ) );
+		add_action( 'sportspress_meta_box_table_details', array( $this, 'table_details' ) );
+		add_action( 'sportspress_process_sp_table_meta', array( $this, 'save_table_details' ), 15, 2 );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 	  add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ), 30 );
@@ -180,6 +183,17 @@ class SportsPress_Tournaments {
 	}
 
 	/**
+	 * Output the tournament tables.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public static function output_tournament_tables() {
+		$id = get_the_ID();
+		sp_get_template( 'tournament-tables.php', array( 'id' => $id ), '', SP_TOURNAMENTS_DIR . 'templates/' );
+	}
+
+	/**
 	 * Add object to taxonomy.
 	 *
 	 * @return array
@@ -275,11 +289,45 @@ class SportsPress_Tournaments {
 	}
 
 	/**
+	 * Add tournament selector to league tables. 
+	 */
+	public function table_details( $post_id ) {
+		$tournaments = get_post_meta( $post_id, 'sp_tournament' );
+		$tournament = sp_array_value( $_GET, 'sp_tournament', false );
+
+		if ( $tournament ) $tournaments[] = $tournament;
+		?>
+		<p><strong><?php _e( 'Tournament', 'sportspress' ); ?></strong></p>
+		<p><?php
+		$args = array(
+			'post_type' => 'sp_tournament',
+			'name' => 'sp_tournament[]',
+			'selected' => $tournaments,
+			'values' => 'ID',
+			'placeholder' => __( 'None', 'sportspress' ),
+			'class' => 'widefat',
+			'property' => 'multiple',
+			'chosen' => true,
+		);
+		sp_dropdown_pages( $args );
+		?></p>
+		<?php
+	}
+
+	/**
+	 * Save tournament selection to league table.
+	 */
+	public static function save_table_details( $post_id, $post ) {
+		sp_update_post_meta_recursive( $post_id, 'sp_tournament', sp_array_value( $_POST, 'sp_tournament', array() ) );
+	}
+
+	/**
 	 * Add text options 
 	 */
 	public function add_text_options( $options = array() ) {
 		return array_merge( $options, array(
 			__( 'Final Bracket', 'sportspress' ),
+			__( 'Groups', 'sportspress' ),
 			__( 'Loser Bracket', 'sportspress' ),
 			__( 'Winner', 'sportspress' ),
 			__( 'Winner Bracket', 'sportspress' ),

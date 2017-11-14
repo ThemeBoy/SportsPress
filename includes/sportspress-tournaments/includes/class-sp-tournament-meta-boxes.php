@@ -36,6 +36,7 @@ class SP_Tournament_Meta_Boxes {
 		add_meta_box( 'sp_winnersdiv', __( 'Winner Bracket', 'sportspress' ), array( $this, 'winners' ), 'sp_tournament', 'normal', 'high' );
 		add_meta_box( 'sp_losersdiv', __( 'Loser Bracket', 'sportspress' ), array( $this, 'losers' ), 'sp_tournament', 'normal', 'high' );
 		add_meta_box( 'sp_finalsdiv', __( 'Final Bracket', 'sportspress' ), array( $this, 'finals' ), 'sp_tournament', 'normal', 'high' );
+		add_meta_box( 'sp_tablesdiv', __( 'Groups', 'sportspress' ), array( $this, 'tables' ), 'sp_tournament', 'normal', 'high' );
 	}
 
 	/**
@@ -207,6 +208,36 @@ class SP_Tournament_Meta_Boxes {
 		$tournament = new SP_Tournament( $post );
 		list( $labels, $data, $rounds, $rows ) = $tournament->data( 'bracket', true, 'finals' );
 		self::table( $labels, $data, $rounds, $rows, $post->ID, 'finals' );
+	}
+
+	/**
+	 * Output the tables metabox
+	 */
+	public static function tables( $post ) {
+		$tables = get_posts( array(
+			'post_type' => 'sp_table',
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'meta_query' => array(
+				array(
+					'key' => 'sp_tournament',
+					'value' => $post->ID,
+				),
+			),
+		) );
+
+		if ( ! empty( $tables ) ) {
+			$table_ids = wp_list_pluck( $tables, 'ID' );
+			$meta_box = new SP_Meta_Box_Table_Data();
+			foreach ( $table_ids as $table_id ) {
+				$table = new SP_League_Table( $table_id );
+				list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );
+				$meta_box::table( $table->ID, $columns, $usecolumns, $data, $placeholders, array(), array(), true );
+			}
+		}
+
+		sp_post_adder( 'sp_table', __( 'Add New', 'sportspress' ), array( 'sp_tournament' => $post->ID ) );
 	}
 
 	/**
