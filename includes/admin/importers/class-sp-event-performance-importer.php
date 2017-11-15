@@ -73,12 +73,20 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				$player_object = get_page_by_title( stripslashes( $player_name ), OBJECT, 'sp_player' );
 
-				if ( ! $player_object ):
-					$this->skipped ++;
-					continue;
-				endif;
+				if ( $player_object ):
 
-				$player_id = $player_object->ID;
+					// Get player ID
+					$player_id = $player_object->ID;
+
+				else:
+
+					// Insert player
+					$player_id = wp_insert_post( array( 'post_type' => 'sp_player', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $player_name ) ) );
+
+					// Flag as import
+					update_post_meta( $player_id, '_sp_import', 1 );
+
+				endif;
 
 				$team_players[] = $player_id;
 				$player = array();
