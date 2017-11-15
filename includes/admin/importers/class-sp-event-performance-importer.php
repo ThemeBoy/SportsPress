@@ -65,11 +65,19 @@ if ( class_exists( 'WP_Importer' ) ) {
 				if ( empty( $row ) ) continue;
 
 				$player_name = sp_array_value( $row, $name_index );
-				if ( ! $player_name ) continue;
+				
+				if ( ! $player_name ):
+					$this->skipped ++;
+					continue;
+				endif;
 
 				$player_object = get_page_by_title( stripslashes( $player_name ), OBJECT, 'sp_player' );
 
-				if ( ! $player_object ) continue;
+				if ( ! $player_object ):
+					$this->skipped ++;
+					continue;
+				endif;
+
 				$player_id = $player_object->ID;
 
 				$team_players[] = $player_id;
