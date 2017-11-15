@@ -47,6 +47,7 @@ class SportsPress_Officials {
 		add_filter( 'sportspress_calendar_columns', array( $this, 'calendar_columns' ) );
 		add_filter( 'sportspress_after_event_template', array( $this, 'add_event_template' ), 30 );
 		add_filter( 'sportspress_event_options', array( $this, 'add_event_options' ) );
+		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_primary_post_types', array( $this, 'add_post_type' ) );
@@ -457,6 +458,15 @@ class SportsPress_Officials {
 			),
 		);
 		return $options;
+	}
+
+	/**
+	 * Add text options 
+	 */
+	public function add_text_options( $options = array() ) {
+		return array_merge( $options, array(
+			__( 'Officials', 'sportspress' ),
+		) );
 	}
 
 	/**
