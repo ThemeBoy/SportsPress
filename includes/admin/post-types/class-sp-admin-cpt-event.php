@@ -278,6 +278,9 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		);
 		sp_dropdown_taxonomies( $args );
 
+		$selected = isset( $_REQUEST['match_day'] ) ? $_REQUEST['match_day'] : null;
+		echo '<input name="match_day" type="text" class="sp-tablenav-input" placeholder="' . __( 'Match Day', 'sportspress' ) . '" value="' . $selected . '">';
+
 		if ( current_user_can( 'edit_others_sp_events' ) )
 			wp_nonce_field( 'sp-save-inline-results', 'sp-inline-nonce', false );
 	}
@@ -295,6 +298,11 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	    	if ( ! empty( $_GET['team'] ) ) {
 		    	$query->query_vars['meta_value'] 	= $_GET['team'];
 		        $query->query_vars['meta_key'] 		= 'sp_team';
+		    }
+
+	    	if ( ! empty( $_GET['match_day'] ) ) {
+		    	$query->query_vars['meta_value'] 	= $_GET['match_day'];
+		        $query->query_vars['meta_key'] 		= 'sp_day';
 		    }
 		}
 	}
