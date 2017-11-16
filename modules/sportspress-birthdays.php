@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add birthdays to players and staff.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.1.4
+Version: 2.5
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
  * Main SportsPress Birthdays Class
  *
  * @class SportsPress_Birthdays
- * @version	2.1.4
+ * @version	2.5
  */
 class SportsPress_Birthdays {
 
@@ -43,7 +43,7 @@ class SportsPress_Birthdays {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_BIRTHDAYS_VERSION' ) )
-			define( 'SP_BIRTHDAYS_VERSION', '2.1.4' );
+			define( 'SP_BIRTHDAYS_VERSION', '2.5' );
 
 		if ( !defined( 'SP_BIRTHDAYS_URL' ) )
 			define( 'SP_BIRTHDAYS_URL', plugin_dir_url( __FILE__ ) );
