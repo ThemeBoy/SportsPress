@@ -176,41 +176,73 @@ class SP_Admin_Welcome {
 
 			do_action( 'sportspress_before_welcome_features' );
 			?>
-			<h2>New Features</h2>
-			<div class="feature-section two-col">
+			<div class="feature-section one-col">
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-placeholder.png" alt="Team & Player Registration">
-					<h3>Player of the Match</h3>
-					<p>Select player(s) or a star number for certain players in events. Stars can be displayed as icons or with a number. To enable this feature, choose an <strong>Awards</strong> type from the <strong>Box Score</strong> section in <a href="<?php echo add_query_arg( array( 'page' => 'sportspress' ), admin_url( 'admin.php' ) ); ?>">Event Settings</a>.</p>
-				</div>
-				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-placeholder.png" alt="Membership Payments">
-					<h3>Officials Module</h3>
-					<p>Manage referees, umpires, judges, timekeepers, and other officials. Don't forget to enable the <strong>Officials</strong> module from <a href="<?php echo add_query_arg( array( 'page' => 'sportspress' ), admin_url( 'admin.php' ) ); ?>">SportsPress Settings</a> to start using this feature.</p>
+					<h2>New Features 🌟</h2>
 				</div>
 			</div>
 
-			<div class="feature-section three-col">
+			<div class="feature-section two-col">
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-placeholder.png" alt="Team Galleries">
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-officials.png" alt="Officials Module">
+					<h3>Officials Module</h3>
+					<p>Manage referees, umpires, judges, timekeepers, and other officials. Don't forget to enable the <strong>Officials</strong> module from <a href="<?php echo add_query_arg( array( 'page' => 'sportspress' ), admin_url( 'admin.php' ) ); ?>">SportsPress Settings</a> to start using this feature.</p>
+				</div>
+				<div class="col">
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-awards.png" alt="Player of the Match">
+					<h3>Player of the Match</h3>
+					<p>Select player(s) or a star number for certain players in events. Stars can be displayed as icons or with a number. To enable this feature, choose an <strong>Awards</strong> type from the <strong>Box Score</strong> section in <a href="<?php echo add_query_arg( array( 'page' => 'sportspress' ), admin_url( 'admin.php' ) ); ?>">Event Settings</a>.</p>
+				</div>
+			</div>
+
+			<div class="feature-section two-col">
+				<div class="col">
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-event-performance-importer.png" alt="Box Score Importer">
 					<h3>Box Score Importer</h3>
 					<p>A new importer has been added to each event. Upload a CSV file and instantly update the player performance for the selected team.</p>
 				</div>
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-placeholder.png" alt="Friendly Competitions">
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-performance-icons.png" alt="New Performance Icons">
 					<h3>New Performance Icons</h3>
 					<p>A set of new icons have been added to <strong>Player Performance</strong>, giving you more options to choose from.<p>
 				</div>
+			</div>
+
+			<?php if ( ! class_exists( 'SportsPress_Pro' ) ) { ?>
+			<hr>
+
+			<div class="feature-section one-col">
 				<div class="col">
-					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-placeholder.png" alt="Better Career Totals">
-					<h3>Event Calendar Indicators</h3>
-					<p>With the frontend stylesheet enabled, days with events will now be displayed with an indication.</p>
+					<h2>SportsPress Pro Updates 🏆</h2>
 				</div>
 			</div>
 
+			<div class="feature-section two-col">
+				<div class="col">
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-group-stages.png" alt="Tournament Group Stages">
+					<h3>Tournament Group Stages</h3>
+					<p>Support for group stages have been added natively to tournaments, allowing you to create and attach league tables to be displayed directly below tournament brackets.</p>
+				</div>
+				<div class="col">
+					<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-sponsor-levels.png" alt="Sponsorship Levels">
+					<h3>Sponsorship Levels</h3>
+					<p>Assign levels to sponsors based on their contribution or other factors. Sponsors can now be filtered based on their sponsorship level within widgets, allowing for level-specific sponsor treament.<p>
+				</div>
+			</div>
+
+			<a class="button button-primary button-hero" href="<?php echo esc_url( apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ); ?>"><?php _e( 'Upgrade to Pro', 'sportspress' ); ?></a>
+
+			<p><?php _e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.','sportspress' ); ?></p>
+			<?php } ?>
+
 			<hr>
 
-			<h2>Better Control</h2>
+			<div class="feature-section one-col">
+				<div class="col">
+					<h2>Improved Usability and Control</h2>
+				</div>
+			</div>
+
 			<div class="feature-section three-col">
 				<div class="col">
 					<h3>Custom Taxonomy Order</h3>
@@ -224,15 +256,9 @@ class SP_Admin_Welcome {
 					<h3>Multiple Jobs</h3>
 					<p>Staff members can now be assigned multiple jobs, which are displayed consecutively in their profiles.</p>
 				</div>
-			</div>
-
-			<hr>
-
-			<h2>Usability Improvements</h2>
-			<div class="feature-section three-col">
 				<div class="col">
-					<h3>Box Score Columns</h3>
-					<p>If you're selecting box score columns manually, these will now be automatically checked when creating new events.</p>
+					<h3>Event Calendar Indicators</h3>
+					<p>With the frontend stylesheet enabled, days with events will now be displayed with a filled circle to indicate an event on that day.</p>
 				</div>
 				<div class="col">
 					<h3>Relative Ranges</h3>
@@ -240,13 +266,18 @@ class SP_Admin_Welcome {
 				</div>
 				<div class="col">
 					<h3>Sort by Match Day</h3>
-					<p>Use the columns in the admin to sort events by match day.</p>
+					<p>Use the columns in the admin to sort events by match day. A search bar has also been added to filter events by match day.</p>
 				</div>
 			</div>
 
 			<hr>
 
-			<h2>Other Notes</h2>
+			<div class="feature-section one-col">
+				<div class="col">
+					<h2>Other Notes</h2>
+				</div>
+			</div>
+
 			<div class="feature-section three-col">
 				<div class="col">
 					<h3>Schema Microdata</h3>
