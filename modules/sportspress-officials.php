@@ -99,6 +99,12 @@ class SportsPress_Officials {
 			'show_tagcloud' => false,
 			'hierarchical' => true,
 			'rewrite' => array( 'slug' => get_option( 'sportspress_duty_slug', 'duty' ) ),
+			'capabilities' => array(
+				'manage_terms' => 'manage_sp_event_terms',
+				'edit_terms' => 'edit_sp_event_terms',
+				'delete_terms' => 'delete_sp_event_terms',
+				'assign_terms' => 'assign_sp_event_terms',
+			),
 			'show_in_rest' => true,
 			'rest_controller_class' => 'SP_REST_Terms_Controller',
 			'rest_base' => 'duties',
@@ -134,7 +140,7 @@ class SportsPress_Officials {
 					),
 					'public' 				=> true,
 					'show_ui' 				=> true,
-					'capability_type' 		=> 'sp_staff',
+					'capability_type' 		=> 'sp_event',
 					'map_meta_cap' 			=> true,
 					'publicly_queryable' 	=> true,
 					'exclude_from_search' 	=> false,
@@ -579,7 +585,7 @@ class SportsPress_Officials {
 	 * Add menu item
 	 */
 	public function duties_menu() {
-		add_submenu_page( 'edit.php?post_type=sp_official', __( 'Duties', 'sportspress' ), __( 'Duties', 'sportspress' ), 'manage_sportspress', 'edit-tags.php?taxonomy=sp_duty');
+		add_submenu_page( 'edit.php?post_type=sp_official', __( 'Duties', 'sportspress' ), __( 'Duties', 'sportspress' ), 'manage_sp_event_terms', 'edit-tags.php?taxonomy=sp_duty');
 	}
 
 	/**
