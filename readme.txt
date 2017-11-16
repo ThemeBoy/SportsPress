@@ -245,6 +245,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Feature - Box score importer for updating existing events.
 * Feature - Order setting added to taxonomies for custom sorting.
 * Feature - New relative date range options in event calendars.
+* Feature - Date range options added to league tables and player lists.
 * Feature - Option to hide players with zero statistics in player list.
 * Tweak - Allow staff members to have multiple jobs.
 * Tweak - Indicator dots added to calendars with events in frontend stylesheet.
