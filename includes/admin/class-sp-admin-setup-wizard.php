@@ -329,7 +329,7 @@ class SP_Admin_Setup_Wizard {
     }
     update_option( 'sportspress_sport', $sport );
 
-    // Insert competition
+    // Insert league
     $league = sanitize_text_field( $_POST['league'] );
     if ( ! is_string( $league ) || empty( $league ) ) {
       $league = _x( 'Primary League', 'example', 'sportspress' ); 

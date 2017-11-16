@@ -78,7 +78,7 @@ class SP_AJAX {
 			<p>
 				<label>
 					<input class="checkbox" type="checkbox" name="show_league">
-					<?php _e( 'Display competition', 'sportspress' ); ?>
+					<?php _e( 'Display league', 'sportspress' ); ?>
 				</label>
 			</p>
 			<?php do_action( 'sportspress_ajax_shortcode_form', 'countdown' ); ?>

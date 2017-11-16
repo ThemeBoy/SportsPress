@@ -28,7 +28,7 @@ class SP_Calendar extends SP_Secondary_Post {
 	/** @var string The match day. */
 	public $day;
 
-	/** @var int The competition ID. */
+	/** @var int The league ID. */
 	public $league;
 
 	/** @var int The season ID. */

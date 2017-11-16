@@ -739,7 +739,7 @@ class SP_Player extends SP_Custom_Post {
 	}
 
 	/**
-	 * Returns formatted data for all competitions
+	 * Returns formatted data for all leagues
 	 *
 	 * @access public
 	 * @param int $league_id

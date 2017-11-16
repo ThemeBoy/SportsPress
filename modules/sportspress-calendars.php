@@ -330,7 +330,7 @@ class SportsPress_Calendars {
 
 				array(
 					'title'     => __( 'Details', 'sportspress' ),
-					'desc' 		=> __( 'Display competition', 'sportspress' ),
+					'desc' 		=> __( 'Display league', 'sportspress' ),
 					'id' 		=> 'sportspress_event_blocks_show_league',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',

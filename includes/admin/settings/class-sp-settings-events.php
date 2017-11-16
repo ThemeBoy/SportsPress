@@ -125,7 +125,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 					array(
 						'title'     => __( 'Teams', 'sportspress' ),
-						'desc' 		=> __( 'Filter by competition', 'sportspress' ),
+						'desc' 		=> __( 'Filter by league', 'sportspress' ),
 						'id' 		=> 'sportspress_event_filter_teams_by_league',
 						'default'	=> 'no',
 						'type' 		=> 'checkbox',
