@@ -5,7 +5,7 @@
  * The SportsPress staff directory class handles individual staff directory data.
  *
  * @class 		SP_Staff_Directory
- * @version		2.3
+ * @version		2.5
  * @package		SportsPress_Staff_Directories
  * @category	Class
  * @author 		ThemeBoy

@@ -3,11 +3,11 @@
  * Plugin Name: SportsPress Pro
  * Plugin URI: http://tboy.co/pro
  * Description: Advanced club & league management from ThemeBoy.
- * Version: 2.4.2
+ * Version: 2.5
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
- * Tested up to: 4.8
+ * Tested up to: 4.9
  *
  * Text Domain: sportspress
  * Domain Path: /languages/
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress_Pro' ) ) :
  * Main SportsPress Pro Class
  *
  * @class SportsPress_Pro
- * @version	2.4.2
+ * @version	2.5
  */
 final class SportsPress_Pro {
 
 	/**
 	 * @var string
 	 */
-	public $version = '2.4.2';
+	public $version = '2.5';
 
 	/**
 	 * SportsPress Pro Constructor.
@@ -61,6 +61,7 @@ final class SportsPress_Pro {
 		add_action( 'get_the_generator_html', array( $this, 'generator_tag' ), 10, 2 );
 		add_action( 'get_the_generator_xhtml', array( $this, 'generator_tag' ), 10, 2 );
 		add_action( 'themeboy_required_plugins', array( $this, 'unrequire_core' ) );
+		add_action( 'sportspress_before_welcome_features', array( $this, 'welcome_features' ) );
 
 		// Loaded action
 		do_action( 'sportspress_pro_loaded' );
@@ -162,13 +163,41 @@ final class SportsPress_Pro {
 	}
 
 	/**
-	 * Unrequire SportsPress core
+	 * Unrequire SportsPress core.
 	 */
 	function unrequire_core( $plugins = array() ) {
 		foreach ( $plugins as $index => $plugin ):
 			if ( sp_array_value( $plugin, 'slug' ) == 'sportspress' ) unset( $plugins[ $index ] );
 		endforeach;
 		return $plugins;
+	}
+
+	/**
+	 * Welcome page features.
+	 */
+	function welcome_features() {
+		?>
+		<div class="feature-section one-col">
+			<div class="col">
+				<h2>Pro Updates 🏆</h2>
+			</div>
+		</div>
+
+		<div class="feature-section two-col">
+			<div class="col">
+				<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-group-stages.png" alt="Tournament Group Stages">
+				<h3>Tournament Group Stages</h3>
+				<p>Support for group stages have been added natively to tournaments, allowing you to create and attach league tables to be displayed directly below tournament brackets.</p>
+			</div>
+			<div class="col">
+				<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-sponsor-levels.png" alt="Sponsorship Levels">
+				<h3>Sponsorship Levels</h3>
+				<p>Assign levels to sponsors based on their contribution or other factors. Sponsors can now be filtered based on their sponsorship level within widgets, allowing for level-specific sponsor treament.<p>
+			</div>
+		</div>
+
+		<hr>
+		<?php
 	}
 
 	/** Helper functions ******************************************************/

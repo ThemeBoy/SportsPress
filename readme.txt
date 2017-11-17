@@ -2,8 +2,8 @@
 Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
-Tested up to: 4.8
-Stable tag: 2.4.2
+Tested up to: 4.9
+Stable tag: 2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,35 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.5 =
+* Feature - Group stages added to tournaments.
+* Feature - Sponsorship levels added to filter sponsors by contribution.
+* Feature - Date range options added to scoreboards and staff directories.
+* Feature - Player of the match and star numbers added to box scores.
+* Feature - Officials module for displaying referee appointments in matches.
+* Feature - New player performance icons to choose from.
+* Feature - Schema microdata added to event calendars, lists, and blocks.
+* Feature - Box score importer for updating existing events.
+* Feature - Order setting added to taxonomies for custom sorting.
+* Feature - New relative date range options in event calendars.
+* Feature - Date range options added to league tables and player lists.
+* Feature - Option to hide players with zero statistics in player list.
+* Tweak - Multiple staff displayed in staff directories.
+* Tweak - Allow staff members to have multiple jobs.
+* Tweak - Indicator dots added to calendars with events in frontend stylesheet.
+* Tweak - Box score columns are now selected by default when adding new events.
+* Tweak - Events made sortable by match day in admin.
+* Tweak - Competitions renamed to leagues.
+* Fix - Facebook SDK update to resolve favicon issues.
+* Fix - Quick edit teams not showing when filtering players by team.
+* Fix - Calendar feeds not updating without E-tag.
+* Fix - Admin table cells wrapping.
+* Fix - Timezone issues in calendars.
+
+= 2.4.3 =
+* Fix - Substitute Typo.
+* Fix - WordPay image trailing slash.
 
 = 2.4.2 =
 * Feature - Add visibility option to player metrics.
