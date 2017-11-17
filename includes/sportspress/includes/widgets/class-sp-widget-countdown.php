@@ -107,7 +107,7 @@ class SP_Widget_Countdown extends WP_Widget {
 		<label for="<?php echo $this->get_field_id('show_venue'); ?>"><?php _e( 'Display venue', 'sportspress' ); ?></label></p>
 
 		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_league'); ?>" name="<?php echo $this->get_field_name('show_league'); ?>" value="1" <?php checked( $show_league, 1 ); ?>>
-		<label for="<?php echo $this->get_field_id('show_league'); ?>"><?php _e( 'Display competition', 'sportspress' ); ?></label></p>
+		<label for="<?php echo $this->get_field_id('show_league'); ?>"><?php _e( 'Display league', 'sportspress' ); ?></label></p>
 		
 		<?php
 		// Action to hook into

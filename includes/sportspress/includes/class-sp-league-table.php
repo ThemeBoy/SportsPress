@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version     2.3
+ * @version   2.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -56,16 +56,12 @@ class SP_League_Table extends SP_Secondary_Post {
 
 			if ( $this->relative ) {
 
-				if ( ! $this->past )
-					$this->past = get_post_meta( $this->ID, 'sp_date_past', true );
+				$this->past = get_post_meta( $this->ID, 'sp_date_past', true );
 
 			} else {
 
-				if ( ! $this->from )
-					$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
-
-				if ( ! $this->to )
-					$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
+				$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
+				$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
 
 			}
 

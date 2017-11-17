@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version   2.2.7
+ * @version		2.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -164,7 +164,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 	    if ( taxonomy_exists( 'sp_league' ) ):
 			$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 			$args = array(
-				'show_option_all' =>  __( 'Show all competitions', 'sportspress' ),
+				'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),
 				'taxonomy' => 'sp_league',
 				'name' => 'sp_league',
 				'selected' => $selected

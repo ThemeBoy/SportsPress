@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version   2.3.2
+ * @version   2.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -64,16 +64,12 @@ class SP_Player_List extends SP_Secondary_Post {
 
 			if ( $this->relative ) {
 
-				if ( ! $this->past )
-					$this->past = get_post_meta( $this->ID, 'sp_date_past', true );
+				$this->past = get_post_meta( $this->ID, 'sp_date_past', true );
 
 			} else {
 
-				if ( ! $this->from )
-					$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
-
-				if ( ! $this->to )
-					$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
+				$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
+				$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
 
 			}
 

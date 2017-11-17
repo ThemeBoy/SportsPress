@@ -5,7 +5,7 @@
  * The SportsPress staff class handles individual staff data.
  *
  * @class 		SP_Staff
- * @version		1.8.9
+ * @version   2.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

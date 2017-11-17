@@ -8,7 +8,7 @@
  * https://wordpress.org/support/topic/timezone-issues-with-schedule-calendar-list/
  *
  * @class 		SP_Calendar
- * @version     2.2
+ * @version   2.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -28,7 +28,7 @@ class SP_Calendar extends SP_Secondary_Post {
 	/** @var string The match day. */
 	public $day;
 
-	/** @var int The competition ID. */
+	/** @var int The league ID. */
 	public $league;
 
 	/** @var int The season ID. */
@@ -85,19 +85,13 @@ class SP_Calendar extends SP_Secondary_Post {
 
 			if ( $this->relative ) {
 
-				if ( ! $this->past )
-					$this->past = get_post_meta( $this->ID, 'sp_date_past', true );
-
-				if ( ! $this->future )
-					$this->future = get_post_meta( $this->ID, 'sp_date_future', true );
+				$this->past = get_post_meta( $this->ID, 'sp_date_past', true );
+				$this->future = get_post_meta( $this->ID, 'sp_date_future', true );
 
 			} else {
 
-				if ( ! $this->from )
-					$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
-
-				if ( ! $this->to )
-					$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
+				$this->from = get_post_meta( $this->ID, 'sp_date_from', true );
+				$this->to = get_post_meta( $this->ID, 'sp_date_to', true );
 
 			}
 

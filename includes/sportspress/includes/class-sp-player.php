@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		2.4
+ * @version   2.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -739,7 +739,7 @@ class SP_Player extends SP_Custom_Post {
 	}
 
 	/**
-	 * Returns formatted data for all competitions
+	 * Returns formatted data for all leagues
 	 *
 	 * @access public
 	 * @param int $league_id

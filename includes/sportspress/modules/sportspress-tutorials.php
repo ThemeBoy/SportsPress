@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Display SportsPress video tutorials.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.1
+Version: 2.5
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
  * Main SportsPress Tutorials Class
  *
  * @class SportsPress_Tutorials
- * @version	2.1
+ * @version	2.5
  */
 class SportsPress_Tutorials {
 
@@ -54,7 +54,7 @@ class SportsPress_Tutorials {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_TUTORIALS_VERSION' ) )
-			define( 'SP_TUTORIALS_VERSION', '2.1' );
+			define( 'SP_TUTORIALS_VERSION', '2.5' );
 
 		if ( !defined( 'SP_TUTORIALS_URL' ) )
 			define( 'SP_TUTORIALS_URL', plugin_dir_url( __FILE__ ) );
@@ -71,7 +71,7 @@ class SportsPress_Tutorials {
 			'tutorials' => apply_filters( 'sportspress_tutorial_videos', array(
 				__( 'Get Started', 'sportspress' ) => apply_filters( 'sportspress_get_started_tutorial_videos', array(
 					__( 'Installation', 'sportspress' ) => '//www.youtube-nocookie.com/embed/nE8-RlbotmU?rel=0&amp;showinfo=0',
-					__( 'Competitions', 'sportspress' ) . ' &amp; ' . __( 'Seasons', 'sportspress' ) => '//www.youtube-nocookie.com/embed/XAf2EsDrf8M?rel=0&amp;showinfo=0',
+					__( 'Leagues', 'sportspress' ) . ' &amp; ' . __( 'Seasons', 'sportspress' ) => '//www.youtube-nocookie.com/embed/XAf2EsDrf8M?rel=0&amp;showinfo=0',
 					__( 'Venues', 'sportspress' ) => '//www.youtube-nocookie.com/embed/iTZnC_7VvYk?rel=0&amp;showinfo=0',
 					__( 'Positions', 'sportspress' ) . ' &amp; ' . __( 'Jobs', 'sportspress' ) => '//www.youtube-nocookie.com/embed/g6QKbDH05n0?rel=0&amp;showinfo=0',
 				) ),

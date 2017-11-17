@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Importers
- * @version     2.1
+ * @version		2.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -65,12 +65,28 @@ if ( class_exists( 'WP_Importer' ) ) {
 				if ( empty( $row ) ) continue;
 
 				$player_name = sp_array_value( $row, $name_index );
-				if ( ! $player_name ) continue;
+				
+				if ( ! $player_name ):
+					$this->skipped ++;
+					continue;
+				endif;
 
 				$player_object = get_page_by_title( stripslashes( $player_name ), OBJECT, 'sp_player' );
 
-				if ( ! $player_object ) continue;
-				$player_id = $player_object->ID;
+				if ( $player_object ):
+
+					// Get player ID
+					$player_id = $player_object->ID;
+
+				else:
+
+					// Insert player
+					$player_id = wp_insert_post( array( 'post_type' => 'sp_player', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $player_name ) ) );
+
+					// Flag as import
+					update_post_meta( $player_id, '_sp_import', 1 );
+
+				endif;
 
 				$team_players[] = $player_id;
 				$player = array();

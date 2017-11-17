@@ -9,7 +9,7 @@
  * @author      WooThemes
  * @category    Admin
  * @package     SportsPress/Admin
- * @version     2.4
+ * @version     2.5
 */
 if ( ! defined( 'ABSPATH' ) ) {
   exit;
@@ -329,7 +329,7 @@ class SP_Admin_Setup_Wizard {
     }
     update_option( 'sportspress_sport', $sport );
 
-    // Insert competition
+    // Insert league
     $league = sanitize_text_field( $_POST['league'] );
     if ( ! is_string( $league ) || empty( $league ) ) {
       $league = _x( 'Primary League', 'example', 'sportspress' ); 
