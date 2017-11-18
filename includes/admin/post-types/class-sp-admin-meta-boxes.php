@@ -130,13 +130,6 @@ class SP_Admin_Meta_Boxes {
 					'context' => 'side',
 					'priority' => 'default',
 				),
-				'officials' => array(
-					'title' => __( 'Officials', 'sportspress' ),
-					'save' => 'SP_Meta_Box_Event_Officials::save',
-					'output' => 'SP_Meta_Box_Event_Officials::output',
-					'context' => 'side',
-					'priority' => 'default',
-				),
 				'details' => array(
 					'title' => __( 'Details', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Event_Details::save',
