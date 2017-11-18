@@ -39,23 +39,30 @@ class SP_Meta_Box_Event_Officials {
 
     $officials = (array) get_post_meta( $post->ID, 'sp_officials', true );
 
-    foreach ( $duties as $duty ) {
-      ?>
-    	<p><strong><?php echo $duty->name; ?></strong></p>
-      <p><?php
-      $args = array(
-        'post_type' => 'sp_official',
-        'name' => 'sp_officials[' . $duty->term_id . '][]',
-        'selected' => sp_array_value( $officials, $duty->term_id, array() ),
-        'values' => 'ID',
-        'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Officials', 'sportspress' ) ),
-        'class' => 'widefat',
-        'property' => 'multiple',
-        'chosen' => true,
-      );
-      sp_dropdown_pages( $args );
-      ?></p>
-      <?php
+    if ( is_array( $duties ) && sizeof( $duties ) ) {
+      foreach ( $duties as $duty ) {
+        ?>
+      	<p><strong><?php echo $duty->name; ?></strong></p>
+        <p><?php
+        $args = array(
+          'post_type' => 'sp_official',
+          'name' => 'sp_officials[' . $duty->term_id . '][]',
+          'selected' => sp_array_value( $officials, $duty->term_id, array() ),
+          'values' => 'ID',
+          'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Officials', 'sportspress' ) ),
+          'class' => 'widefat',
+          'property' => 'multiple',
+          'chosen' => true,
+        );
+
+        if ( ! sp_dropdown_pages( $args ) ) {
+          sp_post_adder( 'sp_official', __( 'Add New', 'sportspress' )  );
+        }
+        ?></p>
+        <?php
+      }
+    } else {
+      sp_taxonomy_adder( 'sp_duty', 'sp_official', __( 'Duty', 'sportspress' ) );
     }
   }
 
