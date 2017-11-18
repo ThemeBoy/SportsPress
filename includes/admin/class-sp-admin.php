@@ -116,16 +116,6 @@ class SP_Admin {
 					})(jQuery);
 					</script>
 					<?php
-				} elseif ( 'post.php' === $pagenow ) {
-					?>
-					<script type="text/javascript">
-					(function($) {
-						$(".wrap .page-title-action").first().after(
-							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_performance_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import Box Score', 'sportspress' ); ?></a>")
-						);
-					})(jQuery);
-					</script>
-					<?php
 				}
 			} else {
 				if ( 'edit.php' === $pagenow ) {

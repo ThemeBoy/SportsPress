@@ -144,12 +144,19 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		function greet() {
-			$args = array_merge( $_REQUEST, array( 'import' => 'sp_event_performance_csv', 'step' => '1' ) );
+			$event = sp_array_value( $_REQUEST, 'event', 0 );
 
 			echo '<div class="narrow">';
-			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
-			echo '<p>' . sprintf( __( 'Box scores need to be defined with columns in a specific order. <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/event-performance-sample.csv' ) . '</p>';
-			wp_import_upload_form( add_query_arg( $args, 'admin.php' ) );
+
+			if ( $event ) {
+				$args = array_merge( $_REQUEST, array( 'import' => 'sp_event_performance_csv', 'step' => '1' ) );
+				echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
+				echo '<p>' . sprintf( __( 'Box scores need to be defined with columns in a specific order. <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/event-performance-sample.csv' ) . '</p>';
+				wp_import_upload_form( add_query_arg( $args, 'admin.php' ) );
+			} else {
+				echo '<p><a href="' . admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ) . '">' . sprintf( __( 'Select %s', 'sportspress' ), __( 'Event', 'sportspress' ) ) . '</a></p>';
+			}
+
 			echo '</div>';
 		}
 
