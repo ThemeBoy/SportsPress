@@ -53,6 +53,7 @@ function sp_get_screen_ids() {
     	'edit-sp_venue',
     	'edit-sp_league',
     	'edit-sp_season',
-    	'edit-sp_position',
+        'edit-sp_position',
+        'edit-sp_role',
     ) );
 }

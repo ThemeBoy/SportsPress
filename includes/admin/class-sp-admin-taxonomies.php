@@ -39,11 +39,15 @@ class SP_Admin_Taxonomies {
 		add_action( 'edited_sp_position', array( $this, 'save_fields' ), 10, 1 );
 		add_action( 'create_sp_position', array( $this, 'save_fields' ), 10, 1 );
 
+		// Add job field
+		add_action( 'sp_role_edit_form_fields', array( $this, 'edit_taxonomy_fields' ), 10, 1 );
+		add_action( 'edited_sp_role', array( $this, 'save_fields' ), 10, 1 );
+
 		// Change league columns
 		add_filter( 'manage_edit-sp_league_columns', array( $this, 'taxonomy_columns' ) );
 		add_filter( 'manage_sp_league_custom_column', array( $this, 'column_value' ), 10, 3 );
 
-		// Change league columns
+		// Change season columns
 		add_filter( 'manage_edit-sp_season_columns', array( $this, 'taxonomy_columns' ) );
 		add_filter( 'manage_sp_season_custom_column', array( $this, 'column_value' ), 10, 3 );
 
@@ -54,6 +58,10 @@ class SP_Admin_Taxonomies {
 		// Change position columns
 		add_filter( 'manage_edit-sp_position_columns', array( $this, 'position_columns' ) );
 		add_filter( 'manage_sp_position_custom_column', array( $this, 'column_value' ), 10, 3 );
+
+		// Change job columns
+		add_filter( 'manage_edit-sp_role_columns', array( $this, 'taxonomy_columns' ) );
+		add_filter( 'manage_sp_role_custom_column', array( $this, 'column_value' ), 10, 3 );
 	}
 
 	/**
