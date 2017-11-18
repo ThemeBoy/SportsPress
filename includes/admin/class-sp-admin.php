@@ -102,7 +102,7 @@ class SP_Admin {
 	 */
 	public function action_links() {
 		global $pagenow, $typenow;
-		if ( in_array( $typenow, sp_primary_post_types() ) ) {
+		if ( in_array( $typenow, sp_importable_post_types() ) ) {
 			if ( 'sp_event' === $typenow ) {
 				if ( 'edit.php' === $pagenow ) {
 					?>

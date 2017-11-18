@@ -59,6 +59,18 @@ if ( ! function_exists( 'sp_secondary_post_types' ) ) {
 }
 
 /**
+ * sp_importable_post_types - Returns array of SP post types with importers
+ *
+ * @access public
+ * @return array
+ */
+if ( ! function_exists( 'sp_importable_post_types' ) ) {
+	function sp_importable_post_types() {
+		return apply_filters( 'sportspress_importable_post_types',  array( 'sp_event', 'sp_team', 'sp_player', 'sp_staff' ) );
+	}
+}
+
+/**
  * sp_config_types - Returns array of SP config types
  *
  * @access public
