@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.5
+Stable tag: 2.5.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,18 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.5.1 =
+* Feature - Add sponsorship level column to sponsors importer.
+* Feature - Officials importer.
+* Feature - Officials added to dashboard glance items.
+* Feature - Order setting added to staff jobs for custom sorting.
+* Tweak - Apply custom order to jobs in staff directories.
+* Tweak - Display only the highest order job in staff profiles.
+* Tweak - Require box score importer to be accessed from within an event.
+* Tweak - Add hook to declare importable post types.
+* Fix - Officials meta box in events when module is inactive.
+* Fix - Issues when timezone is not set.
 
 = 2.5 =
 * Feature - Group stages added to tournaments.
