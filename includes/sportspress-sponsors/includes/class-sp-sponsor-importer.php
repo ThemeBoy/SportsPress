@@ -25,6 +25,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->columns = array(
 				'post_title' => __( 'Name', 'sportspress' ),
 				'sp_url' => __( 'URL', 'sportspress' ),
+				'sp_level' => __( 'Level', 'sportspress' ),
 			);
 			parent::__construct();
 		}
@@ -73,6 +74,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 				// Update URL
 				update_post_meta( $id, 'sp_url', sp_array_value( $meta, 'sp_url' ) );
 
+				// Update levels
+				$levels = explode( '|', sp_array_value( $meta, 'sp_level' ) );
+				wp_set_object_terms( $id, $levels, 'sp_level', false );
+
 				$this->imported++;
 
 			endforeach;
@@ -113,7 +118,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
-			echo '<p>' . sprintf( __( 'Sponsors need to be defined with columns in a specific order (2 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), SP_SPONSORS_URL . 'dummy-data/sponsors-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( __( '%1$s need to be defined with columns in a specific order. <a href="%2$s">Click here to download a sample</a>.', 'sportspress' ), __( 'Sponsors', 'sportspress' ), SP_SPONSORS_URL . 'dummy-data/sponsors-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_sponsor_csv&step=1' );
 			echo '</div>';
 		}

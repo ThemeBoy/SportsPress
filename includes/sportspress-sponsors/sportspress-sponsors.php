@@ -39,8 +39,9 @@ class SportsPress_Sponsors {
 		add_action( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_action( 'sportspress_after_single_sponsor', array( $this, 'sponsor_link' ), 10 );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
-		add_filter( 'sportspress_taxonomies', array( $this, 'add_taxonomy' ) );
 		add_filter( 'sportspress_primary_post_types', array( $this, 'add_post_type' ) );
+		add_filter( 'sportspress_importable_post_types', array( $this, 'add_post_type' ) );
+		add_filter( 'sportspress_taxonomies', array( $this, 'add_taxonomy' ) );
 		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
 	    add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
