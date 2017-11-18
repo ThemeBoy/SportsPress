@@ -119,6 +119,22 @@ class SP_REST_API {
 				),
 			)
 		);
+
+		register_rest_field( 'sp_event',
+			'day',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_data',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Match Day', 'sportspress' ),
+					'type'            => 'string',
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'sanitize_text_field',
+					),
+				),
+			)
+		);
 		
 		register_rest_field( 'sp_event',
 			'minutes',
@@ -502,22 +518,6 @@ class SP_REST_API {
 				),
 			)
 		);
-
-		register_rest_field( 'sp_event',
-            'day',
-            array(
-                'get_callback'    => 'SP_REST_API::get_post_data',
-                'update_callback' => 'SP_REST_API::update_post_meta_arrays',
-                'schema'          => array(
-                    'description'     => __( 'Results', 'sportspress' ),
-                    'type'            => 'array',
-                    'context'         => array( 'view', 'edit' ),
-                    'arg_options'     => array(
-                        'sanitize_callback' => 'rest_sanitize_request_arg',
-                    ),
-                ),
-            )
-        );
 		
 		do_action( 'sportspress_register_rest_fields' );
 	}

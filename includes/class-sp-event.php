@@ -25,6 +25,11 @@ class SP_Event extends SP_Custom_Post{
 		}
 		return $post_status;
 	}
+
+	public function day() {
+		$day = get_post_meta( $this->ID, 'sp_day', true );
+		return $day;
+  }
 	
 	public function minutes() {
 		$minutes = get_post_meta( $this->ID, 'sp_minutes', true );
@@ -702,10 +707,4 @@ class SP_Event extends SP_Custom_Post{
 	public function sort_timeline( $a, $b ) {
 		return $a['time'] - $b['time'];
 	}
-
-	public function day() {
-        $day = get_post_meta( $this->ID, 'sp_day', true );
-        if ( '' === $day ) $day = 'empty';
-        return $day;
-    }
 }
