@@ -71,9 +71,6 @@ foreach( $data as $staff_id => $row ):
 	endif;
 
 	$output .= '<td class="data-name">' . $name . '</td>';
-
-	if ( ! is_array( $columns ) || in_array( 'role', $columns ) )
-		$output .= '<td class="data-role">' . sp_array_value( $row, 'role', '&mdash;' ) . '</td>';
 	
 	if ( array_key_exists( 'team', $labels ) ):
 		$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_team', true ) );
@@ -85,7 +82,7 @@ foreach( $data as $staff_id => $row ):
 	endif;
 
 	foreach( $labels as $key => $label ):
-		if ( in_array( $key, array( 'name', 'role' ) ) )
+		if ( in_array( $key, array( 'name' ) ) )
 			continue;
 		if ( ! is_array( $columns ) || in_array( $key, $columns ) ):
 			$value = sp_array_value( $row, $key, '&mdash;' );

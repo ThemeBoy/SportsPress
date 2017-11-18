@@ -163,7 +163,6 @@ class SP_Staff_Directory_Meta_Boxes {
 					<tr>
 						<th class="icon">&nbsp;</th>
 						<th><?php _e( 'Name', 'sportspress' ); ?></th>
-						<th><?php _e( 'Job', 'sportspress' ); ?></th>
 						<?php foreach ( $labels as $key => $label ): ?>
 							<th><label for="sp_columns_<?php echo $key; ?>">
 								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! is_array( $columns ) || in_array( $key, $columns ) ); ?>>

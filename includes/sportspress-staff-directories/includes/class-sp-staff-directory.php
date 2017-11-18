@@ -171,6 +171,7 @@ class SP_Staff_Directory extends SP_Custom_Post {
 		endif;
 
 		$labels = apply_filters( 'sportspress_directory_labels', array(
+			'role' => __( 'Job', 'sportspress' ),
 			'phone' => __( 'Phone', 'sportspress' ),
 			'email' => __( 'Email', 'sportspress' ),
 		));
@@ -186,7 +187,7 @@ class SP_Staff_Directory extends SP_Custom_Post {
 				endif;
 			endforeach;
 
-			$data[0] = array_merge( array( 'name' => __( 'Name', 'sportspress' ), 'role' => __( 'Job', 'sportspress' ) ), $labels );
+			$data[0] = array_merge( array( 'name' => __( 'Name', 'sportspress' ) ), $labels );
 			return $data;
 		endif;
 	}
