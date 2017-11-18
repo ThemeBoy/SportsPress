@@ -97,13 +97,13 @@ if ( ! isset( $subs ) ) $subs = array();
 							if ( $player_stars ):
 								switch ( $stars_type ):
 									case 1:
-										$name .= ' <span class="sp-event-stars"><i class="sp-event-star dashicons dashicons-star-filled" title="' . __( 'Player of the Match', 'sportspress' ) . '"></i><span>';
+										$name .= ' <span class="sp-event-stars"><i class="sp-event-star dashicons dashicons-star-filled" title="' . __( 'Player of the Match', 'sportspress' ) . '"></i></span>';
 										break;
 									case 2:
-										$name .= ' <span class="sp-event-stars">' . str_repeat( '<i class="sp-event-star dashicons dashicons-star-filled" title="' . __( 'Stars', 'sportspress' ) . '"></i>', $player_stars ) . '<span>';
+										$name .= ' <span class="sp-event-stars">' . str_repeat( '<i class="sp-event-star dashicons dashicons-star-filled" title="' . __( 'Stars', 'sportspress' ) . '"></i>', $player_stars ) . '</span>';
 										break;
 									case 3:
-										$name .= ' <span class="sp-event-stars"><i class="sp-event-star sp-event-star-' . $player_stars . '  dashicons dashicons-star-filled" title="' . __( 'Stars', 'sportspress' ) . '"></i><span class="sp-event-star-number">' . $player_stars . '</span><span>';
+										$name .= ' <span class="sp-event-stars"><i class="sp-event-star sp-event-star-' . $player_stars . '  dashicons dashicons-star-filled" title="' . __( 'Stars', 'sportspress' ) . '"></i><span class="sp-event-star-number">' . $player_stars . '</span></span>';
 										break;
 								endswitch;
 							endif;
