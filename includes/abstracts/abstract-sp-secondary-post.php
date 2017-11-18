@@ -47,15 +47,19 @@ abstract class SP_Secondary_Post extends SP_Custom_Post {
   }
 
   public function range( $where = '', $format = 'Y-m-d' ) {
-    $from = new DateTime( $this->from, new DateTimeZone( get_option( 'timezone_string' ) ) );
-    $to = new DateTime( $this->to, new DateTimeZone( get_option( 'timezone_string' ) ) );
+    $datetimezone = new DateTimeZone( sp_get_timezone() );
+    $from = new DateTime( $this->from, $datetimezone );
+    $to = new DateTime( $this->to, $datetimezone );
+
     $to->modify( '+1 day' );
+
     $where .= " AND post_date BETWEEN '" . $from->format( $format ) . "' AND '" . $to->format( $format ) . "'";
+
     return $where;
   }
 
   public function relative( $where = '', $format = 'Y-m-d' ) {
-    $datetimezone = new DateTimeZone( get_option( 'timezone_string' ) );
+    $datetimezone = new DateTimeZone( sp_get_timezone() );
     $from = new DateTime( 'now', $datetimezone );
     $to = new DateTime( 'now', $datetimezone );
 
