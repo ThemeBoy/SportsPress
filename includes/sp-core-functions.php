@@ -123,6 +123,33 @@ function sp_locate_template( $template_name, $template_path = '', $default_path 
 	return apply_filters('sportspress_locate_template', $template, $template_name, $template_path);
 }
 
+/**
+ * Get the timezone string.
+ *
+ * @access public
+ * @return string
+ */
+function sp_get_timezone() {
+	$tzstring = get_option( 'timezone_string' );
+
+	// Remove old Etc mappings. Fallback to gmt_offset.
+	if ( false !== strpos( $tzstring, 'Etc/GMT' ) )
+		$tzstring = '';
+
+	if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
+		$current_offset = get_option( 'gmt_offset' );
+
+		if ( 0 == $current_offset )
+			$tzstring = 'UTC+0';
+		elseif ( $current_offset < 0 )
+			$tzstring = 'UTC' . $current_offset;
+		else
+			$tzstring = 'UTC+' . $current_offset;
+	}
+
+	return $tzstring;
+}
+
 /* deprecated functions below */
 
 if( !function_exists( 'date_diff' ) ) {
