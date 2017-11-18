@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     2.0
+ * @version		2.5.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -55,6 +55,18 @@ if ( ! function_exists( 'sp_primary_post_types' ) ) {
 if ( ! function_exists( 'sp_secondary_post_types' ) ) {
 	function sp_secondary_post_types() {
 		return apply_filters( 'sportspress_secondary_post_types', array_diff( sp_post_types(), sp_primary_post_types() ) );
+	}
+}
+
+/**
+ * sp_importable_post_types - Returns array of SP post types with importers
+ *
+ * @access public
+ * @return array
+ */
+if ( ! function_exists( 'sp_importable_post_types' ) ) {
+	function sp_importable_post_types() {
+		return apply_filters( 'sportspress_importable_post_types',  array( 'sp_event', 'sp_team', 'sp_player', 'sp_staff' ) );
 	}
 }
 

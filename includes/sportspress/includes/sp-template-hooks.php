@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version   2.5
+ * @version		2.5.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -44,11 +44,9 @@ function sportspress_the_title( $title, $id = null ) {
 			endif;
 		elseif ( is_singular( 'sp_staff' ) ):
 			$staff = new SP_Staff( $id );
-			$roles = $staff->roles();
-			if ( ! empty( $roles ) ):
-				$roles = wp_list_pluck( $roles, 'name' );
-				$title = '<strong class="sp-staff-role">' . implode( '<span class="sp-staff-role-delimiter">/</span>', $roles ) . '</strong> ' . $title;
-			endif;
+			$role = $staff->role();
+			if ( $role )
+				$title = '<strong class="sp-staff-role">' . $role->name . '</strong> ' . $title;
 		endif;
 	endif;
 

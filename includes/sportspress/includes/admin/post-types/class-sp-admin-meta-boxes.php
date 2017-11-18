@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.5
+ * @version		2.5.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -127,13 +127,6 @@ class SP_Admin_Meta_Boxes {
 					'title' => __( 'Mode', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Event_Mode::save',
 					'output' => 'SP_Meta_Box_Event_Mode::output',
-					'context' => 'side',
-					'priority' => 'default',
-				),
-				'officials' => array(
-					'title' => __( 'Officials', 'sportspress' ),
-					'save' => 'SP_Meta_Box_Event_Officials::save',
-					'output' => 'SP_Meta_Box_Event_Officials::output',
 					'context' => 'side',
 					'priority' => 'default',
 				),

@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version		2.5
+ * @version		2.5.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -130,7 +130,6 @@ class SP_Admin_Menus {
 		$sportspress_team = array_search( 'edit.php?post_type=sp_team', $menu_order );
 		$sportspress_player = array_search( 'edit.php?post_type=sp_player', $menu_order );
 		$sportspress_staff = array_search( 'edit.php?post_type=sp_staff', $menu_order );
-		$sportspress_official = array_search( 'edit.php?post_type=sp_official', $menu_order );
 
 		// Loop through menu order and do some rearranging
 		foreach ( $menu_order as $index => $item ):
@@ -142,13 +141,11 @@ class SP_Admin_Menus {
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_team';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_player';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_staff';
-				$sportspress_menu_order[] = 'edit.php?post_type=sp_official';
 				unset( $menu_order[ $sportspress_separator ] );
 				unset( $menu_order[ $sportspress_event ] );
 				unset( $menu_order[ $sportspress_team ] );
 				unset( $menu_order[ $sportspress_player ] );
 				unset( $menu_order[ $sportspress_staff ] );
-				unset( $menu_order[ $sportspress_official ] );
 
 				// Apply to added menu items
 				$menu_items = apply_filters( 'sportspress_menu_items', array() );

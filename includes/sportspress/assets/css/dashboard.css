@@ -13,7 +13,9 @@
 #dashboard_right_now .sp_player-count a:before,
 #dashboard_right_now .sp_player-count span:before,
 #dashboard_right_now .sp_staff-count a:before,
-#dashboard_right_now .sp_staff-count span:before {
+#dashboard_right_now .sp_staff-count span:before,
+#dashboard_right_now .sp_official-count a:before,
+#dashboard_right_now .sp_official-count span:before {
 	font-family: 'sportspress';
 }
 
@@ -35,6 +37,11 @@
 #dashboard_right_now .sp_staff-count a:before,
 #dashboard_right_now .sp_staff-count span:before {
 	content: "\f338";
+}
+
+#dashboard_right_now .sp_official-count a:before,
+#dashboard_right_now .sp_official-count span:before {
+	content: "\f227";
 }
 
 #sportspress_dashboard_status .sp_status_list {

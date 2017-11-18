@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version		2.5
+ * @version		2.5.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -28,6 +28,7 @@ class SP_Admin_Importers {
 	 * Add menu items
 	 */
 	public function register_importers() {
+		global $pagenow;
 		$importers = apply_filters( 'sportspress_importers', array(
 			'sp_event_csv' => array(
 				'name' => __( 'SportsPress Events (CSV)', 'sportspress' ),
@@ -38,11 +39,6 @@ class SP_Admin_Importers {
 				'name' => __( 'SportsPress Fixtures (CSV)', 'sportspress' ),
 				'description' => __( 'Import <strong>upcoming events</strong> from a csv file.', 'sportspress'),
 				'callback' => array( $this, 'fixtures_importer' ),
-			),
-			'sp_event_performance_csv' => array(
-				'name' => __( 'SportsPress Box Score (CSV)', 'sportspress' ),
-				'description' => __( 'Import <strong>event box scores</strong> from a csv file.', 'sportspress'),
-				'callback' => array( $this, 'event_performance_importer' ),
 			),
 			'sp_team_csv' => array(
 				'name' => __( 'SportsPress Teams (CSV)', 'sportspress' ),
@@ -60,6 +56,14 @@ class SP_Admin_Importers {
 				'callback' => array( $this, 'staff_importer' ),
 			),
 		) );
+
+		if ( 'import.php' !== $pagenow ) {
+			$importers['sp_event_performance_csv'] = array(
+				'name' => __( 'SportsPress Box Score (CSV)', 'sportspress' ),
+				'description' => '<a href="' . admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ) . '">' . sprintf( __( 'Select %s', 'sportspress' ), __( 'Event', 'sportspress' ) ) . '</a>',
+				'callback' => array( $this, 'event_performance_importer' ),
+			);
+		}
 
 		foreach ( $importers as $id => $importer ) {
 			register_importer( $id, $importer['name'], $importer['description'], $importer['callback'] );

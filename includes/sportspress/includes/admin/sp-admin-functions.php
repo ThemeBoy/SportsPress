@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Core
  * @package     SportsPress/Admin/Functions
- * @version     1.8.3
+ * @version     2.5.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -53,6 +53,7 @@ function sp_get_screen_ids() {
     	'edit-sp_venue',
     	'edit-sp_league',
     	'edit-sp_season',
-    	'edit-sp_position',
+        'edit-sp_position',
+        'edit-sp_role',
     ) );
 }

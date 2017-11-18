@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add officials to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.5
+Version: 2.5.1
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
  * Main SportsPress Officials Class
  *
  * @class SportsPress_Officials
- * @version	2.5
+ * @version	2.5.1
  */
 class SportsPress_Officials {
 
@@ -49,9 +49,13 @@ class SportsPress_Officials {
 		add_filter( 'sportspress_after_event_template', array( $this, 'add_event_template' ), 30 );
 		add_filter( 'sportspress_event_options', array( $this, 'add_event_options' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
+		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ) );
+		add_filter( 'sportspress_glance_items', array( $this, 'add_glance_item' ) );
+		add_filter( 'sportspress_importers', array( $this, 'register_importer' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_primary_post_types', array( $this, 'add_post_type' ) );
+		add_filter( 'sportspress_importable_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
 		add_filter( 'manage_edit-sp_duty_columns', array( $this, 'taxonomy_columns' ) );
 		add_filter( 'manage_sp_duty_custom_column', array( $this, 'taxonomy_column_value' ), 10, 3 );
@@ -62,7 +66,7 @@ class SportsPress_Officials {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_OFFICIALS_VERSION' ) )
-			define( 'SP_OFFICIALS_VERSION', '2.5' );
+			define( 'SP_OFFICIALS_VERSION', '2.5.1' );
 
 		if ( !defined( 'SP_OFFICIALS_URL' ) )
 			define( 'SP_OFFICIALS_URL', plugin_dir_url( __FILE__ ) );
@@ -458,6 +462,47 @@ class SportsPress_Officials {
 		return array_merge( $options, array(
 			__( 'Officials', 'sportspress' ),
 		) );
+	}
+
+	/**
+	 * Add menu item
+	 */
+	public function add_menu_item( $items ) {
+		$items[] = 'edit.php?post_type=sp_official';
+		return $items;
+	}
+
+	/**
+	 * Add glance item
+	 */
+	public function add_glance_item( $items ) {
+		$items[] = 'sp_official';
+		return $items;
+	}
+
+	/**
+	 * Register importer
+	 */
+	public function register_importer( $importers = array() ) {
+		$importers['sp_official_csv'] = array(
+			'name' => __( 'SportsPress Officials (CSV)', 'sportspress' ),
+			'description' => __( 'Import <strong>officials</strong> from a csv file.', 'sportspress'),
+			'callback' => array( $this, 'officials_importer' ),
+		);
+		return $importers;
+	}
+
+	/**
+	 * Officials importer
+	 */
+	public function officials_importer() {
+		SP_Admin_Importers::includes();
+
+			require SP()->plugin_path() . '/includes/admin/importers/class-sp-official-importer.php';
+
+			// Dispatch
+			$importer = new SP_Official_Importer();
+			$importer->dispatch();
 	}
 
 	/**
