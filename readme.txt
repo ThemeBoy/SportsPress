@@ -1,10 +1,10 @@
 === SportsPress - Sports Club & League Manager ===
-Contributors: ThemeBoy, brianmiyaji, aylaview, rochesterj
+Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.5.1
+Stable tag: 2.5.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -236,6 +236,15 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.5.2 =
+* Feature - Add match day to REST API.
+* Tweak - Add order to positions during preset installation.
+* Tweak - Display links to add new duties and officials if empty.
+* Tweak - Add linebreaks to substitute dropdowns.
+* Fix - Use default full time minutes in REST API.
+* Fix - Uploading custom images as performance icons.
+* Fix - Displaying timed performance with custom images.
 
 = 2.5.1 =
 * Feature - Officials importer.
