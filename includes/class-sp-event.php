@@ -33,7 +33,7 @@ class SP_Event extends SP_Custom_Post{
 	
 	public function minutes() {
 		$minutes = get_post_meta( $this->ID, 'sp_minutes', true );
-		if ( '' === $minutes ) $minutes = 90;
+		if ( '' === $minutes ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 		return $minutes;
 	}
 
