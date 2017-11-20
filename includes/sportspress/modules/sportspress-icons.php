@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add vector performance icons to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.5
+Version: 2.5.2
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Icons' ) ) :
  * Main SportsPress Icons Class
  *
  * @class SportsPress_Icons
- * @version	2.5
+ * @version	2.5.2
  */
 class SportsPress_Icons {
 
@@ -48,7 +48,7 @@ class SportsPress_Icons {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_ICONS_VERSION' ) )
-			define( 'SP_ICONS_VERSION', '2.5' );
+			define( 'SP_ICONS_VERSION', '2.5.2' );
 
 		if ( !defined( 'SP_ICONS_URL' ) )
 			define( 'SP_ICONS_URL', plugin_dir_url( __FILE__ ) );
@@ -145,13 +145,16 @@ class SportsPress_Icons {
 		$post_type = get_post_type( $id );
 		if ( 'sp_performance' !== $post_type ) return $content;
 
+		// Detect if image uploaded
+		$is_uploaded = isset( $_POST['thumbnail_id'] );
+
 		// Enqueue scripts
-    	wp_enqueue_script( 'sp_iconpicker', SP()->plugin_url() . '/assets/js/admin/iconpicker.js', array( 'jquery', 'wp-color-picker', 'iris' ), SP_ICONS_VERSION, true );
+		wp_enqueue_script( 'sp_iconpicker', SP()->plugin_url() . '/assets/js/admin/iconpicker.js', array( 'jquery', 'wp-color-picker', 'iris' ), SP_ICONS_VERSION, true );
 
 		// Get selected icon
 		$has_icon = has_post_thumbnail( $id );
-		$selected = get_post_meta( $id, 'sp_icon', true );
 		if ( $has_icon ) $selected = null;
+		else $selected = $is_uploaded ? null : get_post_meta( $id, 'sp_icon', true );
 
 		// Generate icon selector
 		$icons = '';
@@ -169,8 +172,8 @@ class SportsPress_Icons {
 
 		$content = '<p><strong>' . __( 'Select Icon', 'sportspress' ) . '</strong></p>
 			<p class="sp-icons">' . $icons . '</p>
-			<div class="sp-para sp-custom-colors' . ( $has_icon ? ' hidden' : '' ) . '"><label data-sp-colors="' . $value . '"><strong>' . __( 'Customize', 'sportspress' ) . '</strong><br></label>' . $color . '</div>
-			<div class="sp-custom-thumbnail' . ( $has_icon ? '' : ' hidden' ) . '">' . $content . '</div>';
+			<div class="sp-para sp-custom-colors' . ( null == $selected ? ' hidden' : '' ) . '"><label data-sp-colors="' . $value . '"><strong>' . __( 'Customize', 'sportspress' ) . '</strong><br></label>' . $color . '</div>
+			<div class="sp-custom-thumbnail' . ( null == $selected ? '' : ' hidden' ) . '">' . $content . '</div>';
 		return $content;
 	}
 
