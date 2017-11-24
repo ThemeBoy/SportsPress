@@ -115,6 +115,15 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 
 == Changelog ==
 
+= 2.5.2 =
+* Feature - Add match day to REST API.
+* Tweak - Add order to positions during preset installation.
+* Tweak - Display links to add new duties and officials if empty.
+* Tweak - Add linebreaks to substitute dropdowns.
+* Fix - Use default full time minutes in REST API.
+* Fix - Uploading custom images as performance icons.
+* Fix - Displaying timed performance with custom images.
+
 = 2.5.1 =
 * Feature - Add sponsorship level column to sponsors importer.
 * Feature - Officials importer.
