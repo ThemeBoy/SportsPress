@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress_Tournaments
- * @version     2.3
+ * @version     2.5.2.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -233,7 +233,7 @@ class SP_Tournament_Meta_Boxes {
 			foreach ( $table_ids as $table_id ) {
 				$table = new SP_League_Table( $table_id );
 				list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );
-				$meta_box::table( $table->ID, $columns, $usecolumns, $data, $placeholders, array(), array(), true );
+				$meta_box->table( $table->ID, $columns, $usecolumns, $data, $placeholders, array(), array(), true );
 			}
 		}
 
