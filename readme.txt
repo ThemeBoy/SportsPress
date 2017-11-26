@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.5.2.1
+Stable tag: 2.5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -115,8 +115,9 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 
 == Changelog ==
 
-= 2.5.2.1 =
+= 2.5.3 =
 * Fix - Admin loading issues for calendars in older PHP versions.
+* Fix - Calendar templates not loading when timezone setting is relative to UTC.
 
 = 2.5.2 =
 * Feature - Add match day to REST API.
