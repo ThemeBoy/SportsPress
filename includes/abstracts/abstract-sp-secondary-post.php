@@ -5,7 +5,7 @@
  * The SportsPress secondary post class extends custom posts with handling of secondary post types.
  *
  * @class 		SP_Secondary_Post
- * @version   2.5.1
+ * @version   2.5.3
  * @package		SportsPress/Abstracts
  * @category	Abstract Class
  * @author 		ThemeBoy
