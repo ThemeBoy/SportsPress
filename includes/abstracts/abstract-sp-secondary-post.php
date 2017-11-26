@@ -47,9 +47,8 @@ abstract class SP_Secondary_Post extends SP_Custom_Post {
   }
 
   public function range( $where = '', $format = 'Y-m-d' ) {
-    $datetimezone = new DateTimeZone( sp_get_timezone() );
-    $from = new DateTime( $this->from, $datetimezone );
-    $to = new DateTime( $this->to, $datetimezone );
+    $from = new DateTime( $this->from );
+    $to = new DateTime( $this->to );
 
     $to->modify( '+1 day' );
 
@@ -59,9 +58,8 @@ abstract class SP_Secondary_Post extends SP_Custom_Post {
   }
 
   public function relative( $where = '', $format = 'Y-m-d' ) {
-    $datetimezone = new DateTimeZone( sp_get_timezone() );
-    $from = new DateTime( 'now', $datetimezone );
-    $to = new DateTime( 'now', $datetimezone );
+    $from = new DateTime( 'now' );
+    $to = new DateTime( 'now' );
 
     $from->modify( '-' . abs( (int) $this->past ) . ' day' );
     $to->modify( '+' . abs( (int) $this->future ) . ' day' );
