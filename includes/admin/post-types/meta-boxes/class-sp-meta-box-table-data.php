@@ -122,7 +122,7 @@ class SP_Meta_Box_Table_Data {
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $team_id, array() ), $column, 0 );
 									$placeholder = wp_strip_all_tags( $placeholder );
 									?>
-									<td><input type="text" name="sp_teams[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>" data-matrix="<?php echo $team_id; ?>_<?php echo $column; ?>" data-adjustment="<?php echo esc_attr( sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $column, 0 ) ); ?>" <?php readonly( $readonly ); ?> /></td>
+									<td><input type="text" name="sp_teams[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>" data-matrix="<?php echo $team_id; ?>_<?php echo $column; ?>" data-adjustment="<?php echo esc_attr( sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $column, 0 ) ); ?>" <?php disabled( $readonly ); ?> /></td>
 								<?php endforeach; ?>
 							</tr>
 							<?php
