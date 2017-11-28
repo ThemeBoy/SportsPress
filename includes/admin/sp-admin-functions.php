@@ -57,3 +57,23 @@ function sp_get_screen_ids() {
         'edit-sp_role',
     ) );
 }
+add_action( 'admin_enqueue_scripts', 'add_codemirror_to_custom_css' );
+function add_codemirror_to_custom_css() {
+	if ( 'toplevel_page_sportspress' == get_current_screen()->id && (isset($_GET['tab']) && $_GET['tab'] == 'general') ) {
+ 
+		// Enqueue code editor and settings for manipulating HTML.
+		$settings = wp_enqueue_code_editor( array( 'type' => 'css' ) );
+		// Bail if user disabled CodeMirror.
+		if ( false === $settings ) {
+			return;
+		}
+		wp_add_inline_script(
+			'code-editor',
+			sprintf(
+			'jQuery( function() { wp.codeEditor.initialize( "sportspress_custom_css", %s ); } );',
+			wp_json_encode( $settings )
+			)
+		);
+	}
+}
+
