@@ -63,7 +63,7 @@ class SP_Post_types {
 				'rest_controller_class' => 'SP_REST_Terms_Controller',
 				'rest_base' => 'leagues',
 			) );
-			$object_types = apply_filters( 'sportspress_league_object_types', array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) );
+			$object_types = apply_filters( 'sportspress_league_object_types', array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff', 'sp_competition' ) );
 			register_taxonomy( 'sp_league', $object_types, $args );
 			foreach ( $object_types as $object_type ):
 				register_taxonomy_for_object_type( 'sp_league', $object_type );
@@ -99,7 +99,7 @@ class SP_Post_types {
 				'rest_controller_class' => 'SP_REST_Terms_Controller',
 				'rest_base' => 'seasons',
 			) );
-			$object_types = apply_filters( 'sportspress_season_object_types', array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) );
+			$object_types = apply_filters( 'sportspress_season_object_types', array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff', 'sp_competition' ) );
 			register_taxonomy( 'sp_season', $object_types, $args );
 			foreach ( $object_types as $object_type ):
 				register_taxonomy_for_object_type( 'sp_season', $object_type );

@@ -22,6 +22,7 @@ class SP_Template_Loader {
 		add_filter( 'the_content', array( $this, 'player_content' ) );
 		add_filter( 'the_content', array( $this, 'list_content' ) );
 		add_filter( 'the_content', array( $this, 'staff_content' ) );
+		add_filter( 'the_content', array( $this, 'competition_content' ) );
 	}
 
 	public function add_content( $content, $type, $position = 10, $caption = null ) {
@@ -194,6 +195,12 @@ class SP_Template_Loader {
 	public function staff_content( $content ) {
 		if ( is_singular( 'sp_staff' ) )
 			$content = self::add_content( $content, 'staff', apply_filters( 'sportspress_staff_content_priority', 10 ) );
+		return $content;
+	}
+	
+	public function competition_content( $content ) {
+		if ( is_singular( 'sp_competition' ) )
+			$content = self::add_content( $content, 'competition', apply_filters( 'sportspress_competition_content_priority', 10 ) );
 		return $content;
 	}
 

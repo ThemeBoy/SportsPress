@@ -216,6 +216,12 @@ class SP_Admin_Menus {
 			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_leagues' ) );
 			$submenu['edit.php?post_type=sp_staff'] = array_filter( $submenu['edit.php?post_type=sp_staff'], array( $this, 'remove_seasons' ) );
 		endif;
+		
+		// Remove "Leagues" and "Seasons" links from Competitions submenu
+		if ( isset( $submenu['edit.php?post_type=sp_competition'] ) ):
+			$submenu['edit.php?post_type=sp_competition'] = array_filter( $submenu['edit.php?post_type=sp_competition'], array( $this, 'remove_leagues' ) );
+			$submenu['edit.php?post_type=sp_competition'] = array_filter( $submenu['edit.php?post_type=sp_competition'], array( $this, 'remove_seasons' ) );
+		endif;
 
 		$user_roles = $current_user->roles;
 		$user_role = array_shift($user_roles);
