@@ -23,6 +23,7 @@ class SP_Settings_Competitions extends SP_Settings_Page {
 	public function __construct() {
 		$this->id    = 'competition';
 		$this->label = __( 'Competitions', 'sportspress' );
+		$this->template  = 'competition';
 
 		if ( current_user_can( 'manage_options' ) ):
 			add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
