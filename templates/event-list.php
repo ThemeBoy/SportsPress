@@ -31,6 +31,7 @@ $defaults = array(
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_venues' => get_option( 'sportspress_link_venues', 'yes' ) == 'yes' ? true : false,
 	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
+	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_event_list_paginated', 'yes' ) == 'yes' ? true : false,
@@ -91,6 +92,7 @@ if ( $show_title && false === $title && $id ):
 	else
 		$title = get_the_title( $id );
 endif;
+$labels = array();
 ?>
 <div class="sp-template sp-template-event-list">
 	<?php if ( $title ) { ?>
@@ -102,70 +104,88 @@ endif;
 				<tr>
 					<?php
 					echo '<th class="data-date">' . __( 'Date', 'sportspress' ) . '</th>';
+					$labels[] = __( 'Date', 'sportspress' );
 
 					switch ( $title_format ) {
 						case 'homeaway':
 							if ( sp_column_active( $usecolumns, 'event' ) ) {
 								echo '<th class="data-home">' . __( 'Home', 'sportspress' ) . '</th>';
+								$labels[] = __( 'Home', 'sportspress' );
 							}
 
 							if ( 'combined' == $time_format && sp_column_active( $usecolumns, 'time' ) ) {
 								echo '<th class="data-time">' . __( 'Time/Results', 'sportspress' ) . '</th>';
+								$labels[] = __( 'Time/Results', 'sportspress' );
 							} elseif ( in_array( $time_format, array( 'separate', 'results' ) ) && sp_column_active( $usecolumns, 'results' ) ) {
 								echo '<th class="data-results">' . __( 'Results', 'sportspress' ) . '</th>';
+								$labels[] = __( 'Results', 'sportspress' );
 							}
 
 							if ( sp_column_active( $usecolumns, 'event' ) ) {
 								echo '<th class="data-away">' . __( 'Away', 'sportspress' ) . '</th>';
+								$labels[] = __( 'Away', 'sportspress' );
 							}
 
 							if ( in_array( $time_format, array( 'separate', 'time' ) ) && sp_column_active( $usecolumns, 'time' ) ) {
 								echo '<th class="data-time">' . __( 'Time', 'sportspress' ) . '</th>';
+								$labels[] = __( 'Time', 'sportspress' );
 							}
 							break;
 						default:
 							if ( sp_column_active( $usecolumns, 'event' ) ) {
-								if ( $title_format == 'teams' )
+								if ( $title_format == 'teams' ){
 									echo '<th class="data-teams">' . __( 'Teams', 'sportspress' ) . '</th>';
-								else
+									$labels[] = __( 'Teams', 'sportspress' );
+								}else{
 									echo '<th class="data-event">' . __( 'Event', 'sportspress' ) . '</th>';
+								$labels[] = __( 'Event', 'sportspress' );}
 							}
 
 							switch ( $time_format ) {
 								case 'separate':
 									if ( sp_column_active( $usecolumns, 'time' ) )
 										echo '<th class="data-time">' . __( 'Time', 'sportspress' ) . '</th>';
+										$labels[] = __( 'Time', 'sportspress' );
 									if ( sp_column_active( $usecolumns, 'results' ) )
 										echo '<th class="data-results">' . __( 'Results', 'sportspress' ) . '</th>';
+										$labels[] = __( 'Results', 'sportspress' );
 									break;
 								case 'time':
 									if ( sp_column_active( $usecolumns, 'time' ) )
 										echo '<th class="data-time">' . __( 'Time', 'sportspress' ) . '</th>';
+										$labels[] = __( 'Time', 'sportspress' );
 									break;
 								case 'results':
 									if ( sp_column_active( $usecolumns, 'results' ) )
 										echo '<th class="data-results">' . __( 'Results', 'sportspress' ) . '</th>';
+										$labels[] = __( 'Results', 'sportspress' );
 									break;
 								default:
 									if ( sp_column_active( $usecolumns, 'time' ) )
 										echo '<th class="data-time">' . __( 'Time/Results', 'sportspress' ) . '</th>';
+										$labels[] = __( 'Time/Results', 'sportspress' );
 							}
 					}
 
 					if ( sp_column_active( $usecolumns, 'league' ) )
 						echo '<th class="data-league">' . __( 'League', 'sportspress' ) . '</th>';
+						$labels[] = __( 'League', 'sportspress' );
 
 					if ( sp_column_active( $usecolumns, 'season' ) )
 						echo '<th class="data-season">' . __( 'Season', 'sportspress' ) . '</th>';
+						$labels[] = __( 'Season', 'sportspress' );
 
 					if ( sp_column_active( $usecolumns, 'venue' ) )
 						echo '<th class="data-venue">' . __( 'Venue', 'sportspress' ) . '</th>';
+						$labels[] = __( 'Venue', 'sportspress' );
 
 					if ( sp_column_active( $usecolumns, 'article' ) )
 						echo '<th class="data-article">' . __( 'Article', 'sportspress' ) . '</th>';
+						$labels[] = __( 'Article', 'sportspress' );
 
 					if ( sp_column_active( $usecolumns, 'day' ) )
 						echo '<th class="data-day">' . __( 'Match Day', 'sportspress' ) . '</th>';
+						$labels[] = __( 'Match Day', 'sportspress' );
 
 					do_action( 'sportspress_event_list_head_row', $usecolumns );
 					?>
@@ -428,6 +448,11 @@ endif;
 		</table>
 	</div>
 	<?php
+	//var_dump($labels);
+	// If responsive tables are enabled then load the inline css code
+if ($responsive == true){
+	responsive_tables_css($labels);
+}
 	if ( $id && $show_all_events_link )
 		echo '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a></div>';
 	?>

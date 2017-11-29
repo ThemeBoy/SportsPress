@@ -20,6 +20,8 @@ if ( ! isset( $class ) ) $class = null;
 // Initialize arrays
 if ( ! isset( $lineups ) ) $lineups = array();
 if ( ! isset( $subs ) ) $subs = array();
+$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
+$rlabels = array();
 ?>
 <div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?><?php if ( isset( $class ) ) { echo ' ' . $class; } ?>">
 	<?php if ( $caption ): ?>
@@ -33,17 +35,21 @@ if ( ! isset( $subs ) ) $subs = array();
 						<?php if ( $show_players ): ?>
 							<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ) { ?>
 								<th class="data-number">#</th>
+								<?php $rlabels[] = '#'; ?>
 							<?php } ?>
 							<th class="data-name">
 								<?php if ( isset( $section_label ) ) { ?>
 									<?php echo $section_label; ?>
+									<?php $rlabels[] = $section_label; ?>
 								<?php } else { ?>
 									<?php _e( 'Player', 'sportspress' ); ?>
+									<?php $rlabels[] = __( 'Player', 'sportspress' ); ?>
 								<?php } ?>
 							</th>
 						<?php endif; ?>
 						<?php foreach ( $labels as $key => $label ): ?>
 							<th class="data-<?php echo $key; ?>"><?php echo $label; ?></th>
+							<?php $rlabels[] = $label; ?>
 						<?php endforeach; ?>
 					<?php endif; ?>
 				</tr>
@@ -257,3 +263,8 @@ if ( ! isset( $subs ) ) $subs = array();
 	
 	<?php do_action( 'sportspress_after_event_performance_table', $data, $lineups, $subs, $class ); ?>
 </div>
+<?php
+// If responsive tables are enabled then load the inline css code
+if ($responsive == true && $mode == 'values'){
+	responsive_tables_css($rlabels);
+}
