@@ -516,7 +516,7 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 	 * @subpackage	Responsive
 	 * @return void
 	 */
-	function sportspress_responsive_tables_css($vars) {
+	function sportspress_responsive_tables_css($vars,$identity) {
 		$custom_css = '/* 
 		Max width before this PARTICULAR table gets nasty
 		This query will take effect for any screen smaller than 760px
@@ -527,12 +527,12 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 		(min-device-width: 768px) and (max-device-width: 1024px)  {
 		
 			/* Force table to not be like tables anymore */
-			table.sp-responsive-table, table.sp-responsive-table thead, table.sp-responsive-table tbody, table.sp-responsive-table th, table.sp-responsive-table td, table.sp-responsive-table tr { 
+			table.'.$identity.', table.'.$identity.' thead, table.'.$identity.' tbody, table.'.$identity.' th, table.'.$identity.' td, table.'.$identity.' tr { 
 				display: block; 
 			}
 			
 			/* Hide table headers (but not display: none;, for accessibility) */
-			table.sp-responsive-table thead tr { 
+			table.'.$identity.' thead tr { 
 				position: absolute;
 				top: -9999px;
 				left: -9999px;
@@ -545,9 +545,9 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 				text-align: center !important;
 			}
 			
-			table.sp-responsive-table tr { border: 1px solid #ccc; }
+			table.'.$identity.' tr { border: 1px solid #ccc; }
 			
-			table.sp-responsive-table td { 
+			table.'.$identity.' td { 
 				/* Behave  like a "row" */
 				border: none;
 				border-bottom: 1px solid #eee; 
@@ -555,7 +555,7 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 				padding-left: 50%; 
 			}
 			
-			table.sp-responsive-table td:before { 
+			table.'.$identity.' td:before { 
 				/* Now like a table header */
 				position: absolute;
 				/* Top/left values mimic padding */
@@ -566,7 +566,7 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 				white-space: nowrap;
 			}
 			/* Zebra striping */
-			table.sp-responsive-table tr:nth-of-type(odd) { 
+			table.'.$identity.' tr:nth-of-type(odd) { 
 				background: #eee !important; 
 			}
 			
@@ -575,13 +575,13 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 			*/';
 		$k=1;
 		foreach ($vars as $label) {
-			$custom_css .= 'table.sp-responsive-table td:nth-of-type('.$k.'):before { content: "'.$label.'"; }';
+			$custom_css .= 'table.'.$identity.' td:nth-of-type('.$k.'):before { content: "'.$label.'"; }';
 			$k++;
 		}
 		
-
-		wp_register_style( 'sportspress-style-inline', false );
-		wp_enqueue_style( 'sportspress-style-inline' );
-		wp_add_inline_style( 'sportspress-style-inline', $custom_css );
+		$dummystyle = 'sportspress-style-inline-'.$identity;
+		wp_register_style( $dummystyle, false );
+		wp_enqueue_style( $dummystyle );
+		wp_add_inline_style( $dummystyle, $custom_css );
 	}
 }
