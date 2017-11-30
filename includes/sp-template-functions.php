@@ -565,6 +565,10 @@ if ( ! function_exists( 'responsive_tables_css' ) ) {
 				padding-right: 10px; 
 				white-space: nowrap;
 			}
+			/* Zebra striping */
+			tr:nth-of-type(odd) { 
+				background: #eee !important; 
+			}
 			
 			/*
 			Label the data
