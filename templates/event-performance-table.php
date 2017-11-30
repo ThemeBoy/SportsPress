@@ -28,7 +28,7 @@ $rlabels = array();
 		<h4 class="sp-table-caption"><?php echo $caption; ?></h4>
 	<?php endif; ?>
 	<div class="sp-table-wrapper">
-		<table class="sp-event-performance sp-data-table<?php if ( $mode == 'values' ) { ?><?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?><?php if ( $sortable ) { ?> sp-sortable-table<?php } ?><?php } ?>">
+		<table class="sp-event-performance sp-data-table<?php if ( $mode == 'values' ) { ?><?php if ( $scrollable ) { ?> sp-scrollable-table<?php }if ( $responsive ) { ?> sp-responsive-table<?php } ?><?php if ( $sortable ) { ?> sp-sortable-table<?php } ?><?php } ?>">
 			<thead>
 				<tr>
 					<?php if ( $mode == 'values' ): ?>
@@ -266,5 +266,5 @@ $rlabels = array();
 <?php
 // If responsive tables are enabled then load the inline css code
 if ($responsive == true && $mode == 'values'){
-	responsive_tables_css($rlabels);
+	sportspress_responsive_tables_css($rlabels);
 }

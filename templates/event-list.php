@@ -99,7 +99,7 @@ $labels = array();
 		<h4 class="sp-table-caption"><?php echo $title; ?></h4>
 	<?php } ?>
 	<div class="sp-table-wrapper">
-		<table class="sp-event-list sp-event-list-format-<?php echo $title_format; ?> sp-data-table<?php if ( $paginated ) { ?> sp-paginated-table<?php } if ( $sortable ) { ?> sp-sortable-table<?php } if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
+		<table class="sp-event-list sp-event-list-format-<?php echo $title_format; ?> sp-data-table<?php if ( $paginated ) { ?> sp-paginated-table<?php } if ( $sortable ) { ?> sp-sortable-table<?php } if ( $responsive ) { ?> sp-responsive-table<?php } if ( $scrollable ) { ?> sp-scrollable-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
 			<thead>
 				<tr>
 					<?php
@@ -451,7 +451,7 @@ $labels = array();
 	//var_dump($labels);
 	// If responsive tables are enabled then load the inline css code
 if ($responsive == true){
-	responsive_tables_css($labels);
+	sportspress_responsive_tables_css($labels);
 }
 	if ( $id && $show_all_events_link )
 		echo '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a></div>';

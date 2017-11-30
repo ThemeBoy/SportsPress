@@ -58,7 +58,7 @@ $data = $list->data();
 $labels = $data[0];
 // If responsive tables are enabled then load the inline css code
 if ($responsive == true){
-	responsive_tables_css($labels);
+	sportspress_responsive_tables_css($labels);
 }
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
@@ -211,7 +211,7 @@ foreach ( $groups as $group ):
 	endif;
 
 	$output .= '<div class="sp-table-wrapper">' .
-		'<table class="sp-player-list sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
+		'<table class="sp-player-list sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ). ( $responsive ? ' sp-responsive-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
 	if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
 		if ( in_array( $orderby, array( 'number', 'name' ) ) ):

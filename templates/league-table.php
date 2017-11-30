@@ -55,7 +55,7 @@ if ( $title )
 
 $output .= '<div class="sp-table-wrapper">';
 
-$output .= '<table class="sp-league-table sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
+$output .= '<table class="sp-league-table sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $responsive ? ' sp-responsive-table' : '' ). ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
 $data = $table->data();
 
@@ -63,7 +63,7 @@ $data = $table->data();
 $labels = $data[0];
 // If responsive tables are enabled then load the inline css code
 if ($responsive == true){
-	responsive_tables_css($labels);
+	sportspress_responsive_tables_css($labels);
 }
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
