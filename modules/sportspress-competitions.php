@@ -233,7 +233,7 @@ class SportsPress_Competitions {
 	 * @return array
 	 */
 	public function templates( $templates = array() ) {
-		$templates['c_table'] = array(
+		$templates['table'] = array(
 			'title' => __( 'League Table', 'sportspress' ),
 			'option' => 'sportspress_competition_show_table',
 			'action' => 'sportspress_output_league_table',
