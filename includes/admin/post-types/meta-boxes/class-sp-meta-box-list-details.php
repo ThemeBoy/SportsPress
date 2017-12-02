@@ -34,6 +34,35 @@ class SP_Meta_Box_List_Details {
 		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
 		$date_past = get_post_meta( $post->ID, 'sp_date_past', true );
 		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
+		$competition = (array) get_post_meta( $post->ID, 'sp_competition', true );
+		$args_comp = array(
+						'post_type' => 'sp_competition',
+						'name' => 'sp_competition[]',
+						'class' => 'sportspress-pages',
+						'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+						'values' => 'ID',
+						'selected' => sp_array_value( $competition),
+						'chosen' => true,
+						'tax_query' => array(),
+					);
+					if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_league', 'no' ) ) {
+						$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
+						if ( $league_id ) {
+							$args_comp['tax_query'][] = array(
+								'taxonomy' => 'sp_league',
+								'terms' => $league_id,
+							);
+						}
+					}
+					if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_season', 'no' ) ) {
+						$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
+						if ( $season_id ) {
+							$args_comp['tax_query'][] = array(
+								'taxonomy' => 'sp_season',
+								'terms' => $season_id,
+							);
+						}
+					}
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -72,7 +101,13 @@ class SP_Meta_Box_List_Details {
 					</p>
 				</div>
 			</div>
-
+			<div class="sp-event-competition-field">
+			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
+			<?php if ( ! sp_dropdown_pages( $args_comp ) ) {
+						unset( $args_comp['tax_query'] );
+						sp_dropdown_pages( $args_comp );
+					}?>
+			</div>
 			<?php
 			foreach ( $taxonomies as $taxonomy ) {
 				sp_taxonomy_field( $taxonomy, $post, true );
@@ -160,6 +195,7 @@ class SP_Meta_Box_List_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		update_post_meta( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', array() ) );
 		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0 ) ) );
 		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0 ) );
 		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null ) );

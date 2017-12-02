@@ -20,19 +20,64 @@ class SP_Meta_Box_Competition_Details {
 	 */
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
-		$taxonomies = get_object_taxonomies( 'sp_competition' );
+		//$taxonomies = get_object_taxonomies( 'sp_competition' );
+		if ( taxonomy_exists( 'sp_league' ) ):
+			$leagues = get_the_terms( $post->ID, 'sp_league' );
+			$league_ids = array();
+			if ( $leagues ):
+				foreach ( $leagues as $league ):
+					$league_ids[] = $league->term_id;
+				endforeach;
+			endif;
+		endif;
+		if ( taxonomy_exists( 'sp_season' ) ):
+			$seasons = get_the_terms( $post->ID, 'sp_season' );
+			$season_ids = array();
+			if ( $seasons ):
+				foreach ( $seasons as $season ):
+					$season_ids[] = $season->term_id;
+				endforeach;
+			endif;
+		endif;
 		$caption = get_post_meta( $post->ID, 'sp_caption', true );
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
 			<p><input type="text" id="sp_caption" name="sp_caption" value="<?php echo esc_attr( $caption ); ?>" placeholder="<?php echo esc_attr( get_the_title() ); ?>"></p>
+		<?php if ( taxonomy_exists( 'sp_league' ) ) { ?>
+		<p><strong><?php _e( 'League', 'sportspress' ); ?></strong></p>
+		<p><?php
+		$args = array(
+			'taxonomy' => 'sp_league',
+			'name' => 'tax_input[sp_league][]',
+			'selected' => $league_ids[0],
+			'values' => 'term_id',
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'League', 'sportspress' ) ),
+			'class' => 'widefat',
+			//'property' => 'multiple',
+			'chosen' => true,
+		);
+		sp_dropdown_taxonomies( $args );
+		?></p>
+		<?php } ?>
 
-			<?php
-			foreach ( $taxonomies as $taxonomy ) {
-				sp_taxonomy_field( $taxonomy, $post, false );
-			}
-			do_action( 'sportspress_meta_box_competition_details', $post->ID );
-			?>
+		<?php if ( taxonomy_exists( 'sp_season' ) ) { ?>
+		<p><strong><?php _e( 'Season', 'sportspress' ); ?></strong></p>
+		<p><?php
+		$args = array(
+			'taxonomy' => 'sp_season',
+			'name' => 'tax_input[sp_season][]',
+			'selected' => $season_ids[0],
+			'values' => 'term_id',
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Season', 'sportspress' ) ),
+			'class' => 'widefat',
+			//'property' => 'multiple',
+			'chosen' => true,
+		);
+		sp_dropdown_taxonomies( $args );
+		?></p>
+		<?php } ?>
+		<?php do_action( 'sportspress_meta_box_competition_details', $post->ID ); ?>
 		</div>
 		<?php
 	}

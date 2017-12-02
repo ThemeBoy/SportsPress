@@ -9,7 +9,6 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
 /**
  * SP_Meta_Box_Event_Details
  */
@@ -21,6 +20,35 @@ class SP_Meta_Box_Event_Details {
 	public static function output( $post ) {
 		$day = get_post_meta( $post->ID, 'sp_day', true );
 		$taxonomies = get_object_taxonomies( 'sp_event' );
+		$competition = (array) get_post_meta( $post->ID, 'sp_competition', true );
+		$args_comp = array(
+						'post_type' => 'sp_competition',
+						'name' => 'sp_competition[]',
+						'class' => 'sportspress-pages',
+						'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+						'values' => 'ID',
+						'selected' => sp_array_value( $competition),
+						'chosen' => true,
+						'tax_query' => array(),
+					);
+					if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_league', 'no' ) ) {
+						$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
+						if ( $league_id ) {
+							$args_comp['tax_query'][] = array(
+								'taxonomy' => 'sp_league',
+								'terms' => $league_id,
+							);
+						}
+					}
+					if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_season', 'no' ) ) {
+						$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
+						if ( $season_id ) {
+							$args_comp['tax_query'][] = array(
+								'taxonomy' => 'sp_season',
+								'terms' => $season_id,
+							);
+						}
+					}
 		$minutes = get_post_meta( $post->ID, 'sp_minutes', true );
 		?>
 		<?php do_action( 'sportspress_event_details_meta_box', $post ); ?>
@@ -36,6 +64,13 @@ class SP_Meta_Box_Event_Details {
 				<input name="sp_minutes" type="number" step="1" min="0" class="small-text" placeholder="<?php echo get_option( 'sportspress_event_minutes', 90 ); ?>" value="<?php echo esc_attr( $minutes ); ?>">
 				<?php _e( 'mins', 'sportspress' ); ?>
 			</p>
+		</div>
+		<div class="sp-event-competition-field">
+			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
+			<?php if ( ! sp_dropdown_pages( $args_comp ) ) {
+						unset( $args_comp['tax_query'] );
+						sp_dropdown_pages( $args_comp );
+					}?>
 		</div>
 		<?php
 		foreach ( $taxonomies as $taxonomy ) {
@@ -73,6 +108,7 @@ class SP_Meta_Box_Event_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		update_post_meta( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', array() ) );
 		update_post_meta( $post_id, 'sp_day', sp_array_value( $_POST, 'sp_day', null ) );
 		update_post_meta( $post_id, 'sp_minutes', sp_array_value( $_POST, 'sp_minutes', get_option( 'sportspress_event_minutes', 90 ) ) );
    		$venues = array_filter( sp_array_value( sp_array_value( $_POST, 'tax_input', array() ), 'sp_venue', array() ) );

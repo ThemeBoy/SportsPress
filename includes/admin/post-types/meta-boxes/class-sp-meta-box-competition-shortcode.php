@@ -19,8 +19,6 @@ class SP_Meta_Box_Competition_Shortcode {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		//$the_format = get_post_meta( $post->ID, 'sp_format', true );
-		//if ( ! $the_format ) $the_format = 'standings';
 		?>
 		<p class="howto">
 			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>

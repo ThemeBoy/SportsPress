@@ -239,6 +239,24 @@ class SportsPress_Competitions {
 			'action' => 'sportspress_output_league_table',
 			'default' => 'yes',
 		);
+		$templates['players'] = array(
+			'title' => __( 'Players List', 'sportspress' ),
+			'option' => 'sportspress_competition_show_players',
+			'action' => 'sportspress_output_player_list',
+			'default' => 'yes',
+		);
+		$templates['calendar'] = array(
+			'title' => __( 'Calendar', 'sportspress' ),
+			'option' => 'sportspress_competition_show_calendar',
+			'action' => 'sportspress_output_calendar',
+			'default' => 'yes',
+		);
+		$templates['events'] = array(
+			'title' => __( 'Events', 'sportspress' ),
+			'option' => 'sportspress_competition_show_events',
+			'action' => 'sportspress_output_team_events',
+			'default' => 'yes',
+		);
 		
 		return $templates;
 	}

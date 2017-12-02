@@ -26,18 +26,82 @@ class SP_Admin_CPT_Competition extends SP_Admin_CPT {
 	public function __construct() {
 		$this->type = 'sp_competition';
 
+		// Post title fields *WIP*
+		//add_filter( 'enter_title_here', array( $this, 'enter_title_here' ), 1, 2 );
+		
+		// Empty data filter *WIP*
+		//add_filter( 'wp_insert_post_empty_content', array( $this, 'wp_insert_post_empty_content' ), 99, 2 );
+		
+		// Before data updates *WIP*
+		//add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 99, 2 );
+		
 		// Admin Columns
 		add_filter( 'manage_edit-sp_competition_columns', array( $this, 'edit_columns' ) );
 		add_action( 'manage_sp_competition_posts_custom_column', array( $this, 'custom_columns' ), 2, 2 );
 
 		// Filtering
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
-		add_filter( 'parse_query', array( $this, 'filters_query' ) );
 		
 		// Call SP_Admin_CPT constructor
 		parent::__construct();
 	}
 
+		/**
+	 * Change title boxes in admin. *WIP*
+	 * @param  string $text
+	 * @param  object $post
+	 * @return string
+	 */
+	public function enter_title_here( $text, $post ) {
+		if ( $post->post_type == 'sp_competition' )
+			return __( '(Auto)', 'sportspress' );
+
+		return $text;
+	}
+	
+	/**
+	 * Mark as not empty when saving competition if league and season are selected for auto title. *WIP*
+	 *
+	 * @param array $maybe_empty
+	 * @param array $postarr
+	 * @return bool
+	 */
+	public function wp_insert_post_empty_content( $maybe_empty, $postarr ) {
+		if ( $maybe_empty && 'sp_competition' === sp_array_value( $postarr, 'post_type' ) ):
+			$leagues = sp_array_value( $postarr, 'sp_league', array() );
+			$leagues = array_filter( $leagues );
+			$seasons = sp_array_value( $postarr, 'sp_season', array() );
+			$seasons = array_filter( $seasons );
+			if ( sizeof( $leagues ) &&  sizeof( $seasons ) ) return false;
+		endif;
+
+		return $maybe_empty;
+	}
+	
+		/**
+	 * Auto-generate an competition title based on the league and season if left blank. *WIP*
+	 *
+	 * @param array $data
+	 * @param array $postarr
+	 * @return array
+	 */
+	public function wp_insert_post_data( $data, $postarr ) {
+		if ( $data['post_type'] == 'sp_competition' && $data['post_title'] == '' ):
+
+			$leagues = sp_array_value( $postarr, 'sp_league', array() );
+			$leagues = array_filter( $leagues );
+			$leaguename = get_the_title( $leagues[0] );
+			$seasons = sp_array_value( $postarr, 'sp_season', array() );
+			$seasons = array_filter( $seasons );
+			$seasonname = get_the_title( $seasons[0] );
+			
+			$data['post_title'] = $leaguename.' '.$seasonname;
+
+		endif;
+
+		return $data;
+	}
+	
 	/**
 	 * Change the columns shown in admin.
 	 */
@@ -95,23 +159,7 @@ class SP_Admin_CPT_Competition extends SP_Admin_CPT {
 		);
 		sp_dropdown_taxonomies( $args );
 	}
-
-	/**
-	 * Filter in admin based on options
-	 *
-	 * @param mixed $query
-	 */
-	public function filters_query( $query ) {
-		global $typenow, $wp_query;
-
-	    if ( $typenow == 'sp_competition' ) {
-
-	    	if ( ! empty( $_GET['team'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['team'];
-		        $query->query_vars['meta_key'] 		= 'sp_team';
-		    }
-		}
-	}
+	
 }
 
 endif;

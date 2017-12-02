@@ -92,6 +92,7 @@ class SP_League_Table extends SP_Secondary_Post {
 					'numberposts' => -1,
 					'posts_per_page' => -1,
 					'order' => 'ASC',
+					'meta_query' => array(),
 					'tax_query' => array(
 						'relation' => 'AND',
 					),
@@ -113,7 +114,15 @@ class SP_League_Table extends SP_Secondary_Post {
 						'terms' => $season_ids
 					);
 				endif;
-
+				
+				/*if ( get_post_type($this->ID) == 'sp_competition') : *WIP*
+					$args['meta_query'][] = array(
+						'key' => 'sp_competition',
+						'value' => $this->ID,
+						'compare' => '=',
+					);
+				endif;*/
+				
 				$team_ids = get_posts( $args );
 			} else {
 				$team_ids = (array)get_post_meta( $this->ID, 'sp_team', false );

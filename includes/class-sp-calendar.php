@@ -39,6 +39,9 @@ class SP_Calendar extends SP_Secondary_Post {
 
 	/** @var int The team ID. */
 	public $team;
+	
+	/** @var int The competition ID. */
+	public $competition;
 
 	/** @var int The player ID. */
 	public $player;

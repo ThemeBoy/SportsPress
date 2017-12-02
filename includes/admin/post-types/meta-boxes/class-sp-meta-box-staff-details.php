@@ -54,6 +54,7 @@ class SP_Meta_Box_Staff_Details {
 		$teams = get_posts( array( 'post_type' => 'sp_team', 'posts_per_page' => -1 ) );
 		$past_teams = array_filter( get_post_meta( $post->ID, 'sp_past_team', false ) );
 		$current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
+		$competitions = array_filter( get_post_meta( $post->ID, 'sp_competition', false ) );
 		?>
 		<p><strong><?php _e( 'Jobs', 'sportspress' ); ?></strong></p>
 		<p><?php
@@ -113,6 +114,21 @@ class SP_Meta_Box_Staff_Details {
 		);
 		sp_dropdown_pages( $args );
 		?></p>
+		
+		<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
+		<p><?php
+			$args = array(
+			'post_type' => 'sp_competition',
+			'name' => 'sp_competition[]',
+			'selected' => $competitions,
+			'values' => 'ID',
+			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Competitions', 'sportspress' ) ),
+			'class' => 'sp_competition widefat',
+			'property' => 'multiple',
+			'chosen' => true,
+		);
+		sp_dropdown_pages( $args );
+		?></p>
 
 		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
 		<p><?php
@@ -150,6 +166,7 @@ class SP_Meta_Box_Staff_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		sp_update_post_meta_recursive( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_past_team', sp_array_value( $_POST, 'sp_past_team', array() ) );
