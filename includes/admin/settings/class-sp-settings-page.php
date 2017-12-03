@@ -71,6 +71,8 @@ class SP_Settings_Page {
 	    	do_action( 'sportspress_update_options_' . $this->template . '_' . $current_section );
 
 	    $templates = $this->templates();
+			$templates = apply_filters( 'sportspress_' . $this->template . '_templates', $templates );
+
 		if ( ! empty( $templates ) )
 			update_option( 'sportspress_' . $this->template . '_template_order', sp_array_value( $_POST, 'sportspress_' . $this->template . '_template_order', false ) );
 
