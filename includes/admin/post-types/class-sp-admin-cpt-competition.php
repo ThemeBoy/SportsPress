@@ -26,14 +26,14 @@ class SP_Admin_CPT_Competition extends SP_Admin_CPT {
 	public function __construct() {
 		$this->type = 'sp_competition';
 
-		// Post title fields *WIP*
-		//add_filter( 'enter_title_here', array( $this, 'enter_title_here' ), 1, 2 );
+		// Post title fields
+		add_filter( 'enter_title_here', array( $this, 'enter_title_here' ), 1, 2 );
 		
-		// Empty data filter *WIP*
-		//add_filter( 'wp_insert_post_empty_content', array( $this, 'wp_insert_post_empty_content' ), 99, 2 );
+		// Empty data filter
+		add_filter( 'wp_insert_post_empty_content', array( $this, 'wp_insert_post_empty_content' ), 99, 2 );
 		
-		// Before data updates *WIP*
-		//add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 99, 2 );
+		// Before data updates
+		add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 99, 2 );
 		
 		// Admin Columns
 		add_filter( 'manage_edit-sp_competition_columns', array( $this, 'edit_columns' ) );
@@ -68,11 +68,11 @@ class SP_Admin_CPT_Competition extends SP_Admin_CPT {
 	 */
 	public function wp_insert_post_empty_content( $maybe_empty, $postarr ) {
 		if ( $maybe_empty && 'sp_competition' === sp_array_value( $postarr, 'post_type' ) ):
-			$leagues = sp_array_value( $postarr, 'sp_league', array() );
+			$leagues = sp_array_value( sp_array_value( $postarr, 'tax_input', array() ), 'sp_league', array() );
 			$leagues = array_filter( $leagues );
-			$seasons = sp_array_value( $postarr, 'sp_season', array() );
+			$seasons = sp_array_value( sp_array_value( $postarr, 'tax_input', array() ), 'sp_season', array() );
 			$seasons = array_filter( $seasons );
-			if ( sizeof( $leagues ) &&  sizeof( $seasons ) ) return false;
+			if ( sizeof( $leagues ) ||  sizeof( $seasons ) ) return false;
 		endif;
 
 		return $maybe_empty;
@@ -88,14 +88,25 @@ class SP_Admin_CPT_Competition extends SP_Admin_CPT {
 	public function wp_insert_post_data( $data, $postarr ) {
 		if ( $data['post_type'] == 'sp_competition' && $data['post_title'] == '' ):
 
-			$leagues = sp_array_value( $postarr, 'sp_league', array() );
+			$parts = array();
+
+			$leagues = sp_array_value( sp_array_value( $postarr, 'tax_input', array() ), 'sp_league', array() );
 			$leagues = array_filter( $leagues );
-			$leaguename = get_the_title( $leagues[0] );
-			$seasons = sp_array_value( $postarr, 'sp_season', array() );
+			if ( sizeof( $leagues ) ):
+				$league_id = reset( $leagues );
+				$league = get_term_by( 'id', $league_id, 'sp_league' );
+				$parts[] = $league->name;
+			endif;
+
+			$seasons = sp_array_value( sp_array_value( $postarr, 'tax_input', array() ), 'sp_season', array() );
 			$seasons = array_filter( $seasons );
-			$seasonname = get_the_title( $seasons[0] );
+			if ( sizeof( $seasons ) ):
+				$season_id = reset( $seasons );
+				$season = get_term_by( 'id', $season_id, 'sp_season' );
+				$parts[] = $season->name;
+			endif;
 			
-			$data['post_title'] = $leaguename.' '.$seasonname;
+			$data['post_title'] = implode( $parts, ' ' );
 
 		endif;
 
