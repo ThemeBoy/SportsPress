@@ -279,11 +279,11 @@ class SP_Calendar extends SP_Secondary_Post {
 					),
 				);
 			}
-			
-			if ( !isset( $league_ids , $season_ids , $venue_ids ) && empty( $teams ) ) {
-				$justcompetition = true;
+			$justcompetition = false;
+			if ( !isset( $league_ids ) && !isset( $season_ids ) && !isset( $venue_ids ) && empty( $teams ) ) {
 				//Check if we are in a Competition or a Competition id is set
 				if ( $this->post->post_type == 'sp_competition' ) {
+					$justcompetition = true;
 					unset($args['tax_query']);
 					$args['meta_query'][] = array(
 						'key' => 'sp_competition',
@@ -292,6 +292,7 @@ class SP_Calendar extends SP_Secondary_Post {
 					);
 					$events = array_merge($events , get_posts( $args ));
 				} elseif ( $this->competition ) {
+					$justcompetition = true;
 					unset($args['tax_query']);
 					$args['meta_query'][] = array(
 						'key' => 'sp_competition',
