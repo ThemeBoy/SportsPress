@@ -30,6 +30,8 @@ class SportsPress_Competitions {
 
 		// Actions
 		add_action( 'sportspress_after_register_post_type', array( $this, 'register_post_type' ) );
+		add_action( 'admin_menu', array( $this, 'admin_menu' ), 22 );
+		add_action( 'parent_file', array( $this, 'parent_file' ) );
 		add_action( 'add_meta_boxes', array( $this, 'remove_meta_boxes' ), 10 );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
 		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
@@ -95,13 +97,35 @@ class SportsPress_Competitions {
 					'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'page-attributes' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
-					'menu_icon' 			=> 'dashicons-analytics',
+					'show_in_menu' 			=> 'admin.php?page=sportspress',
+					'show_in_admin_bar' 	=> true,
 					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'competitions',
 				)
 			)
 		);
+	}
+
+	/**
+	 * Add menu item
+	 */
+	public function admin_menu() {
+		add_submenu_page( 'sportspress', __( 'Competitions', 'sportspress' ), __( 'Competitions', 'sportspress' ), 'manage_sportspress', 'edit.php?post_type=sp_competition');
+	}
+
+	public function parent_file( $parent_file ) {
+		if ( 'sportspress' == $parent_file )
+			return $parent_file;
+
+		global $current_screen;
+
+		$post_type = $current_screen->post_type;
+
+		if ( 'sp_competition' == $post_type )
+			$parent_file = 'sportspress';
+
+		return $parent_file;
 	}
 
 	/**
@@ -228,7 +252,7 @@ class SportsPress_Competitions {
 	}
 
 	/**
-	 * Add templates to event layout.
+	 * Add templates to competition layout.
 	 *
 	 * @return array
 	 */
