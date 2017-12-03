@@ -23,9 +23,8 @@ class SP_Meta_Box_List_Data {
 		
 		//Get competition id of Player List
 		$competition = get_post_meta( $post->ID, 'sp_competition', true );
-		//Check if a competition id was assigned to Player List and pass it forward
-		if ( $competition[0] > 0) {
-			$list->competition = $competition[0];
+		if ( $competition > 0) {
+			$list->competition = $competition;
 		}
 		
 		list( $columns, $data, $placeholders, $merged, $orderby ) = $list->data( true );

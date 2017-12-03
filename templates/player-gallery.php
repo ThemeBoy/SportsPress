@@ -57,7 +57,9 @@ $list = new SP_Player_List( $id );
 
 //Get competition id of Player List
 $competition = get_post_meta( $id, 'sp_competition', true );
+if ($competition > 0){
 $list->competition = $competition;
+}
 }
 
 $data = $list->data();

@@ -73,7 +73,9 @@ if ( $competition ) {
 }else{
 //Get competition id of Calendar
 $competition = get_post_meta( $id, 'sp_competition', true );
+if ($competition > 0){
 $calendar->competition = $competition;
+}
 }
 if ( $player )
 	$calendar->player = $player;

@@ -41,7 +41,9 @@ $table = new SP_League_Table( $id );
 
 //Get competition id of League Table
 $competition = get_post_meta( $id, 'sp_competition', true );
+if ($competition > 0){
 $table->competition = $competition;
+}
 }
 
 if ( $show_title && false === $title && $id ):
