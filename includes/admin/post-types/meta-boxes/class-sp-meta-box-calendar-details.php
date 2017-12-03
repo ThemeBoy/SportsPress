@@ -125,7 +125,7 @@ class SP_Meta_Box_Calendar_Details {
 			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
 			<?php if ( ! sp_dropdown_pages( $args_comp ) ) {
 						unset( $args_comp['tax_query'] );
-						sp_dropdown_pages( $args_comp );
+						//sp_dropdown_pages( $args_comp );
 					}?>
 			</div>
 			<?php
@@ -173,7 +173,7 @@ class SP_Meta_Box_Calendar_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', array() ) );
+		//update_post_meta( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', array() ) );
 		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0 ) ) );
 		update_post_meta( $post_id, 'sp_status', sp_array_value( $_POST, 'sp_status', 0 ) );
 		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0 ) );
@@ -186,5 +186,6 @@ class SP_Meta_Box_Calendar_Details {
 		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', null ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', null ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', array() ) );
 	}
 }

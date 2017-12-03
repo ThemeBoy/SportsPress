@@ -22,10 +22,8 @@ class SP_Meta_Box_Table_Data {
 		$table = new SP_League_Table( $post );
 		//Get competition id of League Table
 		$competition = get_post_meta( $post->ID, 'sp_competition', true );
-		//Check if a competition id was assigned to League Table and pass it forward
-		if ( $competition[0] > 0) {
-			$table->competition = $competition[0];
-		}
+		$table->competition = $competition;
+
 		list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );
 		$adjustments = $table->adjustments;
 		$highlight = get_post_meta( $table->ID, 'sp_highlight', true );

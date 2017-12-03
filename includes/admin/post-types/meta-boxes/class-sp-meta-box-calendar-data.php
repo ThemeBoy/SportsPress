@@ -20,6 +20,10 @@ class SP_Meta_Box_Calendar_Data {
 	 */
 	public static function output( $post ) {
 		$calendar = new SP_Calendar( $post );
+		//Get competition id of Calendar
+		$competition = get_post_meta( $post->ID, 'sp_competition', true );
+		$calendar->competition = $competition;
+
 		$data = $calendar->data();
 		$usecolumns = $calendar->columns;
 		self::table( $data, $usecolumns );

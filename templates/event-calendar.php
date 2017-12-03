@@ -60,8 +60,13 @@ if ( $venue )
 	$calendar->venue = $venue;
 if ( $team )
 	$calendar->team = $team;
-if ( $competition )
+if ( $competition ) {
 	$calendar->competition = $competition;
+}else{
+//Get competition id of Calendar
+$competition = get_post_meta( $id, 'sp_competition', true );
+$calendar->competition = $competition;
+}
 if ( $player )
 	$calendar->player = $player;
 if ($override_global_date) {

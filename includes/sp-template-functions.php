@@ -500,6 +500,22 @@ function sportspress_output_venue_map( $query ) {
 	sp_get_template( 'venue-map.php', array( 'meta' => $meta ) );
 }
 
+/** Competitions ********************************************************/
+
+if ( ! function_exists( 'sportspress_output_competition_events' ) ) {
+
+	/**
+	 * Output the competition events.
+	 *
+	 * @access public
+	 * @subpackage	Competition/Events
+	 * @return void
+	 */
+	function sportspress_output_competition_events() {
+		sp_get_template( 'competition-events.php' );
+	}
+}
+
 /** Misc ********************************************************/
 
 function sportspress_output_br_tag() {

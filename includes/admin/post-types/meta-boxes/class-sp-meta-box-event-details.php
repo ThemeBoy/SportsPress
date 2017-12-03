@@ -108,7 +108,8 @@ class SP_Meta_Box_Event_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', array() ) );
+		//update_post_meta( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', null ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', array() ) );
 		update_post_meta( $post_id, 'sp_day', sp_array_value( $_POST, 'sp_day', null ) );
 		update_post_meta( $post_id, 'sp_minutes', sp_array_value( $_POST, 'sp_minutes', get_option( 'sportspress_event_minutes', 90 ) ) );
    		$venues = array_filter( sp_array_value( sp_array_value( $_POST, 'tax_input', array() ), 'sp_venue', array() ) );

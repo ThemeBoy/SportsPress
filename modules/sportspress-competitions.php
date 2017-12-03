@@ -269,16 +269,16 @@ class SportsPress_Competitions {
 			'action' => 'sportspress_output_player_list',
 			'default' => 'yes',
 		);
-		$templates['calendar'] = array(
+		/*$templates['calendar'] = array(
 			'title' => __( 'Calendar', 'sportspress' ),
 			'option' => 'sportspress_competition_show_calendar',
 			'action' => 'sportspress_output_calendar',
 			'default' => 'yes',
-		);
+		);*/
 		$templates['events'] = array(
 			'title' => __( 'Events', 'sportspress' ),
 			'option' => 'sportspress_competition_show_events',
-			'action' => 'sportspress_output_team_events',
+			'action' => 'sportspress_output_competition_events',
 			'default' => 'yes',
 		);
 		

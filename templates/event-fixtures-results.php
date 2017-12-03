@@ -44,8 +44,13 @@ if ( $season )
 	$calendar->season = $season;
 if ( $team )
 	$calendar->team = $team;
-if ( $competition )
+if ( $competition ) {
 	$calendar->competition = $competition;
+}else{
+//Get competition id of Calendar
+$competition = get_post_meta( $id, 'sp_competition', true );
+$calendar->competition = $competition;
+}
 if ( $player )
 	$calendar->player = $player;
 
@@ -59,6 +64,7 @@ $args = array(
 	'league' => $league,
 	'season' => $season,
 	'team' => $team,
+	'competition' => $competition,
 	'player' => $player,
 	'number' => $number,
 	'link_teams' => $link_teams,

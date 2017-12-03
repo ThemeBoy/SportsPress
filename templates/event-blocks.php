@@ -24,6 +24,7 @@ $defaults = array(
 	'season' => null,
 	'venue' => null,
 	'team' => null,
+	'competition' => null,
 	'player' => null,
 	'number' => -1,
 	'show_team_logo' => get_option( 'sportspress_event_blocks_show_logos', 'yes' ) == 'yes' ? true : false,
@@ -67,6 +68,13 @@ if ( $venue )
 if ( $team )
 	$calendar->team = $team;
 if ( $player )
+if ( $competition ) {
+	$calendar->competition = $competition;
+}else{
+//Get competition id of Calendar
+$competition = get_post_meta( $id, 'sp_competition', true );
+$calendar->competition = $competition;
+}
 	$calendar->player = $player;
 if ( $order != 'default' )
 	$calendar->order = $order;
