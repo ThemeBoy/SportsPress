@@ -39,6 +39,14 @@ if ( ! isset( $highlight ) ) $highlight = get_post_meta( $id, 'sp_highlight', tr
 
 $table = new SP_League_Table( $id );
 
+//Get competition id of League Table
+$competition = get_post_meta( $id, 'sp_competition', true );
+
+//Check if a competition id was assigned to League Table and pass it forward
+if ( $competition[0] > 0) {
+	$table->competition = $competition[0];
+}
+
 if ( $show_title && false === $title && $id ):
 	$caption = $table->caption;
 	if ( $caption )

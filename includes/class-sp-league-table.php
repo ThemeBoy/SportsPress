@@ -23,6 +23,9 @@ class SP_League_Table extends SP_Secondary_Post {
 
 	/** @var array Teams to check for tiebreakers. */
 	public $tiebreakers = array();
+	
+	/** @var int The competition ID. */
+	public $competition;
 
 	/**
 	 * Returns formatted data
@@ -115,15 +118,25 @@ class SP_League_Table extends SP_Secondary_Post {
 					);
 				endif;
 				
-				/*if ( get_post_type($this->ID) == 'sp_competition') : *WIP*
+				$team_ids = get_posts( $args );
+				//Check if we are in a Competition or a Competition id is set
+				if ( get_post_type($this->ID) == 'sp_competition' ) {
+					unset($args['tax_query']);
 					$args['meta_query'][] = array(
 						'key' => 'sp_competition',
 						'value' => $this->ID,
 						'compare' => '=',
 					);
-				endif;*/
-				
-				$team_ids = get_posts( $args );
+					$team_ids = array_merge($team_ids , get_posts( $args ));
+				} elseif ( $this->competition ) {
+					unset($args['tax_query']);
+					$args['meta_query'][] = array(
+						'key' => 'sp_competition',
+						'value' => $this->competition,
+						'compare' => '=',
+					);
+					$team_ids = array_merge($team_ids , get_posts( $args ));
+				}
 			} else {
 				$team_ids = (array)get_post_meta( $this->ID, 'sp_team', false );
 			}
