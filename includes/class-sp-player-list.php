@@ -17,6 +17,9 @@ class SP_Player_List extends SP_Secondary_Post {
 
 	/** @var array The sort priorities array. */
 	public $priorities;
+	
+	/** @var int The competition ID. */
+	public $competition;
 
 	/**
 	 * Constructor
@@ -95,6 +98,9 @@ class SP_Player_List extends SP_Secondary_Post {
 				'meta_key' => 'sp_number',
 				'orderby' => 'meta_value_num',
 				'order' => 'ASC',
+				'meta_query' => array(
+						'relation' => 'AND',
+					),
 				'tax_query' => array(
 					'relation' => 'AND',
 				),
@@ -143,7 +149,40 @@ class SP_Player_List extends SP_Secondary_Post {
 			endif;
 
 			$players = get_posts( $args );
-
+			
+			//Check if we are in a Competition or a Competition id is set
+				if ( get_post_type($this->ID) == 'sp_competition' ) {
+					unset($args['tax_query']);
+					$args['meta_query'][] = array(
+						'key' => 'sp_competition',
+						'value' => $this->ID,
+						'compare' => '=',
+					);
+					if ( $position_ids ):
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_position',
+						'field' => 'term_id',
+						'terms' => $position_ids
+					);
+					endif;
+					$players = array_merge($players , get_posts( $args ));
+				} elseif ( $this->competition ) {
+					unset($args['tax_query']);
+					$args['meta_query'][] = array(
+						'key' => 'sp_competition',
+						'value' => $this->competition,
+						'compare' => '=',
+					);
+					if ( $position_ids ):
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_position',
+						'field' => 'term_id',
+						'terms' => $position_ids
+					);
+					endif;
+					$players = array_merge($players , get_posts( $args ));
+				}
+				
 			if ( $players && is_array( $players ) ) {
 				foreach ( $players as $player ) {
 					$player_ids[] = $player->ID;

@@ -54,6 +54,15 @@ $float = is_rtl() ? 'right' : 'left';
 $selector = 'sp-player-gallery-' . $id;
 
 $list = new SP_Player_List( $id );
+
+//Get competition id of Player List
+$competition = get_post_meta( $id, 'sp_competition', true );
+
+//Check if a competition id was assigned to Player List and pass it forward
+if ( $competition[0] > 0) {
+	$list->competition = $competition[0];
+}
+
 $data = $list->data();
 
 // Remove the first row to leave us with the actual data

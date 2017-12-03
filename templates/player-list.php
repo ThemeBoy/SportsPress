@@ -48,6 +48,15 @@ if ( null !== $columns && ! is_array( $columns ) )
 	$columns = explode( ',', $columns );
 
 $list = new SP_Player_List( $id );
+
+//Get competition id of Player List
+$competition = get_post_meta( $id, 'sp_competition', true );
+
+//Check if a competition id was assigned to Player List and pass it forward
+if ( $competition[0] > 0) {
+	$list->competition = $competition[0];
+}
+
 if ( isset( $columns ) && null !== $columns ):
 	$list->columns = $columns;
 endif;
