@@ -30,8 +30,8 @@ class SportsPress_Competitions {
 
 		// Actions
 		add_action( 'sportspress_after_register_post_type', array( $this, 'register_post_type' ) );
-		add_action( 'admin_menu', array( $this, 'admin_menu' ), 22 );
-		add_action( 'parent_file', array( $this, 'parent_file' ) );
+		//add_action( 'admin_menu', array( $this, 'admin_menu' ), 22 );
+		//add_action( 'parent_file', array( $this, 'parent_file' ) );
 		add_action( 'add_meta_boxes', array( $this, 'remove_meta_boxes' ), 10 );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
 		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
@@ -46,7 +46,7 @@ class SportsPress_Competitions {
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_primary_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
-		add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
+		//add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 		add_filter( 'sportspress_competition_templates', array( $this, 'templates' ) );
 	}
 
@@ -97,8 +97,9 @@ class SportsPress_Competitions {
 					'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'page-attributes' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
-					'show_in_menu' 			=> 'admin.php?page=sportspress',
-					'show_in_admin_bar' 	=> true,
+					'menu_icon' 			=> 'dashicons-analytics',
+					//'show_in_menu' 			=> 'admin.php?page=sportspress',
+					//'show_in_admin_bar' 	=> true,
 					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'competitions',
@@ -197,12 +198,12 @@ class SportsPress_Competitions {
 	}
 
 	/**
-	 * Add settings page
+	 * Add settings page TO DELETE
 	 */
-	public function add_settings_page( $settings = array() ) {
+	/*public function add_settings_page( $settings = array() ) {
 		$settings[] = include( SP()->plugin_path() . '/includes/admin/settings/class-sp-settings-competitions.php' );
 		return $settings;
-	}
+	}*/
 
 	/**
 	 * Add text options 
@@ -288,6 +289,6 @@ class SportsPress_Competitions {
 
 endif;
 
-if ( get_option( 'sportspress_load_competition_module', 'yes' ) == 'yes' ) {
+//if ( get_option( 'sportspress_load_competition_module', 'yes' ) == 'yes' ) {
 	new SportsPress_Competitions();
-}
+//}

@@ -34,6 +34,7 @@ class SP_Admin_Settings {
 
 			$settings[] = include( 'settings/class-sp-settings-modules.php' );
 			$settings[] = include( 'settings/class-sp-settings-general.php' );
+			$settings[] = include( 'settings/class-sp-settings-competitions.php' );
 			$settings[] = include( 'settings/class-sp-settings-events.php' );
 			$settings[] = include( 'settings/class-sp-settings-teams.php' );
 			$settings[] = include( 'settings/class-sp-settings-players.php' );
