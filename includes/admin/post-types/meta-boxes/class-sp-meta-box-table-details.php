@@ -40,24 +40,6 @@ class SP_Meta_Box_Table_Details {
 						'chosen' => true,
 						'tax_query' => array(),
 					);
-					if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_league', 'no' ) ) {
-						$league_id = sp_get_the_term_id( $post->ID, 'sp_league', 0 );
-						if ( $league_id ) {
-							$args_comp['tax_query'][] = array(
-								'taxonomy' => 'sp_league',
-								'terms' => $league_id,
-							);
-						}
-					}
-					if ( 'yes' == get_option( 'sportspress_event_filter_teams_by_season', 'no' ) ) {
-						$season_id = sp_get_the_term_id( $post->ID, 'sp_season', 0 );
-						if ( $season_id ) {
-							$args_comp['tax_query'][] = array(
-								'taxonomy' => 'sp_season',
-								'terms' => $season_id,
-							);
-						}
-					}
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -99,8 +81,8 @@ class SP_Meta_Box_Table_Details {
 			<div class="sp-event-competition-field">
 			<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
 			<?php if ( ! sp_dropdown_pages( $args_comp ) ) {
-						unset( $args_comp['tax_query'] );
-						sp_dropdown_pages( $args_comp );
+						//unset( $args_comp['tax_query'] );
+						//sp_dropdown_pages( $args_comp );
 					}?>
 			</div>
 			<?php

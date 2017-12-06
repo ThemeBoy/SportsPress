@@ -54,8 +54,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			$rows = array_chunk( $array, sizeof( $columns ) );
 
-			// Get event format, league, and season from post vars
+			// Get event format, competition, league and season from post vars
 			$event_format = ( empty( $_POST['sp_format'] ) ? false : $_POST['sp_format'] );
+			$competition = ( sp_array_value( $_POST, 'sp_competition', '-1' ) == '-1' ? false : $_POST['sp_competition'] );
 			$league = ( sp_array_value( $_POST, 'sp_league', '-1' ) == '-1' ? false : $_POST['sp_league'] );
 			$season = ( sp_array_value( $_POST, 'sp_season', '-1' ) == '-1' ? false : $_POST['sp_season'] );
 			$date_format = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : $_POST['sp_date_format'] );
@@ -162,6 +163,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 					if ( $event_format ):
 						update_post_meta( $id, 'sp_format', $event_format );
 					endif;
+					
+					// Update competition
+					if ( $competition ):
+					update_post_meta( $id, 'sp_competition', $competition );
+					endif;
 
 					// Update league
 					if ( $league ):
@@ -219,6 +225,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 					// Update season
 					if ( $season ):
 						wp_set_object_terms( $team_id, $season, 'sp_season', true );
+					endif;
+					
+					// Add competition
+					if ( $competition ):
+						add_post_meta( $team_id, 'sp_competition', $competition );
 					endif;
 
 					// Add to event if exists
@@ -477,6 +488,21 @@ if ( class_exists( 'WP_Importer' ) ) {
 								<br>
 							</fieldset>
 						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label><?php _e( 'Competition', 'sportspress' ); ?></label><br/></th>
+						<td><?php
+						$args = array(
+							'post_type' => 'sp_competition',
+							'name' => 'sp_competition',
+							'values' => 'ID',
+							'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+						);
+						if ( ! sp_dropdown_pages( $args ) ):
+							echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
+							sp_post_adder( 'sp_competition', __( 'Add New', 'sportspress' ) );
+						endif;
+						?></td>
 					</tr>
 					<tr>
 						<th scope="row"><label><?php _e( 'League', 'sportspress' ); ?></label><br/></th>
