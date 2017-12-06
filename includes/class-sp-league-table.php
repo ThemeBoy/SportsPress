@@ -102,7 +102,7 @@ class SP_League_Table extends SP_Secondary_Post {
 					'fields' => 'ids',
 				);
 
-				if ( $league_ids ):
+				if ( $league_ids && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ):
 					$args['tax_query'][] = array(
 						'taxonomy' => 'sp_league',
 						'field' => 'term_id',
@@ -110,7 +110,7 @@ class SP_League_Table extends SP_Secondary_Post {
 					);
 				endif;
 
-				if ( $season_ids ):
+				if ( $season_ids && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ):
 					$args['tax_query'][] = array(
 						'taxonomy' => 'sp_season',
 						'field' => 'term_id',
@@ -118,25 +118,25 @@ class SP_League_Table extends SP_Secondary_Post {
 					);
 				endif;
 				
-				$team_ids = get_posts( $args );
-				//Check if we are in a Competition or a Competition id is set
-				if ( get_post_type($this->ID) == 'sp_competition' ) {
-					unset($args['tax_query']);
+				//Check if we are in a Competition
+				if ( get_post_type($this->ID) == 'sp_competition' ) :
 					$args['meta_query'][] = array(
 						'key' => 'sp_competition',
 						'value' => $this->ID,
 						'compare' => '=',
 					);
-					$team_ids = array_merge($team_ids , get_posts( $args ));
-				} elseif ( $this->competition ) {
-					unset($args['tax_query']);
+				endif;
+				
+				//Check if a Competition id is set
+				if ( $this->competition ) :
 					$args['meta_query'][] = array(
 						'key' => 'sp_competition',
 						'value' => $this->competition,
 						'compare' => '=',
 					);
-					$team_ids = array_merge($team_ids , get_posts( $args ));
-				}
+				endif;
+				
+				$team_ids = get_posts( $args );
 			} else {
 				$team_ids = (array)get_post_meta( $this->ID, 'sp_team', false );
 			}
