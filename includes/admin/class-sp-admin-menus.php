@@ -83,11 +83,11 @@ class SP_Admin_Menus {
 		} elseif ( is_sp_config_type( $typenow ) ) {
 			$this->highlight_admin_menu( 'sportspress', 'sportspress-config' );
 		} elseif ( $typenow == 'sp_calendar' ) {
-			$this->highlight_admin_menu( 'edit.php?post_type=sp_event', 'edit.php?post_type=sp_calendar' );
+			$this->highlight_admin_menu( 'edit.php?post_type=sp_competition', 'edit.php?post_type=sp_calendar' );
 		} elseif ( $typenow == 'sp_table' ) {
-			$this->highlight_admin_menu( 'edit.php?post_type=sp_team', 'edit.php?post_type=sp_table' );
+			$this->highlight_admin_menu( 'edit.php?post_type=sp_competition', 'edit.php?post_type=sp_table' );
 		} elseif ( $typenow == 'sp_list' ) {
-			$this->highlight_admin_menu( 'edit.php?post_type=sp_player', 'edit.php?post_type=sp_list' );
+			$this->highlight_admin_menu( 'edit.php?post_type=sp_competition', 'edit.php?post_type=sp_list' );
 		}
 	}
 
