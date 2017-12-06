@@ -109,8 +109,10 @@ class SP_Meta_Box_List_Details {
 					}?>
 			</div>
 			<?php
+			if(sp_array_value( $competition) == '-1'){
 			foreach ( $taxonomies as $taxonomy ) {
 				sp_taxonomy_field( $taxonomy, $post, true );
+			}
 			}
 			?>
 			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>

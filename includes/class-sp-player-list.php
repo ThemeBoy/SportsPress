@@ -99,14 +99,14 @@ class SP_Player_List extends SP_Secondary_Post {
 				'orderby' => 'meta_value_num',
 				'order' => 'ASC',
 				'meta_query' => array(
-						'relation' => 'AND',
+					'relation' => 'AND',
 					),
 				'tax_query' => array(
 					'relation' => 'AND',
 				),
 			);
 
-			if ( $league_ids ):
+			if ( $league_ids && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
 					'field' => 'term_id',
@@ -114,7 +114,7 @@ class SP_Player_List extends SP_Secondary_Post {
 				);
 			endif;
 
-			if ( $season_ids ):
+			if ( $season_ids && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
 					'field' => 'term_id',
@@ -147,42 +147,27 @@ class SP_Player_List extends SP_Secondary_Post {
 					),
 				);
 			endif;
+			
+			//Check if we are in a Competition
+			if ( get_post_type($this->ID) == 'sp_competition' ) :
+				$args['meta_query'][] = array(
+					'key' => 'sp_competition',
+					'value' => $this->ID,
+					'compare' => '=',
+				);
+			endif;
+			
+			//Check if a Competition id is set
+			if ( $this->competition ) :
+				$args['meta_query'][] = array(
+					'key' => 'sp_competition',
+					'value' => $this->competition,
+					'compare' => '=',
+				);
+			endif;
 
 			$players = get_posts( $args );
-			
-			//Check if we are in a Competition or a Competition id is set
-				if ( get_post_type($this->ID) == 'sp_competition' ) {
-					unset($args['tax_query']);
-					$args['meta_query'][] = array(
-						'key' => 'sp_competition',
-						'value' => $this->ID,
-						'compare' => '=',
-					);
-					if ( $position_ids ):
-					$args['tax_query'][] = array(
-						'taxonomy' => 'sp_position',
-						'field' => 'term_id',
-						'terms' => $position_ids
-					);
-					endif;
-					$players = array_merge($players , get_posts( $args ));
-				} elseif ( $this->competition ) {
-					unset($args['tax_query']);
-					$args['meta_query'][] = array(
-						'key' => 'sp_competition',
-						'value' => $this->competition,
-						'compare' => '=',
-					);
-					if ( $position_ids ):
-					$args['tax_query'][] = array(
-						'taxonomy' => 'sp_position',
-						'field' => 'term_id',
-						'terms' => $position_ids
-					);
-					endif;
-					$players = array_merge($players , get_posts( $args ));
-				}
-				
+							
 			if ( $players && is_array( $players ) ) {
 				foreach ( $players as $player ) {
 					$player_ids[] = $player->ID;
