@@ -35,6 +35,7 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 
 		// Filtering
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
+		add_filter( 'parse_query', array( $this, 'filters_query' ) );
 		
 		// Call SP_Admin_CPT constructor
 		parent::__construct();
@@ -64,6 +65,7 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 			'title' => null,
 			'sp_url' => __( 'URL', 'sportspress' ),
 			'sp_abbreviation' => __( 'Abbreviation', 'sportspress' ),
+			'sp_competition' => __( 'Competitions', 'sportspress' ),
 			'sp_league' => __( 'Leagues', 'sportspress' ),
 			'sp_season' => __( 'Seasons', 'sportspress' ),
 		), $existing_columns, array(
@@ -78,6 +80,17 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 	 */
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
+			case 'sp_competition':
+				$competitions = get_post_meta( $post_id, 'sp_competition', false );
+				if ( empty( $competitions ) ):
+					echo '&mdash;';
+				else:
+					foreach( $competitions as $competition_id ):
+						echo get_the_title($competition_id);
+						echo '<br/>';
+					endforeach;
+				endif;
+				break;
 			case 'sp_icon':
 				echo has_post_thumbnail( $post_id ) ? edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-mini' ), '', '', $post_id ) : '';
 				break;
@@ -106,6 +119,15 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_team' )
 	    	return;
 
+		$selected = isset( $_REQUEST['sp_competition'] ) ? $_REQUEST['sp_competition'] : null;
+		$args = array(
+			'post_type' => 'sp_competition',
+			'name' => 'sp_competition',
+			'show_option_none' => __( 'Show all Competitions', 'sportspress' ),
+			'selected' => $selected,
+			'values' => 'ID',
+		);
+		
 		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 		$args = array(
 			'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),
@@ -123,6 +145,23 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 			'selected' => $selected
 		);
 		sp_dropdown_taxonomies( $args );
+	}
+	
+	/**
+	 * Filter in admin based on options
+	 *
+	 * @param mixed $query
+	 */
+	public function filters_query( $query ) {
+		global $typenow, $wp_query;
+
+	    if ( $typenow == 'sp_team' ) {
+			
+			if ( ! empty( $_GET['sp_competition'] ) ) {
+		    	$query->query_vars['meta_value'] 	= $_GET['sp_competition'];
+		        $query->query_vars['meta_key'] 		= 'sp_competition';
+		    }
+		}
 	}
 }
 

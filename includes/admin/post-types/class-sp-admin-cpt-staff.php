@@ -64,6 +64,7 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 			'title' => null,
 			'sp_role' => __( 'Job', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),
+			'sp_competition' => __( 'Competitions', 'sportspress' ),
 			'sp_league' => __( 'Leagues', 'sportspress' ),
 			'sp_season' => __( 'Seasons', 'sportspress' ),
 		), $existing_columns, array(
@@ -78,6 +79,17 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 	 */
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
+			case 'sp_competition':
+				$competitions = get_post_meta( $post_id, 'sp_competition', false );
+				if ( empty( $competitions ) ):
+					echo '&mdash;';
+				else:
+					foreach( $competitions as $competition_id ):
+						echo get_the_title($competition_id);
+						echo '<br/>';
+					endforeach;
+				endif;
+				break;
 			case 'sp_role':
 				echo get_the_terms( $post_id, 'sp_role' ) ? the_terms( $post_id, 'sp_role' ) : '&mdash;';
 				break;
@@ -128,6 +140,16 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 			'values' => 'ID',
 		);
 		wp_dropdown_pages( $args );
+		
+		$selected = isset( $_REQUEST['sp_competition'] ) ? $_REQUEST['sp_competition'] : null;
+		$args = array(
+			'post_type' => 'sp_competition',
+			'name' => 'sp_competition',
+			'show_option_none' => __( 'Show all Competitions', 'sportspress' ),
+			'selected' => $selected,
+			'values' => 'ID',
+		);
+		wp_dropdown_pages( $args );
 
 		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 		$args = array(
@@ -161,6 +183,11 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 	    	if ( ! empty( $_GET['team'] ) ) {
 		    	$query->query_vars['meta_value'] 	= $_GET['team'];
 		        $query->query_vars['meta_key'] 		= 'sp_team';
+		    }
+			
+			if ( ! empty( $_GET['sp_competition'] ) ) {
+		    	$query->query_vars['meta_value'] 	= $_GET['sp_competition'];
+		        $query->query_vars['meta_key'] 		= 'sp_competition';
 		    }
 		}
 	}

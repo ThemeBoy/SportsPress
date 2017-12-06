@@ -121,6 +121,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			'date' => __( 'Date', 'sportspress' ),
 			'sp_time' => __( 'Time', 'sportspress' ),
 			'sp_team' => __( 'Teams', 'sportspress' ),
+			'sp_competition' => __( 'Competition', 'sportspress' ),
 			'sp_league' => __( 'League', 'sportspress' ),
 			'sp_season' => __( 'Season', 'sportspress' ),
 			'sp_venue' => __( 'Venue', 'sportspress' ),
@@ -159,6 +160,9 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	 */
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
+			case 'sp_competition':
+				echo get_the_title(get_post_meta( $post_id, 'sp_competition', true ));
+				break;
 			case 'sp_format':
 				$format = get_post_meta( $post_id, 'sp_format', true );
 				$formats = new SP_Formats();
@@ -259,6 +263,16 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			'values' => 'ID',
 		);
 		wp_dropdown_pages( $args );
+		
+		$selected = isset( $_REQUEST['sp_competition'] ) ? $_REQUEST['sp_competition'] : null;
+		$args = array(
+			'post_type' => 'sp_competition',
+			'name' => 'sp_competition',
+			'show_option_none' => __( 'Show all Competitions', 'sportspress' ),
+			'selected' => $selected,
+			'values' => 'ID',
+		);
+		wp_dropdown_pages( $args );
 
 		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 		$args = array(
@@ -298,6 +312,11 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	    	if ( ! empty( $_GET['team'] ) ) {
 		    	$query->query_vars['meta_value'] 	= $_GET['team'];
 		        $query->query_vars['meta_key'] 		= 'sp_team';
+		    }
+			
+			if ( ! empty( $_GET['sp_competition'] ) ) {
+		    	$query->query_vars['meta_value'] 	= $_GET['sp_competition'];
+		        $query->query_vars['meta_key'] 		= 'sp_competition';
 		    }
 
 	    	if ( ! empty( $_GET['match_day'] ) ) {
