@@ -246,7 +246,7 @@ class SP_Calendar extends SP_Secondary_Post {
 				endif;
 			endif;
 
-			if ( isset( $league_ids ) ) {
+			if ( isset( $league_ids && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ) ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
 					'field' => 'term_id',
@@ -254,7 +254,7 @@ class SP_Calendar extends SP_Secondary_Post {
 				);
 			}
 
-			if ( isset( $season_ids ) ) {
+			if ( isset( $season_ids && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ) ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
 					'field' => 'term_id',
@@ -279,29 +279,25 @@ class SP_Calendar extends SP_Secondary_Post {
 					),
 				);
 			}
-			$justcompetition = false;
-			if ( !isset( $league_ids ) && !isset( $season_ids ) && !isset( $venue_ids ) && empty( $teams ) ) {
-				//Check if we are in a Competition or a Competition id is set
-				if ( $this->post->post_type == 'sp_competition' ) {
-					$justcompetition = true;
-					unset($args['tax_query']);
-					$args['meta_query'][] = array(
-						'key' => 'sp_competition',
-						'value' => $this->post->ID,
-						'compare' => '=',
-					);
-					$events = array_merge($events , get_posts( $args ));
-				} elseif ( $this->competition ) {
-					$justcompetition = true;
-					unset($args['tax_query']);
-					$args['meta_query'][] = array(
-						'key' => 'sp_competition',
-						'value' => $this->competition,
-						'compare' => '=',
-					);
-				}
-			}
-
+			
+			//Check if we are in a Competition
+			if ( get_post_type($this->ID) == 'sp_competition' ) :
+				$args['meta_query'][] = array(
+					'key' => 'sp_competition',
+					'value' => $this->ID,
+					'compare' => '=',
+				);
+			endif;
+			
+			//Check if a Competition id is set
+			if ( $this->competition ) :
+				$args['meta_query'][] = array(
+					'key' => 'sp_competition',
+					'value' => $this->competition,
+					'compare' => '=',
+				);
+			endif;
+				
 			if ( 'auto' === $this->date && 'any' === $this->status ) {
 				$args['post_status'] = 'publish';
 				$args['order'] = 'DESC';
@@ -317,25 +313,6 @@ class SP_Calendar extends SP_Secondary_Post {
 				$events = array_merge_recursive( $results, $fixtures );
 			} else {
 				$events = get_posts( $args );
-
-				//Check if we are in a Competition or a Competition id is set
-				if ( $this->post->post_type == 'sp_competition' && $justcompetition = false) {
-					unset($args['tax_query']);
-					$args['meta_query'][] = array(
-						'key' => 'sp_competition',
-						'value' => $this->post->ID,
-						'compare' => '=',
-					);
-					$events = array_merge($events , get_posts( $args ));
-				} elseif ( $this->competition  && $justcompetition = false ) {
-					unset($args['tax_query']);
-					$args['meta_query'][] = array(
-						'key' => 'sp_competition',
-						'value' => $this->competition,
-						'compare' => '=',
-					);
-					$events = array_merge($events , get_posts( $args ));
-				}
 			}
 
 		else:
