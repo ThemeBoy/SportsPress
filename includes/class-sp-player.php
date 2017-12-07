@@ -111,7 +111,30 @@ class SP_Player extends SP_Custom_Post {
 	 */
 	public function data( $league_id, $admin = false, $section = -1 ) {
 
-		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
+		//Check if there are Competitions assigned to players
+		$competitions = array_filter( get_post_meta( $this->ID, 'sp_competition', false ) );
+		if ( $competitions) {
+			foreach ( $competitions as $competition ) {
+				$seasons_array = (get_the_terms( $competition, 'sp_season' ));
+				if ( $seasons_array ) {
+					foreach ( $seasons_array as $season_ar ) {
+						if ( !$unique_season[$season_ar->term_id] ) {
+							$unique_season[$season_ar->term_id] = $season_ar->name ;
+							$seasons[] = $season_ar;
+						}
+					}
+				}
+			}
+		}
+		$seasons_array = (array)get_the_terms( $this->ID, 'sp_season' );
+		if ( $seasons_array ) {
+			foreach ( $seasons_array as $season_ar ) {
+				if ( !$unique_season[$season_ar->term_id] ) {
+					$unique_season[$season_ar->term_id] = $season_ar->name ;
+					$seasons[] = $season_ar;
+				}
+			}
+		}
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
@@ -320,6 +343,34 @@ class SP_Player extends SP_Custom_Post {
 					'terms' => $div_id
 				);
 			endif;
+			
+			//Check if there is a Competition
+			$com_args = array(
+				'post_type' => 'sp_competition',
+				'tax_query' => array(
+							'relation' => 'AND',
+								array(
+									'taxonomy' => 'sp_league',
+									'terms' => $league_id,
+									'field' => 'term_id',
+								),
+								array(
+									'taxonomy' => 'sp_season',
+									'terms' => $div_id,
+									'field' => 'term_id',
+								),
+								),
+							);
+			$competitions = get_posts($com_args);
+
+			if( $competitions ) {
+				unset($args['tax_query']);
+				$args['meta_query'][] = array(
+											'key' => 'sp_competition',
+											'value' => $competitions[0]->ID,
+											'compare' => '=',
+										);
+			}
 
 			$args = apply_filters( 'sportspress_player_data_event_args', $args );
 

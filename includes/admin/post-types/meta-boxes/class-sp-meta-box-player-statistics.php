@@ -20,7 +20,31 @@ class SP_Meta_Box_Player_Statistics {
 	 */
 	public static function output( $post ) {
 		$player = new SP_Player( $post );
-		$leagues = get_the_terms( $post->ID, 'sp_league' );
+		//Check if there are Competitions assigned to players
+		$competitions = array_filter( get_post_meta( $post->ID, 'sp_competition', false ) );
+		if ( $competitions) {
+			foreach ( $competitions as $competition ) {
+				$leagues_array = (get_the_terms( $competition, 'sp_league' ));
+				if ( $leagues_array ) {
+					foreach ( $leagues_array as $league_ar ) {
+						if ( !$unique_league[$league_ar->term_id] ) {
+							$unique_league[$league_ar->term_id] = $league_ar->name ;
+							$leagues[] = $league_ar;
+						}
+					}
+				}
+			}
+		}
+		$leagues_array = get_the_terms( $post->ID, 'sp_league' );
+		if ( $leagues_array ) {
+			foreach ( $leagues_array as $league_ar ) {
+				if ( !$unique_league[$league_ar->term_id] ) {
+					$unique_league[$league_ar->term_id] = $league_ar->name ;
+					$leagues[] = $league_ar;
+				}
+			}
+		}
+
 		$league_num = sizeof( $leagues );
 		$sections = get_option( 'sportspress_player_performance_sections', -1 );
 		$show_career_totals = 'yes' === get_option( 'sportspress_player_show_career_total', 'no' ) ? true : false;
@@ -194,9 +218,40 @@ class SP_Meta_Box_Player_Statistics {
 												),
 											),
 										);
-										if ( ! sp_dropdown_pages( $args ) ):
-											_e( '&mdash; None &mdash;', 'sportspress' );
-										endif;
+
+										if ( ! sp_dropdown_pages( $args ) ){
+											$com_args = array(
+													'post_type' => 'sp_competition',
+													'tax_query' => array(
+														'relation' => 'AND',
+														array(
+															'taxonomy' => 'sp_league',
+															'terms' => $league_id,
+															'field' => 'term_id',
+														),
+														array(
+															'taxonomy' => 'sp_season',
+															'terms' => $div_id,
+															'field' => 'term_id',
+														),
+													),
+											);
+											$competitions = get_posts($com_args);
+
+											if( $competitions ) {
+												unset($args['tax_query']);
+												$args['meta_query'][] = array(
+													'key' => 'sp_competition',
+													'value' => $competitions[0]->ID,
+													'compare' => '=',
+												);
+												if( !sp_dropdown_pages( $args ) ) {
+													_e( '&mdash; None &mdash;', 'sportspress' );
+												}
+											}else{
+												_e( '&mdash; None &mdash;', 'sportspress' );
+											}
+										}
 										?>
 									</td>
 								<?php endif; ?>
