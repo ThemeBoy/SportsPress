@@ -246,7 +246,7 @@ class SP_Calendar extends SP_Secondary_Post {
 				endif;
 			endif;
 
-			if ( isset( $league_ids && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ) ) {
+			if ( $league_ids && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
 					'field' => 'term_id',
@@ -254,7 +254,7 @@ class SP_Calendar extends SP_Secondary_Post {
 				);
 			}
 
-			if ( isset( $season_ids && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ) ) {
+			if ( $season_ids && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
 					'field' => 'term_id',
