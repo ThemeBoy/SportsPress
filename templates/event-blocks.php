@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'id' => null,
+	'event_id' => null,
 	'title' => false,
 	'status' => 'default',
 	'date' => 'default',
@@ -58,6 +59,8 @@ if ( $date_future != 'default' )
 	$calendar->future = $date_future;
 if ( $date_relative != 'default' )
 	$calendar->relative = $date_relative;
+if ( $event_id ) 
+	$calendar->event_id = $event_id;
 if ( $league )
 	$calendar->league = $league;
 if ( $season )
