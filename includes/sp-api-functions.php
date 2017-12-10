@@ -347,9 +347,9 @@ function sp_get_player_number( $post = 0 ) {
 function sp_get_player_name_with_number( $post = 0, $prepend = '', $append = '. ' ) {
 	$number = sp_get_player_number( $post );
 	if ( isset( $number ) && '' !== $number ) {
-		return $prepend . $number . $append . get_the_title( $post );
+		return apply_filters( 'sportspress_event_players', $prepend . $number . $append . get_the_title( $post ));
 	} else {
-		return get_the_title( $post );
+		return apply_filters( 'sportspress_event_players', get_the_title( $post ));
 	}
 }
 
