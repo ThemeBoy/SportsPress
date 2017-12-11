@@ -345,11 +345,12 @@ function sp_get_player_number( $post = 0 ) {
 }
 
 function sp_get_player_name_with_number( $post = 0, $prepend = '', $append = '. ' ) {
+	$name = apply_filters( 'sportspress_player_name', get_the_title( $post ));
 	$number = sp_get_player_number( $post );
 	if ( isset( $number ) && '' !== $number ) {
-		return apply_filters( 'sportspress_event_players', $prepend . $number . $append . get_the_title( $post ));
+		return apply_filters( 'sportspress_player_name_with_number', $prepend . $number . $append . $name);
 	} else {
-		return apply_filters( 'sportspress_event_players', get_the_title( $post ));
+		return $name;
 	}
 }
 
