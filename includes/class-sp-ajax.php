@@ -470,8 +470,8 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
-					<?php _e( 'Event ID:', 'sportspress' ); ?>
-					<input class="regular-text" type="number" name="event_id">
+					<?php _e( 'Event:', 'sportspress' ); ?>
+					<input class="regular-text" type="number" name="event">
 				</label>
 			</p>
 			<p>
@@ -1037,7 +1037,7 @@ class SP_AJAX {
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'event_blocks' == type ) {
                     args.title = $div.find('[name=title]').val();
-		    args.event_id = $div.find('[name=event_id]').val();
+                    args.event = $div.find('[name=event]').val();
                     args.team = $div.find('[name=team]').val();
                     args.league = $div.find('[name=league]').val();
                     args.season = $div.find('[name=season]').val();

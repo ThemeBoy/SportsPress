@@ -47,7 +47,7 @@ class SP_Calendar extends SP_Secondary_Post {
 	public $number;
 	
 	/** @var int The event ID. */
-	public $event_id;
+	public $event;
 
 	/**
 	 * __construct function.
@@ -281,8 +281,8 @@ class SP_Calendar extends SP_Secondary_Post {
 				);
 			}
 		
-			if ( $this->event_id) {
-				$args['p'] = $this->event_id;
+			if ( $this->event) {
+				$args['p'] = $this->event;
 			}
 
 			if ( 'auto' === $this->date && 'any' === $this->status ) {
