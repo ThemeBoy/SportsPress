@@ -23,20 +23,20 @@ class SP_Meta_Box_Competition_Details {
 		//$taxonomies = get_object_taxonomies( 'sp_competition' );
 		if ( taxonomy_exists( 'sp_league' ) ):
 			$leagues = get_the_terms( $post->ID, 'sp_league' );
-			$league_ids = array();
 			if ( $leagues ):
-				foreach ( $leagues as $league ):
-					$league_ids[] = $league->term_id;
-				endforeach;
+				$league = reset( $leagues );
+				$league_id = $league->term_id;
+			else:
+				$league_id = null;
 			endif;
 		endif;
 		if ( taxonomy_exists( 'sp_season' ) ):
 			$seasons = get_the_terms( $post->ID, 'sp_season' );
-			$season_ids = array();
 			if ( $seasons ):
-				foreach ( $seasons as $season ):
-					$season_ids[] = $season->term_id;
-				endforeach;
+				$season = reset( $seasons );
+				$season_id = $season->term_id;
+			else:
+				$season_id = null;
 			endif;
 		endif;
 		$caption = get_post_meta( $post->ID, 'sp_caption', true );
@@ -50,7 +50,7 @@ class SP_Meta_Box_Competition_Details {
 		$args = array(
 			'taxonomy' => 'sp_league',
 			'name' => 'tax_input[sp_league][]',
-			'selected' => $league_ids[0],
+			'selected' => $league_id,
 			'values' => 'term_id',
 			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'League', 'sportspress' ) ),
 			'class' => 'widefat',
@@ -67,7 +67,7 @@ class SP_Meta_Box_Competition_Details {
 		$args = array(
 			'taxonomy' => 'sp_season',
 			'name' => 'tax_input[sp_season][]',
-			'selected' => $season_ids[0],
+			'selected' => $season_id,
 			'values' => 'term_id',
 			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Season', 'sportspress' ) ),
 			'class' => 'widefat',
