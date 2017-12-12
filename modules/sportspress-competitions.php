@@ -97,7 +97,7 @@ class SportsPress_Competitions {
 					'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'page-attributes' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
-					'menu_icon' 			=> 'dashicons-analytics',
+					'menu_icon' 			=> 'dashicons-shield',
 					//'show_in_menu' 			=> 'admin.php?page=sportspress',
 					//'show_in_admin_bar' 	=> true,
 					'show_in_rest' 			=> true,
