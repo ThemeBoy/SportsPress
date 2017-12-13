@@ -26,7 +26,7 @@ $show_teams = apply_filters( 'sportspress_player_team_statistics', true );
 				$leagues_array = (get_the_terms( $competition, 'sp_league' ));
 				if ( $leagues_array ) {
 					foreach ( $leagues_array as $league_ar ) {
-						if ( !$unique_league[$league_ar->term_id] ) {
+						if ( !isset( $unique_league[$league_ar->term_id] ) ) {
 							$unique_league[$league_ar->term_id] = $league_ar->name ;
 							$leagues[] = $league_ar;
 						}
@@ -37,7 +37,7 @@ $show_teams = apply_filters( 'sportspress_player_team_statistics', true );
 		$leagues_array = get_the_terms( $id, 'sp_league' );
 		if ( $leagues_array ) {
 			foreach ( $leagues_array as $league_ar ) {
-				if ( !$unique_league[$league_ar->term_id] ) {
+				if ( !isset( $unique_league[$league_ar->term_id] ) ) {
 					$unique_league[$league_ar->term_id] = $league_ar->name ;
 					$leagues[] = $league_ar;
 				}

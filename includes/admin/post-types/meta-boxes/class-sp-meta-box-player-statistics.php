@@ -27,7 +27,7 @@ class SP_Meta_Box_Player_Statistics {
 				$leagues_array = (get_the_terms( $competition, 'sp_league' ));
 				if ( $leagues_array ) {
 					foreach ( $leagues_array as $league_ar ) {
-						if ( !$unique_league[$league_ar->term_id] ) {
+						if ( !isset( $unique_league[$league_ar->term_id] ) ) {
 							$unique_league[$league_ar->term_id] = $league_ar->name ;
 							$leagues[] = $league_ar;
 						}
@@ -38,7 +38,7 @@ class SP_Meta_Box_Player_Statistics {
 		$leagues_array = get_the_terms( $post->ID, 'sp_league' );
 		if ( $leagues_array ) {
 			foreach ( $leagues_array as $league_ar ) {
-				if ( !$unique_league[$league_ar->term_id] ) {
+				if ( !isset( $unique_league[$league_ar->term_id] ) ) {
 					$unique_league[$league_ar->term_id] = $league_ar->name ;
 					$leagues[] = $league_ar;
 				}

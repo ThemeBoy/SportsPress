@@ -118,7 +118,7 @@ class SP_Player extends SP_Custom_Post {
 				$seasons_array = (get_the_terms( $competition, 'sp_season' ));
 				if ( $seasons_array ) {
 					foreach ( $seasons_array as $season_ar ) {
-						if ( !$unique_season[$season_ar->term_id] ) {
+						if ( !isset( $unique_season[$season_ar->term_id] ) ) {
 							$unique_season[$season_ar->term_id] = $season_ar->name ;
 							$seasons[] = $season_ar;
 						}
@@ -129,7 +129,7 @@ class SP_Player extends SP_Custom_Post {
 		$seasons_array = (array)get_the_terms( $this->ID, 'sp_season' );
 		if ( $seasons_array ) {
 			foreach ( $seasons_array as $season_ar ) {
-				if ( !$unique_season[$season_ar->term_id] ) {
+				if ( !isset( $unique_season[$season_ar->term_id] ) ) {
 					$unique_season[$season_ar->term_id] = $season_ar->name ;
 					$seasons[] = $season_ar;
 				}
