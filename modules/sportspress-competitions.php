@@ -92,7 +92,7 @@ class SportsPress_Competitions {
 					'map_meta_cap' 			=> true,
 					'publicly_queryable' 	=> true,
 					'exclude_from_search' 	=> false,
-					'hierarchical' 			=> false,
+					'hierarchical' 			=> true,
 					'rewrite' 				=> array( 'slug' => get_option( 'sportspress_competition_slug', 'competition' ) ),
 					'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'page-attributes' ),
 					'has_archive' 			=> false,
