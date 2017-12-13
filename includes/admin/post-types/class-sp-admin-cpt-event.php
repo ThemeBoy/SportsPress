@@ -45,6 +45,14 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
 		add_filter( 'parse_query', array( $this, 'filters_query' ) );
 		
+		// Quick edit
+		add_action( 'quick_edit_custom_box', array( $this, 'quick_edit_competitions' ), 10, 2 );
+		add_action( 'save_post', array( $this, 'quick_save' ) );
+		
+		// Bulk edit
+		add_action( 'bulk_edit_custom_box', array( $this, 'bulk_edit_competitions' ), 10, 2 );
+		add_action( 'wp_ajax_save_bulk_edit_sp_event', array( $this, 'bulk_save' ) );
+		
 		// Call SP_Admin_CPT constructor
 		parent::__construct();
 	}
@@ -161,7 +169,12 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
 			case 'sp_competition':
-				echo get_the_title(get_post_meta( $post_id, 'sp_competition', true ));
+			$competition = get_post_meta( $post_id, 'sp_competition', true );
+			if ( $competition > 0 ) {
+				echo '<div id="sp_competition-' . $post_id . '" data-id="'.$competition.'">' .get_the_title( $competition ). '</div>';
+			}else{
+				echo '&mdash;';
+			}
 				break;
 			case 'sp_format':
 				$format = get_post_meta( $post_id, 'sp_format', true );
@@ -324,6 +337,120 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		        $query->query_vars['meta_key'] 		= 'sp_day';
 		    }
 		}
+	}
+	
+	/**
+	 * Quick edit competitions
+	 *
+	 * @param string $column_name
+	 * @param string $post_type
+	 */
+	public function quick_edit_competitions( $column_name, $post_type ) {
+		if ( $this->type !== $post_type ) return;
+		if ( 'sp_competition' !== $column_name ) return;
+
+		$competitions = get_posts( array(
+			'post_type' => 'sp_competition',
+			'numberposts' => -1,
+			'post_status' => 'publish',
+		) );
+		
+		if ( ! $competitions ) return;
+		?>
+		<fieldset class="inline-edit-col-right">
+			<div class="inline-edit-col">
+				<span class="title"><?php _e( 'Competitions', 'sportspress' ); ?></span>
+				<select name="competition">
+					<?php foreach ( $competitions as $competition ) { ?>
+					<option value="<?php echo $competition->ID; ?>"> <?php echo $competition->post_title; ?></option>
+					<?php } ?>
+				</select>
+			</div>
+		</fieldset>
+		<?php
+	}
+
+	/**
+	 * Save quick edit boxes
+	 *
+	 * @param int $post_id
+	 */
+	public function quick_save( $post_id ) {
+		if ( empty( $_POST ) ) return $post_id;
+		if ( ! current_user_can( 'edit_post', $post_id ) )  return $post_id;;
+
+		// verify quick edit nonce
+		if ( isset( $_POST[ '_inline_edit' ] ) && ! wp_verify_nonce( $_POST[ '_inline_edit' ], 'inlineeditnonce' ) ) return $post_id;
+
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
+		if ( isset( $post->post_type ) && $post->post_type == 'revision' ) return $post_id;
+		
+		if ( isset( $_POST[ 'competition' ] ) ) {
+			update_post_meta( $post_id, 'sp_competition', $_POST[ 'competition' ] );
+		}
+	}
+
+	
+	/**
+	 * Bulk edit competitions
+	 *
+	 * @param string $column_name
+	 * @param string $post_type
+	 */
+	public function bulk_edit_competitions( $column_name, $post_type ) {
+		if ( $this->type !== $post_type ) return;
+		if ( 'sp_competition' !== $column_name ) return;
+
+		static $print_nonce = true;
+		if ( $print_nonce ) {
+			$print_nonce = false;
+			wp_nonce_field( plugin_basename( __FILE__ ), "{$this->type}_edit_nonce" );
+		}
+
+		$competitions = get_posts( array(
+			'post_type' => 'sp_competition',
+			'numberposts' => -1,
+			'post_status' => 'publish',
+		) );
+		
+		if ( ! $competitions ) return;
+		?>
+		<fieldset class="inline-edit-col-right">
+			<div class="inline-edit-col">
+				<span class="title"><?php _e( 'Competitions', 'sportspress' ); ?></span>
+				<select name="competition">
+					<option value="-1">— No Change —</option>
+					<?php foreach ( $competitions as $competition ) { ?>
+					<option value="<?php echo $competition->ID; ?>"> <?php echo $competition->post_title; ?></option>
+					<?php } ?>
+				</select>
+			</div>
+		</fieldset>
+		<?php
+	}
+
+	/**
+	 * Save bulk edit boxes
+	 */
+	public function bulk_save() {
+		$_POST += array( "nonce" => '' );
+		//if ( ! wp_verify_nonce( $_POST["nonce"], plugin_basename( __FILE__ ) ) ) return; *WIP*
+
+		$post_ids = ( ! empty( $_POST[ 'post_ids' ] ) ) ? $_POST[ 'post_ids' ] : array();
+
+		$competition = sp_array_value( $_POST, 'competition', array() );
+
+		if ( ! empty( $post_ids ) && is_array( $post_ids ) ) {
+			foreach ( $post_ids as $post_id ) {
+				if ( ! current_user_can( 'edit_post', $post_id ) ) continue;
+
+				if ( isset( $_POST[ 'competition' ] ) ) {
+					update_post_meta( $post_id, 'sp_competition', $_POST[ 'competition' ] );
+				}
+			}
+		}
+
+		die();
 	}
 }
 

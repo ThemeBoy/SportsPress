@@ -101,6 +101,8 @@ class SP_Admin_Assets {
 		wp_register_script( 'sportspress-admin-quickeditor', SP()->plugin_url() . '/assets/js/admin/quickeditor.js', array( 'jquery' ), SP_VERSION, true );
 		
 		wp_register_script( 'sportspress-admin-quickeditor-teams', SP()->plugin_url() . '/assets/js/admin/quickeditor-teams.js', array( 'jquery' ), SP_VERSION, true );
+		
+		wp_register_script( 'sportspress-admin-quickeditor-events', SP()->plugin_url() . '/assets/js/admin/quickeditor-events.js', array( 'jquery' ), SP_VERSION, true );
 
 		// SportsPress admin pages
 	    if ( in_array( $screen->id, sp_get_screen_ids() ) || strpos( $screen->id, 'sportspress-config' )) {
@@ -157,6 +159,9 @@ class SP_Admin_Assets {
 		}
 		if ( in_array( $screen->id, array( 'edit-sp_team' ) ) ) {
 			wp_enqueue_script( 'sportspress-admin-quickeditor-teams' );
+		}
+		if ( in_array( $screen->id, array( 'edit-sp_event' ) ) ) {
+			wp_enqueue_script( 'sportspress-admin-quickeditor-events' );
 		}
 	}
 }
