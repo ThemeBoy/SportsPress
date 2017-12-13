@@ -27,6 +27,7 @@
 			var $number = $( '.column-sp_number', $post_row ).text();
 			var $current_teams = String( $( '.column-sp_team', $post_row ).find( '.sp-player-teams' ).data( 'current-teams' ) ).split(',');
 			var $past_teams = String( $( '.column-sp_team', $post_row ).find( '.sp-player-teams' ).data( 'past-teams' ) ).split(',');
+			var $competitions = String( $( '.column-sp_competition', $post_row ).find( '.sp-player-competitions' ).data( 'competitions' ) ).split(',');
 
 			// populate the data
 			$( ':input[name="sp_number"]', $edit_row ).val( $number );
@@ -35,6 +36,9 @@
 			});
 			$( ':input[name="sp_past_team[]"]', $edit_row ).each(function() {
 				$(this).prop("checked", ($.inArray($(this).val(), $past_teams ) != -1));
+			});
+			$( ':input[name="sp_competition[]"]', $edit_row ).each(function() {
+				$(this).prop("checked", ($.inArray($(this).val(), $competitions ) != -1));
 			});
 		}
 	};
@@ -60,6 +64,11 @@
 			$past_teams.push( $(this).val() );
 		});
 
+		var $competitions = [];
+		$bulk_row.find( 'input[name="sp_competition[]"]:checked' ).each(function() {
+			$competitions.push( $(this).val() );
+		});
+
 		// save the data
 		$.ajax({
 			url: ajaxurl, // this is a variable that WordPress has already defined for us
@@ -71,6 +80,7 @@
 				post_ids: $post_ids,
 				current_teams: $current_teams,
 				past_teams: $past_teams,
+				competitions: $competitions,
 				nonce: $("#sp_player_edit_nonce").val()
 			}
 		});

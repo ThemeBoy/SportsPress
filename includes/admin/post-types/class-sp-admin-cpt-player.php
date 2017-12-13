@@ -93,6 +93,8 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 		switch ( $column ):
 			case 'sp_competition':
 				$competitions = get_post_meta( $post_id, 'sp_competition', false );
+				$competitions = array_filter( $competitions );
+				echo '<span class="hidden sp-player-competitions" data-competitions="' . implode( ',', $competitions ) . '"></span>';
 				if ( empty( $competitions ) ):
 					echo '&mdash;';
 				else:
@@ -428,7 +430,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 		<fieldset class="inline-edit-col-right">
 			<div class="inline-edit-col">
 				<span class="title inline-edit-categories-label"><?php _e( 'Competitions', 'sportspress' ); ?></span>
-				<!--<input type="hidden" name="sp_competition[]" value="0">-->
+				<input type="hidden" name="sp_competition[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $competitions as $competition ) { ?>
 					<li><label class="selectit"><input value="<?php echo $competition->ID; ?>" type="checkbox" name="sp_competition[]"> <?php echo $competition->post_title; ?></label></li>
@@ -448,7 +450,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 
 		$post_ids = ( ! empty( $_POST[ 'post_ids' ] ) ) ? $_POST[ 'post_ids' ] : array();
 
-		$competitions = sp_array_value( $_POST, 'sp_competition', array() );
+		$competitions = sp_array_value( $_POST, 'competitions', array() );
 		$current_teams = sp_array_value( $_POST, 'current_teams', array() );
 		$past_teams = sp_array_value( $_POST, 'past_teams', array() );
 		$teams = array_merge( $current_teams, $past_teams );
