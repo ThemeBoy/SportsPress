@@ -450,7 +450,8 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 
 		$post_ids = ( ! empty( $_POST[ 'post_ids' ] ) ) ? $_POST[ 'post_ids' ] : array();
 
-		$competitions = sp_array_value( $_POST, 'competitions', array() );
+		//$competitions = sp_array_value( $_POST, 'competitions', array() );
+		$competitions_new = sp_array_value( $_POST, 'competitions', array() );
 		$current_teams = sp_array_value( $_POST, 'current_teams', array() );
 		$past_teams = sp_array_value( $_POST, 'past_teams', array() );
 		$teams = array_merge( $current_teams, $past_teams );
@@ -459,7 +460,11 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 			foreach ( $post_ids as $post_id ) {
 				if ( ! current_user_can( 'edit_post', $post_id ) ) continue;
 
-				sp_add_post_meta_recursive( $post_id, 'sp_competition', $competitions );
+				$competitions_current = get_post_meta( $post_id, 'sp_competition', false );
+				$competitions = array_merge( $competitions_current, $competitions_new );
+				$competitions = array_unique( array_filter( $competitions ) );
+				
+				sp_update_post_meta_recursive( $post_id, 'sp_competition', $competitions );
 				sp_add_post_meta_recursive( $post_id, 'sp_current_team', $current_teams );
 				sp_add_post_meta_recursive( $post_id, 'sp_past_team', $past_teams );
 				sp_add_post_meta_recursive( $post_id, 'sp_team', $teams );
