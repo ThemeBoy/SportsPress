@@ -216,8 +216,8 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 		if ( empty( $_POST ) ) return $post_id;
 		if ( ! current_user_can( 'edit_post', $post_id ) )  return $post_id;;
 
-		$_POST += array( "{$this->type}_edit_nonce" => '' );
-		if ( ! wp_verify_nonce( $_POST["{$this->type}_edit_nonce"], plugin_basename( __FILE__ ) ) )  return $post_id;;
+		// verify quick edit nonce
+		if ( isset( $_POST[ '_inline_edit' ] ) && ! wp_verify_nonce( $_POST[ '_inline_edit' ], 'inlineeditnonce' ) ) return $post_id;
 
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
 		if ( isset( $post->post_type ) && $post->post_type == 'revision' ) return $post_id;
