@@ -44,7 +44,6 @@ $competition = get_post_meta( $id, 'sp_competition', true );
 if ($competition > 0){
 $table->competition = $competition;
 }
-}
 
 if ( $show_title && false === $title && $id ):
 	$caption = $table->caption;
