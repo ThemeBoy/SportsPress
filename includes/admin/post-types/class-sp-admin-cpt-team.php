@@ -119,14 +119,15 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_team' )
 	    	return;
 
-		$selected = isset( $_REQUEST['sp_competition'] ) ? $_REQUEST['sp_competition'] : null;
+		$selected = isset( $_REQUEST['competition'] ) ? $_REQUEST['competition'] : null;
 		$args = array(
 			'post_type' => 'sp_competition',
-			'name' => 'sp_competition',
+			'name' => 'competition',
 			'show_option_none' => __( 'Show all Competitions', 'sportspress' ),
 			'selected' => $selected,
 			'values' => 'ID',
 		);
+		wp_dropdown_pages( $args );
 		
 		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 		$args = array(
@@ -157,8 +158,8 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 
 	    if ( $typenow == 'sp_team' ) {
 			
-			if ( ! empty( $_GET['sp_competition'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['sp_competition'];
+			if ( ! empty( $_GET['competition'] ) ) {
+		    	$query->query_vars['meta_value'] 	= $_GET['competition'];
 		        $query->query_vars['meta_key'] 		= 'sp_competition';
 		    }
 		}

@@ -114,10 +114,10 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_calendar' )
 	    	return;
 
-		$selected = isset( $_REQUEST['sp_competition'] ) ? $_REQUEST['sp_competition'] : null;
+		$selected = isset( $_REQUEST['competition'] ) ? $_REQUEST['competition'] : null;
 		$args = array(
 			'post_type' => 'sp_competition',
-			'name' => 'sp_competition',
+			'name' => 'competition',
 			'show_option_none' => __( 'Show all Competitions', 'sportspress' ),
 			'selected' => $selected,
 			'values' => 'ID',
@@ -168,8 +168,8 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 		        $query->query_vars['meta_key'] 		= 'sp_team';
 		    }
 			
-			if ( ! empty( $_GET['sp_competition'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['sp_competition'];
+			if ( ! empty( $_GET['competition'] ) ) {
+		    	$query->query_vars['meta_value'] 	= $_GET['competition'];
 		        $query->query_vars['meta_key'] 		= 'sp_competition';
 		    }
 		}
