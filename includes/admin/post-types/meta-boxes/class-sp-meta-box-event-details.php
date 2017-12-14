@@ -27,7 +27,7 @@ class SP_Meta_Box_Event_Details {
 						'class' => 'sportspress-pages',
 						'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
 						'values' => 'ID',
-						'selected' => sp_array_value( $competition),
+						'selected' => sp_array_value( $competition ),
 						'chosen' => true,
 						'tax_query' => array(),
 					);

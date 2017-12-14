@@ -41,7 +41,7 @@ class SP_Meta_Box_List_Details {
 						'class' => 'sportspress-pages',
 						'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
 						'values' => 'ID',
-						'selected' => sp_array_value( $competition),
+						'selected' => sp_array_value( $competition ),
 						'chosen' => true,
 						'tax_query' => array(),
 					);
@@ -91,7 +91,7 @@ class SP_Meta_Box_List_Details {
 					}?>
 			</div>
 			<?php
-			if(sp_array_value( $competition) == '-1'){
+			if ( sp_array_value( $competition ) == '-1' || sp_array_value( $competition ) == '' ){
 			foreach ( $taxonomies as $taxonomy ) {
 				sp_taxonomy_field( $taxonomy, $post, true );
 			}
