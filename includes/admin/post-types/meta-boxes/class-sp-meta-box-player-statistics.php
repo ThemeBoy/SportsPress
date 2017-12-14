@@ -22,6 +22,7 @@ class SP_Meta_Box_Player_Statistics {
 		$player = new SP_Player( $post );
 		//Check if there are Competitions assigned to players
 		$competitions = array_filter( get_post_meta( $post->ID, 'sp_competition', false ) );
+		$leagues = array();
 		if ( $competitions) {
 			foreach ( $competitions as $competition ) {
 				$leagues_array = (get_the_terms( $competition, 'sp_league' ));
