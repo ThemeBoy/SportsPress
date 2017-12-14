@@ -61,9 +61,9 @@ class SP_Admin_CPT_List extends SP_Admin_CPT {
 	 * @param  string $column
 	 */
 	public function custom_columns( $column, $post_id ) {
+		$competition = get_post_meta( $post_id, 'sp_competition', true );
 		switch ( $column ):
 			case 'sp_competition':
-				$competition = get_post_meta( $post_id, 'sp_competition', true );
 				if ( $competition > 0 ) {
 					echo get_the_title(get_post_meta( $post_id, 'sp_competition', true ));
 				}else{
@@ -80,9 +80,11 @@ class SP_Admin_CPT_List extends SP_Admin_CPT {
 				endif;
 				break;
 			case 'sp_league':
+				if ( $competition > 0 ) { echo '&mdash;'; break; }
 				echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : __( 'All', 'sportspress' );
 				break;
 			case 'sp_season':
+				if ( $competition > 0 ) { echo '&mdash;'; break; }
 				echo get_the_terms ( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : __( 'All', 'sportspress' );
 				break;
 			case 'sp_team':
