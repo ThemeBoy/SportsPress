@@ -64,7 +64,12 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ):
 			case 'sp_competition':
-				echo get_the_title(get_post_meta( $post_id, 'sp_competition', true ));
+				$competition = get_post_meta( $post_id, 'sp_competition', true );
+				if ( $competition > 0 ) {
+					echo get_the_title(get_post_meta( $post_id, 'sp_competition', true ));
+				}else{
+					echo '&mdash;';
+				}
 				break;
 			case 'sp_league':
 				echo get_the_terms ( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : __( 'All', 'sportspress' );
