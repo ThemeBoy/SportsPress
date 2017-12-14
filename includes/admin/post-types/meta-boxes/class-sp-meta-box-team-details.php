@@ -55,8 +55,21 @@ class SP_Meta_Box_Team_Details {
 		$redirect = get_post_meta( $post->ID, 'sp_redirect', true );
 		$url = get_post_meta( $post->ID, 'sp_url', true );
 		$competitions = array_filter( get_post_meta( $post->ID, 'sp_competition', false ) );
+		$sp_team_filter = get_post_meta($post->ID, 'sp_team_filter', true);
 		?>
 		
+		<p><strong><?php _e( 'Filter by:', 'sportspress' ); ?></strong></p>
+		<div id="post-formats-select">
+			<input type="radio" name="sp_team_filter" class="team-filter" id="team-filter-competition" value="competition" <?php checked( $sp_team_filter, 'competition' ); ?>> 
+			<label for="team-filter-competition" class="post-format-icon team-filter-competition">Competitions</label>
+			<br/>
+			<input type="radio" name="sp_team_filter" class="team-filter" id="team-filter-leagueseason" value="leagueseason" <?php checked( $sp_team_filter, 'leagueseason' ); ?>> 
+			<label for="team-filter-leagueseason" class="post-format-icon team-filter-leagueseason">Leagues/Seasons</label>
+			<br/>
+			<input type="radio" name="sp_team_filter" class="team-filter" id="team-filter-both" value="both" <?php checked( $sp_team_filter, 'both' ); ?>> 
+			<label for="team-filter-both" class="post-format-icon team-filter-both">Both</label>
+		</div>
+		<?php if ( $sp_team_filter != 'leagueseason' ) { ?>
 		<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
 		<p><?php
 			$args = array(
@@ -71,8 +84,9 @@ class SP_Meta_Box_Team_Details {
 		);
 		sp_dropdown_pages( $args );
 		?></p>
+		<?php } ?>
 
-		<?php if ( taxonomy_exists( 'sp_league' ) ) { ?>
+		<?php if ( taxonomy_exists( 'sp_league' ) && $sp_team_filter != 'competition' ) { ?>
 		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -89,7 +103,7 @@ class SP_Meta_Box_Team_Details {
 		?></p>
 		<?php } ?>
 
-		<?php if ( taxonomy_exists( 'sp_season' ) ) { ?>
+		<?php if ( taxonomy_exists( 'sp_season' ) && $sp_team_filter != 'competition' ) { ?>
 		<p><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -137,6 +151,7 @@ class SP_Meta_Box_Team_Details {
 	 */
 	public static function save( $post_id, $post ) {
 		sp_update_post_meta_recursive( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', array() ) );
+		update_post_meta( $post_id, 'sp_team_filter', sp_array_value( $_POST, 'sp_team_filter', '' )  );
 		update_post_meta( $post_id, 'sp_url', esc_url( sp_array_value( $_POST, 'sp_url', '' ) ) );
 		update_post_meta( $post_id, 'sp_redirect', sp_array_value( $_POST, 'sp_redirect', 0 ) );
 		update_post_meta( $post_id, 'sp_abbreviation', esc_attr( sp_array_value( $_POST, 'sp_abbreviation', '' ) ) );

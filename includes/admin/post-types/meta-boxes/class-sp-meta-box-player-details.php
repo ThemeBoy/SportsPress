@@ -67,6 +67,7 @@ class SP_Meta_Box_Player_Details {
 		$past_teams = array_filter( get_post_meta( $post->ID, 'sp_past_team', false ) );
 		$current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
 		$competitions = array_filter( get_post_meta( $post->ID, 'sp_competition', false ) );
+		$sp_player_filter = get_post_meta($post->ID, 'sp_player_filter', true);
 		?>
 
 		<p><strong><?php _e( 'Squad Number', 'sportspress' ); ?></strong></p>
@@ -131,6 +132,19 @@ class SP_Meta_Box_Player_Details {
 		sp_dropdown_pages( $args );
 		?></p>
 		
+		<p><strong><?php _e( 'Filter by:', 'sportspress' ); ?></strong></p>
+		<div id="post-formats-select">
+			<input type="radio" name="sp_player_filter" class="player-filter" id="player-filter-competition" value="competition" <?php checked( $sp_player_filter, 'competition' ); ?>> 
+			<label for="player-filter-competition" class="post-format-icon player-filter-competition">Competitions</label>
+			<br/>
+			<input type="radio" name="sp_player_filter" class="player-filter" id="player-filter-leagueseason" value="leagueseason" <?php checked( $sp_player_filter, 'leagueseason' ); ?>> 
+			<label for="player-filter-leagueseason" class="post-format-icon player-filter-leagueseason">Leagues/Seasons</label>
+			<br/>
+			<input type="radio" name="sp_player_filter" class="player-filter" id="player-filter-both" value="both" <?php checked( $sp_player_filter, 'both' ); ?>> 
+			<label for="player-filter-both" class="post-format-icon player-filter-both">Both</label>
+		</div>
+		
+		<?php if ( $sp_player_filter != 'leagueseason' ) { ?>
 		<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
 		<p><?php
 			$args = array(
@@ -145,8 +159,9 @@ class SP_Meta_Box_Player_Details {
 		);
 		sp_dropdown_pages( $args );
 		?></p>
+		<?php } ?>
 
-		<?php if ( taxonomy_exists( 'sp_league' ) ) { ?>
+		<?php if ( taxonomy_exists( 'sp_league' ) && $sp_player_filter != 'competition' ) { ?>
 		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -163,7 +178,7 @@ class SP_Meta_Box_Player_Details {
 		?></p>
 		<?php } ?>
 
-		<?php if ( taxonomy_exists( 'sp_season' ) ) { ?>
+		<?php if ( taxonomy_exists( 'sp_season' ) && $sp_player_filter != 'competition' ) { ?>
 		<p><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(

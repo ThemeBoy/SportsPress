@@ -49,12 +49,17 @@ class SP_Meta_Box_Staff_Details {
 		endif;
 
 		$roles = get_the_terms( $post->ID, 'sp_role' );
-		$role_ids = wp_list_pluck( $roles, 'term_id' );
+		if ( $roles ) {
+			$role_ids = wp_list_pluck( $roles, 'term_id' );
+		} else {
+			$role_ids = null ;
+		}
 		
 		$teams = get_posts( array( 'post_type' => 'sp_team', 'posts_per_page' => -1 ) );
 		$past_teams = array_filter( get_post_meta( $post->ID, 'sp_past_team', false ) );
 		$current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
 		$competitions = array_filter( get_post_meta( $post->ID, 'sp_competition', false ) );
+		$sp_staff_filter = get_post_meta($post->ID, 'sp_staff_filter', true);
 		?>
 		<p><strong><?php _e( 'Jobs', 'sportspress' ); ?></strong></p>
 		<p><?php
@@ -115,6 +120,19 @@ class SP_Meta_Box_Staff_Details {
 		sp_dropdown_pages( $args );
 		?></p>
 		
+		<p><strong><?php _e( 'Filter by:', 'sportspress' ); ?></strong></p>
+		<div id="post-formats-select">
+			<input type="radio" name="sp_staff_filter" class="staff-filter" id="staff-filter-competition" value="competition" <?php checked( $sp_staff_filter, 'competition' ); ?>> 
+			<label for="staff-filter-competition" class="post-format-icon staff-filter-competition">Competitions</label>
+			<br/>
+			<input type="radio" name="sp_staff_filter" class="staff-filter" id="staff-filter-leagueseason" value="leagueseason" <?php checked( $sp_staff_filter, 'leagueseason' ); ?>> 
+			<label for="staff-filter-leagueseason" class="post-format-icon staff-filter-leagueseason">Leagues/Seasons</label>
+			<br/>
+			<input type="radio" name="sp_staff_filter" class="staff-filter" id="staff-filter-both" value="both" <?php checked( $sp_staff_filter, 'both' ); ?>> 
+			<label for="staff-filter-both" class="post-format-icon staff-filter-both">Both</label>
+		</div>
+		
+		<?php if ( $sp_staff_filter != 'leagueseason' ) { ?>
 		<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
 		<p><?php
 			$args = array(
@@ -129,7 +147,9 @@ class SP_Meta_Box_Staff_Details {
 		);
 		sp_dropdown_pages( $args );
 		?></p>
+		<?php } ?>
 
+		<?php if ( taxonomy_exists( 'sp_league' ) && $sp_staff_filter != 'competition' ) { ?>
 		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -144,7 +164,9 @@ class SP_Meta_Box_Staff_Details {
 		);
 		sp_dropdown_taxonomies( $args );
 		?></p>
+		<?php } ?>
 
+		<?php if ( taxonomy_exists( 'sp_season' ) && $sp_staff_filter != 'competition' ) { ?>
 		<p><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -159,6 +181,7 @@ class SP_Meta_Box_Staff_Details {
 		);
 		sp_dropdown_taxonomies( $args );
 		?></p>
+		<?php } ?>
 		<?php
 	}
 
