@@ -40,7 +40,7 @@ class SportsPress_Competitions {
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
-		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ) );
+		//add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ) );
 		add_filter( 'sportspress_glance_items', array( $this, 'add_glance_item' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
@@ -109,11 +109,11 @@ class SportsPress_Competitions {
 	}
 
 	/**
-	 * Add menu item
+	 * Add menu item TO DELETE
 	 */
-	public function admin_menu() {
+	/*public function admin_menu() {
 		add_submenu_page( 'sportspress', __( 'Competitions', 'sportspress' ), __( 'Competitions', 'sportspress' ), 'manage_sportspress', 'edit.php?post_type=sp_competition');
-	}
+	}*/
 
 	public function parent_file( $parent_file ) {
 		if ( 'sportspress' == $parent_file )
@@ -215,12 +215,12 @@ class SportsPress_Competitions {
 	}
 
 	/**
-	 * Add menu item
+	 * Add menu item TO DELETE
 	 */
-	public function add_menu_item( $items ) {
+	/*public function add_menu_item( $items ) {
 		$items[] = 'edit.php?post_type=sp_competition';
 		return $items;
-	}
+	}*/
 
 	/**
 	 * Add glance item

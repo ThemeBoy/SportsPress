@@ -126,6 +126,7 @@ class SP_Admin_Menus {
 		$sportspress_separator = array_search( 'separator-sportspress', $menu_order );
 
 		// Get index of menu items
+		$sportspress_competition = array_search( 'edit.php?post_type=sp_competition', $menu_order );
 		$sportspress_event = array_search( 'edit.php?post_type=sp_event', $menu_order );
 		$sportspress_team = array_search( 'edit.php?post_type=sp_team', $menu_order );
 		$sportspress_player = array_search( 'edit.php?post_type=sp_player', $menu_order );
@@ -137,11 +138,13 @@ class SP_Admin_Menus {
 			if ( ( ( 'sportspress' ) == $item ) ):
 				$sportspress_menu_order[] = 'separator-sportspress';
 				$sportspress_menu_order[] = $item;
+				$sportspress_menu_order[] = 'edit.php?post_type=sp_competition';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_event';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_team';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_player';
 				$sportspress_menu_order[] = 'edit.php?post_type=sp_staff';
 				unset( $menu_order[ $sportspress_separator ] );
+				unset( $menu_order[ $sportspress_competition ] );
 				unset( $menu_order[ $sportspress_event ] );
 				unset( $menu_order[ $sportspress_team ] );
 				unset( $menu_order[ $sportspress_player ] );
