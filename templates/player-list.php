@@ -57,10 +57,11 @@ $data = $list->data();
 // The first row should be column labels
 $labels = $data[0];
 //Create a unique identifier based on the current time in microseconds
-$identifier = uniqid('playerlist_');
+$identifier = uniqid( 'playerlist_' );
 // If responsive tables are enabled then load the inline css code
-if ($responsive == true){
-	sportspress_responsive_tables_css($labels,$identifier);
+if ( true == $responsive ){
+	$theme_name = wp_get_theme()->get( 'Name' );
+	sportspress_responsive_tables_css( $labels, $identifier, $theme_name );
 }
 // Remove the first row to leave us with the actual data
 unset( $data[0] );

@@ -49,7 +49,7 @@ if ( $show_title && false === $title && $id ):
 endif;
 
 //Create a unique identifier based on the current time in microseconds
-$identifier = uniqid('table_');
+$identifier = uniqid( 'table_' );
 
 $output = '';
 
@@ -65,8 +65,9 @@ $data = $table->data();
 // The first row should be column labels
 $labels = $data[0];
 // If responsive tables are enabled then load the inline css code
-if ($responsive == true){
-	sportspress_responsive_tables_css($labels,$identifier);
+if ( true == $responsive ){
+	$theme_name = wp_get_theme()->get( 'Name' );
+	sportspress_responsive_tables_css( $labels, $identifier, $theme_name );
 }
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
@@ -178,7 +179,6 @@ $output .= '</div>';
 
 if ( $show_full_table_link )
 	$output .= '<div class="sp-league-table-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View full table', 'sportspress' ) . '</a></div>';
-
 ?>
 <div class="sp-template sp-template-league-table">
 	<?php echo $output; ?>
