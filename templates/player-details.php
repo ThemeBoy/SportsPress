@@ -22,6 +22,7 @@ $defaults = array(
 	'show_past_teams' => get_option( 'sportspress_player_show_past_teams', 'yes' ) == 'yes' ? true : false,
 	'show_leagues' => get_option( 'sportspress_player_show_leagues', 'no' ) == 'yes' ? true : false,
 	'show_seasons' => get_option( 'sportspress_player_show_seasons', 'no' ) == 'yes' ? true : false,
+	'show_competitions' => get_option( 'sportspress_player_show_competitions', 'no' ) == 'yes' ? true : false,
 	'show_nationality_flags' => get_option( 'sportspress_player_show_flags', 'yes' ) == 'yes' ? true : false,
 	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
@@ -116,6 +117,17 @@ if ( $show_seasons ):
 			$terms[] = $season->name;
 		}
 		$data[ __( 'Seasons', 'sportspress' ) ] = implode( ', ', $terms );
+	endif;
+endif;
+
+if ( $show_competitions ):
+	$competitions = $player->competitions();
+	if ( $competitions && ! is_wp_error( $competitions ) ):
+		$terms = array();
+		foreach ( $competitions as $competition ) {
+			$terms[] = get_the_title( $competition );
+		}
+		$data[ __( 'Competitions', 'sportspress' ) ] = implode( ', ', $terms );
 	endif;
 endif;
 

@@ -50,7 +50,7 @@ class SP_Meta_Box_Player_Statistics {
 		$sections = get_option( 'sportspress_player_performance_sections', -1 );
 		$show_career_totals = 'yes' === get_option( 'sportspress_player_show_career_total', 'no' ) ? true : false;
 
-		if ( $leagues ) {
+		if ( $leagues && is_array( $leagues ) ){
 			if ( -1 == $sections ) {
 				// Loop through statistics for each league
 				$i = 0;
@@ -116,6 +116,7 @@ class SP_Meta_Box_Player_Statistics {
 	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array(), $total_types = array() ) {
 		$readonly = false;
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
+		$sp_player_filter = get_post_meta($id, 'sp_player_filter', true);
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
@@ -219,7 +220,7 @@ class SP_Meta_Box_Player_Statistics {
 												),
 											),
 										);
-
+										
 										if ( ! sp_dropdown_pages( $args ) ){
 											$com_args = array(
 													'post_type' => 'sp_competition',

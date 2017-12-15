@@ -119,6 +119,14 @@ class SP_Settings_Players extends SP_Settings_Page {
 					'id' 		=> 'sportspress_player_show_seasons',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+				
+				array(
+					'desc' 		=> __( 'Competitions', 'sportspress' ),
+					'id' 		=> 'sportspress_player_show_competitions',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
 					'checkboxgroup'		=> 'end',
 				),
 

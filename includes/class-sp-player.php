@@ -41,6 +41,16 @@ class SP_Player extends SP_Custom_Post {
 	public function seasons() {
 		return get_the_terms( $this->ID, 'sp_season' );
 	}
+	
+	/**
+	 * Returns competitions
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function competitions() {
+		return get_post_meta( $this->ID, 'sp_competition', false );
+	}
 
 	/**
 	 * Returns current teams
