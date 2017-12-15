@@ -140,11 +140,10 @@ class SP_Meta_Box_Player_Details {
 			<input type="radio" name="sp_player_filter" class="player-filter" id="player-filter-leagueseason" value="leagueseason" <?php checked( $sp_player_filter, 'leagueseason' ); ?>> 
 			<label for="player-filter-leagueseason" class="post-format-icon player-filter-leagueseason">Leagues/Seasons</label>
 			<br/>
-			<input type="radio" name="sp_player_filter" class="player-filter" id="player-filter-both" value="both" <?php checked( $sp_player_filter, 'both' ); ?>> 
+			<input type="radio" name="sp_player_filter" class="player-filter" id="player-filter-both" value="both" <?php checked( true, ! $sp_player_filter  || $sp_player_filter == 'both' ); ?>> 
 			<label for="player-filter-both" class="post-format-icon player-filter-both">Both</label>
 		</div>
 		
-		<?php if ( $sp_player_filter != 'leagueseason' ) { ?>
 		<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
 		<p><?php
 			$args = array(
@@ -159,9 +158,8 @@ class SP_Meta_Box_Player_Details {
 		);
 		sp_dropdown_pages( $args );
 		?></p>
-		<?php } ?>
 
-		<?php if ( taxonomy_exists( 'sp_league' ) && $sp_player_filter != 'competition' ) { ?>
+		<?php if ( taxonomy_exists( 'sp_league' ) ) { ?>
 		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -178,7 +176,7 @@ class SP_Meta_Box_Player_Details {
 		?></p>
 		<?php } ?>
 
-		<?php if ( taxonomy_exists( 'sp_season' ) && $sp_player_filter != 'competition' ) { ?>
+		<?php if ( taxonomy_exists( 'sp_season' ) ) { ?>
 		<p><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(

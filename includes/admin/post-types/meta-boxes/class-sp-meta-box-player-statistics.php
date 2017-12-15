@@ -238,13 +238,17 @@ class SP_Meta_Box_Player_Statistics {
 													),
 											);
 											$competitions = get_posts($com_args);
+											$competition_ids = array();
+											foreach ( $competitions as $competition ) {
+												$competition_ids[] = $competition->ID;
+											}
 
 											if( $competitions ) {
 												unset($args['tax_query']);
 												$args['meta_query'][] = array(
 													'key' => 'sp_competition',
-													'value' => $competitions[0]->ID,
-													'compare' => '=',
+													'value' => $competition_ids,
+													'compare' => 'IN',
 												);
 												if( !sp_dropdown_pages( $args ) ) {
 													_e( '&mdash; None &mdash;', 'sportspress' );
