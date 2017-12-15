@@ -11,6 +11,9 @@
  * @author 		ThemeBoy
  */
 class SP_Team extends SP_Custom_Post {
+	
+	/** @var string The Filter_by status. */
+	public $sp_team_filter;
 
 	public function next_event() {
 		$args = array(
@@ -439,6 +442,7 @@ class SP_Team extends SP_Custom_Post {
 
 		$league_ids = sp_get_the_term_ids( $this->ID, 'sp_league' );
 		$season_ids = sp_get_the_term_ids( $this->ID, 'sp_season' );
+		$competitions = get_post_meta( $this->ID, 'sp_competition', false );
 
 		$args = array(
 			'post_type' => 'sp_table',
@@ -467,6 +471,7 @@ class SP_Team extends SP_Custom_Post {
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
 			'meta_query' => array(
+				'relation' => 'AND',
 				array(
 					'key' => 'sp_select',
 					'value' => 'auto',
@@ -486,9 +491,30 @@ class SP_Team extends SP_Custom_Post {
 				),
 			),
 		);
-		$tables_by_terms = get_posts( $args );
 		
-		$tables = array_merge( $tables_by_id, $tables_by_terms );
+		if ( $this->sp_team_filter == 'competition' ){
+			unset($args['tax_query']);
+			$args['meta_query'][] = array(
+				'key' => 'sp_competition',
+				'value' => $competitions,
+				'compare' => 'IN',
+			);
+			$tables_by_filtering = get_posts( $args );
+		}elseif ( $this->sp_team_filter == 'leagueseason' ){
+			$tables_by_filtering = get_posts( $args );
+		}else{
+			$tables_by_terms = get_posts( $args );
+			unset($args['tax_query']);
+			$args['meta_query'][] = array(
+				'key' => 'sp_competition',
+				'value' => $competitions,
+				'compare' => 'IN',
+			);
+			$tables_by_comps = get_posts( $args );
+			$tables_by_filtering = array_merge( $tables_by_terms, $tables_by_comps );
+		}
+		
+		$tables = array_merge( $tables_by_id, $tables_by_filtering );
 
 		$checked = (array) get_post_meta( $this->ID, 'sp_table' );
 

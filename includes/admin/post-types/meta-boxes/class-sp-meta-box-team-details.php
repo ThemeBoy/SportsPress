@@ -59,18 +59,18 @@ class SP_Meta_Box_Team_Details {
 		?>
 		
 		<p><strong><?php _e( 'Filter by:', 'sportspress' ); ?></strong></p>
-		<div id="post-formats-select">
+		<div id="filter-select">
 			<input type="radio" name="sp_team_filter" class="team-filter" id="team-filter-competition" value="competition" <?php checked( $sp_team_filter, 'competition' ); ?>> 
 			<label for="team-filter-competition" class="post-format-icon team-filter-competition">Competitions</label>
 			<br/>
 			<input type="radio" name="sp_team_filter" class="team-filter" id="team-filter-leagueseason" value="leagueseason" <?php checked( $sp_team_filter, 'leagueseason' ); ?>> 
 			<label for="team-filter-leagueseason" class="post-format-icon team-filter-leagueseason">Leagues/Seasons</label>
 			<br/>
-			<input type="radio" name="sp_team_filter" class="team-filter" id="team-filter-both" value="both" <?php checked( $sp_team_filter, 'both' ); ?>> 
+			<input type="radio" name="sp_team_filter" class="team-filter" id="team-filter-both" value="both" <?php checked( true, ! $sp_team_filter  || $sp_team_filter == 'both' ); ?>> 
 			<label for="team-filter-both" class="post-format-icon team-filter-both">Both</label>
 		</div>
-		<?php if ( $sp_team_filter != 'leagueseason' ) { ?>
-		<p><strong><?php _e( 'Competition', 'sportspress' ); ?></strong></p>
+
+		<p><strong><?php _e( 'Competitions', 'sportspress' ); ?></strong></p>
 		<p><?php
 			$args = array(
 			'post_type' => 'sp_competition',
@@ -84,9 +84,8 @@ class SP_Meta_Box_Team_Details {
 		);
 		sp_dropdown_pages( $args );
 		?></p>
-		<?php } ?>
 
-		<?php if ( taxonomy_exists( 'sp_league' ) && $sp_team_filter != 'competition' ) { ?>
+		<?php if ( taxonomy_exists( 'sp_league' ) ) { ?>
 		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(
@@ -103,7 +102,7 @@ class SP_Meta_Box_Team_Details {
 		?></p>
 		<?php } ?>
 
-		<?php if ( taxonomy_exists( 'sp_season' ) && $sp_team_filter != 'competition' ) { ?>
+		<?php if ( taxonomy_exists( 'sp_season' ) ) { ?>
 		<p><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></p>
 		<p><?php
 		$args = array(

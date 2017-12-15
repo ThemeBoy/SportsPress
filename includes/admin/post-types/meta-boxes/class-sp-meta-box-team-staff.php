@@ -57,6 +57,9 @@ class SP_Meta_Box_Team_Staff {
 						<th class="column-role">
 							<?php _e( 'Job', 'sportspress' ); ?>
 						</th>
+						<th class="column-competition">
+							<?php _e( 'Competition', 'sportspress' ); ?>
+						</th>
 						<th class="column-league">
 							<?php _e( 'League', 'sportspress' ); ?>
 						</th>
@@ -72,6 +75,16 @@ class SP_Meta_Box_Team_Staff {
 							$i = 0;
 							foreach ( $data as $staff ):
 								$role = get_post_meta( $staff->ID, 'sp_role', true );
+								$competitions = get_post_meta( $staff->ID, 'sp_competition', false );
+								$competitions = array_filter( $competitions );
+								$competitions_names = array();
+								if ( !empty( $competitions ) ) {
+									foreach ( $competitions as $comp_id ) {
+										if ( $comp_id != -1 ) {
+											$competitions_names[] = get_the_title( $comp_id );
+										}
+									}
+								}
 								?>
 								<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 									<td>
@@ -83,6 +96,7 @@ class SP_Meta_Box_Team_Staff {
 										</a>
 									</td>
 									<td><?php echo get_the_terms ( $staff->ID, 'sp_role' ) ? the_terms( $staff->ID, 'sp_role' ) : '&mdash;'; ?></td>
+									<td><?php echo  !empty( $competitions_names ) ? implode( ', ', $competitions_names ) : '&mdash;'; ?></td>
 									<td><?php echo get_the_terms ( $staff->ID, 'sp_league' ) ? the_terms( $staff->ID, 'sp_league' ) : '&mdash;'; ?></td>
 									<td><?php echo get_the_terms ( $staff->ID, 'sp_season' ) ? the_terms( $staff->ID, 'sp_season' ) : '&mdash;'; ?></td>
 								</tr>

@@ -24,6 +24,9 @@ class SP_Meta_Box_Team_Tables {
 		if ( $pagenow != 'post-new.php' ):
 
 			$team = new SP_Team( $post );
+			$sp_team_filter = get_post_meta($post->ID, 'sp_team_filter', true);
+			if ( !$sp_team_filter ) { $sp_team_filter = 'both'; }
+			$team->sp_team_filter = $sp_team_filter;
 			list( $data, $checked ) = $team->tables( true );
 			self::table( $data, $checked );
 
@@ -57,6 +60,9 @@ class SP_Meta_Box_Team_Tables {
 						<th class="column-teams">
 							<?php _e( 'Teams', 'sportspress' ); ?>
 						</th>
+						<th class="column-competition">
+							<?php _e( 'Competition', 'sportspress' ); ?>
+						</th>
 						<th class="column-league">
 							<?php _e( 'League', 'sportspress' ); ?>
 						</th>
@@ -73,6 +79,16 @@ class SP_Meta_Box_Team_Tables {
 							foreach ( $data as $table ):
 								$teams = array_filter( get_post_meta( $table->ID, 'sp_team' ) );
 								$format = get_post_meta( $table->ID, 'sp_format', true );
+								$competitions = get_post_meta( $table->ID, 'sp_competition', false );
+								$competitions = array_filter( $competitions );
+								$competitions_names = array();
+								if ( !empty( $competitions ) ) {
+									foreach ( $competitions as $comp_id ) {
+										if ( $comp_id != -1 ) {
+											$competitions_names[] = get_the_title( $comp_id );
+										}
+									}
+								}
 								?>
 								<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 									<td>
@@ -84,6 +100,7 @@ class SP_Meta_Box_Team_Tables {
 										</a>
 									</td>
 									<td><?php echo sizeof( $teams ); ?></td>
+									<td><?php echo  !empty( $competitions_names ) ? implode( ', ', $competitions_names ) : '&mdash;'; ?></td>
 									<td><?php echo get_the_terms ( $table->ID, 'sp_league' ) ? the_terms( $table->ID, 'sp_league' ) : '&mdash;'; ?></td>
 									<td><?php echo get_the_terms ( $table->ID, 'sp_season' ) ? the_terms( $table->ID, 'sp_season' ) : '&mdash;'; ?></td>
 								</tr>
