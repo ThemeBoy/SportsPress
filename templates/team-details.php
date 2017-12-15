@@ -14,9 +14,19 @@ if ( ! isset( $id ) )
 	$id = get_the_ID();
 
 $data = array();
+$sp_team_filter = get_post_meta($id, 'sp_team_filter', true);
+
+$terms = array_filter( get_post_meta( $id, 'sp_competition', false ) );
+if ( $terms && $sp_team_filter != 'leagueseason' ):
+	$competitions = array();
+	foreach ( $terms as $term ):
+		$competitions[] = get_the_title( $term );
+	endforeach;
+	$data[ __( 'Competitions', 'sportspress' ) ] = implode( ', ', $competitions );
+endif;
 
 $terms = get_the_terms( $id, 'sp_league' );
-if ( $terms ):
+if ( $terms && $sp_team_filter != 'competition' ):
 	$leagues = array();
 	foreach ( $terms as $term ):
 		$leagues[] = $term->name;
@@ -25,7 +35,7 @@ if ( $terms ):
 endif;
 
 $terms = get_the_terms( $id, 'sp_season' );
-if ( $terms ):
+if ( $terms && $sp_team_filter != 'competition' ):
 	$seasons = array();
 	foreach ( $terms as $term ):
 		$seasons[] = $term->name;

@@ -27,6 +27,9 @@ class SP_Calendar extends SP_Secondary_Post {
 
 	/** @var string The match day. */
 	public $day;
+	
+	/** @var string The filter (competition || leagueseason || both(default)). */
+	public $filter;
 
 	/** @var int The league ID. */
 	public $league;
@@ -40,8 +43,8 @@ class SP_Calendar extends SP_Secondary_Post {
 	/** @var int The team ID. */
 	public $team;
 	
-	/** @var int The competition ID. */
-	public $competition;
+	/** @var array The competitions IDs. */
+	public $competitions;
 
 	/** @var int The player ID. */
 	public $player;
@@ -176,10 +179,18 @@ class SP_Calendar extends SP_Secondary_Post {
 			endswitch;
 		endif;
 
+		if ( $this->filter ):
+			$filter = $this->filter;
+		endif;
+		
+		if ( $this->competitions ):
+			$competitions = array_filter( $this->competitions );
+		endif;
+
 		if ( $this->league ):
 			$league_ids = array( $this->league );
 		endif;
-
+		
 		if ( $this->season ):
 			$season_ids = array( $this->season );
 		endif;
@@ -246,7 +257,7 @@ class SP_Calendar extends SP_Secondary_Post {
 				endif;
 			endif;
 
-			if ( isset( $league_ids ) && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ) {
+			if ( isset( $league_ids ) && $filter != 'competition' ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
 					'field' => 'term_id',
@@ -254,7 +265,7 @@ class SP_Calendar extends SP_Secondary_Post {
 				);
 			}
 
-			if ( isset( $season_ids ) && get_post_type($this->ID) != 'sp_competition' && !isset($this->competition) ) {
+			if ( isset( $season_ids ) && $filter != 'competition' ) {
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_season',
 					'field' => 'term_id',
@@ -279,29 +290,23 @@ class SP_Calendar extends SP_Secondary_Post {
 					),
 				);
 			}
-			
-			//Check if we are in a Competition
-			if ( get_post_type($this->ID) == 'sp_competition' ) :
-				$args['meta_query'][] = array(
-					'key' => 'sp_competition',
-					'value' => $this->ID,
-					'compare' => '=',
-				);
-			endif;
-			
-			//Check if a Competition id is set
-			if ( $this->competition ) :
-				$args['meta_query'][] = array(
-					'key' => 'sp_competition',
-					'value' => $this->competition,
-					'compare' => '=',
-				);
-			endif;
-				
+
 			if ( 'auto' === $this->date && 'any' === $this->status ) {
 				$args['post_status'] = 'publish';
 				$args['order'] = 'DESC';
 				$args['posts_per_page'] = ceil( $this->number / 2 );
+				
+				/*if ( isset( $competitions ) && $filter == 'both' ) :
+					if (($key = array_search($del_val, $args['tax_query'])) !== false) {
+						unset($args['tax_query'][$key]);
+					}
+					$args['meta_query'][] = array(
+						'key' => 'sp_competition',
+						'value' => $competitions,
+						'compare' => 'IN',
+					);
+				endif;*/
+				
 				$results = get_posts( $args );
 				$results = array_reverse( $results, true );
 
@@ -322,7 +327,7 @@ class SP_Calendar extends SP_Secondary_Post {
 		// Remove any calendar selection filters
 		remove_filter( 'posts_where', array( $this, 'range' ) );
 		remove_filter( 'posts_where', array( $this, 'relative' ) );
-
+var_dump($events);
 		return $events;
 	}
 }

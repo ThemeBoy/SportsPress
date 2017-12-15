@@ -54,7 +54,6 @@ $competition = get_post_meta( $id, 'sp_competition', true );
 if ($competition > 0){
 $list->competition = $competition;
 }
-}
 
 if ( isset( $columns ) && null !== $columns ):
 	$list->columns = $columns;

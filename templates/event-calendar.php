@@ -25,7 +25,8 @@ $defaults = array(
 	'season' => null,
 	'venue' => null,
 	'team' => null,
-	'competition' => null,
+	'competitions' => null,
+	'filter' => 'both',
 	'player' => null,
 	'initial' => true,
 	'caption_tag' => 'caption',
@@ -60,15 +61,10 @@ if ( $venue )
 	$calendar->venue = $venue;
 if ( $team )
 	$calendar->team = $team;
-if ( $competition ) {
-	$calendar->competition = $competition;
-}else{
-//Get competition id of Calendar
-$competition = get_post_meta( $id, 'sp_competition', true );
-if ($competition > 0){
-$calendar->competition = $competition;
-}
-}
+if ( $competitions )
+	$calendar->competitions = $competitions;
+if ( $filter )
+	$calendar->filter = $filter;
 if ( $player )
 	$calendar->player = $player;
 if ($override_global_date) {

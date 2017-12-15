@@ -17,7 +17,8 @@ $defaults = array(
 	'league' => null,
 	'season' => null,
 	'team' => null,
-	'competition' => null,
+	'competitions' => null,
+	'filter' => null,
 	'player' => null,
 	'number' => -1,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
@@ -44,15 +45,10 @@ if ( $season )
 	$calendar->season = $season;
 if ( $team )
 	$calendar->team = $team;
-if ( $competition ) {
-	$calendar->competition = $competition;
-}else{
-//Get competition id of Calendar
-$competition = get_post_meta( $id, 'sp_competition', true );
-if ($competition > 0){
-$calendar->competition = $competition;
-}
-}
+if ( $competitions )
+	$calendar->competitions = $competitions;
+if ( $filter )
+	$calendar->filter = $filter;
 if ( $player )
 	$calendar->player = $player;
 
@@ -66,7 +62,8 @@ $args = array(
 	'league' => $league,
 	'season' => $season,
 	'team' => $team,
-	'competition' => $competition,
+	'competitions' => $competitions,
+	'filter' => $filter,
 	'player' => $player,
 	'number' => $number,
 	'link_teams' => $link_teams,
