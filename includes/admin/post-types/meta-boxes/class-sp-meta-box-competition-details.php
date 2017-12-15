@@ -57,7 +57,10 @@ class SP_Meta_Box_Competition_Details {
 			//'property' => 'multiple',
 			'chosen' => true,
 		);
-		sp_dropdown_taxonomies( $args );
+		if ( ! sp_dropdown_taxonomies( $args ) ):
+			echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
+			sp_taxonomy_adder( 'sp_league', 'sp_competition', __( 'Add New', 'sportspress' ) );
+		endif;
 		?></p>
 		<?php } ?>
 
@@ -74,7 +77,10 @@ class SP_Meta_Box_Competition_Details {
 			//'property' => 'multiple',
 			'chosen' => true,
 		);
-		sp_dropdown_taxonomies( $args );
+		if ( ! sp_dropdown_taxonomies( $args ) ):
+			echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
+			sp_taxonomy_adder( 'sp_season', 'sp_competition', __( 'Add New', 'sportspress' ) );
+		endif;
 		?></p>
 		<?php } ?>
 		<?php do_action( 'sportspress_meta_box_competition_details', $post->ID ); ?>
