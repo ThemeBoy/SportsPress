@@ -327,7 +327,7 @@ class SP_Calendar extends SP_Secondary_Post {
 		// Remove any calendar selection filters
 		remove_filter( 'posts_where', array( $this, 'range' ) );
 		remove_filter( 'posts_where', array( $this, 'relative' ) );
-var_dump($events);
+
 		return $events;
 	}
 }
