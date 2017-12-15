@@ -23,7 +23,7 @@ if ( ! isset( $subs ) ) $subs = array();
 $responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
 $rlabels = array();
 //Create a unique identifier based on the current time in microseconds
-$identifier = uniqid('performance_');
+$identifier = uniqid( 'performance_' );
 ?>
 <div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?><?php if ( isset( $class ) ) { echo ' ' . $class; } ?>">
 	<?php if ( $caption ): ?>
@@ -267,6 +267,7 @@ $identifier = uniqid('performance_');
 </div>
 <?php
 // If responsive tables are enabled then load the inline css code
-if ($responsive == true && $mode == 'values'){
-	sportspress_responsive_tables_css($rlabels,$identifier);
+if ( true == $responsive && $mode == 'values' ){
+	$theme_name = wp_get_theme()->get( 'Name' );
+	sportspress_responsive_tables_css( $rlabels, $identifier, $theme_name );
 }
