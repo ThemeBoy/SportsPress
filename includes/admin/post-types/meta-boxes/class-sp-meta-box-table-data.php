@@ -21,10 +21,10 @@ class SP_Meta_Box_Table_Data {
 	public static function output( $post ) {
 		$table = new SP_League_Table( $post );
 		
-		//Get competition id of League Table
-		$competition = get_post_meta( $post->ID, 'sp_competition', true );
-		if ($competition > 0){
-		$table->competition = $competition;
+		//Check if there are Competitions assigned to table
+		$competitions = array_filter( get_post_meta( $post->ID, 'sp_competition', false ) );
+		if ( $competitions ){
+		$table->competitions = $competitions;
 		}
 
 		list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );

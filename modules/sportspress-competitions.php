@@ -30,8 +30,6 @@ class SportsPress_Competitions {
 
 		// Actions
 		add_action( 'sportspress_after_register_post_type', array( $this, 'register_post_type' ) );
-		//add_action( 'admin_menu', array( $this, 'admin_menu' ), 22 );
-		//add_action( 'parent_file', array( $this, 'parent_file' ) );
 		add_action( 'add_meta_boxes', array( $this, 'remove_meta_boxes' ), 10 );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
 		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
@@ -40,13 +38,11 @@ class SportsPress_Competitions {
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
-		//add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ) );
 		add_filter( 'sportspress_glance_items', array( $this, 'add_glance_item' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_primary_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
-		//add_filter( 'sportspress_get_settings_pages', array( $this, 'add_settings_page' ) );
 		add_filter( 'sportspress_competition_templates', array( $this, 'templates' ) );
 	}
 
@@ -98,8 +94,6 @@ class SportsPress_Competitions {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-shield',
-					//'show_in_menu' 			=> 'admin.php?page=sportspress',
-					//'show_in_admin_bar' 	=> true,
 					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'competitions',
@@ -107,13 +101,6 @@ class SportsPress_Competitions {
 			)
 		);
 	}
-
-	/**
-	 * Add menu item TO DELETE
-	 */
-	/*public function admin_menu() {
-		add_submenu_page( 'sportspress', __( 'Competitions', 'sportspress' ), __( 'Competitions', 'sportspress' ), 'manage_sportspress', 'edit.php?post_type=sp_competition');
-	}*/
 
 	public function parent_file( $parent_file ) {
 		if ( 'sportspress' == $parent_file )
@@ -198,14 +185,6 @@ class SportsPress_Competitions {
 	}
 
 	/**
-	 * Add settings page TO DELETE
-	 */
-	/*public function add_settings_page( $settings = array() ) {
-		$settings[] = include( SP()->plugin_path() . '/includes/admin/settings/class-sp-settings-competitions.php' );
-		return $settings;
-	}*/
-
-	/**
 	 * Add text options 
 	 */
 	public function add_text_options( $options = array() ) {
@@ -213,14 +192,6 @@ class SportsPress_Competitions {
 			__( 'Competitions', 'sportspress' ),
 		) );
 	}
-
-	/**
-	 * Add menu item TO DELETE
-	 */
-	/*public function add_menu_item( $items ) {
-		$items[] = 'edit.php?post_type=sp_competition';
-		return $items;
-	}*/
 
 	/**
 	 * Add glance item
@@ -261,21 +232,15 @@ class SportsPress_Competitions {
 		$templates['table'] = array(
 			'title' => __( 'League Table', 'sportspress' ),
 			'option' => 'sportspress_competition_show_table',
-			'action' => 'sportspress_output_league_table',
+			'action' => 'sportspress_output_competition_table',
 			'default' => 'yes',
 		);
 		$templates['players'] = array(
 			'title' => __( 'Players List', 'sportspress' ),
 			'option' => 'sportspress_competition_show_players',
-			'action' => 'sportspress_output_player_list',
+			'action' => 'sportspress_output_competition_lists',
 			'default' => 'yes',
 		);
-		/*$templates['calendar'] = array(
-			'title' => __( 'Calendar', 'sportspress' ),
-			'option' => 'sportspress_competition_show_calendar',
-			'action' => 'sportspress_output_calendar',
-			'default' => 'yes',
-		);*/
 		$templates['events'] = array(
 			'title' => __( 'Events', 'sportspress' ),
 			'option' => 'sportspress_competition_show_events',
@@ -289,6 +254,4 @@ class SportsPress_Competitions {
 
 endif;
 
-//if ( get_option( 'sportspress_load_competition_module', 'yes' ) == 'yes' ) {
 	new SportsPress_Competitions();
-//}

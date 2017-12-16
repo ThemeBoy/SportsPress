@@ -21,10 +21,10 @@ class SP_Meta_Box_Calendar_Data {
 	public static function output( $post ) {
 		$calendar = new SP_Calendar( $post );
 		
-		//Get competition id of Calendar
-		$competition = get_post_meta( $post->ID, 'sp_competition', true );
-		if ($competition > 0){
-		$calendar->competition = $competition;
+		//Check if there are Competitions assigned to Calendar
+		$competitions = array_filter( get_post_meta( $post->ID, 'sp_competition', false ) );
+		if ( $competitions ){
+		$calendar->competitions = $competitions;
 		}
 
 		$data = $calendar->data();

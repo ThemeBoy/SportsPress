@@ -512,7 +512,93 @@ if ( ! function_exists( 'sportspress_output_competition_events' ) ) {
 	 * @return void
 	 */
 	function sportspress_output_competition_events() {
-		sp_get_template( 'competition-events.php' );
+		$id = get_the_ID();
+		$format = get_option( 'sportspress_competition_events_format', 'blocks' );
+		$filter = 'competition';
+		$args = array( 
+				'post_type' => 'sp_calendar',
+				'posts_per_page' => 1, 
+				'fields' => 'ids',
+				'meta_query' => array(
+					'key' => 'sp_competition',
+					'value' => $id,
+					'compare' => '=',
+					),
+				);
+		$calendar = get_posts( $args );
+		$calendar_id = reset( $calendar );
+		if ( 'calendar' === $format ){
+			sp_get_template( 'event-calendar.php', array( 'id' => $calendar_id, 'competitions' => (array)$id, 'title' => __( 'Events Calendar', 'sportspress' ), 'filter' => $filter ) );
+		}elseif ( 'list' === $format ) {
+			sp_get_template( 'event-list.php', array( 'id' => $calendar_id, 'competitions' => (array)$id, 'title' => __( 'Events List', 'sportspress' ), 'filter' => $filter, 'order' => 'DESC', 'title_format' => 'homeaway', 'time_format' => 'separate', 'columns' => array( 'event', 'time', 'results' ) ) );
+		}else{
+			sp_get_template( 'event-fixtures-results.php', array( 'id' => $calendar_id, 'competitions' => (array)$id, 'title' => __( 'Fixtures & Results', 'sportspress' ), 'filter' => $filter ) );
+		}
+	}
+}
+
+if ( ! function_exists( 'sportspress_output_competition_lists' ) ) {
+
+	/**
+	 * Output the competition lists.
+	 *
+	 * @access public
+	 * @subpackage	Competition/Lists
+	 * @return void
+	 */
+	function sportspress_output_competition_lists() {
+		$id = get_the_ID();
+        $format = get_post_meta( $id, 'sp_format', true );
+		$filter = 'competition';
+		$args = array( 
+				'post_type' => 'sp_list',
+				'posts_per_page' => 1, 
+				'fields' => 'ids',
+				'meta_query' => array(
+					'key' => 'sp_competition',
+					'value' => $id,
+					'compare' => '=',
+					),
+				);
+		$list = get_posts( $args );
+		$list_id = reset( $list );
+        if ( array_key_exists( $format, SP()->formats->list ) ) {
+			sp_get_template( 'player-' . $format . '.php', array( 'id' => $list_id, 'title' => __( 'Players List', 'sportspress' ), 'filter' => $filter, 'competitions' => (array)$id ) );
+        }else{
+			sp_get_template( 'player-list.php', array( 'id' => $list_id, 'title' => __( 'Players List', 'sportspress' ), 'filter' => $filter, 'competitions' => (array)$id ) );
+		}
+	}
+}
+
+if ( ! function_exists( 'sportspress_output_competition_table' ) ) {
+
+	/**
+	 * Output the team columns.
+	 *
+	 * @access public
+	 * @subpackage	Table
+	 * @return void
+	 */
+	function sportspress_output_competition_table() {
+		$id = get_the_ID();
+		$format = get_post_meta( $id, 'sp_format', true );
+		$filter = 'competition';
+		$args = array( 
+				'post_type' => 'sp_table',
+				'posts_per_page' => 1, 
+				'fields' => 'ids',
+				'meta_query' => array(
+					'key' => 'sp_competition',
+					'value' => $id,
+					'compare' => '=',
+					),
+				);
+		$table = get_posts( $args );
+		$table_id = reset( $table );
+		if ( array_key_exists( $format, SP()->formats->table ) && 'standings' !== $format )
+			sp_get_template( 'team-' . $format . '.php', array( 'id' => $table_id, 'filter' => $filter, 'competitions' => (array)$id, 'title' => __( 'Competition Table', 'sportspress' ) ) );
+		else
+			sp_get_template( 'league-table.php', array( 'id' => $table_id, 'filter' => $filter, 'competitions' => (array)$id, 'title' => __( 'Competition Table', 'sportspress' ) ) );
 	}
 }
 

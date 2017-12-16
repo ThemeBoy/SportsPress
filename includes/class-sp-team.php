@@ -397,6 +397,9 @@ class SP_Team extends SP_Custom_Post {
 	public function lists( $admin = false ) {
 		if ( ! $this->ID ) return null;
 
+		$competitions = (array)get_post_meta( $this->ID, 'sp_competition', false );
+		$sp_team_filter = $this->sp_team_filter;
+		
 		$args = array(
 			'post_type' => 'sp_list',
 			'numberposts' => -1,
@@ -404,17 +407,29 @@ class SP_Team extends SP_Custom_Post {
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
 			'meta_query' => array(
+				'relation' => 'AND',
+				array(
 				'relation' => 'OR',
-				array(
-					'key' => 'sp_team',
-					'value' => $this->ID,
-				),
-				array(
-					'key' => 'sp_team',
-					'value' => '0',
+					array(
+						'key' => 'sp_team',
+						'value' => $this->ID,
+					),
+					array(
+						'key' => 'sp_team',
+						'value' => '0',
+					),
 				),
 			),
 		);
+		
+		if ( $sp_team_filter == 'competition' ){
+			$args['meta_query'][] = array(
+				'key' => 'sp_competition',
+				'value' => $competitions,
+				'compare' => 'IN',
+			);
+		}
+
 		$lists = get_posts( $args );
 
 		$checked = (array) get_post_meta( $this->ID, 'sp_list' );
@@ -442,7 +457,7 @@ class SP_Team extends SP_Custom_Post {
 
 		$league_ids = sp_get_the_term_ids( $this->ID, 'sp_league' );
 		$season_ids = sp_get_the_term_ids( $this->ID, 'sp_season' );
-		$competitions = get_post_meta( $this->ID, 'sp_competition', false );
+		$competitions = (array)get_post_meta( $this->ID, 'sp_competition', false );
 
 		$args = array(
 			'post_type' => 'sp_table',

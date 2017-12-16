@@ -185,6 +185,7 @@ class SP_Calendar extends SP_Secondary_Post {
 		
 		if ( $this->competitions ):
 			$competitions = array_filter( $this->competitions );
+			if ( !isset( $filter ) ) { $filter = 'competition'; }
 		endif;
 
 		if ( $this->league ):
@@ -290,22 +291,19 @@ class SP_Calendar extends SP_Secondary_Post {
 					),
 				);
 			}
-
-			if ( 'auto' === $this->date && 'any' === $this->status ) {
-				$args['post_status'] = 'publish';
-				$args['order'] = 'DESC';
-				$args['posts_per_page'] = ceil( $this->number / 2 );
-				
-				/*if ( isset( $competitions ) && $filter == 'both' ) :
-					if (($key = array_search($del_val, $args['tax_query'])) !== false) {
-						unset($args['tax_query'][$key]);
-					}
+			
+			if ( isset( $competitions ) && $filter == 'competition' ) :
 					$args['meta_query'][] = array(
 						'key' => 'sp_competition',
 						'value' => $competitions,
 						'compare' => 'IN',
 					);
-				endif;*/
+				endif;
+
+			if ( 'auto' === $this->date && 'any' === $this->status ) {
+				$args['post_status'] = 'publish';
+				$args['order'] = 'DESC';
+				$args['posts_per_page'] = ceil( $this->number / 2 );
 				
 				$results = get_posts( $args );
 				$results = array_reverse( $results, true );
