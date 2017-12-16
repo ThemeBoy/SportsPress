@@ -136,7 +136,7 @@ class SP_Player extends SP_Custom_Post {
 				}
 			}
 		}
-		$seasons_array = (array)get_the_terms( $this->ID, 'sp_season' );
+		$seasons_array = array_filter(array(get_the_terms( $this->ID, 'sp_season' )));
 		if ( $seasons_array ) {
 			foreach ( $seasons_array as $season_ar ) {
 				if ( !isset( $unique_season[$season_ar->term_id] ) ) {
