@@ -222,7 +222,12 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
 		if ( isset( $post->post_type ) && $post->post_type == 'revision' ) return $post_id;
 		
-		sp_update_post_meta_recursive( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', array() ) );
+		$competitions_new = sp_array_value( $_POST, 'competitions', array() );
+		$competitions_current = get_post_meta( $post_id, 'sp_competition', false );
+		$competitions = array_merge( $competitions_current, $competitions_new );
+		$competitions = array_unique( array_filter( $competitions ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_competition', $competitions );
+		//sp_update_post_meta_recursive( $post_id, 'sp_competition', sp_array_value( $_POST, 'sp_competition', array() ) );
 	}
 	
 	/**

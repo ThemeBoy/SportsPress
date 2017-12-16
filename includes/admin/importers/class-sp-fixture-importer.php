@@ -53,7 +53,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			// Get event format, competition, league, and season from post vars
 			$event_format = ( empty( $_POST['sp_format'] ) ? false : $_POST['sp_format'] );
-			$competition = ( sp_array_value( $_POST, 'sp_competition', '-1' ) == '-1' ? false : $_POST['sp_competition'] );
+			$competition = array( sp_array_value( $_POST, 'sp_competition', '-1' ) == '-1' ? false : $_POST['sp_competition'] );
 			$league = ( sp_array_value( $_POST, 'sp_league', '-1' ) == '-1' ? false : $_POST['sp_league'] );
 			$season = ( sp_array_value( $_POST, 'sp_season', '-1' ) == '-1' ? false : $_POST['sp_season'] );
 			$date_format = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : $_POST['sp_date_format'] );
@@ -199,7 +199,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 							
 							// Add competition
 							if ( $competition ):
-								add_post_meta( $team_id, 'sp_competition', $competition );
+								$competitions_current = get_post_meta( $team_id, 'sp_competition', false );
+								$competitions = array_merge( $competitions_current, $competition );
+								$competitions = array_unique( array_filter( $competitions ) );
+								sp_update_post_meta_recursive( $team_id, 'sp_competition', $competitions );
 							endif;
 
 							// Add to event if exists
