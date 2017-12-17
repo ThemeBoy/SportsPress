@@ -70,7 +70,7 @@ class SP_Admin_Assets {
 	/**
 	 * Enqueue scripts
 	 */
-	public function admin_scripts() {
+	public function admin_scripts($hook) {
 		global $wp_query, $post;
 
 		$screen = get_current_screen();
@@ -101,7 +101,8 @@ class SP_Admin_Assets {
 		wp_register_script( 'sportspress-admin-quickeditor', SP()->plugin_url() . '/assets/js/admin/quickeditor.js', array( 'jquery' ), SP_VERSION, true );
 
 		// SportsPress admin pages
-	    if ( in_array( $screen->id, sp_get_screen_ids() ) || strpos( $screen->id, 'sportspress-config' )) {
+	    if ( in_array( $screen->id, sp_get_screen_ids() ) || strpos( $screen->id, 'sportspress-config' ) || in_array($hook, array('post.php', 'post-new.php') ) ) {
+
 	    	wp_enqueue_script( 'jquery' );
 	    	wp_enqueue_script( 'chosen' );
 	    	wp_enqueue_script( 'jquery-ui-core' );
