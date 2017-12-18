@@ -268,6 +268,5 @@ $identifier = uniqid( 'performance_' );
 <?php
 // If responsive tables are enabled then load the inline css code
 if ( true == $responsive && $mode == 'values' ){
-	$theme_name = wp_get_theme()->get( 'Name' );
-	sportspress_responsive_tables_css( $rlabels, $identifier, $theme_name );
+	sportspress_responsive_tables_css( $rlabels, $identifier );
 }

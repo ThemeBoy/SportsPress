@@ -516,15 +516,14 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 	 * @subpackage	Responsive
 	 * @return void
 	 */
-	function sportspress_responsive_tables_css( $vars, $identity, $theme = null ) {
+	function sportspress_responsive_tables_css( $vars, $identity ) {
 		$custom_css = '/* 
 		Max width before this PARTICULAR table gets nasty
 		This query will take effect for any screen smaller than 760px
 		and also iPads specifically.
 		*/
 		@media 
-		only screen and (max-width: 760px),
-		(min-device-width: 768px) and (max-device-width: 1024px)  {
+		only screen and (max-width: 800px) {
 		
 			/* Force table to not be like tables anymore */
 			table.'.$identity.', table.'.$identity.' thead, table.'.$identity.' tbody, table.'.$identity.' th, table.'.$identity.' td, table.'.$identity.' tr { 
@@ -541,16 +540,14 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 				width: auto !important;
 			}
 			
-			.sp-data-table [class*="data"] {
+			.sp-data-table th,
+			.sp-data-table td {
 				text-align: center !important;
 			}
-			
-			table.'.$identity.' tr { border: 1px solid #ccc; }
 			
 			table.'.$identity.' td { 
 				/* Behave  like a "row" */
 				border: none;
-				border-bottom: 1px solid #eee; 
 				position: relative;
 				padding-left: 50%;
 				vertical-align: middle;
@@ -576,92 +573,6 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 			$custom_css .= 'table.'.$identity.' td:nth-of-type('.$k.'):before { content: "'.$label.'"; }
 			';
 			$k++;
-		}
-		
-		switch ( $theme ) {
-			
-			case 'Emblem':
-				$custom_css .= '/* Zebra striping */
-								table.'.$identity.' tr:nth-of-type(odd) { 
-									background: rgba(65, 166, 42, 0.25); !important; 
-								}
-			
-								/*table.'.$identity.' tr:nth-of-type(even) { 
-									background: rgb(30, 118, 19); !important; 
-								}*/';
-				break;
-			case 'Courtside':
-				$custom_css .= '/* Zebra striping */
-								table.'.$identity.' tr:nth-of-type(odd) { 
-									background: #eee !important; 
-								}
-			
-								table.'.$identity.' tr:nth-of-type(even) { 
-									background: #fff !important; 
-								}
-								
-								/* Make the links visible */
-								.sp-data-table [class*="data"] a{
-									color: #0f8bca;
-								}
-								
-								/* Small fix for padding */
-								table.'.$identity.' td:last-child {
-									padding-right: 0.25em;
-								}';
-				break;
-			case 'Premier':
-				$custom_css .= '/* Zebra striping */
-								table.'.$identity.' tr:nth-of-type(odd) { 
-									background: #eee !important; 
-								}
-			
-								table.'.$identity.' tr:nth-of-type(even) { 
-									background: #fff !important; 
-								}
-								
-								/* Make the links visible */
-								.sp-data-table [class*="data"] a{
-									color: #0f8bca;
-								}
-								
-								/* Small fix for padding */
-								table.'.$identity.' td:last-child {
-									padding-right: 0.25em;
-								}';
-				break;
-			case 'Marquee':
-				$custom_css .= '/* Zebra striping */
-								table.'.$identity.' tr:nth-of-type(odd) { 
-									background: #f3f3f3 !important; 
-								}
-			
-								/*table.'.$identity.' tr:nth-of-type(even) { 
-									background: #fff !important; 
-								}*/';
-				break;
-			case 'Rookie':
-				$custom_css .= '/* Zebra striping */
-								table.'.$identity.' tr:nth-of-type(odd) { 
-									background: #eee !important; 
-								}
-			
-								table.'.$identity.' tr:nth-of-type(even) { 
-									background: #fff !important; 
-								}';
-				break;
-			case 'Football Club':
-				break;
-			default:
-				$custom_css .= '/* Zebra striping */
-								table.'.$identity.' tr:nth-of-type(odd) { 
-									background: #eee !important; 
-								}
-			
-								table.'.$identity.' tr:nth-of-type(even) { 
-									background: #fff !important; 
-								}';
-				break;			
 		}
 		
 		$custom_css .= ' } ';

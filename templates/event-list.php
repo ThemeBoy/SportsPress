@@ -452,8 +452,7 @@ $identifier = uniqid( 'eventlist_' );
 	<?php
 	// If responsive tables are enabled then load the inline css code
 if ( true == $responsive ){
-	$theme_name = wp_get_theme()->get( 'Name' );
-	sportspress_responsive_tables_css( $labels, $identifier, $theme_name );
+	sportspress_responsive_tables_css( $labels, $identifier );
 }
 	if ( $id && $show_all_events_link )
 		echo '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a></div>';
