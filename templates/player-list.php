@@ -56,11 +56,12 @@ $data = $list->data();
 
 // The first row should be column labels
 $labels = $data[0];
+
 //Create a unique identifier based on the current time in microseconds
 $identifier = uniqid( 'playerlist_' );
 // If responsive tables are enabled then load the inline css code
 if ( true == $responsive ){
-	sportspress_responsive_tables_css( $labels, $identifier );
+	sportspress_responsive_tables_css( $identifier );
 }
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
@@ -136,9 +137,9 @@ foreach ( $groups as $group ):
 		// Rank or number
 		if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
 			if ( isset( $orderby ) && $orderby != 'number' ):
-				$tbody .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
+				$tbody .= '<td class="data-rank" data-label="'.$labels['number'].'">' . ( $i + 1 ) . '</td>';
 			else:
-				$tbody .= '<td class="data-number">' . sp_array_value( $row, 'number', '&nbsp;' ) . '</td>';
+				$tbody .= '<td class="data-number" data-label="'.$labels['number'].'">' . sp_array_value( $row, 'number', '&nbsp;' ) . '</td>';
 			endif;
 		endif;
 		
@@ -168,7 +169,7 @@ foreach ( $groups as $group ):
 			$name = '<a href="' . $permalink . '">' . $name . '</a>';
 		endif;
 
-		$tbody .= '<td class="data-name' . $name_class . '">' . $name . '</td>';
+		$tbody .= '<td class="data-name' . $name_class . '" data-label="'.$labels['name'].'">' . $name . '</td>';
 		
 		if ( array_key_exists( 'team', $labels ) ):
 			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_team', true ) );
@@ -176,7 +177,7 @@ foreach ( $groups as $group ):
 			if ( $link_teams && false !== get_post_status( $team ) ):
 				$team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
 			endif;
-			$tbody .= '<td class="data-team">' . $team_name . '</td>';
+			$tbody .= '<td class="data-team" data-label="'.$labels['team'].'">' . $team_name . '</td>';
 		endif;
 		
 		if ( array_key_exists( 'position', $labels ) ):
@@ -187,14 +188,14 @@ foreach ( $groups as $group ):
 				$position_term = get_term_by( 'id', $position, 'sp_position', ARRAY_A );
 				$positions = sp_array_value( $position_term, 'name', '&mdash;' );
 			endif;
-			$tbody .= '<td class="data-position">' . $positions . '</td>';
+			$tbody .= '<td class="data-position" data-label="'.$labels['position'].'">' . $positions . '</td>';
 		endif;
 
 		foreach( $labels as $key => $value ):
 			if ( in_array( $key, array( 'number', 'name', 'team', 'position' ) ) )
 				continue;
 			if ( ! is_array( $columns ) || in_array( $key, $columns ) )
-			$tbody .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+			$tbody .= '<td class="data-' . $key . '" data-label="'.$labels[$key].'">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
 		endforeach;
 
 		$tbody .= '</tr>';

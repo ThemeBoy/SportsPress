@@ -66,7 +66,7 @@ $data = $table->data();
 $labels = $data[0];
 // If responsive tables are enabled then load the inline css code
 if ( true == $responsive ){
-	sportspress_responsive_tables_css( $labels, $identifier );
+	sportspress_responsive_tables_css( $identifier );
 }
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
@@ -139,7 +139,7 @@ foreach ( $data as $team_id => $row ):
 	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . $tr_class . ' sp-row-no-' . $i . '">';
 
 	// Rank
-	$output .= '<td class="data-rank' . $td_class . '">' . sp_array_value( $row, 'pos' ) . '</td>';
+	$output .= '<td class="data-rank' . $td_class . '" data-label="'.$labels['pos'].'">' . sp_array_value( $row, 'pos' ) . '</td>';
 
 	$name_class = '';
 
@@ -156,13 +156,13 @@ foreach ( $data as $team_id => $row ):
 		$name = '<a href="' . $permalink . '">' . $name . '</a>';
 	endif;
 
-	$output .= '<td class="data-name' . $name_class . $td_class . '">' . $name . '</td>';
+	$output .= '<td class="data-name' . $name_class . $td_class . '" data-label="'.$labels['name'].'">' . $name . '</td>';
 
 	foreach( $labels as $key => $value ):
 		if ( in_array( $key, array( 'pos', 'name' ) ) )
 			continue;
 		if ( ! is_array( $columns ) || in_array( $key, $columns ) )
-			$output .= '<td class="data-' . $key . $td_class . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+			$output .= '<td class="data-' . $key . $td_class . '" data-label="'.$labels[$key].'">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
 	endforeach;
 
 	$output .= '</tr>';

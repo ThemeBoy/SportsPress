@@ -516,7 +516,7 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 	 * @subpackage	Responsive
 	 * @return void
 	 */
-	function sportspress_responsive_tables_css( $vars, $identity ) {
+	function sportspress_responsive_tables_css( $identity ) {
 		$custom_css = '/* 
 		Max width before this PARTICULAR table gets nasty
 		This query will take effect for any screen smaller than 760px
@@ -526,7 +526,7 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 		only screen and (max-width: 800px) {
 		
 			/* Force table to not be like tables anymore */
-			table.'.$identity.', table.'.$identity.' thead, table.'.$identity.' tbody, table.'.$identity.' th, table.'.$identity.' td, table.'.$identity.' tr { 
+			table.'.$identity.', table.'.$identity.' thead, table.'.$identity.' tfoot, table.'.$identity.' tbody, table.'.$identity.' th, table.'.$identity.' td, table.'.$identity.' tr { 
 				display: block; 
 			}
 			
@@ -556,6 +556,8 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 			table.'.$identity.' td:before { 
 				/* Now like a table header */
 				position: absolute;
+				/* Label the data */
+				content: attr(data-label);
 				/* Top/left values mimic padding */
 				top: 6px;
 				left: 6px;
@@ -563,19 +565,8 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 				padding-right: 10px; 
 				white-space: nowrap;
 			}
-			
-			/*
-			Label the data
-			*/
-			';
-		$k=1;
-		foreach ( $vars as $label ) {
-			$custom_css .= 'table.'.$identity.' td:nth-of-type('.$k.'):before { content: "'.$label.'"; }
-			';
-			$k++;
 		}
-		
-		$custom_css .= ' } ';
+			';
 		
 		$dummystyle = 'sportspress-style-inline-'.$identity;
 		wp_register_style( $dummystyle, false );

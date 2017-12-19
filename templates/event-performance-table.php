@@ -20,10 +20,14 @@ if ( ! isset( $class ) ) $class = null;
 // Initialize arrays
 if ( ! isset( $lineups ) ) $lineups = array();
 if ( ! isset( $subs ) ) $subs = array();
+
 $responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
-$rlabels = array();
 //Create a unique identifier based on the current time in microseconds
 $identifier = uniqid( 'performance_' );
+// If responsive tables are enabled then load the inline css code
+if ( true == $responsive && $mode == 'values' ){
+	sportspress_responsive_tables_css( $identifier );
+}
 ?>
 <div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?><?php if ( isset( $class ) ) { echo ' ' . $class; } ?>">
 	<?php if ( $caption ): ?>
@@ -37,21 +41,19 @@ $identifier = uniqid( 'performance_' );
 						<?php if ( $show_players ): ?>
 							<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ) { ?>
 								<th class="data-number">#</th>
-								<?php $rlabels[] = '#'; ?>
 							<?php } ?>
 							<th class="data-name">
 								<?php if ( isset( $section_label ) ) { ?>
 									<?php echo $section_label; ?>
-									<?php $rlabels[] = $section_label; ?>
+									<?php $player_title = $section_label; ?>
 								<?php } else { ?>
 									<?php _e( 'Player', 'sportspress' ); ?>
-									<?php $rlabels[] = __( 'Player', 'sportspress' ); ?>
+									<?php $player_title = __( 'Player', 'sportspress' ); ?>
 								<?php } ?>
 							</th>
 						<?php endif; ?>
 						<?php foreach ( $labels as $key => $label ): ?>
 							<th class="data-<?php echo $key; ?>"><?php echo $label; ?></th>
-							<?php $rlabels[] = $label; ?>
 						<?php endforeach; ?>
 					<?php endif; ?>
 				</tr>
@@ -92,7 +94,7 @@ $identifier = uniqid( 'performance_' );
 							$number = sp_array_value( $row, 'number', '&nbsp;' );
 
 							// Player number
-							echo '<td class="data-number">' . $number . '</td>';
+							echo '<td class="data-number" data-label="#">' . $number . '</td>';
 						}
 
 						if ( $link_posts ):
@@ -175,7 +177,7 @@ $identifier = uniqid( 'performance_' );
 							endif;
 
 							if ( $mode == 'values' ):
-								$content .= '<td class="data-' . $key . '">' . $value . '</td>';
+								$content .= '<td class="data-' . $key . '" data-label="'.$labels[$key].'">' . $value . '</td>';
 							elseif ( intval( $value ) && $mode == 'icons' ):
 								$performance_id = sp_array_value( $performance_ids, $key, null );
 								$icons = '';
@@ -190,7 +192,7 @@ $identifier = uniqid( 'performance_' );
 							$name .= ' <small class="sp-player-position">' . $position . '</small>';
 						endif;
 
-						echo '<td class="data-name">' . $name . '</td>';
+						echo '<td class="data-name" data-label="'.$player_title.'">' . $name . '</td>';
 
 						if ( $mode == 'icons' ):
 							echo '<td class="sp-performance-icons">' . $content . '</td>';
@@ -216,10 +218,10 @@ $identifier = uniqid( 'performance_' );
 							<?php
 							if ( $show_players ):
 								if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ) {
-									echo '<td class="data-number">&nbsp;</td>';
+									echo '<td class="data-number" data-label="&nbsp;">&nbsp;</td>';
 								}
 								if ( $mode == 'values' ):
-									echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
+									echo '<td class="data-name" data-label="&nbsp;">' . __( 'Total', 'sportspress' ) . '</td>';
 								endif;
 							endif;
 
@@ -243,7 +245,11 @@ $identifier = uniqid( 'performance_' );
 								endif;
 
 								if ( $mode == 'values' ):
-									echo '<td class="data-' . $key . '">' . $value . '</td>';
+									if ($key == 'position'){
+										echo '<td class="data-' . $key . '" data-label="&nbsp;">' . $value . '</td>';
+									}else{
+										echo '<td class="data-' . $key . '" data-label="'.$labels[$key].'">' . $value . '</td>';
+									}
 								elseif ( intval( $value ) && $mode == 'icons' ):
 									$performance_id = sp_array_value( $performance_ids, $key, null );
 									$icons = '';
@@ -265,8 +271,3 @@ $identifier = uniqid( 'performance_' );
 	
 	<?php do_action( 'sportspress_after_event_performance_table', $data, $lineups, $subs, $class ); ?>
 </div>
-<?php
-// If responsive tables are enabled then load the inline css code
-if ( true == $responsive && $mode == 'values' ){
-	sportspress_responsive_tables_css( $rlabels, $identifier );
-}
