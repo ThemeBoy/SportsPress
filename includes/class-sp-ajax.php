@@ -1145,51 +1145,51 @@ class SP_AJAX {
                 window.send_to_editor( shortcode );
             }
 		</script>
-		<script>
-		jQuery(document).ready(function($){
-	// Datepicker
-	$(".sp-datepicker").datepicker({
-		dateFormat : "yy-mm-dd"
-	});
-	$(".sp-datepicker-from").datepicker({
-		dateFormat : "yy-mm-dd",
-		onClose: function( selectedDate ) {
-			$(this).closest(".sp-date-selector").find(".sp-datepicker-to").datepicker("option", "minDate", selectedDate);
-		}
-	});
-	$(".sp-datepicker-to").datepicker({
-		dateFormat : "yy-mm-dd",
-		onClose: function( selectedDate ) {
-			$(this).closest(".sp-date-selector").find(".sp-datepicker-from").datepicker("option", "maxDate", selectedDate);
-		}
-	});
+		<script type="text/javascript">
+			jQuery(document).ready(function($){
+				// Datepicker
+				$(".sp-datepicker").datepicker({
+					dateFormat : "yy-mm-dd"
+				});
+				$(".sp-datepicker-from").datepicker({
+					dateFormat : "yy-mm-dd",
+					onClose: function( selectedDate ) {
+						$(this).closest(".sp-date-selector").find(".sp-datepicker-to").datepicker("option", "minDate", selectedDate);
+					}
+				});
+				$(".sp-datepicker-to").datepicker({
+					dateFormat : "yy-mm-dd",
+					onClose: function( selectedDate ) {
+						$(this).closest(".sp-date-selector").find(".sp-datepicker-from").datepicker("option", "maxDate", selectedDate);
+					}
+				});
 
-	// Show or hide datepicker
-	$(".sp-date-selector select").change(function() {
-		if ( $(this).val() == "range" ) {
-			$(this).closest(".sp-date-selector").find(".sp-date-range").show();
-		} else {
-			$(this).closest(".sp-date-selector").find(".sp-date-range").hide();
-		}
-	});
-	$(".sp-date-selector select").trigger("change");
+				// Show or hide datepicker
+				$(".sp-date-selector select").change(function() {
+					if ( $(this).val() == "range" ) {
+						$(this).closest(".sp-date-selector").find(".sp-date-range").show();
+					} else {
+						$(this).closest(".sp-date-selector").find(".sp-date-range").hide();
+					}
+				});
+				$(".sp-date-selector select").trigger("change");
 
-	// Toggle date range selectors
-	$(".sp-date-relative input").change(function() {
-		$relative = $(this).closest(".sp-date-relative").siblings(".sp-date-range-relative").toggle(0, $(this).attr("checked"));
-		$absolute = $(this).closest(".sp-date-relative").siblings(".sp-date-range-absolute").toggle(0, $(this).attr("checked"));
+				// Toggle date range selectors
+				$(".sp-date-relative input").change(function() {
+					$relative = $(this).closest(".sp-date-relative").siblings(".sp-date-range-relative").toggle(0, $(this).attr("checked"));
+					$absolute = $(this).closest(".sp-date-relative").siblings(".sp-date-range-absolute").toggle(0, $(this).attr("checked"));
 
-		if ($(this).attr("checked")) {
-			$relative.show();
-			$absolute.hide();
-		} else {
-			$absolute.show();
-			$relative.hide();
-		}
-	});
-	$(".sp-date-selector input").trigger("change");
-		});
-</script>
+					if ($(this).attr("checked")) {
+						$relative.show();
+						$absolute.hide();
+					} else {
+						$absolute.show();
+						$relative.hide();
+					}
+				});
+				$(".sp-date-selector input").trigger("change");
+					});
+		</script>
 		<?php
 	}
 }
