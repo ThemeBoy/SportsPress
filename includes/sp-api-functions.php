@@ -354,6 +354,19 @@ function sp_get_player_name_with_number( $post = 0, $prepend = '', $append = '. 
 	}
 }
 
+function sp_get_player_name( $post = 0 ) {
+	return get_the_title( $post );
+}
+
+function sp_get_player_name_then_number( $post = 0, $prepend = ' (', $append = ')' ) {
+	$number = sp_get_player_number( $post );
+	if ( isset( $number ) && '' !== $number ) {
+		return get_the_title( $post ) . $prepend . $number . $append;
+	} else {
+		return get_the_title( $post );
+	}
+}
+
 function sp_player_details( $post = 0 ) {
 	sp_get_template( 'player-details.php', array( 'id' => $post ) );
 }
