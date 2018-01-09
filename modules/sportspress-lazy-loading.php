@@ -137,11 +137,22 @@ class SportsPress_Lazy_Loading {
 			'orderby' => 'menu_order',
 		);
 
-		if ( 'sp_player' == $post_type ):
-			$args['meta_key'] = 'sp_number';
-			$args['orderby'] = 'meta_value_num';
-			$args['order'] = 'ASC';
-		endif;
+		$player_sort = get_option( 'sportspress_event_player_sort', 'jersey' );
+
+		if ( 'sp_player' == $post_type )
+		{
+			if( $player_sort == 'name' || $player_sort == 'namejersey' )
+			{
+				$args['order'] = 'ASC';
+				$args['orderby'] = 'title';
+			}
+			else
+			{
+				$args['meta_key'] = 'sp_number';
+				$args['orderby'] = 'meta_value_num';
+				$args['order'] = 'ASC';
+			}
+		}
 
 		$args['meta_query'] = array(
 			array(
@@ -198,7 +209,19 @@ class SportsPress_Lazy_Loading {
 						<li>
 							<label class="selectit">
 								<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $slug; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" <?php checked( array_key_exists( $post->ID, $selected ) ); ?>>
-								<?php echo sp_get_player_name_with_number( $post->ID ); ?>
+								<?php
+									switch( $player_sort )
+									{
+									case 'name':
+										echo sp_get_player_name( $post->ID );
+										break;
+									case 'namejersey':
+										echo sp_get_player_name_then_number( $post->ID );
+										break;
+									default:  // 'jersey'
+										echo sp_get_player_name_with_number( $post->ID );
+									}
+								?>
 							</label>
 						</li>
 						<?php unset( $selected[ $post->ID ] ); ?>
@@ -208,7 +231,19 @@ class SportsPress_Lazy_Loading {
 						<li>
 							<label class="selectit">
 								<input type="checkbox" value="<?php echo $post_id; ?>" name="<?php echo $slug; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" <?php checked( true ); ?>>
-								<?php echo sp_get_player_name_with_number( $post_id ); ?>
+								<?php
+									switch( $player_sort )
+									{
+									case 'name':
+										echo sp_get_player_name( $post_id );
+										break;
+									case 'namejersey':
+										echo sp_get_player_name_then_number( $post_id );
+										break;
+									default:  // 'jersey'
+										echo sp_get_player_name_with_number( $post_id );
+									}
+								?>
 							</label>
 						</li>
 					<?php } } ?>

@@ -273,6 +273,29 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
+				array( 'title' => __( 'Players', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'eventplayer_options' ),
+			),
+
+			apply_filters( 'sportspress_eventplayer_options', array(
+				array(
+					'title' 	=> __( 'Player Sorting', 'sportspress' ),
+					'id' 		=> 'sportspress_event_player_sort',
+					'default'	=> 'jersey',
+					'type' 		=> 'radio',
+					'options' => array(
+						'jersey'		=> __( 'Player Jersey (i.e. "33. John Doe")', 'sportspress' ),
+						'name'			=> __( 'Player Name (i.e. "John Doe")', 'sportspress' ),
+						'namejersey'	=> __( 'Player Name with Jersey (i.e. "John Doe (33)")', 'sportspress' ),
+					),
+				),
+
+			) ),
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'eventplayer_options' ),
+			),
+
+			array(
 				array( 'title' => __( 'Event Results', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'result_options' ),
 			),
 
