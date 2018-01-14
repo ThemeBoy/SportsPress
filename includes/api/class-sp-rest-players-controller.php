@@ -123,26 +123,26 @@ class SP_REST_Players_Controller extends SP_REST_Posts_Controller {
 
         // Filter players by team id
         if ( ! empty( $request['team_id'] ) ) {
-            $args['meta_query'] = $this->add_meta_query( $args, array(
+            $args['meta_query'][] =  array(
                 'key'   => 'sp_team',
                 'value' => $request['team_id']
-            ) );
+            );
         }
 
         // Filter players by current team id
         if ( ! empty( $request['current_team_id'] ) ) {
-            $args['meta_query'] = $this->add_meta_query( $args, array(
+            $args['meta_query'][] = array(
                 'key'   => 'sp_current_team',
                 'value' => $request['current_team_id']
-            ) );
+            );
         }
 
         // Filter players by past team id
         if ( ! empty( $request['past_team_id'] ) ) {
-            $args['meta_query'] = $this->add_meta_query( $args, array(
+            $args['meta_query'][] = array(
                 'key'   => 'sp_past_team',
                 'value' => $request['past_team_id']
-            ) );
+            );
         }
 
         return $this->prepare_items_query( $args, $request );

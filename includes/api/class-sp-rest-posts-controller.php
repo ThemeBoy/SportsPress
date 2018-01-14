@@ -8,24 +8,6 @@ if ( class_exists( 'WP_REST_Posts_Controller' ) ) {
 		}
 
         /**
-         * Add meta query.
-         *
-         * @since 2.5
-         * @param array $args       Query args.
-         * @param array $meta_query Meta query.
-         * @return array
-         */
-        protected function add_meta_query( $args, $meta_query ) {
-            if ( ! empty( $args['meta_query'] ) ) {
-                $args['meta_query'] = array();
-            }
-
-            $args['meta_query'][] = $meta_query;
-
-            return $args['meta_query'];
-        }
-
-        /**
          * Prepare objects query.
          *
          * @since  2.5
