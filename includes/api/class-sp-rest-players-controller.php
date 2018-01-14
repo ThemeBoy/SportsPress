@@ -1,6 +1,6 @@
 <?php
 /**
- * REST API Player controller
+ * REST API Players controller
  *
  * Handles requests to the /players endpoint.
  *
@@ -102,6 +102,24 @@ class SP_REST_Players_Controller extends SP_REST_Posts_Controller {
      */
     protected function prepare_objects_query( $request ) {
         $args = parent::prepare_objects_query( $request );
+
+        //Filter players by league
+        if ( ! empty( $request['league'] ) ) {
+            $args['tax_query'][] = array(
+                'taxonomy' => 'sp_league',
+                'field'    => 'name',
+                'terms'    => $request['league'],
+            );
+        }
+
+        //Filter players by season
+        if ( ! empty( $request['season'] ) ) {
+            $args['tax_query'][] = array(
+                'taxonomy' => 'sp_season',
+                'field'    => 'name',
+                'terms'    => $request['season'],
+            );
+        }
 
         // Filter players by team id
         if ( ! empty( $request['team_id'] ) ) {
