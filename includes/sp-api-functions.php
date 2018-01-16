@@ -344,11 +344,25 @@ function sp_get_player_number( $post = 0 ) {
 	return get_post_meta( $post, 'sp_number', true );
 }
 
+function sp_get_player_name( $post = 0 ) {
+	return apply_filters( 'sportspress_player_name', get_the_title( $post ));
+}
+
 function sp_get_player_name_with_number( $post = 0, $prepend = '', $append = '. ' ) {
-	$name = apply_filters( 'sportspress_player_name', get_the_title( $post ));
+	$name = sp_get_player_name( $post );
 	$number = sp_get_player_number( $post );
 	if ( isset( $number ) && '' !== $number ) {
 		return apply_filters( 'sportspress_player_name_with_number', $prepend . $number . $append . $name);
+	} else {
+		return $name;
+	}
+}
+
+function sp_get_player_name_then_number( $post = 0, $prepend = ' (', $append = ')' ) {
+	$name = sp_get_player_name( $post );
+	$number = sp_get_player_number( $post );
+	if ( isset( $number ) && '' !== $number ) {
+		return apply_filters( 'sportspress_player_name_then_number', $name . $prepend . $number . $append);
 	} else {
 		return $name;
 	}

@@ -273,6 +273,31 @@ class SP_Settings_Events extends SP_Settings_Page {
 			),
 
 			array(
+				array( 'title' => __( 'Players', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'eventplayer_options' ),
+			),
+
+			apply_filters( 'sportspress_eventplayer_options', array(
+				array(
+					'title' 	=> __( 'Player Sorting', 'sportspress' ),
+					'id' 		=> 'sportspress_event_player_sort',
+					'default'	=> 'jersey',
+					'type' 		=> 'radio',
+					'options' => array(
+						'jersey'=> __( 'Jersey (e.g. "33. John Doe")', 'sportspress' ),
+						'name'	=> __( 'Name (e.g. "John Doe (33)")', 'sportspress' ),
+					),
+					'desc_tip' 		=> _x( 'When editing an event, this determines how the checklist of players are sorted in the Teams metabox.  This does not affect the Box Score section.', 'event player sort setting description', 'sportspress' ),
+
+				),
+
+			) ),
+
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'eventplayer_options' ),
+			),
+
+			array(
 				array( 'title' => __( 'Event Results', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'result_options' ),
 			),
 
