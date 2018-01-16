@@ -512,7 +512,7 @@ class SP_Post_types {
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-groups',
 					'show_in_rest' 			=> true,
-					'rest_controller_class' => 'SP_REST_Posts_Controller',
+					'rest_controller_class' => 'SP_REST_Players_Controller',
 					'rest_base' 			=> 'players',
 				)
 			)
