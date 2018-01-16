@@ -132,8 +132,9 @@ $identifier = uniqid( 'eventlist_' );
 							if ( sp_column_active( $usecolumns, 'event' ) ) {
 								if ( $title_format == 'teams' ){
 									echo '<th class="data-teams">' . __( 'Teams', 'sportspress' ) . '</th>';
-								}else{
+								} else {
 									echo '<th class="data-event">' . __( 'Event', 'sportspress' ) . '</th>';
+								}
 							}
 
 							switch ( $time_format ) {
@@ -434,10 +435,11 @@ $identifier = uniqid( 'eventlist_' );
 	</div>
 	<?php
 	// If responsive tables are enabled then load the inline css code
-if ( true == $responsive ){
-	sportspress_responsive_tables_css( $identifier );
-}
-	if ( $id && $show_all_events_link )
+	if ( $responsive ){
+		sportspress_responsive_tables_css( $identifier );
+	}
+	if ( $id && $show_all_events_link ) {
 		echo '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a></div>';
+	}
 	?>
 </div>
