@@ -1,3 +1,4 @@
 .htaccess
 *.log
 .DS_STORE
+.idea/

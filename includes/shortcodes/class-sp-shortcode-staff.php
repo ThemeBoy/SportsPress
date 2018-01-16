@@ -19,7 +19,10 @@ class SP_Shortcode_Staff {
 		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
 			$atts['id'] = $atts[0];
 
-		sp_get_template( 'staff-photo.php', $atts );
+		sp_get_template( 'staff-header.php',  $atts );
+		sp_get_template( 'staff-photo.php',   $atts );
 		sp_get_template( 'staff-details.php', $atts );
+		sp_get_template( 'staff-excerpt.php', $atts );
+		sp_get_template( 'staff-content.php', $atts );
 	}
 }
