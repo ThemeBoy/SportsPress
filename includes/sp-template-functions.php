@@ -536,6 +536,12 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 				top: -9999px;
 				left: -9999px;
 			}
+
+			/* Add subtle border to table rows */
+			table.'.$identity.' tbody tr { 
+				border-top: 1px solid rgba(0, 0, 0, 0.1);
+			}
+
 			.sp-data-table .data-number, .sp-data-table .data-rank {
 				width: auto !important;
 			}
