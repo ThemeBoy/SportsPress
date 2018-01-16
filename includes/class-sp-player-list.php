@@ -52,6 +52,8 @@ class SP_Player_List extends SP_Secondary_Post {
 		endif;
 		if ( $this->competitions ):
 			$competitions = array_filter( $this->competitions );
+		else:
+			$competitions = false;
 		endif;
 		$team = get_post_meta( $this->ID, 'sp_team', true );
 		$era = get_post_meta( $this->ID, 'sp_era', true );
