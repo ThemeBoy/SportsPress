@@ -15,9 +15,9 @@ if ( ! isset( $id ) )
 $post = get_post( $id );
 $content = $post->post_content;
 if ( $content ) {
-    ?>
-    <div class="sp-template sp-section-staff-content sp-template-content">
-        <div class="sp-content"><?php echo apply_filters( 'the_content', $content ); ?></div>
+  ?>
+    <div class="sp-post-content">
+      <?php echo apply_filters( 'the_content', $content ); ?>
     </div>
-    <?php
+  <?php
 }

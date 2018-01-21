@@ -15,9 +15,9 @@ if ( ! isset( $id ) )
 $post = get_post( $id );
 $excerpt = $post->post_excerpt;
 if ( $excerpt ) {
-    ?>
-    <div class="sp-template sp-section-staff-excerpt sp-template-excerpt">
-        <p class="sp-excerpt"><?php echo $excerpt; ?></p>
-    </div>
-    <?php
+  ?>
+    <p class="sp-excerpt">
+      <?php echo $excerpt; ?>
+    </p>
+  <?php
 }
