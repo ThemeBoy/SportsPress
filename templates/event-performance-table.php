@@ -20,13 +20,21 @@ if ( ! isset( $class ) ) $class = null;
 // Initialize arrays
 if ( ! isset( $lineups ) ) $lineups = array();
 if ( ! isset( $subs ) ) $subs = array();
+
+$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
+//Create a unique identifier based on the current time in microseconds
+$identifier = uniqid( 'performance_' );
+// If responsive tables are enabled then load the inline css code
+if ( true == $responsive && $mode == 'values' ){
+	sportspress_responsive_tables_css( $identifier );
+}
 ?>
 <div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?><?php if ( isset( $class ) ) { echo ' ' . $class; } ?>">
 	<?php if ( $caption ): ?>
 		<h4 class="sp-table-caption"><?php echo $caption; ?></h4>
 	<?php endif; ?>
 	<div class="sp-table-wrapper">
-		<table class="sp-event-performance sp-data-table<?php if ( $mode == 'values' ) { ?><?php if ( $scrollable ) { ?> sp-scrollable-table<?php } ?><?php if ( $sortable ) { ?> sp-sortable-table<?php } ?><?php } ?>">
+		<table class="sp-event-performance sp-data-table<?php if ( $mode == 'values' ) { ?><?php if ( $scrollable ) { ?> sp-scrollable-table<?php }if ( $responsive ) { echo ' sp-responsive-table '.$identifier; } if ( $sortable ) { ?> sp-sortable-table<?php } ?><?php } ?>">
 			<thead>
 				<tr>
 					<?php if ( $mode == 'values' ): ?>
@@ -37,8 +45,10 @@ if ( ! isset( $subs ) ) $subs = array();
 							<th class="data-name">
 								<?php if ( isset( $section_label ) ) { ?>
 									<?php echo $section_label; ?>
+									<?php $player_title = $section_label; ?>
 								<?php } else { ?>
 									<?php _e( 'Player', 'sportspress' ); ?>
+									<?php $player_title = __( 'Player', 'sportspress' ); ?>
 								<?php } ?>
 							</th>
 						<?php endif; ?>
@@ -84,7 +94,7 @@ if ( ! isset( $subs ) ) $subs = array();
 							$number = sp_array_value( $row, 'number', '&nbsp;' );
 
 							// Player number
-							echo '<td class="data-number">' . $number . '</td>';
+							echo '<td class="data-number" data-label="#">' . $number . '</td>';
 						}
 
 						if ( $link_posts ):
@@ -167,7 +177,7 @@ if ( ! isset( $subs ) ) $subs = array();
 							endif;
 
 							if ( $mode == 'values' ):
-								$content .= '<td class="data-' . $key . '">' . $value . '</td>';
+								$content .= '<td class="data-' . $key . '" data-label="'.$labels[$key].'">' . $value . '</td>';
 							elseif ( intval( $value ) && $mode == 'icons' ):
 								$performance_id = sp_array_value( $performance_ids, $key, null );
 								$icons = '';
@@ -182,7 +192,7 @@ if ( ! isset( $subs ) ) $subs = array();
 							$name .= ' <small class="sp-player-position">' . $position . '</small>';
 						endif;
 
-						echo '<td class="data-name">' . $name . '</td>';
+						echo '<td class="data-name" data-label="'.$player_title.'">' . $name . '</td>';
 
 						if ( $mode == 'icons' ):
 							echo '<td class="sp-performance-icons">' . $content . '</td>';
@@ -208,10 +218,10 @@ if ( ! isset( $subs ) ) $subs = array();
 							<?php
 							if ( $show_players ):
 								if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ) {
-									echo '<td class="data-number">&nbsp;</td>';
+									echo '<td class="data-number" data-label="&nbsp;">&nbsp;</td>';
 								}
 								if ( $mode == 'values' ):
-									echo '<td class="data-name">' . __( 'Total', 'sportspress' ) . '</td>';
+									echo '<td class="data-name" data-label="&nbsp;">' . __( 'Total', 'sportspress' ) . '</td>';
 								endif;
 							endif;
 
@@ -235,7 +245,11 @@ if ( ! isset( $subs ) ) $subs = array();
 								endif;
 
 								if ( $mode == 'values' ):
-									echo '<td class="data-' . $key . '">' . $value . '</td>';
+									if ($key == 'position'){
+										echo '<td class="data-' . $key . '" data-label="&nbsp;">' . $value . '</td>';
+									}else{
+										echo '<td class="data-' . $key . '" data-label="'.$labels[$key].'">' . $value . '</td>';
+									}
 								elseif ( intval( $value ) && $mode == 'icons' ):
 									$performance_id = sp_array_value( $performance_ids, $key, null );
 									$icons = '';
