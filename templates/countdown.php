@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'team' => null,
+	'calendar' => null,
 	'league' => null,
 	'season' => null,
 	'id' => null,
@@ -21,9 +22,17 @@ $defaults = array(
 	'link_venues' => get_option( 'sportspress_link_venues', 'no' ) == 'yes' ? true : false,
 	'show_logos' => get_option( 'sportspress_countdown_show_logos', 'no' ) == 'yes' ? true : false,
 );
-
 if ( isset( $id ) ):
 	$post = get_post( $id );
+elseif ( $calendar ):
+	$calendar = new SP_Calendar( $calendar );
+	if ( $team )
+		$calendar->team = $team;
+	$calendar->status = 'future';
+	$calendar->number = 1;
+	$calendar->order = 'ASC';
+	$data = $calendar->data();
+	$post = array_shift( $data );
 else:
 	$args = array();
 	if ( isset( $team ) ) {
