@@ -40,6 +40,32 @@ class SP_Settings_General extends SP_Settings_Page {
 
 		$presets = SP_Admin_Sports::get_preset_options();
 
+		$leagues = array( '' => __( '&mdash; Select &mdash;', 'sportspress' ) );
+
+		$terms = get_terms( array( 
+			'taxonomy' => 'sp_league',
+			'hide_empty' => false,
+		) );
+
+		if ( $terms ) {
+			foreach ( $terms as $term ) {
+				$leagues[ $term->term_id ] = $term->name;
+			}
+		}
+
+		$seasons = array( '' => __( '&mdash; Select &mdash;', 'sportspress' ) );
+
+		$terms = get_terms( array( 
+			'taxonomy' => 'sp_season',
+			'hide_empty' => false,
+		) );
+
+		if ( $terms ) {
+			foreach ( $terms as $term ) {
+				$seasons[ $term->term_id ] = $term->name;
+			}
+		}
+
 		$settings = array_merge(
 
 			array(
@@ -55,6 +81,22 @@ class SP_Settings_General extends SP_Settings_Page {
 					'default'   => 'none',
 					'type'      => 'sport',
 					'options'   => $presets,
+				),
+
+				array(
+					'title'     => __( 'Main League', 'sportspress' ),
+					'id'        => 'sportspress_league',
+					'default'   => null,
+					'type'      => 'select',
+					'options'   => $leagues,
+				),
+
+				array(
+					'title'     => __( 'Current Season', 'sportspress' ),
+					'id'        => 'sportspress_season',
+					'default'   => null,
+					'type'      => 'select',
+					'options'   => $seasons,
 				),
 			)),
 
