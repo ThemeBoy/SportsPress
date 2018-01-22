@@ -334,14 +334,20 @@ class SP_Admin_Setup_Wizard {
     if ( ! is_string( $league ) || empty( $league ) ) {
       $league = _x( 'Primary League', 'example', 'sportspress' ); 
     }
-    wp_insert_term( $league, 'sp_league' );
+    $inserted = wp_insert_term( $league, 'sp_league' );
+    if ( ! is_wp_error( $inserted ) ) {
+      update_option( 'sportspress_league', sp_array_value( $inserted, 'term_id', null ) );
+    }
 
     // Insert season
     $season = sanitize_text_field( $_POST['season'] );
     if ( ! is_string( $season ) || empty( $season ) ) {
       $season = date( 'Y' ); 
     }
-    wp_insert_term( $season, 'sp_season' );
+    $inserted = wp_insert_term( $season, 'sp_season' );
+    if ( ! is_wp_error( $inserted ) ) {
+      update_option( 'sportspress_season', sp_array_value( $inserted, 'term_id', null ) );
+    }
 
     wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
     exit;
