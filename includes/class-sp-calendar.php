@@ -225,19 +225,23 @@ class SP_Calendar extends SP_Secondary_Post {
 				$teams = array_filter( get_post_meta( $this->ID, 'sp_team', false ) );
 				$table = get_post_meta( $this->ID, 'sp_table', true );
 
-				if ( ! isset( $league_ids ) && $leagues ):
-					$league_ids = array();
+				if ( ! isset( $league_ids ) ) $league_ids = array();
+				if ( empty( $league_ids ) && $leagues ):
 					foreach( $leagues as $league ):
 						$league_ids[] = $league->term_id;
 					endforeach;
 				endif;
-
-				if ( ! isset( $season_ids ) && $seasons ):
-					$season_ids = array();
+				$league_ids = sp_add_auto_term( $league_ids, $this->ID, 'sp_league' );
+				if ( empty( $league_ids ) ) unset( $league_ids );
+				
+				if ( ! isset( $season_ids ) ) $season_ids = array();
+				if ( empty( $season_ids ) && $seasons ):
 					foreach( $seasons as $season ):
 						$season_ids[] = $season->term_id;
 					endforeach;
 				endif;
+				$season_ids = sp_add_auto_term( $season_ids, $this->ID, 'sp_season' );
+				if ( empty( $season_ids ) ) unset( $season_ids );
 
 				if ( ! isset( $venue_ids ) && $venues ):
 					$venue_ids = array();

@@ -166,6 +166,9 @@ class SP_Meta_Box_List_Details {
 		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null ) );
 		update_post_meta( $post_id, 'sp_date_past', sp_array_value( $_POST, 'sp_date_past', 0 ) );
 		update_post_meta( $post_id, 'sp_date_relative', sp_array_value( $_POST, 'sp_date_relative', 0 ) );
+		$tax_input = sp_array_value( $_POST, 'tax_input', array() );
+		update_post_meta( $post_id, 'sp_main_league', in_array( 'auto', sp_array_value( $tax_input, 'sp_league' ) ) );
+		update_post_meta( $post_id, 'sp_current_season', in_array( 'auto', sp_array_value( $tax_input, 'sp_season' ) ) );
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 		update_post_meta( $post_id, 'sp_era', sp_array_value( $_POST, 'sp_era', array() ) );
 		update_post_meta( $post_id, 'sp_grouping', sp_array_value( $_POST, 'sp_grouping', array() ) );

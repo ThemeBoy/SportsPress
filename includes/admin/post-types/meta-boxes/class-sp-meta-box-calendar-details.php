@@ -146,6 +146,9 @@ class SP_Meta_Box_Calendar_Details {
 		update_post_meta( $post_id, 'sp_date_future', sp_array_value( $_POST, 'sp_date_future', 0 ) );
 		update_post_meta( $post_id, 'sp_date_relative', sp_array_value( $_POST, 'sp_date_relative', 0 ) );
 		update_post_meta( $post_id, 'sp_day', sp_array_value( $_POST, 'sp_day', null ) );
+		$tax_input = sp_array_value( $_POST, 'tax_input', array() );
+		update_post_meta( $post_id, 'sp_main_league', in_array( 'auto', sp_array_value( $tax_input, 'sp_league' ) ) );
+		update_post_meta( $post_id, 'sp_current_season', in_array( 'auto', sp_array_value( $tax_input, 'sp_season' ) ) );
 		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', null ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', null ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );

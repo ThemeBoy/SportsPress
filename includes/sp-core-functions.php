@@ -356,11 +356,15 @@ if ( !function_exists( 'sp_get_the_term_id' ) ) {
 if ( !function_exists( 'sp_get_the_term_ids' ) ) {
 	function sp_get_the_term_ids( $post_id, $taxonomy ) {
 		$terms = get_the_terms( $post_id, $taxonomy );
-		if ( is_array( $terms ) && sizeof( $terms ) > 0 ):
-			return wp_list_pluck( $terms, 'term_id' );
-		else:
-			return array();
-		endif;
+		$term_ids = array();
+
+		if ( is_array( $terms ) && sizeof( $terms ) > 0 ) {
+			$term_ids = wp_list_pluck( $terms, 'term_id' );
+		}
+
+		$term_ids = sp_add_auto_term( $term_ids, $post_id, $taxonomy );
+
+		return $term_ids;
 	}
 }
 
@@ -376,6 +380,27 @@ if ( !function_exists( 'sp_get_the_term_id_or_meta' ) ) {
 		else:
 			return get_post_meta( $post_id, $taxonomy, true );
 		endif;
+	}
+}
+
+if ( !function_exists( 'sp_add_auto_term' ) ) {
+	function sp_add_auto_term( $term_ids, $post_id, $taxonomy ) {
+		switch ( $taxonomy ) {
+			case 'sp_league':
+				if ( get_post_meta( $post_id, 'sp_main_league', true ) ) {
+					$term_id = get_option( 'sportspress_league', false );
+					if ( $term_id ) $term_ids[] = $term_id;
+				}
+				break;
+			case 'sp_season':
+				if ( get_post_meta( $post_id, 'sp_current_season', true ) ) {
+					$term_id = get_option( 'sportspress_season', false );
+					if ( $term_id ) $term_ids[] = $term_id;
+				}
+				break;
+		}
+
+		return $term_ids;
 	}
 }
 
@@ -665,6 +690,7 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 			'show_option_blank' => false,
 			'show_option_all' => false,
 			'show_option_none' => false,
+			'show_option_auto' => false,
 			'taxonomy' => null,
 			'name' => null,
 			'id' => null,
@@ -719,6 +745,15 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 				if ( $args['show_option_none'] ):
 					printf( '<option value="-1" ' . selected( '-1', $selected, false ) . '>%s</option>', $args['show_option_none'] );
 				endif;
+			endif;
+
+			if ( $args['show_option_auto'] ):
+				if ( strpos( $property, 'multiple' ) !== false ):
+					$selected_prop = in_array( 'auto', $selected ) ? 'selected' : '';
+				else:
+					$selected_prop = selected( 'auto', $selected, false );
+				endif;
+				printf( '<option value="auto" ' . $selected_prop . '>%s</option>', $args['show_option_auto'] . ' ' . __( '(Auto)', 'sportspress' ) );
 			endif;
 
 			foreach ( $terms as $term ):
@@ -1437,7 +1472,24 @@ if ( !function_exists( 'sp_taxonomy_field' ) ) {
 							$term_ids[] = $term->term_id;
 						endforeach;
 					endif;
+
+					// Set auto option
+					$auto = false;
+					if ( in_array( $post_type, sp_secondary_post_types() ) ) {
+						switch ( $taxonomy ) {
+							case 'sp_league':
+								$auto = __( 'Main League', 'sportspress' );
+								if ( get_post_meta( $post->ID, 'sp_main_league', true ) ) $term_ids[] = 'auto';
+								break;
+							case 'sp_season':
+								$auto = __( 'Current Season', 'sportspress' );
+								if ( get_post_meta( $post->ID, 'sp_current_season', true ) ) $term_ids[] = 'auto';
+								break;
+						}
+					}
+
 					$args = array(
+						'show_option_auto' => $auto,
 						'taxonomy' => $taxonomy,
 						'name' => 'tax_input[' . $taxonomy . '][]',
 						'selected' => $term_ids,
