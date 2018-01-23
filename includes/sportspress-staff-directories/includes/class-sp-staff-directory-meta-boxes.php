@@ -150,6 +150,11 @@ class SP_Staff_Directory_Meta_Boxes {
 		// Data
 		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
 		update_post_meta( $post_id, 'sp_staffs', sp_array_value( $_POST, 'sp_staffs', array() ) );
+
+		// Auto taxonomies
+		$tax_input = sp_array_value( $_POST, 'tax_input', array() );
+		update_post_meta( $post_id, 'sp_main_league', in_array( 'auto', sp_array_value( $tax_input, 'sp_league' ) ) );
+		update_post_meta( $post_id, 'sp_current_season', in_array( 'auto', sp_array_value( $tax_input, 'sp_season' ) ) );
 	}
 
 	/**
