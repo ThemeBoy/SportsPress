@@ -299,6 +299,10 @@ class SP_Calendar extends SP_Secondary_Post {
 						'compare' => 'IN',
 					);
 				endif;
+				
+			if ( $this->event) {
+				$args['p'] = $this->event;
+			}
 
 			if ( 'auto' === $this->date && 'any' === $this->status ) {
 				$args['post_status'] = 'publish';
