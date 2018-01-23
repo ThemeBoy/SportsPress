@@ -3,7 +3,7 @@
  * SP_Shortcodes class.
  *
  * @class 		SP_Shortcodes
- * @version		2.4
+ * @version		2.5.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -23,6 +23,7 @@ class SP_Shortcodes {
 			'player_details'    => __CLASS__ . '::player_details',
 			'player_statistics' => __CLASS__ . '::player_statistics',
 			'staff'             => __CLASS__ . '::staff',
+			'staff_profile'     => __CLASS__ . '::staff_profile',
 			'event_calendar'    => __CLASS__ . '::event_calendar',
 			'event_list'        => __CLASS__ . '::event_list',
 			'event_blocks'      => __CLASS__ . '::event_blocks',
@@ -231,5 +232,16 @@ class SP_Shortcodes {
 	 */
 	public static function staff( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_Staff', 'output' ), $atts );
+	}
+
+	/**
+	 * Staff profile shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function staff_profile( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Staff_Profile', 'output' ), $atts );
 	}
 }

@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * AJAX Event Handler
  *
  * @class 		SP_AJAX
- * @version		2.5
+ * @version		2.5.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -466,6 +466,12 @@ class SP_AJAX {
 				<label>
 					<?php _e( 'Title:', 'sportspress' ); ?>
 					<input class="regular-text" type="text" name="title">
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Event:', 'sportspress' ); ?>
+					<input class="regular-text" type="number" name="event">
 				</label>
 			</p>
 			<p>
@@ -1031,6 +1037,7 @@ class SP_AJAX {
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'event_blocks' == type ) {
                     args.title = $div.find('[name=title]').val();
+                    args.event = $div.find('[name=event]').val();
                     args.team = $div.find('[name=team]').val();
                     args.league = $div.find('[name=league]').val();
                     args.season = $div.find('[name=season]').val();

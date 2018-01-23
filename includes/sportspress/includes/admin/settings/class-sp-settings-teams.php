@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.1.6
+ * @version   2.5.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -51,12 +51,20 @@ class SP_Settings_Teams extends SP_Settings_Page {
 				array( 'type' 	=> 'team_tabs' ),
 
 				array(
-					'title'     => __( 'Link', 'sportspress' ),
-					'desc' 		=> __( 'Link teams', 'sportspress' ),
-					'id' 		=> 'sportspress_link_teams',
+					'title'     => __( 'Staff', 'sportspress' ),
+					'desc' 		=> __( 'Link staff', 'sportspress' ),
+					'id' 		=> 'sportspress_team_link_staff',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
 				),
+
+                array(
+                    'title'     => __( 'Link', 'sportspress' ),
+                    'desc' 		=> __( 'Link teams', 'sportspress' ),
+                    'id' 		=> 'sportspress_link_teams',
+                    'default'	=> 'no',
+                    'type' 		=> 'checkbox',
+                ),
 
 				array(
 					'title'     => __( 'Venue', 'sportspress' ),
