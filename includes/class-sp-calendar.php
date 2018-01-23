@@ -292,13 +292,13 @@ class SP_Calendar extends SP_Secondary_Post {
 				);
 			}
 			
-			if ( isset( $competitions ) && $filter == 'competition' ) :
+			if ( isset( $competitions ) && $filter == 'competition' ) {
 					$args['meta_query'][] = array(
 						'key' => 'sp_competition',
 						'value' => $competitions,
 						'compare' => 'IN',
 					);
-				endif;
+			}
 				
 			if ( $this->event) {
 				$args['p'] = $this->event;
