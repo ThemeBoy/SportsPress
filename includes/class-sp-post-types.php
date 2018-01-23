@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registers post types and taxonomies
  *
  * @class 		SP_Post_types
- * @version   2.5
+ * @version   2.5.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -512,7 +512,7 @@ class SP_Post_types {
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-groups',
 					'show_in_rest' 			=> true,
-					'rest_controller_class' => 'SP_REST_Posts_Controller',
+					'rest_controller_class' => 'SP_REST_Players_Controller',
 					'rest_base' 			=> 'players',
 				)
 			)

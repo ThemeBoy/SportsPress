@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version   2.5
+ * @version   2.5.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -608,4 +608,77 @@ function sportspress_output_br_tag() {
 	?>
 	<br>
 	<?php
+}
+if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
+
+	/**
+	 * Output the inlince css code for responsive tables.
+	 *
+	 * @access public
+	 * @subpackage	Responsive
+	 * @return void
+	 */
+	function sportspress_responsive_tables_css( $identity ) {
+		$custom_css = '/* 
+		Max width before this PARTICULAR table gets nasty
+		This query will take effect for any screen smaller than 760px
+		and also iPads specifically.
+		*/
+		@media 
+		only screen and (max-width: 800px) {
+		
+			/* Force table to not be like tables anymore */
+			table.'.$identity.', table.'.$identity.' thead, table.'.$identity.' tfoot, table.'.$identity.' tbody, table.'.$identity.' th, table.'.$identity.' td, table.'.$identity.' tr { 
+				display: block; 
+			}
+			
+			/* Hide table headers (but not display: none;, for accessibility) */
+			table.'.$identity.' thead tr { 
+				position: absolute;
+				top: -9999px;
+				left: -9999px;
+			}
+
+			/* Add subtle border to table rows */
+			table.'.$identity.' tbody tr { 
+				border-top: 1px solid rgba(0, 0, 0, 0.1);
+			}
+
+			.sp-data-table .data-number, .sp-data-table .data-rank {
+				width: auto !important;
+			}
+			
+			.sp-data-table th,
+			.sp-data-table td {
+				text-align: center !important;
+			}
+			
+			table.'.$identity.' td { 
+				/* Behave  like a "row" */
+				border: none;
+				position: relative;
+				padding-left: 50%;
+				vertical-align: middle;
+			}
+			
+			table.'.$identity.' td:before { 
+				/* Now like a table header */
+				position: absolute;
+				/* Label the data */
+				content: attr(data-label);
+				/* Top/left values mimic padding */
+				top: 6px;
+				left: 6px;
+				width: 45%; 
+				padding-right: 10px; 
+				white-space: nowrap;
+			}
+		}
+			';
+		
+		$dummystyle = 'sportspress-style-inline-'.$identity;
+		wp_register_style( $dummystyle, false );
+		wp_enqueue_style( $dummystyle );
+		wp_add_inline_style( $dummystyle, $custom_css );
+	}
 }

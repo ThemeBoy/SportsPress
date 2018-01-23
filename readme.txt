@@ -1,10 +1,10 @@
 === SportsPress - Sports Club & League Manager ===
-Contributors: ThemeBoy, brianmiyaji, aylaview
+Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.5.4
+Stable tag: 2.5.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -236,6 +236,22 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.5.5 =
+* Feature - Main league and current season settings.
+* Feature - New shortcode including full staff profile.
+* Feature - Add code highlighting to custom CSS field.
+* Feature - Add responsive layout option to tables.
+* Feature - Add filters to REST API players endpoint.
+* Feature - Option to merge duplicate teams, players, and staff.
+* Feature - Option to display specific event in event blocks.
+* Feature - Option to sort player checklist by name and squad number in events.
+* Feature - Option to filter player lists by team.
+* Feature - Option to link staff members.
+* Feature - Filter countdown by calendar.
+* Fix - Calculate column totals in box score.
+* Fix - Mismatched encoding of included library.
+* Localization - Fix translation function missing around string.
 
 = 2.5.4 =
 * Fix - Error when editing league table using older versions of WordPress.

@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     2.2.4
+ * @version   2.5.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -344,12 +344,27 @@ function sp_get_player_number( $post = 0 ) {
 	return get_post_meta( $post, 'sp_number', true );
 }
 
+function sp_get_player_name( $post = 0 ) {
+	return apply_filters( 'sportspress_player_name', get_the_title( $post ), $post );
+}
+
 function sp_get_player_name_with_number( $post = 0, $prepend = '', $append = '. ' ) {
+	$name = sp_get_player_name( $post );
 	$number = sp_get_player_number( $post );
 	if ( isset( $number ) && '' !== $number ) {
-		return $prepend . $number . $append . get_the_title( $post );
+		return apply_filters( 'sportspress_player_name_with_number', $prepend . $number . $append . $name, $post );
 	} else {
-		return get_the_title( $post );
+		return $name;
+	}
+}
+
+function sp_get_player_name_then_number( $post = 0, $prepend = ' (', $append = ')' ) {
+	$name = sp_get_player_name( $post );
+	$number = sp_get_player_number( $post );
+	if ( isset( $number ) && '' !== $number ) {
+		return apply_filters( 'sportspress_player_name_then_number', $name . $prepend . $number . $append, $post );
+	} else {
+		return $name;
 	}
 }
 

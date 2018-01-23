@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Importers
- * @version		2.5
+ * @version		2.5.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -70,12 +70,20 @@ if ( class_exists( 'WP_Importer' ) ) {
 					continue;
 				endif;
 
-				$args = array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $name ) );
+				// Get or insert team
+				$team_object = sp_array_value( $_POST, 'merge', 0 ) ? get_page_by_title( stripslashes( $name ), OBJECT, 'sp_team' ) : false;
+				if ( $team_object ):
+					if ( $team_object->post_status != 'publish' ):
+						wp_update_post( array( 'ID' => $team_object->ID, 'post_status' => 'publish' ) );
+					endif;
+					$id = $team_object->ID;
+				else:
+					$args = array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $name ) );
+					$id = wp_insert_post( $args );
 
-				$id = wp_insert_post( $args );
-
-				// Flag as import
-				update_post_meta( $id, '_sp_import', 1 );
+					// Flag as import
+					update_post_meta( $id, '_sp_import', 1 );
+				endif;
 
 				// Update leagues
 				$leagues = explode( '|', sp_array_value( $meta, 'sp_league' ) );
@@ -126,6 +134,30 @@ if ( class_exists( 'WP_Importer' ) ) {
 			echo '<p>' . sprintf( __( 'Teams need to be defined with columns in a specific order (3 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/teams-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_team_csv&step=1' );
 			echo '</div>';
+		}
+
+		/**
+		 * options function.
+		 *
+		 * @access public
+		 * @return void
+		 */
+		function options() {
+			?>
+			<table class="form-table">
+				<tbody>
+					<tr>
+						<td>
+							<label>
+								<input type="hidden" name="merge" value="0">
+								<input type="checkbox" name="merge" value="1" checked="checked">
+								<?php _e( 'Merge duplicates', 'sportspress' ); ?>
+							</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<?php
 		}
 	}
 }

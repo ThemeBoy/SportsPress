@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.3
+ * @version   2.5.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,6 +21,7 @@ $defaults = array(
 	'show_title' => get_option( 'sportspress_table_show_title', 'yes' ) == 'yes' ? true : false,
 	'show_team_logo' => get_option( 'sportspress_table_show_logos', 'yes' ) == 'yes' ? true : false,
 	'link_posts' => null,
+	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_table_paginated', 'yes' ) == 'yes' ? true : false,
@@ -66,6 +67,9 @@ if ( $show_title && false === $title && $id ):
 		$title = get_the_title( $id );
 endif;
 
+//Create a unique identifier based on the current time in microseconds
+$identifier = uniqid( 'table_' );
+
 $output = '';
 
 if ( $title )
@@ -73,13 +77,16 @@ if ( $title )
 
 $output .= '<div class="sp-table-wrapper">';
 
-$output .= '<table class="sp-league-table sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
+$output .= '<table class="sp-league-table sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $responsive ? ' sp-responsive-table '.$identifier : '' ). ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
 $data = $table->data();
 
 // The first row should be column labels
 $labels = $data[0];
-
+// If responsive tables are enabled then load the inline css code
+if ( true == $responsive ){
+	sportspress_responsive_tables_css( $identifier );
+}
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
 
@@ -151,7 +158,7 @@ foreach ( $data as $team_id => $row ):
 	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . $tr_class . ' sp-row-no-' . $i . '">';
 
 	// Rank
-	$output .= '<td class="data-rank' . $td_class . '">' . sp_array_value( $row, 'pos' ) . '</td>';
+	$output .= '<td class="data-rank' . $td_class . '" data-label="'.$labels['pos'].'">' . sp_array_value( $row, 'pos' ) . '</td>';
 
 	$name_class = '';
 
@@ -168,13 +175,13 @@ foreach ( $data as $team_id => $row ):
 		$name = '<a href="' . $permalink . '">' . $name . '</a>';
 	endif;
 
-	$output .= '<td class="data-name' . $name_class . $td_class . '">' . $name . '</td>';
+	$output .= '<td class="data-name' . $name_class . $td_class . '" data-label="'.$labels['name'].'">' . $name . '</td>';
 
 	foreach( $labels as $key => $value ):
 		if ( in_array( $key, array( 'pos', 'name' ) ) )
 			continue;
 		if ( ! is_array( $columns ) || in_array( $key, $columns ) )
-			$output .= '<td class="data-' . $key . $td_class . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+			$output .= '<td class="data-' . $key . $td_class . '" data-label="'.$labels[$key].'">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
 	endforeach;
 
 	$output .= '</tr>';
@@ -190,7 +197,6 @@ $output .= '</div>';
 
 if ( $show_full_table_link )
 	$output .= '<div class="sp-league-table-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View full table', 'sportspress' ) . '</a></div>';
-
 ?>
 <div class="sp-template sp-template-league-table">
 	<?php echo $output; ?>
