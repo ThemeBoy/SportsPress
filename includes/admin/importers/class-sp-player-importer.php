@@ -72,7 +72,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				endif;
 
 				// Get or insert player
-				$player_object = get_page_by_title( stripslashes( $name ), OBJECT, 'sp_player' );
+				$player_object = sp_array_value( $_POST, 'merge', 0 ) ? get_page_by_title( stripslashes( $name ), OBJECT, 'sp_player' ) : false;
 				if ( $player_object ):
 					if ( $player_object->post_status != 'publish' ):
 						wp_update_post( array( 'ID' => $player_object->ID, 'post_status' => 'publish' ) );
