@@ -1,9 +1,9 @@
 === SportsPress Pro ===
-Contributors: ThemeBoy, brianmiyaji, aylaview
+Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.5.3
+Stable tag: 2.5.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,25 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.5.5 =
+* Feature - Main league and current season settings.
+* Feature - New shortcode including full staff profile.
+* Feature - Add code highlighting to custom CSS field.
+* Feature - Add responsive layout option to tables.
+* Feature - Add filters to REST API players endpoint.
+* Feature - Option to merge duplicate teams, players, and staff.
+* Feature - Option to display specific event in event blocks.
+* Feature - Option to sort player checklist by name and squad number in events.
+* Feature - Option to filter player lists by team.
+* Feature - Option to link staff members.
+* Feature - Filter countdown by calendar.
+* Fix - Calculate column totals in box score.
+* Fix - Mismatched encoding of included library.
+* Localization - Fix translation function missing around string.
+
+= 2.5.4 =
+* Fix - Error when editing league table using older versions of WordPress.
 
 = 2.5.3 =
 * Fix - Admin loading issues for calendars in older PHP versions.

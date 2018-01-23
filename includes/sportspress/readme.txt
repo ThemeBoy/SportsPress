@@ -1,5 +1,5 @@
 === SportsPress - Sports Club & League Manager ===
-Contributors: ThemeBoy, brianmiyaji, aylaview
+Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
@@ -238,6 +238,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 == Changelog ==
 
 = 2.5.5 =
+* Feature - Main league and current season settings.
 * Feature - New shortcode including full staff profile.
 * Feature - Add code highlighting to custom CSS field.
 * Feature - Add responsive layout option to tables.
