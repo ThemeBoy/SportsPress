@@ -7,7 +7,7 @@
  * Adapted from code in WooCommerce (Copyright (c) 2017, Automattic).
  *
  * @class 		SP_REST_Players_Controller
- * @version     2.5
+ * @version     2.5.5
  * @package		SportsPress/API
  * @category	API
  * @author 		WooThemes

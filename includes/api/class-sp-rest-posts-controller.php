@@ -10,7 +10,7 @@ if ( class_exists( 'WP_REST_Posts_Controller' ) ) {
         /**
          * Prepare objects query.
          *
-         * @since  2.5
+         * @since  2.5.5
          * @param  WP_REST_Request $request Full details about the request.
          * @return array
          */
