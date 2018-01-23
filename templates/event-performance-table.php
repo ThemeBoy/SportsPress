@@ -203,6 +203,14 @@ if ( true == $responsive && $mode == 'values' ){
 						$i++;
 
 					endforeach;
+
+					foreach ( $labels as $key => $label ):
+						$format = sp_array_value( $formats, $key, 'number' );
+						if ( 'equation' === $format ):
+							$post = get_page_by_path( $key, OBJECT, 'sp_performance' );
+							if ( $post ) $totals[ $key ] = sp_solve( get_post_meta( $post->ID, 'sp_equation', true ), $totals, get_post_meta( $post->ID, 'sp_precision', true ) );
+						endif;
+					endforeach;
 					?>
 				</tbody>
 			<?php endif; ?>
