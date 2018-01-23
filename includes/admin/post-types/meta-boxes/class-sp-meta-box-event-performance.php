@@ -404,8 +404,7 @@ class SP_Meta_Box_Event_Performance {
 				</td>
 			<?php } ?>
 			<td>
-				<?php echo get_the_title( $player_id ); ?>
-				<?php do_action ( 'sportspress_event_performance_player_selection' ); ?>
+				<?php echo apply_filters( 'sportspress_event_performance_player_selection', get_the_title( $player_id ), $player_id ); ?>
 				<?php if ( 1 == $section ) { ?>
 					<input type="hidden" name="sp_order[<?php echo $team_id; ?>][]" value="<?php echo $player_id; ?>">
 				<?php } ?>
