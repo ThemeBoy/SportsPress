@@ -45,10 +45,8 @@ if ( true == $responsive && $mode == 'values' ){
 							<th class="data-name">
 								<?php if ( isset( $section_label ) ) { ?>
 									<?php echo $section_label; ?>
-									<?php $player_title = $section_label; ?>
 								<?php } else { ?>
 									<?php _e( 'Player', 'sportspress' ); ?>
-									<?php $player_title = __( 'Player', 'sportspress' ); ?>
 								<?php } ?>
 							</th>
 						<?php endif; ?>
@@ -192,7 +190,7 @@ if ( true == $responsive && $mode == 'values' ){
 							$name .= ' <small class="sp-player-position">' . $position . '</small>';
 						endif;
 
-						echo '<td class="data-name" data-label="'.$player_title.'">' . $name . '</td>';
+						echo '<td class="data-name" data-label="' . ( isset( $section_label ) ? $section_label : __( 'Player', 'sportspress' ) ) .'">' . $name . '</td>';
 
 						if ( $mode == 'icons' ):
 							echo '<td class="sp-performance-icons">' . $content . '</td>';
