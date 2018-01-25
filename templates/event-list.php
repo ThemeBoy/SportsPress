@@ -436,7 +436,7 @@ $identifier = uniqid( 'eventlist_' );
 	<?php
 	// If responsive tables are enabled then load the inline css code
 	if ( $responsive ){
-		sportspress_responsive_tables_css( $identifier );
+		//sportspress_responsive_tables_css( $identifier );
 	}
 	if ( $id && $show_all_events_link ) {
 		echo '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a></div>';

@@ -61,7 +61,7 @@ $labels = $data[0];
 $identifier = uniqid( 'playerlist_' );
 // If responsive tables are enabled then load the inline css code
 if ( true == $responsive ){
-	sportspress_responsive_tables_css( $identifier );
+	//sportspress_responsive_tables_css( $identifier );
 }
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
