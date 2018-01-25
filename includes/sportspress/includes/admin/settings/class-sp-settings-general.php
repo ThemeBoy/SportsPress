@@ -176,7 +176,7 @@ class SP_Settings_General extends SP_Settings_Page {
 				'title'     => __( 'Tables', 'sportspress' ),
 				'desc' 		=> __( 'Responsive', 'sportspress' ),
 				'id' 		=> 'sportspress_enable_responsive_tables',
-				'default'	=> 'yes',
+				'default'	=> 'no',
 				'type' 		=> 'checkbox',
 				'checkboxgroup'	=> 'start',
 			),

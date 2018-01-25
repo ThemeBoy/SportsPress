@@ -345,14 +345,14 @@ function sp_get_player_number( $post = 0 ) {
 }
 
 function sp_get_player_name( $post = 0 ) {
-	return apply_filters( 'sportspress_player_name', get_the_title( $post ));
+	return apply_filters( 'sportspress_player_name', get_the_title( $post ), $post );
 }
 
 function sp_get_player_name_with_number( $post = 0, $prepend = '', $append = '. ' ) {
 	$name = sp_get_player_name( $post );
 	$number = sp_get_player_number( $post );
 	if ( isset( $number ) && '' !== $number ) {
-		return apply_filters( 'sportspress_player_name_with_number', $prepend . $number . $append . $name);
+		return apply_filters( 'sportspress_player_name_with_number', $prepend . $number . $append . $name, $post );
 	} else {
 		return $name;
 	}
@@ -362,7 +362,7 @@ function sp_get_player_name_then_number( $post = 0, $prepend = ' (', $append = '
 	$name = sp_get_player_name( $post );
 	$number = sp_get_player_number( $post );
 	if ( isset( $number ) && '' !== $number ) {
-		return apply_filters( 'sportspress_player_name_then_number', $name . $prepend . $number . $append);
+		return apply_filters( 'sportspress_player_name_then_number', $name . $prepend . $number . $append, $post );
 	} else {
 		return $name;
 	}

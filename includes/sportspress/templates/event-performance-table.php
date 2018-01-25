@@ -21,12 +21,12 @@ if ( ! isset( $class ) ) $class = null;
 if ( ! isset( $lineups ) ) $lineups = array();
 if ( ! isset( $subs ) ) $subs = array();
 
-$responsive = get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false;
+$responsive = get_option( 'sportspress_enable_responsive_tables', 'no' ) == 'yes' ? true : false;
 //Create a unique identifier based on the current time in microseconds
 $identifier = uniqid( 'performance_' );
 // If responsive tables are enabled then load the inline css code
 if ( true == $responsive && $mode == 'values' ){
-	sportspress_responsive_tables_css( $identifier );
+	//sportspress_responsive_tables_css( $identifier );
 }
 ?>
 <div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?><?php if ( isset( $class ) ) { echo ' ' . $class; } ?>">

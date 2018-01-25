@@ -25,7 +25,7 @@ $defaults = array(
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
-	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'yes' ) == 'yes' ? true : false,
+	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_list_paginated', 'yes' ) == 'yes' ? true : false,
@@ -61,7 +61,7 @@ $labels = $data[0];
 $identifier = uniqid( 'playerlist_' );
 // If responsive tables are enabled then load the inline css code
 if ( true == $responsive ){
-	sportspress_responsive_tables_css( $identifier );
+	//sportspress_responsive_tables_css( $identifier );
 }
 // Remove the first row to leave us with the actual data
 unset( $data[0] );
