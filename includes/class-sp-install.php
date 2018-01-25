@@ -432,6 +432,10 @@ class SP_Install {
 				update_option( 'sportspress_mode', 'team' );
 			}
 		}
+		
+		if ( version_compare( $version, '2.5.5', '<' ) ) {
+			update_option( 'sportspress_enable_responsive_tables', 'no' );
+		}
 	}
 
 	/**
