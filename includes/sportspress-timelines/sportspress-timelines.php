@@ -33,7 +33,6 @@ class SportsPress_Timelines {
 		add_filter( 'sportspress_event_templates', array( $this, 'templates' ) );
 	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
-		add_filter( 'sportspress_event_settings', array( $this, 'add_settings' ) );
 	}
 
 	/**
@@ -73,13 +72,7 @@ class SportsPress_Timelines {
 	 * @return void
 	 */
 	public function output() {
-		// Get timelines format option
-		$timelines_format = get_option( 'sportspress_timelines_format', 'horizontal' ) == 'horizontal' ? true : false;
-		if ( $timelines_format ) {
-			sp_get_template( 'event-timeline.php', array(), '', SP_TIMELINES_DIR . 'templates/' );
-		}else{
-			sp_get_template( 'event-timeline-vertical.php', array(), '', SP_TIMELINES_DIR . 'templates/' );
-		}
+		sp_get_template( 'event-timeline.php', array(), '', SP_TIMELINES_DIR . 'templates/' );
 	}
 
 	/**
@@ -103,39 +96,6 @@ class SportsPress_Timelines {
 			__( 'KO', 'sportspress' ),
 			__( 'FT', 'sportspress' ),
 		) );
-	}
-	
-		/**
-	 * Add settings.
-	 *
-	 * @return array
-	 */
-	public function add_settings( $settings ) {
-		
-		$settings = array_merge( $settings,
-			array(
-				array( 'title' => __( 'Timelines', 'sportspress' ), 'type' => 'title', 'id' => 'timelines_options' ),
-			),
-
-			apply_filters( 'sportspress_timelines_options', array(
-				array(
-					'title' 	=> __( 'Timelines format', 'sportspress' ),
-					'id' 		=> 'sportspress_timelines_format',
-					'default'	=> 'horizontal',
-					'type' 		=> 'radio',
-					'options' => array(
-						'horizontal'=> __( 'Horizontal format', 'sportspress' ),
-						'vertical'	=> __( 'Vertical format', 'sportspress' ),
-					),
-					'desc_tip' 		=> _x( 'Choose the way you want the timeline to appear. Horizontal (default) or Vertical', 'event timeline format description', 'sportspress' ),
-				),
-			) ),
-
-			array(
-				array( 'type' => 'sectionend', 'id' => 'timelines_options' ),
-			)
-		);
-		return $settings;
 	}
 }
 
