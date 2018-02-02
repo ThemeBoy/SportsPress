@@ -165,22 +165,16 @@ function sportspress_pre_get_posts( $query ) {
 			$query->set( 'orderby', 'menu_order' );
 			$query->set( 'order', 'ASC' );
 		endif;
-	elseif ( $query->is_main_query() ):
-		if ( 'sp_event' == $post_type ):
-			$GLOBALS[ 'wp_post_statuses' ][ 'future' ]->public = true;
-		elseif ( isset( $query->query[ 'sp_venue' ] ) ):
+	else:
+		if ( isset( $query->query[ 'sp_venue' ] ) ):
 			$query->set( 'post_type', 'sp_event' );
 			$GLOBALS[ 'wp_post_statuses' ][ 'future' ]->public = true;
 		endif;
 	endif;
-}
-add_action('pre_get_posts', 'sportspress_pre_get_posts');
 
-function remove_sportspress_pre_get_posts() {
-	remove_action( 'pre_get_posts', 'sportspress_pre_get_posts' );
-	$GLOBALS[ 'wp_post_statuses' ][ 'future' ]->public = false;
+	return $query;
 }
-add_action( 'wp', 'remove_sportspress_pre_get_posts' );
+add_filter('pre_get_posts', 'sportspress_pre_get_posts');
 
 function sportspress_show_future_posts( $where, $that ) {
     global $wpdb;
@@ -189,6 +183,15 @@ function sportspress_show_future_posts( $where, $that ) {
     return $where;
 }
 add_filter( 'posts_where', 'sportspress_show_future_posts', 2, 10 );
+
+function sportspress_redirect_future_events() {
+	if ( is_main_query() && 'sp_event' == get_query_var( 'post_type' ) && 'future' == get_post_status( get_query_var( 'p' ) ) && ! empty( $_GET['p'] ) ) {
+		if ( $redirect_url = get_post_permalink( get_query_var( 'p' ), false, true ) )
+			wp_redirect( $redirect_url, 301 );
+			die();
+	}
+}
+add_action( 'template_redirect', 'sportspress_redirect_future_events' );
 
 function sportspress_give_event_read_permissions( $allcaps, $caps, $args ) {
 
