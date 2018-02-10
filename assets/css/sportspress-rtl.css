@@ -15,7 +15,7 @@
 
 /* Data Tables */
 .sp-data-table .data-name {
-	text-align: right;
+	text-align: right !important;
 }
 
 /* Pagination */
