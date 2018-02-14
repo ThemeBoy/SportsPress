@@ -141,6 +141,10 @@ function sportspress_strcmp_term_slug( $a, $b ) {
 
 function sportspress_term_order( $terms, $post_id, $taxonomy ) {
 
+	if ( ! is_array( $terms ) ) {
+		return [];
+	}
+
     if ( is_sp_taxonomy( $taxonomy ) ) {
     	uasort( $terms, 'sportspress_strcmp_term_slug' );
     }
