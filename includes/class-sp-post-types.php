@@ -342,6 +342,36 @@ class SP_Post_types {
 				)
 			)
 		);
+		
+		register_post_type( 'sp_spec',
+			apply_filters( 'sportspress_register_post_type_spec',
+				array(
+					'labels' => array(
+						'name' 					=> __( 'Event Specs', 'sportspress' ),
+						'singular_name' 		=> __( 'Event Spec', 'sportspress' ),
+						'add_new_item' 			=> __( 'Add New Event Spec', 'sportspress' ),
+						'edit_item' 			=> __( 'Edit Event Spec', 'sportspress' ),
+						'new_item' 				=> __( 'New', 'sportspress' ),
+						'view_item' 			=> __( 'View', 'sportspress' ),
+						'search_items' 			=> __( 'Search', 'sportspress' ),
+						'not_found' 			=> __( 'No results found.', 'sportspress' ),
+						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
+					),
+					'public' 				=> false,
+					'show_ui' 				=> true,
+					'capability_type' 		=> 'sp_config',
+					'map_meta_cap' 			=> true,
+					'publicly_queryable' 	=> false,
+					'exclude_from_search' 	=> true,
+					'hierarchical' 			=> false,
+					'supports' 				=> array( 'title', 'page-attributes', 'excerpt' ),
+					'has_archive' 			=> false,
+					'show_in_nav_menus' 	=> false,
+					'can_export' 			=> false,
+					'show_in_menu' 			=> false,
+				)
+			)
+		);
 
 		register_post_type( 'sp_performance',
 			apply_filters( 'sportspress_register_post_type_performance',

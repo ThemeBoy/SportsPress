@@ -143,7 +143,7 @@ class SP_Admin_Sports {
 			update_post_meta( $id, 'sp_equation', sp_array_value( $result, 'equation', null ) );
 		}
 
-		// Make sure statistics and metrics have greater menu order than performance
+		// Make sure statistics, metrics and specs have greater menu order than performance
 		$i = 0;
 
 		// Performance
@@ -188,6 +188,17 @@ class SP_Admin_Sports {
 		self::delete_preset_posts( $post_type );
 		foreach ( $metrics as $index => $metric ) {
 			$post = self::get_post_array( $metric, $post_type );
+			if ( empty( $post ) ) continue;
+			$id = self::insert_preset_post( $post, $i + $index );
+			$i ++;
+		}
+		
+		// Event Specs
+		$post_type = 'sp_spec';
+		$specs = sp_array_value( $preset, 'specs', array() );
+		self::delete_preset_posts( $post_type );
+		foreach ( $specs as $index => $spec ) {
+			$post = self::get_post_array( $spec, $post_type );
 			if ( empty( $post ) ) continue;
 			$id = self::insert_preset_post( $post, $i + $index );
 			$i ++;

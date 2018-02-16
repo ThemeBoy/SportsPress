@@ -300,6 +300,55 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 		<tbody>
 			<?php
 			$args = array(
+				'post_type' => 'sp_spec',
+				'numberposts' => -1,
+				'posts_per_page' => -1,
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
+			);
+			$data = get_posts( $args );
+			?>
+			<tr valign="top">
+				<th scope="row" class="titledesc">
+					<?php _e( 'Event Specs', 'sportspress' ) ?>
+					<p class="description"><?php _e( 'Add more details to an event.', 'sportspress' ); ?></p>
+				</th>
+			    <td class="forminp">
+					<table class="widefat sp-admin-config-table">
+						<thead>
+							<tr>
+								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
+								<th scope="col" class="edit"></th>
+							</tr>
+						</thead>
+						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
+							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
+								<td class="row-title"><?php echo $row->post_title; ?></td>
+								<td><code><?php echo $row->post_name; ?></code></td>
+								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
+								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
+							</tr>
+						<?php $i++; endforeach; else: ?>
+							<tr class="alternate">
+								<td colspan="4"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+							</tr>
+						<?php endif; ?>
+					</table>
+					<div class="tablenav bottom">
+						<a class="button alignleft" href="<?php echo admin_url( 'edit.php?post_type=sp_spec' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
+						<a class="button button-primary alignright" href="<?php echo admin_url( 'post-new.php?post_type=sp_spec' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
+						<br class="clear">
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>	
+	<table class="form-table">
+		<tbody>
+			<?php
+			$args = array(
 				'post_type' => 'sp_metric',
 				'numberposts' => -1,
 				'posts_per_page' => -1,

@@ -93,6 +93,15 @@ class SP_Admin_Meta_Boxes {
 					'priority' => 'high',
 				),
 			),
+			'sp_spec' => array(
+				'details' => array(
+					'title' => __( 'Specs', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Spec_Details::save',
+					'output' => 'SP_Meta_Box_Spec_Details::output',
+					'context' => 'normal',
+					'priority' => 'high',
+				),
+			),
 			'sp_statistic' => array(
 				'details' => array(
 					'title' => __( 'Details', 'sportspress' ),
@@ -157,6 +166,13 @@ class SP_Admin_Meta_Boxes {
 					'output' => 'SP_Meta_Box_Event_Performance::output',
 					'context' => 'normal',
 					'priority' => 'high',
+				),
+				'specs' => array(
+					'title' => __( 'Specs', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Event_Specs::save',
+					'output' => 'SP_Meta_Box_Event_Specs::output',
+					'context' => 'side',
+					'priority' => 'default',
 				),
 			),
 			'sp_team' => array(

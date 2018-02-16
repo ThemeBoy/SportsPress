@@ -17,6 +17,11 @@ $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'ye
 
 $data = array();
 
+$event = new SP_Event( $id );
+
+$specs_before = $event->specs( true );
+$specs_after = $event->specs( false );
+
 if ( 'yes' === get_option( 'sportspress_event_show_date', 'yes' ) ) {
 	$date = get_the_time( get_option('date_format'), $id );
 	$data[ __( 'Date', 'sportspress' ) ] = $date;
@@ -54,6 +59,8 @@ if ( 'yes' === get_option( 'sportspress_event_show_full_time', 'yes' ) ) {
 }
 
 $data = apply_filters( 'sportspress_event_details', $data, $id );
+
+$data = array_merge( $specs_before, $data, $specs_after );
 
 if ( ! sizeof( $data ) ) return;
 ?>

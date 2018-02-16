@@ -34,6 +34,8 @@ function sp_get_screen_ids() {
     	'sp_column',
     	'edit-sp_metric',
     	'sp_metric',
+		'edit-sp_spec',
+    	'sp_spec',
     	'edit-sp_statistic',
     	'sp_statistic',
     	'edit-sp_event',
