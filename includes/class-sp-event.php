@@ -17,7 +17,7 @@ class SP_Event extends SP_Custom_Post{
 		$results = get_post_meta( $this->ID, 'sp_results', true );
 		if ( is_array( $results ) ) {
 			foreach( $results as $result ) {
-				$result = array_filter( $result );
+				$result = is_array( $result ) ? array_filter( $result ) : array();
 				if ( count( $result ) > 0 ) {
 					return 'results';
 				}
