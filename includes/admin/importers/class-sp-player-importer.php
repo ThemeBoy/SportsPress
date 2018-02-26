@@ -54,7 +54,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			foreach ( $rows as $row ):
 
-				$row = array_filter( $row );
+				$row = array_filter( $row, 'strlen' );
 
 				if ( empty( $row ) ) continue;
 
