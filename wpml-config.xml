@@ -1,5 +1,6 @@
 <wpml-config>
   <admin-texts>
+    <key name="sportspress_footer_sponsors_title"></key>
     <key name="sportspress_text">
       <key name="Age"/>
       <key name="Article"/>
