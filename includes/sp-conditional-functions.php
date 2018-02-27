@@ -78,7 +78,7 @@ if ( ! function_exists( 'sp_importable_post_types' ) ) {
  */
 if ( ! function_exists( 'sp_config_types' ) ) {
 	function sp_config_types() {
-		return apply_filters( 'sportspress_config_types', array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric', 'sp_spec', 'sp_statistic' ) );
+		return apply_filters( 'sportspress_config_types', array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_performance', 'sp_metric', 'sp_statistic' ) );
 	}
 }
 

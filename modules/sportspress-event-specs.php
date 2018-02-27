@@ -36,6 +36,7 @@ class SportsPress_Event_Specs {
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
+		add_filter( 'sportspress_config_types', array( $this, 'add_post_type' ) );
 	}
 
 	/**
@@ -97,6 +98,11 @@ class SportsPress_Event_Specs {
 			'edit-sp_spec',
 			'sp_spec',
 		) );
+	}
+	
+	public static function add_post_type( $post_types = array() ) {
+		$post_types[] = 'sp_spec';
+		return $post_types;
 	}
 
 	/**
