@@ -107,37 +107,23 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 					$rightvar = $rightvar[0];
 				}
 				
-				// Select the correct conditional operator 
-				if ( $conop == '>' ){			
-					if ( $leftvar > $rightvar ) {
-						$solution = 1;
-					} else {
-						$solution = 0;
-					}
-				} elseif ( $conop == '<' ){			
-					if ( $leftvar < $rightvar ) {
-						$solution = 1;
-					} else {
-						$solution = 0;
-					}
-				} elseif ( $conop == '==' ){			
-					if ( $leftvar == $rightvar ) {
-						$solution = 1;
-					} else {
-						$solution = 0;
-					}
-				} elseif ( $conop == '>=' ){			
-					if ( $leftvar >= $rightvar ) {
-						$solution = 1;
-					} else {
-						$solution = 0;
-					}
-				} elseif ( $conop == '<=' ){			
-					if ( $leftvar <= $rightvar ) {
-						$solution = 1;
-					} else {
-						$solution = 0;
-					}
+				// Select the correct conditional operator
+				switch ( $conop ) {
+					case '>':
+						$solution = (int) ( $leftvar > $rightvar );
+						break;
+					case '<':
+						$solution = (int) ( $leftvar < $rightvar );
+						break;
+					case '==':
+						$solution = (int) ( $leftvar == $rightvar );
+						break;
+					case '>=':
+						$solution = (int) ( $leftvar >= $rightvar );
+						break;
+					case '<=':
+						$solution = (int) ( $leftvar <= $rightvar );
+						break;
 				}
 				
 				// Replace the result of the conditional sub-equation to the equation
