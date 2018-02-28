@@ -76,7 +76,7 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 		$equation = str_replace( ' ', '', $equation );
 		
 		// Find all parentheses with conditional operators
-		$re = '/\(([^[\(|\)]*[<=>][^[\(|\)]*)\)/';
+		$re = '/([^[\(|\)]*[<=>][^[\(|\)]*)/';
 		if ( preg_match_all( $re, $equation, $matches ) ) {
 
 			foreach ( $matches[1] as $match ) {
