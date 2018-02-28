@@ -37,6 +37,7 @@ class SportsPress_Event_Specs {
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_filter( 'sportspress_config_types', array( $this, 'add_post_type' ) );
+		add_filter( 'sportspress_event_details', array( $this, 'event_details' ), 10, 2 );
 	}
 
 	/**
@@ -194,6 +195,23 @@ class SportsPress_Event_Specs {
 				);
 		return $meta_boxes;
 	}
+	
+	/**
+	 * Add event details.
+	 *
+	 * @return array
+	 */
+	 public function event_details ( $data, $id ) {
+		 
+		$event = new SP_Event( $id );
+
+		$specs_before = $event->specs( true );
+		$specs_after = $event->specs( false );
+		
+		$data = array_merge( $specs_before, $data, $specs_after );
+		
+		return $data;
+	 }
 }
 
 endif;
