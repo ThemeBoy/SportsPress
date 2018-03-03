@@ -32,12 +32,15 @@ class SportsPress_Event_Specs {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'sportspress_config_page', array( $this, 'sp_specs_config' ), 9 );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
+		add_action( 'sportspress_event_list_head_row', array( $this, 'event_list_head_row' ), 11 );
+		add_action( 'sportspress_event_list_row', array( $this, 'event_list_row' ), 11, 2 );
 
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_filter( 'sportspress_config_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_event_details', array( $this, 'event_details' ), 10, 2 );
+		add_filter( 'sportspress_calendar_columns', array( $this, 'calendar_columns' ) );
 	}
 
 	/**
@@ -212,6 +215,58 @@ class SportsPress_Event_Specs {
 		
 		return $data;
 	 }
+	 
+	/**
+	 * Add calendar columns.
+	 *
+	 * @return array
+	 */
+	public function calendar_columns( $columns = array() ) {
+		$columns['event_specs'] = __( 'Event Specs', 'sportspress' );
+		return $columns;
+	}
+	
+	/**
+	 * Event list head row.
+	 */
+	public function event_list_head_row( $usecolumns = array() ) {
+		if ( is_array( $usecolumns ) && in_array( 'event_specs', $usecolumns ) ) {
+			$spec_labels = (array)sp_get_var_labels( 'sp_spec', null, false );
+
+			if ( empty( $spec_labels ) ) return;
+
+			foreach ( $spec_labels as $spec_label ) {
+				?>
+				<th class="data-specs">
+					<?php echo $spec_label; ?>
+				</th>
+				<?php
+			}
+		}
+	}
+
+	/**
+	 * Event list row.
+	 */
+	public function event_list_row( $event, $usecolumns = array() ) {
+		if ( is_array( $usecolumns ) && in_array( 'event_specs', $usecolumns ) ) {
+			$event = new SP_Event( $event );
+			$specs = $event->specs( false );
+			$spec_labels = (array)sp_get_var_labels( 'sp_spec', null, false );
+
+			foreach ( $spec_labels as $spec_label ) {
+				?>
+				<td class="data-spec">
+				<?php if ( isset( $specs[$spec_label] ) ) {
+						echo $specs[$spec_label]; 
+					}else{
+						echo '-';
+					}?>
+				</td>
+				<?php
+			}
+		}
+	}
 }
 
 endif;
