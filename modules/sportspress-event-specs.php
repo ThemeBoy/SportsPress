@@ -41,6 +41,8 @@ class SportsPress_Event_Specs {
 		add_filter( 'sportspress_config_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_event_details', array( $this, 'event_details' ), 10, 2 );
 		add_filter( 'sportspress_calendar_columns', array( $this, 'calendar_columns' ) );
+		add_filter( 'sportspress_equation_options', array( $this, 'add_options' ) );
+		add_filter( 'sportspress_equation_alter', array( $this, 'alter_equation' ), 11, 2 );
 	}
 
 	/**
@@ -266,6 +268,33 @@ class SportsPress_Event_Specs {
 				<?php
 			}
 		}
+	}
+	
+	/**
+	 * Add additional options.
+	 *
+	 * @return array
+	 */
+	public function add_options( $options ) {
+		$spec_labels = (array)sp_get_var_labels( 'sp_spec', null, false );
+		foreach ( $spec_labels as $key => $value ) {
+			$options[ 'Event Specs' ]['$spec'.$key] = $value;
+		}
+		return $options;
+	}
+
+	/**
+	 * Alter.
+	 *
+	 * @return array
+	 */
+	public function alter_equation( $equation, $vars ) {
+		//var_dump($equation);
+		//var_dump($vars);
+		// Remove space between equation parts
+		$equation = str_replace( ' ', '', $equation );
+		
+		return $equation;
 	}
 }
 
