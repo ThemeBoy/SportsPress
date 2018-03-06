@@ -134,15 +134,14 @@ class SP_Template_Loader {
 				$i++;
 			}
 			
-			$ob .= '<div class="sp-tab-group">';
-		
 			if ( ! empty( $tabs ) ) {
+				$ob .= '<div class="sp-tab-group">';
 				$ob .= '<ul class="sp-tab-menu">' . $tabs . '</ul>';
+				$ob .= '</div>';
 			}
 
 			$ob .= $tab_content;
 			
-			$ob .= '</div>';
 		}
 		
 		return $ob;
