@@ -112,6 +112,13 @@ class SP_Modules {
 					'desc' => __( 'Manage referees, umpires, judges, timekeepers, and other officials.', 'sportspress' ),
 					'default' => 'no',
 				),
+				'player_transfers' => array(
+					'label' => __( 'Player Transfers', 'sportspress' ),
+					'class' => 'SportsPress_Player_Transfers',
+					'icon' => 'sp-icon-sub',
+					'desc' => __( 'Add Player Transfers support to SportsPress.', 'sportspress' ),
+					'default' => 'no',
+				),
 			),
 			'admin' => array(
 				'tutorials' => array(
