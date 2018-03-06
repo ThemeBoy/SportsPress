@@ -48,7 +48,7 @@ endif;
 if ( $team ):
 	$args['meta_query'] = array(
 		array(
-			'key' => 'sp_team',
+			'key' => 'sp_current_team',
 			'value' => $team
 		),
 	);
