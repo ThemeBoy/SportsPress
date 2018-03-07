@@ -30,7 +30,9 @@ class SportsPress_Player_Transfers {
 		$this->define_constants();
 
 		// Hooks
-
+		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handlers' ) );
+		
+		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ), 9 );
 	}
 
 	/**
@@ -45,6 +47,30 @@ class SportsPress_Player_Transfers {
 
 		if ( !defined( 'SP_PLAYER_TRANSFERS_DIR' ) )
 			define( 'SP_PLAYER_TRANSFERS_DIR', plugin_dir_path( __FILE__ ) );
+	}
+	
+	/**
+	 * Add meta boxes.
+	 *
+	 * @return array
+	 */
+	public function add_meta_boxes( $meta_boxes ) {
+		$meta_boxes['sp_player']['transfers'] = array(
+			'title' => __( 'Player Transfers', 'sportspress' ),
+			'output' => 'SP_Meta_Box_Player_Transfers::output',
+			'save' => 'SP_Meta_Box_Player_Transfers::save',
+			'context' => 'normal',
+			'priority' => 'default',
+		);
+		return $meta_boxes;
+	}
+	
+	/**
+	 * Conditonally load classes and functions only needed when viewing the post type.
+	 */
+	public function include_post_type_handlers() {
+		include_once( 'includes/class-sp-meta-box-player-transfers.php' );
+		//include_once( 'includes/class-sp-admin-cpt-tournament.php' );
 	}
 	
 }
