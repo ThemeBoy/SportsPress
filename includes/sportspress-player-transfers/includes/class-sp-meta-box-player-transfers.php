@@ -20,10 +20,15 @@ class SP_Meta_Box_Player_Transfers {
    * Output the metabox
    */
   public static function output( $post ) {
-	  $player = new SP_Player( $post );
-	  $leagues = get_the_terms( $post->ID, 'sp_league' );
-	  $seasons = get_the_terms( $post->ID, 'sp_season' );
-	  $teams = array_merge( $player->current_teams(), $player->past_teams() );
+	  //Use nonce for verification
+	  wp_nonce_field( 'action_player_transfers', 'metabox_player_transfers' );
+	  
+	  //$player = new SP_Player( $post );
+	  //$leagues = get_the_terms( $post->ID, 'sp_league' );
+	  //$seasons = get_the_terms( $post->ID, 'sp_season' );
+	  //$teams = array_merge( $player->current_teams(), $player->past_teams() );
+	  $player_transfers = get_post_meta($post->ID, 'sp_transfers', false);
+	  //var_dump($player_transfers);
 	  $leagues_args = array(
 				'taxonomy' => 'sp_league',
 				'name' => 'tax_input[sp_league][]',
@@ -81,7 +86,7 @@ class SP_Meta_Box_Player_Transfers {
 					<input type="date" name="dateto"/>
 					</td>
 					<td>
-					<input type="checkbox" name="midseason" value="true">
+					<input type="checkbox" name="midseason" value="true"/>
 					</td>
 				</tr>
 			</tbody>
@@ -93,6 +98,21 @@ class SP_Meta_Box_Player_Transfers {
    * Save meta box data
    */
   public static function save( $post_id, $post ) {
-    update_post_meta( $post_id, 'sp_transfers', sp_array_value( $_POST, 'sp_transfers', array() ) );
+	  //var_dump($_POST);
+	// verify if this is an auto save routine. 
+	// If it is our form has not been submitted, so we dont want to do anything
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+		return;
+	
+	// verify this came from the our screen and with proper authorization,
+	// because save_post can be triggered at other times
+	if ( !isset( $_POST['metabox_player_transfers'] ) )
+		return;
+
+	if ( !wp_verify_nonce( $_POST['metabox_player_transfers'], 'action_player_transfers' ) )
+		return;
+
+    // OK, we're authenticated: we need to find and save the data
+	update_post_meta( $post_id, 'sp_transfers', sp_array_value( $_POST, 'sp_transfers', array() ) );
   }
 }
