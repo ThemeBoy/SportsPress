@@ -70,7 +70,6 @@ class SportsPress_Player_Transfers {
 	 */
 	public function include_post_type_handlers() {
 		include_once( 'includes/class-sp-meta-box-player-transfers.php' );
-		//include_once( 'includes/class-sp-admin-cpt-tournament.php' );
 	}
 	
 }
