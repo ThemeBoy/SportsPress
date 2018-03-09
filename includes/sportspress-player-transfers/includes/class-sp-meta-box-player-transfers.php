@@ -59,13 +59,13 @@ class SP_Meta_Box_Player_Transfers {
 			?>
 				<tr>
 					<td>
-					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => $player_transfer['league'], 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => $player_transfer['league'], 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
 					<td>
-					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => $player_transfer['season'], 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => $player_transfer['season'], 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
 					<td>
-					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => $player_transfer['team'],	'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => $player_transfer['team'],	'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
 					<td>
 					<input type="date" name="datefrom[]" value="<?php if( $player_transfer['date_from'] != '' ) echo esc_attr( $player_transfer['date_from'] ); ?>" />
@@ -85,13 +85,13 @@ class SP_Meta_Box_Player_Transfers {
 				<!-- Show blank row instead -->
 				<tr>
 					<td>
-					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
 					<td>
-					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
 					<td>
-					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => null,	'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => null,	'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
 					<td>
 					<input type="date" name="datefrom[]"/>
@@ -108,13 +108,13 @@ class SP_Meta_Box_Player_Transfers {
 				<!-- empty hidden one for jQuery -->
 				<tr class="empty-row screen-reader-text">
 					<td>
-					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
 					<td>
-					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
 					<td>
-					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => null,	'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => null,	'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
 					<td>
 					<input type="date" name="datefrom[]"/>
