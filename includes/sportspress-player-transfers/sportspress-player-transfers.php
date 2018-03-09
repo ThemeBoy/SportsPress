@@ -33,6 +33,7 @@ class SportsPress_Player_Transfers {
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handlers' ) );
 		
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ), 9 );
+		add_filter( 'sportspress_player_templates', array( $this, 'player_templates' ) );
 	}
 
 	/**
@@ -70,6 +71,31 @@ class SportsPress_Player_Transfers {
 	 */
 	public function include_post_type_handlers() {
 		include_once( 'includes/class-sp-meta-box-player-transfers.php' );
+	}
+	
+	/**
+	 * Add templates to player layout.
+	 *
+	 * @return array
+	 */
+	public function player_templates( $templates = array() ) {
+		$templates['transfers'] = array(
+			'title' => __( 'Player Transfers', 'sportspress' ),
+			'option' => 'sportspress_player_show_transfers',
+			'action' => array( $this, 'output_transfers' ),
+			'default' => 'no',
+		);
+		return $templates;
+	}
+	
+	/**
+	 * Output Player Transfers.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function output_transfers() {
+		sp_get_template( 'player-transfers.php', array(), '', SP_PLAYER_TRANSFERS_DIR . 'templates/' );
 	}
 	
 }
