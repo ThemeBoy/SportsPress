@@ -22,75 +22,114 @@ class SP_Meta_Box_Player_Transfers {
   public static function output( $post ) {
 	  //Use nonce for verification
 	  wp_nonce_field( 'action_player_transfers', 'metabox_player_transfers' );
-	  
-	  //$player = new SP_Player( $post );
-	  //$leagues = get_the_terms( $post->ID, 'sp_league' );
-	  //$seasons = get_the_terms( $post->ID, 'sp_season' );
-	  //$teams = array_merge( $player->current_teams(), $player->past_teams() );
-	  $player_transfers = get_post_meta($post->ID, 'sp_transfers', false);
-	  //var_dump($player_transfers);
-	  $leagues_args = array(
-				'taxonomy' => 'sp_league',
-				'name' => 'tax_input[sp_league][]',
-				'selected' => null,
-				'values' => 'term_id',
-				'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'League', 'sportspress' ) ),
-				'class' => 'widefat',
-				'property' => 'single',
-				'chosen' => true,
-			);
-	  $seasons_args = array(
-				'taxonomy' => 'sp_season',
-				'name' => 'tax_input[sp_season][]',
-				'selected' => null,
-				'values' => 'term_id',
-				'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Season', 'sportspress' ) ),
-				'class' => 'widefat',
-				'property' => 'single',
-				'chosen' => true,
-			);
-	  $teams_args = array(
-			'post_type' => 'sp_team',
-			'name' => 'sp_current_team[]',
-			'selected' => null,
-			'values' => 'ID',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Team', 'sportspress' ) ),
-			'class' => 'widefat',
-			'property' => 'single',
-			'chosen' => true,
-		);
-	  //var_dump($player);
-	  //var_dump($leagues);
-	  //var_dump($teams); ?>
-	  <table>
+	  // Get all saved player transfers
+	  $player_transfers = get_post_meta($post->ID, 'sp_transfers', true);
+ ?>
+	  <script type="text/javascript">
+	jQuery(document).ready(function( $ ){
+		$( '#add-row' ).on('click', function() {
+			var row = $( '.empty-row.screen-reader-text' ).clone(true);
+			row.removeClass( 'empty-row screen-reader-text' );
+			row.insertBefore( '#repeatable-fieldset-one tbody>tr:last' );
+			return false;
+		});
+  	
+		$( '.remove-row' ).on('click', function() {
+			$(this).parents('tr').remove();
+			return false;
+		});
+	});
+	</script>
+	  <table id="repeatable-fieldset-one" width="100%">
 			<thead>
 				<tr>
-					<th>League</th><th>Season</th><th>Team</th><th>Date From:</th><th>Date To:</th><th>MidSeason</th>
+					<th width="20%">League</th>
+					<th width="20%">Season</th>
+					<th width="20%">Team</th>
+					<th width="10%">Date From:</th>
+					<th width="10%">Date To:</th>
+					<th width="10%">MidSeason</th>
 				</tr>
 			</thead>
 			<tbody>
+			<?php
+			if ( $player_transfers ) :
+	
+			foreach ( $player_transfers as $player_transfer ) {
+			?>
 				<tr>
 					<td>
-					<?php sp_dropdown_taxonomies( $leagues_args ); ?>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => $player_transfer['league'], 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
 					</td>
 					<td>
-					<?php sp_dropdown_taxonomies( $seasons_args ); ?>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => $player_transfer['season'], 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
 					</td>
 					<td>
-					<?php sp_dropdown_pages( $teams_args ); ?>
+					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => $player_transfer['team'],	'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
 					</td>
 					<td>
-					<input type="date" name="datefrom"/>
+					<input type="date" name="datefrom[]" value="<?php if( $player_transfer['date_from'] != '' ) echo esc_attr( $player_transfer['date_from'] ); ?>" />
 					</td>
 					<td>
-					<input type="date" name="dateto"/>
+					<input type="date" name="dateto[]" value="<?php if( $player_transfer['date_to'] != '' ) echo esc_attr( $player_transfer['date_to'] ); ?>" />
+					</td>
+					<td align="center">
+					<input type="checkbox" name="midseason[]" value="true" <?php if( $player_transfer['midseason'] == 'true' ) echo 'checked'; ?> />
+					</td>
+					<td><a class="button remove-row" href="#">Remove</a></td>
+				</tr>
+				<?php
+			}
+			else :
+			?>
+				<!-- Show blank row instead -->
+				<tr>
+					<td>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
 					</td>
 					<td>
-					<input type="checkbox" name="midseason" value="true"/>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
 					</td>
+					<td>
+					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => null,	'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					</td>
+					<td>
+					<input type="date" name="datefrom[]"/>
+					</td>
+					<td>
+					<input type="date" name="dateto[]"/>
+					</td>
+					<td align="center">
+					<input type="checkbox" name="midseason[]" value="true"/>
+					</td>
+					<td><a class="button remove-row" href="#">Remove</a></td>
+				</tr>
+			<?php endif; ?>
+				<!-- empty hidden one for jQuery -->
+				<tr class="empty-row screen-reader-text">
+					<td>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					</td>
+					<td>
+					<?php sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					</td>
+					<td>
+					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => null,	'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => true ) ); ?>
+					</td>
+					<td>
+					<input type="date" name="datefrom[]"/>
+					</td>
+					<td>
+					<input type="date" name="dateto[]"/>
+					</td>
+					<td align="center">
+					<input type="checkbox" name="midseason[]" value="true"/>
+					</td>
+					<td><a class="button remove-row" href="#">Remove</a></td>
 				</tr>
 			</tbody>
 		</table>
+		<p><a id="add-row" class="button" href="#">Add another</a></p>
 	  <?php
   }
 
@@ -98,7 +137,11 @@ class SP_Meta_Box_Player_Transfers {
    * Save meta box data
    */
   public static function save( $post_id, $post ) {
-	  //var_dump($_POST);
+	  
+	// verify nonce
+	if ( !wp_verify_nonce( $_POST['metabox_player_transfers'], 'action_player_transfers' ) )
+		return;
+	
 	// verify if this is an auto save routine. 
 	// If it is our form has not been submitted, so we dont want to do anything
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
@@ -108,11 +151,54 @@ class SP_Meta_Box_Player_Transfers {
 	// because save_post can be triggered at other times
 	if ( !isset( $_POST['metabox_player_transfers'] ) )
 		return;
-
-	if ( !wp_verify_nonce( $_POST['metabox_player_transfers'], 'action_player_transfers' ) )
+	
+	// verify if current user has enough permissions
+	if (!current_user_can('edit_post', $post_id))
 		return;
+	
+	// OK, we're authenticated: we need to find and save the data
+	
+	$old = get_post_meta($post_id, 'sp_transfers', true);
+	$new = array();
+	
+	$leagues = $_POST['sp_pt_league'];
+	$seasons = $_POST['sp_pt_season'];
+	$teams = $_POST['sp_pt_team'];
+	$dates_from = $_POST['datefrom'];
+	$dates_to = $_POST['dateto'];
+	$midseasons = $_POST['midseason'];
+	
+	$count = count( $leagues );
+	
+	for ( $i = 0; $i < $count; $i++ ) {
+		if ( $leagues[$i] != '' && $leagues[$i] != '-1' ) {
+			$new[$i]['league'] = stripslashes( strip_tags( $leagues[$i] ) );
+		}
+			
+		if ( $seasons[$i] != '' && $seasons[$i] != '-1' ) {
+			$new[$i]['season'] = stripslashes( strip_tags( $seasons[$i] ) );
+		}
+		
+		if ( $teams[$i] != '' && $teams[$i] != '-1' ) {
+			$new[$i]['team'] = stripslashes( strip_tags( $teams[$i] ) );
+		}
+			
+		if ( $dates_from[$i] != '' ) {
+			$new[$i]['date_from'] = stripslashes( strip_tags( $dates_from[$i] ) );
+		}
+			
+		if ( $dates_to[$i] != '' ) {
+			$new[$i]['date_to'] = stripslashes( strip_tags( $dates_to[$i] ) );
+		}
+		
+		if ( $midseasons[$i] == 'true' ) {
+			$new[$i]['midseason'] = stripslashes( strip_tags( $midseasons[$i] ) );
+		}
+	}
 
-    // OK, we're authenticated: we need to find and save the data
-	update_post_meta( $post_id, 'sp_transfers', sp_array_value( $_POST, 'sp_transfers', array() ) );
+	if ( !empty( $new ) && $new != $old )
+		update_post_meta( $post_id, 'sp_transfers', $new );
+	elseif ( empty($new) && $old )
+		delete_post_meta( $post_id, 'sp_transfers', $old );
   }
 }
