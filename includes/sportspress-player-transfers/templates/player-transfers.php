@@ -15,6 +15,13 @@ if ( ! isset( $id ) )
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 
 $player_transfers = get_post_meta($id, 'sp_transfers', true);
+$labels = array(
+				'season' => __( 'Season', 'sportspress' ), 
+				'league' => __( 'League', 'sportspress' ),
+				'team' => __( 'Team', 'sportspress' ),
+				'date_from' => __( 'Date From', 'sportspress' ),
+				'date_to' => __( 'Date To', 'sportspress' ),
+				);
 ?>
 
 <h4 class="sp-table-caption"><?php the_title(); ?> - Career Transfers</h4>
@@ -22,11 +29,11 @@ $player_transfers = get_post_meta($id, 'sp_transfers', true);
 	<table class="sp-player-statistics sp-data-table<?php if ( $scrollable) { echo ' sp-scrollable-table'; }?>">
 		<thead>
 			<tr>
-				<th class="data-Season">Season</th>
-				<th class="data-League">League</th>
-				<th class="data-Team">Team</th>
-				<th class="data-Date From">Date From</th>
-				<th class="data-Date To">Date To</th>
+				<th class="data-Season"><?php echo $labels['season']; ?></th>
+				<th class="data-League"><?php echo $labels['league']; ?></th>
+				<th class="data-Team"><?php echo $labels['team']; ?></th>
+				<th class="data-Date From"><?php echo $labels['date_from']; ?></th>
+				<th class="data-Date To"><?php echo $labels['date_to']; ?></th>
 			</tr>
 		</thead>
 		<tbody>

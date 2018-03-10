@@ -186,6 +186,7 @@ class SP_Meta_Box_Player_Transfers {
 			
 		if ( $dates_from[$i] != '' ) {
 			$new[$i]['date_from'] = stripslashes( strip_tags( $dates_from[$i] ) );
+			$new[$i]['date_from_unix'] = strtotime( $dates_from[$i] );
 		}
 			
 		if ( $dates_to[$i] != '' ) {
@@ -196,6 +197,13 @@ class SP_Meta_Box_Player_Transfers {
 			$new[$i]['midseason'] = stripslashes( strip_tags( $midseasons[$i] ) );
 		}
 	}
+	
+	// Sort by Date From (PHP5.2 supported)
+	function sortByOrder($a, $b) {
+		return $a['date_from_unix'] - $b['date_from_unix'];
+	}
+
+	usort($new, 'sortByOrder');
 
 	if ( !empty( $new ) && $new != $old )
 		update_post_meta( $post_id, 'sp_transfers', $new );
