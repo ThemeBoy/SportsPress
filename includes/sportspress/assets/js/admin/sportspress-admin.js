@@ -561,6 +561,31 @@ jQuery(document).ready(function($){
 		$table.trigger("updatePostCount");
 		return false;
 	});
+	
+	// Split Statistic row
+	$(".sp-data-table").on("click", ".sp-add-row", function() {
+		$self = $(this);
+		$table = $self.closest(".sp-data-table");
+			$tr = $self.closest("tr");
+			$row = $tr.clone();
+			$tr.addClass("splitted-row");
+			$tr.closest('tr').find('.sp-add-row').css( "display", "none" );
+			$tr.closest('tr').find('.sp-delete-row').css( "display", "block" );
+			$tr.find("input").val("");
+			$row.insertBefore($tr);
+		return false;
+	});
+	
+	// Delete Splitted row
+	$(".sp-data-table").on("click", ".sp-delete-row", function() {
+		$self = $(this);
+		$self.closest("tr").css("background-color", "#f99").fadeOut(400, function() {
+			$table = $self.closest(".sp-data-table");
+			$(this).remove();
+			//$table.trigger("updatePostCount");
+		});
+		return false;
+	});
 
 	// Enable or disable importer inputs based on column label
 	$(".sp-import-table").on("change", "select", function() {

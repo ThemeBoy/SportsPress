@@ -225,6 +225,10 @@ class SP_Meta_Box_Player_Statistics {
 									}
 								?></td>
 							<?php endforeach; ?>
+							<td class="sp-actions-column">
+								<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="display:none; color:red;"></a>
+								<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
+							</td>
 						</tr>
 						<?php
 						$i++;
