@@ -116,7 +116,7 @@ class SP_Modules {
 					'label' => __( 'Player Transfers', 'sportspress' ),
 					'class' => 'SportsPress_Player_Transfers',
 					'icon' => 'sp-icon-sub',
-					'desc' => __( 'Add Player Transfers support to SportsPress.', 'sportspress' ),
+					'desc' => __( 'Add Player Transfers history to SportsPress.', 'sportspress' ),
 					'default' => 'no',
 				),
 			),

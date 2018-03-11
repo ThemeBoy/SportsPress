@@ -31,12 +31,8 @@ $labels = array(
 	<table class="sp-player-statistics sp-data-table<?php if ( $scrollable) { echo ' sp-scrollable-table'; }?>">
 		<thead>
 			<tr>
-				<!--<th class="data-Season"><?php //echo $labels['season']; ?></th>
-				<th class="data-League"><?php //echo $labels['league']; ?></th>-->
 				<th class="data-Years"><?php echo $labels['years']; ?></th>
 				<th class="data-Team"><?php echo $labels['team']; ?></th>
-				<!--<th class="data-Date From"><?php //echo $labels['date_from']; ?></th>-->
-				<!--<th class="data-Date To"><?php //echo $labels['date_to']; ?></th>-->
 			</tr>
 		</thead>
 		<tbody>
@@ -50,12 +46,8 @@ $labels = array(
 			$date_to = ( isset( $transfer['date_to'] ) ) ? date_i18n( get_option( 'date_format' ), strtotime( $transfer['date_to'] ) ) : __( 'Today', 'sportspress' );
 			$tooltip = $date_from.' &rarr; '.$date_to;
 			echo '<tr>';
-			//echo '<td>'.get_term( $transfer['season'] )->name.'</td>';
-			//echo '<td>'.get_term( $transfer['league'] )->name.'</td>';
 			echo '<td title="'.$tooltip.'">'.$years.'</td>';
 			echo '<td>'.$team.'</td>';
-			//echo '<td>'.date_i18n( get_option( 'date_format' ), strtotime( $transfer['date_from'] ) ).'</td>';
-			//echo '<td>'.date_i18n( get_option( 'date_format' ), strtotime( $transfer['date_to'] ) ).'</td>';
 			echo '<tr>';
 		}
 		?>

@@ -43,8 +43,6 @@ class SP_Meta_Box_Player_Transfers {
 	  <table id="repeatable-fieldset-one" width="100%">
 			<thead>
 				<tr>
-					<!--<th width="20%">Season</th>
-					<th width="20%">League</th>-->
 					<th width="20%">Team</th>
 					<th width="10%">Date From:</th>
 					<th width="10%">Date To:</th>
@@ -58,12 +56,6 @@ class SP_Meta_Box_Player_Transfers {
 			foreach ( $player_transfers as $player_transfer ) {
 			?>
 				<tr>
-					<!--<td>
-					<?php //sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => $player_transfer['season'], 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false, 'values' => 'term_id' ) ); ?>
-					</td>
-					<td>
-					<?php //sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => $player_transfer['league'], 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false, 'values' => 'term_id' ) ); ?>
-					</td>-->
 					<td>
 					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => $player_transfer['team'], 'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
@@ -85,12 +77,6 @@ class SP_Meta_Box_Player_Transfers {
 			?>
 				<!-- Show blank row instead -->
 				<tr>
-					<!--<td>
-					<?php //sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false, 'values' => 'term_id' ) ); ?>
-					</td>
-					<td>
-					<?php //sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false, 'values' => 'term_id' ) ); ?>
-					</td>-->
 					<td>
 					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => null,	'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
@@ -109,12 +95,6 @@ class SP_Meta_Box_Player_Transfers {
 			<?php endif; ?>
 				<!-- empty hidden one for jQuery -->
 				<tr class="empty-row screen-reader-text">
-					<!--<td>
-					<?php //sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_season', 'name' => 'sp_pt_season[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false, 'values' => 'term_id' ) ); ?>
-					</td>
-					<td>
-					<?php //sp_dropdown_taxonomies( array( 'taxonomy' => 'sp_league', 'name' => 'sp_pt_league[]', 'selected' => null, 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ), 'class' => 'widefat', 'property' => 'single', 'chosen' => false, 'values' => 'term_id' ) ); ?>
-					</td>-->
 					<td>
 					<?php sp_dropdown_pages( array( 'post_type' => 'sp_team', 'name' => 'sp_pt_team[]', 'selected' => null,	'values' => 'ID', 'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),	'class' => 'widefat', 'property' => 'single', 'chosen' => false ) ); ?>
 					</td>
@@ -140,7 +120,6 @@ class SP_Meta_Box_Player_Transfers {
    * Save meta box data
    */
   public static function save( $post_id, $post ) {
-	//var_dump($_POST);
 	// verify nonce
 	if ( !wp_verify_nonce( $_POST['metabox_player_transfers'], 'action_player_transfers' ) )
 		return;
@@ -164,8 +143,6 @@ class SP_Meta_Box_Player_Transfers {
 	$old = get_post_meta($post_id, 'sp_transfers', true);
 	$new = array();
 	
-	//$leagues = $_POST['sp_pt_league'];
-	//$seasons = $_POST['sp_pt_season'];
 	$teams = $_POST['sp_pt_team'];
 	$dates_from = $_POST['datefrom'];
 	$dates_to = $_POST['dateto'];
@@ -174,15 +151,6 @@ class SP_Meta_Box_Player_Transfers {
 	$count = count( $teams );
 	
 	for ( $i = 0; $i < $count; $i++ ) {
-		/*if ( $seasons[$i] != '' && $seasons[$i] != '-1' ) {
-			$new[$i]['season'] = stripslashes( strip_tags( $seasons[$i] ) );
-		}
-		
-		if ( $leagues[$i] != '' && $leagues[$i] != '-1' ) {
-			$new[$i]['league'] = stripslashes( strip_tags( $leagues[$i] ) );
-		}*/
-			
-		
 		if ( $teams[$i] != '' && $teams[$i] != '-1' ) {
 			$new[$i]['team'] = stripslashes( strip_tags( $teams[$i] ) );
 			$new[$i]['loan'] = 'false';
