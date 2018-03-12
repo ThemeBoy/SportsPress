@@ -109,7 +109,7 @@ class SP_Player extends SP_Custom_Post {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $league_id, $admin = false, $section = -1 ) {
+	public function data( $league_id, $admin = false, $section = -1, $team_id = -1 ) {
 
 		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
@@ -302,6 +302,13 @@ class SP_Player extends SP_Custom_Post {
 				$args['meta_query'][] = array(
 					'key' => ( 1 === $section ? 'sp_defense' : 'sp_offense' ),
 					'value' => $this->ID
+				);
+			endif;
+			
+			if ( -1 !== $team_id ):
+				$args['meta_query'][] = array(
+					'key' => 'sp_team',
+					'value' => $team_id
 				);
 			endif;
 
