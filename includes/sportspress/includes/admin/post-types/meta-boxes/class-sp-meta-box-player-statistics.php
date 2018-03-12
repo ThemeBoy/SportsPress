@@ -83,6 +83,7 @@ class SP_Meta_Box_Player_Statistics {
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
 		update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
+		update_post_meta( $post_id, 'sp_additional_statistics', sp_array_value( $_POST, 'sp_additional_statistics', array() ) );
 	}
 
 	/**
@@ -234,6 +235,61 @@ class SP_Meta_Box_Player_Statistics {
 						$i++;
 					endforeach;
 					?>
+					<tr class="empty-row screen-reader-text">
+							<td>
+								<label>
+									Season
+								</label>
+							</td>
+							<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
+									<td>
+										<?php
+										$args = array(
+											'post_type' => 'sp_team',
+											'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
+											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+										    'sort_order'   => 'ASC',
+										    'sort_column'  => 'menu_order',
+											'selected' => null,
+											'values' => 'ID',
+											'include' => $teams,
+											'tax_query' => array(
+												'relation' => 'AND',
+												array(
+													'taxonomy' => 'sp_league',
+													'terms' => $league_id,
+													'field' => 'term_id',
+												),
+												array(
+													'taxonomy' => 'sp_season',
+													'terms' => $div_id,
+													'field' => 'term_id',
+												),
+											),
+										);
+										if ( ! sp_dropdown_pages( $args ) ):
+											_e( '&mdash; None &mdash;', 'sportspress' );
+										?>
+									</td>
+								<?php endif; ?>
+							<?php endif; ?>
+							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
+							$team_id = 0; //temporary
+								?>
+								<td><?php
+										if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
+											echo '<input class="sp-convert-time-input" type="text" name="sp_additional_times[' . $league_id . '][' . $div_id . '][' . $team_id . '][' . $column . ']" placeholder="0" />';
+											echo '<input class="sp-convert-time-output" type="hidden" name="sp_additional_statistics[' . $league_id . '][' . $div_id . '][' . $team_id . '][' . $column . ']" />';
+										} else {
+											echo '<input type="text" name="sp_additional_statistics[' . $league_id . '][' . $div_id . '][' . $team_id . '][' . $column . ']" placeholder="0" />';
+										}
+								?></td>
+							<?php endforeach; ?>
+							<td class="sp-actions-column">
+								<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="display:none; color:red;"></a>
+								<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
+							</td>
+						</tr>
 				</tbody>
 			</table>
 		</div>

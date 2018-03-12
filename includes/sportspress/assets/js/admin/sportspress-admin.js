@@ -567,12 +567,13 @@ jQuery(document).ready(function($){
 		$self = $(this);
 		$table = $self.closest(".sp-data-table");
 			$tr = $self.closest("tr");
-			$row = $tr.clone();
-			$tr.addClass("splitted-row");
-			$tr.closest('tr').find('.sp-add-row').css( "display", "none" );
-			$tr.closest('tr').find('.sp-delete-row').css( "display", "block" );
-			$tr.find("input").val("");
-			$row.insertBefore($tr);
+			$row = $table.find(".empty-row.screen-reader-text").clone();
+			$row.addClass("splitted-row");
+			$row.removeClass("empty-row screen-reader-text");
+			$row.closest('tr').find('.sp-add-row').css( "display", "none" );
+			$row.closest('tr').find('.sp-delete-row').css( "display", "block" );
+			//$tr.find("input").val("");
+			$row.insertAfter($tr);
 		return false;
 	});
 	
