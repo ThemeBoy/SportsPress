@@ -564,14 +564,28 @@ jQuery(document).ready(function($){
 	
 	// Split Statistic row
 	$(".sp-data-table").on("click", ".sp-add-row", function() {
+		var league_id = $(this).data('league_id');
+		var season_id = $(this).data('season_id');
 		$self = $(this);
 		$table = $self.closest(".sp-data-table");
 			$tr = $self.closest("tr");
 			$row = $table.find(".empty-row.screen-reader-text").clone();
 			$row.addClass("splitted-row");
 			$row.removeClass("empty-row screen-reader-text");
-			$row.closest('tr').find('.sp-add-row').css( "display", "none" );
-			$row.closest('tr').find('.sp-delete-row').css( "display", "block" );
+			//hide add sign
+			$row.closest("tr").find(".sp-add-row").css( "display", "none" );
+			//display delete sign
+			$row.closest("tr").find(".sp-delete-row").css( "display", "block" );
+			//add league_id and season_id variables
+			$row.closest("tr").find("input").attr("name", function(_,attr) {
+				return attr.replace("sp_additional_statistics[-99][-99]", "sp_additional_statistics[" + league_id +"][" + season_id +"]")
+			})
+			$row.closest("tr").find("select").attr("id", function(_,attr) {
+				return attr.replace("sp_leagues[99][99]", "sp_leagues[" + league_id +"][" + season_id +"]")
+			})
+			$row.closest("tr").find("select").attr("name", function(_,attr) {
+				return attr.replace("sp_leagues[99][99]", "sp_leagues[" + league_id +"][" + season_id +"]")
+			})
 			//$tr.find("input").val("");
 			$row.insertAfter($tr);
 		return false;

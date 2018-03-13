@@ -228,7 +228,7 @@ class SP_Meta_Box_Player_Statistics {
 							<?php endforeach; ?>
 							<td class="sp-actions-column">
 								<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="display:none; color:red;"></a>
-								<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
+								<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row" data-league_id="<?php echo $league_id; ?>" data-season_id="<?php echo $div_id; ?>"></a>
 							</td>
 						</tr>
 						<?php
@@ -238,7 +238,7 @@ class SP_Meta_Box_Player_Statistics {
 					<tr class="empty-row screen-reader-text">
 							<td>
 								<label>
-									Season
+									&Gt;
 								</label>
 							</td>
 							<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
@@ -246,7 +246,7 @@ class SP_Meta_Box_Player_Statistics {
 										<?php
 										$args = array(
 											'post_type' => 'sp_team',
-											'name' => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
+											'name' => 'sp_leagues[99][99]',
 											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
 										    'sort_order'   => 'ASC',
 										    'sort_column'  => 'menu_order',
@@ -279,9 +279,9 @@ class SP_Meta_Box_Player_Statistics {
 								<td><?php
 										if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
 											echo '<input class="sp-convert-time-input" type="text" name="sp_additional_times[' . $league_id . '][' . $div_id . '][' . $team_id . '][' . $column . ']" placeholder="0" />';
-											echo '<input class="sp-convert-time-output" type="hidden" name="sp_additional_statistics[' . $league_id . '][' . $div_id . '][' . $team_id . '][' . $column . ']" />';
+											echo '<input class="sp-convert-time-output" type="hidden" name="sp_additional_statistics[-99][-99][team_id][' . $column . ']" />';
 										} else {
-											echo '<input type="text" name="sp_additional_statistics[' . $league_id . '][' . $div_id . '][' . $team_id . '][' . $column . ']" placeholder="0" />';
+											echo '<input type="text" name="sp_additional_statistics[-99][-99][team_id][' . $column . ']" placeholder="0" />';
 										}
 								?></td>
 							<?php endforeach; ?>
