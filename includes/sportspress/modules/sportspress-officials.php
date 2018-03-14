@@ -541,9 +541,11 @@ class SportsPress_Officials {
 		
 		if ( function_exists( 'get_term_meta' ) ) $new_columns['sp_order'] = __( 'Order', 'sportspress' );
 
+		if ( array_key_exists('posts', $columns) ) {
 		$new_columns['posts'] = $columns['posts'];
 
 		unset( $columns['posts'] );
+		}
 
 		return array_merge( $columns, $new_columns );
 	}
