@@ -109,7 +109,7 @@ class SP_Player extends SP_Custom_Post {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $league_id, $admin = false, $section = -1, $team_id = -1 ) {
+	public function data( $league_id, $admin = false, $section = -1 ) {
 
 		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
@@ -302,13 +302,6 @@ class SP_Player extends SP_Custom_Post {
 				$args['meta_query'][] = array(
 					'key' => ( 1 === $section ? 'sp_defense' : 'sp_offense' ),
 					'value' => $this->ID
-				);
-			endif;
-			
-			if ( -1 !== $team_id ):
-				$args['meta_query'][] = array(
-					'key' => 'sp_team',
-					'value' => $team_id
 				);
 			endif;
 
@@ -753,13 +746,17 @@ class SP_Player extends SP_Custom_Post {
 	 * @param int $season_id
 	 * @param int $teamid
 	 * @param bool $admin
+	 * @param bool $additional_stats
 	 * @return array
 	 */
-	public function data_season_team( $league_id, $season_id, $teamid = -1, $admin = false, $section = -1 ) {
+	public function data_season_team( $league_id, $season_id, $teamid = -1, $additional_stats = false, $admin = false, $section = -1 ) {
 
-		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
+		//$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
+		if ( $additional_stats ) {
+			$stats_additional = (array)get_post_meta( $this->ID, 'sp_additional_statistics', true );
+		}
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
 		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 		$manual_columns = 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ? true : false;
@@ -870,13 +867,9 @@ class SP_Player extends SP_Custom_Post {
 
 		// Generate array of all season ids and season names
 		$div_ids = array();
+		$div_ids[] = $season_id;
 		$season_names = array();
-		foreach ( $seasons as $season ):
-			if ( is_object( $season ) && property_exists( $season, 'term_id' ) && property_exists( $season, 'name' ) ):
-				$div_ids[] = $season->term_id;
-				$season_names[ $season->term_id ] = $season->name;
-			endif;
-		endforeach;
+		$season_names[ $season_id ] = get_term( $season_id, 'sp_season' )->name;
 
 		$div_ids[] = 0;
 		$season_names[0] = __( 'Total', 'sportspress' );
@@ -892,8 +885,7 @@ class SP_Player extends SP_Custom_Post {
 		// Initialize placeholders array
 		$placeholders = array();
 
-		$div_id = $season_id;
-		//foreach ( $div_ids as $div_id ):
+		foreach ( $div_ids as $div_id ):
 
 			$totals = array( 'eventsattended' => 0, 'eventsplayed' => 0, 'eventsstarted' => 0, 'eventssubbed' => 0, 'eventminutes' => 0, 'streak' => 0, 'last5' => null, 'last10' => null );
 
@@ -1181,7 +1173,7 @@ class SP_Player extends SP_Custom_Post {
 				$placeholders[ $div_id ][ $key ] = sp_array_value( $totals, $key, 0 );
 			endforeach;
 
-		//endforeach;
+		endforeach;
 
 		// Get labels by section
 		$args = array(

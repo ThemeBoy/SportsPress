@@ -81,6 +81,7 @@ class SP_Meta_Box_Player_Statistics {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		//var_dump($_POST);
 		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
 		update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
 		update_post_meta( $post_id, 'sp_additional_statistics', sp_array_value( $_POST, 'sp_additional_statistics', array() ) );
@@ -246,12 +247,13 @@ class SP_Meta_Box_Player_Statistics {
 										<?php
 										$args = array(
 											'post_type' => 'sp_team',
-											'name' => 'sp_leagues[99][99]',
+											'name' => 'sp_additional_team[-99][-99][]',
 											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
 										    'sort_order'   => 'ASC',
 										    'sort_column'  => 'menu_order',
 											'selected' => null,
 											'values' => 'ID',
+											'id' => 'additional_team',
 											'include' => $teams,
 											'tax_query' => array(
 												'relation' => 'AND',

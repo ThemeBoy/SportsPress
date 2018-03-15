@@ -581,10 +581,10 @@ jQuery(document).ready(function($){
 				return attr.replace("sp_additional_statistics[-99][-99]", "sp_additional_statistics[" + league_id +"][" + season_id +"]")
 			})
 			$row.closest("tr").find("select").attr("id", function(_,attr) {
-				return attr.replace("sp_leagues[99][99]", "sp_leagues[" + league_id +"][" + season_id +"]")
+				return attr.replace("sp_additional_team[-99][-99]", "sp_additional_team[" + league_id +"][" + season_id +"]")
 			})
 			$row.closest("tr").find("select").attr("name", function(_,attr) {
-				return attr.replace("sp_leagues[99][99]", "sp_leagues[" + league_id +"][" + season_id +"]")
+				return attr.replace("sp_additional_team[-99][-99]", "sp_additional_team[" + league_id +"][" + season_id +"]")
 			})
 			//$tr.find("input").val("");
 			$row.insertAfter($tr);
