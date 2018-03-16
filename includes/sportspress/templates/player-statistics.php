@@ -59,6 +59,7 @@ if ( is_array( $leagues ) ):
 				'data' => $player->data( $league->term_id, false, $section_id ),
 				'caption' => $caption,
 				'scrollable' => $scrollable,
+				'league_id' => $league->term_id,
 			);
 			if ( ! $show_teams ) {
 				$args['hide_teams'] = true;
