@@ -753,7 +753,14 @@ class SP_Player extends SP_Custom_Post {
 
 		//$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
-		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
+		if ( $additional_stats ) {
+			$stats = (array)get_post_meta( $this->ID, 'sp_additional_statistics', true );
+			//var_dump($stats);
+			$stats[$league_id][$season_id] = $stats[$league_id][$season_id][ $teamid ];
+		}else{
+			$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
+			//var_dump($stats);
+		}
 		if ( $additional_stats ) {
 			$stats_additional = (array)get_post_meta( $this->ID, 'sp_additional_statistics', true );
 		}
@@ -878,7 +885,7 @@ class SP_Player extends SP_Custom_Post {
 
 		// Get all seasons populated with data where available
 		$data = sp_array_combine( $div_ids, sp_array_value( $stats, $league_id, array() ) );
-
+var_dump($data);
 		// Get equations from statistic variables
 		$equations = sp_get_var_equations( 'sp_statistic' );
 

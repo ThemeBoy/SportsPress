@@ -577,17 +577,14 @@ jQuery(document).ready(function($){
 			//display delete sign
 			$row.closest("tr").find(".sp-delete-row").css( "display", "block" );
 			//add league_id and season_id variables
-			$row.closest("tr").find("input").attr("name", function(_,attr) {
-				return attr.replace("sp_additional_statistics[-99][-99]", "sp_additional_statistics[" + league_id +"][" + season_id +"]")
-			})
-			$row.closest("tr").find("select").attr("id", function(_,attr) {
-				return attr.replace("sp_additional_team[-99][-99]", "sp_additional_team[" + league_id +"][" + season_id +"]")
-			})
-			$row.closest("tr").find("select").attr("name", function(_,attr) {
-				return attr.replace("sp_additional_team[-99][-99]", "sp_additional_team[" + league_id +"][" + season_id +"]")
-			})
-			//$tr.find("input").val("");
+			$row.closest("tr").find('#leagueHidden').val(league_id);
+			$row.closest("tr").find('#seasonHidden').val(season_id);
+			//add the new raw first
 			$row.insertAfter($tr);
+			//change the team_id on changing
+			$('select[id=additional_team]').on('change', function() {
+				$(this).closest("tr").find('#teamHidden').val( this.value );
+			});
 		return false;
 	});
 	

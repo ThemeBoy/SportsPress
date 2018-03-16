@@ -81,7 +81,6 @@ class SP_Meta_Box_Player_Statistics {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		var_dump($_POST);
 		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
 		update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
 		
@@ -94,30 +93,21 @@ class SP_Meta_Box_Player_Statistics {
 		$columns = $_POST['sp_add_columns'];
 		$labels = array_keys($columns);
 		
-		$count = count( $teams );
-		//WIP START
-		for ( $i = 0; $i < $count; $i++ ) {
-		if ( $leagues[$i] != '' && $leagues[$i] != '-1' ) {
-			$new[$i]['team'] = stripslashes( strip_tags( $teams[$i] ) );
-			$new[$i]['loan'] = 'false';
+		$i = 0;
+		foreach ( $leagues as $league ) {
+			if ( $league != '-99' ) {
+				foreach ( $labels as $label ) {
+					$new[$league][$seasons[$i]][$teams[$i]][$label] = $columns[$label][$i];
+				}
+			}
+			$i++;
 		}
-			
-		if ( $dates_from[$i] != '' ) {
-			$new[$i]['date_from'] = stripslashes( strip_tags( $dates_from[$i] ) );
-			$new[$i]['date_from_unix'] = strtotime( $dates_from[$i] );
+		if ( !empty( $new ) && $new != $old ) {
+			update_post_meta( $post_id, 'sp_additional_statistics', $new );
 		}
-			
-		if ( $dates_to[$i] != '' ) {
-			$new[$i]['date_to'] = stripslashes( strip_tags( $dates_to[$i] ) );
+		elseif ( empty($new) && $old ) {
+			delete_post_meta( $post_id, 'sp_additional_statistics', $old );
 		}
-		
-		if ( $loans[$i] == 'true' ) {
-			$new[$i]['loan'] = 'true';
-		}
-	}
-	//WIP END
-		
-		update_post_meta( $post_id, 'sp_additional_statistics', sp_array_value( $_POST, 'sp_additional_statistics', array() ) );
 	}
 
 	/**
@@ -126,6 +116,7 @@ class SP_Meta_Box_Player_Statistics {
 	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array(), $total_types = array() ) {
 		$readonly = false;
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
+		$player = new SP_Player( $id );
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
@@ -179,6 +170,8 @@ class SP_Meta_Box_Player_Statistics {
 				</tfoot>
 				<tbody>
 					<?php
+					$additional_stats = get_post_meta( $id , 'sp_additional_statistics' , true );
+					//var_dump( $additional_stats );
 					$i = 0;
 					foreach ( $data as $div_id => $div_stats ):
 						if ( $div_id === 'statistics' ) continue;
@@ -267,6 +260,57 @@ class SP_Meta_Box_Player_Statistics {
 						</tr>
 						<?php
 						$i++;
+						//Check if there was a mid-season transfer and show the statistics for each team separately
+						if ( isset( $additional_stats[ $league_id ][ $div_id ] ) ) {
+							foreach ( $additional_stats[ $league_id ][ $div_id ] as $key => $teamstats ) :
+								//Get the stats for the team
+								list( $columns_add, $data_add, $placeholders_add, $merged, $seasons_teams, $has_checkboxes, $formats_add, $total_types ) = $player->data( $league_id, $div_id, $key, true, true );
+								var_dump($data_add);
+						 ?>
+							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+							<td>
+								<label>
+									&Gt;
+								</label>
+								<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="<?php echo $league_id; ?>">
+								<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="<?php echo $div_id; ?>">
+								<input id="teamHidden" type="hidden" name="sp_add_team[]" value="<?php echo $key; ?>">
+							</td>
+							<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
+							<td>
+							<?php echo get_the_title( $key );?>
+							</td>
+							<?php endif ?>
+							<?php foreach ( $columns_add as $column => $label ): if ( $column == 'team' ) continue; ?>
+							<td><?php
+									$value = sp_array_value( sp_array_value( $data_add, $div_id, array() ), $column, null );
+									$placeholder = sp_array_value( sp_array_value( $placeholders_add, $div_id, array() ), $column, 0 );
+
+									// Convert value and placeholder to time format
+									if ( 'time' === sp_array_value( $formats_add, $column, 'number' ) ) {
+										$timeval = sp_time_value( $value );
+										$placeholder = sp_time_value( $placeholder );
+									}
+
+									if ( $readonly ) {
+										echo $timeval ? $timeval : $placeholder;
+									} else {
+										if ( 'time' === sp_array_value( $formats_add, $column, 'number' ) ) {
+											echo '<input class="sp-convert-time-input" type="text" name="sp_additional_times[' . $column . '][]" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+											echo '<input class="sp-convert-time-output" type="hidden" name="sp_add_columns[' . $column . '][]" value="' . esc_attr( $value ) . '" />';
+										} else {
+											echo '<input type="text" name="sp_add_columns[' . $column . '][]" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+										}
+									}
+								?></td>
+							<?php endforeach; ?>
+							<td class="sp-actions-column">
+								<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="color:red;"></a>
+							</td>
+							</tr>
+						<?php
+							endforeach;
+						}
 					endforeach;
 					?>
 					<tr class="empty-row screen-reader-text">
@@ -274,8 +318,8 @@ class SP_Meta_Box_Player_Statistics {
 								<label>
 									&Gt;
 								</label>
-								<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="-1">
-								<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="-1">
+								<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="-99">
+								<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="-99">
 								<input id="teamHidden" type="hidden" name="sp_add_team[]" value="-1">
 							</td>
 							<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
@@ -312,7 +356,6 @@ class SP_Meta_Box_Player_Statistics {
 								<?php endif; ?>
 							<?php endif; ?>
 							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
-							$team_id = 0; //temporary
 								?>
 								<td><?php
 										if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
