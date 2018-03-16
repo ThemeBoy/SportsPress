@@ -31,7 +31,6 @@ class SportsPress_Player_Transfers {
 
 		// Hooks
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handlers' ) );
-		//add_action( 'sp_season_edit_form_fields', array( $this, 'add_date_fields' ), 10, 1  );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ), 9 );
@@ -110,30 +109,6 @@ class SportsPress_Player_Transfers {
 		    wp_enqueue_style( 'jquery-ui-style' , '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css' ); 
 			wp_enqueue_style( 'sportspress-admin-datepicker-styles', SP()->plugin_url() . '/assets/css/datepicker.css', array( 'jquery-ui-style' ), SP_VERSION );
 		}
-	}
-	
-	/**
-	 * Add Date fields to sp_season taxonomy.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function add_date_fields( $term ) {
-		$t_id = $term->term_id;
-		$term_meta = get_option( "taxonomy_$t_id" ); ?>
-		<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_meta[date_from]"><?php _e( 'Date From', 'sportspress' ); ?></label></th>
-			<td>
-				<input type="date" name="term_meta[date_from]" value="<?php echo esc_attr( $term_meta['date_from'] ) ? esc_attr( $term_meta['date_from'] ) : ''; ?>" />
-			</td>
-		</tr>
-		<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_meta[date_to]"><?php _e( 'Date To', 'sportspress' ); ?></label></th>
-			<td>
-				<input type="date" name="term_meta[date_to]" value="<?php echo esc_attr( $term_meta['date_to'] ) ? esc_attr( $term_meta['date_to'] ) : ''; ?>" />
-			</td>
-		</tr>
-		<?php
 	}
 	
 }
