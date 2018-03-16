@@ -761,9 +761,7 @@ class SP_Player extends SP_Custom_Post {
 			$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
 			//var_dump($stats);
 		}
-		if ( $additional_stats ) {
-			$stats_additional = (array)get_post_meta( $this->ID, 'sp_additional_statistics', true );
-		}
+
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
 		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 		$manual_columns = 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ? true : false;
@@ -885,7 +883,7 @@ class SP_Player extends SP_Custom_Post {
 
 		// Get all seasons populated with data where available
 		$data = sp_array_combine( $div_ids, sp_array_value( $stats, $league_id, array() ) );
-var_dump($data);
+
 		// Get equations from statistic variables
 		$equations = sp_get_var_equations( 'sp_statistic' );
 

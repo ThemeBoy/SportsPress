@@ -171,7 +171,6 @@ class SP_Meta_Box_Player_Statistics {
 				<tbody>
 					<?php
 					$additional_stats = get_post_meta( $id , 'sp_additional_statistics' , true );
-					//var_dump( $additional_stats );
 					$i = 0;
 					foreach ( $data as $div_id => $div_stats ):
 						if ( $div_id === 'statistics' ) continue;
@@ -229,6 +228,17 @@ class SP_Meta_Box_Player_Statistics {
 									</td>
 								<?php endif; ?>
 							<?php endif; ?>
+							<?php //Check to see if a mid-season transfer was set and the previous team is declared
+							if ( isset( $additional_stats[ $league_id ][ $div_id ] ) && $value != '-1' ) {
+								//Store previous values
+								$old_columns = $columns;
+								$old_data = $data;
+								$old_placeholders = $placeholders;
+								$old_formats = $formats;
+								//Assign new values based on league_id, season_id (div_id) and team_id (value)
+								list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data_season_team( $league_id, $div_id, $value, false, true );
+							}
+								?>
 							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
 								?>
 								<td><?php
@@ -253,6 +263,14 @@ class SP_Meta_Box_Player_Statistics {
 									}
 								?></td>
 							<?php endforeach; ?>
+							<?php if ( isset( $additional_stats[ $league_id ][ $div_id ] ) && $value != '-1' ) {
+								//Restore original values
+								$columns = $old_columns;
+								$data = $old_data;
+								$placeholders = $old_placeholders;
+								$formats = $old_formats;
+							}
+							?>
 							<td class="sp-actions-column">
 								<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="display:none; color:red;"></a>
 								<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row" data-league_id="<?php echo $league_id; ?>" data-season_id="<?php echo $div_id; ?>"></a>
@@ -264,8 +282,7 @@ class SP_Meta_Box_Player_Statistics {
 						if ( isset( $additional_stats[ $league_id ][ $div_id ] ) ) {
 							foreach ( $additional_stats[ $league_id ][ $div_id ] as $key => $teamstats ) :
 								//Get the stats for the team
-								list( $columns_add, $data_add, $placeholders_add, $merged, $seasons_teams, $has_checkboxes, $formats_add, $total_types ) = $player->data( $league_id, $div_id, $key, true, true );
-								var_dump($data_add);
+								list( $columns_add, $data_add, $placeholders_add, $merged, $seasons_teams, $has_checkboxes, $formats_add, $total_types ) = $player->data_season_team( $league_id, $div_id, $key, true, true );
 						 ?>
 							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
@@ -309,6 +326,7 @@ class SP_Meta_Box_Player_Statistics {
 							</td>
 							</tr>
 						<?php
+							$i++;
 							endforeach;
 						}
 					endforeach;
