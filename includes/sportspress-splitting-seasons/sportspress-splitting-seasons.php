@@ -30,7 +30,7 @@ class SportsPress_Splitting_Seasons {
 		$this->define_constants();
 
 		// Hooks
-		//add_filter( 'sportspress_event_templates', array( $this, 'templates' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 	    //add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		//add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 	}
@@ -47,6 +47,17 @@ class SportsPress_Splitting_Seasons {
 
 		if ( !defined( 'SP_SPLITTING_SEASONS_DIR' ) )
 			define( 'SP_SPLITTING_SEASONS_DIR', plugin_dir_path( __FILE__ ) );
+	}
+	
+	/**
+	 * Enqueue scripts
+	 */
+	public function admin_enqueue_scripts() {
+		$screen = get_current_screen();
+
+		if ( in_array( $screen->id, array( 'sp_player', 'edit-sp_player' ) ) ) {
+		    wp_enqueue_script( 'sportspress-splitting-seasons', SP_SPLITTING_SEASONS_URL .'js/sportspress-splitting-seasons.js', array( 'jquery' ), SP_SPLITTING_SEASONS_VERSION, true );
+		}
 	}
 
 }

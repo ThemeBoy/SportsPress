@@ -562,43 +562,6 @@ jQuery(document).ready(function($){
 		return false;
 	});
 	
-	// Split Statistic row
-	$(".sp-data-table").on("click", ".sp-add-row", function() {
-		var league_id = $(this).data('league_id');
-		var season_id = $(this).data('season_id');
-		$self = $(this);
-		$table = $self.closest(".sp-data-table");
-			$tr = $self.closest("tr");
-			$row = $table.find(".empty-row.screen-reader-text").clone();
-			$row.addClass("splitted-row");
-			$row.removeClass("empty-row screen-reader-text");
-			//hide add sign
-			$row.closest("tr").find(".sp-add-row").css( "display", "none" );
-			//display delete sign
-			$row.closest("tr").find(".sp-delete-row").css( "display", "block" );
-			//add league_id and season_id variables
-			$row.closest("tr").find('#leagueHidden').val(league_id);
-			$row.closest("tr").find('#seasonHidden').val(season_id);
-			//add the new raw first
-			$row.insertAfter($tr);
-			//change the team_id on changing
-			$('select[id=additional_team]').on('change', function() {
-				$(this).closest("tr").find('#teamHidden').val( this.value );
-			});
-		return false;
-	});
-	
-	// Delete Splitted row
-	$(".sp-data-table").on("click", ".sp-delete-row", function() {
-		$self = $(this);
-		$self.closest("tr").css("background-color", "#f99").fadeOut(400, function() {
-			$table = $self.closest(".sp-data-table");
-			$(this).remove();
-			//$table.trigger("updatePostCount");
-		});
-		return false;
-	});
-
 	// Enable or disable importer inputs based on column label
 	$(".sp-import-table").on("change", "select", function() {
 		$self = $(this);
