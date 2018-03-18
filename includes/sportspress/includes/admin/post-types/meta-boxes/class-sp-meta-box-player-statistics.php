@@ -84,30 +84,8 @@ class SP_Meta_Box_Player_Statistics {
 		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
 		update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
 		
-		$old = get_post_meta($post_id, 'sp_additional_statistics', true);
-		$new = array();
+		do_action( 'sportspress_save_meta_player_statistics', $post_id, $_POST );
 		
-		$leagues = $_POST['sp_add_league'];
-		$seasons = $_POST['sp_add_season'];
-		$teams = $_POST['sp_add_team'];
-		$columns = $_POST['sp_add_columns'];
-		$labels = array_keys($columns);
-		
-		$i = 0;
-		foreach ( $leagues as $league ) {
-			if ( $league != '-99' ) {
-				foreach ( $labels as $label ) {
-					$new[$league][$seasons[$i]][$teams[$i]][$label] = $columns[$label][$i];
-				}
-			}
-			$i++;
-		}
-		if ( !empty( $new ) && $new != $old ) {
-			update_post_meta( $post_id, 'sp_additional_statistics', $new );
-		}
-		elseif ( empty($new) && $old ) {
-			delete_post_meta( $post_id, 'sp_additional_statistics', $old );
-		}
 	}
 
 	/**
@@ -270,11 +248,14 @@ class SP_Meta_Box_Player_Statistics {
 								$placeholders = $old_placeholders;
 								$formats = $old_formats;
 							}
+							// Avoid showing + sign on Career Total rows
+							if ( $league_id > 0 ) {
 							?>
 							<td class="sp-actions-column">
 								<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="display:none; color:red;"></a>
 								<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row" data-league_id="<?php echo $league_id; ?>" data-season_id="<?php echo $div_id; ?>"></a>
 							</td>
+							<?php } ?>
 						</tr>
 						<?php
 						$i++;

@@ -31,8 +31,7 @@ class SportsPress_Splitting_Seasons {
 
 		// Hooks
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-	    //add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
-		//add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
+		add_action( 'sportspress_save_meta_player_statistics', array( $this, 'save_additional_statistics' ), 10, 2 );
 	}
 
 	/**
@@ -57,6 +56,36 @@ class SportsPress_Splitting_Seasons {
 
 		if ( in_array( $screen->id, array( 'sp_player', 'edit-sp_player' ) ) ) {
 		    wp_enqueue_script( 'sportspress-splitting-seasons', SP_SPLITTING_SEASONS_URL .'js/sportspress-splitting-seasons.js', array( 'jquery' ), SP_SPLITTING_SEASONS_VERSION, true );
+		}
+	}
+	
+	/**
+	 * Save Additional Statistics
+	 */
+	public function save_additional_statistics( $post_id, $post_data ) {
+		$old = get_post_meta($post_id, 'sp_additional_statistics', true);
+		$new = array();
+		
+		$leagues = $post_data['sp_add_league'];
+		$seasons = $post_data['sp_add_season'];
+		$teams = $post_data['sp_add_team'];
+		$columns = $post_data['sp_add_columns'];
+		$labels = array_keys($columns);
+		
+		$i = 0;
+		foreach ( $leagues as $league ) {
+			if ( $league != '-99' ) {
+				foreach ( $labels as $label ) {
+					$new[$league][$seasons[$i]][$teams[$i]][$label] = $columns[$label][$i];
+				}
+			}
+			$i++;
+		}
+		if ( !empty( $new ) && $new != $old ) {
+			update_post_meta( $post_id, 'sp_additional_statistics', $new );
+		}
+		elseif ( empty($new) && $old ) {
+			delete_post_meta( $post_id, 'sp_additional_statistics', $old );
 		}
 	}
 
