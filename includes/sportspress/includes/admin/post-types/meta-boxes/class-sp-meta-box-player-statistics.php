@@ -311,65 +311,8 @@ class SP_Meta_Box_Player_Statistics {
 							endforeach;
 						}
 					endforeach;
+					do_action( 'sportspress_empty_row_player_statistics', $team_select, $league_id, $div_id, $columns, $teams, $formats );
 					?>
-					<tr class="empty-row screen-reader-text">
-							<td>
-								<label>
-									&Gt;
-								</label>
-								<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="-99">
-								<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="-99">
-								<input id="teamHidden" type="hidden" name="sp_add_team[]" value="-1">
-							</td>
-							<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
-									<td>
-										<?php
-										$args = array(
-											'post_type' => 'sp_team',
-											//'name' => 'sp_additional_team[-99][-99][]',
-											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
-										    'sort_order'   => 'ASC',
-										    'sort_column'  => 'menu_order',
-											'selected' => null,
-											'values' => 'ID',
-											'id' => 'additional_team',
-											'include' => $teams,
-											'tax_query' => array(
-												'relation' => 'AND',
-												array(
-													'taxonomy' => 'sp_league',
-													'terms' => $league_id,
-													'field' => 'term_id',
-												),
-												array(
-													'taxonomy' => 'sp_season',
-													'terms' => $div_id,
-													'field' => 'term_id',
-												),
-											),
-										);
-										if ( ! sp_dropdown_pages( $args ) ):
-											_e( '&mdash; None &mdash;', 'sportspress' );
-										?>
-									</td>
-								<?php endif; ?>
-							<?php endif; ?>
-							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
-								?>
-								<td><?php
-										if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
-											echo '<input class="sp-convert-time-input" type="text" name="sp_additional_times[' . $column . '][]" placeholder="0" />';
-											echo '<input class="sp-convert-time-output" type="hidden" name="sp_add_columns[' . $column . '][]" />';
-										} else {
-											echo '<input type="text" name="sp_add_columns[' . $column . '][]" placeholder="0" />';
-										}
-								?></td>
-							<?php endforeach; ?>
-							<td class="sp-actions-column">
-								<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="display:none; color:red;"></a>
-								<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
-							</td>
-						</tr>
 				</tbody>
 			</table>
 		</div>
