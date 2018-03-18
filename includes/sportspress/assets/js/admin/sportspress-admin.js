@@ -561,7 +561,7 @@ jQuery(document).ready(function($){
 		$table.trigger("updatePostCount");
 		return false;
 	});
-	
+
 	// Enable or disable importer inputs based on column label
 	$(".sp-import-table").on("change", "select", function() {
 		$self = $(this);
