@@ -127,11 +127,11 @@ class SportsPress_Splitting_Seasons {
 													'terms' => $league_id,
 													'field' => 'term_id',
 												),
-												array(
+												/*array(
 													'taxonomy' => 'sp_season',
 													'terms' => $div_id,
 													'field' => 'term_id',
-												),
+												),*/
 											),
 										);
 										if ( ! sp_dropdown_pages( $args ) ):
