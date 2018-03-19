@@ -33,8 +33,7 @@ class SportsPress_Splitting_Seasons {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'sportspress_save_meta_player_statistics', array( $this, 'save_additional_statistics' ), 10, 2 );
 		add_action( 'sportspress_empty_row_player_statistics', array( $this, 'add_empty_row' ), 10, 6 );
-		add_action( 'sportspress_before_player_statistics_columns', array( $this, 'before_player_statistics_columns' ), 10, 9 );
-		add_action( 'sportspress_after_player_statistics_columns', array( $this, 'after_player_statistics_columns' ), 10, 9 );
+		add_action( 'sportspress_after_player_statistics_columns', array( $this, 'after_player_statistics_columns' ), 10, 2 );
 		add_action( 'sportspress_additional_statistics_rows', array( $this, 'add_additional_rows' ), 10, 7 );
 	}
 
@@ -159,33 +158,11 @@ class SportsPress_Splitting_Seasons {
 						<?php
 	}
 	
-	/**
-	 * Add statistics per team
-	 */
-	public function before_player_statistics_columns( $player, $additional_stats, $league_id, $div_id, $value, $columns, $data, $placeholders, $formats ) {
-		//Check to see if a mid-season transfer was set and the previous team is declared
-		if ( isset( $additional_stats[ $league_id ][ $div_id ] ) && $value != '-1' ) {
-			//Store previous values
-			$old_columns = $columns;
-			$old_data = $data;
-			$old_placeholders = $placeholders;
-			$old_formats = $formats;
-			//Assign new values based on league_id, season_id (div_id) and team_id (value)
-			list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data_season_team( $league_id, $div_id, $value, false, true );
-		}
-	}
 	
 	/**
 	 * Add statistics per team
 	 */
-	public function after_player_statistics_columns( $player, $additional_stats, $league_id, $div_id, $value, $old_columns, $old_data, $old_placeholders, $old_formats ) {
-		if ( isset( $additional_stats[ $league_id ][ $div_id ] ) && $value != '-1' ) {
-			//Restore original values
-			$columns = $old_columns;
-			$data = $old_data;
-			$placeholders = $old_placeholders;
-			$formats = $old_formats;
-		}
+	public function after_player_statistics_columns( $league_id, $div_id ) {
 		// Avoid showing + sign on Career Total rows
 		if ( $league_id > 0 ) {  ?>
 		<td class="sp-actions-column">

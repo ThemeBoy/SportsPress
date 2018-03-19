@@ -215,8 +215,15 @@ class SP_Meta_Box_Player_Statistics {
 									</td>
 								<?php endif; ?>
 							<?php endif; ?>
-							<?php if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
-								do_action( 'sportspress_before_player_statistics_columns', $player, $additional_stats, $league_id, $div_id, $value, $columns, $data, $placeholders, $formats ); 
+							<?php //Check to see if a mid-season transfer was set and the previous team is declared
+							if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' && isset( $additional_stats[ $league_id ][ $div_id ] ) && $value != '-1' ) {
+								//Store previous values
+								$old_columns = $columns;
+								$old_data = $data;
+								$old_placeholders = $placeholders;
+								$old_formats = $formats;
+								//Assign new values based on league_id, season_id (div_id) and team_id (value)
+								list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data_season_team( $league_id, $div_id, $value, false, true );
 							} ?>
 							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
 								?>
@@ -243,7 +250,14 @@ class SP_Meta_Box_Player_Statistics {
 								?></td>
 							<?php endforeach;
 							if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
-								do_action( 'sportspress_after_player_statistics_columns', $player, $additional_stats, $league_id, $div_id, $value, $old_columns, $old_data, $old_placeholders, $old_formats ); 
+								if ( isset( $additional_stats[ $league_id ][ $div_id ] ) && $value != '-1' ) {
+									//Restore original values
+									$columns = $old_columns;
+									$data = $old_data;
+									$placeholders = $old_placeholders;
+									$formats = $old_formats;
+								}
+								do_action( 'sportspress_after_player_statistics_columns', $league_id, $div_id ); 
 							}?>
 						</tr>
 						<?php
