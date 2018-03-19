@@ -83,8 +83,9 @@ class SP_Meta_Box_Player_Statistics {
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
 		update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
-		
-		do_action( 'sportspress_save_meta_player_statistics', $post_id, $_POST );
+		if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
+			do_action( 'sportspress_save_meta_player_statistics', $post_id, $_POST );
+		}
 		
 	}
 
@@ -94,7 +95,16 @@ class SP_Meta_Box_Player_Statistics {
 	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array(), $total_types = array() ) {
 		$readonly = false;
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
-		$player = new SP_Player( $id );
+		//For use with Splitting Seasons Module - START
+		if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
+			$player = new SP_Player( $id );
+			$additional_stats = get_post_meta( $id , 'sp_additional_statistics' , true );
+			$old_columns = null;
+			$old_data = null;
+			$old_placeholders = null;
+			$old_formats = null;
+		}
+		//END
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
@@ -148,7 +158,6 @@ class SP_Meta_Box_Player_Statistics {
 				</tfoot>
 				<tbody>
 					<?php
-					$additional_stats = get_post_meta( $id , 'sp_additional_statistics' , true );
 					$i = 0;
 					foreach ( $data as $div_id => $div_stats ):
 						if ( $div_id === 'statistics' ) continue;
@@ -206,17 +215,9 @@ class SP_Meta_Box_Player_Statistics {
 									</td>
 								<?php endif; ?>
 							<?php endif; ?>
-							<?php //Check to see if a mid-season transfer was set and the previous team is declared
-							if ( isset( $additional_stats[ $league_id ][ $div_id ] ) && $value != '-1' ) {
-								//Store previous values
-								$old_columns = $columns;
-								$old_data = $data;
-								$old_placeholders = $placeholders;
-								$old_formats = $formats;
-								//Assign new values based on league_id, season_id (div_id) and team_id (value)
-								list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data_season_team( $league_id, $div_id, $value, false, true );
-							}
-								?>
+							<?php if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
+								do_action( 'sportspress_before_player_statistics_columns', $player, $additional_stats, $league_id, $div_id, $value, $columns, $data, $placeholders, $formats ); 
+							} ?>
 							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
 								?>
 								<td><?php
@@ -240,78 +241,20 @@ class SP_Meta_Box_Player_Statistics {
 										}
 									}
 								?></td>
-							<?php endforeach; ?>
-							<?php if ( isset( $additional_stats[ $league_id ][ $div_id ] ) && $value != '-1' ) {
-								//Restore original values
-								$columns = $old_columns;
-								$data = $old_data;
-								$placeholders = $old_placeholders;
-								$formats = $old_formats;
-							}
-							// Avoid showing + sign on Career Total rows
-							if ( $league_id > 0 ) {
-							?>
-							<td class="sp-actions-column">
-								<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="display:none; color:red;"></a>
-								<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row" data-league_id="<?php echo $league_id; ?>" data-season_id="<?php echo $div_id; ?>"></a>
-							</td>
-							<?php } ?>
+							<?php endforeach;
+							if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
+								do_action( 'sportspress_after_player_statistics_columns', $player, $additional_stats, $league_id, $div_id, $value, $old_columns, $old_data, $old_placeholders, $old_formats ); 
+							}?>
 						</tr>
 						<?php
 						$i++;
-						//Check if there was a mid-season transfer and show the statistics for each team separately
-						if ( isset( $additional_stats[ $league_id ][ $div_id ] ) ) {
-							foreach ( $additional_stats[ $league_id ][ $div_id ] as $key => $teamstats ) :
-								//Get the stats for the team
-								list( $columns_add, $data_add, $placeholders_add, $merged, $seasons_teams, $has_checkboxes, $formats_add, $total_types ) = $player->data_season_team( $league_id, $div_id, $key, true, true );
-						 ?>
-							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-							<td>
-								<label>
-									&Gt;
-								</label>
-								<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="<?php echo $league_id; ?>">
-								<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="<?php echo $div_id; ?>">
-								<input id="teamHidden" type="hidden" name="sp_add_team[]" value="<?php echo $key; ?>">
-							</td>
-							<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
-							<td>
-							<?php echo get_the_title( $key );?>
-							</td>
-							<?php endif ?>
-							<?php foreach ( $columns_add as $column => $label ): if ( $column == 'team' ) continue; ?>
-							<td><?php
-									$value = sp_array_value( sp_array_value( $data_add, $div_id, array() ), $column, null );
-									$placeholder = sp_array_value( sp_array_value( $placeholders_add, $div_id, array() ), $column, 0 );
-
-									// Convert value and placeholder to time format
-									if ( 'time' === sp_array_value( $formats_add, $column, 'number' ) ) {
-										$timeval = sp_time_value( $value );
-										$placeholder = sp_time_value( $placeholder );
-									}
-
-									if ( $readonly ) {
-										echo $timeval ? $timeval : $placeholder;
-									} else {
-										if ( 'time' === sp_array_value( $formats_add, $column, 'number' ) ) {
-											echo '<input class="sp-convert-time-input" type="text" name="sp_additional_times[' . $column . '][]" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
-											echo '<input class="sp-convert-time-output" type="hidden" name="sp_add_columns[' . $column . '][]" value="' . esc_attr( $value ) . '" />';
-										} else {
-											echo '<input type="text" name="sp_add_columns[' . $column . '][]" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
-										}
-									}
-								?></td>
-							<?php endforeach; ?>
-							<td class="sp-actions-column">
-								<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="color:red;"></a>
-							</td>
-							</tr>
-						<?php
-							$i++;
-							endforeach;
+						if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
+							do_action( 'sportspress_additional_statistics_rows', $player, $additional_stats, $league_id, $div_id, $i, $team_select, $readonly );
 						}
 					endforeach;
-					do_action( 'sportspress_empty_row_player_statistics', $team_select, $league_id, $div_id, $columns, $teams, $formats );
+					if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
+						do_action( 'sportspress_empty_row_player_statistics', $team_select, $league_id, $div_id, $columns, $teams, $formats );
+					}
 					?>
 				</tbody>
 			</table>
