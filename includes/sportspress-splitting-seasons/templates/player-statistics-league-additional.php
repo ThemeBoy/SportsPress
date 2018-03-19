@@ -50,7 +50,7 @@ foreach( $data as $season_id => $row ):
 		//If additional stats are present then recreate the current season rows
 		if ( isset ( $additional_stats[$league_id][$season_id] ) ){
 			//Recalculate the original season row
-			$stats = $player2->data_season_team( $league_id, $season_id, $teams[ sp_array_value( $row, 'team', '-1' ) ] );
+			$stats = $player2->data_season_team( $league_id, $season_id, $teams[ strip_tags( sp_array_value( $row, 'team', '-1' ) ) ] );
 			$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 			foreach( $labels as $key => $value ):
 				if ( isset( $hide_teams ) && 'team' == $key )
