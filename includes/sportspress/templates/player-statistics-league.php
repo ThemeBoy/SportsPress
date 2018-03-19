@@ -7,20 +7,6 @@
  * @package 	SportsPress/Admin/Meta_Boxes
  * @version   2.5
  */
- 
- if ( ! isset( $id ) )
-	$id = get_the_ID();
-//Create new Player class instance to use for new data
-$player2 = new SP_Player( $id );
-//Get team_ids for use during iterations
-$team_ids = array_merge( $player2->current_teams(), $player2->past_teams() );
-$teams = get_posts( array( 'post_type' => 'sp_team', 'include' => $team_ids ) );
-foreach ( $teams as $team ) {
-	$teams[ $team->post_title ] = $team->ID;
-}
-
-// Check if there are additional stats for our player
-$additional_stats = get_post_meta( $id , 'sp_additional_statistics' , true );
 
 // The first row should be column labels
 $labels = $data[0];
@@ -47,34 +33,7 @@ $output .= '</tr>' . '</thead>' . '<tbody>';
 $i = 0;
 
 foreach( $data as $season_id => $row ):
-		//If additional stats are present then recreate the current season rows
-		if ( isset ( $additional_stats[$league_id][$season_id] ) ){
-			//Recalculate the original season row
-			$stats = $player2->data_season_team( $league_id, $season_id, $teams[ sp_array_value( $row, 'team', '-1' ) ] );
-			$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
-			foreach( $labels as $key => $value ):
-				if ( isset( $hide_teams ) && 'team' == $key )
-					continue;
-				$output .= '<td class="data-' . $key . ( -1 === $season_id ? ' sp-highlight' : '' ) . '">' . sp_array_value( $stats[ $season_id ], $key, '' ) . '</td>';
-			endforeach;
-			$output .= '</tr>';
-			$i++;
-			//Get the additional teams for the current season row
-			$additional_teams = array_keys( $additional_stats[ $league_id ][ $season_id ] );
-			//Create new season row for each team
-			foreach ( $additional_teams as $additional_team ) {
-				$stats = $player2->data_season_team( $league_id, $season_id, $additional_team );
-				$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
-				foreach( $labels as $key => $value ):
-					if ( isset( $hide_teams ) && 'team' == $key )
-						continue;
-					$output .= '<td class="data-' . $key . ( -1 === $season_id ? ' sp-highlight' : '' ) . '">' . sp_array_value( $stats[ $season_id ], $key, '' ) . '</td>';
-				endforeach;
-				$output .= '</tr>';
-				$i++;
-			}
-			continue;
-		}
+
 	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 	foreach( $labels as $key => $value ):

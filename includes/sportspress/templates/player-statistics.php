@@ -59,12 +59,16 @@ if ( is_array( $leagues ) ):
 				'data' => $player->data( $league->term_id, false, $section_id ),
 				'caption' => $caption,
 				'scrollable' => $scrollable,
-				'league_id' => $league->term_id,
 			);
 			if ( ! $show_teams ) {
 				$args['hide_teams'] = true;
 			}
-			sp_get_template( 'player-statistics-league.php', $args );
+			if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
+				$args['league_id'] = $league->term_id;
+				sp_get_template( 'player-statistics-league-additional.php', $args, '', SP_SPLITTING_SEASONS_DIR . 'templates/' );
+			} else {
+				sp_get_template( 'player-statistics-league.php', $args );
+			}
 		endforeach;
 
 		if ( $show_career_totals ) {
