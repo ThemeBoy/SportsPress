@@ -9,6 +9,8 @@ jQuery(document).ready(function($){
 			$row = $table.find(".empty-row.screen-reader-text").clone();
 			$row.addClass("splitted-row");
 			$row.removeClass("empty-row screen-reader-text");
+			//enable jquery date
+			$row.find(".date").addClass("sp-datepicker3");
 			//hide add sign
 			$row.closest("tr").find(".sp-add-row").css( "display", "none" );
 			//display delete sign
@@ -21,6 +23,9 @@ jQuery(document).ready(function($){
 			//change the team_id on changing
 			$('select[id=additional_team]').on('change', function() {
 				$(this).closest("tr").find('#teamHidden').val( this.value );
+			});
+			$(".sp-datepicker3").datepicker({
+				dateFormat : "yy-mm-dd"
 			});
 		return false;
 	});

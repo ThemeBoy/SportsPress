@@ -59,6 +59,8 @@ class SportsPress_Splitting_Seasons {
 
 		if ( in_array( $screen->id, array( 'sp_player', 'edit-sp_player' ) ) ) {
 		    wp_enqueue_script( 'sportspress-splitting-seasons', SP_SPLITTING_SEASONS_URL .'js/sportspress-splitting-seasons.js', array( 'jquery' ), SP_SPLITTING_SEASONS_VERSION, true );
+			wp_enqueue_style( 'jquery-ui-style' , '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css' ); 
+			wp_enqueue_style( 'sportspress-admin-datepicker-styles', SP()->plugin_url() . '/assets/css/datepicker.css', array( 'jquery-ui-style' ), SP_VERSION );
 		}
 	}
 	
@@ -72,12 +74,14 @@ class SportsPress_Splitting_Seasons {
 		$leagues = $post_data['sp_add_league'];
 		$seasons = $post_data['sp_add_season'];
 		$teams = $post_data['sp_add_team'];
+		$transdatefrom = $post_data['sp_transdatefrom'];
 		$columns = $post_data['sp_add_columns'];
 		$labels = array_keys($columns);
 		
 		$i = 0;
 		foreach ( $leagues as $league ) {
 			if ( $league != '-99' ) {
+				$new[$league][$seasons[$i]][$teams[$i]]['transdatefrom'] = $transdatefrom[$i];
 				foreach ( $labels as $label ) {
 					$new[$league][$seasons[$i]][$teams[$i]][$label] = $columns[$label][$i];
 				}
@@ -99,9 +103,10 @@ class SportsPress_Splitting_Seasons {
 		?>
 		<tr class="empty-row screen-reader-text">
 							<td>
-								<label>
+								<!--<label>
 									&Gt;
-								</label>
+								</label>-->
+								<input type="text" class="date"  name="sp_transdatefrom[]" placeholder="Date from"/>
 								<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="-99">
 								<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="-99">
 								<input id="teamHidden" type="hidden" name="sp_add_team[]" value="-1">
@@ -179,12 +184,13 @@ class SportsPress_Splitting_Seasons {
 		if ( isset( $additional_stats[ $league_id ][ $div_id ] ) ) {
 			foreach ( $additional_stats[ $league_id ][ $div_id ] as $key => $teamstats ) :
 				//Get the stats for the team
-				list( $columns_add, $data_add, $placeholders_add, $merged, $seasons_teams, $has_checkboxes, $formats_add, $total_types ) = $player->data_season_team( $league_id, $div_id, $key, true, true );
+				$datefrom = $teamstats[ 'transdatefrom' ];
+				list( $columns_add, $data_add, $placeholders_add, $merged, $seasons_teams, $has_checkboxes, $formats_add, $total_types ) = $player->data_season_team( $league_id, $div_id, $key, true, true, $datefrom );
 		 ?>
 			<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 			<td>
-				<label>
-					&Gt;
+				<label title="Transfered from date">
+					<?php echo $teamstats[ 'transdatefrom' ]; ?> &Gt;
 				</label>
 				<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="<?php echo $league_id; ?>">
 				<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="<?php echo $div_id; ?>">

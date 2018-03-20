@@ -749,17 +749,15 @@ class SP_Player extends SP_Custom_Post {
 	 * @param bool $additional_stats
 	 * @return array
 	 */
-	public function data_season_team( $league_id, $season_id, $teamid = -1, $additional_stats = false, $admin = false, $section = -1 ) {
+	public function data_season_team( $league_id, $season_id, $teamid = -1, $additional_stats = false, $admin = false, $datefrom = null, $dateto = null, $section = -1 ) {
 
 		//$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		if ( $additional_stats ) {
 			$stats = (array)get_post_meta( $this->ID, 'sp_additional_statistics', true );
-			//var_dump($stats);
 			$stats[$league_id][$season_id] = $stats[$league_id][$season_id][ $teamid ];
 		}else{
 			$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
-			//var_dump($stats);
 		}
 
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
@@ -969,6 +967,31 @@ class SP_Player extends SP_Custom_Post {
 					'taxonomy' => 'sp_season',
 					'field' => 'term_id',
 					'terms' => $div_id
+				);
+			endif;
+			
+			if ( $datefrom ):
+				$args['date_query'] = array(
+					array(
+					'after' => $datefrom
+					)
+				);
+			endif;
+			
+			if ( $dateto ):
+				$args['date_query'] = array(
+					array(
+					'before' => $dateto
+					)
+				);
+			endif;
+			
+			if ( $datefrom && $dateto ):
+				$args['date_query'] = array(
+					array(
+					'after' => $datefrom ,
+					'before' => $datefrom
+					)
 				);
 			endif;
 
