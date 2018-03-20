@@ -1,119 +1,43 @@
 <?php
 /**
- * Player Class
+ * SportsPress Player Additional Functions
  *
- * The SportsPress player class handles individual player data.
- *
- * @class 		SP_Player
- * @version   2.5
- * @package		SportsPress/Classes
- * @category	Class
- * @author 		ThemeBoy
+ * @author 		Savvas
+ * @category 	Admin
+ * @package 	SportsPress Splitting Seasons
+ * @version     2.6.0
  */
-class SP_Player extends SP_Custom_Post {
 
-	/**
-	 * Returns positions
-	 *
-	 * @access public
-	 * @return array
-	 */
-	public function positions() {
-		return get_the_terms( $this->ID, 'sp_position' );
-	}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-	/**
-	 * Returns leagues
-	 *
-	 * @access public
-	 * @return array
-	 */
-	public function leagues() {
-		return get_the_terms( $this->ID, 'sp_league' );
-	}
+if ( ! class_exists( 'SP_Player_Additional' ) ) :
 
-	/**
-	 * Returns seasons
-	 *
-	 * @access public
-	 * @return array
-	 */
-	public function seasons() {
-		return get_the_terms( $this->ID, 'sp_season' );
-	}
-
-	/**
-	 * Returns current teams
-	 *
-	 * @access public
-	 * @return array
-	 */
-	public function current_teams() {
-		return get_post_meta( $this->ID, 'sp_current_team', false );
-	}
-
-	/**
-	 * Returns past teams
-	 *
-	 * @access public
-	 * @return array
-	 */
-	public function past_teams() {
-		return get_post_meta( $this->ID, 'sp_past_team', false );
-	}
-
-	/**
-	 * Returns nationalities
-	 *
-	 * @access public
-	 * @return array
-	 */
-	public function nationalities() {
-		$nationalities = get_post_meta( $this->ID, 'sp_nationality', false );
-		if ( empty ( $nationalities ) ) return array();
-		foreach ( $nationalities as $nationality ):
-			if ( 2 == strlen( $nationality ) ):
-				$legacy = SP()->countries->legacy;
-				$nationality = strtolower( $nationality );
-				$nationality = sp_array_value( $legacy, $nationality, null );
-			endif;
-		endforeach;
-		return $nationalities;
-	}
-
-	/**
-	 * Returns formatted player metrics
-	 *
-	 * @access public
-	 * @return array
-	 */
-	public function metrics( $neg = null ) {
-		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
-		$metric_labels = (array)sp_get_var_labels( 'sp_metric', $neg, false );
-		$data = array();
-		
-		foreach ( $metric_labels as $key => $value ):
-			$metric = sp_array_value( $metrics, $key, null );
-			if ( $metric == null )
-				continue;
-			$data[ $value ] = sp_array_value( $metrics, $key, '&nbsp;' );
-		endforeach;
-		return $data;
-	}
-
-	/**
-	 * Returns formatted data
+/**
+ * SP_Player_Additional
+ */
+class SP_Player_Additional extends SP_Player {
+/**
+	 * Returns formatted data when league_id, season_id and teamid are known and set
 	 *
 	 * @access public
 	 * @param int $league_id
+	 * @param int $season_id
+	 * @param int $teamid
 	 * @param bool $admin
+	 * @param bool $additional_stats
 	 * @return array
 	 */
-	public function data( $league_id, $admin = false, $section = -1 ) {
+	public function data_season_team( $league_id, $season_id, $teamid = -1, $additional_stats = false, $admin = false, $datefrom = null, $dateto = null, $section = -1 ) {
 
-		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
+		//$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
-		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
+		if ( $additional_stats ) {
+			$stats = (array)get_post_meta( $this->ID, 'sp_additional_statistics', true );
+			$stats[$league_id][$season_id] = $stats[$league_id][$season_id][ $teamid ];
+		}else{
+			$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
+		}
+
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
 		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 		$manual_columns = 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ? true : false;
@@ -224,13 +148,9 @@ class SP_Player extends SP_Custom_Post {
 
 		// Generate array of all season ids and season names
 		$div_ids = array();
+		$div_ids[] = $season_id;
 		$season_names = array();
-		foreach ( $seasons as $season ):
-			if ( is_object( $season ) && property_exists( $season, 'term_id' ) && property_exists( $season, 'name' ) ):
-				$div_ids[] = $season->term_id;
-				$season_names[ $season->term_id ] = $season->name;
-			endif;
-		endforeach;
+		$season_names[ $season_id ] = get_term( $season_id, 'sp_season' )->name;
 
 		$div_ids[] = 0;
 		$season_names[0] = __( 'Total', 'sportspress' );
@@ -304,6 +224,13 @@ class SP_Player extends SP_Custom_Post {
 					'value' => $this->ID
 				);
 			endif;
+			
+			if ( -1 !== $teamid ):
+				$args['meta_query'][] = array(
+					'key' => 'sp_team',
+					'value' => $teamid
+				);
+			endif;
 
 			if ( $league_id ):
 				$args['tax_query'][] = array(
@@ -318,6 +245,31 @@ class SP_Player extends SP_Custom_Post {
 					'taxonomy' => 'sp_season',
 					'field' => 'term_id',
 					'terms' => $div_id
+				);
+			endif;
+			
+			if ( $datefrom ):
+				$args['date_query'] = array(
+					array(
+					'after' => $datefrom
+					)
+				);
+			endif;
+			
+			if ( $dateto ):
+				$args['date_query'] = array(
+					array(
+					'before' => $dateto
+					)
+				);
+			endif;
+			
+			if ( $datefrom && $dateto ):
+				$args['date_query'] = array(
+					array(
+					'after' => $datefrom ,
+					'before' => $datefrom
+					)
 				);
 			endif;
 
@@ -580,11 +532,11 @@ class SP_Player extends SP_Custom_Post {
 
 			$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
 
-			if ( $team_id ):
-				$team_name = sp_get_team_name( $team_id, $abbreviate_teams );
+			if ( $teamid ):
+				$team_name = sp_get_team_name( $teamid, $abbreviate_teams );
 				
 				if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
-					$team_permalink = get_permalink( $team_id );
+					$team_permalink = get_permalink( $teamid );
 					$team_name = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
 				endif;
 			else:
@@ -736,28 +688,8 @@ class SP_Player extends SP_Custom_Post {
 
 			return $merged;
 		endif;
-	}	
-
-	/**
-	 * Returns formatted data for all leagues
-	 *
-	 * @access public
-	 * @param int $league_id
-	 * @param bool $admin
-	 * @return array
-	 */
-	public function statistics() {
-		$terms = get_the_terms( $this->ID, 'sp_league' );
-		
-		$statistics = array();
-		
-		if ( is_array( $terms ) ) {
-			foreach ( $terms as $term ) {
-				$statistics[ $term->term_id ] = $this->data( $term->term_id );
-			}
-		}
-		
-		return $statistics;
 	}
-
+	
 }
+
+endif;

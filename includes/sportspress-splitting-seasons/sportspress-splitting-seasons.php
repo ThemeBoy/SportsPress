@@ -28,6 +28,9 @@ class SportsPress_Splitting_Seasons {
 	public function __construct() {
 		// Define constants
 		$this->define_constants();
+		
+		// Add new Class
+		require_once( 'includes/class-sp-player-additional.php' );
 
 		// Hooks
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );

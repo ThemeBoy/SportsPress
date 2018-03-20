@@ -97,7 +97,6 @@ class SP_Meta_Box_Player_Statistics {
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
 		//For use with Splitting Seasons Module - START
 		if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
-			$player = new SP_Player( $id );
 			$additional_stats = get_post_meta( $id , 'sp_additional_statistics' , true );
 			$old_columns = null;
 			$old_data = null;
@@ -217,6 +216,7 @@ class SP_Meta_Box_Player_Statistics {
 							<?php endif; ?>
 							<?php //Check to see if a mid-season transfer was set and the previous team is declared
 							if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' && isset( $additional_stats[ $league_id ][ $div_id ] ) && $value != '-1' ) {
+								$player = new SP_Player_Additional( $id );
 								//Store previous values
 								$old_columns = $columns;
 								$old_data = $data;
