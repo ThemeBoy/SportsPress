@@ -13,7 +13,7 @@ if ( !isset( $id ) )
 //Create new Player class instance to use for new data
 $player2 = new SP_Player_Additional( $id );
 //Get team_ids for use during iterations
-$team_ids = array_merge( $player2->current_teams(), $player2->past_teams() );
+$team_ids = array_filter( get_post_meta( $id, 'sp_team', false ) );
 $teams = get_posts( array( 'post_type' => 'sp_team', 'include' => $team_ids ) );
 foreach ( $teams as $team ) {
 	$teams[ $team->post_title ] = $team->ID;
