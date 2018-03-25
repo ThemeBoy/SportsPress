@@ -172,7 +172,7 @@ foreach ( $groups as $group ):
 		$tbody .= '<td class="data-name' . $name_class . '" data-label="'.$labels['name'].'">' . $name . '</td>';
 		
 		if ( array_key_exists( 'team', $labels ) ):
-			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_team', true ) );
+			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_current_team', true ) );
 			$team_name = sp_get_team_name( $team, $abbreviate_teams );
 			if ( $link_teams && false !== get_post_status( $team ) ):
 				$team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
