@@ -81,6 +81,7 @@ class SP_Meta_Box_Player_Statistics {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		do_action( 'sportspress_save_meta_player_statistics', $post_id, $_POST );
 		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
 		update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
 	}
