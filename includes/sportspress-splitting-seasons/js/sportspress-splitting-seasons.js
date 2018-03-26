@@ -11,6 +11,8 @@ jQuery(document).ready(function($){
 			$row.removeClass("empty-row screen-reader-text");
 			//enable jquery date
 			$row.find(".date").addClass("sp-datepicker3");
+			//add the required parameter
+			$row.find(".date").prop('required',true);;
 			//hide add sign
 			$row.closest("tr").find(".sp-add-row").css( "display", "none" );
 			//display delete sign

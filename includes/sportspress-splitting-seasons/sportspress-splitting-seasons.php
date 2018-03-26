@@ -109,7 +109,7 @@ class SportsPress_Splitting_Seasons {
 								<!--<label>
 									&Gt;
 								</label>-->
-								<input type="text" class="date"  name="sp_transdatefrom[]" placeholder="Date from" required/>
+								<input type="text" class="date"  name="sp_transdatefrom[]" placeholder="Date from"/>
 								<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="-99">
 								<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="-99">
 								<input id="teamHidden" type="hidden" name="sp_add_team[]" value="-1">
