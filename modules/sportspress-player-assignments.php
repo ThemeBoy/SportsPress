@@ -23,10 +23,12 @@ class SportsPress_Player_Assignments {
 	public function __construct() {
 		// Define constants
 		$this->define_constants();
+		
 		// Actions
 		add_action( 'sportspress_save_meta_player_statistics', array( $this, 'save_additional_statistics' ), 10, 2 );
 		
 		// Filters
+		add_filter( 'sportspress_player_list_options', array( $this, 'add_settings' ) );
 	}
 	/**
 	 * Define constants.
@@ -68,6 +70,30 @@ class SportsPress_Player_Assignments {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * Add settings.
+	 *
+	 * @return array
+	 */
+	public function add_settings( $settings ) {
+		
+		$settings = array_merge( $settings,
+			array(
+				array(
+					'title'     => __( 'Filter by player assignment', 'sportspress' ),
+					'desc' 		=> __( 'Use a stronger conncetion between leagues, seasons and teams', 'sportspress' ),
+					'id' 		=> 'sportspress_list_player_assignments',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+			array(
+				array( 'type' => 'sectionend', 'id' => 'timelines_options' ),
+			)
+			)
+		);
+		return $settings;
 	}
 }
 endif;
