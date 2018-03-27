@@ -44,8 +44,7 @@ class SportsPress_Player_Assignments {
 	 * Save Additional Statistics
 	 */
 	public function save_additional_statistics( $post_id, $post_data ) {
-		$old = get_post_meta($post_id, 'sp_player_assignments', true);
-		$new = array();
+		$old = get_post_custom_values( 'sp_player_assignments', $post_id );
 		
 		$leagues = $post_data['sp_leagues'];
 		$transfers = get_post_meta($post_id, 'sp_player_assignments', true);
@@ -53,22 +52,21 @@ class SportsPress_Player_Assignments {
 		foreach ( $leagues as $l_id => $season ) {
 			foreach ( $season as $s_id => $team_id ) {
 				if ( $team_id != '-1' ) {
-					$new[$l_id][$s_id][] = $team_id;
+					$serialized = $l_id.'_'.$s_id.'_'.$team_id;
+					if( !in_array( $serialized, $old ) ){
+						add_post_meta( $post_id, 'sp_player_assignments', $serialized, false );
+					}
 				}
 				//Check if there are any Mid-Season transfers
 				if ( isset( $transfers[$l_id][$s_id] ) ){
 					foreach ( $transfers[$l_id][$s_id] as $t_id => $performance ) {
-						$new[$l_id][$s_id][] = $t_id;
+						$serialized = $l_id.'_'.$s_id.'_'.$t_id;
+						if( !in_array( $serialized, $old ) ){
+							add_post_meta( $post_id, 'sp_player_assignments', $serialized, false );
+						}
 					}
 				}
 			}
-		}
-		
-		if ( !empty( $new ) && $new != $old ) {
-			update_post_meta( $post_id, 'sp_player_assignments', $new );
-		}
-		elseif ( empty($new) && $old ) {
-			delete_post_meta( $post_id, 'sp_player_assignments', $old );
 		}
 	}
 }
