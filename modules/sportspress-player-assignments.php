@@ -83,7 +83,7 @@ class SportsPress_Player_Assignments {
 			array(
 				array(
 					'title'     => __( 'Filter by player assignment', 'sportspress' ),
-					'desc' 		=> __( 'Use a stronger conncetion between leagues, seasons and teams', 'sportspress' ),
+					'desc' 		=> __( 'Use a stronger connection between leagues, seasons and teams', 'sportspress' ),
 					'id' 		=> 'sportspress_list_player_assignments',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
