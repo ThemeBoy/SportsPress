@@ -83,9 +83,6 @@ class SP_Meta_Box_Player_Statistics {
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
 		update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
-		if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
-			do_action( 'sportspress_save_meta_player_statistics', $post_id, $_POST );
-		}
 		
 	}
 
