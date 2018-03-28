@@ -34,7 +34,7 @@ class SportsPress_Splitting_Seasons {
 
 		// Hooks
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'sportspress_save_meta_player_statistics', array( $this, 'save_additional_statistics' ), 10, 2 );
+		add_action( 'sportspress_save_meta_player_statistics', array( $this, 'save_additional_statistics' ), 9, 2 );
 		add_action( 'sportspress_empty_row_player_statistics', array( $this, 'add_empty_row' ), 10, 6 );
 		add_action( 'sportspress_after_player_statistics_columns', array( $this, 'after_player_statistics_columns' ), 10, 2 );
 		add_action( 'sportspress_additional_statistics_rows', array( $this, 'add_additional_rows' ), 10, 7 );
