@@ -259,7 +259,7 @@ class SP_Meta_Box_Player_Statistics {
 						</tr>
 						<?php
 						$i++;
-						if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
+						if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' && isset( $player ) ) {
 							do_action( 'sportspress_additional_statistics_rows', $player, $additional_stats, $league_id, $div_id, $i, $team_select, $readonly );
 						}
 					endforeach;
