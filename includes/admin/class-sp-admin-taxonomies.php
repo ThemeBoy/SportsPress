@@ -251,9 +251,11 @@ class SP_Admin_Taxonomies {
 		
 		if ( function_exists( 'get_term_meta' ) ) $new_columns['sp_order'] = __( 'Order', 'sportspress' );
 
+		if ( array_key_exists('posts', $columns) ) {
 		$new_columns['posts'] = $columns['posts'];
 
 		unset( $columns['posts'] );
+		}
 
 		return array_merge( $columns, $new_columns );
 	}
@@ -268,11 +270,14 @@ class SP_Admin_Taxonomies {
 	public function venue_columns( $columns ) {
 		$new_columns = array();
 		$new_columns['sp_address'] = __( 'Address', 'sportspress' );
+		
+		if ( array_key_exists('posts', $columns) ) {
 		$new_columns['posts'] = $columns['posts'];
+		unset( $columns['posts'] );
+		}
 
 		unset( $columns['description'] );
 		unset( $columns['slug'] );
-		unset( $columns['posts'] );
 
 		return array_merge( $columns, $new_columns );
 	}
@@ -289,11 +294,14 @@ class SP_Admin_Taxonomies {
 		$new_columns['sp_sections'] = __( 'Statistics', 'sportspress' );
 
 		if ( function_exists( 'get_term_meta' ) ) $new_columns['sp_order'] = __( 'Order', 'sportspress' );
+		
+		if ( array_key_exists('posts', $columns) ) {
 		$new_columns['posts'] = $columns['posts'];
+		unset( $columns['posts'] );
+		}
 
 		unset( $columns['description'] );
 		unset( $columns['slug'] );
-		unset( $columns['posts'] );
 
 		return array_merge( $columns, $new_columns );
 	}
