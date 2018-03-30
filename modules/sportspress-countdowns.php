@@ -88,6 +88,13 @@ class SportsPress_Countdowns {
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
 				),
+				array(
+					'title'     => __( 'Featured Image', 'sportspress' ),
+					'desc' 		=> __( 'Display featured image of event', 'sportspress' ),
+					'id' 		=> 'sportspress_countdown_show_featured_image',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
 			)),
 
 			array(
