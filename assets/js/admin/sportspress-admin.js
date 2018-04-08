@@ -238,39 +238,11 @@ jQuery(document).ready(function($){
 		}
 	});
 
-	// Total stats calculator (non-averages)
-	$(".sp-data-table .sp-total input[data-sp-format=number][data-sp-total-type!=average]").on("updateTotal", function() {
-		index = $(this).parent().index();
-		var sum = 0;
-		$(this).closest(".sp-data-table").find(".sp-post").each(function() {
-			val = $(this).find("td").eq(index).find("input").val();
-			if(val == "") {
-				val = $(this).find("td").eq(index).find("input").attr("placeholder");
-			}
-			if($.isNumeric(val)) {
-				sum += parseFloat(val, 10);
-			}
-		});
-		$(this).attr("placeholder", sum);
-	});
-
-	// Activate total stats calculator (non-averages)
-	if($(".sp-data-table .sp-total").size()) {
-		$(".sp-data-table .sp-post td input").on("keyup", function() {
-			$(this).closest(".sp-data-table").find(".sp-total td").eq($(this).parent().index()).find("input[data-sp-format=number][data-sp-total-type!=average]").trigger("updateTotal");
-		});
-	}
-
-	// Trigger total stats calculator (non-averages)
-	$(".sp-data-table .sp-total input[data-sp-format=number][data-sp-total-type!=average]").trigger("updateTotal");
-
-
-	// Total stats calculator (averages)
-	$(".sp-data-table .sp-total input[data-sp-format=number][data-sp-total-type=average]").on("updateAverage", function() {
+	// Total stats calculator
+	$(".sp-data-table .sp-total input[data-sp-format=number][data-sp-total-type]").on("updateTotal", function() {
 		index = $(this).parent().index();
 		var sum = 0;
 		var i = 0;
-		var average = 0;
 		$(this).closest(".sp-data-table").find(".sp-post").each(function() {
 			i++;
 			val = $(this).find("td").eq(index).find("input").val();
@@ -281,19 +253,23 @@ jQuery(document).ready(function($){
 				sum += parseFloat(val, 10);
 			}
 		});
-		average = sum/i;
-		$(this).attr("placeholder", average);
+		if ($(this).attr('data-sp-total-type') === 'average') {
+			average = sum/i;
+			$(this).attr("placeholder", average);
+		} else {
+			$(this).attr("placeholder", sum);
+		}
 	});
 
-	// Activate total stats calculator (averages)
+	// Activate total stats calculator
 	if($(".sp-data-table .sp-total").size()) {
 		$(".sp-data-table .sp-post td input").on("keyup", function() {
-			$(this).closest(".sp-data-table").find(".sp-total td").eq($(this).parent().index()).find("input[data-sp-format=number][data-sp-total-type=average]").trigger("updateAverage");
+			$(this).closest(".sp-data-table").find(".sp-total td").eq($(this).parent().index()).find("input[data-sp-format=number]").trigger("updateTotal");
 		});
 	}
 
-	// Trigger total stats calculator (averages)
-	$(".sp-data-table .sp-total input[data-sp-format=number][data-sp-total-type=average]").trigger("updateAverage");
+	// Trigger total stats calculator
+	$(".sp-data-table .sp-total input[data-sp-format=number]").trigger("updateTotal");
 
 	// Sync inputs
 	$(".sp-sync-input").on("keyup", function() {
