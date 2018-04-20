@@ -676,7 +676,7 @@ class SP_Player extends SP_Custom_Post {
 			if ( null === $value || ! isset( $value['equation'] ) ) continue;
 			$precision = sp_array_value( $value, 'precision', 0 );
 			if ( count( $merged ) ) {
-				$career[ $post->post_name ] = round( sp_solve( $value['equation'], $totals, $precision ) / count( $merged ), $precision );
+				$career[ $post->post_name ] = round( sp_solve( $value['equation'], $totals ) / count( $merged ), $precision );
 			} else {
 				$career[ $post->post_name ] = 0;
 			}
