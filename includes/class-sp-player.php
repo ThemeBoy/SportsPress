@@ -675,7 +675,11 @@ class SP_Player extends SP_Custom_Post {
 			$value = sp_array_value( $equations, $post->post_name, null );
 			if ( null === $value || ! isset( $value['equation'] ) ) continue;
 			$precision = sp_array_value( $value, 'precision', 0 );
-			$career[ $post->post_name ] = round( sp_solve( $value['equation'], $totals, $precision ) / count( $merged ), $precision );
+			if ( count( $merged ) ) {
+				$career[ $post->post_name ] = round( sp_solve( $value['equation'], $totals, $precision ) / count( $merged ), $precision );
+			} else {
+				$career[ $post->post_name ] = 0;
+			}
 		}
 
 		// Get manually entered career totals
