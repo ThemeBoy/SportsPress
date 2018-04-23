@@ -97,7 +97,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				while ( is_array( $team ) ) {
 					$team = array_shift( array_filter( $team ) );
 				}
-				if ( $team > 0 ) $team_names[] = get_the_title( $team );
+				if ( $team > 0 ) $team_names[] = sp_get_short_name( $team );
 			endforeach;
 
 			$team_names = array_unique( $team_names );
