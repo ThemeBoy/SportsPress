@@ -46,7 +46,7 @@ class SportsPress_Player_Assignments {
 	 * Save Additional Statistics
 	 */
 	public function save_additional_statistics( $post_id, $post_data ) {
-		$old = get_post_custom_values( 'sp_player_assignments', $post_id );
+		$old = (array) get_post_custom_values( 'sp_player_assignments', $post_id );
 		
 		$leagues = $post_data['sp_leagues'];
 		$transfers = get_post_meta($post_id, 'sp_player_assignments', true);
