@@ -28,7 +28,7 @@ class SP_Admin_Assets {
 	/**
 	 * Enqueue styles
 	 */
-	public function admin_styles() {
+	public function admin_styles( $hook ) {
 		// Sitewide menu CSS
 		wp_enqueue_style( 'sportspress-admin-menu-styles', SP()->plugin_url() . '/assets/css/menu.css', array(), SP_VERSION );
 
@@ -59,7 +59,7 @@ class SP_Admin_Assets {
 			wp_enqueue_style( 'sportspress-admin-equation-styles', SP()->plugin_url() . '/assets/css/equation.css', array(), SP_VERSION );
 		}
 
-		if ( in_array( $screen->id, apply_filters( 'sportspress_admin_datepicker_screen_ids', array( 'sp_calendar', 'sp_table', 'sp_list', 'widgets' ) ) ) ) {
+		if ( in_array( $screen->id, apply_filters( 'sportspress_admin_datepicker_screen_ids', array( 'sp_calendar', 'sp_table', 'sp_list', 'widgets' ) ) ) || in_array( $hook, array('post.php', 'post-new.php') ) ) {
 		    wp_enqueue_style( 'jquery-ui-style' , '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css' ); 
 			wp_enqueue_style( 'sportspress-admin-datepicker-styles', SP()->plugin_url() . '/assets/css/datepicker.css', array( 'jquery-ui-style' ), SP_VERSION );
 		}
@@ -70,7 +70,7 @@ class SP_Admin_Assets {
 	/**
 	 * Enqueue scripts
 	 */
-	public function admin_scripts() {
+	public function admin_scripts($hook) {
 		global $wp_query, $post;
 
 		$screen = get_current_screen();
@@ -101,7 +101,8 @@ class SP_Admin_Assets {
 		wp_register_script( 'sportspress-admin-quickeditor', SP()->plugin_url() . '/assets/js/admin/quickeditor.js', array( 'jquery' ), SP_VERSION, true );
 
 		// SportsPress admin pages
-	    if ( in_array( $screen->id, sp_get_screen_ids() ) || strpos( $screen->id, 'sportspress-config' )) {
+	    if ( in_array( $screen->id, sp_get_screen_ids() ) || strpos( $screen->id, 'sportspress-config' ) || in_array($hook, array('post.php', 'post-new.php') ) ) {
+
 	    	wp_enqueue_script( 'jquery' );
 	    	wp_enqueue_script( 'chosen' );
 	    	wp_enqueue_script( 'jquery-ui-core' );
