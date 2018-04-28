@@ -295,7 +295,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 				</td>
 			</tr>
 		</tbody>
-	</table>
+	</table>	
 	<table class="form-table">
 		<tbody>
 			<?php

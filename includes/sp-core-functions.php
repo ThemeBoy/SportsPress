@@ -1295,6 +1295,9 @@ if ( !function_exists( 'sp_solve' ) ) {
 		// Add a hook to alter $equation
 		$equation = apply_filters( 'sportspress_equation_alter', $equation, $vars );
 
+		// Add a hook to alter $equation
+		$equation = apply_filters( 'sportspress_equation_alter', $equation, $vars );
+		
 		if ( $equation == null )
 			return $default;
 

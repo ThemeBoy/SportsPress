@@ -257,7 +257,7 @@ function sportspress_post_updated_messages( $messages ) {
 
 	global $typenow, $post;
 
-	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_metric', 'sp_performance' ) ) ):
+	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_metric', 'sp_spec', 'sp_performance' ) ) ):
 		$obj = get_post_type_object( $typenow );
 
 		for ( $i = 0; $i <= 10; $i++ ):
