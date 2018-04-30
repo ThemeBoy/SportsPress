@@ -52,25 +52,27 @@ $minutes = $event->minutes();
 					}
 					$number = sp_array_value( $details, 'number', '' );
 					$key = sp_array_value( $details, 'key', '' );
-						if ( $key == 'sub' ) {
-							if ( $link_players ) {
-								$subname = '<a href="'.esc_url(get_permalink(sp_array_value( $details, "sub",""))).'">'.sp_array_value( $details, "sub_name", "").'</a>';
-							}else{
-								$subname = sp_array_value( $details, "sub_name", "");
-							}
-							if( $side == 'home' ) {
-							$name = $subname.'<i class="dashicons dashicons-undo" style="color:red;" title="'.__( "Sub OUT", "sportspress" ).'"></i><br/>'.$name.'<i class="dashicons dashicons-redo" style="color:green;" title="'.__( "Sub IN", "sportspress" ).'"></i>';
-							}elseif( $side == 'away' ) {
-							$name = '<i class="dashicons dashicons-redo" style="color:red;" title="'.__( "Sub OUT", "sportspress" ).'"></i>'.$subname.'<br/><i class="dashicons dashicons-undo" style="color:green;" title="'.__( "Sub IN", "sportspress" ).'"></i>'.$name;}
-							}else{
-								if( $side == 'home' ) {
-									$name = $name.' '.$icon;
-								}elseif( $side == 'away' ) {
-									$name = $icon.' '.$name;
-								}
-							}	
 
-					if ( '' !== $number ) $name = $number . '. ' . $name;
+					if ( $key == 'sub' ) {
+						if ( $link_players ) {
+							$subname = '<a href="'.esc_url(get_permalink(sp_array_value( $details, "sub",""))).'">'.sp_array_value( $details, "sub_name", "").'</a>';
+						} else {
+							$subname = sp_array_value( $details, "sub_name", "");
+						}
+
+						if( $side == 'home' ) {
+							$name = $subname.'<i class="dashicons dashicons-undo" style="color:red;" title="'.__( "Sub out", "sportspress" ).'"></i><br/>'.$name.'<i class="dashicons dashicons-redo" style="color:green;" title="'.__( "Sub in", "sportspress" ).'"></i>';
+						} elseif ( $side == 'away' ) {
+							$name = '<i class="dashicons dashicons-redo" style="color:red;" title="'.__( "Sub out", "sportspress" ).'"></i>'.$subname.'<br/><i class="dashicons dashicons-undo" style="color:green;" title="'.__( "Sub in", "sportspress" ).'"></i>'.$name;
+						}
+					} else {
+						if( $side == 'home' ) {
+							$name = $name.' '.$icon;
+						} elseif ( $side == 'away' ) {
+							$name = $icon.' '.$name;
+						}
+						if ( '' !== $number ) $name = $number . '. ' . $name;
+					}
 					?>
 					<?php if( $side=='home' ) { ?> 
 					<tr style="background-color:<?php echo $class; ?>"><td class="home_event" style="text-align: right;" width="48%"><?php echo $name; ?></td><td style="vertical-align:middle" class="home_event_minute" width="4%"><?php echo $time; ?>'</td><td class="away_event" width="48%">&nbsp;</td></tr>
