@@ -72,7 +72,13 @@ class SportsPress_Timelines {
 	 * @return void
 	 */
 	public function output() {
-		sp_get_template( 'event-timeline.php', array(), '', SP_TIMELINES_DIR . 'templates/' );
+		// Get timelines format option
+		$timelines_format = get_option( 'sportspress_timelines_format', 'horizontal' );
+		if ( 'horizontal' === $timelines_format ) {
+			sp_get_template( 'event-timeline.php', array(), '', SP_TIMELINES_DIR . 'templates/' );
+		}else{
+			sp_get_template( 'event-timeline-vertical.php', array(), '', SP_TIMELINES_DIR . 'templates/' );
+		}
 	}
 
 	/**
@@ -93,9 +99,42 @@ class SportsPress_Timelines {
 	 */
 	public function add_text_options( $options = array() ) {
 		return array_merge( $options, array(
+			__( 'Timeline', 'sportspress' ),
 			__( 'KO', 'sportspress' ),
 			__( 'FT', 'sportspress' ),
 		) );
+	}
+	
+	/**
+	 * Add settings.
+	 *
+	 * @return array
+	 */
+	public function add_settings( $settings ) {
+		
+		$settings = array_merge( $settings,
+			array(
+				array( 'title' => __( 'Timelines', 'sportspress' ), 'type' => 'title', 'id' => 'timelines_options' ),
+			),
+
+			apply_filters( 'sportspress_timelines_options', array(
+				array(
+					'title' 	=> __( 'Layout', 'sportspress' ),
+					'id' 		=> 'sportspress_timelines_format',
+					'default'	=> 'horizontal',
+					'type' 		=> 'radio',
+					'options' => array(
+						'horizontal'=> __( 'Horizontal', 'sportspress' ),
+						'vertical'	=> __( 'Vertical', 'sportspress' ),
+					),
+				),
+			) ),
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'timelines_options' ),
+			)
+		);
+		return $settings;
 	}
 }
 
