@@ -434,7 +434,7 @@ class SP_Player_List extends SP_Secondary_Post {
 										endforeach;
 
 										// Subtract minutes prior to substitution
-										$substitution_time = sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), 'sub' ), 0, 0 );
+										$substitution_time = ( int ) sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), 'sub' ), 0, 0 );
 										$played_minutes -= $substitution_time;
 									else:
 

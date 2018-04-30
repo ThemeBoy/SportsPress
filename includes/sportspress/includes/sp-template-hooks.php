@@ -141,6 +141,10 @@ function sportspress_strcmp_term_slug( $a, $b ) {
 
 function sportspress_term_order( $terms, $post_id, $taxonomy ) {
 
+	if ( ! is_array( $terms ) ) {
+		return array();
+	}
+
     if ( is_sp_taxonomy( $taxonomy ) ) {
     	uasort( $terms, 'sportspress_strcmp_term_slug' );
     }
@@ -253,7 +257,7 @@ function sportspress_post_updated_messages( $messages ) {
 
 	global $typenow, $post;
 
-	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_metric', 'sp_performance' ) ) ):
+	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_metric', 'sp_spec', 'sp_performance' ) ) ):
 		$obj = get_post_type_object( $typenow );
 
 		for ( $i = 0; $i <= 10; $i++ ):

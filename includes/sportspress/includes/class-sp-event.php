@@ -17,7 +17,7 @@ class SP_Event extends SP_Custom_Post{
 		$results = get_post_meta( $this->ID, 'sp_results', true );
 		if ( is_array( $results ) ) {
 			foreach( $results as $result ) {
-				$result = array_filter( $result );
+				$result = is_array( $result ) ? array_filter( $result ) : array();
 				if ( count( $result ) > 0 ) {
 					return 'results';
 				}
@@ -706,5 +706,25 @@ class SP_Event extends SP_Custom_Post{
 
 	public function sort_timeline( $a, $b ) {
 		return $a['time'] - $b['time'];
+	}
+	
+	/**
+	 * Returns formatted event specs
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function specs( $neg = null ) {
+		$specs = (array)get_post_meta( $this->ID, 'sp_specs', true );
+		$spec_labels = (array)sp_get_var_labels( 'sp_spec', $neg, false );
+		$data = array();
+		
+		foreach ( $spec_labels as $key => $value ):
+			$spec = sp_array_value( $specs, $key, null );
+			if ( $spec == null )
+				continue;
+			$data[ $value ] = sp_array_value( $specs, $key, '&nbsp;' );
+		endforeach;
+		return $data;
 	}
 }

@@ -31,7 +31,7 @@ class SportsPress_Multisite {
 		// Multisite support
 		if ( is_multisite() ):
 			// Permalinks
-			add_filter( 'post_type_link', array( $this, 'fix_permalink' ), 10, 2 );
+			add_filter( 'post_type_link', array( $this, 'fix_permalink' ) );
 
 			// Widgets
 			add_filter( 'sportspress_widget_update', array( $this, 'widget_update' ), 10, 4 );

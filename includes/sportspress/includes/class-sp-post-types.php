@@ -342,7 +342,7 @@ class SP_Post_types {
 				)
 			)
 		);
-
+		
 		register_post_type( 'sp_performance',
 			apply_filters( 'sportspress_register_post_type_performance',
 				array(
