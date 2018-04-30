@@ -1,4 +1,7 @@
 jQuery(document).ready(function($){
+	$(".sp-datepicker3").datepicker({
+				dateFormat : "yy-mm-dd"
+			});
 	// Split Statistic row
 	$(".sp-data-table").on("click", ".sp-add-row", function() {
 		var league_id = $(this).data('league_id');
@@ -12,7 +15,7 @@ jQuery(document).ready(function($){
 			//enable jquery date
 			$row.find(".date").addClass("sp-datepicker3");
 			//add the required parameter
-			$row.find(".date").prop('required',true);;
+			$row.find(".date").prop('required',true);
 			//hide add sign
 			$row.closest("tr").find(".sp-add-row").css( "display", "none" );
 			//display delete sign

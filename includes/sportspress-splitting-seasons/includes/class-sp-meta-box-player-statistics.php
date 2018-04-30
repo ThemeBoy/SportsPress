@@ -300,16 +300,42 @@ class SP_Meta_Box_Player_Add_Statistics {
 								list( $columns_add, $data_add, $placeholders_add, $merged, $seasons_teams, $has_checkboxes, $formats_add, $total_types ) = $player->data_season_team( $league_id, $div_id, $key, true, true, $datefrom ); ?>
 								<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 									<td>
-										<label title="Transfered from date">
-											<?php echo $teamstats[ 'transdatefrom' ]; ?> &Gt;
-										</label>
+										<!--<label title="Transfered from date">
+											<?php //echo $teamstats[ 'transdatefrom' ]; ?> &Gt;
+										</label>-->
+										<input type="text" class="sp-datepicker3"  name="sp_transdatefrom[]" placeholder="Date from" value="<?php echo $teamstats[ 'transdatefrom' ]; ?>"/>
 										<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="<?php echo $league_id; ?>">
 										<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="<?php echo $div_id; ?>">
 										<input id="teamHidden" type="hidden" name="sp_add_team[]" value="<?php echo $key; ?>">
 									</td>
 								<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
+									<!--<td>
+									<?php //echo get_the_title( $key );?>
+									</td>-->
 									<td>
-									<?php echo get_the_title( $key );?>
+										<?php
+										$args = array(
+											'post_type' => 'sp_team',
+											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+											'sort_order'   => 'ASC',
+											'sort_column'  => 'menu_order',
+											'selected' => $key,
+											'values' => 'ID',
+											'id' => 'additional_team',
+											'include' => $teams,
+											'tax_query' => array(
+												'relation' => 'AND',
+												array(
+													'taxonomy' => 'sp_league',
+													'terms' => $league_id,
+													'field' => 'term_id',
+												),
+											),
+										);
+										if ( ! sp_dropdown_pages( $args ) ){
+											_e( '&mdash; None &mdash;', 'sportspress' );
+										}
+										?>
 									</td>
 								<?php endif;
 								foreach ( $columns_add as $column => $label ): if ( $column == 'team' ) continue; ?>
