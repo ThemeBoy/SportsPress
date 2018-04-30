@@ -142,6 +142,9 @@ class SP_Meta_Box_Player_Add_Statistics {
 						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
 							<th><?php echo $label; ?></th>
 						<?php endforeach; ?>
+						<?php if ( $league_id > 0 ) {  ?>
+							<th>&plus;&minus;</th>
+						<?php }  ?>
 					</tr>
 				</thead>
 				<tfoot>
