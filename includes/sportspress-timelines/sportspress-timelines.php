@@ -74,8 +74,8 @@ class SportsPress_Timelines {
 	 */
 	public function output() {
 		// Get timelines format option
-		$timelines_format = get_option( 'sportspress_timelines_format', 'horizontal' ) == 'horizontal' ? true : false;
-		if ( $timelines_format ) {
+		$timelines_format = get_option( 'sportspress_timelines_format', 'horizontal' );
+		if ( 'horizontal' === $timelines_format ) {
 			sp_get_template( 'event-timeline.php', array(), '', SP_TIMELINES_DIR . 'templates/' );
 		}else{
 			sp_get_template( 'event-timeline-vertical.php', array(), '', SP_TIMELINES_DIR . 'templates/' );
@@ -100,6 +100,7 @@ class SportsPress_Timelines {
 	 */
 	public function add_text_options( $options = array() ) {
 		return array_merge( $options, array(
+			__( 'Timeline', 'sportspress' ),
 			__( 'KO', 'sportspress' ),
 			__( 'FT', 'sportspress' ),
 		) );
@@ -119,15 +120,14 @@ class SportsPress_Timelines {
 
 			apply_filters( 'sportspress_timelines_options', array(
 				array(
-					'title' 	=> __( 'Timelines format', 'sportspress' ),
+					'title' 	=> __( 'Layout', 'sportspress' ),
 					'id' 		=> 'sportspress_timelines_format',
 					'default'	=> 'horizontal',
 					'type' 		=> 'radio',
 					'options' => array(
-						'horizontal'=> __( 'Horizontal format', 'sportspress' ),
-						'vertical'	=> __( 'Vertical format', 'sportspress' ),
+						'horizontal'=> __( 'Horizontal', 'sportspress' ),
+						'vertical'	=> __( 'Vertical', 'sportspress' ),
 					),
-					'desc_tip' 		=> _x( 'Choose the way you want the timeline to appear. Horizontal (default) or Vertical', 'event timeline format description', 'sportspress' ),
 				),
 			) ),
 
