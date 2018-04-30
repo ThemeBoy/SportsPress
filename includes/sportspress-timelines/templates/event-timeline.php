@@ -61,7 +61,7 @@ $previous = 0;
 
 				if ( '' !== $number ) $name = $number . '. ' . $name;
 
-				$offset = floor( $time / ( $minutes + 4 )* 100 );
+				$offset = floor( (float) $time / ( $minutes + 4 )* 100 );
 				if ( $offset - $previous <= 2 ) $offset = $previous + 2;
 				$previous = $offset;
 				?>
