@@ -29,11 +29,11 @@ class SP_Modules {
 					'icon' => 'sp-icon-calendar',
 					'desc' => __( 'Organize and publish calendars using different layouts.', 'sportspress' ),
 				),
-				'event_grids' => array(
-					'label' => __( 'Match Grids', 'sportspress' ),
-					'class' => 'SportsPress_Event_Grids',
-					'icon' => 'sp-icon-grid',
-					'link' => 'https://www.themeboy.com/sportspress-extensions/match-grids/',
+				'results_matrix' => array(
+					'label' => __( 'Results Matrix', 'sportspress' ),
+					'class' => 'SportsPress_Results_Matrix',
+					'icon' => 'sp-icon-matrix',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/results-matrix/',
 					'desc' => __( 'Display fixtures and results between teams in a grid layout.', 'sportspress' ),
 				),
 				'scoreboard' => array(

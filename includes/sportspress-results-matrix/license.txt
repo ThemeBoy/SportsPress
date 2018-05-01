@@ -1,4 +1,4 @@
-SportsPress Match Grids
+SportsPress Results Matrix
 
 Copyright 2018 by ThemeBoy
 
@@ -26,7 +26,7 @@ and
 
   ThemeBoy
 
-  SportsPress Match Grids is released under the GPL
+  SportsPress Results Matrix is released under the GPL
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

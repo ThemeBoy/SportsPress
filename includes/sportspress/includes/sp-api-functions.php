@@ -283,10 +283,6 @@ function sp_is_home_venue( $post = 0, $event = 0 ) {
 	}
 }
 
-function sp_the_abbreviation( $post = 0 ) {
-	echo sp_get_abbreviation( $post );
-}
-
 function sp_the_logo( $post = 0, $size = 'icon', $attr = array() ) {
 	echo sp_get_logo( $post, $size, $attr );
 }
@@ -295,22 +291,35 @@ function sp_team_logo( $post = 0 ) {
 	sp_get_template( 'team-logo.php', array( 'id' => $post ) );
 }
 
-function sp_get_short_name( $post = 0 ) {
-	$abbreviation = sp_get_abbreviation( $post, 'sp_abbreviation', true );
+function sp_team_abbreviation( $post = 0 ) {
+	$abbreviation = get_post_meta( $post, 'sp_abbreviation', true );
 	if ( $abbreviation ) {
 		return $abbreviation;
+	} else {
+		return sp_team_short_name( $post );
+	}
+}
+
+function sp_the_abbreviation( $post = 0 ) {
+	echo sp_team_abbreviation( $post );
+}
+
+function sp_team_short_name( $post = 0 ) {
+	$short_name = get_post_meta( $post, 'sp_short_name', true );
+	if ( $short_name ) {
+		return $short_name;
 	} else {
 		return get_the_title( $post );
 	}
 }
 
-function sp_short_name( $post = 0 ) {
-	echo sp_get_short_name( $post );
+function sp_the_short_name( $post = 0 ) {
+	echo sp_team_short_name( $post );
 }
 
 function sp_get_team_name( $post = 0, $short = true ) {
 	if ( $short ) {
-		return sp_get_short_name( $post );
+		return sp_team_abbreviation( $post );
 	} else {
 		return get_the_title( $post );
 	}
