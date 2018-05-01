@@ -203,3 +203,20 @@ if ( !function_exists( 'sp_get_player_list_data' ) ) {
 		return $list->data( $admin );
 	}
 }
+
+if ( !function_exists( 'sp_get_short_name' ) ) {
+	function sp_get_short_name( $post = 0 ) {
+		$abbreviation = sp_get_abbreviation( $post, 'sp_abbreviation', true );
+		if ( $abbreviation ) {
+			return $abbreviation;
+		} else {
+			return get_the_title( $post );
+		}
+	}
+}
+
+if ( !function_exists( 'sp_short_name' ) ) {
+	function sp_short_name( $post = 0 ) {
+		echo sp_get_short_name( $post );
+	}
+}
