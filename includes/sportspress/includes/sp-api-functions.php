@@ -137,6 +137,15 @@ function sp_the_main_results_or_time( $post = 0, $delimiter = '-' ) {
 	echo implode( $delimiter, sp_get_main_results_or_time( $post ) );
 }
 
+function sp_get_main_results_or_date( $post = 0, $format = null ) {
+	$results = sp_get_main_results( $post );
+	if ( sizeof( $results ) ) {
+		return $results;
+	} else {
+		return array( sp_get_date( $post, $format ) );
+	}
+}
+
 function sp_get_outcome( $post = 0 ) {
 	$event = new SP_Event( $post );
 	return $event->outcome( true );
