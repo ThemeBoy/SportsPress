@@ -270,6 +270,42 @@ class SP_AJAX {
 					?>
 				</label>
 			</p>
+			<div class="sp-date-selector">
+				<p><?php _e( 'Date:', 'sportspress' ); ?> 
+					<?php
+					$args = array(
+						'name' => 'date',
+						'id' => 'date',
+						'selected' => $date,
+					);
+					sp_dropdown_dates( $args );
+					?>
+				</p>
+				<div class="sp-date-range">
+					<p class="sp-date-range-absolute">
+						<input type="text" class="sp-datepicker-from" name="date_from" value="default" size="10">
+						:
+						<input type="text" class="sp-datepicker-to" name="date_to" value="default" size="10">
+					</p>
+
+					<p class="sp-date-range-relative">
+						<?php _e( 'Past', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="date_past" value="default">
+						<?php _e( 'days', 'sportspress' ); ?>
+						&rarr;
+						<?php _e( 'Next', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="date_future" value="default">
+						<?php _e( 'days', 'sportspress' ); ?>
+					</p>
+
+					<p class="sp-date-relative">
+						<label>
+							<input type="checkbox" name="date_relative" value="0" id="date_relative">
+							<?php _e( 'Relative', 'sportspress' ); ?>
+						</label>
+					</p>
+				</div>
+			</div>
 			<p>
 				<label>
 					<?php _e( 'Match Day:', 'sportspress' ); ?>
@@ -400,24 +436,24 @@ class SP_AJAX {
 				</p>
 				<div class="sp-date-range">
 					<p class="sp-date-range-absolute">
-						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="default" size="10">
+						<input type="text" class="sp-datepicker-from" name="date_from" value="default" size="10">
 						:
-						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="default" size="10">
+						<input type="text" class="sp-datepicker-to" name="date_to" value="default" size="10">
 					</p>
 
 					<p class="sp-date-range-relative">
 						<?php _e( 'Past', 'sportspress' ); ?>
-						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_past" value="default">
+						<input type="number" min="0" step="1" class="tiny-text" name="date_past" value="default">
 						<?php _e( 'days', 'sportspress' ); ?>
 						&rarr;
 						<?php _e( 'Next', 'sportspress' ); ?>
-						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_future" value="default">
+						<input type="number" min="0" step="1" class="tiny-text" name="date_future" value="default">
 						<?php _e( 'days', 'sportspress' ); ?>
 					</p>
 
 					<p class="sp-date-relative">
 						<label>
-							<input type="checkbox" name="sp_date_relative" value="0" id="sp_date_relative">
+							<input type="checkbox" name="date_relative" value="0" id="date_relative">
 							<?php _e( 'Relative', 'sportspress' ); ?>
 						</label>
 					</p>
@@ -594,24 +630,24 @@ class SP_AJAX {
 				</p>
 				<div class="sp-date-range">
 					<p class="sp-date-range-absolute">
-						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="default" size="10">
+						<input type="text" class="sp-datepicker-from" name="date_from" value="default" size="10">
 						:
-						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="default" size="10">
+						<input type="text" class="sp-datepicker-to" name="date_to" value="default" size="10">
 					</p>
 
 					<p class="sp-date-range-relative">
 						<?php _e( 'Past', 'sportspress' ); ?>
-						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_past" value="default">
+						<input type="number" min="0" step="1" class="tiny-text" name="date_past" value="default">
 						<?php _e( 'days', 'sportspress' ); ?>
 						&rarr;
 						<?php _e( 'Next', 'sportspress' ); ?>
-						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_future" value="default">
+						<input type="number" min="0" step="1" class="tiny-text" name="date_future" value="default">
 						<?php _e( 'days', 'sportspress' ); ?>
 					</p>
 
 					<p class="sp-date-relative">
 						<label>
-							<input type="checkbox" name="sp_date_relative" value="0" id="sp_date_relative">
+							<input type="checkbox" name="date_relative" value="0" id="date_relative">
 							<?php _e( 'Relative', 'sportspress' ); ?>
 						</label>
 					</p>
@@ -1070,6 +1106,12 @@ class SP_AJAX {
                     args.season = $div.find('[name=season]').val();
                     args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
+                    args.date = $div.find('[name=date]').val();
+                    args.date_from = $div.find('[name=date_from]').val();
+                    args.date_to = $div.find('[name=date_to]').val();
+                    args.date_past = $div.find('[name=date_past]').val();
+                    args.date_future = $div.find('[name=date_future]').val();
+                    args.date_relative = $div.find('[name=date_relative]:checked').length;
                     args.day = $div.find('[name=day]').val();
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'event_list' == type ) {
@@ -1080,11 +1122,11 @@ class SP_AJAX {
                     args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
                     args.date = $div.find('[name=date]').val();
-                    args.date_from = $div.find('[name=sp_date_from]').val();
-                    args.date_to = $div.find('[name=sp_date_to]').val();
-                    args.date_past = $div.find('[name=sp_date_past]').val();
-                    args.date_future = $div.find('[name=sp_date_future]').val();
-					args.date_relative = $div.find('[name=sp_date_relative]:checked').length;
+                    args.date_from = $div.find('[name=date_from]').val();
+                    args.date_to = $div.find('[name=date_to]').val();
+                    args.date_past = $div.find('[name=date_past]').val();
+                    args.date_future = $div.find('[name=date_future]').val();
+                    args.date_relative = $div.find('[name=date_relative]:checked').length;
                     args.day = $div.find('[name=day]').val();
                     args.number = $div.find('[name=number]').val();
                     args.order = $div.find('[name=order]').val();
@@ -1099,11 +1141,11 @@ class SP_AJAX {
                     args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
                     args.date = $div.find('[name=date]').val();
-					args.date_from = $div.find('[name=sp_date_from]').val();
-                    args.date_to = $div.find('[name=sp_date_to]').val();
-                    args.date_past = $div.find('[name=sp_date_past]').val();
-                    args.date_future = $div.find('[name=sp_date_future]').val();
-					args.date_relative = $div.find('[name=sp_date_relative]:checked').length;
+                    args.date_from = $div.find('[name=date_from]').val();
+                    args.date_to = $div.find('[name=date_to]').val();
+                    args.date_past = $div.find('[name=date_past]').val();
+                    args.date_future = $div.find('[name=date_future]').val();
+                    args.date_relative = $div.find('[name=date_relative]:checked').length;
                     args.day = $div.find('[name=day]').val();
                     args.number = $div.find('[name=number]').val();
                     args.orderby = $div.find('[name=orderby]').val();
