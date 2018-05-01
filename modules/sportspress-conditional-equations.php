@@ -41,14 +41,14 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 	 * Define constants.
 	*/
 	private function define_constants() {
-		if ( !defined( 'SP_Conditional_Equations_VERSION' ) )
-			define( 'SP_Conditional_Equations_VERSION', '2.5.10' );
+		if ( !defined( 'SP_CONDITIONAL_EQUATIONS_VERSION' ) )
+			define( 'SP_CONDITIONAL_EQUATIONS_VERSION', '2.5.10' );
 
-		if ( !defined( 'SP_Conditional_Equations_URL' ) )
-			define( 'SP_Conditional_Equations_URL', plugin_dir_url( __FILE__ ) );
+		if ( !defined( 'SP_CONDITIONAL_EQUATIONS_URL' ) )
+			define( 'SP_CONDITIONAL_EQUATIONS_URL', plugin_dir_url( __FILE__ ) );
 
-		if ( !defined( 'SP_Conditional_Equations_DIR' ) )
-			define( 'SP_Conditional_Equations_DIR', plugin_dir_path( __FILE__ ) );
+		if ( !defined( 'SP_CONDITIONAL_EQUATIONS_DIR' ) )
+			define( 'SP_CONDITIONAL_EQUATIONS_DIR', plugin_dir_path( __FILE__ ) );
 	}
 	
 	/**

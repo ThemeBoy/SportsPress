@@ -1291,9 +1291,6 @@ if ( !function_exists( 'sp_get_eos_safe_slug' ) ) {
 
 if ( !function_exists( 'sp_solve' ) ) {
 	function sp_solve( $equation, $vars, $precision = 0, $default = 0 ) {
-		
-		// Add a hook to alter $equation
-		$equation = apply_filters( 'sportspress_equation_alter', $equation, $vars );
 
 		// Add a hook to alter $equation
 		$equation = apply_filters( 'sportspress_equation_alter', $equation, $vars );
