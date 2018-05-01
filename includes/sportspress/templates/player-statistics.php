@@ -73,12 +73,7 @@ if ( is_array( $leagues ) ):
 			if ( ! $show_teams ) {
 				$args['hide_teams'] = true;
 			}
-			if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
-				$args['league_id'] = $league->term_id;
-				sp_get_template( 'player-statistics-league-additional.php', $args, '', SP_SPLITTING_SEASONS_DIR . 'templates/' );
-			} else {
-				sp_get_template( 'player-statistics-league.php', $args );
-			}
+			sp_get_template( 'player-statistics-league.php', $args );
 		endforeach;
 
 		if ( $show_career_totals ) {
