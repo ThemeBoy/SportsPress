@@ -705,7 +705,7 @@ class SP_Event extends SP_Custom_Post{
 	}
 
 	public function sort_timeline( $a, $b ) {
-		return $a['time'] - $b['time'];
+		return (float) $a['time'] - (float) $b['time'];
 	}
 	
 	/**
