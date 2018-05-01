@@ -736,7 +736,7 @@ class SP_Player extends SP_Custom_Post {
 
 			return $merged;
 		endif;
-	}	
+	}
 
 	/**
 	 * Returns formatted data for all leagues
