@@ -91,9 +91,6 @@
 .sp-icon-globe:before {
 	content: "\f319";
 }
-.sp-icon-grid:before {
-  content: "\f314";
-}
 .sp-icon-import:before {
 	content: "\f316";
 }
@@ -102,6 +99,9 @@
 }
 .sp-icon-list:before {
 	content: "\f163"
+}
+.sp-icon-matrix:before {
+  content: "\f314";
 }
 .sp-icon-megaphone:before {
 	content: "\f488";
