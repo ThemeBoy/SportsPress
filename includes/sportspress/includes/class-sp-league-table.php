@@ -38,7 +38,7 @@ class SP_League_Table extends SP_Secondary_Post {
 		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
-		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
+		$team_name_length = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? 'abbreviation' : 'full';
 		$link_events = get_option( 'sportspress_link_events', 'yes' ) === 'yes' ? true : false;
 		$form_limit = (int) get_option( 'sportspress_form_limit', 5 );
 
@@ -702,7 +702,7 @@ class SP_League_Table extends SP_Secondary_Post {
 			// Add team name to row
 			$merged[ $team_id ] = array();
 
-			$team_data['name'] = sp_get_team_name( $team_id, $abbreviate_teams );
+			$team_data['name'] = sp_team_name( $team_id, $team_name_length );
 
 			foreach ( $team_data as $key => $value ):
 
