@@ -25,10 +25,6 @@ jQuery(document).ready(function($){
 			$row.closest("tr").find('#seasonHidden').val(season_id);
 			//add the new raw first
 			$row.insertAfter($tr);
-			//change the team_id on changing
-			$('select[id=additional_team]').on('change', function() {
-				$(this).closest("tr").find('#teamHidden').val( this.value );
-			});
 			$(".sp-datepicker3").datepicker({
 				dateFormat : "yy-mm-dd"
 			});

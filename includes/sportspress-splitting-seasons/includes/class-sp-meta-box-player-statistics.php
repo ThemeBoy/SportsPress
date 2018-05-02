@@ -306,7 +306,6 @@ class SP_Meta_Box_Player_Add_Statistics {
 										<input type="text" class="sp-datepicker3"  name="sp_transdatefrom[]" placeholder="Date from" value="<?php echo $teamstats[ 'transdatefrom' ]; ?>"/>
 										<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="<?php echo $league_id; ?>">
 										<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="<?php echo $div_id; ?>">
-										<input id="teamHidden" type="hidden" name="sp_add_team[]" value="<?php echo $key; ?>">
 									</td>
 								<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
 									<!--<td>
@@ -316,6 +315,7 @@ class SP_Meta_Box_Player_Add_Statistics {
 										<?php
 										$args = array(
 											'post_type' => 'sp_team',
+											'name' => 'sp_add_team[]',
 											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
 											'sort_order'   => 'ASC',
 											'sort_column'  => 'menu_order',
@@ -375,14 +375,13 @@ class SP_Meta_Box_Player_Add_Statistics {
 								<input type="text" class="date"  name="sp_transdatefrom[]" placeholder="Date from"/>
 								<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="-99">
 								<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="-99">
-								<input id="teamHidden" type="hidden" name="sp_add_team[]" value="-1">
 							</td>
 							<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
 									<td>
 										<?php
 										$args = array(
 											'post_type' => 'sp_team',
-											//'name' => 'sp_additional_team[-99][-99][]',
+											'name' => 'sp_add_team[]',
 											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
 										    'sort_order'   => 'ASC',
 										    'sort_column'  => 'menu_order',
