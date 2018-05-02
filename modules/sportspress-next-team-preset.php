@@ -22,12 +22,17 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
  
  class SportsPress_Next_Team_Preset {
 
+ 	/** @var bool The link events setting. */
+ 	public $link_events = true;
+
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		// Define constants
 		$this->define_constants();
+
+		$this->link_events = get_option( 'sportspress_link_events', 'yes' ) === 'yes' ? true : false;
 
 		// Filters
 		add_filter( 'sportspress_equation_options', array( $this, 'add_options' ) );
@@ -112,7 +117,11 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 					$icon = sp_team_abbreviation( $team_id, true );
 				}
 
-				return '<a title="' . $event->post_title . '" href="' . get_post_permalink( $event->ID, false, true ) . '">' . $icon . '</a>';
+				if ( $this->link_events ) {
+					return '<a title="' . $event->post_title . '" href="' . get_post_permalink( $event->ID, false, true ) . '">' . $icon . '</a>';
+				} else {
+					return '<span title="' . $event->post_title . '">' . $icon . '</a>';
+				}
 			} else {
 				return '-';
 			}
