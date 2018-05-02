@@ -25,7 +25,6 @@ $defaults = array(
 	'show_team_logo' => get_option( 'sportspress_event_matrix_show_logos', 'no' ) == 'yes' ? true : false,
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
-	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'show_all_events_link' => false,
 );
@@ -113,7 +112,7 @@ if ( $posts ) {
 				<?php foreach ( $rows as $team_id => $row ) { ?>
 					<th class="sp-event-matrix-label">
 						<?php
-						$name = sp_team_abbreviation( $team_id );
+						$name = sp_team_abbreviation( $team_id, true );
 						if ( $link_teams ) {
 							echo '<a href="' . get_post_permalink( $team_id ) . '" title="' . $team_names[ $team_id ] . '">' . $name . '</a>';
 						} else {
