@@ -35,6 +35,7 @@ class SportsPress_Splitting_Seasons {
 
 		// Hooks
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'sportspress_player_statistics_league_template', array( $this, 'template' ) );
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 	}
 
@@ -80,7 +81,13 @@ class SportsPress_Splitting_Seasons {
 				);
 		return $meta_boxes;
 	}
-
+	
+	/**
+	 * Render player statistics per league
+	 */
+	public function template( $args ) {
+		sp_get_template( 'player-statistics-league-additional.php', $args, '', SP_SPLITTING_SEASONS_DIR . 'templates/' );
+	}
 }
 
 endif;

@@ -69,13 +69,14 @@ if ( is_array( $leagues ) ):
 				'data' => $player->data( $league->term_id, false, $section_id ),
 				'caption' => $caption,
 				'scrollable' => $scrollable,
+				'league_id' => $league->term_id,
 			);
 			if ( ! $show_teams ) {
 				$args['hide_teams'] = true;
 			}
-			if ( get_option( 'sportspress_load_splitting_seasons_module', 'yes' ) == 'yes' ) {
-				$args['league_id'] = $league->term_id;
-				sp_get_template( 'player-statistics-league-additional.php', $args, '', SP_SPLITTING_SEASONS_DIR . 'templates/' );
+
+			if ( has_action( 'sportspress_player_statistics_league_template' ) ) {
+				do_action( 'sportspress_player_statistics_league_template', $args );
 			} else {
 				sp_get_template( 'player-statistics-league.php', $args );
 			}
