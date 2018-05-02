@@ -76,9 +76,7 @@ foreach ( $teams as $team ) {
 foreach ( $data as $event ) {
 	$event_teams = array_filter( (array) get_post_meta( $event->ID, 'sp_team', false ) );
 	if ( sizeof( $event_teams ) <= 1 ) continue;
-	foreach ( $event_teams as $i => $event_team ) {
-		$rows[ $event_team ][ $event_teams[ (int) ( $i == 0 ) ] ][] = $event->ID;
-	}
+	$rows[ $event_teams[0] ][ $event_teams[1] ][] = $event->ID;
 }
 
 $rows = array_filter( $rows );
