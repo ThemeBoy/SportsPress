@@ -106,6 +106,14 @@ class SP_Modules {
 					'icon' => 'sp-icon-list',
 					'desc' => __( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
 				),
+				'midseason_transfers' => array(
+					'label' => __( 'Midseason Transfers', 'sportspress' ),
+					'class' => 'SportsPress_Midseason_Transfers',
+					'icon' => 'sp-icon-sub',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/midseason-transfers/',
+					'desc' => __( 'Statistics for players who transferred between teams during a season.', 'sportspress' ),
+					'default' => 'yes',
+				),
 				'staff_directories' => array(
 					'label' => __( 'Directories', 'sportspress' ),
 					'class' => 'SportsPress_Staff_Directories',
@@ -118,12 +126,6 @@ class SP_Modules {
 					'icon' => 'sp-icon-whistle',
 					'desc' => __( 'Manage referees, umpires, judges, timekeepers, and other officials.', 'sportspress' ),
 					'default' => 'no',
-				),
-				'splitting_seasons' => array(
-					'label' => __( 'Splitting Seasons (Mid-Season Transfers)', 'sportspress' ),
-					'icon' => 'sp-icon-star-filled',
-					'desc' => __( 'Enable support for Splitting Seasons aka Mid-Season Transfers!', 'sportspress' ),
-					'default' => 'yes',
 				),
 			),
 			'admin' => array(
