@@ -92,6 +92,7 @@ class SP_Meta_Box_Player_Statistics {
 	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array(), $total_types = array() ) {
 		$readonly = false;
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
+		$buffer = apply_filters( 'sportspress_meta_box_player_statistics_table_buffer', array( 'teams' => $teams, 'readonly' => $readonly ), $id );
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table">
@@ -106,6 +107,9 @@ class SP_Meta_Box_Player_Statistics {
 						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
 							<th><?php echo $label; ?></th>
 						<?php endforeach; ?>
+						<?php if ( $league_id > 0 ) {  ?>
+							<th>&plus;&minus;</th>
+						<?php }  ?>
 					</tr>
 				</thead>
 				<tfoot>
@@ -202,6 +206,10 @@ class SP_Meta_Box_Player_Statistics {
 									</td>
 								<?php endif; ?>
 							<?php endif; ?>
+							<?php
+							$collection = array( 'columns' => $columns, 'data' => $data, 'placeholders' => $placeholders, 'merged' => $merged, 'seasons_teams' => array(), 'has_checkboxes' => $has_checkboxes, 'formats' => $formats, 'total_types' => $total_types, 'buffer' => $buffer );
+							list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types, $buffer ) = array_values( apply_filters( 'sportspress_meta_box_player_statistics_collection', $collection, $id, $league_id, $div_id, $value ) );
+							?>
 							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
 								?>
 								<td><?php
@@ -226,10 +234,13 @@ class SP_Meta_Box_Player_Statistics {
 									}
 								?></td>
 							<?php endforeach; ?>
+							<?php do_action( 'sportspress_meta_box_player_statistics_table_row', $id, $league_id, $div_id, $team_select, $buffer, $i ); ?>
 						</tr>
 						<?php
 						$i++;
+						do_action( 'sportspress_meta_box_player_statistics_table_after_row', $id, $league_id, $div_id, $team_select, $buffer, $i );
 					endforeach;
+					do_action( 'sportspress_meta_box_player_statistics_table_tbody', $id, $league_id, $div_id, $team_select, $buffer );
 					?>
 				</tbody>
 			</table>
