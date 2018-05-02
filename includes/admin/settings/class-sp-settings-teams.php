@@ -58,27 +58,19 @@ class SP_Settings_Teams extends SP_Settings_Page {
 					'type' 		=> 'checkbox',
 				),
 
-                array(
-                    'title'     => __( 'Link', 'sportspress' ),
-                    'desc' 		=> __( 'Link teams', 'sportspress' ),
-                    'id' 		=> 'sportspress_link_teams',
-                    'default'	=> 'no',
-                    'type' 		=> 'checkbox',
-                ),
+				array(
+					'title'     => __( 'Link', 'sportspress' ),
+					'desc' 		=> __( 'Link teams', 'sportspress' ),
+					'id' 		=> 'sportspress_link_teams',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
 
 				array(
 					'title'     => __( 'Venue', 'sportspress' ),
 					'desc' 		=> __( 'Link venues', 'sportspress' ),
 					'id' 		=> 'sportspress_team_link_venues',
 					'default'	=> 'no',
-					'type' 		=> 'checkbox',
-				),
-
-				array(
-					'title'     => __( 'Abbreviation', 'sportspress' ),
-					'desc' 		=> __( 'Abbreviate team names', 'sportspress' ),
-					'id' 		=> 'sportspress_abbreviate_teams',
-					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
 				),
 

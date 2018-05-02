@@ -317,9 +317,11 @@ function sp_the_short_name( $post = 0 ) {
 	echo sp_team_short_name( $post );
 }
 
-function sp_get_team_name( $post = 0, $short = true ) {
-	if ( $short ) {
+function sp_team_name( $post = 0, $length = 'full' ) {
+	if ( 'abbreviation' == $length ) {
 		return sp_team_abbreviation( $post );
+	} elseif ( 'short' == $length ) {
+		return sp_team_short_name( $post );
 	} else {
 		return get_the_title( $post );
 	}

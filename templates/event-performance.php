@@ -16,7 +16,6 @@ $show_numbers = get_option( 'sportspress_event_show_player_numbers', 'yes' ) ===
 $show_position = get_option( 'sportspress_event_show_position', 'yes' ) === 'yes' ? true : false;
 $show_minutes = get_option( 'sportspress_event_performance_show_minutes', 'no' ) === 'yes' ? true : false;
 $sections = get_option( 'sportspress_event_performance_sections', -1 );
-$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 $reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
 $primary = sp_get_main_performance_option();
 $total = get_option( 'sportspress_event_total_performance', 'all');
@@ -226,7 +225,7 @@ if ( is_array( $teams ) ):
 								'show_numbers' => $show_numbers,
 								'show_minutes' => $show_minutes,
 								'show_total' => $show_total,
-								'caption' => 0 == $s && $team_id ? sp_get_team_name( $team_id, $abbreviate_teams ) : null,
+								'caption' => 0 == $s && $team_id ? sp_team_short_name( $team_id ) : null,
 								'labels' => $labels[ $section_id ],
 								'formats' => $formats,
 								'mode' => $mode,
@@ -263,7 +262,7 @@ if ( is_array( $teams ) ):
 						'show_numbers' => $show_numbers,
 						'show_minutes' => $show_minutes,
 						'show_total' => $show_total,
-						'caption' => $team_id ? sp_get_team_name( $team_id, $abbreviate_teams ) : null,
+						'caption' => $team_id ? sp_team_short_name( $team_id ) : null,
 						'labels' => $labels,
 						'formats' => $formats,
 						'mode' => $mode,

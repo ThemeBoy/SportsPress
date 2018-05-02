@@ -30,7 +30,6 @@ $defaults = array(
 	'link_events' => get_option( 'sportspress_link_events', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_venues' => get_option( 'sportspress_link_venues', 'yes' ) == 'yes' ? true : false,
-	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
@@ -199,7 +198,7 @@ $identifier = uniqid( 'eventlist_' );
 
 					if ( $teams ):
 						foreach ( $teams as $t => $team ):
-							$name = sp_get_team_name( $team, $abbreviate_teams );
+							$name = sp_team_short_name( $team );
 							if ( $name ):
 
 								$name = '<meta itemprop="name" content="' . $name . '">' . $name;

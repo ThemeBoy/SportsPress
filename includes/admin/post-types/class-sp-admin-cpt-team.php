@@ -62,7 +62,7 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 			'cb' => '<input type="checkbox" />',
 			'sp_icon' => '<span class="dashicons sp-icon-shield sp-tip" title="' . __( 'Logo', 'sportspress' ) . '"></span>',
 			'title' => null,
-			'sp_url' => __( 'URL', 'sportspress' ),
+			'sp_short_name' => __( 'Short Name', 'sportspress' ),
 			'sp_abbreviation' => __( 'Abbreviation', 'sportspress' ),
 			'sp_league' => __( 'Leagues', 'sportspress' ),
 			'sp_season' => __( 'Seasons', 'sportspress' ),
@@ -81,8 +81,9 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 			case 'sp_icon':
 				echo has_post_thumbnail( $post_id ) ? edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-mini' ), '', '', $post_id ) : '';
 				break;
-			case 'sp_url':
-	        	echo strip_tags( sp_get_url( $post_id ), '<a>' );
+			case 'sp_short_name':
+				$short_name = get_post_meta ( $post_id, 'sp_short_name', true );
+				echo $short_name ? esc_html( $short_name ) : '&mdash;';
 				break;
 			case 'sp_abbreviation':
 				$abbreviation = get_post_meta ( $post_id, 'sp_abbreviation', true );

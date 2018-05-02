@@ -220,3 +220,13 @@ if ( !function_exists( 'sp_short_name' ) ) {
 		echo sp_get_short_name( $post );
 	}
 }
+
+if ( !function_exists( 'sp_get_team_name' ) ) {
+	function sp_get_team_name( $post = 0, $short = true ) {
+		if ( $short ) {
+			return sp_team_abbreviation( $post );
+		} else {
+			return get_the_title( $post );
+		}
+	}
+}
