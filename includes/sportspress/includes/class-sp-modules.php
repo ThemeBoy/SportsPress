@@ -119,6 +119,12 @@ class SP_Modules {
 					'desc' => __( 'Manage referees, umpires, judges, timekeepers, and other officials.', 'sportspress' ),
 					'default' => 'no',
 				),
+				'splitting_seasons' => array(
+					'label' => __( 'Splitting Seasons (Mid-Season Transfers)', 'sportspress' ),
+					'icon' => 'sp-icon-star-filled',
+					'desc' => __( 'Enable support for Splitting Seasons aka Mid-Season Transfers!', 'sportspress' ),
+					'default' => 'yes',
+				),
 			),
 			'admin' => array(
 				'tutorials' => array(
