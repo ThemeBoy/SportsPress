@@ -618,12 +618,12 @@ class SP_League_Table extends SP_Secondary_Post {
 						endif;
 					else:
 						// Solve
-						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $team_id, array() ), $stat->precision );
+						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $team_id, array() ), $stat->precision, 0, $team_id );
 
 						if ( '$gamesback' == $stat->equation )
 							$gb_column = $stat->post_name;
 
-						if ( ! in_array( $stat->equation, array( '$gamesback', '$streak', '$form', '$last5', '$last10', '$homerecord', '$awayrecord' ) ) ):
+						if ( ! in_array( $stat->equation, apply_filters( 'sportspress_equation_presets', array( '$gamesback', '$streak', '$form', '$last5', '$last10', '$homerecord', '$awayrecord' ) ) ) ):
 							// Adjustments
 							$adjustment = sp_array_value( $adjustments, $team_id, array() );
 
