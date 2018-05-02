@@ -291,17 +291,17 @@ function sp_team_logo( $post = 0 ) {
 	sp_get_template( 'team-logo.php', array( 'id' => $post ) );
 }
 
-function sp_team_abbreviation( $post = 0 ) {
+function sp_team_abbreviation( $post = 0, $forced = false ) {
 	$abbreviation = get_post_meta( $post, 'sp_abbreviation', true );
 	if ( $abbreviation ) {
 		return $abbreviation;
 	} else {
-		return sp_team_short_name( $post );
+		return $forced ? substr( strtoupper( sp_team_short_name( $post ) ), 0, 3 ) : sp_team_short_name( $post );
 	}
 }
 
-function sp_the_abbreviation( $post = 0 ) {
-	echo sp_team_abbreviation( $post );
+function sp_the_abbreviation( $post = 0, $forced = false ) {
+	echo sp_team_abbreviation( $post, $forced );
 }
 
 function sp_team_short_name( $post = 0 ) {
