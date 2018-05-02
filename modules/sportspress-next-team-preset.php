@@ -109,7 +109,7 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 					$logo = get_the_post_thumbnail( $team_id, 'sportspress-fit-icon' );
 					$icon = '<span class="team-logo">' . $logo . '</span>';
 				} else {
-					$icon = get_the_title( $team_id );
+					$icon = sp_team_abbreviation( $team_id, true );
 				}
 
 				return '<a title="' . $event->post_title . '" href="' . get_post_permalink( $event->ID, false, true ) . '">' . $icon . '</a>';
