@@ -27,9 +27,9 @@
 
 							if ( $show_team_names ) {
 								if ( $j % 2 ) {
-									$logo .= ' <strong class="sp-team-name">' . sp_get_team_name( $team, $abbreviate_teams ) . '</strong>';
+									$logo .= ' <strong class="sp-team-name">' . sp_team_short_name( $team ) . '</strong>';
 								} else {
-									$logo = '<strong class="sp-team-name">' . sp_get_team_name( $team, $abbreviate_teams ) . '</strong> ' . $logo;
+									$logo = '<strong class="sp-team-name">' . sp_team_short_name( $team ) . '</strong> ' . $logo;
 								}
 							}
 

@@ -393,7 +393,7 @@ class SP_Event extends SP_Custom_Post{
 			$stats[ $index ]['number'] = sp_array_value( $player_numbers, $details['id'] );
 
 			if ( 'team' === $details['key'] ) {
-				$name = sp_get_team_name( $details['team'] );
+				$name = sp_team_short_name( $details['team'] );
 				$stats[ $index ]['name'] = $name;
 				$stats[ $index ]['label'] = $name;
 				$stats[ $index ]['icon'] = sp_get_logo( $details['team'] );

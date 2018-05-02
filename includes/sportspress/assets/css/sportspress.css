@@ -176,15 +176,17 @@
 .sp-league-table td.has-logo {
 	line-height: 2em;
 }
-.sp-league-table .data-name .team-logo {
+.sp-league-table .team-logo {
 	width: 2em;
 	height: 2em;
-	margin-right: 0.5em;
 	display: inline-block;
 	vertical-align: middle;
 	text-align: center;
 }
-.sp-league-table .data-name .team-logo img {
+.sp-league-table .data-name .team-logo {
+	margin-right: 0.5em;
+}
+.sp-league-table .team-logo img {
 	width: auto;
 	height: auto;
 	max-width: 2em;

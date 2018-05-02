@@ -38,7 +38,6 @@ class SP_League_Table extends SP_Secondary_Post {
 		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
-		$team_name_length = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? 'abbreviation' : 'full';
 		$link_events = get_option( 'sportspress_link_events', 'yes' ) === 'yes' ? true : false;
 		$form_limit = (int) get_option( 'sportspress_form_limit', 5 );
 
@@ -619,12 +618,12 @@ class SP_League_Table extends SP_Secondary_Post {
 						endif;
 					else:
 						// Solve
-						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $team_id, array() ), $stat->precision );
+						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $team_id, array() ), $stat->precision, 0, $team_id );
 
 						if ( '$gamesback' == $stat->equation )
 							$gb_column = $stat->post_name;
 
-						if ( ! in_array( $stat->equation, array( '$gamesback', '$streak', '$form', '$last5', '$last10', '$homerecord', '$awayrecord' ) ) ):
+						if ( ! in_array( $stat->equation, apply_filters( 'sportspress_equation_presets', array( '$gamesback', '$streak', '$form', '$last5', '$last10', '$homerecord', '$awayrecord' ) ) ) ):
 							// Adjustments
 							$adjustment = sp_array_value( $adjustments, $team_id, array() );
 
@@ -702,7 +701,7 @@ class SP_League_Table extends SP_Secondary_Post {
 			// Add team name to row
 			$merged[ $team_id ] = array();
 
-			$team_data['name'] = sp_team_name( $team_id, $team_name_length );
+			$team_data['name'] = sp_team_short_name( $team_id );
 
 			foreach ( $team_data as $key => $value ):
 

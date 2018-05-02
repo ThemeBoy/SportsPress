@@ -1290,10 +1290,10 @@ if ( !function_exists( 'sp_get_eos_safe_slug' ) ) {
 }
 
 if ( !function_exists( 'sp_solve' ) ) {
-	function sp_solve( $equation, $vars, $precision = 0, $default = 0 ) {
+	function sp_solve( $equation, $vars, $precision = 0, $default = 0, $post_id = 0 ) {
 
 		// Add a hook to alter $equation
-		$equation = apply_filters( 'sportspress_equation_alter', $equation, $vars );
+		$equation = apply_filters( 'sportspress_equation_alter', $equation, $vars, $precision, $default );
 		
 		if ( $equation == null )
 			return $default;
@@ -1345,6 +1345,10 @@ if ( !function_exists( 'sp_solve' ) ) {
 			$awayrecord = sp_array_value( $vars, 'awayrecord', array( 0 ) );
 			return implode( '-', $awayrecord );
 
+		endif;
+
+		if ( $solution = apply_filters( 'sportspress_equation_solve_for_presets', null, $equation, $post_id ) ):
+			return $solution;
 		endif;
 
 		// Remove unnecessary variables from vars before calculating
