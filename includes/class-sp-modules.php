@@ -106,6 +106,14 @@ class SP_Modules {
 					'icon' => 'sp-icon-list',
 					'desc' => __( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
 				),
+				'midseason_transfers' => array(
+					'label' => __( 'Midseason Transfers', 'sportspress' ),
+					'class' => 'SportsPress_Midseason_Transfers',
+					'icon' => 'sp-icon-sub',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/midseason-transfers/',
+					'desc' => __( 'Statistics for players who transferred between teams during a season.', 'sportspress' ),
+					'default' => 'yes',
+				),
 				'staff_directories' => array(
 					'label' => __( 'Directories', 'sportspress' ),
 					'class' => 'SportsPress_Staff_Directories',

@@ -69,11 +69,17 @@ if ( is_array( $leagues ) ):
 				'data' => $player->data( $league->term_id, false, $section_id ),
 				'caption' => $caption,
 				'scrollable' => $scrollable,
+				'league_id' => $league->term_id,
 			);
 			if ( ! $show_teams ) {
 				$args['hide_teams'] = true;
 			}
-			sp_get_template( 'player-statistics-league.php', $args );
+
+			if ( has_action( 'sportspress_player_statistics_league_template' ) ) {
+				do_action( 'sportspress_player_statistics_league_template', $args );
+			} else {
+				sp_get_template( 'player-statistics-league.php', $args );
+			}
 		endforeach;
 
 		if ( $show_career_totals ) {
