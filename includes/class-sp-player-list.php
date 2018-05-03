@@ -115,7 +115,7 @@ class SP_Player_List extends SP_Secondary_Post {
 			if ( !empty( $assignments ) ) {
 				$args['meta_query'] = array(
 					array(
-						'key' => 'sp_player_assignments',
+						'key' => 'sp_assignments',
 						'value' => $assignments,
 						'compare' => 'IN'
 					),

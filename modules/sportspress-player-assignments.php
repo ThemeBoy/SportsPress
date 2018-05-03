@@ -46,17 +46,17 @@ class SportsPress_Player_Assignments {
 	 * Save Additional Statistics
 	 */
 	public function save_additional_statistics( $post_id, $post_data ) {
-		$old = (array) get_post_custom_values( 'sp_player_assignments', $post_id );
+		$old = (array) get_post_custom_values( 'sp_assignments', $post_id );
 		
 		$leagues = $post_data['sp_leagues'];
-		$transfers = get_post_meta($post_id, 'sp_player_assignments', true);
+		$transfers = get_post_meta($post_id, 'sp_assignments', true);
 		
 		foreach ( $leagues as $l_id => $season ) {
 			foreach ( $season as $s_id => $team_id ) {
 				if ( $team_id != '-1' ) {
 					$serialized = $l_id.'_'.$s_id.'_'.$team_id;
 					if( !in_array( $serialized, $old ) ){
-						add_post_meta( $post_id, 'sp_player_assignments', $serialized, false );
+						add_post_meta( $post_id, 'sp_assignments', $serialized, false );
 					}
 				}
 				//Check if there are any Mid-Season transfers
@@ -64,7 +64,7 @@ class SportsPress_Player_Assignments {
 					foreach ( $transfers[$l_id][$s_id] as $t_id => $performance ) {
 						$serialized = $l_id.'_'.$s_id.'_'.$t_id;
 						if( !in_array( $serialized, $old ) ){
-							add_post_meta( $post_id, 'sp_player_assignments', $serialized, false );
+							add_post_meta( $post_id, 'sp_assignments', $serialized, false );
 						}
 					}
 				}
