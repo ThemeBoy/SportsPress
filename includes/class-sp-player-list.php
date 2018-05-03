@@ -48,14 +48,11 @@ class SP_Player_List extends SP_Secondary_Post {
 		$order = get_post_meta( $this->ID, 'sp_order', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
 		//Player Assignments
-		$enable_assignments = get_option( 'sportspress_load_player_assignments_module', 'yes' );
 		$assignments = array();
-		if ( $enable_assignments == 'yes' ) {
-			foreach ( $league_ids as $l_id ) {
-				foreach ( $season_ids as $s_id ) {
-					if ( $team != '0' ) {
-						$assignments[] = $l_id.'_'.$s_id.'_'.$team;
-					}
+		foreach ( $league_ids as $l_id ) {
+			foreach ( $season_ids as $s_id ) {
+				if ( $team != '0' ) {
+					$assignments[] = $l_id.'_'.$s_id.'_'.$team;
 				}
 			}
 		}
@@ -112,7 +109,7 @@ class SP_Player_List extends SP_Secondary_Post {
 				),
 			);
 			//Use the Player Assignments to filter players
-			if ( !empty( $assignments ) ) {
+			if ( false ) {
 				$args['meta_query'] = array(
 					array(
 						'key' => 'sp_assignments',
