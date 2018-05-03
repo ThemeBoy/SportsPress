@@ -45,7 +45,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 		</p>
 		<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 		<p>
-			<input name="sp_abbreviation" type="text" id="sp_abbreviation" value="<?php echo $abbreviation; ?>" placeholder="<?php echo substr( $post->post_title, 0, 1 ); ?>">
+			<input name="sp_abbreviation" type="text" id="sp_abbreviation" value="<?php echo $abbreviation; ?>" placeholder="<?php echo mb_substr( $post->post_title, 0, 1 ); ?>">
 		</p>
 		<p><strong><?php _e( 'Color', 'sportspress' ); ?></strong></p>
 		<p>
