@@ -1,5 +1,123 @@
 == SportsPress Changelog ==
 
+= 2.6 =
+* Feature - Add custom details to events using event specs.
+* Feature - Conditional equations for variables.
+* Feature - Display the next opponent in league tables.
+* Feature - Short name option added to teams.
+* Feature - Automatic event titles using short name when available.
+* Feature - Display featured image in countdown widget.
+* Tweak - Relative date option added to editor shortcodes.
+* Tweak - Display only current team in player list.
+* Tweak - Filter players dropdown by current team only.
+* Tweak - Allow 0 as a squad number when importing players.
+* Tweak - Prevent filtering through empty results.
+* Fix - Interpreting non-integer substitution times.
+* Fix - Warning when sorting terms without order.
+* Localization - Add WPML support to staff header.
+* Localization - Fix RTL not being applied in league tables.
+
+= 2.5.10 =
+* Fix - Date ranges not being applied to calendars.
+
+= 2.5.9 =
+* Fix - Unpublished posts being displayed in some themes.
+
+= 2.5.8 =
+* Fix - Display scheduled events using default permalinks via archives and third-party widgets.
+
+= 2.5.7 =
+* Fix - Blank general settings screen on WordPress versions prior to 4.9.
+* Fix - Revert responsive table behavior to prevent display issues on mobile.
+
+= 2.5.6 =
+* Tweak - Adjust player-related hooks.
+* Fix - Turn off responsive tables by default.
+
+= 2.5.5 =
+* Feature - Main league and current season settings.
+* Feature - New shortcode including full staff profile.
+* Feature - Add code highlighting to custom CSS field.
+* Feature - Add responsive layout option to tables.
+* Feature - Add filters to REST API players endpoint.
+* Feature - Option to merge duplicate teams, players, and staff.
+* Feature - Option to display specific event in event blocks.
+* Feature - Option to sort player checklist by name and squad number in events.
+* Feature - Option to filter player lists by team.
+* Feature - Option to link staff members.
+* Feature - Filter countdown by calendar.
+* Fix - Calculate column totals in box score.
+* Fix - Mismatched encoding of included library.
+* Localization - Fix translation function missing around string.
+
+= 2.5.4 =
+* Fix - Error when editing league table using older versions of WordPress.
+
+= 2.5.3 =
+* Fix - Calendar templates not loading when timezone setting is relative to UTC.
+
+= 2.5.2 =
+* Feature - Add match day to REST API.
+* Tweak - Add order to positions during preset installation.
+* Tweak - Display links to add new duties and officials if empty.
+* Tweak - Add linebreaks to substitute dropdowns.
+* Fix - Use default full time minutes in REST API.
+* Fix - Uploading custom images as performance icons.
+* Fix - Displaying timed performance with custom images.
+
+= 2.5.1 =
+* Feature - Officials importer.
+* Feature - Officials added to dashboard glance items.
+* Feature - Order setting added to staff jobs for custom sorting.
+* Tweak - Display only the highest order job in staff profiles.
+* Tweak - Require box score importer to be accessed from within an event.
+* Tweak - Add hook to declare importable post types.
+* Fix - Officials meta box in events when module is inactive.
+* Fix - Issues when timezone is not set.
+
+= 2.5 =
+* Feature - Player of the match and star numbers added to box scores.
+* Feature - Officials module for displaying referee appointments in matches.
+* Feature - New player performance icons to choose from.
+* Feature - Schema microdata added to event calendars, lists, and blocks.
+* Feature - Box score importer for updating existing events.
+* Feature - Order setting added to taxonomies for custom sorting.
+* Feature - New relative date range options in event calendars.
+* Feature - Date range options added to league tables and player lists.
+* Feature - Option to hide players with zero statistics in player list.
+* Tweak - Allow staff members to have multiple jobs.
+* Tweak - Indicator dots added to calendars with events in frontend stylesheet.
+* Tweak - Box score columns are now selected by default when adding new events.
+* Tweak - Events made sortable by match day in admin.
+* Tweak - Competitions renamed to leagues.
+* Fix - Quick edit teams not showing when filtering players by team.
+* Fix - Calendar feeds not updating without E-tag.
+* Fix - Admin table cells wrapping.
+* Fix - Timezone issues in calendars.
+
+= 2.4.3 =
+* Fix - Substitute Typo.
+* Fix - WordPay image trailing slash.
+
+= 2.4.2 =
+* Feature - Add visibility option to player metrics.
+* Fix - Remove protocol from default Gravatar images to prevent mix content warnings.
+
+= 2.4.1 =
+* Fix - Static function displaying notice in header.
+
+= 2.4 =
+* Feature - Integration with WordPay to allow paid team and player registrations.
+* Feature - New team gallery shortcode and widget for displaying a gallery of team logos.
+* Feature - Added support for player career totals based on calculated averages.
+* Tweak - Allow competitions to be selected for friendly matches.
+* Tweak - Added columns selector to gallery shortcodes.
+* Fix - Full time defaulting to 90 minutes.
+* Fix - Statistic format not reflected in meta box.
+* Fix - Shortcode button hook timing conflicts.
+* Preset - Swap par and score in golf preset.
+* Preset - Update all presets to reflect new career total type.
+
 = 2.3.2 =
 * Fix - Team in player statistics total row displaying as zero.
 * Fix - Notice when no sendoffs are available during minutes played calculation.
