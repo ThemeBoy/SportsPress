@@ -493,6 +493,10 @@
 }
 
 /* Countdowns */
+.sp-template-countdown .event-image img {
+	display: block;
+	margin: 0 auto;
+}
 .sp-template-countdown .event-name {
 	clear: both;
 	overflow: hidden;

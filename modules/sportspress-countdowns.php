@@ -82,18 +82,19 @@ class SportsPress_Countdowns {
 
 			apply_filters( 'sportspress_countdown_options', array(
 				array(
-					'title'     => __( 'Teams', 'sportspress' ),
-					'desc' 		=> __( 'Display logos', 'sportspress' ),
+					'title'     => __( 'Display', 'sportspress' ),
+					'desc' 		=> __( 'Logos', 'sportspress' ),
 					'id' 		=> 'sportspress_countdown_show_logos',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'start',
 				),
 				array(
-					'title'     => __( 'Featured Image', 'sportspress' ),
-					'desc' 		=> __( 'Display featured image of event', 'sportspress' ),
-					'id' 		=> 'sportspress_countdown_show_featured_image',
+					'desc' 		=> __( 'Featured Image', 'sportspress' ),
+					'id' 		=> 'sportspress_countdown_show_thumbnail',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'end',
 				),
 			)),
 
