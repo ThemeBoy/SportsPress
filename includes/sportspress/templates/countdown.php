@@ -21,7 +21,7 @@ $defaults = array(
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_venues' => get_option( 'sportspress_link_venues', 'no' ) == 'yes' ? true : false,
 	'show_logos' => get_option( 'sportspress_countdown_show_logos', 'no' ) == 'yes' ? true : false,
-	'show_feat_image' => get_option( 'sportspress_countdown_show_featured_image', 'no' ) == 'yes' ? true : false,
+	'show_thumbnail' => get_option( 'sportspress_countdown_show_thumbnail', 'no' ) == 'yes' ? true : false,
 );
 if ( isset( $id ) ):
 	$post = get_post( $id );
@@ -77,10 +77,10 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 <div class="sp-template sp-template-countdown">
 	<div class="sp-countdown-wrapper">
 	<?php 
-	if ( $show_feat_image && has_post_thumbnail( $post ) ) {
+	if ( $show_thumbnail && has_post_thumbnail( $post ) ) {
 	?>
-	<h2 class="event-name sp-event-name">
-	<?php echo get_the_post_thumbnail( $post ); ?>
+	<div class="event-image sp-event-image">
+		<?php echo get_the_post_thumbnail( $post ); ?>
 	</h2>
 	<?php } ?>
 		<h3 class="event-name sp-event-name">
