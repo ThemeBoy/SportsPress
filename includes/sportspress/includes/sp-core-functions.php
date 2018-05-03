@@ -418,7 +418,7 @@ if ( !function_exists( 'sp_get_post_abbreviation' ) ) {
 		if ( $abbreviation ):
 			return $abbreviation;
 		else:
-			return substr( get_the_title( $post_id ), 0, 1 );
+			return mb_substr( get_the_title( $post_id ), 0, 1 );
 		endif;
 	}
 }

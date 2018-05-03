@@ -323,7 +323,7 @@ class SP_Team extends SP_Custom_Post {
 				$outcome = reset( $outcomes );
 				$abbreviation = get_post_meta( $outcome->ID, 'sp_abbreviation', true );
 				if ( ! $abbreviation )
-					$abbreviation = substr( $outcome->post_title, 0, 1 );
+					$abbreviation = mb_substr( $outcome->post_title, 0, 1 );
 				$totals['streak'] = $abbreviation . $streak['count'];
 			endif;
 
