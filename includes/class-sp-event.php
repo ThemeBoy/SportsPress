@@ -629,6 +629,9 @@ class SP_Event extends SP_Custom_Post{
 				$outcomes = get_posts( $args );
 				foreach ( $meta as $team => $team_results ) {
 					if ( $outcomes ) {
+						if ( empty( $meta[ $team ] ) ) {
+							$meta[ $team ] = array();
+						}
 						$meta[ $team ][ 'outcome' ] = array();
 						foreach ( $outcomes as $outcome ) {
 							$meta[ $team ][ 'outcome' ][] = $outcome->post_name;
