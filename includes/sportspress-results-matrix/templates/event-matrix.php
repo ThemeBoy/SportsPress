@@ -149,19 +149,19 @@ if ( $posts ) {
 									<?php
 									$results = array();
 									foreach ( $events as $event ) {
-										$result = implode( '-', sp_get_main_results_or_date( $event, $date_format ) );
-
 										$outcome = sp_array_value( sp_get_outcome( $event ), $home_id, null );
 
 										if ( $link_events ) {
 											if ( $outcome ) {
+												$result = implode( '-', sp_get_main_results_or_date( $event, $date_format ) );
 												$color = sp_array_value( $colors, $outcome, '#888888' );
 												$result = '<a class="sp-event-matrix-event sp-event-matrix-event-' . $outcome . '" style="background-color: ' . $color . ';" href="' . get_post_permalink( $event, false, true ) . '">' . $result . '</a>';
 											} else {
 												$result = '<a class="sp-event-matrix-future-event" href="' . get_post_permalink( $event, false, true ) . '">' . $result . '</a>';
 											}
 										} else {
-											$result = '<span class="sp-event-matrix-event-' . $outcome . '" style="background-color: ' . $color . ';">' . $result . '</span>';
+											$result = sp_get_date( $event, $date_format );
+											$result = '<span class="sp-event-matrix-event sp-event-matrix-event-' . $outcome . '" style="background-color: ' . $color . ';">' . $result . '</span>';
 										}
 
 										$results[] = $result;

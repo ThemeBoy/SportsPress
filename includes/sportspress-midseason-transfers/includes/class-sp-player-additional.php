@@ -458,7 +458,7 @@ class SP_Player_Additional extends SP_Player {
 			if ( $outcomes ):
 				$outcome = reset( $outcomes );
 				$abbreviation = sp_get_abbreviation( $outcome->ID );
-				if ( empty( $abbreviation ) ) $abbreviation = strtoupper( substr( $outcome->post_title, 0, 1 ) );
+				if ( empty( $abbreviation ) ) $abbreviation = mb_strtoupper( mb_substr( $outcome->post_title, 0, 1 ) );
 				$totals['streak'] = $abbreviation . $streak['count'];
 			endif;
 
