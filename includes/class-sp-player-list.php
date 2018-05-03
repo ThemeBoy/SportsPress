@@ -47,6 +47,18 @@ class SP_Player_List extends SP_Secondary_Post {
 		$crop = get_post_meta( $this->ID, 'sp_crop', true );
 		$order = get_post_meta( $this->ID, 'sp_order', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
+		//Player Assignments
+		$enable_assignments = get_option( 'sportspress_load_player_assignments_module', 'yes' );
+		$assignments = array();
+		if ( $enable_assignments == 'yes' ) {
+			foreach ( $league_ids as $l_id ) {
+				foreach ( $season_ids as $s_id ) {
+					if ( $team != '0' ) {
+						$assignments[] = $l_id.'_'.$s_id.'_'.$team;
+					}
+				}
+			}
+		}
 
 		$this->date = $this->__get( 'date' );
 
@@ -99,7 +111,17 @@ class SP_Player_List extends SP_Secondary_Post {
 					'relation' => 'AND',
 				),
 			);
-
+			//Use the Player Assignments to filter players
+			if ( !empty( $assignments ) ) {
+				$args['meta_query'] = array(
+					array(
+						'key' => 'sp_player_assignments',
+						'value' => $assignments,
+						'compare' => 'IN'
+					),
+				);
+			}else{
+			//Use the legacy way to filter players
 			if ( $league_ids ):
 				$args['tax_query'][] = array(
 					'taxonomy' => 'sp_league',
@@ -115,15 +137,7 @@ class SP_Player_List extends SP_Secondary_Post {
 					'terms' => $season_ids
 				);
 			endif;
-
-			if ( $position_ids ):
-				$args['tax_query'][] = array(
-					'taxonomy' => 'sp_position',
-					'field' => 'term_id',
-					'terms' => $position_ids
-				);
-			endif;
-
+			
 			if ( $team ):
 				$team_key = 'sp_team';
 				switch ( $era ):
@@ -139,6 +153,16 @@ class SP_Player_List extends SP_Secondary_Post {
 						'key' => $team_key,
 						'value' => $team
 					),
+				);
+			endif;
+			
+			}
+
+			if ( $position_ids ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_position',
+					'field' => 'term_id',
+					'terms' => $position_ids
 				);
 			endif;
 
