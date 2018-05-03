@@ -31,8 +31,9 @@ class SportsPress_Timelines {
 
 		// Hooks
 		add_filter( 'sportspress_event_templates', array( $this, 'templates' ) );
-	    add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
+		add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
+		add_filter( 'sportspress_event_settings', array( $this, 'add_settings' ) );
 	}
 
 	/**

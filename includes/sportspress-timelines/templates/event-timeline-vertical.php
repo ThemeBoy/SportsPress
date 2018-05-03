@@ -33,10 +33,9 @@ $minutes = $event->minutes();
 			<tbody>
 			<?php $x=0; ?>
 			<?php foreach ( $timeline as $minute => $details ) {
-				$class = ($x%2 == 0)? 'aliceblue': 'bisque';
+				$class = ( $x % 2 == 0 ) ? 'odd': 'even';
 				$x++;
-						?>
-				<?php
+
 				$time = sp_array_value( $details, 'time', false );
 				if ( false === $time ) continue;
 				if ( $time > 0 ) {
@@ -75,9 +74,9 @@ $minutes = $event->minutes();
 					}
 					?>
 					<?php if( $side=='home' ) { ?> 
-					<tr style="background-color:<?php echo $class; ?>"><td class="home_event" style="text-align: right;" width="48%"><?php echo $name; ?></td><td style="vertical-align:middle" class="home_event_minute" width="4%"><?php echo $time; ?>'</td><td class="away_event" width="48%">&nbsp;</td></tr>
+					<tr class="<?php echo $class; ?>"><td class="sp-vertical-timeline-minute sp-vertical-timeline-minute-home" style="text-align: right;" width="48%"><?php echo $name; ?></td><td style="vertical-align:middle" class="home_event_minute" width="4%"><?php echo $time; ?>'</td><td class="away_event" width="48%">&nbsp;</td></tr>
 					<?php }else{ ?>
-					<tr style="background-color:<?php echo $class; ?>"><td class="home_event" width="48%">&nbsp;</td><td style="vertical-align:middle" class="home_event_minute" width="4%"><?php echo $time; ?>'</td><td class="away_event" style="text-align: left;" width="48%"><?php echo $name; ?></td></tr>
+					<tr class="<?php echo $class; ?>"><td class="sp-vertical-timeline-minute sp-vertical-timeline-minute-away" width="48%">&nbsp;</td><td style="vertical-align:middle" class="home_event_minute" width="4%"><?php echo $time; ?>'</td><td class="away_event" style="text-align: left;" width="48%"><?php echo $name; ?></td></tr>
 				<?php }
 				}
 				}

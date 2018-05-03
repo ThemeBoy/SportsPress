@@ -186,12 +186,12 @@ final class SportsPress_Pro {
 		<div class="feature-section two-col">
 			<div class="col">
 				<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-group-stages.png" alt="Tournament Group Stages">
-				<h3>Tournament Group Stages</h3>
+				<h3>Results Matrix</h3>
 				<p>Support for group stages have been added natively to tournaments, allowing you to create and attach league tables to be displayed directly below tournament brackets.</p>
 			</div>
 			<div class="col">
 				<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-sponsor-levels.png" alt="Sponsorship Levels">
-				<h3>Sponsorship Levels</h3>
+				<h3>Vertical Timelines</h3>
 				<p>Assign levels to sponsors based on their contribution or other factors. Sponsors can now be filtered based on their sponsorship level within widgets, allowing for level-specific sponsor treament.<p>
 			</div>
 		</div>
