@@ -112,7 +112,20 @@ class SportsPress_Player_Assignments {
 
 		$players = array_merge( $assigned_players, $players );
 
+		foreach ( $players as $i => $player ) {
+			$player->sp_number = get_post_meta( $player->ID, 'sp_number', true );
+		}
+
+		uasort( $players, array( $this, 'sort' ) );
+
 		return $players;
+	}
+
+	public function sort( $a, $b ) {
+    if ($a->sp_number == $b->sp_number) {
+        return 0;
+    }
+    return ($a->sp_number < $b->sp_number) ? -1 : 1;
 	}
 }
 endif;
