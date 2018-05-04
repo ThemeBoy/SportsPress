@@ -36,6 +36,8 @@ class SportsPress_Midseason_Transfers {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'sportspress_process_sp_player_meta', array( $this, 'save_meta_box' ), 20 );
 		add_action( 'sportspress_player_statistics_league_template', array( $this, 'template' ) );
+		add_action( 'sportspress_meta_box_player_statistics_table_header_row', array( $this, 'placeholder_cell' ), 10, 2 );
+		add_action( 'sportspress_meta_box_player_statistics_table_footer_row', array( $this, 'placeholder_cell' ), 10, 2 );
 		add_action( 'sportspress_meta_box_player_statistics_table_row', array( $this, 'row' ), 10, 3 );
 		add_action( 'sportspress_meta_box_player_statistics_table_after_row', array( $this, 'after_row' ), 10, 6 );
 		add_action( 'sportspress_meta_box_player_statistics_table_tbody', array( $this, 'tbody' ), 10, 5 );
@@ -101,6 +103,14 @@ class SportsPress_Midseason_Transfers {
 		}
 		elseif ( empty($new) && $old ) {
 			delete_post_meta( $post_id, 'sp_additional_statistics', $old );
+		}
+	}
+
+	public function placeholder_cell( $player_id = null, $league_id = 0) {
+		if ( $league_id > 0 ) { 
+			?>
+			<td>&nbsp;</td>
+			<?php
 		}
 	}
 
@@ -224,11 +234,6 @@ class SportsPress_Midseason_Transfers {
 									'terms' => $league_id,
 									'field' => 'term_id',
 								),
-								/*array(
-									'taxonomy' => 'sp_season',
-									'terms' => $div_id,
-									'field' => 'term_id',
-								),*/
 							),
 						);
 						if ( ! sp_dropdown_pages( $args ) ):

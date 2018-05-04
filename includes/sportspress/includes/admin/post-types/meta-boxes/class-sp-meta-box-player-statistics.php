@@ -106,9 +106,7 @@ class SP_Meta_Box_Player_Statistics {
 						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
 							<th><?php echo $label; ?></th>
 						<?php endforeach; ?>
-						<?php if ( $league_id > 0 ) {  ?>
-							<th>&plus;&minus;</th>
-						<?php }  ?>
+						<?php do_action( 'sportspress_meta_box_player_statistics_table_header_row', $id, $league_id ); ?>
 					</tr>
 				</thead>
 				<tfoot>
@@ -144,6 +142,7 @@ class SP_Meta_Box_Player_Statistics {
 								}
 							?></td>
 						<?php endforeach; ?>
+						<?php do_action( 'sportspress_meta_box_player_statistics_table_footer_row', $id, $league_id ); ?>
 					</tr>
 				</tfoot>
 				<tbody>
