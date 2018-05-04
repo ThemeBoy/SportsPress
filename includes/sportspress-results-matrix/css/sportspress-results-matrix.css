@@ -7,13 +7,16 @@
   white-space: nowrap;
 }
 
+.sp-event-matrix .sp-event-matrix-team-logo {
+  width: 2em;
+  height: 2em;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+
 .sp-event-matrix tbody .sp-event-matrix-team-logo {
-	width: 2em;
-	height: 2em;
-	margin-right: 0.5em;
-	display: inline-block;
-	vertical-align: middle;
-	text-align: center;
+  margin-right: 0.5em;
 }
 
 .sp-event-matrix thead .sp-event-matrix-event-column {

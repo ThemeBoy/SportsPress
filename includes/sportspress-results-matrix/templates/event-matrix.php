@@ -114,7 +114,12 @@ if ( $posts ) {
 				<?php foreach ( $rows as $team_id => $row ) { ?>
 					<th class="sp-event-matrix-label">
 						<?php
-						$name = sp_team_abbreviation( $team_id, true );
+						if ( $show_team_logo && has_post_thumbnail( $team_id ) ) {
+							$name = '<span class="sp-event-matrix-team-logo">' . sp_get_logo( $team_id, 'mini', array( 'itemprop' => 'url' ) ) . '</span>';
+						} else {
+							$name = sp_team_abbreviation( $team_id, true );
+						}
+
 						if ( $link_teams ) {
 							echo '<a href="' . get_post_permalink( $team_id ) . '" title="' . $team_names[ $team_id ] . '">' . $name . '</a>';
 						} else {
