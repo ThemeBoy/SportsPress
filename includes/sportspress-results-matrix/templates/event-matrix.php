@@ -60,8 +60,10 @@ $args = array(
 	'post_type' => 'sp_team',
 	'numberposts' => -1,
 	'posts_per_page' => -1,
-	'orderby' => 'title',
-	'order' => 'ASC',
+	'orderby' => array(
+		'menu_order' => 'ASC',
+		'title' => 'ASC',
+	),
 );
 $teams = get_posts( $args );
 
