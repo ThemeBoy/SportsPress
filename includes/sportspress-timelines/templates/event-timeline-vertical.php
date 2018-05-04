@@ -26,10 +26,10 @@ $link_players = get_option( 'sportspress_link_players', 'no' ) == 'yes' ? true :
 $minutes = $event->minutes();
 
 ?>
-<div class="sp-template sp-template-timeline sp-template-event-timeline">
+<div class="sp-template sp-template-timeline sp-template-event-timeline sp-template-vertical-timeline">
 	<h4 class="sp-table-caption"><?php _e( 'Timeline', 'sportspress' ); ?></h4>
 	<div class="sp-table-wrapper">
-		<table>
+		<table class="sp-vertical-timeline sp-data-table">
 			<tbody>
 			<?php $x=0; ?>
 			<?php foreach ( $timeline as $minute => $details ) {
