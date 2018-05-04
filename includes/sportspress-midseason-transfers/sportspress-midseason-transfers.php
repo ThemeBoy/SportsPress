@@ -34,7 +34,7 @@ class SportsPress_Midseason_Transfers {
 
 		// Hooks
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'sportspress_process_sp_player_meta', array( $this, 'save_meta_box' ) );
+		add_action( 'sportspress_process_sp_player_meta', array( $this, 'save_meta_box' ), 20 );
 		add_action( 'sportspress_player_statistics_league_template', array( $this, 'template' ) );
 		add_action( 'sportspress_meta_box_player_statistics_table_row', array( $this, 'row' ), 10, 3 );
 		add_action( 'sportspress_meta_box_player_statistics_table_after_row', array( $this, 'after_row' ), 10, 6 );
@@ -91,6 +91,7 @@ class SportsPress_Midseason_Transfers {
 				$new[$league][$seasons[$i]][$teams[$i]]['transdatefrom'] = $transdatefrom[$i];
 				foreach ( $labels as $label ) {
 					$new[$league][$seasons[$i]][$teams[$i]][$label] = $columns[$label][$i];
+					add_post_meta( $post_id, 'sp_assignments', $league.'_'.$seasons[$i].'_'.$teams[$i], false );
 				}
 			}
 			$i++;
