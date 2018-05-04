@@ -86,3 +86,4 @@ $minutes = $event->minutes();
 		</table>
 	</div>
 </div>
+<?php do_action( 'sportspress_after_vertical_timeline', $id );
