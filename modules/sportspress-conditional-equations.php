@@ -60,6 +60,7 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 		$options[ 'Operators' ]['>'] = '&gt;';
 		$options[ 'Operators' ]['<'] = '&lt;';
 		$options[ 'Operators' ]['=='] = '&equiv;';
+		$options[ 'Operators' ]['!='] = '&ne;';
 		$options[ 'Operators' ]['>='] = '&ge;';
 		$options[ 'Operators' ]['<='] = '&le;';
 		return $options;
@@ -117,6 +118,9 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 						break;
 					case '==':
 						$solution = (int) ( $leftvar == $rightvar );
+						break;
+					case '!=':
+						$solution = (int) ( $leftvar != $rightvar );
 						break;
 					case '>=':
 						$solution = (int) ( $leftvar >= $rightvar );
