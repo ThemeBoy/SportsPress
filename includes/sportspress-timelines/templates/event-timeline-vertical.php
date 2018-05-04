@@ -28,6 +28,7 @@ $minutes = $event->minutes();
 ?>
 <div class="sp-template sp-template-timeline sp-template-event-timeline sp-template-vertical-timeline">
 	<h4 class="sp-table-caption"><?php _e( 'Timeline', 'sportspress' ); ?></h4>
+	<?php do_action( 'sportspress_before_vertical_timeline', $id ); ?>
 	<div class="sp-table-wrapper">
 		<table class="sp-vertical-timeline sp-data-table">
 			<tbody>
@@ -85,5 +86,5 @@ $minutes = $event->minutes();
 			</tbody>
 		</table>
 	</div>
+	<?php do_action( 'sportspress_after_vertical_timeline', $id ); ?>
 </div>
-<?php do_action( 'sportspress_after_vertical_timeline', $id );
