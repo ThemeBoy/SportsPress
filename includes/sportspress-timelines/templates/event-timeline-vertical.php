@@ -65,12 +65,13 @@ $minutes = $event->minutes();
 							$name = '<i class="dashicons dashicons-redo" style="color:red;" title="'.__( "Sub out", "sportspress" ).'"></i>'.$subname.'<br/><i class="dashicons dashicons-undo" style="color:green;" title="'.__( "Sub in", "sportspress" ).'"></i>'.$name;
 						}
 					} else {
+						if ( '' !== $number ) $name = $number . '. ' . $name;
+
 						if( $side == 'home' ) {
 							$name = $name.' '.$icon;
 						} elseif ( $side == 'away' ) {
 							$name = $icon.' '.$name;
 						}
-						if ( '' !== $number ) $name = $number . '. ' . $name;
 					}
 					?>
 					<?php if( $side=='home' ) { ?> 
