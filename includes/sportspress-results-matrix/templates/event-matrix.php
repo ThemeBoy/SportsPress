@@ -65,6 +65,32 @@ $args = array(
 		'title' => 'ASC',
 	),
 );
+
+$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
+
+if ( ! empty( $teams ) ) {
+	$args['include'] = $teams;
+} else {
+	$leagues = get_the_terms( $id, 'sp_league' );
+	$seasons = get_the_terms( $id, 'sp_season' );
+
+	if ( $leagues ) {
+		$args['tax_query'][] = array(
+			'taxonomy' => 'sp_league',
+			'field' => 'term_id',
+			'terms' => wp_list_pluck( $leagues, 'term_id' ),
+		);
+	}
+
+	if ( $seasons ) {
+		$args['tax_query'][] = array(
+			'taxonomy' => 'sp_season',
+			'field' => 'term_id',
+			'terms' => wp_list_pluck( $seasons, 'term_id' ),
+		);
+	}
+}
+
 $teams = get_posts( $args );
 
 $rows = array();
@@ -77,10 +103,10 @@ foreach ( $teams as $team ) {
 foreach ( $data as $event ) {
 	$event_teams = array_filter( (array) get_post_meta( $event->ID, 'sp_team', false ) );
 	if ( sizeof( $event_teams ) <= 1 ) continue;
+	if ( ! array_key_exists( $event_teams[0], $team_names ) ) continue;
+	if ( ! array_key_exists( $event_teams[1], $team_names ) ) continue;
 	$rows[ $event_teams[0] ][ $event_teams[1] ][] = $event->ID;
 }
-
-$rows = array_filter( $rows );
 
 $keys = array_fill_keys( array_keys( $rows ), array() );
 foreach ( $rows as $team_id => $row ) {
