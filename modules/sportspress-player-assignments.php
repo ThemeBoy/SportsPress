@@ -26,6 +26,10 @@ class SportsPress_Player_Assignments {
 		
 		// Actions
 		add_action( 'sportspress_save_meta_player_statistics', array( $this, 'save_additional_statistics' ), 10, 2 );
+
+		// Filters
+		add_filter( 'sportspress_player_list_args', array( $this, 'add_args' ), 10 );
+		add_filter( 'sportspress_player_list_players', array( $this, 'add_players' ), 10, 3 );
 	}
 	/**
 	 * Define constants.
@@ -48,14 +52,69 @@ class SportsPress_Player_Assignments {
 		$leagues = $post_data['sp_leagues'];
 		
 		foreach ( $leagues as $l_id => $season ) {
+			if ( 0 === $l_id ) continue;
 			foreach ( $season as $s_id => $team_id ) {
-				if ( $team_id != '-1' ) {
-					$serialized = $l_id.'_'.$s_id.'_'.$team_id;
-					add_post_meta( $post_id, 'sp_assignments', $serialized, false );
-				}
+				if ( 0 >= $team_id ) continue;
+				$serialized = $l_id.'_'.$s_id.'_'.$team_id;
+				add_post_meta( $post_id, 'sp_assignments', $serialized, false );
 			}
 		}
 	}
+	
+	/**
+	 * Add args to filter out assigned players
+	 */
+	public function add_args( $args = array() ) {
+		$args['meta_query'][] = array(
+			'key' => 'sp_assignments',
+			'value' => '',
+			'compare' => 'NOT EXISTS',
+		);
+
+		$args['meta_query'][] = array(
+			'relation' => 'OR',
+		);
+
+		return $args;
+	}
+	
+	/**
+	 * Add assigned players to player list
+	 */
+	public function add_players( $players = array(), $args = array(), $team = false ) {
+		$tax_query = (array) sp_array_value( $args, 'tax_query', array() );
+		$league_ids = array();
+		$season_ids = array();
+
+		foreach ( $tax_query as $param ) {
+			if ( 'sp_league' === sp_array_value( $param, 'taxonomy' ) ) $league_ids = sp_array_value( $param, 'terms', array() );
+			if ( 'sp_season' === sp_array_value( $param, 'taxonomy' ) ) $season_ids = sp_array_value( $param, 'terms', array() );
+		}
+
+		$assignments = array();
+		foreach ( $league_ids as $l_id ) {
+			foreach ( $season_ids as $s_id ) {
+				if ( $team && $team != '0' ) {
+					$assignments[] = $l_id.'_'.$s_id.'_'.$team;
+				}
+			}
+		}
+
+		$args['meta_query'] = array(
+			array(
+				'key' => 'sp_assignments',
+				'value' => $assignments,
+				'compare' => 'IN'
+			),
+		);
+
+		$assigned_players = (array) get_posts( $args );
+
+		$players = array_merge( $assigned_players, $players );
+
+		return $players;
+	}
 }
 endif;
-//new SportsPress_Player_Assignments();
+
+new SportsPress_Player_Assignments();
