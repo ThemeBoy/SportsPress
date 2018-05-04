@@ -25,7 +25,7 @@ class SportsPress_Player_Assignments {
 		$this->define_constants();
 		
 		// Actions
-		add_action( 'sportspress_save_meta_player_statistics', array( $this, 'save_additional_statistics' ), 10, 2 );
+		add_action( 'sportspress_process_sp_player_meta', array( $this, 'save' ) );
 
 		// Filters
 		add_filter( 'sportspress_player_list_args', array( $this, 'add_args' ), 10 );
@@ -46,10 +46,12 @@ class SportsPress_Player_Assignments {
 	/**
 	 * Save Additional Statistics
 	 */
-	public function save_additional_statistics( $post_id, $post_data ) {
+	public function save( $post_id ) {
 		delete_post_meta( $post_id, 'sp_assignments' );
 		
-		$leagues = $post_data['sp_leagues'];
+		$leagues = sp_array_value( $_POST, 'sp_leagues', array() );
+
+		if ( ! is_array( $leagues ) ) return;
 		
 		foreach ( $leagues as $l_id => $season ) {
 			if ( 0 === $l_id ) continue;
