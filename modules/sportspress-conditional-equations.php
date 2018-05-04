@@ -83,7 +83,7 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 			foreach ( $matches[1] as $match ) {
 				
 				// Find which Conditional Operator is used
-				preg_match ( '/[\>\=\<]+/' ,$match, $conop );
+				preg_match ( '/[\!\>\=\<]+/' ,$match, $conop );
 				$conop = $conop[0];
 				
 				//preg_match ( '/.+?(?=[\>\=\<])/' ,$match, $leftvar );
