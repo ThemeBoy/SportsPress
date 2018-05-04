@@ -7,6 +7,7 @@
 * Feature - Short name option added to teams.
 * Feature - Automatic event titles using short name when available.
 * Feature - Display featured image in countdown widget.
+* Tweak - Stronger connections between leagues, seasons, and teams for automatic player lists.
 * Tweak - Relative date option added to editor shortcodes.
 * Tweak - Display only current team in player list.
 * Tweak - Filter players dropdown by current team only.

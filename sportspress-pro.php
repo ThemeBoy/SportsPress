@@ -183,16 +183,21 @@ final class SportsPress_Pro {
 			</div>
 		</div>
 
-		<div class="feature-section two-col">
+		<div class="feature-section three-col">
 			<div class="col">
-				<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-group-stages.png" alt="Tournament Group Stages">
+				<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-results-matrix.png" alt="Results Matrix">
 				<h3>Results Matrix</h3>
-				<p>Support for group stages have been added natively to tournaments, allowing you to create and attach league tables to be displayed directly below tournament brackets.</p>
+				<p>Display matches between home and away team in a grid. Create or select an existing calendar and select the <strong>Matrix</strong> layout to convert the calendar to an interactive results matrix!</p>
 			</div>
 			<div class="col">
-				<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-sponsor-levels.png" alt="Sponsorship Levels">
+				<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-midseason-transfers.png" alt="Midseason Transfers">
+				<h3>Midseason Transfers</h3>
+				<p>Keep track of players that switched teams during a season by adding one or more extra rows to their statistics table. Display the team and partial statistics before and after the transfer.<p>
+			</div>
+			<div class="col">
+				<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-vertical-timelines.png" alt="Vertical Timelines">
 				<h3>Vertical Timelines</h3>
-				<p>Assign levels to sponsors based on their contribution or other factors. Sponsors can now be filtered based on their sponsorship level within widgets, allowing for level-specific sponsor treament.<p>
+				<p>Display a match commentary style play-by-play timeline within events. To enable the new layout, visit <a href="<?php echo add_query_arg( array( 'page' => 'sportspress', 'tab' => 'events' ), admin_url( 'admin.php' ) ); ?>">Event Settings</a>, scroll down to the <strong>Timelines</strong> section and select the <strong>Vertical</strong> layout.<p>
 			</div>
 		</div>
 
