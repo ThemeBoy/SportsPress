@@ -110,12 +110,32 @@ class SP_Player extends SP_Custom_Post {
 	 * @return array
 	 */
 	public function data( $league_id, $admin = false, $section = -1 ) {
-
-		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
+		$args = array(
+			'meta_query' => array(
+				'relation' => 'OR',
+				array(
+					'key' => 'sp_order',
+					'compare' => 'NOT EXISTS',
+				),
+				array(
+					'key' => 'sp_order',
+					'compare' => 'EXISTS',
+				),
+			),
+		);
+		$seasons = (array)get_the_terms( $this->ID, 'sp_season', $args );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
 		$manual_columns = 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ? true : false;
+
+		$season_ids = wp_list_pluck( $seasons, 'term_id' );
+		$season_order = array_flip( $season_ids );
+		foreach ( $season_order as $season_id => $val ) {
+			$season_order[ $season_id ] = null;
+		}
+
+		$leagues = array_replace( $season_order, $leagues );
 		
 		// Get performance labels
 		$args = array(
@@ -237,7 +257,7 @@ class SP_Player extends SP_Custom_Post {
 		$data = array();
 
 		// Get all seasons populated with data where available
-		$data = sp_array_combine( $div_ids, sp_array_value( $stats, $league_id, array() ) );
+		$data = sp_array_combine( $div_ids, sp_array_value( $stats, $league_id, array() ), true );
 
 		// Get equations from statistic variables
 		$equations = sp_get_var_equations( 'sp_statistic' );

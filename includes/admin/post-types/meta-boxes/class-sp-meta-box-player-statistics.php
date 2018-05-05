@@ -20,7 +20,20 @@ class SP_Meta_Box_Player_Statistics {
 	 */
 	public static function output( $post ) {
 		$player = new SP_Player( $post );
-		$leagues = get_the_terms( $post->ID, 'sp_league' );
+		$args = array(
+			'meta_query' => array(
+				'relation' => 'OR',
+				array(
+					'key' => 'sp_order',
+					'compare' => 'NOT EXISTS',
+				),
+				array(
+					'key' => 'sp_order',
+					'compare' => 'EXISTS',
+				),
+			),
+		);
+		$leagues = get_the_terms( $post->ID, 'sp_league', $args );
 		$league_num = sizeof( $leagues );
 		$sections = get_option( 'sportspress_player_performance_sections', -1 );
 		$show_career_totals = 'yes' === get_option( 'sportspress_player_show_career_total', 'no' ) ? true : false;
@@ -106,9 +119,7 @@ class SP_Meta_Box_Player_Statistics {
 						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
 							<th><?php echo $label; ?></th>
 						<?php endforeach; ?>
-						<?php if ( $league_id > 0 ) {  ?>
-							<th>&plus;&minus;</th>
-						<?php }  ?>
+						<?php do_action( 'sportspress_meta_box_player_statistics_table_header_row', $id, $league_id ); ?>
 					</tr>
 				</thead>
 				<tfoot>
@@ -144,6 +155,7 @@ class SP_Meta_Box_Player_Statistics {
 								}
 							?></td>
 						<?php endforeach; ?>
+						<?php do_action( 'sportspress_meta_box_player_statistics_table_footer_row', $id, $league_id ); ?>
 					</tr>
 				</tfoot>
 				<tbody>
