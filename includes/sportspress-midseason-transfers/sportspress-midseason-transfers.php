@@ -44,6 +44,7 @@ class SportsPress_Midseason_Transfers {
 
 		add_filter( 'sportspress_meta_box_player_statistics_table_buffer', array( $this, 'buffer' ), 10, 2 );
 		add_filter( 'sportspress_meta_box_player_statistics_collection', array( $this, 'collection' ), 10, 5 );
+		add_filter( 'sportspress_player_statistic_options', array( $this, 'add_options' ) );
 	}
 
 	/**
@@ -90,7 +91,7 @@ class SportsPress_Midseason_Transfers {
 		$i = 0;
 		foreach ( $leagues as $league ) {
 			if ( $league != '-99' ) {
-				$new[$league][$seasons[$i]][$teams[$i]]['transdatefrom'] = $transdatefrom[$i];
+				$new[$league][$seasons[$i]][$teams[$i]]['_date'] = $transdatefrom[$i];
 				foreach ( $labels as $label ) {
 					$new[$league][$seasons[$i]][$teams[$i]][$label] = $columns[$label][$i];
 					add_post_meta( $post_id, 'sp_assignments', $league.'_'.$seasons[$i].'_'.$teams[$i], false );
@@ -131,14 +132,11 @@ class SportsPress_Midseason_Transfers {
 		if ( isset( $buffer['additional_stats'][ $league_id ][ $season_id ] ) && isset( $player ) ) {
 			foreach ( $buffer['additional_stats'][ $league_id ][ $season_id ] as $key => $teamstats ) :
 				//Get the stats for the team
-				$datefrom = $teamstats[ 'transdatefrom' ];
+				$datefrom = $teamstats[ '_date' ];
 				list( $columns_add, $data_add, $placeholders_add, $merged, $seasons_teams, $has_checkboxes, $formats_add, $total_types ) = $player->data_season_team( $league_id, $season_id, $key, true, true, $datefrom ); ?>
 				<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 					<td>
-						<!--<label title="Transfered from date">
-							<?php //echo $teamstats[ 'transdatefrom' ]; ?> &Gt;
-						</label>-->
-						<input type="text" class="sp-datepicker3"  name="sp_transdatefrom[]" placeholder="Date from" value="<?php echo $teamstats[ 'transdatefrom' ]; ?>"/>
+						<input type="text" class="sp-datepicker3"  name="sp_transdatefrom[]" placeholder="<?php _e( 'Date', 'sportspress' ); ?>" value="<?php echo $teamstats[ '_date' ]; ?>"/>
 						<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="<?php echo $league_id; ?>">
 						<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="<?php echo $season_id; ?>">
 					</td>
@@ -210,7 +208,7 @@ class SportsPress_Midseason_Transfers {
 		?>
 		<tr class="empty-row screen-reader-text">
 			<td>
-				<input type="text" class="date"  name="sp_transdatefrom[]" placeholder="Date from"/>
+				<input type="text" class="date"  name="sp_transdatefrom[]" placeholder="<?php _e( 'Date', 'sportspress' ); ?>"/>
 				<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="-99">
 				<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="-99">
 			</td>
@@ -292,6 +290,24 @@ class SportsPress_Midseason_Transfers {
 		$output = $player->data_season_team( $league_id, $season_id, $value, false, true );
 		$output['buffer'] = $collection['buffer'];
 		return $output;
+	}
+	
+	/**
+	 * Add options to player statistics
+	 */
+	public function add_options( $options = array() ) {
+		$options[] = array(
+			'title' 	=> __( 'Midseason Transfers', 'sportspress' ),
+			'id' 		=> 'sportspress_midseason_transfer_row_name',
+			'default'	=> 'season',
+			'type' 		=> 'radio',
+			'options' => array(
+				'season'	=> __( 'Season', 'sportspress' ),
+				'date'		=> __( 'Date', 'sportspress' ),
+			),
+			'desc_tip' => 'What to display as the row title',
+		);
+		return $options;
 	}
 }
 

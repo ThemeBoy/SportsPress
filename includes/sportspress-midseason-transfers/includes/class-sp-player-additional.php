@@ -41,6 +41,7 @@ class SP_Player_Additional extends SP_Player {
 		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
 		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 		$manual_columns = 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ? true : false;
+		$transfer_row_name = get_option( 'sportspress_midseason_transfer_row_name', 'season' );
 		
 		// Get performance labels
 		$args = array(
@@ -491,6 +492,8 @@ class SP_Player_Additional extends SP_Player {
 		);
 
 		$posts = get_posts( $args );
+
+		$raw_stats = $stats;
 		
 		$stats = array();
 
@@ -530,7 +533,17 @@ class SP_Player_Additional extends SP_Player {
 			if ( -1 == $team_id )
 				continue;
 
-			$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
+			if ( 'date' == $transfer_row_name ) {
+				$date = sp_array_value( sp_array_value( sp_array_value( $raw_stats, $league_id, array() ), $season_id, array() ), '_date', false );
+				if ( $date ) {
+					$date = date_create( $date );
+					$season_name = date_format( $date, sp_date_format() );
+				} else {
+					$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
+				}
+			} else {
+				$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
+			}
 
 			if ( $teamid ):
 				$team_name = sp_get_team_name( $teamid, $abbreviate_teams );

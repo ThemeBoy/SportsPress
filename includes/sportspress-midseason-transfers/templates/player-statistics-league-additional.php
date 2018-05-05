@@ -63,8 +63,8 @@ foreach( $data as $season_id => $row ):
 			$additional_teams = array_keys( $additional_stats[ $league_id ][ $season_id ] );
 			//Create new season row for each team
 			foreach ( $additional_teams as $additional_team ) {
-				$datefrom = $additional_stats[ $league_id ][ $season_id ][ $additional_team ][ 'transdatefrom' ];
-				$stats = $player2->data_season_team( $league_id, $season_id, $additional_team, true, false, $datefrom );
+				$date = $additional_stats[ $league_id ][ $season_id ][ $additional_team ][ '_date' ];
+				$stats = $player2->data_season_team( $league_id, $season_id, $additional_team, true, false, $date );
 				$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 				foreach( $labels as $key => $value ):
 					if ( isset( $hide_teams ) && 'team' == $key )
