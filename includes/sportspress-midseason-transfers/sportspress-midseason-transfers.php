@@ -137,8 +137,8 @@ class SportsPress_Midseason_Transfers {
 				<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 					<td>
 						<input type="text" class="sp-datepicker3"  name="sp_transdatefrom[]" placeholder="<?php _e( 'Date', 'sportspress' ); ?>" value="<?php echo $teamstats[ '_date' ]; ?>"/>
-						<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="<?php echo $league_id; ?>">
-						<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="<?php echo $season_id; ?>">
+						<!--<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="<?php echo $league_id; ?>">
+						<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="<?php echo $season_id; ?>">-->
 					</td>
 				<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
 					<!--<td>
@@ -186,10 +186,10 @@ class SportsPress_Midseason_Transfers {
 						echo $timeval ? $timeval : $placeholder;
 					} else {
 						if ( 'time' === sp_array_value( $formats_add, $column, 'number' ) ) {
-							echo '<input class="sp-convert-time-input" type="text" name="sp_additional_times[' . $column . '][]" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
-							echo '<input class="sp-convert-time-output" type="hidden" name="sp_add_columns[' . $column . '][]" value="' . esc_attr( $value ) . '" />';
+							echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][' . $season_id . '][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+											echo '<input class="sp-convert-time-output" type="hidden" name="sp_statistics[' . $league_id . '][' . $season_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" />';
 						} else {
-							echo '<input type="text" name="sp_add_columns[' . $column . '][]" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+							echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $season_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
 						}
 					} ?>
 					</td>
@@ -209,8 +209,8 @@ class SportsPress_Midseason_Transfers {
 		<tr class="empty-row screen-reader-text">
 			<td>
 				<input type="text" class="date"  name="sp_transdatefrom[]" placeholder="<?php _e( 'Date', 'sportspress' ); ?>"/>
-				<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="-99">
-				<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="-99">
+				<!--<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="-99">
+				<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="-99">-->
 			</td>
 			<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
 					<td>
@@ -240,14 +240,15 @@ class SportsPress_Midseason_Transfers {
 					</td>
 				<?php endif; ?>
 			<?php endif; ?>
+			<?php //var_dump($buffer); ?>
 			<?php foreach ( sp_array_value( $buffer, 'columns', array() ) as $column => $label ): if ( $column == 'team' ) continue;
 				?>
 				<td><?php
 						if ( 'time' === sp_array_value( sp_array_value( $buffer, 'formats', array() ), $column, 'number' ) ) {
-							echo '<input class="sp-convert-time-input" type="text" name="sp_additional_times[' . $column . '][]" placeholder="0" />';
-							echo '<input class="sp-convert-time-output" type="hidden" name="sp_add_columns[' . $column . '][]" />';
+							echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][-99][' . $column . ']" placeholder="0" />';
+							echo '<input class="sp-convert-time-output" type="hidden" name="sp_statistics[' . $league_id . '][-99][' . $column . ']" placeholder="0" />';
 						} else {
-							echo '<input type="text" name="sp_add_columns[' . $column . '][]" placeholder="0" />';
+							echo '<input type="text" name="sp_statistics[' . $league_id . '][-99][' . $column . ']" placeholder="0"  />';
 						}
 				?></td>
 			<?php endforeach; ?>

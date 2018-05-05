@@ -21,8 +21,11 @@ jQuery(document).ready(function($){
 			//display delete sign
 			$row.closest("tr").find(".sp-delete-row").css( "display", "block" );
 			//add league_id and season_id variables
-			$row.closest("tr").find('#leagueHidden').val(league_id);
-			$row.closest("tr").find('#seasonHidden').val(season_id);
+			//$row.closest("tr").find('#leagueHidden').val(league_id);
+			//$row.closest("tr").find('#seasonHidden').val(season_id);
+			$row.closest("tr").text(function () {
+				return $row.closest("tr").text().replace('-999', season_id); 
+			})
 			//add the new raw first
 			$row.insertAfter($tr);
 			$(".sp-datepicker3").datepicker({
