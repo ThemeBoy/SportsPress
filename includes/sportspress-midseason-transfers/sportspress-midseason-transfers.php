@@ -34,17 +34,14 @@ class SportsPress_Midseason_Transfers {
 
 		// Hooks
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'sportspress_process_sp_player_meta', array( $this, 'save_meta_box' ), 20 );
 		add_action( 'sportspress_player_statistics_league_template', array( $this, 'template' ) );
 		add_action( 'sportspress_meta_box_player_statistics_table_header_row', array( $this, 'placeholder_cell' ), 10, 2 );
 		add_action( 'sportspress_meta_box_player_statistics_table_footer_row', array( $this, 'placeholder_cell' ), 10, 2 );
 		add_action( 'sportspress_meta_box_player_statistics_table_row', array( $this, 'row' ), 10, 3 );
-		add_action( 'sportspress_meta_box_player_statistics_table_after_row', array( $this, 'after_row' ), 10, 6 );
-		add_action( 'sportspress_meta_box_player_statistics_table_tbody', array( $this, 'tbody' ), 10, 5 );
 
-		add_filter( 'sportspress_meta_box_player_statistics_table_buffer', array( $this, 'buffer' ), 10, 2 );
-		add_filter( 'sportspress_meta_box_player_statistics_collection', array( $this, 'collection' ), 10, 5 );
-		add_filter( 'sportspress_player_statistic_options', array( $this, 'add_options' ) );
+		add_filter( 'sportspress_player_data_season_ids', array( $this, 'season_ids' ), 10, 2 );
+		add_filter( 'sportspress_meta_box_player_statistics_row_classes', array( $this, 'classes' ), 10, 3 );
+		add_filter( 'sportspress_meta_box_player_statistics_season_name', array( $this, 'season_name' ), 10, 4 );
 	}
 
 	/**
@@ -71,39 +68,7 @@ class SportsPress_Midseason_Transfers {
 		    wp_enqueue_script( 'sportspress-midseason-transfers', SP_MIDSEASON_TRANSFERS_URL .'js/admin.js', array( 'jquery' ), SP_MIDSEASON_TRANSFERS_VERSION, true );
 			wp_enqueue_style( 'jquery-ui-style' , '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css' ); 
 			wp_enqueue_style( 'sportspress-admin-datepicker-styles', SP()->plugin_url() . '/assets/css/datepicker.css', array( 'jquery-ui-style' ), SP_VERSION );
-		}
-	}
-	
-	/**
-	 * Save meta box
-	 */
-	public function save_meta_box( $post_id ) {
-		$old = get_post_meta($post_id, 'sp_additional_statistics', true);
-		$new = array();
-		
-		$leagues = $_POST['sp_add_league'];
-		$seasons = $_POST['sp_add_season'];
-		$teams = $_POST['sp_add_team'];
-		$transdatefrom = $_POST['sp_transdatefrom'];
-		$columns = $_POST['sp_add_columns'];
-		$labels = array_keys($columns);
-		
-		$i = 0;
-		foreach ( $leagues as $league ) {
-			if ( $league != '-99' ) {
-				$new[$league][$seasons[$i]][$teams[$i]]['_date'] = $transdatefrom[$i];
-				foreach ( $labels as $label ) {
-					$new[$league][$seasons[$i]][$teams[$i]][$label] = $columns[$label][$i];
-					add_post_meta( $post_id, 'sp_assignments', $league.'_'.$seasons[$i].'_'.$teams[$i], false );
-				}
-			}
-			$i++;
-		}
-		if ( !empty( $new ) && $new != $old ) {
-			update_post_meta( $post_id, 'sp_additional_statistics', $new );
-		}
-		elseif ( empty($new) && $old ) {
-			delete_post_meta( $post_id, 'sp_additional_statistics', $old );
+			wp_enqueue_style( 'sportspress-midseason-transfers-admin', SP_MIDSEASON_TRANSFERS_URL . 'css/admin.css', array(), SP_MIDSEASON_TRANSFERS_VERSION );
 		}
 	}
 
@@ -119,144 +84,11 @@ class SportsPress_Midseason_Transfers {
 		if ( $league_id > 0 ) { 
 			?>
 			<td class="sp-actions-column">
-				<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="display:none; color:red;"></a>
-				<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row" data-league_id="<?php echo $league_id; ?>" data-season_id="<?php echo $season_id; ?>"></a>
+				<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row"></a>
+				<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row" data-league="<?php echo $league_id; ?>" data-season="<?php echo $season_id; ?>"></a>
 			</td>
 			<?php
 		}
-	}
-
-	public function after_row( $player_id = null, $league_id = 0, $season_id = 0, $team_select = false, $buffer = array(), $i = 0 ) {
-		$readonly = sp_array_value( $buffer, 'readonly', false );
-		$player = new SP_Player_Additional( $player_id );
-		if ( isset( $buffer['additional_stats'][ $league_id ][ $season_id ] ) && isset( $player ) ) {
-			foreach ( $buffer['additional_stats'][ $league_id ][ $season_id ] as $key => $teamstats ) :
-				//Get the stats for the team
-				$datefrom = $teamstats[ '_date' ];
-				list( $columns_add, $data_add, $placeholders_add, $merged, $seasons_teams, $has_checkboxes, $formats_add, $total_types ) = $player->data_season_team( $league_id, $season_id, $key, true, true, $datefrom ); ?>
-				<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
-					<td>
-						<input type="text" class="sp-datepicker3"  name="sp_transdatefrom[]" placeholder="<?php _e( 'Date', 'sportspress' ); ?>" value="<?php echo $teamstats[ '_date' ]; ?>"/>
-						<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="<?php echo $league_id; ?>">
-						<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="<?php echo $season_id; ?>">
-					</td>
-				<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
-					<!--<td>
-					<?php //echo get_the_title( $key );?>
-					</td>-->
-					<td>
-						<?php
-						$args = array(
-							'post_type' => 'sp_team',
-							'name' => 'sp_add_team[]',
-							'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
-							'sort_order'   => 'ASC',
-							'sort_column'  => 'menu_order',
-							'selected' => $key,
-							'values' => 'ID',
-							'id' => 'additional_team',
-							'include' => sp_array_value( $buffer, 'teams', array() ),
-							'tax_query' => array(
-								'relation' => 'AND',
-								array(
-									'taxonomy' => 'sp_league',
-									'terms' => $league_id,
-									'field' => 'term_id',
-								),
-							),
-						);
-						if ( ! sp_dropdown_pages( $args ) ){
-							_e( '&mdash; None &mdash;', 'sportspress' );
-						}
-						?>
-					</td>
-				<?php endif;
-				foreach ( $columns_add as $column => $label ): if ( $column == 'team' ) continue; ?>
-					<td><?php
-					$value = sp_array_value( sp_array_value( $data_add, $season_id, array() ), $column, null );
-					$placeholder = sp_array_value( sp_array_value( $placeholders_add, $season_id, array() ), $column, 0 );
-
-					// Convert value and placeholder to time format
-					if ( 'time' === sp_array_value( $formats_add, $column, 'number' ) ) {
-						$timeval = sp_time_value( $value );
-						$placeholder = sp_time_value( $placeholder );
-					}
-
-					if ( $readonly ) {
-						echo $timeval ? $timeval : $placeholder;
-					} else {
-						if ( 'time' === sp_array_value( $formats_add, $column, 'number' ) ) {
-							echo '<input class="sp-convert-time-input" type="text" name="sp_additional_times[' . $column . '][]" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
-							echo '<input class="sp-convert-time-output" type="hidden" name="sp_add_columns[' . $column . '][]" value="' . esc_attr( $value ) . '" />';
-						} else {
-							echo '<input type="text" name="sp_add_columns[' . $column . '][]" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
-						}
-					} ?>
-					</td>
-				<?php endforeach; ?>
-				<td class="sp-actions-column">
-					<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="color:red;"></a>
-				</td>
-			</tr>
-			<?php
-			$i++;
-			endforeach;
-		}
-	}
-
-	public function tbody( $player_id = null, $league_id = 0, $season_id = 0, $team_select = false, $buffer = array() ) {
-		?>
-		<tr class="empty-row screen-reader-text">
-			<td>
-				<input type="text" class="date"  name="sp_transdatefrom[]" placeholder="<?php _e( 'Date', 'sportspress' ); ?>"/>
-				<input id="leagueHidden" type="hidden" name="sp_add_league[]" value="-99">
-				<input id="seasonHidden" type="hidden" name="sp_add_season[]" value="-99">
-			</td>
-			<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
-					<td>
-						<?php
-						$args = array(
-							'post_type' => 'sp_team',
-							'name' => 'sp_add_team[]',
-							'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
-						    'sort_order'   => 'ASC',
-						    'sort_column'  => 'menu_order',
-							'selected' => null,
-							'values' => 'ID',
-							'id' => 'additional_team',
-							'include' => sp_array_value( $buffer, 'teams', array() ),
-							'tax_query' => array(
-								'relation' => 'AND',
-								array(
-									'taxonomy' => 'sp_league',
-									'terms' => $league_id,
-									'field' => 'term_id',
-								),
-							),
-						);
-						if ( ! sp_dropdown_pages( $args ) ):
-							_e( '&mdash; None &mdash;', 'sportspress' );
-						?>
-					</td>
-				<?php endif; ?>
-			<?php endif; ?>
-			<?php foreach ( sp_array_value( $buffer, 'columns', array() ) as $column => $label ): if ( $column == 'team' ) continue;
-				?>
-				<td><?php
-						if ( 'time' === sp_array_value( sp_array_value( $buffer, 'formats', array() ), $column, 'number' ) ) {
-							echo '<input class="sp-convert-time-input" type="text" name="sp_additional_times[' . $column . '][]" placeholder="0" />';
-							echo '<input class="sp-convert-time-output" type="hidden" name="sp_add_columns[' . $column . '][]" />';
-						} else {
-							echo '<input type="text" name="sp_add_columns[' . $column . '][]" placeholder="0" />';
-						}
-				?></td>
-			<?php endforeach; ?>
-			<td class="sp-actions-column">
-				<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row" style="display:none; color:red;"></a>
-				<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
-			</td>
-		</tr>
-		<?php
 	}
 	
 	/**
@@ -267,47 +99,43 @@ class SportsPress_Midseason_Transfers {
 	}
 	
 	/**
-	 * Prepare player statistics for midseason transfers in admin
+	 * Add transfers to season ids
 	 */
-	public function buffer( $buffer = array(), $id = null ) {
-		$buffer['additional_stats'] = get_post_meta( $id , 'sp_additional_statistics' , true );
-		$buffer['columns'] = null;
-		$buffer['data'] = null;
-		$buffer['placeholders'] = null;
-		$buffer['formats'] = null;
-		return $buffer;
+	public function season_ids( $ids = array(), $stats = array() ) {
+		if ( ! is_array( $ids ) ) return array();
+		if ( ! is_array( $stats ) ) return $ids;
+
+		$keys = array_keys( $stats );
+		$keys = array_reverse( $keys );
+
+		foreach ( $keys as $id ):
+			$base = (int) floor( $id );
+			if ( $base == $id ) continue;
+			if ( ! in_array( $base, $ids ) ) continue;
+
+			$p = array_search( $base, $ids );
+			array_splice( $ids, $p + 1, 0, $id );
+		endforeach;
+
+		return $ids;
 	}
 	
 	/**
-	 * Process midseason transfers within player statistics in admin
+	 * Add classes to meta box rows
 	 */
-	public function collection( $collection = array(), $player_id = null, $league_id = 0, $season_id = 0, $value = null ) {
-		$player = new SP_Player_Additional( $player_id );
-		$collection['buffer']['columns'] = sp_array_value( $collection, 'columns', array() );
-		$collection['buffer']['data'] = sp_array_value( $collection, 'data', array() );
-		$collection['buffer']['placeholders'] = sp_array_value( $collection, 'placeholders', array() );
-		$collection['buffer']['formats'] = sp_array_value( $collection, 'formats', array() );
-		$output = $player->data_season_team( $league_id, $season_id, $value, false, true );
-		$output['buffer'] = $collection['buffer'];
-		return $output;
+	public function classes( $classes = array(), $league_id = 0, $season_id = 0 ) {
+		if ( (int) $season_id === $season_id ) return $classes;
+		$classes[] = 'sp-row-added';
+		return $classes;
 	}
 	
 	/**
-	 * Add options to player statistics
+	 * Replace season name with transfer date
 	 */
-	public function add_options( $options = array() ) {
-		$options[] = array(
-			'title' 	=> __( 'Midseason Transfers', 'sportspress' ),
-			'id' 		=> 'sportspress_midseason_transfer_row_name',
-			'default'	=> 'season',
-			'type' 		=> 'radio',
-			'options' => array(
-				'season'	=> __( 'Season', 'sportspress' ),
-				'date'		=> __( 'Date', 'sportspress' ),
-			),
-			'desc_tip' => 'What to display as the row title',
-		);
-		return $options;
+	public function season_name( $name = array(), $league_id = 0, $season_id = 0, $season_stats = array() ) {
+		if ( (int) $season_id === $season_id ) return $name;
+		$date_from = sp_array_value( $season_stats, 'date_from', false );
+		return '<input type="text" class="sp-datepicker" name="sp_statistics[' . $league_id . '][' . $season_id . '][date_from]" value="' . ( $date_from ? $date_from : '' ) . '" size="10">';
 	}
 }
 

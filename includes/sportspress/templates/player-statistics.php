@@ -74,12 +74,7 @@ if ( is_array( $leagues ) ):
 			if ( ! $show_teams ) {
 				$args['hide_teams'] = true;
 			}
-
-			if ( has_action( 'sportspress_player_statistics_league_template' ) ) {
-				do_action( 'sportspress_player_statistics_league_template', $args );
-			} else {
-				sp_get_template( 'player-statistics-league.php', $args );
-			}
+			sp_get_template( 'player-statistics-league.php', $args );
 		endforeach;
 
 		if ( $show_career_totals ) {

@@ -1,43 +1,44 @@
 jQuery(document).ready(function($){
-	$(".sp-datepicker3").datepicker({
-				dateFormat : "yy-mm-dd"
-			});
-	// Split Statistic row
-	$(".sp-data-table").on("click", ".sp-add-row", function() {
-		var league_id = $(this).data('league_id');
-		var season_id = $(this).data('season_id');
-		$self = $(this);
-		$table = $self.closest(".sp-data-table");
-			$tr = $self.closest("tr");
-			$row = $table.find(".empty-row.screen-reader-text").clone();
-			$row.addClass("splitted-row");
-			$row.removeClass("empty-row screen-reader-text");
-			//enable jquery date
-			$row.find(".date").addClass("sp-datepicker3");
-			//add the required parameter
-			$row.find(".date").prop('required',true);
-			//hide add sign
-			$row.closest("tr").find(".sp-add-row").css( "display", "none" );
-			//display delete sign
-			$row.closest("tr").find(".sp-delete-row").css( "display", "block" );
-			//add league_id and season_id variables
-			$row.closest("tr").find('#leagueHidden').val(league_id);
-			$row.closest("tr").find('#seasonHidden').val(season_id);
-			//add the new raw first
-			$row.insertAfter($tr);
-			$(".sp-datepicker3").datepicker({
-				dateFormat : "yy-mm-dd"
-			});
+	// Split statistics row
+	$(".sp-player-statistics-table").on("click", ".sp-add-row", function() {
+
+		// Get league and season ID
+		var league = $(this).data('league');
+		var season = $(this).data('season');
+
+		// Get table row and clone
+		$tr = $(this).closest(".sp-row");
+		$row = $tr.clone();
+		$rows = $tr.closest(".sp-player-statistics-table").find(`.sp-row[data-league='${league}'][data-season='${season}']`);
+
+		// Increment the season ID in the new input name
+		$row.find("select").attr("name", `sp_leagues[${league}][${season}.${$rows.length}]`);
+		$row.find("input").each(function() {
+			column = $(this).data("column");
+			$(this).attr("name", `sp_statistics[${league}][${season}.${$rows.length}][${column}]`);
+		});
+
+		// Replace season name with datepicker
+		$row.find("label").replaceWith(`<input type="text" class="sp-datepicker" name="sp_statistics[${league}][${season}.${$rows.length}][date_from]" value="" size="10">`);
+
+		// Add added class to row
+		$row.addClass("sp-row-added");
+
+		// Insert new row after original
+		$row.insertAfter($rows.last());
+
+		// Activate datepicker
+		$(".sp-datepicker").datepicker({
+			dateFormat : "yy-mm-dd"
+		});
 		return false;
 	});
 	
-	// Delete Splitted row
-	$(".sp-data-table").on("click", ".sp-delete-row", function() {
+	// Delete added row
+	$(".sp-player-statistics-table").on("click", ".sp-delete-row", function() {
 		$self = $(this);
 		$self.closest("tr").css("background-color", "#f99").fadeOut(400, function() {
-			$table = $self.closest(".sp-data-table");
 			$(this).remove();
-			//$table.trigger("updatePostCount");
 		});
 		return false;
 	});
