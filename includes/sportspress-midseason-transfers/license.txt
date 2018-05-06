@@ -1,6 +1,6 @@
-SportsPress Splitting Seasons
+SportsPress Midseason Transfers
 
-Copyright 2017 by ThemeBoy
+Copyright 2018 by ThemeBoy
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ and
 
   ThemeBoy
 
-  SportsPress Splitting Seasons is released under the GPL
+  SportsPress Midseason Transfers is released under the GPL
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

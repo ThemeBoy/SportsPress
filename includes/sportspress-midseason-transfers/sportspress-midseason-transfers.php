@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Adds Midseason Transfers to SportsPress players.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.6.0
+Version: 2.6
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Midseason_Transfers' ) ) :
  * Main SportsPress Midseason Transfers Class
  *
  * @class SportsPress_Midseason_Transfers
- * @version	2.6.0
+ * @version	2.6
  *
  */
 class SportsPress_Midseason_Transfers {
@@ -28,13 +28,9 @@ class SportsPress_Midseason_Transfers {
 	public function __construct() {
 		// Define constants
 		$this->define_constants();
-		
-		// Add new Class
-		require_once( 'includes/class-sp-player-additional.php' );
 
 		// Hooks
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'sportspress_player_statistics_league_template', array( $this, 'template' ) );
 		add_action( 'sportspress_meta_box_player_statistics_table_header_row', array( $this, 'placeholder_cell' ), 10, 2 );
 		add_action( 'sportspress_meta_box_player_statistics_table_footer_row', array( $this, 'placeholder_cell' ), 10, 2 );
 		add_action( 'sportspress_meta_box_player_statistics_table_row', array( $this, 'row' ), 10, 3 );
@@ -89,13 +85,6 @@ class SportsPress_Midseason_Transfers {
 			</td>
 			<?php
 		}
-	}
-	
-	/**
-	 * Render player statistics per league
-	 */
-	public function template( $args ) {
-		sp_get_template( 'player-statistics-league-additional.php', $args, '', SP_MIDSEASON_TRANSFERS_DIR . 'templates/' );
 	}
 	
 	/**
