@@ -280,7 +280,6 @@ class SP_Player extends SP_Custom_Post {
 			$next_div_id = $div_id + 0.1;
 			if ( in_array( $next_div_id, $div_ids ) ) {
 				$dateto = $stats[$league_id][strval($next_div_id)]['date_from'];
-				echo $dateto.' - '.$div_id.' - '.$next_div_id;
 			}
 			
 			// Check if there is a data_from value and assign it to $datefrom variable
