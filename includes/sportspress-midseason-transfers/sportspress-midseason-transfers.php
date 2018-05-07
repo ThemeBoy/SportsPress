@@ -62,10 +62,13 @@ class SportsPress_Midseason_Transfers {
 		$screen = get_current_screen();
 
 		if ( in_array( $screen->id, array( 'sp_player', 'edit-sp_player' ) ) ) {
-		    wp_enqueue_script( 'sportspress-midseason-transfers', SP_MIDSEASON_TRANSFERS_URL .'js/admin.js', array( 'jquery' ), SP_MIDSEASON_TRANSFERS_VERSION, true );
+			wp_enqueue_script( 'sportspress-midseason-transfers', SP_MIDSEASON_TRANSFERS_URL .'js/admin.js', array( 'jquery' ), SP_MIDSEASON_TRANSFERS_VERSION, true );
 			wp_enqueue_style( 'jquery-ui-style' , '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css' ); 
 			wp_enqueue_style( 'sportspress-admin-datepicker-styles', SP()->plugin_url() . '/assets/css/datepicker.css', array( 'jquery-ui-style' ), SP_VERSION );
 			wp_enqueue_style( 'sportspress-midseason-transfers-admin', SP_MIDSEASON_TRANSFERS_URL . 'css/admin.css', array(), SP_MIDSEASON_TRANSFERS_VERSION );
+
+			// Localize script
+			wp_localize_script( 'sportspress-midseason-transfers', 'date_from_string', __( 'Date from', 'sportspress' ) );
 		}
 	}
 
@@ -175,7 +178,7 @@ class SportsPress_Midseason_Transfers {
 	public function season_name( $name = array(), $league_id = 0, $season_id = 0, $season_stats = array() ) {
 		if ( (int) $season_id === $season_id ) return $name;
 		$date_from = sp_array_value( $season_stats, 'date_from', false );
-		return '<input type="text" class="sp-datepicker" name="sp_statistics[' . $league_id . '][' . $season_id . '][date_from]" value="' . ( $date_from ? $date_from : '' ) . '" size="10">';
+		return '<input type="text" class="sp-datepicker" name="sp_statistics[' . $league_id . '][' . $season_id . '][date_from]" value="' . ( $date_from ? $date_from : '' ) . '" size="10" placeholder="' . __( 'Date from', 'sportspress' ) . '">';
 	}
 	
 	/**
