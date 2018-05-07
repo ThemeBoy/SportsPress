@@ -114,10 +114,6 @@ class SportsPress_Midseason_Transfers {
 	 * Filter events by date
 	 */
 	public function event_args( $args = array(), $data = array(), $season_id = 0 ) {
-		// Assign $dateto and $datefrom variables if needed
-		$dateto = null;
-		$datefrom = null;
-
 		// Limit data to same season
 		foreach ( $data as $index => $season_data ) {
 			if ( (int) $index == (int) $season_id ) continue;
