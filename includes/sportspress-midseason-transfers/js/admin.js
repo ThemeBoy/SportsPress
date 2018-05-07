@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
 		});
 
 		// Replace season name with datepicker
-		$row.find("label").replaceWith(`<input type="text" class="sp-datepicker" name="sp_statistics[${league}][${season}.${$rows.length}][date_from]" value="" size="10">`);
+		$row.find("label").replaceWith(`<input type="text" class="sp-datepicker" name="sp_statistics[${league}][${season}.${$rows.length}][date_from]" value="" size="10" placeholder="Date from">`);
 
 		// Add added class to row
 		$row.addClass("sp-row-added");
