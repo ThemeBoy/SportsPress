@@ -343,7 +343,7 @@ class SP_Player extends SP_Custom_Post {
 				);
 			endif;
 
-			$args = apply_filters( 'sportspress_player_data_event_args', $args );
+			$args = apply_filters( 'sportspress_player_data_event_args', $args, $data, $div_id );
 
 			$events = get_posts( $args );
 

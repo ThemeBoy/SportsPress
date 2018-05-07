@@ -36,6 +36,7 @@ class SportsPress_Midseason_Transfers {
 		add_action( 'sportspress_meta_box_player_statistics_table_row', array( $this, 'row' ), 10, 3 );
 
 		add_filter( 'sportspress_player_data_season_ids', array( $this, 'season_ids' ), 10, 2 );
+		add_filter( 'sportspress_player_data_event_args', array( $this, 'event_args' ), 10, 3 );
 		add_filter( 'sportspress_meta_box_player_statistics_row_classes', array( $this, 'classes' ), 10, 3 );
 		add_filter( 'sportspress_meta_box_player_statistics_season_name', array( $this, 'season_name' ), 10, 4 );
 	}
@@ -110,6 +111,56 @@ class SportsPress_Midseason_Transfers {
 	}
 	
 	/**
+	 * Filter events by date
+	 */
+	public function event_args( $args = array(), $data = array(), $season_id = 0 ) {
+		// Limit data to same season
+		foreach ( $data as $index => $season_data ) {
+			if ( (int) $index == (int) $season_id ) continue;
+			unset( $data[ $index ] );
+		}
+
+		// Sort the data by date
+		uasort( $data, array( $this, 'sort_by_date' ) );
+
+		// Move the internal pointer to the currently selected season
+		while ( key( $data ) != $season_id ) next( $data );
+		
+		// Check if there is a data_from value and assign it to $date_from variable
+		$date_from = sp_array_value( current( $data ), 'date_from', false );
+
+		// Move pointer to next season
+		next( $data );
+		
+		// Check if there is a following entry of same season and assign the date_from to $date_to variable
+		$date_to = sp_array_value( current( $data ), 'date_from', false );
+		
+		
+		if ( $date_from && $date_to ):
+			$args['date_query'] = array(
+				array(
+				'after' => $date_from ,
+				'before' => $date_from
+				)
+			);
+		elseif ( $date_from ):
+			$args['date_query'] = array(
+				array(
+				'after' => $date_from
+				)
+			);
+		elseif ( $date_to ):
+			$args['date_query'] = array(
+				array(
+				'before' => $date_to
+				)
+			);
+		endif;
+
+		return $args;
+	}
+	
+	/**
 	 * Add classes to meta box rows
 	 */
 	public function classes( $classes = array(), $league_id = 0, $season_id = 0 ) {
@@ -125,6 +176,19 @@ class SportsPress_Midseason_Transfers {
 		if ( (int) $season_id === $season_id ) return $name;
 		$date_from = sp_array_value( $season_stats, 'date_from', false );
 		return '<input type="text" class="sp-datepicker" name="sp_statistics[' . $league_id . '][' . $season_id . '][date_from]" value="' . ( $date_from ? $date_from : '' ) . '" size="10">';
+	}
+	
+	/**
+	 * Sort seasons by date
+	 */
+	public function sort_by_date( $a, $b ) {
+		$date_a = new DateTime( sp_array_value( $a, 'date_from', '1970-01-01' ) );
+		$date_b = new DateTime( sp_array_value( $b, 'date_from', '1970-01-01' ) );
+		if ( $date_a == $date_b ) {
+			return 0;
+		} else {
+			return $date_a > $date_b ? 1 : -1;
+		}
 	}
 }
 
