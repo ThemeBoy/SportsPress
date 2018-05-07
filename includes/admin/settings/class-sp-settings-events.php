@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version   2.5.5
+ * @version		2.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -278,7 +278,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 			apply_filters( 'sportspress_eventplayer_options', array(
 				array(
-					'title' 	=> __( 'Player Sorting', 'sportspress' ),
+					'title' 	=> __( 'Order', 'sportspress' ),
 					'id' 		=> 'sportspress_event_player_sort',
 					'default'	=> 'jersey',
 					'type' 		=> 'radio',
@@ -286,8 +286,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 						'jersey'=> __( 'Jersey (e.g. "33. John Doe")', 'sportspress' ),
 						'name'	=> __( 'Name (e.g. "John Doe (33)")', 'sportspress' ),
 					),
-					'desc_tip' 		=> _x( 'When editing an event, this determines how the checklist of players are sorted in the Teams metabox.  This does not affect the Box Score section.', 'event player sort setting description', 'sportspress' ),
-
+					'desc_tip' 		=> 'When editing an event, this determines how the checklist of players are sorted in the Teams metabox.  This does not affect the Box Score section.',
 				),
 
 			) ),

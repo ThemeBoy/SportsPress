@@ -133,8 +133,6 @@ class SP_Admin_Welcome {
         <?php _e( 'Welcome', 'sportspress' ); ?>
       </a><a class="nav-tab <?php if ( $_GET['page'] == 'sp-credits' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-credits' ), 'index.php' ) ) ); ?>">
         <?php _e( 'Credits', 'sportspress' ); ?>
-      </a><a class="nav-tab <?php if ( $_GET['page'] == 'sp-translators' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-translators' ), 'index.php' ) ) ); ?>">
-        <?php _e( 'Translators', 'sportspress' ); ?>
       </a>
     </h2>
     <?php
@@ -182,25 +180,21 @@ class SP_Admin_Welcome {
         </div>
       </div>
 
-      <div class="feature-section two-col">
+      <div class="feature-section three-col">
         <div class="col">
+          <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-conditional-equations.png" alt="Screenshot">
           <h3>Conditional Equations</h3>
-          <p></p>
+          <p>Use the newly introduced conditional operators <strong>&gt;</strong>, <strong>&lt;</strong>, <strong>&equiv;</strong>, <strong>&ne;</strong>, <strong>&ge;</strong>, and <strong>&le;</strong> to calculate the relationship between variables, then insert that calculation into more complex equations. Visit the <a href="<?php echo add_query_arg( array( 'page' => 'sportspress-config' ), admin_url( 'admin.php' ) ); ?>">Configure</a> page to edit variables and equations.</p>
         </div>
         <div class="col">
+          <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-event-specs.png" alt="Screenshot">
           <h3>Event Specs</h3>
-          <p></p>
-        </div>
-      </div>
-
-      <div class="feature-section two-col">
-        <div class="col">
-          <h3>Countdown Images</h3>
-          <p></p>
+          <p>Measure and display additional details per event using the new <strong>Event Specs</strong> variables. They are customizable and can be useful for keeping track of information like player of the match, attendance, and venue weather.
         </div>
         <div class="col">
+          <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-next-team.png" alt="Screenshot">
           <h3>Next Team Column</h3>
-          <p><p>
+          <p>Provide a quick overview of who each team is playing next using the new <strong>Next Team</strong> preset for <a href="<?php echo add_query_arg( array( 'post_type' => 'sp_column' ), admin_url( 'edit.php' ) ); ?>">league table columns</a>. This will automatically display the next team's name or logo that links to the next match for each team in the table.<p>
         </div>
       </div>
 
@@ -213,14 +207,21 @@ class SP_Admin_Welcome {
         </div>
       </div>
 
-      <div class="feature-section two-col">
+      <div class="feature-section three-col">
         <div class="col">
+          <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-results-matrix.png" alt="Results Matrix">
           <h3>Results Matrix</h3>
-          <p></p>
+          <p>Display matches between home and away team in a grid. Create or select an existing calendar and select the <strong>Matrix</strong> layout to convert the calendar to an interactive results matrix!</p>
         </div>
         <div class="col">
+          <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-midseason-transfers.png" alt="Midseason Transfers">
+          <h3>Midseason Transfers</h3>
+          <p>Keep track of players that switched teams during a season by adding one or more extra rows to their statistics table. Display the team and partial statistics before and after the transfer.<p>
+        </div>
+        <div class="col">
+          <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-vertical-timelines.png" alt="Vertical Timelines">
           <h3>Vertical Timelines</h3>
-          <p><p>
+          <p>Display a match commentary style play-by-play timeline within events. <a href="<?php echo esc_url( apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ); ?>">Upgrade to SportsPress Pro</a> to get access to <strong>Timelines</strong> and other pro features.<p>
         </div>
       </div>
 
@@ -233,22 +234,22 @@ class SP_Admin_Welcome {
 
       <div class="feature-section one-col">
         <div class="col">
-          <h2>Data Accuracy and Flexibility</h2>
+          <h2>Player Data Improvements</h2>
         </div>
       </div>
 
       <div class="feature-section three-col">
         <div class="col">
-          <h3>Relative Date in Shortcodes</h3>
-          <p></p>
+          <h3>Player Assignments</h3>
+          <p>Players will now be saved using a new data format that allows them to belong to multiple leagues, seasons, and teams and be accurately selected in <a href="<?php echo add_query_arg( array( 'post_type' => 'sp_list' ), admin_url( 'edit.php' ) ); ?>">player lists</a>.</p>
         </div>
         <div class="col">
-          <h3>Current Team in Player Lists</h3>
-          <p></p>
+          <h3>Current Team Column</h3>
+          <p>The <strong>Team</strong> column in player lists will now display only the current team that player belongs to, determined by the <strong>Current Team</strong> setting of each player.</p>
         </div>
         <div class="col">
           <h3>Squad Number Zero</h3>
-          <p></p>
+          <p>It's now possible to import players with the squad number <strong>0 (zero)</strong> or any other value that would previously be interpreted as empty.</p>
         </div>
       </div>
 
@@ -262,16 +263,16 @@ class SP_Admin_Welcome {
 
       <div class="feature-section three-col">
         <div class="col">
+          <h3>Countdown Images</h3>
+          <p>A new option has been added to the <strong>Countdown</strong> widget, allowing you to display a featured image from the next event.</p>
+        </div>
+        <div class="col">
+          <h3>Relative Date in Shortcodes</h3>
+          <p>You'll now be able to select a relative date range when inserting calendar-related shortcodes from the visual editor.</p>
+        </div>
+        <div class="col">
           <h3>Short Names</h3>
-          <p></p>
-        </div>
-        <div class="col">
-          <h3>Calculating Substitution Time</h3>
-          <p></p>
-        </div>
-        <div class="col">
-          <h3>Localization Improvements</h3>
-          <p></p>
+          <p>Teams have been given a <strong>Short Name</strong> setting in addition to the existing <strong>Abbreviation</strong> for added customizability.</p>
         </div>
       </div>
 

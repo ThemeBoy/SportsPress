@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.2
+ * @version   2.6
  */
 
 $team_logos = array();

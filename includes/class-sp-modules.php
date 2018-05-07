@@ -5,7 +5,7 @@
  * The SportsPress modules class stores available modules.
  *
  * @class 		SP_Modules
- * @version   2.5
+ * @version		2.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -172,14 +172,6 @@ class SP_Modules {
 					'icon' => 'sp-icon-megaphone',
 					'link' => 'https://www.themeboy.com/sportspress-extensions/sponsors/',
 					'desc' => __( 'Attract sponsors by offering them advertising space on your website.', 'sportspress' ),
-				),
-				'wordpay' => array(
-					'label' => __( 'WordPay', 'sportspress' ),
-					'class' => 'WordPay',
-					'icon' => 'sp-icon-wordpay',
-					'link' => 'https://wordpay.org/sportspress/',
-					'desc' => __( 'Start collecting club membership payments with WordPay.', 'sportspress' ),
-					'tip' => __( 'Get WordPay', 'sportspress' ),
 				),
 			),
 		));

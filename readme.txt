@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.6-RC1
+Stable tag: 2.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -244,6 +244,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Feature - Short name option added to teams.
 * Feature - Automatic event titles using short name when available.
 * Feature - Display featured image in countdown widget.
+* Tweak - Stronger connections between leagues, seasons, and teams for automatic player lists.
 * Tweak - Relative date option added to editor shortcodes.
 * Tweak - Display only current team in player list.
 * Tweak - Filter players dropdown by current team only.
