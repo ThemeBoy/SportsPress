@@ -256,8 +256,11 @@ class SP_Player extends SP_Custom_Post {
 
 		$data = array();
 
+		$league_stats = sp_array_value( $stats, $league_id, array() );
+		$div_ids = apply_filters( 'sportspress_player_data_season_ids', $div_ids, $league_stats );
+
 		// Get all seasons populated with data where available
-		$data = sp_array_combine( $div_ids, sp_array_value( $stats, $league_id, array() ), true );
+		$data = sp_array_combine( $div_ids, $league_stats, true );
 
 		// Get equations from statistic variables
 		$equations = sp_get_var_equations( 'sp_statistic' );
@@ -597,7 +600,7 @@ class SP_Player extends SP_Custom_Post {
 			if ( -1 == $team_id )
 				continue;
 
-			$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
+			$season_name = sp_array_value( $season_names, (int) $season_id, '&nbsp;' );
 
 			if ( $team_id ):
 				$team_name = sp_team_short_name( $team_id );

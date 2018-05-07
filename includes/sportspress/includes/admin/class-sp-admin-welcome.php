@@ -133,8 +133,6 @@ class SP_Admin_Welcome {
         <?php _e( 'Welcome', 'sportspress' ); ?>
       </a><a class="nav-tab <?php if ( $_GET['page'] == 'sp-credits' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-credits' ), 'index.php' ) ) ); ?>">
         <?php _e( 'Credits', 'sportspress' ); ?>
-      </a><a class="nav-tab <?php if ( $_GET['page'] == 'sp-translators' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-translators' ), 'index.php' ) ) ); ?>">
-        <?php _e( 'Translators', 'sportspress' ); ?>
       </a>
     </h2>
     <?php
@@ -223,7 +221,7 @@ class SP_Admin_Welcome {
         <div class="col">
           <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-vertical-timelines.png" alt="Vertical Timelines">
           <h3>Vertical Timelines</h3>
-          <p>Display a match commentary style play-by-play timeline within events. <a class="button button-primary button-hero" href="<?php echo esc_url( apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ); ?>">Upgrade to SportsPress Pro</a> to get access to <strong>Timelines</strong> and other pro features.<p>
+          <p>Display a match commentary style play-by-play timeline within events. <a href="<?php echo esc_url( apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ); ?>">Upgrade to SportsPress Pro</a> to get access to <strong>Timelines</strong> and other pro features.<p>
         </div>
       </div>
 

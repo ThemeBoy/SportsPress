@@ -107,7 +107,7 @@ class SP_Meta_Box_Player_Statistics {
 		$buffer = apply_filters( 'sportspress_meta_box_player_statistics_table_buffer', array( 'teams' => $teams, 'readonly' => $readonly ), $id );
 		?>
 		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table">
+			<table class="widefat sp-data-table sp-player-statistics-table">
 				<thead>
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
@@ -166,7 +166,7 @@ class SP_Meta_Box_Player_Statistics {
 						if ( $div_id === 0 ) continue;
 						$div = get_term( $div_id, 'sp_season' );
 						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?> <?php echo implode( ' ', apply_filters( 'sportspress_meta_box_player_statistics_row_classes', array(), $league_id, $div_id ) ); ?>" data-league="<?php echo (int) $league_id; ?>" data-season="<?php echo (int) $div_id; ?>">
 							<td>
 								<label>
 									<?php if ( ! apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
@@ -176,7 +176,7 @@ class SP_Meta_Box_Player_Statistics {
 									<?php endif; ?>
 									<?php
 									if ( 0 === $div_id ) _e( 'Total', 'sportspress' );
-									elseif ( 'WP_Error' != get_class( $div ) ) echo $div->name;
+									elseif ( 'WP_Error' != get_class( $div ) ) echo apply_filters( 'sportspress_meta_box_player_statistics_season_name', $div->name, $league_id, $div_id, $div_stats );
 									?>
 								</label>
 							</td>
@@ -237,10 +237,10 @@ class SP_Meta_Box_Player_Statistics {
 										echo $timeval ? $timeval : $placeholder;
 									} else {
 										if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
-											echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+											echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-column="' . $column . '" />';
 											echo '<input class="sp-convert-time-output" type="hidden" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" />';
 										} else {
-											echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+											echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-column="' . $column . '" />';
 										}
 									}
 								?></td>

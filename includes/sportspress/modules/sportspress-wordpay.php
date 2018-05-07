@@ -232,6 +232,4 @@ class SportsPress_WordPay {
 
 endif;
 
-if ( get_option( 'sportspress_load_wordpay_module', 'yes' ) == 'yes' ) {
-	new SportsPress_WordPay();
-}
+new SportsPress_WordPay();
