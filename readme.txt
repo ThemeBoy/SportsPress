@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.5.10
+Stable tag: 2.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,27 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.6 =
+* Feature - Results matrix layout for calendars.
+* Feature - Midseason transfers in player statistics.
+* Feature - Vertical timeline layout.
+* Feature - Add custom details to events using event specs.
+* Feature - Conditional equations for variables.
+* Feature - Display the next opponent in league tables.
+* Feature - Short name option added to teams.
+* Feature - Automatic event titles using short name when available.
+* Feature - Display featured image in countdown widget.
+* Tweak - Stronger connections between leagues, seasons, and teams for automatic player lists.
+* Tweak - Relative date option added to editor shortcodes.
+* Tweak - Display only current team in player list.
+* Tweak - Filter players dropdown by current team only.
+* Tweak - Allow 0 as a squad number when importing players.
+* Tweak - Prevent filtering through empty results.
+* Fix - Interpreting non-integer substitution times.
+* Fix - Warning when sorting terms without order.
+* Localization - Add WPML support to staff header.
+* Localization - Fix RTL not being applied in league tables.
 
 = 2.5.10 =
 * Fix - Date ranges not being applied to calendars.

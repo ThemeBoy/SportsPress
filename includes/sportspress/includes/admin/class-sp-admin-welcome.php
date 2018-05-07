@@ -194,7 +194,7 @@ class SP_Admin_Welcome {
         <div class="col">
           <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-next-team.png" alt="Screenshot">
           <h3>Next Team Column</h3>
-          <p>Provide a quick overview of who each team is playing next using the new <strong>Next Team</strong> preset for <a href="<?php echo add_query_arg( array( 'post_type' => 'sp_column' ), admin_url( 'edit.php' ) ); ?>">league tables columns</a>. This will automatically display the next team's name or logo that links to the next match for each team in the table.<p>
+          <p>Provide a quick overview of who each team is playing next using the new <strong>Next Team</strong> preset for <a href="<?php echo add_query_arg( array( 'post_type' => 'sp_column' ), admin_url( 'edit.php' ) ); ?>">league table columns</a>. This will automatically display the next team's name or logo that links to the next match for each team in the table.<p>
         </div>
       </div>
 

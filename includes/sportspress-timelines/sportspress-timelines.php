@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Add timelines to SportsPress events.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.2
+Version: 2.6
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Timelines' ) ) :
  * Main SportsPress Timelines Class
  *
  * @class SportsPress_Timelines
- * @version	2.2
+ * @version	2.6
  *
  */
 class SportsPress_Timelines {
@@ -41,7 +41,7 @@ class SportsPress_Timelines {
 	 */
 	private function define_constants() {
 		if ( !defined( 'SP_TIMELINES_VERSION' ) )
-			define( 'SP_TIMELINES_VERSION', '2.2' );
+			define( 'SP_TIMELINES_VERSION', '2.6' );
 
 		if ( !defined( 'SP_TIMELINES_URL' ) )
 			define( 'SP_TIMELINES_URL', plugin_dir_url( __FILE__ ) );

@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add conditional equations to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.5.10
+Version: 2.6
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
  * Main SportsPress Conditional Equations Class
  *
  * @class SportsPress_Conditional_Equations
- * @version	2.5.10
+ * @version	2.6
  */
  
  class SportsPress_Conditional_Equations {
@@ -42,7 +42,7 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_CONDITIONAL_EQUATIONS_VERSION' ) )
-			define( 'SP_CONDITIONAL_EQUATIONS_VERSION', '2.5.10' );
+			define( 'SP_CONDITIONAL_EQUATIONS_VERSION', '2.6' );
 
 		if ( !defined( 'SP_CONDITIONAL_EQUATIONS_URL' ) )
 			define( 'SP_CONDITIONAL_EQUATIONS_URL', plugin_dir_url( __FILE__ ) );
