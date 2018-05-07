@@ -28,11 +28,6 @@ class SportsPress_Results_Matrix {
 		// Define constants
 		$this->define_constants();
 
-		// Include required ajax files
-		if ( defined( 'DOING_AJAX' ) ) {
-			$this->ajax_includes();
-		}
-
 		// Hooks
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
 		add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
@@ -56,13 +51,6 @@ class SportsPress_Results_Matrix {
 
 		if ( !defined( 'SP_RESULTS_MATRIX_DIR' ) )
 			define( 'SP_RESULTS_MATRIX_DIR', plugin_dir_path( __FILE__ ) );
-	}
-
-	/**
-	 * Include required ajax files.
-	 */
-	public function ajax_includes() {
-		include_once( 'includes/class-sp-event-matrix-ajax.php' );
 	}
 
 	/**
