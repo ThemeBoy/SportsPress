@@ -57,7 +57,7 @@ class SportsPress_Player_Assignments {
 			if ( 0 === $l_id ) continue;
 			foreach ( $season as $s_id => $team_id ) {
 				if ( 0 >= $team_id ) continue;
-				$serialized = $l_id.'_'.$s_id.'_'.$team_id;
+				$serialized = intval($l_id).'_'.intval($s_id).'_'.intval($team_id);
 				add_post_meta( $post_id, 'sp_assignments', $serialized, false );
 			}
 		}
