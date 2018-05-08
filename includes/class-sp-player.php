@@ -126,7 +126,7 @@ class SP_Player extends SP_Custom_Post {
 		$seasons = (array)get_the_terms( $this->ID, 'sp_season', $args );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
-		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
+		$leagues = (array) sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id );
 		$manual_columns = 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ? true : false;
 
 		$season_ids = wp_list_pluck( $seasons, 'term_id' );
