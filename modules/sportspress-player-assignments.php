@@ -74,7 +74,7 @@ class SportsPress_Player_Assignments {
 		);
 
 		$args['meta_query'][] = array(
-			'relation' => 'OR',
+			'relation' => 'AND',
 		);
 
 		return $args;
@@ -102,13 +102,15 @@ class SportsPress_Player_Assignments {
 			}
 		}
 
-		$args['meta_query'] = array(
-			array(
-				'key' => 'sp_assignments',
-				'value' => $assignments,
-				'compare' => 'IN'
-			),
-		);
+		if ( sizeof( $assignments ) ) {
+			$args['meta_query'] = array(
+				array(
+					'key' => 'sp_assignments',
+					'value' => $assignments,
+					'compare' => 'IN'
+				),
+			);
+		}
 
 		$assigned_players = (array) get_posts( $args );
 
