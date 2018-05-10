@@ -25,8 +25,10 @@ $leagues = array_filter( ( array ) get_the_terms( $id, 'sp_league' ) );
 foreach ( $leagues as $key => $league ) {
 	$leagues[ $key ]->sp_order = get_term_meta ( $league->term_id , 'sp_order', true );
 }
-function sortByOrder($a, $b) {
-	return (int) $a->sp_order - (int) $b->sp_order;
+if ( ! function_exists( 'sortByOrder' ) ) { 
+	function sortByOrder($a, $b) {
+		return (int) $a->sp_order - (int) $b->sp_order;
+	}
 }
 usort($leagues, 'sortByOrder');
 
