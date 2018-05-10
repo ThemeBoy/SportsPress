@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add player assignments support to SportsPress.
 Author: Savvas
 Author URI: http://themeboy.com/
-Version: 2.6.1
+Version: 2.6.2
 */
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -14,7 +14,7 @@ if ( ! class_exists( 'SportsPress_Player_Assignments' ) ) :
  * Main SportsPress Player Assignments Class
  *
  * @class SportsPress_Player_Assignments
- * @version	2.6.1
+ * @version	2.6.2
  */
 class SportsPress_Player_Assignments {
 	/**
@@ -29,14 +29,14 @@ class SportsPress_Player_Assignments {
 
 		// Filters
 		add_filter( 'sportspress_player_list_args', array( $this, 'add_args' ), 10, 2 );
-		add_filter( 'sportspress_player_list_players', array( $this, 'add_players' ), 10, 3 );
+		add_filter( 'sportspress_player_list_players', array( $this, 'add_players' ), 10, 4 );
 	}
 	/**
 	 * Define constants.
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_PLAYER_ASSIGNMENTS_VERSION' ) )
-			define( 'SP_PLAYER_ASSIGNMENTS_VERSION', '2.6.1' );
+			define( 'SP_PLAYER_ASSIGNMENTS_VERSION', '2.6.2' );
 		if ( !defined( 'SP_PLAYER_ASSIGNMENTS_URL' ) )
 			define( 'SP_PLAYER_ASSIGNMENTS_URL', plugin_dir_url( __FILE__ ) );
 		if ( !defined( 'SP_PLAYER_ASSIGNMENTS_DIR' ) )
@@ -94,7 +94,7 @@ class SportsPress_Player_Assignments {
 	/**
 	 * Add assigned players to player list
 	 */
-	public function add_players( $players = array(), $args = array(), $team = false ) {
+	public function add_players( $players = array(), $args = array(), $team = false, $team_key = 'sp_team' ) {
 		if ( ! $team ) return $players;
 
 		$tax_query = (array) sp_array_value( $args, 'tax_query', array() );
@@ -119,10 +119,17 @@ class SportsPress_Player_Assignments {
 
 		if ( sizeof( $assignments ) ) {
 			$args['meta_query'] = array(
+				'relation' => 'AND',
+
 				array(
 					'key' => 'sp_assignments',
 					'value' => $assignments,
-					'compare' => 'IN'
+					'compare' => 'IN',
+				),
+
+				array(
+					'key' => $team_key,
+					'value' => $team,
 				),
 			);
 		}
