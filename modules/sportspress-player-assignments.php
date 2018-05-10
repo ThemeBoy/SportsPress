@@ -73,9 +73,7 @@ class SportsPress_Player_Assignments {
 			'compare' => 'NOT EXISTS',
 		);
 
-		$args['meta_query'][] = array(
-			'relation' => 'AND',
-		);
+		$args['meta_query']['relation'] = 'AND';
 
 		return $args;
 	}
