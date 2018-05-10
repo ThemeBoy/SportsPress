@@ -2,10 +2,10 @@
 /**
  * SportsPress Admin Settings Class.
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin
- * @version     2.3
+ * @author    ThemeBoy
+ * @category  Admin
+ * @package   SportsPress/Admin
+ * @version   2.6.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
