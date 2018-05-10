@@ -28,7 +28,7 @@ class SportsPress_Player_Assignments {
 		add_action( 'sportspress_process_sp_player_meta', array( $this, 'save' ) );
 
 		// Filters
-		add_filter( 'sportspress_player_list_args', array( $this, 'add_args' ), 10 );
+		add_filter( 'sportspress_player_list_args', array( $this, 'add_args' ), 10, 2 );
 		add_filter( 'sportspress_player_list_players', array( $this, 'add_players' ), 10, 3 );
 	}
 	/**
@@ -66,7 +66,20 @@ class SportsPress_Player_Assignments {
 	/**
 	 * Add args to filter out assigned players
 	 */
-	public function add_args( $args = array() ) {
+	public function add_args( $args = array(), $team = false ) {	
+		if ( ! $team ) return $args;
+
+		$tax_query = (array) sp_array_value( $args, 'tax_query', array() );
+		$league_ids = array();
+		$season_ids = array();
+
+		foreach ( $tax_query as $param ) {
+			if ( 'sp_league' === sp_array_value( $param, 'taxonomy' ) ) $league_ids = sp_array_value( $param, 'terms', array() );
+			if ( 'sp_season' === sp_array_value( $param, 'taxonomy' ) ) $season_ids = sp_array_value( $param, 'terms', array() );
+		}
+
+		if ( empty( $league_ids ) || empty( $season_ids ) ) return $args;
+
 		$args['meta_query'][] = array(
 			'key' => 'sp_assignments',
 			'value' => '',
