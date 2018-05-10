@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version		2.6
+ * @version		2.6.2
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -146,7 +146,7 @@ class SP_Player_List extends SP_Secondary_Post {
 
 			$players = (array) get_posts( $args );
 
-			$players = apply_filters( 'sportspress_player_list_players', $players, $args, $team );
+			$players = apply_filters( 'sportspress_player_list_players', $players, $args, $team, $team_key );
 
 			if ( $players && is_array( $players ) ) {
 				foreach ( $players as $player ) {
