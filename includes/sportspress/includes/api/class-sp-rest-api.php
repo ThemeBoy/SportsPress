@@ -5,7 +5,7 @@
  * The SportsPress REST API class handles all API-related hooks.
  *
  * @class 		SP_REST_API
- * @version		2.5.5
+ * @version		2.6.1
  * @package		SportsPress/Classes
  * @category	Class
  * @package 	SportsPress/API
@@ -49,13 +49,6 @@ class SP_REST_API {
 		if ( ! class_exists( 'SP_REST_Terms_Controller' ) ) {
 			require_once dirname( __FILE__ ) . '/class-sp-rest-terms-controller.php';
 		}
-
-		// Create Player Controller
-        if ( ! class_exists( 'SP_REST_Players_Controller' ) ) {
-            require_once dirname( __FILE__ ) . '/class-sp-rest-players-controller.php';
-            $player_controller = new SP_REST_Players_Controller();
-            $player_controller->register_routes();
-        }
 		
 		do_action( 'sportspress_create_rest_routes' );
 	}

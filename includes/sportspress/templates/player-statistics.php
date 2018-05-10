@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.6
+ * @version   2.6.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,14 +19,16 @@ $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'ye
 $show_career_totals = 'yes' === get_option( 'sportspress_player_show_career_total', 'no' ) ? true : false;
 $sections = get_option( 'sportspress_player_performance_sections', -1 );
 $show_teams = apply_filters( 'sportspress_player_team_statistics', true );
-$leagues = get_the_terms( $id, 'sp_league' );
+$leagues = array_filter( ( array ) get_the_terms( $id, 'sp_league' ) );
 
 // Sort Leagues by User Defined Order (PHP5.2 supported)
 foreach ( $leagues as $key => $league ) {
 	$leagues[ $key ]->sp_order = get_term_meta ( $league->term_id , 'sp_order', true );
 }
-function sortByOrder($a, $b) {
-	return (int) $a->sp_order - (int) $b->sp_order;
+if ( ! function_exists( 'sortByOrder' ) ) { 
+	function sortByOrder($a, $b) {
+		return (int) $a->sp_order - (int) $b->sp_order;
+	}
 }
 usort($leagues, 'sortByOrder');
 
