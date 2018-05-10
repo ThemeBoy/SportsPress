@@ -50,9 +50,7 @@ class SP_Admin_Settings {
 				$settings[] = include( 'settings/class-sp-settings-licenses.php' );
 			}
 			
-			if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG && current_user_can( 'manage_options' ) ) {
-				$settings[] = include( 'settings/class-sp-settings-status.php' );
-			}
+			$settings[] = include( 'settings/class-sp-settings-status.php' );
 
 			self::$settings = apply_filters( 'sportspress_get_settings_config_pages', $settings );
 		}
