@@ -95,7 +95,7 @@ class SportsPress_Player_Assignments {
 	 * Add assigned players to player list
 	 */
 	public function add_players( $players = array(), $args = array(), $team = false ) {
-		if ( ! $team ) return $args;
+		if ( ! $team ) return $players;
 
 		$tax_query = (array) sp_array_value( $args, 'tax_query', array() );
 		$league_ids = array();
@@ -106,7 +106,7 @@ class SportsPress_Player_Assignments {
 			if ( 'sp_season' === sp_array_value( $param, 'taxonomy' ) ) $season_ids = sp_array_value( $param, 'terms', array() );
 		}
 
-		if ( empty( $league_ids ) || empty( $season_ids ) ) return $args;
+		if ( empty( $league_ids ) || empty( $season_ids ) ) return $players;
 
 		$assignments = array();
 		foreach ( $league_ids as $l_id ) {
