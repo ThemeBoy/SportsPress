@@ -296,7 +296,7 @@ function sp_team_abbreviation( $post = 0, $forced = false ) {
 	if ( $abbreviation ) {
 		return $abbreviation;
 	} else {
-		return $forced ? mb_substr( mb_strtoupper( sp_team_short_name( $post ) ), 0, 3 ) : sp_team_short_name( $post );
+		return $forced ? sp_substr( sp_strtoupper( sp_team_short_name( $post ) ), 0, 3 ) : sp_team_short_name( $post );
 	}
 }
 
