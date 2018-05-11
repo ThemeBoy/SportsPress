@@ -123,11 +123,11 @@ function sp_locate_template( $template_name, $template_path = '', $default_path 
 	return apply_filters('sportspress_locate_template', $template, $template_name, $template_path);
 }
 
-function sp_substr( $string = '' ) {
+function sp_substr( $string = '', $start = 0, $length = null ) {
 	if ( function_exists( 'mb_substr' ) ) {
-		return mb_substr( $string );
+		return mb_substr( $string, $start, $length );
 	} else {
-		return substr( $string );
+		return substr( $string, $start, $length );
 	}
 }
 
