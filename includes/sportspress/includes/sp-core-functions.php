@@ -123,6 +123,22 @@ function sp_locate_template( $template_name, $template_path = '', $default_path 
 	return apply_filters('sportspress_locate_template', $template, $template_name, $template_path);
 }
 
+function sp_substr( $string = '' ) {
+	if ( function_exists( 'mb_substr' ) ) {
+		return mb_substr( $string );
+	} else {
+		return substr( $string );
+	}
+}
+
+function sp_strtoupper( $string = '' ) {
+	if ( function_exists( 'mb_strtoupper' ) ) {
+		return mb_strtoupper( $string );
+	} else {
+		return strtoupper( $string );
+	}
+}
+
 /**
  * Get the timezone string.
  *
@@ -152,7 +168,7 @@ function sp_get_timezone() {
 
 /* deprecated functions below */
 
-if( !function_exists( 'date_diff' ) ) {
+if ( !function_exists( 'date_diff' ) ) {
 	class DateInterval {
 		public $y;
 		public $m;
