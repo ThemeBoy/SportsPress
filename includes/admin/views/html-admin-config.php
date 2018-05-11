@@ -371,6 +371,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 						<thead>
 							<tr>
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
+								<th class="icon" scope="col"><?php _e( 'Icon', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Equation', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Decimal Places', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Category', 'sportspress' ); ?></th>
@@ -391,6 +392,16 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 							?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="row-title"><?php echo $row->post_title; ?></td>
+								<td class="icon">
+										<?php
+										if ( has_post_thumbnail( $row->ID ) )
+											$icon = get_the_post_thumbnail( $row->ID, 'sportspress-fit-mini' );
+										else
+											$icon = '&nbsp;';
+
+										echo apply_filters( 'sportspress_performance_icon', $icon, $row->ID );
+										?>
+								</td>
 								<td><?php echo sp_get_post_equation( $row->ID ); ?></td>
 								<td><?php echo sp_get_post_precision( $row->ID ); ?></td>
 								<td><?php echo sp_get_post_section( $row->ID ); ?></td>

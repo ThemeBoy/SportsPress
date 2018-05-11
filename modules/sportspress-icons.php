@@ -143,7 +143,7 @@ class SportsPress_Icons {
 
 		// Bypass if not performance post type
 		$post_type = get_post_type( $id );
-		if ( 'sp_performance' !== $post_type ) return $content;
+		if ( 'sp_performance' !== $post_type && 'sp_statistic' !== $post_type ) return $content;
 
 		// Detect if image uploaded
 		$is_uploaded = isset( $_POST['thumbnail_id'] );
