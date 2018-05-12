@@ -41,6 +41,7 @@ class SportsPress_Icons {
 		add_filter( 'sportspress_event_performance_icons', array( $this, 'replace_icons' ), 10, 3 );
 		add_filter( 'admin_post_thumbnail_html', array( $this, 'admin_post_thumbnail_html' ), 10, 2 );
 		add_action( 'sportspress_process_sp_performance_meta', array( $this, 'save' ), 10, 2 );
+		add_action( 'sportspress_process_sp_statistic_meta', array( $this, 'save' ), 10, 2 );
 	}
 
 	/**
