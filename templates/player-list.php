@@ -53,8 +53,11 @@ if ( isset( $columns ) && null !== $columns ):
 endif;
 $data = $list->data();
 
-// The first row should be column labels
+// The first row should be data-label labels
 $labels = $data[0];
+
+// The 'head' row should be column labels
+$labels_head = $data['head'];
 
 //Create a unique identifier based on the current time in microseconds
 $identifier = uniqid( 'playerlist_' );
@@ -62,8 +65,9 @@ $identifier = uniqid( 'playerlist_' );
 if ( true == $responsive ){
 	//sportspress_responsive_tables_css( $identifier );
 }
-// Remove the first row to leave us with the actual data
+// Remove the first row and 'head' row to leave us with the actual data
 unset( $data[0] );
+unset( $data['head'] );
 
 if ( $grouping === null || $grouping === 'default' ):
 	$grouping = $list->grouping;
@@ -223,7 +227,7 @@ foreach ( $groups as $group ):
 		endif;
 	endif;
 
-	foreach( $labels as $key => $label ):
+	foreach( $labels_head as $key => $label ):
 		if ( $key !== 'number' && ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) ) )
 		$output .= '<th class="data-' . $key . '">'. $label . '</th>';
 	endforeach;

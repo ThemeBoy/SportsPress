@@ -213,8 +213,19 @@ class SP_Player_List extends SP_Secondary_Post {
 				// Add precision to object
 				$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 ) + 0;
 
-				// Add column name to columns
-				$columns[ $stat->post_name ] = $stat->post_title;
+				// Add column icons to columns were is available
+				if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' && ( $stat->post_type == 'sp_performance' || $stat->post_type == 'sp_statistic' ) ) {
+					$icon = apply_filters( 'sportspress_event_performance_icons', '', $stat->ID, 1 );
+					if ( $icon != '' ) {
+						$columns[ $stat->post_name ] = apply_filters( 'sportspress_event_performance_icons', '', $stat->ID, 1 );
+					}else{
+						$columns[ $stat->post_name ] = $stat->post_title;
+					}
+				}else{
+					$columns[ $stat->post_name ] = $stat->post_title;
+				}
+				// Add columns titles for using with data-label
+				$columns_title[ $stat->post_name ] = $stat->post_title;
 
 				// Add format
 				$format = get_post_meta( $stat->ID, 'sp_format', true );
@@ -669,16 +680,20 @@ class SP_Player_List extends SP_Secondary_Post {
 			foreach( $this->columns as $key ):
 				if ( $key == 'number' ):
 					$labels[ $key ] = '#';
+					$labels_title[ $key ] = '#';
 				elseif ( $key == 'team' ):
 					$labels[ $key ] = __( 'Team', 'sportspress' );
+					$labels_title[ $key ] = __( 'Team', 'sportspress' );
 				elseif ( $key == 'position' ):
 					$labels[ $key ] = __( 'Position', 'sportspress' );
+					$labels_title[ $key ] = __( 'Position', 'sportspress' );
 				elseif ( array_key_exists( $key, $columns ) ):
 					$labels[ $key ] = $columns[ $key ];
+					$labels_title[ $key ] = $columns_title[ $key ];
 				endif;
 			endforeach;
 
-			return array( $labels, $data, $placeholders, $merged, $orderby );
+			return array( $labels, $labels_title, $data, $placeholders, $merged, $orderby );
 		else:
 
 			// Convert to time notation
@@ -716,10 +731,18 @@ class SP_Player_List extends SP_Secondary_Post {
 			$labels = array();
 			if ( in_array( 'number', $this->columns ) ) $labels['number'] = '#';
 			$labels['name'] = __( 'Player', 'sportspress' );
-			if ( in_array( 'team', $this->columns ) ) $labels['team'] = __( 'Team', 'sportspress' );
-			if ( in_array( 'position', $this->columns ) ) $labels['position'] = __( 'Position', 'sportspress' );
+			$labels_title['name'] = __( 'Player', 'sportspress' );
+			if ( in_array( 'team', $this->columns ) ) {
+				$labels['team'] = __( 'Team', 'sportspress' );
+				$labels_title['team'] = __( 'Team', 'sportspress' );
+			}
+			if ( in_array( 'position', $this->columns ) ) {
+				$labels['position'] = __( 'Position', 'sportspress' );
+				$labels_title['position'] = __( 'Position', 'sportspress' );
+			}
 
-			$merged[0] = array_merge( $labels, $columns );
+			$merged['head'] = array_merge( $labels, $columns );
+			$merged[0] = array_merge( $labels, $columns_title );
 			return $merged;
 		endif;
 	}
