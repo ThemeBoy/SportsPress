@@ -94,6 +94,7 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 						'compare' => 'IN',
 					),
 				),
+				'order' => 'ASC',
 			);
 			$events = get_posts( $args );
 
