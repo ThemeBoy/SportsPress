@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add a Next preset to SportsPress league table column equations.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.6
+Version: 2.6.3
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
  * Main SportsPress Next Team Preset Class
  *
  * @class SportsPress_Next_Team_Preset
- * @version	2.6
+ * @version	2.6.3
  */
  
  class SportsPress_Next_Team_Preset {
@@ -46,7 +46,7 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_NEXT_TEAM_PRESET_VERSION' ) )
-			define( 'SP_NEXT_TEAM_PRESET_VERSION', '2.6' );
+			define( 'SP_NEXT_TEAM_PRESET_VERSION', '2.6.3' );
 
 		if ( !defined( 'SP_NEXT_TEAM_PRESET_URL' ) )
 			define( 'SP_NEXT_TEAM_PRESET_URL', plugin_dir_url( __FILE__ ) );
