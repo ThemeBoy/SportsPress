@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.6.2
+Stable tag: 2.6.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,13 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.6.3 =
+* Fix - Results matrix displaying other match results instead of upcoming match date.
+* Fix - Assign past teams during player import.
+* Fix - Next team column displaying events furthest away.
+* Fix - Add fallback array_replace function for PHP versions earlier than 5.3.
+* Fix - Add fallback for web hosts that don't support multibyte PHP functions, causing blank player profiles.
 
 = 2.6.2 =
 * Fix - Newly added players from past and current team appearing in player lists.

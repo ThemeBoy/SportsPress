@@ -1,5 +1,11 @@
 == SportsPress Changelog ==
 
+= 2.6.3 =
+* Fix - Assign past teams during player import.
+* Fix - Next team column displaying events furthest away.
+* Fix - Add fallback array_replace function for PHP versions earlier than 5.3.
+* Fix - Add fallback for web hosts that don't support multibyte PHP functions, causing blank player profiles.
+
 = 2.6.2 =
 * Fix - Newly added players from past and current team appearing in player lists.
 * Fix - Player lists appearing empty without league, season, and team selected.

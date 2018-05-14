@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.6.2
+Stable tag: 2.6.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -236,6 +236,12 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.6.3 =
+* Fix - Assign past teams during player import.
+* Fix - Next team column displaying events furthest away.
+* Fix - Add fallback array_replace function for PHP versions earlier than 5.3.
+* Fix - Add fallback for web hosts that don't support multibyte PHP functions, causing blank player profiles.
 
 = 2.6.2 =
 * Fix - Newly added players from past and current team appearing in player lists.
