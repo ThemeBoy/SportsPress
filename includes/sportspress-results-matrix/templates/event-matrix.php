@@ -71,14 +71,14 @@ $teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
 if ( ! empty( $teams ) ) {
 	$args['include'] = $teams;
 } else {
-	$leagues = get_the_terms( $id, 'sp_league' );
-	$seasons = get_the_terms( $id, 'sp_season' );
+	$leagues = sp_get_the_term_ids( $id, 'sp_league' );
+	$seasons = sp_get_the_term_ids( $id, 'sp_season' );
 
 	if ( $leagues ) {
 		$args['tax_query'][] = array(
 			'taxonomy' => 'sp_league',
 			'field' => 'term_id',
-			'terms' => wp_list_pluck( $leagues, 'term_id' ),
+			'terms' => $leagues,
 		);
 	}
 
@@ -86,7 +86,7 @@ if ( ! empty( $teams ) ) {
 		$args['tax_query'][] = array(
 			'taxonomy' => 'sp_season',
 			'field' => 'term_id',
-			'terms' => wp_list_pluck( $seasons, 'term_id' ),
+			'terms' => $seasons,
 		);
 	}
 }
