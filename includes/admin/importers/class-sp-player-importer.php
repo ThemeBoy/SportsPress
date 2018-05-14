@@ -123,9 +123,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 					// Add team to player
 					add_post_meta( $id, 'sp_team', $team_id );
 
-					// Update current team if first in array
+					// Update current team if first in array, otherwise use as past team
 					if ( $i == 0 ):
 						update_post_meta( $id, 'sp_current_team', $team_id );
+					else :
+						add_post_meta( $id, 'sp_past_team', $team_id );
 					endif;
 
 					$i++;
