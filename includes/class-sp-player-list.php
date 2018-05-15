@@ -677,6 +677,7 @@ class SP_Player_List extends SP_Secondary_Post {
 			endif;
 
 			$labels = array();
+			$labels_title = array();
 			foreach( $this->columns as $key ):
 				if ( $key == 'number' ):
 					$labels[ $key ] = '#';
@@ -725,20 +726,18 @@ class SP_Player_List extends SP_Secondary_Post {
 			foreach ( $columns as $key => $label ):
 				if ( ! in_array( $key, $this->columns ) ):
 					unset( $columns[ $key ] );
+					unset( $columns_title[ $key ] );
 				endif;
 			endforeach;
 
 			$labels = array();
 			if ( in_array( 'number', $this->columns ) ) $labels['number'] = '#';
 			$labels['name'] = __( 'Player', 'sportspress' );
-			$labels_title['name'] = __( 'Player', 'sportspress' );
 			if ( in_array( 'team', $this->columns ) ) {
 				$labels['team'] = __( 'Team', 'sportspress' );
-				$labels_title['team'] = __( 'Team', 'sportspress' );
 			}
 			if ( in_array( 'position', $this->columns ) ) {
 				$labels['position'] = __( 'Position', 'sportspress' );
-				$labels_title['position'] = __( 'Position', 'sportspress' );
 			}
 
 			$merged['head'] = array_merge( $labels, $columns );
