@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version		2.6
+ * @version		2.6.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -1635,4 +1635,29 @@ function sp_get_shortcode_template( $shortcode, $id = null, $args = array() ) {
  */
 function sp_shortcode_template( $shortcode, $id = null, $args = array() ) {
 	echo sp_get_shortcode_template( $shortcode, $id, $args );
+}
+
+if( ! function_exists( 'array_replace' ) ) {
+	/**
+	 * array_replace for PHP version earlier than 5.3
+	 *
+	 * @link   http://be2.php.net/manual/fr/function.array-replace.php#115215
+	 */
+	function array_replace() {
+		$args = func_get_args();
+		$num_args = func_num_args();
+		$res = array();
+		for( $i = 0; $i < $num_args; $i++ ) {
+			if( is_array( $args[ $i ] ) ) {
+				foreach( $args[ $i ] as $key => $val ) {
+					$res[ $key ] = $val;
+				}
+			}
+			else {
+				trigger_error( __FUNCTION__ . '(): Argument #' . ( $i + 1 ) . ' is not an array', E_USER_WARNING );
+				return NULL;
+			}
+		}
+		return $res;
+	}
 }
