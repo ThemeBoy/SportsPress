@@ -126,6 +126,23 @@ foreach ( $groups as $group ):
 	if ( intval( $number ) > 0 )
 		$limit = $number;
 	
+	$thead = '<thead>' . '<tr>';
+		
+	if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
+		if ( in_array( $orderby, array( 'number', 'name' ) ) ):
+			$thead .= '<th class="data-number">#</th>';
+		else:
+			$thead .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
+		endif;
+	endif;
+
+	foreach( $labels_head as $key => $label ):
+		if ( $key !== 'number' && ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) ) )
+		$thead .= '<th class="data-' . $key . '">'. $label . '</th>';
+	endforeach;
+
+	$thead .= '</tr>' . '</thead>';
+	
 	$tbody = '';
 
 	foreach( $data as $player_id => $row ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):
@@ -217,22 +234,9 @@ foreach ( $groups as $group ):
 	endif;
 
 	$output .= '<div class="sp-table-wrapper">' .
-		'<table class="sp-player-list sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ). ( $responsive ? ' sp-responsive-table '.$identifier : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
-
-	if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
-		if ( in_array( $orderby, array( 'number', 'name' ) ) ):
-			$output .= '<th class="data-number">#</th>';
-		else:
-			$output .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
-		endif;
-	endif;
-
-	foreach( $labels_head as $key => $label ):
-		if ( $key !== 'number' && ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) ) )
-		$output .= '<th class="data-' . $key . '">'. $label . '</th>';
-	endforeach;
-
-	$output .= '</tr>' . '</thead>' . '<tbody>';
+		'<table class="sp-player-list sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ). ( $responsive ? ' sp-responsive-table '.$identifier : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">';
+	
+	$output .= $thead . '<tbody>';
 	
 	$output .= $tbody;
 
