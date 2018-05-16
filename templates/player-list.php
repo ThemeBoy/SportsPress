@@ -53,11 +53,8 @@ if ( isset( $columns ) && null !== $columns ):
 endif;
 $data = $list->data();
 
-// The first row should be data-label labels
+// The first row should be labels
 $labels = $data[0];
-
-// The 'head' row should be column labels
-$labels_head = $data['head'];
 
 //Create a unique identifier based on the current time in microseconds
 $identifier = uniqid( 'playerlist_' );
@@ -67,7 +64,6 @@ if ( true == $responsive ){
 }
 // Remove the first row and 'head' row to leave us with the actual data
 unset( $data[0] );
-unset( $data['head'] );
 
 if ( $grouping === null || $grouping === 'default' ):
 	$grouping = $list->grouping;
@@ -136,9 +132,11 @@ foreach ( $groups as $group ):
 		endif;
 	endif;
 
-	foreach( $labels_head as $key => $label ):
+	foreach( $labels as $key => $label ):
 		if ( $key !== 'number' && ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) ) )
-		$thead .= '<th class="data-' . $key . '">'. $label . '</th>';
+			$thead .= '<th class="data-' . $key . '">'. $label . '</th>';
+		if ( preg_match ( "/title=\"(.*?)\"/", $label, $new_label ) )
+			$labels[$key] = $label[1];
 	endforeach;
 
 	$thead .= '</tr>' . '</thead>';

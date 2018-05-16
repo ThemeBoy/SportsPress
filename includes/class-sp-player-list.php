@@ -224,8 +224,6 @@ class SP_Player_List extends SP_Secondary_Post {
 				}else{
 					$columns[ $stat->post_name ] = $stat->post_title;
 				}
-				// Add columns titles for using with data-label
-				$columns_title[ $stat->post_name ] = $stat->post_title;
 
 				// Add format
 				$format = get_post_meta( $stat->ID, 'sp_format', true );
@@ -677,24 +675,19 @@ class SP_Player_List extends SP_Secondary_Post {
 			endif;
 
 			$labels = array();
-			$labels_title = array();
 			foreach( $this->columns as $key ):
 				if ( $key == 'number' ):
 					$labels[ $key ] = '#';
-					$labels_title[ $key ] = '#';
 				elseif ( $key == 'team' ):
 					$labels[ $key ] = __( 'Team', 'sportspress' );
-					$labels_title[ $key ] = __( 'Team', 'sportspress' );
 				elseif ( $key == 'position' ):
 					$labels[ $key ] = __( 'Position', 'sportspress' );
-					$labels_title[ $key ] = __( 'Position', 'sportspress' );
 				elseif ( array_key_exists( $key, $columns ) ):
 					$labels[ $key ] = $columns[ $key ];
-					$labels_title[ $key ] = $columns_title[ $key ];
 				endif;
 			endforeach;
 
-			return array( $labels, $labels_title, $data, $placeholders, $merged, $orderby );
+			return array( $labels, $data, $placeholders, $merged, $orderby );
 		else:
 
 			// Convert to time notation
@@ -726,7 +719,6 @@ class SP_Player_List extends SP_Secondary_Post {
 			foreach ( $columns as $key => $label ):
 				if ( ! in_array( $key, $this->columns ) ):
 					unset( $columns[ $key ] );
-					unset( $columns_title[ $key ] );
 				endif;
 			endforeach;
 
@@ -740,8 +732,7 @@ class SP_Player_List extends SP_Secondary_Post {
 				$labels['position'] = __( 'Position', 'sportspress' );
 			}
 
-			$merged['head'] = array_merge( $labels, $columns );
-			$merged[0] = array_merge( $labels, $columns_title );
+			$merged[0] = array_merge( $labels, $columns );
 			return $merged;
 		endif;
 	}

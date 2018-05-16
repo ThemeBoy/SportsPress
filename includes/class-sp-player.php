@@ -184,8 +184,17 @@ class SP_Player extends SP_Custom_Post {
 
 		foreach ( $posts as $post ):
 			if ( -1 === $section ) {
-				$performance_labels[ $post->post_name ] = $post->post_title;
-			} else {
+				if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+					$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+					if ( $icon != '' ) {
+						$performance_labels[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+					}else{
+						$performance_labels[ $post->post_name ] = $post->post_title;
+					}
+				}else{
+					$performance_labels[ $post->post_name ] = $post->post_title;
+				}
+			}else{
 				$post_section = get_post_meta( $post->ID, 'sp_section', true );
 				
 				if ( '' === $post_section ) {
@@ -193,7 +202,16 @@ class SP_Player extends SP_Custom_Post {
 				}
 				
 				if ( $section == $post_section || -1 == $post_section ) {
+					if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+						$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+						if ( $icon != '' ) {
+							$performance_labels[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+						}else{
+							$performance_labels[ $post->post_name ] = $post->post_title;
+						}
+					}else{
 					$performance_labels[ $post->post_name ] = $post->post_title;
+					}
 				}
 			}
 
@@ -566,7 +584,16 @@ class SP_Player extends SP_Custom_Post {
 
 		foreach ( $posts as $post ):
 			if ( -1 === $section ) {
-				$stats[ $post->post_name ] = $post->post_title;
+				if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+					$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+					if ( $icon != '' ) {
+						$stats[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+					}else{
+						$stats[ $post->post_name ] = $post->post_title;
+					}
+				}else{
+					$stats[ $post->post_name ] = $post->post_title;
+				}
 			} else {
 				$post_section = get_post_meta( $post->ID, 'sp_section', true );
 				
@@ -577,15 +604,42 @@ class SP_Player extends SP_Custom_Post {
 				if ( $admin ) {
 					if ( 1 == $section ) {
 						if ( 1 == $post_section ) {
-							$stats[ $post->post_name ] = $post->post_title;
+							if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+								$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+								if ( $icon != '' ) {
+									$stats[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+								} else {
+									$stats[ $post->post_name ] = $post->post_title;
+								}
+							} else {
+								$stats[ $post->post_name ] = $post->post_title;
+							}
 						}
 					} else {
 						if ( 1 != $post_section ) {
-							$stats[ $post->post_name ] = $post->post_title;
+							if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+								$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+									if ( $icon != '' ) {
+										$stats[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+									} else {
+										$stats[ $post->post_name ] = $post->post_title;
+									}
+							} else {
+								$stats[ $post->post_name ] = $post->post_title;
+							}
 						}
 					}
 				} elseif ( $section == $post_section || -1 == $post_section ) {
+					if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+					$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+					if ( $icon != '' ) {
+						$stats[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+					}else{
+						$stats[ $post->post_name ] = $post->post_title;
+					}
+				}else{
 					$stats[ $post->post_name ] = $post->post_title;
+				}
 				}
 			}
 		endforeach;
