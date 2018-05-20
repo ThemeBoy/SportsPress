@@ -28,6 +28,11 @@ class SportsPress_Results_Matrix {
 		// Define constants
 		$this->define_constants();
 
+		// Include required ajax files
+		if ( defined( 'DOING_AJAX' ) ) {
+			$this->ajax_includes();
+		}
+
 		// Hooks
 		add_filter( 'sportspress_formats', array( $this, 'add_formats' ) );
 		add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
@@ -51,6 +56,13 @@ class SportsPress_Results_Matrix {
 
 		if ( !defined( 'SP_RESULTS_MATRIX_DIR' ) )
 			define( 'SP_RESULTS_MATRIX_DIR', plugin_dir_path( __FILE__ ) );
+	}
+
+	/**
+	 * Include required ajax files.
+	 */
+	public function ajax_includes() {
+		include_once( 'includes/class-sp-results-matrix-ajax.php' );
 	}
 
 	/**
@@ -149,11 +161,18 @@ class SportsPress_Results_Matrix {
 
 		ob_start();
 
-		echo '<div class="sportspress">';
-		sp_get_template( 'event-matrix.php', $atts, '', trailingslashit( SP_RESULTS_MATRIX_DIR ) . 'templates/' );
-		echo '</div>';
+		echo SP_Shortcodes::shortcode_wrapper( array( $this, 'get_template' ), $atts );
 
 		return ob_get_clean();
+	}
+
+	/**
+	 * Get event matrix template.
+	 *
+	 * @param array $atts
+	 */
+	public static function get_template( $atts ) {
+		sp_get_template( 'event-matrix.php', $atts, '', trailingslashit( SP_RESULTS_MATRIX_DIR ) . 'templates/' );
 	}
 
 	/**
