@@ -183,18 +183,16 @@ if ( $posts ) {
 									$results = array();
 									foreach ( $events as $event ) {
 										$outcome = sp_array_value( sp_get_outcome( $event ), $home_id, null );
+										$result = implode( '-', sp_get_main_results_or_date( $event, $date_format ) );
+										$color = sp_array_value( $colors, $outcome, '#888888' );
 
 										if ( $link_events ) {
-											$result = implode( '-', sp_get_main_results_or_date( $event, $date_format ) );
-
 											if ( $outcome ) {
-												$color = sp_array_value( $colors, $outcome, '#888888' );
 												$result = '<a class="sp-event-matrix-event sp-event-matrix-event-' . $outcome . '" style="background-color: ' . $color . ';" href="' . get_post_permalink( $event, false, true ) . '">' . $result . '</a>';
 											} else {
 												$result = '<a class="sp-event-matrix-future-event" href="' . get_post_permalink( $event, false, true ) . '">' . $result . '</a>';
 											}
 										} else {
-											$result = sp_get_date( $event, $date_format );
 											$result = '<span class="sp-event-matrix-event sp-event-matrix-event-' . $outcome . '" style="background-color: ' . $color . ';">' . $result . '</span>';
 										}
 
