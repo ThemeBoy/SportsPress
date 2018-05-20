@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.6.3
+Stable tag: 2.6.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,13 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.6.4 =
+* Tweak - Add event matrix shortcode to editor.
+* Tweak - Enable widget alignment for scoreboard and staff directory shortcodes.
+* Tweak - Apply main league and current season settings to results matrix.
+* Fix - Undefined variable notice in player list.
+* Fix - Results matrix showing dates when event links disabled.
 
 = 2.6.3 =
 * Fix - Results matrix displaying other match results instead of upcoming match date.

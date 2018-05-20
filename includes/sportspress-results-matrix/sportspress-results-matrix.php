@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Display fixtures and results between teams in a grid layout.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.6
+Version: 2.6.4
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Results_Matrix' ) ) :
  * Main SportsPress Results Matrix Class
  *
  * @class SportsPress_Results_Matrix
- * @version	2.6
+ * @version	2.6.4
  */
 class SportsPress_Results_Matrix {
 
@@ -49,7 +49,7 @@ class SportsPress_Results_Matrix {
 	 */
 	private function define_constants() {
 		if ( !defined( 'SP_RESULTS_MATRIX_VERSION' ) )
-			define( 'SP_RESULTS_MATRIX_VERSION', '2.6' );
+			define( 'SP_RESULTS_MATRIX_VERSION', '2.6.4' );
 
 		if ( !defined( 'SP_RESULTS_MATRIX_URL' ) )
 			define( 'SP_RESULTS_MATRIX_URL', plugin_dir_url( __FILE__ ) );
