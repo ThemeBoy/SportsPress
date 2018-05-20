@@ -1,5 +1,8 @@
 == SportsPress Changelog ==
 
+= 2.6.4 =
+* Fix - Undefined variable notice in player list.
+
 = 2.6.3 =
 * Fix - Assign past teams during player import.
 * Fix - Next team column displaying events furthest away.
