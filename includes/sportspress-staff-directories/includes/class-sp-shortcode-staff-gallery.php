@@ -21,7 +21,7 @@ class SP_Shortcode_Staff_Gallery {
 	 * Init shortcodes
 	 */
 	public static function init() {
-		add_shortcode( 'staff_gallery', __CLASS__ . '::output' );
+		add_shortcode( 'staff_gallery', array( $this, 'output' ) );
 	}
 
 	/**
@@ -36,17 +36,18 @@ class SP_Shortcode_Staff_Gallery {
 
 		ob_start();
 
-		echo '<div class="sportspress">';
-		sp_get_template( 'staff-gallery.php', $atts, '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
-		echo '</div>';
+		echo SP_Shortcodes::shortcode_wrapper( array( $this, 'get_template' ), $atts );
 
 		return ob_get_clean();
 	}
 
-	public static function locate_template( $template = null, $template_name = null, $template_path = null ) {
-		if ( ! $template_path && $template_name == 'staff-gallery' ) {
-			return SP_STAFF_DIRECTORIES_DIR . '/templates/staff-gallery.php';
-		}
+	/**
+	 * Get staff gallery template.
+	 *
+	 * @param array $atts
+	 */
+	public static function get_template( $atts ) {
+		sp_get_template( 'staff-gallery.php', $atts, '', trailingslashit( SP_STAFF_DIRECTORIES_DIR ) . 'templates/' );
 	}
 }
 

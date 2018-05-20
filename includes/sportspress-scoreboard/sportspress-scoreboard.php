@@ -291,11 +291,18 @@ class SportsPress_Scoreboard {
 
 		ob_start();
 
-		echo '<div class="sportspress">';
-		sp_get_template( 'event-scoreboard.php', $atts, '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' );
-		echo '</div>';
+		echo SP_Shortcodes::shortcode_wrapper( array( $this, 'get_template' ), $atts );
 
 		return ob_get_clean();
+	}
+
+	/**
+	 * Get scoreboard template.
+	 *
+	 * @param array $atts
+	 */
+	public static function get_template( $atts ) {
+		sp_get_template( 'event-scoreboard.php', $atts, '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' );
 	}
 
 	/**

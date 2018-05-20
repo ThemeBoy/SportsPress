@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @class 		SP_Scoreboard_AJAX
  * @version		2.0.12
- * @package		SportsPress_Staff_Directories
+ * @package		SportsPress_Scoreboard
  * @category	Class
  * @author 		ThemeBoy
  */

@@ -14,14 +14,13 @@ class SP_Shortcode_Staff_List {
 	 */
 	function __construct() {
 		add_action( 'init', array( $this, 'init' ) );
-		//add_filter( 'sportspress_locate_template', array( $this, 'locate_template' ) );
 	}
 
 	/**
 	 * Init shortcodes
 	 */
 	public static function init() {
-		add_shortcode( 'staff_list', __CLASS__ . '::output' );
+		add_shortcode( 'staff_list', array( $this, 'output' ) );
 	}
 
 	/**
@@ -29,24 +28,25 @@ class SP_Shortcode_Staff_List {
 	 *
 	 * @param array $atts
 	 */
-	public static function output( $atts ) {
+	public function output( $atts ) {
 
 		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
 			$atts['id'] = $atts[0];
 
 		ob_start();
 
-		echo '<div class="sportspress">';
-		sp_get_template( 'staff-list.php', $atts, '', SP_STAFF_DIRECTORIES_DIR . 'templates/' );
-		echo '</div>';
+		echo SP_Shortcodes::shortcode_wrapper( array( $this, 'get_template' ), $atts );
 
 		return ob_get_clean();
 	}
 
-	public static function locate_template( $template = null, $template_name = null, $template_path = null ) {
-		if ( ! $template_path && $template_name == 'staff-list' ) {
-			return SP_STAFF_DIRECTORIES_DIR . '/templates/staff-list.php';
-		}
+	/**
+	 * Get staff list template.
+	 *
+	 * @param array $atts
+	 */
+	public static function get_template( $atts ) {
+		sp_get_template( 'staff-list.php', $atts, '', trailingslashit( SP_STAFF_DIRECTORIES_DIR ) . 'templates/' );
 	}
 }
 
