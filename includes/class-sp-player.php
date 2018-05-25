@@ -13,33 +13,33 @@
 class SP_Player extends SP_Custom_Post {
 
 	/**
-	 * Returns positions
+	 * Returns positions sorted by `sp_order`.
 	 *
 	 * @access public
 	 * @return array
 	 */
 	public function positions() {
-		return get_the_terms( $this->ID, 'sp_position' );
+		return $this->get_terms_sorted_by_sp_order( 'sp_position' );
 	}
 
 	/**
-	 * Returns leagues
+	 * Returns leagues sorted by `sp_order`.
 	 *
 	 * @access public
 	 * @return array
 	 */
 	public function leagues() {
-		return get_the_terms( $this->ID, 'sp_league' );
+		return $this->get_terms_sorted_by_sp_order( 'sp_league' );
 	}
 
 	/**
-	 * Returns seasons
+	 * Returns seasons sorted by `sp_order`.
 	 *
 	 * @access public
 	 * @return array
 	 */
 	public function seasons() {
-		return get_the_terms( $this->ID, 'sp_season' );
+		return $this->get_terms_sorted_by_sp_order( 'sp_season' );
 	}
 
 	/**
