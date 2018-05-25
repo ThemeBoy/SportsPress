@@ -5,7 +5,7 @@
  * The SportsPress custom post class handles individual post data.
  *
  * @class 		SP_Custom_Post
- * @version		0.8
+ * @version		2.6.5
  * @package		SportsPress/Abstracts
  * @category	Abstract Class
  * @author 		ThemeBoy
@@ -70,5 +70,22 @@ abstract class SP_Custom_Post {
 	 */
 	public function get_post_data() {
 		return $this->post;
+	}
+
+	/**
+	 * Get terms sorted by order.
+	 *
+	 * @access public
+	 * @param  string $taxonomy     The taxonomy.
+ 	 * @return array|false|WP_Error See `get_the_terms()`
+	 */
+	public function get_terms_sorted_by_sp_order( $taxonomy ) {
+		$terms = get_the_terms( $this->ID, $taxonomy );
+		if ( $terms ) {
+			usort( $terms, function( $a, $b ) {
+				return get_term_meta( $a->term_id, 'sp_order', true ) > get_term_meta( $b->term_id, 'sp_order', true );
+			} );
+		}
+		return $terms;
 	}
 }
