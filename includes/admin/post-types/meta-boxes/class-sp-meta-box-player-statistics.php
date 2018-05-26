@@ -34,6 +34,7 @@ class SP_Meta_Box_Player_Statistics {
 			),
 		);
 		$leagues = get_the_terms( $post->ID, 'sp_league', $args );
+		usort( $leagues, 'sp_sort_terms' );
 		$league_num = sizeof( $leagues );
 		$sections = get_option( 'sportspress_player_performance_sections', -1 );
 		$show_career_totals = 'yes' === get_option( 'sportspress_player_show_career_total', 'no' ) ? true : false;
