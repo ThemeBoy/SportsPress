@@ -82,9 +82,7 @@ abstract class SP_Custom_Post {
 	public function get_terms_sorted_by_sp_order( $taxonomy ) {
 		$terms = get_the_terms( $this->ID, $taxonomy );
 		if ( $terms ) {
-			usort( $terms, function( $a, $b ) {
-				return get_term_meta( $a->term_id, 'sp_order', true ) > get_term_meta( $b->term_id, 'sp_order', true );
-			} );
+			usort( $terms, 'sp_sort_terms' );
 		}
 		return $terms;
 	}
