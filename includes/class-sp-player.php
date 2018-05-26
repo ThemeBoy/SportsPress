@@ -110,19 +110,6 @@ class SP_Player extends SP_Custom_Post {
 	 * @return array
 	 */
 	public function data( $league_id, $admin = false, $section = -1 ) {
-		$args = array(
-			'meta_query' => array(
-				'relation' => 'OR',
-				array(
-					'key' => 'sp_order',
-					'compare' => 'NOT EXISTS',
-				),
-				array(
-					'key' => 'sp_order',
-					'compare' => 'EXISTS',
-				),
-			),
-		);
 		$seasons = (array) $this->get_terms_sorted_by_sp_order( 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
