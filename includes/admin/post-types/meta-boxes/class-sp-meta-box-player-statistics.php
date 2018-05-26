@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.6
+ * @version		2.6.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,7 +20,7 @@ class SP_Meta_Box_Player_Statistics {
 	 */
 	public static function output( $post ) {
 		$player = new SP_Player( $post );
-		$leagues = $player->get_terms_sorted_by_sp_order( 'sp_league' );
+		$leagues = $player->get_terms_sorted_by_sp_order( 'sp_0' );
 		$league_num = sizeof( $leagues );
 		$sections = get_option( 'sportspress_player_performance_sections', -1 );
 		$show_career_totals = 'yes' === get_option( 'sportspress_player_show_career_total', 'no' ) ? true : false;
