@@ -19,7 +19,7 @@ class SP_Shortcode_Staff_List {
 	/**
 	 * Init shortcodes
 	 */
-	public static function init() {
+	public function init() {
 		add_shortcode( 'staff_list', array( $this, 'output' ) );
 	}
 
