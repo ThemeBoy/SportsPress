@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Shortcodes
  * @package 	SportsPress_Staff_Directories
- * @version     2.6.4
+ * @version     2.6.5
  */
 class SP_Shortcode_Staff_List {
 
@@ -45,7 +45,7 @@ class SP_Shortcode_Staff_List {
 	 *
 	 * @param array $atts
 	 */
-	public static function get_template( $atts ) {
+	public function get_template( $atts ) {
 		sp_get_template( 'staff-list.php', $atts, '', trailingslashit( SP_STAFF_DIRECTORIES_DIR ) . 'templates/' );
 	}
 }

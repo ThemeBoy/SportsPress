@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Display fixtures and results between teams in a grid layout.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.6.4
+Version: 2.6.5
 */
 
 // Exit if accessed directly
@@ -154,7 +154,7 @@ class SportsPress_Results_Matrix {
 	 *
 	 * @param array $atts
 	 */
-	public static function shortcode( $atts ) {
+	public function shortcode( $atts ) {
 
 		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
 			$atts['id'] = $atts[0];
@@ -171,14 +171,14 @@ class SportsPress_Results_Matrix {
 	 *
 	 * @param array $atts
 	 */
-	public static function get_template( $atts ) {
+	public function get_template( $atts ) {
 		sp_get_template( 'event-matrix.php', $atts, '', trailingslashit( SP_RESULTS_MATRIX_DIR ) . 'templates/' );
 	}
 
 	/**
 	 * Add shortcodes to TinyMCE
 	 */
-	public static function add_shortcodes( $shortcodes ) {
+	public function add_shortcodes( $shortcodes ) {
 		$shortcodes['event'][] = 'matrix';
 		return $shortcodes;
 	}
@@ -186,7 +186,7 @@ class SportsPress_Results_Matrix {
 	/**
 	 * Add strings to TinyMCE
 	 */
-	public static function add_tinymce_strings( $strings ) {
+	public function add_tinymce_strings( $strings ) {
 		$strings['matrix'] = __( 'Matrix', 'sportspress' );
 		return $strings;
 	}
