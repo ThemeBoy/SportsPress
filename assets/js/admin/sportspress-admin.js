@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Chosen select
-	$(".chosen-select, #poststuff #post_author_override").chosen({
+	$(".chosen-select").chosen({
 		allow_single_deselect: true,
 		search_contains: true,
 		single_backstroke_delete: false,
