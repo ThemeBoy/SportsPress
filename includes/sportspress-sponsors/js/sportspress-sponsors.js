@@ -11,4 +11,21 @@ jQuery(document).ready(function($){
 			return true;
 		});
 	});
+
+	$( ".sp-sponsors-loader" ).each(function() {
+		var self = $( this );
+		ajax_options = {
+			action: "sp_sponsors",
+			nonce: self.data("nonce"),
+			ajaxurl: self.data("ajaxurl"),
+			level: self.data("level"),
+			limit: self.data("limit"),
+			width: self.data("width"),
+			height: self.data("height"),
+			size: self.data("size")
+		};
+		$.post( ajax_options.ajaxurl, ajax_options, function( response ) {
+			self.html( response );
+		});
+	});
 });

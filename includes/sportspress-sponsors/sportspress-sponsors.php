@@ -68,6 +68,8 @@ class SportsPress_Sponsors {
 
 		if ( is_admin() ) {
 			add_action( 'wp_ajax_nopriv_sp_clicks', array( $this, 'sp_clicks' ) );
+			add_action( 'wp_ajax_sp_sponsors', array( $this, 'sp_sponsors' ) );
+			add_action( 'wp_ajax_nopriv_sp_sponsors', array( $this, 'sp_sponsors' ) );
 		}
 	}
 
@@ -418,8 +420,18 @@ class SportsPress_Sponsors {
 	public static function sp_clicks() {
 		if ( isset( $_POST['nonce'] ) &&  isset( $_POST['post_id'] ) && wp_verify_nonce( $_POST['nonce'], 'sp_clicks_' . $_POST['post_id'] ) ) {
 			sp_set_post_clicks( $_POST['post_id'] );
-	    }
-	    exit();
+		}
+		exit();
+	}
+
+	/**
+	 * Ajax sponsors loader
+	 */
+	public static function sp_sponsors() {
+		if ( isset( $_POST['nonce'] ) && wp_verify_nonce( $_POST['nonce'], 'sp_sponsors' ) ) {
+			sp_get_template( 'sponsors-content.php', array( 'level' => $_POST['level'], 'limit' => $_POST['limit'], 'width' => $_POST['width'], 'height' => $_POST['height'], 'orderby' => 'rand', 'size' => $_POST['size'] ), '', SP_SPONSORS_DIR . 'templates/' );
+		}
+		exit();
 	}
 
 	public static function add_post_type( $post_types = array() ) {
