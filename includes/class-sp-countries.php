@@ -546,6 +546,7 @@ class SP_Countries {
 			'ee' => 'est',
 			'eg' => 'egy',
 			'eh' => 'esh',
+			'el' => 'gre',
 			'en' => 'end',
 			'er' => 'eri',
 			'es' => 'esp',
