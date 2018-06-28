@@ -19,6 +19,7 @@ elseif ( 'list' === $format )
 	sp_get_template( 'event-list.php', array(
 		'team' => $id,
 		'league' => apply_filters( 'sp_team_events_league', 0 ),
+		'season' => apply_filters( 'sp_team_events_season', 0 ),
 		'title_format' => 'homeaway',
 		'time_format' => 'separate',
 		'columns' => array( 'event', 'time', 'results' ),
