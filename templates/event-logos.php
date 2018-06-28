@@ -31,9 +31,6 @@ $link_teams = get_option( 'sportspress_link_teams', 'no' ) === 'yes' ? true : fa
 
 if ( $show_results ) {
 	$results = sp_get_main_results( $id );
-	if ( $reverse_teams ) {
-		$results = array_reverse( $results );
-	}
 	if ( empty( $results ) ) {
 		$show_results = false;
 	} else {
