@@ -126,6 +126,10 @@ function sp_update_main_results( $post = 0, $results = array() ) {
 
 function sp_get_main_results_or_time( $post = 0 ) {
 	$results = sp_get_main_results( $post );
+	$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
+	if ( $reverse_teams ) {
+		$results = array_reverse( $results );
+	}
 	if ( sizeof( $results ) ) {
 		return $results;
 	} else {
