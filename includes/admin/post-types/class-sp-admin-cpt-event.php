@@ -174,6 +174,10 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				$teams = (array)get_post_meta( $post_id, 'sp_team', false );
 				$teams = array_filter( $teams );
 				$teams = array_unique( $teams );
+				$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
+				if ( $reverse_teams ) {
+					$teams = array_reverse( $teams , true );
+				}
 				if ( empty( $teams ) ):
 					echo '&mdash;';
 				else:
