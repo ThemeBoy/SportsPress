@@ -111,7 +111,11 @@ function sp_get_main_result_option() {
 
 function sp_get_main_results( $post = 0 ) {
 	$event = new SP_Event( $post );
-	return $event->main_results();
+	$results = $event->main_results();
+	if ( is_array( $results ) && get_option( 'sportspress_event_reverse_teams' ) === 'yes' ) {
+		$results = array_reverse( $results );
+	}
+	return $results;
 }
 
 function sp_the_main_results( $post = 0, $delimiter = '-' ) {
