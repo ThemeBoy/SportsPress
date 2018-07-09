@@ -3,7 +3,7 @@
  * Tournament Bracket Template Loader
  *
  * @class 		SP_Tournament_Template_Loader
- * @version		1.7
+ * @version		2.6.5
  * @package		SportsPress_Tournaments
  * @category	Class
  * @author 		ThemeBoy
@@ -28,10 +28,9 @@ class SP_Tournament_Template_Loader {
 
 	public function tournament_content( $content ) {
 		if ( is_singular( 'sp_tournament' ) )
-			$content = self::add_content( $content, 'tournament' );
+			$content = self::add_content( $content, 'tournament', apply_filters( 'sportspress_append_tournament_content', false ) );
 		return $content;
 	}
 }
 
 new SP_Tournament_Template_Loader();
-			
