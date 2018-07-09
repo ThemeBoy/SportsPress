@@ -1,5 +1,12 @@
 == SportsPress Changelog ==
 
+= 2.6.5 =
+* Tweak - Increase coverage of reverse teams option.
+* Tweak - Improve sorting of leagues, positions, and seasons.
+* Localization - Additional legacy country code for Greece.
+* Fix - Broken post author select on certain pages.
+* Fix - Google Calendar link protocol.
+
 = 2.6.4 =
 * Fix - Undefined variable notice in player list.
 
