@@ -33,6 +33,7 @@ class SP_Feeds {
 					),
 					'google' => array(
 						'name' => __( 'Google', 'sportspress' ),
+						'protocol' => 'webcal',
 						'prefix' => 'http://www.google.com/calendar/render?cid=',
 					),
 				),
