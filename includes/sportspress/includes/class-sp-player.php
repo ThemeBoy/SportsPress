@@ -13,33 +13,33 @@
 class SP_Player extends SP_Custom_Post {
 
 	/**
-	 * Returns positions
+	 * Returns positions sorted by `sp_order`.
 	 *
 	 * @access public
 	 * @return array
 	 */
 	public function positions() {
-		return get_the_terms( $this->ID, 'sp_position' );
+		return $this->get_terms_sorted_by_sp_order( 'sp_position' );
 	}
 
 	/**
-	 * Returns leagues
+	 * Returns leagues sorted by `sp_order`.
 	 *
 	 * @access public
 	 * @return array
 	 */
 	public function leagues() {
-		return get_the_terms( $this->ID, 'sp_league' );
+		return $this->get_terms_sorted_by_sp_order( 'sp_league' );
 	}
 
 	/**
-	 * Returns seasons
+	 * Returns seasons sorted by `sp_order`.
 	 *
 	 * @access public
 	 * @return array
 	 */
 	public function seasons() {
-		return get_the_terms( $this->ID, 'sp_season' );
+		return $this->get_terms_sorted_by_sp_order( 'sp_season' );
 	}
 
 	/**
@@ -110,23 +110,11 @@ class SP_Player extends SP_Custom_Post {
 	 * @return array
 	 */
 	public function data( $league_id, $admin = false, $section = -1 ) {
-		$args = array(
-			'meta_query' => array(
-				'relation' => 'OR',
-				array(
-					'key' => 'sp_order',
-					'compare' => 'NOT EXISTS',
-				),
-				array(
-					'key' => 'sp_order',
-					'compare' => 'EXISTS',
-				),
-			),
-		);
-		$seasons = (array)get_the_terms( $this->ID, 'sp_season', $args );
+		$seasons = (array) $this->get_terms_sorted_by_sp_order( 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
 		$leagues = (array) sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id );
+		uksort( $leagues, 'sp_sort_terms' );
 		$manual_columns = 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ? true : false;
 
 		$season_ids = array_filter(wp_list_pluck( $seasons, 'term_id' ));
@@ -136,7 +124,7 @@ class SP_Player extends SP_Custom_Post {
 		}
 
 		$leagues = array_replace( $season_order, $leagues );
-		
+
 		// Get performance labels
 		$args = array(
 			'post_type' => array( 'sp_performance' ),

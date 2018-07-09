@@ -33,7 +33,7 @@ class SP_Admin_Assets {
 		wp_enqueue_style( 'sportspress-admin-menu-styles', SP()->plugin_url() . '/assets/css/menu.css', array(), SP_VERSION );
 
 		$screen = get_current_screen();
-
+		
 		if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
 			// Admin styles for SP pages only
 			wp_enqueue_style( 'jquery-chosen', SP()->plugin_url() . '/assets/css/chosen.css', array(), '1.1.0' );

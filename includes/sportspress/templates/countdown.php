@@ -81,7 +81,7 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 	?>
 	<div class="event-image sp-event-image">
 		<?php echo get_the_post_thumbnail( $post ); ?>
-	</h2>
+	</div>
 	<?php } ?>
 		<h3 class="event-name sp-event-name">
 			<?php

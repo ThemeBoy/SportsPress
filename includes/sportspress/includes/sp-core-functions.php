@@ -1463,6 +1463,26 @@ if ( !function_exists( 'sp_sort_table_teams' ) ) {
 	}
 }
 
+if ( ! function_exists( 'sp_sort_terms' ) ) {
+
+	/**
+	 * Sorts terms by `sp_order`.
+	 *
+	 * @param  int|object $a Term ID or term.
+	 * @param  int|object $b Term ID or term.
+	 * @return int    Sorting order.
+	 */
+	function sp_sort_terms( $a, $b ) {
+		if ( is_int( $a ) ) {
+			$a = get_term( $a );
+		}
+		if ( is_int( $b ) ) {
+			$b = get_term( $b );
+		}
+		return get_term_meta( $a->term_id, 'sp_order', true ) > get_term_meta( $b->term_id, 'sp_order', true );
+	}
+}
+
 if ( !function_exists( 'sp_get_next_event' ) ) {
 	function sp_get_next_event( $args = array() ) {
 		$options = array(
