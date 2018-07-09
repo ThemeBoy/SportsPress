@@ -1,5 +1,5 @@
 === SportsPress Pro ===
-Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha
+Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.9
