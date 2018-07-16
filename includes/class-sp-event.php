@@ -89,10 +89,6 @@ class SP_Event extends SP_Custom_Post{
 
 	public function performance( $admin = false ) {
 		$teams = get_post_meta( $this->ID, 'sp_team', false );
-		if ( 'yes' === get_option( 'sportspress_event_reverse_teams', 'no' ) ) {
-			$teams = array_reverse( $teams, true );
-		}
-
 		$performance = (array)get_post_meta( $this->ID, 'sp_players', true );
 		
 		$args = array(
