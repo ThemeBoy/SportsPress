@@ -5,7 +5,7 @@
  * The SportsPress event class handles individual event data.
  *
  * @class 		SP_Event
- * @version		2.6.5
+ * @version		2.6.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -89,10 +89,6 @@ class SP_Event extends SP_Custom_Post{
 
 	public function performance( $admin = false ) {
 		$teams = get_post_meta( $this->ID, 'sp_team', false );
-		if ( 'yes' === get_option( 'sportspress_event_reverse_teams', 'no' ) ) {
-			$teams = array_reverse( $teams, true );
-		}
-
 		$performance = (array)get_post_meta( $this->ID, 'sp_players', true );
 		
 		$args = array(

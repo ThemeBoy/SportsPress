@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version		2.6.5
+ * @version		2.6.6
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -549,12 +549,6 @@ class SP_League_Table extends SP_Secondary_Post {
 			// Add last 10 to totals
 			$totals[ $team_id ]['last10'] = $last10;
 		endforeach;
-
-		// Reverse home and away records when "Reverse Teams" is enabled.
-		$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
-		if ( $reverse_teams ) {
-			list( $homerecords, $awayrecords ) = array( $awayrecords, $homerecords );
-		}
 
 		foreach ( $homerecords as $team_id => $homerecord ):
 			// Add home record to totals
