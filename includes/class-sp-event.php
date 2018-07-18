@@ -50,7 +50,7 @@ class SP_Event extends SP_Custom_Post{
 		// Get results for all teams
 		$data = sp_array_combine( $teams, $results, true );
 		
-		if ( 'yes' === get_option( 'sportspress_event_reverse_teams', 'no' ) ) {
+		if ( $admin && 'yes' === get_option( 'sportspress_event_reverse_teams', 'no' ) ) {
 			$data = array_reverse( $data, true );
 		}
 
@@ -91,6 +91,10 @@ class SP_Event extends SP_Custom_Post{
 		$teams = get_post_meta( $this->ID, 'sp_team', false );
 		$performance = (array)get_post_meta( $this->ID, 'sp_players', true );
 		
+		if ( $admin && 'yes' === get_option( 'sportspress_event_reverse_teams', 'no' ) ) {
+			$teams = array_reverse( $teams, true );
+		}
+
 		$args = array(
 			'post_type' => 'sp_performance',
 			'numberposts' => 100,
