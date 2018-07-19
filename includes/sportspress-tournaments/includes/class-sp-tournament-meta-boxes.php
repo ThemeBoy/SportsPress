@@ -102,7 +102,7 @@ class SP_Tournament_Meta_Boxes {
 	public static function details( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$caption = get_post_meta( $post->ID, 'sp_caption', true );
-		$limit = 6;
+		$limit = apply_filters( 'sp_tournament_rounds_limit', 6 );
 		$taxonomies = get_object_taxonomies( 'sp_tournament' );
 		$post_type = sp_get_post_mode_type( $post->ID );
 		$rounds = get_post_meta( $post->ID, 'sp_rounds', true );
@@ -259,7 +259,7 @@ class SP_Tournament_Meta_Boxes {
 		$type = sp_array_value( $_POST, 'sp_type', 'single' );
 
 		// Rounds
-		$limit = 6;
+		$limit = apply_filters( 'sp_tournament_rounds_limit', 6 );
 		$rounds = sp_array_value( $_POST, 'sp_rounds', 1 );
 
 		if ( $rounds < 1 ) $rounds = 1;
