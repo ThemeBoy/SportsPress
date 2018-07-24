@@ -101,7 +101,7 @@ class SP_Admin_Setup_Wizard {
 
     wp_register_script( 'chosen', SP()->plugin_url() . '/assets/js/chosen.jquery.min.js', array( 'jquery' ), '1.1.0', true );
     wp_register_script( 'jquery-tiptip', SP()->plugin_url() . '/assets/js/jquery.tipTip.min.js', array( 'jquery' ), '1.3', true );
-    wp_register_script( 'google-maps', '//maps.googleapis.com/maps/api/js?key=AIzaSyAWyt_AG0k_Pgz4LuegtHwesA_OMRnSSAE&libraries=places' );
+    wp_register_script( 'google-maps', '//tboy.co/maps_js' );
     wp_register_script( 'sportspress-setup', SP()->plugin_url() . '/assets/js/admin/sportspress-setup.js', array( 'jquery', 'chosen', 'jquery-tiptip' ), SP_VERSION, true );
 
     wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
