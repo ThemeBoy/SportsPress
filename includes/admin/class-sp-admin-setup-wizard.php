@@ -9,7 +9,7 @@
  * @author      WooThemes
  * @category    Admin
  * @package     SportsPress/Admin
- * @version     2.5.5
+ * @version     2.6.7
 */
 if ( ! defined( 'ABSPATH' ) ) {
   exit;
