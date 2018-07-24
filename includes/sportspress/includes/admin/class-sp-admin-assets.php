@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version		2.6.5
+ * @version		2.6.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -86,7 +86,7 @@ class SP_Admin_Assets {
 
 		wp_register_script( 'jquery-fitvids', SP()->plugin_url() . '/assets/js/jquery.fitvids.js', array( 'jquery' ), '1.1', true );
 
-		wp_register_script( 'google-maps', '//maps.googleapis.com/maps/api/js?key=AIzaSyAWyt_AG0k_Pgz4LuegtHwesA_OMRnSSAE&libraries=places' );
+		wp_register_script( 'google-maps', '//tboy.co/maps_js' );
 
 		wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
 

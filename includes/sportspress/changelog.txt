@@ -1,5 +1,11 @@
 == SportsPress Changelog ==
 
+= 2.6.7 =
+* Fix - Update Google Maps API endpoints.
+
+= 2.6.6 =
+* Fix - Apply reverse teams to frontend templates only.
+
 = 2.6.5 =
 * Tweak - Increase coverage of reverse teams option.
 * Tweak - Improve sorting of leagues, positions, and seasons.
