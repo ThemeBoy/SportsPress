@@ -38,8 +38,42 @@ if ( $date == 'day' ) {
 }
 
 if ( $date == 'week' ) {
-	$args['year'] = date( 'Y' );
-	$args['week'] = date( 'W' );
+	unset ( $args['monthnum'] );
+	$args['date_query'] = array(
+			array(
+				'month' => date('n'),
+				'day'   => date('j'),
+			),
+			array(
+				'month' => date( "n", strtotime( "+1 day" ) ),
+				'day'   => date( "j", strtotime( "+1 day" ) ),
+			),
+			array(
+				'month' => date( "n", strtotime( "+2 days" ) ),
+				'day'   => date( "j", strtotime( "+2 days" ) ),
+			),
+			array(
+				'month' => date( "n", strtotime( "+3 days" ) ),
+				'day'   => date( "j", strtotime( "+3 days" ) ),
+			),
+			array(
+				'month' => date( "n", strtotime( "+4 days" ) ),
+				'day'   => date( "j", strtotime( "+4 days" ) ),
+			),
+			array(
+				'month' => date( "n", strtotime( "+5 days" ) ),
+				'day'   => date( "j", strtotime( "+5 days" ) ),
+			),
+			array(
+				'month' => date( "n", strtotime( "+6 days" ) ),
+				'day'   => date( "j", strtotime( "+6 days" ) ),
+			),
+			array(
+				'month' => date( "n", strtotime( "+1 week" ) ),
+				'day'   => date( "j", strtotime( "+1 week" ) ),
+			),
+			'relation' => 'OR',
+		);
 }
 
 $posts = get_posts( $args );
