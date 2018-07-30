@@ -37,6 +37,11 @@ if ( $date == 'day' ) {
 	$args['day'] = date('j');
 }
 
+if ( $date == 'week' ) {
+	$args['year'] = date( 'Y' );
+	$args['week'] = date( 'W' );
+}
+
 $posts = get_posts( $args );
 
 foreach ( $posts as $post ) {

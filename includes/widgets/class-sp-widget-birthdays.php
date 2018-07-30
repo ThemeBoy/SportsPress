@@ -46,6 +46,7 @@ class SP_Widget_Birthdays extends WP_Widget {
 		$date = strip_tags($instance['date']);
 		$options = array(
 			'day' => __( 'Today', 'sportspress' ),
+			'week' => __( 'This week', 'sportspress' ),
 			'month' => __( 'This month', 'sportspress' ),
 		);
 
