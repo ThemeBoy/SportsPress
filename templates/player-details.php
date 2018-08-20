@@ -71,7 +71,7 @@ endif;
 $data = array_merge( $metrics_before, $common, $metrics_after );
 
 if ( $show_current_teams ):
-	$current_teams = $player->current_teams();
+	$current_teams = array_filter( $player->current_teams() );
 	if ( $current_teams ):
 		$teams = array();
 		foreach ( $current_teams as $team ):
@@ -84,7 +84,7 @@ if ( $show_current_teams ):
 endif;
 
 if ( $show_past_teams ):
-	$past_teams = $player->past_teams();
+	$past_teams = array_filter( $player->past_teams() );
 	if ( $past_teams ):
 		$teams = array();
 		foreach ( $past_teams as $team ):
