@@ -541,7 +541,7 @@
 	bottom: 0;
 	left: 0;
 	background: url(../images/maps/pin.png) no-repeat center center;
-	background-size: 26px 44px;
+	background-size: 26px 82px;
 }
 .sp-google-map img {
 	max-width: none !important;
