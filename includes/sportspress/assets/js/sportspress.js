@@ -16,7 +16,7 @@ function sp_viewport() {
 
 	/* Countdown */
 	$("[data-countdown]").each(function() {
-		var $this = $(this), finalDate = $(this).data('countdown');
+		var $this = $(this), finalDate = moment.tz( $(this).data('countdown'), moment.tz.guess() ).format('YYYY/MM/DD HH:mm:ss');
 		$this.countdown(finalDate, function(event) {
 			$this.html(event.strftime("<span>%D <small>" + localized_strings.days + "</small></span> "
 			+ "<span>%H <small>" + localized_strings.hrs + "</small></span> "
