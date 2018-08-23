@@ -75,7 +75,7 @@ class SP_Admin_Dashboard {
                 $date = new DateTime( $next_event->post_date );
                 $interval = date_diff( $now, $date );
                 ?>
-                <li class="countdown" data-countdown="<?php echo str_replace( '-', '/', $next_event->post_date_gmt ); ?>">
+                <li class="countdown" data-countdown="<?php echo str_replace( '-', '/', get_gmt_from_date( $post->post_date ) ); ?>">
                     <a href="<?php echo get_edit_post_link( $next_event->ID ); ?>">
                         <?php printf( __( '<strong>%s</strong> until next event', 'sportspress' ), $interval->days . ' ' . __( 'days', 'sportspress' ) . ' ' . sprintf( '%02s:%02s:%02s', $interval->h, $interval->i, $interval->s ) ); ?>
                         (<?php echo $next_event->post_title; ?>)
