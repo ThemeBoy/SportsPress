@@ -82,8 +82,6 @@ class SP_Admin_Assets {
 
 		wp_register_script( 'jquery-caret', SP()->plugin_url() . '/assets/js/jquery.caret.min.js', array( 'jquery' ), '1.02', true );
 
-		wp_register_script( 'jquery-countdown', SP()->plugin_url() . '/assets/js/jquery.countdown.min.js', array( 'jquery' ), '2.2.0', true );
-
 		wp_register_script( 'jquery-fitvids', SP()->plugin_url() . '/assets/js/jquery.fitvids.js', array( 'jquery' ), '1.1', true );
 
 		wp_register_script( 'google-maps', '//tboy.co/maps_js' );
@@ -111,9 +109,8 @@ class SP_Admin_Assets {
 	    	wp_enqueue_script( 'jquery-ui-sortable' );
 	    	wp_enqueue_script( 'jquery-tiptip' );
 	    	wp_enqueue_script( 'jquery-caret' );
-	    	wp_enqueue_script( 'jquery-countdown' );
 	    	wp_enqueue_script( 'jquery-fitvids' );
-	    	wp_enqueue_script( 'sportspress-admin', SP()->plugin_url() . '/assets/js/admin/sportspress-admin.js', array( 'jquery', 'chosen', 'jquery-ui-core', 'jquery-ui-datepicker', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-tiptip', 'jquery-caret', 'jquery-countdown', 'jquery-fitvids' ), SP_VERSION, true );
+	    	wp_enqueue_script( 'sportspress-admin', SP()->plugin_url() . '/assets/js/admin/sportspress-admin.js', array( 'jquery', 'chosen', 'jquery-ui-core', 'jquery-ui-datepicker', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-tiptip', 'jquery-caret', 'jquery-fitvids' ), SP_VERSION, true );
 	    	
 	    	$strings = apply_filters( 'sportspress_localized_strings', array(
 				'none' => __( 'None', 'sportspress' ),

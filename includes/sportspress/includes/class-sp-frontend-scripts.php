@@ -72,9 +72,6 @@ class SP_Frontend_Scripts {
 		// Scripts
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'jquery-datatables', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/jquery.dataTables.min.js', array( 'jquery' ), '1.10.4', true );
-		wp_enqueue_script( 'jquery-countdown', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/jquery.countdown.min.js', array( 'jquery' ), '2.2.0', true );
-		wp_enqueue_script( 'moment', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/moment.min.js', array( 'jquery-countdown' ), '2.22.2', true );
-		wp_enqueue_script( 'moment-timezone', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/moment-timezone-with-data.min.js', array( 'moment' ), '0.5.17-2018e', true );
 		wp_enqueue_script( 'sportspress', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/sportspress.js', array( 'jquery' ), SP()->version, true );
 
 		// Localize scripts
