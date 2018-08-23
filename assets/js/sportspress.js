@@ -16,13 +16,34 @@ function sp_viewport() {
 
 	/* Countdown */
 	$("[data-countdown]").each(function() {
-		var $this = $(this), finalDate = $(this).data('countdown');
-		$this.countdown(finalDate, function(event) {
-			$this.html(event.strftime("<span>%D <small>" + localized_strings.days + "</small></span> "
-			+ "<span>%H <small>" + localized_strings.hrs + "</small></span> "
-			+ "<span>%M <small>" + localized_strings.mins + "</small></span> "
-			+ "<span>%S <small>" + localized_strings.secs + "</small></span>" ));
-		});
+		var $this = $(this); 
+		// Get countdown time
+		var countDownDate = new Date($(this).data('countdown')).getTime();
+		// Iterate every second
+		var x = setInterval(function() {
+			
+			// Get todays date and time
+			var now = new Date();
+			
+			// Convert curent date and time to UTC
+			var tzDifference = now.getTimezoneOffset();
+			var nowutc = new Date(now.getTime() + tzDifference * 60 * 1000);
+			
+			// Find the distance between now and the count down date
+			var distance = countDownDate - nowutc;
+			
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			
+			// Output the result
+			$this.html("<span>"+('0' + days).slice(-2)+" <small>" + localized_strings.days + "</small></span> "
+			+ "<span>"+('0' + hours).slice(-2)+" <small>" + localized_strings.hrs + "</small></span> "
+			+ "<span>"+('0' + minutes).slice(-2)+" <small>" + localized_strings.mins + "</small></span> "
+			+ "<span>"+('0' + seconds).slice(-2)+" <small>" + localized_strings.secs + "</small></span>" );
+		}, 1000);
 	});
 
 	/* Scrollable Tables */
