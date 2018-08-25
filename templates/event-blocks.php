@@ -38,6 +38,7 @@ $defaults = array(
 	'show_title' => get_option( 'sportspress_event_blocks_show_title', 'no' ) == 'yes' ? true : false,
 	'show_league' => get_option( 'sportspress_event_blocks_show_league', 'no' ) == 'yes' ? true : false,
 	'show_season' => get_option( 'sportspress_event_blocks_show_season', 'no' ) == 'yes' ? true : false,
+	'show_matchday' => get_option( 'sportspress_event_blocks_show_matchday', 'no' ) == 'yes' ? true : false,
 	'show_venue' => get_option( 'sportspress_event_blocks_show_venue', 'no' ) == 'yes' ? true : false,
 	'hide_if_empty' => false,
 );
@@ -149,6 +150,9 @@ if ( $title )
 							<time class="sp-event-date" datetime="<?php echo $event->post_date; ?>" itemprop="startDate" content="<?php echo mysql2date( 'Y-m-d\TH:iP', $event->post_date ); ?>">
 								<?php echo sp_add_link( get_the_time( get_option( 'date_format' ), $event ), $permalink, $link_events ); ?>
 							</time>
+							<?php if ( $show_matchday ): $matchday = get_post_meta( $event->ID, 'sp_day', true ); if ( $matchday != '' ): ?>
+								<div class="sp-event-matchday">(<?php echo $matchday; ?>)</div>
+							<?php endif; endif; ?>
 							<h5 class="sp-event-results">
 								<?php echo sp_add_link( '<span class="sp-result">' . implode( '</span> - <span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', sp_get_main_results_or_time( $event ), $event->ID ) ) . '</span>', $permalink, $link_events ); ?>
 							</h5>
