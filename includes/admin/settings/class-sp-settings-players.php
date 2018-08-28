@@ -148,6 +148,17 @@ class SP_Settings_Players extends SP_Settings_Page {
 						'manual'	=> __( 'Manual', 'sportspress' ),
 					),
 				),
+				
+				array(
+						'title' 	=> __( 'Mode', 'sportspress' ),
+						'id' 		=> 'sportspress_player_statistics_mode',
+						'default'	=> 'values',
+						'type' 		=> 'radio',
+						'options' => array(
+							'values'	=> __( 'Values', 'sportspress' ),
+							'icons'		=> __( 'Icons', 'sportspress' ),
+						),
+					),
 
 				array(
 					'title' 	=> __( 'Categories', 'sportspress' ),

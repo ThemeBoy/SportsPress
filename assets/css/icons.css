@@ -109,3 +109,22 @@
 .sp-icon-card:before {
 	content: "\e801";
 }
+.sp-icon-league:before {
+	content: "\f332";
+}
+.sp-icon-shield:before {
+	content: "\f334";
+}
+.sp-icon-tshirt:before,
+.sp-icon-sp_player:before {
+	content: "\f307";
+}
+.sp-icon-whistle:before {
+	content: "\f227";
+}
+.sp-icon-time:before {
+	content: "\f469";
+}
+.sp-icon-friendly:before {
+	content: "\f328";
+}
