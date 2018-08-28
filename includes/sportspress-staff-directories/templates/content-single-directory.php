@@ -18,7 +18,6 @@ if ( ! in_the_loop() ) return; // Return if not in main loop
 do_action( 'sportspress_before_single_directory' );
 
 if ( post_password_required() ) {
-	echo get_the_password_form();
 	return;
 }
 
