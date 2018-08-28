@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.6.7
+Stable tag: 2.6.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,19 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.6.8 =
+* Feature - Ability to display matchday in event blocks.
+* Feature - Add support for commenting on scheduled events.
+* Feature - Option to filter birthdays widget by week.
+* Feature - Option to filter events by competitive, friendly, or tournament.
+* Tweak - Display pin in venue map and link map to web version.
+* Tweak - Add UK as alternate to GB in countries legacy list.
+* Tweak - Remove duplicate teams from players.
+* Tweak - Improve player assignment filtering for player lists.
+* Fix - Remove duplicate password form in staff directory template.
+* Fix - Warnings appearing via midseason transfers.
+* Fix - Animated countdowns when visitor and site are in a different timezones.
 
 = 2.6.7 =
 * Fix - Update Google Maps API endpoints.

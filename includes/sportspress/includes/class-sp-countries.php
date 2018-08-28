@@ -5,7 +5,7 @@
  * The SportsPress countries class stores continent/country data.
  *
  * @class 		SP_Countries
- * @version		2.6.5
+ * @version   2.6.8
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

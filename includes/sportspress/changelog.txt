@@ -1,5 +1,16 @@
 == SportsPress Changelog ==
 
+= 2.6.8 =
+* Feature - Ability to display matchday in event blocks.
+* Feature - Add support for commenting on scheduled events.
+* Feature - Option to filter birthdays widget by week.
+* Feature - Option to filter events by competitive or friendly.
+* Tweak - Display pin in venue map and link map to web version.
+* Tweak - Add UK as alternate to GB in countries legacy list.
+* Tweak - Remove duplicate teams from players.
+* Tweak - Improve player assignment filtering for player lists.
+* Fix - Animated countdowns when visitor and site are in a different timezones.
+
 = 2.6.7 =
 * Fix - Update Google Maps API endpoints.
 
