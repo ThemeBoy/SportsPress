@@ -238,6 +238,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 == Changelog ==
 
 = 2.6.8 =
+* Feature - Ability to add icons to player statistics.
 * Feature - Ability to display matchday in event blocks.
 * Feature - Add support for commenting on scheduled events.
 * Feature - Option to filter birthdays widget by week.

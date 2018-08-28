@@ -569,6 +569,9 @@ class SP_Event extends SP_Custom_Post{
 				),
 			),
 		) );
+		if ( ! is_array( $duties ) ) {
+			return array();
+		}
 
 		if ( ! $include_empty && empty( $duties ) ) return null;
 

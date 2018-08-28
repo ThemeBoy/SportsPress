@@ -41,6 +41,7 @@ class SportsPress_Icons {
 		add_filter( 'sportspress_event_performance_icons', array( $this, 'replace_icons' ), 10, 3 );
 		add_filter( 'admin_post_thumbnail_html', array( $this, 'admin_post_thumbnail_html' ), 10, 2 );
 		add_action( 'sportspress_process_sp_performance_meta', array( $this, 'save' ), 10, 2 );
+		add_action( 'sportspress_process_sp_statistic_meta', array( $this, 'save' ), 10, 2 );
 	}
 
 	/**
@@ -91,6 +92,12 @@ class SportsPress_Icons {
 			'racing-flag',
 			'shoe',
 			'card',
+			'league',
+			'shield',
+			'tshirt',
+			'whistle',
+			'time',
+			'friendly',
 			'sub',
 			'update',
 			'undo',
@@ -143,7 +150,7 @@ class SportsPress_Icons {
 
 		// Bypass if not performance post type
 		$post_type = get_post_type( $id );
-		if ( 'sp_performance' !== $post_type ) return $content;
+		if ( 'sp_performance' !== $post_type && 'sp_statistic' !== $post_type ) return $content;
 
 		// Detect if image uploaded
 		$is_uploaded = isset( $_POST['thumbnail_id'] );

@@ -116,6 +116,7 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 == Changelog ==
 
 = 2.6.8 =
+* Feature - Ability to add icons to player statistics.
 * Feature - Ability to display matchday in event blocks.
 * Feature - Add support for commenting on scheduled events.
 * Feature - Option to filter birthdays widget by week.
