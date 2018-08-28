@@ -344,6 +344,14 @@ class SportsPress_Calendars {
 					'type' 		=> 'checkbox',
 					'checkboxgroup'		=> '',
 				),
+				
+				array(
+					'desc' 		=> __( 'Display matchday', 'sportspress' ),
+					'id' 		=> 'sportspress_event_blocks_show_matchday',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
 
 				array(
 					'desc' 		=> __( 'Display venue', 'sportspress' ),

@@ -682,6 +682,7 @@ class SP_Countries {
 			'tw' => 'tpw',
 			'tz' => 'tan',
 			'ua' => 'ukr',
+			'uk' => 'gbr',
 			'ug' => 'uga',
 			'us' => 'usa',
 			'uy' => 'uru',

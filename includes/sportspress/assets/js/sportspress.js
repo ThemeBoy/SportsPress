@@ -31,6 +31,9 @@ function sp_viewport() {
 			
 			// Find the distance between now and the count down date
 			var distance = countDownDate - nowutc;
+			if ( distance < 0 ) {
+				distance = 0;
+			}
 			
 			// Time calculations for days, hours, minutes and seconds
 			var days = Math.floor(distance / (1000 * 60 * 60 * 24));

@@ -106,32 +106,77 @@ class SportsPress_Player_Assignments {
 			if ( 'sp_season' === sp_array_value( $param, 'taxonomy' ) ) $season_ids = sp_array_value( $param, 'terms', array() );
 		}
 
-		if ( empty( $league_ids ) || empty( $season_ids ) ) return $players;
+		if ( empty( $league_ids ) && empty( $season_ids ) ) return $players;
 
 		$assignments = array();
-		foreach ( $league_ids as $l_id ) {
+		
+		if ( !empty( $league_ids ) && !empty( $season_ids ) ) {
+			foreach ( $league_ids as $l_id ) {
+				foreach ( $season_ids as $s_id ) {
+					if ( $team && $team != '0' ) {
+						$assignments[] = $l_id.'_'.$s_id.'_'.$team;
+						$compare = 'IN';
+					}
+				}
+			}
+		}
+		
+		if ( empty( $league_ids ) && !empty( $season_ids ) ) {
 			foreach ( $season_ids as $s_id ) {
 				if ( $team && $team != '0' ) {
-					$assignments[] = $l_id.'_'.$s_id.'_'.$team;
+					$assignments[] = '_'.$s_id.'_'.$team;
+					$compare = 'LIKE';
+				}
+			}
+		}
+		
+		if ( !empty( $league_ids ) && empty( $season_ids ) ) {
+			foreach ( $league_ids as $l_id ) {
+				if ( $team && $team != '0' ) {
+					$assignments[] = $l_id.'_%_'.$team;
+					$compare = 'LIKE';
 				}
 			}
 		}
 
 		if ( sizeof( $assignments ) ) {
-			$args['meta_query'] = array(
-				'relation' => 'AND',
+			if ( 'IN' == $compare ) {
+				$args['meta_query'] = array(
+					'relation' => 'AND',
 
-				array(
-					'key' => 'sp_assignments',
-					'value' => $assignments,
-					'compare' => 'IN',
-				),
+					array(
+						'key' => 'sp_assignments',
+						'value' => $assignments,
+						'compare' => $compare,
+					),
 
-				array(
-					'key' => $team_key,
-					'value' => $team,
-				),
-			);
+					array(
+						'key' => $team_key,
+						'value' => $team,
+					),
+				);
+			}
+			if ( 'LIKE' == $compare ) {
+				$args['meta_query'] = array(
+					'relation' => 'AND',
+
+					array(
+						'key' => $team_key,
+						'value' => $team,
+					),
+					
+					array(
+						'relation' => 'OR',
+					),
+				);
+				foreach( $assignments as $assignment ) {
+					$args['meta_query'][1][] = array(							
+							'key'     => 'sp_assignments',
+							'value'   => $assignment,
+							'compare' => $compare,
+							);
+				}
+			}
 		}
 
 		$assigned_players = (array) get_posts( $args );

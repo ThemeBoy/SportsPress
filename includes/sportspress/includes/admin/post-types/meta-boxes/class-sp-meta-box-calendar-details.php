@@ -28,6 +28,7 @@ class SP_Meta_Box_Calendar_Details {
 		$date_past = get_post_meta( $post->ID, 'sp_date_past', true );
 		$date_future = get_post_meta( $post->ID, 'sp_date_future', true );
 		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
+		$event_format = get_post_meta( $post->ID, 'sp_event_format', true );
 		$day = get_post_meta( $post->ID, 'sp_day', true );
 		$teams = get_post_meta( $post->ID, 'sp_team', false );
 		$table_id = get_post_meta( $post->ID, 'sp_table', true );
@@ -48,6 +49,15 @@ class SP_Meta_Box_Calendar_Details {
 				);
 				sp_dropdown_statuses( $args );
 				?>
+			</p>
+			<p><strong><?php _e( 'Event Format', 'sportspress' ); ?></strong></p>
+			<p>
+				<select name="sp_event_format" class="postform">
+					<option value="all">All</option>
+					<?php foreach ( SP()->formats->event as $key => $format ): ?>
+						<option value="<?php echo $key; ?>" <?php selected( $event_format, $key ); ?>><?php echo $format; ?></option>
+					<?php endforeach; ?>
+				</select>
 			</p>
 			<div class="sp-date-selector">
 				<p><strong><?php _e( 'Date', 'sportspress' ); ?></strong></p>
@@ -139,6 +149,7 @@ class SP_Meta_Box_Calendar_Details {
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0 ) ) );
 		update_post_meta( $post_id, 'sp_status', sp_array_value( $_POST, 'sp_status', 0 ) );
+		update_post_meta( $post_id, 'sp_event_format', sp_array_value( $_POST, 'sp_event_format', 0 ) );
 		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0 ) );
 		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null ) );
 		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null ) );

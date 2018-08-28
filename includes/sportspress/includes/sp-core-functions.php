@@ -1473,10 +1473,12 @@ if ( ! function_exists( 'sp_sort_terms' ) ) {
 	 * @return int    Sorting order.
 	 */
 	function sp_sort_terms( $a, $b ) {
-		if ( is_int( $a ) ) {
+		if ( is_numeric( $a ) ) {
+			$a = intval( $a );
 			$a = get_term( $a );
 		}
-		if ( is_int( $b ) ) {
+		if ( is_numeric( $b ) ) {
+			$b = intval( $b );
 			$b = get_term( $b );
 		}
 		return get_term_meta( $a->term_id, 'sp_order', true ) > get_term_meta( $b->term_id, 'sp_order', true );
