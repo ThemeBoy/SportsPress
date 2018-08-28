@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version		2.6.4
+ * @version		2.6.8
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

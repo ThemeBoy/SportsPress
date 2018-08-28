@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.6.7
+Stable tag: 2.6.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -236,6 +236,18 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.6.8 =
+* Feature - Ability to add icons to player statistics.
+* Feature - Ability to display matchday in event blocks.
+* Feature - Add support for commenting on scheduled events.
+* Feature - Option to filter birthdays widget by week.
+* Feature - Option to filter events by competitive or friendly.
+* Tweak - Display pin in venue map and link map to web version.
+* Tweak - Add UK as alternate to GB in countries legacy list.
+* Tweak - Remove duplicate teams from players.
+* Tweak - Improve player assignment filtering for player lists.
+* Fix - Animated countdowns when visitor and site are in a different timezones.
 
 = 2.6.7 =
 * Fix - Update Google Maps API endpoints.
