@@ -89,7 +89,7 @@ class SP_Tournament {
 				$key = 'sp_labels';
 		}
 
-		$labels = get_post_meta( $this->ID, $key, true );
+		$labels = ( array ) get_post_meta( $this->ID, $key, true );
 		
 		// Assign default labels
 		for ( $i = 0; $i < sizeof( $labels ); $i++ ) {
