@@ -276,7 +276,7 @@ class SP_AJAX {
 					$args = array(
 						'name' => 'date',
 						'id' => 'date',
-						'selected' => $date,
+						//'selected' => $date,
 					);
 					sp_dropdown_dates( $args );
 					?>
@@ -429,7 +429,7 @@ class SP_AJAX {
 					$args = array(
 						'name' => 'date',
 						'id' => 'date',
-						'selected' => $date,
+						//'selected' => $date,
 					);
 					sp_dropdown_dates( $args );
 					?>
