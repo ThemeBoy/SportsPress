@@ -14,7 +14,7 @@ if ( ! class_exists( 'SportsPress_Comments_Scheduled_Events' ) ) :
  * Main SportsPress Comments Scheduled Events Class
  *
  * @class SportsPress_Comments_Scheduled_Events
- * @version	2.6.7
+ * @version	2.6.8
  */
 class SportsPress_Comments_Scheduled_Events {
 	/**
@@ -33,7 +33,7 @@ class SportsPress_Comments_Scheduled_Events {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_COMMENTS_SCHEDULED_EVENTS_VERSION' ) )
-			define( 'SP_COMMENTS_SCHEDULED_EVENTS_VERSION', '2.6.7' );
+			define( 'SP_COMMENTS_SCHEDULED_EVENTS_VERSION', '2.6.8' );
 		if ( !defined( 'SP_COMMENTS_SCHEDULED_EVENTS_URL' ) )
 			define( 'SP_COMMENTS_SCHEDULED_EVENTS_URL', plugin_dir_url( __FILE__ ) );
 		if ( !defined( 'SP_COMMENTS_SCHEDULED_EVENTS_DIR' ) )
