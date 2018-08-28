@@ -54,6 +54,8 @@ if ( $team ):
 	);
 endif;
 
+$args = apply_filters( 'sportspress_players_selector_args', $args );
+
 $players = get_posts( $args );
 
 $options = array();
