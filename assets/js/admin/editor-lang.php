@@ -4,7 +4,7 @@ $shortcodes = '';
 
 $options = array(
     'event' => array(
-        'details', 'results', 'performance', 'venue', 'officials', 'teams',
+        'details', 'results', 'performance', 'venue', 'officials', 'teams', 'full',
     ),
     'team' => array(),
     'player' => array(
@@ -33,6 +33,7 @@ $raw = apply_filters( 'sportspress_tinymce_strings', array(
     'venue' =>  __( 'Venue', 'sportspress' ),
     'officials' =>  __( 'Officials', 'sportspress' ),
     'teams' =>  __( 'Teams', 'sportspress' ),
+    'full' =>  __( 'Full Info', 'sportspress' ),
     'calendar' =>  __( 'Calendar', 'sportspress' ),
     'statistics' =>  __( 'Statistics', 'sportspress' ),
     'team' =>  __( 'Team', 'sportspress' ),

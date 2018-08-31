@@ -22,6 +22,7 @@ class SP_Shortcodes {
 			'event_venue' 		=> __CLASS__ . '::event_venue',
 			'event_officials' 	=> __CLASS__ . '::event_officials',
 			'event_teams' 		=> __CLASS__ . '::event_teams',
+			'event_full' 		=> __CLASS__ . '::event_full',
 			'countdown'         => __CLASS__ . '::countdown',
 			'player_details'    => __CLASS__ . '::player_details',
 			'player_statistics' => __CLASS__ . '::player_statistics',
@@ -136,6 +137,17 @@ class SP_Shortcodes {
 	 */
 	public static function event_teams( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Teams', 'output' ), $atts );
+	}
+	
+	/**
+	 * Event full info shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function event_full( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Full', 'output' ), $atts );
 	}
 
 	/**

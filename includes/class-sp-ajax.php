@@ -274,6 +274,36 @@ class SP_AJAX {
 		self::scripts();
 		die();
 	}
+	
+	/**
+	 * AJAX event_full shortcode
+	 */
+	public function event_full_shortcode() {
+		?>
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-event_full">
+			<p>
+				<label>
+					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_event',
+						'name' => 'id',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-full' ); ?>
+			<p class="submit">
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_full');" />
+				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+			</p>
+		</div>
+		<?php
+		self::scripts();
+		die();
+	}
 
 	/**
 	 * AJAX event_calendar shortcode
