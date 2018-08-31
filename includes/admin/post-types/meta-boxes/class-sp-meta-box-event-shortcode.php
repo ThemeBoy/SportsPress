@@ -23,6 +23,9 @@ class SP_Meta_Box_Event_Shortcode {
 			'event_results' => __( 'Results', 'sportspress' ),
 			'event_details' => __( 'Details', 'sportspress' ),
 			'event_performance' => __( 'Box Score', 'sportspress' ),
+			'event_venue' => __( 'Venue', 'sportspress' ),
+			'event_officials' => __( 'Officials', 'sportspress' ),
+			'event_teams' => __( 'Teams', 'sportspress' ),
 		) );
 		if ( $shortcodes ) {
 		?>

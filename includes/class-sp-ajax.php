@@ -27,6 +27,9 @@ class SP_AJAX {
 			'event_details_shortcode' => false,
 			'event_results_shortcode' => false,
 			'event_performance_shortcode' => false,
+			'event_venue_shortcode' => false,
+			'event_officials_shortcode' => false,
+			'event_teams_shortcode' => false,
 			'event_calendar_shortcode' => false,
 			'event_list_shortcode' => false,
 			'event_blocks_shortcode' => false,
@@ -174,6 +177,96 @@ class SP_AJAX {
 			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-performance' ); ?>
 			<p class="submit">
 				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_performance');" />
+				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+			</p>
+		</div>
+		<?php
+		self::scripts();
+		die();
+	}
+	
+	/**
+	 * AJAX event_venue shortcode
+	 */
+	public function event_venue_shortcode() {
+		?>
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-event_venue">
+			<p>
+				<label>
+					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_event',
+						'name' => 'id',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-venue' ); ?>
+			<p class="submit">
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_venue');" />
+				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+			</p>
+		</div>
+		<?php
+		self::scripts();
+		die();
+	}
+	
+	/**
+	 * AJAX event_officials shortcode
+	 */
+	public function event_officials_shortcode() {
+		?>
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-event_officials">
+			<p>
+				<label>
+					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_event',
+						'name' => 'id',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-officials' ); ?>
+			<p class="submit">
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_officials');" />
+				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+			</p>
+		</div>
+		<?php
+		self::scripts();
+		die();
+	}
+	
+	/**
+	 * AJAX event_officials shortcode
+	 */
+	public function event_teams_shortcode() {
+		?>
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-event_teams">
+			<p>
+				<label>
+					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_event',
+						'name' => 'id',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-teams' ); ?>
+			<p class="submit">
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_teams');" />
 				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 			</p>
 		</div>
