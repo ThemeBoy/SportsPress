@@ -71,6 +71,13 @@ class SP_Modules {
 					'link' => 'https://www.themeboy.com/sportspress-extensions/tournaments/',
 					'desc' => __( 'Schedule tournaments and create interactive playoff brackets.', 'sportspress' ),
 				),
+				'event_scoresheet' => array(
+					'label' => __( 'Scoresheets', 'sportspress' ),
+					'class' => 'SportsPress_Event_Scoresheet',
+					'icon' => 'sp-icon-card',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/scoresheets/',
+					'desc' => __( 'Upload event scoresheets.', 'sportspress' ),
+				),
 			),
 			'team' => array(
 				'league_tables' => array(
