@@ -31,11 +31,18 @@ class SportsPress_Event_Scoresheet {
 		// Include required files
 		$this->includes();
 
+		// Actions
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 30 );
 		add_action( 'sportspress_process_sp_event_meta', array( $this, 'save_meta' ), 15, 2 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_scripts' ) );
+		add_action( 'sportspress_calendar_data_meta_box_table_head_row', array( $this, 'calendar_meta_head_row' ) );
+		add_action( 'sportspress_calendar_data_meta_box_table_row', array( $this, 'calendar_meta_row' ), 10, 2 );
+		add_action( 'sportspress_event_list_head_row', array( $this, 'event_list_head_row' ) );
+		add_action( 'sportspress_event_list_row', array( $this, 'event_list_row' ), 10, 2 );
 		
+		// Filters
 		add_filter( 'sportspress_calendar_columns', array( $this, 'calendar_columns' ) );
+		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 	}
 
 	/**
@@ -62,7 +69,7 @@ class SportsPress_Event_Scoresheet {
 	 * Add meta boxes.
 	 */
 	public function add_meta_boxes() {
-		add_meta_box( 'sp_event_scoresheet_div', __( 'Event Scoresheet', 'sportspress' ), array( $this, 'meta_box' ), 'sp_event', 'side', 'default' );
+		add_meta_box( 'sp_scoresheet_div', __( 'Event Scoresheet', 'sportspress' ), array( $this, 'meta_box' ), 'sp_event', 'side', 'default' );
 	}
 
 	/**
@@ -118,6 +125,84 @@ class SportsPress_Event_Scoresheet {
 	public function calendar_columns( $columns = array() ) {
 		$columns['scoresheet'] = __( 'Scoresheet', 'sportspress' );
 		return $columns;
+	}
+	
+	/**
+	 * Calendar meta box table head row.
+	 */
+	public function calendar_meta_head_row( $usecolumns = array() ) {
+		if ( is_array( $usecolumns ) && in_array( 'scoresheet', $usecolumns ) ) {
+			?>
+				<th class="column-officials">
+					<label for="sp_columns_scoresheet">
+						<?php _e( 'Scoresheet', 'sportspress' ); ?>
+					</label>
+				</th>
+				<?php
+		}
+	}
+
+	/**
+	 * Calendar meta box table row.
+	 */
+	public function calendar_meta_row( $event, $usecolumns = array() ) {
+		if ( is_array( $usecolumns ) && in_array( 'scoresheet', $usecolumns ) ) {
+			$scoresheet = get_post_meta( $event->ID, 'sp_scoresheet', true );
+			?>
+			<td>
+				<a href="<?php echo get_edit_post_link( $event->ID ); ?>#sp_scoresheet_div">
+				<?php if ( $scoresheet ) : ?>
+					<div class="dashicons dashicons-clipboard"></div>
+				<?php else: ?>
+					<?php _e( 'Add one', 'sportspress' ); ?>
+				<?php endif; ?>
+				</a>
+			</td>
+	<?php }
+	}
+	
+	/**
+	 * Event list head row.
+	 */
+	public function event_list_head_row( $usecolumns = array() ) {
+		if ( is_array( $usecolumns ) && in_array( 'scoresheet', $usecolumns ) ) {
+			?>
+			<th class="column-scoresheet">
+				<label for="sp_columns_scoresheet">
+					<?php _e( 'Scoresheet', 'sportspress' ); ?>
+				</label>
+			</th>
+	<?php }
+	}
+
+	/**
+	 * Event list row.
+	 */
+	public function event_list_row( $event, $usecolumns = array() ) {
+		if ( is_array( $usecolumns ) && in_array( 'scoresheet', $usecolumns ) ) {
+			$scoresheet = get_post_meta( $event->ID, 'sp_scoresheet', true );
+				?>
+				<td class="data-scoresheet">
+				<?php if ( $scoresheet ) : ?>
+					<a href="<?php echo wp_get_attachment_url( $scoresheet ); ?>" target="_blank">
+						<div class="dashicons dashicons-clipboard"></div>
+					</a>
+				<?php else: ?>
+					<?php _e( '-', 'sportspress' ); ?>
+				<?php endif; ?>
+					
+				</td>
+				<?php
+		}
+	}
+	
+	/**
+	 * Add text options 
+	 */
+	public function add_text_options( $options = array() ) {
+		return array_merge( $options, array(
+			__( 'Scoresheet', 'sportspress' ),
+		) );
 	}
 
 }
