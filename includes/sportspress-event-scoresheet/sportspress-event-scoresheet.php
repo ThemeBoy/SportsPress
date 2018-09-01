@@ -32,8 +32,10 @@ class SportsPress_Event_Scoresheet {
 		$this->includes();
 
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 30 );
-		add_action( 'sportspress_process_sp_team_meta', array( $this, 'save_meta' ), 15, 2 );
+		add_action( 'sportspress_process_sp_event_meta', array( $this, 'save_meta' ), 15, 2 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_scripts' ) );
+		
+		add_filter( 'sportspress_calendar_columns', array( $this, 'calendar_columns' ) );
 	}
 
 	/**
@@ -67,12 +69,23 @@ class SportsPress_Event_Scoresheet {
 	 * Output the meta box.
 	 */
 	public static function meta_box( $post ) {
-		var_dump( get_post_meta($post->id, 'sp_upload_scoresheet'));
+		$scoresheet = get_post_meta( $post->ID, 'sp_scoresheet', true );
+		if ( $scoresheet ):
 		?>
-		<p>
-			<input id="sp_upload_scoresheet" name="sp_upload_scoresheet" type="text" size="10" value="<?php echo esc_attr( get_option('sp_upload_scoresheet') ); ?>" /> 
-			<input id="sp_upload_scoresheet_button" name="sp_upload_scoresheet_button" class="button" type="button" value="Upload Image" />
-		</p>
+		<fieldset class="sp-scoresheet-show">
+			<?php echo wp_get_attachment_image( $scoresheet, 'thumbnail', true ); ?>
+			<p><a href="#" class="sp-remove-scoresheet"><?php _e( 'Remove Scoresheet', 'sportspress' ); ?></a></p>
+		</fieldset>
+		<?php endif; ?>
+		<fieldset class="sp-scoresheet-field hidden">
+			<p><strong><?php _e( 'Scoresheet URL', 'sportspress' ); ?></strong></p>
+			<p><input class="widefat" type="text" name="sp_scoresheet_url" id="sp_upload_scoresheet_url" value=""></p>
+			<p><input type="text" name="sp_scoresheet" id="sp_upload_scoresheet" value="<?php echo $scoresheet; ?>" hidden></p>
+			<p><a href="#" class="sp-remove-scoresheet"><?php _e( 'Cancel', 'sportspress' ); ?></a></p>
+		</fieldset>
+		<fieldset class="sp-scoresheet-adder<?php if ( $scoresheet ): ?> hidden<?php endif; ?>">
+			<p><a href="#" class="sp-add-scoresheet"><?php _e( 'Add Scoresheet', 'sportspress' ); ?></a></p>
+		</fieldset>
 		<?php
 	}
 
@@ -80,8 +93,7 @@ class SportsPress_Event_Scoresheet {
 	 * Save Facebook Page URL.
 	 */
 	public static function save_meta( $post_id, $post ) {
-		var_dump($_POST);
-		update_post_meta( $post_id, 'sp_upload_scoresheet', esc_url( sp_array_value( $_POST, 'sp_upload_scoresheet', '' ) ) );
+		update_post_meta( $post_id, 'sp_scoresheet', $_POST['sp_scoresheet'] );
 	}
 
 	/**
@@ -96,7 +108,16 @@ class SportsPress_Event_Scoresheet {
 		
 		wp_register_script( 'sportspress-event-scoresheet', SP_EVENT_SCORESHET_URL .'js/sportspress-event-scoresheet.js', array( 'jquery' ), '2.7.0' );
 		wp_enqueue_script( 'sportspress-event-scoresheet' );
-		//wp_enqueue_script( 'sportspress-event-scoresheet', SP_EVENT_SCORESHET_URL .'js/sportspress-event-scoresheet.js', array( 'jquery' ), '2.7.0' );
+	}
+	
+	/**
+	 * Add calendar columns.
+	 *
+	 * @return array
+	 */
+	public function calendar_columns( $columns = array() ) {
+		$columns['scoresheet'] = __( 'Scoresheet', 'sportspress' );
+		return $columns;
 	}
 
 }
