@@ -81,6 +81,8 @@ class SportsPress_Event_Scoresheet {
 		?>
 		<fieldset class="sp-scoresheet-show">
 			<?php echo wp_get_attachment_image( $scoresheet, 'thumbnail', true ); ?>
+			</br>
+			<small><?php echo basename( get_attached_file( $scoresheet ) ); ?> </small>
 			<p><a href="#" class="sp-remove-scoresheet"><?php _e( 'Remove Scoresheet', 'sportspress' ); ?></a></p>
 		</fieldset>
 		<?php endif; ?>
