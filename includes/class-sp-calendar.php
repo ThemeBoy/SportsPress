@@ -209,6 +209,7 @@ class SP_Calendar extends SP_Secondary_Post {
 			);
 		endif;
 
+		// If we are showing past meetings filter by team's id and current event date
 		if ( $this->teams_past ):
 			foreach ( $this->teams_past as $team_past ):
 				$args['meta_query'][] = array(
@@ -345,6 +346,17 @@ class SP_Calendar extends SP_Secondary_Post {
 		else:
 			$events = null;
 		endif;
+		
+		// Filter out unessecary events if we are showing past meetings
+		if ( $this->teams_past ){
+			$events_past = array();
+			foreach ( $events as $single_event ) {
+				if ( get_post_meta( $single_event->ID,'sp_team' ) === $this->teams_past ){
+					$events_past[] = $single_event;
+				}
+			}
+			$events = $events_past;
+		}
 
 		// Remove any calendar selection filters
 		remove_filter( 'posts_where', array( $this, 'range' ) );
