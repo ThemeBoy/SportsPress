@@ -39,6 +39,12 @@ class SP_Calendar extends SP_Secondary_Post {
 
 	/** @var int The team ID. */
 	public $team;
+	
+	/** @var array The teams IDs. */
+	public $teams_past;
+	
+	/** @var string The event date. */
+	public $date_before;
 
 	/** @var int The player ID. */
 	public $player;
@@ -203,6 +209,23 @@ class SP_Calendar extends SP_Secondary_Post {
 			);
 		endif;
 
+		if ( $this->teams_past ):
+			foreach ( $this->teams_past as $team_past ):
+				$args['meta_query'][] = array(
+					'key' => 'sp_team',
+					'value' => $team_past,
+					'compare' => 'IN',
+				);
+			endforeach;
+			$args['date_query'] = array(
+				array(
+					'before' => $this->date_before,
+					'inclusive' => false,
+				)
+			
+			);
+		endif;
+		
 		if ( $this->player ):
 			$args['meta_query'][] = array(
 				'key' => 'sp_player',

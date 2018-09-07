@@ -33,6 +33,7 @@ class SportsPress_Event_Past_Meetings {
 		// Filters
 		add_filter( 'sportspress_event_templates', array( $this, 'templates' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
+		add_filter( 'sportspress_event_settings', array( $this, 'add_settings' ) );
 	}
 
 	/**
@@ -73,21 +74,23 @@ class SportsPress_Event_Past_Meetings {
 	 */
 	public function output() {
 		// Get timelines format option
-		$format = get_option( 'sportspress_team_events_format', 'blocks' );
-		if ( 'calendar' === $format ):
-			sp_get_template( 'event-calendar.php', array( 'team' => $id ) );
-		elseif ( 'list' === $format ):
+		$format = get_option( 'sportspress_past_meetings_format', 'blocks' );
+		$teams = get_post_meta( get_the_ID(),'sp_team' );
+		if ( 'list' === $format ):
 			sp_get_template( 'event-list.php', array(
-				'team' => $id,
-				'league' => apply_filters( 'sp_team_events_league', 0 ),
-				'season' => apply_filters( 'sp_team_events_season', 0 ),
+				'teams_past' => $teams,
+				'date_before' => get_post_time('Y-m-d', true),
 				'title_format' => 'homeaway',
 				'time_format' => 'separate',
 				'columns' => array( 'event', 'time', 'results' ),
 				'order' => 'DESC',
 			) );
 		else:
-			sp_get_template( 'event-fixtures-results.php', array( 'team' => $id ) );
+			sp_get_template( 'event-blocks.php', array(
+				'teams_past' => $teams,
+				'date_before' => get_post_time('Y-m-d', true),
+				'order' => 'DESC',
+			) );
 		endif;
 	}
 	
@@ -98,6 +101,38 @@ class SportsPress_Event_Past_Meetings {
 		return array_merge( $options, array(
 			__( 'Past Meetings', 'sportspress' ),
 		) );
+	}
+	
+	/**
+	 * Add settings.
+	 *
+	 * @return array
+	 */
+	public function add_settings( $settings ) {
+		
+		$settings = array_merge( $settings,
+			array(
+				array( 'title' => __( 'Past Meetings', 'sportspress' ), 'type' => 'title', 'id' => 'past_meetings_options' ),
+			),
+
+			apply_filters( 'sportspress_past_meetings_options', array(
+				array(
+					'title' 	=> __( 'Layout', 'sportspress' ),
+					'id' 		=> 'sportspress_past_meetings_format',
+					'default'	=> 'horizontal',
+					'type' 		=> 'radio',
+					'options' => array(
+						'blocks'=> __( 'Blocks', 'sportspress' ),
+						'list'	=> __( 'List', 'sportspress' ),
+					),
+				),
+			) ),
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'past_meetings_options' ),
+			)
+		);
+		return $settings;
 	}
 
 }
