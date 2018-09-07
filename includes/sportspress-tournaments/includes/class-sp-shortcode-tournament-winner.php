@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Class
  * @package 	SportsPress Tournaments
- * @version     1.6
+ * @version     2.6.5
  */
 class SP_Shortcode_Tournament_Winner {
 
@@ -19,8 +19,8 @@ class SP_Shortcode_Tournament_Winner {
 	/**
 	 * Init shortcodes
 	 */
-	public static function init() {
-		add_shortcode( 'tournament_winner', __CLASS__ . '::output' );
+	public function init() {
+		add_shortcode( 'tournament_winner', array( $this, 'output' ) );
 	}
 
 	/**
@@ -28,7 +28,7 @@ class SP_Shortcode_Tournament_Winner {
 	 *
 	 * @param array $atts
 	 */
-	public static function output( $atts ) {
+	public function output( $atts ) {
 
 		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
 			$atts['id'] = $atts[0];

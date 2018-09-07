@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Class
  * @package 	SportsPress Tournaments
- * @version     1.7
+ * @version     2.6.5
  */
 class SP_Shortcode_Tournament_Bracket {
 
@@ -19,8 +19,8 @@ class SP_Shortcode_Tournament_Bracket {
 	/**
 	 * Init shortcodes
 	 */
-	public static function init() {
-		add_shortcode( 'tournament_bracket', __CLASS__ . '::output' );
+	public function init() {
+		add_shortcode( 'tournament_bracket', array( $this, 'output' ) );
 	}
 
 	/**
@@ -28,7 +28,7 @@ class SP_Shortcode_Tournament_Bracket {
 	 *
 	 * @param array $atts
 	 */
-	public static function output( $atts ) {
+	public function output( $atts ) {
 
 		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
 			$atts['id'] = $atts[0];

@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Shortcodes
  * @package 	SportsPress_Staff_Directories
- * @version     2.6.4
+ * @version     2.6.5
  */
 class SP_Shortcode_Staff_Gallery {
 
@@ -20,7 +20,7 @@ class SP_Shortcode_Staff_Gallery {
 	/**
 	 * Init shortcodes
 	 */
-	public static function init() {
+	public function init() {
 		add_shortcode( 'staff_gallery', array( $this, 'output' ) );
 	}
 

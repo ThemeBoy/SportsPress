@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Class
  * @package 	SportsPress Sponsors
- * @version     1.7
+ * @version     2.6.5
  */
 class SP_Shortcode_Sponsors {
 
@@ -20,8 +20,8 @@ class SP_Shortcode_Sponsors {
 	/**
 	 * Init shortcodes
 	 */
-	public static function init() {
-		add_shortcode( 'sponsors', __CLASS__ . '::output' );
+	public function init() {
+		add_shortcode( 'sponsors', array( $this, 'output' ) );
 	}
 
 	/**
@@ -29,7 +29,7 @@ class SP_Shortcode_Sponsors {
 	 *
 	 * @param array $atts
 	 */
-	public static function output( $atts ) {
+	public function output( $atts ) {
 		ob_start();
 
 		echo '<div class="sportspress">';
@@ -39,7 +39,7 @@ class SP_Shortcode_Sponsors {
 		return ob_get_clean();
 	}
 
-	public static function locate_template( $template = null, $template_name = null, $template_path = null ) {
+	public function locate_template( $template = null, $template_name = null, $template_path = null ) {
 		if ( ! $template_path && $template_name == 'sponsors' ) {
 			return SP_SPONSORS_DIR . '/templates/sponsors.php';
 		}
