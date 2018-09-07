@@ -215,7 +215,7 @@ class SP_Calendar extends SP_Secondary_Post {
 				$args['meta_query'][] = array(
 					'key' => 'sp_team',
 					'value' => $team_past,
-					'compare' => 'IN',
+					'compare' => '=',
 				);
 			endforeach;
 			$args['date_query'] = array(
