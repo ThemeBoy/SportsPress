@@ -106,7 +106,7 @@ class SP_Admin_Taxonomies {
 			$latitude = sp_array_value( $term_meta, 'sp_latitude', '40.7324319' );
 			$longitude = sp_array_value( $term_meta, 'sp_longitude', '-73.82480799999996' );
 		endif;
-		// Sanitize latitude and longitude
+		// Sanitize latitude and longitude, fallback to default.
 		if( ! is_numeric( $latitude) || ! is_numeric( $longitude) ):
 			$latitude = '40.7324319';
 			$longitude = '-73.82480799999996';
