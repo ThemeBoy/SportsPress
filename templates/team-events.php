@@ -15,8 +15,8 @@ if ( ! isset( $id ) )
 $format = get_option( 'sportspress_team_events_format', 'blocks' );
 if ( 'calendar' === $format )
 	sp_get_template( 'event-calendar.php', array( 'team' => $id ) );
-elseif ( 'list' === $format )
-	sp_get_template( 'event-list.php', array(
+elseif ( 'list' === $format ) {
+	$args = array(
 		'team' => $id,
 		'league' => apply_filters( 'sp_team_events_league', 0 ),
 		'season' => apply_filters( 'sp_team_events_season', 0 ),
@@ -24,6 +24,8 @@ elseif ( 'list' === $format )
 		'time_format' => 'separate',
 		'columns' => array( 'event', 'time', 'results' ),
 		'order' => 'DESC',
-	) );
-else
+	);
+	$args = apply_filters( 'sportspress_team_events_list_args', $args );
+	sp_get_template( 'event-list.php', $args );
+} else
 	sp_get_template( 'event-fixtures-results.php', array( 'team' => $id ) );
