@@ -579,7 +579,7 @@ class SP_Event extends SP_Custom_Post{
 		$appointments = array();
 
 		foreach ( $duties as $duty ) {
-			$duty_appointments = sp_array_value( $officials, $duty->term_id, [] );
+			$duty_appointments = sp_array_value( $officials, $duty->term_id, array() );
 
 			if ( ! $include_empty && empty( $duty_appointments ) ) continue;
 
