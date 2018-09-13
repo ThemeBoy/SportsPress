@@ -134,6 +134,7 @@ foreach ( $events as $event):
 	"DESCRIPTION:" . preg_replace('/([\,;])/','\\\$1', $event->post_content) . "\n" .
 	"UID:$event->ID\n" .
 	"STATUS:CONFIRMED\n" .
+	"DTSTAMP:19700101T000000\n".
 	"DTSTART:" . mysql2date( $date_format, $event->post_date ) . "\n" .
 	"DTEND:" . $end->format( $date_format ) . "\n" .
 	"LAST-MODIFIED:" . mysql2date( $date_format, $event->post_modified_gmt ) . "\n";
