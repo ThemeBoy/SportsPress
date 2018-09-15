@@ -27,15 +27,18 @@ $main_result = get_option( 'sportspress_primary_result', null );
 // Get the timezone setting
 $timezone = sanitize_option( 'timezone_string', get_option( 'timezone_string' ) );
 
-// Initialize output. Max line length is 75 chars.
+// Get the URL
+$url = add_query_arg( 'feed', 'sp-ical', get_post_permalink( $post ) );
+$url = wordwrap( $url , 60, "\n\t", true );
+
 $output =
 "BEGIN:VCALENDAR\n" .
 "VERSION:2.0\n" .
 "PRODID:-//ThemeBoy//SportsPress//" . strtoupper( $locale ) . "\n" .
 "CALSCALE:GREGORIAN\n" .
 "METHOD:PUBLISH\n" .
-"URL:" . add_query_arg( 'feed', 'sp-calendar-ical', get_post_permalink( $post ) ) . "\n" .
-"X-FROM-URL:" . add_query_arg( 'feed', 'sp-calendar-ical', get_post_permalink( $post ) ) . "\n" .
+"URL:" . $url . "\n" .
+"X-FROM-URL:" . $url . "\n" .
 "NAME:" . $post->post_title . "\n" .
 "X-WR-CALNAME:" . $post->post_title . "\n" .
 "DESCRIPTION:" . $post->post_title . "\n" .
@@ -50,6 +53,10 @@ foreach ( $events as $event):
 
 	// Define date format
 	$date_format = 'Ymd\THis';
+
+	// Get description
+	$description = preg_replace( '/([\,;])/','\\\$1', $event->post_content );
+	$description = wordwrap( $description , 60, "\n\t" );
 
 	// Initialize end time	
 	$end = new DateTime( $event->post_date );
@@ -89,6 +96,7 @@ foreach ( $events as $event):
 			$geo = false;
 		}
 	}
+	$location = wordwrap( $location , 60, "\n\t" );
 
 	// Get title or write summary based on scores
 	$results = array();
@@ -131,13 +139,16 @@ foreach ( $events as $event):
 	$output .=
 	"BEGIN:VEVENT\n" .
 	"SUMMARY:" . preg_replace('/([\,;])/','\\\$1', $summary) . "\n" .
-	"DESCRIPTION:" . preg_replace('/([\,;])/','\\\$1', $event->post_content) . "\n" .
 	"UID:$event->ID\n" .
 	"STATUS:CONFIRMED\n" .
 	"DTSTAMP:19700101T000000\n".
 	"DTSTART:" . mysql2date( $date_format, $event->post_date ) . "\n" .
 	"DTEND:" . $end->format( $date_format ) . "\n" .
 	"LAST-MODIFIED:" . mysql2date( $date_format, $event->post_modified_gmt ) . "\n";
+
+	if ( $description ) {
+		$output .= "DESCRIPTION:" . $description . "\n";
+	}
 
 	if ( $location ) {
 		$output .= "LOCATION:" . $location . "\n";
