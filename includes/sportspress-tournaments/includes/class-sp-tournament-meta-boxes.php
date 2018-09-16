@@ -326,56 +326,65 @@ class SP_Tournament_Meta_Boxes {
 						$time = $h . ':' . $m;
 						$date .= ' ' . trim( $time );
 					endif;
+				}
 
-					// Generate title
-					$team_names = array();
-					foreach ( $teams as $team ) {
-						if ( ! $team ) continue;
-						$team_names[] = get_the_title( $team );
-					}
-					$new_title = implode( ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ', $team_names );
+				// Generate title
+				$team_names = array();
+				foreach ( $teams as $team ) {
+					if ( ! $team ) continue;
+					$team_names[] = get_the_title( $team );
+				}
+				$new_title = implode( ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ', $team_names );
 
-					// Update or add new event
-					if ( $id ) {
-						$title = get_the_title( $id );
-						if ( ! strlen( $title ) ) {
-							$wpdb->update( $wpdb->posts, array( 'post_date' => $date, 'post_title' => $new_title ), array( 'ID' => $id ) );
-						} else {
-							$wpdb->update( $wpdb->posts, array( 'post_date' => $date ), array( 'ID' => $id ) );
-						}
+				if ( ! strlen( $date ) && ! strlen( $new_title ) ) continue;
 
+				// Update or add new event
+				if ( $id ) {
+					$title = get_the_title( $id );
+					if ( ! strlen( $title ) ) {
+						$wpdb->update( $wpdb->posts, array( 'post_date' => $date, 'post_title' => $new_title ), array( 'ID' => $id ) );
 					} else {
-						$args = array( 'post_type' => 'sp_event', 'post_title' => ( $new_title ? $new_title : __( 'Event', 'sportspress' ) ), 'post_status' => 'publish', 'post_date' => $date );
-						$id = wp_insert_post( $args );
-
-						// Update league
-						if ( array_filter( $leagues ) ):
-							wp_set_object_terms( $id, $leagues, 'sp_league', false );
-						endif;
-
-						// Update season
-						if ( array_filter( $seasons ) ):
-							wp_set_object_terms( $id, $seasons, 'sp_season', false );
-						endif;
+						$wpdb->update( $wpdb->posts, array( 'post_date' => $date ), array( 'ID' => $id ) );
 					}
 
-					// Update teams
-					delete_post_meta( $id, 'sp_team' );
-					foreach ( $teams as $team ) {
-						add_post_meta( $id, 'sp_team', $team );
-					}
+				} else {
+					$args = array( 'post_type' => 'sp_event', 'post_title' => ( $new_title ? $new_title : __( 'Event', 'sportspress' ) ), 'post_status' => 'publish' );
+					if ( strlen( $date ) ) $args['post_date'] = $date;
 
-					// Update results
-					if ( sizeof( $results ) && sizeof( $teams ) ) {
+					$id = wp_insert_post( $args );
+
+					// Update league
+					if ( array_filter( $leagues ) ):
+						wp_set_object_terms( $id, $leagues, 'sp_league', false );
+					endif;
+
+					// Update season
+					if ( array_filter( $seasons ) ):
+						wp_set_object_terms( $id, $seasons, 'sp_season', false );
+					endif;
+				}
+
+				// Update teams
+				delete_post_meta( $id, 'sp_team' );
+				foreach ( $teams as $team ) {
+					add_post_meta( $id, 'sp_team', $team );
+				}
+
+				// Update results
+				if ( sizeof( $results ) ) {
+					if ( sizeof( $teams ) ) {
 						$results = array_combine( $teams, $results );
 						if ( $results ) {
 							sp_update_main_results( $id, $results );
 						}
+						update_post_meta( $id, 'sp_status', 'ok' );
 					}
-
-					// Update event format
-					update_post_meta( $id, 'sp_format', 'tournament' );
+				} elseif ( ! strlen( $date ) ) {
+					update_post_meta( $id, 'sp_status', 'tbd' );
 				}
+
+				// Update event format
+				update_post_meta( $id, 'sp_format', 'tournament' );
 
 				// Add to event IDs
 				$event_ids[] = $id;
@@ -489,11 +498,18 @@ class SP_Tournament_Meta_Boxes {
 									<?php } ?>
 									<a title="<?php _e( 'Hide Event' ); ?>" class="sp-hide sp-desc-tip dashicons dashicons-hidden" href="#"></a>
 									<input type="hidden" class="sp-hidden" name="<?php echo $key; ?>[<?php echo $index; ?>][hidden]" value="<?php echo $hidden ? 1 : 0; ?>">
-									<input type="text" class="sp-datepicker" name="<?php echo $key; ?>[<?php echo $index; ?>][date]" value="<?php if ( $event ) echo sp_get_time( $event, 'Y-m-d' ); ?>" size="10" autocomplete="off"><hr>
-									<label><?php _e( 'Time', 'sportspress' ); ?>:</label>
-									<input type="text" size="2" maxlength="2" name="<?php echo $key; ?>[<?php echo $index; ?>][hh]" autocomplete="off" value="<?php if ( $event ) echo sp_get_time( $event, 'H' ); ?>">
-									:
-									<input type="text" size="2" maxlength="2" name="<?php echo $key; ?>[<?php echo $index; ?>][mm]" autocomplete="off" value="<?php if ( $event ) echo sp_get_time( $event, 'i' ); ?>"><hr>
+									<?php if ( $event && 'tbd' == get_post_meta( $event, 'sp_status', true ) ) { ?>
+										<?php _e( 'TBD', 'sportspress' ); ?>
+										<input type="hidden" name="<?php echo $key; ?>[<?php echo $index; ?>][date]" value="<?php if ( $event ) echo sp_get_time( $event, 'Y-m-d' ); ?>"><hr>
+										<input type="hidden" name="<?php echo $key; ?>[<?php echo $index; ?>][hh]" value="<?php if ( $event ) echo sp_get_time( $event, 'H' ); ?>">
+										<input type="hidden" name="<?php echo $key; ?>[<?php echo $index; ?>][mm]" value="<?php if ( $event ) echo sp_get_time( $event, 'i' ); ?>">
+									<?php } else { ?>
+										<input type="text" class="sp-datepicker" name="<?php echo $key; ?>[<?php echo $index; ?>][date]" value="<?php if ( $event ) echo sp_get_time( $event, 'Y-m-d' ); ?>" size="10" autocomplete="off"><hr>
+										<label><?php _e( 'Time', 'sportspress' ); ?>:</label>
+										<input type="text" size="2" maxlength="2" name="<?php echo $key; ?>[<?php echo $index; ?>][hh]" autocomplete="off" value="<?php if ( $event ) echo sp_get_time( $event, 'H' ); ?>">
+										:
+										<input type="text" size="2" maxlength="2" name="<?php echo $key; ?>[<?php echo $index; ?>][mm]" autocomplete="off" value="<?php if ( $event ) echo sp_get_time( $event, 'i' ); ?>"><hr>
+									<?php } ?>
 									<label><?php _e( 'Results', 'sportspress' ); ?>:</label>
 									<input type="text" size="2" name="<?php echo $key; ?>[<?php echo $index; ?>][results][]" value="<?php echo sp_array_value( $results, 0 ); ?>" autocomplete="off">
 									-

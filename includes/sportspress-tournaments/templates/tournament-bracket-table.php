@@ -63,7 +63,13 @@ list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout
 					if ( sp_array_value( $cell, 'type', null ) === 'event' ):
 						echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="sp-event' . ( $col === 0 ? ' sp-first-round' : '' ) . ( $col === $cols - 1 ? ' sp-last-round' : '' ) . ' ' . sp_array_value( $cell, 'class', '' ) . '">';
 						if ( $event ) {
-							$event_name = '<span class="sp-result">' . implode( '</span>-<span class="sp-result">', apply_filters( 'sportspress_main_results_or_time', sp_get_main_results_or_time( $event ), $event ) ) . '</span>';
+							$status = get_post_meta( $event, 'sp_status', true );
+
+							if ( 'tbd' == $status ) {
+								$event_name = '<span class="sp-result">' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . '</span>';
+							} else {
+								$event_name = '<span class="sp-result">' . implode( '</span>-<span class="sp-result">', apply_filters( 'sportspress_main_results_or_time', sp_get_main_results_or_time( $event ), $event ) ) . '</span>';
+							}
 
 							if ( $show_logos ) {
 								$teams = sp_get_teams( $event );
@@ -88,9 +94,10 @@ list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout
 								}
 							}
 
-							$event_date = '<div class="sp-event-date">' . get_the_date( get_option( 'date_format' ), $event ) . '</div>';
-
-							$event_name = $event_date . '<div class="sp-event-main">' . $event_name . '</div>';
+							if ( 'tbd' != $status ) {
+								$event_date = '<div class="sp-event-date">' . get_the_date( get_option( 'date_format' ), $event ) . '</div>';
+								$event_name = $event_date . '<div class="sp-event-main">' . $event_name . '</div>';
+							}
 
 							if ( $show_venue ) {
 								$venues = get_the_terms( $event, 'sp_venue' );
