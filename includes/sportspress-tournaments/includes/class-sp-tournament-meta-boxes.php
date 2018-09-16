@@ -345,7 +345,7 @@ class SP_Tournament_Meta_Boxes {
 						}
 
 					} else {
-						$args = array( 'post_type' => 'sp_event', 'post_title' => $new_title, 'post_status' => 'publish', 'post_date' => $date );
+						$args = array( 'post_type' => 'sp_event', 'post_title' => ( $new_title ? $new_title : __( 'Event', 'sportspress' ) ), 'post_status' => 'publish', 'post_date' => $date );
 						$id = wp_insert_post( $args );
 
 						// Update league

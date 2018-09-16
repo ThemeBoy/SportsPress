@@ -153,8 +153,15 @@ list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout
 						echo '<td rowspan="' . sp_array_value( $cell, 'rows', 1 ) . '" class="' . implode( ' ', $classes ) . '">';
 						if ( $team ) {
 							$team_name = sp_team_name( $team, apply_filters( 'sp_tournament_name_format', 'short' )  );
-							if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '" class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</a>';
-							else $team_name = '<span class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</span>';
+							if ( $link_teams && $team_name ) {
+								$team_name = '<a href="' . get_post_permalink( $team ) . '" class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</a>';
+							} else {
+								if ( ! $team_name ) {
+									$team_name = '<span class="sp-team-name sp-highlight">&nbsp;</span>';
+								} else {
+									$team_name = '<span class="sp-team-name sp-highlight" data-team="' . $team . '">' . $team_name . '</span>';
+								}
+							}
 							echo $team_name;
 						} else {
 							echo '<span class="sp-team-name sp-highlight">&nbsp;</span>';
