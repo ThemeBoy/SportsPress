@@ -71,7 +71,7 @@ list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout
 									$home = reset( $teams );
 									if ( $home ) {
 										if ( sp_has_logo( $home ) ) {
-											$event_name = sp_get_logo( $home, 'mini' ) . ' ' . $event_name;
+											$event_name = sp_get_logo( $home, 'icon' ) . ' ' . $event_name;
 										} else {
 											$event_name = sp_team_short_name( $home ) . ' ' . $event_name;
 										}
@@ -80,7 +80,7 @@ list( $labels, $data, $cols, $rows, $rounds, $raw ) = $tournament->data( $layout
 									$away = end( $teams );
 									if ( $away ) {
 										if ( sp_has_logo( $away ) ) {
-											$event_name .= ' ' . sp_get_logo( $away, 'mini' );
+											$event_name .= ' ' . sp_get_logo( $away, 'icon' );
 										} else {
 											$event_name .= ' ' . sp_team_short_name( $away );
 										}

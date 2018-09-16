@@ -20,6 +20,10 @@
 
 .sp-tournament-bracket img {
 	vertical-align: middle;
+	width: auto;
+	height: auto;
+	max-width: 2em;
+	max-height: 2em;
 }
 
 .sp-tournament-bracket tr:first-child td {
