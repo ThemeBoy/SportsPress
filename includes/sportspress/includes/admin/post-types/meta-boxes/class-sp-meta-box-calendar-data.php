@@ -39,8 +39,11 @@ class SP_Meta_Box_Calendar_Data {
 		$title_format = get_option( 'sportspress_event_list_title_format', 'title' );
 		$time_format = get_option( 'sportspress_event_list_time_format', 'combined' );
 
-		if ( is_array( $usecolumns ) )
+		if ( is_array( $usecolumns ) ) {
 			$usecolumns = array_filter( $usecolumns );
+		}else{
+			$usecolumns = array();
+		}
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-calendar-table">

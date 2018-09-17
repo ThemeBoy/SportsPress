@@ -584,8 +584,11 @@ class SP_Event extends SP_Custom_Post{
 			if ( ! $include_empty && empty( $duty_appointments ) ) continue;
 
 			$appointed_officials = array();
-			foreach ( $duty_appointments as $duty_appointment ) {
-				$appointed_officials[ $duty_appointment ] = get_the_title( $duty_appointment );
+			
+			if ( is_array( $duty_appointments ) ) {
+				foreach ( $duty_appointments as $duty_appointment ) {
+					$appointed_officials[ $duty_appointment ] = get_the_title( $duty_appointment );
+				}
 			}
 
 			if ( $include_empty && empty( $appointed_officials ) ) $appointed_officials[] = $placeholder;
