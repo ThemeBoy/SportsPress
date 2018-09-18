@@ -24,6 +24,14 @@ class SP_Meta_Box_Player_Details {
 
 		$number = get_post_meta( $post->ID, 'sp_number', true );
 		$nationalities = get_post_meta( $post->ID, 'sp_nationality', false );
+		$default_nationality = get_option( 'sportspress_default_nationality' , false );
+		
+		if ( empty( $nationalities ) && $default_nationality ) { 
+			if ( $default_nationality != '' ) {
+				$nationalities[] = $default_nationality;
+			}
+		}
+
 		foreach ( $nationalities as $index => $nationality ):
 			if ( 2 == strlen( $nationality ) ):
 				$legacy = SP()->countries->legacy;
