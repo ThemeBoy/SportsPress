@@ -61,7 +61,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				$meta = array();
 
 				/**
-				 * Prepare preservable meta keys.
+				 * Prepare preservable metas keys.
 				 */
 				$preservable_metas_keys = array(
 					'sp_league',
