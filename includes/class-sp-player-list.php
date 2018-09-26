@@ -639,7 +639,7 @@ class SP_Player_List extends SP_Secondary_Post {
 
 		// Rearrange data array to reflect values
 		foreach( $merged as $key => $value ):
-			if ( $crop && ! sp_array_value( $value, $orderby, 0 ) ) {
+			if ( $crop && ! ( float ) sp_array_value( $value, $orderby, 0 ) ) {
 				// Crop
 				unset( $merged[ $key ] );
 			} else {
