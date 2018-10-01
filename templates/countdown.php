@@ -107,7 +107,7 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 		</h3>
 		<?php
 		if ( isset( $show_date ) && $show_date ):
-			if ( isset( $event_date ) ):
+			//if ( isset( $event_date ) ):
 				?>
 				<h5 class="event-date sp-event-date">
 					<?php
@@ -115,7 +115,7 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 					?>
 				</h5>
 				<?php
-			endif;
+			//endif;
 		endif;
 		
 		if ( isset( $show_venue ) && $show_venue ):
