@@ -26,7 +26,7 @@ elseif ( 'list' === $format ) {
 		'columns' => array( 'event', 'time', 'results' ),
 		'order' => 'DESC',
 	);
-	$args = apply_filters( 'sportspress_team_events_list_args', $args );
+	$args = apply_filters( 'sp_team_events_list_args', $args );
 	sp_get_template( 'event-list.php', $args );
 } else {
 	sp_get_template( 'event-fixtures-results.php', array( 'team' => $id ) );
