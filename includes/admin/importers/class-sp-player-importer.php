@@ -60,6 +60,18 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				$meta = array();
 
+				/**
+				 * Prepare preservable metas keys.
+				 */
+				$preservable_metas_keys = array(
+					'sp_league',
+					'sp_position',
+					'sp_season',
+				);
+				foreach ( $preservable_metas_keys as $p ) {
+					$meta[ $key ] = '';
+				}
+
 				foreach ( $columns as $index => $key ):
 					$meta[ $key ] = sp_array_value( $row, $index );
 				endforeach;
@@ -78,6 +90,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 						wp_update_post( array( 'ID' => $player_object->ID, 'post_status' => 'publish' ) );
 					endif;
 					$id = $player_object->ID;
+					// Handle preservable data.
+					foreach ( $preservable_metas_keys as $p ) {
+						$terms = wp_get_object_terms( $id, $p, array( 'fields' => 'names' ) );
+						$meta[ $p ] .= '|' . implode( '|', $terms );
+					}
 				else:
 					$args = array( 'post_type' => 'sp_player', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $name ) );
 					$id = wp_insert_post( $args );
