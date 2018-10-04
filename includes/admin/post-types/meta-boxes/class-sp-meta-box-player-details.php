@@ -21,6 +21,9 @@ class SP_Meta_Box_Player_Details {
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$continents = SP()->countries->continents;
+		$contact_number = get_post_meta( $post->ID, 'sp_contact_number', true );
+		$contact_name = get_post_meta( $post->ID, 'sp_contact_name', true );
+		$contact_email = get_post_meta( $post->ID, 'sp_contact_email', true );
 
 		$number = get_post_meta( $post->ID, 'sp_number', true );
 		$nationalities = get_post_meta( $post->ID, 'sp_nationality', false );
@@ -70,6 +73,14 @@ class SP_Meta_Box_Player_Details {
 
 		<p><strong><?php _e( 'Squad Number', 'sportspress' ); ?></strong></p>
 		<p><input type="text" size="4" id="sp_number" name="sp_number" value="<?php echo $number; ?>"></p>
+		<p><strong><?php _e( 'Contact Name', 'sportspress' ); ?></strong></p>
+		<p><input type="text" size="30" id="sp_contact_name" name="sp_contact_name" value="<?php echo $contact_name; ?>"></p>
+
+		<p><strong><?php _e( 'Contact Number', 'sportspress' ); ?></strong></p>
+		<p><input type="text" size="30" id="sp_contact_number" name="sp_contact_number" value="<?php echo $contact_number; ?>"></p>
+
+		<p><strong><?php _e( 'Contact Email', 'sportspress' ); ?></strong></p>
+		<p><input type="text" size="30" id="sp_contact_email" name="sp_contact_email" value="<?php echo $contact_email; ?>"></p>
 
 		<p><strong><?php _e( 'Nationality', 'sportspress' ); ?></strong></p>
 		<p><select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" multiple="multiple">
@@ -171,6 +182,9 @@ class SP_Meta_Box_Player_Details {
 	 */
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_number', esc_attr( sp_array_value( $_POST, 'sp_number', '' ) ) );
+		update_post_meta( $post_id, 'sp_contact_number', esc_attr( sp_array_value( $_POST, 'sp_contact_number', '' ) ) );
+		update_post_meta( $post_id, 'sp_contact_name', esc_attr( sp_array_value( $_POST, 'sp_contact_name', '' ) ) );
+		update_post_meta( $post_id, 'sp_contact_email', esc_attr( sp_array_value( $_POST, 'sp_contact_email', '' ) ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_past_team', sp_array_value( $_POST, 'sp_past_team', array() ) );
