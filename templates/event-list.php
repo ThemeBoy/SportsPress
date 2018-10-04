@@ -46,6 +46,8 @@ $defaults = array(
 
 extract( $defaults, EXTR_SKIP );
 
+$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
+
 $calendar = new SP_Calendar( $id );
 if ( $status != 'default' )
 	$calendar->status = $status;
@@ -192,7 +194,11 @@ $identifier = uniqid( 'eventlist_' );
 					$teams = get_post_meta( $event->ID, 'sp_team' );
 					$video = get_post_meta( $event->ID, 'sp_video', true );
 
-					$main_results = apply_filters( 'sportspress_event_list_main_results', sp_get_main_results( $event ), $event->ID );
+					$main_results = sp_get_main_results( $event );
+					if ( $reverse_teams ) {
+						$main_results = array_reverse( $main_results );
+					}
+					apply_filters( 'sportspress_event_list_main_results', $main_results, $event->ID );
 
 					$teams_output = '';
 					$team_class = '';

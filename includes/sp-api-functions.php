@@ -133,6 +133,15 @@ function sp_get_main_results_or_time( $post = 0 ) {
 	}
 }
 
+function sp_get_main_results_reversed_or_time( $post = 0 ) {
+	$results = sp_get_main_results( $post );
+	if ( sizeof( $results ) ) {
+		return array_reverse( $results );
+	} else {
+		return array( sp_get_time( $post ) );
+	}
+}
+
 function sp_the_main_results_or_time( $post = 0, $delimiter = '-' ) {
 	echo implode( $delimiter, sp_get_main_results_or_time( $post ) );
 }
