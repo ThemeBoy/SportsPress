@@ -122,6 +122,8 @@ class SP_Calendar extends SP_Secondary_Post {
 	public function data() {
 		global $pagenow;
 
+		$start_of_week = get_option('start_of_week');
+		
 		$args = array(
 			'post_type' => 'sp_event',
 			'posts_per_page' => $this->number,
@@ -152,26 +154,77 @@ class SP_Calendar extends SP_Secondary_Post {
 					break;
 				case '+day':
 					$date = new DateTime( date_i18n('Y-m-d') );
-			    $date->modify( '+1 day' );
+					$date->modify( '+1 day' );
 					$args['year'] = $date->format('Y');
 					$args['day'] = $date->format('j');
 					$args['monthnum'] = $date->format('n');
 					break;
 				case '-w':
-					$date = new DateTime( date_i18n('Y-m-d') );
-			    $date->modify( '-1 week' );
-					$args['year'] = $date->format('Y');
-					$args['w'] = $date->format('W');
+					if ( $start_of_week == '0' ) { //If start of week is Sunday
+						if ( date('w') == '0' ) { //If today is Sunday
+							$after = date_i18n('Y-m-d', strtotime('Sunday last week'));
+							$before = date_i18n('Y-m-d', strtotime('Saturday this week')).' 23:59:59';
+						}else{
+							$after = date_i18n('Y-m-d', strtotime('Sunday -2 week'));
+							$before = date_i18n('Y-m-d', strtotime('Saturday last week')).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$date = new DateTime( date_i18n('Y-m-d') );
+						$date->modify( '-1 week' );
+						$args['year'] = $date->format('Y');
+						$args['w'] = $date->format('W');
+					}
 					break;
 				case 'w':
-					$args['year'] = date_i18n('Y');
-					$args['w'] = date_i18n('W');
+					if ( $start_of_week == '0' ) { //If start of week is Sunday
+						if ( date('w') == '0' ) { //If today is Sunday
+							$after = date_i18n('Y-m-d');
+							$before = date_i18n('Y-m-d', strtotime('Saturday next week')).' 23:59:59';
+						}else{
+							$after = date_i18n('Y-m-d', strtotime('Sunday last week'));
+							$before = date_i18n('Y-m-d', strtotime('Saturday this week')).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$args['year'] = date_i18n('Y');
+						$args['w'] = date_i18n('W');
+					}
 					break;
 				case '+w':
-					$date = new DateTime( date_i18n('Y-m-d') );
-			    $date->modify( '+1 week' );
-					$args['year'] = $date->format('Y');
-					$args['w'] = $date->format('W');
+					if ( $start_of_week == '0' ) { //If start of week is Sunday
+						if ( date('w') == '0' ) { //If today is Sunday
+							$after = date_i18n('Y-m-d', strtotime('Sunday next week'));
+							$before = date_i18n('Y-m-d', strtotime('Saturday +2 week')).' 23:59:59';
+						}else{
+							$after = date_i18n('Y-m-d', strtotime('Sunday this week'));
+							$before = date_i18n('Y-m-d', strtotime('Saturday next week')).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$date = new DateTime( date_i18n('Y-m-d') );
+						$date->modify( '+1 week' );
+						$args['year'] = $date->format('Y');
+						$args['w'] = $date->format('W');
+					}
 					break;
 				case 'range':
 					if ( $this->relative ):
