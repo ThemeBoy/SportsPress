@@ -105,7 +105,9 @@ class SP_Admin_Taxonomies {
 			$term_meta = get_option( "taxonomy_$t_id" );
 			$latitude = sp_array_value( $term_meta, 'sp_latitude', '40.7324319' );
 			$longitude = sp_array_value( $term_meta, 'sp_longitude', '-73.82480799999996' );
-		else:
+		endif;
+		// Sanitize latitude and longitude, fallback to default.
+		if( ! is_numeric( $latitude) || ! is_numeric( $longitude) ):
 			$latitude = '40.7324319';
 			$longitude = '-73.82480799999996';
 		endif;
@@ -147,13 +149,13 @@ class SP_Admin_Taxonomies {
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label></th>
 			<td>
-				<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo esc_attr( $term_meta['sp_latitude'] ) ? esc_attr( $term_meta['sp_latitude'] ) : ''; ?>">
+				<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo is_numeric( esc_attr( $term_meta['sp_latitude'] ) ) ? esc_attr( $term_meta['sp_latitude'] ) : ''; ?>">
 			</td>
 		</tr>
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_longitude]"><?php _e( 'Longitude', 'sportspress' ); ?></label></th>
 			<td>
-				<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo esc_attr( $term_meta['sp_longitude'] ) ? esc_attr( $term_meta['sp_longitude'] ) : ''; ?>">
+				<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo is_numeric( esc_attr( $term_meta['sp_longitude'] ) ) ? esc_attr( $term_meta['sp_longitude'] ) : ''; ?>">
 			</td>
 		</tr>
 	<?php
