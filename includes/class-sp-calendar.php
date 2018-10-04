@@ -122,7 +122,24 @@ class SP_Calendar extends SP_Secondary_Post {
 	public function data() {
 		global $pagenow;
 
+		$weekday = array (
+					0 => 'Sunday',
+					1 => 'Monday',
+					2 => 'Tuesday',
+					3 => 'Wednesday',
+					4 => 'Thursday',
+					5 => 'Friday',
+					6 => 'Saturday',
+				);
+		
 		$start_of_week = get_option('start_of_week');
+		
+		$firstday = $weekday[ $start_of_week ];
+		if ( $start_of_week != 0 ) {
+			$lastday = $weekday[ ( $start_of_week - 1 ) ];
+		}else{
+			$lastday = $weekday[6];
+		}
 		
 		$args = array(
 			'post_type' => 'sp_event',
@@ -160,13 +177,16 @@ class SP_Calendar extends SP_Secondary_Post {
 					$args['monthnum'] = $date->format('n');
 					break;
 				case '-w':
-					if ( $start_of_week == '0' ) { //If start of week is Sunday
-						if ( date('w') == '0' ) { //If today is Sunday
-							$after = date_i18n('Y-m-d', strtotime('Sunday last week'));
-							$before = date_i18n('Y-m-d', strtotime('Saturday this week')).' 23:59:59';
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( date('w') == $start_of_week ) { //If today is start of Week
+							$after = date_i18n('Y-m-d', strtotime("$firstday last week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday this week")).' 23:59:59';
+						}elseif ( date('w') < $start_of_week ){
+							$after = date_i18n('Y-m-d', strtotime("$firstday -2 week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday last week")).' 23:59:59';
 						}else{
-							$after = date_i18n('Y-m-d', strtotime('Sunday -2 week'));
-							$before = date_i18n('Y-m-d', strtotime('Saturday last week')).' 23:59:59';
+							$after = date_i18n('Y-m-d', strtotime("$firstday last week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday this week")).' 23:59:59';
 						}
 						$args['date_query'] = array(
 												array(
@@ -183,13 +203,16 @@ class SP_Calendar extends SP_Secondary_Post {
 					}
 					break;
 				case 'w':
-					if ( $start_of_week == '0' ) { //If start of week is Sunday
-						if ( date('w') == '0' ) { //If today is Sunday
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( date('w') == $start_of_week ) { //If today is start of Week
 							$after = date_i18n('Y-m-d');
-							$before = date_i18n('Y-m-d', strtotime('Saturday next week')).' 23:59:59';
+							$before = date_i18n('Y-m-d', strtotime("$lastday next week")).' 23:59:59';
+						}elseif ( date('w') < $start_of_week ){
+							$after = date_i18n('Y-m-d', strtotime("$firstday last week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday this week")).' 23:59:59';
 						}else{
-							$after = date_i18n('Y-m-d', strtotime('Sunday last week'));
-							$before = date_i18n('Y-m-d', strtotime('Saturday this week')).' 23:59:59';
+							$after = date_i18n('Y-m-d', strtotime("$firstday this week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday next week")).' 23:59:59';
 						}
 						$args['date_query'] = array(
 												array(
@@ -204,13 +227,16 @@ class SP_Calendar extends SP_Secondary_Post {
 					}
 					break;
 				case '+w':
-					if ( $start_of_week == '0' ) { //If start of week is Sunday
-						if ( date('w') == '0' ) { //If today is Sunday
-							$after = date_i18n('Y-m-d', strtotime('Sunday next week'));
-							$before = date_i18n('Y-m-d', strtotime('Saturday +2 week')).' 23:59:59';
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( date('w') == $start_of_week ) { //If today is start of Week
+							$after = date_i18n('Y-m-d', strtotime("$firstday next week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday +1 week")).' 23:59:59';
+						}elseif ( date('w') < $start_of_week ){
+							$after = date_i18n('Y-m-d', strtotime("$firstday this week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday next week")).' 23:59:59';
 						}else{
-							$after = date_i18n('Y-m-d', strtotime('Sunday this week'));
-							$before = date_i18n('Y-m-d', strtotime('Saturday next week')).' 23:59:59';
+							$after = date_i18n('Y-m-d', strtotime("$firstday next week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday +1 week")).' 23:59:59';
 						}
 						$args['date_query'] = array(
 												array(
