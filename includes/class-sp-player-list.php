@@ -529,6 +529,7 @@ class SP_Player_List extends SP_Secondary_Post {
 						if ( sizeof( $results ) ):
 							foreach ( $results as $id => $team_results ):
 								if ( $team_id == $id ) continue;
+								$team_results['outcome'] = null;
 								unset( $team_results['outcome'] );
 								foreach ( $team_results as $result_slug => $team_result ):
 
