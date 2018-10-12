@@ -1073,6 +1073,48 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
+					<?php _e( 'Team:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_team',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'team',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'League:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_league',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'league',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Season:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_season',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'season',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
 					<?php _e( 'Number of players to show:', 'sportspress' ); ?>
 					<input type="text" size="3" name="number" id="number" value="5">
 				</label>
@@ -1315,6 +1357,9 @@ class SP_AJAX {
                 } else if ( 'player_list' == type ) {
                     args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
+                    args.team = $div.find('[name=team]').val();
+                    args.seasons = $div.find('[name=season]').val();
+                    args.leagues = $div.find('[name=league]').val();
                     args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
                     args.orderby = $div.find('[name=orderby]').val();
                     args.order = $div.find('[name=order]').val();
