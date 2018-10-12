@@ -60,7 +60,7 @@ class SportsPress_Event_Past_Meetings {
 			'title' => __( 'Past Meetings', 'sportspress' ),
 			'option' => 'sportspress_event_show_past_meetings',
 			'action' => array( $this, 'output' ),
-			'default' => 'yes',
+			'default' => 'no',
 		);
 		
 		return $templates;
