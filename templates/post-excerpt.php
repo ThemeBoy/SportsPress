@@ -9,7 +9,9 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-$id = get_the_ID();
+if ( ! isset( $id ) )
+	$id = get_the_ID();
+
 $post = get_post( $id );
 $excerpt = $post->post_excerpt;
 if ( $excerpt ) {
