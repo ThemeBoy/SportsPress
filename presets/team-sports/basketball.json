@@ -67,7 +67,7 @@
 						{ "name" : "SPG", "equation" : "$stl / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Steals per game" },
 						{ "name" : "BPG", "equation" : "$blk / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Blocks per game" },
 						{ "name" : "PPG", "equation" : "$pts / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Points per game" },
-						{ "name" : "EFF", "equation" : "$pts + $off + $def + $ast + $stl + $blk - $fga + $fgm - $fta + $ftm + $to", "type" : "average", "description" : "Efficiency rating" }
+						{ "name" : "EFF", "equation" : "$pts + $off + $def + $ast + $stl + $blk - $fga + $fgm - $fta + $ftm - $to", "type" : "average", "description" : "Efficiency rating" }
 	],
 	"options": {
 						"mode" : "team"
