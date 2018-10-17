@@ -30,6 +30,7 @@ class SP_AJAX {
 			'event_venue_shortcode' => false,
 			'event_officials_shortcode' => false,
 			'event_teams_shortcode' => false,
+			'event_full_shortcode' => false,
 			'event_calendar_shortcode' => false,
 			'event_list_shortcode' => false,
 			'event_blocks_shortcode' => false,
@@ -246,7 +247,7 @@ class SP_AJAX {
 	}
 	
 	/**
-	 * AJAX event_officials shortcode
+	 * AJAX event_teams shortcode
 	 */
 	public function event_teams_shortcode() {
 		?>
@@ -770,7 +771,7 @@ class SP_AJAX {
 					$args = array(
 						'name' => 'date',
 						'id' => 'date',
-						'selected' => $date,
+						//'selected' => $date,
 					);
 					sp_dropdown_dates( $args );
 					?>
