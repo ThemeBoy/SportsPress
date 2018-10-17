@@ -86,6 +86,7 @@ class SportsPress_Past_Meetings {
 				'time_format' => 'separate',
 				'columns' => array( 'event', 'time', 'results' ),
 				'order' => 'DESC',
+				'hide_if_empty' => true,
 			) );
 		else:
 			sp_get_template( 'event-blocks.php', array(
@@ -94,6 +95,7 @@ class SportsPress_Past_Meetings {
 				'teams_past' => $teams,
 				'date_before' => get_post_time('Y-m-d', true),
 				'order' => 'DESC',
+				'hide_if_empty' => true,
 			) );
 		endif;
 	}
