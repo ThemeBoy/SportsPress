@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 4.9
-Stable tag: 2.6.8
+Stable tag: 2.6.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -236,6 +236,22 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.6.9 =
+* Feature - New event shortcodes: venue, officials, teams, and full event info.
+* Feature - Option to choose default nationality for faster data entry.
+* Feature - Date and time display options in countdown widgets.
+* Feature - Ability to filter player list shortcodes by league, season, and team.
+* Tweak - Improve page load for new player lists.
+* Tweak - Improve iCal feed by fixing wrapping issues.
+* Tweak - Use lighter placeholder color to differentiate from entered values.
+* Tweak - Preserve league, season, and position assignments when importing players.
+* Fix - PHP warnings when using version 7.2 or later.
+* Fix - Countdown timer format when event is 100 or more days away.
+* Fix - Player list displaying zero values when formatted using decimal places.
+* Fix - Start of the week filters for week-based calendars.
+* Fix - Location picker freezing issue.
+* Fix - Custom post types pages displaying blank page when Gutenberg is installed.
 
 = 2.6.8 =
 * Feature - Ability to add icons to player statistics.
