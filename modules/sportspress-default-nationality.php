@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add default nationality option to SportsPress Settings.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.7
+Version: 2.6.9
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Default_Nationality' ) ) :
  * Main SportsPress Default Nationality Class
  *
  * @class SportsPress_Default_Nationality
- * @version	2.7
+ * @version	2.6.9
  */
 class SportsPress_Default_Nationality {
 
@@ -36,7 +36,7 @@ class SportsPress_Default_Nationality {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_DEFAULT_NATIONALITY_VERSION' ) )
-			define( 'SP_DEFAULT_NATIONALITY_VERSION', '2.7' );
+			define( 'SP_DEFAULT_NATIONALITY_VERSION', '2.6.9' );
 
 		if ( !defined( 'SP_DEFAULT_NATIONALITY_URL' ) )
 			define( 'SP_DEFAULT_NATIONALITY_URL', plugin_dir_url( __FILE__ ) );
