@@ -18,7 +18,7 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 [youtube http://www.youtube.com/watch?v=KQyga_C5a6M]
 
 = Industry Reviews =
-> "*There are number of professional sports club who likes to maintain their information and statistics online, SportsPress plugin makes this process really easy, cost effective and quick.*" — [IndexWP](http://www.indexwp.com/sportspress-plugin-review/)
+> "*Best WordPress Sports plugins: With premade templates for different sports, SportsPress pretty much covers the range of what almost everyone needs. It’s highly reviewed, and does exactly what it says it will do.*" — [Elegant Themes](https://www.elegantthemes.com/blog/resources/5-best-wordpress-sports-plugins)
 >
 > "*Script of the Day: While the WordPress repository holds various team and sports-related plugins, few of them come close to what you can achieve with SportsPress.*" — [Softpedia](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml)
 >
