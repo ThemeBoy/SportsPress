@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Class
  * @package 	SportsPress Sponsors
- * @version     2.6.5
+ * @version     2.6.9
  */
 class SP_Shortcode_Sponsors {
 

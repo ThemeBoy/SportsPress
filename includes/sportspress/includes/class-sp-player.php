@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		2.6.8
+ * @version		2.6.9
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy

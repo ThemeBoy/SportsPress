@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Show past meetings between two teams of a SportsPress event.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.7.0
+Version: 2.6.9
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Past_Meetings' ) ) :
  * Main SportsPress Past Meetings Class
  *
  * @class SportsPress_Past_Meetings
- * @version	2.7.0
+ * @version	2.6.9
  */
 class SportsPress_Past_Meetings {
 
@@ -41,7 +41,7 @@ class SportsPress_Past_Meetings {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_PAST_MEETINGS_VERSION' ) )
-			define( 'SP_PAST_MEETINGS_VERSION', '2.7.0' );
+			define( 'SP_PAST_MEETINGS_VERSION', '2.6.9' );
 
 		if ( !defined( 'SP_PAST_MEETINGS_URL' ) )
 			define( 'SP_PAST_MEETINGS_URL', plugin_dir_url( __FILE__ ) );
