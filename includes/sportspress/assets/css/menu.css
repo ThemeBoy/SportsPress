@@ -1,12 +1,12 @@
 /* SportsPress menu styles */
 @font-face {
 	font-family: 'sportspress';
-	src:url('../fonts/sportspress.eot?p81i3r');
-	src:url('../fonts/sportspress.eot?#iefixp81i3r') format('embedded-opentype'),
-		url('../fonts/sportspress.woff2?p81i3r') format('woff2'),
-		url('../fonts/sportspress.ttf?p81i3r') format('truetype'),
-		url('../fonts/sportspress.woff?p81i3r') format('woff'),
-		url('../fonts/sportspress.svg?p81i3r#sportspress') format('svg');
+	src:url('../fonts/sportspress.eot?42ynjo');
+	src:url('../fonts/sportspress.eot?#iefix42ynjo') format('embedded-opentype'),
+		url('../fonts/sportspress.woff2?42ynjo') format('woff2'),
+		url('../fonts/sportspress.ttf?42ynjo') format('truetype'),
+		url('../fonts/sportspress.woff?42ynjo') format('woff'),
+		url('../fonts/sportspress.svg?42ynjo#sportspress') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -90,6 +90,9 @@
 }
 .sp-icon-globe:before {
 	content: "\f319";
+}
+.sp-icon-history:before {
+  content: "\f321";
 }
 .sp-icon-import:before {
 	content: "\f316";

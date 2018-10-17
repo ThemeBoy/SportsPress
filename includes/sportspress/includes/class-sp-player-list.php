@@ -35,11 +35,23 @@ class SP_Player_List extends SP_Secondary_Post {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $admin = false ) {
-		$league_ids = sp_get_the_term_ids( $this->ID, 'sp_league' );
-		$season_ids = sp_get_the_term_ids( $this->ID, 'sp_season' );
+	public function data( $admin = false, $leagues = null, $seasons = null, $team_id = null ) {
+		if ( !is_null( $leagues ) && '0' != $leagues ) {
+			$league_ids = explode( ",", $leagues );
+		}else{
+			$league_ids = sp_get_the_term_ids( $this->ID, 'sp_league' );
+		}
+		if ( !is_null( $seasons ) && '0' != $seasons ) {
+			$season_ids = explode( ",", $seasons );
+		}else{
+			$season_ids = sp_get_the_term_ids( $this->ID, 'sp_season' );
+		}
 		$position_ids = sp_get_the_term_ids( $this->ID, 'sp_position' );
-		$team = get_post_meta( $this->ID, 'sp_team', true );
+		if ( !is_null( $team_id ) && '0' != $team_id ) {
+			$team = $team_id;
+		}else{
+			$team = get_post_meta( $this->ID, 'sp_team', true );
+		}
 		$era = get_post_meta( $this->ID, 'sp_era', true );
 		$list_stats = (array)get_post_meta( $this->ID, 'sp_players', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
@@ -529,6 +541,7 @@ class SP_Player_List extends SP_Secondary_Post {
 						if ( sizeof( $results ) ):
 							foreach ( $results as $id => $team_results ):
 								if ( $team_id == $id ) continue;
+								$team_results['outcome'] = null;
 								unset( $team_results['outcome'] );
 								foreach ( $team_results as $result_slug => $team_result ):
 
@@ -639,7 +652,7 @@ class SP_Player_List extends SP_Secondary_Post {
 
 		// Rearrange data array to reflect values
 		foreach( $merged as $key => $value ):
-			if ( $crop && ! sp_array_value( $value, $orderby, 0 ) ) {
+			if ( $crop && ! ( float ) sp_array_value( $value, $orderby, 0 ) ) {
 				// Crop
 				unset( $merged[ $key ] );
 			} else {

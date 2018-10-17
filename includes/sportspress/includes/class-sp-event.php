@@ -365,17 +365,6 @@ class SP_Event extends SP_Custom_Post{
 			}
 		}
 
-		// Override players numbers when per event numbers are present.
-		$players = (array) get_post_meta( $this->ID, 'sp_players', true );
-		foreach( $players as $team_players ) {
-			$team_players = array_slice( $team_players, 1, null, true );
-			foreach ( $team_players as $player_id => $player_data ) {
-				if ( ! empty( $player_data[ 'number' ] ) ) {
-					$player_numbers[ $player_id ] = $player_data[ 'number' ];
-				}
-			}
-		}
-
 		// Get performance labels and icons
 		$posts = get_posts( array(
 			'post_type' => 'sp_performance',
@@ -590,16 +579,14 @@ class SP_Event extends SP_Custom_Post{
 		$appointments = array();
 
 		foreach ( $duties as $duty ) {
-			$duty_appointments = sp_array_value( $officials, $duty->term_id, null );
+			$duty_appointments = sp_array_value( $officials, $duty->term_id, array() );
 
 			if ( ! $include_empty && empty( $duty_appointments ) ) continue;
 
 			$appointed_officials = array();
 			
-			if ( is_array( $duty_appointments ) ) {
-				foreach ( $duty_appointments as $duty_appointment ) {
-					$appointed_officials[ $duty_appointment ] = get_the_title( $duty_appointment );
-				}
+			foreach ( $duty_appointments as $duty_appointment ) {
+				$appointed_officials[ $duty_appointment ] = get_the_title( $duty_appointment );
 			}
 
 			if ( $include_empty && empty( $appointed_officials ) ) $appointed_officials[] = $placeholder;

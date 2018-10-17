@@ -39,6 +39,12 @@ class SP_Calendar extends SP_Secondary_Post {
 
 	/** @var int The team ID. */
 	public $team;
+	
+	/** @var array The teams IDs. */
+	public $teams_past;
+	
+	/** @var string The event date. */
+	public $date_before;
 
 	/** @var int The player ID. */
 	public $player;
@@ -122,6 +128,25 @@ class SP_Calendar extends SP_Secondary_Post {
 	public function data() {
 		global $pagenow;
 
+		$weekday = array (
+					0 => 'Sunday',
+					1 => 'Monday',
+					2 => 'Tuesday',
+					3 => 'Wednesday',
+					4 => 'Thursday',
+					5 => 'Friday',
+					6 => 'Saturday',
+				);
+		
+		$start_of_week = get_option('start_of_week');
+		
+		$firstday = $weekday[ $start_of_week ];
+		if ( $start_of_week != 0 ) {
+			$lastday = $weekday[ ( $start_of_week - 1 ) ];
+		}else{
+			$lastday = $weekday[6];
+		}
+		
 		$args = array(
 			'post_type' => 'sp_event',
 			'posts_per_page' => $this->number,
@@ -152,26 +177,86 @@ class SP_Calendar extends SP_Secondary_Post {
 					break;
 				case '+day':
 					$date = new DateTime( date_i18n('Y-m-d') );
-			    $date->modify( '+1 day' );
+					$date->modify( '+1 day' );
 					$args['year'] = $date->format('Y');
 					$args['day'] = $date->format('j');
 					$args['monthnum'] = $date->format('n');
 					break;
 				case '-w':
-					$date = new DateTime( date_i18n('Y-m-d') );
-			    $date->modify( '-1 week' );
-					$args['year'] = $date->format('Y');
-					$args['w'] = $date->format('W');
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( date('w') == $start_of_week ) { //If today is start of Week
+							$after = date_i18n('Y-m-d', strtotime("$firstday last week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday this week")).' 23:59:59';
+						}elseif ( date('w') < $start_of_week ){
+							$after = date_i18n('Y-m-d', strtotime("$firstday -2 week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday last week")).' 23:59:59';
+						}else{
+							$after = date_i18n('Y-m-d', strtotime("$firstday last week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday this week")).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$date = new DateTime( date_i18n('Y-m-d') );
+						$date->modify( '-1 week' );
+						$args['year'] = $date->format('Y');
+						$args['w'] = $date->format('W');
+					}
 					break;
 				case 'w':
-					$args['year'] = date_i18n('Y');
-					$args['w'] = date_i18n('W');
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( date('w') == $start_of_week ) { //If today is start of Week
+							$after = date_i18n('Y-m-d');
+							$before = date_i18n('Y-m-d', strtotime("$lastday next week")).' 23:59:59';
+						}elseif ( date('w') < $start_of_week ){
+							$after = date_i18n('Y-m-d', strtotime("$firstday last week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday this week")).' 23:59:59';
+						}else{
+							$after = date_i18n('Y-m-d', strtotime("$firstday this week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday next week")).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$args['year'] = date_i18n('Y');
+						$args['w'] = date_i18n('W');
+					}
 					break;
 				case '+w':
-					$date = new DateTime( date_i18n('Y-m-d') );
-			    $date->modify( '+1 week' );
-					$args['year'] = $date->format('Y');
-					$args['w'] = $date->format('W');
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( date('w') == $start_of_week ) { //If today is start of Week
+							$after = date_i18n('Y-m-d', strtotime("$firstday next week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday +1 week")).' 23:59:59';
+						}elseif ( date('w') < $start_of_week ){
+							$after = date_i18n('Y-m-d', strtotime("$firstday this week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday next week")).' 23:59:59';
+						}else{
+							$after = date_i18n('Y-m-d', strtotime("$firstday next week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday +1 week")).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$date = new DateTime( date_i18n('Y-m-d') );
+						$date->modify( '+1 week' );
+						$args['year'] = $date->format('Y');
+						$args['w'] = $date->format('W');
+					}
 					break;
 				case 'range':
 					if ( $this->relative ):
@@ -203,6 +288,24 @@ class SP_Calendar extends SP_Secondary_Post {
 			);
 		endif;
 
+		// If we are showing past meetings filter by team's id and current event date
+		if ( $this->teams_past ):
+			foreach ( $this->teams_past as $team_past ):
+				$args['meta_query'][] = array(
+					'key' => 'sp_team',
+					'value' => $team_past,
+					'compare' => '=',
+				);
+			endforeach;
+			$args['date_query'] = array(
+				array(
+					'before' => $this->date_before,
+					'inclusive' => false,
+				)
+			
+			);
+		endif;
+		
 		if ( $this->player ):
 			$args['meta_query'][] = array(
 				'key' => 'sp_player',
@@ -322,6 +425,17 @@ class SP_Calendar extends SP_Secondary_Post {
 		else:
 			$events = null;
 		endif;
+		
+		// Filter out unessecary events if we are showing past meetings
+		if ( $this->teams_past ){
+			$events_past = array();
+			foreach ( $events as $single_event ) {
+				if ( get_post_meta( $single_event->ID,'sp_team' ) === $this->teams_past ){
+					$events_past[] = $single_event;
+				}
+			}
+			$events = $events_past;
+		}
 
 		// Remove any calendar selection filters
 		remove_filter( 'posts_where', array( $this, 'range' ) );

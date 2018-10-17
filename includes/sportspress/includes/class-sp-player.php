@@ -408,7 +408,7 @@ class SP_Player extends SP_Custom_Post {
 
 										// Subtract minutes prior to substitution
 										$substitution_time = sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $this->ID ), 'sub' ), 0, 0 );
-										$played_minutes -= $substitution_time;
+										$played_minutes -= (int) $substitution_time;
 									else:
 
 										// Starting lineup with possible substitution

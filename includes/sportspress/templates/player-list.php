@@ -29,6 +29,9 @@ $defaults = array(
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_list_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_list_rows', 10 ),
+	'leagues' => null,
+	'seasons' => null,
+	'team' => null,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -51,7 +54,7 @@ $list = new SP_Player_List( $id );
 if ( isset( $columns ) && null !== $columns ):
 	$list->columns = $columns;
 endif;
-$data = $list->data();
+$data = $list->data( false, $leagues, $seasons, $team );
 
 // The first row should be labels
 $labels = $data[0];
