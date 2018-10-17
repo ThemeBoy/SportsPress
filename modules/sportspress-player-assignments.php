@@ -183,6 +183,8 @@ class SportsPress_Player_Assignments {
 
 		$players = array_merge( $assigned_players, $players );
 
+		$players = array_map( 'unserialize', array_unique( array_map( 'serialize', $players ) ) );
+
 		foreach ( $players as $i => $player ) {
 			$player->sp_number = get_post_meta( $player->ID, 'sp_number', true );
 		}
