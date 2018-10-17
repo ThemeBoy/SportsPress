@@ -57,6 +57,13 @@ class SP_Modules {
 					'link' => 'https://www.themeboy.com/sportspress-extensions/match-stats/',
 					'desc' => __( 'Display head-to-head team comparison charts in events.', 'sportspress' ),
 				),
+				'past_meetings' => array(
+					'label' => __( 'Past Meetings', 'sportspress' ),
+					'class' => 'SportsPress_Past_Meetings',
+					'icon' => 'sp-icon-history',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/past-meetings/',
+					'desc' => __( 'Display previous events between teams in list or blocks layout.', 'sportspress' ),
+				),
 				'timelines' => array(
 					'label' => __( 'Timelines', 'sportspress' ),
 					'class' => 'SportsPress_Timelines',
