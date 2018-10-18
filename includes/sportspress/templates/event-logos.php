@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.6.5
+ * @version   2.6.10
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -35,6 +35,9 @@ if ( $show_results ) {
 		$show_results = false;
 	} else {
 		$show_time = false;
+		if ( $reverse_teams ) {
+			$results = array_reverse( $results );
+		}
 	}
 } else {
 	$results = array();

@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add player assignments support to SportsPress.
 Author: Savvas
 Author URI: http://themeboy.com/
-Version: 2.6.8
+Version: 2.6.10
 */
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -14,7 +14,7 @@ if ( ! class_exists( 'SportsPress_Player_Assignments' ) ) :
  * Main SportsPress Player Assignments Class
  *
  * @class SportsPress_Player_Assignments
- * @version	2.6.8
+ * @version	2.6.10
  */
 class SportsPress_Player_Assignments {
 	/**
@@ -36,7 +36,7 @@ class SportsPress_Player_Assignments {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_PLAYER_ASSIGNMENTS_VERSION' ) )
-			define( 'SP_PLAYER_ASSIGNMENTS_VERSION', '2.6.8' );
+			define( 'SP_PLAYER_ASSIGNMENTS_VERSION', '2.6.10' );
 		if ( !defined( 'SP_PLAYER_ASSIGNMENTS_URL' ) )
 			define( 'SP_PLAYER_ASSIGNMENTS_URL', plugin_dir_url( __FILE__ ) );
 		if ( !defined( 'SP_PLAYER_ASSIGNMENTS_DIR' ) )
@@ -182,6 +182,8 @@ class SportsPress_Player_Assignments {
 		$assigned_players = (array) get_posts( $args );
 
 		$players = array_merge( $assigned_players, $players );
+
+		$players = array_map( 'unserialize', array_unique( array_map( 'serialize', $players ) ) );
 
 		foreach ( $players as $i => $player ) {
 			$player->sp_number = get_post_meta( $player->ID, 'sp_number', true );
