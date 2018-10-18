@@ -1,5 +1,11 @@
 == SportsPress Changelog ==
 
+= 2.6.10 =
+* Tweak - Apply reverse teams settings to logos.
+* Fix - Statistics doubling in player lists when player is assigned to a team.
+* Fix - Display blank placeholder in player lists when no team is assigned.
+* Preset - Update basketball efficiency rating equation.
+
 = 2.6.9 =
 * Feature - New event shortcodes: venue, officials, teams, and full event info.
 * Feature - Option to choose default nationality for faster data entry.
