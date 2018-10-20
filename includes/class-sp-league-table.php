@@ -381,11 +381,19 @@ class SP_League_Table extends SP_Secondary_Post {
 								// Add to home or away record
 								if ( 0 === $i ) {
 									if ( array_key_exists( $team_id, $homerecords ) && array_key_exists( $outcome, $homerecords[ $team_id ] ) ) {
-										$homerecords[ $team_id ][ $outcome ] ++;
+										if ( 'no' === get_option( 'sportspress_event_reverse_teams', 'no' ) ) {
+											$homerecords[ $team_id ][ $outcome ] ++;
+										}else{
+											$awayrecords[ $team_id ][ $outcome ] ++;
+										}
 									}
 								} else {
 									if ( array_key_exists( $team_id, $awayrecords ) && array_key_exists( $outcome, $awayrecords[ $team_id ] ) ) {
-										$awayrecords[ $team_id ][ $outcome ] ++;
+										if ( 'no' === get_option( 'sportspress_event_reverse_teams', 'no' ) ) {
+											$awayrecords[ $team_id ][ $outcome ] ++;
+										}else{
+											$homerecords[ $team_id ][ $outcome ] ++;
+										}
 									}
 								}
 
