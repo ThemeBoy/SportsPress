@@ -471,6 +471,10 @@ class SP_Event extends SP_Custom_Post{
 				$output[] = $team_result;
 			}
 		}
+		
+		if ( 'yes' === get_option( 'sportspress_event_reverse_teams', 'no' ) ) {
+			$output = array_reverse( $output, true );
+		}
 
 		return $output;
 	}
