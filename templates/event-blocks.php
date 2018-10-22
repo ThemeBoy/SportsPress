@@ -117,11 +117,16 @@ if ( $title )
 					if ( isset( $limit ) && $i >= $limit ) continue;
 
 					$permalink = get_post_permalink( $event, false, true );
-					$results = get_post_meta( $event->ID, 'sp_results', true );
+					$results = sp_get_main_results_or_time( $event );
 
 					$teams = array_unique( get_post_meta( $event->ID, 'sp_team' ) );
 					$teams = array_filter( $teams, 'sp_filter_positive' );
 					$logos = array();
+
+					if ( get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ) {
+						$teams = array_reverse( $teams , true );
+						$results = array_reverse( $results , true );
+					}
 
 					if ( $show_team_logo ):
 						$j = 0;
@@ -163,7 +168,7 @@ if ( $title )
 								<div class="sp-event-matchday">(<?php echo $matchday; ?>)</div>
 							<?php endif; endif; ?>
 							<h5 class="sp-event-results">
-								<?php echo sp_add_link( '<span class="sp-result">' . implode( '</span> - <span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', sp_get_main_results_or_time( $event ), $event->ID ) ) . '</span>', $permalink, $link_events ); ?>
+								<?php echo sp_add_link( '<span class="sp-result">' . implode( '</span> - <span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', $results, $event->ID ) ) . '</span>', $permalink, $link_events ); ?>
 							</h5>
 							<?php if ( $show_league ): $leagues = get_the_terms( $event, 'sp_league' ); if ( $leagues ): $league = array_shift( $leagues ); ?>
 								<div class="sp-event-league"><?php echo $league->name; ?></div>
