@@ -53,7 +53,7 @@ class SP_Widget_Countdown extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'calendar' => '', 'team' => '', 'id' => '', 'caption' => '', 'show_venue' => false, 'show_league' => false ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'calendar' => '', 'team' => '', 'id' => '', 'caption' => '', 'show_venue' => false, 'show_league' => false, 'show_date' => false ) );
 		$title = strip_tags($instance['title']);
 		$caption = strip_tags($instance['caption']);
 		$calendar = intval($instance['calendar']);
