@@ -169,10 +169,6 @@
     color: inherit !important;
 }
 
-.sp-data-table .data-name {
-    text-align: left !important;
-}
-
 .sp-data-table .sp-highlight,
 .sp-data-table .highlighted td {
     font-weight: 500 !important;
