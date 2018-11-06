@@ -110,7 +110,7 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 			?>
 			<h5 class="event-date sp-event-date">
 				<?php
-				echo get_the_time( get_option( 'date_format', $post ) );
+				echo get_the_time( get_option( 'date_format' ), $post );
 				?>
 			</h5>
 			<?php
