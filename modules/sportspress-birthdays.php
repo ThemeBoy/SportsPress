@@ -36,6 +36,7 @@ class SportsPress_Birthdays {
 		add_filter( 'sportspress_staff_details', array( $this, 'add_staff_details' ), 20, 2 );
 
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
+		add_action( 'sportspress_list_general_columns', array( $this, 'columns' ), 10, 1 ); 
 	}
 
 	/**
@@ -186,6 +187,28 @@ class SportsPress_Birthdays {
 	 */
 	public static function widgets() {
 		include_once( SP()->plugin_path() . '/includes/widgets/class-sp-widget-birthdays.php' );
+	}
+	
+	/**
+	 * Add more General Columns at Player Lists
+	 */
+	public static function columns( $selected ) {
+		if ( 'yes' == get_option( 'sportspress_player_show_birthday', 'no' ) ) { ?>
+			<li>
+				<label class="selectit">
+					<input value="dob" type="checkbox" name="sp_columns[]" id="sp_columns_dob" <?php checked( in_array( 'dob', $selected ) ); ?>>
+					<?php _e( 'Date of Birth', 'sportspress' ); ?>
+				</label>
+			</li>
+			<?php } ?>
+			<?php if ( 'yes' == get_option( 'sportspress_player_show_age', 'no' ) ) { ?>
+			<li>
+				<label class="selectit">
+					<input value="age" type="checkbox" name="sp_columns[]" id="sp_columns_age" <?php checked( in_array( 'age', $selected ) ); ?>>
+					<?php _e( 'Age', 'sportspress' ); ?>
+				</label>
+			</li>
+			<?php } 
 	}
 
 	/**
