@@ -608,6 +608,15 @@ class SP_Player_List extends SP_Secondary_Post {
 
 		// Merge the data and placeholders arrays
 		foreach( $placeholders as $player_id => $player_data ):
+		
+			if ( in_array( 'dob', $this->columns ) ):
+				$player_data['dob'] = get_the_date( get_option( 'date_format') , $player_id );
+			endif;
+			
+			if ( in_array( 'age', $this->columns ) ):
+				$birthdayclass = new SportsPress_Birthdays();
+				$player_data['age'] = $birthdayclass->get_age( get_the_date( 'm-d-Y', $player_id ) );
+			endif;
 
 			$player_data = array_merge( $column_order, $player_data );
 			$placeholders[ $player_id ] = $player_data;
@@ -695,6 +704,10 @@ class SP_Player_List extends SP_Secondary_Post {
 					$labels[ $key ] = __( 'Team', 'sportspress' );
 				elseif ( $key == 'position' ):
 					$labels[ $key ] = __( 'Position', 'sportspress' );
+				elseif ( $key == 'dob' ):
+					$labels[ $key ] = __( 'Date of Birth', 'sportspress' );
+				elseif ( $key == 'age' ):
+					$labels[ $key ] = __( 'Age', 'sportspress' );
 				elseif ( array_key_exists( $key, $columns ) ):
 					$labels[ $key ] = $columns[ $key ];
 				endif;
