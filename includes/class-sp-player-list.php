@@ -387,6 +387,8 @@ class SP_Player_List extends SP_Secondary_Post {
 			$team_performance = get_post_meta( $event->ID, 'sp_players', true );
 			$timeline = (array)get_post_meta( $event->ID, 'sp_timeline', true );
 			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
+			$showdob = get_option( 'sportspress_player_show_birthday', 'no' );
+			$showage = get_option( 'sportspress_player_show_age', 'no' );
 			if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
 			// Add all team performance
@@ -704,9 +706,9 @@ class SP_Player_List extends SP_Secondary_Post {
 					$labels[ $key ] = __( 'Team', 'sportspress' );
 				elseif ( $key == 'position' ):
 					$labels[ $key ] = __( 'Position', 'sportspress' );
-				elseif ( $key == 'dob' ):
+				elseif ( $key == 'dob' && $showdob ):
 					$labels[ $key ] = __( 'Date of Birth', 'sportspress' );
-				elseif ( $key == 'age' ):
+				elseif ( $key == 'age' && $showage ):
 					$labels[ $key ] = __( 'Age', 'sportspress' );
 				elseif ( array_key_exists( $key, $columns ) ):
 					$labels[ $key ] = $columns[ $key ];
@@ -756,6 +758,12 @@ class SP_Player_List extends SP_Secondary_Post {
 			}
 			if ( in_array( 'position', $this->columns ) ) {
 				$labels['position'] = __( 'Position', 'sportspress' );
+			}
+			if ( in_array( 'dob', $this->columns ) && $showdob ) {
+				$labels['dob'] = __( 'Date of Birth', 'sportspress' );
+			}
+			if ( in_array( 'age', $this->columns ) && $showage ) {
+				$labels['age'] = __( 'Age', 'sportspress' );
 			}
 
 			$merged[0] = array_merge( $labels, $columns );
