@@ -113,7 +113,9 @@ $identifier = uniqid( 'eventlist_' );
 			<thead>
 				<tr>
 					<?php
-					echo '<th class="data-date">' . __( 'Date', 'sportspress' ) . '</th>';
+					if ( sp_column_active( $usecolumns, 'date' ) ) {
+						echo '<th class="data-date">' . __( 'Date', 'sportspress' ) . '</th>';
+					}
 
 					switch ( $title_format ) {
 						case 'homeaway':
@@ -255,7 +257,9 @@ $identifier = uniqid( 'eventlist_' );
 
 						if ( $link_events ) $date_html = '<a href="' . get_post_permalink( $event->ID, false, true ) . '" itemprop="url">' . $date_html . '</a>';
 
-						echo '<td class="data-date" itemprop="startDate" content="' . mysql2date( 'Y-m-d\TH:iP', $event->post_date ) . '" data-label="'.__( 'Date', 'sportspress' ).'">' . $date_html . '</td>';
+						if ( sp_column_active( $usecolumns, 'date' ) ) {
+							echo '<td class="data-date" itemprop="startDate" content="' . mysql2date( 'Y-m-d\TH:iP', $event->post_date ) . '" data-label="'.__( 'Date', 'sportspress' ).'">' . $date_html . '</td>';
+						}
 
 						switch ( $title_format ) {
 							case 'homeaway':
