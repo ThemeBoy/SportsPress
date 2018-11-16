@@ -10,6 +10,7 @@ jQuery(document).ready(function($){
 	        longitudeInput: $(".sp-longitude"),
 	        locationNameInput: $(".sp-address")
 	    },
+    	addressFormat: null,
 	    enableAutocomplete: true
 	});
 });
