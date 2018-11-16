@@ -42,7 +42,7 @@ function sp_viewport() {
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 			
 			// Output the result
-			$this.html("<span>"+('0' + days).slice(-3)+" <small>" + localized_strings.days + "</small></span> "
+			$this.html("<span>"+(days < 10 ? '0' + days : days)+" <small>" + localized_strings.days + "</small></span> "
 			+ "<span>"+('0' + hours).slice(-2)+" <small>" + localized_strings.hrs + "</small></span> "
 			+ "<span>"+('0' + minutes).slice(-2)+" <small>" + localized_strings.mins + "</small></span> "
 			+ "<span>"+('0' + seconds).slice(-2)+" <small>" + localized_strings.secs + "</small></span>" );
