@@ -191,8 +191,8 @@ class SP_Calendar extends SP_Secondary_Post {
 							$after = date_i18n('Y-m-d', strtotime("$firstday -2 week"));
 							$before = date_i18n('Y-m-d', strtotime("$lastday last week")).' 23:59:59';
 						}else{
-							$after = date_i18n('Y-m-d', strtotime("$firstday last week"));
-							$before = date_i18n('Y-m-d', strtotime("$lastday this week")).' 23:59:59';
+							$after = date_i18n('Y-m-d', strtotime("$firstday -2 week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday last week")).' 23:59:59';
 						}
 						$args['date_query'] = array(
 												array(
@@ -217,9 +217,10 @@ class SP_Calendar extends SP_Secondary_Post {
 							$after = date_i18n('Y-m-d', strtotime("$firstday last week"));
 							$before = date_i18n('Y-m-d', strtotime("$lastday this week")).' 23:59:59';
 						}else{
-							$after = date_i18n('Y-m-d', strtotime("$firstday this week"));
-							$before = date_i18n('Y-m-d', strtotime("$lastday next week")).' 23:59:59';
+							$after = date_i18n('Y-m-d', strtotime("$firstday last week"));
+							$before = date_i18n('Y-m-d', strtotime("$lastday this week")).' 23:59:59';
 						}
+						
 						$args['date_query'] = array(
 												array(
 													'after'     => $after,
@@ -241,7 +242,7 @@ class SP_Calendar extends SP_Secondary_Post {
 							$after = date_i18n('Y-m-d', strtotime("$firstday this week"));
 							$before = date_i18n('Y-m-d', strtotime("$lastday next week")).' 23:59:59';
 						}else{
-							$after = date_i18n('Y-m-d', strtotime("$firstday next week"));
+							$after = date_i18n('Y-m-d', strtotime("$firstday this week"));
 							$before = date_i18n('Y-m-d', strtotime("$lastday +1 week")).' 23:59:59';
 						}
 						$args['date_query'] = array(
