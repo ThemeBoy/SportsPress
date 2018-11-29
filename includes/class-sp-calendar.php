@@ -426,7 +426,7 @@ class SP_Calendar extends SP_Secondary_Post {
 		if ( $this->teams_past ){
 			$events_past = array();
 			foreach ( $events as $single_event ) {
-				if ( get_post_meta( $single_event->ID,'sp_team' ) === $this->teams_past ){
+				if ( sort( get_post_meta( $single_event->ID, 'sp_team' ) )=== sort( $this->teams_past ) ) {
 					$events_past[] = $single_event;
 				}
 			}
