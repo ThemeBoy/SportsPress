@@ -36,6 +36,32 @@ class SP_Meta_Box_List_Data {
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_adjustments', sp_array_value( $_POST, 'sp_adjustments', array() ) );
 		update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array() ) );
+		
+		//Get the assigned team for the list
+		$team = get_post_meta( $post_id, 'sp_team', true );
+		//Get the assigned leagues for the list
+		$leagues = get_the_terms( $post_id, 'sp_league' );
+		//Get the assigned seasons for the list
+		$seasons = get_the_terms( $post_id, 'sp_season' );
+		//Get all players that are included in the list
+		$players = sp_array_value( $_POST, 'sp_players', array() );
+		//Iterate for each player and if league, season and team are defined then auto assign players to them.
+		foreach ( $players as $player_id => $info ) {
+			$sp_leagues = get_post_meta( $player_id,'sp_leagues' );
+			if ( is_array( $leagues ) && sizeof( $leagues ) == 1 ) {
+				if ( is_array( $seasons ) && sizeof( $seasons ) == 1 ) {
+					if ( $team != 0 ) {
+						$league_id = $leagues[0]->term_id;
+						$season_id = $seasons[0]->term_id;
+						$sp_leagues[$league_id][$season_id] = $team;
+						update_post_meta( $player_id, 'sp_leagues', $sp_leagues );
+						
+						$serialized = intval($league_id).'_'.intval($season_id).'_'.intval($team);
+						add_post_meta( $player_id, 'sp_assignments', $serialized, false );
+					}
+				}
+			}
+		}
 	}
 
 	/**
