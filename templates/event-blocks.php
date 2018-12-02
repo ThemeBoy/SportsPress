@@ -122,6 +122,7 @@ if ( $title )
 					$teams = array_unique( get_post_meta( $event->ID, 'sp_team' ) );
 					$teams = array_filter( $teams, 'sp_filter_positive' );
 					$logos = array();
+					$event_status = get_post_meta( $event->ID, 'sp_status', true );
 
 					if ( get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ) {
 						$teams = array_reverse( $teams , true );
@@ -168,7 +169,7 @@ if ( $title )
 								<div class="sp-event-matchday">(<?php echo $matchday; ?>)</div>
 							<?php endif; endif; ?>
 							<h5 class="sp-event-results">
-								<?php echo sp_add_link( '<span class="sp-result">' . implode( '</span> - <span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', $results, $event->ID ) ) . '</span>', $permalink, $link_events ); ?>
+								<?php echo sp_add_link( '<span class="sp-result '.$event_status.'">' . implode( '</span> - <span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', $results, $event->ID ) ) . '</span>', $permalink, $link_events ); ?>
 							</h5>
 							<?php if ( $show_league ): $leagues = get_the_terms( $event, 'sp_league' ); if ( $leagues ): $league = array_shift( $leagues ); ?>
 								<div class="sp-event-league"><?php echo $league->name; ?></div>
