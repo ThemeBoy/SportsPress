@@ -47,6 +47,7 @@ class SP_Meta_Box_List_Data {
 		$players = sp_array_value( $_POST, 'sp_players', array() );
 		//Iterate for each player and if league, season and team are defined then auto assign players to them.
 		foreach ( $players as $player_id => $info ) {
+			$current_assignments = array();
 			$sp_leagues = get_post_meta( $player_id,'sp_leagues' );
 			if ( is_array( $leagues ) && sizeof( $leagues ) == 1 ) {
 				if ( is_array( $seasons ) && sizeof( $seasons ) == 1 ) {
@@ -56,8 +57,11 @@ class SP_Meta_Box_List_Data {
 						$sp_leagues[$league_id][$season_id] = $team;
 						update_post_meta( $player_id, 'sp_leagues', $sp_leagues );
 						
+						$current_assignments = get_post_meta( $player_id, 'sp_assignments' );
 						$serialized = intval($league_id).'_'.intval($season_id).'_'.intval($team);
-						add_post_meta( $player_id, 'sp_assignments', $serialized, true );
+						if ( in_array( $serialized, $current_assignments ) ) {
+							add_post_meta( $player_id, 'sp_assignments', $serialized, false );
+						}
 					}
 				}
 			}
