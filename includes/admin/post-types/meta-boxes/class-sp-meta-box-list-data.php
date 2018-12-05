@@ -57,7 +57,7 @@ class SP_Meta_Box_List_Data {
 						update_post_meta( $player_id, 'sp_leagues', $sp_leagues );
 						
 						$serialized = intval($league_id).'_'.intval($season_id).'_'.intval($team);
-						add_post_meta( $player_id, 'sp_assignments', $serialized, false );
+						add_post_meta( $player_id, 'sp_assignments', $serialized, true );
 					}
 				}
 			}
