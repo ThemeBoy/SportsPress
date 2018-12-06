@@ -26,6 +26,11 @@ $defaults = array(
 
 extract( $defaults, EXTR_SKIP );
 
+// Explode columns into array
+if ( null !== $columns && ! is_array( $columns ) ) {
+	$columns = explode( ',', $columns );
+}
+
 $directory = new SP_Staff_Directory( $id );
 if ( isset( $columns ) && null !== $columns ):
 	$directory->columns = $columns;
