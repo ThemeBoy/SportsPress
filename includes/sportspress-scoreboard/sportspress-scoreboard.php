@@ -284,7 +284,7 @@ class SportsPress_Scoreboard {
 	 *
 	 * @param array $atts
 	 */
-	public static function shortcode( $atts ) {
+	public function shortcode( $atts ) {
 
 		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
 			$atts['id'] = $atts[0];
