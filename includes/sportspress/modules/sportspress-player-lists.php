@@ -88,7 +88,7 @@ class SportsPress_Player_Lists {
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' 			=> 'edit.php?post_type=sp_player',
 					'show_in_admin_bar' 	=> true,
-					'show_in_rest' 			=> true,
+					'show_in_rest' 			=> ! function_exists( 'register_block_type' ),
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'lists',
 				)

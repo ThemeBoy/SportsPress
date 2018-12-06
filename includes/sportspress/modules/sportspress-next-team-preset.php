@@ -38,6 +38,7 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 		add_filter( 'sportspress_equation_options', array( $this, 'add_options' ) );
 		add_filter( 'sportspress_equation_presets', array( $this, 'presets' ) );
 		add_filter( 'sportspress_equation_solve_for_presets', array( $this, 'solve' ), 10, 3 );
+		add_filter( 'sportspress_table_options', array( $this, 'add_settings' ) );
 
 	}
 	
@@ -96,6 +97,26 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 				),
 				'order' => 'ASC',
 			);
+			
+			if ( get_option( 'sportspress_table_next_team_filter_league', 'no' ) === 'yes' ) {
+				$leagues = get_the_terms( get_the_ID(), 'sp_league' );
+				if ( ! isset( $league_ids ) ) $league_ids = array();
+					if ( empty( $league_ids ) && $leagues ):
+						foreach( $leagues as $league ):
+							$league_ids[] = $league->term_id;
+						endforeach;
+					endif;
+				$league_ids = sp_add_auto_term( $league_ids, get_the_ID(), 'sp_league' );
+				
+				if ( isset( $league_ids ) ) {
+					$args['tax_query'][] = array(
+						'taxonomy' => 'sp_league',
+						'field' => 'term_id',
+						'terms' => $league_ids
+					);
+				}
+			}
+			
 			$events = get_posts( $args );
 
 			if ( $events ) {
@@ -129,6 +150,22 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 		} else {
 			return $input;
 		}
+	}
+	
+	/**
+	 * Add settings.
+	 *
+	 * @return array
+	 */
+	public function add_settings( $settings ) {
+		$settings[] = array(
+						'title'     => __( 'Next Team', 'sportspress' ),
+						'desc' 		=> __( 'Filter by League', 'sportspress' ),
+						'id' 		=> 'sportspress_table_next_team_filter_league',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+					);
+		return $settings;
 	}
 }
 
