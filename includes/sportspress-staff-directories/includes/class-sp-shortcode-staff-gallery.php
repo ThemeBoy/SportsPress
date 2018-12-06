@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Shortcodes
  * @package 	SportsPress_Staff_Directories
- * @version     2.6.9
+ * @version     2.6.11
  */
 class SP_Shortcode_Staff_Gallery {
 
@@ -29,7 +29,7 @@ class SP_Shortcode_Staff_Gallery {
 	 *
 	 * @param array $atts
 	 */
-	public function output( $atts ) {
+	public static function output( $atts ) {
 
 		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
 			$atts['id'] = $atts[0];

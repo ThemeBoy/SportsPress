@@ -2,8 +2,8 @@
 Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
-Tested up to: 4.9
-Stable tag: 2.6.10
+Tested up to: 5.0
+Stable tag: 2.6.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,15 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.6.11 =
+* Tweak - Apply reverse teams setting to scoreboard.
+* Tweak - Apply reverse teams setting to event blocks.
+* Tweak - Add zero before days in countdown when there are less than 10 days to go.
+* Fix - Venue address not setting correctly.
+* Fix - RTL language support for first column in tables.
+* Fix - PHP warnings for various static functions.
+* Fix - Custom post types displaying blank screen in admin when Gutenberg is active.
 
 = 2.6.10 =
 * Tweak - Apply reverse teams settings to logos.

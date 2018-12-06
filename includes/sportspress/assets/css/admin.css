@@ -1026,6 +1026,7 @@ table.sp-status-table td mark.yes {
 	display: inline;
 }
 .about-sportspress-wrap .sp-welcome-logo img {
+	width: auto;
 	border: none;
 }
 .about-sportspress-wrap .sp-about-text {

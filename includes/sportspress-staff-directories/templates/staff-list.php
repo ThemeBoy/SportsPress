@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress_Staff_Directories
- * @version   2.6
+ * @version   2.6.11
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -25,11 +25,6 @@ $defaults = array(
 );
 
 extract( $defaults, EXTR_SKIP );
-
-// Explode columns into array
-if ( null !== $columns && ! is_array( $columns ) ) {
-	$columns = explode( ',', $columns );
-}
 
 $directory = new SP_Staff_Directory( $id );
 if ( isset( $columns ) && null !== $columns ):
