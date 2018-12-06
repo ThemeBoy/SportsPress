@@ -89,6 +89,10 @@ $post_id = get_the_ID();
 							$teams = sp_get_teams( $event->ID );
 							if ( ! $teams ) continue;
 
+							if ( 'yes' === get_option( 'sportspress_event_reverse_teams' ) ) {
+								$teams = array_reverse( $teams, true );
+							}
+
 							$permalink = get_post_permalink( $event, false, true );
 							$status = sp_get_status( $event->ID );
 							?>
