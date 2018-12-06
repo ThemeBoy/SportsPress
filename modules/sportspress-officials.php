@@ -154,7 +154,7 @@ class SportsPress_Officials {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-flag',
-					'show_in_rest' 			=> true,
+					'show_in_rest' 			=> ! function_exists( 'register_block_type' ),
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'officials',
 				)
