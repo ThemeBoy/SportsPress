@@ -1,5 +1,18 @@
 == SportsPress Changelog ==
 
+= 2.6.12 =
+* Tweak - Match styling of date row in countdown.
+* Fix - Calculated totals in player performance array missing for custom templates.
+* Fix - Date field hidden from existing calendars.
+
+= 2.6.11 =
+* Tweak - Apply reverse teams setting to event blocks.
+* Tweak - Add zero before days in countdown when there are less than 10 days to go.
+* Fix - Venue address not setting correctly.
+* Fix - RTL language support for first column in tables.
+* Fix - PHP warnings for various static functions.
+* Fix - Custom post types displaying blank screen in admin when Gutenberg is active.
+
 = 2.6.10 =
 * Tweak - Apply reverse teams settings to logos.
 * Fix - Statistics doubling in player lists when player is assigned to a team.

@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version		2.6.11
+ * @version		2.6.12
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -236,6 +236,7 @@ $i = 0;
 							if ( $mode == 'icons' ) echo '<td class="sp-performance-icons" colspan="2">';
 
 							foreach ( $labels as $key => $label ):
+								$format = sp_array_value( $formats, $key, 'number' );
 								if ( 'name' == $key )
 									continue;
 								if ( $key == 'position' ):
@@ -243,7 +244,7 @@ $i = 0;
 								else:
 									if ( $primary && $key !== $primary ):
 										$value = '&nbsp;';
-									elseif ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
+									elseif ( 'equation' !== $format && array_key_exists( $key, $row ) && $row[ $key ] != '' ):
 										$value = $row[ $key ];
 									else:
 										$value = apply_filters( 'sportspress_event_performance_table_total_value', sp_array_value( $totals, $key, 0 ), $data, $key );

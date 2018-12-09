@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.6.11
+ * @version   2.6.12
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -108,7 +108,7 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 		<?php
 		if ( isset( $show_date ) && $show_date ):
 			?>
-			<h5 class="event-date sp-event-date">
+			<h5 class="event-venue sp-event-venue event-date sp-event-date">
 				<?php
 				echo get_the_time( get_option( 'date_format' ), $post );
 				?>

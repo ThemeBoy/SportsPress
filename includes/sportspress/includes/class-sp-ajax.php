@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * AJAX Event Handler
  *
  * @class 		SP_AJAX
- * @version   2.6.11
+ * @version   2.6.12
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -621,7 +621,6 @@ class SP_AJAX {
 				<?php _e( 'Columns:', 'sportspress' ); ?><br>
 				<?php 
 				$the_columns = array(
-					'date' => __( 'Date', 'sportspress' ),
 					'event' => __( 'Event', 'sportspress' ),
 					'teams' => __( 'Teams', 'sportspress' ),
 					'time' => __( 'Time', 'sportspress' ),
