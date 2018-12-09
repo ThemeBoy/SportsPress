@@ -621,7 +621,6 @@ class SP_AJAX {
 				<?php _e( 'Columns:', 'sportspress' ); ?><br>
 				<?php 
 				$the_columns = array(
-					'date' => __( 'Date', 'sportspress' ),
 					'event' => __( 'Event', 'sportspress' ),
 					'teams' => __( 'Teams', 'sportspress' ),
 					'time' => __( 'Time', 'sportspress' ),

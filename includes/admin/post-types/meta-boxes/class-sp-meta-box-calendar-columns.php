@@ -28,8 +28,6 @@ class SP_Meta_Box_Calendar_Columns {
 		}
 
 		$columns = array();
-		
-		$columns['date'] = __( 'Date', 'sportspress' );
 
 		if ( 'teams' === $title_format ) {
 			$columns[ 'event' ] = __( 'Home', 'sportspress' ) . ' | ' . __( 'Away', 'sportspress' );
