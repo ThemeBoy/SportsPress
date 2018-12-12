@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add Gutenberg support to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.6.9
+Version: 2.6.13
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Gutenberg' ) ) :
  * Main SportsPress Gutenberg Class
  *
  * @class SportsPress_Gutenberg
- * @version	2.6.9
+ * @version	2.6.13
  */
 class SportsPress_Gutenberg {
 
@@ -37,7 +37,7 @@ class SportsPress_Gutenberg {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_GUTENBERG_VERSION' ) )
-			define( 'SP_GUTENBERG_VERSION', '2.6.9' );
+			define( 'SP_GUTENBERG_VERSION', '2.6.13' );
 
 		if ( !defined( 'SP_GUTENBERG_URL' ) )
 			define( 'SP_GUTENBERG_URL', plugin_dir_url( __FILE__ ) );
