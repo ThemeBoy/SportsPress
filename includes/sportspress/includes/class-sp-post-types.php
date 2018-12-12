@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registers post types and taxonomies
  *
  * @class 		SP_Post_types
- * @version		2.6.11
+ * @version		2.6.13
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -222,8 +222,6 @@ class SP_Post_types {
 	 */
 	public static function register_post_types() {
 		do_action( 'sportspress_register_post_type' );
-
-		$show_in_rest = ! function_exists( 'register_block_type' );
 
 		register_post_type( 'sp_result',
 			apply_filters( 'sportspress_register_post_type_result',
@@ -438,7 +436,7 @@ class SP_Post_types {
 			'has_archive' 			=> false,
 			'show_in_nav_menus' 	=> true,
 			'menu_icon' 			=> 'dashicons-calendar',
-			'show_in_rest' 			=> $show_in_rest,
+			'show_in_rest' 			=> true,
 			'rest_controller_class' => 'SP_REST_Posts_Controller',
 			'rest_base' 			=> 'events',
 		);
@@ -479,7 +477,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-shield-alt',
-					'show_in_rest' 			=> $show_in_rest,
+					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'teams',
 				)
@@ -516,7 +514,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-groups',
-					'show_in_rest' 			=> $show_in_rest,
+					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'players',
 				)
@@ -553,7 +551,7 @@ class SP_Post_types {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-businessman',
-					'show_in_rest' 			=> $show_in_rest,
+					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'staff',
 				)
