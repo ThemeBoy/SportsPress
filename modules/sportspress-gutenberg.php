@@ -29,6 +29,7 @@ class SportsPress_Gutenberg {
 		$this->define_constants();
 
 		add_filter( 'gutenberg_can_edit_post_type', array( $this, 'can_edit_post_type' ), 10, 2 );
+		add_filter( 'use_block_editor_for_post_type', array( $this, 'can_edit_post_type' ), 10, 2 );
 	}
 
 	/**
