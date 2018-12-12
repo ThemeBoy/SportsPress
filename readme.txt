@@ -115,6 +115,10 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 
 == Changelog ==
 
+= 2.6.13 =
+* Fix - Missing functionality with Gutenberg enabled.
+* Fix - Enable API endpoints with WordPress 5.0 and Gutenberg.
+
 = 2.6.12 =
 * Tweak - Match styling of date row in countdown.
 * Fix - Calculated totals in player performance array missing for custom templates.
