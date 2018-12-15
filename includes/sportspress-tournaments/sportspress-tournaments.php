@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Adds tournament groups and brackets to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.6.11
+Version: 2.6.14
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Tournaments' ) ) :
  * Main SportsPress Tournaments Class
  *
  * @class SportsPress_Tournaments
- * @version	2.6.11
+ * @version	2.6.14
  */
 class SportsPress_Tournaments {
 
@@ -71,7 +71,7 @@ class SportsPress_Tournaments {
 	 */
 	private function define_constants() {
 		if ( !defined( 'SP_TOURNAMENTS_VERSION' ) )
-			define( 'SP_TOURNAMENTS_VERSION', '2.6.11' );
+			define( 'SP_TOURNAMENTS_VERSION', '2.6.14' );
 
 		if ( !defined( 'SP_TOURNAMENTS_URL' ) )
 			define( 'SP_TOURNAMENTS_URL', plugin_dir_url( __FILE__ ) );
@@ -136,7 +136,7 @@ class SportsPress_Tournaments {
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' 			=> 'edit.php?post_type=sp_event',
 					'show_in_admin_bar' 	=> true,
-					'show_in_rest' 			=> ! function_exists( 'register_block_type' ),
+					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'tournaments',
 				)

@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Adds staff directories to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.6.11
+Version: 2.6.14
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Staff_Directories' ) ) :
  * Main SportsPress Staff Directories Class
  *
  * @class SportsPress_Staff_Directories
- * @version	2.6.11
+ * @version	2.6.14
  */
 class SportsPress_Staff_Directories {
 
@@ -76,7 +76,7 @@ class SportsPress_Staff_Directories {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_STAFF_DIRECTORIES_VERSION' ) )
-			define( 'SP_STAFF_DIRECTORIES_VERSION', '2.6.11' );
+			define( 'SP_STAFF_DIRECTORIES_VERSION', '2.6.14' );
 
 		if ( !defined( 'SP_STAFF_DIRECTORIES_URL' ) )
 			define( 'SP_STAFF_DIRECTORIES_URL', plugin_dir_url( __FILE__ ) );
@@ -148,7 +148,7 @@ class SportsPress_Staff_Directories {
 					'show_in_nav_menus' 	=> true,
 					'show_in_menu' 			=> 'edit.php?post_type=sp_staff',
 					'show_in_admin_bar' 	=> true,
-					'show_in_rest' 			=> ! function_exists( 'register_block_type' ),
+					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'directories',
 				)

@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Add sponsors to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.6.11
+Version: 2.6.14
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Sponsors' ) ) :
  * Main SportsPress Sponsors Class
  *
  * @class SportsPress_Sponsors
- * @version	2.6.11
+ * @version	2.6.14
  */
 class SportsPress_Sponsors {
 
@@ -78,7 +78,7 @@ class SportsPress_Sponsors {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_SPONSORS_VERSION' ) )
-			define( 'SP_SPONSORS_VERSION', '2.6.11' );
+			define( 'SP_SPONSORS_VERSION', '2.6.14' );
 
 		if ( !defined( 'SP_SPONSORS_URL' ) )
 			define( 'SP_SPONSORS_URL', plugin_dir_url( __FILE__ ) );
@@ -192,7 +192,7 @@ class SportsPress_Sponsors {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-megaphone',
-					'show_in_rest' 			=> ! function_exists( 'register_block_type' ),
+					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'sponsors',
 				)
