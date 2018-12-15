@@ -1,5 +1,8 @@
 == SportsPress Changelog ==
 
+= 2.6.14 =
+* Fix - API endpoints for secondary post types.
+
 = 2.6.13 =
 * Fix - Missing functionality with Gutenberg enabled.
 * Fix - Enable API endpoints with WordPress 5.0 and Gutenberg.
