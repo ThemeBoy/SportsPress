@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add officials to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.6.11
+Version: 2.6.14
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
  * Main SportsPress Officials Class
  *
  * @class SportsPress_Officials
- * @version	2.6.11
+ * @version	2.6.14
  */
 class SportsPress_Officials {
 
@@ -66,7 +66,7 @@ class SportsPress_Officials {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_OFFICIALS_VERSION' ) )
-			define( 'SP_OFFICIALS_VERSION', '2.6.11' );
+			define( 'SP_OFFICIALS_VERSION', '2.6.14' );
 
 		if ( !defined( 'SP_OFFICIALS_URL' ) )
 			define( 'SP_OFFICIALS_URL', plugin_dir_url( __FILE__ ) );
@@ -154,7 +154,7 @@ class SportsPress_Officials {
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> true,
 					'menu_icon' 			=> 'dashicons-flag',
-					'show_in_rest' 			=> ! function_exists( 'register_block_type' ),
+					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'officials',
 				)
