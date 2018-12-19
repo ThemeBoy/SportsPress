@@ -23,6 +23,10 @@ class SP_League_Table extends SP_Secondary_Post {
 
 	/** @var array Teams to check for tiebreakers. */
 	public $tiebreakers = array();
+	
+	//** @var strings
+	public $orderby;
+	public $orderbyorder;
 
 	/**
 	 * Returns formatted data
@@ -38,6 +42,8 @@ class SP_League_Table extends SP_Secondary_Post {
 		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
+		$this->orderby = get_post_meta( $this->ID, 'sp_orderby', true );
+		$this->orderbyorder = get_post_meta( $this->ID, 'sp_order', true );
 		$link_events = get_option( 'sportspress_link_events', 'yes' ) === 'yes' ? true : false;
 		$form_limit = (int) get_option( 'sportspress_form_limit', 5 );
 
@@ -47,7 +53,10 @@ class SP_League_Table extends SP_Secondary_Post {
 			$this->date = 0;
 
 		// Apply defaults
+		if ( empty( $this->orderby ) ) $this->orderby = 'default';
+		if ( empty( $this->orderbyorder ) ) $this->orderbyorder = 'ASC';
 		if ( empty( $select ) ) $select = 'auto';
+		
 
 		if ( 'range' == $this->date ) {
 
@@ -752,7 +761,12 @@ class SP_League_Table extends SP_Secondary_Post {
 				$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns, $team_id, false );
 			}
 		}
-
+var_dump($merged);
+		// Rearrange the table if Default ordering is not selected
+		if ( $this->orderby != 'default' ) {
+			uasort( $merged, array( $this, 'simple_order' ) );
+		}
+		
 		// Rearrange data array to reflect values
 		$data = array();
 		foreach( $merged as $key => $value ):
@@ -803,6 +817,30 @@ class SP_League_Table extends SP_Secondary_Post {
 
 		// Default sort by alphabetical
 		return strcmp( sp_array_value( $a, 'name', '' ), sp_array_value( $b, 'name', '' ) );
+	}
+	
+	/**
+	 * Sort the table by ordering.
+	 *
+	 * @param array $a
+	 * @param array $b
+	 * @return int
+	 */
+	public function simple_order( $a, $b ) {
+
+		if ( $this->orderbyorder == 'DESC' ) {
+			if ( $this->orderby == 'name' ){
+				return strcmp( sp_array_value( $b, 'name', '' ), sp_array_value( $a, 'name', '' ) );
+			}else{
+				return $b[ $this->orderby ] - $a[ $this->orderby ];
+			}
+		}else{
+			if ( $this->orderby == 'name' ){
+				return strcmp( sp_array_value( $a, 'name', '' ), sp_array_value( $b, 'name', '' ) );
+			}else{
+				return $a[ $this->orderby ] - $b[ $this->orderby ];
+			}
+		}
 	}
 
 	/**

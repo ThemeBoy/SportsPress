@@ -29,6 +29,8 @@ class SP_Meta_Box_Table_Details {
 		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
 		$date_past = get_post_meta( $post->ID, 'sp_date_past', true );
 		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
+		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
+		$order = get_post_meta( $post->ID, 'sp_order', true );
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -90,6 +92,31 @@ class SP_Meta_Box_Table_Details {
 			}
 			?>
 		</div>
+		<p><strong><?php _e( 'Sort by', 'sportspress' ); ?></strong></p>
+			<p>
+			<?php
+			$args = array(
+				'prepend_options' => array(
+					'default' => __( 'Default', 'sportspress' ),
+					'name' => __( 'Name', 'sportspress' ),
+				),
+				'post_type' => array( 'sp_column' ),
+				'name' => 'sp_orderby',
+				'selected' => $orderby,
+				'values' => 'slug',
+			);
+			sp_dropdown_pages( $args );
+			?>
+			</p>
+		<?php if ( $orderby != 'default' ) { ?>
+		<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
+			<p>
+				<select name="sp_order">
+					<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
+					<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
+				</select>
+			</p>
+		<?php } ?>
 		<?php
 	}
 
@@ -108,5 +135,7 @@ class SP_Meta_Box_Table_Details {
 		update_post_meta( $post_id, 'sp_current_season', in_array( 'auto', sp_array_value( $tax_input, 'sp_season' ) ) );
 		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', array() ) );
+		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
 	}
 }
