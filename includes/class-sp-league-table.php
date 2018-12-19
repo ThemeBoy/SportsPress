@@ -761,10 +761,16 @@ class SP_League_Table extends SP_Secondary_Post {
 				$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns, $team_id, false );
 			}
 		}
-var_dump($merged);
+
 		// Rearrange the table if Default ordering is not selected
 		if ( $this->orderby != 'default' ) {
 			uasort( $merged, array( $this, 'simple_order' ) );
+			// Recalculate position of teams
+			$this->pos = 0;
+			$this->counter = 0;
+			foreach ( $merged as $team_id => $team_columns ) {
+				$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns, $team_id, false );
+			}
 		}
 		
 		// Rearrange data array to reflect values
@@ -832,13 +838,13 @@ var_dump($merged);
 			if ( $this->orderby == 'name' ){
 				return strcmp( sp_array_value( $b, 'name', '' ), sp_array_value( $a, 'name', '' ) );
 			}else{
-				return $b[ $this->orderby ] - $a[ $this->orderby ];
+				return (float) $b[ $this->orderby ] - (float) $a[ $this->orderby ];
 			}
 		}else{
 			if ( $this->orderby == 'name' ){
 				return strcmp( sp_array_value( $a, 'name', '' ), sp_array_value( $b, 'name', '' ) );
 			}else{
-				return $a[ $this->orderby ] - $b[ $this->orderby ];
+				return (float) $a[ $this->orderby ] - (float) $b[ $this->orderby ];
 			}
 		}
 	}
