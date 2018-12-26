@@ -29,7 +29,7 @@ class SP_Shortcode_Staff_Gallery {
 	 *
 	 * @param array $atts
 	 */
-	public static function output( $atts ) {
+	public function output( $atts ) {
 
 		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
 			$atts['id'] = $atts[0];
