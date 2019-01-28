@@ -29,7 +29,7 @@ $timezone = sanitize_option( 'timezone_string', get_option( 'timezone_string' ) 
 
 // Get the URL
 $url = add_query_arg( 'feed', 'sp-ical', get_post_permalink( $post ) );
-$url = wordwrap( $url , 60, "\n\t", true );
+$url = wordwrap( $url , 60, "\r\n\t", true );
 
 $output =
 "BEGIN:VCALENDAR\r\n" .
