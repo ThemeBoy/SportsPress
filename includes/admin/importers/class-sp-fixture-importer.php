@@ -214,7 +214,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 								$post = array(
 									'ID' => $id,
 									'post_title' => $title,
-									'post_name' => $id,
+									'post_name' => '',
 								);
 								wp_update_post( $post );
 
