@@ -113,9 +113,9 @@ class SP_Admin_Taxonomies {
 		endif;
 		?>
 		<div class="form-field">
-			<label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label>
-			<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="">
-			<p><div class="sp-location-picker"></div></p>
+			<!--<label for="term_meta[sp_address]"><?php //_e( 'Address', 'sportspress' ); ?></label>
+			<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="">-->
+			<!--<p><div class="sp-location-picker"></div></p>-->
 			<p><div id="mapDiv" style="width: 95%; height: 320px"></div></p>
 			<p><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
 		</div>
@@ -124,15 +124,62 @@ class SP_Admin_Taxonomies {
 			var lat = <?php echo $latitude;?>;
 			var lon = <?php echo $longitude;?>;
 			// initialize map
-			map = L.map('mapDiv').setView([lat, lon], 15);
+			
+			var map = L.map('mapDiv').setView([lat, lon], 15);
 			// set map tiles source
 			L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
 			  maxZoom: 15,
 			}).addTo(map);
+			
+			//L.Control.geocoder().addTo(map);
+			
+			var geocoder = L.Control.geocoder({
+				defaultMarkGeocode: true
+			})
+			.on('markgeocode', function(e) {
+				var center = e.geocode.center;
+				document.getElementById('term_meta[sp_latitude]').value = center.lat;
+				document.getElementById('term_meta[sp_longitude]').value = center.lng;
+			})
+			.addTo(map);
+
 			// add marker to the map
 			marker = L.marker([lat, lon],{draggable: true, autoPan: true}).addTo(map);
+			//get new coordinates and pass them to the fields
+			marker.on('dragend', function (e) {
+				document.getElementById('term_meta[sp_latitude]').value = marker.getLatLng().lat;
+				document.getElementById('term_meta[sp_longitude]').value = marker.getLatLng().lng;
+			});
 		</script>
+		<!--<script type="text/javascript">
+		var map = L.map('mapDiv').setView([0, 0], 2),
+			geocoder = L.Control.Geocoder.nominatim(),
+			control = L.Control.geocoder({
+				geocoder: geocoder
+			}).addTo(map),
+			marker;
+
+		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
+
+		map.on('click', function(e) {
+			geocoder.reverse(e.latlng, map.options.crs.scale(map.getZoom()), function(results) {
+				var r = results[0];
+				if (r) {
+					if (marker) {
+						marker.
+							setLatLng(r.center).
+							setPopupContent(r.html || r.name).
+							openPopup();
+					} else {
+						marker = L.marker(r.center).bindPopup(r.name).addTo(map).openPopup();
+					}
+				}
+			})
+		})
+	</script>-->
 		<div class="form-field">
 			<label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label>
 			<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo esc_attr( $latitude ); ?>">
