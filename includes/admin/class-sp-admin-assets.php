@@ -37,6 +37,7 @@ class SP_Admin_Assets {
 		if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
 			// Admin styles for SP pages only
 			wp_enqueue_style( 'jquery-chosen', SP()->plugin_url() . '/assets/css/chosen.css', array(), '1.1.0' );
+			wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.4.0' );
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_style( 'sportspress-admin', SP()->plugin_url() . '/assets/css/admin.css', array(), SP_VERSION );
 		} elseif ( strpos( $screen->id, 'sportspress-config' ) !== false ) {
@@ -85,6 +86,7 @@ class SP_Admin_Assets {
 		wp_register_script( 'jquery-fitvids', SP()->plugin_url() . '/assets/js/jquery.fitvids.js', array( 'jquery' ), '1.1', true );
 
 		wp_register_script( 'google-maps', '//tboy.co/maps_js' );
+		wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.4.0' );
 
 		wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
 
@@ -133,6 +135,7 @@ class SP_Admin_Assets {
 	    // Edit venue pages
 	    if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
 	    	wp_enqueue_script( 'google-maps' );
+	    	wp_enqueue_script( 'leaflet_js' );
 	    	wp_enqueue_script( 'jquery-locationpicker' );
 	    	wp_enqueue_script( 'sportspress-admin-locationpicker' );
 		}

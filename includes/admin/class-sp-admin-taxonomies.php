@@ -116,8 +116,23 @@ class SP_Admin_Taxonomies {
 			<label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label>
 			<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="">
 			<p><div class="sp-location-picker"></div></p>
+			<p><div id="mapDiv" style="width: 95%; height: 320px"></div></p>
 			<p><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
 		</div>
+		<script>
+			// position we will use later
+			var lat = <?php echo $latitude;?>;
+			var lon = <?php echo $longitude;?>;
+			// initialize map
+			map = L.map('mapDiv').setView([lat, lon], 15);
+			// set map tiles source
+			L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+			  maxZoom: 15,
+			}).addTo(map);
+			// add marker to the map
+			marker = L.marker([lat, lon],{draggable: true, autoPan: true}).addTo(map);
+		</script>
 		<div class="form-field">
 			<label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label>
 			<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo esc_attr( $latitude ); ?>">
