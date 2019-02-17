@@ -196,6 +196,7 @@ class SP_Admin_Taxonomies {
 		$latitude = is_numeric( esc_attr( $term_meta['sp_latitude'] ) ) ? esc_attr( $term_meta['sp_latitude'] ) : '';
 		$longitude = is_numeric( esc_attr( $term_meta['sp_longitude'] ) ) ? esc_attr( $term_meta['sp_longitude'] ) : '';
 		$address = esc_attr( $term_meta['sp_address'] ) ? esc_attr( $term_meta['sp_address'] ) : '';
+		$zoom = 15;
 		?>
 		<tr class="form-field">
 			<td colspan="2">
@@ -221,9 +222,15 @@ class SP_Admin_Taxonomies {
 				<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo $longitude; ?>">
 			</td>
 		</tr>
+		<?php if ( $latitude === '' || $longitude === '' ) { 
+			$latitude = 40.866667;
+			$longitude = 34.566667;
+			$zoom = 1;
+		}
+		?>
 		<script>
 		//Initialize the map and add the Search control box
-			var map = L.map('mapDiv').setView([<?php echo $latitude;?>, <?php echo $longitude;?>], 15),
+			var map = L.map('mapDiv').setView([<?php echo $latitude;?>, <?php echo $longitude;?>], <?php echo $zoom; ?>),
 				geocoder = L.Control.Geocoder.nominatim(),
 				control = L.Control.geocoder({
 					geocoder: geocoder,
