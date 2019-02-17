@@ -25,15 +25,31 @@ if ( 'satellite' !== $maptype ) $maptype = 'roadmap';
 
 if ( $latitude != null && $longitude != null ):
     ?>
-    <div class="sp-google-map-container">
-      <iframe
-        class="sp-google-map<?php if ( is_tax( 'sp_venue' ) ): ?> sp-venue-map<?php endif; ?>"
-        width="600"
-        height="320"
-        frameborder="0" style="border:0"
-        src="//tboy.co/maps_embed?q=<?php echo $address; ?>&amp;center=<?php echo $latitude; ?>,<?php echo $longitude; ?>&amp;zoom=<?php echo $zoom; ?>&amp;maptype=<?php echo $maptype; ?>" allowfullscreen>
-      </iframe>
-      <a href="https://www.google.com.au/maps/place/<?php echo $address; ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank" class="sp-google-map-link"></a>
-    </div>
+    <a href="https://www.openstreetmap.org/?mlat=<?php echo $latitude; ?>&amp;mlon=<?php echo $longitude; ?>#map=<?php echo $zoom; ?>/<?php echo $latitude; ?>/<?php echo $longitude; ?>" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
+	<script>
+    // position we will use later
+    var lat = <?php echo $latitude; ?>;
+    var lon = <?php echo $longitude; ?>;
+    // initialize map
+    map = L.map('sp_openstreetmaps_container', { zoomControl:false }).setView([lat, lon], <?php echo $zoom; ?>);
+    // set map tiles source
+    <?php if ( 'satellite' === $maptype ) { ?>
+		L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+		  attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+		  maxZoom: 18,
+		}).addTo(map);
+	<?php }else{ ?>
+		L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+		  maxZoom: 18,
+		}).addTo(map);
+	<?php } ?>
+    // add marker to the map
+    marker = L.marker([lat, lon]).addTo(map);
+	map.dragging.disable();
+	map.touchZoom.disable();
+	map.doubleClickZoom.disable();
+	map.scrollWheelZoom.disable();
+  </script>
     <?php
 endif;

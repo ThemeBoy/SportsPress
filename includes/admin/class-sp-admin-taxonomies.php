@@ -105,6 +105,7 @@ class SP_Admin_Taxonomies {
 			$term_meta = get_option( "taxonomy_$t_id" );
 			$latitude = sp_array_value( $term_meta, 'sp_latitude', '40.7324319' );
 			$longitude = sp_array_value( $term_meta, 'sp_longitude', '-73.82480799999996' );
+			$address = sp_array_value( $term_meta, 'sp_address', '' );
 		endif;
 		// Sanitize latitude and longitude, fallback to default.
 		if( ! is_numeric( $latitude) || ! is_numeric( $longitude) ):
@@ -113,73 +114,65 @@ class SP_Admin_Taxonomies {
 		endif;
 		?>
 		<div class="form-field">
-			<!--<label for="term_meta[sp_address]"><?php //_e( 'Address', 'sportspress' ); ?></label>
-			<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="">-->
-			<!--<p><div class="sp-location-picker"></div></p>-->
 			<p><div id="mapDiv" style="width: 95%; height: 320px"></div></p>
 			<p><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
 		</div>
 		<script>
-			// position we will use later
-			var lat = <?php echo $latitude;?>;
-			var lon = <?php echo $longitude;?>;
-			// initialize map
-			
-			var map = L.map('mapDiv').setView([lat, lon], 15);
-			// set map tiles source
-			L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-			  maxZoom: 15,
+		//Initialize the map and add the Search control box
+			var map = L.map('mapDiv').setView([<?php echo $latitude;?>, <?php echo $longitude;?>], 15),
+				geocoder = L.Control.Geocoder.nominatim(),
+				control = L.Control.geocoder({
+					geocoder: geocoder,
+					collapsed: false,
+					defaultMarkGeocode: false
+				}).addTo(map),
+				//Add a marker to use from the begining
+				marker = L.marker([<?php echo $latitude;?>, <?php echo $longitude;?>],{draggable: true, autoPan: true}).addTo(map);
+
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(map);
 			
-			//L.Control.geocoder().addTo(map);
+			//Pass the values to the fields after dragging
+			marker.on('dragend', function (e) {
+					document.getElementById('term_meta[sp_latitude]').value = marker.getLatLng().lat;
+					document.getElementById('term_meta[sp_longitude]').value = marker.getLatLng().lng;
+					geocoder.reverse(marker.getLatLng(), map.options.crs.scale(map.getZoom()), function(results) {
+						var r = results[0];
+						if (r) {
+							document.getElementById('term_meta[sp_address]').value = r.name;
+						}
+					})
+				});
 			
-			var geocoder = L.Control.geocoder({
-				defaultMarkGeocode: true
-			})
-			.on('markgeocode', function(e) {
+			//After searching
+			control.on('markgeocode', function(e) {
 				var center = e.geocode.center;
+				var address = e.geocode.name;
+				map.setView([center.lat, center.lng], 15); //Center map to the new place
+				map.removeLayer(marker); //Remove previous marker
+				marker = L.marker([center.lat, center.lng],{draggable: true, autoPan: true}).addTo(map); //Add new marker to use
+				//Pass the values to the fields after searching
 				document.getElementById('term_meta[sp_latitude]').value = center.lat;
 				document.getElementById('term_meta[sp_longitude]').value = center.lng;
-			})
-			.addTo(map);
-
-			// add marker to the map
-			marker = L.marker([lat, lon],{draggable: true, autoPan: true}).addTo(map);
-			//get new coordinates and pass them to the fields
-			marker.on('dragend', function (e) {
-				document.getElementById('term_meta[sp_latitude]').value = marker.getLatLng().lat;
-				document.getElementById('term_meta[sp_longitude]').value = marker.getLatLng().lng;
-			});
+				document.getElementById('term_meta[sp_address]').value = address;
+				//Pass the values to the fields after dragging
+				marker.on('dragend', function (e) {
+					document.getElementById('term_meta[sp_latitude]').value = marker.getLatLng().lat;
+					document.getElementById('term_meta[sp_longitude]').value = marker.getLatLng().lng;
+					geocoder.reverse(marker.getLatLng(), map.options.crs.scale(map.getZoom()), function(results) {
+						var r = results[0];
+						if (r) {
+							document.getElementById('term_meta[sp_address]').value = r.name;
+						}
+					})
+				});
+			}).addTo(map);
 		</script>
-		<!--<script type="text/javascript">
-		var map = L.map('mapDiv').setView([0, 0], 2),
-			geocoder = L.Control.Geocoder.nominatim(),
-			control = L.Control.geocoder({
-				geocoder: geocoder
-			}).addTo(map),
-			marker;
-
-		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-		}).addTo(map);
-
-		map.on('click', function(e) {
-			geocoder.reverse(e.latlng, map.options.crs.scale(map.getZoom()), function(results) {
-				var r = results[0];
-				if (r) {
-					if (marker) {
-						marker.
-							setLatLng(r.center).
-							setPopupContent(r.html || r.name).
-							openPopup();
-					} else {
-						marker = L.marker(r.center).bindPopup(r.name).addTo(map).openPopup();
-					}
-				}
-			})
-		})
-	</script>-->
+		<div class="form-field">
+			<label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label>
+			<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo esc_attr( $address ); ?>">
+		</div>
 		<div class="form-field">
 			<label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label>
 			<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo esc_attr( $latitude ); ?>">
@@ -199,27 +192,87 @@ class SP_Admin_Taxonomies {
 	 */
 	public function edit_venue_fields( $term ) {
 	 	$t_id = $term->term_id;
-		$term_meta = get_option( "taxonomy_$t_id" ); ?>
+		$term_meta = get_option( "taxonomy_$t_id" ); 
+		$latitude = is_numeric( esc_attr( $term_meta['sp_latitude'] ) ) ? esc_attr( $term_meta['sp_latitude'] ) : '';
+		$longitude = is_numeric( esc_attr( $term_meta['sp_longitude'] ) ) ? esc_attr( $term_meta['sp_longitude'] ) : '';
+		$address = esc_attr( $term_meta['sp_address'] ) ? esc_attr( $term_meta['sp_address'] ) : '';
+		?>
+		<tr class="form-field">
+			<td colspan="2">
+				<p><div id="mapDiv" style="width: 95%; height: 320px"></div></p>
+				<p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+			</td>
+		</tr>
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label></th>
 			<td>
-				<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo esc_attr( $term_meta['sp_address'] ) ? esc_attr( $term_meta['sp_address'] ) : ''; ?>">
-				<p><div class="sp-location-picker"></div></p>
-				<p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+				<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo $address; ?>">
 			</td>
 		</tr>
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label></th>
 			<td>
-				<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo is_numeric( esc_attr( $term_meta['sp_latitude'] ) ) ? esc_attr( $term_meta['sp_latitude'] ) : ''; ?>">
+				<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo $latitude; ?>">
 			</td>
 		</tr>
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_longitude]"><?php _e( 'Longitude', 'sportspress' ); ?></label></th>
 			<td>
-				<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo is_numeric( esc_attr( $term_meta['sp_longitude'] ) ) ? esc_attr( $term_meta['sp_longitude'] ) : ''; ?>">
+				<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo $longitude; ?>">
 			</td>
 		</tr>
+		<script>
+		//Initialize the map and add the Search control box
+			var map = L.map('mapDiv').setView([<?php echo $latitude;?>, <?php echo $longitude;?>], 15),
+				geocoder = L.Control.Geocoder.nominatim(),
+				control = L.Control.geocoder({
+					geocoder: geocoder,
+					collapsed: false,
+					defaultMarkGeocode: false
+				}).addTo(map),
+				//Add a marker to use from the begining
+				marker = L.marker([<?php echo $latitude;?>, <?php echo $longitude;?>],{draggable: true, autoPan: true}).addTo(map);
+
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+			}).addTo(map);
+			
+			//Pass the values to the fields after dragging
+			marker.on('dragend', function (e) {
+					document.getElementById('term_meta[sp_latitude]').value = marker.getLatLng().lat;
+					document.getElementById('term_meta[sp_longitude]').value = marker.getLatLng().lng;
+					geocoder.reverse(marker.getLatLng(), map.options.crs.scale(map.getZoom()), function(results) {
+						var r = results[0];
+						if (r) {
+							document.getElementById('term_meta[sp_address]').value = r.name;
+						}
+					})
+				});
+			
+			//After searching
+			control.on('markgeocode', function(e) {
+				var center = e.geocode.center;
+				var address = e.geocode.name;
+				map.setView([center.lat, center.lng], 15); //Center map to the new place
+				map.removeLayer(marker); //Remove previous marker
+				marker = L.marker([center.lat, center.lng],{draggable: true, autoPan: true}).addTo(map); //Add new marker to use
+				//Pass the values to the fields after searching
+				document.getElementById('term_meta[sp_latitude]').value = center.lat;
+				document.getElementById('term_meta[sp_longitude]').value = center.lng;
+				document.getElementById('term_meta[sp_address]').value = address;
+				//Pass the values to the fields after dragging
+				marker.on('dragend', function (e) {
+					document.getElementById('term_meta[sp_latitude]').value = marker.getLatLng().lat;
+					document.getElementById('term_meta[sp_longitude]').value = marker.getLatLng().lng;
+					geocoder.reverse(marker.getLatLng(), map.options.crs.scale(map.getZoom()), function(results) {
+						var r = results[0];
+						if (r) {
+							document.getElementById('term_meta[sp_address]').value = r.name;
+						}
+					})
+				});
+			}).addTo(map);
+		</script>
 	<?php
 	}
 
