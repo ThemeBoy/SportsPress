@@ -138,8 +138,6 @@ foreach ( $groups as $group ):
 	foreach( $labels as $key => $label ):
 		if ( $key !== 'number' && ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) ) )
 			$thead .= '<th class="data-' . $key . '">'. $label . '</th>';
-		if ( preg_match ( "/title=\"(.*?)\"/", $label, $new_label ) )
-			$labels[$key] = $label[1];
 	endforeach;
 
 	$thead .= '</tr>' . '</thead>';
@@ -215,8 +213,13 @@ foreach ( $groups as $group ):
 		foreach( $labels as $key => $value ):
 			if ( in_array( $key, array( 'number', 'name', 'team', 'position' ) ) )
 				continue;
-			if ( ! is_array( $columns ) || in_array( $key, $columns ) )
-			$tbody .= '<td class="data-' . $key . '" data-label="'.$labels[$key].'">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+			if ( ! is_array( $columns ) || in_array( $key, $columns ) ) {
+				$label = $labels[$key];
+				if ( preg_match ( "/title=\"(.*?)\"/", $value, $new_label ) ) {
+					$label = $new_label[1];
+				}
+				$tbody .= '<td class="data-' . $key . '" data-label="'.$label.'">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+			}
 		endforeach;
 
 		$tbody .= '</tr>';
