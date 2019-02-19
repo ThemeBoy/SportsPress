@@ -24,7 +24,9 @@ if ( '' === $address ) $address = '+';
 if ( 'satellite' !== $maptype ) $maptype = 'roadmap';
 
 if ( $latitude != null && $longitude != null ){
-	if ( ! class_exists( 'SportsPress_GoogleMaps' ) ) {
+	if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
+		do_action ( 'sp_venue_show_googlemaps', $latitude, $longitude, $zoom, $maptype );
+	}else{
 		do_action ( 'sp_venue_show_openstreetmap', $latitude, $longitude, $zoom, $maptype );
 	}
 }

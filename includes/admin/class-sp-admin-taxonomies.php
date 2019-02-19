@@ -112,7 +112,9 @@ class SP_Admin_Taxonomies {
 			$latitude = '40.7324319';
 			$longitude = '-73.82480799999996';
 		endif;
-		if ( ! class_exists( 'SportsPress_GoogleMaps' ) ) {
+		if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
+			do_action ( 'sp_venue_add_googlemaps', $latitude, $longitude, $address );
+		} else {
 			do_action ( 'sp_venue_add_openstreetmap', $latitude, $longitude, $address );
 		}
 		?>
@@ -144,7 +146,9 @@ class SP_Admin_Taxonomies {
 		$longitude = is_numeric( esc_attr( $term_meta['sp_longitude'] ) ) ? esc_attr( $term_meta['sp_longitude'] ) : '';
 		$address = esc_attr( $term_meta['sp_address'] ) ? esc_attr( $term_meta['sp_address'] ) : '';
 		
-		if ( ! class_exists( 'SportsPress_GoogleMaps' ) ) {
+		if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
+			do_action ( 'sp_venue_edit_googlemaps', $latitude, $longitude, $address );
+		}else{
 			do_action ( 'sp_venue_edit_openstreetmap', $latitude, $longitude, $address );
 		}
 		?>
