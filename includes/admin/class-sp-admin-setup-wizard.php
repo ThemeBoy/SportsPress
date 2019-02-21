@@ -543,11 +543,11 @@ class SP_Admin_Setup_Wizard {
         <tr>
           <th scope="row"><?php _e( 'Address', 'sportspress' ); ?></th>
           <td>
-            <input name="address" id="sp_address" class="sp-address" type="text">
+            <input name="address" id="sp_address" class="sp-address" type="text" value="Marvel Stadium, Melbourne">
             <div id="sp-location-picker" style="width: 95%; height: 320px"></div>
             <p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
-            <input name="latitude" id="sp_latitude" class="sp-latitude" type="hidden" value="40.7324319">
-            <input name="longitude" id="sp_longitude" class="sp-longitude" type="hidden" value="-73.82480799999996">
+            <input name="latitude" id="sp_latitude" class="sp-latitude" type="hidden" value="-37.8165647">
+            <input name="longitude" id="sp_longitude" class="sp-longitude" type="hidden" value="144.9475055">
           </td>
         </tr>
       </table>

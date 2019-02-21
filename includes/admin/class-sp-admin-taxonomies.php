@@ -103,14 +103,14 @@ class SP_Admin_Taxonomies {
 			$term = reset( $terms );
 	 		$t_id = $term->term_id;
 			$term_meta = get_option( "taxonomy_$t_id" );
-			$latitude = sp_array_value( $term_meta, 'sp_latitude', '40.7324319' );
-			$longitude = sp_array_value( $term_meta, 'sp_longitude', '-73.82480799999996' );
+			$latitude = sp_array_value( $term_meta, 'sp_latitude', '-37.8165647' );
+			$longitude = sp_array_value( $term_meta, 'sp_longitude', '144.9475055' );
 			$address = sp_array_value( $term_meta, 'sp_address', '' );
 		endif;
 		// Sanitize latitude and longitude, fallback to default.
 		if( ! is_numeric( $latitude) || ! is_numeric( $longitude) ):
-			$latitude = '40.7324319';
-			$longitude = '-73.82480799999996';
+			$latitude = '-37.8165647';
+			$longitude = '144.9475055';
 		endif;
 		?>
 		<div class="form-field">
