@@ -101,10 +101,10 @@ class SP_Admin_Setup_Wizard {
 
     wp_register_script( 'chosen', SP()->plugin_url() . '/assets/js/chosen.jquery.min.js', array( 'jquery' ), '1.1.0', true );
     wp_register_script( 'jquery-tiptip', SP()->plugin_url() . '/assets/js/jquery.tipTip.min.js', array( 'jquery' ), '1.3', true );
-    wp_register_script( 'google-maps', '//tboy.co/maps_js' );
     wp_register_script( 'sportspress-setup', SP()->plugin_url() . '/assets/js/admin/sportspress-setup.js', array( 'jquery', 'chosen', 'jquery-tiptip' ), SP_VERSION, true );
 
     if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
+		wp_register_script( 'google-maps', '//tboy.co/maps_js' );
 		wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
 		wp_register_script( 'sportspress-admin-locationpicker', SP()->plugin_url() . '/assets/js/admin/locationpicker.js', array( 'jquery', 'jquery-locationpicker' ), SP_VERSION, true );
 	} else {
@@ -544,7 +544,7 @@ class SP_Admin_Setup_Wizard {
           <th scope="row"><?php _e( 'Address', 'sportspress' ); ?></th>
           <td>
             <input name="address" id="sp_address" class="sp-address" type="text" value="Marvel Stadium, Melbourne">
-            <div id="sp-location-picker" style="width: 95%; height: 320px"></div>
+            <div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div>
             <p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
             <input name="latitude" id="sp_latitude" class="sp-latitude" type="hidden" value="-37.8165647">
             <input name="longitude" id="sp_longitude" class="sp-longitude" type="hidden" value="144.9475055">

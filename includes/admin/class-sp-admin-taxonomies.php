@@ -114,7 +114,7 @@ class SP_Admin_Taxonomies {
 		endif;
 		?>
 		<div class="form-field">
-			<p><div id="sp-location-picker" style="width: 95%; height: 320px"></div></p>
+			<p><div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div></p>
 			<p><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
 		</div>
 		<div class="form-field">
@@ -149,16 +149,10 @@ class SP_Admin_Taxonomies {
 		$latitude = is_numeric( esc_attr( $term_meta['sp_latitude'] ) ) ? esc_attr( $term_meta['sp_latitude'] ) : '';
 		$longitude = is_numeric( esc_attr( $term_meta['sp_longitude'] ) ) ? esc_attr( $term_meta['sp_longitude'] ) : '';
 		$address = esc_attr( $term_meta['sp_address'] ) ? esc_attr( $term_meta['sp_address'] ) : '';
-		
-		if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
-			do_action ( 'sp_venue_edit_googlemaps', $latitude, $longitude, $address );
-		}else{
-			do_action ( 'sp_venue_edit_openstreetmap', $latitude, $longitude, $address );
-		}
 		?>
 		<tr class="form-field">
 			<td colspan="2">
-				<p><div id="sp-location-picker" style="width: 95%; height: 320px"></div></p>
+				<p><div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div></p>
 				<p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
 			</td>
 		</tr>

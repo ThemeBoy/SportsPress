@@ -30,8 +30,9 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && ! class_exists( 'SportsPre
 		$this->define_constants();
 
 		// Actions
-		//add_action( 'sp_venue_add_openstreetmap', array( $this, 'add_venue_openstreetmap' ), 10, 3 );
-		//add_action( 'sp_venue_edit_openstreetmap', array( $this, 'edit_venue_openstreetmap' ), 10, 3 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 		add_action( 'sp_venue_show_openstreetmap', array( $this, 'show_venue_openstreetmap' ), 10, 4 );
 
 		// Filters
@@ -54,20 +55,42 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && ! class_exists( 'SportsPre
 	}
 	
 	/**
-	 * Integrate OpenStreetMap (Add Venue)
-	 *
-	 * @return mix
+	 * Enqueue admin styles
 	 */
-	//public function add_venue_openstreetmap( $latitude, $longitude, $address ) {
-	//}
+	public function admin_styles( $hook ) {
+		$screen = get_current_screen();
+		if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
+			wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.4.0' );
+			wp_enqueue_style( 'control-geocoder', SP()->plugin_url() . '/assets/css/Control.Geocoder.css', array() );
+		}
+	}
 	
 	/**
-	 * Integrate OpenStreetMap (Edit Venue)
-	 *
-	 * @return mix
+	 * Enqueue admin scripts
 	 */
-	//public function edit_venue_openstreetmap( $latitude, $longitude, $address ) {
-	//}
+	public function admin_scripts( $hook ) {
+		$screen = get_current_screen();
+		if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
+			wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.4.0' );
+			wp_register_script( 'control-geocoder', SP()->plugin_url() . '/assets/js/Control.Geocoder.js', array( 'leaflet_js' ) );
+			wp_register_script( 'sportspress-admin-geocoder', SP()->plugin_url() . '/assets/js/admin/sp-geocoder.js', array( 'leaflet_js', 'control-geocoder' ), SP_VERSION, true );
+		}
+		// Edit venue pages
+	    if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
+	    	wp_enqueue_script( 'leaflet_js' );
+	    	wp_enqueue_script( 'control-geocoder' );
+		}
+	}
+	
+	/**
+	 * Enqueue frontend scripts
+	 */
+	public function frontend_scripts() {
+		if( is_single() && get_post_type()=='sp_event' ){
+			wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.4.0' );
+			wp_enqueue_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.4.0' );
+		}
+	}
 	
 	/**
 	 * Integrate OpenStreetMap (Show Venue)

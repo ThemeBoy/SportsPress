@@ -37,9 +37,6 @@ class SP_Admin_Assets {
 		if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
 			// Admin styles for SP pages only
 			wp_enqueue_style( 'jquery-chosen', SP()->plugin_url() . '/assets/css/chosen.css', array(), '1.1.0' );
-			//OpenStreetMaps
-			wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.4.0' );
-			wp_enqueue_style( 'control-geocoder', SP()->plugin_url() . '/assets/css/Control.Geocoder.css', array() );
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_style( 'sportspress-admin', SP()->plugin_url() . '/assets/css/admin.css', array(), SP_VERSION );
 		} elseif ( strpos( $screen->id, 'sportspress-config' ) !== false ) {
@@ -87,11 +84,6 @@ class SP_Admin_Assets {
 
 		wp_register_script( 'jquery-fitvids', SP()->plugin_url() . '/assets/js/jquery.fitvids.js', array( 'jquery' ), '1.1', true );
 
-		//OpenStreetMaps
-		wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.4.0' );
-		wp_register_script( 'control-geocoder', SP()->plugin_url() . '/assets/js/Control.Geocoder.js', array( 'leaflet_js' ) );
-		wp_register_script( 'sportspress-admin-geocoder', SP()->plugin_url() . '/assets/js/admin/sp-geocoder.js', array( 'leaflet_js', 'control-geocoder' ), SP_VERSION, true );
-
 		wp_register_script( 'sportspress-admin-equationbuilder', SP()->plugin_url() . '/assets/js/admin/equationbuilder.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable' ), SP_VERSION, true );
 
 		wp_register_script( 'sportspress-admin-colorpicker', SP()->plugin_url() . '/assets/js/admin/colorpicker.js', array( 'jquery', 'wp-color-picker', 'iris' ), SP_VERSION, true );
@@ -130,12 +122,6 @@ class SP_Admin_Assets {
 
 		if ( in_array( $screen->id, array( 'widgets' ) ) ) {
 	    	wp_enqueue_script( 'sportspress-admin-widgets' );
-		}
-
-	    // Edit venue pages
-	    if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
-	    	wp_enqueue_script( 'leaflet_js' );
-	    	wp_enqueue_script( 'control-geocoder' );
 		}
 
 		// Edit color
