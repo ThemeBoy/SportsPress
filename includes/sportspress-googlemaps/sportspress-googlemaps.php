@@ -73,11 +73,14 @@ class SportsPress_GoogleMaps {
 	public function admin_enqueue_scripts() {
 		$screen = get_current_screen();
 		wp_register_script( 'google-maps', '//tboy.co/maps_js' );
-		wp_register_script( 'jquery-locationpicker', SP_GOOGLEMAPS_URL . 'js/admin/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
+		wp_register_script( 'jquery-locationpicker', SP_GOOGLEMAPS_URL . 'js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
 		wp_register_script( 'sportspress-admin-locationpicker', SP_GOOGLEMAPS_URL . 'js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_GOOGLEMAPS_VERSION, true );
+		
+		// Edit venue pages
 		if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
 			wp_enqueue_script( 'google-maps' );
 	    	wp_enqueue_script( 'jquery-locationpicker' );
+			wp_enqueue_script( 'sportspress-admin-locationpicker' );
 		}
 	}
 
