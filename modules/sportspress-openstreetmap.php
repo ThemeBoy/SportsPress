@@ -11,7 +11,7 @@ Version: 2.7
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
+if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && ! class_exists( 'SportsPress_GoogleMaps' ) ) :
 
 /**
  * Main SportsPress OpenStreetMap Class
