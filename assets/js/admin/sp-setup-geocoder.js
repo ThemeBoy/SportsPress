@@ -1,6 +1,6 @@
-//Get variables form input values
-latitude = document.getElementById('sp_latitude').value;
-longitude = document.getElementById('sp_longitude').value;
+//Initialize variables
+latitude = 0;
+longitude = 0;
 	
 //Initialize the map and add the Search control box
 var map = L.map('sp-location-picker').setView([latitude, longitude], 15),
