@@ -29,8 +29,6 @@ class SportsPress_GoogleMaps {
 		$this->define_constants();
 
 		// Hooks
-		add_action( 'sp_venue_add_googlemaps', array( $this, 'add_venue_googlemaps' ), 10, 3 );
-		add_action( 'sp_venue_edit_googlemaps', array( $this, 'edit_venue_googlemaps' ), 10, 3 );
 		add_action( 'sp_venue_show_googlemaps', array( $this, 'show_venue_googlemaps' ), 10, 4 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 	}
@@ -49,73 +47,38 @@ class SportsPress_GoogleMaps {
 			define( 'SP_GOOGLEMAPS_DIR', plugin_dir_path( __FILE__ ) );
 	}
 
-	/**
-	 * Integrate GoogleMaps (Add Venue)
-	 *
-	 * @return mix
-	 */
-	public function add_venue_googlemaps( $latitude, $longitude, $address ) {
-		
-	}
-
-	/**
-	 * Integrate GoogleMaps (Edit Venue)
-	 *
-	 * @return mix
-	 */
-	public function edit_venue_googlemaps( $latitude, $longitude, $address ) {
-		
-	}
 
 	/**
 	 * Integrate GoogleMaps (View Venue)
 	 *
 	 * @return mix
 	 */
-	public function view_venue_googlemaps( $latitude, $longitude, $address ) {
-		
+	public function view_venue_googlemaps( $latitude, $longitude, $address ) { ?>
+		<div class="sp-google-map-container">
+		  <iframe
+			class="sp-google-map<?php if ( is_tax( 'sp_venue' ) ): ?> sp-venue-map<?php endif; ?>"
+			width="600"
+			height="320"
+			frameborder="0" style="border:0"
+			src="//tboy.co/maps_embed?q=<?php echo $address; ?>&amp;center=<?php echo $latitude; ?>,<?php echo $longitude; ?>&amp;zoom=<?php echo $zoom; ?>&amp;maptype=<?php echo $maptype; ?>" allowfullscreen>
+		  </iframe>
+		  <a href="https://www.google.com/maps/place/<?php echo $address; ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank" class="sp-google-map-link"></a>
+		</div>
+	<?php
 	}
 
 	/**
 	 * Enqueue scripts
 	 */
 	public function admin_enqueue_scripts() {
-		if ( $this->role_is_limited() && $this->limit_applies() ) {
-			wp_enqueue_script( 'sportspress-locationpicker-jquery', SP_TEAM_ACCESS_URL . 'js/admin/locationpicker.jquery.js', array( 'jquery' ), SP_GOOGLEMAPS_VERSION, true );
-			wp_enqueue_script( 'sportspress-locationpicker-admin', SP_TEAM_ACCESS_URL . 'js/admin/locationpicker.js', array( 'sportspress-locationpicker-jquery' ), SP_GOOGLEMAPS_VERSION, true );
+		$screen = get_current_screen();
+		wp_register_script( 'google-maps', '//tboy.co/maps_js' );
+		wp_register_script( 'jquery-locationpicker', SP_GOOGLEMAPS_URL . 'js/admin/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
+		wp_register_script( 'sportspress-admin-locationpicker', SP_GOOGLEMAPS_URL . 'js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_GOOGLEMAPS_VERSION, true );
+		if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
+			wp_enqueue_script( 'google-maps' );
+	    	wp_enqueue_script( 'jquery-locationpicker' );
 		}
-	}
-
-	/** Helper functions ******************************************************/
-
-	/**
-	 * Determine if role is limited access.
-	 */
-	public function role_is_limited( $role = null ) {
-		if ( ! $role ) {
-			global $current_user;
-			$roles = $current_user->roles;
-			$role = array_shift( $roles );
-		}
-
-		if ( in_array( $role, apply_filters( 'sportspress_team_access_roles', array( 'sp_player', 'sp_staff', 'sp_team_manager', 'sp_event_manager' ) ) ) ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Determine if limit applies to the post type
-	 */
-	public function limit_applies( $typenow = null ) {
-		if ( ! $typenow ) global $typenow;
-
-		if ( in_array( $typenow, apply_filters( 'sportspress_team_access_post_types', array( 'sp_event', 'sp_calendar', 'sp_team', 'sp_table', 'sp_player', 'sp_list', 'sp_staff' ) ) ) ) {
-			return true;
-		}
-
-		return false;
 	}
 
 }
