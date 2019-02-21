@@ -104,8 +104,12 @@ class SP_Admin_Setup_Wizard {
     wp_register_script( 'google-maps', '//tboy.co/maps_js' );
     wp_register_script( 'sportspress-setup', SP()->plugin_url() . '/assets/js/admin/sportspress-setup.js', array( 'jquery', 'chosen', 'jquery-tiptip' ), SP_VERSION, true );
 
-    wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
-    wp_register_script( 'sportspress-admin-locationpicker', SP()->plugin_url() . '/assets/js/admin/locationpicker.js', array( 'jquery', 'jquery-locationpicker' ), SP_VERSION, true );
+    if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
+		wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
+		wp_register_script( 'sportspress-admin-locationpicker', SP()->plugin_url() . '/assets/js/admin/locationpicker.js', array( 'jquery', 'jquery-locationpicker' ), SP_VERSION, true );
+	} else {
+		
+	}
 
     $strings = apply_filters( 'sportspress_localized_strings', array(
       'none' => __( 'None', 'sportspress' ),
@@ -115,7 +119,11 @@ class SP_Admin_Setup_Wizard {
     // Localize scripts
     wp_localize_script( 'sportspress-setup', 'localized_strings', $strings );
 
-    wp_enqueue_script( 'google-maps' );
+     if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
+		 wp_enqueue_script( 'google-maps' );
+	 }else{
+		 
+	 }
 
     if ( ! empty( $_POST['save_step'] ) && isset( $this->steps[ $this->step ]['handler'] ) ) {
       call_user_func( $this->steps[ $this->step ]['handler'] );
@@ -531,11 +539,11 @@ class SP_Admin_Setup_Wizard {
         <tr>
           <th scope="row"><?php _e( 'Address', 'sportspress' ); ?></th>
           <td>
-            <input name="address" class="sp-address" type="text">
-            <div class="sp-location-picker"></div>
+            <input name="address" id="sp-address" class="sp-address" type="text">
+            <div id="sp-location-picker"></div>
             <p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
-            <input name="latitude" class="sp-latitude" type="hidden" value="40.7324319">
-            <input name="longitude" class="sp-longitude" type="hidden" value="-73.82480799999996">
+            <input name="latitude" id="sp-latitude" class="sp-latitude" type="hidden" value="40.7324319">
+            <input name="longitude" id="sp-longitude" class="sp-longitude" type="hidden" value="-73.82480799999996">
           </td>
         </tr>
       </table>
@@ -546,7 +554,12 @@ class SP_Admin_Setup_Wizard {
         <?php wp_nonce_field( 'sp-setup' ); ?>
       </p>
     </form>
-    <?php wp_print_scripts( 'sportspress-admin-locationpicker' ); ?>
+    <?php 
+	 if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
+		wp_print_scripts( 'sportspress-admin-locationpicker' ); 
+	} else {
+		wp_print_scripts( 'sportspress-admin-setup-geocoder' ); 
+	}?>
     <?php
   }
 

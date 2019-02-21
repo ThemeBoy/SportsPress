@@ -112,12 +112,11 @@ class SP_Admin_Taxonomies {
 			$latitude = '40.7324319';
 			$longitude = '-73.82480799999996';
 		endif;
-		if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
-			do_action ( 'sp_venue_add_googlemaps', $latitude, $longitude, $address );
-		} else {
-			do_action ( 'sp_venue_add_openstreetmap', $latitude, $longitude, $address );
-		}
 		?>
+		<div class="form-field">
+			<p><div id="sp-location-picker" style="width: 95%; height: 320px"></div></p>
+			<p><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+		</div>
 		<div class="form-field">
 			<label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label>
 			<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo esc_attr( $address ); ?>">
@@ -131,6 +130,11 @@ class SP_Admin_Taxonomies {
 			<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo esc_attr( $longitude ); ?>">
 		</div>
 	<?php
+		if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
+			wp_print_scripts( 'sportspress-admin-locationpicker' ); 
+		} else {
+			wp_print_scripts( 'sportspress-admin-geocoder' ); 
+		}
 	}
 
 	/**
@@ -153,6 +157,12 @@ class SP_Admin_Taxonomies {
 		}
 		?>
 		<tr class="form-field">
+			<td colspan="2">
+				<p><div id="sp-location-picker" style="width: 95%; height: 320px"></div></p>
+				<p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+			</td>
+		</tr>
+		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label></th>
 			<td>
 				<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo $address; ?>">
@@ -171,6 +181,11 @@ class SP_Admin_Taxonomies {
 			</td>
 		</tr>
 	<?php
+		if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
+			wp_print_scripts( 'sportspress-admin-locationpicker' ); 
+		} else {
+			wp_print_scripts( 'sportspress-admin-geocoder' ); 
+		}
 	}
 
 	/**

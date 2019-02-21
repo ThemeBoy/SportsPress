@@ -90,6 +90,8 @@ class SP_Admin_Assets {
 		//OpenStreetMaps
 		wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.4.0' );
 		wp_register_script( 'control-geocoder', SP()->plugin_url() . '/assets/js/Control.Geocoder.js', array( 'leaflet_js' ) );
+		wp_register_script( 'sportspress-admin-geocoder', SP()->plugin_url() . '/assets/js/admin/sp-geocoder.js', array( 'leaflet_js', 'control-geocoder' ), SP_VERSION, true );
+		wp_register_script( 'sportspress-admin-setup-geocoder', SP()->plugin_url() . '/assets/js/admin/sp-setup-geocoder.js', array( 'leaflet_js', 'control-geocoder' ), SP_VERSION, true );
 
 		wp_register_script( 'sportspress-admin-equationbuilder', SP()->plugin_url() . '/assets/js/admin/equationbuilder.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable' ), SP_VERSION, true );
 
@@ -135,8 +137,6 @@ class SP_Admin_Assets {
 	    if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
 	    	wp_enqueue_script( 'leaflet_js' );
 	    	wp_enqueue_script( 'control-geocoder' );
-	    	wp_enqueue_script( 'jquery-locationpicker' );
-	    	wp_enqueue_script( 'sportspress-admin-locationpicker' );
 		}
 
 		// Edit color
