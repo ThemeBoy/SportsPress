@@ -134,11 +134,14 @@ foreach ( $events as $event):
 	} else {
 		$summary = $event->post_title;
 	}
-
+	
+	//Convert &#[0-9]+ entities to UTF-8
+	$summary = preg_replace_callback("/(&#[0-9]+;)/", function($m) { return mb_convert_encoding($m[1], "UTF-8", "HTML-ENTITIES"); }, $summary);
+	
 	// Append to output string
 	$output .=
 	"BEGIN:VEVENT\r\n" .
-	"SUMMARY:" . preg_replace('/([\,;])/','\\\$1', $summary) . "\r\n" .
+	"SUMMARY:" . preg_replace( '/([\,;])/','\\\$1', $summary ) . "\r\n" .
 	"UID:$event->ID\r\n" .
 	"STATUS:CONFIRMED\r\n" .
 	"DTSTAMP:19700101T000000\r\n".
