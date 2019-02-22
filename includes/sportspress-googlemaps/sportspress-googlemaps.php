@@ -29,7 +29,7 @@ class SportsPress_GoogleMaps {
 		$this->define_constants();
 
 		// Hooks
-		add_action( 'sp_venue_show_googlemaps', array( $this, 'show_venue_googlemaps' ), 10, 4 );
+		add_action( 'sp_venue_show_googlemaps', array( $this, 'show_venue_googlemaps' ), 10, 5 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 	}
 
@@ -53,7 +53,7 @@ class SportsPress_GoogleMaps {
 	 *
 	 * @return mix
 	 */
-	public function view_venue_googlemaps( $latitude, $longitude, $address ) { ?>
+	public function show_venue_googlemaps( $latitude, $longitude, $address, $zoom, $maptype ) { ?>
 		<div class="sp-google-map-container">
 		  <iframe
 			class="sp-google-map<?php if ( is_tax( 'sp_venue' ) ): ?> sp-venue-map<?php endif; ?>"
