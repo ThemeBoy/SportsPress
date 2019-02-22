@@ -114,7 +114,7 @@ class SP_Admin_Taxonomies {
 		endif;
 		?>
 		<div class="form-field">
-			<p><div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div></p>
+			<div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div>
 			<p><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
 		</div>
 		<div class="form-field">
@@ -130,7 +130,7 @@ class SP_Admin_Taxonomies {
 			<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo esc_attr( $longitude ); ?>">
 		</div>
 	<?php
-		if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
+		if ( get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'yes' ) {
 			wp_print_scripts( 'sportspress-admin-locationpicker' ); 
 		} else {
 			wp_print_scripts( 'sportspress-admin-geocoder' ); 
@@ -175,7 +175,7 @@ class SP_Admin_Taxonomies {
 			</td>
 		</tr>
 	<?php
-		if ( class_exists( 'SportsPress_GoogleMaps' ) ) {
+		if ( get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'yes' ) {
 			wp_print_scripts( 'sportspress-admin-locationpicker' ); 
 		} else {
 			wp_print_scripts( 'sportspress-admin-geocoder' ); 

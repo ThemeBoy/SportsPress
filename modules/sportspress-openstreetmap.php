@@ -11,7 +11,7 @@ Version: 2.7
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && ! class_exists( 'SportsPress_GoogleMaps' ) ) :
+if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'no' ) :
 
 /**
  * Main SportsPress OpenStreetMap Class
@@ -131,5 +131,6 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && ! class_exists( 'SportsPre
 }
 
 endif;
-
-new SportsPress_OpenStreetMap();
+if ( get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'no' ) {
+	new SportsPress_OpenStreetMap();
+}

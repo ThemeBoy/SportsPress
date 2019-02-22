@@ -181,8 +181,8 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 
 				array(
-					'title'     => __( 'OpenStreetMaps', 'sportspress' ),
-					'desc' 		=> __( 'Display maps', 'sportspress' ),
+					'title'     => __( 'Venue Map', 'sportspress' ),
+					'desc' 		=> __( 'Display venue map', 'sportspress' ),
 					'id' 		=> 'sportspress_event_show_maps',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
