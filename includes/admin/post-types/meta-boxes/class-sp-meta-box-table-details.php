@@ -31,6 +31,9 @@ class SP_Meta_Box_Table_Details {
 		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
 		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
+		if ( ! $order ) {
+			$order = 'ASC';
+		}
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
