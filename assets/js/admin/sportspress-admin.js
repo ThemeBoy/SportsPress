@@ -14,13 +14,16 @@ jQuery(document).ready(function($){
 	});
 
 	// Chosen select
-	$(".chosen-select").chosen({
-		allow_single_deselect: true,
-		search_contains: true,
-		single_backstroke_delete: false,
-		disable_search_threshold: 10,
-		placeholder_text_multiple: localized_strings.none
-	});
+	$(document).on("postbox-toggled", function() {
+		$(".chosen-select").filter(":visible").chosen({
+			allow_single_deselect: true,
+			search_contains: true,
+			single_backstroke_delete: false,
+			disable_search_threshold: 10,
+			placeholder_text_multiple: localized_strings.none
+		});
+	}).trigger("postbox-toggled");
+
 
 	// Auto key placeholder
 	$("#poststuff #title").on("keyup", function() {
