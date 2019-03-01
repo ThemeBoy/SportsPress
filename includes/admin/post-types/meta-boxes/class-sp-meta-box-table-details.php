@@ -31,9 +31,6 @@ class SP_Meta_Box_Table_Details {
 		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
 		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
-		if ( ! $order ) {
-			$order = 'ASC';
-		}
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -111,15 +108,15 @@ class SP_Meta_Box_Table_Details {
 			sp_dropdown_pages( $args );
 			?>
 			</p>
-		<?php if ( $orderby != 'default' ) { ?>
-		<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
-			<p>
-				<select name="sp_order">
-					<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
-					<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
-				</select>
-			</p>
-		<?php } ?>
+		<div id="sp_order" <?php echo ( $orderby === 'default' ? 'style="display: none;"' : '' ); ?>>
+			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
+				<p>
+					<select name="sp_order">
+						<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
+						<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
+					</select>
+				</p>
+		</div>
 		<?php
 	}
 
