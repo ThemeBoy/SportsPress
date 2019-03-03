@@ -448,6 +448,10 @@
 	clear: both;
 }
 
+span.sp_event_spec_label {
+	font-weight: bold;
+}
+
 /* Event Logos Block */
 .sp-template-event-logos-block .team-logo {
 	float: none;
