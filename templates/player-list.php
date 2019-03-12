@@ -22,7 +22,7 @@ $defaults = array(
 	'show_title' => get_option( 'sportspress_list_show_title', 'yes' ) == 'yes' ? true : false,
 	'show_player_photo' => get_option( 'sportspress_list_show_photos', 'no' ) == 'yes' ? true : false,
 	'show_player_flag' => get_option( 'sportspress_list_show_flags', 'no' ) == 'yes' ? true : false,
-	'show_teams_logo' => get_option( 'sportspress_list_show_logos', 'no' ) == 'yes' ? true : false,
+	'team_format' => get_option( 'sportspress_list_team_format', 'name' ),
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'no' ) == 'yes' ? true : false,
@@ -194,7 +194,7 @@ foreach ( $groups as $group ):
 		if ( array_key_exists( 'team', $labels ) ):
 			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_current_team', true ) );			
 			$team_name = $team ? sp_team_short_name( $team ) : '-';
-			if ( $show_teams_logo && has_post_thumbnail( $team ) ){
+			if ( $team_format == 'logo' && has_post_thumbnail( $team ) ){
 				$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'title' => ''.$team_name.'' ) );
 				$team_name = '<span class="team-logo">' . $logo . '</span>';
 			}

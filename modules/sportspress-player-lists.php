@@ -276,6 +276,17 @@ class SportsPress_Player_Lists {
 				),
 
 				array(
+					'title'     => __( 'Teams', 'sportspress' ),
+					'id'        => 'sportspress_list_team_format',
+					'default'   => 'name',
+					'type'      => 'radio',
+					'options'   => array(
+						'name' => __( 'Name', 'sportspress' ),
+						'logo' => __( 'Logo', 'sportspress' ),
+					),
+				),
+
+				array(
 					'title'     => __( 'Pagination', 'sportspress' ),
 					'desc' 		=> __( 'Paginate', 'sportspress' ),
 					'id' 		=> 'sportspress_list_paginated',
