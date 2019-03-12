@@ -203,7 +203,8 @@
 	line-height: 2em;
 }
 .sp-player-list .data-name .player-photo,
-.sp-player-list .data-name .player-flag {
+.sp-player-list .data-name .player-flag,
+.sp-player-list .data-team .team-logo {
 	width: 2em;
 	height: 2em;
 	margin-right: 0.5em;
@@ -212,7 +213,8 @@
 	text-align: center;
 }
 .sp-player-list .data-name .player-photo img,
-.sp-player-list .data-name .player-flag img {
+.sp-player-list .data-name .player-flag img,
+.sp-player-list .data-team .team-logo img {
 	width: auto;
 	height: auto;
 	max-width: 2em;

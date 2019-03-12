@@ -266,6 +266,14 @@ class SportsPress_Player_Lists {
 					'type' 		=> 'checkbox',
 					'checkboxgroup'		=> 'end',
 				),
+				
+				array(
+					'title'     => __( 'Teeams', 'sportspress' ),
+					'desc' 		=> __( 'Display Teams Logos', 'sportspress' ),
+					'id' 		=> 'sportspress_list_show_logos',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
 
 				array(
 					'title'     => __( 'Pagination', 'sportspress' ),
