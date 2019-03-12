@@ -38,10 +38,9 @@ $i = 0;
 ?>
 <div class="sp-tournament-tables">
 	<h4 class="sp-tournament-tables-title"><?php _e( 'Groups', 'sportspress' ); ?></h4>
-		<?php foreach ( $table_ids as $table_id ) { ?>
-			<div class="sportspress sp-widget-align-<?php echo sizeof( $table_ids ) > 1 ? ( 0 == $i % 2 ? 'left' : 'right' ) : 'none'; ?>">
-				<?php sp_get_template( 'league-table.php', array( 'id' => $table_id, 'columns' => null ) ); ?>
-			</div>
-		<?php $i++; } ?>
-	</div>
+	<?php foreach ( $table_ids as $table_id ) { ?>
+		<div class="sportspress sp-widget-align-<?php echo sizeof( $table_ids ) > 1 ? ( 0 == $i % 2 ? 'left' : 'right' ) : 'none'; ?>">
+			<?php sp_get_template( 'league-table.php', array( 'id' => $table_id, 'columns' => null ) ); ?>
+		</div>
+	<?php $i++; } ?>
 </div>
