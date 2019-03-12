@@ -146,7 +146,7 @@ $post_id = get_the_ID();
 													$name = '<span class="sp-scoreboard-team-logo">' . sp_get_logo( $team, 'mini' ) . '</span> ' . $name;
 												}
 
-												echo '<span class="sp-scoreboard-team">' . $name . '<span>';
+												echo '<span class="sp-scoreboard-team">' . $name . '</span>';
 											}
 										}
 										?>
