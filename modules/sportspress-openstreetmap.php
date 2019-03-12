@@ -98,8 +98,21 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && get_option( 'sportspress_l
 	 * @return mix
 	 */
 	public function show_venue_openstreetmap( $latitude, $longitude, $address, $zoom, $maptype ) {
+		$lat = abs($latitude);
+		$lat_deg = floor($lat);
+		$lat_sec = ($lat - $lat_deg) * 3600;
+		$lat_min = floor($lat_sec / 60);
+		$lat_sec = floor($lat_sec - ($lat_min * 60));
+		$lat_dir = $latitude > 0 ? 'N' : 'S';
+
+		$lon = abs($longitude);
+		$lon_deg = floor($lon);
+		$lon_sec = ($lon - $lon_deg) * 3600;
+		$lon_min = floor($lon_sec / 60);
+		$lon_sec = floor($lon_sec - ($lon_min * 60));
+		$lon_dir = $longitude > 0 ? 'E' : 'W';
 		?>
-		<a href="https://www.google.com.au/maps/place/<?php echo $address; ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
+		<a href="https://www.google.com.au/maps/place/<?php echo urlencode("{$lat_deg}°{$lat_min}'{$lat_sec}\"{$lat_dir}").'+'.urlencode("{$lon_deg}°{$lon_min}'{$lon_sec}\"{$lon_dir}"); ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
 	<script>
     // position we will use later
     var lat = <?php echo $latitude; ?>;
