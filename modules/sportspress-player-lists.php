@@ -268,8 +268,8 @@ class SportsPress_Player_Lists {
 				),
 				
 				array(
-					'title'     => __( 'Teeams', 'sportspress' ),
-					'desc' 		=> __( 'Display Teams Logos', 'sportspress' ),
+					'title'     => __( 'Teams', 'sportspress' ),
+					'desc' 		=> __( 'Display logos', 'sportspress' ),
 					'id' 		=> 'sportspress_list_show_logos',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
