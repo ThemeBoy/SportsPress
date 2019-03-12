@@ -27,6 +27,6 @@ if ( $latitude != null && $longitude != null ){
 	if ( get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'yes' ) {
 		do_action ( 'sp_venue_show_googlemaps', $latitude, $longitude, $address, $zoom, $maptype );
 	}else{
-		do_action ( 'sp_venue_show_openstreetmap', $latitude, $longitude, $zoom, $maptype );
+		do_action ( 'sp_venue_show_openstreetmap', $latitude, $longitude, $address, $zoom, $maptype );
 	}
 }

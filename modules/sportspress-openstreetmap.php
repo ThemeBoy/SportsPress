@@ -33,7 +33,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && get_option( 'sportspress_l
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
-		add_action( 'sp_venue_show_openstreetmap', array( $this, 'show_venue_openstreetmap' ), 10, 4 );
+		add_action( 'sp_venue_show_openstreetmap', array( $this, 'show_venue_openstreetmap' ), 10, 5 );
 
 		// Filters
 		//add_filter( 'sportspress_openstreetmap', array( $this, 'add_options' ) );
@@ -97,9 +97,9 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && get_option( 'sportspress_l
 	 *
 	 * @return mix
 	 */
-	public function show_venue_openstreetmap( $latitude, $longitude, $zoom, $maptype ) {
+	public function show_venue_openstreetmap( $latitude, $longitude, $address, $zoom, $maptype ) {
 		?>
-		<a href="https://www.openstreetmap.org/?mlat=<?php echo $latitude; ?>&amp;mlon=<?php echo $longitude; ?>#map=<?php echo $zoom; ?>/<?php echo $latitude; ?>/<?php echo $longitude; ?>" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
+		<a href="https://www.google.com.au/maps/place/<?php echo $address; ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
 	<script>
     // position we will use later
     var lat = <?php echo $latitude; ?>;
