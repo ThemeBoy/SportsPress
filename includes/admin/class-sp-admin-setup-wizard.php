@@ -101,11 +101,19 @@ class SP_Admin_Setup_Wizard {
 
     wp_register_script( 'chosen', SP()->plugin_url() . '/assets/js/chosen.jquery.min.js', array( 'jquery' ), '1.1.0', true );
     wp_register_script( 'jquery-tiptip', SP()->plugin_url() . '/assets/js/jquery.tipTip.min.js', array( 'jquery' ), '1.3', true );
-    wp_register_script( 'google-maps', '//tboy.co/maps_js' );
     wp_register_script( 'sportspress-setup', SP()->plugin_url() . '/assets/js/admin/sportspress-setup.js', array( 'jquery', 'chosen', 'jquery-tiptip' ), SP_VERSION, true );
 
-    wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
-    wp_register_script( 'sportspress-admin-locationpicker', SP()->plugin_url() . '/assets/js/admin/locationpicker.js', array( 'jquery', 'jquery-locationpicker' ), SP_VERSION, true );
+    if ( get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'yes' ) {
+		wp_register_script( 'google-maps', '//tboy.co/maps_js' );
+		wp_register_script( 'jquery-locationpicker', SP_GOOGLEMAPS_URL . 'js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
+		wp_register_script( 'sportspress-admin-locationpicker', SP_GOOGLEMAPS_URL . 'js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_GOOGLEMAPS_VERSION, true );
+	} else {
+		wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.4.0' );
+		wp_register_script( 'control-geocoder', SP()->plugin_url() . '/assets/js/Control.Geocoder.js', array( 'leaflet_js' ) );
+		wp_register_script( 'sportspress-admin-setup-geocoder', SP()->plugin_url() . '/assets/js/admin/sp-setup-geocoder.js', array( 'leaflet_js', 'control-geocoder' ), SP_VERSION, true );
+		wp_enqueue_style( 'control-geocoder', SP()->plugin_url() . '/assets/css/Control.Geocoder.css', array() );
+		wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.4.0' );
+	}
 
     $strings = apply_filters( 'sportspress_localized_strings', array(
       'none' => __( 'None', 'sportspress' ),
@@ -114,8 +122,6 @@ class SP_Admin_Setup_Wizard {
 
     // Localize scripts
     wp_localize_script( 'sportspress-setup', 'localized_strings', $strings );
-
-    wp_enqueue_script( 'google-maps' );
 
     if ( ! empty( $_POST['save_step'] ) && isset( $this->steps[ $this->step ]['handler'] ) ) {
       call_user_func( $this->steps[ $this->step ]['handler'] );
@@ -517,6 +523,12 @@ class SP_Admin_Setup_Wizard {
    * Venue Step.
    */
   public function sp_setup_venue() {
+	  if ( get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'yes' ) {
+		wp_print_scripts( 'google-maps' );
+	 }else{
+		wp_print_scripts( 'leaflet_js' );
+	    wp_print_scripts( 'control-geocoder' );
+	 }
     ?>
     <h1><?php _e( 'Venue Setup', 'sportspress' ); ?></h1>
     <form method="post">
@@ -531,11 +543,11 @@ class SP_Admin_Setup_Wizard {
         <tr>
           <th scope="row"><?php _e( 'Address', 'sportspress' ); ?></th>
           <td>
-            <input name="address" class="sp-address" type="text">
-            <div class="sp-location-picker"></div>
+            <input name="address" id="sp_address" class="sp-address" type="text" value="Marvel Stadium, Melbourne">
+            <div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div>
             <p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
-            <input name="latitude" class="sp-latitude" type="hidden" value="40.7324319">
-            <input name="longitude" class="sp-longitude" type="hidden" value="-73.82480799999996">
+            <input name="latitude" id="sp_latitude" class="sp-latitude" type="hidden" value="-37.8165647">
+            <input name="longitude" id="sp_longitude" class="sp-longitude" type="hidden" value="144.9475055">
           </td>
         </tr>
       </table>
@@ -546,7 +558,12 @@ class SP_Admin_Setup_Wizard {
         <?php wp_nonce_field( 'sp-setup' ); ?>
       </p>
     </form>
-    <?php wp_print_scripts( 'sportspress-admin-locationpicker' ); ?>
+    <?php 
+	 if ( get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'yes' ) {
+		wp_print_scripts( 'sportspress-admin-locationpicker' ); 
+	} else {
+		wp_print_scripts( 'sportspress-admin-setup-geocoder' ); 
+	}?>
     <?php
   }
 

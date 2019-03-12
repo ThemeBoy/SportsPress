@@ -23,17 +23,10 @@ $maptype = strtolower( $maptype );
 if ( '' === $address ) $address = '+';
 if ( 'satellite' !== $maptype ) $maptype = 'roadmap';
 
-if ( $latitude != null && $longitude != null ):
-    ?>
-    <div class="sp-google-map-container">
-      <iframe
-        class="sp-google-map<?php if ( is_tax( 'sp_venue' ) ): ?> sp-venue-map<?php endif; ?>"
-        width="600"
-        height="320"
-        frameborder="0" style="border:0"
-        src="//tboy.co/maps_embed?q=<?php echo $address; ?>&amp;center=<?php echo $latitude; ?>,<?php echo $longitude; ?>&amp;zoom=<?php echo $zoom; ?>&amp;maptype=<?php echo $maptype; ?>" allowfullscreen>
-      </iframe>
-      <a href="https://www.google.com.au/maps/place/<?php echo $address; ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank" class="sp-google-map-link"></a>
-    </div>
-    <?php
-endif;
+if ( $latitude != null && $longitude != null ){
+	if ( get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'yes' ) {
+		do_action ( 'sp_venue_show_googlemaps', $latitude, $longitude, $address, $zoom, $maptype );
+	}else{
+		do_action ( 'sp_venue_show_openstreetmap', $latitude, $longitude, $zoom, $maptype );
+	}
+}
