@@ -1,0 +1,50 @@
+.sp-event-matrix .sp-event-matrix-label {
+  text-align: center;
+}
+
+.sp-event-matrix .sp-event-matrix-home-label {
+  text-align: left;
+  white-space: nowrap;
+}
+
+.sp-event-matrix .sp-event-matrix-team-logo {
+  width: 2em;
+  height: 2em;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.sp-event-matrix tbody .sp-event-matrix-team-logo {
+  margin-right: 0.5em;
+}
+
+.sp-event-matrix thead .sp-event-matrix-event-column {
+  text-align: center;
+}
+
+.sp-event-matrix tbody .sp-event-matrix-empty-cell {
+  background: rgba(0,0,0,0.05);
+}
+
+.sp-event-matrix tbody .sp-event-matrix-event {
+  display: block;
+  text-align: center;
+  padding: 0.125em 0.25em;
+  color: #fff !important;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.sp-event-matrix tbody .sp-event-matrix-event:hover {
+  color: #fff !important;
+}
+
+.sp-event-matrix tbody .sp-event-matrix-future-event {
+  display: block;
+  text-align: center;
+}
+
+.sp-event-matrix tbody .sp-event-matrix-empty-event {
+	opacity: 0.5;
+}
