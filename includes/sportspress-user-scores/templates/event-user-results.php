@@ -51,7 +51,6 @@ if ( current_user_can( 'manage_sportspress' ) || in_array( 'sp_event_manager', $
 	if ( 'no' === get_option( 'sportspress_user_results_staff_status', 'yes' ) ) return;
 	$staff = (array) get_post_meta( $id, 'sp_staff', false );
 	$i = -1;
-	$teams = array();
 	foreach ( $staff as $member ) {
 		if ( 0 == $member ) {
 			$i++;
