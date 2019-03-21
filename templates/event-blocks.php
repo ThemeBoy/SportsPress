@@ -189,8 +189,11 @@ if ( $title )
 								<div class="sp-event-season"><?php echo $season->name; ?></div>
 							<?php endif; endif; ?>
 							<?php if ( $show_venue ): $venues = get_the_terms( $event, 'sp_venue' ); if ( $venues ): $venue = array_shift( $venues ); ?>
-								<div class="sp-event-venue"><?php echo $venue->name; ?></div>
+								<div class="sp-event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place"><div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><?php echo $venue->name; ?></div></div>
 							<?php endif; endif; ?>
+							<?php if ( !$show_venue || !$venues ): ?>
+								<div style="display:none;" class="sp-event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place"><div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><?php _e( 'N/A', 'sportspress' ); ?></div></div>
+							<?php endif; ?>
 							<h4 class="sp-event-title" itemprop="name">
 								<?php echo sp_add_link( $event->post_title, $permalink, $link_events ); ?>
 							</h4>
