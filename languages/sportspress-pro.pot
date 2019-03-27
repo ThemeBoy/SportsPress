@@ -17,7 +17,7 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: includes/libraries\n"
+"X-Poedit-SearchPathExcluded-0: includes/sportspress\n"
 
 #: includes/sportspress-birthdays/includes/class-sp-widget-birthdays.php:5
 msgid "Display players and staff on their birthday."
