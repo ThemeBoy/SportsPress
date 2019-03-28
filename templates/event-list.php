@@ -251,6 +251,7 @@ $identifier = uniqid( 'eventlist_' );
 					endif;
 
 					echo '<tr class="sp-row sp-post' . ( $i % 2 == 0 ? ' alternate' : '' ) . ' sp-row-no-' . $i . '" itemscope itemtype="http://schema.org/SportsEvent">';
+					echo '<td style="display:none;" itemprop="name">'.$event->post_title.'</td>';
 
 						$date_html = '<date>' . get_post_time( 'Y-m-d H:i:s', false, $event ) . '</date>' . apply_filters( 'sportspress_event_date', get_post_time( get_option( 'date_format' ), false, $event, true ), $event->ID );
 
