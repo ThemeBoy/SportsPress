@@ -144,7 +144,7 @@ final class SportsPress_Pro {
 		$locale = apply_filters( 'plugin_locale', get_locale(), 'sportspress' );
 
 		// Global + Frontend Locale
-		load_plugin_textdomain( 'sportspress-pro', false, plugin_basename( dirname( __FILE__ ) . "/languages" ) );
+		load_plugin_textdomain( 'sportspress', false, plugin_basename( dirname( __FILE__ ) . "/languages" ) );
 	}
 
 	/**
