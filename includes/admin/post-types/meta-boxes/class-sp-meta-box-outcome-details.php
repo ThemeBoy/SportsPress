@@ -32,6 +32,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 		$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
 		$color = get_post_meta( $post->ID, 'sp_color', true );
 		$condition = get_post_meta( $post->ID, 'sp_condition', true );
+		$streak = get_post_meta( $post->ID, 'sp_streak', true );
 		$main_result = get_option( 'sportspress_primary_result', null );
 		$result = get_page_by_path( $main_result, ARRAY_A, 'sp_result' );
 		$label = sp_array_value( $result, 'post_title', __( 'Primary', 'sportspress' ) );
@@ -74,6 +75,14 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 				?>
 			</select>
 		</p>
+		<p>
+			<div class="sp-streak">
+				<label for="sp_streak">
+					<?php _e( 'Ignore outcome in streak performance: ', 'sportspress' ); ?>
+					<input type="checkbox" name="sp_streak" value="true" <?php checked( $streak, 'true' ); ?> />
+					</label>
+			</div>
+		</p>
 		<?php
 	}
 
@@ -84,5 +93,6 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 		update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', array() ) );
 		update_post_meta( $post_id, 'sp_color', sp_array_value( $_POST, 'sp_color', array() ) );
 		update_post_meta( $post_id, 'sp_condition', sp_array_value( $_POST, 'sp_condition', array() ) );
+		update_post_meta( $post_id, 'sp_streak', sp_array_value( $_POST, 'sp_streak', '' ) );
 	}
 }
