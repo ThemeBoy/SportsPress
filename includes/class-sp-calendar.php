@@ -399,6 +399,7 @@ class SP_Calendar extends SP_Secondary_Post {
 		
 			if ( $this->event) {
 				$args['p'] = $this->event;
+				$args['post_status'] = 'any';
 			}
 
 			if ( 'auto' === $this->date && 'any' === $this->status ) {
