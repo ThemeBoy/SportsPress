@@ -41,6 +41,7 @@ class SP_League_Table extends SP_Secondary_Post {
 		$link_events = get_option( 'sportspress_link_events', 'yes' ) === 'yes' ? true : false;
 		$form_limit = (int) get_option( 'sportspress_form_limit', 5 );
 		
+		//Initialize the hidden_outcomes variables
 		$hidden_outcomes_ids = array();
 		$hidden_outcomes_names = array();
 		
@@ -50,6 +51,7 @@ class SP_League_Table extends SP_Secondary_Post {
 			'meta_value'       => 'true',
 		);
 		
+		//Get all hidden_outcomes
 		$hidden_outcomes = get_posts($args);
 		
 		foreach ( $hidden_outcomes as $hidden_outcome ) {
@@ -185,12 +187,10 @@ class SP_League_Table extends SP_Secondary_Post {
 
 			// Add outcome types to team last and record counters
 			foreach( $outcome_labels as $key => $value ):
-				if ( !in_array( $key, $hidden_outcomes_names ) ) :
-					$last5s[ $team_id ][ $key ] = 0;
-					$last10s[ $team_id ][ $key ] = 0;
-					$homerecords[ $team_id ][ $key ] = 0;
-					$awayrecords[ $team_id ][ $key ] = 0;
-				endif;
+				$last5s[ $team_id ][ $key ] = 0;
+				$last10s[ $team_id ][ $key ] = 0;
+				$homerecords[ $team_id ][ $key ] = 0;
+				$awayrecords[ $team_id ][ $key ] = 0;
 			endforeach;
 
 			// Initialize team totals
@@ -221,12 +221,10 @@ class SP_League_Table extends SP_Secondary_Post {
 			endforeach;
 
 			foreach ( $outcome_labels as $key => $value ):
-				//if ( !in_array( $key, $hidden_outcomes_names ) ) :
-					$totals[ $team_id ][ $key ] = 0;
-					$totals[ $team_id ][ $key . '_home' ] = 0;
-					$totals[ $team_id ][ $key . '_away' ] = 0;
-					$totals[ $team_id ][ $key . '_venue' ] = 0;
-				//endif;
+				$totals[ $team_id ][ $key ] = 0;
+				$totals[ $team_id ][ $key . '_home' ] = 0;
+				$totals[ $team_id ][ $key . '_away' ] = 0;
+				$totals[ $team_id ][ $key . '_venue' ] = 0;
 			endforeach;
 
 			// Get static stats
@@ -344,41 +342,45 @@ class SP_League_Table extends SP_Secondary_Post {
 						if ( ! is_array( $value ) ):
 							$value = array( $value );
 						endif;
-
+						
+						//Check if there is more than one outcome
+						$total_outcomes = count( $value );
+						
 						foreach ( $value as $outcome ):
 						
-							//if ( in_array( $outcome, $hidden_outcomes_names ) ) 
-								//continue;
+							//If there are more than one outcome and the outcome should be ignored
+							//if ( in_array( $outcome, $hidden_outcomes_names ) && $total_outcomes > 1 ) 
+							//	continue;
 
 							// Increment events played and outcome count
 							if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $outcome, $totals[ $team_id ] ) ):
-								if ( !in_array( $outcome, $hidden_outcomes_names ) ) {
+								if ( !in_array( $outcome, $hidden_outcomes_names ) || $total_outcomes == 1 ) {
 									$totals[ $team_id ]['eventsplayed'] ++;
+									$totals[ $team_id ]['eventminutes'] += $minutes;
 								}
-								$totals[ $team_id ]['eventminutes'] += $minutes;
 								$totals[ $team_id ][ $outcome ] ++;
 
 								// Add to home or away stats
 								if ( 0 === $i ):
-									if ( !in_array( $outcome, $hidden_outcomes_names ) ) {
+									if ( !in_array( $outcome, $hidden_outcomes_names ) || $total_outcomes == 1 ) {
 										$totals[ $team_id ]['eventsplayed_home'] ++;
+										$totals[ $team_id ]['eventminutes_home'] += $minutes;
 									}
-									$totals[ $team_id ]['eventminutes_home'] += $minutes;
 									$totals[ $team_id ][ $outcome . '_home' ] ++;
 								else:
-									if ( !in_array( $outcome, $hidden_outcomes_names ) ) {
+									if ( !in_array( $outcome, $hidden_outcomes_names ) || $total_outcomes == 1 ) {
 										$totals[ $team_id ]['eventsplayed_away'] ++;
+										$totals[ $team_id ]['eventminutes_away'] += $minutes;
 									}
-									$totals[ $team_id ]['eventminutes_away'] += $minutes;
 									$totals[ $team_id ][ $outcome . '_away' ] ++;
 								endif;
 
 								// Add to venue stats
 								if ( sp_is_home_venue( $team_id, $event->ID ) ):
-									if ( !in_array( $outcome, $hidden_outcomes_names ) ) {
+									if ( !in_array( $outcome, $hidden_outcomes_names ) || $total_outcomes == 1 ) {
 										$totals[ $team_id ]['eventsplayed_venue'] ++;
+										$totals[ $team_id ]['eventminutes_venue'] += $minutes;
 									}
-									$totals[ $team_id ]['eventminutes_venue'] += $minutes;
 									$totals[ $team_id ][ $outcome . '_venue' ] ++;
 								endif;
 							endif;
