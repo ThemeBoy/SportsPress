@@ -187,6 +187,10 @@ class SP_League_Table extends SP_Secondary_Post {
 
 			// Add outcome types to team last and record counters
 			foreach( $outcome_labels as $key => $value ):
+				//Avoid counting hidden outcomes
+				if( in_array( $key, $hidden_outcomes_names ) )
+					continue;
+				
 				$last5s[ $team_id ][ $key ] = 0;
 				$last10s[ $team_id ][ $key ] = 0;
 				$homerecords[ $team_id ][ $key ] = 0;
