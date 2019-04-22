@@ -96,7 +96,7 @@ class SP_Player extends SP_Custom_Post {
 			$metric = sp_array_value( $metrics, $key, null );
 			if ( $metric == null )
 				continue;
-			$data[ $value ] = sp_array_value( $metrics, $key, '&nbsp;' );
+			$data[ $key ] = sp_array_value( $metrics, $key, '&nbsp;' );
 		endforeach;
 		return $data;
 	}
