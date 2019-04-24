@@ -47,15 +47,30 @@ if ( current_user_can( 'manage_sportspress' ) || in_array( 'sp_event_manager', $
 		}
 	}
 } elseif ( in_array( 'sp_staff', $user_roles ) ) {
-	// Staff
+
+	/**
+	 * Staff.
+	 */
 	if ( 'no' === get_option( 'sportspress_user_results_staff_status', 'yes' ) ) return;
-	$staff = (array) get_post_meta( $id, 'sp_staff', false );
+	$staffs = (array) get_post_meta( $id, 'sp_staff', false );
+
+	/**
+	 * Which teams indexes to show.
+	 */
 	$i = -1;
-	$teams = array();
-	foreach ( $staff as $member ) {
-		if ( 0 == $member ) {
+	foreach ( $staffs as $staff ) {
+		if ( $staff && get_post_field( 'post_author', $staff ) == $user_id ) {
+			$teams_to_show[ $i ] = $staff;
+		} else { 
 			$i++;
-		} elseif ( get_post_field( 'post_author', $member ) != $user_id ) {
+		}
+	}
+
+	/**
+	 * Apply (remove teams not in $teams_to_show).
+	 */
+	foreach ( $teams as $i => $team ) {
+		if ( ! array_key_exists( $i, $teams_to_show) ) {
 			unset( $teams[ $i ] );
 		}
 	}
