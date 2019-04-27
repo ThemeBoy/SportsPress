@@ -50,7 +50,7 @@ $minutes = $event->minutes();
 					}else{
 						$name = sp_array_value( $details, "name", __( "Player", "sportspress" ) );
 					}
-					$number = sp_array_value( $details, 'number', '' );
+					$number = sp_get_player_number_in_event_or_profile( $details[ 'id'], $details['team'], $id );
 					$key = sp_array_value( $details, 'key', '' );
 
 					if ( $key == 'sub' ) {
