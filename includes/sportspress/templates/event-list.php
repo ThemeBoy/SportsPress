@@ -251,6 +251,7 @@ $identifier = uniqid( 'eventlist_' );
 					endif;
 
 					echo '<tr class="sp-row sp-post' . ( $i % 2 == 0 ? ' alternate' : '' ) . ' sp-row-no-' . $i . '" itemscope itemtype="http://schema.org/SportsEvent">';
+					echo '<td style="display:none;" itemprop="name">'.$event->post_title.'</td>';
 
 						$date_html = '<date>' . get_post_time( 'Y-m-d H:i:s', false, $event ) . '</date>' . apply_filters( 'sportspress_event_date', get_post_time( get_option( 'date_format' ), false, $event, true ), $event->ID );
 
@@ -388,7 +389,8 @@ $identifier = uniqid( 'eventlist_' );
 						endif;
 
 						if ( sp_column_active( $usecolumns, 'venue' ) ):
-							echo '<td class="data-venue" data-label="'.__( 'Venue', 'sportspress' ).'">';
+							echo '<td class="data-venue" data-label="'.__( 'Venue', 'sportspress' ).'" itemprop="location" itemscope itemtype="http://schema.org/Place">';
+							echo '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';
 							if ( $link_venues ):
 								the_terms( $event->ID, 'sp_venue' );
 							else:
@@ -397,6 +399,13 @@ $identifier = uniqid( 'eventlist_' );
 									echo $venue->name;
 								endforeach; endif;
 							endif;
+							echo '</div>';
+							echo '</td>';
+						else:
+							echo '<td style="display:none;" class="data-venue" data-label="'.__( 'Venue', 'sportspress' ).'" itemprop="location" itemscope itemtype="http://schema.org/Place">';
+							echo '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';
+							_e( 'N/A', 'sportspress' );
+							echo '</div>';
 							echo '</td>';
 						endif;
 

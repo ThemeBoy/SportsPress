@@ -203,16 +203,21 @@
 	line-height: 2em;
 }
 .sp-player-list .data-name .player-photo,
-.sp-player-list .data-name .player-flag {
+.sp-player-list .data-name .player-flag,
+.sp-player-list .data-team .team-logo {
 	width: 2em;
 	height: 2em;
-	margin-right: 0.5em;
 	display: inline-block;
 	vertical-align: middle;
 	text-align: center;
 }
+.sp-player-list .data-name .player-photo,
+.sp-player-list .data-name .player-flag {
+	margin-right: 0.5em;
+}
 .sp-player-list .data-name .player-photo img,
-.sp-player-list .data-name .player-flag img {
+.sp-player-list .data-name .player-flag img,
+.sp-player-list .data-team .team-logo img {
 	width: auto;
 	height: auto;
 	max-width: 2em;
@@ -446,6 +451,10 @@
 	margin: 10px;
 	padding: 0;
 	clear: both;
+}
+
+span.sp_event_spec_label {
+	font-weight: bold;
 }
 
 /* Event Logos Block */

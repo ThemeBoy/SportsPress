@@ -22,6 +22,7 @@ $defaults = array(
 	'show_title' => get_option( 'sportspress_list_show_title', 'yes' ) == 'yes' ? true : false,
 	'show_player_photo' => get_option( 'sportspress_list_show_photos', 'no' ) == 'yes' ? true : false,
 	'show_player_flag' => get_option( 'sportspress_list_show_flags', 'no' ) == 'yes' ? true : false,
+	'team_format' => get_option( 'sportspress_list_team_format', 'name' ),
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'no' ) == 'yes' ? true : false,
@@ -138,8 +139,6 @@ foreach ( $groups as $group ):
 	foreach( $labels as $key => $label ):
 		if ( $key !== 'number' && ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) ) )
 			$thead .= '<th class="data-' . $key . '">'. $label . '</th>';
-		if ( preg_match ( "/title=\"(.*?)\"/", $label, $new_label ) )
-			$labels[$key] = $label[1];
 	endforeach;
 
 	$thead .= '</tr>' . '</thead>';
@@ -193,8 +192,12 @@ foreach ( $groups as $group ):
 		$tbody .= '<td class="data-name' . $name_class . '" data-label="'.$labels['name'].'">' . $name . '</td>';
 		
 		if ( array_key_exists( 'team', $labels ) ):
-			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_current_team', true ) );
+			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_current_team', true ) );			
 			$team_name = $team ? sp_team_short_name( $team ) : '-';
+			if ( $team_format == 'logo' && has_post_thumbnail( $team ) ){
+				$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'title' => ''.$team_name.'' ) );
+				$team_name = '<span class="team-logo">' . $logo . '</span>';
+			}
 			if ( $link_teams && false !== get_post_status( $team ) ):
 				$team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
 			endif;
@@ -215,8 +218,13 @@ foreach ( $groups as $group ):
 		foreach( $labels as $key => $value ):
 			if ( in_array( $key, array( 'number', 'name', 'team', 'position' ) ) )
 				continue;
-			if ( ! is_array( $columns ) || in_array( $key, $columns ) )
-			$tbody .= '<td class="data-' . $key . '" data-label="'.$labels[$key].'">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+			if ( ! is_array( $columns ) || in_array( $key, $columns ) ) {
+				$label = $labels[$key];
+				if ( preg_match ( "/title=\"(.*?)\"/", $value, $new_label ) ) {
+					$label = $new_label[1];
+				}
+				$tbody .= '<td class="data-' . $key . '" data-label="'.$label.'">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+			}
 		endforeach;
 
 		$tbody .= '</tr>';

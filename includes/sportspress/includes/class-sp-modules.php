@@ -78,6 +78,13 @@ class SP_Modules {
 					'link' => 'https://www.themeboy.com/sportspress-extensions/tournaments/',
 					'desc' => __( 'Schedule tournaments and create interactive playoff brackets.', 'sportspress' ),
 				),
+				'googlemaps' => array(
+					'label' => __( 'GoogleMaps', 'sportspress' ),
+					'class' => 'SportsPress_GoogleMaps',
+					'icon' => 'dashicons dashicons-location-alt',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/googlemaps/',
+					'desc' => __( 'Use GoogleMaps for Venue addresses.', 'sportspress' ),
+				),
 			),
 			'team' => array(
 				'league_tables' => array(

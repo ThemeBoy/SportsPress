@@ -628,6 +628,7 @@ class SP_AJAX {
 					'season' => __( 'Season', 'sportspress' ),
 					'venue' => __( 'Venue', 'sportspress' ),
 					'article' => __( 'Article', 'sportspress' ),
+					'event_specs' => __( 'Specs', 'sportspress' ),
 				);
 				$field_name = 'columns[]';
 				$field_id = 'columns';
