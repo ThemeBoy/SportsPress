@@ -1,4 +1,4 @@
-SportsPress Google Maps
+SportsPress Tournaments
 
 Copyright 2019 by ThemeBoy
 
@@ -26,7 +26,7 @@ and
 
   ThemeBoy
 
-  SportsPress Google Maps is released under the GPL
+  SportsPress Tournaments is released under the GPL
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
