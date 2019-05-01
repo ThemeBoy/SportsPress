@@ -86,7 +86,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && get_option( 'sportspress_l
 	 * Enqueue frontend scripts
 	 */
 	public function frontend_scripts() {
-		if( ( is_single() || is_tax() ) && get_post_type()=='sp_event' ){
+		if( is_single() && get_post_type()=='sp_event' ){
 			wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.4.0' );
 			wp_enqueue_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.4.0' );
 		}
