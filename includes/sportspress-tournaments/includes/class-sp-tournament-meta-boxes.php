@@ -375,6 +375,9 @@ class SP_Tournament_Meta_Boxes {
 					if ( sizeof( $teams ) ) {
 						$results = array_combine( $teams, $results );
 						if ( $results ) {
+							if ( $reverse_teams ) {
+								$results = array_combine( array_keys( $results ), array_reverse( array_values( $results ) ) );
+							}
 							sp_update_main_results( $id, $results );
 						}
 						update_post_meta( $id, 'sp_status', 'ok' );
@@ -399,6 +402,9 @@ class SP_Tournament_Meta_Boxes {
 	 */
 	public static function table( $labels = array(), $data = null, $rounds = 3, $rows = 23, $post_id = null, $type = 'single' ) {
 		$post_type = sp_get_post_mode_type( $post_id );
+
+		// Reverse teams option
+		$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
 
 		$args = array(
 			'post_type' => $post_type,
@@ -511,9 +517,15 @@ class SP_Tournament_Meta_Boxes {
 										<input type="text" size="2" maxlength="2" name="<?php echo $key; ?>[<?php echo $index; ?>][mm]" autocomplete="off" value="<?php if ( $event ) echo sp_get_time( $event, 'i' ); ?>"><hr>
 									<?php } ?>
 									<label><?php _e( 'Results', 'sportspress' ); ?>:</label>
-									<input type="text" size="2" name="<?php echo $key; ?>[<?php echo $index; ?>][results][]" value="<?php echo sp_array_value( $results, 0 ); ?>" autocomplete="off">
-									-
-									<input type="text" size="2" name="<?php echo $key; ?>[<?php echo $index; ?>][results][]" value="<?php echo sp_array_value( $results, 1 ); ?>" autocomplete="off">
+									<?php if ( $reverse_teams ) { ?>
+										<input type="text" size="2" name="<?php echo $key; ?>[<?php echo $index; ?>][results][]" value="<?php echo sp_array_value( $results, 1 ); ?>" autocomplete="off">
+										-
+										<input type="text" size="2" name="<?php echo $key; ?>[<?php echo $index; ?>][results][]" value="<?php echo sp_array_value( $results, 0 ); ?>" autocomplete="off">
+									<?php } else { ?>
+										<input type="text" size="2" name="<?php echo $key; ?>[<?php echo $index; ?>][results][]" value="<?php echo sp_array_value( $results, 0 ); ?>" autocomplete="off">
+										-
+										<input type="text" size="2" name="<?php echo $key; ?>[<?php echo $index; ?>][results][]" value="<?php echo sp_array_value( $results, 1 ); ?>" autocomplete="off">
+									<?php } ?>
 									<?php if ( $hidden && $forced ) { ?></div><?php } ?>
 								</td>
 								<?php
