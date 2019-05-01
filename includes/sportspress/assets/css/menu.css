@@ -103,6 +103,9 @@
 .sp-icon-list:before {
 	content: "\f163"
 }
+.sp-icon-location:before {
+  content: "\f231";
+}
 .sp-icon-matrix:before {
   content: "\f314";
 }

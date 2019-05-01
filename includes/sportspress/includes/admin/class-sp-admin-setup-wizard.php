@@ -103,10 +103,10 @@ class SP_Admin_Setup_Wizard {
     wp_register_script( 'jquery-tiptip', SP()->plugin_url() . '/assets/js/jquery.tipTip.min.js', array( 'jquery' ), '1.3', true );
     wp_register_script( 'sportspress-setup', SP()->plugin_url() . '/assets/js/admin/sportspress-setup.js', array( 'jquery', 'chosen', 'jquery-tiptip' ), SP_VERSION, true );
 
-    if ( get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'yes' ) {
+    if ( get_option( 'sportspress_load_google_maps_module', 'no' ) == 'yes' ) {
 		wp_register_script( 'google-maps', '//tboy.co/maps_js' );
-		wp_register_script( 'jquery-locationpicker', SP_GOOGLEMAPS_URL . 'js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
-		wp_register_script( 'sportspress-admin-locationpicker', SP_GOOGLEMAPS_URL . 'js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_GOOGLEMAPS_VERSION, true );
+		wp_register_script( 'jquery-locationpicker', SP_GOOGLE_MAPS_URL . 'js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
+		wp_register_script( 'sportspress-admin-locationpicker', SP_GOOGLE_MAPS_URL . 'js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_GOOGLE_MAPS_VERSION, true );
 	} else {
 		wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.4.0' );
 		wp_register_script( 'control-geocoder', SP()->plugin_url() . '/assets/js/Control.Geocoder.js', array( 'leaflet_js' ) );
@@ -523,7 +523,7 @@ class SP_Admin_Setup_Wizard {
    * Venue Step.
    */
   public function sp_setup_venue() {
-	  if ( get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'yes' ) {
+	  if ( get_option( 'sportspress_load_google_maps_module', 'no' ) == 'yes' ) {
 		wp_print_scripts( 'google-maps' );
 	 }else{
 		wp_print_scripts( 'leaflet_js' );
@@ -559,7 +559,7 @@ class SP_Admin_Setup_Wizard {
       </p>
     </form>
     <?php 
-	 if ( get_option( 'sportspress_load_googlemaps_module', 'no' ) == 'yes' ) {
+	 if ( get_option( 'sportspress_load_google_maps_module', 'no' ) == 'yes' ) {
 		wp_print_scripts( 'sportspress-admin-locationpicker' ); 
 	} else {
 		wp_print_scripts( 'sportspress-admin-setup-geocoder' ); 
