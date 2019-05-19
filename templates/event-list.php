@@ -49,7 +49,8 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 $calendar = new SP_Calendar( $id );
-if ( $status != 'default' )
+$status = explode ( ',', $status );
+if ( $status[0] != 'default' )
 	$calendar->status = $status;
 if ( $format != 'default' )
 	$calendar->event_format = $format;
