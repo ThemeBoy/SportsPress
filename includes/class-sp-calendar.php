@@ -154,7 +154,6 @@ class SP_Calendar extends SP_Secondary_Post {
 			'posts_per_page' => $this->number,
 			'orderby' => $this->orderby,
 			'order' => $this->order,
-			'post_status' => $this->status,
 			'meta_query' => array(
 				'relation' => 'AND'
 			),
@@ -416,6 +415,7 @@ class SP_Calendar extends SP_Secondary_Post {
 
 				$events = array_merge_recursive( $results, $fixtures );
 			} else {
+				$args['post_status'] = $this->status == 'any' ? array('publish', 'future') : explode ( ',', $this->status );
 				$events = get_posts( $args );
 			}
 

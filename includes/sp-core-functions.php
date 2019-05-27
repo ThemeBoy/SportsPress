@@ -653,8 +653,7 @@ if ( !function_exists( 'sp_dropdown_statuses' ) ) {
 		$statuses = apply_filters( 'sportspress_statuses', array(
 			'any' => __( 'All', 'sportspress' ),
 			'publish' => __( 'Published', 'sportspress' ),
-			'future' => __( 'Scheduled', 'sportspress' ),
-			'publish,future' => __( 'Published + Scheduled', 'sportspress' )
+			'future' => __( 'Scheduled', 'sportspress' )
 		));
 
 		foreach ( $statuses as $value => $label ):
