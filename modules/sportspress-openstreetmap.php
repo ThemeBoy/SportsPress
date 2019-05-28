@@ -78,6 +78,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
 	    if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
 	    	wp_enqueue_script( 'leaflet_js' );
 	    	wp_enqueue_script( 'control-geocoder' );
+	    	wp_enqueue_script( 'sportspress-admin-geocoder' );
 		}
 	}
 	
@@ -111,7 +112,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
 		$lon_sec = floor($lon_sec - ($lon_min * 60));
 		$lon_dir = $longitude > 0 ? 'E' : 'W';
 		?>
-		<a href="https://www.google.com.au/maps/place/<?php echo urlencode("{$lat_deg}°{$lat_min}'{$lat_sec}\"{$lat_dir}").'+'.urlencode("{$lon_deg}°{$lon_min}'{$lon_sec}\"{$lon_dir}"); ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
+		<a href="https://www.google.com/maps/place/<?php echo urlencode("{$lat_deg}°{$lat_min}'{$lat_sec}\"{$lat_dir}").'+'.urlencode("{$lon_deg}°{$lon_min}'{$lon_sec}\"{$lon_dir}"); ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
 	<script>
     // position we will use later
     var lat = <?php echo $latitude; ?>;
