@@ -78,6 +78,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
 	    if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
 	    	wp_enqueue_script( 'leaflet_js' );
 	    	wp_enqueue_script( 'control-geocoder' );
+	    	wp_enqueue_script( 'sportspress-admin-geocoder' );
 		}
 	}
 	
