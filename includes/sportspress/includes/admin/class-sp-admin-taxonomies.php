@@ -130,11 +130,7 @@ class SP_Admin_Taxonomies {
 			<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo esc_attr( $longitude ); ?>">
 		</div>
 	<?php
-		if ( get_option( 'sportspress_load_google_maps_module', 'no' ) == 'yes' ) {
-			wp_print_scripts( 'sportspress-admin-locationpicker' ); 
-		} else {
-			wp_print_scripts( 'sportspress-admin-geocoder' ); 
-		}
+		do_action( 'sp_admin_geocoder_scripts' );
 	}
 
 	/**
@@ -175,11 +171,7 @@ class SP_Admin_Taxonomies {
 			</td>
 		</tr>
 	<?php
-		if ( get_option( 'sportspress_load_google_maps_module', 'no' ) == 'yes' ) {
-			wp_print_scripts( 'sportspress-admin-locationpicker' ); 
-		} else {
-			wp_print_scripts( 'sportspress-admin-geocoder' ); 
-		}
+		do_action( 'sp_admin_geocoder_scripts' );
 	}
 
 	/**

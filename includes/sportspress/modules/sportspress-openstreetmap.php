@@ -11,7 +11,7 @@ Version: 2.7
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && get_option( 'sportspress_load_google_maps_module', 'no' ) == 'no' ) :
+if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
 
 /**
  * Main SportsPress OpenStreetMap Class
@@ -33,11 +33,10 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && get_option( 'sportspress_l
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
-		add_action( 'sp_venue_show_openstreetmap', array( $this, 'show_venue_openstreetmap' ), 10, 5 );
-
-		// Filters
-		//add_filter( 'sportspress_openstreetmap', array( $this, 'add_options' ) );
-
+		add_action( 'sp_venue_show_map', array( $this, 'show_venue_map' ), 10, 5 );
+		add_action( 'sp_admin_geocoder_scripts', array( $this, 'admin_geocoder_scripts' ), 10 );
+		add_action( 'sp_setup_geocoder_scripts', array( $this, 'setup_geocoder_scripts' ), 10 );
+		add_action( 'sp_setup_venue_geocoder_scripts', array( $this, 'setup_venue_geocoder_scripts' ), 10 );
 	}
 	
 	/**
@@ -97,7 +96,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && get_option( 'sportspress_l
 	 *
 	 * @return mix
 	 */
-	public function show_venue_openstreetmap( $latitude, $longitude, $address, $zoom, $maptype ) {
+	public function show_venue_map( $latitude, $longitude, $address, $zoom, $maptype ) {
 		$lat = abs($latitude);
 		$lat_deg = floor($lat);
 		$lat_sec = ($lat - $lat_deg) * 3600;
@@ -140,10 +139,34 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) && get_option( 'sportspress_l
   </script>
 		<?php
 	}
-			
+	
+	/**
+	 * Print geocoder script in admin
+	 */
+	public function admin_geocoder_scripts() {
+    wp_print_scripts( 'sportspress-admin-setup-geocoder' );
+	}
+	
+	/**
+	 * Print geocoder script in setup
+	 */
+	public function setup_geocoder_scripts() {
+		wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.4.0' );
+		wp_register_script( 'control-geocoder', SP()->plugin_url() . '/assets/js/Control.Geocoder.js', array( 'leaflet_js' ) );
+		wp_register_script( 'sportspress-admin-setup-geocoder', SP()->plugin_url() . '/assets/js/admin/sp-setup-geocoder.js', array( 'leaflet_js', 'control-geocoder' ), SP_VERSION, true );
+		wp_enqueue_style( 'control-geocoder', SP()->plugin_url() . '/assets/css/Control.Geocoder.css', array() );
+		wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.4.0' );
+	}
+	
+	/**
+	 * Print geocoder script in setup venue step
+	 */
+	public function setup_venue_geocoder_scripts() {
+		wp_print_scripts( 'leaflet_js' );
+		wp_print_scripts( 'control-geocoder' );
+	}
 }
 
 endif;
-if ( get_option( 'sportspress_load_google_maps_module', 'no' ) == 'no' ) {
-	new SportsPress_OpenStreetMap();
-}
+
+new SportsPress_OpenStreetMap();
