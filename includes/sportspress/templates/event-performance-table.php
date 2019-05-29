@@ -68,8 +68,8 @@ $i = 0;
 					foreach ( $subs as $sub_id => $sub ):
 						if ( ! $sub_id )
 							continue;
-						$index = sp_array_value( $sub, 'sub', 0 );
-						$lineup_sub_relation[ $index ] = $sub_id;
+						$i = sp_array_value( $sub, 'sub', 0 );
+						$lineup_sub_relation[ $i ] = $sub_id;
 					endforeach;
 
 					$data = apply_filters( 'sportspress_event_performance_players', $data, $lineups, $subs, $mode );
@@ -274,7 +274,11 @@ $i = 0;
 				</<?php echo ( $show_players ? 'tfoot' : 'tbody' ); ?>>
 			<?php endif; ?>
 		</table>
+		<?php
+			if ( $show_staff ) {
+				echo sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
+			}
+		?>
 	</div>
-	
 	<?php do_action( 'sportspress_after_event_performance_table', $data, $lineups, $subs, $class ); ?>
 </div>
