@@ -2,8 +2,8 @@
 Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
-Tested up to: 5.0
-Stable tag: 2.6.14
+Tested up to: 5.2
+Stable tag: 2.6.15
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,23 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.6.15 =
+* Important - Using Google Maps will require a SportsPress Pro license after August 31, 2019.
+* Refactor - Fallback to OpenStreetMap for venue maps without SportsPress Pro.
+* Feature - Option to display team logos instead of team names in player lists.
+* Feature - Option to display custom specs in event blocks and event lists.
+* Tweak - Allow staff to enter user results.
+* Tweak - Improve page load speed when creating new league tables.
+* Tweak - Prevent displaying events other than published or scheduled.
+* Fix - Tournament results bug when team order is reversed.
+* Fix - Player number in vertical timeline.
+* Fix - Icons only appearing in the first table when player lists are grouped.
+* Fix - Character encoding and CRLF errors in calendar feeds.
+* Fix - Missing field location Schema error.
+* Fix - Dropdowns collapsing in admin when meta boxes are hidden.
+* Fix - Timezone handling in countdowns.
+* Fix - Error when using special characters in admin settings.
 
 = 2.6.14 =
 * Fix - API endpoints for secondary post types.

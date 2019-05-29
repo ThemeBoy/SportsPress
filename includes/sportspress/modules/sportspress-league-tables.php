@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add league tables to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.6.14
+Version: 2.6.15
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_League_Tables' ) ) :
  * Main SportsPress League Tables Class
  *
  * @class SportsPress_League_Tables
- * @version	2.6.14
+ * @version	2.6.15
  */
 class SportsPress_League_Tables {
 
@@ -48,7 +48,7 @@ class SportsPress_League_Tables {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_LEAGUE_TABLES_VERSION' ) )
-			define( 'SP_LEAGUE_TABLES_VERSION', '2.6.14' );
+			define( 'SP_LEAGUE_TABLES_VERSION', '2.6.15' );
 
 		if ( !defined( 'SP_LEAGUE_TABLES_URL' ) )
 			define( 'SP_LEAGUE_TABLES_URL', plugin_dir_url( __FILE__ ) );

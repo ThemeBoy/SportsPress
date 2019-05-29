@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Integrate OpenStreetMap to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.7
+Version: 2.6.15
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
  * Main SportsPress OpenStreetMap Class
  *
  * @class SportsPress_OpenStreetMap
- * @version	2.7
+ * @version	2.6.15
  */
  
  class SportsPress_OpenStreetMap {
@@ -44,7 +44,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_OPENSTREETMAP_VERSION' ) )
-			define( 'SP_OPENSTREETMAP_VERSION', '2.7' );
+			define( 'SP_OPENSTREETMAP_VERSION', '2.6.15' );
 
 		if ( !defined( 'SP_OPENSTREETMAP_URL' ) )
 			define( 'SP_OPENSTREETMAP_URL', plugin_dir_url( __FILE__ ) );
@@ -78,6 +78,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
 	    if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
 	    	wp_enqueue_script( 'leaflet_js' );
 	    	wp_enqueue_script( 'control-geocoder' );
+	    	wp_enqueue_script( 'sportspress-admin-geocoder' );
 		}
 	}
 	
@@ -111,7 +112,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
 		$lon_sec = floor($lon_sec - ($lon_min * 60));
 		$lon_dir = $longitude > 0 ? 'E' : 'W';
 		?>
-		<a href="https://www.google.com.au/maps/place/<?php echo urlencode("{$lat_deg}°{$lat_min}'{$lat_sec}\"{$lat_dir}").'+'.urlencode("{$lon_deg}°{$lon_min}'{$lon_sec}\"{$lon_dir}"); ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
+		<a href="https://www.google.com/maps/place/<?php echo urlencode("{$lat_deg}°{$lat_min}'{$lat_sec}\"{$lat_dir}").'+'.urlencode("{$lon_deg}°{$lon_min}'{$lon_sec}\"{$lon_dir}"); ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
 	<script>
     // position we will use later
     var lat = <?php echo $latitude; ?>;

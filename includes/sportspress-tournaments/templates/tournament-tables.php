@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Tournaments
- * @version     1.7
+ * @version     2.6.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

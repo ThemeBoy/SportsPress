@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, nabil_kadimi
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 5.0
-Stable tag: 2.6.14
+Tested up to: 5.2
+Stable tag: 2.6.15
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -236,6 +236,20 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.6.15 =
+* Important - Using Google Maps will require a SportsPress Pro license after August 31, 2019.
+* Refactor - Fallback to OpenStreetMap for venue maps without SportsPress Pro.
+* Feature - Option to display team logos instead of team names in player lists.
+* Feature - Option to display custom specs in event blocks and event lists.
+* Tweak - Improve page load speed when creating new league tables.
+* Tweak - Prevent displaying events other than published or scheduled.
+* Fix - Icons only appearing in the first table when player lists are grouped.
+* Fix - Character encoding and CRLF errors in calendar feeds.
+* Fix - Missing field location Schema error.
+* Fix - Dropdowns collapsing in admin when meta boxes are hidden.
+* Fix - Timezone handling in countdowns.
+* Fix - Error when using special characters in admin settings.
 
 = 2.6.14 =
 * Fix - API endpoints for secondary post types.

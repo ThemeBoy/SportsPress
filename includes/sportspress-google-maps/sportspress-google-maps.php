@@ -5,7 +5,7 @@ Plugin URI: http://tboy.co/pro
 Description: Integrate Google Maps to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com
-Version: 2.7
+Version: 2.6.15
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Google_Maps' ) ) :
  * Main SportsPress Google Maps Class
  *
  * @class SportsPress_Google_Maps
- * @version	2.7
+ * @version	2.6.15
  */
 class SportsPress_Google_Maps {
 
@@ -45,7 +45,7 @@ class SportsPress_Google_Maps {
 	 */
 	private function define_constants() {
 		if ( !defined( 'SP_GOOGLE_MAPS_VERSION' ) )
-			define( 'SP_GOOGLE_MAPS_VERSION', '2.7.0' );
+			define( 'SP_GOOGLE_MAPS_VERSION', '2.6.15' );
 
 		if ( !defined( 'SP_GOOGLE_MAPS_URL' ) )
 			define( 'SP_GOOGLE_MAPS_URL', plugin_dir_url( __FILE__ ) );
