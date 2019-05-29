@@ -364,6 +364,25 @@ function sp_get_player_number( $post = 0 ) {
 	return get_post_meta( $post, 'sp_number', true );
 }
 
+function sp_get_player_number_in_event( $player_id, $team_id, $event_id ) {
+	$event_players = get_post_meta( $event_id, 'sp_players', true );
+	if ( ! array_key_exists( $team_id, $event_players ) ) {
+		return;
+	}
+	if ( ! array_key_exists( $player_id, $event_players[ $team_id ] ) ) {
+		return;
+	}
+	return $event_players[ $team_id ][ $player_id ][ 'number' ];
+}
+
+function sp_get_player_number_in_event_or_profile( $player_id, $team_id, $event_id ) {
+	$number = sp_get_player_number_in_event( $player_id, $team_id, $event_id );
+	if ( is_null( $number ) ) {
+		$number = sp_get_player_number( $player_id );
+	}
+	return $number;
+}
+
 function sp_get_player_name( $post = 0 ) {
 	return apply_filters( 'sportspress_player_name', get_the_title( $post ), $post );
 }
