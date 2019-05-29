@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add event specs/stats to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.6
+Version: 2.6.15
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Event_Specs' ) ) :
  * Main SportsPress Event Specs Class
  *
  * @class SportsPress_Event_Specs
- * @version	2.6
+ * @version	2.6.15
  */
 class SportsPress_Event_Specs {
 
@@ -49,7 +49,7 @@ class SportsPress_Event_Specs {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_EVENT_SPECS_VERSION' ) )
-			define( 'SP_EVENT_SPECS_VERSION', '2.6' );
+			define( 'SP_EVENT_SPECS_VERSION', '2.6.15' );
 
 		if ( !defined( 'SP_EVENT_SPECS_URL' ) )
 			define( 'SP_EVENT_SPECS_URL', plugin_dir_url( __FILE__ ) );

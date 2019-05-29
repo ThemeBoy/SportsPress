@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, nabil_kadimi
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 5.0
-Stable tag: 2.6.14
+Tested up to: 5.2
+Stable tag: 2.6.15
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -248,6 +248,8 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Fix - Character encoding and CRLF errors in calendar feeds.
 * Fix - Missing field location Schema error.
 * Fix - Dropdowns collapsing in admin when meta boxes are hidden.
+* Fix - Timezone handling in countdowns.
+* Fix - Error when using special characters in admin settings.
 
 = 2.6.14 =
 * Fix - API endpoints for secondary post types.
