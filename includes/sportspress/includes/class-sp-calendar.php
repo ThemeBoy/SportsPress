@@ -422,17 +422,6 @@ class SP_Calendar extends SP_Secondary_Post {
 		else:
 			$events = null;
 		endif;
-		
-		// Filter out unessecary events if we are showing past meetings
-		if ( $this->teams_past ){
-			$events_past = array();
-			foreach ( $events as $single_event ) {
-				if ( sort( get_post_meta( $single_event->ID, 'sp_team' ) ) === sort( $this->teams_past ) ) {
-					$events_past[] = $single_event;
-				}
-			}
-			$events = $events_past;
-		}
 
 		// Remove any calendar selection filters
 		remove_filter( 'posts_where', array( $this, 'range' ) );
