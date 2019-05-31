@@ -217,6 +217,8 @@ if ( is_array( $teams ) ):
 							}
 							
 							sp_get_template( 'event-performance-table.php', array(
+								'id' => $id,
+								'index' => $index,
 								'section' => $section_id,
 								'section_label' => $section_label,
 								'scrollable' => $scrollable,
