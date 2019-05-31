@@ -369,8 +369,8 @@ class SP_Player extends SP_Custom_Post {
 
 						foreach ( $player_performance as $key => $value ):
 							if ( array_key_exists( $key, $totals ) ):
-								$value = floatval( $value );
-								$totals[ $key ] += $value;
+								$add = apply_filters( 'sportspress_player_performance_add_value', floatval( $value ), $key );
+								$totals[ $key ] += $add;
 							endif;
 						endforeach;
 
@@ -552,7 +552,7 @@ class SP_Player extends SP_Custom_Post {
 			endforeach;
 
 			foreach ( $performance_labels as $key => $label ):
-				$placeholders[ $div_id ][ $key ] = sp_array_value( $totals, $key, 0 );
+				$placeholders[ $div_id ][ $key ] = apply_filters( 'sportspress_player_performance_table_placeholder', sp_array_value( $totals, $key, 0 ), $key );
 			endforeach;
 
 		endforeach;

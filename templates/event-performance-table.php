@@ -130,7 +130,7 @@ $i = 0;
 						foreach ( $labels as $key => $label ):
 							if ( 'name' == $key )
 								continue;
-							
+
 							$format = sp_array_value( $formats, $key, 'number' );
 							$placeholder = sp_get_format_placeholder( $format );
 
@@ -169,7 +169,7 @@ $i = 0;
 								endif;
 								
 								if ( 'number' === $format ):
-									$add = floatval( $value );
+									$add = apply_filters( 'sportspress_event_performance_add_value', floatval( $value ), $key );
 									$totals[ $key ] += $add;
 								endif;
 							endif;

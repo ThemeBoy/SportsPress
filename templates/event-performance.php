@@ -96,7 +96,7 @@ if ( is_array( $teams ) ):
 		$formats[ $column->post_name ] = $format;
 	}
 
-	do_action( 'sportspress_before_event_performance' );
+	do_action( 'sportspress_before_event_performance', $columns );
 	
 	if ( $is_individual ) {
 		// Combined table
