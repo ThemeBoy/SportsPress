@@ -157,6 +157,8 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 			</ul>
 			<?php
 		}
+
+		do_action( 'sportspress_meta_box_performance_details', $post );
 	}
 
 	/**
