@@ -728,7 +728,8 @@ class SP_Player extends SP_Custom_Post {
 			foreach ( $stats as $key => $value ):
 				if ( in_array( $key, array( 'name', 'team' ) ) ) continue;
 				$value = floatval( $value );
-				$career[ $key ] = sp_array_value( $career, $key, 0 ) + $value;
+				$add = apply_filters( 'sportspress_player_performance_add_value', floatval( $value ), $key );
+				$career[ $key ] = sp_array_value( $career, $key, 0 ) + $add;
 			endforeach;
 		endforeach;
 
@@ -741,6 +742,9 @@ class SP_Player extends SP_Custom_Post {
 			$precision = sp_array_value( $value, 'precision', 0 );
 			$career[ $post->post_name ] = sp_solve( $value['equation'], $totals, $precision );
 		}
+
+		// Filter career total placeholders
+		$career = apply_filters( 'sportspress_player_performance_table_placeholders', $career );
 
 		// Get manually entered career totals
 		$manual_career = sp_array_value( $data, 0, array() );
