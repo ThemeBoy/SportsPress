@@ -85,8 +85,20 @@ class SP_Install {
 		// Flush rules after install
 		flush_rewrite_rules();
 
-		// Redirect to welcome screen
-		set_transient( '_sp_activation_redirect', 1, 60 * 60 );
+		// Get current major version
+    $version = explode( '.', $current_version, 3 );
+    unset( $version[2] );
+    $major_current_version = implode( '.', $version );
+
+    // Get new major version
+    $version = explode( '.', SP()->version, 3 );
+    unset( $version[2] );
+    $major_version = implode( '.', $version );
+
+		// Redirect to welcome screen if major version has changed
+		if ( $major_current_version !== $major_version ) {
+			set_transient( '_sp_activation_redirect', 1, 60 * 60 );
+		}
 	}
 
 	/**

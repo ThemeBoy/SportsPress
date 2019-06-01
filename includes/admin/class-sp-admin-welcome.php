@@ -383,7 +383,7 @@ class SP_Admin_Welcome {
   public function welcome() {
 
     // Bail if no activation redirect transient is set
-      if ( ! get_transient( '_sp_activation_redirect' ) )
+    if ( ! get_transient( '_sp_activation_redirect' ) )
       return;
 
     // Delete the redirect transient
