@@ -1,5 +1,10 @@
 == SportsPress Changelog ==
 
+= 2.6.17 =
+* Tweak - Only show welcome screen on major version upgrade.
+* Tweak - Add filters to enable career totals calculation with extensions.
+* Fix - Countdowns not reflecting timezone setting.
+
 = 2.6.16 =
 * Tweak - Add support for updated baseball extension with partial innings.
 * Fix - Error displaying staff in events when offense and defense are separate tables.
