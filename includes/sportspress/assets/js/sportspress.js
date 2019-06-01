@@ -21,9 +21,16 @@ function sp_viewport() {
 		var countDownDate = new Date($(this).data('countdown')).getTime();
 		// Iterate every second
 		var x = setInterval(function() {
-
+			
+			// Get todays date and time
+			var now = new Date();
+			
+			// Convert curent date and time to UTC
+			var tzDifference = now.getTimezoneOffset();
+			var nowutc = new Date(now.getTime() + tzDifference * 60 * 1000);
+			
 			// Find the distance between now and the count down date
-			var distance = countDownDate - (new Date);
+			var distance = countDownDate - nowutc;
 			if ( distance < 0 ) {
 				distance = 0;
 			}

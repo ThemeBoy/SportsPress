@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     2.3
+ * @version     2.6.16
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -157,6 +157,8 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 			</ul>
 			<?php
 		}
+
+		do_action( 'sportspress_meta_box_performance_details', $post );
 	}
 
 	/**

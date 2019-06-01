@@ -70,7 +70,9 @@ foreach ( $performance as $team => $players ) {
 			// Loop through players
 			foreach ( $players as $values ) {
 				if ( array_key_exists( $key, $template ) ) {
-					$statistics[ $team ][ $key ] += (float) sp_array_value( $values, $key, 0 );
+					$value = sp_array_value( $values, $key, 0 );
+					$add = apply_filters( 'sportspress_event_performance_add_value', floatval( $value ), $key );
+					$statistics[ $team ][ $key ] += $add;
 				}
 			}
 		}

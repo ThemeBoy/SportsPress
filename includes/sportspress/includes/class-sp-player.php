@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		2.6.9
+ * @version		2.6.17
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -369,8 +369,8 @@ class SP_Player extends SP_Custom_Post {
 
 						foreach ( $player_performance as $key => $value ):
 							if ( array_key_exists( $key, $totals ) ):
-								$value = floatval( $value );
-								$totals[ $key ] += $value;
+								$add = apply_filters( 'sportspress_player_performance_add_value', floatval( $value ), $key );
+								$totals[ $key ] += $add;
 							endif;
 						endforeach;
 
@@ -552,7 +552,7 @@ class SP_Player extends SP_Custom_Post {
 			endforeach;
 
 			foreach ( $performance_labels as $key => $label ):
-				$placeholders[ $div_id ][ $key ] = sp_array_value( $totals, $key, 0 );
+				$placeholders[ $div_id ][ $key ] = apply_filters( 'sportspress_player_performance_table_placeholder', sp_array_value( $totals, $key, 0 ), $key );
 			endforeach;
 
 		endforeach;
@@ -728,7 +728,8 @@ class SP_Player extends SP_Custom_Post {
 			foreach ( $stats as $key => $value ):
 				if ( in_array( $key, array( 'name', 'team' ) ) ) continue;
 				$value = floatval( $value );
-				$career[ $key ] = sp_array_value( $career, $key, 0 ) + $value;
+				$add = apply_filters( 'sportspress_player_performance_add_value', floatval( $value ), $key );
+				$career[ $key ] = sp_array_value( $career, $key, 0 ) + $add;
 			endforeach;
 		endforeach;
 
@@ -741,6 +742,9 @@ class SP_Player extends SP_Custom_Post {
 			$precision = sp_array_value( $value, 'precision', 0 );
 			$career[ $post->post_name ] = sp_solve( $value['equation'], $totals, $precision );
 		}
+
+		// Filter career total placeholders
+		$career = apply_filters( 'sportspress_player_performance_table_placeholders', $career );
 
 		// Get manually entered career totals
 		$manual_career = sp_array_value( $data, 0, array() );

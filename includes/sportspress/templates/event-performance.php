@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.6
+ * @version   2.6.16
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -96,7 +96,7 @@ if ( is_array( $teams ) ):
 		$formats[ $column->post_name ] = $format;
 	}
 
-	do_action( 'sportspress_before_event_performance' );
+	do_action( 'sportspress_before_event_performance', $columns );
 	
 	if ( $is_individual ) {
 		// Combined table
@@ -217,6 +217,8 @@ if ( is_array( $teams ) ):
 							}
 							
 							sp_get_template( 'event-performance-table.php', array(
+								'id' => $id,
+								'index' => $index,
 								'section' => $section_id,
 								'section_label' => $section_label,
 								'scrollable' => $scrollable,

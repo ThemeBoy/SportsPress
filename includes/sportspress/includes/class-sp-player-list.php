@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version		2.6.9
+ * @version		2.6.16
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -420,8 +420,8 @@ class SP_Player_List extends SP_Secondary_Post {
 									endif;
 								endforeach;
 							elseif ( array_key_exists( $key, $totals[ $player_id ] ) ):
-								$value = floatval( $value );
-								$totals[ $player_id ][ $key ] += $value;
+								$add = apply_filters( 'sportspress_player_performance_add_value', floatval( $value ), $key );
+								$totals[ $player_id ][ $key ] += $add;
 							endif;
 						endforeach;
 
@@ -601,7 +601,7 @@ class SP_Player_List extends SP_Secondary_Post {
 					$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
 				endif;
 
-				$placeholders[ $player_id ][ $stat->post_name ] = $placeholder;
+				$placeholders[ $player_id ][ $stat->post_name ] = apply_filters( 'sportspress_player_performance_table_placeholder', $placeholder, $stat->post_name );
 			endforeach;
 
 		endforeach;
