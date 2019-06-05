@@ -1,0 +1,13 @@
+.sp-data-table .sp-row .sp-delete-row {
+  color: #a00;
+  display: none;
+}
+.sp-data-table .sp-row .sp-delete-row:hover {
+  color: #f00;
+}
+.sp-data-table .sp-row-added .sp-add-row {
+  display: none;
+}
+.sp-data-table .sp-row-added .sp-delete-row {
+  display: inline-block;
+}
