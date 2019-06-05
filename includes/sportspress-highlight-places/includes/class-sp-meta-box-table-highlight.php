@@ -43,7 +43,7 @@ class SP_Meta_Box_Table_Highlight_Places {
 					<tr><th>Color</th><th>Place</th><th>Comment</th><th><a href="#" title="<?php _e( 'Insert row', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row" data-league="<?php //echo $league_id; ?>" data-season="<?php //echo $season_id; ?>"></a></th></tr>
 				</thead>
 				<tbody>
-					<tr class="sp-row">
+					<!--<tr class="sp-row">
 						<td>
 							<div class="sp-color-box">
 								<input name="sp_color" id="sp_color" type="text" value="" class="colorpick">
@@ -59,7 +59,7 @@ class SP_Meta_Box_Table_Highlight_Places {
 						<td class="sp-actions-column">
 							<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row"></a>
 						</td>
-					</tr>
+					</tr>-->
 				</tbody>
 			</table>
 		</div>
