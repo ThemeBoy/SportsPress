@@ -50,7 +50,9 @@ class SportsPress_Default_Nationality {
 	 */
 	public function add_general_options( $settings ) {
 		$countries[''] = __( '&mdash; None &mdash;', 'sportspress' );
-		$countries = array_merge ( $countries, SP()->countries->countries );
+		$sp_countries = new SP_Countries();
+		$countries = array_merge ( $countries, $sp_countries->countries );
+
 		$settings[]=array(
 					'title'     => __( 'Default Nationality', 'sportspress' ),
 					'id'        => 'sportspress_default_nationality',
