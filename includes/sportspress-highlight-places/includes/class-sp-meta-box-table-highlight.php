@@ -36,18 +36,10 @@ class SP_Meta_Box_Table_Highlight_Places {
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$sp_highlight_places = get_post_meta( $post->ID, 'sp_highlight_places', true );
-		ksort( $sp_highlight_places );
-		var_dump($sp_highlight_places);
-		?>
-		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table sp-highlight-places">
-				<thead>
-					<tr><th>Color</th><th>Place</th><th>Comment</th><th><a href="#" title="<?php _e( 'Insert row', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row" ></a></th></tr>
-				</thead>
-				<tbody>
-				<?php 
-				$sp_rows = null;
-				foreach ( $sp_highlight_places as $place => $info) { 
+		$sp_rows = null;
+		if ( is_array( $sp_highlight_places ) ) {
+			ksort( $sp_highlight_places );
+			foreach ( $sp_highlight_places as $place => $info) { 
 					$sp_rows .= '<tr class="sp-row">
 						<td>
 							<div class="sp-color-box">
@@ -65,8 +57,16 @@ class SP_Meta_Box_Table_Highlight_Places {
 							<a href="#" title="Delete row" class="dashicons dashicons-dismiss sp-delete-row"></a>
 						</td>
 					</tr>';
-				 }
-				echo $sp_rows; ?>
+			}
+		}
+		?>
+		<div class="sp-data-table-container">
+			<table class="widefat sp-data-table sp-highlight-places">
+				<thead>
+					<tr><th>Color</th><th>Place</th><th>Comment</th><th><a href="#" title="<?php _e( 'Insert row', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row" ></a></th></tr>
+				</thead>
+				<tbody>
+				<?php echo $sp_rows; ?>
 				</tbody>
 			</table>
 		</div>

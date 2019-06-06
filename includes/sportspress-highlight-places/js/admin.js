@@ -50,8 +50,8 @@ jQuery(document).ready(function($){
 	$(document).on('input', '#sp_place', function(){
 		$self = $(this);
 		var place = $(this).closest("tr.sp-row").find("input[id='sp_place']").val();
-		$(this).closest("input#sp_color").attr('name', 'sp_highlight_places['+place+'][color]');
-		$(this).closest("input#sp_place_desc").attr('name', 'sp_highlight_places['+place+'][desc]');
+		$(this).closest("tr.sp-row").find("input#sp_color").attr('name', 'sp_highlight_places['+place+'][color]');
+		$(this).closest("tr.sp-row").find("input#sp_place_desc").attr('name', 'sp_highlight_places['+place+'][desc]');
 	})
 	
 	// Delete added row

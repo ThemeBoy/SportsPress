@@ -32,6 +32,8 @@ class SportsPress_Highlight_Places {
 		// Hooks
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
+		add_action( 'sportspress_before_single_table', array( $this, 'add_inline_css' ) );
+		add_action( 'sportspress_after_single_table', array( $this, 'add_highlight_places_info' ) );
 
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 	}
@@ -85,6 +87,56 @@ class SportsPress_Highlight_Places {
 	 */
 	public function include_post_type_handler() {
 		include( 'includes/class-sp-meta-box-table-highlight.php' );
+	}
+	
+	/**
+	 * Add inline css code
+	 */
+	public function add_inline_css() {
+		$id = get_the_ID();
+		$sp_highlight_places = get_post_meta( $id, 'sp_highlight_places', true );
+		$sp_inline_css = null;
+		if ( is_array( $sp_highlight_places ) ) {
+			$sp_inline_css .= '<style type="text/css">';
+			$sp_inline_css .= '.sp_highlight_places .sp_color {
+									display: inline-block;
+									width: 20px;
+									height: 20px;
+							}';
+			$sp_inline_css .= '.sp_highlight_places .sp_desc {
+					display: inline-block;
+					height: 20px;
+					padding-left: 20px;
+			}';
+			foreach ( $sp_highlight_places as $place => $info) { 
+				$sp_inline_css .= '
+                article#post-'.$id.' tr.sp-row-no-'.( $place-1 ).' td.data-rank{
+					background: '.$info["color"].';
+                }';
+			}
+			$sp_inline_css .= '</style>';
+			echo $sp_inline_css;
+		}
+	}
+	
+	/**
+	 * Add inline css code
+	 */
+	public function add_highlight_places_info() {
+		$id = get_the_ID();
+		$sp_highlight_places = get_post_meta( $id, 'sp_highlight_places', true );
+		$sp_extra_info = null;
+		if ( is_array( $sp_highlight_places ) ) {
+			$sp_extra_info .= '<div class="sp_highlight_places">';
+			foreach ( $sp_highlight_places as $place => $info) { 
+				$sp_extra_info .= '<div class="sp_highlight_place">';
+				$sp_extra_info .= '<div class="sp_color" style="background-color:'.$info["color"].'">&nbsp;</div>';
+				$sp_extra_info .= '<div class="sp_desc">'.$info["desc"].'</div>';
+				$sp_extra_info .= '</div>';
+			}
+			$sp_extra_info .= '</div>';
+			echo $sp_extra_info;
+		}
 	}
 
 }
