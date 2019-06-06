@@ -35,31 +35,38 @@ class SP_Meta_Box_Table_Highlight_Places {
 	 */
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
-		$highlight_places = get_post_meta( $post->ID, 'sp_highlight_places', false );
+		$sp_highlight_places = get_post_meta( $post->ID, 'sp_highlight_places', true );
+		ksort( $sp_highlight_places );
+		var_dump($sp_highlight_places);
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-highlight-places">
 				<thead>
-					<tr><th>Color</th><th>Place</th><th>Comment</th><th><a href="#" title="<?php _e( 'Insert row', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row" data-league="<?php //echo $league_id; ?>" data-season="<?php //echo $season_id; ?>"></a></th></tr>
+					<tr><th>Color</th><th>Place</th><th>Comment</th><th><a href="#" title="<?php _e( 'Insert row', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row" ></a></th></tr>
 				</thead>
 				<tbody>
-					<!--<tr class="sp-row">
+				<?php 
+				$sp_rows = null;
+				foreach ( $sp_highlight_places as $place => $info) { 
+					$sp_rows .= '<tr class="sp-row">
 						<td>
 							<div class="sp-color-box">
-								<input name="sp_color" id="sp_color" type="text" value="" class="colorpick">
+								<input name="sp_highlight_places['.$place.'][color]" id="sp_color" type="text" value="'.$info["color"].'" class="colorpick">
 								<div id="sp_color" class="colorpickdiv"></div>
 							</div>
 						</td>
 						<td>
-							<input name="sp_place" id="sp_place" type="number" value="" class="sp_place" min="1">
+							<input name="sp_place" id="sp_place" type="number" value="'.$place.'" class="sp_place" min="1">
 						</td>
 						<td>
-							<input name="sp_place_desc" id="sp_place_desc" type="text" value="" class="sp_place_desc">
+							<input name="sp_highlight_places['.$place.'][desc]" id="sp_place_desc" type="text" value="'.$info["desc"].'" class="sp_place_desc">
 						</td>
 						<td class="sp-actions-column">
-							<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row"></a>
+							<a href="#" title="Delete row" class="dashicons dashicons-dismiss sp-delete-row"></a>
 						</td>
-					</tr>-->
+					</tr>';
+				 }
+				echo $sp_rows; ?>
 				</tbody>
 			</table>
 		</div>

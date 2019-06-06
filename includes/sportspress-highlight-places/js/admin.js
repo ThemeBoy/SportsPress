@@ -4,7 +4,7 @@ jQuery(document).ready(function($){
 		$row = `<tr class="sp-row">
 						<td>
 							<div class="sp-color-box">
-								<input name="sp_color" id="sp_color" type="text" value="#75e462" class="colorpick">
+								<input name="sp_highlight_places" id="sp_color" type="text" value="#ffffff" class="colorpick">
 								<div id="sp_color" class="colorpickdiv"></div>
 							</div>
 						</td>
@@ -12,10 +12,10 @@ jQuery(document).ready(function($){
 							<input name="sp_place" id="sp_place" type="number" value="" class="sp_place" min="1">
 						</td>
 						<td>
-							<input name="sp_place_desc" id="sp_place_desc" type="text" value="" class="sp_place_desc" placeholder="i.e. Champion">
+							<input name="sp_highlight_places" id="sp_place_desc" type="text" value="" class="sp_place_desc" placeholder="i.e. Champion">
 						</td>
 						<td class="sp-actions-column">
-							<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row"></a>
+							<a href="#" title="Delete row" class="dashicons dashicons-dismiss sp-delete-row"></a>
 						</td>
 					</tr>`;
 		
@@ -46,6 +46,13 @@ jQuery(document).ready(function($){
 
 	return false;
 	});
+	
+	$(document).on('input', '#sp_place', function(){
+		$self = $(this);
+		var place = $(this).closest("tr.sp-row").find("input[id='sp_place']").val();
+		$(this).closest("input#sp_color").attr('name', 'sp_highlight_places['+place+'][color]');
+		$(this).closest("input#sp_place_desc").attr('name', 'sp_highlight_places['+place+'][desc]');
+	})
 	
 	// Delete added row
 	$(".sp-highlight-places").on("click", ".sp-delete-row", function() {
