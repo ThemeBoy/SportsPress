@@ -143,4 +143,6 @@ class SportsPress_Highlight_Places {
 
 endif;
 
-new SportsPress_Highlight_Places();
+if ( get_option( 'sportspress_load_highlight_places_module', 'no' ) == 'yes' ) {
+	new SportsPress_Highlight_Places();
+}
