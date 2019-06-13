@@ -1,5 +1,8 @@
 == SportsPress Changelog ==
 
+= 2.6.18 =
+* Fix - Prevent OpenStreetMap scripts from loading when Google Maps is active via SportsPress Pro.
+
 = 2.6.17 =
 * Tweak - Only show welcome screen on major version upgrade.
 * Tweak - Add filters to enable career totals calculation with extensions.
