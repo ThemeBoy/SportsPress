@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! isset( $meta ) )
     return;
 
+if ( is_tax( 'sp_venue' ) )
+	do_action ( 'sportspress_before_venue_map' );
+
 $address = sp_array_value( $meta, 'sp_address', null );
 $address = urlencode( $address );
 $latitude = sp_array_value( $meta, 'sp_latitude', null );
@@ -26,3 +29,5 @@ if ( 'satellite' !== $maptype ) $maptype = 'roadmap';
 if ( $latitude != null && $longitude != null ){
   do_action ( 'sp_venue_show_map', $latitude, $longitude, $address, $zoom, $maptype );
 }
+if ( is_tax( 'sp_venue' ) ) 
+	do_action ( 'sportspress_after_venue_map' );
