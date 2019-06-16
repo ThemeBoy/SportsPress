@@ -334,6 +334,7 @@ class SP_Calendar extends SP_Secondary_Post {
 				$seasons = get_the_terms( $this->ID, 'sp_season' );
 				$venues = get_the_terms( $this->ID, 'sp_venue' );
 				$teams = array_filter( get_post_meta( $this->ID, 'sp_team', false ) );
+				$players = array_filter( get_post_meta( $this->ID, 'sp_player', false ) );
 				$table = get_post_meta( $this->ID, 'sp_table', true );
 
 				if ( ! isset( $league_ids ) ) $league_ids = array();
@@ -391,6 +392,16 @@ class SP_Calendar extends SP_Secondary_Post {
 					array(
 						'key' => 'sp_team',
 						'value' => $teams,
+						'compare' => 'IN',
+					),
+				);
+			}
+			
+			if ( ! empty( $players ) ) {
+				$args['meta_query']	= array(
+					array(
+						'key' => 'sp_player',
+						'value' => $players,
 						'compare' => 'IN',
 					),
 				);
