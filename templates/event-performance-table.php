@@ -275,7 +275,7 @@ $i = 0;
 			<?php endif; ?>
 		</table>
 		<?php
-			if ( $show_staff ) {
+			if ( isset( $show_staff ) ) {
 				echo sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
 			}
 		?>
