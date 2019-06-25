@@ -504,17 +504,19 @@ class SP_Player extends SP_Custom_Post {
 						// Loop through away teams
 						if ( sizeof( $results ) ):
 							foreach ( $results as $team_results ):
-								unset( $team_results['outcome'] );
-								foreach ( $team_results as $result_slug => $team_result ):
+								if ( is_array( $team_results ) ):
+									unset( $team_results['outcome'] );
+									foreach ( $team_results as $result_slug => $team_result ):
 
-									// Add to total
-									$value = sp_array_value( $totals, $result_slug . 'against', 0 );
-									$value += floatval( $team_result );
-									$totals[ $result_slug . 'against' ] = $value;
+										// Add to total
+										$value = sp_array_value( $totals, $result_slug . 'against', 0 );
+										$value += floatval( $team_result );
+										$totals[ $result_slug . 'against' ] = $value;
 
-									// Add subset
-									$totals[ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
-								endforeach;
+										// Add subset
+										$totals[ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
+									endforeach;
+								endif;
 							endforeach;
 						endif;
 					endif;
