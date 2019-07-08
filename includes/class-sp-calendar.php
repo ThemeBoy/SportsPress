@@ -8,7 +8,7 @@
  * https://wordpress.org/support/topic/timezone-issues-with-schedule-calendar-list/
  *
  * @class 		SP_Calendar
- * @version   2.6.15
+ * @version   2.6.19
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
