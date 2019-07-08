@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version		2.6.16
+ * @version		2.6.19
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -541,18 +541,19 @@ class SP_Player_List extends SP_Secondary_Post {
 						if ( sizeof( $results ) ):
 							foreach ( $results as $id => $team_results ):
 								if ( $team_id == $id ) continue;
-								$team_results['outcome'] = null;
-								unset( $team_results['outcome'] );
-								foreach ( $team_results as $result_slug => $team_result ):
+								if ( is_array( $team_results ) ):
+									unset( $team_results['outcome'] );
+									foreach ( $team_results as $result_slug => $team_result ):
 
-									// Add to total
-									$value = sp_array_value( $totals[ $player_id ], $result_slug . 'against', 0 );
-									$value += floatval( $team_result );
-									$totals[ $player_id ][ $result_slug . 'against' ] = $value;
+										// Add to total
+										$value = sp_array_value( $totals[ $player_id ], $result_slug . 'against', 0 );
+										$value += floatval( $team_result );
+										$totals[ $player_id ][ $result_slug . 'against' ] = $value;
 
-									// Add subset
-									$totals[ $player_id ][ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
-								endforeach;
+										// Add subset
+										$totals[ $player_id ][ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
+									endforeach;
+								endif;
 							endforeach;
 						endif;
 					endif;

@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     2.6.16
+ * @version     2.6.19
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -77,7 +77,7 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		<p class="sp-format-selector">
 			<select name="sp_format">
 				<?php
-				$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ), 'equation' => __( 'Equation', 'sportspress' ) ) );
+				$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ), 'equation' => __( 'Equation', 'sportspress' ), 'checkbox' => __( 'Checkbox', 'sportspress' ) ) );
 				foreach ( $options as $key => $value ):
 					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $format, true, false ), $value );
 				endforeach;

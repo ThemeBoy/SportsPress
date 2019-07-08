@@ -133,6 +133,10 @@
 .sp-data-table .data-rank {
 	width: 1px;
 }
+.sp-data-table .sp-checkbox {
+	font-family: sportspress;
+	vertical-align: bottom;
+}
 
 /* Post Content */
 .sp-post-content {

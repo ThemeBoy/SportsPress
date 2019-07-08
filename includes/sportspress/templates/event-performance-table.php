@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version		2.6.16
+ * @version		2.6.19
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -163,7 +163,11 @@ $i = 0;
 								endif;
 							else:
 								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
-									$value = $row[ $key ];
+									if ( 'checkbox' === $format ):
+										$value = '<span class="sp-checkbox">' . $row[ $key ] . '</span>';
+									else:
+										$value = $row[ $key ];
+									endif;
 								else:
 									$value = $placeholder;
 								endif;
@@ -275,7 +279,7 @@ $i = 0;
 			<?php endif; ?>
 		</table>
 		<?php
-			if ( $show_staff ) {
+			if ( isset( $show_staff ) ) {
 				echo sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
 			}
 		?>

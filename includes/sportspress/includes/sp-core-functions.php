@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version   2.6.8
+ * @version   2.6.19
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -533,7 +533,7 @@ if ( !function_exists( 'sp_get_post_format' ) ) {
 	function sp_get_post_format( $post_id ) {
 		$format = get_post_meta ( $post_id, 'sp_format', true );
 		if ( isset( $format ) ):
-			$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ), 'equation' => __( 'Equation', 'sportspress' ) ) );
+			$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ), 'equation' => __( 'Equation', 'sportspress' ), 'checkbox' => __( 'Checkbox', 'sportspress' ) ) );
 			return sp_array_value( $options, $format, __( 'Number', 'sportspress' ) );
 		else:
 			return __( 'Number', 'sportspress' );
@@ -547,6 +547,7 @@ if ( !function_exists( 'sp_get_format_placeholder' ) ) {
 			'number' => 0,
 			'time' => '0:00',
 			'text' => '&nbsp;',
+			'checkbox' => '&nbsp;',
 		) );
 		return sp_array_value( $placeholders, $key, 0 );
 	}

@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.5.5
+ * @version		2.6.19
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -449,7 +449,8 @@ class SP_Meta_Box_Event_Performance {
 				$placeholder = sp_get_format_placeholder( sp_array_value( $formats, $column, 'number' ) );
 				?>
 				<td>
-					<?php if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) { ?>
+					<?php $format = sp_array_value( $formats, $column, 'number' ); ?>
+					<?php if ( 'time' === $format ) { ?>
 						<?php
 							$intval = intval( $value );
 							$timeval = gmdate( 'i:s', $intval );
@@ -463,6 +464,9 @@ class SP_Meta_Box_Event_Performance {
 
 						<input class="sp-player-<?php echo $column; ?>-input sp-convert-time-input sp-sync-input" type="text" name="sp_times[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $timeval ); ?>" placeholder="<?php echo $placeholder; ?>" />
 						<input class="sp-convert-time-output" type="hidden" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" />
+					<?php } elseif ( 'checkbox' === $format ) { ?>
+						<input type="hidden" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="0" />
+						<input class="sp-player-<?php echo $column; ?>-input sp-sync-input" type="checkbox" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="1" data-value="<?php echo $value; ?>" <?php checked( $value ); ?> />
 					<?php } else { ?>
 						<input class="sp-player-<?php echo $column; ?>-input sp-sync-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo $placeholder; ?>" />
 					<?php } ?>
