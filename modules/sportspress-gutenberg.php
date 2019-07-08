@@ -30,8 +30,8 @@ class SportsPress_Gutenberg {
 
 		add_filter( 'gutenberg_can_edit_post_type', array( $this, 'can_edit_post_type' ), 10, 2 );
 		add_filter( 'use_block_editor_for_post_type', array( $this, 'can_edit_post_type' ), 10, 2 );
-		add_filter( 'block_categories', array( $this, 'add_category' ), 10, 2 );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'load_blocks' ) );
+		//add_filter( 'block_categories', array( $this, 'add_category' ), 10, 2 );
+		//add_action( 'enqueue_block_editor_assets', array( $this, 'load_blocks' ) );
 	}
 
 	/**
