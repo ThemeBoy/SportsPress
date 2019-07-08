@@ -163,7 +163,11 @@ $i = 0;
 								endif;
 							else:
 								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
-									$value = $row[ $key ];
+									if ( 'checkbox' === $format ):
+										$value = '<span class="sp-checkbox">' . $row[ $key ] . '</span>';
+									else:
+										$value = $row[ $key ];
+									endif;
 								else:
 									$value = $placeholder;
 								endif;
