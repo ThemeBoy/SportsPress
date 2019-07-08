@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 5.2
-Stable tag: 2.6.18
+Stable tag: 2.6.19
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -115,8 +115,19 @@ If on the off-chance you do encounter issues with the event/team/player/staff/sp
 
 == Changelog ==
 
+= 2.6.19 =
+* Feature - Enable filtering calendars base on players.
+* Feature - Add checkbox type to event performance.
+* Fix - Tournament bracket flipping final round teams incorrectly.
+* Fix - Javascript error when columns are hidden in event list.
+* Fix - Notice when displaying staff in event performance table.
+* Fix - Notice when event results are empty.
+* Fix - Uncaught error in player class.
+* Preset - Update volleyball preset using checkbox performance type.
+
 = 2.6.18 =
 * Fix - Prevent OpenStreetMap scripts from loading when Google Maps is active via SportsPress Pro.
+* Fix - Headers already sent error related to default nationality module.
 
 = 2.6.17 =
 * Tweak - Only show welcome screen on major version upgrade.
