@@ -55,6 +55,8 @@
 	"options": {
 						"mode" : "team",
 						"event_teams" : "2",
+						"event_teams_delimiter" : "-",
+						"event_show_full_time" : "no",
 						"event_reverse_teams" : "no",
 						"event_performance_mode" : "values",
 						"event_show_player_numbers" : "yes",
