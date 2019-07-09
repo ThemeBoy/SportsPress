@@ -58,6 +58,6 @@
 						"event_reverse_teams" : "no",
 						"event_performance_mode" : "values",
 						"event_show_player_numbers" : "yes",
-						"event_show_position" : "no",
+						"event_show_position" : "no"
 	}
 }
