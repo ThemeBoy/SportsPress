@@ -388,7 +388,7 @@ class SP_Calendar extends SP_Secondary_Post {
 			}
 
 			if ( ! empty( $teams ) ) {
-				$args['meta_query']	= array(
+				$args['meta_query'][] = array(
 					array(
 						'key' => 'sp_team',
 						'value' => $teams,
