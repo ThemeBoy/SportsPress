@@ -1,5 +1,9 @@
 == SportsPress Changelog ==
 
+= 2.6.20 =
+* Tweak - Improve compatibility with volleyball for checkbox performance.
+* Preset - Update volleyball preset with additional options.
+
 = 2.6.19 =
 * Feature - Enable filtering calendars base on players.
 * Feature - Add checkbox type to event performance.

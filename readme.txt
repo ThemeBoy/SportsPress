@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 5.2
-Stable tag: 2.6.19
+Stable tag: 2.6.20
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -52,6 +52,7 @@ More details about each feature are available on the [SportsPress Website](http:
 * [SportsPress for Cricket](https://wordpress.org/plugins/sportspress-for-cricket/)
 * [SportsPress for Football (Soccer)](https://wordpress.org/plugins/sportspress-for-soccer/)
 * [SportsPress for Golf](https://wordpress.org/plugins/sportspress-for-golf/)
+* [SportsPress for Volleyball (Soccer)](https://wordpress.org/plugins/sportspress-for-volleyball/)
 
 = SportsPress Pro =
 
@@ -236,6 +237,10 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.6.20 =
+* Tweak - Improve compatibility with volleyball for checkbox performance.
+* Preset - Update volleyball preset with additional options.
 
 = 2.6.19 =
 * Feature - Enable filtering calendars base on players.
