@@ -389,21 +389,17 @@ class SP_Calendar extends SP_Secondary_Post {
 
 			if ( ! empty( $teams ) ) {
 				$args['meta_query'][] = array(
-					array(
-						'key' => 'sp_team',
-						'value' => $teams,
-						'compare' => 'IN',
-					),
+					'key' => 'sp_team',
+					'value' => $teams,
+					'compare' => 'IN',
 				);
 			}
 			
 			if ( ! empty( $players ) ) {
-				$args['meta_query']	= array(
-					array(
-						'key' => 'sp_player',
-						'value' => $players,
-						'compare' => 'IN',
-					),
+				$args['meta_query'][]	= array(
+					'key' => 'sp_player',
+					'value' => $players,
+					'compare' => 'IN',
 				);
 			}
 		
