@@ -8,7 +8,7 @@
  * https://wordpress.org/support/topic/timezone-issues-with-schedule-calendar-list/
  *
  * @class 		SP_Calendar
- * @version   2.6.19
+ * @version   2.6.20
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -388,22 +388,18 @@ class SP_Calendar extends SP_Secondary_Post {
 			}
 
 			if ( ! empty( $teams ) ) {
-				$args['meta_query']	= array(
-					array(
-						'key' => 'sp_team',
-						'value' => $teams,
-						'compare' => 'IN',
-					),
+				$args['meta_query'][] = array(
+					'key' => 'sp_team',
+					'value' => $teams,
+					'compare' => 'IN',
 				);
 			}
 			
 			if ( ! empty( $players ) ) {
-				$args['meta_query']	= array(
-					array(
-						'key' => 'sp_player',
-						'value' => $players,
-						'compare' => 'IN',
-					),
+				$args['meta_query'][]	= array(
+					'key' => 'sp_player',
+					'value' => $players,
+					'compare' => 'IN',
 				);
 			}
 		

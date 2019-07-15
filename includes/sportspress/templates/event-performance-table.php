@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version		2.6.19
+ * @version		2.6.20
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -162,7 +162,7 @@ $i = 0;
 									$value = $position = implode( ', ', $positions );
 								endif;
 							else:
-								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
+								if ( array_key_exists( $key, $row ) && $row[ $key ] !== '' ):
 									if ( 'checkbox' === $format ):
 										$value = '<span class="sp-checkbox">' . $row[ $key ] . '</span>';
 									else:
