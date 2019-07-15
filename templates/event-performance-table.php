@@ -162,7 +162,7 @@ $i = 0;
 									$value = $position = implode( ', ', $positions );
 								endif;
 							else:
-								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
+								if ( array_key_exists( $key, $row ) && $row[ $key ] !== '' ):
 									if ( 'checkbox' === $format ):
 										$value = '<span class="sp-checkbox">' . $row[ $key ] . '</span>';
 									else:
