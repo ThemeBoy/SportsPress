@@ -52,7 +52,7 @@ More details about each feature are available on the [SportsPress Website](http:
 * [SportsPress for Cricket](https://wordpress.org/plugins/sportspress-for-cricket/)
 * [SportsPress for Football (Soccer)](https://wordpress.org/plugins/sportspress-for-soccer/)
 * [SportsPress for Golf](https://wordpress.org/plugins/sportspress-for-golf/)
-* [SportsPress for Volleyball (Soccer)](https://wordpress.org/plugins/sportspress-for-volleyball/)
+* [SportsPress for Volleyball](https://wordpress.org/plugins/sportspress-for-volleyball/)
 
 = SportsPress Pro =
 
@@ -127,6 +127,8 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * [Football Club](http://tboy.co/fc)
 * [Marquee](http://tboy.co/marquee)
 * [Premier](http://tboy.co/premier)
+* [Rookie Plus](http://tboy.co/rp)
+* [Varsity](http://tboy.co/varsity)
 
 = Get Involved =
 
