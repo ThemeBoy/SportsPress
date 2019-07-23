@@ -10,7 +10,7 @@ function sp_viewport() {
 (function($) {
 
 	/* Header */
-	if ( ! $('.sp-header').size() ) {
+	if ( ! $('.sp-header').length ) {
 		$('body').prepend( '<div class="sp-header sp-header-loaded"></div>' );
 	}
 
