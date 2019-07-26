@@ -229,9 +229,14 @@ class SP_Player_List extends SP_Secondary_Post {
 				if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' && ( $stat->post_type == 'sp_performance' || $stat->post_type == 'sp_statistic' ) ) {
 					$icon = apply_filters( 'sportspress_event_performance_icons', '', $stat->ID, 1 );
 					if ( $icon != '' ) {
-						$columns[ $stat->post_name ] = apply_filters( 'sportspress_event_performance_icons', '', $stat->ID, 1 );
+						$columns[ $stat->post_name ] = $icon;
 					}else{
-						$columns[ $stat->post_name ] = $stat->post_title;
+						if ( has_post_thumbnail( $stat ) ) {
+							$icon = get_the_post_thumbnail( $stat, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $stat ) ) );
+							$columns[ $stat->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $stat->ID, 1 );
+						}else{
+							$columns[ $stat->post_name ] = $stat->post_title;
+						}
 					}
 				}else{
 					$columns[ $stat->post_name ] = $stat->post_title;
