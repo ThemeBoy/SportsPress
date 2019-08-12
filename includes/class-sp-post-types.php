@@ -447,9 +447,7 @@ class SP_Post_types {
 
 		register_post_type( 'sp_event', apply_filters( 'sportspress_register_post_type_event', $args  ) );
 
-		register_post_type( 'sp_team',
-			apply_filters( 'sportspress_register_post_type_team',
-				array(
+		$args = array(
 					'labels' => array(
 						'name' 					=> __( 'Teams', 'sportspress' ),
 						'singular_name' 		=> __( 'Team', 'sportspress' ),
@@ -480,9 +478,13 @@ class SP_Post_types {
 					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'teams',
-				)
-			)
-		);
+				);
+		
+		if ( get_option( 'sportspress_team_comment_status', 'no' ) == 'yes' ):
+			$args[ 'supports' ][] = 'comments';
+		endif;
+		
+		register_post_type( 'sp_team', apply_filters( 'sportspress_register_post_type_team', $args  ) );
 
 		register_post_type( 'sp_player',
 			apply_filters( 'sportspress_register_post_type_player',
