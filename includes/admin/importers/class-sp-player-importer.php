@@ -23,6 +23,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_page = 'sp_player_csv';
 			$this->import_label = __( 'Import Players', 'sportspress' );
 			$this->columns = array(
+				'post_date' => __( 'Date of Birth', 'sportspress' ),
 				'sp_number' => __( 'Squad Number', 'sportspress' ),
 				'post_title' => __( 'Name', 'sportspress' ),
 				'sp_position' => __( 'Positions', 'sportspress' ),
@@ -51,6 +52,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 			endif;
 
 			$rows = array_chunk( $array, sizeof( $columns ) );
+			
+			// Get Date of Birth format from post vars
+			$date_format = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : $_POST['sp_date_format'] );
 
 			foreach ( $rows as $row ):
 
@@ -77,6 +81,27 @@ if ( class_exists( 'WP_Importer' ) ) {
 				endforeach;
 
 				$name = sp_array_value( $meta, 'post_title' );
+				$date = sp_array_value( $meta, 'post_date' );
+				
+				// Format date of birth
+				$date = str_replace( '/', '-', trim( $date ) );
+				$date_array = explode( '-', $date );
+				switch ( $date_format ):
+					case 'dd/mm/yyyy':
+						$date = substr( str_pad( sp_array_value( $date_array, 2, '0000' ), 4, '0', STR_PAD_LEFT ), 0, 4 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 1, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 0, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 );
+						break;
+					case 'mm/dd/yyyy':
+						$date = substr( str_pad( sp_array_value( $date_array, 2, '0000' ), 4, '0', STR_PAD_LEFT ), 0, 4 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 0, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 1, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 );
+						break;
+					default:
+						$date = substr( str_pad( sp_array_value( $date_array, 0, '0000' ), 4, '0', STR_PAD_LEFT ), 0, 4 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 1, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 2, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 );
+				endswitch;
 
 				if ( ! $name ):
 					$this->skipped++;
@@ -210,6 +235,26 @@ if ( class_exists( 'WP_Importer' ) ) {
 			?>
 			<table class="form-table">
 				<tbody>
+					<tr>
+						<th scope="row" class="titledesc">
+							<?php _e( 'Date of Birth Format', 'sportspress' ); ?>
+						</th>
+                		<td class="forminp forminp-radio">
+                			<fieldset>
+                				<ul>
+									<li>
+		                        		<label><input name="sp_date_format" value="yyyy/mm/dd" type="radio" checked> yyyy/mm/dd</label>
+		                        	</li>
+									<li>
+		                        		<label><input name="sp_date_format" value="dd/mm/yyyy" type="radio"> dd/mm/yyyy</label>
+		                        	</li>
+									<li>
+		                        		<label><input name="sp_date_format" value="mm/dd/yyyy" type="radio"> mm/dd/yyyy</label>
+		                        	</li>
+								</ul>
+	                    	</fieldset>
+	                    </td>
+	                </tr>
 					<tr>
 						<td>
 							<label>
