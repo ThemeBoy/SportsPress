@@ -175,7 +175,7 @@ class SportsPress_Icons {
 		$value = get_post_meta( $id, 'sp_color', true );
 		if ( empty( $value ) ) $value = '111111';
 
-		$color = '<div class="sp-icon-color-box"><input name="sp_color" id="sp_color" type="text" value="' . esc_attr( $value ) . '" size="7" class="colorpick" /> <div id="colorPickerDiv" class="colorpickdiv"></div></div>';
+		$color = '<div class="sp-color-box-for-icon"><input name="sp_color" id="sp_color" type="text" value="' . esc_attr( $value ) . '" size="7" class="colorpick" /> <div id="colorPickerDiv" class="colorpickdiv"></div></div>';
 
 		$content = '<p><strong>' . __( 'Select Icon', 'sportspress' ) . '</strong></p>
 			<p class="sp-icons">' . $icons . '</p>
