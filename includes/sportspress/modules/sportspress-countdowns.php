@@ -34,6 +34,7 @@ class SportsPress_Countdowns {
 		// Filters
 		add_filter( 'sportspress_shortcodes', array( $this, 'add_shortcodes' ) );
 		add_filter( 'sportspress_event_settings', array( $this, 'add_settings' ) );
+		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 	}
 
 	/**
@@ -103,6 +104,18 @@ class SportsPress_Countdowns {
 			)
 		);
 		return $settings;
+	}
+	
+	/**
+	 * Add text options 
+	 */
+	public function add_text_options( $options = array() ) {
+		return array_merge( $options, array(
+			__( 'days', 'sportspress' ),
+			__( 'hrs', 'sportspress' ),
+			__( 'mins', 'sportspress' ),
+			__( 'secs', 'sportspress' ),
+		) );
 	}
 }
 
