@@ -69,7 +69,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					'sp_season',
 				);
 				foreach ( $preservable_metas_keys as $p ) {
-					$meta[ $key ] = '';
+					$meta[ $p ] = '';
 				}
 
 				foreach ( $columns as $index => $key ):
