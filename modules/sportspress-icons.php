@@ -39,7 +39,7 @@ class SportsPress_Icons {
 		add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_performance_icon', array( $this, 'icon' ), 10, 2 );
 		add_filter( 'sportspress_event_performance_icons', array( $this, 'replace_icons' ), 10, 3 );
-		add_filter( 'admin_post_thumbnail_html', array( $this, 'admin_post_thumbnail_html' ), 10, 2 );
+		add_filter( 'admin_post_thumbnail_html', array( $this, 'sp_admin_post_thumbnail_html' ), 10, 2 );
 		add_action( 'sportspress_process_sp_performance_meta', array( $this, 'save' ), 10, 2 );
 		add_action( 'sportspress_process_sp_statistic_meta', array( $this, 'save' ), 10, 2 );
 	}
@@ -144,7 +144,7 @@ class SportsPress_Icons {
 	/**
 	 * Post thumbnail HTML.
 	*/
-	public function admin_post_thumbnail_html( $content = '', $id = 0 ) {
+	public function sp_admin_post_thumbnail_html( $content = '', $id = 0 ) {
 		// Bypass if no ID
 		if ( ! $id ) return $content;
 
