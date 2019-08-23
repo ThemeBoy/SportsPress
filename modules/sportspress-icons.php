@@ -148,7 +148,7 @@ class SportsPress_Icons {
 		// Bypass if no ID
 		if ( ! $id ) return $content;
 
-		// Bypass if not performance post type
+		// Bypass if not performance or statistic post type
 		$post_type = get_post_type( $id );
 		if ( 'sp_performance' !== $post_type && 'sp_statistic' !== $post_type ) return $content;
 
