@@ -589,7 +589,12 @@ class SP_Player extends SP_Custom_Post {
 					if ( $icon != '' ) {
 						$stats[ $post->post_name ] = $icon;
 					}else{
-						$stats[ $post->post_name ] = $post->post_title;
+						if ( has_post_thumbnail( $post ) ) {
+							$icon = get_the_post_thumbnail( $post, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $post ) ) );
+							$stats[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $post->ID, 1 );
+						}else{
+							$stats[ $post->post_name ] = $post->post_title;
+						}
 					}
 				}else{
 					$stats[ $post->post_name ] = $post->post_title;
@@ -608,8 +613,13 @@ class SP_Player extends SP_Custom_Post {
 								$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
 								if ( $icon != '' ) {
 									$stats[ $post->post_name ] = $icon;
-								} else {
-									$stats[ $post->post_name ] = $post->post_title;
+								}else{
+									if ( has_post_thumbnail( $post ) ) {
+										$icon = get_the_post_thumbnail( $post, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $post ) ) );
+										$stats[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $post->ID, 1 );
+									}else{
+										$stats[ $post->post_name ] = $post->post_title;
+									}
 								}
 							} else {
 								$stats[ $post->post_name ] = $post->post_title;
@@ -621,8 +631,13 @@ class SP_Player extends SP_Custom_Post {
 								$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
 									if ( $icon != '' ) {
 										$stats[ $post->post_name ] = $icon;
-									} else {
-										$stats[ $post->post_name ] = $post->post_title;
+									}else{
+										if ( has_post_thumbnail( $post ) ) {
+											$icon = get_the_post_thumbnail( $post, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $post ) ) );
+											$stats[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $post->ID, 1 );
+										}else{
+											$stats[ $post->post_name ] = $post->post_title;
+										}
 									}
 							} else {
 								$stats[ $post->post_name ] = $post->post_title;
