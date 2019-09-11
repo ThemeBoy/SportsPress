@@ -27,7 +27,7 @@ if ( '' === $address ) $address = '+';
 if ( 'satellite' !== $maptype ) $maptype = 'roadmap';
 
 if ( $latitude != null && $longitude != null ){
-  do_action ( 'sp_venue_show_map', $latitude, $longitude, $address, $zoom, $maptype );
+	do_action ( 'sp_venue_show_map', $latitude, $longitude, $address, $zoom, $maptype );
 }
 if ( is_tax( 'sp_venue' ) ) 
 	do_action ( 'sportspress_after_venue_map' );
