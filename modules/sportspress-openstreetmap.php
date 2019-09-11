@@ -96,7 +96,8 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
 	 * Enqueue frontend venue scripts
 	 */
 	public function frontend_venue_scripts() {
-		if( ( is_single() || is_tax() ) && get_post_type()=='sp_event' ){
+		global $post;
+		if( ( ( is_single() || is_tax() ) && get_post_type()=='sp_event' ) || sp_has_shortcodes( $post->post_content, array('event_full', 'event_venue') ) ) {
 			wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.4.0' );
 			wp_enqueue_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.4.0' );
 		}
