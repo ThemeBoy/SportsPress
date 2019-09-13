@@ -23,7 +23,6 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_page = 'sp_player_csv';
 			$this->import_label = __( 'Import Players', 'sportspress' );
 			$this->columns = array(
-				'post_date' => __( 'Date of Birth', 'sportspress' ),
 				'sp_number' => __( 'Squad Number', 'sportspress' ),
 				'post_title' => __( 'Name', 'sportspress' ),
 				'sp_position' => __( 'Positions', 'sportspress' ),
@@ -31,6 +30,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				'sp_league' => __( 'Leagues', 'sportspress' ),
 				'sp_season' => __( 'Seasons', 'sportspress' ),
 				'sp_nationality' => __( 'Nationality', 'sportspress' ),
+				'post_date' => __( 'Date of Birth', 'sportspress' ),
 			);
 			parent::__construct();
 		}
