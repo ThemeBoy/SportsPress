@@ -349,13 +349,19 @@ class SportsPress_Scoreboard {
 	 * Header scoreboard
 	 */
 	public static function header() {
-		$limit = get_option( 'sportspress_scoreboard_limit', 0 );
+
+		$args = apply_filters( 'sp_scoreboard_header_args', array(
+			'number' => get_option( 'sportspress_scoreboard_limit', 0 ),
+		) );
 		
-		if ( ! $limit )
+		if ( ! $args[ 'number' ] ) {
 			return;
+		}
+
 		?>
+
 		<div class="sp-header-scoreboard">
-			<?php sp_get_template( 'event-scoreboard.php', array( 'number' => $limit ), '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' ); ?>
+			<?php sp_get_template( 'event-scoreboard.php', $args, '', trailingslashit( SP_SCOREBOARD_DIR ) . 'templates/' ); ?>
 		</div>
 		<?php
 	}
