@@ -1,5 +1,5 @@
-Number,Name,Positions,Teams,Leagues,Seasons,Nationality
-1,Joe Allen,Goalkeeper,Eagles,Primary League|Secondary League,2014,aus
-3,Steven Gerrard,Defender,Kangaroos,Primary League,2014|2013,usa
-5,Daniel Sturridge,Midfielder|Forward,Sharks,Primary League|Secondary League,2014|2013,eng
-6,Gabrielle Gonzalez,Forward,Kangaroos|Sharks,Primary League,2014,esp
+Number,Name,Positions,Teams,Leagues,Seasons,Nationality,DoB
+1,Joe Allen,Goalkeeper,Eagles,Primary League|Secondary League,2014,aus,1983/05/05
+3,Steven Gerrard,Defender,Kangaroos,Primary League,2014|2013,usa,1970/03/10
+5,Daniel Sturridge,Midfielder|Forward,Sharks,Primary League|Secondary League,2014|2013,eng,1990/02/15
+6,Gabrielle Gonzalez,Forward,Kangaroos|Sharks,Primary League,2014,esp,1987/01/20
