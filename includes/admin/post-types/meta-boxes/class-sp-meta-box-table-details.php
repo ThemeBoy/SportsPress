@@ -29,6 +29,10 @@ class SP_Meta_Box_Table_Details {
 		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
 		$date_past = get_post_meta( $post->ID, 'sp_date_past', true );
 		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
+		$event_status = get_post_meta( $post->ID, 'sp_event_status', true );
+		if ( empty( $event_status ) ) {
+			$event_status = array( 'publish', 'future' );
+		}
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -89,6 +93,11 @@ class SP_Meta_Box_Table_Details {
 				sp_post_adder( $post_type, __( 'Add New', 'sportspress' ) );
 			}
 			?>
+			<p><strong><?php _e( 'Event Status (with results)', 'sportspress' ); ?></strong></p>
+			<p>
+				<input type="checkbox" name="sp_event_status[]" value="publish" <?php echo ( in_array( "publish" , $event_status) ) ? 'checked' : false; ?>> Published/Played<br>
+				<input type="checkbox" name="sp_event_status[]" value="future" <?php echo ( in_array( "future" , $event_status) ) ? 'checked' : false; ?>> Scheduled/Future<br>
+			</p>
 		</div>
 		<?php
 	}
@@ -108,5 +117,6 @@ class SP_Meta_Box_Table_Details {
 		update_post_meta( $post_id, 'sp_current_season', in_array( 'auto', sp_array_value( $tax_input, 'sp_season' ) ) );
 		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+		update_post_meta( $post_id, 'sp_event_status', sp_array_value( $_POST, 'sp_event_status', array() ) );
 	}
 }
