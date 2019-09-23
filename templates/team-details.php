@@ -36,7 +36,7 @@ endif;
 $terms = get_the_terms( $id, 'sp_venue' );
 if ( $terms ):
 	if ( get_option( 'sportspress_team_link_venues', 'no' ) === 'yes' ):
-		$data[ __( 'Home', 'sportspress' ) ] = get_the_term_list( $id, 'sp_venue' );
+		$data[ __( 'Home', 'sportspress' ) ] = get_the_term_list( $id, 'sp_venue', '', ', ' );
 	else:
 		$venues = array();
 		foreach ( $terms as $term ):
