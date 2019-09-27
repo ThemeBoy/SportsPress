@@ -14,7 +14,7 @@ if ( ! isset( $id ) )
 
 // Get linear timeline from event
 $event = new SP_Event( $id );
-$timeline = $event->timeline( false, true );
+$timeline = apply_filters( 'sp_event_timeline', $event->timeline( false, true ) );
 
 // Return if timeline is empty
 if ( empty( $timeline ) ) return;
