@@ -30,14 +30,10 @@ class SportsPress_Google_Maps {
 
 		// Hooks
 		remove_all_actions( 'sp_venue_show_map', 10 );
-		remove_all_actions( 'sp_admin_geocoder_scripts', 10 );
 		remove_all_actions( 'sp_setup_geocoder_scripts', 10 );
 		remove_all_actions( 'sp_setup_venue_geocoder_scripts', 10 );
-		remove_all_actions( 'sp_admin_venue_scripts', 10 );
 		remove_all_actions( 'sp_frontend_venue_scripts', 10 );
 		add_action( 'sp_venue_show_map', array( $this, 'show_venue_map' ), 10, 5 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'sp_admin_geocoder_scripts', array( $this, 'admin_geocoder_scripts' ), 10 );
 		add_action( 'sp_setup_geocoder_scripts', array( $this, 'setup_geocoder_scripts' ), 10 );
 		add_action( 'sp_setup_venue_geocoder_scripts', array( $this, 'setup_venue_geocoder_scripts' ), 10 );
 	}
