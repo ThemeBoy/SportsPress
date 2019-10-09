@@ -34,6 +34,9 @@ class SP_Meta_Box_List_Details {
 		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
 		$date_past = get_post_meta( $post->ID, 'sp_date_past', true );
 		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
+		$continents = SP()->countries->continents;
+		$nationalities = get_post_meta( $post->ID, 'sp_nationality', false );
+		$default_nationality = get_option( 'sportspress_default_nationality' , false );
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -96,6 +99,19 @@ class SP_Meta_Box_List_Details {
 					<option value="all" <?php selected( 'all', $era ); ?>><?php _e( 'All', 'sportspress' ); ?></option>
 					<option value="current" <?php selected( 'current', $era ); ?>><?php _e( 'Current', 'sportspress' ); ?></option>
 					<option value="past" <?php selected( 'past', $era ); ?>><?php _e( 'Past', 'sportspress' ); ?></option>
+				</select>
+			</p>
+			<p><strong><?php _e( 'Nationality', 'sportspress' ); ?></strong></p>
+			<p>
+				<select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" multiple="multiple">
+					<option value=""></option>
+					<?php foreach ( $continents as $continent => $countries ): ?>
+						<optgroup label="<?php echo $continent; ?>">
+							<?php foreach ( $countries as $code => $country ): ?>
+								<option value="<?php echo $code; ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo $country; ?></option>
+							<?php endforeach; ?>
+						</optgroup>
+					<?php endforeach; ?>
 				</select>
 			</p>
 			<p><strong><?php _e( 'Grouping', 'sportspress' ); ?></strong></p>
@@ -178,5 +194,6 @@ class SP_Meta_Box_List_Details {
 		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array() ) );
 		update_post_meta( $post_id, 'sp_number', sp_array_value( $_POST, 'sp_number', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', array() ) );
 	}
 }
