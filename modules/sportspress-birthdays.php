@@ -154,11 +154,11 @@ class SportsPress_Birthdays {
 	 */
 	public function add_player_details( $data, $post_id ) {
 		$hide_birthday = get_post_meta( get_the_ID(), 'sp_hide_birthday', true );
-		if ( 'yes' == get_option( 'sportspress_player_show_birthday', 'no' ) && ! $hide_birthday ) {
+		if ( 'yes' == get_option( 'sportspress_player_show_birthday', 'no' ) && 'true' != $hide_birthday ) {
 			$data[ __( 'Birthday', 'sportspress' ) ] = get_the_date( get_option( 'date_format' ), $post_id );
 		}
 
-		if ( 'yes' == get_option( 'sportspress_player_show_age', 'no' ) && ! $hide_birthday ) {
+		if ( 'yes' == get_option( 'sportspress_player_show_age', 'no' ) && 'true' != $hide_birthday ) {
 			$data[ __( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y', $post_id ) );
 		}
 
@@ -172,11 +172,11 @@ class SportsPress_Birthdays {
 	 */
 	public function add_staff_details( $data, $post_id ) {
 		$hide_birthday = get_post_meta( get_the_ID(), 'sp_hide_birthday', true );
-		if ( 'yes' == get_option( 'sportspress_staff_show_birthday', 'no' ) && ! $hide_birthday ) {
+		if ( 'yes' == get_option( 'sportspress_staff_show_birthday', 'no' ) && 'true' != $hide_birthday ) {
 			$data[ __( 'Birthday', 'sportspress' ) ] = get_the_date( get_option( 'date_format' ), $post_id );
 		}
 
-		if ( 'yes' == get_option( 'sportspress_staff_show_age', 'no' ) && ! $hide_birthday ) {
+		if ( 'yes' == get_option( 'sportspress_staff_show_age', 'no' ) && 'true' != $hide_birthday ) {
 			$data[ __( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y', $post_id ) );
 		}
 
