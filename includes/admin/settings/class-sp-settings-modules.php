@@ -142,7 +142,6 @@ class SP_Settings_Modules extends SP_Settings_Page {
 						'links' => array(
 							'http://tboy.co/installation' => __( 'Getting Started', 'sportspress' ),
 							'http://tboy.co/manuals' => __( 'Manuals', 'sportspress' ),
-							'http://tboy.co/videos' => __( 'Videos', 'sportspress' ),
 						),
 					),
 					'help' => array(
