@@ -597,11 +597,13 @@ class SP_Player_List extends SP_Secondary_Post {
 					endif;
 				endif;
 
-				if ( $placeholder !== '' && is_numeric( $placeholder ) ):
-					$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, 0 ) + $placeholder;
-				else:
-					$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, '-' );
-				endif;
+				if ( ! $stat->equation ) {
+					if ( $placeholder !== '' && is_numeric( $placeholder ) ):
+						$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, 0 ) + $placeholder;
+					else:
+						$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, '-' );
+					endif;
+				}
 
 				if ( is_numeric( $placeholder ) && $stat->precision ):
 					$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
