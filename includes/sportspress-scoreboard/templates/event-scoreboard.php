@@ -22,7 +22,7 @@ $defaults = array(
 	'league' => null,
 	'season' => null,
 	'date_format' => get_option( 'sportspress_scoreboard_date_format', 'M j' ),
-	'number' => get_option( 'sportspress_scoreboard_limit', 0 ),
+	'number' => -1,
 	'width' => get_option( 'sportspress_scoreboard_width', 180 ),
 	'step' => get_option( 'sportspress_scoreboard_step', 2 ),
 	'show_team_logo' => get_option( 'sportspress_scoreboard_show_logos', 'no' ) == 'yes' ? true : false,
@@ -39,8 +39,11 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 $calendar = new SP_Calendar( $id );
-$calendar->date = 'auto';
-$calendar->number = $number;
+if ( $id ) {
+	$calendar->number = $number;
+} else {
+	$calendar->number = get_option( 'sportspress_scoreboard_limit', 0 );
+}
 if ( $status != 'default' )
 	$calendar->status = $status;
 if ( $date != 'default' )
