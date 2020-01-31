@@ -39,7 +39,7 @@ class SportsPress_Icons {
 		add_filter( 'sportspress_enqueue_styles', array( $this, 'add_styles' ) );
 		add_filter( 'sportspress_performance_icon', array( $this, 'icon' ), 10, 2 );
 		add_filter( 'sportspress_event_performance_icons', array( $this, 'replace_icons' ), 10, 3 );
-		add_filter( 'admin_post_thumbnail_html', array( $this, 'admin_post_thumbnail_html' ), 10, 2 );
+		add_filter( 'admin_post_thumbnail_html', array( $this, 'sp_admin_post_thumbnail_html' ), 10, 2 );
 		add_action( 'sportspress_process_sp_performance_meta', array( $this, 'save' ), 10, 2 );
 		add_action( 'sportspress_process_sp_statistic_meta', array( $this, 'save' ), 10, 2 );
 	}
@@ -144,11 +144,11 @@ class SportsPress_Icons {
 	/**
 	 * Post thumbnail HTML.
 	*/
-	public function admin_post_thumbnail_html( $content = '', $id = 0 ) {
+	public function sp_admin_post_thumbnail_html( $content = '', $id = 0 ) {
 		// Bypass if no ID
 		if ( ! $id ) return $content;
 
-		// Bypass if not performance post type
+		// Bypass if not performance or statistic post type
 		$post_type = get_post_type( $id );
 		if ( 'sp_performance' !== $post_type && 'sp_statistic' !== $post_type ) return $content;
 
@@ -175,7 +175,7 @@ class SportsPress_Icons {
 		$value = get_post_meta( $id, 'sp_color', true );
 		if ( empty( $value ) ) $value = '111111';
 
-		$color = '<div class="sp-icon-color-box"><input name="sp_color" id="sp_color" type="text" value="' . esc_attr( $value ) . '" size="7" class="colorpick" /> <div id="colorPickerDiv" class="colorpickdiv"></div></div>';
+		$color = '<div class="sp-color-box-for-icon"><input name="sp_color" id="sp_color" type="text" value="' . esc_attr( $value ) . '" size="7" class="colorpick" /> <div id="colorPickerDiv" class="colorpickdiv"></div></div>';
 
 		$content = '<p><strong>' . __( 'Select Icon', 'sportspress' ) . '</strong></p>
 			<p class="sp-icons">' . $icons . '</p>

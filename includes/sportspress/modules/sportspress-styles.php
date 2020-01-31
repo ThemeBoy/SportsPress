@@ -113,8 +113,14 @@ class SportsPress_Styles {
 	 * Output custom CSS.
 	 */
 	public function custom_css( $colors = array() ) {
-		if ( current_theme_supports( 'sportspress' ) && ! current_theme_supports( 'sportspress-styles' ) ) return $styles;
-		if ( 'no' === get_option( 'sportspress_styles', 'yes' ) ) return $styles;
+
+		if ( current_theme_supports( 'sportspress' ) && ! current_theme_supports( 'sportspress-styles' ) ) {
+			return;
+		}
+
+		if ( 'no' === get_option( 'sportspress_styles', 'yes' ) ) {
+			return;
+		}
 
 		// Defaults
 		if ( empty( $colors['primary'] ) ) $colors['primary'] = '#2b353e';

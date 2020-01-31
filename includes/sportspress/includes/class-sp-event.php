@@ -54,9 +54,7 @@ class SP_Event extends SP_Custom_Post{
 			return array( $columns, $usecolumns, $data );
 		else:
 			// Add outcome to result columns
-			if ( 'yes' == get_option( 'sportspress_event_show_outcome', 'no' ) ):
-				$columns['outcome'] = __( 'Outcome', 'sportspress' );
-			endif;
+			$columns['outcome'] = __( 'Outcome', 'sportspress' );
 			if ( is_array( $usecolumns ) ):
 				if ( 'manual' == get_option( 'sportspress_event_result_columns', 'auto' ) ):
 					foreach ( $columns as $key => $label ):
@@ -74,6 +72,10 @@ class SP_Event extends SP_Custom_Post{
 						endforeach;
 					endforeach;
 					$columns = array_intersect_key( $columns, $active_columns );
+				endif;
+
+				if ( 'yes' == get_option( 'sportspress_event_show_outcome', 'no' ) ):
+					$columns['outcome'] = __( 'Outcome', 'sportspress' );
 				endif;
 			endif;
 			$data[0] = $columns;

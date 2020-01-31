@@ -104,6 +104,7 @@
 .sp-data-table thead .sorting_asc_disabled,
 .sp-data-table thead .sorting_desc_disabled {
 	cursor: pointer;
+	position: relative;
 }
 .sp-data-table tbody a {
 	text-decoration: none;
@@ -112,6 +113,7 @@
 .sp-data-table .sorting_asc:after,
 .sp-data-table .sorting_desc:after {
 	font-family: dashicons;
+	margin: 0 -.2em;
 }
 .sp-data-table .sorting:after {
 	content: "\f156";

@@ -913,6 +913,18 @@ class SP_AJAX {
 					<?php _e( 'Display link to view full table', 'sportspress' ); ?>
 				</label>
 			</p>
+			<p>
+				<?php _e( 'Event Status:', 'sportspress' ); ?><br/>
+				<label>
+					<input type="checkbox" name="show_published_events" id="show_published_events" checked>
+					<?php _e( 'Include Published/Played Events with results', 'sportspress' ); ?>
+				</label>
+				<br/>
+				<label>
+					<input type="checkbox" name="show_future_events" id="show_future_events" checked>
+					<?php _e( 'Include Scheduled/Future Events with results', 'sportspress' ); ?>
+				</label>
+			</p>
 			<?php do_action( 'sportspress_ajax_shortcode_form', 'league-table' ); ?>
 			<p class="submit">
 				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('team_standings');" />
@@ -1349,6 +1361,8 @@ class SP_AJAX {
                     args.number = $div.find('[name=number]').val();
                     args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
                     args.show_team_logo = $div.find('[name=show_team_logo]:checked').length;
+                    args.show_published_events = $div.find('[name=show_published_events]:checked').length;
+                    args.show_future_events = $div.find('[name=show_future_events]:checked').length;
                     args.show_full_table_link = $div.find('[name=show_full_table_link]:checked').length;
                 } else if ( 'team_gallery' == type ) {
                     args.title = $div.find('[name=title]').val();

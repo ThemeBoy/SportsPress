@@ -178,7 +178,7 @@ function sp_get_performance( $post = 0 ) {
 
 function sp_get_singular_name( $post = 0 ) {
 	$singular = get_post_meta( $post, 'sp_singular', true );
-	if ( '' !== $singular ) {
+	if ( $singular && '' !== $singular ) {
 		return $singular;
 	} else {
 		return get_the_title( $post );

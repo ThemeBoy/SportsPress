@@ -1684,3 +1684,32 @@ if( ! function_exists( 'array_replace' ) ) {
 		return $res;
 	}
 }
+
+/**
+ * Check if a shortcode is shown on content
+ * @return bool
+ */
+function sp_has_shortcodes( $content, $tags ) {
+	if( is_array( $tags ) ) {
+		foreach ( $tags as $tag ) {
+			preg_match_all( '/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER );
+			if ( empty( $matches ) )
+				return false;
+			foreach ( $matches as $shortcode ) {
+				if ( $tag === $shortcode[2] )
+				return true;
+			}
+		}
+	} else {
+		if ( shortcode_exists( $tags ) ) {
+			preg_match_all( '/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER );
+			if ( empty( $matches ) )
+				return false;
+			foreach ( $matches as $shortcode ) {
+				if ( $tags === $shortcode[2] )
+				return true;
+			}
+		}
+	}
+	return false;
+}
