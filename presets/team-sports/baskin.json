@@ -20,9 +20,6 @@
 						{ "name" : "T", "id" : "points", "description" : "Punti Totali", "primary" : 1 }
 	],
 	"performance": [
-						{ "name" : "PaPRG", "description" : "Partite PR Giocatore" },
-						{ "name" : "PaGG", "equation" : "$eventsattended", "description" : "Partite Giocate Giocatore" },
-						{ "name" : "Pa5", "equation" : "$eventsstarted", "description" : "Partite in Quintetto" },
 						{ "name" : "PunG", "description" : "Punti Giocatore" },
 						{ "name" : "Min", "description" : "Minuti Giocati" },
 						{ "name" : "FaC", "description" : "Falli Contro" },
@@ -44,11 +41,7 @@
 						{ "name" : "StS", "description" : "Stoppate Subite" },
 						{ "name" : "PalP", "description" : "Palle Perse" },
 						{ "name" : "PalR", "description" : "Palle Recuperate" },
-						{ "name" : "Ass", "description" : "Assist" },
-						{ "name" : "ValLega", "description" : "Valutazione Lega" },
-						{ "name" : "ValOER", "description" : "Valutazione OER" },
-						{ "name" : "APdPG", "description" : "A+dP Giocatore" },
-						{ "name" : "PlMinG", "description" : "+/- Giocatore" }
+						{ "name" : "Ass", "description" : "Assist" }
 	],
 	"columns": [
 						{ "name" : "PunS", "equation" : "( 3 * $vittoria ) + $sconfitta", "priority" : 1, "description" : "Punti Squadra" },
@@ -80,9 +73,7 @@
 						{ "name" : "AaP", "equation" : "$ass / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Assist a Partita" },
 						{ "name" : "PRaP", "equation" : "$palr / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Palle Recuperate a Partita" },
 						{ "name" : "StaP", "equation" : "$std / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Stoppate a Partita" },
-						{ "name" : "PaP", "equation" : "$pung / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Punti a Partita" },
-						{ "name" : "ValLegaM", "equation" : "$vallega / $eventsplayed", "type" : "average", "description" : "Valutazione Media" },
-						{ "name" : "ValOERM", "equation" : "$valoer / $eventsplayed", "type" : "average", "description" : "OER Medio" }
+						{ "name" : "PaP", "equation" : "$pung / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Punti a Partita" }
 	],
 	"options": {
 						"mode" : "team"
