@@ -43,6 +43,12 @@ $output = '';
 $table_rows = '';
 $i = 0;
 
+// Reverse teams order if the option "Events > Teams > Order > Reverse order" is enabled.
+$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
+if ( $reverse_teams ) {
+	$data = array_reverse( $data, true );
+}
+
 foreach( $data as $team_id => $result ):
 	if ( $show_outcomes ):
 		$outcomes = array();
