@@ -1,5 +1,19 @@
 == SportsPress Changelog ==
 
+= 2.7 =
+* Feature - New bulk actions to postpone and cancel multiple events.
+* Feature - Add date of birth to player importer.
+* Feature - Automatically select the home team's venue as the default venue when importing fixtures.
+* Feature - Add ability to turn on comment for team profiles.
+* Feature - Filter league tables by event status.
+* Tweak - When an icon is used for player performance, display the icon in player lists and profiles.
+* Tweak - Add title attribute for player statistic icons.
+* Tweak - Default stylesheet sorting icon width.
+* Fix - Icon color picker rendering issue.
+* Fix - Image selector not working for player statistics.
+* Fix - Enqueue scripts and styles for OpenStreetMap when used in shortcodes.
+* Localization - Add translation options for countdown units.
+
 = 2.6.20 =
 * Tweak - Improve compatibility with volleyball for checkbox performance.
 * Preset - Update volleyball preset with additional options.

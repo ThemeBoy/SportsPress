@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add bulk actions to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.2
+Version: 2.7
 */
 
 // Exit if accessed directly
@@ -17,16 +17,16 @@ if ( ! class_exists( 'SportsPress_Bulk_Actions' ) ) :
  * Main SportsPress Bulk Actions Class
  *
  * @class SportsPress_Bulk_Actions
- * @version	2.2
+ * @version 2.7
  */
 class SportsPress_Bulk_Actions {
 
-	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		// Define constants
-		$this->define_constants();
+  /**
+   * Constructor
+   */
+  public function __construct() {
+    // Define constants
+    $this->define_constants();
 
     // Teams
     add_filter( 'bulk_actions-edit-sp_team', array( $this, 'team_actions' ) );
@@ -38,21 +38,21 @@ class SportsPress_Bulk_Actions {
 
     // Notices
     add_action( 'admin_notices', array( $this, 'admin_notices' ) );
-	}
+  }
 
-	/**
-	 * Define constants.
-	*/
-	private function define_constants() {
-		if ( !defined( 'SP_BULK_ACTIONS_VERSION' ) )
-			define( 'SP_BULK_ACTIONS_VERSION', '2.2' );
+  /**
+   * Define constants.
+  */
+  private function define_constants() {
+    if ( !defined( 'SP_BULK_ACTIONS_VERSION' ) )
+      define( 'SP_BULK_ACTIONS_VERSION', '2.7' );
 
-		if ( !defined( 'SP_BULK_ACTIONS_URL' ) )
-			define( 'SP_BULK_ACTIONS_URL', plugin_dir_url( __FILE__ ) );
+    if ( !defined( 'SP_BULK_ACTIONS_URL' ) )
+      define( 'SP_BULK_ACTIONS_URL', plugin_dir_url( __FILE__ ) );
 
-		if ( !defined( 'SP_BULK_ACTIONS_DIR' ) )
-			define( 'SP_BULK_ACTIONS_DIR', plugin_dir_path( __FILE__ ) );
-	}
+    if ( !defined( 'SP_BULK_ACTIONS_DIR' ) )
+      define( 'SP_BULK_ACTIONS_DIR', plugin_dir_path( __FILE__ ) );
+  }
 
   /**
    * Add option to the team bulk actions dropdown.
@@ -123,10 +123,10 @@ class SportsPress_Bulk_Actions {
     return $redirect_to;
   }
 
-	/**
-	 * Display notices after form submission.
-	 */
-	public function admin_notices() {
+  /**
+   * Display notices after form submission.
+   */
+  public function admin_notices() {
     if ( ! empty( $_REQUEST['sp_bulk_generated_calendars'] ) ) {
       $count = intval( $_REQUEST['sp_bulk_generated_calendars'] );
 
@@ -155,7 +155,7 @@ class SportsPress_Bulk_Actions {
         'sportspress'
       ) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', $count );
     }
-	}
+  }
 }
 
 endif;
