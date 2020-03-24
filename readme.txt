@@ -2,7 +2,7 @@
 Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
-Tested up to: 5.2
+Tested up to: 5.3
 Stable tag: 2.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
