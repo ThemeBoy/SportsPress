@@ -44,6 +44,9 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		// Filtering
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
 		add_filter( 'parse_query', array( $this, 'filters_query' ) );
+
+    // Post states
+    add_filter( 'display_post_states', array( $this, 'post_states' ), 10, 2 );
 		
 		// Call SP_Admin_CPT constructor
 		parent::__construct();
@@ -294,27 +297,47 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			wp_nonce_field( 'sp-save-inline-results', 'sp-inline-nonce', false );
 	}
 
-	/**
-	 * Filter in admin based on options
-	 *
-	 * @param mixed $query
-	 */
-	public function filters_query( $query ) {
-		global $typenow, $wp_query;
+  /**
+   * Filter in admin based on options
+   *
+   * @param mixed $query
+   */
+  public function filters_query( $query ) {
+    global $typenow, $wp_query;
 
-	    if ( $typenow == 'sp_event' ) {
+      if ( $typenow == 'sp_event' ) {
 
-	    	if ( ! empty( $_GET['team'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['team'];
-		        $query->query_vars['meta_key'] 		= 'sp_team';
-		    }
+        if ( ! empty( $_GET['team'] ) ) {
+          $query->query_vars['meta_value']  = $_GET['team'];
+            $query->query_vars['meta_key']    = 'sp_team';
+        }
 
-	    	if ( ! empty( $_GET['match_day'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['match_day'];
-		        $query->query_vars['meta_key'] 		= 'sp_day';
-		    }
-		}
-	}
+        if ( ! empty( $_GET['match_day'] ) ) {
+          $query->query_vars['meta_value']  = $_GET['match_day'];
+            $query->query_vars['meta_key']    = 'sp_day';
+        }
+    }
+  }
+
+  /**
+   * Replace displayed post state for events
+   *
+   * @param array $post_states
+   * @param object $post
+   */
+  public function post_states( $post_states, $post ) {
+    $status = get_post_meta( $post->ID, 'sp_status', true );
+
+    if ( 'postponed' == $status ) {
+      $post_states = array( __( 'Postponed', 'sportspress' ) );
+    } elseif ( 'cancelled' == $status ) {
+      $post_states = array( __( 'Canceled', 'sportspress' ) );
+    } elseif ( 'tbd' == $status ) {
+      $post_states = array( __( 'TBD', 'sportspress' ) );
+    }
+
+    return $post_states;
+  }
 }
 
 endif;
