@@ -47,7 +47,7 @@ foreach( $venues as $venue ):
 					</tr>
 					<?php if ( $address != null ) { ?>
 						<tr class="sp-event-venue-address-row">
-							<td><?php echo $address; ?></td>
+							<td><?php echo urldecode( $address ); ?></td>
 						</tr>
 					<?php } ?>
 				</tbody>
