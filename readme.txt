@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, nabil_kadimi
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 5.2
-Stable tag: 2.6.20
+Tested up to: 5.3
+Stable tag: 2.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,20 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7 =
+* Feature - New bulk actions to postpone and cancel multiple events.
+* Feature - Add date of birth to player importer.
+* Feature - Automatically select the home team's venue as the default venue when importing fixtures.
+* Feature - Add ability to turn on comment for team profiles.
+* Feature - Filter league tables by event status.
+* Tweak - When an icon is used for player performance, display the icon in player lists and profiles.
+* Tweak - Add title attribute for player statistic icons.
+* Tweak - Default stylesheet sorting icon width.
+* Fix - Icon color picker rendering issue.
+* Fix - Image selector not working for player statistics.
+* Fix - Enqueue scripts and styles for OpenStreetMap when used in shortcodes.
+* Localization - Add translation options for countdown units.
 
 = 2.6.20 =
 * Tweak - Improve compatibility with volleyball for checkbox performance.

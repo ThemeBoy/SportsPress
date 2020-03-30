@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Integrate OpenStreetMap to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.6.18
+Version: 2.7
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
  * Main SportsPress OpenStreetMap Class
  *
  * @class SportsPress_OpenStreetMap
- * @version	2.6.18
+ * @version	2.7
  */
  
  class SportsPress_OpenStreetMap {
@@ -45,7 +45,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_OPENSTREETMAP_VERSION' ) )
-			define( 'SP_OPENSTREETMAP_VERSION', '2.6.18' );
+			define( 'SP_OPENSTREETMAP_VERSION', '2.7' );
 
 		if ( !defined( 'SP_OPENSTREETMAP_URL' ) )
 			define( 'SP_OPENSTREETMAP_URL', plugin_dir_url( __FILE__ ) );

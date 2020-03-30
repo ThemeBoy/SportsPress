@@ -479,7 +479,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 											<?php
 										}
 									?>
-								<br>
+								</ul>
 							</fieldset>
 						</td>
 					</tr>
