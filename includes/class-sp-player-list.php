@@ -59,6 +59,7 @@ class SP_Player_List extends SP_Secondary_Post {
 		$crop = get_post_meta( $this->ID, 'sp_crop', true );
 		$order = get_post_meta( $this->ID, 'sp_order', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
+		$nationalities = get_post_meta( $this->ID, 'sp_nationality', false );
 
 		$this->date = $this->__get( 'date' );
 
@@ -110,6 +111,9 @@ class SP_Player_List extends SP_Secondary_Post {
 				'tax_query' => array(
 					'relation' => 'AND',
 				),
+				'meta_query' => array(
+					'relation' => 'AND',
+				),
 			);
 
 			if ( $league_ids ):
@@ -138,7 +142,7 @@ class SP_Player_List extends SP_Secondary_Post {
 						$team_key = 'sp_past_team';
 						break;
 				endswitch;
-				$args['meta_query'] = array(
+				$args['meta_query'][] = array(
 					array(
 						'key' => $team_key,
 						'value' => $team
@@ -151,6 +155,16 @@ class SP_Player_List extends SP_Secondary_Post {
 					'taxonomy' => 'sp_position',
 					'field' => 'term_id',
 					'terms' => $position_ids
+				);
+			endif;
+			
+			if ( $nationalities ):
+				$args['meta_query'][] = array(
+					array(
+						'key' => 'sp_nationality',
+						'value' => $nationalities,
+						'compare' => 'IN'
+					),
 				);
 			endif;
 
