@@ -159,7 +159,16 @@ class SP_Meta_Box_List_Details {
 			</p>
 			<?php
 			if ( 'manual' == $select ) {
-				sp_post_checklist( $post->ID, 'sp_player', ( 'auto' == $select ? 'none' : 'block' ), array( 'sp_league', 'sp_season', 'sp_current_team' ) );
+				$player_filters = array( 'sp_league', 'sp_season' );
+				if ( $team_id ) {					
+					if ( in_array( $era, [ 'all', 'past' ] ) ) {
+						$player_filters[] = 'sp_past_team';
+					}
+					if ( in_array( $era, [ 'all', 'current' ] ) ) {
+						$player_filters[] = 'sp_current_team';
+					}
+				}
+				sp_post_checklist( $post->ID, 'sp_player', ( 'auto' == $select ? 'none' : 'block' ), $player_filters );
 				sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
 			} else {
 				?>
