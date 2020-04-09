@@ -55,7 +55,8 @@ $list = new SP_Player_List( $id );
 if ( isset( $columns ) && null !== $columns ):
 	$list->columns = $columns;
 endif;
-$data = $list->data( false, $leagues, $seasons, $team );
+
+$data = apply_filters('sportspress_player_list_data', $list->data( false, $leagues, $seasons, $team ) , $id );
 
 // The first row should be labels
 $labels = $data[0];
