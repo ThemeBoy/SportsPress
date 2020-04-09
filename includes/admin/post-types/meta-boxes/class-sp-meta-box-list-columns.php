@@ -48,6 +48,7 @@ class SP_Meta_Box_List_Columns {
 					<?php _e( 'Position', 'sportspress' ); ?>
 				</label>
 			</li>
+			<?php do_action( 'sportspress_list_general_columns', $selected ); ?>
 		</ul>
 		<p><strong><?php _e( 'Data', 'sportspress' ); ?></strong></p>
 		<div class="sp-instance">
