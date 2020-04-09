@@ -42,8 +42,8 @@
 							echo $logo;
 						endforeach;
 						?>
-						<time class="sp-event-date" datetime="<?php echo get_the_time( 'Y-m-d H:i:s' ); ?>">
-							<?php echo get_the_time( get_option( 'date_format' ) ); ?>
+						<time class="sp-event-date" datetime="<?php echo get_the_time( 'Y-m-d H:i:s', $id ); ?>">
+							<?php echo get_the_time( get_option( 'date_format' ), $id ); ?>
 						</time>
 						<?php
 
