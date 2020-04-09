@@ -51,7 +51,7 @@ extract( $defaults, EXTR_SKIP );
 $calendar = new SP_Calendar( $id );
 if ( $status != 'default' )
 	$calendar->status = $status;
-if ( $format != 'default' )
+if ( $format != 'all' )
 	$calendar->event_format = $format;
 if ( $date != 'default' )
 	$calendar->date = $date;
