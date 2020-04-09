@@ -183,7 +183,7 @@ if ( $dayswithposts ) {
 	$daywithpost = array();
 }
 
-if ( array_key_exists( 'HTTP_USER_AGENT', $_SERVER ) && preg_match( 'MSIE|camino|safari', $_SERVER[ 'HTTP_USER_AGENT' ] ) ) {
+if ( array_key_exists( 'HTTP_USER_AGENT', $_SERVER ) && preg_match( '/(MSIE|camino|safari)/', $_SERVER[ 'HTTP_USER_AGENT' ] ) ) {
 	$ak_title_separator = "\n";
 } else {
 	$ak_title_separator = ', ';
