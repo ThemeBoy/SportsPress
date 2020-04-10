@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Importers
- * @version		2.5
+ * @version		2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -472,9 +472,14 @@ if ( class_exists( 'WP_Importer' ) ) {
 						<td class="forminp forminp-radio" id="sp_formatdiv">
 							<fieldset id="post-formats-select">
 								<ul>
-									<li><input type="radio" name="sp_format" class="post-format" id="post-format-league" value="league" checked="checked"> <label for="post-format-league" class="post-format-icon post-format-league"><?php _e( 'Competitive', 'sportspress' ); ?></label></li>
-									<li><input type="radio" name="sp_format" class="post-format" id="post-format-friendly" value="friendly"> <label for="post-format-friendly" class="post-format-icon post-format-friendly"><?php _e( 'Friendly', 'sportspress' ); ?></label></li>
-								<br>
+									<?php
+										foreach( (new SP_Formats)->event as $name => $title ) {
+											?>
+											<li><input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo $name; ?>" value="<?php echo $name; ?>" checked="checked"> <label for="post-format-<?php echo $name; ?>" class="post-format-icon post-format-<?php echo $name; ?>"><?php echo $title; ?></label></li>
+											<?php
+										}
+									?>
+								</ul>
 							</fieldset>
 						</td>
 					</tr>

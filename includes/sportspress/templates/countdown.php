@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.6.12
+ * @version   2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -30,10 +30,22 @@ elseif ( $calendar ):
 	if ( $team )
 		$calendar->team = $team;
 	$calendar->status = 'future';
-	$calendar->number = 1;
 	$calendar->order = 'ASC';
 	$data = $calendar->data();
-	$post = array_shift( $data );
+
+	/**
+	 * Exclude postponed or cancelled events.
+	 */
+	$excluded_statuses = apply_filters( 'sp_countdown_excluded_statuses', array(
+		'postponed',
+		'cancelled',
+	) );
+	while ( $post = array_shift( $data ) ) {
+		$sp_status = get_post_meta($post->ID, 'sp_status', true);
+		if( ! in_array( $sp_status, $excluded_statuses ) ) {
+			break;
+		}
+	}
 else:
 	$args = array();
 	if ( isset( $team ) ) {
@@ -61,6 +73,19 @@ else:
 			);
 		}
 	}
+
+	/**
+	 * Exclude postponed or cancelled events.
+	 */
+	$args['meta_query'][] = [
+		'key' => 'sp_status',
+		'compare' => 'NOT IN',
+		'value' => apply_filters( 'sp_countdown_excluded_statuses', array(
+			'postponed',
+			'cancelled',
+		) ),
+	];
+
 	$post = sp_get_next_event( $args );
 endif;
 

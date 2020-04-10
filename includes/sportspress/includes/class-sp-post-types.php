@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registers post types and taxonomies
  *
  * @class 		SP_Post_types
- * @version		2.7
+ * @version		2.7.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -22,7 +22,7 @@ class SP_Post_types {
 	public function __construct() {
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 10 );
-		add_action( 'wp_trash_post', array( $this, 'delete_config_post' ) );
+		add_action( 'trashed_post', array( $this, 'delete_config_post' ) );
 		add_filter( 'the_posts', array( $this, 'display_scheduled_events' ) );
 	}
 

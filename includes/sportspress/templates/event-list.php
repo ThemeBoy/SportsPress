@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.6.19
+ * @version   2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -51,7 +51,7 @@ extract( $defaults, EXTR_SKIP );
 $calendar = new SP_Calendar( $id );
 if ( $status != 'default' )
 	$calendar->status = $status;
-if ( $format != 'default' )
+if ( $format != 'all' )
 	$calendar->event_format = $format;
 if ( $date != 'default' )
 	$calendar->date = $date;

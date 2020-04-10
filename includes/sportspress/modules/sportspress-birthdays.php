@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add birthdays to players and staff.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.5
+Version: 2.7.1
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
  * Main SportsPress Birthdays Class
  *
  * @class SportsPress_Birthdays
- * @version	2.5
+ * @version	2.7.1
  */
 class SportsPress_Birthdays {
 
@@ -36,6 +36,7 @@ class SportsPress_Birthdays {
 		add_filter( 'sportspress_staff_details', array( $this, 'add_staff_details' ), 20, 2 );
 
 		add_action( 'sportspress_widgets', array( $this, 'widgets' ) );
+		add_action( 'sportspress_list_general_columns', array( $this, 'columns' ), 10, 1 ); 
 	}
 
 	/**
@@ -43,7 +44,7 @@ class SportsPress_Birthdays {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_BIRTHDAYS_VERSION' ) )
-			define( 'SP_BIRTHDAYS_VERSION', '2.5' );
+			define( 'SP_BIRTHDAYS_VERSION', '2.7.1' );
 
 		if ( !defined( 'SP_BIRTHDAYS_URL' ) )
 			define( 'SP_BIRTHDAYS_URL', plugin_dir_url( __FILE__ ) );
@@ -186,6 +187,26 @@ class SportsPress_Birthdays {
 	 */
 	public static function widgets() {
 		include_once( SP()->plugin_path() . '/includes/widgets/class-sp-widget-birthdays.php' );
+	}
+	
+	/**
+	 * Add more General Columns at Player Lists
+	 */
+	public static function columns( $selected ) {
+		?>
+		<li>
+			<label class="selectit">
+				<input value="dob" type="checkbox" name="sp_columns[]" id="sp_columns_dob" <?php checked( in_array( 'dob', $selected ) ); ?>>
+				<?php _e( 'Date of Birth', 'sportspress' ); ?>
+			</label>
+		</li>
+		<li>
+			<label class="selectit">
+				<input value="age" type="checkbox" name="sp_columns[]" id="sp_columns_age" <?php checked( in_array( 'age', $selected ) ); ?>>
+				<?php _e( 'Age', 'sportspress' ); ?>
+			</label>
+		</li>
+		<?php
 	}
 
 	/**

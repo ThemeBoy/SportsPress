@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.7
+ * @version     2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -47,7 +47,7 @@ foreach( $venues as $venue ):
 					</tr>
 					<?php if ( $address != null ) { ?>
 						<tr class="sp-event-venue-address-row">
-							<td><?php echo $address; ?></td>
+							<td><?php echo urldecode( $address ); ?></td>
 						</tr>
 					<?php } ?>
 				</tbody>

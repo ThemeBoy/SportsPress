@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 5.3
-Stable tag: 2.7
+Stable tag: 2.7.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,21 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.1 =
+* Feature - Enable player list filtering by nationality.
+* Feature - Add option to display date of birth in player lists.
+* Tweak - Exclude postponed and canceled events from countdowns.
+* Tweak - Apply reverse order option to event results.
+* Tweak - When a team has more than one home venue, separate with commas.
+* Fix - Venue address containing pluses in events.
+* Fix - Event blocks showing the wrong dates when embedded within other event pages.
+* Fix - Statistics not adding manual values when not based on equations.
+* Fix - Event lists ignoring the format parameter.
+* Fix - League table order when displaying multiple tables in team profiles.
+* Fix - Error when deleting configuration columns.
+* Fix - Player lists not including past players in some cases.
+* Fix - Prevent error when viewing event calendar in some cases.
 
 = 2.7 =
 * Feature - New bulk actions to postpone and cancel multiple events.

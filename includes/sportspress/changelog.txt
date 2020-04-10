@@ -1,5 +1,20 @@
 == SportsPress Changelog ==
 
+= 2.7.1 =
+* Feature - Enable player list filtering by nationality.
+* Feature - Add option to display date of birth in player lists.
+* Tweak - Exclude postponed and canceled events from countdowns.
+* Tweak - Apply reverse order option to event results.
+* Tweak - When a team has more than one home venue, separate with commas.
+* Fix - Venue address containing pluses in events.
+* Fix - Event blocks showing the wrong dates when embedded within other event pages.
+* Fix - Statistics not adding manual values when not based on equations.
+* Fix - Event lists ignoring the format parameter.
+* Fix - League table order when displaying multiple tables in team profiles.
+* Fix - Error when deleting configuration columns.
+* Fix - Player lists not including past players in some cases.
+* Fix - Prevent error when viewing event calendar in some cases.
+
 = 2.7 =
 * Feature - New bulk actions to postpone and cancel multiple events.
 * Feature - Add date of birth to player importer.

@@ -5,7 +5,7 @@
  * The SportsPress team class handles individual team data.
  *
  * @class 		SP_Team
- * @version		2.6.3
+ * @version		2.7.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -488,7 +488,7 @@ class SP_Team extends SP_Custom_Post {
 		);
 		$tables_by_terms = get_posts( $args );
 		
-		$tables = array_merge( $tables_by_id, $tables_by_terms );
+		$tables = array_merge( $tables_by_terms, $tables_by_id );
 
 		$checked = (array) get_post_meta( $this->ID, 'sp_table' );
 

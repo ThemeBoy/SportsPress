@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.6.15
+ * @version   2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -55,7 +55,8 @@ $list = new SP_Player_List( $id );
 if ( isset( $columns ) && null !== $columns ):
 	$list->columns = $columns;
 endif;
-$data = $list->data( false, $leagues, $seasons, $team );
+
+$data = apply_filters('sportspress_player_list_data', $list->data( false, $leagues, $seasons, $team ) , $id );
 
 // The first row should be labels
 $labels = $data[0];
