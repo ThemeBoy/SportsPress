@@ -193,22 +193,20 @@ class SportsPress_Birthdays {
 	 * Add more General Columns at Player Lists
 	 */
 	public static function columns( $selected ) {
-		if ( 'yes' == get_option( 'sportspress_player_show_birthday', 'no' ) ) { ?>
-			<li>
-				<label class="selectit">
-					<input value="dob" type="checkbox" name="sp_columns[]" id="sp_columns_dob" <?php checked( in_array( 'dob', $selected ) ); ?>>
-					<?php _e( 'Date of Birth', 'sportspress' ); ?>
-				</label>
-			</li>
-			<?php } ?>
-			<?php if ( 'yes' == get_option( 'sportspress_player_show_age', 'no' ) ) { ?>
-			<li>
-				<label class="selectit">
-					<input value="age" type="checkbox" name="sp_columns[]" id="sp_columns_age" <?php checked( in_array( 'age', $selected ) ); ?>>
-					<?php _e( 'Age', 'sportspress' ); ?>
-				</label>
-			</li>
-			<?php } 
+		?>
+		<li>
+			<label class="selectit">
+				<input value="dob" type="checkbox" name="sp_columns[]" id="sp_columns_dob" <?php checked( in_array( 'dob', $selected ) ); ?>>
+				<?php _e( 'Date of Birth', 'sportspress' ); ?>
+			</label>
+		</li>
+		<li>
+			<label class="selectit">
+				<input value="age" type="checkbox" name="sp_columns[]" id="sp_columns_age" <?php checked( in_array( 'age', $selected ) ); ?>>
+				<?php _e( 'Age', 'sportspress' ); ?>
+			</label>
+		</li>
+		<?php
 	}
 
 	/**
