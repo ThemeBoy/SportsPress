@@ -1,9 +1,9 @@
 === SportsPress Pro ===
-Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi
+Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 5.3
-Stable tag: 2.7
+Stable tag: 2.7.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,21 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.7.1 =
+* Feature - Enable player list filtering by nationality.
+* Feature - Add option to display date of birth in player lists.
+* Tweak - Exclude postponed and canceled events from countdowns.
+* Tweak - Apply reverse order option to event results.
+* Tweak - When a team has more than one home venue, separate with commas.
+* Fix - Venue address containing pluses in events.
+* Fix - Event blocks showing the wrong dates when embedded within other event pages.
+* Fix - Statistics not adding manual values when not based on equations.
+* Fix - Event lists ignoring the format parameter.
+* Fix - League table order when displaying multiple tables in team profiles.
+* Fix - Error when deleting configuration columns.
+* Fix - Player lists not including past players in some cases.
+* Fix - Prevent error when viewing event calendar in some cases.
 
 = 2.7 =
 * Feature - New bulk actions to postpone and cancel multiple events.
