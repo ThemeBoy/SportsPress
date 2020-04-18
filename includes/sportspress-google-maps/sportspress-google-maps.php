@@ -65,7 +65,7 @@ class SportsPress_Google_Maps {
 			width="600"
 			height="320"
 			frameborder="0" style="border:0"
-			src="//tboy.co/maps_embed?q=<?php echo $address; ?>&amp;center=<?php echo $latitude; ?>,<?php echo $longitude; ?>&amp;zoom=<?php echo $zoom; ?>&amp;maptype=<?php echo $maptype; ?>" allowfullscreen>
+      src="//www.google.com/maps/embed/v1/view?key=%41%49%7A%61%53%79%41%35%32%66%47%44%44%61%67%39%58%53%64%67%33%6C%79%5A%2D%32%34%7A%56%7A%39%67%4F%7A%55%56%57%68%77&center=<?php echo $latitude; ?>,<?php echo $longitude; ?>&zoom=<?php echo $zoom; ?>&maptype=<?php echo $maptype; ?>" allowfullscreen>
 		  </iframe>
 		  <a href="https://www.google.com/maps/place/<?php echo $address; ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank" class="sp-google-map-link"></a>
 		</div>
@@ -77,7 +77,7 @@ class SportsPress_Google_Maps {
 	 */
 	public function admin_enqueue_scripts() {
 		$screen = get_current_screen();
-		wp_register_script( 'google-maps', '//tboy.co/maps_js' );
+		wp_register_script( 'google-maps', '//maps.googleapis.com/maps/api/js?key=%41%49%7A%61%53%79%41%35%32%66%47%44%44%61%67%39%58%53%64%67%33%6C%79%5A%2D%32%34%7A%56%7A%39%67%4F%7A%55%56%57%68%77&sensor=false&libraries=places' );
 		wp_register_script( 'jquery-locationpicker', SP_GOOGLE_MAPS_URL . 'js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
 		wp_register_script( 'sportspress-admin-locationpicker', SP_GOOGLE_MAPS_URL . 'js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_GOOGLE_MAPS_VERSION, true );
 		
@@ -100,7 +100,7 @@ class SportsPress_Google_Maps {
 	 * Print geocoder script in setup
 	 */
 	public function setup_geocoder_scripts() {
-    wp_register_script( 'google-maps', '//tboy.co/maps_js' );
+    wp_register_script( 'google-maps', '//maps.googleapis.com/maps/api/js?key=%41%49%7A%61%53%79%41%35%32%66%47%44%44%61%67%39%58%53%64%67%33%6C%79%5A%2D%32%34%7A%56%7A%39%67%4F%7A%55%56%57%68%77&sensor=false&libraries=places' );
     wp_register_script( 'jquery-locationpicker', SP_GOOGLE_MAPS_URL . 'js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
     wp_register_script( 'sportspress-admin-locationpicker', SP_GOOGLE_MAPS_URL . 'js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_GOOGLE_MAPS_VERSION, true );
 	}
