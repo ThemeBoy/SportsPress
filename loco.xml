@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bundle>
   <domain name="sportspress">
-    <project name="SportsPress Pro" slug="sportspress-pro">
-      <source>
-        <directory></directory>
-        <exclude>
-            <file>includes/sportspress</file>
-        </exclude>
-      </source>
-      <target>
-        <directory>languages</directory>
-      </target>
-      <template>
-        <file>languages/sportspress-pro.pot</file>
-      </template>
-    </project>
-    <project name="SportsPress" slug="sportspress">
+    <project name="SportsPress">
       <source>
         <directory>includes/sportspress</directory>
       </source>
@@ -24,6 +10,20 @@
       </target>
       <template>
         <file>includes/sportspress/languages/sportspress.pot</file>
+      </template>
+    </project>
+    <project name="SportsPress Pro" slug="sportspress-pro">
+      <source>
+        <directory></directory>
+        <exclude>
+            <directory>includes/sportspress</directory>
+        </exclude>
+      </source>
+      <target>
+        <directory>languages</directory>
+      </target>
+      <template>
+        <file>languages/sportspress-pro.pot</file>
       </template>
     </project>
   </domain>
