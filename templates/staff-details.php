@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.0
+ * @version   2.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,7 +19,6 @@ $defaults = array(
 	'show_past_teams' => get_option( 'sportspress_staff_show_past_teams', 'yes' ) == 'yes' ? true : false,
 	'show_nationality_flags' => get_option( 'sportspress_staff_show_flags', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
-	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -50,7 +49,7 @@ endif;
 if ( $show_current_teams && $current_teams ):
 	$teams = array();
 	foreach ( $current_teams as $team ):
-		$team_name = sp_get_team_name( $team, $abbreviate_teams );
+		$team_name = sp_team_short_name( $team );
 		if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
 		$teams[] = $team_name;
 	endforeach;
@@ -60,7 +59,7 @@ endif;
 if ( $show_past_teams && $past_teams ):
 	$teams = array();
 	foreach ( $past_teams as $team ):
-		$team_name = sp_get_team_name( $team, $abbreviate_teams );
+		$team_name = sp_team_short_name( $team );
 		if ( $link_teams ) $team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
 		$teams[] = $team_name;
 	endforeach;

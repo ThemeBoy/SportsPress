@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add officials to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.5
+Version: 2.6.15
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
  * Main SportsPress Officials Class
  *
  * @class SportsPress_Officials
- * @version	2.5
+ * @version	2.6.15
  */
 class SportsPress_Officials {
 
@@ -31,7 +31,6 @@ class SportsPress_Officials {
 		// Actions
 		add_action( 'sportspress_after_register_taxonomy', array( $this, 'register_taxonomy' ) );
 		add_action( 'sportspress_after_register_post_type', array( $this, 'register_post_type' ) );
-		add_action( 'add_meta_boxes', array( $this, 'remove_meta_boxes' ), 10 );
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
 		add_action( 'sportspress_create_rest_routes', array( $this, 'create_rest_routes' ) );
 		add_action( 'sportspress_register_rest_fields', array( $this, 'register_rest_fields' ) );
@@ -41,6 +40,8 @@ class SportsPress_Officials {
 		add_action( 'sportspress_calendar_data_meta_box_table_row', array( $this, 'calendar_meta_row' ), 10, 2 );
 		add_action( 'sp_duty_edit_form_fields', array( $this, 'edit_taxonomy_fields' ), 10, 1 );
 		add_action( 'edited_sp_duty', array( $this, 'save_taxonomy_fields' ), 10, 1 );
+		add_action( 'admin_menu', array( $this, 'duties_menu' ) );
+		add_action( 'parent_file', array( $this, 'parent_file' ) );
 
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
@@ -48,9 +49,13 @@ class SportsPress_Officials {
 		add_filter( 'sportspress_after_event_template', array( $this, 'add_event_template' ), 30 );
 		add_filter( 'sportspress_event_options', array( $this, 'add_event_options' ) );
 		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
+		add_filter( 'sportspress_menu_items', array( $this, 'add_menu_item' ) );
+		add_filter( 'sportspress_glance_items', array( $this, 'add_glance_item' ) );
+		add_filter( 'sportspress_importers', array( $this, 'register_importer' ) );
 		add_filter( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
 		add_filter( 'sportspress_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_primary_post_types', array( $this, 'add_post_type' ) );
+		add_filter( 'sportspress_importable_post_types', array( $this, 'add_post_type' ) );
 		add_filter( 'sportspress_post_type_hierarchy', array( $this, 'add_to_hierarchy' ) );
 		add_filter( 'manage_edit-sp_duty_columns', array( $this, 'taxonomy_columns' ) );
 		add_filter( 'manage_sp_duty_custom_column', array( $this, 'taxonomy_column_value' ), 10, 3 );
@@ -61,7 +66,7 @@ class SportsPress_Officials {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_OFFICIALS_VERSION' ) )
-			define( 'SP_OFFICIALS_VERSION', '2.5' );
+			define( 'SP_OFFICIALS_VERSION', '2.6.15' );
 
 		if ( !defined( 'SP_OFFICIALS_URL' ) )
 			define( 'SP_OFFICIALS_URL', plugin_dir_url( __FILE__ ) );
@@ -98,11 +103,17 @@ class SportsPress_Officials {
 			'show_tagcloud' => false,
 			'hierarchical' => true,
 			'rewrite' => array( 'slug' => get_option( 'sportspress_duty_slug', 'duty' ) ),
+			'capabilities' => array(
+				'manage_terms' => 'manage_sp_event_terms',
+				'edit_terms' => 'edit_sp_event_terms',
+				'delete_terms' => 'delete_sp_event_terms',
+				'assign_terms' => 'assign_sp_event_terms',
+			),
 			'show_in_rest' => true,
 			'rest_controller_class' => 'SP_REST_Terms_Controller',
 			'rest_base' => 'duties',
 		) );
-		$object_types = apply_filters( 'sportspress_duty_object_types', array( 'sp_official' ) );
+		$object_types = apply_filters( 'sportspress_duty_object_types', array() );
 		register_taxonomy( 'sp_duty', $object_types, $args );
 		foreach ( $object_types as $object_type ):
 			register_taxonomy_for_object_type( 'sp_duty', $object_type );
@@ -133,7 +144,7 @@ class SportsPress_Officials {
 					),
 					'public' 				=> true,
 					'show_ui' 				=> true,
-					'capability_type' 		=> 'sp_staff',
+					'capability_type' 		=> 'sp_event',
 					'map_meta_cap' 			=> true,
 					'publicly_queryable' 	=> true,
 					'exclude_from_search' 	=> false,
@@ -149,13 +160,6 @@ class SportsPress_Officials {
 				)
 			)
 		);
-	}
-
-	/**
-	 * Remove meta boxes.
-	 */
-	public function remove_meta_boxes() {
-		remove_meta_box( 'sp_dutydiv', 'sp_official', 'side' );
 	}
 
 	/**
@@ -315,15 +319,6 @@ class SportsPress_Officials {
 			'context' => 'side',
 			'priority' => 'default',
 		);
-		$meta_boxes['sp_official'] = array(
-			'details' => array(
-				'title' => __( 'Details', 'sportspress' ),
-				'save' => 'SP_Meta_Box_Official_Details::save',
-				'output' => 'SP_Meta_Box_Official_Details::output',
-				'context' => 'side',
-				'priority' => 'default',
-			),
-		);
 		return $meta_boxes;
 	}
 
@@ -470,6 +465,47 @@ class SportsPress_Officials {
 	}
 
 	/**
+	 * Add menu item
+	 */
+	public function add_menu_item( $items ) {
+		$items[] = 'edit.php?post_type=sp_official';
+		return $items;
+	}
+
+	/**
+	 * Add glance item
+	 */
+	public function add_glance_item( $items ) {
+		$items[] = 'sp_official';
+		return $items;
+	}
+
+	/**
+	 * Register importer
+	 */
+	public function register_importer( $importers = array() ) {
+		$importers['sp_official_csv'] = array(
+			'name' => __( 'SportsPress Officials (CSV)', 'sportspress' ),
+			'description' => __( 'Import <strong>officials</strong> from a csv file.', 'sportspress'),
+			'callback' => array( $this, 'officials_importer' ),
+		);
+		return $importers;
+	}
+
+	/**
+	 * Officials importer
+	 */
+	public function officials_importer() {
+		SP_Admin_Importers::includes();
+
+			require SP()->plugin_path() . '/includes/admin/importers/class-sp-official-importer.php';
+
+			// Dispatch
+			$importer = new SP_Official_Importer();
+			$importer->dispatch();
+	}
+
+	/**
 	 * Add screen ids.
 	 *
 	 * @return array
@@ -505,9 +541,11 @@ class SportsPress_Officials {
 		
 		if ( function_exists( 'get_term_meta' ) ) $new_columns['sp_order'] = __( 'Order', 'sportspress' );
 
+		if ( array_key_exists('posts', $columns) ) {
 		$new_columns['posts'] = $columns['posts'];
 
 		unset( $columns['posts'] );
+		}
 
 		return array_merge( $columns, $new_columns );
 	}
@@ -588,6 +626,26 @@ class SportsPress_Officials {
 		}
 
 		return $columns;
+	}
+
+	/**
+	 * Add menu item
+	 */
+	public function duties_menu() {
+		add_submenu_page( 'edit.php?post_type=sp_official', __( 'Duties', 'sportspress' ), __( 'Duties', 'sportspress' ), 'manage_sp_event_terms', 'edit-tags.php?taxonomy=sp_duty');
+	}
+
+	/**
+	 * Highlight parent menu item
+	 */
+	public function parent_file( $parent_file ) {
+		global $current_screen;
+		$taxonomy = $current_screen->taxonomy;
+
+		if ( 'sp_duty' == $taxonomy )
+			$parent_file = 'edit.php?post_type=sp_official';
+
+		return $parent_file;
 	}
 }
 

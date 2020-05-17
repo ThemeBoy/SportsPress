@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     2.3.1
+ * @version   2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -123,9 +123,52 @@ function sp_locate_template( $template_name, $template_path = '', $default_path 
 	return apply_filters('sportspress_locate_template', $template, $template_name, $template_path);
 }
 
+function sp_substr( $string = '', $start = 0, $length = null ) {
+	if ( function_exists( 'mb_substr' ) ) {
+		return mb_substr( $string, $start, $length );
+	} else {
+		return substr( $string, $start, $length );
+	}
+}
+
+function sp_strtoupper( $string = '' ) {
+	if ( function_exists( 'mb_strtoupper' ) ) {
+		return mb_strtoupper( $string );
+	} else {
+		return strtoupper( $string );
+	}
+}
+
+/**
+ * Get the timezone string.
+ *
+ * @access public
+ * @return string
+ */
+function sp_get_timezone() {
+	$tzstring = get_option( 'timezone_string' );
+
+	// Remove old Etc mappings. Fallback to gmt_offset.
+	if ( false !== strpos( $tzstring, 'Etc/GMT' ) )
+		$tzstring = '';
+
+	if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
+		$current_offset = get_option( 'gmt_offset' );
+
+		if ( 0 == $current_offset )
+			$tzstring = 'UTC+0';
+		elseif ( $current_offset < 0 )
+			$tzstring = 'UTC' . $current_offset;
+		else
+			$tzstring = 'UTC+' . $current_offset;
+	}
+
+	return $tzstring;
+}
+
 /* deprecated functions below */
 
-if( !function_exists( 'date_diff' ) ) {
+if ( !function_exists( 'date_diff' ) ) {
 	class DateInterval {
 		public $y;
 		public $m;
@@ -329,11 +372,15 @@ if ( !function_exists( 'sp_get_the_term_id' ) ) {
 if ( !function_exists( 'sp_get_the_term_ids' ) ) {
 	function sp_get_the_term_ids( $post_id, $taxonomy ) {
 		$terms = get_the_terms( $post_id, $taxonomy );
-		if ( is_array( $terms ) && sizeof( $terms ) > 0 ):
-			return wp_list_pluck( $terms, 'term_id' );
-		else:
-			return array();
-		endif;
+		$term_ids = array();
+
+		if ( is_array( $terms ) && sizeof( $terms ) > 0 ) {
+			$term_ids = wp_list_pluck( $terms, 'term_id' );
+		}
+
+		$term_ids = sp_add_auto_term( $term_ids, $post_id, $taxonomy );
+
+		return $term_ids;
 	}
 }
 
@@ -352,6 +399,27 @@ if ( !function_exists( 'sp_get_the_term_id_or_meta' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_add_auto_term' ) ) {
+	function sp_add_auto_term( $term_ids, $post_id, $taxonomy ) {
+		switch ( $taxonomy ) {
+			case 'sp_league':
+				if ( get_post_meta( $post_id, 'sp_main_league', true ) ) {
+					$term_id = get_option( 'sportspress_league', false );
+					if ( $term_id ) $term_ids[] = $term_id;
+				}
+				break;
+			case 'sp_season':
+				if ( get_post_meta( $post_id, 'sp_current_season', true ) ) {
+					$term_id = get_option( 'sportspress_season', false );
+					if ( $term_id ) $term_ids[] = $term_id;
+				}
+				break;
+		}
+
+		return $term_ids;
+	}
+}
+
 if ( !function_exists( 'sp_get_url' ) ) {
 	function sp_get_url( $post_id ) {
 		$url = get_post_meta( $post_id, 'sp_url', true );
@@ -366,7 +434,7 @@ if ( !function_exists( 'sp_get_post_abbreviation' ) ) {
 		if ( $abbreviation ):
 			return $abbreviation;
 		else:
-			return substr( get_the_title( $post_id ), 0, 1 );
+			return mb_substr( get_the_title( $post_id ), 0, 1 );
 		endif;
 	}
 }
@@ -465,7 +533,7 @@ if ( !function_exists( 'sp_get_post_format' ) ) {
 	function sp_get_post_format( $post_id ) {
 		$format = get_post_meta ( $post_id, 'sp_format', true );
 		if ( isset( $format ) ):
-			$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ), 'equation' => __( 'Equation', 'sportspress' ) ) );
+			$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ), 'equation' => __( 'Equation', 'sportspress' ), 'checkbox' => __( 'Checkbox', 'sportspress' ) ) );
 			return sp_array_value( $options, $format, __( 'Number', 'sportspress' ) );
 		else:
 			return __( 'Number', 'sportspress' );
@@ -479,6 +547,7 @@ if ( !function_exists( 'sp_get_format_placeholder' ) ) {
 			'number' => 0,
 			'time' => '0:00',
 			'text' => '&nbsp;',
+			'checkbox' => '&nbsp;',
 		) );
 		return sp_array_value( $placeholders, $key, 0 );
 	}
@@ -638,6 +707,7 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 			'show_option_blank' => false,
 			'show_option_all' => false,
 			'show_option_none' => false,
+			'show_option_auto' => false,
 			'taxonomy' => null,
 			'name' => null,
 			'id' => null,
@@ -692,6 +762,15 @@ if ( !function_exists( 'sp_dropdown_taxonomies' ) ) {
 				if ( $args['show_option_none'] ):
 					printf( '<option value="-1" ' . selected( '-1', $selected, false ) . '>%s</option>', $args['show_option_none'] );
 				endif;
+			endif;
+
+			if ( $args['show_option_auto'] ):
+				if ( strpos( $property, 'multiple' ) !== false ):
+					$selected_prop = in_array( 'auto', $selected ) ? 'selected' : '';
+				else:
+					$selected_prop = selected( 'auto', $selected, false );
+				endif;
+				printf( '<option value="auto" ' . $selected_prop . '>%s</option>', $args['show_option_auto'] . ' ' . __( '(Auto)', 'sportspress' ) );
 			endif;
 
 			foreach ( $terms as $term ):
@@ -1228,8 +1307,11 @@ if ( !function_exists( 'sp_get_eos_safe_slug' ) ) {
 }
 
 if ( !function_exists( 'sp_solve' ) ) {
-	function sp_solve( $equation, $vars, $precision = 0, $default = 0 ) {
+	function sp_solve( $equation, $vars, $precision = 0, $default = 0, $post_id = 0 ) {
 
+		// Add a hook to alter $equation
+		$equation = apply_filters( 'sportspress_equation_alter', $equation, $vars, $precision, $default );
+		
 		if ( $equation == null )
 			return $default;
 
@@ -1280,6 +1362,10 @@ if ( !function_exists( 'sp_solve' ) ) {
 			$awayrecord = sp_array_value( $vars, 'awayrecord', array( 0 ) );
 			return implode( '-', $awayrecord );
 
+		endif;
+
+		if ( $solution = apply_filters( 'sportspress_equation_solve_for_presets', null, $equation, $post_id ) ):
+			return $solution;
 		endif;
 
 		// Remove unnecessary variables from vars before calculating
@@ -1378,6 +1464,28 @@ if ( !function_exists( 'sp_sort_table_teams' ) ) {
 	}
 }
 
+if ( ! function_exists( 'sp_sort_terms' ) ) {
+
+	/**
+	 * Sorts terms by `sp_order`.
+	 *
+	 * @param  int|object $a Term ID or term.
+	 * @param  int|object $b Term ID or term.
+	 * @return int    Sorting order.
+	 */
+	function sp_sort_terms( $a, $b ) {
+		if ( is_numeric( $a ) ) {
+			$a = intval( $a );
+			$a = get_term( $a );
+		}
+		if ( is_numeric( $b ) ) {
+			$b = intval( $b );
+			$b = get_term( $b );
+		}
+		return get_term_meta( $a->term_id, 'sp_order', true ) > get_term_meta( $b->term_id, 'sp_order', true );
+	}
+}
+
 if ( !function_exists( 'sp_get_next_event' ) ) {
 	function sp_get_next_event( $args = array() ) {
 		$options = array(
@@ -1410,7 +1518,24 @@ if ( !function_exists( 'sp_taxonomy_field' ) ) {
 							$term_ids[] = $term->term_id;
 						endforeach;
 					endif;
+
+					// Set auto option
+					$auto = false;
+					if ( in_array( $post_type, sp_secondary_post_types() ) ) {
+						switch ( $taxonomy ) {
+							case 'sp_league':
+								$auto = __( 'Main League', 'sportspress' );
+								if ( get_post_meta( $post->ID, 'sp_main_league', true ) ) $term_ids[] = 'auto';
+								break;
+							case 'sp_season':
+								$auto = __( 'Current Season', 'sportspress' );
+								if ( get_post_meta( $post->ID, 'sp_current_season', true ) ) $term_ids[] = 'auto';
+								break;
+						}
+					}
+
 					$args = array(
+						'show_option_auto' => $auto,
 						'taxonomy' => $taxonomy,
 						'name' => 'tax_input[' . $taxonomy . '][]',
 						'selected' => $term_ids,
@@ -1533,4 +1658,58 @@ function sp_get_shortcode_template( $shortcode, $id = null, $args = array() ) {
  */
 function sp_shortcode_template( $shortcode, $id = null, $args = array() ) {
 	echo sp_get_shortcode_template( $shortcode, $id, $args );
+}
+
+if( ! function_exists( 'array_replace' ) ) {
+	/**
+	 * array_replace for PHP version earlier than 5.3
+	 *
+	 * @link   http://be2.php.net/manual/fr/function.array-replace.php#115215
+	 */
+	function array_replace() {
+		$args = func_get_args();
+		$num_args = func_num_args();
+		$res = array();
+		for( $i = 0; $i < $num_args; $i++ ) {
+			if( is_array( $args[ $i ] ) ) {
+				foreach( $args[ $i ] as $key => $val ) {
+					$res[ $key ] = $val;
+				}
+			}
+			else {
+				trigger_error( __FUNCTION__ . '(): Argument #' . ( $i + 1 ) . ' is not an array', E_USER_WARNING );
+				return NULL;
+			}
+		}
+		return $res;
+	}
+}
+
+/**
+ * Check if a shortcode is shown on content
+ * @return bool
+ */
+function sp_has_shortcodes( $content, $tags ) {
+	if( is_array( $tags ) ) {
+		foreach ( $tags as $tag ) {
+			preg_match_all( '/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER );
+			if ( empty( $matches ) )
+				return false;
+			foreach ( $matches as $shortcode ) {
+				if ( $tag === $shortcode[2] )
+				return true;
+			}
+		}
+	} else {
+		if ( shortcode_exists( $tags ) ) {
+			preg_match_all( '/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER );
+			if ( empty( $matches ) )
+				return false;
+			foreach ( $matches as $shortcode ) {
+				if ( $tags === $shortcode[2] )
+				return true;
+			}
+		}
+	}
+	return false;
 }

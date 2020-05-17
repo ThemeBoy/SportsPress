@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.3
+ * @version		2.5.1
  */
 class SP_Admin {
 
@@ -102,7 +102,7 @@ class SP_Admin {
 	 */
 	public function action_links() {
 		global $pagenow, $typenow;
-		if ( in_array( $typenow, sp_primary_post_types() ) ) {
+		if ( in_array( $typenow, sp_importable_post_types() ) ) {
 			if ( 'sp_event' === $typenow ) {
 				if ( 'edit.php' === $pagenow ) {
 					?>
@@ -112,16 +112,6 @@ class SP_Admin {
 							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_fixture_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import Fixtures', 'sportspress' ); ?></a>")
 						).after(
 							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import Events', 'sportspress' ); ?></a>")
-						);
-					})(jQuery);
-					</script>
-					<?php
-				} elseif ( 'post.php' === $pagenow ) {
-					?>
-					<script type="text/javascript">
-					(function($) {
-						$(".wrap .page-title-action").first().after(
-							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_performance_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import Box Score', 'sportspress' ); ?></a>")
 						);
 					})(jQuery);
 					</script>

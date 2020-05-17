@@ -27,3 +27,7 @@
 .sp-template-event-performance-icons .sp-performance-icons {
     text-align: left !important;
 }
+
+.sp-data-table .data-name {
+    text-align: right !important;
+}

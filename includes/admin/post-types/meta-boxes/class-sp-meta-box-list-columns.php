@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     2.1
+ * @version     2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -48,6 +48,7 @@ class SP_Meta_Box_List_Columns {
 					<?php _e( 'Position', 'sportspress' ); ?>
 				</label>
 			</li>
+			<?php do_action( 'sportspress_list_general_columns', $selected ); ?>
 		</ul>
 		<p><strong><?php _e( 'Data', 'sportspress' ); ?></strong></p>
 		<div class="sp-instance">

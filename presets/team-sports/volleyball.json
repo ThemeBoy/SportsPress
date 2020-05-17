@@ -23,13 +23,16 @@
 						{ "name" : "T", "id" : "points", "description" : "Total points", "primary" : 1 }
 	],
 	"performance": [
+						{ "name" : "1", "format" : "checkbox", "description" : "1st set" },
+						{ "name" : "2", "format" : "checkbox", "description" : "2nd set" },
+						{ "name" : "3", "format" : "checkbox", "description" : "3rd set" },
+						{ "name" : "4", "format" : "checkbox", "description" : "4th set" },
+						{ "name" : "5", "format" : "checkbox", "description" : "5th set" },
 						{ "name" : "S", "id" : "sets", "description" : "Sets played" },
 						{ "name" : "K", "description" : "Kills" },
 						{ "name" : "E", "description" : "Attack errors" },
 						{ "name" : "TA", "description" : "Total attacks" },
-						{ "name" : "A", "description" : "Assists" },
 						{ "name" : "B", "description" : "Blocks" },
-						{ "name" : "DIG", "id" : "digs", "description" : "Digs" },
 						{ "name" : "PTS", "id" : "points", "description" : "Points" }
 	],
 	"columns": [
@@ -50,6 +53,13 @@
 						{ "name" : "A/S", "equation" : "$a / $sets", "type" : "average", "description" : "Assists per set" }
 	],
 	"options": {
-						"mode" : "team"
+						"mode" : "team",
+						"event_teams" : "2",
+						"event_teams_delimiter" : "-",
+						"event_show_full_time" : "no",
+						"event_reverse_teams" : "no",
+						"event_performance_mode" : "values",
+						"event_show_player_numbers" : "yes",
+						"event_show_position" : "no"
 	}
 }

@@ -5,7 +5,7 @@
  * The SportsPress modules class stores available modules.
  *
  * @class 		SP_Modules
- * @version   2.4
+ * @version		2.6.15
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -29,12 +29,26 @@ class SP_Modules {
 					'icon' => 'sp-icon-calendar',
 					'desc' => __( 'Organize and publish calendars using different layouts.', 'sportspress' ),
 				),
+				'results_matrix' => array(
+					'label' => __( 'Results Matrix', 'sportspress' ),
+					'class' => 'SportsPress_Results_Matrix',
+					'icon' => 'sp-icon-matrix',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/results-matrix/',
+					'desc' => __( 'Display fixtures and results between teams in a grid layout.', 'sportspress' ),
+				),
 				'scoreboard' => array(
 					'label' => __( 'Scoreboard', 'sportspress' ),
 					'class' => 'SportsPress_Scoreboard',
 					'icon' => 'sp-icon-scoreboard',
 					'link' => 'https://www.themeboy.com/sportspress-extensions/scoreboard/',
 					'desc' => __( 'Display multiple event results in a horizontal scoreboard.', 'sportspress' ),
+				),
+				'google_maps' => array(
+					'label' => __( 'Google Maps', 'sportspress' ),
+					'class' => 'SportsPress_Google_Maps',
+					'icon' => 'sp-icon-location',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/google-maps/',
+					'desc' => __( 'Use Google Maps instead of OpenStreetMap for venues.', 'sportspress' ),
 				),
 				'user_scores' => array(
 					'label' => __( 'User Scores', 'sportspress' ),
@@ -49,6 +63,13 @@ class SP_Modules {
 					'icon' => 'sp-icon-statistics',
 					'link' => 'https://www.themeboy.com/sportspress-extensions/match-stats/',
 					'desc' => __( 'Display head-to-head team comparison charts in events.', 'sportspress' ),
+				),
+				'past_meetings' => array(
+					'label' => __( 'Past Meetings', 'sportspress' ),
+					'class' => 'SportsPress_Past_Meetings',
+					'icon' => 'sp-icon-history',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/past-meetings/',
+					'desc' => __( 'Display previous events between teams in list or blocks layout.', 'sportspress' ),
 				),
 				'timelines' => array(
 					'label' => __( 'Timelines', 'sportspress' ),
@@ -98,6 +119,14 @@ class SP_Modules {
 					'label' => __( 'Player Lists', 'sportspress' ),
 					'icon' => 'sp-icon-list',
 					'desc' => __( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
+				),
+				'midseason_transfers' => array(
+					'label' => __( 'Midseason Transfers', 'sportspress' ),
+					'class' => 'SportsPress_Midseason_Transfers',
+					'icon' => 'sp-icon-sub',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/midseason-transfers/',
+					'desc' => __( 'Statistics for players who transferred between teams during a season.', 'sportspress' ),
+					'default' => 'yes',
 				),
 				'staff_directories' => array(
 					'label' => __( 'Directories', 'sportspress' ),
@@ -157,14 +186,6 @@ class SP_Modules {
 					'icon' => 'sp-icon-megaphone',
 					'link' => 'https://www.themeboy.com/sportspress-extensions/sponsors/',
 					'desc' => __( 'Attract sponsors by offering them advertising space on your website.', 'sportspress' ),
-				),
-				'wordpay' => array(
-					'label' => __( 'WordPay', 'sportspress' ),
-					'class' => 'WordPay',
-					'icon' => 'sp-icon-wordpay',
-					'link' => 'https://wordpay.org/sportspress/',
-					'desc' => __( 'Start collecting club membership payments with WordPay.', 'sportspress' ),
-					'tip' => __( 'Get WordPay', 'sportspress' ),
 				),
 			),
 		));

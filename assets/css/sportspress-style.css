@@ -169,10 +169,6 @@
     color: inherit !important;
 }
 
-.sp-data-table .data-name {
-    text-align: left !important;
-}
-
 .sp-data-table .sp-highlight,
 .sp-data-table .highlighted td {
     font-weight: 500 !important;
@@ -251,7 +247,8 @@
 
 .sp-template-countdown .sp-event-name,
 .sp-template-countdown .sp-event-venue,
-.sp-template-countdown .sp-event-league {
+.sp-template-countdown .sp-event-league,
+.sp-template-countdown .sp-event-date {
     margin: 0 !important;
     padding: 5px 10px !important;
     text-align: center !important;
@@ -270,7 +267,8 @@
 }
 
 .sp-template-countdown .sp-event-venue,
-.sp-template-countdown .sp-event-league {
+.sp-template-countdown .sp-event-league,
+.sp-template-countdown .sp-event-date {
     font-size: 12px !important;
     font-weight: 500 !important;
     background: #fff !important;

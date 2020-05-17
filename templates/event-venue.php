@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     1.9
+ * @version     2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,9 +29,8 @@ foreach( $venues as $venue ):
 	if ( $link_venues )
 		$name = '<a href="' . get_term_link( $t_id, 'sp_venue' ) . '">' . $name . '</a>';
 
-	$address = sp_array_value( $meta, 'sp_address', '' );
-	$latitude = sp_array_value( $meta, 'sp_latitude', 0 );
-	$longitude = sp_array_value( $meta, 'sp_longitude', 0 );
+	$address = sp_array_value( $meta, 'sp_address', null );
+	$address = urlencode( $address );
 	?>
 	<div class="sp-template sp-template-event-venue">
 		<h4 class="sp-table-caption"><?php _e( 'Venue', 'sportspress' ); ?></h4>
@@ -41,14 +40,14 @@ foreach( $venues as $venue ):
 					<th><?php echo $name; ?></th>
 				</tr>
 			</thead>
-			<?php if ( $show_maps && $latitude != null && $longitude != null ): ?>
+			<?php if ( $show_maps ): ?>
 				<tbody>
 					<tr class="sp-event-venue-map-row">
 						<td><?php sp_get_template( 'venue-map.php', array( 'meta' => $meta ) ); ?></td>
 					</tr>
 					<?php if ( $address != null ) { ?>
 						<tr class="sp-event-venue-address-row">
-							<td><?php echo $address; ?></td>
+							<td><?php echo urldecode( $address ); ?></td>
 						</tr>
 					<?php } ?>
 				</tbody>

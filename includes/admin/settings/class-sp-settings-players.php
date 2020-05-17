@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.2.4
+ * @version		2.6.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -148,6 +148,17 @@ class SP_Settings_Players extends SP_Settings_Page {
 						'manual'	=> __( 'Manual', 'sportspress' ),
 					),
 				),
+				
+				array(
+						'title' 	=> __( 'Mode', 'sportspress' ),
+						'id' 		=> 'sportspress_player_statistics_mode',
+						'default'	=> 'values',
+						'type' 		=> 'radio',
+						'options' => array(
+							'values'	=> __( 'Values', 'sportspress' ),
+							'icons'		=> __( 'Icons', 'sportspress' ),
+						),
+					),
 
 				array(
 					'title' 	=> __( 'Categories', 'sportspress' ),

@@ -5,7 +5,7 @@
  * The SportsPress admin sports class stores preset sport data.
  *
  * @class 		SP_Admin_Sports
- * @version		2.4
+ * @version		2.6
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
@@ -108,13 +108,13 @@ class SP_Admin_Sports {
 				$name = sp_array_value( $position, 'name', __( 'Position', 'sportspress' ) );
 				$sections = sp_array_value( $position, 'sections', array( 0, 1 ) );
 			}
-			$slug = $i . '-' . sanitize_title( $name );
-			$term = wp_insert_term( $name, 'sp_position', array( 'slug' => $slug ) );
+			$term = wp_insert_term( $name, 'sp_position' );
 			if ( is_wp_error( $term ) ) continue;
 			$t_id = $term['term_id'];
 			$term_meta = get_option( "taxonomy_$t_id" );
 			$term_meta['sp_sections'] = $sections;
 			update_option( "taxonomy_$t_id", $term_meta );
+			update_term_meta( $t_id, 'sp_order', $i + 1 );
 			$i++;
 		}
 
@@ -143,7 +143,7 @@ class SP_Admin_Sports {
 			update_post_meta( $id, 'sp_equation', sp_array_value( $result, 'equation', null ) );
 		}
 
-		// Make sure statistics and metrics have greater menu order than performance
+		// Make sure statistics, metrics and specs have greater menu order than performance
 		$i = 0;
 
 		// Performance
@@ -188,6 +188,17 @@ class SP_Admin_Sports {
 		self::delete_preset_posts( $post_type );
 		foreach ( $metrics as $index => $metric ) {
 			$post = self::get_post_array( $metric, $post_type );
+			if ( empty( $post ) ) continue;
+			$id = self::insert_preset_post( $post, $i + $index );
+			$i ++;
+		}
+		
+		// Event Specs
+		$post_type = 'sp_spec';
+		$specs = sp_array_value( $preset, 'specs', array() );
+		self::delete_preset_posts( $post_type );
+		foreach ( $specs as $index => $spec ) {
+			$post = self::get_post_array( $spec, $post_type );
 			if ( empty( $post ) ) continue;
 			$id = self::insert_preset_post( $post, $i + $index );
 			$i ++;

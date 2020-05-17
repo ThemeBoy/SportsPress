@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.2
+ * @version   2.7.1
  */
 ?>
 <div class="sp-template sp-template-event-logos sp-template-event-blocks sp-template-event-logos-block">
@@ -27,9 +27,9 @@
 
 							if ( $show_team_names ) {
 								if ( $j % 2 ) {
-									$logo .= ' <strong class="sp-team-name">' . sp_get_team_name( $team, $abbreviate_teams ) . '</strong>';
+									$logo .= ' <strong class="sp-team-name">' . sp_team_short_name( $team ) . '</strong>';
 								} else {
-									$logo = '<strong class="sp-team-name">' . sp_get_team_name( $team, $abbreviate_teams ) . '</strong> ' . $logo;
+									$logo = '<strong class="sp-team-name">' . sp_team_short_name( $team ) . '</strong> ' . $logo;
 								}
 							}
 
@@ -42,8 +42,8 @@
 							echo $logo;
 						endforeach;
 						?>
-						<time class="sp-event-date" datetime="<?php echo get_the_time( 'Y-m-d H:i:s' ); ?>">
-							<?php echo get_the_time( get_option( 'date_format' ) ); ?>
+						<time class="sp-event-date" datetime="<?php echo get_the_time( 'Y-m-d H:i:s', $id ); ?>">
+							<?php echo get_the_time( get_option( 'date_format' ), $id ); ?>
 						</time>
 						<?php
 

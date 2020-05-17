@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add frontend styles to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.3
+Version: 2.7
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Styles' ) ) :
  * Main SportsPress Styles Class
  *
  * @class SportsPress_Styles
- * @version	2.3
+ * @version	2.7
  */
 class SportsPress_Styles {
 
@@ -43,7 +43,7 @@ class SportsPress_Styles {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_STYLES_VERSION' ) )
-			define( 'SP_STYLES_VERSION', '2.3' );
+			define( 'SP_STYLES_VERSION', '2.7' );
 
 		if ( !defined( 'SP_STYLES_URL' ) )
 			define( 'SP_STYLES_URL', plugin_dir_url( __FILE__ ) );
@@ -113,8 +113,14 @@ class SportsPress_Styles {
 	 * Output custom CSS.
 	 */
 	public function custom_css( $colors = array() ) {
-		if ( current_theme_supports( 'sportspress' ) && ! current_theme_supports( 'sportspress-styles' ) ) return $styles;
-		if ( 'no' === get_option( 'sportspress_styles', 'yes' ) ) return $styles;
+
+		if ( current_theme_supports( 'sportspress' ) && ! current_theme_supports( 'sportspress-styles' ) ) {
+			return;
+		}
+
+		if ( 'no' === get_option( 'sportspress_styles', 'yes' ) ) {
+			return;
+		}
 
 		// Defaults
 		if ( empty( $colors['primary'] ) ) $colors['primary'] = '#2b353e';

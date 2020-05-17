@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     2.3.1
+ * @version		2.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -44,11 +44,9 @@ function sportspress_the_title( $title, $id = null ) {
 			endif;
 		elseif ( is_singular( 'sp_staff' ) ):
 			$staff = new SP_Staff( $id );
-			$roles = $staff->roles();
-			if ( ! empty( $roles ) ):
-				$roles = wp_list_pluck( $roles, 'name' );
-				$title = '<strong class="sp-staff-role">' . implode( '<span class="sp-staff-role-delimiter">/</span>', $roles ) . '</strong> ' . $title;
-			endif;
+			$role = $staff->role();
+			if ( $role )
+				$title = '<strong class="sp-staff-role">' . $role->name . '</strong> ' . $title;
 		endif;
 	endif;
 
@@ -143,6 +141,10 @@ function sportspress_strcmp_term_slug( $a, $b ) {
 
 function sportspress_term_order( $terms, $post_id, $taxonomy ) {
 
+	if ( ! is_array( $terms ) ) {
+		return array();
+	}
+
     if ( is_sp_taxonomy( $taxonomy ) ) {
     	uasort( $terms, 'sportspress_strcmp_term_slug' );
     }
@@ -185,6 +187,15 @@ function sportspress_show_future_posts( $where, $that ) {
     return $where;
 }
 add_filter( 'posts_where', 'sportspress_show_future_posts', 2, 10 );
+
+function sportspress_redirect_future_events() {
+	if ( is_main_query() && 'sp_event' == get_query_var( 'post_type' ) && 'future' == get_post_status( get_query_var( 'p' ) ) && ! empty( $_GET['p'] ) ) {
+		if ( $redirect_url = get_post_permalink( get_query_var( 'p' ), false, true ) )
+			wp_redirect( $redirect_url, 301 );
+			die();
+	}
+}
+add_action( 'template_redirect', 'sportspress_redirect_future_events' );
 
 function sportspress_give_event_read_permissions( $allcaps, $caps, $args ) {
 
@@ -246,7 +257,7 @@ function sportspress_post_updated_messages( $messages ) {
 
 	global $typenow, $post;
 
-	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_metric', 'sp_performance' ) ) ):
+	if ( in_array( $typenow, array( 'sp_result', 'sp_outcome', 'sp_column', 'sp_metric', 'sp_spec', 'sp_performance' ) ) ):
 		$obj = get_post_type_object( $typenow );
 
 		for ( $i = 0; $i <= 10; $i++ ):

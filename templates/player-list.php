@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.2
+ * @version   2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -22,13 +22,17 @@ $defaults = array(
 	'show_title' => get_option( 'sportspress_list_show_title', 'yes' ) == 'yes' ? true : false,
 	'show_player_photo' => get_option( 'sportspress_list_show_photos', 'no' ) == 'yes' ? true : false,
 	'show_player_flag' => get_option( 'sportspress_list_show_flags', 'no' ) == 'yes' ? true : false,
+	'team_format' => get_option( 'sportspress_list_team_format', 'name' ),
 	'link_posts' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
-	'abbreviate_teams' => get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false,
+	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated' => get_option( 'sportspress_list_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows' => get_option( 'sportspress_list_rows', 10 ),
+	'leagues' => null,
+	'seasons' => null,
+	'team' => null,
 );
 
 extract( $defaults, EXTR_SKIP );
@@ -51,12 +55,19 @@ $list = new SP_Player_List( $id );
 if ( isset( $columns ) && null !== $columns ):
 	$list->columns = $columns;
 endif;
-$data = $list->data();
 
-// The first row should be column labels
+$data = apply_filters('sportspress_player_list_data', $list->data( false, $leagues, $seasons, $team ) , $id );
+
+// The first row should be labels
 $labels = $data[0];
 
-// Remove the first row to leave us with the actual data
+//Create a unique identifier based on the current time in microseconds
+$identifier = uniqid( 'playerlist_' );
+// If responsive tables are enabled then load the inline css code
+if ( true == $responsive ){
+	//sportspress_responsive_tables_css( $identifier );
+}
+// Remove the first row and 'head' row to leave us with the actual data
 unset( $data[0] );
 
 if ( $grouping === null || $grouping === 'default' ):
@@ -116,6 +127,23 @@ foreach ( $groups as $group ):
 	if ( intval( $number ) > 0 )
 		$limit = $number;
 	
+	$thead = '<thead>' . '<tr>';
+		
+	if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
+		if ( in_array( $orderby, array( 'number', 'name' ) ) ):
+			$thead .= '<th class="data-number">#</th>';
+		else:
+			$thead .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
+		endif;
+	endif;
+
+	foreach( $labels as $key => $label ):
+		if ( $key !== 'number' && ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) ) )
+			$thead .= '<th class="data-' . $key . '">'. $label . '</th>';
+	endforeach;
+
+	$thead .= '</tr>' . '</thead>';
+	
 	$tbody = '';
 
 	foreach( $data as $player_id => $row ): if ( empty( $group->term_id ) || has_term( $group->term_id, 'sp_position', $player_id ) ):
@@ -130,9 +158,9 @@ foreach ( $groups as $group ):
 		// Rank or number
 		if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
 			if ( isset( $orderby ) && $orderby != 'number' ):
-				$tbody .= '<td class="data-rank">' . ( $i + 1 ) . '</td>';
+				$tbody .= '<td class="data-rank" data-label="'.$labels['number'].'">' . ( $i + 1 ) . '</td>';
 			else:
-				$tbody .= '<td class="data-number">' . sp_array_value( $row, 'number', '&nbsp;' ) . '</td>';
+				$tbody .= '<td class="data-number" data-label="'.$labels['number'].'">' . sp_array_value( $row, 'number', '&nbsp;' ) . '</td>';
 			endif;
 		endif;
 		
@@ -162,15 +190,19 @@ foreach ( $groups as $group ):
 			$name = '<a href="' . $permalink . '">' . $name . '</a>';
 		endif;
 
-		$tbody .= '<td class="data-name' . $name_class . '">' . $name . '</td>';
+		$tbody .= '<td class="data-name' . $name_class . '" data-label="'.$labels['name'].'">' . $name . '</td>';
 		
 		if ( array_key_exists( 'team', $labels ) ):
-			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_team', true ) );
-			$team_name = sp_get_team_name( $team, $abbreviate_teams );
+			$team = sp_array_value( $row, 'team', get_post_meta( $id, 'sp_current_team', true ) );			
+			$team_name = $team ? sp_team_short_name( $team ) : '-';
+			if ( $team_format == 'logo' && has_post_thumbnail( $team ) ){
+				$logo = get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'title' => ''.$team_name.'' ) );
+				$team_name = '<span class="team-logo">' . $logo . '</span>';
+			}
 			if ( $link_teams && false !== get_post_status( $team ) ):
 				$team_name = '<a href="' . get_post_permalink( $team ) . '">' . $team_name . '</a>';
 			endif;
-			$tbody .= '<td class="data-team">' . $team_name . '</td>';
+			$tbody .= '<td class="data-team" data-label="'.$labels['team'].'">' . $team_name . '</td>';
 		endif;
 		
 		if ( array_key_exists( 'position', $labels ) ):
@@ -181,14 +213,19 @@ foreach ( $groups as $group ):
 				$position_term = get_term_by( 'id', $position, 'sp_position', ARRAY_A );
 				$positions = sp_array_value( $position_term, 'name', '&mdash;' );
 			endif;
-			$tbody .= '<td class="data-position">' . $positions . '</td>';
+			$tbody .= '<td class="data-position" data-label="'.$labels['position'].'">' . $positions . '</td>';
 		endif;
 
 		foreach( $labels as $key => $value ):
 			if ( in_array( $key, array( 'number', 'name', 'team', 'position' ) ) )
 				continue;
-			if ( ! is_array( $columns ) || in_array( $key, $columns ) )
-			$tbody .= '<td class="data-' . $key . '">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+			if ( ! is_array( $columns ) || in_array( $key, $columns ) ) {
+				$label = $labels[$key];
+				if ( preg_match ( "/title=\"(.*?)\"/", $value, $new_label ) ) {
+					$label = $new_label[1];
+				}
+				$tbody .= '<td class="data-' . $key . '" data-label="'.$label.'">' . sp_array_value( $row, $key, '&mdash;' ) . '</td>';
+			}
 		endforeach;
 
 		$tbody .= '</tr>';
@@ -207,22 +244,9 @@ foreach ( $groups as $group ):
 	endif;
 
 	$output .= '<div class="sp-table-wrapper">' .
-		'<table class="sp-player-list sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
-
-	if ( ! is_array( $labels ) || array_key_exists( 'number', $labels ) ):
-		if ( in_array( $orderby, array( 'number', 'name' ) ) ):
-			$output .= '<th class="data-number">#</th>';
-		else:
-			$output .= '<th class="data-rank">' . __( 'Rank', 'sportspress' ) . '</th>';
-		endif;
-	endif;
-
-	foreach( $labels as $key => $label ):
-		if ( $key !== 'number' && ( ! is_array( $columns ) || $key == 'name' || in_array( $key, $columns ) ) )
-		$output .= '<th class="data-' . $key . '">'. $label . '</th>';
-	endforeach;
-
-	$output .= '</tr>' . '</thead>' . '<tbody>';
+		'<table class="sp-player-list sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ). ( $responsive ? ' sp-responsive-table '.$identifier : '' ) . ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">';
+	
+	$output .= $thead . '<tbody>';
 	
 	$output .= $tbody;
 

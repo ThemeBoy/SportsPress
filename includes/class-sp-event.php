@@ -5,7 +5,7 @@
  * The SportsPress event class handles individual event data.
  *
  * @class 		SP_Event
- * @version		2.2.4
+ * @version		2.6.12
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -17,7 +17,7 @@ class SP_Event extends SP_Custom_Post{
 		$results = get_post_meta( $this->ID, 'sp_results', true );
 		if ( is_array( $results ) ) {
 			foreach( $results as $result ) {
-				$result = array_filter( $result );
+				$result = is_array( $result ) ? array_filter( $result ) : array();
 				if ( count( $result ) > 0 ) {
 					return 'results';
 				}
@@ -25,10 +25,15 @@ class SP_Event extends SP_Custom_Post{
 		}
 		return $post_status;
 	}
+
+	public function day() {
+		$day = get_post_meta( $this->ID, 'sp_day', true );
+		return $day;
+  }
 	
 	public function minutes() {
 		$minutes = get_post_meta( $this->ID, 'sp_minutes', true );
-		if ( '' === $minutes ) $minutes = 90;
+		if ( '' === $minutes ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 		return $minutes;
 	}
 
@@ -44,10 +49,6 @@ class SP_Event extends SP_Custom_Post{
 
 		// Get results for all teams
 		$data = sp_array_combine( $teams, $results, true );
-		
-		if ( 'yes' === get_option( 'sportspress_event_reverse_teams', 'no' ) ) {
-			$data = array_reverse( $data, true );
-		}
 
 		if ( $admin ):
 			return array( $columns, $usecolumns, $data );
@@ -388,7 +389,7 @@ class SP_Event extends SP_Custom_Post{
 			$stats[ $index ]['number'] = sp_array_value( $player_numbers, $details['id'] );
 
 			if ( 'team' === $details['key'] ) {
-				$name = sp_get_team_name( $details['team'] );
+				$name = sp_team_short_name( $details['team'] );
 				$stats[ $index ]['name'] = $name;
 				$stats[ $index ]['label'] = $name;
 				$stats[ $index ]['icon'] = sp_get_logo( $details['team'] );
@@ -564,6 +565,9 @@ class SP_Event extends SP_Custom_Post{
 				),
 			),
 		) );
+		if ( ! is_array( $duties ) ) {
+			return array();
+		}
 
 		if ( ! $include_empty && empty( $duties ) ) return null;
 
@@ -571,11 +575,12 @@ class SP_Event extends SP_Custom_Post{
 		$appointments = array();
 
 		foreach ( $duties as $duty ) {
-			$duty_appointments = sp_array_value( $officials, $duty->term_id, null );
+			$duty_appointments = sp_array_value( $officials, $duty->term_id, array() );
 
 			if ( ! $include_empty && empty( $duty_appointments ) ) continue;
 
 			$appointed_officials = array();
+			
 			foreach ( $duty_appointments as $duty_appointment ) {
 				$appointed_officials[ $duty_appointment ] = get_the_title( $duty_appointment );
 			}
@@ -624,6 +629,9 @@ class SP_Event extends SP_Custom_Post{
 				$outcomes = get_posts( $args );
 				foreach ( $meta as $team => $team_results ) {
 					if ( $outcomes ) {
+						if ( empty( $meta[ $team ] ) ) {
+							$meta[ $team ] = array();
+						}
 						$meta[ $team ][ 'outcome' ] = array();
 						foreach ( $outcomes as $outcome ) {
 							$meta[ $team ][ 'outcome' ][] = $outcome->post_name;
@@ -700,12 +708,26 @@ class SP_Event extends SP_Custom_Post{
 	}
 
 	public function sort_timeline( $a, $b ) {
-		return $a['time'] - $b['time'];
+		return (float) $a['time'] - (float) $b['time'];
 	}
-
-	public function day() {
-        $day = get_post_meta( $this->ID, 'sp_day', true );
-        if ( '' === $day ) $day = 'empty';
-        return $day;
-    }
+	
+	/**
+	 * Returns formatted event specs
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function specs( $neg = null ) {
+		$specs = (array)get_post_meta( $this->ID, 'sp_specs', true );
+		$spec_labels = (array)sp_get_var_labels( 'sp_spec', $neg, false );
+		$data = array();
+		
+		foreach ( $spec_labels as $key => $value ):
+			$spec = sp_array_value( $specs, $key, null );
+			if ( $spec == null )
+				continue;
+			$data[ $value ] = sp_array_value( $specs, $key, '&nbsp;' );
+		endforeach;
+		return $data;
+	}
 }

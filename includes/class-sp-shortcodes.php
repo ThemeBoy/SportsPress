@@ -3,7 +3,7 @@
  * SP_Shortcodes class.
  *
  * @class 		SP_Shortcodes
- * @version		2.4
+ * @version		2.6.9
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -19,10 +19,15 @@ class SP_Shortcodes {
 			'event_results'     => __CLASS__ . '::event_results',
 			'event_details'     => __CLASS__ . '::event_details',
 			'event_performance' => __CLASS__ . '::event_performance',
+			'event_venue' 		=> __CLASS__ . '::event_venue',
+			'event_officials' 	=> __CLASS__ . '::event_officials',
+			'event_teams' 		=> __CLASS__ . '::event_teams',
+			'event_full' 		=> __CLASS__ . '::event_full',
 			'countdown'         => __CLASS__ . '::countdown',
 			'player_details'    => __CLASS__ . '::player_details',
 			'player_statistics' => __CLASS__ . '::player_statistics',
 			'staff'             => __CLASS__ . '::staff',
+			'staff_profile'     => __CLASS__ . '::staff_profile',
 			'event_calendar'    => __CLASS__ . '::event_calendar',
 			'event_list'        => __CLASS__ . '::event_list',
 			'event_blocks'      => __CLASS__ . '::event_blocks',
@@ -99,6 +104,50 @@ class SP_Shortcodes {
 	 */
 	public static function event_performance( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Performance', 'output' ), $atts );
+	}
+	
+	/**
+	 * Event venue shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function event_venue( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Venue', 'output' ), $atts );
+	}
+	
+	/**
+	 * Event officials shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function event_officials( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Officials', 'output' ), $atts );
+	}
+	
+	/**
+	 * Event teams shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function event_teams( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Teams', 'output' ), $atts );
+	}
+	
+	/**
+	 * Event full info shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function event_full( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Full', 'output' ), $atts );
 	}
 
 	/**
@@ -231,5 +280,16 @@ class SP_Shortcodes {
 	 */
 	public static function staff( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_Staff', 'output' ), $atts );
+	}
+
+	/**
+	 * Staff profile shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function staff_profile( $atts ) {
+		return self::shortcode_wrapper( array( 'SP_Shortcode_Staff_Profile', 'output' ), $atts );
 	}
 }

@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     2.2
+ * @version		2.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -51,6 +51,7 @@ class SP_Meta_Box_Team_Details {
 			endif;
 		endif;
 
+		$short_name = get_post_meta( $post->ID, 'sp_short_name', true );
 		$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
 		$redirect = get_post_meta( $post->ID, 'sp_redirect', true );
 		$url = get_post_meta( $post->ID, 'sp_url', true );
@@ -111,6 +112,9 @@ class SP_Meta_Box_Team_Details {
 		<p><input type="text" class="widefat" id="sp_url" name="sp_url" value="<?php echo esc_url( $url ); ?>"></p>
 		<p><label class="selectit"><input type="checkbox" name="sp_redirect" value="1" <?php checked( $redirect ); ?>> <?php _e( 'Redirect', 'sportspress' ); ?></label></p>
 
+		<p><strong><?php _e( 'Short Name', 'sportspress' ); ?></strong></p>
+		<p><input type="text" id="sp_short_name" name="sp_short_name" value="<?php echo esc_attr( $short_name ); ?>"></p>
+
 		<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 		<p><input type="text" id="sp_abbreviation" name="sp_abbreviation" value="<?php echo esc_attr( $abbreviation ); ?>"></p>
 		<?php
@@ -122,6 +126,7 @@ class SP_Meta_Box_Team_Details {
 	public static function save( $post_id, $post ) {
 		update_post_meta( $post_id, 'sp_url', esc_url( sp_array_value( $_POST, 'sp_url', '' ) ) );
 		update_post_meta( $post_id, 'sp_redirect', sp_array_value( $_POST, 'sp_redirect', 0 ) );
+		update_post_meta( $post_id, 'sp_short_name', esc_attr( sp_array_value( $_POST, 'sp_short_name', '' ) ) );
 		update_post_meta( $post_id, 'sp_abbreviation', esc_attr( sp_array_value( $_POST, 'sp_abbreviation', '' ) ) );
 	}
 }

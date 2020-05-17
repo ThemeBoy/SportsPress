@@ -5,7 +5,7 @@
  * The SportsPress player class handles individual player data.
  *
  * @class 		SP_Player
- * @version		2.4
+ * @version		2.7
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -13,33 +13,33 @@
 class SP_Player extends SP_Custom_Post {
 
 	/**
-	 * Returns positions
+	 * Returns positions sorted by `sp_order`.
 	 *
 	 * @access public
 	 * @return array
 	 */
 	public function positions() {
-		return get_the_terms( $this->ID, 'sp_position' );
+		return $this->get_terms_sorted_by_sp_order( 'sp_position' );
 	}
 
 	/**
-	 * Returns leagues
+	 * Returns leagues sorted by `sp_order`.
 	 *
 	 * @access public
 	 * @return array
 	 */
 	public function leagues() {
-		return get_the_terms( $this->ID, 'sp_league' );
+		return $this->get_terms_sorted_by_sp_order( 'sp_league' );
 	}
 
 	/**
-	 * Returns seasons
+	 * Returns seasons sorted by `sp_order`.
 	 *
 	 * @access public
 	 * @return array
 	 */
 	public function seasons() {
-		return get_the_terms( $this->ID, 'sp_season' );
+		return $this->get_terms_sorted_by_sp_order( 'sp_season' );
 	}
 
 	/**
@@ -110,14 +110,21 @@ class SP_Player extends SP_Custom_Post {
 	 * @return array
 	 */
 	public function data( $league_id, $admin = false, $section = -1 ) {
-
-		$seasons = (array)get_the_terms( $this->ID, 'sp_season' );
+		$seasons = (array) $this->get_terms_sorted_by_sp_order( 'sp_season' );
 		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
 		$stats = (array)get_post_meta( $this->ID, 'sp_statistics', true );
-		$leagues = sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id, array() );
-		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
+		$leagues = (array) sp_array_value( (array)get_post_meta( $this->ID, 'sp_leagues', true ), $league_id );
+		uksort( $leagues, 'sp_sort_terms' );
 		$manual_columns = 'manual' == get_option( 'sportspress_player_columns', 'auto' ) ? true : false;
-		
+
+		$season_ids = array_filter(wp_list_pluck( $seasons, 'term_id' ));
+		$season_order = array_flip( $season_ids );
+		foreach ( $season_order as $season_id => $val ) {
+			$season_order[ $season_id ] = null;
+		}
+
+		$leagues = array_replace( $season_order, $leagues );
+
 		// Get performance labels
 		$args = array(
 			'post_type' => array( 'sp_performance' ),
@@ -165,8 +172,22 @@ class SP_Player extends SP_Custom_Post {
 
 		foreach ( $posts as $post ):
 			if ( -1 === $section ) {
-				$performance_labels[ $post->post_name ] = $post->post_title;
-			} else {
+				if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+					$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+					if ( $icon != '' ) {
+						$performance_labels[ $post->post_name ] = $icon;
+					}else{
+						if ( has_post_thumbnail( $post ) ) {
+							$icon = get_the_post_thumbnail( $post, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $post ) ) );
+							$performance_labels[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $post->ID, 1 );
+						}else{
+							$performance_labels[ $post->post_name ] = $post->post_title;
+						}
+					}
+				}else{
+					$performance_labels[ $post->post_name ] = $post->post_title;
+				}
+			}else{
 				$post_section = get_post_meta( $post->ID, 'sp_section', true );
 				
 				if ( '' === $post_section ) {
@@ -174,7 +195,21 @@ class SP_Player extends SP_Custom_Post {
 				}
 				
 				if ( $section == $post_section || -1 == $post_section ) {
+					if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+						$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+						if ( $icon != '' ) {
+							$performance_labels[ $post->post_name ] = $icon;
+						}else{
+							if ( has_post_thumbnail( $post ) ) {
+								$icon = get_the_post_thumbnail( $post, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $post ) ) );
+								$performance_labels[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $post->ID, 1 );
+							}else{
+								$performance_labels[ $post->post_name ] = $post->post_title;
+							}
+						}
+					}else{
 					$performance_labels[ $post->post_name ] = $post->post_title;
+					}
 				}
 			}
 
@@ -237,8 +272,11 @@ class SP_Player extends SP_Custom_Post {
 
 		$data = array();
 
+		$league_stats = sp_array_value( $stats, $league_id, array() );
+		$div_ids = apply_filters( 'sportspress_player_data_season_ids', $div_ids, $league_stats );
+
 		// Get all seasons populated with data where available
-		$data = sp_array_combine( $div_ids, sp_array_value( $stats, $league_id, array() ) );
+		$data = sp_array_combine( $div_ids, $league_stats, true );
 
 		// Get equations from statistic variables
 		$equations = sp_get_var_equations( 'sp_statistic' );
@@ -321,7 +359,7 @@ class SP_Player extends SP_Custom_Post {
 				);
 			endif;
 
-			$args = apply_filters( 'sportspress_player_data_event_args', $args );
+			$args = apply_filters( 'sportspress_player_data_event_args', $args, $data, $div_id );
 
 			$events = get_posts( $args );
 
@@ -341,8 +379,8 @@ class SP_Player extends SP_Custom_Post {
 
 						foreach ( $player_performance as $key => $value ):
 							if ( array_key_exists( $key, $totals ) ):
-								$value = floatval( $value );
-								$totals[ $key ] += $value;
+								$add = apply_filters( 'sportspress_player_performance_add_value', floatval( $value ), $key );
+								$totals[ $key ] += $add;
 							endif;
 						endforeach;
 
@@ -380,7 +418,7 @@ class SP_Player extends SP_Custom_Post {
 
 										// Subtract minutes prior to substitution
 										$substitution_time = sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $this->ID ), 'sub' ), 0, 0 );
-										$played_minutes -= $substitution_time;
+										$played_minutes -= (int) $substitution_time;
 									else:
 
 										// Starting lineup with possible substitution
@@ -476,17 +514,19 @@ class SP_Player extends SP_Custom_Post {
 						// Loop through away teams
 						if ( sizeof( $results ) ):
 							foreach ( $results as $team_results ):
-								unset( $team_results['outcome'] );
-								foreach ( $team_results as $result_slug => $team_result ):
+								if ( is_array( $team_results ) ):
+									unset( $team_results['outcome'] );
+									foreach ( $team_results as $result_slug => $team_result ):
 
-									// Add to total
-									$value = sp_array_value( $totals, $result_slug . 'against', 0 );
-									$value += floatval( $team_result );
-									$totals[ $result_slug . 'against' ] = $value;
+										// Add to total
+										$value = sp_array_value( $totals, $result_slug . 'against', 0 );
+										$value += floatval( $team_result );
+										$totals[ $result_slug . 'against' ] = $value;
 
-									// Add subset
-									$totals[ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
-								endforeach;
+										// Add subset
+										$totals[ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
+									endforeach;
+								endif;
 							endforeach;
 						endif;
 					endif;
@@ -506,7 +546,7 @@ class SP_Player extends SP_Custom_Post {
 			if ( $outcomes ):
 				$outcome = reset( $outcomes );
 				$abbreviation = sp_get_abbreviation( $outcome->ID );
-				if ( empty( $abbreviation ) ) $abbreviation = strtoupper( substr( $outcome->post_title, 0, 1 ) );
+				if ( empty( $abbreviation ) ) $abbreviation = sp_strtoupper( sp_substr( $outcome->post_title, 0, 1 ) );
 				$totals['streak'] = $abbreviation . $streak['count'];
 			endif;
 
@@ -524,7 +564,7 @@ class SP_Player extends SP_Custom_Post {
 			endforeach;
 
 			foreach ( $performance_labels as $key => $label ):
-				$placeholders[ $div_id ][ $key ] = sp_array_value( $totals, $key, 0 );
+				$placeholders[ $div_id ][ $key ] = apply_filters( 'sportspress_player_performance_table_placeholder', sp_array_value( $totals, $key, 0 ), $key );
 			endforeach;
 
 		endforeach;
@@ -544,7 +584,21 @@ class SP_Player extends SP_Custom_Post {
 
 		foreach ( $posts as $post ):
 			if ( -1 === $section ) {
-				$stats[ $post->post_name ] = $post->post_title;
+				if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+					$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+					if ( $icon != '' ) {
+						$stats[ $post->post_name ] = $icon;
+					}else{
+						if ( has_post_thumbnail( $post ) ) {
+							$icon = get_the_post_thumbnail( $post, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $post ) ) );
+							$stats[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $post->ID, 1 );
+						}else{
+							$stats[ $post->post_name ] = $post->post_title;
+						}
+					}
+				}else{
+					$stats[ $post->post_name ] = $post->post_title;
+				}
 			} else {
 				$post_section = get_post_meta( $post->ID, 'sp_section', true );
 				
@@ -555,15 +609,52 @@ class SP_Player extends SP_Custom_Post {
 				if ( $admin ) {
 					if ( 1 == $section ) {
 						if ( 1 == $post_section ) {
-							$stats[ $post->post_name ] = $post->post_title;
+							if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+								$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+								if ( $icon != '' ) {
+									$stats[ $post->post_name ] = $icon;
+								}else{
+									if ( has_post_thumbnail( $post ) ) {
+										$icon = get_the_post_thumbnail( $post, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $post ) ) );
+										$stats[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $post->ID, 1 );
+									}else{
+										$stats[ $post->post_name ] = $post->post_title;
+									}
+								}
+							} else {
+								$stats[ $post->post_name ] = $post->post_title;
+							}
 						}
 					} else {
 						if ( 1 != $post_section ) {
-							$stats[ $post->post_name ] = $post->post_title;
+							if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+								$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+									if ( $icon != '' ) {
+										$stats[ $post->post_name ] = $icon;
+									}else{
+										if ( has_post_thumbnail( $post ) ) {
+											$icon = get_the_post_thumbnail( $post, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $post ) ) );
+											$stats[ $post->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $post->ID, 1 );
+										}else{
+											$stats[ $post->post_name ] = $post->post_title;
+										}
+									}
+							} else {
+								$stats[ $post->post_name ] = $post->post_title;
+							}
 						}
 					}
 				} elseif ( $section == $post_section || -1 == $post_section ) {
+					if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' ) {
+					$icon = apply_filters( 'sportspress_event_performance_icons', '', $post->ID, 1 );
+					if ( $icon != '' ) {
+						$stats[ $post->post_name ] = $icon;
+					}else{
+						$stats[ $post->post_name ] = $post->post_title;
+					}
+				}else{
 					$stats[ $post->post_name ] = $post->post_title;
+				}
 				}
 			}
 		endforeach;
@@ -578,10 +669,10 @@ class SP_Player extends SP_Custom_Post {
 			if ( -1 == $team_id )
 				continue;
 
-			$season_name = sp_array_value( $season_names, $season_id, '&nbsp;' );
+			$season_name = sp_array_value( $season_names, (int) $season_id, '&nbsp;' );
 
 			if ( $team_id ):
-				$team_name = sp_get_team_name( $team_id, $abbreviate_teams );
+				$team_name = sp_team_short_name( $team_id );
 				
 				if ( get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false ):
 					$team_permalink = get_permalink( $team_id );
@@ -664,7 +755,8 @@ class SP_Player extends SP_Custom_Post {
 			foreach ( $stats as $key => $value ):
 				if ( in_array( $key, array( 'name', 'team' ) ) ) continue;
 				$value = floatval( $value );
-				$career[ $key ] = sp_array_value( $career, $key, 0 ) + $value;
+				$add = apply_filters( 'sportspress_player_performance_add_value', floatval( $value ), $key );
+				$career[ $key ] = sp_array_value( $career, $key, 0 ) + $add;
 			endforeach;
 		endforeach;
 
@@ -677,6 +769,9 @@ class SP_Player extends SP_Custom_Post {
 			$precision = sp_array_value( $value, 'precision', 0 );
 			$career[ $post->post_name ] = sp_solve( $value['equation'], $totals, $precision );
 		}
+
+		// Filter career total placeholders
+		$career = apply_filters( 'sportspress_player_performance_table_placeholders', $career );
 
 		// Get manually entered career totals
 		$manual_career = sp_array_value( $data, 0, array() );
@@ -739,7 +834,7 @@ class SP_Player extends SP_Custom_Post {
 	}
 
 	/**
-	 * Returns formatted data for all competitions
+	 * Returns formatted data for all leagues
 	 *
 	 * @access public
 	 * @param int $league_id

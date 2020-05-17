@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.2
+ * @version   2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -183,10 +183,11 @@ if ( $dayswithposts ) {
 	$daywithpost = array();
 }
 
-if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false || stripos($_SERVER['HTTP_USER_AGENT'], 'camino') !== false || stripos($_SERVER['HTTP_USER_AGENT'], 'safari') !== false)
+if ( array_key_exists( 'HTTP_USER_AGENT', $_SERVER ) && preg_match( '/(MSIE|camino|safari)/', $_SERVER[ 'HTTP_USER_AGENT' ] ) ) {
 	$ak_title_separator = "\n";
-else
+} else {
 	$ak_title_separator = ', ';
+}
 
 $ak_titles_for_day = array();
 $ak_post_titles = $wpdb->get_results("SELECT ID, post_title, post_date, DAYOFMONTH(post_date) as dom "
@@ -234,7 +235,7 @@ for ( $day = 1; $day <= $daysinmonth; ++$day ) {
 	$calendar_output .= '<td' . $td_properties . '>';
 
 	if ( $day_has_posts ) // any posts today?
-		$calendar_output .= '<a data-tooltip data-options="disable_for_touch:true" class="has-tip" href="' . ( sizeof( $daywithpost[ $day ] ) > 1 ? add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) . '" title="' . sprintf( '%s events', ( sizeof( $daywithpost[ $day ] ) ) ) : get_post_permalink( $daywithpost[ $day ][0], false, true ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) ) . "\" itemprop=\"url\">$day</a>";
+		$calendar_output .= '<a data-tooltip data-options="disable_for_touch:true" class="has-tip" href="' . ( sizeof( $daywithpost[ $day ] ) > 1 ? add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) . '" title="' . sprintf( __( '%s events', 'sportspress' ), ( sizeof( $daywithpost[ $day ] ) ) ) : get_post_permalink( $daywithpost[ $day ][0], false, true ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) ) . "\" itemprop=\"url\">$day</a>";
 	else
 		$calendar_output .= $day;
 	$calendar_output .= '</td>';

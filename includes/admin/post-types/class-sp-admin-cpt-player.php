@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version   2.2.7
+ * @version		2.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -164,7 +164,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 	    if ( taxonomy_exists( 'sp_league' ) ):
 			$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 			$args = array(
-				'show_option_all' =>  __( 'Show all competitions', 'sportspress' ),
+				'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),
 				'taxonomy' => 'sp_league',
 				'name' => 'sp_league',
 				'selected' => $selected
@@ -190,15 +190,17 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 	 * @param mixed $query
 	 */
 	public function filters_query( $query ) {
-		if ( $query->query_vars['post_type'] !== 'sp_player' ) return $query;
+
+		if ( empty ( $query->query_vars['post_type'] ) || $query->query_vars['post_type'] !== 'sp_player' ) return $query;
+
 		global $typenow, $wp_query;
 
-    if ( $typenow == 'sp_player' ) {
+		if ( $typenow == 'sp_player' ) {
 
-    	if ( ! empty( $_GET['team'] ) ) {
-	    	$query->query_vars['meta_value'] 	= $_GET['team'];
-	        $query->query_vars['meta_key'] 		= 'sp_team';
-	    }
+			if ( ! empty( $_GET['team'] ) ) {
+				$query->query_vars['meta_value'] 	= $_GET['team'];
+				$query->query_vars['meta_key'] 		= 'sp_team';
+			}
 		}
 
 		return $query;

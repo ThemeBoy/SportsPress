@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Feeds
  * @package 	SportsPress/Feeds
- * @version     1.8.3
+ * @version     2.6.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -27,29 +27,36 @@ $main_result = get_option( 'sportspress_primary_result', null );
 // Get the timezone setting
 $timezone = sanitize_option( 'timezone_string', get_option( 'timezone_string' ) );
 
-// Initialize output. Max line length is 75 chars.
+// Get the URL
+$url = add_query_arg( 'feed', 'sp-ical', get_post_permalink( $post ) );
+$url = wordwrap( $url , 60, "\r\n\t", true );
+
 $output =
-"BEGIN:VCALENDAR\n" .
-"VERSION:2.0\n" .
-"PRODID:-//ThemeBoy//SportsPress//" . strtoupper( $locale ) . "\n" .
-"CALSCALE:GREGORIAN\n" .
-"METHOD:PUBLISH\n" .
-"URL:" . add_query_arg( 'feed', 'sp-calendar-ical', get_post_permalink( $post ) ) . "\n" .
-"X-FROM-URL:" . add_query_arg( 'feed', 'sp-calendar-ical', get_post_permalink( $post ) ) . "\n" .
-"NAME:" . $post->post_title . "\n" .
-"X-WR-CALNAME:" . $post->post_title . "\n" .
-"DESCRIPTION:" . $post->post_title . "\n" .
-"X-WR-CALDESC:" . $post->post_title . "\n" .
-"REFRESH-INTERVAL;VALUE=DURATION:PT2M\n" .
-"X-PUBLISHED-TTL:PT2M\n" .
-"TZID:" . $timezone . "\n" .
-"X-WR-TIMEZONE:" . $timezone . "\n";
+"BEGIN:VCALENDAR\r\n" .
+"VERSION:2.0\r\n" .
+"PRODID:-//ThemeBoy//SportsPress//" . strtoupper( $locale ) . "\r\n" .
+"CALSCALE:GREGORIAN\r\n" .
+"METHOD:PUBLISH\r\n" .
+"URL:" . $url . "\r\n" .
+"X-FROM-URL:" . $url . "\r\n" .
+"NAME:" . $post->post_title . "\r\n" .
+"X-WR-CALNAME:" . $post->post_title . "\r\n" .
+"DESCRIPTION:" . $post->post_title . "\r\n" .
+"X-WR-CALDESC:" . $post->post_title . "\r\n" .
+"REFRESH-INTERVAL;VALUE=DURATION:PT2M\r\n" .
+"X-PUBLISHED-TTL:PT2M\r\n" .
+"TZID:" . $timezone . "\r\n" .
+"X-WR-TIMEZONE:" . $timezone . "\r\n";
 
 // Loop through each event
 foreach ( $events as $event):
 
 	// Define date format
 	$date_format = 'Ymd\THis';
+
+	// Get description
+	$description = preg_replace( '/([\,;])/','\\\$1', $event->post_content );
+	$description = wordwrap( $description , 60, "\n\t" );
 
 	// Initialize end time	
 	$end = new DateTime( $event->post_date );
@@ -89,6 +96,7 @@ foreach ( $events as $event):
 			$geo = false;
 		}
 	}
+	$location = wordwrap( $location , 60, "\r\n\t" );
 
 	// Get title or write summary based on scores
 	$results = array();
@@ -126,27 +134,34 @@ foreach ( $events as $event):
 	} else {
 		$summary = $event->post_title;
 	}
-
+	
+	//Convert &#[0-9]+ entities to UTF-8
+	$summary = preg_replace_callback("/(&#[0-9]+;)/", function($m) { return mb_convert_encoding($m[1], "UTF-8", "HTML-ENTITIES"); }, $summary);
+	
 	// Append to output string
 	$output .=
-	"BEGIN:VEVENT\n" .
-	"SUMMARY:" . preg_replace('/([\,;])/','\\\$1', $summary) . "\n" .
-	"DESCRIPTION:" . preg_replace('/([\,;])/','\\\$1', $event->post_content) . "\n" .
-	"UID:$event->ID\n" .
-	"STATUS:CONFIRMED\n" .
-	"DTSTART:" . mysql2date( $date_format, $event->post_date ) . "\n" .
-	"DTEND:" . $end->format( $date_format ) . "\n" .
-	"LAST-MODIFIED:" . mysql2date( $date_format, $event->post_modified_gmt ) . "\n";
+	"BEGIN:VEVENT\r\n" .
+	"SUMMARY:" . preg_replace( '/([\,;])/','\\\$1', $summary ) . "\r\n" .
+	"UID:$event->ID\r\n" .
+	"STATUS:CONFIRMED\r\n" .
+	"DTSTAMP:19700101T000000\r\n".
+	"DTSTART:" . mysql2date( $date_format, $event->post_date ) . "\r\n" .
+	"DTEND:" . $end->format( $date_format ) . "\r\n" .
+	"LAST-MODIFIED:" . mysql2date( $date_format, $event->post_modified_gmt ) . "\r\n";
+
+	if ( $description ) {
+		$output .= "DESCRIPTION:" . $description . "\r\n";
+	}
 
 	if ( $location ) {
-		$output .= "LOCATION:" . $location . "\n";
+		$output .= "LOCATION:" . $location . "\r\n";
 	}
 
 	if ( $geo ) {
-		$output .= "GEO:" . $geo . "\n";
+		$output .= "GEO:" . $geo . "\r\n";
 	}
 
-	$output .= "END:VEVENT\n";
+	$output .= "END:VEVENT\r\n";
 endforeach;
 
 // End output

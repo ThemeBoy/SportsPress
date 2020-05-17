@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version     2.3
+ * @version		2.7
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -23,6 +23,12 @@ class SP_League_Table extends SP_Secondary_Post {
 
 	/** @var array Teams to check for tiebreakers. */
 	public $tiebreakers = array();
+	
+	/** @var int Show Published events. */
+	public $show_published_events;
+	
+	/** @var int Show Scheduled events. */
+	public $show_future_events;
 
 	/**
 	 * Returns formatted data
@@ -38,7 +44,6 @@ class SP_League_Table extends SP_Secondary_Post {
 		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
-		$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 		$link_events = get_option( 'sportspress_link_events', 'yes' ) === 'yes' ? true : false;
 		$form_limit = (int) get_option( 'sportspress_form_limit', 5 );
 
@@ -223,10 +228,40 @@ class SP_League_Table extends SP_Secondary_Post {
 			endif;
 
 		endforeach;
-
+		
+		// Get which event status to include
+		$event_status = get_post_meta( $this->ID, 'sp_event_status', true );
+		
+		if ( empty( $event_status ) ) {
+			$event_status = array( 'publish', 'future' );
+		}
+		
+		if ( isset( $this->show_published_events )  ) { // If an attribute was pass through shortcode
+			if ( $this->show_published_events == '1' ) {
+				$event_status[] = 'publish';
+			}else{
+				if ( ( $status_key = array_search( 'publish', $event_status ) ) !== false ) {
+					unset( $event_status[ $status_key ] );
+				}
+			}
+		}
+		
+		if ( isset( $this->show_future_events )  ) { // If an attribute was pass through shortcode
+			if ( $this->show_future_events == '1' ) {
+				$event_status[] = 'future';
+			}else{
+				if ( ( $status_key = array_search('future', $event_status) ) !== false ) {
+					unset( $event_status[ $status_key ] );
+				}
+			}
+		}
+		
+		// Make sure to have unique values in the array
+		$event_status = array_unique( $event_status );
+		
 		$args = array(
 			'post_type' => 'sp_event',
-			'post_status' => array( 'publish', 'future' ),
+			'post_status' => $event_status,
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'post_date',
@@ -619,12 +654,12 @@ class SP_League_Table extends SP_Secondary_Post {
 						endif;
 					else:
 						// Solve
-						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $team_id, array() ), $stat->precision );
+						$placeholder = sp_solve( $stat->equation, sp_array_value( $totals, $team_id, array() ), $stat->precision, 0, $team_id );
 
 						if ( '$gamesback' == $stat->equation )
 							$gb_column = $stat->post_name;
 
-						if ( ! in_array( $stat->equation, array( '$gamesback', '$streak', '$form', '$last5', '$last10', '$homerecord', '$awayrecord' ) ) ):
+						if ( ! in_array( $stat->equation, apply_filters( 'sportspress_equation_presets', array( '$gamesback', '$streak', '$form', '$last5', '$last10', '$homerecord', '$awayrecord' ) ) ) ):
 							// Adjustments
 							$adjustment = sp_array_value( $adjustments, $team_id, array() );
 
@@ -702,7 +737,7 @@ class SP_League_Table extends SP_Secondary_Post {
 			// Add team name to row
 			$merged[ $team_id ] = array();
 
-			$team_data['name'] = sp_get_team_name( $team_id, $abbreviate_teams );
+			$team_data['name'] = sp_team_short_name( $team_id );
 
 			foreach ( $team_data as $key => $value ):
 
@@ -791,7 +826,7 @@ class SP_League_Table extends SP_Secondary_Post {
 			if ( sp_array_value( $a, $priority['column'], 0 ) != sp_array_value( $b, $priority['column'], 0 ) ):
 
 				// Compare column values
-				$output = sp_array_value( $a, $priority['column'], 0 ) - sp_array_value( $b, $priority['column'], 0 );
+				$output = (float) sp_array_value( $a, $priority['column'], 0 ) - (float) sp_array_value( $b, $priority['column'], 0 );
 
 				// Flip value if descending order
 				if ( $priority['order'] == 'DESC' ) $output = 0 - $output;

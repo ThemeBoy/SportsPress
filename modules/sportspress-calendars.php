@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add event calendars to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.2
+Version: 2.6.15
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
  * Main SportsPress Calendars Class
  *
  * @class SportsPress_Calendars
- * @version	2.2
+ * @version	2.6.15
  */
 class SportsPress_Calendars {
 
@@ -51,7 +51,7 @@ class SportsPress_Calendars {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_CALENDARS_VERSION' ) )
-			define( 'SP_CALENDARS_VERSION', '2.2' );
+			define( 'SP_CALENDARS_VERSION', '2.6.15' );
 
 		if ( !defined( 'SP_CALENDARS_URL' ) )
 			define( 'SP_CALENDARS_URL', plugin_dir_url( __FILE__ ) );
@@ -330,7 +330,7 @@ class SportsPress_Calendars {
 
 				array(
 					'title'     => __( 'Details', 'sportspress' ),
-					'desc' 		=> __( 'Display competition', 'sportspress' ),
+					'desc' 		=> __( 'Display league', 'sportspress' ),
 					'id' 		=> 'sportspress_event_blocks_show_league',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
@@ -340,6 +340,14 @@ class SportsPress_Calendars {
 				array(
 					'desc' 		=> __( 'Display season', 'sportspress' ),
 					'id' 		=> 'sportspress_event_blocks_show_season',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+				
+				array(
+					'desc' 		=> __( 'Display matchday', 'sportspress' ),
+					'id' 		=> 'sportspress_event_blocks_show_matchday',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
 					'checkboxgroup'		=> '',

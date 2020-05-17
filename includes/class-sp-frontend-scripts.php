@@ -3,7 +3,7 @@
  * Handle frontend forms
  *
  * @class 		SP_Frontend_Scripts
- * @version		2.2
+ * @version   2.6.8
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -72,7 +72,6 @@ class SP_Frontend_Scripts {
 		// Scripts
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'jquery-datatables', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/jquery.dataTables.min.js', array( 'jquery' ), '1.10.4', true );
-		wp_enqueue_script( 'jquery-countdown', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/jquery.countdown.min.js', array( 'jquery' ), '2.2.0', true );
 		wp_enqueue_script( 'sportspress', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/sportspress.js', array( 'jquery' ), SP()->version, true );
 
 		// Localize scripts

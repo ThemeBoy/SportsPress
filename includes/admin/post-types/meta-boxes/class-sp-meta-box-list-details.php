@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     2.3
+ * @version		2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -34,6 +34,9 @@ class SP_Meta_Box_List_Details {
 		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
 		$date_past = get_post_meta( $post->ID, 'sp_date_past', true );
 		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
+		$continents = SP()->countries->continents;
+		$nationalities = get_post_meta( $post->ID, 'sp_nationality', false );
+		$default_nationality = get_option( 'sportspress_default_nationality' , false );
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -98,6 +101,19 @@ class SP_Meta_Box_List_Details {
 					<option value="past" <?php selected( 'past', $era ); ?>><?php _e( 'Past', 'sportspress' ); ?></option>
 				</select>
 			</p>
+			<p><strong><?php _e( 'Nationality', 'sportspress' ); ?></strong></p>
+			<p>
+				<select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" multiple="multiple">
+					<option value=""></option>
+					<?php foreach ( $continents as $continent => $countries ): ?>
+						<optgroup label="<?php echo $continent; ?>">
+							<?php foreach ( $countries as $code => $country ): ?>
+								<option value="<?php echo $code; ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo $country; ?></option>
+							<?php endforeach; ?>
+						</optgroup>
+					<?php endforeach; ?>
+				</select>
+			</p>
 			<p><strong><?php _e( 'Grouping', 'sportspress' ); ?></strong></p>
 			<p>
 			<select name="sp_grouping">
@@ -143,7 +159,16 @@ class SP_Meta_Box_List_Details {
 			</p>
 			<?php
 			if ( 'manual' == $select ) {
-				sp_post_checklist( $post->ID, 'sp_player', ( 'auto' == $select ? 'none' : 'block' ), array( 'sp_league', 'sp_season', 'sp_current_team' ) );
+				$player_filters = array( 'sp_league', 'sp_season' );
+				if ( $team_id ) {					
+					if ( in_array( $era, [ 'all', 'past' ] ) ) {
+						$player_filters[] = 'sp_past_team';
+					}
+					if ( in_array( $era, [ 'all', 'current' ] ) ) {
+						$player_filters[] = 'sp_current_team';
+					}
+				}
+				sp_post_checklist( $post->ID, 'sp_player', ( 'auto' == $select ? 'none' : 'block' ), $player_filters );
 				sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
 			} else {
 				?>
@@ -166,6 +191,9 @@ class SP_Meta_Box_List_Details {
 		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null ) );
 		update_post_meta( $post_id, 'sp_date_past', sp_array_value( $_POST, 'sp_date_past', 0 ) );
 		update_post_meta( $post_id, 'sp_date_relative', sp_array_value( $_POST, 'sp_date_relative', 0 ) );
+		$tax_input = sp_array_value( $_POST, 'tax_input', array() );
+		update_post_meta( $post_id, 'sp_main_league', in_array( 'auto', sp_array_value( $tax_input, 'sp_league' ) ) );
+		update_post_meta( $post_id, 'sp_current_season', in_array( 'auto', sp_array_value( $tax_input, 'sp_season' ) ) );
 		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 		update_post_meta( $post_id, 'sp_era', sp_array_value( $_POST, 'sp_era', array() ) );
 		update_post_meta( $post_id, 'sp_grouping', sp_array_value( $_POST, 'sp_grouping', array() ) );
@@ -175,5 +203,6 @@ class SP_Meta_Box_List_Details {
 		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array() ) );
 		update_post_meta( $post_id, 'sp_number', sp_array_value( $_POST, 'sp_number', array() ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', array() ) );
 	}
 }

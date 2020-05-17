@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.3
+ * @version   2.6.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -48,11 +48,13 @@ endif;
 if ( $team ):
 	$args['meta_query'] = array(
 		array(
-			'key' => 'sp_team',
+			'key' => 'sp_current_team',
 			'value' => $team
 		),
 	);
 endif;
+
+$args = apply_filters( 'sportspress_players_selector_args', $args );
 
 $players = get_posts( $args );
 

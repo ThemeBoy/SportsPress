@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.3
+ * @version   2.6.16
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -16,7 +16,6 @@ $show_numbers = get_option( 'sportspress_event_show_player_numbers', 'yes' ) ===
 $show_position = get_option( 'sportspress_event_show_position', 'yes' ) === 'yes' ? true : false;
 $show_minutes = get_option( 'sportspress_event_performance_show_minutes', 'no' ) === 'yes' ? true : false;
 $sections = get_option( 'sportspress_event_performance_sections', -1 );
-$abbreviate_teams = get_option( 'sportspress_abbreviate_teams', 'yes' ) === 'yes' ? true : false;
 $reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
 $primary = sp_get_main_performance_option();
 $total = get_option( 'sportspress_event_total_performance', 'all');
@@ -97,7 +96,7 @@ if ( is_array( $teams ) ):
 		$formats[ $column->post_name ] = $format;
 	}
 
-	do_action( 'sportspress_before_event_performance' );
+	do_action( 'sportspress_before_event_performance', $columns );
 	
 	if ( $is_individual ) {
 		// Combined table
@@ -218,6 +217,8 @@ if ( is_array( $teams ) ):
 							}
 							
 							sp_get_template( 'event-performance-table.php', array(
+								'id' => $id,
+								'index' => $index,
 								'section' => $section_id,
 								'section_label' => $section_label,
 								'scrollable' => $scrollable,
@@ -226,7 +227,7 @@ if ( is_array( $teams ) ):
 								'show_numbers' => $show_numbers,
 								'show_minutes' => $show_minutes,
 								'show_total' => $show_total,
-								'caption' => 0 == $s && $team_id ? sp_get_team_name( $team_id, $abbreviate_teams ) : null,
+								'caption' => 0 == $s && $team_id ? sp_team_short_name( $team_id ) : null,
 								'labels' => $labels[ $section_id ],
 								'formats' => $formats,
 								'mode' => $mode,
@@ -237,6 +238,7 @@ if ( is_array( $teams ) ):
 								'performance_ids' => isset( $performance_ids ) ? $performance_ids : null,
 								'primary' => 'primary' == $total ? $primary : null,
 								'class' => 'sp-template-event-performance-team-' . $index . ' sp-template-event-performance-section sp-template-event-performance-section-' . $section_id . ' sp-template-event-performance-team-' . $index . '-section-' . $section_id,
+								'show_staff' => $show_staff,
 							) );
 						}
 						
@@ -257,13 +259,16 @@ if ( is_array( $teams ) ):
 					}
 					
 					sp_get_template( 'event-performance-table.php', array(
+						'id' => $id,
+						'index' => $index,
 						'scrollable' => $scrollable,
 						'sortable' => $sortable,
 						'show_players' => $show_team_players,
+						'show_staff' => $show_staff,
 						'show_numbers' => $show_numbers,
 						'show_minutes' => $show_minutes,
 						'show_total' => $show_total,
-						'caption' => $team_id ? sp_get_team_name( $team_id, $abbreviate_teams ) : null,
+						'caption' => $team_id ? sp_team_short_name( $team_id ) : null,
 						'labels' => $labels,
 						'formats' => $formats,
 						'mode' => $mode,
@@ -273,14 +278,9 @@ if ( is_array( $teams ) ):
 						'link_posts' => $link_posts,
 						'performance_ids' => isset( $performance_ids ) ? $performance_ids : null,
 						'primary' => 'primary' == $total ? $primary : null,
-
 					) );
 				}
 			}
-		
-			if ( $show_staff ):
-				sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
-			endif;
 		}
 		?>
 		<?php

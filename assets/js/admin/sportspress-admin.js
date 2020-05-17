@@ -14,13 +14,16 @@ jQuery(document).ready(function($){
 	});
 
 	// Chosen select
-	$(".chosen-select, #poststuff #post_author_override").chosen({
-		allow_single_deselect: true,
-		search_contains: true,
-		single_backstroke_delete: false,
-		disable_search_threshold: 10,
-		placeholder_text_multiple: localized_strings.none
-	});
+	$(document).on("postbox-toggled", function() {
+		$(".chosen-select").filter(":visible").chosen({
+			allow_single_deselect: true,
+			search_contains: true,
+			single_backstroke_delete: false,
+			disable_search_threshold: 10,
+			placeholder_text_multiple: localized_strings.none
+		});
+	}).trigger("postbox-toggled");
+
 
 	// Auto key placeholder
 	$("#poststuff #title").on("keyup", function() {
@@ -457,10 +460,34 @@ jQuery(document).ready(function($){
 
 	// Dashboard countdown
 	$("#sportspress_dashboard_status .sp_status_list li.countdown").each(function() {
-		var $this = $(this), finalDate = $(this).data('countdown');
-		$this.countdown(finalDate, function(event) {
-			$this.find('strong').html(event.strftime("%D "+localized_strings.days+" %H:%M:%S"));
-		});
+		var $this = $(this); 
+		// Get countdown time
+		var countDownDate = new Date($(this).data('countdown')).getTime();
+		// Iterate every second
+		var x = setInterval(function() {
+			
+			// Get todays date and time
+			var now = new Date();
+			
+			// Convert curent date and time to UTC
+			var tzDifference = now.getTimezoneOffset();
+			var nowutc = new Date(now.getTime() + tzDifference * 60 * 1000);
+			
+			// Find the distance between now and the count down date
+			var distance = countDownDate - nowutc;
+			if ( distance < 0 ) {
+				distance = 0;
+			}
+			
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			
+			// Output the result
+			$this.find('strong').html(days+" "+localized_strings.days+" "+('0' + hours).slice(-2)+":"+('0' + minutes).slice(-2)+":"+('0' + seconds).slice(-2));
+		}, 1000);
 	});
 
 	// Event format affects data

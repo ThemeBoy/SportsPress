@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.5
+ * @version		2.6.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -125,7 +125,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 					array(
 						'title'     => __( 'Teams', 'sportspress' ),
-						'desc' 		=> __( 'Filter by competition', 'sportspress' ),
+						'desc' 		=> __( 'Filter by league', 'sportspress' ),
 						'id' 		=> 'sportspress_event_filter_teams_by_league',
 						'default'	=> 'no',
 						'type' 		=> 'checkbox',
@@ -181,8 +181,8 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 
 				array(
-					'title'     => __( 'Google Maps', 'sportspress' ),
-					'desc' 		=> __( 'Display maps', 'sportspress' ),
+					'title'     => __( 'Venue Map', 'sportspress' ),
+					'desc' 		=> __( 'Display venue map', 'sportspress' ),
 					'id' 		=> 'sportspress_event_show_maps',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
@@ -270,6 +270,30 @@ class SP_Settings_Events extends SP_Settings_Page {
 
 			array(
 				array( 'type' => 'sectionend', 'id' => 'event_logo_options' ),
+			),
+
+			array(
+				array( 'title' => __( 'Players', 'sportspress' ), 'type' => 'title', 'desc' => '', 'id' => 'eventplayer_options' ),
+			),
+
+			apply_filters( 'sportspress_eventplayer_options', array(
+				array(
+					'title' 	=> __( 'Order', 'sportspress' ),
+					'id' 		=> 'sportspress_event_player_sort',
+					'default'	=> 'jersey',
+					'type' 		=> 'radio',
+					'options' => array(
+						'jersey'=> __( 'Jersey (e.g. "33. John Doe")', 'sportspress' ),
+						'name'	=> __( 'Name (e.g. "John Doe (33)")', 'sportspress' ),
+					),
+					'desc_tip' 		=> 'When editing an event, this determines how the checklist of players are sorted in the Teams metabox.  This does not affect the Box Score section.',
+				),
+
+			) ),
+
+
+			array(
+				array( 'type' => 'sectionend', 'id' => 'eventplayer_options' ),
 			),
 
 			array(

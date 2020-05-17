@@ -4,13 +4,14 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version     2.2
+ * @version   2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $defaults = array(
 	'team' => null,
+	'calendar' => null,
 	'league' => null,
 	'season' => null,
 	'id' => null,
@@ -20,10 +21,37 @@ $defaults = array(
 	'link_teams' => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 	'link_venues' => get_option( 'sportspress_link_venues', 'no' ) == 'yes' ? true : false,
 	'show_logos' => get_option( 'sportspress_countdown_show_logos', 'no' ) == 'yes' ? true : false,
+	'show_thumbnail' => get_option( 'sportspress_countdown_show_thumbnail', 'no' ) == 'yes' ? true : false,
 );
+
+if ( isset( $show_excluded ) && $show_excluded ){
+	$excluded_statuses = array();
+}else{
+	$excluded_statuses = apply_filters( 'sp_countdown_excluded_statuses', array(
+		'postponed',
+		'cancelled',
+	) );
+}
 
 if ( isset( $id ) ):
 	$post = get_post( $id );
+elseif ( $calendar ):
+	$calendar = new SP_Calendar( $calendar );
+	if ( $team )
+		$calendar->team = $team;
+	$calendar->status = 'future';
+	$calendar->order = 'ASC';
+	$data = $calendar->data();
+
+	/**
+	 * Exclude postponed or cancelled events.
+	 */
+	while ( $post = array_shift( $data ) ) {
+		$sp_status = get_post_meta($post->ID, 'sp_status', true);
+		if( ! in_array( $sp_status, $excluded_statuses ) ) {
+			break;
+		}
+	}
 else:
 	$args = array();
 	if ( isset( $team ) ) {
@@ -51,6 +79,16 @@ else:
 			);
 		}
 	}
+
+	/**
+	 * Exclude postponed or cancelled events.
+	 */
+	$args['meta_query'][] = [
+		'key' => 'sp_status',
+		'compare' => 'NOT IN',
+		'value' => $excluded_statuses,
+	];
+
 	$post = sp_get_next_event( $args );
 endif;
 
@@ -63,9 +101,23 @@ if ( $title )
 
 $title = $post->post_title;
 if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false, true ) . '">' . $title . '</a>';
+$sp_status = get_post_meta($post->ID, 'sp_status', true);
+$statuses = apply_filters( 'sportspress_event_statuses', array(
+			'ok' => __( 'On time', 'sportspress' ),
+			'tbd' => __( 'TBD', 'sportspress' ),
+			'postponed' => __( 'Postponed', 'sportspress' ),
+			'cancelled' => __( 'Canceled', 'sportspress' ),
+		) );
 ?>
 <div class="sp-template sp-template-countdown">
 	<div class="sp-countdown-wrapper">
+	<?php 
+	if ( $show_thumbnail && has_post_thumbnail( $post ) ) {
+	?>
+	<div class="event-image sp-event-image">
+		<?php echo get_the_post_thumbnail( $post ); ?>
+	</div>
+	<?php } ?>
 		<h3 class="event-name sp-event-name">
 			<?php
 			if ( $show_logos ) {
@@ -86,9 +138,19 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 				}
 			}
 			?>
-			<?php echo $title; ?>
+			<?php echo $title.' ('.$statuses[ $sp_status ].')'; ?>
 		</h3>
 		<?php
+		if ( isset( $show_date ) && $show_date ):
+			?>
+			<h5 class="event-venue sp-event-venue event-date sp-event-date">
+				<?php
+				echo get_the_time( get_option( 'date_format' ), $post );
+				?>
+			</h5>
+			<?php
+		endif;
+		
 		if ( isset( $show_venue ) && $show_venue ):
 			$venues = get_the_terms( $post->ID, 'sp_venue' );
 			if ( $venues ):
@@ -132,7 +194,7 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 		$s = $interval->invert ? 0 : $interval->s;
 		?>
 		<p class="countdown sp-countdown<?php if ( $days >= 10 ): ?> long-countdown<?php endif; ?>">
-			<time datetime="<?php echo $post->post_date; ?>"<?php if ( $live ): ?> data-countdown="<?php echo str_replace( '-', '/', $post->post_date ); ?>"<?php endif; ?>>
+			<time datetime="<?php echo $post->post_date; ?>"<?php if ( $live ): ?> data-countdown="<?php echo str_replace( '-', '/', get_gmt_from_date( $post->post_date ) ); ?>"<?php endif; ?>>
 				<span><?php echo sprintf( '%02s', $days ); ?> <small><?php _e( 'days', 'sportspress' ); ?></small></span>
 				<span><?php echo sprintf( '%02s', $h ); ?> <small><?php _e( 'hrs', 'sportspress' ); ?></small></span>
 				<span><?php echo sprintf( '%02s', $i ); ?> <small><?php _e( 'mins', 'sportspress' ); ?></small></span>

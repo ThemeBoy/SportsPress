@@ -5,7 +5,7 @@
  * The SportsPress countries class stores continent/country data.
  *
  * @class 		SP_Countries
- * @version		2.2
+ * @version   2.6.8
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -546,6 +546,7 @@ class SP_Countries {
 			'ee' => 'est',
 			'eg' => 'egy',
 			'eh' => 'esh',
+			'el' => 'gre',
 			'en' => 'end',
 			'er' => 'eri',
 			'es' => 'esp',
@@ -681,6 +682,7 @@ class SP_Countries {
 			'tw' => 'tpw',
 			'tz' => 'tan',
 			'ua' => 'ukr',
+			'uk' => 'gbr',
 			'ug' => 'uga',
 			'us' => 'usa',
 			'uy' => 'uru',

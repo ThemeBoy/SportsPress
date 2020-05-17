@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     2.3
+ * @version		2.6.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,10 +19,15 @@ class SP_Meta_Box_List_Data {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$list = new SP_Player_List( $post );
-		list( $columns, $data, $placeholders, $merged, $orderby ) = $list->data( true );
-		$adjustments = $list->adjustments;
-		self::table( $columns, $data, $placeholders, $adjustments, $orderby );
+		global $pagenow;
+		if ( is_admin() && in_array( $pagenow, array( 'post-new.php' ) ) && 'sp_list' == get_post_type() ) {
+			self::table( );
+		}else{
+			$list = new SP_Player_List( $post );
+			list( $columns, $data, $placeholders, $merged, $orderby ) = $list->data( true );
+			$adjustments = $list->adjustments;
+			self::table( $columns, $data, $placeholders, $adjustments, $orderby );
+		}
 	}
 
 	/**

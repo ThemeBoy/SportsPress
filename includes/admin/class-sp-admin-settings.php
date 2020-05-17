@@ -2,10 +2,10 @@
 /**
  * SportsPress Admin Settings Class.
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin
- * @version     2.3
+ * @author    ThemeBoy
+ * @category  Admin
+ * @package   SportsPress/Admin
+ * @version   2.6.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -50,9 +50,7 @@ class SP_Admin_Settings {
 				$settings[] = include( 'settings/class-sp-settings-licenses.php' );
 			}
 			
-			if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG && current_user_can( 'manage_options' ) ) {
-				$settings[] = include( 'settings/class-sp-settings-status.php' );
-			}
+			$settings[] = include( 'settings/class-sp-settings-status.php' );
 
 			self::$settings = apply_filters( 'sportspress_get_settings_config_pages', $settings );
 		}
@@ -173,7 +171,7 @@ class SP_Admin_Settings {
 		// Array value
 		if ( strstr( $option_name, '[' ) ) {
 
-			parse_str( $option_name, $option_array );
+			parse_str( html_entity_decode( $option_name ), $option_array );
 
 			// Option name is first key
 			$option_name = current( array_keys( $option_array ) );

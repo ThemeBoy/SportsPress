@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     2.3
+ * @version		2.6.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,11 +19,16 @@ class SP_Meta_Box_Table_Data {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$table = new SP_League_Table( $post );
-		list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );
-		$adjustments = $table->adjustments;
-		$highlight = get_post_meta( $table->ID, 'sp_highlight', true );
-		self::table( $table->ID, $columns, $usecolumns, $data, $placeholders, $adjustments, $highlight );
+		global $pagenow;
+		if ( is_admin() && in_array( $pagenow, array( 'post-new.php' ) ) && 'sp_table' == get_post_type() ) {
+			self::table( );
+		}else{
+			$table = new SP_League_Table( $post );
+			list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );
+			$adjustments = $table->adjustments;
+			$highlight = get_post_meta( $table->ID, 'sp_highlight', true );
+			self::table( $table->ID, $columns, $usecolumns, $data, $placeholders, $adjustments, $highlight );
+		}
 	}
 
 	/**
@@ -39,7 +44,7 @@ class SP_Meta_Box_Table_Data {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $id, $columns = array(), $usecolumns = null, $data = array(), $placeholders = array(), $adjustments = array(), $highlight = null, $readonly = false ) {
+	public static function table( $id = 0, $columns = array(), $usecolumns = null, $data = array(), $placeholders = array(), $adjustments = array(), $highlight = null, $readonly = false ) {
 		if ( is_array( $usecolumns ) )
 			$usecolumns = array_filter( $usecolumns );
 
@@ -122,7 +127,7 @@ class SP_Meta_Box_Table_Data {
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $team_id, array() ), $column, 0 );
 									$placeholder = wp_strip_all_tags( $placeholder );
 									?>
-									<td><input type="text" name="sp_teams[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>" data-matrix="<?php echo $team_id; ?>_<?php echo $column; ?>" data-adjustment="<?php echo esc_attr( sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $column, 0 ) ); ?>" <?php readonly( $readonly ); ?> /></td>
+									<td><input type="text" name="sp_teams[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>" data-matrix="<?php echo $team_id; ?>_<?php echo $column; ?>" data-adjustment="<?php echo esc_attr( sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $column, 0 ) ); ?>" <?php disabled( $readonly ); ?> /></td>
 								<?php endforeach; ?>
 							</tr>
 							<?php

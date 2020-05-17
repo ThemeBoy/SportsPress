@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     2.2
+ * @version		2.6.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -45,7 +45,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 		</p>
 		<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 		<p>
-			<input name="sp_abbreviation" type="text" id="sp_abbreviation" value="<?php echo $abbreviation; ?>" placeholder="<?php echo substr( $post->post_title, 0, 1 ); ?>">
+			<input name="sp_abbreviation" type="text" id="sp_abbreviation" value="<?php echo $abbreviation; ?>" placeholder="<?php echo sp_substr( $post->post_title, 0, 1 ); ?>">
 		</p>
 		<p><strong><?php _e( 'Color', 'sportspress' ); ?></strong></p>
 		<p>
@@ -65,9 +65,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 					'=' => sprintf( __( 'Equal %s', 'sportspress' ), $label ),
 					'else' => sprintf( __( 'Default', 'sportspress' ), $label ),
 				);
-				for( $i = 1; $i <= $count->publish; $i++ ):
-					$options[ $i ] = $i;
-				endfor;
+
 				foreach ( $options as $key => $value ):
 					printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $condition, false ), $value );
 				endforeach;

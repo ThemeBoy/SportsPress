@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version     2.2.4
+ * @version		2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -137,6 +137,15 @@ function sp_the_main_results_or_time( $post = 0, $delimiter = '-' ) {
 	echo implode( $delimiter, sp_get_main_results_or_time( $post ) );
 }
 
+function sp_get_main_results_or_date( $post = 0, $format = null ) {
+	$results = sp_get_main_results( $post );
+	if ( sizeof( $results ) ) {
+		return $results;
+	} else {
+		return array( sp_get_date( $post, $format ) );
+	}
+}
+
 function sp_get_outcome( $post = 0 ) {
 	$event = new SP_Event( $post );
 	return $event->outcome( true );
@@ -169,7 +178,7 @@ function sp_get_performance( $post = 0 ) {
 
 function sp_get_singular_name( $post = 0 ) {
 	$singular = get_post_meta( $post, 'sp_singular', true );
-	if ( '' !== $singular ) {
+	if ( $singular && '' !== $singular ) {
 		return $singular;
 	} else {
 		return get_the_title( $post );
@@ -274,10 +283,6 @@ function sp_is_home_venue( $post = 0, $event = 0 ) {
 	}
 }
 
-function sp_the_abbreviation( $post = 0 ) {
-	echo sp_get_abbreviation( $post );
-}
-
 function sp_the_logo( $post = 0, $size = 'icon', $attr = array() ) {
 	echo sp_get_logo( $post, $size, $attr );
 }
@@ -286,22 +291,37 @@ function sp_team_logo( $post = 0 ) {
 	sp_get_template( 'team-logo.php', array( 'id' => $post ) );
 }
 
-function sp_get_short_name( $post = 0 ) {
-	$abbreviation = sp_get_abbreviation( $post, 'sp_abbreviation', true );
+function sp_team_abbreviation( $post = 0, $forced = false ) {
+	$abbreviation = get_post_meta( $post, 'sp_abbreviation', true );
 	if ( $abbreviation ) {
 		return $abbreviation;
+	} else {
+		return $forced ? sp_substr( sp_strtoupper( sp_team_short_name( $post ) ), 0, 3 ) : sp_team_short_name( $post );
+	}
+}
+
+function sp_the_abbreviation( $post = 0, $forced = false ) {
+	echo sp_team_abbreviation( $post, $forced );
+}
+
+function sp_team_short_name( $post = 0 ) {
+	$short_name = get_post_meta( $post, 'sp_short_name', true );
+	if ( $short_name ) {
+		return $short_name;
 	} else {
 		return get_the_title( $post );
 	}
 }
 
-function sp_short_name( $post = 0 ) {
-	echo sp_get_short_name( $post );
+function sp_the_short_name( $post = 0 ) {
+	echo sp_team_short_name( $post );
 }
 
-function sp_get_team_name( $post = 0, $short = true ) {
-	if ( $short ) {
-		return sp_get_short_name( $post );
+function sp_team_name( $post = 0, $length = 'full' ) {
+	if ( 'abbreviation' == $length ) {
+		return sp_team_abbreviation( $post );
+	} elseif ( 'short' == $length ) {
+		return sp_team_short_name( $post );
 	} else {
 		return get_the_title( $post );
 	}
@@ -344,12 +364,46 @@ function sp_get_player_number( $post = 0 ) {
 	return get_post_meta( $post, 'sp_number', true );
 }
 
+function sp_get_player_number_in_event( $player_id, $team_id, $event_id ) {
+	$event_players = get_post_meta( $event_id, 'sp_players', true );
+	if ( ! array_key_exists( $team_id, $event_players ) ) {
+		return;
+	}
+	if ( ! array_key_exists( $player_id, $event_players[ $team_id ] ) ) {
+		return;
+	}
+	return $event_players[ $team_id ][ $player_id ][ 'number' ];
+}
+
+function sp_get_player_number_in_event_or_profile( $player_id, $team_id, $event_id ) {
+	$number = sp_get_player_number_in_event( $player_id, $team_id, $event_id );
+	if ( is_null( $number ) ) {
+		$number = sp_get_player_number( $player_id );
+	}
+	return $number;
+}
+
+function sp_get_player_name( $post = 0 ) {
+	return apply_filters( 'sportspress_player_name', get_the_title( $post ), $post );
+}
+
 function sp_get_player_name_with_number( $post = 0, $prepend = '', $append = '. ' ) {
+	$name = sp_get_player_name( $post );
 	$number = sp_get_player_number( $post );
 	if ( isset( $number ) && '' !== $number ) {
-		return $prepend . $number . $append . get_the_title( $post );
+		return apply_filters( 'sportspress_player_name_with_number', $prepend . $number . $append . $name, $post );
 	} else {
-		return get_the_title( $post );
+		return $name;
+	}
+}
+
+function sp_get_player_name_then_number( $post = 0, $prepend = ' (', $append = ')' ) {
+	$name = sp_get_player_name( $post );
+	$number = sp_get_player_number( $post );
+	if ( isset( $number ) && '' !== $number ) {
+		return apply_filters( 'sportspress_player_name_then_number', $name . $prepend . $number . $append, $post );
+	} else {
+		return $name;
 	}
 }
 

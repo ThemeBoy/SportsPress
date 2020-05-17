@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version   2.4
+ * @version		2.6.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,8 +20,12 @@ class SP_Meta_Box_Player_Statistics {
 	 */
 	public static function output( $post ) {
 		$player = new SP_Player( $post );
-		$leagues = get_the_terms( $post->ID, 'sp_league' );
-		$league_num = sizeof( $leagues );
+		$leagues = $player->get_terms_sorted_by_sp_order( 'sp_league' );
+		if ( is_array ( $leagues ) ) {
+			$league_num = sizeof( $leagues );
+		}else{
+			$league_num =0;
+		}
 		$sections = get_option( 'sportspress_player_performance_sections', -1 );
 		$show_career_totals = 'yes' === get_option( 'sportspress_player_show_career_total', 'no' ) ? true : false;
 
@@ -91,9 +95,10 @@ class SP_Meta_Box_Player_Statistics {
 	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array(), $total_types = array() ) {
 		$readonly = false;
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
+		$buffer = apply_filters( 'sportspress_meta_box_player_statistics_table_buffer', array( 'teams' => $teams, 'readonly' => $readonly ), $id );
 		?>
 		<div class="sp-data-table-container">
-			<table class="widefat sp-data-table">
+			<table class="widefat sp-data-table sp-player-statistics-table">
 				<thead>
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
@@ -105,6 +110,7 @@ class SP_Meta_Box_Player_Statistics {
 						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
 							<th><?php echo $label; ?></th>
 						<?php endforeach; ?>
+						<?php do_action( 'sportspress_meta_box_player_statistics_table_header_row', $id, $league_id ); ?>
 					</tr>
 				</thead>
 				<tfoot>
@@ -140,6 +146,7 @@ class SP_Meta_Box_Player_Statistics {
 								}
 							?></td>
 						<?php endforeach; ?>
+						<?php do_action( 'sportspress_meta_box_player_statistics_table_footer_row', $id, $league_id ); ?>
 					</tr>
 				</tfoot>
 				<tbody>
@@ -150,7 +157,7 @@ class SP_Meta_Box_Player_Statistics {
 						if ( $div_id === 0 ) continue;
 						$div = get_term( $div_id, 'sp_season' );
 						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?> <?php echo implode( ' ', apply_filters( 'sportspress_meta_box_player_statistics_row_classes', array(), $league_id, $div_id ) ); ?>" data-league="<?php echo (int) $league_id; ?>" data-season="<?php echo (int) $div_id; ?>">
 							<td>
 								<label>
 									<?php if ( ! apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
@@ -160,7 +167,7 @@ class SP_Meta_Box_Player_Statistics {
 									<?php endif; ?>
 									<?php
 									if ( 0 === $div_id ) _e( 'Total', 'sportspress' );
-									elseif ( 'WP_Error' != get_class( $div ) ) echo $div->name;
+									elseif ( 'WP_Error' != get_class( $div ) ) echo apply_filters( 'sportspress_meta_box_player_statistics_season_name', $div->name, $league_id, $div_id, $div_stats );
 									?>
 								</label>
 							</td>
@@ -201,6 +208,10 @@ class SP_Meta_Box_Player_Statistics {
 									</td>
 								<?php endif; ?>
 							<?php endif; ?>
+							<?php
+							$collection = array( 'columns' => $columns, 'data' => $data, 'placeholders' => $placeholders, 'merged' => $merged, 'seasons_teams' => array(), 'has_checkboxes' => $has_checkboxes, 'formats' => $formats, 'total_types' => $total_types, 'buffer' => $buffer );
+							list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types, $buffer ) = array_values( apply_filters( 'sportspress_meta_box_player_statistics_collection', $collection, $id, $league_id, $div_id, $value ) );
+							?>
 							<?php foreach ( $columns as $column => $label ): if ( $column == 'team' ) continue;
 								?>
 								<td><?php
@@ -217,18 +228,21 @@ class SP_Meta_Box_Player_Statistics {
 										echo $timeval ? $timeval : $placeholder;
 									} else {
 										if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
-											echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+											echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-column="' . $column . '" />';
 											echo '<input class="sp-convert-time-output" type="hidden" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" />';
 										} else {
-											echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
+											echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-column="' . $column . '" />';
 										}
 									}
 								?></td>
 							<?php endforeach; ?>
+							<?php do_action( 'sportspress_meta_box_player_statistics_table_row', $id, $league_id, $div_id, $team_select, $buffer, $i ); ?>
 						</tr>
 						<?php
 						$i++;
+						do_action( 'sportspress_meta_box_player_statistics_table_after_row', $id, $league_id, $div_id, $team_select, $buffer, $i );
 					endforeach;
+					do_action( 'sportspress_meta_box_player_statistics_table_tbody', $id, $league_id, $div_id, $team_select, $buffer );
 					?>
 				</tbody>
 			</table>

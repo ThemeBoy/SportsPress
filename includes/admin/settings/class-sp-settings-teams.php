@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.1.6
+ * @version		2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -51,6 +51,14 @@ class SP_Settings_Teams extends SP_Settings_Page {
 				array( 'type' 	=> 'team_tabs' ),
 
 				array(
+					'title'     => __( 'Staff', 'sportspress' ),
+					'desc' 		=> __( 'Link staff', 'sportspress' ),
+					'id' 		=> 'sportspress_team_link_staff',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
 					'title'     => __( 'Link', 'sportspress' ),
 					'desc' 		=> __( 'Link teams', 'sportspress' ),
 					'id' 		=> 'sportspress_link_teams',
@@ -67,20 +75,20 @@ class SP_Settings_Teams extends SP_Settings_Page {
 				),
 
 				array(
-					'title'     => __( 'Abbreviation', 'sportspress' ),
-					'desc' 		=> __( 'Abbreviate team names', 'sportspress' ),
-					'id' 		=> 'sportspress_abbreviate_teams',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-				),
-
-				array(
 					'title'     => __( 'Visit Site', 'sportspress' ),
 					'desc' 		=> __( 'Open link in a new window/tab', 'sportspress' ),
 					'id' 		=> 'sportspress_team_site_target_blank',
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
 				),
+				
+				array(
+						'title'     => __( 'Comments', 'sportspress' ),
+						'desc' 		=> __( 'Allow people to post comments on Team page', 'sportspress' ),
+						'id' 		=> 'sportspress_team_comment_status',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+					),
 			)),
 
 			array(

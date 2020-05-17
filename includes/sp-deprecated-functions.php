@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	ThemeBoy/Functions
- * @version     1.6.1
+ * @version		2.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -201,5 +201,32 @@ if ( !function_exists( 'sp_get_player_list_data' ) ) {
 	function sp_get_player_list_data( $post_id, $admin = false ) {
 		$list = new SP_Player_List( $post_id );
 		return $list->data( $admin );
+	}
+}
+
+if ( !function_exists( 'sp_get_short_name' ) ) {
+	function sp_get_short_name( $post = 0 ) {
+		$abbreviation = sp_get_abbreviation( $post, 'sp_abbreviation', true );
+		if ( $abbreviation ) {
+			return $abbreviation;
+		} else {
+			return get_the_title( $post );
+		}
+	}
+}
+
+if ( !function_exists( 'sp_short_name' ) ) {
+	function sp_short_name( $post = 0 ) {
+		echo sp_get_short_name( $post );
+	}
+}
+
+if ( !function_exists( 'sp_get_team_name' ) ) {
+	function sp_get_team_name( $post = 0, $short = true ) {
+		if ( $short ) {
+			return sp_team_abbreviation( $post );
+		} else {
+			return get_the_title( $post );
+		}
 	}
 }

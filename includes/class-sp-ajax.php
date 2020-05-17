@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * AJAX Event Handler
  *
  * @class 		SP_AJAX
- * @version		2.4
+ * @version   2.7
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -27,6 +27,10 @@ class SP_AJAX {
 			'event_details_shortcode' => false,
 			'event_results_shortcode' => false,
 			'event_performance_shortcode' => false,
+			'event_venue_shortcode' => false,
+			'event_officials_shortcode' => false,
+			'event_teams_shortcode' => false,
+			'event_full_shortcode' => false,
 			'event_calendar_shortcode' => false,
 			'event_list_shortcode' => false,
 			'event_blocks_shortcode' => false,
@@ -78,7 +82,7 @@ class SP_AJAX {
 			<p>
 				<label>
 					<input class="checkbox" type="checkbox" name="show_league">
-					<?php _e( 'Display competition', 'sportspress' ); ?>
+					<?php _e( 'Display league', 'sportspress' ); ?>
 				</label>
 			</p>
 			<?php do_action( 'sportspress_ajax_shortcode_form', 'countdown' ); ?>
@@ -181,6 +185,126 @@ class SP_AJAX {
 		self::scripts();
 		die();
 	}
+	
+	/**
+	 * AJAX event_venue shortcode
+	 */
+	public function event_venue_shortcode() {
+		?>
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-event_venue">
+			<p>
+				<label>
+					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_event',
+						'name' => 'id',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-venue' ); ?>
+			<p class="submit">
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_venue');" />
+				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+			</p>
+		</div>
+		<?php
+		self::scripts();
+		die();
+	}
+	
+	/**
+	 * AJAX event_officials shortcode
+	 */
+	public function event_officials_shortcode() {
+		?>
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-event_officials">
+			<p>
+				<label>
+					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_event',
+						'name' => 'id',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-officials' ); ?>
+			<p class="submit">
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_officials');" />
+				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+			</p>
+		</div>
+		<?php
+		self::scripts();
+		die();
+	}
+	
+	/**
+	 * AJAX event_teams shortcode
+	 */
+	public function event_teams_shortcode() {
+		?>
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-event_teams">
+			<p>
+				<label>
+					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_event',
+						'name' => 'id',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-teams' ); ?>
+			<p class="submit">
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_teams');" />
+				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+			</p>
+		</div>
+		<?php
+		self::scripts();
+		die();
+	}
+	
+	/**
+	 * AJAX event_full shortcode
+	 */
+	public function event_full_shortcode() {
+		?>
+		<div class="wrap sp-thickbox-content" id="sp-thickbox-event_full">
+			<p>
+				<label>
+					<?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_event',
+						'name' => 'id',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<?php do_action( 'sportspress_ajax_shortcode_form', 'event-full' ); ?>
+			<p class="submit">
+				<input type="button" class="button-primary" value="<?php _e( 'Insert Shortcode', 'sportspress' ); ?>" onclick="insertSportsPress('event_full');" />
+				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'sportspress' ); ?>"><?php _e( 'Cancel', 'sportspress' ); ?></a>
+			</p>
+		</div>
+		<?php
+		self::scripts();
+		die();
+	}
 
 	/**
 	 * AJAX event_calendar shortcode
@@ -270,6 +394,42 @@ class SP_AJAX {
 					?>
 				</label>
 			</p>
+			<div class="sp-date-selector">
+				<p><?php _e( 'Date:', 'sportspress' ); ?> 
+					<?php
+					$args = array(
+						'name' => 'date',
+						'id' => 'date',
+						//'selected' => $date,
+					);
+					sp_dropdown_dates( $args );
+					?>
+				</p>
+				<div class="sp-date-range">
+					<p class="sp-date-range-absolute">
+						<input type="text" class="sp-datepicker-from" name="date_from" value="default" size="10">
+						:
+						<input type="text" class="sp-datepicker-to" name="date_to" value="default" size="10">
+					</p>
+
+					<p class="sp-date-range-relative">
+						<?php _e( 'Past', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="date_past" value="default">
+						<?php _e( 'days', 'sportspress' ); ?>
+						&rarr;
+						<?php _e( 'Next', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="date_future" value="default">
+						<?php _e( 'days', 'sportspress' ); ?>
+					</p>
+
+					<p class="sp-date-relative">
+						<label>
+							<input type="checkbox" name="date_relative" value="0" id="date_relative">
+							<?php _e( 'Relative', 'sportspress' ); ?>
+						</label>
+					</p>
+				</div>
+			</div>
 			<p>
 				<label>
 					<?php _e( 'Match Day:', 'sportspress' ); ?>
@@ -389,15 +549,52 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
-					<?php _e( 'Date:', 'sportspress' ); ?>
-					<select id="date" name="date">
-						<option value="default"><?php _e( 'Default', 'sportspress' ); ?></option>
-						<option value=""><?php _e( 'All', 'sportspress' ); ?></option>
-						<option value="w"><?php _e( 'This week', 'sportspress' ); ?></option>
-						<option value="day"><?php _e( 'Today', 'sportspress' ); ?></option>
+					<?php _e( 'Format:', 'sportspress' ); ?>
+					<select name="format" class="postform">
+						<option value="default">Default</option>
+						<option value="all">All</option>
+						<?php foreach ( SP()->formats->event as $key => $format ): ?>
+							<option value="<?php echo $key; ?>"><?php echo $format; ?></option>
+						<?php endforeach; ?>
 					</select>
 				</label>
 			</p>
+			<div class="sp-date-selector">
+				<p><?php _e( 'Date:', 'sportspress' ); ?> 
+					<?php
+					$args = array(
+						'name' => 'date',
+						'id' => 'date',
+						//'selected' => $date,
+					);
+					sp_dropdown_dates( $args );
+					?>
+				</p>
+				<div class="sp-date-range">
+					<p class="sp-date-range-absolute">
+						<input type="text" class="sp-datepicker-from" name="date_from" value="default" size="10">
+						:
+						<input type="text" class="sp-datepicker-to" name="date_to" value="default" size="10">
+					</p>
+
+					<p class="sp-date-range-relative">
+						<?php _e( 'Past', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="date_past" value="default">
+						<?php _e( 'days', 'sportspress' ); ?>
+						&rarr;
+						<?php _e( 'Next', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="date_future" value="default">
+						<?php _e( 'days', 'sportspress' ); ?>
+					</p>
+
+					<p class="sp-date-relative">
+						<label>
+							<input type="checkbox" name="date_relative" value="0" id="date_relative">
+							<?php _e( 'Relative', 'sportspress' ); ?>
+						</label>
+					</p>
+				</div>
+			</div>
 			<p>
 				<label>
 					<?php _e( 'Match Day:', 'sportspress' ); ?>
@@ -431,6 +628,7 @@ class SP_AJAX {
 					'season' => __( 'Season', 'sportspress' ),
 					'venue' => __( 'Venue', 'sportspress' ),
 					'article' => __( 'Article', 'sportspress' ),
+					'event_specs' => __( 'Specs', 'sportspress' ),
 				);
 				$field_name = 'columns[]';
 				$field_id = 'columns';
@@ -466,6 +664,12 @@ class SP_AJAX {
 				<label>
 					<?php _e( 'Title:', 'sportspress' ); ?>
 					<input class="regular-text" type="text" name="title">
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Event:', 'sportspress' ); ?>
+					<input class="regular-text" type="number" name="event">
 				</label>
 			</p>
 			<p>
@@ -552,15 +756,52 @@ class SP_AJAX {
 			</p>
 			<p>
 				<label>
-					<?php _e( 'Date:', 'sportspress' ); ?>
-					<select id="date" name="date">
-						<option value="default"><?php _e( 'Default', 'sportspress' ); ?></option>
-						<option value=""><?php _e( 'All', 'sportspress' ); ?></option>
-						<option value="w"><?php _e( 'This week', 'sportspress' ); ?></option>
-						<option value="day"><?php _e( 'Today', 'sportspress' ); ?></option>
+					<?php _e( 'Format:', 'sportspress' ); ?>
+					<select name="format" class="postform">
+					<option value="default">Default</option>
+					<option value="all">All</option>
+					<?php foreach ( SP()->formats->event as $key => $format ): ?>
+					<option value="<?php echo $key; ?>"><?php echo $format; ?></option>
+					<?php endforeach; ?>
 					</select>
 				</label>
 			</p>
+			<div class="sp-date-selector">
+				<p><?php _e( 'Date:', 'sportspress' ); ?> 
+					<?php
+					$args = array(
+						'name' => 'date',
+						'id' => 'date',
+						//'selected' => $date,
+					);
+					sp_dropdown_dates( $args );
+					?>
+				</p>
+				<div class="sp-date-range">
+					<p class="sp-date-range-absolute">
+						<input type="text" class="sp-datepicker-from" name="date_from" value="default" size="10">
+						:
+						<input type="text" class="sp-datepicker-to" name="date_to" value="default" size="10">
+					</p>
+
+					<p class="sp-date-range-relative">
+						<?php _e( 'Past', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="date_past" value="default">
+						<?php _e( 'days', 'sportspress' ); ?>
+						&rarr;
+						<?php _e( 'Next', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="date_future" value="default">
+						<?php _e( 'days', 'sportspress' ); ?>
+					</p>
+
+					<p class="sp-date-relative">
+						<label>
+							<input type="checkbox" name="date_relative" value="0" id="date_relative">
+							<?php _e( 'Relative', 'sportspress' ); ?>
+						</label>
+					</p>
+				</div>
+			</div>
 			<p>
 				<label>
 					<?php _e( 'Match Day:', 'sportspress' ); ?>
@@ -670,6 +911,18 @@ class SP_AJAX {
 				<label>
 					<input type="checkbox" name="show_full_table_link" id="show_full_table_link">
 					<?php _e( 'Display link to view full table', 'sportspress' ); ?>
+				</label>
+			</p>
+			<p>
+				<?php _e( 'Event Status:', 'sportspress' ); ?><br/>
+				<label>
+					<input type="checkbox" name="show_published_events" id="show_published_events" checked>
+					<?php _e( 'Include Published/Played Events with results', 'sportspress' ); ?>
+				</label>
+				<br/>
+				<label>
+					<input type="checkbox" name="show_future_events" id="show_future_events" checked>
+					<?php _e( 'Include Scheduled/Future Events with results', 'sportspress' ); ?>
 				</label>
 			</p>
 			<?php do_action( 'sportspress_ajax_shortcode_form', 'league-table' ); ?>
@@ -829,6 +1082,48 @@ class SP_AJAX {
 						'values' => 'ID',
 					);
 					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Team:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'post_type' => 'sp_team',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'team',
+						'values' => 'ID',
+					);
+					sp_dropdown_pages( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'League:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_league',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'league',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
+					?>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Season:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'taxonomy' => 'sp_season',
+						'show_option_all' => __( 'Default', 'sportspress' ),
+						'name' => 'season',
+						'values' => 'term_id',
+					);
+					sp_dropdown_taxonomies( $args );
 					?>
 				</label>
 			</p>
@@ -1014,6 +1309,12 @@ class SP_AJAX {
                     args.season = $div.find('[name=season]').val();
                     args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
+                    args.date = $div.find('[name=date]').val();
+                    args.date_from = $div.find('[name=date_from]').val();
+                    args.date_to = $div.find('[name=date_to]').val();
+                    args.date_past = $div.find('[name=date_past]').val();
+                    args.date_future = $div.find('[name=date_future]').val();
+                    args.date_relative = $div.find('[name=date_relative]:checked').length;
                     args.day = $div.find('[name=day]').val();
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'event_list' == type ) {
@@ -1023,7 +1324,13 @@ class SP_AJAX {
                     args.season = $div.find('[name=season]').val();
                     args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
+                    args.format = $div.find('[name=format]').val();
                     args.date = $div.find('[name=date]').val();
+                    args.date_from = $div.find('[name=date_from]').val();
+                    args.date_to = $div.find('[name=date_to]').val();
+                    args.date_past = $div.find('[name=date_past]').val();
+                    args.date_future = $div.find('[name=date_future]').val();
+                    args.date_relative = $div.find('[name=date_relative]:checked').length;
                     args.day = $div.find('[name=day]').val();
                     args.number = $div.find('[name=number]').val();
                     args.order = $div.find('[name=order]').val();
@@ -1031,12 +1338,19 @@ class SP_AJAX {
                     args.show_all_events_link = $div.find('[name=show_all_events_link]:checked').length;
                 } else if ( 'event_blocks' == type ) {
                     args.title = $div.find('[name=title]').val();
+                    args.event = $div.find('[name=event]').val();
                     args.team = $div.find('[name=team]').val();
                     args.league = $div.find('[name=league]').val();
                     args.season = $div.find('[name=season]').val();
                     args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
+					args.format = $div.find('[name=format]').val();
                     args.date = $div.find('[name=date]').val();
+                    args.date_from = $div.find('[name=date_from]').val();
+                    args.date_to = $div.find('[name=date_to]').val();
+                    args.date_past = $div.find('[name=date_past]').val();
+                    args.date_future = $div.find('[name=date_future]').val();
+                    args.date_relative = $div.find('[name=date_relative]:checked').length;
                     args.day = $div.find('[name=day]').val();
                     args.number = $div.find('[name=number]').val();
                     args.orderby = $div.find('[name=orderby]').val();
@@ -1047,6 +1361,8 @@ class SP_AJAX {
                     args.number = $div.find('[name=number]').val();
                     args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
                     args.show_team_logo = $div.find('[name=show_team_logo]:checked').length;
+                    args.show_published_events = $div.find('[name=show_published_events]:checked').length;
+                    args.show_future_events = $div.find('[name=show_future_events]:checked').length;
                     args.show_full_table_link = $div.find('[name=show_full_table_link]:checked').length;
                 } else if ( 'team_gallery' == type ) {
                     args.title = $div.find('[name=title]').val();
@@ -1057,6 +1373,9 @@ class SP_AJAX {
                 } else if ( 'player_list' == type ) {
                     args.title = $div.find('[name=title]').val();
                     args.number = $div.find('[name=number]').val();
+                    args.team = $div.find('[name=team]').val();
+                    args.seasons = $div.find('[name=season]').val();
+                    args.leagues = $div.find('[name=league]').val();
                     args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
                     args.orderby = $div.find('[name=orderby]').val();
                     args.order = $div.find('[name=order]').val();
@@ -1085,9 +1404,53 @@ class SP_AJAX {
                 window.send_to_editor( shortcode );
             }
 		</script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($){
+				// Datepicker
+				$(".sp-datepicker").datepicker({
+					dateFormat : "yy-mm-dd"
+				});
+				$(".sp-datepicker-from").datepicker({
+					dateFormat : "yy-mm-dd",
+					onClose: function( selectedDate ) {
+						$(this).closest(".sp-date-selector").find(".sp-datepicker-to").datepicker("option", "minDate", selectedDate);
+					}
+				});
+				$(".sp-datepicker-to").datepicker({
+					dateFormat : "yy-mm-dd",
+					onClose: function( selectedDate ) {
+						$(this).closest(".sp-date-selector").find(".sp-datepicker-from").datepicker("option", "maxDate", selectedDate);
+					}
+				});
+
+				// Show or hide datepicker
+				$(".sp-date-selector select").change(function() {
+					if ( $(this).val() == "range" ) {
+						$(this).closest(".sp-date-selector").find(".sp-date-range").show();
+					} else {
+						$(this).closest(".sp-date-selector").find(".sp-date-range").hide();
+					}
+				});
+				$(".sp-date-selector select").trigger("change");
+
+				// Toggle date range selectors
+				$(".sp-date-relative input").change(function() {
+					$relative = $(this).closest(".sp-date-relative").siblings(".sp-date-range-relative").toggle(0, $(this).attr("checked"));
+					$absolute = $(this).closest(".sp-date-relative").siblings(".sp-date-range-absolute").toggle(0, $(this).attr("checked"));
+
+					if ($(this).attr("checked")) {
+						$relative.show();
+						$absolute.hide();
+					} else {
+						$absolute.show();
+						$relative.hide();
+					}
+				});
+				$(".sp-date-selector input").trigger("change");
+					});
+		</script>
 		<?php
 	}
 }
 
 new SP_AJAX();
-

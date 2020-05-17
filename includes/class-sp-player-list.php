@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version   2.3.2
+ * @version		2.7.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -35,11 +35,23 @@ class SP_Player_List extends SP_Secondary_Post {
 	 * @param bool $admin
 	 * @return array
 	 */
-	public function data( $admin = false ) {
-		$league_ids = sp_get_the_term_ids( $this->ID, 'sp_league' );
-		$season_ids = sp_get_the_term_ids( $this->ID, 'sp_season' );
+	public function data( $admin = false, $leagues = null, $seasons = null, $team_id = null ) {
+		if ( !is_null( $leagues ) && '0' != $leagues ) {
+			$league_ids = explode( ",", $leagues );
+		}else{
+			$league_ids = sp_get_the_term_ids( $this->ID, 'sp_league' );
+		}
+		if ( !is_null( $seasons ) && '0' != $seasons ) {
+			$season_ids = explode( ",", $seasons );
+		}else{
+			$season_ids = sp_get_the_term_ids( $this->ID, 'sp_season' );
+		}
 		$position_ids = sp_get_the_term_ids( $this->ID, 'sp_position' );
-		$team = get_post_meta( $this->ID, 'sp_team', true );
+		if ( !is_null( $team_id ) && '0' != $team_id ) {
+			$team = $team_id;
+		}else{
+			$team = get_post_meta( $this->ID, 'sp_team', true );
+		}
 		$era = get_post_meta( $this->ID, 'sp_era', true );
 		$list_stats = (array)get_post_meta( $this->ID, 'sp_players', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
@@ -47,6 +59,7 @@ class SP_Player_List extends SP_Secondary_Post {
 		$crop = get_post_meta( $this->ID, 'sp_crop', true );
 		$order = get_post_meta( $this->ID, 'sp_order', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
+		$nationalities = get_post_meta( $this->ID, 'sp_nationality', false );
 
 		$this->date = $this->__get( 'date' );
 
@@ -98,6 +111,9 @@ class SP_Player_List extends SP_Secondary_Post {
 				'tax_query' => array(
 					'relation' => 'AND',
 				),
+				'meta_query' => array(
+					'relation' => 'AND',
+				),
 			);
 
 			if ( $league_ids ):
@@ -115,17 +131,9 @@ class SP_Player_List extends SP_Secondary_Post {
 					'terms' => $season_ids
 				);
 			endif;
-
-			if ( $position_ids ):
-				$args['tax_query'][] = array(
-					'taxonomy' => 'sp_position',
-					'field' => 'term_id',
-					'terms' => $position_ids
-				);
-			endif;
-
+			
+			$team_key = 'sp_team';
 			if ( $team ):
-				$team_key = 'sp_team';
 				switch ( $era ):
 					case 'current':
 						$team_key = 'sp_current_team';
@@ -134,7 +142,7 @@ class SP_Player_List extends SP_Secondary_Post {
 						$team_key = 'sp_past_team';
 						break;
 				endswitch;
-				$args['meta_query'] = array(
+				$args['meta_query'][] = array(
 					array(
 						'key' => $team_key,
 						'value' => $team
@@ -142,7 +150,29 @@ class SP_Player_List extends SP_Secondary_Post {
 				);
 			endif;
 
-			$players = get_posts( $args );
+			if ( $position_ids ):
+				$args['tax_query'][] = array(
+					'taxonomy' => 'sp_position',
+					'field' => 'term_id',
+					'terms' => $position_ids
+				);
+			endif;
+			
+			if ( $nationalities ):
+				$args['meta_query'][] = array(
+					array(
+						'key' => 'sp_nationality',
+						'value' => $nationalities,
+						'compare' => 'IN'
+					),
+				);
+			endif;
+
+			$args = apply_filters( 'sportspress_player_list_args', $args, $team );
+
+			$players = (array) get_posts( $args );
+
+			$players = apply_filters( 'sportspress_player_list_players', $players, $args, $team, $team_key );
 
 			if ( $players && is_array( $players ) ) {
 				foreach ( $players as $player ) {
@@ -209,8 +239,22 @@ class SP_Player_List extends SP_Secondary_Post {
 				// Add precision to object
 				$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 ) + 0;
 
-				// Add column name to columns
-				$columns[ $stat->post_name ] = $stat->post_title;
+				// Add column icons to columns were is available
+				if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' && ( $stat->post_type == 'sp_performance' || $stat->post_type == 'sp_statistic' ) ) {
+					$icon = apply_filters( 'sportspress_event_performance_icons', '', $stat->ID, 1 );
+					if ( $icon != '' ) {
+						$columns[ $stat->post_name ] = $icon;
+					}else{
+						if ( has_post_thumbnail( $stat ) ) {
+							$icon = get_the_post_thumbnail( $stat, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $stat ) ) );
+							$columns[ $stat->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $stat->ID, 1 );
+						}else{
+							$columns[ $stat->post_name ] = $stat->post_title;
+						}
+					}
+				}else{
+					$columns[ $stat->post_name ] = $stat->post_title;
+				}
 
 				// Add format
 				$format = get_post_meta( $stat->ID, 'sp_format', true );
@@ -362,6 +406,8 @@ class SP_Player_List extends SP_Secondary_Post {
 			$team_performance = get_post_meta( $event->ID, 'sp_players', true );
 			$timeline = (array)get_post_meta( $event->ID, 'sp_timeline', true );
 			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
+			$showdob = get_option( 'sportspress_player_show_birthday', 'no' );
+			$showage = get_option( 'sportspress_player_show_age', 'no' );
 			if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
 			// Add all team performance
@@ -395,8 +441,8 @@ class SP_Player_List extends SP_Secondary_Post {
 									endif;
 								endforeach;
 							elseif ( array_key_exists( $key, $totals[ $player_id ] ) ):
-								$value = floatval( $value );
-								$totals[ $player_id ][ $key ] += $value;
+								$add = apply_filters( 'sportspress_player_performance_add_value', floatval( $value ), $key );
+								$totals[ $player_id ][ $key ] += $add;
 							endif;
 						endforeach;
 
@@ -434,7 +480,7 @@ class SP_Player_List extends SP_Secondary_Post {
 										endforeach;
 
 										// Subtract minutes prior to substitution
-										$substitution_time = sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), 'sub' ), 0, 0 );
+										$substitution_time = ( int ) sp_array_value( sp_array_value( sp_array_value( sp_array_value( $timeline, $team_id ), $player_id ), 'sub' ), 0, 0 );
 										$played_minutes -= $substitution_time;
 									else:
 
@@ -516,17 +562,19 @@ class SP_Player_List extends SP_Secondary_Post {
 						if ( sizeof( $results ) ):
 							foreach ( $results as $id => $team_results ):
 								if ( $team_id == $id ) continue;
-								unset( $team_results['outcome'] );
-								foreach ( $team_results as $result_slug => $team_result ):
+								if ( is_array( $team_results ) ):
+									unset( $team_results['outcome'] );
+									foreach ( $team_results as $result_slug => $team_result ):
 
-									// Add to total
-									$value = sp_array_value( $totals[ $player_id ], $result_slug . 'against', 0 );
-									$value += floatval( $team_result );
-									$totals[ $player_id ][ $result_slug . 'against' ] = $value;
+										// Add to total
+										$value = sp_array_value( $totals[ $player_id ], $result_slug . 'against', 0 );
+										$value += floatval( $team_result );
+										$totals[ $player_id ][ $result_slug . 'against' ] = $value;
 
-									// Add subset
-									$totals[ $player_id ][ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
-								endforeach;
+										// Add subset
+										$totals[ $player_id ][ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
+									endforeach;
+								endif;
 							endforeach;
 						endif;
 					endif;
@@ -561,27 +609,38 @@ class SP_Player_List extends SP_Secondary_Post {
 					// Apply adjustment
 					if ( $adjustment != 0 ):
 						$placeholder += $adjustment;
-						$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
+						$placeholder = number_format( $placeholder, $stat->precision ? $stat->precision : 0, '.', '' );
 					endif;
 				endif;
 
-				if ( $placeholder !== '' && is_numeric( $placeholder ) ):
-					$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, 0 ) + $placeholder;
-				else:
-					$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, '-' );
-				endif;
+				if ( ! $stat->equation ) {
+					if ( $placeholder !== '' && is_numeric( $placeholder ) ):
+						$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, 0 ) + $placeholder;
+					else:
+						$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, '-' );
+					endif;
+				}
 
 				if ( is_numeric( $placeholder ) && $stat->precision ):
 					$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
 				endif;
 
-				$placeholders[ $player_id ][ $stat->post_name ] = $placeholder;
+				$placeholders[ $player_id ][ $stat->post_name ] = apply_filters( 'sportspress_player_performance_table_placeholder', $placeholder, $stat->post_name );
 			endforeach;
 
 		endforeach;
 
 		// Merge the data and placeholders arrays
 		foreach( $placeholders as $player_id => $player_data ):
+		
+			if ( in_array( 'dob', $this->columns ) ):
+				$player_data['dob'] = get_the_date( get_option( 'date_format') , $player_id );
+			endif;
+			
+			if ( in_array( 'age', $this->columns ) ):
+				$birthdayclass = new SportsPress_Birthdays();
+				$player_data['age'] = $birthdayclass->get_age( get_the_date( 'm-d-Y', $player_id ) );
+			endif;
 
 			$player_data = array_merge( $column_order, $player_data );
 			$placeholders[ $player_id ] = $player_data;
@@ -626,7 +685,7 @@ class SP_Player_List extends SP_Secondary_Post {
 
 		// Rearrange data array to reflect values
 		foreach( $merged as $key => $value ):
-			if ( $crop && ! sp_array_value( $value, $orderby, 0 ) ) {
+			if ( $crop && ! ( float ) sp_array_value( $value, $orderby, 0 ) ) {
 				// Crop
 				unset( $merged[ $key ] );
 			} else {
@@ -669,6 +728,10 @@ class SP_Player_List extends SP_Secondary_Post {
 					$labels[ $key ] = __( 'Team', 'sportspress' );
 				elseif ( $key == 'position' ):
 					$labels[ $key ] = __( 'Position', 'sportspress' );
+				elseif ( $key == 'dob' && $showdob ):
+					$labels[ $key ] = __( 'Date of Birth', 'sportspress' );
+				elseif ( $key == 'age' && $showage ):
+					$labels[ $key ] = __( 'Age', 'sportspress' );
 				elseif ( array_key_exists( $key, $columns ) ):
 					$labels[ $key ] = $columns[ $key ];
 				endif;
@@ -712,8 +775,18 @@ class SP_Player_List extends SP_Secondary_Post {
 			$labels = array();
 			if ( in_array( 'number', $this->columns ) ) $labels['number'] = '#';
 			$labels['name'] = __( 'Player', 'sportspress' );
-			if ( in_array( 'team', $this->columns ) ) $labels['team'] = __( 'Team', 'sportspress' );
-			if ( in_array( 'position', $this->columns ) ) $labels['position'] = __( 'Position', 'sportspress' );
+			if ( in_array( 'team', $this->columns ) ) {
+				$labels['team'] = __( 'Team', 'sportspress' );
+			}
+			if ( in_array( 'position', $this->columns ) ) {
+				$labels['position'] = __( 'Position', 'sportspress' );
+			}
+			if ( in_array( 'dob', $this->columns ) && $showdob ) {
+				$labels['dob'] = __( 'Date of Birth', 'sportspress' );
+			}
+			if ( in_array( 'age', $this->columns ) && $showage ) {
+				$labels['age'] = __( 'Age', 'sportspress' );
+			}
 
 			$merged[0] = array_merge( $labels, $columns );
 			return $merged;

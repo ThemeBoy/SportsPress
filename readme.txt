@@ -1,10 +1,10 @@
 === SportsPress - Sports Club & League Manager ===
-Contributors: ThemeBoy, brianmiyaji, aylaview, rochesterj
+Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, nabil_kadimi, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 4.8
-Stable tag: 2.5
+Tested up to: 5.3
+Stable tag: 2.7.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,7 +18,7 @@ Transform your WordPress blog into a fully configurable team, club, or league we
 [youtube http://www.youtube.com/watch?v=KQyga_C5a6M]
 
 = Industry Reviews =
-> "*There are number of professional sports club who likes to maintain their information and statistics online, SportsPress plugin makes this process really easy, cost effective and quick.*" — [IndexWP](http://www.indexwp.com/sportspress-plugin-review/)
+> "*Best WordPress Sports plugins: With premade templates for different sports, SportsPress pretty much covers the range of what almost everyone needs. It’s highly reviewed, and does exactly what it says it will do.*" — [Elegant Themes](https://www.elegantthemes.com/blog/resources/5-best-wordpress-sports-plugins)
 >
 > "*Script of the Day: While the WordPress repository holds various team and sports-related plugins, few of them come close to what you can achieve with SportsPress.*" — [Softpedia](http://news.softpedia.com/news/Script-of-the-Day-SportsPress-409247.shtml)
 >
@@ -52,6 +52,7 @@ More details about each feature are available on the [SportsPress Website](http:
 * [SportsPress for Cricket](https://wordpress.org/plugins/sportspress-for-cricket/)
 * [SportsPress for Football (Soccer)](https://wordpress.org/plugins/sportspress-for-soccer/)
 * [SportsPress for Golf](https://wordpress.org/plugins/sportspress-for-golf/)
+* [SportsPress for Volleyball](https://wordpress.org/plugins/sportspress-for-volleyball/)
 
 = SportsPress Pro =
 
@@ -126,6 +127,8 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * [Football Club](http://tboy.co/fc)
 * [Marquee](http://tboy.co/marquee)
 * [Premier](http://tboy.co/premier)
+* [Rookie Plus](http://tboy.co/rp)
+* [Varsity](http://tboy.co/varsity)
 
 = Get Involved =
 
@@ -237,6 +240,236 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 == Changelog ==
 
+= 2.7.1 =
+* Feature - Enable player list filtering by nationality.
+* Feature - Add option to display date of birth in player lists.
+* Tweak - Exclude postponed and canceled events from countdowns.
+* Tweak - Apply reverse order option to event results.
+* Tweak - When a team has more than one home venue, separate with commas.
+* Fix - Venue address containing pluses in events.
+* Fix - Event blocks showing the wrong dates when embedded within other event pages.
+* Fix - Statistics not adding manual values when not based on equations.
+* Fix - Event lists ignoring the format parameter.
+* Fix - League table order when displaying multiple tables in team profiles.
+* Fix - Error when deleting configuration columns.
+* Fix - Player lists not including past players in some cases.
+* Fix - Prevent error when viewing event calendar in some cases.
+
+= 2.7 =
+* Feature - New bulk actions to postpone and cancel multiple events.
+* Feature - Add date of birth to player importer.
+* Feature - Automatically select the home team's venue as the default venue when importing fixtures.
+* Feature - Add ability to turn on comment for team profiles.
+* Feature - Filter league tables by event status.
+* Tweak - When an icon is used for player performance, display the icon in player lists and profiles.
+* Tweak - Add title attribute for player statistic icons.
+* Tweak - Default stylesheet sorting icon width.
+* Fix - Icon color picker rendering issue.
+* Fix - Image selector not working for player statistics.
+* Fix - Enqueue scripts and styles for OpenStreetMap when used in shortcodes.
+* Localization - Add translation options for countdown units.
+
+= 2.6.20 =
+* Tweak - Improve compatibility with volleyball for checkbox performance.
+* Preset - Update volleyball preset with additional options.
+
+= 2.6.19 =
+* Feature - Enable filtering calendars base on players.
+* Feature - Add checkbox type to event performance.
+* Fix - Javascript error when columns are hidden in event list.
+* Fix - Notice when displaying staff in event performance table.
+* Fix - Notice when event results are empty.
+* Fix - Uncaught error in player class.
+* Preset - Update volleyball preset using checkbox performance type.
+
+= 2.6.18 =
+* Fix - Prevent OpenStreetMap scripts from loading when Google Maps is active via SportsPress Pro.
+* Fix - Headers already sent error related to default nationality module.
+
+= 2.6.17 =
+* Tweak - Only show welcome screen on major version upgrade.
+* Tweak - Add filters to enable career totals calculation with extensions.
+* Fix - Countdowns not reflecting timezone setting.
+
+= 2.6.16 =
+* Tweak - Add support for updated baseball extension with partial innings.
+* Fix - Error displaying staff in events when offense and defense are separate tables.
+
+= 2.6.15 =
+* Important - Using Google Maps will require a SportsPress Pro license after August 31, 2019.
+* Refactor - Fallback to OpenStreetMap for venue maps without SportsPress Pro.
+* Feature - Option to display team logos instead of team names in player lists.
+* Feature - Option to display custom specs in event blocks and event lists.
+* Tweak - Improve page load speed when creating new league tables.
+* Tweak - Prevent displaying events other than published or scheduled.
+* Fix - Icons only appearing in the first table when player lists are grouped.
+* Fix - Character encoding and CRLF errors in calendar feeds.
+* Fix - Missing field location Schema error.
+* Fix - Dropdowns collapsing in admin when meta boxes are hidden.
+* Fix - Timezone handling in countdowns.
+* Fix - Error when using special characters in admin settings.
+
+= 2.6.14 =
+* Fix - API endpoints for secondary post types.
+
+= 2.6.13 =
+* Fix - Missing functionality with Gutenberg enabled.
+* Fix - Enable API endpoints with WordPress 5.0 and Gutenberg.
+
+= 2.6.12 =
+* Tweak - Match styling of date row in countdown.
+* Fix - Calculated totals in player performance array missing for custom templates.
+* Fix - Date field hidden from existing calendars.
+
+= 2.6.11 =
+* Tweak - Apply reverse teams setting to event blocks.
+* Tweak - Add zero before days in countdown when there are less than 10 days to go.
+* Fix - Venue address not setting correctly.
+* Fix - RTL language support for first column in tables.
+* Fix - PHP warnings for various static functions.
+* Fix - Custom post types displaying blank screen in admin when Gutenberg is active.
+
+= 2.6.10 =
+* Tweak - Apply reverse teams settings to logos.
+* Fix - Statistics doubling in player lists when player is assigned to a team.
+* Fix - Display blank placeholder in player lists when no team is assigned.
+* Preset - Update basketball efficiency rating equation.
+
+= 2.6.9 =
+* Feature - New event shortcodes: venue, officials, teams, and full event info.
+* Feature - Option to choose default nationality for faster data entry.
+* Feature - Date and time display options in countdown widgets.
+* Feature - Ability to filter player list shortcodes by league, season, and team.
+* Tweak - Improve page load for new player lists.
+* Tweak - Improve iCal feed by fixing wrapping issues.
+* Tweak - Use lighter placeholder color to differentiate from entered values.
+* Tweak - Preserve league, season, and position assignments when importing players.
+* Fix - PHP warnings when using version 7.2 or later.
+* Fix - Countdown timer format when event is 100 or more days away.
+* Fix - Player list displaying zero values when formatted using decimal places.
+* Fix - Start of the week filters for week-based calendars.
+* Fix - Location picker freezing issue.
+* Fix - Custom post types pages displaying blank page when Gutenberg is installed.
+
+= 2.6.8 =
+* Feature - Ability to add icons to player statistics.
+* Feature - Ability to display matchday in event blocks.
+* Feature - Add support for commenting on scheduled events.
+* Feature - Option to filter birthdays widget by week.
+* Feature - Option to filter events by competitive or friendly.
+* Tweak - Display pin in venue map and link map to web version.
+* Tweak - Add UK as alternate to GB in countries legacy list.
+* Tweak - Remove duplicate teams from players.
+* Tweak - Improve player assignment filtering for player lists.
+* Fix - Animated countdowns when visitor and site are in a different timezones.
+
+= 2.6.7 =
+* Fix - Update Google Maps API endpoints.
+
+= 2.6.6 =
+* Fix - Apply reverse teams to frontend templates only.
+
+= 2.6.5 =
+* Tweak - Increase coverage of reverse teams option.
+* Tweak - Improve sorting of leagues, positions, and seasons.
+* Localization - Additional legacy country code for Greece.
+* Fix - Broken post author select on certain pages.
+* Fix - Google Calendar link protocol.
+
+= 2.6.4 =
+* Fix - Undefined variable notice in player list.
+
+= 2.6.3 =
+* Fix - Assign past teams during player import.
+* Fix - Next team column displaying events furthest away.
+* Fix - Add fallback array_replace function for PHP versions earlier than 5.3.
+* Fix - Add fallback for web hosts that don't support multibyte PHP functions, causing blank player profiles.
+
+= 2.6.2 =
+* Fix - Newly added players from past and current team appearing in player lists.
+* Fix - Player lists appearing empty without league, season, and team selected.
+
+= 2.6.1 =
+* Fix - Player lists with a team selected showing players from other teams.
+* Fix - REST API endpoints not resolving for players.
+* Fix - Empty system status page.
+
+= 2.6 =
+* Feature - Add custom details to events using event specs.
+* Feature - Conditional equations for variables.
+* Feature - Display the next opponent in league tables.
+* Feature - Short name option added to teams.
+* Feature - Automatic event titles using short name when available.
+* Feature - Display featured image in countdown widget.
+* Tweak - Stronger connections between leagues, seasons, and teams for automatic player lists.
+* Tweak - Relative date option added to editor shortcodes.
+* Tweak - Display only current team in player list.
+* Tweak - Filter players dropdown by current team only.
+* Tweak - Allow 0 as a squad number when importing players.
+* Tweak - Prevent filtering through empty results.
+* Fix - Interpreting non-integer substitution times.
+* Fix - Warning when sorting terms without order.
+* Localization - Add WPML support to staff header.
+* Localization - Fix RTL not being applied in league tables.
+
+= 2.5.10 =
+* Fix - Date ranges not being applied to calendars.
+
+= 2.5.9 =
+* Fix - Unpublished posts being displayed in some themes.
+
+= 2.5.8 =
+* Fix - Display scheduled events using default permalinks via archives and third-party widgets.
+
+= 2.5.7 =
+* Fix - Blank general settings screen on WordPress versions prior to 4.9.
+* Fix - Revert responsive table behavior to prevent display issues on mobile.
+
+= 2.5.6 =
+* Tweak - Adjust player-related hooks.
+* Fix - Turn off responsive tables by default.
+
+= 2.5.5 =
+* Feature - Main league and current season settings.
+* Feature - New shortcode including full staff profile.
+* Feature - Add code highlighting to custom CSS field.
+* Feature - Add responsive layout option to tables.
+* Feature - Add filters to REST API players endpoint.
+* Feature - Option to merge duplicate teams, players, and staff.
+* Feature - Option to display specific event in event blocks.
+* Feature - Option to sort player checklist by name and squad number in events.
+* Feature - Option to filter player lists by team.
+* Feature - Option to link staff members.
+* Feature - Filter countdown by calendar.
+* Fix - Calculate column totals in box score.
+* Fix - Mismatched encoding of included library.
+* Localization - Fix translation function missing around string.
+
+= 2.5.4 =
+* Fix - Error when editing league table using older versions of WordPress.
+
+= 2.5.3 =
+* Fix - Calendar templates not loading when timezone setting is relative to UTC.
+
+= 2.5.2 =
+* Feature - Add match day to REST API.
+* Tweak - Add order to positions during preset installation.
+* Tweak - Display links to add new duties and officials if empty.
+* Tweak - Add linebreaks to substitute dropdowns.
+* Fix - Use default full time minutes in REST API.
+* Fix - Uploading custom images as performance icons.
+* Fix - Displaying timed performance with custom images.
+
+= 2.5.1 =
+* Feature - Officials importer.
+* Feature - Officials added to dashboard glance items.
+* Feature - Order setting added to staff jobs for custom sorting.
+* Tweak - Display only the highest order job in staff profiles.
+* Tweak - Require box score importer to be accessed from within an event.
+* Tweak - Add hook to declare importable post types.
+* Fix - Officials meta box in events when module is inactive.
+* Fix - Issues when timezone is not set.
+
 = 2.5 =
 * Feature - Player of the match and star numbers added to box scores.
 * Feature - Officials module for displaying referee appointments in matches.
@@ -245,6 +478,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Feature - Box score importer for updating existing events.
 * Feature - Order setting added to taxonomies for custom sorting.
 * Feature - New relative date range options in event calendars.
+* Feature - Date range options added to league tables and player lists.
 * Feature - Option to hide players with zero statistics in player list.
 * Tweak - Allow staff members to have multiple jobs.
 * Tweak - Indicator dots added to calendars with events in frontend stylesheet.

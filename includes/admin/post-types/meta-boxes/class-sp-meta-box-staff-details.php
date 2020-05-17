@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     2.3
+ * @version		2.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -49,7 +49,7 @@ class SP_Meta_Box_Staff_Details {
 		endif;
 
 		$roles = get_the_terms( $post->ID, 'sp_role' );
-		$role_ids = wp_list_pluck( $roles, 'term_id' );
+		$role_ids = is_array( $roles ) ? wp_list_pluck( $roles, 'term_id' ) : array();
 		
 		$teams = get_posts( array( 'post_type' => 'sp_team', 'posts_per_page' => -1 ) );
 		$past_teams = array_filter( get_post_meta( $post->ID, 'sp_past_team', false ) );

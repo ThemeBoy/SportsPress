@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version     2.1
+ * @version		2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -44,6 +44,9 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		// Filtering
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
 		add_filter( 'parse_query', array( $this, 'filters_query' ) );
+
+    // Post states
+    add_filter( 'display_post_states', array( $this, 'post_states' ), 10, 2 );
 		
 		// Call SP_Admin_CPT constructor
 		parent::__construct();
@@ -97,10 +100,15 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				while ( is_array( $team ) ) {
 					$team = array_shift( array_filter( $team ) );
 				}
-				if ( $team > 0 ) $team_names[] = get_the_title( $team );
+				if ( $team > 0 ) $team_names[] = sp_team_short_name( $team );
 			endforeach;
 
 			$team_names = array_unique( $team_names );
+
+			$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
+			if ( $reverse_teams ) {
+				$team_names = array_reverse( $team_names );
+			}
 
 			$data['post_title'] = implode( ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ', $team_names );
 
@@ -174,6 +182,10 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 				$teams = (array)get_post_meta( $post_id, 'sp_team', false );
 				$teams = array_filter( $teams );
 				$teams = array_unique( $teams );
+				$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
+				if ( $reverse_teams ) {
+					$teams = array_reverse( $teams , true );
+				}
 				if ( empty( $teams ) ):
 					echo '&mdash;';
 				else:
@@ -262,7 +274,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 
 		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
 		$args = array(
-			'show_option_all' =>  __( 'Show all competitions', 'sportspress' ),
+			'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),
 			'taxonomy' => 'sp_league',
 			'name' => 'sp_league',
 			'selected' => $selected
@@ -285,27 +297,47 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			wp_nonce_field( 'sp-save-inline-results', 'sp-inline-nonce', false );
 	}
 
-	/**
-	 * Filter in admin based on options
-	 *
-	 * @param mixed $query
-	 */
-	public function filters_query( $query ) {
-		global $typenow, $wp_query;
+  /**
+   * Filter in admin based on options
+   *
+   * @param mixed $query
+   */
+  public function filters_query( $query ) {
+    global $typenow, $wp_query;
 
-	    if ( $typenow == 'sp_event' ) {
+      if ( $typenow == 'sp_event' ) {
 
-	    	if ( ! empty( $_GET['team'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['team'];
-		        $query->query_vars['meta_key'] 		= 'sp_team';
-		    }
+        if ( ! empty( $_GET['team'] ) ) {
+          $query->query_vars['meta_value']  = $_GET['team'];
+            $query->query_vars['meta_key']    = 'sp_team';
+        }
 
-	    	if ( ! empty( $_GET['match_day'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['match_day'];
-		        $query->query_vars['meta_key'] 		= 'sp_day';
-		    }
-		}
-	}
+        if ( ! empty( $_GET['match_day'] ) ) {
+          $query->query_vars['meta_value']  = $_GET['match_day'];
+            $query->query_vars['meta_key']    = 'sp_day';
+        }
+    }
+  }
+
+  /**
+   * Replace displayed post state for events
+   *
+   * @param array $post_states
+   * @param object $post
+   */
+  public function post_states( $post_states, $post ) {
+    $status = get_post_meta( $post->ID, 'sp_status', true );
+
+    if ( 'postponed' == $status ) {
+      $post_states = array( __( 'Postponed', 'sportspress' ) );
+    } elseif ( 'cancelled' == $status ) {
+      $post_states = array( __( 'Canceled', 'sportspress' ) );
+    } elseif ( 'tbd' == $status ) {
+      $post_states = array( __( 'TBD', 'sportspress' ) );
+    }
+
+    return $post_states;
+  }
 }
 
 endif;

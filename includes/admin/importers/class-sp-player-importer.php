@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Importers
- * @version     1.7
+ * @version   2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -30,6 +30,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				'sp_league' => __( 'Leagues', 'sportspress' ),
 				'sp_season' => __( 'Seasons', 'sportspress' ),
 				'sp_nationality' => __( 'Nationality', 'sportspress' ),
+				'post_date' => __( 'Date of Birth', 'sportspress' ),
 			);
 			parent::__construct();
 		}
@@ -51,32 +52,85 @@ if ( class_exists( 'WP_Importer' ) ) {
 			endif;
 
 			$rows = array_chunk( $array, sizeof( $columns ) );
+			
+			// Get Date of Birth format from post vars
+			$date_format = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : $_POST['sp_date_format'] );
 
 			foreach ( $rows as $row ):
 
-				$row = array_filter( $row );
+				$row = array_filter( $row, 'strlen' );
 
 				if ( empty( $row ) ) continue;
 
 				$meta = array();
+
+				/**
+				 * Prepare preservable metas keys.
+				 */
+				$preservable_metas_keys = array(
+					'sp_league',
+					'sp_position',
+					'sp_season',
+				);
+				foreach ( $preservable_metas_keys as $p ) {
+					$meta[ $p ] = '';
+				}
 
 				foreach ( $columns as $index => $key ):
 					$meta[ $key ] = sp_array_value( $row, $index );
 				endforeach;
 
 				$name = sp_array_value( $meta, 'post_title' );
+				$date = sp_array_value( $meta, 'post_date' );
+				
+				// Format date of birth
+				$date = str_replace( '/', '-', trim( $date ) );
+				$date_array = explode( '-', $date );
+				switch ( $date_format ):
+					case 'dd/mm/yyyy':
+						$date = substr( str_pad( sp_array_value( $date_array, 2, '0000' ), 4, '0', STR_PAD_LEFT ), 0, 4 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 1, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 0, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 );
+						break;
+					case 'mm/dd/yyyy':
+						$date = substr( str_pad( sp_array_value( $date_array, 2, '0000' ), 4, '0', STR_PAD_LEFT ), 0, 4 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 0, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 1, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 );
+						break;
+					default:
+						$date = substr( str_pad( sp_array_value( $date_array, 0, '0000' ), 4, '0', STR_PAD_LEFT ), 0, 4 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 1, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 2, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 );
+				endswitch;
 
 				if ( ! $name ):
 					$this->skipped++;
 					continue;
 				endif;
 
-				$args = array( 'post_type' => 'sp_player', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $name ) );
+				// Get or insert player
+				$player_object = sp_array_value( $_POST, 'merge', 0 ) ? get_page_by_title( stripslashes( $name ), OBJECT, 'sp_player' ) : false;
+				if ( $player_object ):
+					if ( $player_object->post_status != 'publish' ):
+						wp_update_post( array( 'ID' => $player_object->ID, 'post_status' => 'publish' ) );
+					endif;
+					$id = $player_object->ID;
+					// Handle preservable data.
+					foreach ( $preservable_metas_keys as $p ) {
+						$terms = wp_get_object_terms( $id, $p, array( 'fields' => 'names' ) );
+						$meta[ $p ] .= '|' . implode( '|', $terms );
+					}
+				else:
+					$args = array( 'post_type' => 'sp_player', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $name ) );
+					// Check if a DoB was set
+					if( '0000-00-00' !== $date ){
+						$args['post_date'] =  $date;
+					}
+					$id = wp_insert_post( $args );
 
-				$id = wp_insert_post( $args );
-
-				// Flag as import
-				update_post_meta( $id, '_sp_import', 1 );
+					// Flag as import
+					update_post_meta( $id, '_sp_import', 1 );
+				endif;
 
 				// Update number
 				update_post_meta( $id, 'sp_number', sp_array_value( $meta, 'sp_number' ) );
@@ -115,9 +169,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 					// Add team to player
 					add_post_meta( $id, 'sp_team', $team_id );
 
-					// Update current team if first in array
+					// Update current team if first in array, otherwise use as past team
 					if ( $i == 0 ):
 						update_post_meta( $id, 'sp_current_team', $team_id );
+					else :
+						add_post_meta( $id, 'sp_past_team', $team_id );
 					endif;
 
 					$i++;
@@ -168,9 +224,53 @@ if ( class_exists( 'WP_Importer' ) ) {
 		function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
-			echo '<p>' . sprintf( __( 'Players need to be defined with columns in a specific order (7 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/players-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( __( 'Players need to be defined with columns in a specific order (8 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/players-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_player_csv&step=1' );
 			echo '</div>';
+		}
+
+		/**
+		 * options function.
+		 *
+		 * @access public
+		 * @return void
+		 */
+		function options() {
+			?>
+			<table class="form-table">
+				<tbody>
+					<tr>
+						<th scope="row" class="titledesc">
+							<?php _e( 'Date of Birth Format', 'sportspress' ); ?>
+						</th>
+                		<td class="forminp forminp-radio">
+                			<fieldset>
+                				<ul>
+									<li>
+		                        		<label><input name="sp_date_format" value="yyyy/mm/dd" type="radio" checked> yyyy/mm/dd</label>
+		                        	</li>
+									<li>
+		                        		<label><input name="sp_date_format" value="dd/mm/yyyy" type="radio"> dd/mm/yyyy</label>
+		                        	</li>
+									<li>
+		                        		<label><input name="sp_date_format" value="mm/dd/yyyy" type="radio"> mm/dd/yyyy</label>
+		                        	</li>
+								</ul>
+	                    	</fieldset>
+	                    </td>
+	                </tr>
+					<tr>
+						<td>
+							<label>
+								<input type="hidden" name="merge" value="0">
+								<input type="checkbox" name="merge" value="1" checked="checked">
+								<?php _e( 'Merge duplicates', 'sportspress' ); ?>
+							</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<?php
 		}
 	}
 }
