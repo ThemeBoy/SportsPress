@@ -204,6 +204,11 @@ $identifier = uniqid( 'eventlist_' );
 
 					$main_results = apply_filters( 'sportspress_event_list_main_results', sp_get_main_results( $event ), $event->ID );
 
+					$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
+					if ( $reverse_teams ) {
+						$main_results = array_reverse( $main_results, true );
+					}
+
 					$teams_output = '';
 					$team_class = '';
 					$teams_array = array();
