@@ -1,5 +1,8 @@
 == SportsPress Changelog ==
 
+= 2.7.2 =
+* Tweak - Sanitize delimiter field in event settings.
+
 = 2.7.1 =
 * Feature - Enable player list filtering by nationality.
 * Feature - Add option to display date of birth in player lists.
