@@ -16,6 +16,7 @@ class SP_Widget_Countdown extends WP_Widget {
 		$show_venue = empty($instance['show_venue']) ? false : $instance['show_venue'];
 		$show_league = empty($instance['show_league']) ? false : $instance['show_league'];
 		$show_date = empty($instance['show_date']) ? false : $instance['show_date'];
+		$show_excluded = empty($instance['show_excluded']) ? false : $instance['show_excluded'];
 
 		do_action( 'sportspress_before_widget', $args, $instance, 'countdown' );
 		echo $before_widget;
@@ -26,7 +27,7 @@ class SP_Widget_Countdown extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'countdown' );
 
-		sp_get_template( 'countdown.php', array( 'calendar' => $calendar, 'team' => $team, 'id' => $id, 'title' => $caption, 'show_venue' => $show_venue, 'show_league' => $show_league, 'show_date' => $show_date ) );
+		sp_get_template( 'countdown.php', array( 'calendar' => $calendar, 'team' => $team, 'id' => $id, 'title' => $caption, 'show_venue' => $show_venue, 'show_league' => $show_league, 'show_date' => $show_date, 'show_excluded' => $show_excluded ) );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'countdown' );
@@ -45,6 +46,7 @@ class SP_Widget_Countdown extends WP_Widget {
 		$instance['show_venue'] = intval($new_instance['show_venue']);
 		$instance['show_league'] = intval($new_instance['show_league']);
 		$instance['show_date'] = intval($new_instance['show_date']);
+		$instance['show_excluded'] = intval($new_instance['show_excluded']);
 
 		// Filter to hook into
 		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'countdown' );
@@ -53,7 +55,7 @@ class SP_Widget_Countdown extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'calendar' => '', 'team' => '', 'id' => '', 'caption' => '', 'show_venue' => false, 'show_league' => false, 'show_date' => false ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'calendar' => '', 'team' => '', 'id' => '', 'caption' => '', 'show_venue' => false, 'show_league' => false, 'show_date' => false, 'show_excluded' => false ) );
 		$title = strip_tags($instance['title']);
 		$caption = strip_tags($instance['caption']);
 		$calendar = intval($instance['calendar']);
@@ -62,6 +64,7 @@ class SP_Widget_Countdown extends WP_Widget {
 		$show_venue = intval($instance['show_venue']);
 		$show_league = intval($instance['show_league']);
 		$show_date = intval($instance['show_date']);
+		$show_excluded = intval($instance['show_excluded']);
 
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'countdown' );
@@ -134,6 +137,9 @@ class SP_Widget_Countdown extends WP_Widget {
 		
 		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_date'); ?>" name="<?php echo $this->get_field_name('show_date'); ?>" value="1" <?php checked( $show_date, 1 ); ?>>
 		<label for="<?php echo $this->get_field_id('show_date'); ?>"><?php _e( 'Display date', 'sportspress' ); ?></label></p>
+		
+		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('show_excluded'); ?>" name="<?php echo $this->get_field_name('show_excluded'); ?>" value="1" <?php checked( $show_excluded, 1 ); ?>>
+		<label for="<?php echo $this->get_field_id('show_excluded'); ?>"><?php _e( 'Display excluded events', 'sportspress' ); ?></label></p>
 		
 		<?php
 		// Action to hook into

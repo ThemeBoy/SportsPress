@@ -23,6 +23,16 @@ $defaults = array(
 	'show_logos' => get_option( 'sportspress_countdown_show_logos', 'no' ) == 'yes' ? true : false,
 	'show_thumbnail' => get_option( 'sportspress_countdown_show_thumbnail', 'no' ) == 'yes' ? true : false,
 );
+
+if ( isset( $show_excluded ) && $show_excluded ){
+	$excluded_statuses = array();
+}else{
+	$excluded_statuses = apply_filters( 'sp_countdown_excluded_statuses', array(
+		'postponed',
+		'cancelled',
+	) );
+}
+
 if ( isset( $id ) ):
 	$post = get_post( $id );
 elseif ( $calendar ):
@@ -36,10 +46,6 @@ elseif ( $calendar ):
 	/**
 	 * Exclude postponed or cancelled events.
 	 */
-	$excluded_statuses = apply_filters( 'sp_countdown_excluded_statuses', array(
-		'postponed',
-		'cancelled',
-	) );
 	while ( $post = array_shift( $data ) ) {
 		$sp_status = get_post_meta($post->ID, 'sp_status', true);
 		if( ! in_array( $sp_status, $excluded_statuses ) ) {
@@ -80,10 +86,7 @@ else:
 	$args['meta_query'][] = [
 		'key' => 'sp_status',
 		'compare' => 'NOT IN',
-		'value' => apply_filters( 'sp_countdown_excluded_statuses', array(
-			'postponed',
-			'cancelled',
-		) ),
+		'value' => $excluded_statuses,
 	];
 
 	$post = sp_get_next_event( $args );
@@ -98,6 +101,13 @@ if ( $title )
 
 $title = $post->post_title;
 if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false, true ) . '">' . $title . '</a>';
+$sp_status = get_post_meta($post->ID, 'sp_status', true);
+$statuses = apply_filters( 'sportspress_event_statuses', array(
+			'ok' => __( 'On time', 'sportspress' ),
+			'tbd' => __( 'TBD', 'sportspress' ),
+			'postponed' => __( 'Postponed', 'sportspress' ),
+			'cancelled' => __( 'Canceled', 'sportspress' ),
+		) );
 ?>
 <div class="sp-template sp-template-countdown">
 	<div class="sp-countdown-wrapper">
@@ -128,7 +138,7 @@ if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false,
 				}
 			}
 			?>
-			<?php echo $title; ?>
+			<?php echo $title.' ('.$statuses[ $sp_status ].')'; ?>
 		</h3>
 		<?php
 		if ( isset( $show_date ) && $show_date ):
