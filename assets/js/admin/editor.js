@@ -11,7 +11,7 @@
 			var p = g.split("[");
 			var label = p.shift();
 			var variations = p.shift();
-			var shortcodes = variations.split("|");
+			var shortcodes = typeof variations!== 'undefined' ? variations.split("|") : [];
 			var submenu = new Array();
 			shortcodes.forEach(function(s) {
 				submenu.push({
