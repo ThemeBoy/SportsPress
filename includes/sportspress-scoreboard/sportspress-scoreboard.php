@@ -291,7 +291,7 @@ class SportsPress_Scoreboard {
 
 		ob_start();
 
-		echo SP_Shortcodes::shortcode_wrapper( array( self, 'get_template' ), $atts );
+		echo SP_Shortcodes::shortcode_wrapper( array( static, 'get_template' ), $atts );
 
 		return ob_get_clean();
 	}
