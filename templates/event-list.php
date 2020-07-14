@@ -376,7 +376,7 @@ $identifier = uniqid( 'eventlist_' );
 							echo '<td class="data-league" data-label="'.__( 'League', 'sportspress' ).'">';
 							$leagues = get_the_terms( $event->ID, 'sp_league' );
 							if ( $leagues ):
-								echo implode( wp_list_pluck( $leagues, 'name' ), ', ' );
+								echo implode( ', ', wp_list_pluck( $leagues, 'name' ) );
 							endif;
 							echo '</td>';
 						endif;
@@ -385,7 +385,7 @@ $identifier = uniqid( 'eventlist_' );
 							echo '<td class="data-season" data-label="'.__( 'Season', 'sportspress' ).'">';
 							$seasons = get_the_terms( $event->ID, 'sp_season' );
 							if ( $seasons ):
-								echo implode( wp_list_pluck( $seasons, 'name' ), ', ' );
+								echo implode( ', ', wp_list_pluck( $seasons, 'name' ) );
 							endif;
 							echo '</td>';
 						endif;
@@ -398,7 +398,7 @@ $identifier = uniqid( 'eventlist_' );
 							else:
 								$venues = get_the_terms( $event->ID, 'sp_venue' );
 								if ( $venues ):
-									echo implode( wp_list_pluck( $venues, 'name' ), ', ' );
+									echo implode( ', ', wp_list_pluck( $venues, 'name' ) );
 								endif;
 							endif;
 							echo '</div>';
