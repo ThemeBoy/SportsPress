@@ -78,7 +78,7 @@ class SportsPress_Player_Assignments {
 			if ( 'sp_season' === sp_array_value( $param, 'taxonomy' ) ) $season_ids = sp_array_value( $param, 'terms', array() );
 		}
 
-		if ( empty( $league_ids ) || empty( $season_ids ) ) return $args;
+		if ( empty( $league_ids ) && empty( $season_ids ) ) return $args;
 
 		$args['meta_query'][] = array(
 			'key' => 'sp_assignments',
