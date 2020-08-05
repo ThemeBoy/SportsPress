@@ -284,14 +284,14 @@ class SportsPress_Scoreboard {
 	 *
 	 * @param array $atts
 	 */
-	public static function shortcode( $atts ) {
+	public function shortcode( $atts ) {
 
 		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
 			$atts['id'] = $atts[0];
 
 		ob_start();
 
-		echo SP_Shortcodes::shortcode_wrapper( array( self, 'get_template' ), $atts );
+		echo SP_Shortcodes::shortcode_wrapper( array( $this, 'get_template' ), $atts );
 
 		return ob_get_clean();
 	}
