@@ -201,6 +201,8 @@ $identifier = uniqid( 'eventlist_' );
 					$teams = get_post_meta( $event->ID, 'sp_team' );
 					$video = get_post_meta( $event->ID, 'sp_video', true );
 					$status = get_post_meta( $event->ID, 'sp_status', true );
+					$outcomes = sp_get_outcomes( $event );
+					$sp_outcome = null;
 
 					$main_results = apply_filters( 'sportspress_event_list_main_results', sp_get_main_results( $event ), $event->ID );
 
@@ -212,9 +214,12 @@ $identifier = uniqid( 'eventlist_' );
 					if ( $teams ):
 						foreach ( $teams as $t => $team ):
 							$name = sp_team_short_name( $team );
+							if ( !empty( $outcomes ) ){
+								$sp_outcome = ' class="sp-outcome-' . $outcomes[ $team ][0].'"';
+							}
 							if ( $name ):
 
-								$name = '<meta itemprop="name" content="' . $name . '">' . $name;
+								$name = '<meta itemprop="name" content="' . $name . '"><span' . $sp_outcome . '>' . $name . '</span>';
 
 								if ( $show_team_logo ):
 									if ( has_post_thumbnail( $team ) ):
