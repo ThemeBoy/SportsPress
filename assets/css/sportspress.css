@@ -411,6 +411,10 @@
 	padding-right: 1em;
 }
 
+.sp-event-list span.sp-outcome-win {
+    font-weight: bold;
+}
+
 /* Event Blocks */
 .sp-event-blocks thead {
 	display: none;
