@@ -36,6 +36,7 @@ class SportsPress_Highlight_Places {
 		add_action( 'sportspress_after_single_table', array( $this, 'add_highlight_places_info' ) );
 
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_filter( 'sportspress_table_options', array( $this, 'add_settings' ) );
 	}
 
 	/**
@@ -95,6 +96,11 @@ class SportsPress_Highlight_Places {
 	public function add_inline_css() {
 		$id = get_the_ID();
 		$sp_highlight_places = get_post_meta( $id, 'sp_highlight_places', true );
+		$highlight_places_type = get_option( 'sportspress_table_highlight_places_type', 'rank' );
+		$rank_css = null;
+		if ( 'rank' == $highlight_places_type ) {
+			$rank_css = ' td.data-rank';
+		}
 		$sp_inline_css = null;
 		if ( is_array( $sp_highlight_places ) ) {
 			$sp_inline_css .= '<style type="text/css">';
@@ -110,7 +116,7 @@ class SportsPress_Highlight_Places {
 			}';
 			foreach ( $sp_highlight_places as $place => $info) { 
 				$sp_inline_css .= '
-                article#post-'.$id.' tr.sp-row-no-'.( $place-1 ).' td.data-rank{
+                article#post-'.$id.' tr.sp-row-no-'.( $place-1 ).$rank_css.'{
 					background: '.$info["color"].';
                 }';
 			}
@@ -141,6 +147,26 @@ class SportsPress_Highlight_Places {
 			$sp_extra_info .= '</div>';
 			echo $sp_extra_info;
 		}
+	}
+	
+	/**
+	 * Add settings.
+	 *
+	 * @return array
+	 */
+	
+	public function add_settings( $settings ) {
+		$settings[] = array(
+						'title'     => __( 'Highlight Places', 'sportspress' ),
+						'id' 		=> 'sportspress_table_highlight_places_type',
+						'default'	=> 'rank',
+						'type' 		=> 'radio',
+						'options' => array(
+							'rank'=> __( 'Only Rank cell', 'sportspress' ),
+							'row'	=> __( 'Whole Row', 'sportspress' ),
+						),
+					);
+		return $settings;
 	}
 
 }
