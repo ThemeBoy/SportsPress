@@ -129,6 +129,10 @@ class SportsPress_Highlight_Places {
 		if ( is_array( $sp_highlight_places ) ) {
 			$sp_extra_info .= '<div class="sp_highlight_places">';
 			foreach ( $sp_highlight_places as $place => $info) { 
+				
+				if ( empty( $info["desc"] ) )
+					continue;
+				
 				$sp_extra_info .= '<div class="sp_highlight_place">';
 				$sp_extra_info .= '<div class="sp_color" style="background-color:'.$info["color"].'">&nbsp;</div>';
 				$sp_extra_info .= '<div class="sp_desc">'.$info["desc"].'</div>';
