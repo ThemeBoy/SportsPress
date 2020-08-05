@@ -60,6 +60,13 @@ foreach ( $performance as $team => $players ) {
 
 	foreach ( $labels as $key => $label ) {
 
+		$post = get_page_by_path( $key, OBJECT, 'sp_performance' );
+		if ( $post ) {
+			if ( 'equation' === get_post_meta( $post->ID, 'sp_format', true ) ) {
+				$totals[ $key ] = sp_solve( get_post_meta( $post->ID, 'sp_equation', true ), $statistics[ $team ], get_post_meta( $post->ID, 'sp_precision', true ) );
+			}
+		}
+
 		if ( array_key_exists( $key, $totals ) && $totals[ $key ] !== '' ) {
 
 			// Get value from totals row
