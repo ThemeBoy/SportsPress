@@ -57,9 +57,9 @@ class SP_Meta_Box_Metric_Details extends SP_Meta_Box_Config {
 		</p>
 		<p class="sp-type-selector">
 			<select name="sp_metric_type">
-				<option value="player" <?php echo selected( 'player' == $metric_type, true, false ); ?>>Player</option>
-				<option value="staff" <?php echo selected( 'staff' == $metric_type, true, false ); ?>>Staff</option>
-				<option value="both" <?php echo selected( 'both' == $metric_type, true, false ); ?>>Player & Staff</option>
+				<option value="player" <?php echo selected( 'player' == $metric_type, true, false ); ?>><?php _e( 'Player', 'sportspress' ); ?></option>
+				<option value="staff" <?php echo selected( 'staff' == $metric_type, true, false ); ?>><?php _e( 'Staff', 'sportspress' ); ?></option>
+				<option value="both" <?php echo selected( 'both' == $metric_type, true, false ); ?>><?php _e( 'Player & Staff', 'sportspress' ); ?></option>
 			</select>
 		</p>
 		<?php

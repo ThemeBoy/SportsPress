@@ -1720,13 +1720,13 @@ if ( !function_exists( 'sp_get_metric_type' ) ) {
 		if ( '' === $metric_type ) $metric_type = 'player';
 		switch ( $metric_type ) {
 		  case 'player':
-			return 'Player';
+			return _e( 'Player', 'sportspress' );
 			break;
 		  case 'staff':
-			return 'Staff';
+			return _e( 'Staff', 'sportspress' );
 			break;
 		  case 'both':
-			return 'Player & Staff';
+			return _e( 'Player & Staff', 'sportspress' );
 			break;
 		  default:
 			return 'Player';
