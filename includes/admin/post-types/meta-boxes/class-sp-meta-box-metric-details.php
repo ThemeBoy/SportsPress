@@ -24,7 +24,9 @@ class SP_Meta_Box_Metric_Details extends SP_Meta_Box_Config {
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$visible = get_post_meta( $post->ID, 'sp_visible', true );
+		$metric_type = get_post_meta( $post->ID, 'sp_metric_type', true );
 		if ( '' === $visible ) $visible = 1;
+		if ( '' === $metric_type ) $metric_type = 'player';
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
@@ -49,6 +51,17 @@ class SP_Meta_Box_Metric_Details extends SP_Meta_Box_Config {
 				</label>
 			</li>
 		</ul>
+		<p>
+			<strong><?php _e( 'Metric Type', 'sportspress' ); ?></strong>
+			<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Select if metric will be available to players or/and to staff', 'sportspress' ); ?>"></i>
+		</p>
+		<p class="sp-type-selector">
+			<select name="sp_metric_type">
+				<option value="player" <?php echo selected( 'player' == $metric_type, true, false ); ?>>Player</option>
+				<option value="staff" <?php echo selected( 'staff' == $metric_type, true, false ); ?>>Staff</option>
+				<option value="both" <?php echo selected( 'both' == $metric_type, true, false ); ?>>Player & Staff</option>
+			</select>
+		</p>
 		<?php
 	}
 
@@ -58,5 +71,6 @@ class SP_Meta_Box_Metric_Details extends SP_Meta_Box_Config {
 	public static function save( $post_id, $post ) {
 		self::delete_duplicate( $_POST );
 		update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1 ) );
+		update_post_meta( $post_id, 'sp_metric_type', sp_array_value( $_POST, 'sp_metric_type', 1 ) );
 	}
 }

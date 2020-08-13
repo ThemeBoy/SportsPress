@@ -1713,3 +1713,23 @@ function sp_has_shortcodes( $content, $tags ) {
 	}
 	return false;
 }
+
+if ( !function_exists( 'sp_get_metric_type' ) ) {
+	function sp_get_metric_type( $post_id ) {
+		$metric_type = get_post_meta( $post_id, 'sp_metric_type', true );
+		if ( '' === $metric_type ) $metric_type = 'player';
+		switch ( $metric_type ) {
+		  case 'player':
+			return 'Player';
+			break;
+		  case 'staff':
+			return 'Staff';
+			break;
+		  case 'both':
+			return 'Player & Staff';
+			break;
+		  default:
+			return 'Player';
+		}
+	}
+}

@@ -320,6 +320,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
 								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
+								<th scope="col"><?php _e( 'Type', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
 							</tr>
 						</thead>
@@ -328,6 +329,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 								<td class="row-title"><?php echo $row->post_title; ?></td>
 								<td><code><?php echo $row->post_name; ?></code></td>
 								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
+								<td><p class="type"><?php echo sp_get_metric_type( $row->ID ); ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
 						<?php $i++; endforeach; else: ?>
