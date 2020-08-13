@@ -30,6 +30,8 @@ $staff = new SP_Staff( $id );
 $nationalities = $staff->nationalities();
 $current_teams = $staff->current_teams();
 $past_teams = $staff->past_teams();
+$metrics_before = $staff->metrics( true );
+$metrics_after = $staff->metrics( false );
 
 $data = array();
 if ( $show_nationality && $nationalities && is_array( $nationalities ) ):
@@ -65,6 +67,8 @@ if ( $show_past_teams && $past_teams ):
 	endforeach;
 	$data[ __( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
 endif;
+
+$data = array_merge( $metrics_before, $data, $metrics_after );
 
 $data = apply_filters( 'sportspress_staff_details', $data, $id );
 
