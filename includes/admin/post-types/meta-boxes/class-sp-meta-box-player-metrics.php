@@ -28,6 +28,18 @@ class SP_Meta_Box_Player_Metrics {
 			'posts_per_page' => -1,
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
+			'meta_query' => array(
+				'relation' => 'OR',
+				array(
+					'key' => 'sp_metric_type',
+					'value' => 'staff',
+					'compare' => '!='
+				),
+				array(
+					'key' => 'sp_metric_type',
+					'compare' => 'NOT EXISTS'
+				),
+			),
 		);
 
 		$vars = get_posts( $args );
