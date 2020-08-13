@@ -317,7 +317,7 @@ class SP_Post_types {
 			apply_filters( 'sportspress_register_post_type_metric',
 				array(
 					'labels' => array(
-						'name' 					=> __( 'Player Metrics', 'sportspress' ),
+						'name' 					=> __( 'Player and Staff Metrics', 'sportspress' ),
 						'singular_name' 		=> __( 'Metric', 'sportspress' ),
 						'add_new_item' 			=> __( 'Add New Metric', 'sportspress' ),
 						'edit_item' 			=> __( 'Edit Metric', 'sportspress' ),

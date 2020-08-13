@@ -310,8 +310,8 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 			?>
 			<tr valign="top">
 				<th scope="row" class="titledesc">
-					<?php _e( 'Player Metrics', 'sportspress' ) ?>
-					<p class="description"><?php _e( 'Used for player lists.', 'sportspress' ); ?></p>
+					<?php _e( 'Player and Staff Metrics', 'sportspress' ) ?>
+					<p class="description"><?php _e( 'Used for player and staff lists.', 'sportspress' ); ?></p>
 				</th>
 			    <td class="forminp">
 					<table class="widefat sp-admin-config-table">
