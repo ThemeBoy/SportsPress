@@ -430,7 +430,7 @@ class SP_Player_List extends SP_Secondary_Post {
 
 			// Add all team performance
 			if ( is_array( $team_performance ) ): foreach ( $team_performance as $team_id => $players ):
-				( $team && $team_id != $team ) continue;
+				if ( $team && $team_id != $team ) continue;
 				if ( is_array( $players ) ): foreach ( $players as $player_id => $player_performance ):
 					if ( array_key_exists( $player_id, $totals ) && is_array( $totals[ $player_id ] ) ):
 
