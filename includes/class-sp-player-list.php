@@ -374,6 +374,24 @@ class SP_Player_List extends SP_Secondary_Post {
 				'terms' => $season_ids
 			);
 		endif;
+		
+		$team_key = 'sp_team';
+		if ( $team ):
+			switch ( $era ):
+				case 'current':
+					$team_key = 'sp_current_team';
+					break;
+				case 'past':
+					$team_key = 'sp_past_team';
+					break;
+			endswitch;
+			$args['meta_query'][] = array(
+				array(
+					'key' => $team_key,
+					'value' => $team
+				),
+			);
+		endif;
 
 		if ( $this->date !== 0 ):
 			if ( $this->date == 'w' ):
@@ -412,6 +430,7 @@ class SP_Player_List extends SP_Secondary_Post {
 
 			// Add all team performance
 			if ( is_array( $team_performance ) ): foreach ( $team_performance as $team_id => $players ):
+				( $team && $team_id != $team ) continue;
 				if ( is_array( $players ) ): foreach ( $players as $player_id => $player_performance ):
 					if ( array_key_exists( $player_id, $totals ) && is_array( $totals[ $player_id ] ) ):
 
