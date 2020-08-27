@@ -2,8 +2,8 @@
 Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
-Tested up to: 5.3
-Stable tag: 2.7.2
+Tested up to: 5.5
+Stable tag: 2.7.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,21 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.7.3 =
+* Compatibility - Tested for compatibility with WordPress 5.5 with changes made where necessary.
+* Tweak - Avoid showing minutes box for subs when not needed.
+* Tweak - Improve filtering speed for queries without leagues or seasons.
+* Tweak - Apply reverse order setting in event lists.
+* Tweak - Enable filtering a player's events played on a specific team.
+* Fix - Inconsistent number of events displayed in event scoreboards.
+* Fix - Equation-based player performance when using icons mode.
+* Fix - Include future events in REST API for WordPress 5.5.
+* Fix - Enable updating player metrics using the REST API.
+* Fix - Deprecated code for PHP 7.4.
+* Fix - Elementor compatibility.
+* Localization - Update country names for Czechia, North Macedonia, Myanmar, and Eswatini.
+* Localization - Adjust RTL stylesheet for event performance icons.
 
 = 2.7.2 =
 * Tweak - Sanitize delimiter field in event settings.

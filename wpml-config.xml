@@ -22,6 +22,7 @@
       <key name="Full Time"/>
       <key name="Job"/>
       <key name="League"/>
+      <key name="Leagues"/>
       <key name="League Tables"/>
       <key name="Logos"/>
       <key name="Match Day"/>
@@ -47,6 +48,7 @@
       <key name="Rank"/>
       <key name="Recap"/>
       <key name="Season"/>
+      <key name="Seasons"/>
       <key name="Sponsors"/>
       <key name="Staff"/>
       <key name="Statistics"/>
