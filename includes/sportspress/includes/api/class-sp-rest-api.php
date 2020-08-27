@@ -5,7 +5,7 @@
  * The SportsPress REST API class handles all API-related hooks.
  *
  * @class 		SP_REST_API
- * @version		2.6.1
+ * @version		2.7.3
  * @package		SportsPress/Classes
  * @category	Class
  * @package 	SportsPress/API
@@ -430,7 +430,6 @@ class SP_REST_API {
 				'update_callback' => 'SP_REST_API::update_post_meta_array',
 				'schema'          => array(
 					'description'     => __( 'Metrics', 'sportspress' ),
-					'type'            => 'array',
 					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
@@ -564,6 +563,11 @@ class SP_REST_API {
 	 * @return bool|int
 	 */
 	public static function update_post_meta_array( $value, $object, $field_name ) {
+		// Convert PHP object to array
+		if ( is_object( $value ) ) {
+			$value = (array) $value;
+		}
+
 		if ( ! is_array( $value ) ) return false;
 		
 		$type = $object->post_type;

@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version   2.4
+ * @version   2.7.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -189,9 +189,9 @@ if ( ! function_exists( 'sp_rgb_from_hex' ) ) {
 		// Convert shorthand colors to full format, e.g. "FFF" -> "FFFFFF"
 		$color = preg_replace( '~^(.)(.)(.)$~', '$1$1$2$2$3$3', $color );
 
-		$rgb['R'] = hexdec( $color{0}.$color{1} );
-		$rgb['G'] = hexdec( $color{2}.$color{3} );
-		$rgb['B'] = hexdec( $color{4}.$color{5} );
+		$rgb['R'] = hexdec( $color[0].$color[1] );
+		$rgb['G'] = hexdec( $color[2].$color[3] );
+		$rgb['B'] = hexdec( $color[4].$color[5] );
 		return $rgb;
 	}
 }

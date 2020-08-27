@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.7.1
+ * @version   2.7.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -204,6 +204,11 @@ $identifier = uniqid( 'eventlist_' );
 
 					$main_results = apply_filters( 'sportspress_event_list_main_results', sp_get_main_results( $event ), $event->ID );
 
+					$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
+					if ( $reverse_teams ) {
+						$main_results = array_reverse( $main_results, true );
+					}
+
 					$teams_output = '';
 					$team_class = '';
 					$teams_array = array();
@@ -376,7 +381,7 @@ $identifier = uniqid( 'eventlist_' );
 							echo '<td class="data-league" data-label="'.__( 'League', 'sportspress' ).'">';
 							$leagues = get_the_terms( $event->ID, 'sp_league' );
 							if ( $leagues ):
-								echo implode( wp_list_pluck( $leagues, 'name' ), ', ' );
+								echo implode( ', ', wp_list_pluck( $leagues, 'name' ) );
 							endif;
 							echo '</td>';
 						endif;
@@ -385,7 +390,7 @@ $identifier = uniqid( 'eventlist_' );
 							echo '<td class="data-season" data-label="'.__( 'Season', 'sportspress' ).'">';
 							$seasons = get_the_terms( $event->ID, 'sp_season' );
 							if ( $seasons ):
-								echo implode( wp_list_pluck( $seasons, 'name' ), ', ' );
+								echo implode( ', ', wp_list_pluck( $seasons, 'name' ) );
 							endif;
 							echo '</td>';
 						endif;
@@ -398,7 +403,7 @@ $identifier = uniqid( 'eventlist_' );
 							else:
 								$venues = get_the_terms( $event->ID, 'sp_venue' );
 								if ( $venues ):
-									echo implode( wp_list_pluck( $venues, 'name' ), ', ' );
+									echo implode( ', ', wp_list_pluck( $venues, 'name' ) );
 								endif;
 							endif;
 							echo '</div>';
