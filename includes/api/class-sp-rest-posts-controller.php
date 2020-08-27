@@ -8,11 +8,6 @@ if ( class_exists( 'WP_REST_Posts_Controller' ) ) {
 		}
 
     public function check_read_permission( $post ) {
-      $post_type = get_post_type_object( $post->post_type );
-      if ( ! $this->check_is_post_type_allowed( $post_type ) ) {
-        return false;
-      }
-
       if ( 'sp_event' === $post->post_type ) {
         if ( in_array( $post->post_status, array( 'publish', 'future' ) ) || current_user_can( 'read_post', $post->ID ) ) {
           return true;
