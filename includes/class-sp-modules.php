@@ -113,13 +113,6 @@ class SP_Modules {
 					'link' => 'https://www.themeboy.com/sportspress-extensions/team-access/',
 					'desc' => __( 'Limit user access to data that is related to their team.', 'sportspress' ),
 				),
-				'highlight_places' => array(
-					'label' => __( 'Highlight Places', 'sportspress' ),
-					'class' => 'SportsPress_Highlight_Places',
-					'icon' => 'sp-icon-eye',
-					'link' => 'https://www.themeboy.com/',
-					'desc' => __( 'Higlight specific places (i.e. Qualification, Relegations etc.) in League Tables .', 'sportspress' ),
-				),
 			),
 			'player_staff' => array(
 				'player_lists' => array(
