@@ -258,7 +258,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Activate total stats calculator
-	if($(".sp-data-table .sp-total").size()) {
+	if($(".sp-data-table .sp-total").length) {
 		$(".sp-data-table .sp-post td input").on("keyup", function() {
 			$(this).closest(".sp-data-table").find(".sp-total td").eq($(this).parent().index()).find("input[data-sp-format=number][data-sp-total-type!=average]").trigger("updateTotal");
 		});
