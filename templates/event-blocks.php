@@ -172,7 +172,7 @@ if ( $title )
 					<tr class="sp-row sp-post<?php echo ( $i % 2 == 0 ? ' alternate' : '' ); ?>" itemscope itemtype="http://schema.org/SportsEvent">
 						<td>
 							<?php do_action( 'sportspress_event_blocks_before', $event, $usecolumns ); ?>
-							<?php echo implode( $logos, ' ' ); ?>
+							<?php echo implode( ' ', $logos ); ?>
 							<time class="sp-event-date" datetime="<?php echo $event->post_date; ?>" itemprop="startDate" content="<?php echo mysql2date( 'Y-m-d\TH:iP', $event->post_date ); ?>">
 								<?php echo sp_add_link( get_the_time( get_option( 'date_format' ), $event ), $permalink, $link_events ); ?>
 							</time>

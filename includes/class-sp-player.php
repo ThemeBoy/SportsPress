@@ -802,13 +802,9 @@ class SP_Player extends SP_Custom_Post {
 			
 			$labels = array();
 			
-			if ( 'no' === get_option( 'sportspress_player_show_statistics', 'yes' ) ) {
-				$merged = array();
-			} else {
-				$labels['name'] = __( 'Season', 'sportspress' );
-				$labels['team'] = __( 'Team', 'sportspress' );
-			}
-
+			$labels['name'] = __( 'Season', 'sportspress' );
+			$labels['team'] = __( 'Team', 'sportspress' );
+			
 			if ( 'no' === get_option( 'sportspress_player_show_total', 'no' ) ) {
 				unset( $merged[-1] );
 			}
