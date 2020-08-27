@@ -7,3 +7,8 @@
 .sp-data-table .sp-row-added .sp-delete-row {
   display: inline-block;
 }
+
+.sp-highlight-places .sp-color-box .iris-picker {
+	z-index: 100;
+	position: absolute;
+}
