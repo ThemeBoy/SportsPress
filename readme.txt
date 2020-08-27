@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 5.3
-Stable tag: 2.7.2
+Stable tag: 2.7.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,19 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.3 =
+* Compatibility - Tested for compatibility with WordPress 5.5 with changes made where necessary.
+* Tweak - Avoid showing minutes box for subs when not needed.
+* Tweak - Improve filtering speed for queries without leagues or seasons.
+* Tweak - Apply reverse order setting in event lists.
+* Tweak - Enable filtering a player's events played on a specific team.
+* Fix - Include future events in REST API for WordPress 5.5.
+* Fix - Enable updating player metrics using the REST API.
+* Fix - Deprecated code for PHP 7.4.
+* Fix - Elementor compatibility.
+* Localization - Update country names for Czechia, North Macedonia, Myanmar, and Eswatini.
+* Localization - Adjust RTL stylesheet for event performance icons.
 
 = 2.7.2 =
 * Tweak - Sanitize delimiter field in event settings.
