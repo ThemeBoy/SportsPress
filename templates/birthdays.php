@@ -17,7 +17,9 @@ $defaults = array(
 	'captiontag' => 'dd',
 	'size' => 'sportspress-fit-medium',
 	'show_player_birthday' => get_option( 'sportspress_player_show_birthday', 'no' ) == 'yes' ? true : false,
+	'show_player_age' => get_option( 'sportspress_player_show_age', 'no' ) == 'yes' ? true : false,
 	'show_staff_birthday' => get_option( 'sportspress_staff_show_birthday', 'no' ) == 'yes' ? true : false,
+	'sportspress_staff_show_age' => get_option( 'sportspress_staff_show_age', 'no' ) == 'yes' ? true : false,
 	'link_players' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
 	'link_staff' => get_option( 'sportspress_link_staff', 'yes' ) == 'yes' ? true : false,
 );
@@ -84,31 +86,40 @@ foreach ( $posts as $post ) {
 	if ( 'sp_staff' == $post->post_type ) {
 		$link_posts = $link_staff;
 		$show_birthday = $show_staff_birthday;
+		$show_age = $sportspress_staff_show_age;
 	} else {
 		$link_posts = $link_players;
 		$show_birthday = $show_player_birthday;
+		$show_age = $show_player_age;
 	}
 
 	$birthday = get_the_date( get_option( 'date_format') , $post->ID );
 
-	if ( $show_birthday && $birthday && $group !== $birthday ) {
-		echo '<h4 class="sp-table-caption">' . $birthday . '</h4>';
+	$heading = null;
+	if ( $show_birthday && $birthday ) {
+		$heading = '<h4 class="sp-table-caption">' . $birthday . '</h4>';
 	}
-
+	if ( $show_birthday && $show_age && $birthday ) {
+		$sp_birthdays = new SportsPress_Birthdays();
+		$age = $sp_birthdays->get_age( get_the_date( 'm-d-Y', $post->ID ) );
+		$heading = '<h4 class="sp-table-caption">' . $age . __( ' years old', 'sportspress' ) . '</h4>';
+	}
+	echo $heading;
+	
 	echo '<div class="gallery">';
 
 	$caption = $post->post_title;
 	$caption = trim( $caption );
 
-    sp_get_template( 'player-gallery-thumbnail.php', array(
-    	'id' => $post->ID,
-    	'itemtag' => $itemtag,
-    	'icontag' => $icontag,
-    	'captiontag' => $captiontag,
-    	'caption' => $caption,
-    	'size' => $size,
-    	'link_posts' => $link_posts,
-    ) );
+	sp_get_template( 'player-gallery-thumbnail.php', array(
+		'id' => $post->ID,
+		'itemtag' => $itemtag,
+		'icontag' => $icontag,
+		'captiontag' => $captiontag,
+		'caption' => $caption,
+		'size' => $size,
+		'link_posts' => $link_posts,
+	) );
 
 	echo '<br style="clear: both;" />';	
 	echo "</div></div>\n";
