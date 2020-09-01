@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 5.5
-Stable tag: 2.7.3
+Stable tag: 2.7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,10 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.7.4 =
+* Tweak - Add option to display birthday, age, or both in birthdays widget.
+* Fix - Player list data showing zeroes in some cases.
 
 = 2.7.3 =
 * Compatibility - Tested for compatibility with WordPress 5.5 with changes made where necessary.

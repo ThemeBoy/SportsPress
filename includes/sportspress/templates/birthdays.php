@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress_Birthdays
- * @version   2.6.8
+ * @version   2.7.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 5.5
-Stable tag: 2.7.3
+Stable tag: 2.7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,10 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.4 =
+* Tweak - Add option to display birthday, age, or both in birthdays widget.
+* Fix - Player list data showing zeroes in some cases.
 
 = 2.7.3 =
 * Compatibility - Tested for compatibility with WordPress 5.5 with changes made where necessary.
