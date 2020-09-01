@@ -1,5 +1,9 @@
 == SportsPress Changelog ==
 
+= 2.7.4 =
+* Tweak - Add option to display birthday, age, or both in birthdays widget.
+* Fix - Player list data showing zeroes in some cases.
+
 = 2.7.3 =
 * Compatibility - Tested for compatibility with WordPress 5.5 with changes made where necessary.
 * Tweak - Avoid showing minutes box for subs when not needed.
