@@ -377,18 +377,11 @@ class SP_Player_List extends SP_Secondary_Post {
 		
 		$team_key = 'sp_team';
 		if ( $team ):
-			switch ( $era ):
-				case 'current':
-					$team_key = 'sp_current_team';
-					break;
-				case 'past':
-					$team_key = 'sp_past_team';
-					break;
-			endswitch;
 			$args['meta_query'][] = array(
 				array(
 					'key' => $team_key,
-					'value' => $team
+					'value' => $team,
+					'compare' => 'IN',
 				),
 			);
 		endif;
