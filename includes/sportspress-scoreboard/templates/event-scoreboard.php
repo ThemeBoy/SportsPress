@@ -44,6 +44,7 @@ if ( $id ) {
 } else {
 	$calendar->number = get_option( 'sportspress_scoreboard_limit', 0 );
 }
+$calendar->date = 'auto';
 if ( $status != 'default' )
 	$calendar->status = $status;
 if ( $date != 'default' )
