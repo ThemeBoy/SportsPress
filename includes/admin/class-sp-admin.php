@@ -64,6 +64,9 @@ class SP_Admin {
 				break;
 			}
 		}
+		
+		// Exporters
+		include_once( 'class-sp-admin-exporters.php' );
 	}
 
 	/**
