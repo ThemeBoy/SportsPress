@@ -40,12 +40,27 @@ if ( $_POST && isset( $_POST['submit'] ) ) {
 		$number_of_events = count ( $events );
 		ob_start();
 		$df = fopen("php://output", 'w');
+		$events_array[] = array ( 'event_id', 'date', 'time', 'home', 'away', 'venue', 'day' );
+		$i = 1;
 		foreach ( $events as $event ) {
-			$event_array = array();
-			$event_array[] = $event->ID;
-			$event_array[] = get_the_date( 'Y/m/d', $event );
-			$event_array[] = get_the_date( 'H:i:s', $event );
-			fputcsv( $df, $event_array );
+			$events_array[$i]['event_id'] = $event->ID; //team_id
+			$events_array[$i]['date'] = get_the_date( 'Y/m/d', $event ); //date
+			$events_array[$i]['time'] = get_the_date( 'H:i:s', $event ); //time
+			$teams = get_post_meta ( $event->ID, 'sp_team' );
+			$events_array[$i]['home'] = get_the_title( $teams[0] ); //home
+			$events_array[$i]['away'] = get_the_title( $teams[1] ); //away
+			$venues = get_the_terms( $event->ID, 'sp_venue' );
+			if ( $venues ) {
+				$venue = $venues[0]->name;
+			}else{
+				$venue = '';
+			}
+			$events_array[$i]['venue'] = $venue; //venue
+			$events_array[$i]['day'] = get_post_meta ( $event->ID, 'sp_day', true ); //day
+			$i++;
+		}
+		foreach ( $events_array as $event_row ) {
+			fputcsv( $df, $event_row );
 		}
 		fclose( $df );
 		$export_data = ob_get_clean();
