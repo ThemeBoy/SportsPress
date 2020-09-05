@@ -67,7 +67,7 @@ class SP_Admin_Exporters {
 	 */
 	public function register_sub_menu() {
 		add_submenu_page( 
-			'edit.php?post_type=sp_event', 
+			'export.php', 
 			'Export SportsPress Events', 
 			'Export SportsPress Events', 
 			'manage_options', 
@@ -75,7 +75,7 @@ class SP_Admin_Exporters {
 			array( $this, 'events_exporter' )
 		);
 		add_submenu_page( 
-			'edit.php?post_type=sp_event', 
+			'export.php', 
 			'Export SportsPress Fixtures', 
 			'Export SportsPress Fixtures', 
 			'manage_options', 
@@ -83,7 +83,7 @@ class SP_Admin_Exporters {
 			array( $this, 'fixtures_exporter' )
 		);
 		add_submenu_page( 
-			'edit.php?post_type=sp_team', 
+			'export.php', 
 			'Export SportsPress Teams', 
 			'Export SportsPress Teams', 
 			'manage_options', 
@@ -91,7 +91,7 @@ class SP_Admin_Exporters {
 			array( $this, 'teams_exporter' )
 		);
 		add_submenu_page( 
-			'edit.php?post_type=sp_player', 
+			'export.php', 
 			'Export SportsPress Players', 
 			'Export SportsPress Players', 
 			'manage_options', 
@@ -99,7 +99,7 @@ class SP_Admin_Exporters {
 			array( $this, 'players_exporter' )
 		);
 		add_submenu_page( 
-			'edit.php?post_type=sp_staff', 
+			'export.php', 
 			'Export SportsPress Staff', 
 			'Export SportsPress Staff', 
 			'manage_options', 
