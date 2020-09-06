@@ -12,8 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  ?>
 <div class="wrap">
 	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-	<form method="post" action="<?php //echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
-		<ul id="post-filters" class="export-filters" style="display: block;">
+	<form method="post" id="sp_fixture_export_form" action="">
+		<ul id="event-filters" class="export-filters" style="display: block;">
 			<li>
 				<label><span class="label-responsive"><?php _e( 'League', 'sportspress' ); ?></span>
 					<?php
