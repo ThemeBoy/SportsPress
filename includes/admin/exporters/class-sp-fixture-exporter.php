@@ -23,6 +23,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						'values' => 'slug',
 						'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
 					);
+					if ( ! sp_dropdown_taxonomies( $args ) ):
+						echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
+						sp_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
+					endif;
 					?>
 				</label>
 			</li>
@@ -35,6 +39,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						'values' => 'slug',
 						'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
 					);
+					if ( ! sp_dropdown_taxonomies( $args ) ):
+						echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
+						sp_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' ) );
+					endif;
 					?>
 				</label>
 			</li>
