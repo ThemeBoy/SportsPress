@@ -151,7 +151,8 @@ class SP_Admin_Exporters {
 	 */
 	public function download_exported_file() {
 		global $plugin_page;
-		if ( in_array( $plugin_page, $this->export_pages ) && isset( $_POST['submit'] ) ) {
+
+		if ( in_array( $plugin_page, $this->export_pages ) && isset( $_POST['submit'] ) && isset( $_POST['sp_exporter_nonce'] ) && wp_verify_nonce( $_POST['sp_exporter_nonce'], 'sp-admin-exporters' ) ) {
 			
 			function outputCsv( $fileName, $assocDataArray ) {
 				ob_clean();

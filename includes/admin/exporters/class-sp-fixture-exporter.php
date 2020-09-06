@@ -47,6 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				</label>
 			</li>
 		</ul>
+		<?php wp_nonce_field( 'sp-admin-exporters', 'sp_exporter_nonce' ); ?>
 		<?php submit_button( __( 'Export', 'sportspress' ) );?>
 	</form>
 </div>
