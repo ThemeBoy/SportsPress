@@ -153,25 +153,33 @@ class SP_Admin_Exporters {
 		global $plugin_page;
 
 		if ( in_array( $plugin_page, $this->export_pages ) && isset( $_POST['submit'] ) && isset( $_POST['sp_exporter_nonce'] ) && wp_verify_nonce( $_POST['sp_exporter_nonce'], 'sp-admin-exporters' ) ) {
-			
-			function outputCsv( $fileName, $assocDataArray ) {
+
+			function outputData( $fileName, $assocDataArray, $format = 'csv' ) {
+				$content_type = ( $format == 'json' ) ? 'application/json' : 'text/csv';
 				ob_clean();
 				header( 'Pragma: public' );
 				header( 'Expires: 0' );
 				header( 'Cache-Control: must-revalidate, post-check=0, pre-check=0' );
 				header( 'Cache-Control: private', false );
-				header( 'Content-Type: text/csv' );
+				header( 'Content-Type: ' . $content_type );
 				header( 'Content-Disposition: attachment;filename=' . $fileName );
 				if ( isset( $assocDataArray[0] ) ) {
 					$fp = fopen( 'php://output', 'w' );
-					fputcsv( $fp, array_keys( $assocDataArray[0] ) );
-					foreach ( $assocDataArray AS $values ) {
-						fputcsv( $fp, $values );
+					if ( $format == 'json' ) {
+						fwrite( $fp, json_encode( $assocDataArray ) );
+					}else{
+						fputcsv( $fp, array_keys( $assocDataArray[0] ) );
+						foreach ( $assocDataArray AS $values ) {
+							fputcsv( $fp, $values );
+						}
 					}
 					fclose( $fp );
 				}
 				ob_flush();
 			}
+			
+			// Get file format ( csv as default )
+			$format = ( isset( $_POST['format'] ) ) ? $_POST['format'] : 'csv';
 			
 			switch ( $plugin_page ) {
 			  case 'sp_event_exporter':
@@ -179,7 +187,7 @@ class SP_Admin_Exporters {
 				break;
 			  case 'sp_fixture_exporter':
 				$fixtures = $this->sp_fixtures_data();
-				outputCsv( 'sp_fixtures_' . time() . '.csv', $fixtures );
+				outputData( 'sp_fixtures_' . time() . '.' . $format, $fixtures, $format );
 				break;
 			  case 'sp_team_exporter':
 				echo 'sp_team_exporter';
@@ -228,6 +236,7 @@ class SP_Admin_Exporters {
 						'terms' => $_POST['sp_season']
 					);
 		}
+		$args = apply_filters( 'sportspress_fixtures_data_export_args', $args );
 		$events = get_posts( $args );
 		$events_array = array();
 		$i = 0;
