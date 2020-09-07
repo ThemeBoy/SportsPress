@@ -206,6 +206,68 @@ class SP_Admin_Exporters {
 		}
 	}
 	
+	/**
+	* Generate events data
+	*/
+	public function sp_events_data() {
+		$args = array(
+			'post_type' => 'sp_event',
+			'posts_per_page' => -1,
+			'meta_query' => array(
+				'relation' => 'AND'
+			),
+			'tax_query' => array(
+				'relation' => 'AND'
+			),
+		);
+		
+		$event_format = ( empty( $_POST['sp_format'] ) ? false : $_POST['sp_format'] );
+		if ( $event_format ) {
+			$args['meta_query'][] = array(
+						'key' => 'sp_format',
+						'value' => $event_format
+					);
+		}
+		
+		if ( $_POST['sp_league'] != "-1" ) {
+			$args['tax_query'][] = array(
+						'taxonomy' => 'sp_league',
+						'field' => 'slug',
+						'terms' => $_POST['sp_league']
+					);
+		}
+		if ( $_POST['sp_season'] != "-1" ) {
+			$args['tax_query'][] = array(
+						'taxonomy' => 'sp_season',
+						'field' => 'slug',
+						'terms' => $_POST['sp_season']
+					);
+		}
+		$args = apply_filters( 'sportspress_events_data_export_args', $args );
+		$events = get_posts( $args );
+		$events_array = array();
+		$i = 0;
+		if ( $events ) {
+			foreach ( $events as $event ) {
+				$events_array[$i]['event_id'] = $event->ID; //team_id
+				$events_array[$i]['date'] = get_the_date( 'Y/m/d', $event ); //date
+				$events_array[$i]['time'] = get_the_date( 'H:i:s', $event ); //time
+				//$teams = get_post_meta ( $event->ID, 'sp_team' );
+				//$events_array[$i]['home'] = get_the_title( $teams[0] ); //home
+				//$events_array[$i]['away'] = get_the_title( $teams[1] ); //away
+				$venues = get_the_terms( $event->ID, 'sp_venue' );
+				if ( $venues ) {
+					$venue = $venues[0]->name;
+				}else{
+					$venue = '';
+				}
+				$events_array[$i]['venue'] = $venue; //venue
+				$events_array[$i]['day'] = get_post_meta ( $event->ID, 'sp_day', true ); //day
+				$i++;
+			}
+		}
+		return $events_array;
+	}
 	
 	/**
 	* Generate fixtures data
