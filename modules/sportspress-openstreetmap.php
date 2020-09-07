@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Integrate OpenStreetMap to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.7
+Version: 2.7.5
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
  * Main SportsPress OpenStreetMap Class
  *
  * @class SportsPress_OpenStreetMap
- * @version	2.7
+ * @version	2.7.5
  */
  
  class SportsPress_OpenStreetMap {
@@ -45,7 +45,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_OPENSTREETMAP_VERSION' ) )
-			define( 'SP_OPENSTREETMAP_VERSION', '2.7' );
+			define( 'SP_OPENSTREETMAP_VERSION', '2.7.5' );
 
 		if ( !defined( 'SP_OPENSTREETMAP_URL' ) )
 			define( 'SP_OPENSTREETMAP_URL', plugin_dir_url( __FILE__ ) );
@@ -97,7 +97,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ):
 	 */
 	public function frontend_venue_scripts() {
 		global $post;
-		if( ( ( is_single() || is_tax() ) && get_post_type()=='sp_event' ) || sp_has_shortcodes( $post->post_content, array('event_full', 'event_venue') ) ) {
+		if( is_tax('sp_venue') || is_singular('sp_event') || ( isset( $post->post_content ) && sp_has_shortcodes( $post->post_content, array('event_full', 'event_venue') ) ) ) {
 			wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.4.0' );
 			wp_enqueue_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.4.0' );
 		}
