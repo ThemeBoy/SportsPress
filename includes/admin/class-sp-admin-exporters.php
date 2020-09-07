@@ -222,6 +222,14 @@ class SP_Admin_Exporters {
 			),
 		);
 		
+		$event_format = ( empty( $_POST['sp_format'] ) ? false : $_POST['sp_format'] );
+		if ( $event_format ) {
+			$args['meta_query'][] = array(
+						'key' => 'sp_format',
+						'value' => $event_format
+					);
+		}
+		
 		if ( $_POST['sp_league'] != "-1" ) {
 			$args['tax_query'][] = array(
 						'taxonomy' => 'sp_league',

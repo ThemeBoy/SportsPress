@@ -9,11 +9,18 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
- ?>
+?>
+
 <div class="wrap">
 	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 	<form method="post" id="sp_fixture_export_form" action="">
 		<ul id="event-filters" class="export-filters" style="display: block;">
+			<li>
+				<label><span class="label-responsive"><?php _e( 'Format', 'sportspress' ); ?>&nbsp;</span>
+						<input type="radio" name="sp_format" class="post-format" id="post-format-league" value="league" checked="checked"> <label for="post-format-league" class="post-format-icon post-format-league"><?php _e( 'Competitive', 'sportspress' ); ?></label>
+						<input type="radio" name="sp_format" class="post-format" id="post-format-friendly" value="friendly"> <label for="post-format-friendly" class="post-format-icon post-format-friendly"><?php _e( 'Friendly', 'sportspress' ); ?></label>
+				</label>
+			</li>
 			<li>
 				<label><span class="label-responsive"><?php _e( 'League', 'sportspress' ); ?></span>
 					<?php
