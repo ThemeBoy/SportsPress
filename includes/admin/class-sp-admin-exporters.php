@@ -369,7 +369,41 @@ class SP_Admin_Exporters {
 		if ( $teams ) {
 			foreach ( $teams as $team ) {
 				//team_id
-				$teams_array[$i]['team_id'] = $team->ID; 
+				$teams_array[$i]['team_id'] = $team->ID;
+				//Name
+				$teams_array[$i]['Name'] = $team->post_title; 
+				//Leagues
+				$leagues = get_the_terms( $team->ID, 'sp_league' );
+				$leagues_names = array();
+				foreach ( $leagues as $league ) {
+					$leagues_names[] = $league->name;
+				}
+				$teams_array[$i]['Leagues'] = implode( '|', $leagues_names );
+				//Seasons
+				$seasons = get_the_terms( $team->ID, 'sp_season' );
+				$seasons_names = array();
+				foreach ( $seasons as $season ) {
+					$seasons_names[] = $season->name;
+				}
+				$teams_array[$i]['Seasons'] = implode( '|', $seasons_names );
+				//Site Url
+				$url = get_post_meta ( $team->ID, 'sp_url', true );
+				$teams_array[$i]['Site Url'] = $url;
+				//Abbreviation
+				$abbreviation = get_post_meta ( $team->ID, 'sp_abbreviation', true );
+				$teams_array[$i]['Abbreviation'] = $abbreviation;
+				//Home
+				$venues = get_the_terms( $team->ID, 'sp_venue' );
+				$venues_names = array();
+				foreach ( $venues as $venue ) {
+					$venues_names[] = $venue->name;
+				}
+				$teams_array[$i]['Home'] = implode( '|', $venues_names );
+				$i++;
+			}
+		}
+		return $teams_array;
+	}
 				//Leagues
 				$leagues = get_the_terms( $team->ID, 'sp_league' );
 				$leagues_names = array();
