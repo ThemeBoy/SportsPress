@@ -404,37 +404,87 @@ class SP_Admin_Exporters {
 		}
 		return $teams_array;
 	}
+	
+	/**
+	* Generate players data
+	*/
+	public function sp_players_data() {
+		$args = array(
+			'post_type' => 'sp_player',
+			'posts_per_page' => -1,
+			'meta_query' => array(
+				'relation' => 'AND'
+			),
+			'tax_query' => array(
+				'relation' => 'AND'
+			),
+		);
+		
+		if ( $_POST['sp_league'] != "-1" ) {
+			$args['tax_query'][] = array(
+						'taxonomy' => 'sp_league',
+						'field' => 'slug',
+						'terms' => $_POST['sp_league']
+					);
+		}
+		if ( $_POST['sp_season'] != "-1" ) {
+			$args['tax_query'][] = array(
+						'taxonomy' => 'sp_season',
+						'field' => 'slug',
+						'terms' => $_POST['sp_season']
+					);
+		}
+		$args = apply_filters( 'sportspress_players_data_export_args', $args );
+		$players = get_posts( $args );
+		$players_array = array();
+		$i = 0;
+		if ( $players ) {
+			foreach ( $players as $player ) {
+				//player_id
+				$players_array[$i]['player_id'] = $player->ID;
+				//Number
+				$number = get_post_meta ( $player->ID, 'sp_number', true );
+				$players_array[$i]['Number'] = $number;
+				//Name
+				$players_array[$i]['Name'] = $player->post_title;
+				//Positions
+				$positions = get_the_terms( $player->ID, 'sp_position' );
+				$positions_names = array();
+				foreach ( $positions as $position ) {
+					$positions_names[] = $position->name;
+				}
+				$players_array[$i]['Positions'] = implode( '|', $positions_names );
+				//Teams
+				$teams = get_post_meta ( $player->ID, 'sp_team' );
+				$teams_names = array();
+				foreach ( $teams as $team_id ) {
+					$teams_names[] = get_the_title( $team_id );
+				}
+				$players_array[$i]['Teams'] = implode( '|', $teams_names );
 				//Leagues
-				$leagues = get_the_terms( $team->ID, 'sp_league' );
+				$leagues = get_the_terms( $player->ID, 'sp_league' );
 				$leagues_names = array();
 				foreach ( $leagues as $league ) {
 					$leagues_names[] = $league->name;
 				}
-				$teams_array[$i]['Leagues'] = implode( '|', $leagues_names );
+				$players_array[$i]['Leagues'] = implode( '|', $leagues_names );
 				//Seasons
-				$seasons = get_the_terms( $team->ID, 'sp_season' );
+				$seasons = get_the_terms( $player->ID, 'sp_season' );
 				$seasons_names = array();
 				foreach ( $seasons as $season ) {
 					$seasons_names[] = $season->name;
 				}
-				$teams_array[$i]['Seasons'] = implode( '|', $seasons_names );
-				//Site Url
-				$url = get_post_meta ( $team->ID, 'sp_url', true );
-				$teams_array[$i]['Site Url'] = $url;
-				//Abbreviation
-				$abbreviation = get_post_meta ( $team->ID, 'sp_abbreviation', true );
-				$teams_array[$i]['Abbreviation'] = $abbreviation;
-				//Home
-				$venues = get_the_terms( $team->ID, 'sp_venue' );
-				$venues_names = array();
-				foreach ( $venues as $venue ) {
-					$venues_names[] = $venue->name;
-				}
-				$teams_array[$i]['Home'] = implode( '|', $venues_names );
+				$players_array[$i]['Seasons'] = implode( '|', $seasons_names );
+				//Nationality
+				$nationality = get_post_meta ( $player->ID, 'sp_nationality', true );
+				$players_array[$i]['Nationality'] = $nationality;
+				//DoB
+				$players_array[$i]['DoB'] = get_the_date( 'Y/m/d', $player );
+				
 				$i++;
 			}
 		}
-		return $teams_array;
+		return $players_array;
 	}
 }
 
