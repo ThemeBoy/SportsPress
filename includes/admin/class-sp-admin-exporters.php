@@ -213,7 +213,8 @@ class SP_Admin_Exporters {
 				outputData( 'sp_players_' . time() . '.' . $format, $players, $format );
 				break;
 			  case 'sp_staff_exporter':
-				echo 'sp_staff_exporter';
+				$staff = $this->sp_staff_data();
+				outputData( 'sp_staff_' . time() . '.' . $format, $staff, $format );
 				break;
 			  case 'sp_official_exporter_exporter':
 				$officials = $this->sp_officials_data();
@@ -544,6 +545,94 @@ class SP_Admin_Exporters {
 				$officials_array[$i]['Name'] = $official->post_title;
 				
 				$officials_array = apply_filters( 'sportspress_officials_export_array', $officials_array, $official, $i );
+				
+				$i++;
+			}
+		}
+		return $officials_array;
+	}
+	
+	/**
+	* Generate staff data
+	*/
+	public function sp_staff_data() {
+		$args = array(
+			'post_type' => 'sp_staff',
+			'posts_per_page' => -1,
+			'meta_query' => array(
+				'relation' => 'AND'
+			),
+			'tax_query' => array(
+				'relation' => 'AND'
+			),
+		);
+				
+		if ( $_POST['sp_league'] != "-1" ) {
+			$args['tax_query'][] = array(
+						'taxonomy' => 'sp_league',
+						'field' => 'slug',
+						'terms' => $_POST['sp_league']
+					);
+		}
+		if ( $_POST['sp_season'] != "-1" ) {
+			$args['tax_query'][] = array(
+						'taxonomy' => 'sp_season',
+						'field' => 'slug',
+						'terms' => $_POST['sp_season']
+					);
+		}
+		
+		if ( $_POST['sp_role'] != "-1" ) {
+			$args['tax_query'][] = array(
+						'taxonomy' => 'sp_role',
+						'field' => 'slug',
+						'terms' => $_POST['sp_role']
+					);
+		}
+		
+		$args = apply_filters( 'sportspress_staff_data_export_args', $args );
+		$staffs = get_posts( $args );
+		$staff_array = array();
+		$i = 0;
+		if ( $staffs ) {
+			foreach ( $staffs as $staff ) {
+				//staff_id
+				$staff_array[$i]['staff_id'] = $staff->ID;
+				//Name
+				$staff_array[$i]['Name'] = $staff->post_title;
+				//Jobs
+				$jobs = get_the_terms( $staff->ID, 'sp_role' );
+				$jobs_names = array();
+				foreach ( $jobs as $job ) {
+					$jobs_names[] = $job->name;
+				}
+				$staff_array[$i]['Jobs'] = implode( '|', $jobs_names );
+				//Teams
+				$teams = get_post_meta ( $staff->ID, 'sp_team' );
+				$teams_names = array();
+				foreach ( $teams as $team_id ) {
+					$teams_names[] = get_the_title( $team_id );
+				}
+				$staff_array[$i]['Teams'] = implode( '|', $teams_names );
+				//Leagues
+				$leagues = get_the_terms( $staff->ID, 'sp_league' );
+				$leagues_names = array();
+				foreach ( $leagues as $league ) {
+					$leagues_names[] = $league->name;
+				}
+				$staff_array[$i]['Leagues'] = implode( '|', $leagues_names );
+				//Seasons
+				$seasons = get_the_terms( $staff->ID, 'sp_season' );
+				$seasons_names = array();
+				foreach ( $seasons as $season ) {
+					$seasons_names[] = $season->name;
+				}
+				$staff_array[$i]['Seasons'] = implode( '|', $seasons_names );
+				//Nationality
+				$nationality = get_post_meta ( $staff->ID, 'sp_nationality', true );
+				$staff_array[$i]['Nationality'] = $nationality;
+				
+				$staff_array = apply_filters( 'sportspress_staff_export_array', $staff_array, $staff, $i );
 				
 				$i++;
 			}
