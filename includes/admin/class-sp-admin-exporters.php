@@ -519,7 +519,7 @@ class SP_Admin_Exporters {
 	}
 	
 	/**
-	* Generate officias data
+	* Generate officials data
 	*/
 	public function sp_officials_data() {
 		$args = array(
@@ -532,7 +532,7 @@ class SP_Admin_Exporters {
 				'relation' => 'AND'
 			),
 		);
-		$args = apply_filters( 'sportspress_players_data_export_args', $args );
+		$args = apply_filters( 'sportspress_officials_data_export_args', $args );
 		$officials = get_posts( $args );
 		$officials_array = array();
 		$i = 0;
