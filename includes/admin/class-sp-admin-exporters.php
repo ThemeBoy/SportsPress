@@ -25,7 +25,7 @@ class SP_Admin_Exporters {
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 		add_action( 'admin_init', array( $this, 'download_exported_file' ) );
 		
-		$this->export_pages = array ( 'sp_event_exporter', 'sp_fixture_exporter', 'sp_team_exporter', 'sp_player_exporter', 'sp_staff_exporter' );
+		$this->export_pages = array ( 'sp_event_exporter', 'sp_fixture_exporter', 'sp_team_exporter', 'sp_player_exporter', 'sp_staff_exporter', 'sp_official_exporter' );
 	}
 
 	/**
@@ -109,6 +109,14 @@ class SP_Admin_Exporters {
 			'sp_staff_exporter', 
 			array( $this, 'staff_exporter' )
 		);
+		add_submenu_page( 
+			'export.php', 
+			'Export SportsPress Officials', 
+			'Export SportsPress Officials', 
+			'manage_options', 
+			'sp_official_exporter', 
+			array( $this, 'official_exporter' )
+		);
 	}
 
 	/**
@@ -144,6 +152,13 @@ class SP_Admin_Exporters {
 	 */
 	public function staff_exporter() {
 		require 'exporters/class-sp-staff-exporter.php';
+	}
+	
+	/**
+	 * Add menu item
+	 */
+	public function official_exporter() {
+		require 'exporters/class-sp-official-exporter.php';
 	}
 	
 	/**
@@ -199,6 +214,10 @@ class SP_Admin_Exporters {
 				break;
 			  case 'sp_staff_exporter':
 				echo 'sp_staff_exporter';
+				break;
+			  case 'sp_official_exporter_exporter':
+				$officials = $this->sp_officials_data();
+				outputData( 'sp_officials_' . time() . '.' . $format, $officials, $format );
 				break;
 			  default:
 				echo 'error';
@@ -486,6 +505,39 @@ class SP_Admin_Exporters {
 			}
 		}
 		return $players_array;
+	}
+	
+	/**
+	* Generate officias data
+	*/
+	public function sp_officials_data() {
+		$args = array(
+			'post_type' => 'sp_official',
+			'posts_per_page' => -1,
+			'meta_query' => array(
+				'relation' => 'AND'
+			),
+			'tax_query' => array(
+				'relation' => 'AND'
+			),
+		);
+		$args = apply_filters( 'sportspress_players_data_export_args', $args );
+		$officials = get_posts( $args );
+		$officials_array = array();
+		$i = 0;
+		if ( $officials ) {
+			foreach ( $officials as $official ) {
+				//official_id
+				$officials_array[$i]['official_id'] = $official->ID;
+				//Name
+				$officials_array[$i]['Name'] = $official->post_title;
+				
+				do_action( 'sportspress_officials_export_array', $official, $i );
+				
+				$i++;
+			}
+		}
+		return $officials_array;
 	}
 }
 
