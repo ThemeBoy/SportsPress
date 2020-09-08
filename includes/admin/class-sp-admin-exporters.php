@@ -283,7 +283,10 @@ class SP_Admin_Exporters {
 					$venue = '';
 				}
 				$events_array[$i]['venue'] = $venue; //venue
-				$events_array[$i]['day'] = get_post_meta ( $event->ID, 'sp_day', true ); //day
+				$events_array[$i]['day'] = get_post_meta ( $event->ID, 'sp_day', true ); //day.
+				
+				$events_array = apply_filters( 'sportspress_events_export_array', $events_array, $event, $i );
+				
 				$i++;
 			}
 		}
@@ -347,6 +350,9 @@ class SP_Admin_Exporters {
 				}
 				$events_array[$i]['venue'] = $venue; //venue
 				$events_array[$i]['day'] = get_post_meta ( $event->ID, 'sp_day', true ); //day
+				
+				$events_array = apply_filters( 'sportspress_fixtures_export_array', $events_array, $event, $i );
+				
 				$i++;
 			}
 		}
@@ -419,6 +425,9 @@ class SP_Admin_Exporters {
 					$venues_names[] = $venue->name;
 				}
 				$teams_array[$i]['Home'] = implode( '|', $venues_names );
+				
+				$teams_array = apply_filters( 'sportspress_teams_export_array', $teams_array, $team, $i );
+				
 				$i++;
 			}
 		}
@@ -501,6 +510,8 @@ class SP_Admin_Exporters {
 				//DoB
 				$players_array[$i]['DoB'] = get_the_date( 'Y/m/d', $player );
 				
+				$players_array = apply_filters( 'sportspress_players_export_array', $players_array, $player, $i );
+				
 				$i++;
 			}
 		}
@@ -532,7 +543,7 @@ class SP_Admin_Exporters {
 				//Name
 				$officials_array[$i]['Name'] = $official->post_title;
 				
-				do_action( 'sportspress_officials_export_array', $official, $i );
+				$officials_array = apply_filters( 'sportspress_officials_export_array', $officials_array, $official, $i );
 				
 				$i++;
 			}
