@@ -194,7 +194,8 @@ class SP_Admin_Exporters {
 				outputData( 'sp_teams_' . time() . '.' . $format, $teams, $format );
 				break;
 			  case 'sp_player_exporter':
-				echo 'sp_player_exporter';
+				$players = $this->sp_players_data();
+				outputData( 'sp_players_' . time() . '.' . $format, $players, $format );
 				break;
 			  case 'sp_staff_exporter':
 				echo 'sp_staff_exporter';
