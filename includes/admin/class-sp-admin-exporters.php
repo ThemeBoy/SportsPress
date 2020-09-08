@@ -334,7 +334,7 @@ class SP_Admin_Exporters {
 	}
 	
 	/**
-	* Generate fixtures data
+	* Generate teams data
 	*/
 	public function sp_teams_data() {
 		$args = array(
