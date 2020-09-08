@@ -157,6 +157,7 @@ class SportsPress_Officials {
 					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'officials',
+					'can_export' 			=> false,
 				)
 			)
 		);
