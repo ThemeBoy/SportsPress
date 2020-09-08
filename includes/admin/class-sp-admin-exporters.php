@@ -190,7 +190,8 @@ class SP_Admin_Exporters {
 				outputData( 'sp_fixtures_' . time() . '.' . $format, $fixtures, $format );
 				break;
 			  case 'sp_team_exporter':
-				echo 'sp_team_exporter';
+				$teams = $this->sp_teams_data();
+				outputData( 'sp_teams_' . time() . '.' . $format, $teams, $format );
 				break;
 			  case 'sp_player_exporter':
 				echo 'sp_player_exporter';
@@ -330,6 +331,76 @@ class SP_Admin_Exporters {
 			}
 		}
 		return $events_array;
+	}
+	
+	/**
+	* Generate fixtures data
+	*/
+	public function sp_teams_data() {
+		$args = array(
+			'post_type' => 'sp_team',
+			'posts_per_page' => -1,
+			'meta_query' => array(
+				'relation' => 'AND'
+			),
+			'tax_query' => array(
+				'relation' => 'AND'
+			),
+		);
+		
+		if ( $_POST['sp_league'] != "-1" ) {
+			$args['tax_query'][] = array(
+						'taxonomy' => 'sp_league',
+						'field' => 'slug',
+						'terms' => $_POST['sp_league']
+					);
+		}
+		if ( $_POST['sp_season'] != "-1" ) {
+			$args['tax_query'][] = array(
+						'taxonomy' => 'sp_season',
+						'field' => 'slug',
+						'terms' => $_POST['sp_season']
+					);
+		}
+		$args = apply_filters( 'sportspress_teams_data_export_args', $args );
+		$teams = get_posts( $args );
+		$teams_array = array();
+		$i = 0;
+		if ( $teams ) {
+			foreach ( $teams as $team ) {
+				//team_id
+				$teams_array[$i]['team_id'] = $team->ID; 
+				//Leagues
+				$leagues = get_the_terms( $team->ID, 'sp_league' );
+				$leagues_names = array();
+				foreach ( $leagues as $league ) {
+					$leagues_names[] = $league->name;
+				}
+				$teams_array[$i]['Leagues'] = implode( '|', $leagues_names );
+				//Seasons
+				$seasons = get_the_terms( $team->ID, 'sp_season' );
+				$seasons_names = array();
+				foreach ( $seasons as $season ) {
+					$seasons_names[] = $season->name;
+				}
+				$teams_array[$i]['Seasons'] = implode( '|', $seasons_names );
+				//Site Url
+				$url = get_post_meta ( $team->ID, 'sp_url', true );
+				$teams_array[$i]['Site Url'] = $url;
+				//Abbreviation
+				$abbreviation = get_post_meta ( $team->ID, 'sp_abbreviation', true );
+				$teams_array[$i]['Abbreviation'] = $abbreviation;
+				//Home
+				$venues = get_the_terms( $team->ID, 'sp_venue' );
+				$venues_names = array();
+				foreach ( $venues as $venue ) {
+					$venues_names[] = $venue->name;
+				}
+				$teams_array[$i]['Home'] = implode( '|', $venues_names );
+				$i++;
+			}
+		}
+		return $teams_array;
 	}
 }
 
