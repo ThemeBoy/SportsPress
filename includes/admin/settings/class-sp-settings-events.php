@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version		2.6.15
+ * @version		2.7.1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -469,7 +469,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 		parent::save();
 		
 		if ( isset( $_POST['sportspress_event_teams_delimiter'] ) )
-	    	update_option( 'sportspress_event_teams_delimiter', $_POST['sportspress_event_teams_delimiter'] );
+	    	update_option( 'sportspress_event_teams_delimiter', sanitize_text_field( $_POST['sportspress_event_teams_delimiter'] ) );
 	}
 
 	/**

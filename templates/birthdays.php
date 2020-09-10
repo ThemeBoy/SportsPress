@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress_Birthdays
- * @version   2.6.8
+ * @version   2.7.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -16,6 +16,7 @@ $defaults = array(
 	'icontag' => 'dt',
 	'captiontag' => 'dd',
 	'size' => 'sportspress-fit-medium',
+	'birthday_format' => 'birthday',
 	'show_player_birthday' => get_option( 'sportspress_player_show_birthday', 'no' ) == 'yes' ? true : false,
 	'show_staff_birthday' => get_option( 'sportspress_staff_show_birthday', 'no' ) == 'yes' ? true : false,
 	'link_players' => get_option( 'sportspress_link_players', 'yes' ) == 'yes' ? true : false,
@@ -91,24 +92,36 @@ foreach ( $posts as $post ) {
 
 	$birthday = get_the_date( get_option( 'date_format') , $post->ID );
 
-	if ( $show_birthday && $birthday && $group !== $birthday ) {
-		echo '<h4 class="sp-table-caption">' . $birthday . '</h4>';
+	$heading = null;
+	if ( ( $show_birthday || 'birthday' == $birthday_format ) && $birthday && 'hide' != $birthday_format ) {
+		$heading = '<h4 class="sp-table-caption">' . $birthday . '</h4>';
 	}
-
+	if ( 'age' == $birthday_format && $birthday ) {
+		$sp_birthdays = new SportsPress_Birthdays();
+		$age = $sp_birthdays->get_age( get_the_date( 'm-d-Y', $post->ID ) );
+		$heading = '<h4 class="sp-table-caption">' . $age . '</h4>';
+	}
+	if ( 'birthdayage' == $birthday_format && $birthday ) {
+		$sp_birthdays = new SportsPress_Birthdays();
+		$age = $sp_birthdays->get_age( get_the_date( 'm-d-Y', $post->ID ) );
+		$heading = '<h4 class="sp-table-caption">' . $birthday . ' (' . $age . ')</h4>';
+	}
+	echo $heading;
+	
 	echo '<div class="gallery">';
 
 	$caption = $post->post_title;
 	$caption = trim( $caption );
 
-    sp_get_template( 'player-gallery-thumbnail.php', array(
-    	'id' => $post->ID,
-    	'itemtag' => $itemtag,
-    	'icontag' => $icontag,
-    	'captiontag' => $captiontag,
-    	'caption' => $caption,
-    	'size' => $size,
-    	'link_posts' => $link_posts,
-    ) );
+	sp_get_template( 'player-gallery-thumbnail.php', array(
+		'id' => $post->ID,
+		'itemtag' => $itemtag,
+		'icontag' => $icontag,
+		'captiontag' => $captiontag,
+		'caption' => $caption,
+		'size' => $size,
+		'link_posts' => $link_posts,
+	) );
 
 	echo '<br style="clear: both;" />';	
 	echo "</div></div>\n";

@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version		2.7.1
+ * @version		2.7.4
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -374,6 +374,17 @@ class SP_Player_List extends SP_Secondary_Post {
 				'terms' => $season_ids
 			);
 		endif;
+		
+		$team_key = 'sp_team';
+		if ( $team ):
+			$args['meta_query'][] = array(
+				array(
+					'key' => $team_key,
+					'value' => $team,
+					'compare' => 'IN',
+				),
+			);
+		endif;
 
 		if ( $this->date !== 0 ):
 			if ( $this->date == 'w' ):
@@ -412,6 +423,7 @@ class SP_Player_List extends SP_Secondary_Post {
 
 			// Add all team performance
 			if ( is_array( $team_performance ) ): foreach ( $team_performance as $team_id => $players ):
+				if ( $team && $team_id != $team ) continue;
 				if ( is_array( $players ) ): foreach ( $players as $player_id => $player_performance ):
 					if ( array_key_exists( $player_id, $totals ) && is_array( $totals[ $player_id ] ) ):
 

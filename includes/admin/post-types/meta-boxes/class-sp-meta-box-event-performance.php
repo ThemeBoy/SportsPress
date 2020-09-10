@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.6.19
+ * @version		2.7.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -503,8 +503,10 @@ class SP_Meta_Box_Event_Performance {
 					?>
 					<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?><br>
 					<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?><br>
-					<input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo $team_id; ?>][<?php echo $player_id; ?>][sub][]" value="<?php echo esc_attr( sp_array_value( $times, 0, '' ) ); ?>" placeholder="-" />
-					<span class="description"><?php _e( 'mins', 'sportspress' ); ?></span>
+					<?php if ( is_array( $times ) ) { ?>
+						<input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo $team_id; ?>][<?php echo $player_id; ?>][sub][]" value="<?php echo esc_attr( sp_array_value( $times, 0, '' ) ); ?>" placeholder="-" />
+						<span class="description"><?php _e( 'mins', 'sportspress' ); ?></span>
+					<?php } ?>
 				</td>
 			<?php } ?>
 			<?php if ( $stars_type ) { ?>
