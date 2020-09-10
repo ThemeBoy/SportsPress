@@ -198,7 +198,8 @@ class SP_Admin_Exporters {
 			
 			switch ( $plugin_page ) {
 			  case 'sp_event_exporter':
-				echo 'sp_event_exporter';
+				$events = $this->sp_events_data();
+				outputData( 'sp_events_' . time() . '.' . $format, $events, $format );
 				break;
 			  case 'sp_fixture_exporter':
 				$fixtures = $this->sp_fixtures_data();
@@ -270,21 +271,37 @@ class SP_Admin_Exporters {
 		$events_array = array();
 		$i = 0;
 		if ( $events ) {
+			$performance_labels = sp_get_var_labels( 'sp_performance' );
 			foreach ( $events as $event ) {
-				$events_array[$i]['event_id'] = $event->ID; //team_id
-				$events_array[$i]['date'] = get_the_date( 'Y/m/d', $event ); //date
-				$events_array[$i]['time'] = get_the_date( 'H:i:s', $event ); //time
-				//$teams = get_post_meta ( $event->ID, 'sp_team' );
-				//$events_array[$i]['home'] = get_the_title( $teams[0] ); //home
-				//$events_array[$i]['away'] = get_the_title( $teams[1] ); //away
+				//event_id
+				$events_array[$i]['event_id'] = $event->ID;
+				//Date
+				$events_array[$i]['date'] = get_the_date( 'Y/m/d', $event );
+				//Time
+				$events_array[$i]['time'] = get_the_date( 'H:i:s', $event );
+				//Venue
 				$venues = get_the_terms( $event->ID, 'sp_venue' );
 				if ( $venues ) {
 					$venue = $venues[0]->name;
 				}else{
 					$venue = '';
 				}
-				$events_array[$i]['venue'] = $venue; //venue
-				$events_array[$i]['day'] = get_post_meta ( $event->ID, 'sp_day', true ); //day.
+				$events_array[$i]['venue'] = $venue;
+				//Teams
+				$teams = get_post_meta ( $event->ID, 'sp_team' );
+				$teams_names = array();
+				foreach ( $teams as $team_id ) {
+					$teams_names[] = get_the_title( $team_id );
+				}
+				//Results
+				//Outcome
+				//Players
+				//Performances -->
+				
+				//Goals
+				//Assists
+				//Yellow Cards
+				//Red Cards
 				
 				$events_array = apply_filters( 'sportspress_events_export_array', $events_array, $event, $i );
 				
