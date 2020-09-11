@@ -217,7 +217,7 @@ class SP_Admin_Exporters {
 				$staff = $this->sp_staff_data();
 				outputData( 'sp_staff_' . time() . '.' . $format, $staff, $format );
 				break;
-			  case 'sp_official_exporter_exporter':
+			  case 'sp_official_exporter':
 				$officials = $this->sp_officials_data();
 				outputData( 'sp_officials_' . time() . '.' . $format, $officials, $format );
 				break;
