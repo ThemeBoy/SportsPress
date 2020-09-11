@@ -23,6 +23,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_page = 'sp_event_csv';
 			$this->import_label = __( 'Import Events', 'sportspress' );
 			$this->columns = array(
+				'ID' => __( 'ID', 'sportspress' ),
 				'post_date' => __( 'Date', 'sportspress' ),
 				'post_time' => __( 'Time', 'sportspress' ),
 				'sp_venue' => __( 'Venue', 'sportspress' ),
@@ -77,16 +78,18 @@ if ( class_exists( 'WP_Importer' ) ) {
 				endforeach;
 
 				// Slice array into event, team, and player
-				$event = array_slice( $row, 0, 3 );
-				$team = array_slice( $row, 3, 3 );
-				$player = array_slice( $row, 6 );
+				$event = array_slice( $row, 0, 4 );
+				$team = array_slice( $row, 4, 3 );
+				$player = array_slice( $row, 7 );
 
 				// Get event details
 				$event = array(
+					sp_array_value( $meta, 'ID' ),
 					sp_array_value( $meta, 'post_date' ),
 					sp_array_value( $meta, 'post_time' ),
 					sp_array_value( $meta, 'sp_venue' ),
 				);
+				unset( $meta['ID'] );
 				unset( $meta['post_date'] );
 				unset( $meta['post_time'] );
 				unset( $meta['sp_venue'] );
@@ -119,7 +122,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					endif;
 
 					// List event columns
-					list( $date, $time, $venue ) = $event;
+					list( $event_id, $date, $time, $venue ) = $event;
 
 					// Format date
 					$date = str_replace( '/', '-', trim( $date ) );
@@ -145,9 +148,13 @@ if ( class_exists( 'WP_Importer' ) ) {
 					if ( ! empty( $time ) ):
 						$date .= ' ' . trim( $time );
 					endif;
+					
+					// Check if an Event ID was given
+					if ( empty( $event_id ) )
+						$event_id = 0;
 
 					// Define post type args
-					$args = array( 'post_type' => 'sp_event', 'post_status' => 'publish', 'post_date' => $date, 'post_title' => __( 'Event', 'sportspress' ) );
+					$args = array( 'ID' => $event_id, 'post_type' => 'sp_event', 'post_status' => 'publish', 'post_date' => $date, 'post_title' => __( 'Event', 'sportspress' ) );
 
 					// Insert event
 					$id = wp_insert_post( $args );
