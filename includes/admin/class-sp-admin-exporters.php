@@ -276,9 +276,9 @@ class SP_Admin_Exporters {
 				//event_id
 				$events_array[$i]['event_id'] = $event->ID;
 				//Date
-				$events_array[$i]['date'] = get_the_date( 'Y/m/d', $event );
+				$events_array[$i]['Date'] = get_the_date( 'Y/m/d', $event );
 				//Time
-				$events_array[$i]['time'] = get_the_date( 'H:i:s', $event );
+				$events_array[$i]['Time'] = get_the_date( 'H:i:s', $event );
 				//Venue
 				$venues = get_the_terms( $event->ID, 'sp_venue' );
 				if ( $venues ) {
@@ -286,22 +286,58 @@ class SP_Admin_Exporters {
 				}else{
 					$venue = '';
 				}
-				$events_array[$i]['venue'] = $venue;
+				$events_array[$i]['Venue'] = $venue;
 				//Teams
 				$teams = get_post_meta ( $event->ID, 'sp_team' );
-				$teams_names = array();
+				$results = get_post_meta ( $event->ID, 'sp_results', true );
+				$players = get_post_meta ( $event->ID, 'sp_players', true );
+				$j = 0;
 				foreach ( $teams as $team_id ) {
-					$teams_names[] = get_the_title( $team_id );
+					if ( $j != 0 ) {
+						$events_array[$i]['event_id'] = '';
+						$events_array[$i]['Date'] = '';
+						$events_array[$i]['Time'] = '';
+						$events_array[$i]['Venue'] = '';
+					}
+					$events_array[$i]['Teams'] = get_the_title( $team_id );
+					$team_outcomes = implode( '|', $results[ $team_id ]['outcome'] );
+					unset( $results[ $team_id ]['outcome'] );
+					//Results
+					$events_array[$i]['Results'] = implode( '|', $results[ $team_id ] );
+					//Outcome
+					$events_array[$i]['Outcome'] = $team_outcomes;
+					//Players
+					$labelskeys = $players[ $team_id ][0];
+					$labels = array();
+					foreach ( $labelskeys as $key => $value ) {
+						$labels[] = $key;
+					}
+					unset( $players[ $team_id ][0] );
+					$k = 0;
+					foreach ( $players[ $team_id ] as $team_player_id => $team_player_stats ) {
+						if ( $k != 0 ) {
+							$events_array[$i]['event_id'] = '';
+							$events_array[$i]['Date'] = '';
+							$events_array[$i]['Time'] = '';
+							$events_array[$i]['Venue'] = '';
+							$events_array[$i]['Teams'] = '';
+							$events_array[$i]['Results'] = '';
+							$events_array[$i]['Outcome'] = '';
+						}
+						$events_array[$i]['Players'] = get_the_title( $team_player_id );
+						//Performances
+						foreach ( $team_player_stats as $slug => $value ) {
+							if ( !in_array( $slug, $labels ) ) 
+								continue;
+							$performance = get_page_by_path( $slug, OBJECT, 'sp_performance' );
+							$events_array[$i][ $performance->post_title ] = $value;
+						}
+						$k++;
+						$i++;
+					}
+					$j++;
+					$i++;
 				}
-				//Results
-				//Outcome
-				//Players
-				//Performances -->
-				
-				//Goals
-				//Assists
-				//Yellow Cards
-				//Red Cards
 				
 				$events_array = apply_filters( 'sportspress_events_export_array', $events_array, $event, $i );
 				
