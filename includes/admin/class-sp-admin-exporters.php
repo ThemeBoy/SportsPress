@@ -390,20 +390,28 @@ class SP_Admin_Exporters {
 		$i = 0;
 		if ( $events ) {
 			foreach ( $events as $event ) {
-				$events_array[$i]['event_id'] = $event->ID; //team_id
-				$events_array[$i]['date'] = get_the_date( 'Y/m/d', $event ); //date
-				$events_array[$i]['time'] = get_the_date( 'H:i:s', $event ); //time
-				$teams = get_post_meta ( $event->ID, 'sp_team' );
-				$events_array[$i]['home'] = get_the_title( $teams[0] ); //home
-				$events_array[$i]['away'] = get_the_title( $teams[1] ); //away
+				//team_id
+				$events_array[$i]['event_id'] = $event->ID;
+				//Date
+				$events_array[$i]['Date'] = get_the_date( 'Y/m/d', $event );
+				//Time
+				$events_array[$i]['Time'] = get_the_date( 'H:i:s', $event );
+				//Venue
 				$venues = get_the_terms( $event->ID, 'sp_venue' );
 				if ( $venues ) {
 					$venue = $venues[0]->name;
 				}else{
 					$venue = '';
 				}
-				$events_array[$i]['venue'] = $venue; //venue
-				$events_array[$i]['day'] = get_post_meta ( $event->ID, 'sp_day', true ); //day
+				$events_array[$i]['venue'] = $venue;
+				
+				$teams = get_post_meta ( $event->ID, 'sp_team' );
+				//Home
+				$events_array[$i]['home'] = get_the_title( $teams[0] );
+				//Away
+				$events_array[$i]['away'] = get_the_title( $teams[1] );
+				//Match Day
+				$events_array[$i]['Match Day'] = get_post_meta ( $event->ID, 'sp_day', true );
 				
 				$events_array = apply_filters( 'sportspress_fixtures_export_array', $events_array, $event, $i );
 				
