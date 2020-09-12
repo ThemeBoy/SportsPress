@@ -698,7 +698,7 @@ class SP_Admin_Exporters {
 				$i++;
 			}
 		}
-		return $officials_array;
+		return $staff_array;
 	}
 }
 
