@@ -213,10 +213,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 											<label><input name="merge" value="false" type="radio" checked> No</label>
 										</li>
 										<li>
-											<label><input name="merge" value="merge_by_id" type="radio"> Using the Player's ID</label>
+											<label><input name="merge" value="merge_by_id" type="radio"> Using the Staff's ID</label>
 										</li>
 										<li>
-											<label><input name="merge" value="merge_by_name" type="radio"> Using the Player's Name</label>
+											<label><input name="merge" value="merge_by_name" type="radio"> Using the Staff's Name</label>
 										</li>
 									</ul>
 								</fieldset>
