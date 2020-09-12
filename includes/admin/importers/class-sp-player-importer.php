@@ -23,6 +23,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_page = 'sp_player_csv';
 			$this->import_label = __( 'Import Players', 'sportspress' );
 			$this->columns = array(
+				'ID' => __( 'ID', 'sportspress' ),
 				'sp_number' => __( 'Squad Number', 'sportspress' ),
 				'post_title' => __( 'Name', 'sportspress' ),
 				'sp_position' => __( 'Positions', 'sportspress' ),
@@ -82,6 +83,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				$name = sp_array_value( $meta, 'post_title' );
 				$date = sp_array_value( $meta, 'post_date' );
+				$player_id = sp_array_value( $meta, 'ID' );
 				
 				// Format date of birth
 				$date = str_replace( '/', '-', trim( $date ) );
@@ -107,9 +109,23 @@ if ( class_exists( 'WP_Importer' ) ) {
 					$this->skipped++;
 					continue;
 				endif;
-
+				
 				// Get or insert player
-				$player_object = sp_array_value( $_POST, 'merge', 0 ) ? get_page_by_title( stripslashes( $name ), OBJECT, 'sp_player' ) : false;
+				switch ( sp_array_value( $_POST, 'merge', 0 ) ) {
+					case 'merge_by_id':
+						if ( empty( $player_id ) || $player_id == 0 ) {
+							$player_object = false;
+						}else{
+							$player_object = get_post( $player_id );
+						}
+						break;
+					case 'merge_by_name':
+						$player_object = get_page_by_title( stripslashes( $name ), OBJECT, 'sp_player' );
+						break;
+					default:
+						$player_object = false;
+				}
+
 				if ( $player_object ):
 					if ( $player_object->post_status != 'publish' ):
 						wp_update_post( array( 'ID' => $player_object->ID, 'post_status' => 'publish' ) );
@@ -260,12 +276,23 @@ if ( class_exists( 'WP_Importer' ) ) {
 	                    </td>
 	                </tr>
 					<tr>
-						<td>
-							<label>
-								<input type="hidden" name="merge" value="0">
-								<input type="checkbox" name="merge" value="1" checked="checked">
-								<?php _e( 'Merge duplicates', 'sportspress' ); ?>
-							</label>
+						<th scope="row" class="titledesc">
+							<?php _e( 'Merge duplicates', 'sportspress' ); ?>
+						</th>
+                		<td class="forminp forminp-radio">
+							<fieldset>
+									<ul>
+										<li>
+											<label><input name="merge" value="false" type="radio" checked> No</label>
+										</li>
+										<li>
+											<label><input name="merge" value="merge_by_id" type="radio"> Using the Player's ID</label>
+										</li>
+										<li>
+											<label><input name="merge" value="merge_by_name" type="radio"> Using the Player's Name</label>
+										</li>
+									</ul>
+								</fieldset>
 						</td>
 					</tr>
 				</tbody>
