@@ -23,6 +23,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_page = 'sp_staff_csv';
 			$this->import_label = __( 'Import Staff', 'sportspress' );
 			$this->columns = array(
+				'ID' => __( 'ID', 'sportspress' ),
 				'post_title' => __( 'Name', 'sportspress' ),
 				'sp_role' => __( 'Jobs', 'sportspress' ),
 				'sp_team' => __( 'Teams', 'sportspress' ),
@@ -64,6 +65,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				endforeach;
 
 				$name = sp_array_value( $meta, 'post_title' );
+				$staff_id = sp_array_value( $meta, 'ID' );
 
 				if ( ! $name ):
 					$this->skipped++;
@@ -71,7 +73,20 @@ if ( class_exists( 'WP_Importer' ) ) {
 				endif;
 
 				// Get or insert staff
-				$staff_object = sp_array_value( $_POST, 'merge', 0 ) ? get_page_by_title( stripslashes( $name ), OBJECT, 'sp_staff' ) : false;
+				switch ( sp_array_value( $_POST, 'merge', 0 ) ) {
+					case 'merge_by_id':
+						if ( empty( $staff_id ) || $staff_id == 0 ) {
+							$staff_object = false;
+						}else{
+							$staff_object = get_post( $staff_id );
+						}
+						break;
+					case 'merge_by_name':
+						$staff_object = get_page_by_title( stripslashes( $name ), OBJECT, 'sp_staff' );
+						break;
+					default:
+						$staff_object = false;
+				}
 				if ( $staff_object ):
 					if ( $staff_object->post_status != 'publish' ):
 						wp_update_post( array( 'ID' => $staff_object->ID, 'post_status' => 'publish' ) );
@@ -188,12 +203,23 @@ if ( class_exists( 'WP_Importer' ) ) {
 			<table class="form-table">
 				<tbody>
 					<tr>
-						<td>
-							<label>
-								<input type="hidden" name="merge" value="0">
-								<input type="checkbox" name="merge" value="1" checked="checked">
-								<?php _e( 'Merge duplicates', 'sportspress' ); ?>
-							</label>
+						<th scope="row" class="titledesc">
+							<?php _e( 'Merge duplicates', 'sportspress' ); ?>
+						</th>
+						<td class="forminp forminp-radio">
+							<fieldset>
+									<ul>
+										<li>
+											<label><input name="merge" value="false" type="radio" checked> No</label>
+										</li>
+										<li>
+											<label><input name="merge" value="merge_by_id" type="radio"> Using the Player's ID</label>
+										</li>
+										<li>
+											<label><input name="merge" value="merge_by_name" type="radio"> Using the Player's Name</label>
+										</li>
+									</ul>
+								</fieldset>
 						</td>
 					</tr>
 				</tbody>
