@@ -16,13 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	<form method="post" id="sp_events_export_form" action="">
 		<ul id="events-filters" class="export-filters" style="display: block;">
 			<li>
-				<label><span class="label-responsive"><?php _e( 'Format', 'sportspress' ); ?>&nbsp;</span>
+				<label><span class="label-responsive"><?php _e( 'Format', 'sportspress' ); ?>:&nbsp;</span>
 						<input type="radio" name="sp_format" class="post-format" id="post-format-league" value="league" checked="checked"> <label for="post-format-league" class="post-format-icon post-format-league"><?php _e( 'Competitive', 'sportspress' ); ?></label>
 						<input type="radio" name="sp_format" class="post-format" id="post-format-friendly" value="friendly"> <label for="post-format-friendly" class="post-format-icon post-format-friendly"><?php _e( 'Friendly', 'sportspress' ); ?></label>
 				</label>
 			</li>
 			<li>
-				<label><span class="label-responsive"><?php _e( 'League', 'sportspress' ); ?></span>
+				<label><span class="label-responsive"><?php _e( 'League', 'sportspress' ); ?>:&nbsp;</span>
 					<?php
 					$args = array(
 						'taxonomy' => 'sp_league',
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				</label>
 			</li>
 			<li>
-				<label><span class="label-responsive"><?php _e( 'Season', 'sportspress' ); ?></span>
+				<label><span class="label-responsive"><?php _e( 'Season', 'sportspress' ); ?>:&nbsp;</span>
 				<?php
 					$args = array(
 						'taxonomy' => 'sp_season',
