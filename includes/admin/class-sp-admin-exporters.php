@@ -285,6 +285,7 @@ class SP_Admin_Exporters {
 					);
 		}
 		$args = apply_filters( 'sportspress_events_data_export_args', $args );
+		
 		$events = get_posts( $args );
 		$events_array = array();
 		$i = 0;
@@ -403,6 +404,7 @@ class SP_Admin_Exporters {
 					);
 		}
 		$args = apply_filters( 'sportspress_fixtures_data_export_args', $args );
+		
 		$events = get_posts( $args );
 		$events_array = array();
 		$i = 0;
@@ -469,6 +471,7 @@ class SP_Admin_Exporters {
 					);
 		}
 		$args = apply_filters( 'sportspress_teams_data_export_args', $args );
+		
 		$teams = get_posts( $args );
 		$teams_array = array();
 		$i = 0;
@@ -544,6 +547,7 @@ class SP_Admin_Exporters {
 					);
 		}
 		$args = apply_filters( 'sportspress_players_data_export_args', $args );
+		
 		$players = get_posts( $args );
 		$players_array = array();
 		$i = 0;
@@ -613,6 +617,7 @@ class SP_Admin_Exporters {
 			),
 		);
 		$args = apply_filters( 'sportspress_officials_data_export_args', $args );
+		
 		$officials = get_posts( $args );
 		$officials_array = array();
 		$i = 0;
@@ -670,6 +675,7 @@ class SP_Admin_Exporters {
 		}
 		
 		$args = apply_filters( 'sportspress_staff_data_export_args', $args );
+		
 		$staffs = get_posts( $args );
 		$staff_array = array();
 		$i = 0;
