@@ -212,7 +212,7 @@ class SP_Admin_Exporters {
 			}
 			
 			// Get file format ( csv as default )
-			$format = ( isset( $_POST['format'] ) ) ? $_POST['format'] : 'csv';
+			$format = ( isset( $_POST['sp_file_format'] ) ) ? $_POST['sp_file_format'] : 'csv';
 			
 			switch ( $plugin_page ) {
 			  case 'sp_event_exporter':
