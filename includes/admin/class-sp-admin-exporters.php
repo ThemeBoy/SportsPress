@@ -25,6 +25,8 @@ class SP_Admin_Exporters {
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 		add_action( 'admin_init', array( $this, 'download_exported_file' ) );
 		
+		add_filter( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
+		
 		$this->export_pages = array ( 'sp_event_exporter', 'sp_fixture_exporter', 'sp_team_exporter', 'sp_player_exporter', 'sp_staff_exporter', 'sp_official_exporter' );
 	}
 
@@ -117,6 +119,21 @@ class SP_Admin_Exporters {
 			'sp_official_exporter', 
 			array( $this, 'official_exporter' )
 		);
+	}
+	
+	/**
+	 * Add menu item
+	 */
+	public function screen_ids( $screen_ids ) {
+		
+		$screen_ids[] = 'admin_page_sp_event_exporter';
+		$screen_ids[] = 'admin_page_sp_fixture_exporter';
+		$screen_ids[] = 'admin_page_sp_team_exporter';
+		$screen_ids[] = 'admin_page_sp_player_exporter';
+		$screen_ids[] = 'admin_page_sp_staff_exporter';
+		$screen_ids[] = 'admin_page_sp_official_exporter';
+		
+		return $screen_ids;
 	}
 
 	/**
