@@ -54,6 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				</label>
 			</li>
 			<?php do_action('sportspress_events_filters'); ?>
+			<?php do_action('sportspress_global_filters'); ?>
 		</ul>
 		<?php wp_nonce_field( 'sp-admin-exporters', 'sp_exporter_nonce' ); ?>
 		<?php submit_button( __( 'Export', 'sportspress' ) );?>

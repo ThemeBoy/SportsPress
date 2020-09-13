@@ -26,6 +26,7 @@ class SP_Admin_Exporters {
 		add_action( 'admin_init', array( $this, 'download_exported_file' ) );
 		
 		add_filter( 'sportspress_screen_ids', array( $this, 'screen_ids' ) );
+		add_filter( 'sportspress_admin_datepicker_screen_ids', array( $this, 'screen_ids' ) );
 		
 		$this->export_pages = array ( 'sp_event_exporter', 'sp_fixture_exporter', 'sp_team_exporter', 'sp_player_exporter', 'sp_staff_exporter', 'sp_official_exporter' );
 	}

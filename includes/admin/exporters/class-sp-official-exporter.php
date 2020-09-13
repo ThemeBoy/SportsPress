@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	<form method="post" id="sp_offical_export_form" action="">
 		<ul id="officials-filters" class="export-filters" style="display: block;">
 			<?php do_action('sportspress_officials_filters'); ?>
+			<?php do_action('sportspress_global_filters'); ?>
 		</ul>
 		<?php wp_nonce_field( 'sp-admin-exporters', 'sp_exporter_nonce' ); ?>
 		<?php submit_button( __( 'Export', 'sportspress' ) );?>
