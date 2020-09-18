@@ -341,7 +341,7 @@ class SP_Admin_Exporters {
 							$events_array[$i][ __( 'Venue', 'sportspress' ) ] = '';
 							$events_array[$i][ __( 'Teams', 'sportspress' ) ] = '';
 							$events_array[$i][ __( 'Results', 'sportspress' ) ] = '';
-							$events_array[$i][ __( 'Outcome', 'sportspress' ] = '';
+							$events_array[$i][ __( 'Outcome', 'sportspress' ) ] = '';
 						}
 						$events_array[$i][ __( 'Players', 'sportspress' ) ] = get_the_title( $team_player_id );
 						//Performances
