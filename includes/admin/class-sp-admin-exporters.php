@@ -293,11 +293,11 @@ class SP_Admin_Exporters {
 			$performance_labels = sp_get_var_labels( 'sp_performance' );
 			foreach ( $events as $event ) {
 				//event_id
-				$events_array[$i]['event_id'] = $event->ID;
+				$events_array[$i]['ID'] = $event->ID;
 				//Date
-				$events_array[$i]['Date'] = get_the_date( 'Y/m/d', $event );
+				$events_array[$i][ __( 'Date', 'sportspress' ) ] = get_the_date( 'Y/m/d', $event );
 				//Time
-				$events_array[$i]['Time'] = get_the_date( 'H:i:s', $event );
+				$events_array[$i][ __( 'Time', 'sportspress' ) ] = get_the_date( 'H:i:s', $event );
 				//Venue
 				$venues = get_the_terms( $event->ID, 'sp_venue' );
 				if ( $venues ) {
@@ -305,7 +305,7 @@ class SP_Admin_Exporters {
 				}else{
 					$venue = '';
 				}
-				$events_array[$i]['Venue'] = $venue;
+				$events_array[$i][ __( 'Venue', 'sportspress' ) ] = $venue;
 				//Teams
 				$teams = get_post_meta ( $event->ID, 'sp_team' );
 				$results = get_post_meta ( $event->ID, 'sp_results', true );
@@ -313,18 +313,18 @@ class SP_Admin_Exporters {
 				$j = 0;
 				foreach ( $teams as $team_id ) {
 					if ( $j != 0 ) {
-						$events_array[$i]['event_id'] = '';
-						$events_array[$i]['Date'] = '';
-						$events_array[$i]['Time'] = '';
-						$events_array[$i]['Venue'] = '';
+						$events_array[$i]['ID'] = '';
+						$events_array[$i][ __( 'Date', 'sportspress' ) ] = '';
+						$events_array[$i][ __( 'Time', 'sportspress' ) ] = '';
+						$events_array[$i][ __( 'Venue', 'sportspress' ) ] = '';
 					}
-					$events_array[$i]['Teams'] = get_the_title( $team_id );
+					$events_array[$i][ __( 'Teams', 'sportspress' ) ] = get_the_title( $team_id );
 					$team_outcomes = implode( '|', $results[ $team_id ]['outcome'] );
 					unset( $results[ $team_id ]['outcome'] );
 					//Results
-					$events_array[$i]['Results'] = implode( '|', $results[ $team_id ] );
+					$events_array[$i][ __( 'Results', 'sportspress' ) ] = implode( '|', $results[ $team_id ] );
 					//Outcome
-					$events_array[$i]['Outcome'] = $team_outcomes;
+					$events_array[$i][ __( 'Outcome', 'sportspress' ) ] = $team_outcomes;
 					//Players
 					$labelskeys = $players[ $team_id ][0];
 					$labels = array();
@@ -335,15 +335,15 @@ class SP_Admin_Exporters {
 					$k = 0;
 					foreach ( $players[ $team_id ] as $team_player_id => $team_player_stats ) {
 						if ( $k != 0 ) {
-							$events_array[$i]['event_id'] = '';
-							$events_array[$i]['Date'] = '';
-							$events_array[$i]['Time'] = '';
-							$events_array[$i]['Venue'] = '';
-							$events_array[$i]['Teams'] = '';
-							$events_array[$i]['Results'] = '';
-							$events_array[$i]['Outcome'] = '';
+							$events_array[$i]['ID'] = '';
+							$events_array[$i][ __( 'Date', 'sportspress' ) ] = '';
+							$events_array[$i][ __( 'Time', 'sportspress' ) ] = '';
+							$events_array[$i][ __( 'Venue', 'sportspress' ) ] = '';
+							$events_array[$i][ __( 'Teams', 'sportspress' ) ] = '';
+							$events_array[$i][ __( 'Results', 'sportspress' ) ] = '';
+							$events_array[$i][ __( 'Outcome', 'sportspress' ] = '';
 						}
-						$events_array[$i]['Players'] = get_the_title( $team_player_id );
+						$events_array[$i][ __( 'Players', 'sportspress' ) ] = get_the_title( $team_player_id );
 						//Performances
 						foreach ( $team_player_stats as $slug => $value ) {
 							if ( !in_array( $slug, $labels ) ) 
@@ -411,11 +411,11 @@ class SP_Admin_Exporters {
 		if ( $events ) {
 			foreach ( $events as $event ) {
 				//team_id
-				$events_array[$i]['event_id'] = $event->ID;
+				$events_array[$i]['ID'] = $event->ID;
 				//Date
-				$events_array[$i]['Date'] = get_the_date( 'Y/m/d', $event );
+				$events_array[$i][ __( 'Date', 'sportspress' ) ] = get_the_date( 'Y/m/d', $event );
 				//Time
-				$events_array[$i]['Time'] = get_the_date( 'H:i:s', $event );
+				$events_array[$i][ __( 'Time', 'sportspress' ) ] = get_the_date( 'H:i:s', $event );
 				//Venue
 				$venues = get_the_terms( $event->ID, 'sp_venue' );
 				if ( $venues ) {
@@ -423,15 +423,15 @@ class SP_Admin_Exporters {
 				}else{
 					$venue = '';
 				}
-				$events_array[$i]['venue'] = $venue;
+				$events_array[$i][ __( 'Venue', 'sportspress' ) ] = $venue;
 				
 				$teams = get_post_meta ( $event->ID, 'sp_team' );
 				//Home
-				$events_array[$i]['home'] = get_the_title( $teams[0] );
+				$events_array[$i][ __( 'Home', 'sportspress' ) ] = get_the_title( $teams[0] );
 				//Away
-				$events_array[$i]['away'] = get_the_title( $teams[1] );
+				$events_array[$i][ __( 'Away', 'sportspress' ) ] = get_the_title( $teams[1] );
 				//Match Day
-				$events_array[$i]['Match Day'] = get_post_meta ( $event->ID, 'sp_day', true );
+				$events_array[$i][ __( 'Match Day', 'sportspress' ) ] = get_post_meta ( $event->ID, 'sp_day', true );
 				
 				$events_array = apply_filters( 'sportspress_fixtures_export_array', $events_array, $event, $i );
 				
@@ -478,36 +478,36 @@ class SP_Admin_Exporters {
 		if ( $teams ) {
 			foreach ( $teams as $team ) {
 				//team_id
-				$teams_array[$i]['team_id'] = $team->ID;
+				$teams_array[$i]['ID'] = $team->ID;
 				//Name
-				$teams_array[$i]['Name'] = $team->post_title; 
+				$teams_array[$i][ __( 'Name', 'sportspress' ) ] = $team->post_title; 
 				//Leagues
 				$leagues = get_the_terms( $team->ID, 'sp_league' );
 				$leagues_names = array();
 				foreach ( $leagues as $league ) {
 					$leagues_names[] = $league->name;
 				}
-				$teams_array[$i]['Leagues'] = implode( '|', $leagues_names );
+				$teams_array[$i][ __( 'Leagues', 'sportspress' ) ] = implode( '|', $leagues_names );
 				//Seasons
 				$seasons = get_the_terms( $team->ID, 'sp_season' );
 				$seasons_names = array();
 				foreach ( $seasons as $season ) {
 					$seasons_names[] = $season->name;
 				}
-				$teams_array[$i]['Seasons'] = implode( '|', $seasons_names );
+				$teams_array[$i][ __( 'Seasons', 'sportspress' ) ] = implode( '|', $seasons_names );
 				//Site Url
 				$url = get_post_meta ( $team->ID, 'sp_url', true );
-				$teams_array[$i]['Site Url'] = $url;
+				$teams_array[$i][ __( 'Site Url', 'sportspress' ) ] = $url;
 				//Abbreviation
 				$abbreviation = get_post_meta ( $team->ID, 'sp_abbreviation', true );
-				$teams_array[$i]['Abbreviation'] = $abbreviation;
+				$teams_array[$i][ __( 'Abbreviation', 'sportspress' ) ] = $abbreviation;
 				//Home
 				$venues = get_the_terms( $team->ID, 'sp_venue' );
 				$venues_names = array();
 				foreach ( $venues as $venue ) {
 					$venues_names[] = $venue->name;
 				}
-				$teams_array[$i]['Home'] = implode( '|', $venues_names );
+				$teams_array[$i][ __( 'Home', 'sportspress' ) ] = implode( '|', $venues_names );
 				
 				$teams_array = apply_filters( 'sportspress_teams_export_array', $teams_array, $team, $i );
 				
@@ -554,45 +554,45 @@ class SP_Admin_Exporters {
 		if ( $players ) {
 			foreach ( $players as $player ) {
 				//player_id
-				$players_array[$i]['player_id'] = $player->ID;
+				$players_array[$i]['ID'] = $player->ID;
 				//Number
 				$number = get_post_meta ( $player->ID, 'sp_number', true );
-				$players_array[$i]['Number'] = $number;
+				$players_array[$i][ __( 'Squad Number', 'sportspress' ) ] = $number;
 				//Name
-				$players_array[$i]['Name'] = $player->post_title;
+				$players_array[$i][ __( 'Name', 'sportspress' ) ] = $player->post_title;
 				//Positions
 				$positions = get_the_terms( $player->ID, 'sp_position' );
 				$positions_names = array();
 				foreach ( $positions as $position ) {
 					$positions_names[] = $position->name;
 				}
-				$players_array[$i]['Positions'] = implode( '|', $positions_names );
+				$players_array[$i][ __( 'Positions', 'sportspress' ) ] = implode( '|', $positions_names );
 				//Teams
 				$teams = get_post_meta ( $player->ID, 'sp_team' );
 				$teams_names = array();
 				foreach ( $teams as $team_id ) {
 					$teams_names[] = get_the_title( $team_id );
 				}
-				$players_array[$i]['Teams'] = implode( '|', $teams_names );
+				$players_array[$i][ __( 'Teams', 'sportspress' ) ] = implode( '|', $teams_names );
 				//Leagues
 				$leagues = get_the_terms( $player->ID, 'sp_league' );
 				$leagues_names = array();
 				foreach ( $leagues as $league ) {
 					$leagues_names[] = $league->name;
 				}
-				$players_array[$i]['Leagues'] = implode( '|', $leagues_names );
+				$players_array[$i][ __( 'Leagues', 'sportspress' ) ] = implode( '|', $leagues_names );
 				//Seasons
 				$seasons = get_the_terms( $player->ID, 'sp_season' );
 				$seasons_names = array();
 				foreach ( $seasons as $season ) {
 					$seasons_names[] = $season->name;
 				}
-				$players_array[$i]['Seasons'] = implode( '|', $seasons_names );
+				$players_array[$i][ __( 'Seasons', 'sportspress' ) ] = implode( '|', $seasons_names );
 				//Nationality
 				$nationality = get_post_meta ( $player->ID, 'sp_nationality', true );
-				$players_array[$i]['Nationality'] = $nationality;
+				$players_array[$i][ __( 'Nationality', 'sportspress' ) ] = $nationality;
 				//DoB
-				$players_array[$i]['DoB'] = get_the_date( 'Y/m/d', $player );
+				$players_array[$i][ __( 'Date of Birth', 'sportspress' ) ] = get_the_date( 'Y/m/d', $player );
 				
 				$players_array = apply_filters( 'sportspress_players_export_array', $players_array, $player, $i );
 				
@@ -624,9 +624,9 @@ class SP_Admin_Exporters {
 		if ( $officials ) {
 			foreach ( $officials as $official ) {
 				//official_id
-				$officials_array[$i]['official_id'] = $official->ID;
+				$officials_array[$i]['ID'] = $official->ID;
 				//Name
-				$officials_array[$i]['Name'] = $official->post_title;
+				$officials_array[$i][ __( 'Name', 'sportspress' ) ] = $official->post_title;
 				
 				$officials_array = apply_filters( 'sportspress_officials_export_array', $officials_array, $official, $i );
 				
@@ -682,40 +682,40 @@ class SP_Admin_Exporters {
 		if ( $staffs ) {
 			foreach ( $staffs as $staff ) {
 				//staff_id
-				$staff_array[$i]['staff_id'] = $staff->ID;
+				$staff_array[$i]['ID'] = $staff->ID;
 				//Name
-				$staff_array[$i]['Name'] = $staff->post_title;
+				$staff_array[$i][ __( 'Name', 'sportspress' ) ] = $staff->post_title;
 				//Jobs
 				$jobs = get_the_terms( $staff->ID, 'sp_role' );
 				$jobs_names = array();
 				foreach ( $jobs as $job ) {
 					$jobs_names[] = $job->name;
 				}
-				$staff_array[$i]['Jobs'] = implode( '|', $jobs_names );
+				$staff_array[$i][ __( 'Jobs', 'sportspress' ) ] = implode( '|', $jobs_names );
 				//Teams
 				$teams = get_post_meta ( $staff->ID, 'sp_team' );
 				$teams_names = array();
 				foreach ( $teams as $team_id ) {
 					$teams_names[] = get_the_title( $team_id );
 				}
-				$staff_array[$i]['Teams'] = implode( '|', $teams_names );
+				$staff_array[$i][ __( 'Teams', 'sportspress' ) ] = implode( '|', $teams_names );
 				//Leagues
 				$leagues = get_the_terms( $staff->ID, 'sp_league' );
 				$leagues_names = array();
 				foreach ( $leagues as $league ) {
 					$leagues_names[] = $league->name;
 				}
-				$staff_array[$i]['Leagues'] = implode( '|', $leagues_names );
+				$staff_array[$i][ __( 'Leagues', 'sportspress' ) ] = implode( '|', $leagues_names );
 				//Seasons
 				$seasons = get_the_terms( $staff->ID, 'sp_season' );
 				$seasons_names = array();
 				foreach ( $seasons as $season ) {
 					$seasons_names[] = $season->name;
 				}
-				$staff_array[$i]['Seasons'] = implode( '|', $seasons_names );
+				$staff_array[$i][ __( 'Seasons', 'sportspress' ) ] = implode( '|', $seasons_names );
 				//Nationality
 				$nationality = get_post_meta ( $staff->ID, 'sp_nationality', true );
-				$staff_array[$i]['Nationality'] = $nationality;
+				$staff_array[$i][ __( 'Nationality', 'sportspress' ) ] = $nationality;
 				
 				$staff_array = apply_filters( 'sportspress_staff_export_array', $staff_array, $staff, $i );
 				
