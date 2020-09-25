@@ -29,7 +29,12 @@ class SP_Event extends SP_Custom_Post{
 	public function day() {
 		$day = get_post_meta( $this->ID, 'sp_day', true );
 		return $day;
-  }
+	}
+	
+	public function format() {
+		$format = get_post_meta( $this->ID, 'sp_format', true );
+		return $format;
+	}
 	
 	public function minutes() {
 		$minutes = get_post_meta( $this->ID, 'sp_minutes', true );

@@ -135,6 +135,23 @@ class SP_REST_API {
 				),
 			)
 		);
+
+		register_rest_field( 'sp_event',
+			'format',
+			array(
+				'get_callback'    => 'SP_REST_API::get_post_data',
+				'update_callback' => 'SP_REST_API::update_post_meta',
+				'schema'          => array(
+					'description'     => __( 'Format', 'sportspress' ),
+					'type'            => 'string',
+					'enum'            => array('league', 'friendly', 'tournament'),
+					'context'         => array( 'view', 'edit', 'embed' ),
+					'arg_options'     => array(
+						'sanitize_callback' => 'sanitize_text_field',
+					),
+				),
+			)
+		);
 		
 		register_rest_field( 'sp_event',
 			'minutes',
