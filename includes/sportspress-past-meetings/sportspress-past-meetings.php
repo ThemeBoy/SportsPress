@@ -76,6 +76,27 @@ class SportsPress_Past_Meetings {
 		// Get timelines format option
 		$format = get_option( 'sportspress_past_meetings_format', 'blocks' );
 		$teams = get_post_meta( get_the_ID(),'sp_team' );
+		$show_event = get_option( 'sportspress_past_meetings_show_event', 'yes' ) == 'yes' ? true : false;
+		$show_time = get_option( 'sportspress_past_meetings_show_time', 'yes' ) == 'yes' ? true : false;
+		$show_results = get_option( 'sportspress_past_meetings_show_results', 'yes' ) == 'yes' ? true : false;
+		$show_league = get_option( 'sportspress_past_meetings_show_league', 'no' ) == 'yes' ? true : false;
+		$show_season = get_option( 'sportspress_past_meetings_show_season', 'no' ) == 'yes' ? true : false;
+		$show_venue = get_option( 'sportspress_past_meetings_show_venue', 'no' ) == 'yes' ? true : false;
+		
+		$columns = array();
+		if ( $show_event )
+			$columns[] = 'event';
+		if ( $show_time )
+			$columns[] = 'time';
+		if ( $show_results )
+			$columns[] = 'results';
+		if ( $show_league )
+			$columns[] = 'league';
+		if ( $show_season )
+			$columns[] = 'season';
+		if ( $show_venue )
+			$columns[] = 'venue';
+		
 		if ( 'list' === $format ):
 			sp_get_template( 'event-list.php', array(
 				'title' => __( 'Past Meetings', 'sportspress' ),
@@ -84,7 +105,7 @@ class SportsPress_Past_Meetings {
 				'date_before' => get_post_time('Y-m-d', true),
 				'title_format' => 'homeaway',
 				'time_format' => 'separate',
-				'columns' => array( 'event', 'time', 'results' ),
+				'columns' => $columns,
 				'order' => 'DESC',
 				'hide_if_empty' => true,
 			) );
@@ -131,6 +152,49 @@ class SportsPress_Past_Meetings {
 						'blocks'=> __( 'Blocks', 'sportspress' ),
 						'list'	=> __( 'List', 'sportspress' ),
 					),
+				),
+				array(
+					'title'     => __( 'Details', 'sportspress' ),
+					'desc' 		=> __( 'Display event', 'sportspress' ),
+					'id' 		=> 'sportspress_past_meetings_show_event',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'	=> 'start',
+				),
+				array(
+					'desc' 		=> __( 'Display time', 'sportspress' ),
+					'id' 		=> 'sportspress_past_meetings_show_time',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+				array(
+					'desc' 		=> __( 'Display results', 'sportspress' ),
+					'id' 		=> 'sportspress_past_meetings_show_results',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+				array(
+					'desc' 		=> __( 'Display league', 'sportspress' ),
+					'id' 		=> 'sportspress_past_meetings_show_league',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+				array(
+					'desc' 		=> __( 'Display season', 'sportspress' ),
+					'id' 		=> 'sportspress_past_meetings_show_season',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> '',
+				),
+				array(
+					'desc' 		=> __( 'Display venue', 'sportspress' ),
+					'id' 		=> 'sportspress_past_meetings_show_venue',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+					'checkboxgroup'		=> 'end',
 				),
 			) ),
 
