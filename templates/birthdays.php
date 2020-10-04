@@ -32,6 +32,12 @@ $args = array(
 	'orderby' => 'date',
 	'order' => 'ASC',
 	'monthnum' => date('n'),
+	'tax_query' => array(
+		'relation' => 'AND',
+	),
+	'meta_query' => array(
+		'relation' => 'AND',
+	),
 );
 
 if ( $date == 'day' ) {
@@ -76,6 +82,31 @@ if ( $date == 'week' ) {
 			'relation' => 'OR',
 		);
 }
+
+if ( $league ):
+	$args['tax_query'][] = array(
+		'taxonomy' => 'sp_league',
+		'field' => 'term_id',
+		'terms' => $league
+	);
+endif;
+
+if ( $season ):
+	$args['tax_query'][] = array(
+		'taxonomy' => 'sp_season',
+		'field' => 'term_id',
+		'terms' => $season
+	);
+endif;
+
+if ( $team ):
+	$args['meta_query'][] = array(
+		array(
+			'key' => 'sp_current_team',
+			'value' => $team
+		),
+	);
+endif;
 
 $posts = get_posts( $args );
 
