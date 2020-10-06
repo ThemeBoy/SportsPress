@@ -77,7 +77,7 @@ class SportsPress_Past_Meetings {
 		$format = get_option( 'sportspress_past_meetings_format', 'blocks' );
 		$teams = get_post_meta( get_the_ID(),'sp_team' );
 		if ( 'list' === $format ):
-			sp_get_template( 'event-list.php', array(
+			$args = apply_filters( 'sp_event_past_meetings_args', array(
 				'title' => __( 'Past Meetings', 'sportspress' ),
 				'show_title' => true,
 				'teams_past' => $teams,
@@ -88,8 +88,9 @@ class SportsPress_Past_Meetings {
 				'order' => 'DESC',
 				'hide_if_empty' => true,
 			) );
+			sp_get_template( 'event-list.php', $args );
 		else:
-			sp_get_template( 'event-blocks.php', array(
+			$args = apply_filters( 'sp_event_past_meetings_args', array(
 				'title' => __( 'Past Meetings', 'sportspress' ),
 				'show_title' => true,
 				'teams_past' => $teams,
@@ -97,6 +98,7 @@ class SportsPress_Past_Meetings {
 				'order' => 'DESC',
 				'hide_if_empty' => true,
 			) );
+			sp_get_template( 'event-blocks.php', $args );
 		endif;
 	}
 	
