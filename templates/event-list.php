@@ -13,7 +13,7 @@ $defaults = array(
 	'id' => null,
 	'title' => false,
 	'status' => 'default',
-	'format' => 'all',
+	'format' => 'default',
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
@@ -51,7 +51,7 @@ extract( $defaults, EXTR_SKIP );
 $calendar = new SP_Calendar( $id );
 if ( $status != 'default' )
 	$calendar->status = $status;
-if ( $format != 'all' )
+if ( $format != 'default' )
 	$calendar->event_format = $format;
 if ( $date != 'default' )
 	$calendar->date = $date;
