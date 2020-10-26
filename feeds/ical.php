@@ -138,6 +138,8 @@ foreach ( $events as $event):
 	//Convert &#[0-9]+ entities to UTF-8
 	$summary = preg_replace_callback("/(&#[0-9]+;)/", function($m) { return mb_convert_encoding($m[1], "UTF-8", "HTML-ENTITIES"); }, $summary);
 	
+	$summary = apply_filters( 'sportspress_ical_feed_summary', $summary, $event );
+	
 	// Append to output string
 	$output .=
 	"BEGIN:VEVENT\r\n" .
