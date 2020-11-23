@@ -30,7 +30,7 @@ class SportsPress_Filter_Events {
 		
 		// Filtering
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ), 11 );
-		add_filter( 'parse_query', array( $this, 'filters_query' ) );
+		add_filter( 'parse_query', array( $this, 'filters_query' ), 11 );
 
 	}
 
@@ -56,8 +56,7 @@ class SportsPress_Filter_Events {
 		
 		$selected = isset( $_REQUEST['today_events'] ) ? $_REQUEST['today_events'] : null;
 		
-		//echo '<input type="checkbox" id="today_events" name="today_events" value="1"><label for="today_events"> Show only today events </label>';
-		echo '<input type="checkbox"  id="today_events" name="today_events" value="1" ' . checked( $selected, 1, false ) .' /><label for="today_events"> Show only today events </label>';
+		echo '<input type="checkbox"  id="today_events" name="today_events" value="1" ' . checked( $selected, 1, false ) .' /><label for="today_events"> Show only events need results </label>';
 	}
 	
   /**
@@ -69,22 +68,19 @@ class SportsPress_Filter_Events {
 		global $typenow, $wp_query;
 
 		if ( $typenow == 'sp_event' ) {
-			//var_dump($query);
 			
 			if ( isset( $_GET['today_events'] ) && $_GET['today_events'] == '1' ) {
-				$query->query_vars['post__in ']  = array(57);
-				//var_dump($query);
+				$query->query_vars['post_status']  = 'publish';
+				//$query->query_vars['meta_key']  = 'sp_results';
+				//$query->query_vars['meta_value']  = 'outcome';
+				//$query->query_vars['meta_compare']  = 'NOT LIKE';
+				$query->query_vars['meta_query'][] = array(
+													'key'     => 'sp_results',
+													'value'   => 'outcome',
+													'compare' => 'NOT LIKE',
+													);
 			}
 
-			/*if ( ! empty( $_GET['team'] ) ) {
-				$query->query_vars['meta_value']  = $_GET['team'];
-				$query->query_vars['meta_key']    = 'sp_team';
-			}
-
-			if ( ! empty( $_GET['match_day'] ) ) {
-				$query->query_vars['meta_value']  = $_GET['match_day'];
-				$query->query_vars['meta_key']    = 'sp_day';
-			}*/
 		}
 	}
 
