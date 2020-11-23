@@ -71,14 +71,11 @@ class SportsPress_Filter_Events {
 			
 			if ( isset( $_GET['today_events'] ) && $_GET['today_events'] == '1' ) {
 				$query->query_vars['post_status']  = 'publish';
-				//$query->query_vars['meta_key']  = 'sp_results';
-				//$query->query_vars['meta_value']  = 'outcome';
-				//$query->query_vars['meta_compare']  = 'NOT LIKE';
 				$query->query_vars['meta_query'][] = array(
-													'key'     => 'sp_results',
-													'value'   => 'outcome',
-													'compare' => 'NOT LIKE',
-													);
+									'key'     => 'sp_results',
+									'value'   => 'outcome',
+									'compare' => 'NOT LIKE',
+									);
 			}
 
 		}
