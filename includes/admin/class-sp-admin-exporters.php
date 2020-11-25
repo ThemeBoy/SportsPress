@@ -319,40 +319,51 @@ class SP_Admin_Exporters {
 						$events_array[$i][ __( 'Venue', 'sportspress' ) ] = '';
 					}
 					$events_array[$i][ __( 'Teams', 'sportspress' ) ] = get_the_title( $team_id );
-					$team_outcomes = implode( '|', $results[ $team_id ]['outcome'] );
-					unset( $results[ $team_id ]['outcome'] );
+					if ( isset( $results[ $team_id ]['outcome'] ) ) {
+						$team_outcomes = implode( '|', $results[ $team_id ]['outcome'] );
+						unset( $results[ $team_id ]['outcome'] );
+					}else{ 
+						$team_outcomes = '';
+					}
 					//Results
-					$events_array[$i][ __( 'Results', 'sportspress' ) ] = implode( '|', $results[ $team_id ] );
+					if ( isset( $results[ $team_id ] ) ) {
+						$team_results = implode( '|', $results[ $team_id ] );
+					}else{ 
+						$team_results = '';
+					}
+					$events_array[$i][ __( 'Results', 'sportspress' ) ] = $team_results;
 					//Outcome
 					$events_array[$i][ __( 'Outcome', 'sportspress' ) ] = $team_outcomes;
 					//Players
-					$labelskeys = $players[ $team_id ][0];
+					$labelskeys = sp_array_value( $players, sp_array_value( $team_id, 0, array() ), array() );
 					$labels = array();
 					foreach ( $labelskeys as $key => $value ) {
 						$labels[] = $key;
 					}
 					unset( $players[ $team_id ][0] );
 					$k = 0;
-					foreach ( $players[ $team_id ] as $team_player_id => $team_player_stats ) {
-						if ( $k != 0 ) {
-							$events_array[$i]['ID'] = '';
-							$events_array[$i][ __( 'Date', 'sportspress' ) ] = '';
-							$events_array[$i][ __( 'Time', 'sportspress' ) ] = '';
-							$events_array[$i][ __( 'Venue', 'sportspress' ) ] = '';
-							$events_array[$i][ __( 'Teams', 'sportspress' ) ] = '';
-							$events_array[$i][ __( 'Results', 'sportspress' ) ] = '';
-							$events_array[$i][ __( 'Outcome', 'sportspress' ) ] = '';
+					if ( isset( $players[ $team_id ] ) ) {
+						foreach ( $players[ $team_id ] as $team_player_id => $team_player_stats ) {
+							if ( $k != 0 ) {
+								$events_array[$i]['ID'] = '';
+								$events_array[$i][ __( 'Date', 'sportspress' ) ] = '';
+								$events_array[$i][ __( 'Time', 'sportspress' ) ] = '';
+								$events_array[$i][ __( 'Venue', 'sportspress' ) ] = '';
+								$events_array[$i][ __( 'Teams', 'sportspress' ) ] = '';
+								$events_array[$i][ __( 'Results', 'sportspress' ) ] = '';
+								$events_array[$i][ __( 'Outcome', 'sportspress' ) ] = '';
+							}
+							$events_array[$i][ __( 'Players', 'sportspress' ) ] = get_the_title( $team_player_id );
+							//Performances
+							foreach ( $team_player_stats as $slug => $value ) {
+								if ( !in_array( $slug, $labels ) ) 
+									continue;
+								$performance = get_page_by_path( $slug, OBJECT, 'sp_performance' );
+								$events_array[$i][ $performance->post_title ] = $value;
+							}
+							$k++;
+							$i++;
 						}
-						$events_array[$i][ __( 'Players', 'sportspress' ) ] = get_the_title( $team_player_id );
-						//Performances
-						foreach ( $team_player_stats as $slug => $value ) {
-							if ( !in_array( $slug, $labels ) ) 
-								continue;
-							$performance = get_page_by_path( $slug, OBJECT, 'sp_performance' );
-							$events_array[$i][ $performance->post_title ] = $value;
-						}
-						$k++;
-						$i++;
 					}
 					$j++;
 					$i++;
