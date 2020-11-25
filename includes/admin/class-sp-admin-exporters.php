@@ -335,7 +335,11 @@ class SP_Admin_Exporters {
 					//Outcome
 					$events_array[$i][ __( 'Outcome', 'sportspress' ) ] = $team_outcomes;
 					//Players
-					$labelskeys = sp_array_value( $players, sp_array_value( $team_id, 0, array() ), array() );
+					if ( isset( $players[ $team_id ][0] ) ) {
+						$labelskeys = $players[ $team_id ][0];
+					}else{
+						$labelskeys = array();
+					}
 					$labels = array();
 					foreach ( $labelskeys as $key => $value ) {
 						$labels[] = $key;
