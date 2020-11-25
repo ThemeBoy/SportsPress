@@ -481,8 +481,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 								<ul>
 									<?php
 										foreach( (new SP_Formats)->event as $name => $title ) {
+											$checked = ( $name == 'league' ) ? ' checked' : false;
 											?>
-											<li><input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo $name; ?>" value="<?php echo $name; ?>" checked="checked"> <label for="post-format-<?php echo $name; ?>" class="post-format-icon post-format-<?php echo $name; ?>"><?php echo $title; ?></label></li>
+											<li><input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo $name; ?>" value="<?php echo $name; ?>" <?php echo $checked;?>> <label for="post-format-<?php echo $name; ?>" class="post-format-icon post-format-<?php echo $name; ?>"><?php echo $title; ?></label></li>
 											<?php
 										}
 									?>
