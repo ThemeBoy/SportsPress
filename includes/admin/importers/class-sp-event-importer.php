@@ -65,6 +65,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$result_labels = sp_get_var_labels( 'sp_result' );
 			$performance_labels = sp_get_var_labels( 'sp_performance' );
 
+      // Initialize teams added and players added
+      $teams_added = false;
+      $players_added = false;
+
 			foreach ( $rows as $row ):
 
 				$row = array_filter( $row );
@@ -231,8 +235,20 @@ if ( class_exists( 'WP_Importer' ) ) {
 					// Add to event if exists
 					if ( isset( $id ) ):
 
+            // Delete existing teams
+            if ( ! $teams_added ):
+              $teams_added = true;
+              delete_post_meta( $id, 'sp_team' );
+            endif;
+
 						// Add team to event
 						add_post_meta( $id, 'sp_team', $team_id );
+
+            // Delete existing players
+            if ( ! $players_added ):
+              $players_added = true;
+              delete_post_meta( $id, 'sp_player' );
+            endif;
 
 						// Add empty player to event
 						add_post_meta( $id, 'sp_player', 0 );
