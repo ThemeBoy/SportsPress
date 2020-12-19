@@ -503,7 +503,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Trigger event format change
-	$(".post-type-sp_event #post-formats-select input.post-format").trigger("change");
+	$(".post-type-sp_event #post-formats-select").trigger("change");
 
 	// Calendar layout affects data
 	$(".post-type-sp_calendar #post-formats-select input.post-format").change(function() {
