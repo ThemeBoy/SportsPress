@@ -494,8 +494,8 @@ jQuery(document).ready(function($){
 	$(".post-type-sp_event #post-formats-select input.post-format").change(function() {
 		layout = $(".post-type-sp_event #post-formats-select input:checked").val();
 		if ( layout == "friendly" ) {
-			$(".sp_event-sp_league-field").show().find("select").prop("disabled", false);
-			$(".sp_event-sp_season-field").show().find("select").prop("disabled", false);
+			$(".sp_event-sp_league-field").hide().find("select").prop("disabled", true);
+			$(".sp_event-sp_season-field").hide().find("select").prop("disabled", true);
 		} else {
 			$(".sp_event-sp_league-field").show().find("select").prop("disabled", false);
 			$(".sp_event-sp_season-field").show().find("select").prop("disabled", false);
