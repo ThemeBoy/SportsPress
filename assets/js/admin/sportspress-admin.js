@@ -520,7 +520,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Trigger calendar layout change
-	$(".post-type-sp_calendar #post-formats-select input.post-format").trigger("change");
+	$(".post-type-sp_calendar #post-formats-select").trigger("change");
 
 	// Player list layout affects data
 	$(".post-type-sp_list #post-formats-select input.post-format").change(function() {
@@ -535,7 +535,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Trigger player list layout change
-	$(".post-type-sp_list #post-formats-select input.post-format").trigger("change");
+	$(".post-type-sp_list #post-formats-select").trigger("change");
 
 	// Configure primary result option (Ajax)
 	$(".sp-admin-config-table").on("click", ".sp-primary-result-option", function() {
