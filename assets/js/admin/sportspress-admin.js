@@ -491,7 +491,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Event format affects data
-	$(".post-type-sp_event #post-formats-select input.post-format").change(function() {
+	$(".post-type-sp_event #post-formats-select").change(function() {
 		layout = $(".post-type-sp_event #post-formats-select input:checked").val();
 		if ( layout == "friendly" ) {
 			$(".sp_event-sp_league-field").hide().find("select").prop("disabled", true);
@@ -506,7 +506,7 @@ jQuery(document).ready(function($){
 	$(".post-type-sp_event #post-formats-select").trigger("change");
 
 	// Calendar layout affects data
-	$(".post-type-sp_calendar #post-formats-select input.post-format").change(function() {
+	$(".post-type-sp_calendar #post-formats-select").change(function() {
 		layout = $(".post-type-sp_calendar #post-formats-select input:checked").val();
 		$(".sp-calendar-table tr").each(function() {
 			if ( layout == "list" ) {
@@ -523,7 +523,7 @@ jQuery(document).ready(function($){
 	$(".post-type-sp_calendar #post-formats-select").trigger("change");
 
 	// Player list layout affects data
-	$(".post-type-sp_list #post-formats-select input.post-format").change(function() {
+	$(".post-type-sp_list #post-formats-select").change(function() {
 		layout = $(".post-type-sp_list #post-formats-select input:checked").val();
 		$(".sp-player-list-table tr").each(function() {
 			if ( layout == "list" ) {
