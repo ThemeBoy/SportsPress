@@ -71,6 +71,9 @@ $data = $calendar->data();
 if ( ! $data ) return;
 
 $post_id = get_the_ID();
+
+$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
+
 ?>
 <div class="sp-template sp-template-scoreboard">
 	<div class="sp-scoreboard-wrapper">
@@ -91,6 +94,9 @@ $post_id = get_the_ID();
 							
 							$teams = sp_get_teams( $event->ID );
 							if ( ! $teams ) continue;
+							if ( $reverse_teams ) {
+								$teams = array_reverse( $teams );
+							}
 
 							$permalink = get_post_permalink( $event, false, true );
 							$status = sp_get_status( $event->ID );
@@ -121,6 +127,9 @@ $post_id = get_the_ID();
 										<?php
 										if ( 'results' === $status ) {
 											$results = apply_filters( 'sportspress_main_results', sp_get_main_results( $event->ID ), $event->ID );
+											if ( $reverse_teams ) {
+												$results = array_reverse( $results );
+											}
 
 											foreach ( $teams as $index => $team ) {
 												$name = sp_team_short_name( $team );
