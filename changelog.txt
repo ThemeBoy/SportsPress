@@ -1,5 +1,12 @@
 == SportsPress Changelog ==
 
+= 2.7.5 =
+* Tweak - Add ability to filter events by team and match day in one query.
+* Tweak - Improve performance by updating leaflet script and only loading when required.
+* Tweak - Add overtime notation compatibility for minutes played.
+* Fix - Issue with event edit page where the scripts were not working.
+* Fix - No records when format is default in event list shortcode.
+
 = 2.7.4 =
 * Tweak - Add option to display birthday, age, or both in birthdays widget.
 * Fix - Player list data showing zeroes in some cases.
