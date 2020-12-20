@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Feeds
  * @package 	SportsPress/Feeds
- * @version     2.6.15
+ * @version     2.7.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

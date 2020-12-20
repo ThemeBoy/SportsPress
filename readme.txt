@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 5.5
-Stable tag: 2.7.4
+Stable tag: 2.7.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,14 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.7.5 =
+* Tweak - Add ability to filter events by team and match day in one query.
+* Tweak - Apply reverse team order setting to scoreboard
+* Tweak - Improve performance by updating leaflet script and only loading when required.
+* Tweak - Add overtime notation compatibility for minutes played.
+* Fix - Issue with event edit page where the scripts were not working.
+* Fix - No records when format is default in event list shortcode.
 
 = 2.7.4 =
 * Tweak - Add option to display birthday, age, or both in birthdays widget.
