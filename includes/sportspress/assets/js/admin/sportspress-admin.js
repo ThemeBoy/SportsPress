@@ -491,11 +491,11 @@ jQuery(document).ready(function($){
 	});
 
 	// Event format affects data
-	$(".post-type-sp_event #post-formats-select input.post-format").change(function() {
+	$(".post-type-sp_event #post-formats-select").change(function() {
 		layout = $(".post-type-sp_event #post-formats-select input:checked").val();
 		if ( layout == "friendly" ) {
-			$(".sp_event-sp_league-field").show().find("select").prop("disabled", false);
-			$(".sp_event-sp_season-field").show().find("select").prop("disabled", false);
+			$(".sp_event-sp_league-field").hide().find("select").prop("disabled", true);
+			$(".sp_event-sp_season-field").hide().find("select").prop("disabled", true);
 		} else {
 			$(".sp_event-sp_league-field").show().find("select").prop("disabled", false);
 			$(".sp_event-sp_season-field").show().find("select").prop("disabled", false);
@@ -503,10 +503,10 @@ jQuery(document).ready(function($){
 	});
 
 	// Trigger event format change
-	$(".post-type-sp_event #post-formats-select input.post-format").trigger("change");
+	$(".post-type-sp_event #post-formats-select").trigger("change");
 
 	// Calendar layout affects data
-	$(".post-type-sp_calendar #post-formats-select input.post-format").change(function() {
+	$(".post-type-sp_calendar #post-formats-select").change(function() {
 		layout = $(".post-type-sp_calendar #post-formats-select input:checked").val();
 		$(".sp-calendar-table tr").each(function() {
 			if ( layout == "list" ) {
@@ -520,10 +520,10 @@ jQuery(document).ready(function($){
 	});
 
 	// Trigger calendar layout change
-	$(".post-type-sp_calendar #post-formats-select input.post-format").trigger("change");
+	$(".post-type-sp_calendar #post-formats-select").trigger("change");
 
 	// Player list layout affects data
-	$(".post-type-sp_list #post-formats-select input.post-format").change(function() {
+	$(".post-type-sp_list #post-formats-select").change(function() {
 		layout = $(".post-type-sp_list #post-formats-select input:checked").val();
 		$(".sp-player-list-table tr").each(function() {
 			if ( layout == "list" ) {
@@ -535,7 +535,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Trigger player list layout change
-	$(".post-type-sp_list #post-formats-select input.post-format").trigger("change");
+	$(".post-type-sp_list #post-formats-select").trigger("change");
 
 	// Configure primary result option (Ajax)
 	$(".sp-admin-config-table").on("click", ".sp-primary-result-option", function() {

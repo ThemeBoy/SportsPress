@@ -532,6 +532,9 @@ class SP_Player_List extends SP_Secondary_Post {
 										endforeach;
 									endif;
 
+									//Make sure that is a number (i.e. convert 90+2' to 90')
+									$played_minutes = (float)$played_minutes;
+									
 									$totals[ $player_id ]['eventminutes'] += max( 0, $played_minutes );
 
 									if ( sp_array_value( $player_performance, 'status' ) == 'lineup' ):

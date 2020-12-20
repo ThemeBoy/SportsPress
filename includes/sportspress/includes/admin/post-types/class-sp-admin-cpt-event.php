@@ -306,16 +306,21 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
     global $typenow, $wp_query;
 
       if ( $typenow == 'sp_event' ) {
+		$query->query_vars['meta_query'] = array( 'relation' => 'AND' );
 
-        if ( ! empty( $_GET['team'] ) ) {
-          $query->query_vars['meta_value']  = $_GET['team'];
-            $query->query_vars['meta_key']    = 'sp_team';
-        }
-
-        if ( ! empty( $_GET['match_day'] ) ) {
-          $query->query_vars['meta_value']  = $_GET['match_day'];
-            $query->query_vars['meta_key']    = 'sp_day';
-        }
+		if ( ! empty( $_GET['team'] ) ) {
+			$query->query_vars['meta_query'][] = array(
+													'key'  => 'sp_team',
+													'value' =>  $_GET['team'],
+													);
+		}
+		
+		if ( ! empty( $_GET['match_day'] ) ) {
+			$query->query_vars['meta_query'][] = array(
+													'key'  => 'sp_day',
+													'value' =>  $_GET['match_day'],
+													);
+		}
     }
   }
 
