@@ -97,6 +97,7 @@ class SportsPress_Bulk_Actions {
   public function event_actions( $bulk_actions ) {
     $bulk_actions['sp_postpone'] = __( 'Postpone events', 'sportspress' );
     $bulk_actions['sp_cancel'] = __( 'Cancel events', 'sportspress' );
+    $bulk_actions['sp_ok'] = __( 'Set events On Time', 'sportspress' );
     return $bulk_actions;
   }
 
@@ -104,21 +105,26 @@ class SportsPress_Bulk_Actions {
    * Handle form submission for event bulk actions.
    */
   public function event_actions_handler( $redirect_to, $doaction, $post_ids ) {
-    if ( ! in_array( $doaction, array( 'sp_postpone', 'sp_cancel' ) ) ) {
+    if ( ! in_array( $doaction, array( 'sp_postpone', 'sp_cancel', 'sp_ok' ) ) ) {
       return $redirect_to;
     }
 
-    if ( 'sp_postpone' == $doaction ) {
-      foreach ( $post_ids as $post_id ) {
-        update_post_meta( $post_id, 'sp_status', 'postponed' );
-      }
-      $redirect_to = add_query_arg( 'sp_bulk_postponed_events', count( $post_ids ), $redirect_to );
-    } elseif ( 'sp_cancel' == $doaction ) {
-      foreach ( $post_ids as $post_id ) {
-        update_post_meta( $post_id, 'sp_status', 'cancelled' );
-      }
-      $redirect_to = add_query_arg( 'sp_bulk_cancelled_events', count( $post_ids ), $redirect_to );
-    }
+	if ( 'sp_postpone' == $doaction ) {
+		foreach ( $post_ids as $post_id ) {
+			update_post_meta( $post_id, 'sp_status', 'postponed' );
+		}
+		$redirect_to = add_query_arg( 'sp_bulk_postponed_events', count( $post_ids ), $redirect_to );
+	} elseif ( 'sp_cancel' == $doaction ) {
+		foreach ( $post_ids as $post_id ) {
+			update_post_meta( $post_id, 'sp_status', 'cancelled' );
+		}
+		$redirect_to = add_query_arg( 'sp_bulk_cancelled_events', count( $post_ids ), $redirect_to );
+	} elseif ( 'sp_ok' == $doaction ) {
+		foreach ( $post_ids as $post_id ) {
+			update_post_meta( $post_id, 'sp_status', 'ok' );
+		}
+		$redirect_to = add_query_arg( 'sp_bulk_ok_events', count( $post_ids ), $redirect_to );
+	}
 
     return $redirect_to;
   }
@@ -151,6 +157,15 @@ class SportsPress_Bulk_Actions {
       printf( '<div id="message" class="updated notice notice-success is-dismissible"><p>' .
         _n( 'Canceled %s event.',
         'Canceled %s events.',
+        $count,
+        'sportspress'
+      ) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', $count );
+    } elseif ( ! empty( $_REQUEST['sp_bulk_ok_events'] ) ) {
+      $count = intval( $_REQUEST['sp_bulk_ok_events'] );
+
+      printf( '<div id="message" class="updated notice notice-success is-dismissible"><p>' .
+        _n( 'Set %s event as On Time.',
+        'Set %s event as On Time.',
         $count,
         'sportspress'
       ) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', $count );
