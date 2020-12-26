@@ -306,7 +306,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
     global $typenow, $wp_query;
 
       if ( $typenow == 'sp_event' ) {
-		$query->query_vars['meta_query'] = array( 'relation' => 'AND' );
+		$query->query_vars['meta_query']['relation'] =  'AND';
 
 		if ( ! empty( $_GET['team'] ) ) {
 			$query->query_vars['meta_query'][] = array(
