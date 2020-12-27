@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add bulk actions to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.7
+Version: 2.7.6
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Bulk_Actions' ) ) :
  * Main SportsPress Bulk Actions Class
  *
  * @class SportsPress_Bulk_Actions
- * @version 2.7
+ * @version 2.7.6
  */
 class SportsPress_Bulk_Actions {
 
@@ -45,7 +45,7 @@ class SportsPress_Bulk_Actions {
   */
   private function define_constants() {
     if ( !defined( 'SP_BULK_ACTIONS_VERSION' ) )
-      define( 'SP_BULK_ACTIONS_VERSION', '2.7' );
+      define( 'SP_BULK_ACTIONS_VERSION', '2.7.6' );
 
     if ( !defined( 'SP_BULK_ACTIONS_URL' ) )
       define( 'SP_BULK_ACTIONS_URL', plugin_dir_url( __FILE__ ) );
@@ -97,6 +97,7 @@ class SportsPress_Bulk_Actions {
   public function event_actions( $bulk_actions ) {
     $bulk_actions['sp_postpone'] = __( 'Postpone events', 'sportspress' );
     $bulk_actions['sp_cancel'] = __( 'Cancel events', 'sportspress' );
+    $bulk_actions['sp_ok'] = __( 'Set events as on time', 'sportspress' );
     return $bulk_actions;
   }
 
@@ -104,21 +105,26 @@ class SportsPress_Bulk_Actions {
    * Handle form submission for event bulk actions.
    */
   public function event_actions_handler( $redirect_to, $doaction, $post_ids ) {
-    if ( ! in_array( $doaction, array( 'sp_postpone', 'sp_cancel' ) ) ) {
+    if ( ! in_array( $doaction, array( 'sp_postpone', 'sp_cancel', 'sp_ok' ) ) ) {
       return $redirect_to;
     }
 
-    if ( 'sp_postpone' == $doaction ) {
-      foreach ( $post_ids as $post_id ) {
-        update_post_meta( $post_id, 'sp_status', 'postponed' );
-      }
-      $redirect_to = add_query_arg( 'sp_bulk_postponed_events', count( $post_ids ), $redirect_to );
-    } elseif ( 'sp_cancel' == $doaction ) {
-      foreach ( $post_ids as $post_id ) {
-        update_post_meta( $post_id, 'sp_status', 'cancelled' );
-      }
-      $redirect_to = add_query_arg( 'sp_bulk_cancelled_events', count( $post_ids ), $redirect_to );
-    }
+	if ( 'sp_postpone' == $doaction ) {
+		foreach ( $post_ids as $post_id ) {
+			update_post_meta( $post_id, 'sp_status', 'postponed' );
+		}
+		$redirect_to = add_query_arg( 'sp_bulk_postponed_events', count( $post_ids ), $redirect_to );
+	} elseif ( 'sp_cancel' == $doaction ) {
+		foreach ( $post_ids as $post_id ) {
+			update_post_meta( $post_id, 'sp_status', 'cancelled' );
+		}
+		$redirect_to = add_query_arg( 'sp_bulk_cancelled_events', count( $post_ids ), $redirect_to );
+	} elseif ( 'sp_ok' == $doaction ) {
+		foreach ( $post_ids as $post_id ) {
+			update_post_meta( $post_id, 'sp_status', 'ok' );
+		}
+		$redirect_to = add_query_arg( 'sp_bulk_ok_events', count( $post_ids ), $redirect_to );
+	}
 
     return $redirect_to;
   }
@@ -151,6 +157,15 @@ class SportsPress_Bulk_Actions {
       printf( '<div id="message" class="updated notice notice-success is-dismissible"><p>' .
         _n( 'Canceled %s event.',
         'Canceled %s events.',
+        $count,
+        'sportspress'
+      ) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', $count );
+    } elseif ( ! empty( $_REQUEST['sp_bulk_ok_events'] ) ) {
+      $count = intval( $_REQUEST['sp_bulk_ok_events'] );
+
+      printf( '<div id="message" class="updated notice notice-success is-dismissible"><p>' .
+        _n( 'Set %s event as on time.',
+        'Set %s event as on time.',
         $count,
         'sportspress'
       ) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', $count );

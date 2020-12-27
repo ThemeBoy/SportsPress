@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version		2.7.5
+ * @version		2.7.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -306,7 +306,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
     global $typenow, $wp_query;
 
       if ( $typenow == 'sp_event' ) {
-		$query->query_vars['meta_query'] = array( 'relation' => 'AND' );
+		$query->query_vars['meta_query']['relation'] =  'AND';
 
 		if ( ! empty( $_GET['team'] ) ) {
 			$query->query_vars['meta_query'][] = array(
