@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add bulk actions to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.7
+Version: 2.7.6
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Bulk_Actions' ) ) :
  * Main SportsPress Bulk Actions Class
  *
  * @class SportsPress_Bulk_Actions
- * @version 2.7
+ * @version 2.7.6
  */
 class SportsPress_Bulk_Actions {
 
@@ -45,7 +45,7 @@ class SportsPress_Bulk_Actions {
   */
   private function define_constants() {
     if ( !defined( 'SP_BULK_ACTIONS_VERSION' ) )
-      define( 'SP_BULK_ACTIONS_VERSION', '2.7' );
+      define( 'SP_BULK_ACTIONS_VERSION', '2.7.6' );
 
     if ( !defined( 'SP_BULK_ACTIONS_URL' ) )
       define( 'SP_BULK_ACTIONS_URL', plugin_dir_url( __FILE__ ) );
@@ -97,7 +97,7 @@ class SportsPress_Bulk_Actions {
   public function event_actions( $bulk_actions ) {
     $bulk_actions['sp_postpone'] = __( 'Postpone events', 'sportspress' );
     $bulk_actions['sp_cancel'] = __( 'Cancel events', 'sportspress' );
-    $bulk_actions['sp_ok'] = __( 'Set events On Time', 'sportspress' );
+    $bulk_actions['sp_ok'] = __( 'Set events as on time', 'sportspress' );
     return $bulk_actions;
   }
 
@@ -164,8 +164,8 @@ class SportsPress_Bulk_Actions {
       $count = intval( $_REQUEST['sp_bulk_ok_events'] );
 
       printf( '<div id="message" class="updated notice notice-success is-dismissible"><p>' .
-        _n( 'Set %s event as On Time.',
-        'Set %s event as On Time.',
+        _n( 'Set %s event as on time.',
+        'Set %s event as on time.',
         $count,
         'sportspress'
       ) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', $count );

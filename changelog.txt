@@ -1,5 +1,9 @@
 == SportsPress Changelog ==
 
+= 2.7.6 =
+* Feature - Add ability to bulk set events as on time.
+* Fix - Players in events not being filtered by team.
+
 = 2.7.5 =
 * Tweak - Add ability to filter events by team and match day in one query.
 * Tweak - Improve performance by updating leaflet script and only loading when required.
