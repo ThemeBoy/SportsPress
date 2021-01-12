@@ -35,6 +35,7 @@ class SP_Meta_Box_Calendar_Details {
 		$table_id = get_post_meta( $post->ID, 'sp_table', true );
 		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
+		$event_status = get_post_meta( $post->ID, 'sp_event_status', true );
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -60,6 +61,24 @@ class SP_Meta_Box_Calendar_Details {
 					<?php endforeach; ?>
 				</select>
 			</p>
+			<p><strong><?php _e( 'Event Status', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$statuses = apply_filters( 'sportspress_event_statuses', array(
+						'ok' => __( 'On time', 'sportspress' ),
+						'tbd' => __( 'TBD', 'sportspress' ),
+						'postponed' => __( 'Postponed', 'sportspress' ),
+						'cancelled' => __( 'Canceled', 'sportspress' ),
+						) 
+					);
+				?>
+				<select name="sp_event_status" class="postform">
+					<option value="all">All</option>
+				<?php foreach ( $statuses as $value => $label ) { ?>
+					<option value="<?php echo $value; ?>" <?php selected( $event_status, $value ); ?>><?php echo $label; ?></option>
+				<?php } ?>
+				</select>
+			</p>			
 			<div class="sp-date-selector">
 				<p><strong><?php _e( 'Date', 'sportspress' ); ?></strong></p>
 				<p>
@@ -169,6 +188,7 @@ class SP_Meta_Box_Calendar_Details {
 		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0 ) ) );
 		update_post_meta( $post_id, 'sp_status', sp_array_value( $_POST, 'sp_status', 0 ) );
 		update_post_meta( $post_id, 'sp_event_format', sp_array_value( $_POST, 'sp_event_format', 0 ) );
+		update_post_meta( $post_id, 'sp_event_status', sp_array_value( $_POST, 'sp_event_status', 0 ) );
 		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0 ) );
 		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null ) );
 		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null ) );

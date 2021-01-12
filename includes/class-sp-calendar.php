@@ -57,6 +57,9 @@ class SP_Calendar extends SP_Secondary_Post {
 	
 	/** @var integer The event format slug. */
 	public $event_format;
+	
+	/** @var string The event status slug. */
+	public $event_status;
 
 	/**
 	 * __construct function.
@@ -114,6 +117,9 @@ class SP_Calendar extends SP_Secondary_Post {
 		
 		if ( ! $this->event_format )
 			$this->event_format = get_post_meta( $this->ID, 'sp_event_format', true );
+			
+		if ( ! $this->event_status )
+			$this->event_status = get_post_meta( $this->ID, 'sp_event_status', true );
 
 		if ( ! $this->number )
 			$this->number = -1;
@@ -313,6 +319,13 @@ class SP_Calendar extends SP_Secondary_Post {
 			$args['meta_query'][] = array(
 				'key' => 'sp_format',
 				'value' => $this->event_format,
+			);
+		endif;
+		
+		if ( $this->event_status && 'all' != $this->event_status ):
+			$args['meta_query'][] = array(
+				'key' => 'sp_status',
+				'value' => $this->event_status,
 			);
 		endif;
 		
