@@ -665,6 +665,38 @@ if ( !function_exists( 'sp_dropdown_statuses' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_dropdown_event_statuses' ) ) {
+	function sp_dropdown_event_statuses( $args = array() ) {
+		$defaults = array(
+			'show_option_default' => false,
+			'name' => 'sp_event_status',
+			'id' => null,
+			'selected' => null,
+		    'class' => null,
+		);
+		$args = array_merge( $defaults, $args ); 
+
+		printf( '<select name="%s" class="postform %s">', $args['name'], $args['class'] );
+
+		if ( $args['show_option_default'] ):
+			printf( '<option value="default">%s</option>', $args['show_option_default'] );
+		endif;
+
+		$statuses = apply_filters( 'sportspress_event_statuses', array(
+			'ok' => __( 'On time', 'sportspress' ),
+			'tbd' => __( 'TBD', 'sportspress' ),
+			'postponed' => __( 'Postponed', 'sportspress' ),
+			'cancelled' => __( 'Canceled', 'sportspress' ),
+		));
+
+		foreach ( $statuses as $value => $label ):
+			printf( '<option value="%s" %s>%s</option>', $value, selected( $value, $args['selected'], false ), $label );
+		endforeach;
+		print( '</select>' );
+		return true;
+	}
+}
+
 if ( !function_exists( 'sp_dropdown_dates' ) ) {
 	function sp_dropdown_dates( $args = array() ) {
 		$defaults = array(
