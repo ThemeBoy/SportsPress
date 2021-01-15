@@ -76,7 +76,6 @@ class SP_Widget_Event_List extends WP_Widget {
 
 	function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'caption' => '', 'status' => 'default', 'event_status' => 'default', 'date' => 'default', 'date_from' => date_i18n( 'Y-m-d' ), 'date_to' => date_i18n( 'Y-m-d' ), 'date_past' => 7, 'date_future' => 7, 'date_relative' => false, 'day' => '', 'number' => 5, 'columns' => null, 'order' => 'default', 'show_all_events_link' => true ) );
-		var_dump($instance);
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
 		$caption = strip_tags($instance['caption']);
