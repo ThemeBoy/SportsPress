@@ -18,6 +18,7 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 		$caption = empty($instance['caption']) ? null : $instance['caption'];
 		$status = empty($instance['status']) ? 'default' : $instance['status'];
+		$event_status = empty($instance['event_status']) ? 'default' : $instance['event_status'];
 		$date = empty($instance['date']) ? 'default' : $instance['date'];
 		$date_from = empty($instance['date_from']) ? 'default' : $instance['date_from'];
 		$date_to = empty($instance['date_to']) ? 'default' : $instance['date_to'];
@@ -38,7 +39,7 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'event-blocks' );
 
-		sp_get_template( 'event-blocks.php', array( 'id' => $id, 'title' => $caption, 'status' => $status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'date_past' => $date_past, 'date_future' => $date_future, 'date_relative' => $date_relative, 'day' => $day, 'number' => $number, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
+		sp_get_template( 'event-blocks.php', array( 'id' => $id, 'title' => $caption, 'status' => $status, 'event_status' => $event_status, 'date' => $date, 'date_from' => $date_from, 'date_to' => $date_to, 'date_past' => $date_past, 'date_future' => $date_future, 'date_relative' => $date_relative, 'day' => $day, 'number' => $number, 'order' => $order, 'show_all_events_link' => $show_all_events_link ) );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'event-blocks' );
@@ -53,6 +54,7 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		$instance['id'] = intval($new_instance['id']);
 		$instance['caption'] = strip_tags($new_instance['caption']);
 		$instance['status'] = $new_instance['status'];
+		$instance['event_status'] = $new_instance['event_status'];
 		$instance['date'] = $new_instance['date'];
 		$instance['date_from'] = $new_instance['date_from'];
 		$instance['date_to'] = $new_instance['date_to'];
@@ -71,11 +73,12 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'caption' => '', 'status' => 'default', 'date' => 'default', 'date_from' => date_i18n( 'Y-m-d' ), 'date_to' => date_i18n( 'Y-m-d' ), 'date_past' => 7, 'date_future' => 7, 'date_relative' => false, 'day' => '', 'number' => 5, 'order' => 'default', 'show_all_events_link' => true ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'id' => null, 'caption' => '', 'status' => 'default', 'event_status' => 'default', 'date' => 'default', 'date_from' => date_i18n( 'Y-m-d' ), 'date_to' => date_i18n( 'Y-m-d' ), 'date_past' => 7, 'date_future' => 7, 'date_relative' => false, 'day' => '', 'number' => 5, 'order' => 'default', 'show_all_events_link' => true ) );
 		$title = strip_tags($instance['title']);
 		$id = intval($instance['id']);
 		$caption = strip_tags($instance['caption']);
 		$status = $instance['status'];
+		$event_status = $instance['event_status'];
 		$date = $instance['date'];
 		$date_from = $instance['date_from'];
 		$date_to = $instance['date_to'];
@@ -123,6 +126,19 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 				'class' => 'sp-event-status-select widefat',
 			);
 			sp_dropdown_statuses( $args );
+			?>
+		</p>
+		
+		<p><label for="<?php echo $this->get_field_id('event_status'); ?>"><?php _e( 'Event Status:', 'sportspress' ); ?></label>
+			<?php
+			$args = array(
+				'show_option_default' => __( 'All', 'sportspress' ),
+				'name' => $this->get_field_name('event_status'),
+				'id' => $this->get_field_id('event_status'),
+				'selected' => $event_status,
+				'class' => 'sp-event-status-select widefat',
+			);
+			sp_dropdown_event_statuses( $args );
 			?>
 		</p>
 
