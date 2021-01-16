@@ -132,7 +132,8 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('event_status'); ?>"><?php _e( 'Event Status:', 'sportspress' ); ?></label>
 			<?php
 			$args = array(
-				'show_option_default' => __( 'All', 'sportspress' ),
+				'show_option_default' => __( 'Default', 'sportspress' ),
+				'show_option_all' => __( 'All', 'sportspress' ),
 				'name' => $this->get_field_name('event_status'),
 				'id' => $this->get_field_id('event_status'),
 				'selected' => $event_status,

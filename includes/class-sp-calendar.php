@@ -322,7 +322,7 @@ class SP_Calendar extends SP_Secondary_Post {
 			);
 		endif;
 		
-		if ( $this->event_status && 'all' != $this->event_status ):
+		if ( $this->event_status && !in_array( $this->event_status, array('all', 'default') ) ):
 			$args['meta_query'][] = array(
 				'key' => 'sp_status',
 				'value' => $this->event_status,
