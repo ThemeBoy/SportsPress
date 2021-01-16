@@ -669,6 +669,7 @@ if ( !function_exists( 'sp_dropdown_event_statuses' ) ) {
 	function sp_dropdown_event_statuses( $args = array() ) {
 		$defaults = array(
 			'show_option_default' => false,
+			'show_option_all' => false,
 			'name' => 'sp_event_status',
 			'id' => null,
 			'selected' => null,
@@ -680,6 +681,10 @@ if ( !function_exists( 'sp_dropdown_event_statuses' ) ) {
 
 		if ( $args['show_option_default'] ):
 			printf( '<option value="default">%s</option>', $args['show_option_default'] );
+		endif;
+		
+		if ( $args['show_option_all'] ):
+			printf( '<option value="all">%s</option>', $args['show_option_all'] );
 		endif;
 
 		$statuses = apply_filters( 'sportspress_event_statuses', array(
