@@ -559,6 +559,19 @@ class SP_AJAX {
 					</select>
 				</label>
 			</p>
+			<p>
+				<label>
+					<?php _e( 'Event Status:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'name' => 'event_status',
+						'show_option_default' => __( 'Default', 'sportspress' ),
+						'show_option_all' => __( 'All', 'sportspress' ),
+					);
+					sp_dropdown_event_statuses( $args );
+					?>
+				</label>
+			</p>
 			<div class="sp-date-selector">
 				<p><?php _e( 'Date:', 'sportspress' ); ?> 
 					<?php
@@ -764,6 +777,19 @@ class SP_AJAX {
 					<option value="<?php echo $key; ?>"><?php echo $format; ?></option>
 					<?php endforeach; ?>
 					</select>
+				</label>
+			</p>
+			<p>
+				<label>
+					<?php _e( 'Event Status:', 'sportspress' ); ?>
+					<?php
+					$args = array(
+						'name' => 'event_status',
+						'show_option_default' => __( 'Default', 'sportspress' ),
+						'show_option_all' => __( 'All', 'sportspress' ),
+					);
+					sp_dropdown_event_statuses( $args );
+					?>
 				</label>
 			</p>
 			<div class="sp-date-selector">
@@ -1324,6 +1350,7 @@ class SP_AJAX {
                     args.season = $div.find('[name=season]').val();
                     args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
+                    args.event_status = $div.find('[name=event_status]').val();
                     args.format = $div.find('[name=format]').val();
                     args.date = $div.find('[name=date]').val();
                     args.date_from = $div.find('[name=date_from]').val();
@@ -1344,6 +1371,7 @@ class SP_AJAX {
                     args.season = $div.find('[name=season]').val();
                     args.venue = $div.find('[name=venue]').val();
                     args.status = $div.find('[name=status]').val();
+					args.event_status = $div.find('[name=event_status]').val();
 					args.format = $div.find('[name=format]').val();
                     args.date = $div.find('[name=date]').val();
                     args.date_from = $div.find('[name=date_from]').val();
