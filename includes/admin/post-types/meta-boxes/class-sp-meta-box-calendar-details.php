@@ -64,20 +64,15 @@ class SP_Meta_Box_Calendar_Details {
 			<p><strong><?php _e( 'Event Status', 'sportspress' ); ?></strong></p>
 			<p>
 				<?php
-				$statuses = apply_filters( 'sportspress_event_statuses', array(
-						'ok' => __( 'On time', 'sportspress' ),
-						'tbd' => __( 'TBD', 'sportspress' ),
-						'postponed' => __( 'Postponed', 'sportspress' ),
-						'cancelled' => __( 'Canceled', 'sportspress' ),
-						) 
-					);
+				$args = array(
+					'show_option_all' => __( 'All', 'sportspress' ),
+					'name' => 'sp_event_status',
+					'id' => 'sp_event_status',
+					'selected' => $event_status,
+				);
+				sp_dropdown_event_statuses( $args );
 				?>
-				<select name="sp_event_status" class="postform">
-					<option value="all">All</option>
-				<?php foreach ( $statuses as $value => $label ) { ?>
-					<option value="<?php echo $value; ?>" <?php selected( $event_status, $value ); ?>><?php echo $label; ?></option>
-				<?php } ?>
-				</select>
+			</p>
 			</p>			
 			<div class="sp-date-selector">
 				<p><strong><?php _e( 'Date', 'sportspress' ); ?></strong></p>
