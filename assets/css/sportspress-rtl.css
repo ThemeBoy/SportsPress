@@ -71,6 +71,12 @@
 .sp-event-list .data-away {
 	text-align: right;
 }
+.sp-event-list .data-home.reverse-teams {
+	text-align: right;
+}
+.sp-event-list .data-away.reverse-teams {
+	text-align: left;
+}
 .sp-event-list .data-home img {
 	float: left;
 	margin-left: 0;

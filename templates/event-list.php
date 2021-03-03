@@ -120,7 +120,10 @@ $identifier = uniqid( 'eventlist_' );
 					switch ( $title_format ) {
 						case 'homeaway':
 							if ( sp_column_active( $usecolumns, 'event' ) ) {
-								echo '<th class="data-home">' . __( 'Home', 'sportspress' ) . '</th>';
+								printf( '<th class="data-%1$s">%2$s</th>'
+									, $reverse_teams ? 'away' : 'home'
+									, $reverse_teams ? __( 'Away', 'sportspress' ) : __( 'Home', 'sportspress' )
+								);
 							}
 
 							if ( 'combined' == $time_format && sp_column_active( $usecolumns, 'time' ) ) {
@@ -131,7 +134,10 @@ $identifier = uniqid( 'eventlist_' );
 							}
 
 							if ( sp_column_active( $usecolumns, 'event' ) ) {
-								echo '<th class="data-away">' . __( 'Away', 'sportspress' ) . '</th>';
+								printf( '<th class="data-%1$s">%2$s</th>'
+									, $reverse_teams ? 'home' : 'away'
+									, $reverse_teams ? __( 'Home', 'sportspress' ) : __( 'Away', 'sportspress' )
+								);
 							}
 
 							if ( in_array( $time_format, array( 'separate', 'time' ) ) && sp_column_active( $usecolumns, 'time' ) ) {
@@ -270,8 +276,12 @@ $identifier = uniqid( 'eventlist_' );
 						switch ( $title_format ) {
 							case 'homeaway':
 								if ( sp_column_active( $usecolumns, 'event' ) ) {
-									$team = array_shift( $teams_array );
-									echo '<td class="data-home' . $team_class . '" itemprop="competitor" itemscope itemtype="http://schema.org/SportsTeam" data-label="'.__( 'Home', 'sportspress' ).'">' . $team . '</td>';
+									$team = $reverse_teams ? array_pop( $teams_array ) : array_shift( $teams_array );
+									printf( '<td class="data-home %1$s" itemprop="competitor" itemscope itemtype="http://schema.org/SportsTeam" data-label="%2$s">%3$s</td>'
+										, $team_class
+										, $reverse_teams ? __( 'Away', 'sportspress' ) : __( 'Home', 'sportspress' )
+										, $team
+									);
 								}
 
 								if ( 'combined' == $time_format && sp_column_active( $usecolumns, 'time' ) ) {
@@ -297,8 +307,12 @@ $identifier = uniqid( 'eventlist_' );
 								}
 
 								if ( sp_column_active( $usecolumns, 'event' ) ) {
-									$team = array_shift( $teams_array );
-									echo '<td class="data-away' . $team_class . '" itemprop="competitor" itemscope itemtype="http://schema.org/SportsTeam" data-label="'.__( 'Away', 'sportspress' ).'">' . $team . '</td>';
+									$team = $reverse_teams ? array_pop( $teams_array ) : array_shift( $teams_array );
+									printf( '<td class="data-home %1$s" itemprop="competitor" itemscope itemtype="http://schema.org/SportsTeam" data-label="%2$s">%3$s</td>'
+										, $team_class
+										, $reverse_teams ? __( 'Home', 'sportspress' ) : __( 'Away', 'sportspress' )
+										, $team
+									);
 								}
 
 								if ( in_array( $time_format, array( 'separate', 'time' ) ) && sp_column_active( $usecolumns, 'time' ) ) {

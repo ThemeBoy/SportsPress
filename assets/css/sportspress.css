@@ -377,6 +377,12 @@
 .sp-event-list .data-away {
 	text-align: left;
 }
+.sp-event-list .data-home.reverse-teams {
+	text-align: left;
+}
+.sp-event-list .data-away.reverse-teams {
+	text-align: right;
+}
 .sp-event-list td.has-logo {
 	line-height: 2em;
 }
