@@ -64,6 +64,14 @@ foreach ( $events as $event):
 	// Get full time minutes
 	$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
 	if ( '' === $minutes ) $minutes = get_option( 'sportspress_event_minutes', 90 );
+	
+	// Get event status 
+	$status = get_post_meta( $event->ID, 'sp_status', true );
+	if ( $status ) {
+		$status = mb_strtoupper($status, 'UTF-8');
+	}else{
+		$status = 'CONFIRMED';
+	}
 
 	// Add full time minutes to end time
 	$end->add( new DateInterval( 'PT' . $minutes . 'M' ) );
@@ -145,7 +153,7 @@ foreach ( $events as $event):
 	"BEGIN:VEVENT\r\n" .
 	"SUMMARY:" . preg_replace( '/([\,;])/','\\\$1', $summary ) . "\r\n" .
 	"UID:$event->ID\r\n" .
-	"STATUS:CONFIRMED\r\n" .
+	"STATUS:$status\r\n" .
 	"DTSTAMP:19700101T000000\r\n".
 	"DTSTART:" . mysql2date( $date_format, $event->post_date ) . "\r\n" .
 	"DTEND:" . $end->format( $date_format ) . "\r\n" .
