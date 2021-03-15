@@ -1715,3 +1715,23 @@ function sp_has_shortcodes( $content, $tags ) {
 	}
 	return false;
 }
+
+if ( !function_exists( 'sp_get_metric_type' ) ) {
+	function sp_get_metric_type( $post_id ) {
+		$metric_type = get_post_meta( $post_id, 'sp_metric_type', true );
+		if ( '' === $metric_type ) $metric_type = 'player';
+		switch ( $metric_type ) {
+		  case 'player':
+			return _e( 'Player', 'sportspress' );
+			break;
+		  case 'staff':
+			return _e( 'Staff', 'sportspress' );
+			break;
+		  case 'both':
+			return _e( 'Player & Staff', 'sportspress' );
+			break;
+		  default:
+			return 'Player';
+		}
+	}
+}

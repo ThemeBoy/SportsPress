@@ -1,19 +1,19 @@
 <?php
 /**
- * Player Metrics
+ * Staff Metrics
  *
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version     1.9.7
+ * @version     2.7.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * SP_Meta_Box_Player_Metrics
+ * SP_Meta_Box_Staff_Metrics
  */
-class SP_Meta_Box_Player_Metrics {
+class SP_Meta_Box_Staff_Metrics {
 
 	/**
 	 * Output the metabox
@@ -33,11 +33,12 @@ class SP_Meta_Box_Player_Metrics {
 				array(
 					'key' => 'sp_metric_type',
 					'value' => 'staff',
-					'compare' => '!='
+					'compare' => '='
 				),
 				array(
 					'key' => 'sp_metric_type',
-					'compare' => 'NOT EXISTS'
+					'value' => 'both',
+					'compare' => '='
 				),
 			),
 		);

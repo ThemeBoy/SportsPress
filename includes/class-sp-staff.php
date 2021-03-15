@@ -41,6 +41,26 @@ class SP_Staff extends SP_Custom_Post {
 	public function nationalities() {
 		return get_post_meta( $this->ID, 'sp_nationality', false );
 	}
+	
+	/**
+	 * Returns formatted staff metrics
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function metrics( $neg = null ) {
+		$metrics = (array)get_post_meta( $this->ID, 'sp_metrics', true );
+		$metric_labels = (array)sp_get_var_labels( 'sp_metric', $neg, false );
+		$data = array();
+		
+		foreach ( $metric_labels as $key => $value ):
+			$metric = sp_array_value( $metrics, $key, null );
+			if ( $metric == null )
+				continue;
+			$data[ $value ] = sp_array_value( $metrics, $key, '&nbsp;' );
+		endforeach;
+		return $data;
+	}
 
 	/**
 	 * Returns role

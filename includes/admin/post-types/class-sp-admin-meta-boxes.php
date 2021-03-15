@@ -218,6 +218,13 @@ class SP_Admin_Meta_Boxes {
 					'context' => 'side',
 					'priority' => 'default',
 				),
+				'metrics' => array(
+					'title' => __( 'Metrics', 'sportspress' ),
+					'save' => 'SP_Meta_Box_Staff_Metrics::save',
+					'output' => 'SP_Meta_Box_Staff_Metrics::output',
+					'context' => 'side',
+					'priority' => 'default',
+				),
 				'details' => array(
 					'title' => __( 'Details', 'sportspress' ),
 					'save' => 'SP_Meta_Box_Staff_Details::save',
