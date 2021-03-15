@@ -425,6 +425,26 @@ class SP_Calendar extends SP_Secondary_Post {
 				$args['post_status'] = $this->status == 'any' ? array('publish', 'future') : explode ( ',', $this->status );
 				$events = get_posts( $args );
 			}
+			
+			//Filter out events that the player(s) didnt play
+			if ( $this->player )
+				$players[] = $this->player;
+			
+			if ( ! empty( $players ) ) :
+				$active_events = array();
+				foreach( $players as $player_id ) {
+					foreach( $events as $event ) {
+						$team_performance = (array)get_post_meta( $event->ID, 'sp_players', true );
+						foreach ( $team_performance as $team_id => $team_players ) {
+							$player_performance = sp_array_value( $team_players, $player_id, array() );
+							if ( ! empty( $player_performance ) && ( sp_array_value( $player_performance, 'status' ) != 'sub' || sp_array_value( $player_performance, 'sub', 0 ) ) ) {
+								$active_events[ $event->ID ] = $event; //avoid duplicate events
+							}
+						}
+					}
+				}
+				$events = $active_events;
+			endif;
 
 		else:
 			$events = null;
