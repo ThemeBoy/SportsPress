@@ -1,5 +1,8 @@
 == SportsPress Changelog ==
 
+= 2.7.7 =
+* Fix - Events not appearing due to filter malfunction.
+
 = 2.7.6 =
 * Feature - Add ability to bulk set events as on time.
 * Fix - Players in events not being filtered by team.
