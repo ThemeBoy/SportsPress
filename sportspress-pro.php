@@ -3,11 +3,11 @@
  * Plugin Name: SportsPress Pro
  * Plugin URI: http://tboy.co/pro
  * Description: Advanced club & league management from ThemeBoy.
- * Version: 2.7.6
+ * Version: 2.7.7
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
- * Tested up to: 5.6
+ * Tested up to: 5.7
  *
  * Text Domain: sportspress
  * Domain Path: /languages/
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress_Pro' ) ) :
  * Main SportsPress Pro Class
  *
  * @class SportsPress_Pro
- * @version	2.7.6
+ * @version	2.7.7
  */
 final class SportsPress_Pro {
 
 	/**
 	 * @var string
 	 */
-	public $version = '2.7.6';
+	public $version = '2.7.7';
 
 	/**
 	 * SportsPress Pro Constructor.
