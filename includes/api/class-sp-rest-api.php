@@ -223,7 +223,7 @@ class SP_REST_API {
 				'update_callback' => 'SP_REST_API::update_post_meta_arrays',
 				'schema'          => array(
 					'description'     => __( 'Results', 'sportspress' ),
-					'type'            => 'array',
+					'type'            => 'object',
 					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
