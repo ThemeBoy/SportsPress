@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $defaults = array(
 	'team' => null,
 	'calendar' => null,
+	'order' => null,
+	'orderby' => null,
 	'league' => null,
 	'season' => null,
 	'id' => null,
@@ -40,7 +42,14 @@ elseif ( $calendar ):
 	if ( $team )
 		$calendar->team = $team;
 	$calendar->status = 'future';
-	$calendar->order = 'ASC';
+	if ( $order ) {
+		$calendar->order = $order;
+	}else{
+		$calendar->order = 'ASC';
+	}
+	if ( $orderby ) {
+		$calendar->orderby = $orderby;
+	}
 	$data = $calendar->data();
 
 	/**
