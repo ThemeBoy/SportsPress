@@ -1726,7 +1726,7 @@ function sp_flags( $nationality ) {
 	global $wpdb;
 	$flag_post_id = intval( $wpdb->get_var( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_value LIKE '%/$nationality'" ) );
 	if ( $flag_post_id ) {
-		$flag_src = wp_get_attachment_image_url( $flag_post_id, 'thumbnail', false );
+		$flag_src = wp_get_attachment_image_url( $flag_post_id, array( 23,15), false );
 		$flag = '<img src="' . $flag_src . '" alt="' . $nationality . '">';
 	}else{
 		$flag = '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . $nationality . '.png" alt="' . $nationality . '">';
