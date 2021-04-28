@@ -51,7 +51,7 @@ if ( $show_nationality ):
 		$values = array();
 		foreach ( $nationalities as $nationality ):
 			$country_name = sp_array_value( $countries, $nationality, null );
-			$values[] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
+			$values[] = $country_name ? ( $show_nationality_flags ? sp_flags( $nationality ) . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
 		endforeach;
 		$common[ __( 'Nationality', 'sportspress' ) ] = implode( '<br>', $values );
 	endif;
