@@ -1715,3 +1715,22 @@ function sp_has_shortcodes( $content, $tags ) {
 	}
 	return false;
 }
+
+/**
+ * Check if a custom flag was uploaded from the user
+ * @return bool
+ */
+function sp_flags( $nationality ) {
+	$nationality = strtolower( $nationality );
+	$flag = '';
+	global $wpdb;
+	$flag_post_id = intval( $wpdb->get_var( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_value LIKE '%/$nationality'" ) );
+	if ( $flag_post_id ) {
+		$flag_src = wp_get_attachment_image_url( $flag_post_id, 'thumbnail', false );
+		$flag = '<img src="' . $flag_src . '" alt="' . $nationality . '">';
+	}else{
+		$flag = '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . $nationality . '.png" alt="' . $nationality . '">';
+	}
+	
+	return $flag;
+}
