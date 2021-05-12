@@ -1008,6 +1008,10 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 						$query['orderby'] = 'meta_value_num';
 						$query['order'] = 'ASC';
 					endif;
+					if ( $meta == 'sp_team' ):
+						$query['orderby'] = 'title';
+						$query['order'] = 'ASC';
+					endif;
 					$posts = get_posts( $query );
 				endif;
 				foreach ( $posts as $post ):
