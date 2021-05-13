@@ -32,11 +32,15 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 		$abbreviation = get_post_meta( $post->ID, 'sp_abbreviation', true );
 		$color = get_post_meta( $post->ID, 'sp_color', true );
 		$condition = get_post_meta( $post->ID, 'sp_condition', true );
+		$team_bolding = get_post_meta( $post->ID, 'sp_team_bolding', true );
+		$team_highlight = get_post_meta( $post->ID, 'sp_team_highlight', true );
 		$main_result = get_option( 'sportspress_primary_result', null );
 		$result = get_page_by_path( $main_result, ARRAY_A, 'sp_result' );
 		$label = sp_array_value( $result, 'post_title', __( 'Primary', 'sportspress' ) );
 		
 		if ( '' === $color ) $color = '#888888';
+		if ( empty( $team_bolding ) ) $team_bolding = false;
+		if ( empty( $team_highlight ) ) $team_highlight = false;
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
@@ -72,6 +76,14 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 				?>
 			</select>
 		</p>
+		<p><strong><?php _e( 'Mark the team that meets the outcome condition', 'sportspress' ); ?></strong></p>
+		<p>
+			<input name="sp_team_bolding" id="sp_team_bolding" type="checkbox" value="true" <?php echo checked( $team_bolding, 'true' )?>>
+			<label for="sp_team_bolding"> Bold</label>
+			&nbsp;
+			<input name="sp_team_highlight" id="sp_team_highlight" type="checkbox" value="true" <?php echo checked( $team_highlight, 'true' )?>>
+			<label for="sp_team_highlight"> Highlight</label>
+		</p>
 		<?php
 	}
 
@@ -82,5 +94,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 		update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', array() ) );
 		update_post_meta( $post_id, 'sp_color', sp_array_value( $_POST, 'sp_color', array() ) );
 		update_post_meta( $post_id, 'sp_condition', sp_array_value( $_POST, 'sp_condition', array() ) );
+		update_post_meta( $post_id, 'sp_team_bolding', sp_array_value( $_POST, 'sp_team_bolding', array() ) );
+		update_post_meta( $post_id, 'sp_team_highlight', sp_array_value( $_POST, 'sp_team_highlight', array() ) );
 	}
 }
