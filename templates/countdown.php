@@ -110,9 +110,10 @@ if ( $title )
 
 $title = $post->post_title;
 if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false, true ) . '">' . $title . '</a>';
-
-if ( $show_status ) {
+if ( isset( $show_status ) && $show_status ){
 	$sp_status = get_post_meta($post->ID, 'sp_status', true);
+	//Avoid Undefined index warnings if no status is set (i.e. during import)
+	if ( $sp_status == '' ) $sp_status = 'ok';
 	$statuses = apply_filters( 'sportspress_event_statuses', array(
 				'ok' => __( 'On time', 'sportspress' ),
 				'tbd' => __( 'TBD', 'sportspress' ),

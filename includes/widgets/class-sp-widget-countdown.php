@@ -19,7 +19,7 @@ class SP_Widget_Countdown extends WP_Widget {
 		$show_excluded = empty($instance['show_excluded']) ? false : $instance['show_excluded'];
 		$order = empty($instance['order']) ? false : $instance['order'];
 		$orderby = empty($instance['orderby']) ? false : $instance['orderby'];
-		$show_status = empty($instance['show_status']) ? true : $instance['show_status'];
+		$show_status = empty($instance['show_status']) ? false : $instance['show_status'];
 
 		do_action( 'sportspress_before_widget', $args, $instance, 'countdown' );
 		echo $before_widget;
