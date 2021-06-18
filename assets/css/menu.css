@@ -269,7 +269,9 @@
 #adminmenu #menu-posts-sp_staff .menu-icon-sp_staff div.wp-menu-image:before,
 #adminmenu #menu-posts-sp_official .menu-icon-sp_official div.wp-menu-image:before,
 #sp_formatdiv #post-formats-select .post-format-icon:before,
-#sp_modediv #post-formats-select .post-format-icon:before {
+#sp_modediv #post-formats-select .post-format-icon:before, 
+#fixtures-filters .post-format-icon:before,
+#events-filters .post-format-icon:before {
 	font-family: sportspress, dashicons;
 	width: 20px;
 	text-align: center;

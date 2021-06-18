@@ -440,6 +440,7 @@ class SP_Post_types {
 			'show_in_rest' 			=> true,
 			'rest_controller_class' => 'SP_REST_Posts_Controller',
 			'rest_base' 			=> 'events',
+			'can_export' 			=> false,
 		);
 
 		if ( get_option( 'sportspress_event_comment_status', 'no' ) == 'yes' ):
@@ -479,6 +480,7 @@ class SP_Post_types {
 					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'teams',
+					'can_export' 			=> false,
 				);
 		
 		if ( get_option( 'sportspress_team_comment_status', 'no' ) == 'yes' ):
@@ -520,6 +522,7 @@ class SP_Post_types {
 					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'players',
+					'can_export' 			=> false,
 				)
 			)
 		);
@@ -557,6 +560,7 @@ class SP_Post_types {
 					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'staff',
+					'can_export' 			=> false,
 				)
 			)
 		);

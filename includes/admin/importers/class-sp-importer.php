@@ -70,12 +70,14 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 						if ( function_exists( 'gc_enable' ) )
 							gc_enable();
+						
+						$mime_filetype = mime_content_type( $file );
 
 						@set_time_limit(0);
 						@ob_flush();
 						@flush();
 
-						$this->table( $file );
+						$this->table( $file, $mime_filetype );
 					endif;
 					break;
 				case 2:
@@ -114,7 +116,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @param mixed $file
 		 * @return void
 		 */
-		function table( $file ) {
+		function table( $file, $mime_filetype ) {
 			global $wpdb;
 
 			$this->imported = $this->skipped = 0;
@@ -128,7 +130,13 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			if ( ( $handle = fopen( $file, "r" ) ) !== FALSE ):
 
-				$header = fgetcsv( $handle, 0, $this->delimiter );
+				if ( 'application/json' == $mime_filetype ) {
+					$json_handle = file_get_contents( $file );
+					$json_data = json_decode( $json_handle, true );
+					$header = array_keys( $json_data[0] );
+				}else{
+					$header = fgetcsv( $handle, 0, $this->delimiter );
+				}
 
 				if ( sizeof( $header ) >= 1 ):
 					$action = 'admin.php?import=' . $this->import_page . '&step=2';
@@ -149,19 +157,35 @@ if ( class_exists( 'WP_Importer' ) ) {
 								</tr>
 							</thead>
 							<tbody>
-								<?php while ( ( $row = fgetcsv( $handle, 0, $this->delimiter ) ) !== FALSE ): ?>
-									<tr>
-										<?php $index = 0; foreach ( $this->columns as $key => $label ): $value = sp_array_value( $row, $index ); ?>
-											<td>
-												<input type="text" class="widefat" value="<?php echo esc_attr( $value ); ?>" name="sp_import[]"<?php if ( in_array( $key, $this->optionals ) ) { ?> placeholder="<?php _e( 'Default', 'sportspress' ); ?>"<?php } ?>>
+								<?php if ( 'application/json' == $mime_filetype ) { ?>
+									<?php foreach ( $json_data as $json_array ) { ?>
+										<tr>
+											<?php foreach ( $this->columns as $key => $label ): $value = current( $json_array ); ?>
+												<td>
+													<input type="text" class="widefat" value="<?php echo esc_attr( $value ); ?>" name="sp_import[]"<?php if ( in_array( $key, $this->optionals ) ) { ?> placeholder="<?php _e( 'Default', 'sportspress' ); ?>"<?php } ?>>
+												</td>
+											<?php next( $json_array ); endforeach; ?>
+											<td class="sp-actions-column">
+												<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row"></a>
+												<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
 											</td>
-										<?php $index ++; endforeach; ?>
-										<td class="sp-actions-column">
-											<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row"></a>
-											<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
-										</td>
-									</tr>
-								<?php $this->imported++; endwhile; ?>
+										</tr>
+									<?php $this->imported++; } ?>
+								<?php }else{ ?>
+									<?php while ( ( $row = fgetcsv( $handle, 0, $this->delimiter ) ) !== FALSE ): ?>
+										<tr>
+											<?php $index = 0; foreach ( $this->columns as $key => $label ): $value = sp_array_value( $row, $index ); ?>
+												<td>
+													<input type="text" class="widefat" value="<?php echo esc_attr( $value ); ?>" name="sp_import[]"<?php if ( in_array( $key, $this->optionals ) ) { ?> placeholder="<?php _e( 'Default', 'sportspress' ); ?>"<?php } ?>>
+												</td>
+											<?php $index ++; endforeach; ?>
+											<td class="sp-actions-column">
+												<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row"></a>
+												<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
+											</td>
+										</tr>
+									<?php $this->imported++; endwhile; ?>
+								<?php } ?>
 								<tr>
 									<?php foreach ( $this->columns as $key => $label ): ?>
 										<td>
@@ -172,7 +196,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 										<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
 									</td>
 								</tr>
-						    </tbody>
+							</tbody>
 						</table>
 						<p class="sp-post-count alignright">
 							<?php printf( __( 'Displaying %s&#8211;%s of %s', 'sportspress' ), 1, $this->imported+1, $this->imported+1 ); ?>

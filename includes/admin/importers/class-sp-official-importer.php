@@ -23,6 +23,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_page = 'sp_official_csv';
 			$this->import_label = __( 'Import Officials', 'sportspress' );
 			$this->columns = array(
+				'ID' => __( 'ID', 'sportspress' ),
 				'post_title' => __( 'Name', 'sportspress' ),
 			);
 			parent::__construct();
@@ -59,13 +60,18 @@ if ( class_exists( 'WP_Importer' ) ) {
 				endforeach;
 
 				$name = sp_array_value( $meta, 'post_title' );
+				$official_id = sp_array_value( $meta, 'ID' );
 
 				if ( ! $name ):
 					$this->skipped++;
 					continue;
 				endif;
+				
+				// Check if an Event ID was given
+				if ( empty( $official_id ) )
+					$official_id = 0;
 
-				$args = array( 'post_type' => 'sp_official', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $name ) );
+				$args = array( 'ID' => $official_id, 'post_type' => 'sp_official', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $name ) );
 
 				$id = wp_insert_post( $args );
 

@@ -23,6 +23,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_page = 'sp_fixture_csv';
 			$this->import_label = __( 'Import Fixtures', 'sportspress' );
 			$this->columns = array(
+				'ID' => __( 'ID', 'sportspress' ),
 				'post_date' => __( 'Date', 'sportspress' ),
 				'post_time' => __( 'Time', 'sportspress' ),
 				'sp_venue' => __( 'Venue', 'sportspress' ),
@@ -30,7 +31,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				'sp_away' => __( 'Away', 'sportspress' ),
 				'sp_day' => __( 'Match Day', 'sportspress' ),
 			);
-			$this->optionals = array( 'sp_day' );
+			$this->optionals = array( 'ID', 'sp_day' );
 		}
 
 		/**
@@ -71,6 +72,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				// Get event details
 				$event = array(
+					sp_array_value( $meta, 'ID' ),
 					sp_array_value( $meta, 'post_date' ),
 					sp_array_value( $meta, 'post_time' ),
 					sp_array_value( $meta, 'sp_venue' ),
@@ -86,7 +88,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				if ( sizeof( $event ) > 0 && ! empty( $event[0] ) ):
 
 					// List event columns
-					list( $date, $time, $venue, $day ) = $event;
+					list( $event_id, $date, $time, $venue, $day ) = $event;
 
 					// Format date
 					$date = str_replace( '/', '-', trim( $date ) );
@@ -112,11 +114,15 @@ if ( class_exists( 'WP_Importer' ) ) {
 					if ( ! empty( $time ) ):
 						$date .= ' ' . trim( $time );
 					endif;
+					
+					// Check if an Event ID was given
+					if ( empty( $event_id ) )
+						$event_id = 0;
 
 					// Define post type args
-					$args = array( 'post_type' => 'sp_event', 'post_status' => 'publish', 'post_date' => $date, 'post_title' => __( 'Event', 'sportspress' ) );
+					$args = array( 'ID' => $event_id, 'post_type' => 'sp_event', 'post_status' => 'publish', 'post_date' => $date, 'post_title' => __( 'Event', 'sportspress' ) );
 
-					// Insert event
+					// Insert or update event
 					$id = wp_insert_post( $args );
 
 					// Flag as import

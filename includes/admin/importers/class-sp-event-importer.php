@@ -23,6 +23,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_page = 'sp_event_csv';
 			$this->import_label = __( 'Import Events', 'sportspress' );
 			$this->columns = array(
+				'ID' => __( 'ID', 'sportspress' ),
 				'post_date' => __( 'Date', 'sportspress' ),
 				'post_time' => __( 'Time', 'sportspress' ),
 				'sp_venue' => __( 'Venue', 'sportspress' ),
@@ -64,6 +65,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$result_labels = sp_get_var_labels( 'sp_result' );
 			$performance_labels = sp_get_var_labels( 'sp_performance' );
 
+      // Initialize teams added and players added
+      $teams_added = false;
+      $players_added = false;
+
 			foreach ( $rows as $row ):
 
 				$row = array_filter( $row );
@@ -77,16 +82,18 @@ if ( class_exists( 'WP_Importer' ) ) {
 				endforeach;
 
 				// Slice array into event, team, and player
-				$event = array_slice( $row, 0, 3 );
-				$team = array_slice( $row, 3, 3 );
-				$player = array_slice( $row, 6 );
+				$event = array_slice( $row, 0, 4 );
+				$team = array_slice( $row, 4, 3 );
+				$player = array_slice( $row, 7 );
 
 				// Get event details
 				$event = array(
+					sp_array_value( $meta, 'ID' ),
 					sp_array_value( $meta, 'post_date' ),
 					sp_array_value( $meta, 'post_time' ),
 					sp_array_value( $meta, 'sp_venue' ),
 				);
+				unset( $meta['ID'] );
 				unset( $meta['post_date'] );
 				unset( $meta['post_time'] );
 				unset( $meta['sp_venue'] );
@@ -119,7 +126,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					endif;
 
 					// List event columns
-					list( $date, $time, $venue ) = $event;
+					list( $event_id, $date, $time, $venue ) = $event;
 
 					// Format date
 					$date = str_replace( '/', '-', trim( $date ) );
@@ -145,9 +152,13 @@ if ( class_exists( 'WP_Importer' ) ) {
 					if ( ! empty( $time ) ):
 						$date .= ' ' . trim( $time );
 					endif;
+					
+					// Check if an Event ID was given
+					if ( empty( $event_id ) )
+						$event_id = 0;
 
 					// Define post type args
-					$args = array( 'post_type' => 'sp_event', 'post_status' => 'publish', 'post_date' => $date, 'post_title' => __( 'Event', 'sportspress' ) );
+					$args = array( 'ID' => $event_id, 'post_type' => 'sp_event', 'post_status' => 'publish', 'post_date' => $date, 'post_title' => __( 'Event', 'sportspress' ) );
 
 					// Insert event
 					$id = wp_insert_post( $args );
@@ -224,8 +235,20 @@ if ( class_exists( 'WP_Importer' ) ) {
 					// Add to event if exists
 					if ( isset( $id ) ):
 
+            // Delete existing teams
+            if ( ! $teams_added ):
+              $teams_added = true;
+              delete_post_meta( $id, 'sp_team' );
+            endif;
+
 						// Add team to event
 						add_post_meta( $id, 'sp_team', $team_id );
+
+            // Delete existing players
+            if ( ! $players_added ):
+              $players_added = true;
+              delete_post_meta( $id, 'sp_player' );
+            endif;
 
 						// Add empty player to event
 						add_post_meta( $id, 'sp_player', 0 );
@@ -474,8 +497,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 								<ul>
 									<?php
 										foreach( (new SP_Formats)->event as $name => $title ) {
+											$checked = ( $name == 'league' ) ? ' checked' : false;
 											?>
-											<li><input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo $name; ?>" value="<?php echo $name; ?>" checked="checked"> <label for="post-format-<?php echo $name; ?>" class="post-format-icon post-format-<?php echo $name; ?>"><?php echo $title; ?></label></li>
+											<li><input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo $name; ?>" value="<?php echo $name; ?>" <?php echo $checked;?>> <label for="post-format-<?php echo $name; ?>" class="post-format-icon post-format-<?php echo $name; ?>"><?php echo $title; ?></label></li>
 											<?php
 										}
 									?>
