@@ -11,6 +11,9 @@ class SP_Widget_Birthdays extends WP_Widget {
 		$title = apply_filters( 'widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base );
 		$date = empty( $instance['date']) ? 'day' : strip_tags($instance['date'] );
 		$birthday_format = empty( $instance['birthday_format']) ? 'birthday' : strip_tags( $instance['birthday_format'] );
+		$league = empty( $instance['league'] ) ? null : $instance['league'];
+		$season = empty( $instance['season'] ) ? null : $instance['season'];
+		$team = empty( $instance['team'] ) ? null : $instance['team'];
 
 		do_action( 'sportspress_before_widget', $args, $instance, 'birthdays' );
 		echo $before_widget;
@@ -21,7 +24,7 @@ class SP_Widget_Birthdays extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template', $args, $instance, 'birthdays' );
 
-		sp_get_template( 'birthdays.php', array( 'date' => $date, 'birthday_format' => $birthday_format ) );
+		sp_get_template( 'birthdays.php', array( 'date' => $date, 'birthday_format' => $birthday_format, 'team' => $team, 'league' => $league, 'season' => $season ) );
 
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'birthdays' );
@@ -35,6 +38,9 @@ class SP_Widget_Birthdays extends WP_Widget {
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['date'] = strip_tags( $new_instance['date'] );
 		$instance['birthday_format'] = strip_tags( $new_instance['birthday_format'] );
+		$instance['league'] = intval( $new_instance['league'] );
+		$instance['season'] = intval( $new_instance['season'] );
+		$instance['team'] = intval( $new_instance['team'] );
 
 		// Filter to hook into
 		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'birthdays' );
@@ -43,9 +49,12 @@ class SP_Widget_Birthdays extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'date' => 'day', 'birthday_format' => 'birthday' ) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'date' => 'day', 'birthday_format' => 'birthday', 'team' => '', 'league' => '', 'season' => '' ) );
 		$title = strip_tags( $instance['title'] );
 		$date = strip_tags( $instance['date'] );
+		$league = empty( $instance['league'] ) ? null : $instance['league'];
+		$season = empty( $instance['season'] ) ? null : $instance['season'];
+		$team = empty( $instance['team'] ) ? null : $instance['team'];
 		$options = array(
 			'day' => __( 'Today', 'sportspress' ),
 			'week' => __( 'This week', 'sportspress' ),
@@ -80,6 +89,50 @@ class SP_Widget_Birthdays extends WP_Widget {
 					<option value="<?php echo $value; ?>" <?php selected( $value, $birthday_format ); ?>><?php echo $label; ?></option>
 				<?php } ?>
 			</select>
+		</p>
+		<p class="sp-dropdown-filter"><label for="<?php echo $this->get_field_id('league'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'League', 'sportspress' ) ); ?></label>
+		<?php
+		$args = array(
+			'show_option_all' =>  __( 'All', 'sportspress' ),
+			'taxonomy' => 'sp_league',
+			'name' => $this->get_field_name('league'),
+			'id' => $this->get_field_id('league'),
+			'values' => 'term_id',
+			'class' => 'widefat',
+			'selected' => $league
+		);
+		sp_dropdown_taxonomies( $args );
+		?>
+		</p>
+		<p class="sp-dropdown-filter"><label for="<?php echo $this->get_field_id('season'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Season', 'sportspress' ) ); ?></label>
+		<?php
+		$args = array(
+			'show_option_all' =>  __( 'All', 'sportspress' ),
+			'taxonomy' => 'sp_season',
+			'name' => $this->get_field_name('season'),
+			'id' => $this->get_field_id('season'),
+			'values' => 'term_id',
+			'class' => 'widefat',
+			'selected' => $season
+		);
+		sp_dropdown_taxonomies( $args );
+		?>
+		</p>
+		<p class="sp-dropdown-filter"><label for="<?php echo $this->get_field_id('team'); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Team', 'sportspress' ) ); ?></label>
+		<?php
+		$args = array(
+			'post_type' => 'sp_team',
+			'name' => $this->get_field_name('team'),
+			'id' => $this->get_field_id('team'),
+			'selected' => $team,
+			'show_option_all' => __( 'All', 'sportspress' ),
+			'values' => 'ID',
+			'class' => 'widefat',
+		);
+		if ( ! sp_dropdown_pages( $args ) ):
+			sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
+		endif;
+		?>
 		</p>
 		<?php
 		// Action to hook into
