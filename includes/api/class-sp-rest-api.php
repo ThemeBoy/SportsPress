@@ -787,14 +787,13 @@ class SP_REST_API {
 	 * @param array $object Details of current post.
 	 * @param string $field_name Name of field.
 	 * @param WP_REST_Request $request Current request
+	 * @param string $object_type Object type.
 	 *
 	 * @return mixed
 	 */
-	public static function get_post_data( $object, $field_name, $request ) {
-		$type = $object['type'];
-		
-		$post = new $type( $object['id'] );
-		
+	public static function get_post_data( $object, $field_name, $request, $object_type ) {
+		$post = new $object_type( $object['id'] );
+
 		return $post->$field_name();
 	}
 
