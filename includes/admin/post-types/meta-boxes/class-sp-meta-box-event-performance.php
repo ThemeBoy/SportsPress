@@ -316,7 +316,6 @@ class SP_Meta_Box_Event_Performance {
 					</th>
 				<?php } ?>
 				<?php $i = 0; foreach ( $labels as $key => $label ): ?>
-					<?php if ( 'equation' === sp_array_value( $formats, $key, 'number' ) ) continue; ?>
 					<th>
 						<?php if ( $has_checkboxes ): ?>
 							<?php if ( 0 == $i ): ?>
@@ -364,7 +363,12 @@ class SP_Meta_Box_Event_Performance {
 						<td>&nbsp;</td>
 					<?php } ?>
 					<?php foreach( $labels as $column => $label ):
-						if ( 'equation' === sp_array_value( $formats, $column, 'number' ) ) continue;
+						if ( 'equation' === sp_array_value( $formats, $column, 'number' ) ) {
+							?>
+							<td><input type="text" disabled></td>
+							<?php
+							continue;
+						}
 						$player_id = 0;
 						$player_performance = sp_array_value( $data, $player_id, array() );
 						$value = sp_array_value( $player_performance, $column, '' );
@@ -443,7 +447,12 @@ class SP_Meta_Box_Event_Performance {
 				</td>
 			<?php } ?>
 			<?php foreach( $labels as $column => $label ):
-				if ( 'equation' === sp_array_value( $formats, $column, 'number' ) ) continue;
+				if ( 'equation' === sp_array_value( $formats, $column, 'number' ) ) {
+					?>
+					<td><input type="text" disabled></td>
+					<?php
+					continue;
+				}
 				$value = sp_array_value( $player_performance, $column, '' );
 				$intval = intval( $value );
 				$placeholder = sp_get_format_placeholder( sp_array_value( $formats, $column, 'number' ) );
