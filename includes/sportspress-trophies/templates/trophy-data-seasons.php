@@ -21,7 +21,7 @@ $output .= '<div class="sp-table-wrapper">';
 
 $output .= '<table class="sp-trophy-data sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $responsive ? ' sp-responsive-table '.$identifier : '' ). ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
 
-$output .= '<th>' . __( 'Season', 'sportspress' ) . '</th>';
+$output .= '<th class="data-season">' . __( 'Season', 'sportspress' ) . '</th>';
 $output .= '<th class="data-winner">' . __( 'Winner', 'sportspress' ) . '</th>';
 
 $output .= '</tr>' . '</thead>' . '<tbody>';
@@ -50,7 +50,7 @@ foreach( $trophy_data as $season_id => $trophy ) {
 	}
 	
 	$output .= '<tr class="' . ( $i % 2 == 0 ? 'odd' : 'even' ) . ' sp-row-no-' . $i . '">';
-	$output .= '<td>' . $season . '</td> <td class="data-winner' . $name_class . '" data-label="' . __( 'Winner', 'sportspress' ) . '">' . $team . '</td>';
+	$output .= '<td class="data-season">' . $season . '</td> <td class="data-winner' . $name_class . '" data-label="' . __( 'Winner', 'sportspress' ) . '">' . $team . '</td>';
 	$output .= '</tr>';
 	$i++;
 }
