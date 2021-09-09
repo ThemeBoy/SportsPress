@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Class
  * @package 	SportsPress Trophies
- * @version     2.8.0
+ * @version     2.8
  */
 class SP_Shortcode_Trophies {
 

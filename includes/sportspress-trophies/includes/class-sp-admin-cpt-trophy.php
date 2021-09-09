@@ -4,8 +4,8 @@
  *
  * @author 		ThemeBoy
  * @category 	Admin
- * @package 	SportsPress/Admin/Post_Types
- * @version		2.8.0
+ * @package 	SportsPress Trophies
+ * @version		2.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

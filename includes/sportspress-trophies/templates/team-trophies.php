@@ -3,7 +3,7 @@
  * Team Trophies
  *
  * @author 		ThemeBoy
- * @package 	SportsPress/Templates
+ * @package 	SportsPress Trophies
  * @version     2.8
  */
 
