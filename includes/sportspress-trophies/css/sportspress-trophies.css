@@ -1,0 +1,22 @@
+.sp-data-table .data-winner {
+    text-align: left;
+}
+.sp-trophy-data td.has-logo {
+    line-height: 2em;
+}
+.sp-trophy-data .team-logo {
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+.sp-trophy-data .data-winner .team-logo {
+    margin-right: 0.5em;
+}
+.sp-trophy-data .team-logo img {
+    width: auto;
+    height: auto;
+    max-width: 2em;
+    max-height: 2em;
+}
