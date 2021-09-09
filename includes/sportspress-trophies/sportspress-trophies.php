@@ -5,7 +5,7 @@ Plugin URI: https://tboy.co/pro
 Description: Add trophies feature to SportsPress.
 Author: ThemeBoy
 Author URI: https://themeboy.com/
-Version: 2.8.0
+Version: 2.8
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Trophies' ) ) :
  * Main SportsPress Trophies Class
  *
  * @class SportsPress_Trophies
- * @version	2.8.0
+ * @version	2.8
  */
 class SportsPress_Trophies {
 
@@ -191,6 +191,14 @@ class SportsPress_Trophies {
 				),
 				
 				array(
+					'title'     => __( 'Logo', 'sportspress' ),
+					'desc' 		=> __( 'Show trophy logo', 'sportspress' ),
+					'id' 		=> 'sportspress_trophy_show_logo',
+					'default'	=> 'yes',
+					'type' 		=> 'checkbox',
+				),
+				
+				array(
 					'title'     => __( 'Link', 'sportspress' ),
 					'desc' 		=> __( 'Link trophies', 'sportspress' ),
 					'id' 		=> 'sportspress_link_trophies',
@@ -283,6 +291,7 @@ class SportsPress_Trophies {
 	 * @return void
 	 */
 	public static function output_trophy() {
+		sp_get_template( 'trophy-logo.php', array(), '', SP_TROPHIES_DIR . 'templates/' );
 		sp_get_template( 'trophy-data.php', array(), '', SP_TROPHIES_DIR . 'templates/' );
 	}
 	
