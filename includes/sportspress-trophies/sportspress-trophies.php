@@ -153,7 +153,7 @@ class SportsPress_Trophies {
 	public function install() {
 		
 		// Queue upgrades
-		$current_version = get_option( 'sportspress_sponsors_version', null );
+		$current_version = get_option( 'sportspress_trophies_version', null );
 
 		// Update version
 		update_option( 'sportspress_trophies_version', SP_TROPHIES_VERSION );
