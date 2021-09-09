@@ -13,6 +13,7 @@ $defaults = array(
 	'id' => get_the_ID(),
 	'show_title' => get_option( 'sportspress_trophy_show_title', 'yes' ) == 'yes' ? true : false,
 	'show_team_logo' => get_option( 'sportspress_trophy_show_logos', 'yes' ) == 'yes' ? true : false,
+	'link_trophies' => get_option( 'sportspress_link_trophies', 'no' ) == 'yes' ? true : false,
 	'responsive' => get_option( 'sportspress_enable_responsive_tables', 'no' ) == 'yes' ? true : false,
 	'sortable' => get_option( 'sportspress_enable_sortable_tables', 'yes' ) == 'yes' ? true : false,
 	'scrollable' => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
@@ -44,7 +45,7 @@ $output = '';
 $output .= '<h4 class="sp-table-caption">' . __( 'Trophies', 'sportspress' ) . '</h4>';
 $output .= '<div class="sp-table-wrapper">';
 $output .= '<table class="sp-trophy-data sp-data-table' . ( $sortable ? ' sp-sortable-table' : '' ) . ( $responsive ? ' sp-responsive-table '.$identifier : '' ). ( $scrollable ? ' sp-scrollable-table' : '' ) . ( $paginated ? ' sp-paginated-table' : '' ) . '" data-sp-rows="' . $rows . '">' . '<thead>' . '<tr>';
-$output .= '<th>' . __( 'Trophy', 'sportspress' ) . '</th>';
+$output .= '<th class="data-name">' . __( 'Trophy', 'sportspress' ) . '</th>';
 $output .= '<th>' . __( 'Seasons', 'sportspress' ) . '</th>';
 $output .= '</tr>' . '</thead>' . '<tbody>';
 foreach ( $trophies as $trophy ) {
@@ -53,6 +54,10 @@ foreach ( $trophies as $trophy ) {
 	if ( isset( $trophy_data[ $id ] ) ) {
 		$team_trophies = $trophy_data[ $id ];
 		$trophy_name = $trophy->post_title;
+		if ( $link_trophies ) {
+			$trophy_permalink = get_permalink( $trophy->ID );
+			$trophy_name = '<a href="' . $trophy_permalink . '">' . $trophy_name . '</a>';
+		}
 		$winnings = array();
 		foreach ( $team_trophies as $team_trophy) {
 			$winning = $team_trophy['season_name'];
@@ -66,7 +71,7 @@ foreach ( $trophies as $trophy ) {
 			$winnings[] = $winning;
 		}
 		$winnings = implode( ', ', $winnings );
-		$output .= '<tr> <td>' . $trophy_name . '</td> <td>' . $winnings . '</td> </tr>';
+		$output .= '<tr> <td class="data-name">' . $trophy_name . '</td> <td>' . $winnings . '</td> </tr>';
 	}
 }
 $output .= '</tbody>' . '</table>';

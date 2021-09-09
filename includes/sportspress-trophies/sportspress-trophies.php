@@ -189,6 +189,14 @@ class SportsPress_Trophies {
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
 				),
+				
+				array(
+					'title'     => __( 'Link', 'sportspress' ),
+					'desc' 		=> __( 'Link trophies', 'sportspress' ),
+					'id' 		=> 'sportspress_link_trophies',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
 
 				array(
 					'title'     => __( 'Pagination', 'sportspress' ),
