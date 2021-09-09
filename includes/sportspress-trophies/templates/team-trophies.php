@@ -24,6 +24,10 @@ extract( $defaults, EXTR_SKIP );
 
 $args = array(
 	'post_type' => 'sp_trophy',
+	'numberposts' => -1,
+	'posts_per_page' => -1,
+	'orderby' => 'menu_order',
+	'order' => 'ASC',
 	'meta_query' => array(
 		array(
 			'key'     => 'sp_teams',
