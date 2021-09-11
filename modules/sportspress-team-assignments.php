@@ -25,7 +25,6 @@ class SportsPress_Team_Assignments {
 		$this->define_constants();
 		
 		// Actions
-		//add_action( 'sportspress_process_sp_event_meta', array( $this, 'save' ) );
 
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
@@ -43,19 +42,107 @@ class SportsPress_Team_Assignments {
 	}
 	
 	/**
-	 * Add meta boxes to trophies.
+	 * Add meta boxes to team.
 	 *
 	 * @return array
 	 */
 	public function add_meta_boxes( $meta_boxes ) {
 		$meta_boxes['sp_team']['assignments'] = array(
 					'title' => __( 'Team Assignments', 'sportspress' ),
-					'save' => 'SP_Meta_Box_Team_Assignments::save',
-					'output' => 'SP_Meta_Box_Team_Assignments::output',
+					'save' => array( $this, 'save' ),
+					'output' => array( $this, 'output' ),
 					'context' => 'normal',
 					'priority' => 'default',
 				);
 		return $meta_boxes;
+	}
+	
+	/**
+	 * Output metabox for team assignments.
+	 *
+	 */
+	 
+	 public static function output( $post ) {
+		 
+		if ( taxonomy_exists( 'sp_league' ) ):
+			$leagues = get_the_terms( $post, 'sp_league' );
+			$league_ids = array();
+			if ( $leagues ):
+				foreach ( $leagues as $league ):
+					$league_ids[] = $league->term_id;
+				endforeach;
+			endif;
+			$args = array(
+				'taxonomy' => 'sp_league',
+				'include' => $league_ids,
+			);
+			$leagues = get_terms( $args );
+		endif;
+
+		if ( taxonomy_exists( 'sp_season' ) ):
+			$seasons = get_the_terms( $post, 'sp_season' );
+			$season_ids = array();
+			if ( $seasons ):
+				foreach ( $seasons as $season ):
+					$season_ids[] = $season->term_id;
+				endforeach;
+			endif;
+		endif;
+	
+		$sp_team_assignments = get_post_meta( $post->ID, 'sp_assignments', true );
+		?>
+		<div class="sp-data-table-container">
+			<table class="widefat sp-data-table sp-team-assignments">
+				<thead>
+					<tr><th><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></th><th><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></th></tr>
+				</thead>
+				<tbody>
+				<?php foreach ( $leagues as $league ) { ?>
+					<tr>
+						<td><?php echo $league->name; ?></td>
+						<td><?php
+						$args = array(
+							'taxonomy' => 'sp_season',
+							'name' => 'sp_assignments[' . $league->term_id . '][]',
+							'selected' => sp_array_value( $sp_team_assignments, $league->term_id, array() ),
+							'included' => $season_ids,
+							'values' => 'term_id',
+							'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
+							'class' => 'widefat',
+							'property' => 'multiple',
+							'chosen' => true,
+						);
+						sp_dropdown_taxonomies( $args );
+						?>
+						</td>
+					</tr>
+				<?php } ?>
+				</tbody>
+			</table>
+		</div>
+		<?php
+	 }
+	 
+	 /**
+	 * Save metabox data for team assignments.
+	 *
+	 */
+	 
+	 public static function save( $post_id ) {
+		 
+		//Reset current assignments
+		delete_post_meta( $post_id, 'sp_assignments' );
+
+		$sp_assignments = sp_array_value( $_POST, 'sp_assignments', array() );
+		$sp_assignments_serialized = array();
+		foreach ( $sp_assignments as $league_id => $season_ids ) {
+			foreach ( $season_ids as $season_id ) {
+				$sp_assignments_serialized[] = $league_id . '-' . $season_id . '-' . $post_id;
+			}
+		}
+			
+		update_post_meta( $post_id, 'sp_assignments', $sp_assignments );
+		sp_update_post_meta_recursive( $post_id, 'sp_assignments_serialized', $sp_assignments_serialized );
 	}
 }
 endif;
