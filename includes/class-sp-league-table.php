@@ -122,6 +122,8 @@ class SP_League_Table extends SP_Secondary_Post {
 				$args = apply_filters( 'sportspress_league_table_args', $args );
 
 				$team_ids = get_posts( $args );
+				
+				$team_ids = apply_filters( 'sportspress_league_table_teams', $team_ids, $args );
 			} else {
 				$team_ids = (array)get_post_meta( $this->ID, 'sp_team', false );
 			}

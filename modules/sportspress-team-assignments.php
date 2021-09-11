@@ -29,6 +29,7 @@ class SportsPress_Team_Assignments {
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_filter( 'sportspress_league_table_args', array( $this, 'add_args' ) );
+		add_filter( 'sportspress_league_table_teams', array( $this, 'add_teams' ), 10, 2 );
 	}
 	/**
 	 * Define constants.
@@ -138,7 +139,7 @@ class SportsPress_Team_Assignments {
 		$sp_assignments_serialized = array();
 		foreach ( $sp_assignments as $league_id => $season_ids ) {
 			foreach ( $season_ids as $season_id ) {
-				$sp_assignments_serialized[] = $league_id . '-' . $season_id . '-' . $post_id;
+				$sp_assignments_serialized[] = $league_id . '_' . $season_id . '_' . $post_id;
 			}
 		}
 		if ( ! empty ( $sp_assignments ) ) {
@@ -175,6 +176,74 @@ class SportsPress_Team_Assignments {
 
 		return $args;
 	 }
+	 
+	 /**
+	 * Add assigned teams to league table
+	 */
+	public function add_teams( $teams = array(), $args = array() ) {
+		//if ( ! $team ) return $teams;
+
+		$tax_query = (array) sp_array_value( $args, 'tax_query', array() );
+		$league_ids = array();
+		$season_ids = array();
+
+		foreach ( $tax_query as $param ) {
+			if ( 'sp_league' === sp_array_value( $param, 'taxonomy' ) ) $league_ids = sp_array_value( $param, 'terms', array() );
+			if ( 'sp_season' === sp_array_value( $param, 'taxonomy' ) ) $season_ids = sp_array_value( $param, 'terms', array() );
+		}
+
+		if ( empty( $league_ids ) && empty( $season_ids ) ) return $players;
+
+		$assignments = array();
+		
+		if ( !empty( $league_ids ) && !empty( $season_ids ) ) {
+			foreach ( $league_ids as $l_id ) {
+				foreach ( $season_ids as $s_id ) {
+					$assignments[] = $l_id.'_'.$s_id.'_%';
+					$compare = 'LIKE';
+				}
+			}
+		}
+		
+		if ( empty( $league_ids ) && !empty( $season_ids ) ) {
+			foreach ( $season_ids as $s_id ) {
+				$assignments[] = '_'.$s_id.'_%';
+				$compare = 'LIKE';
+			}
+		}
+		
+		if ( !empty( $league_ids ) && empty( $season_ids ) ) {
+			foreach ( $league_ids as $l_id ) {
+					$assignments[] = $l_id.'_%';
+					$compare = 'LIKE';
+			}
+		}
+
+		if ( sizeof( $assignments ) ) {
+			if ( 'LIKE' == $compare ) {
+				$args['meta_query'] = array(
+					'relation' => 'AND',
+	
+					array(
+						'relation' => 'OR',
+					),
+				);
+				foreach( $assignments as $assignment ) {
+					$args['meta_query'][1][] = array(							
+							'key'     => 'sp_assignments_serialized',
+							'value'   => $assignment,
+							'compare' => $compare,
+							);
+				}
+			}
+		}
+
+		$assigned_teams = (array) get_posts( $args );
+
+		$teams = array_merge( $assigned_teams, $teams );
+
+		return $teams;
+	}
 }
 endif;
 
