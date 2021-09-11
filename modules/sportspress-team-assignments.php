@@ -28,6 +28,7 @@ class SportsPress_Team_Assignments {
 
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_filter( 'sportspress_league_table_args', array( $this, 'add_args' ) );
 	}
 	/**
 	 * Define constants.
@@ -62,7 +63,7 @@ class SportsPress_Team_Assignments {
 	 *
 	 */
 	 
-	 public static function output( $post ) {
+	 public function output( $post ) {
 		 
 		// Get all leagues already assigned to the team
 		$leagues = get_the_terms( $post, 'sp_league' );
@@ -128,7 +129,7 @@ class SportsPress_Team_Assignments {
 	 *
 	 */
 	 
-	 public static function save( $post_id ) {
+	 public function save( $post_id ) {
 		 
 		//Reset current assignments
 		delete_post_meta( $post_id, 'sp_assignments' );
@@ -146,6 +147,14 @@ class SportsPress_Team_Assignments {
 		sp_update_post_meta_recursive( $post_id, 'sp_assignments_serialized', $sp_assignments_serialized );
 		
 	}
+	
+	/**
+	 * Add args to filter assigned teams
+	 */
+	 
+	 public function add_args( $args = array() ) {
+		 return $args;
+	 }
 }
 endif;
 

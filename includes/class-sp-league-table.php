@@ -118,6 +118,8 @@ class SP_League_Table extends SP_Secondary_Post {
 						'terms' => $season_ids
 					);
 				endif;
+				
+				$args = apply_filters( 'sportspress_league_table_args', $args );
 
 				$team_ids = get_posts( $args );
 			} else {
