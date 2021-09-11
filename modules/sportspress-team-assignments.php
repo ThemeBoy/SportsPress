@@ -140,9 +140,11 @@ class SportsPress_Team_Assignments {
 				$sp_assignments_serialized[] = $league_id . '-' . $season_id . '-' . $post_id;
 			}
 		}
-			
-		update_post_meta( $post_id, 'sp_assignments', $sp_assignments );
+		if ( ! empty ( $sp_assignments ) ) {
+			update_post_meta( $post_id, 'sp_assignments', $sp_assignments );
+		}
 		sp_update_post_meta_recursive( $post_id, 'sp_assignments_serialized', $sp_assignments_serialized );
+		
 	}
 }
 endif;
