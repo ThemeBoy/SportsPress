@@ -149,11 +149,31 @@ class SportsPress_Team_Assignments {
 	}
 	
 	/**
-	 * Add args to filter assigned teams
+	 * Add args to filter out assigned teams
 	 */
 	 
 	 public function add_args( $args = array() ) {
-		 return $args;
+
+		$tax_query = (array) sp_array_value( $args, 'tax_query', array() );
+		$league_ids = array();
+		$season_ids = array();
+		
+		foreach ( $tax_query as $param ) {
+			if ( 'sp_league' === sp_array_value( $param, 'taxonomy' ) ) $league_ids = sp_array_value( $param, 'terms', array() );
+			if ( 'sp_season' === sp_array_value( $param, 'taxonomy' ) ) $season_ids = sp_array_value( $param, 'terms', array() );
+		}
+
+		if ( empty( $league_ids ) && empty( $season_ids ) ) return $args;
+		
+		$args['meta_query'][] = array(
+			'key' => 'sp_assignments_serialized',
+			'value' => '',
+			'compare' => 'NOT EXISTS',
+		);
+
+		$args['meta_query']['relation'] = 'AND';
+
+		return $args;
 	 }
 }
 endif;
