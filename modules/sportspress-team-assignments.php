@@ -64,29 +64,25 @@ class SportsPress_Team_Assignments {
 	 
 	 public static function output( $post ) {
 		 
-		if ( taxonomy_exists( 'sp_league' ) ):
-			$leagues = get_the_terms( $post, 'sp_league' );
-			$league_ids = array();
-			if ( $leagues ):
-				foreach ( $leagues as $league ):
-					$league_ids[] = $league->term_id;
-				endforeach;
-			endif;
-			$args = array(
-				'taxonomy' => 'sp_league',
-				'include' => $league_ids,
-			);
-			$leagues = get_terms( $args );
+		// Get all leagues already assigned to the team
+		$leagues = get_the_terms( $post, 'sp_league' );
+		
+		$league_ids = array();
+		if ( $leagues ):
+			foreach ( $leagues as $league ):
+				$league_ids[] = $league->term_id;
+			endforeach;
+		else: return; //if no league assigned then exit
 		endif;
 
-		if ( taxonomy_exists( 'sp_season' ) ):
-			$seasons = get_the_terms( $post, 'sp_season' );
-			$season_ids = array();
-			if ( $seasons ):
-				foreach ( $seasons as $season ):
-					$season_ids[] = $season->term_id;
-				endforeach;
-			endif;
+		// Get all the seasons assigned to the team
+		$seasons = get_the_terms( $post, 'sp_season' );
+		
+		$season_ids = array();
+		if ( $seasons ):
+			foreach ( $seasons as $season ):
+				$season_ids[] = $season->term_id;
+			endforeach;
 		endif;
 	
 		$sp_team_assignments = get_post_meta( $post->ID, 'sp_assignments', true );
@@ -101,18 +97,22 @@ class SportsPress_Team_Assignments {
 					<tr>
 						<td><?php echo $league->name; ?></td>
 						<td><?php
-						$args = array(
-							'taxonomy' => 'sp_season',
-							'name' => 'sp_assignments[' . $league->term_id . '][]',
-							'selected' => sp_array_value( $sp_team_assignments, $league->term_id, array() ),
-							'included' => $season_ids,
-							'values' => 'term_id',
-							'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
-							'class' => 'widefat',
-							'property' => 'multiple',
-							'chosen' => true,
-						);
-						sp_dropdown_taxonomies( $args );
+						if ( $seasons ):
+							$args = array(
+								'taxonomy' => 'sp_season',
+								'name' => 'sp_assignments[' . $league->term_id . '][]',
+								'selected' => sp_array_value( $sp_team_assignments, $league->term_id, array() ),
+								'include' => $season_ids,
+								'values' => 'term_id',
+								'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
+								'class' => 'widefat',
+								'property' => 'multiple',
+								'chosen' => true,
+							);
+							sp_dropdown_taxonomies( $args );
+						else:
+							_e( '&mdash; None &mdash;', 'sportspress' );
+						endif;
 						?>
 						</td>
 					</tr>
