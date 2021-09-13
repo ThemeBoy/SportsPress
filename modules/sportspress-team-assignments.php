@@ -181,7 +181,6 @@ class SportsPress_Team_Assignments {
 	 * Add assigned teams to league table
 	 */
 	public function add_teams( $teams = array(), $args = array() ) {
-		//if ( ! $team ) return $teams;
 
 		$tax_query = (array) sp_array_value( $args, 'tax_query', array() );
 		$league_ids = array();
@@ -192,14 +191,14 @@ class SportsPress_Team_Assignments {
 			if ( 'sp_season' === sp_array_value( $param, 'taxonomy' ) ) $season_ids = sp_array_value( $param, 'terms', array() );
 		}
 
-		if ( empty( $league_ids ) && empty( $season_ids ) ) return $players;
+		if ( empty( $league_ids ) && empty( $season_ids ) ) return $teams;
 
 		$assignments = array();
 		
 		if ( !empty( $league_ids ) && !empty( $season_ids ) ) {
 			foreach ( $league_ids as $l_id ) {
 				foreach ( $season_ids as $s_id ) {
-					$assignments[] = $l_id.'_'.$s_id.'_%';
+					$assignments[] = $l_id.'_'.$s_id.'_';
 					$compare = 'LIKE';
 				}
 			}
@@ -207,34 +206,28 @@ class SportsPress_Team_Assignments {
 		
 		if ( empty( $league_ids ) && !empty( $season_ids ) ) {
 			foreach ( $season_ids as $s_id ) {
-				$assignments[] = '_'.$s_id.'_%';
+				$assignments[] = '_'.$s_id.'_';
 				$compare = 'LIKE';
 			}
 		}
 		
 		if ( !empty( $league_ids ) && empty( $season_ids ) ) {
 			foreach ( $league_ids as $l_id ) {
-					$assignments[] = $l_id.'_%';
+					$assignments[] = $l_id.'_';
 					$compare = 'LIKE';
 			}
 		}
 
 		if ( sizeof( $assignments ) ) {
-			if ( 'LIKE' == $compare ) {
-				$args['meta_query'] = array(
-					'relation' => 'AND',
-	
-					array(
-						'relation' => 'OR',
-					),
-				);
-				foreach( $assignments as $assignment ) {
-					$args['meta_query'][1][] = array(							
-							'key'     => 'sp_assignments_serialized',
-							'value'   => $assignment,
-							'compare' => $compare,
-							);
-				}
+			$args['meta_query'] = array(
+				'relation' => 'OR',
+			);
+			foreach( $assignments as $assignment ) {
+				$args['meta_query'][] = array(
+						'key'     => 'sp_assignments_serialized',
+						'value'   => $assignment,
+						'compare' => $compare,
+						);
 			}
 		}
 
