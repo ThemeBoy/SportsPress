@@ -92,13 +92,16 @@ class SportsPress_Team_Assignments {
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-team-assignments">
 				<thead>
-					<tr><th><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></th><th><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></th></tr>
+					<tr>
+						<th width="20%"><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></th>
+						<th width="80%"><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></th>
+					</tr>
 				</thead>
 				<tbody>
 				<?php foreach ( $leagues as $league ) { ?>
 					<tr>
-						<td><?php echo $league->name; ?></td>
-						<td><?php
+						<td width="20%"><?php echo $league->name; ?></td>
+						<td width="80%"><?php
 						if ( $seasons ):
 							$args = array(
 								'taxonomy' => 'sp_season',
