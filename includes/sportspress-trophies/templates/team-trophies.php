@@ -32,11 +32,12 @@ $args = array(
 	'meta_query' => array(
 		array(
 			'key'     => 'sp_teams',
-			'value'   => '"' . $id . '"',
-			'compare' => 'LIKE',
+			'value'   => $id,
+			'compare' => '=',
 			),
 		),
 	);
+
 $trophies = get_posts( $args );
 
 if ( ! $trophies ) return;

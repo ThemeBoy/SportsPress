@@ -211,7 +211,7 @@ class SP_Trophy_Meta_Boxes {
 		$teams = array_filter( $teams );
 		$teams = array_unique( $teams );
 		update_post_meta( $post_id, 'sp_trophies', $winners_perseason );
-		update_post_meta( $post_id, 'sp_teams', $teams );
+		sp_update_post_meta_recursive( $post_id, 'sp_teams', $teams );
 		update_post_meta( $post_id, 'sp_winners', $winners );
 	}
 }
