@@ -1,5 +1,8 @@
 == SportsPress Changelog ==
 
+= 2.7.8 =
+* Fix - Event results, box scores, and players stats not updating via REST API.
+
 = 2.7.7 =
 * Fix - Events not appearing due to filter malfunction.
 

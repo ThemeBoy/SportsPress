@@ -5,7 +5,7 @@
  * The SportsPress REST API class handles all API-related hooks.
  *
  * @class 		SP_REST_API
- * @version		2.7.3
+ * @version		2.7.8
  * @package		SportsPress/Classes
  * @category	Class
  * @package 	SportsPress/API
@@ -223,7 +223,7 @@ class SP_REST_API {
 				'update_callback' => 'SP_REST_API::update_post_meta_arrays',
 				'schema'          => array(
 					'description'     => __( 'Results', 'sportspress' ),
-					'type'            => 'array',
+					'type'            => 'object',
 					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
@@ -239,7 +239,7 @@ class SP_REST_API {
 				'update_callback' => 'SP_REST_API::update_post_meta_arrays_multi',
 				'schema'          => array(
 					'description'     => __( 'Box Score', 'sportspress' ),
-					'type'            => 'array',
+					'type'            => 'object',
 					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
@@ -445,7 +445,7 @@ class SP_REST_API {
 				'update_callback' => 'SP_REST_API::update_post_meta_arrays_multi',
 				'schema'          => array(
 					'description'     => __( 'Statistics', 'sportspress' ),
-					'type'            => 'array',
+					'type'            => 'object',
 					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',

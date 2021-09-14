@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 5.7
-Stable tag: 2.7.7
+Stable tag: 2.7.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,9 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.7.8 =
+* Fix - Event results, box scores, and players stats not updating via REST API.
 
 = 2.7.7 =
 * Fix - Events not appearing due to filter malfunction.
