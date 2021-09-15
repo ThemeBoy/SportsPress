@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add player assignments support to SportsPress.
 Author: Savvas
 Author URI: http://themeboy.com/
-Version: 2.7.3
+Version: 2.8.0
 */
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -67,7 +67,7 @@ class SportsPress_Player_Assignments {
 	 * Add args to filter out assigned players
 	 */
 	public function add_args( $args = array(), $team = false ) {
-		if ( ! $team ) return $args;
+		//if ( ! $team ) return $args;
 
 		$tax_query = (array) sp_array_value( $args, 'tax_query', array() );
 		$league_ids = array();
@@ -79,6 +79,8 @@ class SportsPress_Player_Assignments {
 		}
 
 		if ( empty( $league_ids ) && empty( $season_ids ) ) return $args;
+		if ( empty( $league_ids ) && ( ! $team ) ) return $args;
+		if ( empty( $season_ids ) && ( ! $team ) ) return $args;
 
 		$args['meta_query'][] = array(
 			'key' => 'sp_assignments',
@@ -95,7 +97,7 @@ class SportsPress_Player_Assignments {
 	 * Add assigned players to player list
 	 */
 	public function add_players( $players = array(), $args = array(), $team = false, $team_key = 'sp_team' ) {
-		if ( ! $team ) return $players;
+		//if ( ! $team ) return $players;
 
 		$tax_query = (array) sp_array_value( $args, 'tax_query', array() );
 		$league_ids = array();
@@ -107,6 +109,8 @@ class SportsPress_Player_Assignments {
 		}
 
 		if ( empty( $league_ids ) && empty( $season_ids ) ) return $players;
+		if ( empty( $league_ids ) && ( ! $team ) ) return $players;
+		if ( empty( $season_ids ) && ( ! $team ) ) return $players;
 
 		$assignments = array();
 		
@@ -116,6 +120,9 @@ class SportsPress_Player_Assignments {
 					if ( $team && $team != '0' ) {
 						$assignments[] = $l_id.'_'.$s_id.'_'.$team;
 						$compare = 'IN';
+					}else{
+						$assignments[] = $l_id.'_'.$s_id.'_';
+						$compare = 'LIKE';
 					}
 				}
 			}
@@ -126,7 +133,10 @@ class SportsPress_Player_Assignments {
 				if ( $team && $team != '0' ) {
 					$assignments[] = '_'.$s_id.'_'.$team;
 					$compare = 'LIKE';
-				}
+				}else{
+						$assignments[] = '_'.$s_id.'_';
+						$compare = 'LIKE';
+					}
 			}
 		}
 		
@@ -135,7 +145,10 @@ class SportsPress_Player_Assignments {
 				if ( $team && $team != '0' ) {
 					$assignments[] = $l_id.'_%_'.$team;
 					$compare = 'LIKE';
-				}
+				}else{
+						$assignments[] = $l_id.'_';
+						$compare = 'LIKE';
+					}
 			}
 		}
 
@@ -157,24 +170,37 @@ class SportsPress_Player_Assignments {
 				);
 			}
 			if ( 'LIKE' == $compare ) {
-				$args['meta_query'] = array(
-					'relation' => 'AND',
+				if ( $team && $team != '0' ) {
+					$args['meta_query'] = array(
+						'relation' => 'AND',
 
-					array(
-						'key' => $team_key,
-						'value' => $team,
-					),
-					
-					array(
-						'relation' => 'OR',
-					),
-				);
-				foreach( $assignments as $assignment ) {
-					$args['meta_query'][1][] = array(							
-							'key'     => 'sp_assignments',
-							'value'   => $assignment,
-							'compare' => $compare,
-							);
+						array(
+							'key' => $team_key,
+							'value' => $team,
+						),
+						
+						array(
+							'relation' => 'OR',
+						),
+					);
+					foreach( $assignments as $assignment ) {
+							$args['meta_query'][1][] = array(							
+									'key'     => 'sp_assignments',
+									'value'   => $assignment,
+									'compare' => $compare,
+									);
+						}
+				}else{
+					$args['meta_query'] = array(
+							'relation' => 'OR',
+					);
+					foreach( $assignments as $assignment ) {
+						$args['meta_query'][] = array(							
+								'key'     => 'sp_assignments',
+								'value'   => $assignment,
+								'compare' => $compare,
+								);
+					}
 				}
 			}
 		}
