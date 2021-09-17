@@ -40,7 +40,7 @@ jQuery(document).ready(function($){
 	// Radio input toggle
 	$(".sp-radio-toggle").click(function() {
 		if($(this).data("sp-checked")) {
-			$(this).attr("checked", false );
+			$(this).prop("checked", false );
 			$(this).data("sp-checked", false );
 		} else {
 			$(this).data("sp-checked", true );
