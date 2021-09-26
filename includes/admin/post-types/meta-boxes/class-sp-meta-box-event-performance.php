@@ -250,7 +250,7 @@ class SP_Meta_Box_Event_Performance {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array(), $numbers = true, $team_timeline = array(), $timed = array(), $stars = array() ) {
+	public static function table( $labels = array(), $columns = array(), $data = array(), $team_id = null, $has_checkboxes = false, $positions = array(), $status = true, $section = -1, $formats = array(), $order = array(), $numbers = true, $team_timeline = array(), $timed = array(), $stars = array() ) {
 		?>
 		<div class="sp-data-table-container">
 			<table class="widefat sp-data-table sp-performance-table sp-sortable-table">

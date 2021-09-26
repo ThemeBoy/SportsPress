@@ -92,7 +92,7 @@ class SP_Meta_Box_Player_Statistics {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array(), $total_types = array() ) {
+	public static function table( $id = null, $league_id = null, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $leagues = array(), $has_checkboxes = false, $team_select = false, $formats = array(), $total_types = array() ) {
 		$readonly = false;
 		$teams = array_filter( get_post_meta( $id, 'sp_team', false ) );
 		$buffer = apply_filters( 'sportspress_meta_box_player_statistics_table_buffer', array( 'teams' => $teams, 'readonly' => $readonly ), $id );
