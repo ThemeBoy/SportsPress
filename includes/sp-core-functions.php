@@ -1482,7 +1482,9 @@ if ( ! function_exists( 'sp_sort_terms' ) ) {
 			$b = intval( $b );
 			$b = get_term( $b );
 		}
-		return get_term_meta( $a->term_id, 'sp_order', true ) > get_term_meta( $b->term_id, 'sp_order', true );
+		$term_meta_a = get_term_meta( $a->term_id, 'sp_order', true );
+		$term_meta_b = get_term_meta( $b->term_id, 'sp_order', true );
+		return $term_meta_a == $term_meta_b ? 0 : ($term_meta_a > $term_meta_b ? 1 : -1);
 	}
 }
 
