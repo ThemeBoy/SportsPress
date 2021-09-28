@@ -285,6 +285,10 @@ class SP_Calendar extends SP_Secondary_Post {
 
 		// If we are showing past meetings filter by team's id and current event date
 		if ( $this->teams_past ):
+			$this->date_before = 'now'; 
+			if ( ! is_array( $this->teams_past ) ) {
+				$this->teams_past = explode( ',', $this->teams_past );
+			}
 			foreach ( $this->teams_past as $team_past ):
 				$args['meta_query'][] = array(
 					'key' => 'sp_team',
