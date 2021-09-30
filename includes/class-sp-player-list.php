@@ -778,7 +778,7 @@ class SP_Player_List extends SP_Secondary_Post {
 			endif;
 			
 			if ( in_array( 'position', $this->columns ) ):
-				$player_data['position'] = null;
+				$player_data['position'] = wp_get_post_terms($player_id, 'sp_position');
 			endif;
 
 			foreach( $player_data as $key => $value ):
