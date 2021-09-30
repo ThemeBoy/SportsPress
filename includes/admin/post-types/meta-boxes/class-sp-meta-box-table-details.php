@@ -117,7 +117,7 @@ class SP_Meta_Box_Table_Details {
 			sp_dropdown_pages( $args );
 			?>
 			</p>
-		<div id="sp_order" <?php echo ( $orderby === 'default' ? 'style="display: none;"' : '' ); ?>>
+		<div id="sp_order" <?php echo ( $orderby === 'default' || $orderby === '' ? 'style="display: none;"' : '' ); ?>>
 			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
 				<p>
 					<select name="sp_order">
