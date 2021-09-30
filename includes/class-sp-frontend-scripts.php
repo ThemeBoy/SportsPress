@@ -71,7 +71,7 @@ class SP_Frontend_Scripts {
 		global $typenow;
 		// Scripts
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'jquery-datatables', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/jquery.dataTables.min.js', array( 'jquery' ), '1.10.23', true );
+		wp_enqueue_script( 'jquery-datatables', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/jquery.dataTables.min.js', array( 'jquery' ), '1.11.3', true );
 		wp_enqueue_script( 'sportspress', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/sportspress.js', array( 'jquery' ), SP()->version, true );
 
 		// Localize scripts
