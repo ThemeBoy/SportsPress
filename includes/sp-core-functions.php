@@ -7,7 +7,7 @@
  * @author 		ThemeBoy
  * @category 	Core
  * @package 	SportsPress/Functions
- * @version   2.6.8
+ * @version   2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -533,7 +533,7 @@ if ( !function_exists( 'sp_get_post_format' ) ) {
 	function sp_get_post_format( $post_id ) {
 		$format = get_post_meta ( $post_id, 'sp_format', true );
 		if ( isset( $format ) ):
-			$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ), 'equation' => __( 'Equation', 'sportspress' ) ) );
+			$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ), 'equation' => __( 'Equation', 'sportspress' ), 'checkbox' => __( 'Checkbox', 'sportspress' ) ) );
 			return sp_array_value( $options, $format, __( 'Number', 'sportspress' ) );
 		else:
 			return __( 'Number', 'sportspress' );
@@ -547,6 +547,7 @@ if ( !function_exists( 'sp_get_format_placeholder' ) ) {
 			'number' => 0,
 			'time' => '0:00',
 			'text' => '&nbsp;',
+			'checkbox' => '&nbsp;',
 		) );
 		return sp_array_value( $placeholders, $key, 0 );
 	}
@@ -1481,7 +1482,9 @@ if ( ! function_exists( 'sp_sort_terms' ) ) {
 			$b = intval( $b );
 			$b = get_term( $b );
 		}
-		return get_term_meta( $a->term_id, 'sp_order', true ) > get_term_meta( $b->term_id, 'sp_order', true );
+		$term_meta_a = get_term_meta( $a->term_id, 'sp_order', true );
+		$term_meta_b = get_term_meta( $b->term_id, 'sp_order', true );
+		return $term_meta_a == $term_meta_b ? 0 : ($term_meta_a > $term_meta_b ? 1 : -1);
 	}
 }
 
@@ -1579,6 +1582,7 @@ function sp_get_text_options() {
 		__( 'Full Time', 'sportspress' ),
 		__( 'Home', 'sportspress' ),
 		__( 'League', 'sportspress' ),
+		__( 'Leagues', 'sportspress' ),
 		__( 'League Table', 'sportspress' ),
 		__( 'Match Day', 'sportspress' ),
 		__( 'Nationality', 'sportspress' ),
@@ -1598,6 +1602,7 @@ function sp_get_text_options() {
 		__( 'Recap', 'sportspress' ),
 		__( 'Results', 'sportspress' ),
 		__( 'Season', 'sportspress' ),
+		__( 'Seasons', 'sportspress' ),
 		__( 'Staff', 'sportspress' ),
 		__( 'Statistics', 'sportspress' ),
 		__( 'TBD', 'sportspress' ),
@@ -1682,4 +1687,52 @@ if( ! function_exists( 'array_replace' ) ) {
 		}
 		return $res;
 	}
+}
+
+/**
+ * Check if a shortcode is shown on content
+ * @return bool
+ */
+function sp_has_shortcodes( $content, $tags ) {
+	if( is_array( $tags ) ) {
+		foreach ( $tags as $tag ) {
+			preg_match_all( '/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER );
+			if ( empty( $matches ) )
+				return false;
+			foreach ( $matches as $shortcode ) {
+				if ( $tag === $shortcode[2] )
+				return true;
+			}
+		}
+	} else {
+		if ( shortcode_exists( $tags ) ) {
+			preg_match_all( '/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER );
+			if ( empty( $matches ) )
+				return false;
+			foreach ( $matches as $shortcode ) {
+				if ( $tags === $shortcode[2] )
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+/**
+ * Check if a custom flag was uploaded from the user
+ * @return bool
+ */
+function sp_flags( $nationality ) {
+	$nationality = strtolower( $nationality );
+	$flag = '';
+	global $wpdb;
+	$flag_post_id = intval( $wpdb->get_var( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_value LIKE '%/$nationality'" ) );
+	if ( $flag_post_id ) {
+		$flag_src = wp_get_attachment_image_url( $flag_post_id, array( 23,15), false );
+		$flag = '<img src="' . $flag_src . '" alt="' . $nationality . '">';
+	}else{
+		$flag = '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . $nationality . '.png" alt="' . $nationality . '">';
+	}
+	
+	return $flag;
 }

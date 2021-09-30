@@ -14,13 +14,16 @@ jQuery(document).ready(function($){
 	});
 
 	// Chosen select
-	$(".chosen-select").chosen({
-		allow_single_deselect: true,
-		search_contains: true,
-		single_backstroke_delete: false,
-		disable_search_threshold: 10,
-		placeholder_text_multiple: localized_strings.none
-	});
+	$(document).on("postbox-toggled", function() {
+		$(".chosen-select").filter(":visible").chosen({
+			allow_single_deselect: true,
+			search_contains: true,
+			single_backstroke_delete: false,
+			disable_search_threshold: 10,
+			placeholder_text_multiple: localized_strings.none
+		});
+	}).trigger("postbox-toggled");
+
 
 	// Auto key placeholder
 	$("#poststuff #title").on("keyup", function() {
@@ -37,7 +40,7 @@ jQuery(document).ready(function($){
 	// Radio input toggle
 	$(".sp-radio-toggle").click(function() {
 		if($(this).data("sp-checked")) {
-			$(this).attr("checked", false );
+			$(this).prop("checked", false );
 			$(this).data("sp-checked", false );
 		} else {
 			$(this).data("sp-checked", true );
@@ -255,7 +258,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Activate total stats calculator
-	if($(".sp-data-table .sp-total").size()) {
+	if($(".sp-data-table .sp-total").length) {
 		$(".sp-data-table .sp-post td input").on("keyup", function() {
 			$(this).closest(".sp-data-table").find(".sp-total td").eq($(this).parent().index()).find("input[data-sp-format=number][data-sp-total-type!=average]").trigger("updateTotal");
 		});
@@ -488,11 +491,11 @@ jQuery(document).ready(function($){
 	});
 
 	// Event format affects data
-	$(".post-type-sp_event #post-formats-select input.post-format").change(function() {
+	$(".post-type-sp_event #post-formats-select").change(function() {
 		layout = $(".post-type-sp_event #post-formats-select input:checked").val();
 		if ( layout == "friendly" ) {
-			$(".sp_event-sp_league-field").show().find("select").prop("disabled", false);
-			$(".sp_event-sp_season-field").show().find("select").prop("disabled", false);
+			$(".sp_event-sp_league-field").hide().find("select").prop("disabled", true);
+			$(".sp_event-sp_season-field").hide().find("select").prop("disabled", true);
 		} else {
 			$(".sp_event-sp_league-field").show().find("select").prop("disabled", false);
 			$(".sp_event-sp_season-field").show().find("select").prop("disabled", false);
@@ -500,10 +503,10 @@ jQuery(document).ready(function($){
 	});
 
 	// Trigger event format change
-	$(".post-type-sp_event #post-formats-select input.post-format").trigger("change");
+	$(".post-type-sp_event #post-formats-select").trigger("change");
 
 	// Calendar layout affects data
-	$(".post-type-sp_calendar #post-formats-select input.post-format").change(function() {
+	$(".post-type-sp_calendar #post-formats-select").change(function() {
 		layout = $(".post-type-sp_calendar #post-formats-select input:checked").val();
 		$(".sp-calendar-table tr").each(function() {
 			if ( layout == "list" ) {
@@ -517,10 +520,10 @@ jQuery(document).ready(function($){
 	});
 
 	// Trigger calendar layout change
-	$(".post-type-sp_calendar #post-formats-select input.post-format").trigger("change");
+	$(".post-type-sp_calendar #post-formats-select").trigger("change");
 
 	// Player list layout affects data
-	$(".post-type-sp_list #post-formats-select input.post-format").change(function() {
+	$(".post-type-sp_list #post-formats-select").change(function() {
 		layout = $(".post-type-sp_list #post-formats-select input:checked").val();
 		$(".sp-player-list-table tr").each(function() {
 			if ( layout == "list" ) {
@@ -532,7 +535,7 @@ jQuery(document).ready(function($){
 	});
 
 	// Trigger player list layout change
-	$(".post-type-sp_list #post-formats-select input.post-format").trigger("change");
+	$(".post-type-sp_list #post-formats-select").trigger("change");
 
 	// Configure primary result option (Ajax)
 	$(".sp-admin-config-table").on("click", ".sp-primary-result-option", function() {

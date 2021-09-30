@@ -104,6 +104,7 @@
 .sp-data-table thead .sorting_asc_disabled,
 .sp-data-table thead .sorting_desc_disabled {
 	cursor: pointer;
+	position: relative;
 }
 .sp-data-table tbody a {
 	text-decoration: none;
@@ -112,6 +113,7 @@
 .sp-data-table .sorting_asc:after,
 .sp-data-table .sorting_desc:after {
 	font-family: dashicons;
+	margin: 0 -.2em;
 }
 .sp-data-table .sorting:after {
 	content: "\f156";
@@ -132,6 +134,10 @@
 .sp-data-table .data-number,
 .sp-data-table .data-rank {
 	width: 1px;
+}
+.sp-data-table .sp-checkbox {
+	font-family: sportspress;
+	vertical-align: bottom;
 }
 
 /* Post Content */
@@ -203,16 +209,21 @@
 	line-height: 2em;
 }
 .sp-player-list .data-name .player-photo,
-.sp-player-list .data-name .player-flag {
+.sp-player-list .data-name .player-flag,
+.sp-player-list .data-team .team-logo {
 	width: 2em;
 	height: 2em;
-	margin-right: 0.5em;
 	display: inline-block;
 	vertical-align: middle;
 	text-align: center;
 }
+.sp-player-list .data-name .player-photo,
+.sp-player-list .data-name .player-flag {
+	margin-right: 0.5em;
+}
 .sp-player-list .data-name .player-photo img,
-.sp-player-list .data-name .player-flag img {
+.sp-player-list .data-name .player-flag img,
+.sp-player-list .data-team .team-logo img {
 	width: auto;
 	height: auto;
 	max-width: 2em;
@@ -446,6 +457,10 @@
 	margin: 10px;
 	padding: 0;
 	clear: both;
+}
+
+span.sp_event_spec_label {
+	font-weight: bold;
 }
 
 /* Event Logos Block */

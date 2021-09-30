@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.5.5
+ * @version   2.8.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -14,6 +14,7 @@ global $wpdb, $m, $monthnum, $year, $wp_locale;
 $defaults = array(
 	'id' => null,
 	'status' => 'default',
+	'format' => 'default',
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
@@ -37,6 +38,8 @@ extract( $defaults, EXTR_SKIP );
 $calendar = new SP_Calendar( $id );
 if ( $status != 'default' )
 	$calendar->status = $status;
+if ( $format != 'default' )
+	$calendar->event_format = $format;
 if ( $date != 'default' )
 	$calendar->date = $date;
 if ( $date_from != 'default' )
@@ -183,10 +186,11 @@ if ( $dayswithposts ) {
 	$daywithpost = array();
 }
 
-if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false || stripos($_SERVER['HTTP_USER_AGENT'], 'camino') !== false || stripos($_SERVER['HTTP_USER_AGENT'], 'safari') !== false)
+if ( array_key_exists( 'HTTP_USER_AGENT', $_SERVER ) && preg_match( '/(MSIE|camino|safari)/', $_SERVER[ 'HTTP_USER_AGENT' ] ) ) {
 	$ak_title_separator = "\n";
-else
+} else {
 	$ak_title_separator = ', ';
+}
 
 $ak_titles_for_day = array();
 $ak_post_titles = $wpdb->get_results("SELECT ID, post_title, post_date, DAYOFMONTH(post_date) as dom "

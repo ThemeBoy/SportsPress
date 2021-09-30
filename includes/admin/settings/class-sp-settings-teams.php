@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version		2.6
+ * @version		2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -81,6 +81,14 @@ class SP_Settings_Teams extends SP_Settings_Page {
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
 				),
+				
+				array(
+						'title'     => __( 'Comments', 'sportspress' ),
+						'desc' 		=> __( 'Allow people to post comments on Team page', 'sportspress' ),
+						'id' 		=> 'sportspress_team_comment_status',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+					),
 			)),
 
 			array(

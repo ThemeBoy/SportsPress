@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registers post types and taxonomies
  *
  * @class 		SP_Post_types
- * @version		2.6.13
+ * @version		2.7.1
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -22,7 +22,7 @@ class SP_Post_types {
 	public function __construct() {
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 10 );
-		add_action( 'wp_trash_post', array( $this, 'delete_config_post' ) );
+		add_action( 'trashed_post', array( $this, 'delete_config_post' ) );
 		add_filter( 'the_posts', array( $this, 'display_scheduled_events' ) );
 	}
 
@@ -392,6 +392,7 @@ class SP_Post_types {
 						'search_items' 			=> __( 'Search', 'sportspress' ),
 						'not_found' 			=> __( 'No results found.', 'sportspress' ),
 						'not_found_in_trash' 	=> __( 'No results found.', 'sportspress' ),
+						'featured_image'		=> __( 'Icon', 'sportspress' ),
 						'set_featured_image' 	=> __( 'Select Icon', 'sportspress' ),
  						'remove_featured_image' => __( 'Remove icon', 'sportspress' ),
  						'use_featured_image' 	=> __( 'Add icon', 'sportspress' ),
@@ -403,7 +404,7 @@ class SP_Post_types {
 					'publicly_queryable' 	=> false,
 					'exclude_from_search' 	=> true,
 					'hierarchical' 			=> false,
-					'supports' 				=> array( 'title', 'page-attributes', 'excerpt' ),
+					'supports' 				=> array( 'title', 'thumbnail', 'page-attributes', 'excerpt' ),
 					'has_archive' 			=> false,
 					'show_in_nav_menus' 	=> false,
 					'can_export' 			=> false,
@@ -447,9 +448,7 @@ class SP_Post_types {
 
 		register_post_type( 'sp_event', apply_filters( 'sportspress_register_post_type_event', $args  ) );
 
-		register_post_type( 'sp_team',
-			apply_filters( 'sportspress_register_post_type_team',
-				array(
+		$args = array(
 					'labels' => array(
 						'name' 					=> __( 'Teams', 'sportspress' ),
 						'singular_name' 		=> __( 'Team', 'sportspress' ),
@@ -480,9 +479,13 @@ class SP_Post_types {
 					'show_in_rest' 			=> true,
 					'rest_controller_class' => 'SP_REST_Posts_Controller',
 					'rest_base' 			=> 'teams',
-				)
-			)
-		);
+				);
+		
+		if ( get_option( 'sportspress_team_comment_status', 'no' ) == 'yes' ):
+			$args[ 'supports' ][] = 'comments';
+		endif;
+		
+		register_post_type( 'sp_team', apply_filters( 'sportspress_register_post_type_team', $args  ) );
 
 		register_post_type( 'sp_player',
 			apply_filters( 'sportspress_register_post_type_player',

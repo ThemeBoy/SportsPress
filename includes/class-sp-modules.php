@@ -5,7 +5,7 @@
  * The SportsPress modules class stores available modules.
  *
  * @class 		SP_Modules
- * @version		2.6.9
+ * @version		2.6.15
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -42,6 +42,13 @@ class SP_Modules {
 					'icon' => 'sp-icon-scoreboard',
 					'link' => 'https://www.themeboy.com/sportspress-extensions/scoreboard/',
 					'desc' => __( 'Display multiple event results in a horizontal scoreboard.', 'sportspress' ),
+				),
+				'google_maps' => array(
+					'label' => __( 'Google Maps', 'sportspress' ),
+					'class' => 'SportsPress_Google_Maps',
+					'icon' => 'sp-icon-location',
+					'link' => 'https://www.themeboy.com/sportspress-extensions/google-maps/',
+					'desc' => __( 'Use Google Maps instead of OpenStreetMap for venues.', 'sportspress' ),
 				),
 				'user_scores' => array(
 					'label' => __( 'User Scores', 'sportspress' ),

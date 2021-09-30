@@ -30,6 +30,8 @@ class SportsPress_Gutenberg {
 
 		add_filter( 'gutenberg_can_edit_post_type', array( $this, 'can_edit_post_type' ), 10, 2 );
 		add_filter( 'use_block_editor_for_post_type', array( $this, 'can_edit_post_type' ), 10, 2 );
+		//add_filter( 'block_categories', array( $this, 'add_category' ), 10, 2 );
+		//add_action( 'enqueue_block_editor_assets', array( $this, 'load_blocks' ) );
 	}
 
 	/**
@@ -51,6 +53,48 @@ class SportsPress_Gutenberg {
 	 */
 	function can_edit_post_type( $enabled, $post_type ) {
 		return is_sp_post_type( $post_type ) ? false : $enabled;
+	}
+
+	/**
+	 * Add SportsPress category to Gutenberg.
+	 */
+	function add_category( $categories, $post ) {
+		return array_merge(
+			$categories,
+			array(
+				array(
+					'slug' => 'sportspress',
+					'title' => __( 'SportsPress', 'sportspress' ),
+				),
+			)
+		);
+	}
+
+	/**
+	 * Load Gutenberg blocks.
+	 */
+	function load_blocks() {
+	  wp_enqueue_script( 'sp-block-event-calendar', plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/js/blocks/event-calendar.js', array( 'wp-blocks', 'wp-editor' ), true );
+
+		$strings = apply_filters( 'sportspress_localized_strings', array(
+			'event_calendar' => __( 'Event Calendar', 'sportspress' ),
+			'properties' => __( 'Properties', 'sportspress' ),
+			'title' => __( 'Title', 'sportspress' ),
+			'select_calendar' => sprintf( __( 'Select %s:', 'sportspress' ), __( 'Calendar', 'sportspress' ) ),
+			'all' => __( 'All', 'sportspress' ),
+		) );
+
+		$posts = array(
+			'events' => (array) get_posts(
+				array(
+					'post_type' => 'sp_event',
+					'posts_per_page' => -1,
+				)
+			),
+		);
+
+		wp_localize_script( 'sp-block-event-calendar', 'strings', $strings );
+		wp_localize_script( 'sp-block-event-calendar', 'posts', $posts );
 	}
 }
 

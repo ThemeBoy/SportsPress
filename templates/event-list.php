@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.6.12
+ * @version   2.7.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -13,7 +13,7 @@ $defaults = array(
 	'id' => null,
 	'title' => false,
 	'status' => 'default',
-	'format' => 'all',
+	'format' => 'default',
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
@@ -172,8 +172,11 @@ $identifier = uniqid( 'eventlist_' );
 					if ( sp_column_active( $usecolumns, 'season' ) )
 						echo '<th class="data-season">' . __( 'Season', 'sportspress' ) . '</th>';
 
-					if ( sp_column_active( $usecolumns, 'venue' ) )
+					if ( sp_column_active( $usecolumns, 'venue' ) ) {
 						echo '<th class="data-venue">' . __( 'Venue', 'sportspress' ) . '</th>';
+					}else{
+						echo '<th style="display:none;" class="data-venue">' . __( 'Venue', 'sportspress' ) . '</th>';
+					}
 
 					if ( sp_column_active( $usecolumns, 'article' ) )
 						echo '<th class="data-article">' . __( 'Article', 'sportspress' ) . '</th>';
@@ -200,6 +203,11 @@ $identifier = uniqid( 'eventlist_' );
 					$status = get_post_meta( $event->ID, 'sp_status', true );
 
 					$main_results = apply_filters( 'sportspress_event_list_main_results', sp_get_main_results( $event ), $event->ID );
+
+					$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
+					if ( $reverse_teams ) {
+						$main_results = array_reverse( $main_results, true );
+					}
 
 					$teams_output = '';
 					$team_class = '';
@@ -257,7 +265,12 @@ $identifier = uniqid( 'eventlist_' );
 						if ( $link_events ) $date_html = '<a href="' . get_post_permalink( $event->ID, false, true ) . '" itemprop="url">' . $date_html . '</a>';
 
 						echo '<td class="data-date" itemprop="startDate" content="' . mysql2date( 'Y-m-d\TH:iP', $event->post_date ) . '" data-label="'.__( 'Date', 'sportspress' ).'">' . $date_html . '</td>';
-
+						
+						//Check if the reverse_teams option is selected and alter the teams order
+						if ( $reverse_teams ) {
+							$teams_array = array_reverse( $teams_array, true );
+						}
+						
 						switch ( $title_format ) {
 							case 'homeaway':
 								if ( sp_column_active( $usecolumns, 'event' ) ) {
@@ -306,7 +319,7 @@ $identifier = uniqid( 'eventlist_' );
 										echo '<td class="data-event data-teams" data-label="'.__( 'Teams', 'sportspress' ).'">' . $teams_output . '</td>';
 									} else {
 										$title_html = implode( ' ', $team_logos ) . ' ' . $event->post_title;
-										if ( $link_events ) $title_html = '<a href="' . get_post_permalink( $event->ID, false, true ) . '" itemprop="url">' . $title_html . '</a>';
+										if ( $link_events ) $title_html = '<a href="' . get_post_permalink( $event->ID, false, true ) . '" itemprop="url name">' . $title_html . '</a>';
 										echo '<td class="data-event" data-label="'.__( 'Event', 'sportspress' ).'">' . $title_html . '</td>';
 									}
 								}
@@ -372,31 +385,39 @@ $identifier = uniqid( 'eventlist_' );
 						if ( sp_column_active( $usecolumns, 'league' ) ):
 							echo '<td class="data-league" data-label="'.__( 'League', 'sportspress' ).'">';
 							$leagues = get_the_terms( $event->ID, 'sp_league' );
-							if ( $leagues ): foreach ( $leagues as $league ):
-								echo $league->name;
-							endforeach; endif;
+							if ( $leagues ):
+								echo implode( ', ', wp_list_pluck( $leagues, 'name' ) );
+							endif;
 							echo '</td>';
 						endif;
 
 						if ( sp_column_active( $usecolumns, 'season' ) ):
 							echo '<td class="data-season" data-label="'.__( 'Season', 'sportspress' ).'">';
 							$seasons = get_the_terms( $event->ID, 'sp_season' );
-							if ( $seasons ): foreach ( $seasons as $season ):
-								echo $season->name;
-							endforeach; endif;
+							if ( $seasons ):
+								echo implode( ', ', wp_list_pluck( $seasons, 'name' ) );
+							endif;
 							echo '</td>';
 						endif;
 
 						if ( sp_column_active( $usecolumns, 'venue' ) ):
-							echo '<td class="data-venue" data-label="'.__( 'Venue', 'sportspress' ).'">';
+							echo '<td class="data-venue" data-label="'.__( 'Venue', 'sportspress' ).'" itemprop="location" itemscope itemtype="http://schema.org/Place">';
+							echo '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';
 							if ( $link_venues ):
 								the_terms( $event->ID, 'sp_venue' );
 							else:
 								$venues = get_the_terms( $event->ID, 'sp_venue' );
-								if ( $venues ): foreach ( $venues as $venue ):
-									echo $venue->name;
-								endforeach; endif;
+								if ( $venues ):
+									echo implode( ', ', wp_list_pluck( $venues, 'name' ) );
+								endif;
 							endif;
+							echo '</div>';
+							echo '</td>';
+						else:
+							echo '<td style="display:none;" class="data-venue" data-label="'.__( 'Venue', 'sportspress' ).'" itemprop="location" itemscope itemtype="http://schema.org/Place">';
+							echo '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';
+							_e( 'N/A', 'sportspress' );
+							echo '</div>';
 							echo '</td>';
 						endif;
 

@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add player lists to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.6.14
+Version: 2.6.15
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
  * Main SportsPress Player Lists Class
  *
  * @class SportsPress_Player_Lists
- * @version	2.6.14
+ * @version	2.6.15
  */
 class SportsPress_Player_Lists {
 
@@ -48,7 +48,7 @@ class SportsPress_Player_Lists {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_PLAYER_LISTS_VERSION' ) )
-			define( 'SP_PLAYER_LISTS_VERSION', '2.6.14' );
+			define( 'SP_PLAYER_LISTS_VERSION', '2.6.15' );
 
 		if ( !defined( 'SP_PLAYER_LISTS_URL' ) )
 			define( 'SP_PLAYER_LISTS_URL', plugin_dir_url( __FILE__ ) );
@@ -265,6 +265,25 @@ class SportsPress_Player_Lists {
 					'default'	=> 'no',
 					'type' 		=> 'checkbox',
 					'checkboxgroup'		=> 'end',
+				),
+				
+				array(
+					'title'     => __( 'Teams', 'sportspress' ),
+					'desc' 		=> __( 'Display logos', 'sportspress' ),
+					'id' 		=> 'sportspress_list_show_logos',
+					'default'	=> 'no',
+					'type' 		=> 'checkbox',
+				),
+
+				array(
+					'title'     => __( 'Teams', 'sportspress' ),
+					'id'        => 'sportspress_list_team_format',
+					'default'   => 'name',
+					'type'      => 'radio',
+					'options'   => array(
+						'name' => __( 'Name', 'sportspress' ),
+						'logo' => __( 'Logo', 'sportspress' ),
+					),
 				),
 
 				array(

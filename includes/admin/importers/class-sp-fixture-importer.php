@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Importers
- * @version		2.5
+ * @version		2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -138,6 +138,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 					endif;
 
 					// Update venue
+					if ( $venue == '' ) {
+						$team = reset( $teams );
+						$team_object = get_page_by_title( stripslashes( $team ), OBJECT, 'sp_team' );
+						$venue = sp_get_the_term_id( $team_object->ID, 'sp_venue' );
+					}
 					wp_set_object_terms( $id, $venue, 'sp_venue', false );
 
 					// Update match day

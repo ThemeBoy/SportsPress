@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version		2.6.12
+ * @version		2.6.20
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -68,8 +68,8 @@ $i = 0;
 					foreach ( $subs as $sub_id => $sub ):
 						if ( ! $sub_id )
 							continue;
-						$index = sp_array_value( $sub, 'sub', 0 );
-						$lineup_sub_relation[ $index ] = $sub_id;
+						$i = sp_array_value( $sub, 'sub', 0 );
+						$lineup_sub_relation[ $i ] = $sub_id;
 					endforeach;
 
 					$data = apply_filters( 'sportspress_event_performance_players', $data, $lineups, $subs, $mode );
@@ -130,7 +130,7 @@ $i = 0;
 						foreach ( $labels as $key => $label ):
 							if ( 'name' == $key )
 								continue;
-							
+
 							$format = sp_array_value( $formats, $key, 'number' );
 							$placeholder = sp_get_format_placeholder( $format );
 
@@ -162,14 +162,18 @@ $i = 0;
 									$value = $position = implode( ', ', $positions );
 								endif;
 							else:
-								if ( array_key_exists( $key, $row ) && $row[ $key ] != '' ):
-									$value = $row[ $key ];
+								if ( array_key_exists( $key, $row ) && $row[ $key ] !== '' ):
+									if ( 'checkbox' === $format ):
+										$value = '<span class="sp-checkbox">' . $row[ $key ] . '</span>';
+									else:
+										$value = $row[ $key ];
+									endif;
 								else:
 									$value = $placeholder;
 								endif;
 								
 								if ( 'number' === $format ):
-									$add = floatval( $value );
+									$add = apply_filters( 'sportspress_event_performance_add_value', floatval( $value ), $key );
 									$totals[ $key ] += $add;
 								endif;
 							endif;
@@ -274,7 +278,11 @@ $i = 0;
 				</<?php echo ( $show_players ? 'tfoot' : 'tbody' ); ?>>
 			<?php endif; ?>
 		</table>
+		<?php
+			if ( isset( $show_staff ) ) {
+				echo sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
+			}
+		?>
 	</div>
-	
 	<?php do_action( 'sportspress_after_event_performance_table', $data, $lineups, $subs, $class ); ?>
 </div>

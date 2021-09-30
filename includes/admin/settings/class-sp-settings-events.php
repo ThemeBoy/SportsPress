@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version		2.6
+ * @version		2.7.1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -181,8 +181,8 @@ class SP_Settings_Events extends SP_Settings_Page {
 				),
 
 				array(
-					'title'     => __( 'Google Maps', 'sportspress' ),
-					'desc' 		=> __( 'Display maps', 'sportspress' ),
+					'title'     => __( 'Venue Map', 'sportspress' ),
+					'desc' 		=> __( 'Display venue map', 'sportspress' ),
 					'id' 		=> 'sportspress_event_show_maps',
 					'default'	=> 'yes',
 					'type' 		=> 'checkbox',
@@ -469,7 +469,7 @@ class SP_Settings_Events extends SP_Settings_Page {
 		parent::save();
 		
 		if ( isset( $_POST['sportspress_event_teams_delimiter'] ) )
-	    	update_option( 'sportspress_event_teams_delimiter', $_POST['sportspress_event_teams_delimiter'] );
+	    	update_option( 'sportspress_event_teams_delimiter', sanitize_text_field( $_POST['sportspress_event_teams_delimiter'] ) );
 	}
 
 	/**

@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add officials to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.6.14
+Version: 2.6.15
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
  * Main SportsPress Officials Class
  *
  * @class SportsPress_Officials
- * @version	2.6.14
+ * @version	2.6.15
  */
 class SportsPress_Officials {
 
@@ -66,7 +66,7 @@ class SportsPress_Officials {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_OFFICIALS_VERSION' ) )
-			define( 'SP_OFFICIALS_VERSION', '2.6.14' );
+			define( 'SP_OFFICIALS_VERSION', '2.6.15' );
 
 		if ( !defined( 'SP_OFFICIALS_URL' ) )
 			define( 'SP_OFFICIALS_URL', plugin_dir_url( __FILE__ ) );
@@ -330,94 +330,6 @@ class SportsPress_Officials {
 	public function calendar_columns( $columns = array() ) {
 		$columns['officials'] = __( 'Officials', 'sportspress' );
 		return $columns;
-	}
-
-	/**
-	 * Add settings.
-	 *
-	 * @return array
-	 */
-	public function add_settings( $settings ) {
-		return array_merge( $settings,
-			array(
-				array( 'title' => __( 'Officials', 'sportspress' ), 'type' => 'title', 'id' => 'table_options' ),
-			),
-
-			apply_filters( 'sportspress_table_options', array(
-				array(
-					'title'     => __( 'Duty', 'sportspress' ),
-					'desc' 		=> __( 'Display title', 'sportspress' ),
-					'id' 		=> 'sportspress_table_show_title',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-				),
-
-				array(
-					'title'     => __( 'Teams', 'sportspress' ),
-					'desc' 		=> __( 'Display logos', 'sportspress' ),
-					'id' 		=> 'sportspress_table_show_logos',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-				),
-
-				array(
-					'title'     => __( 'Pagination', 'sportspress' ),
-					'desc' 		=> __( 'Paginate', 'sportspress' ),
-					'id' 		=> 'sportspress_table_paginated',
-					'default'	=> 'yes',
-					'type' 		=> 'checkbox',
-				),
-				
-				array(
-					'title' 	=> __( 'Limit', 'sportspress' ),
-					'id' 		=> 'sportspress_table_rows',
-					'class' 	=> 'small-text',
-					'default'	=> '10',
-					'desc' 		=> __( 'teams', 'sportspress' ),
-					'type' 		=> 'number',
-					'custom_attributes' => array(
-						'min' 	=> 1,
-						'step' 	=> 1
-					),
-				),
-				
-				array(
-					'title' 	=> __( 'Form', 'sportspress' ),
-					'id' 		=> 'sportspress_form_limit',
-					'class' 	=> 'small-text',
-					'default'	=> '5',
-					'desc' 		=> __( 'events', 'sportspress' ),
-					'type' 		=> 'number',
-					'custom_attributes' => array(
-						'min' 	=> 1,
-						'step' 	=> 1
-					),
-				),
-
-				array(
-					'title'     => __( 'Pos', 'sportspress' ),
-					'desc' 		=> __( 'Always increment', 'sportspress' ),
-					'id' 		=> 'sportspress_table_increment',
-					'default'	=> 'no',
-					'type' 		=> 'checkbox',
-				),
-
-				array(
-					'title'     => __( 'Tiebreaker', 'sportspress' ),
-					'id'        => 'sportspress_table_tiebreaker',
-					'default'   => 'none',
-					'type'      => 'select',
-					'options'   => array(
-						'none' => __( 'None', 'sportspress' ),
-						'h2h' => __( 'Head to head', 'sportspress' ),
-					),
-				),
-			) ),
-
-			array(
-				array( 'type' => 'sectionend', 'id' => 'table_options' ),
-			)
-		);
 	}
 
 	/**

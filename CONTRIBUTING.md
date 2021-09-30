@@ -9,7 +9,7 @@ __Note:__
 GitHub is for *bug reports and contributions only* - if you have a support question or a request for a customization don't post here. Use [WordPress.org](http://wordpress.org/support/plugin/sportspress) for community support, and for customizations we recommend one of the following services:
 
 - [Elto](https://www.elto.com/)
-- [Codeable](https://codeable.io/)
+- [Codeable](https://codeable.io/ambassadors/themeboy/)
 
 ## Getting Started
 

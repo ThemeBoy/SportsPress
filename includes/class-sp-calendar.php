@@ -8,7 +8,7 @@
  * https://wordpress.org/support/topic/timezone-issues-with-schedule-calendar-list/
  *
  * @class 		SP_Calendar
- * @version   2.6.11
+ * @version   2.6.20
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -154,7 +154,6 @@ class SP_Calendar extends SP_Secondary_Post {
 			'posts_per_page' => $this->number,
 			'orderby' => $this->orderby,
 			'order' => $this->order,
-			'post_status' => $this->status,
 			'meta_query' => array(
 				'relation' => 'AND'
 			),
@@ -335,6 +334,7 @@ class SP_Calendar extends SP_Secondary_Post {
 				$seasons = get_the_terms( $this->ID, 'sp_season' );
 				$venues = get_the_terms( $this->ID, 'sp_venue' );
 				$teams = array_filter( get_post_meta( $this->ID, 'sp_team', false ) );
+				$players = array_filter( get_post_meta( $this->ID, 'sp_player', false ) );
 				$table = get_post_meta( $this->ID, 'sp_table', true );
 
 				if ( ! isset( $league_ids ) ) $league_ids = array();
@@ -388,17 +388,24 @@ class SP_Calendar extends SP_Secondary_Post {
 			}
 
 			if ( ! empty( $teams ) ) {
-				$args['meta_query']	= array(
-					array(
-						'key' => 'sp_team',
-						'value' => $teams,
-						'compare' => 'IN',
-					),
+				$args['meta_query'][] = array(
+					'key' => 'sp_team',
+					'value' => $teams,
+					'compare' => 'IN',
+				);
+			}
+			
+			if ( ! empty( $players ) ) {
+				$args['meta_query'][]	= array(
+					'key' => 'sp_player',
+					'value' => $players,
+					'compare' => 'IN',
 				);
 			}
 		
 			if ( $this->event) {
 				$args['p'] = $this->event;
+				$args['post_status'] = array( 'publish', 'future' );
 			}
 
 			if ( 'auto' === $this->date && 'any' === $this->status ) {
@@ -415,23 +422,13 @@ class SP_Calendar extends SP_Secondary_Post {
 
 				$events = array_merge_recursive( $results, $fixtures );
 			} else {
+				$args['post_status'] = $this->status == 'any' ? array('publish', 'future') : explode ( ',', $this->status );
 				$events = get_posts( $args );
 			}
 
 		else:
 			$events = null;
 		endif;
-		
-		// Filter out unessecary events if we are showing past meetings
-		if ( $this->teams_past ){
-			$events_past = array();
-			foreach ( $events as $single_event ) {
-				if ( sort( get_post_meta( $single_event->ID, 'sp_team' ) ) === sort( $this->teams_past ) ) {
-					$events_past[] = $single_event;
-				}
-			}
-			$events = $events_past;
-		}
 
 		// Remove any calendar selection filters
 		remove_filter( 'posts_where', array( $this, 'range' ) );

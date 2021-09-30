@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.5.5
+ * @version		2.6.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,11 +19,16 @@ class SP_Meta_Box_Table_Data {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$table = new SP_League_Table( $post );
-		list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );
-		$adjustments = $table->adjustments;
-		$highlight = get_post_meta( $table->ID, 'sp_highlight', true );
-		self::table( $table->ID, $columns, $usecolumns, $data, $placeholders, $adjustments, $highlight );
+		global $pagenow;
+		if ( is_admin() && in_array( $pagenow, array( 'post-new.php' ) ) && 'sp_table' == get_post_type() ) {
+			self::table( );
+		}else{
+			$table = new SP_League_Table( $post );
+			list( $columns, $usecolumns, $data, $placeholders, $merged ) = $table->data( true );
+			$adjustments = $table->adjustments;
+			$highlight = get_post_meta( $table->ID, 'sp_highlight', true );
+			self::table( $table->ID, $columns, $usecolumns, $data, $placeholders, $adjustments, $highlight );
+		}
 	}
 
 	/**
@@ -39,7 +44,7 @@ class SP_Meta_Box_Table_Data {
 	/**
 	 * Admin edit table
 	 */
-	public static function table( $id, $columns = array(), $usecolumns = null, $data = array(), $placeholders = array(), $adjustments = array(), $highlight = null, $readonly = false ) {
+	public static function table( $id = 0, $columns = array(), $usecolumns = null, $data = array(), $placeholders = array(), $adjustments = array(), $highlight = null, $readonly = false ) {
 		if ( is_array( $usecolumns ) )
 			$usecolumns = array_filter( $usecolumns );
 

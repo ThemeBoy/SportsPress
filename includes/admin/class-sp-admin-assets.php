@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version   2.6.8
+ * @version   2.6.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -84,12 +84,6 @@ class SP_Admin_Assets {
 
 		wp_register_script( 'jquery-fitvids', SP()->plugin_url() . '/assets/js/jquery.fitvids.js', array( 'jquery' ), '1.1', true );
 
-		wp_register_script( 'google-maps', '//tboy.co/maps_js' );
-
-		wp_register_script( 'jquery-locationpicker', SP()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.6', true );
-
-		wp_register_script( 'sportspress-admin-locationpicker', SP()->plugin_url() . '/assets/js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), SP_VERSION, true );
-
 		wp_register_script( 'sportspress-admin-equationbuilder', SP()->plugin_url() . '/assets/js/admin/equationbuilder.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable' ), SP_VERSION, true );
 
 		wp_register_script( 'sportspress-admin-colorpicker', SP()->plugin_url() . '/assets/js/admin/colorpicker.js', array( 'jquery', 'wp-color-picker', 'iris' ), SP_VERSION, true );
@@ -128,13 +122,6 @@ class SP_Admin_Assets {
 
 		if ( in_array( $screen->id, array( 'widgets' ) ) ) {
 	    	wp_enqueue_script( 'sportspress-admin-widgets' );
-		}
-
-	    // Edit venue pages
-	    if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
-	    	wp_enqueue_script( 'google-maps' );
-	    	wp_enqueue_script( 'jquery-locationpicker' );
-	    	wp_enqueue_script( 'sportspress-admin-locationpicker' );
 		}
 
 		// Edit color

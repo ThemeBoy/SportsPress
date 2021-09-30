@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version   2.5.5
+ * @version   2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -31,6 +31,10 @@ class SP_Meta_Box_Table_Details {
 		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
 		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
+		$event_status = get_post_meta( $post->ID, 'sp_event_status', true );
+		if ( empty( $event_status ) ) {
+			$event_status = array( 'publish', 'future' );
+		}
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -91,6 +95,11 @@ class SP_Meta_Box_Table_Details {
 				sp_post_adder( $post_type, __( 'Add New', 'sportspress' ) );
 			}
 			?>
+			<p><strong><?php _e( 'Event Status (with results)', 'sportspress' ); ?></strong></p>
+			<p>
+				<input type="checkbox" name="sp_event_status[]" value="publish" <?php echo ( in_array( "publish" , $event_status) ) ? 'checked' : false; ?>> Published/Played<br>
+				<input type="checkbox" name="sp_event_status[]" value="future" <?php echo ( in_array( "future" , $event_status) ) ? 'checked' : false; ?>> Scheduled/Future<br>
+			</p>
 		</div>
 		<p><strong><?php _e( 'Sort by', 'sportspress' ); ?></strong></p>
 			<p>
@@ -137,5 +146,6 @@ class SP_Meta_Box_Table_Details {
 		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
 		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', array() ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
+		update_post_meta( $post_id, 'sp_event_status', sp_array_value( $_POST, 'sp_event_status', array() ) );
 	}
 }

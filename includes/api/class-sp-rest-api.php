@@ -5,7 +5,7 @@
  * The SportsPress REST API class handles all API-related hooks.
  *
  * @class 		SP_REST_API
- * @version		2.6.1
+ * @version		2.7.8
  * @package		SportsPress/Classes
  * @category	Class
  * @package 	SportsPress/API
@@ -120,21 +120,53 @@ class SP_REST_API {
 			)
 		);
 
-		register_rest_field( 'sp_event',
-			'day',
-			array(
-				'get_callback'    => 'SP_REST_API::get_post_data',
-				'update_callback' => 'SP_REST_API::update_post_meta',
-				'schema'          => array(
-					'description'     => __( 'Match Day', 'sportspress' ),
-					'type'            => 'string',
-					'context'         => array( 'view', 'edit', 'embed' ),
-					'arg_options'     => array(
-						'sanitize_callback' => 'sanitize_text_field',
-					),
+	register_rest_field( 'sp_event',
+		'format',
+		array(
+			'get_callback'    => 'SP_REST_API::get_post_data',
+			'update_callback' => 'SP_REST_API::update_post_meta',
+			'schema'          => array(
+				'description'     => __( 'Format', 'sportspress' ),
+				'type'            => 'string',
+				'context'         => array( 'view', 'edit', 'embed' ),
+				'arg_options'     => array(
+					'sanitize_callback' => 'sanitize_text_field',
 				),
-			)
-		);
+			),
+		)
+	);
+	
+	register_rest_field( 'sp_event',
+		'mode',
+		array(
+			'get_callback'    => 'SP_REST_API::get_post_data',
+			'update_callback' => 'SP_REST_API::update_post_meta',
+			'schema'          => array(
+				'description'     => __( 'Mode', 'sportspress' ),
+				'type'            => 'string',
+				'context'         => array( 'view', 'edit', 'embed' ),
+				'arg_options'     => array(
+					'sanitize_callback' => 'sanitize_text_field',
+				),
+			),
+		)
+	);
+
+    register_rest_field( 'sp_event',
+      'day',
+      array(
+        'get_callback'    => 'SP_REST_API::get_post_data',
+        'update_callback' => 'SP_REST_API::update_post_meta',
+        'schema'          => array(
+          'description'     => __( 'Match Day', 'sportspress' ),
+          'type'            => 'string',
+          'context'         => array( 'view', 'edit', 'embed' ),
+          'arg_options'     => array(
+            'sanitize_callback' => 'sanitize_text_field',
+          ),
+        ),
+      )
+    );
 		
 		register_rest_field( 'sp_event',
 			'minutes',
@@ -223,7 +255,7 @@ class SP_REST_API {
 				'update_callback' => 'SP_REST_API::update_post_meta_arrays',
 				'schema'          => array(
 					'description'     => __( 'Results', 'sportspress' ),
-					'type'            => 'array',
+					'type'            => 'object',
 					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
@@ -239,7 +271,7 @@ class SP_REST_API {
 				'update_callback' => 'SP_REST_API::update_post_meta_arrays_multi',
 				'schema'          => array(
 					'description'     => __( 'Box Score', 'sportspress' ),
-					'type'            => 'array',
+					'type'            => 'object',
 					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
@@ -430,7 +462,6 @@ class SP_REST_API {
 				'update_callback' => 'SP_REST_API::update_post_meta_array',
 				'schema'          => array(
 					'description'     => __( 'Metrics', 'sportspress' ),
-					'type'            => 'array',
 					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
@@ -446,7 +477,7 @@ class SP_REST_API {
 				'update_callback' => 'SP_REST_API::update_post_meta_arrays_multi',
 				'schema'          => array(
 					'description'     => __( 'Statistics', 'sportspress' ),
-					'type'            => 'array',
+					'type'            => 'object',
 					'context'         => array( 'view', 'edit' ),
 					'arg_options'     => array(
 						'sanitize_callback' => 'rest_sanitize_request_arg',
@@ -564,6 +595,11 @@ class SP_REST_API {
 	 * @return bool|int
 	 */
 	public static function update_post_meta_array( $value, $object, $field_name ) {
+		// Convert PHP object to array
+		if ( is_object( $value ) ) {
+			$value = (array) $value;
+		}
+
 		if ( ! is_array( $value ) ) return false;
 		
 		$type = $object->post_type;

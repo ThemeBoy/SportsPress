@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add event specs/stats to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.6
+Version: 2.6.15
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Event_Specs' ) ) :
  * Main SportsPress Event Specs Class
  *
  * @class SportsPress_Event_Specs
- * @version	2.6
+ * @version	2.6.15
  */
 class SportsPress_Event_Specs {
 
@@ -34,6 +34,7 @@ class SportsPress_Event_Specs {
 		add_action( 'sportspress_include_post_type_handlers', array( $this, 'include_post_type_handler' ) );
 		add_action( 'sportspress_event_list_head_row', array( $this, 'event_list_head_row' ), 11 );
 		add_action( 'sportspress_event_list_row', array( $this, 'event_list_row' ), 11, 2 );
+		add_action( 'sportspress_event_blocks_after', array( $this, 'event_blocks_after' ), 11, 2 );
 
 		// Filters
 		add_filter( 'sportspress_meta_boxes', array( $this, 'add_meta_boxes' ) );
@@ -48,7 +49,7 @@ class SportsPress_Event_Specs {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_EVENT_SPECS_VERSION' ) )
-			define( 'SP_EVENT_SPECS_VERSION', '2.6' );
+			define( 'SP_EVENT_SPECS_VERSION', '2.6.15' );
 
 		if ( !defined( 'SP_EVENT_SPECS_URL' ) )
 			define( 'SP_EVENT_SPECS_URL', plugin_dir_url( __FILE__ ) );
@@ -230,7 +231,7 @@ class SportsPress_Event_Specs {
 	 * Event list head row.
 	 */
 	public function event_list_head_row( $usecolumns = array() ) {
-		if ( is_array( $usecolumns ) && in_array( 'event_specs', $usecolumns ) ) {
+		if ( sp_column_active( $usecolumns, 'event_specs' ) ) {
 			$spec_labels = (array)sp_get_var_labels( 'sp_spec', null, false );
 
 			if ( empty( $spec_labels ) ) return;
@@ -249,7 +250,7 @@ class SportsPress_Event_Specs {
 	 * Event list row.
 	 */
 	public function event_list_row( $event, $usecolumns = array() ) {
-		if ( is_array( $usecolumns ) && in_array( 'event_specs', $usecolumns ) ) {
+		if ( sp_column_active( $usecolumns, 'event_specs' ) ) {
 			$event = new SP_Event( $event );
 			$specs = $event->specs( false );
 			$spec_labels = (array)sp_get_var_labels( 'sp_spec', null, false );
@@ -264,6 +265,20 @@ class SportsPress_Event_Specs {
 					}?>
 				</td>
 				<?php
+			}
+		}
+	}
+	
+	/**
+	 * Add Event Specs after default template of Event blocks is loaded.
+	 */
+	public function event_blocks_after( $event, $usecolumns = array() ) {
+		if ( sp_column_active( $usecolumns, 'event_specs' ) ) {
+			$event = new SP_Event( $event );
+			$specs = $event->specs( false );
+			$spec_labels = (array)sp_get_var_labels( 'sp_spec', null, false );
+			foreach ( $specs as $spec_label => $spec_value ) {
+				echo '<div class="sp_event_spec"><span class="sp_event_spec_label">'.$spec_label.':</span><span class="sp_event_spec_value"> '.$spec_value.'</span></div>';
 			}
 		}
 	}

@@ -103,6 +103,9 @@
 .sp-icon-list:before {
 	content: "\f163"
 }
+.sp-icon-location:before {
+  content: "\f231";
+}
 .sp-icon-matrix:before {
   content: "\f314";
 }
@@ -235,6 +238,9 @@
 .sp-icon-racing-flag:before {
 	content: "\e611";
 }
+.sp-icon-volleyball:before {
+	content: "\e612";
+}
 
 /* Performance Icons - Sports (Alt) */
 .sp-icon-soccerball-alt:before {
@@ -331,7 +337,7 @@
 	margin: 3px 0;
 }
 
-.sp-icon-color-box input[type=text] {
+.sp-color-box-for-icon input[type=text] {
 	color: #fff;
 }
 

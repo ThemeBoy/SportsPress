@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Importers
- * @version   2.6.9
+ * @version   2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -30,6 +30,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				'sp_league' => __( 'Leagues', 'sportspress' ),
 				'sp_season' => __( 'Seasons', 'sportspress' ),
 				'sp_nationality' => __( 'Nationality', 'sportspress' ),
+				'post_date' => __( 'Date of Birth', 'sportspress' ),
 			);
 			parent::__construct();
 		}
@@ -51,6 +52,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 			endif;
 
 			$rows = array_chunk( $array, sizeof( $columns ) );
+			
+			// Get Date of Birth format from post vars
+			$date_format = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : $_POST['sp_date_format'] );
 
 			foreach ( $rows as $row ):
 
@@ -69,7 +73,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					'sp_season',
 				);
 				foreach ( $preservable_metas_keys as $p ) {
-					$meta[ $key ] = '';
+					$meta[ $p ] = '';
 				}
 
 				foreach ( $columns as $index => $key ):
@@ -77,6 +81,27 @@ if ( class_exists( 'WP_Importer' ) ) {
 				endforeach;
 
 				$name = sp_array_value( $meta, 'post_title' );
+				$date = sp_array_value( $meta, 'post_date' );
+				
+				// Format date of birth
+				$date = str_replace( '/', '-', trim( $date ) );
+				$date_array = explode( '-', $date );
+				switch ( $date_format ):
+					case 'dd/mm/yyyy':
+						$date = substr( str_pad( sp_array_value( $date_array, 2, '0000' ), 4, '0', STR_PAD_LEFT ), 0, 4 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 1, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 0, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 );
+						break;
+					case 'mm/dd/yyyy':
+						$date = substr( str_pad( sp_array_value( $date_array, 2, '0000' ), 4, '0', STR_PAD_LEFT ), 0, 4 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 0, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 1, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 );
+						break;
+					default:
+						$date = substr( str_pad( sp_array_value( $date_array, 0, '0000' ), 4, '0', STR_PAD_LEFT ), 0, 4 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 1, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 ) . '-' .
+							substr( str_pad( sp_array_value( $date_array, 2, '00' ), 2, '0', STR_PAD_LEFT ), 0, 2 );
+				endswitch;
 
 				if ( ! $name ):
 					$this->skipped++;
@@ -97,6 +122,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 					}
 				else:
 					$args = array( 'post_type' => 'sp_player', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $name ) );
+					// Check if a DoB was set
+					if( '0000-00-00' !== $date ){
+						$args['post_date'] =  $date;
+					}
 					$id = wp_insert_post( $args );
 
 					// Flag as import
@@ -195,7 +224,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
-			echo '<p>' . sprintf( __( 'Players need to be defined with columns in a specific order (7 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/players-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( __( 'Players need to be defined with columns in a specific order (8 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/players-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_player_csv&step=1' );
 			echo '</div>';
 		}
@@ -210,6 +239,26 @@ if ( class_exists( 'WP_Importer' ) ) {
 			?>
 			<table class="form-table">
 				<tbody>
+					<tr>
+						<th scope="row" class="titledesc">
+							<?php _e( 'Date of Birth Format', 'sportspress' ); ?>
+						</th>
+                		<td class="forminp forminp-radio">
+                			<fieldset>
+                				<ul>
+									<li>
+		                        		<label><input name="sp_date_format" value="yyyy/mm/dd" type="radio" checked> yyyy/mm/dd</label>
+		                        	</li>
+									<li>
+		                        		<label><input name="sp_date_format" value="dd/mm/yyyy" type="radio"> dd/mm/yyyy</label>
+		                        	</li>
+									<li>
+		                        		<label><input name="sp_date_format" value="mm/dd/yyyy" type="radio"> mm/dd/yyyy</label>
+		                        	</li>
+								</ul>
+	                    	</fieldset>
+	                    </td>
+	                </tr>
 					<tr>
 						<td>
 							<label>

@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.6
+ * @version   2.6.16
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -96,7 +96,7 @@ if ( is_array( $teams ) ):
 		$formats[ $column->post_name ] = $format;
 	}
 
-	do_action( 'sportspress_before_event_performance' );
+	do_action( 'sportspress_before_event_performance', $columns );
 	
 	if ( $is_individual ) {
 		// Combined table
@@ -217,6 +217,8 @@ if ( is_array( $teams ) ):
 							}
 							
 							sp_get_template( 'event-performance-table.php', array(
+								'id' => $id,
+								'index' => $index,
 								'section' => $section_id,
 								'section_label' => $section_label,
 								'scrollable' => $scrollable,
@@ -236,6 +238,7 @@ if ( is_array( $teams ) ):
 								'performance_ids' => isset( $performance_ids ) ? $performance_ids : null,
 								'primary' => 'primary' == $total ? $primary : null,
 								'class' => 'sp-template-event-performance-team-' . $index . ' sp-template-event-performance-section sp-template-event-performance-section-' . $section_id . ' sp-template-event-performance-team-' . $index . '-section-' . $section_id,
+								'show_staff' => $show_staff,
 							) );
 						}
 						
@@ -256,9 +259,12 @@ if ( is_array( $teams ) ):
 					}
 					
 					sp_get_template( 'event-performance-table.php', array(
+						'id' => $id,
+						'index' => $index,
 						'scrollable' => $scrollable,
 						'sortable' => $sortable,
 						'show_players' => $show_team_players,
+						'show_staff' => $show_staff,
 						'show_numbers' => $show_numbers,
 						'show_minutes' => $show_minutes,
 						'show_total' => $show_total,
@@ -272,14 +278,9 @@ if ( is_array( $teams ) ):
 						'link_posts' => $link_posts,
 						'performance_ids' => isset( $performance_ids ) ? $performance_ids : null,
 						'primary' => 'primary' == $total ? $primary : null,
-
 					) );
 				}
 			}
-		
-			if ( $show_staff ):
-				sp_get_template( 'event-staff.php', array( 'id' => $id, 'index' => $index ) );
-			endif;
 		}
 		?>
 		<?php

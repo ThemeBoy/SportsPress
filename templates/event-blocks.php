@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.6.11
+ * @version   2.7.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -14,7 +14,7 @@ $defaults = array(
 	'event' => null,
 	'title' => false,
 	'status' => 'default',
-	'format' => 'all',
+	'format' => 'default',
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
@@ -37,6 +37,7 @@ $defaults = array(
 	'rows' => get_option( 'sportspress_event_blocks_rows', 5 ),
 	'orderby' => 'default',
 	'order' => 'default',
+	'columns' => null,
 	'show_all_events_link' => false,
 	'show_title' => get_option( 'sportspress_event_blocks_show_title', 'no' ) == 'yes' ? true : false,
 	'show_league' => get_option( 'sportspress_event_blocks_show_league', 'no' ) == 'yes' ? true : false,
@@ -49,9 +50,10 @@ $defaults = array(
 extract( $defaults, EXTR_SKIP );
 
 $calendar = new SP_Calendar( $id );
+
 if ( $status != 'default' )
 	$calendar->status = $status;
-if ( $format != 'all' )
+if ( $format != 'default' )
 	$calendar->event_format = $format;
 if ( $date != 'default' )
 	$calendar->date = $date;
@@ -88,6 +90,14 @@ if ( $orderby != 'default' )
 if ( $day != 'default' )
 	$calendar->day = $day;
 $data = $calendar->data();
+$usecolumns = $calendar->columns;
+
+if ( isset( $columns ) ):
+	if ( is_array( $columns ) )
+		$usecolumns = $columns;
+	else
+		$usecolumns = explode( ',', $columns );
+endif;
 
 if ( $hide_if_empty && empty( $data ) ) return false;
 
@@ -161,7 +171,8 @@ if ( $title )
 					?>
 					<tr class="sp-row sp-post<?php echo ( $i % 2 == 0 ? ' alternate' : '' ); ?>" itemscope itemtype="http://schema.org/SportsEvent">
 						<td>
-							<?php echo implode( $logos, ' ' ); ?>
+							<?php do_action( 'sportspress_event_blocks_before', $event, $usecolumns ); ?>
+							<?php echo implode( ' ', $logos ); ?>
 							<time class="sp-event-date" datetime="<?php echo $event->post_date; ?>" itemprop="startDate" content="<?php echo mysql2date( 'Y-m-d\TH:iP', $event->post_date ); ?>">
 								<?php echo sp_add_link( get_the_time( get_option( 'date_format' ), $event ), $permalink, $link_events ); ?>
 							</time>
@@ -178,11 +189,15 @@ if ( $title )
 								<div class="sp-event-season"><?php echo $season->name; ?></div>
 							<?php endif; endif; ?>
 							<?php if ( $show_venue ): $venues = get_the_terms( $event, 'sp_venue' ); if ( $venues ): $venue = array_shift( $venues ); ?>
-								<div class="sp-event-venue"><?php echo $venue->name; ?></div>
+								<div class="sp-event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place"><div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><?php echo $venue->name; ?></div></div>
 							<?php endif; endif; ?>
+							<?php if ( !$show_venue || !$venues ): ?>
+								<div style="display:none;" class="sp-event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place"><div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><?php _e( 'N/A', 'sportspress' ); ?></div></div>
+							<?php endif; ?>
 							<h4 class="sp-event-title" itemprop="name">
 								<?php echo sp_add_link( $event->post_title, $permalink, $link_events ); ?>
 							</h4>
+							<?php do_action( 'sportspress_event_blocks_after', $event, $usecolumns ); ?>
 
 						</td>
 					</tr>

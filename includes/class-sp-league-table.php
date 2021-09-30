@@ -5,7 +5,7 @@
  * The SportsPress league table class handles individual league table data.
  *
  * @class 		SP_League_Table
- * @version		2.6.6
+ * @version		2.7
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -23,10 +23,16 @@ class SP_League_Table extends SP_Secondary_Post {
 
 	/** @var array Teams to check for tiebreakers. */
 	public $tiebreakers = array();
-	
+
 	//** @var strings
 	public $orderby;
 	public $orderbyorder;
+
+	/** @var int Show Published events. */
+	public $show_published_events;
+	
+	/** @var int Show Scheduled events. */
+	public $show_future_events;
 
 	/**
 	 * Returns formatted data
@@ -231,10 +237,40 @@ class SP_League_Table extends SP_Secondary_Post {
 			endif;
 
 		endforeach;
-
+		
+		// Get which event status to include
+		$event_status = get_post_meta( $this->ID, 'sp_event_status', true );
+		
+		if ( empty( $event_status ) ) {
+			$event_status = array( 'publish', 'future' );
+		}
+		
+		if ( isset( $this->show_published_events )  ) { // If an attribute was pass through shortcode
+			if ( $this->show_published_events == '1' ) {
+				$event_status[] = 'publish';
+			}else{
+				if ( ( $status_key = array_search( 'publish', $event_status ) ) !== false ) {
+					unset( $event_status[ $status_key ] );
+				}
+			}
+		}
+		
+		if ( isset( $this->show_future_events )  ) { // If an attribute was pass through shortcode
+			if ( $this->show_future_events == '1' ) {
+				$event_status[] = 'future';
+			}else{
+				if ( ( $status_key = array_search('future', $event_status) ) !== false ) {
+					unset( $event_status[ $status_key ] );
+				}
+			}
+		}
+		
+		// Make sure to have unique values in the array
+		$event_status = array_unique( $event_status );
+		
 		$args = array(
 			'post_type' => 'sp_event',
-			'post_status' => array( 'publish', 'future' ),
+			'post_status' => $event_status,
 			'numberposts' => -1,
 			'posts_per_page' => -1,
 			'orderby' => 'post_date',
@@ -810,12 +846,12 @@ class SP_League_Table extends SP_Secondary_Post {
 			if ( sp_array_value( $a, $priority['column'], 0 ) != sp_array_value( $b, $priority['column'], 0 ) ):
 
 				// Compare column values
-				$output = sp_array_value( $a, $priority['column'], 0 ) - sp_array_value( $b, $priority['column'], 0 );
+				$output = (float) sp_array_value( $a, $priority['column'], 0 ) - (float) sp_array_value( $b, $priority['column'], 0 );
 
 				// Flip value if descending order
 				if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
 
-				return ( $output > 0 );
+				return ( $output > 0 ? 1 : -1 );
 
 			endif;
 

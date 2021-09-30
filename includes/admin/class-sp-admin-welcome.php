@@ -9,7 +9,7 @@
  * @author    ThemeBoy
  * @category  Admin
  * @package   SportsPress/Admin
- * @version   2.6
+ * @version   2.6.17
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -383,7 +383,7 @@ class SP_Admin_Welcome {
   public function welcome() {
 
     // Bail if no activation redirect transient is set
-      if ( ! get_transient( '_sp_activation_redirect' ) )
+    if ( ! get_transient( '_sp_activation_redirect' ) )
       return;
 
     // Delete the redirect transient

@@ -1,12 +1,12 @@
 /* SportsPress icons */
 @font-face {
 	font-family: 'sportspress';
-	src:url('../fonts/sportspress.eot?ddphik');
-	src:url('../fonts/sportspress.eot?#iefixddphik') format('embedded-opentype'),
-		url('../fonts/sportspress.woff2?ddphik') format('woff2'),
-		url('../fonts/sportspress.ttf?ddphik') format('truetype'),
-		url('../fonts/sportspress.woff?ddphik') format('woff'),
-		url('../fonts/sportspress.svg?ddphik#sportspress') format('svg');
+	src:url('../fonts/sportspress.eot?ddphik2');
+	src:url('../fonts/sportspress.eot?#iefixddphik2') format('embedded-opentype'),
+		url('../fonts/sportspress.woff2?ddphik2') format('woff2'),
+		url('../fonts/sportspress.ttf?ddphik2') format('truetype'),
+		url('../fonts/sportspress.woff?ddphik2') format('woff'),
+		url('../fonts/sportspress.svg?ddphik2#sportspress') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -92,6 +92,9 @@
 }
 .sp-icon-racing-flag:before {
 	content: "\e611";
+}
+.sp-icon-volleyball:before {
+	content: "\e612";
 }
 
 /* Performance Icons - Sports (Alt) */

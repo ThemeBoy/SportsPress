@@ -1,10 +1,10 @@
 === SportsPress - Sports Club & League Manager ===
-Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, nabil_kadimi
+Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, nabil_kadimi, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 5.0
-Stable tag: 2.6.14
+Tested up to: 5.7
+Stable tag: 2.7.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -52,6 +52,7 @@ More details about each feature are available on the [SportsPress Website](http:
 * [SportsPress for Cricket](https://wordpress.org/plugins/sportspress-for-cricket/)
 * [SportsPress for Football (Soccer)](https://wordpress.org/plugins/sportspress-for-soccer/)
 * [SportsPress for Golf](https://wordpress.org/plugins/sportspress-for-golf/)
+* [SportsPress for Volleyball](https://wordpress.org/plugins/sportspress-for-volleyball/)
 
 = SportsPress Pro =
 
@@ -126,6 +127,8 @@ Looking for more advanced sports functionality? Upgrade to [SportsPress Pro](htt
 * [Football Club](http://tboy.co/fc)
 * [Marquee](http://tboy.co/marquee)
 * [Premier](http://tboy.co/premier)
+* [Rookie Plus](http://tboy.co/rp)
+* [Varsity](http://tboy.co/varsity)
 
 = Get Involved =
 
@@ -236,6 +239,112 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.8 =
+* Fix - Event results, box scores, and players stats not updating via REST API.
+
+= 2.7.7 =
+* Fix - Events not appearing due to filter malfunction.
+
+= 2.7.6 =
+* Feature - Add ability to bulk set events as on time.
+* Fix - Players in events not being filtered by team.
+
+= 2.7.5 =
+* Tweak - Add ability to filter events by team and match day in one query.
+* Tweak - Improve performance by updating leaflet script and only loading when required.
+* Tweak - Add overtime notation compatibility for minutes played.
+* Fix - Issue with event edit page where the scripts were not working.
+* Fix - No records when format is default in event list shortcode.
+
+= 2.7.4 =
+* Tweak - Add option to display birthday, age, or both in birthdays widget.
+* Fix - Player list data showing zeroes in some cases.
+
+= 2.7.3 =
+* Compatibility - Tested for compatibility with WordPress 5.5 with changes made where necessary.
+* Tweak - Avoid showing minutes box for subs when not needed.
+* Tweak - Improve filtering speed for queries without leagues or seasons.
+* Tweak - Apply reverse order setting in event lists.
+* Tweak - Enable filtering a player's events played on a specific team.
+* Fix - Include future events in REST API for WordPress 5.5.
+* Fix - Enable updating player metrics using the REST API.
+* Fix - Deprecated code for PHP 7.4.
+* Fix - Elementor compatibility.
+* Localization - Update country names for Czechia, North Macedonia, Myanmar, and Eswatini.
+* Localization - Adjust RTL stylesheet for event performance icons.
+
+= 2.7.2 =
+* Tweak - Sanitize delimiter field in event settings.
+
+= 2.7.1 =
+* Feature - Enable player list filtering by nationality.
+* Feature - Add option to display date of birth in player lists.
+* Tweak - Exclude postponed and canceled events from countdowns.
+* Tweak - Apply reverse order option to event results.
+* Tweak - When a team has more than one home venue, separate with commas.
+* Fix - Venue address containing pluses in events.
+* Fix - Event blocks showing the wrong dates when embedded within other event pages.
+* Fix - Statistics not adding manual values when not based on equations.
+* Fix - Event lists ignoring the format parameter.
+* Fix - League table order when displaying multiple tables in team profiles.
+* Fix - Error when deleting configuration columns.
+* Fix - Player lists not including past players in some cases.
+* Fix - Prevent error when viewing event calendar in some cases.
+
+= 2.7 =
+* Feature - New bulk actions to postpone and cancel multiple events.
+* Feature - Add date of birth to player importer.
+* Feature - Automatically select the home team's venue as the default venue when importing fixtures.
+* Feature - Add ability to turn on comment for team profiles.
+* Feature - Filter league tables by event status.
+* Tweak - When an icon is used for player performance, display the icon in player lists and profiles.
+* Tweak - Add title attribute for player statistic icons.
+* Tweak - Default stylesheet sorting icon width.
+* Fix - Icon color picker rendering issue.
+* Fix - Image selector not working for player statistics.
+* Fix - Enqueue scripts and styles for OpenStreetMap when used in shortcodes.
+* Localization - Add translation options for countdown units.
+
+= 2.6.20 =
+* Tweak - Improve compatibility with volleyball for checkbox performance.
+* Preset - Update volleyball preset with additional options.
+
+= 2.6.19 =
+* Feature - Enable filtering calendars base on players.
+* Feature - Add checkbox type to event performance.
+* Fix - Javascript error when columns are hidden in event list.
+* Fix - Notice when displaying staff in event performance table.
+* Fix - Notice when event results are empty.
+* Fix - Uncaught error in player class.
+* Preset - Update volleyball preset using checkbox performance type.
+
+= 2.6.18 =
+* Fix - Prevent OpenStreetMap scripts from loading when Google Maps is active via SportsPress Pro.
+* Fix - Headers already sent error related to default nationality module.
+
+= 2.6.17 =
+* Tweak - Only show welcome screen on major version upgrade.
+* Tweak - Add filters to enable career totals calculation with extensions.
+* Fix - Countdowns not reflecting timezone setting.
+
+= 2.6.16 =
+* Tweak - Add support for updated baseball extension with partial innings.
+* Fix - Error displaying staff in events when offense and defense are separate tables.
+
+= 2.6.15 =
+* Important - Using Google Maps will require a SportsPress Pro license after August 31, 2019.
+* Refactor - Fallback to OpenStreetMap for venue maps without SportsPress Pro.
+* Feature - Option to display team logos instead of team names in player lists.
+* Feature - Option to display custom specs in event blocks and event lists.
+* Tweak - Improve page load speed when creating new league tables.
+* Tweak - Prevent displaying events other than published or scheduled.
+* Fix - Icons only appearing in the first table when player lists are grouped.
+* Fix - Character encoding and CRLF errors in calendar feeds.
+* Fix - Missing field location Schema error.
+* Fix - Dropdowns collapsing in admin when meta boxes are hidden.
+* Fix - Timezone handling in countdowns.
+* Fix - Error when using special characters in admin settings.
 
 = 2.6.14 =
 * Fix - API endpoints for secondary post types.

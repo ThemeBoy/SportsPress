@@ -5,7 +5,7 @@
  * The SportsPress player list class handles individual player list data.
  *
  * @class 		SP_Player_List
- * @version		2.6.9
+ * @version		2.7.5
  * @package		SportsPress/Classes
  * @category	Class
  * @author 		ThemeBoy
@@ -59,6 +59,7 @@ class SP_Player_List extends SP_Secondary_Post {
 		$crop = get_post_meta( $this->ID, 'sp_crop', true );
 		$order = get_post_meta( $this->ID, 'sp_order', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
+		$nationalities = get_post_meta( $this->ID, 'sp_nationality', false );
 
 		$this->date = $this->__get( 'date' );
 
@@ -86,6 +87,27 @@ class SP_Player_List extends SP_Secondary_Post {
 			}
 
 		}
+		
+		$weekday = array (
+					0 => 'Sunday',
+					1 => 'Monday',
+					2 => 'Tuesday',
+					3 => 'Wednesday',
+					4 => 'Thursday',
+					5 => 'Friday',
+					6 => 'Saturday',
+				);
+		
+		$start_of_week = get_option('start_of_week');
+		
+		$firstday = $weekday[ $start_of_week ];
+		if ( $start_of_week != 0 ) {
+			$lastday = $weekday[ ( $start_of_week - 1 ) ];
+		}else{
+			$lastday = $weekday[6];
+		}
+		
+		$today = date('l');
 
 		// Get labels from performance variables
 		$performance_labels = (array)sp_get_var_labels( 'sp_performance' );
@@ -108,6 +130,9 @@ class SP_Player_List extends SP_Secondary_Post {
 				'orderby' => 'meta_value_num',
 				'order' => 'ASC',
 				'tax_query' => array(
+					'relation' => 'AND',
+				),
+				'meta_query' => array(
 					'relation' => 'AND',
 				),
 			);
@@ -138,7 +163,7 @@ class SP_Player_List extends SP_Secondary_Post {
 						$team_key = 'sp_past_team';
 						break;
 				endswitch;
-				$args['meta_query'] = array(
+				$args['meta_query'][] = array(
 					array(
 						'key' => $team_key,
 						'value' => $team
@@ -151,6 +176,16 @@ class SP_Player_List extends SP_Secondary_Post {
 					'taxonomy' => 'sp_position',
 					'field' => 'term_id',
 					'terms' => $position_ids
+				);
+			endif;
+			
+			if ( $nationalities ):
+				$args['meta_query'][] = array(
+					array(
+						'key' => 'sp_nationality',
+						'value' => $nationalities,
+						'compare' => 'IN'
+					),
 				);
 			endif;
 
@@ -229,9 +264,14 @@ class SP_Player_List extends SP_Secondary_Post {
 				if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' && ( $stat->post_type == 'sp_performance' || $stat->post_type == 'sp_statistic' ) ) {
 					$icon = apply_filters( 'sportspress_event_performance_icons', '', $stat->ID, 1 );
 					if ( $icon != '' ) {
-						$columns[ $stat->post_name ] = apply_filters( 'sportspress_event_performance_icons', '', $stat->ID, 1 );
+						$columns[ $stat->post_name ] = $icon;
 					}else{
-						$columns[ $stat->post_name ] = $stat->post_title;
+						if ( has_post_thumbnail( $stat ) ) {
+							$icon = get_the_post_thumbnail( $stat, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $stat ) ) );
+							$columns[ $stat->post_name ] = apply_filters( 'sportspress_event_performance_icons', $icon, $stat->ID, 1 );
+						}else{
+							$columns[ $stat->post_name ] = $stat->post_title;
+						}
 					}
 				}else{
 					$columns[ $stat->post_name ] = $stat->post_title;
@@ -355,22 +395,117 @@ class SP_Player_List extends SP_Secondary_Post {
 				'terms' => $season_ids
 			);
 		endif;
+		
+		$team_key = 'sp_team';
+		if ( $team ):
+			$args['meta_query'][] = array(
+				array(
+					'key' => $team_key,
+					'value' => $team,
+					'compare' => 'IN',
+				),
+			);
+		endif;
 
 		if ( $this->date !== 0 ):
-			if ( $this->date == 'w' ):
-				$args['year'] = date_i18n('Y');
-				$args['w'] = date_i18n('W');
-			elseif ( $this->date == 'day' ):
-				$args['year'] = date_i18n('Y');
-				$args['day'] = date_i18n('j');
-				$args['monthnum'] = date_i18n('n');
-			elseif ( $this->date == 'range' ):
-				if ( $this->relative ):
-					add_filter( 'posts_where', array( $this, 'relative' ) );
-				else:
-					add_filter( 'posts_where', array( $this, 'range' ) );
-				endif;
-			endif;
+			switch ( $this->date ):
+				case '-day':
+					$date = new DateTime( date_i18n('Y-m-d') );
+					$date->modify( '-1 day' );
+					$args['year'] = $date->format('Y');
+					$args['day'] = $date->format('j');
+					$args['monthnum'] = $date->format('n');
+					break;
+				case 'day':
+					$args['year'] = date_i18n('Y');
+					$args['day'] = date_i18n('j');
+					$args['monthnum'] = date_i18n('n');
+					break;
+				case '+day':
+					$date = new DateTime( date_i18n('Y-m-d') );
+					$date->modify( '+1 day' );
+					$args['year'] = $date->format('Y');
+					$args['day'] = $date->format('j');
+					$args['monthnum'] = $date->format('n');
+					break;
+				case '-w':
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( $today == $firstday ) { //If today is start of Week
+							$after = date_i18n('Y-m-d', strtotime("last $firstday"));
+							$before = date_i18n('Y-m-d', strtotime("last $lastday")).' 23:59:59';
+						}else{
+							$after = date_i18n('Y-m-d', strtotime("-2 $firstday"));
+							$before = date_i18n('Y-m-d', strtotime("last $lastday")).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$date = new DateTime( date_i18n('Y-m-d') );
+						$date->modify( '-1 week' );
+						$args['year'] = $date->format('Y');
+						$args['w'] = $date->format('W');
+					}
+					break;
+				case 'w':
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( $today == $firstday ) { //If today is start of Week
+							$after = date_i18n('Y-m-d');
+							$before = date_i18n('Y-m-d', strtotime("next $lastday")).' 23:59:59';
+						}elseif ( $today == $lastday ) { //If today is the end of Week
+							$after = date_i18n('Y-m-d', strtotime("last $firstday"));
+							$before = date_i18n('Y-m-d').' 23:59:59';
+						}else{
+							$after = date_i18n('Y-m-d', strtotime("last $firstday"));
+							$before = date_i18n('Y-m-d', strtotime("next $lastday")).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$args['year'] = date_i18n('Y');
+						$args['w'] = date_i18n('W');
+					}
+					break;
+				case '+w':
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( $today == $lastday ) { //If today is the end of Week
+							$after = date_i18n('Y-m-d', strtotime("next $firstday"));
+							$before = date_i18n('Y-m-d', strtotime("next $lastday")).' 23:59:59';
+						}else{ 
+							$after = date_i18n('Y-m-d', strtotime("next $firstday"));
+							$before = date_i18n('Y-m-d', strtotime("+2 $lastday")).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$date = new DateTime( date_i18n('Y-m-d') );
+						$date->modify( '+1 week' );
+						$args['year'] = $date->format('Y');
+						$args['w'] = $date->format('W');
+					}
+					break;
+				case 'range':
+					if ( $this->relative ):
+						add_filter( 'posts_where', array( $this, 'relative' ) );
+					else:
+						add_filter( 'posts_where', array( $this, 'range' ) );
+					endif;
+					break;
+			endswitch;
 		endif;
 
 		$args = apply_filters( 'sportspress_list_data_event_args', $args );
@@ -387,10 +522,13 @@ class SP_Player_List extends SP_Secondary_Post {
 			$team_performance = get_post_meta( $event->ID, 'sp_players', true );
 			$timeline = (array)get_post_meta( $event->ID, 'sp_timeline', true );
 			$minutes = get_post_meta( $event->ID, 'sp_minutes', true );
+			$showdob = get_option( 'sportspress_player_show_birthday', 'no' );
+			$showage = get_option( 'sportspress_player_show_age', 'no' );
 			if ( $minutes === '' ) $minutes = get_option( 'sportspress_event_minutes', 90 );
 
 			// Add all team performance
 			if ( is_array( $team_performance ) ): foreach ( $team_performance as $team_id => $players ):
+				if ( $team && $team_id != $team ) continue;
 				if ( is_array( $players ) ): foreach ( $players as $player_id => $player_performance ):
 					if ( array_key_exists( $player_id, $totals ) && is_array( $totals[ $player_id ] ) ):
 
@@ -420,8 +558,8 @@ class SP_Player_List extends SP_Secondary_Post {
 									endif;
 								endforeach;
 							elseif ( array_key_exists( $key, $totals[ $player_id ] ) ):
-								$value = floatval( $value );
-								$totals[ $player_id ][ $key ] += $value;
+								$add = apply_filters( 'sportspress_player_performance_add_value', floatval( $value ), $key );
+								$totals[ $player_id ][ $key ] += $add;
 							endif;
 						endforeach;
 
@@ -499,6 +637,9 @@ class SP_Player_List extends SP_Secondary_Post {
 										endforeach;
 									endif;
 
+									//Make sure that is a number (i.e. convert 90+2' to 90')
+									$played_minutes = (float)$played_minutes;
+									
 									$totals[ $player_id ]['eventminutes'] += max( 0, $played_minutes );
 
 									if ( sp_array_value( $player_performance, 'status' ) == 'lineup' ):
@@ -541,18 +682,19 @@ class SP_Player_List extends SP_Secondary_Post {
 						if ( sizeof( $results ) ):
 							foreach ( $results as $id => $team_results ):
 								if ( $team_id == $id ) continue;
-								$team_results['outcome'] = null;
-								unset( $team_results['outcome'] );
-								foreach ( $team_results as $result_slug => $team_result ):
+								if ( is_array( $team_results ) ):
+									unset( $team_results['outcome'] );
+									foreach ( $team_results as $result_slug => $team_result ):
 
-									// Add to total
-									$value = sp_array_value( $totals[ $player_id ], $result_slug . 'against', 0 );
-									$value += floatval( $team_result );
-									$totals[ $player_id ][ $result_slug . 'against' ] = $value;
+										// Add to total
+										$value = sp_array_value( $totals[ $player_id ], $result_slug . 'against', 0 );
+										$value += floatval( $team_result );
+										$totals[ $player_id ][ $result_slug . 'against' ] = $value;
 
-									// Add subset
-									$totals[ $player_id ][ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
-								endforeach;
+										// Add subset
+										$totals[ $player_id ][ $result_slug . 'against' . ( $i + 1 ) ] = $team_result;
+									endforeach;
+								endif;
 							endforeach;
 						endif;
 					endif;
@@ -591,23 +733,34 @@ class SP_Player_List extends SP_Secondary_Post {
 					endif;
 				endif;
 
-				if ( $placeholder !== '' && is_numeric( $placeholder ) ):
-					$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, 0 ) + $placeholder;
-				else:
-					$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, '-' );
-				endif;
+				if ( ! $stat->equation ) {
+					if ( $placeholder !== '' && is_numeric( $placeholder ) ):
+						$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, 0 ) + $placeholder;
+					else:
+						$placeholder = sp_array_value( $placeholders[ $player_id ], $stat->post_name, '-' );
+					endif;
+				}
 
 				if ( is_numeric( $placeholder ) && $stat->precision ):
 					$placeholder = number_format( $placeholder, $stat->precision, '.', '' );
 				endif;
 
-				$placeholders[ $player_id ][ $stat->post_name ] = $placeholder;
+				$placeholders[ $player_id ][ $stat->post_name ] = apply_filters( 'sportspress_player_performance_table_placeholder', $placeholder, $stat->post_name );
 			endforeach;
 
 		endforeach;
 
 		// Merge the data and placeholders arrays
 		foreach( $placeholders as $player_id => $player_data ):
+		
+			if ( in_array( 'dob', $this->columns ) ):
+				$player_data['dob'] = get_the_date( get_option( 'date_format') , $player_id );
+			endif;
+			
+			if ( in_array( 'age', $this->columns ) ):
+				$birthdayclass = new SportsPress_Birthdays();
+				$player_data['age'] = $birthdayclass->get_age( get_the_date( 'm-d-Y', $player_id ) );
+			endif;
 
 			$player_data = array_merge( $column_order, $player_data );
 			$placeholders[ $player_id ] = $player_data;
@@ -695,6 +848,10 @@ class SP_Player_List extends SP_Secondary_Post {
 					$labels[ $key ] = __( 'Team', 'sportspress' );
 				elseif ( $key == 'position' ):
 					$labels[ $key ] = __( 'Position', 'sportspress' );
+				elseif ( $key == 'dob' && $showdob ):
+					$labels[ $key ] = __( 'Date of Birth', 'sportspress' );
+				elseif ( $key == 'age' && $showage ):
+					$labels[ $key ] = __( 'Age', 'sportspress' );
 				elseif ( array_key_exists( $key, $columns ) ):
 					$labels[ $key ] = $columns[ $key ];
 				endif;
@@ -743,6 +900,12 @@ class SP_Player_List extends SP_Secondary_Post {
 			}
 			if ( in_array( 'position', $this->columns ) ) {
 				$labels['position'] = __( 'Position', 'sportspress' );
+			}
+			if ( in_array( 'dob', $this->columns ) && $showdob ) {
+				$labels['dob'] = __( 'Date of Birth', 'sportspress' );
+			}
+			if ( in_array( 'age', $this->columns ) && $showage ) {
+				$labels['age'] = __( 'Age', 'sportspress' );
 			}
 
 			$merged[0] = array_merge( $labels, $columns );

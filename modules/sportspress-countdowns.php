@@ -5,7 +5,7 @@ Plugin URI: http://themeboy.com/
 Description: Add countdown widgets to SportsPress.
 Author: ThemeBoy
 Author URI: http://themeboy.com/
-Version: 2.6
+Version: 2.7
 */
 
 // Exit if accessed directly
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Countdowns' ) ) :
  * Main SportsPress Countdowns Class
  *
  * @class SportsPress_Countdowns
- * @version	2.6
+ * @version	2.7
  */
 class SportsPress_Countdowns {
 
@@ -34,6 +34,7 @@ class SportsPress_Countdowns {
 		// Filters
 		add_filter( 'sportspress_shortcodes', array( $this, 'add_shortcodes' ) );
 		add_filter( 'sportspress_event_settings', array( $this, 'add_settings' ) );
+		add_filter( 'sportspress_text', array( $this, 'add_text_options' ) );
 	}
 
 	/**
@@ -41,7 +42,7 @@ class SportsPress_Countdowns {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_COUNTDOWNS_VERSION' ) )
-			define( 'SP_COUNTDOWNS_VERSION', '2.6' );
+			define( 'SP_COUNTDOWNS_VERSION', '2.7' );
 
 		if ( !defined( 'SP_COUNTDOWNS_URL' ) )
 			define( 'SP_COUNTDOWNS_URL', plugin_dir_url( __FILE__ ) );
@@ -103,6 +104,18 @@ class SportsPress_Countdowns {
 			)
 		);
 		return $settings;
+	}
+	
+	/**
+	 * Add text options 
+	 */
+	public function add_text_options( $options = array() ) {
+		return array_merge( $options, array(
+			__( 'days', 'sportspress' ),
+			__( 'hrs', 'sportspress' ),
+			__( 'mins', 'sportspress' ),
+			__( 'secs', 'sportspress' ),
+		) );
 	}
 }
 

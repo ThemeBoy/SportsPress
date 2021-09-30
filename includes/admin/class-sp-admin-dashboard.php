@@ -31,6 +31,7 @@ class SP_Admin_Dashboard {
      * Init dashboard widgets
      */
     public function init() {
+        wp_add_dashboard_widget( 'sportspress_dashboard_news', __( 'Sports News', 'sportspress' ), array( $this, 'news_widget' ), null, null, 'side' );
         wp_add_dashboard_widget( 'sportspress_dashboard_status', __( 'SportsPress', 'sportspress' ), array( $this, 'status_widget' ) );
         add_filter( 'dashboard_glance_items', array( $this, 'glance_items' ), 10, 1 );
     }
@@ -63,37 +64,61 @@ class SP_Admin_Dashboard {
      * Show status widget
      */
     public function status_widget() {
-        ?>
-        <ul class="sp_status_list">
-            <?php
-            $count = wp_count_posts( 'sp_event' );
-            $scheduled_count = isset( $count->future ) ? $count->future : 0;
-            $published_count = isset( $count->publish ) ? $count->publish : 0;
-            $next_event = sp_get_next_event();
-            if ( $next_event ):
-                $now = new DateTime( current_time( 'mysql', 0 ) );
-                $date = new DateTime( $next_event->post_date );
-                $interval = date_diff( $now, $date );
-                ?>
-                <li class="countdown" data-countdown="<?php echo str_replace( '-', '/', get_gmt_from_date( $next_event->post_date ) ); ?>">
-                    <a href="<?php echo get_edit_post_link( $next_event->ID ); ?>">
-                        <?php printf( __( '<strong>%s</strong> until next event', 'sportspress' ), $interval->days . ' ' . __( 'days', 'sportspress' ) . ' ' . sprintf( '%02s:%02s:%02s', $interval->h, $interval->i, $interval->s ) ); ?>
-                        (<?php echo $next_event->post_title; ?>)
-                    </a>
-                </li>
-            <?php endif; ?>
-            <li class="events-scheduled">
-                <a href="<?php echo admin_url( 'edit.php?post_type=sp_event&post_status=future' ); ?>">
-                    <?php printf( _n( '<strong>%s event</strong> scheduled', '<strong>%s events</strong> scheduled', $scheduled_count, 'sportspress' ), $scheduled_count ); ?>
-                </a>
-            </li>
-            <li class="events-published">
-                <a href="<?php echo admin_url( 'edit.php?post_type=sp_event&post_status=publish' ); ?>">
-                    <?php printf( _n( '<strong>%s event</strong> published', '<strong>%s events</strong> published', $published_count, 'sportspress' ), $published_count ); ?>
-                </a>
-            </li>
+      ?>
+      <ul class="sp_status_list">
+          <?php
+          $count = wp_count_posts( 'sp_event' );
+          $scheduled_count = isset( $count->future ) ? $count->future : 0;
+          $published_count = isset( $count->publish ) ? $count->publish : 0;
+          $next_event = sp_get_next_event();
+          if ( $next_event ):
+              $now = new DateTime( current_time( 'mysql', 0 ) );
+              $date = new DateTime( $next_event->post_date );
+              $interval = date_diff( $now, $date );
+              ?>
+              <li class="countdown" data-countdown="<?php echo str_replace( '-', '/', get_gmt_from_date( $next_event->post_date ) ); ?>">
+                  <a href="<?php echo get_edit_post_link( $next_event->ID ); ?>">
+                      <?php printf( __( '<strong>%s</strong> until next event', 'sportspress' ), $interval->days . ' ' . __( 'days', 'sportspress' ) . ' ' . sprintf( '%02s:%02s:%02s', $interval->h, $interval->i, $interval->s ) ); ?>
+                      (<?php echo $next_event->post_title; ?>)
+                  </a>
+              </li>
+          <?php endif; ?>
+          <li class="events-scheduled">
+              <a href="<?php echo admin_url( 'edit.php?post_type=sp_event&post_status=future' ); ?>">
+                  <?php printf( _n( '<strong>%s event</strong> scheduled', '<strong>%s events</strong> scheduled', $scheduled_count, 'sportspress' ), $scheduled_count ); ?>
+              </a>
+          </li>
+          <li class="events-published">
+              <a href="<?php echo admin_url( 'edit.php?post_type=sp_event&post_status=publish' ); ?>">
+                  <?php printf( _n( '<strong>%s event</strong> published', '<strong>%s events</strong> published', $published_count, 'sportspress' ), $published_count ); ?>
+              </a>
+          </li>
+      </ul>
+      <?php
+    }
+
+    /**
+     * Show news widget
+     */
+    public function news_widget() {
+      $rss = fetch_feed("https://tboy.co/sportsnews/");
+      if (!is_wp_error($rss)) { // Checks that the object is created correctly
+          // Figure out how many total items there are, but limit it to 2.
+          $maxitems = $rss->get_item_quantity(5);
+          // Build an array of all the items, starting with element 0 (first element).
+          $rss_items = $rss->get_items(0, $maxitems);
+      }
+      if (!empty($maxitems)) {
+      ?>
+      <div class="rss-widget">
+        <ul>
+          <?php foreach ($rss_items as $item) { ?>
+          <li><a class="rsswidget" href="<?php echo $item->get_permalink(); ?>" target="_blank"><?php echo $item->get_title(); ?></a> <span class="rss-date"><?php echo $item->get_date('j F Y'); ?></span></li>
+          <?php } ?>
         </ul>
-        <?php
+      </div>
+      <?php
+      }
     }
 }
 

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Handles taxonomies in admin
  *
  * @class 		SP_Admin_Taxonomies
- * @version		2.6.9
+ * @version		2.6.15
  * @package		SportsPress/Admin
  * @category	Class
  * @author 		ThemeBoy
@@ -103,20 +103,23 @@ class SP_Admin_Taxonomies {
 			$term = reset( $terms );
 	 		$t_id = $term->term_id;
 			$term_meta = get_option( "taxonomy_$t_id" );
-			$latitude = sp_array_value( $term_meta, 'sp_latitude', '40.7324319' );
-			$longitude = sp_array_value( $term_meta, 'sp_longitude', '-73.82480799999996' );
+			$latitude = sp_array_value( $term_meta, 'sp_latitude', '-37.8165647' );
+			$longitude = sp_array_value( $term_meta, 'sp_longitude', '144.9475055' );
+			$address = sp_array_value( $term_meta, 'sp_address', '' );
 		endif;
 		// Sanitize latitude and longitude, fallback to default.
 		if( ! is_numeric( $latitude) || ! is_numeric( $longitude) ):
-			$latitude = '40.7324319';
-			$longitude = '-73.82480799999996';
+			$latitude = '-37.8165647';
+			$longitude = '144.9475055';
 		endif;
 		?>
 		<div class="form-field">
-			<label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label>
-			<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="">
-			<p><div class="sp-location-picker"></div></p>
+			<div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div>
 			<p><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+		</div>
+		<div class="form-field">
+			<label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label>
+			<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo esc_attr( $address ); ?>">
 		</div>
 		<div class="form-field">
 			<label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label>
@@ -127,6 +130,7 @@ class SP_Admin_Taxonomies {
 			<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo esc_attr( $longitude ); ?>">
 		</div>
 	<?php
+		do_action( 'sp_admin_geocoder_scripts' );
 	}
 
 	/**
@@ -137,28 +141,37 @@ class SP_Admin_Taxonomies {
 	 */
 	public function edit_venue_fields( $term ) {
 	 	$t_id = $term->term_id;
-		$term_meta = get_option( "taxonomy_$t_id" ); ?>
+		$term_meta = get_option( "taxonomy_$t_id" ); 
+		$latitude = is_numeric( esc_attr( $term_meta['sp_latitude'] ) ) ? esc_attr( $term_meta['sp_latitude'] ) : '';
+		$longitude = is_numeric( esc_attr( $term_meta['sp_longitude'] ) ) ? esc_attr( $term_meta['sp_longitude'] ) : '';
+		$address = esc_attr( $term_meta['sp_address'] ) ? esc_attr( $term_meta['sp_address'] ) : '';
+		?>
+		<tr class="form-field">
+			<td colspan="2">
+				<p><div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div></p>
+				<p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+			</td>
+		</tr>
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label></th>
 			<td>
-				<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo esc_attr( $term_meta['sp_address'] ) ? esc_attr( $term_meta['sp_address'] ) : ''; ?>">
-				<p><div class="sp-location-picker"></div></p>
-				<p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+				<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo $address; ?>">
 			</td>
 		</tr>
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label></th>
 			<td>
-				<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo is_numeric( esc_attr( $term_meta['sp_latitude'] ) ) ? esc_attr( $term_meta['sp_latitude'] ) : ''; ?>">
+				<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo $latitude; ?>">
 			</td>
 		</tr>
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_longitude]"><?php _e( 'Longitude', 'sportspress' ); ?></label></th>
 			<td>
-				<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo is_numeric( esc_attr( $term_meta['sp_longitude'] ) ) ? esc_attr( $term_meta['sp_longitude'] ) : ''; ?>">
+				<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo $longitude; ?>">
 			</td>
 		</tr>
 	<?php
+		do_action( 'sp_admin_geocoder_scripts' );
 	}
 
 	/**

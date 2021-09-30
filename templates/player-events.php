@@ -15,7 +15,16 @@ if ( ! isset( $id ) )
 $format = get_option( 'sportspress_player_events_format', 'blocks' );
 if ( 'calendar' === $format )
 	sp_get_template( 'event-calendar.php', array( 'player' => $id ) );
-elseif ( 'list' === $format )
-	sp_get_template( 'event-list.php', array( 'player' => $id, 'order' => 'DESC', 'title_format' => 'homeaway', 'time_format' => 'separate', 'columns' => array( 'event', 'time', 'results' ) ) );
+elseif ( 'list' === $format ) {
+	$args = array(
+		'player' => $id,
+		'title_format' => 'homeaway',
+		'time_format' => 'separate',
+		'columns' => array( 'event', 'time', 'results' ),
+		'order' => 'DESC',
+	);
+	$args = apply_filters( 'sp_player_events_list_args', $args );
+	sp_get_template( 'event-list.php', $args );
+}
 else
 	sp_get_template( 'event-fixtures-results.php', array( 'player' => $id ) );

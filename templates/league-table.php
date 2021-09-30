@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.5.5
+ * @version   2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -47,6 +47,13 @@ if ( $show_title && false === $title && $id ):
 	else
 		$title = get_the_title( $id );
 endif;
+
+//Check if we have event status sent from shortcode
+if ( isset( $show_published_events ) )
+	$table->show_published_events = $show_published_events ;
+
+if ( isset( $show_future_events ) )
+	$table->show_future_events = $show_future_events ;
 
 //Create a unique identifier based on the current time in microseconds
 $identifier = uniqid( 'table_' );

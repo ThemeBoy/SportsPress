@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.6
+ * @version   2.7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -42,6 +42,12 @@ $show_outcomes = array_key_exists( 'outcome', $labels );
 $output = '';
 $table_rows = '';
 $i = 0;
+
+// Reverse teams order if the option "Events > Teams > Order > Reverse order" is enabled.
+$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
+if ( $reverse_teams ) {
+	$data = array_reverse( $data, true );
+}
 
 foreach( $data as $team_id => $result ):
 	if ( $show_outcomes ):

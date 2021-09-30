@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Meta_Boxes
- * @version   2.6.8
+ * @version   2.6.19
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -31,6 +31,7 @@ class SP_Meta_Box_Calendar_Details {
 		$event_format = get_post_meta( $post->ID, 'sp_event_format', true );
 		$day = get_post_meta( $post->ID, 'sp_day', true );
 		$teams = get_post_meta( $post->ID, 'sp_team', false );
+		$players = get_post_meta( $post->ID, 'sp_player', false );
 		$table_id = get_post_meta( $post->ID, 'sp_table', true );
 		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
 		$order = get_post_meta( $post->ID, 'sp_order', true );
@@ -125,6 +126,24 @@ class SP_Meta_Box_Calendar_Details {
 				endif;
 				?>
 			</p>
+			<p><strong><?php _e( 'Player', 'sportspress' ); ?></strong></p>
+			<p>
+				<?php
+				$args = array(
+					'post_type' => 'sp_player',
+					'name' => 'sp_player[]',
+					'selected' => $players,
+					'values' => 'ID',
+					'class' => 'widefat',
+					'property' => 'multiple',
+					'chosen' => true,
+					'placeholder' => __( 'All', 'sportspress' ),
+				);
+				if ( ! sp_dropdown_pages( $args ) ):
+					sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' )  );
+				endif;
+				?>
+			</p>
 			<p><strong><?php _e( 'Sort by', 'sportspress' ); ?></strong></p>
 			<p>
 				<select name="sp_orderby">
@@ -163,5 +182,6 @@ class SP_Meta_Box_Calendar_Details {
 		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', null ) );
 		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', null ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
 	}
 }

@@ -23,14 +23,14 @@ jQuery(document).ready(function($){
 	})
 	.click(function(){
 		$('.iris-picker').hide();
-		$(this).closest('.sp-icon-color-box, td').find('.iris-picker').show();
+		$(this).closest('.sp-color-box-for-icon, td').find('.iris-picker').show();
 	});
 
 	$('body').click(function() {
 		$('.iris-picker').hide();
 	});
 
-	$('.sp-icon-color-box, .colorpick').click(function(event){
+	$('.sp-color-box-for-icon, .colorpick').click(function(event){
 	    event.stopPropagation();
 	});
 

@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Post_Types
- * @version		2.6.5
+ * @version		2.7.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -44,6 +44,9 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		// Filtering
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
 		add_filter( 'parse_query', array( $this, 'filters_query' ) );
+
+    // Post states
+    add_filter( 'display_post_states', array( $this, 'post_states' ), 10, 2 );
 		
 		// Call SP_Admin_CPT constructor
 		parent::__construct();
@@ -259,7 +262,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_event' )
 	    	return;
 
-		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
+		$selected = isset( $_REQUEST['team'] ) ? esc_attr( $_REQUEST['team'] ) : null;
 		$args = array(
 			'post_type' => 'sp_team',
 			'name' => 'team',
@@ -269,7 +272,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		);
 		wp_dropdown_pages( $args );
 
-		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
+		$selected = isset( $_REQUEST['sp_league'] ) ? esc_attr( $_REQUEST['sp_league'] ) : null;
 		$args = array(
 			'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),
 			'taxonomy' => 'sp_league',
@@ -278,7 +281,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		);
 		sp_dropdown_taxonomies( $args );
 
-		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
+		$selected = isset( $_REQUEST['sp_season'] ) ? esc_attr( $_REQUEST['sp_season'] ) : null;
 		$args = array(
 			'show_option_all' =>  __( 'Show all seasons', 'sportspress' ),
 			'taxonomy' => 'sp_season',
@@ -287,34 +290,61 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		);
 		sp_dropdown_taxonomies( $args );
 
-		$selected = isset( $_REQUEST['match_day'] ) ? $_REQUEST['match_day'] : null;
+		$selected = isset( $_REQUEST['match_day'] ) ? esc_attr( $_REQUEST['match_day'] ) : null;
 		echo '<input name="match_day" type="text" class="sp-tablenav-input" placeholder="' . __( 'Match Day', 'sportspress' ) . '" value="' . $selected . '">';
 
 		if ( current_user_can( 'edit_others_sp_events' ) )
 			wp_nonce_field( 'sp-save-inline-results', 'sp-inline-nonce', false );
 	}
 
-	/**
-	 * Filter in admin based on options
-	 *
-	 * @param mixed $query
-	 */
-	public function filters_query( $query ) {
-		global $typenow, $wp_query;
+  /**
+   * Filter in admin based on options
+   *
+   * @param mixed $query
+   */
+  public function filters_query( $query ) {
+    global $typenow, $wp_query;
 
-	    if ( $typenow == 'sp_event' ) {
+	if ( $typenow == 'sp_event' ) {
+		//Avoid overriding relation operator if already set
+		if ( !isset( $query->query_vars['meta_query']['relation'] ) )
+			$query->query_vars['meta_query']['relation'] =  'AND';
 
-	    	if ( ! empty( $_GET['team'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['team'];
-		        $query->query_vars['meta_key'] 		= 'sp_team';
-		    }
-
-	    	if ( ! empty( $_GET['match_day'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['match_day'];
-		        $query->query_vars['meta_key'] 		= 'sp_day';
-		    }
+		if ( ! empty( $_GET['team'] ) ) {
+			$query->query_vars['meta_query'][] = array(
+													'key'  => 'sp_team',
+													'value' =>  $_GET['team'],
+													);
 		}
-	}
+		
+		if ( ! empty( $_GET['match_day'] ) ) {
+			$query->query_vars['meta_query'][] = array(
+													'key'  => 'sp_day',
+													'value' =>  $_GET['match_day'],
+													);
+		}
+    }
+  }
+
+  /**
+   * Replace displayed post state for events
+   *
+   * @param array $post_states
+   * @param object $post
+   */
+  public function post_states( $post_states, $post ) {
+    $status = get_post_meta( $post->ID, 'sp_status', true );
+
+    if ( 'postponed' == $status ) {
+      $post_states = array( __( 'Postponed', 'sportspress' ) );
+    } elseif ( 'cancelled' == $status ) {
+      $post_states = array( __( 'Canceled', 'sportspress' ) );
+    } elseif ( 'tbd' == $status ) {
+      $post_states = array( __( 'TBD', 'sportspress' ) );
+    }
+
+    return $post_states;
+  }
 }
 
 endif;

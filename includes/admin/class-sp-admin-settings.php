@@ -171,7 +171,7 @@ class SP_Admin_Settings {
 		// Array value
 		if ( strstr( $option_name, '[' ) ) {
 
-			parse_str( $option_name, $option_array );
+			parse_str( html_entity_decode( $option_name ), $option_array );
 
 			// Option name is first key
 			$option_name = current( array_keys( $option_array ) );
