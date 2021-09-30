@@ -87,6 +87,27 @@ class SP_Player_List extends SP_Secondary_Post {
 			}
 
 		}
+		
+		$weekday = array (
+					0 => 'Sunday',
+					1 => 'Monday',
+					2 => 'Tuesday',
+					3 => 'Wednesday',
+					4 => 'Thursday',
+					5 => 'Friday',
+					6 => 'Saturday',
+				);
+		
+		$start_of_week = get_option('start_of_week');
+		
+		$firstday = $weekday[ $start_of_week ];
+		if ( $start_of_week != 0 ) {
+			$lastday = $weekday[ ( $start_of_week - 1 ) ];
+		}else{
+			$lastday = $weekday[6];
+		}
+		
+		$today = date('l');
 
 		// Get labels from performance variables
 		$performance_labels = (array)sp_get_var_labels( 'sp_performance' );
@@ -387,20 +408,104 @@ class SP_Player_List extends SP_Secondary_Post {
 		endif;
 
 		if ( $this->date !== 0 ):
-			if ( $this->date == 'w' ):
-				$args['year'] = date_i18n('Y');
-				$args['w'] = date_i18n('W');
-			elseif ( $this->date == 'day' ):
-				$args['year'] = date_i18n('Y');
-				$args['day'] = date_i18n('j');
-				$args['monthnum'] = date_i18n('n');
-			elseif ( $this->date == 'range' ):
-				if ( $this->relative ):
-					add_filter( 'posts_where', array( $this, 'relative' ) );
-				else:
-					add_filter( 'posts_where', array( $this, 'range' ) );
-				endif;
-			endif;
+			switch ( $this->date ):
+				case '-day':
+					$date = new DateTime( date_i18n('Y-m-d') );
+					$date->modify( '-1 day' );
+					$args['year'] = $date->format('Y');
+					$args['day'] = $date->format('j');
+					$args['monthnum'] = $date->format('n');
+					break;
+				case 'day':
+					$args['year'] = date_i18n('Y');
+					$args['day'] = date_i18n('j');
+					$args['monthnum'] = date_i18n('n');
+					break;
+				case '+day':
+					$date = new DateTime( date_i18n('Y-m-d') );
+					$date->modify( '+1 day' );
+					$args['year'] = $date->format('Y');
+					$args['day'] = $date->format('j');
+					$args['monthnum'] = $date->format('n');
+					break;
+				case '-w':
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( $today == $firstday ) { //If today is start of Week
+							$after = date_i18n('Y-m-d', strtotime("last $firstday"));
+							$before = date_i18n('Y-m-d', strtotime("last $lastday")).' 23:59:59';
+						}else{
+							$after = date_i18n('Y-m-d', strtotime("-2 $firstday"));
+							$before = date_i18n('Y-m-d', strtotime("last $lastday")).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$date = new DateTime( date_i18n('Y-m-d') );
+						$date->modify( '-1 week' );
+						$args['year'] = $date->format('Y');
+						$args['w'] = $date->format('W');
+					}
+					break;
+				case 'w':
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( $today == $firstday ) { //If today is start of Week
+							$after = date_i18n('Y-m-d');
+							$before = date_i18n('Y-m-d', strtotime("next $lastday")).' 23:59:59';
+						}elseif ( $today == $lastday ) { //If today is the end of Week
+							$after = date_i18n('Y-m-d', strtotime("last $firstday"));
+							$before = date_i18n('Y-m-d').' 23:59:59';
+						}else{
+							$after = date_i18n('Y-m-d', strtotime("last $firstday"));
+							$before = date_i18n('Y-m-d', strtotime("next $lastday")).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$args['year'] = date_i18n('Y');
+						$args['w'] = date_i18n('W');
+					}
+					break;
+				case '+w':
+					if ( $start_of_week != '1' ) { //If start of week is not Monday
+						if ( $today == $lastday ) { //If today is the end of Week
+							$after = date_i18n('Y-m-d', strtotime("next $firstday"));
+							$before = date_i18n('Y-m-d', strtotime("next $lastday")).' 23:59:59';
+						}else{ 
+							$after = date_i18n('Y-m-d', strtotime("next $firstday"));
+							$before = date_i18n('Y-m-d', strtotime("+2 $lastday")).' 23:59:59';
+						}
+						$args['date_query'] = array(
+												array(
+													'after'     => $after,
+													'before'     => $before,
+													'inclusive' => true,
+												),
+											);
+					}else{
+						$date = new DateTime( date_i18n('Y-m-d') );
+						$date->modify( '+1 week' );
+						$args['year'] = $date->format('Y');
+						$args['w'] = $date->format('W');
+					}
+					break;
+				case 'range':
+					if ( $this->relative ):
+						add_filter( 'posts_where', array( $this, 'relative' ) );
+					else:
+						add_filter( 'posts_where', array( $this, 'range' ) );
+					endif;
+					break;
+			endswitch;
 		endif;
 
 		$args = apply_filters( 'sportspress_list_data_event_args', $args );

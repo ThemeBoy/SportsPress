@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $defaults = array(
 	'team' => null,
 	'calendar' => null,
+	'order' => null,
+	'orderby' => null,
 	'league' => null,
 	'season' => null,
 	'id' => null,
@@ -40,7 +42,14 @@ elseif ( $calendar ):
 	if ( $team )
 		$calendar->team = $team;
 	$calendar->status = 'future';
-	$calendar->order = 'ASC';
+	if ( $order ) {
+		$calendar->order = $order;
+	}else{
+		$calendar->order = 'ASC';
+	}
+	if ( $orderby ) {
+		$calendar->orderby = $orderby;
+	}
 	$data = $calendar->data();
 
 	/**
@@ -101,13 +110,19 @@ if ( $title )
 
 $title = $post->post_title;
 if ( $link_events ) $title = '<a href="' . get_post_permalink( $post->ID, false, true ) . '">' . $title . '</a>';
-$sp_status = get_post_meta($post->ID, 'sp_status', true);
-$statuses = apply_filters( 'sportspress_event_statuses', array(
-			'ok' => __( 'On time', 'sportspress' ),
-			'tbd' => __( 'TBD', 'sportspress' ),
-			'postponed' => __( 'Postponed', 'sportspress' ),
-			'cancelled' => __( 'Canceled', 'sportspress' ),
-		) );
+if ( isset( $show_status ) && $show_status ){
+	$sp_status = get_post_meta($post->ID, 'sp_status', true);
+	//Avoid Undefined index warnings if no status is set (i.e. during import)
+	if ( $sp_status == '' ) $sp_status = 'ok';
+	$statuses = apply_filters( 'sportspress_event_statuses', array(
+				'ok' => __( 'On time', 'sportspress' ),
+				'tbd' => __( 'TBD', 'sportspress' ),
+				'postponed' => __( 'Postponed', 'sportspress' ),
+				'cancelled' => __( 'Canceled', 'sportspress' ),
+			) );
+	$title = $title.' ('.$statuses[ $sp_status ].')';
+}
+
 ?>
 <div class="sp-template sp-template-countdown">
 	<div class="sp-countdown-wrapper">
@@ -138,7 +153,7 @@ $statuses = apply_filters( 'sportspress_event_statuses', array(
 				}
 			}
 			?>
-			<?php echo $title.' ('.$statuses[ $sp_status ].')'; ?>
+			<?php echo $title; ?>
 		</h3>
 		<?php
 		if ( isset( $show_date ) && $show_date ):

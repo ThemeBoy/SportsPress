@@ -41,7 +41,7 @@ if ( $show_nationality && $nationalities && is_array( $nationalities ) ):
 			$nationality = sp_array_value( $legacy, $nationality, null );
 		endif;
 		$country_name = sp_array_value( $countries, $nationality, null );
-		$values[] = $country_name ? ( $show_nationality_flags ? '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"> ' : '' ) . $country_name : '&mdash;';
+		$values[] = $country_name ? ( $show_nationality_flags ? sp_flags( $nationality ) : '' ) . $country_name : '&mdash;';
 	endforeach;
 	$data[ __( 'Nationality', 'sportspress' ) ] = implode( '<br>', $values );
 endif;

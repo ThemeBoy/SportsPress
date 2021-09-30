@@ -831,7 +831,7 @@ class SP_League_Table extends SP_Secondary_Post {
 				// Flip value if descending order
 				if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
 
-				return ( $output > 0 );
+				return ( $output > 0 ? 1 : -1 );
 
 			endif;
 

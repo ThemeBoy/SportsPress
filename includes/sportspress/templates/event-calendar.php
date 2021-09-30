@@ -4,7 +4,7 @@
  *
  * @author 		ThemeBoy
  * @package 	SportsPress/Templates
- * @version   2.7.1
+ * @version   2.8.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -14,6 +14,7 @@ global $wpdb, $m, $monthnum, $year, $wp_locale;
 $defaults = array(
 	'id' => null,
 	'status' => 'default',
+	'format' => 'default',
 	'date' => 'default',
 	'date_from' => 'default',
 	'date_to' => 'default',
@@ -37,6 +38,8 @@ extract( $defaults, EXTR_SKIP );
 $calendar = new SP_Calendar( $id );
 if ( $status != 'default' )
 	$calendar->status = $status;
+if ( $format != 'default' )
+	$calendar->event_format = $format;
 if ( $date != 'default' )
 	$calendar->date = $date;
 if ( $date_from != 'default' )

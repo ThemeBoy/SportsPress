@@ -179,7 +179,7 @@ foreach ( $groups as $group ):
 			$nationalities = $player->nationalities();
 			if ( ! empty( $nationalities ) ):
 				foreach ( $nationalities as $nationality ):
-					$name = '<span class="player-flag"><img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . strtolower( $nationality ) . '.png" alt="' . $nationality . '"></span>' . $name;
+					$name = '<span class="player-flag">' . sp_flags( $nationality ) . '</span>' . $name;
 				endforeach;
 				$name_class .= ' has-photo';
 			endif;

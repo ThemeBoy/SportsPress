@@ -268,7 +268,7 @@ class SP_Admin_Menus {
 		$submenu_file = $s;
 	}
 
-	public static function sitemap_taxonomy_post_types( $post_types = array(), $taxonomy ) {
+	public static function sitemap_taxonomy_post_types( $post_types = array(), $taxonomy = 'sp_venue' ) {
 		$post_types = array_intersect( $post_types, sp_primary_post_types() );
 		// Remove teams from venues taxonomy post type array
 		if ( $taxonomy === 'sp_venue' && ( $key = array_search( 'sp_team', $post_types ) ) !== false ):

@@ -265,7 +265,12 @@ $identifier = uniqid( 'eventlist_' );
 						if ( $link_events ) $date_html = '<a href="' . get_post_permalink( $event->ID, false, true ) . '" itemprop="url">' . $date_html . '</a>';
 
 						echo '<td class="data-date" itemprop="startDate" content="' . mysql2date( 'Y-m-d\TH:iP', $event->post_date ) . '" data-label="'.__( 'Date', 'sportspress' ).'">' . $date_html . '</td>';
-
+						
+						//Check if the reverse_teams option is selected and alter the teams order
+						if ( $reverse_teams ) {
+							$teams_array = array_reverse( $teams_array, true );
+						}
+						
 						switch ( $title_format ) {
 							case 'homeaway':
 								if ( sp_column_active( $usecolumns, 'event' ) ) {
