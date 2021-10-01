@@ -954,7 +954,7 @@ class SP_League_Table extends SP_Secondary_Post {
 	 * @param string $column
 	 * @return null
 	 */
-	public function add_gb( &$a, $w = null, $l = null, $column ) {
+	public function add_gb( &$a, $w = null, $l = null, $column = null ) {
 		if ( ! is_array( $a ) ) return;
 		if ( ! $w && ! $l ) return;
 
