@@ -100,6 +100,7 @@ function sp_viewport() {
 				"pageLength": display_length,
 				"ordering": sortable,
 			    "language": {
+			      "emptyTable": localized_strings.emptyTable,
 			      "aria": {
 			        "sortAscending": "",
 			        "sortDescending": ""

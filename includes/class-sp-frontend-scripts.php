@@ -75,7 +75,15 @@ class SP_Frontend_Scripts {
 		wp_enqueue_script( 'sportspress', plugin_dir_url( SP_PLUGIN_FILE ) .'assets/js/sportspress.js', array( 'jquery' ), SP()->version, true );
 
 		// Localize scripts
-		wp_localize_script( 'sportspress', 'localized_strings', array( 'days' => __( 'days', 'sportspress' ), 'hrs' => __( 'hrs', 'sportspress' ), 'mins' => __( 'mins', 'sportspress' ), 'secs' => __( 'secs', 'sportspress' ), 'previous' => __( 'Previous', 'sportspress' ), 'next' => __( 'Next', 'sportspress' ) ) );
+		wp_localize_script( 'sportspress', 'localized_strings', array(
+			'days' => __( 'days', 'sportspress' ),
+			'hrs' => __( 'hrs', 'sportspress' ),
+			'mins' => __( 'mins', 'sportspress' ),
+			'secs' => __( 'secs', 'sportspress' ),
+			'previous' => __( 'Previous', 'sportspress' ),
+			'next' => __( 'Next', 'sportspress' ),
+			'emptyTable' => __( 'No matching records found', 'sportspress' ),
+		) );
 
 		// Theme styles
 		$theme = wp_get_theme();
