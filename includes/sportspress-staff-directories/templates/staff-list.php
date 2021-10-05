@@ -28,6 +28,7 @@ extract( $defaults, EXTR_SKIP );
 
 $directory = new SP_Staff_Directory( $id );
 if ( isset( $columns ) && null !== $columns ):
+	$columns = explode(',', $columns);
 	$directory->columns = $columns;
 endif;
 $data = $directory->data();
