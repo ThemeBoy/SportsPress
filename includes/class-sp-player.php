@@ -335,13 +335,6 @@ class SP_Player extends SP_Custom_Post {
 					'relation' => 'AND',
 				),
 			);
-			
-			if ( -1 !== $section ):
-				$args['meta_query'][] = array(
-					'key' => ( 1 === $section ? 'sp_defense' : 'sp_offense' ),
-					'value' => $this->ID
-				);
-			endif;
 
 			if ( $league_id ):
 				$args['tax_query'][] = array(
