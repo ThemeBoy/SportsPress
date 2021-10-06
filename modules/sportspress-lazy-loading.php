@@ -86,17 +86,38 @@ class SportsPress_Lazy_Loading {
 			}
 		}
 
+
+		
+		$player_sort = get_option( 'sportspress_event_player_sort', 'jersey' );
+
+		if( $player_sort == 'name' )
+		{
+			$args['order'] = 'ASC';
+			$args['orderby'] = 'title';
+		}
+		else // default 'jersey'
+		{
+			$args['meta_key'] = 'sp_number';
+			$args['orderby'] = 'meta_value_num';
+			$args['order'] = 'ASC';
+		}
+		
 		$player_args = $args;
-		$player_args['meta_key'] = 'sp_number';
-		$player_args['orderby'] = 'meta_value_num';
-		$player_args['order'] = 'ASC';
 
 		$players = sp_get_posts( 'sp_player', $player_args );
 		$staff = sp_get_posts( 'sp_staff', $args );
 		$data = array( 'index' => $index );
 
 		foreach ( $players as $key => $value ) {
-			$players[ $key ]->post_title = sp_get_player_name_with_number( $value->ID );
+			switch( $player_sort )
+			{
+			case 'name':
+				$players[ $key ]->post_title = sp_get_player_name_then_number( $value->ID );
+				break;
+			default:  // 'jersey'
+				$players[ $key ]->post_title = sp_get_player_name_with_number( $value->ID );
+				break;
+			}
 		}
 
 		$data['players'] = $players;
