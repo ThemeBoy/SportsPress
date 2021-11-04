@@ -23,7 +23,11 @@ class SP_League_Table extends SP_Secondary_Post {
 
 	/** @var array Teams to check for tiebreakers. */
 	public $tiebreakers = array();
-	
+
+	//** @var strings
+	public $orderby;
+	public $orderbyorder;
+
 	/** @var int Show Published events. */
 	public $show_published_events;
 	
@@ -44,6 +48,8 @@ class SP_League_Table extends SP_Secondary_Post {
 		$usecolumns = get_post_meta( $this->ID, 'sp_columns', true );
 		$adjustments = get_post_meta( $this->ID, 'sp_adjustments', true );
 		$select = get_post_meta( $this->ID, 'sp_select', true );
+		$this->orderby = get_post_meta( $this->ID, 'sp_orderby', true );
+		$this->orderbyorder = get_post_meta( $this->ID, 'sp_order', true );
 		$link_events = get_option( 'sportspress_link_events', 'yes' ) === 'yes' ? true : false;
 		$form_limit = (int) get_option( 'sportspress_form_limit', 5 );
 
@@ -53,7 +59,10 @@ class SP_League_Table extends SP_Secondary_Post {
 			$this->date = 0;
 
 		// Apply defaults
+		if ( empty( $this->orderby ) ) $this->orderby = 'default';
+		if ( empty( $this->orderbyorder ) ) $this->orderbyorder = 'ASC';
 		if ( empty( $select ) ) $select = 'auto';
+		
 
 		if ( 'range' == $this->date ) {
 
@@ -789,6 +798,17 @@ class SP_League_Table extends SP_Secondary_Post {
 			}
 		}
 
+		// Rearrange the table if Default ordering is not selected
+		if ( $this->orderby != 'default' ) {
+			uasort( $merged, array( $this, 'simple_order' ) );
+			// Recalculate position of teams
+			$this->pos = 0;
+			$this->counter = 0;
+			foreach ( $merged as $team_id => $team_columns ) {
+				$merged[ $team_id ]['pos'] = $this->calculate_pos( $team_columns, $team_id, false );
+			}
+		}
+		
 		// Rearrange data array to reflect values
 		$data = array();
 		foreach( $merged as $key => $value ):
@@ -839,6 +859,30 @@ class SP_League_Table extends SP_Secondary_Post {
 
 		// Default sort by alphabetical
 		return strcmp( sp_array_value( $a, 'name', '' ), sp_array_value( $b, 'name', '' ) );
+	}
+	
+	/**
+	 * Sort the table by ordering.
+	 *
+	 * @param array $a
+	 * @param array $b
+	 * @return int
+	 */
+	public function simple_order( $a, $b ) {
+
+		if ( $this->orderbyorder == 'DESC' ) {
+			if ( $this->orderby == 'name' ){
+				return strcmp( sp_array_value( $b, 'name', '' ), sp_array_value( $a, 'name', '' ) );
+			}else{
+				return (float) $b[ $this->orderby ] - (float) $a[ $this->orderby ];
+			}
+		}else{
+			if ( $this->orderby == 'name' ){
+				return strcmp( sp_array_value( $a, 'name', '' ), sp_array_value( $b, 'name', '' ) );
+			}else{
+				return (float) $a[ $this->orderby ] - (float) $b[ $this->orderby ];
+			}
+		}
 	}
 
 	/**
@@ -910,7 +954,7 @@ class SP_League_Table extends SP_Secondary_Post {
 	 * @param string $column
 	 * @return null
 	 */
-	public function add_gb( &$a, $w = null, $l = null, $column ) {
+	public function add_gb( &$a, $w = null, $l = null, $column = null ) {
 		if ( ! is_array( $a ) ) return;
 		if ( ! $w && ! $l ) return;
 

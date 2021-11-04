@@ -109,7 +109,7 @@ function sportspress_edit_player_list_table( $columns = array(), $usecolumns = n
 function sportspress_edit_team_columns_table( $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons = array(), $readonly = true ) {
 	return sp_edit_team_columns_table( $league_id, $columns, $data, $placeholders, $merged, $seasons, $readonly );
 }
-function sportspress_edit_player_performance_table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons_teams = array(), $readonly = true ) {
+function sportspress_edit_player_performance_table( $id = null, $league_id = null, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons_teams = array(), $readonly = true ) {
 	return sp_edit_player_performance_table( $id, $league_id, $columns, $data, $placeholders, $merged, $seasons_teams, $readonly );
 }
 function sportspress_edit_event_results_table( $columns = array(), $data = array() ) {
@@ -121,7 +121,7 @@ function sportspress_event_player_status_selector( $team_id, $player_id, $value 
 function sportspress_event_player_sub_selector( $team_id, $player_id, $value, $data = array() ) {
 	return sp_event_player_sub_selector( $team_id, $player_id, $value, $data );
 }
-function sportspress_edit_event_players_table( $columns = array(), $data = array(), $team_id ) {
+function sportspress_edit_event_players_table( $columns = array(), $data = array(), $team_id = null ) {
 	return sp_edit_event_players_table( $columns, $data, $team_id );
 }
 function sportspress_post_adder( $post_type = 'post', $label = null ) {

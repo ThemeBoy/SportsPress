@@ -889,4 +889,13 @@ jQuery(document).ready(function($){
 
 	// Trigger box score time converter
 	$('.sp-convert-time-input').change();
+	
+	// Trigger show/hide of team table ordering
+	$('#sp_orderby').change(function(){
+		if ($('#sp_orderby').val() == 'default') {
+			$("#sp_order").hide();
+		}else{
+            $('#sp_order').show();
+		}
+	});
 });
