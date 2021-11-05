@@ -305,6 +305,15 @@ if ( !function_exists( 'sp_array_between' ) ) {
 	}
 }
 
+if ( !function_exists( 'sp_array_map_recursive' ) ) {
+	function sp_array_map_recursive( callable $func, array $arr ) {
+		array_walk_recursive( $arr, function( &$v ) use ( $func ) {
+			$v = $func( $v );
+		} );
+		return $arr;
+	}
+}
+
 if ( !function_exists( 'sp_array_value' ) ) {
 	function sp_array_value( $arr = array(), $key = 0, $default = null, $sanitize = false ) {
 		$value = ( isset( $arr[ $key ] ) ? $arr[ $key ] : $default );
@@ -313,16 +322,16 @@ if ( !function_exists( 'sp_array_value' ) ) {
       if ( is_array( $value ) ):
         switch ( $sanitize ):
           case 'int':
-            $value = array_map( 'intval', $value );
+            $value = sp_array_map_recursive( 'intval', $value );
             break;
           case 'title':
-            $value = array_map( 'sanitize_title', $value );
+            $value = sp_array_map_recursive( 'sanitize_title', $value );
             break;
           case 'text':
-            $value = array_map( 'sanitize_text_field', $value );
+            $value = sp_array_map_recursive( 'sanitize_text_field', $value );
             break;
           case 'key':
-            $value = array_map( 'sanitize_key', $value );
+            $value = sp_array_map_recursive( 'sanitize_key', $value );
             break;
           endswitch;
       else:
