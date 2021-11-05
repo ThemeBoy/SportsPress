@@ -294,7 +294,7 @@ class SP_Admin_Welcome {
       <p class="about-description"><?php printf( __( 'SportsPress is developed and maintained by a worldwide team of passionate individuals and backed by an awesome developer community. Want to see your name? <a href="%s">Contribute to SportsPress</a>.', 'sportspress' ), 'https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md' ); ?></p>
 
       <div class="sp-feature feature-section col one-col">
-        <?php echo $this->contributors(); ?>
+        <?php echo wp_kses_post( $this->contributors() ); ?>
       </div>
     </div>
     <?php
