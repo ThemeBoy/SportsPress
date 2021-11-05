@@ -474,7 +474,7 @@ class SP_Admin_Setup_Wizard {
         $id = wp_insert_post( $post );
 
         // Add squad number
-        $number = sp_array_value( $player, 'number' );
+        $number = sanitize_text_field( sp_array_value( $player, 'number' ) );
         update_post_meta( $id, 'sp_number', $number );
 
         // Add position
@@ -573,9 +573,9 @@ class SP_Admin_Setup_Wizard {
       }
 
       $meta = array(
-        'sp_address' => sp_array_value( $_POST, 'address' ),
-        'sp_latitude' => sp_array_value( $_POST, 'latitude' ),
-        'sp_longitude' => sp_array_value( $_POST, 'longitude' ),
+        'sp_address' => sanitize_text_field( sp_array_value( $_POST, 'address' ) ),
+        'sp_latitude' => sanitize_text_field( sp_array_value( $_POST, 'latitude' ) ),
+        'sp_longitude' => sanitize_text_field( sp_array_value( $_POST, 'longitude' ) ),
       );
       update_option( "taxonomy_$t_id", $meta );
     }
