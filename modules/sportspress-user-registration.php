@@ -97,8 +97,8 @@ class SportsPress_User_Registration {
    */
   public static function register_form() {
     if ( 'yes' === get_option( 'sportspress_registration_name_inputs', 'no' ) ) {
-      $first_name = ( ! empty( $_POST['first_name'] ) ) ? trim( $_POST['first_name'] ) : '';
-      $last_name = ( ! empty( $_POST['last_name'] ) ) ? trim( $_POST['last_name'] ) : '';
+      $first_name = ( ! empty( $_POST['first_name'] ) ) ? trim( sanitize_text_field( $_POST['first_name'] ) ) : '';
+      $last_name = ( ! empty( $_POST['last_name'] ) ) ? trim( sanitize_text_field( $_POST['last_name'] ) ) : '';
       ?>
       <p>
           <label for="first_name"><?php _e( 'First Name', 'sportspress' ) ?><br />
@@ -141,13 +141,13 @@ class SportsPress_User_Registration {
     // Save first and last name
     if ( 'yes' === get_option( 'sportspress_registration_name_inputs', 'no' ) ) {
       if ( ! empty( $_POST['first_name'] ) ) {
-        $meta = trim( $_POST['first_name'] );
+        $meta = trim( sanitize_text_field( $_POST['first_name'] ) );
         $parts[] = $meta;
         update_user_meta( $user_id, 'first_name', $meta );
       }
 
       if ( ! empty( $_POST['last_name'] ) ) {
-        $meta = trim( $_POST['last_name'] );
+        $meta = trim( sanitize_text_field( $_POST['last_name'] ) );
         $parts[] = $meta;
         update_user_meta( $user_id, 'last_name', $meta );
       }
@@ -156,7 +156,7 @@ class SportsPress_User_Registration {
     // Add team from team name
     if ( isset( $_POST['sp_register_form_team'] ) && wp_verify_nonce( $_POST['sp_register_form_team'], 'submit_team_name' ) ) {
       if ( ! empty( $_POST['team_name'] ) ) {
-        $team_name = trim( $_POST['team_name'] );
+        $team_name = trim( sanitize_text_field( $_POST['team_name'] ) );
         $post['post_type'] = 'sp_team';
         $post['post_title'] = $team_name;
         $post['post_author'] = $user_id;
@@ -168,7 +168,7 @@ class SportsPress_User_Registration {
     // Save team
     if ( isset( $_POST['sp_register_form_player'] ) && wp_verify_nonce( $_POST['sp_register_form_player'], 'submit_team' ) ) {
       if ( ! empty( $_POST['sp_team'] ) ) {
-        $team = trim( $_POST['sp_team'] );
+        $team = trim( sanitize_text_field( $_POST['sp_team'] ) );
         if ( $team <= 0 ) $team = 0;
         update_user_meta( $user_id, 'sp_team', $team );
       }
@@ -177,7 +177,7 @@ class SportsPress_User_Registration {
     // Add player
     if ( 'yes' === get_option( 'sportspress_registration_add_player', 'no' ) ) {
       if ( ! sizeof( $parts ) && ! empty( $_POST['user_login'] ) ) {
-        $parts[] = trim( $_POST['user_login'] );
+        $parts[] = trim( sanitize_text_field( $_POST['user_login'] ) );
       }
 
       if ( sizeof( $parts ) ) {
