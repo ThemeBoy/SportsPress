@@ -61,7 +61,7 @@ class SP_Admin_CPT_Statistic extends SP_Admin_CPT {
 				break;
 			case 'sp_key':
 				global $post;
-				echo $post->post_name;
+				echo esc_attr( $post->post_name );
 				break;
 			case 'sp_equation':
 				echo sp_get_post_equation( $post_id );
@@ -71,7 +71,7 @@ class SP_Admin_CPT_Statistic extends SP_Admin_CPT {
 				break;
 			case 'sp_description':
 				global $post;
-				echo '<span class="description">' . $post->post_excerpt . '</span>';
+				echo '<span class="description">' . wp_kses_post( $post->post_excerpt ) . '</span>';
 				break;
 		endswitch;
 	}
