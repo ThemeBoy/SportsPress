@@ -234,7 +234,7 @@ class SP_Settings_General extends SP_Settings_Page {
 	 */
 	public function save() {
 		if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) && get_option( 'sportspress_sport', null ) !== $_POST['sportspress_sport'] ):
-			$sport = $_POST['sportspress_sport'];
+			$sport = sanitize_key( $_POST['sportspress_sport'] );
 			SP_Admin_Sports::apply_preset( $sport );
   		delete_option( '_sp_needs_welcome' );
     	update_option( 'sportspress_installed', 1 );
@@ -250,16 +250,15 @@ class SP_Settings_General extends SP_Settings_Page {
 
 		// Map UTC+- timezones to gmt_offsets and set timezone_string to empty.
 		if ( ! empty( $_POST['timezone_string'] ) && preg_match( '/^UTC[+-]/', $_POST['timezone_string'] ) ) {
-			$_POST['gmt_offset'] = $_POST['timezone_string'];
-			$_POST['gmt_offset'] = preg_replace( '/UTC\+?/', '', $_POST['gmt_offset'] );
+			$_POST['gmt_offset'] = preg_replace( '/UTC\+?/', '', sanitize_text_field( $_POST['timezone_string'] ) );
 			$_POST['timezone_string'] = '';
 		}
 
 		if ( isset( $_POST['timezone_string'] ) )
-			update_option( 'timezone_string', $_POST['timezone_string'] );
+			update_option( 'timezone_string', sanitize_option( 'timezone_string', $_POST['timezone_string'] ) );
 
 		if ( isset( $_POST['gmt_offset'] ) )
-			update_option( 'gmt_offset', $_POST['gmt_offset'] );
+			update_option( 'gmt_offset', sanitize_option( 'gmt_offset', $_POST['gmt_offset'] ) );
 
 		if ( isset( $_POST['sportspress_frontend_css_primary'] ) ) {
 
