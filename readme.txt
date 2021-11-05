@@ -3,8 +3,8 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, nabil_kadimi, rochester
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 5.7
-Stable tag: 2.7.8
+Tested up to: 5.8.1
+Stable tag: 2.7.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,20 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.9 =
+* Tweak - Add support for event format in REST API.
+* Tweak - Add "Order" and "Order by" selection fields for countdown widget.
+* Tweak - Add option to display event status in countdown widget.
+* Tweak - Add ability to filter events by format in calendar template.
+* Fix - Reverse order not applying to teams in event lists.
+* Fix - XSS issues in events admin page.
+* Fix - Filtering based on format for event blocks.
+* Fix - Last week and next week filter not applying to player lists.
+* Fix - Deselecting a selected team in settings.
+* Fix - PHP 8.0 deprecated warnings.
+* Localization - Add nationalities and flags for French Guiana, French Polynesia, Guadeloupe, Greenland, Martinique, Reunion, and Sint Maarten.
+
 
 = 2.7.8 =
 * Fix - Event results, box scores, and players stats not updating via REST API.

@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin
- * @version     2.6.8
+ * @version     2.7.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -31,7 +31,7 @@ class SP_Admin_Dashboard {
      * Init dashboard widgets
      */
     public function init() {
-        wp_add_dashboard_widget( 'sportspress_dashboard_news', __( 'Sports News', 'sportspress' ), array( $this, 'news_widget' ), null, null, 'side' );
+        //wp_add_dashboard_widget( 'sportspress_dashboard_news', __( 'Sports News', 'sportspress' ), array( $this, 'news_widget' ), null, null, 'side' );
         wp_add_dashboard_widget( 'sportspress_dashboard_status', __( 'SportsPress', 'sportspress' ), array( $this, 'status_widget' ) );
         add_filter( 'dashboard_glance_items', array( $this, 'glance_items' ), 10, 1 );
     }
