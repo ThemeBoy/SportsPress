@@ -127,7 +127,7 @@ class SP_Settings_Licenses extends SP_Settings_Page {
 			return;
 
 		// retrieve the license key
-		$license = trim( $_POST[ 'sp_license_key_' . $id ] );
+		$license = trim( sanitize_text_field( $_POST[ 'sp_license_key_' . $id ] ) );
 		
 		// get the name of the product
 		$name = $this->licenses[ $id ]['name'];
@@ -174,7 +174,7 @@ class SP_Settings_Licenses extends SP_Settings_Page {
 			return;
 
 		// retrieve the license key
-		$license = trim( $_POST[ 'sp_license_key_' . $id ] );
+		$license = trim( sanitize_text_field( $_POST[ 'sp_license_key_' . $id ] ) );
 		
 		// get the name of the product
 		$name = $this->licenses[ $id ]['name'];
