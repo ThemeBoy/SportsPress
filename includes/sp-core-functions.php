@@ -319,7 +319,7 @@ if ( !function_exists( 'sp_array_value' ) ) {
             $value = array_map( 'sanitize_title', $value );
             break;
           case 'text':
-            $value = array_map( 'sanitize_text', $value );
+            $value = array_map( 'sanitize_text_field', $value );
             break;
           case 'key':
             $value = array_map( 'sanitize_key', $value );
@@ -334,7 +334,7 @@ if ( !function_exists( 'sp_array_value' ) ) {
             $value = sanitize_title( $value );
             break;
           case 'text':
-            $value = sanitize_text( $value );
+            $value = sanitize_text_field( $value );
             break;
           case 'key':
             $value = sanitize_key( $value );

@@ -34,6 +34,6 @@ class SP_Meta_Box_Calendar_Format {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'calendar' ) );
+		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'calendar', 'text' ) );
 	}
 }
