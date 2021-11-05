@@ -47,7 +47,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->header();
 
 			if ( ! empty( $_POST['delimiter'] ) )
-				$this->delimiter = stripslashes( trim( $_POST['delimiter'] ) );
+				$this->delimiter = stripslashes( trim( sanitize_text_field( $_POST['delimiter'] ) ) );
 
 			if ( ! $this->delimiter )
 				$this->delimiter = ',';
