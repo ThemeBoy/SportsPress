@@ -252,11 +252,11 @@ class SP_Admin_Settings {
 
 			if ( $tip && in_array( $value['type'], array( 'checkbox' ) ) ) {
 
-				$tip = '<p class="description">' . esc_attr( $tip ) . '</p>';
+				$tip = '<p class="description">' . $tip . '</p>';
 
 			} elseif ( $tip ) {
 
-				$tip = '<i class="dashicons dashicons-editor-help sp-desc-tip" title="' . esc_attr( $tip ) . '" />';
+				$tip = '<i class="dashicons dashicons-editor-help sp-desc-tip" title="' . $tip . '" />';
 
 			}
 

@@ -142,9 +142,9 @@ class SP_Admin_Taxonomies {
 	public function edit_venue_fields( $term ) {
 	 	$t_id = $term->term_id;
 		$term_meta = get_option( "taxonomy_$t_id" ); 
-		$latitude = is_numeric( esc_attr( $term_meta['sp_latitude'] ) ) ? esc_attr( $term_meta['sp_latitude'] ) : '';
-		$longitude = is_numeric( esc_attr( $term_meta['sp_longitude'] ) ) ? esc_attr( $term_meta['sp_longitude'] ) : '';
-		$address = esc_attr( $term_meta['sp_address'] ) ? esc_attr( $term_meta['sp_address'] ) : '';
+		$latitude = is_numeric( $term_meta['sp_latitude'] ) ? $term_meta['sp_latitude'] : '';
+		$longitude = is_numeric( $term_meta['sp_longitude'] ) ? $term_meta['sp_longitude'] : '';
+		$address = $term_meta['sp_address'] ? $term_meta['sp_address'] : '';
 		?>
 		<tr class="form-field">
 			<td colspan="2">
@@ -155,19 +155,19 @@ class SP_Admin_Taxonomies {
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label></th>
 			<td>
-				<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo $address; ?>">
+				<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo esc_attr( $address ); ?>">
 			</td>
 		</tr>
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label></th>
 			<td>
-				<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo $latitude; ?>">
+				<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo esc_attr( $latitude ); ?>">
 			</td>
 		</tr>
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[sp_longitude]"><?php _e( 'Longitude', 'sportspress' ); ?></label></th>
 			<td>
-				<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo $longitude; ?>">
+				<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo esc_attr( $longitude ); ?>">
 			</td>
 		</tr>
 	<?php
