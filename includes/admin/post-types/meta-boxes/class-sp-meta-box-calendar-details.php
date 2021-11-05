@@ -166,22 +166,22 @@ class SP_Meta_Box_Calendar_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0 ) ) );
-		update_post_meta( $post_id, 'sp_status', sp_array_value( $_POST, 'sp_status', 0 ) );
-		update_post_meta( $post_id, 'sp_event_format', sp_array_value( $_POST, 'sp_event_format', 0 ) );
-		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0 ) );
-		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null ) );
-		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null ) );
-		update_post_meta( $post_id, 'sp_date_past', sp_array_value( $_POST, 'sp_date_past', 0 ) );
-		update_post_meta( $post_id, 'sp_date_future', sp_array_value( $_POST, 'sp_date_future', 0 ) );
-		update_post_meta( $post_id, 'sp_date_relative', sp_array_value( $_POST, 'sp_date_relative', 0 ) );
-		update_post_meta( $post_id, 'sp_day', sp_array_value( $_POST, 'sp_day', null ) );
+		update_post_meta( $post_id, 'sp_caption', sanitize_text_field( sp_array_value( $_POST, 'sp_caption', 0 ) ) );
+		update_post_meta( $post_id, 'sp_status', sanitize_text_field( sp_array_value( $_POST, 'sp_status', 0 ) ) );
+		update_post_meta( $post_id, 'sp_event_format', sanitize_key( sp_array_value( $_POST, 'sp_event_format', 0 ) ) );
+		update_post_meta( $post_id, 'sp_date', sanitize_text_field( sp_array_value( $_POST, 'sp_date', 0 ) ) );
+		update_post_meta( $post_id, 'sp_date_from', sanitize_text_field( sp_array_value( $_POST, 'sp_date_from', null ) ) );
+		update_post_meta( $post_id, 'sp_date_to', sanitize_text_field( sp_array_value( $_POST, 'sp_date_to', null ) ) );
+		update_post_meta( $post_id, 'sp_date_past', sanitize_text_field( sp_array_value( $_POST, 'sp_date_past', 0 ) ) );
+		update_post_meta( $post_id, 'sp_date_future', sanitize_text_field( sp_array_value( $_POST, 'sp_date_future', 0 ) ) );
+		update_post_meta( $post_id, 'sp_date_relative', sanitize_text_field( sp_array_value( $_POST, 'sp_date_relative', 0 ) ) );
+		update_post_meta( $post_id, 'sp_day', sanitize_text_field( sp_array_value( $_POST, 'sp_day', null ) ) );
 		$tax_input = sp_array_value( $_POST, 'tax_input', array() );
 		update_post_meta( $post_id, 'sp_main_league', in_array( 'auto', sp_array_value( $tax_input, 'sp_league' ) ) );
 		update_post_meta( $post_id, 'sp_current_season', in_array( 'auto', sp_array_value( $tax_input, 'sp_season' ) ) );
-		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', null ) );
-		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', null ) );
-		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
-		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
+		update_post_meta( $post_id, 'sp_orderby', sanitize_key( sp_array_value( $_POST, 'sp_orderby', null ) ) );
+		update_post_meta( $post_id, 'sp_order', sanitize_text_field( sp_array_value( $_POST, 'sp_order', null ) ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array(), 'int' ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array(), 'int' ) );
 	}
 }
