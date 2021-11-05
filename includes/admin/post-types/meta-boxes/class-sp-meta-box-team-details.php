@@ -124,9 +124,9 @@ class SP_Meta_Box_Team_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_url', esc_url( sp_array_value( $_POST, 'sp_url', '' ) ) );
-		update_post_meta( $post_id, 'sp_redirect', sp_array_value( $_POST, 'sp_redirect', 0 ) );
-		update_post_meta( $post_id, 'sp_short_name', esc_attr( sp_array_value( $_POST, 'sp_short_name', '' ) ) );
-		update_post_meta( $post_id, 'sp_abbreviation', esc_attr( sp_array_value( $_POST, 'sp_abbreviation', '' ) ) );
+		update_post_meta( $post_id, 'sp_url', esc_url( sp_array_value( $_POST, 'sp_url', '', 'text' ) ) );
+		update_post_meta( $post_id, 'sp_redirect', sp_array_value( $_POST, 'sp_redirect', 0, 'int' ) );
+		update_post_meta( $post_id, 'sp_short_name', esc_attr( sp_array_value( $_POST, 'sp_short_name', '', 'text' ) ) );
+		update_post_meta( $post_id, 'sp_abbreviation', esc_attr( sp_array_value( $_POST, 'sp_abbreviation', '', 'text' ) ) );
 	}
 }
