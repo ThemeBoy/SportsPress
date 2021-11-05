@@ -65,7 +65,7 @@ class SP_Admin_Permalink_Settings {
 		$slug = array_shift( $this->slugs );
 		$key = $slug[0];
 		$text = get_option( 'sportspress_' . $key . '_slug', null );
-		?><fieldset><input id="sportspress_<?php echo $key; ?>_slug" name="sportspress_<?php echo $key; ?>_slug" type="text" class="regular-text code" value="<?php echo $text; ?>" placeholder="<?php echo $key; ?>"></fieldset><?php
+		?><fieldset><input id="sportspress_<?php echo esc_attr( $key ); ?>_slug" name="sportspress_<?php echo esc_attr( $key ); ?>_slug" type="text" class="regular-text code" value="<?php echo esc_attr( $text ); ?>" placeholder="<?php echo esc_attr( $key ); ?>"></fieldset><?php
 	}
 
 	/**
