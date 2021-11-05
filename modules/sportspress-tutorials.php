@@ -145,7 +145,7 @@ class SportsPress_Tutorials {
 			'advanced' => __( 'Advanced', 'sportspress' ),
 		) );
 		if ( isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], $tabs ) ) {
-			$current_tab = $_GET['tab'];
+			$current_tab = sanitize_key( $_GET['tab'] );
 		} else {
 			$current_tab = key( $tabs );
 		}
