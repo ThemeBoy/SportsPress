@@ -306,8 +306,44 @@ if ( !function_exists( 'sp_array_between' ) ) {
 }
 
 if ( !function_exists( 'sp_array_value' ) ) {
-	function sp_array_value( $arr = array(), $key = 0, $default = null ) {
-		return ( isset( $arr[ $key ] ) ? $arr[ $key ] : $default );
+	function sp_array_value( $arr = array(), $key = 0, $default = null, $sanitize = false ) {
+		$value = ( isset( $arr[ $key ] ) ? $arr[ $key ] : $default );
+
+    if ( $sanitize ):
+      if ( is_array( $value ) ):
+        switch ( $sanitize ):
+          case 'int':
+            $value = array_map( 'intval', $value );
+            break;
+          case 'title':
+            $value = array_map( 'sanitize_title', $value );
+            break;
+          case 'text':
+            $value = array_map( 'sanitize_text', $value );
+            break;
+          case 'key':
+            $value = array_map( 'sanitize_key', $value );
+            break;
+          endswitch;
+      else:
+        switch ( $sanitize ):
+          case 'int':
+            $value = intval( $value );
+            break;
+          case 'title':
+            $value = sanitize_title( $value );
+            break;
+          case 'text':
+            $value = sanitize_text( $value );
+            break;
+          case 'key':
+            $value = sanitize_key( $value );
+            break;
+        endswitch;
+      endif;
+    endif;
+
+    return $value;
 	}
 }
 
