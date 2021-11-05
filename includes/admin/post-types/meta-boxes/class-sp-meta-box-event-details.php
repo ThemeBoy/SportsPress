@@ -73,11 +73,11 @@ class SP_Meta_Box_Event_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_day', sp_array_value( $_POST, 'sp_day', null ) );
-		update_post_meta( $post_id, 'sp_minutes', sp_array_value( $_POST, 'sp_minutes', get_option( 'sportspress_event_minutes', 90 ) ) );
+		update_post_meta( $post_id, 'sp_day', sp_array_value( $_POST, 'sp_day', null, 'text' ) );
+		update_post_meta( $post_id, 'sp_minutes', sp_array_value( $_POST, 'sp_minutes', get_option( 'sportspress_event_minutes', 90 ), 'int' ) );
    		$venues = array_filter( sp_array_value( sp_array_value( $_POST, 'tax_input', array() ), 'sp_venue', array() ) );
 		if ( empty( $venues ) ) {
-			$teams = sp_array_value( $_POST, 'sp_team', array() );
+			$teams = sp_array_value( $_POST, 'sp_team', array(), 'int' );
 			$team = reset( $teams );
 			$venue = sp_get_the_term_id( $team, 'sp_venue' );
 			wp_set_post_terms( $post_id, $venue, 'sp_venue' );

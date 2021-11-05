@@ -48,6 +48,6 @@ class SP_Meta_Box_Event_Specs {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_specs', sp_array_value( $_POST, 'sp_specs', array() ) );
+		update_post_meta( $post_id, 'sp_specs', sp_array_value( $_POST, 'sp_specs', array(), 'text' ) );
 	}
 }

@@ -143,7 +143,7 @@ class SP_Meta_Box_Event_Teams {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		$teams = sp_array_value( $_POST, 'sp_team', array() );
+		$teams = sp_array_value( $_POST, 'sp_team', array(), 'int' );
 
 		sp_update_post_meta_recursive( $post_id, 'sp_team', $teams );
 
@@ -159,14 +159,14 @@ class SP_Meta_Box_Event_Teams {
 			$tabs = array();
 			$sections = get_option( 'sportspress_event_performance_sections', -1 );
 			if ( -1 == $sections ) {
-				sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
+				sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array(), 'int' ) );
 			} else {
-				$players = array_merge( sp_array_value( $_POST, 'sp_offense', array() ), sp_array_value( $_POST, 'sp_defense', array() ) );
-				sp_update_post_meta_recursive( $post_id, 'sp_offense', sp_array_value( $_POST, 'sp_offense', array() ) );
-				sp_update_post_meta_recursive( $post_id, 'sp_defense', sp_array_value( $_POST, 'sp_defense', array() ) );
+				$players = array_merge( sp_array_value( $_POST, 'sp_offense', array() ), sp_array_value( $_POST, 'sp_defense', array(), 'int' ) );
+				sp_update_post_meta_recursive( $post_id, 'sp_offense', sp_array_value( $_POST, 'sp_offense', array(), 'int' ) );
+				sp_update_post_meta_recursive( $post_id, 'sp_defense', sp_array_value( $_POST, 'sp_defense', array(), 'int' ) );
 				sp_update_post_meta_recursive( $post_id, 'sp_player', $players );
 			}
-			sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
+			sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array(), 'int' ) );
 		}
 	}
 }

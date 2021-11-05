@@ -69,13 +69,13 @@ class SP_Meta_Box_Event_Performance {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array() ) );
-		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
-		update_post_meta( $post_id, 'sp_timeline', sp_array_value( $_POST, 'sp_timeline', array() ) );
-		update_post_meta( $post_id, 'sp_stars', sp_array_value( $_POST, 'sp_stars', array() ) );
+		update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array(), 'text' ) );
+		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array(), 'int' ) );
+		update_post_meta( $post_id, 'sp_timeline', sp_array_value( $_POST, 'sp_timeline', array(), 'text' ) );
+		update_post_meta( $post_id, 'sp_stars', sp_array_value( $_POST, 'sp_stars', array(), 'text' ) );
 
 		if ( isset( $_POST['sp_columns'] ) ) {
-			$columns = array_filter( (array) $_POST['sp_columns'] );
+			$columns = array_filter( (array) sp_array_value( $_POST, 'sp_columns', array(), 'text' ) );
 			update_post_meta( $post_id, 'sp_columns', $columns );
 		}
 	}

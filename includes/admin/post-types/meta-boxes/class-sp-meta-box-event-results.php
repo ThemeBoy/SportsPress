@@ -34,11 +34,11 @@ class SP_Meta_Box_Event_Results {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		$results = (array)sp_array_value( $_POST, 'sp_results', array() );
+		$results = (array)sp_array_value( $_POST, 'sp_results', array(), 'text' );
 		$main_result = get_option( 'sportspress_primary_result', null );
 
 		// Get player performance
-		$performance = sp_array_value( $_POST, 'sp_players', array() );
+		$performance = sp_array_value( $_POST, 'sp_players', array(), 'text' );
 
 		// Initialize finished
 		$finished = false;
@@ -212,7 +212,7 @@ class SP_Meta_Box_Event_Results {
 
 		// Update meta
 		update_post_meta( $post_id, 'sp_results', $results );
-		update_post_meta( $post_id, 'sp_result_columns', sp_array_value( $_POST, 'sp_result_columns', array() ) );
+		update_post_meta( $post_id, 'sp_result_columns', sp_array_value( $_POST, 'sp_result_columns', array(), 'key' ) );
 	}
 
 	/**
