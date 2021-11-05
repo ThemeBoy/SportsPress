@@ -252,7 +252,7 @@ class SP_Admin_Settings {
 
 			if ( $tip && in_array( $value['type'], array( 'checkbox' ) ) ) {
 
-				$tip = '<p class="description">' . $tip . '</p>';
+				$tip = '<p class="description">' . esc_attr( $tip ) . '</p>';
 
 			} elseif ( $tip ) {
 
@@ -311,9 +311,9 @@ class SP_Admin_Settings {
 	            	?><tr valign="top">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-							<?php echo $tip; ?>
+							<?php echo esc_html( $tip ); ?>
 						</th>
-	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    <td class="forminp forminp-<?php echo esc_attr( $value['type'] ) ?>">
 	                    	<input
 	                    		name="<?php echo esc_attr( $value['id'] ); ?>"
 	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -323,7 +323,7 @@ class SP_Admin_Settings {
 	                    		placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
 	                    		class="<?php echo esc_attr( $value['class'] ); ?>"
 	                    		<?php echo implode( ' ', $custom_attributes ); ?>
-	                    		/> <?php echo $description; ?>
+	                    		/> <?php echo wp_kses_post( $description ); ?>
 	                    </td>
 	                </tr><?php
 	            break;
@@ -336,10 +336,10 @@ class SP_Admin_Settings {
 	            	?><tr valign="top">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-							<?php echo $tip; ?>
+							<?php echo esc_html( $tip ); ?>
 						</th>
-	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
-	                    	<?php echo $description; ?>
+	                    <td class="forminp forminp-<?php echo esc_attr( $value['type'] ) ?>">
+	                    	<?php echo wp_kses_post( $description ); ?>
 
 	                        <textarea
 	                        	name="<?php echo esc_attr( $value['id'] ); ?>"
@@ -361,9 +361,9 @@ class SP_Admin_Settings {
 	            	?><tr valign="top">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-							<?php echo $tip; ?>
+							<?php echo esc_html( $tip ); ?>
 						</th>
-	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    <td class="forminp forminp-<?php echo esc_attr( $value['type'] ) ?>">
 	                    	<select
 	                    		name="<?php echo esc_attr( $value['id'] ); ?><?php if ( $value['type'] == 'multiselect' ) echo '[]'; ?>"
 	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -382,11 +382,11 @@ class SP_Admin_Settings {
 				                        	else
 				                        		selected( $option_value, $key );
 
-			                        	?>><?php echo $val ?></option>
+			                        	?>><?php echo esc_attr( $val ); ?></option>
 			                        	<?php
 			                        }
 			                    ?>
-	                       </select> <?php echo $description; ?>
+	                       </select> <?php echo wp_kses_post( $description ); ?>
 	                    </td>
 	                </tr><?php
 	            break;
@@ -399,9 +399,9 @@ class SP_Admin_Settings {
 	            	?><tr valign="top">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-							<?php echo $tip; ?>
+							<?php echo esc_html( $tip ); ?>
 						</th>
-	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    <td class="forminp forminp-<?php echo esc_attr( $value['type'] ) ?>">
 	                    	<select
 	                    		name="<?php echo esc_attr( $value['id'] ); ?><?php if ( $value['type'] == 'multiselect' ) echo '[]'; ?>"
 	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -424,7 +424,7 @@ class SP_Admin_Settings {
 					                        	else
 					                        		selected( $option_value, $key );
 
-				                        	?>><?php echo $val ?></option>
+				                        	?>><?php echo esc_attr( $val ); ?></option>
 				                        	<?php
 				                        }
 				                        ?>
@@ -432,7 +432,7 @@ class SP_Admin_Settings {
 				                  	<?php
 				                }
 			                    ?>
-	                       </select> <?php echo $description; ?>
+	                       </select> <?php echo wp_kses_post( $description ); ?>
 	                    </td>
 	                </tr><?php
 	            break;
@@ -449,9 +449,9 @@ class SP_Admin_Settings {
 	            	?><tr valign="top">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-							<?php echo $tip; ?>
+							<?php echo esc_html( $tip ); ?>
 						</th>
-	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    <td class="forminp forminp-<?php echo esc_attr( $value['type'] ) ?>">
 	                    	<select
 	                    		name="<?php echo esc_attr( $value['id'] ); ?><?php if ( $value['type'] == 'multiselect' ) echo '[]'; ?>"
 	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -474,7 +474,7 @@ class SP_Admin_Settings {
 					                        	else
 					                        		selected( $option_value, $key );
 
-				                        	?>><?php echo $val ?></option>
+				                        	?>><?php echo esc_attr( $val ); ?></option>
 				                        	<?php
 				                        }
 				                        ?>
@@ -482,7 +482,7 @@ class SP_Admin_Settings {
 				                  	<?php
 				                }
 			                    ?>
-							</select> <?php echo $description; ?> <a class="button button-small sp-configure-sport" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress-config' ), 'admin.php' ) ) ); ?>"><?php _e( 'Configure', 'sportspress' ); ?></a>
+							</select> <?php echo wp_kses_post( $description ); ?> <a class="button button-small sp-configure-sport" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress-config' ), 'admin.php' ) ) ); ?>"><?php _e( 'Configure', 'sportspress' ); ?></a>
 							<p>
 								<label>
 									<input type="checkbox" name="add_sample_data" id="add_sample_data" <?php checked( sp_array_value( $value, 'welcome' ) ); ?>>
@@ -501,11 +501,11 @@ class SP_Admin_Settings {
 	            	?><tr valign="top">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-							<?php echo $tip; ?>
+							<?php echo wp_kses_post( $tip ); ?>
 						</th>
-	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    <td class="forminp forminp-<?php echo esc_attr( $value['type'] ) ?>">
 	                    	<fieldset>
-	                    		<?php echo $description; ?>
+	                    		<?php echo wp_kses_post( $description ); ?>
 	                    		<ul>
 	                    		<?php
 	                    			foreach ( $value['options'] as $key => $val ) {
@@ -513,13 +513,13 @@ class SP_Admin_Settings {
 			                        	<li>
 			                        		<label><input
 				                        		name="<?php echo esc_attr( $value['id'] ); ?>"
-				                        		value="<?php echo $key; ?>"
+				                        		value="<?php echo esc_attr( $key ); ?>"
 				                        		type="radio"
 					                    		style="<?php echo esc_attr( $value['css'] ); ?>"
 					                    		class="<?php echo esc_attr( $value['class'] ); ?>"
 					                    		<?php echo implode( ' ', $custom_attributes ); ?>
 					                    		<?php checked( $key, $option_value ); ?>
-				                        		/> <?php echo $val ?></label>
+				                        		/> <?php echo esc_attr( $val ); ?></label>
 			                        	</li>
 			                        	<?php
 			                        }
@@ -572,7 +572,7 @@ class SP_Admin_Settings {
 	            	}
 
 	            	?>
-						<label for="<?php echo $value['id'] ?>">
+						<label for="<?php echo esc_attr( $value['id'] ); ?>">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -580,8 +580,8 @@ class SP_Admin_Settings {
 								value="1"
 								<?php checked( $option_value, 'yes'); ?>
 								<?php echo implode( ' ', $custom_attributes ); ?>
-							/> <?php echo $description ?>
-						</label> <?php echo $tip; ?>
+							/> <?php echo wp_kses_post( $description ); ?>
+						</label> <?php echo wp_kses_post( $tip ); ?>
 					<?php
 
 					if ( ! isset( $value['checkboxgroup'] ) || 'end' == $value['checkboxgroup'] ) {
@@ -627,7 +627,7 @@ class SP_Admin_Settings {
 	    	if ( ! isset( $value['id'] ) )
 	    		continue;
 
-	    	$type = isset( $value['type'] ) ? sanitize_title( $value['type'] ) : '';
+	    	$type = isset( $value['type'] ) ? esc_attr( $value['type'] ) : '';
 
 	    	// Get the option name
 	    	$option_value = null;
