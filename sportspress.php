@@ -394,8 +394,11 @@ final class SportsPress {
 		endswitch;
 
 		$config = array(
+			'id'           => 'sportspress',
 			'default_path' => '',
 			'menu'         => 'tgmpa-install-plugins',
+			'parent_slug'  => 'plugins.php',
+			'capability'   => 'manage_options',
 			'has_notices'  => true,
 			'dismissable'  => true,
 			'is_automatic' => true,

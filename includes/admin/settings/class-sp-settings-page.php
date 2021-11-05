@@ -72,7 +72,7 @@ class SP_Settings_Page {
 
 	    $templates = $this->templates();
 		if ( ! empty( $templates ) )
-			update_option( 'sportspress_' . $this->template . '_template_order', sp_array_value( $_POST, 'sportspress_' . $this->template . '_template_order', false ) );
+			update_option( 'sportspress_' . $this->template . '_template_order', sp_array_value( $_POST, 'sportspress_' . $this->template . '_template_order', false, 'key' ) );
 
 		if ( isset( $_POST['sportspress_template_visibility'] ) && is_array( $_POST['sportspress_template_visibility'] ) ) {
 			foreach ( $_POST['sportspress_template_visibility'] as $option => $toggled ) {
