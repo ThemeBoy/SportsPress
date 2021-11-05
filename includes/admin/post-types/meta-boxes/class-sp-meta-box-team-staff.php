@@ -38,7 +38,7 @@ class SP_Meta_Box_Team_Staff {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array() ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_staff', sp_array_value( $_POST, 'sp_staff', array(), 'int' ) );
 	}
 
 	/**

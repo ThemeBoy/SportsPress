@@ -75,7 +75,7 @@ class SP_Meta_Box_Event_Performance {
 		update_post_meta( $post_id, 'sp_stars', sp_array_value( $_POST, 'sp_stars', array(), 'text' ) );
 
 		if ( isset( $_POST['sp_columns'] ) ) {
-			$columns = array_filter( (array) sp_array_value( $_POST, 'sp_columns', array(), 'text' ) );
+			$columns = array_filter( (array) sp_array_value( $_POST, 'sp_columns', array(), 'key' ) );
 			update_post_meta( $post_id, 'sp_columns', $columns );
 		}
 	}
