@@ -181,4 +181,4 @@ header('Etag:' . '"'.$etag.'"');
 header('Content-Disposition: inline; filename=' . $post->post_name . '.ics');
 
 // Print content
-echo $output;
+echo wp_kses_post( $output );
