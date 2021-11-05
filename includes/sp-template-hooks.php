@@ -227,13 +227,13 @@ function sportspress_sanitize_title( $title ) {
 	
 	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && is_sp_config_type( $_POST['post_type'] ) ):
 
-		$key = isset( $_POST['sp_key'] ) ? $_POST['sp_key'] : null;
+		$key = isset( $_POST['sp_key'] ) ? sanitize_title( $_POST['sp_key'] ) : null;
 
-		if ( ! $key ) $key = isset( $_POST['sp_default_key'] ) ? $_POST['sp_default_key'] : null;
+		if ( ! $key ) $key = isset( $_POST['sp_default_key'] ) ? sanitize_title( $_POST['sp_default_key'] ) : null;
 
-		if ( ! $key ) $key = $_POST['post_title'];
+		if ( ! $key ) $key = sanitize_title( $_POST['post_title'] );
 
-		$id = sp_array_value( $_POST, 'post_ID', 'var' );
+		$id = intval( sp_array_value( $_POST, 'post_ID', 'var' ) );
 
 		$title = sp_get_eos_safe_slug( $key, $id );
 
