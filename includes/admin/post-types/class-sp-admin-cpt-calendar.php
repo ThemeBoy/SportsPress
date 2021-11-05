@@ -82,7 +82,7 @@ class SP_Admin_CPT_Calendar extends SP_Admin_CPT {
 						if ( ! $team_id ) continue;
 						$team = get_post( $team_id );
 						if ( $team ):
-							echo $team->post_title;
+							echo esc_attr( $team->post_title );
 							if ( $team_id == $current_team ):
 								echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
 							endif;
