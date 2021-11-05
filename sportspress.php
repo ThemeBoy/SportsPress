@@ -337,7 +337,7 @@ final class SportsPress {
 	 * Recommend SportsPress extension for available sports.
 	*/
 	public static function extension() {
-		$sport = sp_array_value( $_POST, 'sportspress_sport', get_option( 'sportspress_sport', null ) );
+		$sport = sp_array_value( $_POST, 'sportspress_sport', get_option( 'sportspress_sport', null ), 'key' );
 		if ( ! $sport ) return;
 
 		$plugins = array();
