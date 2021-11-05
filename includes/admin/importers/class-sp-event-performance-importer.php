@@ -181,9 +181,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 							<a href="<?php echo get_post_permalink( $event ); ?>" target="_blank">
 								<?php echo get_the_title( $event ); ?>
 							</a>
-							<input type="hidden" name="sp_event" value="<?php echo $event; ?>">
-							<input type="hidden" name="sp_teams" value="<?php echo $teams; ?>">
-							<input type="hidden" name="sp_index" value="<?php echo $index; ?>">
+							<input type="hidden" name="sp_event" value="<?php echo esc_attr( $event ); ?>">
+							<input type="hidden" name="sp_teams" value="<?php echo esc_attr( $teams ); ?>">
+							<input type="hidden" name="sp_index" value="<?php echo esc_attr( $index ); ?>">
 						</td>
 					</tr>
 					<tr>
