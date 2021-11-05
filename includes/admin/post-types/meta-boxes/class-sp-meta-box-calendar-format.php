@@ -24,7 +24,7 @@ class SP_Meta_Box_Calendar_Format {
 		?>
 		<div id="post-formats-select">
 			<?php foreach ( SP()->formats->calendar as $key => $format ): ?>
-				<input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo $key; ?>" value="<?php echo $key; ?>" <?php checked( true, ( $key == 'calendar' && ! $the_format ) || $the_format == $key ); ?>> <label for="post-format-<?php echo $key; ?>" class="post-format-icon post-format-<?php echo $key; ?>"><?php echo $format; ?></label><br>
+				<input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php checked( true, ( $key == 'calendar' && ! $the_format ) || $the_format == $key ); ?>> <label for="post-format-<?php echo esc_attr( $key ); ?>" class="post-format-icon post-format-<?php echo esc_attr( $key ); ?>"><?php echo esc_attr( $format ); ?></label><br>
 			<?php endforeach; ?>
 		</div>
 		<?php

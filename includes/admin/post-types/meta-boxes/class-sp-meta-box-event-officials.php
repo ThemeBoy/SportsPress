@@ -42,7 +42,7 @@ class SP_Meta_Box_Event_Officials {
     if ( is_array( $duties ) && sizeof( $duties ) ) {
       foreach ( $duties as $duty ) {
         ?>
-      	<p><strong><?php echo $duty->name; ?></strong></p>
+      	<p><strong><?php echo esc_attr( $duty->name ); ?></strong></p>
         <p><?php
         $args = array(
           'post_type' => 'sp_official',

@@ -58,7 +58,7 @@ class SP_Meta_Box_Equation {
 		endforeach;
 
 		// Add operators to options
-		$options[ 'Operators' ] = array( '+' => '&plus;', '-' => '&minus;', '*' => '&times;', '/' => '&divide;', '(' => '(', ')' => ')' );
+		$options[ 'Operators' ] = array( '+' => '&#43;', '-' => '&minus;', '*' => '&times;', '/' => '&divide;', '(' => '(', ')' => ')' );
 
 		// Create array of constants
 		$max = 10;
@@ -83,7 +83,7 @@ class SP_Meta_Box_Equation {
 							<th><?php _e( $label, 'sportspress' ); ?></th>
 							<td>
 								<?php foreach ( $option as $key => $value ): $parts[ $key ] = $value;
-									?><span class="button" data-variable="<?php echo $key; ?>"><?php echo $value; ?></span><?php
+									?><span class="button" data-variable="<?php echo esc_attr( $key ); ?>"><?php echo esc_attr( $value ); ?></span><?php
 								endforeach; ?>
 							</td>
 						</tr>
@@ -91,7 +91,7 @@ class SP_Meta_Box_Equation {
 				</table>
 			</div>
 			<div class="sp-equation">
-				<span class="sp-equation-variable"><?php echo $title; ?> = </span>
+				<span class="sp-equation-variable"><?php echo esc_attr( $title ); ?> = </span>
 				<span class="sp-equation-formula"><?php
 					$equation = trim( $equation );
 					if ( $equation !== '' ):
@@ -101,7 +101,7 @@ class SP_Meta_Box_Equation {
 								$name = $parts[ $part ];
 							} else {
 								$name = $part;
-							} ?><span class="button"><?php echo $name; ?><span class="remove">&times;</span><input type="hidden" name="sp_equation[]" value="<?php echo $part; ?>"></span><?php
+							} ?><span class="button"><?php echo esc_attr( $name ); ?><span class="remove">&times;</span><input type="hidden" name="sp_equation[]" value="<?php echo esc_attr( $part ); ?>"></span><?php
 						endforeach;
 					endif;
 				?></span>

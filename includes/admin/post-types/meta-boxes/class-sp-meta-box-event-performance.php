@@ -233,7 +233,7 @@ class SP_Meta_Box_Event_Performance {
 						?>
 						<div>
 							<p>
-								<strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo $section_label; ?></strong>
+								<strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo esc_attr( $section_label ); ?></strong>
 								<a class="add-new-h2 sp-add-new-h2" href="<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_performance_csv', 'event' => $post_id, 'team' => $team_id ), 'admin.php' ) ) ); ?>"><?php _e( 'Import', 'sportspress' ); ?></a>
 							</p>
 							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, ( $has_checkboxes && 0 === $i ), $positions, $status, $section_id, $formats, $order, $numbers, $team_timeline, $timed, $stars ); ?>
@@ -322,12 +322,12 @@ class SP_Meta_Box_Event_Performance {
 							<?php if ( 0 == $i ): ?>
 								<input type="hidden" name="sp_columns[]" value="">
 							<?php endif; ?>
-							<label for="sp_columns_<?php echo $key; ?>">
-								<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! is_array( $columns ) || in_array( $key, $columns ) ); ?>>
-								<?php echo $label; ?>
+							<label for="sp_columns_<?php echo esc_attr( $key ); ?>">
+								<input type="checkbox" name="sp_columns[]" value="<?php echo esc_attr( $key ); ?>" id="sp_columns_<?php echo esc_attr( $key ); ?>" <?php checked( ! is_array( $columns ) || in_array( $key, $columns ) ); ?>>
+								<?php echo esc_attr( $label ); ?>
 							</label>
 						<?php else: ?>
-							<?php echo $label; ?>
+							<?php echo esc_attr( $label ); ?>
 						<?php endif; ?>
 					</th>
 				<?php $i++; endforeach; ?>
@@ -371,7 +371,7 @@ class SP_Meta_Box_Event_Performance {
 						$format = sp_array_value( $formats, $column, 'number' );
 						$placeholder = sp_get_format_placeholder( $format );
 						?>
-						<td><input type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" placeholder="<?php echo trim( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" data-sp-format="<?php echo $format; ?>" /></td>
+						<td><input type="text" name="sp_players[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" placeholder="<?php echo trim( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" data-sp-format="<?php echo esc_attr( $format ); ?>" /></td>
 					<?php endforeach; ?>
 					<?php if ( apply_filters( 'sportspress_event_performance_show_status', $status, $section ) ) { ?>
 						<td>&nbsp;</td>
@@ -394,19 +394,19 @@ class SP_Meta_Box_Event_Performance {
 		$stars_type = get_option( 'sportspress_event_performance_stars_type', 0 );
 		$value = sp_array_value( $player_performance, 'number', '' );
 		?>
-		<tr class="sp-row sp-post" data-player="<?php echo $player_id; ?>">
+		<tr class="sp-row sp-post" data-player="<?php echo esc_attr( $player_id ); ?>">
 			<?php if ( $sortable ) { ?>
 				<td class="icon"><span class="dashicons dashicons-menu post-state-format"></span></td>
 			<?php } ?>
 			<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $numbers, $section ) ) { ?>
 				<td>
-					<input class="small-text sp-player-number-input sp-sync-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][number]" value="<?php echo esc_attr( $value ); ?>" />
+					<input class="small-text sp-player-number-input sp-sync-input" type="text" name="sp_players[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][number]" value="<?php echo esc_attr( $value ); ?>" />
 				</td>
 			<?php } ?>
 			<td>
 				<?php echo apply_filters( 'sportspress_event_performance_player_selection', get_the_title( $player_id ), $player_id ); ?>
 				<?php if ( 1 == $section ) { ?>
-					<input type="hidden" name="sp_order[<?php echo $team_id; ?>][]" value="<?php echo $player_id; ?>">
+					<input type="hidden" name="sp_order[<?php echo esc_attr( $team_id ); ?>][]" value="<?php echo esc_attr( $player_id ); ?>">
 				<?php } ?>
 			</td>
 			<?php if ( $positions ) { ?>
@@ -462,13 +462,13 @@ class SP_Meta_Box_Event_Performance {
 							$timeval = preg_replace( '/^0/', '', $timeval );
 						?>
 
-						<input class="sp-player-<?php echo $column; ?>-input sp-convert-time-input sp-sync-input" type="text" name="sp_times[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $timeval ); ?>" placeholder="<?php echo $placeholder; ?>" />
-						<input class="sp-convert-time-output" type="hidden" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" />
+						<input class="sp-player-<?php echo esc_attr( $column ); ?>-input sp-convert-time-input sp-sync-input" type="text" name="sp_times[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="<?php echo esc_attr( $timeval ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" />
+						<input class="sp-convert-time-output" type="hidden" name="sp_players[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="<?php echo esc_attr( $value ); ?>" />
 					<?php } elseif ( 'checkbox' === $format ) { ?>
-						<input type="hidden" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="0" />
-						<input class="sp-player-<?php echo $column; ?>-input sp-sync-input" type="checkbox" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="1" data-value="<?php echo $value; ?>" <?php checked( $value ); ?> />
+						<input type="hidden" name="sp_players[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="0" />
+						<input class="sp-player-<?php echo esc_attr( $column ); ?>-input sp-sync-input" type="checkbox" name="sp_players[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="1" data-value="<?php echo esc_attr( $value ); ?>" <?php checked( $value ); ?> />
 					<?php } else { ?>
-						<input class="sp-player-<?php echo $column; ?>-input sp-sync-input" type="text" name="sp_players[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo $placeholder; ?>" />
+						<input class="sp-player-<?php echo esc_attr( $column ); ?>-input sp-sync-input" type="text" name="sp_players[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" />
 					<?php } ?>
 
 					<?php if ( $intval && in_array( $column, $timed ) ) { ?>
@@ -483,7 +483,7 @@ class SP_Meta_Box_Event_Performance {
 						if ( is_array( $times ) ) {
 							?>
 							<hr>
-							<?php for ( $i = 0; $i < $intval; $i++ ) { ?><input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo $team_id; ?>][<?php echo $player_id; ?>][<?php echo $column; ?>][<?php echo $i; ?>]" value="<?php echo esc_attr( sp_array_value( $times, $i, '' ) ); ?>" placeholder="-" /><?php } ?>
+							<?php for ( $i = 0; $i < $intval; $i++ ) { ?><input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>][<?php echo $i; ?>]" value="<?php echo esc_attr( sp_array_value( $times, $i, '' ) ); ?>" placeholder="-" /><?php } ?>
 							<span class="description"><?php _e( 'mins', 'sportspress' ); ?></span>
 							<?php
 						}
@@ -504,7 +504,7 @@ class SP_Meta_Box_Event_Performance {
 					<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?><br>
 					<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?><br>
 					<?php if ( is_array( $times ) ) { ?>
-						<input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo $team_id; ?>][<?php echo $player_id; ?>][sub][]" value="<?php echo esc_attr( sp_array_value( $times, 0, '' ) ); ?>" placeholder="-" />
+						<input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][sub][]" value="<?php echo esc_attr( sp_array_value( $times, 0, '' ) ); ?>" placeholder="-" />
 						<span class="description"><?php _e( 'mins', 'sportspress' ); ?></span>
 					<?php } ?>
 				</td>

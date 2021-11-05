@@ -56,7 +56,7 @@ class SP_Meta_Box_Calendar_Details {
 				<select name="sp_event_format" class="postform">
 					<option value="all">All</option>
 					<?php foreach ( SP()->formats->event as $key => $format ): ?>
-						<option value="<?php echo $key; ?>" <?php selected( $event_format, $key ); ?>><?php echo $format; ?></option>
+						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $event_format, $key ); ?>><?php echo esc_attr( $format ); ?></option>
 					<?php endforeach; ?>
 				</select>
 			</p>
@@ -74,9 +74,9 @@ class SP_Meta_Box_Calendar_Details {
 				</p>
 				<div class="sp-date-range">
 					<p class="sp-date-range-absolute">
-						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? $date_from : date_i18n( 'Y-m-d' ); ?>" size="10">
+						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? esc_attr( $date_from ) : date_i18n( 'Y-m-d' ); ?>" size="10">
 						:
-						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? $date_to : date_i18n( 'Y-m-d' ); ?>" size="10">
+						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? esc_attr( $date_to ) : date_i18n( 'Y-m-d' ); ?>" size="10">
 					</p>
 
 					<p class="sp-date-range-relative">
