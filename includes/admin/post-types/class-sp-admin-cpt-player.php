@@ -110,7 +110,7 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 						if ( ! $team_id ) continue;
 						$team = get_post( $team_id );
 						if ( $team ):
-							echo $team->post_title;
+							echo esc_attr( $team->post_title );
 							if ( in_array( $team_id, $current_teams ) ):
 								echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
 							endif;
@@ -257,14 +257,14 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 				<input type="hidden" name="sp_current_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
-					<li><label class="selectit"><input value="<?php echo $team->ID; ?>" type="checkbox" name="sp_current_team[]"> <?php echo $team->post_title; ?></label></li>
+					<li><label class="selectit"><input value="<?php echo esc_attr( $team->ID ); ?>" type="checkbox" name="sp_current_team[]"> <?php echo esc_attr( $team->post_title ); ?></label></li>
 					<?php } ?>
 				</ul>
 				<span class="title inline-edit-categories-label"><?php _e( 'Past Teams', 'sportspress' ); ?></span>
 				<input type="hidden" name="sp_past_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
-					<li><label class="selectit"><input value="<?php echo $team->ID; ?>" type="checkbox" name="sp_past_team[]"> <?php echo $team->post_title; ?></label></li>
+					<li><label class="selectit"><input value="<?php echo esc_attr( $team->ID ); ?>" type="checkbox" name="sp_past_team[]"> <?php echo esc_attr( $team->post_title ); ?></label></li>
 					<?php } ?>
 				</ul>
 			</div>
@@ -326,14 +326,14 @@ class SP_Admin_CPT_Player extends SP_Admin_CPT {
 				<input type="hidden" name="sp_current_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
-					<li><label class="selectit"><input value="<?php echo $team->ID; ?>" type="checkbox" name="sp_current_team[]"> <?php echo $team->post_title; ?></label></li>
+					<li><label class="selectit"><input value="<?php echo esc_attr( $team->ID ); ?>" type="checkbox" name="sp_current_team[]"> <?php echo esc_attr( $team->post_title ); ?></label></li>
 					<?php } ?>
 				</ul>
 				<span class="title inline-edit-categories-label"><?php _e( 'Past Teams', 'sportspress' ); ?></span>
 				<input type="hidden" name="sp_past_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
-					<li><label class="selectit"><input value="<?php echo $team->ID; ?>" type="checkbox" name="sp_past_team[]"> <?php echo $team->post_title; ?></label></li>
+					<li><label class="selectit"><input value="<?php echo esc_attr( $team->ID ); ?>" type="checkbox" name="sp_past_team[]"> <?php echo esc_attr( $team->post_title ); ?></label></li>
 					<?php } ?>
 				</ul>
 			</div>

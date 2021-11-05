@@ -61,7 +61,7 @@ class SP_Admin_CPT_Performance extends SP_Admin_CPT {
 				break;
 			case 'sp_key':
 				global $post;
-				echo $post->post_name;
+				echo esc_attr( $post->post_name );
 				break;
 			case 'sp_section':
 				global $post;

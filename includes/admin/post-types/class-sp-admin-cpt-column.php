@@ -58,7 +58,7 @@ class SP_Admin_CPT_Column extends SP_Admin_CPT {
 		switch ( $column ):
 			case 'sp_key':
 				global $post;
-				echo $post->post_name;
+				echo esc_attr( $post->post_name );
 				break;
 			case 'sp_equation':
 				echo sp_get_post_equation( $post_id );

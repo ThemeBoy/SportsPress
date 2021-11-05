@@ -55,7 +55,7 @@ class SP_Admin_CPT_Metric extends SP_Admin_CPT {
 		switch ( $column ):
 			case 'sp_key':
 				global $post;
-				echo $post->post_name;
+				echo esc_attr( $post->post_name );
 				break;
 			case 'sp_description':
 				global $post;

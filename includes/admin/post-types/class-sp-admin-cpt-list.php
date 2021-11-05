@@ -85,7 +85,7 @@ class SP_Admin_CPT_List extends SP_Admin_CPT {
 					foreach( $teams as $team_id ):
 						if ( ! $team_id ) continue;
 						$team = get_post( $team_id );
-						if ( $team ) echo $team->post_title . '<br>';
+						if ( $team ) echo esc_attr( $team->post_title ) . '<br>';
 					endforeach;
 				endif;
 				break;
