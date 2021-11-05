@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Default Nationality
-Plugin URI: http://themeboy.com/
-Description: Add default nationality option to SportsPress Settings.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 2.6.18
-*/
+/**
+ * Default Nationality
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

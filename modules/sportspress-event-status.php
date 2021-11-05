@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Event Status
-Plugin URI: http://themeboy.com/
-Description: Add a status option to SportsPress events.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 2.1
-*/
+/**
+ * Event Status
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

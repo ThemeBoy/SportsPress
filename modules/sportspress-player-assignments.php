@@ -1,14 +1,16 @@
 <?php
-/*
-Plugin Name: SportsPress Player Assignments
-Plugin URI: http://themeboy.com/
-Description: Add player assignments support to SportsPress.
-Author: Savvas
-Author URI: http://themeboy.com/
-Version: 2.7.3
-*/
+/**
+ * Player Assignments
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
+
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( ! class_exists( 'SportsPress_Player_Assignments' ) ) :
 /**
  * Main SportsPress Player Assignments Class

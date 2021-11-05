@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Lazy Loading
-Plugin URI: http://tboy.co/pro
-Description: Load players using Ajax to speed up the event edit screen.
-Author: ThemeBoy
-Author URI: http://themeboy.com
-Version: 2.5.5
-*/
+/**
+ * Lazy Loading
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Lazy_Loading' ) ) :
  * Main SportsPress Lazy Loading Class
  *
  * @class SportsPress_Lazy_Loading
- * @version	2.3
+ * @version	2.7.9
  */
 class SportsPress_Lazy_Loading {
 

@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Template Selector
-Plugin URI: http://themeboy.com/
-Description: Add a template selector to SportsPress post types.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 2.3
-*/
+/**
+ * Template Selector
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

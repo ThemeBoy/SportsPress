@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress User Registration
-Plugin URI: http://themeboy.com/
-Description: Create a new player during user registration.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 2.4
-*/
+/**
+ * User Registration
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

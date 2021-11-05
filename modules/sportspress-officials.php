@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Officials
-Plugin URI: http://themeboy.com/
-Description: Add officials to SportsPress.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 2.6.15
-*/
+/**
+ * Officials
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -17,7 +17,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
  * Main SportsPress Officials Class
  *
  * @class SportsPress_Officials
- * @version	2.6.15
+ * @version	2.7.9
  */
 class SportsPress_Officials {
 
@@ -66,7 +66,7 @@ class SportsPress_Officials {
 	*/
 	private function define_constants() {
 		if ( !defined( 'SP_OFFICIALS_VERSION' ) )
-			define( 'SP_OFFICIALS_VERSION', '2.6.15' );
+			define( 'SP_OFFICIALS_VERSION', '2.7.9' );
 
 		if ( !defined( 'SP_OFFICIALS_URL' ) )
 			define( 'SP_OFFICIALS_URL', plugin_dir_url( __FILE__ ) );

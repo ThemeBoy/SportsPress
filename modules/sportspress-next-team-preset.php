@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Next Team Preset
-Plugin URI: http://themeboy.com/
-Description: Add a Next preset to SportsPress league table column equations.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 2.6.3
-*/
+/**
+ * Next Team Preset
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

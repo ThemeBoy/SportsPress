@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Gutenberg
-Plugin URI: http://themeboy.com/
-Description: Add Gutenberg support to SportsPress.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 2.6.13
-*/
+/**
+ * Gutenberg
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

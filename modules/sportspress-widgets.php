@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Widgets
-Plugin URI: http://themeboy.com/
-Description: Add widgets to SportsPress.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 1.8.3
-*/
+/**
+ * Widgets
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

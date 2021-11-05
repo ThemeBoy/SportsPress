@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Event Videos
-Plugin URI: http://themeboy.com/
-Description: Add videos to SportsPress events.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 1.8.3
-*/
+/**
+ * Event Videos
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

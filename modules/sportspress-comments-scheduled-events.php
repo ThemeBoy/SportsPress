@@ -1,14 +1,16 @@
 <?php
-/*
-Plugin Name: SportsPress Comments on Scheduled Events
-Plugin URI: http://themeboy.com/
-Description: Enable commenting on Scheduled Events.
-Author: Savvas
-Author URI: http://themeboy.com/
-Version: 2.6.8
-*/
+/**
+ * Comments Scheduled Events
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
+
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( ! class_exists( 'SportsPress_Comments_Scheduled_Events' ) ) :
 /**
  * Main SportsPress Comments Scheduled Events Class

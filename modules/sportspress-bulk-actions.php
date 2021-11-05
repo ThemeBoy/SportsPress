@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Bulk Actions
-Plugin URI: http://themeboy.com/
-Description: Add bulk actions to SportsPress.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 2.7.6
-*/
+/**
+ * Bulk Actions
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

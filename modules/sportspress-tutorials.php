@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Tutorials
-Plugin URI: http://themeboy.com/
-Description: Display SportsPress video tutorials.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 2.5
-*/
+/**
+ * Tutorials
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

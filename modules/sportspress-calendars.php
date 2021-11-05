@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Calendars
-Plugin URI: http://themeboy.com/
-Description: Add event calendars to SportsPress.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 2.6.15
-*/
+/**
+ * Calendars
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

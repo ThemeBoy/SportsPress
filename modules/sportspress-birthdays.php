@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Birthdays
-Plugin URI: http://themeboy.com/
-Description: Add birthdays to players and staff.
-Author: ThemeBoy
-Author URI: http://themeboy.com/
-Version: 2.7.1
-*/
+/**
+ * Birthdays
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

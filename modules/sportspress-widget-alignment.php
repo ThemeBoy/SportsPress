@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: SportsPress Widget Alignment
-Plugin URI: http://themeboy.com/
-Description: Add alignment options to SportsPress widgets.
-Author: ThemeBoy
-Author URI: http://themeboy.com
-Version: 1.8.3
-*/
+/**
+ * Widget Alignment
+ *
+ * @author    ThemeBoy
+ * @category  Modules
+ * @package   SportsPress/Modules
+ * @version   2.7.9
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
