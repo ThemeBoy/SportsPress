@@ -140,7 +140,7 @@ class SP_Admin_Setup_Wizard {
     <head>
       <meta name="viewport" content="width=device-width" />
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <title><?php _e( 'SportsPress', 'sportspress' ); ?> &rsaquo; <?php echo $this->steps[ $this->step ]['name']; ?></title>
+      <title><?php _e( 'SportsPress', 'sportspress' ); ?> &rsaquo; <?php echo esc_attr( $this->steps[ $this->step ]['name'] ); ?></title>
       <?php do_action( 'admin_print_styles' ); ?>
       <?php do_action( 'admin_head' ); ?>
     </head>
@@ -264,7 +264,7 @@ class SP_Admin_Setup_Wizard {
                   <?php
                   foreach ( $options as $key => $val ) {
                     ?>
-                    <option value="<?php echo esc_attr( $key ); ?>" <?php selected( $sport, $key ); ?>><?php echo $val ?></option>
+                    <option value="<?php echo esc_attr( $key ); ?>" <?php selected( $sport, $key ); ?>><?php echo esc_attr( $val ); ?></option>
                     <?php
                   }
                   ?>
@@ -423,7 +423,7 @@ class SP_Admin_Setup_Wizard {
           <td>
             <ul>
               <?php for ( $i = 0; $i < 3; $i++ ) { ?>
-                <li class="player"><input name="players[<?php echo $i; ?>][number]" type="text" class="player-number" placeholder="#" value="<?php echo $i + 1; ?>"> <input name="players[<?php echo $i; ?>][name]" type="text" placeholder="<?php _e( 'Name', 'sportspress' ); ?>"> <input name="players[<?php echo $i; ?>][position]" type="text" placeholder="<?php _e( 'Position', 'sportspress' ); ?>" <?php if ( sizeof( $positions ) ) { ?> value="<?php echo $positions[ $i % sizeof( $positions ) ]; ?>"<?php } ?>></li>
+                <li class="player"><input name="players[<?php echo $i; ?>][number]" type="text" class="player-number" placeholder="#" value="<?php echo $i + 1; ?>"> <input name="players[<?php echo $i; ?>][name]" type="text" placeholder="<?php _e( 'Name', 'sportspress' ); ?>"> <input name="players[<?php echo $i; ?>][position]" type="text" placeholder="<?php _e( 'Position', 'sportspress' ); ?>" <?php if ( sizeof( $positions ) ) { ?> value="<?php echo esc_attr( $positions[ $i % sizeof( $positions ) ] ); ?>"<?php } ?>></li>
               <?php } ?>
             </ul>
             <p class="description"><?php _e( "You can add more players later.", 'sportspress' ); ?></p>
@@ -604,8 +604,8 @@ class SP_Admin_Setup_Wizard {
           if ( ! is_object( $obj ) ) continue;
           ?>
           <tr>
-            <th scope="row"><?php echo $obj->labels->singular_name; ?></th>
-            <td><?php echo $description; ?></td>
+            <th scope="row"><?php echo esc_attr( $obj->labels->singular_name ); ?></th>
+            <td><?php echo wp_kses_post( $description ); ?></td>
           </tr>
         <?php } ?>
       </table>
@@ -778,10 +778,10 @@ class SP_Admin_Setup_Wizard {
 
     <div class="sp-setup-next-steps">
       <?php foreach ( $steps as $class => $step ) { ?>
-        <div class="sp-setup-next-steps-<?php echo $class; ?>">
-          <h2><?php echo $step['label']; ?></h2>
+        <div class="sp-setup-next-steps-<?php echo esc_attr( $class ); ?>">
+          <h2><?php echo esc_attr( $step['label'] ); ?></h2>
           <ul>
-            <li><?php echo $step['content']; ?></li>
+            <li><?php echo wp_kses_post( $step['content'] ); ?></li>
           </ul>
         </div>
       <?php } ?>
