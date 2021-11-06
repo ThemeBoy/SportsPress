@@ -41,10 +41,11 @@ if ( $positions ) {
 }
 
 // Determine order of sections
+$order = apply_filters( 'sportspress_performance_sections', array( __( 'Offense', 'sportspress' ), __( 'Defense', 'sportspress' ) ) );
 if ( 1 == $sections ) {
-	$section_order = array( 1 => __( 'Defense', 'sportspress' ), 0 => __( 'Offense', 'sportspress' ) );
+	$section_order = array_reverse( $order );
 } elseif ( 0 == $sections ) {
-	$section_order = array( __( 'Offense', 'sportspress' ), __( 'Defense', 'sportspress' ) );
+	$section_order = $order;
 } else {
 	$section_order = array( -1 => null );
 }
