@@ -35,10 +35,10 @@ class SP_Meta_Box_Table_Data {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_highlight', sp_array_value( $_POST, 'sp_highlight', array() ) );
-		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array() ) );
-		update_post_meta( $post_id, 'sp_adjustments', sp_array_value( $_POST, 'sp_adjustments', array() ) );
-		update_post_meta( $post_id, 'sp_teams', sp_array_value( $_POST, 'sp_teams', array() ) );
+		update_post_meta( $post_id, 'sp_highlight', sp_array_value( $_POST, 'sp_highlight', array(), 'int' ) );
+		update_post_meta( $post_id, 'sp_columns', sp_array_value( $_POST, 'sp_columns', array(), 'text' ) );
+		update_post_meta( $post_id, 'sp_adjustments', sp_array_value( $_POST, 'sp_adjustments', array(), 'text' ) );
+		update_post_meta( $post_id, 'sp_teams', sp_array_value( $_POST, 'sp_teams', array(), 'text' ) );
 	}
 
 	/**

@@ -33,6 +33,6 @@ class SP_Meta_Box_Table_Mode {
    * Save meta box data
    */
   public static function save( $post_id, $post ) {
-    update_post_meta( $post_id, 'sp_mode', sp_array_value( $_POST, 'sp_mode', 'team' ) );
+    update_post_meta( $post_id, 'sp_mode', sp_array_value( $_POST, 'sp_mode', 'team', 'key' ) );
   }
 }
