@@ -48,6 +48,6 @@ class SP_Meta_Box_Player_Metrics {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_metrics', sp_array_value( $_POST, 'sp_metrics', array() ) );
+		update_post_meta( $post_id, 'sp_metrics', sp_array_value( $_POST, 'sp_metrics', array(), 'text' ) );
 	}
 }

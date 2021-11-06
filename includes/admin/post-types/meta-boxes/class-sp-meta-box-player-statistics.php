@@ -85,8 +85,8 @@ class SP_Meta_Box_Player_Statistics {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array() ) );
-		update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array() ) );
+		update_post_meta( $post_id, 'sp_leagues', sp_array_value( $_POST, 'sp_leagues', array(), 'int' ) );
+		update_post_meta( $post_id, 'sp_statistics', sp_array_value( $_POST, 'sp_statistics', array(), 'text' ) );
 	}
 
 	/**
