@@ -356,13 +356,13 @@ class SP_Settings_General extends SP_Settings_Page {
 		    	<fieldset>
 			    	<?php foreach ( $color_schemes as $name => $colors ) { ?>
 				    	<div class="color-option sp-color-option">
-							<label data-sp-colors="<?php echo implode( ',', $colors ); ?>"><?php echo $name; ?></label>
+							<label data-sp-colors="<?php echo implode( ',', $colors ); ?>"><?php echo esc_attr( $name ); ?></label>
 							<table class="color-palette">
 								<tbody>
 									<tr>
-										<td style="background-color: #<?php echo $colors[0]; ?>">&nbsp;</td>
-										<td style="background-color: #<?php echo $colors[0]; ?>">&nbsp;</td>
-										<td style="background-color: #<?php echo $colors[4]; ?>">&nbsp;</td>
+										<td style="background-color: #<?php echo esc_attr( $colors[0] ); ?>">&nbsp;</td>
+										<td style="background-color: #<?php echo esc_attr( $colors[0] ); ?>">&nbsp;</td>
+										<td style="background-color: #<?php echo esc_attr( $colors[4] ); ?>">&nbsp;</td>
 									</tr>
 								</tbody>
 							</table>

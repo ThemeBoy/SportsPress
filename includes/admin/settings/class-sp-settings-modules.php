@@ -104,7 +104,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							</thead>
 							<tbody>
 								<tr><td>
-									<img src="<?php echo $theme->get_screenshot(); ?>" class="sp-theme-screenshot">
+									<img src="<?php echo esc_url( $theme->get_screenshot() ); ?>" class="sp-theme-screenshot">
 									<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
 									<p class="sp-module-actions">
 										<span><?php _e( 'Need a better theme?', 'sportspress' ); ?></span>
@@ -193,10 +193,10 @@ class SP_Settings_Modules extends SP_Settings_Page {
 						<tbody>
 							<tr><td>
 								<?php foreach ( $categories as $slug => $category ) { ?>
-									<p><strong><i class="<?php echo $category['icon']; ?>"></i> <?php echo $category['label']; ?></strong></p>
-									<ul class="sp-<?php echo $slug; ?>-links">
+									<p><strong><i class="<?php echo esc_attr( $category['icon'] ); ?>"></i> <?php echo esc_attr( $category['label'] ); ?></strong></p>
+									<ul class="sp-<?php echo esc_attr( $slug ); ?>-links">
 										<?php foreach ( $category['links'] as $url => $text ) { ?>
-											<li><a href="<?php echo $url; ?>" target="_blank"><?php echo $text; ?></a></li>
+											<li><a href="<?php echo esc_url( $url ); ?>" target="_blank"><?php echo wp_kses_post( $text ); ?></a></li>
 										<?php } ?>
 									</ul>
 								<?php } ?>
@@ -227,7 +227,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 								</span>
 								<?php if ( isset( $module['desc'] ) ) { ?>
 									<span class="sp-desc">
-										<?php echo $module['desc']; ?>
+										<?php echo wp_kses_post( $module['desc'] ); ?>
 										<?php if ( array_key_exists( 'link', $module ) ) { ?>
 											<a href="<?php echo apply_filters( 'sportspress_pro_url', $module['link'] ); ?>" target="_blank"><?php echo sp_array_value( $module, 'action', __( 'Learn more', 'sportspress' ) ); ?></a>
 										<?php } ?>
@@ -242,7 +242,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 									<?php echo sp_array_value( $module, 'label', $id ); ?>
 								</label>
 								<?php if ( isset( $module['desc'] ) ) { ?>
-									<span class="sp-desc"><?php echo $module['desc']; ?></span>
+									<span class="sp-desc"><?php echo wp_kses_post( $module['desc'] ); ?></span>
 								<?php } ?>
 							</td></tr>
 							<?php } ?>

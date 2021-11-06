@@ -125,12 +125,12 @@ class SP_Settings_Page {
 							<div class="sp-item-bar sp-layout-item-bar">
 								<div class="sp-item-handle sp-layout-item-handle ui-sortable-handle">
 									<span class="sp-item-title item-title"><?php echo sp_array_value( $details, 'title', ucfirst( $template ) ); ?></span>
-									<input type="hidden" name="sportspress_<?php echo $this->template; ?>_template_order[]" value="<?php echo $template; ?>">
+									<input type="hidden" name="sportspress_<?php echo esc_attr( $this->template ); ?>_template_order[]" value="<?php echo esc_attr( $template ); ?>">
 								</div>
 								
-								<input type="hidden" name="sportspress_template_visibility[<?php echo $option; ?>]" value="0">
-								<input class="sp-toggle-switch" type="checkbox" name="sportspress_template_visibility[<?php echo $option; ?>]" id="<?php echo $option; ?>" value="1" <?php checked( $visibility, 'yes' ); ?>>
-								<label for="sportspress_<?php echo $this->template; ?>_show_<?php echo $template; ?>"></label>
+								<input type="hidden" name="sportspress_template_visibility[<?php echo esc_attr( $option ); ?>]" value="0">
+								<input class="sp-toggle-switch" type="checkbox" name="sportspress_template_visibility[<?php echo esc_attr( $option ); ?>]" id="<?php echo esc_attr( $option ); ?>" value="1" <?php checked( $visibility, 'yes' ); ?>>
+								<label for="sportspress_<?php echo esc_attr( $this->template ); ?>_show_<?php echo esc_attr( $template ); ?>"></label>
 							</div>
 						</li>
 					<?php } ?>
@@ -170,7 +170,7 @@ class SP_Settings_Page {
 			</th>
 		    <td class="sp-sortable-list-container">
 		    	<p class="description"><?php _e( 'Drag items here to display them as tabs.', 'sportspress' ); ?></p>
-				<input type="hidden" name="sportspress_<?php echo $this->template; ?>_template_order[]" value="tabs">
+				<input type="hidden" name="sportspress_<?php echo esc_attr( $this->template ); ?>_template_order[]" value="tabs">
 
 		    	<ul class="sp-layout sp-sortable-list sp-connected-list ui-sortable">
 		    		<?php foreach ( $templates as $template => $details ) {
@@ -182,12 +182,12 @@ class SP_Settings_Page {
 							<div class="sp-item-bar sp-layout-item-bar">
 								<div class="sp-item-handle sp-layout-item-handle ui-sortable-handle">
 									<span class="sp-item-title item-title"><?php echo sp_array_value( $details, 'title', ucfirst( $template ) ); ?></span>
-									<input type="hidden" name="sportspress_<?php echo $this->template; ?>_template_order[]" value="<?php echo $template; ?>">
+									<input type="hidden" name="sportspress_<?php echo esc_attr( $this->template ); ?>_template_order[]" value="<?php echo esc_attr( $template ); ?>">
 								</div>
 								
-								<input type="hidden" name="sportspress_template_visibility[<?php echo $option; ?>]" value="0">
-								<input class="sp-toggle-switch" type="checkbox" name="sportspress_template_visibility[<?php echo $option; ?>]" id="<?php echo $option; ?>" value="1" <?php checked( $visibility, 'yes' ); ?>>
-								<label for="sportspress_<?php echo $this->template; ?>_show_<?php echo $template; ?>"></label>
+								<input type="hidden" name="sportspress_template_visibility[<?php echo esc_attr( $option ); ?>]" value="0">
+								<input class="sp-toggle-switch" type="checkbox" name="sportspress_template_visibility[<?php echo esc_attr( $option ); ?>]" id="<?php echo esc_attr( $option ); ?>" value="1" <?php checked( $visibility, 'yes' ); ?>>
+								<label for="sportspress_<?php echo esc_attr( $this->template ); ?>_show_<?php echo esc_attr( $template ); ?>"></label>
 							</div>
 						</li>
 					<?php } ?>

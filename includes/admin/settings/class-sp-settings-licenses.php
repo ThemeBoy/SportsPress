@@ -62,7 +62,7 @@ class SP_Settings_Licenses extends SP_Settings_Page {
 					$status = get_site_option( 'sportspress_' . $id . '_license_status', false );
 					?>
 					<div class="sp-settings-section sp-settings-section-license_options">
-						<h3><?php echo $license['name']; ?></h3>
+						<h3><?php echo esc_attr( $license['name'] ); ?></h3>
 						<table class="form-table sp-licenses-table">
 							<tbody>
 								<tr>
@@ -77,13 +77,13 @@ class SP_Settings_Licenses extends SP_Settings_Page {
 									<td>
 										<?php if ( false !== $status && 'valid' == $status ) { ?>
 											<p>
-												<input type="text" name="sp_license_key_<?php echo $id; ?>" size="40" value="<?php esc_attr_e( $key ); ?>" readonly="readonly">
-												<input name="sp_license_deactivate_<?php echo $id; ?>" class="button button-secondary button-small" type="submit" value="<?php esc_attr_e( 'Deactivate', 'sportspress' ); ?>" />
+												<input type="text" name="sp_license_key_<?php echo esc_attr( $id ); ?>" size="40" value="<?php esc_attr_e( $key ); ?>" readonly="readonly">
+												<input name="sp_license_deactivate_<?php echo esc_attr( $id ); ?>" class="button button-secondary button-small" type="submit" value="<?php esc_attr_e( 'Deactivate', 'sportspress' ); ?>" />
 											</p>
 										<?php } else { ?>
 											<p>
-												<input type="text" name="sp_license_key_<?php echo $id; ?>" size="40">
-												<input name="sp_license_activate_<?php echo $id; ?>" class="button button-primary button-small" type="submit" value="<?php esc_attr_e( 'Activate', 'sportspress' ); ?>" />
+												<input type="text" name="sp_license_key_<?php echo esc_attr( $id ); ?>" size="40">
+												<input name="sp_license_activate_<?php echo esc_attr( $id ); ?>" class="button button-primary button-small" type="submit" value="<?php esc_attr_e( 'Activate', 'sportspress' ); ?>" />
 											</p>
 										<?php } ?>
 									</td>

@@ -390,7 +390,7 @@ class SP_Settings_Status extends SP_Settings_Page {
 					<td>
 						<?php
 						$object = get_post_type_object( $post_type );
-						echo $object->labels->name;
+						echo esc_attr( $object->labels->name );
 						?>:
 					</td>
 					<td>
@@ -442,13 +442,13 @@ class SP_Settings_Status extends SP_Settings_Page {
 		            <tr>
 		                <td><?php _e( 'Theme Name', 'sportspress' ); ?>:</td>
 		                <td><?php
-							echo $active_theme->Name;
+							echo esc_attr( $active_theme->Name );
 		                ?></td>
 		            </tr>
 		            <tr>
 		                <td><?php _e( 'Theme Version', 'sportspress' ); ?>:</td>
 		                <td><?php
-							echo $active_theme->Version;
+							echo esc_attr( $active_theme->Version );
 
 							if ( ! empty( $theme_version_data['version'] ) && version_compare( $theme_version_data['version'], $active_theme->Version, '!=' ) )
 								echo ' &ndash; <strong style="color:red;">' . $theme_version_data['version'] . ' ' . __( 'is available', 'sportspress' ) . '</strong>';
@@ -457,7 +457,7 @@ class SP_Settings_Status extends SP_Settings_Page {
 		            <tr>
 		                <td><?php _e( 'Author URL', 'sportspress' ); ?>:</td>
 		                <td><?php
-							echo $active_theme->{'Author URI'};
+							echo esc_url( $active_theme->{'Author URI'} );
 		                ?></td>
 		            </tr>
 			</tbody>

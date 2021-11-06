@@ -349,7 +349,7 @@
 			<td>
 				<?php
 				$object = get_post_type_object( $post_type );
-				echo $object->labels->name;
+				echo esc_attr( $object->labels->name );
 				?>:
 			</td>
 			<td>
@@ -401,7 +401,7 @@
             <tr>
                 <td><?php _e( 'Theme Name', 'sportspress' ); ?>:</td>
                 <td><?php
-					echo $active_theme->Name;
+					echo esc_attr( $active_theme->Name );
                 ?></td>
             </tr>
             <tr>
@@ -416,7 +416,7 @@
             <tr>
                 <td><?php _e( 'Author URL', 'sportspress' ); ?>:</td>
                 <td><?php
-					echo $active_theme->{'Author URI'};
+					echo esc_url( $active_theme->{'Author URI'} );
                 ?></td>
             </tr>
 	</tbody>

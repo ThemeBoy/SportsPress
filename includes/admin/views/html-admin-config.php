@@ -37,11 +37,11 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 						</thead>
 						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
-								<td class="row-title"><?php echo $row->post_title; ?></td>
-								<td><code><?php echo $row->post_name; ?></code></td>
+								<td class="row-title"><?php echo esc_attr( $row->post_title ); ?></td>
+								<td><code><?php echo esc_attr( $row->post_name ); ?></code></td>
 								<td><?php echo sp_get_post_abbreviation( $row->ID ); ?></td>
 								<td><?php echo sp_get_post_condition( $row->ID ); ?></td>
-								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
+								<td><p class="description"><?php echo wp_kses_post( $row->post_excerpt ); ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
 						<?php $i++; endforeach; else: ?>
@@ -112,12 +112,12 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 							</tfoot>
 							<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 								<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
-									<td class="radio"><input type="radio" class="sp-primary-result-option" id="sportspress_primary_result_<?php echo $row->post_name; ?>" name="sportspress_primary_result" value="<?php echo $row->post_name; ?>" <?php checked( $selection, $row->post_name ); ?>></td>
-									<td class="row-title"><label for="sportspress_primary_result_<?php echo $row->post_name; ?>"><?php echo esc_html( $row->post_title ); ?></label></td>
-									<td><code><?php echo $row->post_name; ?>for</code>, <code><?php echo $row->post_name; ?>against</code></td>
+									<td class="radio"><input type="radio" class="sp-primary-result-option" id="sportspress_primary_result_<?php echo esc_attr( $row->post_name ); ?>" name="sportspress_primary_result" value="<?php echo esc_attr( $row->post_name ); ?>" <?php checked( $selection, $row->post_name ); ?>></td>
+									<td class="row-title"><label for="sportspress_primary_result_<?php echo esc_attr( $row->post_name ); ?>"><?php echo esc_html( $row->post_title ); ?></label></td>
+									<td><code><?php echo esc_attr( $row->post_name ); ?>for</code>, <code><?php echo esc_attr( $row->post_name ); ?>against</code></td>
 									<td><?php echo esc_html( sp_get_post_equation( $row->ID ) ); ?></td>
 									<td><?php echo esc_html( sp_get_post_precision( $row->ID ) ); ?></td>
-									<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
+									<td><p class="description"><?php echo wp_kses_post( $row->post_excerpt ); ?></p></td>
 									<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 								</tr>
 							<?php $i++; endforeach; else: ?>
@@ -203,7 +203,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 								if ( '' === $visible ) $visible = 1;
 								?>
 								<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
-									<td class="radio"><input type="radio" class="sp-primary-performance-option" id="sportspress_primary_performance_<?php echo $row->post_name; ?>" name="sportspress_primary_performance" value="<?php echo $row->post_name; ?>" <?php checked( $selection, $row->post_name ); ?>></td>
+									<td class="radio"><input type="radio" class="sp-primary-performance-option" id="sportspress_primary_performance_<?php echo esc_attr( $row->post_name ); ?>" name="sportspress_primary_performance" value="<?php echo esc_attr( $row->post_name ); ?>" <?php checked( $selection, $row->post_name ); ?>></td>
 									<td class="icon">
 										<?php
 										if ( has_post_thumbnail( $row->ID ) )
@@ -214,8 +214,8 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 										echo apply_filters( 'sportspress_performance_icon', $icon, $row->ID );
 										?>
 									</td>
-									<td class="row-title"><?php echo $row->post_title; ?></td>
-									<td><code><?php echo $row->post_name; ?></code></td>
+									<td class="row-title"><?php echo esc_html( $row->post_title ); ?></td>
+									<td><code><?php echo esc_attr( $row->post_name ); ?></code></td>
 									<td><?php echo sp_get_post_section( $row->ID ); ?></td>
 									<td><?php echo sp_get_post_format( $row->ID ); ?></td>
 									<?php if ( 'auto' === $columns ) { ?>
@@ -223,7 +223,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 											<?php if ( $visible ) { ?><i class="dashicons dashicons-yes"></i><?php } else { ?>&nbsp;<?php } ?>
 										</td>
 									<?php } ?>
-									<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
+									<td><p class="description"><?php echo wp_kses_post( $row->post_excerpt ); ?></p></td>
 									<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 								</tr>
 							<?php $i++; endforeach; else: ?>
@@ -273,11 +273,11 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 						</thead>
 						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
-								<td class="row-title"><?php echo $row->post_title; ?></td>
+								<td class="row-title"><?php echo esc_html( $row->post_title ); ?></td>
 								<td><?php echo esc_html( sp_get_post_equation( $row->ID ) ); ?></td>
 								<td><?php echo esc_html( sp_get_post_precision( $row->ID ) ); ?></td>
 								<td><?php echo esc_html( sp_get_post_order( $row->ID ) ); ?></td>
-								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
+								<td><p class="description"><?php echo wp_kses_post( $row->post_excerpt ); ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
 						<?php $i++; endforeach; else: ?>
@@ -325,9 +325,9 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 						</thead>
 						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
-								<td class="row-title"><?php echo $row->post_title; ?></td>
-								<td><code><?php echo $row->post_name; ?></code></td>
-								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
+								<td class="row-title"><?php echo esc_html( $row->post_title ); ?></td>
+								<td><code><?php echo esc_attr( $row->post_name ); ?></code></td>
+								<td><p class="description"><?php echo wp_kses_post( $row->post_excerpt ); ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
 						<?php $i++; endforeach; else: ?>
@@ -391,7 +391,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 							if ( '' === $visible ) $visible = 1;
 							?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
-								<td class="row-title"><?php echo $row->post_title; ?></td>
+								<td class="row-title"><?php echo esc_html( $row->post_title ); ?></td>
 								<td class="icon">
 										<?php
 										if ( has_post_thumbnail( $row->ID ) )
@@ -410,7 +410,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 										<?php if ( $visible ) { ?><i class="dashicons dashicons-yes"></i><?php } else { ?>&nbsp;<?php } ?>
 									</td>
 								<?php } ?>
-								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
+								<td><p class="description"><?php echo wp_kses_post( $row->post_excerpt ); ?></p></td>
 								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
 						<?php $i++; endforeach; else: ?>
