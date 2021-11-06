@@ -9,7 +9,7 @@
  * @author      WooThemes
  * @category    Admin
  * @package     SportsPress/Admin
- * @version     2.6.15
+ * @version     2.7.9
 */
 if ( ! defined( 'ABSPATH' ) ) {
   exit;
@@ -260,7 +260,7 @@ class SP_Admin_Setup_Wizard {
               <?php
               foreach ( $options as $group => $options ) {
                 ?>
-                <optgroup label="<?php echo sp_array_value( $categories, $group, $group ); ?>">
+                <optgroup label="<?php echo esc_attr( sp_array_value( $categories, $group, $group ) ); ?>">
                   <?php
                   foreach ( $options as $key => $val ) {
                     ?>

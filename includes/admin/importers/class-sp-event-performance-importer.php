@@ -5,7 +5,7 @@
  * @author 		ThemeBoy
  * @category 	Admin
  * @package 	SportsPress/Admin/Importers
- * @version		2.5.1
+ * @version		2.7.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

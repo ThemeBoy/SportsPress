@@ -6,7 +6,7 @@
  * @author    ThemeBoy
  * @category  Admin
  * @package   SportsPress/Admin/Meta_Boxes
- * @version   2.5.2
+ * @version		2.7.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

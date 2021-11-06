@@ -246,13 +246,14 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Tweak - Add option to display event status in countdown widget.
 * Tweak - Add ability to filter events by format in calendar template.
 * Fix - Reverse order not applying to teams in event lists.
-* Fix - XSS issues in events admin page.
+* Fix - Add validation to user inputs for improved security.
+* Fix - Sanitize all user inputs for improved security.
+* Fix - Escape all outputs in admin for improved security.
 * Fix - Filtering based on format for event blocks.
 * Fix - Last week and next week filter not applying to player lists.
 * Fix - Deselecting a selected team in settings.
 * Fix - PHP 8.0 deprecated warnings.
 * Localization - Add nationalities and flags for French Guiana, French Polynesia, Guadeloupe, Greenland, Martinique, Reunion, and Sint Maarten.
-
 
 = 2.7.8 =
 * Fix - Event results, box scores, and players stats not updating via REST API.
