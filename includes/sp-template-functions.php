@@ -86,7 +86,7 @@ if ( ! function_exists( 'sportspress_taxonomy_archive_description' ) ) {
 		if ( is_tax( array( 'sp_season', 'sp_league', 'sp_venue', 'sp_position' ) ) && get_query_var( 'paged' ) == 0 ) {
 			$description = apply_filters( 'the_content', term_description() );
 			if ( $description ) {
-				echo '<div class="term-description">' . $description . '</div>';
+				echo '<div class="term-description">' . esc_html( $description ) . '</div>';
 			}
 		}
 	}
