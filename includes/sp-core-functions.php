@@ -1036,8 +1036,8 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 		if ( ! isset( $slug ) )
 			$slug = $meta;
 		?>
-		<div id="<?php echo $slug; ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-tab-filter-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
-			<input type="hidden" value="0" name="<?php echo $slug; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]" />
+		<div id="<?php echo esc_attr( $slug ); ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-tab-filter-panel sp-select-all-range" style="display: <?php echo esc_attr( $display ); ?>;">
+			<input type="hidden" value="0" name="<?php echo esc_attr( $slug ); ?><?php if ( isset( $index ) ) echo '[' . esc_attr( $index ) . ']'; ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
 				<?php
@@ -1088,14 +1088,14 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 					<li class="sp-post sp-filter-0<?php
 						if ( $filters ):
 							foreach ( $filter_values as $filter_value ):
-								echo ' sp-filter-' . $filter_value;
+								echo ' sp-filter-' . esc_attr( $filter_value );
 							endforeach;
 						endif;
 					?>">
 						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
-							<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $slug; ?><?php if ( isset( $index ) ) echo '[' . $index . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
-							<?php echo sp_get_player_name_with_number( $post->ID ); ?>
+							<input type="checkbox" value="<?php echo esc_attr( $post->ID ); ?>" name="<?php echo esc_attr( $slug ); ?><?php if ( isset( $index ) ) echo '[' . esc_attr( $index ) . ']'; ?>[]"<?php if ( in_array( $post->ID, $selected ) ) echo ' checked="checked"'; ?>>
+							<?php echo esc_html( sp_get_player_name_with_number( $post->ID ) ); ?>
 						</label>
 						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
 					</li>
@@ -1104,10 +1104,10 @@ if ( !function_exists( 'sp_post_checklist' ) ) {
 				?>
 				<li class="sp-not-found-container">
 					<?php _e( 'No results found.', 'sportspress' ); ?>
-					<?php if ( sizeof( $posts ) ): ?><a class="sp-show-all" href="#show-all-<?php echo $slug; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a><?php endif; ?>
+					<?php if ( sizeof( $posts ) ): ?><a class="sp-show-all" href="#show-all-<?php echo esc_attr( $slug ); ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a><?php endif; ?>
 				</li>
 				<?php if ( sizeof( $posts ) ): ?>
-					<li class="sp-show-all-container"><a class="sp-show-all" href="#show-all-<?php echo $slug; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
+					<li class="sp-show-all-container"><a class="sp-show-all" href="#show-all-<?php echo esc_attr( $slug ); ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
 				<?php endif; ?>
 			</ul>
 		</div>
@@ -1120,7 +1120,7 @@ if ( !function_exists( 'sp_column_checklist' ) ) {
 		if ( ! isset( $post_id ) )
 			global $post_id;
 		?>
-		<div id="<?php echo $meta; ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-select-all-range" style="display: <?php echo $display; ?>;">
+		<div id="<?php echo esc_attr( $meta ); ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-select-all-range" style="display: <?php echo esc_attr( $display ); ?>;">
 			<input type="hidden" value="0" name="sp_columns[]" />
 			<ul class="categorychecklist form-no-clear">
 				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
@@ -1158,8 +1158,8 @@ if ( !function_exists( 'sp_column_checklist' ) ) {
 						?>
 						<li class="sp-post">
 							<label class="selectit">
-								<input type="checkbox" value="<?php echo $post->post_name; ?>" name="sp_columns[]"<?php if ( ( ! is_array( $selected ) && $default_checked ) || in_array( $post->post_name, $selected ) ) echo ' checked="checked"'; ?>>
-								<?php echo sp_draft_or_post_title( $post ); ?>
+								<input type="checkbox" value="<?php echo esc_attr( $post->post_name ); ?>" name="sp_columns[]"<?php if ( ( ! is_array( $selected ) && $default_checked ) || in_array( $post->post_name, $selected ) ) echo ' checked="checked"'; ?>>
+								<?php echo esc_html( sp_draft_or_post_title( $post ) ); ?>
 							</label>
 						</li>
 						<?php
@@ -1265,10 +1265,10 @@ if ( !function_exists( 'sp_post_adder' ) ) {
 		if ( $label == null )
 			$label = __( 'Add New', 'sportspress' );
 		?>
-		<div id="<?php echo $post_type; ?>-adder">
+		<div id="<?php echo esc_attr( $post_type ); ?>-adder">
 			<h4>
 				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( add_query_arg( $attributes, 'post-new.php?post_type=' . $post_type ) ); ?>" target="_blank">
-					+ <?php echo $label; ?>
+					+ <?php echo esc_html( $label ); ?>
 				</a>
 			</h4>
 		</div>
@@ -1282,10 +1282,10 @@ if ( !function_exists( 'sp_taxonomy_adder' ) ) {
 		if ( $label == null )
 			$label = __( 'Add New', 'sportspress' );
 		?>
-		<div id="<?php echo $taxonomy; ?>-adder">
+		<div id="<?php echo esc_attr( $taxonomy ); ?>-adder">
 			<h4>
 				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( 'edit-tags.php?taxonomy=' . $taxonomy . ( $post_type ? '&post_type=' . $post_type : '' ) ); ?>" target="_blank">
-					+ <?php echo $label; ?>
+					+ <?php echo esc_html( $label ); ?>
 				</a>
 			</h4>
 		</div>
@@ -1554,7 +1554,7 @@ if ( !function_exists( 'sp_taxonomy_field' ) ) {
 		if ( $obj ) {
 			$post_type = get_post_type( $post );
 			?>
-			<div class="<?php echo $post_type; ?>-<?php echo $taxonomy; ?>-field">
+			<div class="<?php echo $post_type; ?>-<?php echo esc_attr( $taxonomy ); ?>-field">
 				<p><strong><?php echo $obj->labels->singular_name; ?></strong></p>
 				<p>
 					<?php
