@@ -48,6 +48,6 @@ class SP_Meta_Box_Result_Details extends SP_Meta_Box_Config {
 	 */
 	public static function save( $post_id, $post ) {
 		self::delete_duplicate( $_POST );
-		update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
+		update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1, 'int' ) );
 	}
 }

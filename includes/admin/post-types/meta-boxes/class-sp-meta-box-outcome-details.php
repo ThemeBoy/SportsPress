@@ -79,8 +79,8 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', array() ) );
-		update_post_meta( $post_id, 'sp_color', sp_array_value( $_POST, 'sp_color', array() ) );
-		update_post_meta( $post_id, 'sp_condition', sp_array_value( $_POST, 'sp_condition', array() ) );
+		update_post_meta( $post_id, 'sp_abbreviation', sp_array_value( $_POST, 'sp_abbreviation', array(), 'text' ) );
+		update_post_meta( $post_id, 'sp_color', sp_array_value( $_POST, 'sp_color', array(), 'text' ) );
+		update_post_meta( $post_id, 'sp_condition', sp_array_value( $_POST, 'sp_condition', array(), 'text' ) );
 	}
 }

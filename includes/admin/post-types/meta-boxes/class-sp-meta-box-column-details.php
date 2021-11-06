@@ -71,8 +71,8 @@ class SP_Meta_Box_Column_Details extends SP_Meta_Box_Config {
 	 */
 	public static function save( $post_id, $post ) {
 		self::delete_duplicate( $_POST );
-		update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1 ) );
-		update_post_meta( $post_id, 'sp_priority', sp_array_value( $_POST, 'sp_priority', '0' ) );
-		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', 'DESC' ) );
+		update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1, 'int' ) );
+		update_post_meta( $post_id, 'sp_priority', sp_array_value( $_POST, 'sp_priority', '0', 'int' ) );
+		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', 'DESC', 'text' ) );
 	}
 }

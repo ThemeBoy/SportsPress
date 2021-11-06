@@ -57,6 +57,6 @@ class SP_Meta_Box_Metric_Details extends SP_Meta_Box_Config {
 	 */
 	public static function save( $post_id, $post ) {
 		self::delete_duplicate( $_POST );
-		update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1 ) );
+		update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1, 'int' ) );
 	}
 }

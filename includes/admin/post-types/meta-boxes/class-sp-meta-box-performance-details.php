@@ -166,14 +166,14 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 	 */
 	public static function save( $post_id, $post ) {
 		self::delete_duplicate( $_POST );
-		update_post_meta( $post_id, 'sp_singular', sp_array_value( $_POST, 'sp_singular', '' ) );
-		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1 ) );
-		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number' ) );
-		update_post_meta( $post_id, 'sp_precision', sp_array_value( $_POST, 'sp_precision', 0 ) );
-		update_post_meta( $post_id, 'sp_timed', sp_array_value( $_POST, 'sp_timed', 0 ) );
-		update_post_meta( $post_id, 'sp_sendoff', sp_array_value( $_POST, 'sp_sendoff', 0 ) );
+		update_post_meta( $post_id, 'sp_singular', sp_array_value( $_POST, 'sp_singular', '', 'text' ) );
+		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1, 'int' ) );
+		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number', 'int' ) );
+		update_post_meta( $post_id, 'sp_precision', sp_array_value( $_POST, 'sp_precision', 0, 'int' ) );
+		update_post_meta( $post_id, 'sp_timed', sp_array_value( $_POST, 'sp_timed', 0, 'int' ) );
+		update_post_meta( $post_id, 'sp_sendoff', sp_array_value( $_POST, 'sp_sendoff', 0, 'int' ) );
 		if ( 'auto' === get_option( 'sportspress_player_columns', 'auto' ) ) {
-			update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1 ) );
+			update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1, 'int' ) );
 		}
 	}
 }
