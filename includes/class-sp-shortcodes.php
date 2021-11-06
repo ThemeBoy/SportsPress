@@ -66,9 +66,9 @@ class SP_Shortcodes {
 		$before 	= empty( $wrapper['before'] ) ? '<div class="' . esc_attr( $wrapper['class'] ) . '">' : $wrapper['before'];
 		$after 		= empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
 
-		echo $before;
+		echo esc_html( $before );
 		call_user_func( $function, $atts );
-		echo $after;
+		echo esc_html( $after );
 
 		return ob_get_clean();
 	}

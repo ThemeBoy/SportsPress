@@ -80,7 +80,7 @@ class SP_Template_Loader {
 				// Render the template
 				echo '<div class="sp-section-content sp-section-content-' . $key . '">';
 				if ( 'content' === $key ) {
-					echo $content;
+					echo wp_kses_post( $content );
 					// Template content hook
 					do_action( 'sportspress_single_' . $type . '_content' );
 				} else {
