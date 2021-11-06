@@ -730,7 +730,7 @@ class SP_Countries {
 	 * @return string
 	 */
 	public function get_base_country() {
-		$default = esc_attr( get_option('sportspress_default_country') );
+		$default = get_option('sportspress_default_country');
 		$country = ( ( $pos = strrpos( $default, ':' ) ) === false ) ? $default : substr( $default, 0, $pos );
 
 		return apply_filters( 'sportspress_countries_base_country', $country );

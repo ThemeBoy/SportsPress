@@ -390,7 +390,7 @@ class SP_Settings_Status extends SP_Settings_Page {
 					<td>
 						<?php
 						$object = get_post_type_object( $post_type );
-						echo esc_attr( $object->labels->name );
+						echo esc_html( $object->labels->name );
 						?>:
 					</td>
 					<td>
@@ -442,13 +442,13 @@ class SP_Settings_Status extends SP_Settings_Page {
 		            <tr>
 		                <td><?php _e( 'Theme Name', 'sportspress' ); ?>:</td>
 		                <td><?php
-							echo esc_attr( $active_theme->Name );
+							echo esc_html( $active_theme->Name );
 		                ?></td>
 		            </tr>
 		            <tr>
 		                <td><?php _e( 'Theme Version', 'sportspress' ); ?>:</td>
 		                <td><?php
-							echo esc_attr( $active_theme->Version );
+							echo esc_html( $active_theme->Version );
 
 							if ( ! empty( $theme_version_data['version'] ) && version_compare( $theme_version_data['version'], $active_theme->Version, '!=' ) )
 								echo ' &ndash; <strong style="color:red;">' . $theme_version_data['version'] . ' ' . __( 'is available', 'sportspress' ) . '</strong>';

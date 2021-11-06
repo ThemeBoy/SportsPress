@@ -62,7 +62,7 @@ class SP_Settings_Licenses extends SP_Settings_Page {
 					$status = get_site_option( 'sportspress_' . $id . '_license_status', false );
 					?>
 					<div class="sp-settings-section sp-settings-section-license_options">
-						<h3><?php echo esc_attr( $license['name'] ); ?></h3>
+						<h3><?php echo esc_html( $license['name'] ); ?></h3>
 						<table class="form-table sp-licenses-table">
 							<tbody>
 								<tr>

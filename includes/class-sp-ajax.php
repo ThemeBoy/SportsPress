@@ -554,7 +554,7 @@ class SP_AJAX {
 						<option value="default">Default</option>
 						<option value="all">All</option>
 						<?php foreach ( SP()->formats->event as $key => $format ): ?>
-							<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_attr( $format ); ?></option>
+							<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $format ); ?></option>
 						<?php endforeach; ?>
 					</select>
 				</label>
@@ -761,7 +761,7 @@ class SP_AJAX {
 					<option value="default">Default</option>
 					<option value="all">All</option>
 					<?php foreach ( SP()->formats->event as $key => $format ): ?>
-					<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_attr( $format ); ?></option>
+					<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $format ); ?></option>
 					<?php endforeach; ?>
 					</select>
 				</label>

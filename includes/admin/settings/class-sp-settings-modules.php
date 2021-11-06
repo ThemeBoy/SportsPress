@@ -193,7 +193,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 						<tbody>
 							<tr><td>
 								<?php foreach ( $categories as $slug => $category ) { ?>
-									<p><strong><i class="<?php echo esc_attr( $category['icon'] ); ?>"></i> <?php echo esc_attr( $category['label'] ); ?></strong></p>
+									<p><strong><i class="<?php echo esc_attr( $category['icon'] ); ?>"></i> <?php echo esc_html( $category['label'] ); ?></strong></p>
 									<ul class="sp-<?php echo esc_attr( $slug ); ?>-links">
 										<?php foreach ( $category['links'] as $url => $text ) { ?>
 											<li><a href="<?php echo esc_url( $url ); ?>" target="_blank"><?php echo wp_kses_post( $text ); ?></a></li>

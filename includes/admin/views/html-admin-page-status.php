@@ -349,7 +349,7 @@
 			<td>
 				<?php
 				$object = get_post_type_object( $post_type );
-				echo esc_attr( $object->labels->name );
+				echo esc_html( $object->labels->name );
 				?>:
 			</td>
 			<td>
@@ -401,7 +401,7 @@
             <tr>
                 <td><?php _e( 'Theme Name', 'sportspress' ); ?>:</td>
                 <td><?php
-					echo esc_attr( $active_theme->Name );
+					echo esc_html( $active_theme->Name );
                 ?></td>
             </tr>
             <tr>
