@@ -748,9 +748,9 @@ class SP_Countries {
 	public function country_dropdown_options( $selected_country = '', $escape = false ) {
 		if ( $this->continents ) foreach ( $this->continents as $continent => $countries ):
 			?>
-				<optgroup label="<?php echo $continent; ?>">
+				<optgroup label="<?php echo esc_attr( $continent ); ?>">
 					<?php foreach ( $countries as $code => $country ): ?>
-						<option value="<?php echo $code; ?>" <?php selected ( $selected_country, $code ); ?>><?php echo $country; ?></option>
+						<option value="<?php echo esc_attr( $code ); ?>" <?php selected ( $selected_country, $code ); ?>><?php echo esc_html( $country ); ?></option>
 					<?php endforeach; ?>
 				</optgroup>
 			<?php

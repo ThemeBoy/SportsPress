@@ -554,7 +554,7 @@ class SP_AJAX {
 						<option value="default">Default</option>
 						<option value="all">All</option>
 						<?php foreach ( SP()->formats->event as $key => $format ): ?>
-							<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $format ); ?></option>
+							<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_attr( $format ); ?></option>
 						<?php endforeach; ?>
 					</select>
 				</label>
@@ -634,7 +634,7 @@ class SP_AJAX {
 				$field_id = 'columns';
 				?>
 				<?php foreach ( $the_columns as $key => $label ): ?>
-					<label class="button"><input name="<?php echo esc_attr( $field_name ); ?>" type="checkbox" id="<?php echo esc_attr( $field_id ) . '-' . esc_attr( $key ); ?>" value="<?php echo esc_attr( $key ); ?>" checked="checked"><?php echo esc_html( $label ); ?></label>
+					<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . $key; ?>" value="<?php echo $key; ?>" checked="checked"><?php echo esc_html( $label ); ?></label>
 				<?php endforeach; ?>
 			</p>
 			<p>
@@ -761,7 +761,7 @@ class SP_AJAX {
 					<option value="default">Default</option>
 					<option value="all">All</option>
 					<?php foreach ( SP()->formats->event as $key => $format ): ?>
-					<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $format ); ?></option>
+					<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_attr( $format ); ?></option>
 					<?php endforeach; ?>
 					</select>
 				</label>
@@ -898,7 +898,7 @@ class SP_AJAX {
 				$field_id = 'columns';
 				?>
 				<?php foreach ( $the_columns as $column ): ?>
-					<label class="button"><input name="<?php echo esc_attr) $field_name ); ?>" type="checkbox" id="<?php echo esc_attr( $field_id ) . '-' . esc_attr( $column->post_name ); ?>" value="<?php echo esc_attr( $column->post_name ); ?>" checked="checked"><?php echo esc_html( $column->post_title ); ?></label>
+					<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . esc_attr( $column->post_name ); ?>" value="<?php echo esc_attr( $column->post_name ); ?>" checked="checked"><?php echo esc_html( $column->post_title ); ?></label>
 				<?php endforeach; ?>
 			</p>
 			<p>
@@ -1152,7 +1152,7 @@ class SP_AJAX {
 				<label class="button"><input name="columns[]" type="checkbox" id="columns-team" value="team" checked="checked"><?php _e( 'Team', 'sportspress' ); ?></label>
 				<label class="button"><input name="columns[]" type="checkbox" id="columns-position" value="position" checked="checked"><?php _e( 'Position', 'sportspress' ); ?></label>
 				<?php foreach ( $the_columns as $column ): ?>
-					<label class="button"><input name="<?php echo esc_attr( $field_name ); ?>" type="checkbox" id="<?php echo esc_attr( $field_id ) . '-' . esc_attr( $column->post_name ); ?>" value="<?php echo esc_attr( $column->post_name ); ?>" checked="checked"><?php echo esc_html( $column->post_title ); ?></label>
+					<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . esc_attr( $column->post_name ); ?>" value="<?php echo esc_attr( $column->post_name ); ?>" checked="checked"><?php echo esc_html( $column->post_title ); ?></label>
 				<?php endforeach; ?>
 			</p>
 			<p>
