@@ -83,7 +83,7 @@ class SP_Meta_Box_Team_Lists {
 									</td>
 									<td>
 										<a href="<?php echo get_edit_post_link( $list->ID ); ?>">
-											<?php echo $list->post_title; ?>
+											<?php echo esc_attr( $list->post_title ); ?>
 										</a>
 									</td>
 									<td><?php echo sizeof( $players ); ?></td>

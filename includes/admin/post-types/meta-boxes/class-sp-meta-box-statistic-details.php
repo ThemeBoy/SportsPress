@@ -37,12 +37,12 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		?>
 		<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
 		<p>
-			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo $post->post_name; ?>">
-			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>">
+			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo esc_attr( $post->post_name ); ?>">
+			<input name="sp_key" type="text" id="sp_key" value="<?php echo esc_attr( $post->post_name ); ?>">
 		</p>
 		<p><strong><?php _e( 'Decimal Places', 'sportspress' ); ?></strong></p>
 		<p class="sp-precision-selector">
-			<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>" placeholder="0">
+			<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo esc_attr( $precision ); ?>" placeholder="0">
 		</p>
 		<p><strong><?php _e( 'Category', 'sportspress' ); ?></strong></p>
 		<p class="sp-section-selector">

@@ -35,7 +35,7 @@ class SP_Meta_Box_Player_Statistics {
 				$i = 0;
 				foreach ( $leagues as $league ):
 					?>
-					<p><strong><?php echo $league->name; ?></strong></p>
+					<p><strong><?php echo esc_attr( $league->name ); ?></strong></p>
 					<?php
 					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( $league->term_id, true );
 					self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0, true, $formats, $total_types );
@@ -62,7 +62,7 @@ class SP_Meta_Box_Player_Statistics {
 					$i = 0;
 					foreach ( $leagues as $league ):
 						?>
-						<p><strong><?php echo $league->name; ?> &mdash; <?php echo $section_label; ?></strong></p>
+						<p><strong><?php echo esc_attr( $league->name ); ?> &mdash; <?php echo esc_attr( $section_label ); ?></strong></p>
 						<?php
 						list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( $league->term_id, true, $section_id );
 						self::table( $post->ID, $league->term_id, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0, $formats, $total_types );
@@ -70,7 +70,7 @@ class SP_Meta_Box_Player_Statistics {
 					endforeach;
 					if ( $show_career_totals ) {
 						?>
-						<p><strong><?php _e( 'Career Total', 'sportspress' ); ?> &mdash; <?php echo $section_label; ?></strong></p>
+						<p><strong><?php _e( 'Career Total', 'sportspress' ); ?> &mdash; <?php echo esc_attr( $section_label ); ?></strong></p>
 						<?php
 						list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( 0, true, $section_id );
 						self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0, $formats, $total_types );
@@ -108,7 +108,7 @@ class SP_Meta_Box_Player_Statistics {
 							</th>
 						<?php endif; ?>
 						<?php foreach ( $columns as $key => $label ): if ( $key == 'team' ) continue; ?>
-							<th><?php echo $label; ?></th>
+							<th><?php echo esc_attr( $label ); ?></th>
 						<?php endforeach; ?>
 						<?php do_action( 'sportspress_meta_box_player_statistics_table_header_row', $id, $league_id ); ?>
 					</tr>
@@ -135,7 +135,7 @@ class SP_Meta_Box_Player_Statistics {
 								}
 
 								if ( $readonly ) {
-									echo $value ? $value : $placeholder;
+									echo $value ? esc_attr( $value ) : esc_attr( $placeholder );
 								} else {
 									if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
 										echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][0][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
@@ -162,8 +162,8 @@ class SP_Meta_Box_Player_Statistics {
 								<label>
 									<?php if ( ! apply_filters( 'sportspress_player_team_statistics', $league_id ) ): ?>
 										<?php $value = sp_array_value( $leagues, $div_id, '-1' ); ?>
-										<input type="hidden" name="sp_leagues[<?php echo $league_id; ?>][<?php echo $div_id; ?>]" value="-1">
-										<input type="checkbox" name="sp_leagues[<?php echo $league_id; ?>][<?php echo $div_id; ?>]" value="1" <?php checked( $value ); ?>>
+										<input type="hidden" name="sp_leagues[<?php echo esc_attr( $league_id ); ?>][<?php echo esc_attr( $div_id ); ?>]" value="-1">
+										<input type="checkbox" name="sp_leagues[<?php echo esc_attr( $league_id ); ?>][<?php echo esc_attr( $div_id ); ?>]" value="1" <?php checked( $value ); ?>>
 									<?php endif; ?>
 									<?php
 									if ( 0 === $div_id ) _e( 'Total', 'sportspress' );
@@ -225,7 +225,7 @@ class SP_Meta_Box_Player_Statistics {
 									}
 
 									if ( $readonly ) {
-										echo $timeval ? $timeval : $placeholder;
+										echo $timeval ? esc_attr( $timeval ) : esc_attr( $placeholder );
 									} else {
 										if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
 											echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-column="' . $column . '" />';

@@ -81,11 +81,11 @@ class SP_Meta_Box_Table_Data {
 						<?php } ?>
 						<th><?php _e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): ?>
-							<th><label for="sp_columns_<?php echo $key; ?>">
+							<th><label for="sp_columns_<?php echo esc_attr( $key ); ?>">
 								<?php if ( ! $readonly ) { ?>
-									<input type="checkbox" name="sp_columns[]" value="<?php echo $key; ?>" id="sp_columns_<?php echo $key; ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
+									<input type="checkbox" name="sp_columns[]" value="<?php echo esc_attr( $key ); ?>" id="sp_columns_<?php echo esc_attr( $key ); ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
 								<?php } ?>
-								<?php echo $label; ?>
+								<?php echo esc_attr( $label ); ?>
 							</label></th>
 						<?php endforeach; ?>
 					</tr>
@@ -104,19 +104,19 @@ class SP_Meta_Box_Table_Data {
 							?>
 							<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 								<?php if ( ! $readonly ) { ?>
-									<td><input type="radio" class="sp-radio-toggle" name="sp_highlight" value="<?php echo $team_id; ?>" <?php checked( $highlight, $team_id ); ?> <?php disabled( $readonly ); ?>></td>
+									<td><input type="radio" class="sp-radio-toggle" name="sp_highlight" value="<?php echo esc_attr( $team_id ); ?>" <?php checked( $highlight, $team_id ); ?> <?php disabled( $readonly ); ?>></td>
 								<?php } ?>
 								<td>
 									<?php if ( $show_team_logo ) echo get_the_post_thumbnail( $team_id, 'sportspress-fit-mini' ); ?>
 									<?php if ( $readonly ) { ?>
-										<?php echo $default_name; ?>
+										<?php echo esc_attr( $default_name ); ?>
 									<?php } else { ?>
 										<span class="sp-default-value">
-											<span class="sp-default-value-input"><?php echo $default_name; ?></span>
+											<span class="sp-default-value-input"><?php echo esc_attr( $default_name ); ?></span>
 											<a class="dashicons dashicons-edit sp-edit" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>
 										</span>
 										<span class="hidden sp-custom-value">
-											<input type="text" name="sp_teams[<?php echo $team_id; ?>][name]" class="name sp-custom-value-input" value="<?php echo esc_attr( sp_array_value( $team_stats, 'name', '' ) ); ?>" placeholder="<?php echo esc_attr( get_the_title( $team_id ) ); ?>" size="6">
+											<input type="text" name="sp_teams[<?php echo esc_attr( $team_id ); ?>][name]" class="name sp-custom-value-input" value="<?php echo esc_attr( sp_array_value( $team_stats, 'name', '' ) ); ?>" placeholder="<?php echo esc_attr( get_the_title( $team_id ) ); ?>" size="6">
 											<a class="button button-secondary sp-cancel"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 											<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
 										</span>
@@ -127,7 +127,7 @@ class SP_Meta_Box_Table_Data {
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $team_id, array() ), $column, 0 );
 									$placeholder = wp_strip_all_tags( $placeholder );
 									?>
-									<td><input type="text" name="sp_teams[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>" data-matrix="<?php echo $team_id; ?>_<?php echo $column; ?>" data-adjustment="<?php echo esc_attr( sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $column, 0 ) ); ?>" <?php disabled( $readonly ); ?> /></td>
+									<td><input type="text" name="sp_teams[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>" data-matrix="<?php echo esc_attr( $team_id ); ?>_<?php echo esc_attr( $column ); ?>" data-adjustment="<?php echo esc_attr( sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $column, 0 ) ); ?>" <?php disabled( $readonly ); ?> /></td>
 								<?php endforeach; ?>
 							</tr>
 							<?php
@@ -152,7 +152,7 @@ class SP_Meta_Box_Table_Data {
 					<tr>
 						<th><?php _e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): ?>
-							<th><?php echo $label; ?></th>
+							<th><?php echo esc_attr( $label ); ?></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>
@@ -171,7 +171,7 @@ class SP_Meta_Box_Table_Data {
 								<?php foreach( $columns as $column => $label ):
 									$value = sp_array_value( sp_array_value( $adjustments, $team_id, array() ), $column, '' );
 									?>
-									<td><input type="text" name="sp_adjustments[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="0" data-matrix="<?php echo $team_id; ?>_<?php echo $column; ?>" /></td>
+									<td><input type="text" name="sp_adjustments[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="0" data-matrix="<?php echo esc_attr( $team_id ); ?>_<?php echo esc_attr( $column ); ?>" /></td>
 								<?php endforeach; ?>
 							</tr>
 							<?php

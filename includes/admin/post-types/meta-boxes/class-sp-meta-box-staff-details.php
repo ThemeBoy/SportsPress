@@ -76,9 +76,9 @@ class SP_Meta_Box_Staff_Details {
 		<p><select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" multiple="multiple">
 			<option value=""></option>
 			<?php foreach ( $continents as $continent => $countries ): ?>
-				<optgroup label="<?php echo $continent; ?>">
+				<optgroup label="<?php echo esc_attr( $continent ); ?>">
 					<?php foreach ( $countries as $code => $country ): ?>
-						<option value="<?php echo $code; ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo $country; ?></option>
+						<option value="<?php echo esc_attr( $code ); ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo esc_attr( $country ); ?></option>
 					<?php endforeach; ?>
 				</optgroup>
 			<?php endforeach; ?>

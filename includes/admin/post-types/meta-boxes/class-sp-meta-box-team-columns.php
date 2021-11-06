@@ -28,7 +28,7 @@ class SP_Meta_Box_Team_Columns {
 
 			$league_id = $league->term_id;
 			?>
-			<p><strong><?php echo $league->name; ?></strong></p>
+			<p><strong><?php echo esc_attr( $league->name ); ?></strong></p>
 			<?php
 			list( $columns, $data, $placeholders ) = $team->columns( $league_id );
 			self::table( $league_id, $columns, $data, $placeholders );
@@ -59,7 +59,7 @@ class SP_Meta_Box_Team_Columns {
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $label ): ?>
-							<th><?php echo $label; ?></th>
+							<th><?php echo esc_attr( $label ); ?></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>
@@ -71,10 +71,13 @@ class SP_Meta_Box_Team_Columns {
 						?>
 						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
 							<td>
-								<label for="sp_leagues_<?php echo $league_id; ?>_<?php echo $div_id; ?>">
+								<label for="sp_leagues_<?php echo esc_attr( $league_id ); ?>_<?php echo esc_attr( $div_id ); ?>">
 									<?php
-									if ( 'WP_Error' == get_class( $div ) ) _e( 'Total', 'sportspress' );
-									else echo $div->name;
+									if ( 'WP_Error' == get_class( $div ) ) :
+										_e( 'Total', 'sportspress' );
+									else :
+										echo esc_attr( $div->name );
+									endif;
 									?>
 								</label>
 							</td>
