@@ -213,7 +213,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 				<table class="sp-modules-table widefat" cellspacing="0">
 					<thead>
 						<tr><th>
-							<?php echo sp_array_value( $this->sections, $section, __( 'Modules', 'sportspress' ) ); ?>
+							<?php echo esc_html( sp_array_value( $this->sections, $section, __( 'Modules', 'sportspress' ) ) ); ?>
 						</th></tr>
 					</thead>
 					<tbody>
@@ -221,7 +221,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<?php if ( isset( $module['class'] ) && ! class_exists( $module['class'] ) ) { ?>
 							<tr class="sp-module-unavailable"><td>
 								<input type="checkbox" disabled="disabled">
-								<span class="sp-desc-tip" title="<?php echo sp_array_value( $module, 'tip', __( 'Upgrade to Pro', 'sportspress' ) ); ?>">
+								<span class="sp-desc-tip" title="<?php echo esc_attr( sp_array_value( $module, 'tip', __( 'Upgrade to Pro', 'sportspress' ) ) ); ?>">
 									<i class="<?php echo esc_attr( sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ) ); ?>"></i>
 									<?php echo esc_html( sp_array_value( $module, 'label', $id ) ); ?>
 								</span>
@@ -229,7 +229,7 @@ class SP_Settings_Modules extends SP_Settings_Page {
 									<span class="sp-desc">
 										<?php echo wp_kses_post( $module['desc'] ); ?>
 										<?php if ( array_key_exists( 'link', $module ) ) { ?>
-											<a href="<?php echo apply_filters( 'sportspress_pro_url', $module['link'] ); ?>" target="_blank"><?php echo sp_array_value( $module, 'action', __( 'Learn more', 'sportspress' ) ); ?></a>
+											<a href="<?php echo apply_filters( 'sportspress_pro_url', $module['link'] ); ?>" target="_blank"><?php echo esc_html( sp_array_value( $module, 'action', __( 'Learn more', 'sportspress' ) ) ); ?></a>
 										<?php } ?>
 									</span>
 								<?php } ?>
@@ -238,8 +238,8 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<tr><td>
 								<input type="checkbox" name="sportspress_load_<?php echo $id; ?>_module" id="sportspress_load_<?php echo $id; ?>_module" <?php checked( 'yes' == get_option( 'sportspress_load_' . $id . '_module', sp_array_value( $module, 'default', 'yes' ) ) ); ?>>
 								<label for="sportspress_load_<?php echo $id; ?>_module">
-									<i class="<?php echo sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ); ?>"></i>
-									<?php echo sp_array_value( $module, 'label', $id ); ?>
+									<i class="<?php echo esc_attr( sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ) ); ?>"></i>
+									<?php echo esc_html( sp_array_value( $module, 'label', $id ) ); ?>
 								</label>
 								<?php if ( isset( $module['desc'] ) ) { ?>
 									<span class="sp-desc"><?php echo wp_kses_post( $module['desc'] ); ?></span>

@@ -158,7 +158,7 @@ class SP_Meta_Box_List_Data {
 									$value = sp_array_value( $player_stats, $column, '' );
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $player_id, array() ), $column, 0 );
 									?>
-									<td><input type="text" name="sp_players[<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>" data-matrix="<?php echo esc_attr( $player_id ); ?>_<?php echo esc_attr( $column ); ?>" data-adjustment="<?php echo sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $column, 0 ); ?>" /></td>
+									<td><input type="text" name="sp_players[<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>" data-matrix="<?php echo esc_attr( $player_id ); ?>_<?php echo esc_attr( $column ); ?>" data-adjustment="<?php echo esc_attr( sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $column, 0 ) ); ?>" /></td>
 								<?php endforeach; ?>
 							</tr>
 							<?php

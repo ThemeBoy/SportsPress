@@ -90,7 +90,7 @@ class SP_Admin_CPT_List extends SP_Admin_CPT {
 				endif;
 				break;
 			case 'sp_layout':
-				echo sp_array_value( SP()->formats->list, get_post_meta( $post_id, 'sp_format', true ), '&mdash;' );
+				echo esc_html( sp_array_value( SP()->formats->list, get_post_meta( $post_id, 'sp_format', true ), '&mdash;' ) );
 				break;
 		endswitch;
 	}

@@ -41,7 +41,7 @@ class SP_Meta_Box_Calendar_Feeds {
 					}
 					?>
 					<p>
-						<strong><?php echo sp_array_value( $format, 'name' ); ?></strong>
+						<strong><?php echo esc_html( sp_array_value( $format, 'name' ) ); ?></strong>
 						<a class="sp-link" href="<?php echo esc_attr( $feed ); ?>" target="_blank" title="<?php _e( 'Link', 'sportspress' ); ?>"></a>
 					</p>
 					<p>

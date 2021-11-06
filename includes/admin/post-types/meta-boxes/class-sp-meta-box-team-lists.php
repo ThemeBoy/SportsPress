@@ -89,7 +89,7 @@ class SP_Meta_Box_Team_Lists {
 									<td><?php echo sizeof( $players ); ?></td>
 									<td><?php echo get_the_terms ( $list->ID, 'sp_league' ) ? the_terms( $list->ID, 'sp_league' ) : '&mdash;'; ?></td>
 									<td><?php echo get_the_terms ( $list->ID, 'sp_season' ) ? the_terms( $list->ID, 'sp_season' ) : '&mdash;'; ?></td>
-									<td><?php echo sp_array_value( SP()->formats->list, $format, '&mdash;' ); ?></td>
+									<td><?php echo esc_html( sp_array_value( SP()->formats->list, $format, '&mdash;' ) ); ?></td>
 								</tr>
 								<?php
 								$i++;

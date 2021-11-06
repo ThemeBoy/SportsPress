@@ -234,10 +234,10 @@ class SportsPress_Lazy_Loading {
 									switch( $player_sort )
 									{
 									case 'name':
-										echo sp_get_player_name_then_number( $post->ID );
+										echo esc_html( sp_get_player_name_then_number( $post->ID ) );
 										break;
 									default:  // 'jersey'
-										echo sp_get_player_name_with_number( $post->ID );
+										echo esc_html( sp_get_player_name_with_number( $post->ID ) );
 									}
 								?>
 							</label>
@@ -253,10 +253,10 @@ class SportsPress_Lazy_Loading {
 									switch( $player_sort )
 									{
 									case 'name':
-										echo sp_get_player_name_then_number( $post_id );
+										echo esc_html( sp_get_player_name_then_number( $post_id ) );
 										break;
 									default:  // 'jersey'
-										echo sp_get_player_name_with_number( $post_id );
+										echo esc_html( sp_get_player_name_with_number( $post_id ) );
 									}
 								?>
 							</label>

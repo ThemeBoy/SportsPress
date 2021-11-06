@@ -124,7 +124,7 @@ class SP_Settings_Page {
 			    		<li>
 							<div class="sp-item-bar sp-layout-item-bar">
 								<div class="sp-item-handle sp-layout-item-handle ui-sortable-handle">
-									<span class="sp-item-title item-title"><?php echo sp_array_value( $details, 'title', ucfirst( $template ) ); ?></span>
+									<span class="sp-item-title item-title"><?php echo esc_html( sp_array_value( $details, 'title', ucfirst( $template ) ) ); ?></span>
 									<input type="hidden" name="sportspress_<?php echo esc_attr( $this->template ); ?>_template_order[]" value="<?php echo esc_attr( $template ); ?>">
 								</div>
 								
@@ -181,7 +181,7 @@ class SP_Settings_Page {
 			    		<li>
 							<div class="sp-item-bar sp-layout-item-bar">
 								<div class="sp-item-handle sp-layout-item-handle ui-sortable-handle">
-									<span class="sp-item-title item-title"><?php echo sp_array_value( $details, 'title', ucfirst( $template ) ); ?></span>
+									<span class="sp-item-title item-title"><?php echo esc_html( sp_array_value( $details, 'title', ucfirst( $template ) ) ); ?></span>
 									<input type="hidden" name="sportspress_<?php echo esc_attr( $this->template ); ?>_template_order[]" value="<?php echo esc_attr( $template ); ?>">
 								</div>
 								
