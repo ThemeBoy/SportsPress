@@ -40,17 +40,17 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
-			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo $post->post_name; ?>">
-			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>"<?php if ( $readonly ) { ?> readonly="readonly"<?php } ?>>
+			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo esc_attr( $post->post_name ); ?>">
+			<input name="sp_key" type="text" id="sp_key" value="<?php echo esc_attr( $post->post_name ); ?>"<?php if ( $readonly ) { ?> readonly="readonly"<?php } ?>>
 		</p>
 		<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 		<p>
-			<input name="sp_abbreviation" type="text" id="sp_abbreviation" value="<?php echo $abbreviation; ?>" placeholder="<?php echo sp_substr( $post->post_title, 0, 1 ); ?>">
+			<input name="sp_abbreviation" type="text" id="sp_abbreviation" value="<?php echo esc_attr( $abbreviation ); ?>" placeholder="<?php echo sp_substr( $post->post_title, 0, 1 ); ?>">
 		</p>
 		<p><strong><?php _e( 'Color', 'sportspress' ); ?></strong></p>
 		<p>
 			<div class="sp-color-box">
-				<input name="sp_color" id="sp_color" type="text" value="<?php echo $color; ?>" class="colorpick">
+				<input name="sp_color" id="sp_color" type="text" value="<?php echo esc_attr( $color ); ?>" class="colorpick">
 				<div id="sp_color" class="colorpickdiv"></div>
 		    </div>
 		</p>

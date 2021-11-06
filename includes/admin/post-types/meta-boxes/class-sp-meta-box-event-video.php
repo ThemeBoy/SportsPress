@@ -29,7 +29,7 @@ class SP_Meta_Box_Event_Video {
 		<?php endif; ?>
 		<fieldset class="sp-video-field hidden">
 			<p><strong><?php _e( 'URL', 'sportspress' ); ?></strong></p>
-			<p><input class="widefat" type="text" name="sp_video" id="sp_video" value="<?php echo $video; ?>"></p>
+			<p><input class="widefat" type="text" name="sp_video" id="sp_video" value="<?php echo esc_url( $video ); ?>"></p>
 			<p><a href="#" class="sp-remove-video"><?php _e( 'Cancel', 'sportspress' ); ?></a></p>
 		</fieldset>
 		<fieldset class="sp-video-adder<?php if ( $video ): ?> hidden<?php endif; ?>">

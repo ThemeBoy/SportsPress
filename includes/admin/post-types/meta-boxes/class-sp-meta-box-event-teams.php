@@ -101,7 +101,7 @@ class SP_Meta_Box_Event_Teams {
 							$j = 0;
 							foreach ( $tabs as $slug => $tab ) {
 								?>
-								<li class="<?php if ( 0 == $j ) { ?>tabs<?php } ?>"><a href="#<?php echo $slug; ?>-all"><?php echo $tab['label']; ?></a></li>
+								<li class="<?php if ( 0 == $j ) { ?>tabs<?php } ?>"><a href="#<?php echo esc_attr( $slug ); ?>-all"><?php echo esc_attr( $tab['label'] ); ?></a></li>
 								<?php
 								$j++;
 							}

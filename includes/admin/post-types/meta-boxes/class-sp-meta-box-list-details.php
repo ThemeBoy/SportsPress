@@ -56,9 +56,9 @@ class SP_Meta_Box_List_Details {
 				</p>
 				<div class="sp-date-range">
 					<p class="sp-date-range-absolute">
-						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? $date_from : date_i18n( 'Y-m-d' ); ?>" size="10">
+						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? esc_attr( $date_from ) : date_i18n( 'Y-m-d' ); ?>" size="10">
 						:
-						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? $date_to : date_i18n( 'Y-m-d' ); ?>" size="10">
+						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? esc_attr( $date_to ) : date_i18n( 'Y-m-d' ); ?>" size="10">
 					</p>
 
 					<p class="sp-date-range-relative">
@@ -106,9 +106,9 @@ class SP_Meta_Box_List_Details {
 				<select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" multiple="multiple">
 					<option value=""></option>
 					<?php foreach ( $continents as $continent => $countries ): ?>
-						<optgroup label="<?php echo $continent; ?>">
+						<optgroup label="<?php echo esc_attr( $continent ); ?>">
 							<?php foreach ( $countries as $code => $country ): ?>
-								<option value="<?php echo $code; ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo $country; ?></option>
+								<option value="<?php echo esc_attr( $code ); ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo esc_attr( $country ); ?></option>
 							<?php endforeach; ?>
 						</optgroup>
 					<?php endforeach; ?>
@@ -173,7 +173,7 @@ class SP_Meta_Box_List_Details {
 			} else {
 				?>
 				<p><strong><?php _e( 'Display', 'sportspress' ); ?></strong></p>
-				<p><input name="sp_number" id="sp_number" type="number" step="1" min="0" class="small-text" placeholder="<?php _e( 'All', 'sportspress' ); ?>" value="<?php echo $number; ?>"> <?php _e( 'players', 'sportspress' ); ?></p>
+				<p><input name="sp_number" id="sp_number" type="number" step="1" min="0" class="small-text" placeholder="<?php _e( 'All', 'sportspress' ); ?>" value="<?php echo esc_attr( $number ); ?>"> <?php _e( 'players', 'sportspress' ); ?></p>
 				<?php
 			}
 			?>

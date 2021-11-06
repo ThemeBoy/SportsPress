@@ -35,7 +35,7 @@ class SP_Meta_Box_Event_Shortcode {
 		</p>
 		<?php foreach ( $shortcodes as $id => $label ) { ?>
 		<p>
-			<strong><?php echo $label; ?></strong>
+			<strong><?php echo esc_attr( $label ); ?></strong>
 		</p>
 		<p><input type="text" value="<?php sp_shortcode_template( $id, $post->ID ); ?>" readonly="readonly" class="code widefat"></p>
 		<?php } ?>

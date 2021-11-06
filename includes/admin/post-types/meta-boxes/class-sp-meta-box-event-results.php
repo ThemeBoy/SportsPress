@@ -243,14 +243,14 @@ class SP_Meta_Box_Event_Results {
 							<?php _e( 'Team', 'sportspress' ); ?>
 						</th>
 						<?php foreach ( $columns as $key => $label ): ?>
-							<th class="column-<?php echo $key; ?>">
+							<th class="column-<?php echo esc_attr( $key ); ?>">
 								<?php if ( $has_checkboxes ): ?>
-									<label for="sp_result_columns_<?php echo $key; ?>">
-										<input type="checkbox" name="sp_result_columns[]" value="<?php echo $key; ?>" id="sp_result_columns_<?php echo $key; ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
-										<?php echo $label; ?>
+									<label for="sp_result_columns_<?php echo esc_attr( $key ); ?>">
+										<input type="checkbox" name="sp_result_columns[]" value="<?php echo esc_attr( $key ); ?>" id="sp_result_columns_<?php echo esc_attr( $key ); ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
+										<?php echo esc_attr( $label ); ?>
 									</label>
 								<?php else: ?>
-									<?php echo $label; ?>
+									<?php echo esc_attr( $label ); ?>
 								<?php endif; ?>
 							</th>
 						<?php endforeach; ?>
@@ -265,14 +265,14 @@ class SP_Meta_Box_Event_Results {
 					foreach ( $data as $team_id => $team_results ):
 						if ( ! $team_id || -1 == $team_id ) continue;
 						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>" data-team="<?php echo $team_id; ?>">
+						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>" data-team="<?php echo esc_attr( $team_id ); ?>">
 							<td>
 								<?php echo get_the_title( $team_id ); ?>
 							</td>
 							<?php foreach( $columns as $column => $label ):
 								$value = sp_array_value( $team_results, $column, '' );
 								?>
-								<td><input class="sp-team-<?php echo $column; ?>-input" type="text" name="sp_results[<?php echo $team_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>"<?php if ( in_array( $column, $auto_columns ) ) { ?> placeholder="<?php _e( '(Auto)', 'sportspress' ); ?>"<?php } ?> /></td>
+								<td><input class="sp-team-<?php echo esc_attr( $column ); ?>-input" type="text" name="sp_results[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="<?php echo esc_attr( $value ); ?>"<?php if ( in_array( $column, $auto_columns ) ) { ?> placeholder="<?php _e( '(Auto)', 'sportspress' ); ?>"<?php } ?> /></td>
 							<?php endforeach; ?>
 							<td>
 								<?php

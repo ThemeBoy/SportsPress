@@ -55,12 +55,12 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		?>
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
-			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo $post->post_name; ?>">
-			<input name="sp_key" type="text" id="sp_key" value="<?php echo $post->post_name; ?>"<?php if ( $readonly ) { ?> readonly="readonly"<?php } ?>>
+			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo esc_attr( $post->post_name ); ?>">
+			<input name="sp_key" type="text" id="sp_key" value="<?php echo esc_attr( $post->post_name ); ?>"<?php if ( $readonly ) { ?> readonly="readonly"<?php } ?>>
 		</p>
 		<p><strong><?php _e( 'Singular', 'sportspress' ); ?></strong></p>
 		<p>
-			<input name="sp_singular" type="text" id="sp_singular" placeholder="<?php echo $post->post_title; ?>" value="<?php echo $singular; ?>">
+			<input name="sp_singular" type="text" id="sp_singular" placeholder="<?php echo esc_attr( $post->post_title ); ?>" value="<?php echo esc_attr( $singular ); ?>">
 		</p>
 		<p><strong><?php _e( 'Category', 'sportspress' ); ?></strong></p>
 		<p class="sp-section-selector">
@@ -87,7 +87,7 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		<div id="sp_precisiondiv">
 			<p><strong><?php _e( 'Decimal Places', 'sportspress' ); ?></strong></p>
 			<p>
-				<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo $precision; ?>" placeholder="0">
+				<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo esc_attr( $precision ); ?>" placeholder="0">
 			</p>
 		</div>
 		<div id="sp_timeddiv">

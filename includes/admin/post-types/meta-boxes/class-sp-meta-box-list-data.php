@@ -64,8 +64,8 @@ class SP_Meta_Box_List_Data {
 						<?php } ?>
 						<?php foreach ( $columns as $key => $label ): ?>
 							<?php if ( in_array( $key, array( 'number', 'team', 'position' ) ) ) continue; ?>
-							<th><label for="sp_columns_<?php echo $key; ?>">
-								<?php echo $label; ?>
+							<th><label for="sp_columns_<?php echo esc_attr( $key ); ?>">
+								<?php echo esc_attr( $label ); ?>
 							</label></th>
 						<?php endforeach; ?>
 					</tr>
@@ -89,7 +89,7 @@ class SP_Meta_Box_List_Data {
 									<td>
 										<?php
 										if ( 'number' == $orderby ) {
-											echo ( $number ? $number : '&nbsp;' );
+											echo ( $number ? esc_attr( $number ) : '&nbsp;' );
 										} else {
 											echo $i + 1;
 										}
@@ -99,11 +99,11 @@ class SP_Meta_Box_List_Data {
 								<td>
 									<?php if ( $show_player_photo ) echo get_the_post_thumbnail( $player_id, 'sportspress-fit-mini' ); ?>
 									<span class="sp-default-value">
-										<span class="sp-default-value-input"><?php echo $default_name; ?></span>
+										<span class="sp-default-value-input"><?php echo esc_attr( $default_name ); ?></span>
 										<a class="dashicons dashicons-edit sp-edit" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>
 									</span>
 									<span class="hidden sp-custom-value">
-										<input type="text" name="sp_players[<?php echo $player_id; ?>][name]" class="name sp-custom-value-input" value="<?php echo esc_attr( sp_array_value( $player_stats, 'name', '' ) ); ?>" placeholder="<?php echo esc_attr( get_the_title( $player_id ) ); ?>" size="6">
+										<input type="text" name="sp_players[<?php echo esc_attr( $player_id ); ?>][name]" class="name sp-custom-value-input" value="<?php echo esc_attr( sp_array_value( $player_stats, 'name', '' ) ); ?>" placeholder="<?php echo esc_attr( get_the_title( $player_id ) ); ?>" size="6">
 										<a class="button button-secondary sp-cancel"><?php _e( 'Cancel', 'sportspress' ); ?></a>
 										<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
 									</span>
@@ -158,7 +158,7 @@ class SP_Meta_Box_List_Data {
 									$value = sp_array_value( $player_stats, $column, '' );
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $player_id, array() ), $column, 0 );
 									?>
-									<td><input type="text" name="sp_players[<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>" data-matrix="<?php echo $player_id; ?>_<?php echo $column; ?>" data-adjustment="<?php echo sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $column, 0 ); ?>" /></td>
+									<td><input type="text" name="sp_players[<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>" data-matrix="<?php echo esc_attr( $player_id ); ?>_<?php echo esc_attr( $column ); ?>" data-adjustment="<?php echo sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $column, 0 ); ?>" /></td>
 								<?php endforeach; ?>
 							</tr>
 							<?php
@@ -167,7 +167,7 @@ class SP_Meta_Box_List_Data {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="<?php $colspan = sizeof( $columns ) + ( apply_filters( 'sportspress_has_teams', true ) ? 3 : 2 ); echo $colspan; ?>">
+						<td colspan="<?php $colspan = sizeof( $columns ) + ( apply_filters( 'sportspress_has_teams', true ) ? 3 : 2 ); echo esc_attr( $colspan ); ?>">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Data', 'sportspress' ) ); ?>
 						</td>
 					</tr>
@@ -184,7 +184,7 @@ class SP_Meta_Box_List_Data {
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): if ( in_array( $key, array( 'number', 'team', 'position' ) ) ) continue; ?>
-							<th><?php echo $label; ?></th>
+							<th><?php echo esc_attr( $label ); ?></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>
@@ -206,7 +206,7 @@ class SP_Meta_Box_List_Data {
 									if ( in_array( $column, array( 'number', 'team', 'position' ) ) ) continue;
 									$value = sp_array_value( sp_array_value( $adjustments, $player_id, array() ), $column, '' );
 									?>
-									<td><input type="text" name="sp_adjustments[<?php echo $player_id; ?>][<?php echo $column; ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="0" data-matrix="<?php echo $player_id; ?>_<?php echo $column; ?>" /></td>
+									<td><input type="text" name="sp_adjustments[<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="0" data-matrix="<?php echo esc_attr( $player_id ); ?>_<?php echo esc_attr( $column ); ?>" /></td>
 								<?php endforeach; ?>
 							</tr>
 							<?php
@@ -215,7 +215,7 @@ class SP_Meta_Box_List_Data {
 					else:
 					?>
 					<tr class="sp-row alternate">
-						<td colspan="<?php $colspan = sizeof( $columns ) + 3; echo $colspan; ?>">
+						<td colspan="<?php $colspan = sizeof( $columns ) + 3; echo esc_attr( $colspan ); ?>">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) ); ?>
 						</td>
 					</tr>

@@ -77,15 +77,15 @@ class SP_Meta_Box_Player_Details {
 		?>
 
 		<p><strong><?php _e( 'Squad Number', 'sportspress' ); ?></strong></p>
-		<p><input type="text" size="4" id="sp_number" name="sp_number" value="<?php echo $number; ?>"></p>
+		<p><input type="text" size="4" id="sp_number" name="sp_number" value="<?php echo esc_attr( $number ); ?>"></p>
 
 		<p><strong><?php _e( 'Nationality', 'sportspress' ); ?></strong></p>
 		<p><select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" multiple="multiple">
 			<option value=""></option>
 			<?php foreach ( $continents as $continent => $countries ): ?>
-				<optgroup label="<?php echo $continent; ?>">
+				<optgroup label="<?php echo esc_attr( $continent ); ?>">
 					<?php foreach ( $countries as $code => $country ): ?>
-						<option value="<?php echo $code; ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo $country; ?></option>
+						<option value="<?php echo esc_attr( $code ); ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo esc_attr( $country ); ?></option>
 					<?php endforeach; ?>
 				</optgroup>
 			<?php endforeach; ?>
