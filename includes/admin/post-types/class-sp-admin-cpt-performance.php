@@ -61,19 +61,19 @@ class SP_Admin_CPT_Performance extends SP_Admin_CPT {
 				break;
 			case 'sp_key':
 				global $post;
-				echo esc_attr( $post->post_name );
+				echo esc_html( $post->post_name );
 				break;
 			case 'sp_section':
 				global $post;
-				echo sp_get_post_section( $post->ID );
+				echo esc_html( sp_get_post_section( $post->ID ) );
 				break;
 			case 'sp_config_format':
 				global $post;
-				echo sp_get_post_format( $post->ID );
+				echo esc_html( sp_get_post_format( $post->ID ) );
 				break;
 			case 'sp_description':
 				global $post;
-				echo '<span class="description">' . $post->post_excerpt . '</span>';
+				echo '<span class="description">' . wp_kses_post( $post->post_excerpt ) . '</span>';
 				break;
 		endswitch;
 	}

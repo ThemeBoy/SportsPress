@@ -55,11 +55,11 @@ class SP_Admin_CPT_Spec extends SP_Admin_CPT {
 		switch ( $column ):
 			case 'sp_key':
 				global $post;
-				echo esc_attr( $post->post_name );
+				echo esc_html( $post->post_name );
 				break;
 			case 'sp_description':
 				global $post;
-				echo '<span class="description">' . $post->post_excerpt . '</span>';
+				echo '<span class="description">' . wp_kses_post( $post->post_excerpt ) . '</span>';
 				break;
 		endswitch;
 	}

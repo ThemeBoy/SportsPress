@@ -55,7 +55,7 @@ class SP_Admin_CPT_Result extends SP_Admin_CPT {
 		switch ( $column ):
 			case 'sp_key':
 				global $post;
-				echo esc_attr( $post->post_name ) . 'for, ' . esc_attr( $post->post_name ) . 'against';
+				echo esc_html( $post->post_name ) . 'for, ' . esc_html( $post->post_name ) . 'against';
 				break;
 			case 'sp_description':
 				global $post;

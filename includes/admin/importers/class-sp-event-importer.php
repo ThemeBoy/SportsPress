@@ -475,7 +475,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 									<?php
 										foreach( (new SP_Formats)->event as $name => $title ) {
 											?>
-											<li><input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $name ); ?>" checked="checked"> <label for="post-format-<?php echo esc_attr( $name ); ?>" class="post-format-icon post-format-<?php echo esc_attr( $name ); ?>"><?php echo esc_attr( $title ); ?></label></li>
+											<li><input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $name ); ?>" checked="checked"> <label for="post-format-<?php echo esc_attr( $name ); ?>" class="post-format-icon post-format-<?php echo esc_attr( $name ); ?>"><?php echo esc_html( $title ); ?></label></li>
 											<?php
 										}
 									?>

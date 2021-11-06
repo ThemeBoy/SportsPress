@@ -81,7 +81,7 @@ class SP_Meta_Box_Table_Details {
 			do_action( 'sportspress_meta_box_table_details', $post->ID );
 			?>
 			<p><strong>
-				<?php echo sp_get_post_mode_label( $post->ID ); ?>
+				<?php echo esc_html( sp_get_post_mode_label( $post->ID ) ); ?>
 			</strong></p>
 			<p class="sp-select-setting">
 				<select name="sp_select">

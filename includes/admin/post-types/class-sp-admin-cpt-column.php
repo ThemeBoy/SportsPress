@@ -58,20 +58,20 @@ class SP_Admin_CPT_Column extends SP_Admin_CPT {
 		switch ( $column ):
 			case 'sp_key':
 				global $post;
-				echo esc_attr( $post->post_name );
+				echo esc_html( $post->post_name );
 				break;
 			case 'sp_equation':
-				echo sp_get_post_equation( $post_id );
+				echo esc_html( sp_get_post_equation( $post_id ) );
 				break;
 			case 'sp_precision':
-				echo sp_get_post_precision( $post_id );
+				echo esc_html( sp_get_post_precision( $post_id ) );
 				break;
 			case 'sp_order':
-				echo sp_get_post_order( $post_id );
+				echo esc_html( sp_get_post_order( $post_id ) );
 				break;
 			case 'sp_description':
 				global $post;
-				echo '<span class="description">' . $post->post_excerpt . '</span>';
+				echo '<span class="description">' . wp_kses_post( $post->post_excerpt ) . '</span>';
 				break;
 		endswitch;
 	}

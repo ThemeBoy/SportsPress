@@ -92,7 +92,7 @@ class SP_Admin_CPT_Staff extends SP_Admin_CPT {
 						if ( ! $team_id ) continue;
 						$team = get_post( $team_id );
 						if ( $team ):
-							echo esc_attr( $team->post_title );
+							echo esc_html( $team->post_title );
 							if ( in_array( $team_id, $current_teams ) ):
 								echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
 							endif;

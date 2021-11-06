@@ -61,13 +61,13 @@ class SP_Admin_CPT_Statistic extends SP_Admin_CPT {
 				break;
 			case 'sp_key':
 				global $post;
-				echo esc_attr( $post->post_name );
+				echo esc_html( $post->post_name );
 				break;
 			case 'sp_equation':
-				echo sp_get_post_equation( $post_id );
+				echo esc_html( sp_get_post_equation( $post_id ) );
 				break;
 			case 'sp_precision':
-				echo sp_get_post_precision( $post_id );
+				echo esc_html( sp_get_post_precision( $post_id ) );
 				break;
 			case 'sp_description':
 				global $post;

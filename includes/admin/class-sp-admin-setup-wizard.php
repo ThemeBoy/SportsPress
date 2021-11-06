@@ -140,7 +140,7 @@ class SP_Admin_Setup_Wizard {
     <head>
       <meta name="viewport" content="width=device-width" />
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <title><?php _e( 'SportsPress', 'sportspress' ); ?> &rsaquo; <?php echo esc_attr( $this->steps[ $this->step ]['name'] ); ?></title>
+      <title><?php _e( 'SportsPress', 'sportspress' ); ?> &rsaquo; <?php echo esc_html( $this->steps[ $this->step ]['name'] ); ?></title>
       <?php do_action( 'admin_print_styles' ); ?>
       <?php do_action( 'admin_head' ); ?>
     </head>
@@ -264,7 +264,7 @@ class SP_Admin_Setup_Wizard {
                   <?php
                   foreach ( $options as $key => $val ) {
                     ?>
-                    <option value="<?php echo esc_attr( $key ); ?>" <?php selected( $sport, $key ); ?>><?php echo esc_attr( $val ); ?></option>
+                    <option value="<?php echo esc_attr( $key ); ?>" <?php selected( $sport, $key ); ?>><?php echo esc_html( $val ); ?></option>
                     <?php
                   }
                   ?>
@@ -604,7 +604,7 @@ class SP_Admin_Setup_Wizard {
           if ( ! is_object( $obj ) ) continue;
           ?>
           <tr>
-            <th scope="row"><?php echo esc_attr( $obj->labels->singular_name ); ?></th>
+            <th scope="row"><?php echo esc_html( $obj->labels->singular_name ); ?></th>
             <td><?php echo wp_kses_post( $description ); ?></td>
           </tr>
         <?php } ?>
@@ -779,7 +779,7 @@ class SP_Admin_Setup_Wizard {
     <div class="sp-setup-next-steps">
       <?php foreach ( $steps as $class => $step ) { ?>
         <div class="sp-setup-next-steps-<?php echo esc_attr( $class ); ?>">
-          <h2><?php echo esc_attr( $step['label'] ); ?></h2>
+          <h2><?php echo esc_html( $step['label'] ); ?></h2>
           <ul>
             <li><?php echo wp_kses_post( $step['content'] ); ?></li>
           </ul>

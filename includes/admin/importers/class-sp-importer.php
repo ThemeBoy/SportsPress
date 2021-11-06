@@ -101,7 +101,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			<select name="sp_columns[]" data-index="<?php echo array_search( $selected, array_keys( $this->columns ) ); ?>">
 				<option value="0">&mdash; <?php _e( 'Disable', 'sportspress' ); ?> &mdash;</option>
 				<?php foreach ( $this->columns as $key => $label ): ?>
-					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $selected, $key ); ?>><?php echo esc_attr( $label ); ?></option>
+					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $selected, $key ); ?>><?php echo esc_html( $label ); ?></option>
 				<?php endforeach; ?>
 			</select>
 			<?php

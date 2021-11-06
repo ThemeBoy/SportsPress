@@ -220,7 +220,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 
 								echo '<a class="sp-result sp-tip" tabindex="10" title="' . esc_attr( $team_results ) . '" data-team="' . esc_attr( $team_id ) . '" href="#">' . ( $team_result == '' ? '-' : apply_filters( 'sportspress_event_team_result_admin', $team_result, $post_id, $team_id ) ) . '</a>';
 								echo '<input type="text" tabindex="10" class="sp-edit-result hidden small-text" data-team="' . esc_attr( $team_id ) . '" data-key="' . esc_attr( $main_result ) . '" value="' . esc_attr( $team_result ) . '"> ';
-								echo esc_attr( $team->post_title );
+								echo esc_html( $team->post_title );
 								echo '<br>';
 							endif;
 						endforeach;
@@ -248,7 +248,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 			case 'sp_day':
 				$day = get_post_meta ( $post_id, 'sp_day', true );
 				if ( '' === $day ) $day = __( 'Default', 'sportspress' );
-				echo esc_attr( $day );
+				echo esc_html( $day );
 				break;
 		endswitch;
 	}
