@@ -244,13 +244,13 @@ class SP_Admin_Taxonomies {
 			$cat_keys = array_keys( $_POST['term_meta'] );
 			foreach ( $cat_keys as $key ) {
 				if ( isset ( $_POST['term_meta'][ $key ] ) ) {
-					$term_meta[$key] = $_POST['term_meta'][ $key ];
+					$term_meta[$key] = sanitize_text_field( $_POST['term_meta'][ $key ] );
 				}
 			}
 			update_option( "taxonomy_$t_id", $term_meta );
 		}
 		if ( function_exists( 'add_term_meta' ) ) {
-			update_term_meta( $term_id, 'sp_order', (int) sp_array_value( $_POST, 'sp_order', 0 ) );
+			update_term_meta( $term_id, 'sp_order', (int) sp_array_value( $_POST, 'sp_order', 0, 'int' ) );
 		}
 	}
 
