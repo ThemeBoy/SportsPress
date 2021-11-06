@@ -222,8 +222,8 @@ class SP_Settings_Modules extends SP_Settings_Page {
 							<tr class="sp-module-unavailable"><td>
 								<input type="checkbox" disabled="disabled">
 								<span class="sp-desc-tip" title="<?php echo sp_array_value( $module, 'tip', __( 'Upgrade to Pro', 'sportspress' ) ); ?>">
-									<i class="<?php echo sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ); ?>"></i>
-									<?php echo sp_array_value( $module, 'label', $id ); ?>
+									<i class="<?php echo esc_attr( sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ) ); ?>"></i>
+									<?php echo esc_html( sp_array_value( $module, 'label', $id ) ); ?>
 								</span>
 								<?php if ( isset( $module['desc'] ) ) { ?>
 									<span class="sp-desc">
