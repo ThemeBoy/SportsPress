@@ -34,8 +34,8 @@ class SP_Meta_Box_List_Data {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_adjustments', sp_array_value( $_POST, 'sp_adjustments', array() ) );
-		update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array() ) );
+		update_post_meta( $post_id, 'sp_adjustments', sp_array_value( $_POST, 'sp_adjustments', array(), 'text' ) );
+		update_post_meta( $post_id, 'sp_players', sp_array_value( $_POST, 'sp_players', array(), 'text' ) );
 	}
 
 	/**

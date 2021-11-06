@@ -185,24 +185,24 @@ class SP_Meta_Box_List_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0 ) ) );
-		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0 ) );
-		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null ) );
-		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null ) );
-		update_post_meta( $post_id, 'sp_date_past', sp_array_value( $_POST, 'sp_date_past', 0 ) );
-		update_post_meta( $post_id, 'sp_date_relative', sp_array_value( $_POST, 'sp_date_relative', 0 ) );
+		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0, 'text' ) ) );
+		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0, 'text' ) );
+		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null, 'text' ) );
+		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null, 'text' ) );
+		update_post_meta( $post_id, 'sp_date_past', sp_array_value( $_POST, 'sp_date_past', 0, 'text' ) );
+		update_post_meta( $post_id, 'sp_date_relative', sp_array_value( $_POST, 'sp_date_relative', 0, 'text' ) );
 		$tax_input = sp_array_value( $_POST, 'tax_input', array() );
 		update_post_meta( $post_id, 'sp_main_league', in_array( 'auto', sp_array_value( $tax_input, 'sp_league' ) ) );
 		update_post_meta( $post_id, 'sp_current_season', in_array( 'auto', sp_array_value( $tax_input, 'sp_season' ) ) );
-		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array() ) );
-		update_post_meta( $post_id, 'sp_era', sp_array_value( $_POST, 'sp_era', array() ) );
-		update_post_meta( $post_id, 'sp_grouping', sp_array_value( $_POST, 'sp_grouping', array() ) );
-		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', array() ) );
-		update_post_meta( $post_id, 'sp_crop', sp_array_value( $_POST, 'sp_crop', 0 ) );
-		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array() ) );
-		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array() ) );
-		update_post_meta( $post_id, 'sp_number', sp_array_value( $_POST, 'sp_number', array() ) );
-		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array() ) );
-		sp_update_post_meta_recursive( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', array() ) );
+		update_post_meta( $post_id, 'sp_team', sp_array_value( $_POST, 'sp_team', array(), 'id' ) );
+		update_post_meta( $post_id, 'sp_era', sp_array_value( $_POST, 'sp_era', array(), 'key' ) );
+		update_post_meta( $post_id, 'sp_grouping', sp_array_value( $_POST, 'sp_grouping', array(), 'text' ) );
+		update_post_meta( $post_id, 'sp_orderby', sp_array_value( $_POST, 'sp_orderby', array(), 'key' ) );
+		update_post_meta( $post_id, 'sp_crop', sp_array_value( $_POST, 'sp_crop', 0, 'int' ) );
+		update_post_meta( $post_id, 'sp_order', sp_array_value( $_POST, 'sp_order', array(), 'text' ) );
+		update_post_meta( $post_id, 'sp_select', sp_array_value( $_POST, 'sp_select', array(), 'key' ) );
+		update_post_meta( $post_id, 'sp_number', sp_array_value( $_POST, 'sp_number', array(), 'int' ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_player', sp_array_value( $_POST, 'sp_player', array(), 'int' ) );
+		sp_update_post_meta_recursive( $post_id, 'sp_nationality', sp_array_value( $_POST, 'sp_nationality', array(), 'text' ) );
 	}
 }
