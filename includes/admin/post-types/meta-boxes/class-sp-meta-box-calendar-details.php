@@ -56,7 +56,7 @@ class SP_Meta_Box_Calendar_Details {
 				<select name="sp_event_format" class="postform">
 					<option value="all">All</option>
 					<?php foreach ( SP()->formats->event as $key => $format ): ?>
-						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $event_format, $key ); ?>><?php echo esc_attr( $format ); ?></option>
+						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $event_format, $key ); ?>><?php echo esc_html( $format ); ?></option>
 					<?php endforeach; ?>
 				</select>
 			</p>

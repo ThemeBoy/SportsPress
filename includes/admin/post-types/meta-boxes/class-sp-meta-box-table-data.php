@@ -85,7 +85,7 @@ class SP_Meta_Box_Table_Data {
 								<?php if ( ! $readonly ) { ?>
 									<input type="checkbox" name="sp_columns[]" value="<?php echo esc_attr( $key ); ?>" id="sp_columns_<?php echo esc_attr( $key ); ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
 								<?php } ?>
-								<?php echo esc_attr( $label ); ?>
+								<?php echo esc_html( $label ); ?>
 							</label></th>
 						<?php endforeach; ?>
 					</tr>
@@ -109,10 +109,10 @@ class SP_Meta_Box_Table_Data {
 								<td>
 									<?php if ( $show_team_logo ) echo get_the_post_thumbnail( $team_id, 'sportspress-fit-mini' ); ?>
 									<?php if ( $readonly ) { ?>
-										<?php echo esc_attr( $default_name ); ?>
+										<?php echo esc_html( $default_name ); ?>
 									<?php } else { ?>
 										<span class="sp-default-value">
-											<span class="sp-default-value-input"><?php echo esc_attr( $default_name ); ?></span>
+											<span class="sp-default-value-input"><?php echo esc_html( $default_name ); ?></span>
 											<a class="dashicons dashicons-edit sp-edit" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>
 										</span>
 										<span class="hidden sp-custom-value">
@@ -152,7 +152,7 @@ class SP_Meta_Box_Table_Data {
 					<tr>
 						<th><?php _e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): ?>
-							<th><?php echo esc_attr( $label ); ?></th>
+							<th><?php echo esc_html( $label ); ?></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>

@@ -133,7 +133,7 @@ class SP_Meta_Box_Table_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0, 'text' ) ) );
+		update_post_meta( $post_id, 'sp_caption', sp_array_value( $_POST, 'sp_caption', 0, 'text' ) );
 		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0, 'text' ) );
 		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null, 'text' ) );
 		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null, 'text' ) );

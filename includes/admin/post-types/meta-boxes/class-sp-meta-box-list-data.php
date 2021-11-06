@@ -65,7 +65,7 @@ class SP_Meta_Box_List_Data {
 						<?php foreach ( $columns as $key => $label ): ?>
 							<?php if ( in_array( $key, array( 'number', 'team', 'position' ) ) ) continue; ?>
 							<th><label for="sp_columns_<?php echo esc_attr( $key ); ?>">
-								<?php echo esc_attr( $label ); ?>
+								<?php echo esc_html( $label ); ?>
 							</label></th>
 						<?php endforeach; ?>
 					</tr>
@@ -89,7 +89,7 @@ class SP_Meta_Box_List_Data {
 									<td>
 										<?php
 										if ( 'number' == $orderby ) {
-											echo ( $number ? esc_attr( $number ) : '&nbsp;' );
+											echo ( $number ? esc_html( $number ) : '&nbsp;' );
 										} else {
 											echo $i + 1;
 										}
@@ -99,7 +99,7 @@ class SP_Meta_Box_List_Data {
 								<td>
 									<?php if ( $show_player_photo ) echo get_the_post_thumbnail( $player_id, 'sportspress-fit-mini' ); ?>
 									<span class="sp-default-value">
-										<span class="sp-default-value-input"><?php echo esc_attr( $default_name ); ?></span>
+										<span class="sp-default-value-input"><?php echo esc_html( $default_name ); ?></span>
 										<a class="dashicons dashicons-edit sp-edit" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>
 									</span>
 									<span class="hidden sp-custom-value">
@@ -184,7 +184,7 @@ class SP_Meta_Box_List_Data {
 						<th>#</th>
 						<th><?php _e( 'Player', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ): if ( in_array( $key, array( 'number', 'team', 'position' ) ) ) continue; ?>
-							<th><?php echo esc_attr( $label ); ?></th>
+							<th><?php echo esc_html( $label ); ?></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>

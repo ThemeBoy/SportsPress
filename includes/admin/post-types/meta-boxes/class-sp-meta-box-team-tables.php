@@ -80,7 +80,7 @@ class SP_Meta_Box_Team_Tables {
 									</td>
 									<td>
 										<a href="<?php echo get_edit_post_link( $table->ID ); ?>">
-											<?php echo esc_attr( $table->post_title ); ?>
+											<?php echo esc_html( $table->post_title ); ?>
 										</a>
 									</td>
 									<td><?php echo sizeof( $teams ); ?></td>

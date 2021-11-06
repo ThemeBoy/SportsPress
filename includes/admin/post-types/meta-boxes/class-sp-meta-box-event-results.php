@@ -247,10 +247,10 @@ class SP_Meta_Box_Event_Results {
 								<?php if ( $has_checkboxes ): ?>
 									<label for="sp_result_columns_<?php echo esc_attr( $key ); ?>">
 										<input type="checkbox" name="sp_result_columns[]" value="<?php echo esc_attr( $key ); ?>" id="sp_result_columns_<?php echo esc_attr( $key ); ?>" <?php checked( ! is_array( $usecolumns ) || in_array( $key, $usecolumns ) ); ?>>
-										<?php echo esc_attr( $label ); ?>
+										<?php echo esc_html( $label ); ?>
 									</label>
 								<?php else: ?>
-									<?php echo esc_attr( $label ); ?>
+									<?php echo esc_html( $label ); ?>
 								<?php endif; ?>
 							</th>
 						<?php endforeach; ?>

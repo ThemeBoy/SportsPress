@@ -28,7 +28,7 @@ class SP_Meta_Box_Team_Columns {
 
 			$league_id = $league->term_id;
 			?>
-			<p><strong><?php echo esc_attr( $league->name ); ?></strong></p>
+			<p><strong><?php echo esc_html( $league->name ); ?></strong></p>
 			<?php
 			list( $columns, $data, $placeholders ) = $team->columns( $league_id );
 			self::table( $league_id, $columns, $data, $placeholders );
@@ -59,7 +59,7 @@ class SP_Meta_Box_Team_Columns {
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $label ): ?>
-							<th><?php echo esc_attr( $label ); ?></th>
+							<th><?php echo esc_html( $label ); ?></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>
@@ -76,7 +76,7 @@ class SP_Meta_Box_Team_Columns {
 									if ( 'WP_Error' == get_class( $div ) ) :
 										_e( 'Total', 'sportspress' );
 									else :
-										echo esc_attr( $div->name );
+										echo esc_html( $div->name );
 									endif;
 									?>
 								</label>

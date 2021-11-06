@@ -78,7 +78,7 @@ class SP_Meta_Box_Staff_Details {
 			<?php foreach ( $continents as $continent => $countries ): ?>
 				<optgroup label="<?php echo esc_attr( $continent ); ?>">
 					<?php foreach ( $countries as $code => $country ): ?>
-						<option value="<?php echo esc_attr( $code ); ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo esc_attr( $country ); ?></option>
+						<option value="<?php echo esc_attr( $code ); ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo esc_html( $country ); ?></option>
 					<?php endforeach; ?>
 				</optgroup>
 			<?php endforeach; ?>

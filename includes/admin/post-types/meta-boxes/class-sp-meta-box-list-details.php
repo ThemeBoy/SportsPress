@@ -108,7 +108,7 @@ class SP_Meta_Box_List_Details {
 					<?php foreach ( $continents as $continent => $countries ): ?>
 						<optgroup label="<?php echo esc_attr( $continent ); ?>">
 							<?php foreach ( $countries as $code => $country ): ?>
-								<option value="<?php echo esc_attr( $code ); ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo esc_attr( $country ); ?></option>
+								<option value="<?php echo esc_attr( $code ); ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo esc_html( $country ); ?></option>
 							<?php endforeach; ?>
 						</optgroup>
 					<?php endforeach; ?>
@@ -185,7 +185,7 @@ class SP_Meta_Box_List_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_caption', esc_attr( sp_array_value( $_POST, 'sp_caption', 0, 'text' ) ) );
+		update_post_meta( $post_id, 'sp_caption', sp_array_value( $_POST, 'sp_caption', 0, 'text' ) );
 		update_post_meta( $post_id, 'sp_date', sp_array_value( $_POST, 'sp_date', 0, 'text' ) );
 		update_post_meta( $post_id, 'sp_date_from', sp_array_value( $_POST, 'sp_date_from', null, 'text' ) );
 		update_post_meta( $post_id, 'sp_date_to', sp_array_value( $_POST, 'sp_date_to', null, 'text' ) );

@@ -141,7 +141,7 @@ class SP_Meta_Box_Calendar_Data {
 									<td><?php echo get_post_time( get_option( 'date_format' ), false, $event, true ); ?></td>
 									<?php if ( is_array( $usecolumns ) && in_array( 'event', $usecolumns ) ) { ?>
 										<td>
-											<div class="sp-title-format sp-title-format-title<?php if ( $title_format && $title_format != 'title' ): ?> hidden<?php endif; ?>"><?php echo esc_attr( $event->post_title ); ?></div>
+											<div class="sp-title-format sp-title-format-title<?php if ( $title_format && $title_format != 'title' ): ?> hidden<?php endif; ?>"><?php echo esc_html( $event->post_title ); ?></div>
 											<div class="sp-title-format sp-title-format-teams sp-title-format-homeaway<?php if ( ! in_array( $title_format, array( 'teams', 'homeaway' ) ) ): ?> hidden<?php endif; ?>">
 												<?php
 												if ( $teams ): foreach ( $teams as $team ):
@@ -168,7 +168,7 @@ class SP_Meta_Box_Calendar_Data {
 															echo '<a class="result sp-tip" title="' . $team_results . '" href="' . get_edit_post_link( $event->ID ) . '">' . $team_result . '</a> ';
 														endif;
 
-														echo esc_attr( $name ) . '<br>';
+														echo esc_html( $name ) . '<br>';
 													endif;
 												endforeach; else:
 													echo '&mdash;';
@@ -241,7 +241,7 @@ class SP_Meta_Box_Calendar_Data {
 											if ( '' == $day ) {
 												echo '&mdash;';
 											} else {
-												echo esc_attr( $day );
+												echo esc_html( $day );
 											}
 											?>
 										</td>

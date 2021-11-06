@@ -63,7 +63,7 @@ class SP_Meta_Box_Calendar_Columns {
 					<li>
 						<label>
 							<input type="checkbox" name="sp_columns[]" value="<?php echo esc_attr( $key ); ?>" id="sp_columns_<?php echo esc_attr( $key ); ?>" <?php checked( ! is_array( $selected ) || in_array( $key, $selected ) ); ?>>
-							<?php echo esc_attr( $label ); ?>
+							<?php echo esc_html( $label ); ?>
 						</label>
 					</li>
 					<?php

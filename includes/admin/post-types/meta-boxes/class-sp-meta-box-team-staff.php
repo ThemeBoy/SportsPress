@@ -79,7 +79,7 @@ class SP_Meta_Box_Team_Staff {
 									</td>
 									<td>
 										<a href="<?php echo get_edit_post_link( $staff->ID ); ?>">
-											<?php echo esc_attr( $staff->post_title ); ?>
+											<?php echo esc_html( $staff->post_title ); ?>
 										</a>
 									</td>
 									<td><?php echo get_the_terms ( $staff->ID, 'sp_role' ) ? the_terms( $staff->ID, 'sp_role' ) : '&mdash;'; ?></td>

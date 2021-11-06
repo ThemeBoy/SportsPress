@@ -23,7 +23,7 @@ class SP_Meta_Box_Table_Mode {
     ?>
     <div id="post-formats-select">
       <?php foreach ( array( 'team' => __( 'Team vs team', 'sportspress' ), 'player' => __( 'Player vs player', 'sportspress' ) ) as $key => $mode ): ?>
-        <input type="radio" name="sp_mode" class="post-format" id="post-format-<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php checked( $the_mode, $key ); ?>> <label for="post-format-<?php echo esc_attr( $key ); ?>" class="post-format-icon post-format-<?php echo esc_attr( $key ); ?>"><?php echo esc_attr( $mode ); ?></label><br>
+        <input type="radio" name="sp_mode" class="post-format" id="post-format-<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php checked( $the_mode, $key ); ?>> <label for="post-format-<?php echo esc_attr( $key ); ?>" class="post-format-icon post-format-<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $mode ); ?></label><br>
       <?php endforeach; ?>
     </div>
     <?php

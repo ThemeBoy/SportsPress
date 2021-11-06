@@ -233,7 +233,7 @@ class SP_Meta_Box_Event_Performance {
 						?>
 						<div>
 							<p>
-								<strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo esc_attr( $section_label ); ?></strong>
+								<strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo esc_html( $section_label ); ?></strong>
 								<a class="add-new-h2 sp-add-new-h2" href="<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_performance_csv', 'event' => $post_id, 'team' => $team_id ), 'admin.php' ) ) ); ?>"><?php _e( 'Import', 'sportspress' ); ?></a>
 							</p>
 							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, ( $has_checkboxes && 0 === $i ), $positions, $status, $section_id, $formats, $order, $numbers, $team_timeline, $timed, $stars ); ?>
@@ -324,10 +324,10 @@ class SP_Meta_Box_Event_Performance {
 							<?php endif; ?>
 							<label for="sp_columns_<?php echo esc_attr( $key ); ?>">
 								<input type="checkbox" name="sp_columns[]" value="<?php echo esc_attr( $key ); ?>" id="sp_columns_<?php echo esc_attr( $key ); ?>" <?php checked( ! is_array( $columns ) || in_array( $key, $columns ) ); ?>>
-								<?php echo esc_attr( $label ); ?>
+								<?php echo esc_html( $label ); ?>
 							</label>
 						<?php else: ?>
-							<?php echo esc_attr( $label ); ?>
+							<?php echo esc_html( $label ); ?>
 						<?php endif; ?>
 					</th>
 				<?php $i++; endforeach; ?>

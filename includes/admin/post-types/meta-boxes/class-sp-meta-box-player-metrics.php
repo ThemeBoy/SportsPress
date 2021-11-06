@@ -35,7 +35,7 @@ class SP_Meta_Box_Player_Metrics {
 		if ( $vars ):
 			foreach ( $vars as $var ):
 			?>
-			<p><strong><?php echo esc_attr( $var->post_title ); ?></strong></p>
+			<p><strong><?php echo esc_html( $var->post_title ); ?></strong></p>
 			<p><input type="text" name="sp_metrics[<?php echo esc_attr( $var->post_name ); ?>]" value="<?php echo esc_attr( sp_array_value( $metrics, $var->post_name, '' ) ); ?>" /></p>
 			<?php
 			endforeach;
