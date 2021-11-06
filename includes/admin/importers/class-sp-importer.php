@@ -231,7 +231,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				if ( file_exists( ABSPATH . $_POST['file_url'] ) ) {
 
-					$this->file_url = esc_attr( $_POST['file_url'] );
+					$this->file_url = sanitize_url( $_POST['file_url'] );
 
 				} else {
 

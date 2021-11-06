@@ -262,7 +262,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_event' )
 	    	return;
 
-		$selected = isset( $_REQUEST['team'] ) ? esc_attr( $_REQUEST['team'] ) : null;
+		$selected = isset( $_REQUEST['team'] ) ? sanitize_key( $_REQUEST['team'] ) : null;
 		$args = array(
 			'post_type' => 'sp_team',
 			'name' => 'team',
@@ -272,7 +272,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		);
 		wp_dropdown_pages( $args );
 
-		$selected = isset( $_REQUEST['sp_league'] ) ? esc_attr( $_REQUEST['sp_league'] ) : null;
+		$selected = isset( $_REQUEST['sp_league'] ) ? sanitize_key( $_REQUEST['sp_league'] ) : null;
 		$args = array(
 			'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),
 			'taxonomy' => 'sp_league',
@@ -281,7 +281,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		);
 		sp_dropdown_taxonomies( $args );
 
-		$selected = isset( $_REQUEST['sp_season'] ) ? esc_attr( $_REQUEST['sp_season'] ) : null;
+		$selected = isset( $_REQUEST['sp_season'] ) ? sanitize_key( $_REQUEST['sp_season'] ) : null;
 		$args = array(
 			'show_option_all' =>  __( 'Show all seasons', 'sportspress' ),
 			'taxonomy' => 'sp_season',
@@ -290,7 +290,7 @@ class SP_Admin_CPT_Event extends SP_Admin_CPT {
 		);
 		sp_dropdown_taxonomies( $args );
 
-		$selected = isset( $_REQUEST['match_day'] ) ? esc_attr( $_REQUEST['match_day'] ) : null;
+		$selected = isset( $_REQUEST['match_day'] ) ? sanitize_text_field( $_REQUEST['match_day'] ) : null;
 		echo '<input name="match_day" type="text" class="sp-tablenav-input" placeholder="' . __( 'Match Day', 'sportspress' ) . '" value="' . $selected . '">';
 
 		if ( current_user_can( 'edit_others_sp_events' ) )
