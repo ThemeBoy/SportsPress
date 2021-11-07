@@ -245,6 +245,8 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 * Tweak - Add "Order" and "Order by" selection fields for countdown widget.
 * Tweak - Add option to display event status in countdown widget.
 * Tweak - Add ability to filter events by format in calendar template.
+* Tweak - Update TGM plugin activation library.
+* Fix - Remove plugin headers from modules for improved compatibility.
 * Fix - Reverse order not applying to teams in event lists.
 * Fix - Add validation to user inputs for improved security.
 * Fix - Sanitize all user inputs for improved security.
