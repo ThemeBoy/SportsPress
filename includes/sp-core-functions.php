@@ -537,7 +537,7 @@ if ( !function_exists( 'sp_get_post_equation' ) ) {
 		if ( $equation ):
 			$equation = str_replace(
 				array( '/', '(', ')', '+', '-', '*', '_', '$' ),
-				array( '&divide;', '(', ')', '&plus;', '&minus;', '&times;', '@', '' ),
+				array( '&divide;', '(', ')', '&#43;', '&minus;', '&times;', '@', '' ),
 				trim( $equation )
 			);
 			return '<code>' . implode( '</code> <code>', explode( ' ', $equation ) ) . '</code>';
