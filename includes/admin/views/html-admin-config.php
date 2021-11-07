@@ -274,7 +274,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 						<?php if ( $data ): $i = 0; foreach ( $data as $row ): ?>
 							<tr<?php if ( $i % 2 == 0 ) echo ' class="alternate"'; ?>>
 								<td class="row-title"><?php echo esc_html( $row->post_title ); ?></td>
-								<td><?php echo esc_html( sp_get_post_equation( $row->ID ) ); ?></td>
+								<td><?php echo wp_kses_post( sp_get_post_equation( $row->ID ) ); ?></td>
 								<td><?php echo esc_html( sp_get_post_precision( $row->ID ) ); ?></td>
 								<td><?php echo esc_html( sp_get_post_order( $row->ID ) ); ?></td>
 								<td><p class="description"><?php echo wp_kses_post( $row->post_excerpt ); ?></p></td>
@@ -402,7 +402,7 @@ $columns = get_option( 'sportspress_player_columns', 'auto' );
 										echo apply_filters( 'sportspress_performance_icon', $icon, $row->ID );
 										?>
 								</td>
-								<td><?php echo esc_html( sp_get_post_equation( $row->ID ) ); ?></td>
+								<td><?php echo wp_kses_post( sp_get_post_equation( $row->ID ) ); ?></td>
 								<td><?php echo esc_html( sp_get_post_precision( $row->ID ) ); ?></td>
 								<td><?php echo esc_html( sp_get_post_section( $row->ID ) ); ?></td>
 								<?php if ( 'auto' === $columns ) { ?>
