@@ -174,13 +174,13 @@ if ( $title )
 							<?php do_action( 'sportspress_event_blocks_before', $event, $usecolumns ); ?>
 							<?php echo implode( ' ', $logos ); ?>
 							<time class="sp-event-date" datetime="<?php echo $event->post_date; ?>" itemprop="startDate" content="<?php echo mysql2date( 'Y-m-d\TH:iP', $event->post_date ); ?>">
-								<?php echo esc_html( sp_add_link( get_the_time( get_option( 'date_format' ), $event ), $permalink, $link_events ) ); ?>
+								<?php echo wp_kses_post( sp_add_link( get_the_time( get_option( 'date_format' ), $event ), $permalink, $link_events ) ); ?>
 							</time>
 							<?php if ( $show_matchday ): $matchday = get_post_meta( $event->ID, 'sp_day', true ); if ( $matchday != '' ): ?>
-								<div class="sp-event-matchday">(<?php echo esc_html( $matchday ); ?>)</div>
+								<div class="sp-event-matchday">(<?php echo wp_kses_post( $matchday ); ?>)</div>
 							<?php endif; endif; ?>
 							<h5 class="sp-event-results">
-								<?php echo esc_html( sp_add_link( '<span class="sp-result '.$event_status.'">' . implode( '</span> - <span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', $results, $event->ID ) ) . '</span>', $permalink, $link_events ) ); ?>
+								<?php echo wp_kses_post( sp_add_link( '<span class="sp-result '.$event_status.'">' . implode( '</span> - <span class="sp-result">', apply_filters( 'sportspress_event_blocks_team_result_or_time', $results, $event->ID ) ) . '</span>', $permalink, $link_events ) ); ?>
 							</h5>
 							<?php if ( $show_league ): $leagues = get_the_terms( $event, 'sp_league' ); if ( $leagues ): $league = array_shift( $leagues ); ?>
 								<div class="sp-event-league"><?php echo $league->name; ?></div>
@@ -195,7 +195,7 @@ if ( $title )
 								<div style="display:none;" class="sp-event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place"><div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><?php _e( 'N/A', 'sportspress' ); ?></div></div>
 							<?php endif; ?>
 							<h4 class="sp-event-title" itemprop="name">
-								<?php echo esc_html( sp_add_link( $event->post_title, $permalink, $link_events ) ); ?>
+								<?php echo wp_kses_post( sp_add_link( $event->post_title, $permalink, $link_events ) ); ?>
 							</h4>
 							<?php do_action( 'sportspress_event_blocks_after', $event, $usecolumns ); ?>
 
