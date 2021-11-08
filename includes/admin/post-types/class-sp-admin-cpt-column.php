@@ -61,7 +61,7 @@ class SP_Admin_CPT_Column extends SP_Admin_CPT {
 				echo esc_html( $post->post_name );
 				break;
 			case 'sp_equation':
-				echo esc_html( sp_get_post_equation( $post_id ) );
+				echo wp_kses_post( sp_get_post_equation( $post_id ) );
 				break;
 			case 'sp_precision':
 				echo esc_html( sp_get_post_precision( $post_id ) );
