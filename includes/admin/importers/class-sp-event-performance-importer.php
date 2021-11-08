@@ -49,10 +49,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$rows = array_chunk( $array, sizeof( $columns ) );
 
 			// Get event ID and team ID from post vars
-			$event = ( empty( $_POST['sp_event'] ) ? false : $_POST['sp_event'] );
-			$teams = ( empty( $_POST['sp_teams'] ) ? false : $_POST['sp_teams'] );
-			$index = ( empty( $_POST['sp_index'] ) ? false : $_POST['sp_index'] );
-			$team = ( empty( $_POST['sp_team'] ) ? false : $_POST['sp_team'] );
+			$event = ( empty( $_POST['sp_event'] ) ? false : sanitize_text_field( $_POST['sp_event'] ) );
+			$teams = ( empty( $_POST['sp_teams'] ) ? false : sanitize_text_field( $_POST['sp_teams'] ) );
+			$index = ( empty( $_POST['sp_index'] ) ? false : sanitize_text_field( $_POST['sp_index'] ) );
+			$team = ( empty( $_POST['sp_team'] ) ? false : sanitize_text_field( $_POST['sp_team'] ) );
 
 			$team_players = array( 0 );
 			$team_performance = array();

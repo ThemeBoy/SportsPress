@@ -107,7 +107,7 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_team' )
 	    	return;
 
-		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
+		$selected = isset( $_REQUEST['sp_league'] ) ? sanitize_key( $_REQUEST['sp_league'] ) : null;
 		$args = array(
 			'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),
 			'taxonomy' => 'sp_league',
@@ -116,7 +116,7 @@ class SP_Admin_CPT_Team extends SP_Admin_CPT {
 		);
 		sp_dropdown_taxonomies( $args );
 
-		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
+		$selected = isset( $_REQUEST['sp_season'] ) ? sanitize_key( $_REQUEST['sp_season'] ) : null;
 		$args = array(
 			'show_option_all' =>  __( 'Show all seasons', 'sportspress' ),
 			'taxonomy' => 'sp_season',

@@ -390,7 +390,7 @@ class SP_Admin_Setup_Wizard {
     check_admin_referer( 'sp-setup' );
 
     // Add away team
-    $post['post_title'] = $_POST['away_team'];
+    $post['post_title'] = sanitize_text_field( $_POST['away_team'] );
     $post['post_type'] = 'sp_team';
     $post['post_status'] = 'publish';
     $post['tax_input'] = array();
@@ -401,7 +401,7 @@ class SP_Admin_Setup_Wizard {
     wp_insert_post( $post );
 
     // Add home team
-    $post['post_title'] = $_POST['home_team'];
+    $post['post_title'] = sanitize_text_field( $_POST['home_team'] );
     wp_insert_post( $post );
 
     wp_redirect( esc_url_raw( $this->get_next_step_link() ) );

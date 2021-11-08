@@ -152,13 +152,13 @@ class SP_Admin_Welcome {
       <?php
       // Save settings
         if ( isset( $_POST['timezone_string'] ) ):
-          update_option( 'timezone_string', $_POST['timezone_string'] );
+          update_option( 'timezone_string', sanitize_text_field( $_POST['timezone_string'] ) );
         update_option( 'sportspress_basic_setup', 1 );
         endif;
       if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) ):
-        $sport = $_POST['sportspress_sport'];
+        $sport = sanitize_text_field( $_POST['sportspress_sport'] );
         SP_Admin_Sports::apply_preset( $sport );
-        update_option( 'sportspress_sport', $_POST['sportspress_sport'] );
+        update_option( 'sportspress_sport', $sport );
           delete_option( '_sp_needs_welcome' );
           update_option( 'sportspress_installed', 1 );
         ?>

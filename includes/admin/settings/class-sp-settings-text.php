@@ -67,7 +67,7 @@ class SP_Settings_Text extends SP_Settings_Page {
 	 */
 	public function save() {
 		if ( isset( $_POST['sportspress_text'] ) )
-	    	update_option( 'sportspress_text', $_POST['sportspress_text'] );
+	    	update_option( 'sportspress_text', array_map( 'sanitize_text_field', $_POST['sportspress_text'] ) );
 	}
 }
 

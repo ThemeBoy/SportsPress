@@ -86,7 +86,7 @@ class SP_Admin_CPT_Table extends SP_Admin_CPT {
 	    if ( $typenow != 'sp_table' )
 	    	return;
 
-		$selected = isset( $_REQUEST['sp_league'] ) ? $_REQUEST['sp_league'] : null;
+		$selected = isset( $_REQUEST['sp_league'] ) ? sanitize_key( $_REQUEST['sp_league'] ) : null;
 		$args = array(
 			'show_option_all' =>  __( 'Show all leagues', 'sportspress' ),
 			'taxonomy' => 'sp_league',
@@ -95,7 +95,7 @@ class SP_Admin_CPT_Table extends SP_Admin_CPT {
 		);
 		sp_dropdown_taxonomies( $args );
 
-		$selected = isset( $_REQUEST['sp_season'] ) ? $_REQUEST['sp_season'] : null;
+		$selected = isset( $_REQUEST['sp_season'] ) ? sanitize_key( $_REQUEST['sp_season'] ) : null;
 		$args = array(
 			'show_option_all' =>  __( 'Show all seasons', 'sportspress' ),
 			'taxonomy' => 'sp_season',
@@ -104,7 +104,7 @@ class SP_Admin_CPT_Table extends SP_Admin_CPT {
 		);
 		sp_dropdown_taxonomies( $args );
 
-		$selected = isset( $_REQUEST['team'] ) ? $_REQUEST['team'] : null;
+		$selected = isset( $_REQUEST['team'] ) ? sanitize_key( $_REQUEST['team'] ) : null;
 		$args = array(
 			'post_type' => 'sp_team',
 			'name' => 'team',
@@ -126,7 +126,7 @@ class SP_Admin_CPT_Table extends SP_Admin_CPT {
 	    if ( $typenow == 'sp_table' ) {
 
 	    	if ( ! empty( $_GET['team'] ) ) {
-		    	$query->query_vars['meta_value'] 	= $_GET['team'];
+		    	$query->query_vars['meta_value'] 	= sanitize_key( $_GET['team'] );
 		        $query->query_vars['meta_key'] 		= 'sp_team';
 		    }
 		}

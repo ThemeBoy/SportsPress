@@ -54,7 +54,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$rows = array_chunk( $array, sizeof( $columns ) );
 			
 			// Get Date of Birth format from post vars
-			$date_format = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : $_POST['sp_date_format'] );
+			$date_format = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : sanitize_text_field( $_POST['sp_date_format'] ) );
 
 			foreach ( $rows as $row ):
 
