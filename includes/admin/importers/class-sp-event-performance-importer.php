@@ -167,10 +167,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		function options() {
-			$event = sp_array_value( $_REQUEST, 'event', 0 );
-			$teams = sp_array_value( $_REQUEST, 'teams', 0 );
-			$index = sp_array_value( $_REQUEST, 'index', 0 );
-			$team = sp_array_value( $_REQUEST, 'team', 0 );
+			$event = sp_array_value( $_REQUEST, 'event', 0, 'key' );
+			$teams = sp_array_value( $_REQUEST, 'teams', 0, 'key' );
+			$index = sp_array_value( $_REQUEST, 'index', 0, 'key' );
+			$team = sp_array_value( $_REQUEST, 'team', 0, 'key' );
 			$include = get_post_meta( $event, 'sp_team', false );
 			?>
 			<table class="form-table">
