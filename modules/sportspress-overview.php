@@ -344,7 +344,7 @@ class SportsPress_Overview {
 
 					<?php endif; ?>
 
-				<?php else: $post_type = $_GET['type']; $taxonomy = $_GET['taxonomy']; // Filtered posts ?>
+				<?php else: $post_type = sanitize_key( $_GET['type'] ); $taxonomy = sanitize_key( $_GET['taxonomy'] ); // Filtered posts ?>
 
 					<?php if ( post_type_exists( $post_type ) ): ?>
 					
