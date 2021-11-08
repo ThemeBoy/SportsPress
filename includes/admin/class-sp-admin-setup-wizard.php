@@ -305,7 +305,7 @@ class SP_Admin_Setup_Wizard {
     check_admin_referer( 'sp-setup' );
 
     // Update timezone
-    $timezone_string = $_POST['timezone_string'];
+    $timezone_string = sanitize_text_field( $_POST['timezone_string'] );
     if ( ! empty( $timezone_string ) && preg_match( '/^UTC[+-]/', $timezone_string ) ) {
       $gmt_offset = $timezone_string;
       $gmt_offset = preg_replace( '/UTC\+?/', '', $gmt_offset );
@@ -492,7 +492,7 @@ class SP_Admin_Setup_Wizard {
     if ( ! empty( $_POST['staff'] ) ) {
 
       $post['post_type'] = 'sp_staff';
-      $post['post_title'] = $_POST['staff'];
+      $post['post_title'] = sanitize_text_field( $_POST['staff'] );
       $id = wp_insert_post( $post );
 
       // Add role
