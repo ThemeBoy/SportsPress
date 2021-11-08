@@ -117,7 +117,7 @@ class SportsPress_Overview {
 						<?php endforeach; ?>
 					</ul>
 
-				<?php elseif ( ! isset( $_GET['type'] ) ): $taxonomy = $_GET['taxonomy']; $taxonomy_object = get_taxonomy( $taxonomy ); ?>
+				<?php elseif ( ! isset( $_GET['type'] ) ): $taxonomy = sanitize_key( $_GET['taxonomy'] ); $taxonomy_object = get_taxonomy( $taxonomy ); ?>
 						
 					<?php $post_types = apply_filters( 'sportspress_sitemap_taxonomy_post_types', $taxonomy_object->object_type, $taxonomy ); ?>
 
@@ -272,7 +272,7 @@ class SportsPress_Overview {
 
 					<?php endif; ?>
 
-				<?php elseif ( ! isset( $_GET['taxonomy'] ) ): $post_type = $_GET['type']; // Post type archive ?>
+				<?php elseif ( ! isset( $_GET['taxonomy'] ) ): $post_type = sanitize_key( $_GET['type'] ); // Post type archive ?>
 
 					<?php
 					$post_object = get_post_type_object( $post_type );
