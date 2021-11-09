@@ -245,7 +245,7 @@ class SP_Settings_Status extends SP_Settings_Page {
 						if ( sizeof( $sp_plugins ) == 0 )
 							echo '-';
 						else
-							echo implode( ', <br/>', $sp_plugins );
+							echo implode( ', <br/>', array_map( 'wp_kses_post', $sp_plugins ) );
 
 					?></td>
 				</tr>
@@ -510,8 +510,8 @@ class SP_Settings_Status extends SP_Settings_Page {
 						if ( $found_files ) {
 							foreach ( $found_files as $plugin_name => $found_plugin_files ) {
 								?>
-								<td><?php _e( 'Template Overrides', 'sportspress' ); ?> (<?php echo $plugin_name; ?>):</td>
-								<td><?php echo implode( ', <br/>', $found_plugin_files ); ?></td>
+								<td><?php _e( 'Template Overrides', 'sportspress' ); ?> (<?php echo wp_kses_post( $plugin_name ); ?>):</td>
+								<td><?php echo implode( ', <br/>', array_map( 'wp_kses_post', $found_plugin_files ) ); ?></td>
 								<?php
 							}
 						} else {

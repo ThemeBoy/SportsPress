@@ -78,7 +78,7 @@ class SP_Template_Loader {
 				if ( 'yes' !== get_option( $template['option'], sp_array_value( $template, 'default', 'yes' ) ) ) continue;
 				
 				// Render the template
-				echo '<div class="sp-section-content sp-section-content-' . $key . '">';
+				echo '<div class="sp-section-content sp-section-content-' . esc_attr( $key ) . '">';
 				if ( 'content' === $key ) {
 					echo wp_kses_post( $content );
 					// Template content hook

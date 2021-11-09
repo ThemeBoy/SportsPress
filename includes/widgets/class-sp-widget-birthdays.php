@@ -77,7 +77,7 @@ class SP_Widget_Birthdays extends WP_Widget {
 			<label for="<?php echo $this->get_field_id('birthday_format'); ?>"><?php _e( 'Format:', 'sportspress' ); ?></label>
 			<select name="<?php echo $this->get_field_name('birthday_format'); ?>" id="<?php echo $this->get_field_id('birthday_format'); ?>" class="postform widefat">
 				<?php foreach ( $birthday_options as $value => $label ) { ?>
-					<option value="<?php echo $value; ?>" <?php selected( $value, $birthday_format ); ?>><?php echo $label; ?></option>
+					<option value="<?php echo $value; ?>" <?php selected( $value, $birthday_format ); ?>><?php echo esc_html( $label ); ?></option>
 				<?php } ?>
 			</select>
 		</p>

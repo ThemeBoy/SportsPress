@@ -54,7 +54,7 @@ class SP_Admin_Dashboard {
                 else:
                     $output = '<span>' . $text . '</span>';
                 endif;
-                echo '<li class="post-count ' . $post_type->name . '-count">' . $output . '</li>';
+                echo '<li class="post-count ' . eac_attr( $post_type->name ) . '-count">' . esc_html( $output ) . '</li>';
             endif;
         endforeach;
         return $items;
