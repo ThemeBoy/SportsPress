@@ -60,16 +60,16 @@ p.sportspress-actions a.button-primary:focus {
 
 .sportspress-steps:before,
 .sportspress-steps:after {
-    content: " ";
-    display: table;
+	content: " ";
+	display: table;
 }
 
 .sportspress-steps:after {
-    clear: both;
+	clear: both;
 }
 
 .sportspress-steps {
-    *zoom: 1;
+	*zoom: 1;
 }
 
 .sportspress-steps .welcome-icon i:before {

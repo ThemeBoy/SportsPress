@@ -2,12 +2,14 @@
 /**
  * Event Officials List
  *
- * @author 		ThemeBoy
- * @package 	SportsPress/Templates
+ * @author      ThemeBoy
+ * @package     SportsPress/Templates
  * @version   2.5
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 ?>
@@ -18,7 +20,9 @@ $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'ye
 			<?php
 			foreach ( $labels as $key => $label ) {
 				$appointed_officials = (array) sp_array_value( $data, $key, array() );
-				if ( empty( $appointed_officials ) ) continue;
+				if ( empty( $appointed_officials ) ) {
+					continue;
+				}
 
 				echo '<dt>' . $label . '</dt>';
 

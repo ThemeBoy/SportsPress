@@ -2,16 +2,19 @@
 /**
  * Statistic Details
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
-if ( ! class_exists( 'SP_Meta_Box_Config' ) )
-	include( 'class-sp-meta-box-config.php' );
+if ( ! class_exists( 'SP_Meta_Box_Config' ) ) {
+	require 'class-sp-meta-box-config.php';
+}
 
 /**
  * SP_Meta_Box_Statistic_Details
@@ -24,16 +27,24 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$precision = get_post_meta( $post->ID, 'sp_precision', true );
-		$section = get_post_meta( $post->ID, 'sp_section', true );
-		$format = get_post_meta( $post->ID, 'sp_format', true );
-		$total = get_post_meta( $post->ID, 'sp_type', true );
-		$visible = get_post_meta( $post->ID, 'sp_visible', true );
+		$section   = get_post_meta( $post->ID, 'sp_section', true );
+		$format    = get_post_meta( $post->ID, 'sp_format', true );
+		$total     = get_post_meta( $post->ID, 'sp_type', true );
+		$visible   = get_post_meta( $post->ID, 'sp_visible', true );
 
 		// Defaults
-		if ( '' === $precision ) $precision = 0;
-		if ( '' === $section ) $section = -1;
-		if ( '' === $format ) $format = 'number';
-		if ( '' === $visible ) $visible = 1;
+		if ( '' === $precision ) {
+			$precision = 0;
+		}
+		if ( '' === $section ) {
+			$section = -1;
+		}
+		if ( '' === $format ) {
+			$format = 'number';
+		}
+		if ( '' === $visible ) {
+			$visible = 1;
+		}
 		?>
 		<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
 		<p>
@@ -48,8 +59,18 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		<p class="sp-section-selector">
 			<select name="sp_section">
 				<?php
-				$options = apply_filters( 'sportspress_performance_sections', array( -1 => __( 'All', 'sportspress' ), 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
-				foreach ( $options as $key => $value ):
+				$options = apply_filters(
+					'sportspress_performance_sections',
+					array(
+						-1 => __( 'All', 'sportspress' ),
+						0  => __( 'Offense', 'sportspress' ),
+						1  => __(
+							'Defense',
+							'sportspress'
+						),
+					)
+				);
+				foreach ( $options as $key => $value ) :
 					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $section, true, false ), $value );
 				endforeach;
 				?>
@@ -59,8 +80,17 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		<p>
 			<select name="sp_format">
 				<?php
-				$options = apply_filters( 'sportspress_statistic_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ) ) );
-				foreach ( $options as $key => $value ):
+				$options = apply_filters(
+					'sportspress_statistic_formats',
+					array(
+						'number' => __( 'Number', 'sportspress' ),
+						'time'   => __(
+							'Time',
+							'sportspress'
+						),
+					)
+				);
+				foreach ( $options as $key => $value ) :
 					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $format, true, false ), $value );
 				endforeach;
 				?>
@@ -70,8 +100,17 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		<p>
 			<select name="sp_type">
 				<?php
-				$options = apply_filters( 'sportspress_statistic_total_types', array( 'total' => __( 'Total', 'sportspress' ), 'average' => __( 'Average', 'sportspress' ) ) );
-				foreach ( $options as $key => $value ):
+				$options = apply_filters(
+					'sportspress_statistic_total_types',
+					array(
+						'total'   => __( 'Total', 'sportspress' ),
+						'average' => __(
+							'Average',
+							'sportspress'
+						),
+					)
+				);
+				foreach ( $options as $key => $value ) :
 					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $total, true, false ), $value );
 				endforeach;
 				?>

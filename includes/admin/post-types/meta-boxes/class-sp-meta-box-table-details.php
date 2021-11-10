@@ -2,13 +2,15 @@
 /**
  * Table Details
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
  * @version   2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * SP_Meta_Box_Table_Details
@@ -20,18 +22,18 @@ class SP_Meta_Box_Table_Details {
 	 */
 	public static function output( $post ) {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
-		$taxonomies = get_object_taxonomies( 'sp_table' );
-		$caption = get_post_meta( $post->ID, 'sp_caption', true );
-		$select = get_post_meta( $post->ID, 'sp_select', true );
-		$post_type = sp_get_post_mode_type( $post->ID );
-		$date = get_post_meta( $post->ID, 'sp_date', true );
-		$date_from = get_post_meta( $post->ID, 'sp_date_from', true );
-		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
-		$date_past = get_post_meta( $post->ID, 'sp_date_past', true );
+		$taxonomies    = get_object_taxonomies( 'sp_table' );
+		$caption       = get_post_meta( $post->ID, 'sp_caption', true );
+		$select        = get_post_meta( $post->ID, 'sp_select', true );
+		$post_type     = sp_get_post_mode_type( $post->ID );
+		$date          = get_post_meta( $post->ID, 'sp_date', true );
+		$date_from     = get_post_meta( $post->ID, 'sp_date_from', true );
+		$date_to       = get_post_meta( $post->ID, 'sp_date_to', true );
+		$date_past     = get_post_meta( $post->ID, 'sp_date_past', true );
 		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
-		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
-		$order = get_post_meta( $post->ID, 'sp_order', true );
-		$event_status = get_post_meta( $post->ID, 'sp_event_status', true );
+		$orderby       = get_post_meta( $post->ID, 'sp_orderby', true );
+		$order         = get_post_meta( $post->ID, 'sp_order', true );
+		$event_status  = get_post_meta( $post->ID, 'sp_event_status', true );
 		if ( empty( $event_status ) ) {
 			$event_status = array( 'publish', 'future' );
 		}
@@ -45,8 +47,8 @@ class SP_Meta_Box_Table_Details {
 				<p>
 					<?php
 					$args = array(
-						'name' => 'sp_date',
-						'id' => 'sp_date',
+						'name'     => 'sp_date',
+						'id'       => 'sp_date',
 						'selected' => $date,
 					);
 					sp_dropdown_dates( $args );
@@ -97,8 +99,8 @@ class SP_Meta_Box_Table_Details {
 			?>
 			<p><strong><?php _e( 'Event Status (with results)', 'sportspress' ); ?></strong></p>
 			<p>
-				<input type="checkbox" name="sp_event_status[]" value="publish" <?php echo ( in_array( "publish" , $event_status) ) ? 'checked' : false; ?>> Published/Played<br>
-				<input type="checkbox" name="sp_event_status[]" value="future" <?php echo ( in_array( "future" , $event_status) ) ? 'checked' : false; ?>> Scheduled/Future<br>
+				<input type="checkbox" name="sp_event_status[]" value="publish" <?php echo ( in_array( 'publish', $event_status ) ) ? 'checked' : false; ?>> Published/Played<br>
+				<input type="checkbox" name="sp_event_status[]" value="future" <?php echo ( in_array( 'future', $event_status ) ) ? 'checked' : false; ?>> Scheduled/Future<br>
 			</p>
 		</div>
 		<p><strong><?php _e( 'Sort by', 'sportspress' ); ?></strong></p>
@@ -107,12 +109,12 @@ class SP_Meta_Box_Table_Details {
 			$args = array(
 				'prepend_options' => array(
 					'default' => __( 'Default', 'sportspress' ),
-					'name' => __( 'Name', 'sportspress' ),
+					'name'    => __( 'Name', 'sportspress' ),
 				),
-				'post_type' => array( 'sp_column' ),
-				'name' => 'sp_orderby',
-				'selected' => $orderby,
-				'values' => 'slug',
+				'post_type'       => array( 'sp_column' ),
+				'name'            => 'sp_orderby',
+				'selected'        => $orderby,
+				'values'          => 'slug',
 			);
 			sp_dropdown_pages( $args );
 			?>

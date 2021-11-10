@@ -2,13 +2,15 @@
 /**
  * List Details
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * SP_Meta_Box_List_Details
@@ -19,24 +21,24 @@ class SP_Meta_Box_List_Details {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$taxonomies = get_object_taxonomies( 'sp_list' );
-		$caption = get_post_meta( $post->ID, 'sp_caption', true );
-		$team_id = get_post_meta( $post->ID, 'sp_team', true );
-		$era = get_post_meta( $post->ID, 'sp_era', true );
-		$grouping = get_post_meta( $post->ID, 'sp_grouping', true );
-		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
-		$order = get_post_meta( $post->ID, 'sp_order', true );
-		$select = get_post_meta( $post->ID, 'sp_select', true );
-		$number = get_post_meta( $post->ID, 'sp_number', true );
-		$crop = get_post_meta( $post->ID, 'sp_crop', true );
-		$date = get_post_meta( $post->ID, 'sp_date', true );
-		$date_from = get_post_meta( $post->ID, 'sp_date_from', true );
-		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
-		$date_past = get_post_meta( $post->ID, 'sp_date_past', true );
-		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
-		$continents = SP()->countries->continents;
-		$nationalities = get_post_meta( $post->ID, 'sp_nationality', false );
-		$default_nationality = get_option( 'sportspress_default_nationality' , false );
+		$taxonomies          = get_object_taxonomies( 'sp_list' );
+		$caption             = get_post_meta( $post->ID, 'sp_caption', true );
+		$team_id             = get_post_meta( $post->ID, 'sp_team', true );
+		$era                 = get_post_meta( $post->ID, 'sp_era', true );
+		$grouping            = get_post_meta( $post->ID, 'sp_grouping', true );
+		$orderby             = get_post_meta( $post->ID, 'sp_orderby', true );
+		$order               = get_post_meta( $post->ID, 'sp_order', true );
+		$select              = get_post_meta( $post->ID, 'sp_select', true );
+		$number              = get_post_meta( $post->ID, 'sp_number', true );
+		$crop                = get_post_meta( $post->ID, 'sp_crop', true );
+		$date                = get_post_meta( $post->ID, 'sp_date', true );
+		$date_from           = get_post_meta( $post->ID, 'sp_date_from', true );
+		$date_to             = get_post_meta( $post->ID, 'sp_date_to', true );
+		$date_past           = get_post_meta( $post->ID, 'sp_date_past', true );
+		$date_relative       = get_post_meta( $post->ID, 'sp_date_relative', true );
+		$continents          = SP()->countries->continents;
+		$nationalities       = get_post_meta( $post->ID, 'sp_nationality', false );
+		$default_nationality = get_option( 'sportspress_default_nationality', false );
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -47,8 +49,8 @@ class SP_Meta_Box_List_Details {
 				<p>
 					<?php
 					$args = array(
-						'name' => 'sp_date',
-						'id' => 'sp_date',
+						'name'     => 'sp_date',
+						'id'       => 'sp_date',
 						'selected' => $date,
 					);
 					sp_dropdown_dates( $args );
@@ -85,13 +87,13 @@ class SP_Meta_Box_List_Details {
 			<p class="sp-tab-select sp-team-era-selector">
 				<?php
 				$args = array(
-					'post_type' => 'sp_team',
-					'name' => 'sp_team',
+					'post_type'       => 'sp_team',
+					'name'            => 'sp_team',
 					'show_option_all' => __( 'All', 'sportspress' ),
-					'selected' => $team_id,
-					'values' => 'ID',
+					'selected'        => $team_id,
+					'values'          => 'ID',
 				);
-				if ( ! sp_dropdown_pages( $args ) ):
+				if ( ! sp_dropdown_pages( $args ) ) :
 					sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
 				endif;
 				?>
@@ -103,12 +105,16 @@ class SP_Meta_Box_List_Details {
 			</p>
 			<p><strong><?php _e( 'Nationality', 'sportspress' ); ?></strong></p>
 			<p>
-				<select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" multiple="multiple">
+				<select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select
+																									<?php
+																									if ( is_rtl() ) :
+																										?>
+					 chosen-rtl<?php endif; ?>" multiple="multiple">
 					<option value=""></option>
-					<?php foreach ( $continents as $continent => $countries ): ?>
+					<?php foreach ( $continents as $continent => $countries ) : ?>
 						<optgroup label="<?php echo esc_attr( $continent ); ?>">
-							<?php foreach ( $countries as $code => $country ): ?>
-								<option value="<?php echo esc_attr( $code ); ?>" <?php selected ( in_array( $code, $nationalities ) ); ?>><?php echo esc_html( $country ); ?></option>
+							<?php foreach ( $countries as $code => $country ) : ?>
+								<option value="<?php echo esc_attr( $code ); ?>" <?php selected( in_array( $code, $nationalities ) ); ?>><?php echo esc_html( $country ); ?></option>
 							<?php endforeach; ?>
 						</optgroup>
 					<?php endforeach; ?>
@@ -127,12 +133,12 @@ class SP_Meta_Box_List_Details {
 			$args = array(
 				'prepend_options' => array(
 					'number' => __( 'Squad Number', 'sportspress' ),
-					'name' => __( 'Name', 'sportspress' ),
+					'name'   => __( 'Name', 'sportspress' ),
 				),
-				'post_type' => array( 'sp_performance', 'sp_metric', 'sp_statistic' ),
-				'name' => 'sp_orderby',
-				'selected' => $orderby,
-				'values' => 'slug',
+				'post_type'       => array( 'sp_performance', 'sp_metric', 'sp_statistic' ),
+				'name'            => 'sp_orderby',
+				'selected'        => $orderby,
+				'values'          => 'slug',
 			);
 			sp_dropdown_pages( $args );
 			?>
@@ -160,11 +166,11 @@ class SP_Meta_Box_List_Details {
 			<?php
 			if ( 'manual' == $select ) {
 				$player_filters = array( 'sp_league', 'sp_season' );
-				if ( $team_id ) {					
-					if ( in_array( $era, [ 'all', 'past' ] ) ) {
+				if ( $team_id ) {
+					if ( in_array( $era, array( 'all', 'past' ) ) ) {
 						$player_filters[] = 'sp_past_team';
 					}
-					if ( in_array( $era, [ 'all', 'current' ] ) ) {
+					if ( in_array( $era, array( 'all', 'current' ) ) ) {
 						$player_filters[] = 'sp_current_team';
 					}
 				}

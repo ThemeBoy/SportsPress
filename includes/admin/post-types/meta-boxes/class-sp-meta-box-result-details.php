@@ -2,16 +2,19 @@
 /**
  * Result Details
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
-if ( ! class_exists( 'SP_Meta_Box_Config' ) )
-	include( 'class-sp-meta-box-config.php' );
+if ( ! class_exists( 'SP_Meta_Box_Config' ) ) {
+	require 'class-sp-meta-box-config.php';
+}
 
 /**
  * SP_Meta_Box_Result_Details
@@ -34,7 +37,11 @@ class SP_Meta_Box_Result_Details extends SP_Meta_Box_Config {
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
 			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo esc_attr( $post->post_name ); ?>">
-			<input name="sp_key" type="text" id="sp_key" value="<?php echo esc_attr( $post->post_name ); ?>"<?php if ( $readonly ) { ?> readonly="readonly"<?php } ?>> <span class="description">(for, against)</span>
+			<input name="sp_key" type="text" id="sp_key" value="<?php echo esc_attr( $post->post_name ); ?>"
+																		   <?php
+																			if ( $readonly ) {
+																				?>
+				 readonly="readonly"<?php } ?>> <span class="description">(for, against)</span>
 		</p>
 		<p><strong><?php _e( 'Decimal Places', 'sportspress' ); ?></strong></p>
 		<p class="sp-precision-selector">

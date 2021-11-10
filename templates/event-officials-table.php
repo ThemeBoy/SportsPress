@@ -2,12 +2,14 @@
 /**
  * Event Officials Table
  *
- * @author 		ThemeBoy
- * @package 	SportsPress/Templates
+ * @author      ThemeBoy
+ * @package     SportsPress/Templates
  * @version   2.5
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 ?>

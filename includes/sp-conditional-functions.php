@@ -4,13 +4,15 @@
  *
  * Functions for determining the current query/page.
  *
- * @author 		ThemeBoy
- * @category 	Core
- * @package 	SportsPress/Functions
- * @version		2.5.1
+ * @author      ThemeBoy
+ * @category    Core
+ * @package     SportsPress/Functions
+ * @version     2.5.1
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * is_sportspress - Returns true if on a page which uses SportsPress templates
@@ -42,7 +44,7 @@ if ( ! function_exists( 'sp_post_types' ) ) {
  */
 if ( ! function_exists( 'sp_primary_post_types' ) ) {
 	function sp_primary_post_types() {
-		return apply_filters( 'sportspress_primary_post_types',  array( 'sp_event', 'sp_team', 'sp_player', 'sp_staff' ) );
+		return apply_filters( 'sportspress_primary_post_types', array( 'sp_event', 'sp_team', 'sp_player', 'sp_staff' ) );
 	}
 }
 
@@ -66,7 +68,7 @@ if ( ! function_exists( 'sp_secondary_post_types' ) ) {
  */
 if ( ! function_exists( 'sp_importable_post_types' ) ) {
 	function sp_importable_post_types() {
-		return apply_filters( 'sportspress_importable_post_types',  array( 'sp_event', 'sp_team', 'sp_player', 'sp_staff' ) );
+		return apply_filters( 'sportspress_importable_post_types', array( 'sp_event', 'sp_team', 'sp_player', 'sp_staff' ) );
 	}
 }
 
@@ -105,10 +107,10 @@ if ( ! function_exists( 'sp_post_type_hierarchy' ) ) {
 		return apply_filters(
 			'sportspress_post_type_hierarchy',
 			array(
-				'sp_event' => array( 'sp_calendar' ),
-				'sp_team' => array( 'sp_table' ),
+				'sp_event'  => array( 'sp_calendar' ),
+				'sp_team'   => array( 'sp_table' ),
 				'sp_player' => array( 'sp_list' ),
-				'sp_staff' => array()
+				'sp_staff'  => array(),
 			)
 		);
 	}
@@ -122,12 +124,15 @@ if ( ! function_exists( 'sp_post_type_hierarchy' ) ) {
  */
 if ( ! function_exists( 'is_sp_post_type' ) ) {
 	function is_sp_post_type( $typenow = null ) {
-		if ( $typenow == null ) global $typenow;
-		
+		if ( $typenow == null ) {
+			global $typenow;
+		}
+
 		$post_types = sp_post_types();
 
-		if ( in_array( $typenow, $post_types ) )
+		if ( in_array( $typenow, $post_types ) ) {
 			return true;
+		}
 		return false;
 	}
 }
@@ -140,12 +145,15 @@ if ( ! function_exists( 'is_sp_post_type' ) ) {
  */
 if ( ! function_exists( 'is_sp_config_type' ) ) {
 	function is_sp_config_type( $typenow = null ) {
-		if ( $typenow == null ) global $typenow;
-		
+		if ( $typenow == null ) {
+			global $typenow;
+		}
+
 		$post_types = sp_config_types();
 
-		if ( in_array( $typenow, $post_types ) )
+		if ( in_array( $typenow, $post_types ) ) {
 			return true;
+		}
 		return false;
 	}
 }
@@ -158,12 +166,15 @@ if ( ! function_exists( 'is_sp_config_type' ) ) {
  */
 if ( ! function_exists( 'is_sp_taxonomy' ) ) {
 	function is_sp_taxonomy( $typenow = null ) {
-		if ( $typenow == null ) global $typenow;
-		
+		if ( $typenow == null ) {
+			global $typenow;
+		}
+
 		$taxonomies = sp_taxonomies();
 
-		if ( in_array( $typenow, $taxonomies ) )
+		if ( in_array( $typenow, $taxonomies ) ) {
 			return true;
+		}
 		return false;
 	}
 }

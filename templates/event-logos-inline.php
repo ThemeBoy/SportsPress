@@ -2,14 +2,14 @@
 /**
  * Event Logos Inline
  *
- * @author 		ThemeBoy
- * @package 	SportsPress/Templates
+ * @author      ThemeBoy
+ * @package     SportsPress/Templates
  * @version   2.6
  */
 
 $team_logos = array();
-$i = 0;
-foreach ( $teams as $team ):
+$i          = 0;
+foreach ( $teams as $team ) :
 	if ( ! has_post_thumbnail( $team ) ) {
 		$logo = '';
 	} else {
@@ -28,7 +28,9 @@ foreach ( $teams as $team ):
 	}
 
 	// Add link
-	if ( $link_teams ) $logo = '<a href="' . get_post_permalink( $team ) . '">' . $logo . '</a>';
+	if ( $link_teams ) {
+		$logo = '<a href="' . get_post_permalink( $team ) . '">' . $logo . '</a>';
+	}
 
 	// Add result
 	if ( $show_results && ! empty( $results ) ) {
@@ -48,12 +50,12 @@ foreach ( $teams as $team ):
 	}
 endforeach;
 $team_logos = array_filter( $team_logos );
-if ( ! empty( $team_logos ) ):
+if ( ! empty( $team_logos ) ) :
 	echo '<div class="sp-template sp-template-event-logos sp-template-event-logos-inline"><div class="sp-event-logos sp-event-logos-' . sizeof( $teams ) . '">';
 
 	// Assign delimiter
 	if ( $show_time && sizeof( $teams ) <= 2 ) {
-		$delimiter = '<strong class="sp-event-logos-time sp-team-result">' . apply_filters( 'sportspress_event_time', get_the_time( get_option('time_format'), $id ), $id ) . '</strong>';
+		$delimiter = '<strong class="sp-event-logos-time sp-team-result">' . apply_filters( 'sportspress_event_time', get_the_time( get_option( 'time_format' ), $id ), $id ) . '</strong>';
 	} else {
 		$delimiter = get_option( 'sportspress_event_teams_delimiter', 'vs' );
 	}

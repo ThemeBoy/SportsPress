@@ -2,16 +2,19 @@
 /**
  * Performance Details
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
-if ( ! class_exists( 'SP_Meta_Box_Config' ) )
-	include( 'class-sp-meta-box-config.php' );
+if ( ! class_exists( 'SP_Meta_Box_Config' ) ) {
+	require 'class-sp-meta-box-config.php';
+}
 
 /**
  * SP_Meta_Box_Performance_Details
@@ -29,10 +32,10 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		} else {
 			$readonly = false;
 		}
-		
+
 		// Post Meta
 		$singular = get_post_meta( $post->ID, 'sp_singular', true );
-		$section = get_post_meta( $post->ID, 'sp_section', true );
+		$section  = get_post_meta( $post->ID, 'sp_section', true );
 		if ( '' === $section ) {
 			$section = -1;
 		}
@@ -56,7 +59,11 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
 			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo esc_attr( $post->post_name ); ?>">
-			<input name="sp_key" type="text" id="sp_key" value="<?php echo esc_attr( $post->post_name ); ?>"<?php if ( $readonly ) { ?> readonly="readonly"<?php } ?>>
+			<input name="sp_key" type="text" id="sp_key" value="<?php echo esc_attr( $post->post_name ); ?>"
+																		   <?php
+																			if ( $readonly ) {
+																				?>
+				 readonly="readonly"<?php } ?>>
 		</p>
 		<p><strong><?php _e( 'Singular', 'sportspress' ); ?></strong></p>
 		<p>
@@ -66,8 +73,18 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		<p class="sp-section-selector">
 			<select name="sp_section">
 				<?php
-				$options = apply_filters( 'sportspress_performance_sections', array( -1 => __( 'All', 'sportspress' ), 0 => __( 'Offense', 'sportspress' ), 1 => __( 'Defense', 'sportspress' ) ) );
-				foreach ( $options as $key => $value ):
+				$options = apply_filters(
+					'sportspress_performance_sections',
+					array(
+						-1 => __( 'All', 'sportspress' ),
+						0  => __( 'Offense', 'sportspress' ),
+						1  => __(
+							'Defense',
+							'sportspress'
+						),
+					)
+				);
+				foreach ( $options as $key => $value ) :
 					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $section, true, false ), $value );
 				endforeach;
 				?>
@@ -77,8 +94,20 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		<p class="sp-format-selector">
 			<select name="sp_format">
 				<?php
-				$options = apply_filters( 'sportspress_performance_formats', array( 'number' => __( 'Number', 'sportspress' ), 'time' => __( 'Time', 'sportspress' ), 'text' => __( 'Text', 'sportspress' ), 'equation' => __( 'Equation', 'sportspress' ), 'checkbox' => __( 'Checkbox', 'sportspress' ) ) );
-				foreach ( $options as $key => $value ):
+				$options = apply_filters(
+					'sportspress_performance_formats',
+					array(
+						'number'   => __( 'Number', 'sportspress' ),
+						'time'     => __( 'Time', 'sportspress' ),
+						'text'     => __( 'Text', 'sportspress' ),
+						'equation' => __( 'Equation', 'sportspress' ),
+						'checkbox' => __(
+							'Checkbox',
+							'sportspress'
+						),
+					)
+				);
+				foreach ( $options as $key => $value ) :
 					printf( '<option value="%s" %s>%s</option>', $key, selected( $key == $format, true, false ), $value );
 				endforeach;
 				?>

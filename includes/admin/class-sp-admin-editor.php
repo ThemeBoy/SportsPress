@@ -4,11 +4,11 @@
  *
  * Methods which tweak the WP Editor.
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin
  * @version   2.4
-*/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -51,8 +51,8 @@ class SP_Admin_Editor {
 	 * @return array
 	 */
 	public function add_tinymce_lang( $arr ) {
-	    $arr['sp_shortcodes_button'] = SP()->plugin_path() . '/assets/js/admin/editor-lang.php';
-	    return $arr;
+		$arr['sp_shortcodes_button'] = SP()->plugin_path() . '/assets/js/admin/editor-lang.php';
+		return $arr;
 	}
 
 	/**

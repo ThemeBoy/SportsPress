@@ -2,13 +2,15 @@
 /**
  * Team importer - import teams into SportsPress.
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Importers
- * @version		2.5.5
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Importers
+ * @version     2.5.5
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 if ( class_exists( 'WP_Importer' ) ) {
 	class SP_Team_Importer extends SP_Importer {
@@ -20,15 +22,15 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		public function __construct() {
-			$this->import_page = 'sp_team_csv';
+			$this->import_page  = 'sp_team_csv';
 			$this->import_label = __( 'Import Teams', 'sportspress' );
-			$this->columns = array(
-				'post_title' => __( 'Name', 'sportspress' ),
-				'sp_league' => __( 'Leagues', 'sportspress' ),
-				'sp_season' => __( 'Seasons', 'sportspress' ),
-				'sp_url' => __( 'Site URL', 'sportspress' ),
+			$this->columns      = array(
+				'post_title'      => __( 'Name', 'sportspress' ),
+				'sp_league'       => __( 'Leagues', 'sportspress' ),
+				'sp_season'       => __( 'Seasons', 'sportspress' ),
+				'sp_url'          => __( 'Site URL', 'sportspress' ),
 				'sp_abbreviation' => __( 'Abbreviation', 'sportspress' ),
-				'sp_venue' => __( 'Home', 'sportspress' ),
+				'sp_venue'        => __( 'Home', 'sportspress' ),
 			);
 			parent::__construct();
 		}
@@ -44,42 +46,53 @@ if ( class_exists( 'WP_Importer' ) ) {
 		function import( $array = array(), $columns = array( 'post_title' ) ) {
 			$this->imported = $this->skipped = 0;
 
-			if ( ! is_array( $array ) || ! sizeof( $array ) ):
+			if ( ! is_array( $array ) || ! sizeof( $array ) ) :
 				$this->footer();
 				die();
 			endif;
 
 			$rows = array_chunk( $array, sizeof( $columns ) );
 
-			foreach ( $rows as $row ):
+			foreach ( $rows as $row ) :
 
 				$row = array_filter( $row );
 
-				if ( empty( $row ) ) continue;
+				if ( empty( $row ) ) {
+					continue;
+				}
 
 				$meta = array();
 
-				foreach ( $columns as $index => $key ):
+				foreach ( $columns as $index => $key ) :
 					$meta[ $key ] = sp_array_value( $row, $index );
 				endforeach;
 
 				$name = sp_array_value( $meta, 'post_title' );
 
-				if ( ! $name ):
+				if ( ! $name ) :
 					$this->skipped++;
 					continue;
 				endif;
 
 				// Get or insert team
 				$team_object = sp_array_value( $_POST, 'merge', 0 ) ? get_page_by_title( stripslashes( $name ), OBJECT, 'sp_team' ) : false;
-				if ( $team_object ):
-					if ( $team_object->post_status != 'publish' ):
-						wp_update_post( array( 'ID' => $team_object->ID, 'post_status' => 'publish' ) );
+				if ( $team_object ) :
+					if ( $team_object->post_status != 'publish' ) :
+						wp_update_post(
+							array(
+								'ID'          => $team_object->ID,
+								'post_status' => 'publish',
+							)
+						);
 					endif;
 					$id = $team_object->ID;
-				else:
-					$args = array( 'post_type' => 'sp_team', 'post_status' => 'publish', 'post_title' => wp_strip_all_tags( $name ) );
-					$id = wp_insert_post( $args );
+				else :
+					$args = array(
+						'post_type'   => 'sp_team',
+						'post_status' => 'publish',
+						'post_title'  => wp_strip_all_tags( $name ),
+					);
+					$id   = wp_insert_post( $args );
 
 					// Flag as import
 					update_post_meta( $id, '_sp_import', 1 );
@@ -107,7 +120,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			// Show Result
 			echo '<div class="updated settings-error below-h2"><p>
-				'.sprintf( __( 'Import complete - imported <strong>%s</strong> teams and skipped <strong>%s</strong>.', 'sportspress' ), $this->imported, $this->skipped ).'
+				' . sprintf( __( 'Import complete - imported <strong>%1$s</strong> teams and skipped <strong>%2$s</strong>.', 'sportspress' ), $this->imported, $this->skipped ) . '
 			</p></div>';
 
 			$this->import_end();
@@ -117,7 +130,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * Performs post-import cleanup of files and the cache
 		 */
 		function import_end() {
-			echo '<p>' . __( 'All done!', 'sportspress' ) . ' <a href="' . admin_url('edit.php?post_type=sp_team') . '">' . __( 'View Teams', 'sportspress' ) . '</a>' . '</p>';
+			echo '<p>' . __( 'All done!', 'sportspress' ) . ' <a href="' . admin_url( 'edit.php?post_type=sp_team' ) . '">' . __( 'View Teams', 'sportspress' ) . '</a>' . '</p>';
 
 			do_action( 'import_end' );
 		}
@@ -130,7 +143,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		function greet() {
 			echo '<div class="narrow">';
-			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ).'</p>';
+			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
 			echo '<p>' . sprintf( __( 'Teams need to be defined with columns in a specific order (3 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/teams-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_team_csv&step=1' );
 			echo '</div>';

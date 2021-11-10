@@ -2,13 +2,15 @@
 /**
  * List Columns
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * SP_Meta_Box_List_Columns
@@ -19,8 +21,8 @@ class SP_Meta_Box_List_Columns {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$selected = (array)get_post_meta( $post->ID, 'sp_columns', true );
-		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
+		$selected = (array) get_post_meta( $post->ID, 'sp_columns', true );
+		$orderby  = get_post_meta( $post->ID, 'sp_orderby', true );
 		?>
 		<p><strong><?php _e( 'General', 'sportspress' ); ?></strong></p>
 		<ul class="categorychecklist form-no-clear">
@@ -33,7 +35,8 @@ class SP_Meta_Box_List_Columns {
 					} else {
 						_e( 'Rank', 'sportspress' );
 					}
-					?>	
+					?>
+						
 				</label>
 			</li>
 			<li>

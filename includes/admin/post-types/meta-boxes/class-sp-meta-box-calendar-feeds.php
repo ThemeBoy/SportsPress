@@ -4,13 +4,15 @@
  *
  * Based on a tutorial by Steve Thomas.
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * SP_Meta_Box_Calendar_Feeds
@@ -21,7 +23,7 @@ class SP_Meta_Box_Calendar_Feeds {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$feeds = new SP_Feeds();
+		$feeds          = new SP_Feeds();
 		$calendar_feeds = $feeds->calendar;
 		?>
 		<div>

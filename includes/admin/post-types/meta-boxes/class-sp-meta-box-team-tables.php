@@ -2,13 +2,15 @@
 /**
  * Team League Tables
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * SP_Meta_Box_Team_Tables
@@ -21,13 +23,13 @@ class SP_Meta_Box_Team_Tables {
 	public static function output( $post ) {
 		global $pagenow;
 
-		if ( $pagenow != 'post-new.php' ):
+		if ( $pagenow != 'post-new.php' ) :
 
-			$team = new SP_Team( $post );
+			$team                   = new SP_Team( $post );
 			list( $data, $checked ) = $team->tables( true );
 			self::table( $data, $checked );
 
-		else:
+		else :
 
 			printf( __( 'No results found.', 'sportspress' ) );
 
@@ -67,14 +69,19 @@ class SP_Meta_Box_Team_Tables {
 				</thead>
 				<tbody>
 					<?php
-					if ( is_array( $data ) ):
-						if ( sizeof( $data ) > 0 ):
+					if ( is_array( $data ) ) :
+						if ( sizeof( $data ) > 0 ) :
 							$i = 0;
-							foreach ( $data as $table ):
-								$teams = array_filter( get_post_meta( $table->ID, 'sp_team' ) );
+							foreach ( $data as $table ) :
+								$teams  = array_filter( get_post_meta( $table->ID, 'sp_team' ) );
 								$format = get_post_meta( $table->ID, 'sp_format', true );
 								?>
-								<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+								<tr class="sp-row sp-post
+								<?php
+								if ( $i % 2 == 0 ) {
+									echo ' alternate';}
+								?>
+								">
 									<td>
 										<input type="checkbox" name="sp_table[]" id="sp_table_<?php echo $table->ID; ?>" value="<?php echo $table->ID; ?>" <?php checked( in_array( $table->ID, $checked ) ); ?>>
 									</td>
@@ -84,13 +91,13 @@ class SP_Meta_Box_Team_Tables {
 										</a>
 									</td>
 									<td><?php echo sizeof( $teams ); ?></td>
-									<td><?php echo get_the_terms ( $table->ID, 'sp_league' ) ? the_terms( $table->ID, 'sp_league' ) : '&mdash;'; ?></td>
-									<td><?php echo get_the_terms ( $table->ID, 'sp_season' ) ? the_terms( $table->ID, 'sp_season' ) : '&mdash;'; ?></td>
+									<td><?php echo get_the_terms( $table->ID, 'sp_league' ) ? the_terms( $table->ID, 'sp_league' ) : '&mdash;'; ?></td>
+									<td><?php echo get_the_terms( $table->ID, 'sp_season' ) ? the_terms( $table->ID, 'sp_season' ) : '&mdash;'; ?></td>
 								</tr>
 								<?php
 								$i++;
 							endforeach;
-						else:
+						else :
 							?>
 							<tr class="sp-row alternate">
 								<td colspan="6">
@@ -99,14 +106,14 @@ class SP_Meta_Box_Team_Tables {
 							</tr>
 							<?php
 						endif;
-					else:
-					?>
+					else :
+						?>
 					<tr class="sp-row alternate">
 						<td colspan="5">
 							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) ); ?>
 						</td>
 					</tr>
-					<?php
+						<?php
 					endif;
 					?>
 				</tbody>

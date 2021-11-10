@@ -2,13 +2,15 @@
 /**
  * Event Format
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * SP_Meta_Box_Event_Format
@@ -23,7 +25,7 @@ class SP_Meta_Box_Event_Format {
 		$the_format = get_post_meta( $post->ID, 'sp_format', true );
 		?>
 		<div id="post-formats-select">
-			<?php foreach ( SP()->formats->event as $key => $format ): ?>
+			<?php foreach ( SP()->formats->event as $key => $format ) : ?>
 				<input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php checked( true, ( $key == 'league' && ! $the_format ) || $the_format == $key ); ?>> <label for="post-format-<?php echo esc_attr( $key ); ?>" class="post-format-icon post-format-<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $format ); ?></label><br>
 			<?php endforeach; ?>
 		</div>

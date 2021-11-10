@@ -6,11 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * SportsPress Admin.
  *
- * @class 		SP_Admin 
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin
- * @version		2.5.1
+ * @class       SP_Admin
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin
+ * @version     2.5.1
  */
 class SP_Admin {
 
@@ -36,32 +36,32 @@ class SP_Admin {
 	 */
 	public function includes() {
 		// Functions
-		include_once( 'sp-admin-functions.php' );
+		include_once 'sp-admin-functions.php';
 
 		// Classes
-		include_once( 'class-sp-admin-post-types.php' );
-		include_once( 'class-sp-admin-taxonomies.php' );
-		include_once( 'class-sp-admin-ajax.php' );
+		include_once 'class-sp-admin-post-types.php';
+		include_once 'class-sp-admin-taxonomies.php';
+		include_once 'class-sp-admin-ajax.php';
 
 		// Classes we only need if the ajax is not-ajax
 		if ( ! is_ajax() ) {
-			include( 'class-sp-admin-menus.php' );
-			include( 'class-sp-admin-welcome.php' );
-			include( 'class-sp-admin-notices.php' );
-			include( 'class-sp-admin-assets.php' );
-			include( 'class-sp-admin-permalink-settings.php' );
+			include 'class-sp-admin-menus.php';
+			include 'class-sp-admin-welcome.php';
+			include 'class-sp-admin-notices.php';
+			include 'class-sp-admin-assets.php';
+			include 'class-sp-admin-permalink-settings.php';
 
-			if ( 'yes' == get_option( 'sportspress_rich_editing', 'yes' ) ):
-				include( 'class-sp-admin-editor.php' );
+			if ( 'yes' == get_option( 'sportspress_rich_editing', 'yes' ) ) :
+				include 'class-sp-admin-editor.php';
 			endif;
 		}
 
 		// Setup/welcome
 		if ( ! empty( $_GET['page'] ) ) {
 			switch ( $_GET['page'] ) {
-				case 'sp-setup' :
-					include_once( 'class-sp-admin-setup-wizard.php' );
-				break;
+				case 'sp-setup':
+					include_once 'class-sp-admin-setup-wizard.php';
+					break;
 			}
 		}
 	}
@@ -73,8 +73,8 @@ class SP_Admin {
 		$screen = get_current_screen();
 
 		switch ( $screen->id ) {
-			case 'dashboard' :
-				include( 'class-sp-admin-dashboard.php' );
+			case 'dashboard':
+				include 'class-sp-admin-dashboard.php';
 				break;
 		}
 	}
@@ -85,7 +85,7 @@ class SP_Admin {
 	public function prevent_admin_access() {
 		$prevent_access = false;
 
-		if ( 'yes' == get_option( 'sportspress_lock_down_admin' ) && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_sportspress' ) ) && basename( $_SERVER["SCRIPT_FILENAME"] ) !== 'admin-post.php' ) {
+		if ( 'yes' == get_option( 'sportspress_lock_down_admin' ) && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_sportspress' ) ) && basename( $_SERVER['SCRIPT_FILENAME'] ) !== 'admin-post.php' ) {
 			$prevent_access = true;
 		}
 

@@ -2,11 +2,11 @@
 /**
  * SP_Shortcodes class.
  *
- * @class 		SP_Shortcodes
- * @version		2.7.9
- * @package		SportsPress/Classes
- * @category	Class
- * @author 		ThemeBoy
+ * @class       SP_Shortcodes
+ * @version     2.7.9
+ * @package     SportsPress/Classes
+ * @category    Class
+ * @author      ThemeBoy
  */
 class SP_Shortcodes {
 
@@ -19,10 +19,10 @@ class SP_Shortcodes {
 			'event_results'     => __CLASS__ . '::event_results',
 			'event_details'     => __CLASS__ . '::event_details',
 			'event_performance' => __CLASS__ . '::event_performance',
-			'event_venue' 		=> __CLASS__ . '::event_venue',
-			'event_officials' 	=> __CLASS__ . '::event_officials',
-			'event_teams' 		=> __CLASS__ . '::event_teams',
-			'event_full' 		=> __CLASS__ . '::event_full',
+			'event_venue'       => __CLASS__ . '::event_venue',
+			'event_officials'   => __CLASS__ . '::event_officials',
+			'event_teams'       => __CLASS__ . '::event_teams',
+			'event_full'        => __CLASS__ . '::event_full',
 			'countdown'         => __CLASS__ . '::countdown',
 			'player_details'    => __CLASS__ . '::player_details',
 			'player_statistics' => __CLASS__ . '::player_statistics',
@@ -52,19 +52,19 @@ class SP_Shortcodes {
 	 */
 	public static function shortcode_wrapper(
 		$function,
-		$atts    = array(),
+		$atts = array(),
 		$wrapper = array(
 			'class'  => 'sportspress',
 			'before' => null,
-			'after'  => null
+			'after'  => null,
 		)
 	) {
 		$wrapper = apply_filters( 'sportspress_shortcode_wrapper', $wrapper, $function, $atts );
 
 		ob_start();
 
-		$before 	= empty( $wrapper['before'] ) ? '<div class="' . esc_attr( $wrapper['class'] ) . '">' : $wrapper['before'];
-		$after 		= empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
+		$before = empty( $wrapper['before'] ) ? '<div class="' . esc_attr( $wrapper['class'] ) . '">' : $wrapper['before'];
+		$after  = empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
 
 		echo wp_kses_post( $before );
 		call_user_func( $function, $atts );
@@ -105,7 +105,7 @@ class SP_Shortcodes {
 	public static function event_performance( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Performance', 'output' ), $atts );
 	}
-	
+
 	/**
 	 * Event venue shortcode.
 	 *
@@ -116,7 +116,7 @@ class SP_Shortcodes {
 	public static function event_venue( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Venue', 'output' ), $atts );
 	}
-	
+
 	/**
 	 * Event officials shortcode.
 	 *
@@ -127,7 +127,7 @@ class SP_Shortcodes {
 	public static function event_officials( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Officials', 'output' ), $atts );
 	}
-	
+
 	/**
 	 * Event teams shortcode.
 	 *
@@ -138,7 +138,7 @@ class SP_Shortcodes {
 	public static function event_teams( $atts ) {
 		return self::shortcode_wrapper( array( 'SP_Shortcode_Event_Teams', 'output' ), $atts );
 	}
-	
+
 	/**
 	 * Event full info shortcode.
 	 *

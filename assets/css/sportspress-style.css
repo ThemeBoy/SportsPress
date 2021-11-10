@@ -3,12 +3,12 @@
 .sp-template,
 .sp-data-table,
 .sp-table-caption {
-    font-family: "Roboto", "Helvetica", sans-serif;
+	font-family: "Roboto", "Helvetica", sans-serif;
 }
 
 .sp-template {
-    clear: both;
-    overflow: hidden;
+	clear: both;
+	overflow: hidden;
 }
 
 /*
@@ -34,34 +34,34 @@
 .sp-table-caption h4,
 .sp-table-caption h5,
 .sp-table-caption h6 {
-    font-family: "Roboto", "Helvetica", sans-serif !important;
+	font-family: "Roboto", "Helvetica", sans-serif !important;
 }
 
 .sp-template {
-    margin-bottom: 20px !important;
+	margin-bottom: 20px !important;
 }
 
 .sp-template *,
 .sp-data-table *,
 .sp-table-caption {
-    box-sizing: border-box !important;
-    font-weight: 400 !important;
-    text-transform: none !important;
-    letter-spacing: normal !important;
-    color: #333 !important;
+	box-sizing: border-box !important;
+	font-weight: 400 !important;
+	text-transform: none !important;
+	letter-spacing: normal !important;
+	color: #333 !important;
 }
 
 .sp-table-caption {
-    margin: 0 !important;
-    padding: 15px !important;
-    background: #fff !important;
-    border: 1px solid #e5e5e5 !important;
-    border-bottom: none !important;
-    font-size: 20px !important;
-    font-weight: 400 !important;
-    line-height: 1.5 !important;
-    display: table !important;
-    width: 100% !important;
+	margin: 0 !important;
+	padding: 15px !important;
+	background: #fff !important;
+	border: 1px solid #e5e5e5 !important;
+	border-bottom: none !important;
+	font-size: 20px !important;
+	font-weight: 400 !important;
+	line-height: 1.5 !important;
+	display: table !important;
+	width: 100% !important;
 }
 
 /* Color Resets */
@@ -70,177 +70,177 @@
 .sp-data-table input,
 .sp-template .sp-event-logos,
 .sp-template .sp-event-staff {
-    color: initial !important;
+	color: initial !important;
 }
 
 /* Links */
 
 .sp-template a,
 .sp-data-table a {
-    box-shadow: none !important;
-    border: none !important;
-    text-decoration: none !important;
-    font-weight: inherit !important;
-    color: #00a69c !important;
+	box-shadow: none !important;
+	border: none !important;
+	text-decoration: none !important;
+	font-weight: inherit !important;
+	color: #00a69c !important;
 }
 
 .sp-template a:hover,
 .sp-data-table a:hover {
-    text-decoration: underline !important;
+	text-decoration: underline !important;
 }
 
 .sp-template a:hover .dashicons,
 .sp-template a:hover [class^="sp-icon-"], [class*=" sp-icon-"],
 .sp-data-table a:hover .dashicons,
 .sp-data-table a:hover [class^="sp-icon-"], [class*=" sp-icon-"] {
-    text-decoration: none !important;
+	text-decoration: none !important;
 }
 
 .sp-view-all-link {
-    padding: 10px 15px !important;
-    margin: 0 !important;
-    background: #fff !important;
-    border: 1px solid #e5e5e5 !important;
-    border-top: none !important;
-    overflow: hidden !important;
-    display: table !important;
-    width: 100% !important;
-    text-align: right !important;
+	padding: 10px 15px !important;
+	margin: 0 !important;
+	background: #fff !important;
+	border: 1px solid #e5e5e5 !important;
+	border-top: none !important;
+	overflow: hidden !important;
+	display: table !important;
+	width: 100% !important;
+	text-align: right !important;
 }
 
 .sp-view-all-link a {
-    font-size: 12px !important;
-    font-weight: 400 !important;
-    line-height: 1.5 !important;
-    text-decoration: none !important;
-    color: rgba(51,51,51,0.5) !important;
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	line-height: 1.5 !important;
+	text-decoration: none !important;
+	color: rgba(51,51,51,0.5) !important;
 }
 
 .sp-view-all-link a:hover {
-    color: #333 !important;
-    text-decoration: none !important;
+	color: #333 !important;
+	text-decoration: none !important;
 }
 
 .sp-form-events a:hover {
-    color: #fff !important;
-    text-decoration: none !important;
+	color: #fff !important;
+	text-decoration: none !important;
 }
 
 /* Images */
 
 .sp-template img {
-    display: inline-block !important;
-    box-shadow: none !important;
+	display: inline-block !important;
+	box-shadow: none !important;
 }
 
 /* Tables */
 
 .sp-data-table {
-    margin: 0 !important;
-    background: #fff !important;
-    border-collapse: collapse !important;
-    border: 1px solid #e5e5e5 !important;
-    width: 100% !important;
+	margin: 0 !important;
+	background: #fff !important;
+	border-collapse: collapse !important;
+	border: 1px solid #e5e5e5 !important;
+	width: 100% !important;
 }
 
 .sp-data-table tr {
-    border: none !important;
+	border: none !important;
 }
 
 .sp-data-table th,
 .sp-data-table td {
-    font-size: 13px !important;
-    font-weight: 400 !important;
-    line-height: 1.5 !important;
-    border: 1px solid #e5e5e5 !important;
-    padding: 5px 10px !important;
-    text-align: center !important;
+	font-size: 13px !important;
+	font-weight: 400 !important;
+	line-height: 1.5 !important;
+	border: 1px solid #e5e5e5 !important;
+	padding: 5px 10px !important;
+	text-align: center !important;
 }
 
 .sp-data-table th {
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    background: #fff !important;
-    color: #999 !important;
-    border: none !important;
+	font-size: 12px !important;
+	font-weight: 500 !important;
+	background: #fff !important;
+	color: #999 !important;
+	border: none !important;
 }
 
 .sp-data-table th a {
-    color: inherit !important;
+	color: inherit !important;
 }
 
 .sp-data-table .sp-highlight,
 .sp-data-table .highlighted td {
-    font-weight: 500 !important;
-    background: #f9f9f9 !important;
+	font-weight: 500 !important;
+	background: #f9f9f9 !important;
 }
 
 /* Galleries */
 
 .sp-template-gallery .sp-gallery-wrapper {
-    border: 1px solid #e5e5e5 !important;
-    background: #fff !important;
-    display: table !important;
-    width: 100% !important;
+	border: 1px solid #e5e5e5 !important;
+	background: #fff !important;
+	display: table !important;
+	width: 100% !important;
 }
 
 .sp-template-gallery .gallery-item {
-    padding: 0 !important;
-    margin: 0 !important;
-    position: relative !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	position: relative !important;
 }
 
 .sp-template-gallery .gallery-item a {
-    display: block !important;
-    color: #999 !important;
+	display: block !important;
+	color: #999 !important;
 }
 
 .sp-template-gallery .gallery-item img {
-    display: block !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
+	display: block !important;
+	border: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	border-radius: 0 !important;
 }
 
 .sp-template-gallery .gallery-caption {
-    padding: 0 !important;
-    margin: 0 !important;
-    font-size: 12px !important;
-    font-style: normal !important;
-    font-weight: 500 !important;
-    text-align: center !important;
-    color: #999 !important;
-    line-height: 1.5 !important;
-    padding: 5px 10px !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	font-size: 12px !important;
+	font-style: normal !important;
+	font-weight: 500 !important;
+	text-align: center !important;
+	color: #999 !important;
+	line-height: 1.5 !important;
+	padding: 5px 10px !important;
 }
 
 .sp-template-gallery .gallery-caption strong {
-    color: #fff !important;
-    background: #00a69c !important;
-    display: block !important;
-    font-weight: 400 !important;
-    font-size: 13px !important;
-    line-height: 1.5 !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
-    padding: 5px 10px !important;
+	color: #fff !important;
+	background: #00a69c !important;
+	display: block !important;
+	font-weight: 400 !important;
+	font-size: 13px !important;
+	line-height: 1.5 !important;
+	position: absolute !important;
+	left: 0 !important;
+	top: 0 !important;
+	padding: 5px 10px !important;
 }
 
 .sp-template-staff-gallery .gallery-caption strong {
-    display: none !important;
+	display: none !important;
 }
 
 .sp-template-gallery .sp-gallery-group-name {
-    margin: 0 !important;
-    padding: 15px !important;
-    background: #fff !important;
-    border-bottom: 1px solid #e5e5e5 !important;
-    font-size: 20px !important;
-    font-weight: 400 !important;
-    line-height: 1.5 !important;
-    display: block !important;
+	margin: 0 !important;
+	padding: 15px !important;
+	background: #fff !important;
+	border-bottom: 1px solid #e5e5e5 !important;
+	font-size: 20px !important;
+	font-weight: 400 !important;
+	line-height: 1.5 !important;
+	display: block !important;
 }
 
 /* Countdowns */
@@ -249,472 +249,472 @@
 .sp-template-countdown .sp-event-venue,
 .sp-template-countdown .sp-event-league,
 .sp-template-countdown .sp-event-date {
-    margin: 0 !important;
-    padding: 5px 10px !important;
-    text-align: center !important;
-    line-height: 1.5 !important;
-    display: table !important;
-    width: 100% !important;
-    background: #fff !important;
-    border: 1px solid #e5e5e5 !important;
-    border-bottom: none !important;
+	margin: 0 !important;
+	padding: 5px 10px !important;
+	text-align: center !important;
+	line-height: 1.5 !important;
+	display: table !important;
+	width: 100% !important;
+	background: #fff !important;
+	border: 1px solid #e5e5e5 !important;
+	border-bottom: none !important;
 }
 
 .sp-template-countdown .sp-event-name {
-    font-size: 13px !important;
-    font-weight: 400 !important;
-    color: #333 !important;
+	font-size: 13px !important;
+	font-weight: 400 !important;
+	color: #333 !important;
 }
 
 .sp-template-countdown .sp-event-venue,
 .sp-template-countdown .sp-event-league,
 .sp-template-countdown .sp-event-date {
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    background: #fff !important;
-    color: #999 !important;
+	font-size: 12px !important;
+	font-weight: 500 !important;
+	background: #fff !important;
+	color: #999 !important;
 }
 
 .sp-template-countdown .sp-event-venue a,
 .sp-template-countdown .sp-event-league a {
-    color: inherit !important;
+	color: inherit !important;
 }
 
 .sp-countdown time {
-    display: table !important;
-    background: #fff !important;
-    border: 1px solid #e5e5e5 !important;
-    border-collapse: collapse !important;
-    width: 100% !important;
+	display: table !important;
+	background: #fff !important;
+	border: 1px solid #e5e5e5 !important;
+	border-collapse: collapse !important;
+	width: 100% !important;
 }
 
 .sp-countdown span {
-    font-size: 20px !important;
-    font-weight: 400 !important;
-    line-height: 1.5 !important;
-    display: table-cell !important;
-    border: 1px solid #e5e5e5 !important;
-    padding: 10px 5px !important;
-    text-align: center !important;
+	font-size: 20px !important;
+	font-weight: 400 !important;
+	line-height: 1.5 !important;
+	display: table-cell !important;
+	border: 1px solid #e5e5e5 !important;
+	padding: 10px 5px !important;
+	text-align: center !important;
 }
 
 .sp-countdown span small {
-    font-size: 12px !important;
-    font-weight: 400 !important;
-    line-height: 1.5 !important;
-    font-weight: 500 !important;
-    color: rgba(51,51,51,0.5) !important;
-    display: block !important;
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	line-height: 1.5 !important;
+	font-weight: 500 !important;
+	color: rgba(51,51,51,0.5) !important;
+	display: block !important;
 }
 
 /* Event Calendars */
 
 .sp-template-event-calendar .sp-table-caption {
-    display: table-caption !important;
+	display: table-caption !important;
 }
 
 .sp-template-event-calendar td {
-    padding: 10px 5px !important;
+	padding: 10px 5px !important;
 }
 
 .sp-template-event-calendar tfoot td {
-    padding: 10px 15px !important;
-    border: none !important;
+	padding: 10px 15px !important;
+	border: none !important;
 }
 
 .sp-template-event-calendar .sp-previous-month {
-    text-align: left !important;
+	text-align: left !important;
 }
 
 .sp-template-event-calendar .sp-next-month {
-    text-align: right !important;
+	text-align: right !important;
 }
 
 .sp-template-event-calendar tfoot a {
-    font-size: 12px !important;
-    font-weight: 400 !important;
-    line-height: 1.5 !important;
-    text-decoration: none !important;
-    color: rgba(51,51,51,0.5) !important;
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	line-height: 1.5 !important;
+	text-decoration: none !important;
+	color: rgba(51,51,51,0.5) !important;
 }
 
 .sp-template-event-calendar tfoot a:hover {
-    color: #333 !important;
-    text-decoration: none !important;
+	color: #333 !important;
+	text-decoration: none !important;
 }
 
 .sp-template-event-calendar tbody td {
-    position: relative !important;
+	position: relative !important;
 }
 
 .sp-template-event-calendar tbody td a:before {
-    content: '•' !important;
-    position: absolute !important;
-    font-size: 20px !important;
-    line-height: 1 !important;
-    width: 1em !important;
-    top: 0 !important;
-    right: 0 !important;
+	content: '•' !important;
+	position: absolute !important;
+	font-size: 20px !important;
+	line-height: 1 !important;
+	width: 1em !important;
+	top: 0 !important;
+	right: 0 !important;
 }
 
 /* Event Lists */
 
 .sp-template-event-list .data-home {
-    text-align: right !important;
+	text-align: right !important;
 }
 
 .sp-template-event-list .data-away {
-    text-align: left !important;
+	text-align: left !important;
 }
 
 /* Event Blocks */
 
 .sp-template-event-blocks td {
-    padding: 0 !important;
+	padding: 0 !important;
 }
 
 .sp-template-event-blocks .sp-event-date {
-    color: rgba(51,51,51,0.5) !important;
-    font-weight: 500 !important;
-    font-size: 12px !important;
-    margin: 10px !important;
+	color: rgba(51,51,51,0.5) !important;
+	font-weight: 500 !important;
+	font-size: 12px !important;
+	margin: 10px !important;
 }
 
 .sp-template-event-blocks .sp-event-date a,
 .sp-template-event-blocks .sp-event-date a:hover {
-    color: inherit !important;
+	color: inherit !important;
 }
 
 .sp-template-event-blocks .sp-event-results {
-    font-size: 20px !important;
-    font-weight: 400 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    color: #333 !important;
+	font-size: 20px !important;
+	font-weight: 400 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	color: #333 !important;
 }
 
 .sp-template-event-blocks .sp-event-results a {
-    color: inherit !important;
+	color: inherit !important;
 }
 
 .sp-template-event-blocks .sp-event-results a:hover {
-    color: inherit !important;
-    text-decoration: none !important;
+	color: inherit !important;
+	text-decoration: none !important;
 }
 
 .sp-template-event-blocks .sp-event-title,
 .sp-template-event-blocks .sp-event-status {
-    display: block !important;
-    padding: 0 !important;
-    margin: 10px !important;
-    font-size: 13px !important;
-    font-weight: 400 !important;
+	display: block !important;
+	padding: 0 !important;
+	margin: 10px !important;
+	font-size: 13px !important;
+	font-weight: 400 !important;
 }
 
 /* Event Logos */
 
 .sp-template-event-logos .sp-team-name,
 .sp-template-event-logos .sp-team-result {
-    font-size: 20px !important;
-    font-weight: 400 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    color: #333 !important;
+	font-size: 20px !important;
+	font-weight: 400 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	color: #333 !important;
 }
 
 .sp-template-event-logos a,
 .sp-template-event-logos a:hover {
-    border: none !important;
-    text-decoration: none !important;
+	border: none !important;
+	text-decoration: none !important;
 }
 
 /* Event Performance */
 
 .sp-template-event-performance-icons td {
-    border: none !important;
+	border: none !important;
 }
 
 .sp-template-event-performance-icons tr:first-child td {
-    border-top: 1px solid #e5e5e5 !important;
+	border-top: 1px solid #e5e5e5 !important;
 }
 
 /* Videos */
 .sp-template-event-video iframe {
-    width: 100% !important;
+	width: 100% !important;
 }
 
 /*  Match Stats */
 
 .sp-template-event-statistics .sp-statistic-label {
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    color: inherit !important;
-    opacity: 0.5 !important;
+	font-size: 12px !important;
+	font-weight: 500 !important;
+	color: inherit !important;
+	opacity: 0.5 !important;
 }
 
 .sp-event-statistics {
-    background: transparent !important;
-    margin: 0 0 10px !important;
+	background: transparent !important;
+	margin: 0 0 10px !important;
 }
 
 .sp-event-statistics,
 .sp-event-statistics tr,
 .sp-event-statistics td {
-    border: none !important;
+	border: none !important;
 }
 
 .sp-event-statistics .sp-statistic-ratio {
-    padding: 0 !important;
+	padding: 0 !important;
 }
 
 .sp-event-statistics .sp-statistic-bar {
-    border: 1px solid #e5e5e5 !important;
-    background: #f9f9f9 !important;
+	border: 1px solid #e5e5e5 !important;
+	background: #f9f9f9 !important;
 }
 
 /* Venues */
 
 .sp-event-venue-map-row td {
-    padding: 0 !important;
+	padding: 0 !important;
 }
 
 .sp-event-venue-map-row .sp-google-map {
-    display: block !important;
-    margin: 0 !important;
+	display: block !important;
+	margin: 0 !important;
 }
 
 /* Teams */
 
 .sp-template-logo {
-    float: right !important;
-    margin: 0 0 20px 20px !important;
-    clear: none !important;
+	float: right !important;
+	margin: 0 0 20px 20px !important;
+	clear: none !important;
 }
 
 /* Profiles */
 
 .sp-template-details dl {
-    margin: 0 0 20px !important;
-    padding: 15px !important;
-    border: 1px solid #e5e5e5 !important;
-    background: #fff !important;
+	margin: 0 0 20px !important;
+	padding: 15px !important;
+	border: 1px solid #e5e5e5 !important;
+	background: #fff !important;
 }
 
 .sp-template-details dt,
 .sp-template-details dd {
-    margin: 0 !important;
-    padding: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 .sp-template-details dt {
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    color: rgba(51,51,51,0.5) !important;
+	font-size: 12px !important;
+	font-weight: 500 !important;
+	color: rgba(51,51,51,0.5) !important;
 }
 
 .sp-template-details dd {
-    font-size: 16px !important;
-    font-weight: 400 !important;
-    color: #333 !important;
-    margin-bottom: 10px !important;
+	font-size: 16px !important;
+	font-weight: 400 !important;
+	color: #333 !important;
+	margin-bottom: 10px !important;
 }
 
 .sp-template-details dd:last-child {
-    margin-bottom: 0 !important;
+	margin-bottom: 0 !important;
 }
 
 /* Twitter */
 
 .sp-tweets {
-    border: 1px solid #e5e5e5 !important;
-    border-top: none !important;
+	border: 1px solid #e5e5e5 !important;
+	border-top: none !important;
 }
 
 /* Scoreboards */
 
 .sp-header-scoreboard .sp-template-scoreboard {
-    margin-bottom: 0 !important;
+	margin-bottom: 0 !important;
 }
 
 .sp-template-scoreboard td {
-    padding: 0 !important;
+	padding: 0 !important;
 }
 
 .sp-template-scoreboard td:hover {
-    background: #f9f9f9 !important;
+	background: #f9f9f9 !important;
 }
 
 .sp-template-scoreboard a,
 .sp-template-scoreboard a:hover {
-    text-decoration: none !important;
-    color: #333 !important;
+	text-decoration: none !important;
+	color: #333 !important;
 }
 
 .sp-template-scoreboard .sp-scoreboard-date {
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    color: rgba(51,51,51,0.5) !important;
+	font-size: 12px !important;
+	font-weight: 500 !important;
+	color: rgba(51,51,51,0.5) !important;
 }
 
 .sp-template-scoreboard .sp-scoreboard-nav {
-    color: #fff !important;
-    background: #00a69c !important;
+	color: #fff !important;
+	background: #00a69c !important;
 }
 
 /* Timelines */
 
 .sp-template-timeline .sp-timeline * {
-    color: initial !important;
+	color: initial !important;
 }
 
 /* Tournaments */
 
 .sp-tournament-bracket {
-    color: #333 !important;
-    background: transparent !important;
-    width: 100% !important;
-    border-collapse: separate !important;
+	color: #333 !important;
+	background: transparent !important;
+	width: 100% !important;
+	border-collapse: separate !important;
 }
 
 .sp-tournament-bracket a,
 .sp-tournament-bracket a:hover {
-    text-decoration: none !important;
-    color: inherit !important;
-    border: none! important;
+	text-decoration: none !important;
+	color: inherit !important;
+	border: none! important;
 }
 
 .sp-tournament-bracket tr,
 .sp-tournament-bracket th,
 .sp-tournament-bracket td {
-    border: none !important;
+	border: none !important;
 }
 
 .sp-tournament-bracket thead th {
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    color: rgba(51,51,51,0.5) !important;
-    text-align: center !important;
-    border-bottom: 1px solid #e5e5e5 !important;
+	font-size: 12px !important;
+	font-weight: 500 !important;
+	color: rgba(51,51,51,0.5) !important;
+	text-align: center !important;
+	border-bottom: 1px solid #e5e5e5 !important;
 }
 
 .sp-tournament-bracket .sp-team-name {
-    font-size: 13px !important;
-    font-weight: 400 !important;
-    text-align: center !important;
-    background: #fff !important;
-    border: 1px solid #e5e5e5 !important;
+	font-size: 13px !important;
+	font-weight: 400 !important;
+	text-align: center !important;
+	background: #fff !important;
+	border: 1px solid #e5e5e5 !important;
 }
 
 .sp-tournament-bracket .sp-team-name:hover {
-    border: 1px solid #e5e5e5 !important;
+	border: 1px solid #e5e5e5 !important;
 }
 
 .sp-tournament-bracket .sp-heading,
 .sp-tournament-bracket .sp-heading:hover {
-    color: #fff !important;
-    background: #00a69c !important;
-    border-color: #00a69c !important;
+	color: #fff !important;
+	background: #00a69c !important;
+	border-color: #00a69c !important;
 }
 
 .sp-tournament-bracket .sp-event {
-    border-color: #e5e5e5 !important;
-    border-width: 1px !important;
+	border-color: #e5e5e5 !important;
+	border-width: 1px !important;
 }
 
 .sp-tournament-bracket .sp-event .sp-event-title {
-    font-size: 12px !important;
-    font-weight: 400 !important;
-    color: rgba(51,51,51,0.5) !important;
-    text-align: center !important;
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	color: rgba(51,51,51,0.5) !important;
+	text-align: center !important;
 }
 
 .sp-tournament-bracket .sp-event .sp-event-title:hover {
-    color: #333 !important;
+	color: #333 !important;
 }
 
 /* Tabs */
 
 .sp-tab-menu {
-    display: block !important;
-    clear: both !important;
-    margin: 0 0 20px !important;
-    padding: 0 !important;
-    list-style: none !important;
+	display: block !important;
+	clear: both !important;
+	margin: 0 0 20px !important;
+	padding: 0 !important;
+	list-style: none !important;
 }
 
 .sp-tab-menu-item {
-    display: inline-block !important;
-    margin: 0 !important;
-    padding: 0 !important;
+	display: inline-block !important;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 .sp-tab-menu-item a {
-    margin: 0 !important;
-    padding: 5px 10px;
-    border-bottom: 2px solid transparent !important;
-    box-shadow: none !important;
+	margin: 0 !important;
+	padding: 5px 10px;
+	border-bottom: 2px solid transparent !important;
+	box-shadow: none !important;
 }
 
 .sp-tab-menu-item a:hover {
-    text-decoration: none !important;
+	text-decoration: none !important;
 }
 
 .sp-tab-menu-item-active a,
 .sp-tab-menu-item-active a:hover {
-    color: #00a69c !important;
-    border-bottom-color: #00a69c !important;
+	color: #00a69c !important;
+	border-bottom-color: #00a69c !important;
 }
 
 /* Messages */
 .sp-template .sp-message {
-    color: #00a69c !important;
-    border-color: #00a69c !important;
+	color: #00a69c !important;
+	border-color: #00a69c !important;
 }
 
 /* Post Content */
 
 .single-sp_team .has-post-thumbnail .sp-post-content {
-    clear: none;
+	clear: none;
 }
 
 /* Media Queries */
 
 @media screen and (min-width: 601px) {
-    .sp-template-event-calendar tbody td {
-        padding: 15px 5px !important;
-    }
+	.sp-template-event-calendar tbody td {
+		padding: 15px 5px !important;
+	}
 
-    .sp-template-event-calendar tbody td a:before {
-        font-size: 25px !important;
-    }
+	.sp-template-event-calendar tbody td a:before {
+		font-size: 25px !important;
+	}
 
-    .widget .sp-template-event-calendar tbody td {
-        padding: 10px 5px !important;
-    }
+	.widget .sp-template-event-calendar tbody td {
+		padding: 10px 5px !important;
+	}
 
-    .widget .sp-template-event-calendar tbody td a:before {
-        font-size: 20px !important;
-    }
+	.widget .sp-template-event-calendar tbody td a:before {
+		font-size: 20px !important;
+	}
 }
 
 @media screen and (min-width: 801px) {
-    .sp-template-event-calendar tbody td {
-        padding: 20px 5px !important;
-    }
+	.sp-template-event-calendar tbody td {
+		padding: 20px 5px !important;
+	}
 
-    .sp-template-event-calendar tbody td a:before {
-        font-size: 30px !important;
-    }
+	.sp-template-event-calendar tbody td a:before {
+		font-size: 30px !important;
+	}
 
-    .widget .sp-template-event-calendar tbody td {
-        padding: 10px 5px !important;
-    }
+	.widget .sp-template-event-calendar tbody td {
+		padding: 10px 5px !important;
+	}
 
-    .widget .sp-template-event-calendar tbody td a:before {
-        font-size: 20px !important;
-    }
+	.widget .sp-template-event-calendar tbody td a:before {
+		font-size: 20px !important;
+	}
 
-    .sp-template-event-performance-icons.sp-template-event-performance-section:nth-child(2n) {
-        padding-top: 61px !important;
-    }
+	.sp-template-event-performance-icons.sp-template-event-performance-section:nth-child(2n) {
+		padding-top: 61px !important;
+	}
 }

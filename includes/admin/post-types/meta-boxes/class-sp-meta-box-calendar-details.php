@@ -2,13 +2,15 @@
 /**
  * Calendar Details
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * SP_Meta_Box_Calendar_Details
@@ -19,22 +21,22 @@ class SP_Meta_Box_Calendar_Details {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$taxonomies = get_object_taxonomies( 'sp_calendar' );
-		$caption = get_post_meta( $post->ID, 'sp_caption', true );
-		$status = get_post_meta( $post->ID, 'sp_status', true );
-		$date = get_post_meta( $post->ID, 'sp_date', true );
-		$date_from = get_post_meta( $post->ID, 'sp_date_from', true );
-		$date_to = get_post_meta( $post->ID, 'sp_date_to', true );
-		$date_past = get_post_meta( $post->ID, 'sp_date_past', true );
-		$date_future = get_post_meta( $post->ID, 'sp_date_future', true );
+		$taxonomies    = get_object_taxonomies( 'sp_calendar' );
+		$caption       = get_post_meta( $post->ID, 'sp_caption', true );
+		$status        = get_post_meta( $post->ID, 'sp_status', true );
+		$date          = get_post_meta( $post->ID, 'sp_date', true );
+		$date_from     = get_post_meta( $post->ID, 'sp_date_from', true );
+		$date_to       = get_post_meta( $post->ID, 'sp_date_to', true );
+		$date_past     = get_post_meta( $post->ID, 'sp_date_past', true );
+		$date_future   = get_post_meta( $post->ID, 'sp_date_future', true );
 		$date_relative = get_post_meta( $post->ID, 'sp_date_relative', true );
-		$event_format = get_post_meta( $post->ID, 'sp_event_format', true );
-		$day = get_post_meta( $post->ID, 'sp_day', true );
-		$teams = get_post_meta( $post->ID, 'sp_team', false );
-		$players = get_post_meta( $post->ID, 'sp_player', false );
-		$table_id = get_post_meta( $post->ID, 'sp_table', true );
-		$orderby = get_post_meta( $post->ID, 'sp_orderby', true );
-		$order = get_post_meta( $post->ID, 'sp_order', true );
+		$event_format  = get_post_meta( $post->ID, 'sp_event_format', true );
+		$day           = get_post_meta( $post->ID, 'sp_day', true );
+		$teams         = get_post_meta( $post->ID, 'sp_team', false );
+		$players       = get_post_meta( $post->ID, 'sp_player', false );
+		$table_id      = get_post_meta( $post->ID, 'sp_table', true );
+		$orderby       = get_post_meta( $post->ID, 'sp_orderby', true );
+		$order         = get_post_meta( $post->ID, 'sp_order', true );
 		?>
 		<div>
 			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
@@ -44,8 +46,8 @@ class SP_Meta_Box_Calendar_Details {
 			<p>
 				<?php
 				$args = array(
-					'name' => 'sp_status',
-					'id' => 'sp_status',
+					'name'     => 'sp_status',
+					'id'       => 'sp_status',
 					'selected' => $status,
 				);
 				sp_dropdown_statuses( $args );
@@ -55,7 +57,7 @@ class SP_Meta_Box_Calendar_Details {
 			<p>
 				<select name="sp_event_format" class="postform">
 					<option value="all">All</option>
-					<?php foreach ( SP()->formats->event as $key => $format ): ?>
+					<?php foreach ( SP()->formats->event as $key => $format ) : ?>
 						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $event_format, $key ); ?>><?php echo esc_html( $format ); ?></option>
 					<?php endforeach; ?>
 				</select>
@@ -65,8 +67,8 @@ class SP_Meta_Box_Calendar_Details {
 				<p>
 					<?php
 					$args = array(
-						'name' => 'sp_date',
-						'id' => 'sp_date',
+						'name'     => 'sp_date',
+						'id'       => 'sp_date',
 						'selected' => $date,
 					);
 					sp_dropdown_dates( $args );
@@ -112,17 +114,17 @@ class SP_Meta_Box_Calendar_Details {
 			<p>
 				<?php
 				$args = array(
-					'post_type' => 'sp_team',
-					'name' => 'sp_team[]',
-					'selected' => $teams,
-					'values' => 'ID',
-					'class' => 'widefat',
-					'property' => 'multiple',
-					'chosen' => true,
+					'post_type'   => 'sp_team',
+					'name'        => 'sp_team[]',
+					'selected'    => $teams,
+					'values'      => 'ID',
+					'class'       => 'widefat',
+					'property'    => 'multiple',
+					'chosen'      => true,
 					'placeholder' => __( 'All', 'sportspress' ),
 				);
-				if ( ! sp_dropdown_pages( $args ) ):
-					sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' )  );
+				if ( ! sp_dropdown_pages( $args ) ) :
+					sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
 				endif;
 				?>
 			</p>
@@ -130,17 +132,17 @@ class SP_Meta_Box_Calendar_Details {
 			<p>
 				<?php
 				$args = array(
-					'post_type' => 'sp_player',
-					'name' => 'sp_player[]',
-					'selected' => $players,
-					'values' => 'ID',
-					'class' => 'widefat',
-					'property' => 'multiple',
-					'chosen' => true,
+					'post_type'   => 'sp_player',
+					'name'        => 'sp_player[]',
+					'selected'    => $players,
+					'values'      => 'ID',
+					'class'       => 'widefat',
+					'property'    => 'multiple',
+					'chosen'      => true,
 					'placeholder' => __( 'All', 'sportspress' ),
 				);
-				if ( ! sp_dropdown_pages( $args ) ):
-					sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' )  );
+				if ( ! sp_dropdown_pages( $args ) ) :
+					sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
 				endif;
 				?>
 			</p>

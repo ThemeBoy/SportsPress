@@ -2,13 +2,15 @@
 /**
  * Calendar Columns
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * SP_Meta_Box_Calendar_Columns
@@ -19,9 +21,9 @@ class SP_Meta_Box_Calendar_Columns {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$selected = (array) get_post_meta( $post->ID, 'sp_columns', true );
+		$selected     = (array) get_post_meta( $post->ID, 'sp_columns', true );
 		$title_format = get_option( 'sportspress_event_list_title_format', 'title' );
-		$time_format = get_option( 'sportspress_event_list_time_format', 'combined' );
+		$time_format  = get_option( 'sportspress_event_list_time_format', 'combined' );
 
 		if ( is_array( $selected ) ) {
 			$selected = array_filter( $selected );
@@ -30,11 +32,11 @@ class SP_Meta_Box_Calendar_Columns {
 		$columns = array();
 
 		if ( 'teams' === $title_format ) {
-			$columns[ 'event' ] = __( 'Home', 'sportspress' ) . ' | ' . __( 'Away', 'sportspress' );
+			$columns['event'] = __( 'Home', 'sportspress' ) . ' | ' . __( 'Away', 'sportspress' );
 		} elseif ( 'homeaway' === $title_format ) {
-			$columns[ 'event' ] = __( 'Teams', 'sportspress' );
+			$columns['event'] = __( 'Teams', 'sportspress' );
 		} else {
-			$columns[ 'event' ] = __( 'Title', 'sportspress' );
+			$columns['event'] = __( 'Title', 'sportspress' );
 		}
 
 		if ( 'time' === $time_format || 'separate' === $time_format ) {
@@ -47,27 +49,27 @@ class SP_Meta_Box_Calendar_Columns {
 			$columns['results'] = __( 'Results', 'sportspress' );
 		}
 
-		$columns['league'] = __( 'League', 'sportspress' );
-		$columns['season'] = __( 'Season', 'sportspress' );
-		$columns['venue'] = __( 'Venue', 'sportspress' );
+		$columns['league']  = __( 'League', 'sportspress' );
+		$columns['season']  = __( 'Season', 'sportspress' );
+		$columns['venue']   = __( 'Venue', 'sportspress' );
 		$columns['article'] = __( 'Article', 'sportspress' );
-		$columns['day'] = __( 'Match Day', 'sportspress' );
+		$columns['day']     = __( 'Match Day', 'sportspress' );
 
 		$columns = apply_filters( 'sportspress_calendar_columns', $columns );
 		?>
 		<div class="sp-instance">
 			<ul class="categorychecklist form-no-clear">
 			<?php
-				foreach ( $columns as $key => $label ) {
-					?>
+			foreach ( $columns as $key => $label ) {
+				?>
 					<li>
 						<label>
 							<input type="checkbox" name="sp_columns[]" value="<?php echo esc_attr( $key ); ?>" id="sp_columns_<?php echo esc_attr( $key ); ?>" <?php checked( ! is_array( $selected ) || in_array( $key, $selected ) ); ?>>
-							<?php echo esc_html( $label ); ?>
+						<?php echo esc_html( $label ); ?>
 						</label>
 					</li>
 					<?php
-				}
+			}
 			?>
 		</div>
 		<?php

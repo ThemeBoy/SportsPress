@@ -2,13 +2,15 @@
 /**
  * Player Metrics
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * SP_Meta_Box_Player_Metrics
@@ -23,23 +25,23 @@ class SP_Meta_Box_Player_Metrics {
 		$metrics = get_post_meta( $post->ID, 'sp_metrics', true );
 
 		$args = array(
-			'post_type' => 'sp_metric',
-			'numberposts' => -1,
+			'post_type'      => 'sp_metric',
+			'numberposts'    => -1,
 			'posts_per_page' => -1,
-			'orderby' => 'menu_order',
-			'order' => 'ASC',
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
 		);
 
 		$vars = get_posts( $args );
 
-		if ( $vars ):
-			foreach ( $vars as $var ):
-			?>
+		if ( $vars ) :
+			foreach ( $vars as $var ) :
+				?>
 			<p><strong><?php echo esc_html( $var->post_title ); ?></strong></p>
 			<p><input type="text" name="sp_metrics[<?php echo esc_attr( $var->post_name ); ?>]" value="<?php echo esc_attr( sp_array_value( $metrics, $var->post_name, '' ) ); ?>" /></p>
-			<?php
+				<?php
 			endforeach;
-		else:
+		else :
 			sp_post_adder( 'sp_metric', __( 'Add New', 'sportspress' ) );
 		endif;
 	}

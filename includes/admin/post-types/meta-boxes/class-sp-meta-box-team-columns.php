@@ -2,13 +2,15 @@
 /**
  * Team Columns
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version		2.7.9
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * SP_Meta_Box_Team_Columns
@@ -19,21 +21,23 @@ class SP_Meta_Box_Team_Columns {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-		$team = new SP_Team( $post );
-		$leagues = get_the_terms( $post->ID, 'sp_league' );
+		$team       = new SP_Team( $post );
+		$leagues    = get_the_terms( $post->ID, 'sp_league' );
 		$league_num = sizeof( $leagues );
 
 		// Loop through columns for each league
-		if ( $leagues ): foreach ( $leagues as $league ):
+		if ( $leagues ) :
+			foreach ( $leagues as $league ) :
 
-			$league_id = $league->term_id;
-			?>
+				$league_id = $league->term_id;
+				?>
 			<p><strong><?php echo esc_html( $league->name ); ?></strong></p>
-			<?php
-			list( $columns, $data, $placeholders ) = $team->columns( $league_id );
-			self::table( $league_id, $columns, $data, $placeholders );
+				<?php
+				list( $columns, $data, $placeholders ) = $team->columns( $league_id );
+				self::table( $league_id, $columns, $data, $placeholders );
 
-		endforeach; endif;
+		endforeach;
+endif;
 		?>
 		<p><strong><?php _e( 'Total', 'sportspress' ); ?></strong></p>
 		<?php
@@ -58,7 +62,7 @@ class SP_Meta_Box_Team_Columns {
 				<thead>
 					<tr>
 						<th><?php _e( 'Season', 'sportspress' ); ?></th>
-						<?php foreach ( $columns as $label ): ?>
+						<?php foreach ( $columns as $label ) : ?>
 							<th><?php echo esc_html( $label ); ?></th>
 						<?php endforeach; ?>
 					</tr>
@@ -66,10 +70,15 @@ class SP_Meta_Box_Team_Columns {
 				<tbody>
 					<?php
 					$i = 0;
-					foreach ( $data as $div_id => $div_stats ):
+					foreach ( $data as $div_id => $div_stats ) :
 						$div = get_term( $div_id, 'sp_season' );
 						?>
-						<tr class="sp-row sp-post<?php if ( $i % 2 == 0 ) echo ' alternate'; ?>">
+						<tr class="sp-row sp-post
+						<?php
+						if ( $i % 2 == 0 ) {
+							echo ' alternate';}
+						?>
+						">
 							<td>
 								<label for="sp_leagues_<?php echo esc_attr( $league_id ); ?>_<?php echo esc_attr( $div_id ); ?>">
 									<?php
@@ -81,14 +90,17 @@ class SP_Meta_Box_Team_Columns {
 									?>
 								</label>
 							</td>
-							<?php foreach( $columns as $column => $label ):
+							<?php
+							foreach ( $columns as $column => $label ) :
 								$value = sp_array_value( sp_array_value( $data, $div_id, array() ), $column, 0 );
 								?>
-								<td><?php
-									$value = sp_array_value( sp_array_value( $data, $div_id, array() ), $column, null );
+								<td>
+								<?php
+									$value       = sp_array_value( sp_array_value( $data, $div_id, array() ), $column, null );
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $div_id, array() ), $column, 0 );
 									echo '<input type="text" name="sp_columns[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . $value . '" placeholder="' . $placeholder . '" />';
-								?></td>
+								?>
+								</td>
 							<?php endforeach; ?>
 						</tr>
 						<?php
