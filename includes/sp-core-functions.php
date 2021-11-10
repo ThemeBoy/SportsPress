@@ -1058,27 +1058,27 @@ if ( ! function_exists( 'sp_dropdown_pages' ) ) {
 					$class = '';
 				endif;
 
-                $leagues = NULL;
-                if ( 'yes' == get_option( 'sportspress_selection_show_leagues', 'no' ) ) {
-                    $leagues_terms = get_the_terms( $post->ID, 'sp_league' );
-                    if( $leagues_terms ) {
-                        if ( count( $leagues_terms ) > 1 ) {
-                            $count = count( $leagues_terms );
-                            $i = 0;
-                            foreach( $leagues_terms as $leagues_term ) {
-                                if( ++$i === $count ) {
-                                    $leagues .= $leagues_term->name;
-                                } else {
-                                    $leagues .= $leagues_term->name . ', ';
-                                }
-                            }
-                        } else {
-                            $leagues = $leagues_terms[0]->name;
-                        }
-                    }
-                }
+				$leagues = NULL;
+				if ( 'yes' == get_option( 'sportspress_selection_show_leagues', 'no' ) ) {
+					$leagues_terms = get_the_terms( $post->ID, 'sp_league' );
+					if( $leagues_terms ) {
+						if ( count( $leagues_terms ) > 1 ) {
+							$count = count( $leagues_terms );
+							$i = 0;
+							foreach( $leagues_terms as $leagues_term ) {
+								if( ++$i === $count ) {
+									$leagues .= $leagues_term->name;
+								} else {
+									$leagues .= $leagues_term->name . ', ';
+								}
+							}
+						} else {
+							$leagues = $leagues_terms[0]->name;
+						}
+					}
+				}
 
-                printf( '<option value="%s" class="%s" %s>%s</option>', $this_value, $class, $selected_prop, $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) . ( $leagues ? ' (' . $leagues .') ' : '' ));
+				printf( '<option value="%s" class="%s" %s>%s</option>', $this_value, $class, $selected_prop, $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) . ( $leagues ? ' (' . $leagues .') ' : '' ));
 			endforeach;
 			wp_reset_postdata();
 
