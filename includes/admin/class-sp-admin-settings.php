@@ -66,7 +66,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 			global $current_section, $current_tab;
 
 			if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'sportspress-settings' ) ) {
-				die( __( 'Action failed. Please refresh the page and retry.', 'sportspress' ) );
+				die( esc_html__( 'Action failed. Please refresh the page and retry.', 'sportspress' ) );
 			}
 
 			// Trigger actions
@@ -303,13 +303,13 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 
 					// Section Titles
 					case 'title':
-						echo '<div class="sp-settings-section sp-settings-section-' . sanitize_title( sp_array_value( $value, 'id' ) ) . '">';
-						echo '<a name="sp-settings-section-' . sanitize_title( sp_array_value( $value, 'id' ) ) . '"></a>';
+						echo '<div class="sp-settings-section sp-settings-section-' . esc_attr( sp_array_value( $value, 'id' ) ) . '">';
+						echo '<a name="sp-settings-section-' . esc_attr( sp_array_value( $value, 'id' ) ) . '"></a>';
 						if ( ! empty( $value['title'] ) ) {
 							echo '<h3>' . esc_html( $value['title'] ) . '</h3>';
 						}
 						if ( ! empty( $value['desc'] ) ) {
-							echo wpautop( wptexturize( wp_kses_post( $value['desc'] ) ) );
+							echo wp_kses_post( wpautop( wptexturize( $value['desc'] ) ) );
 						}
 						echo '<table class="form-table">' . "\n\n";
 						if ( ! empty( $value['id'] ) ) {
@@ -359,7 +359,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								value="<?php echo esc_attr( $option_value ); ?>"
 								placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 								/> <?php echo wp_kses_post( $description ); ?>
 						</td>
 					</tr>
@@ -384,7 +384,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								id="<?php echo esc_attr( $value['id'] ); ?>"
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 								><?php echo esc_textarea( $option_value ); ?></textarea>
 						</td>
 					</tr>
@@ -417,7 +417,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								if ( is_rtl() ) :
 									?>
 									 chosen-rtl<?php endif; ?> <?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 								<?php
 								if ( $value['type'] == 'multiselect' ) {
 									echo 'multiple="multiple"';}
@@ -471,7 +471,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								if ( is_rtl() ) :
 									?>
 									 chosen-rtl<?php endif; ?> <?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 								<?php
 								if ( $value['type'] == 'multiselect' ) {
 									echo 'multiple="multiple"';}
@@ -480,7 +480,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								<?php
 								foreach ( $value['options'] as $group => $options ) {
 									?>
-									<optgroup label="<?php _e( $group, 'sportspress' ); ?>">
+									<optgroup label="<?php esc_attr_e( $group, 'sportspress' ); ?>">
 										<?php
 										foreach ( $options as $key => $val ) {
 											?>
@@ -539,7 +539,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								if ( is_rtl() ) :
 									?>
 									 chosen-rtl<?php endif; ?> <?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 								<?php
 								if ( $value['type'] == 'multiselect' ) {
 									echo 'multiple="multiple"';}
@@ -570,11 +570,11 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 									<?php
 								}
 								?>
-							</select> <?php echo wp_kses_post( $description ); ?> <a class="button button-small sp-configure-sport" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress-config' ), 'admin.php' ) ) ); ?>"><?php _e( 'Configure', 'sportspress' ); ?></a>
+							</select> <?php echo wp_kses_post( $description ); ?> <a class="button button-small sp-configure-sport" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress-config' ), 'admin.php' ) ) ); ?>"><?php esc_html_e( 'Configure', 'sportspress' ); ?></a>
 							<p>
 								<label>
 									<input type="checkbox" name="add_sample_data" id="add_sample_data" <?php checked( sp_array_value( $value, 'welcome' ) ); ?>>
-									<?php _e( 'Install demo content', 'sportspress' ); ?>
+									<?php esc_html_e( 'Install demo content', 'sportspress' ); ?>
 								</label>
 							</p>
 						</td>
@@ -606,7 +606,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 												type="radio"
 												style="<?php echo esc_attr( $value['css'] ); ?>"
 												class="<?php echo esc_attr( $value['class'] ); ?>"
-											<?php echo implode( ' ', $custom_attributes ); ?>
+											<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 											<?php checked( $key, $option_value ); ?>
 												/> <?php echo esc_attr( $val ); ?></label>
 										</li>
@@ -668,7 +668,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								type="checkbox"
 								value="1"
 								<?php checked( $option_value, 'yes' ); ?>
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 							/> <?php echo wp_kses_post( $description ); ?>
 						</label> <?php echo wp_kses_post( $tip ); ?>
 						<?php
