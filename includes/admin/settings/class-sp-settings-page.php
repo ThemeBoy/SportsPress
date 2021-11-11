@@ -116,10 +116,10 @@ if ( ! class_exists( 'SP_Settings_Page' ) ) :
 			?>
 		<tr valign="top">
 			<th>
-				<?php _e( 'Layout', 'sportspress' ); ?>
+				<?php esc_html_e( 'Layout', 'sportspress' ); ?>
 			</th>
 			<td class="sp-sortable-list-container">
-				<p class="description"><?php _e( 'Drag each item into the order you prefer.', 'sportspress' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Drag each item into the order you prefer.', 'sportspress' ); ?></p>
 
 				<ul class="sp-layout sp-sortable-list sp-connected-list ui-sortable">
 					<?php
@@ -175,10 +175,10 @@ if ( ! class_exists( 'SP_Settings_Page' ) ) :
 			?>
 		<tr valign="top">
 			<th>
-				<?php _e( 'Tabs', 'sportspress' ); ?>
+				<?php esc_html_e( 'Tabs', 'sportspress' ); ?>
 			</th>
 			<td class="sp-sortable-list-container">
-				<p class="description"><?php _e( 'Drag items here to display them as tabs.', 'sportspress' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Drag items here to display them as tabs.', 'sportspress' ); ?></p>
 				<input type="hidden" name="sportspress_<?php echo esc_attr( $this->template ); ?>_template_order[]" value="tabs">
 
 				<ul class="sp-layout sp-sortable-list sp-connected-list ui-sortable">
