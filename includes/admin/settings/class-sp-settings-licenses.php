@@ -73,11 +73,11 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 							<tbody>
 								<tr>
 									<th scope="row" class="titledesc">
-										<?php _e( 'License Key', 'sportspress' ); ?>
+										<?php esc_html_e( 'License Key', 'sportspress' ); ?>
 										<?php if ( $key && $status && 'valid' == $status ) { ?>
 											<i class="dashicons dashicons-yes sp-desc-active"></i>
 										<?php } else { ?>
-											<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Enter the license key from your purchase receipt.', 'sportspress' ); ?>"></i>
+											<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_html_e( 'Enter the license key from your purchase receipt.', 'sportspress' ); ?>"></i>
 										<?php } ?>
 									</th>
 									<td>
