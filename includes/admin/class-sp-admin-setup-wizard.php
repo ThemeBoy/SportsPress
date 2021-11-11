@@ -557,22 +557,22 @@ class SP_Admin_Setup_Wizard {
 	public function sp_setup_venue() {
 		do_action( 'sp_setup_venue_geocoder_scripts' );
 		?>
-	<h1><?php _e( 'Venue Setup', 'sportspress' ); ?></h1>
+	<h1><?php esc_html_e( 'Venue Setup', 'sportspress' ); ?></h1>
 	<form method="post">
-	  <p><?php _e( 'Enter the details of your home venue.', 'sportspress' ); ?></p>
+	  <p><?php esc_html_e( 'Enter the details of your home venue.', 'sportspress' ); ?></p>
 	  <table class="form-table" cellspacing="0">
 		<tr>
-		  <th scope="row"><?php _e( 'Name', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Name', 'sportspress' ); ?></th>
 		  <td>
-			<input name="venue" type="text" placeholder="<?php _e( 'Venue', 'sportspress' ); ?>">
+			<input name="venue" type="text" placeholder="<?php esc_attr_e( 'Venue', 'sportspress' ); ?>">
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php _e( 'Address', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Address', 'sportspress' ); ?></th>
 		  <td>
 			<input name="address" id="sp_address" class="sp-address" type="text" value="Marvel Stadium, Melbourne">
 			<div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div>
-			<p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+			<p class="description"><?php esc_html_e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
 			<input name="latitude" id="sp_latitude" class="sp-latitude" type="hidden" value="-37.8165647">
 			<input name="longitude" id="sp_longitude" class="sp-longitude" type="hidden" value="144.9475055">
 		  </td>
@@ -581,7 +581,7 @@ class SP_Admin_Setup_Wizard {
 
 	  <p class="sp-setup-actions step">
 		<input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
-		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php esc_html_e( 'Skip this step', 'sportspress' ); ?></a>
 		<?php wp_nonce_field( 'sp-setup' ); ?>
 	  </p>
 	</form>

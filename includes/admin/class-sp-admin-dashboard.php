@@ -82,7 +82,7 @@ if ( ! class_exists( 'SP_Admin_Dashboard' ) ) :
 				?>
 			  <li class="countdown" data-countdown="<?php echo esc_attr( str_replace( '-', '/', get_gmt_from_date( $next_event->post_date ) ) ); ?>">
 				  <a href="<?php echo esc_url( get_edit_post_link( $next_event->ID ) ); ?>">
-				  <?php printf( __( '<strong>%s</strong> until next event', 'sportspress' ), esc_html( $interval->days ) . ' ' . __( 'days', 'sportspress' ) . ' ' . sprintf( '%02s:%02s:%02s', esc_html( $interval->h ), esc_html( $interval->i ), esc_html( $interval->s ) ) ); ?>
+				  <?php printf( esc_html__( '<strong>%s</strong> until next event', 'sportspress' ), esc_html( $interval->days ) . ' ' . esc_html__( 'days', 'sportspress' ) . ' ' . sprintf( '%02s:%02s:%02s', esc_html( $interval->h ), esc_html( $interval->i ), esc_html( $interval->s ) ) ); ?>
 					  (<?php echo esc_html( $next_event->post_title ); ?>)
 				  </a>
 			  </li>
