@@ -216,7 +216,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			// Show Result
 			echo '<div class="updated settings-error below-h2"><p>
-				' . sprintf( __( 'Import complete - imported <strong>%1$s</strong> players and skipped <strong>%2$s</strong>.', 'sportspress' ), $this->imported, $this->skipped ) . '
+				' . sprintf( esc_html__( 'Import complete - imported <strong>%1$s</strong> players and skipped <strong>%2$s</strong>.', 'sportspress' ), esc_html( $this->imported ), esc_html( $this->skipped ) ) . '
 			</p></div>';
 
 			$this->import_end();
@@ -226,7 +226,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * Performs post-import cleanup of files and the cache
 		 */
 		function import_end() {
-			echo '<p>' . __( 'All done!', 'sportspress' ) . ' <a href="' . admin_url( 'edit.php?post_type=sp_player' ) . '">' . __( 'View Players', 'sportspress' ) . '</a>' . '</p>';
+			echo '<p>' . esc_html__( 'All done!', 'sportspress' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=sp_player' ) ) . '">' . esc_html__( 'View Players', 'sportspress' ) . '</a>' . '</p>';
 
 			do_action( 'import_end' );
 		}
@@ -238,7 +238,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @return void
 		 */
 		function header() {
-			echo '<div class="wrap"><h2>' . __( 'Import Players', 'sportspress' ) . '</h2>';
+			echo '<div class="wrap"><h2>' . esc_html__( 'Import Players', 'sportspress' ) . '</h2>';
 		}
 
 		/**
@@ -249,8 +249,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		function greet() {
 			echo '<div class="narrow">';
-			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
-			echo '<p>' . sprintf( __( 'Players need to be defined with columns in a specific order (8 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/players-sample.csv' ) . '</p>';
+			echo '<p>' . esc_html__( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
+			echo '<p>' . sprintf( esc_html__( 'Players need to be defined with columns in a specific order (8 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/players-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_player_csv&step=1' );
 			echo '</div>';
 		}
@@ -267,7 +267,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				<tbody>
 					<tr>
 						<th scope="row" class="titledesc">
-							<?php _e( 'Date of Birth Format', 'sportspress' ); ?>
+							<?php esc_html_e( 'Date of Birth Format', 'sportspress' ); ?>
 						</th>
 						<td class="forminp forminp-radio">
 							<fieldset>
@@ -290,7 +290,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 							<label>
 								<input type="hidden" name="merge" value="0">
 								<input type="checkbox" name="merge" value="1" checked="checked">
-								<?php _e( 'Merge duplicates', 'sportspress' ); ?>
+								<?php esc_html_e( 'Merge duplicates', 'sportspress' ); ?>
 							</label>
 						</td>
 					</tr>
