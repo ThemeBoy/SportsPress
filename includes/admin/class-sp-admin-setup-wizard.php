@@ -143,12 +143,12 @@ class SP_Admin_Setup_Wizard {
 	<head>
 	  <meta name="viewport" content="width=device-width" />
 	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	  <title><?php _e( 'SportsPress', 'sportspress' ); ?> &rsaquo; <?php echo esc_html( $this->steps[ $this->step ]['name'] ); ?></title>
+	  <title><?php esc_html_e( 'SportsPress', 'sportspress' ); ?> &rsaquo; <?php echo esc_html( $this->steps[ $this->step ]['name'] ); ?></title>
 		<?php do_action( 'admin_print_styles' ); ?>
 		<?php do_action( 'admin_head' ); ?>
 	</head>
 	<body class="sp-setup wp-core-ui">
-	  <h1 id="sp-logo"><?php echo apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/modules/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . __( 'SportsPress', 'sportspress' ) . '">' ); ?></h1>
+	  <h1 id="sp-logo"><?php echo wp_kses_post( apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/modules/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . __( 'SportsPress', 'sportspress' ) . '">' ) ); ?></h1>
 		<?php
 	}
 
@@ -158,7 +158,7 @@ class SP_Admin_Setup_Wizard {
 	public function setup_wizard_footer() {
 		?>
 		<?php if ( 'next_steps' === $this->step ) : ?>
-		<p class="sp-return-to-dashboard"><a href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>"><?php _e( 'Return to the WordPress Dashboard', 'sportspress' ); ?></a></p>
+		<p class="sp-return-to-dashboard"><a href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>"><?php esc_html_e( 'Return to the WordPress Dashboard', 'sportspress' ); ?></a></p>
 	  <?php endif; ?>
 		<?php wp_print_scripts( 'sportspress-setup' ); ?>
 	  </body>
@@ -203,12 +203,12 @@ class SP_Admin_Setup_Wizard {
 	 */
 	public function sp_setup_introduction() {
 		?>
-	<h1><?php _e( 'Welcome to SportsPress', 'sportspress' ); ?></h1>
-	<p><?php _e( 'Thank you for choosing SportsPress to power your sports website! This quick setup wizard will help you configure the basic settings. <strong>It’s completely optional and shouldn’t take longer than five minutes.</strong>', 'sportspress' ); ?></p>
-	<p><?php _e( 'No time right now? If you don’t want to go through the wizard, you can skip and return to the WordPress dashboard. Come back anytime if you change your mind!', 'sportspress' ); ?></p>
+	<h1><?php esc_html_e( 'Welcome to SportsPress', 'sportspress' ); ?></h1>
+	<p><?php esc_html_e( 'Thank you for choosing SportsPress to power your sports website! This quick setup wizard will help you configure the basic settings. <strong>It’s completely optional and shouldn’t take longer than five minutes.</strong>', 'sportspress' ); ?></p>
+	<p><?php esc_html_e( 'No time right now? If you don’t want to go through the wizard, you can skip and return to the WordPress dashboard. Come back anytime if you change your mind!', 'sportspress' ); ?></p>
 	<p class="sp-setup-actions step">
-	  <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button-primary button button-large button-next"><?php _e( 'Let\'s Go!', 'sportspress' ); ?></a>
-	  <a href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>" class="button button-large button-muted"><?php _e( 'Not right now', 'sportspress' ); ?></a>
+	  <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button-primary button button-large button-next"><?php esc_html_e( 'Let\'s Go!', 'sportspress' ); ?></a>
+	  <a href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>" class="button button-large button-muted"><?php esc_html_e( 'Not right now', 'sportspress' ); ?></a>
 	</p>
 		<?php
 	}
@@ -219,12 +219,12 @@ class SP_Admin_Setup_Wizard {
 	public function sp_setup_basics() {
 		$class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
 		?>
-	<h1><?php _e( 'Basic Setup', 'sportspress' ); ?></h1>
+	<h1><?php esc_html_e( 'Basic Setup', 'sportspress' ); ?></h1>
 	<form method="post">
-	  <p><?php _e( 'Select your timezone and sport to get started.', 'sportspress' ); ?></p>
+	  <p><?php esc_html_e( 'Select your timezone and sport to get started.', 'sportspress' ); ?></p>
 	  <table class="form-table" cellspacing="0">
 		<tr>
-		  <th scope="row"><?php _e( 'Timezone', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Choose a city in the same timezone as you.', 'sportspress' ); ?>"></i></th>
+		  <th scope="row"><?php esc_html_e( 'Timezone', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_attr_e( 'Choose a city in the same timezone as you.', 'sportspress' ); ?>"></i></th>
 		  <td>
 			<select id="timezone_string" name="timezone_string" class="<?php echo esc_attr( $class ); ?>">
 			  <?php
@@ -248,13 +248,13 @@ class SP_Admin_Setup_Wizard {
 						$tzstring = 'UTC+' . $current_offset;
 					}
 				}
-				echo wp_timezone_choice( $tzstring );
+				echo esc_attr( wp_timezone_choice( $tzstring ) );
 				?>
 			</select>
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php echo _x( 'Sport', 'Page title', 'sportspress' ); ?></th>
+		  <th scope="row"><?php echo esc_html_x( 'Sport', 'Page title', 'sportspress' ); ?></th>
 		  <td>
 			  <?php
 				$options = SP_Admin_Sports::get_preset_options();
@@ -285,22 +285,22 @@ class SP_Admin_Setup_Wizard {
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php _e( 'Main League', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'The name of a league or division.', 'sportspress' ); ?>"></i></th>
+		  <th scope="row"><?php esc_html_e( 'Main League', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_attr_e( 'The name of a league or division.', 'sportspress' ); ?>"></i></th>
 		  <td>
-			<input name="league" type="text" class="widefat" value="<?php _ex( 'Primary League', 'example', 'sportspress' ); ?>">
+			<input name="league" type="text" class="widefat" value="<?php echo esc_attr_x( 'Primary League', 'example', 'sportspress' ); ?>">
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php _e( 'Current Season', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Current Season', 'sportspress' ); ?></th>
 		  <td>
-			<input name="season" type="text" class="widefat" value="<?php echo date( 'Y' ); ?>">
+			<input name="season" type="text" class="widefat" value="<?php echo esc_attr( date( 'Y' ) ); ?>">
 		  </td>
 		</tr>
 	  </table>
 
 	  <p class="sp-setup-actions step">
 		<input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
-		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php esc_html_e( 'Skip this step', 'sportspress' ); ?></a>
 		  <?php wp_nonce_field( 'sp-setup' ); ?>
 	  </p>
 	</form>
@@ -366,28 +366,28 @@ class SP_Admin_Setup_Wizard {
 	public function sp_setup_teams() {
 		$class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
 		?>
-	<h1><?php _e( 'Team Setup', 'sportspress' ); ?></h1>
+	<h1><?php esc_html_e( 'Team Setup', 'sportspress' ); ?></h1>
 	<form method="post">
-	  <p><?php _e( "Great! Now let's add some teams.", 'sportspress' ); ?></p>
+	  <p><?php esc_html_e( "Great! Now let's add some teams.", 'sportspress' ); ?></p>
 	  <table class="form-table" cellspacing="0">
 		<tr>
-		  <th scope="row"><?php _e( 'Home Team', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Home Team', 'sportspress' ); ?></th>
 		  <td>
-			<input name="home_team" type="text" class="widefat" placeholder="<?php _e( 'What is your team called?', 'sportspress' ); ?>">
+			<input name="home_team" type="text" class="widefat" placeholder="<?php esc_html_e( 'What is your team called?', 'sportspress' ); ?>">
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php _e( 'Rival Team', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Rival Team', 'sportspress' ); ?></th>
 		  <td>
-			<input name="away_team" type="text" class="widefat" placeholder="<?php _e( 'Who are you playing against next?', 'sportspress' ); ?>">
-			<p class="description"><?php _e( 'You can add more teams later.', 'sportspress' ); ?></p>
+			<input name="away_team" type="text" class="widefat" placeholder="<?php esc_html_e( 'Who are you playing against next?', 'sportspress' ); ?>">
+			<p class="description"><?php esc_html_e( 'You can add more teams later.', 'sportspress' ); ?></p>
 		  </td>
 		</tr>
 	  </table>
 
 	  <p class="sp-setup-actions step">
 		<input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
-		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php esc_html_e( 'Skip this step', 'sportspress' ); ?></a>
 		<?php wp_nonce_field( 'sp-setup' ); ?>
 	  </p>
 	</form>
@@ -440,28 +440,28 @@ class SP_Admin_Setup_Wizard {
 		?>
 	<h1><?php esc_html_e( 'Player & Staff Setup', 'sportspress' ); ?></h1>
 	<form method="post">
-	  <p><?php _e( "Let's add players and a staff member.", 'sportspress' ); ?></p>
+	  <p><?php esc_html_e( "Let's add players and a staff member.", 'sportspress' ); ?></p>
 	  <table class="form-table" cellspacing="0">
 		<tr>
-		  <th scope="row"><?php _e( 'Players', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Enter a squad number, name, and position for each player.', 'sportspress' ); ?>"></i></th>
+		  <th scope="row"><?php esc_html_e( 'Players', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_attr_e( 'Enter a squad number, name, and position for each player.', 'sportspress' ); ?>"></i></th>
 		  <td>
 			<ul>
 			  <?php for ( $i = 0; $i < 3; $i++ ) { ?>
-				<li class="player"><input name="players[<?php echo $i; ?>][number]" type="text" class="player-number" placeholder="#" value="<?php echo $i + 1; ?>"> <input name="players[<?php echo $i; ?>][name]" type="text" placeholder="<?php _e( 'Name', 'sportspress' ); ?>"> <input name="players[<?php echo $i; ?>][position]" type="text" placeholder="<?php _e( 'Position', 'sportspress' ); ?>" 
+				<li class="player"><input name="players[<?php echo esc_attr( $i ); ?>][number]" type="text" class="player-number" placeholder="#" value="<?php echo esc_attr( $i + 1 ); ?>"> <input name="players[<?php echo esc_attr( $i ); ?>][name]" type="text" placeholder="<?php esc_attr_e( 'Name', 'sportspress' ); ?>"> <input name="players[<?php echo esc_attr( $i ); ?>][position]" type="text" placeholder="<?php esc_attr_e( 'Position', 'sportspress' ); ?>" 
 																   <?php
 																	if ( sizeof( $positions ) ) {
 																		?>
 					 value="<?php echo esc_attr( $positions[ $i % sizeof( $positions ) ] ); ?>"<?php } ?>></li>
 			  <?php } ?>
 			</ul>
-			<p class="description"><?php _e( 'You can add more players later.', 'sportspress' ); ?></p>
+			<p class="description"><?php esc_html_e( 'You can add more players later.', 'sportspress' ); ?></p>
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php _e( 'Staff', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Staff', 'sportspress' ); ?></th>
 		  <td>
 			<ul>
-			  <li class="staff"><input name="staff" type="text" class="staff-name" placeholder="<?php _e( 'Name', 'sportspress' ); ?>"> <input name="role" type="text" placeholder="<?php _e( 'Job', 'sportspress' ); ?>" value="Coach"></li>
+			  <li class="staff"><input name="staff" type="text" class="staff-name" placeholder="<?php esc_attr_e( 'Name', 'sportspress' ); ?>"> <input name="role" type="text" placeholder="<?php esc_attr_e( 'Job', 'sportspress' ); ?>" value="Coach"></li>
 			</ul>
 		  </td>
 		</tr>
@@ -469,7 +469,7 @@ class SP_Admin_Setup_Wizard {
 
 	  <p class="sp-setup-actions step">
 		<input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
-		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php esc_html_e( 'Skip this step', 'sportspress' ); ?></a>
 		<?php wp_nonce_field( 'sp-setup' ); ?>
 	  </p>
 	</form>
@@ -645,9 +645,9 @@ class SP_Admin_Setup_Wizard {
 			)
 		);
 		?>
-	<h1><?php _e( 'Pages', 'sportspress' ); ?></h1>
+	<h1><?php esc_html_e( 'Pages', 'sportspress' ); ?></h1>
 	<form method="post">
-	  <p><?php printf( __( 'The following will be created automatically (if they do not already exist):', 'sportspress' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=page' ) ) . '" target="_blank">', '</a>' ); ?></p>
+	  <p><?php printf( esc_html__( 'The following will be created automatically (if they do not already exist):', 'sportspress' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=page' ) ) . '" target="_blank">', '</a>' ); ?></p>
 	  <table class="form-table" cellspacing="0">
 		<?php foreach ( $pages as $post_type => $description ) { ?>
 			<?php
@@ -663,11 +663,11 @@ class SP_Admin_Setup_Wizard {
 		<?php } ?>
 	  </table>
 
-	  <p><?php printf( __( 'Once created, these pages can be managed from your admin dashboard.', 'sportspress' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=page' ) ) . '" target="_blank">', '</a>', '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" target="_blank">', '</a>' ); ?></p>
+	  <p><?php printf( esc_html__( 'Once created, these pages can be managed from your admin dashboard.', 'sportspress' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=page' ) ) . '" target="_blank">', '</a>', '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" target="_blank">', '</a>' ); ?></p>
 
 	  <p class="sp-setup-actions step">
 		<input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
-		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php esc_html_e( 'Skip this step', 'sportspress' ); ?></a>
 		  <?php wp_nonce_field( 'sp-setup' ); ?>
 	  </p>
 	</form>
@@ -870,7 +870,7 @@ class SP_Admin_Setup_Wizard {
 	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tboy.co/sp" data-text="<?php echo esc_attr( $this->tweets[0] ); ?>" data-via="ThemeBoy" data-size="large">Tweet</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-	<h1><?php _e( 'Thanks for installing!', 'sportspress' ); ?></h1>
+	<h1><?php esc_html_e( 'Thanks for installing!', 'sportspress' ); ?></h1>
 
 	<div class="sp-banner"><img src="//ps.w.org/sportspress/assets/banner-772x250.png"></div>
 
