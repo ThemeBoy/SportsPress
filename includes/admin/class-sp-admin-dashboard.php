@@ -58,7 +58,7 @@ if ( ! class_exists( 'SP_Admin_Dashboard' ) ) :
 					else :
 						$output = '<span>' . $text . '</span>';
 					endif;
-					echo '<li class="post-count ' . eac_attr( $post_type->name ) . '-count">' . esc_html( $output ) . '</li>';
+					echo '<li class="post-count ' . esc_attr( $post_type->name ) . '-count">' . wp_kses_post( $output ) . '</li>';
 				endif;
 			endforeach;
 			return $items;
@@ -80,21 +80,21 @@ if ( ! class_exists( 'SP_Admin_Dashboard' ) ) :
 				$date     = new DateTime( $next_event->post_date );
 				$interval = date_diff( $now, $date );
 				?>
-			  <li class="countdown" data-countdown="<?php echo str_replace( '-', '/', get_gmt_from_date( $next_event->post_date ) ); ?>">
-				  <a href="<?php echo get_edit_post_link( $next_event->ID ); ?>">
-				  <?php printf( __( '<strong>%s</strong> until next event', 'sportspress' ), $interval->days . ' ' . __( 'days', 'sportspress' ) . ' ' . sprintf( '%02s:%02s:%02s', $interval->h, $interval->i, $interval->s ) ); ?>
+			  <li class="countdown" data-countdown="<?php echo esc_attr( str_replace( '-', '/', get_gmt_from_date( $next_event->post_date ) ) ); ?>">
+				  <a href="<?php echo esc_url( get_edit_post_link( $next_event->ID ) ); ?>">
+				  <?php printf( __( '<strong>%s</strong> until next event', 'sportspress' ), esc_html( $interval->days ) . ' ' . __( 'days', 'sportspress' ) . ' ' . sprintf( '%02s:%02s:%02s', esc_html( $interval->h ), esc_html( $interval->i ), esc_html( $interval->s ) ) ); ?>
 					  (<?php echo esc_html( $next_event->post_title ); ?>)
 				  </a>
 			  </li>
 		  <?php endif; ?>
 		  <li class="events-scheduled">
-			  <a href="<?php echo admin_url( 'edit.php?post_type=sp_event&post_status=future' ); ?>">
-				  <?php printf( _n( '<strong>%s event</strong> scheduled', '<strong>%s events</strong> scheduled', $scheduled_count, 'sportspress' ), $scheduled_count ); ?>
+			  <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=sp_event&post_status=future' ).'savvas' ); ?>">
+				  <?php printf( wp_kses_post( _n( '<strong>%s event</strong> scheduled', '<strong>%s events</strong> scheduled', $scheduled_count, 'sportspress' ) ), esc_attr( $scheduled_count ) ); ?>
 			  </a>
 		  </li>
 		  <li class="events-published">
-			  <a href="<?php echo admin_url( 'edit.php?post_type=sp_event&post_status=publish' ); ?>">
-				  <?php printf( _n( '<strong>%s event</strong> published', '<strong>%s events</strong> published', $published_count, 'sportspress' ), $published_count ); ?>
+			  <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=sp_event&post_status=publish' ) ); ?>">
+				  <?php printf( wp_kses_post( _n( '<strong>%s event</strong> published', '<strong>%s events</strong> published', $published_count, 'sportspress' ) ), esc_attr( $published_count ) ); ?>
 			  </a>
 		  </li>
 	  </ul>
