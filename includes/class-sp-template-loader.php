@@ -34,7 +34,7 @@ class SP_Template_Loader {
 
 		// Return password form if required
 		if ( post_password_required() ) {
-			echo get_the_password_form();
+			echo wp_kses_post( get_the_password_form() );
 			return;
 		}
 
@@ -126,7 +126,7 @@ class SP_Template_Loader {
 				// Put tab content into buffer
 				ob_start();
 				if ( 'content' === $key ) {
-					echo $content;
+					echo wp_kses_post( $content );
 				} else {
 					call_user_func( $template['action'] );
 				}

@@ -354,12 +354,12 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 			?>
 		<tr valign="top">
 			<th scope="row" class="titledesc">
-				<label for="timezone_string"><?php _e( 'Timezone', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Choose a city in the same timezone as you.', 'sportspress' ); ?>"></i></label>
+				<label for="timezone_string"><?php esc_html_e( 'Timezone', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_attr_e( 'Choose a city in the same timezone as you.', 'sportspress' ); ?>"></i></label>
 			</th>
 			<td class="forminp">
-				<legend class="screen-reader-text"><span><?php _e( 'Timezone', 'sportspress' ); ?></span></legend>
-				<select id="timezone_string" name="timezone_string" class="<?php echo $class; ?>">
-					<?php echo wp_timezone_choice( $tzstring ); ?>
+				<legend class="screen-reader-text"><span><?php esc_html_e( 'Timezone', 'sportspress' ); ?></span></legend>
+				<select id="timezone_string" name="timezone_string" class="<?php echo esc_attr( $class ); ?>">
+					<?php echo esc_html( wp_timezone_choice( $tzstring ) ); ?>
 				</select>
 			   </td>
 		   </tr>
@@ -390,13 +390,13 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 			?>
 		<tr valign="top" class="themeboy">
 			<th scope="row" class="titledesc">
-				<?php _e( 'Color Scheme', 'sportspress' ); ?>
+				<?php esc_html_e( 'Color Scheme', 'sportspress' ); ?>
 			</th>
 			<td class="forminp">
 				<fieldset>
 					<?php foreach ( $color_schemes as $name => $colors ) { ?>
 						<div class="color-option sp-color-option">
-							<label data-sp-colors="<?php echo implode( ',', $colors ); ?>"><?php echo esc_html( $name ); ?></label>
+							<label data-sp-colors="<?php echo implode( ',', array_map( 'esc_attr', $colors ) ); ?>"><?php echo esc_html( $name ); ?></label>
 							<table class="color-palette">
 								<tbody>
 									<tr>
@@ -411,7 +411,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 				</fieldset>
 				<fieldset>
 					<div class="sp-custom-colors">
-						<label data-sp-colors="<?php echo implode( ',', $colors ); ?>"><?php _e( 'Customize', 'sportspress' ); ?></label><br>
+						<label data-sp-colors="<?php echo implode( ',', array_map( 'esc_attr', $colors ) ); ?>"><?php esc_html_e( 'Customize', 'sportspress' ); ?></label><br>
 						<?php
 						// Get settings
 						$colors = array_map( 'esc_attr', (array) get_option( 'themeboy', array() ) );
@@ -453,7 +453,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 							<br>
 							<label for="sportspress_frontend_css_customize">
 								<input name="sportspress_frontend_css_customize" id="sportspress_frontend_css_customize" type="checkbox" value="1" <?php checked( $colors['customize'] ); ?>>
-								<?php _e( 'Enable', 'sportspress' ); ?>
+								<?php esc_html_e( 'Enable', 'sportspress' ); ?>
 							</label>
 						<?php endif; ?>
 					</div>
