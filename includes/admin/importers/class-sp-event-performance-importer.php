@@ -135,7 +135,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			// Show Result
 			echo '<div class="updated settings-error below-h2"><p>
-				' . sprintf( __( 'Import complete - imported <strong>%1$s</strong> rows and skipped <strong>%2$s</strong>.', 'sportspress' ), $this->imported, $this->skipped ) . '
+				' . sprintf( esc_html__( 'Import complete - imported <strong>%1$s</strong> rows and skipped <strong>%2$s</strong>.', 'sportspress' ), esc_html( $this->imported ), esc_html( $this->skipped ) ) . '
 			</p></div>';
 
 			$this->import_end( $event );
@@ -145,7 +145,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * Performs post-import cleanup of files and the cache
 		 */
 		function import_end( $event = 0 ) {
-			echo '<p>' . __( 'All done!', 'sportspress' ) . ' <a href="' . admin_url(
+			echo '<p>' . esc_html__( 'All done!', 'sportspress' ) . ' <a href="' . esc_url( admin_url(
 				add_query_arg(
 					array(
 						'post'   => $event,
@@ -153,7 +153,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					),
 					'post.php'
 				)
-			) . '">' . __( 'View Event', 'sportspress' ) . '</a>' . '</p>';
+			) ) . '">' . esc_html__( 'View Event', 'sportspress' ) . '</a>' . '</p>';
 
 			do_action( 'import_end' );
 		}
@@ -177,11 +177,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 						'step'   => '1',
 					)
 				);
-				echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
-				echo '<p>' . sprintf( __( 'Box scores need to be defined with columns in a specific order. <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/event-performance-sample.csv' ) . '</p>';
+				echo '<p>' . esc_html__( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
+				echo '<p>' . sprintf( __( 'Box scores need to be defined with columns in a specific order. <a href="%s">Click here to download a sample</a>.', 'sportspress' ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/event-performance-sample.csv' ) . '</p>';
 				wp_import_upload_form( add_query_arg( $args, 'admin.php' ) );
 			} else {
-				echo '<p><a href="' . admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ) . '">' . sprintf( __( 'Select %s', 'sportspress' ), __( 'Event', 'sportspress' ) ) . '</a></p>';
+				echo '<p><a href="' . esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ) ) . '">' . sprintf( esc_html__( 'Select %s', 'sportspress' ), esc_html__( 'Event', 'sportspress' ) ) . '</a></p>';
 			}
 
 			echo '</div>';
@@ -203,10 +203,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 			<table class="form-table">
 				<tbody>
 					<tr>
-						<th scope="row"><label><?php _e( 'Event', 'sportspress' ); ?></label><br/></th>
+						<th scope="row"><label><?php esc_html_e( 'Event', 'sportspress' ); ?></label><br/></th>
 						<td>
-							<a href="<?php echo get_post_permalink( $event ); ?>" target="_blank">
-								<?php echo get_the_title( $event ); ?>
+							<a href="<?php echo esc_url( get_post_permalink( $event ) ); ?>" target="_blank">
+								<?php echo esc_html( get_the_title( $event ) ); ?>
 							</a>
 							<input type="hidden" name="sp_event" value="<?php echo esc_attr( $event ); ?>">
 							<input type="hidden" name="sp_teams" value="<?php echo esc_attr( $teams ); ?>">
@@ -214,7 +214,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label><?php _e( 'Team', 'sportspress' ); ?></label><br/></th>
+						<th scope="row"><label><?php esc_html_e( 'Team', 'sportspress' ); ?></label><br/></th>
 						<td>
 							<?php
 							$args = array(

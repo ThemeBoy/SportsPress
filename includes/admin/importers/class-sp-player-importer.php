@@ -250,7 +250,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . esc_html__( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
-			echo '<p>' . sprintf( esc_html__( 'Players need to be defined with columns in a specific order (8 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/players-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( __( 'Players need to be defined with columns in a specific order (8 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/players-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_player_csv&step=1' );
 			echo '</div>';
 		}
