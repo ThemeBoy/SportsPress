@@ -104,8 +104,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		function dropdown( $selected ) {
 			?>
-			<select name="sp_columns[]" data-index="<?php echo array_search( $selected, array_keys( $this->columns ) ); ?>">
-				<option value="0">&mdash; <?php _e( 'Disable', 'sportspress' ); ?> &mdash;</option>
+			<select name="sp_columns[]" data-index="<?php echo esc_attr( array_search( $selected, array_keys( $this->columns ) ) ); ?>">
+				<option value="0">&mdash; <?php esc_html_e( 'Disable', 'sportspress' ); ?> &mdash;</option>
 				<?php foreach ( $this->columns as $key => $label ) : ?>
 					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $selected, $key ); ?>><?php echo esc_html( $label ); ?></option>
 				<?php endforeach; ?>
@@ -150,7 +150,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 										</th>
 									<?php endforeach; ?>
 									<th scope="col" class="sp-actions-column">
-										<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row sp-add-first"></a>
+										<a href="#" title="<?php esc_attr_e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row sp-add-first"></a>
 									</th>
 								</tr>
 							</thead>
@@ -167,15 +167,15 @@ if ( class_exists( 'WP_Importer' ) ) {
 																									 <?php
 																										if ( in_array( $key, $this->optionals ) ) {
 																											?>
-										 placeholder="<?php _e( 'Default', 'sportspress' ); ?>"<?php } ?>>
+										 placeholder="<?php esc_attr_e( 'Default', 'sportspress' ); ?>"<?php } ?>>
 											</td>
 											<?php
 											$index ++;
 endforeach;
 										?>
 										<td class="sp-actions-column">
-											<a href="#" title="<?php _e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row"></a>
-											<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
+											<a href="#" title="<?php esc_attr_e( 'Delete row', 'sportspress' ); ?>" class="dashicons dashicons-dismiss sp-delete-row"></a>
+											<a href="#" title="<?php esc_attr_e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
 										</td>
 									</tr>
 									<?php
@@ -189,13 +189,13 @@ endwhile;
 										</td>
 									<?php endforeach; ?>
 									<td class="sp-actions-column">
-										<a href="#" title="<?php _e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
+										<a href="#" title="<?php esc_attr_e( 'Insert row after', 'sportspress' ); ?>" class="dashicons dashicons-plus-alt sp-add-row"></a>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 						<p class="sp-post-count alignright">
-							<?php printf( __( 'Displaying %1$s&#8211;%2$s of %3$s', 'sportspress' ), 1, $this->imported + 1, $this->imported + 1 ); ?>
+							<?php printf( esc_html__( 'Displaying %1$s&#8211;%2$s of %3$s', 'sportspress' ), 1, esc_html( $this->imported + 1 ), esc_html( $this->imported + 1 ) ); ?>
 						</p>
 						<p class="submit">
 							<input type="submit" class="button button-primary button-hero" value="<?php echo esc_attr( $this->import_label ); ?>" />
@@ -204,8 +204,8 @@ endwhile;
 					<?php
 				else :
 
-					echo '<p><strong>' . __( 'Sorry, there has been an error.', 'sportspress' ) . '</strong><br />';
-					_e( 'The CSV is invalid.', 'sportspress' ) . '</p>';
+					echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'sportspress' ) . '</strong><br />';
+					esc_html_e( 'The CSV is invalid.', 'sportspress' ) . '</p>';
 					$this->footer();
 					die();
 
@@ -240,7 +240,7 @@ endwhile;
 				$file = wp_import_handle_upload();
 
 				if ( isset( $file['error'] ) ) {
-					echo '<p><strong>' . __( 'Sorry, there has been an error.', 'sportspress' ) . '</strong><br />';
+					echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'sportspress' ) . '</strong><br />';
 					echo esc_html( $file['error'] ) . '</p>';
 					return false;
 				}
@@ -255,7 +255,7 @@ endwhile;
 
 				} else {
 
-					echo '<p><strong>' . __( 'Sorry, there has been an error.', 'sportspress' ) . '</strong></p>';
+					echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'sportspress' ) . '</strong></p>';
 					return false;
 
 				}
@@ -271,7 +271,7 @@ endwhile;
 		 * @return void
 		 */
 		function header() {
-			echo '<div class="wrap"><h2>' . $this->import_label . '</h2>';
+			echo '<div class="wrap"><h2>' . esc_html( $this->import_label ) . '</h2>';
 		}
 
 		/**
