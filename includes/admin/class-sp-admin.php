@@ -109,9 +109,9 @@ class SP_Admin {
 					<script type="text/javascript">
 					(function($) {
 						$(".wrap .page-title-action").first().after(
-							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_fixture_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import Fixtures', 'sportspress' ); ?></a>")
+							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_fixture_csv' ), 'admin.php' ) ) ); ?>\"><?php esc_html_e( 'Import Fixtures', 'sportspress' ); ?></a>")
 						).after(
-							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import Events', 'sportspress' ); ?></a>")
+							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => 'sp_event_csv' ), 'admin.php' ) ) ); ?>\"><?php esc_html_e( 'Import Events', 'sportspress' ); ?></a>")
 						);
 					})(jQuery);
 					</script>
@@ -123,7 +123,7 @@ class SP_Admin {
 					<script type="text/javascript">
 					(function($) {
 						$(".wrap .page-title-action").first().after(
-							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => $typenow . '_csv' ), 'admin.php' ) ) ); ?>\"><?php _e( 'Import', 'sportspress' ); ?></a>")
+							$("<a class=\"add-new-h2\" href=\"<?php echo esc_url( admin_url( add_query_arg( array( 'import' => $typenow . '_csv' ), 'admin.php' ) ) ); ?>\"><?php esc_html_e( 'Import', 'sportspress' ); ?></a>")
 						);
 					})(jQuery);
 					</script>
