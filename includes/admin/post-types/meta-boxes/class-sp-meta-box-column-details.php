@@ -36,16 +36,16 @@ class SP_Meta_Box_Column_Details extends SP_Meta_Box_Config {
 			$precision = 0;
 		}
 		?>
-		<p><strong><?php esc_attr_e( 'Key', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_html_e( 'Key', 'sportspress' ); ?></strong></p>
 		<p>
 			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo esc_attr( $post->post_name ); ?>">
 			<input name="sp_key" type="text" id="sp_key" value="<?php echo esc_attr( $post->post_name ); ?>">
 		</p>
-		<p><strong><?php esc_attr_e( 'Decimal Places', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_html_e( 'Decimal Places', 'sportspress' ); ?></strong></p>
 		<p class="sp-precision-selector">
 			<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo esc_attr( $precision ); ?>" placeholder="0">
 		</p>
-		<p><strong><?php esc_attr_e( 'Sort Order', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_html_e( 'Sort Order', 'sportspress' ); ?></strong></p>
 		<p class="sp-order-selector">
 			<select name="sp_priority">
 				<?php
@@ -55,7 +55,7 @@ class SP_Meta_Box_Column_Details extends SP_Meta_Box_Config {
 					$options[ $i ] = $i;
 				endfor;
 				foreach ( $options as $key => $value ) :
-					printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( true, $key == $priority, false ), esc_attr( $value ) );
+					printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( true, $key == $priority, false ), esc_html( $value ) );
 				endforeach;
 				?>
 			</select>
@@ -66,7 +66,7 @@ class SP_Meta_Box_Column_Details extends SP_Meta_Box_Config {
 					'ASC'  => esc_attr__( 'Ascending', 'sportspress' ),
 				);
 				foreach ( $options as $key => $value ) :
-					printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( true, $key == $order, false ), esc_attr( $value ) );
+					printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( true, $key == $order, false ), esc_html( $value ) );
 				endforeach;
 				?>
 			</select>

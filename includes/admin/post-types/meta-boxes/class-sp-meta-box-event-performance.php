@@ -567,7 +567,7 @@ endforeach;
 					<?php echo wp_kses( self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ), array( 'select' => array( 'class' => array(), 'name' => array() ), 'option' => array( 'value' => array() ) ) ); ?><br>
 					<?php if ( is_array( $times ) ) { ?>
 						<input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][sub][]" value="<?php echo esc_attr( sp_array_value( $times, 0, '' ) ); ?>" placeholder="-" />
-						<span class="description"><?php esc_attr_e( 'mins', 'sportspress' ); ?></span>
+						<span class="description"><?php esc_html_e( 'mins', 'sportspress' ); ?></span>
 					<?php } ?>
 				</td>
 			<?php } ?>
