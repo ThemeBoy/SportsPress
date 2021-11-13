@@ -89,7 +89,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Team' ) ) :
 		public function custom_columns( $column, $post_id ) {
 			switch ( $column ) :
 				case 'sp_icon':
-					echo has_post_thumbnail( $post_id ) ? edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-mini' ), '', '', $post_id ) : '';
+					echo has_post_thumbnail( $post_id ) ? wp_kses_post( edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-mini' ), '', '', $post_id ) ) : '';
 					break;
 				case 'sp_short_name':
 					$short_name = get_post_meta( $post_id, 'sp_short_name', true );
@@ -100,10 +100,10 @@ if ( ! class_exists( 'SP_Admin_CPT_Team' ) ) :
 					echo $abbreviation ? esc_html( $abbreviation ) : '&mdash;';
 					break;
 				case 'sp_league':
-					echo get_the_terms( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_league' ) ? wp_kses_post( the_terms( $post_id, 'sp_league' ) ) : '&mdash;';
 					break;
 				case 'sp_season':
-					echo get_the_terms( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_season' ) ? wp_kses_post( the_terms( $post_id, 'sp_season' ) ) : '&mdash;';
 					break;
 			endswitch;
 		}

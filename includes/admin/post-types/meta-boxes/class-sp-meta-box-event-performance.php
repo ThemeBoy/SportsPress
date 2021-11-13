@@ -157,7 +157,7 @@ class SP_Meta_Box_Event_Performance {
 					?>
 					<div>
 						<p>
-							<strong><?php echo get_the_title( $team_id ); ?></strong>
+							<strong><?php echo wp_kses_post( get_the_title( $team_id ) ); ?></strong>
 							<a class="add-new-h2 sp-add-new-h2" href="
 							<?php
 							echo esc_url(
@@ -175,7 +175,7 @@ class SP_Meta_Box_Event_Performance {
 								)
 							);
 							?>
-																		"><?php _e( 'Import', 'sportspress' ); ?></a>
+																		"><?php esc_html_e( 'Import', 'sportspress' ); ?></a>
 						</p>
 						<?php self::table( $labels, $columns, $data, $team_id, $has_checkboxes && $i === 0, $positions, $status, -1, $formats, $order, $numbers, $team_timeline, $timed, $stars ); ?>
 						<?php do_action( 'sportspress_after_event_performance_table_admin', $labels, $columns, $data, $team_id ); ?>
@@ -262,7 +262,7 @@ class SP_Meta_Box_Event_Performance {
 						?>
 						<div>
 							<p>
-								<strong><?php echo get_the_title( $team_id ); ?> &mdash; <?php echo esc_html( $section_label ); ?></strong>
+								<strong><?php echo wp_kses_post( get_the_title( $team_id ) ); ?> &mdash; <?php echo esc_html( $section_label ); ?></strong>
 								<a class="add-new-h2 sp-add-new-h2" href="
 								<?php
 								echo esc_url(
@@ -278,7 +278,7 @@ class SP_Meta_Box_Event_Performance {
 									)
 								);
 								?>
-																			"><?php _e( 'Import', 'sportspress' ); ?></a>
+																			"><?php esc_html_e( 'Import', 'sportspress' ); ?></a>
 							</p>
 							<?php self::table( $labels[ $section_id ], $columns, $data[ $section_id ], $team_id, ( $has_checkboxes && 0 === $i ), $positions, $status, $section_id, $formats, $order, $numbers, $team_timeline, $timed, $stars ); ?>
 							<?php do_action( 'sportspress_after_event_performance_table_admin', $labels[ $section_id ], $columns, $data[ $section_id ], $team_id ); ?>
@@ -353,10 +353,10 @@ class SP_Meta_Box_Event_Performance {
 				<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $numbers, $section ) ) { ?>
 					<th>#</th>
 				<?php } ?>
-				<th><?php _e( 'Player', 'sportspress' ); ?></th>
+				<th><?php esc_html_e( 'Player', 'sportspress' ); ?></th>
 				<?php if ( ! empty( $positions ) ) { ?>
 					<th class="column-position">
-						<?php _e( 'Position', 'sportspress' ); ?>
+						<?php esc_html_e( 'Position', 'sportspress' ); ?>
 					</th>
 				<?php } ?>
 				<?php $i = 0; foreach ( $labels as $key => $label ) : ?>
@@ -383,11 +383,11 @@ endforeach;
 				?>
 				<?php if ( apply_filters( 'sportspress_event_performance_show_status', $status, $section ) ) { ?>
 					<th>
-						<?php _e( 'Status', 'sportspress' ); ?>
+						<?php esc_html_e( 'Status', 'sportspress' ); ?>
 					</th>
 				<?php } ?>
 				<?php if ( $stars_type ) { ?>
-					<th><i class="dashicons dashicons-star-filled" title="<?php 1 == $stars_type ? _e( 'Player of the Match', 'sportspress' ) : _e( 'Stars', 'sportspress' ); ?>"></i></th>
+					<th><i class="dashicons dashicons-star-filled" title="<?php 1 == $stars_type ? esc_attr_e( 'Player of the Match', 'sportspress' ) : esc_attr_e( 'Stars', 'sportspress' ); ?>"></i></th>
 				<?php } ?>
 			</tr>
 		</thead>
@@ -409,7 +409,7 @@ endforeach;
 					<?php if ( apply_filters( 'sportspress_event_performance_show_numbers', $numbers, $section ) ) { ?>
 						<td>&nbsp;</td>
 					<?php } ?>
-					<td><strong><?php _e( 'Total', 'sportspress' ); ?></strong></td>
+					<td><strong><?php esc_html_e( 'Total', 'sportspress' ); ?></strong></td>
 					<?php if ( ! empty( $positions ) ) { ?>
 						<td>&nbsp;</td>
 					<?php } ?>
@@ -424,7 +424,7 @@ endforeach;
 						$format             = sp_array_value( $formats, $column, 'number' );
 						$placeholder        = sp_get_format_placeholder( $format );
 						?>
-						<td><input type="text" name="sp_players[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" placeholder="<?php echo trim( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" data-sp-format="<?php echo esc_attr( $format ); ?>" /></td>
+						<td><input type="text" name="sp_players[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>]" placeholder="<?php echo esc_attr( trim( $placeholder ) ); ?>" value="<?php echo esc_attr( $value ); ?>" data-sp-format="<?php echo esc_attr( $format ); ?>" /></td>
 					<?php endforeach; ?>
 					<?php if ( apply_filters( 'sportspress_event_performance_show_status', $status, $section ) ) { ?>
 						<td>&nbsp;</td>
@@ -459,7 +459,7 @@ endforeach;
 				</td>
 			<?php } ?>
 			<td>
-				<?php echo apply_filters( 'sportspress_event_performance_player_selection', get_the_title( $player_id ), $player_id ); ?>
+				<?php echo wp_kses_post( apply_filters( 'sportspress_event_performance_player_selection', get_the_title( $player_id ), $player_id ) ); ?>
 				<?php if ( 1 == $section ) { ?>
 					<input type="hidden" name="sp_order[<?php echo esc_attr( $team_id ); ?>][]" value="<?php echo esc_attr( $player_id ); ?>">
 				<?php } ?>
@@ -545,8 +545,8 @@ endforeach;
 							<?php
 							for ( $i = 0; $i < $intval; $i++ ) {
 								?>
-								<input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>][<?php echo $i; ?>]" value="<?php echo esc_attr( sp_array_value( $times, $i, '' ) ); ?>" placeholder="-" /><?php } ?>
-							<span class="description"><?php _e( 'mins', 'sportspress' ); ?></span>
+								<input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][<?php echo esc_attr( $column ); ?>][<?php echo esc_attr( $i ); ?>]" value="<?php echo esc_attr( sp_array_value( $times, $i, '' ) ); ?>" placeholder="-" /><?php } ?>
+							<span class="description"><?php esc_html_e( 'mins', 'sportspress' ); ?></span>
 							<?php
 						}
 					}

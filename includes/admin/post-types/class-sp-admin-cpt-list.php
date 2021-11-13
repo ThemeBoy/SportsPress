@@ -72,22 +72,22 @@ if ( ! class_exists( 'SP_Admin_CPT_List' ) ) :
 					$select = get_post_meta( $post_id, 'sp_select', true );
 					if ( 'manual' == $select ) :
 						$players = array_filter( get_post_meta( $post_id, 'sp_player' ) );
-						echo sizeof( $players );
+						echo esc_html( sizeof( $players ) );
 					else :
-						_e( 'Auto', 'sportspress' );
+						esc_html_e( 'Auto', 'sportspress' );
 					endif;
 					break;
 				case 'sp_league':
-					echo get_the_terms( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : __( 'All', 'sportspress' );
+					echo get_the_terms( $post_id, 'sp_league' ) ? wp_kses_post( the_terms( $post_id, 'sp_league' ) ) : esc_html__( 'All', 'sportspress' );
 					break;
 				case 'sp_season':
-					echo get_the_terms( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : __( 'All', 'sportspress' );
+					echo get_the_terms( $post_id, 'sp_season' ) ? wp_kses_post( the_terms( $post_id, 'sp_season' ) ) : esc_html__( 'All', 'sportspress' );
 					break;
 				case 'sp_team':
 					$teams = (array) get_post_meta( $post_id, 'sp_team', false );
 					$teams = array_filter( $teams );
 					if ( empty( $teams ) ) :
-						echo __( 'All', 'sportspress' );
+						echo esc_html__( 'All', 'sportspress' );
 					else :
 						foreach ( $teams as $team_id ) :
 							if ( ! $team_id ) {
@@ -142,7 +142,7 @@ if ( ! class_exists( 'SP_Admin_CPT_List' ) ) :
 				'selected'         => $selected,
 				'values'           => 'ID',
 			);
-			wp_dropdown_pages( $args );
+			esc_html( wp_dropdown_pages( $args ) );
 		}
 
 		/**

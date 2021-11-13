@@ -102,14 +102,14 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 					echo esc_html( get_post_meta( $post_id, 'sp_number', true ) );
 					break;
 				case 'sp_position':
-					echo get_the_terms( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_position' ) ? wp_kses_post( the_terms( $post_id, 'sp_position' ) ) : '&mdash;';
 					break;
 				case 'sp_team':
 					$current_teams = get_post_meta( $post_id, 'sp_current_team', false );
 					$past_teams    = get_post_meta( $post_id, 'sp_past_team', false );
 					$current_teams = array_filter( $current_teams );
 					$past_teams    = array_filter( $past_teams );
-					echo '<span class="hidden sp-player-teams" data-current-teams="' . implode( ',', $current_teams ) . '" data-past-teams="' . implode( ',', $past_teams ) . '"></span>';
+					echo '<span class="hidden sp-player-teams" data-current-teams="' . implode( ',', array_map( 'esc_attr', $current_teams ) ) . '" data-past-teams="' . implode( ',', array_map( 'esc_attr', $past_teams ) ) . '"></span>';
 					$teams = (array) get_post_meta( $post_id, 'sp_team', false );
 					$teams = array_filter( $teams );
 					$teams = array_unique( $teams );
@@ -124,7 +124,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 							if ( $team ) :
 								echo esc_html( $team->post_title );
 								if ( in_array( $team_id, $current_teams ) ) :
-									echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
+									echo '<span class="dashicons dashicons-yes" title="' . esc_attr__( 'Current Team', 'sportspress' ) . '"></span>';
 								endif;
 								echo '<br>';
 							endif;
@@ -132,13 +132,13 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 					endif;
 					break;
 				case 'sp_league':
-					echo get_the_terms( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_league' ) ? wp_kses_post( the_terms( $post_id, 'sp_league' ) ) : '&mdash;';
 					break;
 				case 'sp_season':
-					echo get_the_terms( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_season' ) ? wp_kses_post( the_terms( $post_id, 'sp_season' ) ) : '&mdash;';
 					break;
 				case 'sp_venue':
-					echo get_the_terms( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_venue' ) ? wp_kses_post( the_terms( $post_id, 'sp_venue' ) ) : '&mdash;';
 					break;
 			endswitch;
 		}
@@ -172,7 +172,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 				'selected'         => $selected,
 				'values'           => 'ID',
 			);
-			wp_dropdown_pages( $args );
+			esc_html( wp_dropdown_pages( $args ) );
 
 			if ( taxonomy_exists( 'sp_league' ) ) :
 				$selected = isset( $_REQUEST['sp_league'] ) ? sanitize_key( $_REQUEST['sp_league'] ) : null;
@@ -244,7 +244,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 		<fieldset class="inline-edit-col-right">
 			<div class="inline-edit-col">
 				<label>
-					<span class="title"><?php _e( 'Squad Number', 'sportspress' ); ?></span>
+					<span class="title"><?php esc_html_e( 'Squad Number', 'sportspress' ); ?></span>
 					<span class="input-text-wrap"><input type="text" name="sp_number" class="inline-edit-menu-order-input"></span>
 				</label>
 			</div>
@@ -280,14 +280,14 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			?>
 		<fieldset class="inline-edit-col-right">
 			<div class="inline-edit-col">
-				<span class="title inline-edit-categories-label"><?php _e( 'Current Teams', 'sportspress' ); ?></span>
+				<span class="title inline-edit-categories-label"><?php esc_html_e( 'Current Teams', 'sportspress' ); ?></span>
 				<input type="hidden" name="sp_current_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
 					<li><label class="selectit"><input value="<?php echo esc_attr( $team->ID ); ?>" type="checkbox" name="sp_current_team[]"> <?php echo esc_html( $team->post_title ); ?></label></li>
 					<?php } ?>
 				</ul>
-				<span class="title inline-edit-categories-label"><?php _e( 'Past Teams', 'sportspress' ); ?></span>
+				<span class="title inline-edit-categories-label"><?php esc_html_e( 'Past Teams', 'sportspress' ); ?></span>
 				<input type="hidden" name="sp_past_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
@@ -367,14 +367,14 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			?>
 		<fieldset class="inline-edit-col-right">
 			<div class="inline-edit-col">
-				<span class="title inline-edit-categories-label"><?php _e( 'Current Teams', 'sportspress' ); ?></span>
+				<span class="title inline-edit-categories-label"><?php esc_html_e( 'Current Teams', 'sportspress' ); ?></span>
 				<input type="hidden" name="sp_current_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
 					<li><label class="selectit"><input value="<?php echo esc_attr( $team->ID ); ?>" type="checkbox" name="sp_current_team[]"> <?php echo esc_attr( $team->post_title ); ?></label></li>
 					<?php } ?>
 				</ul>
-				<span class="title inline-edit-categories-label"><?php _e( 'Past Teams', 'sportspress' ); ?></span>
+				<span class="title inline-edit-categories-label"><?php esc_html_e( 'Past Teams', 'sportspress' ); ?></span>
 				<input type="hidden" name="sp_past_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>

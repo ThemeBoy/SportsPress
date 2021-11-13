@@ -67,18 +67,18 @@ if ( ! class_exists( 'SP_Admin_CPT_Table' ) ) :
 		public function custom_columns( $column, $post_id ) {
 			switch ( $column ) :
 				case 'sp_league':
-					echo get_the_terms( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_league' ) ? wp_kses_post( the_terms( $post_id, 'sp_league' ) ) : '&mdash;';
 					break;
 				case 'sp_season':
-					echo get_the_terms( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_season' ) ? wp_kses_post( the_terms( $post_id, 'sp_season' ) ) : '&mdash;';
 					break;
 				case 'sp_team':
 					$select = get_post_meta( $post_id, 'sp_select', true );
 					if ( 'manual' == $select ) :
 						$teams = array_filter( get_post_meta( $post_id, 'sp_team' ) );
-						echo sizeof( $teams );
+						echo esc_html( sizeof( $teams ) );
 					else :
-						_e( 'Auto', 'sportspress' );
+						esc_html_e( 'Auto', 'sportspress' );
 					endif;
 					break;
 			endswitch;
@@ -120,7 +120,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Table' ) ) :
 				'selected'         => $selected,
 				'values'           => 'ID',
 			);
-			wp_dropdown_pages( $args );
+			esc_html( wp_dropdown_pages( $args ) );
 		}
 
 		/**
